@@ -1,0 +1,265 @@
+{
+ "nhom": "2701",
+ "phamVi": {
+  "text": "Các loại than đá và anthracite đã hoặc chưa nghiền thành bột hoặc kết khối (than đóng bánh, than quả bàng), cùng than đóng bánh và các nhiên liệu sản xuất tương tự đã được carbon hóa nhằm làm cho chúng không có khói.",
+  "nguon": "nhom2701.nhom",
+  "trich": "Nhóm này bao gồm các loại than đá và anthracite khác nhau đã hoặc chưa nghiền thành bột hoặc kết khối (than đóng bánh, than quả bàng,...). Nó cũng bao gồm than đóng bánh và các nhiên liệu sản xuất tương tự, mà đã được carbon hóa nhằm làm cho chúng không có khói.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Than huyền (than jet)",
+   "sangNhom": "2530",
+   "nguon": "nhom2701.nhom",
+   "trich": "than huyền (than jet) (nhóm 25.30)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Than nâu (lignite)",
+   "sangNhom": "2702",
+   "nguon": "nhom2701.nhom",
+   "trich": "than nâu (lignite) (nhóm 27.02)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Than cốc và than bán cốc",
+   "sangNhom": "2704",
+   "nguon": "nhom2701.nhom",
+   "trich": "than cốc và than bán cốc (nhóm 27.04)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là than huyền (than jet) không?",
+   "neuCo": "2530",
+   "neuKhong": "2701",
+   "nguon": "nhom2701.nhom",
+   "trich": "than huyền (than jet) (nhóm 25.30)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là than nâu (lignite) không?",
+   "neuCo": "2702",
+   "neuKhong": "2701",
+   "nguon": "nhom2701.nhom",
+   "trich": "than nâu (lignite) (nhóm 27.02)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là than cốc hoặc than bán cốc không?",
+   "neuCo": "2704",
+   "neuKhong": "2701",
+   "nguon": "nhom2701.nhom",
+   "trich": "than cốc và than bán cốc (nhóm 27.04)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "270111",
+   "fact": "gioi_han_chat_boc",
+   "op": "<=",
+   "value": 14,
+   "donVi": "%",
+   "nguon": "ch27.chuong",
+   "trich": "1. Theo mục đích của phân nhóm 2701.11 \"anthracite\" có nghĩa là loại than có giới hạn chất bốc (trong điều kiện khô, không có khoáng chất) không vượt quá 14%.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "270112",
+   "fact": "gioi_han_chat_boc",
+   "op": ">",
+   "value": 14,
+   "donVi": "%",
+   "nguon": "ch27.chuong",
+   "trich": "2. Theo mục đích của phân nhóm 2701.12, \"than bi-tum\" là loại than có giới hạn chất bốc (trong điều kiện khô, không có khoáng chất) trên 14% và giới hạn nhiệt lượng từ 5.833 kcal/kg trở lên (trong điều kiện ẩm, không có khoáng chất).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "270120",
+   "fact": "da_carbon_hoa_khong_khoi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2701.nhom",
+   "trich": "Nó cũng bao gồm than đóng bánh và các nhiên liệu sản xuất tương tự, mà đã được carbon hóa nhằm làm cho chúng không có khói.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "27011100",
+   "dieuKien": "Anthracite: giới hạn chất bốc không vượt quá 14%",
+   "tieuChi": {
+    "fact": "gioi_han_chat_boc",
+    "op": "<=",
+    "value": 14,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "ch27.chuong",
+   "trich": "1. Theo mục đích của phân nhóm 2701.11 \"anthracite\" có nghĩa là loại than có giới hạn chất bốc (trong điều kiện khô, không có khoáng chất) không vượt quá 14%.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "27011210",
+   "dieuKien": "Than để luyện cốc (than bi-tum), nhiệt trị lớn hơn 23.865kJ / kg (5 700 kcal / kg)",
+   "tieuChi": {
+    "fact": "nhiet_tri",
+    "op": ">=",
+    "value": 5700,
+    "donVi": "kcal/kg"
+   },
+   "loaiKhac": false,
+   "nguon": "sen.27011210",
+   "trich": "Than để luyện cốc là than đủ chất lượng để sản xuất coal with a qu than cốc phù hợp dùng cho lò hơi. Nhiệt trị của than để furnace charg luyện cốc lớn hơn 23.865kJ / kg (5 700 kcal / kg) trên điều on an ash-free kiện ẩm và không tro.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "27011290",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2701.12",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.27011290",
+   "trich": "27011290 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "270112",
+    "truAnhEm": [
+     "27011210"
+    ],
+    "toTienCoTen": "270112",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "27011900",
+   "dieuKien": "Than đá loại khác",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.27011900",
+   "trich": "27011900 - - Than đá loại khác",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "27012000",
+   "dieuKien": "Than bánh, than quả bàng và nhiên liệu tương tự sản xuất từ than đá, đã carbon hóa",
+   "tieuChi": {
+    "fact": "da_carbon_hoa_khong_khoi",
+    "op": "=",
+    "value": true,
+    "donVi": null
+   },
+   "loaiKhac": false,
+   "nguon": "nhom2701.nhom",
+   "trich": "Nó cũng bao gồm than đóng bánh và các nhiên liệu sản xuất tương tự, mà đã được carbon hóa nhằm làm cho chúng không có khói.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2701",
+    "cap": 4,
+    "cha": "27",
+    "tenVi": "Than đá; than bánh, than quả bàng và nhiên liệu rắn tương tự sản xuất từ than đá.",
+    "tenEn": "Coal; briquettes, ovoids and similar solid fuels manufactured from coal",
+    "suyRa": false
+   },
+   {
+    "id": "27011",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2701",
+    "tenVi": "Than đá, đã hoặc chưa nghiền thành bột, nhưng chưa đóng bánh",
+    "tenEn": "Coal, whether or not pulverised, but not agglomerated",
+    "suyRa": true
+   },
+   {
+    "id": "27011100",
+    "cap": 8,
+    "cha": "27011",
+    "tenVi": "Anthracite",
+    "tenEn": "Coal; anthracite, whether or not pulverised, but not agglomerated",
+    "suyRa": false,
+    "laPhanNhom": "270111"
+   },
+   {
+    "id": "270112",
+    "cap": 6,
+    "cha": "27011",
+    "tenVi": null,
+    "tenEn": "Coal; bituminous, whether or not pulverised, but not agglomerated",
+    "suyRa": false
+   },
+   {
+    "id": "27011210",
+    "cap": 8,
+    "cha": "270112",
+    "tenVi": "Than để luyện cốc (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "27011290",
+    "cap": 8,
+    "cha": "270112",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "27011900",
+    "cap": 8,
+    "cha": "27011",
+    "tenVi": "Than đá loại khác",
+    "tenEn": "Coal; (other than anthracite and bituminous), whether or not pulverised but not agglomerated",
+    "suyRa": false,
+    "laPhanNhom": "270119"
+   },
+   {
+    "id": "27012000",
+    "cap": 8,
+    "cha": "2701",
+    "tenVi": "Than bánh, than quả bàng và nhiên liệu rắn tương tự sản xuất từ than đá",
+    "tenEn": "Briquettes, ovoids and similar solid fuels; manufactured from coal",
+    "suyRa": false,
+    "laPhanNhom": "270120"
+   }
+  ],
+  "tenDien": [
+   {
+    "id": "270112",
+    "tenVi": "Than bi-tum",
+    "nguon": "ch27.chuong",
+    "trich": "2. Theo mục đích của phân nhóm 2701.12, \"than bi-tum\" là loại than có giới hạn chất bốc (trong điều kiện khô, không có khoáng chất) trên 14% và giới hạn nhiệt lượng từ 5.833 kcal/kg trở lên (trong điều kiện ẩm, không có khoáng chất).",
+    "nguonLoai": "AI_DA_KIEM"
+   }
+  ]
+ },
+ "dungTuNguon": [
+  "ch27.chuong",
+  "nhom2701.nhom",
+  "sen.27011210",
+  "tax.27011290",
+  "tax.27011900"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T17:51:31.554Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
