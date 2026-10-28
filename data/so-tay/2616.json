@@ -1,0 +1,148 @@
+{
+ "nhom": "2616",
+ "phamVi": {
+  "text": "Quặng kim loại quý và tinh quặng kim loại quý: các quặng chính thường được phân loại là Argentile, Calaverite, Cerargyrite, Polybasite, Proustite, Pyrargyrite, Stephanite, cát có chứa vàng và platinum.",
+  "nguon": "nhom2616.nhom",
+  "trich": "Các quặng chính thường được phân loại trong nhóm này là: … Argentile … Calaverite (telluride của vàng và bạc) … Cerargyrite (hoặc horn silver) … Polybasite … Proustite … Pyrargyrite … Stephanite … Cát có chứa vàng và platinum",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_quang_kim_loai_va_tinh_quang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch26.chuong",
+   "trich": "KHÁI QUÁT CHUNG Các nhóm 26.01 đến 26.17 được giới hạn cho những quặng kim loại và những tinh quặng mà chúng:",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "khong_phai_qua_trinh_khong_thong_thuong_doi_voi_nganh_cong_nghiep_luyen_kim",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch26.chuong",
+   "trich": "(B) Không phải chịu các quá trình không thông thường đối với ngành công nghiệp luyện kim.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [
+  {
+   "hoi": "Quặng này là quặng bạc hay quặng của kim loại quý khác (vàng, platinum)?",
+   "neuCo": "26161000",
+   "neuKhong": "26169000",
+   "nguon": "nhom2616.nhom",
+   "trich": "Argentile … Cát có chứa vàng và platinum",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "261610",
+   "fact": "loai_quang_bac",
+   "op": "=",
+   "value": "Quặng bạc và tinh quặng bạc",
+   "donVi": null,
+   "nguon": "wco.261610",
+   "trich": "261610 Silver ores and concentrates",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "261690",
+   "fact": "loai_quang_kim_loai_quy",
+   "op": "=",
+   "value": "Quặng kim loại quý và tinh quặng kim loại quý khác bạc",
+   "donVi": null,
+   "nguon": "wco.261690",
+   "trich": "261690 Precious metal ores and concentrates; (excluding silver)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "26161000",
+   "dieuKien": "Quặng bạc và tinh quặng bạc",
+   "tieuChi": null,
+   "nguon": "tax.26161000",
+   "trich": "26161000 - Quặng bạc và tinh quặng bạc",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "26169000",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2616.90",
+   "tieuChi": null,
+   "nguon": "tax.26169000",
+   "trich": "26169000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2616",
+    "truAnhEm": [
+     "26161000"
+    ],
+    "toTienCoTen": "2616",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2616",
+    "cap": 4,
+    "cha": "26",
+    "tenVi": "Quặng kim loại quý và tinh quặng kim loại quý",
+    "tenEn": "Precious metal ores and concentrates",
+    "suyRa": false
+   },
+   {
+    "id": "26161000",
+    "cap": 8,
+    "cha": "2616",
+    "tenVi": "Quặng bạc và tinh quặng bạc",
+    "tenEn": "Silver ores and concentrates",
+    "suyRa": false,
+    "laPhanNhom": "261610"
+   },
+   {
+    "id": "26169000",
+    "cap": 8,
+    "cha": "2616",
+    "tenVi": "Loại khác",
+    "tenEn": "Precious metal ores and concentrates; (excluding silver)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "261690"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch26.chuong",
+  "nhom2616.nhom",
+  "tax.26161000",
+  "tax.26169000",
+  "wco.261610",
+  "wco.261690"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T17:51:19.364Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
