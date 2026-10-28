@@ -10585,3 +10585,92 @@ với tờ khai "graphit nhân tạo". Sửa: `dieuKien` nêu đủ ba nhánh, �
 3. **`tieuChi6` không lọc theo nguồn WCO** ⇒ `fact` tiếng Việt đi kèm trích WCO tiếng Anh **luôn** bị gác soát từ báo động (2.249/2.543 mục nhà). Sửa: bỏ qua gác soát từ khi `nguon` bắt đầu bằng `wco.`.
 4. **`scan-so-tay-soat.mjs` dựng `srcSquash` không bỏ dấu** ⇒ `TỪ-NGOÀI-NGUỒN` báo động giả cho mọi từ tiếng Việt có dấu (đã đo ở lô 070: `srcSquash.includes('bot')` = false với nguồn có "dạng bột"). Sửa: `fold(squash(...))` cho cả `srcSquash`.
 5. **`scan-so-tay-soat.mjs` báo `LƯỚC-NGOẠI-LỆ` giả** khi **vế giữ đuôi mảnh trước + đầu mảnh sau** chứa "với điều kiện" (2515 `phamVi`) ⇒ nên soi **phần bị lược** thật, không nối hai mảnh đã giữ.
+
+# LÔ 076 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 28/10/2026 22:39)
+
+- **Nhánh:** `so-tay/lo-076` · **PR:** (mở sau khi xong) — **KHÔNG merge** (chờ soát độc lập) · **Nhóm:** `2607,2608,2609,2610,2611,2612` (Chương 26 — quặng, xỉ và tro)
+- **Worktree:** `hs-code-api-wt-st-lo076` @ `6e8c633` (main mới nhất) · deps đã cài
+- **Nguồn:** `tmp/so-tay/nguon/2607.txt`…`2612.txt` (**51.131 ký tự**) + `_he-thong.txt` — đọc HẾT 6 tệp trước khi soạn
+- **Cách soạn:** **sinh bằng script** (`tmp/so-tay/gen076.cjs`) — mọi câu TRÍCH **cắt từ tệp nguồn** (byte-exact), không gõ tay một ký tự tiếng Việt nào; phần văn xuất (`text`/`dieuKien`/`fact`/`hoi`) do người soạn viết rồi máy gác soát từ soi lại.
+
+## 0. Sai lệch brief — đã làm theo CSV (nguồn chuẩn)
+
+| Chỗ | Brief ghi | Thật | Xử lý |
+|---|---|---|---|
+| Worktree | `hs-code-api-wt-st-lo76` | `hs-code-api-wt-st-lo076` | làm trong worktree có sẵn (`git worktree list` xác nhận) |
+| Lệnh `--nhom=` | `7615,9609,3215,6306,6804,7412` | đó là lệnh copy-paste của lô **001** | dùng `--nhom=2607,2608,2609,2610,2611,2612` theo CSV dòng 076 (`076,2607 2608 2609 2610 2611 2612,6,41724`) |
+
+## 1. Đọc trước khi soạn (đủ 3 tầng theo brief)
+
+1. `docs/giao-viec/so-tay/LUAT-CHUNG.md` — **11 luật** (đọc TRỌN).
+2. `docs/giao-viec/so-tay/SOAN-LO.md` — lệnh có sẵn + mô tả PR + bảng "lỗi máy TỰ LOẠI" (5 dòng).
+3. `tmp/so-tay/nguon/_he-thong.txt` — lược đồ + 4 khối bài học bước 1 (07/10) + 7 khối bài học soát độc lập lô 030 (23/10).
+4. **KHÔNG** đọc trọn `docs/giao-viec/so-tay-giao-ngoai.md` (theo brief — file này giờ chỉ là lịch sử/bài học).
+
+## 2. Nguồn của lô này — mỏng hơn hẳn các lô trước
+
+Mỗi nhóm chỉ có **4 khối nguồn**: `nhom<4>.nhom` (1–2 câu) · `ch26.chuong` (dùng CHUNG cho cả 6 nhóm) · `wco.<6 số>` · `tax.<8 số>`.
+Không có `sen.*`, không có `phan26.phan`, không có phân nhóm 6 số thật ở 5 nhóm đầu (`laPhanNhom` chỉ 4 số) ⇒ **không mã hoá được `tieuChi6`** cho 2607–2611.
+
+## 3. Quyết định nội dung (có căn cứ)
+
+- **`dieuKienVao` = 2 mục chung cho cả 6 nhóm**, lấy từ **KHÁI QUÁT CHUNG của Chương 26** (`ch26.chuong`):
+  - `la_quang_kim_loai_va_tinh_quang = true` — "Các nhóm 26.01 đến 26.17 được giới hạn cho những quặng kim loại và những tinh quặng…"
+  - `khong_phai_qua_trinh_khong_thong_thuong_doi_voi_nganh_cong_nghiep_luyen_kim = true` — "(B) Không phải chịu các quá trình không thông thường đối với ngành công nghiệp luyện kim."
+  ⇒ Đây là **ràng buộc vào nhóm** (không phải loại trừ) ⇒ được chép vào từng nhóm, khác với bài học lô 051/060 ("loại trừ **chung của Chương** không chép vào từng nhóm").
+- **2610 có thêm 1 `dieuKienVao` riêng**: `la_dang_oxit_cua_crom_va_sat = true` — chú giải nhóm nói "chromite … có nghĩa là dạng oxit của crom và sắt" (đặc tính vật liệu phủ cả nhóm ⇒ được đặt).
+- **Chú giải nhóm 2607/2608/2609/2611 chỉ là DANH MỤC các khoáng vật chính** ("Các quặng chính thường được phân loại trong nhóm này là: (a)…") ⇒ theo luật 4 bước, **không đặt** `dieuKienVao` cho 4 nhóm này (danh mục + vế "thường").
+- **`loaiTru` chỉ có ở 2612**: loại trừ RIÊNG của nhóm có **đích danh** — "… được điều chế từ những quá trình không thông thường đối với công nghiệp luyện kim (nhóm 28.44)".
+  5 nhóm còn lại: chú giải nhóm **không có** loại trừ riêng ⇒ `loaiTru` rỗng (loại trừ chung của **Chương** không chép vào từng nhóm).
+- **`phanBiet` chỉ có 1 mục, ở 2612**: hỏi "Quặng này là quặng thori hay quặng urani?" → có → `26122000`, không → `26121000` (cả hai mã trong nhóm ⇒ không cần nhóm khác được nêu trong trích).
+- **`tieuChi6` chỉ có ở 2612** (`261210`, `261220` — hai phân nhóm có thật trong cây), lấy tên WCO (`wco.261210`, `wco.261220`).
+
+## 4. Sáu lỗi tự bắt được (máy kiểm KHÔNG bắt / bắt sai)
+
+1. **Khối `tax.*` cuối tệp nguồn dính câu "Soạn sổ tay cho nhóm 26xx."** ⇒ mọi dòng biểu thuế phải lấy **DÒNG ĐẦU** (giống bài học lô 073).
+2. **Đoạn "Các loại quặng thorium …" bị cắt cụt** khi lấy theo "khối rỗng kế tiếp" ⇒ phải lấy TỚI dòng trước câu loại trừ.
+3. **`loaiTru.trich` lấy cả chú giải nhóm (900+ ký tự)** ⇒ vượt trần 600 ký tự ⇒ phải lấy **đúng câu loại trừ** (dòng cuối có nội dung).
+4. **`fact` gõ méo**: `la_dang_oxit_cua_crom_va_satt` → "satt" không có trong nguồn ("sắt") ⇒ gác soát từ bắt được ⇒ sửa thành `..._va_sat`.
+5. **`phamVi.text` vượt trần clip 220** ở 2607 (227) và 2612 (362) ⇒ rút gọn (giữ nguyên nghĩa, bỏ danh sách khoáng vật thừa).
+6. **`loaiTru.dieuKien` vượt trần clip 55** nếu viết đầy đủ ("Tinh quặng uranium điều chế từ quá trình không thông thường" = 59) ⇒ rút còn "Tinh quặng uranium từ quá trình không thông thường" (52); câu đầy đủ nằm trong `trich`.
+
+## 5. Gác soát từ + trần clip — đo được
+
+- `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **6 nhóm, 30/30 mục, 0 mục không kiểm được nguồn**
+- `node scripts/check-trich-nguyen-van.mjs` → **OK — 30 mục**, mọi câu trích **nguyên văn tuyệt đối** trong đúng khối nguồn
+- `node scripts/scan-so-tay-soat.mjs` → **2 cảnh báo**, đều là **báo động giả đã biết**: `tieuChi6[].fact` tiếng Việt đi kèm trích WCO **tiếng Anh** (`loai`, `quang` — `srcSquash` của script không bỏ dấu). Mẫu nhà (lô 070/072 ghi nhận cùng lớp lỗi). **0 `VÙNG-IM-LẶNG`** · **0 `TRÀN-CLIP`** · **0 `LƯỚC-NGOẠI-LỆ`** · **0 `CÂU-SAU-NGOẠI-LỆ`** · **0 `TỪ-NGOÀI-NGUỒN` thật**.
+
+## 6. Mục `dieuKien`/`fact`/`text` có ghi điều mà câu trích KHÔNG nói (nêu trong PR)
+
+| Mục | Vấn đề | Cách xử lý |
+|---|---|---|
+| `phamVi.text` (cả 6 nhóm) | mở đầu bằng **tên nhóm theo biểu thuế** ("Quặng chì và tinh quặng chì", "Quặng urani hoặc quặng thori và tinh quặng urani hoặc tinh quặng thori") — cụm này **không** nằm trong câu trích `nhom*.nhom` (chú giải nhóm chỉ liệt kê các khoáng vật chính) | Tên nhóm lấy từ dòng biểu thuế `tax.*` (cũng là nguồn hợp lệ của nhóm, cùng khối nguồn) ⇒ **không phải hiểu biết riêng**; tên đầy đủ còn nằm ở `dong8` và ở cây (`lib/hs-tree.js`) |
+| `loaiTru.dieuKien` (2612) | "Tinh quặng uranium từ quá trình không thông thường" (52 ký tự) — bỏ "được điều chế" và "đối với công nghiệp luyện kim" | **Trần clip runtime của `loaiTru.dieuKien` là 55 ký tự** ⇒ câu đầy đủ nằm trong `trich` (byte-exact), phần rút gọn giữ nguyên nghĩa |
+| `dieuKienVao[0].fact` (cả 6 nhóm) | "la_quang_kim_loai_va_tinh_quang = true" — lấy từ câu "Các nhóm 26.01 đến 26.17 được giới hạn cho những quặng kim loại và những tinh quặng…" | Câu trích **giới hạn theo dải 26.01–26.17** ⇒ phủ trọn các nhóm của lô. Vế cho phép "ngay cả khi chúng không dùng để luyện kim" trong (A) **không** được đưa vào `fact` (nằm ngoài vế "là quặng kim loại và tinh quặng") |
+| `tieuChi6[].value` (2612) | tiếng Việt ("Quặng urani và tinh quặng urani") đi kèm câu trích **tiếng Anh** (`wco.261210`) | Theo đúng mẫu nhà (`0101`, `0102`): `value` lấy từ dòng biểu thuế, `trich` lấy nguyên văn tên WCO |
+
+## 7. Nhóm nguồn mỏng / bất thường (nêu trong PR)
+
+| Nhóm | Vấn đề |
+|---|---|
+| **2607–2609, 2611** | Chú giải nhóm **chỉ là danh mục khoáng vật chính** ("Các quặng chính thường được phân loại trong nhóm này là: (a)…(d)") + vế "**thường**" ⇒ **không** đặt `dieuKienVao` (luật 4 bước: danh mục + vế "thường" không phải điều kiện vào nhóm); **không** có loại trừ riêng ⇒ `loaiTru` rỗng; **không** có câu phân biệt ⇒ `phanBiet` rỗng |
+| **2610** | Chú giải nhóm chỉ **một câu** định nghĩa ("chromite … là dạng oxit của crom và sắt") ⇒ dùng làm `dieuKienVao` riêng (`la_dang_oxit_cua_crom_va_sat`); là nhóm duy nhất của lô có điều kiện riêng ngoài điều kiện chung của Chương |
+| **2612** | Nhóm **2 phân nhóm** (2612.10 uranium · 2612.20 thorium) — nhóm duy nhất của lô có `tieuChi6` thật; chú giải liệt kê 12 khoáng uranium + 2 khoáng thorium ⇒ câu hỏi phân biệt chỉ dùng cho quặng thorium thuần (mục "(l) Uranothorianite, uranium oxit và thorium oxit" là quặng **hai** kim loại — xem mục 5 PR) |
+| **Cả 6 nhóm** | `laPhanNhom` chỉ **4 số** (2607/2608/2609/2610/2611) ⇒ **không mã hoá được `tieuChi6`** (máy loại `hs6-khong-co-trong-cay`); chỉ 2612 có 2 phân nhóm 6 số thật |
+| **Cả 6 nhóm** | Nguồn `ch26.chuong` là **chung cho cả Chương 26** ⇒ 2 `dieuKienVao` giống nhau ở cả 6 nhóm (đây là **ràng buộc vào nhóm**, không phải loại trừ chung — khác bài học lô 051/060) |
+
+## 8. Kiểm sau khi nạp
+
+| Lệnh | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **6 nhóm, 30/30 mục, 0 mục không kiểm được nguồn** |
+| `node scripts/build-so-tay.mjs … --tu-tep --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-076.json` | **30/30 (100 %)**, `tyLeDat: 100`, `nhomLoi: []` |
+| `node scripts/check-trich-nguyen-van.mjs` | **OK — 30 mục**, mọi câu trích **nguyên văn tuyệt đối** trong đúng khối nguồn |
+| `node scripts/scan-so-tay-soat.mjs` | **2 cảnh báo, đều là báo động giả đã biết** (`tieuChi6[].fact` tiếng Việt đi kèm trích WCO tiếng Anh) · **0 `VÙNG-IM-LẶNG`** · **0 `TRÀN-CLIP`** · **0 `LƯỚC-NGOẠI-LỆ`** · **0 `CÂU-SAU-NGOẠI-LỆ`** |
+| `node scripts/check-cay.mjs --nhom=2607,…,2612 --chi-tiet` | **6/6 nhóm đủ**, 0 lỗi lệch cây |
+| `npm run so-tay:check` | **590 nhóm, 15.276 mục, 0 mục không kiểm được nguồn** |
+| `npm test` | **ALL TESTS PASSED** |
+
+## 9. Cấu trúc mục của lô
+
+`phamVi` 6 · `dieuKienVao` 13 (12 chung + 1 riêng của 2610) · `loaiTru` 1 · `phanBiet` 1 · `tieuChi6` 2 · `cay.tenDien` 0 · `dong8` 7 ⇒ **30 mục**
