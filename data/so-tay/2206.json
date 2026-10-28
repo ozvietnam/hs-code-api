@@ -1,0 +1,331 @@
+{
+ "nhom": "2206",
+ "phamVi": {
+  "text": "Đồ uống đã lên men trừ các loại đã được nêu ở các nhóm từ 22.03 đến 22.05; nhóm có thể kể đến vang táo, vang lê, vang mật ong, vang nho khô, vân sam, rượu sa kê, vang cọ, bia gừng và bia thảo mộc.",
+  "nguon": "nhom2206.nhom",
+  "trich": "Nhóm này bao gồm tất cả các loại đồ uống đã lên men trừ các loại đã được nêu ở các nhóm từ 22.03 đến 22.05.…Nhóm này có thể kể đến:…(1) Vang táo…(2) Vang lê…(3) Vang mật ong…(4) Vang nho khô.…(7) Vân sam (spruce)…(8) Rượu sa kê hoặc rượu vang làm từ gạo.…(9) Vang cọ…(10) Bia gừng và bia thảo mộc",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "duoc_lam_cao_do_con_hoac_con_tang_len_va_van_giu_duoc_dac_tinh_cua_san_pham_thuoc_nhom_nay",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2206.nhom",
+   "trich": "Chúng được phân loại trong nhóm này khi được làm cao độ cồn hoặc khi lượng cồn được tăng lên do quá trình lên men thêm, với điều kiện là chúng vẫn giữ được đặc tính của các sản phẩm thuộc nhóm này.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các loại nước ép quả (táo, lê,...)",
+   "sangNhom": "2009",
+   "nguon": "nhom2206.nhom",
+   "trich": "Nhóm này không bao gồm các loại nước ép quả (táo, lê,...) và các loại đồ uống khác có nồng độ cồn theo thể tích không quá 0,5% (các nhóm 20.09 và 22.02 tương ứng).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Đồ uống khác, nồng độ cồn không quá 0,5% theo thể tích",
+   "sangNhom": "2202",
+   "nguon": "nhom2206.nhom",
+   "trich": "Nhóm này không bao gồm các loại nước ép quả (táo, lê,...) và các loại đồ uống khác có nồng độ cồn theo thể tích không quá 0,5% (các nhóm 20.09 và 22.02 tương ứng).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là nước ép quả không?",
+   "neuCo": "2009",
+   "neuKhong": "2206",
+   "nguon": "nhom2206.nhom",
+   "trich": "Nhóm này không bao gồm các loại nước ép quả (táo, lê,...) và các loại đồ uống khác có nồng độ cồn theo thể tích không quá 0,5% (các nhóm 20.09 và 22.02 tương ứng).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là đồ uống có nồng độ cồn theo thể tích không quá 0,5% không?",
+   "neuCo": "2202",
+   "neuKhong": "2206",
+   "nguon": "nhom2206.nhom",
+   "trich": "Nhóm này không bao gồm các loại nước ép quả (táo, lê,...) và các loại đồ uống khác có nồng độ cồn theo thể tích không quá 0,5% (các nhóm 20.09 và 22.02 tương ứng).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "22060010",
+   "dieuKien": "Vang táo hoặc vang lê",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22060010",
+   "trich": "22060010 - Vang táo hoặc vang lê",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22060020",
+   "dieuKien": "Rượu sa kê làm từ gạo, koji, men và nước qua quá trình lên men và lọc",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "sen.22060020",
+   "trich": "Rượu sa kê, còn được gọi là Nihonshu, Seishu, là đồ uống có cồn có nguồn gốc từ Nhật Bản, được làm từ gạo, koji, men và nước qua quá trình lên men và lọc.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22060031",
+   "dieuKien": "Loại trong đồ đựng không quá 2 lít",
+   "tieuChi": {
+    "fact": "dung_tich_dong_dung",
+    "op": "<=",
+    "value": 2,
+    "donVi": "lít"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22060031",
+   "trich": "22060031 - - Loại trong đồ đựng không quá 2 lít (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22060039",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2206.00",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220600",
+   "trich": "220600 Beverages, fermented; (e.g. cider, perry, mead, sake)",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2206003",
+    "truAnhEm": [
+     "22060031"
+    ],
+    "toTienCoTen": "2206",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "22060041",
+   "dieuKien": "Có nồng độ cồn không quá 1,14% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 1.14,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22060041",
+   "trich": "22060041 - - Có nồng độ cồn không quá 1,14% tính theo thể tích (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22060049",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2206.00",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220600",
+   "trich": "220600 Beverages, fermented; (e.g. cider, perry, mead, sake)",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2206004",
+    "truAnhEm": [
+     "22060041"
+    ],
+    "toTienCoTen": "2206",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "22060050",
+   "dieuKien": "Vang mật ong",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22060050",
+   "trich": "22060050 - Vang mật ong",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22060060",
+   "dieuKien": "Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22060060",
+   "trich": "22060060 - Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22060091",
+   "dieuKien": "Rượu gạo, trừ rượu sa kê, là sản phẩm chứa cồn lên men từ gạo",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "sen.22060091",
+   "trich": "Rượu gạo, trừ rượu sa kê, là sản phẩm chứa cồn lên men từ gạo",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22060099",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2206.00",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "wco.220600",
+   "trich": "220600 Beverages, fermented; (e.g. cider, perry, mead, sake)",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2206009",
+    "truAnhEm": [
+     "22060091"
+    ],
+    "toTienCoTen": "2206",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2206",
+    "cap": 4,
+    "cha": "22",
+    "tenVi": "Đồ uống đã lên men khác (ví dụ, vang táo, vang lê, vang mật ong, rượu sa kê); hỗn hợp của đồ uống đã lên men và hỗn hợp của đồ uống đã lên men với đồ uống không chứa cồn, chưa chi tiết hay ghi ở nơi khác.",
+    "tenEn": "Fermented beverages, n.e.c. in chapter 22; (e.g. cider, perry, mead, sake)",
+    "suyRa": false
+   },
+   {
+    "id": "22060010",
+    "cap": 8,
+    "cha": "2206",
+    "tenVi": "Vang táo hoặc vang lê",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22060020",
+    "cap": 8,
+    "cha": "2206",
+    "tenVi": "Rượu sa kê (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "2206003",
+    "cap": "TIEU_DE_QG",
+    "cha": "2206",
+    "tenVi": "Toddy cọ dừa",
+    "tenEn": "Coconut palm toddy",
+    "suyRa": true
+   },
+   {
+    "id": "22060031",
+    "cap": 8,
+    "cha": "2206003",
+    "tenVi": "Loại trong đồ đựng không quá 2 lít (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22060039",
+    "cap": 8,
+    "cha": "2206003",
+    "tenVi": "Loại khác (SEN)",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "2206004",
+    "cap": "TIEU_DE_QG",
+    "cha": "2206",
+    "tenVi": "Shandy",
+    "tenEn": "Shandy",
+    "suyRa": true
+   },
+   {
+    "id": "22060041",
+    "cap": 8,
+    "cha": "2206004",
+    "tenVi": "Có nồng độ cồn không quá 1,14% tính theo thể tích (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22060049",
+    "cap": 8,
+    "cha": "2206004",
+    "tenVi": "Loại khác (SEN)",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "22060050",
+    "cap": 8,
+    "cha": "2206",
+    "tenVi": "Vang mật ong",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22060060",
+    "cap": 8,
+    "cha": "2206",
+    "tenVi": "Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "2206009",
+    "cap": "TIEU_DE_QG",
+    "cha": "2206",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "22060091",
+    "cap": 8,
+    "cha": "2206009",
+    "tenVi": "Rượu gạo khác (kể cả rượu gạo bổ)(SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22060099",
+    "cap": 8,
+    "cha": "2206009",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2206.nhom",
+  "sen.22060020",
+  "sen.22060091",
+  "tax.22060010",
+  "tax.22060031",
+  "tax.22060041",
+  "tax.22060050",
+  "tax.22060060",
+  "wco.220600"
+ ],
+ "phienBan": "HS2022+SEN2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T05:18:14.335Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

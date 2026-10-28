@@ -9425,3 +9425,140 @@ biết riêng". Sửa: `dieuKien` = "Phù hợp dùng cho trẻ sơ sinh hoặc 
    đồng nhất"), trong khi `tieuChi6[0]` (210410) mang danh tính. Không sửa vì `tieuChi6` chỉ là metadata (KHÔNG vào
    prompt runtime) và một phân nhóm chỉ nhận 1 fact — nhưng nếu ai đó đọc `tieuChi6` như "định danh phân nhóm"
    thì 2104.20 sẽ bị hiểu thiếu.
+
+---
+
+# LÔ 067 — SOẠN sổ tay chú giải (2203 2204 2205 2206 2207 2208)
+
+- **Ngày:** 28/10/2026 · **Người soạn:** `dev-zcode-mm` · **Nhánh:** `so-tay/lo-067` · **Worktree:** `hs-code-api-wt-st-lo067`
+- **Kết quả:** **121/121 mục đạt (100 %)** — 6 nhóm, 0 nhóm lỗi. Báo cáo: `data/so-tay/bao-cao/lo-067.json`.
+
+## 0. Sai lệch brief — đã làm theo CSV (nguồn chuẩn)
+
+`brief-st-lo067.md` dòng "Các lệnh chính" kèm `--nhom=7615,9609,3215,6306,6804,7412` — đó là **lô 001**
+(đối chiếu `docs/giao-viec/so-tay-lo.csv` dòng 001), y hệt mẫu lệnh copy-paste lặp ở lô 003/014/027/049/051/054/060/061/062/063/064/065.
+Dòng "Nhóm của lô" trong chính brief ghi `2203,2204,2205,2206,2207,2208`, CSV dòng 067 ghi
+`2203 2204 2205 2206 2207 2208` (`chua-lam`), nhánh `so-tay/lo-067` + worktree `wt-st-lo067` khớp, và
+`data/so-tay/2203.json`…`2208.json` **không có** trên `origin/main` ⇒ **làm lô 067 theo CSV**.
+
+## 1. Sự cố: HAI phiên headless cùng lô trong MỘT worktree (đã xử lý)
+
+Daemon `oz-so-tay-tuDong.sh` phóng **2 phiên `claude -p` cùng brief lô 067** vào **cùng worktree**
+(PID 3346 và 4301, cùng lúc 11:42). Phiên thứ hai đã **ghi đè bản nháp `tmp/so-tay/raw/*.json`** và
+**nạp `data/so-tay/2203…2208.json` + `bao-cao/lo-067.json`** của nó vào repo (12:03) — dữ liệu đó **không phải của phiên này**.
+
+Xử lý:
+1. Xác định PID của chính mình qua cây tiến trình (`$$ → 3346 → 3340 → 3334`), dừng phiên trùng (PID 4301 + con).
+2. **Tách bản nháp riêng**: `tmp/so-tay/raw-lo067-mm/` (bản nháp thật của phiên này) — không nằm trong
+   `tmp/so-tay/raw/` mà phiên kia hay ghi đè. Vẫn copy sang `tmp/so-tay/raw/` để các script của nhà đọc đúng chỗ.
+3. Xoá sạch `data/so-tay/2203…2208.json` + `bao-cao/lo-067.json` do phiên kia nạp, rồi **nạp lại bằng bản nháp của mình**
+   (`--tu-tep=tmp/so-tay/raw-lo067-mm`) và đối chiếu `raw == data` (`tmp/lo067/cmp-raw-data.mjs`: 6/6 khớp, khác duy nhất là
+   `boPhan: null` → máy bỏ hẳn key).
+4. Bản nháp của phiên kia được giữ ở `/tmp/dup-lo067-drafts/` (không commit).
+
+⇒ **Đề xuất sửa daemon** (ngoài phạm vi lô dữ liệu): `phong_soan` phải bảo đảm **mỗi worktree chỉ 1 phiên** —
+`chon_lo_moi` trả về 2 lô nhưng nếu 2 lô trùng nhau (hoặc lô trùng với lô đang chạy) thì `git worktree remove --force`
+lần thứ hai sẽ **xoá cả worktree đang chạy** của lô trước.
+
+## 2. Cách soạn
+
+- **KHÔNG gõ tay 1 ký tự tiếng Việt nào trong `trich`.** Mọi câu trích **cắt từ tệp nguồn** bằng script
+  (`tmp/lo067/lib067.mjs` + `gen067a.mjs` + `gen067b.mjs`): `cutSpan()` lấy neo **ASCII không dấu**, kết quả là
+  **byte-exact** theo bản chất ⇒ `check-trich-nguyen-van.mjs` xanh 100 %.
+- **GÁC SOÁT TỪ 2 MỨC** cho mọi trường tự viết (`phamVi.text`, `loaiTru.dieuKien`, `phanBiet.hoi`, `boPhan.quyTac/tomTat`,
+  `dong8.dieuKien`): từ bỏ dấu **và** giữ dấu phải có trong nguồn của nhóm. Hàm bỏ dấu dùng **NFD + `\p{M}` + bảng
+  chữ có dấu sẵn** (`đ/ê/â/ơ/ư`) — theo memory `so-tay-bo-dau-tieng-viet-phai-NFD`.
+- **`fact` ASCII snake_case** (`khong_phai_bia_khong_chua_con`, `duoc_lam_cao_do_con_hoac_con_tang_len_…`) — không kiểm
+  dấu, nhưng đã so tay để tránh sai chính tả (lô 064 từng lỗi 3 vòng vì bỏ dấu hỏng).
+- **Không ghi `nguonLoai`** (máy gán `AI_DA_KIEM`), **không soạn `cay`** (máy sinh), **không `dieuKienSo`**
+  (xem §4.3).
+
+### 2.1. Chú giải riêng từng nhóm (điều gì đã ghi, điều gì cố ý bỏ)
+
+| Nhóm | Ghi chính | Cố ý KHÔNG ghi |
+|---|---|---|
+| **2203** bia | `phamVi` = định nghĩa bia (nước hèm mạch nha lên men + hoa bia); 1 `dieuKienVao` (không phải bia không chứa cồn); 3 `loaiTru` (đồ uống không cồn gọi là bia → 22.02 · bia không chứa cồn ≤ 0,5 % → 22.02 · dược phẩm → 30.03/30.04); 1 `phanBiet` (bia không chứa cồn → 22.02); 4 dòng 8 số (ngưỡng 5,8 % ở 22030011/22030091) | `boPhan` = null (nhóm không có phần song song); `tieuChi6` = [] (cây KHÔNG có nút 6 số `220300` ⇒ máy loại mọi `tieuChi6` hs6=220300); `cay.tenDien` = [] (2203001/2203009 đã có tên từ biểu thuế) |
+| **2204** rượu vang + hèm nho | `phamVi` + `boPhan` (4 loại rượu vang + hèm nho); `dieuKienVao` (rượu vang phải là sản phẩm cuối cùng từ lên men hèm nho tươi); 3 `loaiTru` (→ 22.05 · → 30.03/30.04 · → 20.09); 2 `phanBiet`; `tieuChi6` 220410 (**áp suất ≥ 3 bars** theo chú giải chương), 220421/220422/220429 (**dung tích đồ đựng** theo tên WCO), 220430 (hèm nho); 17 dòng 8 số | `dieuKienVao` KHÔNG ghi ngưỡng ≥ 80 % (đó là điều kiện của **phần (1)**, không phủ cả nhóm — nhóm còn "ở mọi nồng độ") |
+| **2205** vermouth | `phamVi` (từ rượu vang nho tươi 22.04 + tạo hương bằng cây/chất thơm); 2 `dieuKienVao`; 2 `loaiTru` (→ 22.06 · → 30.03/30.04); 1 `phanBiet`; `tieuChi6` 220510/220590 (danh tính + dung tích đồ đựng); 4 dòng 8 số | không ghi `dieuKienVao` cho câu "Nhóm này **có thể** cũng bao gồm… vitamin/hợp chất sắt" (câu CHO PHÉP) |
+| **2206** đồ uống lên men khác | `phamVi` (đồ uống đã lên men trừ 22.03–22.05 + 8 ví dụ); 1 `dieuKienVao` (được làm cao độ cồn **và** vẫn giữ đặc tính); 2 `loaiTru` (→ 20.09 · → 22.02, tách theo "tương ứng"); 2 `phanBiet`; 9 dòng 8 số | `boPhan` = null (danh sách (1)–(10) là **ví dụ** "có thể kể đến", KHÔNG phải phần song song — phần `phamVi` giữ nguyên vế "có thể"); `tieuChi6` = [] (cây không có nút 6 số `220600`) |
+| **2207** cồn etylic | `phamVi` + `boPhan` ((1) chưa biến tính ≥ 80 % · (2) đã biến tính mọi nồng độ); 3 `dieuKienVao` + 3 `loaiTru` (→ 22.08 · → 22.08 · → 36.06); 2 `phanBiet`; `tieuChi6` 220710 (**nồng độ cồn ≥ 80 %**) + 220720 (đã biến tính); 3 dòng 8 số | KHÔNG ghi `dieuKienVao` dạng số "≥ 80 %" — nhóm có phần (2) **"ở mọi nồng độ"**, nên ngưỡng số chỉ thuộc **một phần** (máy loại mục loại cấp phân nhóm) |
+| **2208** rượu mạnh + rượu mùi | `phamVi` + `boPhan` ((A) rượu mạnh · (B) rượu mùi · (C) đồ uống có cồn cao khác); 2 `dieuKienVao` + 2 `loaiTru` (→ 22.05 · → 22.07); 2 `phanBiet`; `tieuChi6` 220820–220890 (7 mục); 19 dòng 8 số | **không** tách `(b) "Cồn ê-ti-lích … đã biến tính, **hoặc** cồn ê-ty-lích chưa biến tính ≥ 80 %"` thành 2 `dieuKienVao` (luật: một nhánh của "A hoặc B" không tách); `phanBiet[1]` gộp **cả hai nhánh** trong MỘT câu hỏi để nhánh "không" không rơi nhầm (cồn chưa biến tính ≥ 80 % là của 22.07, không phải 22.08) |
+
+### 2.2. Ba mục mẫu (1 loại trừ · 1 điều kiện số · 1 dòng 8 số)
+
+1. **Loại trừ — 2208 → 22.07**: `dieuKien` "Cồn ê-ti-lích và rượu mạnh khác, đã biến tính, hoặc cồn ê-ty-lích chưa biến tính có nồng độ cồn từ 80 % trở lên",
+   `trich` = nguyên văn mục (b) của chú giải nhóm 2208 (kể cả lỗi chính tả "ê-ty-lích" của nguồn).
+2. **Điều kiện số — 2204 phân nhóm 220410**: `tieuChi6` `{fact: ap_suat, op: '>=', value: 3, donVi: 'bars'}`,
+   `trich` = chú giải chương 22: *"…khái niệm “rượu vang nổ” (1) là loại rượu khi bảo quản ở nhiệt độ 20°C trong thùng kín, có mức áp suất vượt từ 3 bars trở lên."*
+3. **Dòng 8 số — 22060041**: `dieuKien` "Có nồng độ cồn không quá 1,14 % tính theo thể tích",
+   `tieuChi` `{fact: nong_do_con_tinh_theo_the_tich, op: '<=', value: 1.14, donVi: '%'}`, nguồn `tax.22060041`.
+
+### 2.3. Nhóm nguồn mỏng / bất thường (báo để người duyệt)
+
+1. **SEN 2203 trùng nhau**: `sen.22030011` và `sen.22030019` có **nội dung y hệt** ("BIA ĐEN HOẶC BIA NÂU" + mô tả
+   stout/porter) ⇒ SEN **không phân biệt được** 2 dòng ⇒ dòng 8 số lấy điều kiện từ **biểu thuế** (ngưỡng 5,8 %).
+2. **SEN 2206 trùng nhau**: `sen.22060031` ≡ `sen.22060039` ("TODDY CỌ DỪA") ⇒ dòng "Loại trong đồ đựng không quá 2 lít"
+   lấy từ biểu thuế, dòng "Loại khác" lấy từ `wco.220600`.
+3. **2204 — câu chú giải nhóm có "(II) Hèm nho" mà không có "(I)"**: tiêu đề phần (I) vắng trong nguồn ⇒ `boPhan.quyTac`
+   ghi "Nhóm gồm các loại rượu vang (thông thường, làm cao độ với cồn, nổ, ngọt tráng miệng) và hèm nho" — **không** bịa
+   "(I)". Cũng vì vậy `dieuKienVao` duy nhất của 2204 chỉ phủ **phần rượu vang**, không phủ phần hèm nho (§4.2).
+4. **2206 — ví dụ (5) và (6) không có dòng 8 số**: "Vang thu được từ việc lên men nước ép trái cây hoặc quả hạch…"
+   và "Malt lên men (malton)…" không có dòng biểu thuế riêng ⇒ chỉ nêu trong `phamVi`, không tạo `dong8` giả.
+5. **2203 / 2206 — cây KHÔNG có nút 6 số** (`220300`, `220600` chỉ là tiền tố của mã 8 số) ⇒ `tieuChi6` rỗng cho 2 nhóm
+   (máy loại mọi `hs6` không có trong cây). Đây là **giới hạn của cây dựng từ biểu thuế**, không phải thiếu sót của lô.
+6. **2204 — 3 nút 6 số chưa có tên tiếng Việt** (`220421`, `220422`, `220429`) ⇒ `cay.tenDien` để **trống** (giống nhóm
+   2202 đã gộp, cũng bỏ trống nút `220299`). Tên WCO của 3 nút là tiếng Anh; nếu người duyệt muốn điền
+   `tenDien` thì tên phải bám câu chú giải **tiếng Việt** ("rượu vang thông thường") chứ không dịch từ WCO.
+
+### 2.4. `dieuKien` có ghi điều mà câu trích KHÔNG nói?
+
+- **Không có mục nào thêm ý ngoài nguồn** (gác soát từ 2 mức xanh). Có 4 mục **rút gọn** để tránh trần clip runtime
+  (`lib/so-tay-gates.js` cắt `loaiTru.dieuKien` 55 ký tự) — nêu rõ ở §4.1.
+
+## 3. Bảng kiểm cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | 6 nhóm, **121 mục, 0 mục không kiểm được nguồn** |
+| `node scripts/check-trich-nguyen-van.mjs` (byte-exact) | **OK — 121 câu trích nguyên văn tuyệt đối** trong đúng khối nguồn |
+| Tự so `boPhan.trich` byte-exact (bộ kiểm nhà KHÔNG duyệt `boPhan`) | **3/3 nguyên văn** (`tmp/lo067/audit067.mjs`) |
+| Trần luật 2 (trích ≤ 300 ký tự) | trích dài nhất **296** (2206 `phamVi`) — 0 mục vượt |
+| `scripts/scan-so-tay-soat.mjs` (5 lớp lỗi soát mà máy kiểm không bắt) | 0 LƯỚC-NGOẠI-LỆ · 0 CÂU-SAU-NGOẠI-LỆ · 0 VÙNG-IM-LẶNG · 4 TRÀN-CLIP (§4.1) · còn lại là nhiễu nền đã đo (fact ASCII, chữ "Hàng", công thức "Loại khác: phần còn lại của phân nhóm …") |
+| Đo **nền nhà** trên 5 nhóm đã duyệt (2201, 2202, 2102, 2104, 2105) | 52 cảnh báo / 5 nhóm — **cùng lớp nhiễu** (nhiều TRÀN-CLIP hơn lô này) ⇒ "4 TRÀN-CLIP" của lô 067 **nằm trong nền**, không phải lỗi mới |
+| `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw-lo067-mm --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-067.json` | **121/121 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| Đối chiếu bản nháp ↔ dữ liệu đã nạp (`cmp-raw-data.mjs`) | **6/6 khớp** (khác duy nhất: `boPhan: null` bị máy bỏ key) |
+| `node scripts/check-cay.mjs --nhom=<nhom> --chi-tiet` × 6 | **6/6 nhóm đủ** — 0 lỗi lệch cây |
+| `npm run so-tay:check` | toàn kho **554 nhóm / 14.917 mục**, 0 mục không kiểm được nguồn — xanh |
+| `npm test` | **ALL TESTS PASSED** |
+| Chạy thật cổng `soTayGates` với **14 mô tả hàng thật** (bia 4,5 % · rượu vang 13 % · vermouth 16 % · vang táo 5 % · rượu sa kê · cồn etylic 96 % · rum 40 % · gin 37,5 % · rượu mùi 25 % · sam-su 30 % · nước ép nho…) | **0 challenge oan** |
+
+## 4. Còn mở cho người duyệt (chưa tự quyết)
+
+1. **4 mục `loaiTru.dieuKien` vượt trần clip runtime 55** — cắt sẽ mất đuôi câu (không đảo chiều điều kiện):
+   - 2205 `loaiTru[0]` (85) — mất "các loại cây hoặc các chất có hương"
+   - 2207 `loaiTru[2]` (64) — mất "ản là cồn"
+   - 2208 `loaiTru[0]` (86) — mất "ần cơ bản là rượu vang nho tươi"
+   - 2208 `loaiTru[1]` (110) — mất cả nhánh "cồn … chưa biến tính từ 80 % trở lên"
+   Giữ nguyên câu đầy đủ vì **nền nhà cũng có** (2202: 85/76 ký tự · 2102: 77) và rút gọn sẽ **bỏ định ngữ giới hạn**.
+   Nếu người duyệt muốn sạch: chấp nhận rút gọn 4 câu này.
+2. **2204 — `dieuKienVao[0]` chỉ phủ phần rượu vang**, không phủ phần hèm nho (chú giải nhóm có 2 phần, nhưng phần
+   hèm nho không có câu ràng buộc chung nào trong nguồn). Nếu người duyệt cho là phải phủ cả nhóm thì **xoá** mục này;
+   sổ tay vẫn còn `loaiTru` (→ 22.05 · 30.03/30.04 · 20.09) và `boPhan` để dẫn.
+3. **2207 — loại trừ sang 36.06 phải LƯỢT 1 đoạn ngoặc**: câu nguồn là
+   *"(c) Các nhiên liệu ở dạng rắn và bán rắn có thành phần cơ bản là cồn (thường được bán trên thị trường với tên gọi
+   là “cồn đóng rắn”) (nhóm 36.06)."* — luật máy loại **MỌI** `loaiTru` có chuỗi "(thường" (`HEDGE_LOAI_TRU`) ⇒ câu trích
+   của mục này là **"(c) Các nhiên liệu ở dạng rắn và bán rắn có thành phần cơ bản là cồn…(nhóm 36.06)."**
+   Phần lược **chỉ là ghi chú tên thương mại** ("cồn đóng rắn"), **không mang điều kiện**; loại trừ sang 36.06 trong nguồn
+   là **vô điều kiện** ⇒ mục **không nói chắc hơn nguồn**. (`dieuKienVao[2]` dùng **câu đầy đủ** vì máy không lọi mục đó.)
+4. **`dieuKien` rút gọn để tránh trần clip** (nêu để soi): 2204 `loaiTru[2]` "Nước ép nho, hèm nho chưa lên men hoặc
+   cồn ≤ 0,5 %" — nguồn ghi "**có nồng độ cồn theo thể tích** không quá 0,5 %" ⇒ cụm "theo thể tích" nằm trong `trich`
+   (nguyên văn) nhưng không lọt vào nhãn ngắn.
+5. **Không ghi `dieuKienSo`** cho dòng 8 số: nhóm 2203 có 4 dòng cùng tiền tố 6 số `220300` ⇒ `chotDong8` sẽ thấy
+   2 dòng cùng thoả ⇒ bật `TRANH_CAP`; 2204 có 5 dòng cùng `220421` (rượu vang vs hèm nho) ⇒ cũng vậy. `tieuChi`
+   (metadata, không vào runtime) đã ghi ngưỡng cho từng dòng.
+6. **Lỗi `UNIT_RULES` đọc số theo TÊN fact, bỏ qua `donVi`** — còn ở 1901/1902/1905/2106 đã gộp (fact có
+   "trong_khoi_luong" nhưng `donVi` là "%"). Lô 066 đã vá bằng cách đổi tên fact; **vá gốc `lib/so-tay-gates.js`**
+   thuộc phạm vi riêng — chưa làm. Lô 067 dùng `fact` trung tính (`nong_do_con_tinh_theo_the_tich`, `dung_tich_dong_dung`,
+   `ap_suat`) nên **không dính** lỗi này.
+7. **`lib/so-tay.js` chưa có luật `khong_phai_*` ⇒ `value` phải là `true`** — lô này đã viết đúng (mọi fact `khong_phai_*`
+   đều `value: true`).

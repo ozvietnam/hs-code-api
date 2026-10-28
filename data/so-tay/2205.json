@@ -1,0 +1,242 @@
+{
+ "nhom": "2205",
+ "phamVi": {
+  "text": "Đồ uống được sản xuất từ rượu vang nho tươi thuộc nhóm 22.04, và được tạo hương bằng pha chế các phần của cây hoặc các chất thơm.",
+  "nguon": "nhom2205.nhom",
+  "trich": "Nhóm này bao gồm các loại đồ uống (thường được dùng làm rượu khai vị hoặc rượu bổ), được sản xuất từ rượu vang nho tươi thuộc nhóm 22.04, và được tạo hương bằng pha chế các phần của cây (lá, rễ, quả...) hoặc các chất thơm.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "do_uoc_duoc_san_xuat_tu_ruou_vang_nho_tuoi_va_duoc_tao_huong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2205.nhom",
+   "trich": "Nhóm này bao gồm các loại đồ uống (thường được dùng làm rượu khai vị hoặc rượu bổ), được sản xuất từ rượu vang nho tươi thuộc nhóm 22.04, và được tạo hương bằng pha chế các phần của cây (lá, rễ, quả...) hoặc các chất thơm.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "khong_phai_ruou_vang_che_bien_tu_nho_kho_da_pa_huong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2205.nhom",
+   "trich": "(a) Rượu vang thu được từ nho khô và được pha chế với các loại cây hoặc các chất có hương (nhóm 22.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Rượu vang thu được từ nho khô và được pha chế với các loại cây hoặc các chất có hương",
+   "sangNhom": "2206",
+   "nguon": "nhom2205.nhom",
+   "trich": "(a) Rượu vang thu được từ nho khô và được pha chế với các loại cây hoặc các chất có hương (nhóm 22.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Dược phẩm thuộc nhóm 30.03 hoặc 30.04",
+   "sangNhom": "3003|3004",
+   "nguon": "nhom2205.nhom",
+   "trich": "(b) Dược phẩm thuộc nhóm 30.03 hoặc 30.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là rượu vang thu được từ nho khô và được pha chế với các loại cây hoặc các chất có hương không?",
+   "neuCo": "2206",
+   "neuKhong": "2205",
+   "nguon": "nhom2205.nhom",
+   "trich": "(a) Rượu vang thu được từ nho khô và được pha chế với các loại cây hoặc các chất có hương (nhóm 22.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "220510",
+   "fact": "ruou_vang_nho_tuoi_duoc_tao_huong_bang_phan_cay_hoac_chat_thom",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2205.nhom",
+   "trich": "Nhóm này bao gồm các loại đồ uống (thường được dùng làm rượu khai vị hoặc rượu bổ), được sản xuất từ rượu vang nho tươi thuộc nhóm 22.04, và được tạo hương bằng pha chế các phần của cây (lá, rễ, quả...) hoặc các chất thơm.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220510",
+   "fact": "dung_tich_dong_dung",
+   "op": "<=",
+   "value": 2,
+   "donVi": "lit",
+   "nguon": "wco.220510",
+   "trich": "220510 Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances, in containers holding 2 litres or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220590",
+   "fact": "ruou_vang_nho_tuoi_duoc_tao_huong_bang_phan_cay_hoac_chat_thom",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "nhom2205.nhom",
+   "trich": "Nhóm này bao gồm các loại đồ uống (thường được dùng làm rượu khai vị hoặc rượu bổ), được sản xuất từ rượu vang nho tươi thuộc nhóm 22.04, và được tạo hương bằng pha chế các phần của cây (lá, rễ, quả...) hoặc các chất thơm.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220590",
+   "fact": "dung_tich_dong_dung",
+   "op": ">",
+   "value": 2,
+   "donVi": "lit",
+   "nguon": "wco.220590",
+   "trich": "220590 Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances, in containers holding more than 2 litres",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "22051010",
+   "dieuKien": "Có nồng độ cồn không quá 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22051010",
+   "trich": "22051010 - - Có nồng độ cồn không quá 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22051020",
+   "dieuKien": "Có nồng độ cồn trên 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22051020",
+   "trich": "22051020 - - Có nồng độ cồn trên 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22059010",
+   "dieuKien": "Có nồng độ cồn không quá 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22059010",
+   "trich": "22059010 - - Có nồng độ cồn không quá 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22059020",
+   "dieuKien": "Có nồng độ cồn trên 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22059020",
+   "trich": "22059020 - - Có nồng độ cồn trên 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2205",
+    "cap": 4,
+    "cha": "22",
+    "tenVi": "Rượu Vermouth và rượu vang khác làm từ nho tươi đã pha thêm hương liệu từ thảo mộc hoặc chất thơm.",
+    "tenEn": "Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances",
+    "suyRa": false
+   },
+   {
+    "id": "220510",
+    "cap": 6,
+    "cha": "2205",
+    "tenVi": "Loại trong đồ đựng không quá 2 lít",
+    "tenEn": "Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances, in containers holding 2 litres or less",
+    "suyRa": false
+   },
+   {
+    "id": "22051010",
+    "cap": 8,
+    "cha": "220510",
+    "tenVi": "Có nồng độ cồn không quá 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22051020",
+    "cap": 8,
+    "cha": "220510",
+    "tenVi": "Có nồng độ cồn trên 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "220590",
+    "cap": 6,
+    "cha": "2205",
+    "tenVi": "Loại khác",
+    "tenEn": "Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances, in containers holding more than 2 litres",
+    "suyRa": false
+   },
+   {
+    "id": "22059010",
+    "cap": 8,
+    "cha": "220590",
+    "tenVi": "Có nồng độ cồn không quá 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22059020",
+    "cap": 8,
+    "cha": "220590",
+    "tenVi": "Có nồng độ cồn trên 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2205.nhom",
+  "tax.22051010",
+  "tax.22051020",
+  "tax.22059010",
+  "tax.22059020",
+  "wco.220510",
+  "wco.220590"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T05:18:14.334Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 14,
+  "dat": 14,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

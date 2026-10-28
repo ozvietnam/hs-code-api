@@ -1,0 +1,634 @@
+{
+ "nhom": "2204",
+ "phamVi": {
+  "text": "Rượu vang thông thường, rượu vang được làm cao độ với cồn, rượu vang nổ, rượu vang ngọt tráng miệng; và hèm nho.",
+  "nguon": "nhom2204.nhom",
+  "trich": "(1) Rượu vang thông thường (vang đỏ, hồng hoặc trắng).…(2) Rượu vang được làm cao độ với cồn.…(3) Rượu vang nổ.…(4) Các loại rượu vang ngọt tráng miệng (đôi khi được gọi là rượu vang mùi).…(II) Hèm nho",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "ruou_vang_la_san_pham_cuoi_cung_len_man_tu_hem_nho_tuoi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2204.nhom",
+   "trich": "Rượu vang được phân loại trong nhóm này phải là sản phẩm cuối cùng từ quá trình lên men rượu của hèm nho tươi.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Đồ uống có thành phần cơ bản là rượu vang",
+   "sangNhom": "2205",
+   "nguon": "nhom2204.nhom",
+   "trich": "(a) Các loại đồ uống có thành phần cơ bản là rượu vang thuộc nhóm 22.05.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Dược phẩm thuộc nhóm 30.03 hoặc 30.04",
+   "sangNhom": "3003|3004",
+   "nguon": "nhom2204.nhom",
+   "trich": "(b) Dược phẩm thuộc nhóm 30.03 hoặc 30.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Nước ép nho, hèm nho chưa lên men hoặc cồn ≤ 0,5%",
+   "sangNhom": "2009",
+   "nguon": "nhom2204.nhom",
+   "trich": "Nhóm này không bao gồm các loại nước ép nho và hèm nho, đã hoặc chưa cô đặc, chưa lên men hoặc có nồng độ cồn theo thể tích không quá 0,5% (nhóm 20.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là nước ép nho hoặc hèm nho chưa lên men hoặc có nồng độ cồn không quá 0,5% không?",
+   "neuCo": "2009",
+   "neuKhong": "2204",
+   "nguon": "nhom2204.nhom",
+   "trich": "Nhóm này không bao gồm các loại nước ép nho và hèm nho, đã hoặc chưa cô đặc, chưa lên men hoặc có nồng độ cồn theo thể tích không quá 0,5% (nhóm 20.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là đồ uống có thành phần cơ bản là rượu vang không?",
+   "neuCo": "2205",
+   "neuKhong": "2204",
+   "nguon": "nhom2204.nhom",
+   "trich": "(a) Các loại đồ uống có thành phần cơ bản là rượu vang thuộc nhóm 22.05.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "220410",
+   "fact": "ap_suat",
+   "op": ">=",
+   "value": 3,
+   "donVi": "bars",
+   "nguon": "ch22.chuong",
+   "trich": "1. Theo mục đích của phân nhóm 2204.10, khái niệm “rượu vang nổ” (1) là loại rượu khi bảo quản ở nhiệt độ 20°C trong thùng kín, có mức áp suất vượt từ 3 bars trở lên.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220421",
+   "fact": "dung_tich_dong_dung",
+   "op": "<=",
+   "value": 2,
+   "donVi": "lit",
+   "nguon": "wco.220421",
+   "trich": "220421 Wine; still, in containers holding 2 litres or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220422",
+   "fact": "dung_tich_dong_dung",
+   "op": ">",
+   "value": 2,
+   "donVi": "lit",
+   "nguon": "wco.220422",
+   "trich": "220422 Wine; still, in containers holding more than 2 litres but not more than 10 litres",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220422",
+   "fact": "dung_tich_dong_dung",
+   "op": "<=",
+   "value": 10,
+   "donVi": "lit",
+   "nguon": "wco.220422",
+   "trich": "220422 Wine; still, in containers holding more than 2 litres but not more than 10 litres",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220429",
+   "fact": "dung_tich_dong_dung",
+   "op": ">",
+   "value": 10,
+   "donVi": "lit",
+   "nguon": "wco.220429",
+   "trich": "220429 Wine; still, in containers holding more than 10 litres",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "220430",
+   "fact": "hem_nho",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "nguon": "wco.220430",
+   "trich": "220430 Grape must; n.e.c. in heading no. 2009, n.e.c. in item no. 2204.2",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "22041000",
+   "dieuKien": "Rượu vang nổ (1)",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22041000",
+   "trich": "22041000 - Rượu vang nổ (1)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042111",
+   "dieuKien": "Có nồng độ cồn không quá 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042111",
+   "trich": "22042111 - - - - Có nồng độ cồn không quá 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042113",
+   "dieuKien": "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22042113",
+   "trich": "22042113 - - - - Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042114",
+   "dieuKien": "Có nồng độ cồn trên 23% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 23,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042114",
+   "trich": "22042114 - - - - Có nồng độ cồn trên 23% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042121",
+   "dieuKien": "Có nồng độ cồn không quá 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042121",
+   "trich": "22042121 - - - - Có nồng độ cồn không quá 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042122",
+   "dieuKien": "Có nồng độ cồn trên 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042122",
+   "trich": "22042122 - - - - Có nồng độ cồn trên 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042211",
+   "dieuKien": "Có nồng độ cồn không quá 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042211",
+   "trich": "22042211 - - - - Có nồng độ cồn không quá 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042212",
+   "dieuKien": "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.22042212",
+   "trich": "22042212 - - - - Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042213",
+   "dieuKien": "Có nồng độ cồn trên 23% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 23,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042213",
+   "trich": "22042213 - - - - Có nồng độ cồn trên 23% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042221",
+   "dieuKien": "Có nồng độ cồn không quá 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042221",
+   "trich": "22042221 - - - - Có nồng độ cồn không quá 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042222",
+   "dieuKien": "Có nồng độ cồn trên 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042222",
+   "trich": "22042222 - - - - Có nồng độ cồn trên 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042911",
+   "dieuKien": "Có nồng độ cồn không quá 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042911",
+   "trich": "22042911 - - - - Có nồng độ cồn không quá 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042912",
+   "dieuKien": "Có nồng độ cồn trên 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042912",
+   "trich": "22042912 - - - - Có nồng độ cồn trên 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042921",
+   "dieuKien": "Có nồng độ cồn không quá 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042921",
+   "trich": "22042921 - - - - Có nồng độ cồn không quá 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22042922",
+   "dieuKien": "Có nồng độ cồn trên 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22042922",
+   "trich": "22042922 - - - - Có nồng độ cồn trên 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22043010",
+   "dieuKien": "Có nồng độ cồn không quá 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": "<=",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22043010",
+   "trich": "22043010 - - Có nồng độ cồn không quá 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "22043020",
+   "dieuKien": "Có nồng độ cồn trên 15% tính theo thể tích",
+   "tieuChi": {
+    "fact": "nong_do_con_tinh_theo_the_tich",
+    "op": ">",
+    "value": 15,
+    "donVi": "%"
+   },
+   "loaiKhac": false,
+   "nguon": "tax.22043020",
+   "trich": "22043020 - - Có nồng độ cồn trên 15% tính theo thể tích",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "boPhan": {
+  "quyTac": "Nhóm gồm các loại rượu vang (thông thường, làm cao độ với cồn, nổ, ngọt tráng miệng) và hèm nho.",
+  "tomTat": "Rượu vang thông thường; rượu vang làm cao độ với cồn; rượu vang nổ; rượu vang ngọt tráng miệng; hèm nho.",
+  "nguon": "nhom2204.nhom",
+  "trich": "(1) Rượu vang thông thường (vang đỏ, hồng hoặc trắng).…(2) Rượu vang được làm cao độ với cồn.…(3) Rượu vang nổ.…(4) Các loại rượu vang ngọt tráng miệng (đôi khi được gọi là rượu vang mùi).…(II) Hèm nho",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2204",
+    "cap": 4,
+    "cha": "22",
+    "tenVi": "Rượu vang làm từ nho tươi, kể cả rượu vang cao độ; hèm nho trừ loại thuộc nhóm 20.09.",
+    "tenEn": "Wine of fresh grapes, including fortified wines; grape must other than that of heading no. 2009",
+    "suyRa": false
+   },
+   {
+    "id": "22041000",
+    "cap": 8,
+    "cha": "2204",
+    "tenVi": "Rượu vang nổ (1)",
+    "tenEn": "Wine; sparkling",
+    "suyRa": false,
+    "laPhanNhom": "220410"
+   },
+   {
+    "id": "22042",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2204",
+    "tenVi": "Rượu vang khác; hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "220421",
+    "cap": 6,
+    "cha": "22042",
+    "tenVi": null,
+    "tenEn": "Wine; still, in containers holding 2 litres or less",
+    "suyRa": false
+   },
+   {
+    "id": "2204211",
+    "cap": "TIEU_DE_QG",
+    "cha": "220421",
+    "tenVi": "Rượu vang",
+    "tenEn": "Wine",
+    "suyRa": true
+   },
+   {
+    "id": "22042111",
+    "cap": 8,
+    "cha": "2204211",
+    "tenVi": "Có nồng độ cồn không quá 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22042113",
+    "cap": 8,
+    "cha": "2204211",
+    "tenVi": "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22042114",
+    "cap": 8,
+    "cha": "2204211",
+    "tenVi": "Có nồng độ cồn trên 23% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "2204212",
+    "cap": "TIEU_DE_QG",
+    "cha": "220421",
+    "tenVi": "Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men",
+    "tenEn": "Grape must with fermentation prevented or arrested by the addition of alcohol",
+    "suyRa": true
+   },
+   {
+    "id": "22042121",
+    "cap": 8,
+    "cha": "2204212",
+    "tenVi": "Có nồng độ cồn không quá 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22042122",
+    "cap": 8,
+    "cha": "2204212",
+    "tenVi": "Có nồng độ cồn trên 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "220422",
+    "cap": 6,
+    "cha": "22042",
+    "tenVi": null,
+    "tenEn": "Wine; still, in containers holding more than 2 litres but not more than 10 litres",
+    "suyRa": false
+   },
+   {
+    "id": "2204221",
+    "cap": "TIEU_DE_QG",
+    "cha": "220422",
+    "tenVi": "Rượu vang",
+    "tenEn": "Wine",
+    "suyRa": true
+   },
+   {
+    "id": "22042211",
+    "cap": 8,
+    "cha": "2204221",
+    "tenVi": "Có nồng độ cồn không quá 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22042212",
+    "cap": 8,
+    "cha": "2204221",
+    "tenVi": "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22042213",
+    "cap": 8,
+    "cha": "2204221",
+    "tenVi": "Có nồng độ cồn trên 23% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "2204222",
+    "cap": "TIEU_DE_QG",
+    "cha": "220422",
+    "tenVi": "Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men",
+    "tenEn": "Grape must with fermentation prevented or arrested by the addition of alcohol",
+    "suyRa": true
+   },
+   {
+    "id": "22042221",
+    "cap": 8,
+    "cha": "2204222",
+    "tenVi": "Có nồng độ cồn không quá 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22042222",
+    "cap": 8,
+    "cha": "2204222",
+    "tenVi": "Có nồng độ cồn trên 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "220429",
+    "cap": 6,
+    "cha": "22042",
+    "tenVi": null,
+    "tenEn": "Wine; still, in containers holding more than 10 litres",
+    "suyRa": false
+   },
+   {
+    "id": "2204291",
+    "cap": "TIEU_DE_QG",
+    "cha": "220429",
+    "tenVi": "Rượu vang",
+    "tenEn": "Wine",
+    "suyRa": true
+   },
+   {
+    "id": "22042911",
+    "cap": 8,
+    "cha": "2204291",
+    "tenVi": "Có nồng độ cồn không quá 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22042912",
+    "cap": 8,
+    "cha": "2204291",
+    "tenVi": "Có nồng độ cồn trên 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "2204292",
+    "cap": "TIEU_DE_QG",
+    "cha": "220429",
+    "tenVi": "Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men",
+    "tenEn": "Grape must with fermentation prevented or arrested by the addition of alcohol",
+    "suyRa": true
+   },
+   {
+    "id": "22042921",
+    "cap": 8,
+    "cha": "2204292",
+    "tenVi": "Có nồng độ cồn không quá 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22042922",
+    "cap": 8,
+    "cha": "2204292",
+    "tenVi": "Có nồng độ cồn trên 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "220430",
+    "cap": 6,
+    "cha": "2204",
+    "tenVi": "Hèm nho khác",
+    "tenEn": "Grape must; n.e.c. in heading no. 2009, n.e.c. in item no. 2204.2",
+    "suyRa": false
+   },
+   {
+    "id": "22043010",
+    "cap": 8,
+    "cha": "220430",
+    "tenVi": "Có nồng độ cồn không quá 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "22043020",
+    "cap": 8,
+    "cha": "220430",
+    "tenVi": "Có nồng độ cồn trên 15% tính theo thể tích",
+    "tenEn": null,
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch22.chuong",
+  "nhom2204.nhom",
+  "tax.22041000",
+  "tax.22042111",
+  "tax.22042113",
+  "tax.22042114",
+  "tax.22042121",
+  "tax.22042122",
+  "tax.22042211",
+  "tax.22042212",
+  "tax.22042213",
+  "tax.22042221",
+  "tax.22042222",
+  "tax.22042911",
+  "tax.22042912",
+  "tax.22042921",
+  "tax.22042922",
+  "tax.22043010",
+  "tax.22043020",
+  "wco.220421",
+  "wco.220422",
+  "wco.220429",
+  "wco.220430"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T05:18:14.333Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 31,
+  "dat": 31,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
