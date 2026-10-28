@@ -1,6 +1,94 @@
 # TIEN-TRINH — sổ tay chú giải HS (dùng chung nhiều phiên)
 
 <!-- Mục mới nhất ở trên; các phiên sau bổ sung tiếp xuống dưới, đừng xoá phần của nhau. -->
+
+---
+
+# LÔ 068 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 28/10/2026 13:25)
+
+- **Nhánh:** `so-tay/lo-068` · **Nhóm:** `2209,2301,2302,2303,2304,2305` (Chương 22 giấm + Chương 23 phế liệu)
+- **Kết quả:** **50/50 mục (100 %)** — `tyLeDat: 100`, `nhomLoi: []`; 6/6 nhóm "đủ" theo `check-cay`
+- **Nguồn:** `tmp/so-tay/nguon/2209.txt`…`2305.txt` (23.364 ký tự) + `_he-thong.txt` — đọc HẾT 6 tệp
+
+## 0. Sai lệch brief — làm theo CSV (nguồn chuẩn)
+
+Brief `brief-st-lo068.md` ghi nhóm `2209 2301 2302 2303 2304 2305` (đúng, khớp CSV dòng 068) nhưng:
+
+| Chỗ | Brief ghi | Thật | Xử lý |
+|---|---|---|---|
+| `--nhom=` | `7615,9609,3215,6306,6804,7412` | 6 nhóm của lô **khác** (copy-paste) | dùng nhóm theo CSV |
+| Worktree | `hs-code-api-wt-st-lo68` | `hs-code-api-wt-st-lo068` (thật) | làm trong worktree có sẵn |
+
+⇒ Nhóm lấy từ `docs/giao-viec/so-tay-lo.csv` dòng 068 (khớp `nhom` trong CSV và brief).
+
+## 1. Sự cố: HAI phiên headless cùng lô trong MỘT worktree (đã xử lý TRƯỚC khi viết tệp nào)
+
+`ps` lúc 13:25 thấy **2 tiến trình `claude -p` cùng prompt, cùng worktree, cùng nhánh, cùng tệp log**
+(PID 18283 = tôi · PID 19186 = trùng; wrapper 18277 / 19182). Log daemon cho thấy nguyên nhân:
+
+```
+[13:25:18] lô 068: phóng soạn (nhóm: 2209,2301,2302,2303,2304,2305)
+[13:25:23] lô 068: phóng soạn (nhóm: 2209,2301,2302,2303,2304,2305)
+```
+
+Lô 067 cũng bị đúng 2 lần ⇒ **lỗi daemon, không phải gõ nhầm**: `chon_lo_moi` trả về **1** lô, mà vòng chính tính
+`LO1=$(echo "$NEXT" | head -1); LO2=$(echo "$NEXT" | tail -1)` ⇒ `LO1 = LO2 = 068` ⇒ `phong_soan "$LO1" "$LO2"`
+phóng **2 thợ giống hệt** vào cùng worktree/nhánh. Đây là cơ chế đã làm MẤT lô 065 (daemon tự xoá nhánh có PR đang mở).
+
+**Xử lý:** `kill 19186` + `kill 19182` (wrapper) ⇒ chỉ còn 1 phiên; **không ghi tệp nào trước khi dừng** ⇒ không có ghi đè dữ liệu.
+Bản nháp của phiên tôi nằm ở `tmp/so-tay/raw/` + bản chụp bất biến `tmp/lo068/raw-lo068-mm/`.
+
+## 2. PHÁT HIỆN MỚI: bản in của Read/hiển thị KHÔNG byte-faithful với tiếng Việt
+
+Khi so bản nháp với nguồn, dòng loại trừ của 2302 lệch 1 ký tự:
+
+- nguồn (`chu-giai-heading.json` + `tmp/so-tay/nguon/2302.txt`): **"phế liệu rắn"** (codepoint `r ắ n`)
+- tệp tôi gõ tay (theo bản in hiển thị): **"phế liệu rắng"** (thêm `g`)
+
+⇒ **không được gõ tay bất kỳ câu trích nào.** Toàn bộ 50 câu trích của lô này được **CẮT THẲNG từ tệp nguồn**
+bằng script `tmp/lo068/lap-raw-068.mjs` (tham số chỉ gồm số dòng + token ASCII + vị trí câu) ⇒ byte-exact theo cấu trúc.
+
+Thêm **GÁC SOÁT TỪ** (mọi từ ≥3 ký tự trong trường tự viết phải có trong từ vựng của nhóm / kho chú giải chung)
+⇒ bắt được **2 lỗi gõ tay thật của tôi**: `tấp mỡ` → phải `tóp mỡ` (2 chỗ) và `Câu, cặn dầu` → phải **`Cáu, cặn dầu`**
+(nguồn ghi "Cáu" = cáu, codepoint `C á u`; tôi gõ `C â u`).
+
+## 3. Cách soạn
+
+- `phamVi` (6): theo **tiêu đề các phần** của nhóm (I/II · (1)(2) · (A)(B)(C) · (A)–(E)) — không lấy đoạn dẫn.
+- `dieuKienVao`: **rỗng 5/6 nhóm** — không có câu RÀNG BUỘC nào phủ CẢ nhóm (2209: định nghĩa chỉ phủ (I) giấm, mệnh đề "vẫn thuộc nhóm này" là câu CHO PHÉP ⇒ máy loại; 2301: "không sử dụng làm thức ăn cho người" không phủ (2) tấp mỡ vì tấp mỡ vẫn ở đây kể cả khi dùng làm thức ăn cho người; 2302/2303/2305: nguồn chỉ liệt kê phạm vi).
+  - **2304 có 1**: `thuoc_dau_dau_tuong = true` — câu "…còn lại sau khi chiết xuất dầu từ hạt đậu tương…" phủ cả nhóm (phân biệt với 2305 = dầu lạc); theo tiền lệ 0201/0202 của nhà.
+- `loaiTru` (13): chỉ khi nguồn **nêu đích danh** mã nhóm đích, có dấu hiệu loại trừ, và mã đích có trong câu trích.
+- `phanBiet` (2): 2302 (cám/cám mịn pollard lúa mì → 23023010 / 23023090) · 2303 (bã ép củ cải đường đã thêm mật → 2309 / 2303).
+- `tieuChi6` (9): lấy từ `wco.<6 số>` (tiêu chí "của loại nguyên liệu" của từng phân nhóm) — **không** lấy từ `tax.*`; lấp đủ cảnh báo "phân nhóm chưa có tiêu chí" của `check-cay`.
+- `dong8` (20): đủ mọi dòng 8 số của nhóm. Số chỉ có ở 2 nơi: 2301 (protein 60 % → `ham_luong`) và 2304 (tiêu chí SEN).
+
+## 4. Mục BỎ có lý do (không trích được nguyên văn ⇒ không ghi)
+
+| Nhóm | Mục | Vì sao bỏ |
+|---|---|---|
+| 2302 | loại trừ "khô dầu hoặc phế liệu rắng khác … (các nhóm **từ 23.04 đến 23.06**)" | đích là **DẢI số**; máy đòi mỗi mã nêu nguyên văn (23.05 không có trong câu) ⇒ không phủ nổi ⇒ bỏ, nêu ở mô tả PR |
+| 2305 | loại trừ (a) 15.22 và (b) 21.06 của 23.04 | chú giải 23.04 **không nằm trong khối nguồn của 23.05** ⇒ máy loại (`nguon-khong-duoc-trich`) ⇒ không ghi |
+| 2209 | `phanBiet` cho ngoại lệ 10–15 % | nhánh "không" **không phải phần BÙ** của nhánh "có" ⇒ không tạo (ngoại lệ đã nằm đủ trong `loaiTru[0]`) |
+
+## 5. Bảng kiểm cuối
+
+| Kiểm | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | **50/50 mục đạt** — 2209 5 · 2301 8 · 2302 13 · 2303 14 · 2304 8 · 2305 2 |
+| `node scripts/check-trich-nguyen-van.mjs` (byte-exact) | **OK — 50/50** câu trích nguyên văn tuyệt đối trong đúng khối nguồn |
+| `node scripts/check-cay.mjs --nhom=<nhom> --chi-tiet` × 6 | **6/6 nhóm đủ** — 0 lỗi lệch cây, đủ `dong8`, đủ tên nút ảo, đủ tiêu chí 6 số |
+| Nạp `--tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=.../lo-068.json` | **50/50 (100 %)** — `tyLeDat: 100`, `nhomLoi: []` |
+| Đối chiếu bản nháp ↔ dữ liệu đã nạp | **khớp 100 %** (chỉ khác `nguonLoai`/`loaiKhac`/`phamViLoaiKhac` do máy gắn) |
+| `npm run so-tay:check` | toàn kho **560 nhóm / 14.965 mục**, 0 mục không kiểm được nguồn — xanh |
+| `npm test` | **ALL TESTS PASSED** (23 pass, 0 fail) |
+
+## 6. Còn mở cho người duyệt (chưa tự quyết)
+
+1. **2 câu trích > 300 ký tự** (máy chỉ chặn >600): `2209 loaiTru[0]` = 356 (giữ **cả vế ngoại lệ** "Tuy nhiên … vẫn thuộc nhóm này" — cắt bớt thì loại trừ 29.15 thành tuyệt đối ⇒ mất nghĩa) · `2303 phamVi` = 404 (5 mảnh (A)–(E)).
+2. **Lỗi kệ sách:** chú giải 2301 ghi "**bộ thô**" (lẽ ra "bột thô") trong câu loại trừ → `trich` giữ nguyên, `dieuKien` viết "bột thô"; đã ghi ở mô tả PR.
+3. **`2305 phamVi.text` ghép 2 nguồn**: vế "Khô dầu và phế liệu rắn khác … dầu lạc" lấy từ `tax.23050000`, vế "chú giải chi tiết nhóm 23.04 được áp dụng" lấy từ `nhom2305.nhom` — mỗi mục chỉ được **một** `nguon` nên không gộp được trong cùng `trich`.
+4. **Tiêu chí SEN của 2304** dùng `fact` **chưa đăng ký** trong `LOAI_GIA_TRI` (`do_am`, `ham_luong_protein`, `ham_luong_chat_beo`, `ham_luong_chat_xo`, `tro`) ⇒ cổng chốt dòng 8 số **không tự chấm** được (trả `CHUA_BIET`, hỏi khách) — chọn thế này để **không** bắt oan ngưỡng (bài học lô 066: đọc số theo TÊN `fact` bỏ qua `donVi` ⇒ cổng ngưỡng bắt oan).
+5. **2301**: hai ngưỡng protein của 23040010/23040021 (SEN) **chồng nhau** (mọi bột đậu tương khử chất béo đạt cả hai) ⇒ nếu mã hóa đủ sẽ sinh `TRANH_CAP`; lô này chỉ mã hóa 2301 (ngưỡng 60 % là **loại trừ** giữa hai dòng, không chồng).
 ---
 
 # LÔ 065 — khôi phục + soát lại toàn bộ (phiên `dev-zcode-mm`, 28/10/2026 06:00)
