@@ -1,0 +1,110 @@
+{
+ "nhom": "2707",
+ "nguoiSoat": "dev-soat-doc-lap-lo079",
+ "luc": "2026-10-29T04:50:00+07:00",
+ "phamViSoat": "Toàn bộ 18 mục của nhóm 2707 (1 phamVi + 1 loaiTru + 2 phanBiet + 5 tieuChi6 + 1 cay.tenDien + 8 dong8), đọc cùng tmp/so-tay/nguon/2707.txt (nhom2707.nhom, ch27.chuong, sen.27079910, wco.270710/20/30/40/50/91/99, tax.27071000…27079990). Đối chiếu BYTE-EXACT từng đoạn trích với đúng khối nguồn; thêm kiểm mọi âm tiết trong `text`/`dieuKien`/`hoi` phải có nguyên văn trong câu trích của chính mục.",
+ "soat": 18,
+ "giu": 16,
+ "sua": 2,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 2 · GIỮ 16/18. SỬA 1 (`phamVi`): câu trích cũ DỪNG NGAY TRƯỚC câu ngoại lệ 'Nhưng nhóm này loại trừ các hợp chất đã xác định về mặt hóa học riêng biệt ở trạng thái tinh khiết hoặc tinh khiết cho mục đích thương mại, thu được bằng cách tiếp tục chưng cất phân đoạn hoặc bằng các quá trình chế biến dầu hắc ín khác (Chương 29)' — đúng lớp lỗi 'mất ngoại lệ ngay sau câu trích' (máy KHÔNG bắt được vì câu trích vẫn byte-exact). Sửa: kéo nguyên văn câu loại trừ vào `trich` và nêu vế loại trừ trong `text`. SỬA 2 (`dong8[6]`): điều kiện bỏ mất vế 'hoặc dầu mỏ' của nguồn (điều kiện HẸP hơn nguồn). GHI NHẬN: (1) `tieuChi6` KHÔNG được runtime dùng (`lib/so-tay-gates.js` chỉ in phamVi/dieuKienVao/loaiTru/dong8/phanBiet/boPhan) ⇒ nếu không nêu ngoại lệ Chương 29 trong `phamVi.text`, mô hình không có cách nào biết benzen tinh khiết sang 2901 — đây là lý do `phamVi` phải sửa. (2) Ngoại lệ nêu 'Chương 29' (không phải nhóm 4 số) nên KHÔNG mã hoá được thành `loaiTru` (luật 3: chỉ ghi khi nguồn nêu đích DANH nhóm đích); đề xuất trường `sangChuong` để người duyệt cân nhắc. (3) `phamVi.trich` sau sửa dài 574 ký tự (<600 trần máy); nền nhà 138/622 `phamVi` vượt 300 và nhiều tệp 540-570 ⇒ chấp nhận được. (4) `phamVi.text` sau sửa 205 ký tự ≤ trần clip 220 của runtime ⇒ câu loại trừ KHÔNG bị cắt mất.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — 'CÂU LIỀN SAU CÂU TRÍCH LÀ NGOẠI LỆ'. Nguồn [nhom2707.nhom] nguyên văn: 'Nhóm này bao gồm các loại dầu và các sản phẩm nêu trên, đã tinh chế hoặc dạng thô. **Nhưng nhóm này loại trừ các hợp chất đã xác định về mặt hóa học riêng biệt ở trạng thái tinh khiết hoặc tinh khiết cho mục đích thương mại, thu được bằng cách tiếp tục chưng cất phân đoạn hoặc bằng các quá trình chế biến dầu hắc ín khác (Chương 29).**' — bản nháp cắt trích NGAY TRƯỚC câu loại trừ này (không có dấu lược, cũng không phải ví dụ) ⇒ mất ngoại lệ. Hậu quả: `phamVi` mô tả phạm vi 2707 như bao hàm MỌI dầu chưng cất hắc ín, trong khi nguồn loại trừ các hợp chất tinh khiết (đó chính là ranh giới 2707 ↔ 2901/2902/2903); `tieuChi6` (>50 %) KHÔNG được runtime in ra nên mô hình không có đường nào khác để biết. Sửa (1) `trich`: kéo nguyên văn câu loại trừ vào (byte-exact, tổng 574 ký tự < 600); (2) `text`: nêu vế loại trừ, nén phần phạm vi cho vừa trần clip 220 của runtime (205 ký tự) — mọi từ trong `text` đều có nguyên văn trong câu trích; KHÔNG sửa mã, KHÔNG sửa câu nguồn.",
+   "sua": {
+    "text": "Dầu và sản phẩm chưng cất hắc ín than đá ở nhiệt độ cao hoặc thấp, đã tinh chế hoặc dạng thô; trừ hợp chất đã xác định về mặt hóa học riêng biệt ở trạng thái tinh khiết cho mục đích thương mại (Chương 29).",
+    "trich": "(1) Dầu và các sản phẩm khác thu được bằng cách chưng cất hắc ín than đá ở nhiệt độ cao … (2) Dầu và các sản phẩm tương tự với phần lớn là cấu tử thơm thu được bằng cách chưng cất hắc ín than đá ở nhiệt độ thấp hoặc hắc ín khoáng chất khác … Nhóm này bao gồm các loại dầu và các sản phẩm nêu trên, đã tinh chế hoặc dạng thô. Nhưng nhóm này loại trừ các hợp chất đã xác định về mặt hóa học riêng biệt ở trạng thái tinh khiết hoặc tinh khiết cho mục đích thương mại, thu được bằng cách tiếp tục chưng cất phân đoạn hoặc bằng các quá trình chế biến dầu hắc ín khác (Chương 29)."
+   }
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2707.nhom] nguyên văn trọn câu: 'Nhóm này không bao gồm các loại hỗn hợp alkylbenzenes hoặc hỗn hợp alkylnaphthalenes thu được bằng cách alkyl hóa benzene hoặc naphthalene và có các mạch nhánh dài thẳng, (nhóm 38.17).' — DẤU HIỆU LOẠI TRỪ + đích danh 38.17 + số nhóm có trong câu trích ⇒ hợp lệ luật 3. `dieuKien` giữ nguyên cấu trúc 'A hoặc B … VÀ có các mạch nhánh dài thẳng' (KHÔNG tách 'A hoặc B' thành hai điều kiện độc lập, không đổi 'hoặc' thành 'và')."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi 'Hàng là dầu creosote không?' (không nhắc mã ✓); trích [nhom2707.nhom] nguyên văn '2707. 91 - - Dầu creosote … 2707. 99 - - Loại khác' ✓ byte-exact (đoạn lược là dòng trống, không phải ngoại lệ). Nhánh CÓ → '27079100' (mã dòng của Dầu creosote trong chính nhóm; mẫu nhà: 224/1.143 nhánh dùng mã 8 số), KHÔNG → '2707' (chính nhóm — mẫu nhà 898/1.143 — đo trong phiên này) ⇒ phủ trọn hai nhánh, không đảo chiều."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi 'Hàng là hỗn hợp alkylbenzenes hoặc hỗn hợp alkylnaphthalenes có mạch nhánh dài thẳng không?'; nhánh CÓ → '3817' (đích danh trong câu trích), KHÔNG → '2707' ✓; giữ nguyên 'hoặc' (không tách nhánh); không suy từ danh sách loại trừ mà có căn cứ trực tiếp trong câu trích."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [ch27.chuong] nguyên văn '3. Theo mục đích của các phân nhóm 2707.10, 2707.20, 2707.30 và 2707.40 khái niệm \"benzol (benzen)\", \"toluol (toluen)\", \"xylol (xylen)\" và \"naphthalen\" áp dụng cho các sản phẩm chứa hơn 50% tính theo trọng lượng tương ứng là benzen, toluen, xylen hoặc naphthalen.' ✓ byte-exact; số 50 có trong câu trích; op '>' đúng với 'hơn 50%'; fact 'ham_luong_benzen' là tên định danh ASCII (mẫu nhà 0/2.518 fact có dấu) ✓; `hs6` 270710 có thật trong cây ✓."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu trích chú giải phân nhóm 3; tiêu chí 'hơn 50% toluen' cho phân nhóm 2707.20 theo vế 'tương ứng' của nguồn ✓; số 50 có trong câu trích."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu trích chú giải phân nhóm 3; tiêu chí 'hơn 50% xylen' cho phân nhóm 2707.30 theo vế 'tương ứng' ✓; số 50 có trong câu trích."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "Cùng câu trích chú giải phân nhóm 3; tiêu chí 'hơn 50% naphthalen' cho phân nhóm 2707.40 theo vế 'tương ứng' ✓; số 50 có trong câu trích."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "Trích [wco.270750] nguyên văn '270750 Aromatic hydrocarbon mixtures; n.e.c. in heading no. 2707, of which 65% or more by volume (including losses) distils at 250 degrees Celsius by the ISO 3405 method (equivalent to the ASTM D 86 method)' ✓ byte-exact (luật 10 cho phép nguồn wco.<6 số> cho tieuChi6); số 65 có trong câu trích; op '>=' đúng với '65% or more' ✓."
+  },
+  {
+   "index": "cay.tenDien[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nút 6 số 270799 trong cây lib/hs-tree.js CHƯA có tên tiếng Việt (tenVi=null) ⇒ đúng điều kiện luật 9 để điền tên; tên 'Loại khác' lấy từ chính dòng nguồn [nhom2707.nhom] '2707. 99 - - Loại khác' ✓ byte-exact (mẫu nhà: 3 nút 6 số cũng đặt tên 'Loại khác' theo cùng cách). `check-cay.mjs --nhom=2707 --chi-tiet` không báo thiếu tên nút ảo."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27071000: trích nguyên văn [tax.27071000] '27071000 - Benzen' ✓; `dieuKien` = tên biểu thuế."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27072000: trích nguyên văn [tax.27072000] '27072000 - Toluen' ✓."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27073000: trích nguyên văn [tax.27073000] '27073000 - Xylen ' ✓ (GIỮ khoảng trắng cuối dòng nguồn — byte-exact)."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27074000: trích nguyên văn [tax.27074000] '27074000 - Naphthalen' ✓."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27075000: trích nguyên văn [tax.27075000] '27075000 - Các hỗn hợp hydrocarbon thơm khác có từ 65% thể tích trở lên (kể cả lượng hao hụt) được chưng cất ở nhiệt độ 250oC theo phương pháp ISO 3405 (tương đương phương pháp ASTM D 86)' ✓; `tieuChi` có số 65 trong câu trích, op '>=' ✓, fact 'phan_trung_luu_trung_250c' khớp `tieuChi6[4]` ✓."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27079100: trích nguyên văn [tax.27079100] '27079100 - - Dầu creosote' ✓."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — ĐIỀU KIỆN HẸP HƠN NGUỒN. Nguồn [sen.27079910] nguyên văn: 'Nguyên liệu sản xuất than đen là phần còn lại của quá trình chưng cất phân đoạn than hắc ín **hoặc dầu mỏ**, thường có tỷ lệ hydrocarbon cao.' — bản nháp bỏ mất vế 'hoặc dầu mỏ' ⇒ điều kiện chỉ còn nhánh 'chưng cất phân đoạn than hắc ín', tờ khai 'nguyên liệu sản xuất than đen từ phân đoạn dầu mỏ' bị loại khỏi dòng 27079910. Sửa: đưa vế 'hoặc dầu mỏ' vào `dieuKien`, rút gọn 'của' cho vừa trần clip 90 của runtime (87 ký tự, KHÔNG bị cắt); `trich` giữ nguyên. KHÔNG sửa nguồn, KHÔNG sửa mã.",
+   "sua": {
+    "dieuKien": "Nguyên liệu sản xuất than đen: phần còn lại chưng cất phân đoạn than hắc ín hoặc dầu mỏ"
+   }
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 'Loại khác' 27079990: trích nguyên văn [tax.27079990] '27079990 - - - Loại khác' ✓; `dieuKien` theo mẫu nhà 'phần còn lại của phân nhóm X' (435/1.121 dòng) với X = 2707.99 (đúng cấp: 270799 là nút 6 số) ✓; `loaiKhac` true do máy tự điền theo biểu thuế ✓."
+  }
+ ]
+}

@@ -1,0 +1,129 @@
+{
+ "nhom": "2709",
+ "phamVi": {
+  "text": "Dầu lửa thô, dầu thô từ khoáng chất có chứa bitum và khí ngưng tụ; dầu thô đã qua lắng cặn, khử muối, loại nước, ổn định, quá trình thứ yếu không làm thay đổi tính chất đặc trưng vẫn được phân loại trong nhóm này.",
+  "nguon": "nhom2709.nhom",
+  "trich": "Nhóm này bao gồm dầu lửa thô, và dầu thô thu được từ các khoáng chất có chứa bitum … dù thành phần của chúng như thế nào … Như vậy các loại dầu thô thu được vẫn được phân loại trong nhóm này, ngay cả khi chúng đã qua các quá trình sau: … (1) Lắng cặn … (2) Khử muối … (3) Loại nước … (4) Ổn định nhằm bình thường hóa áp suất hơi … (7) Bất kỳ quá trình thứ yếu khác nào đó, với điều kiện là quá trình này không làm thay đổi tính chất đặc trưng của sản phẩm. … Nhóm này cũng bao gồm khí ngưng tụ",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "qua_qua_trinh_thu_yeu_lam_thay_doi_tinh_chat_dac_trung",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "nguon": "nhom2709.nhom",
+   "trich": "Bất kỳ quá trình thứ yếu khác nào đó, với điều kiện là quá trình này không làm thay đổi tính chất đặc trưng của sản phẩm.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là khí ngưng tụ thu được trong quá trình làm ổn định khí tự nhiên không?",
+   "neuCo": "27090020",
+   "neuKhong": "2709",
+   "nguon": "nhom2709.nhom",
+   "trich": "Nhóm này cũng bao gồm khí ngưng tụ, nghĩa là dầu thô thu được trong quá trình làm ổn định khí tự nhiên ngay khi khai thác nó.",
+   "nguonLoai": "NGUOI_DUYET"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "27090010",
+   "dieuKien": "Dầu mỏ thô",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "tax.27090010",
+   "trich": "27090010 - Dầu mỏ thô",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "27090020",
+   "dieuKien": "Khí ngưng tụ: dầu thô thu được khi làm ổn định khí tự nhiên ngay khi khai thác",
+   "tieuChi": null,
+   "loaiKhac": false,
+   "nguon": "nhom2709.nhom",
+   "trich": "Nhóm này cũng bao gồm khí ngưng tụ, nghĩa là dầu thô thu được trong quá trình làm ổn định khí tự nhiên ngay khi khai thác nó.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "27090090",
+   "dieuKien": "Loại khác: phần còn lại của nhóm 2709",
+   "tieuChi": null,
+   "loaiKhac": true,
+   "nguon": "tax.27090090",
+   "trich": "27090090 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2709",
+    "truAnhEm": [
+     "27090010",
+     "27090020"
+    ],
+    "toTienCoTen": "2709",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2709",
+    "cap": 4,
+    "cha": "27",
+    "tenVi": "Dầu mỏ và các loại dầu thu được từ các khoáng bi-tum, ở dạng thô.",
+    "tenEn": "Petroleum oils and oils obtained from bituminous minerals; crude",
+    "suyRa": false
+   },
+   {
+    "id": "27090010",
+    "cap": 8,
+    "cha": "2709",
+    "tenVi": "Dầu mỏ thô",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "27090020",
+    "cap": 8,
+    "cha": "2709",
+    "tenVi": "Condensate",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "27090090",
+    "cap": 8,
+    "cha": "2709",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2709.nhom",
+  "tax.27090010",
+  "tax.27090090"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-10-28T21:21:40.122Z",
+  "ms": 0
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

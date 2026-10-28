@@ -1,0 +1,53 @@
+{
+ "nhom": "2704",
+ "nguoiSoat": "dev-soat-doc-lap-lo079",
+ "luc": "2026-10-29T04:40:00+07:00",
+ "phamViSoat": "Toàn bộ 8 mục của nhóm 2704 (1 phamVi + 2 loaiTru + 2 phanBiet + 3 dong8), đọc cùng tmp/so-tay/nguon/2704.txt (nhom2704.nhom, ch27.chuong, wco.270400, tax.27040010/20/30). Đối chiếu BYTE-EXACT từng đoạn trích (mỗi đoạn ngăn bởi '…') với đúng khối nguồn; riêng `text`/`dieuKien`/`hoi` kiểm thêm: mọi âm tiết trong mục phải có nguyên văn trong câu trích của chính mục đó.",
+ "soat": 8,
+ "giu": 8,
+ "sua": 0,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 0 · GIỮ 8/8. Nhóm 2704 sạch: mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn, mọi đích loại trừ được nêu DANH trong câu trích, hai `phanBiet` phủ trọn hai nhánh (có → 2708|2713, không → 2704). GHI NHẬN (không tính lỗi): (1) `phamVi.trich` dừng ở '…cứng, dễ vỡ' (giữa câu) — phần bị cắt là mô tả tính chất và cách thu được, KHÔNG phải ngoại lệ; câu liền sau câu trích ('Nó thu được như sản phẩm phụ trong các thiết bị tạo khí…') cũng là mô tả, không phải ngoại lệ ⇒ không vi phạm luật 'câu liền sau trích là ngoại lệ'. (2) `phamVi.text` gộp 'than đá, than non hoặc than bùn' cho CẢ than cốc lẫn than nửa cốc, trong khi chú giải chỉ nói than nửa cốc từ 'than đá hoặc than non' — nhưng biểu thuế dòng 27040020 ghi 'Than cốc và than nửa cốc luyện từ than non hoặc than bùn' nên phạm vi theo biểu thuế VN là đúng ⇒ giữ nguyên. (3) `dieuKienVao` rỗng là ĐÚNG: nguồn không có câu ràng buộc nào phủ CẢ nhóm; câu 'Than Cốc và than bán cốc của nhóm này có thể ở dạng hạt nhỏ hoặc được gắn kết' là câu CHO PHÉP (có thể) nên máy loại đúng.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Trích [nhom2704.nhom] nguyên văn 3 đoạn nối bằng '…': (1) 'Than cốc là cặn rắn thu được từ chưng cất trong môi trường chân không (carbon hóa hoặc khí hóa) của than đá, than non hoặc than bùn.' (2) 'Than nửa cốc, thu được từ chưng cất than đá hoặc than non ở nhiệt độ thấp.' (3) 'Muội bình chưng than đá (carbon khí) là dạng carbon đen, cứng, dễ vỡ' ✓ byte-exact. Các đoạn bị lược ('Nó thu được trong lò luyện cốc…', 'Than Cốc và than bán cốc… có thể ở dạng hạt nhỏ hoặc được gắn kết') KHÔNG chứa ngoại lệ ('trừ'/'tuy nhiên'/'với điều kiện'/'không kể') ⇒ hợp lệ. `text` chỉ dùng từ có trong trích."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2704.nhom] ghi rõ 'Nhóm này không bao gồm: … (a) Than cốc nhựa chưng và cốc dầu mỏ (tương ứng trong các nhóm 27.08 và 27.13).' — có DẤU HIỆU LOẠI TRỪ + đích danh nhóm 27.08 và 27.13 + số nhóm có trong câu trích ⇒ hợp lệ luật 3. `sangNhom` '2708|2713' đúng dạng nhà (4 số, không dấu chấm)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích [nhom2704.nhom] nguyên văn: '… (b) Các sản phẩm từ carbon nhiệt phân được sử dụng cho mục đích điện (nhóm 85.45).' — loại trừ + đích danh 85.45 ✓. `dieuKien` rút gọn 'được sử dụng' → 'dùng' nhưng GIỮ định ngữ giới hạn 'cho mục đích điện' (không rơi vào lớp lỗi 'mất định ngữ giới hạn'); không thêm tên nhóm nào ngoài câu trích."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi 'Hàng là than cốc nhựa chưng hoặc cốc dầu mỏ không?' (không nhắc mã ✓); nhánh CÓ → '2708|2713' và nhánh KHÔNG → '2704' đều có căn cứ trong câu trích (không suy từ cấu trúc anh em) ✓. 'A hoặc B' (than cốc nhựa chưng HOẶC cốc dầu mỏ) được giữ nguyên là một cặp đích, KHÔNG bị tách thành hai điều kiện độc lập."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi 'Hàng là sản phẩm từ carbon nhiệt phân dùng cho mục đích điện không?'; nhánh CÓ → '8545', KHÔNG → '2704' ✓ căn cứ trong câu trích; không đảo chiều Có/Không (nguồn: nhóm này KHÔNG bao gồm loại này ⇒ hỏi 'có phải loại bị loại không' thì CÓ → sang 8545 ✓)."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27040010: trích nguyên văn [tax.27040010] '27040010 - Than cốc và than nửa cốc luyện từ than đá' ✓; `dieuKien` = đúng tên biểu thuế; `loaiKhac` false ✓ (máy tự điền)."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27040020: trích nguyên văn [tax.27040020] '27040020 - Than cốc và than nửa cốc luyện từ than non hoặc than bùn' ✓; `dieuKien` = đúng tên biểu thuế; loạiKhac false ✓."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "Dòng 27040030: trích nguyên văn [tax.27040030] '27040030 - Muội bình chưng than đá' ✓; `dieuKien` = đúng tên biểu thuế; loaiKhac false ✓."
+  }
+ ]
+}

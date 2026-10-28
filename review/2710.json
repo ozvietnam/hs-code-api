@@ -1,0 +1,371 @@
+{
+  "nhom": "2710",
+  "nguoiSoat": "dev-soat-doc-lap-lo080",
+  "luc": "2026-10-29T04:30:00+07:00",
+  "phamViSoat": 1,
+  "soat": 68,
+  "giu": 65,
+  "sua": 1,
+  "xoa": 0,
+  "chen": 2,
+  "ghiChu": "SOÁT ĐỘC LẬP 2710 (65 mục; đọc thêm 6 tieuChi6 + 42 dong8 nhưng KHÔNG sửa — ngoài phạm vi theo SOAT-LO). Mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn (kiểm bằng scripts/check-trich-nguyen-van.mjs byte-exact + bộ kiểm thứ 5 tự viết: mọi từ nội dung trong phamVi.text / loaiTru.dieuKien / phanBiet.hoi / dong8.dieuKien phải có trong CÂU TRÍCH CỦA CHÍNH MỤC ĐÓ). SỬA 1 · CHÈN 2. (1) phamVi — LỖI MÁY KHÔNG BẮT: `text` liệt kê nội dung (A)(B)(C) ('dầu mỏ thô, dầu nặng, dầu nhẹ, trung bình…; các loại dầu tương tự; các dầu được thêm một số chất khác nhau') mà câu trích cũ KHÔNG có — trích chỉ gồm tiêu đề '(I) NHỮNG SẢN PHẨM BAN ĐẦU' + câu 'đã trải qua bất kỳ quá trình nào' + '(II) DẦU THẢI' và CẮT CỤT giữa câu ('…chứa chủ yếu là dầu mỏ'), trông như câu trọn. Sửa: `trich` cắt lại từ [nhom2710.nhom] gồm 6 mảnh nối bằng ' … ' phủ đủ (A)(B)(C) + hoàn tất câu 'Dầu thải là … chứa hoặc không chứa nước.'; `text` rút gọn 'trung bình thu được bằng việc chưng cất hoặc tinh chế dầu mỏ thô' (chi tiết không có trong câu trích) để mọi khẳng định của `text` đều được câu trích đỡ. (2) CHÈN loại trừ (a) → nhóm 26.20: nguồn [nhom2710.nhom] CÓ câu '(a) Cặn của xăng pha chì và cặn của hợp chất chì chống kích nổ … (nhóm 26.20).' — bản nháp BỎ SÓT hẳn mục này (chỉ có (b)(c) và các ví dụ trong câu (c)); CHÈN cả loaiTru và phanBiet (nguồn nêu đích danh 26.20 ⇒ hợp lệ theo luật 3; câu hỏi phân biệt theo mẫu nhà 'Hàng này là … không?'). GHI NHẬN: `dieuKienVao` rỗng là ĐÚNG — câu ràng buộc của nhóm nằm ở từng phần (A)/(B)/(C) và câu '(II) DẦU THẢI', không có câu nào phủ CẢ nhóm (bài học lô 045/060); các ngưỡng 70 % / 90 % ở 210°C là điều kiện CẤP PHÂN NHÓM nên nằm ở tieuChi6/dong8, không đưa vào dieuKienVao (luật 6). GHI NHẬN: `loaiTru[1]` giữ nguyên: nhãn 'chế phẩm chứa ít hơn 70% dầu mỏ' HẸP hơn câu nguồn (nguồn còn 'hoặc dầu thu được từ các khoáng có chứa bitum') nhưng KHÔNG ngược nghĩa với phần bao gồm của nhóm; câu trích đầy đủ nên đọc được. GHI NHẬN: 5 dòng 'Loại khác: phần còn lại của phân nhóm 2710.12' — đúng MẪU NHÀ (453/794 dòng 'Loại khác' có cha 7 số trong kho cũng ghi 'phần còn lại của phân nhóm X.XX'). GHI NHẬN: nút ảo 2710198 CHƯA CÓ TÊN — nguồn KHÔNG nêu tên nào cho nút này (sen.27101989 chỉ nêu tên dòng 27101989) ⇒ không điền được, không phải lỗi; check-cay báo 'nut-ao-chua-co-ten:2710198' là cảnh báo (không đỏ). GHI NHẬN: `boPhan` = null — nguồn CÓ liệt kê các phần (I)/(II) hoặc (A)/(B)/(C) nhưng nhà chỉ dùng `boPhan` cho 202/626 nhóm (32,3 %) và có 119 nhóm có liệt kê phần mà vẫn để null (0106, 0405, 0406 …) ⇒ KHÔNG tự thêm (đó là quyết định thiết kế dữ liệu của người soạn, không phải lỗi); đề xuất người duyệt cân nhắc nếu muốn nhóm này có `boPhan`.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT — `text` nói điều câu trích KHÔNG nói: text liệt kê nội dung (A)(B)(C) ('dầu mỏ thô, dầu nặng, dầu nhẹ, trung bình…; các loại dầu tương tự; các dầu được thêm một số chất khác nhau') trong khi câu trích cũ chỉ có tiêu đề '(I) NHỮNG SẢN PHẨM BAN ĐẦU' + câu 'đã trải qua bất kỳ quá trình nào' + '(II) DẦU THẢI', và bị CẮT CỤT giữa câu ở '…chứa chủ yếu là dầu mỏ' (không có dấu lược nên trông như câu trọn). Sửa: `trich` cắt lại thẳng từ [nhom2710.nhom] thành 9 mảnh nối bằng ' … ' phủ đủ (A)(B)(C) và hoàn tất câu 'Dầu thải là … chứa hoặc không chứa nước.'; `text` rút gọn 'trung bình thu được bằng việc chưng cất hoặc tinh chế dầu mỏ thô' (chi tiết không có trong câu trích) để mọi khẳng định của `text` đều được câu trích đỡ. Không sửa mã/nguồn, không thêm chữ ngoài nguồn.",
+      "sua": {
+        "text": "Những sản phẩm ban đầu: dầu mỏ thô, dầu nặng, dầu nhẹ, trung bình; các loại dầu tương tự; các dầu được thêm một số chất khác nhau; dầu thải.",
+        "trich": "(I) NHỮNG SẢN PHẨM BAN ĐẦU … (A) “Dầu mỏ thô” … cũng như dầu nặng, dầu nhẹ, trung bình … (B) Các loại dầu tương tự … (C) Các dầu đã kể ở phần (A) và (B) ở trên … được thêm một số chất khác nhau … (II) DẦU THẢI … Dầu thải là chất thải chứa chủ yếu là dầu mỏ và các loại dầu thu được từ các khoáng bitum … chứa hoặc không chứa nước."
+      }
+    },
+    {
+      "index": "loaiTru",
+      "hanhDong": "chen",
+      "lyDo": "BỎ SÓT MỤC LOẠI TRỪ — nguồn [nhom2710.nhom] CÓ câu '(a) Cặn của xăng pha chì và cặn của hợp chất chì chống kích nổ … (nhóm 26.20).' ngay dưới mục 'Nhóm này không bao gồm:', nhưng bản nháp chỉ ghi (b) và (c) cùng các ví dụ trong câu (c) ⇒ mất hẳn một đích loại trừ có tên. CHÈN theo luật 3 (chú giải nêu đích danh 26.20, số nhóm có trong câu trích).",
+      "muc": {
+        "dieuKien": "cặn của xăng pha chì và cặn của hợp chất chì chống kích nổ",
+        "sangNhom": "2620",
+        "nguon": "nhom2710.nhom",
+        "trich": "(a) Cặn của xăng pha chì và cặn của hợp chất chì chống kích nổ từ các bể chứa xăng pha chì và những hợp chất chì chống kích nổ chứa chủ yếu chì, hợp chất chì và oxit sắt và thực tế không có dầu mỏ, nói chung được sử dụng để thu hồi chì hoặc các hợp chất chì (nhóm 26.20)."
+      }
+    },
+    {
+      "index": "phanBiet",
+      "hanhDong": "chen",
+      "lyDo": "BỎ SÓT CÂU HỎI PHÂN BIỆT cho cùng đích loại trừ 26.20 (trong kho 922/1166 mục phanBiet có neuKhong = chính nhóm ⇒ đúng mẫu nhà). CHÈN kèm loạiTru 26.20 để hai khối khớp nhau.",
+      "muc": {
+        "hoi": "Hàng này là cặn của xăng pha chì hoặc cặn của hợp chất chì chống kích nổ không?",
+        "neuCo": "2620",
+        "neuKhong": "2710",
+        "nguon": "nhom2710.nhom",
+        "trich": "(a) Cặn của xăng pha chì và cặn của hợp chất chì chống kích nổ từ các bể chứa xăng pha chì và những hợp chất chì chống kích nổ chứa chủ yếu chì, hợp chất chì và oxit sắt và thực tế không có dầu mỏ, nói chung được sử dụng để thu hồi chì hoặc các hợp chất chì (nhóm 26.20)."
+      }
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[6]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[7]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[4]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[5]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[6]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[7]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[8]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[3]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[4]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "tieuChi6[5]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[2]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[3]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[4]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[5]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[6]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[7]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[8]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[9]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[10]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[11]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[12]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[13]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[14]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[15]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[16]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[17]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[18]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[19]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[20]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[21]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[22]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[23]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[24]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[25]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[26]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[27]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[28]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[29]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[30]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[31]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[32]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[33]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[34]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[35]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[36]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[37]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[38]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[39]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[40]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[41]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    }
+  ]
+}

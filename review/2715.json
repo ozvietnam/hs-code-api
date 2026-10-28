@@ -1,0 +1,106 @@
+{
+  "nhom": "2715",
+  "nguoiSoat": "dev-soat-doc-lap-lo080",
+  "luc": "2026-10-29T04:30:00+07:00",
+  "phamViSoat": 1,
+  "soat": 16,
+  "giu": 12,
+  "sua": 4,
+  "xoa": 0,
+  "chen": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2715 (16 mục; đọc thêm 0 tieuChi6 + 2 dong8 nhưng KHÔNG sửa — ngoài phạm vi). Câu trích nguyên văn tuyệt đối. SỬA 4. (1) loaiTru[2] — MẤT NHÁNH 'hoặc': nguồn '(c) Dạng pha trộn của nhựa đường với dầu creosote HOẶC các sản phẩm chưng cất nhựa than đá khác (nhóm 27.06).' — bản nháp chỉ 'pha trộn nhựa đường với dầu creosote'. (2) loaiTru[3] — MẤT ĐIỀU KIỆN QUAN TRỌNG: nguồn '(d) Bitum đã nghiền và đã khử nước phân tán trong nước VÀ CHỨA MỘT LƯỢNG NHỎ CHẤT NHŨ HÓA TẠO NHŨ TƯƠNG … chỉ thêm vào để tăng độ an toàn, dễ sử dụng hoặc vận chuyển (nhóm 27.14).' — nhãn cũ bỏ hết phần nhũ tương ⇒ nhãn rộng hơn nguồn và MÂU THUẪN với câu bao gồm của nhóm 27.14 ('nhóm này cũng bao gồm bitumen tự nhiên đã khử nước và bitumen tự nhiên đã nghiền phân tán trong nước và chứa một lượng nhỏ chất tạo nhũ tương …'). (3)(4) phanBiet[2][3].hoi sửa cho khớp. GHI NHẬN: `dieuKienVao` rỗng là ĐÚNG — câu '(1) Cut-backs … thường chứa 60% hoặc hơn bitum' có định ngữ 'thường' (không phải điều kiện VÀO nhóm) và chỉ ràng buộc một phần của nhóm. GHI NHẬN: `tieuChi6` rỗng là ĐÚNG — nhóm 2715 KHÔNG có nút 6 số trong cây (lá 27150010/27150090 có cha trực tiếp là 2715) nên máy không đòi tiêu chí 6 số. GHI NHẬN: loại trừ 68.07 lấy từ vế 'nhưng loại trừ các sản phẩm đã hoàn chỉnh có hình dạng thông thường (như đá lát mặt đường, các tấm và tấm lát ngói nhóm 68.07)' — câu trích giữ đủ vế 'nhưng loại trừ …' (không nuốt ngoại lệ), không cần kéo thêm vế trước; KHÔNG dựng phanBiet cho mục này (vế trước là điều kiện mở rộng nhóm, không phải câu hỏi có/không). GHI NHẬN: `cay.tenDien` rỗng — không có nút ảo chưa có tên trong nhóm này. GHI NHẬN: `boPhan` = null — nguồn CÓ liệt kê các phần (I)/(II) hoặc (A)/(B)/(C) nhưng nhà chỉ dùng `boPhan` cho 202/626 nhóm (32,3 %) và có 119 nhóm có liệt kê phần mà vẫn để null (0106, 0405, 0406 …) ⇒ KHÔNG tự thêm (đó là quyết định thiết kế dữ liệu của người soạn, không phải lỗi); đề xuất người duyệt cân nhắc nếu muốn nhóm này có `boPhan`.",
+  "thayDoi": [
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT NHÁNH 'hoặc': nguồn '(c) Dạng pha trộn của nhựa đường với dầu creosote HOẶC các sản phẩm chưng cất nhựa than đá khác (nhóm 27.06).' — nhãn bản nháp chỉ 'pha trộn nhựa đường với dầu creosote'. Sửa nhãn theo nguyên văn.",
+      "sua": {
+        "dieuKien": "dạng pha trộn của nhựa đường với dầu creosote hoặc các sản phẩm chưng cất nhựa than đá khác"
+      }
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT ĐIỀU KIỆN QUAN TRỌNG: nguồn '(d) Bitum đã nghiền và đã khử nước phân tán trong nước VÀ CHỨA MỘT LƯỢNG NHỎ CHẤT NHŨ HÓA TẠO NHŨ TƯƠNG (chất hoạt động bề mặt) được thêm vào chỉ để tăng độ an toàn, dễ sử dụng hoặc vận chuyển (nhóm 27.14).' — nhãn bản nháp bỏ hết phần nhũ tương ⇒ nhãn RỘNG hơn nguồn và MÂU THUẪN với câu bao gồm của nhóm 27.14 ('nhóm này cũng bao gồm bitumen tự nhiên đã khử nước và bitumen tự nhiên đã nghiền phân tán trong nước và chứa một lượng nhỏ chất tạo nhũ tương …'). Sửa nhãn theo nguyên văn.",
+      "sua": {
+        "dieuKien": "bitum đã nghiền và đã khử nước phân tán trong nước và chứa một lượng nhỏ chất nhũ hóa tạo nhũ tương chỉ thêm vào để tăng độ an toàn, dễ sử dụng hoặc vận chuyển"
+      }
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi phải phủ nhánh 'hoặc các sản phẩm chưng cất nhựa than đá khác' của nguồn.",
+      "sua": {
+        "hoi": "Hàng này là dạng pha trộn của nhựa đường với dầu creosote hoặc các sản phẩm chưng cất nhựa than đá khác không?"
+      }
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "sua",
+      "lyDo": "Câu hỏi phải mang điều kiện 'chứa một lượng nhỏ chất nhũ hóa tạo nhũ tương … chỉ thêm vào để tăng độ an toàn' (nếu không, mọi bitum nghiền–khử nước đều bị đẩy sang 27.14, trái với phần bao gồm của 27.14).",
+      "sua": {
+        "hoi": "Hàng này là bitum đã nghiền, khử nước phân tán trong nước, có chất nhũ hóa tạo nhũ tương chỉ để an toàn không?"
+      }
+    },
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "loaiTru[6]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[4]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "phanBiet[5]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[0]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    },
+    {
+      "index": "dong8[1]",
+      "hanhDong": "giu",
+      "lyDo": "XEM ghiChu."
+    }
+  ]
+}
