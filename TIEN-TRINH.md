@@ -10589,7 +10589,7 @@ với tờ khai "graphit nhân tạo". Sửa: `dieuKien` nêu đủ ba nhánh, �
 
 # LÔ 074 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 28/10/2026 22:00)
 
-- **Nhánh:** `so-tay/lo-074` (worktree `hs-code-api-wt-st-lo074`; đã kiểm `ps` — phiên lô 073 chạy worktree riêng `wt-st-lo073`, KHÔNG trùng PID) · **PR mở, KHÔNG merge** — chờ soát độc lập
+- **Nhánh:** `so-tay/lo-074` (worktree `hs-code-api-wt-st-lo074`; đã kiểm `ps` — phiên lô 073 chạy worktree riêng `wt-st-lo073`, KHÔNG trùng PID) · **PR #515** — **KHÔNG merge** (chờ soát độc lập)
 - **Nhóm:** `2524 2525 2526 2528 2529 2530` (Chương 25: amiăng · mi ca · steatit và talc · borat tự nhiên · tràng thạch và fluorit · khoáng chất khác) — lấy theo CSV dòng 074, khớp brief
 - **Nguồn:** `tmp/so-tay/nguon/{2524,2525,2526,2528,2529,2530}.txt` (46.033 ký tự) + `_he-thong.txt` — đọc HẾT 6 tệp
 
