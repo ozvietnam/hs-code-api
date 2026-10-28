@@ -1,0 +1,43 @@
+{
+ "nhom": "2708",
+ "nguoiSoat": "dev-soat-doc-lap-lo079",
+ "luc": "2026-10-29T04:55:00+07:00",
+ "phamViSoat": "Toàn bộ 4 mục của nhóm 2708 (1 phamVi + 1 phanBiet + 2 dong8), đọc cùng tmp/so-tay/nguon/2708.txt (nhom2708.nhom, ch27.chuong, wco.270810, wco.270820, tax.27081000, tax.27082000). Đối chiếu BYTE-EXACT từng đoạn trích với đúng khối nguồn; thêm kiểm mọi âm tiết trong `text`/`dieuKien`/`hoi` phải có nguyên văn trong câu trích của chính mục.",
+ "soat": 4,
+ "giu": 1,
+ "sua": 3,
+ "xoa": 0,
+ "ghiChu": "XOÁ 0 · SỬA 3 · GIỮ 1/4. Nguồn 2708 mỏng nhất lô (chỉ 3 đoạn chú giải, KHÔNG có câu loại trừ nào) nhưng bản nháp dính đúng lớp lỗi của lô 069. SỬA 1 (`phamVi`): dấu lược '…' nuốt mất câu BAO HÀM 'Hắc ín nhựa chưng đã được làm thay đổi chút ít bằng cách thổi không khí tương tự như nhựa không thổi và vẫn được xếp trong nhóm này.' (mở rộng phạm vi: nhựa chưng bị thổi vẫn thuộc 2708) — luật lô 069: câu BAO HÀM không được bỏ, phải kéo vào `phamVi.trich` và thêm vế tương ứng vào `text`. SỬA 2 & 3 (`dong8[0]`, `dong8[1]`): điều kiện bỏ mất các vế 'hoặc …' của nguồn (điều kiện HẸP hơn nguồn). GHI NHẬN: (1) `phamVi.trich` sau sửa 381 ký tự (<600); `phamVi.text` sau sửa 170 ký tự ≤ trần clip 220 ✓. (2) Hai `dong8` sau sửa đều ≤ 90 ký tự (trần clip runtime của `dong8.dieuKien`) nên KHÔNG bị cắt. (3) `loaiTru` rỗng là ĐÚNG — nguồn 2708 không có câu loại trừ nào. (4) `dieuKienVao` rỗng là ĐÚNG — không có câu ràng buộc nào phủ cả nhóm. (5) `tieuChi6` rỗng: 270810/270820 không có tiêu chí kỹ thuật nào trong nguồn (chỉ có tên WCO) ⇒ `check-cay.mjs` báo 'phan-nhom-chua-co-tieu-chi' là báo động, KHÔNG phải lỗi.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — DẤU LƯỚC NUỐT CÂU BAO HÀM (phạm vi HẸP lại). Nguồn [nhom2708.nhom] nguyên văn: 'Hắc ín nhựa chưng trong nhóm này là cặn của quá trình chưng cất hắc ín than đá ở nhiệt độ cao hoặc hắc ín khoáng chất khác. … **Hắc ín nhựa chưng đã được làm thay đổi chút ít bằng cách thổi không khí tương tự như nhựa không thổi và vẫn được xếp trong nhóm này.** … Than cốc nhựa chưng là sản phẩm cặn sót lại cuối cùng từ việc chưng cất hắc ín than đá ở nhiệt độ thấp hoặc nhiệt độ cao' — bản nháp lược qua đoạn giữa, nuốt luôn câu '…vẫn được xếp trong nhóm này' (mở rộng phạm vi: nhựa chưng bị thổi không khí VẪN thuộc 2708). Luật lô 069: câu BAO HÀM phải kéo vào `phamVi.trich` và thêm vế tương ứng vào `text`. Sửa: (1) `trich` — chèn nguyên văn câu bao hàm (byte-exact, tổng 381 ký tự < 600); (2) `text` — thêm vế 'vẫn được xếp trong nhóm này' (170 ký tự ≤ trần clip 220 của runtime); mọi từ trong `text` đều có nguyên văn trong câu trích. KHÔNG sửa mã, KHÔNG sửa câu nguồn.",
+   "sua": {
+    "text": "Hắc ín nhựa chưng … than cốc nhựa chưng; hắc ín nhựa chưng đã được làm thay đổi chút ít bằng cách thổi không khí tương tự như nhựa không thổi vẫn được xếp trong nhóm này.",
+    "trich": "Hắc ín nhựa chưng trong nhóm này là cặn của quá trình chưng cất hắc ín than đá ở nhiệt độ cao hoặc hắc ín khoáng chất khác. … Hắc ín nhựa chưng đã được làm thay đổi chút ít bằng cách thổi không khí tương tự như nhựa không thổi và vẫn được xếp trong nhóm này. … Than cốc nhựa chưng là sản phẩm cặn sót lại cuối cùng từ việc chưng cất hắc ín than đá ở nhiệt độ thấp hoặc nhiệt độ cao"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Hỏi 'Hàng là than cốc nhựa chưng không?' (không nhắc mã ✓); trích [nhom2708.nhom] nguyên văn 2 đoạn nối bằng '…' (đoạn lược là mô tả tính chất/cách dùng, KHÔNG phải ngoại lệ) ✓. Nhánh CÓ → '27082000' (dòng 'Than cốc nhựa chưng' — có tên trong câu trích), KHÔNG → '27081000' (dòng 'Nhựa chưng (hắc ín)' — nhóm 2708 chỉ có 2 dòng nên nhánh 'không' phủ TRỌN phần còn lại) ✓; không đảo chiều Có/Không."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — ĐIỀU KIỆN HẸP HƠN NGUỒN. Nguồn [nhom2708.nhom] nguyên văn: 'Hắc ín nhựa chưng trong nhóm này là cặn của quá trình chưng cất hắc ín than đá ở nhiệt độ cao **hoặc hắc ín khoáng chất khác**.' — bản nháp bỏ mất vế 'hoặc hắc ín khoáng chất khác' (tức nhựa chưng từ hắc ín khoáng chất khác cũng thuộc dòng 27081000) ⇒ điều kiện chỉ còn nhánh 'chưng cất hắc ín than đá'. Sửa: đưa vế 'hoặc hắc ín khoáng chất khác' vào `dieuKien`, rút gọn cho vừa trần clip 90 của runtime (84 ký tự, KHÔNG bị cắt); `trich` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Nhựa chưng: cặn chưng cất hắc ín than đá ở nhiệt độ cao hoặc hắc ín khoáng chất khác"
+   }
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT — ĐIỀU KIỆN HẸP HƠN NGUỒN. Nguồn [nhom2708.nhom] nguyên văn: 'Than cốc nhựa chưng là sản phẩm cặn sót lại cuối cùng từ việc chưng cất hắc ín than đá ở nhiệt độ thấp **hoặc nhiệt độ cao** hoặc chưng cất các hắc ín khoáng hoặc hắc ín (nhựa chưng) của chúng.' — bản nháp chỉ giữ 'ở nhiệt độ thấp' ⇒ than cốc nhựa chưng từ chưng cất nhiệt độ CAO bị loại khỏi dòng 27082000 (đáng chú ý: chính `phamVi.trich` của nhóm đã nêu 'ở nhiệt độ thấp hoặc nhiệt độ cao'). Sửa: đưa vế 'hoặc nhiệt độ cao' vào `dieuKien`, rút gọn 'sót lại cuối cùng' → 'cuối cùng' và 'nhiệt độ cao' → 'cao' cho vừa trần clip 90 của runtime (87 ký tự, KHÔNG bị cắt); `trich` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Than cốc nhựa chưng: cặn cuối cùng từ chưng cất hắc ín than đá ở nhiệt độ thấp hoặc cao"
+   }
+  }
+ ]
+}
