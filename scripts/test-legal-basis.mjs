@@ -125,6 +125,51 @@ for (const dir of ['lib', 'api']) {
 }
 check('không tệp nào ngoài legal-basis.js tự gắn "Điều N … 85/2026" trong mã (chú thích thì được)', strays.length === 0, strays);
 
+// ── TT 121/2025/TT-BTC: chỉ tiêu tờ khai (mẫu số 01/02 Phụ lục II TT 38/2015) — job L0d ──
+import { execFileSync } from 'node:child_process';
+const FIX121 = path.join(ROOT, 'tests', 'fixtures', 'legal', 'tt121-2025-cong-bao-60-trich.txt');
+const FIX85 = path.join(ROOT, 'tests', 'fixtures', 'legal', 'tt85-2026-cong-bao-409.txt');
+const chay = (args) => { try { return { code: 0, out: execFileSync('node', [path.join(ROOT, 'scripts', 'check-legal-basis.mjs'), ...args], { encoding: 'utf8' }) }; } catch (e) { return { code: e.status || 1, out: String(e.stdout || '') }; } };
+check('TT121: văn bản có số hiệu, hiệu lực 01/02/2026, Công báo 60, sửa TT 38/2015 + 39/2018',
+  lb.TT121?.soHieu === '121/2025/TT-BTC' && lb.TT121.hieuLucTu === '2026-02-01' && lb.TT121.ngayBanHanh === '2025-12-18' && /Công báo số 60 ngày 27-01-2026/.test(lb.TT121.congBao)
+  && lb.TT121.sua?.join() === '38/2015/TT-BTC,39/2018/TT-BTC' && lb.TT121.sha256Pdf === 'a210244bdded36cc9d5ca7b7b7f00c0d53f3623c2dda75b3ee5fbf4462a92ead', lb.TT121);
+const KHOA121 = ['1.78.1', '1.78.luuY.tenHang', '1.78.3', '1.68.8', '1.68.luuY.100kyTu', '1.68.luuY.hys', '1.68.luuY.ngan', '2.69.1', '2.69.2', '2.69.3'];
+check('CHI_TIEU_TT121: đủ khoá tối thiểu, mỗi mục có mẫu 01/02, chỉ tiêu, tên chỉ tiêu, trang, trích',
+  Boolean(lb.CHI_TIEU_TT121) && KHOA121.every((k) => { const m = lb.CHI_TIEU_TT121[k]; return m && ['01', '02'].includes(m.mau) && k.startsWith(`${m.chiTieu}.`) && m.tenChiTieu && Number.isInteger(m.trang) && m.trich?.length > 10; }),
+  KHOA121.filter((k) => !lb.CHI_TIEU_TT121?.[k]));
+let c178 = null;
+try { c178 = lb.citeChiTieu('1.78.1'); } catch { /* chưa cài */ }
+check('citeChiTieu(1.78.1): mẫu 01, vanBan TT 121, vanBanGoc TT 38, tham_chieu chỉ tiêu 1.78 điểm (1) Phụ lục II',
+  c178?.mau === '01' && c178.vanBan === '121/2025/TT-BTC' && c178.vanBanGoc === '38/2015/TT-BTC' && c178.chiTieu === '1.78' && c178.diem === '1'
+  && c178.tham_chieu === 'Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC)'
+  && c178.trang === 143 && c178.trich === lb.CHI_TIEU_TT121['1.78.1'].trich, c178);
+check('citeChiTieu(2.69.2): mẫu 02 (tờ khai xuất), quy tắc "#&mã nước xuất xứ"', (() => { try { const c = lb.citeChiTieu('2.69.2'); return c.mau === '02' && /mẫu số 02/.test(c.tham_chieu) && c.trich.includes('mô tả hàng hóa#&mã nước xuất xứ'); } catch { return false; } })());
+check('citeChiTieu: mục "Lưu ý" ghi rõ là phần Lưu ý, không gán điểm', (() => { try { const c = lb.citeChiTieu('1.78.luuY.tenHang'); return !('diem' in c) && /Lưu ý/.test(c.tham_chieu); } catch { return false; } })());
+check('citeChiTieu: chỉ tiêu lạ → ném lỗi', (() => { try { lb.citeChiTieu('9.9.9'); return false; } catch { return typeof lb.citeChiTieu === 'function'; } })());
+check('cite(6.1) của TT 85 giữ nguyên shape cũ (bằng sâu)', JSON.stringify(lb.cite('6.1')) === JSON.stringify({ id: '6.1', vanBan: '85/2026/TT-BTC', dieu: '6', khoan: '1', tham_chieu: 'Điều 6 khoản 1 85/2026/TT-BTC', trang: 4, trich: 'nhưng chưa xác định được mã số duy nhất theo Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam thì sử dụng các tài liệu sau' }), lb.cite('6.1'));
+check('1.78 KHÔNG gắn giới hạn 200 ký tự (đó là giới hạn ô của hệ thống, không phải chữ TT 121)', !/200/.test(JSON.stringify(Object.entries(lb.CHI_TIEU_TT121 || {}).filter(([k]) => k.startsWith('1.78')))));
+{
+  const r121 = chay([`--van-ban=121/2025/TT-BTC`, `--text=${FIX121}`]);
+  check('check-legal-basis --van-ban=121/2025/TT-BTC với trích Công báo 60 → exit 0, mọi chỉ tiêu "ok"', r121.code === 0 && KHOA121.every((k) => new RegExp(`^ok\\s+${k.replace(/\./g, '\\.')}$`, 'm').test(r121.out)), r121.out.slice(-600));
+  const r85 = chay([`--text=${FIX85}`]);
+  check('check-legal-basis không --van-ban (TT 85) với trích Công báo 409 → exit 0 như cũ', r85.code === 0 && /điều khoản khớp nguyên văn/.test(r85.out), r85.out.slice(-300));
+  const sai = chay([`--van-ban=121/2025/TT-BTC`, `--text=${FIX85}`]);
+  check('check-legal-basis TT 121 với văn bản khác (TT 85) → exit 1', sai.code === 1, sai.out.slice(-200));
+  const la = chay([`--van-ban=1/2000/TT-BTC`, `--text=${FIX121}`]);
+  check('check-legal-basis văn bản không có trong sổ → exit 2', la.code === 2);
+}
+{
+  const src = fs.readFileSync(FIX121, 'utf8');
+  const ok = typeof lb.kiemNguyenVan === 'function' ? lb.kiemNguyenVan(lb.CHI_TIEU_TT121, src, { cheDo: 'NGUYEN_VAN' }) : null;
+  check('kiemNguyenVan (chế độ nguyên văn): bộ thật khớp hết', ok && ok.every((x) => x.ok), ok?.filter((x) => !x.ok));
+  const banSao = JSON.parse(JSON.stringify(lb.CHI_TIEU_TT121 || {}));
+  if (banSao['1.78.1']) banSao['1.78.1'].trich = banSao['1.78.1'].trich.replace('công dụng quy cách đóng gói', 'công dụng, quy cách đóng gói');
+  const hong = typeof lb.kiemNguyenVan === 'function' ? lb.kiemNguyenVan(banSao, src, { cheDo: 'NGUYEN_VAN' }) : null;
+  check('ca âm: sửa một dấu phẩy trong bản sao trích 1.78.1 → checker bắt (khác chữ 2.69 "công dụng, quy cách")', hong && hong.find((x) => x.id === '1.78.1')?.ok === false && hong.filter((x) => !x.ok).length === 1, hong?.filter((x) => !x.ok));
+  const tenSai = typeof lb.kiemNguyenVan === 'function' ? lb.kiemNguyenVan({ ten: { trich: lb.TT121.ten } }, src, { cheDo: 'NGUYEN_VAN' }) : null;
+  check('tên TT 121 khớp nguyên văn trích yếu', tenSai?.[0]?.ok === true);
+}
+
 // ── Có mặt trong phản hồi /api/suggest (AI giả) ──
 const llmTier = require('../lib/llm-tier');
 llmTier.callLLMJson = async (system, user) => {
@@ -143,6 +188,27 @@ const s1 = await call({ description: 'thang máy lắp trong tòa nhà, động 
 check('suggest: có canCuPhapLy khớp status', Boolean(s1.canCuPhapLy) && s1.canCuPhapLy.trangThai === lb.STATUS_MAP[s1.status], { status: s1.status, got: s1.canCuPhapLy?.trangThai });
 check('suggest: canCuPhapLy.vanBan là TT 85/2026', s1.canCuPhapLy?.vanBan?.soHieu === '85/2026/TT-BTC');
 check('suggest: 6.1.d đã tra TB-TCHQ (số khớp là số, không bỏ trống)', typeof s1.canCuPhapLy?.cacBuoc?.[1]?.taiLieu?.[3]?.trangThai === 'string' && s1.canCuPhapLy.cacBuoc[1].taiLieu[3].trangThai !== 'CHUA_TRA_CUU_TRONG_LUOT_NAY', s1.canCuPhapLy?.cacBuoc?.[1]?.taiLieu?.[3]);
+
+// ── Chuỗi căn cứ trả ra phản hồi: không còn "TT 39/2018 … mục 1.78 Phụ lục I" gõ tay (sai phụ lục) — job L0d ──
+{
+  const stray178 = [];
+  for (const dir of ['lib', 'api']) {
+    for (const f of fs.readdirSync(path.join(ROOT, dir)).filter((x) => x.endsWith('.js') && x !== 'legal-basis.js')) {
+      fs.readFileSync(path.join(ROOT, dir, f), 'utf8').split('\n').forEach((l, i) => { if (/1\.78 Phụ lục I\b/.test(l) && !/^\s*(\/\/|\*|\/\*)/.test(l)) stray178.push(`${dir}/${f}:${i + 1}`); });
+    }
+  }
+  check('không tệp lib/api nào gõ tay "1.78 Phụ lục I" trong mã', stray178.length === 0, stray178);
+  const { validateDeclaration } = require('../lib/declaration-validator.js');
+  const v = validateDeclaration({ tenHang: 'Nồi chiên không dầu', congDung: 'gia dụng', xuatXu: { code: 'CN', nameVi: 'Trung Quốc' }, tinhTrang: 'Mới 100%' }, { hsCode: '85166090' });
+  check('validateDeclaration.legalReferences: chỉ tiêu 1.78 qua citeChiTieu, không còn "Phụ lục I"',
+    Array.isArray(v.legalReferences) && v.legalReferences.includes(c178?.tham_chieu) && !v.legalReferences.some((x) => /Phụ lục I\b/.test(x)), v.legalReferences);
+  globalThis.fetch = async () => { throw new Error('test: không được gọi mạng'); };
+  const { runDeclarationCheck } = require('../lib/declaration-check.js');
+  const kq = await runDeclarationCheck({ dongHang: [{ stt: 1, maHs: '85166090', moTa: 'Nồi chiên không dầu 5L, 1500W, dùng điện, gia dụng', xuatXu: 'CN', donViTinh: 'chiếc', soLuong: 100 }] });
+  const j = JSON.stringify(kq);
+  check('runDeclarationCheck: không chuỗi nào chứa "TT 39/2018/TT-BTC mục 1.78 Phụ lục I"; nguồn K1 trỏ chỉ tiêu 1.78 qua citeChiTieu',
+    !j.includes('TT 39/2018/TT-BTC mục 1.78 Phụ lục I') && Boolean(c178) && j.includes(c178.tham_chieu), j.match(/"phienBan":"[^"]*"/g)?.slice(0, 2));
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
