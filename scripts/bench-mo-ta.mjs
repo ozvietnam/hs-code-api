@@ -107,7 +107,7 @@ const pct = (a, b) => (b ? `${Math.round((100 * a) / b)}%` : '—');
 const mean = (xs) => (xs.length ? xs.reduce((s, x) => s + x, 0) / xs.length : 0);
 
 function docGold() {
-  const cands = [process.env.OZ_GOLD_PATH, path.join(ROOT, 'data', 'oz-gold-final.jsonl'), '/home/user/hs-code-api/data/oz-gold-final.jsonl'].filter(Boolean);
+  const cands = [process.env.OZ_GOLD_PATH, path.join(ROOT, 'data', 'oz-gold-final.jsonl')].filter(Boolean);
   const p = cands.find((x) => fs.existsSync(x));
   if (!p) { console.error('Không thấy oz-gold-final.jsonl (đặt OZ_GOLD_PATH).'); process.exit(2); }
   return fs.readFileSync(p, 'utf8').split('\n').filter(Boolean).map((l) => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
