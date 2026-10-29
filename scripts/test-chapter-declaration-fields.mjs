@@ -35,5 +35,17 @@ assert('chương 99 (không có khuôn) → 404', (await call({ chapter: '99' })
 assert('chương 1 chữ số → 400', (await call({ chapter: '8' }))._s === 400);
 assert('không chapter/hs → 400', (await call({}))._s === 400);
 
+// Đợt 0A / H5: trường upperMaterial = MŨ giày (phần trên), không phải MŨI giày (toe cap — tiêu chí dòng 6402.99.10/20).
+r = await call({ chapter: '64' });
+const upper = (r._j.fields || []).find((f) => f.key === 'upperMaterial');
+assert('chương 64: nhãn upperMaterial là "mũ giày (phần trên)", không "mũi"', Boolean(upper) && /mũ giày/.test(upper.labelVi) && !/mũi/.test(upper.labelVi), upper);
+{
+  // patterns của khuôn này còn được declaration-validator dùng để coi trường là "đã khai".
+  const { collectChapterFieldRequirements } = require('../lib/declaration-validator');
+  const thieu = (s) => collectChapterFieldRequirements({ productName: s, chapterSpecific: {} }, '64029990', { customerDescription: s }).missing.map((m) => m.key);
+  assert('validator: "mũi giày gắn bảo vệ" KHÔNG thay cho chất liệu mũ giày', thieu('Giày có mũi giày gắn bảo vệ, đế cao su').includes('upperMaterial'));
+  assert('validator: "quai bằng nhựa giả da PU, đế ngoài bằng nhựa" → đủ mũ + đế', !thieu('Dép, quai bằng nhựa giả da PU, đế ngoài bằng nhựa, mũi không gắn bảo vệ').some((k) => k === 'upperMaterial' || k === 'soleMaterial'));
+}
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

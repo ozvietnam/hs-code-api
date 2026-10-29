@@ -50,6 +50,27 @@ check('render được từ chương', /^CHƯƠNG 85/.test(T.render('85')) && /N
   check('"Loại khác, dùng cho chiếu sáng gia dụng" (85392233) là LK có điều kiện, không phải LK trần', T.nodeOf('85392233').loaiKhac && !T.nodeOf('85392233').loaiKhacTran && T.nodeOf('85392239').loaiKhacTran);
   check('85392239: anh em có LK có điều kiện → chưa định nghĩa được bằng máy', T.loaiKhacOf('85392239').dinhNghiaDuoc === false);
   check('mã không phải Loại khác → null', T.loaiKhacOf('85042111') === null);
+  // Đợt 0A (ghi-nhan-mo-ta-ecus mục 32.3): phạm vi "Loại khác" nhiều tầng = tổ tiên có tên TRỪ mọi tầng của chuoi.
+  const lk3 = T.loaiKhacOf('39269099');
+  const TANG_TIEU_DE = ['39269091', '39269092', '39269093'];
+  const TANG_6_SO = ['39269010', '39269020', '3926903', '3926904', '3926905', '39269060', '3926908'];
+  check('39269099: anhEmCoTen giữ tầng gần nhất (hợp đồng cũ) = 39269091–93', lk3 && lk3.anhEmCoTen.join() === TANG_TIEU_DE.join(), JSON.stringify(lk3));
+  check('39269099: truDayDu = tầng tiêu đề 3926909 + tầng 6 số 392690 (đủ 10 nút, tầng gần trước), tổ tiên có tên 392690',
+    lk3.truDayDu.join() === [...TANG_TIEU_DE, ...TANG_6_SO].join() && lk3.toTienCoTen === '392690' && lk3.chuoi.length === 2, JSON.stringify(lk3.truDayDu));
+  const g3 = T.exclusionLeavesByTier('39269099');
+  check('39269099: exclusionLeavesByTier mở tiêu đề tầng 6 số ra dòng lá có tên (39269032, 39269041…), bỏ "Loại khác" trần',
+    g3.length === 2 && g3[0].nut === '3926909' && g3[0].la.join() === TANG_TIEU_DE.join() && g3[1].nut === '392690'
+      && ['39269010', '39269020', '39269032', '39269041', '39269060', '39269081'].every((h) => g3[1].la.includes(h))
+      && !g3[1].la.some((h) => T.nodeOf(h).loaiKhacTran), JSON.stringify(g3));
+  check('39269099: namedExclusionLeaves = mọi tầng; namedSiblingLeaves (cũ) chỉ tầng gần',
+    T.namedExclusionLeaves('39269099').length === g3[0].la.length + g3[1].la.length && T.namedSiblingLeaves('39269099').join() === TANG_TIEU_DE.join());
+  // Một tầng: không đổi.
+  check('85044090 (một tầng): truDayDu ≡ anhEmCoTen; namedExclusionLeaves ≡ namedSiblingLeaves',
+    lk2.truDayDu.join() === lk2.anhEmCoTen.join() && T.namedExclusionLeaves('85044090').join() === T.namedSiblingLeaves('85044090').join());
+  check('mã không phải Loại khác: namedExclusionLeaves ≡ namedSiblingLeaves, exclusionLeavesByTier rỗng',
+    T.namedExclusionLeaves('85044011').join() === T.namedSiblingLeaves('85044011').join() && T.exclusionLeavesByTier('85044011').length === 0);
+  // dinhNghiaDuoc xét MỌI tầng: tầng nhóm 0206 còn "Loại khác, tươi hoặc ướp lạnh" có điều kiện → chưa định nghĩa được.
+  check('02062900: tầng trên còn "Loại khác, …" có điều kiện → dinhNghiaDuoc false', T.loaiKhacOf('02062900').dinhNghiaDuoc === false);
 }
 
 // Chương 98 (không có trong WCO) vẫn dựng được bằng chữ số.
