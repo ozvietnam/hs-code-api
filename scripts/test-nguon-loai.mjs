@@ -39,5 +39,27 @@ for (const f of fs.readdirSync('data/so-tay')) {
 }
 assert(`sổ tay thật (${n} nhóm): mọi mục có nguonLoai, không mục AI_CHUA_KIEM, mọi nhóm có khối cay MAY_SUY`, n > 0 && thieu === 0 && cam === 0 && coCay === n, { thieu, cam, coCay, n });
 
+// ── L0e (#550): nhãn CLAUDE_DUYET — một hệ nhãn duy nhất cho bộ đề / ranh giới do Claude chấm duyệt độc lập ──
+assert('NHAN.CLAUDE_DUYET có mô tả và nói rõ KHÔNG phải người có chuyên môn', typeof N.NHAN.CLAUDE_DUYET === 'string' && /Claude chấm duyệt độc lập/.test(N.NHAN.CLAUDE_DUYET) && /KHÔNG phải người có chuyên môn/.test(N.NHAN.CLAUDE_DUYET), N.NHAN.CLAUDE_DUYET);
+assert('NHAN_MUC_SOAN = AI_DA_KIEM < CLAUDE_DUYET < NGUOI_DUYET (tin cậy tăng dần)', N.NHAN_MUC_SOAN.join() === 'AI_DA_KIEM,CLAUDE_DUYET,NGUOI_DUYET', N.NHAN_MUC_SOAN);
+assert('bộ đề mô tả data/bench/mo-ta-bo-de.json → CLAUDE_DUYET', N.nhanCuaTep('data/bench/mo-ta-bo-de.json') === 'CLAUDE_DUYET');
+assert('bench khác chưa khai (vd cay-20-nhom) KHÔNG bị gán CLAUDE_DUYET hàng loạt → null (không đoán)', N.nhanCuaTep('data/bench/cay-20-nhom-2026-10-11.json') === null && N.nhanCuaTep('bench/identify-gold-20.jsonl') === null);
+assert('NHAN_BO_DE: nhãn duy nhất bộ đề nhận là CLAUDE_DUYET', N.NHAN_BO_DE === 'CLAUDE_DUYET');
+assert('duocTrich(CLAUDE_DUYET) = true', N.duocTrich('CLAUDE_DUYET') === true);
+assert('cấp nút cây: CLAUDE_DUYET / AI_DA_KIEM / NGUOI_DUYET gộp vào DA_KIEM; NGUYEN_VAN, AI_CHUA_KIEM giữ; nhãn lạ → null',
+  typeof N.nhanNut === 'function' && ['CLAUDE_DUYET', 'AI_DA_KIEM', 'NGUOI_DUYET'].every((x) => N.nhanNut(x) === 'DA_KIEM')
+  && N.nhanNut('NGUYEN_VAN') === 'NGUYEN_VAN' && N.nhanNut('AI_CHUA_KIEM') === 'AI_CHUA_KIEM' && N.nhanNut('XYZ') === null);
+{
+  const ST = require('../lib/so-tay.js');
+  const s8509 = JSON.parse(fs.readFileSync('data/so-tay/8509.json', 'utf8'));
+  const it = s8509.dong8[0];
+  const src = ST.sourcesFor('8509');
+  assert('máy kiểm sổ tay: mục nguonLoai CLAUDE_DUYET qua được (như NGUOI_DUYET), AI_CHUA_KIEM vẫn bị loại',
+    ST.checkItem('dong8', { ...it, nguonLoai: 'CLAUDE_DUYET' }, src, '8509') === null && ST.checkItem('dong8', { ...it, nguonLoai: 'NGUOI_DUYET' }, src, '8509') === null
+    && ST.checkItem('dong8', { ...it, nguonLoai: 'AI_CHUA_KIEM' }, src, '8509') === 'nguon-loai-khong-hop-le:AI_CHUA_KIEM');
+  const v = ST.verifySoTay({ dong8: [{ ...it, nguonLoai: 'CLAUDE_DUYET' }] }, '8509', src);
+  assert('verifySoTay giữ nguyên nhãn CLAUDE_DUYET (không ghi đè thành AI_DA_KIEM)', v.soTay.dong8?.[0]?.nguonLoai === 'CLAUDE_DUYET', v.soTay.dong8);
+}
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);
