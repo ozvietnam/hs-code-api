@@ -169,12 +169,38 @@ module.exports = async function handler(req, res) {
           examples: ['/api/precedents?hs=03046200', '/api/precedents?q=máy bơm Pentax'],
         });
       }
+      // #538: normalizeHs pad cứng 8 số cho taxData — tiền lệ lại có key nhóm 4/6 số (17+24 key)
+      // nên query tiền tố bị pad thành mã không tồn tại (8526 → "No precedents for 85260000"
+      // dù nhánh 8526 giữ 6 tiền lệ; 170191 còn pad trùng nhầm key khác). Xử lý TẠI CHỖ theo
+      // tiền tố, không đụng normalizeHs dùng chung. found:false trả 200 (thống nhất đường q=;
+      // gateway đọc body qua trangThaiHopLe nên 404 cũ cũng chỉ là found:false).
+      const hsRaw = String(hs).replace(/\D/g, '');
+      if (hsRaw.length === 4 || hsRaw.length === 6) {
+        const matchedKeys = Object.keys(precedentsData).filter((k) => k.startsWith(hsRaw)).sort();
+        if (matchedKeys.length === 0) {
+          return res.status(200).json({
+            found: false,
+            hsCode: hsRaw,
+            prefix: true,
+            message: `No precedents under ${hsRaw}`,
+          });
+        }
+        const items = matchedKeys.flatMap((k) => precedentsData[k].map((it) => ({ ...it, tuMa: k })));
+        return res.status(200).json({
+          found: true,
+          hsCode: hsRaw,
+          prefix: true,
+          matchedKeys,
+          total: items.length,
+          items,
+        });
+      }
       const hsCode = normalizeHs(hs);
       const items = precedentsData[hsCode] || [];
       if (items.length === 0) {
-        return res.status(404).json({
+        return res.status(200).json({
           found: false,
-          hsCode,
+          hsCode: hsRaw || hsCode,
           message: `No precedents for ${hsCode}`,
         });
       }
