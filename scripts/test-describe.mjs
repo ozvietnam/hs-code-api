@@ -250,5 +250,28 @@ check('#324 nhóm 85: phụ đề/công dụng bị cắt TRƯỚC thông số',
 const cuMeta = composeWithMeta(tramsac); // không keepSpecs — hành vi cũ
 check('#324 nhóm khác: hành vi cũ giữ nguyên (thông số có thể bị cắt như trước)', cuMeta.dropped.includes('thongSoKyThuat') || cuMeta.text.includes('400 kW'), JSON.stringify(cuMeta.dropped));
 
+// ── L0c (#556): mô tả KHÔNG chứa mệnh đề "không gồm" lấy từ data/hs-context.json (AI_CHUA_KIEM) ──
+{
+  const MA_CO_X = '10059099';
+  const hsContext = require('./data/hs-context.json').context;
+  const xCuaMa = hsContext[MA_CO_X]?.x || [];
+  console.log(`  L0c: mã thử ${MA_CO_X} — hs-context.x = ${JSON.stringify(xCuaMa)}`);
+  check(`L0c: hs-context có mảng x khác rỗng cho ${MA_CO_X} (ca thử còn ý nghĩa)`, xCuaMa.length > 0, JSON.stringify(xCuaMa));
+  const llmTier = require('./lib/llm-tier');
+  const savedLlm = llmTier.callLLMJson;
+  llmTier.callLLMJson = async () => ({ json: { declaration: { tenHang: 'Ngô hạt đã tách vỏ', xuatXu: 'Trung Quốc', tinhTrang: 'Mới 100%' } }, provider: 'stub', model: 'stub' });
+  try {
+    const { describeProduct } = require('./lib/describe-core');
+    const out = await describeProduct({ hsCode: MA_CO_X, productName: 'Ngô hạt đã tách vỏ' });
+    const mo = String(out.json?.customsDescription || '');
+    check('L0c: describe 200', out.status === 200, String(out.status));
+    check('L0c: customsDescription không có "không gồm" (nguồn AI_CHUA_KIEM)', !/không gồm/i.test(mo), mo);
+    check('L0c: phản hồi không có khoá excludesVi ở bất kỳ độ sâu nào', !JSON.stringify(out.json).includes('"excludesVi"'), JSON.stringify(out.json.descriptionMeta));
+    check('L0c: descriptionMeta.dropped không còn mục loaiTranh', !(out.json.descriptionMeta?.dropped || []).includes('loaiTranh'), JSON.stringify(out.json.descriptionMeta?.dropped));
+  } finally {
+    llmTier.callLLMJson = savedLlm;
+  }
+}
+
 console.log(`\n${passed}/${passed + failed} passed, ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);
