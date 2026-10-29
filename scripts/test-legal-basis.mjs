@@ -210,5 +210,30 @@ check('suggest: 6.1.d đã tra TB-TCHQ (số khớp là số, không bỏ trốn
     !j.includes('TT 39/2018/TT-BTC mục 1.78 Phụ lục I') && Boolean(c178) && j.includes(c178.tham_chieu), j.match(/"phienBan":"[^"]*"/g)?.slice(0, 2));
 }
 
+// ── #559: các chỗ còn sót sau L0d — data, script sinh trang cộng đồng, lời nhắc LLM, thông điệp validator ──
+{
+  const SAI = [/1\.78 Phụ lục I\b/, /TT 39\/2018\/TT-BTC mục 1\.78/];
+  const sot = [];
+  const quet = (rel, boChuThich) => fs.readFileSync(path.join(ROOT, rel), 'utf8').split('\n').forEach((l, i) => {
+    if (boChuThich && /^\s*(\/\/|\*|\/\*)/.test(l)) return;
+    if (SAI.some((re) => re.test(l))) sot.push(`${rel}:${i + 1}`);
+  });
+  for (const dir of ['lib', 'api']) for (const f of fs.readdirSync(path.join(ROOT, dir)).filter((x) => x.endsWith('.js') && x !== 'legal-basis.js')) quet(`${dir}/${f}`, true);
+  quet('scripts/build-community-data.mjs', true);
+  quet('data/chapter-declaration-fields.json', false);
+  quet('public/community-data.json', false);
+  check('không còn "TT 39/2018/TT-BTC mục 1.78" / "1.78 Phụ lục I" gõ tay ở lib, api, build-community-data, chapter-declaration-fields, community-data', sot.length === 0, sot);
+  const cat = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'chapter-declaration-fields.json'), 'utf8'));
+  check('chapter-declaration-fields.json: legalRefs[0] đúng bằng citeChiTieu(1.78.1).tham_chieu (data lệch nguồn → CI đỏ)', cat.legalRefs?.[0] === c178?.tham_chieu, cat.legalRefs);
+  check('không còn hàm/định dạng con trỏ chiTieu: (bỏ theo quyết định #561)', !('thamChieuCua' in lb) && !(cat.legalRefs || []).some((x) => /^chiTieu:/.test(x)));
+  const { SYSTEM_PROMPT } = require('../lib/customs-prompt.js');
+  check('lời nhắc LLM soạn mô tả: căn cứ chỉ tiêu 1.78 lấy từ citeChiTieu', SYSTEM_PROMPT.includes(c178?.tham_chieu) && !/TT 39\/2018\/TT-BTC mục 1\.78/.test(SYSTEM_PROMPT));
+  const { validateDeclaration } = require('../lib/declaration-validator.js');
+  const w = validateDeclaration({ tenHang: 'Tranh sơn dầu vẽ tay', congDung: 'trang trí', xuatXu: { code: 'CN', nameVi: 'Trung Quốc' }, tinhTrang: 'Mới 100%' }, '97011000').warnings.find((x) => x.code === 'NO_CHAPTER_CHECKLIST');
+  check('NO_CHAPTER_CHECKLIST: không còn "(TT 39/2018)", trỏ chỉ tiêu 1.78 qua citeChiTieu', Boolean(w) && !/\(TT 39\/2018\)/.test(w.message) && w.message.includes(c178?.tham_chieu), w?.message);
+  const cd = JSON.parse(fs.readFileSync(path.join(ROOT, 'public', 'community-data.json'), 'utf8'));
+  check('public/community-data.json (sinh bằng scripts/build-community-data.mjs): describe.legalRefs[0] là tham_chieu chỉ tiêu 1.78', cd.describe?.legalRefs?.[0] === c178?.tham_chieu, cd.describe?.legalRefs);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

@@ -8,6 +8,9 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+
+const { citeChiTieu } = createRequire(import.meta.url)('../lib/legal-basis.js'); // căn cứ một cửa (luật 7a, #559)
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = join(root, 'data');
@@ -69,7 +72,7 @@ try {
 const describe = {
   maxLength: 200,
   legalRefs: [
-    'TT 39/2018/TT-BTC mục 1.78 Phụ lục I',
+    citeChiTieu('1.78.1').tham_chieu,
     'CV 5189/TCHQ-GSQL (2019)',
     'CV 755/TCHQ-GSQL (2020)',
   ],
