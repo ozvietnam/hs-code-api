@@ -35,10 +35,10 @@ module.exports = async function handler(req, res) {
   }
 
   // POST /api/declaration-sheet (rewrite → ?mode=sheet): phiếu hồ sơ khai báo — gộp vào
-  // function này theo pattern routes.json.
+  // function này theo pattern routes.json. Dữ liệu trang/ảnh của khách → LUÔN withPrivateData, bất kể ai gọi (L0a #546).
   if (String(req.query?.mode || '') === 'sheet') {
     try {
-      const out = await buildDeclarationSheet(body || {});
+      const out = await withPrivateData(() => buildDeclarationSheet(body || {}));
       return res.status(out.status).json(out.json);
     } catch (e) {
       return res.status(502).json({ error: 'Declaration sheet failed', detail: String(e.message).slice(0, 240) });

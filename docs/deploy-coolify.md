@@ -39,6 +39,7 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
    | `GEMINI_FREE_KEYS` | tùy chọn — dự phòng cuối khi MiniMax và Hermes đều lỗi |
    | `GEMINI_API_KEY` | khóa trả phí, chỉ dùng khi NV bấm "auto" (tier premium); bỏ trống được. **Với dữ liệu khách** nó là dự phòng hợp lệ thay cho tầng miễn phí |
    | `LLM_NO_TRAIN_PROVIDERS` | mặc định `minimax,gemini` — nhà cung cấp được nhận **dữ liệu khách** (lượt từ khoá dịch vụ `HS_SERVICE_TOKENS`). Hermes/OpenRouter chỉ thêm khi CEO xác minh họ không huấn luyện trên dữ liệu; mẫu `:free` luôn bị chặn. Hết nhà cung cấp hợp lệ → `NO_PRIVATE_LLM`, không rơi xuống Gemini miễn phí. `GET /api/health` → `llm.private` |
+   | `ZAI_RIENG_TU_HIEU_MODEL` | mặc định `on` (CEO chốt 29/10/2026, #546) — lượt khoá dịch vụ (dữ liệu khách) chỉ gửi **nhãn hiệu + model** sang z.ai để tra web (không tên hàng, không mô tả, không URL); z.ai KHÔNG thuộc `LLM_NO_TRAIN_PROVIDERS`. `off` = đóng khẩn (lượt riêng tư không tra web) |
    | `HS_LLM_PRIVATE_ALL` | `true` → mọi lượt (kể cả công khai) coi là dữ liệu khách; mặc định tắt |
 
 5. Gắn tên miền tạm, ví dụ `hs-kb-moi.uythacnhapkhau.com`, qua Cloudflare (tunnel hoặc
