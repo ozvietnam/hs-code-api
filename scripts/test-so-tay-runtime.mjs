@@ -7,6 +7,7 @@ import { nhomChuaCoSoTay } from './nhom-chua-co-so-tay.mjs';
 const require = createRequire(import.meta.url);
 const { dataPath } = require('../lib/data-paths.js');
 const rt = require('../lib/so-tay-runtime.js');
+const T = require('../lib/hs-tree.js');
 
 let passed = 0; let failed = 0;
 const assert = (name, ok, extra = '') => { console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${ok ? '' : ` ${extra}`}`); if (ok) passed += 1; else failed += 1; };
@@ -79,7 +80,9 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   assert('mã có tên (không Loại khác): có viTri (cha là tiêu đề bị lược), không có loaiKhac', w.viTri && w.viTri.cha.id === '8504211' && w.viTri.cha.suyRa === true && !w.loaiKhac);
   // 4907 (tem bưu chính) chưa có sổ tay; 1509 đã có từ lô 059 (27/10), 4011 từ vòng soạn 20 nhóm 11/10.
   const x = rt.advise({ topHs: '49070029', candidates: [] });
-  assert('nhóm chưa có sổ tay: vẫn có viTri + loaiKhac suy từ chữ số, trạng thái CHUA_CO_SO_TAY_CHO_NHOM', x.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && x.viTri && x.loaiKhac && x.loaiKhac.anhEmCoTen.map((a) => a.hs).join() === '49070021' && !x.loaiKhac.anhEmCoTen[0].trich, JSON.stringify(x));
+  assert('nhóm chưa có sổ tay: vẫn có viTri + loaiKhac suy từ chữ số, trạng thái CHUA_CO_SO_TAY_CHO_NHOM', x.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && x.viTri && x.loaiKhac && x.loaiKhac.anhEmCoTen[0].hs === '49070021' && x.loaiKhac.anhEmCoTen[0].tang === '4907002' && !x.loaiKhac.anhEmCoTen[0].trich, JSON.stringify(x));
+  // Đợt 0A: 49070029 nằm dưới tiêu đề bị lược 4907002 → phạm vi đủ còn trừ các dòng có tên của nhóm 4907.
+  assert('4907: anhEmCoTen đủ hai tầng (49070021 tầng 4907002; 49070010, 49070050, 49070060 tầng 4907) + truTheoTang 2 tầng', ['49070010', '49070050', '49070060'].every((h) => x.loaiKhac.anhEmCoTen.some((a) => a.hs === h && a.tang === '4907')) && x.loaiKhac.truTheoTang.map((g) => g.nut).join() === '4907002,4907', JSON.stringify(x.loaiKhac));
   const y = rt.advise({ topHs: '8504', candidates: [] });
   assert('mã 4 số: viTri là nhóm, không có loaiKhac', y.viTri.nut.startsWith('Nhóm 8504') && !y.loaiKhac);
   process.env.HS_SOTAY_RUNTIME = 'false';
@@ -131,6 +134,25 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   assert('máy nghi vẫn chạy trên tên biểu thuế nhưng không trích sổ tay AI_CHUA_KIEM; loaiTru AI_CHUA_KIEM không vào canGiaiTrinh',
     w.canGiaiTrinh.some((x) => x.loai === 'ANH_EM_CO_TEN_KHOP' && x.hs === '85044040' && x.nguon === 'tax.85044040' && !x.trich) && !w.canGiaiTrinh.some((x) => x.loai === 'LOAI_TRU_SANG_NHOM'), JSON.stringify(w.canGiaiTrinh));
   fs.rmSync(dataPath('so-tay'), { recursive: true, force: true }); rt.reset();
+}
+
+// ───────────── Đợt 0A: phạm vi "Loại khác" nhiều tầng (39269099) ─────────────
+{
+  rt.reset();
+  const lk = rt.loaiKhac('39269099');
+  const TANG_6_SO = ['39269010', '39269020', '3926903', '3926904', '3926905', '39269060', '3926908'];
+  assert('39269099: truTheoTang đủ 2 tầng — 3926909 trừ 39269091–93; 392690 trừ 7 nút (gồm tiêu đề 3926903/4/5/8)',
+    lk && lk.truTheoTang.length === 2 && lk.truTheoTang[0].nut === '3926909' && lk.truTheoTang[0].tru.map((x) => x.id).join() === '39269091,39269092,39269093'
+      && lk.truTheoTang[1].nut === '392690' && lk.truTheoTang[1].tru.map((x) => x.id).join() === TANG_6_SO.join()
+      && lk.truTheoTang[1].tru.find((x) => x.id === '3926903').laTieuDe === true, JSON.stringify(lk && lk.truTheoTang));
+  assert('39269099: anhEmCoTen liệt kê dòng lá có tên ở MỌI tầng, tầng gần trước, mỗi mục có tang',
+    lk.anhEmCoTen.slice(0, 3).map((a) => a.hs).join() === '39269091,39269092,39269093' && lk.anhEmCoTen.slice(0, 3).every((a) => a.tang === '3926909')
+      && ['39269010', '39269020', '39269032', '39269060'].every((h) => lk.anhEmCoTen.some((a) => a.hs === h && a.tang === '392690')) && !lk.anhEmCoTenBiCat, JSON.stringify(lk.anhEmCoTen.map((a) => a.hs)));
+  assert('39269099: toTienCoTen 392690, ghiChu nói "MỌI tầng"', lk.toTienCoTen.id === '392690' && /MỌI tầng/.test(lk.ghiChu));
+  const k = rt.anhEmKhop('39269099', { tenHang: 'Phao nhựa cho lưới đánh cá' });
+  assert('máy nghi đối chiếu cả tầng 6 số: "Phao nhựa cho lưới đánh cá" khai 39269099 → khớp 39269010', k.some((x) => x.hs === '39269010'), JSON.stringify(k));
+  const one = rt.loaiKhac('85044090');
+  assert('một tầng (85044090): truTheoTang 1 tầng, anhEmCoTen ≡ namedSiblingLeaves như cũ', one.truTheoTang.length === 1 && one.anhEmCoTen.map((a) => a.hs).join() === T.namedSiblingLeaves('85044090').join() && one.anhEmCoTen.every((a) => a.tang === '850440'), JSON.stringify(one.anhEmCoTen));
 }
 
 console.log(`\n${passed}/${passed + failed} passed`);

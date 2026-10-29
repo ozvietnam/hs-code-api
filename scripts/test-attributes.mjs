@@ -58,6 +58,16 @@ chk('ch64 đủ (mũ da, đế cao su) → rỗng',
   miss('64', { tenHang: 'Giày thể thao nam mũ da đế cao su' }).length === 0);
 chk('ch64 chatLieu chung "da" KHÔNG đủ phân biệt mũ/đế',
   ['upperMaterial', 'soleMaterial'].every((k) => miss('64', { tenHang: 'Giày', chatLieu: 'da' }).includes(k)));
+// 6b. Đợt 0A / H5: "mũi giày" (toe cap, tiêu chí dòng 6402.99.10/20) KHÔNG phải mũ giày (upper)
+chk('ch64 "quai bằng nhựa giả da PU, đế ngoài bằng nhựa" → đủ mũ + đế',
+  miss('64', { tenHang: 'Dép', specs: 'quai bằng nhựa giả da PU, đế ngoài bằng nhựa, mũi không gắn bảo vệ' }).length === 0,
+  miss('64', { tenHang: 'Dép', specs: 'quai bằng nhựa giả da PU, đế ngoài bằng nhựa, mũi không gắn bảo vệ' }));
+chk('ch64 "mũi giày gắn bảo vệ" KHÔNG tính là chất liệu mũ giày',
+  miss('64', { tenHang: 'Giày có mũi giày gắn bảo vệ, đế cao su' }).includes('upperMaterial'));
+chk('ch64 "phần trên bằng vải" → có mũ giày',
+  !miss('64', { tenHang: 'Giày', specs: 'phần trên bằng vải, đế cao su' }).includes('upperMaterial'));
+chk('registry nhãn upperMaterial là "mũ giày", không "mũi"',
+  /mũ giày/.test(reg.upperMaterial.labelVi) && !/mũi/.test(reg.upperMaterial.labelVi) && !reg.upperMaterial.detect.some((p) => /mui giay|mũi/.test(p)));
 // 7. Structured attrs (ERP tương lai)
 chk('structured attrs.voltage/power honored',
   miss('84', { tenHang: 'Thiết bị', voltage: '220V', power: '1000W', modelNumber: 'X1' }).length === 0);
