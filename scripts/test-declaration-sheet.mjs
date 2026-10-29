@@ -308,7 +308,7 @@ check('thực phẩm: chất liệu/kích thước không bắt buộc', food.de
   check('8536 không đổi: điện áp, dòng, số cực', ['voltage', 'currentRating', 'poleCount'].every((k) => keys('85366932')[k]?.required) && tpl('85366932') === 'switchgear');
   check('8523 SSD/USB: dung lượng + kết nối, không điện áp', keys('85235100').storageCapacity?.required && !keys('85235100').voltage);
   check('8482 ổ bi: không còn mẫu van', tpl('84821000') === 'bearing' && !keys('84821000').valveType);
-  check('6406 đế giày: không đòi mũi giày/size', tpl('64062000') === 'footwearPart' && !keys('64062000').upperMaterial);
+  check('6406 đế giày: không đòi mũ giày/size', tpl('64062000') === 'footwearPart' && !keys('64062000').upperMaterial);
   check('8215 thìa dĩa: không đòi vật liệu lưỡi', !keys('82159900').bladeMaterial && keys('82159900').toolType?.required);
   check('3406 nến: không đòi hoạt chất', tpl('34060000') === 'candle' && !keys('34060000').activeIngredient);
   // Ô mới phải nằm trong từ điển zh để AI rút được (declaration-sheet chỉ hỏi AI khóa có trong từ điển)
@@ -579,7 +579,7 @@ check('describe thường vẫn chạy (degraded khi AI lỗi)', h2._s === 200 &
   const single = [F('material', 'Chất liệu', 'thép không gỉ'), F('modelNumber', 'Model', 'X1')];
   foldPartMaterials(single);
   const rSingle = composeFromSheet(single, [], { tenHang: 'Dao', thongSoKyThuat: [] }, { brandStatus: 'NO_BRAND' }, { productName: 'Dao', origin: 'Trung Quốc', condition: 'Mới 100%' });
-  const mixed = [F('upperMaterial', 'Chất liệu mũi giày', 'da bò'), F('soleMaterial', 'Chất liệu đế', 'cao su'), F('material', 'Chất liệu', 'vải')];
+  const mixed = [F('upperMaterial', 'Chất liệu mũ giày (phần trên)', 'da bò'), F('soleMaterial', 'Chất liệu đế', 'cao su'), F('material', 'Chất liệu', 'vải')];
   foldPartMaterials(mixed);
   check('material đơn giữ nguyên (không parts); material khác bộ phận → "chính: vải; mũ giày: da bò; đế: cao su"', single[0].valueVi === 'thép không gỉ' && !single[0].parts && rSingle.declaration.thanhPhanCauTao === 'thép không gỉ' && mixed[2].valueVi === 'chính: vải; mũ giày: da bò; đế: cao su' && mixed[2].parts.length === 3 && mergePartMaterials({ valueVi: 'da' }, [['mũ giày', 'da bò']]) === 'mũ giày: da bò', JSON.stringify([single[0].valueVi, mixed[2].valueVi]));
   // 3. ECUS không đổi: ô kính lão (material PC trùng tròng) → "tròng: PC; gọng: kim loại" như trước, dù qua fold hay không

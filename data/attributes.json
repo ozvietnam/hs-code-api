@@ -139,7 +139,7 @@
       ]
     },
     "upperMaterial": {
-      "labelVi": "Vật liệu mũ giày",
+      "labelVi": "Chất liệu mũ giày (phần trên)",
       "aliases": [
         "vatLieuMuGiay",
         "mu giay"
@@ -148,9 +148,12 @@
       "detect": [
         "\\bmu (vai|nhua|dai|luoi|textile|synthetic)",
         "\\bmũ da\\b",
-        "mui giay",
+        "\\bmu giay\\b",
+        "\\bmu dep\\b",
         "than giay",
-        "\\bupper\\b"
+        "\\bupper\\b",
+        "\\bphan tren( cua)?( giay| dep)?( (bang|lam bang|lam tu|chat lieu|la))? (vai|nhua|da|cao su|pu|pvc|eva|tpu|tpr|det|luoi|textile|simili|gia da|synthetic|leather|mesh|canvas)\\b",
+        "\\bquai( dep| giay)?( (bang|lam bang|lam tu|chat lieu|la))? (vai|nhua|da|cao su|pu|pvc|eva|tpu|tpr|det|luoi|textile|simili|gia da|synthetic|leather|mesh|canvas)\\b"
       ]
     },
     "soleMaterial": {
@@ -162,6 +165,7 @@
       "sourceAttrs": [],
       "detect": [
         "\\bde (cao su|nhua|go|pu|eva|tpr|phylon)",
+        "\\bde( ngoai| giay| dep)?( (bang|lam bang|lam tu|chat lieu|la))? (cao su|nhua|go|pu|eva|tpr|tpu|phylon|da|pvc)\\b",
         "đế da",
         "de giay",
         "\\bsole\\b",
