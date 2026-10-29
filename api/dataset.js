@@ -28,6 +28,7 @@ const plhq = require('../lib/plhq-registry');
 const { aggregateDemand } = require('../lib/demand-signals');
 const { buildEvidencePack, validateEvidenceInput } = require('../lib/evidence-pack');
 const { serviceCaller } = require('../lib/auth');
+const { tongHopNgay, homNayVn } = require('../lib/public-llm-meter');
 const fs = require('fs');
 const path = require('path');
 
@@ -449,6 +450,17 @@ module.exports = async function handler(req, res) {
         libraryConflicts: conflicts,
         noteVi: 'libraryConflicts: văn bản trong thư viện /api/legal-docs ghi tình trạng khác sổ cộng đồng. Cần đối chiếu nguồn A trước khi sửa bên nào.',
       });
+    }
+
+    // GET /api/admin/llm-cost?ngay=YYYY-MM-DD (L0j, #547): chi phí LLM lượt công khai theo ngày giờ VN.
+    // KÍN — không nằm trong allowlist lib/public-access.js (requireAuthUnlessPublic ở đầu handler đã đòi Bearer).
+    if (resource === 'llm_cost') {
+      const ngay = String(req.query.ngay || '').trim() || homNayVn();
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(ngay) || Number.isNaN(Date.parse(`${ngay}T00:00:00Z`))) {
+        return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['ngay phải dạng YYYY-MM-DD (giờ Việt Nam).'] });
+      }
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(200).json(tongHopNgay(ngay));
     }
 
     if (resource === 'kpi') {
