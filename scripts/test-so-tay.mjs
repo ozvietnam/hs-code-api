@@ -117,6 +117,8 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   assert('phamViLoaiKhac: dòng Loại khác → MAY_SUY với cha/truAnhEm; dòng có tên → không có',
     verifySoTay({ dong8: [{ hs: '85098090', dieuKien: 'còn lại', nguon: 'tax.85098090', trich: 'Loại khác' }] }, '8509', src).soTay.dong8[0].phamViLoaiKhac?.nguonLoai === 'MAY_SUY'
     && phamViLoaiKhac('85098090').truAnhEm.includes('85098010') && !r2.soTay.dong8[0].phamViLoaiKhac);
+  assert('phamViLoaiKhac 39269099: truAnhEm tầng gần (hợp đồng cũ) + truDayDu đủ hai tầng (Đợt 0A)',
+    phamViLoaiKhac('39269099').truAnhEm.join() === '39269091,39269092,39269093' && phamViLoaiKhac('39269099').truDayDu.length === 10 && phamViLoaiKhac('39269099').truDayDu.includes('39269010'));
   // tiêu chí 6 số: 8504 có phân nhóm 850421 (≤ 650 kVA); nguồn wco.850421 có số 650
   const src4 = sourcesFor('8504');
   const tc = { hs6: '850421', fact: 'cong_suat_kva', op: '<=', value: 650, donVi: 'kVA', nguon: 'wco.850421', trich: 'having a power handling capacity not exceeding 650kVA' };
