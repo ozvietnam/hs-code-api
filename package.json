@@ -115,13 +115,17 @@
     "data:build-confusion-pairs": "node scripts/build-confusion-pairs.mjs",
     "logs:prune": "node scripts/prune-runtime-logs.mjs",
     "bieu-thue:kiem-zh": "node scripts/bieu-thue/kiem-zh.mjs",
-    "test:precedent-cross-source": "node scripts/test-precedent-cross-source.mjs"
+    "test:precedent-cross-source": "node scripts/test-precedent-cross-source.mjs",
+    "db:migrate": "node scripts/db-migrate.mjs",
+    "data:nap-qd2079": "node scripts/nap-qd2079.mjs"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.13",
     "pdf-parse": "^2.4.5",
     "xlsx": "^0.18.5"
   },
   "dependencies": {
-    "@huggingface/transformers": "^4.3.1"
+    "@huggingface/transformers": "^4.3.1",
+    "pg": "^8.23.1"
   }
 }
