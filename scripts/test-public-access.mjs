@@ -46,6 +46,7 @@ const MUST_STAY_PRIVATE = [
   ['evidence_pack', 'gói căn cứ soát/giải trình — chỉ khoá dịch vụ (#337)'],
   ['declaration_check', 'soát tờ khai — dữ liệu tờ khai của khách, chỉ khoá dịch vụ (#338)'],
   ['dispute_draft', 'hồ sơ giải trình tranh chấp mã — lệnh LLM kín, chỉ khoá dịch vụ (#339)'],
+  ['llm_cost', 'chi phí LLM lượt công khai — số liệu vận hành nội bộ (#547)'],
 ];
 for (const [resource, why] of MUST_STAY_PRIVATE) {
   assert(

@@ -87,6 +87,11 @@ const noiChien = one({ maHs: ['85166090'], moTa: 'Nồi chiên không dầu 5L, 
 const lk = noiChien.loaiKhac;
 check('mã "Loại khác" → loaiKhac LA_DONG_LOAI_KHAC, anh em có tên (85166010 Nồi nấu cơm)', lk.trangThai === 'LA_DONG_LOAI_KHAC' && Array.isArray(lk.anhEmCoTen) && lk.anhEmCoTen.some((x) => x.hs === '85166010' && x.tenVi), lk);
 check('loaiKhac: anh em nào cũng có tên', lk.anhEmCoTen.length > 0 && lk.anhEmCoTen.every((x) => String(x.tenVi || '').trim()));
+{
+  // Đợt 0A: "Loại khác" nhiều tầng — gói căn cứ phải mang đủ phạm vi phủ định (không chỉ anh em cùng cha).
+  const lk3 = one({ maHs: ['39269099'], moTa: 'Móc treo bằng nhựa' }).loaiKhac;
+  check('39269099: loaiKhac có truTheoTang 2 tầng (3926909, 392690) + anhEmCoTen gồm cả 39269010 tầng 6 số', lk3.trangThai === 'LA_DONG_LOAI_KHAC' && lk3.truTheoTang?.map((g) => g.nut).join() === '3926909,392690' && lk3.anhEmCoTen.some((x) => x.hs === '39269010' && x.tang === '392690'), lk3.truTheoTang);
+}
 
 // ═══ 3. Không có tiền lệ → KHONG_CO_TIEN_LE_KHOP; thiếu dữ liệu → CHUA_TRA_CUU; không mảng rỗng im lặng ═══
 const ngua = one({ maHs: ['01012100'], moTa: 'Ngựa thuần chủng để nhân giống' });
