@@ -1,4 +1,6 @@
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
+const { serviceCaller } = require('../lib/auth');
+const { demLuotCongKhai } = require('../lib/public-llm-meter');
 const { requireAuthUnlessPublic } = require('../lib/public-access');
 const { setCors, handleOptions } = require('../lib/cors');
 const { taxData } = require('../lib/data');
@@ -31,7 +33,12 @@ function handleMatch(req, res) {
     return res.status(405).json({ error: 'Method not allowed', hint: 'Use POST /api/match' });
   }
   if (requireAuthOrPublicLlm(req, res, { publicRoute: true })) return;
+  // Lượt công khai / HS_API_TOKEN: đếm (L0j, #547 — chỉ đếm, không chặn). Khoá dịch vụ không đếm ở đây.
+  if (serviceCaller(req) === null) return demLuotCongKhai('match', () => runMatch(req, res), { req });
+  return runMatch(req, res);
+}
 
+function runMatch(req, res) {
   const body = parseBody(req);
   if (!body) {
     return res.status(400).json({ error: 'Invalid JSON body' });

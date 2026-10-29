@@ -40,6 +40,8 @@ CEO chốt 29/09/2026: bỏ Vercel, chạy trên Coolify của server nhà. GitH
    | `GEMINI_API_KEY` | khóa trả phí, chỉ dùng khi NV bấm "auto" (tier premium); bỏ trống được. **Với dữ liệu khách** nó là dự phòng hợp lệ thay cho tầng miễn phí |
    | `LLM_NO_TRAIN_PROVIDERS` | mặc định `minimax,gemini` — nhà cung cấp được nhận **dữ liệu khách** (lượt từ khoá dịch vụ `HS_SERVICE_TOKENS`). Hermes/OpenRouter chỉ thêm khi CEO xác minh họ không huấn luyện trên dữ liệu; mẫu `:free` luôn bị chặn. Hết nhà cung cấp hợp lệ → `NO_PRIVATE_LLM`, không rơi xuống Gemini miễn phí. `GET /api/health` → `llm.private` |
    | `HS_LLM_PRIVATE_ALL` | `true` → mọi lượt (kể cả công khai) coi là dữ liệu khách; mặc định tắt |
+   | `LLM_PRICE_TABLE` | tuỳ chọn (#547) — JSON ghi đè bảng giá dùng để **đếm** chi phí LLM lượt công khai, đơn vị USD / 1 triệu token, vd `{"minimax/MiniMax-M2.7-highspeed":{"vaoUsdMoiTrieu":0.3,"raUsdMoiTrieu":1.2},"hermes/deepseek-chat":{"vaoUsdMoiTrieu":0,"raUsdMoiTrieu":0}}`. Khoá = `<provider>/<model>` như trong `usage`. Bảng mặc định ở `lib/llm-cost.js` (giá MiniMax M2.7 là **ước lượng** vì trang giá MiniMax không còn niêm yết M2.x — nên ghi đè bằng số thật của gói). Xem tổng theo ngày: `GET /api/admin/llm-cost?ngay=YYYY-MM-DD` (Bearer). Chỉ đếm, không chặn; `HS_PUBLIC_LLM=false` vẫn là công tắc đóng khẩn |
+   | `HS_LLM_COST_RETENTION_DAYS` | tuỳ chọn, mặc định `400` — `npm run logs:prune` cắt `llm-cost-public.jsonl` cũ hơn số ngày này |
 
 5. Gắn tên miền tạm, ví dụ `hs-kb-moi.uythacnhapkhau.com`, qua Cloudflare (tunnel hoặc
    bản ghi DNS trỏ về proxy của Coolify).

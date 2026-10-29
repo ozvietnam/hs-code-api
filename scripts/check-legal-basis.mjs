@@ -1,26 +1,30 @@
 #!/usr/bin/env node
 /**
- * Kiểm MỌI câu trích của lib/legal-basis.js có nguyên văn trong TT 85/2026/TT-BTC.
- *   node scripts/check-legal-basis.mjs --text=<tệp văn bản trích từ PDF Công báo>
- * Văn bản gốc: oz-wiki-plhq raw/download/congbaocdn.chinhphu.vn/2026/7/18/85-2026-tt-btc.pdf (sha256 trong lib/legal-basis.js).
- * Trích chữ: python3 -c "import fitz;print(''.join(p.get_text() for p in fitz.open('85-2026-tt-btc.pdf')))" > tt85.txt
- * Bản trích sẵn trong kho: tests/fixtures/legal/tt85-2026-cong-bao-409.txt (pdftotext, cùng PDF) — scripts/test-evidence-pack.mjs
- * chạy lệnh này với tệp đó. Sửa CLAUSES thì vẫn đối chiếu PDF gốc.
+ * Kiểm MỌI câu trích của lib/legal-basis.js có nguyên văn trong văn bản gốc.
+ *   node scripts/check-legal-basis.mjs --text=<tệp văn bản trích từ PDF Công báo>                       # TT 85/2026 (mặc định)
+ *   node scripts/check-legal-basis.mjs --van-ban=121/2025/TT-BTC --text=<tệp trích Công báo số 60>      # chỉ tiêu TT 121/2025
+ * TT 85: oz-wiki-plhq raw/download/congbaocdn.chinhphu.vn/2026/7/18/85-2026-tt-btc.pdf; bản trích sẵn
+ *   tests/fixtures/legal/tt85-2026-cong-bao-409.txt (scripts/test-evidence-pack.mjs chạy lệnh này). So khớp bỏ dấu câu (như cũ).
+ * TT 121: oz-wiki-plhq raw/download/congbaocdn.chinhphu.vn/2026/1/29/121-2025-tt-btc.pdf; bản trích sẵn
+ *   tests/fixtures/legal/tt121-2025-cong-bao-60-trich.txt (pdftotext -layout). So khớp NGUYÊN VĂN: từng chữ, từng dấu, đúng thứ tự.
+ * sha256 của PDF ghi trong lib/legal-basis.js. Sửa CLAUSES / CHI_TIEU_TT121 thì vẫn đối chiếu PDF gốc.
+ * Mã thoát: 0 khớp hết · 1 có câu không khớp · 2 thiếu tham số / văn bản không có trong sổ.
  */
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-const { CLAUSES } = require('../lib/legal-basis.js');
-const { squash } = require('../lib/wco-op.js');
-const a = process.argv.find((x) => x.startsWith('--text='));
-if (!a) { console.error('Thiếu --text=<tệp>'); process.exit(2); }
-const src = squash(fs.readFileSync(a.slice(7), 'utf8'));
-let bad = 0;
-for (const [id, c] of Object.entries(CLAUSES)) {
-  const frags = c.trich.split(/…|\.{3,}/).map(squash).filter((f) => f.length >= 6);
-  const miss = frags.filter((f) => !src.includes(f));
-  console.log(`${miss.length ? 'FAIL' : 'ok  '} ${id}`);
-  if (miss.length) bad += 1;
+const { SO_VAN_BAN, TT85, kiemNguyenVan } = require('../lib/legal-basis.js');
+const arg = (k) => process.argv.find((x) => x.startsWith(`--${k}=`))?.slice(k.length + 3);
+const tep = arg('text');
+if (!tep) { console.error('Thiếu --text=<tệp>'); process.exit(2); }
+const vanBan = arg('van-ban') || TT85.soHieu;
+const so = SO_VAN_BAN[vanBan];
+if (!so) { console.error(`Văn bản không có trong sổ: ${vanBan} (có: ${Object.keys(SO_VAN_BAN).join(', ')})`); process.exit(2); }
+const kq = kiemNguyenVan(so.muc, fs.readFileSync(tep, 'utf8'), { cheDo: so.cheDo });
+for (const r of kq) {
+  console.log(`${r.ok ? 'ok  ' : 'FAIL'} ${r.id}`);
+  if (!r.ok && so.cheDo === 'NGUYEN_VAN') for (const f of r.thieu) console.log(`       không thấy: ${f.slice(0, 120)}`);
 }
-console.log(bad ? `${bad} điều khoản KHÔNG khớp văn bản` : `${Object.keys(CLAUSES).length} điều khoản khớp nguyên văn`);
+const bad = kq.filter((r) => !r.ok).length;
+console.log(bad ? `${bad} ${so.donVi} KHÔNG khớp văn bản` : `${kq.length} ${so.donVi} khớp nguyên văn`);
 process.exit(bad ? 1 : 0);
