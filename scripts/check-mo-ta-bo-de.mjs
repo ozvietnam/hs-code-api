@@ -5,7 +5,8 @@
  *                tệp AI_CHUA_KIEM; moTaMau > 200 ký tự, có "xuất xứ"/chữ cấm, hoặc thiếu dữ kiện của chính ca; nhãn duyệt khác CLAUDE_DUYET;
  *                ca lechTienLe thiếu căn cứ hai bên; khongDuCanCu cấp ca không khớp cấp dữ kiện;
  *                bộ đề chứa câu mô tả Oz (đối chiếu data/oz-gold-final.jsonl nếu có — tệp riêng, chỉ đọc).
- *   node scripts/check-mo-ta-bo-de.mjs [--chi-tiet]
+ *   node scripts/check-mo-ta-bo-de.mjs [--chi-tiet] [--bo-de=<tệp>]   (--bo-de: kiểm bản sao khác data/bench/mo-ta-bo-de.json, dùng cho test)
+ * Nhãn duyệt: NHAN_BO_DE của lib/nguon-loai.js (một hệ nhãn duy nhất, #550).
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -13,7 +14,8 @@ import { createRequire } from 'node:module';
 import { ROOT, docBoDe, trichCoThat, khopTuKhoa, jaccard, loadSource, CHU_CAM } from './mo-ta-bench-lib.mjs';
 
 const require = createRequire(import.meta.url);
-const { nhanCuaTep } = require('../lib/nguon-loai.js');
+const { nhanCuaTep, NHAN_BO_DE } = require('../lib/nguon-loai.js');
+const boDePath = process.argv.find((x) => x.startsWith('--bo-de='))?.slice(8) || path.join(ROOT, 'data', 'bench', 'mo-ta-bo-de.json');
 const chiTiet = process.argv.includes('--chi-tiet');
 
 const loi = [];
@@ -22,10 +24,10 @@ const tax = loadSource('data/tax.json').value;
 const CAP = new Set([4, 6, 8, 'LOAI_TRU']);
 const CHUONG_UU_TIEN = ['85', '84', '39', '73', '64', '90', '94', '96', '40', '61'];
 
-const boDe = docBoDe();
-const rawText = fs.readFileSync(path.join(ROOT, 'data', 'bench', 'mo-ta-bo-de.json'), 'utf8');
+const rawText = fs.readFileSync(boDePath, 'utf8');
+const boDe = docBoDe(boDePath);
 
-if (boDe.duyetBoi !== 'CLAUDE_DUYET') fail('bo-de', 'duyetBoi cấp bộ đề phải là CLAUDE_DUYET');
+if (boDe.duyetBoi !== NHAN_BO_DE) fail('bo-de', `duyetBoi cấp bộ đề phải là ${NHAN_BO_DE}`);
 if (/NGUOI_DUYET"/.test(rawText.replace(/"quyTacChamDuyet":[^\n]*/, ''))) fail('bo-de', 'không được dùng nhãn NGUOI_DUYET');
 const ca = Array.isArray(boDe.ca) ? boDe.ca : [];
 if (ca.length < 30 || ca.length > 40) fail('bo-de', `cần 30–40 ca, đang có ${ca.length}`);
@@ -57,7 +59,7 @@ for (const c of ca) {
   else if (!tax[c.maHs]) fail(id, `maHs ${c.maHs} không có trong data/tax.json`);
   if (c.chuong !== String(c.maHs || '').slice(0, 2)) fail(id, 'chuong phải là 2 số đầu của maHs');
   theoChuong[c.chuong] = (theoChuong[c.chuong] || 0) + 1;
-  if (c.duyetBoi !== 'CLAUDE_DUYET') fail(id, 'duyetBoi phải là CLAUDE_DUYET');
+  if (c.duyetBoi !== NHAN_BO_DE) fail(id, `duyetBoi phải là ${NHAN_BO_DE}`);
   if (!c.thongTinHang || !c.thongTinHang.tenHang) fail(id, 'thiếu thongTinHang.tenHang');
   if (!c.nguonCa || !['TB-TCHQ', 'TU_DUNG'].includes(c.nguonCa.loai)) fail(id, 'nguonCa.loai phải là TB-TCHQ | TU_DUNG');
   if (c.nguonCa?.loai === 'TB-TCHQ') {
