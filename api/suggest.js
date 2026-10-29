@@ -1,6 +1,7 @@
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
 const { serviceCaller } = require('../lib/auth');
 const { withPrivateData } = require('../lib/llm-privacy');
+const { demLuotCongKhai } = require('../lib/public-llm-meter');
 const { withEvalHoldout, wantsEvalHoldout } = require('../lib/holdout');
 const { setCors, handleOptions } = require('../lib/cors');
 const { suggestCore, FALLBACK_PROMPT } = require('../lib/suggest-core');
@@ -67,7 +68,8 @@ module.exports = async function handler(req, res) {
   // Khoá dịch vụ (Cổng OZ, ERP) = dữ liệu khách (#237 J1): mọi lượt LLM bên trong không qua tầng miễn phí.
   const run = wantsEvalHoldout(req) ? (fn) => withEvalHoldout(fn) : (fn) => fn(); // bench chống rò: bỏ tập giữ riêng
   if (serviceCaller(req) !== null) return run(() => withPrivateData(() => handleSuggest(req, res)));
-  return run(() => handleSuggest(req, res));
+  // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn).
+  return run(() => demLuotCongKhai('suggest', () => handleSuggest(req, res), { req }));
 };
 
 async function handleSuggest(req, res) {

@@ -2,6 +2,7 @@ const { requireAuth, serviceCaller } = require('../lib/auth');
 const { withUsage } = require('../lib/usage-context');
 const { withPrivateData } = require('../lib/llm-privacy');
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
+const { demLuotCongKhai } = require('../lib/public-llm-meter');
 const { setCors, handleOptions } = require('../lib/cors');
 const { describeProduct } = require('../lib/describe-core');
 const { buildDeclarationSheet } = require('../lib/declaration-sheet');
@@ -52,7 +53,8 @@ module.exports = async function handler(req, res) {
     const json = out.json && typeof out.json === 'object' && !Array.isArray(out.json) ? { ...out.json, usage } : out.json;
     return res.status(out.status).json(json);
   }
-  const out = await describeProduct(body);
+  // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.
+  const out = await demLuotCongKhai('describe', () => describeProduct(body), { req });
   return res.status(out.status).json(out.json);
 };
 
