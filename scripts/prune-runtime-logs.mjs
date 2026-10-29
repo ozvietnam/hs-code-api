@@ -36,6 +36,8 @@ function prune(file, days) {
 const ket = [
   prune('access-log.jsonl', argOf('days', Number(process.env.HS_LOG_RETENTION_DAYS) || 90)),
   prune('ml-log.jsonl', argOf('days', Number(process.env.HS_LOG_RETENTION_DAYS) || 90)),
+  // Chi phí LLM lượt công khai (L0j, #547) — giữ lâu hơn log truy cập để so tháng/năm.
+  prune('llm-cost-public.jsonl', argOf('llm-cost-days', Number(process.env.HS_LLM_COST_RETENTION_DAYS) || 400)),
   prune('feedback.jsonl', argOf('feedback-days', Number(process.env.HS_FEEDBACK_RETENTION_DAYS) || 365)),
 ];
 console.log(JSON.stringify({ dry: DRY, ketQua: ket, thoiDiem: new Date().toISOString() }, null, 1));

@@ -11,6 +11,7 @@ data/versions/*.json
 # Runtime access telemetry (ephemeral on Vercel)
 data/access-log.jsonl
 data/ml-log.jsonl
+data/llm-cost-public.jsonl
 data/community-merge-log.jsonl
 data/community-corrections-queue.jsonl
 data/community-product-queue.jsonl
@@ -94,3 +95,6 @@ data/wco-op/*
 data/_src/
 # SHTT — file tạm cho script cào (trạng thái từng nguồn); cuối cùng gộp vào bao-cao.json
 data/shtt/_*-status.json
+
+# Dữ liệu riêng không vào git (vd tệp QĐ 2079 bản bên thứ ba — L0g #545). Nạp bằng scripts/nap-qd2079.mjs.
+data/private/
