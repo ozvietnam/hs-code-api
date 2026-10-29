@@ -1,0 +1,166 @@
+{
+  "heading": "6004",
+  "titleVi": "Vải dệt kim (knitted/crocheted) có cao su hoặc cao su tổng hợp",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Câu hỏi bản chất: vải dệt kim có phủ/luồn cao su có hàm lượng sợi đàn hồi không quá 20% khối lượng không? Nhóm 6004 là vải dệt kim luồn cao su — phân biệt theo tỷ lệ sợi đàn hồi.",
+  "sourceVi": "Biểu thuế VN 2026 nhóm 60.04. Chú giải Chương 60.",
+  "inputs": [
+    {
+      "attribute": "elasticFiberContent",
+      "type": "enum",
+      "domain": [
+        "le20",
+        "gt20",
+        "na"
+      ],
+      "labelVi": "Hàm lượng sợi đàn hồi",
+      "questionVi": "Hàm lượng sợi đàn hồi (elastomeric yarn) chiếm bao nhiêu % khối lượng? Nhóm 6004.10 có hàm lượng sợi đàn hồi ≤ 20%; 6004.90 là loại khác.",
+      "detect": {
+        "le20": [
+          "không quá 20%",
+          "≤20%",
+          "20%",
+          "hàm lượng sợi đàn hồi không quá",
+          "≤ 20%",
+          "elastomeric",
+          "Vải dệt kim (vải thun)",
+          "Vải gió dệt kim",
+          "Vải dệt kim cuộn",
+          "Vải dệt kim sợi ngang",
+          "Vải gió (vải dệt kim đã tẩy)"
+        ],
+        "gt20": [
+          "trên 20%",
+          ">20%",
+          "hàm lượng sợi đàn hồi trên"
+        ]
+      },
+      "_detect": {
+        "le20": [
+          {
+            "raw": "không quá 20%",
+            "dia": true,
+            "key": "không quá 20",
+            "folded": "khong qua 20"
+          },
+          {
+            "raw": "≤20%",
+            "dia": false,
+            "key": "20",
+            "folded": "20"
+          },
+          {
+            "raw": "20%",
+            "dia": false,
+            "key": "20",
+            "folded": "20"
+          },
+          {
+            "raw": "hàm lượng sợi đàn hồi không quá",
+            "dia": true,
+            "key": "hàm lượng sợi đàn hồi không quá",
+            "folded": "ham luong soi dan hoi khong qua"
+          },
+          {
+            "raw": "≤ 20%",
+            "dia": false,
+            "key": "20",
+            "folded": "20"
+          },
+          {
+            "raw": "elastomeric",
+            "dia": false,
+            "key": "elastomeric",
+            "folded": "elastomeric"
+          }
+        ],
+        "gt20": [
+          {
+            "raw": "trên 20%",
+            "dia": true,
+            "key": "trên 20",
+            "folded": "tren 20"
+          },
+          {
+            "raw": ">20%",
+            "dia": false,
+            "key": "20",
+            "folded": "20"
+          },
+          {
+            "raw": "hàm lượng sợi đàn hồi trên",
+            "dia": true,
+            "key": "hàm lượng sợi đàn hồi trên",
+            "folded": "ham luong soi dan hoi tren"
+          }
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "6004-r001",
+      "priority": 80,
+      "when": {
+        "elasticFiberContent": "le20"
+      },
+      "hs": "60041010",
+      "gir": "GIR 6",
+      "reasonVi": "Vải dệt kim có hàm lượng sợi đàn hồi không quá 20% khối lượng → 6004.10.10.",
+      "source": "Biểu thuế 2026 dòng 6004.10.10"
+    },
+    {
+      "id": "6004-r002",
+      "priority": 75,
+      "when": {
+        "elasticFiberContent": "gt20"
+      },
+      "hs": "60041090",
+      "gir": "GIR 6",
+      "reasonVi": "Vải dệt kim có hàm lượng sợi đàn hồi trên 20% khối lượng → 6004.10.90.",
+      "source": "Biểu thuế 2026 dòng 6004.10.90"
+    },
+    {
+      "id": "6004-r003",
+      "priority": 60,
+      "when": {
+        "elasticFiberContent": "na"
+      },
+      "hs": "60049000",
+      "gir": "GIR 6",
+      "reasonVi": "Vải dệt kim có luồn cao su, loại khác → 6004.90.00 (residual).",
+      "source": "Biểu thuế 2026 dòng 6004.90.00"
+    }
+  ],
+  "inputAttributes": [
+    "elasticFiberContent"
+  ],
+  "attributes": {
+    "elasticFiberContent": {
+      "detect": {
+        "le20": [
+          "không quá 20%",
+          "≤20%",
+          "20%",
+          "hàm lượng sợi đàn hồi không quá",
+          "≤ 20%",
+          "elastomeric"
+        ],
+        "gt20": [
+          "trên 20%",
+          ">20%",
+          "hàm lượng sợi đàn hồi trên"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "gt20",
+        "le20"
+      ]
+    }
+  },
+  "essenceVi": "elasticFiberContent"
+}

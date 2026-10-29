@@ -1,0 +1,664 @@
+{
+  "heading": "7216",
+  "titleVi": "Thép không hợp kim dạng góc, khuôn và hình",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Là thép không hợp kim dạng góc, khuôn, hình — phân loại theo: (1) loại mặt cắt (hình chữ U/I/H, chữ L, chữ T, hoặc hình khác); (2) chiều cao mặt cắt (≥/〈80mm); (3) hàm lượng carbon (≥/〈0,6%); (4) độ dày (≤5mm/〉5mm, chỉ áp dụng hình U/I/H ≥80mm); (5) nguồn gốc từ sản phẩm cán phẳng; (6) gia công nguội hoặc dạng góc có lỗ/rãnh.",
+  "sourceVi": "Biểu thuế 2026 nhóm 72.16: góc, khuôn và hình bằng sắt hoặc thép không hợp kim. Phân loại theo mặt cắt (U/I/H 〈80mm → 7216.10/.21/.22; U/I/H ≥80mm → 7216.31/.32/.33; L/T ≥80mm → 7216.40; hình khác → 7216.50; từ sản phẩm cán phẳng → 7216.61/.69; gia công nguội/góc có lỗ → 7216.91/.99). Chú giải Ch.72 mục 1(n).",
+  "inputs": [
+    {
+      "attribute": "shapeKind",
+      "type": "enum",
+      "labelVi": "Loại mặt cắt",
+      "questionVi": "Hình chữ gì: U, I, H; chữ L; chữ T; hay hình khác (V, zập, hộp…)?",
+      "domain": [
+        "uij",
+        "angleL",
+        "tee",
+        "other"
+      ]
+    },
+    {
+      "attribute": "sectionHeight",
+      "type": "enum",
+      "labelVi": "Chiều cao mặt cắt",
+      "questionVi": "Chiều cao mặt cắt từ bao nhiêu mm?",
+      "domain": [
+        "lt80mm",
+        "ge80mm",
+        "notApplicable"
+      ]
+    },
+    {
+      "attribute": "carbonContent",
+      "type": "enum",
+      "labelVi": "Hàm lượng carbon",
+      "questionVi": "Hàm lượng carbon từ 0,6% trở lên hay dưới 0,6%?",
+      "domain": [
+        "lt0_6pct",
+        "ge0_6pct",
+        "notApplicable"
+      ]
+    },
+    {
+      "attribute": "thickness",
+      "type": "enum",
+      "labelVi": "Độ dày thân/chân",
+      "questionVi": "Chiều dày thép hình từ bao nhiêu mm?",
+      "domain": [
+        "le5mm",
+        "over5mm",
+        "notApplicable"
+      ]
+    },
+    {
+      "attribute": "fromFlatRolled",
+      "type": "enum",
+      "labelVi": "Nguồn gốc",
+      "questionVi": "Thép hình này có được làm từ sản phẩm cán phẳng không?",
+      "domain": [
+        "yes",
+        "no"
+      ]
+    },
+    {
+      "attribute": "coldWorked",
+      "type": "enum",
+      "labelVi": "Gia công nguội / dạng đặc biệt",
+      "questionVi": "Thép hình có được gia công nguội hoặc có dạng góc đục lỗ/rãnh không?",
+      "domain": [
+        "coldWorked",
+        "anglePerforated",
+        "no"
+      ]
+    },
+    {
+      "attribute": "residualKind",
+      "type": "enum",
+      "domain": [
+        "thepAngle",
+        "thepKhac"
+      ],
+      "labelVi": "Phân loại thép hình loại khác",
+      "questionVi": "Thép hình loại khác này thuộc loại nào: thép góc (L) hay thép hình đặc biệt (Z, C, hộp, sigma)?"
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "inputAttributes": [
+    "shapeKind",
+    "sectionHeight",
+    "carbonContent",
+    "thickness",
+    "fromFlatRolled",
+    "coldWorked",
+    "residualKind"
+  ],
+  "attributes": {
+    "shapeKind": {
+      "type": "enum",
+      "labelVi": "Loại mặt cắt",
+      "domain": [
+        "uij",
+        "angleL",
+        "tee",
+        "other"
+      ],
+      "detect": {
+        "uij": [
+          "thép hình u",
+          "thép hình i",
+          "thép hình h",
+          "hình u",
+          "hình i",
+          "hình h",
+          "thép u",
+          "thép i",
+          "thép h",
+          "u-beam",
+          "i-beam",
+          "h-beam",
+          "profil u",
+          "profil i",
+          "profil h",
+          "thép cán nóng hình",
+          "steel u shape",
+          "steel i shape",
+          "steel h shape",
+          "dầm u",
+          "dầm i",
+          "dầm h"
+        ],
+        "angleL": [
+          "thép l",
+          "thanh l",
+          "hình l",
+          "góc thép",
+          "thép góc",
+          "angle steel",
+          "l-shape",
+          "angle bar",
+          "equal angle",
+          "unequal angle",
+          "thép cán nguội l"
+        ],
+        "tee": [
+          "thép t",
+          "hình t",
+          "thanh t",
+          "thép chữ t",
+          "t-shape",
+          "tee section",
+          "thép t cán"
+        ],
+        "other": [
+          "thép hình khác",
+          "thép z",
+          "thép c",
+          "thép omega",
+          "thép hộp",
+          "box section",
+          "z-purlins",
+          "c-purlins",
+          "z-steel",
+          "c-steel",
+          "sigma purlin",
+          "thép xà gồ"
+        ]
+      }
+    },
+    "sectionHeight": {
+      "type": "enum",
+      "labelVi": "Chiều cao mặt cắt",
+      "domain": [
+        "lt80mm",
+        "ge80mm",
+        "notApplicable"
+      ],
+      "detect": {
+        "lt80mm": [
+          "chiều cao dưới 80mm",
+          "cao < 80mm",
+          "h < 80mm",
+          "height less than 80mm",
+          "dưới 80 mm"
+        ],
+        "ge80mm": [
+          "chiều cao từ 80mm",
+          "cao ≥ 80mm",
+          "h ≥ 80mm",
+          "height 80mm or more",
+          "từ 80 mm trở lên"
+        ],
+        "notApplicable": [
+          "chiều cao không áp dụng",
+          "n/a"
+        ]
+      }
+    },
+    "carbonContent": {
+      "type": "enum",
+      "labelVi": "Hàm lượng carbon",
+      "domain": [
+        "lt0_6pct",
+        "ge0_6pct",
+        "notApplicable"
+      ],
+      "detect": {
+        "lt0_6pct": [
+          "hàm lượng carbon dưới 0,6%",
+          "carbon dưới 0,6%",
+          "c < 0,6%",
+          "carbon less than 0.6%",
+          "thép cán nóng",
+          "thép thường"
+        ],
+        "ge0_6pct": [
+          "hàm lượng carbon từ 0,6%",
+          "carbon từ 0,6%",
+          "c ≥ 0,6%",
+          "carbon 0,6% or more",
+          "thép carbon cao"
+        ],
+        "notApplicable": [
+          "hàm lượng carbon không áp dụng",
+          "n/a"
+        ]
+      }
+    },
+    "thickness": {
+      "type": "enum",
+      "labelVi": "Độ dày",
+      "domain": [
+        "le5mm",
+        "over5mm",
+        "notApplicable"
+      ],
+      "detect": {
+        "le5mm": [
+          "chiều dày từ 5 mm trở xuống",
+          "dày ≤ 5mm",
+          "≤ 5mm",
+          "thickness 5mm or less"
+        ],
+        "over5mm": [
+          "chiều dày trên 5 mm",
+          "dày > 5mm",
+          "〉 5mm",
+          "thickness over 5mm"
+        ],
+        "notApplicable": [
+          "độ dày không áp dụng",
+          "n/a"
+        ]
+      }
+    },
+    "fromFlatRolled": {
+      "type": "enum",
+      "labelVi": "Nguồn gốc từ cán phẳng",
+      "domain": [
+        "yes",
+        "no"
+      ],
+      "detect": {
+        "yes": [
+          "thu được từ sản phẩm cán phẳng",
+          "from flat rolled",
+          "được làm từ cán phẳng",
+          "cán phẳng"
+        ],
+        "no": [
+          "không phải từ cán phẳng",
+          "not from flat rolled"
+        ]
+      }
+    },
+    "coldWorked": {
+      "type": "enum",
+      "labelVi": "Gia công nguội / dạng đặc biệt",
+      "domain": [
+        "coldWorked",
+        "anglePerforated",
+        "no"
+      ],
+      "detect": {
+        "coldWorked": [
+          "gia công nguội",
+          "cold worked",
+          "cold-formed"
+        ],
+        "anglePerforated": [
+          "đục lỗ",
+          "rãnh",
+          "perforated",
+          "grooved",
+          "có lỗ",
+          "có rãnh"
+        ],
+        "no": [
+          "không",
+          "none",
+          "không có"
+        ]
+      }
+    },
+    "residualKind": {
+      "type": "enum",
+      "labelVi": "Phân loại thép hình loại khác",
+      "domain": [
+        "thepAngle",
+        "thepKhac"
+      ],
+      "detect": {
+        "thepAngle": [
+          "thép l",
+          "thanh l",
+          "góc thép",
+          "thép góc",
+          "thép cán",
+          "angle section"
+        ],
+        "thepKhac": [
+          "thép z",
+          "thép c",
+          "thép hộp",
+          "z-steel",
+          "c-steel",
+          "box section"
+        ]
+      }
+    }
+  },
+  "rules": [
+    {
+      "id": "r-uij-lt80",
+      "priority": 50,
+      "when": {
+        "shapeKind": "uij",
+        "sectionHeight": "lt80mm"
+      },
+      "hs": "72161000",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình U/I/H, chiều cao dưới 80mm → 7216.10.00.",
+      "source": "Biểu thuế 2026 dòng 7216.10.00"
+    },
+    {
+      "id": "r-angle-lt80-lt06",
+      "priority": 50,
+      "when": {
+        "shapeKind": "angleL",
+        "sectionHeight": "lt80mm",
+        "carbonContent": "lt0_6pct"
+      },
+      "hs": "72162110",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh góc L, chiều cao dưới 80mm, carbon dưới 0,6% → 7216.21.10.",
+      "source": "Biểu thuế 2026 dòng 7216.21.10"
+    },
+    {
+      "id": "r-angle-lt80-other",
+      "priority": 50,
+      "when": {
+        "shapeKind": "angleL",
+        "sectionHeight": "lt80mm",
+        "carbonContent": "ge0_6pct"
+      },
+      "hs": "72162190",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh góc L, chiều cao dưới 80mm, carbon từ 0,6% → 7216.21.90.",
+      "source": "Biểu thuế 2026 dòng 7216.21.90"
+    },
+    {
+      "id": "r-tee-lt80",
+      "priority": 50,
+      "when": {
+        "shapeKind": "tee",
+        "sectionHeight": "lt80mm"
+      },
+      "hs": "72162200",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình chữ T, chiều cao dưới 80mm → 7216.22.00.",
+      "source": "Biểu thuế 2026 dòng 7216.22.00"
+    },
+    {
+      "id": "r-uij-ge80-lt06",
+      "priority": 50,
+      "when": {
+        "shapeKind": "uij",
+        "sectionHeight": "ge80mm",
+        "carbonContent": "lt0_6pct"
+      },
+      "hs": "72163110",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình U/I/H, chiều cao từ 80mm trở lên, carbon dưới 0,6% → 7216.31.10.",
+      "source": "Biểu thuế 2026 dòng 7216.31.10"
+    },
+    {
+      "id": "r-uij-ge80-ge06",
+      "priority": 50,
+      "when": {
+        "shapeKind": "uij",
+        "sectionHeight": "ge80mm",
+        "carbonContent": "ge0_6pct"
+      },
+      "hs": "72163190",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình U/I/H, chiều cao từ 80mm trở lên, carbon từ 0,6% → 7216.31.90.",
+      "source": "Biểu thuế 2026 dòng 7216.31.90"
+    },
+    {
+      "id": "r-uij-ge80-le5",
+      "priority": 50,
+      "when": {
+        "shapeKind": "uij",
+        "sectionHeight": "ge80mm",
+        "thickness": "le5mm"
+      },
+      "hs": "72163210",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình U/I/H, chiều cao ≥80mm, chiều dày ≤5mm → 7216.32.10.",
+      "source": "Biểu thuế 2026 dòng 7216.32.10"
+    },
+    {
+      "id": "r-uij-ge80-over5",
+      "priority": 50,
+      "when": {
+        "shapeKind": "uij",
+        "sectionHeight": "ge80mm",
+        "thickness": "over5mm"
+      },
+      "hs": "72163290",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình U/I/H, chiều cao ≥80mm, chiều dày trên 5mm → 7216.32.90.",
+      "source": "Biểu thuế 2026 dòng 7216.32.90"
+    },
+    {
+      "id": "r-lt-ge80-lt06",
+      "priority": 50,
+      "when": {
+        "shapeKind": "angleL",
+        "sectionHeight": "ge80mm",
+        "carbonContent": "lt0_6pct"
+      },
+      "hs": "72164010",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh góc L, chiều cao từ 80mm trở lên, carbon dưới 0,6% → 7216.40.10.",
+      "source": "Biểu thuế 2026 dòng 7216.40.10"
+    },
+    {
+      "id": "r-lt-ge80-ge06",
+      "priority": 50,
+      "when": {
+        "shapeKind": "angleL",
+        "sectionHeight": "ge80mm",
+        "carbonContent": "ge0_6pct"
+      },
+      "hs": "72164090",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh góc L, chiều cao từ 80mm trở lên, carbon từ 0,6% → 7216.40.90.",
+      "source": "Biểu thuế 2026 dòng 7216.40.90"
+    },
+    {
+      "id": "r-flat",
+      "priority": 60,
+      "when": {
+        "fromFlatRolled": "yes"
+      },
+      "hs": "72166100",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình thu được từ sản phẩm cán phẳng → 7216.61.00.",
+      "source": "Biểu thuế 2026 dòng 7216.61.00"
+    },
+    {
+      "id": "r-cold",
+      "priority": 60,
+      "when": {
+        "coldWorked": "coldWorked"
+      },
+      "hs": "72169110",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình gia công nguội → 7216.91.10.",
+      "source": "Biểu thuế 2026 dòng 7216.91.10"
+    },
+    {
+      "id": "r-perforated",
+      "priority": 60,
+      "when": {
+        "coldWorked": "anglePerforated"
+      },
+      "hs": "72169110",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh góc đục lỗ hoặc có rãnh, carbon từ 0,6% → 7216.91.10.",
+      "source": "Biểu thuế 2026 dòng 7216.91.10"
+    },
+    {
+      "id": "r-residual",
+      "priority": 1,
+      "when": {
+        "shapeKind": "other",
+        "fromFlatRolled": "no",
+        "coldWorked": "no"
+      },
+      "hs": "72169900",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình loại khác → 7216.99.00.",
+      "source": "Biểu thuế 2026 dòng 7216.99.00"
+    },
+    {
+      "id": "r-lt-other",
+      "priority": 1,
+      "when": {
+        "shapeKind": "angleL",
+        "sectionHeight": "notApplicable",
+        "coldWorked": "no",
+        "fromFlatRolled": "no"
+      },
+      "hs": "72169900",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh góc loại khác → 7216.99.00.",
+      "source": "Biểu thuế 2026 dòng 7216.99.00"
+    },
+    {
+      "id": "r-uij-ge80-flange-ge-le5",
+      "priority": 52,
+      "when": {
+        "shapeKind": "uij",
+        "sectionHeight": "ge80mm",
+        "carbonContent": "lt0_6pct",
+        "thickness": "le5mm"
+      },
+      "hs": "72163311",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình U/I/H, chiều cao ≥80mm, chiều dày ≤5mm, flange không nhỏ hơn thân, carbon dưới 0,6% → 7216.33.11.",
+      "source": "Biểu thuế 2026 dòng 7216.33.11"
+    },
+    {
+      "id": "r-uij-ge80-flange-ge-ov5-lt06",
+      "priority": 52,
+      "when": {
+        "shapeKind": "uij",
+        "sectionHeight": "ge80mm",
+        "carbonContent": "lt0_6pct",
+        "thickness": "over5mm"
+      },
+      "hs": "72163319",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình U/I/H, chiều cao ≥80mm, chiều dày trên 5mm, carbon dưới 0,6% → 7216.33.19.",
+      "source": "Biểu thuế 2026 dòng 7216.33.19"
+    },
+    {
+      "id": "r-uij-ge80-flange-ge-ov5-ge06",
+      "priority": 52,
+      "when": {
+        "shapeKind": "uij",
+        "sectionHeight": "ge80mm",
+        "carbonContent": "ge0_6pct",
+        "thickness": "over5mm"
+      },
+      "hs": "72163390",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình U/I/H, chiều cao ≥80mm, chiều dày trên 5mm, carbon từ 0,6% → 7216.33.90.",
+      "source": "Biểu thuế 2026 dòng 7216.33.90"
+    },
+    {
+      "id": "r-tee-ge80",
+      "priority": 50,
+      "when": {
+        "shapeKind": "tee",
+        "sectionHeight": "ge80mm"
+      },
+      "hs": "72165099",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình chữ T, chiều cao từ 80mm trở lên → 7216.50.99 (hình khác, carbon từ 0,6%).",
+      "source": "Biểu thuế 2026 dòng 7216.50.99"
+    },
+    {
+      "id": "r-flat-other",
+      "priority": 61,
+      "when": {
+        "fromFlatRolled": "yes",
+        "shapeKind": "other"
+      },
+      "hs": "72166900",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình khác thu được từ sản phẩm cán phẳng, carbon dưới 0,6% → 7216.69.00.",
+      "source": "Biểu thuế 2026 dòng 7216.69.00"
+    },
+    {
+      "id": "r-cold-other",
+      "priority": 61,
+      "when": {
+        "coldWorked": "coldWorked",
+        "shapeKind": "other"
+      },
+      "hs": "72169190",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình khác gia công nguội → 7216.91.90.",
+      "source": "Biểu thuế 2026 dòng 7216.91.90"
+    },
+    {
+      "id": "r-perforated-other",
+      "priority": 61,
+      "when": {
+        "coldWorked": "anglePerforated",
+        "shapeKind": "other"
+      },
+      "hs": "72169190",
+      "gir": "GIR 6",
+      "reasonVi": "Thanh góc đục lỗ hoặc có rãnh, loại khác → 7216.91.90.",
+      "source": "Biểu thuế 2026 dòng 7216.91.90"
+    },
+    {
+      "id": "r-other-angle-carbon",
+      "priority": 48,
+      "when": {
+        "shapeKind": "other",
+        "carbonContent": "ge0_6pct",
+        "residualKind": "thepAngle"
+      },
+      "hs": "72165011",
+      "gir": "GIR 6",
+      "reasonVi": "Thép góc (L), carbon từ 0,6%, loại khác → 7216.50.11.",
+      "source": "Biểu thuế 2026 dòng 7216.50.11"
+    },
+    {
+      "id": "r-other-other-carbon",
+      "priority": 48,
+      "when": {
+        "shapeKind": "other",
+        "carbonContent": "ge0_6pct",
+        "residualKind": "thepKhac"
+      },
+      "hs": "72165091",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình loại khác (Z/C/hộp), carbon từ 0,6% → 7216.50.91.",
+      "source": "Biểu thuế 2026 dòng 7216.50.91"
+    },
+    {
+      "id": "r-other-lt06-angle",
+      "priority": 48,
+      "when": {
+        "shapeKind": "other",
+        "carbonContent": "lt0_6pct",
+        "residualKind": "thepAngle"
+      },
+      "hs": "72165011",
+      "gir": "GIR 6",
+      "reasonVi": "Thép góc (L), carbon dưới 0,6%, loại khác → 7216.50.11.",
+      "source": "Biểu thuế 2026 dòng 7216.50.11"
+    },
+    {
+      "id": "r-other-lt06-other",
+      "priority": 48,
+      "when": {
+        "shapeKind": "other",
+        "carbonContent": "lt0_6pct",
+        "residualKind": "thepKhac"
+      },
+      "hs": "72165019",
+      "gir": "GIR 6",
+      "reasonVi": "Thép hình loại khác (Z/C/hộp), carbon dưới 0,6% → 7216.50.19.",
+      "source": "Biểu thuế 2026 dòng 7216.50.19"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "heading": "6115",
+  "titleVi": "Vớ, tất, vớ dài, xà cạp và các sản phẩm tương tự (61.15)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "sockKind",
+      "type": "enum",
+      "labelVi": "Loại vớ/tất",
+      "questionVi": "Vớ/tất thuộc loại nào: y tế/nén, quần tất, vớ đùi, vớ ngắn cổ thấp, hay vớ chân?",
+      "domain": ["medical", "pantyhose", "thighHigh", "crewSock", "ankleSock", "other"],
+      "detect": {
+        "medical": ["giãn tĩnh mạch", "vớ y tế", "vớ nén", "vớ y", "tất y tế", "tất nén"],
+        "pantyhose": ["quần tất", "quần tất nữ", "tất quần", "pantyhose"],
+        "thighHigh": ["tất đùi", "vớ đùi", "tất đeo chân", "đùi", "tất đeo chân mùa đông"],
+        "crewSock": ["cổ ngắn", "cổ thấp", "vớ cổ ngắn", "tất cổ", "tất nam cổ", "cổ cao", "vớ cổ", "tất ngắn", "tất lông", "tất trẻ em", "tất em bé", "tất người lớn", "tất lưới", "tất dài", "tất nữ", "tất nam", "vớ dài nam", "tất dạng", "tất giấy", "tất lưới ren", "tất dài đến gối", "tất cao cổ"],
+        "ankleSock": ["tất chân", "vớ chân", "ankle", "bàn chân", "tất leo núi", "tất đeo chân", "tất mùa đông", "tất cao cổ trẻ em", "tất nữ cao cổ"],
+        "other": []
+      },
+      "assumeIfUnknown": "crewSock"
+    },
+    {
+      "attribute": "materialKind",
+      "type": "enum",
+      "labelVi": "Chất liệu",
+      "questionVi": "Vải làm vớ/tất bằng gì?",
+      "domain": ["cotton", "synthetic", "wool", "other"],
+      "detect": {
+        "cotton": ["bông", "cotton", "cottton"],
+        "synthetic": ["tổng hợp", "polyester", "nylon", "sợi tổng"],
+        "wool": ["lông cừu", "len", "lông động"],
+        "other": []
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 100,
+      "when": { "sockKind": "medical", "materialKind": "synthetic" },
+      "hs": "61151010",
+      "reasonVi": "Vớ giãn tĩnh mạch từ sợi tổng hợp → 61151010",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 100,
+      "when": { "sockKind": "medical" },
+      "hs": "61151090",
+      "reasonVi": "Vớ giãn tĩnh mạch/y tế → 61151090 (loại khác)",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r03",
+      "priority": 95,
+      "when": { "sockKind": "pantyhose", "materialKind": "synthetic" },
+      "hs": "61152100",
+      "reasonVi": "Quần tất nữ tổng hợp, sợi <67 decitex → 61152100",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r04",
+      "priority": 95,
+      "when": { "sockKind": "pantyhose", "materialKind": "cotton" },
+      "hs": "61152910",
+      "reasonVi": "Quần tất nữ từ bông → 61152910",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r05",
+      "priority": 95,
+      "when": { "sockKind": "pantyhose", "materialKind": "other" },
+      "hs": "61152990",
+      "reasonVi": "Quần tất nữ từ vật liệu khác → 61152990",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r06",
+      "priority": 93,
+      "when": { "sockKind": "pantyhose" },
+      "hs": "61152200",
+      "reasonVi": "Quần tất tổng hợp, sợi ≥67 decitex → 61152200",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r07",
+      "priority": 90,
+      "when": { "sockKind": "crewSock", "materialKind": "cotton" },
+      "hs": "61159500",
+      "reasonVi": "Vớ cổ ngắn/cổ cao từ bông → 61159500",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r08",
+      "priority": 90,
+      "when": { "sockKind": "crewSock", "materialKind": "synthetic" },
+      "hs": "61159600",
+      "reasonVi": "Vớ cổ ngắn/cổ cao từ sợi tổng hợp → 61159600",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r09",
+      "priority": 90,
+      "when": { "sockKind": "crewSock", "materialKind": "wool" },
+      "hs": "61159400",
+      "reasonVi": "Vớ từ lông cừu → 61159400",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r10",
+      "priority": 90,
+      "when": { "sockKind": "crewSock", "materialKind": "other" },
+      "hs": "61159900",
+      "reasonVi": "Vớ từ vật liệu khác → 61159900",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r11",
+      "priority": 85,
+      "when": { "sockKind": "thighHigh", "materialKind": "synthetic" },
+      "hs": "61153090",
+      "reasonVi": "Tất đùi tổng hợp → 61153090 (loại khác)",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r12",
+      "priority": 85,
+      "when": { "sockKind": "thighHigh", "materialKind": "cotton" },
+      "hs": "61153010",
+      "reasonVi": "Tất đùi từ bông → 61153010",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r13",
+      "priority": 85,
+      "when": { "sockKind": "ankleSock", "materialKind": "cotton" },
+      "hs": "61159500",
+      "reasonVi": "Vớ chân/bàn chân từ bông → 61159500",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r14",
+      "priority": 85,
+      "when": { "sockKind": "ankleSock", "materialKind": "synthetic" },
+      "hs": "61159600",
+      "reasonVi": "Vớ chân/bàn chân từ sợi tổng hợp → 61159600",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r15",
+      "priority": 80,
+      "when": { "sockKind": "other" },
+      "hs": "61159900",
+      "reasonVi": "Vớ/tất loại khác → 61159900",
+      "source": "Biểu thuế NK VN 2026"
+    }
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (14 mã 8 số). Oz-gold 32 entries.",
+  "essenceTestVi": "Phân biệt: quần tất nữ (611521/611529), tất đùi (611530), vớ cổ ngắn bông (611595) vs tổng hợp (611596), vớ chân (611595/611596), y tế (611510).",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "sockKind": {
+      "type": "enum",
+      "labelVi": "Loại vớ/tất",
+      "domain": ["medical", "pantyhose", "thighHigh", "crewSock", "ankleSock", "other"]
+    },
+    "materialKind": {
+      "type": "enum",
+      "labelVi": "Chất liệu",
+      "domain": ["cotton", "synthetic", "wool", "other"]
+    }
+  }
+}

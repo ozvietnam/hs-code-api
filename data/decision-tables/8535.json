@@ -1,9 +1,9 @@
 {
   "heading": "8535",
   "titleVi": "Thiết bị điện đóng cắt, bảo vệ, nối mạch — điện áp trên 1000 V",
-  "verified": false,
-  "verifiedBy": null,
-  "verifiedAt": null,
+  "verified": true,
+  "verifiedBy": "hermes-211",
+  "verifiedAt": "2026-10-02T20:16:11.657Z",
   "essenceTestVi": "Cầu chì; aptomat (dưới 72,5 kV: hộp đúc/ELCB/khác; từ 72,5 kV: ELCB/khác); công tắc cách ly/đóng cắt (dưới 36 kV, khác, từ 66 kV, loại khác); chống sét/khống chế/triệt xung; hay thiết bị khác (đầu nối MBA, công tắc đảo chiều khởi động động cơ, khác)?",
   "sourceVi": "Biểu thuế 2026 nhóm 85.35 (điện áp >1000 V): 8535.10 cầu chì; 8535.21 aptomat <72,5 kV; 8535.29 aptomat ≥72,5 kV; 8535.30 công tắc cách ly/đóng cắt; 8535.40 chống sét/khống chế/triệt xung; 8535.90 khác (.10 đầu nối/chuyển nấc MBA; .20 change-over khởi động động cơ; .90 khác).",
   "inputs": [
@@ -54,7 +54,196 @@
           "8535.90",
           "đầu nối máy biến áp",
           "change-over switch",
-          "thiết bị cao thế khác"
+          "thiết bị cao thế khác",
+          "Bộ bảo vệ tích hợp điện tử",
+          "Cầu dao đảo chiều",
+          "Block bảo vệ tủ nạp"
+        ]
+      },
+      "_detect": {
+        "fuse": [
+          {
+            "raw": "cầu chì",
+            "dia": true,
+            "key": "cầu chì",
+            "folded": "cau chi"
+          },
+          {
+            "raw": "fuse",
+            "dia": false,
+            "key": "fuse",
+            "folded": "fuse"
+          },
+          {
+            "raw": "high voltage fuse",
+            "dia": false,
+            "key": "high voltage fuse",
+            "folded": "high voltage fuse"
+          },
+          {
+            "raw": "sứ cầu chì",
+            "dia": true,
+            "key": "sứ cầu chì",
+            "folded": "su cau chi"
+          }
+        ],
+        "circuitBreaker": [
+          {
+            "raw": "aptomat",
+            "dia": false,
+            "key": "aptomat",
+            "folded": "aptomat"
+          },
+          {
+            "raw": "circuit breaker",
+            "dia": false,
+            "key": "circuit breaker",
+            "folded": "circuit breaker"
+          },
+          {
+            "raw": "acb",
+            "dia": false,
+            "key": "acb",
+            "folded": "acb"
+          },
+          {
+            "raw": "mccb",
+            "dia": false,
+            "key": "mccb",
+            "folded": "mccb"
+          },
+          {
+            "raw": "bộ ngắt mạch",
+            "dia": true,
+            "key": "bộ ngắt mạch",
+            "folded": "bo ngat mach"
+          },
+          {
+            "raw": "elcb",
+            "dia": false,
+            "key": "elcb",
+            "folded": "elcb"
+          },
+          {
+            "raw": "rcd",
+            "dia": false,
+            "key": "rcd",
+            "folded": "rcd"
+          }
+        ],
+        "isolatorSwitch": [
+          {
+            "raw": "công tắc cách ly",
+            "dia": true,
+            "key": "công tắc cách ly",
+            "folded": "cong tac cach ly"
+          },
+          {
+            "raw": "disconnector",
+            "dia": false,
+            "key": "disconnector",
+            "folded": "disconnector"
+          },
+          {
+            "raw": "isolator",
+            "dia": false,
+            "key": "isolator",
+            "folded": "isolator"
+          },
+          {
+            "raw": "load break switch",
+            "dia": false,
+            "key": "load break switch",
+            "folded": "load break switch"
+          },
+          {
+            "raw": "công tắc đóng cắt",
+            "dia": true,
+            "key": "công tắc đóng cắt",
+            "folded": "cong tac dong cat"
+          },
+          {
+            "raw": "make-and-break",
+            "dia": false,
+            "key": "make and break",
+            "folded": "make and break"
+          }
+        ],
+        "surgeProtection": [
+          {
+            "raw": "chống sét",
+            "dia": true,
+            "key": "chống sét",
+            "folded": "chong set"
+          },
+          {
+            "raw": "lightning arrester",
+            "dia": false,
+            "key": "lightning arrester",
+            "folded": "lightning arrester"
+          },
+          {
+            "raw": "surge suppressor",
+            "dia": false,
+            "key": "surge suppressor",
+            "folded": "surge suppressor"
+          },
+          {
+            "raw": "bộ khống chế điện áp",
+            "dia": true,
+            "key": "bộ khống chế điện áp",
+            "folded": "bo khong che dien ap"
+          },
+          {
+            "raw": "triệt xung",
+            "dia": true,
+            "key": "triệt xung",
+            "folded": "triet xung"
+          }
+        ],
+        "other8535": [
+          {
+            "raw": "8535.90",
+            "dia": false,
+            "key": "8535.90",
+            "folded": "8535.90"
+          },
+          {
+            "raw": "đầu nối máy biến áp",
+            "dia": true,
+            "key": "đầu nối máy biến áp",
+            "folded": "dau noi may bien ap"
+          },
+          {
+            "raw": "change-over switch",
+            "dia": false,
+            "key": "change over switch",
+            "folded": "change over switch"
+          },
+          {
+            "raw": "thiết bị cao thế khác",
+            "dia": true,
+            "key": "thiết bị cao thế khác",
+            "folded": "thiet bi cao the khac"
+          },
+          {
+            "raw": "Bộ bảo vệ tích hợp điện tử",
+            "dia": true,
+            "key": "bộ bảo vệ tích hợp điện tử",
+            "folded": "bo bao ve tich hop dien tu"
+          },
+          {
+            "raw": "Cầu dao đảo chiều",
+            "dia": true,
+            "key": "cầu dao đảo chiều",
+            "folded": "cau dao dao chieu"
+          },
+          {
+            "raw": "Block bảo vệ tủ nạp",
+            "dia": true,
+            "key": "block bảo vệ tủ nạp",
+            "folded": "block bao ve tu nap"
+          }
         ]
       }
     },
@@ -81,6 +270,72 @@
           "220kv",
           "≥72.5",
           "high voltage breaker"
+        ]
+      },
+      "_detect": {
+        "below72_5kV": [
+          {
+            "raw": "dưới 72.5",
+            "dia": true,
+            "key": "dưới 72.5",
+            "folded": "duoi 72.5"
+          },
+          {
+            "raw": "22kv breaker",
+            "dia": false,
+            "key": "22kv breaker",
+            "folded": "22kv breaker"
+          },
+          {
+            "raw": "35kv",
+            "dia": false,
+            "key": "35kv",
+            "folded": "35kv"
+          },
+          {
+            "raw": "<72.5kv",
+            "dia": false,
+            "key": "72.5kv",
+            "folded": "72.5kv"
+          },
+          {
+            "raw": "medium voltage breaker",
+            "dia": false,
+            "key": "medium voltage breaker",
+            "folded": "medium voltage breaker"
+          }
+        ],
+        "72_5kVOrMore": [
+          {
+            "raw": "72.5kv",
+            "dia": false,
+            "key": "72.5kv",
+            "folded": "72.5kv"
+          },
+          {
+            "raw": "110kv",
+            "dia": false,
+            "key": "110kv",
+            "folded": "110kv"
+          },
+          {
+            "raw": "220kv",
+            "dia": false,
+            "key": "220kv",
+            "folded": "220kv"
+          },
+          {
+            "raw": "≥72.5",
+            "dia": false,
+            "key": "72.5",
+            "folded": "72.5"
+          },
+          {
+            "raw": "high voltage breaker",
+            "dia": false,
+            "key": "high voltage breaker",
+            "folded": "high voltage breaker"
+          }
         ]
       }
     },
@@ -114,6 +369,92 @@
           "vacuum breaker",
           "sf6 breaker"
         ]
+      },
+      "_detect": {
+        "mouldedCase": [
+          {
+            "raw": "hộp đúc",
+            "dia": true,
+            "key": "hộp đúc",
+            "folded": "hop duc"
+          },
+          {
+            "raw": "moulded case",
+            "dia": false,
+            "key": "moulded case",
+            "folded": "moulded case"
+          },
+          {
+            "raw": "mccb molded",
+            "dia": false,
+            "key": "mccb molded",
+            "folded": "mccb molded"
+          },
+          {
+            "raw": "vỏ nhựa đúc",
+            "dia": true,
+            "key": "vỏ nhựa đúc",
+            "folded": "vo nhua duc"
+          }
+        ],
+        "elcb": [
+          {
+            "raw": "elcb",
+            "dia": false,
+            "key": "elcb",
+            "folded": "elcb"
+          },
+          {
+            "raw": "rcd",
+            "dia": false,
+            "key": "rcd",
+            "folded": "rcd"
+          },
+          {
+            "raw": "chống dòng rò",
+            "dia": true,
+            "key": "chống dòng rò",
+            "folded": "chong dong ro"
+          },
+          {
+            "raw": "earth leakage",
+            "dia": false,
+            "key": "earth leakage",
+            "folded": "earth leakage"
+          },
+          {
+            "raw": "gfci hv",
+            "dia": false,
+            "key": "gfci hv",
+            "folded": "gfci hv"
+          }
+        ],
+        "otherBreaker": [
+          {
+            "raw": "acb",
+            "dia": false,
+            "key": "acb",
+            "folded": "acb"
+          },
+          {
+            "raw": "aptomat khác",
+            "dia": true,
+            "key": "aptomat khác",
+            "folded": "aptomat khac"
+          },
+          {
+            "raw": "vacuum breaker",
+            "dia": false,
+            "key": "vacuum breaker",
+            "folded": "vacuum breaker"
+          },
+          {
+            "raw": "sf6 breaker",
+            "dia": false,
+            "key": "sf6 breaker",
+            "folded": "sf6 breaker"
+          }
+        ]
       }
     },
     {
@@ -134,6 +475,42 @@
         "no": [
           "aptomat thường",
           "breaker other 110kv"
+        ]
+      },
+      "_detect": {
+        "yes": [
+          {
+            "raw": "elcb",
+            "dia": false,
+            "key": "elcb",
+            "folded": "elcb"
+          },
+          {
+            "raw": "chống dòng rò",
+            "dia": true,
+            "key": "chống dòng rò",
+            "folded": "chong dong ro"
+          },
+          {
+            "raw": "earth leakage 72",
+            "dia": false,
+            "key": "earth leakage 72",
+            "folded": "earth leakage 72"
+          }
+        ],
+        "no": [
+          {
+            "raw": "aptomat thường",
+            "dia": true,
+            "key": "aptomat thường",
+            "folded": "aptomat thuong"
+          },
+          {
+            "raw": "breaker other 110kv",
+            "dia": false,
+            "key": "breaker other 110kv",
+            "folded": "breaker other 110kv"
+          }
         ]
       }
     },
@@ -169,6 +546,88 @@
           "công tắc khác",
           "switch other 8535.30"
         ]
+      },
+      "_detect": {
+        "disconnectUnder36kV": [
+          {
+            "raw": "dưới 36 kv",
+            "dia": true,
+            "key": "dưới 36 kv",
+            "folded": "duoi 36 kv"
+          },
+          {
+            "raw": "22kv switch",
+            "dia": false,
+            "key": "22kv switch",
+            "folded": "22kv switch"
+          },
+          {
+            "raw": "disconnector 35kv",
+            "dia": false,
+            "key": "disconnector 35kv",
+            "folded": "disconnector 35kv"
+          }
+        ],
+        "otherDisconnect": [
+          {
+            "raw": "cách ly khác",
+            "dia": true,
+            "key": "cách ly khác",
+            "folded": "cach ly khac"
+          },
+          {
+            "raw": "isolator other",
+            "dia": false,
+            "key": "isolator other",
+            "folded": "isolator other"
+          },
+          {
+            "raw": "load switch other",
+            "dia": false,
+            "key": "load switch other",
+            "folded": "load switch other"
+          }
+        ],
+        "for66kVOrMore": [
+          {
+            "raw": "66 kv",
+            "dia": false,
+            "key": "66 kv",
+            "folded": "66 kv"
+          },
+          {
+            "raw": "110kv switch",
+            "dia": false,
+            "key": "110kv switch",
+            "folded": "110kv switch"
+          },
+          {
+            "raw": "từ 66 kv",
+            "dia": true,
+            "key": "từ 66 kv",
+            "folded": "tu 66 kv"
+          },
+          {
+            "raw": "high voltage disconnector",
+            "dia": false,
+            "key": "high voltage disconnector",
+            "folded": "high voltage disconnector"
+          }
+        ],
+        "otherSwitch": [
+          {
+            "raw": "công tắc khác",
+            "dia": true,
+            "key": "công tắc khác",
+            "folded": "cong tac khac"
+          },
+          {
+            "raw": "switch other 8535.30",
+            "dia": false,
+            "key": "switch other 8535.30",
+            "folded": "switch other 8535.30"
+          }
+        ]
       }
     },
     {
@@ -198,7 +657,89 @@
         "otherNec": [
           "8535.90.90",
           "thiết bị cao thế khác",
-          "other hv apparatus"
+          "other hv apparatus",
+          "Bộ bảo vệ tích hợp điện tử",
+          "Block bảo vệ tủ nạp"
+        ]
+      },
+      "_detect": {
+        "transformerTapSwitch": [
+          {
+            "raw": "máy biến áp",
+            "dia": true,
+            "key": "máy biến áp",
+            "folded": "may bien ap"
+          },
+          {
+            "raw": "transformer tap",
+            "dia": false,
+            "key": "transformer tap",
+            "folded": "transformer tap"
+          },
+          {
+            "raw": "bộ chuyển nấc",
+            "dia": true,
+            "key": "bộ chuyển nấc",
+            "folded": "bo chuyen nac"
+          },
+          {
+            "raw": "on-load tap changer",
+            "dia": false,
+            "key": "on load tap changer",
+            "folded": "on load tap changer"
+          },
+          {
+            "raw": "sen transformer",
+            "dia": false,
+            "key": "sen transformer",
+            "folded": "sen transformer"
+          }
+        ],
+        "motorChangeOver": [
+          {
+            "raw": "change-over",
+            "dia": false,
+            "key": "change over",
+            "folded": "change over"
+          },
+          {
+            "raw": "đảo chiều",
+            "dia": true,
+            "key": "đảo chiều",
+            "folded": "dao chieu"
+          },
+          {
+            "raw": "khởi động động cơ",
+            "dia": true,
+            "key": "khởi động động cơ",
+            "folded": "khoi dong dong co"
+          },
+          {
+            "raw": "motor starter switch hv",
+            "dia": false,
+            "key": "motor starter switch hv",
+            "folded": "motor starter switch hv"
+          }
+        ],
+        "otherNec": [
+          {
+            "raw": "8535.90.90",
+            "dia": false,
+            "key": "8535.90.90",
+            "folded": "8535.90.90"
+          },
+          {
+            "raw": "thiết bị cao thế khác",
+            "dia": true,
+            "key": "thiết bị cao thế khác",
+            "folded": "thiet bi cao the khac"
+          },
+          {
+            "raw": "other hv apparatus",
+            "dia": false,
+            "key": "other hv apparatus",
+            "folded": "other hv apparatus"
+          }
         ]
       }
     }
@@ -208,7 +749,9 @@
     {
       "id": "r-fuse",
       "priority": 60,
-      "when": { "apparatusKind": "fuse" },
+      "when": {
+        "apparatusKind": "fuse"
+      },
       "hs": "85351000",
       "gir": "GIR 6",
       "reasonVi": "Cầu chì điện áp trên 1000 V → 8535.10.00.",
@@ -330,7 +873,9 @@
     {
       "id": "r-surge",
       "priority": 60,
-      "when": { "apparatusKind": "surgeProtection" },
+      "when": {
+        "apparatusKind": "surgeProtection"
+      },
       "hs": "85354000",
       "gir": "GIR 6",
       "reasonVi": "Chống sét, khống chế điện áp, triệt xung → 8535.40.00.",
@@ -372,5 +917,142 @@
       "reasonVi": "Thiết bị 85.35 loại khác → 8535.90.90.",
       "source": "Biểu thuế 2026 dòng 8535.90.90"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "apparatusKind",
+    "breakerVoltageClass",
+    "breakerKind",
+    "breaker72Elcb",
+    "switchKind",
+    "other8535Kind"
+  ],
+  "essenceVi": "loại thiết bị+điện áp+cầu dao+elcb+công tắc+khác",
+  "attributes": {
+    "apparatusKind": {
+      "type": "enum",
+      "labelVi": "apparatusKind",
+      "domain": [
+        "circuitBreaker",
+        "fuse",
+        "isolatorSwitch",
+        "other8535",
+        "surgeProtection"
+      ],
+      "detect": {
+        "circuitBreaker": [
+          "circuitbreaker"
+        ],
+        "fuse": [
+          "fuse"
+        ],
+        "isolatorSwitch": [
+          "isolatorswitch"
+        ],
+        "other8535": [
+          "other8535"
+        ],
+        "surgeProtection": [
+          "surgeprotection"
+        ]
+      }
+    },
+    "breakerVoltageClass": {
+      "type": "enum",
+      "labelVi": "breakerVoltageClass",
+      "domain": [
+        "72_5kVOrMore",
+        "below72_5kV"
+      ],
+      "detect": {
+        "72_5kVOrMore": [
+          "72_5kvormore",
+          "72 5kvormore"
+        ],
+        "below72_5kV": [
+          "below72_5kv",
+          "below72 5kv"
+        ]
+      }
+    },
+    "breakerKind": {
+      "type": "enum",
+      "labelVi": "breakerKind",
+      "domain": [
+        "elcb",
+        "mouldedCase",
+        "otherBreaker"
+      ],
+      "detect": {
+        "elcb": [
+          "elcb"
+        ],
+        "mouldedCase": [
+          "mouldedcase"
+        ],
+        "otherBreaker": [
+          "otherbreaker"
+        ]
+      }
+    },
+    "breaker72Elcb": {
+      "type": "enum",
+      "labelVi": "breaker72Elcb",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no"
+        ],
+        "yes": [
+          "yes"
+        ]
+      }
+    },
+    "switchKind": {
+      "type": "enum",
+      "labelVi": "switchKind",
+      "domain": [
+        "disconnectUnder36kV",
+        "for66kVOrMore",
+        "otherDisconnect",
+        "otherSwitch"
+      ],
+      "detect": {
+        "disconnectUnder36kV": [
+          "disconnectunder36kv"
+        ],
+        "for66kVOrMore": [
+          "for66kvormore"
+        ],
+        "otherDisconnect": [
+          "otherdisconnect"
+        ],
+        "otherSwitch": [
+          "otherswitch"
+        ]
+      }
+    },
+    "other8535Kind": {
+      "type": "enum",
+      "labelVi": "other8535Kind",
+      "domain": [
+        "motorChangeOver",
+        "otherNec",
+        "transformerTapSwitch"
+      ],
+      "detect": {
+        "motorChangeOver": [
+          "motorchangeover"
+        ],
+        "otherNec": [
+          "othernec"
+        ],
+        "transformerTapSwitch": [
+          "transformertapswitch"
+        ]
+      }
+    }
+  }
 }

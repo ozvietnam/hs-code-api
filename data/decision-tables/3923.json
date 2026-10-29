@@ -1,0 +1,672 @@
+{
+  "heading": "3923",
+  "titleVi": "Sản phẩm từ plastic khác, chưa được phân loại ở nơi khác trong chương 39",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "productKind",
+      "type": "enum",
+      "domain": [
+        "carboy_bottle_jug",
+        "other_article",
+        "resin_container",
+        "sack_bag_other",
+        "sack_bag_plastic",
+        "spool_cylinder",
+        "stopper_lid_cap"
+      ],
+      "labelVi": "Loại sản phẩm plastic",
+      "questionVi": "Sản phẩm plastic thuộc loại nào: thùng/chai/bình nhựa, túi khóa, ống/cunidad, nút/lid, hay sản phẩm khác?",
+      "detect": {
+        "carboy_bottle_jug": [
+          "bình nhựa",
+          "chai nhựa",
+          "can nhựa",
+          "bình nước",
+          "bình đựng",
+          "bình hoá chất",
+          "carboy",
+          "bình acquy",
+          "bình phân loại"
+        ],
+        "resin_container": [
+          "hộp nhựa",
+          "thùng nhựa",
+          "khay nhựa",
+          "container nhựa",
+          "bồn nhựa",
+          "cốc nhựa",
+          "hũ nhựa",
+          "tô nhựa"
+        ],
+        "sack_bag_other": [
+          "túi nilon",
+          "túi nhựa đựng",
+          "bao bì nhựa",
+          "sack",
+          "túi rác"
+        ],
+        "sack_bag_plastic": [
+          "túi PE",
+          "túi HDPE",
+          "túi LDPE",
+          "túi PP",
+          "túi nhựa đóng gói",
+          "túi polythene",
+          "túi plastic"
+        ],
+        "spool_cylinder": [
+          "ống nhựa",
+          "cunidad nhựa",
+          "trục nhựa",
+          "spool",
+          "cuộn nhựa",
+          "lõi nhựa"
+        ],
+        "stopper_lid_cap": [
+          "nắp nhựa",
+          "nút nhựa",
+          "đậy nhựa",
+          "lid",
+          "cap",
+          "nắp chai",
+          "nút chai"
+        ],
+        "other_article": [
+          "sản phẩm nhựa",
+          "đồ nhựa",
+          "vật nhựa",
+          "Hộp đựng ốp điện thoại",
+          "Túi bao bì",
+          "Túi nhựa PVC",
+          "Hộp đựng giày",
+          "Dây rút nhựa",
+          "Túi nén chân không",
+          "Hộp vỉ",
+          "Pallet nhựa chống tĩnh điện",
+          "Vỏ đựng son",
+          "Vỏ hộp rỗng đựng sáp thơm",
+          "Lọ nhựa đựng mỹ phẩm",
+          "Lọ đựng keo silicone",
+          "Tủ nhựa đựng linh kiện",
+          "Bộ nắp chụp nhựa",
+          "Bộ khay đựng bánh",
+          "Vỏ son dưỡng",
+          "Túi đựng sản phẩm",
+          "Bộ chai lọ chiết mỹ phẩm",
+          "Nắp lọ mỹ phẩm",
+          "Ly nhựa",
+          "Hộp đựng mỹ phẩm"
+        ]
+      },
+      "_detect": {
+        "carboy_bottle_jug": [
+          {
+            "raw": "bình nhựa",
+            "dia": true,
+            "key": "bình nhựa",
+            "folded": "binh nhua"
+          },
+          {
+            "raw": "chai nhựa",
+            "dia": true,
+            "key": "chai nhựa",
+            "folded": "chai nhua"
+          },
+          {
+            "raw": "can nhựa",
+            "dia": true,
+            "key": "can nhựa",
+            "folded": "can nhua"
+          },
+          {
+            "raw": "bình nước",
+            "dia": true,
+            "key": "bình nước",
+            "folded": "binh nuoc"
+          },
+          {
+            "raw": "bình đựng",
+            "dia": true,
+            "key": "bình đựng",
+            "folded": "binh dung"
+          },
+          {
+            "raw": "bình hoá chất",
+            "dia": true,
+            "key": "bình hoá chất",
+            "folded": "binh hoa chat"
+          },
+          {
+            "raw": "carboy",
+            "dia": false,
+            "key": "carboy",
+            "folded": "carboy"
+          },
+          {
+            "raw": "bình acquy",
+            "dia": true,
+            "key": "bình acquy",
+            "folded": "binh acquy"
+          },
+          {
+            "raw": "bình phân loại",
+            "dia": true,
+            "key": "bình phân loại",
+            "folded": "binh phan loai"
+          }
+        ],
+        "resin_container": [
+          {
+            "raw": "hộp nhựa",
+            "dia": true,
+            "key": "hộp nhựa",
+            "folded": "hop nhua"
+          },
+          {
+            "raw": "thùng nhựa",
+            "dia": true,
+            "key": "thùng nhựa",
+            "folded": "thung nhua"
+          },
+          {
+            "raw": "khay nhựa",
+            "dia": true,
+            "key": "khay nhựa",
+            "folded": "khay nhua"
+          },
+          {
+            "raw": "container nhựa",
+            "dia": true,
+            "key": "container nhựa",
+            "folded": "container nhua"
+          },
+          {
+            "raw": "bồn nhựa",
+            "dia": true,
+            "key": "bồn nhựa",
+            "folded": "bon nhua"
+          },
+          {
+            "raw": "cốc nhựa",
+            "dia": true,
+            "key": "cốc nhựa",
+            "folded": "coc nhua"
+          },
+          {
+            "raw": "hũ nhựa",
+            "dia": true,
+            "key": "hũ nhựa",
+            "folded": "hu nhua"
+          },
+          {
+            "raw": "tô nhựa",
+            "dia": true,
+            "key": "tô nhựa",
+            "folded": "to nhua"
+          }
+        ],
+        "sack_bag_other": [
+          {
+            "raw": "túi nilon",
+            "dia": true,
+            "key": "túi nilon",
+            "folded": "tui nilon"
+          },
+          {
+            "raw": "túi nhựa đựng",
+            "dia": true,
+            "key": "túi nhựa đựng",
+            "folded": "tui nhua dung"
+          },
+          {
+            "raw": "bao bì nhựa",
+            "dia": true,
+            "key": "bao bì nhựa",
+            "folded": "bao bi nhua"
+          },
+          {
+            "raw": "sack",
+            "dia": false,
+            "key": "sack",
+            "folded": "sack"
+          },
+          {
+            "raw": "túi rác",
+            "dia": true,
+            "key": "túi rác",
+            "folded": "tui rac"
+          }
+        ],
+        "sack_bag_plastic": [
+          {
+            "raw": "túi PE",
+            "dia": true,
+            "key": "túi pe",
+            "folded": "tui pe"
+          },
+          {
+            "raw": "túi HDPE",
+            "dia": true,
+            "key": "túi hdpe",
+            "folded": "tui hdpe"
+          },
+          {
+            "raw": "túi LDPE",
+            "dia": true,
+            "key": "túi ldpe",
+            "folded": "tui ldpe"
+          },
+          {
+            "raw": "túi PP",
+            "dia": true,
+            "key": "túi pp",
+            "folded": "tui pp"
+          },
+          {
+            "raw": "túi nhựa đóng gói",
+            "dia": true,
+            "key": "túi nhựa đóng gói",
+            "folded": "tui nhua dong goi"
+          },
+          {
+            "raw": "túi polythene",
+            "dia": true,
+            "key": "túi polythene",
+            "folded": "tui polythene"
+          },
+          {
+            "raw": "túi plastic",
+            "dia": true,
+            "key": "túi plastic",
+            "folded": "tui plastic"
+          }
+        ],
+        "spool_cylinder": [
+          {
+            "raw": "ống nhựa",
+            "dia": true,
+            "key": "ống nhựa",
+            "folded": "ong nhua"
+          },
+          {
+            "raw": "cunidad nhựa",
+            "dia": true,
+            "key": "cunidad nhựa",
+            "folded": "cunidad nhua"
+          },
+          {
+            "raw": "trục nhựa",
+            "dia": true,
+            "key": "trục nhựa",
+            "folded": "truc nhua"
+          },
+          {
+            "raw": "spool",
+            "dia": false,
+            "key": "spool",
+            "folded": "spool"
+          },
+          {
+            "raw": "cuộn nhựa",
+            "dia": true,
+            "key": "cuộn nhựa",
+            "folded": "cuon nhua"
+          },
+          {
+            "raw": "lõi nhựa",
+            "dia": true,
+            "key": "lõi nhựa",
+            "folded": "loi nhua"
+          }
+        ],
+        "stopper_lid_cap": [
+          {
+            "raw": "nắp nhựa",
+            "dia": true,
+            "key": "nắp nhựa",
+            "folded": "nap nhua"
+          },
+          {
+            "raw": "nút nhựa",
+            "dia": true,
+            "key": "nút nhựa",
+            "folded": "nut nhua"
+          },
+          {
+            "raw": "đậy nhựa",
+            "dia": true,
+            "key": "đậy nhựa",
+            "folded": "day nhua"
+          },
+          {
+            "raw": "lid",
+            "dia": false,
+            "key": "lid",
+            "folded": "lid"
+          },
+          {
+            "raw": "cap",
+            "dia": false,
+            "key": "cap",
+            "folded": "cap"
+          },
+          {
+            "raw": "nắp chai",
+            "dia": true,
+            "key": "nắp chai",
+            "folded": "nap chai"
+          },
+          {
+            "raw": "nút chai",
+            "dia": true,
+            "key": "nút chai",
+            "folded": "nut chai"
+          }
+        ],
+        "other_article": [
+          {
+            "raw": "sản phẩm nhựa",
+            "dia": true,
+            "key": "sản phẩm nhựa",
+            "folded": "san pham nhua"
+          },
+          {
+            "raw": "đồ nhựa",
+            "dia": true,
+            "key": "đồ nhựa",
+            "folded": "do nhua"
+          },
+          {
+            "raw": "vật nhựa",
+            "dia": true,
+            "key": "vật nhựa",
+            "folded": "vat nhua"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "specCode",
+      "type": "enum",
+      "domain": [
+        "00",
+        "10",
+        "11",
+        "19",
+        "20",
+        "90",
+        "91",
+        "99"
+      ],
+      "labelVi": "Mã hiệu kỹ thuật",
+      "questionVi": "Mã hiệu kỹ thuật (2 chữ số cuối)?",
+      "_detect": {}
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "productKind": "resin_container",
+        "specCode": "10"
+      },
+      "hs": "39231010",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại resin_container, Biểu thuế 2026 nhóm 392310 → 39231010",
+      "source": "Biểu thuế NK VN 2026, nhóm 392310"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "productKind": "resin_container",
+        "specCode": "20"
+      },
+      "hs": "39231020",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại resin_container, Biểu thuế 2026 nhóm 392310 → 39231020",
+      "source": "Biểu thuế NK VN 2026, nhóm 392310"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "productKind": "resin_container",
+        "specCode": "90"
+      },
+      "hs": "39231090",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại resin_container, Biểu thuế 2026 nhóm 392310 → 39231090",
+      "source": "Biểu thuế NK VN 2026, nhóm 392310"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_plastic",
+        "specCode": "11"
+      },
+      "hs": "39232111",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_plastic, Biểu thuế 2026 nhóm 392321 → 39232111",
+      "source": "Biểu thuế NK VN 2026, nhóm 392321"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_plastic",
+        "specCode": "19"
+      },
+      "hs": "39232119",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_plastic, Biểu thuế 2026 nhóm 392321 → 39232119",
+      "source": "Biểu thuế NK VN 2026, nhóm 392321"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_plastic",
+        "specCode": "91"
+      },
+      "hs": "39232191",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_plastic, Biểu thuế 2026 nhóm 392321 → 39232191",
+      "source": "Biểu thuế NK VN 2026, nhóm 392321"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_plastic",
+        "specCode": "99"
+      },
+      "hs": "39232199",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_plastic, Biểu thuế 2026 nhóm 392321 → 39232199",
+      "source": "Biểu thuế NK VN 2026, nhóm 392321"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_other",
+        "specCode": "10"
+      },
+      "hs": "39232910",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_other, Biểu thuế 2026 nhóm 392329 → 39232910",
+      "source": "Biểu thuế NK VN 2026, nhóm 392329"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "productKind": "sack_bag_other",
+        "specCode": "90"
+      },
+      "hs": "39232990",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại sack_bag_other, Biểu thuế 2026 nhóm 392329 → 39232990",
+      "source": "Biểu thuế NK VN 2026, nhóm 392329"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "productKind": "carboy_bottle_jug",
+        "specCode": "20"
+      },
+      "hs": "39233020",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại carboy_bottle_jug, Biểu thuế 2026 nhóm 392330 → 39233020",
+      "source": "Biểu thuế NK VN 2026, nhóm 392330"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "productKind": "carboy_bottle_jug",
+        "specCode": "90"
+      },
+      "hs": "39233090",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại carboy_bottle_jug, Biểu thuế 2026 nhóm 392330 → 39233090",
+      "source": "Biểu thuế NK VN 2026, nhóm 392330"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "productKind": "spool_cylinder",
+        "specCode": "10"
+      },
+      "hs": "39234010",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại spool_cylinder, Biểu thuế 2026 nhóm 392340 → 39234010",
+      "source": "Biểu thuế NK VN 2026, nhóm 392340"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "productKind": "spool_cylinder",
+        "specCode": "90"
+      },
+      "hs": "39234090",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại spool_cylinder, Biểu thuế 2026 nhóm 392340 → 39234090",
+      "source": "Biểu thuế NK VN 2026, nhóm 392340"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "productKind": "stopper_lid_cap",
+        "specCode": "00"
+      },
+      "hs": "39235000",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại stopper_lid_cap, Biểu thuế 2026 nhóm 392350 → 39235000",
+      "source": "Biểu thuế NK VN 2026, nhóm 392350"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "productKind": "other_article",
+        "specCode": "10"
+      },
+      "hs": "39239010",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại other_article, Biểu thuế 2026 nhóm 392390 → 39239010",
+      "source": "Biểu thuế NK VN 2026, nhóm 392390"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "productKind": "other_article",
+        "specCode": "90"
+      },
+      "hs": "39239090",
+      "reasonVi": "GIR 6 — sản phẩm plastic loại other_article, Biểu thuế 2026 nhóm 392390 → 39239090",
+      "source": "Biểu thuế NK VN 2026, nhóm 392390"
+    }
+  ],
+  "essenceTestVi": "Loại sản phẩm (productKind) + Mã hiệu (specCode) → mã 8 số. 16 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN).",
+  "hitPolicy": "PRIORITY",
+  "inputAttributes": [
+    "productKind",
+    "specCode"
+  ],
+  "attributes": {
+    "productKind": {
+      "detect": {
+        "carboy_bottle_jug": [
+          "bình nhựa",
+          "chai nhựa",
+          "can nhựa",
+          "bình nước",
+          "bình đựng",
+          "bình hoá chất",
+          "carboy",
+          "bình acquy",
+          "bình phân loại"
+        ],
+        "resin_container": [
+          "hộp nhựa",
+          "thùng nhựa",
+          "khay nhựa",
+          "container nhựa",
+          "bồn nhựa",
+          "cốc nhựa",
+          "hũ nhựa",
+          "tô nhựa"
+        ],
+        "sack_bag_other": [
+          "túi nilon",
+          "túi nhựa đựng",
+          "bao bì nhựa",
+          "sack",
+          "túi rác"
+        ],
+        "sack_bag_plastic": [
+          "túi PE",
+          "túi HDPE",
+          "túi LDPE",
+          "túi PP",
+          "túi nhựa đóng gói",
+          "túi polythene",
+          "túi plastic"
+        ],
+        "spool_cylinder": [
+          "ống nhựa",
+          "cunidad nhựa",
+          "trục nhựa",
+          "spool",
+          "cuộn nhựa",
+          "lõi nhựa"
+        ],
+        "stopper_lid_cap": [
+          "nắp nhựa",
+          "nút nhựa",
+          "đậy nhựa",
+          "lid",
+          "cap",
+          "nắp chai",
+          "nút chai"
+        ],
+        "other_article": [
+          "sản phẩm nhựa",
+          "đồ nhựa",
+          "vật nhựa"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "carboy_bottle_jug",
+        "other_article",
+        "resin_container",
+        "sack_bag_other",
+        "sack_bag_plastic",
+        "spool_cylinder",
+        "stopper_lid_cap"
+      ]
+    },
+    "specCode": {
+      "detect": {},
+      "type": "enum"
+    }
+  },
+  "essenceVi": "productKind × specCode"
+}

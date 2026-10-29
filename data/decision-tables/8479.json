@@ -1,0 +1,1170 @@
+{
+  "heading": "8479",
+  "titleVi": "Máy và thiết bị cơ khí khác chưa được chi tiết hoặc ghi ở nơi khác trong Chương 84",
+  "verified": true,
+  "verifiedBy": "hermes-211",
+  "verifiedAt": "2026-10-02T20:16:11.652Z",
+  "essenceTestVi": "Là máy công nghiệp chưa có nhóm cụ thể trong Chương 84: robot, máy làm mát, thiết bị sân bay, máy trộn/nhào/kim loại, máy ép đẳng nhiệt lạnh, máy bán hàng tự động, hay loại khác? Hoạt động bằng điện hay không?",
+  "sourceVi": "Biểu thuế 2026 nhóm 84.79: 8479.10 đường; 8479.20 khuấy trộn; 8479.30 ép tấm gỗ; 8479.40 cáp; 8479.50 robot; 8479.60 làm mát; 8479.71/79 sân bay; 8479.81/82 trộn kim loại; 8479.83 ép lạnh; 8479.89 tự động/bán hàng; 8479.90 bộ phận.",
+  "hitPolicy": "PRIORITY",
+  "attributes": {
+    "machineApplication": {
+      "type": "enum",
+      "domain": [
+        "road_construction",
+        "mixing_kneading",
+        "wood_pressing",
+        "rope_cable",
+        "industrial_robot",
+        "evaporative_cooler",
+        "airport",
+        "metal_working",
+        "cold_press",
+        "auto_component",
+        "vending",
+        "other"
+      ],
+      "labelVi": "Loại ứng dụng công nghiệp"
+    },
+    "powerSource": {
+      "type": "enum",
+      "domain": [
+        "electric",
+        "non_electric"
+      ],
+      "labelVi": "Nguồn điện"
+    },
+    "machineKind": {
+      "type": "enum",
+      "domain": [
+        "automatic_placer",
+        "cpu_assembly",
+        "other_auto"
+      ],
+      "labelVi": "Loại máy tự động"
+    }
+  },
+  "inputs": [
+    {
+      "attribute": "machineApplication",
+      "type": "enum",
+      "domain": [
+        "road_construction",
+        "mixing_kneading",
+        "wood_pressing",
+        "rope_cable",
+        "industrial_robot",
+        "evaporative_cooler",
+        "airport",
+        "metal_working",
+        "cold_press",
+        "auto_component",
+        "vending",
+        "other"
+      ],
+      "labelVi": "Loại ứng dụng công nghiệp",
+      "questionVi": "Máy gì: rô bốt công nghiệp, máy làm mát bay hơi, thiết bị sân bay, máy trộn/nhào, máy ép đẳng nhiệt lạnh, máy bán hàng tự động, máy đường, máy khuấy trộn, máy ép gỗ, máy cáp, hay loại khác?",
+      "detect": {
+        "road_construction": [
+          "máy làm đường",
+          "road construction",
+          "road sweeper",
+          "street sweeper",
+          "concrete pump",
+          "cement mixer",
+          "trộn bêtông",
+          "bêtông"
+        ],
+        "mixing_kneading": [
+          "máy trộn",
+          "máy nhào",
+          "mixer",
+          "kneader",
+          "mill",
+          "nghiền",
+          "grinding",
+          "crusher",
+          "máy khuấy",
+          "stirring"
+        ],
+        "wood_pressing": [
+          "ép tấm",
+          "ván ép",
+          "gỗ ép",
+          "plywood",
+          "particle board",
+          " MDF",
+          "OSB",
+          "tấm gỗ",
+          "sợi gỗ"
+        ],
+        "rope_cable": [
+          "máy làm cáp",
+          "rope making",
+          "cable making",
+          "cáp",
+          "cable",
+          "rope"
+        ],
+        "industrial_robot": [
+          "rô bốt",
+          "robot công nghiệp",
+          "industrial robot",
+          "robot arm",
+          "robotic arm"
+        ],
+        "evaporative_cooler": [
+          "làm mát bay hơi",
+          "evaporative",
+          "air cooler",
+          "máy làm mát",
+          "cooling tower",
+          "quạt hơi nước"
+        ],
+        "airport": [
+          "sân bay",
+          "airport",
+          "baggage handling",
+          "máy xử lý hành lý",
+          "conveyor sân bay"
+        ],
+        "metal_working": [
+          "trộn kim loại",
+          "metal working",
+          "nhào kim loại",
+          "xử lý kim loại"
+        ],
+        "cold_press": [
+          "ép lạnh",
+          "cold press",
+          "isostatic",
+          "đẳng nhiệt lạnh",
+          "cold isostatic"
+        ],
+        "auto_component": [
+          "tự động sắp xếp linh kiện",
+          "placing",
+          "component placement",
+          "SMT placer",
+          "gắn linh kiện",
+          "PCB assembly"
+        ],
+        "vending": [
+          "máy bán hàng tự động",
+          "vending machine",
+          "automatic vending",
+          "ATM",
+          "máy bán hàng",
+          "service-vending"
+        ],
+        "other": [
+          "máy công nghiệp khác",
+          "cơ khí khác",
+          "other machinery",
+          "n.e.c.",
+          "loại khác",
+          "Máy cấp vít tự động",
+          "Thiết bị rung cấp phôi tự động",
+          "Máy lọc dầu thực vật",
+          "Máy ép dầu thực vật",
+          "Máy dán màng PVC",
+          "Máy cắt băng dính",
+          "Máy đóng dây đai",
+          "Máy UCE",
+          "Máy ép phế liệu",
+          "Rulo ép phân bón",
+          "Máy tạo ẩm siêu âm công nghiệp",
+          "Cánh tay Robot 5 trục",
+          "Kim phun",
+          "Máy cắt decal",
+          "Khuôn ép viên",
+          "Bộ tinh chỉnh đa trục",
+          "Đế rung thẳng",
+          "Giảm chấn thủy lực",
+          "Máy rửa siêu âm",
+          "Bộ cấp vít",
+          "Mô đun dẫn hướng tuyến tính",
+          "Con trượt tuyến tính",
+          "Giảm chấn khí nén"
+        ]
+      },
+      "_detect": {
+        "road_construction": [
+          {
+            "raw": "máy làm đường",
+            "dia": true,
+            "key": "máy làm đường",
+            "folded": "may lam duong"
+          },
+          {
+            "raw": "road construction",
+            "dia": false,
+            "key": "road construction",
+            "folded": "road construction"
+          },
+          {
+            "raw": "road sweeper",
+            "dia": false,
+            "key": "road sweeper",
+            "folded": "road sweeper"
+          },
+          {
+            "raw": "street sweeper",
+            "dia": false,
+            "key": "street sweeper",
+            "folded": "street sweeper"
+          },
+          {
+            "raw": "concrete pump",
+            "dia": false,
+            "key": "concrete pump",
+            "folded": "concrete pump"
+          },
+          {
+            "raw": "cement mixer",
+            "dia": false,
+            "key": "cement mixer",
+            "folded": "cement mixer"
+          },
+          {
+            "raw": "trộn bêtông",
+            "dia": true,
+            "key": "trộn bêtông",
+            "folded": "tron betong"
+          },
+          {
+            "raw": "bêtông",
+            "dia": true,
+            "key": "bêtông",
+            "folded": "betong"
+          }
+        ],
+        "mixing_kneading": [
+          {
+            "raw": "máy trộn",
+            "dia": true,
+            "key": "máy trộn",
+            "folded": "may tron"
+          },
+          {
+            "raw": "máy nhào",
+            "dia": true,
+            "key": "máy nhào",
+            "folded": "may nhao"
+          },
+          {
+            "raw": "mixer",
+            "dia": false,
+            "key": "mixer",
+            "folded": "mixer"
+          },
+          {
+            "raw": "kneader",
+            "dia": false,
+            "key": "kneader",
+            "folded": "kneader"
+          },
+          {
+            "raw": "mill",
+            "dia": false,
+            "key": "mill",
+            "folded": "mill"
+          },
+          {
+            "raw": "nghiền",
+            "dia": true,
+            "key": "nghiền",
+            "folded": "nghien"
+          },
+          {
+            "raw": "grinding",
+            "dia": false,
+            "key": "grinding",
+            "folded": "grinding"
+          },
+          {
+            "raw": "crusher",
+            "dia": false,
+            "key": "crusher",
+            "folded": "crusher"
+          },
+          {
+            "raw": "máy khuấy",
+            "dia": true,
+            "key": "máy khuấy",
+            "folded": "may khuay"
+          },
+          {
+            "raw": "stirring",
+            "dia": false,
+            "key": "stirring",
+            "folded": "stirring"
+          }
+        ],
+        "wood_pressing": [
+          {
+            "raw": "ép tấm",
+            "dia": true,
+            "key": "ép tấm",
+            "folded": "ep tam"
+          },
+          {
+            "raw": "ván ép",
+            "dia": true,
+            "key": "ván ép",
+            "folded": "van ep"
+          },
+          {
+            "raw": "gỗ ép",
+            "dia": true,
+            "key": "gỗ ép",
+            "folded": "go ep"
+          },
+          {
+            "raw": "plywood",
+            "dia": false,
+            "key": "plywood",
+            "folded": "plywood"
+          },
+          {
+            "raw": "particle board",
+            "dia": false,
+            "key": "particle board",
+            "folded": "particle board"
+          },
+          {
+            "raw": " MDF",
+            "dia": false,
+            "key": "mdf",
+            "folded": "mdf"
+          },
+          {
+            "raw": "OSB",
+            "dia": false,
+            "key": "osb",
+            "folded": "osb"
+          },
+          {
+            "raw": "tấm gỗ",
+            "dia": true,
+            "key": "tấm gỗ",
+            "folded": "tam go"
+          },
+          {
+            "raw": "sợi gỗ",
+            "dia": true,
+            "key": "sợi gỗ",
+            "folded": "soi go"
+          }
+        ],
+        "rope_cable": [
+          {
+            "raw": "máy làm cáp",
+            "dia": true,
+            "key": "máy làm cáp",
+            "folded": "may lam cap"
+          },
+          {
+            "raw": "rope making",
+            "dia": false,
+            "key": "rope making",
+            "folded": "rope making"
+          },
+          {
+            "raw": "cable making",
+            "dia": false,
+            "key": "cable making",
+            "folded": "cable making"
+          },
+          {
+            "raw": "cáp",
+            "dia": true,
+            "key": "cáp",
+            "folded": "cap"
+          },
+          {
+            "raw": "cable",
+            "dia": false,
+            "key": "cable",
+            "folded": "cable"
+          },
+          {
+            "raw": "rope",
+            "dia": false,
+            "key": "rope",
+            "folded": "rope"
+          }
+        ],
+        "industrial_robot": [
+          {
+            "raw": "rô bốt",
+            "dia": true,
+            "key": "rô bốt",
+            "folded": "ro bot"
+          },
+          {
+            "raw": "robot công nghiệp",
+            "dia": true,
+            "key": "robot công nghiệp",
+            "folded": "robot cong nghiep"
+          },
+          {
+            "raw": "industrial robot",
+            "dia": false,
+            "key": "industrial robot",
+            "folded": "industrial robot"
+          },
+          {
+            "raw": "robot arm",
+            "dia": false,
+            "key": "robot arm",
+            "folded": "robot arm"
+          },
+          {
+            "raw": "robotic arm",
+            "dia": false,
+            "key": "robotic arm",
+            "folded": "robotic arm"
+          }
+        ],
+        "evaporative_cooler": [
+          {
+            "raw": "làm mát bay hơi",
+            "dia": true,
+            "key": "làm mát bay hơi",
+            "folded": "lam mat bay hoi"
+          },
+          {
+            "raw": "evaporative",
+            "dia": false,
+            "key": "evaporative",
+            "folded": "evaporative"
+          },
+          {
+            "raw": "air cooler",
+            "dia": false,
+            "key": "air cooler",
+            "folded": "air cooler"
+          },
+          {
+            "raw": "máy làm mát",
+            "dia": true,
+            "key": "máy làm mát",
+            "folded": "may lam mat"
+          },
+          {
+            "raw": "cooling tower",
+            "dia": false,
+            "key": "cooling tower",
+            "folded": "cooling tower"
+          },
+          {
+            "raw": "quạt hơi nước",
+            "dia": true,
+            "key": "quạt hơi nước",
+            "folded": "quat hoi nuoc"
+          }
+        ],
+        "airport": [
+          {
+            "raw": "sân bay",
+            "dia": true,
+            "key": "sân bay",
+            "folded": "san bay"
+          },
+          {
+            "raw": "airport",
+            "dia": false,
+            "key": "airport",
+            "folded": "airport"
+          },
+          {
+            "raw": "baggage handling",
+            "dia": false,
+            "key": "baggage handling",
+            "folded": "baggage handling"
+          },
+          {
+            "raw": "máy xử lý hành lý",
+            "dia": true,
+            "key": "máy xử lý hành lý",
+            "folded": "may xu ly hanh ly"
+          },
+          {
+            "raw": "conveyor sân bay",
+            "dia": true,
+            "key": "conveyor sân bay",
+            "folded": "conveyor san bay"
+          }
+        ],
+        "metal_working": [
+          {
+            "raw": "trộn kim loại",
+            "dia": true,
+            "key": "trộn kim loại",
+            "folded": "tron kim loai"
+          },
+          {
+            "raw": "metal working",
+            "dia": false,
+            "key": "metal working",
+            "folded": "metal working"
+          },
+          {
+            "raw": "nhào kim loại",
+            "dia": true,
+            "key": "nhào kim loại",
+            "folded": "nhao kim loai"
+          },
+          {
+            "raw": "xử lý kim loại",
+            "dia": true,
+            "key": "xử lý kim loại",
+            "folded": "xu ly kim loai"
+          }
+        ],
+        "cold_press": [
+          {
+            "raw": "ép lạnh",
+            "dia": true,
+            "key": "ép lạnh",
+            "folded": "ep lanh"
+          },
+          {
+            "raw": "cold press",
+            "dia": false,
+            "key": "cold press",
+            "folded": "cold press"
+          },
+          {
+            "raw": "isostatic",
+            "dia": false,
+            "key": "isostatic",
+            "folded": "isostatic"
+          },
+          {
+            "raw": "đẳng nhiệt lạnh",
+            "dia": true,
+            "key": "đẳng nhiệt lạnh",
+            "folded": "dang nhiet lanh"
+          },
+          {
+            "raw": "cold isostatic",
+            "dia": false,
+            "key": "cold isostatic",
+            "folded": "cold isostatic"
+          }
+        ],
+        "auto_component": [
+          {
+            "raw": "tự động sắp xếp linh kiện",
+            "dia": true,
+            "key": "tự động sắp xếp linh kiện",
+            "folded": "tu dong sap xep linh kien"
+          },
+          {
+            "raw": "placing",
+            "dia": false,
+            "key": "placing",
+            "folded": "placing"
+          },
+          {
+            "raw": "component placement",
+            "dia": false,
+            "key": "component placement",
+            "folded": "component placement"
+          },
+          {
+            "raw": "SMT placer",
+            "dia": false,
+            "key": "smt placer",
+            "folded": "smt placer"
+          },
+          {
+            "raw": "gắn linh kiện",
+            "dia": true,
+            "key": "gắn linh kiện",
+            "folded": "gan linh kien"
+          },
+          {
+            "raw": "PCB assembly",
+            "dia": false,
+            "key": "pcb assembly",
+            "folded": "pcb assembly"
+          }
+        ],
+        "vending": [
+          {
+            "raw": "máy bán hàng tự động",
+            "dia": true,
+            "key": "máy bán hàng tự động",
+            "folded": "may ban hang tu dong"
+          },
+          {
+            "raw": "vending machine",
+            "dia": false,
+            "key": "vending machine",
+            "folded": "vending machine"
+          },
+          {
+            "raw": "automatic vending",
+            "dia": false,
+            "key": "automatic vending",
+            "folded": "automatic vending"
+          },
+          {
+            "raw": "ATM",
+            "dia": false,
+            "key": "atm",
+            "folded": "atm"
+          },
+          {
+            "raw": "máy bán hàng",
+            "dia": true,
+            "key": "máy bán hàng",
+            "folded": "may ban hang"
+          },
+          {
+            "raw": "service-vending",
+            "dia": false,
+            "key": "service vending",
+            "folded": "service vending"
+          }
+        ],
+        "other": [
+          {
+            "raw": "máy công nghiệp khác",
+            "dia": true,
+            "key": "máy công nghiệp khác",
+            "folded": "may cong nghiep khac"
+          },
+          {
+            "raw": "cơ khí khác",
+            "dia": true,
+            "key": "cơ khí khác",
+            "folded": "co khi khac"
+          },
+          {
+            "raw": "other machinery",
+            "dia": false,
+            "key": "other machinery",
+            "folded": "other machinery"
+          },
+          {
+            "raw": "n.e.c.",
+            "dia": false,
+            "key": "n.e.c.",
+            "folded": "n.e.c."
+          },
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "powerSource",
+      "type": "enum",
+      "domain": [
+        "electric",
+        "non_electric"
+      ],
+      "labelVi": "Nguồn điện",
+      "questionVi": "Máy hoạt động bằng điện hay thủ công/cơ khí?",
+      "detect": {
+        "electric": [
+          "hoạt động bằng điện",
+          "electric",
+          "điện",
+          "motor",
+          "mô tơ",
+          "Máy khuấy men"
+        ],
+        "non_electric": [
+          "không hoạt động bằng điện",
+          "non-electric",
+          "thủ công",
+          "manual",
+          "hand"
+        ]
+      },
+      "_detect": {
+        "electric": [
+          {
+            "raw": "hoạt động bằng điện",
+            "dia": true,
+            "key": "hoạt động bằng điện",
+            "folded": "hoat dong bang dien"
+          },
+          {
+            "raw": "electric",
+            "dia": false,
+            "key": "electric",
+            "folded": "electric"
+          },
+          {
+            "raw": "điện",
+            "dia": true,
+            "key": "điện",
+            "folded": "dien"
+          },
+          {
+            "raw": "motor",
+            "dia": false,
+            "key": "motor",
+            "folded": "motor"
+          },
+          {
+            "raw": "mô tơ",
+            "dia": true,
+            "key": "mô tơ",
+            "folded": "mo to"
+          }
+        ],
+        "non_electric": [
+          {
+            "raw": "không hoạt động bằng điện",
+            "dia": true,
+            "key": "không hoạt động bằng điện",
+            "folded": "khong hoat dong bang dien"
+          },
+          {
+            "raw": "non-electric",
+            "dia": false,
+            "key": "non electric",
+            "folded": "non electric"
+          },
+          {
+            "raw": "thủ công",
+            "dia": true,
+            "key": "thủ công",
+            "folded": "thu cong"
+          },
+          {
+            "raw": "manual",
+            "dia": false,
+            "key": "manual",
+            "folded": "manual"
+          },
+          {
+            "raw": "hand",
+            "dia": false,
+            "key": "hand",
+            "folded": "hand"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "machineKind",
+      "type": "enum",
+      "domain": [
+        "automatic_placer",
+        "cpu_assembly",
+        "other_auto"
+      ],
+      "labelVi": "Loại máy tự động",
+      "questionVi": "Máy tự động loại gì: gắn linh kiện, lắp CPU, hay loại khác?",
+      "detect": {
+        "automatic_placer": [
+          "sắp xếp linh kiện",
+          "placing",
+          "component placement",
+          "SMT placer",
+          "gắn linh kiện"
+        ],
+        "cpu_assembly": [
+          "lắp ráp CPU",
+          "bo mạch",
+          "CPU",
+          "processor assembly",
+          "bộ xử lý trung tâm"
+        ],
+        "other_auto": [
+          "tự động khác",
+          "automatic other",
+          "n.e.c. tự động"
+        ]
+      },
+      "_detect": {
+        "automatic_placer": [
+          {
+            "raw": "sắp xếp linh kiện",
+            "dia": true,
+            "key": "sắp xếp linh kiện",
+            "folded": "sap xep linh kien"
+          },
+          {
+            "raw": "placing",
+            "dia": false,
+            "key": "placing",
+            "folded": "placing"
+          },
+          {
+            "raw": "component placement",
+            "dia": false,
+            "key": "component placement",
+            "folded": "component placement"
+          },
+          {
+            "raw": "SMT placer",
+            "dia": false,
+            "key": "smt placer",
+            "folded": "smt placer"
+          },
+          {
+            "raw": "gắn linh kiện",
+            "dia": true,
+            "key": "gắn linh kiện",
+            "folded": "gan linh kien"
+          }
+        ],
+        "cpu_assembly": [
+          {
+            "raw": "lắp ráp CPU",
+            "dia": true,
+            "key": "lắp ráp cpu",
+            "folded": "lap rap cpu"
+          },
+          {
+            "raw": "bo mạch",
+            "dia": true,
+            "key": "bo mạch",
+            "folded": "bo mach"
+          },
+          {
+            "raw": "CPU",
+            "dia": false,
+            "key": "cpu",
+            "folded": "cpu"
+          },
+          {
+            "raw": "processor assembly",
+            "dia": false,
+            "key": "processor assembly",
+            "folded": "processor assembly"
+          },
+          {
+            "raw": "bộ xử lý trung tâm",
+            "dia": true,
+            "key": "bộ xử lý trung tâm",
+            "folded": "bo xu ly trung tam"
+          }
+        ],
+        "other_auto": [
+          {
+            "raw": "tự động khác",
+            "dia": true,
+            "key": "tự động khác",
+            "folded": "tu dong khac"
+          },
+          {
+            "raw": "automatic other",
+            "dia": false,
+            "key": "automatic other",
+            "folded": "automatic other"
+          },
+          {
+            "raw": "n.e.c. tự động",
+            "dia": true,
+            "key": "n.e.c. tự động",
+            "folded": "n.e.c. tu dong"
+          }
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-road-electric",
+      "priority": 90,
+      "when": {
+        "machineApplication": "road_construction",
+        "powerSource": "electric"
+      },
+      "hs": "84791010",
+      "gir": "GIR 6",
+      "reasonVi": "Máy làm đường hoạt động bằng điện → 8479.10.10.",
+      "source": "Biểu thuế 2026 dòng 8479.10.10"
+    },
+    {
+      "id": "r-road-non-electric",
+      "priority": 89,
+      "when": {
+        "machineApplication": "road_construction",
+        "powerSource": "non_electric"
+      },
+      "hs": "84791020",
+      "gir": "GIR 6",
+      "reasonVi": "Máy làm đường không hoạt động bằng điện → 8479.10.20.",
+      "source": "Biểu thuế 2026 dòng 8479.10.20"
+    },
+    {
+      "id": "r-mix-electric",
+      "priority": 88,
+      "when": {
+        "machineApplication": "mixing_kneading",
+        "powerSource": "electric"
+      },
+      "hs": "84792010",
+      "gir": "GIR 6",
+      "reasonVi": "Máy khuấy trộn hoạt động bằng điện → 8479.20.10.",
+      "source": "Biểu thuế 2026 dòng 8479.20.10"
+    },
+    {
+      "id": "r-mix-non-electric",
+      "priority": 87,
+      "when": {
+        "machineApplication": "mixing_kneading",
+        "powerSource": "non_electric"
+      },
+      "hs": "84792020",
+      "gir": "GIR 6",
+      "reasonVi": "Máy khuấy trộn không hoạt động bằng điện → 8479.20.20.",
+      "source": "Biểu thuế 2026 dòng 8479.20.20"
+    },
+    {
+      "id": "r-wood-press",
+      "priority": 86,
+      "when": {
+        "machineApplication": "wood_pressing"
+      },
+      "hs": "84793000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy ép dùng sản xuất tấm/ván ép từ xơ sợi hoặc dăm gỗ → 8479.30.00.",
+      "source": "Biểu thuế 2026 dòng 8479.30.00"
+    },
+    {
+      "id": "r-rope-electric",
+      "priority": 85,
+      "when": {
+        "machineApplication": "rope_cable",
+        "powerSource": "electric"
+      },
+      "hs": "84794010",
+      "gir": "GIR 6",
+      "reasonVi": "Máy làm cáp hoạt động bằng điện → 8479.40.10.",
+      "source": "Biểu thuế 2026 dòng 8479.40.10"
+    },
+    {
+      "id": "r-rope-non-electric",
+      "priority": 84,
+      "when": {
+        "machineApplication": "rope_cable",
+        "powerSource": "non_electric"
+      },
+      "hs": "84794020",
+      "gir": "GIR 6",
+      "reasonVi": "Máy làm cáp không hoạt động bằng điện → 8479.40.20.",
+      "source": "Biểu thuế 2026 dòng 8479.40.20"
+    },
+    {
+      "id": "r-robot",
+      "priority": 83,
+      "when": {
+        "machineApplication": "industrial_robot"
+      },
+      "hs": "84795000",
+      "gir": "GIR 6",
+      "reasonVi": "Rô bốt công nghiệp chưa được chi tiết ở nơi khác → 8479.50.00.",
+      "source": "Biểu thuế 2026 dòng 8479.50.00"
+    },
+    {
+      "id": "r-cooler",
+      "priority": 82,
+      "when": {
+        "machineApplication": "evaporative_cooler"
+      },
+      "hs": "84796000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy làm mát không khí bằng bay hơi → 8479.60.00.",
+      "source": "Biểu thuế 2026 dòng 8479.60.00"
+    },
+    {
+      "id": "r-airport-type",
+      "priority": 81,
+      "when": {
+        "machineApplication": "airport"
+      },
+      "hs": "84797100",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị sân bay loại dùng ở sân bay → 8479.71.00.",
+      "source": "Biểu thuế 2026 dòng 8479.71.00"
+    },
+    {
+      "id": "r-airport-other",
+      "priority": 80,
+      "when": {
+        "machineApplication": "airport",
+        "powerSource": "non_electric"
+      },
+      "hs": "84797900",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị sân bay loại khác → 8479.79.00.",
+      "source": "Biểu thuế 2026 dòng 8479.79.00"
+    },
+    {
+      "id": "r-metal-mix-electric",
+      "priority": 79,
+      "when": {
+        "machineApplication": "metal_working",
+        "powerSource": "electric"
+      },
+      "hs": "84798110",
+      "gir": "GIR 6",
+      "reasonVi": "Máy trộn/nhào xử lý kim loại hoạt động bằng điện → 8479.81.10.",
+      "source": "Biểu thuế 2026 dòng 8479.81.10"
+    },
+    {
+      "id": "r-metal-mix-non-electric",
+      "priority": 78,
+      "when": {
+        "machineApplication": "metal_working",
+        "powerSource": "non_electric"
+      },
+      "hs": "84798120",
+      "gir": "GIR 6",
+      "reasonVi": "Máy trộn/nhào xử lý kim loại không hoạt động bằng điện → 8479.81.20.",
+      "source": "Biểu thuế 2026 dòng 8479.81.20"
+    },
+    {
+      "id": "r-metal-other-electric",
+      "priority": 77,
+      "when": {
+        "machineApplication": "metal_working",
+        "powerSource": "electric",
+        "machineKind": "other_auto"
+      },
+      "hs": "84798210",
+      "gir": "GIR 6",
+      "reasonVi": "Máy xử lý kim loại khác hoạt động bằng điện → 8479.82.10.",
+      "source": "Biểu thuế 2026 dòng 8479.82.10"
+    },
+    {
+      "id": "r-metal-other-non-electric",
+      "priority": 76,
+      "when": {
+        "machineApplication": "metal_working",
+        "powerSource": "non_electric"
+      },
+      "hs": "84798220",
+      "gir": "GIR 6",
+      "reasonVi": "Máy xử lý kim loại khác không hoạt động bằng điện → 8479.82.20.",
+      "source": "Biểu thuế 2026 dòng 8479.82.20"
+    },
+    {
+      "id": "r-cold-press",
+      "priority": 75,
+      "when": {
+        "machineApplication": "cold_press"
+      },
+      "hs": "84798300",
+      "gir": "GIR 6",
+      "reasonVi": "Máy ép đẳng nhiệt lạnh (cold isostatic press) → 8479.83.00.",
+      "source": "Biểu thuế 2026 dòng 8479.83.00"
+    },
+    {
+      "id": "r-auto-placer",
+      "priority": 74,
+      "when": {
+        "machineApplication": "auto_component",
+        "machineKind": "automatic_placer"
+      },
+      "hs": "84798910",
+      "gir": "GIR 6",
+      "reasonVi": "Thiết bị tự động sắp xếp hoặc loại bỏ linh kiện/phần tử → 8479.89.10.",
+      "source": "Biểu thuế 2026 dòng 8479.89.10"
+    },
+    {
+      "id": "r-cpu-assembly",
+      "priority": 73,
+      "when": {
+        "machineApplication": "auto_component",
+        "machineKind": "cpu_assembly"
+      },
+      "hs": "84798950",
+      "gir": "GIR 6",
+      "reasonVi": "Máy lắp ráp các bo mạch nhánh của bộ xử lý trung tâm (CPU) → 8479.89.50.",
+      "source": "Biểu thuế 2026 dòng 8479.89.50"
+    },
+    {
+      "id": "r-vending-main",
+      "priority": 72,
+      "when": {
+        "machineApplication": "vending"
+      },
+      "hs": "84798961",
+      "gir": "GIR 6",
+      "reasonVi": "Máy bán hàng dịch vụ tự động → 8479.89.61.",
+      "source": "Biểu thuế 2026 dòng 8479.89.61"
+    },
+    {
+      "id": "r-vending-other",
+      "priority": 71,
+      "when": {
+        "machineApplication": "vending",
+        "machineKind": "other_auto"
+      },
+      "hs": "84798969",
+      "gir": "GIR 6",
+      "reasonVi": "Máy bán hàng tự động loại khác → 8479.89.69.",
+      "source": "Biểu thuế 2026 dòng 8479.89.69"
+    },
+    {
+      "id": "r-non-electric-other",
+      "priority": 70,
+      "when": {
+        "machineApplication": "other",
+        "powerSource": "non_electric"
+      },
+      "hs": "84798970",
+      "gir": "GIR 6",
+      "reasonVi": "Máy công nghiệp khác không hoạt động bằng điện → 8479.89.70.",
+      "source": "Biểu thuế 2026 dòng 8479.89.70"
+    },
+    {
+      "id": "r-parts-auto-component",
+      "priority": 69,
+      "when": {
+        "machineApplication": "auto_component",
+        "powerSource": "non_electric"
+      },
+      "hs": "84799010",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của hàng hóa thuộc 8479.89.10 → 8479.90.10.",
+      "source": "Biểu thuế 2026 dòng 8479.90.10"
+    },
+    {
+      "id": "r-parts-cpu-assembly",
+      "priority": 68,
+      "when": {
+        "machineApplication": "auto_component",
+        "machineKind": "cpu_assembly"
+      },
+      "hs": "84799050",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của hàng hóa thuộc 8479.89.50 → 8479.90.50.",
+      "source": "Biểu thuế 2026 dòng 8479.90.50"
+    },
+    {
+      "id": "r-parts-other",
+      "priority": 67,
+      "when": {
+        "machineApplication": "other"
+      },
+      "hs": "84799090",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận của máy thuộc nhóm 8479 loại khác → 8479.90.90.",
+      "source": "Biểu thuế 2026 dòng 8479.90.90"
+    }
+  ],
+  "inputAttributes": [
+    "machineApplication",
+    "powerSource",
+    "machineKind"
+  ],
+  "essenceVi": "ứng dụng+năng lượng+loại máy"
+}

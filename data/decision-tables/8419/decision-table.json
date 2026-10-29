@@ -1,0 +1,279 @@
+{
+  "heading": "8419",
+  "description": "Machinery, plant (not domestic), or laboratory equipment; electrically heated or not, for treatment of materials by process involving change of temperature; instantaneous or non electric storage water heaters",
+  "attributes": [
+    {
+      "id": "processType",
+      "descriptionVi": "Loại quá trình xử lý",
+      "values": {
+        "waterHeating": "Đun nước nóng (841911/919)",
+        "solarHeating": "Năng lượng mặt trời (841912)",
+        "sterilizing": "Khử trùng y tế (841920)",
+        "drying": "Sấy nông nghiệp/gỗ (841933)",
+        "evaporating": "Làm bay hơi (841934)",
+        "airConditioningCooling": "Làm mát tháp/thông gió (841935)",
+        "heatTreatment": "Xử lý nhiệt vật liệu (841939/989)",
+        "distilling": "Chưng cất/cô quay (841940)",
+        "heatExchanging": "Trao đổi nhiệt (841950)",
+        "liquefying": "Hóa lỏng khí (841960)",
+        "foodBeverage": "Thực phẩm/đồ uống (841981)",
+        "parts": "Phụ tùng (841990)"
+      }
+    },
+    {
+      "id": "powerSource",
+      "descriptionVi": "Nguồn năng lượng",
+      "values": {
+        "electric": "Hoạt động bằng điện",
+        "nonElectric": "Không hoạt động bằng điện"
+      }
+    },
+    {
+      "id": "application",
+      "descriptionVi": "Ứng dụng",
+      "values": {
+        "household": "Gia đình",
+        "agricultural": "Nông nghiệp, gỗ, bột giấy",
+        "medical": "Y tế, phẫu thuật, phòng thí nghiệm",
+        "industrial": "Công nghiệp",
+        "general": "Loại khác"
+      }
+    },
+    {
+      "id": "specialMaterial",
+      "descriptionVi": "Vật liệu/loại đặc biệt",
+      "values": {
+        "fluoropolymer": "Ống fluoropolyme",
+        "filmManufacturing": "Sản xuất tấm mạch",
+        "gasWater": "Nước nóng bằng ga",
+        "none": "Không có"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "processType": "waterHeating",
+      "powerSource": "nonElectric",
+      "application": "household",
+      "specialMaterial": "none",
+      "hsCode": "84191110"
+    },
+    {
+      "processType": "waterHeating",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84191190"
+    },
+    {
+      "processType": "solarHeating",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84191200"
+    },
+    {
+      "processType": "waterHeating",
+      "powerSource": "electric",
+      "application": "household",
+      "specialMaterial": "none",
+      "hsCode": "84191910"
+    },
+    {
+      "processType": "waterHeating",
+      "powerSource": "electric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84191990"
+    },
+    {
+      "processType": "sterilizing",
+      "powerSource": "nonElectric",
+      "application": "medical",
+      "specialMaterial": "none",
+      "hsCode": "84192000"
+    },
+    {
+      "processType": "drying",
+      "powerSource": "nonElectric",
+      "application": "agricultural",
+      "specialMaterial": "none",
+      "hsCode": "84193310"
+    },
+    {
+      "processType": "drying",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84193390"
+    },
+    {
+      "processType": "evaporating",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84193410"
+    },
+    {
+      "processType": "evaporating",
+      "powerSource": "electric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84193420"
+    },
+    {
+      "processType": "evaporating",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84193490"
+    },
+    {
+      "processType": "airConditioningCooling",
+      "powerSource": "electric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84193510"
+    },
+    {
+      "processType": "airConditioningCooling",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84193520"
+    },
+    {
+      "processType": "heatTreatment",
+      "powerSource": "electric",
+      "application": "industrial",
+      "specialMaterial": "filmManufacturing",
+      "hsCode": "84193930"
+    },
+    {
+      "processType": "heatTreatment",
+      "powerSource": "electric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84193990"
+    },
+    {
+      "processType": "distilling",
+      "powerSource": "electric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84194010"
+    },
+    {
+      "processType": "distilling",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84194020"
+    },
+    {
+      "processType": "heatExchanging",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "fluoropolymer",
+      "hsCode": "84195020"
+    },
+    {
+      "processType": "heatExchanging",
+      "powerSource": "electric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84195091"
+    },
+    {
+      "processType": "heatExchanging",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84195092"
+    },
+    {
+      "processType": "heatExchanging",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84195010"
+    },
+    {
+      "processType": "liquefying",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84196000"
+    },
+    {
+      "processType": "foodBeverage",
+      "powerSource": "electric",
+      "application": "industrial",
+      "specialMaterial": "none",
+      "hsCode": "84198110"
+    },
+    {
+      "processType": "foodBeverage",
+      "powerSource": "nonElectric",
+      "application": "industrial",
+      "specialMaterial": "none",
+      "hsCode": "84198120"
+    },
+    {
+      "processType": "heatTreatment",
+      "powerSource": "electric",
+      "application": "industrial",
+      "specialMaterial": "filmManufacturing",
+      "hsCode": "84198913"
+    },
+    {
+      "processType": "heatTreatment",
+      "powerSource": "electric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84198919"
+    },
+    {
+      "processType": "heatTreatment",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84198920"
+    },
+    {
+      "processType": "parts",
+      "powerSource": "electric",
+      "application": "industrial",
+      "specialMaterial": "filmManufacturing",
+      "hsCode": "84199012"
+    },
+    {
+      "processType": "parts",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84199013"
+    },
+    {
+      "processType": "parts",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84199019"
+    },
+    {
+      "processType": "parts",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84199022"
+    },
+    {
+      "processType": "parts",
+      "powerSource": "nonElectric",
+      "application": "general",
+      "specialMaterial": "none",
+      "hsCode": "84199029"
+    }
+  ]
+}

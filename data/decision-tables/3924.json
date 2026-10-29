@@ -1,0 +1,950 @@
+{
+  "heading": "3924",
+  "titleVi": "Đồ nhựa gia dụng và đồ vệ sinh y tế bằng plastic",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "articleKind",
+      "type": "enum",
+      "domain": [
+        "tableware",
+        "medical_hygiene",
+        "other_household"
+      ],
+      "labelVi": "Loại đồ gia dụng nhựa",
+      "questionVi": "Đồ nhựa gia dụng thuộc loại nào: đồ ăn uống (bát, đĩa, ly, bình trẻ em), đồ y tế/vệ sinh (bô, máy hút sữa), hay đồ gia dụng nhựa khác?",
+      "detect": {
+        "tableware": [
+          "bát",
+          "đĩa",
+          "ly",
+          "chén",
+          "tô",
+          "cốc",
+          "đũa nhựa",
+          "muỗng nhựa",
+          "hộp cơm",
+          "tupperware",
+          "bình trẻ em",
+          "bình sữa",
+          "dĩa nhựa",
+          "bàn chải đánh răng nhựa"
+        ],
+        "medical_hygiene": [
+          "bô",
+          "bô giường",
+          "bô tiểu",
+          "máy hút sữa",
+          "núm vú giả",
+          "phễu vắt sữa",
+          "miếng lót sữa",
+          "dụng cụ y tế nhựa"
+        ],
+        "other_household": [
+          "đồ gia dụng nhựa",
+          "vật dụng nhựa",
+          "đồ nhựa gia đình",
+          "Thùng rác nhựa",
+          "Thùng rác treo tường",
+          "Giỏ đựng quần áo",
+          "Kệ nhựa đa năng đựng giấy lau",
+          "Kệ đựng đồ hai tầng",
+          "Hộp nhựa đựng mỹ phẩm",
+          "Thùng đựng rác",
+          "Hộp đựng",
+          "Khay cắm dao",
+          "Móc chùm phơi quần áo",
+          "Móc treo quần áo",
+          "Xô đựng chai rượu",
+          "Miếng silicon dán tường",
+          "Khay điều khiển",
+          "Túi ủ giữ nhiệt",
+          "Miếng bọt biển vệ sinh máy in",
+          "Móc quần áo",
+          "Xô nhựa đựng chai rượu",
+          "Giá đỡ dao cạo râu",
+          "Thùng rác mini để bàn",
+          "Khay đựng khăn tắm",
+          "Khay đựng xà phòng",
+          "Miếng lót chân chống trượt",
+          "Khay đựng đồ có vách ngăn",
+          "Khay đựng sách/chai lọ",
+          "Giá đỡ nhà vệ sinh",
+          "Đũa ăn nhựa ABS",
+          "Miếng dán ngực"
+        ]
+      },
+      "_detect": {
+        "tableware": [
+          {
+            "raw": "bát",
+            "dia": true,
+            "key": "bát",
+            "folded": "bat"
+          },
+          {
+            "raw": "đĩa",
+            "dia": true,
+            "key": "đĩa",
+            "folded": "dia"
+          },
+          {
+            "raw": "ly",
+            "dia": false,
+            "key": "ly",
+            "folded": "ly"
+          },
+          {
+            "raw": "chén",
+            "dia": true,
+            "key": "chén",
+            "folded": "chen"
+          },
+          {
+            "raw": "tô",
+            "dia": true,
+            "key": "tô",
+            "folded": "to"
+          },
+          {
+            "raw": "cốc",
+            "dia": true,
+            "key": "cốc",
+            "folded": "coc"
+          },
+          {
+            "raw": "đũa nhựa",
+            "dia": true,
+            "key": "đũa nhựa",
+            "folded": "dua nhua"
+          },
+          {
+            "raw": "muỗng nhựa",
+            "dia": true,
+            "key": "muỗng nhựa",
+            "folded": "muong nhua"
+          },
+          {
+            "raw": "hộp cơm",
+            "dia": true,
+            "key": "hộp cơm",
+            "folded": "hop com"
+          },
+          {
+            "raw": "tupperware",
+            "dia": false,
+            "key": "tupperware",
+            "folded": "tupperware"
+          },
+          {
+            "raw": "bình trẻ em",
+            "dia": true,
+            "key": "bình trẻ em",
+            "folded": "binh tre em"
+          },
+          {
+            "raw": "bình sữa",
+            "dia": true,
+            "key": "bình sữa",
+            "folded": "binh sua"
+          },
+          {
+            "raw": "dĩa nhựa",
+            "dia": true,
+            "key": "dĩa nhựa",
+            "folded": "dia nhua"
+          },
+          {
+            "raw": "bàn chải đánh răng nhựa",
+            "dia": true,
+            "key": "bàn chải đánh răng nhựa",
+            "folded": "ban chai danh rang nhua"
+          }
+        ],
+        "medical_hygiene": [
+          {
+            "raw": "bô",
+            "dia": true,
+            "key": "bô",
+            "folded": "bo"
+          },
+          {
+            "raw": "bô giường",
+            "dia": true,
+            "key": "bô giường",
+            "folded": "bo giuong"
+          },
+          {
+            "raw": "bô tiểu",
+            "dia": true,
+            "key": "bô tiểu",
+            "folded": "bo tieu"
+          },
+          {
+            "raw": "máy hút sữa",
+            "dia": true,
+            "key": "máy hút sữa",
+            "folded": "may hut sua"
+          },
+          {
+            "raw": "núm vú giả",
+            "dia": true,
+            "key": "núm vú giả",
+            "folded": "num vu gia"
+          },
+          {
+            "raw": "phễu vắt sữa",
+            "dia": true,
+            "key": "phễu vắt sữa",
+            "folded": "pheu vat sua"
+          },
+          {
+            "raw": "miếng lót sữa",
+            "dia": true,
+            "key": "miếng lót sữa",
+            "folded": "mieng lot sua"
+          },
+          {
+            "raw": "dụng cụ y tế nhựa",
+            "dia": true,
+            "key": "dụng cụ y tế nhựa",
+            "folded": "dung cu y te nhua"
+          }
+        ],
+        "other_household": [
+          {
+            "raw": "đồ gia dụng nhựa",
+            "dia": true,
+            "key": "đồ gia dụng nhựa",
+            "folded": "do gia dung nhua"
+          },
+          {
+            "raw": "vật dụng nhựa",
+            "dia": true,
+            "key": "vật dụng nhựa",
+            "folded": "vat dung nhua"
+          },
+          {
+            "raw": "đồ nhựa gia đình",
+            "dia": true,
+            "key": "đồ nhựa gia đình",
+            "folded": "do nhua gia dinh"
+          },
+          {
+            "raw": "Thùng rác nhựa",
+            "dia": true,
+            "key": "thùng rác nhựa",
+            "folded": "thung rac nhua"
+          },
+          {
+            "raw": "Thùng rác treo tường",
+            "dia": true,
+            "key": "thùng rác treo tường",
+            "folded": "thung rac treo tuong"
+          },
+          {
+            "raw": "Giỏ đựng quần áo",
+            "dia": true,
+            "key": "giỏ đựng quần áo",
+            "folded": "gio dung quan ao"
+          },
+          {
+            "raw": "Kệ nhựa đa năng đựng giấy lau",
+            "dia": true,
+            "key": "kệ nhựa đa năng đựng giấy lau",
+            "folded": "ke nhua da nang dung giay lau"
+          },
+          {
+            "raw": "Kệ đựng đồ hai tầng",
+            "dia": true,
+            "key": "kệ đựng đồ hai tầng",
+            "folded": "ke dung do hai tang"
+          },
+          {
+            "raw": "Hộp nhựa đựng mỹ phẩm",
+            "dia": true,
+            "key": "hộp nhựa đựng mỹ phẩm",
+            "folded": "hop nhua dung my pham"
+          },
+          {
+            "raw": "Thùng đựng rác",
+            "dia": true,
+            "key": "thùng đựng rác",
+            "folded": "thung dung rac"
+          },
+          {
+            "raw": "Hộp đựng",
+            "dia": true,
+            "key": "hộp đựng",
+            "folded": "hop dung"
+          },
+          {
+            "raw": "Khay cắm dao",
+            "dia": true,
+            "key": "khay cắm dao",
+            "folded": "khay cam dao"
+          },
+          {
+            "raw": "Móc chùm phơi quần áo",
+            "dia": true,
+            "key": "móc chùm phơi quần áo",
+            "folded": "moc chum phoi quan ao"
+          },
+          {
+            "raw": "Móc treo quần áo",
+            "dia": true,
+            "key": "móc treo quần áo",
+            "folded": "moc treo quan ao"
+          },
+          {
+            "raw": "Xô đựng chai rượu",
+            "dia": true,
+            "key": "xô đựng chai rượu",
+            "folded": "xo dung chai ruou"
+          },
+          {
+            "raw": "Miếng silicon dán tường",
+            "dia": true,
+            "key": "miếng silicon dán tường",
+            "folded": "mieng silicon dan tuong"
+          },
+          {
+            "raw": "Khay điều khiển",
+            "dia": true,
+            "key": "khay điều khiển",
+            "folded": "khay dieu khien"
+          },
+          {
+            "raw": "Túi ủ giữ nhiệt",
+            "dia": true,
+            "key": "túi ủ giữ nhiệt",
+            "folded": "tui u giu nhiet"
+          },
+          {
+            "raw": "Miếng bọt biển vệ sinh máy in",
+            "dia": true,
+            "key": "miếng bọt biển vệ sinh máy in",
+            "folded": "mieng bot bien ve sinh may in"
+          },
+          {
+            "raw": "Móc quần áo",
+            "dia": true,
+            "key": "móc quần áo",
+            "folded": "moc quan ao"
+          },
+          {
+            "raw": "Xô nhựa đựng chai rượu",
+            "dia": true,
+            "key": "xô nhựa đựng chai rượu",
+            "folded": "xo nhua dung chai ruou"
+          },
+          {
+            "raw": "Giá đỡ dao cạo râu",
+            "dia": true,
+            "key": "giá đỡ dao cạo râu",
+            "folded": "gia do dao cao rau"
+          },
+          {
+            "raw": "Thùng rác mini để bàn",
+            "dia": true,
+            "key": "thùng rác mini để bàn",
+            "folded": "thung rac mini de ban"
+          },
+          {
+            "raw": "Khay đựng khăn tắm",
+            "dia": true,
+            "key": "khay đựng khăn tắm",
+            "folded": "khay dung khan tam"
+          },
+          {
+            "raw": "Khay đựng xà phòng",
+            "dia": true,
+            "key": "khay đựng xà phòng",
+            "folded": "khay dung xa phong"
+          },
+          {
+            "raw": "Miếng lót chân chống trượt",
+            "dia": true,
+            "key": "miếng lót chân chống trượt",
+            "folded": "mieng lot chan chong truot"
+          },
+          {
+            "raw": "Khay đựng đồ có vách ngăn",
+            "dia": true,
+            "key": "khay đựng đồ có vách ngăn",
+            "folded": "khay dung do co vach ngan"
+          },
+          {
+            "raw": "Khay đựng sách/chai lọ",
+            "dia": true,
+            "key": "khay đựng sách chai lọ",
+            "folded": "khay dung sach chai lo"
+          },
+          {
+            "raw": "Giá đỡ nhà vệ sinh",
+            "dia": true,
+            "key": "giá đỡ nhà vệ sinh",
+            "folded": "gia do nha ve sinh"
+          },
+          {
+            "raw": "Đũa ăn nhựa ABS",
+            "dia": true,
+            "key": "đũa ăn nhựa abs",
+            "folded": "dua an nhua abs"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "material",
+      "type": "enum",
+      "domain": [
+        "melamine",
+        "other_plastic"
+      ],
+      "labelVi": "Chất liệu nhựa",
+      "questionVi": "Đồ nhựa làm từ gì: melamin, hay loại nhựa khác (PVC, PP, PE, v.v.)?",
+      "detect": {
+        "melamine": [
+          "melamine",
+          "mê-la-min",
+          "chén melamin",
+          "bát melamin"
+        ],
+        "other_plastic": [
+          "nhựa",
+          "PVC",
+          "PP",
+          "PE",
+          "ABS",
+          "nylon",
+          "plastic",
+          "Hộp đựng cốc có nắp",
+          "Khay úp cốc có lỗ",
+          "Hộp úp cốc",
+          "Mút xốp vệ sinh nội thất ô tô",
+          "Giá để kem đánh răng kèm cốc"
+        ]
+      },
+      "_detect": {
+        "melamine": [
+          {
+            "raw": "melamine",
+            "dia": false,
+            "key": "melamine",
+            "folded": "melamine"
+          },
+          {
+            "raw": "mê-la-min",
+            "dia": true,
+            "key": "mê la min",
+            "folded": "me la min"
+          },
+          {
+            "raw": "chén melamin",
+            "dia": true,
+            "key": "chén melamin",
+            "folded": "chen melamin"
+          },
+          {
+            "raw": "bát melamin",
+            "dia": true,
+            "key": "bát melamin",
+            "folded": "bat melamin"
+          }
+        ],
+        "other_plastic": [
+          {
+            "raw": "nhựa",
+            "dia": true,
+            "key": "nhựa",
+            "folded": "nhua"
+          },
+          {
+            "raw": "PVC",
+            "dia": false,
+            "key": "pvc",
+            "folded": "pvc"
+          },
+          {
+            "raw": "PP",
+            "dia": false,
+            "key": "pp",
+            "folded": "pp"
+          },
+          {
+            "raw": "PE",
+            "dia": false,
+            "key": "pe",
+            "folded": "pe"
+          },
+          {
+            "raw": "ABS",
+            "dia": false,
+            "key": "abs",
+            "folded": "abs"
+          },
+          {
+            "raw": "nylon",
+            "dia": false,
+            "key": "nylon",
+            "folded": "nylon"
+          },
+          {
+            "raw": "plastic",
+            "dia": false,
+            "key": "plastic",
+            "folded": "plastic"
+          },
+          {
+            "raw": "Hộp đựng cốc có nắp",
+            "dia": true,
+            "key": "hộp đựng cốc có nắp",
+            "folded": "hop dung coc co nap"
+          },
+          {
+            "raw": "Khay úp cốc có lỗ",
+            "dia": true,
+            "key": "khay úp cốc có lỗ",
+            "folded": "khay up coc co lo"
+          },
+          {
+            "raw": "Hộp úp cốc",
+            "dia": true,
+            "key": "hộp úp cốc",
+            "folded": "hop up coc"
+          },
+          {
+            "raw": "Mút xốp vệ sinh nội thất ô tô",
+            "dia": true,
+            "key": "mút xốp vệ sinh nội thất ô tô",
+            "folded": "mut xop ve sinh noi that o to"
+          },
+          {
+            "raw": "Giá để kem đánh răng kèm cốc",
+            "dia": true,
+            "key": "giá để kem đánh răng kèm cốc",
+            "folded": "gia de kem danh rang kem coc"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "specificKind",
+      "type": "enum",
+      "domain": [
+        "children_feeding",
+        "other_tableware",
+        "bedpan_urinal",
+        "nursing",
+        "breast_pump",
+        "other"
+      ],
+      "labelVi": "Loại cụ thể",
+      "questionVi": "Sản phẩm cụ thể là gì: bình trẻ em, bô giường bệnh, máy hút sữa, miếng ngực, hay loại khác?",
+      "detect": {
+        "children_feeding": [
+          "bình trẻ em",
+          "bình sữa",
+          "bình nước trẻ",
+          "bình cho bé",
+          "sữa bình"
+        ],
+        "other_tableware": [
+          "đĩa",
+          "chén",
+          "tô",
+          "muỗng",
+          "đũa",
+          "ly",
+          "cốc"
+        ],
+        "bedpan_urinal": [
+          "bô",
+          "bô giường",
+          "bô tiểu",
+          "urinal"
+        ],
+        "nursing": [
+          "núm vú",
+          "núm vú giả",
+          "miếng tạo dáng",
+          "miếng dán ngực",
+          "miếng lót sữa",
+          "miếng thấm sữa"
+        ],
+        "breast_pump": [
+          "máy hút sữa",
+          "vắt sữa",
+          "máy vắt sữa"
+        ],
+        "other": []
+      },
+      "_detect": {
+        "children_feeding": [
+          {
+            "raw": "bình trẻ em",
+            "dia": true,
+            "key": "bình trẻ em",
+            "folded": "binh tre em"
+          },
+          {
+            "raw": "bình sữa",
+            "dia": true,
+            "key": "bình sữa",
+            "folded": "binh sua"
+          },
+          {
+            "raw": "bình nước trẻ",
+            "dia": true,
+            "key": "bình nước trẻ",
+            "folded": "binh nuoc tre"
+          },
+          {
+            "raw": "bình cho bé",
+            "dia": true,
+            "key": "bình cho bé",
+            "folded": "binh cho be"
+          },
+          {
+            "raw": "sữa bình",
+            "dia": true,
+            "key": "sữa bình",
+            "folded": "sua binh"
+          }
+        ],
+        "other_tableware": [
+          {
+            "raw": "đĩa",
+            "dia": true,
+            "key": "đĩa",
+            "folded": "dia"
+          },
+          {
+            "raw": "chén",
+            "dia": true,
+            "key": "chén",
+            "folded": "chen"
+          },
+          {
+            "raw": "tô",
+            "dia": true,
+            "key": "tô",
+            "folded": "to"
+          },
+          {
+            "raw": "muỗng",
+            "dia": true,
+            "key": "muỗng",
+            "folded": "muong"
+          },
+          {
+            "raw": "đũa",
+            "dia": true,
+            "key": "đũa",
+            "folded": "dua"
+          },
+          {
+            "raw": "ly",
+            "dia": false,
+            "key": "ly",
+            "folded": "ly"
+          },
+          {
+            "raw": "cốc",
+            "dia": true,
+            "key": "cốc",
+            "folded": "coc"
+          }
+        ],
+        "bedpan_urinal": [
+          {
+            "raw": "bô",
+            "dia": true,
+            "key": "bô",
+            "folded": "bo"
+          },
+          {
+            "raw": "bô giường",
+            "dia": true,
+            "key": "bô giường",
+            "folded": "bo giuong"
+          },
+          {
+            "raw": "bô tiểu",
+            "dia": true,
+            "key": "bô tiểu",
+            "folded": "bo tieu"
+          },
+          {
+            "raw": "urinal",
+            "dia": false,
+            "key": "urinal",
+            "folded": "urinal"
+          }
+        ],
+        "nursing": [
+          {
+            "raw": "núm vú",
+            "dia": true,
+            "key": "núm vú",
+            "folded": "num vu"
+          },
+          {
+            "raw": "núm vú giả",
+            "dia": true,
+            "key": "núm vú giả",
+            "folded": "num vu gia"
+          },
+          {
+            "raw": "miếng tạo dáng",
+            "dia": true,
+            "key": "miếng tạo dáng",
+            "folded": "mieng tao dang"
+          },
+          {
+            "raw": "miếng dán ngực",
+            "dia": true,
+            "key": "miếng dán ngực",
+            "folded": "mieng dan nguc"
+          },
+          {
+            "raw": "miếng lót sữa",
+            "dia": true,
+            "key": "miếng lót sữa",
+            "folded": "mieng lot sua"
+          },
+          {
+            "raw": "miếng thấm sữa",
+            "dia": true,
+            "key": "miếng thấm sữa",
+            "folded": "mieng tham sua"
+          }
+        ],
+        "breast_pump": [
+          {
+            "raw": "máy hút sữa",
+            "dia": true,
+            "key": "máy hút sữa",
+            "folded": "may hut sua"
+          },
+          {
+            "raw": "vắt sữa",
+            "dia": true,
+            "key": "vắt sữa",
+            "folded": "vat sua"
+          },
+          {
+            "raw": "máy vắt sữa",
+            "dia": true,
+            "key": "máy vắt sữa",
+            "folded": "may vat sua"
+          }
+        ],
+        "other": []
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "articleKind": "tableware",
+        "material": "melamine"
+      },
+      "hs": "39241010",
+      "reasonVi": "GIR 6 — đồ nhựa gia dụng từ melamin, 3924.10.10 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "articleKind": "tableware",
+        "material": "other_plastic",
+        "specificKind": "children_feeding"
+      },
+      "hs": "39241091",
+      "reasonVi": "GIR 6 — bình cho trẻ em ăn, 3924.10.91 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "articleKind": "tableware",
+        "material": "other_plastic",
+        "specificKind": "other_tableware"
+      },
+      "hs": "39241099",
+      "reasonVi": "GIR 6 — đồ nhựa gia dụng ăn uống loại khác, 3924.10.99 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "articleKind": "medical_hygiene",
+        "specificKind": "bedpan_urinal"
+      },
+      "hs": "39249010",
+      "reasonVi": "GIR 6 — bô để giường bệnh, bô đi tiểu, 3924.90.10 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "articleKind": "medical_hygiene",
+        "specificKind": "nursing"
+      },
+      "hs": "39249020",
+      "reasonVi": "GIR 6 — miếng tạo dáng núm vú, miếng bảo vệ đầu ngực, núm trợ ti, phễu vắt, 3924.90.20 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "articleKind": "medical_hygiene",
+        "specificKind": "breast_pump"
+      },
+      "hs": "39249030",
+      "reasonVi": "GIR 6 — bộ câu sữa (máy hút sữa), 3924.90.30 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "articleKind": "other_household"
+      },
+      "hs": "39249090",
+      "reasonVi": "GIR 6 — đồ nhựa gia dụng khác, 3924.90.90 (MFN 22%)",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceTestVi": "articleKind (3 giá trị: tableware / medical_hygiene / other_household) + material (melamine / other_plastic) + specificKind (6 giá trị) → phân biệt 7 mã 8 số trong nhóm 3924. Tất cả MFN 22%.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 — Danh mục nhóm 3924 (Thông tư 65/2024/TT-BTC).",
+  "inputAttributes": [
+    "articleKind",
+    "material",
+    "specificKind"
+  ],
+  "attributes": {
+    "articleKind": {
+      "detect": {
+        "tableware": [
+          "bát",
+          "đĩa",
+          "ly",
+          "chén",
+          "tô",
+          "cốc",
+          "đũa nhựa",
+          "muỗng nhựa",
+          "hộp cơm",
+          "tupperware",
+          "bình trẻ em",
+          "bình sữa",
+          "dĩa nhựa",
+          "bàn chải đánh răng nhựa"
+        ],
+        "medical_hygiene": [
+          "bô",
+          "bô giường",
+          "bô tiểu",
+          "máy hút sữa",
+          "núm vú giả",
+          "phễu vắt sữa",
+          "miếng lót sữa",
+          "dụng cụ y tế nhựa"
+        ],
+        "other_household": [
+          "đồ gia dụng nhựa",
+          "vật dụng nhựa",
+          "đồ nhựa gia đình"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "medical_hygiene",
+        "other_household",
+        "tableware"
+      ]
+    },
+    "material": {
+      "detect": {
+        "melamine": [
+          "melamine",
+          "mê-la-min",
+          "chén melamin",
+          "bát melamin"
+        ],
+        "other_plastic": [
+          "nhựa",
+          "PVC",
+          "PP",
+          "PE",
+          "ABS",
+          "nylon",
+          "plastic"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "melamine",
+        "other_plastic"
+      ]
+    },
+    "specificKind": {
+      "detect": {
+        "children_feeding": [
+          "bình trẻ em",
+          "bình sữa",
+          "bình nước trẻ",
+          "bình cho bé",
+          "sữa bình"
+        ],
+        "other_tableware": [
+          "đĩa",
+          "chén",
+          "tô",
+          "muỗng",
+          "đũa",
+          "ly",
+          "cốc"
+        ],
+        "bedpan_urinal": [
+          "bô",
+          "bô giường",
+          "bô tiểu",
+          "urinal"
+        ],
+        "nursing": [
+          "núm vú",
+          "núm vú giả",
+          "miếng tạo dáng"
+        ],
+        "breast_pump": [
+          "máy hút sữa",
+          "vắt sữa",
+          "máy vắt sữa"
+        ],
+        "other": []
+      },
+      "type": "enum",
+      "domain": [
+        "bedpan_urinal",
+        "breast_pump",
+        "children_feeding",
+        "nursing",
+        "other",
+        "other_tableware"
+      ]
+    }
+  },
+  "essenceVi": "articleKind × material × specificKind"
+}

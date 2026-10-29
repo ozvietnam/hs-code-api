@@ -1,0 +1,169 @@
+{
+  "heading": "9503",
+  "titleVi": "Đồ chơi trẻ em; đồ chơi mô hình thu nhỏ; puzzles",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Sản phẩm là đồ chơi gì: búp bê, xe có bánh, mô hình thu nhỏ, đồ chơi xây dựng, đồ chơi hình con vật, thiết bị giáo dục điện tử, hay đồ chơi khác?",
+  "sourceVi": "Biểu thuế 2026 nhóm 9503 + Chú giải nhóm 9503 (GIR 1 + 6)",
+  "inputs": [
+    {
+      "attribute": "toyKind",
+      "type": "enum",
+      "domain": ["doll", "wheeled_vehicle", "scale_model", "animal_toy", "construction_toy", "puzzle", "edu_electronic", "rubber_toy", "jumping_rope", "marble", "toy_electric_track", "letter_number_blocks", "other_toy"],
+      "labelVi": "Loại đồ chơi",
+      "questionVi": "Sản phẩm thuộc loại đồ chơi nào?",
+      "detect": {
+        "doll": ["búp bê", "bup be", "doll", "váy búp bê", "áo búp bê", "phụ kiện búp bê"],
+        "wheeled_vehicle": ["xe đạp ba bánh", "xe ba banh", "xe đẩy", "xe ban đạp", "xe ba bánh", "xe scooter", "xe tay ga", "xe điện", "xe đồ chơi", "oto do choi", "xe may do choi", "oto dien do choi", "xe dap ba", "xe day tre"],
+        "scale_model": ["mô hình thu nhỏ", "mo hinh thu nho", "scale model", "mô hình giải trí", "model kit", "đồ chơi lắp ráp mô hình"],
+        "animal_toy": ["thú nhồi bông", "thu nhoi bong", "thú bông", "thu bong", "đồ chơi hình con vật", "do choi hinh con vat", "gấu bông", "gau bong", "búp bê gấu", "thú nhồi", "thu nhoi", "con vật bông"],
+        "construction_toy": ["bộ đồ chơi xây dựng", "do choi xay dung", "xếp khối", "lắp ghép", "lego", "đồ chơi lắp ráp mô hình", "bộ xếp hình", "megablocks", "mekal", "mêkal"],
+        "puzzle": ["puzzle", "rubik", "đồ chơi đố trí", "do choi do tri", "trí nhớ", "xoay rubik", "xếp hình", "bộ xếp hình", "bộ xếp", "xếp khối rubik"],
+        "edu_electronic": ["thiết bị giáo dục điện tử", "thiet bi giao duc dien tu", "máy tính học", "bảng học điện tử", "đồ chơi giáo dục thông minh"],
+        "rubber_toy": ["đồ chơi cao su", "do choi cao su", "bóng cao su", "đồ chơi bằng cao su"],
+        "jumping_rope": ["dây nhảy", "day nhay", "skipping rope"],
+        "marble": ["hòn bi", "hon bi", "bi ve", "marble", "bi da"],
+        "toy_electric_track": ["xe điện có đường ray", "đường ray đồ chơi", "tàu điện đồ chơi", "oto dien duong ray", "xe điện có ray", "đèn hiệu đồ chơi"],
+        "letter_number_blocks": ["đồ chơi xếp khối chữ số", "đồ chơi xếp khối chữ cái", "khối chữ số", "khối chữ cái", "xếp chữ số", "xếp chữ cái", "đồ chơi học chữ"],
+        "other_toy": ["bộ đồ chơi", "bo do choi", "đồ chơi", "do choi", "toy", "đồ chơi trẻ em", "đồ chơi các loại"]
+      }
+    },
+    {
+      "attribute": "dollPart",
+      "type": "enum",
+      "domain": ["doll_body", "doll_clothing", "doll_accessory"],
+      "labelVi": "Phụ kiện búp bê",
+      "questionVi": "Sản phẩm là phần nào của búp bê?",
+      "condition": "toyKind doll",
+      "detect": {
+        "doll_body": ["búp bê", "bup be", "thân búp bê", "doll"],
+        "doll_clothing": ["quần áo búp bê", "váy búp bê", "áo búp bê", "trang phục búp bê"],
+        "doll_accessory": ["phụ kiện búp bê", "tóc búp bê", "nón búp bê", "giày búp bê"]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 30,
+      "when": { "toyKind": "doll", "dollPart": "doll_body" },
+      "hs": "95030021",
+      "reasonVi": "GIR 1 — búp bê nguyên chiếc (có hoặc không trang phục)",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-02",
+      "priority": 30,
+      "when": { "toyKind": "doll", "dollPart": "doll_clothing" },
+      "hs": "95030022",
+      "reasonVi": "GIR 6 — quần áo và phụ kiện quần áo cho búp bê",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-03",
+      "priority": 30,
+      "when": { "toyKind": "doll", "dollPart": "doll_accessory" },
+      "hs": "95030029",
+      "reasonVi": "GIR 6 — phụ kiện khác cho búp bê",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-04",
+      "priority": 20,
+      "when": { "toyKind": "wheeled_vehicle" },
+      "hs": "95030010",
+      "reasonVi": "GIR 1 — xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi có bánh tương tự; xe điện đồ chơi",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-05",
+      "priority": 20,
+      "when": { "toyKind": "scale_model" },
+      "hs": "95030040",
+      "reasonVi": "GIR 1 — mô hình thu nhỏ theo tỷ lệ (scale) và mô hình giải trí tương tự",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-06",
+      "priority": 20,
+      "when": { "toyKind": "puzzle" },
+      "hs": "95030070",
+      "reasonVi": "GIR 1 — đồ chơi đố trí (puzzles) các loại",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-07",
+      "priority": 20,
+      "when": { "toyKind": "edu_electronic" },
+      "hs": "95030080",
+      "reasonVi": "GIR 1 — thiết bị giáo dục điện tử tương tác cầm tay",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-08",
+      "priority": 15,
+      "when": { "toyKind": "animal_toy" },
+      "hs": "95030060",
+      "reasonVi": "GIR 1 — đồ chơi hình con vật hoặc sinh vật không phải hình người (thú nhồi bông)",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-09",
+      "priority": 15,
+      "when": { "toyKind": "construction_toy" },
+      "hs": "95030050",
+      "reasonVi": "GIR 1 — đồ chơi và bộ đồ chơi xây dựng (các loại vật liệu trừ plastic)",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-10",
+      "priority": 10,
+      "when": { "toyKind": "rubber_toy" },
+      "hs": "95030094",
+      "reasonVi": "GIR 6 — đồ chơi khác bằng cao su",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-11",
+      "priority": 10,
+      "when": { "toyKind": "jumping_rope" },
+      "hs": "95030092",
+      "reasonVi": "GIR 6 — dây nhảy",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-12",
+      "priority": 10,
+      "when": { "toyKind": "marble" },
+      "hs": "95030093",
+      "reasonVi": "GIR 6 — hòn bi",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-17",
+      "priority": 10,
+      "when": { "toyKind": "toy_electric_track" },
+      "hs": "95030030",
+      "reasonVi": "GIR 1 — xe điện đồ chơi có đường ray, kể cả đường ray, đèn hiệu và phụ kiện",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-18",
+      "priority": 10,
+      "when": { "toyKind": "letter_number_blocks" },
+      "hs": "95030091",
+      "reasonVi": "GIR 6 — đồ chơi xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    },
+    {
+      "id": "r-16",
+      "priority": 5,
+      "when": { "toyKind": "other_toy" },
+      "hs": "95030099",
+      "reasonVi": "Loại khác n.e.c. trong nhóm 9503 (đồ chơi không thuộc các phân nhóm trên)",
+      "source": "Biểu thuế 2026 nhóm 9503"
+    }
+  ]
+}
