@@ -14,7 +14,7 @@ check('slug: link lạ → null', soHieuTuSlug('https://congbao.chinhphu.vn/tin-
 check('phạm vi: TT-BTC không từ khoá → bỏ (lọc siết 29/10)', !thuocPhamVi('38/2015/TT-BTC', 'quy định nội bộ tài chính'));
 check('phạm vi: TT-BTC chạm từ khoá hải quan → bắt', thuocPhamVi('38/2015/TT-BTC', 'Quy định về thủ tục hải quan'));
 check('phạm vi: ND-CP chạm xuất xứ → bắt', thuocPhamVi('384/2026/ND-CP', 'Quy định xác định xuất xứ hàng hóa'));
-check('phạm vi: VBHN-BTC luôn theo dõi', thuocPhamVi('52/2026/VBHN-TT-BTC', 'mức thu phí thẩm định'));
+check('phạm vi: VBHN-TT-BTC phí tài nguyên (ca #255) → bỏ', !thuocPhamVi('52/2026/VBHN-TT-BTC', 'phí thẩm định đánh giá trữ lượng khoáng sản và lệ phí cấp giấy phép hoạt động khoáng sản'));
 check('phạm vi: bộ khác + từ khoá XNK vẫn bắt', thuocPhamVi('01/2026/TT-BNV', 'Quy định về kiểm tra chuyên ngành hàng hóa nhập khẩu'));
 check('phạm vi: bộ khác + không liên quan → bỏ', !thuocPhamVi('02/2026/TT-BNV', 'Quy định tổ chức thi công chức'));
 

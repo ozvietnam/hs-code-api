@@ -13,8 +13,9 @@ const FEED = 'https://congbao.chinhphu.vn/cac-van-ban-moi-ban-hanh.rss';
 const REPO_DICH = 'ozvietnam/oz-wiki-plhq';
 const TEP_DAU = 'radar-van-ban-da-xu-ly.json';
 
-// Cơ quan LUÔN theo dõi khi là bản hợp nhất thuế/XNK; bộ khác lọc theo từ khoá tiêu đề.
-const CO_QUAN_THEO_DOI = ['VBHN-TT-BTC', 'VBHN-TT-BCT', 'VBHN-BTC', 'VBHN-BCT'];
+// Thuần từ khoá tiêu đề (siết lần 2 sau ca #255: 4 VBHN-TT-BTC về phí khoáng sản/
+// Internet/nguồn nước lọt chỉ vì đuôi VBHN-BTC — hợp nhất TT thuế XNK vẫn bắt được
+// bằng từ khoá trong tên, không cần quy tắc theo cơ quan).
 // Từ khoá tiêu đề: VB của bộ khác nhưng chạm phạm vi hàng hoá XNK vẫn đáng nạp.
 const TU_KHOA = ['xuất nhập khẩu', 'xuất, nhập khẩu', 'hải quan', 'thuế xuất khẩu', 'thuế nhập khẩu', 'trị giá hải quan', 'mã số hàng hóa', 'phân loại hàng', 'kiểm tra chuyên ngành', 'kiểm dịch', 'công bố', 'tiêu chuẩn', 'quy chuẩn', 'giấy phép nhập', 'tạm nhập', 'quá cảnh', 'giao thẳng', 'uỷ thác', 'ủy thác', 'xuất xứ', 'C/O', 'FTA', 'hàng hóa', 'hàng hoá', 'mỹ phẩm', 'thuốc', 'thực vật', 'động vật', 'gỗ', 'xăng dầu', 'hoá chất', 'hóa chất', 'phân bón', 'thức ăn', 'vaccine', 'thiết bị y tế'];
 
@@ -29,7 +30,6 @@ export function soHieuTuSlug(url) {
 /** Chuẩn hoá moTa + lọc phạm vi: true nếu cơ quan theo dõi HOẶC tiêu đề chạm từ khoá. */
 export function thuocPhamVi(soHieu, moTa) {
   const sh = String(soHieu || '').toUpperCase();
-  if (CO_QUAN_THEO_DOI.some((cq) => sh.endsWith(cq) || sh.includes(`/${cq}`) || sh.endsWith(cq.replace('TT-', 'TT-')))) return true;
   const t = String(moTa || '').toLowerCase();
   return TU_KHOA.some((k) => t.includes(k.toLowerCase()));
 }
