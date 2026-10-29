@@ -14,7 +14,7 @@ const REPO_DICH = 'ozvietnam/oz-wiki-plhq';
 const TEP_DAU = 'radar-van-ban-da-xu-ly.json';
 
 // Cơ quan LUÔN theo dõi khi là bản hợp nhất thuế/XNK; bộ khác lọc theo từ khoá tiêu đề.
-const CO_QUAN_THEO_DOI = ['VBHN-BTC', 'VBHN-BCT'];
+const CO_QUAN_THEO_DOI = ['VBHN-TT-BTC', 'VBHN-TT-BCT', 'VBHN-BTC', 'VBHN-BCT'];
 // Từ khoá tiêu đề: VB của bộ khác nhưng chạm phạm vi hàng hoá XNK vẫn đáng nạp.
 const TU_KHOA = ['xuất nhập khẩu', 'xuất, nhập khẩu', 'hải quan', 'thuế xuất khẩu', 'thuế nhập khẩu', 'trị giá hải quan', 'mã số hàng hóa', 'phân loại hàng', 'kiểm tra chuyên ngành', 'kiểm dịch', 'công bố', 'tiêu chuẩn', 'quy chuẩn', 'giấy phép nhập', 'tạm nhập', 'quá cảnh', 'giao thẳng', 'uỷ thác', 'ủy thác', 'xuất xứ', 'C/O', 'FTA', 'hàng hóa', 'hàng hoá', 'mỹ phẩm', 'thuốc', 'thực vật', 'động vật', 'gỗ', 'xăng dầu', 'hoá chất', 'hóa chất', 'phân bón', 'thức ăn', 'vaccine', 'thiết bị y tế'];
 
