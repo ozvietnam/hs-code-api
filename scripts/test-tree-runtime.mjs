@@ -46,6 +46,9 @@ const check = (name, cond, extra = '') => { if (cond) { pass += 1; console.log(`
   check('breadcrumb: tên tiếng Việt chương + nhóm trong trail', /Chương 85: Máy điện/.test(b.trail) && /Nhóm 8504: Máy biến điện/.test(b.trail), b.trail.slice(0, 200));
   check('breadcrumb: phân nhóm WCO + trường cũ (subheadingEn, isResidual, levels)', /Static converters/i.test(b.subheadingEn) && b.isResidual === true && b.levels.length === 5);
   check('breadcrumb: trường mới path/parentId/siblingHsCodes/anhEmCoTen', b.path.join('>') === 'P:XVI>85>8504>850440' && b.parentId === '850440' && b.siblingHsCodes.includes('85044020') && b.anhEmCoTen.includes('8504401') && b.toTienCoTen === '850440');
+  // Đợt 0A: phạm vi đủ nhiều tầng — anhEmCoTen giữ tầng gần (hợp đồng cũ), truDayDu thêm tầng 6 số.
+  const b3 = breadcrumbOf('39269099');
+  check('breadcrumb 39269099: anhEmCoTen tầng gần (39269091–93) + truDayDu đủ cả tầng 392690', b3.anhEmCoTen.join() === '39269091,39269092,39269093' && b3.truDayDu.length === 10 && ['39269010', '3926903', '3926908'].every((h) => b3.truDayDu.includes(h)) && b3.toTienCoTen === '392690', JSON.stringify(b3.truDayDu));
   const b2 = breadcrumbOf('85042119');
   check('breadcrumb: tiêu đề bị lược hiện trong levels, parentSuyRa=true', b2.levels.some((l) => /Tiêu đề 8504211/.test(l)) && b2.parentSuyRa === true);
   check('breadcrumb: mã cụt / không tồn tại → null; mã thường không có ngữ cảnh dư', breadcrumbOf('7225') === null && breadcrumbOf('99999999') === null && contextOf('96170010') === null);
