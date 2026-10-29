@@ -9,6 +9,7 @@ const { withUsage } = require('../lib/usage-context');
 const { withPrivateData } = require('../lib/llm-privacy');
 const { withEvalHoldout, wantsEvalHoldout } = require('../lib/holdout');
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
+const { demLuotCongKhai } = require('../lib/public-llm-meter');
 const { setCors, handleOptions } = require('../lib/cors');
 const { classify } = require('../lib/classify');
 const { extractSpecs } = require('../lib/extract-specs');
@@ -103,7 +104,8 @@ module.exports = async function handler(req, res) {
       const { result, usage } = await run(() => withPrivateData(() => withUsage(() => classify(attrs, { tier, debug }))));
       return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
     }
-    const result = await run(() => classify(attrs, { tier, debug }));
+    // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.
+    const result = await run(() => demLuotCongKhai('classify', () => classify(attrs, { tier, debug }), { req }));
     return res.status(200).json({ ...result, attrs, ms: Date.now() - started });
   } catch (e) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });
