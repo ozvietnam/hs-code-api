@@ -1,0 +1,883 @@
+{
+  "heading": "8418",
+  "titleVi": "Tủ lạnh, tủ kết đông và thiết bị làm lạnh khác; bơm nhiệt",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "applianceKind",
+      "type": "enum",
+      "domain": [
+        "chest_freezer",
+        "combined_ref_freezer",
+        "heat_pump",
+        "household_other_type",
+        "household_refrigerator",
+        "other_cooling_cabinet",
+        "other_refrigerating_machine",
+        "parts_frame",
+        "parts_other",
+        "upright_freezer"
+      ],
+      "labelVi": "Loại thiết bị làm lạnh",
+      "questionVi": "Thiết bị làm lạnh thuộc loại nào: tủ lạnh-tủ đông kết hợp, tủ lạnh gia đình kiểu nén, tủ lạnh kiểu hấp thụ/thermoelectric, tủ đông nằm ngang (chest), tủ đông đứng (upright), tủ trưng bày/y tế/đồ uống, bơm nhiệt, máy làm lạnh khác, bộ phận khung/vỏ, hay bộ phận khác?",
+      "detect": {
+        "chest_freezer": [
+          "tủ đông nằm",
+          "tủ đông ngang",
+          "freezer chest",
+          "chest freezer",
+          "tủ cấp đông"
+        ],
+        "combined_ref_freezer": [
+          "tủ lạnh kết hợp",
+          "tủ lạnh đông",
+          "tủ 2 cửa",
+          "combined refrigerator"
+        ],
+        "heat_pump": [
+          "bơm nhiệt",
+          "heat pump",
+          "máy bơm nhiệt",
+          "h pump"
+        ],
+        "household_other_type": [
+          "tủ lạnh gia đình",
+          "tủ lạnh mini",
+          "tủ lạnh car",
+          "refrigerator household",
+          "Máy làm kem"
+        ],
+        "household_refrigerator": [
+          "tủ lạnh",
+          "tủ lạnh nén",
+          "refrigerator",
+          "fridge",
+          "tủ mát"
+        ],
+        "other_cooling_cabinet": [
+          "tủ làm lạnh",
+          "tủ bảo quản",
+          "tủ trưng bày",
+          "cooling cabinet",
+          "tủ y tế"
+        ],
+        "other_refrigerating_machine": [
+          "máy làm lạnh",
+          "máy制冷",
+          "refrigerating machine"
+        ],
+        "parts_frame": [
+          "vỏ tủ lạnh",
+          "khung tủ",
+          "frame chiller"
+        ],
+        "parts_other": [
+          "bộ phận tủ lạnh",
+          "linh kiện tủ lạnh",
+          "parts refrigerator"
+        ],
+        "upright_freezer": [
+          "tủ đông đứng",
+          "tủ đông vertical",
+          "upright freezer"
+        ]
+      },
+      "_detect": {
+        "chest_freezer": [
+          {
+            "raw": "tủ đông nằm",
+            "dia": true,
+            "key": "tủ đông nằm",
+            "folded": "tu dong nam"
+          },
+          {
+            "raw": "tủ đông ngang",
+            "dia": true,
+            "key": "tủ đông ngang",
+            "folded": "tu dong ngang"
+          },
+          {
+            "raw": "freezer chest",
+            "dia": false,
+            "key": "freezer chest",
+            "folded": "freezer chest"
+          },
+          {
+            "raw": "chest freezer",
+            "dia": false,
+            "key": "chest freezer",
+            "folded": "chest freezer"
+          },
+          {
+            "raw": "tủ cấp đông",
+            "dia": true,
+            "key": "tủ cấp đông",
+            "folded": "tu cap dong"
+          }
+        ],
+        "combined_ref_freezer": [
+          {
+            "raw": "tủ lạnh kết hợp",
+            "dia": true,
+            "key": "tủ lạnh kết hợp",
+            "folded": "tu lanh ket hop"
+          },
+          {
+            "raw": "tủ lạnh đông",
+            "dia": true,
+            "key": "tủ lạnh đông",
+            "folded": "tu lanh dong"
+          },
+          {
+            "raw": "tủ 2 cửa",
+            "dia": true,
+            "key": "tủ 2 cửa",
+            "folded": "tu 2 cua"
+          },
+          {
+            "raw": "combined refrigerator",
+            "dia": false,
+            "key": "combined refrigerator",
+            "folded": "combined refrigerator"
+          }
+        ],
+        "heat_pump": [
+          {
+            "raw": "bơm nhiệt",
+            "dia": true,
+            "key": "bơm nhiệt",
+            "folded": "bom nhiet"
+          },
+          {
+            "raw": "heat pump",
+            "dia": false,
+            "key": "heat pump",
+            "folded": "heat pump"
+          },
+          {
+            "raw": "máy bơm nhiệt",
+            "dia": true,
+            "key": "máy bơm nhiệt",
+            "folded": "may bom nhiet"
+          },
+          {
+            "raw": "h pump",
+            "dia": false,
+            "key": "h pump",
+            "folded": "h pump"
+          }
+        ],
+        "household_other_type": [
+          {
+            "raw": "tủ lạnh gia đình",
+            "dia": true,
+            "key": "tủ lạnh gia đình",
+            "folded": "tu lanh gia dinh"
+          },
+          {
+            "raw": "tủ lạnh mini",
+            "dia": true,
+            "key": "tủ lạnh mini",
+            "folded": "tu lanh mini"
+          },
+          {
+            "raw": "tủ lạnh car",
+            "dia": true,
+            "key": "tủ lạnh car",
+            "folded": "tu lanh car"
+          },
+          {
+            "raw": "refrigerator household",
+            "dia": false,
+            "key": "refrigerator household",
+            "folded": "refrigerator household"
+          }
+        ],
+        "household_refrigerator": [
+          {
+            "raw": "tủ lạnh",
+            "dia": true,
+            "key": "tủ lạnh",
+            "folded": "tu lanh"
+          },
+          {
+            "raw": "tủ lạnh nén",
+            "dia": true,
+            "key": "tủ lạnh nén",
+            "folded": "tu lanh nen"
+          },
+          {
+            "raw": "refrigerator",
+            "dia": false,
+            "key": "refrigerator",
+            "folded": "refrigerator"
+          },
+          {
+            "raw": "fridge",
+            "dia": false,
+            "key": "fridge",
+            "folded": "fridge"
+          },
+          {
+            "raw": "tủ mát",
+            "dia": true,
+            "key": "tủ mát",
+            "folded": "tu mat"
+          }
+        ],
+        "other_cooling_cabinet": [
+          {
+            "raw": "tủ làm lạnh",
+            "dia": true,
+            "key": "tủ làm lạnh",
+            "folded": "tu lam lanh"
+          },
+          {
+            "raw": "tủ bảo quản",
+            "dia": true,
+            "key": "tủ bảo quản",
+            "folded": "tu bao quan"
+          },
+          {
+            "raw": "tủ trưng bày",
+            "dia": true,
+            "key": "tủ trưng bày",
+            "folded": "tu trung bay"
+          },
+          {
+            "raw": "cooling cabinet",
+            "dia": false,
+            "key": "cooling cabinet",
+            "folded": "cooling cabinet"
+          },
+          {
+            "raw": "tủ y tế",
+            "dia": true,
+            "key": "tủ y tế",
+            "folded": "tu y te"
+          }
+        ],
+        "other_refrigerating_machine": [
+          {
+            "raw": "máy làm lạnh",
+            "dia": true,
+            "key": "máy làm lạnh",
+            "folded": "may lam lanh"
+          },
+          {
+            "raw": "máy制冷",
+            "dia": true,
+            "key": "máy制冷",
+            "folded": "may制冷"
+          },
+          {
+            "raw": "refrigerating machine",
+            "dia": false,
+            "key": "refrigerating machine",
+            "folded": "refrigerating machine"
+          }
+        ],
+        "parts_frame": [
+          {
+            "raw": "vỏ tủ lạnh",
+            "dia": true,
+            "key": "vỏ tủ lạnh",
+            "folded": "vo tu lanh"
+          },
+          {
+            "raw": "khung tủ",
+            "dia": true,
+            "key": "khung tủ",
+            "folded": "khung tu"
+          },
+          {
+            "raw": "frame chiller",
+            "dia": false,
+            "key": "frame chiller",
+            "folded": "frame chiller"
+          }
+        ],
+        "parts_other": [
+          {
+            "raw": "bộ phận tủ lạnh",
+            "dia": true,
+            "key": "bộ phận tủ lạnh",
+            "folded": "bo phan tu lanh"
+          },
+          {
+            "raw": "linh kiện tủ lạnh",
+            "dia": true,
+            "key": "linh kiện tủ lạnh",
+            "folded": "linh kien tu lanh"
+          },
+          {
+            "raw": "parts refrigerator",
+            "dia": false,
+            "key": "parts refrigerator",
+            "folded": "parts refrigerator"
+          }
+        ],
+        "upright_freezer": [
+          {
+            "raw": "tủ đông đứng",
+            "dia": true,
+            "key": "tủ đông đứng",
+            "folded": "tu dong dung"
+          },
+          {
+            "raw": "tủ đông vertical",
+            "dia": true,
+            "key": "tủ đông vertical",
+            "folded": "tu dong vertical"
+          },
+          {
+            "raw": "upright freezer",
+            "dia": false,
+            "key": "upright freezer",
+            "folded": "upright freezer"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "capacityOrType",
+      "type": "enum",
+      "domain": [
+        "absorption_thermoelectric",
+        "beverage_food",
+        "cold_other",
+        "cold_storage",
+        "condenser",
+        "dairy_fishery",
+        "display_case",
+        "evaporator",
+        "large_over_200L",
+        "medical_lab",
+        "medical_other",
+        "other_cabinet",
+        "other_machine",
+        "other_parts",
+        "small_le_200L",
+        "standard",
+        "vol_150_200L",
+        "vol_200_250L",
+        "vol_250_300L",
+        "vol_300_400L",
+        "vol_le_150L",
+        "vol_over_400L",
+        "water_ice"
+      ],
+      "labelVi": "Dung tích / loại cụ thể",
+      "questionVi": "Dung tích (nếu là tủ lạnh/tủ đông) hoặc loại cụ thể (y tế, đồ uống, máy làm đá, bộ phận...) là gì?",
+      "_detect": {}
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_le_150L"
+      },
+      "hs": "84181031",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181031",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_150_200L"
+      },
+      "hs": "84181032",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181032",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_200_250L"
+      },
+      "hs": "84181039",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181039",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_250_300L"
+      },
+      "hs": "84181040",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181040",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_300_400L"
+      },
+      "hs": "84181091",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181091",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "applianceKind": "combined_ref_freezer",
+        "capacityOrType": "vol_over_400L"
+      },
+      "hs": "84181099",
+      "reasonVi": "GIR 6 — tủ lạnh-tủ đông kết hợp kiểu nén, Biểu thuế 2026 nhóm 8418.10 → 84181099",
+      "source": "Biểu thuế NK VN 2026, nhóm 841810"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "applianceKind": "household_refrigerator",
+        "capacityOrType": "small_le_200L"
+      },
+      "hs": "84182110",
+      "reasonVi": "GIR 6 — tủ lạnh gia đình kiểu nén, Biểu thuế 2026 nhóm 8418.21 → 84182110",
+      "source": "Biểu thuế NK VN 2026, nhóm 841821"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "applianceKind": "household_refrigerator",
+        "capacityOrType": "large_over_200L"
+      },
+      "hs": "84182190",
+      "reasonVi": "GIR 6 — tủ lạnh gia đình kiểu nén, Biểu thuế 2026 nhóm 8418.21 → 84182190",
+      "source": "Biểu thuế NK VN 2026, nhóm 841821"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "applianceKind": "household_other_type",
+        "capacityOrType": "absorption_thermoelectric"
+      },
+      "hs": "84182900",
+      "reasonVi": "GIR 6 — tủ lạnh gia đình kiểu hấp thụ/thermoelectric, Biểu thuế 2026 nhóm 8418.29 → 84182900",
+      "source": "Biểu thuế NK VN 2026, nhóm 841829"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "applianceKind": "chest_freezer",
+        "capacityOrType": "small_le_200L"
+      },
+      "hs": "84183010",
+      "reasonVi": "GIR 6 — tủ đông nằm ngang (chest freezer) kiểu nén, Biểu thuế 2026 nhóm 8418.30 → 84183010",
+      "source": "Biểu thuế NK VN 2026, nhóm 841830"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "applianceKind": "chest_freezer",
+        "capacityOrType": "large_over_200L"
+      },
+      "hs": "84183090",
+      "reasonVi": "GIR 6 — tủ đông nằm ngang (chest freezer) kiểu nén, Biểu thuế 2026 nhóm 8418.30 → 84183090",
+      "source": "Biểu thuế NK VN 2026, nhóm 841830"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "applianceKind": "upright_freezer",
+        "capacityOrType": "small_le_200L"
+      },
+      "hs": "84184010",
+      "reasonVi": "GIR 6 — tủ đông đứng (upright freezer) kiểu nén, Biểu thuế 2026 nhóm 8418.40 → 84184010",
+      "source": "Biểu thuế NK VN 2026, nhóm 841840"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "applianceKind": "upright_freezer",
+        "capacityOrType": "large_over_200L"
+      },
+      "hs": "84184090",
+      "reasonVi": "GIR 6 — tủ đông đứng (upright freezer) kiểu nén, Biểu thuế 2026 nhóm 8418.40 → 84184090",
+      "source": "Biểu thuế NK VN 2026, nhóm 841840"
+    },
+    {
+      "id": "r-14",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "medical_lab"
+      },
+      "hs": "84185011",
+      "reasonVi": "GIR 6 — tủ trưng bày/y tế/đồ uống, Biểu thuế 2026 nhóm 8418.50 → 84185011",
+      "source": "Biểu thuế NK VN 2026, nhóm 841850"
+    },
+    {
+      "id": "r-15",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "medical_other"
+      },
+      "hs": "84185019",
+      "reasonVi": "GIR 6 — tủ trưng bày/y tế/đồ uống, Biểu thuế 2026 nhóm 8418.50 → 84185019",
+      "source": "Biểu thuế NK VN 2026, nhóm 841850"
+    },
+    {
+      "id": "r-16",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "beverage_food"
+      },
+      "hs": "84185091",
+      "reasonVi": "GIR 6 — tủ trưng bày/y tế/đồ uống, Biểu thuế 2026 nhóm 8418.50 → 84185091",
+      "source": "Biểu thuế NK VN 2026, nhóm 841850"
+    },
+    {
+      "id": "r-17",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_cooling_cabinet",
+        "capacityOrType": "other_cabinet"
+      },
+      "hs": "84185099",
+      "reasonVi": "GIR 6 — tủ trưng bày/y tế/đồ uống, Biểu thuế 2026 nhóm 8418.50 → 84185099",
+      "source": "Biểu thuế NK VN 2026, nhóm 841850"
+    },
+    {
+      "id": "r-18",
+      "priority": 0,
+      "when": {
+        "applianceKind": "heat_pump",
+        "capacityOrType": "standard"
+      },
+      "hs": "84186100",
+      "reasonVi": "GIR 6 — bơm nhiệt kiểu nén, Biểu thuế 2026 nhóm 8418.61 → 84186100",
+      "source": "Biểu thuế NK VN 2026, nhóm 841861"
+    },
+    {
+      "id": "r-19",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "water_ice"
+      },
+      "hs": "84186910",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186910",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-20",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "cold_storage"
+      },
+      "hs": "84186930",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186930",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-21",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "dairy_fishery"
+      },
+      "hs": "84186941",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186941",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-22",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "cold_other"
+      },
+      "hs": "84186949",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186949",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-23",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "display_case"
+      },
+      "hs": "84186950",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186950",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-24",
+      "priority": 0,
+      "when": {
+        "applianceKind": "other_refrigerating_machine",
+        "capacityOrType": "other_machine"
+      },
+      "hs": "84186990",
+      "reasonVi": "GIR 6 — máy làm lạnh/đồ uống/đá, Biểu thuế 2026 nhóm 8418.69 → 84186990",
+      "source": "Biểu thuế NK VN 2026, nhóm 841869"
+    },
+    {
+      "id": "r-25",
+      "priority": 0,
+      "when": {
+        "applianceKind": "parts_frame",
+        "capacityOrType": "standard"
+      },
+      "hs": "84189100",
+      "reasonVi": "GIR 6 — bộ phận khung/vỏ cho tủ lạnh, Biểu thuế 2026 nhóm 8418.91 → 84189100",
+      "source": "Biểu thuế NK VN 2026, nhóm 841891"
+    },
+    {
+      "id": "r-26",
+      "priority": 0,
+      "when": {
+        "applianceKind": "parts_other",
+        "capacityOrType": "evaporator"
+      },
+      "hs": "84189910",
+      "reasonVi": "GIR 6 — bộ phận khác cho thiết bị làm lạnh, Biểu thuế 2026 nhóm 8418.99 → 84189910",
+      "source": "Biểu thuế NK VN 2026, nhóm 841899"
+    },
+    {
+      "id": "r-27",
+      "priority": 0,
+      "when": {
+        "applianceKind": "parts_other",
+        "capacityOrType": "condenser"
+      },
+      "hs": "84189940",
+      "reasonVi": "GIR 6 — bộ phận khác cho thiết bị làm lạnh, Biểu thuế 2026 nhóm 8418.99 → 84189940",
+      "source": "Biểu thuế NK VN 2026, nhóm 841899"
+    },
+    {
+      "id": "r-28",
+      "priority": 0,
+      "when": {
+        "applianceKind": "parts_other",
+        "capacityOrType": "other_parts"
+      },
+      "hs": "84189990",
+      "reasonVi": "GIR 6 — bộ phận khác cho thiết bị làm lạnh, Biểu thuế 2026 nhóm 8418.99 → 84189990",
+      "source": "Biểu thuế NK VN 2026, nhóm 841899"
+    }
+  ],
+  "essenceTestVi": "Loại thiết bị (applianceKind) + Dung tích/loại cụ thể (capacityOrType) → mã 8 số. 28 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN).",
+  "attributes": {
+    "applianceKind": {
+      "type": "enum",
+      "domain": [
+        "chest_freezer",
+        "combined_ref_freezer",
+        "heat_pump",
+        "household_other_type",
+        "household_refrigerator",
+        "other_cooling_cabinet",
+        "other_refrigerating_machine",
+        "parts_frame",
+        "parts_other",
+        "upright_freezer"
+      ],
+      "detect": {
+        "chest_freezer": [
+          "chest",
+          "freezer"
+        ],
+        "combined_ref_freezer": [
+          "combined",
+          "ref",
+          "freezer"
+        ],
+        "heat_pump": [
+          "heat",
+          "pump"
+        ],
+        "household_other_type": [
+          "household",
+          "other",
+          "type"
+        ],
+        "household_refrigerator": [
+          "household",
+          "refrigerator"
+        ],
+        "other_cooling_cabinet": [
+          "other",
+          "cooling",
+          "cabinet"
+        ],
+        "other_refrigerating_machine": [
+          "other",
+          "refrigerating",
+          "machine"
+        ],
+        "parts_frame": [
+          "parts",
+          "frame"
+        ],
+        "parts_other": [
+          "parts",
+          "other"
+        ],
+        "upright_freezer": [
+          "upright",
+          "freezer"
+        ]
+      }
+    },
+    "capacityOrType": {
+      "type": "enum",
+      "domain": [
+        "absorption_thermoelectric",
+        "beverage_food",
+        "cold_other",
+        "cold_storage",
+        "condenser",
+        "dairy_fishery",
+        "display_case",
+        "evaporator",
+        "large_over_200L",
+        "medical_lab",
+        "medical_other",
+        "other_cabinet",
+        "other_machine",
+        "other_parts",
+        "small_le_200L",
+        "standard",
+        "vol_150_200L",
+        "vol_200_250L",
+        "vol_250_300L",
+        "vol_300_400L",
+        "vol_le_150L",
+        "vol_over_400L",
+        "water_ice"
+      ],
+      "detect": {
+        "absorption_thermoelectric": [
+          "absorption",
+          "thermoelectric"
+        ],
+        "beverage_food": [
+          "beverage",
+          "food"
+        ],
+        "cold_other": [
+          "cold",
+          "other"
+        ],
+        "cold_storage": [
+          "cold",
+          "storage"
+        ],
+        "condenser": [
+          "condenser"
+        ],
+        "dairy_fishery": [
+          "dairy",
+          "fishery"
+        ],
+        "display_case": [
+          "display",
+          "case"
+        ],
+        "evaporator": [
+          "evaporator"
+        ],
+        "large_over_200L": [
+          "large",
+          "over",
+          "200L"
+        ],
+        "medical_lab": [
+          "medical",
+          "lab"
+        ],
+        "medical_other": [
+          "medical",
+          "other"
+        ],
+        "other_cabinet": [
+          "other",
+          "cabinet"
+        ],
+        "other_machine": [
+          "other",
+          "machine"
+        ],
+        "other_parts": [
+          "other",
+          "parts"
+        ],
+        "small_le_200L": [
+          "small",
+          "le",
+          "200L"
+        ],
+        "standard": [
+          "standard"
+        ],
+        "vol_150_200L": [
+          "vol",
+          "150",
+          "200L"
+        ],
+        "vol_200_250L": [
+          "vol",
+          "200",
+          "250L"
+        ],
+        "vol_250_300L": [
+          "vol",
+          "250",
+          "300L"
+        ],
+        "vol_300_400L": [
+          "vol",
+          "300",
+          "400L"
+        ],
+        "vol_le_150L": [
+          "vol",
+          "le",
+          "150L"
+        ],
+        "vol_over_400L": [
+          "vol",
+          "over",
+          "400L"
+        ],
+        "water_ice": [
+          "water",
+          "ice"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "applianceKind",
+    "capacityOrType"
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "applianceKind; capacityOrType"
+}

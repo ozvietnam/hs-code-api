@@ -10,61 +10,888 @@
     {
       "attribute": "goodsKind",
       "type": "enum",
-      "domain": ["sewingMachine", "needles", "partsAccessories"],
+      "domain": [
+        "sewingMachine",
+        "needles",
+        "partsAccessories"
+      ],
       "labelVi": "Loại hàng",
       "questionVi": "Là máy khâu nguyên chiếc, kim máy khâu, hay bộ phận/đồ nội thất (bàn, thân máy, đế…) của máy khâu?",
       "detect": {
-        "needles": ["kim máy khâu", "sewing needle", "kim khâu", "needle 845230"],
-        "partsAccessories": ["bộ phận máy khâu", "phụ tùng máy khâu", "bàn máy khâu", "chân máy khâu", "tủ máy khâu", "nắp máy khâu", "thân máy khâu", "bánh đà máy khâu", "đế máy khâu", "parts of sewing", "sewing machine base", "sewing machine table"],
-        "sewingMachine": ["máy khâu", "sewing machine", "overlock", "máy vắt sổ", "máy thêu tự động"]
+        "needles": [
+          "kim máy khâu",
+          "sewing needle",
+          "kim khâu",
+          "needle 845230"
+        ],
+        "partsAccessories": [
+          "bộ phận máy khâu",
+          "phụ tùng máy khâu",
+          "bàn máy khâu",
+          "chân máy khâu",
+          "tủ máy khâu",
+          "nắp máy khâu",
+          "thân máy khâu",
+          "bánh đà máy khâu",
+          "đế máy khâu",
+          "parts of sewing",
+          "sewing machine base",
+          "sewing machine table",
+          "Bộ căng chun 6 đoạn",
+          "Thảm nhựa đen",
+          "Móc máy may vắt sổ",
+          "Ổ 1 kim lớn điện tử",
+          "Mặt nguyệt máy viền",
+          "Đế lót bàn ủi",
+          "Ron đánh suốt",
+          "Ổ 1 kim nhỏ điện tử",
+          "Cử cuốn lai điều chỉnh",
+          "Cử chắp mép vải"
+        ],
+        "sewingMachine": [
+          "máy khâu",
+          "sewing machine",
+          "overlock",
+          "máy vắt sổ",
+          "máy thêu tự động"
+        ]
+      },
+      "_detect": {
+        "needles": [
+          {
+            "raw": "kim máy khâu",
+            "dia": true,
+            "key": "kim máy khâu",
+            "folded": "kim may khau"
+          },
+          {
+            "raw": "sewing needle",
+            "dia": false,
+            "key": "sewing needle",
+            "folded": "sewing needle"
+          },
+          {
+            "raw": "kim khâu",
+            "dia": true,
+            "key": "kim khâu",
+            "folded": "kim khau"
+          },
+          {
+            "raw": "needle 845230",
+            "dia": false,
+            "key": "needle 845230",
+            "folded": "needle 845230"
+          }
+        ],
+        "partsAccessories": [
+          {
+            "raw": "bộ phận máy khâu",
+            "dia": true,
+            "key": "bộ phận máy khâu",
+            "folded": "bo phan may khau"
+          },
+          {
+            "raw": "phụ tùng máy khâu",
+            "dia": true,
+            "key": "phụ tùng máy khâu",
+            "folded": "phu tung may khau"
+          },
+          {
+            "raw": "bàn máy khâu",
+            "dia": true,
+            "key": "bàn máy khâu",
+            "folded": "ban may khau"
+          },
+          {
+            "raw": "chân máy khâu",
+            "dia": true,
+            "key": "chân máy khâu",
+            "folded": "chan may khau"
+          },
+          {
+            "raw": "tủ máy khâu",
+            "dia": true,
+            "key": "tủ máy khâu",
+            "folded": "tu may khau"
+          },
+          {
+            "raw": "nắp máy khâu",
+            "dia": true,
+            "key": "nắp máy khâu",
+            "folded": "nap may khau"
+          },
+          {
+            "raw": "thân máy khâu",
+            "dia": true,
+            "key": "thân máy khâu",
+            "folded": "than may khau"
+          },
+          {
+            "raw": "bánh đà máy khâu",
+            "dia": true,
+            "key": "bánh đà máy khâu",
+            "folded": "banh da may khau"
+          },
+          {
+            "raw": "đế máy khâu",
+            "dia": true,
+            "key": "đế máy khâu",
+            "folded": "de may khau"
+          },
+          {
+            "raw": "parts of sewing",
+            "dia": false,
+            "key": "parts of sewing",
+            "folded": "parts of sewing"
+          },
+          {
+            "raw": "sewing machine base",
+            "dia": false,
+            "key": "sewing machine base",
+            "folded": "sewing machine base"
+          },
+          {
+            "raw": "sewing machine table",
+            "dia": false,
+            "key": "sewing machine table",
+            "folded": "sewing machine table"
+          },
+          {
+            "raw": "Bộ căng chun 6 đoạn",
+            "dia": true,
+            "key": "bộ căng chun 6 đoạn",
+            "folded": "bo cang chun 6 doan"
+          },
+          {
+            "raw": "Thảm nhựa đen",
+            "dia": true,
+            "key": "thảm nhựa đen",
+            "folded": "tham nhua den"
+          },
+          {
+            "raw": "Móc máy may vắt sổ",
+            "dia": true,
+            "key": "móc máy may vắt sổ",
+            "folded": "moc may may vat so"
+          },
+          {
+            "raw": "Ổ 1 kim lớn điện tử",
+            "dia": true,
+            "key": "ổ 1 kim lớn điện tử",
+            "folded": "o 1 kim lon dien tu"
+          },
+          {
+            "raw": "Mặt nguyệt máy viền",
+            "dia": true,
+            "key": "mặt nguyệt máy viền",
+            "folded": "mat nguyet may vien"
+          },
+          {
+            "raw": "Đế lót bàn ủi",
+            "dia": true,
+            "key": "đế lót bàn ủi",
+            "folded": "de lot ban ui"
+          },
+          {
+            "raw": "Ron đánh suốt",
+            "dia": true,
+            "key": "ron đánh suốt",
+            "folded": "ron danh suot"
+          },
+          {
+            "raw": "Ổ 1 kim nhỏ điện tử",
+            "dia": true,
+            "key": "ổ 1 kim nhỏ điện tử",
+            "folded": "o 1 kim nho dien tu"
+          },
+          {
+            "raw": "Cử cuốn lai điều chỉnh",
+            "dia": true,
+            "key": "cử cuốn lai điều chỉnh",
+            "folded": "cu cuon lai dieu chinh"
+          },
+          {
+            "raw": "Cử chắp mép vải",
+            "dia": true,
+            "key": "cử chắp mép vải",
+            "folded": "cu chap mep vai"
+          }
+        ],
+        "sewingMachine": [
+          {
+            "raw": "máy khâu",
+            "dia": true,
+            "key": "máy khâu",
+            "folded": "may khau"
+          },
+          {
+            "raw": "sewing machine",
+            "dia": false,
+            "key": "sewing machine",
+            "folded": "sewing machine"
+          },
+          {
+            "raw": "overlock",
+            "dia": false,
+            "key": "overlock",
+            "folded": "overlock"
+          },
+          {
+            "raw": "máy vắt sổ",
+            "dia": true,
+            "key": "máy vắt sổ",
+            "folded": "may vat so"
+          },
+          {
+            "raw": "máy thêu tự động",
+            "dia": true,
+            "key": "máy thêu tự động",
+            "folded": "may theu tu dong"
+          }
+        ]
       }
     },
     {
       "attribute": "useType",
       "type": "enum",
-      "domain": ["household", "industrial"],
+      "domain": [
+        "household",
+        "industrial"
+      ],
       "labelVi": "Gia đình / công nghiệp",
       "questionVi": "Máy khâu hoặc bộ phận dùng cho máy khâu gia đình hay máy khâu công nghiệp/thương mại?",
       "detect": {
-        "household": ["gia đình", "household", "dân dụng", "domestic", "máy khâu mini", "máy khâu gia đình"],
-        "industrial": ["công nghiệp", "industrial", "nhà may", "garment factory", "máy khâu công nghiệp", "lockstitch industrial"]
+        "household": [
+          "gia đình",
+          "household",
+          "dân dụng",
+          "domestic",
+          "máy khâu mini",
+          "máy khâu gia đình",
+          "Chân vịt máy khâu",
+          "Ổ máy khâu",
+          "Răng cưa máy khâu",
+          "Bàn đạp ga phụ kiện máy khâu",
+          "Cảm biến chân vịt máy vắt sổ",
+          "Bộ căng chun 6 đoạn",
+          "Thảm nhựa đen",
+          "Móc máy may vắt sổ",
+          "Ổ 1 kim lớn điện tử",
+          "Mặt nguyệt máy viền",
+          "Đế lót bàn ủi",
+          "Ron đánh suốt",
+          "Ổ 1 kim nhỏ điện tử",
+          "Cử cuốn lai điều chỉnh",
+          "Cử chắp mép vải"
+        ],
+        "industrial": [
+          "công nghiệp",
+          "industrial",
+          "nhà may",
+          "garment factory",
+          "máy khâu công nghiệp",
+          "lockstitch industrial"
+        ]
+      },
+      "_detect": {
+        "household": [
+          {
+            "raw": "gia đình",
+            "dia": true,
+            "key": "gia đình",
+            "folded": "gia dinh"
+          },
+          {
+            "raw": "household",
+            "dia": false,
+            "key": "household",
+            "folded": "household"
+          },
+          {
+            "raw": "dân dụng",
+            "dia": true,
+            "key": "dân dụng",
+            "folded": "dan dung"
+          },
+          {
+            "raw": "domestic",
+            "dia": false,
+            "key": "domestic",
+            "folded": "domestic"
+          },
+          {
+            "raw": "máy khâu mini",
+            "dia": true,
+            "key": "máy khâu mini",
+            "folded": "may khau mini"
+          },
+          {
+            "raw": "máy khâu gia đình",
+            "dia": true,
+            "key": "máy khâu gia đình",
+            "folded": "may khau gia dinh"
+          },
+          {
+            "raw": "Chân vịt máy khâu",
+            "dia": true,
+            "key": "chân vịt máy khâu",
+            "folded": "chan vit may khau"
+          },
+          {
+            "raw": "Ổ máy khâu",
+            "dia": true,
+            "key": "ổ máy khâu",
+            "folded": "o may khau"
+          },
+          {
+            "raw": "Răng cưa máy khâu",
+            "dia": true,
+            "key": "răng cưa máy khâu",
+            "folded": "rang cua may khau"
+          },
+          {
+            "raw": "Bàn đạp ga phụ kiện máy khâu",
+            "dia": true,
+            "key": "bàn đạp ga phụ kiện máy khâu",
+            "folded": "ban dap ga phu kien may khau"
+          },
+          {
+            "raw": "Cảm biến chân vịt máy vắt sổ",
+            "dia": true,
+            "key": "cảm biến chân vịt máy vắt sổ",
+            "folded": "cam bien chan vit may vat so"
+          },
+          {
+            "raw": "Bộ căng chun 6 đoạn",
+            "dia": true,
+            "key": "bộ căng chun 6 đoạn",
+            "folded": "bo cang chun 6 doan"
+          },
+          {
+            "raw": "Thảm nhựa đen",
+            "dia": true,
+            "key": "thảm nhựa đen",
+            "folded": "tham nhua den"
+          },
+          {
+            "raw": "Móc máy may vắt sổ",
+            "dia": true,
+            "key": "móc máy may vắt sổ",
+            "folded": "moc may may vat so"
+          },
+          {
+            "raw": "Ổ 1 kim lớn điện tử",
+            "dia": true,
+            "key": "ổ 1 kim lớn điện tử",
+            "folded": "o 1 kim lon dien tu"
+          },
+          {
+            "raw": "Mặt nguyệt máy viền",
+            "dia": true,
+            "key": "mặt nguyệt máy viền",
+            "folded": "mat nguyet may vien"
+          },
+          {
+            "raw": "Đế lót bàn ủi",
+            "dia": true,
+            "key": "đế lót bàn ủi",
+            "folded": "de lot ban ui"
+          },
+          {
+            "raw": "Ron đánh suốt",
+            "dia": true,
+            "key": "ron đánh suốt",
+            "folded": "ron danh suot"
+          },
+          {
+            "raw": "Ổ 1 kim nhỏ điện tử",
+            "dia": true,
+            "key": "ổ 1 kim nhỏ điện tử",
+            "folded": "o 1 kim nho dien tu"
+          },
+          {
+            "raw": "Cử cuốn lai điều chỉnh",
+            "dia": true,
+            "key": "cử cuốn lai điều chỉnh",
+            "folded": "cu cuon lai dieu chinh"
+          },
+          {
+            "raw": "Cử chắp mép vải",
+            "dia": true,
+            "key": "cử chắp mép vải",
+            "folded": "cu chap mep vai"
+          }
+        ],
+        "industrial": [
+          {
+            "raw": "công nghiệp",
+            "dia": true,
+            "key": "công nghiệp",
+            "folded": "cong nghiep"
+          },
+          {
+            "raw": "industrial",
+            "dia": false,
+            "key": "industrial",
+            "folded": "industrial"
+          },
+          {
+            "raw": "nhà may",
+            "dia": true,
+            "key": "nhà may",
+            "folded": "nha may"
+          },
+          {
+            "raw": "garment factory",
+            "dia": false,
+            "key": "garment factory",
+            "folded": "garment factory"
+          },
+          {
+            "raw": "máy khâu công nghiệp",
+            "dia": true,
+            "key": "máy khâu công nghiệp",
+            "folded": "may khau cong nghiep"
+          },
+          {
+            "raw": "lockstitch industrial",
+            "dia": false,
+            "key": "lockstitch industrial",
+            "folded": "lockstitch industrial"
+          }
+        ]
       }
     },
     {
       "attribute": "machineAuto",
       "type": "enum",
-      "domain": ["automatic", "other"],
+      "domain": [
+        "automatic",
+        "other"
+      ],
       "labelVi": "Tự động",
       "questionVi": "Máy khâu công nghiệp là loại tự động (automatic unit) hay loại khác?",
       "detect": {
-        "automatic": ["tự động", "automatic", "auto unit", "máy khâu tự động"],
-        "other": ["bán tự động", "manual industrial", "máy khâu công nghiệp thường"]
+        "automatic": [
+          "tự động",
+          "automatic",
+          "auto unit",
+          "máy khâu tự động"
+        ],
+        "other": [
+          "bán tự động",
+          "manual industrial",
+          "máy khâu công nghiệp thường"
+        ]
+      },
+      "_detect": {
+        "automatic": [
+          {
+            "raw": "tự động",
+            "dia": true,
+            "key": "tự động",
+            "folded": "tu dong"
+          },
+          {
+            "raw": "automatic",
+            "dia": false,
+            "key": "automatic",
+            "folded": "automatic"
+          },
+          {
+            "raw": "auto unit",
+            "dia": false,
+            "key": "auto unit",
+            "folded": "auto unit"
+          },
+          {
+            "raw": "máy khâu tự động",
+            "dia": true,
+            "key": "máy khâu tự động",
+            "folded": "may khau tu dong"
+          }
+        ],
+        "other": [
+          {
+            "raw": "bán tự động",
+            "dia": true,
+            "key": "bán tự động",
+            "folded": "ban tu dong"
+          },
+          {
+            "raw": "manual industrial",
+            "dia": false,
+            "key": "manual industrial",
+            "folded": "manual industrial"
+          },
+          {
+            "raw": "máy khâu công nghiệp thường",
+            "dia": true,
+            "key": "máy khâu công nghiệp thường",
+            "folded": "may khau cong nghiep thuong"
+          }
+        ]
       }
     },
     {
       "attribute": "partType",
       "type": "enum",
-      "domain": ["bodyStand", "furniture", "otherParts"],
+      "domain": [
+        "bodyStand",
+        "furniture",
+        "otherParts"
+      ],
       "labelVi": "Loại bộ phận",
       "questionVi": "Bộ phận là thân trên/dưới, đế đỡ, bánh đà, che dây đai, bàn đạp; hay bàn/tủ/chân/nắp; hay loại khác?",
       "detect": {
-        "bodyStand": ["thân máy khâu", "thân trên", "thân dưới", "đế đỡ", "bánh đà", "bàn đạp", "flywheel", "head unit sewing"],
-        "furniture": ["bàn máy khâu", "tủ máy khâu", "chân máy khâu", "nắp máy khâu", "sewing cabinet", "sewing table"],
-        "otherParts": ["bộ phận máy khâu khác", "other parts sewing"]
+        "bodyStand": [
+          "thân máy khâu",
+          "thân trên",
+          "thân dưới",
+          "đế đỡ",
+          "bánh đà",
+          "bàn đạp",
+          "flywheel",
+          "head unit sewing"
+        ],
+        "furniture": [
+          "bàn máy khâu",
+          "tủ máy khâu",
+          "chân máy khâu",
+          "nắp máy khâu",
+          "sewing cabinet",
+          "sewing table"
+        ],
+        "otherParts": [
+          "bộ phận máy khâu khác",
+          "other parts sewing",
+          "Bộ căng chun 6 đoạn",
+          "Thảm nhựa đen",
+          "Móc máy may vắt sổ",
+          "Ổ 1 kim lớn điện tử",
+          "Mặt nguyệt máy viền",
+          "Đế lót bàn ủi",
+          "Ron đánh suốt",
+          "Ổ 1 kim nhỏ điện tử",
+          "Cử cuốn lai điều chỉnh",
+          "Cử chắp mép vải"
+        ]
+      },
+      "_detect": {
+        "bodyStand": [
+          {
+            "raw": "thân máy khâu",
+            "dia": true,
+            "key": "thân máy khâu",
+            "folded": "than may khau"
+          },
+          {
+            "raw": "thân trên",
+            "dia": true,
+            "key": "thân trên",
+            "folded": "than tren"
+          },
+          {
+            "raw": "thân dưới",
+            "dia": true,
+            "key": "thân dưới",
+            "folded": "than duoi"
+          },
+          {
+            "raw": "đế đỡ",
+            "dia": true,
+            "key": "đế đỡ",
+            "folded": "de do"
+          },
+          {
+            "raw": "bánh đà",
+            "dia": true,
+            "key": "bánh đà",
+            "folded": "banh da"
+          },
+          {
+            "raw": "bàn đạp",
+            "dia": true,
+            "key": "bàn đạp",
+            "folded": "ban dap"
+          },
+          {
+            "raw": "flywheel",
+            "dia": false,
+            "key": "flywheel",
+            "folded": "flywheel"
+          },
+          {
+            "raw": "head unit sewing",
+            "dia": false,
+            "key": "head unit sewing",
+            "folded": "head unit sewing"
+          }
+        ],
+        "furniture": [
+          {
+            "raw": "bàn máy khâu",
+            "dia": true,
+            "key": "bàn máy khâu",
+            "folded": "ban may khau"
+          },
+          {
+            "raw": "tủ máy khâu",
+            "dia": true,
+            "key": "tủ máy khâu",
+            "folded": "tu may khau"
+          },
+          {
+            "raw": "chân máy khâu",
+            "dia": true,
+            "key": "chân máy khâu",
+            "folded": "chan may khau"
+          },
+          {
+            "raw": "nắp máy khâu",
+            "dia": true,
+            "key": "nắp máy khâu",
+            "folded": "nap may khau"
+          },
+          {
+            "raw": "sewing cabinet",
+            "dia": false,
+            "key": "sewing cabinet",
+            "folded": "sewing cabinet"
+          },
+          {
+            "raw": "sewing table",
+            "dia": false,
+            "key": "sewing table",
+            "folded": "sewing table"
+          }
+        ],
+        "otherParts": [
+          {
+            "raw": "bộ phận máy khâu khác",
+            "dia": true,
+            "key": "bộ phận máy khâu khác",
+            "folded": "bo phan may khau khac"
+          },
+          {
+            "raw": "other parts sewing",
+            "dia": false,
+            "key": "other parts sewing",
+            "folded": "other parts sewing"
+          }
+        ]
       }
     }
   ],
   "hitPolicy": "PRIORITY",
   "rules": [
-    { "id": "r-needles", "priority": 60, "when": { "goodsKind": "needles" }, "hs": "84523000", "gir": "GIR 6", "reasonVi": "Kim máy khâu → 8452.30.00.", "source": "Biểu thuế 2026 dòng 8452.30.00" },
-    { "id": "r-household-machine", "priority": 55, "when": { "goodsKind": "sewingMachine", "useType": "household" }, "hs": "84521000", "gir": "GIR 6", "reasonVi": "Máy khâu loại dùng cho gia đình → 8452.10.00.", "source": "Biểu thuế 2026 dòng 8452.10.00" },
-    { "id": "r-industrial-auto", "priority": 55, "when": { "goodsKind": "sewingMachine", "useType": "industrial", "machineAuto": "automatic" }, "hs": "84522100", "gir": "GIR 6", "reasonVi": "Máy khâu không gia đình, loại tự động → 8452.21.00.", "source": "Biểu thuế 2026 dòng 8452.21.00" },
-    { "id": "r-industrial-other", "priority": 50, "when": { "goodsKind": "sewingMachine", "useType": "industrial", "machineAuto": "other" }, "hs": "84522900", "gir": "GIR 6", "reasonVi": "Máy khâu không gia đình, không thuộc loại tự động → 8452.29.00.", "source": "Biểu thuế 2026 dòng 8452.29.00" },
-    { "id": "r-part-body-hh", "priority": 55, "when": { "goodsKind": "partsAccessories", "useType": "household", "partType": "bodyStand" }, "hs": "84529011", "gir": "GIR 6", "reasonVi": "Bộ phận thân/đế/bánh đà máy khâu gia đình → 8452.90.11.", "source": "Biểu thuế 2026 dòng 8452.90.11" },
-    { "id": "r-part-furn-hh", "priority": 55, "when": { "goodsKind": "partsAccessories", "useType": "household", "partType": "furniture" }, "hs": "84529012", "gir": "GIR 6", "reasonVi": "Bàn/tủ/chân/nắp máy khâu gia đình → 8452.90.12.", "source": "Biểu thuế 2026 dòng 8452.90.12" },
-    { "id": "r-part-other-hh", "priority": 45, "when": { "goodsKind": "partsAccessories", "useType": "household", "partType": "otherParts" }, "hs": "84529019", "gir": "GIR 6", "reasonVi": "Bộ phận máy khâu gia đình loại khác → 8452.90.19.", "source": "Biểu thuế 2026 dòng 8452.90.19" },
-    { "id": "r-part-body-ind", "priority": 55, "when": { "goodsKind": "partsAccessories", "useType": "industrial", "partType": "bodyStand" }, "hs": "84529091", "gir": "GIR 6", "reasonVi": "Bộ phận thân/đế/bánh đà máy khâu công nghiệp → 8452.90.91.", "source": "Biểu thuế 2026 dòng 8452.90.91" },
-    { "id": "r-part-furn-ind", "priority": 55, "when": { "goodsKind": "partsAccessories", "useType": "industrial", "partType": "furniture" }, "hs": "84529092", "gir": "GIR 6", "reasonVi": "Bàn/tủ/chân/nắp máy khâu công nghiệp → 8452.90.92.", "source": "Biểu thuế 2026 dòng 8452.90.92" },
-    { "id": "r-part-other-ind", "priority": 45, "when": { "goodsKind": "partsAccessories", "useType": "industrial", "partType": "otherParts" }, "hs": "84529099", "gir": "GIR 6", "reasonVi": "Bộ phận máy khâu công nghiệp loại khác → 8452.90.99.", "source": "Biểu thuế 2026 dòng 8452.90.99" }
-  ]
+    {
+      "id": "r-needles",
+      "priority": 60,
+      "when": {
+        "goodsKind": "needles"
+      },
+      "hs": "84523000",
+      "gir": "GIR 6",
+      "reasonVi": "Kim máy khâu → 8452.30.00.",
+      "source": "Biểu thuế 2026 dòng 8452.30.00"
+    },
+    {
+      "id": "r-household-machine",
+      "priority": 55,
+      "when": {
+        "goodsKind": "sewingMachine",
+        "useType": "household"
+      },
+      "hs": "84521000",
+      "gir": "GIR 6",
+      "reasonVi": "Máy khâu loại dùng cho gia đình → 8452.10.00.",
+      "source": "Biểu thuế 2026 dòng 8452.10.00"
+    },
+    {
+      "id": "r-industrial-auto",
+      "priority": 55,
+      "when": {
+        "goodsKind": "sewingMachine",
+        "useType": "industrial",
+        "machineAuto": "automatic"
+      },
+      "hs": "84522100",
+      "gir": "GIR 6",
+      "reasonVi": "Máy khâu không gia đình, loại tự động → 8452.21.00.",
+      "source": "Biểu thuế 2026 dòng 8452.21.00"
+    },
+    {
+      "id": "r-industrial-other",
+      "priority": 50,
+      "when": {
+        "goodsKind": "sewingMachine",
+        "useType": "industrial",
+        "machineAuto": "other"
+      },
+      "hs": "84522900",
+      "gir": "GIR 6",
+      "reasonVi": "Máy khâu không gia đình, không thuộc loại tự động → 8452.29.00.",
+      "source": "Biểu thuế 2026 dòng 8452.29.00"
+    },
+    {
+      "id": "r-part-body-hh",
+      "priority": 55,
+      "when": {
+        "goodsKind": "partsAccessories",
+        "useType": "household",
+        "partType": "bodyStand"
+      },
+      "hs": "84529011",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận thân/đế/bánh đà máy khâu gia đình → 8452.90.11.",
+      "source": "Biểu thuế 2026 dòng 8452.90.11"
+    },
+    {
+      "id": "r-part-furn-hh",
+      "priority": 55,
+      "when": {
+        "goodsKind": "partsAccessories",
+        "useType": "household",
+        "partType": "furniture"
+      },
+      "hs": "84529012",
+      "gir": "GIR 6",
+      "reasonVi": "Bàn/tủ/chân/nắp máy khâu gia đình → 8452.90.12.",
+      "source": "Biểu thuế 2026 dòng 8452.90.12"
+    },
+    {
+      "id": "r-part-other-hh",
+      "priority": 45,
+      "when": {
+        "goodsKind": "partsAccessories",
+        "useType": "household",
+        "partType": "otherParts"
+      },
+      "hs": "84529019",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận máy khâu gia đình loại khác → 8452.90.19.",
+      "source": "Biểu thuế 2026 dòng 8452.90.19"
+    },
+    {
+      "id": "r-part-body-ind",
+      "priority": 55,
+      "when": {
+        "goodsKind": "partsAccessories",
+        "useType": "industrial",
+        "partType": "bodyStand"
+      },
+      "hs": "84529091",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận thân/đế/bánh đà máy khâu công nghiệp → 8452.90.91.",
+      "source": "Biểu thuế 2026 dòng 8452.90.91"
+    },
+    {
+      "id": "r-part-furn-ind",
+      "priority": 55,
+      "when": {
+        "goodsKind": "partsAccessories",
+        "useType": "industrial",
+        "partType": "furniture"
+      },
+      "hs": "84529092",
+      "gir": "GIR 6",
+      "reasonVi": "Bàn/tủ/chân/nắp máy khâu công nghiệp → 8452.90.92.",
+      "source": "Biểu thuế 2026 dòng 8452.90.92"
+    },
+    {
+      "id": "r-part-other-ind",
+      "priority": 45,
+      "when": {
+        "goodsKind": "partsAccessories",
+        "useType": "industrial",
+        "partType": "otherParts"
+      },
+      "hs": "84529099",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận máy khâu công nghiệp loại khác → 8452.90.99.",
+      "source": "Biểu thuế 2026 dòng 8452.90.99"
+    }
+  ],
+  "inputAttributes": [
+    "goodsKind",
+    "useType",
+    "machineAuto",
+    "partType"
+  ],
+  "essenceVi": "loại hàng+công dụng+tự động+loại linh kiện",
+  "attributes": {
+    "goodsKind": {
+      "type": "enum",
+      "labelVi": "goodsKind",
+      "domain": [
+        "needles",
+        "partsAccessories",
+        "sewingMachine"
+      ],
+      "detect": {
+        "needles": [
+          "needles"
+        ],
+        "partsAccessories": [
+          "partsaccessories"
+        ],
+        "sewingMachine": [
+          "sewingmachine"
+        ]
+      }
+    },
+    "useType": {
+      "type": "enum",
+      "labelVi": "useType",
+      "domain": [
+        "household",
+        "industrial"
+      ],
+      "detect": {
+        "household": [
+          "household"
+        ],
+        "industrial": [
+          "industrial"
+        ]
+      }
+    },
+    "machineAuto": {
+      "type": "enum",
+      "labelVi": "machineAuto",
+      "domain": [
+        "automatic",
+        "other"
+      ],
+      "detect": {
+        "automatic": [
+          "automatic"
+        ],
+        "other": [
+          "other"
+        ]
+      }
+    },
+    "partType": {
+      "type": "enum",
+      "labelVi": "partType",
+      "domain": [
+        "bodyStand",
+        "furniture",
+        "otherParts"
+      ],
+      "detect": {
+        "bodyStand": [
+          "bodystand"
+        ],
+        "furniture": [
+          "furniture"
+        ],
+        "otherParts": [
+          "otherparts"
+        ]
+      }
+    }
+  }
 }

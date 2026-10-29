@@ -1,0 +1,1015 @@
+{
+  "heading": "7306",
+  "inputs": [
+    {
+      "attribute": "kind",
+      "type": "enum",
+      "domain": [
+        "line_pipe",
+        "pipe_circular",
+        "pipe_noncircular",
+        "pipe_other"
+      ],
+      "labelVi": "Loại ống",
+      "questionVi": "Ống thuộc loại gì: ống dẫn đường ống (line pipe), ống tròn, ống không tròn (vuông/chữ nhật/khác), hay ống dẫn khác?",
+      "detect": {
+        "line_pipe": [
+          "dẫn đường ống",
+          "line pipe",
+          "ống dẫn"
+        ],
+        "pipe_circular": [
+          "ống tròn",
+          "circular"
+        ],
+        "pipe_noncircular": [
+          "vuông",
+          "chữ nhật",
+          "non-circular",
+          "profile"
+        ],
+        "pipe_other": [
+          "loại khác",
+          "ống dẫn"
+        ]
+      }
+    },
+    {
+      "attribute": "welding",
+      "type": "enum",
+      "domain": [
+        "erw",
+        "saw_spiral",
+        "welded",
+        "other_weld",
+        "seamless"
+      ],
+      "labelVi": "Phương pháp hàn",
+      "questionVi": "Ống hàn bằng phương pháp gì: hàn điện trở (ERW), hàn chìm xoắn ốc (SAW), hàn que, hay loại khác?",
+      "detect": {
+        "erw": [
+          "hàn điện trở",
+          "erw"
+        ],
+        "saw_spiral": [
+          "hàn chìm xoắn",
+          "xoắn ốc"
+        ],
+        "welded": [
+          "hàn",
+          "welded"
+        ],
+        "other_weld": [
+          "loại khác"
+        ],
+        "seamless": [
+          "liền mạch"
+        ]
+      }
+    },
+    {
+      "attribute": "steel",
+      "type": "enum",
+      "domain": [
+        "stainless",
+        "alloy",
+        "other"
+      ],
+      "labelVi": "Loại thép",
+      "questionVi": "Thép không gỉ, hợp kim khác, hay thép các bon?",
+      "detect": {
+        "stainless": [
+          "thép không gỉ",
+          "stainless"
+        ],
+        "alloy": [
+          "hợp kim",
+          "alloy"
+        ],
+        "other": [
+          "các bon",
+          "carbon",
+          "thép đen"
+        ]
+      }
+    },
+    {
+      "attribute": "outerDia",
+      "type": "enum",
+      "domain": [
+        "small",
+        "medium",
+        "medium_large",
+        "large",
+        "any"
+      ],
+      "labelVi": "Đường kính ngoài",
+      "questionVi": "Đường kính ngoài ống: dưới 12,5 mm, 12,5–140 mm, trên 105 mm, trên 140 mm?",
+      "detect": {
+        "small": [
+          "dưới 12,5 mm",
+          "<12,5 mm"
+        ],
+        "medium": [
+          "12,5 mm"
+        ],
+        "medium_large": [
+          "140 mm",
+          "trên 105 mm"
+        ],
+        "large": [
+          "lớn"
+        ],
+        "any": [
+          "bất kỳ"
+        ]
+      }
+    },
+    {
+      "attribute": "wallThin",
+      "type": "enum",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "labelVi": "Vách mỏng",
+      "questionVi": "Ống có vách mỏng hay vách dày (theo tiêu chuẩn ống nhiệt)?",
+      "detect": {
+        "true": [
+          "dưới",
+          "mỏng"
+        ],
+        "false": [
+          "khác",
+          "dày"
+        ]
+      }
+    },
+    {
+      "attribute": "pressureHigh",
+      "type": "enum",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "labelVi": "Áp lực cao",
+      "questionVi": "Ống dẫn chịu áp lực cao không? (giới hạn chảy ≥42.000 psi)",
+      "detect": {
+        "true": [
+          "chịu áp lực cao",
+          "áp lực cao",
+          "42.000 psi"
+        ],
+        "false": [
+          "khác"
+        ]
+      }
+    },
+    {
+      "attribute": "nickelHigh",
+      "type": "enum",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "labelVi": "Hàm lượng niken",
+      "questionVi": "Hàm lượng niken tối thiểu 30% không?",
+      "detect": {
+        "true": [
+          "niken",
+          "30%"
+        ],
+        "false": [
+          "khác"
+        ]
+      }
+    },
+    {
+      "attribute": "crossSection",
+      "type": "enum",
+      "domain": [
+        "square_rectangular",
+        "other_profile"
+      ],
+      "labelVi": "Mặt cắt ngang",
+      "questionVi": "Mặt cắt ngang ống: vuông/chữ nhật hay dạng profile khác?",
+      "detect": {
+        "square_rectangular": [
+          "vuông",
+          "chữ nhật",
+          "square",
+          "rectangular"
+        ],
+        "other_profile": [
+          "khác",
+          "profile",
+          "loại khác"
+        ]
+      }
+    },
+    {
+      "attribute": "innerDia",
+      "type": "enum",
+      "domain": [
+        "small",
+        "large"
+      ],
+      "labelVi": "Đường kính trong",
+      "questionVi": "Đường kính trong: dưới 12,5 mm hay từ 12,5 mm trở lên?",
+      "detect": {
+        "small": [
+          "dưới 12,5 mm"
+        ],
+        "large": [
+          "từ 12,5 mm",
+          "trên 12,5 mm"
+        ]
+      }
+    },
+    {
+      "attribute": "isHeatExchanger",
+      "type": "enum",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "labelVi": "Ống bọc nhiệt",
+      "questionVi": "Ống có phải loại dùng làm ống bọc (ống nhiệt) cho bộ phận phát nhiệt không?",
+      "detect": {
+        "true": [
+          "ống bọc",
+          "ống nhiệt",
+          "bộ phận phát nhiệt"
+        ],
+        "false": [
+          "khác"
+        ]
+      }
+    },
+    {
+      "attribute": "outerDiaOver105mm",
+      "type": "enum",
+      "domain": [
+        "true",
+        "false"
+      ],
+      "labelVi": "Đường kính trên 105 mm",
+      "questionVi": "Đường kính ngoài có trên 105 mm không?",
+      "detect": {
+        "true": [
+          "trên 105 mm"
+        ],
+        "false": [
+          "khác"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r73061110",
+      "priority": 100,
+      "when": {
+        "kind": "line_pipe",
+        "welding": "erw",
+        "steel": "other",
+        "outerDia": "any"
+      },
+      "hs": "73061110",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Hàn điện trở theo chiều dọc (ERW) → 73061110",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73061190",
+      "priority": 99,
+      "when": {
+        "kind": "line_pipe",
+        "welding": "other_weld",
+        "steel": "other",
+        "outerDia": "any"
+      },
+      "hs": "73061190",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73061190",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73061910",
+      "priority": 98,
+      "when": {
+        "kind": "line_pipe",
+        "welding": "erw",
+        "steel": "other",
+        "outerDia": "any"
+      },
+      "hs": "73061910",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Hàn điện trở theo chiều dọc (ERW) → 73061910",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73061920",
+      "priority": 97,
+      "when": {
+        "kind": "line_pipe",
+        "welding": "saw_spiral",
+        "steel": "other",
+        "outerDia": "any"
+      },
+      "hs": "73061920",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Hàn chìm xoắn hoặc xoắn ốc bằng hồ quang  → 73061920",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73061990",
+      "priority": 96,
+      "when": {
+        "kind": "line_pipe",
+        "welding": "other_weld",
+        "steel": "other",
+        "outerDia": "any"
+      },
+      "hs": "73061990",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73061990",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73062100",
+      "priority": 95,
+      "when": {
+        "kind": "line_pipe",
+        "welding": "welded",
+        "steel": "stainless",
+        "outerDia": "any"
+      },
+      "hs": "73062100",
+      "gir": "GIR 6",
+      "reasonVi": "- - Hàn, bằng thép không gỉ → 73062100",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73062900",
+      "priority": 94,
+      "when": {
+        "kind": "line_pipe",
+        "welding": "other_weld",
+        "steel": "stainless",
+        "outerDia": "any"
+      },
+      "hs": "73062900",
+      "gir": "GIR 6",
+      "reasonVi": "- - Loại khác → 73062900",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063011",
+      "priority": 93,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "small",
+        "wallThin": true
+      },
+      "hs": "73063011",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Với đường kính ngoài dưới 12,5 mm → 73063011",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063019",
+      "priority": 92,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "small",
+        "wallThin": false
+      },
+      "hs": "73063019",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73063019",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063021",
+      "priority": 91,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "small",
+        "wallThin": true
+      },
+      "hs": "73063021",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Với đường kính ngoài dưới 12,5 mm → 73063021",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063029",
+      "priority": 90,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "small",
+        "wallThin": false
+      },
+      "hs": "73063029",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73063029",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063030",
+      "priority": 89,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "medium"
+      },
+      "hs": "73063030",
+      "gir": "GIR 6",
+      "reasonVi": "- - Ống loại được sử dụng làm ống bọc (ống nhiệt) dùng cho các bộ phận phát nhiệt của bàn là điện phẳng hoặc nồi cơm điện, có đường kính ngoài không quá 12 mm → 73063030",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063041",
+      "priority": 88,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "small",
+        "wallThin": true,
+        "pressureHigh": true
+      },
+      "hs": "73063041",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Với đường kính ngoài dưới 12,5 mm → 73063041",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063049",
+      "priority": 87,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "small",
+        "wallThin": false,
+        "pressureHigh": true
+      },
+      "hs": "73063049",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73063049",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063091",
+      "priority": 86,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "medium",
+        "wallThin": false
+      },
+      "hs": "73063091",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Với đường kính trong từ 12,5 mm trở lên, đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng → 73063091",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063092",
+      "priority": 85,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "small",
+        "wallThin": true,
+        "innerDia": "large"
+      },
+      "hs": "73063092",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Với đường kính trong dưới 12,5 mm  → 73063092",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73063099",
+      "priority": 84,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "other",
+        "outerDia": "medium",
+        "wallThin": false
+      },
+      "hs": "73063099",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73063099",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73064011",
+      "priority": 83,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "stainless",
+        "outerDia": "small"
+      },
+      "hs": "73064011",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Với đường kính ngoài không quá 12,5 mm → 73064011",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73064019",
+      "priority": 82,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "stainless",
+        "outerDia": "medium_large"
+      },
+      "hs": "73064019",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73064019",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73064020",
+      "priority": 81,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "stainless",
+        "outerDia": "large",
+        "outerDiaOver105mm": true
+      },
+      "hs": "73064020",
+      "gir": "GIR 6",
+      "reasonVi": "- - Ống và ống dẫn bằng thép không gỉ, có đường kính ngoài trên 105 mm → 73064020",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73064030",
+      "priority": 80,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "stainless",
+        "nickelHigh": true
+      },
+      "hs": "73064030",
+      "gir": "GIR 6",
+      "reasonVi": "- - Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm → 73064030",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73064090",
+      "priority": 79,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "stainless",
+        "outerDia": "medium_large"
+      },
+      "hs": "73064090",
+      "gir": "GIR 6",
+      "reasonVi": "- - Loại khác → 73064090",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73065011",
+      "priority": 78,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "alloy",
+        "outerDia": "small"
+      },
+      "hs": "73065011",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Với đường kính ngoài dưới 12,5 mm → 73065011",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73065019",
+      "priority": 77,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "alloy",
+        "outerDia": "medium_large"
+      },
+      "hs": "73065019",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73065019",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73065091",
+      "priority": 76,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "alloy",
+        "outerDia": "small"
+      },
+      "hs": "73065091",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Với đường kính ngoài dưới 12,5 mm → 73065091",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73065099",
+      "priority": 75,
+      "when": {
+        "kind": "pipe_circular",
+        "welding": "welded",
+        "steel": "alloy",
+        "outerDia": "medium_large"
+      },
+      "hs": "73065099",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73065099",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73066110",
+      "priority": 74,
+      "when": {
+        "kind": "pipe_noncircular",
+        "outerDia": "small",
+        "crossSection": "square_rectangular",
+        "steel": "other"
+      },
+      "hs": "73066110",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Có đường chéo ngoài của mặt cắt ngang dưới 12,5 mm → 73066110",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73066190",
+      "priority": 73,
+      "when": {
+        "kind": "pipe_noncircular",
+        "outerDia": "medium_large",
+        "crossSection": "square_rectangular",
+        "steel": "other"
+      },
+      "hs": "73066190",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73066190",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73066910",
+      "priority": 72,
+      "when": {
+        "kind": "pipe_noncircular",
+        "outerDia": "small",
+        "crossSection": "other_profile",
+        "steel": "other"
+      },
+      "hs": "73066910",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Có đường chéo ngoài của mặt cắt ngang dưới 12,5 mm → 73066910",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73066990",
+      "priority": 71,
+      "when": {
+        "kind": "pipe_noncircular",
+        "outerDia": "medium_large",
+        "crossSection": "other_profile",
+        "steel": "other"
+      },
+      "hs": "73066990",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73066990",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73069011",
+      "priority": 70,
+      "when": {
+        "kind": "pipe_other",
+        "outerDia": "small",
+        "crossSection": "other_profile",
+        "steel": "other",
+        "pressureHigh": true
+      },
+      "hs": "73069011",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Có đường chéo ngoài của mặt cắt ngang dưới 12,5 mm → 73069011",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73069019",
+      "priority": 69,
+      "when": {
+        "kind": "pipe_other",
+        "outerDia": "small",
+        "crossSection": "other_profile",
+        "steel": "other",
+        "pressureHigh": false
+      },
+      "hs": "73069019",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73069019",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73069091",
+      "priority": 68,
+      "when": {
+        "kind": "pipe_other",
+        "pressureHigh": true,
+        "steel": "other"
+      },
+      "hs": "73069091",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi, đường kính trong nhỏ hơn 12,5 mm → 73069091",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73069094",
+      "priority": 67,
+      "when": {
+        "kind": "pipe_other",
+        "outerDia": "small",
+        "pressureHigh": true,
+        "steel": "other"
+      },
+      "hs": "73069094",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Các loại ống dẫn chịu áp lực cao khác, có đường kính ngoài nhỏ hơn 12,5 mm → 73069094",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73069095",
+      "priority": 66,
+      "when": {
+        "kind": "pipe_other",
+        "outerDia": "medium_large",
+        "pressureHigh": true,
+        "steel": "other"
+      },
+      "hs": "73069095",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Các loại ống dẫn chịu áp lực cao khác, có đường kính ngoài từ 12,5 mm trở lên → 73069095",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73069096",
+      "priority": 65,
+      "when": {
+        "kind": "pipe_other",
+        "outerDia": "small",
+        "pressureHigh": false,
+        "steel": "other"
+      },
+      "hs": "73069096",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác, có đường chéo ngoài của mặt cắt ngang dưới 12,5 mm → 73069096",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73069097",
+      "priority": 64,
+      "when": {
+        "kind": "pipe_other",
+        "outerDia": "medium_large",
+        "innerDia": "large",
+        "pressureHigh": false,
+        "steel": "other"
+      },
+      "hs": "73069097",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác, có đường kính trong trên 12,5 mm, đường kính ngoài nhỏ hơn 140 mm và chứa dưới 0,45% carbon tính theo khối lượng → 73069097",
+      "source": "Biểu thuế 2026"
+    },
+    {
+      "id": "r73069099",
+      "priority": 63,
+      "when": {
+        "kind": "pipe_other",
+        "steel": "other"
+      },
+      "hs": "73069099",
+      "gir": "GIR 6",
+      "reasonVi": "- - - Loại khác → 73069099",
+      "source": "Biểu thuế 2026"
+    }
+  ],
+  "status": "draft",
+  "essenceTestVi": "Ống dẫn (line pipe), ống tròn, ống không tròn hay ống khác? Hàn gì, thép gì? Đường kính ngoài, vách mỏng/dày, áp lực cao?",
+  "sourceVi": "Biểu thuế 2026 nhóm 7306: 73061x ống dẫn (theo phương pháp hàn); 73062x ống dẫn không gỉ; 73063x ống tròn hàn (theo đường kính ngoài, vách); 73064x ống tròn không gỉ; 73065x ống tròn hợp kim; 73066x ống không tròn; 73069x ống khác. Chú giải 7306: ống có mối hàn dọc/xoắn.",
+  "verified": false,
+  "noteVi": "Draft 38 mã / 11 attrs / 38 rules — tier-A score=22.5 | Nguồn: Biểu thuế 2026",
+  "attributes": {
+    "crossSection": {
+      "type": "enum",
+      "domain": [
+        "other_profile",
+        "square_rectangular"
+      ],
+      "detect": {
+        "other_profile": [
+          "other",
+          "profile"
+        ],
+        "square_rectangular": [
+          "square",
+          "rectangular"
+        ]
+      }
+    },
+    "innerDia": {
+      "type": "enum",
+      "domain": [
+        "large"
+      ],
+      "detect": {
+        "large": [
+          "large"
+        ]
+      }
+    },
+    "kind": {
+      "type": "enum",
+      "domain": [
+        "line_pipe",
+        "pipe_circular",
+        "pipe_noncircular",
+        "pipe_other"
+      ],
+      "detect": {
+        "line_pipe": [
+          "line",
+          "pipe"
+        ],
+        "pipe_circular": [
+          "pipe",
+          "circular"
+        ],
+        "pipe_noncircular": [
+          "pipe",
+          "noncircular"
+        ],
+        "pipe_other": [
+          "pipe",
+          "other"
+        ]
+      }
+    },
+    "nickelHigh": {
+      "type": "enum",
+      "domain": [
+        "True"
+      ],
+      "detect": {
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "outerDia": {
+      "type": "enum",
+      "domain": [
+        "any",
+        "large",
+        "medium",
+        "medium_large",
+        "small"
+      ],
+      "detect": {
+        "any": [
+          "any"
+        ],
+        "large": [
+          "large"
+        ],
+        "medium": [
+          "medium"
+        ],
+        "medium_large": [
+          "medium",
+          "large"
+        ],
+        "small": [
+          "small"
+        ]
+      }
+    },
+    "outerDiaOver105mm": {
+      "type": "enum",
+      "domain": [
+        "True"
+      ],
+      "detect": {
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "pressureHigh": {
+      "type": "enum",
+      "domain": [
+        "False",
+        "True"
+      ],
+      "detect": {
+        "False": [
+          "False"
+        ],
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "steel": {
+      "type": "enum",
+      "domain": [
+        "alloy",
+        "other",
+        "stainless"
+      ],
+      "detect": {
+        "alloy": [
+          "alloy"
+        ],
+        "other": [
+          "other"
+        ],
+        "stainless": [
+          "stainless"
+        ]
+      }
+    },
+    "wallThin": {
+      "type": "enum",
+      "domain": [
+        "False",
+        "True"
+      ],
+      "detect": {
+        "False": [
+          "False"
+        ],
+        "True": [
+          "True"
+        ]
+      }
+    },
+    "welding": {
+      "type": "enum",
+      "domain": [
+        "erw",
+        "other_weld",
+        "saw_spiral",
+        "welded"
+      ],
+      "detect": {
+        "erw": [
+          "erw"
+        ],
+        "other_weld": [
+          "other",
+          "weld"
+        ],
+        "saw_spiral": [
+          "saw",
+          "spiral"
+        ],
+        "welded": [
+          "welded"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "crossSection",
+    "innerDia",
+    "kind",
+    "nickelHigh",
+    "outerDia",
+    "outerDiaOver105mm",
+    "pressureHigh",
+    "steel",
+    "wallThin",
+    "welding"
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "crossSection; innerDia; kind; nickelHigh; outerDia; outerDiaOver105mm; pressureHigh; steel; wallThin; welding"
+}

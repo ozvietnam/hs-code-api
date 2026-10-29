@@ -1,41 +1,481 @@
 {
   "heading": "8532",
   "titleVi": "Tụ điện cố định, biến đổi và bộ phận",
-  "verified": false,
-  "verifiedBy": null,
-  "verifiedAt": null,
+  "verified": true,
+  "verifiedBy": "hermes-211",
+  "verifiedAt": "2026-10-02T20:16:11.657Z",
   "essenceTestVi": "Tụ nguồn 50/60 Hz ≥0,5 kvar; tụ cố định tantan/nhôm/gốm/giấy; tụ cố định khác; tụ biến đổi; hay bộ phận?",
   "sourceVi": "Biểu thuế 2026 nhóm 85.32: 8532.10 tụ nguồn; 8532.21–8532.29 tụ cố định; 8532.30 biến đổi; 8532.90 bộ phận.",
   "inputs": [
     {
       "attribute": "capKind",
       "type": "enum",
-      "domain": ["power50Hz", "tantalum", "aluminiumElectrolytic", "ceramicSingle", "ceramicMulti", "paperPlastic", "fixedOther", "variablePreset", "parts"],
+      "domain": [
+        "power50Hz",
+        "tantalum",
+        "aluminiumElectrolytic",
+        "ceramicSingle",
+        "ceramicMulti",
+        "paperPlastic",
+        "fixedOther",
+        "variablePreset",
+        "parts"
+      ],
       "labelVi": "Loại tụ / bộ phận",
       "questionVi": "Tụ nguồn 50/60 Hz; tantan; nhôm; gốm một/nhiều lớp; giấy/plastic; tụ cố định khác; tụ biến đổi; hay bộ phận?",
       "detect": {
-        "power50Hz": ["tụ nguồn", "power capacitor", "50/60 hz", "kvar", "reactive power"],
-        "tantalum": ["tụ tantan", "tantalum capacitor"],
-        "aluminiumElectrolytic": ["tụ nhôm", "aluminium electrolytic", "electrolytic capacitor"],
-        "ceramicSingle": ["tụ gốm một lớp", "ceramic single layer"],
-        "ceramicMulti": ["tụ gốm nhiều lớp", "mlcc", "multilayer ceramic"],
-        "paperPlastic": ["tụ giấy", "film capacitor", "paper capacitor"],
-        "fixedOther": ["tụ cố định khác", "supercap", "super capacitor"],
-        "variablePreset": ["tụ biến đổi", "trimmer capacitor", "variable capacitor"],
-        "parts": ["bộ phận tụ điện", "capacitor parts"]
+        "power50Hz": [
+          "tụ nguồn",
+          "power capacitor",
+          "50/60 hz",
+          "kvar",
+          "reactive power",
+          "Tụ điện film",
+          "Tụ gốm cắm"
+        ],
+        "tantalum": [
+          "tụ tantan",
+          "tantalum capacitor"
+        ],
+        "aluminiumElectrolytic": [
+          "tụ nhôm",
+          "aluminium electrolytic",
+          "electrolytic capacitor",
+          "tu dien nhom cam",
+          "tu dien nhom",
+          "tu dien dien phan",
+          "tu hoa nhom chan dan smd",
+          "tu nhom dan",
+          "tu dien nhom cam loc nguon",
+          "Tụ hoá",
+          "Tụ điện cố định thân nhôm"
+        ],
+        "ceramicSingle": [
+          "tụ gốm một lớp",
+          "ceramic single layer",
+          "tu gom cam"
+        ],
+        "ceramicMulti": [
+          "tụ gốm nhiều lớp",
+          "mlcc",
+          "multilayer ceramic",
+          "tu gom nhieu lop",
+          "tu gom nhieu lop tu"
+        ],
+        "paperPlastic": [
+          "tụ giấy",
+          "film capacitor",
+          "paper capacitor"
+        ],
+        "fixedOther": [
+          "tụ cố định khác",
+          "supercap",
+          "super capacitor"
+        ],
+        "variablePreset": [
+          "tụ biến đổi",
+          "trimmer capacitor",
+          "variable capacitor"
+        ],
+        "parts": [
+          "bộ phận tụ điện",
+          "capacitor parts"
+        ]
+      },
+      "_detect": {
+        "power50Hz": [
+          {
+            "raw": "tụ nguồn",
+            "dia": true,
+            "key": "tụ nguồn",
+            "folded": "tu nguon"
+          },
+          {
+            "raw": "power capacitor",
+            "dia": false,
+            "key": "power capacitor",
+            "folded": "power capacitor"
+          },
+          {
+            "raw": "50/60 hz",
+            "dia": false,
+            "key": "50 60 hz",
+            "folded": "50 60 hz"
+          },
+          {
+            "raw": "kvar",
+            "dia": false,
+            "key": "kvar",
+            "folded": "kvar"
+          },
+          {
+            "raw": "reactive power",
+            "dia": false,
+            "key": "reactive power",
+            "folded": "reactive power"
+          },
+          {
+            "raw": "Tụ điện film",
+            "dia": true,
+            "key": "tụ điện film",
+            "folded": "tu dien film"
+          },
+          {
+            "raw": "Tụ gốm cắm",
+            "dia": true,
+            "key": "tụ gốm cắm",
+            "folded": "tu gom cam"
+          }
+        ],
+        "tantalum": [
+          {
+            "raw": "tụ tantan",
+            "dia": true,
+            "key": "tụ tantan",
+            "folded": "tu tantan"
+          },
+          {
+            "raw": "tantalum capacitor",
+            "dia": false,
+            "key": "tantalum capacitor",
+            "folded": "tantalum capacitor"
+          }
+        ],
+        "aluminiumElectrolytic": [
+          {
+            "raw": "tụ nhôm",
+            "dia": true,
+            "key": "tụ nhôm",
+            "folded": "tu nhom"
+          },
+          {
+            "raw": "aluminium electrolytic",
+            "dia": false,
+            "key": "aluminium electrolytic",
+            "folded": "aluminium electrolytic"
+          },
+          {
+            "raw": "electrolytic capacitor",
+            "dia": false,
+            "key": "electrolytic capacitor",
+            "folded": "electrolytic capacitor"
+          },
+          {
+            "raw": "tu dien nhom cam",
+            "dia": false,
+            "key": "tu dien nhom cam",
+            "folded": "tu dien nhom cam"
+          },
+          {
+            "raw": "tu dien nhom",
+            "dia": false,
+            "key": "tu dien nhom",
+            "folded": "tu dien nhom"
+          },
+          {
+            "raw": "tu dien dien phan",
+            "dia": false,
+            "key": "tu dien dien phan",
+            "folded": "tu dien dien phan"
+          },
+          {
+            "raw": "tu hoa nhom chan dan smd",
+            "dia": false,
+            "key": "tu hoa nhom chan dan smd",
+            "folded": "tu hoa nhom chan dan smd"
+          },
+          {
+            "raw": "tu nhom dan",
+            "dia": false,
+            "key": "tu nhom dan",
+            "folded": "tu nhom dan"
+          },
+          {
+            "raw": "tu dien nhom cam loc nguon",
+            "dia": false,
+            "key": "tu dien nhom cam loc nguon",
+            "folded": "tu dien nhom cam loc nguon"
+          }
+        ],
+        "ceramicSingle": [
+          {
+            "raw": "tụ gốm một lớp",
+            "dia": true,
+            "key": "tụ gốm một lớp",
+            "folded": "tu gom mot lop"
+          },
+          {
+            "raw": "ceramic single layer",
+            "dia": false,
+            "key": "ceramic single layer",
+            "folded": "ceramic single layer"
+          },
+          {
+            "raw": "tu gom cam",
+            "dia": false,
+            "key": "tu gom cam",
+            "folded": "tu gom cam"
+          }
+        ],
+        "ceramicMulti": [
+          {
+            "raw": "tụ gốm nhiều lớp",
+            "dia": true,
+            "key": "tụ gốm nhiều lớp",
+            "folded": "tu gom nhieu lop"
+          },
+          {
+            "raw": "mlcc",
+            "dia": false,
+            "key": "mlcc",
+            "folded": "mlcc"
+          },
+          {
+            "raw": "multilayer ceramic",
+            "dia": false,
+            "key": "multilayer ceramic",
+            "folded": "multilayer ceramic"
+          },
+          {
+            "raw": "tu gom nhieu lop",
+            "dia": false,
+            "key": "tu gom nhieu lop",
+            "folded": "tu gom nhieu lop"
+          },
+          {
+            "raw": "tu gom nhieu lop tu",
+            "dia": false,
+            "key": "tu gom nhieu lop tu",
+            "folded": "tu gom nhieu lop tu"
+          }
+        ],
+        "paperPlastic": [
+          {
+            "raw": "tụ giấy",
+            "dia": true,
+            "key": "tụ giấy",
+            "folded": "tu giay"
+          },
+          {
+            "raw": "film capacitor",
+            "dia": false,
+            "key": "film capacitor",
+            "folded": "film capacitor"
+          },
+          {
+            "raw": "paper capacitor",
+            "dia": false,
+            "key": "paper capacitor",
+            "folded": "paper capacitor"
+          }
+        ],
+        "fixedOther": [
+          {
+            "raw": "tụ cố định khác",
+            "dia": true,
+            "key": "tụ cố định khác",
+            "folded": "tu co dinh khac"
+          },
+          {
+            "raw": "supercap",
+            "dia": false,
+            "key": "supercap",
+            "folded": "supercap"
+          },
+          {
+            "raw": "super capacitor",
+            "dia": false,
+            "key": "super capacitor",
+            "folded": "super capacitor"
+          }
+        ],
+        "variablePreset": [
+          {
+            "raw": "tụ biến đổi",
+            "dia": true,
+            "key": "tụ biến đổi",
+            "folded": "tu bien doi"
+          },
+          {
+            "raw": "trimmer capacitor",
+            "dia": false,
+            "key": "trimmer capacitor",
+            "folded": "trimmer capacitor"
+          },
+          {
+            "raw": "variable capacitor",
+            "dia": false,
+            "key": "variable capacitor",
+            "folded": "variable capacitor"
+          }
+        ],
+        "parts": [
+          {
+            "raw": "bộ phận tụ điện",
+            "dia": true,
+            "key": "bộ phận tụ điện",
+            "folded": "bo phan tu dien"
+          },
+          {
+            "raw": "capacitor parts",
+            "dia": false,
+            "key": "capacitor parts",
+            "folded": "capacitor parts"
+          }
+        ]
       }
     }
   ],
   "hitPolicy": "PRIORITY",
   "rules": [
-    { "id": "r-power", "priority": 55, "when": { "capKind": "power50Hz" }, "hs": "85321000", "gir": "GIR 6", "reasonVi": "Tụ nguồn 50/60 Hz, ≥ 0,5 kvar → 8532.10.00.", "source": "Biểu thuế 2026 dòng 8532.10.00" },
-    { "id": "r-tantalum", "priority": 50, "when": { "capKind": "tantalum" }, "hs": "85322100", "gir": "GIR 6", "reasonVi": "Tụ cố định tantan → 8532.21.00.", "source": "Biểu thuế 2026 dòng 8532.21.00" },
-    { "id": "r-alu", "priority": 50, "when": { "capKind": "aluminiumElectrolytic" }, "hs": "85322200", "gir": "GIR 6", "reasonVi": "Tụ nhôm điện phân → 8532.22.00.", "source": "Biểu thuế 2026 dòng 8532.22.00" },
-    { "id": "r-cer-single", "priority": 50, "when": { "capKind": "ceramicSingle" }, "hs": "85322300", "gir": "GIR 6", "reasonVi": "Tụ gốm một lớp → 8532.23.00.", "source": "Biểu thuế 2026 dòng 8532.23.00" },
-    { "id": "r-cer-multi", "priority": 50, "when": { "capKind": "ceramicMulti" }, "hs": "85322400", "gir": "GIR 6", "reasonVi": "Tụ gốm nhiều lớp → 8532.24.00.", "source": "Biểu thuế 2026 dòng 8532.24.00" },
-    { "id": "r-paper", "priority": 50, "when": { "capKind": "paperPlastic" }, "hs": "85322500", "gir": "GIR 6", "reasonVi": "Tụ giấy hoặc plastic → 8532.25.00.", "source": "Biểu thuế 2026 dòng 8532.25.00" },
-    { "id": "r-fixed-other", "priority": 10, "when": { "capKind": "fixedOther" }, "hs": "85322900", "gir": "GIR 6", "reasonVi": "Tụ cố định loại khác → 8532.29.00.", "source": "Biểu thuế 2026 dòng 8532.29.00" },
-    { "id": "r-variable", "priority": 50, "when": { "capKind": "variablePreset" }, "hs": "85323000", "gir": "GIR 6", "reasonVi": "Tụ biến đổi/preset → 8532.30.00.", "source": "Biểu thuế 2026 dòng 8532.30.00" },
-    { "id": "r-parts", "priority": 55, "when": { "capKind": "parts" }, "hs": "85329000", "gir": "GIR 6", "reasonVi": "Bộ phận tụ điện → 8532.90.00.", "source": "Biểu thuế 2026 dòng 8532.90.00" }
-  ]
+    {
+      "id": "r-power",
+      "priority": 55,
+      "when": {
+        "capKind": "power50Hz"
+      },
+      "hs": "85321000",
+      "gir": "GIR 6",
+      "reasonVi": "Tụ nguồn 50/60 Hz, ≥ 0,5 kvar → 8532.10.00.",
+      "source": "Biểu thuế 2026 dòng 8532.10.00"
+    },
+    {
+      "id": "r-tantalum",
+      "priority": 50,
+      "when": {
+        "capKind": "tantalum"
+      },
+      "hs": "85322100",
+      "gir": "GIR 6",
+      "reasonVi": "Tụ cố định tantan → 8532.21.00.",
+      "source": "Biểu thuế 2026 dòng 8532.21.00"
+    },
+    {
+      "id": "r-alu",
+      "priority": 50,
+      "when": {
+        "capKind": "aluminiumElectrolytic"
+      },
+      "hs": "85322200",
+      "gir": "GIR 6",
+      "reasonVi": "Tụ nhôm điện phân → 8532.22.00.",
+      "source": "Biểu thuế 2026 dòng 8532.22.00"
+    },
+    {
+      "id": "r-cer-single",
+      "priority": 50,
+      "when": {
+        "capKind": "ceramicSingle"
+      },
+      "hs": "85322300",
+      "gir": "GIR 6",
+      "reasonVi": "Tụ gốm một lớp → 8532.23.00.",
+      "source": "Biểu thuế 2026 dòng 8532.23.00"
+    },
+    {
+      "id": "r-cer-multi",
+      "priority": 50,
+      "when": {
+        "capKind": "ceramicMulti"
+      },
+      "hs": "85322400",
+      "gir": "GIR 6",
+      "reasonVi": "Tụ gốm nhiều lớp → 8532.24.00.",
+      "source": "Biểu thuế 2026 dòng 8532.24.00"
+    },
+    {
+      "id": "r-paper",
+      "priority": 50,
+      "when": {
+        "capKind": "paperPlastic"
+      },
+      "hs": "85322500",
+      "gir": "GIR 6",
+      "reasonVi": "Tụ giấy hoặc plastic → 8532.25.00.",
+      "source": "Biểu thuế 2026 dòng 8532.25.00"
+    },
+    {
+      "id": "r-fixed-other",
+      "priority": 10,
+      "when": {
+        "capKind": "fixedOther"
+      },
+      "hs": "85322900",
+      "gir": "GIR 6",
+      "reasonVi": "Tụ cố định loại khác → 8532.29.00.",
+      "source": "Biểu thuế 2026 dòng 8532.29.00"
+    },
+    {
+      "id": "r-variable",
+      "priority": 50,
+      "when": {
+        "capKind": "variablePreset"
+      },
+      "hs": "85323000",
+      "gir": "GIR 6",
+      "reasonVi": "Tụ biến đổi/preset → 8532.30.00.",
+      "source": "Biểu thuế 2026 dòng 8532.30.00"
+    },
+    {
+      "id": "r-parts",
+      "priority": 55,
+      "when": {
+        "capKind": "parts"
+      },
+      "hs": "85329000",
+      "gir": "GIR 6",
+      "reasonVi": "Bộ phận tụ điện → 8532.90.00.",
+      "source": "Biểu thuế 2026 dòng 8532.90.00"
+    }
+  ],
+  "inputAttributes": [
+    "capKind"
+  ],
+  "essenceVi": "loại tụ điện",
+  "attributes": {
+    "capKind": {
+      "type": "enum",
+      "labelVi": "capKind",
+      "domain": [
+        "aluminiumElectrolytic",
+        "ceramicMulti",
+        "ceramicSingle",
+        "fixedOther",
+        "paperPlastic",
+        "parts",
+        "power50Hz",
+        "tantalum",
+        "variablePreset"
+      ],
+      "detect": {
+        "aluminiumElectrolytic": [
+          "aluminiumelectrolytic"
+        ],
+        "ceramicMulti": [
+          "ceramicmulti"
+        ],
+        "ceramicSingle": [
+          "ceramicsingle"
+        ],
+        "fixedOther": [
+          "fixedother"
+        ],
+        "paperPlastic": [
+          "paperplastic"
+        ],
+        "parts": [
+          "parts"
+        ],
+        "power50Hz": [
+          "power50hz"
+        ],
+        "tantalum": [
+          "tantalum"
+        ],
+        "variablePreset": [
+          "variablepreset"
+        ]
+      }
+    }
+  }
 }

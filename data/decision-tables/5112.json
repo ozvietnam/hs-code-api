@@ -1,0 +1,156 @@
+{
+  "heading": "5112",
+  "titleVi": "Vải dệt từ len chải hoặc lông động vật mịn đã chải",
+  "verified": false,
+  "essenceTestVi": "Vải len chải chia theo vật liệu và phương pháp nhuộm/in. Len thuần và len chải khác có phân biệt batik (SEN); các loại pha và khác thì không.",
+  "sourceVi": "Biểu thuế NK VN 2026, nhóm 5112",
+  "inputs": [
+    {
+      "attribute": "battingMethod",
+      "type": "enum",
+      "domain": [
+        "batik",
+        "other"
+      ],
+      "labelVi": "Phương pháp nhuộm hoặc in batik",
+      "questionVi": "Vải len chải có được nhuộm hoặc in bằng phương pháp batik truyền thống không?",
+      "detect": {
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik",
+          "vải batik"
+        ],
+        "other": [
+          "không batik",
+          "vải len thường",
+          "vải nhuộm thường"
+        ]
+      }
+    },
+    {
+      "attribute": "materialType",
+      "type": "enum",
+      "domain": [
+        "pure_wool",
+        "woven_wool",
+        "mixed_filament",
+        "mixed_staple",
+        "other"
+      ],
+      "labelVi": "Loại vật liệu dệt",
+      "questionVi": "Vải là len thuần, len chải khác, pha sợi filament, pha xơ staple, hay loại khác?"
+    }
+  ],
+  "hitPolicy": "FIRST",
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "battingMethod": "batik",
+        "materialType": "pure_wool"
+      },
+      "hs": "51121110",
+      "reasonVi": "GIR 6 — vải len thuần chải in batik truyền thống (SEN), Biểu thuế 2026 → 51121110",
+      "source": "Biểu thuế NK VN 2026, nhóm 5112"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "battingMethod": "other",
+        "materialType": "pure_wool"
+      },
+      "hs": "51121190",
+      "reasonVi": "GIR 6 — vải len thuần chải, không batik, Biểu thuế 2026 → 51121190",
+      "source": "Biểu thuế NK VN 2026, nhóm 5112"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "battingMethod": "batik",
+        "materialType": "woven_wool"
+      },
+      "hs": "51121910",
+      "reasonVi": "GIR 6 — vải len chải khác in batik truyền thống (SEN), Biểu thuế 2026 → 51121910",
+      "source": "Biểu thuế NK VN 2026, nhóm 5112"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "battingMethod": "other",
+        "materialType": "woven_wool"
+      },
+      "hs": "51121990",
+      "reasonVi": "GIR 6 — vải len chải khác, không batik, Biểu thuế 2026 → 51121990",
+      "source": "Biểu thuế NK VN 2026, nhóm 5112"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "battingMethod": "other",
+        "materialType": "mixed_filament"
+      },
+      "hs": "51122000",
+      "reasonVi": "GIR 6 — vải len pha sợi filament nhân tạo, Biểu thuế 2026 → 51122000",
+      "source": "Biểu thuế NK VN 2026, nhóm 5112"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "battingMethod": "other",
+        "materialType": "mixed_staple"
+      },
+      "hs": "51123000",
+      "reasonVi": "GIR 6 — vải len pha xơ staple nhân tạo, Biểu thuế 2026 → 51123000",
+      "source": "Biểu thuế NK VN 2026, nhóm 5112"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "battingMethod": "other",
+        "materialType": "other"
+      },
+      "hs": "51129000",
+      "reasonVi": "GIR 6 — vải len loại khác, Biểu thuế 2026 → 51129000",
+      "source": "Biểu thuế NK VN 2026, nhóm 5112"
+    }
+  ],
+  "inputAttributes": [
+    "battingMethod",
+    "materialType"
+  ],
+  "attributes": {
+    "battingMethod": {
+      "detect": {
+        "batik": [
+          "batik",
+          "in batik",
+          "nhuộm batik",
+          "vải batik"
+        ],
+        "other": [
+          "không batik",
+          "vải len thường",
+          "vải nhuộm thường"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "batik",
+        "other"
+      ]
+    },
+    "materialType": {
+      "detect": {},
+      "type": "enum"
+    }
+  },
+  "essenceVi": "battingMethod × materialType"
+}

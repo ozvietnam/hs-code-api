@@ -140,5 +140,48 @@
       "reasonVi": "Mô-đun khác LCD/OLED, có driver → 8524.99.00.",
       "source": "Biểu thuế 2026 dòng 8524.99.00"
     }
-  ]
+  ],
+  "inputAttributes": [
+    "panelTech",
+    "withDriver"
+  ],
+  "essenceVi": "công nghệ panel+có driver",
+  "attributes": {
+    "panelTech": {
+      "type": "enum",
+      "labelVi": "panelTech",
+      "domain": [
+        "lcd",
+        "oled",
+        "other"
+      ],
+      "detect": {
+        "lcd": [
+          "lcd"
+        ],
+        "oled": [
+          "oled"
+        ],
+        "other": [
+          "other"
+        ]
+      }
+    },
+    "withDriver": {
+      "type": "enum",
+      "labelVi": "withDriver",
+      "domain": [
+        "no",
+        "yes"
+      ],
+      "detect": {
+        "no": [
+          "no"
+        ],
+        "yes": [
+          "yes"
+        ]
+      }
+    }
+  }
 }

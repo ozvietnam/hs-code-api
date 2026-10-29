@@ -1,0 +1,1088 @@
+{
+  "heading": "7326",
+  "titleVi": "Các sản phẩm sắt hoặc thép khác chưa được phân vào nhóm nào khác",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "articleGroup",
+      "type": "enum",
+      "domain": [
+        "grinding_ball",
+        "other_articles",
+        "other_single",
+        "wire_articles"
+      ],
+      "labelVi": "Nhóm sản phẩm sắt/thép",
+      "questionVi": "Sản phẩm sắt/thép thuộc nhóm nào: bi nghiền, dây sắt/thép, hay sản phẩm sắt/thép khác?",
+      "detect": {
+        "grinding_ball": [
+          "bi nghiền",
+          "bi thép nghiền",
+          "grinding ball",
+          "bi mài"
+        ],
+        "wire_articles": [
+          "dây sắt",
+          "dây thép",
+          "lưới sắt",
+          "wire mesh",
+          "đai sắt"
+        ],
+        "other_articles": [
+          "sắt",
+          "thép",
+          "gang",
+          "iron",
+          "steel",
+          "Con lăn truyền động lò nung",
+          "Tai kẹp ống",
+          "Bộ phụ kiện kết nối",
+          "Giá đỡ máy tính",
+          "Thanh trượt tuyến tính",
+          "Tăng dây cáp",
+          "Dụng cụ kẹp lông mi",
+          "Đai xiết inox",
+          "Giá đỡ điện thoại",
+          "Trục lăn",
+          "Vỏ khung cân điện tử",
+          "Thanh trượt dẫn hướng",
+          "Giảm chấn",
+          "Máng lợn",
+          "Thanh trộn sơn",
+          "Giá đỡ kẹp điện thoại",
+          "Kẹp khí",
+          "Ốp ray giá để nồi bát đĩa",
+          "Hộp đựng dụng cụ cơ khí",
+          "Kẹp tay bấm có lò xo",
+          "Kẹp mát (kẹp mass) nam châm",
+          "Giá đỡ đai đẩy gạch",
+          "Giá đỡ laptop",
+          "Bi làm kín",
+          "Hộp đựng camera",
+          "Ke treo phụ kiện rèm cửa",
+          "Dụng cụ lấy ráy tai",
+          "Khung viền điện thoại",
+          "Thanh gạt máng cào",
+          "Kẹp chữ U",
+          "Đai siết ống inox T-Bolt Clamp",
+          "Móc treo lồng chim",
+          "Tấm film kiểm tra cực nam châm",
+          "Cây kiểm tra bộp tường",
+          "Đầu kẹp cáp",
+          "Đầu kẹp cos dây cáp",
+          "Gá kính",
+          "Mặt nạ kéo kem hàn",
+          "Chốt con lăn",
+          "Thùng rác có nắp",
+          "Thùng rác để sảnh",
+          "Thùng rác đạp chân nắp tròn",
+          "Giá treo rèm cuốn",
+          "Viên bi cầu mâm quay",
+          "Khớp nối robot có phanh",
+          "Thanh nẹp tài liệu",
+          "Vỏ khung bộ điều khiển",
+          "Ống lót chốt định vị",
+          "Họng chia gió điều hòa",
+          "Bộ chia gió điều hòa",
+          "Đầu đốc choòng khoan khí ép",
+          "Khuôn mẫu hình thoi",
+          "Mặt kẹp",
+          "Tay xả tải cột thủy lực hầm lò",
+          "Bộ phụ kiện rèm cửa",
+          "Vỏ khung máy IPC"
+        ],
+        "other_single": [
+          "sản phẩm sắt",
+          "đồ sắt",
+          "sắt thép khác"
+        ]
+      },
+      "_detect": {
+        "grinding_ball": [
+          {
+            "raw": "bi nghiền",
+            "dia": true,
+            "key": "bi nghiền",
+            "folded": "bi nghien"
+          },
+          {
+            "raw": "bi thép nghiền",
+            "dia": true,
+            "key": "bi thép nghiền",
+            "folded": "bi thep nghien"
+          },
+          {
+            "raw": "grinding ball",
+            "dia": false,
+            "key": "grinding ball",
+            "folded": "grinding ball"
+          },
+          {
+            "raw": "bi mài",
+            "dia": true,
+            "key": "bi mài",
+            "folded": "bi mai"
+          }
+        ],
+        "wire_articles": [
+          {
+            "raw": "dây sắt",
+            "dia": true,
+            "key": "dây sắt",
+            "folded": "day sat"
+          },
+          {
+            "raw": "dây thép",
+            "dia": true,
+            "key": "dây thép",
+            "folded": "day thep"
+          },
+          {
+            "raw": "lưới sắt",
+            "dia": true,
+            "key": "lưới sắt",
+            "folded": "luoi sat"
+          },
+          {
+            "raw": "wire mesh",
+            "dia": false,
+            "key": "wire mesh",
+            "folded": "wire mesh"
+          },
+          {
+            "raw": "đai sắt",
+            "dia": true,
+            "key": "đai sắt",
+            "folded": "dai sat"
+          }
+        ],
+        "other_articles": [
+          {
+            "raw": "sắt",
+            "dia": true,
+            "key": "sắt",
+            "folded": "sat"
+          },
+          {
+            "raw": "thép",
+            "dia": true,
+            "key": "thép",
+            "folded": "thep"
+          },
+          {
+            "raw": "gang",
+            "dia": false,
+            "key": "gang",
+            "folded": "gang"
+          },
+          {
+            "raw": "iron",
+            "dia": false,
+            "key": "iron",
+            "folded": "iron"
+          },
+          {
+            "raw": "steel",
+            "dia": false,
+            "key": "steel",
+            "folded": "steel"
+          },
+          {
+            "raw": "Con lăn truyền động lò nung",
+            "dia": true,
+            "key": "con lăn truyền động lò nung",
+            "folded": "con lan truyen dong lo nung"
+          },
+          {
+            "raw": "Tai kẹp ống",
+            "dia": true,
+            "key": "tai kẹp ống",
+            "folded": "tai kep ong"
+          },
+          {
+            "raw": "Bộ phụ kiện kết nối",
+            "dia": true,
+            "key": "bộ phụ kiện kết nối",
+            "folded": "bo phu kien ket noi"
+          },
+          {
+            "raw": "Giá đỡ máy tính",
+            "dia": true,
+            "key": "giá đỡ máy tính",
+            "folded": "gia do may tinh"
+          },
+          {
+            "raw": "Thanh trượt tuyến tính",
+            "dia": true,
+            "key": "thanh trượt tuyến tính",
+            "folded": "thanh truot tuyen tinh"
+          },
+          {
+            "raw": "Tăng dây cáp",
+            "dia": true,
+            "key": "tăng dây cáp",
+            "folded": "tang day cap"
+          },
+          {
+            "raw": "Dụng cụ kẹp lông mi",
+            "dia": true,
+            "key": "dụng cụ kẹp lông mi",
+            "folded": "dung cu kep long mi"
+          },
+          {
+            "raw": "Đai xiết inox",
+            "dia": true,
+            "key": "đai xiết inox",
+            "folded": "dai xiet inox"
+          },
+          {
+            "raw": "Giá đỡ điện thoại",
+            "dia": true,
+            "key": "giá đỡ điện thoại",
+            "folded": "gia do dien thoai"
+          },
+          {
+            "raw": "Trục lăn",
+            "dia": true,
+            "key": "trục lăn",
+            "folded": "truc lan"
+          },
+          {
+            "raw": "Vỏ khung cân điện tử",
+            "dia": true,
+            "key": "vỏ khung cân điện tử",
+            "folded": "vo khung can dien tu"
+          },
+          {
+            "raw": "Thanh trượt dẫn hướng",
+            "dia": true,
+            "key": "thanh trượt dẫn hướng",
+            "folded": "thanh truot dan huong"
+          },
+          {
+            "raw": "Giảm chấn",
+            "dia": true,
+            "key": "giảm chấn",
+            "folded": "giam chan"
+          },
+          {
+            "raw": "Máng lợn",
+            "dia": true,
+            "key": "máng lợn",
+            "folded": "mang lon"
+          },
+          {
+            "raw": "Thanh trộn sơn",
+            "dia": true,
+            "key": "thanh trộn sơn",
+            "folded": "thanh tron son"
+          },
+          {
+            "raw": "Giá đỡ kẹp điện thoại",
+            "dia": true,
+            "key": "giá đỡ kẹp điện thoại",
+            "folded": "gia do kep dien thoai"
+          },
+          {
+            "raw": "Kẹp khí",
+            "dia": true,
+            "key": "kẹp khí",
+            "folded": "kep khi"
+          },
+          {
+            "raw": "Ốp ray giá để nồi bát đĩa",
+            "dia": true,
+            "key": "ốp ray giá để nồi bát đĩa",
+            "folded": "op ray gia de noi bat dia"
+          },
+          {
+            "raw": "Hộp đựng dụng cụ cơ khí",
+            "dia": true,
+            "key": "hộp đựng dụng cụ cơ khí",
+            "folded": "hop dung dung cu co khi"
+          },
+          {
+            "raw": "Kẹp tay bấm có lò xo",
+            "dia": true,
+            "key": "kẹp tay bấm có lò xo",
+            "folded": "kep tay bam co lo xo"
+          },
+          {
+            "raw": "Kẹp mát (kẹp mass) nam châm",
+            "dia": true,
+            "key": "kẹp mát kẹp mass nam châm",
+            "folded": "kep mat kep mass nam cham"
+          },
+          {
+            "raw": "Giá đỡ đai đẩy gạch",
+            "dia": true,
+            "key": "giá đỡ đai đẩy gạch",
+            "folded": "gia do dai day gach"
+          },
+          {
+            "raw": "Giá đỡ laptop",
+            "dia": true,
+            "key": "giá đỡ laptop",
+            "folded": "gia do laptop"
+          },
+          {
+            "raw": "Bi làm kín",
+            "dia": true,
+            "key": "bi làm kín",
+            "folded": "bi lam kin"
+          },
+          {
+            "raw": "Hộp đựng camera",
+            "dia": true,
+            "key": "hộp đựng camera",
+            "folded": "hop dung camera"
+          },
+          {
+            "raw": "Ke treo phụ kiện rèm cửa",
+            "dia": true,
+            "key": "ke treo phụ kiện rèm cửa",
+            "folded": "ke treo phu kien rem cua"
+          },
+          {
+            "raw": "Dụng cụ lấy ráy tai",
+            "dia": true,
+            "key": "dụng cụ lấy ráy tai",
+            "folded": "dung cu lay ray tai"
+          },
+          {
+            "raw": "Khung viền điện thoại",
+            "dia": true,
+            "key": "khung viền điện thoại",
+            "folded": "khung vien dien thoai"
+          },
+          {
+            "raw": "Thanh gạt máng cào",
+            "dia": true,
+            "key": "thanh gạt máng cào",
+            "folded": "thanh gat mang cao"
+          },
+          {
+            "raw": "Kẹp chữ U",
+            "dia": true,
+            "key": "kẹp chữ u",
+            "folded": "kep chu u"
+          },
+          {
+            "raw": "Đai siết ống inox T-Bolt Clamp",
+            "dia": true,
+            "key": "đai siết ống inox t bolt clamp",
+            "folded": "dai siet ong inox t bolt clamp"
+          },
+          {
+            "raw": "Móc treo lồng chim",
+            "dia": true,
+            "key": "móc treo lồng chim",
+            "folded": "moc treo long chim"
+          },
+          {
+            "raw": "Tấm film kiểm tra cực nam châm",
+            "dia": true,
+            "key": "tấm film kiểm tra cực nam châm",
+            "folded": "tam film kiem tra cuc nam cham"
+          },
+          {
+            "raw": "Cây kiểm tra bộp tường",
+            "dia": true,
+            "key": "cây kiểm tra bộp tường",
+            "folded": "cay kiem tra bop tuong"
+          },
+          {
+            "raw": "Đầu kẹp cáp",
+            "dia": true,
+            "key": "đầu kẹp cáp",
+            "folded": "dau kep cap"
+          },
+          {
+            "raw": "Đầu kẹp cos dây cáp",
+            "dia": true,
+            "key": "đầu kẹp cos dây cáp",
+            "folded": "dau kep cos day cap"
+          },
+          {
+            "raw": "Gá kính",
+            "dia": true,
+            "key": "gá kính",
+            "folded": "ga kinh"
+          },
+          {
+            "raw": "Mặt nạ kéo kem hàn",
+            "dia": true,
+            "key": "mặt nạ kéo kem hàn",
+            "folded": "mat na keo kem han"
+          },
+          {
+            "raw": "Chốt con lăn",
+            "dia": true,
+            "key": "chốt con lăn",
+            "folded": "chot con lan"
+          },
+          {
+            "raw": "Thùng rác có nắp",
+            "dia": true,
+            "key": "thùng rác có nắp",
+            "folded": "thung rac co nap"
+          },
+          {
+            "raw": "Thùng rác để sảnh",
+            "dia": true,
+            "key": "thùng rác để sảnh",
+            "folded": "thung rac de sanh"
+          },
+          {
+            "raw": "Thùng rác đạp chân nắp tròn",
+            "dia": true,
+            "key": "thùng rác đạp chân nắp tròn",
+            "folded": "thung rac dap chan nap tron"
+          },
+          {
+            "raw": "Giá treo rèm cuốn",
+            "dia": true,
+            "key": "giá treo rèm cuốn",
+            "folded": "gia treo rem cuon"
+          },
+          {
+            "raw": "Viên bi cầu mâm quay",
+            "dia": true,
+            "key": "viên bi cầu mâm quay",
+            "folded": "vien bi cau mam quay"
+          },
+          {
+            "raw": "Khớp nối robot có phanh",
+            "dia": true,
+            "key": "khớp nối robot có phanh",
+            "folded": "khop noi robot co phanh"
+          },
+          {
+            "raw": "Thanh nẹp tài liệu",
+            "dia": true,
+            "key": "thanh nẹp tài liệu",
+            "folded": "thanh nep tai lieu"
+          },
+          {
+            "raw": "Vỏ khung bộ điều khiển",
+            "dia": true,
+            "key": "vỏ khung bộ điều khiển",
+            "folded": "vo khung bo dieu khien"
+          },
+          {
+            "raw": "Ống lót chốt định vị",
+            "dia": true,
+            "key": "ống lót chốt định vị",
+            "folded": "ong lot chot dinh vi"
+          },
+          {
+            "raw": "Họng chia gió điều hòa",
+            "dia": true,
+            "key": "họng chia gió điều hòa",
+            "folded": "hong chia gio dieu hoa"
+          },
+          {
+            "raw": "Bộ chia gió điều hòa",
+            "dia": true,
+            "key": "bộ chia gió điều hòa",
+            "folded": "bo chia gio dieu hoa"
+          },
+          {
+            "raw": "Đầu đốc choòng khoan khí ép",
+            "dia": true,
+            "key": "đầu đốc choòng khoan khí ép",
+            "folded": "dau doc choong khoan khi ep"
+          },
+          {
+            "raw": "Khuôn mẫu hình thoi",
+            "dia": true,
+            "key": "khuôn mẫu hình thoi",
+            "folded": "khuon mau hinh thoi"
+          },
+          {
+            "raw": "Mặt kẹp",
+            "dia": true,
+            "key": "mặt kẹp",
+            "folded": "mat kep"
+          },
+          {
+            "raw": "Tay xả tải cột thủy lực hầm lò",
+            "dia": true,
+            "key": "tay xả tải cột thủy lực hầm lò",
+            "folded": "tay xa tai cot thuy luc ham lo"
+          },
+          {
+            "raw": "Bộ phụ kiện rèm cửa",
+            "dia": true,
+            "key": "bộ phụ kiện rèm cửa",
+            "folded": "bo phu kien rem cua"
+          },
+          {
+            "raw": "Vỏ khung máy IPC",
+            "dia": true,
+            "key": "vỏ khung máy ipc",
+            "folded": "vo khung may ipc"
+          }
+        ],
+        "other_single": [
+          {
+            "raw": "sản phẩm sắt",
+            "dia": true,
+            "key": "sản phẩm sắt",
+            "folded": "san pham sat"
+          },
+          {
+            "raw": "đồ sắt",
+            "dia": true,
+            "key": "đồ sắt",
+            "folded": "do sat"
+          },
+          {
+            "raw": "sắt thép khác",
+            "dia": true,
+            "key": "sắt thép khác",
+            "folded": "sat thep khac"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "articleSubType",
+      "type": "enum",
+      "domain": [
+        "blind",
+        "bunsen_burner",
+        "cigarette_box",
+        "horseshoe_hook",
+        "mouse_trap",
+        "other_article",
+        "other_wire",
+        "poultry_cage",
+        "rubber_tray",
+        "ship_rudder",
+        "stainless_clip",
+        "standard"
+      ],
+      "labelVi": "Loại cụ thể",
+      "questionVi": "Sản phẩm cụ thể là gì: lồng gia cầm, bẫy chuột, rèm, bánh lái tàu, đèn Bunsen, móng ngựa, hộp thuốc lá, hay loại khác?",
+      "detect": {
+        "blind": [
+          "rèm sắt",
+          "lưới sắt",
+          "màn chắn"
+        ],
+        "bunsen_burner": [
+          "đèn bunsen",
+          "bunsen"
+        ],
+        "cigarette_box": [
+          "hộp thuốc lá",
+          "g Ashtray"
+        ],
+        "horseshoe_hook": [
+          "móng ngựa",
+          "móc ngựa"
+        ],
+        "mouse_trap": [
+          "bẫy chuột",
+          "bẫy cống"
+        ],
+        "poultry_cage": [
+          "lồng gia cầm",
+          "lồng gà",
+          "lồng chim"
+        ],
+        "rubber_tray": [
+          "khay cao su",
+          "rubber tray"
+        ],
+        "ship_rudder": [
+          "bánh lái tàu",
+          "lái tàu"
+        ],
+        "stainless_clip": [
+          "clip không gỉ",
+          "stainless clip"
+        ],
+        "other_article": [
+          "Thang thép dạng gấp chữ A",
+          "Thang thép dạng rút",
+          "Kẹp bằng thép",
+          "Cán dao bằng thép",
+          "Con lăn truyền động lò nung",
+          "Tai kẹp ống",
+          "Bộ phụ kiện kết nối",
+          "Giá đỡ máy tính",
+          "Thanh trượt tuyến tính",
+          "Tăng dây cáp",
+          "Dụng cụ kẹp lông mi",
+          "Đai xiết inox",
+          "Giá đỡ điện thoại",
+          "Trục lăn",
+          "Vỏ khung cân điện tử",
+          "Thanh trượt dẫn hướng",
+          "Giảm chấn",
+          "Máng lợn",
+          "Thanh trộn sơn",
+          "Giá đỡ kẹp điện thoại",
+          "Kẹp khí",
+          "Ốp ray giá để nồi bát đĩa",
+          "Hộp đựng dụng cụ cơ khí",
+          "Kẹp tay bấm có lò xo",
+          "Kẹp mát (kẹp mass) nam châm",
+          "Giá đỡ đai đẩy gạch",
+          "Giá đỡ laptop",
+          "Bi làm kín",
+          "Hộp đựng camera",
+          "Ke treo phụ kiện rèm cửa",
+          "Dụng cụ lấy ráy tai",
+          "Khung viền điện thoại",
+          "Thanh gạt máng cào",
+          "Kẹp chữ U",
+          "Đai siết ống inox T-Bolt Clamp",
+          "Tấm film kiểm tra cực nam châm",
+          "Cây kiểm tra bộp tường",
+          "Đầu kẹp cáp",
+          "Đầu kẹp cos dây cáp",
+          "Gá kính",
+          "Mặt nạ kéo kem hàn",
+          "Chốt con lăn",
+          "Thùng rác có nắp",
+          "Thùng rác để sảnh",
+          "Thùng rác đạp chân nắp tròn",
+          "Giá treo rèm cuốn",
+          "Viên bi cầu mâm quay",
+          "Khớp nối robot có phanh",
+          "Thanh nẹp tài liệu",
+          "Vỏ khung bộ điều khiển",
+          "Ống lót chốt định vị",
+          "Họng chia gió điều hòa",
+          "Bộ chia gió điều hòa",
+          "Đầu đốc choòng khoan khí ép",
+          "Khuôn mẫu hình thoi",
+          "Mặt kẹp",
+          "Tay xả tải cột thủy lực hầm lò",
+          "Bộ phụ kiện rèm cửa",
+          "Vỏ khung máy IPC"
+        ],
+        "other_wire": [],
+        "standard": []
+      },
+      "_detect": {
+        "blind": [
+          {
+            "raw": "rèm sắt",
+            "dia": true,
+            "key": "rèm sắt",
+            "folded": "rem sat"
+          },
+          {
+            "raw": "lưới sắt",
+            "dia": true,
+            "key": "lưới sắt",
+            "folded": "luoi sat"
+          },
+          {
+            "raw": "màn chắn",
+            "dia": true,
+            "key": "màn chắn",
+            "folded": "man chan"
+          }
+        ],
+        "bunsen_burner": [
+          {
+            "raw": "đèn bunsen",
+            "dia": true,
+            "key": "đèn bunsen",
+            "folded": "den bunsen"
+          },
+          {
+            "raw": "bunsen",
+            "dia": false,
+            "key": "bunsen",
+            "folded": "bunsen"
+          }
+        ],
+        "cigarette_box": [
+          {
+            "raw": "hộp thuốc lá",
+            "dia": true,
+            "key": "hộp thuốc lá",
+            "folded": "hop thuoc la"
+          },
+          {
+            "raw": "g Ashtray",
+            "dia": false,
+            "key": "g ashtray",
+            "folded": "g ashtray"
+          }
+        ],
+        "horseshoe_hook": [
+          {
+            "raw": "móng ngựa",
+            "dia": true,
+            "key": "móng ngựa",
+            "folded": "mong ngua"
+          },
+          {
+            "raw": "móc ngựa",
+            "dia": true,
+            "key": "móc ngựa",
+            "folded": "moc ngua"
+          }
+        ],
+        "mouse_trap": [
+          {
+            "raw": "bẫy chuột",
+            "dia": true,
+            "key": "bẫy chuột",
+            "folded": "bay chuot"
+          },
+          {
+            "raw": "bẫy cống",
+            "dia": true,
+            "key": "bẫy cống",
+            "folded": "bay cong"
+          }
+        ],
+        "poultry_cage": [
+          {
+            "raw": "lồng gia cầm",
+            "dia": true,
+            "key": "lồng gia cầm",
+            "folded": "long gia cam"
+          },
+          {
+            "raw": "lồng gà",
+            "dia": true,
+            "key": "lồng gà",
+            "folded": "long ga"
+          },
+          {
+            "raw": "lồng chim",
+            "dia": true,
+            "key": "lồng chim",
+            "folded": "long chim"
+          }
+        ],
+        "rubber_tray": [
+          {
+            "raw": "khay cao su",
+            "dia": false,
+            "key": "khay cao su",
+            "folded": "khay cao su"
+          },
+          {
+            "raw": "rubber tray",
+            "dia": false,
+            "key": "rubber tray",
+            "folded": "rubber tray"
+          }
+        ],
+        "ship_rudder": [
+          {
+            "raw": "bánh lái tàu",
+            "dia": true,
+            "key": "bánh lái tàu",
+            "folded": "banh lai tau"
+          },
+          {
+            "raw": "lái tàu",
+            "dia": true,
+            "key": "lái tàu",
+            "folded": "lai tau"
+          }
+        ],
+        "stainless_clip": [
+          {
+            "raw": "clip không gỉ",
+            "dia": true,
+            "key": "clip không gỉ",
+            "folded": "clip khong gi"
+          },
+          {
+            "raw": "stainless clip",
+            "dia": false,
+            "key": "stainless clip",
+            "folded": "stainless clip"
+          }
+        ],
+        "other_article": [
+          {
+            "raw": "Thang thép dạng gấp chữ A",
+            "dia": true,
+            "key": "thang thép dạng gấp chữ a",
+            "folded": "thang thep dang gap chu a"
+          },
+          {
+            "raw": "Thang thép dạng rút",
+            "dia": true,
+            "key": "thang thép dạng rút",
+            "folded": "thang thep dang rut"
+          },
+          {
+            "raw": "Kẹp bằng thép",
+            "dia": true,
+            "key": "kẹp bằng thép",
+            "folded": "kep bang thep"
+          },
+          {
+            "raw": "Cán dao bằng thép",
+            "dia": true,
+            "key": "cán dao bằng thép",
+            "folded": "can dao bang thep"
+          }
+        ],
+        "other_wire": [],
+        "standard": []
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-01",
+      "priority": 0,
+      "when": {
+        "articleGroup": "grinding_ball",
+        "articleSubType": "standard"
+      },
+      "hs": "73261100",
+      "reasonVi": "GIR 6 — bi nghiền và hàng hóa tương tự dùng cho máy nghiền, Biểu thuế 2026 nhóm 7326.11 / standard → 73261100",
+      "source": "Biểu thuế NK VN 2026, nhóm 732611"
+    },
+    {
+      "id": "r-02",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_single",
+        "articleSubType": "standard"
+      },
+      "hs": "73261900",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác (loại đơn lẻ), Biểu thuế 2026 nhóm 7326.19 / standard → 73261900",
+      "source": "Biểu thuế NK VN 2026, nhóm 732619"
+    },
+    {
+      "id": "r-03",
+      "priority": 0,
+      "when": {
+        "articleGroup": "wire_articles",
+        "articleSubType": "poultry_cage"
+      },
+      "hs": "73262050",
+      "reasonVi": "GIR 6 — các sản phẩm từ dây sắt/thép, Biểu thuế 2026 nhóm 7326.20 / poultry_cage → 73262050",
+      "source": "Biểu thuế NK VN 2026, nhóm 732620"
+    },
+    {
+      "id": "r-04",
+      "priority": 0,
+      "when": {
+        "articleGroup": "wire_articles",
+        "articleSubType": "mouse_trap"
+      },
+      "hs": "73262060",
+      "reasonVi": "GIR 6 — các sản phẩm từ dây sắt/thép, Biểu thuế 2026 nhóm 7326.20 / mouse_trap → 73262060",
+      "source": "Biểu thuế NK VN 2026, nhóm 732620"
+    },
+    {
+      "id": "r-05",
+      "priority": 0,
+      "when": {
+        "articleGroup": "wire_articles",
+        "articleSubType": "blind"
+      },
+      "hs": "73262070",
+      "reasonVi": "GIR 6 — các sản phẩm từ dây sắt/thép, Biểu thuế 2026 nhóm 7326.20 / blind → 73262070",
+      "source": "Biểu thuế NK VN 2026, nhóm 732620"
+    },
+    {
+      "id": "r-06",
+      "priority": 0,
+      "when": {
+        "articleGroup": "wire_articles",
+        "articleSubType": "other_wire"
+      },
+      "hs": "73262090",
+      "reasonVi": "GIR 6 — các sản phẩm từ dây sắt/thép, Biểu thuế 2026 nhóm 7326.20 / other_wire → 73262090",
+      "source": "Biểu thuế NK VN 2026, nhóm 732620"
+    },
+    {
+      "id": "r-07",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "ship_rudder"
+      },
+      "hs": "73269010",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / ship_rudder → 73269010",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-08",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "rubber_tray"
+      },
+      "hs": "73269020",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / rubber_tray → 73269020",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-09",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "stainless_clip"
+      },
+      "hs": "73269030",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / stainless_clip → 73269030",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-10",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "bunsen_burner"
+      },
+      "hs": "73269060",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / bunsen_burner → 73269060",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-11",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "horseshoe_hook"
+      },
+      "hs": "73269070",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / horseshoe_hook → 73269070",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-12",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "cigarette_box"
+      },
+      "hs": "73269091",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / cigarette_box → 73269091",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    },
+    {
+      "id": "r-13",
+      "priority": 0,
+      "when": {
+        "articleGroup": "other_articles",
+        "articleSubType": "other_article"
+      },
+      "hs": "73269099",
+      "reasonVi": "GIR 6 — các sản phẩm sắt/thép khác chưa phân loại, Biểu thuế 2026 nhóm 7326.90 / other_article → 73269099",
+      "source": "Biểu thuế NK VN 2026, nhóm 732690"
+    }
+  ],
+  "essenceTestVi": "Nhóm sản phẩm (articleGroup) + Loại cụ thể (articleSubType) → mã 8 số. 13 lá, 2 thuộc tính.",
+  "sourceVi": "Biểu thuế nhập khẩu Việt Nam 2026 (mức MFN).",
+  "attributes": {
+    "articleGroup": {
+      "type": "enum",
+      "domain": [
+        "grinding_ball",
+        "other_articles",
+        "other_single",
+        "wire_articles"
+      ],
+      "detect": {
+        "grinding_ball": [
+          "grinding",
+          "ball"
+        ],
+        "other_articles": [
+          "other",
+          "articles"
+        ],
+        "other_single": [
+          "other",
+          "single"
+        ],
+        "wire_articles": [
+          "wire",
+          "articles"
+        ]
+      }
+    },
+    "articleSubType": {
+      "type": "enum",
+      "domain": [
+        "blind",
+        "bunsen_burner",
+        "cigarette_box",
+        "horseshoe_hook",
+        "mouse_trap",
+        "other_article",
+        "other_wire",
+        "poultry_cage",
+        "rubber_tray",
+        "ship_rudder",
+        "stainless_clip",
+        "standard"
+      ],
+      "detect": {
+        "blind": [
+          "blind"
+        ],
+        "bunsen_burner": [
+          "bunsen",
+          "burner"
+        ],
+        "cigarette_box": [
+          "cigarette",
+          "box"
+        ],
+        "horseshoe_hook": [
+          "horseshoe",
+          "hook"
+        ],
+        "mouse_trap": [
+          "mouse",
+          "trap"
+        ],
+        "other_article": [
+          "other",
+          "article"
+        ],
+        "other_wire": [
+          "other",
+          "wire"
+        ],
+        "poultry_cage": [
+          "poultry",
+          "cage"
+        ],
+        "rubber_tray": [
+          "rubber",
+          "tray"
+        ],
+        "ship_rudder": [
+          "ship",
+          "rudder"
+        ],
+        "stainless_clip": [
+          "stainless",
+          "clip"
+        ],
+        "standard": [
+          "standard"
+        ]
+      }
+    }
+  },
+  "inputAttributes": [
+    "articleGroup",
+    "articleSubType"
+  ],
+  "hitPolicy": "PRIORITY",
+  "essenceVi": "articleGroup; articleSubType"
+}

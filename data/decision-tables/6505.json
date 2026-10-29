@@ -1,0 +1,100 @@
+{
+  "heading": "6505",
+  "titleVi": "Mũ và các vật đội đầu, đan bằng sợi hoặc lace (65.05)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "headwearKind",
+      "type": "enum",
+      "labelVi": "Loại mũ/nón",
+      "questionVi": "Mũ/nón thuộc loại nào?",
+      "domain": [
+        "religious",
+        "hair_net",
+        "felt",
+        "other"
+      ],
+      "detect": {
+        "religious": [
+          "mũ tôn giáo",
+          "khăn đội đầu tôn giáo",
+          "nón tôn giáo",
+          "mũ pastor",
+          "mũ tu sĩ"
+        ],
+        "hair_net": [
+          "lưới trùm tóc",
+          "lưới bao tóc",
+          "tóc giả lưới"
+        ],
+        "felt": [
+          "mũ nồi",
+          "mũ felt",
+          "lông thú"
+        ],
+        "other": [
+          "mũ len",
+          "mũ lông",
+          "mũ vải",
+          "mũ lưỡi trai",
+          "mũ che nắng",
+          "mũ bảo hộ",
+          "mũ nida",
+          "nón",
+          "mũ nửa đầu",
+          "bịt tai giữ ấm",
+          "mũ trẻ em"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "r01",
+      "priority": 95,
+      "when": {
+        "headwearKind": "religious"
+      },
+      "hs": "65050010",
+      "reasonVi": "Mũ/vật đội đầu dùng cho mục đích tôn giáo → 65050010",
+      "source": "Biểu thuế NK VN 2026"
+    },
+    {
+      "id": "r02",
+      "priority": 95,
+      "when": {
+        "headwearKind": "hair_net"
+      },
+      "hs": "65050020",
+      "reasonVi": "Lưới trùm tóc, lưới bao tóc → 65050020",
+      "source": "Biểu thuế NK VN 2026 + oz-gold 1 entry"
+    },
+    {
+      "id": "r04",
+      "priority": 90,
+      "when": {
+        "headwearKind": "other"
+      },
+      "hs": "65050090",
+      "reasonVi": "Mũ len, mũ vải, mũ bảo hộ, nón, và mũ felt các loại khác → 65050090",
+      "source": "Biểu thuế NK VN 2026 + oz-gold 20 entries"
+    }
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (3 mã 8 số). Oz-gold 21 entries (20×65050090, 1×65050020).",
+  "essenceTestVi": "Tôn giáo → 65050010; lưới trùm tóc → 65050020; các loại mũ khác (len, vải, nón, bảo hộ, felt) → 65050090.",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "headwearKind": {
+      "type": "enum",
+      "labelVi": "Loại mũ/nón",
+      "domain": [
+        "religious",
+        "hair_net",
+        "felt",
+        "other"
+      ]
+    }
+  },
+  "_meta": {}
+}

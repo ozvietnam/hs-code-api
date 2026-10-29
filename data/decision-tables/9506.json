@@ -1,0 +1,78 @@
+{
+  "heading": "9506",
+  "titleVi": "Dụng cụ và thiết bị thể dục, thể thao (95.06)",
+  "verified": false,
+  "inputs": [
+    {
+      "attribute": "sportKind",
+      "type": "enum",
+      "labelVi": "Loại môn thể thao",
+      "questionVi": "Dụng cụ thuộc môn thể thao nào?",
+      "domain": ["gym", "yoga", "cycling", "racket", "ball", "winter", "water", "protective", "other"],
+      "detect": {
+        "gym": ["xe đạp tập", "dụng cụ tập thể dục", "bộ tập thể dục", "máy tập", "tập gym", "tập hít đất", "đai lưng tập gym", "dây kháng lực", "tập yoga", "tập chân", "xe đạp tại chỗ", "băng quấn cổ chân", "gạch tập yoga", "dây nhảy tập", "thiết bị tập thể dục"],
+        "yoga": ["yoga", "tập yoga", "gạch yoga", "thảm yoga", "dây yoga"],
+        "cycling": ["xe đạp", "xe đạp tập thể dục", "đạp xe"],
+        "racket": ["vợt", "cầu lông", "pickleball", "tennis", "bóng bàn"],
+        "ball": ["bóng pick", "quả bóng", "bóng có thể bơm hơi", "bóng tennis", "bóng golf"],
+        "winter": ["ván trượt tuyết", "ván băng", "trượt tuyết", "ván trượt băng", "giày trượt"],
+        "water": ["ván lướt sóng", "bơm hơi", "lướt sóng", "ván bơi", "máy chèo"],
+        "protective": ["miếng bảo vệ", "bảo vệ đầu gối", "bảo vệ ống chân", "tấm ốp bảo vệ", "khiên"],
+        "other": ["gậy leo núi", "cung (nỏ)", "mũi tên", "khung lưới"]
+      }
+    },
+    {
+      "attribute": "equipmentKind",
+      "type": "enum",
+      "labelVi": "Loại dụng cụ",
+      "questionVi": "Dụng cụ thuộc loại nào?",
+      "domain": ["general_gym", "rack", "ball_sport", "winter_sport", "water_sport", "protective_gear", "accessory", "other"],
+      "detect": {
+        "general_gym": ["xe đạp tập", "dụng cụ tập thể dục", "bộ tập thể dục", "máy tập", "tập gym", "tập hít đất", "đai lưng", "dây kháng lực", "xe đạp tại chỗ", "băng quấn", "dây nhảy", "thiết bị tập thể dục", "máy bắn bóng"],
+        "rack": ["vợt", "cầu lông", "pickleball", "tennis", "khung lưới"],
+        "ball_sport": ["bóng pick", "quả bóng", "bóng có thể bơm", "bóng tennis"],
+        "winter_sport": ["ván trượt", "giày trượt"],
+        "water_sport": ["ván lướt", "bơm hơi"],
+        "protective_gear": ["miếng bảo vệ", "bảo vệ đầu gối", "bảo vệ ống chân", "tấm ốp"],
+        "accessory": ["gậy leo núi", "cung", "mũi tên"],
+        "other": []
+      }
+    }
+  ],
+  "rules": [
+    {"id":"r01","priority":95,"when":{"sportKind":"winter"},"hs":"95061100","reasonVi":"Ván trượt tuyết → 95061100","source":"Biểu thuế NK VN 2026"},
+    {"id":"r02","priority":93,"when":{"sportKind":"winter","equipmentKind":"accessory"},"hs":"95061200","reasonVi":"Dây buộc ván trượt → 95061200","source":"Biểu thuế NK VN 2026"},
+    {"id":"r03","priority":90,"when":{"sportKind":"winter"},"hs":"95061900","reasonVi":"Dụng cụ thể thao mùa đông khác → 95061900","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r10","priority":93,"when":{"sportKind":"water","equipmentKind":"water_sport"},"hs":"95062100","reasonVi":"Ván buồm → 95062100","source":"Biểu thuế NK VN 2026"},
+    {"id":"r11","priority":90,"when":{"sportKind":"water","equipmentKind":"water_sport"},"hs":"95062900","reasonVi":"Dụng cụ thể thao dưới nước khác → 95062900","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r20","priority":93,"when":{"sportKind":"racket","equipmentKind":"rack"},"hs":"95065100","reasonVi":"Vợt tennis đã/còn căng lưới → 95065100","source":"Biểu thuế NK VN 2026"},
+    {"id":"r21","priority":90,"when":{"sportKind":"racket","equipmentKind":"rack"},"hs":"95065900","reasonVi":"Vợt cầu lông/pickleball/loại khác → 95065900","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r30","priority":95,"when":{"sportKind":"ball","equipmentKind":"ball_sport"},"hs":"95066200","reasonVi":"Bóng có thể bơm hơi → 95066200","source":"Biểu thuế NK VN 2026"},
+    {"id":"r31","priority":93,"when":{"sportKind":"ball","equipmentKind":"ball_sport"},"hs":"95066100","reasonVi":"Bóng tennis → 95066100","source":"Biểu thuế NK VN 2026"},
+    {"id":"r32","priority":93,"when":{"sportKind":"ball"},"hs":"95066900","reasonVi":"Bóng các loại khác → 95066900","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r40","priority":92,"when":{"equipmentKind":"protective_gear"},"hs":"95069990","reasonVi":"Miếng bảo vệ thể thao → 95069990","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r50","priority":80,"when":{"equipmentKind":"accessory"},"hs":"95069990","reasonVi":"Phụ kiện thể thao khác (gậy leo núi, cung mũi tên) → 95069990","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r60","priority":88,"when":{"sportKind":"gym","equipmentKind":"general_gym"},"hs":"95069100","reasonVi":"Dụng cụ tập thể dục tại chỗ (xe đạp, dây kháng lực, tập gym) → 95069100","source":"Biểu thuế NK VN 2026 + oz-gold 16 entries"},
+    {"id":"r61","priority":88,"when":{"sportKind":"yoga"},"hs":"95069100","reasonVi":"Dụng cụ yoga (gạch, thảm, dây) → 95069100","source":"Biểu thuế NK VN 2026 + oz-gold"},
+    {"id":"r62","priority":88,"when":{"sportKind":"cycling"},"hs":"95069100","reasonVi":"Xe đạp tập thể dục → 95069100","source":"Biểu thuế NK VN 2026 + oz-gold"},
+    {"id":"r63","priority":88,"when":{"sportKind":"gym"},"hs":"95069100","reasonVi":"Dụng cụ tập thể dục chung → 95069100","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r70","priority":75,"when":{"equipmentKind":"rack","sportKind":"other"},"hs":"95069990","reasonVi":"Dụng cụ thể thao khác → 95069990","source":"Biểu thuế NK VN 2026"},
+
+    {"id":"r80","priority":70,"when":{"equipmentKind":"other"},"hs":"95069990","reasonVi":"Dụng cụ, thiết bị thể thao chưa phân loại → 95069990","source":"Biểu thuế NK VN 2026"}
+  ],
+  "sourceVi": "Biểu thuế NK VN 2026 (21 mã 8 số). Oz-gold 25 entries (16×95069100, 3×95069990, 2×95065900, 1×95062900, 1×95069920, 1×95064090, 1×95066900).",
+  "essenceTestVi": "Phân biệt: ván trượt→950611; ván buồm→950621; vợt tennis→950651, vợt khác→950659; bóng bơm→950662, bóng khác→950661/950669; dụng cụ gym/yoga/xe đạp tập→950691; bảo vệ/leo núi/cung→950699.",
+  "leaves": {},
+  "hitPolicy": "FIRST",
+  "attributes": {
+    "sportKind": {"type":"enum","labelVi":"Loại môn thể thao","domain":["gym","yoga","cycling","racket","ball","winter","water","protective","other"]},
+    "equipmentKind": {"type":"enum","labelVi":"Loại dụng cụ","domain":["general_gym","rack","ball_sport","winter_sport","water_sport","protective_gear","accessory","other"]}
+  }
+}

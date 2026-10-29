@@ -1,0 +1,561 @@
+{
+  "heading": "4008",
+  "titleVi": "Tấm, lá, dải, que và hình dạng profil bằng cao su lưu hoá (không phải cao su cứng)",
+  "verified": false,
+  "verifiedBy": null,
+  "verifiedAt": null,
+  "essenceTestVi": "Câu hỏi bản chất: tấm/lá/dải/que cao su lưu hoá này là dạng xốp (cellular) hay đặc (non-cellular)? Có phải dạng tấm/lá/dải (plates/sheets/strip) hay dạng que/hình khác? Có lớp lót vải dệt không? Có dùng làm đế giày, băng chắn nước?",
+  "sourceVi": "Biểu thuế VN 2026 nhóm 40.08 và chú giải Chương 40. Tất cả MFN=3%. Phân biệt: cellular vs non-cellular; plates/sheets/strip vs other shapes; lớp vải dệt; SEN (băng chắn nước); đế giày.",
+  "inputs": [
+    {
+      "attribute": "materialType",
+      "type": "enum",
+      "domain": [
+        "cellular",
+        "nonCellular"
+      ],
+      "labelVi": "Dạng xốp (cellular) hay đặc",
+      "questionVi": "Tấm/lá cao su lưu hoá này là dạng xốp (cellular/foam) hay đặc (non-cellular)?",
+      "detect": {
+        "cellular": [
+          "cellular",
+          "xốp",
+          "foam",
+          "Tấm lót chuột máy tính",
+          "Dải viền nẹp cao su lưu hóa",
+          "Tấm lót sàn"
+        ],
+        "nonCellular": [
+          "non-cellular",
+          "đặc",
+          "compact"
+        ]
+      },
+      "_detect": {
+        "cellular": [
+          {
+            "raw": "cellular",
+            "dia": false,
+            "key": "cellular",
+            "folded": "cellular"
+          },
+          {
+            "raw": "xốp",
+            "dia": true,
+            "key": "xốp",
+            "folded": "xop"
+          },
+          {
+            "raw": "foam",
+            "dia": false,
+            "key": "foam",
+            "folded": "foam"
+          }
+        ],
+        "nonCellular": [
+          {
+            "raw": "non-cellular",
+            "dia": false,
+            "key": "non cellular",
+            "folded": "non cellular"
+          },
+          {
+            "raw": "đặc",
+            "dia": true,
+            "key": "đặc",
+            "folded": "dac"
+          },
+          {
+            "raw": "compact",
+            "dia": false,
+            "key": "compact",
+            "folded": "compact"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "productShape",
+      "type": "enum",
+      "domain": [
+        "plateSheetStrip",
+        "otherShape"
+      ],
+      "labelVi": "Dạng tấm/lá/dải hay que/hình khác",
+      "questionVi": "Sản phẩm có dạng tấm, lá, dải (plate/sheet/strip) hay dạng que, hình profil khác?",
+      "detect": {
+        "plateSheetStrip": [
+          "tấm",
+          "lá",
+          "dải",
+          "plate",
+          "sheet",
+          "strip",
+          "miếng",
+          "tấm ghép",
+          "lát nền",
+          "ốp tường"
+        ],
+        "otherShape": [
+          "que",
+          "hình",
+          "profil",
+          "rod",
+          "profile",
+          "khác",
+          "loại khác",
+          "Xốp bọc góc bàn"
+        ]
+      },
+      "_detect": {
+        "plateSheetStrip": [
+          {
+            "raw": "tấm",
+            "dia": true,
+            "key": "tấm",
+            "folded": "tam"
+          },
+          {
+            "raw": "lá",
+            "dia": true,
+            "key": "lá",
+            "folded": "la"
+          },
+          {
+            "raw": "dải",
+            "dia": true,
+            "key": "dải",
+            "folded": "dai"
+          },
+          {
+            "raw": "plate",
+            "dia": false,
+            "key": "plate",
+            "folded": "plate"
+          },
+          {
+            "raw": "sheet",
+            "dia": false,
+            "key": "sheet",
+            "folded": "sheet"
+          },
+          {
+            "raw": "strip",
+            "dia": false,
+            "key": "strip",
+            "folded": "strip"
+          },
+          {
+            "raw": "miếng",
+            "dia": true,
+            "key": "miếng",
+            "folded": "mieng"
+          },
+          {
+            "raw": "tấm ghép",
+            "dia": true,
+            "key": "tấm ghép",
+            "folded": "tam ghep"
+          },
+          {
+            "raw": "lát nền",
+            "dia": true,
+            "key": "lát nền",
+            "folded": "lat nen"
+          },
+          {
+            "raw": "ốp tường",
+            "dia": true,
+            "key": "ốp tường",
+            "folded": "op tuong"
+          }
+        ],
+        "otherShape": [
+          {
+            "raw": "que",
+            "dia": false,
+            "key": "que",
+            "folded": "que"
+          },
+          {
+            "raw": "hình",
+            "dia": true,
+            "key": "hình",
+            "folded": "hinh"
+          },
+          {
+            "raw": "profil",
+            "dia": false,
+            "key": "profil",
+            "folded": "profil"
+          },
+          {
+            "raw": "rod",
+            "dia": false,
+            "key": "rod",
+            "folded": "rod"
+          },
+          {
+            "raw": "profile",
+            "dia": false,
+            "key": "profile",
+            "folded": "profile"
+          },
+          {
+            "raw": "khác",
+            "dia": true,
+            "key": "khác",
+            "folded": "khac"
+          },
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          }
+        ]
+      }
+    },
+    {
+      "attribute": "specialFeature",
+      "type": "enum",
+      "domain": [
+        "fabricLined",
+        "senWaterStop",
+        "shoeSole",
+        "none"
+      ],
+      "labelVi": "Đặc điểm đặc biệt",
+      "questionVi": "Cao su này có đặc điểm gì đặc biệt: lớp lót vải dệt (dày >5mm); băng chắn nước SEN; tờ làm đế giày?",
+      "detect": {
+        "fabricLined": [
+          "lót vải dệt",
+          "vải dệt",
+          "dày trên 5 mm",
+          "chiều dày trên 5 mm"
+        ],
+        "senWaterStop": [
+          "băng chắn nước",
+          "SEN",
+          "chắn nước"
+        ],
+        "shoeSole": [
+          "đế giày",
+          "tờ cao su dùng làm đế giày",
+          "shoe sole"
+        ],
+        "none": [
+          "không",
+          "loại khác",
+          "bình thường"
+        ]
+      },
+      "_detect": {
+        "fabricLined": [
+          {
+            "raw": "lót vải dệt",
+            "dia": true,
+            "key": "lót vải dệt",
+            "folded": "lot vai det"
+          },
+          {
+            "raw": "vải dệt",
+            "dia": true,
+            "key": "vải dệt",
+            "folded": "vai det"
+          },
+          {
+            "raw": "dày trên 5 mm",
+            "dia": true,
+            "key": "dày trên 5 mm",
+            "folded": "day tren 5 mm"
+          },
+          {
+            "raw": "chiều dày trên 5 mm",
+            "dia": true,
+            "key": "chiều dày trên 5 mm",
+            "folded": "chieu day tren 5 mm"
+          }
+        ],
+        "senWaterStop": [
+          {
+            "raw": "băng chắn nước",
+            "dia": true,
+            "key": "băng chắn nước",
+            "folded": "bang chan nuoc"
+          },
+          {
+            "raw": "SEN",
+            "dia": false,
+            "key": "sen",
+            "folded": "sen"
+          },
+          {
+            "raw": "chắn nước",
+            "dia": true,
+            "key": "chắn nước",
+            "folded": "chan nuoc"
+          }
+        ],
+        "shoeSole": [
+          {
+            "raw": "đế giày",
+            "dia": true,
+            "key": "đế giày",
+            "folded": "de giay"
+          },
+          {
+            "raw": "tờ cao su dùng làm đế giày",
+            "dia": true,
+            "key": "tờ cao su dùng làm đế giày",
+            "folded": "to cao su dung lam de giay"
+          },
+          {
+            "raw": "shoe sole",
+            "dia": false,
+            "key": "shoe sole",
+            "folded": "shoe sole"
+          }
+        ],
+        "none": [
+          {
+            "raw": "không",
+            "dia": true,
+            "key": "không",
+            "folded": "khong"
+          },
+          {
+            "raw": "loại khác",
+            "dia": true,
+            "key": "loại khác",
+            "folded": "loai khac"
+          },
+          {
+            "raw": "bình thường",
+            "dia": true,
+            "key": "bình thường",
+            "folded": "binh thuong"
+          }
+        ]
+      }
+    }
+  ],
+  "hitPolicy": "PRIORITY",
+  "rules": [
+    {
+      "id": "4008-r001",
+      "priority": 85,
+      "when": {
+        "materialType": "cellular",
+        "productShape": "plateSheetStrip",
+        "specialFeature": "fabricLined"
+      },
+      "hs": "40081110",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm cao su lưu hoá dạng xốp, có lớp lót vải dệt, dày trên 5mm → 4008.11.10.",
+      "source": "Biểu thuế 2026 dòng 4008.11.10"
+    },
+    {
+      "id": "4008-r002",
+      "priority": 80,
+      "when": {
+        "materialType": "cellular",
+        "productShape": "plateSheetStrip",
+        "specialFeature": "none"
+      },
+      "hs": "40081120",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm cao su lưu hoá dạng xốp, dùng lát nền/ốp tường, dày ≤ 5mm hoặc không có lớp vải dệt → 4008.11.20.",
+      "source": "Biểu thuế 2026 dòng 4008.11.20"
+    },
+    {
+      "id": "4008-r003",
+      "priority": 75,
+      "when": {
+        "materialType": "cellular",
+        "productShape": "plateSheetStrip"
+      },
+      "hs": "40081190",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm cao su lưu hoá dạng xốp, loại khác → 4008.11.90.",
+      "source": "Biểu thuế 2026 dòng 4008.11.90"
+    },
+    {
+      "id": "4008-r004",
+      "priority": 75,
+      "when": {
+        "materialType": "cellular",
+        "productShape": "otherShape"
+      },
+      "hs": "40081900",
+      "gir": "GIR 6",
+      "reasonVi": "Cao su lưu hoá dạng xốp, không phải dạng tấm/lá/dải (que, hình profil) → 4008.19.00.",
+      "source": "Biểu thuế 2026 dòng 4008.19.00"
+    },
+    {
+      "id": "4008-r005",
+      "priority": 85,
+      "when": {
+        "materialType": "nonCellular",
+        "productShape": "plateSheetStrip",
+        "specialFeature": "fabricLined"
+      },
+      "hs": "40082110",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm cao su lưu hoá dạng đặc, có lớp lót vải dệt, dày trên 5mm → 4008.21.10.",
+      "source": "Biểu thuế 2026 dòng 4008.21.10"
+    },
+    {
+      "id": "4008-r006",
+      "priority": 80,
+      "when": {
+        "materialType": "nonCellular",
+        "productShape": "plateSheetStrip",
+        "specialFeature": "none"
+      },
+      "hs": "40082120",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm cao su lưu hoá dạng đặc, dùng lát nền/ốp tường → 4008.21.20.",
+      "source": "Biểu thuế 2026 dòng 4008.21.20"
+    },
+    {
+      "id": "4008-r007",
+      "priority": 82,
+      "when": {
+        "materialType": "nonCellular",
+        "productShape": "plateSheetStrip",
+        "specialFeature": "senWaterStop"
+      },
+      "hs": "40082130",
+      "gir": "GIR 6",
+      "reasonVi": "Băng chắn nước bằng cao su lưu hoá đặc, SEN → 4008.21.30.",
+      "source": "Biểu thuế 2026 dòng 4008.21.30 (ghi chú SEN)"
+    },
+    {
+      "id": "4008-r008",
+      "priority": 82,
+      "when": {
+        "materialType": "nonCellular",
+        "productShape": "plateSheetStrip",
+        "specialFeature": "shoeSole"
+      },
+      "hs": "40082140",
+      "gir": "GIR 6",
+      "reasonVi": "Tờ cao su lưu hoá đặc dùng làm đế giày → 4008.21.40.",
+      "source": "Biểu thuế 2026 dòng 4008.21.40"
+    },
+    {
+      "id": "4008-r009",
+      "priority": 75,
+      "when": {
+        "materialType": "nonCellular",
+        "productShape": "plateSheetStrip"
+      },
+      "hs": "40082190",
+      "gir": "GIR 6",
+      "reasonVi": "Tấm cao su lưu hoá dạng đặc, loại khác → 4008.21.90.",
+      "source": "Biểu thuế 2026 dòng 4008.21.90"
+    },
+    {
+      "id": "4008-r010",
+      "priority": 70,
+      "when": {
+        "materialType": "nonCellular",
+        "productShape": "otherShape"
+      },
+      "hs": "40082900",
+      "gir": "GIR 6",
+      "reasonVi": "Cao su lưu hoá dạng đặc, không phải tấm/lá/dải (que, hình profil) → 4008.29.00.",
+      "source": "Biểu thuế 2026 dòng 4008.29.00"
+    }
+  ],
+  "inputAttributes": [
+    "materialType",
+    "productShape",
+    "specialFeature"
+  ],
+  "attributes": {
+    "materialType": {
+      "detect": {
+        "cellular": [
+          "cellular",
+          "xốp",
+          "foam"
+        ],
+        "nonCellular": [
+          "non-cellular",
+          "đặc",
+          "compact"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "cellular",
+        "nonCellular"
+      ]
+    },
+    "productShape": {
+      "detect": {
+        "plateSheetStrip": [
+          "tấm",
+          "lá",
+          "dải",
+          "plate",
+          "sheet",
+          "strip",
+          "miếng",
+          "tấm ghép",
+          "lát nền",
+          "ốp tường"
+        ],
+        "otherShape": [
+          "que",
+          "hình",
+          "profil",
+          "rod",
+          "profile",
+          "khác",
+          "loại khác"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "otherShape",
+        "plateSheetStrip"
+      ]
+    },
+    "specialFeature": {
+      "detect": {
+        "fabricLined": [
+          "lót vải dệt",
+          "vải dệt",
+          "dày trên 5 mm",
+          "chiều dày trên 5 mm"
+        ],
+        "senWaterStop": [
+          "băng chắn nước",
+          "SEN",
+          "chắn nước"
+        ],
+        "shoeSole": [
+          "đế giày",
+          "tờ cao su dùng làm đế giày",
+          "shoe sole"
+        ],
+        "none": [
+          "không",
+          "loại khác",
+          "bình thường"
+        ]
+      },
+      "type": "enum",
+      "domain": [
+        "fabricLined",
+        "none",
+        "senWaterStop",
+        "shoeSole"
+      ]
+    }
+  },
+  "essenceVi": "materialType × productShape × specialFeature"
+}
