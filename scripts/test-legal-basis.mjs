@@ -223,13 +223,9 @@ check('suggest: 6.1.d đã tra TB-TCHQ (số khớp là số, không bỏ trốn
   quet('data/chapter-declaration-fields.json', false);
   quet('public/community-data.json', false);
   check('không còn "TT 39/2018/TT-BTC mục 1.78" / "1.78 Phụ lục I" gõ tay ở lib, api, build-community-data, chapter-declaration-fields, community-data', sot.length === 0, sot);
-  let tc = null;
-  try { tc = lb.thamChieuCua('chiTieu:1.78.1'); } catch { /* chưa cài */ }
-  check('thamChieuCua: con trỏ "chiTieu:<id>" → tham_chieu của citeChiTieu; chuỗi thường giữ nguyên; con trỏ lạ ném lỗi',
-    typeof lb.thamChieuCua === 'function' && tc === c178?.tham_chieu && lb.thamChieuCua('CV 5189/TCHQ-GSQL (2019)') === 'CV 5189/TCHQ-GSQL (2019)'
-    && (() => { try { lb.thamChieuCua('chiTieu:9.9.9'); return false; } catch { return true; } })());
   const cat = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'chapter-declaration-fields.json'), 'utf8'));
-  check('chapter-declaration-fields.json: legalRefs dùng con trỏ chiTieu:1.78.1 (không chép chữ căn cứ vào data)', cat.legalRefs?.[0] === 'chiTieu:1.78.1', cat.legalRefs);
+  check('chapter-declaration-fields.json: legalRefs[0] đúng bằng citeChiTieu(1.78.1).tham_chieu (data lệch nguồn → CI đỏ)', cat.legalRefs?.[0] === c178?.tham_chieu, cat.legalRefs);
+  check('không còn hàm/định dạng con trỏ chiTieu: (bỏ theo quyết định #561)', !('thamChieuCua' in lb) && !(cat.legalRefs || []).some((x) => /^chiTieu:/.test(x)));
   const { SYSTEM_PROMPT } = require('../lib/customs-prompt.js');
   check('lời nhắc LLM soạn mô tả: căn cứ chỉ tiêu 1.78 lấy từ citeChiTieu', SYSTEM_PROMPT.includes(c178?.tham_chieu) && !/TT 39\/2018\/TT-BTC mục 1\.78/.test(SYSTEM_PROMPT));
   const { validateDeclaration } = require('../lib/declaration-validator.js');
