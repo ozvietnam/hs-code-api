@@ -133,6 +133,6 @@ export function chiSoMoTa(text, chuong) {
 }
 
 /** Đọc bộ đề công khai. */
-export function docBoDe() {
-  return JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'bench', 'mo-ta-bo-de.json'), 'utf8'));
+export function docBoDe(p = path.join(ROOT, 'data', 'bench', 'mo-ta-bo-de.json')) {
+  return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
