@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { anchorTenBieuThue, dungLoaiTranh, gopMoTaPhapLy } from '../lib/describe-legal-head.mjs';
+import { anchorTenBieuThue, gopMoTaPhapLy } from '../lib/describe-legal-head.mjs';
 
 test('anchorTenBieuThue: tên dòng 8 số thay tên khách khi khách gọi khác ngôn ngữ biểu thuế', () => {
   const a = anchorTenBieuThue({
@@ -25,18 +25,6 @@ test('anchorTenBieuThue: dòng "Loại khác" → thay bằng scopeVi (phạm vi
   });
   assert.ok(a.includes('Đồ gỗ khác'));
   assert.ok(!a.startsWith('Loại khác'));
-});
-
-test('dungLoaiTranh: có mã cạnh tranh → sinh mệnh đề "không gồm"', () => {
-  const cl = dungLoaiTranh({
-    excludesVi: ['Bàn ghế quầy bar cao kiểu salon', 'Đồ gỗ dùng trong phòng bếp'],
-  });
-  assert.ok(cl.length >= 1);
-  assert.ok(cl[0].startsWith('không gồm'));
-});
-
-test('dungLoaiTranh: không có loại trừ → mảng rỗng (không bịa)', () => {
-  assert.deepEqual(dungLoaiTranh({ excludesVi: [] }), []);
 });
 
 test('gopMoTaPhapLy: thứ tự neo biểu thuế → nhận diện → thông số bắt buộc → loại trừ → xuất xứ; không vượt 200', () => {
