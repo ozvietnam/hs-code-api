@@ -152,7 +152,7 @@ Mỗi `GoiCanCu` = `{ maHs, coTrongBieu, viTri, chuGiai, loaiKhac, gir, canCuPha
 |---|---|---|
 | `viTri` | `lib/hs-tree.js` (cây theo chữ số) + tên dòng biểu thuế | `CO_DU_LIEU` |
 | `chuGiai` | `items[]` = `{cap: PHAN\|CHUONG\|NHOM\|SEN, ma, nguyenVan, nguon, phienBan}` — **nguyên văn**; `thieu[]` = chỗ chú giải còn thiếu | `CO_NOI_DUNG` |
-| `loaiKhac` | phạm vi "Loại khác" = cha trừ `anhEmCoTen[]` | `LA_DONG_LOAI_KHAC`, `KHONG_PHAI_DONG_LOAI_KHAC` |
+| `loaiKhac` | phạm vi "Loại khác" = `toTienCoTen` trừ mọi nút có tên ở mọi tầng (`truTheoTang[]`); `anhEmCoTen[]` = dòng lá có tên, đủ mọi tầng, mỗi mục có `tang` | `LA_DONG_LOAI_KHAC`, `KHONG_PHAI_DONG_LOAI_KHAC` |
 | `gir` | **chỉ** `lib/gir.js`; `items[]` có `basis`/`evidence`/`source` + `disclaimer` | `CO_TRICH_DAN`, `KHONG_CO_TRICH_DAN` |
 | `canCuPhapLy` | **chỉ** `lib/legal-basis.js` (`canCuPhapLy` như `/api/classify`) + `hoSo` (Điều 10.1.d; Điều 8, 9.1, 9.2.b khi mô tả có dấu hiệu tháo rời) | như `/api/classify` (`CHUA_CHOT_CAN_XAC_NHAN`: mã do người gọi đưa vào) |
 | `yKienWco` | `lib/wco-op.js#byHs/view`; mỗi mục có `nguyenVanEn`, `banDichVi`, `banQuyen`, `xemToanVan` | `CO_Y_KIEN`, `KHONG_CO_Y_KIEN_CHO_MA_NAY`, `CHUA_TRA_CUU_DAY_DU` |
@@ -435,13 +435,13 @@ Số gạch trong tên dòng chỉ là tầng hiển thị. Trước đó anh em
 | | `siblingGroupCodes[]`, `treePath[]` | Anh em là nhóm con (tiêu đề); đường từ phần tới cha |
 | | `parentSubheadingCode`, `indentationLevel`, `treeLevel` | Giữ như cũ |
 | `POST /api/suggest`, `/api/classify` → `soTay` | `viTri` | Vị trí mã đã chọn: `nut`, `duongDan[]`, `cha {id, ten, suyRa}`, `anhEm[]`. Có cả khi nhóm chưa có sổ tay. Nút bị lược mà sổ tay đã điền tên (kèm trích, máy kiểm) có thêm `tenSoTay {tenVi, nguon, trich, nguonLoai}` và `duongDan[]` ghi "tên theo sổ tay: …" |
-| | `loaiKhac` (chỉ khi mã đã chọn là dòng "Loại khác") | `toTienCoTen` trừ `anhEmCoTen[]`; mỗi anh em kèm `dieuKien` + `nguon` + `trich` từ sổ tay (đã máy kiểm) nếu có. **Cố vấn**: không đổi mã; là danh sách người khai phải chứng minh hàng KHÔNG rơi vào |
+| | `loaiKhac` (chỉ khi mã đã chọn là dòng "Loại khác") | `toTienCoTen` trừ mọi nút có tên ở MỌI tầng giữa mã và tổ tiên đó: `truTheoTang[]` (`{nut, ten, tru:[{id, ten, laTieuDe?}]}`, luôn đủ) và `anhEmCoTen[]` (dòng lá có tên, đủ mọi tầng, tầng gần trước, mỗi mục có `tang`; quá 30 dòng thì cắt và ghi `anhEmCoTenBiCat`). Trước 29/10/2026 `anhEmCoTen` chỉ có tầng gần nhất (vd 39269099 thiếu 7 nút của tầng 392690). Mỗi dòng kèm `dieuKien` + `nguon` + `trich` từ sổ tay (đã máy kiểm) nếu có. **Cố vấn**: không đổi mã; là danh sách người khai phải chứng minh hàng KHÔNG rơi vào |
 | | `canGiaiTrinh[].loai` | `LOAI_TRU_SANG_NHOM` (sổ tay loại trừ sang nhóm đang là ứng viên) hoặc **`ANH_EM_CO_TEN_KHOP`** (mã chọn là "Loại khác" trần mà mô tả hàng khớp dòng anh em có tên: `hs`, `tenVi`, `doKhop`, `nguon`, `trich`). Cả hai là máy **nghi**, chưa đo tỉ lệ báo oan — Cổng/ERP hiển thị để người khai giải trình hoặc xem lại mã, **không** tự đổi mã |
 | `POST /api/classify`, `/api/suggest` + header `X-OZ-Eval-Holdout: 1` | — | Lượt bench chống rò: kho tiền lệ Oz bỏ tập giữ riêng chỉ trong lượt này. Chỉ bớt ngữ cảnh, không mở gì thêm; khách thường không gửi |
 | `GET /api/tree?hs=` (mới, công khai) | `nut`, `duongDan[]`, `cha`, `anhEm[]`, `con[]`, `loaiKhac`, `nguon{}` | Một mã (2/4/6/8 số, hoặc 5/7 số cho nút trung gian) → toàn bộ quan hệ + phạm vi "Loại khác" + nguồn gắn vào nút với nhãn `NGUYEN_VAN` / `DA_KIEM` / `AI_CHUA_KIEM`. Mã WCO `xxxx00` trỏ về nhóm. Đây là nguồn cho công cụ MCP `tra_cay_hs` bên Cổng OZ |
 | `GET /api/notes` → `chain[]` | `nguonLoai` | Cấp `NATIONAL` (từ `explanatory-notes.json`) mang `nguonLoai: AI_CHUA_KIEM` + `ghiChu`; các cấp phần/chương/nhóm/phân nhóm là nguyên văn |
 | `GET /api/tax`, `GET /api/search` → `breadcrumb` | `levels[]`, `trail` | Nay có tên tiếng Việt chương/nhóm (từ chú giải) và cả tiêu đề bị lược ("Tiêu đề 8504211 (tên bị lược)") |
-| | `path[]`, `parentId`, `siblingHsCodes[]`, `anhEmCoTen[]`, `toTienCoTen` | Mới. Với dòng "Loại khác": phạm vi = `toTienCoTen` trừ `anhEmCoTen` (cha trừ anh em có tên) |
+| | `path[]`, `parentId`, `siblingHsCodes[]`, `anhEmCoTen[]`, `truDayDu[]`, `toTienCoTen` | Mới. Với dòng "Loại khác": phạm vi = `toTienCoTen` trừ `truDayDu` (mọi nút có tên ở mọi tầng). `anhEmCoTen` chỉ là tầng gần nhất (anh em cùng cha), giữ cho tương thích — đừng dùng một mình để mô tả phạm vi |
 | | `isResidual`, `scopeVi`, `excludesVi` | Giữ như cũ; `scopeVi`/`excludesVi` là chữ AI (chưa kiểm), chỉ gợi ý |
 | `GET /api/kg_chapter?chapter=85&tree=1` | nút `level` | Thêm hai loại nút ảo: `ONE_DASH_GROUP` (nhóm một gạch, vd `85042`) và `NATIONAL_HEADER` (tiêu đề quốc gia, vd `8504211`), đều `suyRa: true`, `name` có thể `null`. `SUBHEADING` có `nameEn` WCO. Dòng lá giữ nguyên trường cũ. Tên nhóm lấy từ chú giải nhóm thay vì dòng lá đầu |
 
