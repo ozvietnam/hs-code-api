@@ -8,6 +8,8 @@ const { setCors, handleOptions } = require('../lib/cors');
 const { llmStatus } = require('../lib/llm-tier');
 // Dữ liệu có thể lỗi thời mà service vẫn "healthy" — báo riêng, không đổi mã HTTP.
 const { freshnessReport } = require('../lib/data-freshness');
+// Postgres (L0g, #545) là tầng TUỲ CHỌN: chỉ báo trạng thái, không đổi mã HTTP / "healthy". Không lộ URL/host.
+const { dbDaCauHinh, trangThaiDb } = require('../lib/db');
 
 module.exports = function handler(req, res) {
   setCors(res, req);
@@ -25,7 +27,7 @@ module.exports = function handler(req, res) {
   // #418: đang xả (SIGTERM) → 503 'draining' để healthcheck/LB ngừng đưa lượt mới; lượt đang chạy vẫn được chờ.
   const draining = inflight.laDangXa();
 
-  return res.status(healthy && !draining ? 200 : 503).json({
+  const traLoi = (db) => res.status(healthy && !draining ? 200 : 503).json({
     service: 'hs-code-api',
     version: '2.0.0',
     status: draining ? 'draining' : healthy ? 'healthy' : 'degraded',
@@ -40,10 +42,16 @@ module.exports = function handler(req, res) {
       dataFreshness: freshness,
       // #418: số lượt HTTP đang chạy (classify dài) + cờ đang xả — deploy-safe.sh đọc trước khi thay container.
       engine: { inflight: inflight.soDangChay(), draining },
+      // 'OK' | 'CHUA_CAU_HINH' (chưa đặt HS_DATABASE_URL — tính năng DB tắt) | 'LOI'
+      db,
     },
     stats: {
       withPolicyWarnings: withPolicy,
     },
     timestamp: new Date().toISOString(),
   });
+
+  // Chưa cấu hình DB → trả lời ĐỒNG BỘ như trước khi có DB; có DB → chờ SELECT 1 (hạn 2 s, không bao giờ ném).
+  if (!dbDaCauHinh()) return traLoi('CHUA_CAU_HINH');
+  return trangThaiDb().then(traLoi, () => traLoi('LOI'));
 };
