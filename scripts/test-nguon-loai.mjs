@@ -61,5 +61,23 @@ assert('cấp nút cây: CLAUDE_DUYET / AI_DA_KIEM / NGUOI_DUYET gộp vào DA_K
   assert('verifySoTay giữ nguyên nhãn CLAUDE_DUYET (không ghi đè thành AI_DA_KIEM)', v.soTay.dong8?.[0]?.nguonLoai === 'CLAUDE_DUYET', v.soTay.dong8);
 }
 
+// ── L0e (#550): scripts/check-mo-ta-bo-de.mjs đọc nhãn bộ đề từ lib/nguon-loai.js (NHAN_BO_DE), không gõ tay ──
+{
+  const path = require('node:path');
+  const { execFileSync } = require('node:child_process');
+  const { TEST_DATA_DIR } = await import('./test-isolate-data.mjs');
+  const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  const SCRIPT = path.join(ROOT, 'scripts', 'check-mo-ta-bo-de.mjs');
+  const src = fs.readFileSync(SCRIPT, 'utf8');
+  assert('check-mo-ta-bo-de: nhãn duyệt lấy từ NHAN_BO_DE của lib/nguon-loai.js, không so chuỗi gõ tay', /NHAN_BO_DE/.test(src) && !/!==\s*'CLAUDE_DUYET'/.test(src));
+  const boDe = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'bench', 'mo-ta-bo-de.json'), 'utf8'));
+  boDe.ca[0].duyetBoi = 'NGUOI_DUYET'; // người có chuyên môn chưa soát thật → bộ đề không được tự nhận nhãn này
+  const tmp = path.join(TEST_DATA_DIR, 'bo-de-nguoi-duyet.json');
+  fs.writeFileSync(tmp, JSON.stringify(boDe, null, 1));
+  let code = 0; let out = '';
+  try { out = execFileSync('node', [SCRIPT, `--bo-de=${tmp}`], { encoding: 'utf8' }); } catch (e) { code = e.status || 1; out = String(e.stdout || ''); }
+  assert('check-mo-ta-bo-de: một ca duyetBoi NGUOI_DUYET (không qua người duyệt) → ĐỎ, báo đúng ca', code === 1 && out.includes(`${boDe.ca[0].id}: duyetBoi phải là CLAUDE_DUYET`), out.slice(-400));
+}
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);
