@@ -210,5 +210,34 @@ check('suggest: 6.1.d đã tra TB-TCHQ (số khớp là số, không bỏ trốn
     !j.includes('TT 39/2018/TT-BTC mục 1.78 Phụ lục I') && Boolean(c178) && j.includes(c178.tham_chieu), j.match(/"phienBan":"[^"]*"/g)?.slice(0, 2));
 }
 
+// ── #559: các chỗ còn sót sau L0d — data, script sinh trang cộng đồng, lời nhắc LLM, thông điệp validator ──
+{
+  const SAI = [/1\.78 Phụ lục I\b/, /TT 39\/2018\/TT-BTC mục 1\.78/];
+  const sot = [];
+  const quet = (rel, boChuThich) => fs.readFileSync(path.join(ROOT, rel), 'utf8').split('\n').forEach((l, i) => {
+    if (boChuThich && /^\s*(\/\/|\*|\/\*)/.test(l)) return;
+    if (SAI.some((re) => re.test(l))) sot.push(`${rel}:${i + 1}`);
+  });
+  for (const dir of ['lib', 'api']) for (const f of fs.readdirSync(path.join(ROOT, dir)).filter((x) => x.endsWith('.js') && x !== 'legal-basis.js')) quet(`${dir}/${f}`, true);
+  quet('scripts/build-community-data.mjs', true);
+  quet('data/chapter-declaration-fields.json', false);
+  quet('public/community-data.json', false);
+  check('không còn "TT 39/2018/TT-BTC mục 1.78" / "1.78 Phụ lục I" gõ tay ở lib, api, build-community-data, chapter-declaration-fields, community-data', sot.length === 0, sot);
+  let tc = null;
+  try { tc = lb.thamChieuCua('chiTieu:1.78.1'); } catch { /* chưa cài */ }
+  check('thamChieuCua: con trỏ "chiTieu:<id>" → tham_chieu của citeChiTieu; chuỗi thường giữ nguyên; con trỏ lạ ném lỗi',
+    typeof lb.thamChieuCua === 'function' && tc === c178?.tham_chieu && lb.thamChieuCua('CV 5189/TCHQ-GSQL (2019)') === 'CV 5189/TCHQ-GSQL (2019)'
+    && (() => { try { lb.thamChieuCua('chiTieu:9.9.9'); return false; } catch { return true; } })());
+  const cat = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'chapter-declaration-fields.json'), 'utf8'));
+  check('chapter-declaration-fields.json: legalRefs dùng con trỏ chiTieu:1.78.1 (không chép chữ căn cứ vào data)', cat.legalRefs?.[0] === 'chiTieu:1.78.1', cat.legalRefs);
+  const { SYSTEM_PROMPT } = require('../lib/customs-prompt.js');
+  check('lời nhắc LLM soạn mô tả: căn cứ chỉ tiêu 1.78 lấy từ citeChiTieu', SYSTEM_PROMPT.includes(c178?.tham_chieu) && !/TT 39\/2018\/TT-BTC mục 1\.78/.test(SYSTEM_PROMPT));
+  const { validateDeclaration } = require('../lib/declaration-validator.js');
+  const w = validateDeclaration({ tenHang: 'Tranh sơn dầu vẽ tay', congDung: 'trang trí', xuatXu: { code: 'CN', nameVi: 'Trung Quốc' }, tinhTrang: 'Mới 100%' }, '97011000').warnings.find((x) => x.code === 'NO_CHAPTER_CHECKLIST');
+  check('NO_CHAPTER_CHECKLIST: không còn "(TT 39/2018)", trỏ chỉ tiêu 1.78 qua citeChiTieu', Boolean(w) && !/\(TT 39\/2018\)/.test(w.message) && w.message.includes(c178?.tham_chieu), w?.message);
+  const cd = JSON.parse(fs.readFileSync(path.join(ROOT, 'public', 'community-data.json'), 'utf8'));
+  check('public/community-data.json (sinh bằng scripts/build-community-data.mjs): describe.legalRefs[0] là tham_chieu chỉ tiêu 1.78', cd.describe?.legalRefs?.[0] === c178?.tham_chieu, cd.describe?.legalRefs);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

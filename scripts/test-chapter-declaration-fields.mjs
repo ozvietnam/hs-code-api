@@ -21,7 +21,8 @@ const call = async (query) => {
 // Chương có khuôn (84 = máy móc) — công khai, trả data.
 let r = await call({ chapter: '84' });
 assert('chương 84: 200 công khai, source=chapter, có trường', r._s === 200 && r._j.chapter === '84' && r._j.source === 'chapter' && Array.isArray(r._j.fields) && r._j.fields.length > 0, r._j);
-assert('chương 84: có legalRefs (TT 39/2018) + version', Array.isArray(r._j.legalRefs) && r._j.legalRefs.length > 0 && typeof r._j.version === 'string', { legalRefs: r._j.legalRefs, version: r._j.version });
+const thamChieu178 = (() => { try { return require('../lib/legal-basis.js').citeChiTieu('1.78.1').tham_chieu; } catch { return null; } })();
+assert('chương 84: có legalRefs + version; căn cứ đầu là chỉ tiêu 1.78 qua citeChiTieu (con trỏ trong data đã phân giải)', Array.isArray(r._j.legalRefs) && r._j.legalRefs[0] === thamChieu178 && !r._j.legalRefs.some((x) => /^chiTieu:/.test(x)) && typeof r._j.version === 'string', { legalRefs: r._j.legalRefs, version: r._j.version });
 assert('chương 84: trường đồng shape declaration-fields (key + questionVi + required)', r._j.fields.every((f) => f.key && f.questionVi && typeof f.required === 'boolean'));
 
 // Nhận ?hs= (lấy 2 số đầu làm chương).
