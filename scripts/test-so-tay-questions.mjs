@@ -124,5 +124,23 @@ assert('#434 "Kệ trang trí vân gỗ" → vẫn hỏi material (vân gỗ là
 r = await call({ hs: '94036090', productText: 'Kệ gỗ' });
 assert('#434 "Kệ gỗ" → không hỏi material', !keys(r).includes('material'), keys(r));
 
+// ───────────── Đợt 0A / H5+H3 (29/10/2026): "mũ giày" (upper) ≠ "mũi giày" (toe cap) ─────────────
+// "Mũi gắn bảo vệ" là tiêu chí tách dòng 8 số của 6402 (6402.99.10/20), KHÔNG phải chất liệu mũ giày.
+// Câu thật Oz ghi: quai + đế ngoài đều đã nêu chất liệu → không hỏi lại; chữ "mũi" không được tính là mũ.
+const DEP = 'Dép đi trong nhà, quai bằng nhựa giả da PU, đế ngoài bằng nhựa, mũi không gắn bảo vệ';
+r = await call({ hs: '64029990', productText: DEP });
+assert('H3 dép 64029990: "quai bằng nhựa giả da PU" → không hỏi upperMaterial', r._s === 200 && !keys(r).includes('upperMaterial'), keys(r));
+assert('H3 dép 64029990: "đế ngoài bằng nhựa" → không hỏi soleMaterial', !keys(r).includes('soleMaterial'), keys(r));
+r = await call({ hs: '64029990', productText: 'Dép đi trong nhà, mũi không gắn bảo vệ' });
+assert('H5 "mũi không gắn bảo vệ" KHÔNG bị hiểu là chất liệu mũ giày → vẫn hỏi upperMaterial', keys(r).includes('upperMaterial'), keys(r));
+r = await call({ hs: '64029990', productText: 'Giày có mũi giày gắn bảo vệ, đế cao su' });
+assert('H5 "mũi giày gắn bảo vệ" KHÔNG thay cho chất liệu mũ giày → vẫn hỏi upperMaterial (đế đã có)', keys(r).includes('upperMaterial') && !keys(r).includes('soleMaterial'), keys(r));
+r = await call({ hs: '64029990', productText: 'Dép quai ngang nam' });
+assert('"quai ngang" (kiểu dáng, không chất liệu) → vẫn hỏi upperMaterial', keys(r).includes('upperMaterial'), keys(r));
+const qUpper = (r._j.questions || []).find((q) => q.key === 'upperMaterial');
+assert('nhãn câu hỏi là "mũ giày", không còn "mũi giày"', Boolean(qUpper) && /mũ giày/.test(qUpper.questionVi) && !/mũi/.test(qUpper.questionVi), qUpper);
+r = await call({ hs: '64029990', productText: 'Giày thể thao, mũ giày bằng vải lưới, đế EVA' });
+assert('"mũ giày bằng vải lưới, đế EVA" → không hỏi upper/sole', !keys(r).includes('upperMaterial') && !keys(r).includes('soleMaterial'), keys(r));
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);
