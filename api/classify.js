@@ -46,6 +46,7 @@ module.exports = async function handler(req, res) {
 
   // POST /api/extract-specs (rewrite → ?mode=extract_specs): rút thông số chuẩn từ chữ
   // tiếng Trung + chữ OCR ozsource gửi sang. Gộp vào function này theo pattern routes.json.
+  // Chữ trang/ảnh của khách → LUÔN withPrivateData, bất kể ai gọi (L0a #546).
   if (String(req.query?.mode || '') === 'extract_specs') {
     const hasText = body && (body.titleZh || (Array.isArray(body.specsZh) ? body.specsZh.length : body.specsZh) || (Array.isArray(body.imageTexts) && body.imageTexts.length));
     if (!hasText) {
@@ -53,7 +54,7 @@ module.exports = async function handler(req, res) {
     }
     try {
       const started = Date.now();
-      const result = await extractSpecs(body);
+      const result = await withPrivateData(() => extractSpecs(body));
       return res.status(200).json({ ...result, ms: Date.now() - started });
     } catch (e) {
       return res.status(502).json({ error: 'Extract specs failed', detail: String(e.message).slice(0, 240) });
