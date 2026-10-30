@@ -161,7 +161,8 @@ function nhap853641(d91) {
   check('4f HOAC THOẢ nhờ phương án so chữ tự do → không tất định', DK.danhGiaTrenMap(dnfChu, DK.chuanDuKien([{ fact: 'dungCho', giaTri: 'quạt điện', nguon: 'KHACH', trangThai: 'DA_CO' }])).tatDinh === false);
   const sau = nhap853641([HOAC([RL(['BAN_DAN']), SO('dienAp', '<=', 28, 'V')], [RL(['DIEN_TU'])])]);
   const kq = DK.doiChieuDong8('85364191', [{ fact: 'loaiRoLe', giaTri: 'DIEN_TU', nguon: 'KHACH', trangThai: 'DA_CO' }, { fact: 'dienAp', giaTri: 30, donVi: 'V', nguon: 'KHACH', trangThai: 'DA_CO' }], { soTay: C.soTayTuNhap('853641', sau) });
-  check('4g doiChieuDong8 đọc được HOAC: (điện từ, 30 V) CO với phương án không ngưỡng', kq.ketQua === 'CO', kq);
+  const muc91 = kq.duongDi.find((e) => e.nut === '85364191');
+  check('4g doiChieuDong8 đọc được HOAC: (điện từ, 30 V) — mục của chính .91 CO nhờ phương án không ngưỡng', muc91?.ketQua === 'CO' && muc91.dieuKien?.op === 'HOAC', kq.duongDi);
   check('4h moTaNgan HOAC đọc được', /hoặc/.test(DK.moTaNgan(dnf)) && /28/.test(DK.moTaNgan(dnf)), DK.moTaNgan(dnf));
   const dong = { hs: '85364191', nguon: 'tax.85364191', trich: '85364191 - - - - Rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V', dieuKienSo: [dnf], nguonLoai: 'CLAUDE_DUYET' };
   check('4i máy kiểm sổ tay (checkItem) nhận HOAC có kiểu', S.checkItem('dong8', dong, S.sourcesFor('8536'), '8536') === null, S.checkItem('dong8', dong, S.sourcesFor('8536'), '8536'));
