@@ -1,0 +1,97 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "761699",
+  "phien": "zcode:glm-5.3:20261030T1552#soan-761699",
+  "dong8": {
+    "76169920": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nhôm bịt đầu ống" },
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "sản xuất bút chì" }
+      ]
+    },
+    "76169930": {
+      "dieuKienSo": []
+    },
+    "76169940": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Ống chỉ", "lõi suốt", "guồng quay tơ"] },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "sợi dệt" }
+      ]
+    },
+    "76169951": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Rèm chớp lật" }
+      ]
+    },
+    "76169960": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Máng", "chén"] },
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "hứng mủ cao su" }
+      ]
+    },
+    "76169970": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Hộp đựng thuốc lá điếu" }
+      ]
+    },
+    "76169980": {
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "7616995": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Rèm" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "76169920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169920 \"Nhôm bịt đầu ống loại phù hợp dùng để sản xuất bút chì (SEN)\": tên \"Nhôm bịt đầu ống\" ⇒ tenLoai (nguyên văn); \"dùng để sản xuất bút chì\" là mục đích ⇒ congDung \"sản xuất bút chì\" (nguyên văn). Hậu tố \"(SEN)\" là nhãn nguồn của biểu thuế, không đưa vào giá trị."
+    },
+    {
+      "ma": "76169930",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "tiLe",
+      "ghiChu": "tax.76169930 \"Đồng xèng, hình tròn, kích thước chiều dày trên 1/10 đường kính (SEN)\": vế \"kích thước chiều dày trên 1/10 đường kính\" là ngưỡng TỈ LỆ giữa hai đại lượng đo — tu-vung@1 (53 khoá) không có khoá tỉ lệ (tiLe) và lược đồ không cho phép chia hai khoá SO. Theo quy trình 3.7 để dieuKienSo: [] cả mục (chỉ ghi tên \"Đồng xèng\" mà bỏ ngưỡng sẽ tạo ranh giới sai)."
+    },
+    {
+      "ma": "76169940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169940 \"Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt\": ba tên ngăn bằng dấu phẩy ⇒ tenLoai [\"Ống chỉ\",\"lõi suốt\",\"guồng quay tơ\"] (mảng = HOẶC, nguyên văn); \"dùng cho sợi dệt\" ⇒ dungCho \"sợi dệt\" (nguyên văn). Vế \"và sản phẩm tương tự\" không có khoá (không diễn đạt được chữ \"tương tự\") ⇒ để trống khỏi điều kiện, tenLoai chỉ gồm ba tên nêu đích danh; người duyệt xem thêm."
+    },
+    {
+      "ma": "76169951",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169951 \"Rèm chớp lật(SEN)\" ⇒ tenLoai \"Rèm chớp lật\" (nguyên văn, bỏ hậu tố nhãn nguồn \"(SEN)\"). Cùng khoá tenLoai với tiêu đề cha 7616995 theo quy trình 3.3 — đây là nguồn của lỗi cong2-dong-khong-toi-duoc:76169959, xem ghi chú 76169959."
+    },
+    {
+      "ma": "76169959",
+      "loai": "DUNG",
+      "ghiChu": "tax.76169959 \"Loại khác\" trần (không ghi điều kiện) nhưng cổng 2 báo cong2-dong-khong-toi-duoc: không vector biên nào làm dòng CO, vì tiêu đề cha 7616995 \"Rèm\" và dòng 76169951 \"Rèm chớp lật\" cùng khoá tenLoai: vector tenLoai=\"Rèm\" thoả tiêu đề nhưng đối điều kiện .51 chỉ cho CHUA_BIET (tập âm tiết con của tập cha) nên phủ định .51 không bao giờ THOA; vector \"Rèm chớp lật\" thì trùng chính .51. Đã thử cách máy gợi ý: đổi giá trị .51 thành \"chớp lật\" ⇒ .51 mất đường đi (trật tiêu đề \"Rèm\"); dòng .51 không có khoá khác diễn đạt được (câu trích chỉ có tên gọi). Không sửa được ⇒ DỪNG theo mục 5 (cong2-dong-khong-toi-duoc sau khi đã thử đổi khoá)."
+    },
+    {
+      "ma": "76169960",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169960 \"Máng và chén để hứng mủ cao su\": hai tên ⇒ tenLoai [\"Máng\",\"chén\"] (HOẶC, nguyên văn); \"để hứng mủ cao su\" là mục đích ⇒ congDung \"hứng mủ cao su\" (nguyên văn)."
+    },
+    {
+      "ma": "76169970",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169970 \"Hộp đựng thuốc lá điếu\" ⇒ tenLoai \"Hộp đựng thuốc lá điếu\" (nguyên văn trọn tên)."
+    },
+    {
+      "ma": "76169980",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "phuongPhapCheTao",
+      "ghiChu": "tax.76169980 \"Sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\": vế điều kiện phân biệt là PHƯƠNG PHÁP CHẾ TẠO (đột dập, kéo giãn) — tu-vung@1 không có khoá phương pháp chế tạo. Theo quy trình 3.7 để dieuKienSo: [] cả mục (chỉ ghi tên \"Sản phẩm dạng lưới\" mà bỏ phương pháp sẽ lẫn lưới đan/lưới dệt vào .80)."
+    },
+    {
+      "ma": "7616995",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7616995 \"7616995 Rèm\" ⇒ tenLoai \"Rèm\" (nguyên văn). Tiêu đề có tên duy nhất của phân nhóm."
+    }
+  ]
+}
