@@ -310,5 +310,43 @@ check('nhãn tệp: tu-vung/*.json ⇒ CLAUDE_DUYET (lib/nguon-loai.js)', N.nhan
   check('CĐĐL tu-vung@1 đã qua chấm duyệt độc lập (chamDuyetDocLap.trangThai = DA_CHAM, có boi + ngày)', tv.chamDuyetDocLap?.trangThai === 'DA_CHAM' && /^\d{4}-\d{2}-\d{2}$/.test(tv.chamDuyetDocLap?.ngay || '') && Boolean(tv.chamDuyetDocLap?.boi), tv.chamDuyetDocLap);
 }
 
+// ── 12. "không" bên trong cụm danh từ (#667) + đổi sang dòng anh em BD-96-03 (#675) ─────────────────────────────
+// Bộ đọc coi các cụm danh từ chứa "không" ("chân không", "hàng không", "không khí", "không gian", "không dây", "không gỉ")
+// là một khối trước khi dò phủ định. Sửa ở BỘ ĐỌC (lib/tu-vung.js) — tu-vung@1 (khoá, giá trị) giữ nguyên, băm không đổi.
+{
+  const dung = (ten, khoa, txt, v, bc) => {
+    const x = T.docGiaTri(khoa, txt);
+    check(`#667 ${ten}: ${khoa} "${txt}" ⇒ ${v}${bc ? ` (bangChung "${bc}")` : ''}`, x.trangThai === 'DA_CO' && x.giaTri === v && coTrong(x, txt) && (!bc || x.bangChung === bc), x);
+  };
+  const chuaBiet = (ten, khoa, txt) => { const x = T.docGiaTri(khoa, txt); check(`#667 ${ten}: ${khoa} "${txt}" ⇒ CHUA_BIET`, x.trangThai === 'CHUA_BIET', x); };
+  // cụm danh từ — không phủ định cụm phía sau
+  dung('chân không', 'laBoPhan', 'Bình giữ nhiệt chân không hoàn chỉnh', false, 'hoàn chỉnh');
+  dung('chân không', 'hoatDongBangDien', 'Bơm chân không động cơ điện 220V', true);
+  dung('không khí', 'hoatDongBangDien', 'Máy nén không khí dùng điện', true);
+  dung('không gian', 'hoatDongBangDien', 'Máy sưởi không gian chạy điện', true);
+  dung('hàng không', 'coBanh', 'Xe đẩy suất ăn hàng không bằng nhôm, có bánh xe', true);
+  dung('hàng không', 'laBoPhan', 'Phụ tùng hàng không, mới 100%', true, 'Phụ tùng');
+  dung('không dây', 'coManHinh', 'Chuông cửa không dây có màn hình', true);
+  dung('không gỉ', 'coBanh', 'Xe đẩy thép không gỉ có bánh xe', true);
+  // phủ định THẬT vẫn là phủ định
+  dung('phủ định thật', 'hoatDongBangDien', 'Máy bơm không dùng điện', false);
+  dung('phủ định thật', 'coBanh', 'Xe đẩy không có bánh xe', false);
+  dung('phủ định thật', 'laBoPhan', 'không phải bộ phận, là máy hoàn chỉnh', false);
+  // "hàng không có X" = "hàng hoá không có X" — không phải ngành hàng không
+  dung('hàng không có (phủ định)', 'coBanh', 'Hàng không có bánh xe', false);
+  // "không hoàn chỉnh" phủ định cụm "hoàn chỉnh" (giá trị KHÔNG của laBoPhan): KHÔNG được đọc thành laBoPhan = false
+  // (hàng chưa hoàn chỉnh có thể vẫn là hàng hoàn chỉnh theo GIR 2(a)) ⇒ không đoán: CHUA_BIET
+  chuaBiet('phủ định thật "không hoàn chỉnh"', 'laBoPhan', 'Bình giữ nhiệt không hoàn chỉnh');
+  chuaBiet('phủ định thật "chưa hoàn chỉnh"', 'laBoPhan', 'Bình chân không chưa hoàn chỉnh');
+  // #675 — cấu trúc "X rời của Y" (bộ phận tách rời của hàng Y) ⇒ laBoPhan = true; "tháo rời" (GIR 2(a)) không phải bộ phận
+  dung('#675 X rời của Y', 'laBoPhan', 'Vỏ ngoài rời của bình giữ nhiệt chân không, thép không gỉ hai lớp, nắp nhựa, dung tích 500ml, mới 100%', true, 'Vỏ ngoài rời của');
+  dung('#675 X rời của Y', 'laBoPhan', 'Nắp rời của bình giữ nhiệt', true);
+  chuaBiet('#675 tháo rời không phải bộ phận', 'laBoPhan', 'Máy xay sinh tố dạng tháo rời của hãng X');
+  chuaBiet('#675 "có nắp rời" chỉ là đặc điểm của hàng', 'laBoPhan', 'Bình giữ nhiệt có nắp rời');
+  dung('#675 phủ định cấu trúc', 'laBoPhan', 'không phải vỏ ngoài rời của bình', false);
+  // băm tu-vung@1 không đổi (bench khoá băm)
+  check('#667 tu-vung@1 giữ nguyên: sha256 67de4948a117…', T.phienBan().sha256.startsWith('67de4948a117'), T.phienBan());
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
