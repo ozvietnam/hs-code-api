@@ -5,6 +5,16 @@
  *   node scripts/bench-mo-ta.mjs --mode=sinh [--nguon=oz|bo-de] [--n=200] [--seed=42] [--chuong=85,84]
  *                                [--llm=mock|that] [--max-llm=20] [--api=<url gốc>]
  *   node scripts/bench-mo-ta.mjs --mode=soat [--nguon=oz|bo-de] [--n=200] [--k2] [--max-llm=20]
+ *   node scripts/bench-mo-ta.mjs --mode=sinh|soat --bo-de=data/bench/ho-so-lat-1.json --lat=1 [--n=…]   (bench lát 1)
+ *   node scripts/bench-mo-ta.mjs --mode=sinh|soat --nguon=oz --lat=1                                    (tập giữ riêng lát 1)
+ *
+ * LÁT 1 (L1-2b, #569; spec §10): --bo-de=<tệp> chọn tệp bộ đề (ngầm --nguon=bo-de). --lat=1:
+ *   (a) bộ đề lát 1 + ca #543 có mã thuộc lát 1 chưa gộp (gopCa543Lat1 — ca đã gộp mang gopTu, không đếm hai lần);
+ *   (b) --nguon=oz: chỉ mẫu oz-gold thuộc 50 phân nhóm ∩ tập giữ riêng lib/holdout.js ∩ tờ khai nhập (locGiuRiengLat1);
+ *   (c) ca cài lỗi của bộ đề (bỏ dữ kiện / đổi anh em) như cũ;
+ *   (d) nhóm ca "am": data/bench/cv755-am.json — ca tờ khai nhập chạy với maHsChay (không phải đáp án), ca xuất ngoài phạm vi.
+ *   In thêm BẢNG §10 đủ hàng: dữ kiện quyết định có mặt, chữ cấm, "xuất xứ", giá trị truy được nguồn, trích dẫn sai, ca âm,
+ *   soát bắt MÂU THUẪN / THIẾU, báo oan LOI, dựng hồ sơ tất định. Hàng nào đường cũ chưa có dữ liệu thì ghi rõ lý do.
  *
  * --mode=sinh  Sinh mô tả từ TRƯỜNG TÁCH RỜI (tên hàng, chất liệu, công dụng, hiệu, model, KT, thông số, tình trạng)
  *              qua describeProduct (lib/describe-core.js) — hoặc POST <api>/api/describe khi có --api — rồi chấm
@@ -27,17 +37,22 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { ROOT, chiSoMoTa, jaccard, khopTuKhoa, docBoDe } from './mo-ta-bench-lib.mjs';
+import {
+  ROOT, chiSoMoTa, jaccard, khopTuKhoa, docBoDe, trichDanSai, docLat1Pn6, locGiuRiengLat1, gopCa543Lat1, docCaAm, kiemCaAm,
+  chamAmSoat, chamAmSinh, baoOanLoi, ghiRiengTu,
+} from './mo-ta-bench-lib.mjs';
 
 const require = createRequire(import.meta.url);
 const arg = (n, d = null) => { const a = process.argv.find((x) => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : d; };
 const flag = (n) => process.argv.includes(`--${n}`);
 
 const MODE = arg('mode', 'sinh');
-const NGUON = arg('nguon', 'oz');
-const N = Number(arg('n', MODE === 'soat' ? 200 : 200));
+const BO_DE = arg('bo-de') ? path.resolve(ROOT, arg('bo-de')) : null;
+const NGUON = arg('nguon', BO_DE ? 'bo-de' : 'oz');
+const LAT = arg('lat');
+// Lát 1: mặc định chạy đủ bộ đề / đủ tập giữ riêng (không cắt 200).
+const N = Number(arg('n', LAT ? Infinity : 200));
 const SEED = Number(arg('seed', 42));
 const LLM = arg('llm', 'mock');
 const API = arg('api');
@@ -50,6 +65,8 @@ const UU_TIEN = ['85', '84', '39', '73', '64', '90', '94', '96', '40', '61'];
 if (!['sinh', 'soat'].includes(MODE)) { console.error('--mode=sinh|soat'); process.exit(2); }
 if (!['oz', 'bo-de'].includes(NGUON)) { console.error('--nguon=oz|bo-de'); process.exit(2); }
 if (!['mock', 'that'].includes(LLM)) { console.error('--llm=mock|that'); process.exit(2); }
+if (LAT && LAT !== '1') { console.error('--lat=1 (chỉ có lát 1)'); process.exit(2); }
+if (BO_DE && NGUON !== 'bo-de') { console.error('--bo-de=<tệp> đi với --nguon=bo-de'); process.exit(2); }
 if (K2 && LLM !== 'that') { console.error('--k2 gọi phân loại LLM: cần --llm=that (mock không phân loại được).'); process.exit(2); }
 if (API && NGUON === 'oz' && !process.env.HS_SERVICE_TOKEN) {
   console.error('Từ chối: gửi dữ liệu Oz qua --api cần khoá dịch vụ HS_SERVICE_TOKEN (lượt công khai không đi chế độ riêng tư). Dùng --nguon=bo-de cho lượt công khai.');
@@ -117,6 +134,12 @@ function docGold() {
 function layMauOz(n) {
   const rnd = mulberry32(SEED);
   const taxData = require('../lib/data.js').taxData;
+  if (LAT) {
+    // (b) Tập giữ riêng của lát 1: không phân tầng theo chương — lấy đủ (hoặc n mẫu xáo theo seed).
+    const { laToKhaiNhap } = require('../lib/ho-so/lat-1.js');
+    const giu = locGiuRiengLat1(docGold(), { pn6: docLat1Pn6(), taxData, isHeldOut, laToKhaiNhap });
+    return Number.isFinite(n) ? shuffle(giu, rnd).slice(0, n) : giu;
+  }
   // Chỉ tập giữ riêng; bỏ mã không còn trong biểu hiện hành (describe trả 404 — không đo được).
   const gold = docGold().filter((g) => /^\d{8}$/.test(String(g.hsCode)) && g.sampleDesc && g.tenHang && isHeldOut(g) && taxData[String(g.hsCode)]);
   const theo = new Map();
@@ -137,8 +160,25 @@ function layMauOz(n) {
 }
 
 /** Bộ đề: N < số ca thì lấy xoay vòng theo chương (mỗi chương lần lượt một ca) để mẫu nhỏ vẫn phủ đủ chương. */
+/** Ca bộ đề đang chấm: tệp --bo-de (mặc định #543); --lat=1 gộp thêm ca #543 thuộc lát 1 chưa gộp. */
+function caBoDe() {
+  const bd = BO_DE ? docBoDe(BO_DE) : docBoDe();
+  let ca = bd.ca || [];
+  if (LAT) ca = [...ca, ...gopCa543Lat1(bd, docBoDe(), docLat1Pn6())];
+  return ca.filter((c) => !CHUONG_LOC || CHUONG_LOC.includes(c.chuong));
+}
+
+/** (d) Ca âm CV 755 — chỉ ở bench lát 1. Trả { nhap, ngoaiPhamVi }. */
+function caAm() {
+  if (!LAT) return { nhap: [], ngoaiPhamVi: [] };
+  const bo = docCaAm();
+  const k = kiemCaAm(bo);
+  if (k.loi.length) { console.error(`data/bench/cv755-am.json hỏng:\n  ${k.loi.join('\n  ')}`); process.exit(2); }
+  return { nhap: bo.ca.filter((c) => c.loaiToKhai === 'NHAP'), ngoaiPhamVi: bo.ca.filter((c) => c.loaiToKhai !== 'NHAP') };
+}
+
 function layMauBoDe(n) {
-  const ca = docBoDe().ca.filter((c) => !CHUONG_LOC || CHUONG_LOC.includes(c.chuong));
+  const ca = caBoDe();
   const theo = new Map();
   for (const c of ca) { if (!theo.has(c.chuong)) theo.set(c.chuong, []); theo.get(c.chuong).push(c); }
   const out = [];
@@ -200,14 +240,7 @@ async function sinhMoTa(body) {
 
 // ── Ghi chi tiết riêng tư ───────────────────────────────────────────────────────────────────────────────────────────
 function ghiChiTiet(ten, rows) {
-  fs.mkdirSync(OUT_DIR, { recursive: true });
-  const file = path.join(OUT_DIR, ten);
-  const rel = path.relative(ROOT, file);
-  let ignored = false;
-  try { execFileSync('git', ['-C', ROOT, 'check-ignore', '-q', rel]); ignored = true; } catch { ignored = false; }
-  if (!ignored) { console.error(`TỪ CHỐI GHI: ${rel} không bị gitignore — chi tiết có câu Oz, không được nằm ở chỗ commit được.`); return null; }
-  fs.writeFileSync(file, rows.map((r) => JSON.stringify(r)).join('\n') + '\n');
-  return rel;
+  return ghiRiengTu(ROOT, path.join(OUT_DIR, ten), rows);
 }
 
 function inBang(tieuDe, cot, dong) {
@@ -215,6 +248,32 @@ function inBang(tieuDe, cot, dong) {
   console.log(`| ${cot.join(' | ')} |`);
   console.log(`|${cot.map(() => '---').join('|')}|`);
   for (const d of dong) console.log(`| ${d.join(' | ')} |`);
+}
+
+const p50 = (xs) => { const a = xs.filter((x) => Number.isFinite(x)).sort((x, y) => x - y); return a.length ? a[Math.floor((a.length - 1) / 2)] : null; };
+const phanSo = (a, b) => (b ? `${pct(a, b)} (${a}/${b})` : '— (0 ca)');
+
+/**
+ * BẢNG §10 (spec "Đo và nghiệm thu") cho bench lát 1. `v` = { tên hàng: giá trị }; hàng thiếu ⇒ ghi chế độ cần chạy.
+ * Ngưỡng là ngưỡng ĐỀ XUẤT của spec §10 (CEO duyệt sau khi có số nền LLM thật ở L0i) — in để đối chiếu, không phải cổng.
+ */
+const HANG_10 = [
+  ['Dữ kiện quyết định có mặt trong chuỗi', '≥ 95 %', 'sinh'],
+  ['Chữ cấm (chữ biểu thuế) trong mô tả', '0 %', 'sinh'],
+  ['"xuất xứ" trong chuỗi', '0 %', 'sinh'],
+  ['Giá trị truy được nguồn', '100 %', 'sinh'],
+  ['Trích dẫn sai (GIR, điều luật)', '0', 'sinh|soat'],
+  ['Ca âm CV 755 (sinh: từ chối / soát: có cờ)', '100 %', 'sinh|soat'],
+  ['Soát bắt MÂU THUẪN (ca đổi sang dòng anh em)', '≥ 90 %', 'soat'],
+  ['Soát chỉ đúng THIẾU (ca bỏ dữ kiện)', '≥ 80 %', 'soat'],
+  ['Báo oan LOI trên ca chuẩn', '≤ 5 %', 'soat'],
+  ['Dựng hồ sơ tất định (p50)', '< 1 s', 'sinh'],
+  ['Một lượt viết mô tả (p50, cả máy + LLM)', 'đặt sau L0i (tạm ≤ 30 s)', 'sinh'],
+];
+function inBang10(v, ghiChu) {
+  inBang(`BẢNG §10 — lát 1, ${MODE}, ${API ? `API ${API}` : `LLM ${LLM}`}`, ['Chỉ số', 'Đo được', 'Ngưỡng đề xuất §10'],
+    HANG_10.map(([ten, nguong, che]) => [ten, v[ten] ?? (che.split('|').includes(MODE) ? '— (chưa đo)' : `— (chạy --mode=${che.split('|')[0]})`), nguong]));
+  for (const g of ghiChu) console.log(`  · ${g}`);
 }
 
 // ── MODE SINH ───────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -226,12 +285,15 @@ async function cheDoSinh() {
     const ma = oz ? String(m.hsCode) : m.maHs;
     const ch = ma.slice(0, 2);
     const chuan = oz ? m.sampleDesc : m.moTaMau;
+    const t0 = Date.now();
     const r = await sinhMoTa(oz ? bodyTuOz(m) : bodyTuBoDe(m));
+    const ms = Date.now() - t0;
     const out = r.json?.customsDescription || '';
     const row = {
       id: oz ? `oz:${ma}` : m.id, ma, chuong: ch, loi: r.loi || null,
       degraded: Boolean(r.json?.degraded), llmModel: r.json?.llmModel || null, llmError: r.json?.llmError ? { code: r.json.llmError.code || null, retryable: Boolean(r.json.llmError.retryable), message: String(r.json.llmError.message || '').slice(0, 160) } : null, compliance: r.json?.compliance?.score ?? null,
-      moTa: out, chiSo: chiSoMoTa(out, ch), chiSoChuan: chiSoMoTa(chuan, ch), giongChuan: out ? jaccard(out, chuan) : 0,
+      moTa: out, chiSo: chiSoMoTa(out, ch, { hoSo: r.json?.hoSo || null }), chiSoChuan: chiSoMoTa(chuan, ch), giongChuan: out ? jaccard(out, chuan) : 0,
+      ms, msTatDinh: r.json?.hoSo?.thoiGian?.tatDinhMs ?? null, trichSai: r.json ? trichDanSai(r.json) : null,
     };
     if (!oz) {
       const dk = m.duKienQuyetDinh.filter((d) => !d.khongDuCanCu);
@@ -271,6 +333,37 @@ async function cheDoSinh() {
     for (const d of all) { const k = String(d.cap); theoCap[k] = theoCap[k] || [0, 0]; theoCap[k][1] += 1; if (d.co) theoCap[k][0] += 1; }
     console.log(`\nDữ kiện quyết định có mặt trong chuỗi máy sinh: ${pct(all.filter((d) => d.co).length, all.length)} (${all.filter((d) => d.co).length}/${all.length}); theo cấp ${JSON.stringify(Object.fromEntries(Object.entries(theoCap).map(([k, [a, b]]) => [k, `${a}/${b}`])))}`);
     console.log(`Ca đủ 100% dữ kiện: ${pct(rows.filter((r) => r.duKien.every((d) => d.co)).length, rows.length)}`);
+  }
+  if (LAT) {
+    // (d) ca âm CV 755: sinh từ đúng câu sơ sài (tên hàng = câu sơ sài), mã chạy máy maHsChay.
+    const am = caAm();
+    const amRows = [];
+    for (const c of am.nhap) {
+      const r = await sinhMoTa({ hsCode: c.maHsChay.ma, productName: c.moTaSoSai });
+      const ch = chamAmSinh(r.json);
+      amRows.push({ id: c.id, loi: r.loi || null, tuChoi: !r.loi && ch.tuChoi, theo: ch.theo, trangThai: ch.trangThai, trichSai: r.json ? trichDanSai(r.json) : null });
+    }
+    const coTn = rows.filter((r) => r.chiSo.truyNguon.apDung);
+    const tn = coTn.reduce((a, r) => [a[0] + r.chiSo.truyNguon.co, a[1] + r.chiSo.truyNguon.tong], [0, 0]);
+    const ts = [...rows, ...amRows].map((r) => r.trichSai).filter(Boolean).reduce((a, t) => [a[0] + t.sai, a[1] + t.tong], [0, 0]);
+    const dk = rows.flatMap((r) => r.duKien || []);
+    const ok = rows.filter((r) => !r.loi);
+    const tatDinh = rows.map((r) => r.msTatDinh).filter((x) => x != null);
+    const v = {
+      'Chữ cấm (chữ biểu thuế) trong mô tả': phanSo(ok.filter((r) => r.chiSo.chuCam.length).length, ok.length),
+      '"xuất xứ" trong chuỗi': phanSo(ok.filter((r) => r.chiSo.coXuatXu).length, ok.length),
+      'Giá trị truy được nguồn': coTn.length ? phanSo(tn[0], tn[1]) : `— (đường cũ không trả hoSo: 0/${rows.length} ca có hồ sơ)`,
+      'Trích dẫn sai (GIR, điều luật)': `${ts[0]} / ${ts[1]} trích dẫn`,
+      'Ca âm CV 755 (sinh: từ chối / soát: có cờ)': `${amRows.filter((r) => r.tuChoi).length}/${amRows.length} ca nhập bị từ chối (${amRows.map((r) => `${r.id.slice(6)}:${r.loi ? 'lỗi' : r.trangThai}`).join(', ')}); ngoài phạm vi lát 1: ${am.ngoaiPhamVi.length}`,
+      'Dựng hồ sơ tất định (p50)': tatDinh.length ? `${p50(tatDinh)} ms (${tatDinh.length} ca)` : '— (đường cũ không dựng hồ sơ)',
+      'Một lượt viết mô tả (p50, cả máy + LLM)': `${p50(rows.map((r) => r.ms))} ms (${LLM === 'mock' && !API ? 'LLM mock — chỉ phần máy' : 'LLM thật'})`,
+    };
+    if (NGUON === 'bo-de') v['Dữ kiện quyết định có mặt trong chuỗi'] = phanSo(dk.filter((d) => d.co).length, dk.length);
+    else v['Dữ kiện quyết định có mặt trong chuỗi'] = '— (nguồn oz không có dữ kiện chấm sẵn; chạy --bo-de)';
+    inBang10(v, [
+      'ca âm chạy với maHsChay — mã để chạy máy, KHÔNG phải đáp án (CV 755 không ghi mã); ca tờ khai xuất không chạy (lát 1 chỉ nhập).',
+      'đường cũ chưa có THIEU_DU_KIEN: "từ chối" = compliance WEAK/REJECT hoặc passesCustomsAudit=false (lib/mo-ta-bench-lib.mjs#chamAmSinh).',
+    ]);
   }
   console.log(`\nLượt LLM/API thật đã dùng: ${soLuotLlm}${rel ? `; chi tiết riêng tư: ${rel}` : ''}`);
 }
@@ -320,7 +413,7 @@ function caSoatOz(n) {
 
 function caSoatBoDe() {
   const out = [];
-  for (const c of docBoDe().ca) {
+  for (const c of caBoDe().slice(0, N)) {
     if (CHUONG_LOC && !CHUONG_LOC.includes(c.chuong)) continue;
     const chuan = { id: c.id, loai: 'chuan', ma: c.maHs, moTa: c.moTaMau, xuatXu: 'CN' };
     out.push(chuan);
@@ -347,7 +440,7 @@ async function cheDoSoat() {
   const { taxData } = require('../lib/data.js');
   const cas = NGUON === 'oz' ? caSoatOz(N) : caSoatBoDe();
   const res = [];
-  for (const c of cas) {
+  async function soatMot(c) {
     const kiemMa = K2 && soLuotLlm < MAX_LLM;
     let kq = null; let loi = null;
     try {
@@ -362,7 +455,18 @@ async function cheDoSoat() {
     try { if (soTay.anhEmKhop(c.ma, { tenHang: c.moTa }).length) det.push('K2det:LOAI_KHAC_KHOP_ANH_EM'); } catch { /* cố vấn */ }
     try { if ((buildEvidencePack({ maHs: [c.ma], moTa: c.moTa })?.goiCanCu?.[0]?.tienLe?.tienLeMaKhac || []).length) det.push('K2det:TIEN_LE_MO_TA_TUONG_TU_MA_KHAC'); } catch { /* cố vấn */ }
     const k2Ma = kiem.find((m) => m.nhom === 'K2' && /^KHAC_/.test(m.ma));
-    res.push({ ...c, loi, kiemMa, co: [...co('K1'), ...co('K2'), ...det], mucSanSang: kq?.dong?.[0]?.mucSanSang || null, k2MaMay: kq?.dong?.[0]?.ketQuaPhanLoai?.results?.[0]?.hs || null, k2Lech: k2Ma ? k2Ma.ma : null });
+    const dong = kq?.dong?.[0] || {};
+    return { ...c, loi, kiemMa, co: [...co('K1'), ...co('K2'), ...det], det, kiem: kiem.map((m) => ({ nhom: m.nhom, ma: m.ma, trangThai: m.trangThai })),
+      trichSai: kq ? trichDanSai({ ...(dong.ketQuaPhanLoai || {}), ...(dong.hoSo ? { hoSo: dong.hoSo } : {}) }) : null,
+      mucSanSang: dong.mucSanSang || null, k2MaMay: dong.ketQuaPhanLoai?.results?.[0]?.hs || null, k2Lech: k2Ma ? k2Ma.ma : null };
+  }
+  for (const c of cas) res.push(await soatMot(c));
+  // (d) ca âm CV 755 — chạy riêng, không ghép với ca chuẩn.
+  const am = caAm();
+  const amRes = [];
+  for (const c of am.nhap) {
+    const r = await soatMot({ id: c.id, loai: 'am', ma: c.maHsChay.ma, moTa: c.moTaSoSai, xuatXu: 'CN' });
+    amRes.push({ ...r, bat: !r.loi && chamAmSoat(r.kiem, r.det).bat });
   }
   // Ghép theo ca gốc: bắt được = ca lỗi có cờ (CANH_BAO/LOI) mà ca chuẩn không có.
   const loi = res.filter((r) => r.loai !== 'chuan');
@@ -386,7 +490,7 @@ async function cheDoSoat() {
   const oanK1 = sach.filter((r) => r.co.some((x) => x.startsWith('K1:'))).length;
   const oanK2det = sach.filter((r) => r.co.some((x) => x.startsWith('K2det:'))).length;
   const oanK2 = sach.filter((r) => r.k2Lech).length;
-  const rel = ghiChiTiet(`${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}-soat-${NGUON}-${K2 ? 'k2' : 'k1'}.jsonl`, res);
+  const rel = ghiChiTiet(`${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}-soat-${NGUON}${LAT ? '-lat1' : ''}-${K2 ? 'k2' : 'k1'}.jsonl`, [...res, ...amRes]);
   inBang(`SOÁT — nguồn ${NGUON}, ${sach.length} ca chuẩn, ${loi.length} ca cài lỗi, K2-LLM ${K2 ? `BẬT (≤${MAX_LLM} lượt)` : 'TẮT'}`,
     ['Loại ca lỗi', 'n', 'Có cờ mới (bất kỳ)', 'Cờ đúng loại', 'qua K1', 'qua K2 tất định', 'qua K2 LLM', 'K2 LLM đã chạy'],
     Object.entries(thongKe).map(([k, t]) => [k, t.n, pct(t.bat, t.n), pct(t.dung, t.n), pct(t.k1, t.n), pct(t.k2det, t.n), K2 ? pct(t.k2llm, t.n) : 'tắt', t.k2chay]));
@@ -396,6 +500,21 @@ async function cheDoSoat() {
     const chiDungMa = doi.filter(([, l]) => l.k2MaMay && String(l.k2MaMay).replace(/\D/g, '') === l.maTroToi).length;
     if (K2) console.log(`Ca đổi anh em mà K2 chỉ đúng mã đích: ${chiDungMa}/${doi.length}`);
     console.log('Lưu ý: bộ soát hiện có không chỉ ra dữ kiện CÓ/THIẾU/MÂU THUẪN (mục 27) — "bắt được" ở đây chỉ là có cờ mới.');
+  }
+  if (LAT) {
+    const oan = baoOanLoi(res);
+    const ts = [...res, ...amRes].map((r) => r.trichSai).filter(Boolean).reduce((a, t) => [a[0] + t.sai, a[1] + t.tong], [0, 0]);
+    const tk = (k) => thongKe[k] || { n: 0, dung: 0 };
+    inBang10({
+      'Trích dẫn sai (GIR, điều luật)': `${ts[0]} / ${ts[1]} trích dẫn${K2 ? '' : ' (K2-LLM tắt: phân loại không chạy nên gần như không có trích dẫn)'}`,
+      'Ca âm CV 755 (sinh: từ chối / soát: có cờ)': `${amRes.filter((r) => r.bat).length}/${amRes.length} ca nhập có cờ K1/K2 (${amRes.map((r) => `${r.id.slice(6)}:${r.loi ? 'lỗi' : (r.co.join('+') || 'không cờ')}`).join(', ')}); ngoài phạm vi lát 1: ${am.ngoaiPhamVi.length}`,
+      'Soát bắt MÂU THUẪN (ca đổi sang dòng anh em)': `${phanSo(tk('doi_anh_em').dung, tk('doi_anh_em').n)} — cờ K2 mới`,
+      'Soát chỉ đúng THIẾU (ca bỏ dữ kiện)': `${phanSo(tk('bo_du_kien').dung, tk('bo_du_kien').n)} — cờ thiếu/K2 mới`,
+      'Báo oan LOI trên ca chuẩn': phanSo(oan.loi, oan.n),
+    }, [
+      'đường cũ không chỉ ra dữ kiện CÓ/THIẾU/MÂU THUẪN: "bắt" ở đây là có cờ mới đúng loại (như bảng SOÁT ở trên), chưa phải chỉ đúng dữ kiện.',
+      'ca âm chạy với maHsChay — mã để chạy máy, KHÔNG phải đáp án (CV 755 không ghi mã); ca tờ khai xuất không chạy (lát 1 chỉ nhập).',
+    ]);
   }
   console.log(`\nLượt LLM thật đã dùng: ${soLuotLlm}${rel ? `; chi tiết riêng tư: ${rel}` : ''}`);
 }
