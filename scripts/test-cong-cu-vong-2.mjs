@@ -67,5 +67,42 @@ const KDC = (v) => ({ fact: 'kieuDongCoDien', op: 'TRONG', value: v });
   check('2d dữ kiện thật (runtime) không bao giờ mang giá trị ngoài liệt kê: kiemDieuKien từ chối giá trị đó trong điều kiện', DK.kiemDieuKien(KDC([DK.NGOAI_LIET_KE]), 'Động cơ bước') !== null);
 }
 
+// ── 3. phanConLai đứng một mình: phần còn lại có tên mà nội dung chỉ là "các loại khác" (không điều kiện khẳng định) ──────
+const S = require('../lib/so-tay.js');
+{
+  // 850110 r14839 "Động cơ khác, kể cả động cơ vạn năng…": nội dung thật = phủ định tầng "Động cơ một chiều" (r14830).
+  const LIET = { 8501102: [KDC(['BUOC'])], 8501105: [KDC(['BUOC'])], 85011030: [KDC(['HUONG_TRUC'])], 85011060: [KDC(['HUONG_TRUC'])] };
+  const b = suaNhap('850110', { ...LIET, '850110~r14839': { dieuKienSo: [], phanConLai: true } });
+  const r = C.kiemRanhGioi('850110', b);
+  check('3a phanConLai + dieuKienSo rỗng ⇒ cổng 1 KHÔNG coi tầng chưa số hoá', !r.loi.some((l) => l.includes('850110~r14839')), r.loi);
+  check('3b … 850110 (khoá liệt kê + phần còn lại đứng một mình) hết lỗi cổng (chỉ còn DỪNG do người soạn khai)', r.hopLe === true, r.loi);
+  const dd = DK.duongDiDong8('85011099', { soTay: C.soTayTuNhap('850110', b) });
+  check('3c luật đi .99: không nhóm PHAI_CO cho r14839, có PHAI_KHONG r14830', !dd.nhom.some((g) => g.nut === '850110~r14839') && dd.nhom.some((g) => g.nut === '850110~r14830' && g.chieu === 'PHAI_KHONG' && g.dieuKien), dd.nhom);
+  const b2 = suaNhap('850110', { ...LIET, '850110~r14839': { dieuKienSo: [] } });
+  check('3d không phanConLai + điều kiện rỗng ⇒ vẫn cong1-chua-so-hoa (không đổi)', C.kiemRanhGioi('850110', b2).loi.some((l) => l.startsWith('cong1-chua-so-hoa:') && l.endsWith(':850110~r14839')));
+  const b3 = suaNhap('850110', { ...LIET, 8501102: { dieuKienSo: [], phanConLai: ['850110~r14830'] } });
+  check('3e phanConLai đứng một mình vẫn qua kiểm "anh em" + chữ "khác" của cổng 0/3', C.kiemRanhGioi('850110', b3).loi.some((l) => l.startsWith('cong0-phan-con-lai-sai-anh-em:8501102') || l.startsWith('cong3-phan-con-lai-khong-co-chu-khac:8501102')));
+  let moi = null; let nem = null;
+  try { moi = C.apDung(C.duyet(b, { phien: 'https://claude.ai/code/session_TEST#soat-vong2', ngay: '2026-10-31' }), JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/8501.json'), 'utf8'))); } catch (e) { nem = e.message; }
+  const nut = moi?.dieuKienNut?.find((x) => x.id === '850110~r14839');
+  check('3f duyệt + áp vào sổ tay: mục tầng mang phanConLai, dieuKienSo rỗng, qua checkItem', nut?.phanConLai === true && Array.isArray(nut.dieuKienSo) && !nut.dieuKienSo.length, nem || nut);
+  check('3g sổ tay đã áp: luật đi .99 không CHUA_SO_HOA ở r14839', moi && !DK.duongDiDong8('85011099', { soTay: moi }).nhom.some((g) => g.nut === '850110~r14839' && !g.dieuKien), nem);
+  check('3h checkItem dieuKienNut không điều kiện, không phanConLai ⇒ vẫn dieu-kien-nut-thieu-dieu-kien', S.checkItem('dieuKienNut', { ...nut, phanConLai: undefined }, { ...S.sourcesFor('8501'), ...S.nguonTieuDe('8501') }, '8501') === 'dieu-kien-nut-thieu-dieu-kien');
+}
+
+// ── 6. phanConLai: false — ghi rõ "không phải phần còn lại" để tắt cảnh báo nghi-phan-con-lai ──────────────────────────
+{
+  // 950300 .30 "Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng": "khác" không trỏ anh em đứng trước.
+  const b = suaNhap('950300', { 95030030: { phanConLai: false } });
+  const r = C.kiemRanhGioi('950300', b);
+  check('6a phanConLai:false được cổng 0 nhận (không cong0-phan-con-lai-*)', !r.loi.some((l) => l.startsWith('cong0-phan-con-lai') && l.includes('95030030')), r.loi);
+  check('6b … tắt cảnh báo nghi-phan-con-lai:95030030, không lỗi chữ "khác"', !coCanh(r, 'nghi-phan-con-lai:95030030') && !coLoi(r, 'cong3-phan-con-lai-khong-co-chu-khac:95030030'), r.canhBao);
+  const dd = DK.duongDiDong8('95030030', { soTay: C.soTayTuNhap('950300', b) });
+  check('6c luật đi như không ghi (không phủ định anh em)', !dd.nhom.some((g) => g.chieu === 'PHAI_KHONG'), dd.nhom);
+  check('6d băm đổi khi thêm phanConLai:false (thuộc nội dung)', C.bamRanhGioi(b) !== C.bamRanhGioi(suaNhap('950300')));
+  const b2 = suaNhap('950300', { 95030099: { phanConLai: false } });
+  check('6e phanConLai:false trên dòng "Loại khác" ⇒ vẫn cong0-phan-con-lai-thua', coLoi(C.kiemRanhGioi('950300', b2), 'cong0-phan-con-lai-thua:95030099'));
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
