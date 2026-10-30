@@ -208,10 +208,13 @@ function nhap853641() {
   check('8a có bản nháp thí điểm đã commit', tep.length >= 3, tep);
   for (const f of tep) {
     const b = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
-    const r = C.kiemRanhGioi(b.pn6, b);
+    // #653: chỉ cổng 0 + 3 (không sinh vector) — 840991 (~6 triệu vector) từng thêm ~20 s CI cho một kiểm chỉ cần hai cổng này.
+    const r = C.kiemRanhGioi(b.pn6, b, { cong: [0, 3] });
     const loi03 = r.loi.filter((l) => /^cong[03]-/.test(l));
     check(`8b ${f}: cổng 0 + cổng 3 xanh (không trích bịa, nhãn đúng)`, loi03.length === 0, loi03);
     check(`8c ${f}: chưa ai duyệt → mọi mục AI_DA_KIEM`, b.trangThai !== 'DUYET' ? [...b.dong8, ...(b.dieuKienNut || [])].every((m) => m.nguonLoai === 'AI_DA_KIEM') : true);
+    // Bản đã DUYET phải xanh đủ 4 cổng (sửa công cụ làm đỏ bản đã duyệt = phát hiện, không sửa điều kiện đã duyệt).
+    if (b.trangThai === 'DUYET') { const du = C.kiemRanhGioi(b.pn6, b); check(`8d ${f}: bản DUYET xanh đủ 4 cổng`, du.hopLe === true, du.loi); }
   }
 }
 

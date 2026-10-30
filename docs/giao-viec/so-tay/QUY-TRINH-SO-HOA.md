@@ -81,7 +81,9 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
 5. Mỗi ý có ngưỡng riêng ("A, ≤ 11 A; B, ≤ 1.000 V") ⇒ HOẶC: `{"op": "HOAC", "phuongAn": [[…ý A…], […ý B…]]}`. Không gộp ngưỡng
    của một ý cho cả dòng.
 6. Phần còn lại CÓ TÊN ("Động cơ khác", "Cáp … plastic khác", "…, loại khác") ⇒ thêm `"phanConLai": true` vào mục (phủ định mọi anh
-   em đứng trước). Chỉ phủ định một số anh em ⇒ `"phanConLai": ["<hs>", …]`.
+   em đứng trước). Chỉ phủ định một số anh em ⇒ `"phanConLai": ["<hs>", …]`. Nội dung chỉ là "các loại khác" (không có ý khẳng
+   định riêng) ⇒ `{"dieuKienSo": [], "phanConLai": true}`. Chữ có "khác" mà KHÔNG phải phần còn lại ⇒ `"phanConLai": false` + ghi
+   chú `QUYET_DINH` nói vì sao.
 7. Một ý KHÔNG có khoá ⇒ để `"dieuKienSo": []` cho mục đó và thêm ghi chú
    `{"ma": "<mã>", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "<tên khoá>", "ghiChu": "<chữ nguyên văn cần khoá>"}`
    (khoá đề xuất: [`de-xuat-tu-vung-2.md`](de-xuat-tu-vung-2.md)) ⇒ sẽ DỪNG.
@@ -100,8 +102,10 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
 5. Mã 3 (DỪNG) ⇒ sang mục 5.
 6. Mã 0 (XANH) ⇒ đọc lại MỌI cảnh báo `!`:
    - `cong3-bien-khong-doc-duoc` ⇒ tự đối chiếu op/biên lần nữa với chữ; ghi ghi chú `QUYET_DINH` nói đã đối chiếu tay.
-   - `nghi-phan-con-lai` ⇒ quyết có/không `phanConLai`, ghi lý do.
+   - `nghi-phan-con-lai` ⇒ quyết `phanConLai` true/mảng hoặc `false`, ghi lý do.
    - `cong2-diem-mu` ⇒ ghi chú cho người soát.
+   - `cong1-lay-mau` / `cong2-lay-mau` ⇒ cổng chỉ thử mẫu; ghi chú cho người soát.
+   - `can-bang-hieu-chinh-tien-le-da-co` ⇒ soạn theo CHỮ BIỂU, ghi chú `LECH_TIEN_LE` trỏ mục bảng.
    - `cong2-chong-lan-van-ban` ⇒ cặp bạn đã khai, giữ.
 7. `npm test` phải xanh (in `=== ALL TESTS PASSED ===`).
 
@@ -122,10 +126,10 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
 | Tiêu đề bị lược tên / tầng bị lược | `CHẶN: tieu-de-bi-luoc-ten`; lỗi `cong1-tieu-de-bi-luoc-ten`, `cong1-tang-bi-luoc` |
 | Thiếu khoá từ vựng | spec dùng khoá lạ (`THIEU_KHOA_TU_VUNG`, mã 3), hoặc bạn ghi ghi chú `THIEU_KHOA_TU_VUNG` |
 | Chồng lấn theo trục | lỗi `cong2-chong-lan-truc` |
-| Phân nhóm có cờ tiền lệ | `[CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — L1-4b]` |
+| Phân nhóm có cờ tiền lệ mà bảng hiệu chỉnh CHƯA CÓ MỤC cho PN6 | `[CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — … chưa có mục …]`; DỪNG `can-bang-hieu-chinh-tien-le:<pn6>:chua-co` (bảng đã có mục ⇒ không DỪNG) |
 | Dòng không tới được mà không sửa được | lỗi `cong2-dong-khong-toi-duoc` sau khi đã thử đổi khoá |
 | Cổng nào đó chỉ xanh được nếu bịa chữ / thêm điều kiện chữ không nói | bất kỳ |
-| Quá 8 vòng sửa vẫn đỏ, hoặc quá nhiều tổ hợp | `cong1-qua-nhieu-to-hop`, `cong2-qua-nhieu-to-hop` |
+| Quá 8 vòng sửa vẫn đỏ, hoặc dòng quá nhiều tổ hợp mà mẫu không tới được | `cong2-qua-nhieu-to-hop:<dòng>` |
 | Bạn không chắc một điều kiện nói đúng chữ | — |
 
 Khi DỪNG: giữ spec đến chỗ đã làm (mục chưa chắc để `"dieuKienSo": []` + ghi chú loai `DUNG`), chạy `--ap-spec` lần cuối, commit,
