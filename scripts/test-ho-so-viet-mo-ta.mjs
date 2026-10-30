@@ -291,7 +291,7 @@ const thamChieuStub = (o = {}) => { const f = async (q) => { f.goi.push(q); retu
   const h = clone(phich.hoSo);
   h.duongDiPhapLy[0].nguon.trich = '96170020 - Bộ phận bằng thép của phích theo câu bịa XYZ';
   const v = await HS.vietMoTa(h, { cheDo: 'MAY' });
-  check('K1 trích bịa không xuất hiện ở đâu trong kết quả, trừ trichBiLoai', !JSON.stringify({ ...v, trichBiLoai: undefined }).includes('câu bịa XYZ'), v.bangGiaiTrinh);
+  check('K1 trích bịa không xuất hiện ở đâu trong kết quả (kể cả trichBiLoai)', !JSON.stringify(v).includes('câu bịa XYZ'), v.bangGiaiTrinh);
   check('K2 trichBiLoai ghi mục bị loại', Array.isArray(v.trichBiLoai) && v.trichBiLoai.some((t) => t.nut === '96170020'), v.trichBiLoai);
   check('K3 dữ kiện quyết định mất căn cứ ⇒ bản nháp (không tô hồng)', v.banNhap === true && v.moTaEcus == null, v);
 }
