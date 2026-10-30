@@ -111,7 +111,7 @@ const nhap850131 = (pcl) => nhap('850131', {
   check('3j băm: bản không có phanConLai giữ băm cũ; thêm phanConLai ⇒ băm đổi', C.bamRanhGioi(nhap850131()) === C.bamRanhGioi(JSON.parse(JSON.stringify(nhap850131()))) && C.bamRanhGioi(nhap850131(true)) !== C.bamRanhGioi(nhap850131()));
   const S8501 = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/8501.json'), 'utf8'));
   let moi = null; let nem = null;
-  try { moi = C.apDung(C.duyet(nhap850131(true), { phien: 'https://claude.ai/code/session_TEST#soat-test', ngay: '2026-10-31' }), S8501); } catch (e) { nem = e.message; }
+  try { moi = C.apDung(C.duyet(nhap850131(true), { phien: 'https://claude.ai/code/session_TEST#soat-review', ngay: '2026-10-31' }), S8501); } catch (e) { nem = e.message; }
   check('3k áp vào sổ tay mang phanConLai sang dòng .70', moi?.dong8.find((d) => d.hs === '85013170')?.phanConLai === true, nem);
 }
 {

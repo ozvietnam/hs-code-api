@@ -59,7 +59,8 @@ if (args.goi) {
     console.log(`Từ vựng (${goi[0].tuVung.length} khoá): ${goi[0].tuVung.map((k) => `${k.khoa}:${k.kieu}`).join(', ')}`);
   }
 } else if (args['tao-nhap']) {
-  const ds = danhSach(); can(ds && ds.length, 'cần --pn6=… hoặc --dot=N'); can(args.phien && args.phien !== true, 'cần --phien=<phiên người soạn>');
+  const ds = danhSach(); can(ds && ds.length, 'cần --pn6=… hoặc --dot=N'); can(args.phien && args.phien !== true, 'cần --phien=<định danh>#soan-<nhãn>');
+  { const lp = C.kiemPhien(args.phien, 'soan'); can(!lp, lp); }
   for (const p of ds) {
     if (docNhap(p)) { console.log(`${p}: đã có bản nháp — giữ nguyên`); continue; }
     console.log(`${p}: ${ghi(tepNhap(p), C.taoKhung(p, { phien: args.phien, ngay: homNay() }))}`);
