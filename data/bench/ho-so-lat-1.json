@@ -1,0 +1,2135 @@
+{
+ "phienBan": "lat-1@1",
+ "ten": "Bộ đề lát 1 — 50 phân nhóm chênh thuế (data/ho-so/lat-1.json), nguồn chính là kết luận TB-TCHQ (L1-2a, #566)",
+ "lat": 1,
+ "danhSachLat1": "data/ho-so/lat-1.json",
+ "duyetBoi": "CLAUDE_DUYET",
+ "quyTacChamDuyet": "ozplugin docs/gd/ghi-nhan-mo-ta-ecus.md mục 36 điểm 1 (như bộ đề #543) + luật lát 1 (plan L1-2a, spec §11 \"học tủ\"): bộ đề dựng TRƯỚC và ĐỘC LẬP với số hoá ranh giới (L1-3/L1-4, agent khác); agent soạn KHÔNG đọc data/so-tay/ và không xem đầu ra máy; mã đáp án của ca TB-TCHQ = mã kết luận của thông báo, không do Claude chọn; mọi căn cứ trích NGUYÊN VĂN từ tệp NGUYEN_VAN (biểu thuế, SEN, chú giải, TB-TCHQ); không trích được thì khongDuCanCu; chữ biểu thuế và TB-TCHQ lệch nhau thì lechTienLe, ghi cả hai căn cứ, KHÔNG chọn bên; nhãn CLAUDE_DUYET (Claude chấm — KHÔNG phải chuyên gia/người duyệt).",
+ "khongChuaDuLieuOz": "Không ca nào lấy từ tờ khai Oz (data/oz-gold-final.jsonl, data/oz-export/). Thông tin hàng lấy từ TB-TCHQ công khai (data/precedents.json) hoặc tự dựng theo biểu thuế/SEN/chú giải (nguonCa.loai = TU_DUNG). Câu moTaMau do Claude tự viết.",
+ "huongDan": {
+  "duKienQuyetDinh": "Như bộ đề #543: cap 4 | 6 | 8 | LOAI_TRU; nguon/trich = căn cứ NGUYÊN VĂN (biểu thuế, chú giải, SEN, TB-TCHQ); bangChungHang = trích nguyên văn cho thấy hàng có dữ kiện; tuKhoa = biểu thức chính quy mô tả phải khớp TẤT CẢ.",
+  "caTbTchq": "maHs = mã kết luận của thông báo (nguonCa.viTri). Dữ kiện cấp 8 của dòng \"Loại khác\" ghi bằng tên hàng cụ thể + căn cứ là câu kết luận của thông báo (biểu thuế không có chữ khẳng định cho dòng \"Loại khác\").",
+  "caTuDung": "Phân nhóm không có kết luận TB-TCHQ dùng được (mã 8 số còn trong biểu) — hàng giả định theo chữ dòng 8 số; độ tin cậy thấp hơn ca TB-TCHQ.",
+  "lechTienLe": "true: chữ biểu thuế (hoặc SEN) và TB-TCHQ lệch nhau; lechChiTiet ghi cả hai căn cứ; mã ca giữ theo TB-TCHQ (là nguồn ca), KHÔNG có nghĩa Claude cho TB-TCHQ đúng.",
+  "caCaiLoi": "boDuKien = chỉ số dữ kiện bỏ được (bench --mode=soat chấm THIẾU); doiAnhEm = thay cụm `tu` trong moTaMau bằng `sang` để câu trỏ sang dòng anh em `maTroToi` CÙNG phân nhóm, KHÁC mức MFN (chấm MÂU THUẪN)."
+ },
+ "ca": [
+  {
+   "id": "L1-392690-01",
+   "lat": 1,
+   "pn6": "392690",
+   "maHs": "39269093",
+   "chuong": "39",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "6317/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "39269093[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Nút vặn điều chỉnh dây cho giày",
+    "chatLieu": "plastic",
+    "congDung": "xoay để siết/nới dây giày",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "Li2 L Eyestay Dial A"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng plastic",
+     "tuKhoa": [
+      "nhựa|plastic|nylon|polyme|tpu|pom|polyacetal"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm khác bằng plastic"
+    },
+    {
+     "cap": 8,
+     "duKien": "khóa điều chỉnh (nút vặn điều chỉnh dây)",
+     "tuKhoa": [
+      "điều chỉnh",
+      "dây"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Khóa, khóa điều chỉnh, móc treo và nút chặn dây",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "39269093[0].productName",
+      "trich": "Nút vặn điều chỉnh dây cho giày"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "39269099",
+     "lyDo": "dòng \"Loại khác\" cùng tiêu đề — chỉ khi hàng không phải khóa/khóa điều chỉnh/móc treo/nút chặn dây",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Nút vặn điều chỉnh dây giày bằng nhựa, xoay để siết/nới dây, model Li2 L Eyestay Dial A, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Nút vặn điều chỉnh dây giày",
+     "sang": "Khuôn (phom) giày",
+     "maTroToi": "39269081"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-392690-02",
+   "lat": 1,
+   "pn6": "392690",
+   "maHs": "39269099",
+   "chuong": "39",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "19/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "39269099[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Miếng điều hướng dây giày",
+    "chatLieu": "100% Nylon",
+    "congDung": "luồn dây giày qua để điều chỉnh hướng đi",
+    "thongSo": [
+     "kích thước 20.9 x 16.4 x 6.6 mm"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng plastic",
+     "tuKhoa": [
+      "nhựa|plastic|nylon|polyme|tpu|pom|polyacetal"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm khác bằng plastic",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "39269099[0].productName",
+      "trich": "100% Nylon"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "miếng điều hướng (dẫn hướng) dây giày — không phải khóa/khóa điều chỉnh/móc treo/nút chặn dây",
+     "tuKhoa": [
+      "điều hướng|dẫn hướng",
+      "dây giày"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "39269099[0].technicalSpec",
+     "trich": "mã số 3926.90.99 \"- - - Loại khác\"",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "39269099[0].productName",
+      "trich": "luồn dây giày qua để điều chỉnh hướng đi"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "39269093",
+     "lyDo": "khóa điều chỉnh / nút chặn dây — TB-TCHQ không xếp miếng dẫn hướng vào dòng này",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Khóa, khóa điều chỉnh, móc treo và nút chặn dây"
+    }
+   ],
+   "moTaMau": "Miếng điều hướng dây giày bằng nhựa 100% Nylon, KT 20.9x16.4x6.6mm, luồn dây giày để đổi hướng dây, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Miếng điều hướng dây giày",
+     "sang": "Khuôn (phom) giày",
+     "maTroToi": "39269081"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-392690-03",
+   "lat": 1,
+   "pn6": "392690",
+   "maHs": "39269099",
+   "chuong": "39",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "99/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "39269099[7]"
+   },
+   "thongTinHang": {
+    "tenHang": "Khóa hãm nhựa",
+    "chatLieu": "Polyoxymethylene (POM, polyacetal) M90-44, chất màu",
+    "congDung": "lắp vào hộc mở ở đầu xe và cốp để đồ của xe máy điện",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "37A7-0-A-998"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng plastic",
+     "tuKhoa": [
+      "nhựa|plastic|nylon|polyme|tpu|pom|polyacetal"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm khác bằng plastic",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "39269099[7].productName",
+      "trich": "Polyoxymethylene, hay còn tên khác là polyacetal (POM)"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "khóa hãm lắp hộc/cốp xe máy điện",
+     "tuKhoa": [
+      "khóa hãm",
+      "cốp|hộc"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "39269099[7].technicalSpec",
+     "trich": "mã số 3926.90.99 “- - - Loại khác”",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "39269099[7].productName",
+      "trich": "Khóa hãm nhựa được lắp vào hộc mở ở đầu xe điện và cốp để đồ của xe máy điện"
+     },
+     "khongDuCanCu": true,
+     "ghiChu": "Chữ dòng 3926.90.93 có từ \"Khóa\" còn TB-TCHQ xếp .99 — xem lechChiTiet."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "39269093",
+     "lyDo": "chữ dòng 8 số có \"Khóa\"; SEN mô tả khóa buộc dây đai/túi — TB-TCHQ xếp khóa hãm cốp xe vào .99, chưa phân xử",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Khóa, khóa điều chỉnh, móc treo và nút chặn dây"
+    }
+   ],
+   "moTaMau": "Khóa hãm bằng nhựa POM (polyacetal), lắp hộc mở đầu xe và cốp để đồ xe máy điện, mã 37A7-0-A-998, mới 100%",
+   "khongDuCanCu": true,
+   "lechTienLe": true,
+   "lechChiTiet": {
+    "bieuThue": {
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Khóa, khóa điều chỉnh, móc treo và nút chặn dây"
+    },
+    "sen": {
+     "nguon": "data/sen-2022.json",
+     "viTri": "muc[206].noiDung",
+     "trich": "Khóa nhựa được thiết kế để buộc chặt hai đầu rời được khóa trong khung và mở khóa. Chúng thường được sử dụng trong dây đai an toàn ghế ngồi và túi."
+    },
+    "tienLe": {
+     "nguon": "data/precedents.json",
+     "viTri": "39269099[7].technicalSpec",
+     "trich": "mã số 3926.90.99 “- - - Loại khác”"
+    },
+    "ghiChu": "Chữ dòng .93 có \"Khóa\" (cùng mức MFN 12 % với .99); SEN chỉ tả khóa buộc dây đai/túi; TB-TCHQ 99/2023 xếp khóa hãm cốp xe vào .99. lat-1.json gắn cờ LK_TRUNG_TEN_ANH_EM. Claude không chọn bên — chờ chuyên gia."
+   },
+   "caCaiLoi": {
+    "boDuKien": [
+     0
+    ],
+    "doiAnhEm": null
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-392690-04",
+   "lat": 1,
+   "pn6": "392690",
+   "maHs": "39269039",
+   "chuong": "39",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "2594/TCHQ-TXNK",
+    "tep": "data/precedents.json",
+    "viTri": "39269039[0]",
+    "ghiChu": "văn bản 2594/TCHQ-TXNK (không phải số hiệu TB-TCHQ) — vẫn là kết luận phân loại công khai của cơ quan hải quan trong data/precedents.json"
+   },
+   "thongTinHang": {
+    "tenHang": "Giấy thấm dầu (oil blotting paper)",
+    "chatLieu": "plastic",
+    "congDung": "thấm dầu trên da mặt",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng plastic",
+     "tuKhoa": [
+      "nhựa|plastic|nylon|polyme|tpu|pom|polyacetal"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm khác bằng plastic"
+    },
+    {
+     "cap": 8,
+     "duKien": "sản phẩm vệ sinh (thấm dầu da mặt) bằng plastic, không phải sản phẩm giấy Chương 48",
+     "tuKhoa": [
+      "thấm dầu",
+      "da mặt"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Các sản phẩm vệ sinh, y tế và phẫu thuật:",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "39269039[0].productName",
+      "trich": "tấm/miếng thấm dầu trên da mặt"
+     }
+    },
+    {
+     "cap": "LOAI_TRU",
+     "duKien": "không thuộc Chương 48 (giấy)",
+     "tuKhoa": [
+      "nhựa|plastic"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "39269039[0].technicalSpec",
+     "trich": "không thuộc Chương 48"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "39269099",
+     "lyDo": "nhánh \"Loại khác\" cuối — công văn xếp vào nhánh sản phẩm vệ sinh",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Miếng thấm dầu da mặt (oil blotting paper) bằng plastic, dạng tấm nhỏ, dùng vệ sinh da mặt, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "dùng vệ sinh da mặt",
+     "sang": "dùng làm khuôn lấy dấu răng",
+     "maTroToi": "39269032"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-854442-01",
+   "lat": 1,
+   "pn6": "854442",
+   "maHs": "85444299",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "524/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85444299[12]"
+   },
+   "thongTinHang": {
+    "tenHang": "Cáp tín hiệu VGA 3+6",
+    "chatLieu": "9 sợi dây dẫn bọc cách điện plastic, chống nhiễu, đường kính lõi mỗi sợi 0,3 mm",
+    "congDung": "kết nối máy tính, màn hình, máy chiếu",
+    "thongSo": [
+     "dài 1,5 m, hai đầu gắn đầu nối",
+     "điện áp không quá 1.000 V"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "dây/cáp điện có cách điện",
+     "tuKhoa": [
+      "cáp|dây",
+      "cách điện|bọc (nhựa|plastic|pvc)"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Dây điện, cáp điện (kể cả cáp đồng trục) có cách điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[12].productName",
+      "trich": "có cách điện bằng plastic"
+     }
+    },
+    {
+     "cap": 6,
+     "duKien": "dùng cho điện áp không quá 1.000 V",
+     "tuKhoa": [
+      "1\\.?000\\s*v|80\\s*v|điện áp"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Các vật dẫn điện khác(*), dùng cho điện áp không quá 1.000 V",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[12].productName",
+      "trich": "dùng cho điện áp không quá một 1000 V"
+     }
+    },
+    {
+     "cap": 6,
+     "duKien": "đã lắp với đầu nối điện",
+     "tuKhoa": [
+      "đầu nối|đầu cắm|connector|jack|rj45|db9"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Đã lắp với đầu nối điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[12].productName",
+      "trich": "hai đầu gắn đầu nối"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "cách điện plastic, lõi mỗi sợi 0,3 mm (dữ kiện phân biệt với 8544.42.94)",
+     "tuKhoa": [
+      "lõi",
+      "0[,.]3\\s*mm"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[12].productName",
+      "trich": "đường kính lõi mỗi sợi 0,3 mm"
+     },
+     "khongDuCanCu": true,
+     "ghiChu": "Chữ dòng .94 khớp hàng nhưng TB-TCHQ kết luận .99 — xem lechChiTiet."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85444294",
+     "lyDo": "chữ dòng khớp (cách điện plastic, lõi ≤ 5 mm) nhưng TB-TCHQ xếp .99 — chưa phân xử",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm"
+    },
+    {
+     "ma": "85444219",
+     "lyDo": "nhánh viễn thông ≤ 80 V — thông báo xếp nhánh \"Loại khác\" (không viễn thông)",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Dùng cho viễn thông, điện áp không quá 80 V"
+    }
+   ],
+   "moTaMau": "Cáp tín hiệu VGA 3+6, 9 sợi dẫn bọc cách điện plastic chống nhiễu, lõi mỗi sợi 0,3mm, dài 1,5m, hai đầu gắn đầu nối, điện áp không quá 1000V, mới 100%",
+   "khongDuCanCu": true,
+   "lechTienLe": true,
+   "lechChiTiet": {
+    "bieuThue": {
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm"
+    },
+    "tienLe": {
+     "nguon": "data/precedents.json",
+     "viTri": "85444299[12].technicalSpec",
+     "trich": "mã số 8544.42.99 “- - - - Loại khác”"
+    },
+    "ghiChu": "Đúng kiểu 8544.42.99 (spec §9, §11): đọc theo chữ, cáp cách điện plastic lõi ≤ 5 mm là .94 (MFN 17 %); TB-TCHQ 524/2019 xếp .99 (10 %). Thông báo ra theo Danh mục thời điểm 2019 — Claude không kiểm được danh mục khi đó đã có dòng .94 hay chưa. Không chọn bên — chờ bảng hiệu chỉnh tiền lệ (L1-4b) / chuyên gia."
+   },
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "điện áp không quá 1000V",
+     "sang": "dùng cho viễn thông, điện áp không quá 80V",
+     "maTroToi": "85444213"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-854442-02",
+   "lat": 1,
+   "pn6": "854442",
+   "maHs": "85444299",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "567/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85444299[14]"
+   },
+   "thongTinHang": {
+    "tenHang": "Cáp AISG kết nối RRU với ăng ten",
+    "chatLieu": "lõi đồng, cách điện bằng plastic",
+    "congDung": "truyền tín hiệu điều khiển từ RRU đến ăng ten để điều chỉnh pha",
+    "thongSo": [
+     "đã lắp đầu nối DB9",
+     "dài 10 m",
+     "điện áp 220 V"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "AISG-K-0t-DB9-01"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "dây/cáp điện có cách điện",
+     "tuKhoa": [
+      "cáp|dây",
+      "cách điện|bọc (nhựa|plastic|pvc)"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Dây điện, cáp điện (kể cả cáp đồng trục) có cách điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[14].productName",
+      "trich": "cách điện bằng plastic"
+     }
+    },
+    {
+     "cap": 6,
+     "duKien": "đã lắp với đầu nối điện",
+     "tuKhoa": [
+      "đầu nối|đầu cắm|connector|jack|rj45|db9"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Đã lắp với đầu nối điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[3].productName",
+      "trich": "đã được lắp với đầu nối điện"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "cáp tín hiệu điều khiển, KHÔNG phải cáp viễn thông (loại nhánh 8544.42.1x/2x)",
+     "tuKhoa": [
+      "điều khiển",
+      "không phải (cáp )?(dùng cho )?viễn thông"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85444299[14].productName",
+     "trich": "không phải loại cáp dùng cho lĩnh vực viễn thông để truyền dẫn các tín hiệu viễn thông"
+    },
+    {
+     "cap": 8,
+     "duKien": "cách điện plastic (chữ dòng 8544.42.96)",
+     "tuKhoa": [
+      "plastic|nhựa"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic khác",
+     "khongDuCanCu": true,
+     "ghiChu": "Chữ dòng .96 khớp \"cách điện bằng plastic\" nhưng TB-TCHQ kết luận .99 — xem lechChiTiet."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85444213",
+     "lyDo": "viễn thông ≤ 80 V, cách điện plastic — thông báo nói rõ không phải cáp viễn thông",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác, cách điện bằng cao su, plastic hoặc giấy"
+    },
+    {
+     "ma": "85444296",
+     "lyDo": "cáp điện cách điện bằng plastic khác — chữ khớp, TB-TCHQ xếp .99",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic khác"
+    }
+   ],
+   "moTaMau": "Cáp AISG truyền tín hiệu điều khiển từ RRU đến ăng ten, không phải cáp viễn thông, lõi đồng cách điện plastic, gắn đầu nối DB9, dài 10m, 220V, mới 100%",
+   "khongDuCanCu": true,
+   "lechTienLe": true,
+   "lechChiTiet": {
+    "bieuThue": {
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic khác"
+    },
+    "tienLe": {
+     "nguon": "data/precedents.json",
+     "viTri": "85444299[14].technicalSpec",
+     "trich": "mã số 8544.42.99 “- Loại khác”"
+    },
+    "ghiChu": "Cáp cách điện plastic: chữ dòng .94/.96 (MFN 17 %) khớp vật liệu; TB-TCHQ 567/2019 xếp .99 (10 %). Thông báo theo Danh mục 2019 — chưa kiểm danh mục khi đó. Không chọn bên."
+   },
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "không phải cáp viễn thông",
+     "sang": "cáp viễn thông",
+     "maTroToi": "85444213"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-854442-03",
+   "lat": 1,
+   "pn6": "854442",
+   "maHs": "85444299",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "551/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85444299[13]"
+   },
+   "thongTinHang": {
+    "tenHang": "Cáp mạng CAT6 đã lắp đầu nối",
+    "chatLieu": "ruột 08 sợi dây đồng, mỗi sợi bọc cách điện plastic, xoắn 04 cặp, vỏ plastic",
+    "congDung": "truyền dữ liệu trong mạng máy tính và hệ thống điều khiển có máy tính",
+    "thongSo": [
+     "điện áp sử dụng lớn nhất 80 V",
+     "dài 10 FT",
+     "lõi 24AWG"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "1-1859247-0"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "dây/cáp điện có cách điện",
+     "tuKhoa": [
+      "cáp|dây",
+      "cách điện|bọc (nhựa|plastic|pvc)"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Dây điện, cáp điện (kể cả cáp đồng trục) có cách điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[13].productName",
+      "trich": "mỗi sợi bọc cách điện riêng bằng plastic"
+     }
+    },
+    {
+     "cap": 6,
+     "duKien": "đã lắp với đầu nối điện",
+     "tuKhoa": [
+      "đầu nối|đầu cắm|connector|jack|rj45|db9"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Đã lắp với đầu nối điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[13].productName",
+      "trich": "Cáp dẫn điện, đã lắp đầu nối"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "điện áp lớn nhất 80 V, truyền dữ liệu mạng máy tính",
+     "tuKhoa": [
+      "80\\s*v",
+      "mạng máy tính|dữ liệu"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85444299[13].technicalSpec",
+     "trich": "mã số 8544.42.99 “- - - - Loại khác”",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[13].productName",
+      "trich": "điện áp sử dụng lớn nhất 80V"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "cách điện plastic (chữ dòng 8544.42.94)",
+     "tuKhoa": [
+      "plastic|nhựa"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm",
+     "khongDuCanCu": true,
+     "ghiChu": "Chữ dòng .94 (và .13 nếu coi là viễn thông) khớp; TB-TCHQ kết luận .99 — xem lechChiTiet."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85444213",
+     "lyDo": "nhánh viễn thông ≤ 80 V cách điện plastic (MFN 0 %) — TB-TCHQ không xếp cáp mạng máy tính vào nhánh viễn thông",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác, cách điện bằng cao su, plastic hoặc giấy"
+    },
+    {
+     "ma": "85444294",
+     "lyDo": "cáp cách điện plastic lõi ≤ 5 mm — chữ khớp, TB-TCHQ xếp .99",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm"
+    }
+   ],
+   "moTaMau": "Cáp mạng CAT6 dài 10FT đã lắp đầu nối, 8 sợi đồng bọc cách điện plastic xoắn 4 cặp, lõi 24AWG, điện áp lớn nhất 80V, truyền dữ liệu mạng máy tính, mới 100%",
+   "khongDuCanCu": true,
+   "lechTienLe": true,
+   "lechChiTiet": {
+    "bieuThue": {
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm"
+    },
+    "tienLe": {
+     "nguon": "data/precedents.json",
+     "viTri": "85444299[13].technicalSpec",
+     "trich": "mã số 8544.42.99 “- - - - Loại khác”"
+    },
+    "ghiChu": "Cáp ≤ 80 V cách điện plastic: chữ dòng .94 (17 %) khớp; nếu coi là cáp viễn thông thì .13 (0 %); TB-TCHQ 551/2019 xếp .99 (10 %). Ba cách đọc, ba mức thuế. Không chọn bên."
+   },
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "truyền dữ liệu mạng máy tính",
+     "sang": "dùng cho viễn thông",
+     "maTroToi": "85444213"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-853710-01",
+   "lat": 1,
+   "pn6": "853710",
+   "maHs": "85371012",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "103/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85371012[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Màn hình điều khiển cảm ứng (HMI)",
+    "chatLieu": null,
+    "congDung": "theo dõi, giám sát và điều khiển hệ thống tự động hóa trong công nghiệp",
+    "thongSo": [
+     "có trang bị bộ xử lý lập trình"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": "Siemens",
+    "model": "SIMATIC HMI KTP 1200 Basic"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "bảng/panel điều khiển điện lắp từ hai thiết bị nhóm 85.35/85.36 trở lên",
+     "tuKhoa": [
+      "bảng|màn hình điều khiển|bản mạch|board"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "dùng để điều khiển hoặc phân phối điện"
+    },
+    {
+     "cap": 6,
+     "duKien": "dùng cho điện áp không quá 1.000 V",
+     "tuKhoa": [
+      "24\\s*v|1\\.?000\\s*v|điện áp"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Dùng cho điện áp không quá 1.000 V",
+     "khongDuCanCu": true,
+     "ghiChu": "Trích của TB-TCHQ chỉ ghi phân nhóm 8537.10, không ghi điện áp của hàng."
+    },
+    {
+     "cap": 8,
+     "duKien": "bảng điều khiển có trang bị bộ xử lý lập trình",
+     "tuKhoa": [
+      "bộ xử lý lập trình|lập trình"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Bảng điều khiển có trang bị bộ xử lý lập trình",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85371012[0].productName",
+      "trich": "là thiết bị điều khiển có trang bị bộ xử lý lập trình"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85371019",
+     "lyDo": "bảng điều khiển khác (không có bộ xử lý lập trình)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Màn hình điều khiển cảm ứng HMI có trang bị bộ xử lý lập trình, giám sát và điều khiển hệ thống tự động hóa công nghiệp, hiệu Siemens, model KTP 1200 Basic, mới 100%",
+   "khongDuCanCu": true,
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "có trang bị bộ xử lý lập trình",
+     "sang": "không có bộ xử lý lập trình",
+     "maTroToi": "85371019"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-853710-02",
+   "lat": 1,
+   "pn6": "853710",
+   "maHs": "85371019",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "4040/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85371019[2]"
+   },
+   "thongTinHang": {
+    "tenHang": "Bảng mạch điều khiển của thiết bị lọc không khí",
+    "chatLieu": "bản mạch điện tử, vi mạch điều khiển tích hợp bluetooth, linh kiện bán dẫn, điện trở, tụ điện, cuộn cảm, đầu nối",
+    "congDung": "gắn trong thiết bị lọc không khí để điều khiển thiết bị",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "bảng/panel điều khiển điện lắp từ hai thiết bị nhóm 85.35/85.36 trở lên",
+     "tuKhoa": [
+      "bảng|màn hình điều khiển|bản mạch|board"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "dùng để điều khiển hoặc phân phối điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85371019[2].productName",
+      "trich": "Bảng mạch điều khiển được gắn trong thiết bị lọc không khí"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "bảng điều khiển của thiết bị lọc không khí (không thuộc danh sách nhóm 84.15/84.18/84.50/85.08/85.09/85.16 của dòng .13)",
+     "tuKhoa": [
+      "lọc không khí"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85371019[2].technicalSpec",
+     "trich": "mã số 8537.10.19 “- - - Loại khác”",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85371019[2].productName",
+      "trich": "Bảng mạch điều khiển được gắn trong thiết bị lọc không khí"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "vi mạch điều khiển tích hợp bluetooth",
+     "tuKhoa": [
+      "bluetooth"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85371019[2].productName",
+     "trich": "vi mạch điều khiển đã tích hợp bluetooth"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85371013",
+     "lyDo": "chỉ cho bảng điều khiển dùng cho hàng nhóm 84.15, 84.18, 84.50, 85.08, 85.09, 85.16 — TB-TCHQ không xếp thiết bị lọc không khí vào đây",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16"
+    },
+    {
+     "ma": "85371012",
+     "lyDo": "bảng điều khiển có bộ xử lý lập trình — thông báo không ghi hàng có bộ xử lý lập trình",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Bảng điều khiển có trang bị bộ xử lý lập trình"
+    }
+   ],
+   "moTaMau": "Bảng mạch điều khiển gắn trong thiết bị lọc không khí, vi mạch điều khiển tích hợp bluetooth, đã lắp linh kiện bán dẫn, tụ, điện trở, đầu nối, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "gắn trong thiết bị lọc không khí",
+     "sang": "gắn trong máy giặt",
+     "maTroToi": "85371013"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-840991-01",
+   "lat": 1,
+   "pn6": "840991",
+   "maHs": "84099139",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "26/TB-CHQ",
+    "tep": "data/precedents.json",
+    "viTri": "84099139[0]",
+    "ghiChu": "văn bản 26/TB-CHQ (không phải số hiệu TB-TCHQ) — vẫn là kết luận phân loại công khai của cơ quan hải quan trong data/precedents.json"
+   },
+   "thongTinHang": {
+    "tenHang": "Tay đòn giảm áp / đối trọng ly tâm (ARM COMP DECOMP)",
+    "chatLieu": "thép",
+    "congDung": "gắn trên trục cam trong cơ cấu giảm áp của động cơ xe máy, giúp khởi động dễ hơn",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "bộ phận chỉ dùng/chủ yếu dùng cho động cơ nhóm 84.07/84.08",
+     "tuKhoa": [
+      "động cơ"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các bộ phận chỉ dùng hoặc chủ yếu dùng cho các loại động cơ thuộc nhóm 84.07 hoặc 84.08"
+    },
+    {
+     "cap": 6,
+     "duKien": "động cơ đốt trong piston đốt cháy bằng tia lửa điện",
+     "tuKhoa": [
+      "xăng|tia lửa điện|xe máy"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Chỉ dùng hoặc chủ yếu dùng cho động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện",
+     "khongDuCanCu": true,
+     "ghiChu": "Trích hàng chỉ ghi \"động cơ xe máy\", không ghi kiểu đánh lửa."
+    },
+    {
+     "cap": 8,
+     "duKien": "dùng cho xe thuộc nhóm 87.11 (xe máy)",
+     "tuKhoa": [
+      "xe máy"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Dùng cho xe của nhóm 87.11:",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84099139[0].productName",
+      "trich": "cụm trục cam động cơ xe máy"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "tay đòn giảm áp (không phải chế hòa khí/thân động cơ/xi lanh/quy lát/piston/bạc piston)",
+     "tuKhoa": [
+      "tay đòn|giảm áp"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "84099139[0].technicalSpec",
+     "trich": "mã số 8409.91.39 \"- – – – Loại khác\"",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84099139[0].productName",
+      "trich": "Tay đòn giảm áp/đối trọng ly tâm (ARM COMP DECOMP) bằng thép"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84099149",
+     "lyDo": "cùng loại bộ phận nhưng cho xe khác thuộc Chương 87 (MFN 10 % so với 27 %)",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Dùng cho xe khác thuộc Chương 87:"
+    }
+   ],
+   "moTaMau": "Tay đòn giảm áp (ARM COMP DECOMP) bằng thép, gắn trục cam trong cơ cấu giảm áp động cơ xe máy, giúp khởi động dễ, mới 100%",
+   "khongDuCanCu": true,
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "động cơ xe máy",
+     "sang": "động cơ xe ô tô",
+     "maTroToi": "84099149"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-840991-02",
+   "lat": 1,
+   "pn6": "840991",
+   "maHs": "84099149",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "123/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "84099149[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Bộ căng dùng cho động cơ diesel",
+    "chatLieu": null,
+    "congDung": null,
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "bộ phận chỉ dùng/chủ yếu dùng cho động cơ nhóm 84.07/84.08",
+     "tuKhoa": [
+      "động cơ"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các bộ phận chỉ dùng hoặc chủ yếu dùng cho các loại động cơ thuộc nhóm 84.07 hoặc 84.08"
+    },
+    {
+     "cap": 6,
+     "duKien": "động cơ piston đốt cháy bằng tia lửa điện (chữ phân nhóm) — tên hàng ghi \"động cơ diesel\"",
+     "tuKhoa": [
+      "diesel"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Chỉ dùng hoặc chủ yếu dùng cho động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84099149[0].productName",
+      "trich": "Bộ căng dùng cho động cơ diesel"
+     },
+     "khongDuCanCu": true,
+     "ghiChu": "Tên hàng ghi động cơ diesel còn phân nhóm 8409.91 là động cơ đánh lửa — xem lechChiTiet."
+    },
+    {
+     "cap": 8,
+     "duKien": "dùng cho xe khác thuộc Chương 87",
+     "tuKhoa": [
+      "xe|ô tô"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Dùng cho xe khác thuộc Chương 87:",
+     "khongDuCanCu": true,
+     "ghiChu": "Trích hàng không ghi loại xe."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84099139",
+     "lyDo": "nếu là động cơ xe máy nhóm 87.11 (27 %)",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Dùng cho xe của nhóm 87.11:"
+    }
+   ],
+   "moTaMau": "Bộ căng dùng cho động cơ diesel, lắp trên động cơ xe, mới 100%",
+   "khongDuCanCu": true,
+   "lechTienLe": true,
+   "lechChiTiet": {
+    "bieuThue": {
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Chỉ dùng hoặc chủ yếu dùng cho động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện"
+    },
+    "tienLe": {
+     "nguon": "data/precedents.json",
+     "viTri": "84099149[0].productName",
+     "trich": "Bộ căng dùng cho động cơ diesel"
+    },
+    "ghiChu": "Tên hàng trong TB-TCHQ 123/2025 ghi \"động cơ diesel\" nhưng mã kết luận thuộc phân nhóm 8409.91 (động cơ đánh lửa); bộ phận động cơ diesel đọc theo chữ là 8409.99. Có thể do trích tên hàng thiếu, có thể do thông báo. Claude không chọn bên — cần đọc toàn văn thông báo."
+   },
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "động cơ xe",
+     "sang": "động cơ xe máy",
+     "maTroToi": "84099139"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-848120-01",
+   "lat": 1,
+   "pn6": "848120",
+   "maHs": "84812090",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "5973/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "84812090[3]"
+   },
+   "thongTinHang": {
+    "tenHang": "Bộ phận phối tốc độ chậm (Manifold Slow Speed)",
+    "chatLieu": "khối thép đúc, bên trong 03 van không tách rời: van điện từ, van điều chỉnh lưu lượng, van vị trí",
+    "congDung": "điều khiển tốc độ chậm của tời trong trạm tời giếng khoan dầu khí, điều chỉnh lưu lượng/áp suất dầu thủy lực",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "van/vòi dùng cho đường ống",
+     "tuKhoa": [
+      "van|vòi"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Vòi, van và các thiết bị tương tự dùng cho đường ống"
+    },
+    {
+     "cap": 6,
+     "duKien": "van dùng trong truyền động dầu thủy lực",
+     "tuKhoa": [
+      "thủy lực"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Van dùng trong truyền động dầu thủy lực hoặc khí nén",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84812090[3].productName",
+      "trich": "áp suất dầu thủy lực"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "cụm van điện từ / điều chỉnh lưu lượng — không phải van cổng điều khiển bằng tay",
+     "tuKhoa": [
+      "điện từ|điều chỉnh lưu lượng"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "84812090[3].technicalSpec",
+     "trich": "mã số 8481.20.90 “- - Loại khác”",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84812090[3].productName",
+      "trich": "van điện từ 201Y4 và van điều chỉnh lưu lượng 02"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84812011",
+     "lyDo": "van cổng điều khiển bằng tay, bằng sắt/thép, đường kính trong 5–40 cm (MFN 5 %) — hàng là cụm van điện từ",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm:"
+    }
+   ],
+   "moTaMau": "Cụm van thủy lực (manifold) khối thép gồm van điện từ, van điều chỉnh lưu lượng, van vị trí, điều khiển tốc độ chậm tời giếng khoan, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1,
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "gồm van điện từ, van điều chỉnh lưu lượng, van vị trí",
+     "sang": "van cổng điều khiển bằng tay, đường kính trong 10cm",
+     "maTroToi": "84812011"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-848120-02",
+   "lat": 1,
+   "pn6": "848120",
+   "maHs": "84812090",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "852/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "84812090[1]"
+   },
+   "thongTinHang": {
+    "tenHang": "Van truyền động bằng khí nén (Air Valve)",
+    "chatLieu": "thân hợp kim nhôm",
+    "congDung": "van định hướng đảo chiều 5/2 trong hệ thống truyền động khí nén",
+    "thongSo": [
+     "áp suất 0,7 MPa",
+     "cuộn solenoid 24VDC"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": "Chanto",
+    "model": "VSY5120-D24L"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "van/vòi dùng cho đường ống",
+     "tuKhoa": [
+      "van|vòi"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Vòi, van và các thiết bị tương tự dùng cho đường ống"
+    },
+    {
+     "cap": 6,
+     "duKien": "van dùng trong truyền động khí nén",
+     "tuKhoa": [
+      "khí nén"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Van dùng trong truyền động dầu thủy lực hoặc khí nén",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84812090[1].productName",
+      "trich": "dùng trong hệ thống truyền động khí nén"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "van định hướng đảo chiều 5/2 hoạt động bằng solenoid — không phải van cổng điều khiển bằng tay",
+     "tuKhoa": [
+      "5/2",
+      "solenoid|điện từ"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "84812090[1].technicalSpec",
+     "trich": "mã 8481.20.90 'Loại khác'",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84812090[1].productName",
+      "trich": "van định hướng đảo chiều loại 5/2"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84812011",
+     "lyDo": "van cổng điều khiển bằng tay 5–40 cm",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm:"
+    }
+   ],
+   "moTaMau": "Van khí nén định hướng đảo chiều 5/2, thân hợp kim nhôm, cuộn solenoid 24VDC, áp suất 0,7MPa, hiệu Chanto, model VSY5120-D24L, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "định hướng đảo chiều 5/2, thân hợp kim nhôm, cuộn solenoid 24VDC",
+     "sang": "cổng điều khiển bằng tay, thân thép, đường kính trong 8cm",
+     "maTroToi": "84812011"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-950300-01",
+   "lat": 1,
+   "pn6": "950300",
+   "maHs": "95030010",
+   "chuong": "95",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "08/TCHQ-TXNK",
+    "tep": "data/precedents.json",
+    "viTri": "95030010[0]",
+    "ghiChu": "văn bản 08/TCHQ-TXNK (không phải số hiệu TB-TCHQ) — vẫn là kết luận phân loại công khai của cơ quan hải quan trong data/precedents.json"
+   },
+   "thongTinHang": {
+    "tenHang": "Xe đẩy đồ chơi cho trẻ em (push walker)",
+    "chatLieu": "nhựa, sắt",
+    "congDung": "trẻ đứng sau nắm tay đẩy để đẩy xe chạy",
+    "thongSo": [
+     "có bánh xe, tay đẩy, mô phỏng hình ô tô",
+     "có pin phát nhạc"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "đồ chơi",
+     "tuKhoa": [
+      "đồ chơi"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "đồ chơi khác"
+    },
+    {
+     "cap": 8,
+     "duKien": "xe đẩy đồ chơi có bánh (trẻ đẩy bằng tay đẩy)",
+     "tuKhoa": [
+      "xe đẩy",
+      "bánh"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "95030010[0].productName",
+      "trich": "trẻ đứng sau nắm tay đẩy để đẩy xe chạy"
+     }
+    },
+    {
+     "cap": "LOAI_TRU",
+     "duKien": "không phải khung tập đi có ghế ngồi (9403.70.10)",
+     "tuKhoa": [
+      "tay đẩy"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "95030010[0].technicalSpec",
+     "trich": "phân biệt với khung tập đi có ghế ngồi (9403.70.10)"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "95030099",
+     "lyDo": "đồ chơi khác không có bánh",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Xe đẩy đồ chơi trẻ em (push walker) bằng nhựa và sắt, có bánh xe và tay đẩy, mô phỏng hình ô tô, có pin phát nhạc, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Xe đẩy đồ chơi trẻ em (push walker)",
+     "sang": "Mô hình thu nhỏ theo tỷ lệ",
+     "maTroToi": "95030099"
+    }
+   },
+   "ghiChu": "doiAnhEm trỏ .99 (20 %) để kiểm mâu thuẫn; mô hình theo tỷ lệ đúng chữ là .40 (cùng 10 %) nên bench chỉ chấm \"câu không còn là xe đẩy có bánh\".",
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-950300-02",
+   "lat": 1,
+   "pn6": "950300",
+   "maHs": "95030099",
+   "chuong": "95",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "5875/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "95030099[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Đồ chơi công nghệ AR — Trái đất thực tế ảo (ORBOOT EARTH)",
+    "chatLieu": "quả cầu bằng nhựa và giấy, con dấu, sổ passport, sticker bằng giấy",
+    "congDung": "đồ chơi khám phá địa lý dùng công nghệ thực tế ảo tăng cường",
+    "thongSo": [
+     "đóng gói 1 bộ trong hộp giấy"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "ORBOOT EARTH"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "đồ chơi",
+     "tuKhoa": [
+      "đồ chơi"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "đồ chơi khác"
+    },
+    {
+     "cap": 8,
+     "duKien": "bộ đồ chơi AR quả cầu — không phải xe có bánh, búp bê, mô hình tỷ lệ, xếp hình, đồ chơi hình con vật, puzzle, thiết bị giáo dục điện tử cầm tay",
+     "tuKhoa": [
+      "quả cầu",
+      "ar|thực tế ảo"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "95030099[0].technicalSpec",
+     "trich": "mã số 9503.00.99 “- - Loại khác”",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "95030099[0].productName",
+      "trich": "Đồ chơi công nghệ AR - Trái đất thực tế ảo"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "95030080",
+     "lyDo": "thiết bị giáo dục điện tử tương tác cầm tay — bộ này là quả cầu nhựa/giấy, không phải thiết bị điện tử",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Thiết bị giáo dục điện tử tương tác cầm tay được thiết kế chủ yếu cho trẻ em"
+    },
+    {
+     "ma": "95030070",
+     "lyDo": "đồ chơi đố trí (puzzles)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các loại đồ chơi đố trí (puzzles)"
+    }
+   ],
+   "moTaMau": "Bộ đồ chơi AR Trái đất thực tế ảo ORBOOT EARTH: quả cầu bằng nhựa và giấy, con dấu, sổ passport, sticker giấy, đóng hộp giấy, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Bộ đồ chơi AR Trái đất thực tế ảo ORBOOT EARTH: quả cầu",
+     "sang": "Bộ đồ chơi đố trí (puzzle) ghép hình quả cầu",
+     "maTroToi": "95030070"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-732690-01",
+   "lat": 1,
+   "pn6": "732690",
+   "maHs": "73269099",
+   "chuong": "73",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "185/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "73269099[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Khay đựng/giữ ly cốc dùng cho ghế sofa",
+    "chatLieu": "thép không gỉ 201 (100% thép)",
+    "congDung": "đặt ở tay đỡ ghế sofa để giữ ly cốc",
+    "thongSo": [
+     "kích thước 107 x 107 x 55 mm",
+     "0,08 kg/sản phẩm"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng sắt hoặc thép",
+     "tuKhoa": [
+      "thép|sắt"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm khác bằng sắt hoặc thép",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "73269099[0].productName",
+      "trich": "thép không gỉ 201 (100% thép)"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "khay giữ ly cốc cho ghế sofa — không phải hộp đựng thuốc lá điếu/các dòng tên riêng",
+     "tuKhoa": [
+      "khay",
+      "ly|cốc",
+      "sofa"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "73269099[0].technicalSpec",
+     "trich": "mã số 7326.90.99 \"- - - Loại khác\"",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "73269099[0].productName",
+      "trich": "Khay đựng/giữ ly cốc bằng thép không gỉ 201"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "73269091",
+     "lyDo": "hộp đựng thuốc lá điếu (MFN 15 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Hộp đựng thuốc lá điếu"
+    }
+   ],
+   "moTaMau": "Khay giữ ly cốc lắp ghế sofa bằng thép không gỉ 201, KT 107x107x55mm, 0,08kg/cái, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Khay giữ ly cốc lắp ghế sofa",
+     "sang": "Hộp đựng thuốc lá điếu",
+     "maTroToi": "73269091"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-732690-02",
+   "lat": 1,
+   "pn6": "732690",
+   "maHs": "73269099",
+   "chuong": "73",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "4764/TCHQ-TXNK",
+    "tep": "data/precedents.json",
+    "viTri": "73269099[9]",
+    "ghiChu": "văn bản 4764/TCHQ-TXNK (không phải số hiệu TB-TCHQ) — vẫn là kết luận phân loại công khai của cơ quan hải quan trong data/precedents.json"
+   },
+   "thongTinHang": {
+    "tenHang": "Móc cẩu, mắt nối xích, vòng xích chủ, móc thu ngắn xích",
+    "chatLieu": "sắt hoặc thép",
+    "congDung": "dùng với xích cẩu hàng",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng sắt hoặc thép",
+     "tuKhoa": [
+      "thép|sắt"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm khác bằng sắt hoặc thép"
+    },
+    {
+     "cap": "LOAI_TRU",
+     "duKien": "không phải xích hay bộ phận của xích nhóm 73.15",
+     "tuKhoa": [
+      "móc cẩu|móc"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "73269099[9].technicalSpec",
+     "trich": "không phải là xích hay bộ phận của xích nhóm 73.15"
+    },
+    {
+     "cap": 8,
+     "duKien": "phụ kiện móc cẩu dùng với xích cẩu hàng",
+     "tuKhoa": [
+      "móc cẩu",
+      "xích cẩu"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "73269099[9].technicalSpec",
+     "trich": "mã 7326.90.99",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "73269099[9].productName",
+      "trich": "dùng với xích cẩu hàng"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "73269091",
+     "lyDo": "hộp đựng thuốc lá điếu",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Hộp đựng thuốc lá điếu"
+    }
+   ],
+   "moTaMau": "Móc cẩu bằng thép (móc, mắt nối, vòng chủ, móc thu ngắn) dùng với xích cẩu hàng, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": null
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-940542-01",
+   "lat": 1,
+   "pn6": "940542",
+   "maHs": "94054260",
+   "chuong": "94",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "6132/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "94054260[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Bộ đèn LED 1000W dùng cho tàu đánh bắt xa bờ",
+    "chatLieu": "module LED, trình điều khiển, khung nhôm tản nhiệt, vỏ đèn, quạt tản nhiệt",
+    "congDung": "chiếu sáng trên tàu đánh bắt xa bờ",
+    "thongSo": [
+     "1000W, 130V-270V",
+     "quạt IP68"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "10C1"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "đèn và bộ đèn",
+     "tuKhoa": [
+      "đèn"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Đèn (luminaires) và bộ đèn"
+    },
+    {
+     "cap": 6,
+     "duKien": "thiết kế chỉ dùng nguồn sáng LED",
+     "tuKhoa": [
+      "led"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED)",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "94054260[0].productName",
+      "trich": "Module LED"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "chiếu sáng bên ngoài, dùng cho tàu đánh bắt xa bờ",
+     "tuKhoa": [
+      "tàu (đánh bắt|cá)"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại chiếu sáng bên ngoài khác",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "94054260[0].productName",
+      "trich": "dùng cho tàu đánh bắt xa bờ"
+     },
+     "khongDuCanCu": true,
+     "ghiChu": "Chữ dòng .30 có \"đèn dùng cho … tàu thủy … bằng kim loại cơ bản\" — xem lechChiTiet."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "94054230",
+     "lyDo": "đèn dùng cho tàu thủy bằng kim loại cơ bản (MFN 5 %) — hàng khung nhôm, dùng trên tàu; TB-TCHQ xếp .60",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản"
+    },
+    {
+     "ma": "94054210",
+     "lyDo": "đèn pha",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Đèn pha"
+    }
+   ],
+   "moTaMau": "Bộ đèn LED 1000W 130-270V dùng trên tàu đánh bắt xa bờ, module LED, khung nhôm tản nhiệt, quạt làm mát, mã 10C1, mới 100%",
+   "khongDuCanCu": true,
+   "lechTienLe": true,
+   "lechChiTiet": {
+    "bieuThue": {
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản"
+    },
+    "tienLe": {
+     "nguon": "data/precedents.json",
+     "viTri": "94054260[0].technicalSpec",
+     "trich": "mã số 9405.42.60 “- - - Loại chiếu sáng bên ngoài khác”"
+    },
+    "ghiChu": "Đèn LED khung nhôm dùng trên tàu đánh bắt: chữ dòng .30 (đèn dùng cho tàu thủy, bằng kim loại cơ bản, MFN 5 %) có thể đọc là khớp; TB-TCHQ 6132/2024 xếp .60 (20 %). Dòng .30 có thể chỉ nhắm đèn hành trình/tín hiệu — chữ không nói rõ. Claude không chọn bên."
+   },
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Bộ đèn LED 1000W",
+     "sang": "Đèn pha LED 1000W",
+     "maTroToi": "94054210"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-940542-02",
+   "lat": 1,
+   "pn6": "940542",
+   "maHs": "94054210",
+   "chuong": "94",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 9405.42.10 (đèn pha LED); không phải lô hàng thật. precedents.json chỉ có 1 kết luận cho 9405.42."
+   },
+   "thongTinHang": {
+    "tenHang": "Đèn pha LED",
+    "chatLieu": "vỏ nhôm đúc, kính cường lực",
+    "congDung": "chiếu sáng sân bãi",
+    "thongSo": [
+     "công suất 200W",
+     "220V"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "đèn và bộ đèn",
+     "tuKhoa": [
+      "đèn"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Đèn (luminaires) và bộ đèn"
+    },
+    {
+     "cap": 6,
+     "duKien": "thiết kế chỉ dùng nguồn sáng LED",
+     "tuKhoa": [
+      "led"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED)"
+    },
+    {
+     "cap": 8,
+     "duKien": "đèn pha",
+     "tuKhoa": [
+      "đèn pha"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Đèn pha"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "94054220",
+     "lyDo": "đèn rọi khác (MFN 5 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Đèn rọi khác"
+    }
+   ],
+   "moTaMau": "Đèn pha LED 200W 220V, vỏ nhôm đúc, kính cường lực, chiếu sáng sân bãi, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "Đèn pha LED",
+     "sang": "Đèn rọi LED",
+     "maTroToi": "94054220"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-900490-01",
+   "lat": 1,
+   "pn6": "900490",
+   "maHs": "90049090",
+   "chuong": "90",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "18721/TB-CHQ",
+    "tep": "data/precedents.json",
+    "viTri": "90049090[0]",
+    "ghiChu": "văn bản 18721/TB-CHQ (không phải số hiệu TB-TCHQ) — vẫn là kết luận phân loại công khai của cơ quan hải quan trong data/precedents.json"
+   },
+   "thongTinHang": {
+    "tenHang": "Kính thông minh không màn hình (Non-display Smart Glasses)",
+    "chatLieu": "gọng, càng, mắt kính, mạch in mềm, camera, micro, loa, pin, ăngten, bảng mạch có bộ xử lý",
+    "congDung": "thiết bị đeo hình dạng như kính đeo, chụp ảnh/quay video",
+    "thongSo": [
+     "mắt kính không có chức năng hiệu chỉnh thị lực hay chống nắng"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "kính đeo và loại tương tự",
+     "tuKhoa": [
+      "kính"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Kính đeo, kính bảo hộ và các loại tương tự"
+    },
+    {
+     "cap": 8,
+     "duKien": "mắt kính không hiệu chỉnh thị lực, không chống nắng — không phải kính thuốc, không phải kính bảo hộ",
+     "tuKhoa": [
+      "không (có chức năng )?hiệu chỉnh thị lực"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "90049090[0].technicalSpec",
+     "trich": "mã số 9004.90.90 \"- - Loại khác\"",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "90049090[0].productName",
+      "trich": "không có chức năng hiệu chỉnh thị lực hay chống nắng"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "có camera, micro, loa, pin (kính thông minh)",
+     "tuKhoa": [
+      "camera"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "90049090[0].productName",
+     "trich": "Kính thông minh không màn hình (Non-display Smart Glasses)"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "90049010",
+     "lyDo": "kính thuốc (MFN 0 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Kính thuốc"
+    },
+    {
+     "ma": "90049050",
+     "lyDo": "kính bảo hộ (MFN 0 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Kính bảo hộ"
+    }
+   ],
+   "moTaMau": "Kính thông minh không màn hình, mắt kính không hiệu chỉnh thị lực, không chống nắng, tích hợp camera, micro, loa, pin, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "mắt kính không hiệu chỉnh thị lực, không chống nắng",
+     "sang": "mắt kính thuốc cận thị",
+     "maTroToi": "90049010"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-900490-02",
+   "lat": 1,
+   "pn6": "900490",
+   "maHs": "90049050",
+   "chuong": "90",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 9004.90.50 (kính bảo hộ); không phải lô hàng thật. precedents.json chỉ có 1 kết luận cho 9004.90."
+   },
+   "thongTinHang": {
+    "tenHang": "Kính bảo hộ lao động",
+    "chatLieu": "tròng polycarbonate trong suốt, gọng nhựa",
+    "congDung": "bảo vệ mắt khỏi bụi, mảnh văng khi làm việc",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "kính đeo và loại tương tự",
+     "tuKhoa": [
+      "kính"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Kính đeo, kính bảo hộ và các loại tương tự"
+    },
+    {
+     "cap": 8,
+     "duKien": "kính bảo hộ",
+     "tuKhoa": [
+      "kính bảo hộ"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Kính bảo hộ"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "90049090",
+     "lyDo": "kính đeo khác (MFN 20 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Kính bảo hộ lao động, tròng polycarbonate trong suốt, gọng nhựa, chống bụi và mảnh văng, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Kính bảo hộ lao động",
+     "sang": "Kính đeo thời trang",
+     "maTroToi": "90049090"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-848180-01",
+   "lat": 1,
+   "pn6": "848180",
+   "maHs": "84818063",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "43552/TB-CHQ",
+    "tep": "data/precedents.json",
+    "viTri": "84818063[0]",
+    "ghiChu": "văn bản 43552/TB-CHQ (không phải số hiệu TB-TCHQ) — vẫn là kết luận phân loại công khai của cơ quan hải quan trong data/precedents.json"
+   },
+   "thongTinHang": {
+    "tenHang": "Bộ van đường ống nước (heating kit)",
+    "chatLieu": "đồng thau",
+    "congDung": "lắp đường ống nước hệ thống sưởi",
+    "thongSo": [
+     "gồm 2 van bi đóng mở bằng tay, ống dẫn nước bằng đồng, đầu nối, khớp nối, co nối, ron nhựa, đồng hồ nhiệt độ và áp suất"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "I series Combi Prim Sec heating kit"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "van/vòi dùng cho đường ống",
+     "tuKhoa": [
+      "van|vòi"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Vòi, van và các thiết bị tương tự dùng cho đường ống"
+    },
+    {
+     "cap": 8,
+     "duKien": "van đường ống nước",
+     "tuKhoa": [
+      "đường ống nước|ống nước"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Van đường ống nước:",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84818063[0].productName",
+      "trich": "Bộ van đường ống nước"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "không phải van cổng gang đúc ≥ 4 cm / van bướm gang đúc ≥ 8 cm (vật liệu đồng thau)",
+     "tuKhoa": [
+      "đồng thau"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "84818063[0].technicalSpec",
+     "trich": "mã số 8481.80.63 \" - - - Loại khác \"",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84818063[0].productName",
+      "trich": "Là bộ sản phẩm có chất liệu bằng đồng thau"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84818072",
+     "lyDo": "van bi \"loại khác\" (MFN 10 %) — tiêu đề \"Van bi\" nằm dưới \"Loại khác\", sau \"Van đường ống nước\"",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Van bi:"
+    }
+   ],
+   "moTaMau": "Bộ van đường ống nước hệ sưởi bằng đồng thau gồm 2 van bi đóng mở tay, ống đồng, đầu nối, đồng hồ nhiệt độ áp suất, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": null
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-848180-02",
+   "lat": 1,
+   "pn6": "848180",
+   "maHs": "84818099",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "5182/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "84818099[7]"
+   },
+   "thongTinHang": {
+    "tenHang": "Van điều tiết nước làm mát động cơ (VALVE ASSY, MCVE, EV)",
+    "chatLieu": "vỏ van, trục van, bộ điều khiển (cảm biến và động cơ bước), van đĩa",
+    "congDung": "tự động đóng ngắt bằng điện, điều tiết nước làm mát động cơ",
+    "thongSo": [
+     "van có 3 cổng: 1 cổng vào, 2 cổng ra",
+     "nguồn 12V"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "van/vòi dùng cho đường ống",
+     "tuKhoa": [
+      "van|vòi"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Vòi, van và các thiết bị tương tự dùng cho đường ống"
+    },
+    {
+     "cap": 8,
+     "duKien": "van 3 cổng (1 vào, 2 ra) điều khiển bằng động cơ bước",
+     "tuKhoa": [
+      "3 cổng",
+      "động cơ bước"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "84818099[7].technicalSpec",
+     "trich": "mã số 8481.80.99 “- - - - Loại khác”",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84818099[7].productName",
+      "trich": "Van có 3 cổng, 1 cổng vào và 2 cổng ra"
+     },
+     "khongDuCanCu": true,
+     "ghiChu": "Chữ tiêu đề \"Van nhiều cửa\" (.79, MFN 5 %) có thể khớp van 3 cổng; TB-TCHQ xếp .99 (10 %) — xem lechChiTiet."
+    },
+    {
+     "cap": 8,
+     "duKien": "điều tiết nước làm mát động cơ",
+     "tuKhoa": [
+      "làm mát"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "84818099[7].productName",
+     "trich": "dùng để điều tiết nước làm mát động cơ"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84818079",
+     "lyDo": "van nhiều cửa \"loại khác\" (MFN 5 %) — hàng có 3 cổng; TB-TCHQ xếp .99",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Van nhiều cửa:"
+    }
+   ],
+   "moTaMau": "Van điều tiết nước làm mát động cơ, 3 cổng (1 vào 2 ra), vỏ van, trục, van đĩa, điều khiển bằng cảm biến và động cơ bước 12V, mới 100%",
+   "khongDuCanCu": true,
+   "lechTienLe": true,
+   "lechChiTiet": {
+    "bieuThue": {
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Van nhiều cửa:"
+    },
+    "tienLe": {
+     "nguon": "data/precedents.json",
+     "viTri": "84818099[7].technicalSpec",
+     "trich": "mã số 8481.80.99 “- - - - Loại khác”"
+    },
+    "ghiChu": "Van 3 cổng điều khiển điện: tiêu đề \"Van nhiều cửa\" (8481.80.78/.79, MFN 5 %) đọc theo chữ có thể khớp; TB-TCHQ 5182/2024 xếp .99 (10 %). Biểu không định nghĩa \"nhiều cửa\". Claude không chọn bên."
+   },
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": null
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-848180-03",
+   "lat": 1,
+   "pn6": "848180",
+   "maHs": "84818099",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "3582/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "84818099[3]"
+   },
+   "thongTinHang": {
+    "tenHang": "Vòi nước rửa tay tích hợp máy làm khô tay bằng quạt gió",
+    "chatLieu": "vòi thép không gỉ, động cơ trong hộp nhựa ABS",
+    "congDung": "rửa tay và làm khô tay, kích hoạt bằng cảm biến hồng ngoại",
+    "thongSo": [
+     "chỉ có 01 đường dẫn nước vào",
+     "220-240V, 1000W",
+     "không dùng nhiệt"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": "Dyson",
+    "model": "WD04 Airblade Wash+Dry"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "van/vòi dùng cho đường ống",
+     "tuKhoa": [
+      "van|vòi"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Vòi, van và các thiết bị tương tự dùng cho đường ống"
+    },
+    {
+     "cap": 8,
+     "duKien": "chỉ một đường dẫn nước vào — không có khoang pha trộn",
+     "tuKhoa": [
+      "01 đường|một đường|1 đường"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "84818099[3].technicalSpec",
+     "trich": "thiết kế chỉ có 01 đường dẫn nước vào vòi",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "84818099[3].productName",
+      "trich": "chỉ có 01 đường dẫn nước vào"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "vòi bằng thép không gỉ (không phải vòi đồng/hợp kim đồng)",
+     "tuKhoa": [
+      "thép không gỉ|inox"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "84818099[3].productName",
+     "trich": "01 vòi nước bằng thép không gỉ"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84818059",
+     "lyDo": "van và vòi có khoang pha trộn lưu chất (MFN 20 %) — hàng chỉ 1 đường nước vào",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Van và vòi có khoang pha trộn lưu chất:"
+    },
+    {
+     "ma": "84818098",
+     "lyDo": "vòi nước bằng đồng/hợp kim đồng ≤ 2,5 cm — vòi này bằng thép không gỉ",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Vòi nước bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống"
+    }
+   ],
+   "moTaMau": "Vòi rửa tay tích hợp máy sấy tay quạt gió, vòi thép không gỉ chỉ 01 đường nước vào, cảm biến hồng ngoại, 220-240V 1000W, hiệu Dyson, model WD04, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1,
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "chỉ 01 đường nước vào",
+     "sang": "có khoang pha trộn nước nóng lạnh",
+     "maTroToi": "84818059"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  }
+ ]
+}
