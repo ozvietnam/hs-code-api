@@ -45,6 +45,12 @@ const cost = require('../lib/llm-cost.js');
   check('tinhUsd: Gemini miễn phí → 0', tinhUsd({ provider: 'gemini-free', model: 'models/gemini-2.5-flash', inputTokens: 5000, outputTokens: 500 }) === 0);
   check('tinhUsd: mẫu OpenRouter ":free" → 0', tinhUsd({ provider: 'openrouter', model: 'google/gemma-3-27b-it:free', inputTokens: 5000, outputTokens: 500 }) === 0);
   check('tinhUsd: entry rỗng → null, không ném', tinhUsd(null) === null && tinhUsd({}) === null);
+  // #583: mẫu Gemini trả phí đang chạy làm chốt cuối (#578) — usage ghi "models/gemini-3.5-flash"
+  const g35 = tinhUsd({ provider: 'gemini', model: 'models/gemini-3.5-flash', inputTokens: 1_000_000, outputTokens: 1_000_000 });
+  check('tinhUsd: gemini/models/gemini-3.5-flash (chốt cuối trả phí) → số, không null', typeof g35 === 'number' && Number.isFinite(g35) && g35 > 0, String(g35));
+  const m35 = giaCua('gemini', 'models/gemini-3.5-flash');
+  check('… giá gemini-3.5-flash theo gemini-3.6-flash (Google tự chuyển yêu cầu sang 3.6), gắn UOC_LUONG, tra 2026-10-30',
+    m35?.nguonGia === 'UOC_LUONG' && m35.traNgay === '2026-10-30' && m35.vaoUsdMoiTrieu === BANG_GIA_MAC_DINH['gemini/gemini-3.6-flash'].vaoUsdMoiTrieu && m35.raUsdMoiTrieu === BANG_GIA_MAC_DINH['gemini/gemini-3.6-flash'].raUsdMoiTrieu && /ai\.google\.dev/.test(m35.ghiChu || ''), JSON.stringify(m35));
   check('giaCua: trả nguonGia để báo phần ước lượng', ['TRANG_CHINH_THUC', 'UOC_LUONG'].includes(giaCua('minimax', 'MiniMax-M2.7-highspeed')?.nguonGia));
 }
 {
