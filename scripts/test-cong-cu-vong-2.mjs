@@ -168,5 +168,20 @@ const DUNG = (v) => ({ fact: 'dungCho', op: 'CONG_DUNG', value: v });
   check('7g bản không vượt giới hạn: thongKe.layMau = false', tk.layMau === false, tk);
 }
 
+// ── 7 (tiếp). Ghép không thoả được ⇒ vẫn báo; tên trên đường đi là HỢP các giá trị khớp của cùng khoá ─────────────────────
+{
+  // 401699 .17 đổi dungCho thành "nhóm 88.04" (khác nhánh "Chương 87"): không giá trị ghép nào thoả cả hai ⇒ vẫn lỗi + điểm mù.
+  const b = suaNhap('401699');
+  const m = b.dong8.find((x) => x.hs === '40169917'); m.dieuKienSo = m.dieuKienSo.map((c) => (c.fact === 'dungCho' ? { ...c, value: 'nhóm 88.04' } : c));
+  const r = C.kiemRanhGioi('401699', b);
+  check('7i ghép không thoả được (mã HS khác nhánh) ⇒ vẫn cong2-dong-khong-toi-duoc + cong2-diem-mu', coLoi(r, 'cong2-dong-khong-toi-duoc:40169917') && coCanh(r, 'cong2-diem-mu:dungCho:4016991>40169917'), r.canhBao.filter((c) => c.startsWith('cong2-diem')));
+  // 950300: vector ghép "Quần áo Búp bê" thoả .21 "Búp bê" lẫn .22 (tiêu đề "Búp bê" + "Quần áo") — đường của .22 khớp HỢP
+  // {quần, áo, búp, bê} ⊃ {búp, bê} của .21 ⇒ tên cụ thể hơn thắng, không phải chồng lấn (quần áo búp bê là .22).
+  const r2 = C.kiemRanhGioi('950300', docNhap('950300'));
+  check('7h 950300: vector ghép không tạo chồng lấn giả .21+.22', !coLoi(r2, 'cong2-chong-lan:95030021+95030022'), r2.loi.filter((l) => l.startsWith('cong2')));
+  const F = DK.chuanDuKien([{ fact: 'tenLoai', giaTri: 'Quần áo Búp bê', nguon: 'KHACH', trangThai: 'DA_CO' }]);
+  check('7j tenCuTheHon gộp các điều kiện cùng khoá trên đường đi (VÀ) thành hợp âm tiết', DK.tenCuTheHon([TEN('Búp bê'), TEN(['Quần áo', 'mũ'])], [TEN('Búp bê'), TEN('Búp bê')], F) === 1);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);

@@ -192,11 +192,13 @@ function nhap853641(d91) {
   const b3 = nhap('853650', { 8536505: { trich: dai, dieuKienSo: [{ fact: 'loaiCongTac', op: 'TRONG', value: ['DIEN_TU_HOAC_BAT_NHANH'] }] } });
   check('5c trích > 300 ký tự (mục có điều kiện) → cong3-trich-qua-dai (LUAT-CHUNG luật 2: lược bằng "…")', dai.length > 300 && coLoi(C.kiemRanhGioi('853650', b3), 'cong3-trich-qua-dai:8536505'), dai.length);
 
-  // 401699 .17 "Bộ phận của xe đạp": dungCho "xe đạp" không bao giờ thoả cùng tiêu đề "xe thuộc Chương 87" → dòng không tới được.
+  // 401699 .17 "Bộ phận của xe đạp": dungCho "xe đạp" không thoả tiêu đề "xe thuộc Chương 87" — trước #653 dòng không tới được
+  // (cong2-dong-khong-toi-duoc + cong2-diem-mu). #653: cổng ghép ứng viên cha–con "xe đạp Chương 87" ⇒ tới được, hết điểm mù.
+  // Ca không ghép được (mã HS khác nhánh) vẫn báo — scripts/test-cong-cu-vong-2.mjs 7i.
   const b4 = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/401699.json'), 'utf8'));
   const r4 = C.kiemRanhGioi('401699', b4);
-  check('5d dòng không vector biên nào tới được → cong2-dong-khong-toi-duoc:40169917', coLoi(r4, 'cong2-dong-khong-toi-duoc:40169917'), r4.loi.filter((l) => !l.startsWith('cong2-chong-lan')));
-  check('5e … kèm cảnh báo điểm mù khoá chữ tự do cha–con (cong2-diem-mu:dungCho:4016991>40169917)', coCanh(r4, 'cong2-diem-mu:dungCho:4016991>40169917'), r4.canhBao.filter((c) => c.startsWith('cong2-diem')));
+  check('5d (#653) .17 "xe đạp" dưới "Chương 87" tới được nhờ ứng viên ghép cha–con → không còn cong2-dong-khong-toi-duoc:40169917', !coLoi(r4, 'cong2-dong-khong-toi-duoc:40169917'), r4.loi.filter((l) => !l.startsWith('cong2-chong-lan')));
+  check('5e … và không còn cảnh báo điểm mù cho cặp đã ghép (cong2-diem-mu:dungCho:4016991>40169917)', !coCanh(r4, 'cong2-diem-mu:dungCho:4016991>40169917'), r4.canhBao.filter((c) => c.startsWith('cong2-diem')));
   check('5f dòng tới được (.12 "87.11" ⊂ "Chương 87") → không báo', !coLoi(r4, 'cong2-dong-khong-toi-duoc:40169912') && !coCanh(r4, 'cong2-diem-mu:dungCho:4016991>40169912'));
 }
 
