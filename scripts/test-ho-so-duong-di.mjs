@@ -72,8 +72,11 @@ check('mỗi phân nhóm lát 1 có một dòng 8 số để đo', ma50.length =
   check('50 mã lát 1: mọi trich có nguyên văn trong nguồn', !loiTrich.length, loiTrich);
   check('50 mã lát 1: mọi điều kiện từ mục CLAUDE_DUYET/NGUOI_DUYET', !loiNhan.length, loiNhan);
   check('50 mã lát 1: mục nháp/AI_DA_KIEM ⇒ dieuKien null, CHUA_SO_HOA, lyDo chua-duyet', !loiChuaDuyet.length, loiChuaDuyet);
-  const chuoi = JSON.stringify(ma50.map((m) => D.dungDuongDi(m, 'NHAP')));
-  check('50 mã lát 1: không chuỗi AI_CHUA_KIEM nào trong kết quả', !chuoi.includes('AI_CHUA_KIEM'));
+  // Giá trị nhãn AI_CHUA_KIEM ở bất kỳ độ sâu nào (câu ghi chú của legal-basis nhắc tới nhãn này để phủ nhận thì không tính).
+  const nhanAi = [];
+  const duyet = (o, d) => { if (Array.isArray(o)) o.forEach((x, i) => duyet(x, `${d}[${i}]`)); else if (o && typeof o === 'object') Object.entries(o).forEach(([k, v]) => duyet(v, `${d}.${k}`)); else if (o === 'AI_CHUA_KIEM') nhanAi.push(d); };
+  ma50.forEach((m) => duyet(D.dungDuongDi(m, 'NHAP'), m));
+  check('50 mã lát 1: không giá trị nhãn AI_CHUA_KIEM nào trong kết quả', !nhanAi.length, nhanAi);
 }
 
 // ── 4. "Loại khác": PHAI_KHONG cho mọi mã của truDayDu có điểm trùng, KHÔNG cho anh em không trùng ─────────────────────
