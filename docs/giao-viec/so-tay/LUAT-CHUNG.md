@@ -42,3 +42,14 @@ Thêm, không thay: điều kiện cũ (fact snake_case như `duong_kinh`, op `<
 - Dòng "Loại khác" **trần** không mang điều kiện. Dòng "Loại khác, <vế>" được mang điều kiện có kiểu cho vế riêng.
 - Điều kiện của **tiêu đề** (nút 7 số / 5 số có tên) ghi ở `dieuKienNut[]` `{id, dieuKienSo, nguon, trich}`; nguồn `tieuDe.<id>` = tên nguyên văn của biểu thuế Tổng cục (`lib/so-tay.js#nguonTieuDe`). Tiêu đề "Loại khác" trần không ghi.
 - So chữ tự do (`TEN_LOAI`, `CONG_DUNG`) là **không tất định**: chotDong8 không chốt bằng nó; bộ chấm hồ sơ (`doiChieuDong8`) gắn `tatDinh: false`.
+
+## Số hoá ranh giới 6→8 số lát 1 — bản nháp + cổng máy (30/10/2026, #577 — plan L1-4a)
+
+- Bản nháp: `data/ho-so/ranh-gioi/<pn6>.json` (`ranh-gioi@1`) — runtime **không** đọc. Công cụ: `scripts/so-hoa-ranh-gioi.mjs`
+  (`--goi`, `--tao-nhap`, `--kiem`, `--duyet`, `--tra-ve`, `--ap-dung`, `--tom-tat`; chọn `--pn6=a,b` hoặc `--dot=1..5`). Cổng ở `lib/ho-so/cong-ranh-gioi.js`.
+- Chỉ điều kiện **có kiểu** (bảng trên). Cổng 0 hình dạng/nhãn/quy trình; cổng 1 phủ kín theo luật đi tiêu đề có tên; cổng 2 không
+  vector biên nào làm hai dòng cùng CO; cổng 3 trích nguyên văn đúng nút (mọi đoạn "…" kể cả đoạn ngắn, đúng thứ tự) + điều kiện khớp
+  chữ (cực CO/KHONG, biên ≤/<).
+- Nhãn: nháp `AI_DA_KIEM`; chỉ `--duyet` của **phiên khác người soạn**, cổng xanh (và có bảng hiệu chỉnh tiền lệ nếu phân nhóm có cờ)
+  mới nâng `CLAUDE_DUYET`; sửa sau duyệt ⇒ cổng 0 đỏ. Chỉ bản DUYET được `--ap-dung` vào `data/so-tay/<nhóm>.json`.
+- Không ép qua cổng: không diễn đạt được bằng từ vựng, chữ biểu chồng lấn, tiêu đề bị lược tên ⇒ để đỏ, ghi `ghiChuSoan`.
