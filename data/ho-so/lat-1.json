@@ -1,0 +1,747 @@
+{
+ "phienBan": "lat-1@1",
+ "ngayDo": "2026-10-30",
+ "bieuThue": {
+  "phienBan": "v2-2026-04-05-cs",
+  "tep": "data/tax.json",
+  "sha256": "237c8d485d6c6af9"
+ },
+ "nguon": "data/oz-gold-final.jsonl — chỉ tờ khai nhập; mỗi mẫu tính theo số lượt khai (ozCount)",
+ "tieuChi": "phân nhóm 6 số Oz đã khai có ≥ 2 dòng 8 số chênh mức MFN (số); xếp theo lượt khai giảm dần, hoà theo mã tăng dần",
+ "tongPhanNhomChenh": 172,
+ "tiLeLuotTong": 37,
+ "tiLeLuotLat1": 31.6,
+ "tiLeMauXuatBiLoai": 0,
+ "pareto": {
+  "nen": 28.4,
+  "moc": {
+   "50": 10,
+   "80": 73,
+   "95": 227
+  },
+  "dong8": {
+   "50": 130,
+   "80": 489,
+   "95": 1222
+  },
+  "tranToiDa": 99.3,
+  "tranTap": 59.6,
+  "dinhNghia": "số phân nhóm 6 số (xếp theo lượt chưa chốt giảm dần) cần số hoá để máy chốt được 8 số cho t % lượt Oz; nen = phân nhóm một dòng + lượt máy hiện tại chốt đúng; tranTap = trần nếu số hoá đủ 50 phân nhóm lát 1; dong8 = số dòng 8 số của các phân nhóm đó"
+ },
+ "paretoChenh": {
+  "moc": {
+   "50": 12,
+   "80": 40,
+   "95": 90
+  },
+  "dinhNghia": "số phân nhóm chênh thuế (xếp theo lượt) phủ t % lượt của nhóm chênh thuế"
+ },
+ "mayChot": {
+  "dinhNghia": "chotDong8 (lib/so-tay-gates.js) chỉ biết mã 6 số, chấm dieuKienSo trên câu khai thật; CHOT/LOAI_KHAC một dòng trùng mã Oz = chotDung, khác = chotLech, còn lại = khongChot. % trên lượt của 50 phân nhóm.",
+  "chotDung": 1,
+  "chotLech": 0,
+  "khongChot": 99,
+  "theoKetQua": {
+   "CHOT:": 0,
+   "KHONG_THE_CHOT:phu-dinh-chua-hoan-chinh": 22.3,
+   "KHONG_THE_CHOT:ranh-gioi-chua-so-hoa": 76.2,
+   "LOAI_KHAC:moi-anh-em-co-dieu-kien-va-deu-trai": 1,
+   "THIEU_SO_LIEU:": 0.5
+  },
+  "giuRieng": {
+   "chotDung": 0.2,
+   "chotLech": 0,
+   "khongChot": 99.8
+  }
+ },
+ "phanNhom": [
+  {
+   "pn6": "392690",
+   "hang": 1,
+   "tiLeLuot": 4.4,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "99/TB-TCHQ",
+     "maKetLuan": "39269099",
+     "dongAnhEm": "39269093"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "298/TB-TCHQ",
+     "maKetLuan": "39269099",
+     "dongAnhEm": "39269053"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "1049/TB-TCHQ",
+     "maKetLuan": "39269099",
+     "dongAnhEm": "39269032"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "1049/TB-TCHQ",
+     "maKetLuan": "39269099",
+     "dongAnhEm": "39269081"
+    }
+   ]
+  },
+  {
+   "pn6": "854442",
+   "hang": 2,
+   "tiLeLuot": 2.4,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "MOT_PHAN",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "524/TB-TCHQ",
+     "maKetLuan": "85444299",
+     "dongAnhEm": "85444211"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "524/TB-TCHQ",
+     "maKetLuan": "85444299",
+     "dongAnhEm": "85444213"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "524/TB-TCHQ",
+     "maKetLuan": "85444299",
+     "dongAnhEm": "85444221"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "524/TB-TCHQ",
+     "maKetLuan": "85444299",
+     "dongAnhEm": "85444223"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "524/TB-TCHQ",
+     "maKetLuan": "85444299",
+     "dongAnhEm": "85444291"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "524/TB-TCHQ",
+     "maKetLuan": "85444299",
+     "dongAnhEm": "85444291"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "524/TB-TCHQ",
+     "maKetLuan": "85444299",
+     "dongAnhEm": "85444292"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "524/TB-TCHQ",
+     "maKetLuan": "85444299",
+     "dongAnhEm": "85444294"
+    }
+   ]
+  },
+  {
+   "pn6": "853710",
+   "hang": 3,
+   "tiLeLuot": 1.8,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "4040/TB-TCHQ",
+     "maKetLuan": "85371019",
+     "dongAnhEm": "85371011"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "4040/TB-TCHQ",
+     "maKetLuan": "85371019",
+     "dongAnhEm": "85371012"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "4040/TB-TCHQ",
+     "maKetLuan": "85371019",
+     "dongAnhEm": "85371013"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "4040/TB-TCHQ",
+     "maKetLuan": "85371019",
+     "dongAnhEm": "85371020"
+    },
+    {
+     "tinHieu": "TIEN_LE_HAI_DONG",
+     "soHieu": "4800/TB-TCHQ; 14061/TB-CHQ",
+     "maKetLuan": "85371019",
+     "dongAnhEm": "85371099"
+    }
+   ]
+  },
+  {
+   "pn6": "840991",
+   "hang": 4,
+   "tiLeLuot": 1.6,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "MOT_PHAN",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "848120",
+   "hang": 5,
+   "tiLeLuot": 1.6,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "MOT_PHAN",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "5973/TB-TCHQ",
+     "maKetLuan": "84812090",
+     "dongAnhEm": "84812011"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "852/TB-TCHQ",
+     "maKetLuan": "84812090",
+     "dongAnhEm": "84812011"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "851/TB-TCHQ",
+     "maKetLuan": "84812090",
+     "dongAnhEm": "84812011"
+    }
+   ]
+  },
+  {
+   "pn6": "950300",
+   "hang": 6,
+   "tiLeLuot": 1.3,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "5875/TB-TCHQ",
+     "maKetLuan": "95030099",
+     "dongAnhEm": "95030050"
+    }
+   ]
+  },
+  {
+   "pn6": "732690",
+   "hang": 7,
+   "tiLeLuot": 1.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "940542",
+   "hang": 8,
+   "tiLeLuot": 1.1,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "900490",
+   "hang": 9,
+   "tiLeLuot": 0.9,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "848180",
+   "hang": 10,
+   "tiLeLuot": 0.9,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "MOT_PHAN",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "43552/TB-CHQ",
+     "maKetLuan": "84818063",
+     "dongAnhEm": "84818041"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "43552/TB-CHQ",
+     "maKetLuan": "84818063",
+     "dongAnhEm": "84818051"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "43552/TB-CHQ",
+     "maKetLuan": "84818063",
+     "dongAnhEm": "84818064"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "43552/TB-CHQ",
+     "maKetLuan": "84818063",
+     "dongAnhEm": "84818066"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "43552/TB-CHQ",
+     "maKetLuan": "84818063",
+     "dongAnhEm": "84818071"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "43552/TB-CHQ",
+     "maKetLuan": "84818063",
+     "dongAnhEm": "84818078"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "43552/TB-CHQ",
+     "maKetLuan": "84818063",
+     "dongAnhEm": "84818081"
+    },
+    {
+     "tinHieu": "LK_TRUNG_VAT_LIEU_ANH_EM",
+     "soHieu": "43552/TB-CHQ",
+     "maKetLuan": "84818063",
+     "dongAnhEm": "84818083"
+    }
+   ]
+  },
+  {
+   "pn6": "853690",
+   "hang": 11,
+   "tiLeLuot": 0.9,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "TIEN_LE_HAI_DONG",
+     "soHieu": "6201/TB-TCHQ; 3056/TB-TCHQ",
+     "maKetLuan": "85369012",
+     "dongAnhEm": "85369019"
+    },
+    {
+     "tinHieu": "TIEN_LE_HAI_DONG",
+     "soHieu": "6201/TB-TCHQ; 3057/TB-TCHQ",
+     "maKetLuan": "85369012",
+     "dongAnhEm": "85369019"
+    },
+    {
+     "tinHieu": "TIEN_LE_HAI_DONG",
+     "soHieu": "6201/TB-TCHQ; 3206/TB-TCHQ",
+     "maKetLuan": "85369012",
+     "dongAnhEm": "85369019"
+    },
+    {
+     "tinHieu": "TIEN_LE_HAI_DONG",
+     "soHieu": "6200/TB-TCHQ; 3056/TB-TCHQ",
+     "maKetLuan": "85369012",
+     "dongAnhEm": "85369019"
+    },
+    {
+     "tinHieu": "TIEN_LE_HAI_DONG",
+     "soHieu": "6200/TB-TCHQ; 3057/TB-TCHQ",
+     "maKetLuan": "85369012",
+     "dongAnhEm": "85369019"
+    },
+    {
+     "tinHieu": "TIEN_LE_HAI_DONG",
+     "soHieu": "6200/TB-TCHQ; 3206/TB-TCHQ",
+     "maKetLuan": "85369012",
+     "dongAnhEm": "85369019"
+    },
+    {
+     "tinHieu": "TIEN_LE_HAI_DONG",
+     "soHieu": "3205/TB-TCHQ; 3056/TB-TCHQ",
+     "maKetLuan": "85369012",
+     "dongAnhEm": "85369019"
+    },
+    {
+     "tinHieu": "TIEN_LE_HAI_DONG",
+     "soHieu": "3205/TB-TCHQ; 3057/TB-TCHQ",
+     "maKetLuan": "85369012",
+     "dongAnhEm": "85369019"
+    }
+   ]
+  },
+  {
+   "pn6": "851830",
+   "hang": 12,
+   "tiLeLuot": 0.8,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "853650",
+   "hang": 13,
+   "tiLeLuot": 0.7,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "848340",
+   "hang": 14,
+   "tiLeLuot": 0.6,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "830140",
+   "hang": 15,
+   "tiLeLuot": 0.6,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "851310",
+   "hang": 16,
+   "tiLeLuot": 0.6,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "630790",
+   "hang": 17,
+   "tiLeLuot": 0.5,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "7238/TB-TCHQ",
+     "maKetLuan": "63079090",
+     "dongAnhEm": "63079040"
+    }
+   ]
+  },
+  {
+   "pn6": "830220",
+   "hang": 18,
+   "tiLeLuot": 0.5,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "DU",
+   "mayChotDung": 65.3
+  },
+  {
+   "pn6": "841459",
+   "hang": 19,
+   "tiLeLuot": 0.5,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "871410",
+   "hang": 20,
+   "tiLeLuot": 0.4,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "852589",
+   "hang": 21,
+   "tiLeLuot": 0.4,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "761699",
+   "hang": 22,
+   "tiLeLuot": 0.4,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "850131",
+   "hang": 23,
+   "tiLeLuot": 0.4,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "853620",
+   "hang": 24,
+   "tiLeLuot": 0.4,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "853669",
+   "hang": 25,
+   "tiLeLuot": 0.4,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "961700",
+   "hang": 26,
+   "tiLeLuot": 0.4,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "853890",
+   "hang": 27,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "845290",
+   "hang": 28,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "848390",
+   "hang": 29,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "401699",
+   "hang": 30,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "841391",
+   "hang": 31,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "850140",
+   "hang": 32,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "848190",
+   "hang": 33,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "MOT_PHAN",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "4006/TB-TCHQ",
+     "maKetLuan": "84819090",
+     "dongAnhEm": "84819021"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "4006/TB-TCHQ",
+     "maKetLuan": "84819090",
+     "dongAnhEm": "84819022"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "4006/TB-TCHQ",
+     "maKetLuan": "84819090",
+     "dongAnhEm": "84819023"
+    }
+   ]
+  },
+  {
+   "pn6": "852859",
+   "hang": 34,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "940541",
+   "hang": 35,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "901720",
+   "hang": 36,
+   "tiLeLuot": 0.3,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "392620",
+   "hang": 37,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "842010",
+   "hang": 38,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "853641",
+   "hang": 39,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "841350",
+   "hang": 40,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "392310",
+   "hang": 41,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "852351",
+   "hang": 42,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "850110",
+   "hang": 43,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "1962/TB-TCHQ",
+     "maKetLuan": "85011099",
+     "dongAnhEm": "85011030"
+    },
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "1962/TB-TCHQ",
+     "maKetLuan": "85011099",
+     "dongAnhEm": "85011060"
+    }
+   ]
+  },
+  {
+   "pn6": "847190",
+   "hang": 44,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "848310",
+   "hang": 45,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "MOT_PHAN",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "851762",
+   "hang": 46,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "851680",
+   "hang": 47,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "853649",
+   "hang": 48,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": true,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0,
+   "tienLeLech": [
+    {
+     "tinHieu": "LK_TRUNG_TEN_ANH_EM",
+     "soHieu": "7037/TB-TCHQ",
+     "maKetLuan": "85364990",
+     "dongAnhEm": "85364910"
+    }
+   ]
+  },
+  {
+   "pn6": "392330",
+   "hang": 49,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  },
+  {
+   "pn6": "851810",
+   "hang": 50,
+   "tiLeLuot": 0.2,
+   "canHieuChinhTienLe": false,
+   "trangThaiSoHoa": "CHUA_SO_HOA",
+   "mayChotDung": 0
+  }
+ ],
+ "tongPhanNhomChenhBieu": 657,
+ "soDongMfnKhongSo": 295
+}

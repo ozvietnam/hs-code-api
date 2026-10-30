@@ -14,6 +14,7 @@ Chạy trước và sau mỗi thay đổi ở `describe` hoặc soát, rồi so 
 | `scripts/bench-mo-ta.mjs` | có | bench sinh và soát |
 | `scripts/mo-ta-bench-lib.mjs` | có | hàm chấm dùng chung |
 | `data/oz-export/bench/*.jsonl` | **không** (gitignore) | chi tiết từng ca, có câu Oz |
+| `scripts/do-lat-1.mjs` → `data/ho-so/lat-1.json` | có (chỉ tỉ lệ + mã) | chốt 50 phân nhóm lát 1, trần Pareto, tỉ lệ máy chốt — báo cáo `lat-1-2026-10-30.md` |
 
 Bộ đề lấy dữ liệu từ hai nguồn: TB-TCHQ (`data/precedents.json`) hoặc hàng tự dựng theo biểu thuế và chú giải. Mỗi ca có:
 - mã 8 số và thông tin hàng;
