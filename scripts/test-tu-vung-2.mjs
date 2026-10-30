@@ -95,7 +95,7 @@ const doc = (khoa, t) => { try { return T.docGiaTri(khoa, t); } catch (e) { retu
 const la = (ten, khoa, t, v, them = {}) => {
   const r = doc(khoa, t);
   const ok = r.trangThai === 'DA_CO' && JSON.stringify(r.giaTri) === JSON.stringify(v) && coTrong(r, t)
-    && (them.op === undefined || r.op === them.op) && (them.op !== null || r.op === undefined) && (!them.bc || r.bangChung.includes(them.bc));
+    && (them.op === undefined || (them.op === null ? r.op === undefined : r.op === them.op)) && (!them.bc || r.bangChung.includes(them.bc));
   check(`${khoa} ${ten}: "${t}" ⇒ ${JSON.stringify(v)}${them.op ? ` op ${them.op}` : ''}${them.bc ? ` (bangChung ⊇ "${them.bc}")` : ''}`, ok, r);
 };
 const chuaBiet = (ten, khoa, t) => { const r = doc(khoa, t); check(`${khoa} ${ten}: "${t}" ⇒ CHUA_BIET`, r.trangThai === 'CHUA_BIET', r); return r; };
@@ -243,6 +243,27 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   }
   const g = C.goiSoan('854442');
   check('gói soạn liệt kê khoá mới trong tuVung', Object.keys(KHOA_MOI).every((k) => g.tuVung.some((x) => x.khoa === k)), g.tuVung.map((x) => x.khoa).slice(-10));
+}
+
+// ── 8. Điều kiện có kiểu dùng khoá mới qua máy kiểm dieuKienSo (cổng 0/3 của bản nháp) trên CHÍNH chữ biểu ─────────────
+{
+  const DK = require('../lib/dieu-kien-so.js');
+  const tax = JSON.parse(fs.readFileSync('data/tax.json', 'utf8'));
+  const K = (c, hs) => { try { return DK.kiemDieuKien(c, tax[hs].vn); } catch (e) { return `LOI ${e.message}`; } };
+  const dat = (ten, c, hs) => check(`dieuKienSo ${ten} trên tax.${hs} ⇒ đạt`, K(c, hs) === null, K(c, hs));
+  const truot = (ten, c, hs, ma) => check(`dieuKienSo ${ten} trên tax.${hs} ⇒ lỗi ${ma}`, String(K(c, hs)).startsWith(ma), K(c, hs));
+  dat('chiHoacChuYeu CO', { fact: 'chiHoacChuYeu', op: 'CO' }, '84145910');
+  dat('chiHoacChuYeu CO', { fact: 'chiHoacChuYeu', op: 'CO' }, '85371020');
+  dat('chiHoacChuYeu CO', { fact: 'chiHoacChuYeu', op: 'CO' }, '84201010');
+  dat('thietKeChoTreEm CO', { fact: 'thietKeChoTreEm', op: 'CO' }, '95030080');
+  dat('soSoi >= 2 sợi ("hai sợi hoặc hơn" — số chữ đọc được)', { fact: 'soSoi', op: '>=', value: 2, donVi: 'sợi' }, '85444291');
+  truot('soSoi >= 3 sợi (ngưỡng không có trong trích)', { fact: 'soSoi', op: '>=', value: 3, donVi: 'sợi' }, '85444291', 'dieu-kien-so-nguong-khong-co-trong-trich');
+  truot('soSoi > 2 sợi (op lệch chữ "hoặc hơn" = >=)', { fact: 'soSoi', op: '>', value: 2, donVi: 'sợi' }, '85444291', 'dieu-kien-so-nguong-khong-co-trong-trich');
+  dat('tiLe > 0.1 lần ("trên 1/10 đường kính")', { fact: 'tiLe', op: '>', value: 0.1, donVi: 'lần' }, '76169930');
+  truot('tiLe <= 0.1 lần (op lệch "trên")', { fact: 'tiLe', op: '<=', value: 0.1, donVi: 'lần' }, '76169930', 'dieu-kien-so-nguong-khong-co-trong-trich');
+  dat('phuongPhapCheTao TRONG [DOT_DAP_KEO_GIAN]', { fact: 'phuongPhapCheTao', op: 'TRONG', value: ['DOT_DAP_KEO_GIAN'] }, '76169980');
+  // khoá @1: ngưỡng vẫn phải có nguyên văn (không nới máy kiểm cho khoá cũ)
+  check('dieuKienSo khoá @1 không đổi: duongKinhLoi <= 6 mm trên "không quá 5 mm" ⇒ lỗi ngưỡng', DK.kiemDieuKien({ fact: 'duongKinhLoi', op: '<=', value: 6, donVi: 'mm' }, 'mỗi lõi có đường kính không quá 5 mm') === 'dieu-kien-so-nguong-khong-co-trong-trich:6');
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
