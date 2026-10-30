@@ -131,5 +131,43 @@ const nhap850131 = (pcl) => nhap('850131', {
   check('3q 848310: dungCho theo cấp mã ⇒ cổng 2 thấy .24 ("87.11") chồng .25 dưới tiêu đề "Chương 87"', coLoi(r8, 'cong2-chong-lan:84831024+84831025'), r8.loi);
 }
 
+// ── 4. HOẶC của các nhóm VÀ (DNF) trong dieuKienSo có kiểu ──────────────────────────────────────────────────────
+const S = require('../lib/so-tay.js');
+const RL = (v) => ({ fact: 'loaiRoLe', op: 'TRONG', value: v });
+const HOAC = (...phuongAn) => ({ op: 'HOAC', phuongAn });
+function nhap853641(d91) {
+  return nhap('853641', {
+    85364110: [RL(['KY_THUAT_SO'])], 85364120: [DUNG('thiết bị sóng vô tuyến')], 85364130: [DUNG('quạt điện')],
+    85364140: [SO('dongDien', '<', 16, 'A')], 85364191: d91,
+  }, { chongLanVanBan: [{ cap: ['85364110', '85364120'], lyDo: 'Chữ biểu: .10 "Rơ le kỹ thuật số" và .20 "Của loại sử dụng trong các thiết bị sóng vô tuyến" không loại trừ nhau.' },
+    { cap: ['85364110', '85364130'], lyDo: 'Chữ biểu: .10 "Rơ le kỹ thuật số" và .30 "Của loại sử dụng cho quạt điện" không loại trừ nhau.' }] });
+}
+{
+  const dnf = HOAC([RL(['BAN_DAN']), SO('dienAp', '<=', 28, 'V')], [RL(['DIEN_TU']), SO('dienAp', '<=', 28, 'V')]);
+  const r = C.kiemRanhGioi('853641', nhap853641([dnf]));
+  check('4a HOAC có kiểu (mỗi phương án là nhóm VÀ khoá tu-vung) qua cổng 0 + 3, bản tương đương vẫn xanh', r.hopLe === true, r.loi);
+  const sai = HOAC([RL(['BAN_DAN']), SO('dienAp', '<=', 28, 'V')], [RL(['DIEN_TU']), SO('dienAp', '<=', 48, 'V')]);
+  check('4b ngưỡng của một phương án không có trong trích → lỗi cổng 3', coLoi(C.kiemRanhGioi('853641', nhap853641([sai])), 'cong3-muc:85364191:dieu-kien-so-nguong-khong-co-trong-trich:48'), C.kiemRanhGioi('853641', nhap853641([sai])).loi);
+  const cu = HOAC([{ fact: 'dien_ap', op: '<=', value: 28, donVi: 'V' }], [RL(['DIEN_TU'])]);
+  check('4c HOAC lẫn fact cũ (snake_case) → cong0-fact-chua-co-kieu', coLoi(C.kiemRanhGioi('853641', nhap853641([cu])), 'cong0-fact-chua-co-kieu:85364191'));
+  check('4d HOAC một phương án / lồng HOAC / có chieu → lỗi cổng 0',
+    coLoi(C.kiemRanhGioi('853641', nhap853641([HOAC([RL(['DIEN_TU'])])])), 'cong0-hoac-hinh-dang:85364191')
+    && coLoi(C.kiemRanhGioi('853641', nhap853641([HOAC([dnf], [RL(['DIEN_TU'])])])), 'cong0-hoac-hinh-dang:85364191')
+    && coLoi(C.kiemRanhGioi('853641', nhap853641([{ ...dnf, chieu: 'PHAI_KHONG' }])), 'cong0-hoac-hinh-dang:85364191'));
+  const F = (gt) => DK.chuanDuKien([{ fact: 'loaiRoLe', giaTri: gt[0], nguon: 'KHACH', trangThai: 'DA_CO' }, { fact: 'dienAp', giaTri: gt[1], donVi: 'V', nguon: 'KHACH', trangThai: 'DA_CO' }]);
+  const dg = (c, gt) => DK.danhGiaTrenMap(c, F(gt));
+  check('4e chấm HOAC: (bán dẫn, 24 V) THOẢ tất định; (điện từ, 30 V) TRÁI tất định', dg(dnf, ['BAN_DAN', 24]).trangThai === 'THOA' && dg(dnf, ['BAN_DAN', 24]).tatDinh === true && dg(dnf, ['DIEN_TU', 30]).trangThai === 'TRAI' && dg(dnf, ['DIEN_TU', 30]).tatDinh === true);
+  const dnfChu = HOAC([DUNG('quạt điện')], [RL(['DIEN_TU'])]);
+  check('4f HOAC THOẢ nhờ phương án so chữ tự do → không tất định', DK.danhGiaTrenMap(dnfChu, DK.chuanDuKien([{ fact: 'dungCho', giaTri: 'quạt điện', nguon: 'KHACH', trangThai: 'DA_CO' }])).tatDinh === false);
+  const sau = nhap853641([HOAC([RL(['BAN_DAN']), SO('dienAp', '<=', 28, 'V')], [RL(['DIEN_TU'])])]);
+  const kq = DK.doiChieuDong8('85364191', [{ fact: 'loaiRoLe', giaTri: 'DIEN_TU', nguon: 'KHACH', trangThai: 'DA_CO' }, { fact: 'dienAp', giaTri: 30, donVi: 'V', nguon: 'KHACH', trangThai: 'DA_CO' }], { soTay: C.soTayTuNhap('853641', sau) });
+  check('4g doiChieuDong8 đọc được HOAC: (điện từ, 30 V) CO với phương án không ngưỡng', kq.ketQua === 'CO', kq);
+  check('4h moTaNgan HOAC đọc được', /hoặc/.test(DK.moTaNgan(dnf)) && /28/.test(DK.moTaNgan(dnf)), DK.moTaNgan(dnf));
+  const dong = { hs: '85364191', nguon: 'tax.85364191', trich: '85364191 - - - - Rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V', dieuKienSo: [dnf], nguonLoai: 'CLAUDE_DUYET' };
+  check('4i máy kiểm sổ tay (checkItem) nhận HOAC có kiểu', S.checkItem('dong8', dong, S.sourcesFor('8536'), '8536') === null, S.checkItem('dong8', dong, S.sourcesFor('8536'), '8536'));
+  const tc = DK.danhGiaTuChu(dnf, 'Rơ le bán dẫn 24 V');
+  check('4j chấm HOAC trên chữ mô tả (đường runtime) → THOA', tc.trangThai === 'THOA', tc);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
