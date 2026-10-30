@@ -191,6 +191,8 @@ const rawSh = fs.existsSync(SHADOW) ? fs.readFileSync(SHADOW, 'utf8') : '';
 check('shadow: tệp số đo KHÔNG chứa chữ khách (mô tả, cụm trích)', rawSh.length > 0 && !['Vỏ ngoài', 'thép không gỉ', 'giữ nhiệt', 'Nồi chiên', 'nắp nhựa'].some((s) => rawSh.includes(s)));
 check('shadow: dòng có cheDo shadow', shK2.every((r) => r.cheDo === 'shadow'));
 check('shadow: classify vẫn chỉ gọi theo đường cũ (5 lượt), soát không gọi thêm', goiClassify.length === 5, goiClassify.length);
+const bcK2 = API.baoCaoShadow().k2;
+check('báo cáo shadow: khối k2 cộng số đếm của 3 lượt soát (1 lượt có căn cứ tất định, 1 lượt cần phân loại)', bcK2 && bcK2.soLuot === 3 && bcK2.luotCoCanCuTatDinh === 1 && bcK2.luotCanPhanLoai === 1 && bcK2.soMauThuan >= 1 && bcK2.soThieu >= 1, bcK2);
 
 // ═══ 3. on + mã ngoài lát 1 / lát 1 chưa duyệt ⇒ dòng đó bằng sâu ảnh chụp ═══
 process.env.HS_HO_SO = 'on';
