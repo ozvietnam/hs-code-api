@@ -134,5 +134,20 @@ const DUNG = (v) => ({ fact: 'dungCho', op: 'CONG_DUNG', value: v });
   check('4e cổng 2: .16 "Piston … 50–155 mm" + .18 "Bạc piston và chốt piston" không còn chồng lấn', !coLoi(r, 'cong2-chong-lan:84099116+84099118'), r.loi.filter((l) => l.startsWith('cong2')));
 }
 
+// ── 5. Bộ so âm tiết giữ nghĩa "dùng cho" (8523.51: "dùng cho điện ảnh" ≠ nằm trong "chứa phim điện ảnh") ─────────────────
+{
+  const CD = (v) => ({ fact: 'congDung', op: 'CONG_DUNG', value: v });
+  const dg = (cond, gt) => DK.danhGiaDieuKien(CD(cond), { fact: 'congDung', giaTri: gt }).trangThai;
+  check('5a "dùng cho điện ảnh" KHÔNG thoả bởi "chứa phim điện ảnh" (trước #653: THOA)', dg('dùng cho điện ảnh', 'chứa phim điện ảnh') === 'TRAI', dg('dùng cho điện ảnh', 'chứa phim điện ảnh'));
+  check('5b "dùng cho điện ảnh" thoả bởi "băng từ dùng cho điện ảnh" và chính nó', dg('dùng cho điện ảnh', 'băng từ dùng cho điện ảnh') === 'THOA' && dg('dùng cho điện ảnh', 'dùng cho điện ảnh') === 'THOA');
+  check('5c "sử dụng cho" cùng nghĩa "dùng cho"', dg('dùng cho điện ảnh', 'loại sử dụng cho điện ảnh') === 'THOA');
+  check('5d dữ kiện chung hơn ("điện ảnh") ⇒ CHUA_BIET, không TRÁI', dg('dùng cho điện ảnh', 'điện ảnh') === 'CHUA_BIET');
+  check('5e "cho" đứng một mình vẫn là hư từ (không đổi): "cho động cơ máy thủy" thoả bởi "động cơ máy thủy"', dg('cho động cơ máy thủy', 'động cơ máy thủy') === 'THOA');
+  // Cổng: .91 congDung "chứa phim điện ảnh" và .92 congDung "dùng cho điện ảnh" (cùng khoá) — .91 phải tới được.
+  const b = suaNhap('852351', { 85235192: [CD('dùng cho điện ảnh')] });
+  const r = C.kiemRanhGioi('852351', b);
+  check('5f 852351 cùng khoá congDung: .91/.92 đều tới được, không chồng lấn', !coLoi(r, 'cong2-dong-khong-toi-duoc:85235191') && !coLoi(r, 'cong2-dong-khong-toi-duoc:85235192') && !coLoi(r, 'cong2-chong-lan:85235191+85235192'), r.loi);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
