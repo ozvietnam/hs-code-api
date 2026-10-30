@@ -1302,11 +1302,10 @@
     ],
     "doiAnhEm": {
      "tu": "Xe đẩy đồ chơi trẻ em (push walker)",
-     "sang": "Mô hình thu nhỏ theo tỷ lệ",
-     "maTroToi": "95030099"
+     "sang": "Đồ chơi hình con vật",
+     "maTroToi": "95030060"
     }
    },
-   "ghiChu": "doiAnhEm trỏ .99 (20 %) để kiểm mâu thuẫn; mô hình theo tỷ lệ đúng chữ là .40 (cùng 10 %) nên bench chỉ chấm \"câu không còn là xe đẩy có bánh\".",
    "duyetBoi": "CLAUDE_DUYET"
   },
   {
@@ -5630,7 +5629,9 @@
       "nguon": "data/precedents.json",
       "viTri": "84819021[3].productName",
       "trich": "đường kính trong mỗi dây là 4.6mm"
-     }
+     },
+     "khongDuCanCu": true,
+     "ghiChu": "Trích chỉ ghi đường kính trong của dây mềm luồn bên trong (4.6 mm), không ghi đường kính trong của vòi — điều kiện ≤ 25 mm của tiêu đề chưa có nguyên văn."
     },
     {
      "cap": 8,
@@ -5658,6 +5659,7 @@
     }
    ],
    "moTaMau": "Thân vòi chậu rửa hình chữ L bằng đồng thau mạ niken-crome, không kèm van, tay gạt, dây cấp nước, dây mềm đường kính trong 4.6mm, mới 100%",
+   "khongDuCanCu": true,
    "caCaiLoi": {
     "boDuKien": [
      3
@@ -5780,7 +5782,7 @@
    "duKienQuyetDinh": [
     {
      "cap": 4,
-     "duKien": "màn hình (nhóm 85.28) — đã mang đặc trưng màn hình dù chưa hoàn chỉnh (GIR 2a)",
+     "duKien": "màn hình (nhóm 85.28) — đã mang đặc trưng màn hình dù chưa hoàn chỉnh (theo thông báo)",
      "tuKhoa": [
       "màn hình"
      ],
@@ -6695,6 +6697,1478 @@
      "tu": "Bơm định lượng hóa chất kiểu piston",
      "sang": "Bơm nước kiểu piston",
      "maTroToi": "84135031"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-392310-01",
+   "lat": 1,
+   "pn6": "392310",
+   "maHs": "39231020",
+   "chuong": "39",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 3923.10.20 (hộp chuyên dùng vận chuyển tấm bán dẫn mỏng); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Hộp đựng tấm bán dẫn (wafer carrier box)",
+    "chatLieu": "nhựa PP chống tĩnh điện",
+    "congDung": "vận chuyển và đóng gói tấm bán dẫn mỏng (wafer) 300mm",
+    "thongSo": [
+     "có khe giữ 25 tấm wafer"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng plastic dùng trong vận chuyển/đóng gói",
+     "tuKhoa": [
+      "nhựa|plastic|pp|pet|hdpe|ps"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm dùng trong vận chuyển hoặc đóng gói hàng hóa, bằng plastic"
+    },
+    {
+     "cap": 6,
+     "duKien": "hộp, hòm, thùng thưa",
+     "tuKhoa": [
+      "hộp"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Hộp, hòm, thùng thưa và các loại tương tự"
+    },
+    {
+     "cap": 8,
+     "duKien": "có hình dạng đặc biệt để vận chuyển/đóng gói tấm bán dẫn mỏng",
+     "tuKhoa": [
+      "wafer|bán dẫn"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "có hình dạng đặc biệt hoặc thích hợp để vận chuyển hoặc đóng gói các tấm bán dẫn mỏng, màn hoặc lưới quang"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "39231090",
+     "lyDo": "hộp plastic khác (cùng 10 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    },
+    {
+     "ma": "39231010",
+     "lyDo": "hộp đựng phim, băng từ, đĩa quang (MFN 12 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Hộp đựng phim, băng từ và đĩa quang"
+    }
+   ],
+   "moTaMau": "Hộp đựng tấm bán dẫn (wafer carrier box) bằng nhựa PP chống tĩnh điện, có khe giữ 25 tấm wafer 300mm, chuyên vận chuyển tấm bán dẫn, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "Hộp đựng tấm bán dẫn (wafer carrier box)",
+     "sang": "Hộp đựng đĩa quang",
+     "maTroToi": "39231010"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-392310-02",
+   "lat": 1,
+   "pn6": "392310",
+   "maHs": "39231010",
+   "chuong": "39",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 3923.10.10 (hộp đựng phim, băng từ, đĩa quang); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Hộp đựng đĩa quang (CD/DVD case)",
+    "chatLieu": "nhựa PS trong",
+    "congDung": null,
+    "thongSo": [
+     "đựng 1 đĩa, kích thước 142x125x10mm"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng plastic dùng trong vận chuyển/đóng gói",
+     "tuKhoa": [
+      "nhựa|plastic|pp|pet|hdpe|ps"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm dùng trong vận chuyển hoặc đóng gói hàng hóa, bằng plastic"
+    },
+    {
+     "cap": 8,
+     "duKien": "hộp đựng đĩa quang",
+     "tuKhoa": [
+      "đĩa (quang|cd|dvd)|cd|dvd"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Hộp đựng phim, băng từ và đĩa quang"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "39231090",
+     "lyDo": "hộp plastic khác (MFN 10 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Hộp đựng đĩa quang CD/DVD bằng nhựa PS trong, đựng 1 đĩa, KT 142x125x10mm, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Hộp đựng đĩa quang CD/DVD",
+     "sang": "Hộp đựng linh kiện điện tử",
+     "maTroToi": "39231090"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-852351-01",
+   "lat": 1,
+   "pn6": "852351",
+   "maHs": "85235111",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "529/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85235111[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Ổ cứng di động SSD",
+    "chatLieu": null,
+    "congDung": "chủ yếu dùng cho máy vi tính",
+    "thongSo": [
+     "dung lượng 4TB",
+     "chưa ghi"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": "Samsung",
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "thiết bị lưu trữ bền vững, thể rắn",
+     "tuKhoa": [
+      "ssd|thể rắn|thẻ (nhớ|sd)"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các thiết bị lưu trữ bền vững, thể rắn",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85235111[0].productName",
+      "trich": "Solid-state drive SSD"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "loại chưa ghi",
+     "tuKhoa": [
+      "chưa ghi"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Loại chưa ghi:",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85235111[0].productName",
+      "trich": "Ổ cứng di động hiệu Samsung, chưa ghi"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "loại dùng cho máy vi tính",
+     "tuKhoa": [
+      "máy (vi )?tính"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại dùng cho máy vi tính",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85235111[0].productName",
+      "trich": "chủ yếu dùng cho máy vi tính"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85235119",
+     "lyDo": "loại chưa ghi khác (cùng 0 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Ổ cứng di động SSD dung lượng 4TB, chưa ghi, dùng cho máy vi tính, hiệu Samsung, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "chưa ghi, dùng cho máy vi tính",
+     "sang": "đã ghi phim điện ảnh",
+     "maTroToi": "85235191"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-852351-02",
+   "lat": 1,
+   "pn6": "852351",
+   "maHs": "85235130",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "6108/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85235130[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Thẻ định vị GPS (thẻ SD) cho hệ thống dẫn đường trên xe",
+    "chatLieu": null,
+    "congDung": "lưu trữ, tái tạo chỉ dẫn, dữ liệu, âm thanh, hình ảnh (bản đồ) đã ghi dạng nhị phân",
+    "thongSo": [
+     "phụ tùng xe Mazda",
+     "thể rắn, không xóa dữ liệu khi mất nguồn"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "thiết bị lưu trữ bền vững, thể rắn",
+     "tuKhoa": [
+      "ssd|thể rắn|thẻ (nhớ|sd)"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các thiết bị lưu trữ bền vững, thể rắn",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85235130[0].productName",
+      "trich": "Phương tiện lưu trữ thông tin bán dẫn không xóa dữ liệu khi không còn nguồn điện cung cấp, thể rắn"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "đã ghi dạng nhị phân, có thể thao tác/tương tác với người dùng qua máy xử lý dữ liệu tự động",
+     "tuKhoa": [
+      "đã ghi",
+      "nhị phân"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "được ghi ở dạng mã nhị phân để máy có thể đọc được",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85235130[0].productName",
+      "trich": "Có khả năng thao tác hoặc có thể tương tác với người sử dụng thông qua máy xử lý dữ liệu tự động"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85235191",
+     "lyDo": "loại đã ghi chứa phim điện ảnh (MFN 10 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác"
+    }
+   ],
+   "moTaMau": "Thẻ SD định vị GPS cho hệ thống dẫn đường trên xe, đã ghi bản đồ dạng nhị phân, tương tác với người dùng qua máy xử lý dữ liệu, thể rắn, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "đã ghi bản đồ dạng nhị phân, tương tác với người dùng qua máy xử lý dữ liệu",
+     "sang": "đã ghi phim điện ảnh",
+     "maTroToi": "85235191"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-850110-01",
+   "lat": 1,
+   "pn6": "850110",
+   "maHs": "85011099",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "1962/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85011099[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Động cơ của máy xông khí dung",
+    "chatLieu": null,
+    "congDung": "tạo khí cho máy xông khí dung",
+    "thongSo": [
+     "xoay chiều AC 220-230V 50Hz, 1 pha, công suất 25W",
+     "không chổi than, không phải động cơ bước, không phải động cơ hướng trục"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "động cơ công suất không quá 37,5 W",
+     "tuKhoa": [
+      "\\d+\\s*w\\b"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Động cơ có công suất không quá 37,5 W",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85011099[0].productName",
+      "trich": "công suất 25 W"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "động cơ khác (xoay chiều) — không phải động cơ bước, không phải động cơ hướng trục",
+     "tuKhoa": [
+      "không phải động cơ bước",
+      "hướng trục"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85011099[0].productName",
+     "trich": "không phải động cơ bước, không phải động cơ hướng trục"
+    },
+    {
+     "cap": 8,
+     "duKien": "dùng cho máy xông khí dung — không dùng cho hàng nhóm 84.15/84.18/84.50/85.09/85.16",
+     "tuKhoa": [
+      "xông khí dung"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85011099[0].technicalSpec",
+     "trich": "mã số 8501.10.99 \" - - - - Loại khác\"",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85011099[0].productName",
+      "trich": "dùng tạo khí cho máy xông khí du ng"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85011091",
+     "lyDo": "dùng cho hàng nhóm 84.15, 84.18, 84.50, 85.09, 85.16 (MFN 3 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+    },
+    {
+     "ma": "85011060",
+     "lyDo": "động cơ hướng trục (MFN 10 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Động cơ hướng trục"
+    }
+   ],
+   "moTaMau": "Động cơ xoay chiều 1 pha 220-230V 50Hz công suất 25W, không chổi than, không phải động cơ bước, không phải động cơ hướng trục, dùng cho máy xông khí dung, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "dùng cho máy xông khí dung",
+     "sang": "dùng cho máy hút bụi gia dụng",
+     "maTroToi": "85011091"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-850110-02",
+   "lat": 1,
+   "pn6": "850110",
+   "maHs": "85011030",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 8501.10.30 (động cơ hướng trục một chiều); không phải lô hàng thật. Ca TB-TCHQ của phân nhóm: L1-850110-01."
+   },
+   "thongTinHang": {
+    "tenHang": "Động cơ hướng trục (spindle motor) cho ổ đĩa quang",
+    "chatLieu": null,
+    "congDung": "quay đĩa trong ổ đĩa DVD",
+    "thongSo": [
+     "một chiều 5V, công suất 2W",
+     "tốc độ 5.000 vòng/phút"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "động cơ công suất không quá 37,5 W",
+     "tuKhoa": [
+      "\\d+\\s*w\\b"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Động cơ có công suất không quá 37,5 W"
+    },
+    {
+     "cap": 8,
+     "duKien": "động cơ một chiều",
+     "tuKhoa": [
+      "một chiều"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Động cơ một chiều:"
+    },
+    {
+     "cap": 8,
+     "duKien": "động cơ hướng trục (quay đĩa của ổ đĩa)",
+     "tuKhoa": [
+      "hướng trục",
+      "ổ đĩa"
+     ],
+     "nguon": "data/sen-2022.json",
+     "viTri": "muc[342].noiDung",
+     "trich": "Động cơ hướng trục là động cơ một pha cỡ nhỏ, có độ chính xác cao được dùng cho các loại ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD)"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85011049",
+     "lyDo": "động cơ một chiều khác (MFN 25 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Động cơ hướng trục một chiều 5V công suất 2W, quay đĩa trong ổ đĩa DVD, tốc độ 5.000 vòng/phút, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "Động cơ hướng trục một chiều 5V công suất 2W, quay đĩa trong ổ đĩa DVD",
+     "sang": "Động cơ một chiều 5V công suất 2W cho đồ chơi",
+     "maTroToi": "85011049"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-847190-01",
+   "lat": 1,
+   "pn6": "847190",
+   "maHs": "84719010",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 8471.90.10 (máy đọc mã vạch); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Máy đọc mã vạch cầm tay",
+    "chatLieu": null,
+    "congDung": "đọc mã vạch 1D/2D, kết nối máy tính qua USB",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "máy/đầu đọc quang học thuộc nhóm 84.71",
+     "tuKhoa": [
+      "đọc"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "đầu đọc từ tính hoặc đầu đọc quang học"
+    },
+    {
+     "cap": 8,
+     "duKien": "máy đọc mã vạch",
+     "tuKhoa": [
+      "mã vạch"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Máy đọc mã vạch"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84719030",
+     "lyDo": "hệ thống nhận dạng vân tay điện tử (MFN 3 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Hệ thống nhận dạng vân tay điện tử"
+    }
+   ],
+   "moTaMau": "Máy đọc mã vạch cầm tay 1D/2D, kết nối máy tính qua cổng USB, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Máy đọc mã vạch cầm tay 1D/2D",
+     "sang": "Đầu đọc vân tay điện tử",
+     "maTroToi": "84719030"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-847190-02",
+   "lat": 1,
+   "pn6": "847190",
+   "maHs": "84719030",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 8471.90.30 (hệ thống nhận dạng vân tay điện tử); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Hệ thống nhận dạng vân tay điện tử",
+    "chatLieu": null,
+    "congDung": "quét và nhận dạng vân tay, kết nối máy tính",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "máy/khối chức năng nhóm 84.71",
+     "tuKhoa": [
+      "vân tay"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Máy xử lý dữ liệu tự động và các khối chức năng của chúng"
+    },
+    {
+     "cap": 8,
+     "duKien": "hệ thống nhận dạng vân tay điện tử",
+     "tuKhoa": [
+      "nhận dạng vân tay"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Hệ thống nhận dạng vân tay điện tử"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84719090",
+     "lyDo": "loại khác (MFN 0 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Hệ thống nhận dạng vân tay điện tử gồm đầu quét vân tay, kết nối máy tính qua USB, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Hệ thống nhận dạng vân tay điện tử gồm đầu quét vân tay",
+     "sang": "Máy đọc ký tự quang học",
+     "maTroToi": "84719040"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-848310-01",
+   "lat": 1,
+   "pn6": "848310",
+   "maHs": "84831010",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 8483.10.10 (trục truyền động dùng cho máy nhóm 84.29); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Trục truyền động máy xúc",
+    "chatLieu": "thép hợp kim",
+    "congDung": "truyền động trong máy xúc bánh lốp",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "trục truyền động",
+     "tuKhoa": [
+      "trục truyền động"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Trục truyền động (kể cả trục cam và trục khuỷu) và tay biên"
+    },
+    {
+     "cap": 8,
+     "duKien": "dùng cho máy thuộc nhóm 84.29 (máy xúc)",
+     "tuKhoa": [
+      "máy xúc|máy đào|máy ủi"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Dùng cho máy thuộc nhóm 84.29 hoặc 84.30"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84831031",
+     "lyDo": "trục cho động cơ máy thủy ≤ 22,38 kW (MFN 10 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Công suất không quá 22,38 kW"
+    }
+   ],
+   "moTaMau": "Trục truyền động bằng thép hợp kim dùng cho máy xúc bánh lốp, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "dùng cho máy xúc bánh lốp",
+     "sang": "dùng cho động cơ máy thủy 15kW",
+     "maTroToi": "84831031"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-848310-02",
+   "lat": 1,
+   "pn6": "848310",
+   "maHs": "84831027",
+   "chuong": "84",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 8483.10.27 (trục khuỷu động cơ xe > 3.000 cc); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Trục khuỷu động cơ ô tô tải",
+    "chatLieu": "thép rèn",
+    "congDung": "lắp động cơ ô tô tải dung tích xi lanh 5.200 cc",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "trục truyền động (kể cả trục khuỷu)",
+     "tuKhoa": [
+      "trục khuỷu"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Trục truyền động (kể cả trục cam và trục khuỷu) và tay biên"
+    },
+    {
+     "cap": 8,
+     "duKien": "trục cam/trục khuỷu dùng cho động cơ xe Chương 87",
+     "tuKhoa": [
+      "ô tô"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Trục cam và trục khuỷu dùng cho động cơ xe của Chương 87:"
+    },
+    {
+     "cap": 8,
+     "duKien": "cho xe có dung tích xi lanh trên 3.000 cc",
+     "tuKhoa": [
+      "5\\.?200\\s*cc"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cho xe có dung tích xi lanh trên 3.000 cc"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "84831026",
+     "lyDo": "xe 2.000–3.000 cc (MFN 20 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cho xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc"
+    }
+   ],
+   "moTaMau": "Trục khuỷu bằng thép rèn lắp động cơ ô tô tải dung tích xi lanh 5.200 cc, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "dung tích xi lanh 5.200 cc",
+     "sang": "dung tích xi lanh 1.500 cc",
+     "maTroToi": "84831025"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-851762-01",
+   "lat": 1,
+   "pn6": "851762",
+   "maHs": "85176259",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "6444/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85176259[13]"
+   },
+   "thongTinHang": {
+    "tenHang": "Thiết bị đeo tay thông minh (smartwatch)",
+    "chatLieu": null,
+    "congDung": "thực hiện và nhận cuộc gọi, tin nhắn qua điện thoại ghép đôi bằng Bluetooth; đo nhịp tim, đếm bước",
+    "thongSo": [
+     "màn hình AMOLED cảm ứng, loa, micro, NFC",
+     "phải ghép đôi mới sử dụng được"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": "Huawei",
+    "model": "Watch Ultimate WDS-B19"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "máy thu, đổi và truyền hoặc tái tạo âm thanh, hình ảnh, dữ liệu",
+     "tuKhoa": [
+      "truyền|thu|bluetooth|kết nối"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Máy thu, đổi và truyền hoặc tái tạo âm thanh, hình ảnh hoặc dạng dữ liệu khác"
+    },
+    {
+     "cap": 8,
+     "duKien": "thực hiện/nhận cuộc gọi và tin nhắn qua thiết bị chủ ghép đôi Bluetooth (thiết bị truyền dẫn kết hợp thu)",
+     "tuKhoa": [
+      "cuộc gọi",
+      "bluetooth"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85176259[13].technicalSpec",
+     "trich": "thiết bị truyền dẫn khác kết hợp thiết bị thu, mã 8517.62.59",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85176259[13].productName",
+      "trich": "thực hiện và nhận cuộc gọi qua thiết bị chủ (tích hợp loa, micro)"
+     }
+    },
+    {
+     "cap": "LOAI_TRU",
+     "duKien": "không phải đồng hồ nhóm 91.02 (loại chỉ hiển thị giờ, đo, nhận thông báo mà không trả lời được)",
+     "tuKhoa": [
+      "cuộc gọi"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85176259[13].technicalSpec",
+     "trich": "Loại chỉ hiển thị giờ, đo lường, nhận thông báo mà không trả lời được thuộc nhóm 91.02"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85176251",
+     "lyDo": "thiết bị mạng nội bộ không dây (cùng 0 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Thiết bị mạng nội bộ không dây"
+    },
+    {
+     "ma": "9102",
+     "lyDo": "đồng hồ đeo tay — nếu không trả lời được cuộc gọi/tin nhắn",
+     "nguon": "data/precedents.json",
+     "viTri": "85176259[13].technicalSpec",
+     "trich": "Loại chỉ hiển thị giờ, đo lường, nhận thông báo mà không trả lời được thuộc nhóm 91.02"
+    }
+   ],
+   "moTaMau": "Đồng hồ thông minh thực hiện và nhận cuộc gọi, tin nhắn qua điện thoại ghép đôi Bluetooth, có loa, micro, màn hình AMOLED, hiệu Huawei, model Watch Ultimate WDS-B19, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": null
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-851762-02",
+   "lat": 1,
+   "pn6": "851762",
+   "maHs": "85176269",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "4032/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85176269[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Thẻ theo dõi vị trí đồ vật thông minh (Trace Tag)",
+    "chatLieu": null,
+    "congDung": "gắn lên tài sản để quản lý và theo dõi vị trí",
+    "thongSo": [
+     "thiết kế mỏng, nhỏ gọn"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "máy thu, đổi và truyền hoặc tái tạo âm thanh, hình ảnh, dữ liệu",
+     "tuKhoa": [
+      "truyền|thu|bluetooth|kết nối"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Máy thu, đổi và truyền hoặc tái tạo âm thanh, hình ảnh hoặc dạng dữ liệu khác",
+     "khongDuCanCu": true,
+     "ghiChu": "Trích tên hàng không mô tả cơ chế truyền/thu; thông báo xếp phân nhóm 8517.62."
+    },
+    {
+     "cap": 8,
+     "duKien": "thiết bị truyền dẫn khác (không kết hợp thiết bị thu)",
+     "tuKhoa": [
+      "theo dõi vị trí"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85176269[0].technicalSpec",
+     "trich": "phân nhóm “- - - Thiết bị truyền dẫn khác”",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85176269[0].productName",
+      "trich": "người dùng có thể biết được vị trí của tài sản bằng cách gắn thẻ lên tài sản"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85176259",
+     "lyDo": "thiết bị truyền dẫn kết hợp thiết bị thu (cùng 0 %)",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Thiết bị truyền dẫn khác kết hợp với thiết bị thu:"
+    }
+   ],
+   "moTaMau": "Thẻ theo dõi vị trí đồ vật thông minh (Trace Tag), mỏng nhỏ gọn, gắn lên tài sản để quản lý và theo dõi vị trí, mới 100%",
+   "khongDuCanCu": true,
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": null
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-851680-01",
+   "lat": 1,
+   "pn6": "851680",
+   "maHs": "85168090",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "4765/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85168090[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Cáp điện trở gia nhiệt tự điều chỉnh (Self-Regulating Heating Cable)",
+    "chatLieu": null,
+    "congDung": "làm nóng, ổn định nhiệt độ cho ống dẫn dầu và bồn chứa dầu",
+    "thongSo": [],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "điện trở đốt nóng bằng điện",
+     "tuKhoa": [
+      "điện trở|gia nhiệt|đốt nóng"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Điện trở đốt nóng bằng điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85168090[0].productName",
+      "trich": "Cáp điện trở gia nhiệt"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "dùng cho ống dẫn dầu/bồn chứa dầu — không dùng cho máy đúc/sắp chữ, lò công nghiệp, thiết bị gia dụng",
+     "tuKhoa": [
+      "ống dẫn dầu|bồn chứa dầu"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85168090[0].technicalSpec",
+     "trich": "mã số 8516.80.90 “- - Loại khác”",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85168090[0].productName",
+      "trich": "cho ống dẫn dầu và bồn chứa dầu"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85168010",
+     "lyDo": "dùng cho máy đúc/sắp chữ, lò công nghiệp (cùng 10 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Dùng cho máy đúc chữ hoặc máy sắp chữ; dùng cho lò công nghiệp"
+    },
+    {
+     "ma": "85168030",
+     "lyDo": "dùng cho thiết bị gia dụng (MFN 20 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Dùng cho thiết bị gia dụng"
+    }
+   ],
+   "moTaMau": "Cáp điện trở gia nhiệt tự điều chỉnh, làm nóng và ổn định nhiệt độ ống dẫn dầu, bồn chứa dầu, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "ống dẫn dầu, bồn chứa dầu",
+     "sang": "bình nước nóng gia dụng",
+     "maTroToi": "85168030"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-851680-02",
+   "lat": 1,
+   "pn6": "851680",
+   "maHs": "85168030",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 8516.80.30 (điện trở đốt nóng dùng cho thiết bị gia dụng); không phải lô hàng thật. Ca TB-TCHQ của phân nhóm: L1-851680-01."
+   },
+   "thongTinHang": {
+    "tenHang": "Thanh điện trở đốt nóng cho lò nướng gia dụng",
+    "chatLieu": "ống thép không gỉ",
+    "congDung": null,
+    "thongSo": [
+     "220V, 1500W"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "điện trở đốt nóng bằng điện",
+     "tuKhoa": [
+      "điện trở|gia nhiệt|đốt nóng"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Điện trở đốt nóng bằng điện"
+    },
+    {
+     "cap": 8,
+     "duKien": "dùng cho thiết bị gia dụng (lò nướng)",
+     "tuKhoa": [
+      "gia dụng"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Dùng cho thiết bị gia dụng"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85168090",
+     "lyDo": "điện trở đốt nóng khác (MFN 10 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Thanh điện trở đốt nóng vỏ ống thép không gỉ 220V 1500W, lắp lò nướng gia dụng, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "lắp lò nướng gia dụng",
+     "sang": "lắp lò công nghiệp",
+     "maTroToi": "85168010"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-853649-01",
+   "lat": 1,
+   "pn6": "853649",
+   "maHs": "85364990",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "7037/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85364990[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Rơ le điện từ (electromagnetic relay)",
+    "chatLieu": null,
+    "congDung": "dùng trong thiết bị viễn thông, đo lường, công nghiệp",
+    "thongSo": [
+     "điện áp cuộn dây 5VDC",
+     "điện áp đóng cắt tối đa 110VDC/125VAC, dòng đóng cắt tối đa 1A"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "TQ2-5V"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "rơ le loại khác (điện áp trên 60 V)",
+     "tuKhoa": [
+      "rơ le"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85364990[0].productName",
+      "trich": "Rơ le điện từ (electromagnetic relay)"
+     }
+    },
+    {
+     "cap": 6,
+     "duKien": "điện áp đóng cắt trên 60 V (110VDC/125VAC) — phân nhóm theo điện áp đóng cắt, không theo cuộn dây 5V",
+     "tuKhoa": [
+      "110\\s*vdc|125\\s*vac"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85364990[0].technicalSpec",
+     "trich": "rơ le loại khác, điện áp đóng cắt trên 60V",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85364990[0].productName",
+      "trich": "điện áp đóng cắt tối đa 110VDC/125VAC"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "không phải rơ le kỹ thuật số",
+     "tuKhoa": [
+      "điện từ"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác",
+     "khongDuCanCu": true,
+     "ghiChu": "Chuỗi \"Loại khác\" chung; thông báo không nói rõ \"không phải rơ le kỹ thuật số\"."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85364199",
+     "lyDo": "rơ le ≤ 60 V — thông báo nói rõ phân loại theo điện áp đóng cắt trên 60 V, không vào 8536.41",
+     "nguon": "data/precedents.json",
+     "viTri": "85364990[0].technicalSpec",
+     "trich": "thay vì 8536.41 (rơ le điện áp không quá 60V)"
+    },
+    {
+     "ma": "85364910",
+     "lyDo": "rơ le kỹ thuật số (MFN 3 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Rơ le kỹ thuật số"
+    }
+   ],
+   "moTaMau": "Rơ le điện từ cuộn dây 5VDC, điện áp đóng cắt tối đa 110VDC/125VAC, dòng 1A, 2 Form C, dùng cho thiết bị viễn thông, đo lường, model TQ2-5V, mới 100%",
+   "khongDuCanCu": true,
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Rơ le điện từ",
+     "sang": "Rơ le kỹ thuật số",
+     "maTroToi": "85364910"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-853649-02",
+   "lat": 1,
+   "pn6": "853649",
+   "maHs": "85364990",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "7037/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85364990[1]"
+   },
+   "thongTinHang": {
+    "tenHang": "Rơ le bán dẫn quang (Photomos relay / solid state relay)",
+    "chatLieu": null,
+    "congDung": "dùng trong thiết bị viễn thông, đo lường, điều khiển",
+    "thongSo": [
+     "đầu vào tối đa 50mA/1,5V; đầu ra MOSFET tối đa 0,1A/400V"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "AQY214S"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "rơ le loại khác (điện áp trên 60 V)",
+     "tuKhoa": [
+      "rơ le"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85364990[1].productName",
+      "trich": "Rơ le bán dẫn quang (Photomos relay / solid state relay)"
+     }
+    },
+    {
+     "cap": 6,
+     "duKien": "điện áp đóng cắt trên 60 V (400 V đầu ra)",
+     "tuKhoa": [
+      "400\\s*v"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "85364990[1].technicalSpec",
+     "trich": "rơ le loại khác, điện áp đóng cắt trên 60V",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85364990[1].productName",
+      "trich": "đầu ra tối đa 0,1A/400V"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85364191",
+     "lyDo": "rơ le bán dẫn ≤ 28 V (nhánh ≤ 60 V) — thông báo không vào 8536.41",
+     "nguon": "data/precedents.json",
+     "viTri": "85364990[1].technicalSpec",
+     "trich": "thay vì 8536.41 (rơ le điện áp không quá 60V)"
+    }
+   ],
+   "moTaMau": "Rơ le bán dẫn quang (Photomos) đầu ra MOSFET tối đa 0,1A/400V, đầu vào 50mA/1,5V, dùng cho thiết bị viễn thông, đo lường, model AQY214S, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Rơ le bán dẫn quang (Photomos)",
+     "sang": "Rơ le kỹ thuật số",
+     "maTroToi": "85364910"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-392330-01",
+   "lat": 1,
+   "pn6": "392330",
+   "maHs": "39233020",
+   "chuong": "39",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 3923.30.20 (bình composite nhiều lớp gia cố sợi thủy tinh cho khí hóa lỏng); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Bình gas composite",
+    "chatLieu": "lõi HDPE, lớp giữa sợi thủy tinh tẩm nhựa, vỏ ngoài nhựa",
+    "congDung": "chứa khí dầu mỏ hóa lỏng (LPG)",
+    "thongSo": [
+     "dung tích 24,5 lít"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng plastic dùng trong vận chuyển/đóng gói",
+     "tuKhoa": [
+      "nhựa|plastic|pp|pet|hdpe|ps"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm dùng trong vận chuyển hoặc đóng gói hàng hóa, bằng plastic"
+    },
+    {
+     "cap": 6,
+     "duKien": "bình, chai, lọ bằng plastic",
+     "tuKhoa": [
+      "bình"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Bình, chai, lọ, bình thót cổ và các sản phẩm tương tự"
+    },
+    {
+     "cap": 8,
+     "duKien": "bình nhiều lớp gia cố sợi thủy tinh, dùng cho khí hóa lỏng",
+     "tuKhoa": [
+      "sợi thủy tinh",
+      "khí (dầu mỏ )?hóa lỏng|lpg"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Bình chứa nhiều lớp được gia cố bằng sợi thủy tinh, dùng cho khí nén hoặc khí hóa lỏng"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "39233090",
+     "lyDo": "bình/chai plastic khác (MFN 15 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác"
+    }
+   ],
+   "moTaMau": "Bình gas composite 24,5 lít nhiều lớp: lõi HDPE, lớp giữa gia cố sợi thủy tinh, vỏ nhựa, chứa khí dầu mỏ hóa lỏng LPG, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": {
+     "tu": "Bình gas composite 24,5 lít nhiều lớp: lõi HDPE, lớp giữa gia cố sợi thủy tinh, vỏ nhựa, chứa khí dầu mỏ hóa lỏng LPG",
+     "sang": "Chai nhựa PET 1,5 lít đựng nước",
+     "maTroToi": "39233090"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-392330-02",
+   "lat": 1,
+   "pn6": "392330",
+   "maHs": "39233090",
+   "chuong": "39",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 3923.30.90 (bình, chai plastic loại khác); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Chai nhựa PET rỗng",
+    "chatLieu": "nhựa PET",
+    "congDung": "đóng chai nước giải khát",
+    "thongSo": [
+     "dung tích 500ml, có nắp vặn"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm bằng plastic dùng trong vận chuyển/đóng gói",
+     "tuKhoa": [
+      "nhựa|plastic|pp|pet|hdpe|ps"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm dùng trong vận chuyển hoặc đóng gói hàng hóa, bằng plastic"
+    },
+    {
+     "cap": 6,
+     "duKien": "chai plastic",
+     "tuKhoa": [
+      "chai"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Bình, chai, lọ, bình thót cổ và các sản phẩm tương tự"
+    },
+    {
+     "cap": 8,
+     "duKien": "chai đựng đồ uống — không phải bình composite gia cố sợi thủy tinh cho khí",
+     "tuKhoa": [
+      "nước giải khát|đồ uống"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác",
+     "khongDuCanCu": true,
+     "ghiChu": "Chuỗi \"Loại khác\" chung."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "39233020",
+     "lyDo": "bình composite gia cố sợi thủy tinh cho khí nén/khí hóa lỏng (MFN 10 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Bình chứa nhiều lớp được gia cố bằng sợi thủy tinh, dùng cho khí nén hoặc khí hóa lỏng"
+    }
+   ],
+   "moTaMau": "Chai nhựa PET rỗng dung tích 500ml có nắp vặn, dùng đóng chai nước giải khát, mới 100%",
+   "khongDuCanCu": true,
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Chai nhựa PET rỗng dung tích 500ml có nắp vặn, dùng đóng chai nước giải khát",
+     "sang": "Bình composite gia cố sợi thủy tinh chứa khí nén",
+     "maTroToi": "39233020"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-851810-01",
+   "lat": 1,
+   "pn6": "851810",
+   "maHs": "85181011",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 8518.10.11 (micro viễn thông cỡ nhỏ); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Micro MEMS dùng cho điện thoại di động",
+    "chatLieu": null,
+    "congDung": "thu âm thoại trong điện thoại di động",
+    "thongSo": [
+     "dải tần 300 Hz - 3.400 Hz",
+     "đường kính 3 mm, cao 1 mm"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "micro và giá đỡ micro",
+     "tuKhoa": [
+      "micro"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Micro và giá đỡ micro"
+    },
+    {
+     "cap": 8,
+     "duKien": "dải tần 300–3.400 Hz, đường kính ≤ 10 mm, cao ≤ 3 mm, dùng trong viễn thông",
+     "tuKhoa": [
+      "300\\s*hz",
+      "3\\s*mm",
+      "điện thoại"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Micro có dải tần số từ 300 Hz đến 3.400 Hz, với đường kính không quá 10 mm và cao không quá 3 mm, dùng trong viễn thông"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85181019",
+     "lyDo": "micro khác (MFN 15 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Micro khác, đã hoặc chưa lắp ráp cùng với giá đỡ micro"
+    }
+   ],
+   "moTaMau": "Micro MEMS dùng cho điện thoại di động, dải tần 300 Hz - 3.400 Hz, đường kính 3 mm, cao 1 mm, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Micro MEMS dùng cho điện thoại di động, dải tần 300 Hz - 3.400 Hz, đường kính 3 mm, cao 1 mm",
+     "sang": "Micro karaoke cầm tay không dây",
+     "maTroToi": "85181019"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-851810-02",
+   "lat": 1,
+   "pn6": "851810",
+   "maHs": "85181019",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định theo chữ dòng 8518.10.19 (micro khác); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+   },
+   "thongTinHang": {
+    "tenHang": "Micro karaoke không dây cầm tay",
+    "chatLieu": null,
+    "congDung": "hát karaoke",
+    "thongSo": [
+     "dải tần 50 Hz - 15 kHz",
+     "pin sạc"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "micro và giá đỡ micro",
+     "tuKhoa": [
+      "micro"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Micro và giá đỡ micro"
+    },
+    {
+     "cap": 8,
+     "duKien": "micro khác — không phải micro viễn thông cỡ nhỏ 300–3.400 Hz",
+     "tuKhoa": [
+      "karaoke"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Micro khác, đã hoặc chưa lắp ráp cùng với giá đỡ micro"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85181011",
+     "lyDo": "micro viễn thông cỡ nhỏ (MFN 0 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Micro có dải tần số từ 300 Hz đến 3.400 Hz, với đường kính không quá 10 mm và cao không quá 3 mm, dùng trong viễn thông"
+    }
+   ],
+   "moTaMau": "Micro karaoke không dây cầm tay, dải tần 50 Hz - 15 kHz, pin sạc, mới 100%",
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Micro karaoke không dây cầm tay, dải tần 50 Hz - 15 kHz",
+     "sang": "Micro MEMS điện thoại, dải tần 300 Hz - 3.400 Hz, đường kính 3 mm",
+     "maTroToi": "85181011"
     }
    },
    "duyetBoi": "CLAUDE_DUYET"
