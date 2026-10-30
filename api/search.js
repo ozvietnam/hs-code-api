@@ -9,7 +9,7 @@ const { searchCandidates } = require('../lib/search-utils');
 const { filterLowConfidence } = require('../lib/search-low-confidence');
 const { lookupAliases } = require('../lib/hs-aliases');
 const { lookupTradeTerms } = require('../lib/trade-synonyms');
-const { breadcrumbOf } = require('../lib/hs-breadcrumb');
+const { breadcrumbOf, nguCanhCoNhan } = require('../lib/hs-breadcrumb');
 const { vatReductionOf } = require('../lib/vat-reduction');
 const { matchProducts } = require('../lib/product-match');
 const { appendAccess } = require('../lib/access-log');
@@ -188,8 +188,8 @@ module.exports = function handler(req, res) {
         trail: crumb.trail,
         levels: crumb.levels,
         isResidual: crumb.isResidual,
-        ...(crumb.scopeVi ? { scopeVi: crumb.scopeVi } : {}),
-        ...(crumb.excludesVi.length ? { excludesVi: crumb.excludesVi } : {}),
+        // scopeVi/excludesVi là chữ AI (hs-context, AI_CHUA_KIEM) → luôn kèm nguonLoaiTruong + ghiChuNguonLoai (#560).
+        ...nguCanhCoNhan(crumb),
       };
     }
 

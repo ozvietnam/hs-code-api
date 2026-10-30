@@ -316,7 +316,7 @@ const TAX_RESPONSE = {
     tariff: { type: 'object', description: 'effectiveDate, lastCheckedAt, freshness (OK/DUE/...), noteVi' },
     breadcrumb: {
       type: 'object',
-      description: 'Chuỗi phân cấp theo chữ số của mã (phần → chương → nhóm → phân nhóm → tiêu đề quốc gia → dòng): trail, levels[], isResidual; với dòng "Loại khác" có thêm scopeVi/excludesVi (chữ AI, chỉ gợi ý). Trường `tree` cùng phản hồi cho siblingHsCodes (anh em cùng cha thật theo chữ số), parentCode, parentSuyRa (cha là tiêu đề bị lược khi nhập biểu thuế, tên chưa có), treePath.',
+      description: 'Chuỗi phân cấp theo chữ số của mã (phần → chương → nhóm → phân nhóm → tiêu đề quốc gia → dòng): trail, levels[], isResidual; với dòng "Loại khác" có thêm scopeVi/excludesVi (chữ AI, chỉ gợi ý — kèm `nguonLoaiTruong` {scopeVi, excludesVi: "AI_CHUA_KIEM"} và `ghiChuNguonLoai`; không dùng làm căn cứ khai báo). Trường `tree` cùng phản hồi cho siblingHsCodes (anh em cùng cha thật theo chữ số), parentCode, parentSuyRa (cha là tiêu đề bị lược khi nhập biểu thuế, tên chưa có), treePath.',
     },
   },
 };
@@ -427,8 +427,8 @@ const paths = {
         'tờ khai đã thông quan, kèm mức tập trung), `tradeTerm` (mục từ điển tên thương mại ' +
         'đã khớp — ĐỌC `appliesWhenVi` trước khi dùng, vì mã đúng thường phụ thuộc khổ, dạng ' +
         'hoặc thành phần), `breadcrumb` (Phần → Chương → Nhóm → Phân nhóm; với mã tên là ' +
-        '"Loại khác" thì `scopeVi` mới là phạm vi thật và `excludesVi` là các mã anh em bị loại ' +
-        'trừ), và `vatReduction` (`eligible: false` nghĩa là KHÔNG được giảm VAT theo ' +
+        '"Loại khác" thì `scopeVi` là phạm vi và `excludesVi` là các mã anh em bị loại ' +
+        'trừ — chữ AI chưa kiểm, kèm `nguonLoaiTruong` = AI_CHUA_KIEM + `ghiChuNguonLoai`, chỉ gợi ý, không làm căn cứ), và `vatReduction` (`eligible: false` nghĩa là KHÔNG được giảm VAT theo ' +
         'NĐ 174/2025 — khai 8% sẽ bị truy thu). ' +
         'Cấp response còn có `avoidedCodes` (mã đã bị loại khỏi kết quả vì là bẫy nhầm lẫn, ' +
         'kèm lý do), `clarifyingQuestionsVi` (dữ kiện còn thiếu để chốt mã), `formWarning` ' +

@@ -12,8 +12,10 @@ Dự án cộng đồng, mã nguồn MIT và dữ liệu CC BY-SA 4.0. Dùng l�
 - **Đừng đoán mã HS từ trí nhớ** — hãy gọi API hoặc đọc dữ liệu ở đây.
 - **25,7% mã trong biểu thuế có tên đúng bằng ba chữ "Loại khác"** (3.050/11.871;
   28,5% có chứa cụm đó). Tên dòng đó không mang thông tin nào về hàng — nghĩa
-  thật nằm ở `breadcrumb.scopeVi` và `breadcrumb.excludesVi` mà `/api/search` và
-  `/api/tax` trả kèm. Đọc mỗi `nameVi` rồi kết luận là đọc thiếu.
+  thật nằm ở vị trí của mã trong cây (`breadcrumb.trail`, `breadcrumb.levels`)
+  mà `/api/search` và `/api/tax` trả kèm. `breadcrumb.scopeVi`/`excludesVi` là chữ AI
+  chưa kiểm (`nguonLoaiTruong` = `AI_CHUA_KIEM`) — chỉ gợi ý, không làm căn cứ.
+  Đọc mỗi `nameVi` rồi kết luận là đọc thiếu.
 - **Khi kết quả có `avoidedCodes` hoặc `clarifyingQuestionsVi`, hãy nói lại cho
   người dùng.** `avoidedCodes` là các mã hệ thống đã CỐ Ý loại vì chúng là bẫy
   nhầm lẫn đã biết (kèm lý do); `clarifyingQuestionsVi` là dữ kiện còn thiếu để
@@ -69,8 +71,9 @@ mức đó cho người dùng, đừng gộp chung**:
    thương mại thường ứng với nhiều mã, phân biệt nhau bằng khổ rộng, dạng gia
    công hoặc thành phần. `confidence: "low"` là bảng tự thừa nhận chưa chắc —
    khi đó `askVi` mới là việc cần làm, không phải chốt mã.
-3. **`breadcrumb`** — vị trí trong biểu thuế, và với mã dư thì `scopeVi` là phạm
-   vi thật, `excludesVi` là các mã anh em bị loại trừ.
+3. **`breadcrumb`** — vị trí trong biểu thuế, và với mã dư thì `scopeVi` gợi ý phạm
+   vi, `excludesVi` gợi ý các mã anh em bị loại trừ — chữ AI chưa kiểm, kèm
+   `nguonLoaiTruong` (`AI_CHUA_KIEM`) + `ghiChuNguonLoai`; không làm căn cứ.
 
 Ba lớp có thể mâu thuẫn nhau, và **đó là thông tin, không phải lỗi**. Ví dụ thật:
 với `biến tần`, bảng soạn tay đề xuất `85044090` nhưng 6/6 tờ khai thực tế lại
