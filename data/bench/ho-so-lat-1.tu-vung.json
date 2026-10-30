@@ -2,7 +2,7 @@
  "phienBan": "ho-so-lat-1.tu-vung@1",
  "tuVung": "tu-vung@1",
  "boDe": "data/bench/ho-so-lat-1.json",
- "boDeSha256": "3b564e57b5b79a64ffe75225fe1a77002cd4ac686310821cb6ef60c6941f3591",
+ "boDeSha256": "09582ccf9dd2ca220ee2b2426c31732186add3180e6fbed04634cb41d4c5b522",
  "nguonLoai": "CLAUDE_DUYET",
  "ghiChu": [
   "Ánh xạ từng dữ kiện quyết định của bộ đề lát 1 (ca.duKienQuyetDinh[i], khoá \"<caId>#<i>\") về khoá tu-vung@1 + giá trị đúng kiểu — nghiệm thu L1-3a: \"mọi tên dữ kiện quyết định của bộ đề lát 1 ánh xạ được về một khoá tu-vung@1\".",
@@ -230,6 +230,47 @@
       "chatLieu": "plastic"
      }
     ]
+   }
+  ],
+  "L1-854442-04#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "dây, cáp điện"
+   },
+   {
+    "khoa": "coCachDien",
+    "giaTri": true
+   }
+  ],
+  "L1-854442-04#1": [
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-854442-04#2": [
+   {
+    "khoa": "daGanDauNoi",
+    "giaTri": true
+   }
+  ],
+  "L1-854442-04#3": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CACH_DIEN",
+      "chatLieu": "plastic"
+     }
+    ]
+   },
+   {
+    "khoa": "duongKinhLoi",
+    "op": "<",
+    "giaTri": 5,
+    "donVi": "mm"
    }
   ],
   "L1-853710-01#0": [
@@ -473,6 +514,28 @@
    {
     "khoa": "dungCho",
     "giaTri": "xích cẩu hàng"
+   }
+  ],
+  "L1-732690-03#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "sắt thép"
+     }
+    ]
+   }
+  ],
+  "L1-732690-03#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "khóa cáp có khuyên kẹp cáp"
+   },
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "bu lông chữ U"
    }
   ],
   "L1-940542-01#0": [
@@ -1379,6 +1442,18 @@
     "giaTri": "ruột thủy tinh"
    }
   ],
+  "L1-961700-03#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bình chân không"
+   }
+  ],
+  "L1-961700-03#1": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": false
+   }
+  ],
   "L1-853890-01#0": [
    {
     "khoa": "laBoPhan",
@@ -2129,6 +2204,43 @@
    {
     "khoa": "kieuDongCoDien",
     "giaTri": "HUONG_TRUC"
+   }
+  ],
+  "L1-850110-03#0": [
+   {
+    "khoa": "congSuat",
+    "op": "<=",
+    "giaTri": 37.5,
+    "donVi": "W"
+   }
+  ],
+  "L1-850110-03#1": [
+   {
+    "khoa": "loaiDongDien",
+    "giaTri": "XOAY_CHIEU"
+   }
+  ],
+  "L1-850110-03#2": [
+   {
+    "khoa": "kieuDongCoDien",
+    "op": "KHONG_LA",
+    "giaTri": "BUOC"
+   },
+   {
+    "khoa": "kieuDongCoDien",
+    "op": "KHONG_LA",
+    "giaTri": "HUONG_TRUC"
+   }
+  ],
+  "L1-850110-03#3": [
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "hàng hóa nhóm 84.15, 84.18, 84.50, 85.09, 85.16"
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy xông khí dung"
    }
   ],
   "L1-847190-01#0": [
