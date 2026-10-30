@@ -174,6 +174,7 @@ function nhap853641() {
 // ── 6. Áp vào sổ tay: chỉ bản DUYET; mục áp qua máy kiểm sổ tay ────────────────────────────────────────────────────
 {
   const soTay = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/8413.json'), 'utf8'));
+  const soTayTruoc = JSON.stringify(soTay);
   let nem = null; try { C.apDung(nhap841350(), soTay); } catch (e) { nem = e.message; }
   check('6a áp bản NHAP → từ chối', /DUYET|chua-duyet/.test(nem || ''), nem);
   const moi = C.apDung(C.duyet(nhap841350(), { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31' }), soTay);
@@ -184,7 +185,8 @@ function nhap853641() {
     && moi.dieuKienNut.every((d) => S.checkItem('dieuKienNut', d, { ...src, ...S.nguonTieuDe('8413') }, '8413') === null));
   check('6d áp không làm lệch cây (kiemCay không lỗi)', S.kiemCay(moi, '8413').loi.length === 0, S.kiemCay(moi, '8413').loi);
   check('6e không đụng dòng ngoài phân nhóm', JSON.stringify(moi.dong8.filter((d) => !d.hs.startsWith('841350'))) === JSON.stringify(soTay.dong8.filter((d) => !d.hs.startsWith('841350'))));
-  check('6f hàm thuần: không sửa sổ tay đầu vào', !soTay.dong8.find((d) => d.hs === '84135040').dieuKienSo);
+  // So với ảnh chụp trước khi áp — sổ tay thật có thể đã mang ranh giới DUYET (L1-4c), nên không giả định dòng còn trống.
+  check('6f hàm thuần: không sửa sổ tay đầu vào', JSON.stringify(soTay) === soTayTruoc);
 }
 
 // ── 7. Gói soạn + đợt + nhãn tệp ──────────────────────────────────────────────────────────────────────────────────

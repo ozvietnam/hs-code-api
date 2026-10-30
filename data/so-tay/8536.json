@@ -292,27 +292,105 @@
   },
   {
    "hs": "85362011",
-   "dieuKien": "Phân nhóm 8536.20 — dòng điện dưới 16 A",
+   "dieuKien": "dòng điện (định mức) < 16 A",
    "loaiKhac": false,
    "nguon": "tax.85362011",
    "trich": "85362011 - - - Dòng điện dưới 16 A",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dongDien",
+     "op": "<",
+     "value": 16,
+     "donVi": "A"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "dea724d8495da9ae8a95054df75571774856e2f2b7fac34104c004934366be60"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85362020",
+     "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    }
+   ]
   },
   {
    "hs": "85362012",
-   "dieuKien": "Phân nhóm 8536.20 — dòng điện từ 16 A trở lên nhưng không quá 32 A",
+   "dieuKien": "dòng điện (định mức) >= 16 A; dòng điện (định mức) <= 32 A",
    "loaiKhac": false,
    "nguon": "tax.85362012",
    "trich": "85362012 - - - Dòng điện từ 16 A trở lên nhưng không quá 32 A",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dongDien",
+     "op": ">=",
+     "value": 16,
+     "donVi": "A"
+    },
+    {
+     "fact": "dongDien",
+     "op": "<=",
+     "value": 32,
+     "donVi": "A"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "dea724d8495da9ae8a95054df75571774856e2f2b7fac34104c004934366be60"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85362020",
+     "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    }
+   ]
   },
   {
    "hs": "85362013",
-   "dieuKien": "Phân nhóm 8536.20 — dòng điện trên 32 A nhưng không quá 1.000 A",
+   "dieuKien": "dòng điện (định mức) > 32 A; dòng điện (định mức) <= 1000 A",
    "loaiKhac": false,
    "nguon": "tax.85362013",
    "trich": "85362013 - - - Dòng điện trên 32 A nhưng không quá 1.000 A",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dongDien",
+     "op": ">",
+     "value": 32,
+     "donVi": "A"
+    },
+    {
+     "fact": "dongDien",
+     "op": "<=",
+     "value": 1000,
+     "donVi": "A"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "dea724d8495da9ae8a95054df75571774856e2f2b7fac34104c004934366be60"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85362020",
+     "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    }
+   ]
   },
   {
    "hs": "85362019",
@@ -331,23 +409,78 @@
     ],
     "toTienCoTen": "853620",
     "dinhNghiaDuoc": true
-   }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85362020",
+     "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    }
+   ]
   },
   {
    "hs": "85362020",
-   "dieuKien": "Phân nhóm 8536.20 — để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị nhiệt điện gia dụng thuộc nhóm 85.16",
    "loaiKhac": false,
    "nguon": "tax.85362020",
    "trich": "85362020 - - Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "thiết bị nhiệt điện gia dụng thuộc nhóm 85.16"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "dea724d8495da9ae8a95054df75571774856e2f2b7fac34104c004934366be60"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85362011",
+     "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    },
+    {
+     "voi": "85362012",
+     "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    },
+    {
+     "voi": "85362013",
+     "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    },
+    {
+     "voi": "85362019",
+     "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    }
+   ]
   },
   {
    "hs": "85362091",
-   "dieuKien": "Phân nhóm 8536.20 (nhánh 8536.20.9x) — dòng điện dưới 16 A",
+   "dieuKien": "dòng điện (định mức) < 16 A",
    "loaiKhac": false,
    "nguon": "tax.85362091",
    "trich": "85362091 - - - Dòng điện dưới 16 A",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dongDien",
+     "op": "<",
+     "value": 16,
+     "donVi": "A"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "dea724d8495da9ae8a95054df75571774856e2f2b7fac34104c004934366be60"
+    }
+   }
   },
   {
    "hs": "85362099",
@@ -402,35 +535,104 @@
   },
   {
    "hs": "85364110",
-   "dieuKien": "Phân nhóm 8536.41 — rơ le kỹ thuật số",
+   "dieuKien": "loại rơ le: rơ le kỹ thuật số",
    "loaiKhac": false,
    "nguon": "tax.85364110",
    "trich": "85364110 - - - Rơ le kỹ thuật số",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "loaiRoLe",
+     "op": "TRONG",
+     "value": [
+      "KY_THUAT_SO"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "ec01ae99bdfa1f27822db3dfb10004b79c91ab50eef8bf66f79786c0a9d6342f"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85364120",
+     "lyDo": "Chữ biểu: .10 \"Rơ le kỹ thuật số\" (phân theo LOẠI rơ le) và .20 \"Của loại sử dụng trong các thiết bị sóng vô tuyến\" (phân theo ĐÍCH DÙNG) là hai trục khác nhau, không câu nào loại trừ câu kia — rơ le kỹ thuật số dùng trong thiết bị sóng vô tuyến thoả cả hai. Không có TB-TCHQ nào trong precedents.json cho 8536.41.10/.20/.30, SEN/chú giải nhóm 85.36 không nói thứ tự ⇒ không ghi uuTien, không bịa điều kiện tách."
+    },
+    {
+     "voi": "85364130",
+     "lyDo": "Như cặp .10/.20: .10 phân theo loại rơ le, .30 \"Của loại sử dụng cho quạt điện\" phân theo đích dùng; rơ le kỹ thuật số dùng cho quạt điện thoả cả hai. Không có căn cứ thứ tự (precedents.json không có mục cho các dòng này). Trích hai nhánh rẽ: 85364110 \"Rơ le kỹ thuật số\" ↔ 85364130 \"Của loại sử dụng cho quạt điện\"."
+    }
+   ]
   },
   {
    "hs": "85364120",
-   "dieuKien": "Phân nhóm 8536.41 — của loại sử dụng trong các thiết bị sóng vô tuyến",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị sóng vô tuyến",
    "loaiKhac": false,
    "nguon": "tax.85364120",
    "trich": "85364120 - - - Của loại sử dụng trong các thiết bị sóng vô tuyến",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "thiết bị sóng vô tuyến"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "ec01ae99bdfa1f27822db3dfb10004b79c91ab50eef8bf66f79786c0a9d6342f"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85364110",
+     "lyDo": "Chữ biểu: .10 \"Rơ le kỹ thuật số\" (phân theo LOẠI rơ le) và .20 \"Của loại sử dụng trong các thiết bị sóng vô tuyến\" (phân theo ĐÍCH DÙNG) là hai trục khác nhau, không câu nào loại trừ câu kia — rơ le kỹ thuật số dùng trong thiết bị sóng vô tuyến thoả cả hai. Không có TB-TCHQ nào trong precedents.json cho 8536.41.10/.20/.30, SEN/chú giải nhóm 85.36 không nói thứ tự ⇒ không ghi uuTien, không bịa điều kiện tách."
+    }
+   ]
   },
   {
    "hs": "85364130",
-   "dieuKien": "Phân nhóm 8536.41 — của loại sử dụng cho quạt điện",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): quạt điện",
    "loaiKhac": false,
    "nguon": "tax.85364130",
    "trich": "85364130 - - - Của loại sử dụng cho quạt điện",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "quạt điện"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "ec01ae99bdfa1f27822db3dfb10004b79c91ab50eef8bf66f79786c0a9d6342f"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85364110",
+     "lyDo": "Như cặp .10/.20: .10 phân theo loại rơ le, .30 \"Của loại sử dụng cho quạt điện\" phân theo đích dùng; rơ le kỹ thuật số dùng cho quạt điện thoả cả hai. Không có căn cứ thứ tự (precedents.json không có mục cho các dòng này). Trích hai nhánh rẽ: 85364110 \"Rơ le kỹ thuật số\" ↔ 85364130 \"Của loại sử dụng cho quạt điện\"."
+    }
+   ]
   },
   {
    "hs": "85364140",
-   "dieuKien": "Phân nhóm 8536.41 — loại khác, dòng điện dưới 16 A",
+   "dieuKien": "dòng điện (định mức) < 16 A",
    "loaiKhac": true,
    "nguon": "tax.85364140",
    "trich": "85364140 - - - Loại khác, dòng điện dưới 16 A",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "CLAUDE_DUYET",
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "853641",
@@ -442,15 +644,55 @@
     ],
     "toTienCoTen": "853641",
     "dinhNghiaDuoc": true
+   },
+   "dieuKienSo": [
+    {
+     "fact": "dongDien",
+     "op": "<",
+     "value": 16,
+     "donVi": "A"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "ec01ae99bdfa1f27822db3dfb10004b79c91ab50eef8bf66f79786c0a9d6342f"
+    }
    }
   },
   {
    "hs": "85364191",
-   "dieuKien": "Phân nhóm 8536.41 (nhánh 8536.41.9x) — rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V",
+   "dieuKien": "loại rơ le: rơ le bán dẫn hoặc rơ le điện từ; điện áp <= 28 V",
    "loaiKhac": false,
    "nguon": "tax.85364191",
    "trich": "85364191 - - - - Rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "loaiRoLe",
+     "op": "TRONG",
+     "value": [
+      "BAN_DAN",
+      "DIEN_TU"
+     ]
+    },
+    {
+     "fact": "dienAp",
+     "op": "<=",
+     "value": 28,
+     "donVi": "V"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "ec01ae99bdfa1f27822db3dfb10004b79c91ab50eef8bf66f79786c0a9d6342f"
+    }
+   }
   },
   {
    "hs": "85364199",
@@ -698,27 +940,90 @@
   },
   {
    "hs": "85366910",
-   "dieuKien": "Phân nhóm 8536.69 — phích cắm điện thoại",
+   "dieuKien": "tên loại hàng: Phích cắm điện thoại",
    "loaiKhac": false,
    "nguon": "tax.85366910",
    "trich": "85366910 - - - Phích cắm điện thoại",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Phích cắm điện thoại"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "218a4b2a69c8b30708dbbeafb27014849aadc0375525b560efa43e26307ea2d4"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85366932",
+     "lyDo": "Chữ biểu: .10 \"Phích cắm điện thoại\" (theo LOẠI phích) và tiêu đề 8536693 \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\" (theo NƠI LẮP) không loại trừ nhau — phích cắm điện thoại lắp trên mạch in thoả cả hai. Không có câu nào trong biểu/SEN/chú giải nhóm 85.36 nói thứ tự; TB-TCHQ trong precedents.json (4786, 330, 329, 328/TB-TCHQ → 85366932: đầu nối bo mạch điện thoại) xếp đầu nối mạch in vào .32 nhưng không phân xử với .10 ⇒ không ghi uuTien."
+    },
+    {
+     "voi": "85366939",
+     "lyDo": "Cùng lý do cặp .10/.32, nhánh dòng điện ≥ 16 A (85366939 \"Loại khác\" dưới tiêu đề 8536693). Trích hai nhánh rẽ: 85366910 \"Phích cắm điện thoại\" ↔ 8536693 \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\"."
+    }
+   ]
   },
   {
    "hs": "85366923",
-   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.2x) — dòng điện không quá 1,5 A",
+   "dieuKien": "dòng điện (định mức) <= 1.5 A",
    "loaiKhac": false,
    "nguon": "tax.85366923",
    "trich": "85366923 - - - - Dòng điện không quá 1,5 A",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dongDien",
+     "op": "<=",
+     "value": 1.5,
+     "donVi": "A"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "218a4b2a69c8b30708dbbeafb27014849aadc0375525b560efa43e26307ea2d4"
+    }
+   }
   },
   {
    "hs": "85366924",
-   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.2x) — dòng điện trên 1,5 A nhưng dưới 16 A",
+   "dieuKien": "dòng điện (định mức) > 1.5 A; dòng điện (định mức) < 16 A",
    "loaiKhac": false,
    "nguon": "tax.85366924",
    "trich": "85366924 - - - - Dòng điện trên 1,5 A nhưng dưới 16 A",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dongDien",
+     "op": ">",
+     "value": 1.5,
+     "donVi": "A"
+    },
+    {
+     "fact": "dongDien",
+     "op": "<",
+     "value": 16,
+     "donVi": "A"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "218a4b2a69c8b30708dbbeafb27014849aadc0375525b560efa43e26307ea2d4"
+    }
+   }
   },
   {
    "hs": "85366929",
@@ -740,11 +1045,33 @@
   },
   {
    "hs": "85366932",
-   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.3x) — dòng điện dưới 16 A",
+   "dieuKien": "dòng điện (định mức) < 16 A",
    "loaiKhac": false,
    "nguon": "tax.85366932",
    "trich": "85366932 - - - - Dòng điện dưới 16 A",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dongDien",
+     "op": "<",
+     "value": 16,
+     "donVi": "A"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "218a4b2a69c8b30708dbbeafb27014849aadc0375525b560efa43e26307ea2d4"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85366910",
+     "lyDo": "Chữ biểu: .10 \"Phích cắm điện thoại\" (theo LOẠI phích) và tiêu đề 8536693 \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\" (theo NƠI LẮP) không loại trừ nhau — phích cắm điện thoại lắp trên mạch in thoả cả hai. Không có câu nào trong biểu/SEN/chú giải nhóm 85.36 nói thứ tự; TB-TCHQ trong precedents.json (4786, 330, 329, 328/TB-TCHQ → 85366932: đầu nối bo mạch điện thoại) xếp đầu nối mạch in vào .32 nhưng không phân xử với .10 ⇒ không ghi uuTien."
+    }
+   ]
   },
   {
    "hs": "85366939",
@@ -761,15 +1088,37 @@
     ],
     "toTienCoTen": "853669",
     "dinhNghiaDuoc": true
-   }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "85366910",
+     "lyDo": "Cùng lý do cặp .10/.32, nhánh dòng điện ≥ 16 A (85366939 \"Loại khác\" dưới tiêu đề 8536693). Trích hai nhánh rẽ: 85366910 \"Phích cắm điện thoại\" ↔ 8536693 \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\"."
+    }
+   ]
   },
   {
    "hs": "85366992",
-   "dieuKien": "Phân nhóm 8536.69 (nhánh 8536.69.9x) — dòng điện dưới 16 A",
+   "dieuKien": "dòng điện (định mức) < 16 A",
    "loaiKhac": false,
    "nguon": "tax.85366992",
    "trich": "85366992 - - - - Dòng điện dưới 16 A",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dongDien",
+     "op": "<",
+     "value": 16,
+     "donVi": "A"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "218a4b2a69c8b30708dbbeafb27014849aadc0375525b560efa43e26307ea2d4"
+    }
+   }
   },
   {
    "hs": "85366999",
@@ -1877,5 +2226,92 @@
    ]
   }
  },
- "yKienWcoDayDu": false
+ "yKienWcoDayDu": false,
+ "dieuKienNut": [
+  {
+   "id": "8536201",
+   "nguon": "tieuDe.8536201",
+   "trich": "8536201 Loại hộp đúc",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "hộp đúc"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "dea724d8495da9ae8a95054df75571774856e2f2b7fac34104c004934366be60"
+    }
+   }
+  },
+  {
+   "id": "8536692",
+   "nguon": "tieuDe.8536692",
+   "trich": "8536692 Đầu cắm tín hiệu hình/tiếng và đầu cắm ống đèn tia ca-tốt dùng cho máy thu hình hoặc máy thu thanh",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Đầu cắm tín hiệu hình/tiếng",
+      "đầu cắm ống đèn tia ca-tốt"
+     ]
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "máy thu hình",
+      "máy thu thanh"
+     ]
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "218a4b2a69c8b30708dbbeafb27014849aadc0375525b560efa43e26307ea2d4"
+    }
+   }
+  },
+  {
+   "id": "8536693",
+   "nguon": "tieuDe.8536693",
+   "trich": "8536693 Đầu cắm và phích cắm cho cáp đồng trục và mạch in",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Đầu cắm",
+      "phích cắm"
+     ]
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "cáp đồng trục",
+      "mạch in"
+     ]
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "218a4b2a69c8b30708dbbeafb27014849aadc0375525b560efa43e26307ea2d4"
+    }
+   }
+  }
+ ]
 }
