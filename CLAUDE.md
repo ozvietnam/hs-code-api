@@ -20,7 +20,8 @@ Service HTTP API cho ERP `erp-xnk` gọi sang để:
 - AI: rerank + sinh mô tả qua chuỗi LLM (xem dòng dưới; MiniMax chính). Semantic search bằng embedding **chưa bật ở runtime** — ghi "Gemini Embedding 001" trước đây là SAI; #237 sẽ đưa bge-m3 cục bộ vào, khi đó cập nhật lại.
 - Chuỗi LLM (`lib/llm-tier.js` → `lib/llm.mjs`, CEO chốt 04/10/2026, thêm DeepSeek 17/10/2026): **MiniMax gọi thẳng
   (gói trả phí, `MiniMax-M2.7-highspeed`)** → DeepSeek gọi thẳng (`DEEPSEEK_API_KEY`, chỉ lượt công khai) → Hermes → OpenRouter → Gemini miễn phí
-  (`GEMINI_FREE_KEYS`, chỉ dự phòng) → khóa Gemini trả phí chỉ khi tier premium. Không phụ
+  (`GEMINI_FREE_KEYS`, chỉ dự phòng) → khóa Gemini trả phí khi tier premium, và (tạm thời, CEO chốt 30/10/2026, #578,
+  env `GEMINI_TRA_PHI_CHOT_CUOI` mặc định `on`) làm chốt cuối cho lượt công khai khi mọi nhà cung cấp trên đã lỗi. Không phụ
   thuộc Gemini miễn phí. Thiếu key provider nào thì tự bỏ qua; local dev dùng OpenRouter free
   — `docs/openrouter.md`, `npm run openrouter:ping`
 - **Dữ liệu khách không ra tầng miễn phí** (`lib/llm-privacy.js`, #237 J1, CEO chốt 11/10/2026): lượt từ khoá
