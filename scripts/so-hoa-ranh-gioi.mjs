@@ -23,7 +23,7 @@ const TRO_GIUP = `Số hoá ranh giới 6→8 số — scripts/so-hoa-ranh-gioi.
 
 Lệnh cho NGƯỜI SOẠN (thợ):
   --goi --pn6=<6 số> [--json]          gói soạn: cây, mục cần số hoá + chữ NGUYÊN VĂN, tầng không mã (nút <pn6>~r<dòng>; không đặt được ⇒ DỪNG), từ vựng, luật
-  --tu-vung [--khoa=<khoá>] [--json]   khoá tu-vung@1: kiểu, op, đơn vị, GIÁ TRỊ HỢP LỆ + cách đọc
+  --tu-vung [--khoa=<khoá>] [--json]   khoá tu-vung (runtime tu-vung@2): kiểu, op, đơn vị, GIÁ TRỊ HỢP LỆ + cách đọc
   --ap-spec=<tệp spec .json>           áp spec khai báo → data/ho-so/ranh-gioi/<pn6>.json rồi chạy cổng (KHÔNG sửa tay JSON nháp)
   --kiem --pn6=<6 số> [--json]         chạy các cổng 0–3 + 5; in lời giải thích + cách sửa dưới mỗi lỗi
   --ve --pn6=<6 số> [--json]           cổng 5: tách chữ biểu từng mục thành VẾ (đầu ngữ / GIỚI HẠN / MỞ / ngoặc) và cho biết vế nào
@@ -155,7 +155,7 @@ if (args.help || args.h || !argv.length) {
 } else if (args['tu-vung']) {
   const tv = TV.taiTuVung();
   const ds = args.khoa && args.khoa !== true ? tv.khoa.filter((k) => k.khoa === args.khoa) : tv.khoa;
-  can(ds.length, `không có khoá "${args.khoa}" trong tu-vung@1 — THIEU_KHOA_TU_VUNG: DỪNG, không tự đặt khoá`);
+  can(ds.length, `không có khoá "${args.khoa}" trong ${TV.taiTuVung().phienBan} — THIEU_KHOA_TU_VUNG: DỪNG, không tự đặt khoá`);
   if (args.json) process.stdout.write(`${JSON.stringify(ds, null, 2)}\n`); else inTuVung(ds);
 } else if (args.goi) {
   const ds = danhSach(); can(ds && ds.length, 'cần --pn6=…');
@@ -179,6 +179,7 @@ if (args.help || args.h || !argv.length) {
       for (const x of g.canSoHoa) {
         const co = [x.khongCanDieuKien ? 'phần còn lại — KHÔNG ghi điều kiện' : null, x.chan ? `CHẶN: ${x.chan} — DỪNG` : null,
           x.nghiPhanConLai ? 'nghi phần còn lại có tên — cân nhắc "phanConLai": true' : null,
+          x.goiYKhoa ? `gợi ý khoá ${TV.taiTuVung().phienBan}: ${x.goiYKhoa.join('; ')} — xem --tu-vung --khoa=<khoá>` : null,
           x.nghiThieuKhoa ? `nghi THIẾU KHOÁ: ${x.nghiThieuKhoa.join('; ')} — kiểm --tu-vung, không có thì DỪNG` : null].filter(Boolean);
         console.log(`- ${x.ma} ${x.loai}${co.length ? ` (${co.join('; ')})` : ''}\n${x.nguon.map((n) => `    ${n.nguon} [${n.text.length} ký tự]: ${n.text.replace(/\s+/g, ' ')}`).join('\n')}`);
         if (!x.khongCanDieuKien) { // cổng 5: vế mà điều kiện phải phủ (hoặc BO_VE có lý do)
@@ -189,7 +190,7 @@ if (args.help || args.h || !argv.length) {
       console.log(`\nNguồn cấp phân nhóm: ${g.nguonPhanNhom.map((n) => n.nguon).join(', ') || '—'}; chú giải: ${g.chuGiai.map((n) => n.nguon).join(', ')}`);
       console.log(`Luật:\n${g.luat.map((l) => `  * ${l}`).join('\n')}\n`);
     }
-    console.log('Từ vựng tu-vung@1 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):');
+    console.log(`Từ vựng ${TV.taiTuVung().phienBan} (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):`);
     for (const k of goi[0].tuVung) console.log(`  ${k.khoa}: ${k.kieu} op ${(k.op || []).join(' ')}${k.donViChuan ? ` đơn vị ${k.donViChuan}` : ''} ${tomGiaTri(k)}`.trimEnd());
   }
 } else if (args['ap-spec']) {
