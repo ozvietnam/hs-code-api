@@ -1,0 +1,2450 @@
+{
+ "phienBan": "ho-so-lat-1.tu-vung@1",
+ "tuVung": "tu-vung@1",
+ "boDe": "data/bench/ho-so-lat-1.json",
+ "boDeSha256": "3b564e57b5b79a64ffe75225fe1a77002cd4ac686310821cb6ef60c6941f3591",
+ "nguonLoai": "CLAUDE_DUYET",
+ "ghiChu": [
+  "Ánh xạ từng dữ kiện quyết định của bộ đề lát 1 (ca.duKienQuyetDinh[i], khoá \"<caId>#<i>\") về khoá tu-vung@1 + giá trị đúng kiểu — nghiệm thu L1-3a: \"mọi tên dữ kiện quyết định của bộ đề lát 1 ánh xạ được về một khoá tu-vung@1\".",
+  "THUỘC BỘ ĐỀ: agent số hoá ranh giới (L1-4, agent B) KHÔNG đọc tệp này cho tới khi L1-5f đo (luật chống học tủ, spec §11). Soạn từ TÊN dữ kiện (duKien), không sửa bộ đề.",
+  "op: với SO là <=, <, >=, >, = (giá trị + donVi); với kiểu khác vắng = khẳng định, KHONG_LA = phủ định (dữ kiện \"không phải …\"). Đổi bộ đề (băm khác boDeSha256) ⇒ soát lại tệp này.",
+  "Máy kiểm: lib/tu-vung.js doPhuBoDe (scripts/check-tu-vung.mjs, scripts/test-tu-vung.mjs)."
+ ],
+ "anhXa": {
+  "L1-392690-01#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-392690-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "khóa điều chỉnh (nút vặn điều chỉnh dây)"
+   }
+  ],
+  "L1-392690-02#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-392690-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "miếng dẫn hướng dây giày"
+   }
+  ],
+  "L1-392690-03#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-392690-03#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "khóa hãm"
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "hộc, cốp xe máy điện"
+   }
+  ],
+  "L1-392690-04#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-392690-04#1": [
+   {
+    "khoa": "congDung",
+    "giaTri": "thấm dầu da mặt (sản phẩm vệ sinh)"
+   },
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   },
+   {
+    "khoa": "chatLieu",
+    "op": "KHONG_LA",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "giấy"
+     }
+    ]
+   }
+  ],
+  "L1-392690-04#2": [
+   {
+    "khoa": "chatLieu",
+    "op": "KHONG_LA",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "giấy"
+     }
+    ]
+   }
+  ],
+  "L1-854442-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "dây, cáp điện"
+   },
+   {
+    "khoa": "coCachDien",
+    "giaTri": true
+   }
+  ],
+  "L1-854442-01#1": [
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-854442-01#2": [
+   {
+    "khoa": "daGanDauNoi",
+    "giaTri": true
+   }
+  ],
+  "L1-854442-01#3": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CACH_DIEN",
+      "chatLieu": "plastic"
+     }
+    ]
+   },
+   {
+    "khoa": "duongKinhLoi",
+    "op": "=",
+    "giaTri": 0.3,
+    "donVi": "mm"
+   }
+  ],
+  "L1-854442-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "dây, cáp điện"
+   },
+   {
+    "khoa": "coCachDien",
+    "giaTri": true
+   }
+  ],
+  "L1-854442-02#1": [
+   {
+    "khoa": "daGanDauNoi",
+    "giaTri": true
+   }
+  ],
+  "L1-854442-02#2": [
+   {
+    "khoa": "congDung",
+    "giaTri": "truyền tín hiệu điều khiển"
+   },
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "viễn thông"
+   }
+  ],
+  "L1-854442-02#3": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CACH_DIEN",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-854442-03#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "dây, cáp điện"
+   },
+   {
+    "khoa": "coCachDien",
+    "giaTri": true
+   }
+  ],
+  "L1-854442-03#1": [
+   {
+    "khoa": "daGanDauNoi",
+    "giaTri": true
+   }
+  ],
+  "L1-854442-03#2": [
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 80,
+    "donVi": "V"
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "truyền dữ liệu mạng máy tính"
+   }
+  ],
+  "L1-854442-03#3": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CACH_DIEN",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-853710-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bảng điều khiển điện lắp từ hai thiết bị nhóm 85.35/85.36 trở lên"
+   }
+  ],
+  "L1-853710-01#1": [
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853710-01#2": [
+   {
+    "khoa": "coBoXuLyLapTrinh",
+    "giaTri": true
+   }
+  ],
+  "L1-853710-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bảng điều khiển điện lắp từ hai thiết bị nhóm 85.35/85.36 trở lên"
+   }
+  ],
+  "L1-853710-02#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "thiết bị lọc không khí"
+   },
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "hàng hóa nhóm 84.15, 84.18, 84.50, 85.08, 85.09, 85.16"
+   }
+  ],
+  "L1-853710-02#2": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "vi mạch điều khiển tích hợp bluetooth"
+   }
+  ],
+  "L1-840991-01#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "động cơ nhóm 84.07, 84.08"
+   }
+  ],
+  "L1-840991-01#1": [
+   {
+    "khoa": "kieuDotChay",
+    "giaTri": "TIA_LUA_DIEN"
+   }
+  ],
+  "L1-840991-01#2": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "xe thuộc nhóm 87.11"
+   }
+  ],
+  "L1-840991-01#3": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "tay đòn giảm áp"
+   }
+  ],
+  "L1-840991-02#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "động cơ nhóm 84.07, 84.08"
+   }
+  ],
+  "L1-840991-02#1": [
+   {
+    "khoa": "kieuDotChay",
+    "giaTri": "TIA_LUA_DIEN"
+   }
+  ],
+  "L1-840991-02#2": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "xe khác thuộc Chương 87"
+   }
+  ],
+  "L1-848120-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "van, vòi dùng cho đường ống"
+   }
+  ],
+  "L1-848120-01#1": [
+   {
+    "khoa": "cachDieuKhien",
+    "giaTri": "THUY_LUC"
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "truyền động dầu thủy lực"
+   }
+  ],
+  "L1-848120-01#2": [
+   {
+    "khoa": "cachDieuKhien",
+    "giaTri": "DIEN_TU"
+   },
+   {
+    "khoa": "cachDieuKhien",
+    "op": "KHONG_LA",
+    "giaTri": "BANG_TAY"
+   },
+   {
+    "khoa": "tenLoai",
+    "giaTri": "cụm van điện từ điều chỉnh lưu lượng"
+   }
+  ],
+  "L1-848120-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "van, vòi dùng cho đường ống"
+   }
+  ],
+  "L1-848120-02#1": [
+   {
+    "khoa": "cachDieuKhien",
+    "giaTri": "KHI_NEN"
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "truyền động khí nén"
+   }
+  ],
+  "L1-848120-02#2": [
+   {
+    "khoa": "cachDieuKhien",
+    "giaTri": "DIEN_TU"
+   },
+   {
+    "khoa": "cachDieuKhien",
+    "op": "KHONG_LA",
+    "giaTri": "BANG_TAY"
+   },
+   {
+    "khoa": "tenLoai",
+    "giaTri": "van định hướng đảo chiều 5/2"
+   }
+  ],
+  "L1-950300-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đồ chơi"
+   }
+  ],
+  "L1-950300-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "xe đẩy đồ chơi"
+   },
+   {
+    "khoa": "coBanh",
+    "giaTri": true
+   }
+  ],
+  "L1-950300-01#2": [
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "khung tập đi có ghế ngồi"
+   }
+  ],
+  "L1-950300-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đồ chơi"
+   }
+  ],
+  "L1-950300-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bộ đồ chơi AR quả cầu"
+   },
+   {
+    "khoa": "coBanh",
+    "giaTri": false
+   }
+  ],
+  "L1-732690-01#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "sắt thép"
+     }
+    ]
+   }
+  ],
+  "L1-732690-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "khay giữ ly cốc"
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "ghế sofa"
+   }
+  ],
+  "L1-732690-02#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "sắt thép"
+     }
+    ]
+   }
+  ],
+  "L1-732690-02#1": [
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "xích, bộ phận của xích"
+   }
+  ],
+  "L1-732690-02#2": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "phụ kiện móc cẩu"
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "xích cẩu hàng"
+   }
+  ],
+  "L1-940542-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn và bộ đèn"
+   }
+  ],
+  "L1-940542-01#1": [
+   {
+    "khoa": "nguonSang",
+    "giaTri": "LED"
+   }
+  ],
+  "L1-940542-01#2": [
+   {
+    "khoa": "congDung",
+    "giaTri": "chiếu sáng bên ngoài"
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "tàu đánh bắt xa bờ"
+   }
+  ],
+  "L1-940542-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn và bộ đèn"
+   }
+  ],
+  "L1-940542-02#1": [
+   {
+    "khoa": "nguonSang",
+    "giaTri": "LED"
+   }
+  ],
+  "L1-940542-02#2": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn pha"
+   }
+  ],
+  "L1-940542-02#3": [
+   {
+    "khoa": "congDung",
+    "giaTri": "rọi luồng sáng qua một khoảng cách tới một điểm"
+   }
+  ],
+  "L1-900490-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "kính đeo"
+   }
+  ],
+  "L1-900490-01#1": [
+   {
+    "khoa": "hieuChinhThiLuc",
+    "giaTri": false
+   },
+   {
+    "khoa": "chongNang",
+    "giaTri": false
+   },
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "kính bảo hộ"
+   }
+  ],
+  "L1-900490-01#2": [
+   {
+    "khoa": "coCamera",
+    "giaTri": true
+   },
+   {
+    "khoa": "tenLoai",
+    "giaTri": "kính thông minh"
+   }
+  ],
+  "L1-900490-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "kính đeo"
+   }
+  ],
+  "L1-900490-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "kính bảo hộ"
+   }
+  ],
+  "L1-848180-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "van, vòi dùng cho đường ống"
+   }
+  ],
+  "L1-848180-01#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "đường ống nước"
+   }
+  ],
+  "L1-848180-01#2": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "đồng"
+     }
+    ]
+   },
+   {
+    "khoa": "chatLieu",
+    "op": "KHONG_LA",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "gang"
+     }
+    ]
+   }
+  ],
+  "L1-848180-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "van, vòi dùng cho đường ống"
+   }
+  ],
+  "L1-848180-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "van 3 cổng (1 vào, 2 ra)"
+   },
+   {
+    "khoa": "cachDieuKhien",
+    "giaTri": "DONG_CO"
+   }
+  ],
+  "L1-848180-02#2": [
+   {
+    "khoa": "congDung",
+    "giaTri": "điều tiết nước làm mát động cơ"
+   }
+  ],
+  "L1-848180-03#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "van, vòi dùng cho đường ống"
+   }
+  ],
+  "L1-848180-03#1": [
+   {
+    "khoa": "coKhoangPhaTron",
+    "giaTri": false
+   }
+  ],
+  "L1-848180-03#2": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "thép không gỉ"
+     }
+    ]
+   },
+   {
+    "khoa": "chatLieu",
+    "op": "KHONG_LA",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "đồng"
+     }
+    ]
+   }
+  ],
+  "L1-853690-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị điện đóng ngắt, đấu nối"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853690-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đầu nối cho dây dẫn và cáp"
+   }
+  ],
+  "L1-853690-01#2": [
+   {
+    "khoa": "dongDien",
+    "op": "<",
+    "giaTri": 16,
+    "donVi": "A"
+   }
+  ],
+  "L1-853690-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị điện đóng ngắt, đấu nối"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853690-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đầu nối cho dây dẫn và cáp"
+   }
+  ],
+  "L1-853690-02#2": [
+   {
+    "khoa": "dongDien",
+    "op": ">=",
+    "giaTri": 16,
+    "donVi": "A"
+   }
+  ],
+  "L1-853690-03#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị điện đóng ngắt, đấu nối"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853690-03#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "cổng nối chân pin POGO"
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "cấp nguồn"
+   }
+  ],
+  "L1-853690-03#2": [
+   {
+    "khoa": "dongDien",
+    "op": "<",
+    "giaTri": 16,
+    "donVi": "A"
+   }
+  ],
+  "L1-851830-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "tai nghe"
+   }
+  ],
+  "L1-851830-01#1": [
+   {
+    "khoa": "coKhungChupQuaDau",
+    "giaTri": false
+   }
+  ],
+  "L1-851830-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "tai nghe"
+   }
+  ],
+  "L1-851830-02#1": [
+   {
+    "khoa": "coKhungChupQuaDau",
+    "giaTri": true
+   }
+  ],
+  "L1-853650-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị điện đóng ngắt, đấu nối"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853650-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị đóng ngắt mạch"
+   }
+  ],
+  "L1-853650-01#2": [
+   {
+    "khoa": "loaiCongTac",
+    "giaTri": "DIEN_TU_HOAC_BAT_NHANH"
+   }
+  ],
+  "L1-853650-01#3": [
+   {
+    "khoa": "dongDien",
+    "op": "<",
+    "giaTri": 16,
+    "donVi": "A"
+   }
+  ],
+  "L1-853650-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị điện đóng ngắt, đấu nối"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853650-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị đóng ngắt mạch"
+   }
+  ],
+  "L1-853650-02#2": [
+   {
+    "khoa": "loaiCongTac",
+    "giaTri": "MANG_DIEN_GIA_DUNG"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 500,
+    "donVi": "V"
+   },
+   {
+    "khoa": "dongDien",
+    "op": "<=",
+    "giaTri": 20,
+    "donVi": "A"
+   }
+  ],
+  "L1-853650-03#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị điện đóng ngắt, đấu nối"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853650-03#1": [
+   {
+    "khoa": "loaiCongTac",
+    "giaTri": "DIEN_TU_HOAC_BAT_NHANH"
+   }
+  ],
+  "L1-853650-03#2": [
+   {
+    "khoa": "dongDien",
+    "op": "<=",
+    "giaTri": 11,
+    "donVi": "A"
+   }
+  ],
+  "L1-848340-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "hộp số, bộ bánh răng ăn khớp"
+   }
+  ],
+  "L1-848340-01#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy thuộc nhóm 84.29"
+   }
+  ],
+  "L1-848340-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "hộp số, cơ cấu điều tốc"
+   }
+  ],
+  "L1-848340-02#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "băng tải"
+   }
+  ],
+  "L1-830140-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "khóa"
+   },
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "kim loại"
+     }
+    ]
+   }
+  ],
+  "L1-830140-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "khóa cửa"
+   }
+  ],
+  "L1-830140-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "khóa"
+   },
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "kim loại"
+     }
+    ]
+   }
+  ],
+  "L1-830140-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "ổ khóa vali"
+   }
+  ],
+  "L1-830140-02#2": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "ổ khóa lắp cố định"
+   }
+  ],
+  "L1-830140-02#3": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "ổ khóa vali"
+   },
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "khóa cửa"
+   }
+  ],
+  "L1-851310-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn điện xách tay"
+   },
+   {
+    "khoa": "nguonNangLuong",
+    "giaTri": "PIN_AC_QUY"
+   }
+  ],
+  "L1-851310-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn gắn trên mũ thợ mỏ"
+   }
+  ],
+  "L1-851310-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn điện xách tay"
+   },
+   {
+    "khoa": "nguonNangLuong",
+    "giaTri": "PIN_AC_QUY"
+   }
+  ],
+  "L1-851310-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn pin cầm tay"
+   },
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "đèn gắn trên mũ thợ mỏ"
+   }
+  ],
+  "L1-630790-01#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "vải dệt"
+     }
+    ]
+   }
+  ],
+  "L1-630790-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "khẩu trang"
+   },
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "khẩu trang phẫu thuật"
+   }
+  ],
+  "L1-630790-02#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "vải dệt"
+     }
+    ]
+   }
+  ],
+  "L1-630790-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bộ toan áo phẫu thuật"
+   }
+  ],
+  "L1-830220-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bánh xe đẩy (castor)"
+   },
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "kim loại"
+     }
+    ]
+   }
+  ],
+  "L1-830220-01#1": [
+   {
+    "khoa": "duongKinh",
+    "op": ">",
+    "giaTri": 100,
+    "donVi": "mm"
+   },
+   {
+    "khoa": "duongKinh",
+    "op": "<=",
+    "giaTri": 250,
+    "donVi": "mm"
+   }
+  ],
+  "L1-830220-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bánh xe đẩy (castor)"
+   },
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "kim loại"
+     }
+    ]
+   }
+  ],
+  "L1-830220-02#1": [
+   {
+    "khoa": "duongKinh",
+    "op": "<=",
+    "giaTri": 100,
+    "donVi": "mm"
+   }
+  ],
+  "L1-841459-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "quạt"
+   }
+  ],
+  "L1-841459-01#1": [
+   {
+    "khoa": "congSuat",
+    "op": "<=",
+    "giaTri": 125,
+    "donVi": "kW"
+   }
+  ],
+  "L1-841459-01#2": [
+   {
+    "khoa": "congDung",
+    "giaTri": "làm mát thiết bị viễn thông"
+   }
+  ],
+  "L1-841459-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "quạt"
+   }
+  ],
+  "L1-841459-02#1": [
+   {
+    "khoa": "coGiaNhiet",
+    "giaTri": false
+   }
+  ],
+  "L1-841459-02#2": [
+   {
+    "khoa": "coLuoiBaoVe",
+    "giaTri": true
+   }
+  ],
+  "L1-871410-01#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "mô tô"
+   }
+  ],
+  "L1-871410-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "nắp bình xăng"
+   }
+  ],
+  "L1-871410-02#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "mô tô"
+   }
+  ],
+  "L1-871410-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bộ bánh răng và xích truyền động"
+   }
+  ],
+  "L1-852589-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "camera"
+   }
+  ],
+  "L1-852589-01#1": [
+   {
+    "khoa": "coChucNangGhi",
+    "giaTri": true
+   }
+  ],
+  "L1-852589-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "camera"
+   }
+  ],
+  "L1-852589-02#1": [
+   {
+    "khoa": "coChucNangGhi",
+    "giaTri": false
+   },
+   {
+    "khoa": "tenLoai",
+    "giaTri": "camera truyền hình"
+   }
+  ],
+  "L1-761699-01#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "nhôm"
+     }
+    ]
+   }
+  ],
+  "L1-761699-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "tấm tổ ong"
+   }
+  ],
+  "L1-761699-02#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "nhôm"
+     }
+    ]
+   }
+  ],
+  "L1-761699-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "ống chỉ, lõi suốt"
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "sợi dệt"
+   }
+  ],
+  "L1-850131-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "động cơ điện"
+   }
+  ],
+  "L1-850131-01#1": [
+   {
+    "khoa": "loaiDongDien",
+    "giaTri": "MOT_CHIEU"
+   },
+   {
+    "khoa": "congSuat",
+    "op": "<=",
+    "giaTri": 750,
+    "donVi": "W"
+   }
+  ],
+  "L1-850131-01#2": [
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "hàng hóa nhóm 84.15, 84.18, 84.50, 85.09, 85.16"
+   },
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "xe Chương 87"
+   },
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "máy phát điện"
+   }
+  ],
+  "L1-850131-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "động cơ điện"
+   }
+  ],
+  "L1-850131-02#1": [
+   {
+    "khoa": "loaiDongDien",
+    "giaTri": "MOT_CHIEU"
+   },
+   {
+    "khoa": "congSuat",
+    "op": "<=",
+    "giaTri": 750,
+    "donVi": "W"
+   }
+  ],
+  "L1-850131-02#2": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy giặt"
+   }
+  ],
+  "L1-853620-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bộ ngắt mạch tự động"
+   }
+  ],
+  "L1-853620-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bộ ngắt mạch loại hộp đúc"
+   }
+  ],
+  "L1-853620-01#2": [
+   {
+    "khoa": "dongDien",
+    "op": "<",
+    "giaTri": 16,
+    "donVi": "A"
+   }
+  ],
+  "L1-853620-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bộ ngắt mạch tự động"
+   }
+  ],
+  "L1-853620-02#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "thiết bị nhiệt điện gia dụng nhóm 85.16 (bình nước nóng)"
+   }
+  ],
+  "L1-853669-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị điện đóng ngắt, đấu nối"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853669-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "phích cắm, ổ cắm"
+   }
+  ],
+  "L1-853669-01#2": [
+   {
+    "khoa": "loaiPhichOCam",
+    "giaTri": "CAP_DONG_TRUC_MACH_IN"
+   }
+  ],
+  "L1-853669-01#3": [
+   {
+    "khoa": "dongDien",
+    "op": "<",
+    "giaTri": 16,
+    "donVi": "A"
+   }
+  ],
+  "L1-853669-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị điện đóng ngắt, đấu nối"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853669-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "phích cắm, ổ cắm"
+   }
+  ],
+  "L1-853669-02#2": [
+   {
+    "khoa": "loaiPhichOCam",
+    "giaTri": "THONG_THUONG"
+   }
+  ],
+  "L1-853669-02#3": [
+   {
+    "khoa": "dongDien",
+    "op": "<",
+    "giaTri": 16,
+    "donVi": "A"
+   }
+  ],
+  "L1-961700-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "phích, bình chân không"
+   },
+   {
+    "khoa": "laBoPhan",
+    "giaTri": false
+   }
+  ],
+  "L1-961700-02#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "phích, bình chân không"
+   },
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "ruột thủy tinh"
+   }
+  ],
+  "L1-853890-01#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "thiết bị nhóm 85.35, 85.36, 85.37"
+   }
+  ],
+  "L1-853890-01#1": [
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853890-01#2": [
+   {
+    "khoa": "coManHinh",
+    "giaTri": false
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy in đa năng"
+   }
+  ],
+  "L1-853890-02#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "thiết bị nhóm 85.35, 85.36, 85.37"
+   }
+  ],
+  "L1-853890-02#1": [
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 1000,
+    "donVi": "V"
+   }
+  ],
+  "L1-853890-02#2": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "chi tiết tiếp xúc của phích cắm sạc"
+   }
+  ],
+  "L1-845290-01#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy khâu"
+   }
+  ],
+  "L1-845290-01#1": [
+   {
+    "khoa": "phamViSuDung",
+    "giaTri": "GIA_DINH"
+   }
+  ],
+  "L1-845290-01#2": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bánh đà"
+   }
+  ],
+  "L1-845290-02#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy khâu"
+   }
+  ],
+  "L1-845290-02#1": [
+   {
+    "khoa": "phamViSuDung",
+    "giaTri": "CONG_NGHIEP"
+   }
+  ],
+  "L1-845290-02#2": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "chân vịt"
+   }
+  ],
+  "L1-848390-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bánh xe có răng"
+   }
+  ],
+  "L1-848390-01#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "xe khác thuộc Chương 87"
+   }
+  ],
+  "L1-848390-01#2": [
+   {
+    "khoa": "congDung",
+    "op": "KHONG_LA",
+    "giaTri": "bộ phận bên trong động cơ"
+   }
+  ],
+  "L1-848390-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đĩa xích"
+   }
+  ],
+  "L1-848390-02#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "băng tải"
+   },
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "xe Chương 87"
+   }
+  ],
+  "L1-401699-01#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "cao su"
+     }
+    ]
+   }
+  ],
+  "L1-401699-01#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy (mục đích kỹ thuật)"
+   }
+  ],
+  "L1-401699-01#2": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "cao su"
+     }
+    ]
+   }
+  ],
+  "L1-401699-02#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "cao su"
+     }
+    ]
+   }
+  ],
+  "L1-401699-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "viền cao su quanh kính cửa"
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "xe nhóm 87.02, 87.03, 87.04"
+   }
+  ],
+  "L1-841391-01#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "bơm chất lỏng"
+   }
+  ],
+  "L1-841391-01#1": [
+   {
+    "khoa": "kieuBom",
+    "giaTri": "LY_TAM"
+   },
+   {
+    "khoa": "datChim",
+    "giaTri": true
+   }
+  ],
+  "L1-841391-01#2": [
+   {
+    "khoa": "datChim",
+    "giaTri": true
+   }
+  ],
+  "L1-841391-02#0": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "bơm chất lỏng"
+   }
+  ],
+  "L1-841391-02#1": [
+   {
+    "khoa": "kieuBom",
+    "giaTri": "PISTON"
+   }
+  ],
+  "L1-850140-01#0": [
+   {
+    "khoa": "loaiDongDien",
+    "giaTri": "XOAY_CHIEU"
+   },
+   {
+    "khoa": "soPha",
+    "giaTri": "MOT_PHA"
+   }
+  ],
+  "L1-850140-01#1": [
+   {
+    "khoa": "congSuat",
+    "op": "<=",
+    "giaTri": 1,
+    "donVi": "kW"
+   }
+  ],
+  "L1-850140-01#2": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy điều hòa không khí (nhóm 84.15)"
+   }
+  ],
+  "L1-850140-02#0": [
+   {
+    "khoa": "loaiDongDien",
+    "giaTri": "XOAY_CHIEU"
+   },
+   {
+    "khoa": "soPha",
+    "giaTri": "MOT_PHA"
+   }
+  ],
+  "L1-850140-02#1": [
+   {
+    "khoa": "congSuat",
+    "op": ">",
+    "giaTri": 1,
+    "donVi": "kW"
+   }
+  ],
+  "L1-850140-02#2": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy nén khí"
+   },
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "hàng hóa nhóm 84.15, 84.18, 84.50, 85.09, 85.16"
+   }
+  ],
+  "L1-848190-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "van, vòi dùng cho đường ống"
+   }
+  ],
+  "L1-848190-01#1": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   }
+  ],
+  "L1-848190-01#2": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "vòi"
+   },
+   {
+    "khoa": "duongKinhTrong",
+    "op": "<=",
+    "giaTri": 25,
+    "donVi": "mm"
+   }
+  ],
+  "L1-848190-01#3": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thân"
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "vòi nước"
+   }
+  ],
+  "L1-848190-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "van, vòi dùng cho đường ống"
+   }
+  ],
+  "L1-848190-02#1": [
+   {
+    "khoa": "laBoPhan",
+    "giaTri": true
+   }
+  ],
+  "L1-848190-02#2": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "van khí nạp"
+   },
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "săm, lốp"
+   }
+  ],
+  "L1-852859-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "màn hình"
+   }
+  ],
+  "L1-852859-01#1": [
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "xe ô tô (bộ phận nhóm 87.08)"
+   }
+  ],
+  "L1-852859-01#2": [
+   {
+    "khoa": "mauHienThi",
+    "giaTri": "MAU"
+   }
+  ],
+  "L1-852859-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "màn hình"
+   }
+  ],
+  "L1-852859-02#1": [
+   {
+    "khoa": "mauHienThi",
+    "giaTri": "DON_SAC"
+   }
+  ],
+  "L1-940541-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn và bộ đèn"
+   }
+  ],
+  "L1-940541-01#1": [
+   {
+    "khoa": "nguonNangLuong",
+    "giaTri": "QUANG_DIEN"
+   },
+   {
+    "khoa": "nguonSang",
+    "giaTri": "LED"
+   }
+  ],
+  "L1-940541-01#2": [
+   {
+    "khoa": "phamViSuDung",
+    "giaTri": "CONG_CONG"
+   }
+  ],
+  "L1-940541-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn và bộ đèn"
+   }
+  ],
+  "L1-940541-02#1": [
+   {
+    "khoa": "nguonNangLuong",
+    "giaTri": "QUANG_DIEN"
+   },
+   {
+    "khoa": "nguonSang",
+    "giaTri": "LED"
+   }
+  ],
+  "L1-940541-02#2": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "đèn pha"
+   }
+  ],
+  "L1-940541-02#3": [
+   {
+    "khoa": "congDung",
+    "giaTri": "rọi luồng sáng qua một khoảng cách tới một điểm"
+   }
+  ],
+  "L1-901720-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "dụng cụ vẽ, vạch mức"
+   }
+  ],
+  "L1-901720-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thước"
+   }
+  ],
+  "L1-901720-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "dụng cụ vẽ"
+   }
+  ],
+  "L1-901720-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "compa"
+   }
+  ],
+  "L1-392620-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "hàng may mặc, đồ phụ trợ may mặc"
+   },
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-392620-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "găng tay"
+   }
+  ],
+  "L1-392620-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "hàng may mặc"
+   },
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-392620-02#1": [
+   {
+    "khoa": "congDung",
+    "giaTri": "chống các chất hóa học"
+   }
+  ],
+  "L1-842010-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "máy cán là kiểu trục lăn"
+   }
+  ],
+  "L1-842010-01#1": [
+   {
+    "khoa": "phamViSuDung",
+    "giaTri": "GIA_DINH"
+   }
+  ],
+  "L1-842010-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "máy cán ép phẳng kiểu trục lăn"
+   }
+  ],
+  "L1-842010-02#1": [
+   {
+    "khoa": "congDung",
+    "giaTri": "sản xuất tấm nền mạch in"
+   }
+  ],
+  "L1-853641-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "rơ le"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 60,
+    "donVi": "V"
+   }
+  ],
+  "L1-853641-01#1": [
+   {
+    "khoa": "dongDien",
+    "op": "<",
+    "giaTri": 16,
+    "donVi": "A"
+   },
+   {
+    "khoa": "loaiRoLe",
+    "op": "KHONG_LA",
+    "giaTri": "KY_THUAT_SO"
+   },
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "thiết bị sóng vô tuyến, quạt điện"
+   }
+  ],
+  "L1-853641-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "rơ le"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 60,
+    "donVi": "V"
+   }
+  ],
+  "L1-853641-02#1": [
+   {
+    "khoa": "loaiRoLe",
+    "giaTri": "DIEN_TU"
+   },
+   {
+    "khoa": "dienAp",
+    "op": "<=",
+    "giaTri": 28,
+    "donVi": "V"
+   }
+  ],
+  "L1-853641-02#2": [
+   {
+    "khoa": "dongDien",
+    "op": ">=",
+    "giaTri": 16,
+    "donVi": "A"
+   }
+  ],
+  "L1-841350-01#0": [
+   {
+    "khoa": "kieuBom",
+    "giaTri": "PISTON"
+   }
+  ],
+  "L1-841350-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bơm nước"
+   },
+   {
+    "khoa": "luuLuong",
+    "op": "<=",
+    "giaTri": 8000,
+    "donVi": "m3/h"
+   }
+  ],
+  "L1-841350-01#2": [
+   {
+    "khoa": "hoatDongBangDien",
+    "giaTri": true
+   }
+  ],
+  "L1-841350-02#0": [
+   {
+    "khoa": "kieuBom",
+    "giaTri": "PISTON"
+   }
+  ],
+  "L1-841350-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bơm hóa chất"
+   },
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "bơm nước"
+   }
+  ],
+  "L1-392310-01#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "vận chuyển, đóng gói hàng hóa"
+   }
+  ],
+  "L1-392310-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "hộp, hòm, thùng thưa"
+   }
+  ],
+  "L1-392310-01#2": [
+   {
+    "khoa": "congDung",
+    "giaTri": "vận chuyển, đóng gói tấm bán dẫn mỏng"
+   }
+  ],
+  "L1-392310-02#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "vận chuyển, đóng gói hàng hóa"
+   }
+  ],
+  "L1-392310-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "hộp đựng đĩa quang"
+   }
+  ],
+  "L1-852351-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị lưu trữ bền vững, thể rắn"
+   }
+  ],
+  "L1-852351-01#1": [
+   {
+    "khoa": "daGhi",
+    "giaTri": false
+   }
+  ],
+  "L1-852351-01#2": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy vi tính"
+   }
+  ],
+  "L1-852351-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "thiết bị lưu trữ bền vững, thể rắn"
+   }
+  ],
+  "L1-852351-02#1": [
+   {
+    "khoa": "daGhi",
+    "giaTri": true
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "tương tác với người dùng qua máy xử lý dữ liệu tự động"
+   }
+  ],
+  "L1-850110-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "động cơ điện"
+   },
+   {
+    "khoa": "congSuat",
+    "op": "<=",
+    "giaTri": 37.5,
+    "donVi": "W"
+   }
+  ],
+  "L1-850110-01#1": [
+   {
+    "khoa": "loaiDongDien",
+    "giaTri": "XOAY_CHIEU"
+   },
+   {
+    "khoa": "kieuDongCoDien",
+    "op": "KHONG_LA",
+    "giaTri": "BUOC"
+   },
+   {
+    "khoa": "kieuDongCoDien",
+    "op": "KHONG_LA",
+    "giaTri": "HUONG_TRUC"
+   }
+  ],
+  "L1-850110-01#2": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy xông khí dung"
+   },
+   {
+    "khoa": "dungCho",
+    "op": "KHONG_LA",
+    "giaTri": "hàng hóa nhóm 84.15, 84.18, 84.50, 85.09, 85.16"
+   }
+  ],
+  "L1-850110-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "động cơ điện"
+   },
+   {
+    "khoa": "congSuat",
+    "op": "<=",
+    "giaTri": 37.5,
+    "donVi": "W"
+   }
+  ],
+  "L1-850110-02#1": [
+   {
+    "khoa": "loaiDongDien",
+    "giaTri": "MOT_CHIEU"
+   }
+  ],
+  "L1-850110-02#2": [
+   {
+    "khoa": "kieuDongCoDien",
+    "giaTri": "HUONG_TRUC"
+   }
+  ],
+  "L1-847190-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "máy đọc quang học"
+   }
+  ],
+  "L1-847190-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "máy đọc mã vạch"
+   }
+  ],
+  "L1-847190-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "khối chức năng của máy xử lý dữ liệu"
+   }
+  ],
+  "L1-847190-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "hệ thống nhận dạng vân tay điện tử"
+   }
+  ],
+  "L1-848310-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "trục truyền động"
+   }
+  ],
+  "L1-848310-01#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "máy thuộc nhóm 84.29"
+   }
+  ],
+  "L1-848310-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "trục khuỷu"
+   }
+  ],
+  "L1-848310-02#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "động cơ xe Chương 87"
+   }
+  ],
+  "L1-848310-02#2": [
+   {
+    "khoa": "dungTichXiLanh",
+    "op": ">",
+    "giaTri": 3000,
+    "donVi": "cc"
+   }
+  ],
+  "L1-851762-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "máy thu, đổi và truyền âm thanh, hình ảnh, dữ liệu"
+   }
+  ],
+  "L1-851762-01#1": [
+   {
+    "khoa": "coKetHopThietBiThu",
+    "giaTri": true
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "thực hiện, nhận cuộc gọi và tin nhắn qua thiết bị chủ ghép đôi Bluetooth"
+   }
+  ],
+  "L1-851762-01#2": [
+   {
+    "khoa": "tenLoai",
+    "op": "KHONG_LA",
+    "giaTri": "đồng hồ"
+   }
+  ],
+  "L1-851762-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "máy thu, đổi và truyền âm thanh, hình ảnh, dữ liệu"
+   }
+  ],
+  "L1-851762-02#1": [
+   {
+    "khoa": "coKetHopThietBiThu",
+    "giaTri": false
+   }
+  ],
+  "L1-851680-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "điện trở đốt nóng bằng điện"
+   }
+  ],
+  "L1-851680-01#1": [
+   {
+    "khoa": "dungCho",
+    "giaTri": "ống dẫn dầu, bồn chứa dầu"
+   },
+   {
+    "khoa": "phamViSuDung",
+    "op": "KHONG_LA",
+    "giaTri": "GIA_DINH"
+   }
+  ],
+  "L1-851680-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "điện trở đốt nóng bằng điện"
+   }
+  ],
+  "L1-851680-02#1": [
+   {
+    "khoa": "phamViSuDung",
+    "giaTri": "GIA_DINH"
+   },
+   {
+    "khoa": "dungCho",
+    "giaTri": "lò nướng"
+   }
+  ],
+  "L1-853649-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "rơ le"
+   },
+   {
+    "khoa": "dienAp",
+    "op": ">",
+    "giaTri": 60,
+    "donVi": "V"
+   }
+  ],
+  "L1-853649-01#1": [
+   {
+    "khoa": "dienAp",
+    "op": ">",
+    "giaTri": 60,
+    "donVi": "V"
+   }
+  ],
+  "L1-853649-01#2": [
+   {
+    "khoa": "loaiRoLe",
+    "op": "KHONG_LA",
+    "giaTri": "KY_THUAT_SO"
+   }
+  ],
+  "L1-853649-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "rơ le"
+   },
+   {
+    "khoa": "dienAp",
+    "op": ">",
+    "giaTri": 60,
+    "donVi": "V"
+   }
+  ],
+  "L1-853649-02#1": [
+   {
+    "khoa": "dienAp",
+    "op": ">",
+    "giaTri": 60,
+    "donVi": "V"
+   }
+  ],
+  "L1-392330-01#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "vận chuyển, đóng gói hàng hóa"
+   }
+  ],
+  "L1-392330-01#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "bình, chai, lọ"
+   },
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-392330-01#2": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "GIA_CO",
+      "chatLieu": "thủy tinh"
+     }
+    ]
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "chứa khí hóa lỏng"
+   }
+  ],
+  "L1-392330-02#0": [
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "vận chuyển, đóng gói hàng hóa"
+   }
+  ],
+  "L1-392330-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "chai"
+   },
+   {
+    "khoa": "chatLieu",
+    "giaTri": [
+     {
+      "viTri": "CHINH",
+      "chatLieu": "plastic"
+     }
+    ]
+   }
+  ],
+  "L1-392330-02#2": [
+   {
+    "khoa": "congDung",
+    "giaTri": "đựng đồ uống"
+   },
+   {
+    "khoa": "chatLieu",
+    "op": "KHONG_LA",
+    "giaTri": [
+     {
+      "viTri": "GIA_CO",
+      "chatLieu": "thủy tinh"
+     }
+    ]
+   }
+  ],
+  "L1-851810-01#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "micro"
+   }
+  ],
+  "L1-851810-01#1": [
+   {
+    "khoa": "tanSo",
+    "op": ">=",
+    "giaTri": 300,
+    "donVi": "Hz"
+   },
+   {
+    "khoa": "tanSo",
+    "op": "<=",
+    "giaTri": 3400,
+    "donVi": "Hz"
+   },
+   {
+    "khoa": "duongKinh",
+    "op": "<=",
+    "giaTri": 10,
+    "donVi": "mm"
+   },
+   {
+    "khoa": "chieuCao",
+    "op": "<=",
+    "giaTri": 3,
+    "donVi": "mm"
+   },
+   {
+    "khoa": "congDung",
+    "giaTri": "dùng trong viễn thông"
+   }
+  ],
+  "L1-851810-02#0": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "micro"
+   }
+  ],
+  "L1-851810-02#1": [
+   {
+    "khoa": "tenLoai",
+    "giaTri": "micro khác"
+   },
+   {
+    "khoa": "congDung",
+    "op": "KHONG_LA",
+    "giaTri": "dùng trong viễn thông"
+   }
+  ]
+ }
+}

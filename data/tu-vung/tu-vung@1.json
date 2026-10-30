@@ -1,0 +1,3611 @@
+{
+  "phienBan": "tu-vung@1",
+  "ngay": "2026-10-30",
+  "nguonLoai": "CLAUDE_DUYET",
+  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570).",
+  "ghiChu": [
+    "Một nguồn khoá duy nhất cho phân loại, viết mô tả, soát và câu hỏi cho ERP/addon; thay dần 9 bộ từ vựng cũ (xem anh-xa-cu.json).",
+    "cachDoc là mẫu biểu thức chính quy (không phân biệt hoa thường; mẫu Vi/En được bọc ranh giới chữ Unicode, mẫu Zh không bọc). Máy đọc: lib/tu-vung.js docGiaTri.",
+    "Đơn vị: chiều dài quy về mm; hàng dài (dây, cáp, ống, cuộn) quy về m; đơn vị ghi MỘT lần ở cuối cụm (CEO, spec §6).",
+    "Viết tắt chỉ theo danh mục CEO đã duyệt (lib/tu-vung.js DANH_MUC_VIET_TAT: KT, NSX, ĐA, CS, CL). Thêm viết tắt mới = hỏi CEO.",
+    "Tên vật liệu chung (plastic, cao su, giấy, gỗ, kim loại, thủy tinh, gốm sứ, vải dệt) trùng giá trị op LA của dieuKienSo và dùng LẠI mẫu của lib/so-tay-gates.js (dungMau) — không chép mẫu.",
+    "Phủ định: phuDinhChung + cachDoc.phuDinh phủ định cụm ngay sau (cùng mệnh đề, cách ≤ 2 từ); phuDinhCaDoan (\"không phải X, Y, Z\") phủ định mọi giá trị tới hết đoạn (gạch ngang có cách, \";\", xuống dòng, dấu chấm).",
+    "Từ vựng không chứa ranh giới mã (dieuKienSo của từng dòng 8 số) — việc đó là L1-4."
+  ],
+  "chamDuyetDocLap": {
+    "trangThai": "CHO_CHAM",
+    "ghiChu": "Plan L1-3a nghiệm thu: một agent Claude mới chấm duyệt độc lập từ vựng (nhãn CLAUDE_DUYET). Bản này do agent soạn L1-3a viết và máy kiểm (scripts/check-tu-vung.mjs); chưa qua lượt chấm độc lập."
+  },
+  "phuDinhChung": [
+    "không phải",
+    "không có",
+    "không",
+    "chưa",
+    "ko",
+    "chẳng",
+    "non-?",
+    "without",
+    "no",
+    "not",
+    "无",
+    "非",
+    "不",
+    "没有",
+    "未"
+  ],
+  "phuDinhCaDoan": [
+    "không phải",
+    "không thuộc",
+    "không dùng cho",
+    "other than",
+    "not a",
+    "不是",
+    "非"
+  ],
+  "beNgoaiTruoc": [
+    "mạ",
+    "phủ",
+    "tráng",
+    "sơn",
+    "màu",
+    "vân",
+    "giả",
+    "nhũ",
+    "ánh"
+  ],
+  "heDonVi": {
+    "dai": {
+      "mm": 1,
+      "cm": 10,
+      "m": 1000,
+      "inch": 25.4
+    },
+    "dienAp": {
+      "V": 1,
+      "mV": 0.001,
+      "kV": 1000
+    },
+    "dongDien": {
+      "A": 1,
+      "mA": 0.001
+    },
+    "congSuat": {
+      "W": 1,
+      "mW": 0.001,
+      "kW": 1000,
+      "HP": 745.7
+    },
+    "tanSo": {
+      "Hz": 1,
+      "kHz": 1000,
+      "MHz": 1000000
+    },
+    "luuLuong": {
+      "m3/h": 1,
+      "l/h": 0.001,
+      "l/min": 0.06,
+      "m3/min": 60
+    },
+    "theTichXiLanh": {
+      "cc": 1,
+      "cm3": 1
+    },
+    "khoiLuong": {
+      "kg": 1,
+      "g": 0.001,
+      "tấn": 1000
+    }
+  },
+  "bietDanhDonVi": {
+    "mm": "mm",
+    "milimét": "mm",
+    "毫米": "mm",
+    "cm": "cm",
+    "centimét": "cm",
+    "厘米": "cm",
+    "m": "m",
+    "mét": "m",
+    "米": "m",
+    "inch": "inch",
+    "v": "V",
+    "vac": "V",
+    "vdc": "V",
+    "volt": "V",
+    "vôn": "V",
+    "伏": "V",
+    "mv": "mV",
+    "kv": "kV",
+    "a": "A",
+    "amp": "A",
+    "ampe": "A",
+    "安": "A",
+    "ma": "mA",
+    "w": "W",
+    "watt": "W",
+    "瓦": "W",
+    "mw": "mW",
+    "kw": "kW",
+    "千瓦": "kW",
+    "hp": "HP",
+    "mã lực": "HP",
+    "马力": "HP",
+    "hz": "Hz",
+    "赫兹": "Hz",
+    "khz": "kHz",
+    "mhz": "MHz",
+    "m3/h": "m3/h",
+    "m³/h": "m3/h",
+    "m3/giờ": "m3/h",
+    "m³/giờ": "m3/h",
+    "l/h": "l/h",
+    "lít/giờ": "l/h",
+    "l/min": "l/min",
+    "l/phút": "l/min",
+    "lít/phút": "l/min",
+    "m3/min": "m3/min",
+    "cc": "cc",
+    "cm3": "cm3",
+    "cm³": "cm3",
+    "phân khối": "cc",
+    "kg": "kg",
+    "公斤": "kg",
+    "千克": "kg",
+    "g": "g",
+    "gam": "g",
+    "克": "g",
+    "tấn": "tấn"
+  },
+  "khoa": [
+    {
+      "khoa": "dienAp",
+      "kieu": "SO",
+      "nhanVi": "điện áp",
+      "nhanEn": "voltage",
+      "nhanZh": "电压",
+      "vietTat": "ĐA",
+      "heDonVi": "dienAp",
+      "donViChuan": "V",
+      "canNguCanh": false,
+      "cachDoc": {
+        "vi": [
+          "điện áp",
+          "hiệu điện thế",
+          "vôn"
+        ],
+        "en": [
+          "voltage",
+          "rated voltage"
+        ],
+        "zh": [
+          "电压",
+          "额定电压",
+          "输入电压"
+        ]
+      },
+      "cachViet": {
+        "vi": "điện áp {giaTri}",
+        "viTat": "ĐA: {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Điện áp làm việc (định mức) của hàng là bao nhiêu V?",
+        "zh": "产品的额定电压是多少伏（V）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "dongDien",
+      "kieu": "SO",
+      "nhanVi": "dòng điện (định mức)",
+      "nhanEn": "rated current",
+      "nhanZh": "额定电流",
+      "heDonVi": "dongDien",
+      "donViChuan": "A",
+      "canNguCanh": false,
+      "cachDoc": {
+        "vi": [
+          "dòng điện",
+          "dòng định mức",
+          "cường độ dòng"
+        ],
+        "en": [
+          "current",
+          "rated current",
+          "amperage"
+        ],
+        "zh": [
+          "电流",
+          "额定电流"
+        ]
+      },
+      "cachViet": {
+        "vi": "dòng điện {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Dòng điện định mức của hàng là bao nhiêu A?",
+        "zh": "产品的额定电流是多少安（A）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "congSuat",
+      "kieu": "SO",
+      "nhanVi": "công suất",
+      "nhanEn": "power output",
+      "nhanZh": "功率",
+      "vietTat": "CS",
+      "heDonVi": "congSuat",
+      "donViChuan": "W",
+      "canNguCanh": false,
+      "cachDoc": {
+        "vi": [
+          "công suất"
+        ],
+        "en": [
+          "power",
+          "output",
+          "wattage",
+          "rated power"
+        ],
+        "zh": [
+          "功率",
+          "额定功率"
+        ]
+      },
+      "cachViet": {
+        "vi": "công suất {giaTri}",
+        "viTat": "CS: {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Công suất (định mức) của hàng là bao nhiêu W/kW?",
+        "zh": "产品的额定功率是多少瓦（W/kW）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "tanSo",
+      "kieu": "SO",
+      "nhanVi": "tần số / dải tần",
+      "nhanEn": "frequency (range)",
+      "nhanZh": "频率（范围）",
+      "heDonVi": "tanSo",
+      "donViChuan": "Hz",
+      "canNguCanh": false,
+      "cachDoc": {
+        "vi": [
+          "tần số",
+          "dải tần"
+        ],
+        "en": [
+          "frequency",
+          "frequency range",
+          "frequency response"
+        ],
+        "zh": [
+          "频率",
+          "频响"
+        ]
+      },
+      "cachViet": {
+        "vi": "tần số {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Tần số / dải tần làm việc của hàng là bao nhiêu Hz?",
+        "zh": "产品的工作频率（范围）是多少赫兹（Hz）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "luuLuong",
+      "kieu": "SO",
+      "nhanVi": "lưu lượng",
+      "nhanEn": "flow rate",
+      "nhanZh": "流量",
+      "heDonVi": "luuLuong",
+      "donViChuan": "m3/h",
+      "canNguCanh": false,
+      "cachDoc": {
+        "vi": [
+          "lưu lượng"
+        ],
+        "en": [
+          "flow rate",
+          "flow"
+        ],
+        "zh": [
+          "流量"
+        ]
+      },
+      "cachViet": {
+        "vi": "lưu lượng {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Lưu lượng tối đa của bơm/quạt là bao nhiêu m³/h?",
+        "zh": "最大流量是多少立方米/小时（m³/h）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "dungTichXiLanh",
+      "kieu": "SO",
+      "nhanVi": "dung tích xi lanh",
+      "nhanEn": "cylinder capacity (displacement)",
+      "nhanZh": "排量",
+      "heDonVi": "theTichXiLanh",
+      "donViChuan": "cc",
+      "canNguCanh": false,
+      "cachDoc": {
+        "vi": [
+          "dung tích xi lanh",
+          "dung tích xy lanh",
+          "dung tích",
+          "phân khối"
+        ],
+        "en": [
+          "displacement",
+          "engine capacity",
+          "cylinder capacity"
+        ],
+        "zh": [
+          "排量"
+        ]
+      },
+      "cachViet": {
+        "vi": "dung tích xi lanh {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Dung tích xi lanh của động cơ (hoặc của xe mà hàng lắp vào) là bao nhiêu cc?",
+        "zh": "发动机（或所装车辆）的排量是多少毫升（cc）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "khoiLuong",
+      "kieu": "SO",
+      "nhanVi": "khối lượng",
+      "nhanEn": "weight",
+      "nhanZh": "重量",
+      "heDonVi": "khoiLuong",
+      "donViChuan": "kg",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "khối lượng",
+          "trọng lượng",
+          "nặng"
+        ],
+        "en": [
+          "weight",
+          "net weight",
+          "mass"
+        ],
+        "zh": [
+          "重量",
+          "净重",
+          "毛重"
+        ]
+      },
+      "cachViet": {
+        "vi": "khối lượng {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Khối lượng tịnh của một chiếc là bao nhiêu kg?",
+        "zh": "单件净重是多少千克（kg）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "duongKinh",
+      "kieu": "SO",
+      "nhanVi": "đường kính (ngoài)",
+      "nhanEn": "diameter (outer)",
+      "nhanZh": "直径（外径）",
+      "heDonVi": "dai",
+      "donViChuan": "mm",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "đường kính(?!\\s*(?:trong|lõi|cửa))",
+          "phi",
+          "Φ",
+          "⌀",
+          "ø"
+        ],
+        "en": [
+          "diameter",
+          "dia\\.?",
+          "OD",
+          "outer diameter"
+        ],
+        "zh": [
+          "直径",
+          "外径"
+        ]
+      },
+      "cachViet": {
+        "vi": "đường kính {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Đường kính (ngoài, kể cả lốp nếu có) là bao nhiêu mm?",
+        "zh": "直径（外径，含轮胎）是多少毫米（mm）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "duongKinhTrong",
+      "kieu": "SO",
+      "nhanVi": "đường kính trong (cửa nạp/cửa thoát, DN)",
+      "nhanEn": "inner (inlet/outlet) diameter, DN",
+      "nhanZh": "内径（进出口径，公称通径）",
+      "heDonVi": "dai",
+      "donViChuan": "mm",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "đường kính trong",
+          "đường kính cửa nạp",
+          "đường kính cửa thoát",
+          "cửa nạp",
+          "cửa thoát",
+          "cỡ ống"
+        ],
+        "en": [
+          "inner diameter",
+          "internal diameter",
+          "bore",
+          "ID",
+          "nominal diameter",
+          "inlet"
+        ],
+        "zh": [
+          "内径",
+          "口径",
+          "通径",
+          "公称直径"
+        ]
+      },
+      "docThem": [
+        {
+          "mau": "(?<![A-Za-z])DN\\s*(\\d{1,4})(?!\\d)",
+          "donVi": "mm"
+        }
+      ],
+      "cachViet": {
+        "vi": "đường kính trong {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Đường kính trong (cửa nạp/cửa thoát, cỡ DN) là bao nhiêu mm?",
+        "zh": "内径（进出口径/公称通径DN）是多少毫米（mm）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "duongKinhLoi",
+      "kieu": "SO",
+      "nhanVi": "đường kính lõi (mỗi lõi dẫn điện)",
+      "nhanEn": "conductor (core) diameter",
+      "nhanZh": "导体（线芯）直径",
+      "heDonVi": "dai",
+      "donViChuan": "mm",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "đường kính lõi",
+          "lõi(?:\\s+mỗi)?(?:\\s+sợi)?",
+          "sợi lõi",
+          "ruột dẫn"
+        ],
+        "en": [
+          "conductor diameter",
+          "core diameter",
+          "conductor",
+          "core"
+        ],
+        "zh": [
+          "线径",
+          "芯径",
+          "导体直径"
+        ]
+      },
+      "cachViet": {
+        "vi": "đường kính lõi {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Đường kính của mỗi lõi dẫn điện là bao nhiêu mm?",
+        "zh": "每根导体（线芯）的直径是多少毫米（mm）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "chieuCao",
+      "kieu": "SO",
+      "nhanVi": "chiều cao",
+      "nhanEn": "height",
+      "nhanZh": "高度",
+      "heDonVi": "dai",
+      "donViChuan": "mm",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "chiều cao",
+          "cao(?!\\s*(?:su|cấp|áp|tần|điểm))"
+        ],
+        "en": [
+          "height",
+          "high"
+        ],
+        "zh": [
+          "高度",
+          "高"
+        ]
+      },
+      "cachViet": {
+        "vi": "cao {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Chiều cao của hàng là bao nhiêu mm?",
+        "zh": "产品高度是多少毫米（mm）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "kichThuoc",
+      "kieu": "SO",
+      "nhanVi": "kích thước (dài x rộng x cao)",
+      "nhanEn": "dimensions (L x W x H)",
+      "nhanZh": "尺寸（长x宽x高）",
+      "vietTat": "KT",
+      "heDonVi": "dai",
+      "donViChuan": "mm",
+      "canNguCanh": false,
+      "soChieu": [
+        2,
+        3
+      ],
+      "cachDoc": {
+        "vi": [
+          "kích thước",
+          "KT",
+          "quy cách",
+          "size"
+        ],
+        "en": [
+          "size",
+          "dimensions?",
+          "LxWxH"
+        ],
+        "zh": [
+          "尺寸",
+          "规格",
+          "外形尺寸"
+        ]
+      },
+      "cachViet": {
+        "vi": "kích thước {giaTri}",
+        "viTat": "KT: {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Kích thước dài x rộng x cao của một chiếc là bao nhiêu mm?",
+        "zh": "单件长x宽x高尺寸是多少毫米（mm）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "chieuDaiCuon",
+      "kieu": "SO",
+      "nhanVi": "chiều dài (hàng dài: dây, cáp, ống, cuộn)",
+      "nhanEn": "length (long goods: wire, cable, hose, roll)",
+      "nhanZh": "长度（线缆、管材、卷材）",
+      "heDonVi": "dai",
+      "donViChuan": "m",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "chiều dài",
+          "dài",
+          "cuộn"
+        ],
+        "en": [
+          "length",
+          "long",
+          "roll"
+        ],
+        "zh": [
+          "长度",
+          "长",
+          "卷"
+        ]
+      },
+      "cachViet": {
+        "vi": "dài {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Chiều dài mỗi cuộn/sợi là bao nhiêu m?",
+        "zh": "每卷（每根）长度是多少米（m）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "daGanDauNoi",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã gắn đầu nối",
+      "nhanEn": "fitted with connectors",
+      "nhanZh": "已装接头",
+      "cachDoc": {
+        "vi": [
+          "(?:đã\\s+)?(?:gắn|lắp|bấm|có)\\s+(?:sẵn\\s+)?(?:đầu\\s+nối|đầu\\s+cắm|jack|giắc|connector)",
+          "đầu\\s+nối",
+          "đầu\\s+cắm",
+          "giắc\\s+cắm"
+        ],
+        "en": [
+          "(?:fitted|equipped|terminated)\\s+with\\s+connectors?",
+          "connector\\w*",
+          "with\\s+plugs?"
+        ],
+        "zh": [
+          "接头",
+          "插头",
+          "连接器"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã gắn đầu nối",
+        "viPhuDinh": "chưa gắn đầu nối"
+      },
+      "cauHoi": {
+        "vi": "Dây/cáp đã gắn đầu nối (giắc, phích) ở đầu dây chưa?",
+        "zh": "线缆端部是否已装接头（插头/连接器）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coCachDien",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có cách điện",
+      "nhanEn": "insulated",
+      "nhanZh": "绝缘",
+      "cachDoc": {
+        "vi": [
+          "cách điện",
+          "bọc cách điện",
+          "vỏ bọc"
+        ],
+        "en": [
+          "insulated",
+          "insulation"
+        ],
+        "zh": [
+          "绝缘"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "dây trần",
+          "không bọc"
+        ],
+        "en": [
+          "bare"
+        ],
+        "zh": [
+          "裸线"
+        ]
+      },
+      "cachViet": {
+        "vi": "có cách điện",
+        "viPhuDinh": "không cách điện (dây trần)"
+      },
+      "cauHoi": {
+        "vi": "Dây/cáp có lớp cách điện không, hay là dây trần?",
+        "zh": "线缆是否有绝缘层（还是裸线）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coBoXuLyLapTrinh",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có trang bị bộ xử lý lập trình",
+      "nhanEn": "equipped with a programmable processor",
+      "nhanZh": "装有可编程处理器",
+      "cachDoc": {
+        "vi": [
+          "bộ xử lý (?:có thể )?lập trình",
+          "(?:có thể )?lập trình được",
+          "PLC",
+          "vi xử lý",
+          "vi điều khiển",
+          "MCU"
+        ],
+        "en": [
+          "programmable",
+          "PLC",
+          "microprocessor",
+          "microcontroller",
+          "MCU"
+        ],
+        "zh": [
+          "可编程",
+          "PLC",
+          "单片机",
+          "微处理器"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "có trang bị bộ xử lý lập trình",
+        "viPhuDinh": "không có bộ xử lý lập trình"
+      },
+      "cauHoi": {
+        "vi": "Bảng điều khiển có bộ xử lý lập trình được (PLC, vi điều khiển) không?",
+        "zh": "控制板是否装有可编程处理器（PLC、单片机）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coKhungChupQuaDau",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có khung chụp qua đầu",
+      "nhanEn": "with headband",
+      "nhanZh": "头戴式",
+      "cachDoc": {
+        "vi": [
+          "(?:có\\s+)?khung\\s+chụp(?:\\s+qua\\s+đầu)?",
+          "chụp\\s+tai",
+          "trùm\\s+đầu",
+          "choàng\\s+đầu"
+        ],
+        "en": [
+          "headband",
+          "over-?(?:the-)?ear",
+          "on-?ear",
+          "over-?head"
+        ],
+        "zh": [
+          "头戴",
+          "耳罩"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "nhét\\s+tai",
+          "móc\\s+tai",
+          "đeo\\s+trong\\s+tai"
+        ],
+        "en": [
+          "in-?ear",
+          "earbuds?",
+          "true wireless"
+        ],
+        "zh": [
+          "入耳",
+          "耳塞",
+          "挂耳"
+        ]
+      },
+      "cachViet": {
+        "vi": "có khung chụp qua đầu",
+        "viPhuDinh": "không có khung chụp qua đầu"
+      },
+      "cauHoi": {
+        "vi": "Tai nghe có khung (băng) chụp qua đầu không, hay loại nhét tai / móc tai?",
+        "zh": "耳机是否为头戴式（有头梁），还是入耳/挂耳式？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "hieuChinhThiLuc",
+      "kieu": "CO_KHONG",
+      "nhanVi": "hiệu chỉnh thị lực (kính thuốc)",
+      "nhanEn": "corrective (prescription)",
+      "nhanZh": "矫正视力（处方镜）",
+      "cachDoc": {
+        "vi": [
+          "hiệu chỉnh thị lực",
+          "điều chỉnh thị lực",
+          "kính cận",
+          "kính viễn",
+          "kính loạn",
+          "kính thuốc",
+          "có độ"
+        ],
+        "en": [
+          "corrective",
+          "prescription",
+          "vision\\s+correct\\w*",
+          "myopia"
+        ],
+        "zh": [
+          "近视",
+          "远视",
+          "矫正视力",
+          "处方"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không độ",
+          "kính thời trang"
+        ],
+        "en": [
+          "plano",
+          "non-prescription"
+        ],
+        "zh": [
+          "平光"
+        ]
+      },
+      "cachViet": {
+        "vi": "loại hiệu chỉnh thị lực",
+        "viPhuDinh": "không hiệu chỉnh thị lực"
+      },
+      "cauHoi": {
+        "vi": "Kính có độ để hiệu chỉnh thị lực (cận, viễn, loạn) không?",
+        "zh": "眼镜是否有度数、用于矫正视力（近视/远视/散光）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "chongNang",
+      "kieu": "CO_KHONG",
+      "nhanVi": "chống nắng (kính râm)",
+      "nhanEn": "sun-protective (sunglasses)",
+      "nhanZh": "防晒（太阳镜）",
+      "cachDoc": {
+        "vi": [
+          "chống nắng",
+          "kính râm",
+          "kính mát",
+          "chống tia UV",
+          "chống UV"
+        ],
+        "en": [
+          "sun\\s?glass\\w*",
+          "UV400",
+          "UV\\s+protect\\w*"
+        ],
+        "zh": [
+          "太阳镜",
+          "墨镜",
+          "防晒",
+          "防紫外线"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "loại chống nắng",
+        "viPhuDinh": "không phải kính chống nắng"
+      },
+      "cauHoi": {
+        "vi": "Kính có tròng màu chống nắng / chống UV (kính râm) không?",
+        "zh": "是否为防晒/防紫外线的有色镜片（太阳镜）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coChucNangGhi",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có chức năng ghi (hình/âm)",
+      "nhanEn": "with recording function",
+      "nhanZh": "具有录制功能",
+      "cachDoc": {
+        "vi": [
+          "ghi hình",
+          "ghi âm",
+          "quay phim",
+          "lưu\\s+(?:vào|trữ)\\s+(?:thẻ nhớ|bộ nhớ)",
+          "thẻ nhớ",
+          "chức năng ghi"
+        ],
+        "en": [
+          "record\\w*",
+          "DVR",
+          "memory card",
+          "SD card"
+        ],
+        "zh": [
+          "录像",
+          "录制",
+          "存储卡",
+          "录音"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "có chức năng ghi",
+        "viPhuDinh": "không có chức năng ghi"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị có tự ghi lại hình ảnh/âm thanh (vào thẻ nhớ, bộ nhớ trong) không, hay chỉ truyền tín hiệu?",
+        "zh": "设备能否自行录制图像/声音（存入存储卡或内存），还是只传输信号？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "daGhi",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã ghi (có dữ liệu)",
+      "nhanEn": "recorded",
+      "nhanZh": "已录制",
+      "cachDoc": {
+        "vi": [
+          "đã ghi",
+          "ghi sẵn",
+          "có sẵn dữ liệu",
+          "đã cài"
+        ],
+        "en": [
+          "recorded",
+          "pre-?loaded",
+          "pre-?recorded"
+        ],
+        "zh": [
+          "已录",
+          "已录制",
+          "已写入"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "chưa ghi",
+          "loại trắng",
+          "đĩa trắng",
+          "thẻ trắng"
+        ],
+        "en": [
+          "unrecorded",
+          "blank"
+        ],
+        "zh": [
+          "未录制",
+          "空白"
+        ]
+      },
+      "cachViet": {
+        "vi": "loại đã ghi",
+        "viPhuDinh": "loại chưa ghi"
+      },
+      "cauHoi": {
+        "vi": "Phương tiện lưu trữ đã ghi sẵn dữ liệu/phần mềm hay còn trắng (chưa ghi)?",
+        "zh": "存储介质是否已写入数据/软件，还是空白（未录制）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coLuoiBaoVe",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có lưới bảo vệ",
+      "nhanEn": "with protective grille",
+      "nhanZh": "带防护网",
+      "cachDoc": {
+        "vi": [
+          "lưới bảo vệ",
+          "lồng bảo vệ",
+          "lưới chắn",
+          "lồng quạt"
+        ],
+        "en": [
+          "(?:protective|safety)\\s+(?:grille?|guard)",
+          "fan guard",
+          "grille?"
+        ],
+        "zh": [
+          "防护网",
+          "保护网",
+          "网罩"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "có lưới bảo vệ",
+        "viPhuDinh": "không có lưới bảo vệ"
+      },
+      "cauHoi": {
+        "vi": "Quạt có lưới/lồng bảo vệ cánh không?",
+        "zh": "风扇是否带扇叶防护网（网罩）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coManHinh",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có màn hình hiển thị",
+      "nhanEn": "with display screen",
+      "nhanZh": "带显示屏",
+      "cachDoc": {
+        "vi": [
+          "màn hình",
+          "màn\\s+LCD",
+          "LCD",
+          "OLED"
+        ],
+        "en": [
+          "display",
+          "screen",
+          "LCD",
+          "OLED",
+          "monitor"
+        ],
+        "zh": [
+          "显示屏",
+          "屏幕",
+          "液晶屏",
+          "显示器"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "có màn hình hiển thị",
+        "viPhuDinh": "không có màn hình hiển thị"
+      },
+      "cauHoi": {
+        "vi": "Hàng (hoặc bộ phận) có màn hình hiển thị không?",
+        "zh": "产品（或部件）是否带显示屏？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coCamera",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có camera",
+      "nhanEn": "with camera",
+      "nhanZh": "带摄像头",
+      "cachDoc": {
+        "vi": [
+          "camera",
+          "máy ảnh",
+          "ống kính chụp"
+        ],
+        "en": [
+          "camera",
+          "webcam"
+        ],
+        "zh": [
+          "摄像头",
+          "相机",
+          "摄像"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "có camera",
+        "viPhuDinh": "không có camera"
+      },
+      "cauHoi": {
+        "vi": "Hàng có gắn camera (thu hình) không?",
+        "zh": "产品是否装有摄像头？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coBanh",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có bánh xe",
+      "nhanEn": "wheeled",
+      "nhanZh": "带轮子",
+      "cachDoc": {
+        "vi": [
+          "có bánh",
+          "bánh xe",
+          "bánh lăn"
+        ],
+        "en": [
+          "wheels?",
+          "wheeled",
+          "castors?"
+        ],
+        "zh": [
+          "轮子",
+          "带轮",
+          "车轮"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "có bánh",
+        "viPhuDinh": "không có bánh"
+      },
+      "cauHoi": {
+        "vi": "Hàng có bánh xe (để đẩy, kéo, lăn) không?",
+        "zh": "产品是否带轮子（可推、拉、滚动）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "hoatDongBangDien",
+      "kieu": "CO_KHONG",
+      "nhanVi": "hoạt động bằng điện",
+      "nhanEn": "electrically operated",
+      "nhanZh": "电动",
+      "cachDoc": {
+        "vi": [
+          "hoạt động bằng điện",
+          "chạy điện",
+          "dùng điện",
+          "động cơ điện",
+          "bơm điện"
+        ],
+        "en": [
+          "electric(?:al(?:ly)?)?(?:\\s+(?:powered|operated|driven))?",
+          "motor-?driven"
+        ],
+        "zh": [
+          "电动",
+          "电驱动"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "bơm tay",
+          "vận hành bằng tay",
+          "quay tay",
+          "đạp chân"
+        ],
+        "en": [
+          "hand-?operated"
+        ],
+        "zh": [
+          "手动",
+          "手摇"
+        ]
+      },
+      "cachViet": {
+        "vi": "hoạt động bằng điện",
+        "viPhuDinh": "không hoạt động bằng điện"
+      },
+      "cauHoi": {
+        "vi": "Máy/bơm hoạt động bằng điện (động cơ điện) hay bằng tay, khí nén, động cơ đốt trong?",
+        "zh": "机器/泵是电动的，还是手动、气动或内燃机驱动？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coKetHopThietBiThu",
+      "kieu": "CO_KHONG",
+      "nhanVi": "kết hợp thiết bị thu",
+      "nhanEn": "incorporating reception apparatus",
+      "nhanZh": "带接收装置",
+      "cachDoc": {
+        "vi": [
+          "kết hợp (?:với )?thiết bị thu",
+          "thu và phát",
+          "thu phát",
+          "nhận cuộc gọi",
+          "nghe gọi",
+          "đàm thoại"
+        ],
+        "en": [
+          "transceiver",
+          "incorporating reception",
+          "two-?way",
+          "receive and transmit"
+        ],
+        "zh": [
+          "收发",
+          "双向",
+          "接听"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "chỉ phát",
+          "chỉ truyền"
+        ],
+        "en": [
+          "transmit(?:ter)?\\s+only"
+        ],
+        "zh": [
+          "仅发射"
+        ]
+      },
+      "cachViet": {
+        "vi": "có kết hợp thiết bị thu",
+        "viPhuDinh": "không kết hợp thiết bị thu"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị vừa phát vừa thu (nhận cuộc gọi, tín hiệu về) hay chỉ phát đi?",
+        "zh": "设备是收发一体（可接听/接收），还是仅发射？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coGiaNhiet",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có gia nhiệt",
+      "nhanEn": "with heating",
+      "nhanZh": "带加热",
+      "cachDoc": {
+        "vi": [
+          "gia nhiệt",
+          "sưởi",
+          "làm nóng",
+          "sấy nóng",
+          "điện trở nhiệt"
+        ],
+        "en": [
+          "heat(?:er|ing)",
+          "warm air",
+          "hot air"
+        ],
+        "zh": [
+          "加热",
+          "暖风",
+          "热风"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "có gia nhiệt",
+        "viPhuDinh": "không gia nhiệt"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị có bộ phận gia nhiệt (làm nóng không khí/chất lỏng) không?",
+        "zh": "设备是否带加热元件（加热空气/液体）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "laBoPhan",
+      "kieu": "CO_KHONG",
+      "nhanVi": "là bộ phận (không phải hàng hoàn chỉnh)",
+      "nhanEn": "is a part (not a complete article)",
+      "nhanZh": "为零部件（非整机）",
+      "cachDoc": {
+        "vi": [
+          "bộ phận",
+          "linh kiện",
+          "chi tiết",
+          "phụ tùng"
+        ],
+        "en": [
+          "parts?",
+          "component",
+          "spare part"
+        ],
+        "zh": [
+          "零件",
+          "配件",
+          "部件",
+          "零部件"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "hoàn chỉnh",
+          "nguyên chiếc",
+          "nguyên bộ"
+        ],
+        "en": [
+          "complete",
+          "finished unit"
+        ],
+        "zh": [
+          "整机",
+          "成品"
+        ]
+      },
+      "cachViet": {
+        "vi": "là bộ phận",
+        "viPhuDinh": "hàng hoàn chỉnh"
+      },
+      "cauHoi": {
+        "vi": "Hàng là bộ phận/linh kiện của máy khác hay là hàng hoàn chỉnh?",
+        "zh": "产品是其他机器的零部件，还是完整的整机？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "datChim",
+      "kieu": "CO_KHONG",
+      "nhanVi": "loại đặt chìm",
+      "nhanEn": "submersible",
+      "nhanZh": "潜水式",
+      "cachDoc": {
+        "vi": [
+          "đặt chìm",
+          "bơm chìm",
+          "chìm dưới nước",
+          "nhúng chìm"
+        ],
+        "en": [
+          "submersible",
+          "submerged"
+        ],
+        "zh": [
+          "潜水",
+          "潜水泵",
+          "深井泵"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachViet": {
+        "vi": "loại đặt chìm",
+        "viPhuDinh": "không phải loại đặt chìm"
+      },
+      "cauHoi": {
+        "vi": "Bơm (mà bộ phận lắp vào) có phải loại đặt chìm dưới nước không?",
+        "zh": "泵（零件所属）是否为潜水式？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "coKhoangPhaTron",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có khoang pha trộn lưu chất",
+      "nhanEn": "mixing (taps/valves)",
+      "nhanZh": "混水（带混合腔）",
+      "cachDoc": {
+        "vi": [
+          "khoang pha trộn",
+          "pha trộn",
+          "vòi trộn",
+          "van trộn",
+          "nóng lạnh",
+          "(?:hai|2|02)\\s+đường\\s+(?:dẫn\\s+)?nước\\s+vào"
+        ],
+        "en": [
+          "mixing",
+          "mixer"
+        ],
+        "zh": [
+          "混水",
+          "冷热"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "(?:một|1|01)\\s+đường\\s+(?:dẫn\\s+)?nước\\s+vào",
+          "chỉ có nước lạnh"
+        ],
+        "en": [
+          "single inlet",
+          "cold water only"
+        ],
+        "zh": [
+          "单冷"
+        ]
+      },
+      "cachViet": {
+        "vi": "có khoang pha trộn",
+        "viPhuDinh": "không có khoang pha trộn"
+      },
+      "cauHoi": {
+        "vi": "Vòi/van có khoang pha trộn (hai đường nước nóng/lạnh vào) hay chỉ một đường nước vào?",
+        "zh": "水龙头/阀门是否带混合腔（冷热两路进水），还是只有一路进水？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "loaiDongDien",
+      "kieu": "LIET_KE",
+      "nhanVi": "loại dòng điện",
+      "nhanEn": "current type",
+      "nhanZh": "电流类型",
+      "giaTriHopLe": [
+        "MOT_CHIEU",
+        "XOAY_CHIEU"
+      ],
+      "moTaGiaTri": {
+        "MOT_CHIEU": {
+          "nhanVi": "một chiều",
+          "nhanEn": "direct current (DC)",
+          "nhanZh": "直流",
+          "cachDoc": {
+            "vi": [
+              "một chiều",
+              "điện DC"
+            ],
+            "en": [
+              "DC",
+              "direct current",
+              "VDC"
+            ],
+            "zh": [
+              "直流"
+            ]
+          }
+        },
+        "XOAY_CHIEU": {
+          "nhanVi": "xoay chiều",
+          "nhanEn": "alternating current (AC)",
+          "nhanZh": "交流",
+          "cachDoc": {
+            "vi": [
+              "xoay chiều",
+              "điện AC"
+            ],
+            "en": [
+              "AC",
+              "alternating current",
+              "VAC"
+            ],
+            "zh": [
+              "交流"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng dùng điện một chiều (DC) hay xoay chiều (AC)?",
+        "zh": "产品使用直流电（DC）还是交流电（AC）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "soPha",
+      "kieu": "LIET_KE",
+      "nhanVi": "số pha",
+      "nhanEn": "phases",
+      "nhanZh": "相数",
+      "giaTriHopLe": [
+        "MOT_PHA",
+        "NHIEU_PHA"
+      ],
+      "moTaGiaTri": {
+        "MOT_PHA": {
+          "nhanVi": "một pha",
+          "nhanEn": "single-phase",
+          "nhanZh": "单相",
+          "cachDoc": {
+            "vi": [
+              "một pha",
+              "1 pha"
+            ],
+            "en": [
+              "single[- ]phase",
+              "1-?phase"
+            ],
+            "zh": [
+              "单相"
+            ]
+          }
+        },
+        "NHIEU_PHA": {
+          "nhanVi": "nhiều pha",
+          "nhanEn": "polyphase (three-phase)",
+          "nhanZh": "多相（三相）",
+          "cachDoc": {
+            "vi": [
+              "ba pha",
+              "3 pha",
+              "nhiều pha"
+            ],
+            "en": [
+              "three[- ]phase",
+              "3-?phase",
+              "poly-?phase"
+            ],
+            "zh": [
+              "三相",
+              "多相"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Động cơ một pha hay ba pha (nhiều pha)?",
+        "zh": "电机是单相还是三相（多相）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "kieuDotChay",
+      "kieu": "LIET_KE",
+      "nhanVi": "kiểu đốt cháy của động cơ piston",
+      "nhanEn": "ignition type (piston engine)",
+      "nhanZh": "活塞发动机点火方式",
+      "giaTriHopLe": [
+        "TIA_LUA_DIEN",
+        "CHAY_NEN"
+      ],
+      "moTaGiaTri": {
+        "TIA_LUA_DIEN": {
+          "nhanVi": "đốt cháy bằng tia lửa điện (xăng)",
+          "nhanEn": "spark-ignition (petrol)",
+          "nhanZh": "点燃式（汽油）",
+          "cachDoc": {
+            "vi": [
+              "tia lửa điện",
+              "động cơ xăng",
+              "chạy xăng",
+              "bugi"
+            ],
+            "en": [
+              "spark[- ]ignition",
+              "petrol",
+              "gasoline"
+            ],
+            "zh": [
+              "汽油",
+              "点燃式",
+              "火花塞"
+            ]
+          }
+        },
+        "CHAY_NEN": {
+          "nhanVi": "đốt cháy bằng sức nén (diesel)",
+          "nhanEn": "compression-ignition (diesel)",
+          "nhanZh": "压燃式（柴油）",
+          "cachDoc": {
+            "vi": [
+              "diesel",
+              "đi-ê-den",
+              "nén cháy",
+              "đốt cháy bằng sức nén"
+            ],
+            "en": [
+              "diesel",
+              "compression[- ]ignition"
+            ],
+            "zh": [
+              "柴油",
+              "压燃"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Động cơ (mà bộ phận lắp vào) chạy xăng – đốt cháy bằng tia lửa điện – hay chạy dầu diesel?",
+        "zh": "（零件所属）发动机是汽油点燃式还是柴油压燃式？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "nguonSang",
+      "kieu": "LIET_KE",
+      "nhanVi": "nguồn sáng",
+      "nhanEn": "light source",
+      "nhanZh": "光源",
+      "giaTriHopLe": [
+        "LED",
+        "HUYNH_QUANG",
+        "HALOGEN",
+        "SOI_DOT"
+      ],
+      "moTaGiaTri": {
+        "LED": {
+          "nhanVi": "LED",
+          "nhanEn": "LED",
+          "nhanZh": "LED",
+          "cachDoc": {
+            "vi": [
+              "LED",
+              "đi-ốt phát quang"
+            ],
+            "en": [
+              "LED",
+              "light[- ]emitting\\s+diode"
+            ],
+            "zh": [
+              "LED",
+              "发光二极管"
+            ]
+          }
+        },
+        "HUYNH_QUANG": {
+          "nhanVi": "huỳnh quang",
+          "nhanEn": "fluorescent",
+          "nhanZh": "荧光",
+          "cachDoc": {
+            "vi": [
+              "huỳnh quang"
+            ],
+            "en": [
+              "fluorescent",
+              "CFL"
+            ],
+            "zh": [
+              "荧光"
+            ]
+          }
+        },
+        "HALOGEN": {
+          "nhanVi": "halogen",
+          "nhanEn": "halogen",
+          "nhanZh": "卤素",
+          "cachDoc": {
+            "vi": [
+              "halogen"
+            ],
+            "en": [
+              "halogen"
+            ],
+            "zh": [
+              "卤素"
+            ]
+          }
+        },
+        "SOI_DOT": {
+          "nhanVi": "sợi đốt",
+          "nhanEn": "incandescent",
+          "nhanZh": "白炽",
+          "cachDoc": {
+            "vi": [
+              "sợi đốt",
+              "dây tóc"
+            ],
+            "en": [
+              "incandescent",
+              "filament"
+            ],
+            "zh": [
+              "白炽"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Đèn dùng nguồn sáng gì (LED, huỳnh quang, halogen, sợi đốt)?",
+        "zh": "灯具使用何种光源（LED、荧光、卤素、白炽）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "nguonNangLuong",
+      "kieu": "LIET_KE",
+      "nhanVi": "nguồn năng lượng",
+      "nhanEn": "power source",
+      "nhanZh": "能源",
+      "giaTriHopLe": [
+        "PIN_AC_QUY",
+        "DIEN_LUOI",
+        "QUANG_DIEN"
+      ],
+      "moTaGiaTri": {
+        "PIN_AC_QUY": {
+          "nhanVi": "pin / ắc quy (nguồn năng lượng riêng)",
+          "nhanEn": "battery (own source of energy)",
+          "nhanZh": "电池（自带电源）",
+          "cachDoc": {
+            "vi": [
+              "pin(?!\\s*(?:mặt\\s+trời|năng\\s+lượng))",
+              "ắc qui",
+              "ắc quy",
+              "ắcquy"
+            ],
+            "en": [
+              "battery",
+              "batteries",
+              "rechargeable",
+              "cordless"
+            ],
+            "zh": [
+              "电池"
+            ]
+          }
+        },
+        "DIEN_LUOI": {
+          "nhanVi": "điện lưới",
+          "nhanEn": "mains electricity",
+          "nhanZh": "市电",
+          "cachDoc": {
+            "vi": [
+              "điện lưới",
+              "cắm điện",
+              "dây nguồn"
+            ],
+            "en": [
+              "mains",
+              "plug-?in",
+              "corded"
+            ],
+            "zh": [
+              "市电",
+              "插电"
+            ]
+          }
+        },
+        "QUANG_DIEN": {
+          "nhanVi": "quang điện (năng lượng mặt trời)",
+          "nhanEn": "photovoltaic (solar)",
+          "nhanZh": "光伏（太阳能）",
+          "cachDoc": {
+            "vi": [
+              "năng lượng mặt trời",
+              "quang điện",
+              "pin mặt trời"
+            ],
+            "en": [
+              "solar",
+              "photovoltaic"
+            ],
+            "zh": [
+              "太阳能",
+              "光伏"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng chạy bằng pin/ắc quy, điện lưới hay năng lượng mặt trời?",
+        "zh": "产品由电池、市电还是太阳能供电？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "cachDieuKhien",
+      "kieu": "LIET_KE",
+      "nhanVi": "cách điều khiển / vận hành",
+      "nhanEn": "mode of operation (control)",
+      "nhanZh": "操作（控制）方式",
+      "giaTriHopLe": [
+        "BANG_TAY",
+        "DIEN_TU",
+        "DONG_CO",
+        "KHI_NEN",
+        "THUY_LUC",
+        "NHIET"
+      ],
+      "moTaGiaTri": {
+        "BANG_TAY": {
+          "nhanVi": "điều khiển bằng tay",
+          "nhanEn": "manually operated",
+          "nhanZh": "手动",
+          "cachDoc": {
+            "vi": [
+              "bằng tay",
+              "tay gạt",
+              "tay quay",
+              "vận hành tay",
+              "điều khiển tay"
+            ],
+            "en": [
+              "manual(?:ly)?(?:\\s+operated)?",
+              "hand-?operated",
+              "lever"
+            ],
+            "zh": [
+              "手动",
+              "手柄"
+            ]
+          }
+        },
+        "DIEN_TU": {
+          "nhanVi": "điện từ (solenoid)",
+          "nhanEn": "solenoid (electromagnetic)",
+          "nhanZh": "电磁",
+          "cachDoc": {
+            "vi": [
+              "điện từ",
+              "solenoid",
+              "cuộn hút"
+            ],
+            "en": [
+              "solenoid",
+              "electromagnetic"
+            ],
+            "zh": [
+              "电磁"
+            ]
+          }
+        },
+        "DONG_CO": {
+          "nhanVi": "bằng động cơ (động cơ bước, servo)",
+          "nhanEn": "motorised (stepper, servo)",
+          "nhanZh": "电动（步进、伺服）",
+          "cachDoc": {
+            "vi": [
+              "động cơ bước",
+              "động cơ điện",
+              "mô tơ",
+              "servo"
+            ],
+            "en": [
+              "motori[sz]ed",
+              "stepper",
+              "servo",
+              "electric actuator"
+            ],
+            "zh": [
+              "步进",
+              "电机驱动"
+            ]
+          }
+        },
+        "KHI_NEN": {
+          "nhanVi": "khí nén",
+          "nhanEn": "pneumatic",
+          "nhanZh": "气动",
+          "cachDoc": {
+            "vi": [
+              "khí nén"
+            ],
+            "en": [
+              "pneumatic(?:ally)?",
+              "air[- ]operated"
+            ],
+            "zh": [
+              "气动"
+            ]
+          }
+        },
+        "THUY_LUC": {
+          "nhanVi": "thủy lực",
+          "nhanEn": "hydraulic",
+          "nhanZh": "液压",
+          "cachDoc": {
+            "vi": [
+              "thủy lực",
+              "thuỷ lực"
+            ],
+            "en": [
+              "hydraulic"
+            ],
+            "zh": [
+              "液压"
+            ]
+          }
+        },
+        "NHIET": {
+          "nhanVi": "ổn nhiệt",
+          "nhanEn": "thermostatic",
+          "nhanZh": "温控",
+          "cachDoc": {
+            "vi": [
+              "ổn nhiệt",
+              "điều nhiệt"
+            ],
+            "en": [
+              "thermostatic"
+            ],
+            "zh": [
+              "恒温",
+              "温控"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Van/thiết bị được điều khiển thế nào: bằng tay, điện từ, động cơ, khí nén, thủy lực hay ổn nhiệt?",
+        "zh": "阀门/设备的控制方式：手动、电磁、电机、气动、液压还是温控？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "kieuBom",
+      "kieu": "LIET_KE",
+      "nhanVi": "kiểu bơm",
+      "nhanEn": "pump type",
+      "nhanZh": "泵的类型",
+      "giaTriHopLe": [
+        "PISTON",
+        "LY_TAM",
+        "QUAY",
+        "TAY"
+      ],
+      "moTaGiaTri": {
+        "PISTON": {
+          "nhanVi": "piston (chuyển động tịnh tiến)",
+          "nhanEn": "reciprocating (piston/plunger/diaphragm)",
+          "nhanZh": "往复式（活塞/柱塞/隔膜）",
+          "cachDoc": {
+            "vi": [
+              "piston",
+              "pít tông",
+              "pittông",
+              "tịnh tiến",
+              "bơm màng"
+            ],
+            "en": [
+              "piston",
+              "plunger",
+              "reciprocating",
+              "diaphragm"
+            ],
+            "zh": [
+              "活塞",
+              "柱塞",
+              "往复",
+              "隔膜"
+            ]
+          }
+        },
+        "LY_TAM": {
+          "nhanVi": "ly tâm",
+          "nhanEn": "centrifugal",
+          "nhanZh": "离心",
+          "cachDoc": {
+            "vi": [
+              "ly tâm"
+            ],
+            "en": [
+              "centrifugal"
+            ],
+            "zh": [
+              "离心"
+            ]
+          }
+        },
+        "QUAY": {
+          "nhanVi": "quay (bánh răng, cánh gạt, trục vít)",
+          "nhanEn": "rotary positive displacement",
+          "nhanZh": "回转式（齿轮、叶片、螺杆）",
+          "cachDoc": {
+            "vi": [
+              "bơm bánh răng",
+              "cánh gạt",
+              "trục vít",
+              "roto"
+            ],
+            "en": [
+              "rotary",
+              "gear pump",
+              "vane pump",
+              "screw pump"
+            ],
+            "zh": [
+              "齿轮泵",
+              "叶片泵",
+              "螺杆泵",
+              "回转"
+            ]
+          }
+        },
+        "TAY": {
+          "nhanVi": "bơm tay",
+          "nhanEn": "hand pump",
+          "nhanZh": "手动泵",
+          "cachDoc": {
+            "vi": [
+              "bơm tay",
+              "bơm bằng tay"
+            ],
+            "en": [
+              "hand pump"
+            ],
+            "zh": [
+              "手动泵",
+              "手摇泵"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Bơm thuộc kiểu nào: piston (tịnh tiến), ly tâm, quay hay bơm tay?",
+        "zh": "泵属于哪种类型：往复（活塞）式、离心式、回转式还是手动泵？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "loaiRoLe",
+      "kieu": "LIET_KE",
+      "nhanVi": "loại rơ le",
+      "nhanEn": "relay type",
+      "nhanZh": "继电器类型",
+      "giaTriHopLe": [
+        "KY_THUAT_SO",
+        "BAN_DAN",
+        "DIEN_TU"
+      ],
+      "moTaGiaTri": {
+        "KY_THUAT_SO": {
+          "nhanVi": "rơ le kỹ thuật số",
+          "nhanEn": "digital relay",
+          "nhanZh": "数字继电器",
+          "cachDoc": {
+            "vi": [
+              "kỹ thuật số"
+            ],
+            "en": [
+              "digital"
+            ],
+            "zh": [
+              "数字"
+            ]
+          }
+        },
+        "BAN_DAN": {
+          "nhanVi": "rơ le bán dẫn",
+          "nhanEn": "solid-state relay",
+          "nhanZh": "固态继电器",
+          "cachDoc": {
+            "vi": [
+              "bán dẫn",
+              "SSR"
+            ],
+            "en": [
+              "solid[- ]state",
+              "SSR"
+            ],
+            "zh": [
+              "固态"
+            ]
+          }
+        },
+        "DIEN_TU": {
+          "nhanVi": "rơ le điện từ",
+          "nhanEn": "electromagnetic relay",
+          "nhanZh": "电磁继电器",
+          "cachDoc": {
+            "vi": [
+              "điện từ",
+              "điện cơ"
+            ],
+            "en": [
+              "electromagnetic",
+              "electromechanical"
+            ],
+            "zh": [
+              "电磁"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Rơ le loại kỹ thuật số, bán dẫn hay điện từ?",
+        "zh": "继电器是数字式、固态还是电磁式？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "loaiCongTac",
+      "kieu": "LIET_KE",
+      "nhanVi": "loại thiết bị đóng ngắt (8536.50)",
+      "nhanEn": "switch type (8536.50)",
+      "nhanZh": "开关类型（8536.50）",
+      "giaTriHopLe": [
+        "TU_DONG_RO_DIEN_QUA_TAI",
+        "NGAT_SOC_DONG",
+        "MINI_NOI_COM",
+        "DIEN_TU_HOAC_BAT_NHANH",
+        "MANG_DIEN_GIA_DUNG",
+        "DAO_CHIEU_HOAC_CAU_CHI"
+      ],
+      "moTaGiaTri": {
+        "TU_DONG_RO_DIEN_QUA_TAI": {
+          "nhanVi": "tự động ngắt khi rò điện và quá tải",
+          "nhanEn": "automatic cut-out on earth leakage and overload",
+          "nhanZh": "漏电及过载自动断开",
+          "cachDoc": {
+            "vi": [
+              "chống rò",
+              "rò điện",
+              "chống giật"
+            ],
+            "en": [
+              "residual current",
+              "earth leakage",
+              "RCD",
+              "RCBO",
+              "RCCB",
+              "ELCB"
+            ],
+            "zh": [
+              "漏电保护",
+              "漏电"
+            ]
+          }
+        },
+        "NGAT_SOC_DONG": {
+          "nhanVi": "ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa",
+          "nhanEn": "high inrush current cut-out; cooker change-over; micro switch; power switch for TV/radio, fan, air-conditioner",
+          "nhanZh": "大冲击电流断路器；灶具转换开关；微动开关；电视/收音机、风扇、空调电源开关",
+          "cachDoc": {
+            "vi": [
+              "công tắc micro",
+              "sốc dòng"
+            ],
+            "en": [
+              "micro\\s?switch",
+              "inrush"
+            ],
+            "zh": [
+              "微动开关"
+            ]
+          }
+        },
+        "MINI_NOI_COM": {
+          "nhanVi": "công tắc mini cho nồi cơm điện / lò nướng",
+          "nhanEn": "mini switch for rice cookers / toaster ovens",
+          "nhanZh": "电饭煲/烤箱用微型开关",
+          "cachDoc": {
+            "vi": [
+              "nồi cơm",
+              "lò nướng"
+            ],
+            "en": [
+              "rice cooker",
+              "toaster oven"
+            ],
+            "zh": [
+              "电饭煲",
+              "烤箱"
+            ]
+          }
+        },
+        "DIEN_TU_HOAC_BAT_NHANH": {
+          "nhanVi": "công tắc điện tử (bán dẫn, thyristor) hoặc điện cơ bật nhanh",
+          "nhanEn": "electronic (semiconductor, thyristor) or snap-action electromechanical switch",
+          "nhanZh": "电子开关（半导体、晶闸管）或快动机电开关",
+          "cachDoc": {
+            "vi": [
+              "công tắc điện tử",
+              "bán dẫn",
+              "transistor",
+              "tranzito",
+              "thyristor",
+              "bật nhanh",
+              "tác động nhanh"
+            ],
+            "en": [
+              "electronic switch",
+              "solid[- ]state",
+              "thyristor",
+              "transistor",
+              "snap[- ]action"
+            ],
+            "zh": [
+              "电子开关",
+              "晶闸管",
+              "快动",
+              "速动"
+            ]
+          }
+        },
+        "MANG_DIEN_GIA_DUNG": {
+          "nhanVi": "đóng ngắt trong mạng điện gia dụng (≤ 500 V, ≤ 20 A)",
+          "nhanEn": "make-and-break switch for domestic wiring (≤ 500 V, ≤ 20 A)",
+          "nhanZh": "家用线路通断开关（≤500V，≤20A）",
+          "cachDoc": {
+            "vi": [
+              "công tắc\\s+(?:âm tường|gắn tường|đèn)",
+              "mạng điện gia dụng",
+              "điện dân dụng"
+            ],
+            "en": [
+              "wall switch",
+              "domestic wiring",
+              "light switch"
+            ],
+            "zh": [
+              "墙壁开关",
+              "家用开关"
+            ]
+          }
+        },
+        "DAO_CHIEU_HOAC_CAU_CHI": {
+          "nhanVi": "đảo chiều khởi động động cơ; đóng cắt có cầu chì",
+          "nhanEn": "change-over switch for motor starting; fuse switch",
+          "nhanZh": "电机启动换向开关；熔断器式开关",
+          "cachDoc": {
+            "vi": [
+              "đảo chiều",
+              "có cầu chì"
+            ],
+            "en": [
+              "change-?over",
+              "fuse switch"
+            ],
+            "zh": [
+              "换向开关",
+              "熔断器式"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị đóng ngắt thuộc loại nào: chống rò/quá tải, công tắc micro, công tắc điện tử/bật nhanh, công tắc mạng điện gia dụng, đảo chiều/có cầu chì…?",
+        "zh": "开关属于哪类：漏电/过载保护、微动开关、电子/快动开关、家用线路开关、换向/熔断器式开关……？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "loaiPhichOCam",
+      "kieu": "LIET_KE",
+      "nhanVi": "loại phích cắm / ổ cắm (8536.69)",
+      "nhanEn": "plug / socket type (8536.69)",
+      "nhanZh": "插头/插座类型（8536.69）",
+      "giaTriHopLe": [
+        "PHICH_CAM_DIEN_THOAI",
+        "TIN_HIEU_HINH_TIENG",
+        "CAP_DONG_TRUC_MACH_IN",
+        "THONG_THUONG"
+      ],
+      "moTaGiaTri": {
+        "PHICH_CAM_DIEN_THOAI": {
+          "nhanVi": "phích cắm điện thoại",
+          "nhanEn": "telephone plug",
+          "nhanZh": "电话插头",
+          "cachDoc": {
+            "vi": [
+              "phích cắm điện thoại",
+              "jack điện thoại",
+              "RJ11"
+            ],
+            "en": [
+              "telephone plug",
+              "RJ11"
+            ],
+            "zh": [
+              "电话插头"
+            ]
+          }
+        },
+        "TIN_HIEU_HINH_TIENG": {
+          "nhanVi": "đầu cắm tín hiệu hình/tiếng; đầu cắm ống tia ca-tốt",
+          "nhanEn": "audio/video sockets; CRT sockets",
+          "nhanZh": "音视频插座；显像管插座",
+          "cachDoc": {
+            "vi": [
+              "tín hiệu hình",
+              "tín hiệu tiếng",
+              "tín hiệu âm thanh",
+              "RCA"
+            ],
+            "en": [
+              "audio\\s*/?\\s*video",
+              "RCA",
+              "AV socket"
+            ],
+            "zh": [
+              "音视频",
+              "AV插座"
+            ]
+          }
+        },
+        "CAP_DONG_TRUC_MACH_IN": {
+          "nhanVi": "đầu cắm, phích cắm cho cáp đồng trục và mạch in",
+          "nhanEn": "sockets and plugs for co-axial cables and printed circuits",
+          "nhanZh": "同轴电缆及印刷电路用插座插头",
+          "cachDoc": {
+            "vi": [
+              "mạch in",
+              "bo mạch",
+              "đồng trục",
+              "PCB"
+            ],
+            "en": [
+              "printed circuit",
+              "PCB",
+              "board-to-board",
+              "coaxial"
+            ],
+            "zh": [
+              "印刷电路",
+              "PCB",
+              "同轴",
+              "板对板"
+            ]
+          }
+        },
+        "THONG_THUONG": {
+          "nhanVi": "ổ cắm, phích cắm điện thông thường",
+          "nhanEn": "ordinary power plug / socket",
+          "nhanZh": "普通电源插头/插座",
+          "cachDoc": {
+            "vi": [
+              "ổ cắm\\s+điện(?!\\s*thoại)",
+              "phích cắm\\s+điện(?!\\s*thoại)",
+              "ổ cắm(?!\\s+(?:điện\\s*thoại|tín hiệu|mạch|cáp))",
+              "ổ điện"
+            ],
+            "en": [
+              "power socket",
+              "power plug",
+              "mains socket",
+              "outlet"
+            ],
+            "zh": [
+              "电源插座",
+              "电源插头"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Phích/ổ cắm dùng cho gì: điện thoại, tín hiệu hình/tiếng, cáp đồng trục/mạch in, hay điện thông thường?",
+        "zh": "插头/插座的用途：电话、音视频信号、同轴电缆/印刷电路，还是普通电源？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "phamViSuDung",
+      "kieu": "LIET_KE",
+      "nhanVi": "phạm vi sử dụng",
+      "nhanEn": "field of use",
+      "nhanZh": "使用范围",
+      "giaTriHopLe": [
+        "GIA_DINH",
+        "CONG_NGHIEP",
+        "CONG_CONG"
+      ],
+      "moTaGiaTri": {
+        "GIA_DINH": {
+          "nhanVi": "gia đình (gia dụng)",
+          "nhanEn": "household (domestic)",
+          "nhanZh": "家用",
+          "cachDoc": {
+            "vi": [
+              "gia đình",
+              "gia dụng",
+              "dân dụng"
+            ],
+            "en": [
+              "household",
+              "domestic",
+              "home use"
+            ],
+            "zh": [
+              "家用",
+              "家庭"
+            ]
+          }
+        },
+        "CONG_NGHIEP": {
+          "nhanVi": "công nghiệp",
+          "nhanEn": "industrial",
+          "nhanZh": "工业用",
+          "cachDoc": {
+            "vi": [
+              "công nghiệp"
+            ],
+            "en": [
+              "industrial"
+            ],
+            "zh": [
+              "工业"
+            ]
+          }
+        },
+        "CONG_CONG": {
+          "nhanVi": "nơi công cộng, đường phố",
+          "nhanEn": "public places, streets",
+          "nhanZh": "公共场所、道路",
+          "cachDoc": {
+            "vi": [
+              "công cộng",
+              "đường phố",
+              "chiếu sáng đường",
+              "công viên"
+            ],
+            "en": [
+              "street",
+              "public",
+              "road lighting"
+            ],
+            "zh": [
+              "路灯",
+              "公共",
+              "道路"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng dùng cho gia đình, công nghiệp hay nơi công cộng/đường phố?",
+        "zh": "产品用于家庭、工业还是公共场所/道路？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "mauHienThi",
+      "kieu": "LIET_KE",
+      "nhanVi": "màu hiển thị",
+      "nhanEn": "display colour",
+      "nhanZh": "显示色彩",
+      "giaTriHopLe": [
+        "MAU",
+        "DON_SAC"
+      ],
+      "moTaGiaTri": {
+        "MAU": {
+          "nhanVi": "loại màu",
+          "nhanEn": "colour",
+          "nhanZh": "彩色",
+          "cachDoc": {
+            "vi": [
+              "loại màu",
+              "màn hình màu",
+              "hiển thị màu",
+              "màu RGB"
+            ],
+            "en": [
+              "colou?r\\s+(?:display|monitor|screen)",
+              "RGB"
+            ],
+            "zh": [
+              "彩色"
+            ]
+          }
+        },
+        "DON_SAC": {
+          "nhanVi": "loại đơn sắc",
+          "nhanEn": "monochrome",
+          "nhanZh": "单色",
+          "cachDoc": {
+            "vi": [
+              "đơn sắc",
+              "trắng đen",
+              "đen trắng"
+            ],
+            "en": [
+              "monochrome",
+              "mono"
+            ],
+            "zh": [
+              "单色",
+              "黑白"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Màn hình hiển thị màu hay đơn sắc (đen trắng)?",
+        "zh": "显示屏是彩色还是单色（黑白）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "kieuDongCoDien",
+      "kieu": "LIET_KE",
+      "nhanVi": "kiểu động cơ điện (8501.10)",
+      "nhanEn": "electric motor kind (8501.10)",
+      "nhanZh": "电动机种类（8501.10）",
+      "giaTriHopLe": [
+        "BUOC",
+        "HUONG_TRUC"
+      ],
+      "moTaGiaTri": {
+        "BUOC": {
+          "nhanVi": "động cơ bước",
+          "nhanEn": "stepper motor",
+          "nhanZh": "步进电机",
+          "cachDoc": {
+            "vi": [
+              "động cơ bước"
+            ],
+            "en": [
+              "stepper",
+              "stepping motor"
+            ],
+            "zh": [
+              "步进"
+            ]
+          }
+        },
+        "HUONG_TRUC": {
+          "nhanVi": "động cơ hướng trục (quay đĩa)",
+          "nhanEn": "spindle motor",
+          "nhanZh": "主轴电机",
+          "cachDoc": {
+            "vi": [
+              "hướng trục",
+              "động cơ trục chính"
+            ],
+            "en": [
+              "spindle motor",
+              "spindle"
+            ],
+            "zh": [
+              "主轴电机"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Động cơ là động cơ bước, động cơ hướng trục (quay đĩa) hay loại khác?",
+        "zh": "电机是步进电机、主轴电机（驱动盘片）还是其他？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "tinhTrang",
+      "kieu": "LIET_KE",
+      "nhanVi": "tình trạng hàng",
+      "nhanEn": "condition",
+      "nhanZh": "新旧状况",
+      "giaTriHopLe": [
+        "MOI",
+        "DA_QUA_SU_DUNG"
+      ],
+      "moTaGiaTri": {
+        "MOI": {
+          "nhanVi": "mới 100%",
+          "nhanEn": "new",
+          "nhanZh": "全新",
+          "cachDoc": {
+            "vi": [
+              "mới\\s*100\\s*%",
+              "hàng mới",
+              "mới nguyên"
+            ],
+            "en": [
+              "brand[- ]new",
+              "new"
+            ],
+            "zh": [
+              "全新"
+            ]
+          }
+        },
+        "DA_QUA_SU_DUNG": {
+          "nhanVi": "đã qua sử dụng",
+          "nhanEn": "used",
+          "nhanZh": "二手",
+          "cachDoc": {
+            "vi": [
+              "đã qua sử dụng",
+              "hàng cũ"
+            ],
+            "en": [
+              "used",
+              "second[- ]hand",
+              "refurbished"
+            ],
+            "zh": [
+              "二手",
+              "翻新"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng mới 100% hay đã qua sử dụng?",
+        "zh": "商品是全新还是二手？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "chatLieu",
+      "kieu": "CHAT_LIEU_THEO_VI_TRI",
+      "nhanVi": "chất liệu (theo vị trí)",
+      "nhanEn": "material (by part)",
+      "nhanZh": "材质（按部位）",
+      "vietTat": "CL",
+      "giaTriHopLe": [
+        "plastic",
+        "cao su",
+        "giấy",
+        "gỗ",
+        "kim loại",
+        "sắt thép",
+        "thép không gỉ",
+        "gang",
+        "đồng",
+        "nhôm",
+        "kẽm",
+        "niken",
+        "thủy tinh",
+        "gốm sứ",
+        "vải dệt"
+      ],
+      "moTaGiaTri": {
+        "plastic": {
+          "nhanVi": "plastic (nhựa)",
+          "nhanEn": "plastics",
+          "nhanZh": "塑料",
+          "dungMau": "so-tay-gates#plastic",
+          "cachDoc": {
+            "vi": [
+              "nylon",
+              "polyme",
+              "polyamit",
+              "polyacetal",
+              "polypropylen",
+              "polyetylen",
+              "PP",
+              "PE",
+              "PET",
+              "HDPE",
+              "LDPE",
+              "POM",
+              "TPU"
+            ],
+            "en": [
+              "polymer",
+              "polyamide",
+              "polypropylene",
+              "polyethylene",
+              "nylon"
+            ],
+            "zh": []
+          }
+        },
+        "cao su": {
+          "nhanVi": "cao su",
+          "nhanEn": "rubber",
+          "nhanZh": "橡胶",
+          "dungMau": "so-tay-gates#cao su",
+          "cachDoc": {
+            "vi": [],
+            "en": [],
+            "zh": []
+          }
+        },
+        "giấy": {
+          "nhanVi": "giấy",
+          "nhanEn": "paper",
+          "nhanZh": "纸",
+          "dungMau": "so-tay-gates#giấy",
+          "cachDoc": {
+            "vi": [],
+            "en": [],
+            "zh": []
+          }
+        },
+        "gỗ": {
+          "nhanVi": "gỗ",
+          "nhanEn": "wood",
+          "nhanZh": "木",
+          "dungMau": "so-tay-gates#gỗ",
+          "cachDoc": {
+            "vi": [],
+            "en": [],
+            "zh": []
+          }
+        },
+        "kim loại": {
+          "nhanVi": "kim loại (chung)",
+          "nhanEn": "metal (generic)",
+          "nhanZh": "金属（泛指）",
+          "dungMau": "so-tay-gates#kim loại",
+          "chung": true,
+          "cachDoc": {
+            "vi": [
+              "kim loại cơ bản"
+            ],
+            "en": [
+              "base metal"
+            ],
+            "zh": [
+              "贱金属"
+            ]
+          }
+        },
+        "sắt thép": {
+          "nhanVi": "sắt hoặc thép",
+          "nhanEn": "iron or steel",
+          "nhanZh": "钢铁",
+          "cachDoc": {
+            "vi": [
+              "sắt thép",
+              "thép(?!\\s*không\\s*(?:gỉ|rỉ))",
+              "sắt"
+            ],
+            "en": [
+              "steel",
+              "iron"
+            ],
+            "zh": [
+              "钢",
+              "铁"
+            ]
+          }
+        },
+        "thép không gỉ": {
+          "nhanVi": "thép không gỉ",
+          "nhanEn": "stainless steel",
+          "nhanZh": "不锈钢",
+          "cachDoc": {
+            "vi": [
+              "thép không gỉ",
+              "thép không rỉ",
+              "inox"
+            ],
+            "en": [
+              "stainless(?:\\s+steel)?",
+              "SUS\\s?\\d{3}"
+            ],
+            "zh": [
+              "不锈钢"
+            ]
+          }
+        },
+        "gang": {
+          "nhanVi": "gang",
+          "nhanEn": "cast iron",
+          "nhanZh": "铸铁",
+          "cachDoc": {
+            "vi": [
+              "gang",
+              "gang đúc"
+            ],
+            "en": [
+              "cast iron"
+            ],
+            "zh": [
+              "铸铁"
+            ]
+          }
+        },
+        "đồng": {
+          "nhanVi": "đồng hoặc hợp kim đồng",
+          "nhanEn": "copper or copper alloy",
+          "nhanZh": "铜或铜合金",
+          "cachDoc": {
+            "vi": [
+              "hợp kim đồng",
+              "đồng thau",
+              "(?<!(?:hợp|cộng|tương|hội|giá|bất|\\d)\\s?)đồng(?!\\s+(?:hồ|bộ|thời|nhất|ý|nghĩa|đều|loạt|phục|hành|dạng|tiền|nát|xu|ruộng|bằng|cỡ|nghiệp|hương|minh|chí|tâm))"
+            ],
+            "en": [
+              "copper",
+              "brass",
+              "bronze"
+            ],
+            "zh": [
+              "铜",
+              "黄铜",
+              "紫铜"
+            ]
+          }
+        },
+        "nhôm": {
+          "nhanVi": "nhôm",
+          "nhanEn": "aluminium",
+          "nhanZh": "铝",
+          "cachDoc": {
+            "vi": [
+              "nhôm"
+            ],
+            "en": [
+              "alumin(?:i)?um"
+            ],
+            "zh": [
+              "铝"
+            ]
+          }
+        },
+        "kẽm": {
+          "nhanVi": "kẽm",
+          "nhanEn": "zinc",
+          "nhanZh": "锌",
+          "cachDoc": {
+            "vi": [
+              "kẽm"
+            ],
+            "en": [
+              "zinc"
+            ],
+            "zh": [
+              "锌"
+            ]
+          }
+        },
+        "niken": {
+          "nhanVi": "niken",
+          "nhanEn": "nickel",
+          "nhanZh": "镍",
+          "cachDoc": {
+            "vi": [
+              "niken"
+            ],
+            "en": [
+              "nickel"
+            ],
+            "zh": [
+              "镍"
+            ]
+          }
+        },
+        "thủy tinh": {
+          "nhanVi": "thủy tinh",
+          "nhanEn": "glass",
+          "nhanZh": "玻璃",
+          "dungMau": "so-tay-gates#thủy tinh",
+          "cachDoc": {
+            "vi": [],
+            "en": [],
+            "zh": []
+          }
+        },
+        "gốm sứ": {
+          "nhanVi": "gốm sứ",
+          "nhanEn": "ceramics",
+          "nhanZh": "陶瓷",
+          "dungMau": "so-tay-gates#gốm sứ",
+          "cachDoc": {
+            "vi": [],
+            "en": [],
+            "zh": []
+          }
+        },
+        "vải dệt": {
+          "nhanVi": "vải dệt",
+          "nhanEn": "textile",
+          "nhanZh": "纺织物",
+          "dungMau": "so-tay-gates#vải dệt",
+          "cachDoc": {
+            "vi": [],
+            "en": [],
+            "zh": []
+          }
+        }
+      },
+      "viTri": [
+        "CHINH",
+        "CACH_DIEN",
+        "LOI",
+        "THAN",
+        "VO",
+        "GIA_CO"
+      ],
+      "moTaViTri": {
+        "CACH_DIEN": {
+          "nhanVi": "lớp cách điện / vỏ bọc",
+          "nhanEn": "insulation / sheath",
+          "nhanZh": "绝缘层/护套",
+          "cachDoc": {
+            "vi": [
+              "cách điện",
+              "vỏ bọc",
+              "lớp bọc",
+              "bọc"
+            ],
+            "en": [
+              "insulat\\w*",
+              "sheath\\w*",
+              "jacket"
+            ],
+            "zh": [
+              "绝缘",
+              "护套"
+            ]
+          },
+          "cachViet": {
+            "vi": "cách điện bằng {giaTri}"
+          }
+        },
+        "LOI": {
+          "nhanVi": "lõi / ruột dẫn",
+          "nhanEn": "conductor / core",
+          "nhanZh": "导体/线芯",
+          "cachDoc": {
+            "vi": [
+              "lõi",
+              "ruột dẫn",
+              "ruột",
+              "dây dẫn"
+            ],
+            "en": [
+              "conductor",
+              "core"
+            ],
+            "zh": [
+              "导体",
+              "线芯",
+              "芯"
+            ]
+          },
+          "cachViet": {
+            "vi": "lõi {giaTri}"
+          }
+        },
+        "THAN": {
+          "nhanVi": "thân",
+          "nhanEn": "body",
+          "nhanZh": "主体（阀体、机身）",
+          "cachDoc": {
+            "vi": [
+              "thân"
+            ],
+            "en": [
+              "body"
+            ],
+            "zh": [
+              "阀体",
+              "机身",
+              "主体"
+            ]
+          },
+          "cachViet": {
+            "vi": "thân bằng {giaTri}"
+          }
+        },
+        "GIA_CO": {
+          "nhanVi": "lớp gia cố",
+          "nhanEn": "reinforcement",
+          "nhanZh": "增强层",
+          "cachDoc": {
+            "vi": [
+              "gia cố(?:\\s+bằng)?",
+              "cốt(?=\\s)"
+            ],
+            "en": [
+              "reinforced(?:\\s+with)?"
+            ],
+            "zh": [
+              "增强"
+            ]
+          },
+          "cachViet": {
+            "vi": "gia cố bằng {giaTri}"
+          }
+        },
+        "VO": {
+          "nhanVi": "vỏ",
+          "nhanEn": "housing / casing",
+          "nhanZh": "外壳",
+          "cachDoc": {
+            "vi": [
+              "vỏ(?!\\s*bọc)",
+              "vỏ ngoài"
+            ],
+            "en": [
+              "housing",
+              "casing",
+              "shell"
+            ],
+            "zh": [
+              "外壳",
+              "壳体"
+            ]
+          },
+          "cachViet": {
+            "vi": "vỏ bằng {giaTri}"
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "bằng {giaTri}",
+        "viTat": "CL: {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng làm bằng vật liệu gì (và từng bộ phận: thân, vỏ, lớp cách điện, lõi dẫn, lớp gia cố)?",
+        "zh": "产品由什么材质制成（主体、外壳、绝缘层、导体、增强层分别是什么）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "dungCho",
+      "kieu": "CONG_DUNG",
+      "nhanVi": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)",
+      "nhanEn": "for use with (machine, vehicle, goods)",
+      "nhanZh": "适用于（机器、车辆、商品）",
+      "cachDoc": {
+        "vi": [
+          "chuyên dùng cho",
+          "phù hợp dùng cho",
+          "loại dùng cho",
+          "dùng cho",
+          "sử dụng cho",
+          "lắp cho",
+          "lắp vào"
+        ],
+        "en": [
+          "for\\s+use\\s+(?:with|in|on)",
+          "used\\s+(?:with|in|on)",
+          "suitable for",
+          "for"
+        ],
+        "zh": [
+          "适用于",
+          "专用于",
+          "用于",
+          "适用"
+        ]
+      },
+      "cachViet": {
+        "vi": "dùng cho {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng dùng cho / lắp vào máy, xe hay hàng hóa nào (ghi rõ loại máy, loại xe)?",
+        "zh": "产品用于（安装在）哪种机器、车辆或商品上（请写明机型/车型）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "congDung",
+      "kieu": "CONG_DUNG",
+      "nhanVi": "công dụng / mục đích",
+      "nhanEn": "purpose / function",
+      "nhanZh": "用途/功能",
+      "cachDoc": {
+        "vi": [
+          "công dụng",
+          "chức năng",
+          "dùng để",
+          "dùng làm",
+          "có tác dụng",
+          "nhằm",
+          "để"
+        ],
+        "en": [
+          "used to",
+          "designed to",
+          "function",
+          "purpose"
+        ],
+        "zh": [
+          "用途",
+          "功能",
+          "用来"
+        ]
+      },
+      "cachViet": {
+        "vi": "dùng để {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng dùng để làm gì (công dụng chính theo nhà sản xuất)?",
+        "zh": "产品的主要用途是什么（按厂家说明）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "tenLoai",
+      "kieu": "TEN_LOAI",
+      "nhanVi": "tên loại hàng",
+      "nhanEn": "kind of article",
+      "nhanZh": "品名（种类）",
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng cụ thể là loại gì (tên gọi thông dụng, ví dụ \"khóa cửa\", \"đèn pha\", \"rơ le\")?",
+        "zh": "商品具体是什么（通用名称，如\"门锁\"、\"探照灯\"、\"继电器\"）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "nhanHieu",
+      "kieu": "TEN_LOAI",
+      "nhanVi": "nhãn hiệu",
+      "nhanEn": "brand",
+      "nhanZh": "品牌",
+      "cachDoc": {
+        "vi": [
+          "nhãn hiệu",
+          "thương hiệu",
+          "hiệu(?=\\s*[:：])"
+        ],
+        "en": [
+          "brand",
+          "trademark"
+        ],
+        "zh": [
+          "品牌",
+          "商标",
+          "牌子"
+        ]
+      },
+      "giaTriDacBiet": {
+        "KHONG_HIEU": {
+          "cachDoc": {
+            "vi": [
+              "không nhãn hiệu",
+              "không có nhãn hiệu",
+              "không hiệu"
+            ],
+            "en": [
+              "no brand",
+              "unbranded",
+              "non-?branded"
+            ],
+            "zh": [
+              "无品牌",
+              "无牌"
+            ]
+          },
+          "cachViet": "không nhãn hiệu"
+        }
+      },
+      "cachViet": {
+        "vi": "nhãn hiệu {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng mang nhãn hiệu gì (hoặc không có nhãn hiệu)?",
+        "zh": "商品的品牌是什么（或无品牌）？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "model",
+      "kieu": "TEN_LOAI",
+      "nhanVi": "model",
+      "nhanEn": "model",
+      "nhanZh": "型号",
+      "cachDoc": {
+        "vi": [
+          "mã model",
+          "model",
+          "kiểu(?=\\s*[:：])"
+        ],
+        "en": [
+          "model(?:\\s+(?:no\\.?|number))?",
+          "type(?=\\s*[:：])"
+        ],
+        "zh": [
+          "型号",
+          "款号"
+        ]
+      },
+      "cachViet": {
+        "vi": "model {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Model (mã kiểu) của hàng là gì?",
+        "zh": "商品型号是什么？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "kyMaHieu",
+      "kieu": "TEN_LOAI",
+      "nhanVi": "ký, mã hiệu",
+      "nhanEn": "part / reference number",
+      "nhanZh": "货号（零件号）",
+      "cachDoc": {
+        "vi": [
+          "ký mã hiệu",
+          "ký hiệu",
+          "mã hiệu",
+          "mã sản phẩm",
+          "P/N"
+        ],
+        "en": [
+          "part\\s+(?:no\\.?|number)",
+          "P/N",
+          "SKU",
+          "item\\s+(?:no\\.?|number)"
+        ],
+        "zh": [
+          "货号",
+          "料号",
+          "零件号"
+        ]
+      },
+      "cachViet": {
+        "vi": "ký mã hiệu {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Ký, mã hiệu (part number) in trên hàng / bao bì là gì?",
+        "zh": "产品或包装上的货号（零件号）是什么？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "khoa": "nhaSanXuat",
+      "kieu": "TEN_LOAI",
+      "nhanVi": "nhà sản xuất",
+      "nhanEn": "manufacturer",
+      "nhanZh": "生产厂家",
+      "vietTat": "NSX",
+      "cachDoc": {
+        "vi": [
+          "nhà sản xuất",
+          "hãng sản xuất",
+          "sản xuất bởi",
+          "NSX"
+        ],
+        "en": [
+          "manufacturer",
+          "manufactured by",
+          "made by",
+          "mfr"
+        ],
+        "zh": [
+          "生产厂家",
+          "制造商",
+          "生产商",
+          "厂家"
+        ]
+      },
+      "cachViet": {
+        "vi": "nhà sản xuất {giaTri}",
+        "viTat": "NSX: {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Nhà sản xuất (tên công ty sản xuất) là ai?",
+        "zh": "生产厂家（制造商公司名称）是哪家？"
+      },
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ]
+}

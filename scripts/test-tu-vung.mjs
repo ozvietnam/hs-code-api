@@ -83,6 +83,10 @@ const coTrong = (r, text) => typeof r?.bangChung === 'string' && r.bangChung.len
   check('LIET_KE không có giá trị nào trong giaTriHopLe ⇒ CHUA_BIET', d.trangThai === 'CHUA_BIET', d);
   check('kiemGiaTri: LIET_KE giá trị ngoài giaTriHopLe ⇒ CHUA_BIET; trong danh sách ⇒ DA_CO',
     T.kiemGiaTri('loaiDongDien', 'BA_CHIEU').trangThai === 'CHUA_BIET' && T.kiemGiaTri('loaiDongDien', 'XOAY_CHIEU').trangThai === 'DA_CO');
+  const v = T.docGiaTri('cachDieuKhien', 'van định hướng 5/2 hoạt động bằng solenoid — không phải van cổng điều khiển bằng tay');
+  check('"không phải X" phủ định tới hết đoạn: solenoid ⇒ DIEN_TU, "bằng tay" bị phủ định', v.trangThai === 'DA_CO' && v.giaTri === 'DIEN_TU', v);
+  const p = T.docGiaTri('loaiPhichOCam', 'ổ cắm điện 10A, không phải phích cắm điện thoại, đầu cắm tín hiệu hình/tiếng');
+  check('"không phải A, B" phủ định cả danh sách sau dấu phẩy', p.giaTri === 'THONG_THUONG', p);
   const e = T.docGiaTri('tinhTrang', 'Tai nghe, mới 100%');
   check('tinhTrang "mới 100%" ⇒ MOI', e.giaTri === 'MOI', e);
 }
