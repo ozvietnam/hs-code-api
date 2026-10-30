@@ -1,0 +1,81 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "901720",
+  "nhom": "9017",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode:glm-5.3:20261030T1549#soan-901720",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "90172010",
+      "nguon": "tax.90172010",
+      "trich": "90172010 - - Thước",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thước"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90172040",
+      "nguon": "tax.90172040",
+      "trich": "90172040 - - Máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy vẽ ảnh"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất tấm mạch in/tấm dây in"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90172050",
+      "nguon": "tax.90172050",
+      "trich": "90172050 - - Máy vẽ khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy vẽ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "90172090",
+      "nguon": "tax.90172090",
+      "trich": "90172090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "90172050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Máy vẽ khác\" = phần còn lại có tên (máy vẽ trừ .40 \"Máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in\"; trích có chữ \"khác\") ⇒ phanConLai: true + tenLoai \"Máy vẽ\". Không khai chongLanVanBan — chồng lấn (nếu có) do \"khác\" cuối dòng."
+    },
+    {
+      "ma": "90172040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tenLoai \"Máy vẽ ảnh\" + congDung \"sản xuất tấm mạch in/tấm dây in\" (\"để sản xuất …\" là công dụng của máy, không phải dùng cho hàng lắp vào)."
+    }
+  ]
+}
