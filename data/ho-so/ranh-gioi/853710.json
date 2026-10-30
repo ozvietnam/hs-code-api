@@ -3,11 +3,11 @@
   "pn6": "853710",
   "nhom": "8537",
   "bieuThue": "2026.04.05",
-  "tuVung": "tu-vung@1",
+  "tuVung": "tu-vung@2",
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu-2",
     "ngay": "2026-10-30"
   },
   "duyet": null,
@@ -87,7 +87,26 @@
       "hs": "85371020",
       "nguon": "tax.85371020",
       "trich": "85371020 - - Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng phân phối"
+        },
+        {
+          "fact": "chiHoacChuYeu",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.71",
+            "85.17",
+            "85.25"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -214,9 +233,8 @@
     },
     {
       "ma": "85371020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chiHoacChuYeu",
-      "ghiChu": "tax.85371020 \"Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25\" — mức ràng buộc \"chỉ dùng hoặc chủ yếu dùng\" chưa có khoá trong tu-vung@1 (de-xuat-tu-vung-2.md); ghi dungCho trần sẽ nới chữ biểu ⇒ để trống, DỪNG."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85371020 \"Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25\" ⇒ tenLoai \"Bảng phân phối\" (cùng khoá tên với anh em 8537101/.30/.40) + chiHoacChuYeu CO (tu-vung@2, \"chỉ dùng hoặc chủ yếu dùng\") + dungCho [\"84.71\",\"85.17\",\"85.25\"] (đủ 3 nhóm, \"hoặc\"). Ngoặc \"(gồm cả panel đỡ và tấm đỡ phẳng)\" là câu bao gồm — không thành điều kiện."
     },
     {
       "ma": "85371030",
@@ -226,7 +244,7 @@
     {
       "ma": "85371040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85371040 \"Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A\" ⇒ tenLoai \"Bộ điều khiển động cơ\" + dienAp >= 24 V, <= 120 V (VDC) + dongDien >= 300 A, <= 500 A (\"từ … đến\" gồm hai mốc). Vế \"DC\" (một chiều) không ghi loaiDongDien vì chữ \"VDC\" không khớp cách đọc của khoá (một chiều | điện DC) — DE_TRONG, người soát lưu ý."
+      "ghiChu": "tax.85371040 \"Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A\" ⇒ tenLoai \"Bộ điều khiển động cơ\" + dienAp >= 24 V, <= 120 V (VDC) + dongDien >= 300 A, <= 500 A (\"từ … đến\" gồm hai mốc; cong3-bien-khong-doc-duoc — đã đối chiếu tay biên với chữ \"từ 24V đến 120VDC\", \"từ 300A đến 500A\"). Vế \"DC\" (một chiều) không ghi loaiDongDien vì chữ \"VDC\" không khớp cách đọc của khoá (một chiều | điện DC) — DE_TRONG, người soát lưu ý."
     },
     {
       "ma": "85371091",

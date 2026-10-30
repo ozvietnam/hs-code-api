@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "950300",
-  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu-2",
   "dong8": {
     "95030010": {
       "dieuKienSo": [
@@ -79,7 +79,8 @@
           "value": "plastic",
           "chieu": "PHAI_KHONG"
         }
-      ]
+      ],
+      "phanConLai": false
     },
     "95030060": {
       "dieuKienSo": [
@@ -103,7 +104,17 @@
       ]
     },
     "95030080": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị giáo dục điện tử tương tác cầm tay"
+        },
+        {
+          "fact": "thietKeChoTreEm",
+          "op": "CO"
+        }
+      ]
     },
     "95030091": {
       "dieuKienSo": [
@@ -164,8 +175,12 @@
     "950300~r18723": {
       "dieuKienSo": [
         {
-          "fact": "laBoPhan",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bộ phận",
+            "phụ kiện"
+          ]
         }
       ]
     }
@@ -184,12 +199,12 @@
     {
       "ma": "950300~r18723",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.950300~r18723 \"Bộ phận và phụ kiện\" ⇒ laBoPhan CO (cách đọc \"bộ phận\"). .22 \"Quần áo và phụ kiện quần áo; giầy và mũ\" ⇒ tenLoai [\"Quần áo\",\"phụ kiện quần áo\",\"giầy\",\"mũ\"]; .29 \"Loại khác\" trần. .21 \"Búp bê, có hoặc không có trang phục\" ⇒ tenLoai \"Búp bê\" (vế \"có hoặc không có trang phục\" không thu hẹp)."
+      "ghiChu": "tieuDe.950300~r18723 \"Bộ phận và phụ kiện\" ⇒ tenLoai [\"Bộ phận\",\"phụ kiện\"] (chuỗi con nguyên văn). Bản trước ghi laBoPhan CO ⇒ cong2-chong-lan .21+.29 (vật laBoPhan CO mang tên chứa \"búp bê\" thoả cả .21 \"Búp bê, có hoặc không có trang phục\"); .21 và tầng r18723 là ANH EM cùng tầng 9503002 phân theo TÊN (búp bê ↔ bộ phận/phụ kiện) ⇒ đưa về cùng khoá tenLoai (QUY-TRINH §4 chồng lấn bước 2); tên trên đường đi \"Búp bê\" + \"Bộ phận\" cụ thể hơn \"Búp bê\" ⇒ tenCuTheHon phân. \"phụ kiện\" (quần áo, giầy…) cũng không phải \"bộ phận\" nên laBoPhan hẹp hơn chữ. .22 \"Quần áo và phụ kiện quần áo; giầy và mũ\" ⇒ tenLoai [\"Quần áo\",\"phụ kiện quần áo\",\"giầy\",\"mũ\"]; .29 \"Loại khác\" trần. .21 \"Búp bê, có hoặc không có trang phục\" ⇒ tenLoai \"Búp bê\" (vế \"có hoặc không có trang phục\" không thu hẹp)."
     },
     {
       "ma": "95030030",
       "loai": "QUYET_DINH",
-      "ghiChu": "\"Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng\" ⇒ tenLoai [\"Xe điện\",\"đường ray\",\"đèn hiệu\"]; \"các phụ kiện khác của chúng\" không liệt kê được; chữ \"khác\" ở đây không phải phần còn lại của anh em ⇒ không phanConLai."
+      "ghiChu": "\"Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng\" ⇒ tenLoai [\"Xe điện\",\"đường ray\",\"đèn hiệu\"]; \"các phụ kiện khác của chúng\" không liệt kê được; chữ \"khác\" ở đây không phải phần còn lại của anh em ⇒ không phanConLai (cảnh báo nghi-phan-con-lai:95030030 giữ lại có chủ ý: không ghi phanConLai: false vì scripts/test-cong-cu-vong-2.mjs ca 6d dùng chính dòng này làm mẫu \"thêm phanConLai: false\"; luật đi như nhau)."
     },
     {
       "ma": "95030040",
@@ -199,13 +214,12 @@
     {
       "ma": "95030050",
       "loai": "QUYET_DINH",
-      "ghiChu": "\"Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic\" ⇒ tenLoai \"bộ đồ chơi xây dựng\" + chatLieu LA plastic chieu PHAI_KHONG. \"khác\" (other constructional toys) không trỏ anh em đứng trước trong phân nhóm (không anh em nào là đồ chơi xây dựng) ⇒ không phanConLai."
+      "ghiChu": "\"Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic\" ⇒ tenLoai \"bộ đồ chơi xây dựng\" + chatLieu LA plastic chieu PHAI_KHONG. \"khác\" (other constructional toys) không trỏ anh em đứng trước trong phân nhóm (không anh em nào là đồ chơi xây dựng) ⇒ phanConLai: false (khai rõ, tắt nghi-phan-con-lai)."
     },
     {
       "ma": "95030080",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chiHoacChuYeu",
-      "ghiChu": "tax.95030080 \"Thiết bị giáo dục điện tử tương tác cầm tay được thiết kế chủ yếu cho trẻ em (SEN)\" — vế \"được thiết kế chủ yếu cho trẻ em\" là mức ràng buộc \"chủ yếu\" chưa có khoá (cùng loại chiHoacChuYeu ở de-xuat-tu-vung-2.md); bản cũ bỏ vế này là nới chữ ⇒ để trống, DỪNG. Khi có khoá: tenLoai \"Thiết bị giáo dục điện tử tương tác cầm tay\" + (từ sen.95030080 \"Các thiết bị cầm tay hoạt động bằng pin (trọng lượng không quá 10kg)\") nguonNangLuong [PIN_AC_QUY] + khoiLuong <= 10 kg + khoá chủ yếu cho trẻ em."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.95030080 \"Thiết bị giáo dục điện tử tương tác cầm tay được thiết kế chủ yếu cho trẻ em (SEN)\" ⇒ tenLoai \"Thiết bị giáo dục điện tử tương tác cầm tay\" (cùng khoá tên với anh em) + thietKeChoTreEm CO (tu-vung@2, \"được thiết kế chủ yếu cho trẻ em\"). Không thêm điều kiện từ sen.95030080 (pin, ≤ 10 kg) vì chữ biểu của dòng không nói — SEN chỉ mô tả."
     },
     {
       "ma": "95030094",
@@ -216,11 +230,6 @@
       "ma": "95030099",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ 950300-01 KHONG_LECH (5875/TB-TCHQ: quả địa cầu thực tế ảo → .99, không phải đồ chơi xây dựng). Bản nháp theo chữ biểu, khớp bảng."
-    },
-    {
-      "ma": "95030029",
-      "loai": "DUNG",
-      "ghiChu": "ĐỎ còn lại sau khi soạn lại (ngoài THIEU_KHOA .80): (1) cong2-chong-lan .21+.29 và .10+.29 — vector laBoPhan=CO, tenLoai chứa \"búp bê\" thoả .21 \"Búp bê, có hoặc không có trang phục\" lẫn tầng r18723 \"Bộ phận và phụ kiện\" → .29. Chữ biểu không chồng (bộ phận búp bê không phải búp bê) nhưng .21 không có chữ nào để ghi laBoPhan KHONG ⇒ không khai chongLanVanBan, không bịa điều kiện. (2) cong2-dong-khong-toi-duoc .22 + cong2-diem-mu tenLoai 9503002>95030022 — tiêu đề \"Búp bê\" và dòng con \"Quần áo …\" cùng khoá chữ tự do, bảng ứng viên không có chuỗi chứa cả hai. Cần công cụ (ứng viên ghép cha–con cho khoá chữ tự do; hoặc cho tầng anh em có tên được ghi phủ định tường minh). Không ép."
     }
   ]
 }
