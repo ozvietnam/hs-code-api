@@ -59,3 +59,33 @@ Thêm, không thay: điều kiện cũ (fact snake_case như `duong_kinh`, op `<
   `precedents.json`, SEN/chú giải, GIR qua `lib/gir.js`) — chưa có lược đồ máy, ghi `ghiChuSoan`. Lúc chạy cặp này **không bao giờ tự
   chốt** (chotDong8 trả `TRANH_CAP`; `apDung` mang dấu `chongLanVanBan {voi, lyDo}` sang hai dòng sổ tay cho tầng hồ sơ trả
   `CANH_BAO` + `cauHoi`).
+
+## Gia cố cho thợ rẻ (30/10/2026, #577) — máy chặn thêm
+
+Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md). Lệnh: `node scripts/so-hoa-ranh-gioi.mjs --help`.
+
+- **Spec thay cho sửa tay**: người soạn viết spec `ranh-gioi-spec@1` (JSON) rồi `--ap-spec=<tệp>`; bản nháp sinh lại từ khung mỗi
+  lần, nhãn `AI_DA_KIEM`, trạng thái `NHAP`. Spec không được ghi `nguonLoai`/`trangThai`/`duyet`/`soanBoi`/`traVe`.
+- **Mã thoát**: 0 xanh · 1 đỏ (sửa được) · 2 spec/lệnh sai · **3 DỪNG** (báo Claude, không tự xử lý). `--giai-thich=<mã>` giải
+  thích mọi mã lỗi/cảnh báo (`lib/ho-so/ma-loi.js`).
+- **Tầng không mã** (`lib/ho-so/tang-khong-ma.js`): tiêu đề không mã của biểu thuế mà cây theo chữ số làm mất ⇒ `--goi` in khối
+  DỪNG, cổng 1 chặn mọi dòng dưới tầng `cong1-tang-khong-ma:<hs>:r<dòng>`. Không có cách khai để vượt.
+- **Cổng 1** chỉ thử vector thoả điều kiện tầng cha; tầng gốc không có phần còn lại thì vật mang tên ngoài mọi chữ của các con
+  coi là ngoài phân nhóm.
+- **Phần còn lại có tên** ("Động cơ khác", "Cáp … plastic khác", "…, loại khác"): `phanConLai: true` (phủ định mọi anh em ĐỨNG
+  TRƯỚC) hoặc mảng mã anh em. Trích phải có chữ "khác". Không dùng trên dòng "Loại khác…". Máy cảnh báo `nghi-phan-con-lai`.
+- **Tên cụ thể hơn thắng** (`tenCuTheHon`): "bàn đạp" ⊃ "Bàn" không phải chồng lấn; bên còn ràng buộc trên khoá khác thì không phân.
+- **dungCho theo cấp mã HS**: "nhóm 87.11" thoả "Chương 87"; ngược lại chưa biết.
+- **HOẶC của các nhóm VÀ**: `{op: "HOAC", phuongAn: [[đk…], [đk…]]}` — ≥ 2 phương án, mọi vế là khoá tu-vung@1, không lồng, không
+  `chieu`. Dùng khi mỗi vế của chữ biểu có ngưỡng riêng (9405.42.30, 8536505); KHÔNG gộp ngưỡng của một vế cho cả dòng.
+- **Điểm mù**: `cong2-dong-khong-toi-duoc` (LỖI — không vector nào tới dòng, xanh giả), `cong2-diem-mu` (cảnh báo — cùng khoá chữ
+  tự do ở nút trên/dưới), `cong3-bien-khong-doc-duoc` (cảnh báo — người soát đối chiếu biên tay), `cong3-trich-qua-dai` (LỖI —
+  mục có điều kiện mà trích > 300 ký tự).
+- **CHONG_LAN_VAN_BAN có máy chặn**: `lyDo` phải trích nguyên văn (ngoặc kép) chữ biểu của CẢ HAI nhánh rẽ
+  (`cong3-chong-lan-thieu-trich`); một nhánh chồng ≥ 3 nhánh anh em = chồng lấn theo TRỤC (392690, 401699) ⇒ `cong2-chong-lan-truc`,
+  DỪNG. Chồng lấn do bộ so chữ hay "khác" cuối dòng: không khai — dùng `phanConLai` hoặc để đỏ.
+- **Định danh phiên**: `<định danh>#<soan|soat>-<nhãn>` (vd `https://claude.ai/code/session_…#soan-830220`,
+  `cursor:<mô hình>:<yyyymmddThhmm>#soan-830220`). `--duyet` đòi `#soat-…`; cùng định danh + nhãn chỉ đổi vai = tự duyệt.
+- **ghiChuSoan** `{ma, loai, ghiChu, khoaDeXuat?}`, `loai` ∈ `QUYET_DINH | DE_TRONG | CHONG_LAN | LECH_TIEN_LE | THIEU_KHOA_TU_VUNG | DUNG`.
+- **Thiếu khoá tu-vung**: không tự đặt khoá — để trống, ghi `THIEU_KHOA_TU_VUNG` + `khoaDeXuat` ⇒ DỪNG. Đề xuất khoá:
+  [`de-xuat-tu-vung-2.md`](de-xuat-tu-vung-2.md). `tu-vung@1` không đổi (khoá cứng theo bench).
