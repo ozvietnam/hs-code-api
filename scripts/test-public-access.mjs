@@ -47,6 +47,7 @@ const MUST_STAY_PRIVATE = [
   ['declaration_check', 'soát tờ khai — dữ liệu tờ khai của khách, chỉ khoá dịch vụ (#338)'],
   ['dispute_draft', 'hồ sơ giải trình tranh chấp mã — lệnh LLM kín, chỉ khoá dịch vụ (#339)'],
   ['llm_cost', 'chi phí LLM lượt công khai — số liệu vận hành nội bộ (#547)'],
+  ['ho_so_shadow', 'số đo chạy bóng hồ sơ phân loại — số liệu vận hành nội bộ (L1-5f)'],
 ];
 for (const [resource, why] of MUST_STAY_PRIVATE) {
   assert(
