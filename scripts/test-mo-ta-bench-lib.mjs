@@ -13,6 +13,7 @@ import './test-isolate-data.mjs';
  *   - chấm ca âm (soát phải báo, sinh phải từ chối) + báo oan LOI
  *   - ghi chi tiết riêng tư từ chối chỗ không bị gitignore
  *   - CLI: --mode=sinh|soat --bo-de=data/bench/ho-so-lat-1.json --lat=1 (mock) in đủ hàng §10
+ *   - scripts/dung-giu-rieng-lat-1.mjs: in số đếm tổng hợp, không in câu Oz, chỉ ghi chỗ gitignore
  */
 import fs from 'node:fs';
 import os from 'node:os';
@@ -164,6 +165,16 @@ const so = chay('soat');
 check('8d soát --lat=1 chạy xong (exit 0)', so.status === 0, (so.stderr || '') + (so.stdout || '').slice(-800));
 check('8e soát --lat=1 in bảng §10 đủ hàng + ca âm', HANG_10.every((h) => so.stdout.includes(h)) && /Ca âm CV 755[^\n]*\b\d+\/3\b/.test(so.stdout), HANG_10.filter((h) => !so.stdout.includes(h)));
 check('8f chi tiết không ghi ra chỗ không gitignore', /TỪ CHỐI GHI/.test(s.stderr + so.stderr) && fs.readdirSync(tmp).length === 0);
+
+// ── 9. Script dựng tập giữ riêng lát 1 (chỉ ghi vào data/oz-export/ gitignore; in số đếm tổng hợp) ────────────────────
+const goldP = path.join(tmp, 'gold-gia.jsonl');
+fs.writeFileSync(goldP, goldGia.map((x) => JSON.stringify({ ...x, sampleDesc: x.sampleDesc ? 'CÂU OZ GIẢ KHÔNG ĐƯỢC IN' : '' })).join('\n') + '\n');
+const d = spawnSync(process.execPath, [path.join(ROOT, 'scripts', 'dung-giu-rieng-lat-1.mjs'), `--out=${path.join(tmp, 'giu.jsonl')}`], { cwd: ROOT, env: { ...env, OZ_GOLD_PATH: goldP }, encoding: 'utf8', timeout: 60000 });
+const dong = (d.stdout || '').split('\n').find((l) => l.startsWith('TONG_HOP '));
+let th = null; try { th = JSON.parse(dong.slice(9)); } catch { th = null; }
+check('9a dung-giu-rieng-lat-1 in số đếm tổng hợp (TONG_HOP JSON)', th && th.tongMauGold === 7 && th.lat1.mau === 2 && th.lat1.phanNhomCoMau === 1 && th.lat1.phanNhomKhongMau.length === 49, d.stdout + d.stderr);
+check('9b số đếm không chứa câu Oz, không có số lượt tuyệt đối (ozCount)', !/CÂU OZ GIẢ/.test(d.stdout + d.stderr) && th && !('ozCount' in th) && !JSON.stringify(th).includes('soLuot'));
+check('9c --out không bị gitignore ⇒ từ chối ghi, exit ≠ 0, không tạo tệp', d.status !== 0 && /TỪ CHỐI GHI/.test(d.stderr) && !fs.existsSync(path.join(tmp, 'giu.jsonl')), d.status);
 
 console.log(`\ntest-mo-ta-bench-lib: ${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
