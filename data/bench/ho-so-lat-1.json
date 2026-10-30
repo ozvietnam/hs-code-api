@@ -699,6 +699,133 @@
    "duyetBoi": "CLAUDE_DUYET"
   },
   {
+   "id": "L1-854442-04",
+   "lat": 1,
+   "pn6": "854442",
+   "maHs": "85444299",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "1709/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85444299[9]"
+   },
+   "thongTinHang": {
+    "tenHang": "Cáp sạc và truyền dữ liệu cho điện thoại",
+    "chatLieu": "vỏ bọc plastic, lõi dây đồng 4 lõi, mỗi lõi bọc cách điện bằng plastic, đường kính mỗi lõi nhỏ hơn 5 mm",
+    "congDung": "sạc pin và truyền dữ liệu giữa điện thoại và máy tính",
+    "thongSo": [
+     "hai đầu đã gắn đầu nối: Type-C và USB Type-A"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": "TC1000N"
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "dây/cáp điện có cách điện",
+     "tuKhoa": [
+      "cáp|dây",
+      "cách điện|bọc (nhựa|plastic|pvc)"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Dây điện, cáp điện (kể cả cáp đồng trục) có cách điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[9].productName",
+      "trich": "mỗi lõi đã bọc cách điện bằng plastic"
+     }
+    },
+    {
+     "cap": 6,
+     "duKien": "dùng cho điện áp không quá 1.000 V",
+     "tuKhoa": [
+      "1\\.?000\\s*v|điện áp"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Các vật dẫn điện khác(*), dùng cho điện áp không quá 1.000 V",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[9].technicalSpec",
+      "trich": "dùng cho điện áp không quá 1.000 V"
+     }
+    },
+    {
+     "cap": 6,
+     "duKien": "đã lắp với đầu nối điện",
+     "tuKhoa": [
+      "đầu nối|đầu cắm|connector|jack"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Đã lắp với đầu nối điện",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[9].productName",
+      "trich": "hai đầu dây đã gắn đầu nối"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "lõi bọc plastic, đường kính mỗi lõi dưới 5 mm (dữ kiện phân biệt với 8544.42.94)",
+     "tuKhoa": [
+      "lõi",
+      "5\\s*mm"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85444299[9].productName",
+      "trich": "có đường kính mỗi lõi nhỏ hơn 5mm"
+     },
+     "khongDuCanCu": true,
+     "ghiChu": "Dữ kiện có thật về hàng nhưng chữ biểu thuế trỏ 8544.42.94 còn TB-TCHQ kết luận 8544.42.99 — xem lechChiTiet."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85444294",
+     "lyDo": "chữ dòng 8 số khớp hàng (cách điện plastic, lõi ≤5 mm) nhưng TB-TCHQ xếp .99 — chưa phân xử",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm"
+    },
+    {
+     "ma": "85444219",
+     "lyDo": "nhánh viễn thông ≤80 V; TB-TCHQ xếp vào nhánh \"Loại khác\" (không phải viễn thông)",
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Dùng cho viễn thông, điện áp không quá 80 V"
+    }
+   ],
+   "moTaMau": "Cáp sạc và truyền dữ liệu điện thoại, lõi đồng 4 lõi bọc cách điện plastic, ĐK mỗi lõi dưới 5mm, đã gắn đầu nối Type-C/USB-A, dùng cho điện áp không quá 1000V, model TC1000N, mới 100%",
+   "khongDuCanCu": true,
+   "lechTienLe": true,
+   "lechChiTiet": {
+    "bieuThue": {
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm"
+    },
+    "tienLe": {
+     "nguon": "data/precedents.json",
+     "viTri": "85444299[9].technicalSpec",
+     "trich": "mã số 8544.42.99 “- - - - Loại khác”"
+    },
+    "ghiChu": "Đúng kiểu 8544.42.99 nêu ở mục 32.2: đọc theo chữ, .99 là phần còn lại sau các dòng cáp cách điện plastic; TB-TCHQ 2022 lại xếp cáp sạc bọc plastic lõi <5 mm vào .99. Claude không chọn bên — chờ chuyên gia."
+   },
+   "caCaiLoi": {
+    "boDuKien": [
+     2
+    ],
+    "doiAnhEm": null
+   },
+   "duyetBoi": "CLAUDE_DUYET",
+   "gopTu": {
+    "tep": "data/bench/mo-ta-bo-de.json",
+    "id": "BD-85-01",
+    "ghiChu": "Gộp từ bộ đề #543 (L1-2b, #569) vì mã thuộc lát 1; nội dung giữ nguyên trạng ca #543 (đã CLAUDE_DUYET theo quyTacChamDuyet #543)."
+   }
+  },
+  {
    "id": "L1-853710-01",
    "lat": 1,
    "pn6": "853710",
@@ -1538,6 +1665,80 @@
     "doiAnhEm": null
    },
    "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-732690-03",
+   "lat": 1,
+   "pn6": "732690",
+   "maHs": "73269099",
+   "chuong": "73",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "8941/TCHQ-TXNK",
+    "tep": "data/precedents.json",
+    "viTri": "73269099[10]"
+   },
+   "thongTinHang": {
+    "tenHang": "Khóa cáp thép (cóc kẹp cáp, wire rope clip)",
+    "chatLieu": "thép",
+    "congDung": "kẹp đầu cáp, nối cáp hoặc khóa đầu cáp làm dây cẩu, kéo hàng",
+    "thongSo": [
+     "thanh thép uốn hình chữ U, hai đầu ren ngoài, có khuyên kẹp cáp"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "sản phẩm khác bằng sắt hoặc thép",
+     "tuKhoa": [
+      "thép|sắt"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các sản phẩm khác bằng sắt hoặc thép",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "73269099[10].productName",
+      "trich": "thanh thép uốn hình chữ U"
+     }
+    },
+    {
+     "cap": "LOAI_TRU",
+     "duKien": "có khuyên kẹp cáp — khác bu lông chữ U nhóm 73.18",
+     "tuKhoa": [
+      "khuyên kẹp|kẹp cáp|khóa cáp"
+     ],
+     "nguon": "data/precedents.json",
+     "viTri": "73269099[10].technicalSpec",
+     "trich": "khác biệt với bu lông chữ U nên vượt quá mô tả nhóm 73.18"
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "73181590",
+     "lyDo": "bu lông chữ U — khóa cáp có khuyên kẹp vượt mô tả nhóm 73.18",
+     "nguon": "data/precedents.json",
+     "viTri": "73269099[10].technicalSpec",
+     "trich": "khác biệt với bu lông chữ U nên vượt quá mô tả nhóm 73.18"
+    }
+   ],
+   "moTaMau": "Khóa cáp thép (cóc kẹp cáp), thanh thép uốn chữ U hai đầu ren ngoài, có khuyên kẹp cáp, dùng kẹp, nối, khóa đầu cáp dây cẩu, mới 100%",
+   "khongDuCanCu": false,
+   "lechTienLe": false,
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": null
+   },
+   "duyetBoi": "CLAUDE_DUYET",
+   "gopTu": {
+    "tep": "data/bench/mo-ta-bo-de.json",
+    "id": "BD-73-04",
+    "ghiChu": "Gộp từ bộ đề #543 (L1-2b, #569) vì mã thuộc lát 1; nội dung giữ nguyên trạng ca #543 (đã CLAUDE_DUYET theo quyTacChamDuyet #543)."
+   }
   },
   {
    "id": "L1-940542-01",
@@ -4747,6 +4948,78 @@
    "duyetBoi": "CLAUDE_DUYET"
   },
   {
+   "id": "L1-961700-03",
+   "lat": 1,
+   "pn6": "961700",
+   "maHs": "96170010",
+   "chuong": "96",
+   "nguonCa": {
+    "loai": "TU_DUNG",
+    "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+    "ghiChu": "Hàng giả định dựng theo biểu thuế và chú giải nhóm 96.17; không phải lô hàng thật. (Ca #543 gốc ghi nguonCa.tep trỏ sổ tay nhóm 96.17; bộ đề lát 1 độc lập với sổ tay nên đổi sang biểu thuế — mọi dữ kiện của ca vốn chỉ trích biểu thuế + chú giải.)"
+   },
+   "thongTinHang": {
+    "tenHang": "Bình giữ nhiệt chân không",
+    "chatLieu": "thép không gỉ hai lớp, lớp chân không ở giữa, nắp nhựa",
+    "congDung": "giữ nóng/lạnh đồ uống",
+    "thongSo": [
+     "dung tích 500 ml",
+     "hoàn chỉnh (có vỏ, nắp)"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 4,
+     "duKien": "bình chân không",
+     "tuKhoa": [
+      "chân không"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Phích chân không và các loại bình chân không khác, hoàn chỉnh"
+    },
+    {
+     "cap": 8,
+     "duKien": "hoàn chỉnh (không phải bộ phận rời)",
+     "tuKhoa": [
+      "hoàn chỉnh"
+     ],
+     "nguon": "data/chu-giai-heading.json",
+     "viTri": "9617.nhom",
+     "trich": "Các phích chân không và các bình chân không tương tự khác, với điều kiện chúng hoàn chỉnh."
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "96170020",
+     "lyDo": "bộ phận, trừ ruột thủy tinh",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Các bộ phận, trừ ruột thủy tinh"
+    }
+   ],
+   "moTaMau": "Bình giữ nhiệt chân không hoàn chỉnh, thép không gỉ hai lớp, nắp nhựa, dung tích 500ml, mới 100%",
+   "khongDuCanCu": false,
+   "lechTienLe": false,
+   "caCaiLoi": {
+    "boDuKien": [
+     1
+    ],
+    "doiAnhEm": {
+     "tu": "Bình giữ nhiệt chân không hoàn chỉnh",
+     "sang": "Vỏ ngoài rời của bình giữ nhiệt chân không",
+     "maTroToi": "96170020"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET",
+   "gopTu": {
+    "tep": "data/bench/mo-ta-bo-de.json",
+    "id": "BD-96-03",
+    "ghiChu": "Gộp từ bộ đề #543 (L1-2b, #569) vì mã thuộc lát 1; nội dung giữ nguyên trạng ca #543 (đã CLAUDE_DUYET theo quyTacChamDuyet #543). Cùng nguồn/hàng với L1-961700-01 nhưng câu chữ và ca cài lỗi khác — bench đếm là hai ca."
+   }
+  },
+  {
    "id": "L1-853890-01",
    "lat": 1,
    "pn6": "853890",
@@ -7282,6 +7555,119 @@
     }
    },
    "duyetBoi": "CLAUDE_DUYET"
+  },
+  {
+   "id": "L1-850110-03",
+   "lat": 1,
+   "pn6": "850110",
+   "maHs": "85011099",
+   "chuong": "85",
+   "nguonCa": {
+    "loai": "TB-TCHQ",
+    "soHieu": "1962/TB-TCHQ",
+    "tep": "data/precedents.json",
+    "viTri": "85011099[0]"
+   },
+   "thongTinHang": {
+    "tenHang": "Động cơ điện của máy xông khí dung",
+    "chatLieu": null,
+    "congDung": "tạo khí cho máy xông khí dung",
+    "thongSo": [
+     "AC 220-230 V, 50 Hz, 1 pha",
+     "công suất 25 W",
+     "không chổi than, không phải động cơ bước, không phải động cơ hướng trục"
+    ],
+    "tinhTrang": "Mới 100%",
+    "nhanHieu": null,
+    "model": null
+   },
+   "duKienQuyetDinh": [
+    {
+     "cap": 6,
+     "duKien": "công suất không quá 37,5 W",
+     "tuKhoa": [
+      "\\d+\\s*w\\b"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Động cơ có công suất không quá 37,5 W",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85011099[0].productName",
+      "trich": "công suất 25 W"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "động cơ xoay chiều (thuộc tiêu đề động cơ khác, kể cả vạn năng)",
+     "tuKhoa": [
+      "xoay chiều|\\bac\\b"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều)",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85011099[0].productName",
+      "trich": "Động cơ dùng điện xoay chiều"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "không phải động cơ bước, không phải động cơ hướng trục",
+     "tuKhoa": [
+      "không (phải )?(là )?động cơ bước",
+      "hướng trục"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Động cơ hướng trục (SEN)",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85011099[0].productName",
+      "trich": "không phải động cơ bước, không phải động cơ hướng trục"
+     }
+    },
+    {
+     "cap": 8,
+     "duKien": "không dùng cho hàng nhóm 84.15, 84.18, 84.50, 85.09, 85.16 (dùng cho máy xông khí dung)",
+     "tuKhoa": [
+      "xông khí dung"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
+     "bangChungHang": {
+      "nguon": "data/precedents.json",
+      "viTri": "85011099[0].productName",
+      "trich": "dùng tạo khí cho máy xông khí du ng"
+     }
+    }
+   ],
+   "nhomCanhTranh": [
+    {
+     "ma": "85011091",
+     "lyDo": "động cơ dùng cho hàng nhóm 84.15/84.18/84.50/85.09/85.16 — máy xông khí dung không thuộc các nhóm này",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+    }
+   ],
+   "moTaMau": "Động cơ điện xoay chiều 1 pha 220-230V 50Hz, công suất 25W, không chổi than, không phải động cơ bước, không phải động cơ hướng trục, dùng cho máy xông khí dung, mới 100%",
+   "khongDuCanCu": false,
+   "lechTienLe": false,
+   "caCaiLoi": {
+    "boDuKien": [
+     0,
+     3
+    ],
+    "doiAnhEm": {
+     "tu": "dùng cho máy xông khí dung",
+     "sang": "dùng cho máy điều hòa không khí",
+     "maTroToi": "85011091"
+    }
+   },
+   "duyetBoi": "CLAUDE_DUYET",
+   "gopTu": {
+    "tep": "data/bench/mo-ta-bo-de.json",
+    "id": "BD-85-08",
+    "ghiChu": "Gộp từ bộ đề #543 (L1-2b, #569) vì mã thuộc lát 1; nội dung giữ nguyên trạng ca #543 (đã CLAUDE_DUYET theo quyTacChamDuyet #543). Cùng nguồn/hàng với L1-850110-01 nhưng câu chữ và ca cài lỗi khác — bench đếm là hai ca."
+   }
   },
   {
    "id": "L1-847190-01",
