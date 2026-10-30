@@ -4,7 +4,7 @@
 //   (đến từ OrderItem ERP: name, customerDescription→congDung, nameZh, ...)
 // Trả: { results:[{hs, confidence, reason, tbTchq?}], girRulesApplied:[], missing:[], candidates, ms }
 
-const { requireAuth, serviceCaller } = require('../lib/auth');
+const { requireAuth, serviceCaller, laNoiBoOz } = require('../lib/auth');
 const { withUsage } = require('../lib/usage-context');
 const { withPrivateData } = require('../lib/llm-privacy');
 const { withEvalHoldout, wantsEvalHoldout } = require('../lib/holdout');
@@ -15,6 +15,7 @@ const { classify } = require('../lib/classify');
 const { extractSpecs } = require('../lib/extract-specs');
 const { runDeclarationCheck, validateDeclarationCheckInput } = require('../lib/declaration-check');
 const { acquireServiceSlot } = require('../lib/service-rate-limit');
+const { ganHoSoClassify } = require('../lib/ho-so/api');
 
 /** `supplierHs`: {code, source?, url?} hoặc chuỗi mã. Trả null khi không đủ 6 chữ số. */
 function parseSupplierHs(v) {
@@ -100,13 +101,17 @@ module.exports = async function handler(req, res) {
     // Khoá dịch vụ có tên (Cổng ozplugin…) nhận thêm `usage` để tính phí; công khai / HS_API_TOKEN thì không.
     // Bench chống rò (R5): header X-OZ-Eval-Holdout: 1 → kho tiền lệ Oz bỏ tập giữ riêng trong lượt này. Chỉ bớt ngữ cảnh.
     const run = wantsEvalHoldout(req) ? (fn) => withEvalHoldout(fn) : (fn) => fn();
+    // L1-5d (#648): cờ HS_HO_SO=on + mã top thuộc lát 1 ⇒ thêm `hoSo`, khối `ecus` sinh bằng vietMoTa; off/shadow ⇒ kết quả y cũ.
+    // Trường mới của bên gọi (loaiToKhai, manufacturer…) chỉ đi vào động cơ hồ sơ, không vào `attrs` của phản hồi.
+    const attrsHoSo = { ...attrs, loaiToKhai: body?.loaiToKhai, manufacturer: body?.manufacturer, dimensions: body?.dimensions, condition: body?.condition, packaging: body?.packaging, brand: body?.brand, model: body?.model, duKien: body?.duKien };
+    const chay = (quyen) => classify(attrs, { tier, debug }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
     if (serviceCaller(req) !== null) {
       // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
-      const { result, usage } = await run(() => withPrivateData(() => withUsage(() => classify(attrs, { tier, debug }))));
+      const { result, usage } = await run(() => withPrivateData(() => withUsage(() => chay({ noiBo: laNoiBoOz(req) }))));
       return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
     }
     // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.
-    const result = await run(() => demLuotCongKhai('classify', () => classify(attrs, { tier, debug }), { req }));
+    const result = await run(() => demLuotCongKhai('classify', () => chay({ noiBo: false }), { req }));
     return res.status(200).json({ ...result, attrs, ms: Date.now() - started });
   } catch (e) {
     return res.status(502).json({ error: 'Classify failed', detail: String(e.message).slice(0, 240) });

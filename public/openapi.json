@@ -1618,6 +1618,37 @@
                   "customerDescription": {
                     "type": "string",
                     "description": "Mô tả gốc của khách"
+                  },
+                  "loaiToKhai": {
+                    "type": "string",
+                    "enum": [
+                      "NHAP",
+                      "XUAT"
+                    ],
+                    "description": "Hồ sơ phân loại (HS_HO_SO=on, mã lát 1): loại tờ khai, mặc định NHAP. Cờ tắt / mã ngoài lát 1 ⇒ bỏ qua."
+                  },
+                  "manufacturer": {
+                    "type": "string",
+                    "description": "Nhà sản xuất (hồ sơ phân loại — dữ kiện nguồn KHACH)"
+                  },
+                  "dimensions": {
+                    "type": "string",
+                    "description": "Kích thước, vd \"80x80x250 mm\" (hồ sơ phân loại)"
+                  },
+                  "packaging": {
+                    "type": "string",
+                    "description": "Quy cách đóng gói (hồ sơ phân loại)"
+                  },
+                  "duKien": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    },
+                    "description": "Dữ kiện có kiểu {fact, giaTri, donVi?, nguon?, bangChung?} (khoá tu-vung@1)"
+                  },
+                  "hoSoId": {
+                    "type": "string",
+                    "description": "hoSoId của lượt trước (chỉ ghi lại; bộ não luôn dựng lại hồ sơ)"
                   }
                 }
               }
@@ -1690,6 +1721,64 @@
                         "object",
                         "null"
                       ]
+                    },
+                    "moTaEcus": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "HS_HO_SO=on + mã lát 1: chuỗi ô ECUS ≤ 200 (null khi bản nháp). Hợp đồng: docs/api/ho-so-contract.md"
+                    },
+                    "khaiTiepHys": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "ghiChu": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "moTaDayDu": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "bangGiaiTrinh": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "taiLieuKyThuatNenKem": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "banNhap": {
+                      "type": "boolean"
+                    },
+                    "moTaBanNhap": {
+                      "type": "string",
+                      "description": "Chỉ khi banNhap: bản nháp có chỗ trống [cần: …]"
+                    },
+                    "cauHoi": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "description": "Chỉ khi banNhap: câu hỏi Vi + Zh"
+                    },
+                    "hoSo": {
+                      "type": "object",
+                      "description": "HoSoPhanLoai (ho-so@1) đã lọc theo quyền"
+                    },
+                    "hoSoMeta": {
+                      "type": "object"
                     }
                   }
                 }
@@ -2212,6 +2301,178 @@
           },
           "502": {
             "description": "Lỗi lập phiếu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ho-so": {
+      "post": {
+        "operationId": "hoSoPhanLoai",
+        "summary": "Hồ sơ phân loại có căn cứ (ho-so@1, lát 1) — KÍN, chỉ khoá dịch vụ",
+        "description": "Đường đi pháp lý tất định + dữ kiện (luật trước, LLM sau có trích) + đối chiếu CO/THIEU/MAU_THUAN + sáu khối mô tả. Chỉ khoá dịch vụ (HS_API_TOKEN ⇒ 403 CHI_KHOA_DICH_VU), luôn withPrivateData. Cờ HS_HO_SO=off ⇒ 503 HO_SO_TAT. Hồ sơ bên gọi gửi bị bỏ qua (chỉ đọc hoSoId + duKien). Hợp đồng: docs/api/ho-so-contract.md. Rewrite tới /api/describe?mode=ho_so.",
+        "tags": [
+          "AI"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "maHs"
+                ],
+                "properties": {
+                  "maHs": {
+                    "type": "string",
+                    "description": "Mã HS 4, 6 hoặc 8 số thuộc lát 1"
+                  },
+                  "loaiToKhai": {
+                    "type": "string",
+                    "enum": [
+                      "NHAP",
+                      "XUAT"
+                    ]
+                  },
+                  "tenHang": {
+                    "type": "string",
+                    "description": "Tên hàng"
+                  },
+                  "moTa": {
+                    "type": "string",
+                    "description": "Mô tả của khách"
+                  },
+                  "thongSo": {
+                    "description": "Thông số (chuỗi, mảng chuỗi hoặc đối tượng)"
+                  },
+                  "duKien": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    },
+                    "description": "{fact, giaTri, donVi?, nguon?, bangChung?}"
+                  },
+                  "manufacturer": {
+                    "type": "string",
+                    "description": "Nhà sản xuất"
+                  },
+                  "dimensions": {
+                    "type": "string",
+                    "description": "Kích thước"
+                  },
+                  "condition": {
+                    "type": "string",
+                    "description": "Tình trạng"
+                  },
+                  "packaging": {
+                    "type": "string",
+                    "description": "Quy cách đóng gói"
+                  },
+                  "hoSoId": {
+                    "type": "string",
+                    "description": "hoSoId lượt trước (chỉ ghi lại)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "DAU_VAO_SAI",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Thiếu hoặc sai Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "CHI_KHOA_DICH_VU",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "KHONG_CO_MA",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "NGOAI_LAT_1",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "HO_SO_LOI | NO_PRIVATE_LLM",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "HO_SO_TAT",
             "content": {
               "application/json": {
                 "schema": {

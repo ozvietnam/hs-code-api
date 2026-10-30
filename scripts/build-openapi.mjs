@@ -335,6 +335,12 @@ const DESCRIBE_REQUEST = {
     technicalSpec: str('Thông số kỹ thuật'),
     purpose: str('Công dụng'),
     customerDescription: str('Mô tả gốc của khách'),
+    loaiToKhai: { type: 'string', enum: ['NHAP', 'XUAT'], description: 'Hồ sơ phân loại (HS_HO_SO=on, mã lát 1): loại tờ khai, mặc định NHAP. Cờ tắt / mã ngoài lát 1 ⇒ bỏ qua.' },
+    manufacturer: str('Nhà sản xuất (hồ sơ phân loại — dữ kiện nguồn KHACH)'),
+    dimensions: str('Kích thước, vd "80x80x250 mm" (hồ sơ phân loại)'),
+    packaging: str('Quy cách đóng gói (hồ sơ phân loại)'),
+    duKien: { type: 'array', items: { type: 'object' }, description: 'Dữ kiện có kiểu {fact, giaTri, donVi?, nguon?, bangChung?} (khoá tu-vung@1)' },
+    hoSoId: str('hoSoId của lượt trước (chỉ ghi lại; bộ não luôn dựng lại hồ sơ)'),
   },
 };
 
@@ -354,6 +360,17 @@ const DESCRIBE_RESPONSE = {
     },
     degraded: { type: 'boolean', description: 'true = bản khai dựng không qua AI, cần người sửa' },
     llmError: { type: ['object', 'null'] },
+    moTaEcus: { type: ['string', 'null'], description: 'HS_HO_SO=on + mã lát 1: chuỗi ô ECUS ≤ 200 (null khi bản nháp). Hợp đồng: docs/api/ho-so-contract.md' },
+    khaiTiepHys: { type: ['string', 'null'] },
+    ghiChu: { type: ['string', 'null'] },
+    moTaDayDu: { type: ['string', 'null'] },
+    bangGiaiTrinh: { type: 'array', items: { type: 'object' } },
+    taiLieuKyThuatNenKem: { type: 'array', items: { type: 'object' } },
+    banNhap: { type: 'boolean' },
+    moTaBanNhap: str('Chỉ khi banNhap: bản nháp có chỗ trống [cần: …]'),
+    cauHoi: { type: 'array', items: { type: 'object' }, description: 'Chỉ khi banNhap: câu hỏi Vi + Zh' },
+    hoSo: { type: 'object', description: 'HoSoPhanLoai (ho-so@1) đã lọc theo quyền' },
+    hoSoMeta: { type: 'object' },
   },
 };
 
@@ -595,6 +612,29 @@ const paths = {
         },
       },
       errors: { 400: 'Không có chữ nào để đọc', 502: 'Lỗi lập phiếu' },
+    }),
+  },
+  '/api/ho-so': {
+    post: op({
+      id: 'hoSoPhanLoai', tags: ['AI'], auth: bearer,
+      summary: 'Hồ sơ phân loại có căn cứ (ho-so@1, lát 1) — KÍN, chỉ khoá dịch vụ',
+      description: 'Đường đi pháp lý tất định + dữ kiện (luật trước, LLM sau có trích) + đối chiếu CO/THIEU/MAU_THUAN + sáu khối mô tả. ' +
+        'Chỉ khoá dịch vụ (HS_API_TOKEN ⇒ 403 CHI_KHOA_DICH_VU), luôn withPrivateData. Cờ HS_HO_SO=off ⇒ 503 HO_SO_TAT. ' +
+        'Hồ sơ bên gọi gửi bị bỏ qua (chỉ đọc hoSoId + duKien). Hợp đồng: docs/api/ho-so-contract.md. Rewrite tới /api/describe?mode=ho_so.',
+      requestBody: {
+        type: 'object',
+        required: ['maHs'],
+        properties: {
+          maHs: str('Mã HS 4, 6 hoặc 8 số thuộc lát 1'),
+          loaiToKhai: { type: 'string', enum: ['NHAP', 'XUAT'] },
+          tenHang: str('Tên hàng'), moTa: str('Mô tả của khách'),
+          thongSo: { description: 'Thông số (chuỗi, mảng chuỗi hoặc đối tượng)' },
+          duKien: { type: 'array', items: { type: 'object' }, description: '{fact, giaTri, donVi?, nguon?, bangChung?}' },
+          manufacturer: str('Nhà sản xuất'), dimensions: str('Kích thước'), condition: str('Tình trạng'), packaging: str('Quy cách đóng gói'),
+          hoSoId: str('hoSoId lượt trước (chỉ ghi lại)'),
+        },
+      },
+      errors: { 400: 'DAU_VAO_SAI', 403: 'CHI_KHOA_DICH_VU', 404: 'KHONG_CO_MA', 422: 'NGOAI_LAT_1', 502: 'HO_SO_LOI | NO_PRIVATE_LLM', 503: 'HO_SO_TAT' },
     }),
   },
   '/api/feedback': {

@@ -376,7 +376,8 @@ const IDENT_HYPO = { frame: {}, xacMinh: { muc: 'HYPOTHESIS', nguon: [] }, xacMi
 
 // ── 10. Cửa vào lib/ho-so/index.js ─────────────────────────────────────────────────────────────────────────────────────
 check('index.js xuất docDuKien/doiChieu/nghienCuu/locTheoQuyen/khungHoSo', HS.docDuKien === docDuKien && HS.doiChieu === doiChieu && HS.nghienCuu === nghienCuu && HS.locTheoQuyen === locTheoQuyen && typeof HS.khungHoSo === 'function');
-check('chưa nối endpoint: không tệp api/ nào nạp lib/ho-so', !fs.readdirSync('api').some((f) => /ho-so/.test(fs.readFileSync(`api/${f}`, 'utf8'))));
+// L1-5d (#648) nối endpoint: api/ chỉ được nạp động cơ qua lib/ho-so/api.js (nơi locTheoQuyen chạy trước khi trả), không nạp thẳng module con.
+check('api/ chỉ nạp lib/ho-so qua lib/ho-so/api.js', fs.readdirSync('api').every((f) => [...fs.readFileSync(`api/${f}`, 'utf8').matchAll(/require\(['"]([^'"]*ho-so[^'"]*)['"]\)/g)].every((m) => m[1] === '../lib/ho-so/api')));
 // chống nhắc lại "sổ tay" chưa dùng — S chỉ để bảo đảm module so-tay nạp được trong môi trường test cách ly
 check('lib/so-tay nạp được', typeof S.sourcesFor === 'function');
 

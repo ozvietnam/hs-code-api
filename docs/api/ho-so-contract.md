@@ -1,0 +1,140 @@
+# Hợp đồng API — Hồ sơ phân loại (`ho-so@1`, lát 1)
+
+Job L1-5d (#648). Plan ozplugin `docs/superpowers/plans/2026-10-29-ho-so-phan-loai.md` (Job L1-5d), spec
+`docs/superpowers/specs/2026-10-29-ho-so-phan-loai-mo-ta-soat-design.md` §8.1, §8.10. Mã: `lib/ho-so/api.js`.
+Hợp đồng này **đóng băng** cho Cổng ozplugin (L1-6a…d) và ERP (L1-7b). Đổi gì phải sửa tệp này trước.
+
+## 0. Cờ và phạm vi
+
+| `HS_HO_SO` | `/api/describe`, `/api/classify`, `/api/declaration-sheet` | `POST /api/ho-so` |
+|---|---|---|
+| `off` (mặc định, giá trị lạ) | phản hồi **bằng sâu** bản trước L1-5d; trường mới của đầu vào bị bỏ qua | `503 HO_SO_TAT` |
+| `shadow` | tính hồ sơ + viết, ghi **một dòng số đo** vào `data/ho-so-shadow.jsonl` (qua `dataPath`), phản hồi **bằng sâu** như `off` | chạy đủ (bên gọi chủ động hỏi) + ghi số đo |
+| `on` | mã áp dụng ⇒ **thêm** trường (mục 2–4); mã không áp dụng ⇒ như `off` | chạy đủ |
+
+**Mã áp dụng** = mã 8 số thuộc `data/ho-so/lat-1.json` **và** phân nhóm có ranh giới đã duyệt (`hoSoApDung`). `POST /api/ho-so`
+nhận thêm mã 6 số (phân nhóm lát 1 đã duyệt) và 4 số (nhóm có ít nhất một phân nhóm như vậy) — hồ sơ khi đó dừng ở cấp đã chắc,
+`ketLuan.trangThai = THIEU_DU_KIEN`.
+
+Dòng số đo shadow chỉ có các khoá `KHOA_SHADOW` (`lib/ho-so/api.js`): `ts, endpoint, maHs, loaiToKhai, noiBo, trangThai,
+capDaChac, banNhap, lyDoBanNhap, soDuKien, soChuaBiet, soRanhGioi, ketQuaRanhGioi, soCauHoi, soTinHieu, doDaiMoTaEcus,
+coKhaiTiepHys, tuongDuong, soViPham, cheDoViet, buocQuaHan, ms, loi, trungMoTaCu` — không tên hàng, không mô tả, không câu chữ.
+
+## 1. Đầu vào mới (describe / classify / declaration-sheet / ho-so)
+
+Bên gọi khai = sự thật **nguồn `KHACH`** (bằng chứng = chính chuỗi bên gọi gửi). Đọc qua `tu-vung@1` trước; đọc không ra thì
+`TEN_LOAI` nhận nguyên chuỗi, kiểu khác đưa vào thông số dạng "<nhãn Việt>: <giá trị>" để luật/LLM đọc tiếp.
+
+| Trường | Kiểu | Vào hồ sơ |
+|---|---|---|
+| `loaiToKhai` | `NHAP` \| `XUAT` (mặc định `NHAP`) | `hoSo.loaiToKhai` |
+| `manufacturer` | chuỗi ≤ 300 | `duKien[] { fact: 'nhaSanXuat', nguon: 'KHACH' }` |
+| `dimensions` | chuỗi, vd `80x80x250 mm` | `duKien[] { fact: 'kichThuoc', giaTri: [80,80,250], donVi: 'mm', nguon: 'KHACH' }` |
+| `condition` | chuỗi, vd `Mới 100%` | `duKien[] { fact: 'tinhTrang', giaTri: 'MOI', nguon: 'KHACH' }` (đường cũ vẫn dùng như trước) |
+| `packaging` | chuỗi ≤ 200 | `hoSo.nhanDien.quyCachDongGoi` |
+| `origin` | chuỗi | **không** vào hồ sơ/chuỗi mô tả (tờ khai nhập khai xuất xứ ở ô riêng; "xuất xứ" bị cấm trong chuỗi). Đường cũ dùng như trước |
+| `brand`, `model` | chuỗi | `duKien[]` `nhanHieu` / `model` nguồn `KHACH` (`"không nhãn hiệu"` ⇒ `KHONG_HIEU`) |
+| `duKien[]` | `{fact, giaTri, donVi?, nguon?, bangChung?}` | giữ `nguon` của bên gọi (`KHACH`\|`NSX`\|`ANH`\|`AI_CHUA_KIEM`); `TB_TCHQ`/`SUY_RA`/khoá ngoài từ vựng bị loại |
+| `hoSoId` | uuid | **không** tra cứu (bộ não không lưu hồ sơ): luôn dựng lại; ghi lại ở `hoSoMeta.hoSoIdTruoc` |
+| `hoSo` | — | **bỏ qua hoàn toàn** (ranh giới tin cậy §8.1) |
+
+`/api/classify` đọc các trường trên ở body (cùng tên); chúng chỉ vào động cơ hồ sơ, không vào `attrs` của phản hồi.
+
+## 2. `POST /api/describe` khi `on` + mã áp dụng
+
+**Giữ** mọi trường cũ: `declaration`, `customsDescription`, `descriptionMeta`, `compliance{score, level, warnings[]}`,
+`trademarkRisk`, `llmModel`, `degraded`, `llmError`, `contextUsed`, `attributesUsed`, `ms` (… y như cũ).
+
+**Thêm, ở cấp trên cùng của phản hồi:**
+
+| Trường | Ghi chú |
+|---|---|
+| `moTaEcus` | chuỗi ≤ 200 ký tự **hoặc `null`** khi bản nháp |
+| `khaiTiepHys` | phần không vừa ô (khai tiếp theo hướng dẫn 1.68) hoặc `null` |
+| `ghiChu` | chỉ khi luật định, không thì `null` |
+| `moTaDayDu` | bản không viết tắt hoặc `null` khi bản nháp |
+| `bangGiaiTrinh[]` | `{cum, cumTat, vaiTro, fact?, viTri: ECUS\|HYS\|CHO_TRONG\|KHONG_VIET, viSaoBatBuoc{maRe[], lyDo}, canCu, canCuThem?, ...}` |
+| `taiLieuKyThuatNenKem[]` | `{url, title?}` |
+| `banNhap` | `true` khi hồ sơ chưa đủ căn cứ (mục 3) |
+| `canCuMoTa` | căn cứ chỉ tiêu mô tả (chỉ qua `lib/legal-basis.js#citeChiTieu`) |
+| `hoSo` | `HoSoPhanLoai` (mục 4) **đã lọc theo quyền** |
+| `hoSoMeta` | `{apDung, cheDo, cheDoViet: LLM\|MAY, tuongDuong, buocQuaHan[], hoSoIdTruoc?, canhBao?[], ms}` |
+
+Quy ước:
+- `customsDescription` = **chuỗi cuối** của bộ viết: `moTaEcus` khi đạt, `moTaBanNhap` khi bản nháp (luôn là chuỗi — ERP không vỡ).
+- `descriptionMeta` tính trên chuỗi cuối: `{length, maxLength: 200, truncated: (có khaiTiepHys), fullLength, dropped: [], nguon: 'HO_SO', fullText?}`.
+- `compliance` tính trên chuỗi cuối (+ `khaiTiepHys`); giữ cảnh báo `TRADEMARK_WATCH` của đường cũ; thêm `HO_SO_KHAI_TIEP_HYS`
+  (info), `HO_SO_DUNG_BAN_MAY` (info, khi bản LLM bị máy loại), `HO_SO_BAN_NHAP` (error).
+- Công suất ≥ 1000 W viết kW (`CS: 75kW`, `công suất 1,5kW`); `duKien` vẫn giữ đơn vị chuẩn W của `tu-vung@1` (`75000`).
+
+## 3. Khi `hoSo.ketLuan.trangThai !== 'DU_CAN_CU'` (bản nháp) — **trả lời câu hỏi (2) của Cổng**
+
+Cũng áp cho tờ khai `XUAT` (khuôn 2.69 chưa làm ở lát 1), ranh giới chưa CO, trích không nguyên văn, chữ cấm.
+
+| Trường (cấp trên cùng của describe; trong `moTa` của `/api/ho-so`; trong `ecus` của classify; trong `description` của sheet) | Giá trị |
+|---|---|
+| `banNhap` | `true` |
+| `moTaEcus`, `khaiTiepHys`, `moTaDayDu` | `null` |
+| `moTaBanNhap` | chuỗi có chỗ trống `[cần: <nhãn Việt>]` |
+| `nhanBanNhap` | "BẢN NHÁP — hồ sơ chưa đủ căn cứ, không dùng để khai. …" |
+| `lyDoBanNhap[]` | `THIEU_DU_KIEN` \| `MAU_THUAN` \| `CAN_CHUYEN_GIA` \| `khuon-2.69-chua-ho-tro` \| `thieu-du-kien` \| `ranh-gioi-chua-co` \| `trich-khong-nguyen-van` \| `vi-pham` \| `ten-hang-vuot-o` |
+| `cauHoi[]` | `{fact, nhanVi, vi, zh, vaoRanhGioi[]…}` hoặc `{loai: 'PHAN_XU_TIEN_LE', …}` — cùng bộ với `hoSo.ketLuan.cauHoi` |
+| `maTroToi` | chỉ khi `MAU_THUAN` và xác định được dòng anh em duy nhất |
+| `customsDescription` | = `moTaBanNhap` |
+| `compliance` | `level: 'REJECT'`, `score ≤ 39`, `passesCustomsAudit: false`, cảnh báo `HO_SO_BAN_NHAP` (error) |
+| `hoSo.canCu.canCuPhapLy.trangThai` | theo `ketLuan`: `THIEU_DU_KIEN` ⇒ `THIEU_DU_KIEN`; `MAU_THUAN`/`CAN_CHUYEN_GIA` ⇒ `CHUA_XAC_DINH_DUOC` (không bao giờ `CHUA_CHOT_CAN_XAC_NHAN`) |
+
+## 4. `HoSoPhanLoai` — **trả lời câu hỏi (1) của Cổng**
+
+- `/api/describe`: khoá cấp trên cùng **`hoSo`**.
+- `/api/classify`: khoá cấp trên cùng **`hoSo`** (cạnh `results`, `ecus`); `ecus` giữ `{description, level, score, missing}` +
+  các khối mục 2/3 (`description` = chuỗi cuối).
+- `/api/declaration-sheet`: **`description.hoSo`** (mọi khoá cũ của `description` giữ; `composedFrom: 'HO_SO'`).
+- `POST /api/ho-so`: **thân phản hồi chính là `HoSoPhanLoai`**, cộng `moTa` (khối mục 2/3 + `kiemTra` + `canCuMoTa`), `hoSoMeta`,
+  `usage`.
+
+Lược đồ (JSDoc đầy đủ ở `lib/ho-so/index.js`): `hoSoId, phienBan{hoSo:'ho-so@1', bieuThue, soTay, tuVung, hieuChinh, dongCo},
+loaiToKhai, maHs, hang, duKien[], duongDiPhapLy[], loaiTru[], kiemHoa[], nhanDien, tienLe[], tinHieuRuiRo[],
+canCu{girRulesApplied (chỉ lib/gir.js), girDisclaimer, canCuPhapLy (chỉ lib/legal-basis.js)}, capDaChac, chotDuoc, chuaChot[],
+ketLuan{trangThai, cauHoi[], chuaChot[], maTroToi?, maCoTheTroToi?}, khuonChuaHoTro? ('2.69' khi XUAT), taiLieuKyThuatNenKem?`.
+
+**Lọc theo quyền** (`locTheoQuyen`, mọi endpoint, trước khi trả): chỉ khoá trong `HS_INTERNAL_CALLERS` (mặc định `erp`) nhận
+`MO_TA_GIONG_MA_KHAC` và số đếm kho tờ khai Oz; `cong-oz` (chặn cứng), `HS_API_TOKEN`, lượt công khai **không bao giờ** nhận, ở
+bất kỳ độ sâu nào. `DANH_MUC_RUI_RO` (QĐ 2079, nhãn `QD_2079_BAC_C`) tới **mọi** người gọi và không bao giờ nằm trong `canCu`.
+
+## 5. `loaiToKhai` khi cờ tắt / mã ngoài lát 1 — **trả lời câu hỏi (3) của Cổng**
+
+- `off`, `shadow`, hoặc `on` với mã không áp dụng: `loaiToKhai` (cùng `manufacturer`, `dimensions`, `packaging`, `hoSoId`,
+  `duKien`) **bị bỏ qua êm** — không lỗi, không cảnh báo, phản hồi bằng sâu bản cũ. Giá trị lạ (`"zzz"`) cũng không lỗi.
+- `on` + mã áp dụng ở describe/classify/sheet: giá trị lạ ⇒ coi `NHAP`, ghi `hoSoMeta.canhBao: ['loaiToKhai-khong-hop-le']`.
+  `XUAT` ⇒ hồ sơ dựng với `khuonChuaHoTro: '2.69'` và luôn là bản nháp (mục 3).
+- `POST /api/ho-so`: giá trị lạ ⇒ `400 DAU_VAO_SAI`.
+
+## 6. Mã lỗi — **trả lời câu hỏi (4) của Cổng**
+
+`POST /api/ho-so` (thân lỗi `{ error, chiTiet[] }`):
+
+| HTTP | `error` | Khi |
+|---|---|---|
+| 401 | `Unauthorized` | không token / token sai (`requireAuth`) |
+| 403 | `CHI_KHOA_DICH_VU` | token là `HS_API_TOKEN` (endpoint chỉ nhận khoá dịch vụ) |
+| 405 | `Method not allowed` | không phải POST |
+| 400 | `DAU_VAO_SAI` | JSON hỏng; `maHs` không 4/6/8 số; `loaiToKhai` lạ; `duKien` không phải mảng |
+| 404 | `KHONG_CO_MA` | mã không có trong biểu thuế |
+| 422 | `NGOAI_LAT_1` | mã chưa thuộc lát 1 (hoặc phân nhóm chưa có ranh giới đã duyệt) — dùng describe/classify như cũ |
+| 503 | `HO_SO_TAT` | `HS_HO_SO=off` |
+| 502 | `NO_PRIVATE_LLM` \| `HO_SO_LOI` | lỗi không lường (bình thường LLM lỗi chỉ làm bước rơi về phần tất định, không 502) |
+
+`/api/describe`, `/api/classify`, `/api/declaration-sheet`: **không thêm mã lỗi HTTP mới**. Lỗi của tầng hồ sơ ⇒ phản hồi đường
+cũ; khi `on` kèm `hoSoMeta: { apDung: true, cheDo: 'on', loi: 'HO_SO_LOI' }` (sheet: im lặng giữ bản cũ).
+
+**Hạn từng bước** (không phải lỗi): quá hạn ⇒ bước đó rơi về phần tất định, tên bước ghi vào `hoSoMeta.buocQuaHan[]`
+(`docDuKien` ⇒ chỉ đọc bằng luật; `doiChieu` ⇒ bỏ tín hiệu rủi ro; `nghienCuu` ⇒ bỏ; `viet` ⇒ bản máy, `cheDoViet: 'MAY'`). Env:
+`HS_HO_SO_HAN_DOC_MS` (35000), `HS_HO_SO_HAN_DOI_CHIEU_MS` (15000), `HS_HO_SO_HAN_NGHIEN_CUU_MS` (30000), `HS_HO_SO_HAN_VIET_MS`
+(35000); tắt nghiên cứu web `HS_HO_SO_NGHIEN_CUU=false`; viết không LLM `HS_HO_SO_VIET=MAY`.
+
+## 7. Riêng tư
+
+`POST /api/ho-so` luôn chạy trong `withPrivateData` (kể cả LLM đọc dữ kiện, viết, nghiên cứu). Describe/classify: khoá dịch vụ ⇒
+`withPrivateData` như trước; lượt công khai đi chuỗi LLM công khai (spec §8.10) và được đếm chi phí (`demLuotCongKhai`). Tra web
+chỉ gửi nhãn hiệu/model/URL công khai + khoá từ vựng; lượt riêng tư không có hiệu/model thì không tra web.

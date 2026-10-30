@@ -1,4 +1,4 @@
-const { requireAuth, serviceCaller } = require('../lib/auth');
+const { requireAuth, serviceCaller, laNoiBoOz } = require('../lib/auth');
 const { withUsage } = require('../lib/usage-context');
 const { withPrivateData } = require('../lib/llm-privacy');
 const { requireAuthOrPublicLlm } = require('../lib/public-llm');
@@ -9,6 +9,7 @@ const { buildDeclarationSheet } = require('../lib/declaration-sheet');
 const { validateDisputeInput, soanHoSoGiaiTrinh } = require('../lib/dispute-draft');
 const { validateInput: validateSourcingInput, runSourcingAssist } = require('../lib/mkt-sourcing');
 const { acquireServiceSlot } = require('../lib/service-rate-limit');
+const { hoSoApi } = require('../lib/ho-so/api');
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -22,6 +23,8 @@ module.exports = async function handler(req, res) {
   // POST /api/mkt/sourcing-assist (rewrite → ?mode=sourcing): trợ lý Tìm nguồn của oz-mkt. KÍN — CHỈ khoá dịch vụ,
   // không qua requireAuthOrPublicLlm, không nhận HS_API_TOKEN. Rẽ nhánh TRƯỚC mọi cổng công khai.
   if (mode === 'sourcing') return sourcingAssist(req, res);
+  // POST /api/ho-so (rewrite → ?mode=ho_so, L1-5d #648): hồ sơ phân loại. KÍN — chỉ khoá dịch vụ, LUÔN withPrivateData.
+  if (mode === 'ho_so') return hoSo(req, res);
   if ((mode === 'sheet' || mode === 'dispute') ? requireAuth(req, res) : requireAuthOrPublicLlm(req, res)) return;
 
   if (mode === 'dispute') return disputeDraft(req, res);
@@ -39,7 +42,7 @@ module.exports = async function handler(req, res) {
   // function này theo pattern routes.json. Dữ liệu trang/ảnh của khách → LUÔN withPrivateData, bất kể ai gọi (L0a #546).
   if (String(req.query?.mode || '') === 'sheet') {
     try {
-      const out = await withPrivateData(() => buildDeclarationSheet(body || {}));
+      const out = await withPrivateData(() => buildDeclarationSheet(body || {}, { quyen: { noiBo: laNoiBoOz(req) } }));
       return res.status(out.status).json(out.json);
     } catch (e) {
       return res.status(502).json({ error: 'Declaration sheet failed', detail: String(e.message).slice(0, 240) });
@@ -49,14 +52,38 @@ module.exports = async function handler(req, res) {
   // Khoá dịch vụ có tên nhận thêm `usage` để tính phí; công khai / HS_API_TOKEN thì không (shape không đổi).
   if (serviceCaller(req) !== null) {
     // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
-    const { result: out, usage } = await withPrivateData(() => withUsage(() => describeProduct(body)));
+    const { result: out, usage } = await withPrivateData(() => withUsage(() => describeProduct(body, { noiBo: laNoiBoOz(req) })));
     const json = out.json && typeof out.json === 'object' && !Array.isArray(out.json) ? { ...out.json, usage } : out.json;
     return res.status(out.status).json(json);
   }
   // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.
-  const out = await demLuotCongKhai('describe', () => describeProduct(body), { req });
+  const out = await demLuotCongKhai('describe', () => describeProduct(body, { noiBo: false }), { req });
   return res.status(out.status).json(out.json);
 };
+
+/**
+ * POST /api/ho-so (rewrite → ?mode=ho_so): HoSoPhanLoai (lib/ho-so/api.js#hoSoApi; hợp đồng docs/api/ho-so-contract.md).
+ * Chỉ khoá dịch vụ (HS_SERVICE_TOKENS): không token/sai → 401, HS_API_TOKEN → 403 CHI_KHOA_DICH_VU. Mọi lượt trong withPrivateData
+ * (dữ liệu khách), hồ sơ lọc theo quyền (laNoiBoOz: chỉ khoá nội bộ — mặc định erp — nhận tín hiệu kho Oz; cong-oz không bao giờ).
+ * Không lưu gì về hồ sơ (bộ não không giữ dữ liệu khách); shadow chỉ ghi một dòng số đo.
+ */
+async function hoSo(req, res) {
+  res.setHeader('Cache-Control', 'no-store');
+  if (requireAuth(req, res)) return;
+  const caller = serviceCaller(req);
+  if (!caller) return res.status(403).json({ error: 'CHI_KHOA_DICH_VU', chiTiet: ['Endpoint chỉ nhận khoá dịch vụ (HS_SERVICE_TOKENS).'] });
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['Body không phải JSON hợp lệ.'] }); }
+  }
+  try {
+    const { result: out, usage } = await withPrivateData(() => withUsage(() => hoSoApi(body, { noiBo: laNoiBoOz(req) })));
+    return res.status(out.status).json(out.status === 200 ? { ...out.json, usage } : out.json);
+  } catch (e) {
+    const code = e?.code === 'NO_PRIVATE_LLM' ? 'NO_PRIVATE_LLM' : 'HO_SO_LOI';
+    return res.status(502).json({ error: code, chiTiet: [code === 'NO_PRIVATE_LLM' ? 'Không có nhà cung cấp LLM riêng tư hợp lệ.' : 'Dựng hồ sơ thất bại.'] });
+  }
+}
 
 /**
  * POST /api/dispute-draft (rewrite → ?mode=dispute): hồ sơ giải trình tranh chấp mã HS (#339, job H3).
