@@ -268,5 +268,32 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   check('dieuKienSo khoá @1 không đổi: duongKinhLoi <= 6 mm trên "không quá 5 mm" ⇒ lỗi ngưỡng', DK.kiemDieuKien({ fact: 'duongKinhLoi', op: '<=', value: 6, donVi: 'mm' }, 'mỗi lõi có đường kính không quá 5 mm') === 'dieu-kien-so-nguong-khong-co-trong-trich:6');
 }
 
+// ── 6. #680 tên hàng (docTenLoaiDayDu) giữ cụm danh từ chứa "không" — docGiaTri('tenLoai') @1 KHÔNG đổi (vân tay mục 3) ────
+{
+  const giu = [
+    ['Bình giữ nhiệt chân không', 'bình giữ nhiệt chân không'], ['máy hút chân không', 'máy hút chân không'],
+    ['điều hòa không khí', 'điều hòa không khí'], ['thép không gỉ', 'thép không gỉ'], ['tai nghe không dây', 'tai nghe không dây'],
+    ['Bình giữ nhiệt chân không, hàng hoàn chỉnh, không nhãn hiệu, mới 100%', 'bình giữ nhiệt chân không'],
+    ['Máy điều hòa không khí loại treo tường', 'máy điều hòa không khí'], ['Xe đẩy thép không gỉ có bánh xe', 'xe đẩy thép không gỉ'],
+  ];
+  for (const [t, ten] of giu) {
+    const r = typeof T.docTenLoaiDayDu === 'function' ? T.docTenLoaiDayDu(t) : null;
+    check(`#680 tên "${t}" ⇒ "${ten}" (bangChung nguyên văn)`, r?.trangThai === 'DA_CO' && r.giaTri === ten && coTrong(r, t), r);
+  }
+  // phủ định thật vẫn cắt tên: "không nhãn hiệu" không bao giờ vào tên
+  const cat = [
+    ['Bình giữ nhiệt không nhãn hiệu', 'bình giữ nhiệt'], ['Bình giữ nhiệt chân không không nhãn hiệu', 'bình giữ nhiệt chân không'],
+    ['Tai nghe không dây không nhãn hiệu', 'tai nghe không dây'], ['Hàng không có bánh xe', 'hàng'],
+    ['Máy khoan không chỉ dùng để khoan', 'máy khoan'],
+  ];
+  for (const [t, ten] of cat) {
+    const r = typeof T.docTenLoaiDayDu === 'function' ? T.docTenLoaiDayDu(t) : null;
+    check(`#680 phủ định thật: "${t}" ⇒ "${ten}"`, r?.trangThai === 'DA_CO' && r.giaTri === ten && !/nhãn/.test(r.giaTri) && coTrong(r, t), r);
+  }
+  check('#680 chữ rỗng ⇒ CHUA_BIET', typeof T.docTenLoaiDayDu === 'function' && T.docTenLoaiDayDu('  ').trangThai === 'CHUA_BIET');
+  // docGiaTri('tenLoai') giữ cách đọc @1 (bench lát 1 khoá theo @1) — chỉ đường tên hồ sơ đọc đầy đủ
+  check('#680 docGiaTri("tenLoai") không đổi (@1): "Bình giữ nhiệt chân không" ⇒ "bình giữ nhiệt chân"', T.docGiaTri('tenLoai', 'Bình giữ nhiệt chân không').giaTri === 'bình giữ nhiệt chân');
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

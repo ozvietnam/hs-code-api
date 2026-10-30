@@ -318,5 +318,21 @@ const thamChieuStub = (o = {}) => { const f = async (q) => { f.goi.push(q); retu
   check('M3 nhận diện không bị chuyển sang HYS trước thông số kiểm hoá', !(vb.khaiTiepHys.includes('nhãn hiệu') && !vb.khaiTiepHys.includes('KT:') && vb.moTaEcus.includes('KT:')), { e: vb.moTaEcus, h: vb.khaiTiepHys });
 }
 
+// ════ #680 tên hàng từ luật (không có tên khách) giữ cụm danh từ chứa "không" ═══════════════════════════════════════
+{
+  const moTa = 'Bình giữ nhiệt chân không, hàng hoàn chỉnh, thép không gỉ hai lớp, dung tích 500 ml, không nhãn hiệu, mới 100%';
+  const r = await dung('96170010', { moTa });
+  const ten = r.duKien.find((d) => d.fact === 'tenLoai');
+  check('#680-1 docDuKien: tenLoai "bình giữ nhiệt chân không" (không cắt "không"), bangChung nguyên văn', ten && ten.giaTri === 'bình giữ nhiệt chân không' && moTa.includes(ten.bangChung), ten);
+  const v = await HS.vietMoTa(r.hoSo, { cheDo: 'MAY' });
+  check('#680-2 moTaEcus mở đầu "Bình giữ nhiệt chân không," — không "Bình giữ nhiệt chân,"', v.banNhap === false && /^Bình giữ nhiệt chân không,/.test(v.moTaEcus || '') && !/chân,/.test(v.moTaEcus), v.moTaEcus || v);
+  check('#680-3 "không nhãn hiệu" không vào tên hàng', !/^[^,]*nhãn hiệu/.test(v.moTaEcus || ''), v.moTaEcus);
+  for (const [m, t, ten] of [['84145999', 'Máy hút chân không mini cầm tay, mới 100%', 'máy hút chân không mini cầm tay'], ['85183010', 'Tai nghe không dây bluetooth, mới 100%', 'tai nghe không dây bluetooth']]) {
+    const x = await dung(m, { moTa: t });
+    const d = x.duKien.find((k) => k.fact === 'tenLoai');
+    check(`#680-4 docDuKien "${t}" ⇒ tenLoai "${ten}"`, d && d.giaTri === ten, d);
+  }
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
