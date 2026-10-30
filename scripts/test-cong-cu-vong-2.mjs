@@ -183,5 +183,23 @@ const DUNG = (v) => ({ fact: 'dungCho', op: 'CONG_DUNG', value: v });
   check('7j tenCuTheHon gộp các điều kiện cùng khoá trên đường đi (VÀ) thành hợp âm tiết', DK.tenCuTheHon([TEN('Búp bê'), TEN(['Quần áo', 'mũ'])], [TEN('Búp bê'), TEN('Búp bê')], F) === 1);
 }
 
+// ── 8. Kiểm bản nháp đã commit chỉ cổng 0 + 3 (phamVi) — thời gian CI không lớn theo số vector (840991 ~6 triệu) ─────────
+{
+  const t0 = Date.now();
+  const r = C.kiemRanhGioi('840991', docNhap('840991'), { cong: [0, 3] });
+  const ms = Date.now() - t0;
+  check('8a 840991 chỉ cổng 0+3: không sinh vector, xong nhanh (< 5 s; cả 4 cổng ~20 s)', r.thongKe.soVector === 0 && ms < 5000, { ms, tk: r.thongKe });
+  check('8b kết quả ghi rõ phạm vi cổng đã chạy', JSON.stringify(r.phamVi) === '[0,3]', r.phamVi);
+  for (const p of ['830220', '401699', '950300', '852351']) {
+    const b = docNhap(p);
+    const du = C.kiemRanhGioi(p, b); const con = C.kiemRanhGioi(p, b, { cong: [0, 3] });
+    const loc = (ds) => ds.filter((l) => /^cong[03]-/.test(l));
+    check(`8c ${p}: lỗi cổng 0+3 của lần chạy con trùng lần chạy đủ`, JSON.stringify(loc(du.loi)) === JSON.stringify(con.loi) && con.loi.every((l) => /^cong[03]-/.test(l)), { du: loc(du.loi), con: con.loi });
+  }
+  check('8d mặc định vẫn chạy đủ 4 cổng (phamVi [0,1,2,3])', JSON.stringify(C.kiemRanhGioi('830220', docNhap('830220')).phamVi) === '[0,1,2,3]');
+  const t = fs.readFileSync(path.join(process.cwd(), 'scripts/test-cong-ranh-gioi.mjs'), 'utf8');
+  check('8e test-cong-ranh-gioi mục 8 chạy cổng 0+3 cho mọi bản nháp (cả 4 cổng chỉ cho bản DUYET)', /kiemRanhGioi\(b\.pn6, b, \{ cong: \[0, 3\] \}\)/.test(t));
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
