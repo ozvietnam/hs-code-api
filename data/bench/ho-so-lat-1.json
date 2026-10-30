@@ -1654,15 +1654,16 @@
    "nguonCa": {
     "loai": "TU_DUNG",
     "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
-    "ghiChu": "Hàng giả định theo chữ dòng 9405.42.10 (đèn pha LED); không phải lô hàng thật. precedents.json chỉ có 1 kết luận cho 9405.42."
+    "ghiChu": "Hàng giả định theo chữ dòng 9405.42.10 (đèn pha — Searchlights — LED); không phải lô hàng thật. precedents.json chỉ có 1 kết luận cho 9405.42."
    },
    "thongTinHang": {
-    "tenHang": "Đèn pha LED",
+    "tenHang": "Đèn pha LED tìm kiếm (searchlight)",
     "chatLieu": "vỏ nhôm đúc, kính cường lực",
-    "congDung": "chiếu sáng sân bãi",
+    "congDung": "chiếu chùm sáng hẹp đi xa phục vụ tìm kiếm cứu nạn, lắp trên giá ba chân",
     "thongSo": [
      "công suất 200W",
-     "220V"
+     "220V",
+     "chùm sáng hẹp, tầm chiếu xa 1.500m"
     ],
     "tinhTrang": "Mới 100%",
     "nhanHieu": null,
@@ -1689,12 +1690,23 @@
     },
     {
      "cap": 8,
-     "duKien": "đèn pha",
+     "duKien": "đèn pha (Searchlights — đèn pha tìm kiếm, chùm sáng hẹp chiếu xa)",
      "tuKhoa": [
-      "đèn pha"
+      "đèn pha",
+      "searchlight|tìm kiếm"
      ],
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Đèn pha"
+    },
+    {
+     "cap": 8,
+     "duKien": "rọi luồng sáng qua một khoảng cách tới một điểm (đặc trưng đèn pha rọi theo chú giải chi tiết)",
+     "tuKhoa": [
+      "chiếu xa"
+     ],
+     "nguon": "data/chu-giai-heading.json",
+     "viTri": "9405.nhom",
+     "trich": "Những thiết bị này cho phép rọi một luồng ánh sáng (thường là luồng ánh sáng này có thể điều chỉnh được) qua một khoảng cách tới một điểm hay một mặt phẳng xác định"
     }
    ],
    "nhomCanhTranh": [
@@ -1703,20 +1715,27 @@
      "lyDo": "đèn rọi khác (MFN 5 %)",
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Đèn rọi khác"
+    },
+    {
+     "ma": "94054260",
+     "lyDo": "\"đèn pha LED\" chiếu rộng sân bãi (floodlight) theo cách gọi thương mại không phải \"Đèn pha\" (Searchlights) của biểu — rơi vào dòng chiếu sáng bên ngoài khác (MFN 20 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại chiếu sáng bên ngoài khác"
     }
    ],
-   "moTaMau": "Đèn pha LED 200W 220V, vỏ nhôm đúc, kính cường lực, chiếu sáng sân bãi, mới 100%",
+   "moTaMau": "Đèn pha LED tìm kiếm (searchlight) 200W 220V, chùm sáng hẹp chiếu xa 1.500m, giá ba chân xoay được, vỏ nhôm đúc, kính cường lực, mới 100%",
    "caCaiLoi": {
     "boDuKien": [
      2
     ],
     "doiAnhEm": {
-     "tu": "Đèn pha LED",
+     "tu": "Đèn pha LED tìm kiếm (searchlight)",
      "sang": "Đèn rọi LED",
      "maTroToi": "94054220"
     }
    },
-   "duyetBoi": "CLAUDE_DUYET"
+   "duyetBoi": "CLAUDE_DUYET",
+   "chamDuyet": "Chấm duyệt độc lập 30/10 (bước 5 L1-2a): bản trước \"Đèn pha LED 200W chiếu sáng sân bãi\" là đèn chiếu rộng (floodlight) — \"Đèn pha\" của biểu là Searchlights; đèn chiếu sân bãi vào .50/.60 (20 %). Ghi rõ đèn pha tìm kiếm chùm hẹp chiếu xa."
   },
   {
    "id": "L1-900490-01",
@@ -3019,11 +3038,12 @@
     "ghiChu": "Hàng giả định theo chữ dòng 8301.40.90 (khóa loại khác); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào cho phân nhóm này."
    },
    "thongTinHang": {
-    "tenHang": "Khóa tủ hồ sơ",
+    "tenHang": "Ổ khóa số gắn liền vali",
     "chatLieu": "hợp kim kẽm",
-    "congDung": "khóa ngăn kéo tủ hồ sơ",
+    "congDung": "khóa nắp vali kéo du lịch, lắp cố định vào vỏ vali",
     "thongSo": [
-     "mở bằng chìa"
+     "mở bằng mã số 3 chữ số",
+     "lắp cố định trên vỏ vali, không phải khóa móc rời"
     ],
     "tinhTrang": "Mới 100%",
     "nhanHieu": null,
@@ -3041,10 +3061,29 @@
      "trich": "Khóa móc và ổ khóa (loại mở bằng chìa, số hoặc điện), bằng kim loại cơ bản"
     },
     {
-     "cap": 8,
-     "duKien": "khóa tủ — không phải khóa cửa, không phải còng/xích tay",
+     "cap": 4,
+     "duKien": "ổ khóa vali thuộc nhóm 83.01 (chú giải chi tiết liệt kê)",
      "tuKhoa": [
-      "khóa tủ|ngăn kéo"
+      "vali"
+     ],
+     "nguon": "data/chu-giai-heading.json",
+     "viTri": "8301.nhom",
+     "trich": "Ổ khóa cho các loại cửa và cổng, các hộp đựng thư, két sắt, thùng hoặc hộp, đồ nội thất, đàn piano, hòm, vali"
+    },
+    {
+     "cap": 6,
+     "duKien": "ổ khóa lắp cố định — không phải khóa móc (8301.10), không phải ổ khóa xe có động cơ (8301.20) hay đồ nội thất (8301.30)",
+     "tuKhoa": [
+      "lắp cố định"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Khóa loại khác"
+    },
+    {
+     "cap": 8,
+     "duKien": "ổ khóa vali — không phải khóa cửa, không phải còng/xích tay",
+     "tuKhoa": [
+      "vali"
      ],
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Loại khác"
@@ -3056,20 +3095,28 @@
      "lyDo": "khóa cửa (cùng 25 %)",
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Khóa cửa"
+    },
+    {
+     "ma": "83013000",
+     "lyDo": "ổ khóa đồ nội thất, kể cả nội thất văn phòng (tủ hồ sơ, ngăn kéo) — KHÁC phân nhóm; hàng của bản trước chấm duyệt (khóa tủ hồ sơ) thuộc đây",
+     "nguon": "data/chu-giai-heading.json",
+     "viTri": "8301.nhom",
+     "trich": "Phân nhóm này bao gồm không chỉ các ổ khóa thuộc loại sử dụng cho đồ nội thất gia đình mà còn bao gồm cả ổ khóa được sử dụng cho đồ nội thất văn phòng"
     }
    ],
-   "moTaMau": "Khóa tủ hồ sơ bằng hợp kim kẽm, mở bằng chìa, lắp ngăn kéo tủ, mới 100%",
+   "moTaMau": "Ổ khóa số 3 chữ số bằng hợp kim kẽm, lắp cố định trên vỏ vali kéo du lịch, mới 100%",
    "caCaiLoi": {
     "boDuKien": [
-     1
+     3
     ],
     "doiAnhEm": {
-     "tu": "Khóa tủ hồ sơ",
+     "tu": "Ổ khóa số 3 chữ số",
      "sang": "Còng tay",
      "maTroToi": "83014010"
     }
    },
-   "duyetBoi": "CLAUDE_DUYET"
+   "duyetBoi": "CLAUDE_DUYET",
+   "chamDuyet": "Chấm duyệt độc lập 30/10 (bước 5 L1-2a): bản trước là \"khóa tủ hồ sơ\" — ổ khóa đồ nội thất văn phòng thuộc phân nhóm 8301.30 (chú giải chi tiết, chú giải phân nhóm 8301.30), không thuộc 8301.40. Đổi hàng giả định sang ổ khóa số gắn liền vali (8301.40.90)."
   },
   {
    "id": "L1-851310-01",
@@ -4185,11 +4232,11 @@
     "ghiChu": "Hàng giả định theo chữ dòng 8501.31.30 (động cơ một chiều ≤ 750 W dùng cho hàng nhóm 84.50); không phải lô hàng thật. Ca TB-TCHQ của phân nhóm: L1-850131-01."
    },
    "thongTinHang": {
-    "tenHang": "Động cơ một chiều không chổi than cho máy giặt",
+    "tenHang": "Động cơ điện một chiều nam châm vĩnh cửu có chổi than cho máy giặt",
     "chatLieu": null,
     "congDung": "quay lồng máy giặt gia dụng",
     "thongSo": [
-     "một chiều 310VDC, công suất 300W"
+     "một chiều 24VDC, có chổi than, công suất 120W"
     ],
     "tinhTrang": "Mới 100%",
     "nhanHieu": null,
@@ -4233,7 +4280,7 @@
      "trich": "Động cơ khác"
     }
    ],
-   "moTaMau": "Động cơ một chiều không chổi than 310VDC công suất 300W, dùng quay lồng máy giặt gia dụng, mới 100%",
+   "moTaMau": "Động cơ điện một chiều nam châm vĩnh cửu có chổi than 24VDC công suất 120W, dùng quay lồng máy giặt gia dụng, mới 100%",
    "caCaiLoi": {
     "boDuKien": [
      2
@@ -4244,7 +4291,8 @@
      "maTroToi": "85013170"
     }
    },
-   "duyetBoi": "CLAUDE_DUYET"
+   "duyetBoi": "CLAUDE_DUYET",
+   "chamDuyet": "Chấm duyệt độc lập 30/10 (bước 5 L1-2a): bản trước \"động cơ một chiều không chổi than 310VDC\" có cách đọc khác (BLDC là động cơ đồng bộ chạy qua bộ biến tần → nhánh xoay chiều 8501.40/8501.5x). Đổi sang động cơ một chiều nam châm vĩnh cửu có chổi than 24VDC 120W để hàng rơi gọn vào 8501.31."
   },
   {
    "id": "L1-853620-01",
@@ -5035,12 +5083,12 @@
    "nguonCa": {
     "loai": "TU_DUNG",
     "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
-    "ghiChu": "Hàng giả định theo chữ dòng 8483.90.95 (bánh răng rời dùng cho xe khác Chương 87); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+    "ghiChu": "Hàng giả định theo chữ dòng 8483.90.95 (bánh xe có răng rời dùng cho hàng hóa khác Chương 87); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
    },
    "thongTinHang": {
-    "tenHang": "Bánh răng rời hộp số ô tô con",
+    "tenHang": "Bánh răng trục cam rời của động cơ xăng ô tô con",
     "chatLieu": "thép hợp kim",
-    "congDung": "lắp hộp số xe ô tô con nhóm 87.03",
+    "congDung": "bộ phận bên trong động cơ xăng của xe ô tô con nhóm 87.03",
     "thongSo": [],
     "tinhTrang": "Mới 100%",
     "nhanHieu": null,
@@ -5064,6 +5112,16 @@
      ],
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Dùng cho hàng hóa khác thuộc Chương 87"
+    },
+    {
+     "cap": "LOAI_TRU",
+     "duKien": "bộ phận bên trong động cơ — mặt hàng 84.83 không cấu thành bộ phận bên trong động cơ (vd bánh răng hộp số) là bộ phận xe Phần XVII",
+     "tuKhoa": [
+      "bên trong động cơ"
+     ],
+     "nguon": "data/chu-giai-chuong.json",
+     "viTri": "87.phan",
+     "trich": "điều kiện là chúng cấu thành các bộ phận bên trong của động cơ hay mô tơ"
     }
    ],
    "nhomCanhTranh": [
@@ -5072,9 +5130,16 @@
      "lyDo": "dùng cho hàng hóa nhóm 87.11 (MFN 10 %)",
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Dùng cho hàng hóa thuộc nhóm 87.11"
+    },
+    {
+     "ma": "8708",
+     "lyDo": "bánh răng hộp số xe ô tô (không phải bộ phận bên trong động cơ) là bộ phận hộp số nhóm 87.08 — hàng của bản trước chấm duyệt thuộc đây",
+     "nguon": "data/chu-giai-chuong.json",
+     "viTri": "87.phan",
+     "trich": "điều kiện là chúng cấu thành các bộ phận bên trong của động cơ hay mô tơ"
     }
    ],
-   "moTaMau": "Bánh răng rời bằng thép hợp kim lắp hộp số xe ô tô con nhóm 87.03, mới 100%",
+   "moTaMau": "Bánh răng trục cam rời bằng thép hợp kim, bộ phận bên trong động cơ xăng xe ô tô con nhóm 87.03, mới 100%",
    "caCaiLoi": {
     "boDuKien": [
      1
@@ -5085,7 +5150,8 @@
      "maTroToi": "84839094"
     }
    },
-   "duyetBoi": "CLAUDE_DUYET"
+   "duyetBoi": "CLAUDE_DUYET",
+   "chamDuyet": "Chấm duyệt độc lập 30/10 (bước 5 L1-2a): bản trước \"bánh răng rời hộp số ô tô con\" — theo Chú giải 2(e) Phần XVII, mặt hàng 84.83 chỉ ra khỏi Phần XVII khi là bộ phận bên trong động cơ; bánh răng hộp số là bộ phận hộp số 8708.40. Đổi sang bánh răng trục cam."
   },
   {
    "id": "L1-848390-02",
@@ -5310,9 +5376,9 @@
     "ghiChu": "Hàng giả định theo chữ dòng 8413.91.40 (bộ phận của bơm ly tâm khác); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
    },
    "thongTinHang": {
-    "tenHang": "Cánh bơm (impeller) của bơm nước ly tâm",
+    "tenHang": "Cánh bơm (impeller) của bơm nước ly tâm đặt chìm",
     "chatLieu": "gang",
-    "congDung": "thay thế cho bơm nước ly tâm trục ngang",
+    "congDung": "thay thế cho bơm nước ly tâm loại đặt chìm dưới nước (bơm chìm)",
     "thongSo": [],
     "tinhTrang": "Mới 100%",
     "nhanHieu": null,
@@ -5330,12 +5396,21 @@
     },
     {
      "cap": 8,
-     "duKien": "của bơm ly tâm (không phải bơm nhiên liệu 8413.20, bơm 8413.70.11/.19)",
+     "duKien": "của bơm ly tâm khác — bơm nước đặt chìm (8413.70.31/.39), không phải bơm tay 8413.20, không phải bơm nước một tầng trục ngang 8413.70.11/.19",
      "tuKhoa": [
       "ly tâm"
      ],
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Của bơm ly tâm khác"
+    },
+    {
+     "cap": 8,
+     "duKien": "bơm nước được thiết kế đặt chìm dưới nước (loại bơm chủ của bộ phận)",
+     "tuKhoa": [
+      "đặt chìm"
+     ],
+     "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
+     "trich": "Bơm nước được thiết kế đặt chìm dưới nước"
     }
    ],
    "nhomCanhTranh": [
@@ -5344,20 +5419,28 @@
      "lyDo": "bộ phận của bơm khác (MFN 0 %)",
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Của bơm khác"
+    },
+    {
+     "ma": "84139130",
+     "lyDo": "bộ phận của bơm 8413.70.11/.19 (bơm nước một tầng, một chiều hút, trục ngang) — cùng 5 %; hàng bản trước chấm duyệt (\"bơm nước ly tâm trục ngang\") có thể rơi vào đây",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19"
     }
    ],
-   "moTaMau": "Cánh bơm (impeller) bằng gang của bơm nước ly tâm trục ngang, dùng thay thế, mới 100%",
+   "moTaMau": "Cánh bơm (impeller) bằng gang của bơm nước ly tâm đặt chìm dưới nước, dùng thay thế, mới 100%",
    "caCaiLoi": {
     "boDuKien": [
-     1
+     1,
+     2
     ],
     "doiAnhEm": {
-     "tu": "của bơm nước ly tâm trục ngang",
+     "tu": "của bơm nước ly tâm đặt chìm dưới nước",
      "sang": "của bơm bánh răng bơm dầu",
      "maTroToi": "84139190"
     }
    },
-   "duyetBoi": "CLAUDE_DUYET"
+   "duyetBoi": "CLAUDE_DUYET",
+   "chamDuyet": "Chấm duyệt độc lập 30/10 (bước 5 L1-2a): bản trước \"bơm nước ly tâm trục ngang\" khớp tiêu đề 8413.70.11/.19 (\"Bơm nước một tầng, một chiều hút, trục ngang…\") ⇒ bộ phận vào 8413.91.30, không phải .40 (cùng 5 %). Đổi sang bơm chìm."
   },
   {
    "id": "L1-841391-02",
@@ -5436,7 +5519,7 @@
     "chatLieu": null,
     "congDung": "lắp dàn lạnh máy điều hòa không khí",
     "thongSo": [
-     "xoay chiều một pha 220V, công suất 30W"
+     "xoay chiều một pha 220V, công suất 60W"
     ],
     "tinhTrang": "Mới 100%",
     "nhanHieu": null,
@@ -5457,7 +5540,7 @@
      "cap": 8,
      "duKien": "công suất không quá 1 kW",
      "tuKhoa": [
-      "30\\s*w"
+      "60\\s*w"
      ],
      "nguon": "data/bieu-thue/2026.04.05/tieu-de.jsonl.gz",
      "trich": "Công suất không quá 1 kW:"
@@ -5480,7 +5563,7 @@
      "trich": "Loại khác"
     }
    ],
-   "moTaMau": "Động cơ xoay chiều một pha 220V công suất 30W, dùng cho quạt dàn lạnh máy điều hòa không khí, mới 100%",
+   "moTaMau": "Động cơ xoay chiều một pha 220V công suất 60W, dùng cho quạt dàn lạnh máy điều hòa không khí, mới 100%",
    "caCaiLoi": {
     "boDuKien": [
      2
@@ -5491,7 +5574,8 @@
      "maTroToi": "85014019"
     }
    },
-   "duyetBoi": "CLAUDE_DUYET"
+   "duyetBoi": "CLAUDE_DUYET",
+   "chamDuyet": "Chấm duyệt độc lập 30/10 (bước 5 L1-2a): bản trước ghi công suất 30W — động cơ ≤ 37,5 W thuộc phân nhóm 8501.10 (\"Động cơ có công suất không quá 37,5 W\"), không thuộc 8501.40. Đổi sang 60W."
   },
   {
    "id": "L1-850140-02",
@@ -5979,14 +6063,16 @@
    "nguonCa": {
     "loai": "TU_DUNG",
     "tep": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
-    "ghiChu": "Hàng giả định theo chữ dòng 9405.41.10 (đèn pha quang điện LED); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
+    "ghiChu": "Hàng giả định theo chữ dòng 9405.41.10 (đèn pha — Searchlights — quang điện LED); không phải lô hàng thật, không lấy từ tờ khai. precedents.json không có kết luận 8 số nào (mã còn trong biểu) cho phân nhóm này."
    },
    "thongTinHang": {
-    "tenHang": "Đèn pha LED năng lượng mặt trời",
+    "tenHang": "Đèn pha LED tìm kiếm (searchlight) năng lượng mặt trời",
     "chatLieu": "vỏ nhôm, tấm pin mặt trời rời, pin lithium",
-    "congDung": null,
+    "congDung": "chiếu chùm sáng hẹp đi xa phục vụ tìm kiếm, cứu nạn",
     "thongSo": [
-     "công suất 60W"
+     "công suất 60W",
+     "chùm sáng hẹp, tầm chiếu xa 800m",
+     "đầu đèn xoay được"
     ],
     "tinhTrang": "Mới 100%",
     "nhanHieu": null,
@@ -6014,12 +6100,23 @@
     },
     {
      "cap": 8,
-     "duKien": "đèn pha",
+     "duKien": "đèn pha (Searchlights — đèn pha tìm kiếm, chùm sáng hẹp chiếu xa)",
      "tuKhoa": [
-      "đèn pha"
+      "đèn pha",
+      "searchlight|tìm kiếm"
      ],
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Đèn pha"
+    },
+    {
+     "cap": 8,
+     "duKien": "rọi luồng sáng qua một khoảng cách tới một điểm (đặc trưng đèn pha rọi theo chú giải chi tiết)",
+     "tuKhoa": [
+      "chiếu xa"
+     ],
+     "nguon": "data/chu-giai-heading.json",
+     "viTri": "9405.nhom",
+     "trich": "Những thiết bị này cho phép rọi một luồng ánh sáng (thường là luồng ánh sáng này có thể điều chỉnh được) qua một khoảng cách tới một điểm hay một mặt phẳng xác định"
     }
    ],
    "nhomCanhTranh": [
@@ -6028,20 +6125,27 @@
      "lyDo": "đèn rọi khác (MFN 5 %)",
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Đèn rọi khác"
+    },
+    {
+     "ma": "94054140",
+     "lyDo": "\"đèn pha LED\" chiếu rộng sân bãi (floodlight) theo cách gọi thương mại không phải \"Đèn pha\" (Searchlights) của biểu — rơi vào dòng chiếu sáng bên ngoài khác (MFN 20 %)",
+     "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+     "trich": "Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn; loại chiếu sáng bên ngoài khác"
     }
    ],
-   "moTaMau": "Đèn pha LED năng lượng mặt trời 60W, vỏ nhôm, tấm pin mặt trời rời, pin lithium, mới 100%",
+   "moTaMau": "Đèn pha LED tìm kiếm (searchlight) năng lượng mặt trời 60W, chùm sáng hẹp chiếu xa 800m, đầu đèn xoay được, vỏ nhôm, pin lithium, mới 100%",
    "caCaiLoi": {
     "boDuKien": [
      2
     ],
     "doiAnhEm": {
-     "tu": "Đèn pha LED",
+     "tu": "Đèn pha LED tìm kiếm (searchlight)",
      "sang": "Đèn rọi LED",
      "maTroToi": "94054120"
     }
    },
-   "duyetBoi": "CLAUDE_DUYET"
+   "duyetBoi": "CLAUDE_DUYET",
+   "chamDuyet": "Chấm duyệt độc lập 30/10 (bước 5 L1-2a): bản trước \"Đèn pha LED năng lượng mặt trời 60W\" (không công dụng) — \"đèn pha LED\" thương mại thường là đèn chiếu rộng (floodlight), còn \"Đèn pha\" của biểu là Searchlights; floodlight ngoài trời vào .40 (20 %). Ghi rõ đèn pha tìm kiếm chùm hẹp chiếu xa."
   },
   {
    "id": "L1-901720-01",
@@ -6426,9 +6530,10 @@
    "thongTinHang": {
     "tenHang": "Rơ le điện từ 12VDC",
     "chatLieu": null,
-    "congDung": "đóng ngắt mạch điều khiển trong tủ điện",
+    "congDung": "đóng ngắt mạch điều khiển 24VDC trong tủ điện",
     "thongSo": [
-     "cuộn dây 12VDC, tiếp điểm 10A"
+     "cuộn dây 12VDC",
+     "tiếp điểm định mức 10A/30VDC"
     ],
     "tinhTrang": "Mới 100%",
     "nhanHieu": null,
@@ -6437,10 +6542,10 @@
    "duKienQuyetDinh": [
     {
      "cap": 6,
-     "duKien": "rơ le dùng cho điện áp không quá 60 V",
+     "duKien": "rơ le dùng cho điện áp không quá 60 V (tiếp điểm định mức 30VDC)",
      "tuKhoa": [
       "rơ le",
-      "\\d+\\s*v"
+      "30\\s*vdc"
      ],
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Dùng cho điện áp không quá 60 V"
@@ -6469,7 +6574,7 @@
      "trich": "Rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V"
     }
    ],
-   "moTaMau": "Rơ le điện từ cuộn dây 12VDC, tiếp điểm 10A, đóng ngắt mạch điều khiển trong tủ điện, mới 100%",
+   "moTaMau": "Rơ le điện từ cuộn dây 12VDC, tiếp điểm định mức 10A/30VDC, đóng ngắt mạch điều khiển 24VDC trong tủ điện, mới 100%",
    "caCaiLoi": {
     "boDuKien": [
      1
@@ -6480,7 +6585,8 @@
      "maTroToi": "85364110"
     }
    },
-   "duyetBoi": "CLAUDE_DUYET"
+   "duyetBoi": "CLAUDE_DUYET",
+   "chamDuyet": "Chấm duyệt độc lập 30/10 (bước 5 L1-2a): bản trước chỉ ghi cuộn dây 12VDC — điện áp phân nhóm 8536.41 là điện áp đóng cắt; rơ le tủ điện thường đóng cắt 250VAC ⇒ 8536.49. Ghi rõ tiếp điểm định mức 30VDC."
   },
   {
    "id": "L1-853641-02",
@@ -6496,9 +6602,10 @@
    "thongTinHang": {
     "tenHang": "Rơ le điện từ 24VDC tải lớn",
     "chatLieu": null,
-    "congDung": "đóng ngắt mạch nguồn xe nâng điện",
+    "congDung": "đóng ngắt mạch nguồn 24V của xe nâng điện",
     "thongSo": [
-     "cuộn dây 24VDC, tiếp điểm 40A"
+     "cuộn dây 24VDC",
+     "tiếp điểm định mức 40A/24VDC"
     ],
     "tinhTrang": "Mới 100%",
     "nhanHieu": null,
@@ -6507,10 +6614,10 @@
    "duKienQuyetDinh": [
     {
      "cap": 6,
-     "duKien": "rơ le dùng cho điện áp không quá 60 V",
+     "duKien": "rơ le dùng cho điện áp không quá 60 V (tiếp điểm định mức 24VDC)",
      "tuKhoa": [
       "rơ le",
-      "\\d+\\s*v"
+      "24\\s*vdc"
      ],
      "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
      "trich": "Dùng cho điện áp không quá 60 V"
@@ -6545,7 +6652,7 @@
      "trich": "Rơ le kỹ thuật số"
     }
    ],
-   "moTaMau": "Rơ le điện từ cuộn dây 24VDC, tiếp điểm 40A, đóng ngắt mạch nguồn xe nâng điện, mới 100%",
+   "moTaMau": "Rơ le điện từ cuộn dây 24VDC, tiếp điểm định mức 40A/24VDC, đóng ngắt mạch nguồn 24V xe nâng điện, mới 100%",
    "khongDuCanCu": true,
    "caCaiLoi": {
     "boDuKien": [
@@ -6557,7 +6664,8 @@
      "maTroToi": "85364110"
     }
    },
-   "duyetBoi": "CLAUDE_DUYET"
+   "duyetBoi": "CLAUDE_DUYET",
+   "chamDuyet": "Chấm duyệt độc lập 30/10 (bước 5 L1-2a): bản trước chỉ ghi cuộn dây 24VDC; mạch nguồn xe nâng có thể 48V/80V (⇒ 8536.41.99 hoặc 8536.49). Ghi rõ tiếp điểm định mức 24VDC, xe nâng 24V."
   },
   {
    "id": "L1-841350-01",
@@ -8173,5 +8281,24 @@
    },
    "duyetBoi": "CLAUDE_DUYET"
   }
- ]
+ ],
+ "chamDuyetDocLap": {
+  "ngay": "2026-10-30",
+  "boi": "Claude — agent chấm duyệt mới, độc lập với agent soạn (bước 5 L1-2a); không đọc data/so-tay/, không chạy máy phân loại",
+  "phamVi": "đọc lại đủ 106 ca: mã 8 số đối chiếu kết luận TB-TCHQ và tax.json; trích dẫn đối chiếu nguyên văn và đúng chuỗi tiêu đề của dòng; doiAnhEm cùng phân nhóm khác MFN; hàng TU_DUNG không có cách đọc khác",
+  "soCaLoai": 0,
+  "soCaSua": 9,
+  "caSua": [
+   "L1-830140-02",
+   "L1-850140-01",
+   "L1-850131-02",
+   "L1-841391-01",
+   "L1-853641-01",
+   "L1-853641-02",
+   "L1-940541-02",
+   "L1-940542-02",
+   "L1-848390-01"
+  ],
+  "ghiChu": "mỗi ca sửa có trường chamDuyet ghi lý do; không ca TB-TCHQ nào đổi mã; nhãn vẫn CLAUDE_DUYET (Claude chấm, không phải chuyên gia)"
+ }
 }
