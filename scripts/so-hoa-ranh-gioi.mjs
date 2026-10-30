@@ -154,7 +154,7 @@ if (args.help || args.h || !argv.length) {
   if (args.json) process.stdout.write(`${JSON.stringify(goi, null, 2)}\n`);
   else {
     for (const g of goi) {
-      console.log(`# ${g.pn6} — ${g.ten.vi || g.ten.wco || ''}${g.canHieuChinhTienLe ? '  [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — L1-4b: DỪNG, Claude giữ]' : ''}\n\n${g.cay}\n`);
+      console.log(`# ${g.pn6} — ${g.ten.vi || g.ten.wco || ''}${g.canHieuChinhTienLe ? (g.coHieuChinhTienLe ? '  [CÓ CỜ HIỆU CHỈNH TIỀN LỆ — bảng L1-4b đã có mục: soạn theo chữ biểu, ghi LECH_TIEN_LE trỏ mục bảng]' : '  [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ]') : ''}\n\n${g.cay}\n`);
       const coNut = g.tangKhongMa.filter((t) => t.trangThai !== 'KHONG_DAT');
       const khongDat = g.tangKhongMa.filter((t) => t.trangThai === 'KHONG_DAT');
       if (coNut.length) {
