@@ -1,0 +1,99 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841350",
+  "nhom": "8413",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8413503",
+      "nguon": "tieuDe.8413503",
+      "trich": "8413503 Bơm nước, với lưu lượng không quá 8.000 m³/h",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m³/h"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84135031",
+      "nguon": "tax.84135031",
+      "trich": "84135031 - - - Hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84135032",
+      "nguon": "tax.84135032",
+      "trich": "84135032 - - - Không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84135040",
+      "nguon": "tax.84135040",
+      "trich": "84135040 - - Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 8000,
+          "donVi": "m³/h"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 13000,
+          "donVi": "m³/h"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84135090",
+      "nguon": "tax.84135090",
+      "trich": "84135090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8413503",
+      "ghiChu": "\"Bơm nước\" là so chữ tự do (TEN_LOAI) — không tất định; tu-vung@1 chưa có khoá loại chất lỏng bơm."
+    }
+  ]
+}
