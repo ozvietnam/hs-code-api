@@ -139,11 +139,7 @@ for (const ma of ['85362019', '85362099', '85366999', '84135090', '85444299']) {
   const rT = D.dungDuongDi('85444299', 'NHAP', { soTay: st, bangHieuChinh: { muc: [tienLe] } });
   const eT = rT.duongDiPhapLy.find((e) => e.nut === '85444294');
   check('8544.42.99 + TIEN_LE_THAY_CHU_BIEU ⇒ hieuChinh có, ranh giới không CHUA_SO_HOA', eT && eT.hieuChinh && eT.hieuChinh.length && eT.ketQua === null, eT);
-  // Bản nháp 854442 soạn lại ở #652 còn đỏ có chủ đích (.91/.92 soSoi chưa số hoá) ⇒ capDaChac 8 chỉ khi không còn ranh giới chưa số hoá nào khác.
-  const conLai = rT.chuaChot.filter((x) => !x.startsWith('hieu-chinh-lech'));
-  check('8544.42.99 ranh giới .94 đủ + không LECH ⇒ LECH không còn là nguyên nhân hạ cấp (capDaChac 8 khi hết ranh giới chưa số hoá khác)',
-    conLai.length === rT.chuaChot.length && !rT.chuaChot.some((x) => x.endsWith(':85444294'))
-    && (rT.chuaChot.length ? rT.capDaChac === 6 && rT.chuaChot.every((x) => x.startsWith('chua-so-hoa:')) : rT.capDaChac === 8), { capDaChac: rT.capDaChac, chuaChot: rT.chuaChot });
+  check('8544.42.99 ranh giới đủ + không LECH ⇒ capDaChac 8 (LECH là nguyên nhân hạ cấp)', rT.capDaChac === 8, rT.chuaChot);
   const rK = D.dungDuongDi('85444299', 'NHAP', { soTay: st, bangHieuChinh: { muc: [{ ...clone(mucMau), id: 'T-K', loai: 'KHONG_LECH' }] } });
   check('8544.42.99 + KHONG_LECH ⇒ không hieuChinh', !rK.duongDiPhapLy.some((e) => e.hieuChinh), rK.duongDiPhapLy.filter((e) => e.hieuChinh));
   const r94 = D.dungDuongDi('85444294', 'NHAP', { soTay: st, bangHieuChinh: { muc: [lech] } });
