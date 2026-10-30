@@ -1,0 +1,59 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "871410",
+  "phien": "zcode:glm-5.3:20261030T1553#soan-871410",
+  "dong8": {
+    "87141010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Yên xe" }
+      ]
+    },
+    "87141020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Nan hoa", "ốc bắt đầu nan hoa"] }
+      ]
+    },
+    "87141030": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Khung", "càng xe", "giảm xóc"] }
+      ]
+    },
+    "87141040": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Bánh răng", "hộp số", "bộ ly hợp", "thiết bị truyền động"] }
+      ]
+    },
+    "87141050": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vành bánh xe" }
+      ]
+    },
+    "87141060": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Phanh" }
+      ]
+    },
+    "87141070": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Giảm thanh" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "87141040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "KHÔNG đặt phanConLai: chữ \"khác\" nằm trong vế liệt kê \"các thiết bị truyền động khác\" (thiết bị truyền động khác ngoài bánh răng/hộp số/bộ ly hợp — phạm vi trong dòng), không phải phần còn lại của cả dòng so với anh em. Phần còn lại của phân nhóm là .90 \"Loại khác\" (máy tự phủ định)."
+    },
+    {
+      "ma": "87141030",
+      "loai": "DE_TRONG",
+      "ghiChu": "Vế \"và các bộ phận của chúng\" (bộ phận của khung/càng/giảm xóc) không diễn đạt được bằng tenLoai — người duyệt xem; tương tự .40, .60, .70. Vế \"kể cả càng xe cơ cấu ống lồng\" là liệt kê bao gồm (luật 3.8), đã phủ bằng giá trị \"càng xe\"."
+    },
+    {
+      "ma": "87141020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Nan hoa và ốc bắt đầu nan hoa\": hai tên trong dòng, hàng là một trong hai ⇒ mảng tenLoai (hoặc)."
+    }
+  ]
+}
