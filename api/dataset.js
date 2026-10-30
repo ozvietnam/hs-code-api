@@ -452,6 +452,29 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    // Mốc đổi hiệu lực sắp tới (?ngay=YYYY-MM-DD, ?so_ngay=90) — trả VB lên hiệu lực MỚI,
+    // hết hiệu lực, hoặc tạm ngưng trong cửa sổ ngày. Công cụ "canh" cho cả hệ thống:
+    // TT 142/2026 (16-11-2026), NQ 43/2026 (31-12-2026), TT 154/2026 + Luật 11/2026 (2027).
+    if (resource === 'hieu_luc_sap_doi') {
+      const meta = plhq.registryMeta();
+      if (!meta) return res.status(503).json({ error: 'Chưa có bản chụp sổ cộng đồng (data/plhq-registry.json)' });
+      const tu = /^\d{4}-\d{2}-\d{2}$/.test(String(req.query.tu || '')) ? req.query.tu : new Date().toISOString().slice(0, 10);
+      const soNgay = Math.min(Math.max(Number(req.query.so_ngay) || 90, 1), 3650);
+      const denD = new Date(tu); denD.setDate(denD.getDate() + soNgay);
+      const den = denD.toISOString().slice(0, 10);
+      const items = (plhq.allDocuments ? plhq.allDocuments() : []).flatMap((d) => {
+        const out = [];
+        if (d.hieuLucTu && d.tinhTrang === 'CHUA_CO_HIEU_LUC' && d.hieuLucTu >= tu && d.hieuLucTu <= den) {
+          out.push({ soHieu: d.soHieu, ten: d.ten, tinhTrang: d.tinhTrang, suKien: 'LEN_HIEU_LUC', ngay: d.hieuLucTu, hieuLucTu: d.hieuLucTu, biThayTheBoi: d.biThayTheBoi || null });
+        }
+        if (d.hetHieuLucTu && d.tinhTrang === 'CON_HIEU_LUC' && d.hetHieuLucTu >= tu && d.hetHieuLucTu <= den) {
+          out.push({ soHieu: d.soHieu, ten: d.ten, tinhTrang: d.tinhTrang, suKien: 'HET_HIEU_LUC', ngay: d.hetHieuLucTu, hetHieuLucTu: d.hetHieuLucTu, biThayTheBoi: d.biThayTheBoi || null });
+        }
+        return out;
+      }).sort((a, b) => (a.ngay < b.ngay ? -1 : a.ngay > b.ngay ? 1 : String(a.soHieu).localeCompare(String(b.soHieu))));
+      return res.status(200).json({ registry: meta, tu, den, soNgay, total: items.length, items });
+    }
+
     // GET /api/admin/llm-cost?ngay=YYYY-MM-DD (L0j, #547): chi phí LLM lượt công khai theo ngày giờ VN.
     // KÍN — không nằm trong allowlist lib/public-access.js (requireAuthUnlessPublic ở đầu handler đã đòi Bearer).
     if (resource === 'llm_cost') {
