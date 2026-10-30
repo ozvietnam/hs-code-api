@@ -266,9 +266,15 @@ const spec830220 = () => ({
   check('6h --goi dạng chữ in nguyên văn KHÔNG cắt (tiêu đề 385 ký tự) + giá trị hợp lệ của khoá liệt kê', g.status === 0 && g.stdout.includes('công tắc điện cơ bật nhanh dùng cho dòng điện không quá 11 A') && /loaiCongTac.*NGAT_SOC_DONG/.test(g.stdout), g.stdout.slice(0, 200));
 
   // --ap-spec: spec khai báo → bản nháp (không sửa tay JSON)
+  const ghiRa = path.join(process.env.HS_DATA_DIR, 'ho-so', 'ranh-gioi', '830220.json');
+  // Bản thật có thể đã DUYET (L1-4c) — --ap-spec đúng ra từ chối bản DUYET; gieo một bản NHAP vào thư mục tạm để thử đường soạn.
+  {
+    const that = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/830220.json'), 'utf8'));
+    const nhapTam = { ...that, trangThai: 'NHAP', duyet: null, dong8: that.dong8.map((m) => ({ ...m, nguonLoai: 'AI_DA_KIEM' })), dieuKienNut: (that.dieuKienNut || []).map((m) => ({ ...m, nguonLoai: 'AI_DA_KIEM' })) };
+    fs.mkdirSync(path.dirname(ghiRa), { recursive: true }); fs.writeFileSync(ghiRa, JSON.stringify(nhapTam, null, 2));
+  }
   const p1 = ghiSpec('830220.json', spec830220());
   const a1 = cli(`--ap-spec=${p1}`);
-  const ghiRa = path.join(process.env.HS_DATA_DIR, 'ho-so', 'ranh-gioi', '830220.json');
   const b1 = fs.existsSync(ghiRa) ? JSON.parse(fs.readFileSync(ghiRa, 'utf8')) : null;
   check('6i --ap-spec tạo/cập nhật bản nháp, in kết quả --kiem, mã thoát 0 khi xanh', a1.status === 0 && /XANH 830220/.test(a1.stdout) && b1?.dong8.find((m) => m.hs === '83022010')?.dieuKienSo.length === 2, a1.stdout + a1.stderr);
   check('6j … nhãn AI_DA_KIEM, trạng thái NHAP, phiên người soạn từ spec, ghiChuSoan từ spec', b1 && b1.trangThai === 'NHAP' && b1.dong8.every((m) => m.nguonLoai === 'AI_DA_KIEM') && b1.soanBoi.phien === 'cursor:test-model:20261030T0900#soan-830220' && b1.ghiChuSoan[0].loai === 'QUYET_DINH');
