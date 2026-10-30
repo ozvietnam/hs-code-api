@@ -216,14 +216,15 @@ function nhap853641() {
 
 // ── 10. Chồng lấn do CHÍNH chữ biểu (CHONG_LAN_VAN_BAN, GĐ 30/10): khai có lý do ⇒ cảnh báo, không lỗi; không bao giờ tự chốt ─
 {
-  const CL = (cap, lyDo = 'Chữ biểu .10 (tên loại) và .20 (công dụng) không loại trừ nhau; không có căn cứ thứ tự.') => ({ cap, lyDo });
+  // #577: lyDo phải trích (ngoặc kép) chữ biểu của CẢ HAI nhánh rẽ.
+  const CL = (cap, lyDo = 'Chữ biểu .10 "Rơ le kỹ thuật số" (tên loại) và .20 "Của loại sử dụng trong các thiết bị sóng vô tuyến" (công dụng) không loại trừ nhau; không có căn cứ thứ tự.') => ({ cap, lyDo });
   const coCanh = (r, tien) => r.canhBao.some((l) => l.startsWith(tien));
   const b = nhap853641(); b.chongLanVanBan = [CL(['85364110', '85364120'])];
   const r = C.kiemRanhGioi('853641', b);
   check('10a cặp khai CHONG_LAN_VAN_BAN có lý do → không còn lỗi cong2-chong-lan của cặp đó', !coLoi(r, 'cong2-chong-lan:85364110+85364120'), r.loi);
   check('10b … mà thành cảnh báo cong2-chong-lan-van-ban:85364110+85364120 (kèm vector)', coCanh(r, 'cong2-chong-lan-van-ban:85364110+85364120:'), r.canhBao);
   check('10c cặp chồng lấn KHÔNG khai vẫn là lỗi (85364110+85364130)', coLoi(r, 'cong2-chong-lan:85364110+85364130') && r.hopLe === false, r.loi);
-  const b2 = nhap853641(); b2.chongLanVanBan = [CL(['85364120', '85364110']), CL(['85364110', '85364130'], 'Rơ le kỹ thuật số dùng cho quạt điện: chữ biểu không loại trừ.')];
+  const b2 = nhap853641(); b2.chongLanVanBan = [CL(['85364120', '85364110']), CL(['85364110', '85364130'], '.10 "Rơ le kỹ thuật số" dùng cho .30 "quạt điện": chữ biểu không loại trừ.')];
   const r2 = C.kiemRanhGioi('853641', b2);
   check('10d khai đủ mọi cặp chồng lấn (thứ tự cặp tuỳ ý) → hopLe, chỉ còn cảnh báo', r2.hopLe === true && r2.loi.length === 0 && r2.canhBao.filter((l) => l.startsWith('cong2-chong-lan-van-ban:')).length === 2, r2.loi);
   const b3 = nhap853641(); b3.chongLanVanBan = [{ cap: ['85364110', '85364120'] }];
