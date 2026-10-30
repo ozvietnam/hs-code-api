@@ -16,6 +16,7 @@ const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const ML = require('../lib/ho-so/ma-loi.js');
 const TV = require('../lib/tu-vung.js');
 const DK = require('../lib/dieu-kien-so.js');
+const V = require('../lib/ho-so/tach-ve.js');
 const { dataPath, dataReadPath } = require('../lib/data-paths.js');
 
 const TRO_GIUP = `Số hoá ranh giới 6→8 số — scripts/so-hoa-ranh-gioi.mjs (quy trình: docs/giao-viec/so-tay/QUY-TRINH-SO-HOA.md)
@@ -24,12 +25,16 @@ Lệnh cho NGƯỜI SOẠN (thợ):
   --goi --pn6=<6 số> [--json]          gói soạn: cây, mục cần số hoá + chữ NGUYÊN VĂN, tầng không mã (nút <pn6>~r<dòng>; không đặt được ⇒ DỪNG), từ vựng, luật
   --tu-vung [--khoa=<khoá>] [--json]   khoá tu-vung@1: kiểu, op, đơn vị, GIÁ TRỊ HỢP LỆ + cách đọc
   --ap-spec=<tệp spec .json>           áp spec khai báo → data/ho-so/ranh-gioi/<pn6>.json rồi chạy cổng (KHÔNG sửa tay JSON nháp)
-  --kiem --pn6=<6 số> [--json]         chạy 4 cổng; in lời giải thích + cách sửa dưới mỗi lỗi
+  --kiem --pn6=<6 số> [--json]         chạy các cổng 0–3 + 5; in lời giải thích + cách sửa dưới mỗi lỗi
+  --ve --pn6=<6 số> [--json]           cổng 5: tách chữ biểu từng mục thành VẾ (đầu ngữ / GIỚI HẠN / MỞ / ngoặc) và cho biết vế nào
+                                       đã có điều kiện phủ, vế nào CHƯA PHỦ (rộng hơn chữ) hay vế mở bị bỏ (hẹp hơn chữ)
   --giai-thich=<mã lỗi>                giải thích một mã lỗi/cảnh báo (dán nguyên dòng ✗ cũng được); không mã = liệt kê hết
   --tao-nhap --pn6=<6 số> --phien=<định danh>#soan-<nhãn>   khung nháp trống (không đè bản đã có; thường dùng --ap-spec)
 
 Lệnh của CLAUDE (thợ KHÔNG chạy):
-  --duyet --pn6=X --phien=<định danh>#soat-<nhãn> [--ghi-chu=…]   nâng DUYET/CLAUDE_DUYET (phiên ≠ người soạn, cổng xanh)
+  --duyet --pn6=X --phien=<định danh>#soat-<nhãn> [--ghi-chu=…] [--giai-quyet=<mã>:<kết luận> …]
+                                                                  nâng DUYET/CLAUDE_DUYET (phiên ≠ người soạn, cổng xanh; mỗi
+                                                                  ghi chú DE_TRONG/"người soát xem" cần một --giai-quyet)
   --tra-ve --pn6=X --phien=… --ly-do=…                            trả về người soạn
   --ap-dung --pn6=X                                               đưa bản DUYET vào data/so-tay/<nhóm>.json
   --tom-tat                                                       trạng thái 50 phân nhóm lát 1
@@ -39,7 +44,8 @@ Spec (ranh-gioi-spec@1, JSON):
     "dong8": { "83022010": { "dieuKienSo": [ {"fact":"duongKinh","op":">","value":100,"donVi":"mm"} ] } },
     "dieuKienNut": { "<id tiêu đề>": { "dieuKienSo": [...], "trich": "<lược bằng … nếu > 300 ký tự>" } },
     "chongLanVanBan": [ {"cap": ["<hsA>","<hsB>"], "lyDo": "… trích \\"chữ nhánh A\\" và \\"chữ nhánh B\\" …"} ],
-    "ghiChuSoan": [ {"ma": "83022010", "loai": "QUYET_DINH", "ghiChu": "…"} ] }
+    "ghiChuSoan": [ {"ma": "83022010", "loai": "QUYET_DINH", "ghiChu": "…"},
+                    {"ma": "94054230", "loai": "BO_VE", "ve": "<nguyên văn vế bỏ>", "lyDo": "<vì sao bỏ mà không sai mã>"} ] }
   Mục không ghi "trich"/"nguon" ⇒ máy chép nguyên văn chữ của chính mục. "phanConLai": true cho phần còn lại có tên ("… khác")
   — được đứng một mình ({"dieuKienSo": [], "phanConLai": true}); "phanConLai": false = chữ "khác" không phải phần còn lại.
   loai ghi chú: ${C.LOAI_GHI_CHU.join(' | ')}. Thiếu khoá tu-vung ⇒ để trống dieuKienSo + loai THIEU_KHOA_TU_VUNG (+ khoaDeXuat).
@@ -52,6 +58,7 @@ for (let i = 0; i < argv.length; i += 1) {
   const m = argv[i].match(/^--([^=]+)(?:=(.*))?$/);
   if (!m) continue;
   // "--giai-thich x" / "--ap-spec x": giá trị là tham số kế tiếp (không bắt đầu bằng --).
+  if (m[1] === 'giai-quyet') { const v = m[2] ?? (argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[(i += 1)] : ''); (args['giai-quyet'] ||= []).push(v); continue; }
   if (m[2] === undefined && ['giai-thich', 'ap-spec', 'pn6', 'phien', 'khoa'].includes(m[1]) && argv[i + 1] && !argv[i + 1].startsWith('--')) { args[m[1]] = argv[i + 1]; i += 1; } else args[m[1]] = m[2] ?? true;
 }
 const homNay = () => new Date().toISOString().slice(0, 10);
@@ -77,7 +84,8 @@ const huongDan = (ma) => { const g = ML.giaiThich(ma); return g ? `      → ${g
 function inKetQua(kq) {
   let ma = 0;
   for (const r of kq) {
-    console.log(`${r.hopLe ? 'XANH' : 'ĐỎ  '} ${r.pn6} ${r.trangThai || ''} dòng=${r.thongKe.soDong ?? '-'} có-đk=${r.thongKe.soDongCoDieuKien ?? '-'} tiêu-đề=${r.thongKe.soTieuDeCoDieuKien ?? '-'}/${r.thongKe.soTieuDe ?? '-'} vector=${r.thongKe.soVector ?? '-'}`);
+    const v5 = r.thongKe.cong5;
+    console.log(`${r.hopLe ? 'XANH' : 'ĐỎ  '} ${r.pn6} ${r.trangThai || ''} dòng=${r.thongKe.soDong ?? '-'} có-đk=${r.thongKe.soDongCoDieuKien ?? '-'} tiêu-đề=${r.thongKe.soTieuDeCoDieuKien ?? '-'}/${r.thongKe.soTieuDe ?? '-'} vector=${r.thongKe.soVector ?? '-'}${v5 ? ` vế=${v5.soVe} (phủ ${v5.phu}, lặp tổ tiên ${v5.lap}, miễn ${v5.mien}, mở-không-hẹp ${v5.khongHep}, CHƯA PHỦ ${v5.chuaPhu}, tách định ngữ ${v5.dinhNguTach})` : ''}`);
     const daGiai = new Set();
     const mot = (dau, l) => {
       console.log(`    ${dau} ${l}`);
@@ -173,6 +181,10 @@ if (args.help || args.h || !argv.length) {
           x.nghiPhanConLai ? 'nghi phần còn lại có tên — cân nhắc "phanConLai": true' : null,
           x.nghiThieuKhoa ? `nghi THIẾU KHOÁ: ${x.nghiThieuKhoa.join('; ')} — kiểm --tu-vung, không có thì DỪNG` : null].filter(Boolean);
         console.log(`- ${x.ma} ${x.loai}${co.length ? ` (${co.join('; ')})` : ''}\n${x.nguon.map((n) => `    ${n.nguon} [${n.text.length} ký tự]: ${n.text.replace(/\s+/g, ' ')}`).join('\n')}`);
+        if (!x.khongCanDieuKien) { // cổng 5: vế mà điều kiện phải phủ (hoặc BO_VE có lý do)
+          const ve = V.tachVe(V.chuBieu(x.ma).vi).ve.flatMap((v) => v.menhDe).filter((q) => q.loai === 'GIOI_HAN' || q.loai === 'MO');
+          if (ve.length) console.log(`    vế phải phủ (cổng 5): ${ve.map((q) => `[${q.loai === 'MO' ? 'MỞ' : 'GIỚI HẠN'}] "${q.chu}"`).join(' · ')}`);
+        }
       }
       console.log(`\nNguồn cấp phân nhóm: ${g.nguonPhanNhom.map((n) => n.nguon).join(', ') || '—'}; chú giải: ${g.chuGiai.map((n) => n.nguon).join(', ')}`);
       console.log(`Luật:\n${g.luat.map((l) => `  * ${l}`).join('\n')}\n`);
@@ -198,6 +210,27 @@ if (args.help || args.h || !argv.length) {
   }
   console.log(`${pn6}: đã áp spec → ${ghi(tepNhap(pn6), banNhap)}`);
   process.exit(kiemVaIn([pn6]));
+} else if (args.ve) {
+  const ds = danhSach(); can(ds && ds.length, 'cần --pn6=…');
+  const NHAN = { PHU: 'phủ', MIEN: 'MIỄN (BO_VE)', LAP: 'lặp chữ tổ tiên', KHONG_HEP: 'mở — danh sách trước không bị liệt kê đóng', CHUA_PHU: 'CHƯA PHỦ' };
+  const kq = ds.map((p) => { const b = docNhap(p); can(b, `${p}: chưa có bản nháp`); return { pn6: p, ...C.phanTichVe(p, b) }; });
+  if (args.json) process.stdout.write(`${JSON.stringify(kq, null, 2)}\n`);
+  else {
+    for (const r of kq) {
+      console.log(`# ${r.pn6} — cổng 5 (vế bổ nghĩa): ${r.loi.length ? `${r.loi.length} lỗi` : 'xanh'}`);
+      for (const m of r.chiTiet) {
+        console.log(`- ${m.ma}: ${m.vi}${m.en ? `\n    EN: ${m.en.replace(/^[-\s]+/, '')}` : ''}`);
+        m.ve.forEach((v, i) => {
+          if (r.chiTiet.length && m.ve.length > 1) console.log(`    vế ${i + 1}${v.lienHop.length > 1 ? ` (danh từ đầu liên hợp: ${v.lienHop.join(' | ')})` : ''}`);
+          for (const x of v.menhDe) console.log(`      ${x.loai.padEnd(8)} "${x.chu}"${x.trangThai ? ` — ${NHAN[x.trangThai] || x.trangThai}` : ''}`);
+          if (v.dinhNguTach) console.log(`      !! TÁCH ĐỊNH NGỮ (${v.dinhNguTach.kieu}): "${v.dinhNguTach.dinhNgu}"`);
+        });
+      }
+      for (const l of r.loi) { console.log(`    ✗ ${l}`); }
+      for (const c of r.canhBao) console.log(`    ! ${c}`);
+    }
+  }
+  process.exit(kq.some((r) => r.loi.length) ? 1 : 0);
 } else if (args['tao-nhap']) {
   const ds = danhSach(); can(ds && ds.length, 'cần --pn6=… hoặc --dot=N'); can(args.phien && args.phien !== true, 'cần --phien=<định danh>#soan-<nhãn>');
   { const lp = C.kiemPhien(args.phien, 'soan'); can(!lp, lp); }
@@ -212,7 +245,11 @@ if (args.help || args.h || !argv.length) {
   const p = String(args.pn6 || '').replace(/\D/g, ''); can(p.length === 6, 'cần --pn6=<6 số>');
   const b = docNhap(p); can(b, `${p}: chưa có bản nháp`);
   try {
-    if (args.duyet) { can(args.phien && args.phien !== true, 'cần --phien=<định danh>#soat-<nhãn>'); console.log(ghi(tepNhap(p), C.duyet(b, { phien: args.phien, ngay: homNay(), ghiChu: args['ghi-chu'] === true ? undefined : args['ghi-chu'] }))); }
+    if (args.duyet) {
+      can(args.phien && args.phien !== true, 'cần --phien=<định danh>#soat-<nhãn>');
+      const giaiQuyet = (args['giai-quyet'] || []).map((x) => { const i = String(x).indexOf(':'); return i > 0 ? { ma: x.slice(0, i).trim(), ketLuan: x.slice(i + 1).trim() } : { ma: String(x).trim(), ketLuan: '' }; });
+      console.log(ghi(tepNhap(p), C.duyet(b, { phien: args.phien, ngay: homNay(), ghiChu: args['ghi-chu'] === true ? undefined : args['ghi-chu'], giaiQuyet })));
+    }
     else if (args['tra-ve']) console.log(ghi(tepNhap(p), C.traVe(b, { phien: args.phien === true ? null : args.phien, ngay: homNay(), lyDo: args['ly-do'] === true ? '' : args['ly-do'] })));
     else {
       const h4 = p.slice(0, 4);

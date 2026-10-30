@@ -99,6 +99,41 @@ Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRI
   DỪNG. Chồng lấn do bộ so chữ hay "khác" cuối dòng: không khai — dùng `phanConLai` hoặc để đỏ.
 - **Định danh phiên**: `<định danh>#<soan|soat>-<nhãn>` (vd `https://claude.ai/code/session_…#soan-830220`,
   `cursor:<mô hình>:<yyyymmddThhmm>#soan-830220`). `--duyet` đòi `#soat-…`; cùng định danh + nhãn chỉ đổi vai = tự duyệt.
-- **ghiChuSoan** `{ma, loai, ghiChu, khoaDeXuat?}`, `loai` ∈ `QUYET_DINH | DE_TRONG | CHONG_LAN | LECH_TIEN_LE | THIEU_KHOA_TU_VUNG | DUNG`.
+- **ghiChuSoan** `{ma, loai, ghiChu, khoaDeXuat?}`, `loai` ∈ `QUYET_DINH | DE_TRONG | CHONG_LAN | LECH_TIEN_LE | THIEU_KHOA_TU_VUNG | DUNG | BO_VE`
+  (`BO_VE` có hình dạng riêng `{ma, loai: "BO_VE", ve, lyDo}` — xem cổng 5 dưới).
 - **Thiếu khoá tu-vung**: không tự đặt khoá — để trống, ghi `THIEU_KHOA_TU_VUNG` + `khoaDeXuat` ⇒ DỪNG. Đề xuất khoá:
   [`de-xuat-tu-vung-2.md`](de-xuat-tu-vung-2.md). `tu-vung@1` không đổi (khoá cứng theo bench).
+
+## Cổng 5 — phạm vi VẾ bổ nghĩa (31/10/2026, #577 — sau soát L1-4c đợt 2 #659)
+
+Soát độc lập đợt 2 tìm **12/136 mục sai (8,8%)**, gần hết MỘT kiểu mà cổng 0–3 không thấy: phạm vi của vế bổ nghĩa. Cổng 5
+(`lib/ho-so/cong-ranh-gioi.js#kiemVe`, tách vế ở `lib/ho-so/tach-ve.js`) đọc chữ biểu NGUYÊN VĂN của từng mục có điều kiện (VI từ
+`data/bieu-thue/<ngày>/` bieu-chinh + tieu-de, kể cả tầng không mã; EN của cùng dòng để đối chiếu cấu trúc) và chặn:
+
+| Mã | Máy thấy | Hướng sai |
+|---|---|---|
+| `cong5-ve-gioi-han-bi-bo:<mã>:<vế>` | vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không điều kiện nào đọc tới, không lặp chữ tầng cha, không miễn | RỘNG hơn chữ |
+| `cong5-ve-mo-bi-bo:<mã>:<vế>` | vế MỞ ("… và các loại tương tự", "và bộ phận của chúng", "và các loại … khác") bị bỏ trong khi danh sách đứng trước nó bị liệt kê ĐÓNG thành điều kiện | HẸP hơn chữ |
+| `cong5-dinh-ngu-tach:<mã>:<định ngữ>` | theo chữ Anh cùng dòng, định ngữ là CHUNG của các danh từ đầu liên hợp nhưng chỉ gắn cho một phần (8536901, 85369093) — hoặc chỉ của danh từ cuối mà gắn cho tất cả (63079070) | rộng / hẹp |
+| `cong5-de-trong-chua-xu-ly:<mã>` (cảnh báo) | ghi chú `DE_TRONG` hoặc chữ "người soát xem", "lưu ý soát" | chưa xử lý |
+
+Luật (không mở lại):
+- **Mỗi vế hoặc được phủ, hoặc được miễn TƯỜNG MINH.** Miễn: `ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn vế>", lyDo}`. `ve` phải
+  có nguyên văn trong chữ biểu của mục (`cong5-bo-ve-khong-co-trong-chu`). `lyDo` rỗng / dưới 10 ký tự / "người soát xem" /
+  "DE_TRONG" ⇒ `cong5-bo-ve-ly-do` và vế vẫn đỏ. Mọi miễn hiện ra cảnh báo `cong5-bo-ve` cho người soát. `BO_VE` nằm trong băm
+  duyệt (đổi sau duyệt ⇒ `cong0-sua-sau-duyet`).
+- **DỪNG thay vì miễn** khi bỏ vế làm đổi mã 8 số mà không có quy ước đã đúc (vd 940542 "không nhấp nháy": .30 5% lấn .90 10%) —
+  thiếu khoá ⇒ `THIEU_KHOA_TU_VUNG`. Miễn chỉ dành cho vế mà lý do đứng được một mình (quy ước 392690 cho vế mở; vế lặp ý danh từ đầu).
+- **Ghi chú `DE_TRONG` không phải đã xử lý.** 4/6 bản bị trả về ở #659 tự ghi `DE_TRONG` / "người soát xem" đúng chỗ sai. Cổng 5
+  cảnh báo; `--duyet` từ chối tới khi người soát ghi `--giai-quyet=<mã>:<kết luận>` cho TỪNG mục (lưu ở `duyet.giaiQuyetDeTrong`).
+- **Vế mở**: không ghi danh sách đóng làm điều kiện khi chữ có vế mở. "X và bộ phận của chúng" ⇒ `HOAC [[tenLoai X], [laBoPhan CO,
+  dungCho X]]`.
+- **Định ngữ chung** ⇒ một điều kiện riêng áp cho mọi danh từ đầu (không nhét vào một giá trị tenLoai); định ngữ riêng của danh từ
+  cuối ⇒ `HOAC`.
+- Không đòi phủ: danh từ đầu (thường lặp tên tầng cha), ngoặc chú thích, "kể cả …", "bằng mọi loại vật liệu", vế lặp nguyên văn chữ
+  của tầng cha/phân nhóm/nhóm.
+- Xem vế + trạng thái từng vế: `node scripts/so-hoa-ranh-gioi.mjs --ve --pn6=<pn6>`; `--goi` in sẵn vế phải phủ cho người soạn.
+- Người soát L1-4c: bảng soát [`SOAT-RANH-GIOI.md`](SOAT-RANH-GIOI.md).
+- Máy là bộ tách theo dấu hiệu, có thể đọc sai cấu trúc câu: đọc sai ⇒ `BO_VE` có lý do giải thích cấu trúc, người soát quyết; báo
+  Claude để chỉnh bộ tách (không ép điều kiện cho máy vui).
+

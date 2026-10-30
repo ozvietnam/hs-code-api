@@ -20,11 +20,13 @@ const cli = (...a) => spawnSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs
 {
   // 630790: cờ canHieuChinhTienLe, bảng data/ho-so/hieu-chinh-tien-le.json đã có mục 630790-* (#617), bản nháp xanh.
   check('1a 630790 có cờ + bảng có mục', C.canHieuChinh('630790') && C.coHieuChinh('630790'));
-  const r = C.kiemRanhGioi('630790', docNhap('630790'));
+  // Cổng 1–3 (mục này kiểm bảng hiệu chỉnh, không kiểm vế): 630790 bị người soát trả về ở #659 và cổng 5 bắt đúng lỗi đó.
+  const r = C.kiemRanhGioi('630790', docNhap('630790'), { cong: [1, 2, 3] });
   check('1b bảng có mục ⇒ không DỪNG (dung rỗng)', r.hopLe && r.dung.length === 0, r.dung);
   check('1c … chỉ còn cảnh báo thông tin can-bang-hieu-chinh-tien-le-da-co:630790', coCanh(r, 'can-bang-hieu-chinh-tien-le-da-co:630790') && !ML.laDung('can-bang-hieu-chinh-tien-le-da-co:630790'), r.canhBao);
   const k = cli('--kiem', '--pn6=630790');
-  check('1d CLI --kiem 630790 mã thoát 0 (trước #653: 3 DỪNG)', k.status === 0, k.stdout.slice(-400));
+  // Trước #653: 3 DỪNG. Nay không DỪNG; đỏ 1 vì cổng 5 (bản bị trả về ở #659: bỏ vế mở .80, tách định ngữ .70).
+  check('1d CLI --kiem 630790 không DỪNG (mã thoát 1 — chỉ đỏ ở cổng 5)', k.status === 1 && /cong5-/.test(k.stdout) && !/DỪNG — báo Claude/.test(k.stdout), k.stdout.slice(-400));
   // Bảng (trong thư mục ghi của test) không có mục cho 630790 ⇒ DỪNG.
   const tep = path.join(process.env.HS_DATA_DIR, 'ho-so', 'hieu-chinh-tien-le.json');
   const that = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/hieu-chinh-tien-le.json'), 'utf8'));
@@ -83,7 +85,9 @@ const S = require('../lib/so-tay.js');
   const b3 = suaNhap('850110', { ...LIET, 8501102: { dieuKienSo: [], phanConLai: ['850110~r14830'] } });
   check('3e phanConLai đứng một mình vẫn qua kiểm "anh em" + chữ "khác" của cổng 0/3', C.kiemRanhGioi('850110', b3).loi.some((l) => l.startsWith('cong0-phan-con-lai-sai-anh-em:8501102') || l.startsWith('cong3-phan-con-lai-khong-co-chu-khac:8501102')));
   let moi = null; let nem = null;
-  try { moi = C.apDung(C.duyet(b, { phien: 'https://claude.ai/code/session_TEST#soat-vong2', ngay: '2026-10-31' }), JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/8501.json'), 'utf8'))); } catch (e) { nem = e.message; }
+  // Ghi chú DE_TRONG của tầng r14839 cần kết luận của người soát (cổng 5).
+  const giaiQuyet = C.dsDeTrong(b).map((ma) => ({ ma, ketLuan: 'Đã đối chiếu tay: "kể cả động cơ vạn năng" là câu bao gồm, phanConLai đứng một mình đúng chữ.' }));
+  try { moi = C.apDung(C.duyet(b, { phien: 'https://claude.ai/code/session_TEST#soat-vong2', ngay: '2026-10-31', giaiQuyet }), JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/8501.json'), 'utf8'))); } catch (e) { nem = e.message; }
   const nut = moi?.dieuKienNut?.find((x) => x.id === '850110~r14839');
   check('3f duyệt + áp vào sổ tay: mục tầng mang phanConLai, dieuKienSo rỗng, qua checkItem', nut?.phanConLai === true && Array.isArray(nut.dieuKienSo) && !nut.dieuKienSo.length, nem || nut);
   check('3g sổ tay đã áp: luật đi .99 không CHUA_SO_HOA ở r14839', moi && !DK.duongDiDong8('85011099', { soTay: moi }).nhom.some((g) => g.nut === '850110~r14839' && !g.dieuKien), nem);
@@ -196,7 +200,7 @@ const DUNG = (v) => ({ fact: 'dungCho', op: 'CONG_DUNG', value: v });
     const loc = (ds) => ds.filter((l) => /^cong[03]-/.test(l));
     check(`8c ${p}: lỗi cổng 0+3 của lần chạy con trùng lần chạy đủ`, JSON.stringify(loc(du.loi)) === JSON.stringify(con.loi) && con.loi.every((l) => /^cong[03]-/.test(l)), { du: loc(du.loi), con: con.loi });
   }
-  check('8d mặc định vẫn chạy đủ 4 cổng (phamVi [0,1,2,3])', JSON.stringify(C.kiemRanhGioi('830220', docNhap('830220')).phamVi) === '[0,1,2,3]');
+  check('8d mặc định chạy đủ các cổng (phamVi [0,1,2,3,5] — cổng 5 vế bổ nghĩa)', JSON.stringify(C.kiemRanhGioi('830220', docNhap('830220')).phamVi) === '[0,1,2,3,5]');
   const t = fs.readFileSync(path.join(process.cwd(), 'scripts/test-cong-ranh-gioi.mjs'), 'utf8');
   check('8e test-cong-ranh-gioi mục 8 chạy cổng 0+3 cho mọi bản nháp (cả 4 cổng chỉ cho bản DUYET)', /kiemRanhGioi\(b\.pn6, b, \{ cong: \[0, 3\] \}\)/.test(t));
 }
