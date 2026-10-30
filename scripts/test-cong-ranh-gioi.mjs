@@ -148,16 +148,16 @@ function nhap853641() {
   let nem = null; try { C.duyet(nhap841350(), { phien: 'phien-soan-A', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
   check('5g người soạn tự duyệt → từ chối', /cung-phien|tu-duyet/.test(nem || ''), nem);
   const hong = nhap841350(); dong(hong, '84135040').dieuKienSo = [];
-  nem = null; try { C.duyet(hong, { phien: 'phien-soat-B', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
+  nem = null; try { C.duyet(hong, { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
   check('5h duyệt bản còn đỏ → từ chối', /cong1-chua-so-hoa/.test(nem || ''), nem);
-  const ok = C.duyet(nhap841350(), { phien: 'phien-soat-B', ngay: '2026-10-31', ghiChu: 'đối chiếu checklist L1-4c' });
+  const ok = C.duyet(nhap841350(), { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31', ghiChu: 'đối chiếu checklist L1-4c' });
   check('5i duyệt xanh → DUYET, mọi mục CLAUDE_DUYET, có bam', ok.trangThai === 'DUYET' && [...ok.dong8, ...ok.dieuKienNut].every((m) => m.nguonLoai === 'CLAUDE_DUYET') && /^[0-9a-f]{64}$/.test(ok.duyet.bam), ok.duyet);
   check('5j bản đã duyệt qua cổng', C.kiemRanhGioi('841350', ok).hopLe === true, C.kiemRanhGioi('841350', ok).loi);
   const sua = clone(ok); dong(sua, '84135040').dieuKienSo[2].value = 13000; dong(sua, '84135040').trich += ' ';
   check('5k sửa sau duyệt (đổi trích) → cong0-sua-sau-duyet', coLoi(C.kiemRanhGioi('841350', sua), 'cong0-sua-sau-duyet'));
-  nem = null; try { C.duyet({ ...nhap841350(), pn6: '392690', nhom: '3926', dong8: [], dieuKienNut: [] }, { phien: 'phien-soat-B', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
+  nem = null; try { C.duyet({ ...nhap841350(), pn6: '392690', nhom: '3926', dong8: [], dieuKienNut: [] }, { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
   check('5l phân nhóm cờ canHieuChinhTienLe (392690) chưa có bảng hiệu chỉnh → không duyệt', /hieu-chinh/.test(nem || ''), nem);
-  const tv = C.traVe(nhap841350(), { phien: 'phien-soat-B', ngay: '2026-10-31', lyDo: '84135040: biên trên sai' });
+  const tv = C.traVe(nhap841350(), { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31', lyDo: '84135040: biên trên sai' });
   check('5m trả về → TRA_VE, giữ AI_DA_KIEM, ghi lý do', tv.trangThai === 'TRA_VE' && tv.traVe.at(-1).lyDo.includes('biên') && tv.dong8.every((m) => m.nguonLoai === 'AI_DA_KIEM'));
 }
 
@@ -166,7 +166,7 @@ function nhap853641() {
   const soTay = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/8413.json'), 'utf8'));
   let nem = null; try { C.apDung(nhap841350(), soTay); } catch (e) { nem = e.message; }
   check('6a áp bản NHAP → từ chối', /DUYET|chua-duyet/.test(nem || ''), nem);
-  const moi = C.apDung(C.duyet(nhap841350(), { phien: 'phien-soat-B', ngay: '2026-10-31' }), soTay);
+  const moi = C.apDung(C.duyet(nhap841350(), { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31' }), soTay);
   const d40 = moi.dong8.find((d) => d.hs === '84135040');
   check('6b dòng 84135040 nhận dieuKienSo có kiểu + CLAUDE_DUYET', d40.dieuKienSo.length === 3 && d40.nguonLoai === 'CLAUDE_DUYET' && d40.ranhGioi?.phienBan === 'ranh-gioi@1');
   const src = S.sourcesFor('8413');
@@ -216,14 +216,15 @@ function nhap853641() {
 
 // ── 10. Chồng lấn do CHÍNH chữ biểu (CHONG_LAN_VAN_BAN, GĐ 30/10): khai có lý do ⇒ cảnh báo, không lỗi; không bao giờ tự chốt ─
 {
-  const CL = (cap, lyDo = 'Chữ biểu .10 (tên loại) và .20 (công dụng) không loại trừ nhau; không có căn cứ thứ tự.') => ({ cap, lyDo });
+  // #577: lyDo phải trích (ngoặc kép) chữ biểu của CẢ HAI nhánh rẽ.
+  const CL = (cap, lyDo = 'Chữ biểu .10 "Rơ le kỹ thuật số" (tên loại) và .20 "Của loại sử dụng trong các thiết bị sóng vô tuyến" (công dụng) không loại trừ nhau; không có căn cứ thứ tự.') => ({ cap, lyDo });
   const coCanh = (r, tien) => r.canhBao.some((l) => l.startsWith(tien));
   const b = nhap853641(); b.chongLanVanBan = [CL(['85364110', '85364120'])];
   const r = C.kiemRanhGioi('853641', b);
   check('10a cặp khai CHONG_LAN_VAN_BAN có lý do → không còn lỗi cong2-chong-lan của cặp đó', !coLoi(r, 'cong2-chong-lan:85364110+85364120'), r.loi);
   check('10b … mà thành cảnh báo cong2-chong-lan-van-ban:85364110+85364120 (kèm vector)', coCanh(r, 'cong2-chong-lan-van-ban:85364110+85364120:'), r.canhBao);
   check('10c cặp chồng lấn KHÔNG khai vẫn là lỗi (85364110+85364130)', coLoi(r, 'cong2-chong-lan:85364110+85364130') && r.hopLe === false, r.loi);
-  const b2 = nhap853641(); b2.chongLanVanBan = [CL(['85364120', '85364110']), CL(['85364110', '85364130'], 'Rơ le kỹ thuật số dùng cho quạt điện: chữ biểu không loại trừ.')];
+  const b2 = nhap853641(); b2.chongLanVanBan = [CL(['85364120', '85364110']), CL(['85364110', '85364130'], '.10 "Rơ le kỹ thuật số" dùng cho .30 "quạt điện": chữ biểu không loại trừ.')];
   const r2 = C.kiemRanhGioi('853641', b2);
   check('10d khai đủ mọi cặp chồng lấn (thứ tự cặp tuỳ ý) → hopLe, chỉ còn cảnh báo', r2.hopLe === true && r2.loi.length === 0 && r2.canhBao.filter((l) => l.startsWith('cong2-chong-lan-van-ban:')).length === 2, r2.loi);
   const b3 = nhap853641(); b3.chongLanVanBan = [{ cap: ['85364110', '85364120'] }];
@@ -237,7 +238,7 @@ function nhap853641() {
   const b7 = nhap853641(); b7.chongLanVanBan = [CL(['85364120', '85364130'])];
   check('10i khai cặp KHÔNG chồng lấn → cong2-chong-lan-van-ban-thua (nhãn phải đúng sự thật)', coLoi(C.kiemRanhGioi('853641', b7), 'cong2-chong-lan-van-ban-thua:85364120+85364130'));
   check('10j băm không đổi với bản không khai (mảng rỗng = không có)', C.bamRanhGioi(nhap853641()) === C.bamRanhGioi({ ...nhap853641(), chongLanVanBan: [] }));
-  const ok = C.duyet(b2, { phien: 'phien-soat-B', ngay: '2026-10-31' });
+  const ok = C.duyet(b2, { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31' });
   check('10k bản có cặp CHONG_LAN_VAN_BAN khai đủ vẫn duyệt được (cảnh báo không chặn)', ok.trangThai === 'DUYET' && C.kiemRanhGioi('853641', ok).hopLe === true);
   const go = clone(ok); go.chongLanVanBan = go.chongLanVanBan.slice(0, 1);
   check('10l sửa danh sách CHONG_LAN_VAN_BAN sau duyệt → cong0-sua-sau-duyet', coLoi(C.kiemRanhGioi('853641', go), 'cong0-sua-sau-duyet'));
