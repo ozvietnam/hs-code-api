@@ -1,0 +1,62 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "392310",
+  "phien": "zcode:glm-5.3:20261030T1547#soan-392310",
+  "dong8": {
+    "39231010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hộp"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phim",
+            "băng từ",
+            "đĩa quang"
+          ]
+        }
+      ]
+    },
+    "39231020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm bán dẫn mỏng",
+            "màn hoặc lưới quang"
+          ]
+        }
+      ]
+    },
+    "39231090": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "39231010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39231010: \"Hộp đựng phim, băng từ và đĩa quang\" ⇒ tenLoai TEN_LOAI \"Hộp\" (tên hàng) + dungCho CONG_DUNG [\"phim\",\"băng từ\",\"đĩa quang\"] (\"đựng\" ⇒ dùng chứa; mảng = hoặc theo ba đối tượng liệt kê)"
+    },
+    {
+      "ma": "39231020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39231020: \"Loại khác, có hình dạng đặc biệt hoặc thích hợp để vận chuyển hoặc đóng gói các tấm bán dẫn mỏng, màn hoặc lưới quang\" — dòng \"Loại khác, <vế>\": chỉ ghi điều kiện của vế ⇒ dungCho CONG_DUNG [\"tấm bán dẫn mỏng\",\"màn hoặc lưới quang\"] (thích hợp để vận chuyển/đóng gói ⇒ dùng cho; mảng = hoặc); không đặt phanConLai trên dòng \"Loại khác…\""
+    },
+    {
+      "ma": "39231020",
+      "loai": "DE_TRONG",
+      "ghiChu": "Vế \"có hình dạng đặc biệt hoặc thích hợp để vận chuyển hoặc đóng gói\" không có khoá tu-vung@1 diễn đạt được (không có khoá hình dạng/kết cấu); chỉ số hoá đối tượng đi cùng (dungCho). SEN.39231020 cùng nội dung với dòng này."
+    },
+    {
+      "ma": "39231090",
+      "loai": "DE_TRONG",
+      "ghiChu": "tax.39231090: \"Loại khác\" — Loại khác trần, không ghi điều kiện (máy tự phủ định anh em)"
+    }
+  ]
+}
