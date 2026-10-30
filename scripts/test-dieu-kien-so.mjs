@@ -207,5 +207,55 @@ const ST8544 = {
   check('fact cũ chưa ánh xạ (be_day) → CHUA_BIET, lý do fact-cu-chua-anh-xa', DK.danhGiaDieuKien({ fact: 'be_day', op: '>', value: 2, donVi: 'mm' }, null).lyDo === 'fact-cu-chua-anh-xa');
 }
 
+// ── 8. #583: tiêu đề bị lược tên ≠ "Loại khác"; anh em là tiêu đề "Loại khác" trần thì bỏ qua (như dòng LK trần) ──
+{
+  const fs = await import('fs');
+  // (a) Tên lấy lại được thì cây đã dùng: mọi tiêu đề còn thiếu tên KHÔNG có tên KHOP_TAP trong ten-nut.json.
+  const ver = fs.readdirSync('data/bieu-thue').filter((d) => /^\d{4}\.\d{2}\.\d{2}$/.test(d)).sort().pop();
+  const tenNut = JSON.parse(fs.readFileSync(`data/bieu-thue/${ver}/ten-nut.json`, 'utf8')).ten;
+  const thieuTen = [...T.tree().nodes.values()].filter((n) => typeof n.cap === 'string' && n.cap !== 'PHAN' && !n.tenVi);
+  const layDuoc = thieuTen.filter((n) => tenNut[n.id]?.doTinCay === 'KHOP_TAP').map((n) => n.id);
+  check('8a mọi tên tiêu đề KHOP_TAP của ten-nut.json đã vào cây (tiêu đề còn thiếu tên = không lấy lại được)', thieuTen.length > 0 && layDuoc.length === 0, j(layDuoc.slice(0, 10)));
+  check('8b 8481801 chỉ khớp TIỀN TỐ trong biểu thuế (một nút chữ số gộp hai tiêu đề thật) → vẫn thiếu tên, có tenViNghi',
+    !T.tree().nodes.get('8481801').tenVi && T.tree().nodes.get('8481801').tenViNghi === 'Van dùng cho lốp không săm' && tenNut['8481801'].doTinCay === 'TIEN_TO');
+
+  // (b) Tiêu đề bị lược tên trên đường đi → CHUA_SO_HOA, lý do tường minh; KHÔNG phủ định anh em của nó như "Loại khác".
+  const ST8481 = { nhom: '8481', dong8: [{ hs: '84818011', nguon: 'tax.84818011', trich: 'Bằng đồng hoặc hợp kim đồng', dieuKienSo: [{ fact: 'chatLieu', op: 'LA', value: 'đồng' }] }] };
+  const d11 = DK.duongDiDong8('84818011', { soTay: ST8481 });
+  const g801 = d11.nhom.find((g) => g.nut === '8481801');
+  check('8c 84818011: tiêu đề lược tên 8481801 → nhóm PHAI_CO, dieuKien null, lyDo tieu-de-bi-luoc-ten', g801 && g801.chieu === 'PHAI_CO' && g801.dieuKien === null && g801.lyDo === 'tieu-de-bi-luoc-ten', j(d11.nhom));
+  check('8d … không phủ định anh em của tiêu đề lược tên (8481802, 84818030…)', !d11.nhom.some((g) => g.chieu === 'PHAI_KHONG'), j(d11.nhom.map((g) => [g.nut, g.chieu])));
+  const r11 = DK.doiChieuDong8('84818011', [fact('chatLieu', [{ viTri: 'CHINH', chatLieu: 'đồng' }])], { soTay: ST8481 });
+  check('8e … doiChieuDong8 → CHUA_SO_HOA, mục đường đi mang lyDo tieu-de-bi-luoc-ten', r11.ketQua === 'CHUA_SO_HOA' && r11.duongDi.some((e) => e.nut === '8481801' && e.ketQua === 'CHUA_SO_HOA' && e.lyDo === 'tieu-de-bi-luoc-ten'), j(r11.duongDi));
+  // Tiêu đề lược tên là ANH EM của dòng Loại khác (84818030 là anh em của 8481801/06/07/08/09): ghi lý do, không âm thầm.
+  const d30 = DK.duongDiDong8('84818049', { soTay: ST8481 });
+  check('8f tên tiêu đề có trong ten-nut KHOP_TAP (8481804) → nút có tên, PHAI_CO', d30.nhom.some((g) => g.nut === '8481804' && g.chieu === 'PHAI_CO' && !g.lyDo), j(d30.nhom));
+
+  // (c) Anh em là tiêu đề "Loại khác" TRẦN, duy nhất phần còn lại của tầng → bỏ qua (phủ định vòng tròn, không có nội dung).
+  const ST8536 = {
+    nhom: '8536',
+    dong8: [
+      { hs: '85364110', nguon: 'tax.85364110', trich: 'Rơ le kỹ thuật số', dieuKienSo: [{ fact: 'loaiRoLe', op: 'TRONG', value: ['KY_THUAT_SO'] }] },
+      { hs: '85364120', nguon: 'tax.85364120', trich: 'Của loại sử dụng trong các thiết bị sóng vô tuyến', dieuKienSo: [{ fact: 'dungCho', op: 'CONG_DUNG', value: 'thiết bị sóng vô tuyến' }] },
+      { hs: '85364130', nguon: 'tax.85364130', trich: 'Của loại sử dụng cho quạt điện', dieuKienSo: [{ fact: 'dungCho', op: 'CONG_DUNG', value: 'quạt điện' }] },
+      { hs: '85364140', nguon: 'tax.85364140', trich: 'Loại khác, dòng điện dưới 16 A', dieuKienSo: [{ fact: 'dongDien', op: '<', value: 16, donVi: 'A' }] },
+      { hs: '85364191', nguon: 'tax.85364191', trich: 'Rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V', dieuKienSo: [{ fact: 'loaiRoLe', op: 'TRONG', value: ['BAN_DAN', 'DIEN_TU'] }, { fact: 'dienAp', op: '<=', value: 28, donVi: 'V' }] },
+      { hs: '85364199', nguon: 'tax.85364199', trich: 'Loại khác' },
+    ],
+  };
+  const d40 = DK.duongDiDong8('85364140', { soTay: ST8536 });
+  check('8g 85364140: bỏ qua anh em 8536419 (tiêu đề "Loại khác" trần, duy nhất phần còn lại của tầng)', !d40.nhom.some((g) => g.nut === '8536419') && sameSet(d40.nhom.filter((g) => g.chieu === 'PHAI_KHONG').map((g) => g.nut), ['85364110', '85364120', '85364130']), j(d40.nhom.map((g) => [g.nut, g.chieu])));
+  const F40 = [fact('loaiRoLe', 'DIEN_TU'), fact('dungCho', 'máy giặt'), fact('dongDien', 10, { donVi: 'A' })];
+  check('8h … rơ le điện từ cho máy giặt, 10 A → 85364140 CO (trước đây CHUA_SO_HOA vĩnh viễn)', DK.doiChieuDong8('85364140', F40, { soTay: ST8536 }).ketQua === 'CO');
+  check('8i … 20 A → 85364140 MAU_THUAN tất định', (() => { const x = DK.doiChieuDong8('85364140', [...F40.slice(0, 2), fact('dongDien', 20, { donVi: 'A' })], { soTay: ST8536 }); return x.ketQua === 'MAU_THUAN' && x.coCanCuTatDinh === true; })());
+
+  // (d) Tầng có HAI tiêu đề "Loại khác" trần (8414594 + 8414599): cây theo chữ số đã lược một tầng có tên
+  //     (biểu thuế: "Công suất không quá 125 kW" / "Loại khác") → không bỏ qua, CHUA_SO_HOA lý do tang-bi-luoc.
+  const d41 = DK.duongDiDong8('84145941', { soTay: { nhom: '8414', dong8: [{ hs: '84145941', nguon: 'tax.84145941', trich: 'Có lưới bảo vệ', dieuKienSo: [{ fact: 'coLuoiBaoVe', op: 'CO' }] }] } });
+  const g99 = d41.nhom.find((g) => g.nut === '8414599');
+  check('8j 84145941: anh em 8414599 là tiêu đề LK trần thứ hai của tầng → dieuKien null, lyDo tang-bi-luoc', g99 && g99.chieu === 'PHAI_KHONG' && g99.dieuKien === null && g99.lyDo === 'tang-bi-luoc', j(d41.nhom));
+  check('8k … doiChieuDong8 → CHUA_SO_HOA dù đủ dữ kiện', DK.doiChieuDong8('84145941', [fact('coLuoiBaoVe', true), fact('tenLoai', 'quạt hút')], { soTay: { nhom: '8414', dong8: [] } }).ketQua === 'CHUA_SO_HOA');
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
