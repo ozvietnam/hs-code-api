@@ -47,6 +47,11 @@ if (args.goi) {
   else {
     for (const g of goi) {
       console.log(`# ${g.pn6} — ${g.ten.vi || g.ten.wco || ''}${g.canHieuChinhTienLe ? '  [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — L1-4b]' : ''}\n\n${g.cay}\n`);
+      if (g.tangKhongMa.length) {
+        console.log('!!! DỪNG — phân nhóm có TẦNG KHÔNG MÃ (tiêu đề không mã của biểu thuế mà cây theo chữ số làm mất). Cổng 1 sẽ chặn; không soạn tiếp, báo Claude:');
+        for (const t of g.tangKhongMa) console.log(`    r${t.r} (gạch ${t.gach}) "${t.chu}" — dòng dưới: ${t.dongDuoi.join(', ')}`);
+        console.log('');
+      }
       for (const x of g.canSoHoa) console.log(`- ${x.ma} ${x.loai}${x.khongCanDieuKien ? ' (phần còn lại — không ghi điều kiện)' : ''}${x.chan ? ` [CHẶN: ${x.chan}]` : ''}\n${x.nguon.map((n) => `    ${n.nguon}: ${n.text.replace(/\s+/g, ' ').slice(0, 300)}`).join('\n')}`);
       console.log(`\nNguồn cấp phân nhóm: ${g.nguonPhanNhom.map((n) => n.nguon).join(', ') || '—'}; chú giải: ${g.chuGiai.map((n) => n.nguon).join(', ')}`);
       console.log(`Luật:\n${g.luat.map((l) => `  * ${l}`).join('\n')}\n`);
