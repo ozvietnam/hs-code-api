@@ -72,6 +72,7 @@ export function atPath(root, viTri) {
   return cur;
 }
 
+const leafCache = new Map();
 /** Chuỗi trích có NGUYÊN VĂN trong tệp (tại viTri nếu có) không. */
 export function trichCoThat(rel, trich, viTri) {
   const src = loadSource(rel);
@@ -79,7 +80,11 @@ export function trichCoThat(rel, trich, viTri) {
   if (!trich || typeof trich !== 'string') return { ok: false, lyDo: 'thiếu trich' };
   const scope = viTri ? atPath(src.value, viTri) : src.value;
   if (scope === undefined) return { ok: false, lyDo: `không có viTri ${viTri} trong ${rel}` };
-  const ok = stringLeaves(scope).some((s) => s.includes(trich));
+  // Cả tệp (không viTri): gom lá một lần rồi dùng lại — bộ đề lát 1 có hàng trăm chuỗi trích trên cùng biểu thuế.
+  let leaves;
+  if (viTri) leaves = stringLeaves(scope);
+  else { if (!leafCache.has(rel)) leafCache.set(rel, stringLeaves(scope)); leaves = leafCache.get(rel); }
+  const ok = leaves.some((s) => s.includes(trich));
   return ok ? { ok: true } : { ok: false, lyDo: `không thấy nguyên văn trong ${rel}${viTri ? `#${viTri}` : ''}: "${trich.slice(0, 80)}"` };
 }
 
