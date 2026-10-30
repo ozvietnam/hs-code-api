@@ -176,59 +176,154 @@
  "dong8": [
   {
    "hs": "84831010",
-   "dieuKien": "Dùng cho máy thuộc nhóm 84.29 hoặc 84.30 — thuộc phân nhóm 8483.10 (WCO: Transmission shafts (including cam shafts and crank shafts) and cranks)",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.29 hoặc 84.30",
    "loaiKhac": false,
    "nguon": "tax.84831010",
    "trich": "84831010 - - Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "84.29",
+      "84.30"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "cc284e5611f94a3b9e881c214f588c058392458389cf74941f3bbf9de42eaf25"
+    }
+   }
   },
   {
    "hs": "84831024",
-   "dieuKien": "Dùng cho xe thuộc nhóm 87.11 — thuộc phân nhóm 8483.10 (WCO: Transmission shafts (including cam shafts and crank shafts) and cranks)",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 87.11",
    "loaiKhac": false,
    "nguon": "tax.84831024",
    "trich": "84831024 - - - Dùng cho xe thuộc nhóm 87.11",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "87.11"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "cc284e5611f94a3b9e881c214f588c058392458389cf74941f3bbf9de42eaf25"
+    }
+   }
   },
   {
    "hs": "84831025",
-   "dieuKien": "Cho xe có dung tích xi lanh không quá 2.000 cc — thuộc phân nhóm 8483.10 (WCO: Transmission shafts (including cam shafts and crank shafts) and cranks)",
+   "dieuKien": "dung tích xi lanh <= 2000 cc",
    "loaiKhac": false,
    "nguon": "tax.84831025",
    "trich": "84831025 - - - - Cho xe có dung tích xi lanh không quá 2.000 cc",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 2000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "cc284e5611f94a3b9e881c214f588c058392458389cf74941f3bbf9de42eaf25"
+    }
+   }
   },
   {
    "hs": "84831026",
-   "dieuKien": "Cho xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc — thuộc phân nhóm 8483.10 (WCO: Transmission shafts (including cam shafts and crank shafts) and cranks)",
+   "dieuKien": "dung tích xi lanh > 2000 cc; dung tích xi lanh <= 3000 cc",
    "loaiKhac": false,
    "nguon": "tax.84831026",
    "trich": "84831026 - - - - Cho xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 2000,
+     "donVi": "cc"
+    },
+    {
+     "fact": "dungTichXiLanh",
+     "op": "<=",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "cc284e5611f94a3b9e881c214f588c058392458389cf74941f3bbf9de42eaf25"
+    }
+   }
   },
   {
    "hs": "84831027",
-   "dieuKien": "Cho xe có dung tích xi lanh trên 3.000 cc — thuộc phân nhóm 8483.10 (WCO: Transmission shafts (including cam shafts and crank shafts) and cranks)",
+   "dieuKien": "dung tích xi lanh > 3000 cc",
    "loaiKhac": false,
    "nguon": "tax.84831027",
    "trich": "84831027 - - - - Cho xe có dung tích xi lanh trên 3.000 cc",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungTichXiLanh",
+     "op": ">",
+     "value": 3000,
+     "donVi": "cc"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "cc284e5611f94a3b9e881c214f588c058392458389cf74941f3bbf9de42eaf25"
+    }
+   }
   },
   {
    "hs": "84831031",
-   "dieuKien": "Công suất không quá 22,38 kW — thuộc phân nhóm 8483.10 (WCO: Transmission shafts (including cam shafts and crank shafts) and cranks)",
+   "dieuKien": "công suất <= 22.38 kW",
    "loaiKhac": false,
    "nguon": "tax.84831031",
    "trich": "84831031 - - - Công suất không quá 22,38 kW",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "CLAUDE_DUYET",
    "dieuKienSo": [
     {
-     "fact": "cong_suat",
+     "fact": "congSuat",
      "op": "<=",
      "value": 22.38,
      "donVi": "kW"
     }
-   ]
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "cc284e5611f94a3b9e881c214f588c058392458389cf74941f3bbf9de42eaf25"
+    }
+   }
   },
   {
    "hs": "84831039",
@@ -900,5 +995,57 @@
    ]
   }
  },
- "yKienWcoDayDu": false
+ "yKienWcoDayDu": false,
+ "dieuKienNut": [
+  {
+   "id": "8483102",
+   "nguon": "tieuDe.8483102",
+   "trich": "8483102 Trục cam và trục khuỷu dùng cho động cơ xe của Chương 87",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Trục cam",
+      "trục khuỷu"
+     ]
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "Chương 87"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "cc284e5611f94a3b9e881c214f588c058392458389cf74941f3bbf9de42eaf25"
+    }
+   }
+  },
+  {
+   "id": "8483103",
+   "nguon": "tieuDe.8483103",
+   "trich": "8483103 Dùng cho động cơ máy thủy",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "động cơ máy thủy"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "cc284e5611f94a3b9e881c214f588c058392458389cf74941f3bbf9de42eaf25"
+    }
+   }
+  }
+ ]
 }

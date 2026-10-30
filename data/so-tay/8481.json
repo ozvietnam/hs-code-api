@@ -281,11 +281,26 @@
   },
   {
    "hs": "84812011",
-   "dieuKien": "8481.20 – Van dùng trong truyền động dầu thủy lực hoặc khí nén › - - - Bằng sắt hoặc thép",
+   "dieuKien": "chất liệu (theo vị trí): sắt thép",
    "loaiKhac": false,
    "nguon": "tax.84812011",
    "trich": "84812011 - - - Bằng sắt hoặc thép",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "sắt thép"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "153bbe9e4d70c28a80e1222eb15239a1cf730a92b49b7f6eeeed57502506f6c2"
+    }
+   }
   },
   {
    "hs": "84812019",
@@ -306,30 +321,58 @@
   },
   {
    "hs": "84812020",
-   "dieuKien": "8481.20 – Van dùng trong truyền động dầu thủy lực hoặc khí nén › - - Bằng đồng hoặc hợp kim đồng, có đường kính trong không quá 2,5 cm, hoặc bằng plastic, có đường kính trong từ 1 cm đến 2,5 cm",
+   "dieuKien": "(chất liệu (theo vị trí): đồng và đường kính trong (cửa nạp/cửa thoát, DN) <= 2.5 cm) hoặc (chất liệu (theo vị trí): plastic và đường kính trong (cửa nạp/cửa thoát, DN) >= 1 cm và đường kính trong (cửa nạp/cửa thoát, DN) <= 2.5 cm)",
    "loaiKhac": false,
    "nguon": "tax.84812020",
    "trich": "84812020 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong không quá 2,5 cm, hoặc bằng plastic, có đường kính trong từ 1 cm đến 2,5 cm",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "CLAUDE_DUYET",
    "dieuKienSo": [
     {
-     "fact": "chat_lieu",
-     "op": "LA",
-     "value": "plastic"
-    },
-    {
-     "fact": "duong_kinh",
-     "op": "<=",
-     "value": 2.5,
-     "donVi": "cm"
-    },
-    {
-     "fact": "duong_kinh",
-     "op": ">=",
-     "value": 1,
-     "donVi": "cm"
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "chatLieu",
+        "op": "LA",
+        "value": "đồng"
+       },
+       {
+        "fact": "duongKinhTrong",
+        "op": "<=",
+        "value": 2.5,
+        "donVi": "cm"
+       }
+      ],
+      [
+       {
+        "fact": "chatLieu",
+        "op": "LA",
+        "value": "plastic"
+       },
+       {
+        "fact": "duongKinhTrong",
+        "op": ">=",
+        "value": 1,
+        "donVi": "cm"
+       },
+       {
+        "fact": "duongKinhTrong",
+        "op": "<=",
+        "value": 2.5,
+        "donVi": "cm"
+       }
+      ]
+     ]
     }
-   ]
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "153bbe9e4d70c28a80e1222eb15239a1cf730a92b49b7f6eeeed57502506f6c2"
+    }
+   }
   },
   {
    "hs": "84812090",
@@ -2125,5 +2168,47 @@
    ]
   }
  },
- "yKienWcoDayDu": false
+ "yKienWcoDayDu": false,
+ "dieuKienNut": [
+  {
+   "id": "8481201",
+   "nguon": "tieuDe.8481201",
+   "trich": "8481201 Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Van cổng"
+    },
+    {
+     "fact": "cachDieuKhien",
+     "op": "TRONG",
+     "value": [
+      "BANG_TAY"
+     ]
+    },
+    {
+     "fact": "duongKinhTrong",
+     "op": ">",
+     "value": 5,
+     "donVi": "cm"
+    },
+    {
+     "fact": "duongKinhTrong",
+     "op": "<=",
+     "value": 40,
+     "donVi": "cm"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+     "ngay": "2026-10-30",
+     "bam": "153bbe9e4d70c28a80e1222eb15239a1cf730a92b49b7f6eeeed57502506f6c2"
+    }
+   }
+  }
+ ]
 }
