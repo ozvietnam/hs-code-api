@@ -1,0 +1,52 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842010",
+  "phien": "zcode:glm-5.3:20261030T1554#soan-842010",
+  "dong8": {
+    "84201010": {
+      "dieuKienSo": []
+    },
+    "84201020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy là",
+            "máy vắt"
+          ]
+        },
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84201010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chiHoacChuYeu",
+      "ghiChu": "tax.84201010: \"Loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền mạch in hoặc mạch in\" — ý \"chỉ sử dụng hoặc chủ yếu sử dụng\" không có khoá tu-vung@1 (đã kiểm --tu-vung đầy đủ; de-xuat-tu-vung-2.md mục chiHoacChuYeu: \"chỉ hoặc chủ yếu\" là mức ràng buộc khác \"dùng cho\" — cổng không được coi hai câu tương đương). Chỉ ghi congDung thì cổng 2 báo cong2-chong-lan với 84201020 (vector máy là + gia đình + công dụng mạch in thoả cả hai dòng) — không thể xanh nếu không bịa mức ràng buộc."
+    },
+    {
+      "ma": "84201010",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG theo THIEU_KHOA_TU_VUNG (quy trình bước 3.7, mục 5): để dieuKienSo trống, chờ khoá chiHoacChuYeu."
+    },
+    {
+      "ma": "84201020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84201020: \"Máy là hoặc máy vắt phù hợp sử dụng cho gia đình\" ⇒ tenLoai TEN_LOAI [\"Máy là\", \"máy vắt\"] (mảng = hoặc) VÀ phamViSuDung TRONG [GIA_DINH] (cách đọc \"gia đình\" có trong chữ \"phù hợp sử dụng cho gia đình\")."
+    },
+    {
+      "ma": "84201090",
+      "loai": "DE_TRONG",
+      "ghiChu": "tax.84201090: \"Loại khác\" — dòng Loại khác trần, không ghi điều kiện (máy tự phủ định anh em)."
+    }
+  ]
+}
