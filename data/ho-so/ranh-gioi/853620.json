@@ -1,0 +1,186 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "853620",
+  "nhom": "8536",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8536201",
+      "nguon": "tieuDe.8536201",
+      "trich": "8536201 Loại hộp đúc",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "hộp đúc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85362011",
+      "nguon": "tax.85362011",
+      "trich": "85362011 - - - Dòng điện dưới 16 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85362012",
+      "nguon": "tax.85362012",
+      "trich": "85362012 - - - Dòng điện từ 16 A trở lên nhưng không quá 32 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": ">=",
+          "value": 16,
+          "donVi": "A"
+        },
+        {
+          "fact": "dongDien",
+          "op": "<=",
+          "value": 32,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85362013",
+      "nguon": "tax.85362013",
+      "trich": "85362013 - - - Dòng điện trên 32 A nhưng không quá 1.000 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": ">",
+          "value": 32,
+          "donVi": "A"
+        },
+        {
+          "fact": "dongDien",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85362019",
+      "nguon": "tax.85362019",
+      "trich": "85362019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85362020",
+      "nguon": "tax.85362020",
+      "trich": "85362020 - - Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị nhiệt điện gia dụng thuộc nhóm 85.16"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85362091",
+      "nguon": "tax.85362091",
+      "trich": "85362091 - - - Dòng điện dưới 16 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85362099",
+      "nguon": "tax.85362099",
+      "trich": "85362099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "853620",
+      "ghiChu": "CẤU TRÚC: 8536.20 = [8536201 \"Loại hộp đúc\": .11/.12/.13/.19] + .20 (dòng có tên ngang hàng) + [8536209 \"Loại khác\" trần: .91/.99]. Ranh giới chính là NGƯỠNG DÒNG ĐIỆN — khoá SO dongDien (đơn vị chuẩn A). Quy ước đọc biên (LUAT_SOAN): \"dưới\" = <, \"từ … trở lên\" = >=, \"không quá\" = <=, \"trên\" = >. Mỗi khoảng hai đầu ghi HAI điều kiện cùng khoá (AND). Cổng 3 đọc lại số + đơn vị từ chính câu trích (kể cả \"1.000\" kiểu Việt) và kiểm op khớp chữ. Tiêu đề 8536209 và dòng .19/.99 là \"Loại khác\" trần ⇒ KHÔNG ghi điều kiện (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "8536201",
+      "ghiChu": "Nguồn tieuDe.8536201 = tên nguyên văn biểu thuế Tổng cục. \"Loại hộp đúc\" (moulded case) không có khoá liệt kê ⇒ tenLoai TEN_LOAI \"hộp đúc\" (bỏ chữ \"Loại\" — hư từ; giá trị phải là chuỗi con của câu trích). So chữ tự do ⇒ không tất định, cổng ghi cảnh báo so-chu-tu-do."
+    },
+    {
+      "ma": "85362011",
+      "ghiChu": "\"Dòng điện dưới 16 A\" ⇒ dongDien < 16 A."
+    },
+    {
+      "ma": "85362012",
+      "ghiChu": "\"từ 16 A trở lên nhưng không quá 32 A\" ⇒ dongDien >= 16 A VÀ dongDien <= 32 A. Biên 16 thuộc .12 (không thuộc .11 vì .11 là \"<\"); biên 32 thuộc .12 (.13 là \">\") — cổng 2 thử đúng giá trị biên và biên ± 1e-6 nên sai một dấu là đỏ ngay."
+    },
+    {
+      "ma": "85362013",
+      "ghiChu": "\"trên 32 A nhưng không quá 1.000 A\" ⇒ dongDien > 32 A VÀ <= 1000 A (\"1.000\" là dấu nghìn kiểu Việt; ghi value 1000). Trên 1.000 A ⇒ .19 (Loại khác trần)."
+    },
+    {
+      "ma": "85362020",
+      "ghiChu": "Nguồn tax.85362020. \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" ⇒ dungCho CONG_DUNG (khoá \"dùng cho máy/hàng mà hàng lắp vào\") với nguyên cụm chữ. CHỒNG LẤN CHỮ BIỂU (CHONG_LAN_VAN_BAN) với các dòng con của 8536201: .20 đứng NGANG HÀNG tiêu đề \"Loại hộp đúc\", chữ biểu không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào .11–.19 hay .20. Không có TB-TCHQ / SEN / chú giải nào phân xử (8536.20 không có SEN) ⇒ KHÔNG tự đặt điều kiện phân tách (vd thêm \"không phải hộp đúc\" vào .20 là bịa), KHÔNG ghi uuTien. Lúc chạy: không tự chốt, trả CANH_BAO + câu hỏi."
+    },
+    {
+      "ma": "85362091",
+      "ghiChu": "Dưới tiêu đề \"Loại khác\" trần 8536209: \"Dòng điện dưới 16 A\" ⇒ dongDien < 16 A. Đường đi máy sinh: PHAI_KHONG 8536201 (hộp đúc) + PHAI_KHONG .20 + PHAI_CO dongDien < 16 A."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "85362011",
+        "85362020"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    },
+    {
+      "cap": [
+        "85362012",
+        "85362020"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    },
+    {
+      "cap": [
+        "85362013",
+        "85362020"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    },
+    {
+      "cap": [
+        "85362019",
+        "85362020"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: .20 \"Để lắp ghép với thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" đứng ngang hàng tiêu đề 8536201 \"Loại hộp đúc\"; chữ không nói aptomat hộp đúc dùng cho thiết bị 85.16 vào dòng nào. 8536.20 không có SEN; precedents.json không có TB-TCHQ ở 853620xx; chú giải nhóm 85.36 không nói thứ tự ⇒ không có căn cứ uuTien."
+    }
+  ]
+}

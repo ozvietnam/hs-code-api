@@ -1,0 +1,55 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "961700",
+  "nhom": "9617",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "96170010",
+      "nguon": "tax.96170010",
+      "trich": "96170010 - Phích chân không và các loại bình chân không khác, hoàn chỉnh",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "96170020",
+      "nguon": "tax.96170020",
+      "trich": "96170020 - Các bộ phận, trừ ruột thủy tinh",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "961700",
+      "ghiChu": "CẤU TRÚC: 9617.00 có đúng hai dòng có tên (.10 hàng hoàn chỉnh / .20 bộ phận), không có dòng \"Loại khác\" ⇒ cổng 1 đòi hai điều kiện PHỦ KÍN nhau (mọi vector biên phải vào ít nhất một dòng). Ranh giới thật là \"hoàn chỉnh\" ↔ \"bộ phận\", nên dùng MỘT khoá CO_KHONG cho cả hai dòng: laBoPhan KHONG / CO — hai cực của cùng một khoá thì phủ kín và loại trừ nhau một cách tất định (không so chữ). Nguồn: chỉ tax.<chính dòng> (biểu 2026.04.05); 9617 không có SEN, chú giải nhóm không nói gì thêm về ranh giới 8 số."
+    },
+    {
+      "ma": "96170010",
+      "ghiChu": "Nguồn tax.96170010, trích nguyên dòng. Chữ quyết định: \"hoàn chỉnh\" — là mẫu cachDocKhong của khoá laBoPhan (tu-vung@1) ⇒ op KHONG; cổng 3 đọc được \"hoàn chỉnh\" ⇒ cực KHONG khớp chữ. KHÔNG ghi tenLoai \"Phích chân không…\": tên đó là phạm vi của cả nhóm 9617 (cả .20 cũng là bộ phận của phích), ghi vào chỉ thêm so chữ tự do mà không tách được hai dòng."
+    },
+    {
+      "ma": "96170020",
+      "ghiChu": "Nguồn tax.96170020. \"Các bộ phận\" ⇒ laBoPhan CO (mẫu cachDoc \"bộ phận\"). Vế \"trừ ruột thủy tinh\" CỐ Ý KHÔNG số hoá: đó là loại trừ CẤP NHÓM (tên nhóm 9617 \"…bộ phận của chúng trừ ruột thủy tinh\" — ruột thủy tinh ra 7020), không phải ranh giới giữa .10 và .20. Nếu ghi {tenLoai TEN_LOAI \"ruột thủy tinh\", chieu PHAI_KHONG} thì vector \"bộ phận + ruột thủy tinh\" không vào dòng nào ⇒ cổng 1 đỏ \"khong-phu-kin\" — cổng phủ kín không diễn đạt được hàng nằm ngoài cả phân nhóm. Người duyệt: xác nhận bỏ vế này là đúng."
+    }
+  ]
+}
