@@ -195,8 +195,9 @@ const menhDe = (kq, loai) => kq.ve.flatMap((v) => v.menhDe).filter((m) => m.loai
 
 // ── 7. CLI: --ve in phân tích vế; --kiem in lỗi cổng 5 kèm giải thích ───────────────────────────────────────────────
 {
-  const out = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--ve', '--pn6=940542'], { encoding: 'utf8', env: process.env });
-  check('7a CLI --ve in vế giới hạn chưa phủ của .30', /94054230/.test(out) && /không nhấp nháy/.test(out) && /CHƯA PHỦ/.test(out), out.slice(0, 600));
+  let out = ''; let code = 0;
+  try { out = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--ve', '--pn6=940542'], { encoding: 'utf8', env: process.env, stdio: 'pipe' }); } catch (e) { out = String(e.stdout); code = e.status; }
+  check('7a CLI --ve in vế giới hạn chưa phủ của .30 (mã thoát 1)', code === 1 && /94054230/.test(out) && /không nhấp nháy/.test(out) && /CHƯA PHỦ/.test(out), out.slice(0, 600));
   let txt = ''; try { execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--kiem', '--pn6=940542'], { encoding: 'utf8', env: process.env, stdio: 'pipe' }); } catch (e) { txt = String(e.stdout); }
   check('7b CLI --kiem in cong5-ve-gioi-han-bi-bo + lời giải thích', /cong5-ve-gioi-han-bi-bo:94054230/.test(txt) && /BO_VE/.test(txt), txt.slice(0, 800));
 }
