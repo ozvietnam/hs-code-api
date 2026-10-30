@@ -143,8 +143,14 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
 3. Một dòng là phần còn lại có tên ⇒ `phanConLai`.
 4. Hai câu chữ biểu THẬT SỰ không loại trừ nhau (vd "Rơ le kỹ thuật số" ↔ "dùng cho quạt điện") ⇒ khai
    `"chongLanVanBan": [{"cap": ["<hsA>", "<hsB>"], "lyDo": "… .A \"<chữ nguyên văn nhánh A>\" … .B \"<chữ nguyên văn nhánh B>\" …; không có căn cứ thứ tự"}]`
-   — `lyDo` PHẢI trích trong ngoặc kép chữ của cả hai nhánh. Không khai cho chồng lấn do bộ so chữ hay do "khác" cuối dòng.
+   — `lyDo` PHẢI trích trong ngoặc kép chữ của cả hai nhánh, và ít nhất một câu trích là chữ NGUYÊN VĂN của chính một trong hai
+   dòng của cặp (chỉ trích tiêu đề tổ tiên ⇒ `cong3-chong-lan-chi-trich-tieu-de`). Không khai cho chồng lấn do bộ so chữ hay do
+   "khác" cuối dòng.
 5. Không bước nào khớp ⇒ DỪNG.
+6. **Chồng lấn theo TRỤC** (một nhánh chia theo tên cạnh nhánh chia theo công dụng — 392690, 401699, 854442 "Cáp ắc qui" ↔ "Dùng
+   cho viễn thông…") ⇒ `cong2-chong-lan-truc`, DỪNG. Máy bắt cả ở cấp TIÊU ĐỀ/TẦNG (nhánh chồng ≥ 2 nhánh anh em khi cụm có tiêu
+   đề, hoặc hai tiêu đề chia theo tên ↔ công dụng). Khai `chongLanVanBan` KHÔNG gỡ được trục — kể cả khai đủ mọi cặp; cặp khai
+   trong cụm trục thành lỗi `cong2-chong-lan-van-ban-truc`. Thấy nhiều cặp chồng cùng một cặp tiêu đề ⇒ nghĩ tới trục trước.
 
 ## 5. Điều kiện DỪNG (không tự xử lý — báo Claude)
 

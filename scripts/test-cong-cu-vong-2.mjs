@@ -1,10 +1,12 @@
 // Cổng ranh giới 6→8 số — vòng gia cố 2 (#653: vướng từ lô Claude giữ, #652). Mỗi mục kèm test đỏ trước.
 // Bản nháp viết tay trên phân nhóm thật (cây + biểu thuế + nguồn nguyên văn thật), không đọc data/bench/, data/oz-export/.
+// Bản nháp lấy từ bản ĐÔNG CỨNG scripts/fixtures/ho-so/ranh-gioi-7559407/ (vòng 3) — không đọc bản nháp sống.
 import './test-isolate-data.mjs';
 import fs from 'fs';
 import path from 'path';
 import { spawnSync } from 'child_process';
 import { createRequire } from 'module';
+import { nhapDongCung, gieoNhap } from './fixtures/ho-so/nhap-dong-cung.mjs';
 const require = createRequire(import.meta.url);
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const ML = require('../lib/ho-so/ma-loi.js');
@@ -13,7 +15,7 @@ let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${typeof x === 'string' ? x : JSON.stringify(x)}`); } };
 const coLoi = (r, tien) => r.loi.some((l) => l.startsWith(tien));
 const coCanh = (r, tien) => r.canhBao.some((l) => l.startsWith(tien));
-const docNhap = (pn6) => JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi', `${pn6}.json`), 'utf8'));
+const docNhap = (pn6) => nhapDongCung(pn6);
 const cli = (...a) => spawnSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', ...a], { encoding: 'utf8', env: process.env });
 
 // ── 1. Bảng hiệu chỉnh tiền lệ đã có mục cho PN6 ⇒ KHÔNG DỪNG; chỉ DỪNG khi có cờ mà bảng chưa có mục ──────────────
@@ -24,6 +26,7 @@ const cli = (...a) => spawnSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs
   const r = C.kiemRanhGioi('630790', docNhap('630790'), { cong: [1, 2, 3] });
   check('1b bảng có mục ⇒ không DỪNG (dung rỗng)', r.hopLe && r.dung.length === 0, r.dung);
   check('1c … chỉ còn cảnh báo thông tin can-bang-hieu-chinh-tien-le-da-co:630790', coCanh(r, 'can-bang-hieu-chinh-tien-le-da-co:630790') && !ML.laDung('can-bang-hieu-chinh-tien-le-da-co:630790'), r.canhBao);
+  gieoNhap('630790'); // CLI đọc bản đông cứng (HS_DATA_DIR), không đọc bản sống
   const k = cli('--kiem', '--pn6=630790');
   // Trước #653: 3 DỪNG. Nay không DỪNG; đỏ 1 vì cổng 5 (bản bị trả về ở #659: bỏ vế mở .80, tách định ngữ .70).
   check('1d CLI --kiem 630790 không DỪNG (mã thoát 1 — chỉ đỏ ở cổng 5)', k.status === 1 && /cong5-/.test(k.stdout) && !/DỪNG — báo Claude/.test(k.stdout), k.stdout.slice(-400));

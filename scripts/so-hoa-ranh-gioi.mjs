@@ -125,7 +125,8 @@ function inTuVung(dsKhoa) {
       dong += `; donVi: ${Object.keys(he).join(', ')} (chuẩn ${k.donViChuan}; viết như chữ trích: ${[...new Set(bi)].join(', ')})`;
     }
     console.log(dong);
-    const doc = (cd) => (cd ? [...(cd.vi || [])].join(' | ') : '');
+    // Đủ cách đọc mọi ngôn ngữ (vi + en + zh) — đúng thứ cổng 3 và cổng 5 đọc (#681: "VDC" chỉ ở cachDoc.en).
+    const doc = (cd) => DK.mauCua(cd).join(' | ');
     if (k.kieu === 'CO_KHONG') console.log(`    đọc CÓ: ${doc(k.cachDoc)}${k.cachDocKhong ? ` · đọc KHÔNG: ${doc(k.cachDocKhong)}` : ''}`);
     if (k.giaTriHopLe) for (const v of k.giaTriHopLe) console.log(`    ${v}: ${k.moTaGiaTri?.[v]?.nhanVi || v}${k.moTaGiaTri?.[v]?.cachDoc ? ` — đọc: ${doc(k.moTaGiaTri[v].cachDoc)}` : ''}`);
     if (k.viTri) console.log(`    viTri: ${k.viTri.map((v) => `${v}${k.moTaViTri?.[v]?.cachDoc ? ` (${doc(k.moTaViTri[v].cachDoc)})` : ''}`).join(', ')}`);

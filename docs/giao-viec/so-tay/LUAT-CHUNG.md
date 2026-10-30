@@ -95,8 +95,9 @@ Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRI
   tự do ở nút trên/dưới mà giá trị ghép không thoả được), `cong3-bien-khong-doc-duoc` (cảnh báo — người soát đối chiếu biên tay), `cong3-trich-qua-dai` (LỖI —
   mục có điều kiện mà trích > 300 ký tự).
 - **CHONG_LAN_VAN_BAN có máy chặn**: `lyDo` phải trích nguyên văn (ngoặc kép) chữ biểu của CẢ HAI nhánh rẽ
-  (`cong3-chong-lan-thieu-trich`); một nhánh chồng ≥ 3 nhánh anh em = chồng lấn theo TRỤC (392690, 401699) ⇒ `cong2-chong-lan-truc`,
-  DỪNG. Chồng lấn do bộ so chữ hay "khác" cuối dòng: không khai — dùng `phanConLai` hoặc để đỏ.
+  (`cong3-chong-lan-thieu-trich`) và ít nhất một câu trích là chữ của chính một dòng trong cặp (`cong3-chong-lan-chi-trich-tieu-de`);
+  chồng lấn theo TRỤC (392690, 401699, 854442 — một nhánh chồng ≥ 3 nhánh anh em; ≥ 2 khi cụm có tiêu đề/tầng; hai tiêu đề chia theo
+  tên ↔ công dụng) ⇒ `cong2-chong-lan-truc`, DỪNG — khai chongLanVanBan không gỡ được (cặp khai thành `cong2-chong-lan-van-ban-truc`). Chồng lấn do bộ so chữ hay "khác" cuối dòng: không khai — dùng `phanConLai` hoặc để đỏ.
 - **Định danh phiên**: `<định danh>#<soan|soat>-<nhãn>` (vd `https://claude.ai/code/session_…#soan-830220`,
   `cursor:<mô hình>:<yyyymmddThhmm>#soan-830220`). `--duyet` đòi `#soat-…`; cùng định danh + nhãn chỉ đổi vai = tự duyệt.
 - **ghiChuSoan** `{ma, loai, ghiChu, khoaDeXuat?}`, `loai` ∈ `QUYET_DINH | DE_TRONG | CHONG_LAN | LECH_TIEN_LE | THIEU_KHOA_TU_VUNG | DUNG | BO_VE`

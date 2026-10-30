@@ -1,0 +1,1008 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "840991",
+  "nhom": "8409",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "TRA_VE",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "840991~r12982",
+      "nguon": "tieuDe.840991~r12982",
+      "trich": "840991~r12982 Dùng cho tàu thuyền thuộc Chương 89",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 89"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8409911",
+      "nguon": "tieuDe.8409911",
+      "trich": "8409911 Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.29",
+            "84.30"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8409912",
+      "nguon": "tieuDe.8409912",
+      "trich": "8409912 Dùng cho xe thuộc nhóm 87.01",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8409913",
+      "nguon": "tieuDe.8409913",
+      "trich": "8409913 Dùng cho xe của nhóm 87.11",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.11"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8409914",
+      "nguon": "tieuDe.8409914",
+      "trich": "8409914 Dùng cho xe khác thuộc Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "id": "8409915",
+      "nguon": "tieuDe.8409915",
+      "trich": "8409915 Cho động cơ máy thủy công suất không quá 22,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 22.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8409916",
+      "nguon": "tieuDe.8409916",
+      "trich": "8409916 Cho động cơ máy thủy công suất trên 22,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 22.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8409917",
+      "nguon": "tieuDe.8409917",
+      "trich": "8409917 Dùng cho động cơ khác",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84099111",
+      "nguon": "tax.84099111",
+      "trich": "84099111 - - - - Chế hòa khí và bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế hòa khí"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099112",
+      "nguon": "tax.84099112",
+      "trich": "84099112 - - - - Thân động cơ (cylinder block); hộp trục khuỷu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "hộp trục khuỷu"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099113",
+      "nguon": "tax.84099113",
+      "trich": "84099113 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099114",
+      "nguon": "tax.84099114",
+      "trich": "84099114 - - - - Ống xi lanh khác ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099115",
+      "nguon": "tax.84099115",
+      "trich": "84099115 - - - - Quy lát và nắp quy lát",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quy lát",
+            "nắp quy lát"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099116",
+      "nguon": "tax.84099116",
+      "trich": "84099116 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099117",
+      "nguon": "tax.84099117",
+      "trich": "84099117 - - - - Piston khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099118",
+      "nguon": "tax.84099118",
+      "trich": "84099118 - - - - Bạc piston và chốt piston",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bạc piston",
+            "chốt piston"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099119",
+      "nguon": "tax.84099119",
+      "trich": "84099119 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099121",
+      "nguon": "tax.84099121",
+      "trich": "84099121 - - - - Chế hòa khí và bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế hòa khí"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099122",
+      "nguon": "tax.84099122",
+      "trich": "84099122 - - - - Thân động cơ (cylinder block); hộp trục khuỷu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "hộp trục khuỷu"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099123",
+      "nguon": "tax.84099123",
+      "trich": "84099123 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099124",
+      "nguon": "tax.84099124",
+      "trich": "84099124 - - - - Ống xi lanh khác ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099126",
+      "nguon": "tax.84099126",
+      "trich": "84099126 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099128",
+      "nguon": "tax.84099128",
+      "trich": "84099128 - - - - Bạc piston và chốt piston",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bạc piston",
+            "chốt piston"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099129",
+      "nguon": "tax.84099129",
+      "trich": "84099129 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099131",
+      "nguon": "tax.84099131",
+      "trich": "84099131 - - - - Chế hòa khí và bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế hòa khí"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099132",
+      "nguon": "tax.84099132",
+      "trich": "84099132 - - - - Thân động cơ (cylinder block); hộp trục khuỷu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "hộp trục khuỷu"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099134",
+      "nguon": "tax.84099134",
+      "trich": "84099134 - - - - Ống xi lanh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099135",
+      "nguon": "tax.84099135",
+      "trich": "84099135 - - - - Quy lát và nắp quy lát",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quy lát",
+            "nắp quy lát"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099137",
+      "nguon": "tax.84099137",
+      "trich": "84099137 - - - - Piston",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099138",
+      "nguon": "tax.84099138",
+      "trich": "84099138 - - - - Bạc piston và chốt piston",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bạc piston",
+            "chốt piston"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099139",
+      "nguon": "tax.84099139",
+      "trich": "84099139 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099141",
+      "nguon": "tax.84099141",
+      "trich": "84099141 - - - - Chế hòa khí và bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế hòa khí"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099142",
+      "nguon": "tax.84099142",
+      "trich": "84099142 - - - - Thân động cơ (cylinder block); hộp trục khuỷu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "hộp trục khuỷu"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099143",
+      "nguon": "tax.84099143",
+      "trich": "84099143 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099144",
+      "nguon": "tax.84099144",
+      "trich": "84099144 - - - - Ống xi lanh khác ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099145",
+      "nguon": "tax.84099145",
+      "trich": "84099145 - - - - Quy lát và nắp quy lát",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quy lát",
+            "nắp quy lát"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099146",
+      "nguon": "tax.84099146",
+      "trich": "84099146 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099147",
+      "nguon": "tax.84099147",
+      "trich": "84099147 - - - - Piston khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099148",
+      "nguon": "tax.84099148",
+      "trich": "84099148 - - - - Bạc piston và chốt piston",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bạc piston",
+            "chốt piston"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099149",
+      "nguon": "tax.84099149",
+      "trich": "84099149 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099151",
+      "nguon": "tax.84099151",
+      "trich": "84099151 - - - - - Thân động cơ (cylinder block); hộp trục khuỷu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "hộp trục khuỷu"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099152",
+      "nguon": "tax.84099152",
+      "trich": "84099152 - - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099153",
+      "nguon": "tax.84099153",
+      "trich": "84099153 - - - - - Ống xi lanh khác ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099154",
+      "nguon": "tax.84099154",
+      "trich": "84099154 - - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099155",
+      "nguon": "tax.84099155",
+      "trich": "84099155 - - - - - Piston khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099159",
+      "nguon": "tax.84099159",
+      "trich": "84099159 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099161",
+      "nguon": "tax.84099161",
+      "trich": "84099161 - - - - - Thân động cơ (cylinder block); hộp trục khuỷu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "hộp trục khuỷu"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099162",
+      "nguon": "tax.84099162",
+      "trich": "84099162 - - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099163",
+      "nguon": "tax.84099163",
+      "trich": "84099163 - - - - - Ống xi lanh khác ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099164",
+      "nguon": "tax.84099164",
+      "trich": "84099164 - - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099169",
+      "nguon": "tax.84099169",
+      "trich": "84099169 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099171",
+      "nguon": "tax.84099171",
+      "trich": "84099171 - - - - Chế hòa khí và bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế hòa khí"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099172",
+      "nguon": "tax.84099172",
+      "trich": "84099172 - - - - Thân động cơ (cylinder block); hộp trục khuỷu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "hộp trục khuỷu"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099173",
+      "nguon": "tax.84099173",
+      "trich": "84099173 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099174",
+      "nguon": "tax.84099174",
+      "trich": "84099174 - - - - Ống xi lanh khác ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099176",
+      "nguon": "tax.84099176",
+      "trich": "84099176 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099177",
+      "nguon": "tax.84099177",
+      "trich": "84099177 - - - - Piston khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84099178",
+      "nguon": "tax.84099178",
+      "trich": "84099178 - - - - Bạc piston và chốt piston",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bạc piston",
+            "chốt piston"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84099179",
+      "nguon": "tax.84099179",
+      "trich": "84099179 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8409911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409911 \"Dùng cho máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho [\"84.29\",\"84.30\"]; .912 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\"; .913 \"Dùng cho xe của nhóm 87.11\" ⇒ dungCho \"87.11\"; r12982 \"Dùng cho tàu thuyền thuộc Chương 89\" ⇒ dungCho \"Chương 89\". Anh em cùng tầng đều dùng dungCho."
+    },
+    {
+      "ma": "8409914",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409914 \"Dùng cho xe khác thuộc Chương 87\" ⇒ dungCho \"Chương 87\" + phanConLai: true (\"xe khác\" = trừ 87.01, 87.11 đứng trước; LUAT-CHUNG: nhóm 87.xx thoả \"Chương 87\")."
+    },
+    {
+      "ma": "8409917",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409917 \"Dùng cho động cơ khác\" ⇒ dungCho \"động cơ\" + phanConLai: true (phủ định mọi tầng anh em đứng trước)."
+    },
+    {
+      "ma": "8409915",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409915 \"Cho động cơ máy thủy công suất không quá 22,38 kW\" ⇒ congSuat <= 22.38 kW; .916 \"… trên 22,38 kW\" ⇒ congSuat > 22.38 kW. Công suất là của động cơ máy thủy mà bộ phận dùng cho (chữ tiêu đề), không phải của bộ phận — người soát lưu ý khi hỏi dữ kiện."
+    },
+    {
+      "ma": "84099113",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai \"Ống xi lanh\" + duongKinhTrong >= 50 mm + duongKinhTrong <= 155 mm (\"từ … trở lên\" = >=, \"không quá\" = <=); áp cho .13/.23/.43/.52/.62/.73. \"Ống xi lanh khác\" ⇒ tenLoai \"Ống xi lanh\" + phanConLai: true."
+    },
+    {
+      "ma": "84099116",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai \"Piston\" + duongKinh (đường kính ngoài) >= 50 mm + <= 155 mm; áp cho .16/.26/.46/.54/.64/.76. \"Piston khác\" ⇒ tenLoai \"Piston\" + phanConLai: true. \"Bạc piston và chốt piston\" ⇒ tenLoai [\"Bạc piston\",\"chốt piston\"] (tên cụ thể hơn \"Piston\")."
+    },
+    {
+      "ma": "84099111",
+      "loai": "DE_TRONG",
+      "ghiChu": "\"Chế hòa khí và bộ phận của chúng\" ⇒ tenLoai \"Chế hòa khí\"; vế \"và bộ phận của chúng\" không có khoá riêng (laBoPhan là có/không chung, không nói bộ phận CỦA chế hòa khí) — bộ phận chế hòa khí được nhận khi mô tả hàng có chữ \"chế hòa khí\". Áp cho .11/.21/.31/.41/.71."
+    },
+    {
+      "ma": "84099112",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Thân động cơ (cylinder block); hộp trục khuỷu\" ⇒ tenLoai [\"Thân động cơ\",\"hộp trục khuỷu\"]; \"Quy lát và nắp quy lát\" ⇒ tenLoai [\"Quy lát\",\"nắp quy lát\"]."
+    },
+    {
+      "ma": "84099118",
+      "loai": "CHONG_LAN",
+      "ghiChu": "ĐỎ có chủ đích: cong2-chong-lan .16+.18 (và .26+.28, .46+.48, .76+.78) do BỘ SO CHỮ — \"Bạc piston\" chứa chuỗi \"Piston\" của dòng .x6 \"Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm\"; tenCuTheHon không áp vì dòng .x6 còn ràng buộc duongKinh. Chữ biểu KHÔNG tự chồng (bạc/chốt piston không phải piston) nên không khai chongLanVanBan; .18 không có chữ \"khác\" nên không dùng phanConLai. Cần sửa công cụ (tenCuTheHon khi bên chung còn ràng buộc khoá khác) — không ép."
+    },
+    {
+      "ma": "84099113",
+      "loai": "QUYET_DINH",
+      "ghiChu": "cong3-bien-khong-doc-duoc trên mọi dòng ống xi lanh/piston có ngưỡng: đã đối chiếu tay — \"từ 50 mm trở lên\" = >= 50 mm, \"nhưng không quá 155 mm\" = <= 155 mm."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+      "ngay": "2026-10-30",
+      "lyDo": "840991.json:dong8[84099111], [84099121], [84099131], [84099141], [84099171] THU HẸP: chữ \"Chế hòa khí và bộ phận của chúng\" nhưng điều kiện chỉ tenLoai \"Chế hòa khí\". TEN_LOAI đọc DANH TỪ ĐẦU của tên hàng (lib/tu-vung.js docTenLoai → productHead), nên \"Kim phao của chế hòa khí\" có tên loại \"Kim phao\", không thoả ⇒ bộ phận chế hòa khí rơi xuống .x9 \"Loại khác\". Ghi chú DE_TRONG của bản nháp (\"được nhận khi mô tả có chữ chế hòa khí\") không đúng với bộ đọc. Có khoá để diễn đạt: laBoPhan (CO_KHONG) + dungCho \"Chế hòa khí\" (chuỗi con của trích) đặt trong HOAC với vế tenLoai. Phần còn lại của bản nháp (tầng 84.29/84.30, 87.01, 87.11, xe khác Ch.87, Ch.89 + công suất 22,38 kW, động cơ khác; biên 50–155 mm) đã đối chiếu tay: đúng."
+    }
+  ]
+}
