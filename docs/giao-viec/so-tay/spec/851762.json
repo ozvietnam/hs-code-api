@@ -1,0 +1,136 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "851762",
+  "phien": "zcode:glm-5.3:20261030T1540#soan-851762",
+  "dong8": {
+    "85176210": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "phát và thu sóng vô tuyến" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "phiên dịch trực tiếp" }
+      ]
+    },
+    "85176230": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "chuyển mạch" }
+      ]
+    },
+    "85176241": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "điều chế" }
+      ]
+    },
+    "85176242": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["tập trung", "dồn kênh"] }
+      ]
+    },
+    "85176243": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["điều khiển", "thích ứng"] },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "kết nối với máy xử lý dữ liệu" }
+      ]
+    },
+    "85176251": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "mạng nội bộ không dây" }
+      ]
+    },
+    "85176252": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "phát và thu" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "phiên dịch trực tiếp" }
+      ]
+    },
+    "85176253": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "phát" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["điện báo", "điện thoại"] }
+      ]
+    },
+    "85176261": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["điện báo", "điện thoại"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "sóng vô tuyến" }
+      ]
+    },
+    "85176291": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "thu xách tay" },
+              { "fact": "dungCho", "op": "CONG_DUNG", "value": ["gọi", "báo hiệu", "nhắn tin"] }
+            ],
+            [
+              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "cảnh báo bằng tin nhắn" }
+            ]
+          ]
+        }
+      ]
+    },
+    "85176292": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["điện báo", "điện thoại"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "sóng vô tuyến" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8517624": {
+      "dieuKienSo": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": ["hệ thống hữu tuyến sóng mang", "hệ thống hữu tuyến kỹ thuật số"] }
+      ]
+    },
+    "8517625": {
+      "dieuKienSo": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "truyền dẫn" },
+        { "fact": "coKetHopThietBiThu", "op": "CO" }
+      ]
+    },
+    "8517626": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "truyền dẫn" }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    {
+      "cap": ["85176230", "85176249"],
+      "lyDo": "Hai câu chữ biểu không loại trừ nhau. A \"Thiết bị chuyển mạch điện báo hoặc điện thoại\" (tax.85176230); B \"Loại khác\" (tax.85176249) trong nhóm 8517624 \"Thiết bị dùng cho hệ thống hữu tuyến sóng mang hoặc hệ thống hữu tuyến kỹ thuật số\" (tieuDe.8517624) — thiết bị chuyển mạch dùng cho hệ thống hữu tuyến thoả chữ của cả hai nhánh, không loại trừ; không có căn cứ thứ tự."
+    },
+    {
+      "cap": ["85176230", "85176259"],
+      "lyDo": "Hai câu chữ biểu không loại trừ nhau. A \"Thiết bị chuyển mạch điện báo hoặc điện thoại\" (tax.85176230); B \"Loại khác\" (tax.85176259) trong nhóm 8517625 \"Thiết bị truyền dẫn khác kết hợp với thiết bị thu\" (tieuDe.8517625) — thiết bị chuyển mạch thuộc loại truyền dẫn kết hợp thiết bị thu thoả chữ của cả hai nhánh, không loại trừ; không có căn cứ thứ tự."
+    },
+    {
+      "cap": ["85176210", "85176249"],
+      "lyDo": "Hai câu chữ biểu không loại trừ nhau. A \"Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng\" (tax.85176210); B \"Loại khác\" (tax.85176249) trong nhóm 8517624 \"Thiết bị dùng cho hệ thống hữu tuyến sóng mang hoặc hệ thống hữu tuyến kỹ thuật số\" (tieuDe.8517624) — thiết bị phát thu sóng vô tuyến dùng cho hệ thống hữu tuyến thoả chữ của cả hai nhánh, không loại trừ; không có căn cứ thứ tự."
+    },
+    {
+      "cap": ["85176210", "85176252"],
+      "lyDo": "Hai câu chữ biểu không loại trừ nhau. A \"Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng\" (tax.85176210); B \"Thiết bị phát và thu dùng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng\" (tax.85176252) — chữ B chỉ khác chữ A ở chỗ không nhắc \"sóng vô tuyến\", hàng thoả chữ A cũng thoả chữ B; không có căn cứ thứ tự."
+    }
+  ],
+  "ghiChuSoan": [
+    { "ma": "85176210", "loai": "QUYET_DINH", "ghiChu": "tax.85176210: \"Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp…\" ⇒ tenLoai \"phát và thu sóng vô tuyến\" + dungCho \"phiên dịch trực tiếp\". Giá trị tenLoai giữ cả \"sóng vô tuyến\" để phân biệt với 85176252." },
+    { "ma": "85176230", "loai": "QUYET_DINH", "ghiChu": "tax.85176230: \"Thiết bị chuyển mạch điện báo hoặc điện thoại\" ⇒ tenLoai \"chuyển mạch\". Chữ không loại trừ nhóm 8517624 (dùng cho hệ thống hữu tuyến) ⇒ khai chongLanVanBan với 85176249." },
+    { "ma": "85176241", "loai": "QUYET_DINH", "ghiChu": "tax.85176241: \"Bộ điều chế/giải điều chế (modems)…\" ⇒ tenLoai \"điều chế\" (chuỗi con nằm trong cả \"điều chế\" và \"giải điều chế\")." },
+    { "ma": "85176241", "loai": "DE_TRONG", "ghiChu": "\"kể cả loại sử dụng cáp nối và dạng thẻ cắm\" là ví dụ minh hoạ ⇒ không thành điều kiện." },
+    { "ma": "85176242", "loai": "QUYET_DINH", "ghiChu": "tax.85176242: \"Bộ tập trung hoặc bộ dồn kênh\" ⇒ tenLoai [\"tập trung\", \"dồn kênh\"] (chữ \"hoặc\" ⇒ mảng)." },
+    { "ma": "85176243", "loai": "QUYET_DINH", "ghiChu": "tax.85176243: \"Bộ điều khiển và bộ thích ứng (adaptor)… được thiết kế chỉ để kết nối với máy xử lý dữ liệu tự động thuộc nhóm 84.71\" ⇒ tenLoai [\"điều khiển\", \"thích ứng\"] + dungCho \"kết nối với máy xử lý dữ liệu\". Từ \"chỉ\" (giới hạn độc quyền) không có op diễn đạt; ghi điều kiện hẹp nhất theo chữ." },
+    { "ma": "85176243", "loai": "DE_TRONG", "ghiChu": "\"kể cả cổng nối, cầu nối, bộ định tuyến và các thiết bị tương tự khác\" là liệt kê ví dụ ⇒ không thành điều kiện; KHÔNG dùng phanConLai vì \"khác\" nằm trong mệnh đề ví dụ \"kể cả…\", dòng này là dòng có tên riêng chứ không phải phần còn lại của tầng." },
+    { "ma": "85176251", "loai": "QUYET_DINH", "ghiChu": "tax.85176251: \"Thiết bị mạng nội bộ không dây\" ⇒ tenLoai \"mạng nội bộ không dây\"." },
+    { "ma": "85176252", "loai": "QUYET_DINH", "ghiChu": "tax.85176252: \"Thiết bị phát và thu dùng cho phiên dịch trực tiếp…\" ⇒ tenLoai \"phát và thu\" + dungCho \"phiên dịch trực tiếp\"." },
+    { "ma": "85176253", "loai": "QUYET_DINH", "ghiChu": "tax.85176253: \"Thiết bị phát khác dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" ⇒ phanConLai true (\"phát khác\" = phần còn lại có tên, phủ định 85176251, 85176252) + điều kiện vế tenLoai \"phát\" + dungCho [\"điện báo\", \"điện thoại\"]." },
+    { "ma": "85176261", "loai": "QUYET_DINH", "ghiChu": "tax.85176261: \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" ⇒ dungCho [\"điện báo\", \"điện thoại\"] + tenLoai \"sóng vô tuyến\". Dùng tenLoai (không phải congDung) để tránh điểm mù với tiêu đề cha 8517626 dùng congDung \"truyền dẫn\"." },
+    { "ma": "85176291", "loai": "QUYET_DINH", "ghiChu": "tax.85176291: chữ gộp hai loại hàng — \"Thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin\" và \"thiết bị cảnh báo bằng tin nhắn\" ⇒ HOAC hai phương án. Chữ không loại trừ 85176292 ⇒ khai chongLanVanBan." },
+    { "ma": "85176291", "loai": "DE_TRONG", "ghiChu": "\"kể cả máy nhắn tin\" là ví dụ minh hoạ ⇒ không thành điều kiện." },
+    { "ma": "85176292", "loai": "QUYET_DINH", "ghiChu": "tax.85176292: \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" ⇒ cùng cấu trúc 85176261; phân biệt qua tầng cha (8517626 \"truyền dẫn khác\" vs 8517629 \"Loại khác\" phủ định mọi anh em)." },
+    { "ma": "8517624", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8517624: \"Thiết bị dùng cho hệ thống hữu tuyến sóng mang hoặc hệ thống hữu tuyến kỹ thuật số\" ⇒ congDung [\"hệ thống hữu tuyến sóng mang\", \"hệ thống hữu tuyến kỹ thuật số\"] (chữ \"hoặc\" ⇒ mảng). Dùng congDung (không phải dungCho) để tránh điểm mù với 85176243 dùng dungCho \"kết nối với máy xử lý dữ liệu\"." },
+    { "ma": "8517625", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8517625: \"Thiết bị truyền dẫn khác kết hợp với thiết bị thu\" ⇒ congDung \"truyền dẫn\" + coKetHopThietBiThu CO (cachDoc \"kết hợp với thiết bị thu\"). KHÔNG ghi phanConLai: chữ 85176252 là tập con chữ 85176210 (không nhắc \"sóng vô tuyến\") nên nếu bắt 85176252 phải phủ định 85176210 thì không bao giờ CO (cong2-dong-khong-toi-duoc, vòng 2); thay vào đó khai chongLanVanBan [85176210, 85176252]." },
+    { "ma": "8517626", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8517626: \"Thiết bị truyền dẫn khác\" ⇒ phanConLai true + congDung \"truyền dẫn\"; phủ định anh em đứng trước (85176210, 85176230, 8517624, 8517625); phân biệt với 8517625 bằng coKetHopThietBiThu CO ở 8517625." }
+  ]
+}
