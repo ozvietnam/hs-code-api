@@ -79,5 +79,57 @@ const nhap848310 = () => nhap('848310', {
   check('2b lỗ hổng THẬT trong vùng của tiêu đề (Micro, đường kính > 10 mm) vẫn bị báo', coLoi(r2, 'cong1-khong-phu-kin:8518101:') && r2.loi.some((l) => l.startsWith('cong1-khong-phu-kin:8518101:') && l.includes('tenLoai=Micro')), r2.loi);
 }
 
+// ── 3. Phần còn lại có tên (phanConLai), tên cụ thể hơn thắng, dungCho theo cấp mã HS ─────────────────────────────
+const DK = require('../lib/dieu-kien-so.js');
+const nhap850131 = (pcl) => nhap('850131', {
+  85013130: [TEN('Động cơ'), DUNG('hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16')],
+  85013160: [TEN('Động cơ'), DUNG('xe của Chương 87')],
+  85013170: { dieuKienSo: [TEN('Động cơ')], ...(pcl === undefined ? {} : { phanConLai: pcl }) },
+  85013180: [TEN('Máy phát điện')],
+});
+{
+  const r0 = C.kiemRanhGioi('850131', nhap850131());
+  check('3a "Động cơ khác" chưa đánh dấu → chồng lấn + cảnh báo nghi-phan-con-lai:85013170', coLoi(r0, 'cong2-chong-lan:85013130+85013170') && coCanh(r0, 'nghi-phan-con-lai:85013170'), { loi: r0.loi, canhBao: r0.canhBao });
+  const g = C.goiSoan('850131');
+  check('3b --goi đánh dấu 85013170 nghiPhanConLai', g.canSoHoa.find((x) => x.ma === '85013170')?.nghiPhanConLai === true && !g.canSoHoa.find((x) => x.ma === '85013180')?.nghiPhanConLai);
+  const r = C.kiemRanhGioi('850131', nhap850131(true));
+  check('3c phanConLai:true (phủ định anh em ĐỨNG TRƯỚC) → 850131 xanh', r.hopLe === true, r.loi);
+  check('3d … không còn cảnh báo nghi-phan-con-lai', !coCanh(r, 'nghi-phan-con-lai:85013170'), r.canhBao);
+  const soTay = C.soTayTuNhap('850131', nhap850131(true));
+  const dd = DK.duongDiDong8('85013170', { soTay });
+  const pk = dd.nhom.filter((x) => x.chieu === 'PHAI_KHONG').map((x) => x.nut);
+  check('3e luật đi: .70 phanConLai phủ định .30 + .60, KHÔNG phủ định .80 (đứng sau)', pk.join(',') === '85013130,85013160', dd.nhom);
+  const r2 = C.kiemRanhGioi('850131', nhap850131(['85013130']));
+  check('3f phanConLai dạng mảng chỉ phủ định đúng anh em liệt kê → còn chồng .60/.70', coLoi(r2, 'cong2-chong-lan:85013160+85013170') && !coLoi(r2, 'cong2-chong-lan:85013130+85013170'), r2.loi);
+  const r3 = C.kiemRanhGioi('850131', nhap850131(['84159000']));
+  check('3g phanConLai liệt kê mã không phải anh em → cong0-phan-con-lai-sai-anh-em', coLoi(r3, 'cong0-phan-con-lai-sai-anh-em:85013170'), r3.loi);
+  const b4 = nhap850131(); b4.dong8.find((m) => m.hs === '85013160').phanConLai = true;
+  check('3h phanConLai trên dòng không có chữ "khác" → cong3-phan-con-lai-khong-co-chu-khac', coLoi(C.kiemRanhGioi('850131', b4), 'cong3-phan-con-lai-khong-co-chu-khac:85013160'));
+  const b5 = nhap('841350', { 8413503: [TEN('Bơm nước'), SO('luuLuong', '<=', 8000, 'm³/h')], 84135031: [{ fact: 'hoatDongBangDien', op: 'CO' }], 84135032: [{ fact: 'hoatDongBangDien', op: 'KHONG' }], 84135040: [TEN('Bơm nước'), SO('luuLuong', '>', 8000, 'm³/h'), SO('luuLuong', '<=', 13000, 'm³/h')] });
+  b5.dong8.find((m) => m.hs === '84135090').phanConLai = true;
+  check('3i phanConLai trên dòng "Loại khác" (vốn đã phủ định anh em) → cong0-phan-con-lai-thua', coLoi(C.kiemRanhGioi('841350', b5), 'cong0-phan-con-lai-thua:84135090'));
+  check('3j băm: bản không có phanConLai giữ băm cũ; thêm phanConLai ⇒ băm đổi', C.bamRanhGioi(nhap850131()) === C.bamRanhGioi(JSON.parse(JSON.stringify(nhap850131()))) && C.bamRanhGioi(nhap850131(true)) !== C.bamRanhGioi(nhap850131()));
+  const S8501 = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/8501.json'), 'utf8'));
+  let moi = null; let nem = null;
+  try { moi = C.apDung(C.duyet(nhap850131(true), { phien: 'https://claude.ai/code/session_TEST#soat-test', ngay: '2026-10-31' }), S8501); } catch (e) { nem = e.message; }
+  check('3k áp vào sổ tay mang phanConLai sang dòng .70', moi?.dong8.find((d) => d.hs === '85013170')?.phanConLai === true, nem);
+}
+{
+  // Tên cụ thể hơn thắng: "bàn đạp" (.11) chứa trọn âm tiết "Bàn" (.12) — hàng tên "bàn đạp" là .11, không chồng .12.
+  const THAN = TEN(['Thân trên và thân dưới máy', 'đế đỡ', 'bánh đà', 'bộ phận che chắn dây đai', 'bàn đạp']);
+  const BAN = TEN(['Bàn', 'tủ', 'chân máy', 'nắp']);
+  const r = C.kiemRanhGioi('845290', nhap('845290', { 8452901: [DUNG('8452.10.00')], 84529011: [THAN], 84529012: [BAN], 84529091: [THAN], 84529092: [BAN] }));
+  check('3l 845290: tenLoai="bàn đạp" không còn làm .11/.12 chồng lấn (tên cụ thể hơn thắng)', !r.loi.some((l) => /^cong2-chong-lan:(84529011\+84529012|84529091\+84529092):/.test(l)), r.loi);
+  const F = DK.chuanDuKien([{ fact: 'tenLoai', giaTri: 'xe của búp bê', nguon: 'KHACH', trangThai: 'DA_CO' }]);
+  check('3m tenCuTheHon: "xe của búp bê" — giá trị "xe của búp bê" cụ thể hơn "Búp bê"', DK.tenCuTheHon([TEN('xe của búp bê')], [TEN('Búp bê')], F) === 1 && DK.tenCuTheHon([TEN('Búp bê')], [TEN('xe của búp bê')], F) === -1);
+  // dungCho theo cấp mã HS: "87.11" ⊂ "Chương 87"
+  const dg = (cond, gt) => DK.danhGiaDieuKien(DUNG(cond), { fact: 'dungCho', giaTri: gt }).trangThai;
+  check('3n dungCho "xe thuộc nhóm 87.11" THOẢ "xe thuộc Chương 87"', dg('xe thuộc Chương 87', 'xe thuộc nhóm 87.11') === 'THOA');
+  check('3o dungCho "Chương 87" (chung hơn) với điều kiện "nhóm 87.11" → CHUA_BIET', dg('xe thuộc nhóm 87.11', 'xe thuộc Chương 87') === 'CHUA_BIET');
+  check('3p dungCho "nhóm 88.04" TRÁI "Chương 87"; "84.15" THOẢ danh sách "84.15, 84.18 … hoặc 85.16"', dg('xe thuộc Chương 87', 'dù xoay thuộc nhóm 88.04') === 'TRAI' && dg('hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'máy thuộc nhóm 84.15') === 'THOA');
+  const r8 = C.kiemRanhGioi('848310', nhap848310());
+  check('3q 848310: dungCho theo cấp mã ⇒ cổng 2 thấy .24 ("87.11") chồng .25 dưới tiêu đề "Chương 87"', coLoi(r8, 'cong2-chong-lan:84831024+84831025'), r8.loi);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
