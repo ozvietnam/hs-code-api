@@ -1,0 +1,179 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "848310",
+  "nhom": "8483",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8483102",
+      "nguon": "tieuDe.8483102",
+      "trich": "8483102 Trục cam và trục khuỷu dùng cho động cơ xe của Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Trục cam",
+            "trục khuỷu"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8483103",
+      "nguon": "tieuDe.8483103",
+      "trich": "8483103 Dùng cho động cơ máy thủy",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ máy thủy"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84831010",
+      "nguon": "tax.84831010",
+      "trich": "84831010 - - Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.29",
+            "84.30"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84831024",
+      "nguon": "tax.84831024",
+      "trich": "84831024 - - - Dùng cho xe thuộc nhóm 87.11",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.11"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84831025",
+      "nguon": "tax.84831025",
+      "trich": "84831025 - - - - Cho xe có dung tích xi lanh không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84831026",
+      "nguon": "tax.84831026",
+      "trich": "84831026 - - - - Cho xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84831027",
+      "nguon": "tax.84831027",
+      "trich": "84831027 - - - - Cho xe có dung tích xi lanh trên 3.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84831031",
+      "nguon": "tax.84831031",
+      "trich": "84831031 - - - Công suất không quá 22,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 22.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84831039",
+      "nguon": "tax.84831039",
+      "trich": "84831039 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84831090",
+      "nguon": "tax.84831090",
+      "trich": "84831090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84831010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84831010 \"Dùng cho máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho [\"84.29\",\"84.30\"]. Anh em cùng tầng (8483102, 8483103) cũng ghi dungCho."
+    },
+    {
+      "ma": "8483102",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8483102 \"Trục cam và trục khuỷu dùng cho động cơ xe của Chương 87\" ⇒ tenLoai [\"Trục cam\",\"trục khuỷu\"] + dungCho \"Chương 87\". Dòng con .24 \"Dùng cho xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\" (thoả \"Chương 87\" theo cấp mã); tầng r14616 \"Loại khác:\" trần."
+    },
+    {
+      "ma": "84831025",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"không quá 2.000 cc\" ⇒ dungTichXiLanh <= 2000 cc; .26 \"trên 2.000 cc đến 3.000 cc\" ⇒ > 2000 và <= 3000 (\"đến\" gồm mốc); .27 \"trên 3.000 cc\" ⇒ > 3000. Dung tích là của xe mà trục dùng cho (chữ dòng)."
+    },
+    {
+      "ma": "8483103",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8483103 \"Dùng cho động cơ máy thủy\" ⇒ dungCho \"động cơ máy thủy\"; .31 \"Công suất không quá 22,38 kW\" ⇒ congSuat <= 22.38 kW (công suất của động cơ máy thủy)."
+    }
+  ]
+}
