@@ -136,7 +136,7 @@ async function declarationCheck(req, res) {
     const v = validateDeclarationCheckInput(body);
     if (!v.ok) return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: v.loi });
     const started = Date.now();
-    const kq = await runDeclarationCheck(v.data, { laKhoaDichVu: caller !== null });
+    const kq = await runDeclarationCheck(v.data, { laKhoaDichVu: caller !== null, quyen: { noiBo: laNoiBoOz(req), caller } });
     res.setHeader('Cache-Control', 'no-store');
     return res.status(200).json({ ...kq, ms: Date.now() - started });
   } catch (e) {

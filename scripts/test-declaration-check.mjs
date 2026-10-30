@@ -338,6 +338,34 @@ if (kq12?.dong) {
   console.log(`mucSanSang theo dòng: ${JSON.stringify(muc)}; tongQuan: ${JSON.stringify(kq12.tongQuan)}\n`);
 }
 
+// ═══ 12b. L1-5e: dòng nhận hoSoId + duKien (Cổng gửi theo maLuotPhanLoai); K2 hồ sơ mới chỉ khi HS_HO_SO bật + mã lát 1 ═══
+{
+  const HSID = '3f1c2d4e-5a6b-4c7d-8e9f-0a1b2c3d4e5f';
+  const BD = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'bench', 'mo-ta-bo-de.json'), 'utf8')).ca.find((c) => c.id === 'BD-96-03'); // bộ đề công khai #543
+  const dongLat1 = (o = {}) => dongMau({ maHs: BD.maHs, moTa: BD.moTaMau.replace(BD.caCaiLoi.doiAnhEm.tu, BD.caCaiLoi.doiAnhEm.sang), ...o });
+  delete process.env.HS_HO_SO;
+  resetSpies();
+  const rA = await call({ kiemMa: true, dongHang: [dongLat1({ hoSoId: HSID, duKien: [{ fact: 'laBoPhan', giaTri: true, nguon: 'KHACH', bangChung: 'vỏ ngoài rời' }] })] });
+  allResults.push(rA._j);
+  check('L1-5e: dòng có hoSoId (uuid) + duKien (mảng) ⇒ 200 + bất biến', rA._s === 200 && problems(rA._j).length === 0, { s: rA._s, j: rA._j });
+  check('L1-5e: cờ HS_HO_SO tắt ⇒ K2 đường cũ (không trường hồ sơ), classify vẫn chạy', !JSON.stringify(rA._j?.dong || []).includes('duKienQuyetDinh') && classifyCalls.length === 1, classifyCalls.length);
+  await bad('dòng có hoSoId không phải uuid', { dongHang: [dongMau({ hoSoId: 'abc' })] });
+  await bad('dòng có duKien không phải mảng', { dongHang: [dongMau({ duKien: { fact: 'x' } })] });
+  await bad('dòng có duKien quá 50 mục', { dongHang: [dongMau({ duKien: Array.from({ length: 51 }, () => ({ fact: 'laBoPhan', giaTri: true })) })] });
+  await bad('dòng gửi ngược hoSo (ranh giới tin cậy)', { dongHang: [dongMau({ hoSo: { maHs: '85166090' } })] });
+  process.env.HS_HO_SO = 'on';
+  resetSpies();
+  const rB = await call({ kiemMa: true, dongHang: [dongLat1(), dongMau({ stt: 2 })] });
+  allResults.push(rB._j);
+  check('L1-5e: HS_HO_SO=on + mã lát 1 ⇒ 200 + bất biến (đủ 7 nhóm, không LOI dựa HEURISTIC/LLM)', rB._s === 200 && problems(rB._j).length === 0, { s: rB._s, p: problems(rB._j || {}) });
+  const kB = items(rB._j, 1, 'K2');
+  check('L1-5e: dòng lát 1 có mục K2 hồ sơ (duKienQuyetDinh, cauSuaDeXuat, coCanCuTatDinh, khungNghiNgo, hoSo)', kB.some((m) => Array.isArray(m.duKienQuyetDinh) && m.cauSuaDeXuat && typeof m.coCanCuTatDinh === 'boolean' && 'khungNghiNgo' in m && m.hoSo), kB.map((m) => m.ma));
+  check('L1-5e: HS_K2_LOI tắt ⇒ không mục K2 nào LOI', !kB.some((m) => m.trangThai === 'LOI'), kB.map((m) => [m.ma, m.trangThai]));
+  check('L1-5e: dòng ngoài lát 1 giữ K2 đường cũ (KHAC_*/LOAI_KHAC…, không trường hồ sơ)', !items(rB._j, 2, 'K2').some((m) => 'duKienQuyetDinh' in m), items(rB._j, 2, 'K2'));
+  check('L1-5e: cong-oz không bao giờ nhận MO_TA_GIONG_MA_KHAC', !/MO_TA_GIONG_MA_KHAC/.test(JSON.stringify(rB._j)));
+  delete process.env.HS_HO_SO;
+}
+
 // ═══ 13. Bất biến trên MỌI kết quả đã thu ═══
 const tong = allResults.filter(Boolean).flatMap((kq) => problems(kq));
 check(`bất biến trên mọi kết quả (${allResults.filter(Boolean).length} lượt): không LOI dựa HEURISTIC/LLM, CHUA_KIEM luôn có lý do, đủ 7 nhóm`, tong.length === 0, tong);
