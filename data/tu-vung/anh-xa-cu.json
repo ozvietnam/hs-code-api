@@ -1,0 +1,239 @@
+{
+  "phienBan": "anh-xa-cu@1",
+  "tuVung": "tu-vung@1",
+  "ngay": "2026-10-30",
+  "ghiChu": [
+    "Bước 1 của L1-3a: kiểm kê bộ từ vựng hiện có (spec §5 nói \"rải 9 bộ, khoảng 2.500 tên\" nhưng không liệt kê). soTen đếm bằng máy trên main ngày soạn (cách đếm ở ghiChu từng bộ).",
+    "Tổng soTen = 1843 tên khoá — THẤP hơn \"≈ 2.500\" của spec; cộng 309 nhãn tiếng Trung của bộ 2 và 68 alias/nhãn giá trị của bộ 1 thì ≈ 2220. Phần lớn là tên snake_case tự do của dieuKienVao (sổ tay).",
+    "anhXa: \"<tệp>#<khoá cũ>\" → khoá tu-vung@1. anhXaGiaTri: \"<tệp>#<khoá cũ>[=<giá trị cũ>]\" → \"<khoá mới>=<giá trị mới>\". Chỉ ánh xạ khoá lát 1; khoá cũ ngoài lát 1 chưa có khoá mới (thay dần ở lát sau).",
+    "Bộ cũ không bị sửa hay xoá ở job này: tu-vung@1 là nguồn mới cho hồ sơ lát 1; đường cũ giữ nguyên tới khi thay (plan, Global Constraints).",
+    "Máy kiểm: lib/tu-vung.js kiemAnhXaCu — khoá cũ phải có thật ở nguồn, khoá/giá trị mới phải có trong tu-vung@1."
+  ],
+  "boTuVung": [
+    {
+      "ten": "Registry thuộc tính (resolver + vocab EN/VN)",
+      "tep": [
+        "data/attributes.json",
+        "lib/attributes.js"
+      ],
+      "soTen": 39,
+      "ghiChu": "39 khoá canonical EN; kèm alias/nhãn giá trị. Nhóm resolver (domain) phục vụ conflict-tables."
+    },
+    {
+      "ten": "Từ điển nhãn thông số tiếng Trung (zh-specs)",
+      "tep": [
+        "data/attribute-synonyms-zh.json",
+        "lib/zh-specs.js"
+      ],
+      "soTen": 90,
+      "ghiChu": "90 khoá, 309 nhãn tiếng Trung. Plan liệt kê \"attribute-synonyms-zh\" và \"zh-specs dictionary\" như hai bộ — thực ra là MỘT tệp (lib/zh-specs.js đọc attribute-synonyms-zh.json)."
+    },
+    {
+      "ten": "Danh mục trường khai báo theo chương (TT 39 / chỉ tiêu 1.78)",
+      "tep": [
+        "data/chapter-declaration-fields.json",
+        "lib/compliance-data.js"
+      ],
+      "soTen": 101,
+      "ghiChu": "101 khoá trường (labelVi, ecusHint, patterns) cho 15 chương."
+    },
+    {
+      "ten": "Khuôn trường khai báo theo nhóm 4 số",
+      "tep": [
+        "data/heading-declaration-fields.json",
+        "lib/declaration-field-templates.js"
+      ],
+      "soTen": 98,
+      "ghiChu": "339 nhóm dùng 98 khoá trường; 0 khoá không có trong bộ 3 — tầng khuôn, gần như không thêm tên mới."
+    },
+    {
+      "ten": "Khung thuộc tính định danh bước 12",
+      "tep": [
+        "data/attribute-frames.json",
+        "lib/attribute-frames.js"
+      ],
+      "soTen": 6,
+      "ghiChu": "trường nghiệp vụ phân loại (nguyên lý, cấu thành module, chức năng chính, tên đồng nghĩa…) — chữ tự do."
+    },
+    {
+      "ten": "Bộ phận đứng trước nhãn thông số tiếng Trung",
+      "tep": [
+        "data/parts-zh.json"
+      ],
+      "soTen": 48,
+      "ghiChu": "vd 外壳 = vỏ ngoài, 机身 = thân máy — nguồn của vị trí chất liệu (CHAT_LIEU_THEO_VI_TRI)."
+    },
+    {
+      "ten": "Phân loại vật liệu (material taxonomy)",
+      "tep": [
+        "data/taxonomy/*.json",
+        "lib/material-taxonomy.js"
+      ],
+      "soTen": 529,
+      "ghiChu": "tên vật liệu theo họ polymers/rubbers/metals/woods/fibers/textiles/chemicals. Ánh xạ cấp họ: polymers → chatLieu=plastic, rubbers → cao su, metals → kim loại (hoặc kim loại cụ thể), woods → gỗ, fibers/textiles → vải dệt; chemicals ngoài lát 1."
+    },
+    {
+      "ten": "Tên dữ kiện của sổ tay (dieuKienSo + dieuKienVao) và bộ đọc số/vật liệu của so-tay-gates",
+      "tep": [
+        "data/so-tay/*.json",
+        "lib/so-tay-gates.js"
+      ],
+      "soTen": 808,
+      "ghiChu": "38 tên trong dieuKienSo, 753 tên trong dieuKienVao (snake_case tự do, 788 tên khác nhau); so-tay-gates có 12 đại lượng số (LOAI_GIA_TRI) + 8 vật liệu (MATERIALS). Vật liệu được DÙNG LẠI nguyên mẫu (dungMau)."
+    },
+    {
+      "ten": "Thuộc tính của bảng quyết định + bảng xung đột",
+      "tep": [
+        "data/decision-tables",
+        "data/conflict-tables.json"
+      ],
+      "soTen": 124,
+      "ghiChu": "32 bảng quyết định, 117 thuộc tính có kiểu (enum/number); conflict-tables dùng 7 thuộc tính resolver của data/attributes.json."
+    }
+  ],
+  "anhXa": {
+    "data/attributes.json#voltage": "dienAp",
+    "data/attributes.json#power": "congSuat",
+    "data/attributes.json#engineCapacity": "dungTichXiLanh",
+    "data/attributes.json#material": "chatLieu",
+    "data/attributes.json#outerMaterial": "chatLieu",
+    "data/attributes.json#baseMetal": "chatLieu",
+    "data/attributes.json#polymerType": "chatLieu",
+    "data/attributes.json#modelNumber": "model",
+    "data/attributes.json#commercialName": "tenLoai",
+    "data/attributes.json#productType": "tenLoai",
+    "data/attributes.json#endUse": "dungCho",
+    "data/attributes.json#valveCircuit": "dungCho",
+    "data/attribute-synonyms-zh.json#voltage": "dienAp",
+    "data/attribute-synonyms-zh.json#outputVoltage": "dienAp",
+    "data/attribute-synonyms-zh.json#currentRating": "dongDien",
+    "data/attribute-synonyms-zh.json#power": "congSuat",
+    "data/attribute-synonyms-zh.json#frequency": "tanSo",
+    "data/attribute-synonyms-zh.json#flowRate": "luuLuong",
+    "data/attribute-synonyms-zh.json#engineDisplacement": "dungTichXiLanh",
+    "data/attribute-synonyms-zh.json#netWeight": "khoiLuong",
+    "data/attribute-synonyms-zh.json#pipeDiameter": "duongKinhTrong",
+    "data/attribute-synonyms-zh.json#dimensions": "kichThuoc",
+    "data/attribute-synonyms-zh.json#cableLength": "chieuDaiCuon",
+    "data/attribute-synonyms-zh.json#material": "chatLieu",
+    "data/attribute-synonyms-zh.json#conductorMaterial": "chatLieu",
+    "data/attribute-synonyms-zh.json#phaseCount": "soPha",
+    "data/attribute-synonyms-zh.json#lightType": "nguonSang",
+    "data/attribute-synonyms-zh.json#powerSource": "nguonNangLuong",
+    "data/attribute-synonyms-zh.json#controlType": "cachDieuKhien",
+    "data/attribute-synonyms-zh.json#pumpType": "kieuBom",
+    "data/attribute-synonyms-zh.json#valveType": "tenLoai",
+    "data/attribute-synonyms-zh.json#modelNumber": "model",
+    "data/attribute-synonyms-zh.json#partNumber": "kyMaHieu",
+    "data/attribute-synonyms-zh.json#brand": "nhanHieu",
+    "data/attribute-synonyms-zh.json#application": "dungCho",
+    "data/attribute-synonyms-zh.json#machineFunction": "congDung",
+    "data/attribute-synonyms-zh.json#applianceFunction": "congDung",
+    "data/attribute-synonyms-zh.json#lensPower": "hieuChinhThiLuc",
+    "data/attribute-synonyms-zh.json#eyewearType": "tenLoai",
+    "data/chapter-declaration-fields.json#voltage": "dienAp",
+    "data/chapter-declaration-fields.json#outputVoltage": "dienAp",
+    "data/chapter-declaration-fields.json#currentRating": "dongDien",
+    "data/chapter-declaration-fields.json#power": "congSuat",
+    "data/chapter-declaration-fields.json#frequency": "tanSo",
+    "data/chapter-declaration-fields.json#flowRate": "luuLuong",
+    "data/chapter-declaration-fields.json#engineDisplacement": "dungTichXiLanh",
+    "data/chapter-declaration-fields.json#pipeDiameter": "duongKinhTrong",
+    "data/chapter-declaration-fields.json#boreDiameter": "duongKinhTrong",
+    "data/chapter-declaration-fields.json#dimensions": "kichThuoc",
+    "data/chapter-declaration-fields.json#cableLength": "chieuDaiCuon",
+    "data/chapter-declaration-fields.json#material": "chatLieu",
+    "data/chapter-declaration-fields.json#conductorMaterial": "chatLieu",
+    "data/chapter-declaration-fields.json#phaseCount": "soPha",
+    "data/chapter-declaration-fields.json#lightType": "nguonSang",
+    "data/chapter-declaration-fields.json#powerSource": "nguonNangLuong",
+    "data/chapter-declaration-fields.json#controlType": "cachDieuKhien",
+    "data/chapter-declaration-fields.json#pumpType": "kieuBom",
+    "data/chapter-declaration-fields.json#valveType": "tenLoai",
+    "data/chapter-declaration-fields.json#articleType": "tenLoai",
+    "data/chapter-declaration-fields.json#modelNumber": "model",
+    "data/chapter-declaration-fields.json#partNumber": "kyMaHieu",
+    "data/chapter-declaration-fields.json#brand": "nhanHieu",
+    "data/chapter-declaration-fields.json#application": "dungCho",
+    "data/chapter-declaration-fields.json#function": "tenLoai",
+    "data/chapter-declaration-fields.json#machineFunction": "congDung",
+    "data/chapter-declaration-fields.json#applianceFunction": "congDung",
+    "data/chapter-declaration-fields.json#lensPower": "hieuChinhThiLuc",
+    "data/chapter-declaration-fields.json#eyewearType": "tenLoai",
+    "data/heading-declaration-fields.json#voltage": "dienAp",
+    "data/heading-declaration-fields.json#power": "congSuat",
+    "data/heading-declaration-fields.json#material": "chatLieu",
+    "data/heading-declaration-fields.json#currentRating": "dongDien",
+    "data/attribute-frames.json#chucNangChinh": "congDung",
+    "data/attribute-frames.json#tenDongNghia": "tenLoai",
+    "data/parts-zh.json#外壳": "chatLieu",
+    "data/parts-zh.json#机身": "chatLieu",
+    "data/taxonomy/polymers.json#*": "chatLieu",
+    "data/taxonomy/rubbers.json#*": "chatLieu",
+    "data/taxonomy/metals.json#*": "chatLieu",
+    "data/taxonomy/woods.json#*": "chatLieu",
+    "data/taxonomy/fibers.json#*": "chatLieu",
+    "data/taxonomy/textiles.json#*": "chatLieu",
+    "lib/so-tay-gates.js#dien_ap": "dienAp",
+    "lib/so-tay-gates.js#dong_dien": "dongDien",
+    "lib/so-tay-gates.js#cong_suat": "congSuat",
+    "lib/so-tay-gates.js#duong_kinh": "duongKinh",
+    "lib/so-tay-gates.js#chieu_cao": "chieuCao",
+    "lib/so-tay-gates.js#khoi_luong": "khoiLuong",
+    "data/so-tay/*.json#dien_ap_lam_viec": "dienAp",
+    "data/so-tay/*.json#duong_kinh": "duongKinh",
+    "data/so-tay/*.json#duong_kinh_banh_xe": "duongKinh",
+    "data/so-tay/*.json#cong_suat": "congSuat",
+    "data/so-tay/*.json#khoi_luong": "khoiLuong",
+    "data/so-tay/*.json#chieu_cao": "chieuCao",
+    "data/so-tay/*.json#chat_lieu": "chatLieu",
+    "data/so-tay/*.json#vat_lieu": "chatLieu",
+    "data/decision-tables/8536.json#currentA": "dongDien",
+    "data/decision-tables/8536.json#ratedCurrentA": "dongDien",
+    "data/decision-tables/8536.json#signalCurrentA": "dongDien",
+    "data/decision-tables/8536.json#relayContactVoltage": "dienAp",
+    "data/decision-tables/8536.json#relayDigital": "loaiRoLe",
+    "data/decision-tables/8536.json#relaySemiEmUpTo28V": "loaiRoLe",
+    "data/decision-tables/8536.json#switchType": "loaiCongTac",
+    "data/decision-tables/8536.json#plugSocketUse": "loaiPhichOCam",
+    "data/decision-tables/8536.json#breakerType": "tenLoai",
+    "data/decision-tables/8536.json#apparatusKind": "tenLoai",
+    "data/decision-tables/8537.json#panelVoltage": "dienAp",
+    "data/decision-tables/8537.json#outputVoltageVdc": "dienAp",
+    "data/decision-tables/8537.json#outputCurrentA": "dongDien",
+    "data/decision-tables/8537.json#controlBoardRole": "coBoXuLyLapTrinh",
+    "data/decision-tables/8538.json#partVoltage": "dienAp",
+    "data/decision-tables/8538.json#generalPartTarget": "dungCho",
+    "data/decision-tables/8452.json#useType": "phamViSuDung",
+    "data/decision-tables/8452.json#partType": "tenLoai",
+    "data/decision-tables/8513.json#lampType": "tenLoai",
+    "data/decision-tables/8420.json#machineUse": "congDung"
+  },
+  "anhXaGiaTri": {
+    "lib/so-tay-gates.js#plastic": "chatLieu=plastic",
+    "lib/so-tay-gates.js#cao su": "chatLieu=cao su",
+    "lib/so-tay-gates.js#giấy": "chatLieu=giấy",
+    "lib/so-tay-gates.js#gỗ": "chatLieu=gỗ",
+    "lib/so-tay-gates.js#kim loại": "chatLieu=kim loại",
+    "lib/so-tay-gates.js#thủy tinh": "chatLieu=thủy tinh",
+    "lib/so-tay-gates.js#gốm sứ": "chatLieu=gốm sứ",
+    "lib/so-tay-gates.js#vải dệt": "chatLieu=vải dệt",
+    "data/decision-tables/8536.json#switchType=residualCurrentAuto": "loaiCongTac=TU_DONG_RO_DIEN_QUA_TAI",
+    "data/decision-tables/8536.json#switchType=inrushStoveFanAircon": "loaiCongTac=NGAT_SOC_DONG",
+    "data/decision-tables/8536.json#switchType=riceCookerMini": "loaiCongTac=MINI_NOI_COM",
+    "data/decision-tables/8536.json#switchType=electronicOrSnap": "loaiCongTac=DIEN_TU_HOAC_BAT_NHANH",
+    "data/decision-tables/8536.json#switchType=domesticWiring": "loaiCongTac=MANG_DIEN_GIA_DUNG",
+    "data/decision-tables/8536.json#switchType=changeOverOrFuseSwitch": "loaiCongTac=DAO_CHIEU_HOAC_CAU_CHI",
+    "data/decision-tables/8536.json#plugSocketUse=telephonePlug": "loaiPhichOCam=PHICH_CAM_DIEN_THOAI",
+    "data/decision-tables/8536.json#plugSocketUse=audioVideoOrCrt": "loaiPhichOCam=TIN_HIEU_HINH_TIENG",
+    "data/decision-tables/8536.json#plugSocketUse=coaxOrPrintedCircuit": "loaiPhichOCam=CAP_DONG_TRUC_MACH_IN",
+    "data/decision-tables/8536.json#plugSocketUse=otherPlugSocket": "loaiPhichOCam=THONG_THUONG",
+    "data/decision-tables/8536.json#relayDigital=yes": "loaiRoLe=KY_THUAT_SO",
+    "data/decision-tables/8537.json#controlBoardRole=plcWithProcessor": "coBoXuLyLapTrinh=true",
+    "data/decision-tables/8452.json#useType=household": "phamViSuDung=GIA_DINH",
+    "data/decision-tables/8452.json#useType=industrial": "phamViSuDung=CONG_NGHIEP",
+    "data/decision-tables/8452.json#goodsKind=partsAccessories": "laBoPhan=true",
+    "data/decision-tables/8513.json#goodsKind=parts": "laBoPhan=true",
+    "data/decision-tables/8420.json#machineUse=householdLaundry": "phamViSuDung=GIA_DINH"
+  }
+}
