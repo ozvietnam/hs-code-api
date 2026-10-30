@@ -224,5 +224,91 @@ check('nhãn tệp: tu-vung/*.json ⇒ CLAUDE_DUYET (lib/nguon-loai.js)', N.nhan
   check('bảng ánh xạ bộ đề khai băm bộ đề đang khoá (đổi bộ đề ⇒ phải soát lại ánh xạ)', axBoDe.boDeSha256 === T.sha256Tep('data/bench/ho-so-lat-1.json'), { khai: axBoDe.boDeSha256 });
 }
 
+// ── 11. Chấm duyệt độc lập (30/10/2026) — đầu vào đối nghịch ─────────────────────────────────────────────────
+{
+  const cb = (khoa, txt) => T.docGiaTri(khoa, txt);
+  const chuaBiet = (khoa, txt, ly) => { const x = cb(khoa, txt); check(`CĐĐL ${khoa}: "${txt}" ⇒ CHUA_BIET (${ly})`, x.trangThai === 'CHUA_BIET', x); };
+  const dung = (khoa, txt, v, extra = {}) => {
+    const x = cb(khoa, txt);
+    const okV = Array.isArray(v) ? JSON.stringify(x.giaTri) === JSON.stringify(v) : (typeof v === 'number' ? Math.abs(x.giaTri - v) < 1e-9 : x.giaTri === v);
+    const okE = Object.entries(extra).every(([k, w]) => x[k] === w);
+    check(`CĐĐL ${khoa}: "${txt}" ⇒ ${JSON.stringify(v)} ${JSON.stringify(extra)}`, x.trangThai === 'DA_CO' && okV && okE && coTrong(x, txt), x);
+  };
+  // SO — tiền tố M hoa là mega, không phải mili
+  chuaBiet('congSuat', 'máy phát công suất 5 MW', 'MW là megawatt, hệ đơn vị không có — không đọc thành mW');
+  chuaBiet('dienAp', 'cáp trung thế 1 MV', 'MV là megavolt');
+  // SO — "1,500" mơ hồ (nghìn kiểu Anh hay thập phân kiểu Việt)
+  chuaBiet('congSuat', 'công suất 1,500 W', '"1,500" mơ hồ 1,5 / 1500');
+  dung('congSuat', 'công suất 7,5 kW', 7500);
+  dung('congSuat', 'công suất 0,375 kW', 375);
+  // SO — số sau "/" (phân số, cặp giá trị) không phải đại lượng riêng
+  chuaBiet('tanSo', 'tần số 50/60Hz', '"50/60" là hai giá trị — đọc mỗi 60 là sai');
+  chuaBiet('duongKinhTrong', 'van đường kính trong 1/2 inch', 'phân số 1/2 inch không phải 2 inch');
+  dung('tanSo', 'điện áp 220V/50Hz', 50);
+  // SO — số trong mã model / ký hiệu ren
+  chuaBiet('kichThuoc', 'bu lông M8x20mm', 'M8x20 là ký hiệu ren, không phải kích thước');
+  chuaBiet('congSuat', 'máy sấy model MDY-11-20W', 'số nối gạch trong mã model');
+  chuaBiet('congSuat', 'model KB-2200W', 'số nối gạch trong mã model');
+  dung('congSuat', 'model MDY-11-EZ, công suất 750W', 750);
+  dung('congSuat', 'động cơ GA22 22kW', 22000);
+  // SO — tiền tố AC/DC liền số vẫn là điện áp
+  dung('dienAp', 'nguồn DC12V', 12);
+  dung('dienAp', 'AC220V 50Hz', 220);
+  // SO — đơn vị đứng ngay trước chữ Hán
+  dung('dienAp', '额定电压220V交流', 220);
+  // SO — từ so sánh trước số ⇒ op (không trả số như giá trị đúng bằng)
+  dung('dienAp', 'điện áp trên 1.000 V', 1000, { op: '>' });
+  dung('dienAp', 'dùng cho điện áp không quá 1.000 V', 1000, { op: '<=' });
+  dung('duongKinhLoi', 'đường kính mỗi lõi nhỏ hơn 5 mm', 5, { op: '<' });
+  dung('dienAp', 'rated voltage max 250V', 250, { op: '<=' });
+  dung('dienAp', 'rated voltage over 1000V', 1000, { op: '>' });
+  dung('dienAp', '电压1000V以下', 1000, { op: '<=' });
+  dung('dienAp', 'điện áp 220V', 220);
+  check('CĐĐL SO không có từ so sánh ⇒ không có op', cb('dienAp', 'điện áp 220V').op === undefined, cb('dienAp', 'điện áp 220V'));
+  // SO — đơn vị / ký hiệu hay gặp
+  dung('tanSo', 'tần số 2.4GHz', 2.4e9);
+  dung('duongKinh', 'ống Ø20mm', 20);
+  // CO_KHONG — chữ "không" trong tính từ ghép không phủ định cụm phía sau
+  dung('coKhungChupQuaDau', 'Tai nghe không dây có khung chụp qua đầu', true);
+  dung('coLuoiBaoVe', 'quạt vỏ thép không gỉ có lưới bảo vệ', true);
+  dung('coCachDien', 'dây không chỉ cách điện mà còn chống nước', true);
+  dung('coCamera', '无线摄像头', true);
+  dung('daGanDauNoi', '不锈钢接头', true);
+  dung('coCamera', 'Model No X with camera', true);
+  dung('coManHinh', '非接触式红外测温仪 带显示屏', true);
+  dung('coManHinh', '不带显示屏', false);
+  dung('coCamera', 'không có camera', false);
+  // LIET_KE — "pin" là chân cắm, không phải pin/ắc quy
+  for (const t of ['đầu nối 4 pin', '4-pin connector', 'chân pin bằng đồng']) chuaBiet('nguonNangLuong', t, '"pin" = chân cắm');
+  dung('nguonNangLuong', 'đèn dùng pin sạc', 'PIN_AC_QUY');
+  // CHAT_LIEU — vật liệu là phôi gia công ("máy cắt thép") không phải chất liệu hàng (luật GIA_CONG của so-tay-gates)
+  chuaBiet('chatLieu', 'máy cắt thép', 'thép là phôi được cắt');
+  {
+    const x = cb('chatLieu', 'máy cắt thép, vỏ nhôm');
+    check('CĐĐL chatLieu "máy cắt thép, vỏ nhôm" ⇒ chỉ VO/nhôm', x.trangThai === 'DA_CO' && x.giaTri.length === 1 && x.giaTri[0].chatLieu === 'nhôm', x);
+  }
+  // CONG_DUNG — "và" nối hai công dụng, không cắt
+  dung('congDung', 'công dụng: sạc pin và truyền dữ liệu', 'sạc pin và truyền dữ liệu');
+  // vietCum — cụm ECUS không chứa chú thích ngoặc, gạch chéo, chấm phẩy
+  const xau = [];
+  for (const k of tv.khoa.filter((x) => x.kieu === 'LIET_KE')) {
+    for (const v of k.giaTriHopLe) {
+      for (const tat of [false, true]) {
+        const s = T.vietCum(k.khoa, v, { tat });
+        if (s !== null && (/[();]/.test(s) || /\s\/\s/.test(s) || /xuất xứ/i.test(s))) xau.push(`${k.khoa}=${v}:${s}`);
+      }
+    }
+  }
+  check('CĐĐL vietCum LIET_KE: không ngoặc chú thích, không " / ", không ";", không "xuất xứ"', xau.length === 0, xau);
+  check('CĐĐL vietCum nguonNangLuong PIN_AC_QUY ⇒ "dùng pin/ắc quy"', T.vietCum('nguonNangLuong', 'PIN_AC_QUY') === 'dùng pin/ắc quy', T.vietCum('nguonNangLuong', 'PIN_AC_QUY'));
+  check('CĐĐL vietCum giá trị gộp nhiều loại (loaiCongTac=NGAT_SOC_DONG) ⇒ null (cụm lấy từ tenLoai)', T.vietCum('loaiCongTac', 'NGAT_SOC_DONG') === null, T.vietCum('loaiCongTac', 'NGAT_SOC_DONG'));
+  // máy kiểm: LIET_KE có nhãn kiểu chú thích mà thiếu cachViet riêng ⇒ ĐỎ
+  check('CĐĐL kiemTuVung ĐỎ khi nhãn giá trị LIET_KE có ngoặc/";" mà không khai cachViet', loiCo((t) => { t.khoa[2].moTaGiaTri.A.nhanVi = 'a (chú thích)'; }, 'liet-ke-thieu-cach-viet') === true, loiCo((t) => { t.khoa[2].moTaGiaTri.A.nhanVi = 'a (chú thích)'; }, 'liet-ke-thieu-cach-viet'));
+  // anh-xa-cu: "Chức năng IC" (MCU, diode…) là tên loại linh kiện, không phải công dụng
+  const ax = JSON.parse(fs.readFileSync('data/tu-vung/anh-xa-cu.json', 'utf8'));
+  check('CĐĐL anh-xa-cu: chapter-declaration-fields#function (Chức năng IC: MCU, diode) ⇒ tenLoai', ax.anhXa['data/chapter-declaration-fields.json#function'] === 'tenLoai', ax.anhXa['data/chapter-declaration-fields.json#function']);
+  check('CĐĐL tu-vung@1 đã qua chấm duyệt độc lập (chamDuyetDocLap.trangThai = DA_CHAM, có người chấm + ngày)', tv.chamDuyetDocLap?.trangThai === 'DA_CHAM' && /^\d{4}-\d{2}-\d{2}$/.test(tv.chamDuyetDocLap?.ngay || '') && Boolean(tv.chamDuyetDocLap?.nguoiCham), tv.chamDuyetDocLap);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
