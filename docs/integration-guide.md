@@ -529,6 +529,23 @@ curl -X POST https://.../api/describe \
 
 ---
 
+## 5a. Hồ sơ phân loại (`ho-so@1`, lát 1) — 30/10/2026, L1-5d (#648)
+
+Hợp đồng đóng băng: **[`docs/api/ho-so-contract.md`](api/ho-so-contract.md)**. Tóm tắt:
+
+- Cờ `HS_HO_SO=off|shadow|on` (mặc định `off`). `off`/`shadow`/mã ngoài lát 1 ⇒ `/api/describe`, `/api/classify`,
+  `/api/declaration-sheet` trả **bằng sâu** như trước; trường đầu vào mới bị bỏ qua êm.
+- Đầu vào mới (cả describe/classify): `loaiToKhai` (`NHAP`|`XUAT`, mặc định `NHAP`), `manufacturer`, `dimensions`, `condition`,
+  `packaging`, `duKien[]`, `hoSoId` — sự thật nguồn `KHACH`. `origin` không vào chuỗi mô tả.
+- `on` + mã lát 1: describe **thêm** `moTaEcus`, `khaiTiepHys`, `ghiChu`, `moTaDayDu`, `bangGiaiTrinh[]`,
+  `taiLieuKyThuatNenKem[]`, `banNhap`, `canCuMoTa`, `hoSo`, `hoSoMeta` ở cấp trên cùng; `customsDescription` = chuỗi cuối của
+  bộ viết. Chưa đủ căn cứ ⇒ `banNhap: true`, `moTaEcus: null`, `moTaBanNhap` + `cauHoi[]` cấp trên cùng, compliance `REJECT`.
+- classify: `hoSo` cấp trên cùng, `ecus` giữ shape (sinh bằng bộ viết). Sheet: `description.hoSo`, `composedFrom: 'HO_SO'`.
+- `POST /api/ho-so` — **KÍN, chỉ khoá dịch vụ**, luôn `withPrivateData`; thân phản hồi là `HoSoPhanLoai` + `moTa` + `hoSoMeta`.
+  Lỗi: 400 `DAU_VAO_SAI`, 401, 403 `CHI_KHOA_DICH_VU`, 404 `KHONG_CO_MA`, 422 `NGOAI_LAT_1`, 503 `HO_SO_TAT`, 502.
+- Tín hiệu kho Oz (`MO_TA_GIONG_MA_KHAC`) chỉ tới khoá nội bộ (`HS_INTERNAL_CALLERS`, mặc định `erp`); `cong-oz` không bao giờ.
+  `DANH_MUC_RUI_RO` (QĐ 2079) tới mọi người gọi, không bao giờ trong `canCu`.
+
 ## 5b. Phiếu hồ sơ khai báo (thông số trang + chữ trong ảnh → ô cần khai)
 
 `POST /api/declaration-sheet` (Bearer). Gom việc **chọn thông tin cho tờ khai** về một chỗ:
