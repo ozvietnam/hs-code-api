@@ -68,8 +68,10 @@ Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRI
   lần, nhãn `AI_DA_KIEM`, trạng thái `NHAP`. Spec không được ghi `nguonLoai`/`trangThai`/`duyet`/`soanBoi`/`traVe`.
 - **Mã thoát**: 0 xanh · 1 đỏ (sửa được) · 2 spec/lệnh sai · **3 DỪNG** (báo Claude, không tự xử lý). `--giai-thich=<mã>` giải
   thích mọi mã lỗi/cảnh báo (`lib/ho-so/ma-loi.js`).
-- **Tầng không mã** (`lib/ho-so/tang-khong-ma.js`): tiêu đề không mã của biểu thuế mà cây theo chữ số làm mất ⇒ `--goi` in khối
-  DỪNG, cổng 1 chặn mọi dòng dưới tầng `cong1-tang-khong-ma:<hs>:r<dòng>`. Không có cách khai để vượt.
+- **Tầng không mã** (`lib/ho-so/tang-khong-ma.js` → lớp tầng `lib/hs-tree.js`): tiêu đề không mã của biểu thuế mà cây theo
+  chữ số làm mất là nút `<pn6>~r<dòng>` trong cây của `--goi`. Tầng có tên ⇒ khai `dieuKienNut` cho id đó (nguồn
+  `tieuDe.<pn6>~r<dòng>`); bỏ qua ⇒ `cong1-tang-khong-ma:<hs>:r<dòng>`. Tầng "Loại khác:" trần không ghi điều kiện. Tầng không
+  biểu diễn được ⇒ `--goi` in khối DỪNG, cổng 1 chặn `cong1-tang-khong-ma-khong-dat:<hs>:r<dòng>` — không có cách khai để vượt.
 - **Cổng 1** chỉ thử vector thoả điều kiện tầng cha; tầng gốc không có phần còn lại thì vật mang tên ngoài mọi chữ của các con
   coi là ngoài phân nhóm.
 - **Phần còn lại có tên** ("Động cơ khác", "Cáp … plastic khác", "…, loại khác"): `phanConLai: true` (phủ định mọi anh em ĐỨNG
