@@ -48,21 +48,28 @@ const nhap848310 = () => nhap('848310', {
   const g = C.goiSoan('848310');
   const t = (g.tangKhongMa || []).find((x) => x.r === 14616);
   check('1a --goi 848310 liệt kê tầng không mã r14616 "Loại khác:" phủ .25/.26/.27', t && /Loại khác/.test(t.chu) && ['84831025', '84831026', '84831027'].every((h) => t.dongDuoi.includes(h)) && !t.dongDuoi.includes('84831024'), g.tangKhongMa);
+  // #577 lớp tầng: tầng r14616 là nút 848310~r14616 ("Loại khác" trần) — luật đi phủ định .24 trên đường của .25–.27, nên
+  // bản nháp "kiểu hôm nay" không còn xanh giả (cổng 2 thấy đúng ranh giới) và không cần khai gì cho tầng.
+  check('1a2 … tầng r14616 có nút 848310~r14616 (CO_NUT)', t && t.trangThai === 'CO_NUT' && t.id === '848310~r14616', t);
   const r = C.kiemRanhGioi('848310', nhap848310());
-  check('1b bản nháp 848310 "kiểu hôm nay" KHÔNG được xanh', r.hopLe === false, r.loi);
-  check('1c … lỗi cong1-tang-khong-ma ở từng dòng dưới tầng không mã', ['84831025', '84831026', '84831027'].every((h) => r.loi.includes(`cong1-tang-khong-ma:${h}:r14616`)), r.loi);
-  check('1d … không báo dòng ngoài tầng (.24, .31)', !r.loi.some((l) => /^cong1-tang-khong-ma:(84831024|84831031):/.test(l)), r.loi);
+  check('1b bản nháp 848310: tầng "Loại khác" trần không cần điều kiện ⇒ không cong1-tang-khong-ma', !r.loi.some((l) => l.startsWith('cong1-tang-khong-ma')), r.loi);
+  check('1c … đường đi của .25/.26/.27 phủ định .24 (ranh giới tầng), không phủ định .31', ['84831025', '84831026', '84831027'].every((h) => require('../lib/dieu-kien-so.js').duongDiDong8(h, { soTay: C.soTayTuNhap('848310', nhap848310()) }).nhom.some((g) => g.nut === '84831024' && g.chieu === 'PHAI_KHONG')), r.loi);
+  check('1d … không còn chồng lấn .24 với .25', !r.loi.some((l) => l.startsWith('cong2-chong-lan:84831024+84831025')), r.loi);
 
-  for (const [pn6, hs, row] of [['841459', '84145910', 13180], ['841459', '84145950', 13187], ['850110', null, 14839], ['848180', null, 14551], ['854442', '85444232', 16065], ['950300', '95030022', 18723], ['950300', '95030091', 18732]]) {
+  // Tầng có tên mà khung bỏ trống ⇒ cong1-tang-khong-ma (bản nháp bỏ qua tầng); tầng "Loại khác:" trần / TRUNG ⇒ không báo.
+  for (const [pn6, hs, row, bao] of [['841459', '84145910', 13180, true], ['841459', '84145950', 13187, false], ['850110', null, 14839, true], ['848180', null, 14551, true], ['854442', '85444232', 16065, true], ['950300', '95030022', 18723, true], ['950300', '95030091', 18732, false]]) {
     const gg = C.goiSoan(pn6);
     check(`1e --goi ${pn6} có tầng không mã r${row}`, (gg.tangKhongMa || []).some((x) => x.r === row), (gg.tangKhongMa || []).map((x) => x.r));
     const rr = C.kiemRanhGioi(pn6, C.taoKhung(pn6, { phien: PHIEN }));
-    check(`1f cổng 1 ${pn6} báo cong1-tang-khong-ma …:r${row}`, rr.loi.some((l) => l.startsWith('cong1-tang-khong-ma:') && l.endsWith(`:r${row}`) && (!hs || l.includes(`:${hs}:`))), rr.loi.filter((l) => l.startsWith('cong1-tang')));
+    const co = rr.loi.some((l) => l.startsWith('cong1-tang-khong-ma:') && l.endsWith(`:r${row}`) && (!hs || l.includes(`:${hs}:`)));
+    check(`1f cổng 1 ${pn6} ${bao ? 'báo' : 'KHÔNG báo'} cong1-tang-khong-ma …:r${row}`, co === bao, rr.loi.filter((l) => l.startsWith('cong1-tang')));
   }
   const g0 = C.goiSoan('841350');
   check('1g phân nhóm không có tầng không mã → tangKhongMa rỗng', Array.isArray(g0.tangKhongMa) && g0.tangKhongMa.length === 0, g0.tangKhongMa);
   const out = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--goi', '--pn6=848310'], { encoding: 'utf8', env: process.env });
-  check('1h --goi dạng chữ in DỪNG + tầng không mã', /DỪNG/.test(out) && /tầng không mã/i.test(out) && /r14616/.test(out), out.slice(0, 400));
+  check('1h --goi dạng chữ: tầng không mã đã có nút (id 848310~r14616), không DỪNG', /848310~r14616/.test(out) && /tầng không mã/i.test(out) && !/!!! DỪNG/.test(out), out.slice(0, 600));
+  const out2 = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--goi', '--pn6=870340'], { encoding: 'utf8', env: process.env });
+  check('1i --goi 870340: tầng không đặt được (r16670) ⇒ in DỪNG', /!!! DỪNG/.test(out2) && /r16670/.test(out2), out2.slice(0, 600));
 }
 
 // ── 2. Cổng 1 phủ kín: chỉ thử vector THOẢ điều kiện của tầng cha ────────────────────────────────────────────────
@@ -128,7 +135,9 @@ const nhap850131 = (pcl) => nhap('850131', {
   check('3o dungCho "Chương 87" (chung hơn) với điều kiện "nhóm 87.11" → CHUA_BIET', dg('xe thuộc nhóm 87.11', 'xe thuộc Chương 87') === 'CHUA_BIET');
   check('3p dungCho "nhóm 88.04" TRÁI "Chương 87"; "84.15" THOẢ danh sách "84.15, 84.18 … hoặc 85.16"', dg('xe thuộc Chương 87', 'dù xoay thuộc nhóm 88.04') === 'TRAI' && dg('hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'máy thuộc nhóm 84.15') === 'THOA');
   const r8 = C.kiemRanhGioi('848310', nhap848310());
-  check('3q 848310: dungCho theo cấp mã ⇒ cổng 2 thấy .24 ("87.11") chồng .25 dưới tiêu đề "Chương 87"', coLoi(r8, 'cong2-chong-lan:84831024+84831025'), r8.loi);
+  // Trước #577-tầng-không-mã, .24 ("87.11") chồng .25 vì cây làm mất tầng "- - - Loại khác:" (r14616). Lớp tầng dựng lại tầng:
+  // đường đi của .25 phủ định .24 ⇒ cổng 2 không còn chồng lấn giả (ranh giới thật của biểu).
+  check('3q 848310: tầng "Loại khác" r14616 phủ định .24 trên đường của .25 ⇒ cổng 2 KHÔNG còn báo .24+.25', !coLoi(r8, 'cong2-chong-lan:84831024+84831025') && DK.duongDiDong8('84831025', { soTay: C.soTayTuNhap('848310', nhap848310()) }).nhom.some((g) => g.nut === '84831024' && g.chieu === 'PHAI_KHONG'), r8.loi);
 }
 
 // ── 4. HOẶC của các nhóm VÀ (DNF) trong dieuKienSo có kiểu ──────────────────────────────────────────────────────
@@ -247,7 +256,7 @@ const spec830220 = () => ({
 {
   const h = cli('--help');
   check('6a --help: mã thoát 0, liệt kê mọi lệnh', h.status === 0 && ['--goi', '--tao-nhap', '--ap-spec', '--kiem', '--tu-vung', '--giai-thich', '--duyet', '--tra-ve', '--ap-dung', '--tom-tat'].every((x) => h.stdout.includes(x)), h.stdout.slice(0, 300));
-  const gt = cli('--giai-thich=cong1-tang-khong-ma:84831025:r14616');
+  const gt = cli('--giai-thich=cong1-tang-khong-ma-khong-dat:87034018:r16670');
   check('6b --giai-thich <mã lỗi đầy đủ> → giải thích tiếng Việt + cách sửa + DỪNG', gt.status === 0 && /DỪNG/.test(gt.stdout) && /Sửa|sửa/.test(gt.stdout), gt.stdout);
   const gt2 = cli('--giai-thich', 'cong3-bien-lech-chu:84135040:luuLuong');
   check('6c --giai-thich dạng tách tham số cũng chạy', gt2.status === 0 && /biên/i.test(gt2.stdout), gt2.stdout);
@@ -290,7 +299,8 @@ const spec830220 = () => ({
   const b7 = clone(nhap850131(true)); b7.ghiChuSoan = [{ ma: '85013170', loai: 'THIEU_KHOA_TU_VUNG', khoaDeXuat: 'soLoi', ghiChu: 'x' }];
   const r7 = C.kiemRanhGioi('850131', b7);
   check('9c kiemRanhGioi trả dung[] cho THIEU_KHOA_TU_VUNG', (r7.dung || []).some((d) => d.startsWith('THIEU_KHOA_TU_VUNG:85013170:soLoi')), r7.dung);
-  check('9d tầng không mã / chồng lấn theo trục nằm trong dung[]', (C.kiemRanhGioi('848310', nhap848310()).dung || []).some((d) => d.startsWith('cong1-tang-khong-ma')), C.kiemRanhGioi('848310', nhap848310()).dung);
+  const r870 = C.kiemRanhGioi('870340', C.taoKhung('870340', { phien: PHIEN }));
+  check('9d tầng không mã KHÔNG đặt được / chồng lấn theo trục nằm trong dung[]', (r870.dung || []).some((d) => d.startsWith('cong1-tang-khong-ma-khong-dat')), (r870.dung || []).slice(0, 5));
   const b8 = clone(nhap850131(true)); b8.ghiChuSoan = [{ ma: '85013170', loai: 'BIA', ghiChu: 'x' }, { ma: '85013130', ghiChu: 'cũ, chưa có loai' }];
   const r8 = C.kiemRanhGioi('850131', b8);
   check('6p cổng 0: ghiChuSoan loai sai → lỗi; thiếu loai (bản cũ) → chỉ cảnh báo', coLoi(r8, 'cong0-ghi-chu-loai:0') && coCanh(r8, 'cong0-ghi-chu-thieu-loai:1') && !coLoi(r8, 'cong0-ghi-chu-thieu-loai'), { loi: r8.loi, canhBao: r8.canhBao });

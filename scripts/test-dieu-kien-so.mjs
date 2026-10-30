@@ -249,11 +249,14 @@ const ST8544 = {
   check('8h … rơ le điện từ cho máy giặt, 10 A → 85364140 CO (trước đây CHUA_SO_HOA vĩnh viễn)', DK.doiChieuDong8('85364140', F40, { soTay: ST8536 }).ketQua === 'CO');
   check('8i … 20 A → 85364140 MAU_THUAN tất định', (() => { const x = DK.doiChieuDong8('85364140', [...F40.slice(0, 2), fact('dongDien', 20, { donVi: 'A' })], { soTay: ST8536 }); return x.ketQua === 'MAU_THUAN' && x.coCanCuTatDinh === true; })());
 
-  // (d) Tầng có HAI tiêu đề "Loại khác" trần (8414594 + 8414599): cây theo chữ số đã lược một tầng có tên
-  //     (biểu thuế: "Công suất không quá 125 kW" / "Loại khác") → không bỏ qua, CHUA_SO_HOA lý do tang-bi-luoc.
+  // (d) Tầng có HAI "phần còn lại" trần mà một là tiêu đề → cây đã lược một tầng có tên → CHUA_SO_HOA lý do tang-bi-luoc.
+  //     841459 (8414594 + 8414599) trước đây là ví dụ; nay lớp tầng đã dựng lại tầng "Công suất không quá 125 kW" (r13180) /
+  //     "Loại khác" (r13187) nên không còn (#577 tầng không mã). Ví dụ còn lại: 9849348 (98493481 LK trần + tầng r19784 "Loại khác").
   const d41 = DK.duongDiDong8('84145941', { soTay: { nhom: '8414', dong8: [{ hs: '84145941', nguon: 'tax.84145941', trich: 'Có lưới bảo vệ', dieuKienSo: [{ fact: 'coLuoiBaoVe', op: 'CO' }] }] } });
-  const g99 = d41.nhom.find((g) => g.nut === '8414599');
-  check('8j 84145941: anh em 8414599 là tiêu đề LK trần thứ hai của tầng → dieuKien null, lyDo tang-bi-luoc', g99 && g99.chieu === 'PHAI_KHONG' && g99.dieuKien === null && g99.lyDo === 'tang-bi-luoc', j(d41.nhom));
+  check('8j0 84145941: tầng đã dựng lại → không còn tang-bi-luoc, đi qua nút tầng 841459~r13180', !d41.nhom.some((g) => g.lyDo === 'tang-bi-luoc') && d41.nhom.some((g) => g.nut === '841459~r13180'), j(d41.nhom));
+  const d81 = DK.duongDiDong8('98493481', { soTay: { nhom: '9849', dong8: [], dieuKienNut: [] } });
+  const g99 = d81.nhom.find((g) => g.nut === '984934~r19784');
+  check('8j 98493481: anh em là tầng "Loại khác" trần thứ hai của tầng → dieuKien null, lyDo tang-bi-luoc', g99 && g99.chieu === 'PHAI_KHONG' && g99.dieuKien === null && g99.lyDo === 'tang-bi-luoc', j(d81.nhom));
   check('8k … doiChieuDong8 → CHUA_SO_HOA dù đủ dữ kiện', DK.doiChieuDong8('84145941', [fact('coLuoiBaoVe', true), fact('tenLoai', 'quạt hút')], { soTay: { nhom: '8414', dong8: [] } }).ketQua === 'CHUA_SO_HOA');
 }
 
