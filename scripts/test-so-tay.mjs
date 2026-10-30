@@ -149,5 +149,36 @@ assert('loaiTru mà câu nguồn chỉ nói "thường thuộc nhóm" bị loạ
   assert('kiemCay: dong8/tenDien trỏ mã không có trong cây → lỗi đỏ; thiếu khối cay → chỉ báo', kiemCay({ dong8: [{ hs: '85049999' }], cay: { tenDien: [{ id: '8504999' }] } }, '8504').loi.sort().join() === 'dong8-khong-co-trong-cay:85049999,ten-dien-nut-khong-co:8504999' && kiemCay({}, '8504').canhBao.includes('chua-co-khoi-cay') && kiemCay({}, '8504').loi.length === 0);
 }
 
+// ── #573 (L1-3b): dieuKienSo mới theo tu-vung@1 — CO/KHONG/TRONG/TEN_LOAI/CONG_DUNG, số/LA trên khoá tu-vung, dieuKienNut ──
+{
+  const { kiemCay } = require('../lib/so-tay.js');
+  const s14 = sourcesFor('8414'); const s15 = sourcesFor('8515'); const s44 = sourcesFor('8544');
+  const d91 = { hs: '84145191', dieuKien: 'có lưới bảo vệ', nguon: 'tax.84145191', trich: 'Có lưới bảo vệ', dieuKienSo: [{ fact: 'coLuoiBaoVe', op: 'CO' }] };
+  assert('L1-3b: dòng 8 số { fact CO_KHONG, op CO } + trích có chữ → hợp lệ', checkItem('dong8', d91, s14, '8414') === null);
+  assert('L1-3b: trích không có chữ của khoá → dieu-kien-so-co-khong-co-trong-trich', String(checkItem('dong8', { ...d91, nguon: 'tax.84145110', trich: 'Quạt bàn và quạt dạng hộp' }, s14, '8414')).startsWith('dieu-kien-so-co-khong-co-trong-trich'));
+  assert('L1-3b: fact không có trong tu-vung@1 (op mới) → lỗi', String(checkItem('dong8', { ...d91, dieuKienSo: [{ fact: 'co_luoi_bao_ve', op: 'CO' }] }, s14, '8414')).startsWith('dieu-kien-so-fact-khong-co-trong-tu-vung'));
+  const d10 = { hs: '85153910', dieuKien: 'điện xoay chiều', nguon: 'tax.85153910', trich: 'Máy hàn hồ quang dùng điện xoay chiều, kiểu biến thế', dieuKienSo: [{ fact: 'loaiDongDien', op: 'TRONG', value: ['XOAY_CHIEU'] }] };
+  assert('L1-3b: TRONG hợp lệ; giá trị ngoài giaTriHopLe → lỗi', checkItem('dong8', d10, s15, '8515') === null
+    && checkItem('dong8', { ...d10, dieuKienSo: [{ fact: 'loaiDongDien', op: 'TRONG', value: ['BA_PHA'] }] }, s15, '8515') === 'dieu-kien-so-trong-gia-tri-ngoai-danh-sach:BA_PHA');
+  assert('L1-3b: TEN_LOAI nguyên văn trong trích → hợp lệ', checkItem('dong8', { hs: '84145110', dieuKien: 'quạt bàn', nguon: 'tax.84145110', trich: 'Quạt bàn và quạt dạng hộp', dieuKienSo: [{ fact: 'tenLoai', op: 'TEN_LOAI', value: ['quạt bàn', 'quạt dạng hộp'] }] }, s14, '8414') === null);
+  assert('L1-3b: CONG_DUNG nguyên văn trong trích → hợp lệ', checkItem('dong8', { hs: '85444232', dieuKien: 'cho xe', nguon: 'tax.85444232', trich: 'Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11', dieuKienSo: [{ fact: 'dungCho', op: 'CONG_DUNG', value: 'xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11' }] }, s44, '8544') === null);
+  const d94 = { hs: '85444294', dieuKien: 'plastic, lõi ≤ 5 mm', nguon: 'tax.85444294', trich: 'Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm', dieuKienSo: [{ fact: 'chatLieu', op: 'LA', value: 'plastic', viTri: 'CACH_DIEN' }, { fact: 'duongKinhLoi', op: '<=', value: 5, donVi: 'mm' }] };
+  assert('L1-3b: số + LA theo vị trí trên khoá tu-vung → hợp lệ', checkItem('dong8', d94, s44, '8544') === null);
+  assert('L1-3b: dòng "Loại khác" TRẦN vẫn không mang điều kiện', checkItem('dong8', { hs: '84145199', dieuKien: 'x', nguon: 'tax.84145199', trich: 'Loại khác', dieuKienSo: [{ fact: 'coLuoiBaoVe', op: 'KHONG' }] }, s14, '8414') === 'dieu-kien-so-tren-dong-loai-khac');
+  const d13 = { hs: '85444213', dieuKien: 'Loại khác, cách điện cao su/plastic/giấy', nguon: 'tax.85444213', trich: 'Loại khác, cách điện bằng cao su, plastic hoặc giấy', loaiKhac: true };
+  assert('L1-3b: "Loại khác, <vế>" mang được điều kiện CÓ KIỂU cho vế (không được dùng định dạng cũ)',
+    checkItem('dong8', { ...d13, dieuKienSo: [{ fact: 'chatLieu', op: 'LA', value: ['cao su', 'plastic', 'giấy'], viTri: 'CACH_DIEN' }] }, s44, '8544') === null
+    && checkItem('dong8', { ...d13, dieuKienSo: [{ fact: 'chat_lieu', op: 'LA', value: 'plastic' }] }, s44, '8544') === 'dieu-kien-so-tren-dong-loai-khac');
+  // Điều kiện của TIÊU ĐỀ (nút 7/5 số) — nguồn tieuDe.<id> = tên nguyên văn của biểu thuế Tổng cục (lib/hs-tree.js ← data/bieu-thue)
+  const nut = { id: '8544421', nguon: 'tieuDe.8544421', trich: 'Dùng cho viễn thông, điện áp không quá 80 V', dieuKienSo: [{ fact: 'dungCho', op: 'CONG_DUNG', value: 'viễn thông' }, { fact: 'dienAp', op: '<=', value: 80, donVi: 'V' }] };
+  const vn = verifySoTay({ dieuKienNut: [nut, { ...nut, id: '85444294' }, { ...nut, id: '8544429', trich: 'Loại khác', dieuKienSo: [{ fact: 'coCachDien', op: 'CO' }] }, { ...nut, dieuKienSo: [{ fact: 'dien_ap', op: '<=', value: 80, donVi: 'V' }] }, { ...nut, trich: 'Dùng cho viễn thông, điện áp không quá 81 V' }] }, '8544');
+  assert('L1-3b: dieuKienNut — tiêu đề + trích nguyên văn → đạt; lá 8 số / tiêu đề "Loại khác" trần / fact cũ / trích bịa → loại',
+    vn.dat === 1 && vn.soTay.dieuKienNut?.[0]?.id === '8544421' && vn.soTay.dieuKienNut[0].nguonLoai === 'AI_DA_KIEM' && vn.soTay.dungTuNguon.includes('tieuDe.8544421')
+    && vn.loai.map((x) => x.lyDo.split(':')[0]).sort().join() === 'dieu-kien-nut-chi-nhan-fact-tu-vung,dieu-kien-nut-khong-phai-tieu-de,dieu-kien-nut-tren-tieu-de-loai-khac,trich-khong-co-trong-nguon', vn.loai.map((x) => x.lyDo).join());
+  assert('L1-3b: sổ tay không có dieuKienNut → bản kiểm không thêm khoá (dữ liệu cũ y nguyên); nguồn tieuDe.* không lọt vào sourcesFor',
+    !('dieuKienNut' in verifySoTay({ dong8: [d91] }, '8414', s14).soTay) && !Object.keys(s44).some((k) => k.startsWith('tieuDe.')));
+  assert('L1-3b: kiemCay — dieuKienNut trỏ nút không có trong cây → lỗi đỏ', kiemCay({ dieuKienNut: [{ id: '8544499' }] }, '8544').loi.includes('dieu-kien-nut-khong-co-trong-cay:8544499'));
+}
+
 console.log(`\n${passed}/${passed + failed} passed`);
 process.exit(failed ? 1 : 0);
