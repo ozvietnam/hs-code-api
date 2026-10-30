@@ -1,0 +1,144 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "848120",
+  "nhom": "8481",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8481201",
+      "nguon": "tieuDe.8481201",
+      "trich": "8481201 Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van cổng"
+        },
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "BANG_TAY"
+          ]
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">",
+          "value": 5,
+          "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 40,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84812011",
+      "nguon": "tax.84812011",
+      "trich": "84812011 - - - Bằng sắt hoặc thép",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84812019",
+      "nguon": "tax.84812019",
+      "trich": "84812019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84812020",
+      "nguon": "tax.84812020",
+      "trich": "84812020 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong không quá 2,5 cm, hoặc bằng plastic, có đường kính trong từ 1 cm đến 2,5 cm",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "đồng"
+              },
+              {
+                "fact": "duongKinhTrong",
+                "op": "<=",
+                "value": 2.5,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "plastic"
+              },
+              {
+                "fact": "duongKinhTrong",
+                "op": ">=",
+                "value": 1,
+                "donVi": "cm"
+              },
+              {
+                "fact": "duongKinhTrong",
+                "op": "<=",
+                "value": 2.5,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84812090",
+      "nguon": "tax.84812090",
+      "trich": "84812090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8481201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8481201 \"Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm\" ⇒ tenLoai \"Van cổng\" + cachDieuKhien TRONG [BANG_TAY] + duongKinhTrong > 5 cm và <= 40 cm (\"trên\" = >, \"không quá\" = <=)."
+    },
+    {
+      "ma": "84812011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84812011 \"Bằng sắt hoặc thép\" ⇒ chatLieu LA \"sắt thép\"."
+    },
+    {
+      "ma": "84812020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84812020 \"Bằng đồng hoặc hợp kim đồng, có đường kính trong không quá 2,5 cm, hoặc bằng plastic, có đường kính trong từ 1 cm đến 2,5 cm\" ⇒ HOAC: [chatLieu đồng + duongKinhTrong <= 2.5 cm] | [chatLieu plastic + duongKinhTrong >= 1 cm + <= 2.5 cm] — mỗi vế giữ ngưỡng riêng, không gộp."
+    },
+    {
+      "ma": "84812090",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ: 848120-01 KHONG_LECH (5973, 851, 852/TB-TCHQ: van điện từ → .90, không thoả tiêu đề van cổng tay). Bản nháp theo chữ biểu, khớp bảng."
+    }
+  ]
+}

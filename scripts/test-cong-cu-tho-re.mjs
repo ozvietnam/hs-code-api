@@ -310,7 +310,8 @@ const spec830220 = () => ({
   const b8 = clone(nhap850131(true)); b8.ghiChuSoan = [{ ma: '85013170', loai: 'BIA', ghiChu: 'x' }, { ma: '85013130', ghiChu: 'cũ, chưa có loai' }];
   const r8 = C.kiemRanhGioi('850131', b8);
   check('6p cổng 0: ghiChuSoan loai sai → lỗi; thiếu loai (bản cũ) → chỉ cảnh báo', coLoi(r8, 'cong0-ghi-chu-loai:0') && coCanh(r8, 'cong0-ghi-chu-thieu-loai:1') && !coLoi(r8, 'cong0-ghi-chu-thieu-loai'), { loi: r8.loi, canhBao: r8.canhBao });
-  const k = cli('--kiem', '--pn6=850131');
+  // 850131 đã xanh (phanConLai, L1-4 Claude giữ) ⇒ dùng bản nháp đỏ có chủ đích 900490 (chữ biểu .10/.50 tự chồng, chưa khai).
+  const k = cli('--kiem', '--pn6=900490');
   check('6q --kiem in dòng hướng dẫn (→) dưới mỗi lỗi', k.status === 1 && /\n\s+→ /.test(k.stdout), k.stdout.slice(0, 500));
   check('9e gói soạn gợi ý nghi thiếu khoá (số sợi/lõi) ở 854442 .91 "hai sợi hoặc hơn"', (C.goiSoan('854442').canSoHoa.find((x) => x.ma === '85444291')?.nghiThieuKhoa || []).length > 0);
   const de = fs.existsSync('docs/giao-viec/so-tay/de-xuat-tu-vung-2.md') ? fs.readFileSync('docs/giao-viec/so-tay/de-xuat-tu-vung-2.md', 'utf8') : '';

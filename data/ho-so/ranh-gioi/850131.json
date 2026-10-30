@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#agent-B-lo-A",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
     "ngay": "2026-10-30"
   },
   "duyet": null,
@@ -26,7 +26,13 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.09",
+            "85.16"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -44,7 +50,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "xe của Chương 87"
+          "value": "Chương 87"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -60,7 +66,8 @@
           "value": "Động cơ"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "85013180",
@@ -78,24 +85,24 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "mau",
-      "ghiChu": "MẪU \"ĐỂ ĐỎ CÓ CHỦ ĐÍCH — dòng phần còn lại có tên ('<danh từ> khác')\". Phân nhóm không có dòng \"Loại khác\"; .70 \"Động cơ khác\" đóng vai phần còn lại của động cơ (khác .30, .60). Từ vựng/lược đồ hiện chưa có cách nói \"không thuộc các anh em có tên\" cho dòng có tên, và câu trích của .70 không chứa chữ của .30/.60 nên không ghi được chieu PHAI_KHONG. Không ép qua: không bịa điều kiện tách, KHÔNG khai CHONG_LAN_VAN_BAN (chữ \"khác\" đã tách rõ — đây không phải chồng lấn văn bản). Cổng 2 đỏ .30+.70, .60+.70; cổng 1 đỏ khong-phu-kin (tầng không có con LK trần; vector tenLoai ngoài danh sách không vào đâu — trong khi 8501.31 theo WCO chỉ gồm động cơ và máy phát)."
-    },
-    {
       "ma": "85013130",
-      "ghiChu": "Nguồn tax.85013130. \"Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ tenLoai \"Động cơ\" + dungCho trọn cụm nhóm hàng (một chuỗi; tách từng mã nhóm thành giá trị riêng cũng đúng nhưng không thêm sức phân biệt vì người khai hiếm ghi số nhóm)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013130 \"Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ tenLoai \"Động cơ\" + dungCho [5 nhóm, đủ, đúng thứ tự] (so theo cấp mã)."
     },
     {
       "ma": "85013160",
-      "ghiChu": "Nguồn tax.85013160. tenLoai \"Động cơ\" + dungCho \"xe của Chương 87\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013160 \"Động cơ dùng cho xe của Chương 87\" ⇒ tenLoai \"Động cơ\" + dungCho \"Chương 87\"."
     },
     {
       "ma": "85013170",
-      "ghiChu": "Nguồn tax.85013170. Chỉ ghi được vế dương tenLoai \"Động cơ\"; vế \"khác (.30, .60)\" CHƯA DIỄN ĐẠT ĐƯỢC — nguyên nhân đỏ. Đề xuất công cụ: cho dòng có tên dạng \"<X> khác\" khai `phanConLai: true` để luật đi phủ định anh em như dòng Loại khác. Tham khảo (không dùng làm căn cứ chọn dòng): 3609/TB-TCHQ trong precedents.json xếp \"xi lanh điện (Electric Actuator)\" vào 85013170."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Soạn lại sau PR #590 (phanConLai): tax.85013170 \"Động cơ khác\" ⇒ tenLoai \"Động cơ\" + phanConLai: true (phần còn lại có tên — phủ định .30, .60 đứng trước). Bản cũ đỏ vì chưa có phanConLai."
     },
     {
       "ma": "85013180",
-      "ghiChu": "Nguồn tax.85013180. \"Máy phát điện\" ⇒ tenLoai \"Máy phát điện\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013180 \"Máy phát điện\" ⇒ tenLoai \"Máy phát điện\". Phân nhóm không có dòng Loại khác: vật ngoài \"Động cơ\"/\"Máy phát điện\" coi là ngoài phân nhóm (luật cổng 1 tầng gốc)."
     }
   ]
 }
