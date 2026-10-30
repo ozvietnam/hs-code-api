@@ -173,9 +173,10 @@ for (const [ten, mut, ma] of [
 check('DANH_MUC_VIET_TAT đúng 5 mục CEO đã duyệt (spec §6)', JSON.stringify(Object.keys(T.DANH_MUC_VIET_TAT).sort()) === JSON.stringify(['CL', 'CS', 'KT', 'NSX', 'ĐA'].sort()), T.DANH_MUC_VIET_TAT);
 
 // ── 8. Từ vựng thật ───────────────────────────────────────────────────────────────────────────────────────
-const tv = T.taiTuVung();
+// tu-vung@1 nạp THEO TÊN: runtime nạp tu-vung@2 (siêu tập — scripts/test-tu-vung-2.mjs); bench lát 1 khoá theo @1.
+const tv = T.taiTuVung('tu-vung@1');
 check('tu-vung@1.json thật qua máy kiểm lược đồ (0 lỗi)', T.kiemTuVung(tv).length === 0, T.kiemTuVung(tv));
-check('phienBan "tu-vung@1"; băm sha256 cho HoSoPhanLoai.phienBan.tuVung', tv.phienBan === 'tu-vung@1' && /^[0-9a-f]{64}$/.test(T.phienBan().sha256), T.phienBan());
+check('phienBan "tu-vung@1"; băm sha256 cho HoSoPhanLoai.phienBan.tuVung', tv.phienBan === 'tu-vung@1' && /^[0-9a-f]{64}$/.test(T.phienBan('tu-vung@1').sha256), T.phienBan('tu-vung@1'));
 check('đủ 6 kiểu dữ kiện của spec §8.2', ['SO', 'CO_KHONG', 'LIET_KE', 'CHAT_LIEU_THEO_VI_TRI', 'CONG_DUNG', 'TEN_LOAI'].every((k) => tv.khoa.some((x) => x.kieu === k)));
 check('nhãn tệp: tu-vung/*.json ⇒ CLAUDE_DUYET (lib/nguon-loai.js)', N.nhanCuaTep('tu-vung/tu-vung@1.json') === 'CLAUDE_DUYET' && N.nhanCuaTep('data/tu-vung/anh-xa-cu.json') === 'CLAUDE_DUYET');
 
@@ -345,7 +346,7 @@ check('nhãn tệp: tu-vung/*.json ⇒ CLAUDE_DUYET (lib/nguon-loai.js)', N.nhan
   chuaBiet('#675 "có nắp rời" chỉ là đặc điểm của hàng', 'laBoPhan', 'Bình giữ nhiệt có nắp rời');
   dung('#675 phủ định cấu trúc', 'laBoPhan', 'không phải vỏ ngoài rời của bình', false);
   // băm tu-vung@1 không đổi (bench khoá băm)
-  check('#667 tu-vung@1 giữ nguyên: sha256 67de4948a117…', T.phienBan().sha256.startsWith('67de4948a117'), T.phienBan());
+  check('#667 tu-vung@1 giữ nguyên: sha256 67de4948a117…', T.phienBan('tu-vung@1').sha256.startsWith('67de4948a117'), T.phienBan('tu-vung@1'));
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);

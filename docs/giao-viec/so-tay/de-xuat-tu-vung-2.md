@@ -4,6 +4,19 @@
 > (`bench-may-nghi`, `check-tu-vung`) và KHÔNG được sửa trong lúc số hoá lát 1. Thêm khoá là việc của L1-3a, cần Claude/GĐ
 > duyệt, đo lại bench, rồi mới nâng phiên bản.
 
+## Trạng thái: ĐÃ LÊN `tu-vung@2` (30/10/2026, nhánh `feat/tu-vung-2`)
+
+- `data/tu-vung/tu-vung@2.json` = 53 khoá `tu-vung@1` **giữ nguyên** + 7 khoá: `chiHoacChuYeu`, `thietKeChoTreEm`,
+  `daNapChuongTrinh` (CO_KHONG), `soLoi`, `soSoi`, `tiLe` (SO), `phuongPhapCheTao` (LIET_KE). Khoá mới mang `nguonLoai:
+  AI_DA_KIEM` (`chamDuyetDocLap.khoaChuaCham`) tới khi có phiên chấm độc lập.
+- Runtime + công cụ (`lib/tu-vung.js`, `so-hoa-ranh-gioi.mjs --goi/--tu-vung`) nạp `@2`. `tu-vung@1.json` KHÔNG sửa: bench lát 1 khoá băm theo
+  `@1` — `check-tu-vung` đo độ phủ trên `@1` + kiểm siêu tập (`kiemSieuTap`); vân tay đọc 53 khoá `@1` ghi trước khi đổi
+  (`scripts/fixtures/tu-vung/vang-doc-tu-vung-1.json`) phải khớp (`scripts/test-tu-vung-2.mjs`).
+- Hai luật bộ đọc #667/#675 đã vào dữ liệu: `khongPhaiPhuDinh` (thêm ở cuối) và `cauTrucCo.laBoPhan`; hằng trong mã đã xoá.
+- `soSoi` đọc đúng chữ "sợi" (8544.42.91 "hai sợi hoặc hơn" = sợi dẫn); khách khai "lõi" thì đọc ở `soLoi` — người soạn cân nhắc
+  `HOAC` soSoi/soLoi. `tiLe`: đại lượng tử/mẫu lấy từ câu trích của điều kiện.
+- Mở lại các mục `THIEU_KHOA_TU_VUNG` trong bản nháp là việc soạn riêng (job soạn), không làm trong nhánh này.
+
 ## Quy tắc cho người soạn (thợ) cho tới khi có `tu-vung@2`
 
 Gặp chữ biểu cần một trong các ý dưới (hoặc bất kỳ ý nào `--tu-vung` không có khoá):

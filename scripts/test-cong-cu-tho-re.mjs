@@ -315,7 +315,9 @@ const spec830220 = () => ({
   // 850131 đã xanh (phanConLai, L1-4 Claude giữ) ⇒ dùng bản nháp đỏ có chủ đích 900490 (chữ biểu .10/.50 tự chồng, chưa khai).
   const k = cli('--kiem', '--pn6=900490');
   check('6q --kiem in dòng hướng dẫn (→) dưới mỗi lỗi', k.status === 1 && /\n\s+→ /.test(k.stdout), k.stdout.slice(0, 500));
-  check('9e gói soạn gợi ý nghi thiếu khoá (số sợi/lõi) ở 854442 .91 "hai sợi hoặc hơn"', (C.goiSoan('854442').canSoHoa.find((x) => x.ma === '85444291')?.nghiThieuKhoa || []).length > 0);
+  // tu-vung@2 (#577) đã có soLoi/soSoi ⇒ ý "hai sợi hoặc hơn" thành GỢI Ý KHOÁ (goiYKhoa), không còn "nghi thiếu khoá"
+  { const x = C.goiSoan('854442').canSoHoa.find((y) => y.ma === '85444291') || {};
+    check('9e gói soạn nhận ra ý số sợi/lõi ở 854442 .91 "hai sợi hoặc hơn" — tu-vung@2 có khoá ⇒ goiYKhoa soLoi/soSoi, không nghiThieuKhoa', (x.goiYKhoa || []).some((g) => /soSoi/.test(g)) && !x.nghiThieuKhoa, x); }
   const de = fs.existsSync('docs/giao-viec/so-tay/de-xuat-tu-vung-2.md') ? fs.readFileSync('docs/giao-viec/so-tay/de-xuat-tu-vung-2.md', 'utf8') : '';
   check('9f có đề xuất tu-vung@2 (lõi/sợi, tỉ lệ, chỉ hoặc chủ yếu, phương pháp chế tạo); tu-vung@1 không đổi', /lõi/.test(de) && /tỉ lệ|tỷ lệ/.test(de) && /chủ yếu/.test(de) && /phương pháp/.test(de));
   // Bản nháp DUYET không sửa bằng spec
