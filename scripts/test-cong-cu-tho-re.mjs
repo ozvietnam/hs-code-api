@@ -191,5 +191,28 @@ function nhap853641(d91) {
   check('5f dòng tới được (.12 "87.11" ⊂ "Chương 87") → không báo', !coLoi(r4, 'cong2-dong-khong-toi-duoc:40169912') && !coCanh(r4, 'cong2-diem-mu:dungCho:4016991>40169912'));
 }
 
+// ── 8. Chính sách CHONG_LAN_VAN_BAN: lý do trích chữ của CẢ HAI nhánh; chồng lấn theo trục (≥ 3 nhánh) ⇒ đỏ, báo Claude ─
+{
+  const goc = nhap853641([HOAC([RL(['BAN_DAN']), SO('dienAp', '<=', 28, 'V')], [RL(['DIEN_TU']), SO('dienAp', '<=', 28, 'V')])]);
+  check('8a lý do trích chữ của cả hai dòng → xanh', C.kiemRanhGioi('853641', goc).hopLe === true, C.kiemRanhGioi('853641', goc).loi);
+  const b = clone(goc); b.chongLanVanBan[1].lyDo = 'Như cặp .10/.20: .10 phân theo loại rơ le, .30 "Của loại sử dụng cho quạt điện" phân theo đích dùng.';
+  const r = C.kiemRanhGioi('853641', b);
+  check('8b lý do không trích chữ của .10 → cong3-chong-lan-thieu-trich:85364110+85364130:85364110', r.loi.includes('cong3-chong-lan-thieu-trich:85364110+85364130:85364110') && !r.loi.some((l) => l.endsWith(':85364130') && l.startsWith('cong3-chong-lan-thieu-trich')), r.loi);
+  const b2 = clone(goc); b2.chongLanVanBan[0].lyDo = 'Chữ biểu: .10 "Rơ le kỹ thuật số" và .20 "Của loại sử dụng trong các thiết bị bay" không loại trừ nhau.';
+  check('8c trích bịa (không có trong chữ biểu của nhánh) → cong3-chong-lan-thieu-trich', coLoi(C.kiemRanhGioi('853641', b2), 'cong3-chong-lan-thieu-trich:85364110+85364120:85364120'));
+  // 853620: 4 cặp, cùng MỘT cặp nhánh (tiêu đề 8536201 "Loại hộp đúc" ↔ .20) — chồng lấn chữ biểu thật, giữ xanh.
+  const r3 = C.kiemRanhGioi('853620', JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/853620.json'), 'utf8')));
+  check('8d 853620 (một cặp nhánh) vẫn xanh', r3.hopLe === true, r3.loi);
+  // 401699: nhánh theo công dụng (4016991) chồng ≥ 3 nhánh theo tên — chồng lấn theo TRỤC, không phải chữ biểu tự chồng.
+  const r4 = C.kiemRanhGioi('401699', JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/401699.json'), 'utf8')));
+  check('8e 401699: khai CHONG_LAN_VAN_BAN cho chồng lấn theo trục → cong2-chong-lan-truc:4016991', coLoi(r4, 'cong2-chong-lan-truc:4016991:'), r4.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
+  // 392690: khai hết mọi cặp chồng lấn cũng không xanh được.
+  const b5 = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/392690.json'), 'utf8'));
+  const cap = C.kiemRanhGioi('392690', b5).loi.filter((l) => l.startsWith('cong2-chong-lan:')).map((l) => l.split(':')[1].split('+'));
+  b5.chongLanVanBan = cap.map((c) => ({ cap: c, lyDo: 'khai thử' }));
+  const r5 = C.kiemRanhGioi('392690', b5);
+  check('8f 392690 khai hết cặp → vẫn đỏ vì cong2-chong-lan-truc', cap.length > 10 && coLoi(r5, 'cong2-chong-lan-truc:') && r5.hopLe === false, r5.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
