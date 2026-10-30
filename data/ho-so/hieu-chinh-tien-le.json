@@ -2,7 +2,10 @@
   "phienBan": "hieu-chinh-tien-le@1",
   "bieuThue": "2026.04.05",
   "ngay": "2026-10-30",
-  "soanBoi": { "vai": "AI", "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4b" },
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4b"
+  },
   "ghiChu": [
     "Plan L1-4b (spec hồ sơ §8.1 hieuChinh, §11). Phạm vi: 11 phân nhóm lát 1 cờ canHieuChinhTienLe (data/ho-so/lat-1.json). Cổng máy: scripts/check-hieu-chinh.mjs (lib/ho-so/hieu-chinh.js).",
     "Mọi trich chép NGUYÊN VĂN từ data/precedents.json (đúng bản ghi viTri, kèm mã kết luận) và từ biểu thuế/SEN (tax.json, bieu-thue/ten-nut, sen-2022.json — NGUYEN_VAN). Không trích nguồn AI_CHUA_KIEM.",
@@ -17,13 +20,27 @@
       "maHs": "39269099",
       "dongChuBieu": "39269093",
       "loai": "LECH_CHUA_PHAN_XU",
-      "dieuKien": { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Khóa hãm nhựa" },
+      "dieuKien": {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "Khóa hãm nhựa"
+      },
       "tbTchq": [
-        { "soHieu": "99/TB-TCHQ", "viTri": "precedents.json#39269099[7]", "trich": "Khóa hãm nhựa 37A7-0-A-998 … Khóa hãm nhựa được lắp vào hộc mở ở đầu xe điện và cốp để đồ của xe máy điện … mã số 3926.90.99 “- - - Loại khác”" }
+        {
+          "soHieu": "99/TB-TCHQ",
+          "viTri": "precedents.json#39269099[7]",
+          "trich": "Khóa hãm nhựa 37A7-0-A-998 … Khóa hãm nhựa được lắp vào hộc mở ở đầu xe điện và cốp để đồ của xe máy điện … mã số 3926.90.99 “- - - Loại khác”"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.39269093", "trich": "Khóa, khóa điều chỉnh, móc treo và nút chặn dây (SEN)" },
-        { "nguon": "sen.39269093", "trich": "Khóa nhựa được thiết kế để buộc chặt hai đầu rời được khóa trong khung và mở khóa. Chúng thường được sử dụng trong dây đai an toàn ghế ngồi và túi." }
+        {
+          "nguon": "tax.39269093",
+          "trich": "Khóa, khóa điều chỉnh, móc treo và nút chặn dây (SEN)"
+        },
+        {
+          "nguon": "sen.39269093",
+          "trich": "Khóa nhựa được thiết kế để buộc chặt hai đầu rời được khóa trong khung và mở khóa. Chúng thường được sử dụng trong dây đai an toàn ghế ngồi và túi."
+        }
       ],
       "lyDo": "Chữ dòng 3926.90.93 \"Khóa, …\" đọc thuần bao cả khóa hãm nhựa (chốt khóa cốp xe máy điện); 99/TB-TCHQ xếp 3926.90.99. SEN 3926.90.93 mô tả \"khóa\" là loại buộc chặt hai đầu rời (dây đai an toàn, túi) — nghiêng về phía TB-TCHQ, nhưng chỉ có một TB-TCHQ và chưa ai phân xử nên không tự chọn bên. Hai dòng cùng MFN 12 %.",
       "duyetBoi": null,
@@ -35,10 +52,17 @@
       "dongChuBieu": "39269032",
       "loai": "KHONG_LECH",
       "tbTchq": [
-        { "soHieu": "1049/TB-TCHQ", "viTri": "precedents.json#39269099[29]", "trich": "Khuôn nhựa dùng để hàn Cell Pin … Các lõi PIN sẽ được đặt vào đây để thực hiện công đoạn hàn Cell pin … mã số 3926.90.99 “- - - Loại khác”" }
+        {
+          "soHieu": "1049/TB-TCHQ",
+          "viTri": "precedents.json#39269099[29]",
+          "trich": "Khuôn nhựa dùng để hàn Cell Pin … Các lõi PIN sẽ được đặt vào đây để thực hiện công đoạn hàn Cell pin … mã số 3926.90.99 “- - - Loại khác”"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.39269032", "trich": "Khuôn plastic lấy dấu răng" }
+        {
+          "nguon": "tax.39269032",
+          "trich": "Khuôn plastic lấy dấu răng"
+        }
       ],
       "lyDo": "Tín hiệu LK_TRUNG_TEN_ANH_EM do chữ \"khuôn\". Hàng là khay định vị lõi pin khi hàn, không phải khuôn lấy dấu răng (.32, dưới tiêu đề sản phẩm vệ sinh, y tế, phẫu thuật) cũng không phải khuôn (phom) giày (.81) ⇒ chữ hai dòng anh em không bao hàng; .99 khớp chữ biểu.",
       "duyetBoi": null,
@@ -50,10 +74,17 @@
       "dongChuBieu": "39269053",
       "loai": "KHONG_LECH",
       "tbTchq": [
-        { "soHieu": "298/TB-TCHQ", "viTri": "precedents.json#39269099[11]", "trich": "Băng khóa dính 2 mặt SJ3741 … Băng khóa kép từ polypropylen (Dual lock), dạng dải … lớp giữa keo tự dính từ polyme acrylat … mã số 3926.90.99" }
+        {
+          "soHieu": "298/TB-TCHQ",
+          "viTri": "precedents.json#39269099[11]",
+          "trich": "Băng khóa dính 2 mặt SJ3741 … Băng khóa kép từ polypropylen (Dual lock), dạng dải … lớp giữa keo tự dính từ polyme acrylat … mã số 3926.90.99"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.39269053", "trich": "Băng truyền (dây curoa) hoặc đai truyền hoặc băng tải hoặc đai tải" }
+        {
+          "nguon": "tax.39269053",
+          "trich": "Băng truyền (dây curoa) hoặc đai truyền hoặc băng tải hoặc đai tải"
+        }
       ],
       "lyDo": "Tín hiệu LK_TRUNG_TEN_ANH_EM do chữ \"băng\". Hàng là băng khóa dán (gai khóa hình nấm, keo tự dính), không phải băng truyền/đai truyền/băng tải ⇒ không thoả chữ .53; .99 khớp chữ biểu.",
       "duyetBoi": null,
@@ -65,21 +96,54 @@
       "dongChuBieu": "85444294",
       "loai": "TIEN_LE_THAY_CHU_BIEU",
       "dieuKien": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cáp sạc" },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "điện thoại" },
-        { "fact": "duongKinhLoi", "op": "<", "value": 5, "donVi": "mm" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp sạc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "điện thoại"
+        },
+        {
+          "fact": "duongKinhLoi",
+          "op": "<",
+          "value": 5,
+          "donVi": "mm"
+        }
       ],
       "tbTchq": [
-        { "soHieu": "1709/TB-TCHQ", "viTri": "precedents.json#85444299[9]", "trich": "Cáp sạc và truyền dẫn tín hiệu điện thoại … mỗi lõi đã bọc cách điện bằng plastic và có đường kính mỗi lõi nhỏ hơn 5mm), hai đầu dây đã gắn đầu nối … mã số 8544.42.99 “- - - - Loại khác”" },
-        { "soHieu": "1710/TB-TCHQ", "viTri": "precedents.json#85444299[10]", "trich": "Cáp sạc và truyền dẫn tín hiệu điện thoại … mỗi lõi đã bọc cách điện bằng plastic và có đường kính mỗi lõi nhỏ hơn 5mm), hai đầu dây đã gắn đầu nối … mã số 8544.42.99 “- - - - Loại khác”" },
-        { "soHieu": "1711/TB-TCHQ", "viTri": "precedents.json#85444299[11]", "trich": "Cáp sạc và truyền dẫn tín hiệu điện thoại … mỗi lõi đã bọc cách điện bằng plastic và có đường kính mỗi lõi nhỏ hơn 5mm), hai đầu dây đã gắn đầu nối … mã số 8544.42.99 “- - - - Loại khác”" }
+        {
+          "soHieu": "1709/TB-TCHQ",
+          "viTri": "precedents.json#85444299[9]",
+          "trich": "Cáp sạc và truyền dẫn tín hiệu điện thoại … mỗi lõi đã bọc cách điện bằng plastic và có đường kính mỗi lõi nhỏ hơn 5mm), hai đầu dây đã gắn đầu nối … mã số 8544.42.99 “- - - - Loại khác”"
+        },
+        {
+          "soHieu": "1710/TB-TCHQ",
+          "viTri": "precedents.json#85444299[10]",
+          "trich": "Cáp sạc và truyền dẫn tín hiệu điện thoại … mỗi lõi đã bọc cách điện bằng plastic và có đường kính mỗi lõi nhỏ hơn 5mm), hai đầu dây đã gắn đầu nối … mã số 8544.42.99 “- - - - Loại khác”"
+        },
+        {
+          "soHieu": "1711/TB-TCHQ",
+          "viTri": "precedents.json#85444299[11]",
+          "trich": "Cáp sạc và truyền dẫn tín hiệu điện thoại … mỗi lõi đã bọc cách điện bằng plastic và có đường kính mỗi lõi nhỏ hơn 5mm), hai đầu dây đã gắn đầu nối … mã số 8544.42.99 “- - - - Loại khác”"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.85444294", "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm" }
+        {
+          "nguon": "tax.85444294",
+          "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm"
+        }
       ],
       "lyDo": "Ba TB-TCHQ cùng chiều (1709, 1710, 1711/TB-TCHQ ngày 13/05/2022) xếp cáp sạc và truyền dữ liệu điện thoại — mỗi lõi bọc plastic, đường kính lõi dưới 5 mm, đã gắn đầu nối — vào 8544.42.99 \"Loại khác\" (MFN 10 %); đọc thuần chữ biểu thì hàng thoả 8544.42.94 \"Cáp điện cách điện bằng plastic, mỗi lõi ≤ 5 mm\" (MFN 17 %). Đủ ngưỡng ≥ 2 TB-TCHQ cùng chiều của plan; precedents.json không có bản ghi nào kết luận 85444294 (không TB-TCHQ ngược chiều). Ba thông báo cùng ngày, nhiều khả năng cùng một doanh nghiệp, ba model — CEO Oz đã xét và chốt 30/10/2026 theo thông báo phân loại (.99), xem phanXu. Chỉ áp trong dieuKien (cáp sạc dùng cho điện thoại, lõi < 5 mm); hàng khác ở ranh giới .94↔.99 xem 854442-02.",
       "duyetBoi": "NGUOI_DUYET",
-      "phanXu": { "nguoi": "CEO Oz", "ngay": "2026-10-30", "quyetDinh": "theo thông báo phân loại (.99)", "kenh": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q" },
+      "phanXu": {
+        "nguoi": "CEO Oz",
+        "ngay": "2026-10-30",
+        "quyetDinh": "theo thông báo phân loại (.99)",
+        "kenh": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q"
+      },
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -88,22 +152,62 @@
       "dongChuBieu": "85444294",
       "loai": "TIEN_LE_THAY_CHU_BIEU",
       "dieuKien": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["tín hiệu", "Data link cable"] },
-        { "fact": "chatLieu", "op": "LA", "value": "plastic", "viTri": "CACH_DIEN" },
-        { "fact": "daGanDauNoi", "op": "CO" },
-        { "fact": "duongKinhLoi", "op": "<=", "value": 5, "donVi": "mm" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tín hiệu",
+            "Data link cable"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        },
+        {
+          "fact": "daGanDauNoi",
+          "op": "CO"
+        },
+        {
+          "fact": "duongKinhLoi",
+          "op": "<=",
+          "value": 5,
+          "donVi": "mm"
+        }
       ],
       "tbTchq": [
-        { "soHieu": "524/TB-TCHQ", "viTri": "precedents.json#85444299[1]", "trich": "Cáp dẫn điện và tín hiệu điện tròn chống nhiễu có cách điện bằng plastic … gồm 9 sợi dây dẫn bọc cách điện và chống nhiễu đường kính lõi mỗi sợi 0,3 mm … mã số 8544.42.99" },
-        { "soHieu": "551/TB-TCHQ", "viTri": "precedents.json#85444299[2]", "trich": "đường kính lõi 24AWG, CAT6 … Cáp dẫn điện, đã lắp đầu nối, điện áp sử dụng lớn nhất 80V … mỗi sợi bọc cách điện riêng bằng plastic … mã số 8544.42.99" },
-        { "soHieu": "354/TB-CHQ", "viTri": "precedents.json#85444299[4]", "trich": "Data link cable USB 2.0 TYPE C TO TYPE C … mỗi lõi đã được bọc cách điện bằng nhựa và có đường kính mỗi lõi nhỏ hơn 5mm … mã số 8544.42.99" }
+        {
+          "soHieu": "524/TB-TCHQ",
+          "viTri": "precedents.json#85444299[1]",
+          "trich": "Cáp dẫn điện và tín hiệu điện tròn chống nhiễu có cách điện bằng plastic … gồm 9 sợi dây dẫn bọc cách điện và chống nhiễu đường kính lõi mỗi sợi 0,3 mm … mã số 8544.42.99"
+        },
+        {
+          "soHieu": "551/TB-TCHQ",
+          "viTri": "precedents.json#85444299[2]",
+          "trich": "đường kính lõi 24AWG, CAT6 … Cáp dẫn điện, đã lắp đầu nối, điện áp sử dụng lớn nhất 80V … mỗi sợi bọc cách điện riêng bằng plastic … mã số 8544.42.99"
+        },
+        {
+          "soHieu": "354/TB-CHQ",
+          "viTri": "precedents.json#85444299[4]",
+          "trich": "Data link cable USB 2.0 TYPE C TO TYPE C … mỗi lõi đã được bọc cách điện bằng nhựa và có đường kính mỗi lõi nhỏ hơn 5mm … mã số 8544.42.99"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.85444294", "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm" }
+        {
+          "nguon": "tax.85444294",
+          "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm"
+        }
       ],
       "lyDo": "Ngoài phạm vi 854442-01 (cáp tín hiệu/dữ liệu bọc plastic, lõi ≤ 5 mm, đã gắn đầu nối): chữ biểu trỏ 8544.42.94 \"Cáp điện cách điện bằng plastic…\" (MFN 17 %) nhưng mọi TB-TCHQ trong precedents.json ở ranh giới này đều xếp 8544.42.99 (MFN 10 %): 524/TB-TCHQ (cáp VGA, lõi 0,3 mm), 551/TB-TCHQ (cáp CAT6), 354/TB-CHQ (cáp USB-C); 567/TB-TCHQ (cáp AISG) và 3266/TB-TCHQ (bộ dây tín hiệu) cũng .99 nhưng không ghi đường kính lõi. Không TB-TCHQ nào xếp .94. Hai TB-TCHQ (524, 551) là hàng khác nhau, không định được phạm vi chung bằng một dữ kiện nên bản AI soạn để LECH. CEO Oz phân xử 30/10/2026: theo thông báo phân loại (.99), xem phanXu. Phạm vi (dieuKien): cáp tín hiệu/dữ liệu (như cáp VGA, cáp USB-C) cách điện bằng plastic, đã gắn đầu nối, lõi ≤ 5 mm; cáp CAT6 mạng máy tính xem 854442-03, cáp sạc điện thoại xem 854442-01.",
       "duyetBoi": "NGUOI_DUYET",
-      "phanXu": { "nguoi": "CEO Oz", "ngay": "2026-10-30", "quyetDinh": "theo thông báo phân loại (.99)", "kenh": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q" },
+      "phanXu": {
+        "nguoi": "CEO Oz",
+        "ngay": "2026-10-30",
+        "quyetDinh": "theo thông báo phân loại (.99)",
+        "kenh": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q"
+      },
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -112,21 +216,52 @@
       "dongChuBieu": "85444213",
       "loai": "TIEN_LE_THAY_CHU_BIEU",
       "dieuKien": [
-        { "fact": "congDung", "op": "CONG_DUNG", "value": "truyền dữ liệu trong mạng máy tính" },
-        { "fact": "daGanDauNoi", "op": "CO" },
-        { "fact": "dienAp", "op": "<=", "value": 80, "donVi": "V" }
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "truyền dữ liệu trong mạng máy tính"
+        },
+        {
+          "fact": "daGanDauNoi",
+          "op": "CO"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 80,
+          "donVi": "V"
+        }
       ],
       "tbTchq": [
-        { "soHieu": "551/TB-TCHQ", "viTri": "precedents.json#85444299[2]", "trich": "Cáp dẫn điện, đã lắp đầu nối, điện áp sử dụng lớn nhất 80V … Sử dụng truyền dữ liệu trong mạng máy tính … mã số 8544.42.99" },
-        { "soHieu": "567/TB-TCHQ", "viTri": "precedents.json#85444299[3]", "trich": "là loại cáp truyền tín hiệu điều khiển, không phải loại cáp dùng cho lĩnh vực viễn thông để truyền dẫn các tín hiệu viễn thông … mã số 8544.42.99" }
+        {
+          "soHieu": "551/TB-TCHQ",
+          "viTri": "precedents.json#85444299[2]",
+          "trich": "Cáp dẫn điện, đã lắp đầu nối, điện áp sử dụng lớn nhất 80V … Sử dụng truyền dữ liệu trong mạng máy tính … mã số 8544.42.99"
+        },
+        {
+          "soHieu": "567/TB-TCHQ",
+          "viTri": "precedents.json#85444299[3]",
+          "trich": "là loại cáp truyền tín hiệu điều khiển, không phải loại cáp dùng cho lĩnh vực viễn thông để truyền dẫn các tín hiệu viễn thông … mã số 8544.42.99"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tieuDe.8544421", "trich": "Dùng cho viễn thông, điện áp không quá 80 V" },
-        { "nguon": "tax.85444213", "trich": "Loại khác, cách điện bằng cao su, plastic hoặc giấy" }
+        {
+          "nguon": "tieuDe.8544421",
+          "trich": "Dùng cho viễn thông, điện áp không quá 80 V"
+        },
+        {
+          "nguon": "tax.85444213",
+          "trich": "Loại khác, cách điện bằng cao su, plastic hoặc giấy"
+        }
       ],
       "lyDo": "551/TB-TCHQ: cáp CAT6 truyền dữ liệu mạng máy tính, điện áp tối đa 80 V, bọc plastic, đã gắn đầu nối → 8544.42.99 (MFN 10 %). Nếu mạng máy tính tính là \"viễn thông\" thì chữ tiêu đề 8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" + dòng .13 \"cách điện bằng … plastic\" (MFN 0 %) bao hàng. TB-TCHQ không nêu lý do loại khỏi viễn thông (567/TB-TCHQ thì ghi rõ cáp AISG \"không phải loại cáp dùng cho lĩnh vực viễn thông\" — khớp chữ biểu). Một TB-TCHQ cho hàng này nên bản AI soạn để LECH. CEO Oz phân xử 30/10/2026: theo thông báo phân loại (.99), xem phanXu. Phạm vi (dieuKien): cáp truyền dữ liệu mạng máy tính đã gắn đầu nối, điện áp ≤ 80 V (như cáp CAT6 của 551/TB-TCHQ).",
       "duyetBoi": "NGUOI_DUYET",
-      "phanXu": { "nguoi": "CEO Oz", "ngay": "2026-10-30", "quyetDinh": "theo thông báo phân loại (.99)", "kenh": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q" },
+      "phanXu": {
+        "nguoi": "CEO Oz",
+        "ngay": "2026-10-30",
+        "quyetDinh": "theo thông báo phân loại (.99)",
+        "kenh": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q"
+      },
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -135,16 +270,37 @@
       "dongChuBieu": "85371012",
       "loai": "LECH_CHUA_PHAN_XU",
       "dieuKien": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bản mạch điều khiển" },
-        { "fact": "coBoXuLyLapTrinh", "op": "CO" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bản mạch điều khiển"
+        },
+        {
+          "fact": "coBoXuLyLapTrinh",
+          "op": "CO"
+        }
       ],
       "tbTchq": [
-        { "soHieu": "6326/TB-TCHQ", "viTri": "precedents.json#85371099[0]", "trich": "Bản mạch điều khiển có trang bị bộ xử lý lập trình MSP430FR, dùng cho điện áp không quá 1000V … phân nhóm “- - Loại khác”, mã số 8537.10.99 “- - - Loại khác”" },
-        { "soHieu": "103/TB-TCHQ", "viTri": "precedents.json#85371012[0]", "trich": "là thiết bị điều khiển có trang bị bộ xử lý lập trình … mã số 8537.10.12 “- - - Bảng điều khiển có trang bị bộ xử lý lập trình”" }
+        {
+          "soHieu": "6326/TB-TCHQ",
+          "viTri": "precedents.json#85371099[0]",
+          "trich": "Bản mạch điều khiển có trang bị bộ xử lý lập trình MSP430FR, dùng cho điện áp không quá 1000V … phân nhóm “- - Loại khác”, mã số 8537.10.99 “- - - Loại khác”"
+        },
+        {
+          "soHieu": "103/TB-TCHQ",
+          "viTri": "precedents.json#85371012[0]",
+          "trich": "là thiết bị điều khiển có trang bị bộ xử lý lập trình … mã số 8537.10.12 “- - - Bảng điều khiển có trang bị bộ xử lý lập trình”"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tieuDe.8537101", "trich": "Bảng chuyển mạch và bảng điều khiển" },
-        { "nguon": "tax.85371012", "trich": "Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)" }
+        {
+          "nguon": "tieuDe.8537101",
+          "trich": "Bảng chuyển mạch và bảng điều khiển"
+        },
+        {
+          "nguon": "tax.85371012",
+          "trich": "Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)"
+        }
       ],
       "lyDo": "6326/TB-TCHQ xếp bản mạch điều khiển có bộ xử lý lập trình MSP430FR vào 8537.10.99 (nhánh \"Loại khác\", MFN 15 %), trong khi chữ 8537.10.12 \"Bảng điều khiển có trang bị bộ xử lý lập trình\" (MFN 5 %) bao đúng đặc điểm đó, và 103/TB-TCHQ (màn hình HMI có bộ xử lý lập trình) cùng 488, 489/TB-TCHQ xếp .12. Có thể điểm phân biệt là \"bản mạch\" (PCBA) không phải \"bảng điều khiển\", nhưng TB-TCHQ không nói ⇒ chưa phân xử. Chênh 10 điểm MFN.",
       "duyetBoi": null,
@@ -156,14 +312,36 @@
       "maHs": "85371019",
       "dongChuBieu": "85371012",
       "loai": "LECH_CHUA_PHAN_XU",
-      "dieuKien": { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Bảng mạch điều khiển", "Bản mạch đã lắp ráp hoàn chỉnh"] },
+      "dieuKien": {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": [
+          "Bảng mạch điều khiển",
+          "Bản mạch đã lắp ráp hoàn chỉnh"
+        ]
+      },
       "tbTchq": [
-        { "soHieu": "4040/TB-TCHQ", "viTri": "precedents.json#85371019[2]", "trich": "Bản mạch điện tử, vi mạch điều khiển đã tích hợp bluetooth … mã số 8537.10.19" },
-        { "soHieu": "4040/TB-TCHQ", "viTri": "precedents.json#85371019[10]", "trich": "Bảng mạch điều khiển của thiết bị lọc không khí (bảng mạch chưa trải qua quá trình ghi dữ liệu điều khiển), sử dụng cho điện áp dưới 1000V … mã số 8537.10.19" },
-        { "soHieu": "1159/TB-TCHQ", "viTri": "precedents.json#85371019[7]", "trich": "Bản mạch đã lắp ráp hoàn chỉnh … Bảng mạch đã được lắp ráp hoàn chỉnh tuy nhiên chưa được ghi phần mềm điều khiển ở công đoạn này … mã số 8537.10.19" }
+        {
+          "soHieu": "4040/TB-TCHQ",
+          "viTri": "precedents.json#85371019[2]",
+          "trich": "Bản mạch điện tử, vi mạch điều khiển đã tích hợp bluetooth … mã số 8537.10.19"
+        },
+        {
+          "soHieu": "4040/TB-TCHQ",
+          "viTri": "precedents.json#85371019[10]",
+          "trich": "Bảng mạch điều khiển của thiết bị lọc không khí (bảng mạch chưa trải qua quá trình ghi dữ liệu điều khiển), sử dụng cho điện áp dưới 1000V … mã số 8537.10.19"
+        },
+        {
+          "soHieu": "1159/TB-TCHQ",
+          "viTri": "precedents.json#85371019[7]",
+          "trich": "Bản mạch đã lắp ráp hoàn chỉnh … Bảng mạch đã được lắp ráp hoàn chỉnh tuy nhiên chưa được ghi phần mềm điều khiển ở công đoạn này … mã số 8537.10.19"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.85371012", "trich": "Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)" }
+        {
+          "nguon": "tax.85371012",
+          "trich": "Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)"
+        }
       ],
       "lyDo": "4040/TB-TCHQ (bảng mạch điều khiển máy lọc không khí, có vi mạch điều khiển tích hợp bluetooth, chưa ghi dữ liệu điều khiển) và 1159/TB-TCHQ (bản mạch đồng hồ thông minh, chưa ghi phần mềm điều khiển) xếp 8537.10.19 \"Loại khác\" (MFN 15 %), không phải .12 \"có trang bị bộ xử lý lập trình\" (MFN 5 %). Lệch hay không tuỳ câu hỏi chữ biểu không trả lời: vi mạch điều khiển chưa nạp chương trình có tính là \"bộ xử lý lập trình\" không (tu-vung@1 đọc \"vi điều khiển\" là có). Hai TB-TCHQ cùng chiều nhưng bản thân điểm lệch chưa chắc ⇒ không nâng TIEN_LE; chưa phân xử.",
       "duyetBoi": null,
@@ -175,13 +353,28 @@
       "maHs": "85371099",
       "dongChuBieu": "85371019",
       "loai": "LECH_CHUA_PHAN_XU",
-      "dieuKien": { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Module điều khiển tín hiệu chiếu sáng" },
+      "dieuKien": {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "Module điều khiển tín hiệu chiếu sáng"
+      },
       "tbTchq": [
-        { "soHieu": "14061/TB-CHQ", "viTri": "precedents.json#85371099[1]", "trich": "Module điều khiển tín hiệu chiếu sáng của đèn LED — Module điều khiển sử dụng tín hiệu PWM … mã số 8537.10.99" },
-        { "soHieu": "4800/TB-TCHQ", "viTri": "precedents.json#85371019[11]", "trich": "Module điều khiển tín hiệu chiếu sáng của đèn LED … Bảng chuyển mạch và bảng điều khiển (control panel) … mã số 8537.10.19" }
+        {
+          "soHieu": "14061/TB-CHQ",
+          "viTri": "precedents.json#85371099[1]",
+          "trich": "Module điều khiển tín hiệu chiếu sáng của đèn LED — Module điều khiển sử dụng tín hiệu PWM … mã số 8537.10.99"
+        },
+        {
+          "soHieu": "4800/TB-TCHQ",
+          "viTri": "precedents.json#85371019[11]",
+          "trich": "Module điều khiển tín hiệu chiếu sáng của đèn LED … Bảng chuyển mạch và bảng điều khiển (control panel) … mã số 8537.10.19"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tieuDe.8537101", "trich": "Bảng chuyển mạch và bảng điều khiển" }
+        {
+          "nguon": "tieuDe.8537101",
+          "trich": "Bảng chuyển mạch và bảng điều khiển"
+        }
       ],
       "lyDo": "Hai tiền lệ trái nhau cho cùng loại hàng: 4800/TB-TCHQ (2021) xếp module điều khiển đèn LED vào nhánh \"Bảng chuyển mạch và bảng điều khiển\" 8537.10.19; 14061/TB-CHQ (2026) xếp module cùng tên vào nhánh \"Loại khác\" 8537.10.99. Chữ biểu không nói module điều khiển có là \"bảng điều khiển\" không. Hai dòng cùng MFN 15 % — không chênh thuế, chỉ cần chọn dòng cho nhất quán.",
       "duyetBoi": null,
@@ -194,13 +387,31 @@
       "dongChuBieu": "84812011",
       "loai": "KHONG_LECH",
       "tbTchq": [
-        { "soHieu": "5973/TB-TCHQ", "viTri": "precedents.json#84812090[3]", "trich": "là 1 cụm van được đúc thành khối thép, bên trong có 03 van không tách rời ra được, gồm: van điện từ 201Y4 … mã số 8481.20.90 “- - Loại khác”" },
-        { "soHieu": "852/TB-TCHQ", "viTri": "precedents.json#84812090[1]", "trich": "van định hướng đảo chiều loại 5/2 … thân hợp kim nhôm, hoạt động bằng cuộn solenoid 24VDC … mã 8481.20.90" },
-        { "soHieu": "851/TB-TCHQ", "viTri": "precedents.json#84812090[2]", "trich": "van định hướng đảo chiều loại 5/2 … thân hợp kim nhôm, hoạt động bằng cuộn solenoid … mã 8481.20.90" }
+        {
+          "soHieu": "5973/TB-TCHQ",
+          "viTri": "precedents.json#84812090[3]",
+          "trich": "là 1 cụm van được đúc thành khối thép, bên trong có 03 van không tách rời ra được, gồm: van điện từ 201Y4 … mã số 8481.20.90 “- - Loại khác”"
+        },
+        {
+          "soHieu": "852/TB-TCHQ",
+          "viTri": "precedents.json#84812090[1]",
+          "trich": "van định hướng đảo chiều loại 5/2 … thân hợp kim nhôm, hoạt động bằng cuộn solenoid 24VDC … mã 8481.20.90"
+        },
+        {
+          "soHieu": "851/TB-TCHQ",
+          "viTri": "precedents.json#84812090[2]",
+          "trich": "van định hướng đảo chiều loại 5/2 … thân hợp kim nhôm, hoạt động bằng cuộn solenoid … mã 8481.20.90"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tieuDe.8481201", "trich": "Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm" },
-        { "nguon": "tax.84812011", "trich": "Bằng sắt hoặc thép" }
+        {
+          "nguon": "tieuDe.8481201",
+          "trich": "Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm"
+        },
+        {
+          "nguon": "tax.84812011",
+          "trich": "Bằng sắt hoặc thép"
+        }
       ],
       "lyDo": "Tín hiệu LK_TRUNG_VAT_LIEU_ANH_EM do vật liệu thép. Dòng .11 \"Bằng sắt hoặc thép\" nằm dưới tiêu đề 8481201 \"Van cổng điều khiển bằng tay …\"; hàng của cả ba TB-TCHQ là van điện từ / cụm van điện từ (không phải van cổng điều khiển bằng tay; 851, 852 thân hợp kim nhôm) ⇒ không vào nhánh 8481201; .20 (đồng/plastic) cũng không thoả ⇒ .90 khớp chữ biểu. Bản ghi 851, 852 là tóm tắt của nguồn cộng đồng (ch84a), mã kết luận khớp.",
       "duyetBoi": null,
@@ -212,10 +423,17 @@
       "dongChuBieu": "95030050",
       "loai": "KHONG_LECH",
       "tbTchq": [
-        { "soHieu": "5875/TB-TCHQ", "viTri": "precedents.json#95030099[0]", "trich": "Đồ chơi công nghệ AR - Trái đất thực tế ảo … 1 quả cầu bằng nhựa và giấy … mã số 9503.00.99" }
+        {
+          "soHieu": "5875/TB-TCHQ",
+          "viTri": "precedents.json#95030099[0]",
+          "trich": "Đồ chơi công nghệ AR - Trái đất thực tế ảo … 1 quả cầu bằng nhựa và giấy … mã số 9503.00.99"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.95030050", "trich": "Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic" }
+        {
+          "nguon": "tax.95030050",
+          "trich": "Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic"
+        }
       ],
       "lyDo": "Tín hiệu LK_TRUNG_VAT_LIEU_ANH_EM do vật liệu giấy. Hàng (quả địa cầu thực tế ảo kèm sổ, con dấu) không phải đồ chơi xây dựng, và quả cầu bằng nhựa nên cũng không thoả \"trừ plastic\" ⇒ không vào .50; .99 khớp chữ biểu. Hai dòng cùng MFN 20 %.",
       "duyetBoi": null,
@@ -227,10 +445,17 @@
       "dongChuBieu": "84818066",
       "loai": "KHONG_LECH",
       "tbTchq": [
-        { "soHieu": "43552/TB-CHQ", "viTri": "precedents.json#84818063[0]", "trich": "Bộ van đường ống nước. Là bộ sản phẩm có chất liệu bằng đồng thau … Van đóng mở bằng đồng thau (2 Cái): đây là loại van bi … mã số 8481.80.63" }
+        {
+          "soHieu": "43552/TB-CHQ",
+          "viTri": "precedents.json#84818063[0]",
+          "trich": "Bộ van đường ống nước. Là bộ sản phẩm có chất liệu bằng đồng thau … Van đóng mở bằng đồng thau (2 Cái): đây là loại van bi … mã số 8481.80.63"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.84818066", "trich": "Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm" }
+        {
+          "nguon": "tax.84818066",
+          "trich": "Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm"
+        }
       ],
       "lyDo": "Tín hiệu LK_TRUNG_VAT_LIEU_ANH_EM do \"ron nhựa\" trong bộ hàng. Van của bộ hàng bằng đồng thau, là van bi (không phải van cổng của .61) ⇒ không thoả các dòng \"Bằng plastic …\" (.41, .51, .64, .66, .71, .78, .81); .63 \"Loại khác\" dưới \"Van đường ống nước\" khớp chữ biểu. Lưu ý: số hiệu là TB-CHQ (Cục Hải quan, sau 03/2025), không phải TB-TCHQ; cây 8481.80 còn nhiều tiêu đề bị lược tên.",
       "duyetBoi": null,
@@ -242,15 +467,42 @@
       "dongChuBieu": "85369012",
       "loai": "KHONG_LECH",
       "tbTchq": [
-        { "soHieu": "3206/TB-TCHQ", "viTri": "precedents.json#85369019[3]", "trich": "Đầu nối điện bằng đồng mạ thiếc, dùng cho điện áp dưới 1000V, cường độ dòng điện trên 16A … mã số 8536.90.19" },
-        { "soHieu": "3056/TB-TCHQ", "viTri": "precedents.json#85369019[1]", "trich": "cường độ dòng điện trên 16A … mã số 8536.90.19" },
-        { "soHieu": "3057/TB-TCHQ", "viTri": "precedents.json#85369019[2]", "trich": "cường độ dòng điện trên 16A … mã số 8536.90.19" },
-        { "soHieu": "3205/TB-TCHQ", "viTri": "precedents.json#85369012[3]", "trich": "cường độ dòng điện dưới 16A … mã số 8536.90.12" },
-        { "soHieu": "6201/TB-TCHQ", "viTri": "precedents.json#85369012[0]", "trich": "Đầu nối dây điện (dưới 1000V, dưới 16A) … mã số 8536.90.12" },
-        { "soHieu": "6200/TB-TCHQ", "viTri": "precedents.json#85369012[1]", "trich": "Đầu nối dây điện (dưới 1000V, dưới 16A) … mã số 8536.90.12" }
+        {
+          "soHieu": "3206/TB-TCHQ",
+          "viTri": "precedents.json#85369019[3]",
+          "trich": "Đầu nối điện bằng đồng mạ thiếc, dùng cho điện áp dưới 1000V, cường độ dòng điện trên 16A … mã số 8536.90.19"
+        },
+        {
+          "soHieu": "3056/TB-TCHQ",
+          "viTri": "precedents.json#85369019[1]",
+          "trich": "cường độ dòng điện trên 16A … mã số 8536.90.19"
+        },
+        {
+          "soHieu": "3057/TB-TCHQ",
+          "viTri": "precedents.json#85369019[2]",
+          "trich": "cường độ dòng điện trên 16A … mã số 8536.90.19"
+        },
+        {
+          "soHieu": "3205/TB-TCHQ",
+          "viTri": "precedents.json#85369012[3]",
+          "trich": "cường độ dòng điện dưới 16A … mã số 8536.90.12"
+        },
+        {
+          "soHieu": "6201/TB-TCHQ",
+          "viTri": "precedents.json#85369012[0]",
+          "trich": "Đầu nối dây điện (dưới 1000V, dưới 16A) … mã số 8536.90.12"
+        },
+        {
+          "soHieu": "6200/TB-TCHQ",
+          "viTri": "precedents.json#85369012[1]",
+          "trich": "Đầu nối dây điện (dưới 1000V, dưới 16A) … mã số 8536.90.12"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.85369012", "trich": "Dòng điện dưới 16 A" }
+        {
+          "nguon": "tax.85369012",
+          "trich": "Dòng điện dưới 16 A"
+        }
       ],
       "lyDo": "Tín hiệu TIEN_LE_HAI_DONG (tên hàng \"Terminal\" giống nhau, hai dòng). Các TB-TCHQ tách đúng theo chữ biểu: dưới 16 A → .12, trên 16 A → .19 ⇒ không lệch. Hai dòng cùng MFN 0 %. Ghi chú dữ liệu: bản ghi precedents.json#85369019[7] (3056/TB-TCHQ, nguồn tracuuhs) ghi \"dưới 16A\" trong khi #85369019[1] cùng số hiệu ghi \"trên 16A\" — nghi chép nhầm khi cào, cần đối chiếu bản gốc.",
       "duyetBoi": null,
@@ -262,10 +514,17 @@
       "dongChuBieu": "63079040",
       "loai": "KHONG_LECH",
       "tbTchq": [
-        { "soHieu": "7238/TB-TCHQ", "viTri": "precedents.json#63079090[1]", "trich": "Khẩu trang 3D Mask Unicharm Superfit — Khẩu trang làm từ vải không dệt nguồn gốc polyester, polypropylene, có lớp lọc, quai đeo co giãn … mã số 6307.90.90" }
+        {
+          "soHieu": "7238/TB-TCHQ",
+          "viTri": "precedents.json#63079090[1]",
+          "trich": "Khẩu trang 3D Mask Unicharm Superfit — Khẩu trang làm từ vải không dệt nguồn gốc polyester, polypropylene, có lớp lọc, quai đeo co giãn … mã số 6307.90.90"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.63079040", "trich": "Khẩu trang phẫu thuật" }
+        {
+          "nguon": "tax.63079040",
+          "trich": "Khẩu trang phẫu thuật"
+        }
       ],
       "lyDo": "Tín hiệu LK_TRUNG_TEN_ANH_EM do chữ \"khẩu trang\". Chữ .40 là \"Khẩu trang phẫu thuật\"; TB-TCHQ mô tả khẩu trang tiêu dùng (3D Mask), không nói công dụng phẫu thuật ⇒ không thoả .40; .90 khớp chữ biểu. Đáng lưu ý cho soát: .40 MFN 5 % so với .90 MFN 20 % — chênh 15 điểm, phân biệt duy nhất bằng công dụng phẫu thuật.",
       "duyetBoi": null,
@@ -276,14 +535,32 @@
       "maHs": "84819090",
       "dongChuBieu": "84819023",
       "loai": "LECH_CHUA_PHAN_XU",
-      "dieuKien": { "fact": "dungCho", "op": "CONG_DUNG", "value": "van điều khiển khí nạp" },
+      "dieuKien": {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": "van điều khiển khí nạp"
+      },
       "tbTchq": [
-        { "soHieu": "4006/TB-TCHQ", "viTri": "precedents.json#84819090[2]", "trich": "Thân van là bộ phận của van điều … mã số 8481.90.90 “- - Loại khác”" },
-        { "soHieu": "4006/TB-TCHQ", "viTri": "precedents.json#84819090[4]", "trich": "Bộ phận của van điều khiển khí nạp … để đóng mở bộ tối ưu khí nạp của động cơ ô tô … mã số 8481.90.90 “- - Loại khác”" }
+        {
+          "soHieu": "4006/TB-TCHQ",
+          "viTri": "precedents.json#84819090[2]",
+          "trich": "Thân van là bộ phận của van điều … mã số 8481.90.90 “- - Loại khác”"
+        },
+        {
+          "soHieu": "4006/TB-TCHQ",
+          "viTri": "precedents.json#84819090[4]",
+          "trich": "Bộ phận của van điều khiển khí nạp … để đóng mở bộ tối ưu khí nạp của động cơ ô tô … mã số 8481.90.90 “- - Loại khác”"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tieuDe.8481902", "trich": "Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống" },
-        { "nguon": "tax.84819023", "trich": "Thân, loại khác" }
+        {
+          "nguon": "tieuDe.8481902",
+          "trich": "Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống"
+        },
+        {
+          "nguon": "tax.84819023",
+          "trich": "Thân, loại khác"
+        }
       ],
       "lyDo": "4006/TB-TCHQ gọi hàng là \"thân van\" của van điều khiển khí nạp động cơ ô tô và xếp 8481.90.90 \"Loại khác\" (MFN 0 %); chữ .23 \"Thân, loại khác\" (MFN 3 %) bao \"thân van\" NẾU van có đường kính trong ≤ 25 mm (tiêu đề 8481902). TB-TCHQ không ghi đường kính trong của van và chuỗi kết luận bỏ qua tiêu đề 8481902 ⇒ không xác định được là khớp hay lệch chữ biểu. (Bản tóm tắt cộng đồng ghi lá van 35×55 mm, gợi ý > 25 mm, tức khớp — nhưng không phải nguyên văn TB-TCHQ.) Chưa phân xử.",
       "duyetBoi": null,
@@ -295,11 +572,21 @@
       "dongChuBieu": "85011060",
       "loai": "KHONG_LECH",
       "tbTchq": [
-        { "soHieu": "1962/TB-TCHQ", "viTri": "precedents.json#85011099[0]", "trich": "công suất 25 W không có chổi than, không phải động cơ bước, không phải động cơ hướng trục … mã số 8501.10.99" }
+        {
+          "soHieu": "1962/TB-TCHQ",
+          "viTri": "precedents.json#85011099[0]",
+          "trich": "công suất 25 W không có chổi than, không phải động cơ bước, không phải động cơ hướng trục … mã số 8501.10.99"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.85011060", "trich": "Động cơ hướng trục (SEN)" },
-        { "nguon": "sen.85011060", "trich": "Động cơ hướng trục là động cơ một pha cỡ nhỏ, có độ chính xác cao được dùng cho các loại ổ đĩa cứng" }
+        {
+          "nguon": "tax.85011060",
+          "trich": "Động cơ hướng trục (SEN)"
+        },
+        {
+          "nguon": "sen.85011060",
+          "trich": "Động cơ hướng trục là động cơ một pha cỡ nhỏ, có độ chính xác cao được dùng cho các loại ổ đĩa cứng"
+        }
       ],
       "lyDo": "Tín hiệu LK_TRUNG_TEN_ANH_EM do chữ \"động cơ\". TB-TCHQ ghi rõ hàng \"không phải động cơ hướng trục\" (và không phải động cơ bước) ⇒ không thoả .30/.60; .99 khớp chữ biểu. Lưu ý: 8501.10 có tầng không mã (\"Động cơ một chiều\" / \"Động cơ khác…\") bị cây lược.",
       "duyetBoi": null,
@@ -311,14 +598,52 @@
       "dongChuBieu": "85364910",
       "loai": "KHONG_LECH",
       "tbTchq": [
-        { "soHieu": "7037/TB-TCHQ", "viTri": "precedents.json#85364990[0]", "trich": "Rơ le điện từ (electromagnetic relay) TQ2-5V … mã 8536.49.90" },
-        { "soHieu": "7037/TB-TCHQ", "viTri": "precedents.json#85364990[1]", "trich": "Rơ le bán dẫn quang (Photomos relay / solid state relay) AQY214S … mã 8536.49.90" }
+        {
+          "soHieu": "7037/TB-TCHQ",
+          "viTri": "precedents.json#85364990[0]",
+          "trich": "Rơ le điện từ (electromagnetic relay) TQ2-5V … mã 8536.49.90"
+        },
+        {
+          "soHieu": "7037/TB-TCHQ",
+          "viTri": "precedents.json#85364990[1]",
+          "trich": "Rơ le bán dẫn quang (Photomos relay / solid state relay) AQY214S … mã 8536.49.90"
+        }
       ],
       "chuBieu": [
-        { "nguon": "tax.85364910", "trich": "Rơ le kỹ thuật số" }
+        {
+          "nguon": "tax.85364910",
+          "trich": "Rơ le kỹ thuật số"
+        }
       ],
       "lyDo": "Tín hiệu LK_TRUNG_TEN_ANH_EM do chữ \"rơ le\". Hai mặt hàng của 7037/TB-TCHQ là rơ le điện từ và rơ le bán dẫn quang, không được mô tả là rơ le kỹ thuật số ⇒ không thoả .10; .90 khớp chữ biểu. Bản ghi là tóm tắt của nguồn cộng đồng (ch85b), mã kết luận khớp.",
       "duyetBoi": null,
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "940542-01",
+      "maHs": "94054260",
+      "dongChuBieu": "94054230",
+      "loai": "LECH_CHUA_PHAN_XU",
+      "dieuKien": {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": "tàu"
+      },
+      "tbTchq": [
+        {
+          "soHieu": "6132/TB-TCHQ",
+          "viTri": "precedents.json#94054260[0]",
+          "trich": "dùng cho tàu đánh bắt xa bờ … mã số 9405.42.60 “- - - Loại chiếu sáng bên ngoài khác” tại Danh mục hàng hóa xuất khẩu, nhập khẩu Việt Nam"
+        }
+      ],
+      "chuBieu": [
+        {
+          "nguon": "tax.94054230",
+          "trich": "Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản"
+        }
+      ],
+      "ghiChu": "Vế B của .30 (đèn dùng cho tàu thủy, bằng KLCB — precedent có khung nhôm) ôm được mặt hàng về mặt chữ, nhưng TCHQ xếp .60 (20%). Chưa phân xử — người soát L1-4b quyết theo秩 tự SEN/chú giải (đèn dùng CHO tàu ≠ đèn trang bị BÊN tàu). Sinh từ issue #665, phiên soát #659 đợt 2.",
+      "lyDo": "Vế B của .30 (đèn dùng cho tàu thủy, bằng kim loại cơ bản — precedent có khung nhôm) ôm được mặt hàng theo chữ, nhưng 6132/TB-TCHQ kết luận 94054260 (chiếu sáng bên ngoài). Chưa phân xử: cần người duyệt cân \"đèn dùng CHO tàu\" (trang bị chạy tàu) với \"đèn dùng đánh bắt trên tàu\". Chưa ai phân xử nên giữ LECH_CHUA_PHAN_XU, không ghi NGUOI_DUYET.",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -327,7 +652,11 @@
       "pn6": "401699",
       "ghiChu": "Không có cờ canHieuChinhTienLe. Bản nháp data/ho-so/ranh-gioi/401699.json đỏ sau PR #590 vì chồng lấn TRỤC (nhánh theo công dụng 4016991/.20/4016995 cạnh nhánh theo tên .30/.40/.60/.70). Đã soát precedents.json: chỉ có một TB-TCHQ trong 4016.99 — 7167/TB-TCHQ (precedents.json#40169959[0], thanh cao su lưu hoá lót hủ nghiền gạch ceramic → 4016.99.59, nhánh \"sử dụng cho máy … hoặc cho các mục đích kỹ thuật khác\"). Hàng này không mang tên của nhánh tên (.30 dải cao su, .40 tấm ốp tường, .60 lót đường ray, .70 gối chịu lực) nên không phân xử cặp chồng lấn nào. Không SEN cho các dòng chồng lấn; chú giải nhóm 40.16 không nêu thứ tự. ⇒ Không có căn cứ tiền lệ để đặt thứ tự; các cặp vẫn chờ CEO/chuyên gia (hoặc giữ chongLanVanBan: lúc chạy không tự chốt).",
       "tienLe": [
-        { "soHieu": "7167/TB-TCHQ", "viTri": "precedents.json#40169959[0]", "trich": "Bộ thanh cao su lưu hóa hoàn chỉnh (rubber liner bars / mill lining) … dùng làm lớp lót bên trong hủ nghiền (ball mill) sản xuất gạch ceramic … mã số 4016.99.59" }
+        {
+          "soHieu": "7167/TB-TCHQ",
+          "viTri": "precedents.json#40169959[0]",
+          "trich": "Bộ thanh cao su lưu hóa hoàn chỉnh (rubber liner bars / mill lining) … dùng làm lớp lót bên trong hủ nghiền (ball mill) sản xuất gạch ceramic … mã số 4016.99.59"
+        }
       ]
     }
   ]

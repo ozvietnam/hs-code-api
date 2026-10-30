@@ -1,17 +1,25 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "940542",
-  "phien": "zcode:glm-5.3:20261030T1540#soan-940542",
+  "phien": "zcode-mac:glm-5.3:20261030T2115#soan-940542",
   "dong8": {
     "94054210": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn pha" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn pha"
+        }
       ]
     },
     "94054220": {
       "phanConLai": true,
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn rọi" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn rọi"
+        }
       ]
     },
     "94054230": {
@@ -20,12 +28,34 @@
           "op": "HOAC",
           "phuongAn": [
             [
-              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn tín hiệu" },
-              { "fact": "dungCho", "op": "CONG_DUNG", "value": "sân bay" }
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Đèn tín hiệu không nhấp nháy"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "sân bay"
+              }
             ],
             [
-              { "fact": "dungCho", "op": "CONG_DUNG", "value": ["phương tiện giao thông đường sắt", "đầu máy", "tàu thủy", "phương tiện bay", "hải đăng"] },
-              { "fact": "chatLieu", "op": "LA", "value": "kim loại" }
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "phương tiện giao thông đường sắt",
+                  "đầu máy",
+                  "tàu thủy",
+                  "phương tiện bay",
+                  "hải đăng"
+                ]
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "kim loại"
+              }
             ]
           ]
         }
@@ -33,29 +63,53 @@
     },
     "94054240": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn báo hiệu" },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị nhiệt điện gia dụng" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn báo hiệu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị nhiệt điện gia dụng"
+        }
       ]
     },
     "94054250": {
       "dieuKienSo": [
-        { "fact": "phamViSuDung", "op": "TRONG", "value": ["CONG_CONG"] }
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "CONG_CONG"
+          ]
+        }
       ]
     },
     "94054260": {
       "phanConLai": true,
       "dieuKienSo": [
-        { "fact": "congDung", "op": "CONG_DUNG", "value": "chiếu sáng bên ngoài" }
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng bên ngoài"
+        }
       ]
     }
   },
   "chongLanVanBan": [
     {
-      "cap": ["94054210", "94054230"],
+      "cap": [
+        "94054210",
+        "94054230"
+      ],
       "lyDo": "Đèn pha bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn pha\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
     },
     {
-      "cap": ["94054220", "94054230"],
+      "cap": [
+        "94054220",
+        "94054230"
+      ],
       "lyDo": "Đèn rọi bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn rọi khác\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
     }
   ],
