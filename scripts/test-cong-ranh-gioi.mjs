@@ -60,6 +60,12 @@ const dong = (b, hs) => b.dong8.find((d) => d.hs === hs);
   // Tiêu đề bị lược tên: luật đi coi như "Loại khác" là sai nghĩa → chặn, không đoán
   const r4 = C.kiemRanhGioi('848180', { ...nhap841350(), pn6: '848180', nhom: '8481', dieuKienNut: [], dong8: [] });
   check('2f tiêu đề bị lược tên (8481801) trên đường đi → cong1-tieu-de-bi-luoc-ten', r4.loi.includes('cong1-tieu-de-bi-luoc-ten:84818011:8481801'), r4.loi.slice(0, 5));
+  check('2g 848180: tiêu đề lược tên chỉ còn lý do tieu-de-bi-luoc-ten, không còn phủ định anh em của nó như "Loại khác" (#583)',
+    !r4.loi.some((l) => /^cong1-chua-so-hoa:84818011:(8481802|84818030|8481804|8481805)$/.test(l)), r4.loi.filter((l) => l.includes(':84818011:')));
+  // #583: tầng có HAI tiêu đề "Loại khác" trần (8414594 + 8414599) = cây theo chữ số lược một tầng có tên → chặn tường minh
+  const k459 = C.kiemRanhGioi('841459', C.taoKhung('841459', { phien: 'phien-soan-A', ngay: '2026-10-30' }));
+  check('2h 841459: anh em 8414599 là tiêu đề LK trần thứ hai của tầng → cong1-tang-bi-luoc:84145941:8414599', k459.loi.includes('cong1-tang-bi-luoc:84145941:8414599'), k459.loi.filter((l) => l.startsWith('cong1-t') || l.startsWith('cong1-p')));
+  check('2i … không còn mã cong1-phu-dinh-tieu-de-loai-khac-tran', !k459.loi.some((l) => l.startsWith('cong1-phu-dinh-tieu-de-loai-khac-tran')), k459.loi.slice(0, 5));
 }
 
 // ── 3. Cổng 2 — loại trừ lẫn nhau ─────────────────────────────────────────────────────────────────────────────────
@@ -74,7 +80,8 @@ const dong = (b, hs) => b.dong8.find((d) => d.hs === hs);
   const r2 = C.kiemRanhGioi('853641', nhap853641());
   check('3c 853641: rơ le kỹ thuật số dùng cho thiết bị sóng vô tuyến THOA cả .10 và .20 → cong2-chong-lan:85364110+85364120', coLoi(r2, 'cong2-chong-lan:85364110+85364120'), r2.loi);
   check('3d lỗi chồng lấn có so chữ tự do được đánh dấu (khong-tat-dinh)', r2.loi.some((l) => l.startsWith('cong2-chong-lan:85364110+85364120') && l.includes('khong-tat-dinh')), r2.loi);
-  check('3e 85364140 "Loại khác, dòng điện dưới 16 A" có anh em là tiêu đề "Loại khác" trần → cong1-phu-dinh-tieu-de-loai-khac-tran (cấu trúc, không số hoá được)', r2.loi.includes('cong1-phu-dinh-tieu-de-loai-khac-tran:85364140:8536419'), r2.loi);
+  // #583: anh em là tiêu đề "Loại khác" trần, duy nhất phần còn lại của tầng → luật đi bỏ qua (như dòng LK trần), cổng 1 không chặn
+  check('3e 85364140 "Loại khác, dòng điện dưới 16 A" cạnh tiêu đề "Loại khác" trần 8536419 → cổng 1 KHÔNG chặn (#583)', !r2.loi.some((l) => l.startsWith('cong1-')), r2.loi);
 }
 function nhap853641() {
   const d = (hs, trich, dk) => ({ hs, nguon: `tax.${hs}`, trich, nguonLoai: 'AI_DA_KIEM', dieuKienSo: dk });
