@@ -1,0 +1,36 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "901720",
+  "phien": "zcode:glm-5.3:20261030T1549#soan-901720",
+  "dong8": {
+    "90172010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thước" }
+      ]
+    },
+    "90172040": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy vẽ ảnh" },
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "sản xuất tấm mạch in/tấm dây in" }
+      ]
+    },
+    "90172050": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy vẽ" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "90172050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Máy vẽ khác\" = phần còn lại có tên (máy vẽ trừ .40 \"Máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in\"; trích có chữ \"khác\") ⇒ phanConLai: true + tenLoai \"Máy vẽ\". Không khai chongLanVanBan — chồng lấn (nếu có) do \"khác\" cuối dòng."
+    },
+    {
+      "ma": "90172040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tenLoai \"Máy vẽ ảnh\" + congDung \"sản xuất tấm mạch in/tấm dây in\" (\"để sản xuất …\" là công dụng của máy, không phải dùng cho hàng lắp vào)."
+    }
+  ]
+}

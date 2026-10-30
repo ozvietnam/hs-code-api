@@ -1,0 +1,94 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "940542",
+  "phien": "zcode:glm-5.3:20261030T1540#soan-940542",
+  "dong8": {
+    "94054210": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn pha" }
+      ]
+    },
+    "94054220": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn rọi" }
+      ]
+    },
+    "94054230": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn tín hiệu" },
+              { "fact": "dungCho", "op": "CONG_DUNG", "value": "sân bay" }
+            ],
+            [
+              { "fact": "dungCho", "op": "CONG_DUNG", "value": ["phương tiện giao thông đường sắt", "đầu máy", "tàu thủy", "phương tiện bay", "hải đăng"] },
+              { "fact": "chatLieu", "op": "LA", "value": "kim loại" }
+            ]
+          ]
+        }
+      ]
+    },
+    "94054240": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn báo hiệu" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị nhiệt điện gia dụng" }
+      ]
+    },
+    "94054250": {
+      "dieuKienSo": [
+        { "fact": "phamViSuDung", "op": "TRONG", "value": ["CONG_CONG"] }
+      ]
+    },
+    "94054260": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "chiếu sáng bên ngoài" }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    {
+      "cap": ["94054210", "94054230"],
+      "lyDo": "Đèn pha bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn pha\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
+    },
+    {
+      "cap": ["94054220", "94054230"],
+      "lyDo": "Đèn rọi bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn rọi khác\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "94054230",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Vế B của .30 chồng chữ với .10 \"Đèn pha\" và .20 \"Đèn rọi khác\" (đèn dùng cho đường sắt/đầu máy bằng kim loại có thể là đèn pha/đèn rọi) ⇒ khai chongLanVanBan 2 cặp; .30 chồng 2 anh em (< 3) nên không phải chồng lấn theo trục."
+    },
+    {
+      "ma": "94054230",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ biểu hai vế ngăn bằng ';': vế A \"Đèn tín hiệu không nhấp nháy dùng cho sân bay\"; vế B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\" ⇒ HOAC hai phương án. \"không nhấp nháy\" không có khoá tu-vung@1 nên không diễn đạt được — người soát xem. \"bằng kim loại cơ bản\" đứng cuối vế B (sau dấu phẩy): gắn cho vế B theo đọc chữ; có thể ý cả dòng — người soát xem."
+    },
+    {
+      "ma": "94054220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Đèn rọi khác\" = phần còn lại có tên (đèn rọi trừ đèn pha .10) ⇒ phanConLai: true + tenLoai \"Đèn rọi\"."
+    },
+    {
+      "ma": "94054260",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Loại chiếu sáng bên ngoài khác\" = phần còn lại có tên ⇒ phanConLai: true (phủ định .10–.50) + congDung \"chiếu sáng bên ngoài\". Chồng lấn (nếu có) do \"khác\" cuối dòng ⇒ phanConLai, không khai chongLanVanBan."
+    },
+    {
+      "ma": "94054250",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Loại khác, <vế>\" ⇒ chỉ điều kiện của vế: phamViSuDung TRONG [CONG_CONG] (trích chứa \"công cộng\", \"đường phố\" — cách đọc của CONG_CONG)."
+    },
+    {
+      "ma": "94054240",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tenLoai \"Đèn báo hiệu\" + dungCho \"thiết bị nhiệt điện gia dụng\"; \"thuộc nhóm 85.16\" là tham chiếu nhóm của chính thiết bị trong chữ, không thêm điều kiện riêng."
+    }
+  ]
+}
