@@ -1,0 +1,242 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "853710",
+  "nhom": "8537",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8537101",
+      "nguon": "tieuDe.8537101",
+      "trich": "8537101 Bảng chuyển mạch và bảng điều khiển",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bảng chuyển mạch",
+            "bảng điều khiển"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85371011",
+      "nguon": "tax.85371011",
+      "trich": "85371011 - - - Bảng điều khiển của loại thích hợp sử dụng cho hệ thống điều khiển phân tán",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hệ thống điều khiển phân tán"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85371012",
+      "nguon": "tax.85371012",
+      "trich": "85371012 - - - Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "coBoXuLyLapTrinh",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85371013",
+      "nguon": "tax.85371013",
+      "trich": "85371013 - - - Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.08",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "85371019",
+      "nguon": "tax.85371019",
+      "trich": "85371019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85371020",
+      "nguon": "tax.85371020",
+      "trich": "85371020 - - Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85371030",
+      "nguon": "tax.85371030",
+      "trich": "85371030 - - Bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ điều khiển logic có khả năng lập trình"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85371040",
+      "nguon": "tax.85371040",
+      "trich": "85371040 - - Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ điều khiển động cơ"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 24,
+          "donVi": "V"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 120,
+          "donVi": "VDC"
+        },
+        {
+          "fact": "dongDien",
+          "op": ">=",
+          "value": 300,
+          "donVi": "A"
+        },
+        {
+          "fact": "dongDien",
+          "op": "<=",
+          "value": 500,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85371091",
+      "nguon": "tax.85371091",
+      "trich": "85371091 - - - Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "thiết bị sóng vô tuyến",
+            "quạt điện"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85371092",
+      "nguon": "tax.85371092",
+      "trich": "85371092 - - - Loại phù hợp sử dụng cho hệ thống điều khiển phân tán",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hệ thống điều khiển phân tán"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85371099",
+      "nguon": "tax.85371099",
+      "trich": "85371099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "85371011",
+        "85371012"
+      ],
+      "lyDo": "Hai dòng anh em dưới 8537101: .11 \"Bảng điều khiển của loại thích hợp sử dụng cho hệ thống điều khiển phân tán\" và .12 \"Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)\" — chữ biểu không loại trừ nhau (bảng điều khiển hệ DCS có bộ xử lý lập trình thoả cả hai); SEN 8537.10.12 chỉ mô tả, không nêu thứ tự; không có căn cứ thứ tự"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8537101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8537101 \"Bảng chuyển mạch và bảng điều khiển\" ⇒ tenLoai [\"Bảng chuyển mạch\",\"bảng điều khiển\"]. Anh em cùng tầng .20/.30/.40 cũng ghi tenLoai; 8537109 \"Loại khác\" trần."
+    },
+    {
+      "ma": "85371011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85371011 \"… thích hợp sử dụng cho hệ thống điều khiển phân tán\" ⇒ dungCho \"hệ thống điều khiển phân tán\" (\"Bảng điều khiển\" đã ở tiêu đề). .92 cùng chữ ⇒ cùng điều kiện (tầng 8537109 phủ định 8537101 nên không chồng)."
+    },
+    {
+      "ma": "85371012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85371012 \"Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)\" ⇒ coBoXuLyLapTrinh CO. SEN chỉ mô tả công dụng, không thành điều kiện."
+    },
+    {
+      "ma": "85371013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85371013 \"Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN)\" ⇒ dungCho [6 nhóm, đủ, đúng thứ tự] + phanConLai: true (\"khác\" = trừ .11, .12)."
+    },
+    {
+      "ma": "85371020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chiHoacChuYeu",
+      "ghiChu": "tax.85371020 \"Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25\" — mức ràng buộc \"chỉ dùng hoặc chủ yếu dùng\" chưa có khoá trong tu-vung@1 (de-xuat-tu-vung-2.md); ghi dungCho trần sẽ nới chữ biểu ⇒ để trống, DỪNG."
+    },
+    {
+      "ma": "85371030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85371030 ⇒ tenLoai \"Bộ điều khiển logic có khả năng lập trình\" + dungCho \"máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn\" (chuỗi con nguyên văn)."
+    },
+    {
+      "ma": "85371040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85371040 \"Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A\" ⇒ tenLoai \"Bộ điều khiển động cơ\" + dienAp >= 24 V, <= 120 V (VDC) + dongDien >= 300 A, <= 500 A (\"từ … đến\" gồm hai mốc). Vế \"DC\" (một chiều) không ghi loaiDongDien vì chữ \"VDC\" không khớp cách đọc của khoá (một chiều | điện DC) — DE_TRONG, người soát lưu ý."
+    },
+    {
+      "ma": "85371091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85371091 \"Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện\" ⇒ dungCho [\"thiết bị sóng vô tuyến\",\"quạt điện\"]."
+    },
+    {
+      "ma": "85371099",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ data/ho-so/hieu-chinh-tien-le.json có 853710-01 (6326/TB-TCHQ: bản mạch có bộ xử lý lập trình → .99, chữ .12 bao), 853710-02 (4040, 1159/TB-TCHQ: bảng mạch điều khiển chưa nạp chương trình → .19), 853710-03 (module điều khiển đèn LED: .19 ↔ .99) — đều LECH_CHUA_PHAN_XU. Bản nháp theo CHỮ BIỂU; bảng mang chỗ lệch, không sửa điều kiện theo TB-TCHQ."
+    }
+  ]
+}

@@ -188,6 +188,8 @@ Người soát: Claude
 | Liệt kê + "Loại khác, <vế>" + trích lược | [`853650`](../../../data/ho-so/ranh-gioi/853650.json) | `LIET_KE`, lược "…" tiêu đề dài |
 | Tiêu đề lồng nhau | [`853669`](../../../data/ho-so/ranh-gioi/853669.json) | Loại khác ở nhiều tầng |
 | Chữ biểu tự chồng lấn (khai đúng) | [`853641`](../../../data/ho-so/ranh-gioi/853641.json), [`853620`](../../../data/ho-so/ranh-gioi/853620.json) | `chongLanVanBan` trích hai nhánh |
-| ĐỎ đúng (không ép) | [`850131`](../../../data/ho-so/ranh-gioi/850131.json) (phần còn lại có tên chưa đánh dấu), [`854442`](../../../data/ho-so/ranh-gioi/854442.json), [`950300`](../../../data/ho-so/ranh-gioi/950300.json) (tầng không mã), [`392690`](../../../data/ho-so/ranh-gioi/392690.json), [`401699`](../../../data/ho-so/ranh-gioi/401699.json) (chồng lấn theo trục) | khi nào để đỏ và DỪNG |
+| Phần còn lại có tên | [`850131`](../../../data/ho-so/ranh-gioi/850131.json) ("Động cơ khác"), [`848190`](../../../data/ho-so/ranh-gioi/848190.json) ("Thân, loại khác") | `phanConLai` |
+| Tầng không mã có tên | [`848310`](../../../data/ho-so/ranh-gioi/848310.json), [`853690`](../../../data/ho-so/ranh-gioi/853690.json) | `dieuKienNut` cho `<pn6>~r<dòng>` |
+| ĐỎ đúng (không ép) | [`841459`](../../../data/ho-so/ranh-gioi/841459.json), [`854442`](../../../data/ho-so/ranh-gioi/854442.json) (thiếu khoá từ vựng), [`950300`](../../../data/ho-so/ranh-gioi/950300.json), [`850110`](../../../data/ho-so/ranh-gioi/850110.json) (dòng không tới được do giới hạn bộ so chữ), [`392690`](../../../data/ho-so/ranh-gioi/392690.json), [`401699`](../../../data/ho-so/ranh-gioi/401699.json) (chồng lấn theo trục) | khi nào để đỏ và DỪNG |
 
 Các bản trên là JSON nháp do máy sinh; spec tương ứng của bạn chỉ chứa phần `dieuKienSo` / `ghiChuSoan` / `chongLanVanBan`.
