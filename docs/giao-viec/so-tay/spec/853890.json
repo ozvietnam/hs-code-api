@@ -1,0 +1,45 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853890",
+  "phien": "zcode:glm-5.3:20261030T1538#soan-853890",
+  "dong8": {
+    "85389011": {
+      "dieuKienSo": [
+        { "fact": "laBoPhan", "op": "CO" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["8536.69.10", "8536.90.12", "8536.90.19"] }
+      ]
+    },
+    "85389012": {
+      "dieuKienSo": [
+        { "fact": "laBoPhan", "op": "CO" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["8536.50.51", "8536.50.59", "8536.69.32", "8536.69.39"] }
+      ]
+    },
+    "85389013": {
+      "dieuKienSo": [
+        { "fact": "laBoPhan", "op": "CO" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["8537.10.20"] }
+      ]
+    },
+    "85389020": {
+      "dieuKienSo": [
+        { "fact": "dienAp", "op": ">", "value": 1000, "donVi": "V" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8538901": {
+      "dieuKienSo": [
+        { "fact": "dienAp", "op": "<=", "value": 1000, "donVi": "V" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "8538901", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8538901: \"Dùng cho điện áp không quá 1.000 V\" ⇒ dienAp <= 1000 V (\"không quá\" = <=)" },
+    { "ma": "85389011", "loai": "QUYET_DINH", "ghiChu": "tax.85389011: \"Bộ phận\" ⇒ laBoPhan CO; \"thuộc phân nhóm 8536.69.10, 8536.90.12 hoặc 8536.90.19\" ⇒ dungCho, mảng giá trị = hoặc" },
+    { "ma": "85389012", "loai": "QUYET_DINH", "ghiChu": "tax.85389012: \"Bộ phận\" ⇒ laBoPhan CO; \"thuộc phân nhóm 8536.50.51, 8536.50.59, 8536.69.32 hoặc 8536.69.39\" ⇒ dungCho, mảng giá trị = hoặc" },
+    { "ma": "85389013", "loai": "QUYET_DINH", "ghiChu": "tax.85389013: \"Bộ phận\" ⇒ laBoPhan CO; \"thuộc phân nhóm 8537.10.20\" ⇒ dungCho" },
+    { "ma": "85389019", "loai": "DE_TRONG", "ghiChu": "tax.85389019: \"Loại khác\" trần — không ghi điều kiện, máy tự phủ định anh em" },
+    { "ma": "85389020", "loai": "QUYET_DINH", "ghiChu": "tax.85389020: \"Điện áp trên 1.000 V\" ⇒ dienAp > 1000 V (\"trên\" = >)" }
+  ]
+}
