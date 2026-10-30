@@ -1,0 +1,42 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "830140",
+  "phien": "zcode:glm-5.3:20261030T1546#soan-830140",
+  "dong8": {
+    "83014010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": ["Còng", "xích tay"]
+        }
+      ]
+    },
+    "83014020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khóa cửa"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "83014010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83014010 \"83014010 - - Còng, xích tay\": hai tên gọi ngăn bằng dấu phẩy ⇒ tenLoai [\"Còng\", \"xích tay\"] (mảng = HOẶC, mỗi chuỗi con nguyên văn của câu trích). So chữ tự do (tenLoai) — không tất định."
+    },
+    {
+      "ma": "83014020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83014020 \"83014020 - - Khóa cửa\" ⇒ tenLoai \"Khóa cửa\" (chuỗi con nguyên văn). Cùng khoá tenLoai với 83014010 theo quy trình 3.3. So chữ tự do — không tất định."
+    },
+    {
+      "ma": "83014090",
+      "loai": "DE_TRONG",
+      "ghiChu": "tax.83014090 \"83014090 - - Loại khác\" — dòng \"Loại khác\" trần: không ghi điều kiện, máy tự phủ định hai anh em đứng trước."
+    }
+  ]
+}
