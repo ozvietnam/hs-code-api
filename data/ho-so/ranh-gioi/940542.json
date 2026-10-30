@@ -4,7 +4,7 @@
   "nhom": "9405",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@1",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode:glm-5.3:20261030T1540#soan-940542",
@@ -184,6 +184,13 @@
       "ma": "94054240",
       "loai": "QUYET_DINH",
       "ghiChu": "tenLoai \"Đèn báo hiệu\" + dungCho \"thiết bị nhiệt điện gia dụng\"; \"thuộc nhóm 85.16\" là tham chiếu nhóm của chính thiết bị trong chữ, không thêm điều kiện riêng."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+      "ngay": "2026-10-30",
+      "lyDo": "(A) 940542.json:dong8[94054230] SUY RỘNG: vế A của chữ là \"Đèn tín hiệu không nhấp nháy dùng cho sân bay\" nhưng điều kiện bỏ \"không nhấp nháy\" (bản nháp ghi: không có khoá) ⇒ đèn tín hiệu sân bay loại nhấp nháy thoả .30 (5%) thay vì .90 (10%). Thiếu khoá thì làm theo QUY-TRINH mục 3.7 (THIEU_KHOA_TU_VUNG ⇒ DỪNG) hoặc dùng tenLoai nguyên cụm \"Đèn tín hiệu không nhấp nháy\" (chuỗi con của trích); không được bỏ vế giới hạn. (B) Tiền lệ: precedents.json#94054260[0] (6132/TB-TCHQ: bộ đèn LED 1000W dùng cho tàu đánh bắt xa bờ, có khung nhôm tản nhiệt → .60). Chữ .30 vế B \"đèn dùng cho … tàu thủy …, bằng kim loại cơ bản\" có thể bao mặt hàng này (5% ↔ 20%). Cần mục trong data/ho-so/hieu-chinh-tien-le.json (L1-4b) hoặc ghi chú LECH_TIEN_LE nói rõ vì sao không lệch."
     }
   ]
 }

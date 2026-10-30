@@ -4,7 +4,7 @@
   "nhom": "8481",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@1",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
@@ -258,6 +258,13 @@
       "ma": "8481902",
       "loai": "QUYET_DINH",
       "ghiChu": "cong3-bien-khong-doc-duoc:8481902:duongKinhTrong — đã đối chiếu tay: \"có đường kính trong từ 25 mm trở xuống\" ⇒ <= 25 mm."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+      "ngay": "2026-10-30",
+      "lyDo": "848190.json:dieuKienNut[8481902] THU HẸP: chữ \"Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống\" — điều kiện dương dungCho [\"vòi\",\"van\"] bỏ vế mở \"và các thiết bị tương tự\" (bản nháp tự ghi DE_TRONG) ⇒ bộ phận của thiết bị tương tự (≤ 25 mm) bị đẩy sang .90 (0%) thay vì .23/.29 (3%). Nhóm 84.81 vốn chỉ gồm vòi, van và thiết bị tương tự, nên vế dungCho dương không phân biệt được gì mà chỉ thu hẹp: giữ PHAI_KHONG săm/lốp + duongKinhTrong <= 25 mm là đủ nghĩa. Bảng 848190-01 LECH_CHUA_PHAN_XU giữ nguyên."
     }
   ]
 }
