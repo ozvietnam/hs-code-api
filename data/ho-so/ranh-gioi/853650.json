@@ -4,7 +4,7 @@
   "nhom": "8536",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@1",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q",
@@ -261,6 +261,13 @@
     {
       "ma": "85365096",
       "ghiChu": "\"Loại khác, dòng điện dưới 16 A\" ⇒ chỉ vế dongDien < 16 A; máy phủ định .95."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+      "ngay": "2026-10-30",
+      "lyDo": "(A) data/ho-so/ranh-gioi/853650.json:dieuKienNut[8536505] — checklist (1)/(2): chữ biểu có ngưỡng riêng cho vế 'công tắc điện cơ bật nhanh dùng cho dòng điện không quá 11 A'; giá trị DIEN_TU_HOAC_BAT_NHANH (nhanVi tu-vung: 'công tắc điện tử … hoặc điện cơ bật nhanh', KHÔNG có 11 A) mà không kèm biên ⇒ SUY RỘNG: công tắc bật nhanh 12–15 A sẽ vào .51 (MFN 0%) thay vì 8536506/.61 (15%) hoặc .96 (10%). LUAT-CHUNG (#577 gia cố) nêu đích danh 8536505 là ca HOAC (mỗi vế một nhóm VÀ, không gộp ngưỡng); ghi chú soạn 'lược đồ không có HOẶC' đã cũ. Nếu một giá trị liệt kê không tách được vế điện tử với vế bật nhanh thì DỪNG THIEU_KHOA_TU_VUNG, không ép. (B) checklist (4): precedents.json#85365061[0] (3387/TB-TCHQ, cảm biến từ xác định vị trí piston xi lanh → 8536.50.61 'mạng điện gia dụng') lệch cách đọc chữ biểu của bản nháp (máy sẽ đưa vào .51 hoặc .96) và bản nháp không nhắc tới ⇒ cần mục data/ho-so/hieu-chinh-tien-le.json (L1-4b, đang dựng) trước khi duyệt lại — CHỜ L1-4b. Các mục còn lại (.20, 8536503, .32/.33, .40, 8536506 <=500 V & <=20 A, .51/.61/.96 <16 A, .95) đạt."
     }
   ]
 }

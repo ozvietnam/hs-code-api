@@ -97,25 +97,33 @@
   },
   {
    "hs": "83022010",
-   "dieuKien": "Loại có đường kính (bao gồm cả lốp) trên 100 mm nhưng không quá 250 mm — phân nhóm 8302.20 (WCO: castors with mountings, of base metal)",
+   "dieuKien": "đường kính (ngoài) > 100 mm; đường kính (ngoài) <= 250 mm",
    "loaiKhac": false,
    "nguon": "tax.83022010",
    "trich": "83022010 - - Loại có đường kính (bao gồm cả lốp) trên 100 mm nhưng không quá 250 mm",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "CLAUDE_DUYET",
    "dieuKienSo": [
     {
-     "fact": "duong_kinh",
+     "fact": "duongKinh",
      "op": ">",
      "value": 100,
      "donVi": "mm"
     },
     {
-     "fact": "duong_kinh",
+     "fact": "duongKinh",
      "op": "<=",
      "value": 250,
      "donVi": "mm"
     }
-   ]
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "91613f39e44212cbac9770e2826ff69cc82abb9fc0993d9dfaa0e1bc00681a25"
+    }
+   }
   },
   {
    "hs": "83022090",
