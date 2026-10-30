@@ -128,7 +128,9 @@ const nhap850131 = (pcl) => nhap('850131', {
   check('3o dungCho "Chương 87" (chung hơn) với điều kiện "nhóm 87.11" → CHUA_BIET', dg('xe thuộc nhóm 87.11', 'xe thuộc Chương 87') === 'CHUA_BIET');
   check('3p dungCho "nhóm 88.04" TRÁI "Chương 87"; "84.15" THOẢ danh sách "84.15, 84.18 … hoặc 85.16"', dg('xe thuộc Chương 87', 'dù xoay thuộc nhóm 88.04') === 'TRAI' && dg('hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16', 'máy thuộc nhóm 84.15') === 'THOA');
   const r8 = C.kiemRanhGioi('848310', nhap848310());
-  check('3q 848310: dungCho theo cấp mã ⇒ cổng 2 thấy .24 ("87.11") chồng .25 dưới tiêu đề "Chương 87"', coLoi(r8, 'cong2-chong-lan:84831024+84831025'), r8.loi);
+  // Trước #577-tầng-không-mã, .24 ("87.11") chồng .25 vì cây làm mất tầng "- - - Loại khác:" (r14616). Lớp tầng dựng lại tầng:
+  // đường đi của .25 phủ định .24 ⇒ cổng 2 không còn chồng lấn giả (ranh giới thật của biểu).
+  check('3q 848310: tầng "Loại khác" r14616 phủ định .24 trên đường của .25 ⇒ cổng 2 KHÔNG còn báo .24+.25', !coLoi(r8, 'cong2-chong-lan:84831024+84831025') && DK.duongDiDong8('84831025', { soTay: C.soTayTuNhap('848310', nhap848310()) }).nhom.some((g) => g.nut === '84831024' && g.chieu === 'PHAI_KHONG'), r8.loi);
 }
 
 // ── 4. HOẶC của các nhóm VÀ (DNF) trong dieuKienSo có kiểu ──────────────────────────────────────────────────────
