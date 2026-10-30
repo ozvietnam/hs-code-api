@@ -121,9 +121,10 @@ for (const ma of ['85362019', '85362099', '85366999', '84135090', '85444299']) {
   check('85444299 (thật): không chốt được ⇒ capDaChac 6', r.capDaChac === 6 && r.chotDuoc === false, r.chuaChot);
   check('39269099 (thật): mục KHONG_LECH không thành hieuChinh', JSON.stringify(D.dungDuongDi('39269099', 'NHAP')).indexOf('KHONG_LECH') < 0);
 
-  // Nhân quả trên sổ tay TIÊM: ranh giới 854442 lấy từ bản nháp, ép nhãn CLAUDE_DUYET (chỉ trong test).
+  // Nhân quả trên sổ tay TIÊM: ranh giới 854442 lấy từ bản nháp ĐÔNG CỨNG (fixture, bản tại fc5a538 — mọi dòng có
+  // điều kiện), ép nhãn CLAUDE_DUYET (chỉ trong test). Không đọc bản nháp sống: bản nháp đổi theo L1-4 làm test vỡ oan.
   const st = clone(loadSoTay('8544'));
-  const nhap = JSON.parse(fs.readFileSync('data/ho-so/ranh-gioi/854442.json', 'utf8'));
+  const nhap = JSON.parse(fs.readFileSync('scripts/fixtures/ho-so/ranh-gioi-854442-fc5a538.json', 'utf8'));
   const dong = new Map(nhap.dong8.map((d) => [d.hs, d]));
   st.dong8 = st.dong8.map((d) => (dong.has(d.hs) ? { ...d, ...dong.get(d.hs), nguonLoai: 'CLAUDE_DUYET' } : d));
   st.dieuKienNut = [...(st.dieuKienNut || []).filter((n) => !nhap.dieuKienNut.some((x) => x.id === n.id)), ...nhap.dieuKienNut.map((n) => ({ ...n, nguonLoai: 'CLAUDE_DUYET' }))];
