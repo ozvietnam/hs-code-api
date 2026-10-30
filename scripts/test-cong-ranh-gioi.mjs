@@ -6,6 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { execFileSync } from 'child_process';
 import { createRequire } from 'module';
+import { TEST_DATA_DIR } from './test-isolate-data.mjs';
 const require = createRequire(import.meta.url);
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
@@ -157,8 +158,15 @@ function nhap853641() {
   check('5j bản đã duyệt qua cổng', C.kiemRanhGioi('841350', ok).hopLe === true, C.kiemRanhGioi('841350', ok).loi);
   const sua = clone(ok); dong(sua, '84135040').dieuKienSo[2].value = 13000; dong(sua, '84135040').trich += ' ';
   check('5k sửa sau duyệt (đổi trích) → cong0-sua-sau-duyet', coLoi(C.kiemRanhGioi('841350', sua), 'cong0-sua-sau-duyet'));
-  nem = null; try { C.duyet({ ...nhap841350(), pn6: '392690', nhom: '3926', dong8: [], dieuKienNut: [] }, { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
+  // Bảng hiệu chỉnh (L1-4b) đã commit có mục 392690 ⇒ giả "chưa có bảng" bằng bảng rỗng trong HS_DATA_DIR của test.
+  const tepHc = path.join(TEST_DATA_DIR, 'ho-so', 'hieu-chinh-tien-le.json');
+  fs.mkdirSync(path.dirname(tepHc), { recursive: true }); fs.writeFileSync(tepHc, JSON.stringify({ muc: [] }));
+  const nhap392690 = () => ({ ...nhap841350(), pn6: '392690', nhom: '3926', dong8: [], dieuKienNut: [] });
+  nem = null; try { C.duyet(nhap392690(), { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
   check('5l phân nhóm cờ canHieuChinhTienLe (392690) chưa có bảng hiệu chỉnh → không duyệt', /hieu-chinh/.test(nem || ''), nem);
+  fs.rmSync(tepHc);
+  nem = null; try { C.duyet(nhap392690(), { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
+  check('5l2 có bảng hiệu chỉnh commit cho 392690 → không còn chặn vì bảng (chặn vì cổng đỏ)', nem && !/hieu-chinh/.test(nem) && /cong-do/.test(nem), nem);
   const tv = C.traVe(nhap841350(), { phien: 'https://claude.ai/code/session_TEST#soat-B', ngay: '2026-10-31', lyDo: '84135040: biên trên sai' });
   check('5m trả về → TRA_VE, giữ AI_DA_KIEM, ghi lý do', tv.trangThai === 'TRA_VE' && tv.traVe.at(-1).lyDo.includes('biên') && tv.dong8.every((m) => m.nguonLoai === 'AI_DA_KIEM'));
 }
