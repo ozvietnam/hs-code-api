@@ -78,7 +78,7 @@ const S = require('../lib/so-tay.js');
   check('3b … 850110 (khoá liệt kê + phần còn lại đứng một mình) hết lỗi cổng (chỉ còn DỪNG do người soạn khai)', r.hopLe === true, r.loi);
   const dd = DK.duongDiDong8('85011099', { soTay: C.soTayTuNhap('850110', b) });
   check('3c luật đi .99: không nhóm PHAI_CO cho r14839, có PHAI_KHONG r14830', !dd.nhom.some((g) => g.nut === '850110~r14839') && dd.nhom.some((g) => g.nut === '850110~r14830' && g.chieu === 'PHAI_KHONG' && g.dieuKien), dd.nhom);
-  const b2 = suaNhap('850110', { ...LIET, '850110~r14839': { dieuKienSo: [] } });
+  const b2 = suaNhap('850110', { ...LIET, '850110~r14839': { dieuKienSo: [], phanConLai: undefined } });
   check('3d không phanConLai + điều kiện rỗng ⇒ vẫn cong1-chua-so-hoa (không đổi)', C.kiemRanhGioi('850110', b2).loi.some((l) => l.startsWith('cong1-chua-so-hoa:') && l.endsWith(':850110~r14839')));
   const b3 = suaNhap('850110', { ...LIET, 8501102: { dieuKienSo: [], phanConLai: ['850110~r14830'] } });
   check('3e phanConLai đứng một mình vẫn qua kiểm "anh em" + chữ "khác" của cổng 0/3', C.kiemRanhGioi('850110', b3).loi.some((l) => l.startsWith('cong0-phan-con-lai-sai-anh-em:8501102') || l.startsWith('cong3-phan-con-lai-khong-co-chu-khac:8501102')));
