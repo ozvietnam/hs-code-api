@@ -234,5 +234,77 @@ function nhap853641(d91) {
   check('7g CLI --tao-nhap với phiên sai quy ước → mã thoát 2 + hướng dẫn', kq.status === 2 && /#soan-/.test(kq.stderr), kq.stderr);
 }
 
+// ── 6 + 9. CLI cho mô hình yếu: --help, --tu-vung, --giai-thich, --ap-spec, lược đồ ghiChuSoan, DỪNG THIEU_KHOA_TU_VUNG ─
+const ML = require('../lib/ho-so/ma-loi.js');
+const cli = (...a) => spawnSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', ...a], { encoding: 'utf8', env: process.env });
+const SPEC_DIR = fs.mkdtempSync(path.join(process.env.HS_DATA_DIR, 'spec-'));
+const ghiSpec = (ten, obj) => { const p = path.join(SPEC_DIR, ten); fs.writeFileSync(p, JSON.stringify(obj, null, 2)); return p; };
+const spec830220 = () => ({
+  phienBan: 'ranh-gioi-spec@1', pn6: '830220', phien: 'cursor:test-model:20261030T0900#soan-830220',
+  dong8: { 83022010: { dieuKienSo: [SO('duongKinh', '>', 100, 'mm'), SO('duongKinh', '<=', 250, 'mm')] } },
+  ghiChuSoan: [{ ma: '83022010', loai: 'QUYET_DINH', ghiChu: 'tax.83022010: "trên 100 mm" ⇒ >; "không quá 250 mm" ⇒ <=.' }],
+});
+{
+  const h = cli('--help');
+  check('6a --help: mã thoát 0, liệt kê mọi lệnh', h.status === 0 && ['--goi', '--tao-nhap', '--ap-spec', '--kiem', '--tu-vung', '--giai-thich', '--duyet', '--tra-ve', '--ap-dung', '--tom-tat'].every((x) => h.stdout.includes(x)), h.stdout.slice(0, 300));
+  const gt = cli('--giai-thich=cong1-tang-khong-ma:84831025:r14616');
+  check('6b --giai-thich <mã lỗi đầy đủ> → giải thích tiếng Việt + cách sửa + DỪNG', gt.status === 0 && /DỪNG/.test(gt.stdout) && /Sửa|sửa/.test(gt.stdout), gt.stdout);
+  const gt2 = cli('--giai-thich', 'cong3-bien-lech-chu:84135040:luuLuong');
+  check('6c --giai-thich dạng tách tham số cũng chạy', gt2.status === 0 && /biên/i.test(gt2.stdout), gt2.stdout);
+  // Mọi mã lỗi/cảnh báo cổng có thể phát ra đều có lời giải thích (quét mã nguồn cổng).
+  const src = fs.readFileSync('lib/ho-so/cong-ranh-gioi.js', 'utf8');
+  const ma = new Set([...src.matchAll(/[`'](cong[0-3]-[a-z0-9-]+?)(?=[:`'$])/g)].map((m) => m[1]).filter((m) => !m.endsWith('-')));
+  for (const x of ['cong1-tieu-de-bi-luoc-ten', 'cong1-tang-bi-luoc', 'cong1-ma-khong-co-trong-cay', 'cong1-nhom-chua-co-so-tay', 'so-chu-tu-do', 'nghi-phan-con-lai', 'can-bang-hieu-chinh-tien-le', 'chua-co-ban-nhap']) ma.add(x);
+  const thieu = [...ma].filter((m) => !ML.giaiThich(m)?.giaiThich);
+  check('6d mọi mã cổng có lời giải thích + cách sửa (lib/ho-so/ma-loi.js)', ma.size > 30 && thieu.length === 0 && [...ma].every((m) => ML.giaiThich(m).cachSua), thieu);
+  check('6e mã dieu-kien-so-* bọc trong cong3-muc cũng giải thích được', /ngưỡng|số/.test(ML.giaiThich('cong3-muc:84135040:dieu-kien-so-nguong-khong-co-trong-trich:48')?.giaiThich || ''));
+  const tv = cli('--tu-vung', '--khoa=loaiRoLe');
+  check('6f --tu-vung --khoa=loaiRoLe in kiểu, op và GIÁ TRỊ HỢP LỆ kèm cách đọc', tv.status === 0 && /LIET_KE/.test(tv.stdout) && /TRONG/.test(tv.stdout) && /KY_THUAT_SO/.test(tv.stdout) && /BAN_DAN/.test(tv.stdout), tv.stdout.slice(0, 400));
+  const tv2 = cli('--tu-vung');
+  check('6g --tu-vung liệt kê đủ 53 khoá, khoá SO kèm đơn vị', tv2.status === 0 && (tv2.stdout.match(/^\S+ \(/gm) || []).length >= 53 && /luuLuong \(SO/.test(tv2.stdout) && /m³\/h/.test(tv2.stdout), tv2.stdout.slice(0, 300));
+  const g = cli('--goi', '--pn6=853650');
+  check('6h --goi dạng chữ in nguyên văn KHÔNG cắt (tiêu đề 385 ký tự) + giá trị hợp lệ của khoá liệt kê', g.status === 0 && g.stdout.includes('công tắc điện cơ bật nhanh dùng cho dòng điện không quá 11 A') && /loaiCongTac.*NGAT_SOC_DONG/.test(g.stdout), g.stdout.slice(0, 200));
+
+  // --ap-spec: spec khai báo → bản nháp (không sửa tay JSON)
+  const p1 = ghiSpec('830220.json', spec830220());
+  const a1 = cli(`--ap-spec=${p1}`);
+  const ghiRa = path.join(process.env.HS_DATA_DIR, 'ho-so', 'ranh-gioi', '830220.json');
+  const b1 = fs.existsSync(ghiRa) ? JSON.parse(fs.readFileSync(ghiRa, 'utf8')) : null;
+  check('6i --ap-spec tạo/cập nhật bản nháp, in kết quả --kiem, mã thoát 0 khi xanh', a1.status === 0 && /XANH 830220/.test(a1.stdout) && b1?.dong8.find((m) => m.hs === '83022010')?.dieuKienSo.length === 2, a1.stdout + a1.stderr);
+  check('6j … nhãn AI_DA_KIEM, trạng thái NHAP, phiên người soạn từ spec, ghiChuSoan từ spec', b1 && b1.trangThai === 'NHAP' && b1.dong8.every((m) => m.nguonLoai === 'AI_DA_KIEM') && b1.soanBoi.phien === 'cursor:test-model:20261030T0900#soan-830220' && b1.ghiChuSoan[0].loai === 'QUYET_DINH');
+  const lan2 = fs.readFileSync(ghiRa, 'utf8'); cli(`--ap-spec=${p1}`);
+  check('6k --ap-spec tất định (chạy lại → tệp giống hệt)', fs.readFileSync(ghiRa, 'utf8') === lan2);
+  const xau = (sua) => { const o = spec830220(); sua(o); return cli(`--ap-spec=${ghiSpec(`x${Math.random()}.json`, o)}`); };
+  const e1 = xau((o) => { o.dong8['83022010'].nguonLoai = 'CLAUDE_DUYET'; });
+  check('6l spec tự gắn nhãn (nguonLoai) → từ chối, mã 2', e1.status === 2 && /nguonLoai/.test(e1.stderr), e1.stderr);
+  const e2 = xau((o) => { o.dong8['83022099'] = { dieuKienSo: [] }; });
+  check('6m spec có mã ngoài phân nhóm → từ chối', e2.status === 2 && /83022099/.test(e2.stderr), e2.stderr);
+  const e3 = xau((o) => { o.ghiChuSoan = [{ ma: '83022010', ghiChu: 'thiếu loại' }]; });
+  check('6n spec ghiChuSoan thiếu loai → từ chối (lược đồ {ma, loai, ghiChu})', e3.status === 2 && /loai/.test(e3.stderr), e3.stderr);
+  const e4 = xau((o) => { o.phien = 'https://claude.ai/code/session_X'; });
+  check('6o spec phiên sai quy ước → từ chối', e4.status === 2 && /#soan-/.test(e4.stderr), e4.stderr);
+  const e5 = xau((o) => { o.dong8['83022010'].dieuKienSo = [{ fact: 'soLop', op: '<=', value: 2, donVi: 'lớp' }]; });
+  check('9a spec dùng khoá KHÔNG có trong tu-vung@1 → DỪNG THIEU_KHOA_TU_VUNG, mã 3 (không tự đặt khoá)', e5.status === 3 && /THIEU_KHOA_TU_VUNG/.test(e5.stderr + e5.stdout) && /DỪNG/.test(e5.stderr + e5.stdout), e5.stderr + e5.stdout);
+  const e6 = xau((o) => { o.dong8['83022010'].dieuKienSo = []; o.ghiChuSoan = [{ ma: '83022010', loai: 'THIEU_KHOA_TU_VUNG', khoaDeXuat: 'cachDoDuongKinh', ghiChu: '"(bao gồm cả lốp)" là cách đo — không có khoá.' }]; });
+  check('9b ghi THIEU_KHOA_TU_VUNG đúng cách (để trống + ghiChuSoan) → in DỪNG, mã thoát 3', e6.status === 3 && /DỪNG/.test(e6.stdout) && /THIEU_KHOA_TU_VUNG/.test(e6.stdout), e6.stdout + e6.stderr);
+  const b7 = clone(nhap850131(true)); b7.ghiChuSoan = [{ ma: '85013170', loai: 'THIEU_KHOA_TU_VUNG', khoaDeXuat: 'soLoi', ghiChu: 'x' }];
+  const r7 = C.kiemRanhGioi('850131', b7);
+  check('9c kiemRanhGioi trả dung[] cho THIEU_KHOA_TU_VUNG', (r7.dung || []).some((d) => d.startsWith('THIEU_KHOA_TU_VUNG:85013170:soLoi')), r7.dung);
+  check('9d tầng không mã / chồng lấn theo trục nằm trong dung[]', (C.kiemRanhGioi('848310', nhap848310()).dung || []).some((d) => d.startsWith('cong1-tang-khong-ma')), C.kiemRanhGioi('848310', nhap848310()).dung);
+  const b8 = clone(nhap850131(true)); b8.ghiChuSoan = [{ ma: '85013170', loai: 'BIA', ghiChu: 'x' }, { ma: '85013130', ghiChu: 'cũ, chưa có loai' }];
+  const r8 = C.kiemRanhGioi('850131', b8);
+  check('6p cổng 0: ghiChuSoan loai sai → lỗi; thiếu loai (bản cũ) → chỉ cảnh báo', coLoi(r8, 'cong0-ghi-chu-loai:0') && coCanh(r8, 'cong0-ghi-chu-thieu-loai:1') && !coLoi(r8, 'cong0-ghi-chu-thieu-loai'), { loi: r8.loi, canhBao: r8.canhBao });
+  const k = cli('--kiem', '--pn6=850131');
+  check('6q --kiem in dòng hướng dẫn (→) dưới mỗi lỗi', k.status === 1 && /\n\s+→ /.test(k.stdout), k.stdout.slice(0, 500));
+  check('9e gói soạn gợi ý nghi thiếu khoá (số sợi/lõi) ở 854442 .91 "hai sợi hoặc hơn"', (C.goiSoan('854442').canSoHoa.find((x) => x.ma === '85444291')?.nghiThieuKhoa || []).length > 0);
+  const de = fs.existsSync('docs/giao-viec/so-tay/de-xuat-tu-vung-2.md') ? fs.readFileSync('docs/giao-viec/so-tay/de-xuat-tu-vung-2.md', 'utf8') : '';
+  check('9f có đề xuất tu-vung@2 (lõi/sợi, tỉ lệ, chỉ hoặc chủ yếu, phương pháp chế tạo); tu-vung@1 không đổi', /lõi/.test(de) && /tỉ lệ|tỷ lệ/.test(de) && /chủ yếu/.test(de) && /phương pháp/.test(de));
+  // Bản nháp DUYET không sửa bằng spec
+  const duyetRoi = C.duyet(nhap850131(true), { phien: 'https://claude.ai/code/session_TEST#soat-review', ngay: '2026-10-31' });
+  const pD = path.join(process.env.HS_DATA_DIR, 'ho-so', 'ranh-gioi', '850131.json'); fs.mkdirSync(path.dirname(pD), { recursive: true }); fs.writeFileSync(pD, JSON.stringify(duyetRoi));
+  const eD = cli(`--ap-spec=${ghiSpec('850131.json', { phienBan: 'ranh-gioi-spec@1', pn6: '850131', phien: 'cursor:x:1#soan-850131', dong8: {} })}`);
+  check('6r --ap-spec từ chối bản đã DUYET', eD.status === 2 && /DUYET/.test(eD.stderr), eD.stderr);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
