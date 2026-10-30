@@ -1,0 +1,101 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "850131",
+  "nhom": "8501",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#agent-B-lo-A",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85013130",
+      "nguon": "tax.85013130",
+      "trich": "85013130 - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85013160",
+      "nguon": "tax.85013160",
+      "trich": "85013160 - - - Động cơ dùng cho xe của Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe của Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85013170",
+      "nguon": "tax.85013170",
+      "trich": "85013170 - - - Động cơ khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85013180",
+      "nguon": "tax.85013180",
+      "trich": "85013180 - - - Máy phát điện",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phát điện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "mau",
+      "ghiChu": "MẪU \"ĐỂ ĐỎ CÓ CHỦ ĐÍCH — dòng phần còn lại có tên ('<danh từ> khác')\". Phân nhóm không có dòng \"Loại khác\"; .70 \"Động cơ khác\" đóng vai phần còn lại của động cơ (khác .30, .60). Từ vựng/lược đồ hiện chưa có cách nói \"không thuộc các anh em có tên\" cho dòng có tên, và câu trích của .70 không chứa chữ của .30/.60 nên không ghi được chieu PHAI_KHONG. Không ép qua: không bịa điều kiện tách, KHÔNG khai CHONG_LAN_VAN_BAN (chữ \"khác\" đã tách rõ — đây không phải chồng lấn văn bản). Cổng 2 đỏ .30+.70, .60+.70; cổng 1 đỏ khong-phu-kin (tầng không có con LK trần; vector tenLoai ngoài danh sách không vào đâu — trong khi 8501.31 theo WCO chỉ gồm động cơ và máy phát)."
+    },
+    {
+      "ma": "85013130",
+      "ghiChu": "Nguồn tax.85013130. \"Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ tenLoai \"Động cơ\" + dungCho trọn cụm nhóm hàng (một chuỗi; tách từng mã nhóm thành giá trị riêng cũng đúng nhưng không thêm sức phân biệt vì người khai hiếm ghi số nhóm)."
+    },
+    {
+      "ma": "85013160",
+      "ghiChu": "Nguồn tax.85013160. tenLoai \"Động cơ\" + dungCho \"xe của Chương 87\"."
+    },
+    {
+      "ma": "85013170",
+      "ghiChu": "Nguồn tax.85013170. Chỉ ghi được vế dương tenLoai \"Động cơ\"; vế \"khác (.30, .60)\" CHƯA DIỄN ĐẠT ĐƯỢC — nguyên nhân đỏ. Đề xuất công cụ: cho dòng có tên dạng \"<X> khác\" khai `phanConLai: true` để luật đi phủ định anh em như dòng Loại khác. Tham khảo (không dùng làm căn cứ chọn dòng): 3609/TB-TCHQ trong precedents.json xếp \"xi lanh điện (Electric Actuator)\" vào 85013170."
+    },
+    {
+      "ma": "85013180",
+      "ghiChu": "Nguồn tax.85013180. \"Máy phát điện\" ⇒ tenLoai \"Máy phát điện\"."
+    }
+  ]
+}

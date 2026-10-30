@@ -1,0 +1,68 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "851680",
+  "nhom": "8516",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#agent-B-lo-A",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85168010",
+      "nguon": "tax.85168010",
+      "trich": "85168010 - - Dùng cho máy đúc chữ hoặc máy sắp chữ; dùng cho lò công nghiệp",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy đúc chữ",
+            "máy sắp chữ",
+            "lò công nghiệp"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85168030",
+      "nguon": "tax.85168030",
+      "trich": "85168030 - - Dùng cho thiết bị gia dụng",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị gia dụng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85168090",
+      "nguon": "tax.85168090",
+      "trich": "85168090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "mau",
+      "ghiChu": "MẪU \"đơn giản 3 dòng, điều kiện công dụng (CONG_DUNG)\". Hai dòng có tên + 85168090 \"Loại khác\" trần (không ghi điều kiện). Hai dòng có tên phân biệt bằng \"dùng cho …\" nên dùng khoá dungCho (kiểu CONG_DUNG, op CONG_DUNG). Cổng 2 thử từng giá trị + một chữ ngoài danh sách: không giá trị nào chứa trọn âm tiết của giá trị dòng kia ⇒ không chồng lấn."
+    },
+    {
+      "ma": "85168010",
+      "ghiChu": "Nguồn tax.85168010. \"Dùng cho máy đúc chữ hoặc máy sắp chữ; dùng cho lò công nghiệp\" là HOẶC giữa ba đích dùng ⇒ MỘT điều kiện dungCho với value là mảng [\"máy đúc chữ\",\"máy sắp chữ\",\"lò công nghiệp\"] (mảng = \"hoặc\"; mỗi giá trị chép đúng chữ có trong câu trích — cổng 3 kiểm). Không tách thành ba điều kiện riêng (ba điều kiện = VÀ, sai nghĩa)."
+    },
+    {
+      "ma": "85168030",
+      "ghiChu": "Nguồn tax.85168030. \"Dùng cho thiết bị gia dụng\" ⇒ dungCho \"thiết bị gia dụng\". Không dùng phamViSuDung=GIA_DINH: chữ biểu nói đích dùng là \"thiết bị gia dụng\", không nói phạm vi sử dụng của chính điện trở; chọn khoá gần chữ nhất. CONG_DUNG là so chữ tự do (không tất định): runtime không chốt bằng nó (cảnh báo so-chu-tu-do là bình thường)."
+    }
+  ]
+}
