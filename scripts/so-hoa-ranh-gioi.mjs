@@ -21,7 +21,7 @@ const { dataPath, dataReadPath } = require('../lib/data-paths.js');
 const TRO_GIUP = `Số hoá ranh giới 6→8 số — scripts/so-hoa-ranh-gioi.mjs (quy trình: docs/giao-viec/so-tay/QUY-TRINH-SO-HOA.md)
 
 Lệnh cho NGƯỜI SOẠN (thợ):
-  --goi --pn6=<6 số> [--json]          gói soạn: cây, mục cần số hoá + chữ NGUYÊN VĂN, tầng không mã (DỪNG), từ vựng, luật
+  --goi --pn6=<6 số> [--json]          gói soạn: cây, mục cần số hoá + chữ NGUYÊN VĂN, tầng không mã (nút <pn6>~r<dòng>; không đặt được ⇒ DỪNG), từ vựng, luật
   --tu-vung [--khoa=<khoá>] [--json]   khoá tu-vung@1: kiểu, op, đơn vị, GIÁ TRỊ HỢP LỆ + cách đọc
   --ap-spec=<tệp spec .json>           áp spec khai báo → data/ho-so/ranh-gioi/<pn6>.json rồi chạy cổng (KHÔNG sửa tay JSON nháp)
   --kiem --pn6=<6 số> [--json]         chạy 4 cổng; in lời giải thích + cách sửa dưới mỗi lỗi
@@ -155,9 +155,16 @@ if (args.help || args.h || !argv.length) {
   else {
     for (const g of goi) {
       console.log(`# ${g.pn6} — ${g.ten.vi || g.ten.wco || ''}${g.canHieuChinhTienLe ? '  [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — L1-4b: DỪNG, Claude giữ]' : ''}\n\n${g.cay}\n`);
-      if (g.tangKhongMa.length) {
-        console.log('!!! DỪNG — phân nhóm có TẦNG KHÔNG MÃ (tiêu đề không mã của biểu thuế mà cây theo chữ số làm mất). Cổng 1 sẽ chặn; không soạn tiếp, báo Claude:');
-        for (const t of g.tangKhongMa) console.log(`    r${t.r} (gạch ${t.gach}) "${t.chu}" — dòng dưới: ${t.dongDuoi.join(', ')}`);
+      const coNut = g.tangKhongMa.filter((t) => t.trangThai !== 'KHONG_DAT');
+      const khongDat = g.tangKhongMa.filter((t) => t.trangThai === 'KHONG_DAT');
+      if (coNut.length) {
+        console.log('Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:');
+        for (const t of coNut) console.log(`    ${t.trangThai === 'CO_NUT' ? t.id : `r${t.r} trùng ${t.nut}`} (gạch ${t.gach}) "${t.chu}" — dòng dưới: ${t.dongDuoi.join(', ')}`);
+        console.log('');
+      }
+      if (khongDat.length) {
+        console.log('!!! DỪNG — phân nhóm có TẦNG KHÔNG MÃ không biểu diễn được trong cây. Cổng 1 sẽ chặn; không soạn tiếp, báo Claude:');
+        for (const t of khongDat) console.log(`    r${t.r} (gạch ${t.gach}, ${t.lyDo}) "${t.chu}" — dòng dưới: ${t.dongDuoi.join(', ')}`);
         console.log('');
       }
       for (const x of g.canSoHoa) {

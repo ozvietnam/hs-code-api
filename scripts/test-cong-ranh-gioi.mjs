@@ -62,9 +62,11 @@ const dong = (b, hs) => b.dong8.find((d) => d.hs === hs);
   check('2f tiêu đề bị lược tên (8481801) trên đường đi → cong1-tieu-de-bi-luoc-ten', r4.loi.includes('cong1-tieu-de-bi-luoc-ten:84818011:8481801'), r4.loi.slice(0, 5));
   check('2g 848180: tiêu đề lược tên chỉ còn lý do tieu-de-bi-luoc-ten, không còn phủ định anh em của nó như "Loại khác" (#583)',
     !r4.loi.some((l) => /^cong1-chua-so-hoa:84818011:(8481802|84818030|8481804|8481805)$/.test(l)), r4.loi.filter((l) => l.includes(':84818011:')));
-  // #583: tầng có HAI tiêu đề "Loại khác" trần (8414594 + 8414599) = cây theo chữ số lược một tầng có tên → chặn tường minh
+  // #583: tầng có HAI tiêu đề "Loại khác" trần (8414594 + 8414599) từng là dấu cây lược một tầng có tên → cong1-tang-bi-luoc.
+  // #577 (tầng không mã): lớp tầng dựng lại tầng "Công suất không quá 125 kW" (r13180) / "Loại khác" (r13187) ⇒ không còn
+  // tang-bi-luoc; tầng có tên thành nhóm cần điều kiện (dieuKienNut 841459~r13180).
   const k459 = C.kiemRanhGioi('841459', C.taoKhung('841459', { phien: 'phien-soan-A', ngay: '2026-10-30' }));
-  check('2h 841459: anh em 8414599 là tiêu đề LK trần thứ hai của tầng → cong1-tang-bi-luoc:84145941:8414599', k459.loi.includes('cong1-tang-bi-luoc:84145941:8414599'), k459.loi.filter((l) => l.startsWith('cong1-t') || l.startsWith('cong1-p')));
+  check('2h 841459: không còn cong1-tang-bi-luoc; tầng r13180 trên đường của .41 là nhóm chưa số hoá', !k459.loi.some((l) => l.startsWith('cong1-tang-bi-luoc')) && k459.loi.includes('cong1-chua-so-hoa:84145941:841459~r13180'), k459.loi.filter((l) => l.startsWith('cong1-t') || l.startsWith('cong1-p') || l.includes('~r')));
   check('2i … không còn mã cong1-phu-dinh-tieu-de-loai-khac-tran', !k459.loi.some((l) => l.startsWith('cong1-phu-dinh-tieu-de-loai-khac-tran')), k459.loi.slice(0, 5));
 }
 
