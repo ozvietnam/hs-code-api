@@ -307,7 +307,7 @@ check('nhãn tệp: tu-vung/*.json ⇒ CLAUDE_DUYET (lib/nguon-loai.js)', N.nhan
   // anh-xa-cu: "Chức năng IC" (MCU, diode…) là tên loại linh kiện, không phải công dụng
   const ax = JSON.parse(fs.readFileSync('data/tu-vung/anh-xa-cu.json', 'utf8'));
   check('CĐĐL anh-xa-cu: chapter-declaration-fields#function (Chức năng IC: MCU, diode) ⇒ tenLoai', ax.anhXa['data/chapter-declaration-fields.json#function'] === 'tenLoai', ax.anhXa['data/chapter-declaration-fields.json#function']);
-  check('CĐĐL tu-vung@1 đã qua chấm duyệt độc lập (chamDuyetDocLap.trangThai = DA_CHAM, có người chấm + ngày)', tv.chamDuyetDocLap?.trangThai === 'DA_CHAM' && /^\d{4}-\d{2}-\d{2}$/.test(tv.chamDuyetDocLap?.ngay || '') && Boolean(tv.chamDuyetDocLap?.nguoiCham), tv.chamDuyetDocLap);
+  check('CĐĐL tu-vung@1 đã qua chấm duyệt độc lập (chamDuyetDocLap.trangThai = DA_CHAM, có boi + ngày)', tv.chamDuyetDocLap?.trangThai === 'DA_CHAM' && /^\d{4}-\d{2}-\d{2}$/.test(tv.chamDuyetDocLap?.ngay || '') && Boolean(tv.chamDuyetDocLap?.boi), tv.chamDuyetDocLap);
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);

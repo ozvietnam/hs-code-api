@@ -10,11 +10,36 @@
     "Viết tắt chỉ theo danh mục CEO đã duyệt (lib/tu-vung.js DANH_MUC_VIET_TAT: KT, NSX, ĐA, CS, CL). Thêm viết tắt mới = hỏi CEO.",
     "Tên vật liệu chung (plastic, cao su, giấy, gỗ, kim loại, thủy tinh, gốm sứ, vải dệt) trùng giá trị op LA của dieuKienSo và dùng LẠI mẫu của lib/so-tay-gates.js (dungMau) — không chép mẫu.",
     "Phủ định: phuDinhChung + cachDoc.phuDinh phủ định cụm ngay sau (cùng mệnh đề, cách ≤ 2 từ); phuDinhCaDoan (\"không phải X, Y, Z\") phủ định mọi giá trị tới hết đoạn (gạch ngang có cách, \";\", xuống dòng, dấu chấm).",
-    "Từ vựng không chứa ranh giới mã (dieuKienSo của từng dòng 8 số) — việc đó là L1-4."
+    "Từ vựng không chứa ranh giới mã (dieuKienSo của từng dòng 8 số) — việc đó là L1-4.",
+    "moTaGiaTri[v].cachViet (LIET_KE): cụm viết vào mô tả khi nhãn có chú thích; null = giá trị gộp nhiều loại của một dòng 8 số (vd loaiCongTac NGAT_SOC_DONG) — vietCum trả null, cụm lấy từ tenLoai. Máy kiểm ĐỎ khi nhãn có ngoặc / \";\" / \" / \" mà không khai cachViet.",
+    "SO: từ so sánh trước/sau số (soSanh: \"không quá\", \"trên\", \"max\", \"以下\"…) ⇒ docGiaTri trả thêm op (<=, <, >, >=) và bangChung gồm cả từ so sánh; số trong mã nối gạch / sau phân số \"1/2\" / ký hiệu ren \"M8x20\" và \"1,500\" (mơ hồ) ⇒ CHUA_BIET.",
+    "Phủ định: khongPhaiPhuDinh (\"không dây\", \"không gỉ\", \"无线\", \"不锈\", \"Model No\"…) không phủ định cụm sau; khangDinhXen (\"có\", \"with\", \"带\"…) xen giữa chữ phủ định và cụm ⇒ không phủ định."
   ],
   "chamDuyetDocLap": {
-    "trangThai": "CHO_CHAM",
-    "ghiChu": "Plan L1-3a nghiệm thu: một agent Claude mới chấm duyệt độc lập từ vựng (nhãn CLAUDE_DUYET). Bản này do agent soạn L1-3a viết và máy kiểm (scripts/check-tu-vung.mjs); chưa qua lượt chấm độc lập."
+    "trangThai": "DA_CHAM",
+    "ngay": "2026-10-30",
+    "boi": "Claude — agent chấm duyệt mới, độc lập với agent soạn L1-3a (PR #572); không soạn bản gốc",
+    "phamVi": "đủ 53 khoá: kiểu, đơn vị chuẩn (mm; hàng dài m; ghi một lần ở cuối), giá trị LIET_KE đủ và loại trừ nhau, nhãn Vi/En/Zh (soát chữ Trung từng khoá theo thuật ngữ thương mại/hải quan), viết tắt chỉ KT/NSX/ĐA/CS/CL; máy đọc docGiaTri với đầu vào đối nghịch (phủ định, khoảng, dấu phẩy thập phân, biến thể đơn vị, trộn Vi/Zh/En, số trong mã model); vietCum cho chuỗi ECUS; 20+ mục anh-xa-cu; không có chữ khách Oz.",
+    "sua": [
+      "SO: MW/MV (mega) từng đọc thành mili ⇒ CHUA_BIET",
+      "SO: \"1,500\" mơ hồ (1,5 / 1500) ⇒ CHUA_BIET",
+      "SO: số sau \"<số>/\" (1/2 inch, 50/60Hz) từng đọc thành 2 inch / 60 Hz ⇒ CHUA_BIET",
+      "SO: ký hiệu ren M8x20mm (kích thước) và số nối gạch trong mã model (MDY-11-20W, KB-2200W) ⇒ CHUA_BIET",
+      "SO: từ so sánh trước/sau số (trên, không quá, nhỏ hơn, max, over, 以下…) từng bị bỏ ⇒ trả op + bangChung gồm từ so sánh",
+      "SO: AC/DC liền số (DC12V), Ø20mm, đơn vị đứng trước chữ Hán (220V交流), GHz ⇒ đọc được",
+      "Phủ định nhầm: \"không dây có…\", \"thép không gỉ có…\", \"không chỉ…\", 无线, 不锈, 非接触 (bỏ 非 khỏi phuDinhCaDoan), \"Model No X with…\"",
+      "nguonNangLuong: \"4-pin\", \"chân pin\" từng thành pin/ắc quy",
+      "chatLieu: vật liệu là phôi gia công (máy cắt thép) — dùng lại GIA_CONG_TRUOC của so-tay-gates",
+      "congDung: không cắt ở \"và\" (\"sạc pin và truyền dữ liệu\")",
+      "vietCum LIET_KE: cachViet riêng cho nhãn có ngoặc/\" / \"/\";\"; giá trị gộp nhiều loại của dòng 8 số ⇒ null; máy kiểm ĐỎ khi thiếu",
+      "anh-xa-cu: chapter-declaration-fields#function (Chức năng IC: MCU, diode) ⇒ tenLoai (trước: congDung)"
+    ],
+    "conLai": [
+      "CONG_DUNG còn cắt ở \"với\", \"bằng\" (\"kết nối điện thoại với máy tính\" ⇒ \"kết nối điện thoại\") — phần chữ chưa đọc hết để LLM bước 2 (spec §8.3)",
+      "Khoảng \"10-20 mm\": giaTri là số đầu, cacGiaTri giữ cả hai — người dùng ngưỡng phải xét cacGiaTri",
+      "parts-zh 外壳/机身 ánh xạ về chatLieu chưa ghi vị trí (VO/THAN) — bảng ánh xạ chỉ nhận tên khoá"
+    ],
+    "ghiChu": "Nhãn vẫn CLAUDE_DUYET (Claude chấm, không phải chuyên gia). Mỗi lỗi sửa có test ở scripts/test-tu-vung.mjs mục 11."
   },
   "phuDinhChung": [
     "không phải",
@@ -39,8 +64,7 @@
     "không dùng cho",
     "other than",
     "not a",
-    "不是",
-    "非"
+    "不是"
   ],
   "beNgoaiTruoc": [
     "mạ",
@@ -78,7 +102,8 @@
     "tanSo": {
       "Hz": 1,
       "kHz": 1000,
-      "MHz": 1000000
+      "MHz": 1000000,
+      "GHz": 1000000000
     },
     "luuLuong": {
       "m3/h": 1,
@@ -153,7 +178,8 @@
     "g": "g",
     "gam": "g",
     "克": "g",
-    "tấn": "tấn"
+    "tấn": "tấn",
+    "ghz": "GHz"
   },
   "khoa": [
     {
@@ -1831,7 +1857,8 @@
               "点燃式",
               "火花塞"
             ]
-          }
+          },
+          "cachViet": "đốt cháy bằng tia lửa điện"
         },
         "CHAY_NEN": {
           "nhanVi": "đốt cháy bằng sức nén (diesel)",
@@ -1852,7 +1879,8 @@
               "柴油",
               "压燃"
             ]
-          }
+          },
+          "cachViet": "đốt cháy bằng sức nén"
         }
       },
       "cachDoc": {
@@ -1985,7 +2013,7 @@
           "nhanZh": "电池（自带电源）",
           "cachDoc": {
             "vi": [
-              "pin(?!\\s*(?:mặt\\s+trời|năng\\s+lượng))",
+              "(?<!\\d\\s?-?\\s?)(?<!chân\\s)pin(?!\\s*(?:mặt\\s+trời|năng\\s+lượng|cắm|connector|header|jack))",
               "ắc qui",
               "ắc quy",
               "ắcquy"
@@ -1999,7 +2027,8 @@
             "zh": [
               "电池"
             ]
-          }
+          },
+          "cachViet": "dùng pin/ắc quy"
         },
         "DIEN_LUOI": {
           "nhanVi": "điện lưới",
@@ -2020,7 +2049,8 @@
               "市电",
               "插电"
             ]
-          }
+          },
+          "cachViet": "dùng điện lưới"
         },
         "QUANG_DIEN": {
           "nhanVi": "quang điện (năng lượng mặt trời)",
@@ -2040,7 +2070,8 @@
               "太阳能",
               "光伏"
             ]
-          }
+          },
+          "cachViet": "dùng năng lượng mặt trời"
         }
       },
       "cachDoc": {
@@ -2112,7 +2143,8 @@
             "zh": [
               "电磁"
             ]
-          }
+          },
+          "cachViet": "điều khiển điện từ"
         },
         "DONG_CO": {
           "nhanVi": "bằng động cơ (động cơ bước, servo)",
@@ -2135,7 +2167,8 @@
               "步进",
               "电机驱动"
             ]
-          }
+          },
+          "cachViet": "điều khiển bằng động cơ"
         },
         "KHI_NEN": {
           "nhanVi": "khí nén",
@@ -2152,7 +2185,8 @@
             "zh": [
               "气动"
             ]
-          }
+          },
+          "cachViet": "điều khiển bằng khí nén"
         },
         "THUY_LUC": {
           "nhanVi": "thủy lực",
@@ -2169,7 +2203,8 @@
             "zh": [
               "液压"
             ]
-          }
+          },
+          "cachViet": "điều khiển bằng thủy lực"
         },
         "NHIET": {
           "nhanVi": "ổn nhiệt",
@@ -2241,7 +2276,8 @@
               "往复",
               "隔膜"
             ]
-          }
+          },
+          "cachViet": "bơm piston"
         },
         "LY_TAM": {
           "nhanVi": "ly tâm",
@@ -2257,7 +2293,8 @@
             "zh": [
               "离心"
             ]
-          }
+          },
+          "cachViet": "bơm ly tâm"
         },
         "QUAY": {
           "nhanVi": "quay (bánh răng, cánh gạt, trục vít)",
@@ -2282,7 +2319,8 @@
               "螺杆泵",
               "回转"
             ]
-          }
+          },
+          "cachViet": "bơm quay"
         },
         "TAY": {
           "nhanVi": "bơm tay",
@@ -2300,7 +2338,8 @@
               "手动泵",
               "手摇泵"
             ]
-          }
+          },
+          "cachViet": "bơm tay"
         }
       },
       "cachDoc": {
@@ -2451,7 +2490,8 @@
             "zh": [
               "微动开关"
             ]
-          }
+          },
+          "cachViet": null
         },
         "MINI_NOI_COM": {
           "nhanVi": "công tắc mini cho nồi cơm điện / lò nướng",
@@ -2470,7 +2510,8 @@
               "电饭煲",
               "烤箱"
             ]
-          }
+          },
+          "cachViet": null
         },
         "DIEN_TU_HOAC_BAT_NHANH": {
           "nhanVi": "công tắc điện tử (bán dẫn, thyristor) hoặc điện cơ bật nhanh",
@@ -2499,7 +2540,8 @@
               "快动",
               "速动"
             ]
-          }
+          },
+          "cachViet": null
         },
         "MANG_DIEN_GIA_DUNG": {
           "nhanVi": "đóng ngắt trong mạng điện gia dụng (≤ 500 V, ≤ 20 A)",
@@ -2520,7 +2562,8 @@
               "墙壁开关",
               "家用开关"
             ]
-          }
+          },
+          "cachViet": "đóng ngắt trong mạng điện gia dụng"
         },
         "DAO_CHIEU_HOAC_CAU_CHI": {
           "nhanVi": "đảo chiều khởi động động cơ; đóng cắt có cầu chì",
@@ -2539,7 +2582,8 @@
               "换向开关",
               "熔断器式"
             ]
-          }
+          },
+          "cachViet": null
         }
       },
       "cachDoc": {
@@ -2608,7 +2652,8 @@
               "音视频",
               "AV插座"
             ]
-          }
+          },
+          "cachViet": null
         },
         "CAP_DONG_TRUC_MACH_IN": {
           "nhanVi": "đầu cắm, phích cắm cho cáp đồng trục và mạch in",
@@ -2633,7 +2678,8 @@
               "同轴",
               "板对板"
             ]
-          }
+          },
+          "cachViet": null
         },
         "THONG_THUONG": {
           "nhanVi": "ổ cắm, phích cắm điện thông thường",
@@ -2656,7 +2702,8 @@
               "电源插座",
               "电源插头"
             ]
-          }
+          },
+          "cachViet": null
         }
       },
       "cachDoc": {
@@ -2704,7 +2751,8 @@
               "家用",
               "家庭"
             ]
-          }
+          },
+          "cachViet": "dùng trong gia đình"
         },
         "CONG_NGHIEP": {
           "nhanVi": "công nghiệp",
@@ -2720,7 +2768,8 @@
             "zh": [
               "工业"
             ]
-          }
+          },
+          "cachViet": "dùng trong công nghiệp"
         },
         "CONG_CONG": {
           "nhanVi": "nơi công cộng, đường phố",
@@ -2743,7 +2792,8 @@
               "公共",
               "道路"
             ]
-          }
+          },
+          "cachViet": "dùng nơi công cộng, đường phố"
         }
       },
       "cachDoc": {
@@ -2789,7 +2839,8 @@
             "zh": [
               "彩色"
             ]
-          }
+          },
+          "cachViet": "hiển thị màu"
         },
         "DON_SAC": {
           "nhanVi": "loại đơn sắc",
@@ -2809,7 +2860,8 @@
               "单色",
               "黑白"
             ]
-          }
+          },
+          "cachViet": "hiển thị đơn sắc"
         }
       },
       "cachDoc": {
@@ -2870,7 +2922,8 @@
             "zh": [
               "主轴电机"
             ]
-          }
+          },
+          "cachViet": "động cơ hướng trục"
         }
       },
       "cachDoc": {
@@ -3607,5 +3660,115 @@
       },
       "nguonLoai": "CLAUDE_DUYET"
     }
-  ]
+  ],
+  "khongPhaiPhuDinh": [
+    "không dây",
+    "không gỉ",
+    "không rỉ",
+    "không chổi than",
+    "không thấm nước",
+    "không ồn",
+    "không chỉ",
+    "không những",
+    "not only",
+    "non-?stop",
+    "(?:model|part|item|serial|ref|art)\\.?\\s*no\\.?",
+    "无线",
+    "无刷",
+    "无绳",
+    "不锈",
+    "不仅",
+    "不只",
+    "非接触"
+  ],
+  "khangDinhXen": [
+    "có",
+    "đã",
+    "được",
+    "kèm",
+    "with",
+    "has",
+    "have",
+    "带",
+    "有"
+  ],
+  "soSanh": {
+    "truoc": {
+      "<=": [
+        "không quá",
+        "không vượt quá",
+        "không lớn hơn",
+        "không cao hơn",
+        "tối đa",
+        "lớn nhất",
+        "max\\.?",
+        "maximum",
+        "up to",
+        "not exceeding",
+        "not more than",
+        "≤",
+        "<=",
+        "不超过",
+        "最大",
+        "最高"
+      ],
+      "<": [
+        "dưới",
+        "nhỏ hơn",
+        "bé hơn",
+        "thấp hơn",
+        "ít hơn",
+        "less than",
+        "below",
+        "under",
+        "<",
+        "小于",
+        "低于"
+      ],
+      ">": [
+        "trên",
+        "lớn hơn",
+        "cao hơn",
+        "vượt quá",
+        "over",
+        "more than",
+        "above",
+        "exceeding",
+        "greater than",
+        ">",
+        "大于",
+        "超过",
+        "高于"
+      ],
+      ">=": [
+        "không dưới",
+        "không nhỏ hơn",
+        "không ít hơn",
+        "tối thiểu",
+        "ít nhất",
+        "nhỏ nhất",
+        "min\\.?",
+        "minimum",
+        "at least",
+        "not less than",
+        "≥",
+        ">=",
+        "不低于",
+        "不小于",
+        "至少",
+        "最小"
+      ]
+    },
+    "sau": {
+      "<=": [
+        "及以下",
+        "以下",
+        "以内"
+      ],
+      ">=": [
+        "及以上",
+        "以上"
+      ]
+    }
+  }
 }
