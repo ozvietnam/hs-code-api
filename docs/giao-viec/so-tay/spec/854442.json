@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "854442",
-  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu-2",
   "dong8": {
     "85444211": {
       "dieuKienSo": [
@@ -86,10 +86,47 @@
       ]
     },
     "85444291": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp dữ liệu dẹt"
+        },
+        {
+          "fact": "soSoi",
+          "op": ">=",
+          "value": 2,
+          "donVi": "sợi"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ]
     },
     "85444292": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp dữ liệu dẹt"
+        },
+        {
+          "fact": "soSoi",
+          "op": ">=",
+          "value": 2,
+          "donVi": "sợi"
+        }
+      ],
+      "phanConLai": [
+        "85444291"
+      ]
     },
     "85444294": {
       "dieuKienSo": [
@@ -255,9 +292,8 @@
     },
     {
       "ma": "85444291",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "soSoi",
-      "ghiChu": "tax.85444291 \"Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy\" và tax.85444292 \"Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác\" — vế \"có hai sợi hoặc hơn\" cần khoá số sợi (de-xuat-tu-vung-2.md: soSoi/soLoi), tu-vung@1 chưa có; bản cũ bỏ vế này là nới chữ biểu ⇒ để trống cả hai dòng, DỪNG. Khi có khoá: .91 = tenLoai \"Cáp dữ liệu dẹt\" + soSoi >= 2 + chatLieu CACH_DIEN [cao su, plastic, giấy]; .92 = cùng tenLoai + soSoi >= 2 + phanConLai: true (\"loại khác\" cuối dòng — nay có phanConLai)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85444291 \"Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy\" ⇒ tenLoai \"Cáp dữ liệu dẹt\" + soSoi >= 2 sợi (tu-vung@2; \"hai sợi hoặc hơn\" = >= 2; \"sợi\" ở đây là sợi dẫn — chữ Anh cùng dòng \"having two lines or more\" — đơn vị chữ biểu là \"sợi\" nên dùng soSoi, không dùng soLoi vì chữ không có \"lõi\"; không HOAC soSoi/soLoi vì vế soLoi không có chữ để trích) + chatLieu CACH_DIEN [cao su, plastic, giấy]. tax.85444292 \"Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác\" ⇒ cùng tenLoai + soSoi >= 2 + phanConLai [\"85444291\"] (\"loại khác\" cuối dòng = ngoài .91)."
     },
     {
       "ma": "85444294",
@@ -276,13 +312,19 @@
     },
     {
       "ma": "8544423",
-      "loai": "CHONG_LAN",
-      "ghiChu": "Chưa khai chongLanVanBan, để cổng 2 đỏ cho người soát quyết: tiêu đề 8544423 \"Cáp ắc qui\" (theo TÊN) cạnh 8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" và 8544422 \"Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V\" (theo CÔNG DỤNG + điện áp) — chữ không loại trừ nhau (cáp ắc qui của thiết bị viễn thông thoả cả hai), sinh 12 cặp .13/.19/.23/.29 × .32/.33/.34/.39. Một nhánh chồng hai nhánh anh em khác trục — gần ca 392690/401699; không có TB-TCHQ/SEN/chú giải nêu thứ tự."
+      "loai": "DUNG",
+      "ghiChu": "Chồng lấn theo TRỤC ở cấp tiêu đề, không khai chongLanVanBan: tieuDe.8544423 \"Cáp ắc qui\" (trục TÊN) đứng cạnh tieuDe.8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" và tieuDe.8544422 \"Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V\" (trục CÔNG DỤNG + điện áp) — chữ không loại trừ nhau (cáp ắc qui của thiết bị viễn thông thoả cả hai), cả nhánh 8544423 chồng cả hai nhánh anh em ⇒ 12 cặp cong2-chong-lan (.13/.19/.23/.29 × .32/.33/.34/.39). Đây là mẫu 392690/401699 (chồng theo trục ⇒ DỪNG); bộ dò cong2-chong-lan-truc không bắt vì nó đếm anh em cùng tầng ở cấp dòng, còn chồng ở đây nằm ở cấp tiêu đề. Khai 12 cặp thì máy cho XANH (đã thử) nhưng là xanh giả — để đỏ. Không có TB-TCHQ/SEN/chú giải trích được nêu thứ tự."
+    },
+    {
+      "ma": "85444292",
+      "loai": "BO_VE",
+      "ve": "có hai sợi hoặc hơn, loại khác",
+      "lyDo": "Vế KHÔNG bị bỏ: \"hai sợi hoặc hơn\" đã phủ bằng soSoi >= 2 sợi (cổng 3 đọc được số viết bằng chữ qua demSo của tu-vung@2) và \"loại khác\" đã phủ bằng phanConLai [\"85444291\"]; bộ neo cổng 5 (tach-ve.js soTrongChu) chỉ neo số viết bằng chữ số nên không thấy \"hai\" — ghi miễn để ghi nhận chỗ máy đọc thiếu, điều kiện giữ nguyên, không đổi mã."
     },
     {
       "ma": "85444232",
-      "loai": "DUNG",
-      "ghiChu": "cong2-qua-nhieu-to-hop .32/.33/.34/.39 × .94/.95/.96 (58.320 tổ hợp > giới hạn cổng) — giới hạn công cụ, không phải lỗi chữ; báo Claude."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Bản trước DỪNG ở cong2-qua-nhieu-to-hop .32/.33/.34/.39 × .94/.95/.96; công cụ vòng 2 (#653) lấy mẫu tất định khi > 100.000 tổ hợp ⇒ nay chỉ còn cảnh báo cong2-lay-mau (cặp .32/.33/.34/.39 × .99 kiểm theo mẫu, không vét cạn) — gỡ ghi chú DUNG."
     }
   ]
 }

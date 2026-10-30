@@ -3,11 +3,11 @@
   "pn6": "841459",
   "nhom": "8414",
   "bieuThue": "2026.04.05",
-  "tuVung": "tu-vung@1",
+  "tuVung": "tu-vung@2",
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu-2",
     "ngay": "2026-10-30"
   },
   "duyet": null,
@@ -32,7 +32,17 @@
       "hs": "84145910",
       "nguon": "tax.84145910",
       "trich": "84145910 - - - - Quạt, loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chiHoacChuYeu",
+          "op": "CO"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -139,6 +149,13 @@
   "chongLanVanBan": [
     {
       "cap": [
+        "84145910",
+        "84145930"
+      ],
+      "lyDo": "Hai dòng anh em cùng tầng 841459~r13180: .10 \"Quạt, loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động\" và .30 \"Máy thổi khí (SEN)\" — chữ biểu không loại trừ nhau (sen.84145930: \"Máy thổi khí là quạt ly tâm được lắp ống dẫn\", nên một máy thổi khí chủ yếu dùng làm mát thiết bị viễn thông thoả cả hai); không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
         "84145991",
         "84145992"
       ],
@@ -153,9 +170,8 @@
     },
     {
       "ma": "84145910",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chiHoacChuYeu",
-      "ghiChu": "tax.84145910: \"Quạt, loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động\" — mức ràng buộc \"chỉ hoặc chủ yếu\" chưa có khoá trong tu-vung@1 (de-xuat-tu-vung-2.md nêu đích danh 8414.59.10); ghi congDung trần sẽ nới chữ biểu ⇒ để trống, DỪNG."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84145910: \"Quạt, loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, …\" ⇒ chiHoacChuYeu CO (tu-vung@2, \"chỉ sử dụng hoặc chủ yếu sử dụng\") + congDung \"làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động\" (nguyên văn vế GIỚI HẠN). Danh từ đầu \"Quạt\" lặp tên phân nhóm (Fans) — không thành điều kiện."
     },
     {
       "ma": "84145920",
