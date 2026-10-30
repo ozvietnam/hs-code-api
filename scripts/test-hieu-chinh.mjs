@@ -76,15 +76,30 @@ const kiem = (muc) => H.kiemBang(bang(muc), { phuKin: false });
   check('3c TB-CHQ (không phải TB-TCHQ) không tính vào ngưỡng 2', coLoi(kiem([m3]), 'hc-tien-le-thieu-2-tb'), kiem([m3]).loi);
   const m4 = mucTienLe(); m4.tbTchq = [m4.tbTchq[0]]; m4.duyetBoi = 'NGUOI_DUYET';
   check('3d NGUOI_DUYET không kèm phanXu (ngày + ghi chú) → ĐỎ', coLoi(kiem([m4]), 'hc-nguoi-duyet-thieu-phan-xu'), kiem([m4]).loi);
-  m4.phanXu = { nguoi: 'chuyên gia Oz', ngay: '2026-11-01', ghiChu: 'đồng ý theo TB-TCHQ' };
-  check('3e một TB-TCHQ + NGUOI_DUYET có phanXu → hợp lệ', kiem([m4]).hopLe, kiem([m4]).loi);
+  m4.phanXu = { ngay: '2026-11-01', ghiChu: 'đồng ý theo TB-TCHQ' };
+  check('3d2 NGUOI_DUYET với phanXu kiểu cũ {ngay, ghiChu} (thiếu nguoi/quyetDinh/kenh) → ĐỎ', coLoi(kiem([m4]), 'hc-nguoi-duyet-thieu-phan-xu'), kiem([m4]).loi);
+  const du = () => ({ nguoi: 'CEO Oz', ngay: '2026-10-30', quyetDinh: 'theo thông báo phân loại (.99)', kenh: 'https://claude.ai/code/session_x' });
+  for (const k of ['nguoi', 'ngay', 'quyetDinh', 'kenh']) {
+    const mk = mucTienLe(); mk.tbTchq = [mk.tbTchq[0]]; mk.duyetBoi = 'NGUOI_DUYET'; mk.phanXu = du(); mk.phanXu[k] = ' ';
+    check(`3d3 phanXu thiếu ${k} → ĐỎ`, coLoi(kiem([mk]), `hc-nguoi-duyet-thieu-phan-xu:854442-T:${k}`), kiem([mk]).loi);
+  }
+  const mn = mucTienLe(); mn.tbTchq = [mn.tbTchq[0]]; mn.duyetBoi = 'NGUOI_DUYET'; mn.phanXu = { ...du(), ngay: '30/10/2026' };
+  check('3d4 phanXu.ngay không theo YYYY-MM-DD → ĐỎ', coLoi(kiem([mn]), 'hc-phan-xu-ngay'), kiem([mn]).loi);
+  m4.phanXu = du();
+  check('3e một TB-TCHQ + NGUOI_DUYET có phanXu đủ {nguoi, ngay, quyetDinh, kenh} → hợp lệ', kiem([m4]).hopLe, kiem([m4]).loi);
+  const mp = mucLech(); mp.phanXu = du();
+  check('3e2 phanXu mà không NGUOI_DUYET → ĐỎ (phân xử phải gắn người duyệt)', coLoi(kiem([mp]), 'hc-phan-xu-khong-nguoi-duyet'), kiem([mp]).loi);
   const m5 = mucTienLe(); m5.tbTchq.push({ soHieu: '524/TB-TCHQ', viTri: 'precedents.json#85444299[1]', trich: 'mã số 8544.42.99' });
   m5.tbTchq[3].viTri = 'precedents.json#85444294[0]';
   check('3f vị trí precedents không tồn tại → ĐỎ', coLoi(kiem([m5]), 'hc-tb-vi-tri'), kiem([m5]).loi);
-  const m6 = mucLech(); m6.duyetBoi = 'NGUOI_DUYET'; m6.phanXu = { ngay: '2026-11-01', ghiChu: 'x' };
+  const m6 = mucLech(); m6.duyetBoi = 'NGUOI_DUYET'; m6.phanXu = { nguoi: 'CEO Oz', ngay: '2026-11-01', quyetDinh: 'x', kenh: 'y' };
   check('3g LECH_CHUA_PHAN_XU mà đã có NGUOI_DUYET → ĐỎ (phân xử rồi thì đổi loại)', coLoi(kiem([m6]), 'hc-lech-da-duyet'), kiem([m6]).loi);
   const m7 = mucLech(); m7.duyetBoi = 'CLAUDE_DUYET';
   check('3h duyetBoi ngoài {null, NGUOI_DUYET} → ĐỎ', coLoi(kiem([m7]), 'hc-duyet-boi'), kiem([m7]).loi);
+  const m8 = mucLech(); m8.ghiChu = 'CEO 30/10/2026: chưa chốt, hỏi lại người khai';
+  check('3i LECH_CHUA_PHAN_XU kèm ghiChu (chữ tự do, không phải phân xử) → hợp lệ', kiem([m8]).hopLe, kiem([m8]).loi);
+  const m9 = mucLech(); m9.ghiChu = { x: 1 };
+  check('3j ghiChu không phải chuỗi khác rỗng → ĐỎ', coLoi(kiem([m9]), 'hc-ghi-chu'), kiem([m9]).loi);
 }
 
 // ── 4. Mã, số hiệu, chiều ───────────────────────────────────────────────────────────────────────────────────────
@@ -140,6 +155,23 @@ const kiem = (muc) => H.kiemBang(bang(muc), { phuKin: false });
     check(`7c ${pn6} (bắt buộc) có mục lệch thật (TIEN_LE/LECH), không chỉ KHONG_LECH`, muc.some((m) => m.maHs.startsWith(pn6) && m.loai !== 'KHONG_LECH'));
   }
   check('7d 854442: ranh giới .94↔.99 có mục (dòng TB-TCHQ lệch spec §11)', muc.some((m) => m.maHs === '85444299' && m.dongChuBieu === '85444294'));
+  // CEO Oz phân xử 30/10/2026 (phiên GĐ): 854442-01/02/03 theo thông báo phân loại (.99); ba mục 8537.10 giữ LECH, hỏi người khai.
+  const theoId = Object.fromEntries(muc.map((m) => [m.id, m]));
+  const KENH = 'https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q';
+  for (const id of ['854442-01', '854442-02', '854442-03']) {
+    const m = theoId[id] || {};
+    check(`7h ${id} TIEN_LE_THAY_CHU_BIEU + NGUOI_DUYET, phanXu CEO Oz 2026-10-30 qua phiên GĐ`,
+      m.loai === 'TIEN_LE_THAY_CHU_BIEU' && m.maHs === '85444299' && m.duyetBoi === 'NGUOI_DUYET' && /CEO Oz/.test(m.phanXu?.nguoi || '')
+      && m.phanXu?.ngay === '2026-10-30' && /\(\.99\)/.test(m.phanXu?.quyetDinh || '') && m.phanXu?.kenh === KENH && Array.isArray(m.dieuKien) && m.dieuKien.length > 0, m);
+  }
+  for (const id of ['853710-01', '853710-02', '853710-03']) {
+    const m = theoId[id] || {};
+    check(`7i ${id} giữ LECH_CHUA_PHAN_XU, không NGUOI_DUYET, ghiChu hỏi lại người khai`,
+      m.loai === 'LECH_CHUA_PHAN_XU' && m.duyetBoi == null && !m.phanXu && /CEO 30\/10\/2026: chưa chốt, hỏi lại người khai/.test(m.ghiChu || ''), m);
+  }
+  const ngoai = muc.filter((m) => m.duyetBoi === 'NGUOI_DUYET' && !['854442-01', '854442-02', '854442-03'].includes(m.id)).map((m) => m.id);
+  check('7j NGUOI_DUYET chỉ ở ba mục CEO đã phân xử', ngoai.length === 0, ngoai);
+  for (const id of ['392690-01', '848190-01']) check(`7k ${id} không đổi (LECH, không NGUOI_DUYET)`, theoId[id]?.loai === 'LECH_CHUA_PHAN_XU' && theoId[id]?.duyetBoi == null);
   check('7e mucCua(85444299) trả các mục của mã', H.mucCua('85444299').length >= 1 && H.mucCua('85444299').every((m) => m.maHs === '85444299'));
   let out = ''; let ma = 0;
   try { out = execFileSync('node', ['scripts/check-hieu-chinh.mjs'], { encoding: 'utf8' }); } catch (e) { ma = e.status; out = String(e.stdout || ''); }

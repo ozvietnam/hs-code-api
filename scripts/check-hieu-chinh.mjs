@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // scripts/check-hieu-chinh.mjs — cổng máy cho data/ho-so/hieu-chinh-tien-le.json (plan L1-4b, #577).
-// Trích TB-TCHQ + chữ biểu nguyên văn; TIEN_LE_THAY_CHU_BIEU chỉ khi ≥ 2 TB-TCHQ cùng chiều hoặc NGUOI_DUYET có phanXu;
+// Trích TB-TCHQ + chữ biểu nguyên văn; TIEN_LE_THAY_CHU_BIEU chỉ khi ≥ 2 TB-TCHQ cùng chiều hoặc NGUOI_DUYET có phanXu đủ {nguoi, ngay, quyetDinh, kenh};
 // maHs thuộc lát 1; mọi phân nhóm cờ canHieuChinhTienLe có ≥ 1 mục. Đọc qua dataReadPath (HS_DATA_DIR được tôn trọng).
 // Thoát 1 khi ĐỎ. --json: in kết quả máy đọc.
 import { createRequire } from 'module';

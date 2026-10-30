@@ -6,7 +6,8 @@
   "ghiChu": [
     "Plan L1-4b (spec hồ sơ §8.1 hieuChinh, §11). Phạm vi: 11 phân nhóm lát 1 cờ canHieuChinhTienLe (data/ho-so/lat-1.json). Cổng máy: scripts/check-hieu-chinh.mjs (lib/ho-so/hieu-chinh.js).",
     "Mọi trich chép NGUYÊN VĂN từ data/precedents.json (đúng bản ghi viTri, kèm mã kết luận) và từ biểu thuế/SEN (tax.json, bieu-thue/ten-nut, sen-2022.json — NGUYEN_VAN). Không trích nguồn AI_CHUA_KIEM.",
-    "TIEN_LE_THAY_CHU_BIEU chỉ khi ≥ 2 TB-TCHQ (số hiệu khác nhau, đuôi /TB-TCHQ) cùng kết luận maHs hoặc người đã phân xử (duyetBoi NGUOI_DUYET + phanXu). Bảng này do AI soạn: KHÔNG mục nào mang NGUOI_DUYET; mọi lệch còn lại là LECH_CHUA_PHAN_XU, chờ CEO/chuyên gia.",
+    "TIEN_LE_THAY_CHU_BIEU chỉ khi ≥ 2 TB-TCHQ (số hiệu khác nhau, đuôi /TB-TCHQ) cùng kết luận maHs hoặc người đã phân xử (duyetBoi NGUOI_DUYET + phanXu). Bảng do AI soạn; NGUOI_DUYET chỉ chép lại quyết định của người, kèm phanXu {nguoi, ngay, quyetDinh, kenh} (máy kiểm đủ bốn trường). CEO Oz phân xử 30/10/2026 (phiên GĐ): 854442-01, 854442-02, 854442-03 theo thông báo phân loại (.99) ⇒ TIEN_LE_THAY_CHU_BIEU + NGUOI_DUYET; ba mục 8537.10 giữ LECH_CHUA_PHAN_XU (ghiChu: hỏi lại người khai). Mọi lệch còn lại là LECH_CHUA_PHAN_XU, chờ CEO/chuyên gia.",
+    "ghiChu là chữ tự do của người (không phải phân xử, không đổi loại).",
     "KHONG_LECH là mở rộng của plan: tín hiệu máy nghi của lat-1 (LK_TRUNG_TEN_ANH_EM, LK_TRUNG_VAT_LIEU_ANH_EM, TIEN_LE_HAI_DONG) đã soát và hàng trong TB-TCHQ không thoả chữ của dòng anh em — câu trích hai bên là bằng chứng. Tầng hồ sơ (L1-5b) bỏ qua loại này.",
     "Đọc cho L1-5b: mục có dieuKien khớp dữ kiện hàng xét trước mục cùng ranh giới không có dieuKien (vd 854442-01 trước 854442-02)."
   ],
@@ -76,15 +77,22 @@
       "chuBieu": [
         { "nguon": "tax.85444294", "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm" }
       ],
-      "lyDo": "Ba TB-TCHQ cùng chiều (1709, 1710, 1711/TB-TCHQ ngày 13/05/2022) xếp cáp sạc và truyền dữ liệu điện thoại — mỗi lõi bọc plastic, đường kính lõi dưới 5 mm, đã gắn đầu nối — vào 8544.42.99 \"Loại khác\" (MFN 10 %); đọc thuần chữ biểu thì hàng thoả 8544.42.94 \"Cáp điện cách điện bằng plastic, mỗi lõi ≤ 5 mm\" (MFN 17 %). Đủ ngưỡng ≥ 2 TB-TCHQ cùng chiều của plan; precedents.json không có bản ghi nào kết luận 85444294 (không TB-TCHQ ngược chiều). Ba thông báo cùng ngày, nhiều khả năng cùng một doanh nghiệp, ba model — CEO/chuyên gia có thể hạ mục này về LECH_CHUA_PHAN_XU. Chỉ áp trong dieuKien (cáp sạc dùng cho điện thoại, lõi < 5 mm); hàng khác ở ranh giới .94↔.99 xem 854442-02.",
-      "duyetBoi": null,
+      "lyDo": "Ba TB-TCHQ cùng chiều (1709, 1710, 1711/TB-TCHQ ngày 13/05/2022) xếp cáp sạc và truyền dữ liệu điện thoại — mỗi lõi bọc plastic, đường kính lõi dưới 5 mm, đã gắn đầu nối — vào 8544.42.99 \"Loại khác\" (MFN 10 %); đọc thuần chữ biểu thì hàng thoả 8544.42.94 \"Cáp điện cách điện bằng plastic, mỗi lõi ≤ 5 mm\" (MFN 17 %). Đủ ngưỡng ≥ 2 TB-TCHQ cùng chiều của plan; precedents.json không có bản ghi nào kết luận 85444294 (không TB-TCHQ ngược chiều). Ba thông báo cùng ngày, nhiều khả năng cùng một doanh nghiệp, ba model — CEO Oz đã xét và chốt 30/10/2026 theo thông báo phân loại (.99), xem phanXu. Chỉ áp trong dieuKien (cáp sạc dùng cho điện thoại, lõi < 5 mm); hàng khác ở ranh giới .94↔.99 xem 854442-02.",
+      "duyetBoi": "NGUOI_DUYET",
+      "phanXu": { "nguoi": "CEO Oz", "ngay": "2026-10-30", "quyetDinh": "theo thông báo phân loại (.99)", "kenh": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q" },
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "854442-02",
       "maHs": "85444299",
       "dongChuBieu": "85444294",
-      "loai": "LECH_CHUA_PHAN_XU",
+      "loai": "TIEN_LE_THAY_CHU_BIEU",
+      "dieuKien": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["tín hiệu", "Data link cable"] },
+        { "fact": "chatLieu", "op": "LA", "value": "plastic", "viTri": "CACH_DIEN" },
+        { "fact": "daGanDauNoi", "op": "CO" },
+        { "fact": "duongKinhLoi", "op": "<=", "value": 5, "donVi": "mm" }
+      ],
       "tbTchq": [
         { "soHieu": "524/TB-TCHQ", "viTri": "precedents.json#85444299[1]", "trich": "Cáp dẫn điện và tín hiệu điện tròn chống nhiễu có cách điện bằng plastic … gồm 9 sợi dây dẫn bọc cách điện và chống nhiễu đường kính lõi mỗi sợi 0,3 mm … mã số 8544.42.99" },
         { "soHieu": "551/TB-TCHQ", "viTri": "precedents.json#85444299[2]", "trich": "đường kính lõi 24AWG, CAT6 … Cáp dẫn điện, đã lắp đầu nối, điện áp sử dụng lớn nhất 80V … mỗi sợi bọc cách điện riêng bằng plastic … mã số 8544.42.99" },
@@ -93,16 +101,21 @@
       "chuBieu": [
         { "nguon": "tax.85444294", "trich": "Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm" }
       ],
-      "lyDo": "Ngoài phạm vi 854442-01 (cáp tín hiệu/dữ liệu bọc plastic, lõi ≤ 5 mm, đã gắn đầu nối): chữ biểu trỏ 8544.42.94 \"Cáp điện cách điện bằng plastic…\" (MFN 17 %) nhưng mọi TB-TCHQ trong precedents.json ở ranh giới này đều xếp 8544.42.99 (MFN 10 %): 524/TB-TCHQ (cáp VGA, lõi 0,3 mm), 551/TB-TCHQ (cáp CAT6), 354/TB-CHQ (cáp USB-C); 567/TB-TCHQ (cáp AISG) và 3266/TB-TCHQ (bộ dây tín hiệu) cũng .99 nhưng không ghi đường kính lõi. Không TB-TCHQ nào xếp .94. Hai TB-TCHQ (524, 551) là hàng khác nhau, không định được phạm vi chung bằng một dữ kiện ⇒ không nâng thành TIEN_LE. Câu hỏi cho chuyên gia: \".94 Cáp điện\" có chỉ cáp tải điện (nguồn) không; chưa phân xử ⇒ ranh giới .94↔.99 CHUA_SO_HOA.",
-      "duyetBoi": null,
+      "lyDo": "Ngoài phạm vi 854442-01 (cáp tín hiệu/dữ liệu bọc plastic, lõi ≤ 5 mm, đã gắn đầu nối): chữ biểu trỏ 8544.42.94 \"Cáp điện cách điện bằng plastic…\" (MFN 17 %) nhưng mọi TB-TCHQ trong precedents.json ở ranh giới này đều xếp 8544.42.99 (MFN 10 %): 524/TB-TCHQ (cáp VGA, lõi 0,3 mm), 551/TB-TCHQ (cáp CAT6), 354/TB-CHQ (cáp USB-C); 567/TB-TCHQ (cáp AISG) và 3266/TB-TCHQ (bộ dây tín hiệu) cũng .99 nhưng không ghi đường kính lõi. Không TB-TCHQ nào xếp .94. Hai TB-TCHQ (524, 551) là hàng khác nhau, không định được phạm vi chung bằng một dữ kiện nên bản AI soạn để LECH. CEO Oz phân xử 30/10/2026: theo thông báo phân loại (.99), xem phanXu. Phạm vi (dieuKien): cáp tín hiệu/dữ liệu (như cáp VGA, cáp USB-C) cách điện bằng plastic, đã gắn đầu nối, lõi ≤ 5 mm; cáp CAT6 mạng máy tính xem 854442-03, cáp sạc điện thoại xem 854442-01.",
+      "duyetBoi": "NGUOI_DUYET",
+      "phanXu": { "nguoi": "CEO Oz", "ngay": "2026-10-30", "quyetDinh": "theo thông báo phân loại (.99)", "kenh": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q" },
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "854442-03",
       "maHs": "85444299",
       "dongChuBieu": "85444213",
-      "loai": "LECH_CHUA_PHAN_XU",
-      "dieuKien": { "fact": "congDung", "op": "CONG_DUNG", "value": "truyền dữ liệu trong mạng máy tính" },
+      "loai": "TIEN_LE_THAY_CHU_BIEU",
+      "dieuKien": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "truyền dữ liệu trong mạng máy tính" },
+        { "fact": "daGanDauNoi", "op": "CO" },
+        { "fact": "dienAp", "op": "<=", "value": 80, "donVi": "V" }
+      ],
       "tbTchq": [
         { "soHieu": "551/TB-TCHQ", "viTri": "precedents.json#85444299[2]", "trich": "Cáp dẫn điện, đã lắp đầu nối, điện áp sử dụng lớn nhất 80V … Sử dụng truyền dữ liệu trong mạng máy tính … mã số 8544.42.99" },
         { "soHieu": "567/TB-TCHQ", "viTri": "precedents.json#85444299[3]", "trich": "là loại cáp truyền tín hiệu điều khiển, không phải loại cáp dùng cho lĩnh vực viễn thông để truyền dẫn các tín hiệu viễn thông … mã số 8544.42.99" }
@@ -111,8 +124,9 @@
         { "nguon": "tieuDe.8544421", "trich": "Dùng cho viễn thông, điện áp không quá 80 V" },
         { "nguon": "tax.85444213", "trich": "Loại khác, cách điện bằng cao su, plastic hoặc giấy" }
       ],
-      "lyDo": "551/TB-TCHQ: cáp CAT6 truyền dữ liệu mạng máy tính, điện áp tối đa 80 V, bọc plastic, đã gắn đầu nối → 8544.42.99 (MFN 10 %). Nếu mạng máy tính tính là \"viễn thông\" thì chữ tiêu đề 8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" + dòng .13 \"cách điện bằng … plastic\" (MFN 0 %) bao hàng. TB-TCHQ không nêu lý do loại khỏi viễn thông (567/TB-TCHQ thì ghi rõ cáp AISG \"không phải loại cáp dùng cho lĩnh vực viễn thông\" — khớp chữ biểu). Một TB-TCHQ cho hàng này ⇒ chưa phân xử.",
-      "duyetBoi": null,
+      "lyDo": "551/TB-TCHQ: cáp CAT6 truyền dữ liệu mạng máy tính, điện áp tối đa 80 V, bọc plastic, đã gắn đầu nối → 8544.42.99 (MFN 10 %). Nếu mạng máy tính tính là \"viễn thông\" thì chữ tiêu đề 8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" + dòng .13 \"cách điện bằng … plastic\" (MFN 0 %) bao hàng. TB-TCHQ không nêu lý do loại khỏi viễn thông (567/TB-TCHQ thì ghi rõ cáp AISG \"không phải loại cáp dùng cho lĩnh vực viễn thông\" — khớp chữ biểu). Một TB-TCHQ cho hàng này nên bản AI soạn để LECH. CEO Oz phân xử 30/10/2026: theo thông báo phân loại (.99), xem phanXu. Phạm vi (dieuKien): cáp truyền dữ liệu mạng máy tính đã gắn đầu nối, điện áp ≤ 80 V (như cáp CAT6 của 551/TB-TCHQ).",
+      "duyetBoi": "NGUOI_DUYET",
+      "phanXu": { "nguoi": "CEO Oz", "ngay": "2026-10-30", "quyetDinh": "theo thông báo phân loại (.99)", "kenh": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q" },
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -134,6 +148,7 @@
       ],
       "lyDo": "6326/TB-TCHQ xếp bản mạch điều khiển có bộ xử lý lập trình MSP430FR vào 8537.10.99 (nhánh \"Loại khác\", MFN 15 %), trong khi chữ 8537.10.12 \"Bảng điều khiển có trang bị bộ xử lý lập trình\" (MFN 5 %) bao đúng đặc điểm đó, và 103/TB-TCHQ (màn hình HMI có bộ xử lý lập trình) cùng 488, 489/TB-TCHQ xếp .12. Có thể điểm phân biệt là \"bản mạch\" (PCBA) không phải \"bảng điều khiển\", nhưng TB-TCHQ không nói ⇒ chưa phân xử. Chênh 10 điểm MFN.",
       "duyetBoi": null,
+      "ghiChu": "CEO 30/10/2026: chưa chốt, hỏi lại người khai",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -152,6 +167,7 @@
       ],
       "lyDo": "4040/TB-TCHQ (bảng mạch điều khiển máy lọc không khí, có vi mạch điều khiển tích hợp bluetooth, chưa ghi dữ liệu điều khiển) và 1159/TB-TCHQ (bản mạch đồng hồ thông minh, chưa ghi phần mềm điều khiển) xếp 8537.10.19 \"Loại khác\" (MFN 15 %), không phải .12 \"có trang bị bộ xử lý lập trình\" (MFN 5 %). Lệch hay không tuỳ câu hỏi chữ biểu không trả lời: vi mạch điều khiển chưa nạp chương trình có tính là \"bộ xử lý lập trình\" không (tu-vung@1 đọc \"vi điều khiển\" là có). Hai TB-TCHQ cùng chiều nhưng bản thân điểm lệch chưa chắc ⇒ không nâng TIEN_LE; chưa phân xử.",
       "duyetBoi": null,
+      "ghiChu": "CEO 30/10/2026: chưa chốt, hỏi lại người khai",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -169,6 +185,7 @@
       ],
       "lyDo": "Hai tiền lệ trái nhau cho cùng loại hàng: 4800/TB-TCHQ (2021) xếp module điều khiển đèn LED vào nhánh \"Bảng chuyển mạch và bảng điều khiển\" 8537.10.19; 14061/TB-CHQ (2026) xếp module cùng tên vào nhánh \"Loại khác\" 8537.10.99. Chữ biểu không nói module điều khiển có là \"bảng điều khiển\" không. Hai dòng cùng MFN 15 % — không chênh thuế, chỉ cần chọn dòng cho nhất quán.",
       "duyetBoi": null,
+      "ghiChu": "CEO 30/10/2026: chưa chốt, hỏi lại người khai",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
