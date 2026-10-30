@@ -1,6 +1,7 @@
 # Quy trình số hoá ranh giới MỘT phân nhóm 6 số (PN6) — cho thợ (agent code giá rẻ)
 
 > #577 (L1-4). Một issue nhãn `job` = một PN6 = một nhánh = một PR. Claude soát và duyệt; thợ KHÔNG duyệt.
+> Người soát (L1-4c) dùng bảng soát [`SOAT-RANH-GIOI.md`](SOAT-RANH-GIOI.md).
 > Làm ĐÚNG thứ tự, từng bước. Không chắc ⇒ DỪNG (mục 4) — dừng đúng chỗ được tính là làm tốt, ép cho xanh là làm hỏng.
 
 ## 0. Luật cấm (vi phạm một điều = PR bị đóng)
@@ -36,6 +37,8 @@
    - `TIEU_DE` có tên (trong cây hiện `[id] tên`) ⇒ cần điều kiện ở `dieuKienNut`. Tiêu đề "Loại khác" trần ⇒ bỏ qua.
    - Mục có `nghi phần còn lại có tên` ⇒ xem bước 3.6.
    - Mục có `nghi THIẾU KHOÁ` ⇒ xem bước 3.7.
+   - Dòng `vế phải phủ (cổng 5): [GIỚI HẠN] "…" · [MỞ] "…"` ⇒ MỖI vế đó phải có điều kiện đọc tới, hoặc miễn `BO_VE` có lý do
+     (bước 3.11). Xem chi tiết: `node scripts/so-hoa-ranh-gioi.mjs --ve --pn6=<pn6>` (sau khi đã có bản nháp).
 4. Xem từ vựng: `node scripts/so-hoa-ranh-gioi.mjs --tu-vung` (một khoá: `--tu-vung --khoa=<khoá>`), đọc kiểu, op, đơn vị,
    giá trị hợp lệ, cách đọc.
 5. Có hạt giống ở `docs/giao-viec/so-tay/hat-giong/<pn6>.json` (issue sẽ nói) ⇒ chép nó sang
@@ -66,7 +69,7 @@ Khung:
 
 Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
 
-1. Đọc chữ nguyên văn của mục (trong `--goi`). Tách các ý (vế) của chữ.
+1. Đọc chữ nguyên văn của mục (trong `--goi`). Tách các ý (vế) của chữ — `--goi` in sẵn các vế GIỚI HẠN / MỞ mà cổng 5 sẽ kiểm.
 2. Với mỗi ý, chọn MỘT khoá từ `--tu-vung` (bảng cách viết ở `LUAT-CHUNG.md`):
    - số + đơn vị ⇒ khoá `SO`: `{"fact": "<khoá>", "op": "<=|<|>=|>", "value": <số>, "donVi": "<như chữ trích>"}`.
      "không quá" = `<=`, "dưới" = `<`, "trên" = `>`, "từ … trở lên" = `>=`. "1.000" = 1000, "22,38" = 22.38.
@@ -87,10 +90,32 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
 7. Một ý KHÔNG có khoá ⇒ để `"dieuKienSo": []` cho mục đó và thêm ghi chú
    `{"ma": "<mã>", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "<tên khoá>", "ghiChu": "<chữ nguyên văn cần khoá>"}`
    (khoá đề xuất: [`de-xuat-tu-vung-2.md`](de-xuat-tu-vung-2.md)) ⇒ sẽ DỪNG.
-8. Ý nói "(bao gồm …)", cách đo, ví dụ minh hoạ ⇒ KHÔNG thành điều kiện; ghi `ghiChuSoan` loai `DE_TRONG` giải thích.
+8. Ý nói "(bao gồm …)", "kể cả …", cách đo, ví dụ minh hoạ, ngoặc chú thích ("(corset)", "(LPG)") ⇒ KHÔNG thành điều kiện (cổng 5
+   coi là PHU, không đòi phủ); ghi `ghiChuSoan` loai `QUYET_DINH` giải thích. **Không dùng `DE_TRONG` để bỏ một vế GIỚI HẠN hay vế
+   MỞ** — đó là đúng chỗ người soát đợt 2 (#659) tìm thấy 4/6 lỗi; cổng 5 cảnh báo mọi ghi chú `DE_TRONG` / "người soát xem" và
+   `--duyet` từ chối tới khi người soát ghi kết luận (bước 3.11).
 9. Chữ dài > 300 ký tự (thường tiêu đề) ⇒ thêm `"trich": "<đoạn đầu> … <đoạn chứa bằng chứng>"` — mọi đoạn nguyên văn, đúng thứ tự.
    Còn lại KHÔNG ghi `trich`/`nguon` (máy tự chép nguyên văn).
-10. Mỗi quyết định một ghi chú `ghiChuSoan` (loai `QUYET_DINH` | `DE_TRONG` | `CHONG_LAN` | `LECH_TIEN_LE` | `THIEU_KHOA_TU_VUNG` | `DUNG`).
+10. Mỗi quyết định một ghi chú `ghiChuSoan` (loai `QUYET_DINH` | `DE_TRONG` | `CHONG_LAN` | `LECH_TIEN_LE` | `THIEU_KHOA_TU_VUNG` | `DUNG` | `BO_VE`).
+11. **Cổng 5 — phạm vi VẾ bổ nghĩa** (#659: 8,8% mục sai, gần hết kiểu này). Với mỗi mục có điều kiện:
+    - **Vế GIỚI HẠN** ("không nhấp nháy", "có thể thao tác hoặc … tương tác …", "dùng cho/để/cho …", "bằng …", "của …" ngay sau danh
+      từ đầu, biên số, "(trừ …)", "…, hoàn chỉnh", phần sau "Loại …") ⇒ phải có điều kiện mà chữ của nó nằm trong vế (giá trị
+      `TEN_LOAI`/`CONG_DUNG` là chuỗi con của vế; số của `SO`; chữ đọc của `CO_KHONG`/`LIET_KE`/chất liệu). Bỏ vế giới hạn = điều kiện
+      **RỘNG hơn chữ** ⇒ `cong5-ve-gioi-han-bi-bo`. Vế chỉ lặp chữ của tầng cha ("Cho xe …" dưới "Dùng cho xe thuộc nhóm 87.11") không
+      cần phủ.
+    - **Vế MỞ** ("… và các loại tương tự", "và các thiết bị tương tự", "và bộ phận của chúng", "và các loại … khác") ⇒ KHÔNG liệt kê
+      đóng danh sách đứng trước nó thành điều kiện (quy ước 392690) — làm vậy là **HẸP hơn chữ** ⇒ `cong5-ve-mo-bi-bo`. Hai cách đúng:
+      phủ chính vế mở ("X và bộ phận của chúng" ⇒ `{"op":"HOAC","phuongAn":[[tenLoai "X"],[laBoPhan CO, dungCho "X"]]}`), hoặc bỏ điều
+      kiện liệt kê rồi miễn vế giới hạn chứa danh sách bằng `BO_VE` (dưới).
+    - **Định ngữ chung** đi với MỌI danh từ đầu liên hợp — đối chiếu chữ Anh của cùng dòng: "Connection and contact elements **for wires
+      and cables**" ⇒ "Đầu nối và các bộ phận … cho dây dẫn và cáp" là định ngữ CHUNG: tenLoai ["Đầu nối","các bộ phận"] + một điều kiện
+      riêng cho "dây dẫn và cáp", không nhét định ngữ vào một giá trị tenLoai. "Fans and handscreens" ⇒ "kéo bằng tay" chỉ của màn che:
+      `HOAC [[tenLoai "Quạt"], [tenLoai "màn che", cachDieuKhien BANG_TAY]]`. "Telephone patch panels" ⇒ "cáp điện thoại" chung cho cả
+      "Phiến đầu nối" lẫn "khối đấu nối". Sai ⇒ `cong5-dinh-ngu-tach`.
+    - **Không phủ được** (thiếu khoá, hoặc quy ước đã đúc cho phép bỏ) ⇒ miễn vế TƯỜNG MINH:
+      `{"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế, chép từ --ve>", "lyDo": "<vì sao bỏ vế mà không sai mã>"}`. `lyDo` rỗng,
+      dưới 10 ký tự, "người soát xem", "DE_TRONG" ⇒ `cong5-bo-ve-ly-do` (không tính, vế vẫn đỏ). Thiếu khoá thật ⇒ vẫn ghi
+      `THIEU_KHOA_TU_VUNG` (DỪNG) — `BO_VE` không thay cho DỪNG khi bỏ vế làm đổi mã.
 
 ## 4. Áp spec, kiểm, sửa — vòng lặp
 
@@ -107,6 +132,9 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
    - `cong1-lay-mau` / `cong2-lay-mau` ⇒ cổng chỉ thử mẫu; ghi chú cho người soát.
    - `can-bang-hieu-chinh-tien-le-da-co` ⇒ soạn theo CHỮ BIỂU, ghi chú `LECH_TIEN_LE` trỏ mục bảng.
    - `cong2-chong-lan-van-ban` ⇒ cặp bạn đã khai, giữ.
+   - `cong5-bo-ve` ⇒ vế bạn đã miễn; người soát sẽ đọc `lyDo` — kiểm lại lý do đứng được một mình.
+   - `cong5-de-trong-chua-xu-ly` ⇒ ghi chú `DE_TRONG`/"người soát xem" của bạn chưa phải đã xử lý: thay bằng điều kiện, `BO_VE` có lý
+     do, hoặc `DUNG`. Còn giữ ⇒ nói rõ trong PR mục "Cảnh báo còn lại".
 7. `npm test` phải xanh (in `=== ALL TESTS PASSED ===`).
 
 **Chồng lấn (`cong2-chong-lan`)** — làm theo thứ tự, dừng ở bước đầu tiên khớp:
@@ -130,6 +158,7 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
 | Dòng không tới được mà không sửa được | lỗi `cong2-dong-khong-toi-duoc` sau khi đã thử đổi khoá |
 | Cổng nào đó chỉ xanh được nếu bịa chữ / thêm điều kiện chữ không nói | bất kỳ |
 | Quá 8 vòng sửa vẫn đỏ, hoặc dòng quá nhiều tổ hợp mà mẫu không tới được | `cong2-qua-nhieu-to-hop:<dòng>` |
+| Vế giới hạn/vế mở không có khoá mà bỏ nó làm đổi mã 8 số | `cong5-ve-gioi-han-bi-bo` / `cong5-ve-mo-bi-bo` mà không viết được `lyDo` thật cho `BO_VE` ⇒ `THIEU_KHOA_TU_VUNG` hoặc `DUNG` |
 | Bạn không chắc một điều kiện nói đúng chữ | — |
 
 Khi DỪNG: giữ spec đến chỗ đã làm (mục chưa chắc để `"dieuKienSo": []` + ghi chú loai `DUNG`), chạy `--ap-spec` lần cuối, commit,
@@ -167,6 +196,7 @@ Closes #<số issue>
 
 ### Cảnh báo còn lại và cách tôi xử lý
 - <mã cảnh báo> — <đã đối chiếu tay / ghi chú gì>
+- BO_VE: <mã: "vế" — lý do | không>
 
 ### DỪNG (nếu có)
 - <mã DỪNG> — <vì sao, mục nào>
@@ -175,6 +205,8 @@ Closes #<số issue>
 - [ ] Không đọc data/bench/*, data/oz-export/*
 - [ ] Mọi trích nguyên văn từ nguồn của chính mục; không trích nguồn AI_CHUA_KIEM
 - [ ] Không ghi nguonLoai/trangThai/duyet; không chạy --duyet/--tra-ve/--ap-dung
+- [ ] Mọi vế GIỚI HẠN / MỞ in ở `--ve` đều "phủ", "lặp chữ tổ tiên" hoặc "MIỄN (BO_VE)" có lý do thật; không vế nào bỏ bằng DE_TRONG
+- [ ] Định ngữ chung (đối chiếu chữ Anh) gắn cho MỌI danh từ đầu; định ngữ riêng chỉ gắn cho danh từ của nó
 - [ ] Không sửa tệp ngoài spec/<pn6>.json và data/ho-so/ranh-gioi/<pn6>.json
 - [ ] Không force-push, không --no-verify
 
