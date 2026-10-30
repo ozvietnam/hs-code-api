@@ -1,0 +1,51 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850140",
+  "phien": "zcode:glm-5.3:20261030T1540#soan-850140",
+  "dong8": {
+    "85014011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": ["84.15", "84.18", "84.50", "85.09", "85.16"]
+        }
+      ]
+    },
+    "85014021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": ["84.15", "84.18", "84.50", "85.09", "85.16"]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8501401": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 1,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8501402": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "85014011", "loai": "QUYET_DINH", "ghiChu": "tax.85014011: \"Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ dungCho [84.15, 84.18, 84.50, 85.09, 85.16] — so chữ tự do với số nhóm, không tất định; dữ kiện cần ghi hàng hoá đích theo số nhóm. Tương tự .21. Đối chiếu lại từng giá trị với chữ nguyên văn: đủ 5 nhóm, đúng thứ tự." },
+    { "ma": "8501401", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8501401: \"Công suất không quá 1 kW\" ⇒ congSuat <= 1 kW (\"không quá\" = <=); tieuDe.8501402: \"Công suất trên 1 kW\" ⇒ congSuat > 1 kW (\"trên\" = >)." }
+  ]
+}
