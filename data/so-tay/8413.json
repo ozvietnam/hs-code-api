@@ -213,27 +213,82 @@
   },
   {
    "hs": "84135031",
-   "dieuKien": "Hoạt động bằng điện — phân nhóm 8413.50 (WCO): Pumps; reciprocating positive displacement pumps, n.e.c. in heading no. 8413, for liquids; dòng cha cấp 8 số không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "hoạt động bằng điện",
    "loaiKhac": false,
    "nguon": "tax.84135031",
    "trich": "84135031 - - - Hoạt động bằng điện",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "hoatDongBangDien",
+     "op": "CO"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "5cbc975fecae0374e54f1e2dd0e908770f0c4d4fd75da743500050e039cf83c8"
+    }
+   }
   },
   {
    "hs": "84135032",
-   "dieuKien": "Không hoạt động bằng điện — phân nhóm 8413.50 (WCO): Pumps; reciprocating positive displacement pumps, n.e.c. in heading no. 8413, for liquids; dòng cha cấp 8 số không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "không: hoạt động bằng điện",
    "loaiKhac": false,
    "nguon": "tax.84135032",
    "trich": "84135032 - - - Không hoạt động bằng điện",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "hoatDongBangDien",
+     "op": "KHONG"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "5cbc975fecae0374e54f1e2dd0e908770f0c4d4fd75da743500050e039cf83c8"
+    }
+   }
   },
   {
    "hs": "84135040",
-   "dieuKien": "Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h — phân nhóm 8413.50 (WCO): Pumps; reciprocating positive displacement pumps, n.e.c. in heading no. 8413, for liquids",
+   "dieuKien": "tên loại hàng: Bơm nước; lưu lượng > 8000 m³/h; lưu lượng <= 13000 m³/h",
    "loaiKhac": false,
    "nguon": "tax.84135040",
    "trich": "84135040 - - Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bơm nước"
+    },
+    {
+     "fact": "luuLuong",
+     "op": ">",
+     "value": 8000,
+     "donVi": "m³/h"
+    },
+    {
+     "fact": "luuLuong",
+     "op": "<=",
+     "value": 13000,
+     "donVi": "m³/h"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "5cbc975fecae0374e54f1e2dd0e908770f0c4d4fd75da743500050e039cf83c8"
+    }
+   }
   },
   {
    "hs": "84135090",
@@ -1188,5 +1243,34 @@
     "phamViLoaiKhac"
    ]
   }
- }
+ },
+ "dieuKienNut": [
+  {
+   "id": "8413503",
+   "nguon": "tieuDe.8413503",
+   "trich": "8413503 Bơm nước, với lưu lượng không quá 8.000 m³/h",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bơm nước"
+    },
+    {
+     "fact": "luuLuong",
+     "op": "<=",
+     "value": 8000,
+     "donVi": "m³/h"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+     "ngay": "2026-10-30",
+     "bam": "5cbc975fecae0374e54f1e2dd0e908770f0c4d4fd75da743500050e039cf83c8"
+    }
+   }
+  }
+ ]
 }
