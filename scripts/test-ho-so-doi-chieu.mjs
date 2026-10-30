@@ -83,7 +83,7 @@ const MO_TA_BOM = 'Bơm nước ly tâm trục ngang, lưu lượng 10.000 m³/h
 
 // ── 2. Bỏ một dữ kiện quyết định ⇒ THIEU đúng dữ kiện đó, THIEU_DU_KIEN, câu hỏi Vi + Zh ──────────────────────────────────
 {
-  const moTa = MO_TA_BOM.replace('lưu lượng 10.000 m³/h, ', '');
+  const moTa = MO_TA_BOM.replace('lưu lượng 10.000 m³/h, ', 'dùng tưới tiêu nông nghiệp, '); // còn một đoạn luật chưa đọc
   const llm = llmStub([{ fact: 'luuLuong', giaTri: 10000, donVi: 'm3/h', bangChung: 'lưu lượng 10000 m3/h' }]); // trích bịa: không có trong đầu vào
   const { duKien, hoSo, biLoai, khung, truoc } = await dung('84135040', { moTa }, { llm });
   const thieu = hoSo.duongDiPhapLy.filter((e) => e.ketQua === 'THIEU');
@@ -95,8 +95,13 @@ const MO_TA_BOM = 'Bơm nước ly tâm trục ngang, lưu lượng 10.000 m³/h
   check('bỏ luuLuong ⇒ chỉ một câu hỏi (không hỏi dữ kiện đã có)', hoSo.ketLuan.cauHoi.length === 1, hoSo.ketLuan.cauHoi);
   // LLM: chỉ dữ kiện quyết định CHUA_BIET, chỉ đoạn chữ chưa đọc
   const yc = llm.goi[0] && llm.goi[0].yc;
+  check('LLM nhận đúng đoạn chưa đọc', yc && chuan(yc.doanChu).includes('dùng tưới tiêu nông nghiệp'), yc);
   check('LLM chỉ được hỏi dữ kiện quyết định còn CHUA_BIET (luuLuong)', llm.goi.length === 1 && yc.facts.map((f) => f.fact).join() === 'luuLuong', llm.goi);
   const daDoc = duKien.filter((d) => d.trangThai === 'DA_CO' && d.docBoi !== 'LLM');
+  // hết chữ chưa đọc ⇒ không gọi LLM (không gửi lại chữ đã đọc)
+  const llm2 = llmStub([]);
+  await docDuKien({ moTa: MO_TA_BOM.replace('lưu lượng 10.000 m³/h, ', '') }, D.dungDuongDi('84135040', 'NHAP'), { llm: llm2 });
+  check('mọi đoạn chữ đã được luật đọc ⇒ không gọi LLM', llm2.goi.length === 0, llm2.goi);
   check('LLM chỉ nhận đoạn chữ chưa đọc (không chứa bangChung luật đã đọc)', yc && daDoc.length >= 3 && daDoc.every((d) => !chuan(yc.doanChu).includes(chuan(d.bangChung))), { doan: yc && yc.doanChu, daDoc: daDoc.map((d) => d.bangChung) });
   // LLM trả bangChung không có trong đầu vào ⇒ bỏ, CHUA_BIET
   const ll = duKien.filter((d) => d.fact === 'luuLuong');
