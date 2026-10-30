@@ -7,11 +7,28 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
     "ngay": "2026-10-30"
   },
   "duyet": null,
   "dieuKienNut": [
+    {
+      "id": "854442~r16065",
+      "nguon": "tieuDe.854442~r16065",
+      "trich": "854442~r16065 Cách điện bằng cao su hoặc plastic",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
     {
       "id": "8544421",
       "nguon": "tieuDe.8544421",
@@ -159,7 +176,18 @@
       "hs": "85444232",
       "nguon": "tax.85444232",
       "trich": "85444232 - - - - - Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.11"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -173,7 +201,18 @@
       "hs": "85444234",
       "nguon": "tax.85444234",
       "trich": "85444234 - - - - - Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.11"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -187,36 +226,14 @@
       "hs": "85444291",
       "nguon": "tax.85444291",
       "trich": "85444291 - - - - Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Cáp dữ liệu dẹt"
-        },
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": [
-            "cao su",
-            "plastic",
-            "giấy"
-          ],
-          "viTri": "CACH_DIEN"
-        }
-      ],
+      "dieuKienSo": [],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85444292",
       "nguon": "tax.85444292",
       "trich": "85444292 - - - - Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Cáp dữ liệu dẹt"
-        }
-      ],
+      "dieuKienSo": [],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -292,7 +309,11 @@
           "viTri": "CACH_DIEN"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "85444294",
+        "85444295"
+      ]
     },
     {
       "hs": "85444297",
@@ -326,64 +347,50 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "854442",
-      "ghiChu": "CẤU TRÚC: 8544.42 (dây cáp ≤ 1.000 V đã lắp đầu nối) = [8544421 viễn thông ≤ 80 V] + [8544422 viễn thông 80–1.000 V] + [8544423 Cáp ắc qui] + [8544429 \"Loại khác\" trần]. Tiêu đề có tên mang điều kiện ở dieuKienNut (nguồn tieuDe.<id> = tên nguyên văn biểu Tổng cục); tiêu đề \"Loại khác\" trần không ghi. Vật liệu cách điện dùng chatLieu LA với viTri CACH_DIEN — câu trích phải có cả chữ vật liệu (\"cao su\", \"plastic\", \"giấy\") lẫn chữ vị trí (\"cách điện\"); mảng giá trị = HOẶC. Phân nhóm có cờ canHieuChinhTienLe ⇒ chỉ duyệt được sau bảng hiệu chỉnh tiền lệ L1-4b."
-    },
-    {
-      "ma": "854442-LECH-TIEN-LE",
-      "ghiChu": "LỆCH TB-TCHQ ↔ CHỮ BIỂU (cho L1-4b): chữ biểu .94 = \"Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm\" — cáp sạc/USB bọc plastic, lõi < 5 mm đọc theo chữ thì vào .94. Nhưng precedents.json#85444299[5],[6],[7] (1709, 1710, 1711/TB-TCHQ — cáp sạc Type-C/Lightning, đã gắn đầu nối) và các bản ghi trùng [9]–[11], [15]–[17] xếp 8544.42.99; cùng chiều .99 còn có [1]/[8]/[12] (524/TB-TCHQ, cáp VGA bọc PVC) và [2]/[13] (551/TB-TCHQ, cáp CAT6). Bản nháp soạn ĐÚNG CHỮ BIỂU, KHÔNG tự chọn bên và KHÔNG ghi uuTien: việc này thuộc mục hiệu chỉnh tiền lệ (TIEN_LE_THAY_CHU_BIEU nếu ≥ 2 TB-TCHQ cùng chiều được chấp nhận, hoặc LECH_CHUA_PHAN_XU) ở data/ho-so/hieu-chinh-tien-le.json."
-    },
-    {
       "ma": "8544421",
-      "ghiChu": "tieuDe.8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" ⇒ congDung \"viễn thông\" (so chữ, không tất định) + dienAp <= 80 V (\"không quá\" = <=)."
-    },
-    {
-      "ma": "8544422",
-      "ghiChu": "tieuDe.8544422 \"…điện áp trên 80 V nhưng không quá 1.000 V\" ⇒ congDung \"viễn thông\" + dienAp > 80 V VÀ <= 1000 V. Biên 80 V thuộc 8544421 — cổng 2 thử 80 và 80 ± 1e-6."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" ⇒ congDung \"viễn thông\" + dienAp <= 80 V; tieuDe.8544422 \"… điện áp trên 80 V nhưng không quá 1.000 V\" ⇒ congDung \"viễn thông\" + dienAp > 80 V và <= 1000 V. tieuDe.8544423 \"Cáp ắc qui\" ⇒ tenLoai. 8544429 \"Loại khác\" trần."
     },
     {
       "ma": "85444211",
-      "ghiChu": "Ba loại cáp ngầm dưới biển nêu đích danh ⇒ tenLoai, mảng HOẶC, mỗi phần tử là chuỗi con nguyên văn. Tương tự .21."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Ba loại cáp ngầm dưới biển nêu đích danh ⇒ tenLoai mảng (hoặc), chuỗi con nguyên văn; .21 như .11. .13/.23 \"Loại khác, cách điện bằng cao su, plastic hoặc giấy\" ⇒ chỉ vế: chatLieu LA [cao su, plastic, giấy] viTri CACH_DIEN."
     },
     {
-      "ma": "85444213",
-      "ghiChu": "\"Loại khác, cách điện bằng cao su, plastic hoặc giấy\" ⇒ chỉ ghi VẾ: chatLieu LA [\"cao su\",\"plastic\",\"giấy\"] viTri CACH_DIEN; phần \"Loại khác\" (không phải cáp ngầm .11) máy tự phủ định. Tương tự .23."
-    },
-    {
-      "ma": "8544423",
-      "ghiChu": "tieuDe.8544423 \"Cáp ắc qui\" ⇒ tenLoai \"Cáp ắc qui\"."
-    },
-    {
-      "ma": "85444232",
-      "ghiChu": "CỐ Ý ĐỂ TRỐNG — TẦNG BỊ LƯỢC KHỎI CÂY: biểu thuế (data/bieu-thue/2026.04.05/tieu-de.jsonl.gz, BT2026) có hai tiêu đề KHÔNG MÃ dưới \"Cáp ắc qui\": r16065 \"- - - - Cách điện bằng cao su hoặc plastic:\" (gồm .32, .33) và r16068 \"- - - - Loại khác:\" (gồm .34, .39). lib/hs-tree.js dựng cây theo chữ số nên đặt .32/.33/.34/.39 ngang hàng dưới 8544423. .32 và .34 cùng chữ \"Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11\"; điều kiện cách điện nằm ở tiêu đề không mã, không trích được vào tax.85444232 (cổng 3 chỉ nhận tax.<chính dòng>). Ghi dungCho cho cả .32 và .34 sẽ sinh cặp chồng lấn GIẢ (.32/.34, .33/.39) do cây sai, không do chữ biểu ⇒ để trống, cổng 1 chặn (đúng ý LUAT-CHUNG \"tiêu đề bị lược tên ⇒ để đỏ\"). Cổng 1 hiện chỉ bắt tang-bi-luoc khi một phần còn lại là TIÊU ĐỀ; ở đây hai phần còn lại (.33, .39) đều là dòng nên máy không tự thấy — cần sửa cây/cổng trước khi số hoá."
-    },
-    {
-      "ma": "85444234",
-      "ghiChu": "Như .32 — thuộc tiêu đề không mã r16068 \"Loại khác:\"; để trống."
+      "ma": "854442~r16065",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Soạn lại sau PR #619 (tầng không mã thành nút ảo): tieuDe.854442~r16065 \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu LA [cao su, plastic] viTri CACH_DIEN; tầng r16068 \"Loại khác:\" trần. .32/.34 \"Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11\" ⇒ dungCho [4 nhóm, đủ, đúng thứ tự]."
     },
     {
       "ma": "85444291",
-      "ghiChu": "tenLoai \"Cáp dữ liệu dẹt\" + chatLieu cách điện [cao su, plastic, giấy]. Vế \"có hai sợi hoặc hơn\" KHÔNG số hoá: tu-vung@1 chưa có khoá số sợi/số lõi — đề xuất thêm khoá (L1-3a) nếu cần."
-    },
-    {
-      "ma": "85444292",
-      "ghiChu": "\"Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác\": chữ \"loại khác\" ở CUỐI dòng không làm dòng thành \"Loại khác\" theo máy (máy chỉ nhận tên BẮT ĐẦU bằng \"Loại khác\") nên không có phủ định tự động .91; muốn phủ định thì phải trích \"cao su/plastic/giấy\" mà câu của .92 không có ⇒ chỉ ghi tenLoai. Cổng 2 thấy .91/.92 chồng lấn. Ý chữ biểu rõ (.92 = không thuộc .91) nhưng lược đồ không diễn đạt được — Chữ biểu KHÔNG chồng lấn ⇒ CỐ Ý KHÔNG khai vào chongLanVanBan (khai sẽ hạ một lỗi của lược đồ thành cảnh báo và gắn nhãn sai sự thật); để đỏ. Đề xuất: luật đi coi \"…, loại khác\" / \"… khác\" cuối dòng như \"Loại khác\" (phủ định anh em đứng trước)."
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "soSoi",
+      "ghiChu": "tax.85444291 \"Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy\" và tax.85444292 \"Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác\" — vế \"có hai sợi hoặc hơn\" cần khoá số sợi (de-xuat-tu-vung-2.md: soSoi/soLoi), tu-vung@1 chưa có; bản cũ bỏ vế này là nới chữ biểu ⇒ để trống cả hai dòng, DỪNG. Khi có khoá: .91 = tenLoai \"Cáp dữ liệu dẹt\" + soSoi >= 2 + chatLieu CACH_DIEN [cao su, plastic, giấy]; .92 = cùng tenLoai + soSoi >= 2 + phanConLai: true (\"loại khác\" cuối dòng — nay có phanConLai)."
     },
     {
       "ma": "85444294",
-      "ghiChu": "tenLoai \"Cáp điện\" + chatLieu plastic viTri CACH_DIEN + duongKinhLoi <= 5 mm. Khoá duongKinhLoi (đường kính MỖI lõi) chứ không phải duongKinh (đường kính ngoài) — đúng chữ \"mỗi lõi có đường kính\". \"không quá\" = <=. Xem 854442-LECH-TIEN-LE: đây là dòng TB-TCHQ lệch."
-    },
-    {
-      "ma": "85444295",
-      "ghiChu": "duongKinhLoi > 5 mm VÀ <= 19.5 mm (\"19,5\" dấu phẩy thập phân kiểu Việt ⇒ value 19.5; cổng 3 đọc được)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm\" ⇒ tenLoai \"Cáp điện\" + chatLieu plastic CACH_DIEN + duongKinhLoi <= 5 mm; .95 \"… trên 5 mm nhưng không quá 19,5 mm\" ⇒ duongKinhLoi > 5 và <= 19.5 mm."
     },
     {
       "ma": "85444296",
-      "ghiChu": "\"Cáp điện cách điện bằng plastic khác\" = ngoài .94/.95 (thực chất: lõi > 19,5 mm). Chữ \"khác\" cuối dòng không có khoá ⇒ chỉ ghi tenLoai + chatLieu; cổng 2 thấy .94/.96 và .95/.96 chồng lấn. KHÔNG tự thêm duongKinhLoi > 19.5: số 19,5 không có trong câu trích của .96 (cổng 3 sẽ chặn, và đó là suy luận không phải chữ). Chữ biểu không chồng lấn (\"khác\" = ngoài dòng trước) ⇒ CỐ Ý KHÔNG khai chongLanVanBan; để đỏ (giới hạn lược đồ)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Soạn lại sau PR #590: tax.85444296 \"Cáp điện cách điện bằng plastic khác\" ⇒ tenLoai \"Cáp điện\" + chatLieu plastic CACH_DIEN + phanConLai [\"85444294\",\"85444295\"] (\"khác\" = ngoài hai dòng plastic theo đường kính lõi; không tự ghi duongKinhLoi > 19.5 vì số đó không có trong chữ .96). .97 \"Cáp điện cách điện bằng cao su hoặc giấy\" ⇒ chatLieu [cao su, giấy] CACH_DIEN."
     },
     {
-      "ma": "85444297",
-      "ghiChu": "chatLieu LA [\"cao su\",\"giấy\"] viTri CACH_DIEN — \"cao su hoặc giấy\"."
+      "ma": "85444299",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ: 854442-01 TIEN_LE_THAY_CHU_BIEU (1709, 1710, 1711/TB-TCHQ: cáp sạc điện thoại lõi < 5 mm → .99 thay vì .94), 854442-02 và 854442-03 LECH_CHUA_PHAN_XU. Bản nháp theo CHỮ BIỂU (.94); bảng mang hiệu chỉnh, tầng hồ sơ (L1-5b) xét mục bảng có dieuKien trước."
+    },
+    {
+      "ma": "8544423",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Chưa khai chongLanVanBan, để cổng 2 đỏ cho người soát quyết: tiêu đề 8544423 \"Cáp ắc qui\" (theo TÊN) cạnh 8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" và 8544422 \"Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V\" (theo CÔNG DỤNG + điện áp) — chữ không loại trừ nhau (cáp ắc qui của thiết bị viễn thông thoả cả hai), sinh 12 cặp .13/.19/.23/.29 × .32/.33/.34/.39. Một nhánh chồng hai nhánh anh em khác trục — gần ca 392690/401699; không có TB-TCHQ/SEN/chú giải nêu thứ tự."
+    },
+    {
+      "ma": "85444232",
+      "loai": "DUNG",
+      "ghiChu": "cong2-qua-nhieu-to-hop .32/.33/.34/.39 × .94/.95/.96 (58.320 tổ hợp > giới hạn cổng) — giới hạn công cụ, không phải lỗi chữ; báo Claude."
     }
   ]
 }

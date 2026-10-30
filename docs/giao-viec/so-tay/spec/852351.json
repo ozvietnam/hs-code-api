@@ -1,0 +1,133 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "852351",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+  "dong8": {
+    "85235111": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy vi tính"
+        }
+      ]
+    },
+    "85235121": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy vi tính"
+        }
+      ]
+    },
+    "85235130": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phương tiện lưu trữ được định dạng riêng"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "85235191": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chứa phim điện ảnh"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "phim thời sự",
+            "phim du lịch",
+            "phim kỹ thuật",
+            "phim khoa học",
+            "phim tài liệu khác"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    },
+    "85235192": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "điện ảnh"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8523511": {
+      "dieuKienSo": [
+        {
+          "fact": "daGhi",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8523512": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tái tạo các hiện tượng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "âm thanh",
+            "hình ảnh"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8523511",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8523511 \"Loại chưa ghi\" ⇒ daGhi KHONG. Tầng anh em r15544 \"Loại khác:\" trần — không ghi điều kiện (máy phủ định: đã ghi)."
+    },
+    {
+      "ma": "85235111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85235111 / .21 \"Loại dùng cho máy vi tính\" ⇒ dungCho \"máy vi tính\"."
+    },
+    {
+      "ma": "8523512",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8523512 \"Loại để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh\" ⇒ congDung \"tái tạo các hiện tượng\" + congDung PHAI_KHONG [\"âm thanh\",\"hình ảnh\"] (vế \"trừ …\")."
+    },
+    {
+      "ma": "85235130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85235130 \"Loại khác, <vế>\": hai vế cách nhau bằng \";\" ⇒ HOAC: [congDung \"tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh\"] | [tenLoai \"phương tiện lưu trữ được định dạng riêng\"]. Phần \"được ghi ở dạng mã nhị phân … thông qua một máy xử lý dữ liệu tự động\" là cách mô tả, không thành điều kiện riêng (DE_TRONG); \"(đã ghi)\" đã được tầng r15544 (phủ định \"Loại chưa ghi\") bao."
+    },
+    {
+      "ma": "85235191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85235191 \"Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác\" ⇒ congDung \"chứa phim điện ảnh\" + congDung PHAI_KHONG [5 loại phim bị trừ]. tax.85235192 \"Loại khác, dùng cho điện ảnh\" ⇒ dungCho \"điện ảnh\" (chữ \"dùng cho\"). Hai dòng đều \"Loại khác, <vế>\" nên luật đi phủ định lẫn nhau; khoá khác nhau vì chữ khác nghĩa (chứa nội dung ↔ dùng cho) — ghi cùng khoá congDung thì bộ so âm tiết bỏ \"dùng cho\" và \"điện ảnh\" ⊂ \"chứa phim điện ảnh\" làm .91 không bao giờ tới được (cong2-dong-khong-toi-duoc)."
+    }
+  ]
+}
