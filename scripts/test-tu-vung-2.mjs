@@ -218,10 +218,12 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
 {
   const HC = require('../lib/ho-so/hieu-chinh.js');
   const bang = JSON.parse(fs.readFileSync('data/ho-so/hieu-chinh-tien-le.json', 'utf8'));
-  for (const id of ['853710-01', '853710-02', '853710-03']) {
-    const m = bang.muc.find((x) => x.id === id);
-    check(`${id}: factPhanBiet = ["daNapChuongTrinh"]`, JSON.stringify(m?.factPhanBiet) === '["daNapChuongTrinh"]', m?.factPhanBiet);
-  }
+  // GĐ soát #678: chỉ -02 (bảng mạch chưa nạp chương trình, TB 4040/1159) hỏi daNapChuongTrinh; -01 (bộ xử lý lập trình MSP430FR)
+  // hỏi khoá @1 coBoXuLyLapTrinh — đúng chữ 8537.10.12 "có trang bị bộ xử lý lập trình"; -03 (module LED, hai dòng cùng 15 %) không hỏi.
+  const fpb = (id) => bang.muc.find((x) => x.id === id)?.factPhanBiet;
+  check('853710-02: factPhanBiet = ["daNapChuongTrinh"]', JSON.stringify(fpb('853710-02')) === '["daNapChuongTrinh"]', fpb('853710-02'));
+  check('853710-01: factPhanBiet = ["coBoXuLyLapTrinh"] (khoá @1, chữ 8537.10.12)', JSON.stringify(fpb('853710-01')) === '["coBoXuLyLapTrinh"]' && T.layKhoa('coBoXuLyLapTrinh').nhanVi === 'có trang bị bộ xử lý lập trình', fpb('853710-01'));
+  check('853710-03: không có factPhanBiet (không chênh thuế, không dữ kiện phân biệt)', fpb('853710-03') === undefined, fpb('853710-03'));
   const kq = HC.kiemBang(bang);
   check('bảng hiệu chỉnh thật qua máy kiểm (factPhanBiet daNapChuongTrinh hợp lệ)', kq.hopLe && kq.loi.length === 0, kq.loi);
   const hong = clone(bang);
