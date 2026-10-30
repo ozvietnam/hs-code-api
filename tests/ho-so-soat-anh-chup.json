@@ -1,0 +1,2241 @@
+{
+ "ghiChu": "Phản hồi /api/declaration-check TRƯỚC L1-5e (cờ tắt, classify + LLM stub cố định). Chỉ dong/tongQuan/goiYChuyenGia. Không sửa tay.",
+ "kiemMa": {
+  "dong": [
+   {
+    "stt": 1,
+    "maHs": "96170010",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Kích thước trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
+      "goiYSua": "DxRxC mm/m | dùng cho…",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
+       "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
+       "điểm bộ chấm 69/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CANH_BAO",
+      "ma": "KHAC_DONG_8_SO",
+      "noiDung": "Mã khai 96170010 cùng phân nhóm, khác dòng 8 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
+      "goiYSua": "Đối chiếu chú giải và tiền lệ của 96170010 và 96170020 (gói căn cứ /api/evidence-pack).",
+      "basis": "LLM_ASSERTED",
+      "evidence": [
+       "mã khai 96170010",
+       "mã hệ thống chọn 96170020 (trạng thái RESOLVED_BY_LLM, độ tin 70)",
+       "lý do (AI): stub"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/classify",
+        "phienBan": "lib/classify.js"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/evidence-pack",
+        "phienBan": "evidence-pack@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 30%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0\"",
+       "xuất xứ khai CN",
+       "MFN 30",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "DAT",
+      "ma": "CO_LUU_Y_CHINH_SACH",
+      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "NOTICE: Cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=96170010",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 96"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ],
+    "girRulesApplied": [],
+    "canCuPhapLy": null,
+    "ketQuaPhanLoai": {
+     "status": "RESOLVED_BY_LLM",
+     "results": [
+      {
+       "hs": "96170020",
+       "confidence": 70
+      }
+     ]
+    }
+   },
+   {
+    "stt": 2,
+    "maHs": "96170010",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Kích thước trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
+      "goiYSua": "DxRxC mm/m | dùng cho…",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
+       "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
+       "điểm bộ chấm 69/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CANH_BAO",
+      "ma": "KHAC_DONG_8_SO",
+      "noiDung": "Mã khai 96170010 cùng phân nhóm, khác dòng 8 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
+      "goiYSua": "Đối chiếu chú giải và tiền lệ của 96170010 và 96170020 (gói căn cứ /api/evidence-pack).",
+      "basis": "LLM_ASSERTED",
+      "evidence": [
+       "mã khai 96170010",
+       "mã hệ thống chọn 96170020 (trạng thái RESOLVED_BY_LLM, độ tin 70)",
+       "lý do (AI): stub"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/classify",
+        "phienBan": "lib/classify.js"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/evidence-pack",
+        "phienBan": "evidence-pack@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 30%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0\"",
+       "xuất xứ khai CN",
+       "MFN 30",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "DAT",
+      "ma": "CO_LUU_Y_CHINH_SACH",
+      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "NOTICE: Cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=96170010",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 96"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ],
+    "girRulesApplied": [],
+    "canCuPhapLy": null,
+    "ketQuaPhanLoai": {
+     "status": "RESOLVED_BY_LLM",
+     "results": [
+      {
+       "hs": "96170020",
+       "confidence": 70
+      }
+     ]
+    }
+   },
+   {
+    "stt": 3,
+    "maHs": "96170010",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Kích thước trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
+      "goiYSua": "DxRxC mm/m | dùng cho…",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
+       "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
+       "điểm bộ chấm 69/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CANH_BAO",
+      "ma": "KHAC_DONG_8_SO",
+      "noiDung": "Mã khai 96170010 cùng phân nhóm, khác dòng 8 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
+      "goiYSua": "Đối chiếu chú giải và tiền lệ của 96170010 và 96170020 (gói căn cứ /api/evidence-pack).",
+      "basis": "LLM_ASSERTED",
+      "evidence": [
+       "mã khai 96170010",
+       "mã hệ thống chọn 96170020 (trạng thái RESOLVED_BY_LLM, độ tin 70)",
+       "lý do (AI): stub"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/classify",
+        "phienBan": "lib/classify.js"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/evidence-pack",
+        "phienBan": "evidence-pack@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 30%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0\"",
+       "xuất xứ khai CN",
+       "MFN 30",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "DAT",
+      "ma": "CO_LUU_Y_CHINH_SACH",
+      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "NOTICE: Cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=96170010",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 96"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ],
+    "girRulesApplied": [],
+    "canCuPhapLy": null,
+    "ketQuaPhanLoai": {
+     "status": "RESOLVED_BY_LLM",
+     "results": [
+      {
+       "hs": "96170020",
+       "confidence": 70
+      }
+     ]
+    }
+   },
+   {
+    "stt": 4,
+    "maHs": "85166090",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Điện áp trong mô tả ECUS; Chức năng thiết bị trong mô tả ECUS.",
+      "goiYSua": "V, kV | đun, sấy…",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_VOLTAGE: Nhóm 8516 — thiếu Điện áp trong mô tả ECUS",
+       "MISSING_APPLIANCEFUNCTION: Nhóm 8516 — thiếu Chức năng thiết bị trong mô tả ECUS",
+       "điểm bộ chấm 48/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CANH_BAO",
+      "ma": "KHAC_NHOM",
+      "noiDung": "Mã khai 85166090 khác nhóm 4 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
+      "goiYSua": "Đối chiếu chú giải và tiền lệ của 85166090 và 96170020 (gói căn cứ /api/evidence-pack).",
+      "basis": "LLM_ASSERTED",
+      "evidence": [
+       "mã khai 85166090",
+       "mã hệ thống chọn 96170020 (trạng thái RESOLVED_BY_LLM, độ tin 70)",
+       "lý do (AI): stub"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/classify",
+        "phienBan": "lib/classify.js"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/evidence-pack",
+        "phienBan": "evidence-pack@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#85166090",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 20%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0 (-BN, KH, TH)\"",
+       "xuất xứ khai CN",
+       "MFN 20",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#85166090",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CANH_BAO",
+      "ma": "CAN_KTCN_GIAY_PHEP",
+      "noiDung": "Mã có nghĩa vụ kiểm tra chuyên ngành / giấy phép theo dữ liệu chính sách, dòng chưa ghi giấy phép/KTCN đã có.",
+      "goiYSua": "Chuẩn bị giấy phép / đăng ký kiểm tra chuyên ngành trước khi đăng ký tờ khai, hoặc xác nhận hàng không thuộc diện.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "BLOCKING: Phải kiểm tra chất lượng nhà nước (rủi ro cao) — 36/2026/TT-BKHCN",
+       "BLOCKING: Phải công bố hợp quy (rủi ro trung bình) — 36/2026/TT-BKHCN",
+       "BLOCKING: Hàng hóa nhóm 2 (2711/QĐ-BKHCN 2022)",
+       "NOTICE: Có thể: cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)",
+       "thủ tục: KTCL"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=85166090",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 85"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ],
+    "girRulesApplied": [],
+    "canCuPhapLy": null,
+    "ketQuaPhanLoai": {
+     "status": "RESOLVED_BY_LLM",
+     "results": [
+      {
+       "hs": "96170020",
+       "confidence": 70
+      }
+     ]
+    }
+   },
+   {
+    "stt": 5,
+    "maHs": "85444299",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Vật liệu dẫn trong mô tả ECUS; Tiết diện trong mô tả ECUS; Điện áp trong mô tả ECUS; Chiều dài cáp trong mô tả ECUS; Kết nối trong mô tả ECUS.",
+      "goiYSua": "đồng, nhôm | mm² | V, kV | m",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_CONDUCTORMATERIAL: Nhóm 8544 — thiếu Vật liệu dẫn trong mô tả ECUS",
+       "MISSING_CROSSSECTION: Nhóm 8544 — thiếu Tiết diện trong mô tả ECUS",
+       "MISSING_VOLTAGE: Nhóm 8544 — thiếu Điện áp trong mô tả ECUS",
+       "MISSING_CABLELENGTH: Nhóm 8544 — thiếu Chiều dài cáp trong mô tả ECUS",
+       "MISSING_CONNECTIVITY: Nhóm 8544 — thiếu Kết nối trong mô tả ECUS",
+       "điểm bộ chấm 19/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CANH_BAO",
+      "ma": "KHAC_NHOM",
+      "noiDung": "Mã khai 85444299 khác nhóm 4 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
+      "goiYSua": "Đối chiếu chú giải và tiền lệ của 85444299 và 96170020 (gói căn cứ /api/evidence-pack).",
+      "basis": "LLM_ASSERTED",
+      "evidence": [
+       "mã khai 85444299",
+       "mã hệ thống chọn 96170020 (trạng thái RESOLVED_BY_LLM, độ tin 70)",
+       "lý do (AI): stub"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/classify",
+        "phienBan": "lib/classify.js"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/evidence-pack",
+        "phienBan": "evidence-pack@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#85444299",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 10%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0 (-KH, MY, PH, TH)\"",
+       "xuất xứ khai CN",
+       "MFN 10",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#85444299",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CANH_BAO",
+      "ma": "CAN_KTCN_GIAY_PHEP",
+      "noiDung": "Mã có nghĩa vụ kiểm tra chuyên ngành / giấy phép theo dữ liệu chính sách, dòng chưa ghi giấy phép/KTCN đã có.",
+      "goiYSua": "Chuẩn bị giấy phép / đăng ký kiểm tra chuyên ngành trước khi đăng ký tờ khai, hoặc xác nhận hàng không thuộc diện.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "BLOCKING: Phải công bố hợp quy (rủi ro trung bình) — 33/2026/TT-BCT",
+       "BLOCKING: Hàng hóa KTCN về chất lượng SP HH nhóm 2 (1182/QĐ-BCT-PL1-2021)",
+       "NOTICE: Có thể: cấm nhập khẩu — 11/2018/TT-BTTTT",
+       "thủ tục: KTCL"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=85444299",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 85"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ],
+    "girRulesApplied": [],
+    "canCuPhapLy": null,
+    "ketQuaPhanLoai": {
+     "status": "RESOLVED_BY_LLM",
+     "results": [
+      {
+       "hs": "96170020",
+       "confidence": 70
+      }
+     ]
+    }
+   }
+  ],
+  "tongQuan": {
+   "soDong": 5,
+   "soLoi": 0,
+   "soCanhBao": 12,
+   "soChuaKiem": 15,
+   "mucSanSang": "NEN_SUA"
+  },
+  "goiYChuyenGia": {
+   "nen": true,
+   "lyDo": [
+    "Dòng 1: chênh lệch thuế MFN giữa mã khai (30%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm.",
+    "Dòng 2: chênh lệch thuế MFN giữa mã khai (30%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm.",
+    "Dòng 3: chênh lệch thuế MFN giữa mã khai (30%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm.",
+    "Dòng 4: mã khai khác nhóm 4 số với mã hệ thống chọn.",
+    "Dòng 4: chênh lệch thuế MFN giữa mã khai (20%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm.",
+    "Dòng 5: mã khai khác nhóm 4 số với mã hệ thống chọn.",
+    "Dòng 5: chênh lệch thuế MFN giữa mã khai (10%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm."
+   ]
+  }
+ },
+ "khongKiemMa": {
+  "dong": [
+   {
+    "stt": 1,
+    "maHs": "96170010",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Kích thước trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
+      "goiYSua": "DxRxC mm/m | dùng cho…",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
+       "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
+       "điểm bộ chấm 69/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CHUA_KIEM",
+      "ma": "CHUA_KIEM_MA",
+      "noiDung": "Chưa kiểm mã HS khai có khớp mô tả không.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Kiểm mô tả ↔ mã HS bằng AI là công cụ riêng có thu phí (kiem_ma_to_khai, gửi kiemMa: true). Lượt này không gọi AI."
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 30%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0\"",
+       "xuất xứ khai CN",
+       "MFN 30",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "DAT",
+      "ma": "CO_LUU_Y_CHINH_SACH",
+      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "NOTICE: Cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=96170010",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 96"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "stt": 2,
+    "maHs": "96170010",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Kích thước trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
+      "goiYSua": "DxRxC mm/m | dùng cho…",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
+       "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
+       "điểm bộ chấm 69/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CHUA_KIEM",
+      "ma": "CHUA_KIEM_MA",
+      "noiDung": "Chưa kiểm mã HS khai có khớp mô tả không.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Kiểm mô tả ↔ mã HS bằng AI là công cụ riêng có thu phí (kiem_ma_to_khai, gửi kiemMa: true). Lượt này không gọi AI."
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 30%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0\"",
+       "xuất xứ khai CN",
+       "MFN 30",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "DAT",
+      "ma": "CO_LUU_Y_CHINH_SACH",
+      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "NOTICE: Cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=96170010",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 96"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "stt": 3,
+    "maHs": "96170010",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Kích thước trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
+      "goiYSua": "DxRxC mm/m | dùng cho…",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
+       "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
+       "điểm bộ chấm 69/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CHUA_KIEM",
+      "ma": "CHUA_KIEM_MA",
+      "noiDung": "Chưa kiểm mã HS khai có khớp mô tả không.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Kiểm mô tả ↔ mã HS bằng AI là công cụ riêng có thu phí (kiem_ma_to_khai, gửi kiemMa: true). Lượt này không gọi AI."
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 30%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0\"",
+       "xuất xứ khai CN",
+       "MFN 30",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#96170010",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "DAT",
+      "ma": "CO_LUU_Y_CHINH_SACH",
+      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "NOTICE: Cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=96170010",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 96"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "stt": 4,
+    "maHs": "85166090",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Điện áp trong mô tả ECUS; Chức năng thiết bị trong mô tả ECUS.",
+      "goiYSua": "V, kV | đun, sấy…",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_VOLTAGE: Nhóm 8516 — thiếu Điện áp trong mô tả ECUS",
+       "MISSING_APPLIANCEFUNCTION: Nhóm 8516 — thiếu Chức năng thiết bị trong mô tả ECUS",
+       "điểm bộ chấm 48/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CHUA_KIEM",
+      "ma": "CHUA_KIEM_MA",
+      "noiDung": "Chưa kiểm mã HS khai có khớp mô tả không.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Kiểm mô tả ↔ mã HS bằng AI là công cụ riêng có thu phí (kiem_ma_to_khai, gửi kiemMa: true). Lượt này không gọi AI."
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#85166090",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 20%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0 (-BN, KH, TH)\"",
+       "xuất xứ khai CN",
+       "MFN 20",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#85166090",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CANH_BAO",
+      "ma": "CAN_KTCN_GIAY_PHEP",
+      "noiDung": "Mã có nghĩa vụ kiểm tra chuyên ngành / giấy phép theo dữ liệu chính sách, dòng chưa ghi giấy phép/KTCN đã có.",
+      "goiYSua": "Chuẩn bị giấy phép / đăng ký kiểm tra chuyên ngành trước khi đăng ký tờ khai, hoặc xác nhận hàng không thuộc diện.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "BLOCKING: Phải kiểm tra chất lượng nhà nước (rủi ro cao) — 36/2026/TT-BKHCN",
+       "BLOCKING: Phải công bố hợp quy (rủi ro trung bình) — 36/2026/TT-BKHCN",
+       "BLOCKING: Hàng hóa nhóm 2 (2711/QĐ-BKHCN 2022)",
+       "NOTICE: Có thể: cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)",
+       "thủ tục: KTCL"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=85166090",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 85"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "stt": 5,
+    "maHs": "85444299",
+    "mucSanSang": "NEN_SUA",
+    "kiem": [
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
+      "ma": "THIEU_THONG_SO_THEO_NHOM",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Vật liệu dẫn trong mô tả ECUS; Tiết diện trong mô tả ECUS; Điện áp trong mô tả ECUS; Chiều dài cáp trong mô tả ECUS; Kết nối trong mô tả ECUS.",
+      "goiYSua": "đồng, nhôm | mm² | V, kV | m",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "MISSING_CONDUCTORMATERIAL: Nhóm 8544 — thiếu Vật liệu dẫn trong mô tả ECUS",
+       "MISSING_CROSSSECTION: Nhóm 8544 — thiếu Tiết diện trong mô tả ECUS",
+       "MISSING_VOLTAGE: Nhóm 8544 — thiếu Điện áp trong mô tả ECUS",
+       "MISSING_CABLELENGTH: Nhóm 8544 — thiếu Chiều dài cáp trong mô tả ECUS",
+       "MISSING_CONNECTIVITY: Nhóm 8544 — thiếu Kết nối trong mô tả ECUS",
+       "điểm bộ chấm 19/100 (REJECT)"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/heading-declaration-fields.json"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/chapter-declaration-fields.json"
+       }
+      ]
+     },
+     {
+      "nhom": "K2",
+      "trangThai": "CHUA_KIEM",
+      "ma": "CHUA_KIEM_MA",
+      "noiDung": "Chưa kiểm mã HS khai có khớp mô tả không.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Kiểm mô tả ↔ mã HS bằng AI là công cụ riêng có thu phí (kiem_ma_to_khai, gửi kiemMa: true). Lượt này không gọi AI."
+     },
+     {
+      "nhom": "K3",
+      "trangThai": "CHUA_KIEM",
+      "ma": "KHONG_KHAI_THUE_SUAT",
+      "noiDung": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#85444299",
+        "phienBan": "2026-01-01"
+       }
+      ],
+      "lyDoChuaKiem": "Dòng không có thuế suất nhập khẩu khai (thueSuatKhai.nk) nên không có gì để so với biểu thuế."
+     },
+     {
+      "nhom": "K4",
+      "trangThai": "DAT",
+      "ma": "CO_THE_HUONG_ACFTA",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 10%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "ACFTA trong biểu: \"0 (-KH, MY, PH, TH)\"",
+       "xuất xứ khai CN",
+       "MFN 10",
+       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "data/tax.json#85444299",
+        "phienBan": "2026-01-01"
+       },
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/acfta.js#acftaForOrigin"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CANH_BAO",
+      "ma": "CAN_KTCN_GIAY_PHEP",
+      "noiDung": "Mã có nghĩa vụ kiểm tra chuyên ngành / giấy phép theo dữ liệu chính sách, dòng chưa ghi giấy phép/KTCN đã có.",
+      "goiYSua": "Chuẩn bị giấy phép / đăng ký kiểm tra chuyên ngành trước khi đăng ký tờ khai, hoặc xác nhận hàng không thuộc diện.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "BLOCKING: Phải công bố hợp quy (rủi ro trung bình) — 33/2026/TT-BCT",
+       "BLOCKING: Hàng hóa KTCN về chất lượng SP HH nhóm 2 (1182/QĐ-BCT-PL1-2021)",
+       "NOTICE: Có thể: cấm nhập khẩu — 11/2018/TT-BTTTT",
+       "thủ tục: KTCL"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "/api/tax?hs=85444299",
+        "phienBan": "2026-01-01"
+       }
+      ]
+     },
+     {
+      "nhom": "K5",
+      "trangThai": "CHUA_KIEM",
+      "ma": "THEO_BAN_CHAT_HANG",
+      "noiDung": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "Nghĩa vụ theo bản chất hàng (nâng người, tiền chất, tiếp xúc thực phẩm…) chưa kiểm: chờ hs-code-api #243/#322."
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "DAT",
+      "ma": "TU_SUY_KHONG_THAY_BAT_THUONG",
+      "noiDung": "Phần tự suy từ dữ liệu khai (đơn giá, điều kiện giao hàng) không thấy bất thường.",
+      "basis": "DETERMINISTIC",
+      "evidence": [
+       "trị giá 500.00 USD FOB",
+       "số lượng 100 chiếc",
+       "đơn giá ≈ 5 USD/chiếc"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ]
+     },
+     {
+      "nhom": "K6",
+      "trangThai": "CHUA_KIEM",
+      "ma": "SO_GIA_THAM_CHIEU",
+      "noiDung": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm.",
+      "basis": "DETERMINISTIC",
+      "evidence": [],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-check.js#kiemK6",
+        "phienBan": "declaration-check@2026-10-17"
+       }
+      ],
+      "lyDoChuaKiem": "So với giá tham chiếu: hệ thống chưa có dữ liệu giá tham chiếu (Q5) nên luôn chưa kiểm."
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "KHONG_THAY_DAU_HIEU_THAO_ROI",
+      "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "chương 85"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ]
+     },
+     {
+      "nhom": "K7",
+      "trangThai": "DAT",
+      "ma": "TAI_LIEU_KY_THUAT_KHI_LAY_MAU",
+      "noiDung": "Khi cơ quan hải quan yêu cầu phân tích, phân loại: hồ sơ yêu cầu phân tích gồm tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (trường hợp không khai thác được trên hệ thống). Tài liệu này nên có sẵn trong hồ sơ giải trình (gợi ý của hệ thống).",
+      "goiYSua": "Chuẩn bị sẵn catalogue / TDS / MSDS / bản phân tích thành phần cho hàng dễ bị lấy mẫu.",
+      "basis": "RULE_TABLE",
+      "evidence": [
+       "Điều 10 khoản 1 điểm d 85/2026/TT-BTC: chỉ áp khi cơ quan hải quan yêu cầu phân tích, phân loại"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/legal-basis.js",
+        "phienBan": "85/2026/TT-BTC (Công báo số 409 ngày 18-07-2026)"
+       }
+      ],
+      "dieuKhoan": {
+       "10.1.d": {
+        "vanBan": "85/2026/TT-BTC",
+        "dieu": "10",
+        "khoan": "1",
+        "diem": "d",
+        "tham_chieu": "Điều 10 khoản 1 điểm d 85/2026/TT-BTC",
+        "trang": 8,
+        "trich": "Tài liệu kỹ thuật của hàng hóa hoặc bản phân tích thành phần sản phẩm (đối với trường hợp không khai thác được trên hệ thống)"
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "tongQuan": {
+   "soDong": 5,
+   "soLoi": 0,
+   "soCanhBao": 7,
+   "soChuaKiem": 20,
+   "mucSanSang": "NEN_SUA"
+  },
+  "goiYChuyenGia": {
+   "nen": false,
+   "lyDo": []
+  }
+ }
+}
