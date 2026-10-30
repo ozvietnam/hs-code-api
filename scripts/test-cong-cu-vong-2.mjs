@@ -104,5 +104,35 @@ const S = require('../lib/so-tay.js');
   check('6e phanConLai:false trên dòng "Loại khác" ⇒ vẫn cong0-phan-con-lai-thua', coLoi(C.kiemRanhGioi('950300', b2), 'cong0-phan-con-lai-thua:95030099'));
 }
 
+// ── 4. tenCuTheHon khi bên CHUNG còn giới hạn ở khoá khác (8409.91 "Bạc piston" ⊃ "Piston" + đường kính) ─────────────────
+const SO = (fact, op, value, donVi) => ({ fact, op, value, donVi });
+const DUNG = (v) => ({ fact: 'dungCho', op: 'CONG_DUNG', value: v });
+{
+  const F = (o) => DK.chuanDuKien(Object.entries(o).map(([fact, v]) => ({ fact, ...(typeof v === 'object' ? v : { giaTri: v }), nguon: 'KHACH', trangThai: 'DA_CO' })));
+  const piston = [TEN('Piston'), SO('duongKinh', '>=', 50, 'mm'), SO('duongKinh', '<=', 155, 'mm'), DUNG(['84.29', '84.30'])];
+  const bac = [TEN(['Bạc piston', 'chốt piston']), DUNG(['84.29', '84.30'])];
+  const f1 = F({ tenLoai: 'Bạc piston', duongKinh: { giaTri: 50, donVi: 'mm' }, dungCho: '84.29' });
+  check('4a "Bạc piston" (tên chứa trọn "Piston") thắng dòng "Piston" + giới hạn đường kính (khoá số, không phải trục tên khác)', DK.tenCuTheHon(piston, bac, f1) === -1 && DK.tenCuTheHon(bac, piston, f1) === 1);
+  // 853669: bên chung (tiêu đề "Đầu cắm và phích cắm cho cáp đồng trục và mạch in") giới hạn theo khoá chữ tự do dungCho —
+  // trục khác (nơi lắp), chữ biểu không loại trừ ⇒ vẫn không phân (chongLanVanBan đã khai, bản DUYET phải giữ xanh).
+  const dauCam = [TEN(['Đầu cắm', 'phích cắm']), DUNG(['cáp đồng trục', 'mạch in']), SO('dongDien', '<', 16, 'A')];
+  const phichDT = [TEN('Phích cắm điện thoại')];
+  const f2 = F({ tenLoai: 'Phích cắm điện thoại', dungCho: 'mạch in', dongDien: { giaTri: 10, donVi: 'A' } });
+  check('4b bên chung giới hạn bằng khoá chữ tự do (dungCho) ⇒ vẫn 0 (853669 không đổi)', DK.tenCuTheHon(dauCam, phichDT, f2) === 0 && DK.tenCuTheHon(phichDT, dauCam, f2) === 0);
+  // Tên không chứa trọn ⇒ không phân dù khoá số.
+  const f3 = F({ tenLoai: 'Piston chốt', duongKinh: { giaTri: 50, donVi: 'mm' }, dungCho: '84.29' });
+  check('4c không có quan hệ chứa trọn giữa hai tên khớp ⇒ 0', DK.tenCuTheHon(piston, [TEN('chốt piston'), DUNG(['84.29', '84.30'])], F({ tenLoai: 'Bạc', duongKinh: { giaTri: 50, donVi: 'mm' }, dungCho: '84.29' })) === 0 && f3.size === 3);
+  // Bên CỤ THỂ cũng giới hạn cùng khoá số mà rời nhau ⇒ hai dòng không cùng CO; tenCuTheHon không cần phân. Bên cụ thể có
+  // giới hạn số khác bên chung (cùng khoá) ⇒ khoá không phải "thêm" của riêng bên chung ⇒ như trước (đã thử bằng vector).
+  const bacD = [TEN('Bạc piston'), SO('duongKinh', '<', 50, 'mm'), DUNG(['84.29', '84.30'])];
+  check('4d bên cụ thể cũng giới hạn cùng khoá số ⇒ tên vẫn phân như trước (-1)', DK.tenCuTheHon(piston, bacD, F({ tenLoai: 'Bạc piston', duongKinh: { giaTri: 50, donVi: 'mm' }, dungCho: '84.29' })) === -1);
+  // Cổng 2 trên bản nháp rút gọn của 840991 (chỉ tiêu đề 8409911 + .16/.17/.18 có điều kiện — rẻ).
+  const b = suaNhap('840991');
+  const giu = new Set(['8409911', '84099116', '84099117', '84099118']);
+  for (const m of [...b.dong8, ...b.dieuKienNut]) if (!giu.has(m.hs || m.id)) { m.dieuKienSo = []; delete m.phanConLai; }
+  const r = C.kiemRanhGioi('840991', b);
+  check('4e cổng 2: .16 "Piston … 50–155 mm" + .18 "Bạc piston và chốt piston" không còn chồng lấn', !coLoi(r, 'cong2-chong-lan:84099116+84099118'), r.loi.filter((l) => l.startsWith('cong2')));
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
