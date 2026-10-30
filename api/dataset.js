@@ -55,7 +55,9 @@ module.exports = async function handler(req, res) {
   setCors(res);
   if (handleOptions(req, res)) return;
 
-  const resource = String(req.query.resource || '').trim();
+  const resourceGoc = String(req.query.resource || '').trim();
+  // Bí danh gạch nối → tên chuẩn (chuẩn hoá TRƯỚC kiểm quyền để quyền và định tuyến luôn khớp).
+  const resource = resourceGoc === 'rui-ro-phan-loai' ? 'rui_ro_phan_loai' : resourceGoc;
   // Allowlist tường minh trong lib/public-access.js — resource mới mặc định KÍN.
   if (requireAuthUnlessPublic(req, res, { endpoint: 'dataset', resource })) return;
   // Gói căn cứ soát/giải trình (#337): CHỈ POST, KÍN (khoá dịch vụ / HS_API_TOKEN), không gọi LLM.
@@ -379,6 +381,28 @@ module.exports = async function handler(req, res) {
         hs: key, total: list.length, daySuDu: !wco.incomplete(), ghiChu, banQuyen: wco.BAN_QUYEN,
         items: list.slice(0, full ? 20 : 100).map((o) => (full ? wco.view(o) : { hs: o.hs, thuTuTrongMa: o.ord, namThongQua: o.adoption || null, doTinCay: wco.doTinCay(o), xemToanVan: `/api/wco-opinions?hs=${o.hs}&n=${o.ord}` })),
         ...(full && list.length > 20 ? { conLai: list.length - 20 } : {}),
+      });
+    }
+
+    // Danh mục rủi ro phân loại QĐ 2079 (công khai từ 30/10/2026) — TÍN HIỆU, không phải căn cứ pháp lý.
+    if (resource === 'rui_ro_phan_loai') {
+      const rr = require('../lib/rui-ro-phan-loai');
+      const hs = String(req.query.hs || '').replace(/[\s.]/g, '');
+      if (!/^[0-9]{4,10}$/.test(hs)) {
+        return res.status(400).json({ error: 'Thiếu hoặc sai ?hs — cần mã 4–10 chữ số', example: '/api/rui-ro-phan-loai?hs=39231090' });
+      }
+      const [items, st] = await Promise.all([rr.tinHieuDanhMuc(hs), rr.trangThaiDanhMuc()]);
+      const trangThai = items.length ? 'CO_TIN_HIEU' : (st.trangThai === 'CO_DU_LIEU' ? 'KHONG_CO_TIN_HIEU' : 'CHUA_CO_DU_LIEU');
+      return res.status(200).json({
+        hs,
+        trangThai,
+        vanBan: 'QĐ 2079/QĐ-TCHQ — Danh mục rủi ro về phân loại hàng hóa',
+        phienBanMa: 'AHTN 2017',
+        nhan: rr.NHAN,
+        ghiChu: rr.GHI_CHU,
+        ...(trangThai === 'CHUA_CO_DU_LIEU' ? { ghiChuDuLieu: 'Máy chủ chưa nạp danh mục — không có kết quả KHÔNG có nghĩa là mã này không nằm trong danh mục.' } : {}),
+        total: items.length,
+        items,
       });
     }
 

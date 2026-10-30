@@ -3165,6 +3165,50 @@
         }
       }
     },
+    "/api/rui-ro-phan-loai": {
+      "get": {
+        "operationId": "dataset_rui_ro_phan_loai",
+        "summary": "Danh mục rủi ro về phân loại hàng hóa kèm QĐ 2079/QĐ-TCHQ (?hs=4–10 chữ số): các mã dễ nhầm với mã đã cho theo danh mục (AHTN 2017, bậc C). trangThai = CO_TIN_HIEU | KHONG_CO_TIN_HIEU | CHUA_CO_DU_LIEU (máy chủ chưa nạp danh mục — không kết luận được). Chỉ là TÍN HIỆU rủi ro, không phải căn cứ pháp lý (không bao giờ nằm trong canCuPhapLy/girRulesApplied)",
+        "description": "Rewrite tới /api/dataset?resource=rui_ro_phan_loai",
+        "tags": [
+          "Tra cứu"
+        ],
+        "security": [],
+        "parameters": [
+          {
+            "name": "hs",
+            "in": "query",
+            "required": false,
+            "description": "Lọc theo mã HS (nếu resource hỗ trợ)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thành công",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Lỗi máy chủ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/legal-status": {
       "get": {
         "operationId": "dataset_legal_status",

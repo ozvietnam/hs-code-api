@@ -50,7 +50,8 @@ Thêm, không thay: điều kiện cũ (fact snake_case như `duong_kinh`, op `<
 - Chỉ điều kiện **có kiểu** (bảng trên). Cổng 0 hình dạng/nhãn/quy trình; cổng 1 phủ kín theo luật đi tiêu đề có tên; cổng 2 không
   vector biên nào làm hai dòng cùng CO; cổng 3 trích nguyên văn đúng nút (mọi đoạn "…" kể cả đoạn ngắn, đúng thứ tự) + điều kiện khớp
   chữ (cực CO/KHONG, biên ≤/<).
-- Nhãn: nháp `AI_DA_KIEM`; chỉ `--duyet` của **phiên khác người soạn**, cổng xanh (và có bảng hiệu chỉnh tiền lệ nếu phân nhóm có cờ)
+- Nhãn: nháp `AI_DA_KIEM`; chỉ `--duyet` của **phiên khác người soạn**, cổng xanh (và bảng hiệu chỉnh tiền lệ có mục cho PN6 nếu
+  phân nhóm có cờ — #653: bảng đã có mục ⇒ chỉ cảnh báo `can-bang-hieu-chinh-tien-le-da-co`, có cờ mà chưa có mục ⇒ DỪNG)
   mới nâng `CLAUDE_DUYET`; sửa sau duyệt ⇒ cổng 0 đỏ. Chỉ bản DUYET được `--ap-dung` vào `data/so-tay/<nhóm>.json`.
 - Không ép qua cổng: không diễn đạt được bằng từ vựng, tiêu đề bị lược tên ⇒ để đỏ, ghi `ghiChuSoan`.
 - **Chữ biểu tự chồng lấn** (GĐ 30/10/2026; vd 9004.90.10 kính thuốc ↔ .50 kính bảo hộ): không bịa điều kiện tách. Khai cặp ở
@@ -76,12 +77,22 @@ Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRI
   coi là ngoài phân nhóm.
 - **Phần còn lại có tên** ("Động cơ khác", "Cáp … plastic khác", "…, loại khác"): `phanConLai: true` (phủ định mọi anh em ĐỨNG
   TRƯỚC) hoặc mảng mã anh em. Trích phải có chữ "khác". Không dùng trên dòng "Loại khác…". Máy cảnh báo `nghi-phan-con-lai`.
-- **Tên cụ thể hơn thắng** (`tenCuTheHon`): "bàn đạp" ⊃ "Bàn" không phải chồng lấn; bên còn ràng buộc trên khoá khác thì không phân.
+  Nội dung chỉ là "các loại khác" (cả phân nhóm cùng tên, vd 8501.10 r14839 "Động cơ khác, …") ⇒ `phanConLai` đứng một mình,
+  `dieuKienSo: []` (#653). "khác" không trỏ anh em đứng trước ⇒ `phanConLai: false` (khai rõ, tắt cảnh báo; luật đi như không ghi).
+- **Tên cụ thể hơn thắng** (`tenCuTheHon`): "bàn đạp" ⊃ "Bàn" không phải chồng lấn. Tên trên đường đi = HỢP âm tiết của các điều
+  kiện cùng khoá (tiêu đề "Búp bê" + dòng "Quần áo"). Bên còn ràng buộc chữ tự do trên khoá khác (dungCho/congDung — trục khác,
+  853669) thì không phân; bên CHUNG chỉ thêm giới hạn tất định (số, có-không, liệt kê, chất liệu: "Piston, đường kính 50–155 mm" ↔
+  "Bạc piston") thì tên chứa trọn vẫn thắng (#653).
+- **"dùng cho" có nghĩa**: bộ so âm tiết giữ "dùng cho"/"sử dụng cho" (không bỏ như hư từ): "dùng cho điện ảnh" không nằm trong
+  "chứa phim điện ảnh" (#653). "cho" đứng một mình vẫn bỏ.
 - **dungCho theo cấp mã HS**: "nhóm 87.11" thoả "Chương 87"; ngược lại chưa biết.
 - **HOẶC của các nhóm VÀ**: `{op: "HOAC", phuongAn: [[đk…], [đk…]]}` — ≥ 2 phương án, mọi vế là khoá tu-vung@1, không lồng, không
   `chieu`. Dùng khi mỗi vế của chữ biểu có ngưỡng riêng (9405.42.30, 8536505); KHÔNG gộp ngưỡng của một vế cho cả dòng.
+- **Vector biên** (#653): khoá `LIET_KE` có thêm một giá trị "ngoài mọi giá trị liệt kê" (dòng dưới "Loại khác" phủ định khoá liệt
+  kê tới được — 8501.10 kieuDongCoDien); nút trên/dưới cùng khoá chữ tự do được ghép giá trị "<dưới> <trên>" thoả cả hai. Vét cạn tới
+  100.000 tổ hợp mỗi cặp/tầng; vượt ⇒ lấy mẫu tất định, cảnh báo `cong1-/cong2-lay-mau`, `thongKe.layMau` (người soát biết).
 - **Điểm mù**: `cong2-dong-khong-toi-duoc` (LỖI — không vector nào tới dòng, xanh giả), `cong2-diem-mu` (cảnh báo — cùng khoá chữ
-  tự do ở nút trên/dưới), `cong3-bien-khong-doc-duoc` (cảnh báo — người soát đối chiếu biên tay), `cong3-trich-qua-dai` (LỖI —
+  tự do ở nút trên/dưới mà giá trị ghép không thoả được), `cong3-bien-khong-doc-duoc` (cảnh báo — người soát đối chiếu biên tay), `cong3-trich-qua-dai` (LỖI —
   mục có điều kiện mà trích > 300 ký tự).
 - **CHONG_LAN_VAN_BAN có máy chặn**: `lyDo` phải trích nguyên văn (ngoặc kép) chữ biểu của CẢ HAI nhánh rẽ
   (`cong3-chong-lan-thieu-trich`); một nhánh chồng ≥ 3 nhánh anh em = chồng lấn theo TRỤC (392690, 401699) ⇒ `cong2-chong-lan-truc`,

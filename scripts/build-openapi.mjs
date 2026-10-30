@@ -648,6 +648,7 @@ const DATASET_META = {
   attribute_synonyms: ['Từ điển nhãn thông số tiếng Trung → khóa chuẩn (dữ liệu mở CC BY 4.0)', '/api/attribute-synonyms'],
   ktcn_regime: ['Khung kiểm tra chuyên ngành 2026 (NĐ 37/2026, 3 mức rủi ro): danh mục mới từng bộ + căn cứ cũ đã bị thay', '/api/ktcn-regime'],
   demand: ['Nhu cầu bổ sung tri thức rút từ hàng thật (phiếu hồ sơ khai báo): mã HS chưa đối chiếu KTCN 2026, nhãn hiệu chưa theo dõi, chữ Trung từ điển chưa hiểu, ô hay thiếu — chỉ mức ưu tiên, không số lượng/tên hàng/khách (?days=90)', '/api/demand'],
+  rui_ro_phan_loai: ['Danh mục rủi ro về phân loại hàng hóa kèm QĐ 2079/QĐ-TCHQ (?hs=4–10 chữ số): các mã dễ nhầm với mã đã cho theo danh mục (AHTN 2017, bậc C). trangThai = CO_TIN_HIEU | KHONG_CO_TIN_HIEU | CHUA_CO_DU_LIEU (máy chủ chưa nạp danh mục — không kết luận được). Chỉ là TÍN HIỆU rủi ro, không phải căn cứ pháp lý (không bao giờ nằm trong canCuPhapLy/girRulesApplied)', '/api/rui-ro-phan-loai'],
   legal_status: ['Hiệu lực văn bản theo sổ đăng ký cộng đồng oz-wiki-plhq (?so=28/2026/TT-BCT,1182/QĐ-BCT); không tham số → văn bản thư viện lệch tình trạng với sổ', '/api/legal-status'],
 };
 

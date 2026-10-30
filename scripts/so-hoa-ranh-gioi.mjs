@@ -40,7 +40,8 @@ Spec (ranh-gioi-spec@1, JSON):
     "dieuKienNut": { "<id tiêu đề>": { "dieuKienSo": [...], "trich": "<lược bằng … nếu > 300 ký tự>" } },
     "chongLanVanBan": [ {"cap": ["<hsA>","<hsB>"], "lyDo": "… trích \\"chữ nhánh A\\" và \\"chữ nhánh B\\" …"} ],
     "ghiChuSoan": [ {"ma": "83022010", "loai": "QUYET_DINH", "ghiChu": "…"} ] }
-  Mục không ghi "trich"/"nguon" ⇒ máy chép nguyên văn chữ của chính mục. "phanConLai": true cho phần còn lại có tên ("… khác").
+  Mục không ghi "trich"/"nguon" ⇒ máy chép nguyên văn chữ của chính mục. "phanConLai": true cho phần còn lại có tên ("… khác")
+  — được đứng một mình ({"dieuKienSo": [], "phanConLai": true}); "phanConLai": false = chữ "khác" không phải phần còn lại.
   loai ghi chú: ${C.LOAI_GHI_CHU.join(' | ')}. Thiếu khoá tu-vung ⇒ để trống dieuKienSo + loai THIEU_KHOA_TU_VUNG (+ khoaDeXuat).
 
 Mã thoát: 0 xanh · 1 đỏ (sửa được) · 2 dùng sai lệnh/spec sai · 3 DỪNG (báo Claude).`;
@@ -154,7 +155,7 @@ if (args.help || args.h || !argv.length) {
   if (args.json) process.stdout.write(`${JSON.stringify(goi, null, 2)}\n`);
   else {
     for (const g of goi) {
-      console.log(`# ${g.pn6} — ${g.ten.vi || g.ten.wco || ''}${g.canHieuChinhTienLe ? '  [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — L1-4b: DỪNG, Claude giữ]' : ''}\n\n${g.cay}\n`);
+      console.log(`# ${g.pn6} — ${g.ten.vi || g.ten.wco || ''}${g.canHieuChinhTienLe ? (g.coHieuChinhTienLe ? '  [CÓ CỜ HIỆU CHỈNH TIỀN LỆ — bảng L1-4b đã có mục: soạn theo chữ biểu, ghi LECH_TIEN_LE trỏ mục bảng]' : '  [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ]') : ''}\n\n${g.cay}\n`);
       const coNut = g.tangKhongMa.filter((t) => t.trangThai !== 'KHONG_DAT');
       const khongDat = g.tangKhongMa.filter((t) => t.trangThai === 'KHONG_DAT');
       if (coNut.length) {

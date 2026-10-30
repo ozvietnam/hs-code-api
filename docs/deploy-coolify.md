@@ -102,10 +102,20 @@ Nghiệm thu: bắt đầu một lượt classify, gộp một commit nhỏ vào
 
 ⚠ **deploy-safe.sh còn đè cả `server.js` + `entrypoint.sh`** bằng lớp bọc ở `/opt/hs-code-api/deploy/` (viết 15/09, trước khi repo có `server.js` riêng). **Sự cố 09/10/2026:** #169 gỡ `vercel.json` → `routes.json`, lớp bọc vẫn đọc `vercel.json`, nuốt lỗi → **0 rewrite, mọi đường `/api/declaration-sheet`, `/api/demand`, `/api/precedents`… trả 404** trên prod ~25 phút (ERP không lập được phiếu). Đã vá lớp bọc đọc `routes.json` (dự phòng `vercel.json`, thiếu cả hai thì dừng hẳn) + `deploy-safe.sh main --force`. Việc đúng cho team: **bỏ dòng `cp -f "$DEPLOY"/server.js` trong deploy-safe.sh** để chạy `server.js` của repo (đã tương đương: rewrites + headers + public/ + timeout), chỉ giữ Dockerfile/entrypoint overlay; trước khi bỏ, so hai file một lần. Kiểm nhanh sau mỗi deploy: `docker logs hs-code-api | grep "rewrites"` và `POST /api/declaration-sheet` với `{}` phải **400** (404 = mất rewrite).
 
-## 6. Postgres cho hs-code-api (L0g, #545 — CEO chốt 29/10/2026)
+## 6. Postgres cho hs-code-api (L0g, #545 — CEO chốt 29/10/2026; QĐ 2079 công khai từ 30/10/2026)
 
 hs-code-api lần đầu có Postgres (`lib/db.js`, migration ở `db/migrations/`). Bảng đầu tiên là `rui_ro_phan_loai`
-(Danh mục rủi ro phân loại QĐ 2079 — tín hiệu **nội bộ**, không phải căn cứ pháp lý). Sau này L1-7a (phản hồi loại 5) dùng lại.
+(Danh mục rủi ro về phân loại hàng hóa kèm QĐ 2079/QĐ-TCHQ). Sau này L1-7a (phản hồi loại 5) dùng lại.
+
+**QĐ 2079 là văn bản nhà nước — CEO công khai 30/10/2026** (đảo quyết định 29/10 "chỉ nội bộ, không vào git"):
+- Mọi người gọi đều nhận tín hiệu (công khai, khoá `cong-oz`, khoá `erp`); tra trực tiếp không cần token:
+  `GET /api/rui-ro-phan-loai?hs=39231090` (= `/api/dataset?resource=rui_ro_phan_loai`, allowlist `lib/public-access.js`).
+- Nguồn chính là **bảng tĩnh trong git** `data/rui-ro-phan-loai/qd-2079.json` (chỉ đọc, versioned; tệp đến từ đợt nạp
+  oz-wiki-plhq). Postgres chỉ là nguồn **tuỳ chọn**; hai nguồn được gộp, bỏ trùng. Chưa có cả hai → phản hồi
+  `trangThai: "CHUA_CO_DU_LIEU"` (không kết luận được), không lỗi.
+- Vẫn chỉ là **tín hiệu rủi ro** (bản bên thứ ba đăng, bậc C, theo AHTN 2017), nhãn `QD_2079_BAC_C` (bí danh cũ
+  `QD_2079_BAC_C_NOI_BO` vẫn nhận qua `laNhanQd2079`): **không bao giờ** vào `canCuPhapLy` hay `girRulesApplied`.
+- Tín hiệu đếm từ kho tờ khai Oz (`MO_TA_GIONG_MA_KHAC`) **vẫn chỉ nội bộ** (`HS_INTERNAL_CALLERS`, `laNoiBoOz`).
 
 **Thiếu `HS_DATABASE_URL` thì service vẫn chạy như cũ** — tính năng dùng DB tự tắt, `GET /api/health` báo
 `checks.db: "CHUA_CAU_HINH"`. Vì vậy deploy mã trước, dựng DB sau, không cần làm cùng lúc. Gỡ biến = tắt lại.
@@ -161,8 +171,8 @@ Thêm vào `/opt/hs-code-api/hs.env` (máy .120; nếu sau này hs-code-api thà
 |---|---|
 | `HS_DATABASE_URL` | `postgres://hs_code_api:<mật-khẩu>@<host>:<cổng>/hs_code_api` — không bao giờ in ra log/phản hồi |
 | `HS_DATABASE_POOL_MAX` | tuỳ chọn, mặc định `5` kết nối |
-| `HS_INTERNAL_CALLERS` | tuỳ chọn, mặc định `erp` — tên khoá dịch vụ (trong `HS_SERVICE_TOKENS`) được nhận tín hiệu rủi ro nội bộ. **Không thêm `cong-oz`** (mã chặn cứng: Cổng phục vụ khách ngoài) |
-| `HS_QD2079_FILE` | tuỳ chọn, đường dẫn tệp QĐ 2079 **trong container** khi có tệp (mục 6.5) |
+| `HS_INTERNAL_CALLERS` | tuỳ chọn, mặc định `erp` — tên khoá dịch vụ (trong `HS_SERVICE_TOKENS`) được nhận tín hiệu đếm từ **kho tờ khai Oz** (vd `MO_TA_GIONG_MA_KHAC`). Không ảnh hưởng QĐ 2079 (công khai). **Không thêm `cong-oz`** (mã chặn cứng: Cổng phục vụ khách ngoài) |
+| `HS_QD2079_FILE` | tuỳ chọn, đường dẫn tệp QĐ 2079 khác để **nạp vào Postgres** (mục 6.5); mặc định bộ nạp dùng bảng tĩnh `data/rui-ro-phan-loai/qd-2079.json` |
 
 Rồi tạo lại container: `deploy-safe.sh main --force`.
 
@@ -177,21 +187,23 @@ curl -s https://hs-kb.uythacnhapkhau.com/api/health | jq .checks.db   # → "OK"
 
 Migration chỉ thêm (`CREATE … IF NOT EXISTS`), không xoá bảng/dữ liệu; mỗi tệp chạy trong một giao dịch.
 
-### 6.5. Nạp QĐ 2079 (khi CEO có tệp — hiện **chưa có**)
+### 6.5. Dữ liệu QĐ 2079 (khi CEO có tệp — hiện **chưa có**)
 
-Tệp là dữ liệu riêng (bản bên thứ ba): **không bao giờ để trong repo hay gửi vào git**. Định dạng: mảng JSON
-`[{ "maA": "3926.90.99", "maB": "3923.10.90", "tenHang": "...", "ghiChu": "..." }]` (mã 4–8 chữ số, dấu chấm được bỏ).
+Định dạng: mảng JSON `[{ "maA": "3926.90.99", "maB": "3923.10.90", "tenHang": "...", "ghiChu": "..." }]`, hoặc
+`{ "nguon": "...", "danhSach": [ ... ] }` (mã 4–8 chữ số, dấu chấm được bỏ; dòng sai bị bỏ qua). Không bịa dòng nào:
+tệp chỉ đến từ đợt nạp oz-wiki-plhq.
 
-1. Trên máy chủ: `mkdir -p /srv/hs-private && chmod 700 /srv/hs-private`, chép tệp vào `/srv/hs-private/qd-2079.json`, `chmod 600`.
-2. Gắn chỉ-đọc vào container: thêm `-v /srv/hs-private:/srv/hs-private:ro` vào `docker run` trong `deploy-safe.sh`,
-   đặt `HS_QD2079_FILE=/srv/hs-private/qd-2079.json` trong `hs.env`, `deploy-safe.sh main --force`.
-3. Kiểm thử không ghi: `docker exec hs-code-api node scripts/nap-qd2079.mjs --dry-run` → `dry-run doc=… hopLe=… loi=…`.
-4. Nạp thật: `docker exec hs-code-api node scripts/nap-qd2079.mjs` → `doc=… hopLe=… loi=… themMoi=… trung=…`.
-   Chạy lại an toàn (trùng thì bỏ qua). Script chỉ in số đếm + 16 ký tự đầu sha256, không in tên hàng.
-5. Ghi **số đếm** (không nội dung) vào issue #545. Kỳ vọng ≈ 896 cặp.
+**Cách chính — bảng tĩnh trong git (không cần DB):** commit tệp vào `data/rui-ro-phan-loai/qd-2079.json`, push `main`,
+deploy như thường. `lib/rui-ro-phan-loai.js` đọc thẳng (đọc lại khi tệp đổi). Kiểm:
+`curl -s 'https://hs-kb.uythacnhapkhau.com/api/rui-ro-phan-loai?hs=<mã có trong danh mục>' | jq .trangThai` → `"CO_TIN_HIEU"`.
 
-Script từ chối tệp nằm trong một cây git mà không bị `.gitignore` chặn. Chạy tại máy dev thì để tệp ở `data/private/`
-(đã ignore) hoặc ngoài repo.
+**Tuỳ chọn — chép vào Postgres** (khi đã dựng DB, vd muốn thêm bản cập nhật chưa vào git):
+
+1. Kiểm thử không ghi: `docker exec hs-code-api node scripts/nap-qd2079.mjs --dry-run` → `dry-run doc=… hopLe=… loi=…`
+   (mặc định đọc bảng tĩnh; tệp khác: `--file=<đường dẫn trong container>` hoặc `HS_QD2079_FILE`).
+2. Nạp thật: `docker exec hs-code-api node scripts/nap-qd2079.mjs` → `doc=… hopLe=… loi=… themMoi=… trung=…`.
+   Chạy lại an toàn (trùng thì bỏ qua). Script chỉ in số đếm + 16 ký tự đầu sha256.
+3. Ghi số đếm vào issue #545. Kỳ vọng ≈ 896 cặp.
 
 ### 6.6. Sao lưu + gỡ
 
