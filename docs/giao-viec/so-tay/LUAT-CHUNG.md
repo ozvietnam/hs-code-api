@@ -52,4 +52,10 @@ Thêm, không thay: điều kiện cũ (fact snake_case như `duong_kinh`, op `<
   chữ (cực CO/KHONG, biên ≤/<).
 - Nhãn: nháp `AI_DA_KIEM`; chỉ `--duyet` của **phiên khác người soạn**, cổng xanh (và có bảng hiệu chỉnh tiền lệ nếu phân nhóm có cờ)
   mới nâng `CLAUDE_DUYET`; sửa sau duyệt ⇒ cổng 0 đỏ. Chỉ bản DUYET được `--ap-dung` vào `data/so-tay/<nhóm>.json`.
-- Không ép qua cổng: không diễn đạt được bằng từ vựng, chữ biểu chồng lấn, tiêu đề bị lược tên ⇒ để đỏ, ghi `ghiChuSoan`.
+- Không ép qua cổng: không diễn đạt được bằng từ vựng, tiêu đề bị lược tên ⇒ để đỏ, ghi `ghiChuSoan`.
+- **Chữ biểu tự chồng lấn** (GĐ 30/10/2026; vd 9004.90.10 kính thuốc ↔ .50 kính bảo hộ): không bịa điều kiện tách. Khai cặp ở
+  `chongLanVanBan: [{cap: [hsA, hsB], lyDo}]` ⇒ cổng 2 hạ lỗi của đúng cặp đó thành cảnh báo `cong2-chong-lan-van-ban`; khai cặp
+  không chồng lấn ⇒ đỏ `cong2-chong-lan-van-ban-thua`. Thứ tự ưu tiên (`uuTien`) chỉ khi trích được căn cứ (TB-TCHQ trong
+  `precedents.json`, SEN/chú giải, GIR qua `lib/gir.js`) — chưa có lược đồ máy, ghi `ghiChuSoan`. Lúc chạy cặp này **không bao giờ tự
+  chốt** (chotDong8 trả `TRANH_CAP`; `apDung` mang dấu `chongLanVanBan {voi, lyDo}` sang hai dòng sổ tay cho tầng hồ sơ trả
+  `CANH_BAO` + `cauHoi`).

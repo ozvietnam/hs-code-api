@@ -214,5 +214,40 @@ function nhap853641() {
   check('9c CLI --kiem phân nhóm chưa có bản nháp → mã thoát ≠ 0', code !== 0);
 }
 
+// ── 10. Chồng lấn do CHÍNH chữ biểu (CHONG_LAN_VAN_BAN, GĐ 30/10): khai có lý do ⇒ cảnh báo, không lỗi; không bao giờ tự chốt ─
+{
+  const CL = (cap, lyDo = 'Chữ biểu .10 (tên loại) và .20 (công dụng) không loại trừ nhau; không có căn cứ thứ tự.') => ({ cap, lyDo });
+  const coCanh = (r, tien) => r.canhBao.some((l) => l.startsWith(tien));
+  const b = nhap853641(); b.chongLanVanBan = [CL(['85364110', '85364120'])];
+  const r = C.kiemRanhGioi('853641', b);
+  check('10a cặp khai CHONG_LAN_VAN_BAN có lý do → không còn lỗi cong2-chong-lan của cặp đó', !coLoi(r, 'cong2-chong-lan:85364110+85364120'), r.loi);
+  check('10b … mà thành cảnh báo cong2-chong-lan-van-ban:85364110+85364120 (kèm vector)', coCanh(r, 'cong2-chong-lan-van-ban:85364110+85364120:'), r.canhBao);
+  check('10c cặp chồng lấn KHÔNG khai vẫn là lỗi (85364110+85364130)', coLoi(r, 'cong2-chong-lan:85364110+85364130') && r.hopLe === false, r.loi);
+  const b2 = nhap853641(); b2.chongLanVanBan = [CL(['85364120', '85364110']), CL(['85364110', '85364130'], 'Rơ le kỹ thuật số dùng cho quạt điện: chữ biểu không loại trừ.')];
+  const r2 = C.kiemRanhGioi('853641', b2);
+  check('10d khai đủ mọi cặp chồng lấn (thứ tự cặp tuỳ ý) → hopLe, chỉ còn cảnh báo', r2.hopLe === true && r2.loi.length === 0 && r2.canhBao.filter((l) => l.startsWith('cong2-chong-lan-van-ban:')).length === 2, r2.loi);
+  const b3 = nhap853641(); b3.chongLanVanBan = [{ cap: ['85364110', '85364120'] }];
+  check('10e thiếu lyDo → cong0-chong-lan-thieu-ly-do (không được khai suông)', coLoi(C.kiemRanhGioi('853641', b3), 'cong0-chong-lan-thieu-ly-do:85364110+85364120'));
+  const b4 = nhap853641(); b4.chongLanVanBan = [CL(['85364110', '85364990'])];
+  check('10f cặp có mã ngoài phân nhóm → cong0-chong-lan-ngoai-phan-nhom', coLoi(C.kiemRanhGioi('853641', b4), 'cong0-chong-lan-ngoai-phan-nhom:85364990'));
+  const b5 = nhap853641(); b5.chongLanVanBan = [CL(['85364110', '85364110'])];
+  check('10g cặp một mã lặp → cong0-chong-lan-hinh-dang', coLoi(C.kiemRanhGioi('853641', b5), 'cong0-chong-lan-hinh-dang'));
+  const b6 = nhap853641(); b6.chongLanVanBan = [CL(['85364110', '85364120']), CL(['85364120', '85364110'])];
+  check('10h khai trùng cặp → cong0-chong-lan-trung', coLoi(C.kiemRanhGioi('853641', b6), 'cong0-chong-lan-trung:85364110+85364120'));
+  const b7 = nhap853641(); b7.chongLanVanBan = [CL(['85364120', '85364130'])];
+  check('10i khai cặp KHÔNG chồng lấn → cong2-chong-lan-van-ban-thua (nhãn phải đúng sự thật)', coLoi(C.kiemRanhGioi('853641', b7), 'cong2-chong-lan-van-ban-thua:85364120+85364130'));
+  check('10j băm không đổi với bản không khai (mảng rỗng = không có)', C.bamRanhGioi(nhap853641()) === C.bamRanhGioi({ ...nhap853641(), chongLanVanBan: [] }));
+  const ok = C.duyet(b2, { phien: 'phien-soat-B', ngay: '2026-10-31' });
+  check('10k bản có cặp CHONG_LAN_VAN_BAN khai đủ vẫn duyệt được (cảnh báo không chặn)', ok.trangThai === 'DUYET' && C.kiemRanhGioi('853641', ok).hopLe === true);
+  const go = clone(ok); go.chongLanVanBan = go.chongLanVanBan.slice(0, 1);
+  check('10l sửa danh sách CHONG_LAN_VAN_BAN sau duyệt → cong0-sua-sau-duyet', coLoi(C.kiemRanhGioi('853641', go), 'cong0-sua-sau-duyet'));
+  const soTay = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/so-tay/8536.json'), 'utf8'));
+  const moi = C.apDung(ok, soTay);
+  const d10 = moi.dong8.find((d) => d.hs === '85364110'); const d20 = moi.dong8.find((d) => d.hs === '85364120');
+  check('10m áp vào sổ tay mang dấu CHONG_LAN_VAN_BAN sang CẢ HAI dòng (runtime không tự chốt cặp này)',
+    d10.chongLanVanBan?.some((x) => x.voi === '85364120' && x.lyDo) && d20.chongLanVanBan?.some((x) => x.voi === '85364110'), { d10: d10.chongLanVanBan, d20: d20.chongLanVanBan });
+  check('10n mục mang dấu chồng lấn vẫn qua checkItem của sổ tay', S.checkItem('dong8', d10, S.sourcesFor('8536'), '8536') === null);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
