@@ -1,0 +1,212 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "853669",
+  "nhom": "8536",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#agent-B-lo-A",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8536692",
+      "nguon": "tieuDe.8536692",
+      "trich": "8536692 Đầu cắm tín hiệu hình/tiếng và đầu cắm ống đèn tia ca-tốt dùng cho máy thu hình hoặc máy thu thanh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Đầu cắm tín hiệu hình/tiếng",
+            "đầu cắm ống đèn tia ca-tốt"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy thu hình",
+            "máy thu thanh"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8536693",
+      "nguon": "tieuDe.8536693",
+      "trich": "8536693 Đầu cắm và phích cắm cho cáp đồng trục và mạch in",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Đầu cắm",
+            "phích cắm"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "cáp đồng trục",
+            "mạch in"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85366910",
+      "nguon": "tax.85366910",
+      "trich": "85366910 - - - Phích cắm điện thoại",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Phích cắm điện thoại"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85366923",
+      "nguon": "tax.85366923",
+      "trich": "85366923 - - - - Dòng điện không quá 1,5 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85366924",
+      "nguon": "tax.85366924",
+      "trich": "85366924 - - - - Dòng điện trên 1,5 A nhưng dưới 16 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": ">",
+          "value": 1.5,
+          "donVi": "A"
+        },
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85366929",
+      "nguon": "tax.85366929",
+      "trich": "85366929 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85366932",
+      "nguon": "tax.85366932",
+      "trich": "85366932 - - - - Dòng điện dưới 16 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85366939",
+      "nguon": "tax.85366939",
+      "trich": "85366939 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85366992",
+      "nguon": "tax.85366992",
+      "trich": "85366992 - - - - Dòng điện dưới 16 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85366999",
+      "nguon": "tax.85366999",
+      "trich": "85366999 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "mau",
+      "ghiChu": "MẪU \"tiêu đề có tên (dieuKienNut) + ngưỡng số + Loại khác nhiều tầng\". Cây: .10 + ba tiêu đề 7 số: 8536692 và 8536693 có tên ⇒ ghi dieuKienNut (nguồn tieuDe.<id> = tên nguyên văn biểu Tổng cục); 8536699 \"Loại khác\" trần ⇒ KHÔNG ghi (máy phủ định .10/8536692/8536693 cho các dòng dưới nó). Dòng \"Loại khác\" trần .29/.39/.99 không ghi điều kiện. Cổng 1 kiểm mọi tầng: tầng nào có con LK trần thì không cần phủ kín."
+    },
+    {
+      "ma": "8536692",
+      "ghiChu": "Nguồn tieuDe.8536692. Tên = (đầu cắm tín hiệu hình/tiếng HOẶC đầu cắm ống đèn tia ca-tốt) VÀ dùng cho (máy thu hình HOẶC máy thu thanh) ⇒ hai điều kiện: tenLoai TEN_LOAI [2 giá trị] + dungCho CONG_DUNG [2 giá trị]. Câu đọc hợp lý nhất: \"dùng cho máy thu hình hoặc máy thu thanh\" bổ nghĩa cho cả hai loại đầu cắm. Giá trị chép đúng chữ (dấu \"/\" và \"-\" bị máy bỏ khi so)."
+    },
+    {
+      "ma": "8536693",
+      "ghiChu": "Nguồn tieuDe.8536693. \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\" ⇒ tenLoai [\"Đầu cắm\",\"phích cắm\"] + dungCho [\"cáp đồng trục\",\"mạch in\"] (\"và\" ở đây liệt kê các loại hàng được gồm vào, nên ghi là mảng = hoặc, không phải hai điều kiện VÀ). Giới hạn của máy: tiêu đề 8536692 và 8536693 cùng dùng khoá dungCho; vector biên chỉ mang một giá trị dungCho nên cổng 2 không thử được hàng \"đầu cắm tín hiệu hình/tiếng cho máy thu hình, lắp trên mạch in\" — người soát xét tay; theo chữ, đó là chồng lấn văn bản tiềm năng chưa khai vì máy không sinh được vector."
+    },
+    {
+      "ma": "85366910",
+      "ghiChu": "Nguồn tax.85366910. \"Phích cắm điện thoại\" ⇒ tenLoai \"Phích cắm điện thoại\" (một giá trị trọn cụm; không rút gọn thành \"phích cắm\" vì sẽ suy rộng). Chồng lấn với nhánh 8536693 đã khai ở chongLanVanBan."
+    },
+    {
+      "ma": "85366923",
+      "ghiChu": "Nguồn tax.85366923. \"không quá 1,5 A\" ⇒ dongDien <= 1.5 A (value số thập phân dùng dấu chấm trong JSON; máy nhận \"1,5\" trong trích)."
+    },
+    {
+      "ma": "85366924",
+      "ghiChu": "Nguồn tax.85366924. \"trên 1,5 A nhưng dưới 16 A\" ⇒ hai điều kiện cùng khoá: dongDien > 1.5 A VÀ dongDien < 16 A. Biên 1,5 A khớp .23 (<=) nên không lỗ hổng/không chồng; từ 16 A trở lên rơi về .29 \"Loại khác\"."
+    },
+    {
+      "ma": "85366932",
+      "ghiChu": "Nguồn tax.85366932. \"Dòng điện dưới 16 A\" ⇒ dongDien < 16 A. Điều kiện tiêu đề cha 8536693 do máy ghép theo đường đi, không chép lại vào dòng."
+    },
+    {
+      "ma": "85366992",
+      "ghiChu": "Nguồn tax.85366992, dưới tiêu đề 8536699 \"Loại khác\" trần. \"Dòng điện dưới 16 A\" ⇒ dongDien < 16 A; phần \"không thuộc .10/8536692/8536693\" do máy phủ định."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "85366910",
+        "85366932"
+      ],
+      "lyDo": "Chữ biểu: .10 \"Phích cắm điện thoại\" (theo LOẠI phích) và tiêu đề 8536693 \"Đầu cắm và phích cắm cho cáp đồng trục và mạch in\" (theo NƠI LẮP) không loại trừ nhau — phích cắm điện thoại lắp trên mạch in thoả cả hai. Không có câu nào trong biểu/SEN/chú giải nhóm 85.36 nói thứ tự; TB-TCHQ trong precedents.json (4786, 330, 329, 328/TB-TCHQ → 85366932: đầu nối bo mạch điện thoại) xếp đầu nối mạch in vào .32 nhưng không phân xử với .10 ⇒ không ghi uuTien."
+    },
+    {
+      "cap": [
+        "85366910",
+        "85366939"
+      ],
+      "lyDo": "Cùng lý do cặp .10/.32, nhánh dòng điện ≥ 16 A (85366939 \"Loại khác\" dưới tiêu đề 8536693)."
+    }
+  ]
+}
