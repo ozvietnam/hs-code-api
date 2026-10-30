@@ -1,0 +1,105 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841350",
+  "nhom": "8413",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "DUYET",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q",
+    "ngay": "2026-10-30"
+  },
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+    "ngay": "2026-10-30",
+    "ghiChu": "L1-4c đợt 1: tiêu đề 8413503 'Bơm nước… không quá 8.000 m³/h' = Bơm nước + <=8000; .31/.32 điện CO/KHONG; .40 >8000 và <=13000; .90 Loại khác trần; không TB-TCHQ 841350xx.",
+    "bam": "5cbc975fecae0374e54f1e2dd0e908770f0c4d4fd75da743500050e039cf83c8"
+  },
+  "dieuKienNut": [
+    {
+      "id": "8413503",
+      "nguon": "tieuDe.8413503",
+      "trich": "8413503 Bơm nước, với lưu lượng không quá 8.000 m³/h",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m³/h"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84135031",
+      "nguon": "tax.84135031",
+      "trich": "84135031 - - - Hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "84135032",
+      "nguon": "tax.84135032",
+      "trich": "84135032 - - - Không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "84135040",
+      "nguon": "tax.84135040",
+      "trich": "84135040 - - Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 8000,
+          "donVi": "m³/h"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 13000,
+          "donVi": "m³/h"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "84135090",
+      "nguon": "tax.84135090",
+      "trich": "84135090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8413503",
+      "ghiChu": "\"Bơm nước\" là so chữ tự do (TEN_LOAI) — không tất định; tu-vung@1 chưa có khoá loại chất lỏng bơm."
+    }
+  ]
+}

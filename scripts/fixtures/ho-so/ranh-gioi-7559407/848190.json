@@ -1,0 +1,270 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "848190",
+  "nhom": "8481",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "TRA_VE",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8481902",
+      "nguon": "tieuDe.8481902",
+      "trich": "8481902 Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "vòi",
+            "van"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "săm",
+            "lốp không săm"
+          ],
+          "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8481903",
+      "nguon": "tieuDe.8481903",
+      "trich": "8481903 Thân hoặc đầu van của săm hoặc lốp không săm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân",
+            "đầu van"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "săm",
+            "lốp không săm"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8481904",
+      "nguon": "tieuDe.8481904",
+      "trich": "8481904 Lõi van của săm hoặc lốp không săm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lõi van"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "săm",
+            "lốp không săm"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84819010",
+      "nguon": "tax.84819010",
+      "trich": "84819010 - - Vỏ của van cổng hoặc van cống có đường kính trong cửa nạp hoặc cửa thoát trên 50 mm nhưng không quá 400 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vỏ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "van cổng",
+            "van cống"
+          ]
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84819021",
+      "nguon": "tax.84819021",
+      "trich": "84819021 - - - Thân, dùng cho vòi nước",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thân"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "vòi nước"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84819022",
+      "nguon": "tax.84819022",
+      "trich": "84819022 - - - Thân, dùng cho van xi lanh khí dầu mỏ hoá lỏng (LPG) ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thân"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "van xi lanh khí dầu mỏ hoá lỏng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84819023",
+      "nguon": "tax.84819023",
+      "trich": "84819023 - - - Thân, loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thân"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84819029",
+      "nguon": "tax.84819029",
+      "trich": "84819029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84819031",
+      "nguon": "tax.84819031",
+      "trich": "84819031 - - - Bằng đồng hoặc hợp kim đồng",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84819039",
+      "nguon": "tax.84819039",
+      "trich": "84819039 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84819041",
+      "nguon": "tax.84819041",
+      "trich": "84819041 - - - Bằng đồng hoặc hợp kim đồng",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84819049",
+      "nguon": "tax.84819049",
+      "trich": "84819049 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84819090",
+      "nguon": "tax.84819090",
+      "trich": "84819090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84819010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84819010 \"Vỏ của van cổng hoặc van cống có đường kính trong cửa nạp hoặc cửa thoát trên 50 mm nhưng không quá 400 mm\" ⇒ tenLoai \"Vỏ\" + dungCho [\"van cổng\",\"van cống\"] + duongKinhTrong > 50 mm, <= 400 mm."
+    },
+    {
+      "ma": "8481902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8481902 \"Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống\" ⇒ dungCho [\"vòi\",\"van\"] + dungCho PHAI_KHONG [\"săm\",\"lốp không săm\"] (vế \"trừ …\") + duongKinhTrong <= 25 mm (\"từ 25 mm trở xuống\" = <=). Vế \"và các thiết bị tương tự\" không liệt kê được — DE_TRONG."
+    },
+    {
+      "ma": "84819021",
+      "loai": "QUYET_DINH",
+      "ghiChu": ".21 \"Thân, dùng cho vòi nước\" ⇒ tenLoai \"Thân\" + dungCho \"vòi nước\"; .22 \"Thân, dùng cho van xi lanh khí dầu mỏ hoá lỏng (LPG)\" ⇒ tenLoai \"Thân\" + dungCho \"van xi lanh khí dầu mỏ hoá lỏng\"; .23 \"Thân, loại khác\" ⇒ tenLoai \"Thân\" + phanConLai: true (phần còn lại có tên)."
+    },
+    {
+      "ma": "8481903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8481903 \"Thân hoặc đầu van của săm hoặc lốp không săm\" ⇒ tenLoai [\"Thân\",\"đầu van\"] + dungCho [\"săm\",\"lốp không săm\"]; tieuDe.8481904 \"Lõi van của săm hoặc lốp không săm\" ⇒ tenLoai \"Lõi van\" + cùng dungCho. Dòng con \"Bằng đồng hoặc hợp kim đồng\" ⇒ chatLieu LA \"đồng\"."
+    },
+    {
+      "ma": "84819023",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ 848190-01 LECH_CHUA_PHAN_XU (4006/TB-TCHQ: thân van điều khiển khí nạp → .90, không ghi đường kính trong). Bản nháp theo CHỮ BIỂU (.23 khi thân van của van có đường kính trong ≤ 25 mm); bảng mang chỗ lệch."
+    },
+    {
+      "ma": "8481902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "cong3-bien-khong-doc-duoc:8481902:duongKinhTrong — đã đối chiếu tay: \"có đường kính trong từ 25 mm trở xuống\" ⇒ <= 25 mm."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
+      "ngay": "2026-10-30",
+      "lyDo": "848190.json:dieuKienNut[8481902] THU HẸP: chữ \"Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống\" — điều kiện dương dungCho [\"vòi\",\"van\"] bỏ vế mở \"và các thiết bị tương tự\" (bản nháp tự ghi DE_TRONG) ⇒ bộ phận của thiết bị tương tự (≤ 25 mm) bị đẩy sang .90 (0%) thay vì .23/.29 (3%). Nhóm 84.81 vốn chỉ gồm vòi, van và thiết bị tương tự, nên vế dungCho dương không phân biệt được gì mà chỉ thu hẹp: giữ PHAI_KHONG săm/lốp + duongKinhTrong <= 25 mm là đủ nghĩa. Bảng 848190-01 LECH_CHUA_PHAN_XU giữ nguyên."
+    }
+  ]
+}
