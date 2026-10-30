@@ -199,7 +199,8 @@ check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ng
   cd = chotDong8({ hs: '84145199', productText: 'Quạt treo tường có lưới bảo vệ, công suất 45W' });
   check('L1-3b chotDong8: quạt treo tường có lưới → CHOT 84145191', cd.ketQua === 'CHOT' && cd.hs === '84145191', JSON.stringify(cd));
   cd = chotDong8({ hs: '84145191', productText: 'Quạt treo tường không có lưới bảo vệ' });
-  check('L1-3b chotDong8: không lưới, không phải quạt bàn → LOAI_KHAC 84145199', cd.ketQua === 'LOAI_KHAC' && cd.hs === '84145199', JSON.stringify(cd));
+  check('L1-3b chotDong8: không lưới, tên loại chỉ so chữ (không tất định) → KHONG_THE_CHOT, không hỏi lại tên', cd.ketQua === 'KHONG_THE_CHOT' && cd.lyDo === 'ranh-gioi-so-chu-khong-tat-dinh', JSON.stringify(cd));
+  check('L1-3b danhGiaDong: TEN_LOAI so chữ → CHUA_BIET kèm soChu (không làm căn cứ chốt)', (() => { const x = danhGiaDong({ hs: '84145110', dieuKienSo: [{ fact: 'tenLoai', op: 'TEN_LOAI', value: ['quạt bàn'] }] }, 'Quạt treo tường'); return x.trangThai === 'CHUA_BIET' && x.chiTiet[0].soChu === 'TRAI' && x.chiTiet[0].khongTatDinh === true; })());
   cd = chotDong8({ hs: '84145199', productText: 'Quạt treo tường' });
   check('L1-3b chotDong8: thiếu dữ kiện lưới → THIEU_SO_LIEU + câu hỏi tu-vung', cd.ketQua === 'THIEU_SO_LIEU' && cd.missingFacts?.some((m) => m.fact === 'coLuoiBaoVe' && /lưới/.test(m.cauHoi || '')), JSON.stringify(cd));
   const tv2 = trangThaiDong8({ hs: '84145191', productText: 'Quạt treo tường không có lưới bảo vệ' });

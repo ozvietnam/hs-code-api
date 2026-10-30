@@ -25,3 +25,20 @@
 ## Quyết định đã đúc từ các vòng trước (không mở lại)
 
 - **Không lô nào được gộp nếu chưa qua bước soát độc lập** — máy kiểm chỉ chứng minh câu trích có thật trong nguồn, không chứng minh nó nói đúng điều mục khẳng định (vòng 2 xoá 325 + sửa 95 trên ~1.300 mục; vòng 1 soát lại xoá 262 + sửa 281).
+
+## `dieuKienSo` có kiểu theo `tu-vung@1` (30/10/2026, #573 — plan L1-3b)
+
+Thêm, không thay: điều kiện cũ (fact snake_case như `duong_kinh`, op `<=`/`LA`/`HOAC`) giữ nguyên. Điều kiện **có kiểu** khi `fact` là khoá của `data/tu-vung/tu-vung@1.json`; lược đồ và máy kiểm ở `lib/dieu-kien-so.js`.
+
+| Kiểu khoá | Điều kiện | Trích phải có |
+|---|---|---|
+| `SO` | `{fact, op: <=\|<\|>=\|>, value, donVi}` (đơn vị cùng hệ của khoá) | số + đơn vị (nhận "1.000", "19,5") |
+| `CO_KHONG` | `{fact, op: CO\|KHONG}` | một mẫu `cachDoc` của khoá |
+| `LIET_KE` | `{fact, op: TRONG, value: [..]}` (mọi giá trị ∈ `giaTriHopLe`) | mẫu `cachDoc` của TỪNG giá trị |
+| `TEN_LOAI` / `CONG_DUNG` | `{fact, op: TEN_LOAI\|CONG_DUNG, value: chuỗi \| [chuỗi, …] ("hoặc")}` | chính chữ của từng giá trị |
+| `CHAT_LIEU_THEO_VI_TRI` | `{fact: chatLieu, op: LA, value: chuỗi \| [..], viTri?}` | mẫu của vật liệu (+ chữ vị trí nếu ≠ CHINH) |
+
+- `chieu: PHAI_KHONG` (mặc định `PHAI_CO`) chỉ cho `TRONG`/`TEN_LOAI`/`CONG_DUNG`/`LA`; với `CO_KHONG`/`SO` dùng `KHONG` / đảo op.
+- Dòng "Loại khác" **trần** không mang điều kiện. Dòng "Loại khác, <vế>" được mang điều kiện có kiểu cho vế riêng.
+- Điều kiện của **tiêu đề** (nút 7 số / 5 số có tên) ghi ở `dieuKienNut[]` `{id, dieuKienSo, nguon, trich}`; nguồn `tieuDe.<id>` = tên nguyên văn của biểu thuế Tổng cục (`lib/so-tay.js#nguonTieuDe`). Tiêu đề "Loại khác" trần không ghi.
+- So chữ tự do (`TEN_LOAI`, `CONG_DUNG`) là **không tất định**: chotDong8 không chốt bằng nó; bộ chấm hồ sơ (`doiChieuDong8`) gắn `tatDinh: false`.
