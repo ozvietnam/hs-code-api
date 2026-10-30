@@ -178,5 +178,36 @@ const tv = trangThaiDong8({ hs: '84814010', productText: 'Van an toàn bằng th
 check('trangThaiDong8.veMoHinh: 84814010 chỉ chấm vế đường kính, vế "Bằng đồng hoặc hợp kim đồng" không nằm trong', Boolean(tv) && tv.veMoHinh.length === 1 && /đường kính trong từ 2,5 cm trở xuống/.test(tv.veMoHinh[0]) && !/đồng/.test(tv.veMoHinh.join(' ')), JSON.stringify(tv?.veMoHinh));
 check('trangThaiDong8.veMoHinh: 73181510 chấm trọn nhãn "Đường kính ngoài của thân không quá 16 mm"', JSON.stringify(trangThaiDong8({ hs: '73181510', productText: BULONG })?.veMoHinh) === '["Đường kính ngoài của thân không quá 16 mm"]');
 
+// ── #573 (L1-3b): chotDong8 chấm op mới (CO/KHONG/TRONG/TEN_LOAI/CONG_DUNG) bằng docGiaTri của tu-vung@1 ──
+{
+  const { danhGiaDong } = require('../lib/so-tay-gates.js');
+  const dg = (dieuKienSo, text) => danhGiaDong({ hs: '85444299', trich: 't', nguon: 'tax.x', dieuKienSo }, text).trangThai;
+  check('L1-3b: chấm "không có đầu nối" trên op CO → TRAI; "đã gắn đầu nối" → THOA; không nói → CHUA_BIET',
+    dg([{ fact: 'daGanDauNoi', op: 'CO' }], 'Dây cáp điện không có đầu nối, dài 1m') === 'TRAI' && dg([{ fact: 'daGanDauNoi', op: 'CO' }], 'cáp đã gắn đầu nối Type-C') === 'THOA' && dg([{ fact: 'daGanDauNoi', op: 'CO' }], 'Dây cáp điện bọc PVC') === 'CHUA_BIET');
+  check('L1-3b: op mới trộn op cũ trong một dòng — một vế TRÁI → TRAI', dg([{ fact: 'daGanDauNoi', op: 'CO' }, { fact: 'duong_kinh', op: '<=', value: 5, donVi: 'mm' }], 'cáp đã gắn đầu nối, đường kính 8 mm') === 'TRAI');
+  // Fixture viết tay trong thư mục TẠM (test-isolate-data): 841451 với op mới, 8414 thật làm nền
+  const { dataPath } = require('../lib/data-paths.js');
+  const path = require('path'); const fss = require('fs');
+  const goc = JSON.parse(fss.readFileSync(path.join(process.cwd(), 'data/so-tay/8414.json'), 'utf8'));
+  goc.dong8 = (goc.dong8 || []).filter((d) => !String(d.hs).startsWith('841451')).concat([
+    { hs: '84145110', dieuKien: 'quạt bàn', trich: 'Quạt bàn và quạt dạng hộp', nguon: 'tax.84145110', nguonLoai: 'AI_DA_KIEM', loaiKhac: false, dieuKienSo: [{ fact: 'tenLoai', op: 'TEN_LOAI', value: ['quạt bàn', 'quạt dạng hộp'] }] },
+    { hs: '84145191', dieuKien: 'có lưới bảo vệ', trich: 'Có lưới bảo vệ', nguon: 'tax.84145191', nguonLoai: 'AI_DA_KIEM', loaiKhac: false, dieuKienSo: [{ fact: 'coLuoiBaoVe', op: 'CO' }] },
+    { hs: '84145199', dieuKien: 'loại khác', trich: 'Loại khác', nguon: 'tax.84145199', nguonLoai: 'AI_DA_KIEM', loaiKhac: true },
+  ]);
+  fss.mkdirSync(dataPath('so-tay'), { recursive: true });
+  fss.writeFileSync(dataPath('so-tay/8414.json'), JSON.stringify(goc, null, 1));
+  cd = chotDong8({ hs: '84145199', productText: 'Quạt treo tường có lưới bảo vệ, công suất 45W' });
+  check('L1-3b chotDong8: quạt treo tường có lưới → CHOT 84145191', cd.ketQua === 'CHOT' && cd.hs === '84145191', JSON.stringify(cd));
+  cd = chotDong8({ hs: '84145191', productText: 'Quạt treo tường không có lưới bảo vệ' });
+  check('L1-3b chotDong8: không lưới, tên loại chỉ so chữ (không tất định) → KHONG_THE_CHOT, không hỏi lại tên', cd.ketQua === 'KHONG_THE_CHOT' && cd.lyDo === 'ranh-gioi-so-chu-khong-tat-dinh', JSON.stringify(cd));
+  check('L1-3b danhGiaDong: TEN_LOAI so chữ → CHUA_BIET kèm soChu (không làm căn cứ chốt)', (() => { const x = danhGiaDong({ hs: '84145110', dieuKienSo: [{ fact: 'tenLoai', op: 'TEN_LOAI', value: ['quạt bàn'] }] }, 'Quạt treo tường'); return x.trangThai === 'CHUA_BIET' && x.chiTiet[0].soChu === 'TRAI' && x.chiTiet[0].khongTatDinh === true; })());
+  cd = chotDong8({ hs: '84145199', productText: 'Quạt treo tường' });
+  check('L1-3b chotDong8: thiếu dữ kiện lưới → THIEU_SO_LIEU + câu hỏi tu-vung', cd.ketQua === 'THIEU_SO_LIEU' && cd.missingFacts?.some((m) => m.fact === 'coLuoiBaoVe' && /lưới/.test(m.cauHoi || '')), JSON.stringify(cd));
+  const tv2 = trangThaiDong8({ hs: '84145191', productText: 'Quạt treo tường không có lưới bảo vệ' });
+  check('L1-3b trangThaiDong8: op mới → TRAI; veMoHinh chứa vế có chữ của khoá', tv2?.trangThai === 'TRAI' && tv2.veMoHinh.join() === 'Có lưới bảo vệ', JSON.stringify(tv2));
+  const { moTaDieuKienTrai } = require('../lib/so-tay-gates.js');
+  check('L1-3b moTaDieuKienTrai: op mới in bằng nhãn tu-vung, không "undefined"', /lưới bảo vệ/.test(moTaDieuKienTrai(tv2)) && !/undefined/.test(moTaDieuKienTrai(tv2)), moTaDieuKienTrai(tv2));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
