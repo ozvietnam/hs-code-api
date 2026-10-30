@@ -1,0 +1,97 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "940542",
+  "phien": "ĐIỀN <định danh>#soan-940542",
+  "dong8": {
+    "94054210": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn pha"
+        }
+      ]
+    },
+    "94054220": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn rọi"
+        }
+      ]
+    },
+    "94054230": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "sân bay",
+            "phương tiện giao thông đường sắt",
+            "đầu máy",
+            "tàu thủy",
+            "phương tiện bay",
+            "hải đăng"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "kim loại"
+        }
+      ]
+    },
+    "94054240": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn báo hiệu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị nhiệt điện gia dụng thuộc nhóm 85.16"
+        }
+      ]
+    },
+    "94054250": {
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "CONG_CONG"
+          ]
+        }
+      ]
+    },
+    "94054260": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng bên ngoài"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "94054230",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ biểu là HOẶC của hai vế: (a) \"Đèn tín hiệu không nhấp nháy dùng cho sân bay\"; (b) \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\". Lược đồ không có HOẶC giữa hai nhóm điều kiện ⇒ gộp dungCho của cả hai vế; vế (a) mất ràng buộc \"tín hiệu không nhấp nháy\"; \"bằng kim loại cơ bản\" chữ tiếng Việt không rõ áp cho cả hai vế hay chỉ vế (b) — bản nháp áp cho cả dòng. Người duyệt cần xem."
+    },
+    {
+      "ma": "94054220",
+      "loai": "DE_TRONG",
+      "ghiChu": "\"Đèn rọi khác\" = đèn rọi không phải đèn pha (.10): chữ \"khác\" chỉ thứ tự ưu tiên dòng trên, không có khoá từ vựng."
+    },
+    {
+      "ma": "94054260",
+      "loai": "CHONG_LAN",
+      "ghiChu": "\"Loại chiếu sáng bên ngoài khác\": chữ \"khác\" = ngoài các dòng .10–.50; chữ biểu chồng lấn với .10/.20/.50 (đèn pha, đèn rọi, đèn đường phố đều chiếu sáng bên ngoài) — không tự đặt điều kiện phân tách."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "851810",
+  "phien": "ĐIỀN <định danh>#soan-851810",
+  "dong8": {
+    "85181011": {
+      "dieuKienSo": [
+        {
+          "fact": "tanSo",
+          "op": ">=",
+          "value": 300,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "tanSo",
+          "op": "<=",
+          "value": 3400,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 10,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 3,
+          "donVi": "mm"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "viễn thông"
+        }
+      ]
+    },
+    "85181019": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Micro"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8518101": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Micro"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85181011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"có dải tần số từ 300 Hz đến 3.400 Hz\" là một DẢI (đặc tính đáp tuyến), bản nháp ghi thành hai biên trên cùng khoá tanSo (≥ 300 Hz và ≤ 3.400 Hz) — dữ kiện khách là một số thì so được, dữ kiện là dải thì cần người duyệt xem cách đọc."
+    },
+    {
+      "ma": "85181019",
+      "loai": "DE_TRONG",
+      "ghiChu": "\"Micro khác, đã hoặc chưa lắp ráp cùng với giá đỡ micro\": \"khác\" = không thuộc .11; vế \"đã hoặc chưa lắp ráp\" không thu hẹp nên không ghi."
+    }
+  ]
+}
