@@ -12,6 +12,9 @@ const gir = require('../lib/gir.js');
 const girTra = [];
 const goc = gir.determineGir;
 gir.determineGir = (...a) => { const r = goc(...a); girTra.push(...r.determinations); return r; };
+// L1-5b (quyết định 1): đường đi sổ tay dùng gir.girTuDuongDi — vẫn là lib/gir.js, spy cả hàm này.
+const gocDd = gir.girTuDuongDi;
+gir.girTuDuongDi = (...a) => { const r = gocDd(...a); girTra.push(...r.determinations); return r; };
 
 const T = require('../lib/hs-tree.js');
 const S = require('../lib/so-tay.js');
@@ -21,6 +24,7 @@ const TV = require('../lib/tu-vung.js');
 const { loadSoTay } = require('../lib/so-tay-gates.js');
 const D = require('../lib/ho-so/duong-di.js');
 const HS = require('../lib/ho-so/index.js');
+const L = HS.LY_DO_CHUA_CHOT;
 
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${typeof x === 'string' ? x : JSON.stringify(x).slice(0, 600)}`); } };
@@ -66,7 +70,7 @@ check('mỗi phân nhóm lát 1 có một dòng 8 số để đo', ma50.length =
       // mục sổ tay có dieuKienSo nhưng chưa duyệt ⇒ không vào đường đi: dieuKien null + CHUA_SO_HOA + lyDo chua-duyet
       const muc = st && ((st.dong8 || []).find((d) => nz(d.hs) === e.nut) || (st.dieuKienNut || []).find((d) => T.chuanMa(d.id) === e.nut));
       if (muc && Array.isArray(muc.dieuKienSo) && muc.dieuKienSo.length && !NHAN_DUYET.has(muc.nguonLoai)
-        && !(e.dieuKien === null && e.ketQua === 'CHUA_SO_HOA' && e.lyDo === 'chua-duyet')) loiChuaDuyet.push(`${ma}:${e.nut}`);
+        && !(e.dieuKien === null && e.ketQua === 'CHUA_SO_HOA' && e.lyDo === L.CHUA_DUYET)) loiChuaDuyet.push(`${ma}:${e.nut}`);
     }
   }
   check('50 mã lát 1: mọi trich có nguyên văn trong nguồn', !loiTrich.length, loiTrich);
@@ -133,9 +137,9 @@ for (const ma of ['85362019', '85362099', '85366999', '84135090', '85444299']) {
   const tienLe = { ...clone(bang.muc.find((m) => m.id === '854442-01') || mucMau), id: 'T-TL', loai: 'TIEN_LE_THAY_CHU_BIEU' };
   const rL = D.dungDuongDi('85444299', 'NHAP', { soTay: st, bangHieuChinh: { muc: [lech] } });
   const eL = rL.duongDiPhapLy.find((e) => e.nut === '85444294');
-  check('8544.42.99 + LECH_CHUA_PHAN_XU ⇒ ranh giới .94 ketQua CHUA_SO_HOA', eL && eL.ketQua === 'CHUA_SO_HOA' && eL.lyDo === 'hieu-chinh-lech-chua-phan-xu', eL);
+  check('8544.42.99 + LECH_CHUA_PHAN_XU ⇒ ranh giới .94 ketQua CHUA_SO_HOA', eL && eL.ketQua === 'CHUA_SO_HOA' && eL.lyDo === L.HIEU_CHINH_LECH, eL);
   check('8544.42.99 + LECH ⇒ dieuKien giữ nguyên (ghi cả hai, không tự chọn bên)', eL && eL.dieuKien && eL.hieuChinh[0].chuBieu && eL.hieuChinh[0].tbTchq, eL);
-  check('8544.42.99 + LECH ⇒ không chốt, capDaChac 6', rL.capDaChac === 6 && rL.chotDuoc === false && rL.chuaChot.some((x) => x.startsWith('hieu-chinh-lech-chua-phan-xu')), rL.chuaChot);
+  check('8544.42.99 + LECH ⇒ không chốt, capDaChac 6', rL.capDaChac === 6 && rL.chotDuoc === false && rL.chuaChot.some((x) => x.startsWith(L.HIEU_CHINH_LECH)), rL.chuaChot);
   const rT = D.dungDuongDi('85444299', 'NHAP', { soTay: st, bangHieuChinh: { muc: [tienLe] } });
   const eT = rT.duongDiPhapLy.find((e) => e.nut === '85444294');
   check('8544.42.99 + TIEN_LE_THAY_CHU_BIEU ⇒ hieuChinh có, ranh giới không CHUA_SO_HOA', eT && eT.hieuChinh && eT.hieuChinh.length && eT.ketQua === null, eT);
@@ -166,11 +170,11 @@ for (const ma of ['85362019', '85362099', '85366999', '84135090', '85444299']) {
   const e = r.duongDiPhapLy.filter((x) => x.nut === '84135040');
   check('anh em chưa duyệt: đường đi riêng của 84135040 không có CHUA_SO_HOA', e.length && e.every((x) => x.ketQua === null), e);
   check('anh em chưa duyệt ⇒ không chốt (chotDuoc false, capDaChac 6)', r.chotDuoc === false && r.capDaChac === 6, { capDaChac: r.capDaChac, chuaChot: r.chuaChot });
-  check('anh em chưa duyệt ⇒ chuaChot ghi anh-em-chua-so-hoa:8413503', r.chuaChot.includes('anh-em-chua-so-hoa:8413503'), r.chuaChot);
+  check('anh em chưa duyệt ⇒ chuaChot ghi anh-em-chua-so-hoa:8413503', r.chuaChot.includes(`${L.ANH_EM_CHUA_SO_HOA}:8413503`), r.chuaChot);
   const st2 = clone(loadSoTay('8413'));
   st2.dong8 = st2.dong8.map((d) => (d.hs === '84135031' ? { ...d, dieuKienSo: [] } : d));
   const r2 = D.dungDuongDi('84135032', 'NHAP', { soTay: st2 });
-  check('anh em cùng tầng chưa số hoá (84135031) ⇒ 84135032 không chốt', r2.chotDuoc === false && r2.chuaChot.includes('anh-em-chua-so-hoa:84135031'), r2.chuaChot);
+  check('anh em cùng tầng chưa số hoá (84135031) ⇒ 84135032 không chốt', r2.chotDuoc === false && r2.chuaChot.includes(`${L.ANH_EM_CHUA_SO_HOA}:84135031`), r2.chuaChot);
   const r3 = D.dungDuongDi('84135090', 'NHAP', { soTay: st });
   check('dòng Loại khác có anh em chưa duyệt ⇒ PHAI_KHONG CHUA_SO_HOA + không chốt', r3.duongDiPhapLy.some((x) => x.nut === '8413503' && x.ketQua === 'CHUA_SO_HOA') && r3.capDaChac === 6, r3.duongDiPhapLy);
 }
@@ -179,7 +183,7 @@ for (const ma of ['85362019', '85362099', '85366999', '84135090', '85444299']) {
 {
   const r = D.dungDuongDi('85362011', 'NHAP');
   check('85362011 chồng lấn văn bản với .20 ⇒ chongLanVanBan nêu .20', Array.isArray(r.chongLanVanBan) && r.chongLanVanBan.some((c) => c.voi === '85362020' && c.lyDo), r.chongLanVanBan);
-  check('85362011 chồng lấn ⇒ không chốt, capDaChac 6', r.chotDuoc === false && r.capDaChac === 6 && r.chuaChot.includes('chong-lan-van-ban:85362020'), r.chuaChot);
+  check('85362011 chồng lấn ⇒ không chốt, capDaChac 6', r.chotDuoc === false && r.capDaChac === 6 && r.chuaChot.includes(`${L.CHONG_LAN_VAN_BAN}:85362020`), r.chuaChot);
   const r20 = D.dungDuongDi('85362020', 'NHAP');
   check('85362020 nêu đủ bốn dòng chồng lấn', ['85362011', '85362012', '85362013', '85362019'].every((m) => r20.chongLanVanBan.some((c) => c.voi === m)), r20.chongLanVanBan);
 }
@@ -191,7 +195,27 @@ for (const ma of ['85362019', '85362099', '85366999', '84135090', '85444299']) {
   check('girRulesApplied có mục (mã 8 số: GIR 6 so cùng cấp)', tatCa.length > 0, tatCa.length);
   check('mọi girRulesApplied có basis ∈ RULE_TABLE|DETERMINISTIC|HEURISTIC|LLM_ASSERTED', tatCa.every((g) => BASIS.has(g.basis)), tatCa.map((g) => g.basis));
   const khoa = new Set(girTra.map((g) => JSON.stringify(g)));
-  check('spy: mọi girRulesApplied là mục do gir.determineGir trả', tatCa.every((g) => khoa.has(JSON.stringify(g))));
+  check('spy: mọi girRulesApplied là mục do lib/gir.js trả', tatCa.every((g) => khoa.has(JSON.stringify(g))));
+  // L1-5b quyết định 1: GIR của đường đi sổ tay = GIR 1 (cấp nhóm) + GIR 6 (cấp phân nhóm/dòng), basis RULE_TABLE, bằng chứng
+  // là câu trích NGUYÊN VĂN của ranh giới ĐÃ DUYỆT; không còn "ứng viên giả" của determineGir.
+  check('GIR đường đi: chỉ GIR 1 / GIR 6, basis RULE_TABLE', tatCa.every((g) => ['1', '6'].includes(g.ruleKey) && g.basis === 'RULE_TABLE'), tatCa.map((g) => `${g.rule}:${g.basis}`));
+  const loiBc = [];
+  for (const m of ma50) {
+    const r = D.dungDuongDi(m, 'NHAP');
+    const src = nguonCua(m.slice(0, 4));
+    for (const g of r.canCu.girRulesApplied) {
+      const ds = (g.evidence && g.evidence.ranhGioi) || [];
+      if (!ds.length) loiBc.push(`${m}:${g.rule}:rong`);
+      for (const b of ds) {
+        if (!NHAN_DUYET.has(b.nguonLoai) || !H.coNguyenVan(b.trich, src[b.ma] || '')) loiBc.push(`${m}:${b.nut}`);
+        const e = r.duongDiPhapLy.find((x) => x.nut === b.nut && x.nguon && x.nguon.trich === b.trich);
+        if (!e || e.ketQua === 'CHUA_SO_HOA' || (e.hieuChinh && e.hieuChinh.length)) loiBc.push(`${m}:${b.nut}:muc`);
+        if ((g.ruleKey === '1') !== (b.cap === 4)) loiBc.push(`${m}:${b.nut}:cap`);
+      }
+    }
+  }
+  check('GIR đường đi: bằng chứng = trích nguyên văn của ranh giới đã duyệt, không từ mục CHUA_SO_HOA / có hiệu chỉnh', !loiBc.length, loiBc);
+  check('GIR đường đi: không ranh giới đã duyệt ⇒ không GIR', D.dungDuongDi('85371019', 'NHAP').canCu.girRulesApplied.length === 0);
   const ngoai = ma50.map((m) => { const r = clone(D.dungDuongDi(m, 'NHAP')); delete r.canCu.girRulesApplied; delete r.canCu.girDisclaimer; return JSON.stringify(r); }).join('\n');
   check('không nhãn GIR nào ngoài canCu.girRulesApplied', !/GIR[\s-]*\d/.test(ngoai), (ngoai.match(/.{40}GIR[\s-]*\d.{40}/) || [''])[0]);
 }
@@ -247,6 +271,18 @@ check('mã 8 số không có trong biểu ⇒ lỗi MA_KHONG_CO_TRONG_BIEU', coL
   const p95 = t[Math.ceil(0.95 * t.length) - 1];
   console.log(`p95 dungDuongDi (đã đệm, 50 mã lát 1) = ${p95.toFixed(3)} ms`);
   check('p95 < 50 ms (đã đệm)', p95 < 50, p95);
+}
+
+// ── 14b. Lý do chưa chốt là enum đông cứng (quyết định 3 của người điều phối, L1-5b) ─────────────────────────────────────
+{
+  check('LY_DO_CHUA_CHOT đông cứng', Object.isFrozen(L));
+  const giaTri = new Set(Object.values(L));
+  const ngoai = [];
+  for (const m of [...ma50, '85362011', '85362020', '85444299', '85371019', '85371099', '84145949', '85011099', '39031920']) {
+    for (const x of D.dungDuongDi(m, 'NHAP').chuaChot) { const { lyDo } = HS.tachChuaChot(x); if (!giaTri.has(lyDo)) ngoai.push(`${m}:${x}`); }
+  }
+  check('mọi chuaChot có lyDo thuộc LY_DO_CHUA_CHOT', !ngoai.length, ngoai);
+  check('tachChuaChot tách "<lyDo>:<mã>"', JSON.stringify(HS.tachChuaChot('anh-em-chua-so-hoa:850110~r14830')) === JSON.stringify({ lyDo: 'anh-em-chua-so-hoa', ma: '850110~r14830' }));
 }
 
 // ── 15. Cờ HS_HO_SO (mặc định off; chưa nối endpoint — L1-5d) ─────────────────────────────────────────────────────────
