@@ -1,11 +1,13 @@
 // Cổng 5 (cong5-ve) — phạm vi của VẾ bổ nghĩa trong chữ biểu thuế (#577, soát L1-4c đợt 2 #659: 8,8% sai theo mục, gần
 // hết là một kiểu máy không thấy được: bỏ vế mở ⇒ hẹp hơn chữ; bỏ vế giới hạn / tách định ngữ chung ⇒ rộng hơn chữ).
-// Chạy trên bản nháp THẬT đã commit (data/ho-so/ranh-gioi/) + biến thể sửa tay; không đọc data/bench/, data/oz-export/.
+// Chạy trên bản nháp ĐÔNG CỨNG (scripts/fixtures/ho-so/ranh-gioi-7559407/, bản sao bản nháp tại 7559407) + biến thể sửa tay —
+// không đọc bản nháp sống (vòng 3); không đọc data/bench/, data/oz-export/.
 import './test-isolate-data.mjs';
 import fs from 'fs';
 import path from 'path';
 import { execFileSync } from 'child_process';
 import { createRequire } from 'module';
+import { nhapDongCung, gieoNhap } from './fixtures/ho-so/nhap-dong-cung.mjs';
 const require = createRequire(import.meta.url);
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const V = require('../lib/ho-so/tach-ve.js');
@@ -14,7 +16,7 @@ const ML = require('../lib/ho-so/ma-loi.js');
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${typeof x === 'string' ? x : JSON.stringify(x)}`); } };
 const clone = (x) => JSON.parse(JSON.stringify(x));
-const nhap = (pn6) => JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi', `${pn6}.json`), 'utf8'));
+const nhap = (pn6) => nhapDongCung(pn6);
 // Chỉ cổng 0 + 5: cổng 5 không cần vector (nhanh); cổng 1–3 đã có test riêng.
 const k5 = (pn6, b) => C.kiemRanhGioi(pn6, b, { cong: [5] });
 const co = (ds, tien) => ds.some((l) => l.startsWith(tien));
@@ -195,6 +197,7 @@ const menhDe = (kq, loai) => kq.ve.flatMap((v) => v.menhDe).filter((m) => m.loai
 
 // ── 7. CLI: --ve in phân tích vế; --kiem in lỗi cổng 5 kèm giải thích ───────────────────────────────────────────────
 {
+  gieoNhap('940542'); // CLI đọc bản đông cứng (HS_DATA_DIR), không đọc bản sống
   let out = ''; let code = 0;
   try { out = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--ve', '--pn6=940542'], { encoding: 'utf8', env: process.env, stdio: 'pipe' }); } catch (e) { out = String(e.stdout); code = e.status; }
   check('7a CLI --ve sau #665: .30 không còn vế CHƯA PHỦ (mã thoát 0)', code === 0 && !out.includes('CHƯA PHỦ'), out.slice(0, 600));

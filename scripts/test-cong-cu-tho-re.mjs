@@ -1,10 +1,12 @@
 // Cổng ranh giới 6→8 số — gia cố cho thợ rẻ (agent mô hình yếu soạn một PN6, Claude soát). Mỗi mục kèm test đỏ trước.
 // Bản nháp viết tay trên phân nhóm thật (cây + biểu thuế + nguồn nguyên văn thật), không đọc data/bench/, data/oz-export/.
+// Bản nháp đã commit lấy từ bản ĐÔNG CỨNG scripts/fixtures/ho-so/ranh-gioi-7559407/ (vòng 3) — không đọc bản nháp sống.
 import './test-isolate-data.mjs';
 import fs from 'fs';
 import path from 'path';
 import { execFileSync, spawnSync } from 'child_process';
 import { createRequire } from 'module';
+import { nhapDongCung, gieoNhap } from './fixtures/ho-so/nhap-dong-cung.mjs';
 const require = createRequire(import.meta.url);
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 
@@ -181,7 +183,7 @@ function nhap853641(d91) {
 
 // ── 5. Điểm mù: dòng không tới được, khoá chữ tự do cha–con, biên không đọc được, trích quá dài ─────────────────────
 {
-  const b = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/830220.json'), 'utf8'));
+  const b = nhapDongCung('830220');
   const r = C.kiemRanhGioi('830220', b);
   check('5a 830220: docGiaTri không đọc được biên ("(bao gồm cả lốp)" chen giữa) → cảnh báo cong3-bien-khong-doc-duoc, vẫn xanh', r.hopLe && coCanh(r, 'cong3-bien-khong-doc-duoc:83022010:duongKinh'), r);
   const r2 = C.kiemRanhGioi('841350', nhap('841350', { 8413503: [TEN('Bơm nước'), SO('luuLuong', '<=', 8000, 'm³/h')], 84135031: [{ fact: 'hoatDongBangDien', op: 'CO' }], 84135032: [{ fact: 'hoatDongBangDien', op: 'KHONG' }], 84135040: [TEN('Bơm nước'), SO('luuLuong', '>', 8000, 'm³/h'), SO('luuLuong', '<=', 13000, 'm³/h')] }));
@@ -195,7 +197,7 @@ function nhap853641(d91) {
   // 401699 .17 "Bộ phận của xe đạp": dungCho "xe đạp" không thoả tiêu đề "xe thuộc Chương 87" — trước #653 dòng không tới được
   // (cong2-dong-khong-toi-duoc + cong2-diem-mu). #653: cổng ghép ứng viên cha–con "xe đạp Chương 87" ⇒ tới được, hết điểm mù.
   // Ca không ghép được (mã HS khác nhánh) vẫn báo — scripts/test-cong-cu-vong-2.mjs 7i.
-  const b4 = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/401699.json'), 'utf8'));
+  const b4 = nhapDongCung('401699');
   const r4 = C.kiemRanhGioi('401699', b4);
   check('5d (#653) .17 "xe đạp" dưới "Chương 87" tới được nhờ ứng viên ghép cha–con → không còn cong2-dong-khong-toi-duoc:40169917', !coLoi(r4, 'cong2-dong-khong-toi-duoc:40169917'), r4.loi.filter((l) => !l.startsWith('cong2-chong-lan')));
   check('5e … và không còn cảnh báo điểm mù cho cặp đã ghép (cong2-diem-mu:dungCho:4016991>40169917)', !coCanh(r4, 'cong2-diem-mu:dungCho:4016991>40169917'), r4.canhBao.filter((c) => c.startsWith('cong2-diem')));
@@ -212,13 +214,13 @@ function nhap853641(d91) {
   const b2 = clone(goc); b2.chongLanVanBan[0].lyDo = 'Chữ biểu: .10 "Rơ le kỹ thuật số" và .20 "Của loại sử dụng trong các thiết bị bay" không loại trừ nhau.';
   check('8c trích bịa (không có trong chữ biểu của nhánh) → cong3-chong-lan-thieu-trich', coLoi(C.kiemRanhGioi('853641', b2), 'cong3-chong-lan-thieu-trich:85364110+85364120:85364120'));
   // 853620: 4 cặp, cùng MỘT cặp nhánh (tiêu đề 8536201 "Loại hộp đúc" ↔ .20) — chồng lấn chữ biểu thật, giữ xanh.
-  const r3 = C.kiemRanhGioi('853620', JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/853620.json'), 'utf8')));
+  const r3 = C.kiemRanhGioi('853620', nhapDongCung('853620'));
   check('8d 853620 (một cặp nhánh) vẫn xanh', r3.hopLe === true, r3.loi);
   // 401699: nhánh theo công dụng (4016991) chồng ≥ 3 nhánh theo tên — chồng lấn theo TRỤC, không phải chữ biểu tự chồng.
-  const r4 = C.kiemRanhGioi('401699', JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/401699.json'), 'utf8')));
+  const r4 = C.kiemRanhGioi('401699', nhapDongCung('401699'));
   check('8e 401699: khai CHONG_LAN_VAN_BAN cho chồng lấn theo trục → cong2-chong-lan-truc:4016991', coLoi(r4, 'cong2-chong-lan-truc:4016991:'), r4.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
   // 392690: khai hết mọi cặp chồng lấn cũng không xanh được.
-  const b5 = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/392690.json'), 'utf8'));
+  const b5 = nhapDongCung('392690');
   const cap = C.kiemRanhGioi('392690', b5).loi.filter((l) => l.startsWith('cong2-chong-lan:')).map((l) => l.split(':')[1].split('+'));
   b5.chongLanVanBan = cap.map((c) => ({ cap: c, lyDo: 'khai thử' }));
   const r5 = C.kiemRanhGioi('392690', b5);
@@ -231,7 +233,7 @@ function nhap853641(d91) {
     && C.kiemPhien('cursor:gpt-5-mini:20261030T0900#soan-830220', 'soan') === null && C.kiemPhien('https://claude.ai/code/session_01Abc#soat-l1-4', 'soat') === null);
   check('7b phiên trần / sai vai / có khoảng trắng → lỗi', ['https://claude.ai/code/session_01Abc', 'https://claude.ai/code/session_01Abc#agent-B-lo-A', 'x y#soan-a'].every((p) => C.kiemPhien(p, 'soan'))
     && C.kiemPhien('https://claude.ai/code/session_01Abc#soan-830220', 'soat') !== null);
-  const pilot = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/841350.json'), 'utf8'));
+  const pilot = nhapDongCung('841350');
   const r = C.kiemRanhGioi('841350', pilot);
   check('7c bản nháp cũ phiên trần → chỉ CẢNH BÁO cong0-phien-sai-quy-uoc (giữ kết quả)', r.hopLe === true && coCanh(r, 'cong0-phien-sai-quy-uoc:soanBoi'), r.canhBao);
   const b = nhap850131(true); b.soanBoi.phien = 'https://claude.ai/code/session_X#soan-850131';
@@ -280,7 +282,7 @@ const spec830220 = () => ({
   const ghiRa = path.join(process.env.HS_DATA_DIR, 'ho-so', 'ranh-gioi', '830220.json');
   // Bản thật có thể đã DUYET (L1-4c) — --ap-spec đúng ra từ chối bản DUYET; gieo một bản NHAP vào thư mục tạm để thử đường soạn.
   {
-    const that = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/830220.json'), 'utf8'));
+    const that = nhapDongCung('830220');
     const nhapTam = { ...that, trangThai: 'NHAP', duyet: null, dong8: that.dong8.map((m) => ({ ...m, nguonLoai: 'AI_DA_KIEM' })), dieuKienNut: (that.dieuKienNut || []).map((m) => ({ ...m, nguonLoai: 'AI_DA_KIEM' })) };
     fs.mkdirSync(path.dirname(ghiRa), { recursive: true }); fs.writeFileSync(ghiRa, JSON.stringify(nhapTam, null, 2));
   }
@@ -313,6 +315,7 @@ const spec830220 = () => ({
   const r8 = C.kiemRanhGioi('850131', b8);
   check('6p cổng 0: ghiChuSoan loai sai → lỗi; thiếu loai (bản cũ) → chỉ cảnh báo', coLoi(r8, 'cong0-ghi-chu-loai:0') && coCanh(r8, 'cong0-ghi-chu-thieu-loai:1') && !coLoi(r8, 'cong0-ghi-chu-thieu-loai'), { loi: r8.loi, canhBao: r8.canhBao });
   // 850131 đã xanh (phanConLai, L1-4 Claude giữ) ⇒ dùng bản nháp đỏ có chủ đích 900490 (chữ biểu .10/.50 tự chồng, chưa khai).
+  gieoNhap('900490'); // CLI đọc bản đông cứng (HS_DATA_DIR), không đọc bản sống
   const k = cli('--kiem', '--pn6=900490');
   check('6q --kiem in dòng hướng dẫn (→) dưới mỗi lỗi', k.status === 1 && /\n\s+→ /.test(k.stdout), k.stdout.slice(0, 500));
   // tu-vung@2 (#577) đã có soLoi/soSoi ⇒ ý "hai sợi hoặc hơn" thành GỢI Ý KHOÁ (goiYKhoa), không còn "nghi thiếu khoá"
