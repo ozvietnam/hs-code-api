@@ -170,5 +170,26 @@ function nhap853641(d91) {
   check('4j chấm HOAC trên chữ mô tả (đường runtime) → THOA', tc.trangThai === 'THOA', tc);
 }
 
+// ── 5. Điểm mù: dòng không tới được, khoá chữ tự do cha–con, biên không đọc được, trích quá dài ─────────────────────
+{
+  const b = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/830220.json'), 'utf8'));
+  const r = C.kiemRanhGioi('830220', b);
+  check('5a 830220: docGiaTri không đọc được biên ("(bao gồm cả lốp)" chen giữa) → cảnh báo cong3-bien-khong-doc-duoc, vẫn xanh', r.hopLe && coCanh(r, 'cong3-bien-khong-doc-duoc:83022010:duongKinh'), r);
+  const r2 = C.kiemRanhGioi('841350', nhap('841350', { 8413503: [TEN('Bơm nước'), SO('luuLuong', '<=', 8000, 'm³/h')], 84135031: [{ fact: 'hoatDongBangDien', op: 'CO' }], 84135032: [{ fact: 'hoatDongBangDien', op: 'KHONG' }], 84135040: [TEN('Bơm nước'), SO('luuLuong', '>', 8000, 'm³/h'), SO('luuLuong', '<=', 13000, 'm³/h')] }));
+  check('5b biên đọc được → không cảnh báo cong3-bien-khong-doc-duoc', r2.hopLe && !coCanh(r2, 'cong3-bien-khong-doc-duoc'), r2);
+
+  const g = C.goiSoan('853650');
+  const dai = g.canSoHoa.find((x) => x.ma === '8536505').nguon[0].text;
+  const b3 = nhap('853650', { 8536505: { trich: dai, dieuKienSo: [{ fact: 'loaiCongTac', op: 'TRONG', value: ['DIEN_TU_HOAC_BAT_NHANH'] }] } });
+  check('5c trích > 300 ký tự (mục có điều kiện) → cong3-trich-qua-dai (LUAT-CHUNG luật 2: lược bằng "…")', dai.length > 300 && coLoi(C.kiemRanhGioi('853650', b3), 'cong3-trich-qua-dai:8536505'), dai.length);
+
+  // 401699 .17 "Bộ phận của xe đạp": dungCho "xe đạp" không bao giờ thoả cùng tiêu đề "xe thuộc Chương 87" → dòng không tới được.
+  const b4 = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/401699.json'), 'utf8'));
+  const r4 = C.kiemRanhGioi('401699', b4);
+  check('5d dòng không vector biên nào tới được → cong2-dong-khong-toi-duoc:40169917', coLoi(r4, 'cong2-dong-khong-toi-duoc:40169917'), r4.loi.filter((l) => !l.startsWith('cong2-chong-lan')));
+  check('5e … kèm cảnh báo điểm mù khoá chữ tự do cha–con (cong2-diem-mu:dungCho:4016991>40169917)', coCanh(r4, 'cong2-diem-mu:dungCho:4016991>40169917'), r4.canhBao.filter((c) => c.startsWith('cong2-diem')));
+  check('5f dòng tới được (.12 "87.11" ⊂ "Chương 87") → không báo', !coLoi(r4, 'cong2-dong-khong-toi-duoc:40169912') && !coCanh(r4, 'cong2-diem-mu:dungCho:4016991>40169912'));
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
