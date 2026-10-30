@@ -294,6 +294,7 @@ async function cheDoSinh() {
       degraded: Boolean(r.json?.degraded), llmModel: r.json?.llmModel || null, llmError: r.json?.llmError ? { code: r.json.llmError.code || null, retryable: Boolean(r.json.llmError.retryable), message: String(r.json.llmError.message || '').slice(0, 160) } : null, compliance: r.json?.compliance?.score ?? null,
       moTa: out, chiSo: chiSoMoTa(out, ch, { hoSo: r.json?.hoSo || null }), chiSoChuan: chiSoMoTa(chuan, ch), giongChuan: out ? jaccard(out, chuan) : 0,
       ms, msTatDinh: r.json?.hoSo?.thoiGian?.tatDinhMs ?? null, trichSai: r.json ? trichDanSai(r.json) : null,
+      tuChoiNeuLaAm: r.json ? chamAmSinh(r.json).tuChoi : null,
     };
     if (!oz) {
       const dk = m.duKienQuyetDinh.filter((d) => !d.khongDuCanCu);
@@ -360,7 +361,9 @@ async function cheDoSinh() {
     };
     if (NGUON === 'bo-de') v['Dữ kiện quyết định có mặt trong chuỗi'] = phanSo(dk.filter((d) => d.co).length, dk.length);
     else v['Dữ kiện quyết định có mặt trong chuỗi'] = '— (nguồn oz không có dữ kiện chấm sẵn; chạy --bo-de)';
+    const nenTuChoi = ok.filter((r) => r.tuChoiNeuLaAm).length;
     inBang10(v, [
+      `độ phân biệt của hàng ca âm: trên cùng đường, ca chuẩn (không âm) cũng bị "từ chối" ${phanSo(nenTuChoi, ok.length)} — ca âm chỉ có nghĩa khi tỉ lệ này thấp.`,
       'ca âm chạy với maHsChay — mã để chạy máy, KHÔNG phải đáp án (CV 755 không ghi mã); ca tờ khai xuất không chạy (lát 1 chỉ nhập).',
       'đường cũ chưa có THIEU_DU_KIEN: "từ chối" = compliance WEAK/REJECT hoặc passesCustomsAudit=false (lib/mo-ta-bench-lib.mjs#chamAmSinh).',
     ]);
@@ -512,6 +515,7 @@ async function cheDoSoat() {
       'Soát chỉ đúng THIẾU (ca bỏ dữ kiện)': `${phanSo(tk('bo_du_kien').dung, tk('bo_du_kien').n)} — cờ thiếu/K2 mới`,
       'Báo oan LOI trên ca chuẩn': phanSo(oan.loi, oan.n),
     }, [
+      `độ phân biệt của hàng ca âm: ca chuẩn (không âm) cũng có cờ K1/K2 ${phanSo(res.filter((r) => r.loai === 'chuan' && chamAmSoat(r.kiem, r.det).bat).length, res.filter((r) => r.loai === 'chuan').length)} — ca âm chỉ có nghĩa khi tỉ lệ này thấp.`,
       'đường cũ không chỉ ra dữ kiện CÓ/THIẾU/MÂU THUẪN: "bắt" ở đây là có cờ mới đúng loại (như bảng SOÁT ở trên), chưa phải chỉ đúng dữ kiện.',
       'ca âm chạy với maHsChay — mã để chạy máy, KHÔNG phải đáp án (CV 755 không ghi mã); ca tờ khai xuất không chạy (lát 1 chỉ nhập).',
     ]);

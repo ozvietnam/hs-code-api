@@ -87,7 +87,7 @@ const goldGia = [
   g('85444299', false), // không thuộc tập giữ riêng
   g('94019999', true), // ngoài lát 1
   g('85444299', true, { origin: 'VN' }), // tờ khai xuất
-  g('85444291', true), // mã không còn trong biểu
+  g('85444200', true), // mã không có trong biểu
   { ...g('85444299', true), sampleDesc: '' }, // không có câu chuẩn
 ];
 const giu = locGiuRiengLat1(goldGia, { pn6: pn6Gia, taxData: taxGia, isHeldOut, laToKhaiNhap });
