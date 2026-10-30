@@ -1,0 +1,82 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "940541",
+  "phien": "zcode:glm-5.3:20261030T1548#soan-940541",
+  "dong8": {
+    "94054110": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn pha" }
+      ]
+    },
+    "94054120": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn rọi" }
+      ]
+    },
+    "94054130": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn tín hiệu" },
+              { "fact": "dungCho", "op": "CONG_DUNG", "value": "sân bay" }
+            ],
+            [
+              { "fact": "dungCho", "op": "CONG_DUNG", "value": ["phương tiện giao thông đường sắt", "đầu máy", "tàu thủy", "phương tiện bay", "hải đăng"] },
+              { "fact": "chatLieu", "op": "LA", "value": "kim loại" }
+            ]
+          ]
+        }
+      ]
+    },
+    "94054140": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              { "fact": "phamViSuDung", "op": "TRONG", "value": ["CONG_CONG"] }
+            ],
+            [
+              { "fact": "congDung", "op": "CONG_DUNG", "value": "chiếu sáng bên ngoài" }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    {
+      "cap": ["94054110", "94054130"],
+      "lyDo": "Đèn pha bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn pha\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
+    },
+    {
+      "cap": ["94054120", "94054130"],
+      "lyDo": "Đèn rọi bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn rọi khác\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "94054130",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Vế B của .30 chồng chữ với .10 \"Đèn pha\" và .20 \"Đèn rọi khác\" (đèn dùng cho đường sắt/đầu máy bằng kim loại có thể là đèn pha/đèn rọi) ⇒ khai chongLanVanBan 2 cặp; .30 chồng 2 anh em (< 3) nên không phải chồng lấn theo trục."
+    },
+    {
+      "ma": "94054130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ biểu hai vế ngăn bằng ';': vế A \"Đèn tín hiệu không nhấp nháy dùng cho sân bay\"; vế B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\" ⇒ HOAC hai phương án. \"không nhấp nháy\" không có khoá tu-vung@1 nên không diễn đạt được — người soát xem. \"bằng kim loại cơ bản\" đứng cuối vế B (sau dấu phẩy): gắn cho vế B theo đọc chữ; có thể ý cả dòng — người soát xem."
+    },
+    {
+      "ma": "94054120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Đèn rọi khác\" = phần còn lại có tên (đèn rọi trừ đèn pha .10) ⇒ phanConLai: true + tenLoai \"Đèn rọi\"."
+    },
+    {
+      "ma": "94054140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Loại khác, <vế A>; <vế B>\" — dòng bắt đầu bằng \"Loại khác\" nên máy tự phủ định anh em; chỉ ghi điều kiện hai vế theo HOAC: vế A phamViSuDung TRONG [CONG_CONG] (trích chứa \"công cộng\", \"đường phố\"), vế B congDung \"chiếu sáng bên ngoài\". Vế B có chữ \"khác\" nhưng cả dòng đã là \"Loại khác\" nên không cần phanConLai riêng."
+    }
+  ]
+}
