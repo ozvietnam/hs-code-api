@@ -5,17 +5,28 @@
  *                tệp AI_CHUA_KIEM; moTaMau > 200 ký tự, có "xuất xứ"/chữ cấm, hoặc thiếu dữ kiện của chính ca; nhãn duyệt khác CLAUDE_DUYET;
  *                ca lechTienLe thiếu căn cứ hai bên; khongDuCanCu cấp ca không khớp cấp dữ kiện;
  *                bộ đề chứa câu mô tả Oz (đối chiếu data/oz-gold-final.jsonl nếu có — tệp riêng, chỉ đọc).
- *   node scripts/check-mo-ta-bo-de.mjs [--chi-tiet] [--bo-de=<tệp>]   (--bo-de: kiểm bản sao khác data/bench/mo-ta-bo-de.json, dùng cho test)
+ *   node scripts/check-mo-ta-bo-de.mjs [--chi-tiet] [--bo-de=<tệp> | --tep=<tệp>]   (kiểm tệp khác data/bench/mo-ta-bo-de.json)
+ *
+ * BỘ ĐỀ LÁT 1 (L1-2a, #566) — tệp có `lat: 1` ở cấp bộ đề (data/bench/ho-so-lat-1.json) thì thay luật "30–40 ca / chương
+ * ưu tiên" bằng luật lát 1:
+ *   - mỗi ca có lat=1, pn6 = 6 số đầu maHs, pn6 thuộc danh sách lát 1 (data/ho-so/lat-1.json; --lat1=<tệp> cho test);
+ *   - mỗi pn6 của danh sách có ≥ 2 ca; ≥ 1 ca TB-TCHQ khi precedents.json có kết luận 8 số (mã còn trong biểu) thuộc pn6;
+ *   - mọi căn cứ là tệp NGUYEN_VAN (biểu thuế, SEN, chú giải, TB-TCHQ) — KHÔNG data/so-tay/* (độc lập với sổ tay, chống "học tủ");
+ *   - mỗi ca có caCaiLoi.boDuKien; ≥ 50 % ca có caCaiLoi.doiAnhEm sang dòng anh em CÙNG pn6, KHÁC mức MFN;
+ *   - KHOÁ BĂM: sha256 tệp phải khớp dòng khoá mới nhất của docs/bench/khoa-bo-de-lat-1.txt (--khoa=<tệp> cho test);
+ *     chưa có dòng khoá ⇒ ĐỎ, trừ khi --chua-khoa (chỉ dùng lúc đang soạn, trước khi khoá).
  * Nhãn duyệt: NHAN_BO_DE của lib/nguon-loai.js (một hệ nhãn duy nhất, #550).
  */
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { ROOT, docBoDe, trichCoThat, khopTuKhoa, jaccard, loadSource, CHU_CAM } from './mo-ta-bench-lib.mjs';
 
 const require = createRequire(import.meta.url);
 const { nhanCuaTep, NHAN_BO_DE } = require('../lib/nguon-loai.js');
-const boDePath = process.argv.find((x) => x.startsWith('--bo-de='))?.slice(8) || path.join(ROOT, 'data', 'bench', 'mo-ta-bo-de.json');
+const arg = (k) => process.argv.find((x) => x.startsWith(`--${k}=`))?.slice(k.length + 3);
+const boDePath = arg('tep') || arg('bo-de') || path.join(ROOT, 'data', 'bench', 'mo-ta-bo-de.json');
 const chiTiet = process.argv.includes('--chi-tiet');
 
 const loi = [];
@@ -30,7 +41,8 @@ const boDe = docBoDe(boDePath);
 if (boDe.duyetBoi !== NHAN_BO_DE) fail('bo-de', `duyetBoi cấp bộ đề phải là ${NHAN_BO_DE}`);
 if (/NGUOI_DUYET"/.test(rawText.replace(/"quyTacChamDuyet":[^\n]*/, ''))) fail('bo-de', 'không được dùng nhãn NGUOI_DUYET');
 const ca = Array.isArray(boDe.ca) ? boDe.ca : [];
-if (ca.length < 30 || ca.length > 40) fail('bo-de', `cần 30–40 ca, đang có ${ca.length}`);
+const LAT1 = boDe.lat === 1;
+if (!LAT1 && (ca.length < 30 || ca.length > 40)) fail('bo-de', `cần 30–40 ca, đang có ${ca.length}`);
 
 /** Kiểm một căn cứ { nguon, trich, viTri? }. */
 let soTrich = 0;
@@ -40,6 +52,8 @@ function kiemCanCu(id, nhan, cc) {
   const rel = String(cc.nguon || '');
   if (!rel.startsWith('data/')) { fail(id, `${nhan}: nguon phải là đường dẫn tệp trong data/ (${rel})`); return; }
   const lab = nhanCuaTep(rel);
+  if (LAT1 && /^data\/so-tay\//.test(rel)) fail(id, `${nhan}: nguồn ${rel} là sổ tay — bộ đề lát 1 phải độc lập với sổ tay (chỉ biểu thuế, SEN, chú giải, TB-TCHQ)`);
+  else if (LAT1 && lab && lab !== 'NGUYEN_VAN') fail(id, `${nhan}: nguồn ${rel} mang nhãn ${lab} — bộ đề lát 1 chỉ nhận nguồn NGUYEN_VAN`);
   if (lab === 'AI_CHUA_KIEM') fail(id, `${nhan}: nguồn ${rel} là AI_CHUA_KIEM — không làm căn cứ`);
   if (!lab) fail(id, `${nhan}: nguồn ${rel} chưa có nhãn trong lib/nguon-loai.js`);
   if (rel === 'data/chu-giai-heading.json' && !/\.(nhom|nhom_day_du)$/.test(cc.viTri || '')) {
@@ -121,7 +135,62 @@ for (const c of ca) {
     if (t === c.maHs) fail(id, 'caCaiLoi.doiAnhEm.maTroToi trùng mã ca');
   }
 }
-for (const ch of CHUONG_UU_TIEN) if (!theoChuong[ch]) fail('bo-de', `chưa có ca nào của chương ${ch}`);
+if (!LAT1) for (const ch of CHUONG_UU_TIEN) if (!theoChuong[ch]) fail('bo-de', `chưa có ca nào của chương ${ch}`);
+
+// ── Luật lát 1 ────────────────────────────────────────────────────────────────────────────────────────────────────────
+const mfnSo = (ma) => { const v = String(tax[ma]?.mfn ?? '').trim(); return /^\d+(?:[.,]\d+)?$/.test(v) ? Number(v.replace(',', '.')) : null; };
+let tomTatLat1 = '';
+if (LAT1) {
+  const lat1Path = arg('lat1') || path.join(ROOT, 'data', 'ho-so', 'lat-1.json');
+  const dsPn6 = (JSON.parse(fs.readFileSync(lat1Path, 'utf8')).phanNhom || []).map((p) => String(p.pn6));
+  const theoPn6 = new Map(dsPn6.map((p) => [p, []]));
+  let coDoi = 0;
+  for (const c of ca) {
+    const id = c.id || '(không id)';
+    if (c.lat !== 1) fail(id, 'ca bộ đề lát 1 phải có lat: 1');
+    if (c.pn6 !== String(c.maHs || '').slice(0, 6)) fail(id, `pn6 ${c.pn6} phải là 6 số đầu maHs ${c.maHs}`);
+    if (!theoPn6.has(c.pn6)) fail(id, `pn6 ${c.pn6} ngoài danh sách lát 1 (${path.relative(ROOT, lat1Path)})`);
+    else theoPn6.get(c.pn6).push(c);
+    const cl = c.caCaiLoi || {};
+    if (!Array.isArray(cl.boDuKien) || !cl.boDuKien.length) fail(id, 'caCaiLoi.boDuKien phải khác rỗng (ca cài lỗi "bỏ dữ kiện")');
+    if (cl.doiAnhEm) {
+      coDoi += 1;
+      const t = String(cl.doiAnhEm.maTroToi || '');
+      if (t.slice(0, 6) !== c.pn6) fail(id, `caCaiLoi.doiAnhEm.maTroToi ${t} phải là dòng anh em cùng phân nhóm ${c.pn6}`);
+      else if (mfnSo(t) === null || mfnSo(c.maHs) === null || mfnSo(t) === mfnSo(c.maHs)) fail(id, `caCaiLoi.doiAnhEm.maTroToi ${t} phải khác mức MFN với ${c.maHs} (${tax[t]?.mfn} vs ${tax[c.maHs]?.mfn})`);
+    }
+  }
+  if (ca.length && coDoi * 2 < ca.length) fail('bo-de', `cần ≥ 50 % ca có caCaiLoi.doiAnhEm, đang có ${coDoi}/${ca.length}`);
+  // Kết luận TB-TCHQ (8 số, mã còn trong biểu) có trong precedents.json theo pn6
+  const prec = loadSource('data/precedents.json').value;
+  const coTb = new Set();
+  for (const arr of Object.values(prec)) for (const t of arr) {
+    const o = String(t.outcome || '').replace(/\D/g, '');
+    if (o.length === 8 && tax[o]) coTb.add(o.slice(0, 6));
+  }
+  const khongTb = []; const thieuTb = [];
+  for (const [pn6, ds] of theoPn6) {
+    if (ds.length < 2) fail('bo-de', `pn6 ${pn6} cần ≥ 2 ca, đang có ${ds.length}`);
+    const soTb = ds.filter((c) => c.nguonCa?.loai === 'TB-TCHQ').length;
+    if (!coTb.has(pn6)) khongTb.push(pn6);
+    else if (!soTb) { thieuTb.push(pn6); fail('bo-de', `pn6 ${pn6}: precedents.json có kết luận TB-TCHQ nhưng bộ đề không có ca TB-TCHQ nào`); }
+  }
+  // Khoá băm
+  const khoaPath = arg('khoa') || path.join(ROOT, 'docs', 'bench', 'khoa-bo-de-lat-1.txt');
+  const sha = crypto.createHash('sha256').update(fs.readFileSync(boDePath)).digest('hex');
+  const dongKhoa = fs.existsSync(khoaPath) ? fs.readFileSync(khoaPath, 'utf8').split('\n').map((l) => l.trim()).filter((l) => l && !l.startsWith('#')) : [];
+  const moiNhat = dongKhoa.length ? (dongKhoa[dongKhoa.length - 1].match(/sha256=([0-9a-f]{64})/) || [])[1] : null;
+  let trangThaiKhoa;
+  if (moiNhat) {
+    if (moiNhat !== sha) fail('khoa', `bộ đề lát 1 đã khoá — sửa phải ghi dòng khoá mới, Claude + CEO biết (sha256 tệp ${sha.slice(0, 12)}… ≠ dòng khoá mới nhất ${moiNhat.slice(0, 12)}… ở ${path.relative(ROOT, khoaPath)})`);
+    trangThaiKhoa = `khoá ${moiNhat.slice(0, 12)}… ${moiNhat === sha ? 'khớp' : 'LỆCH'}`;
+  } else if (process.argv.includes('--chua-khoa')) trangThaiKhoa = `CHƯA KHOÁ (--chua-khoa, đang soạn; sha256 hiện tại ${sha.slice(0, 12)}…)`;
+  else { fail('khoa', `bộ đề lát 1 chưa có dòng khoá ở ${path.relative(ROOT, khoaPath)} — ghi dòng khoá (sha256=…) hoặc chạy --chua-khoa khi đang soạn`); trangThaiKhoa = 'CHƯA KHOÁ'; }
+  const soTbCa = ca.filter((c) => c.nguonCa?.loai === 'TB-TCHQ').length;
+  tomTatLat1 = `  lát 1: ${theoPn6.size} phân nhóm; ca TB-TCHQ ${soTbCa}, TU_DUNG ${ca.length - soTbCa}; doiAnhEm ${coDoi}/${ca.length}; ${trangThaiKhoa}\n`
+    + `  phân nhóm KHÔNG có kết luận TB-TCHQ dùng được trong precedents.json (chỉ ca TU_DUNG): ${khongTb.length} — ${khongTb.join(' ') || '—'}`
+    + (thieuTb.length ? `\n  phân nhóm có TB-TCHQ mà thiếu ca TB-TCHQ: ${thieuTb.join(' ')}` : '');
+}
 
 // Riêng tư: bộ đề không được chứa câu mô tả Oz.
 const goldPath = process.env.OZ_GOLD_PATH || path.join(ROOT, 'data', 'oz-gold-final.jsonl');
@@ -148,5 +217,6 @@ const tong = `${ca.length} ca, ${soDuKien} dữ kiện, ${soTrich} chuỗi tríc
 if (chiTiet || loi.length) for (const l of loi) console.log(`FAIL ${l}`);
 console.log(`check-mo-ta-bo-de: ${tong}`);
 console.log(`  đối chiếu riêng tư: ${doiChieuOz}`);
+if (tomTatLat1) console.log(tomTatLat1);
 if (loi.length) { console.log(`ĐỎ — ${loi.length} lỗi`); process.exit(1); }
 console.log('XANH');
