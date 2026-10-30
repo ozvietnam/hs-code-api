@@ -65,5 +65,19 @@ const nhap848310 = () => nhap('848310', {
   check('1h --goi dạng chữ in DỪNG + tầng không mã', /DỪNG/.test(out) && /tầng không mã/i.test(out) && /r14616/.test(out), out.slice(0, 400));
 }
 
+// ── 2. Cổng 1 phủ kín: chỉ thử vector THOẢ điều kiện của tầng cha ────────────────────────────────────────────────
+// 851810: tiêu đề 8518101 "Micro" (tenLoai Micro) có hai con .11 và .19 "Micro khác…" — vector tenLoai=<chữ lạ> trái điều
+// kiện của chính tiêu đề nên không phải lỗ hổng của tầng.
+{
+  const b = nhap('851810', { 8518101: [TEN('Micro')], 85181011: [TEN('Micro'), SO('duongKinh', '<=', 10, 'mm')], 85181019: [TEN('Micro')] });
+  const r = C.kiemRanhGioi('851810', b);
+  check('2a 851810: không còn cong1-khong-phu-kin giả ở tầng 8518101 (vector trái điều kiện tiêu đề bị bỏ)', !coLoi(r, 'cong1-khong-phu-kin:8518101'), r.loi);
+  const b2 = nhap('851810', { 8518101: [TEN('Micro')], 85181011: [TEN('Micro'), SO('duongKinh', '<=', 10, 'mm')], 85181019: [TEN('Micro'), SO('duongKinh', '<=', 10, 'mm')] });
+  b2.dong8.find((m) => m.hs === '85181019').trich = b2.dong8.find((m) => m.hs === '85181011').trich;
+  b2.dong8.find((m) => m.hs === '85181019').nguon = 'tax.85181011';
+  const r2 = C.kiemRanhGioi('851810', b2);
+  check('2b lỗ hổng THẬT trong vùng của tiêu đề (Micro, đường kính > 10 mm) vẫn bị báo', coLoi(r2, 'cong1-khong-phu-kin:8518101:') && r2.loi.some((l) => l.startsWith('cong1-khong-phu-kin:8518101:') && l.includes('tenLoai=Micro')), r2.loi);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
