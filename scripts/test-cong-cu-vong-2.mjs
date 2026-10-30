@@ -149,5 +149,24 @@ const DUNG = (v) => ({ fact: 'dungCho', op: 'CONG_DUNG', value: v });
   check('5f 852351 cùng khoá congDung: .91/.92 đều tới được, không chồng lấn', !coLoi(r, 'cong2-dong-khong-toi-duoc:85235191') && !coLoi(r, 'cong2-dong-khong-toi-duoc:85235192') && !coLoi(r, 'cong2-chong-lan:85235191+85235192'), r.loi);
 }
 
+// ── 7. Cổng 2: điểm mù cha–con cùng khoá chữ tự do (ứng viên ghép); giới hạn tổ hợp (nâng + lấy mẫu tất định) ─────────────
+{
+  // 950300: tiêu đề 9503002 "Búp bê" (tenLoai) và dòng con .22 "Quần áo …" (tenLoai) — một vector chỉ mang một giá trị
+  // tenLoai ⇒ trước #653 .22 không bao giờ tới được (cong2-dong-khong-toi-duoc + cong2-diem-mu).
+  const r = C.kiemRanhGioi('950300', docNhap('950300'));
+  check('7a 950300 .22 tới được nhờ ứng viên ghép cha–con (không còn cong2-dong-khong-toi-duoc:95030022)', !coLoi(r, 'cong2-dong-khong-toi-duoc:95030022'), r.loi);
+  check('7b … không còn cảnh báo điểm mù cho cặp đã ghép', !coCanh(r, 'cong2-diem-mu:tenLoai:9503002>95030022'), r.canhBao);
+  // 854442: cặp .32/.33/.34/.39 × .94/.95/.96 có 58.320 tổ hợp — trước #653 vượt giới hạn 20.000 (DỪNG).
+  check('7c giới hạn tổ hợp vét cạn ≥ 58.320 (8544.42)', C.GIOI_HAN_TO_HOP >= 58320, C.GIOI_HAN_TO_HOP);
+  const b = docNhap('854442');
+  const m1 = C.kiemRanhGioi('854442', b, { gioiHanToHop: 2000 });
+  const m2 = C.kiemRanhGioi('854442', b, { gioiHanToHop: 2000 });
+  check('7d vượt giới hạn ⇒ lấy mẫu (không còn lỗi cong2-qua-nhieu-to-hop), thongKe.layMau = true + cảnh báo cong2-lay-mau', !coLoi(m1, 'cong2-qua-nhieu-to-hop') && m1.thongKe.layMau === true && coCanh(m1, 'cong2-lay-mau:85444232+85444294:'), { loi: m1.loi.filter((l) => /to-hop/.test(l)), tk: m1.thongKe });
+  check('7e lấy mẫu tất định (hai lần chạy giống hệt)', JSON.stringify(m1) === JSON.stringify(m2));
+  check('7f cảnh báo lấy mẫu không phải DỪNG', !ML.laDung('cong2-lay-mau:85444232+85444294:2000/58320') && !m1.dung.some((d) => d.startsWith('cong2-lay-mau')));
+  const tk = C.kiemRanhGioi('830220', docNhap('830220')).thongKe;
+  check('7g bản không vượt giới hạn: thongKe.layMau = false', tk.layMau === false, tk);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
