@@ -1,0 +1,128 @@
+{
+  "phienBan": "cv755-am@1",
+  "ten": "Ca âm (d) spec §10 — 6 ví dụ \"mô tả sơ sài\" của CV 755/TCHQ-GSQL (11/02/2020), mục 1 (L1-2b, #569)",
+  "duyetBoi": "CLAUDE_DUYET",
+  "nguonVanBan": {
+    "soHieu": "755/TCHQ-GSQL",
+    "ngay": "2020-02-11",
+    "tep": "oz-wiki:wiki/sources/755-tchq-gsql-2020.md",
+    "commitWiki": "10ed33c",
+    "bacNguon": "B",
+    "ghiChuBac": "Trang wiki L0h: trích đoạn ngắn đọc từ thân văn bản hiển thị trên LuatVietnam (bậc B), đối chiếu chéo bản dịch tiếng Anh bên thứ ba (bậc C). CHƯA đối chiếu bản có dấu đỏ; nguồn không có số trang nên vị trí ghi theo mục/đoạn (trang: null).",
+    "hieuLuc": "CV 17552/CHQ-GSQL (16/06/2026) thay thế nội dung hướng dẫn kiểm tra, giám sát xuất xứ, ghi nhãn của CV 755; chưa rõ mục 1 có bị thay không (wiki: CHUA_XAC_MINH). Ca âm chỉ là VÍ DỤ minh hoạ cách hải quan nhìn mô tả sơ sài, KHÔNG làm căn cứ pháp lý (căn cứ hiện hành của ô mô tả: chỉ tiêu 1.78 TT 121/2025 qua lib/legal-basis.js)."
+  },
+  "cauDan": {
+    "nhap": "\"Ví dụ: một số tờ khai nhập khẩu tại ô mô tả hàng hóa chỉ khai tên hàng hóa như khung ghế tựa sofa bằng sắt\" […]",
+    "xuat": "\"Một số tờ khai xuất khẩu tại ô mô tả hàng hóa khai còn khai sơ sài như\" […]",
+    "tieuChi": "\"tên hàng, nhãn hiệu hàng hóa, quy cách phẩm chất, thông số kỹ thuật, thành phần cấu tạo,\" + \"model, ký mà hiệu, đặc tính, công dụng của hàng hóa\""
+  },
+  "luatDung": "Chỉ 6 ví dụ có trong văn bản; KHÔNG soạn thêm ví dụ \"giống CV 755\" (máy kiểm kiemCaAm chặn id ngoài 6 ví dụ). moTaSoSai chép nguyên văn cột \"Mô tả bị nêu là sơ sài\" của trang wiki (kể cả \"xuất xứ\", \"mới 100%\" — đó chính là chữ bị nêu).",
+  "chamBench": "Soát (K1 + K2): mỗi ca âm tờ khai nhập phải có ≥ 1 mục CANH_BAO/LOI. Sinh mô tả từ đầu vào sơ sài: đường mới phải trả ketLuan.trangThai = THIEU_DU_KIEN (không DU_CAN_CU, không moTaEcus \"đạt\"); đường cũ: compliance WEAK/REJECT hoặc passesCustomsAudit=false.",
+  "ca": [
+    {
+      "id": "CV755-NK-1",
+      "loaiToKhai": "NHAP",
+      "moTaSoSai": "khung ghế tựa sofa bằng sắt RHF",
+      "viSaoKhongDat": "CV 755 mục 1 nêu ví dụ này là khai sơ sài: người khai \"chưa khai chi tiết, rõ ràng, đầy đủ các tiêu chí như tên hàng, nhãn hiệu hàng hóa\" (trích đoạn M1.1). Văn bản không nêu lý do riêng, không đưa mô tả \"đạt\" thay thế cho từng ví dụ.",
+      "bacNguon": "B",
+      "nguon": {
+        "tep": "oz-wiki:wiki/sources/755-tchq-gsql-2020.md",
+        "trang": null,
+        "viTri": "Mục 1, đoạn 2 — bảng 6 ví dụ, dòng NK-1",
+        "trich": "NK-1 | Nhập khẩu | \"khung ghế tựa sofa bằng sắt RHF\" | Mục 1, đoạn 2"
+      },
+      "maHsChay": {
+        "ma": "94019999",
+        "khongPhaiDapAn": true,
+        "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+        "trich": "Ghế ngồi (trừ các loại thuộc nhóm 94.02), có hoặc không chuyển được thành giường, và bộ phận của chúng",
+        "ghiChu": "Mã để chạy máy (soát/sinh cần mã 8 số). CV 755 không ghi mã cho ví dụ này. Claude chọn tay theo chữ nhóm trong biểu thuế, không chạy máy phân loại. KHÔNG phải đáp án phân loại, bench không chấm mã. Dòng \"Loại khác\" của bộ phận ghế, không bằng plastic. Mô tả không nói ghế thuộc phân nhóm nào của 94.01."
+      }
+    },
+    {
+      "id": "CV755-NK-2",
+      "loaiToKhai": "NHAP",
+      "moTaSoSai": "da bò thuộc HB431",
+      "viSaoKhongDat": "CV 755 mục 1 nêu ví dụ này là khai sơ sài: người khai \"chưa khai chi tiết, rõ ràng, đầy đủ các tiêu chí như tên hàng, nhãn hiệu hàng hóa\" (trích đoạn M1.1). Văn bản không nêu lý do riêng, không đưa mô tả \"đạt\" thay thế cho từng ví dụ.",
+      "bacNguon": "B",
+      "nguon": {
+        "tep": "oz-wiki:wiki/sources/755-tchq-gsql-2020.md",
+        "trang": null,
+        "viTri": "Mục 1, đoạn 2 — bảng 6 ví dụ, dòng NK-2",
+        "trich": "NK-2 | Nhập khẩu | \"da bò thuộc HB431\" | Mục 1, đoạn 2"
+      },
+      "maHsChay": {
+        "ma": "41079900",
+        "khongPhaiDapAn": true,
+        "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+        "trich": "Da thuộc đã được gia công thêm sau khi thuộc hoặc làm mộc, kể cả da giấy, của động vật họ trâu bò (kể cả trâu) hoặc của động vật họ ngựa, không có lông, đã hoặc chưa xẻ, trừ da thuộc nhóm 41.14",
+        "ghiChu": "Mã để chạy máy (soát/sinh cần mã 8 số). CV 755 không ghi mã cho ví dụ này. Claude chọn tay theo chữ nhóm trong biểu thuế, không chạy máy phân loại. KHÔNG phải đáp án phân loại, bench không chấm mã. Mô tả không nói đã gia công thêm sau khi thuộc hay chưa (41.04 hay 41.07), nguyên con hay nửa con, da cật hay da váng."
+      }
+    },
+    {
+      "id": "CV755-NK-3",
+      "loaiToKhai": "NHAP",
+      "moTaSoSai": "chăn lông hoá học, loại 2kg+/-10%, NSX: Guangdong Kaixuan Furniture Co., Limited, mới 100%",
+      "viSaoKhongDat": "CV 755 mục 1 nêu ví dụ này là khai sơ sài: người khai \"chưa khai chi tiết, rõ ràng, đầy đủ các tiêu chí như tên hàng, nhãn hiệu hàng hóa\" (trích đoạn M1.1). Văn bản không nêu lý do riêng, không đưa mô tả \"đạt\" thay thế cho từng ví dụ.",
+      "bacNguon": "B",
+      "nguon": {
+        "tep": "oz-wiki:wiki/sources/755-tchq-gsql-2020.md",
+        "trang": null,
+        "viTri": "Mục 1, đoạn 2 — bảng 6 ví dụ, dòng NK-3",
+        "trich": "NK-3 | Nhập khẩu | \"chăn lông hoá học, loại 2kg+/-10%, NSX: Guangdong Kaixuan Furniture Co., Limited, mới 100%\" | Mục 1, đoạn 2"
+      },
+      "maHsChay": {
+        "ma": "63014090",
+        "khongPhaiDapAn": true,
+        "nguon": "data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz",
+        "trich": "Chăn và chăn du lịch",
+        "ghiChu": "Mã để chạy máy (soát/sinh cần mã 8 số). CV 755 không ghi mã cho ví dụ này. Claude chọn tay theo chữ nhóm trong biểu thuế, không chạy máy phân loại. KHÔNG phải đáp án phân loại, bench không chấm mã. \"lông hoá học\" không nói xơ tổng hợp (6301.40) hay xơ tái tạo (6301.90), không nói vải không dệt hay dệt."
+      }
+    },
+    {
+      "id": "CV755-XK-1",
+      "loaiToKhai": "XUAT",
+      "moTaSoSai": "buồng khí Haemofix FF TK, hàng mới 100%, xuất xứ Việt Nam",
+      "viSaoKhongDat": "CV 755 mục 1 nêu ví dụ này là khai sơ sài: người khai \"chưa khai chi tiết, rõ ràng, đầy đủ các tiêu chí như tên hàng, nhãn hiệu hàng hóa\" (trích đoạn M1.1). Văn bản không nêu lý do riêng, không đưa mô tả \"đạt\" thay thế cho từng ví dụ.",
+      "bacNguon": "B",
+      "nguon": {
+        "tep": "oz-wiki:wiki/sources/755-tchq-gsql-2020.md",
+        "trang": null,
+        "viTri": "Mục 1, đoạn 2 — bảng 6 ví dụ, dòng XK-1",
+        "trich": "XK-1 | Xuất khẩu | \"buồng khí Haemofix FF TK, hàng mới 100%, xuất xứ Việt Nam\" | Mục 1, đoạn 2"
+      },
+      "ngoaiPhamViLat1": true,
+      "lyDoNgoaiPhamVi": "Lát 1 chỉ tờ khai nhập (plan Global Constraints; khuôn 2.69 tờ khai xuất làm sau). Lưu để dùng ở lát xuất; bench lát 1 không chạy."
+    },
+    {
+      "id": "CV755-XK-2",
+      "loaiToKhai": "XUAT",
+      "moTaSoSai": "giầy vải 368673/SK849016-1, xuất xứ Việt Nam",
+      "viSaoKhongDat": "CV 755 mục 1 nêu ví dụ này là khai sơ sài: người khai \"chưa khai chi tiết, rõ ràng, đầy đủ các tiêu chí như tên hàng, nhãn hiệu hàng hóa\" (trích đoạn M1.1). Văn bản không nêu lý do riêng, không đưa mô tả \"đạt\" thay thế cho từng ví dụ.",
+      "bacNguon": "B",
+      "nguon": {
+        "tep": "oz-wiki:wiki/sources/755-tchq-gsql-2020.md",
+        "trang": null,
+        "viTri": "Mục 1, đoạn 2 — bảng 6 ví dụ, dòng XK-2",
+        "trich": "XK-2 | Xuất khẩu | \"giầy vải 368673/SK849016-1, xuất xứ Việt Nam\" | Mục 1, đoạn 2"
+      },
+      "ngoaiPhamViLat1": true,
+      "lyDoNgoaiPhamVi": "Lát 1 chỉ tờ khai nhập (plan Global Constraints; khuôn 2.69 tờ khai xuất làm sau). Lưu để dùng ở lát xuất; bench lát 1 không chạy."
+    },
+    {
+      "id": "CV755-XK-3",
+      "loaiToKhai": "XUAT",
+      "moTaSoSai": "gioăng cao su mới 100%, xuất xứ Việt Nam",
+      "viSaoKhongDat": "CV 755 mục 1 nêu ví dụ này là khai sơ sài: người khai \"chưa khai chi tiết, rõ ràng, đầy đủ các tiêu chí như tên hàng, nhãn hiệu hàng hóa\" (trích đoạn M1.1). Văn bản không nêu lý do riêng, không đưa mô tả \"đạt\" thay thế cho từng ví dụ.",
+      "bacNguon": "B",
+      "nguon": {
+        "tep": "oz-wiki:wiki/sources/755-tchq-gsql-2020.md",
+        "trang": null,
+        "viTri": "Mục 1, đoạn 2 — bảng 6 ví dụ, dòng XK-3",
+        "trich": "XK-3 | Xuất khẩu | \"gioăng cao su mới 100%, xuất xứ Việt Nam\" | Mục 1, đoạn 2"
+      },
+      "ngoaiPhamViLat1": true,
+      "lyDoNgoaiPhamVi": "Lát 1 chỉ tờ khai nhập (plan Global Constraints; khuôn 2.69 tờ khai xuất làm sau). Lưu để dùng ở lát xuất; bench lát 1 không chạy."
+    }
+  ]
+}

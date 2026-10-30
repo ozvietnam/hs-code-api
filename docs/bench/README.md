@@ -15,6 +15,9 @@ Chạy trước và sau mỗi thay đổi ở `describe` hoặc soát, rồi so 
 | `scripts/mo-ta-bench-lib.mjs` | có | hàm chấm dùng chung |
 | `data/oz-export/bench/*.jsonl` | **không** (gitignore) | chi tiết từng ca, có câu Oz |
 | `scripts/do-lat-1.mjs` → `data/ho-so/lat-1.json` | có (chỉ tỉ lệ + mã) | chốt 50 phân nhóm lát 1, trần Pareto, tỉ lệ máy chốt — báo cáo `lat-1-2026-10-30.md` |
+| `data/bench/ho-so-lat-1.json` + `khoa-bo-de-lat-1.txt` | có | bộ đề lát 1 (L1-2a, #566; L1-2b gộp 4 ca #543 thuộc lát 1, #569), khoá băm |
+| `data/bench/cv755-am.json` | có | ca âm (d): đúng 6 ví dụ "mô tả sơ sài" CV 755 (bậc B), 3 ca xuất ngoài phạm vi lát 1 (#569) |
+| `scripts/dung-giu-rieng-lat-1.mjs` → `data/oz-export/bench/giu-rieng-lat-1.jsonl` | script có, tệp **không** | tập giữ riêng Oz của lát 1 (b); chỉ số đếm vào `lat-1-truoc-2026-10-30.md` |
 
 Bộ đề lấy dữ liệu từ hai nguồn: TB-TCHQ (`data/precedents.json`) hoặc hàng tự dựng theo biểu thuế và chú giải. Mỗi ca có:
 - mã 8 số và thông tin hàng;
@@ -55,6 +58,19 @@ node scripts/bench-mo-ta.mjs --mode=sinh --nguon=bo-de --n=20 --api=https://hs-k
 node scripts/bench-mo-ta.mjs --mode=soat --nguon=oz --n=200        # K1 + K2 tất định
 node scripts/bench-mo-ta.mjs --mode=soat --nguon=bo-de --llm=that --k2 --max-llm=20      # bật K2 (LLM)
 ```
+
+Bench lát 1 (L1-2b, #569; spec §10) — in thêm **BẢNG §10** đủ hàng, số "trước" ở `lat-1-truoc-2026-10-30.md`:
+
+```
+node scripts/bench-mo-ta.mjs --mode=sinh --bo-de=data/bench/ho-so-lat-1.json --lat=1   # (a) + (c) + ca âm (d)
+node scripts/bench-mo-ta.mjs --mode=soat --bo-de=data/bench/ho-so-lat-1.json --lat=1
+node scripts/bench-mo-ta.mjs --mode=sinh --nguon=oz --lat=1                            # (b) tập giữ riêng Oz lát 1
+node scripts/bench-mo-ta.mjs --mode=soat --nguon=oz --lat=1
+node scripts/dung-giu-rieng-lat-1.mjs        # đóng băng tập (b) vào data/oz-export/ (gitignore), in số đếm
+```
+
+`--lat=1` gộp thêm ca #543 thuộc lát 1 mà bộ đề lát 1 chưa gộp (ca đã gộp mang `gopTu`, không đếm hai lần); mặc định chạy
+đủ ca (không cắt 200). Ca âm tờ khai nhập chạy với `maHsChay` — mã để chạy máy, không phải đáp án (CV 755 không ghi mã).
 
 Tham số khác:
 
