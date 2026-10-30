@@ -98,7 +98,7 @@ const menhDe = (kq, loai) => kq.ve.flatMap((v) => v.menhDe).filter((m) => m.loai
 }
 {
   const r = k5('940542', nhap('940542'));
-  check('3i 940542: .30 bỏ "không nhấp nháy" ⇒ cong5-ve-gioi-han-bi-bo', co(r.loi, 'cong5-ve-gioi-han-bi-bo:94054230:không nhấp nháy'), loi5(r));
+  check('3i 940542 (đã sửa #665: tenLoai giữ nguyên cụm): KHÔNG còn cong5-ve-gioi-han-bi-bo', !co(r.loi, 'cong5-ve-gioi-han-bi-bo:94054230:'), loi5(r));
 }
 
 // ── 4. Sửa đúng ⇒ hết lỗi; miễn vế BO_VE có lý do ⇒ hết lỗi; lý do rỗng / "người soát xem" / DE_TRONG ⇒ đỏ ─────────
@@ -197,9 +197,9 @@ const menhDe = (kq, loai) => kq.ve.flatMap((v) => v.menhDe).filter((m) => m.loai
 {
   let out = ''; let code = 0;
   try { out = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--ve', '--pn6=940542'], { encoding: 'utf8', env: process.env, stdio: 'pipe' }); } catch (e) { out = String(e.stdout); code = e.status; }
-  check('7a CLI --ve in vế giới hạn chưa phủ của .30 (mã thoát 1)', code === 1 && /94054230/.test(out) && /không nhấp nháy/.test(out) && /CHƯA PHỦ/.test(out), out.slice(0, 600));
+  check('7a CLI --ve sau #665: .30 không còn vế CHƯA PHỦ (mã thoát 0)', code === 0 && !out.includes('CHƯA PHỦ'), out.slice(0, 600));
   let txt = ''; try { execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--kiem', '--pn6=940542'], { encoding: 'utf8', env: process.env, stdio: 'pipe' }); } catch (e) { txt = String(e.stdout); }
-  check('7b CLI --kiem in cong5-ve-gioi-han-bi-bo + lời giải thích', /cong5-ve-gioi-han-bi-bo:94054230/.test(txt) && /BO_VE/.test(txt), txt.slice(0, 800));
+  check('7b CLI --kiem sau #665: hết cong5-ve-gioi-han-bi-bo:94054230', !/cong5-ve-gioi-han-bi-bo:94054230/.test(txt), txt.slice(0, 800));
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
