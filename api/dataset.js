@@ -513,7 +513,7 @@ module.exports = async function handler(req, res) {
     // GET /api/admin/ho-so-shadow?tu=YYYY-MM-DD&den=YYYY-MM-DD (L1-5f): tổng hợp số đo chạy bóng hồ sơ phân loại (chỉ số).
     // KÍN — không nằm trong allowlist lib/public-access.js (requireAuthUnlessPublic ở đầu handler đã đòi Bearer).
     if (resource === 'ho_so_shadow') {
-      const { baoCaoShadow, NGAY } = require('../lib/ho-so/bao-cao-shadow');
+      const { baoCaoShadow, NGAY_BAO_CAO: NGAY } = require('../lib/ho-so/api');
       const tu = String(req.query.tu || '').trim() || null;
       const den = String(req.query.den || '').trim() || null;
       if ((tu && !NGAY.test(tu)) || (den && !NGAY.test(den))) {
