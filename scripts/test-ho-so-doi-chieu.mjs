@@ -117,6 +117,19 @@ const caBoDe = (id) => BO_DE.ca.find((x) => x.id === id);
   const c = caBoDe('BD-96-03');
   const da = c.caCaiLoi.doiAnhEm;
   const moTa = c.moTaMau.replace(da.tu, da.sang); // "Vỏ ngoài rời của bình giữ nhiệt chân không…"
+  // #675 — KHÔNG có LLM (bench offline: LLM lỗi) ⇒ LUẬT phải tự đọc "Vỏ ngoài rời của …" thành laBoPhan = true (tất định)
+  // ⇒ MAU_THUAN + maTroToi 96170020. Trước sửa: luật trả CHUA_BIET ⇒ THIEU ⇒ THIEU_DU_KIEN.
+  const llmOffline = async () => { const e = new Error('OFFLINE'); e.code = 'OFFLINE'; throw e; };
+  const r0 = await dung(c.maHs, { moTa }, { llm: llmOffline });
+  const lb0 = r0.duKien.find((d) => d.fact === 'laBoPhan');
+  check('#675 BD-96-03 không LLM ⇒ luật đọc laBoPhan = true, bangChung nguyên văn, không docBoi LLM', lb0 && lb0.trangThai === 'DA_CO' && lb0.giaTri === true && lb0.docBoi !== 'LLM' && moTa.includes(lb0.bangChung), lb0);
+  const e0 = r0.hoSo.duongDiPhapLy.find((e) => e.dieuKien && e.dieuKien.fact === 'laBoPhan');
+  check('#675 BD-96-03 không LLM ⇒ MAU_THUAN tất định + maTroToi 96170020', e0 && e0.ketQua === 'MAU_THUAN' && e0.tatDinh === true && r0.hoSo.ketLuan.trangThai === 'MAU_THUAN' && r0.hoSo.ketLuan.maTroToi === da.maTroToi && da.maTroToi === '96170020', { e0, kl: r0.hoSo.ketLuan });
+  // ca chuẩn (moTaMau "…chân không hoàn chỉnh…") vẫn DU_CAN_CU; bằng chứng là "hoàn chỉnh", không phải "không hoàn chỉnh" (#667)
+  const rc = await dung(c.maHs, { moTa: c.moTaMau }, { llm: llmOffline });
+  const lbc = rc.duKien.find((d) => d.fact === 'laBoPhan');
+  check('#667 BD-96-03 chuẩn ⇒ laBoPhan = false, bangChung "hoàn chỉnh" (chữ "không" của "chân không" không là phủ định)', lbc && lbc.giaTri === false && lbc.bangChung === 'hoàn chỉnh', lbc);
+  check('#667 BD-96-03 chuẩn ⇒ DU_CAN_CU', rc.hoSo.ketLuan.trangThai === 'DU_CAN_CU', rc.hoSo.ketLuan);
   const llmBia = llmStub([{ fact: 'laBoPhan', giaTri: true, bangChung: 'phụ tùng thay thế' }]);
   const r1 = await dung(c.maHs, { moTa }, { llm: llmBia });
   const e1 = r1.hoSo.duongDiPhapLy.find((e) => e.dieuKien && e.dieuKien.fact === 'laBoPhan');
