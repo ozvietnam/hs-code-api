@@ -39,6 +39,9 @@ if (B) {
     check('không ca nào lỗi động cơ', kq.tong.tatCa.loi === 0, kq.theoCa.filter((r) => !r.trangThai));
     check('đường mới: "xuất xứ" 0 % trên mọi ca', kq.tong.tatCa.xuatXu.so === 0);
     check('đường mới: trích dẫn sai = 0', kq.tong.tatCa.trichSai.sai === 0, kq.tong.tatCa.trichSai);
+    const bd9603 = kq.theoCa.find((r) => r.id === 'BD-96-03');
+    check('#675 BD-96-03 đổi sang dòng anh em ⇒ MAU_THUAN (luật đọc "Vỏ ngoài rời của", không cần LLM)', bd9603 && bd9603.doiAnhEm === 'MAU_THUAN', bd9603);
+    check('#675 áp dụng: bắt + chỉ đúng mã anh em 1/1', kq.tong.apDung.doiAnhEm.bat === kq.tong.apDung.doiAnhEm.n && kq.tong.apDung.doiAnhEm.chiDungMa === kq.tong.apDung.doiAnhEm.n && kq.tong.apDung.doiAnhEm.n >= 1, kq.tong.apDung.doiAnhEm);
     check('kết quả chỉ có số + mã/id công khai (không câu mô tả)', !JSON.stringify(kq).includes('moTaMau') && !/Bình giữ nhiệt|Cáp sạc/.test(JSON.stringify(kq)));
   }
 }

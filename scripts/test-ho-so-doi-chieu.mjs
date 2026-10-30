@@ -130,31 +130,34 @@ const caBoDe = (id) => BO_DE.ca.find((x) => x.id === id);
   const lbc = rc.duKien.find((d) => d.fact === 'laBoPhan');
   check('#667 BD-96-03 chuẩn ⇒ laBoPhan = false, bangChung "hoàn chỉnh" (chữ "không" của "chân không" không là phủ định)', lbc && lbc.giaTri === false && lbc.bangChung === 'hoàn chỉnh', lbc);
   check('#667 BD-96-03 chuẩn ⇒ DU_CAN_CU', rc.hoSo.ketLuan.trangThai === 'DU_CAN_CU', rc.hoSo.ketLuan);
+  // Các ca LLM dưới: câu luật KHÔNG đọc được (bỏ chữ "rời" — luật chỉ nhận cấu trúc "X rời của Y") để LLM mới được hỏi.
+  const moTaLlm = moTa.replace('Vỏ ngoài rời của', 'Vỏ ngoài của');
+  check('câu cho ca LLM khác câu gốc và luật không đọc được laBoPhan', moTaLlm !== moTa && TV.docGiaTri('laBoPhan', moTaLlm).trangThai === 'CHUA_BIET', moTaLlm);
   const llmBia = llmStub([{ fact: 'laBoPhan', giaTri: true, bangChung: 'phụ tùng thay thế' }]);
-  const r1 = await dung(c.maHs, { moTa }, { llm: llmBia });
+  const r1 = await dung(c.maHs, { moTa: moTaLlm }, { llm: llmBia });
   const e1 = r1.hoSo.duongDiPhapLy.find((e) => e.dieuKien && e.dieuKien.fact === 'laBoPhan');
   check('BD-96-03 + LLM trích bịa ⇒ laBoPhan CHUA_BIET ⇒ ranh giới THIEU, THIEU_DU_KIEN', e1 && e1.ketQua === 'THIEU' && r1.hoSo.ketLuan.trangThai === 'THIEU_DU_KIEN', { e1, kl: r1.hoSo.ketLuan });
-  const llmThat = llmStub([{ fact: 'laBoPhan', giaTri: true, bangChung: 'Vỏ ngoài rời' }]);
-  const r2 = await dung(c.maHs, { moTa }, { llm: llmThat });
+  const llmThat = llmStub([{ fact: 'laBoPhan', giaTri: true, bangChung: 'Vỏ ngoài' }]);
+  const r2 = await dung(c.maHs, { moTa: moTaLlm }, { llm: llmThat });
   const lb = r2.duKien.find((d) => d.fact === 'laBoPhan');
-  check('BD-96-03 + LLM trích thật ⇒ nhận, nguồn KHACH, docBoi LLM', lb && lb.trangThai === 'DA_CO' && lb.giaTri === true && lb.nguon === 'KHACH' && lb.docBoi === 'LLM' && moTa.includes(lb.bangChung), lb);
+  check('BD-96-03 + LLM trích thật ⇒ nhận, nguồn KHACH, docBoi LLM', lb && lb.trangThai === 'DA_CO' && lb.giaTri === true && lb.nguon === 'KHACH' && lb.docBoi === 'LLM' && moTaLlm.includes(lb.bangChung), lb);
   const e2 = r2.hoSo.duongDiPhapLy.find((e) => e.dieuKien && e.dieuKien.fact === 'laBoPhan');
   check('BD-96-03 (LLM) ⇒ MAU_THUAN + maTroToi đúng dòng anh em của bộ đề', e2 && e2.ketQua === 'MAU_THUAN' && r2.hoSo.ketLuan.trangThai === 'MAU_THUAN' && r2.hoSo.ketLuan.maTroToi === da.maTroToi, { e2, kl: r2.hoSo.ketLuan });
   check('dữ kiện do LLM đọc ⇒ ranh giới không tất định (không làm căn cứ LOI)', e2 && e2.tatDinh === false, e2);
-  check('LLM trả kiểu sai (CO_KHONG nhận chuỗi) ⇒ bỏ', (await docDuKien({ moTa }, r2.dd, { llm: llmStub([{ fact: 'laBoPhan', giaTri: 'có', bangChung: 'Vỏ ngoài rời' }]) })).find((d) => d.fact === 'laBoPhan').trangThai === 'CHUA_BIET');
-  check('LLM trả khoá ngoài danh sách được hỏi ⇒ bỏ', !(await docDuKien({ moTa }, r2.dd, { llm: llmStub([{ fact: 'congSuat', giaTri: 5, donVi: 'kW', bangChung: 'Vỏ ngoài rời' }]) })).some((d) => d.fact === 'congSuat' && d.trangThai === 'DA_CO'));
+  check('LLM trả kiểu sai (CO_KHONG nhận chuỗi) ⇒ bỏ', (await docDuKien({ moTa: moTaLlm }, r2.dd, { llm: llmStub([{ fact: 'laBoPhan', giaTri: 'có', bangChung: 'Vỏ ngoài' }]) })).find((d) => d.fact === 'laBoPhan').trangThai === 'CHUA_BIET');
+  check('LLM trả khoá ngoài danh sách được hỏi ⇒ bỏ', !(await docDuKien({ moTa: moTaLlm }, r2.dd, { llm: llmStub([{ fact: 'congSuat', giaTri: 5, donVi: 'kW', bangChung: 'Vỏ ngoài' }]) })).some((d) => d.fact === 'congSuat' && d.trangThai === 'DA_CO'));
   // CHENH_THUE theo biểu (96170010 30 % ↔ 96170020 25 %)
   const ct = r2.hoSo.tinHieuRuiRo.find((t) => t.loai === 'CHENH_THUE');
   check('MAU_THUAN có maTroToi chênh ≥ 5 điểm MFN ⇒ tín hiệu CHENH_THUE (biểu)', ct && ct.maKhac === da.maTroToi && Math.abs(ct.chenh) >= 5, r2.hoSo.tinHieuRuiRo);
   // LLM trong withPrivateData cho khoá dịch vụ
   const llmR = llmStub([]);
-  await docDuKien({ moTa }, r2.dd, { llm: llmR, rieng: true });
+  await docDuKien({ moTa: moTaLlm }, r2.dd, { llm: llmR, rieng: true });
   check('docDuKien rieng=true ⇒ LLM chạy trong withPrivateData', llmR.goi.length === 1 && llmR.goi[0].rieng === true, llmR.goi);
   const llmC = llmStub([]);
-  await docDuKien({ moTa }, r2.dd, { llm: llmC, rieng: false });
+  await docDuKien({ moTa: moTaLlm }, r2.dd, { llm: llmC, rieng: false });
   check('docDuKien lượt công khai ⇒ không bọc riêng tư', llmC.goi.length === 1 && llmC.goi[0].rieng === false, llmC.goi);
   const llmLoi = async () => { throw Object.assign(new Error('NO_PRIVATE_LLM'), { code: 'NO_PRIVATE_LLM' }); };
-  const dkLoi = await docDuKien({ moTa }, r2.dd, { llm: llmLoi, rieng: true });
+  const dkLoi = await docDuKien({ moTa: moTaLlm }, r2.dd, { llm: llmLoi, rieng: true });
   check('LLM lỗi ⇒ không ném, dữ kiện còn CHUA_BIET', dkLoi.find((d) => d.fact === 'laBoPhan').trangThai === 'CHUA_BIET');
 }
 

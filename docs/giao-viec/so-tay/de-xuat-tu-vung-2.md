@@ -32,3 +32,15 @@ spec dùng khoá không có trong `tu-vung@1` bị từ chối với `THIEU_KHOA
 - `lib/tu-vung.js#docGiaTri` đọc được số chữ ("hai sợi") và phân số ("1/10").
 - Chạy lại `node scripts/check-tu-vung.mjs`, `node scripts/bench-may-nghi.mjs`; bench không được tụt.
 - Mở lại các mục `THIEU_KHOA_TU_VUNG` đã ghi trong bản nháp (`grep -l THIEU_KHOA_TU_VUNG data/ho-so/ranh-gioi/*.json`).
+
+## Luật bộ đọc tạm đặt trong `lib/tu-vung.js` — chuyển vào dữ liệu khi lên `tu-vung@2` (#667, #675)
+
+`tu-vung@1` khoá băm nên hai luật dưới nằm ở BỘ ĐỌC (mã), không ở tệp dữ liệu. Khi nâng phiên bản, chuyển chúng vào dữ liệu rồi xoá khỏi mã:
+
+| Luật (hằng trong `lib/tu-vung.js`) | Nội dung | Đích ở `tu-vung@2` |
+|---|---|---|
+| `CUM_DANH_TU_KHONG` | Cụm danh từ chứa "không" không phải phủ định: "không khí", "không gian", "không trung"; "chân không", "hàng không" chỉ khi chữ ngay sau không phải chữ hay theo sau phủ định (có, phải, được, dùng, chứa, gắn…) | `khongPhaiPhuDinh` (cần cho phép mẫu có lookahead) |
+| `CAU_TRUC_CO.laBoPhan` | Cấu trúc "X rời của Y" ⇒ `laBoPhan = true`; trừ "tháo/dạng/để/chưa rời của" (hàng tháo rời, GIR 2(a)) | `laBoPhan.cachDoc` (mẫu cấu trúc) |
+
+Bộ đọc cũng đổi hai điểm không cần dữ liệu: cụm giá trị KHÔNG bị phủ định ("không hoàn chỉnh") không còn được đọc thành giá trị
+KHÔNG (bỏ, không đoán); bằng chứng phủ định chỉ gồm chữ phủ định khi giá trị thật sự đến từ phủ định.
