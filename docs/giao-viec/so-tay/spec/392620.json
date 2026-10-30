@@ -1,0 +1,90 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "392620",
+  "phien": "zcode:glm-5.3:20261030T1538#soan-392620",
+  "dong8": {
+    "39262010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Găng tay",
+            "tạp dề",
+            "yếm cho trẻ em"
+          ]
+        }
+      ]
+    },
+    "39262020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Miếng đệm và miếng bảo vệ vai"
+        }
+      ]
+    },
+    "39262030": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Lót",
+            "đệm"
+          ]
+        }
+      ]
+    },
+    "39262060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hàng may mặc"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "chống các chất hóa học",
+            "phóng xạ",
+            "chống cháy"
+          ]
+        }
+      ]
+    },
+    "39262090": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "39262010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39262010: \"Găng tay; tạp dề; yếm cho trẻ em (SEN)\" ⇒ tenLoai TEN_LOAI [\"Găng tay\",\"tạp dề\",\"yếm cho trẻ em\"] (mảng = hoặc, 3 vế tên hàng liệt kê bằng dấu ;)"
+    },
+    {
+      "ma": "39262020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39262020: \"Miếng đệm và miếng bảo vệ vai (SEN)\" ⇒ tenLoai TEN_LOAI \"Miếng đệm và miếng bảo vệ vai\" (tên hàng một khối)"
+    },
+    {
+      "ma": "39262030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39262030: \"Lót, đệm khác cho các sản phẩm may mặc hoặc cho các đồ phụ trợ của quần áo\" — dòng có chữ \"khác\" ⇒ phần còn lại có tên, đặt phanConLai: true (phủ định anh em 39262010, 39262020 đứng trước); điều kiện chỉ giữ tên hàng \"Lót\", \"đệm\", không đưa chữ \"khác\" vào giá trị"
+    },
+    {
+      "ma": "39262060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39262060: \"Hàng may mặc dùng để chống các chất hóa học, phóng xạ hoặc chống cháy\" ⇒ tenLoai TEN_LOAI \"Hàng may mặc\" + congDung CONG_DUNG [\"chống các chất hóa học\",\"phóng xạ\",\"chống cháy\"] (\"dùng để\" ⇒ công dụng; mảng = hoặc theo chữ liệt kê)"
+    },
+    {
+      "ma": "39262090",
+      "loai": "DE_TRONG",
+      "ghiChu": "tax.39262090: \"Loại khác\" — Loại khác trần, không ghi điều kiện (máy tự phủ định anh em)"
+    }
+  ]
+}
