@@ -72,7 +72,7 @@ for (const endpoint of ['suggest', 'describe', 'classify', 'match', 'feedback'])
 for (const endpoint of ['tax', 'search', 'notes', 'kg_chapter', 'customs-types']) {
   assert(`MỞ: /api/${endpoint}`, isPublicRead({ endpoint, method: 'GET' }) === true);
 }
-for (const resource of ['kg_stats', 'chapters', 'conflicts', 'precedents', 'wco_opinions', 'hs_tree', 'ministries', 'legal_docs', 'products', 'accuracy', 'data_quality', 'declaration_fields', 'chapter_declaration_fields']) {
+for (const resource of ['kg_stats', 'chapters', 'conflicts', 'precedents', 'wco_opinions', 'hs_tree', 'ministries', 'legal_docs', 'products', 'accuracy', 'data_quality', 'declaration_fields', 'chapter_declaration_fields', 'rui_ro_phan_loai']) {
   assert(`MỞ: dataset?resource=${resource}`, isPublicRead({ endpoint: 'dataset', resource, method: 'GET' }) === true);
 }
 
@@ -141,8 +141,8 @@ for (const bad of [undefined, {}, { endpoint: null }, { endpoint: 'tax', method:
 // --- Bất biến: allowlist không được rỗng, cũng không được phình bất thường ----
 assert('có ít nhất 5 endpoint mở', PUBLIC_ENDPOINTS.size >= 5, PUBLIC_ENDPOINTS.size);
 assert(
-  'allowlist dataset không vượt 22 resource (trần nâng 30/10 cho hieu_luc_sap_doi — công cụ canh mốc hiệu lực)',
-  PUBLIC_DATASET_RESOURCES.size <= 22,
+  'allowlist dataset không vượt 23 resource (trần nâng 30/10 cho hieu_luc_sap_doi; lên 23 cho rui_ro_phan_loai — CEO 30/10 công khai QĐ 2079)',
+  PUBLIC_DATASET_RESOURCES.size <= 23,
   PUBLIC_DATASET_RESOURCES.size,
 );
 

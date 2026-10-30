@@ -1,12 +1,15 @@
 import './test-isolate-data.mjs';
 /**
- * L0g (#545) — tầng Postgres tối thiểu + Danh mục rủi ro phân loại QĐ 2079 (bảng kín, chỉ caller nội bộ Oz).
+ * L0g (#545) — tầng Postgres tối thiểu + Danh mục rủi ro phân loại QĐ 2079.
+ * CEO đảo quyết định 30/10/2026: QĐ 2079 là văn bản nhà nước → CÔNG KHAI cho mọi người gọi (công khai, cong-oz, ERP);
+ * vẫn chỉ là TÍN HIỆU rủi ro, không bao giờ là căn cứ pháp lý / GIR. Nguồn: bảng tĩnh data/rui-ro-phan-loai/qd-2079.json
+ * (versioned) + Postgres tuỳ chọn. `MO_TA_GIONG_MA_KHAC` (đếm từ kho tờ khai Oz) vẫn chỉ nội bộ — laNoiBoOz giữ nguyên.
  *
  * Không mạng, không ghi data/ thật:
  *   - DB giả là đối tượng { query } ghi lại câu lệnh;
  *   - Postgres thật chạy TRONG TIẾN TRÌNH bằng PGlite (WASM) để kiểm migration SQL + bộ nạp + hàm đọc đầu-cuối;
  *   - HS_TEST_DATABASE_URL (tuỳ chọn) → chạy thêm trên Postgres thật qua `pg`; không có thì bỏ qua, có ghi lý do.
- * Dữ liệu QĐ 2079 ở đây là GIẢ (mã + tên bịa) — tệp thật không bao giờ vào git.
+ * Dữ liệu QĐ 2079 ở đây là GIẢ (mã + tên bịa), ghi vào thư mục tạm (HS_DATA_DIR) — không bịa dữ liệu vào data/ thật.
  */
 import { createRequire } from 'module';
 import fs from 'fs';
@@ -15,6 +18,7 @@ import path from 'path';
 import crypto from 'crypto';
 import { spawnSync } from 'child_process';
 import { fileURLToPath } from 'url';
+import { TEST_DATA_DIR } from './test-isolate-data.mjs';
 
 const require = createRequire(import.meta.url);
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -43,6 +47,8 @@ function dbGia(tra = () => []) {
 }
 
 const TEN_BI_MAT = 'Hàng giả lập tuyệt mật ABC';
+// Tệp tĩnh không tồn tại — cô lập các ca chỉ-DB khỏi data/rui-ro-phan-loai/qd-2079.json thật (khi CEO thêm sau).
+const KHONG_CO = path.join(os.tmpdir(), `khong-co-qd2079-${process.pid}.json`);
 
 // ── 1. lib/db.js: không có HS_DATABASE_URL → tính năng tắt, không ném ──
 const db = require('../lib/db.js');
@@ -94,23 +100,30 @@ check('trangThaiDb() → CHUA_CAU_HINH', (await db.trangThaiDb()) === 'CHUA_CAU_
   check('laNoiBoOz: tên dịch vụ làm token → false', laNoiBoOz(mkReq('erp')) === false);
 }
 
-// ── 4. tinHieuDanhMuc ──
-const { tinHieuDanhMuc } = require('../lib/rui-ro-phan-loai.js');
+// ── 4. tinHieuDanhMuc — CÔNG KHAI từ 30/10 (không lọc quyền) ──
+const rr = require('../lib/rui-ro-phan-loai.js');
+const { tinHieuDanhMuc } = rr;
 {
-  const gia = dbGia(() => [{ ma_a: '392310', ma_b: '392690', ten_hang: TEN_BI_MAT }]);
-  for (const noiBo of [false, undefined, 'true', 1]) {
-    const out = await tinHieuDanhMuc('39269099', { noiBo, db: gia });
-    check(`noiBo=${JSON.stringify(noiBo)} → [] và KHÔNG chạm DB`, Array.isArray(out) && out.length === 0 && gia.calls.length === 0, gia.calls.length);
+  for (const noiBo of [false, undefined, 'true', 1, true]) {
+    const gia = dbGia(() => [{ ma_a: '392310', ma_b: '392690', ten_hang: TEN_BI_MAT }]);
+    const out = await tinHieuDanhMuc('39269099', { noiBo, db: gia, file: KHONG_CO });
+    check(`noiBo=${JSON.stringify(noiBo)} → vẫn trả tín hiệu (QĐ 2079 công khai, không lọc quyền)`, out.length === 1 && out[0].maLienQuan === '392310' && gia.calls.length === 1, JSON.stringify(out));
   }
-  const out0 = await tinHieuDanhMuc('39269099', {});
-  check('thiếu noiBo (không truyền db) → [] và không tạo pool', out0.length === 0 && db.layPool() === null);
+  const out0 = await tinHieuDanhMuc('39269099', { file: KHONG_CO });
+  check('không truyền db, không có HS_DATABASE_URL → [] và không tạo pool', Array.isArray(out0) && out0.length === 0 && db.layPool() === null);
+}
+{
+  check('NHAN mới không còn NOI_BO: QD_2079_BAC_C', rr.NHAN === 'QD_2079_BAC_C');
+  check('giữ bí danh nhãn cũ NHAN_CU = QD_2079_BAC_C_NOI_BO (tương thích ngược)', rr.NHAN_CU === 'QD_2079_BAC_C_NOI_BO');
+  check('laNhanQd2079 nhận cả nhãn mới lẫn nhãn cũ, từ chối nhãn lạ', rr.laNhanQd2079('QD_2079_BAC_C') && rr.laNhanQd2079('QD_2079_BAC_C_NOI_BO') && !rr.laNhanQd2079('GIR-1') && !rr.laNhanQd2079(undefined));
+  check('GHI_CHU không còn chữ "nội bộ", vẫn nói "không phải căn cứ pháp lý"', !/nội bộ/i.test(rr.GHI_CHU) && /không phải căn cứ pháp lý/.test(rr.GHI_CHU), rr.GHI_CHU);
 }
 {
   const gia = dbGia(() => [{ ma_a: '392310', ma_b: '392690', ten_hang: 'Hàng thử' }]);
-  const out = await tinHieuDanhMuc('3926.90.99', { noiBo: true, db: gia });
-  check('noiBo=true, DB trả 1 dòng → 1 mục', out.length === 1, JSON.stringify(out));
+  const out = await tinHieuDanhMuc('3926.90.99', { db: gia, file: KHONG_CO });
+  check('DB trả 1 dòng → 1 mục', out.length === 1, JSON.stringify(out));
   const m = out[0] || {};
-  check('mục: loai=DANH_MUC_RUI_RO, nhan=QD_2079_BAC_C_NOI_BO', m.loai === 'DANH_MUC_RUI_RO' && m.nhan === 'QD_2079_BAC_C_NOI_BO');
+  check('mục: loai=DANH_MUC_RUI_RO, nhan=QD_2079_BAC_C, nguon=POSTGRES', m.loai === 'DANH_MUC_RUI_RO' && m.nhan === 'QD_2079_BAC_C' && m.nguon === 'POSTGRES', JSON.stringify(m));
   check('mục: maLienQuan là mã phía bên kia của cặp', m.maLienQuan === '392310', m.maLienQuan);
   check('mục: có ghiChu "không phải căn cứ pháp lý"', typeof m.ghiChu === 'string' && /không phải căn cứ pháp lý/.test(m.ghiChu));
   check('mục: có tenHang', m.tenHang === 'Hàng thử');
@@ -124,56 +137,33 @@ const { tinHieuDanhMuc } = require('../lib/rui-ro-phan-loai.js');
     { ma_a: '3926', ma_b: '8544', ten_hang: null },
     { ma_a: '8544', ma_b: '3926', ten_hang: null },
   ]);
-  const out = await tinHieuDanhMuc('39269099', { noiBo: true, db: gia });
+  const out = await tinHieuDanhMuc('39269099', { db: gia, file: KHONG_CO });
   check('trùng cặp đảo chiều → gộp 1 mục, không có tenHang khi null', out.length === 1 && out[0].maLienQuan === '8544' && !('tenHang' in out[0]), JSON.stringify(out));
 }
 {
-  check('db=null → [] không ném', (await tinHieuDanhMuc('39269099', { noiBo: true, db: null })).length === 0);
+  check('db=null → [] không ném', (await tinHieuDanhMuc('39269099', { db: null, file: KHONG_CO })).length === 0);
   const hong = { async query() { throw new Error('connect ECONNREFUSED 10.0.0.9:5432 password=abc'); } };
   const logs = [];
   const sw = console.warn; console.warn = (...a) => logs.push(a.join(' '));
   let out;
-  try { out = await tinHieuDanhMuc('39269099', { noiBo: true, db: hong }); } finally { console.warn = sw; }
+  try { out = await tinHieuDanhMuc('39269099', { db: hong, file: KHONG_CO }); } finally { console.warn = sw; }
   check('DB lỗi → [] không ném', Array.isArray(out) && out.length === 0);
   check('DB lỗi → log không chép nguyên thông điệp lỗi (có thể chứa host/mật khẩu)', !logs.join(' ').includes('password=abc') && !logs.join(' ').includes('10.0.0.9'), logs.join(' | '));
   const gia = dbGia();
   for (const ma of ['', 'abc', '39', null, undefined, '3926909912345']) {
-    await tinHieuDanhMuc(ma, { noiBo: true, db: gia });
+    await tinHieuDanhMuc(ma, { db: gia, file: KHONG_CO });
   }
   check('mã không hợp lệ (<4 hoặc >10 chữ số, rỗng) → không chạm DB', gia.calls.length === 0, gia.calls.length);
 }
 
-// ── 5. Bộ nạp: chặn tệp nằm trong git, chỉ in số đếm ──
+// ── 5. Bộ nạp: tệp có thể nằm trong git (bảng tĩnh công khai từ 30/10), chỉ in số đếm ──
 const nap = require('../lib/nap-qd2079.js');
 {
-  const r = spawnSync(process.execPath, ['scripts/nap-qd2079.mjs', '--file=data/customs-types.json'], { cwd: root, encoding: 'utf8', env: { ...process.env, HS_DATABASE_URL: '' } });
-  check('CLI: tệp nằm trong git (đã track) → exit ≠ 0', r.status !== 0, r.status);
-  check('CLI: thông điệp "tệp nằm trong git"', /tệp nằm trong git/.test(r.stderr + r.stdout), (r.stderr + r.stdout).slice(0, 200));
-}
-{
-  const env = { ...process.env, HS_DATABASE_URL: '' };
-  delete env.HS_QD2079_FILE;
-  const r = spawnSync(process.execPath, ['scripts/nap-qd2079.mjs'], { cwd: root, encoding: 'utf8', env });
-  check('CLI: không có --file và HS_QD2079_FILE → exit ≠ 0, báo thiếu tệp', r.status !== 0 && /HS_QD2079_FILE/.test(r.stderr + r.stdout), (r.stderr + r.stdout).slice(0, 200));
-}
-{
-  // Repo git tạm: tệp bị ignore → được nạp; tệp không ignore → chặn; ngoài git → được nạp
-  const g = fs.mkdtempSync(path.join(os.tmpdir(), 'hs-git-'));
-  spawnSync('git', ['init', '-q'], { cwd: g });
-  fs.writeFileSync(path.join(g, '.gitignore'), 'private/\n');
-  fs.mkdirSync(path.join(g, 'private'));
-  fs.mkdirSync(path.join(g, 'mo'));
-  fs.writeFileSync(path.join(g, 'private', 'a.json'), '[]');
-  fs.writeFileSync(path.join(g, 'mo', 'b.json'), '[]');
-  check('kiemTepNgoaiGit: tệp trong git nhưng bị ignore → ok', nap.kiemTepNgoaiGit(path.join(g, 'private', 'a.json')).ok === true);
-  const k = nap.kiemTepNgoaiGit(path.join(g, 'mo', 'b.json'));
-  check('kiemTepNgoaiGit: tệp trong git KHÔNG ignore → chặn', k.ok === false && /tệp nằm trong git/.test(k.lyDo), JSON.stringify(k));
-  const ngoai = fs.mkdtempSync(path.join(os.tmpdir(), 'hs-ngoai-'));
-  fs.writeFileSync(path.join(ngoai, 'c.json'), '[]');
-  check('kiemTepNgoaiGit: tệp ngoài git → ok', nap.kiemTepNgoaiGit(path.join(ngoai, 'c.json')).ok === true);
-  check('kiemTepNgoaiGit: tệp không tồn tại → chặn', nap.kiemTepNgoaiGit(path.join(ngoai, 'khong-co.json')).ok === false);
-  fs.rmSync(g, { recursive: true, force: true });
-  fs.rmSync(ngoai, { recursive: true, force: true });
+  const r = spawnSync(process.execPath, ['scripts/nap-qd2079.mjs', `--file=${KHONG_CO}`, '--dry-run'], { cwd: root, encoding: 'utf8', env: { ...process.env, HS_DATABASE_URL: '' } });
+  check('CLI: tệp không tồn tại → exit ≠ 0, báo không tìm thấy tệp', r.status !== 0 && /không tìm thấy tệp/.test(r.stderr + r.stdout), (r.stderr + r.stdout).slice(0, 200));
+  check('bộ nạp: không còn chặn tệp nằm trong git (kiemTepNgoaiGit đã gỡ)', !('kiemTepNgoaiGit' in nap));
+  const d = nap.docVaKiem(Buffer.from(JSON.stringify({ nguon: 'QD-2079-TCHQ', danhSach: [{ maA: '3926', maB: '3923' }] })));
+  check('docVaKiem nhận cả dạng { danhSach: [...] } (bảng tĩnh có meta)', d.doc === 1 && d.hopLe.length === 1 && d.hopLe[0].maA === '3926', JSON.stringify(d));
 }
 
 const thuMucTam = fs.mkdtempSync(path.join(os.tmpdir(), 'hs-qd2079-'));
@@ -185,6 +175,10 @@ const noiDung = JSON.stringify([
 ]);
 fs.writeFileSync(tepGia, noiDung);
 const shaTep = crypto.createHash('sha256').update(fs.readFileSync(tepGia)).digest('hex');
+{
+  const r = spawnSync(process.execPath, ['scripts/nap-qd2079.mjs', `--file=${tepGia}`, '--dry-run'], { cwd: root, encoding: 'utf8', env: { ...process.env, HS_DATABASE_URL: '' } });
+  check('CLI --dry-run trên tệp giả → exit 0, in doc=3 hopLe=2, không in tên hàng', r.status === 0 && /doc=3/.test(r.stdout) && /hopLe=2/.test(r.stdout) && !(r.stdout + r.stderr).includes(TEN_BI_MAT), (r.stderr + r.stdout).slice(0, 200));
+}
 
 {
   const gia = dbGia((sql) => (/^\s*INSERT/i.test(sql) ? [{ id: 1 }] : []));
@@ -248,12 +242,12 @@ async function dauCuoi(nhan, client) {
   const dem = await client.query('SELECT count(*)::int AS n, min(nguon) AS nguon, min(bac) AS bac, min(phien_ban_danh_muc) AS pb FROM rui_ro_phan_loai');
   check(`${nhan}: 2 dòng, mặc định QD-2079-TCHQ / C / AHTN2017`, dem.rows[0].n === 2 && dem.rows[0].nguon === 'QD-2079-TCHQ' && dem.rows[0].bac === 'C' && dem.rows[0].pb === 'AHTN2017', JSON.stringify(dem.rows[0]));
 
-  const t1 = await tinHieuDanhMuc('39231090', { noiBo: true, db: client });
+  const t1 = await tinHieuDanhMuc('39231090', { db: client, file: KHONG_CO });
   check(`${nhan}: tinHieuDanhMuc('39231090') → cặp 39269099`, t1.length === 1 && t1[0].maLienQuan === '39269099' && t1[0].tenHang === TEN_BI_MAT, JSON.stringify(t1));
-  const t2 = await tinHieuDanhMuc('85444219', { noiBo: true, db: client });
+  const t2 = await tinHieuDanhMuc('85444219', { db: client, file: KHONG_CO });
   check(`${nhan}: tinHieuDanhMuc('85444219') khớp tiền tố 6 số 854442 → 854449`, t2.length === 1 && t2[0].maLienQuan === '854449', JSON.stringify(t2));
-  check(`${nhan}: mã không có trong danh mục → []`, (await tinHieuDanhMuc('01012100', { noiBo: true, db: client })).length === 0);
-  check(`${nhan}: noiBo=false → [] dù DB có dữ liệu`, (await tinHieuDanhMuc('39231090', { noiBo: false, db: client })).length === 0);
+  check(`${nhan}: mã không có trong danh mục → []`, (await tinHieuDanhMuc('01012100', { db: client, file: KHONG_CO })).length === 0);
+  check(`${nhan}: noiBo=false vẫn trả tín hiệu (công khai từ 30/10)`, (await tinHieuDanhMuc('39231090', { noiBo: false, db: client, file: KHONG_CO })).length === 1);
 }
 
 {
@@ -293,13 +287,91 @@ if (process.env.HS_TEST_DATABASE_URL) {
   console.log('SKIP Postgres thật: không có HS_TEST_DATABASE_URL (đầu-cuối đã chạy trên PGlite ở trên)');
 }
 
-// ── 8. Riêng tư: tệp dữ liệu QĐ 2079 không vào git ──
+// ── 8. Bảng tĩnh trong git: chỉ đúng một chỗ ──
 {
   const gi = fs.readFileSync(path.join(root, '.gitignore'), 'utf8');
-  check('.gitignore chặn data/private/', /^data\/private\/?$/m.test(gi));
+  check('.gitignore vẫn chặn data/private/ (dữ liệu riêng khác)', /^data\/private\/?$/m.test(gi));
   const r = spawnSync('git', ['ls-files'], { cwd: root, encoding: 'utf8' });
-  const lo = (r.stdout || '').split('\n').filter((f) => /2079/.test(f) && !/\.(m?js|md|sql)$/.test(f));
-  check('git không track tệp dữ liệu nào tên chứa 2079', lo.length === 0, lo.join(','));
+  const lo = (r.stdout || '').split('\n').filter((f) => /2079/.test(f) && !/\.(m?js|md|sql)$/.test(f) && f !== 'data/rui-ro-phan-loai/qd-2079.json');
+  check('tệp dữ liệu QĐ 2079 trong git chỉ được ở data/rui-ro-phan-loai/qd-2079.json', lo.length === 0, lo.join(','));
+  const N = require('../lib/nguon-loai.js');
+  check('nguon-loai khai nhãn cho data/rui-ro-phan-loai/qd-2079.json', N.nhanCuaTep('data/rui-ro-phan-loai/qd-2079.json') === 'NGUYEN_VAN');
+}
+
+// ── 9. Bảng tĩnh data/rui-ro-phan-loai/qd-2079.json (tuỳ chọn, chỉ đọc) + endpoint công khai ──
+{
+  check('TEP_TINH = rui-ro-phan-loai/qd-2079.json', rr.TEP_TINH === 'rui-ro-phan-loai/qd-2079.json');
+  const dir = path.join(TEST_DATA_DIR, 'rui-ro-phan-loai');
+  fs.mkdirSync(dir, { recursive: true });
+  const tep = path.join(dir, 'qd-2079.json');
+
+  // Tệp rỗng [] + không DB → CHUA_CO_DU_LIEU (không bịa, không lỗi)
+  fs.writeFileSync(tep, '[]');
+  const st0 = await rr.trangThaiDanhMuc({ db: null });
+  check('tệp tĩnh rỗng, không DB → CHUA_CO_DU_LIEU', st0.trangThai === 'CHUA_CO_DU_LIEU' && st0.soCapTepTinh === 0, JSON.stringify(st0));
+  const st1 = await rr.trangThaiDanhMuc({ db: null, file: KHONG_CO });
+  check('không có tệp tĩnh, không DB → CHUA_CO_DU_LIEU', st1.trangThai === 'CHUA_CO_DU_LIEU', JSON.stringify(st1));
+  const dataset = require('../api/dataset.js');
+  {
+    const res = mkRes();
+    await dataset({ method: 'GET', url: '/api/rui-ro-phan-loai', headers: {}, query: { resource: 'rui-ro-phan-loai', hs: '39231090' } }, res);
+    check('endpoint công khai (không token) khi chưa có dữ liệu → 200, trangThai CHUA_CO_DU_LIEU, items []', res._s === 200 && res._j?.trangThai === 'CHUA_CO_DU_LIEU' && Array.isArray(res._j?.items) && res._j.items.length === 0, JSON.stringify([res._s, res._j]));
+  }
+
+  // Tệp có dữ liệu giả (mảng) → khớp tiền tố, nguon=TEP_TINH, tên hàng trả ra (công khai)
+  fs.writeFileSync(tep, JSON.stringify([
+    { maA: '3926.90.99', maB: '3923.10.90', tenHang: 'Túi nhựa giả lập' },
+    { maA: '8544.42', maB: '8544.49' },
+    { maA: '39A6', maB: '3923' },
+  ]));
+  const t = await tinHieuDanhMuc('39231090', { db: null });
+  check('tệp tĩnh: 39231090 → cặp 39269099, nguon TEP_TINH, có tenHang', t.length === 1 && t[0].maLienQuan === '39269099' && t[0].nguon === 'TEP_TINH' && t[0].tenHang === 'Túi nhựa giả lập' && t[0].nhan === 'QD_2079_BAC_C', JSON.stringify(t));
+  const t2 = await tinHieuDanhMuc('85444219', { db: null });
+  check('tệp tĩnh: khớp tiền tố 6 số 854442 → 854449', t2.length === 1 && t2[0].maLienQuan === '854449', JSON.stringify(t2));
+  const st2 = await rr.trangThaiDanhMuc({ db: null });
+  check('tệp tĩnh có 2 cặp hợp lệ → CO_DU_LIEU, soCapTepTinh=2 (dòng sai bỏ qua)', st2.trangThai === 'CO_DU_LIEU' && st2.soCapTepTinh === 2, JSON.stringify(st2));
+
+  // Tệp tĩnh + DB: gộp, không trùng maLienQuan
+  const gia = dbGia(() => [{ ma_a: '39231090', ma_b: '39269099', ten_hang: null }, { ma_a: '39231090', ma_b: '4819', ten_hang: null }]);
+  const t3 = await tinHieuDanhMuc('39231090', { db: gia });
+  check('tệp tĩnh + Postgres: gộp, bỏ trùng (2 mục: 39269099 từ tệp, 4819 từ DB)', t3.length === 2 && t3[0].nguon === 'TEP_TINH' && t3.find((x) => x.maLienQuan === '4819')?.nguon === 'POSTGRES', JSON.stringify(t3));
+
+  // Dạng { danhSach: [...] } qua opts.file
+  const tepObj = path.join(dir, 'dang-object.json');
+  fs.writeFileSync(tepObj, JSON.stringify({ nguon: 'QD-2079-TCHQ', danhSach: [{ maA: '0101', maB: '0102' }] }));
+  check('tệp dạng { danhSach } đọc được', (await tinHieuDanhMuc('01012100', { db: null, file: tepObj })).length === 1);
+  // Tệp hỏng → [] không ném
+  const tepHong = path.join(dir, 'hong.json');
+  fs.writeFileSync(tepHong, '{ khong phai json');
+  const sw = console.warn; console.warn = () => {};
+  let outHong;
+  try { outHong = await tinHieuDanhMuc('39231090', { db: null, file: tepHong }); } finally { console.warn = sw; }
+  check('tệp tĩnh hỏng → [] không ném', Array.isArray(outHong) && outHong.length === 0);
+
+  // Endpoint công khai: cả hai tên resource, không token, không canCuPhapLy/GIR
+  for (const resource of ['rui-ro-phan-loai', 'rui_ro_phan_loai']) {
+    const res = mkRes();
+    await dataset({ method: 'GET', url: '/api/rui-ro-phan-loai', headers: {}, query: { resource, hs: '3923.10.90' } }, res);
+    const j = res._j || {};
+    check(`endpoint ?resource=${resource} không token → 200 public-read`, res._s === 200 && res.headers['X-Access-Mode'] === 'public-read', JSON.stringify([res._s, res.headers]));
+    check(`endpoint ${resource}: CO_TIN_HIEU, 1 mục, nhãn QD_2079_BAC_C, ghiChu không phải căn cứ`, j.trangThai === 'CO_TIN_HIEU' && j.items?.length === 1 && j.items[0].nhan === 'QD_2079_BAC_C' && /không phải căn cứ pháp lý/.test(j.ghiChu || ''), JSON.stringify(j));
+    check(`endpoint ${resource}: không có canCuPhapLy / girRulesApplied ở bất kỳ đâu`, !/canCuPhapLy|girRulesApplied|GIR-/.test(JSON.stringify(j)), JSON.stringify(j));
+  }
+  {
+    const res = mkRes();
+    await dataset({ method: 'GET', url: '/api/rui-ro-phan-loai', headers: {}, query: { resource: 'rui_ro_phan_loai', hs: '39' } }, res);
+    check('endpoint: hs sai (< 4 số) → 400', res._s === 400, JSON.stringify([res._s, res._j]));
+  }
+  {
+    const res = mkRes();
+    await dataset({ method: 'GET', url: '/api/rui-ro-phan-loai', headers: {}, query: { resource: 'rui_ro_phan_loai', hs: '01012100' } }, res);
+    check('endpoint: có dữ liệu nhưng mã không có trong danh mục → KHONG_CO_TIN_HIEU', res._s === 200 && res._j?.trangThai === 'KHONG_CO_TIN_HIEU' && res._j.items.length === 0, JSON.stringify(res._j));
+  }
+  const { isPublicRead } = require('../lib/public-access.js');
+  check('allowlist: dataset?resource=rui_ro_phan_loai mở công khai', isPublicRead({ endpoint: 'dataset', resource: 'rui_ro_phan_loai', method: 'GET' }) === true);
+  const routes = JSON.parse(fs.readFileSync(path.join(root, 'routes.json'), 'utf8'));
+  const flat = JSON.stringify(routes);
+  check('routes.json: /api/rui-ro-phan-loai → dataset?resource=rui_ro_phan_loai', flat.includes('"/api/rui-ro-phan-loai"') && flat.includes('/api/dataset?resource=rui_ro_phan_loai'));
 }
 
 fs.rmSync(thuMucTam, { recursive: true, force: true });
