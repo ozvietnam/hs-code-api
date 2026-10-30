@@ -214,5 +214,25 @@ function nhap853641(d91) {
   check('8f 392690 khai hết cặp → vẫn đỏ vì cong2-chong-lan-truc', cap.length > 10 && coLoi(r5, 'cong2-chong-lan-truc:') && r5.hopLe === false, r5.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
 }
 
+// ── 7. Định danh phiên người soạn / người soát: <định danh>#<soan|soat>-<nhãn> ────────────────────────────────────
+{
+  check('7a quy ước phiên hợp lệ (Claude URL, thợ Cursor)', C.kiemPhien('https://claude.ai/code/session_01Abc#soan-830220', 'soan') === null
+    && C.kiemPhien('cursor:gpt-5-mini:20261030T0900#soan-830220', 'soan') === null && C.kiemPhien('https://claude.ai/code/session_01Abc#soat-l1-4', 'soat') === null);
+  check('7b phiên trần / sai vai / có khoảng trắng → lỗi', ['https://claude.ai/code/session_01Abc', 'https://claude.ai/code/session_01Abc#agent-B-lo-A', 'x y#soan-a'].every((p) => C.kiemPhien(p, 'soan'))
+    && C.kiemPhien('https://claude.ai/code/session_01Abc#soan-830220', 'soat') !== null);
+  const pilot = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/ho-so/ranh-gioi/841350.json'), 'utf8'));
+  const r = C.kiemRanhGioi('841350', pilot);
+  check('7c bản nháp cũ phiên trần → chỉ CẢNH BÁO cong0-phien-sai-quy-uoc (giữ kết quả)', r.hopLe === true && coCanh(r, 'cong0-phien-sai-quy-uoc:soanBoi'), r.canhBao);
+  const b = nhap850131(true); b.soanBoi.phien = 'https://claude.ai/code/session_X#soan-850131';
+  let nem = null; try { C.duyet(b, { phien: 'https://claude.ai/code/session_X', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
+  check('7d duyệt bằng phiên không theo quy ước #soat-… → từ chối', /phien/.test(nem || ''), nem);
+  nem = null; try { C.duyet(b, { phien: 'https://claude.ai/code/session_X#soat-850131', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
+  check('7e cùng định danh + cùng nhãn, chỉ đổi vai → tự duyệt, từ chối', /tu-duyet|cung-phien/.test(nem || ''), nem);
+  nem = null; let ok = null; try { ok = C.duyet(b, { phien: 'https://claude.ai/code/session_X#soat-review-850131', ngay: '2026-10-31' }); } catch (e) { nem = e.message; }
+  check('7f phiên soát khác nhãn → duyệt được', ok?.trangThai === 'DUYET', nem);
+  const kq = spawnSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--tao-nhap', '--pn6=851680', '--phien=https://claude.ai/code/session_X'], { encoding: 'utf8', env: process.env });
+  check('7g CLI --tao-nhap với phiên sai quy ước → mã thoát 2 + hướng dẫn', kq.status === 2 && /#soan-/.test(kq.stderr), kq.stderr);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
