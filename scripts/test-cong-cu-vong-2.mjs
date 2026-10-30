@@ -43,5 +43,29 @@ const cli = (...a) => spawnSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs
   check('1i gói soạn ghi coHieuChinhTienLe (CLI --goi không còn in "DỪNG, Claude giữ" khi bảng đã có mục)', C.goiSoan('630790').coHieuChinhTienLe === true && !/DỪNG, Claude giữ/.test(cli('--goi', '--pn6=630790').stdout));
 }
 
+// ── Dựng bản nháp từ bản đã commit, thay điều kiện theo mã (không ghi đè tệp thật) ─────────────────────────────────────
+const DK = require('../lib/dieu-kien-so.js');
+function suaNhap(pn6, dk = {}) {
+  const b = JSON.parse(JSON.stringify(docNhap(pn6)));
+  b.trangThai = 'NHAP'; b.duyet = null;
+  for (const m of [...b.dong8, ...(b.dieuKienNut || [])]) { m.nguonLoai = 'AI_DA_KIEM'; const v = dk[m.hs || m.id]; if (v === undefined) continue; if (Array.isArray(v)) m.dieuKienSo = v; else Object.assign(m, v); }
+  return b;
+}
+const TEN = (v) => ({ fact: 'tenLoai', op: 'TEN_LOAI', value: v });
+const KDC = (v) => ({ fact: 'kieuDongCoDien', op: 'TRONG', value: v });
+
+// ── 2. LIET_KE: ứng viên "không thuộc giá trị nào đã liệt kê" — dòng dưới "Loại khác" tới được ─────────────────────────
+{
+  // 850110 (#652): tiêu đề "Động cơ bước" + dòng "Động cơ hướng trục" bằng khoá liệt kê kieuDongCoDien; tiêu đề 8501104/8501109
+  // "Loại khác" phủ định cả hai ⇒ cần vector kieuDongCoDien ∉ {BUOC, HUONG_TRUC}.
+  const b = suaNhap('850110', { 8501102: [KDC(['BUOC'])], 8501105: [KDC(['BUOC'])], 85011030: [KDC(['HUONG_TRUC'])], 85011060: [KDC(['HUONG_TRUC'])] });
+  const r = C.kiemRanhGioi('850110', b);
+  check('2a không lỗi cổng 3 trên khoá liệt kê (trích có cách đọc)', !r.loi.some((l) => l.startsWith('cong3-')), r.loi);
+  check('2b dòng dưới tiêu đề "Loại khác" (.41/.49) tới được — không còn cong2-dong-khong-toi-duoc', !coLoi(r, 'cong2-dong-khong-toi-duoc:85011041') && !coLoi(r, 'cong2-dong-khong-toi-duoc:85011049'), r.loi);
+  check('2c ứng viên ngoài liệt kê TRÁI mọi điều kiện TRONG (tất định), chỉ dùng trong cổng', DK.NGOAI_LIET_KE && DK.danhGiaDieuKien(KDC(['BUOC', 'HUONG_TRUC']), { fact: 'kieuDongCoDien', giaTri: DK.NGOAI_LIET_KE }).trangThai === 'TRAI'
+    && DK.danhGiaDieuKien({ ...KDC(['BUOC']), chieu: 'PHAI_KHONG' }, { fact: 'kieuDongCoDien', giaTri: DK.NGOAI_LIET_KE }).trangThai === 'THOA');
+  check('2d dữ kiện thật (runtime) không bao giờ mang giá trị ngoài liệt kê: kiemDieuKien từ chối giá trị đó trong điều kiện', DK.kiemDieuKien(KDC([DK.NGOAI_LIET_KE]), 'Động cơ bước') !== null);
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
