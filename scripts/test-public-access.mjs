@@ -141,8 +141,8 @@ for (const bad of [undefined, {}, { endpoint: null }, { endpoint: 'tax', method:
 // --- Bất biến: allowlist không được rỗng, cũng không được phình bất thường ----
 assert('có ít nhất 5 endpoint mở', PUBLIC_ENDPOINTS.size >= 5, PUBLIC_ENDPOINTS.size);
 assert(
-  'allowlist dataset không vượt 21 resource (phình = dấu hiệu mở ẩu)',
-  PUBLIC_DATASET_RESOURCES.size <= 21,
+  'allowlist dataset không vượt 22 resource (trần nâng 30/10 cho hieu_luc_sap_doi — công cụ canh mốc hiệu lực)',
+  PUBLIC_DATASET_RESOURCES.size <= 22,
   PUBLIC_DATASET_RESOURCES.size,
 );
 
