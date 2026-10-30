@@ -255,7 +255,7 @@
     },
     {
       "ma": "95030010",
-      "ghiChu": "tax.95030010: năm tên nêu đích danh ⇒ tenLoai mảng HOẶC (mỗi phần tử chuỗi con nguyên văn). CHỒNG LẤN DO BỘ SO CHỮ (không phải chữ biểu): \"xe của búp bê\" chứa đủ âm tiết của \"Búp bê\" (tiêu đề 9503002 và .21) nên dữ kiện tenLoai=\"xe của búp bê\" thoả cả .10 lẫn .21 ⇒ cổng 2 đỏ .10/.21. Chữ biểu không chồng lấn (xe búp bê ≠ búp bê) ⇒ KHÔNG phải CHONG_LAN_VAN_BAN, không ghi uuTien; cần sửa bộ so chữ (lib/dieu-kien-so.js#soChu: tên cụ thể hơn phải thắng) hoặc khoá tên chuẩn hoá."
+      "ghiChu": "tax.95030010: năm tên nêu đích danh ⇒ tenLoai mảng HOẶC (mỗi phần tử chuỗi con nguyên văn). CHỒNG LẤN DO BỘ SO CHỮ (không phải chữ biểu): \"xe của búp bê\" chứa đủ âm tiết của \"Búp bê\" (tiêu đề 9503002 và .21) nên dữ kiện tenLoai=\"xe của búp bê\" thoả cả .10 lẫn .21 ⇒ cổng 2 đỏ .10/.21. Chữ biểu không chồng lấn (xe búp bê ≠ búp bê) ⇒ KHÔNG khai chongLanVanBan, không ghi uuTien, để đỏ; cần sửa bộ so chữ (lib/dieu-kien-so.js#soChu: tên cụ thể hơn phải thắng) hoặc khoá tên chuẩn hoá."
     },
     {
       "ma": "9503002",
@@ -307,7 +307,7 @@
     },
     {
       "ma": "95030094",
-      "ghiChu": "\"Các đồ chơi khác, bằng cao su\" ⇒ chatLieu LA \"cao su\" (vật liệu chính). \"khác\" = ngoài .91–.93; chữ \"khác\" không có khoá nên cổng 2 thấy .91/.94, .92/.94, .93/.94 chồng lấn (dây nhảy / hòn bi bằng cao su). Ý chữ biểu rõ (dòng nêu tên đứng trước thắng) nhưng lược đồ không diễn đạt được — CHONG_LAN_VAN_BAN theo cách lược đồ đọc; không ghi uuTien vì không có TB-TCHQ/SEN/chú giải trích được."
+      "ghiChu": "\"Các đồ chơi khác, bằng cao su\" ⇒ chatLieu LA \"cao su\" (vật liệu chính). \"khác\" = ngoài .91–.93; chữ \"khác\" không có khoá nên cổng 2 thấy .91/.94, .92/.94, .93/.94 chồng lấn (dây nhảy / hòn bi bằng cao su). Ý chữ biểu rõ (dòng nêu tên đứng trước thắng) nhưng lược đồ không diễn đạt được — Chữ biểu không chồng lấn ⇒ CỐ Ý KHÔNG khai chongLanVanBan, không ghi uuTien; để đỏ (giới hạn lược đồ, xem đề xuất ở 854442 .92)."
     }
   ]
 }

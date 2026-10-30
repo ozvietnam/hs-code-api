@@ -345,7 +345,7 @@
   "ghiChuSoan": [
     {
       "ma": "401699",
-      "ghiChu": "CẤU TRÚC (phân nhóm lớn, 20 dòng): 4016.99 trộn HAI kiểu tiêu chí ngang hàng ở tầng 3 gạch — theo CÔNG DỤNG ([4016991] bộ phận xe Chương 87, .20 dù xoay 88.04, [4016995] dùng cho máy/thiết bị/mục đích kỹ thuật) và theo TÊN HÀNG (.30 dải cao su, .40 tấm ốp tường, .60 lót đường ray, .70 gối chịu lực) — rồi [4016999 \"Loại khác\" trần: .91 khăn trải bàn, .99]. Một hàng có thể vừa mang tên ở nhánh tên vừa có công dụng ở nhánh công dụng (dải cao su làm bộ phận ô tô) ⇒ chữ biểu CHỒNG LẤN THẬT. Theo quyết định GĐ 30/10: không tự đặt điều kiện phân tách; uuTien chỉ khi có căn cứ — data/precedents.json KHÔNG có TB-TCHQ nào ở 401699xx phân xử các cặp này (chỉ có #40169959[0] 7167/TB-TCHQ thanh lót cối nghiền → .59, không đụng nhánh tên), 4016.99 không có SEN cho các dòng này, chú giải nhóm 40.16 không nói thứ tự ⇒ 12 cặp ở chongLan là CHONG_LAN_VAN_BAN. Quy ước chọn khoá: dòng phân biệt bằng tên ⇒ tenLoai; bằng hàng đích ⇒ dungCho; bằng mục đích ⇒ congDung."
+      "ghiChu": "CẤU TRÚC (phân nhóm lớn, 20 dòng): 4016.99 trộn HAI kiểu tiêu chí ngang hàng ở tầng 3 gạch — theo CÔNG DỤNG ([4016991] bộ phận xe Chương 87, .20 dù xoay 88.04, [4016995] dùng cho máy/thiết bị/mục đích kỹ thuật) và theo TÊN HÀNG (.30 dải cao su, .40 tấm ốp tường, .60 lót đường ray, .70 gối chịu lực) — rồi [4016999 \"Loại khác\" trần: .91 khăn trải bàn, .99]. Một hàng có thể vừa mang tên ở nhánh tên vừa có công dụng ở nhánh công dụng (dải cao su làm bộ phận ô tô) ⇒ chữ biểu CHỒNG LẤN THẬT. Theo quyết định GĐ 30/10: không tự đặt điều kiện phân tách; uuTien chỉ khi có căn cứ — data/precedents.json KHÔNG có TB-TCHQ nào ở 401699xx phân xử các cặp này (chỉ có #40169959[0] 7167/TB-TCHQ thanh lót cối nghiền → .59, không đụng nhánh tên), 4016.99 không có SEN cho các dòng này, chú giải nhóm 40.16 không nói thứ tự ⇒ 12 cặp khai ở chongLanVanBan (cổng 2 hạ thành cảnh báo; lúc chạy không tự chốt, trả CANH_BAO + câu hỏi). Quy ước chọn khoá: dòng phân biệt bằng tên ⇒ tenLoai; bằng hàng đích ⇒ dungCho; bằng mục đích ⇒ congDung."
     },
     {
       "ma": "4016991",
@@ -381,7 +381,7 @@
     },
     {
       "ma": "40169920",
-      "ghiChu": "\"Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\" ⇒ dungCho \"dù xoay thuộc nhóm 88.04\". Chồng lấn chữ biểu với .30/.40/.60/.70 (vd dải cao su của dù xoay) — xem chongLan."
+      "ghiChu": "\"Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\" ⇒ dungCho \"dù xoay thuộc nhóm 88.04\". Chồng lấn chữ biểu với .30/.40/.60/.70 (vd dải cao su của dù xoay) — xem chongLanVanBan."
     },
     {
       "ma": "40169930",
@@ -422,6 +422,92 @@
     {
       "ma": "40169991",
       "ghiChu": "tenLoai \"Khăn trải bàn\" (dưới 4016999 \"Loại khác\" trần)."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "40169919",
+        "40169930"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện xe Chương 87 (4016991, phần còn lại) và nhánh theo tên \"Dải cao su\" (.30) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Dải cao su\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169919",
+        "40169940"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện xe Chương 87 (4016991, phần còn lại) và nhánh theo tên \"Tấm, miếng rời … ốp tường\" (.40) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Tấm, miếng rời … ốp tường\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169919",
+        "40169960"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện xe Chương 87 (4016991, phần còn lại) và nhánh theo tên \"Lót đường ray\" (.60) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Lót đường ray\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169919",
+        "40169970"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện xe Chương 87 (4016991, phần còn lại) và nhánh theo tên \"Loại chịu lực xây dựng\" (.70) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Loại chịu lực xây dựng\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169920",
+        "40169930"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện dù xoay 88.04 (.20) và nhánh theo tên \"Dải cao su\" (.30) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Dải cao su\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169920",
+        "40169940"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện dù xoay 88.04 (.20) và nhánh theo tên \"Tấm, miếng rời … ốp tường\" (.40) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Tấm, miếng rời … ốp tường\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169920",
+        "40169960"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện dù xoay 88.04 (.20) và nhánh theo tên \"Lót đường ray\" (.60) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Lót đường ray\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169920",
+        "40169970"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện dù xoay 88.04 (.20) và nhánh theo tên \"Loại chịu lực xây dựng\" (.70) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Loại chịu lực xây dựng\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169930",
+        "40169959"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng sản phẩm dùng cho máy, thiết bị điện/cơ khí, mục đích kỹ thuật (4016995, phần còn lại) và nhánh theo tên \"Dải cao su\" (.30) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Dải cao su\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169940",
+        "40169959"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng sản phẩm dùng cho máy, thiết bị điện/cơ khí, mục đích kỹ thuật (4016995, phần còn lại) và nhánh theo tên \"Tấm, miếng rời … ốp tường\" (.40) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Tấm, miếng rời … ốp tường\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169959",
+        "40169960"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng sản phẩm dùng cho máy, thiết bị điện/cơ khí, mục đích kỹ thuật (4016995, phần còn lại) và nhánh theo tên \"Lót đường ray\" (.60) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Lót đường ray\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
+    },
+    {
+      "cap": [
+        "40169959",
+        "40169970"
+      ],
+      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng sản phẩm dùng cho máy, thiết bị điện/cơ khí, mục đích kỹ thuật (4016995, phần còn lại) và nhánh theo tên \"Loại chịu lực xây dựng\" (.70) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Loại chịu lực xây dựng\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự."
     }
   ]
 }
