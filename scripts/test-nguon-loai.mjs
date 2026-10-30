@@ -26,6 +26,28 @@ const lb = require('../lib/legal-basis.js').canCuPhapLy({ status: 'REVIEW', topH
 assert('canCuPhapLy 6.1.a dựa nguyên văn chú giải nhóm (chu-giai-heading#nhom), nêu nhóm + toàn văn, ghi rõ explanatoryNote là AI chưa kiểm', lb.id === '6.1.a' && lb.trangThai === 'CO_NOI_DUNG' && lb.nhom === '8504' && lb.toanVan === true && /AI_CHUA_KIEM/.test(lb.ghiChu) && !/explanatoryNote\)/.test(lb.nguon), lb);
 const lb9 = require('../lib/legal-basis.js').canCuPhapLy({ status: 'REVIEW', topHs: '98010000' }).cacBuoc[1].taiLieu[0];
 assert('6.1.a: nhóm không có chú giải nguyên văn (ch.98) → KHONG_CO_DU_LIEU_CHO_MA_NAY dù explanatory-notes có thể có chữ', lb9.trangThai === 'KHONG_CO_DU_LIEU_CHO_MA_NAY', lb9);
+// #560: scopeVi/excludesVi của breadcrumb lấy từ hs-context (AI_CHUA_KIEM) → /api/tax và /api/search phải kèm nhãn.
+{
+  const kiemNhan = (b, ten) => {
+    assert(`${ten}: vẫn trả scopeVi + excludesVi (tương thích ngược)`, b && typeof b.scopeVi === 'string' && Array.isArray(b.excludesVi) && b.excludesVi.length > 0, b);
+    assert(`${ten}: nguonLoaiTruong gắn AI_CHUA_KIEM cho đúng scopeVi + excludesVi, không gắn trail/levels (nguyên văn cây)`,
+      b?.nguonLoaiTruong?.scopeVi === 'AI_CHUA_KIEM' && b?.nguonLoaiTruong?.excludesVi === 'AI_CHUA_KIEM'
+      && Object.keys(b.nguonLoaiTruong).sort().join(',') === 'excludesVi,scopeVi' && N.nhanCuaTep('hs-context.json') === b.nguonLoaiTruong.excludesVi, b?.nguonLoaiTruong);
+    assert(`${ten}: ghiChuNguonLoai = GHI_CHU_AI_CHUA_KIEM`, b?.ghiChuNguonLoai === N.GHI_CHU_AI_CHUA_KIEM, b?.ghiChuNguonLoai);
+    assert(`${ten}: không gắn nguonLoai chung cho cả breadcrumb (trail là nguyên văn)`, b && !('nguonLoai' in b), b && Object.keys(b));
+  };
+  const { buildTaxLookup } = require('../lib/tax-lookup.js');
+  kiemNhan(buildTaxLookup('72254090').breadcrumb, '/api/tax 72254090');
+  const bThuong = buildTaxLookup('01012100').breadcrumb || {};
+  assert('/api/tax mã không có ngữ cảnh AI → không có nguonLoaiTruong/ghiChuNguonLoai', !bThuong.excludesVi && !bThuong.scopeVi && !('nguonLoaiTruong' in bThuong) && !('ghiChuNguonLoai' in bThuong), bThuong);
+  const search = require('../api/search.js');
+  const res = { _s: 0, _j: null, headers: {}, setHeader(k, v) { this.headers[k] = v; }, getHeader(k) { return this.headers[k]; }, status(c) { this._s = c; return this; }, json(p) { this._j = p; return this; }, end() { return this; } };
+  await search({ method: 'GET', url: '/api/search?q=72254090', query: { q: '72254090' }, headers: {} }, res);
+  const item = (res._j?.results || res._j?.items || []).find((x) => x.hsCode === '72254090');
+  assert('/api/search trả được 72254090', res._s === 200 && Boolean(item), { s: res._s, keys: Object.keys(res._j || {}) });
+  kiemNhan(item?.breadcrumb, '/api/search 72254090');
+}
+
 const S = require('../lib/hs-tree-sources.js').sourcesOf('85044090');
 assert('hs-tree-sources dùng chung bảng nhãn: explanatoryNotes/loaiKhacIndex AI_CHUA_KIEM, soTay DA_KIEM', S.nguon.explanatoryNotes?.nhan === 'AI_CHUA_KIEM' && (!S.nguon.loaiKhacIndex || S.nguon.loaiKhacIndex.nhan === 'AI_CHUA_KIEM') && S.nguon.soTay?.nhan === 'DA_KIEM', S.nguon);
 // Dữ liệu thật đã nâng cấp: mọi mục sổ tay có nhãn, không mục nào AI_CHUA_KIEM

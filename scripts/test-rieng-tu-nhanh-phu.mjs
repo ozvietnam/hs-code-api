@@ -216,6 +216,47 @@ test('7. b1b riêng tư (ZAI_WEB_FACTS=on, ZAI_RIENG_TU_HIEU_MODEL=on) → khôn
   assert.deepEqual(r, out);
 });
 
+// ── identify: ảnh nameplate (#560) ──
+test('8. riêng tư + LLM_NO_TRAIN_PROVIDERS=minimax → identify không tải ảnh nameplate, không gọi Gemini vision', async () => {
+  const { docAnhNameplate, identify } = require('../lib/identify.js');
+  const goiGen = [];
+  const goiFetch = [];
+  const gemini = { geminiGenerateWithImages: async () => { goiGen.push(1); return { json: { seenText: ['MODEL GA22'] }, model: 'g' }; } };
+  const fetchImpl = async (...a) => { goiFetch.push(a[0]); return fakeImg(); };
+  const anh = ['https://example.com/nameplate.jpg'];
+  process.env.GEMINI_API_KEY = 'khoa-gia-cho-test';
+  process.env.LLM_NO_TRAIN_PROVIDERS = 'minimax';
+  try {
+    const out = await withPrivateData(() => docAnhNameplate(anh, { gemini, fetchImpl }));
+    assert.equal(goiGen.length, 0, 'không gọi Gemini vision');
+    assert.equal(goiFetch.length, 0, 'không tải ảnh khi không gửi được');
+    assert.deepEqual(out.vanBan, []);
+    assert.equal(out.boVi.length, 1);
+    assert.match(out.boVi[0], /^RIENG_TU_GEMINI_CHUA_DUOC_PHEP/);
+    // Qua identify(): lý do lộ ra ở anhBoVi, không có chữ ảnh trong hồ sơ.
+    const r = await withPrivateData(() => identify({ tenHang: 'Máy nén khí trục vít', anhUrl: anh }, { gemini, fetchImpl }));
+    assert.equal(goiGen.length, 0);
+    assert.equal(goiFetch.length, 0);
+    assert.equal(r.anh ?? null, null);
+    assert.ok((r.anhBoVi || []).some((s) => s.startsWith('RIENG_TU_GEMINI_CHUA_DUOC_PHEP')), JSON.stringify(r.anhBoVi));
+  } finally {
+    delete process.env.LLM_NO_TRAIN_PROVIDERS;
+  }
+  try {
+    // Đối chứng: ngoài riêng tư vẫn đọc ảnh như cũ.
+    const out2 = await docAnhNameplate(anh, { gemini, fetchImpl });
+    assert.equal(goiGen.length, 1, 'ngoài riêng tư: vision chạy như cũ');
+    assert.deepEqual(out2.vanBan, ['MODEL GA22']);
+    assert.deepEqual(out2.boVi, []);
+    // Riêng tư + gemini (khoá trả phí) trong danh sách trắng mặc định → được gọi.
+    const out3 = await withPrivateData(() => docAnhNameplate(anh, { gemini, fetchImpl }));
+    assert.equal(goiGen.length, 2, 'riêng tư + gemini được phép → vision chạy');
+    assert.deepEqual(out3.vanBan, ['MODEL GA22']);
+  } finally {
+    delete process.env.GEMINI_API_KEY;
+  }
+});
+
 test('không có lời gọi mạng thật nào', () => {
   assert.deepEqual(mangThat, []);
 });
