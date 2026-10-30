@@ -510,6 +510,19 @@ module.exports = async function handler(req, res) {
       return res.status(200).json(tongHopNgay(ngay));
     }
 
+    // GET /api/admin/ho-so-shadow?tu=YYYY-MM-DD&den=YYYY-MM-DD (L1-5f): tổng hợp số đo chạy bóng hồ sơ phân loại (chỉ số).
+    // KÍN — không nằm trong allowlist lib/public-access.js (requireAuthUnlessPublic ở đầu handler đã đòi Bearer).
+    if (resource === 'ho_so_shadow') {
+      const { baoCaoShadow, NGAY } = require('../lib/ho-so/bao-cao-shadow');
+      const tu = String(req.query.tu || '').trim() || null;
+      const den = String(req.query.den || '').trim() || null;
+      if ((tu && !NGAY.test(tu)) || (den && !NGAY.test(den))) {
+        return res.status(400).json({ error: 'DAU_VAO_SAI', chiTiet: ['tu/den phải dạng YYYY-MM-DD (ngày UTC).'] });
+      }
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(200).json(baoCaoShadow({ tu, den }));
+    }
+
     if (resource === 'kpi') {
       const kpi = buildKpiDashboard();
       return res.status(200).json(kpi);

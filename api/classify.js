@@ -107,7 +107,7 @@ module.exports = async function handler(req, res) {
     const chay = (quyen) => classify(attrs, { tier, debug }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
     if (serviceCaller(req) !== null) {
       // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
-      const { result, usage } = await run(() => withPrivateData(() => withUsage(() => chay({ noiBo: laNoiBoOz(req) }))));
+      const { result, usage } = await run(() => withPrivateData(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) }))));
       return res.status(200).json({ ...result, attrs, usage, ms: Date.now() - started });
     }
     // Lượt công khai / HS_API_TOKEN: đếm chi phí LLM (L0j, #547 — chỉ đếm, không chặn). Shape phản hồi không đổi.

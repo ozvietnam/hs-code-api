@@ -18,7 +18,17 @@ nhận thêm mã 6 số (phân nhóm lát 1 đã duyệt) và 4 số (nhóm có 
 
 Dòng số đo shadow chỉ có các khoá `KHOA_SHADOW` (`lib/ho-so/api.js`): `ts, endpoint, maHs, loaiToKhai, noiBo, trangThai,
 capDaChac, banNhap, lyDoBanNhap, soDuKien, soChuaBiet, soRanhGioi, ketQuaRanhGioi, soCauHoi, soTinHieu, doDaiMoTaEcus,
-coKhaiTiepHys, tuongDuong, soViPham, cheDoViet, buocQuaHan, ms, loi, trungMoTaCu` — không tên hàng, không mô tả, không câu chữ.
+coKhaiTiepHys, tuongDuong, soViPham, cheDoViet, buocQuaHan, ms, loi, trungMoTaCu` + (L1-5f) `cheDo` (`shadow` | `thu`),
+`apDung`, `msBuoc {duongDi, docDuKien, doiChieu, nghienCuu?, viet}`, `llmBiLoai`, `cheDoVietYeuCau`, `duKienQD {tong, moi, cu,
+caHai}` (số dữ kiện quyết định có trong chuỗi mới / mô tả cũ — chỉ số đếm) — không tên hàng, không mô tả, không câu chữ.
+Mã 8 số thuộc lát 1 nhưng phân nhóm chưa có ranh giới duyệt ⇒ (shadow) một dòng gọn `{ts, endpoint, maHs, noiBo, cheDo,
+apDung: false}`. Tổng hợp: `node scripts/bao-cao-shadow.mjs [--json]` hoặc `GET /api/admin/ho-so-shadow?tu=&den=` (KÍN, Bearer).
+
+**Chạy thử nội bộ (L1-5f):** `HS_HO_SO_THU_CALLERS` = danh sách tên khoá dịch vụ (cùng tên ở `HS_SERVICE_TOKENS`, vd
+`oz-noi-bo`). Khi `HS_HO_SO=shadow`, lượt của các khoá đó chạy như `on` (phản hồi có trường mới, `hoSoMeta.cheDo = 'on'`,
+`hoSoMeta.thuNoiBo = true`) và vẫn ghi một dòng số đo `cheDo: 'thu'`; mọi người gọi khác theo `HS_HO_SO`. `off` tắt hết, kể cả
+chạy thử. Lượt công khai / `HS_API_TOKEN` không có tên khoá nên không bao giờ được chạy thử; `cong-oz` chỉ khi được ghi tên rõ.
+`on` toàn cục không ghi dòng số đo.
 
 ## 1. Đầu vào mới (describe / classify / declaration-sheet / ho-so)
 
@@ -58,7 +68,7 @@ Bên gọi khai = sự thật **nguồn `KHACH`** (bằng chứng = chính chu�
 | `banNhap` | `true` khi hồ sơ chưa đủ căn cứ (mục 3) |
 | `canCuMoTa` | căn cứ chỉ tiêu mô tả (chỉ qua `lib/legal-basis.js#citeChiTieu`) |
 | `hoSo` | `HoSoPhanLoai` (mục 4) **đã lọc theo quyền** |
-| `hoSoMeta` | `{apDung, cheDo, cheDoViet: LLM\|MAY, tuongDuong, buocQuaHan[], hoSoIdTruoc?, canhBao?[], ms}` |
+| `hoSoMeta` | `{apDung, cheDo (chế độ hiệu lực của lượt), thuNoiBo? (true khi chạy thử nội bộ), cheDoViet: LLM\|MAY, tuongDuong, buocQuaHan[], hoSoIdTruoc?, canhBao?[], ms}` |
 
 Quy ước:
 - `customsDescription` = **chuỗi cuối** của bộ viết: `moTaEcus` khi đạt, `moTaBanNhap` khi bản nháp (luôn là chuỗi — ERP không vỡ).

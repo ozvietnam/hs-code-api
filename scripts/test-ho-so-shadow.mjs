@@ -186,7 +186,7 @@ check('classify/sheet: dòng số đo đúng endpoint + cheDo', dKs.some((d) => 
 const srcClassify = fs.readFileSync(path.join(ROOT, 'api', 'classify.js'), 'utf8');
 const srcDescribe = fs.readFileSync(path.join(ROOT, 'api', 'describe.js'), 'utf8');
 check('api/classify.js: lượt khoá dịch vụ truyền caller vào quyền hồ sơ', /chay\(\{\s*noiBo:\s*laNoiBoOz\(req\),\s*caller:\s*serviceCaller\(req\)\s*\}\)/.test(srcClassify));
-check('api/describe.js: sheet + describe + ho-so truyền caller vào quyền hồ sơ', (srcDescribe.match(/noiBo:\s*laNoiBoOz\(req\),\s*caller:\s*(serviceCaller\(req\)|caller)/g) || []).length >= 3);
+check('api/describe.js: sheet + describe + ho-so truyền caller vào quyền hồ sơ', (srcDescribe.match(/noiBo:\s*laNoiBoOz\(req\),\s*caller(:\s*serviceCaller\(req\))?\s*\}/g) || []).length >= 3);
 
 // ── 5. Dòng số đo đủ trường §10, chỉ số đếm ────────────────────────────────────────────────────────────────────
 const MOI_KHOA = ['cheDo', 'apDung', 'msBuoc', 'llmBiLoai', 'cheDoVietYeuCau', 'duKienQD'];
