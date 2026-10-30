@@ -40,7 +40,8 @@ Spec (ranh-gioi-spec@1, JSON):
     "dieuKienNut": { "<id tiêu đề>": { "dieuKienSo": [...], "trich": "<lược bằng … nếu > 300 ký tự>" } },
     "chongLanVanBan": [ {"cap": ["<hsA>","<hsB>"], "lyDo": "… trích \\"chữ nhánh A\\" và \\"chữ nhánh B\\" …"} ],
     "ghiChuSoan": [ {"ma": "83022010", "loai": "QUYET_DINH", "ghiChu": "…"} ] }
-  Mục không ghi "trich"/"nguon" ⇒ máy chép nguyên văn chữ của chính mục. "phanConLai": true cho phần còn lại có tên ("… khác").
+  Mục không ghi "trich"/"nguon" ⇒ máy chép nguyên văn chữ của chính mục. "phanConLai": true cho phần còn lại có tên ("… khác")
+  — được đứng một mình ({"dieuKienSo": [], "phanConLai": true}); "phanConLai": false = chữ "khác" không phải phần còn lại.
   loai ghi chú: ${C.LOAI_GHI_CHU.join(' | ')}. Thiếu khoá tu-vung ⇒ để trống dieuKienSo + loai THIEU_KHOA_TU_VUNG (+ khoaDeXuat).
 
 Mã thoát: 0 xanh · 1 đỏ (sửa được) · 2 dùng sai lệnh/spec sai · 3 DỪNG (báo Claude).`;
