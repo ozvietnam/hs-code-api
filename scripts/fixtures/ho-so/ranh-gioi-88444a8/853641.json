@@ -1,0 +1,149 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "853641",
+  "nhom": "8536",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "DUYET",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#agent-B-lo-A",
+    "ngay": "2026-10-30"
+  },
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
+    "ngay": "2026-10-30",
+    "ghiChu": "L1-4c đợt 1: .10 loại rơ le vs .20/.30 đích dùng — chồng lấn chữ biểu thật, khai đúng; .40 'Loại khác, <16 A' chỉ ghi vế; .91 bán dẫn|điện từ & <=28 V. TB-TCHQ 7037 (rơ le đóng cắt >60 V → 8536.49) là ranh giới 6 số, không lệch trong 853641; lưu ý 'điện áp' của rơ le đọc theo điện áp đóng cắt.",
+    "bam": "ec01ae99bdfa1f27822db3dfb10004b79c91ab50eef8bf66f79786c0a9d6342f"
+  },
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85364110",
+      "nguon": "tax.85364110",
+      "trich": "85364110 - - - Rơ le kỹ thuật số",
+      "dieuKienSo": [
+        {
+          "fact": "loaiRoLe",
+          "op": "TRONG",
+          "value": [
+            "KY_THUAT_SO"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85364120",
+      "nguon": "tax.85364120",
+      "trich": "85364120 - - - Của loại sử dụng trong các thiết bị sóng vô tuyến",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị sóng vô tuyến"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85364130",
+      "nguon": "tax.85364130",
+      "trich": "85364130 - - - Của loại sử dụng cho quạt điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "quạt điện"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85364140",
+      "nguon": "tax.85364140",
+      "trich": "85364140 - - - Loại khác, dòng điện dưới 16 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85364191",
+      "nguon": "tax.85364191",
+      "trich": "85364191 - - - - Rơ le bán dẫn hoặc rơ le điện từ, điện áp không quá 28 V",
+      "dieuKienSo": [
+        {
+          "fact": "loaiRoLe",
+          "op": "TRONG",
+          "value": [
+            "BAN_DAN",
+            "DIEN_TU"
+          ]
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 28,
+          "donVi": "V"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85364199",
+      "nguon": "tax.85364199",
+      "trich": "85364199 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "mau",
+      "ghiChu": "MẪU \"chồng lấn do chính chữ biểu (CHONG_LAN_VAN_BAN)\" + \"Loại khác nhiều tầng\". Cấu trúc: 4 dòng anh em (.10–.40) + tiêu đề 8536419 \"Loại khác\" trần chứa .91 và .99. Hai cặp chồng lấn được KHAI ở chongLanVanBan (có lyDo) ⇒ cổng 2 hạ thành cảnh báo cong2-chong-lan-van-ban; nếu không khai thì cổng 2 đỏ. Runtime: cặp này không bao giờ tự chốt (cả hai THOA ⇒ TRANH_CAP; tầng hồ sơ trả CANH_BAO + câu hỏi). Cặp .20/.30 KHÔNG chồng lấn (cùng khoá dungCho, giá trị khác nhau) nên không khai — khai thừa thì cổng 2 đỏ cong2-chong-lan-van-ban-thua."
+    },
+    {
+      "ma": "85364110",
+      "ghiChu": "Nguồn tax.85364110. \"Rơ le kỹ thuật số\" ⇒ loaiRoLe (LIET_KE) op TRONG [\"KY_THUAT_SO\"]; cổng 3 kiểm mẫu cachDoc của giá trị (\"kỹ thuật số\") có trong trích. Dùng LIET_KE thay vì TEN_LOAI vì từ vựng có sẵn giá trị đóng cho loại rơ le ⇒ chấm TẤT ĐỊNH."
+    },
+    {
+      "ma": "85364120",
+      "ghiChu": "Nguồn tax.85364120. \"Của loại sử dụng trong các thiết bị sóng vô tuyến\" ⇒ dungCho \"thiết bị sóng vô tuyến\" (chữ có trong trích). Không có khoá đóng cho đích dùng nên dùng CONG_DUNG (không tất định)."
+    },
+    {
+      "ma": "85364130",
+      "ghiChu": "Nguồn tax.85364130. \"Của loại sử dụng cho quạt điện\" ⇒ dungCho \"quạt điện\"."
+    },
+    {
+      "ma": "85364140",
+      "ghiChu": "Nguồn tax.85364140. Dòng \"Loại khác, dòng điện dưới 16 A\" là \"Loại khác, <vế>\": chỉ ghi điều kiện của VẾ (\"dưới 16 A\" ⇒ dongDien < 16 A); phần \"Loại khác\" (không phải .10/.20/.30) do luật đi của máy tự phủ định anh em — không tự ghi phủ định."
+    },
+    {
+      "ma": "85364191",
+      "ghiChu": "Nguồn tax.85364191, nằm dưới tiêu đề 8536419 \"Loại khác\" trần (tiêu đề LK trần không ghi điều kiện, không có mục dieuKienNut). \"Rơ le bán dẫn hoặc rơ le điện từ\" ⇒ loaiRoLe TRONG [\"BAN_DAN\",\"DIEN_TU\"] (mảng = hoặc); \"điện áp không quá 28 V\" ⇒ dienAp <= 28 V (cổng 3 đọc được \"không quá 28 V\" và đối chiếu biên). Hai điều kiện trong mảng dieuKienSo = VÀ, đúng nghĩa câu."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "85364110",
+        "85364120"
+      ],
+      "lyDo": "Chữ biểu: .10 \"Rơ le kỹ thuật số\" (phân theo LOẠI rơ le) và .20 \"Của loại sử dụng trong các thiết bị sóng vô tuyến\" (phân theo ĐÍCH DÙNG) là hai trục khác nhau, không câu nào loại trừ câu kia — rơ le kỹ thuật số dùng trong thiết bị sóng vô tuyến thoả cả hai. Không có TB-TCHQ nào trong precedents.json cho 8536.41.10/.20/.30, SEN/chú giải nhóm 85.36 không nói thứ tự ⇒ không ghi uuTien, không bịa điều kiện tách."
+    },
+    {
+      "cap": [
+        "85364110",
+        "85364130"
+      ],
+      "lyDo": "Như cặp .10/.20: .10 phân theo loại rơ le, .30 \"Của loại sử dụng cho quạt điện\" phân theo đích dùng; rơ le kỹ thuật số dùng cho quạt điện thoả cả hai. Không có căn cứ thứ tự (precedents.json không có mục cho các dòng này). Trích hai nhánh rẽ: 85364110 \"Rơ le kỹ thuật số\" ↔ 85364130 \"Của loại sử dụng cho quạt điện\"."
+    }
+  ]
+}
