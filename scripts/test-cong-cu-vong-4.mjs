@@ -319,5 +319,106 @@ const D12 = [{ op: 'HOAC', phuongAn: [[TEN(BAN)], [BP, DUNG(BAN)]] }];
   check('10.4b LUAT-CHUNG ghi tên cụ thể hơn thắng áp vào phương án HOAC + cặp chéo khoá', /tenCuTheHonDong/u.test(lc) && /HOAC/u.test(lc));
 }
 
+// ════ 11. Vòng 5 — liệt kê HOẶC gói trong MỘT chuỗi chữ tự do (soát L1-4c đợt 3 #697, phát hiện hàng đầu) ═══════════════
+// Bộ so chữ đòi ĐỦ âm tiết của một giá trị TEN_LOAI/CONG_DUNG ⇒ "A, B hoặc C" trong một chuỗi bị đọc thành VÀ (HẸP hơn chữ).
+// Máy chặn: giá trị có " hoặc " / dấu ";" / liệt kê phẩy, không có mã HS ⇒ `cong3-liet-ke-trong-mot-chuoi:<mục>:<fact>`.
+// Ngoại lệ: liệt kê nối "và" mà chữ Anh cùng dòng xác nhận liên hợp sau giới từ ("for transport, handling and storage");
+// dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round"); giá trị có mã HS (maThamChieu lo).
+// Fixture đông cứng ranh-gioi-f457a19/ (trước #699) và ranh-gioi-719cacc/ (main 719cacc).
+const DF45 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-f457a19');
+const D719 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-719cacc');
+const nhap719 = (pn6) => nhapDongCung(pn6, D719);
+const lietKe = (r) => r.loi.filter((l) => l.startsWith('cong3-liet-ke-trong-mot-chuoi:'));
+const kiemLk = (pn6, b) => lietKe(C.kiemRanhGioi(pn6, b, { cong: [3] }));
+{
+  // 11.1 ca trúng (soát đợt 3): 841459 .10 + 950300 .91 bản trước soạn lại
+  const r1 = kiemLk('841459', nhapDongCung('841459', DF45));
+  check('11.1a 841459 (f457a19) .10 congDung "làm mát bộ vi xử lý, …, máy xử lý dữ liệu tự động hoặc các khối …" ⇒ lỗi', r1.includes('cong3-liet-ke-trong-mot-chuoi:84145910:congDung'), r1);
+  const r2 = kiemLk('950300', nhapDongCung('950300', DF45));
+  check('11.1b 950300 (f457a19) .91 tenLoai "xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật" ⇒ lỗi', r2.includes('cong3-liet-ke-trong-mot-chuoi:95030091:tenLoai'), r2);
+  check('11.1c … đúng một lỗi mỗi bản (các giá trị khác không trúng)', r1.length === 1 && r2.length === 1, [r1, r2]);
+  // 11.2 bản soạn lại (719cacc): đã tách mảng ⇒ không trúng
+  check('11.2a 841459 (719cacc, dungCho tách mảng) ⇒ không lỗi', kiemLk('841459', nhap719('841459')).length === 0, kiemLk('841459', nhap719('841459')));
+  check('11.2b 950300 (719cacc, .91 HOAC mảng; "bộ đồ chơi tạo chữ và tập nói" không dấu phẩy) ⇒ không lỗi', kiemLk('950300', nhap719('950300')).length === 0);
+  // 11.3 ngoại lệ
+  const r3 = kiemLk('853710', nhap719('853710'));
+  check('11.3a 853710 .30 "dịch chuyển, xử lý và kẹp giữ" (EN "for transport, handling and storage") ⇒ KHÔNG lỗi', r3.length === 0, r3);
+  const r4 = kiemLk('852351', nhap719('852351'));
+  check('11.3b 852351 .30 "tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh" (EN "of instructions, data, sound and image") ⇒ KHÔNG lỗi', r4.length === 0, r4);
+  const r5 = kiemLk('761699', nhap719('761699'));
+  check('11.3c 761699 .30 "Đồng xèng, hình tròn" (EN "Slugs, round," — dấu phẩy thuộc tính, không and/or) ⇒ KHÔNG lỗi', r5.length === 0, r5);
+  const r6 = kiemLk('848340', nhap719('848340'));
+  check('11.3d 848340 .30 "máy thuộc nhóm 84.29 hoặc 84.30" (có mã HS — maThamChieu đọc HOẶC) ⇒ KHÔNG lỗi', r6.length === 0, r6);
+  // 11.4 ca trúng thật trên bản đông cứng 719cacc
+  const r7 = kiemLk('392690', nhap719('392690'));
+  check('11.4a 392690 3926908 "Tấm thẻ … đồ nữ trang hoặc những đồ vật nhỏ …" ⇒ lỗi', r7.includes('cong3-liet-ke-trong-mot-chuoi:3926908:tenLoai'), r7);
+  check('11.4b 392690 .20 "khung và tay cầm, quai kèm theo" (dấu cuối là phẩy, không phải "và") ⇒ lỗi', r7.includes('cong3-liet-ke-trong-mot-chuoi:39269020:tenLoai'), r7);
+  const r8 = kiemLk('401699', nhap719('401699'));
+  check('11.4c 401699 4016995 dungCho "thiết bị điện hoặc cơ khí" ⇒ lỗi', r8.includes('cong3-liet-ke-trong-mot-chuoi:4016995:dungCho'), r8);
+  const r9 = kiemLk('732690', nhap719('732690'));
+  check('11.4d 732690 .70 "mấu, gai, đinh móc lắp trên giày …" (dấu phẩy chỉ ở chữ Việt; EN "riding boot spurs") ⇒ lỗi', r9.includes('cong3-liet-ke-trong-mot-chuoi:73269070:tenLoai'), r9);
+  // 11.5 liệt kê HÀNG nối "và" không sau giới từ (EN "Tricycles, scooters, pedal cars and similar wheeled toys") ⇒ vẫn lỗi
+  const b10 = nhap719('950300');
+  b10.dong8.find((m) => m.hs === '95030010').dieuKienSo = [TEN('Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh')];
+  const r10 = kiemLk('950300', b10);
+  check('11.5a liệt kê tên hàng "A, B, C và D" (không giới từ ở EN) gói một chuỗi ⇒ lỗi', r10.includes('cong3-liet-ke-trong-mot-chuoi:95030010:tenLoai'), r10);
+  // 11.6 dấu ";" và trong HOAC + PHAI_KHONG
+  const b11 = nhap719('950300');
+  b11.dong8.find((m) => m.hs === '95030091').dieuKienSo = [{ op: 'HOAC', phuongAn: [[TEN('bộ xếp chữ; bộ đồ chơi in hình')], [TEN('máy may đồ chơi')]] }];
+  check('11.6a giá trị có ";" trong phương án HOAC ⇒ lỗi', kiemLk('950300', b11).includes('cong3-liet-ke-trong-mot-chuoi:95030091:tenLoai'));
+  const b12 = nhap719('950300');
+  b12.dong8.find((m) => m.hs === '95030050').dieuKienSo = [TEN('đồ chơi xây dựng'), { fact: 'tenLoai', op: 'TEN_LOAI', value: 'xe đẩy hoặc xe có bàn đạp', chieu: 'PHAI_KHONG' }];
+  check('11.6b PHAI_KHONG gói "hoặc" cũng lỗi (phủ định VÀ ≠ phủ định HOẶC)', kiemLk('950300', b12).includes('cong3-liet-ke-trong-mot-chuoi:95030050:tenLoai'));
+  // 11.7 giải thích + tài liệu
+  const g = ML.giaiThich('cong3-liet-ke-trong-mot-chuoi:84145910:congDung') || {};
+  check('11.7a ma-loi: có giải thích, gợi ý tách MẢNG chuỗi con nguyên văn, không DỪNG', /mảng/u.test(g.cachSua || '') && /nguyên văn/u.test(g.cachSua || '') && !g.dung, g);
+  check('11.7b QUY-TRINH + SOAT-RANH-GIOI + LUAT-CHUNG ghi mã mới', ['QUY-TRINH-SO-HOA.md', 'SOAT-RANH-GIOI.md', 'LUAT-CHUNG.md'].every((p) => /cong3-liet-ke-trong-mot-chuoi/u.test(docMd(p))));
+}
+
+// ════ 12. Vòng 5 — đích "của chúng" ↔ tên tiêu đề tổ tiên (950300, quyết định GĐ) ═══════════════════════════════════════
+// 950300 .30 HOAC [[tenLoai "Xe điện"], [tenLoai [đường ray, đèn hiệu, phụ kiện], dungCho "Xe điện"]] ("… của chúng" / "therefor").
+// Nhánh búp bê (9503002 "Búp bê" → tầng r18723 "Bộ phận và phụ kiện" → .21/.22/.29) không có dungCho (đích nằm ở TÊN tiêu đề
+// cha) ⇒ vector "tenLoai phụ kiện quần áo Búp bê + dungCho Xe điện" làm .21/.22/.29 và .30 cùng CO. Luật chứng minh mới của cổng 2:
+// một bên có dungCho Y (Y = tên đầu nguyên văn của chính dòng, chữ dòng có "của chúng"/"therefor"), bên kia KHÔNG có dungCho và
+// một tiêu đề tổ tiên trên nhánh mang tên đầu nguyên văn X; X, Y rời nhau như luật #692 ⇒ loại trừ. Runtime không đổi (hỏi).
+{
+  const b = nhap719('950300');
+  const r = C.kiemRanhGioi('950300', b, { cong: [2] });
+  check('12.1a 950300 (719cacc) không còn cong2-chong-lan (trước: .21/.22/.29 + .30 :khong-tat-dinh)', chong(r).length === 0, chong(r));
+  check('12.1b cặp chứng minh bằng luật mới hiện cảnh báo cong2-dich-cua-chung-roi cho người soát', ['95030021', '95030022', '95030029'].every((h) => co(r.canhBao, `cong2-dich-cua-chung-roi:${h}+95030030`)), r.canhBao);
+  // Không nới: Y chứa nhau / có ứng viên thoả cả hai ("xe của búp bê" thoả cả "Búp bê" lẫn "Xe")
+  const b2 = nhap719('950300');
+  b2.dong8.find((m) => m.hs === '95030030').dieuKienSo = [{ op: 'HOAC', phuongAn: [[TEN('Xe điện')], [TEN(['đường ray', 'đèn hiệu', 'phụ kiện']), DUNG('Xe')]] }];
+  const r2 = C.kiemRanhGioi('950300', b2, { cong: [2] });
+  check('12.2a đích "Xe" ↔ "Búp bê": ứng viên "xe của búp bê" thoả cả hai ⇒ VẪN chồng lấn (cùng độ chặt #692)', chong(r2).some((l) => cap(l).endsWith('+95030030')), chong(r2));
+  // Không nới: Y không phải tên ĐẦU của chính dòng ("đường ray" nằm trong vế "kể cả …", không phải danh từ đầu)
+  const b3 = nhap719('950300');
+  b3.dong8.find((m) => m.hs === '95030030').dieuKienSo = [{ op: 'HOAC', phuongAn: [[TEN('Xe điện')], [TEN(['đèn hiệu', 'phụ kiện']), DUNG('đường ray')]] }];
+  const r3 = C.kiemRanhGioi('950300', b3, { cong: [2] });
+  check('12.2b đích "đường ray" (không phải danh từ đầu .30) ⇒ VẪN chồng lấn', chong(r3).some((l) => cap(l).endsWith('+95030030')), chong(r3));
+  // Không nới: luật chỉ cho bên KHÔNG có dungCho (đích tự do). Bên búp bê mang dungCho ⇒ vector tự quyết như cũ.
+  const b4 = nhap719('950300');
+  b4.dieuKienNut.find((m) => m.id === '9503002').dieuKienSo = [TEN('Búp bê'), DUNG('Búp bê')];
+  const r4 = C.kiemRanhGioi('950300', b4, { cong: [2] });
+  check('12.2c bên búp bê CÓ dungCho (không tự do) ⇒ luật không áp, không cảnh báo cong2-dich-cua-chung-roi', !co(r4.canhBao, 'cong2-dich-cua-chung-roi'), r4.canhBao);
+  // Hồi quy: các luật cũ không đổi
+  const r5 = C.kiemRanhGioi('871410', nhap571('871410'), { cong: [2] });
+  check('12.3a 871410 (571d7a5) vẫn không chồng lấn, không cảnh báo cong2-dich-cua-chung-roi', chong(r5).length === 0 && !co(r5.canhBao, 'cong2-dich-cua-chung-roi'), r5.loi);
+  const r6 = C.kiemRanhGioi('401699', nhapDongCung('401699'), { cong: [2] });
+  check('12.3b 401699 (7559407, trục) vẫn cong2-chong-lan-truc', co(r6.loi, 'cong2-chong-lan-truc'), r6.loi.slice(0, 3));
+  const r7 = C.kiemRanhGioi('848390', nhapDongCung('848390', THU_MUC_DONG_CUNG_88444A8));
+  check('12.3c 848390 (88444a8) vẫn XANH', r7.hopLe === true, r7.loi);
+  // Runtime không đổi: hàng thoả cả hai ⇒ động cơ thấy cả hai dòng, không tự chọn (hỏi)
+  const soTay = C.soTayTuNhap('950300', nhap719('950300'));
+  const dk = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO' }));
+  const rt = DK.doiChieuPhanNhom('950300', dk({ tenLoai: 'phụ kiện quần áo búp bê', dungCho: 'Xe điện' }), { soTay });
+  check('12.4a runtime: hàng "phụ kiện quần áo búp bê" dùng cho "Xe điện" ⇒ vẫn .22 + .30 CO (không tự chốt — hỏi)', ['95030022', '95030030'].every((h) => rt.dongCo.includes(h)) && rt.dongCo.length >= 2, rt.dongCo);
+  const rt2 = DK.doiChieuPhanNhom('950300', dk({ tenLoai: 'phụ kiện', dungCho: 'Xe điện' }), { soTay });
+  check('12.4b runtime: "phụ kiện" cho "Xe điện" ⇒ chỉ .30', JSON.stringify(rt2.dongCo) === JSON.stringify(['95030030']), rt2.dongCo);
+  const g = ML.giaiThich('cong2-dich-cua-chung-roi:95030022+95030030') || {};
+  check('12.5a ma-loi: cong2-dich-cua-chung-roi có giải thích (cảnh báo, không DỪNG)', /của chúng/u.test(g.giaiThich || '') && /tiêu đề/u.test(g.giaiThich || '') && !g.dung, g);
+  check('12.5b QUY-TRINH + LUAT-CHUNG + SOAT-RANH-GIOI ghi luật mới', ['QUY-TRINH-SO-HOA.md', 'SOAT-RANH-GIOI.md', 'LUAT-CHUNG.md'].every((p) => /cong2-dich-cua-chung-roi/u.test(docMd(p))));
+}
+
 console.log(`\n${pass} pass, ${fail} fail`);
 if (fail) process.exit(1);
