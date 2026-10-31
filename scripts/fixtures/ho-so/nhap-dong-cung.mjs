@@ -8,10 +8,18 @@ import fs from 'fs';
 import path from 'path';
 
 export const THU_MUC_DONG_CUNG = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-7559407');
+// ranh-gioi-88444a8/ = bản sao nguyên văn tại commit 88444a8 (main sau #646) — vòng 4 (848390, 853641).
+export const THU_MUC_DONG_CUNG_88444A8 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-88444a8');
+// ranh-gioi-pr/<pn6>-<sha>.json = bản nháp trên nhánh PR của thợ (so-hoa/<pn6>) tại commit <sha>, chưa merge — vòng 4.
+export const THU_MUC_DONG_CUNG_PR = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-pr');
 
 /** Bản nháp đông cứng của một PN6 (đối tượng mới mỗi lần gọi — sửa thoải mái). */
-export function nhapDongCung(pn6) {
-  return JSON.parse(fs.readFileSync(path.join(THU_MUC_DONG_CUNG, `${pn6}.json`), 'utf8'));
+export function nhapDongCung(pn6, thuMuc = THU_MUC_DONG_CUNG) {
+  return JSON.parse(fs.readFileSync(path.join(thuMuc, `${pn6}.json`), 'utf8'));
+}
+/** Bản nháp đông cứng lấy từ nhánh PR của thợ (ranh-gioi-pr/<pn6>-<sha>.json). */
+export function nhapPr(pn6, sha) {
+  return JSON.parse(fs.readFileSync(path.join(THU_MUC_DONG_CUNG_PR, `${pn6}-${sha}.json`), 'utf8'));
 }
 
 /**

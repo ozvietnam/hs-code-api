@@ -1,0 +1,161 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "940541",
+  "nhom": "9405",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode:glm-5.3:20261030T1548#soan-940541",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "94054110",
+      "nguon": "tax.94054110",
+      "trich": "94054110 - - - Đèn pha",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn pha"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94054120",
+      "nguon": "tax.94054120",
+      "trich": "94054120 - - - Đèn rọi khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn rọi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "94054130",
+      "nguon": "tax.94054130",
+      "trich": "94054130 - - - Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Đèn tín hiệu"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "sân bay"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "phương tiện giao thông đường sắt",
+                  "đầu máy",
+                  "tàu thủy",
+                  "phương tiện bay",
+                  "hải đăng"
+                ]
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "kim loại"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94054140",
+      "nguon": "tax.94054140",
+      "trich": "94054140 - - - Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn; loại chiếu sáng bên ngoài khác",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "CONG_CONG"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "chiếu sáng bên ngoài"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94054190",
+      "nguon": "tax.94054190",
+      "trich": "94054190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "94054110",
+        "94054130"
+      ],
+      "lyDo": "Đèn pha bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn pha\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
+    },
+    {
+      "cap": [
+        "94054120",
+        "94054130"
+      ],
+      "lyDo": "Đèn rọi bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn rọi khác\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "94054130",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Vế B của .30 chồng chữ với .10 \"Đèn pha\" và .20 \"Đèn rọi khác\" (đèn dùng cho đường sắt/đầu máy bằng kim loại có thể là đèn pha/đèn rọi) ⇒ khai chongLanVanBan 2 cặp; .30 chồng 2 anh em (< 3) nên không phải chồng lấn theo trục."
+    },
+    {
+      "ma": "94054130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ biểu hai vế ngăn bằng ';': vế A \"Đèn tín hiệu không nhấp nháy dùng cho sân bay\"; vế B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\" ⇒ HOAC hai phương án. \"không nhấp nháy\" không có khoá tu-vung@1 nên không diễn đạt được — người soát xem. \"bằng kim loại cơ bản\" đứng cuối vế B (sau dấu phẩy): gắn cho vế B theo đọc chữ; có thể ý cả dòng — người soát xem."
+    },
+    {
+      "ma": "94054120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Đèn rọi khác\" = phần còn lại có tên (đèn rọi trừ đèn pha .10) ⇒ phanConLai: true + tenLoai \"Đèn rọi\"."
+    },
+    {
+      "ma": "94054140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Loại khác, <vế A>; <vế B>\" — dòng bắt đầu bằng \"Loại khác\" nên máy tự phủ định anh em; chỉ ghi điều kiện hai vế theo HOAC: vế A phamViSuDung TRONG [CONG_CONG] (trích chứa \"công cộng\", \"đường phố\"), vế B congDung \"chiếu sáng bên ngoài\". Vế B có chữ \"khác\" nhưng cả dòng đã là \"Loại khác\" nên không cần phanConLai riêng."
+    }
+  ]
+}
