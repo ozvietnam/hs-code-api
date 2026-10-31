@@ -42,7 +42,8 @@ const menhDe = (kq, loai) => kq.ve.flatMap((v) => v.menhDe).filter((m) => m.loai
   check('1h vế mở "và bộ phận của chúng"', menhDe(c, 'MO').includes('và bộ phận của chúng'), menhDe(c, 'MO'));
 
   const d = V.tachVe('Đầu nối cáp gồm một phích cắm kiểu giắc, đầu cuối có hoặc không có chân cắm, đầu nối, hoặc bộ thích ứng (adaptor) sử dụng cho cáp đồng trục:');
-  check('1i "có hoặc không có" không phải vế giới hạn', !menhDe(d, 'GIOI_HAN').some((x) => /không có/.test(x)), menhDe(d, 'GIOI_HAN'));
+  // Vòng 4: "gồm …" (consisting of) là vế giới hạn — "có hoặc không có" nằm TRONG vế đó, không thành vế riêng.
+  check('1i "có hoặc không có" không phải vế giới hạn riêng', !menhDe(d, 'GIOI_HAN').some((x) => /^(?:có\s+hoặc\s+)?không có/u.test(x)) && menhDe(d, 'GIOI_HAN').some((x) => /^gồm một phích cắm/u.test(x)), menhDe(d, 'GIOI_HAN'));
   check('1j "sử dụng cho cáp đồng trục" là giới hạn', menhDe(d, 'GIOI_HAN').includes('sử dụng cho cáp đồng trục'), menhDe(d, 'GIOI_HAN'));
 
   const e = V.tachVe('- - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)');

@@ -94,9 +94,11 @@ const TIEU_DE = 'Chữ biểu: tieuDe.8544423 "Cáp ắc qui" (trục tên) đ�
   check('3g … vẫn ĐỎ cong2-chong-lan-truc:8544423 (thiết kế trục, không phải chữ tự chồng — khai chongLanTruc, #683)', rB.hopLe === false && co(rB.loi, 'cong2-chong-lan-truc:8544423:'), rB.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
 }
 {
-  // Khai hợp lệ (dòng ↔ dòng): 841459 .10 ↔ .30 (sen.84145930 "Máy thổi khí là quạt ly tâm…") — giữ xanh.
+  // 841459 .10 "Quạt, loại chỉ … để làm mát bộ vi xử lý…" (congDung + chiHoacChuYeu) ↔ .30 "Máy thổi khí" (chỉ tên): vòng 4
+  // (GĐ, soát #620–#647) — cặp anh em tên ↔ công dụng là chồng lấn theo TRỤC, DỪNG kể cả khi chỉ có 2 anh em (trước: xanh).
+  // .91 "Có lưới bảo vệ" (có-không) ↔ .92 (tên + công dụng) không phải tên thuần ↔ công dụng ⇒ vẫn là cặp khai thường.
   const r = C.kiemRanhGioi('841459', nhapDongCung('841459'));
-  check('3h 841459 (khai .10↔.30, .91↔.92) vẫn XANH, cặp khai là cảnh báo, không truc', r.hopLe === true && co(r.canhBao, 'cong2-chong-lan-van-ban:84145910+84145930:') && !co(r.loi, 'cong2-chong-lan-truc'), r.loi);
+  check('3h 841459: .10↔.30 (công dụng ↔ tên thuần) ⇒ cong2-chong-lan-truc (lỗi, không còn DỪNG — #683); .91↔.92 vẫn là cảnh báo khai thường', r.hopLe === false && co(r.loi, 'cong2-chong-lan-truc:') && !co(r.dung, 'cong2-chong-lan-truc:') && co(r.loi, 'cong2-chong-lan-van-ban-truc:84145910+84145930:') && co(r.canhBao, 'cong2-chong-lan-van-ban:84145991+84145992:'), { loi: r.loi, canhBao: r.canhBao.filter((c) => c.startsWith('cong2')) });
   // Dòng ↔ MỘT tiêu đề (bản đã DUYET): 853620 .20 ↔ 8536201 "Loại hộp đúc" — giữ xanh.
   const r2 = C.kiemRanhGioi('853620', nhapDongCung('853620'));
   check('3i 853620 (dòng ↔ một tiêu đề, bản DUYET) vẫn XANH', r2.hopLe === true, r2.loi);

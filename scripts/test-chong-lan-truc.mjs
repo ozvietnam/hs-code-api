@@ -5,7 +5,7 @@
 // Không đọc data/bench/, data/oz-export/. Không LLM, không mạng.
 import './test-isolate-data.mjs';
 import { createRequire } from 'module';
-import { nhapDongCung } from './fixtures/ho-so/nhap-dong-cung.mjs';
+import { nhapDongCung, nhapPr } from './fixtures/ho-so/nhap-dong-cung.mjs';
 const require = createRequire(import.meta.url);
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const ML = require('../lib/ho-so/ma-loi.js');
@@ -200,6 +200,24 @@ let vdChong = null;
   let nem = null; let h = null;
   try { h = await hoSo('85444213', CHONG, st2); } catch (e) { nem = e.message; }
   check('6r dấu chongLanTruc hỏng ⇒ không ném lỗi, hồ sơ vẫn dựng', nem === null && h && h.ketLuan.trangThai, nem);
+}
+
+// ── 7. Cấp DÒNG (vòng 4 bắt trục dòng ↔ dòng, #686): 940541 .10 "Đèn pha"/.20 "Đèn rọi khác" (tên) ↔ .30 (công dụng, HOAC) ─────
+{
+  const b = nhapPr('940541', '662e097');
+  delete b.chongLanVanBan;
+  b.chongLanTruc = [{
+    nhanh: ['94054110', '94054120', '94054130'],
+    truc: { 94054110: 'TEN_LOAI', 94054120: 'TEN_LOAI', 94054130: 'CONG_DUNG' },
+    cauHoiPhanBiet: 'Đèn này là "Đèn pha" / "Đèn rọi khác" hay là "đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản"?',
+    trich: { 94054110: 'Đèn pha', 94054120: 'Đèn rọi khác', 94054130: 'đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản' },
+    phanXu: null,
+  }];
+  const r = C.kiemRanhGioi('940541', b, C23);
+  check('7a 940541 cấp dòng: khai chongLanTruc ⇒ hết cong2-chong-lan-truc và cặp .10/.20↔.30, cảnh báo -da-khai', !co(r.loi, 'cong2-chong-lan-truc') && !co(r.loi, 'cong2-chong-lan:9405411') && !co(r.loi, 'cong2-chong-lan:9405412') && co(r.canhBao, 'cong2-chong-lan-truc-da-khai:94054110,94054120,94054130:'), r.loi);
+  const b2 = clone(b); b2.chongLanTruc[0].truc = { 94054110: 'TEN_LOAI', 94054120: 'TEN_LOAI', 94054130: 'TEN_LOAI' };
+  const r2 = C.kiemRanhGioi('940541', b2, C23);
+  check('7b … khai mọi dòng cùng trục ⇒ không phủ (cong0-chong-lan-truc-mot-truc là DỪNG)', co(r2.loi, 'cong0-chong-lan-truc-mot-truc:0') && co(r2.dung, 'cong0-chong-lan-truc-mot-truc') && co(r2.loi, 'cong2-chong-lan-truc:'), r2.loi.filter((l) => l.includes('truc')));
 }
 
 console.log('\nVí dụ (a) — cáp ắc qui dùng cho viễn thông, mã 85444213:');

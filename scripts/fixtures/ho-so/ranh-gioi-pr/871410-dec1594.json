@@ -1,0 +1,144 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "871410",
+  "nhom": "8714",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode:glm-5.3:20261030T1553#soan-871410",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "87141010",
+      "nguon": "tax.87141010",
+      "trich": "87141010 - - Yên xe",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Yên xe"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87141020",
+      "nguon": "tax.87141020",
+      "trich": "87141020 - - Nan hoa và ốc bắt đầu nan hoa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Nan hoa",
+            "ốc bắt đầu nan hoa"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87141030",
+      "nguon": "tax.87141030",
+      "trich": "87141030 - - Khung và càng xe kể cả càng xe cơ cấu ống lồng, giảm xóc và các bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Khung",
+            "càng xe",
+            "giảm xóc"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87141040",
+      "nguon": "tax.87141040",
+      "trich": "87141040 - - Bánh răng (gearing), hộp số, bộ ly hợp và các thiết bị truyền động khác và bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bánh răng",
+            "hộp số",
+            "bộ ly hợp",
+            "thiết bị truyền động"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87141050",
+      "nguon": "tax.87141050",
+      "trich": "87141050 - - Vành bánh xe",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vành bánh xe"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87141060",
+      "nguon": "tax.87141060",
+      "trich": "87141060 - - Phanh và bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Phanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87141070",
+      "nguon": "tax.87141070",
+      "trich": "87141070 - - Giảm thanh (muffers) và các bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giảm thanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87141090",
+      "nguon": "tax.87141090",
+      "trich": "87141090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "87141040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "KHÔNG đặt phanConLai: chữ \"khác\" nằm trong vế liệt kê \"các thiết bị truyền động khác\" (thiết bị truyền động khác ngoài bánh răng/hộp số/bộ ly hợp — phạm vi trong dòng), không phải phần còn lại của cả dòng so với anh em. Phần còn lại của phân nhóm là .90 \"Loại khác\" (máy tự phủ định)."
+    },
+    {
+      "ma": "87141030",
+      "loai": "DE_TRONG",
+      "ghiChu": "Vế \"và các bộ phận của chúng\" (bộ phận của khung/càng/giảm xóc) không diễn đạt được bằng tenLoai — người duyệt xem; tương tự .40, .60, .70. Vế \"kể cả càng xe cơ cấu ống lồng\" là liệt kê bao gồm (luật 3.8), đã phủ bằng giá trị \"càng xe\"."
+    },
+    {
+      "ma": "87141020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Nan hoa và ốc bắt đầu nan hoa\": hai tên trong dòng, hàng là một trong hai ⇒ mảng tenLoai (hoặc)."
+    }
+  ]
+}

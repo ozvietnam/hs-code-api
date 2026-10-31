@@ -38,6 +38,8 @@ Lệnh của CLAUDE (thợ KHÔNG chạy):
   --tra-ve --pn6=X --phien=… --ly-do=…                            trả về người soạn
   --ap-dung --pn6=X                                               đưa bản DUYET vào data/so-tay/<nhóm>.json
   --tom-tat                                                       trạng thái 50 phân nhóm lát 1
+  --nhan-tu-vung [--pn6=a,b]                                      ghi nhãn "tuVung" = từ vựng runtime (cổng chạy với bản này) — CHỈ đổi
+                                                                  dòng nhãn; bản NHAP có spec mà sinh lại khác ngoài nhãn ⇒ BỎ QUA
 
 Spec (ranh-gioi-spec@1, JSON):
   { "phienBan": "ranh-gioi-spec@1", "pn6": "830220", "phien": "cursor:<mô hình>:<yyyymmddThhmm>#soan-830220",
@@ -64,6 +66,7 @@ for (let i = 0; i < argv.length; i += 1) {
 const homNay = () => new Date().toISOString().slice(0, 10);
 const tepNhap = (pn6) => path.join('ho-so', 'ranh-gioi', `${pn6}.json`);
 const docNhap = (pn6) => { try { return JSON.parse(fs.readFileSync(dataReadPath(tepNhap(pn6)), 'utf8')); } catch { return null; } };
+const ghiTho = (rel, txt) => { const p = dataPath(rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, txt); return p; };
 const ghi = (rel, obj) => { const p = dataPath(rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, `${JSON.stringify(obj, null, 2)}\n`); return p; };
 function danhSach() {
   if (args.pn6) return String(args.pn6).split(',').map((x) => x.replace(/\D/g, '')).filter(Boolean);
@@ -259,6 +262,31 @@ if (args.help || args.h || !argv.length) {
       console.log(ghi(path.join('so-tay', `${h4}.json`), C.apDung(b, soTay)));
     }
   } catch (e) { console.error(`${p}: TỪ CHỐI — ${e.message}`); process.exit(1); }
+} else if (args['nhan-tu-vung']) {
+  // Nhãn tuVung (vòng 4): --ap-spec ghi nhãn của từ vựng runtime LÚC CHẠY; nhánh soạn trước khi đổi từ vựng mang nhãn cũ. Lệnh
+  // này chỉ thay đúng dòng "tuVung" (giữ nguyên mọi byte khác). Bản NHAP có spec: sinh lại từ spec trong bộ nhớ — khác bản hiện
+  // có ở trường nào khác ngoài nhãn ⇒ BỎ QUA (người soạn chạy lại --ap-spec, không đổi nhãn thay). Bản DUYET: nhãn nằm ngoài băm
+  // duyệt nên đổi nhãn không làm cong0-sua-sau-duyet.
+  const tvMoi = TV.taiTuVung().phienBan;
+  const chuanHoa = (x) => (Array.isArray(x) ? x.map(chuanHoa) : x && typeof x === 'object' ? Object.fromEntries(Object.keys(x).sort().map((k) => [k, chuanHoa(x[k])])) : x);
+  const lech = (a, b) => [...new Set([...Object.keys(a), ...Object.keys(b)])].filter((k) => JSON.stringify(chuanHoa(a[k])) !== JSON.stringify(chuanHoa(b[k])));
+  for (const p of danhSach() || moiBanNhap()) {
+    let txt = null; try { txt = fs.readFileSync(dataReadPath(tepNhap(p)), 'utf8'); } catch { /* chưa có */ }
+    if (txt == null) { console.log(`${p}: chưa có bản nháp`); continue; }
+    const b = JSON.parse(txt);
+    if (b.tuVung === tvMoi) { console.log(`${p}: giữ — đã ${tvMoi}`); continue; }
+    const tepSpec = path.join('docs', 'giao-viec', 'so-tay', 'spec', `${p}.json`);
+    if (b.trangThai === 'NHAP' && fs.existsSync(tepSpec)) {
+      const { banNhap, loi, dung } = C.apSpec(JSON.parse(fs.readFileSync(tepSpec, 'utf8')), b, { ngay: b.soanBoi?.ngay || null });
+      if (loi.length || dung.length) { console.log(`${p}: BỎ QUA — spec không áp được (${[...loi, ...dung][0]})`); continue; }
+      const k = lech({ ...banNhap, tuVung: tvMoi }, { ...b, tuVung: tvMoi });
+      if (k.length) { console.log(`${p}: BỎ QUA — sinh lại từ spec khác ngoài nhãn ở: ${k.join(', ')} (chạy lại --ap-spec)`); continue; }
+    }
+    const re = /"tuVung":\s*"[^"]*"/g;
+    if ((txt.match(re) || []).length !== 1) { console.log(`${p}: BỎ QUA — không thấy đúng một dòng "tuVung"`); continue; }
+    ghiTho(tepNhap(p), txt.replace(re, `"tuVung": "${tvMoi}"`));
+    console.log(`${p}: nhãn ${b.tuVung || '(trống)'} → ${tvMoi}`);
+  }
 } else if (args['tom-tat']) {
   for (let d = 1; d <= 5; d += 1) {
     for (const p of C.phanNhomCuaDot(d)) {

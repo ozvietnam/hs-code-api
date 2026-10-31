@@ -1,0 +1,111 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "851810",
+  "nhom": "8518",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode:glm-5.3:20261030T1602#soan-851810",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8518101",
+      "nguon": "tieuDe.8518101",
+      "trich": "8518101 Micro",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Micro"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85181011",
+      "nguon": "tax.85181011",
+      "trich": "85181011 - - - Micro có dải tần số từ 300 Hz đến 3.400 Hz, với đường kính không quá 10 mm và cao không quá 3 mm, dùng trong viễn thông",
+      "dieuKienSo": [
+        {
+          "fact": "tanSo",
+          "op": ">=",
+          "value": 300,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "tanSo",
+          "op": "<=",
+          "value": 3400,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 10,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 3,
+          "donVi": "mm"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "viễn thông"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85181019",
+      "nguon": "tax.85181019",
+      "trich": "85181019 - - - Micro khác, đã hoặc chưa lắp ráp cùng với giá đỡ micro",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Micro"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "85181090",
+      "nguon": "tax.85181090",
+      "trich": "85181090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85181011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85181011: \"dải tần số từ 300 Hz đến 3.400 Hz\" ⇒ tanSo >= 300 Hz VÀ tanSo <= 3400 Hz — ĐÃ ĐỐI CHIẾU TAY với chữ cho cảnh báo cong3-bien-khong-doc-duoc: biên dưới \"từ 300 Hz\" ⇒ >= 300, biên trên \"đến 3.400 Hz\" ⇒ <= 3400 (\"3.400\" = 3400); dải tần ghi thành hai biên trên cùng khoá — dữ kiện khách là một số thì so được, là dải thì nhờ người duyệt xem cách đọc; \"đường kính không quá 10 mm\" ⇒ duongKinh <= 10 mm; \"cao không quá 3 mm\" ⇒ chieuCao <= 3 mm; \"dùng trong viễn thông\" ⇒ congDung \"viễn thông\""
+    },
+    {
+      "ma": "85181019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85181019: \"Micro khác\" ⇒ phanConLai: true (phủ định anh em 85181011, trích có chữ \"khác\") + tenLoai \"Micro\"; vế \"đã hoặc chưa lắp ráp cùng với giá đỡ micro\" không thu hẹp nên không thành điều kiện"
+    },
+    {
+      "ma": "8518101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8518101: \"Micro\" ⇒ tenLoai TEN_LOAI \"Micro\""
+    },
+    {
+      "ma": "85181090",
+      "loai": "DE_TRONG",
+      "ghiChu": "tax.85181090: \"Loại khác\" trần — không ghi điều kiện, máy tự phủ định anh em"
+    }
+  ]
+}
