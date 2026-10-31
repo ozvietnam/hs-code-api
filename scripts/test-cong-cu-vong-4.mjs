@@ -113,7 +113,8 @@ const nhap88 = (pn6) => nhapDongCung(pn6, THU_MUC_DONG_CUNG_88444A8);
   check('5h "bao gồm", "gồm cả" vẫn là PHU (kể cả), không thành vế giới hạn', !bg.some((x) => x.loai === 'GIOI_HAN' && /^(?:bao )?gồm/u.test(x.chu)), bg.map((x) => `${x.loai}:${x.chu}`));
 }
 
-// ── 7. "X và (các) bộ phận của chúng" nhiều anh em: chồng lấn do bộ so chữ tự do VẪN là lỗi (chính sách cổng 2 không đổi) ──
+// ── 7. "X và (các) bộ phận của chúng" nhiều anh em — quyết định GĐ 31/10 thay vòng 4: tên nguyên văn rời nhau của anh em ⇒ ──
+// loại trừ (cảnh báo cong2-ten-anh-em-roi), KHÔNG hạ lỗi thành cảnh báo cong2-chong-lan. Ca tên chứa nhau: test-bo-phan-cua-chung.mjs.
 {
   const b = nhapPr('871410', 'dec1594');
   const HO = (ds) => { const ten = ds.find((c) => c.fact === 'tenLoai'); return [{ op: 'HOAC', phuongAn: [[ten], [{ fact: 'laBoPhan', op: 'CO' }, { fact: 'dungCho', op: 'CONG_DUNG', value: ten.value }]] }]; };
@@ -122,7 +123,7 @@ const nhap88 = (pn6) => nhapDongCung(pn6, THU_MUC_DONG_CUNG_88444A8);
   const r = C.kiemRanhGioi('871410', b, { cong: [2, 5] });
   const cl = r.loi.filter((l) => l.startsWith('cong2-chong-lan:'));
   check('7a 871410 dạng HOAC: vế mở phủ (không cong5-ve-mo-bi-bo)', !co(r.loi, 'cong5-ve-mo-bi-bo'), r.loi.filter((l) => l.startsWith('cong5')));
-  check('7b … chồng lấn tên trần ↔ "bộ phận của …" đều :khong-tat-dinh và VẪN là lỗi (không hạ thành cảnh báo)', cl.length > 0 && cl.every((l) => l.endsWith(':khong-tat-dinh')) && !co(r.canhBao, 'cong2-chong-lan:'), cl.length);
+  check('7b … tên đầu nguyên văn rời nhau: hết cong2-chong-lan, có cong2-ten-anh-em-roi, không hạ thành cảnh báo cong2-chong-lan', cl.length === 0 && co(r.canhBao, 'cong2-ten-anh-em-roi:') && !co(r.canhBao, 'cong2-chong-lan:'), cl);
 }
 
 // ── 8. Nhãn tuVung theo từ vựng của lần chạy: --nhan-tu-vung chỉ đổi đúng dòng nhãn ─────────────────────────────────────
@@ -147,6 +148,94 @@ const nhap88 = (pn6) => nhapDongCung(pn6, THU_MUC_DONG_CUNG_88444A8);
   const k3 = cli('--nhan-tu-vung', '--pn6=853620');
   const dSau = JSON.parse(fs.readFileSync(pd, 'utf8'));
   check('8d bản DUYET: chỉ đổi nhãn, cổng 0 xanh (băm duyệt không đổi)', k3.status === 0 && dSau.tuVung === 'tu-vung@2' && C.kiemRanhGioi('853620', dSau, { cong: [0] }).hopLe, k3.stdout + k3.stderr);
+}
+
+// ════ 9. "X và (các) bộ phận của chúng" ở NHIỀU anh em — luật tên nguyên văn của anh em (quyết định GĐ 31/10/2026, thay mục 7 ═
+// Trong một cha, tenLoai X (dòng A) ↔ laBoPhan CO + dungCho Y (dòng B), X/Y tên ĐẦU nguyên văn của chính dòng mình, rời nhau
+// đúng như cổng coi hai giá trị tenLoai X ↔ tenLoai Y của anh em (không ứng viên nào thoả cả hai) ⇒ loại trừ. Tên chứa nhau, tên
+// không nguyên văn, trục tên ↔ công dụng không laBoPhan ⇒ vẫn lỗi. Chỉ là luật CHỨNG MINH của cổng; runtime không đổi.
+// Fixture đông cứng ranh-gioi-571d7a5/ (main 571d7a5).
+const D571 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-571d7a5');
+const nhap571 = (pn6) => nhapDongCung(pn6, D571);
+const chong = (r) => r.loi.filter((l) => l.startsWith('cong2-chong-lan:'));
+const cap = (l) => l.split(':')[1];
+const HOAC = (ten) => [{ op: 'HOAC', phuongAn: [[{ fact: 'tenLoai', op: 'TEN_LOAI', value: ten }], [{ fact: 'laBoPhan', op: 'CO' }, { fact: 'dungCho', op: 'CONG_DUNG', value: ten }]] }];
+const dat = (b, hs, ds) => { b.dong8.find((m) => m.hs === hs).dieuKienSo = ds; return b; };
+
+// ── 9.1 871410 (main 571d7a5, dạng HOAC đúng QUY-TRINH 3.11): tên đầu nguyên văn rời nhau ⇒ hết chồng lấn ─────────────────
+{
+  const b = nhap571('871410');
+  const truoc = b.dong8.filter((m) => JSON.stringify(m.dieuKienSo).includes('HOAC')).map((m) => m.hs);
+  check('9.1a fixture 871410 có HOAC ở .30/.40/.60/.70', JSON.stringify(truoc) === JSON.stringify(['87141030', '87141040', '87141060', '87141070']), truoc);
+  const r = C.kiemRanhGioi('871410', b, { cong: [2, 3, 5] });
+  check('9.1b không còn cong2-chong-lan nào (trước: 18 cặp :khong-tat-dinh)', chong(r).length === 0, chong(r));
+  check('9.1c … kể cả 6 cặp giữa chính bốn dòng HOAC (.30/.40/.60/.70)', !chong(r).some((l) => ['87141030', '87141040', '87141060', '87141070'].filter((h) => cap(l).includes(h)).length === 2), chong(r));
+  check('9.1d không còn cong2-chong-lan-truc (đồ thị trục dựng trên chồng lấn thật)', !co(r.loi, 'cong2-chong-lan-truc'), r.loi);
+  check('9.1e cặp được chứng minh bằng luật mới hiện cảnh báo cong2-ten-anh-em-roi cho người soát (vd .10+.30, .30+.60)', co(r.canhBao, 'cong2-ten-anh-em-roi:87141010+87141030') && co(r.canhBao, 'cong2-ten-anh-em-roi:87141030+87141060'), r.canhBao);
+  check('9.1f "giảm xóc" (vế "kể cả …" ngay sau danh từ đầu .30) là tên của chính dòng: .30 ↔ .70 "Giảm thanh" không chồng', !chong(r).some((l) => cap(l) === '87141030+87141070'), chong(r));
+  check('9.1g cổng 3 + 5 vẫn xanh trên fixture (luật không đụng trích/vế)', !r.loi.some((l) => /^cong[35]-/.test(l)), r.loi);
+}
+
+// ── 9.2 Không nới hơn tiền lệ tenLoai ↔ tenLoai ──────────────────────────────────────────────────────────────────────────
+{
+  // 2a TÊN CHỨA NHAU (845290 thật): .11 tenLoai "bàn đạp" ↔ .12 "bộ phận của Bàn" — "bàn đạp" chứa "Bàn" ⇒ vẫn lỗi.
+  const b = nhap571('845290');
+  const ban = ['Bàn', 'tủ', 'chân máy', 'nắp'];
+  dat(b, '84529012', HOAC(ban)); dat(b, '84529092', HOAC(ban));
+  const r = C.kiemRanhGioi('845290', b, { cong: [2] });
+  const l12 = chong(r).filter((l) => cap(l) === '84529011+84529012');
+  check('9.2a 845290 HOAC: .11 "bàn đạp" ↔ .12 "Bàn …, và các bộ phận của chúng" ⇒ .11+.12 VẪN cong2-chong-lan :khong-tat-dinh', l12.length === 1 && l12[0].endsWith(':khong-tat-dinh'), chong(r));
+  // Tách riêng nhánh "bộ phận" của .12 (không nhánh tên) để thấy đúng cặp chéo khoá: tenLoai "bàn đạp" ↔ bộ phận của "Bàn".
+  const bp = nhap571('845290');
+  dat(bp, '84529012', [{ fact: 'laBoPhan', op: 'CO' }, { fact: 'dungCho', op: 'CONG_DUNG', value: ban }]);
+  const rp = C.kiemRanhGioi('845290', bp, { cong: [2] });
+  const lp = chong(rp).filter((l) => cap(l) === '84529011+84529012');
+  check('9.2a2 … cặp chéo khoá tên CHỨA nhau: tenLoai "bàn đạp" ↔ laBoPhan + dungCho "Bàn" ⇒ VẪN lỗi', lp.length === 1 && /tenLoai=bàn đạp/u.test(lp[0]) && /dungCho=Bàn/u.test(lp[0]), chong(rp));
+  check('9.2b … tương tự .91+.92', chong(r).some((l) => cap(l) === '84529091+84529092'), chong(r));
+  // 2c TÊN KHÔNG NGUYÊN VĂN của chính dòng: .60 "Má phanh" (không có trong chữ "Phanh và bộ phận của chúng") ⇒ vẫn lỗi.
+  const b2 = dat(nhap571('871410'), '87141060', HOAC('Má phanh'));
+  const r2 = C.kiemRanhGioi('871410', b2, { cong: [2] });
+  check('9.2c 871410 .60 dùng tên "Má phanh" (không nguyên văn chữ .60) ⇒ .10+.60 vẫn chồng lấn', chong(r2).some((l) => cap(l) === '87141010+87141060'), chong(r2));
+  // 2d TRỤC tên ↔ công dụng (không laBoPhan): .60 chỉ dungCho "Phanh" ⇒ vẫn chồng (không phải "bộ phận của X").
+  const b3 = dat(nhap571('871410'), '87141060', [{ fact: 'dungCho', op: 'CONG_DUNG', value: 'Phanh' }]);
+  const r3 = C.kiemRanhGioi('871410', b3, { cong: [2] });
+  check('9.2d 871410 .60 dungCho "Phanh" KHÔNG laBoPhan (trục tên ↔ công dụng) ⇒ .10+.60 vẫn chồng lấn', chong(r3).some((l) => cap(l) === '87141010+87141060'), chong(r3));
+  // 2e CÙNG tên hai bên: .70 viết tên "Phanh" (tên của .60) — dù tạm bỏ qua trích, tên trùng ⇒ không rời.
+  const b4 = dat(nhap571('871410'), '87141070', HOAC('Giảm thanh'));
+  b4.dong8.find((m) => m.hs === '87141050').dieuKienSo = [{ fact: 'tenLoai', op: 'TEN_LOAI', value: 'Phanh' }];
+  const r4 = C.kiemRanhGioi('871410', b4, { cong: [2] });
+  check('9.2e .50 tenLoai "Phanh" (không phải tên chữ .50) ↔ .60 bộ phận của "Phanh" ⇒ vẫn chồng lấn', chong(r4).some((l) => cap(l) === '87141050+87141060'), chong(r4));
+  // 2f tenLoai ↔ tenLoai của anh em: hành vi cũ (tên cụ thể hơn thắng) không đổi.
+  const b5 = nhap571('845290');
+  const r5 = C.kiemRanhGioi('845290', b5, { cong: [2] });
+  check('9.2f 845290 tenLoai trần (.11 "bàn đạp" ↔ .12 "Bàn"): như cũ, không chồng lấn (tên cụ thể hơn thắng)', chong(r5).length === 0, chong(r5));
+}
+
+// ── 9.3 Bản nháp đông cứng đang XANH có laBoPhan vẫn xanh; bản đỏ vẫn đỏ đúng chỗ ─────────────────────────────────────────
+{
+  const r1 = C.kiemRanhGioi('848390', nhapDongCung('848390', THU_MUC_DONG_CUNG_88444A8));
+  check('9.3a 848390 (88444a8, laBoPhan + dungCho) vẫn XANH', r1.hopLe === true, r1.loi);
+  const r2 = C.kiemRanhGioi('950300', nhapDongCung('950300'), { cong: [2] });
+  check('9.3b 950300 (7559407): kết quả cổng 2 không đổi — không cảnh báo cong2-ten-anh-em-roi', !co(r2.canhBao, 'cong2-ten-anh-em-roi'), r2.canhBao);
+  const r3 = C.kiemRanhGioi('401699', nhapDongCung('401699'), { cong: [2] });
+  check('9.3c 401699 (7559407, trục tên ↔ công dụng) vẫn báo cong2-chong-lan-truc', co(r3.loi, 'cong2-chong-lan-truc'), r3.loi.slice(0, 5));
+}
+
+// ── 9.4 Lời giải thích + quy trình ghi luật mới ──────────────────────────────────────────────────────────────────────────
+{
+  const g = ML.giaiThich('cong2-ten-anh-em-roi:87141010+87141030') || {};
+  check('9.4a ma-loi: cong2-ten-anh-em-roi có giải thích (cảnh báo, không DỪNG)', /tên/u.test(g.giaiThich || '') && /bộ phận/u.test(g.giaiThich || '') && !g.dung, g);
+  const gc = ML.giaiThich('cong2-chong-lan:87141010+87141030:x:khong-tat-dinh') || {};
+  check('9.4b ma-loi cong2-chong-lan: gợi ý dạng HOAC "X và bộ phận của chúng" với tên nguyên văn', /bộ phận của chúng/u.test(gc.cachSua || ''), gc.cachSua);
+  const qt = fs.readFileSync(path.join('docs', 'giao-viec', 'so-tay', 'QUY-TRINH-SO-HOA.md'), 'utf8');
+  check('9.4c QUY-TRINH mục 4 bước 7 thay: không còn "Cả hai: DỪNG", có luật tên nguyên văn + cong2-ten-anh-em-roi', !/Cả hai: DỪNG/u.test(qt) && /cong2-ten-anh-em-roi/u.test(qt) && /nguyên văn/u.test(qt), '');
+  check('9.4d LUAT-CHUNG ghi quyết định mới (thay "VẪN là lỗi … ⇒ DỪNG" của vòng 4)', /cong2-ten-anh-em-roi/u.test(fs.readFileSync(path.join('docs', 'giao-viec', 'so-tay', 'LUAT-CHUNG.md'), 'utf8')));
+  // Runtime không đổi: động cơ vẫn đánh giá dữ kiện — hàng "Yên xe" là bộ phận cho "Khung" vẫn THOẢ cả hai dòng (chưa chốt).
+  const b = nhap571('871410');
+  const soTay = C.soTayTuNhap('871410', b);
+  const dk = [{ fact: 'tenLoai', giaTri: 'Yên xe' }, { fact: 'laBoPhan', giaTri: true }, { fact: 'dungCho', giaTri: 'Khung' }].map((x) => ({ ...x, nguon: 'KHACH', trangThai: 'DA_CO' }));
+  const coDong = ['87141010', '87141030'].filter((hs) => DK.doiChieuDong8(hs, dk, { soTay }).ketQua === 'CO');
+  check('9.4e runtime không đổi: dữ kiện thoả cả .10 và .30 thì động cơ vẫn thấy cả hai CO (không tự chốt)', coDong.length === 2, coDong);
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
