@@ -66,3 +66,15 @@ wireline, line system(s), carrier-current/digital line; ZH 有线). Lý do: 8517
 dưới dạng sóng vô tuyến" — định ngữ chung của hai danh từ (EN "radio-telephony or radio-telegraphy") cần một điều kiện riêng.
 `nguonLoai` AI_DA_KIEM, nằm trong `chamDuyetDocLap.khoaChuaCham` (chờ chấm độc lập).
 
+
+## Bổ sung #577 (31/10/2026) — `daXuLyBeMat`, `nhienLieu` (848180)
+
+Đã thêm vào `tu-vung@2` (`tu-vung@1` không đổi — khoá bench; siêu tập giữ nguyên):
+- `daXuLyBeMat` CO_KHONG — "đã được xử lý bề mặt", "xử lý bề mặt"; EN surface treated / surface treatment; ZH 表面处理. Không suy
+  từ tên lớp phủ (mạ, sơn…). Lý do: 8481.80.97 "… đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken" (bỏ vế làm đổi mã).
+- `nhienLieu` LIET_KE `GA` ("bằng ga", "dùng ga", "chạy ga", "đốt ga", "bếp ga", "khí đốt"; EN gas-fired/-burning/-powered, gas
+  stove/cooker/range/oven…; ZH 燃气, 煤气) | `DIEN` ("bếp điện/từ/hồng ngoại", "lò (nướng) điện", "nấu bằng điện"; EN electric
+  stove/oven…, induction cooker; ZH 电炉, 电磁炉…). Không đọc "ga"/"gas" trần, "có ga", "bằng gang", "điều khiển bằng điện".
+  Lý do: 8481.80.30 "các bếp nấu hoặc bếp có lò nướng bằng ga" — "bằng ga" là định ngữ CHUNG của hai danh từ (EN "gas stoves or
+  ranges"); khoá @1 `nguonNangLuong` (pin / điện lưới / quang điện) giữ nguyên.
+Cả hai mang `nguonLoai` AI_DA_KIEM, nằm trong `chamDuyetDocLap.khoaChuaCham`.
