@@ -4,7 +4,7 @@
   "nhom": "8517",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-851762",
@@ -448,6 +448,13 @@
       "ma": "85176292",
       "loai": "CHONG_LAN",
       "ghiChu": "cong2-chong-lan-truc trong 8517629 (lộ ra khi .92 có điều kiện): .91 \"Thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin\" (chia theo tên — tenLoai, vế \"để gọi…\" là mục đích của thiết bị thu xách tay) ↔ .92 \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" (chia theo công dụng — dungCho + phuongThucTruyenDan): thiết bị thu xách tay/máy nhắn tin dùng cho điện báo, điện thoại vô tuyến thoả chữ cả hai; hai dòng không chung khoá ⇒ trục tên ↔ công dụng cấp dòng (QUY-TRINH 4 bước 6) ⇒ khai chongLanTruc (phanXu null), không khai chongLanVanBan."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+      "ngay": "2026-10-31",
+      "lyDo": "(A) 851762.json:dong8[85176210] THU HẸP: chữ \"Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp …\" — EN cùng dòng \"Radio transmitters and radio receivers of a kind used for simultaneous interpretation …\" là HAI hàng (máy phát HOẶC máy thu), nhưng tenLoai ghi MỘT giá trị \"phát và thu\" ⇒ bộ so chữ đòi cả \"phát\" lẫn \"thu\". Thử: \"máy thu sóng vô tuyến dùng cho phiên dịch hội nghị\" ⇒ TRAI ở .10; không vào 8517625/8517626 (không \"truyền dẫn\"), xuống 8517629 ⇒ .99 — sai dòng cho máy thu phiên dịch cầm tay, mặt hàng nhập riêng phổ biến (cùng MFN 0%). Khác .52 (EN \"Transmission and reception apparatus\", dưới tiêu đề \"… kết hợp với thiết bị thu\" — một máy thu phát là đúng chữ, giữ). Vòng 5: liệt kê TÊN HÀNG nối \"và\" ⇒ mảng. Làm gì: .10 tenLoai mảng chuỗi con nguyên văn (vd [\"phát\",\"thu\"] hoặc [\"Thiết bị phát\",\"thu sóng vô tuyến\"]) giữ phuongThucTruyenDan VO_TUYEN + dungCho; chạy lại cổng (.52 dưới 8517625 phanConLai). Ghi nhận, KHÔNG phải lý do trả về: (i) chồng lấn thật .30 ↔ 8517624 (tổng đài cho hệ thống hữu tuyến kỹ thuật số) cổng 2 không sinh được vector (một giá trị dungCho mỗi vector) — chấp nhận ghi ở ghiChuSoan, cùng MFN 0%, lúc chạy so chữ tự do không tự chốt; (ii) chongLanTruc .41/.42 ↔ .43 (modem/bộ dồn kênh thiết kế chỉ để nối máy 84.71) và .91 ↔ .92 (máy nhắn tin cho vô tuyến điện thoại) là chồng lấn thật, trích nguyên văn, phanXu null — đạt; (iii) khoá phuongThucTruyenDan dùng đúng (VO_TUYEN = \"sóng vô tuyến\"/radio)."
     }
   ]
 }

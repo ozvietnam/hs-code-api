@@ -4,7 +4,7 @@
   "nhom": "3926",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-392620",
@@ -123,6 +123,13 @@
       "ma": "39262090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.39262090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+      "ngay": "2026-10-31",
+      "lyDo": "(A) 392620.json:dong8[39262020] THU HẸP: chữ \"Miếng đệm và miếng bảo vệ vai\" (EN \"Shoulder pads or shields\") là hai hàng thay thế (pads HOẶC shields) cùng định ngữ chung \"vai\", nhưng tenLoai ghi MỘT chuỗi \"Miếng đệm và miếng bảo vệ vai\" ⇒ bộ so chữ đòi dữ kiện chứa ĐỦ âm tiết miếng, đệm, bảo, vệ, vai (là VÀ). Thử: \"miếng đệm vai bằng plastic\" ⇒ TRAI ở .20, rơi .30 \"Lót, đệm khác\" (phanConLai phủ định .20) — sai dòng 8 số cho chính hàng tiêu biểu của dòng (cùng MFN 15%). Vòng 5 (QUY-TRINH 3.2): liệt kê TÊN HÀNG nối \"và\" vẫn là danh sách ⇒ mảng; LUAT-CHUNG cổng 5: định ngữ chung ⇒ một điều kiện RIÊNG áp cho mọi danh từ đầu (không nhét vào một giá trị tenLoai). Làm gì: tenLoai [\"Miếng đệm\",\"miếng bảo vệ\"] + một điều kiện riêng cho \"vai\" (khoá phải chọn từ --tu-vung; không có khoá đứng được ⇒ THIEU_KHOA_TU_VUNG, DỪNG). Không gộp lại một chuỗi để né cong2-dong-khong-toi-duoc."
     }
   ]
 }
