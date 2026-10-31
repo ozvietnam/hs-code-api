@@ -3,12 +3,12 @@
   "pn6": "845290",
   "nhom": "8452",
   "bieuThue": "2026.04.05",
-  "tuVung": "tu-vung@1",
+  "tuVung": "tu-vung@2",
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode:glm-5.3:20261030T1551#soan-845290",
-    "ngay": "2026-10-30"
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-845290",
+    "ngay": "2026-10-31"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -52,13 +52,36 @@
       "trich": "84529012 - - - Bàn, tủ, chân máy và nắp và các bộ phận của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Bàn",
-            "tủ",
-            "chân máy",
-            "nắp"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Bàn",
+                  "tủ",
+                  "chân máy",
+                  "nắp"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Bàn",
+                  "tủ",
+                  "chân máy",
+                  "nắp"
+                ]
+              }
+            ]
           ]
         }
       ],
@@ -96,13 +119,36 @@
       "trich": "84529092 - - - Bàn, tủ, chân máy và nắp và các bộ phận của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Bàn",
-            "tủ",
-            "chân máy",
-            "nắp"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Bàn",
+                  "tủ",
+                  "chân máy",
+                  "nắp"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Bàn",
+                  "tủ",
+                  "chân máy",
+                  "nắp"
+                ]
+              }
+            ]
           ]
         }
       ],
@@ -130,22 +176,17 @@
     {
       "ma": "84529012",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84529012: \"Bàn, tủ, chân máy và nắp và các bộ phận của chúng\" ⇒ tenLoai TEN_LOAI mảng [\"Bàn\", \"tủ\", \"chân máy\", \"nắp\"] (mảng = hoặc)"
-    },
-    {
-      "ma": "84529012",
-      "loai": "DE_TRONG",
-      "ghiChu": "Vế \"và các bộ phận của chúng\" (bộ phận của bàn/tủ/chân máy/nắp) không diễn đạt được bằng từ vựng hiện có — để trống, không bịa. Tương tự 84529092."
+      "ghiChu": "tax.84529012: \"Bàn, tủ, chân máy và nắp và các bộ phận của chúng\" (chữ Anh \"Furniture, bases and covers and parts thereof\") ⇒ vế MỞ \"và các bộ phận của chúng\" theo QUY-TRINH 3.11: HOAC [[tenLoai [\"Bàn\",\"tủ\",\"chân máy\",\"nắp\"]], [laBoPhan CO, dungCho [cùng các tên]]] — mỗi giá trị là tên đầu nguyên văn của chính dòng."
     },
     {
       "ma": "84529019",
-      "loai": "DE_TRONG",
-      "ghiChu": "tax.84529019: \"Loại khác\" — dòng Loại khác trần, không ghi điều kiện (máy tự phủ định anh em)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84529019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
     },
     {
       "ma": "8452909",
-      "loai": "DE_TRONG",
-      "ghiChu": "tieuDe.8452909: \"Loại khác\" — tiêu đề Loại khác trần, không ghi điều kiện"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8452909 \"Loại khác\" trần ⇒ không điều kiện (luật đi phủ định anh em)"
     },
     {
       "ma": "84529091",
@@ -155,17 +196,17 @@
     {
       "ma": "84529092",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84529092 chữ trùng hệt tax.84529012; phân biệt bởi tiêu đề cha như 84529091."
+      "ghiChu": "tax.84529092 chữ trùng hệt tax.84529012 (kể cả vế MỞ \"và các bộ phận của chúng\" ⇒ cùng dạng HOAC); phân biệt bởi tiêu đề cha như 84529091."
     },
     {
       "ma": "84529099",
-      "loai": "DE_TRONG",
-      "ghiChu": "tax.84529099: \"Loại khác\" — dòng Loại khác trần, không ghi điều kiện"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84529099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
     },
     {
-      "ma": "84529011",
-      "loai": "CHONG_LAN",
-      "ghiChu": "So chữ tự do: giá trị \"Bàn\" (.12/.92) là chuỗi con của \"bàn đạp\" (.11/.91) ⇒ có thể bị bộ so chữ coi chồng lấn; theo LUAT-CHUNG tenCuTheHon \"bàn đạp\" ⊃ \"Bàn\" không phải chồng lấn chữ biểu thật. Không khai chongLanVanBan (chồng lấn do bộ so chữ — quy trình mục CHONG_LAN không khai)."
+      "ma": "84529011+84529012",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — sau khi viết đúng dạng HOAC cho vế MỞ \"và các bộ phận của chúng\" (.12/.92), cổng 2 báo cong2-chong-lan 84529011+84529012 và 84529091+84529092 (:khong-tat-dinh). Nguyên nhân: tax.84529011 \"… bàn đạp các loại\" (tenLoai \"bàn đạp\") CHỨA tên \"Bàn\" của tax.84529012 (chữ Anh \"treadles or pedals\" ↔ \"Furniture\" — trùng do bản dịch). Luật tên nguyên văn của anh em (QUY-TRINH mục 4 bước 7, GĐ 31/10/2026) không chứng minh được cặp tên chứa nhau: vector \"tenLoai bàn đạp + là bộ phận + dungCho Bàn\" làm cả hai CO; và trên phương án tên, \"tên cụ thể hơn thắng\" không xét điều kiện trong HOAC nên vector tenLoai \"bàn đạp\" cũng làm .12 phương án tenLoai \"Bàn\" CO. Các cặp khác (\"bộ phận che chắn dây đai\", \"bánh đà\", … ↔ bộ phận của \"Bàn\"/\"tủ\"/…) đã được luật chứng minh. Không khai chongLanVanBan (chồng do bộ so chữ, không phải chữ biểu tự chồng), không đổi khoá, không bỏ vế mở. Cần GĐ quyết: cho \"tên cụ thể hơn thắng\" áp vào phương án HOAC và cặp chéo khoá, hoặc biểu diễn khác cho \"Bàn\"."
     }
   ]
 }
