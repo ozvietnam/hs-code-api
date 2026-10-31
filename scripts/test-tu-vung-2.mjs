@@ -24,8 +24,9 @@ const check = (n, c, d) => { if (c) { pass += 1; console.log(`PASS ${n}`); } els
 const coTrong = (r, text) => typeof r?.bangChung === 'string' && r.bangChung.length > 0 && text.normalize('NFC').includes(r.bangChung);
 const CJK = /[㐀-鿿]/u;
 const clone = (x) => JSON.parse(JSON.stringify(x));
-// 7 khoá #570 + phuongThucTruyenDan (#606 — 851762 "truyền dẫn dưới dạng sóng vô tuyến", định ngữ chung của điện báo/điện thoại).
-const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNapChuongTrinh: 'CO_KHONG', soLoi: 'SO', soSoi: 'SO', tiLe: 'SO', phuongPhapCheTao: 'LIET_KE', phuongThucTruyenDan: 'LIET_KE' };
+// 7 khoá #570 + phuongThucTruyenDan (#606 — 851762 "truyền dẫn dưới dạng sóng vô tuyến", định ngữ chung của điện báo/điện thoại)
+// + daXuLyBeMat, nhienLieu (#577 — 848180 .97 "đã được xử lý bề mặt", .30 "bếp nấu hoặc bếp có lò nướng bằng ga").
+const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNapChuongTrinh: 'CO_KHONG', soLoi: 'SO', soSoi: 'SO', tiLe: 'SO', phuongPhapCheTao: 'LIET_KE', phuongThucTruyenDan: 'LIET_KE', daXuLyBeMat: 'CO_KHONG', nhienLieu: 'LIET_KE' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
@@ -222,12 +223,36 @@ chuaBiet('phủ định "không phải loại vô tuyến"', 'phuongThucTruyenDa
   check('phuongThucTruyenDan hai giá trị ⇒ ungVien [HUU_TUYEN, VO_TUYEN]', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['HUU_TUYEN', 'VO_TUYEN']), r);
 }
 
+// daXuLyBeMat — CO_KHONG (#577, chữ biểu 8481.80.97)
+la('chữ biểu 84818097 "đã được xử lý bề mặt"', 'daXuLyBeMat', 'Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken', true, { bc: 'đã được xử lý bề mặt' });
+la('En "surface treated"', 'daXuLyBeMat', 'brass ball valve, surface treated, chrome finish', true);
+la('Zh "表面处理"', 'daXuLyBeMat', '黄铜球阀 表面处理', true);
+la('phủ định "chưa xử lý bề mặt"', 'daXuLyBeMat', 'van đồng thau chưa xử lý bề mặt', false);
+chuaBiet('không suy từ tên lớp phủ / vật liệu ("inox", "mạ")', 'daXuLyBeMat', 'van inox mạ niken');
+
+// nhienLieu — LIET_KE GA | DIEN (#577, chữ biểu 8481.80.30)
+la('chữ biểu 84818030 "bếp có lò nướng bằng ga"', 'nhienLieu', 'Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga', 'GA', { bc: 'bằng ga' });
+la('"bếp ga"', 'nhienLieu', 'van điều chỉnh bếp ga âm', 'GA');
+la('En "gas-fired"', 'nhienLieu', 'valve for gas-fired cooker', 'GA');
+la('Zh "燃气"', 'nhienLieu', '燃气灶阀门', 'GA');
+la('"bếp từ" ⇒ DIEN', 'nhienLieu', 'bếp từ đôi âm kính', 'DIEN');
+la('En "electric oven"', 'nhienLieu', 'electric oven thermostat', 'DIEN');
+chuaBiet('"bằng gang" không phải "bằng ga"', 'nhienLieu', 'Van cổng, bằng gang đúc');
+chuaBiet('"có ga" (đồ uống) không đọc', 'nhienLieu', 'chai nước ngọt có ga');
+chuaBiet('"gas" trần (van gas, bình gas — khí là lưu chất) không đọc', 'nhienLieu', 'van gas bình LPG');
+chuaBiet('"điều khiển bằng điện" là cách điều khiển, không phải nhiên liệu', 'nhienLieu', 'van điều khiển bằng điện');
+{
+  const r = chuaBiet('cả bếp ga lẫn bếp điện — không đoán', 'nhienLieu', 'bếp ga và bếp điện');
+  check('nhienLieu hai giá trị ⇒ ungVien [DIEN, GA]', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['DIEN', 'GA']), r);
+}
+
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────
 const viet = (khoa, v) => { try { return T.vietCum(khoa, v); } catch (e) { return `LOI ${e.message}`; } };
 check('vietCum soLoi 2 ⇒ "2 lõi" (đơn vị đếm cách số)', viet('soLoi', 2) === '2 lõi', viet('soLoi', 2));
 check('vietCum soSoi 7 ⇒ "7 sợi"', viet('soSoi', 7) === '7 sợi', viet('soSoi', 7));
 check('vietCum tiLe 0.1 ⇒ "tỉ lệ 0,1 lần"', viet('tiLe', 0.1) === 'tỉ lệ 0,1 lần', viet('tiLe', 0.1));
 check('vietCum phuongPhapCheTao REN ⇒ "được rèn"', viet('phuongPhapCheTao', 'REN') === 'được rèn', viet('phuongPhapCheTao', 'REN'));
+check('vietCum nhienLieu GA/DIEN ⇒ "dùng ga"/"dùng điện"; daXuLyBeMat true/false', viet('nhienLieu', 'GA') === 'dùng ga' && viet('nhienLieu', 'DIEN') === 'dùng điện' && viet('daXuLyBeMat', true) === 'đã xử lý bề mặt' && viet('daXuLyBeMat', false) === 'chưa xử lý bề mặt', [viet('nhienLieu', 'GA'), viet('nhienLieu', 'DIEN'), viet('daXuLyBeMat', true), viet('daXuLyBeMat', false)]);
 check('vietCum phuongThucTruyenDan VO_TUYEN ⇒ "truyền dẫn vô tuyến"', viet('phuongThucTruyenDan', 'VO_TUYEN') === 'truyền dẫn vô tuyến' && viet('phuongThucTruyenDan', 'HUU_TUYEN') === 'truyền dẫn hữu tuyến', [viet('phuongThucTruyenDan', 'VO_TUYEN'), viet('phuongThucTruyenDan', 'HUU_TUYEN')]);
 check('vietCum chiHoacChuYeu true/false ⇒ không chép chữ biểu "chỉ hoặc chủ yếu"', viet('chiHoacChuYeu', true) === 'chuyên dùng' && viet('chiHoacChuYeu', false) === 'loại dùng chung', [viet('chiHoacChuYeu', true), viet('chiHoacChuYeu', false)]);
 check('vietCum daNapChuongTrinh true/false', viet('daNapChuongTrinh', true) === 'đã nạp chương trình' && viet('daNapChuongTrinh', false) === 'chưa nạp chương trình', [viet('daNapChuongTrinh', true), viet('daNapChuongTrinh', false)]);
@@ -287,6 +312,9 @@ check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.v
   dat('tiLe > 0.1 lần ("trên 1/10 đường kính")', { fact: 'tiLe', op: '>', value: 0.1, donVi: 'lần' }, '76169930');
   truot('tiLe <= 0.1 lần (op lệch "trên")', { fact: 'tiLe', op: '<=', value: 0.1, donVi: 'lần' }, '76169930', 'dieu-kien-so-nguong-khong-co-trong-trich');
   dat('phuongPhapCheTao TRONG [DOT_DAP_KEO_GIAN]', { fact: 'phuongPhapCheTao', op: 'TRONG', value: ['DOT_DAP_KEO_GIAN'] }, '76169980');
+  dat('daXuLyBeMat CO ("đã được xử lý bề mặt")', { fact: 'daXuLyBeMat', op: 'CO' }, '84818097');
+  dat('nhienLieu TRONG [GA] ("bằng ga")', { fact: 'nhienLieu', op: 'TRONG', value: ['GA'] }, '84818030');
+  truot('nhienLieu TRONG [DIEN] (chữ biểu "bằng ga")', { fact: 'nhienLieu', op: 'TRONG', value: ['DIEN'] }, '84818030', 'dieu-kien-so-trong-khong-co-trong-trich');
   // khoá @1: ngưỡng vẫn phải có nguyên văn (không nới máy kiểm cho khoá cũ)
   check('dieuKienSo khoá @1 không đổi: duongKinhLoi <= 6 mm trên "không quá 5 mm" ⇒ lỗi ngưỡng', DK.kiemDieuKien({ fact: 'duongKinhLoi', op: '<=', value: 6, donVi: 'mm' }, 'mỗi lõi có đường kính không quá 5 mm') === 'dieu-kien-so-nguong-khong-co-trong-trich:6');
 }
