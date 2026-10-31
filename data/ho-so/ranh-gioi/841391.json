@@ -1,0 +1,119 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841391",
+  "nhom": "8413",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode:glm-5.3:20261030T1545#soan-841391",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84139110",
+      "nguon": "tax.84139110",
+      "trich": "84139110 - - - Của bơm thuộc phân nhóm 8413.20.10",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8413.20.10"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84139120",
+      "nguon": "tax.84139120",
+      "trich": "84139120 - - - Của bơm thuộc phân nhóm 8413.20.20 và 8413.20.90",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.20.20",
+            "8413.20.90"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84139130",
+      "nguon": "tax.84139130",
+      "trich": "84139130 - - - Của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.70.11",
+            "8413.70.19"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84139140",
+      "nguon": "tax.84139140",
+      "trich": "84139140 - - - Của bơm ly tâm khác",
+      "dieuKienSo": [
+        {
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "84139190",
+      "nguon": "tax.84139190",
+      "trich": "84139190 - - - Của bơm khác",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bơm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84139110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84139110 \"84139110 - - - Của bơm thuộc phân nhóm 8413.20.10\": ý duy nhất là bộ phận CỦA bơm thuộc phân nhóm 8413.20.10 ⇒ dungCho \"8413.20.10\" (chuỗi con nguyên văn; khoá dungCho = hàng mà bộ phận lắp vào/đi cùng, cách dùng mã phân nhóm như mẫu 850131 \"hàng hóa thuộc nhóm 84.15…\"). Không ghi laBoPhan vì câu trích không chứa mẫu cachDoc (\"bộ phận/linh kiện/chi tiết/phụ tùng\") của khoá."
+    },
+    {
+      "ma": "84139120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84139120 \"Của bơm thuộc phân nhóm 8413.20.20 và 8413.20.90\" ⇒ dungCho [\"8413.20.20\", \"8413.20.90\"] — mảng = HOẶC: một bộ phận chỉ thuộc bơm của MỘT trong hai phân nhóm; hai chuỗi đều nguyên văn trong câu trích."
+    },
+    {
+      "ma": "84139130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84139130 \"Của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19\" ⇒ dungCho [\"8413.70.11\", \"8413.70.19\"] — mảng = HOẶC, như 84139120."
+    },
+    {
+      "ma": "84139140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84139140 \"Của bơm ly tâm khác\": vế dương \"bơm ly tâm\" ⇒ kieuBom TRONG [LY_TAM] (mẫu cachDoc \"ly tâm\" có trong trích); chữ \"khác\" ⇒ phanConLai: true (phần còn lại có tên, phủ định mọi anh em đứng trước — LUAT-CHUNG: trích phải có chữ \"khác\", có). Không khai chongLanVanBan vì đây là chồng lấn do \"khác\" cuối dòng, quy trình mục 4 nói rõ không khai."
+    },
+    {
+      "ma": "84139190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84139190 \"Của bơm khác\": vế dương sau \"Của\" là \"bơm\" ⇒ dungCho \"bơm\" (chuỗi con nguyên văn; bộ phận lắp vào/đi cùng bơm — cùng khoá với ba anh em trên theo quy trình 3.3). Chữ \"khác\" ⇒ phanConLai: true (dòng phần còn lại có tên, máy phủ định cả bốn anh em đứng trước)."
+    }
+  ]
+}
