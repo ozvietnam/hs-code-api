@@ -89,11 +89,36 @@
       "trich": "73269070 - - Móng ngựa; mấu, gai, đinh móc lắp trên giày để thúc ngựa",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Móng ngựa",
-            "mấu, gai, đinh móc lắp trên giày để thúc ngựa"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Móng ngựa"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "mấu",
+                  "gai",
+                  "đinh móc"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "giày"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "thúc ngựa"
+              }
+            ]
           ]
         }
       ],
@@ -144,7 +169,7 @@
     {
       "ma": "73269070",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73269070 \"Móng ngựa; mấu, gai, đinh móc lắp trên giày để thúc ngựa\" (chữ Anh \"Horseshoes; riding boot spurs\") ⇒ tenLoai [\"Móng ngựa\", \"mấu, gai, đinh móc lắp trên giày để thúc ngựa\"] (mảng = hoặc theo dấu \";\"; vế 2 giữ nguyên cụm để \"để thúc ngựa\" đi với cả ba danh từ đầu)."
+      "ghiChu": "tax.73269070 \"Móng ngựa; mấu, gai, đinh móc lắp trên giày để thúc ngựa\" (chữ Anh \"Horseshoes; riding boot spurs\") ⇒ HOAC theo dấu \";\": [tenLoai \"Móng ngựa\"] | [tenLoai [\"mấu\",\"gai\",\"đinh móc\"] + dungCho \"giày\" + congDung \"thúc ngựa\"]. Quyết định GĐ 31/10 (cổng vòng 5 cong3-liet-ke-trong-mot-chuoi): \"mấu, gai, đinh móc\" là ba tên của CÙNG một vật (chữ Anh một danh từ \"riding boot spurs\") ⇒ mảng các tên nguyên văn thay thế nhau, không rộng nghĩa hơn chữ. Vế \"lắp trên giày để thúc ngựa\" là định ngữ CHUNG của cả ba tên (EN \"riding boot\" bổ nghĩa \"spurs\") ⇒ điều kiện riêng áp cho mọi tên: \"lắp trên giày\" ⇒ dungCho \"giày\" (khoá dungCho = hàng lắp vào), \"để thúc ngựa\" ⇒ congDung \"thúc ngựa\". Không áp cho \"Móng ngựa\" (vế 1 riêng sau dấu \";\")."
     },
     {
       "ma": "73269091",
