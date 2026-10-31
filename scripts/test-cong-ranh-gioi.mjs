@@ -228,7 +228,8 @@ function nhap853641() {
   check('9a CLI --goi --json trả gói soạn của 841350', j[0]?.pn6 === '841350' && j[0].canSoHoa.length === 5);
   const out2 = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--goi', '--pn6=841350', '--json'], { encoding: 'utf8', env: process.env });
   check('9b CLI tất định (hai lần chạy giống hệt)', out === out2);
-  let code = 0; try { execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--kiem', '--pn6=848180'], { encoding: 'utf8', env: process.env, stdio: 'pipe' }); } catch (e) { code = e.status; }
+  let code = 0; try { execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--kiem', '--pn6=847130'], { encoding: 'utf8', env: process.env, stdio: 'pipe' }); } catch (e) { code = e.status; }
+  // 847130 (không thuộc lát 1) không có bản nháp; trước dùng 848180 — từ #700 đã có bản nháp (cổng 2 ~15 phút), từ vòng 6 XANH.
   check('9c CLI --kiem phân nhóm chưa có bản nháp → mã thoát ≠ 0', code !== 0);
 }
 
