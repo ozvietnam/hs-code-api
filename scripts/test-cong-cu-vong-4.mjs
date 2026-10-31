@@ -26,7 +26,7 @@ const nhap88 = (pn6) => nhapDongCung(pn6, THU_MUC_DONG_CUNG_88444A8);
 {
   for (const ma of ['cong2-diem-mu:dungCho:8517624>85176243', 'cong2-dong-khong-toi-duoc:85176261']) {
     const g = ML.giaiThich(ma) || {};
-    check(`1a ${ma.split(':')[0]}: gợi ý KHÔNG bảo đổi sang khoá khác`, !/khoá khác|đổi khoá|congDung thay|tenLoai thay/iu.test(`${g.giaiThich} ${g.cachSua}`), g.cachSua);
+    check(`1a ${ma.split(':')[0]}: gợi ý KHÔNG bảo đổi sang khoá khác`, !/dùng khoá khác|chọn khoá khác/iu.test(`${g.giaiThich} ${g.cachSua}`) && /không đổi/iu.test(g.cachSua || ''), g.cachSua);
     check(`1b ${ma.split(':')[0]}: gợi ý nói giữ CÙNG khoá cho anh em + DỪNG khi vẫn không tới`, /cùng (?:một )?khoá/iu.test(g.cachSua || '') && /DỪNG/u.test(g.cachSua || ''), g.cachSua);
   }
   const qt = docMd('QUY-TRINH-SO-HOA.md');
