@@ -178,20 +178,19 @@ const dat = (b, hs, ds) => { b.dong8.find((m) => m.hs === hs).dieuKienSo = ds; r
 
 // ── 9.2 Không nới hơn tiền lệ tenLoai ↔ tenLoai ──────────────────────────────────────────────────────────────────────────
 {
-  // 2a TÊN CHỨA NHAU (845290 thật): .11 tenLoai "bàn đạp" ↔ .12 "bộ phận của Bàn" — "bàn đạp" chứa "Bàn" ⇒ vẫn lỗi.
+  // 2a TÊN CHỨA NHAU (845290 thật): .11 tenLoai "bàn đạp" ↔ .12 "bộ phận của Bàn" — "bàn đạp" chứa "Bàn". Trước GĐ (a)
+  // (mục 10) là lỗi; nay "tên cụ thể hơn thắng" áp vào phương án HOAC + cặp chéo khoá ⇒ .11 thắng, không còn chồng lấn.
   const b = nhap571('845290');
   const ban = ['Bàn', 'tủ', 'chân máy', 'nắp'];
   dat(b, '84529012', HOAC(ban)); dat(b, '84529092', HOAC(ban));
   const r = C.kiemRanhGioi('845290', b, { cong: [2] });
-  const l12 = chong(r).filter((l) => cap(l) === '84529011+84529012');
-  check('9.2a 845290 HOAC: .11 "bàn đạp" ↔ .12 "Bàn …, và các bộ phận của chúng" ⇒ .11+.12 VẪN cong2-chong-lan :khong-tat-dinh', l12.length === 1 && l12[0].endsWith(':khong-tat-dinh'), chong(r));
+  check('9.2a 845290 HOAC: .11 "bàn đạp" ↔ .12 "Bàn …, và các bộ phận của chúng" ⇒ tên cụ thể hơn thắng (mục 10), hết .11+.12', !chong(r).some((l) => cap(l) === '84529011+84529012'), chong(r));
   // Tách riêng nhánh "bộ phận" của .12 (không nhánh tên) để thấy đúng cặp chéo khoá: tenLoai "bàn đạp" ↔ bộ phận của "Bàn".
   const bp = nhap571('845290');
   dat(bp, '84529012', [{ fact: 'laBoPhan', op: 'CO' }, { fact: 'dungCho', op: 'CONG_DUNG', value: ban }]);
   const rp = C.kiemRanhGioi('845290', bp, { cong: [2] });
-  const lp = chong(rp).filter((l) => cap(l) === '84529011+84529012');
-  check('9.2a2 … cặp chéo khoá tên CHỨA nhau: tenLoai "bàn đạp" ↔ laBoPhan + dungCho "Bàn" ⇒ VẪN lỗi', lp.length === 1 && /tenLoai=bàn đạp/u.test(lp[0]) && /dungCho=Bàn/u.test(lp[0]), chong(rp));
-  check('9.2b … tương tự .91+.92', chong(r).some((l) => cap(l) === '84529091+84529092'), chong(r));
+  check('9.2a2 … cặp chéo khoá tên CHỨA nhau: tenLoai "bàn đạp" ↔ laBoPhan + dungCho "Bàn" ⇒ tên cụ thể hơn thắng (mục 10)', !chong(rp).some((l) => cap(l) === '84529011+84529012'), chong(rp));
+  check('9.2b … tương tự .91+.92', !chong(r).some((l) => cap(l) === '84529091+84529092'), chong(r));
   // 2c TÊN KHÔNG NGUYÊN VĂN của chính dòng: .60 "Má phanh" (không có trong chữ "Phanh và bộ phận của chúng") ⇒ vẫn lỗi.
   const b2 = dat(nhap571('871410'), '87141060', HOAC('Má phanh'));
   const r2 = C.kiemRanhGioi('871410', b2, { cong: [2] });
@@ -236,6 +235,88 @@ const dat = (b, hs, ds) => { b.dong8.find((m) => m.hs === hs).dieuKienSo = ds; r
   const dk = [{ fact: 'tenLoai', giaTri: 'Yên xe' }, { fact: 'laBoPhan', giaTri: true }, { fact: 'dungCho', giaTri: 'Khung' }].map((x) => ({ ...x, nguon: 'KHACH', trangThai: 'DA_CO' }));
   const coDong = ['87141010', '87141030'].filter((hs) => DK.doiChieuDong8(hs, dk, { soTay }).ketQua === 'CO');
   check('9.4e runtime không đổi: dữ kiện thoả cả .10 và .30 thì động cơ vẫn thấy cả hai CO (không tự chốt)', coDong.length === 2, coDong);
+}
+
+// ════ 10. "Tên cụ thể hơn thắng" vào phương án HOAC + cặp chéo khoá (quyết định GĐ phương án (a), #600) ═══════════════════
+// Cùng ngữ nghĩa với trường hợp không HOAC (DK.tenCuTheHon, không định nghĩa lại): mục có HOAC trải thành các phương án THOẢ
+// trên dữ kiện; MỌI cặp phương án (A, B) phải phân được cùng một chiều. Cặp chéo khoá tenLoai X ↔ laBoPhan CO + dungCho Y: so
+// tên X ↔ Y bằng tenCuTheHon (đổi dungCho phân biệt của bên "bộ phận" thành khoá tên). Ở cổng, cặp chéo khoá chỉ nhận khi X/Y là
+// tên đầu NGUYÊN VĂN của chính nút rẽ nhánh (như tenAnhEmRoi). Lúc chạy doiChieuPhanNhom dùng CÙNG hàm (không có xanh giả).
+// Fixture đông cứng ranh-gioi-53359a1/ (main 53359a1, sau #692: 845290 dạng HOAC, DỪNG).
+const D533 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-53359a1');
+const nhap533 = (pn6) => nhapDongCung(pn6, D533);
+const TEN = (v) => ({ fact: 'tenLoai', op: 'TEN_LOAI', value: v });
+const BP = { fact: 'laBoPhan', op: 'CO' };
+const DUNG = (v) => ({ fact: 'dungCho', op: 'CONG_DUNG', value: v });
+const FX = (o) => DK.chuanDuKien(Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO' })));
+const BAN = ['Bàn', 'tủ', 'chân máy', 'nắp'];
+const D11 = [TEN(['Thân trên và thân dưới máy', 'đế đỡ', 'bánh đà', 'bộ phận che chắn dây đai', 'bàn đạp'])];
+const D12 = [{ op: 'HOAC', phuongAn: [[TEN(BAN)], [BP, DUNG(BAN)]] }];
+
+// ── 10.1 Hàm dùng chung lib/dieu-kien-so.js#tenCuTheHonDong ───────────────────────────────────────────────────────────────
+{
+  check('10.1a có DK.tenCuTheHonDong (hàm dùng chung cổng + lúc chạy)', typeof DK.tenCuTheHonDong === 'function');
+  const f = (...a) => (typeof DK.tenCuTheHonDong === 'function' ? DK.tenCuTheHonDong(...a) : NaN);
+  const F1 = FX({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: 'Bàn' });
+  check('10.1b tenCuTheHon cũ KHÔNG xét điều kiện trong HOAC (khoảng trống của runtime trước GĐ (a))', DK.tenCuTheHon(D11, D12, F1) === 0);
+  check('10.1c HOAC: .11 "bàn đạp" thắng .12 (phương án tên "Bàn" + phương án bộ phận của "Bàn") — cả hai chiều gọi', f(D11, D12, F1) === 1 && f(D12, D11, F1) === -1, [f(D11, D12, F1), f(D12, D11, F1)]);
+  const F2 = FX({ tenLoai: 'bàn đạp' });
+  check('10.1d HOAC chỉ phương án tên THOẢ (laBoPhan chưa biết) ⇒ .11 thắng (như tenLoai ↔ tenLoai)', f(D11, D12, F2) === 1, f(D11, D12, F2));
+  const F3 = FX({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: 'tủ' });
+  check('10.1e một cặp phương án không phân được (bộ phận của "tủ" ↔ "bàn đạp") ⇒ 0 (mọi cặp phải phân cùng chiều)', f(D11, D12, F3) === 0, f(D11, D12, F3));
+  check('10.1f chéo khoá không HOAC: tenLoai "bàn đạp" ↔ laBoPhan + dungCho "Bàn" ⇒ 1', f(D11, [BP, DUNG(BAN)], F1) === 1 && f([BP, DUNG(BAN)], D11, F1) === -1);
+  check('10.1g chéo khoá cùng ngữ nghĩa tenCuTheHon, đối xứng: bộ phận của "bàn đạp" cụ thể hơn tên "Bàn" ⇒ -1', f([TEN('Bàn')], [BP, DUNG('bàn đạp')], FX({ tenLoai: 'Bàn', laBoPhan: true, dungCho: 'bàn đạp' })) === -1);
+  check('10.1h chéo khoá KHÔNG laBoPhan (tên ↔ công dụng = trục) ⇒ 0', f(D11, [DUNG(BAN)], FX({ tenLoai: 'bàn đạp', dungCho: 'Bàn' })) === 0);
+  const Fk = FX({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: 'Bàn', congDung: 'khâu' });
+  check('10.1i bên CHUNG còn ràng buộc chữ tự do khoá khác (congDung) ⇒ 0 — luật trục của tenCuTheHon giữ nguyên', f(D11, [BP, DUNG(BAN), { fact: 'congDung', op: 'CONG_DUNG', value: 'khâu' }], Fk) === 0);
+  check('10.1j chéo khoá với tuỳ chọn cheo từ chối (cổng: tên không nguyên văn) ⇒ 0', f(D11, D12, F1, { cheo: () => false }) === 0);
+  // Không HOAC, không chéo khoá: y hệt tenCuTheHon (test-cong-cu-vong-2 mục 4, test-cong-cu-tho-re 3m).
+  const Fp = FX({ tenLoai: 'Bạc piston', duongKinh: { giaTri: 50, donVi: 'mm' } });
+  const piston = [TEN('Piston'), { fact: 'duongKinh', op: '>=', value: 50, donVi: 'mm' }];
+  check('10.1k không HOAC: trùng tenCuTheHon ("Bạc piston" ⊃ "Piston" + giới hạn số)', f(piston, [TEN('Bạc piston')], Fp) === DK.tenCuTheHon(piston, [TEN('Bạc piston')], Fp) && f(piston, [TEN('Bạc piston')], Fp) === -1);
+  const Fb = FX({ tenLoai: 'xe của búp bê' });
+  check('10.1l không HOAC: trùng tenCuTheHon ("xe của búp bê" ⊃ "Búp bê")', f([TEN('xe của búp bê')], [TEN('Búp bê')], Fb) === 1);
+}
+
+// ── 10.2 Cổng 2 trên fixture 845290 (main 53359a1): hết DỪNG chồng lấn .11+.12 / .91+.92 ────────────────────────────────────
+{
+  const b = nhap533('845290');
+  check('10.2a fixture 845290 (53359a1): .12/.92 dạng HOAC đúng QUY-TRINH 3.11', JSON.stringify(b.dong8.find((m) => m.hs === '84529012').dieuKienSo) === JSON.stringify(D12));
+  const r = C.kiemRanhGioi('845290', b, { cong: [2] });
+  check('10.2b không còn cong2-chong-lan (trước: .11+.12, .91+.92 :khong-tat-dinh)', chong(r).length === 0, chong(r));
+  check('10.2c không còn cong2-chong-lan-truc (đồ thị trục dựng trên chồng lấn thật)', !co(r.loi, 'cong2-chong-lan-truc'), r.loi);
+  // Không nới: tên KHÔNG nguyên văn của chính dòng (.12 phương án ghi "đạp" — không có trong chữ .12) ⇒ cặp chéo khoá không nhận.
+  const b2 = dat(nhap533('845290'), '84529092', [{ op: 'HOAC', phuongAn: [[TEN(['Bàn', 'đạp'])], [BP, DUNG(['Bàn', 'đạp'])]] }]);
+  const r2 = C.kiemRanhGioi('845290', b2, { cong: [2] });
+  check('10.2d tên không nguyên văn ("đạp" cho .92) ⇒ .91+.92 VẪN cong2-chong-lan', chong(r2).some((l) => cap(l) === '84529091+84529092'), chong(r2));
+  // Không nới: trục tên ↔ công dụng (dungCho không laBoPhan) vẫn lỗi.
+  const b3 = dat(nhap533('845290'), '84529092', [DUNG(BAN)]);
+  const r3 = C.kiemRanhGioi('845290', b3, { cong: [2] });
+  check('10.2e .92 chỉ dungCho "Bàn…" (không laBoPhan, trục) ⇒ .91+.92 VẪN chồng lấn', chong(r3).some((l) => cap(l) === '84529091+84529092'), chong(r3));
+}
+
+// ── 10.3 Lúc chạy (doiChieuPhanNhom) khớp cổng — không xanh giả ───────────────────────────────────────────────────────────
+{
+  const b = nhap533('845290');
+  const soTay = C.soTayTuNhap('845290', b);
+  const dk = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO' }));
+  const r1 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: 'Bàn' }), { soTay });
+  check('10.3a bàn đạp là bộ phận của "Bàn" (ngoài 8452.10): chỉ .91 (trước: .91 + .92)', JSON.stringify(r1.dongCo) === JSON.stringify(['84529091']) && r1.dong.find((d) => d.hs === '84529092')?.biLanTen === true, r1);
+  const r2 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', dungCho: 'máy thuộc phân nhóm 8452.10.00' }), { soTay });
+  check('10.3b bàn đạp của máy 8452.10.00: chỉ .11 (phương án tên "Bàn" của .12 bị lấn)', JSON.stringify(r2.dongCo) === JSON.stringify(['84529011']), r2);
+  const r3 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: 'tủ' }), { soTay });
+  check('10.3c bàn đạp là bộ phận của "tủ": không phân được ⇒ vẫn .91 + .92 (không tự chốt)', JSON.stringify(r3.dongCo) === JSON.stringify(['84529091', '84529092']), r3);
+  // Luật "tên nguyên văn rời nhau" (tenAnhEmRoi) vẫn chỉ là luật chứng minh của cổng: runtime không đổi (9.4e).
+  const b7 = nhap571('871410'); const st7 = C.soTayTuNhap('871410', b7);
+  const r7 = DK.doiChieuPhanNhom('871410', dk({ tenLoai: 'Yên xe', laBoPhan: true, dungCho: 'Khung' }), { soTay: st7 });
+  check('10.3d 871410 "Yên xe" là bộ phận của "Khung" (tên rời nhau): runtime vẫn thấy .10 + .30 (không đổi)', ['87141010', '87141030'].every((h) => r7.dongCo.includes(h)), r7.dongCo);
+}
+
+// ── 10.4 Quy trình + luật chung ghi quyết định GĐ (a) ─────────────────────────────────────────────────────────────────────
+{
+  const qt = docMd('QUY-TRINH-SO-HOA.md'); const lc = docMd('LUAT-CHUNG.md');
+  check('10.4a QUY-TRINH bỏ "Không áp \\"tên cụ thể hơn thắng\\" cho cặp chéo khoá", ghi tenCuTheHonDong', !/Không áp "tên cụ thể hơn thắng" cho cặp chéo khoá/u.test(qt) && /tenCuTheHonDong/u.test(qt));
+  check('10.4b LUAT-CHUNG ghi tên cụ thể hơn thắng áp vào phương án HOAC + cặp chéo khoá', /tenCuTheHonDong/u.test(lc) && /HOAC/u.test(lc));
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
