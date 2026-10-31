@@ -149,7 +149,9 @@ Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.3,
 - **Không nuốt vế**: "X và (các) bộ phận của chúng" (vế mở ⇒ HOAC), chất liệu/loại của hàng ĐÍCH ("dùng cho ống bằng gang đúc" ⇒
   `dungCho` "ống bằng gang đúc"), "gồm …" (giới hạn, kể cả trong "kể cả …" — 8536505).
 - **Trục tên ↔ công dụng cấp dòng**: hai DÒNG anh em, một chỉ khoá tên, một có khoá công dụng, không chung khoá, chồng lấn thật ⇒
-  `cong2-chong-lan-truc`, DỪNG — kể cả chỉ 2 anh em (940541, 940542, 841459 .10↔.30). Dòng có HOAC xét từng phương án.
+  `cong2-chong-lan-truc` — kể cả chỉ 2 anh em (940541, 940542, 841459 .10↔.30). Dòng có HOAC xét từng phương án. Không DỪNG nữa
+  (#683): khai `chongLanTruc` (nhánh, trục, `cauHoiPhanBiet`, trích nguyên văn, `phanXu: null`) — QUY-TRINH mục 4a; người soạn KHÔNG
+  điền `phanXu`. Cổng 2 hạ các cặp đó thành cảnh báo `cong2-chong-lan-truc-da-khai`; đây là ngoại lệ duy nhất của "cổng 2 không nới".
 - **Giá trị LIET_KE định nghĩa đúng bằng các vế của tiêu đề** (8536503 `NGAT_SOC_DONG`): người soạn khai `BO_VE` có lyDo trích định
   nghĩa; người soát chấp nhận hoặc trả về. Công cụ không đổi.
 - **"X và bộ phận" nhiều anh em** (871410, 845290): giữ dạng HOAC; chồng lấn so chữ tự do (`:khong-tat-dinh`) VẪN là lỗi (cổng 2 không
