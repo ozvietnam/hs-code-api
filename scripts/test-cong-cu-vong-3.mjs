@@ -82,7 +82,8 @@ const TIEU_DE = 'Chữ biểu: tieuDe.8544423 "Cáp ắc qui" (trục tên) đ�
   bA.chongLanVanBan = CAP_854442.map((cap) => ({ cap, lyDo: TIEU_DE }));
   const rA = C.kiemRanhGioi('854442', bA, { cong: [2, 3] });
   check('3b khai đủ 12 cặp (trích tiêu đề) ⇒ VẪN ĐỎ', rA.hopLe === false, rA.loi.slice(0, 5));
-  check('3c … cong2-chong-lan-truc:8544423 (chồng theo trục cấp tiêu đề) và nằm trong dung[]', co(rA.loi, 'cong2-chong-lan-truc:8544423:') && co(rA.dung, 'cong2-chong-lan-truc:8544423:'), rA.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
+  // #683 (quyết định GĐ): cong2-chong-lan-truc không còn là DỪNG — người soạn khai chongLanTruc (test-chong-lan-truc.mjs).
+  check('3c … cong2-chong-lan-truc:8544423 (chồng theo trục cấp tiêu đề), là lỗi nhưng không còn trong dung[] (#683)', co(rA.loi, 'cong2-chong-lan-truc:8544423:') && !co(rA.dung, 'cong2-chong-lan-truc:8544423:'), rA.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
   check('3d … cặp đã khai trong cụm trục KHÔNG hạ thành cảnh báo (lỗi cong2-chong-lan-van-ban-truc)', CAP_854442.every(([a, b]) => co(rA.loi, `cong2-chong-lan-van-ban-truc:${a}+${b}:`)) && !co(rA.canhBao, 'cong2-chong-lan-van-ban:'), rA.loi.filter((l) => l.startsWith('cong2-chong-lan-van-ban')).length);
   check('3e … lý do chỉ trích tiêu đề tổ tiên, không trích chữ của dòng nào trong cặp ⇒ cong3-chong-lan-chi-trich-tieu-de', CAP_854442.every(([a, b]) => rA.loi.includes(`cong3-chong-lan-chi-trich-tieu-de:${a}+${b}`)), rA.loi.filter((l) => l.startsWith('cong3-chong-lan')));
   // Biến thể B: lý do trích cả chữ của hai dòng ⇒ hết lỗi trích, nhưng chồng theo trục vẫn đỏ + DỪNG.
@@ -90,14 +91,14 @@ const TIEU_DE = 'Chữ biểu: tieuDe.8544423 "Cáp ắc qui" (trục tên) đ�
   bB.chongLanVanBan = CAP_854442.map(([a, b]) => ({ cap: [a, b], lyDo: `${TIEU_DE}; .${a.slice(6)} "${CHU[a]}" ↔ .${b.slice(6)} "${CHU[b]}"` }));
   const rB = C.kiemRanhGioi('854442', bB, { cong: [2, 3] });
   check('3f khai đủ 12 cặp, trích đúng chữ hai dòng ⇒ không lỗi cong3-chong-lan-*', !rB.loi.some((l) => l.startsWith('cong3-chong-lan')), rB.loi.filter((l) => l.startsWith('cong3-chong-lan')));
-  check('3g … vẫn ĐỎ + DỪNG cong2-chong-lan-truc:8544423 (thiết kế trục, không phải chữ tự chồng)', rB.hopLe === false && co(rB.dung, 'cong2-chong-lan-truc:8544423:'), rB.dung);
+  check('3g … vẫn ĐỎ cong2-chong-lan-truc:8544423 (thiết kế trục, không phải chữ tự chồng — khai chongLanTruc, #683)', rB.hopLe === false && co(rB.loi, 'cong2-chong-lan-truc:8544423:'), rB.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
 }
 {
   // 841459 .10 "Quạt, loại chỉ … để làm mát bộ vi xử lý…" (congDung + chiHoacChuYeu) ↔ .30 "Máy thổi khí" (chỉ tên): vòng 4
   // (GĐ, soát #620–#647) — cặp anh em tên ↔ công dụng là chồng lấn theo TRỤC, DỪNG kể cả khi chỉ có 2 anh em (trước: xanh).
   // .91 "Có lưới bảo vệ" (có-không) ↔ .92 (tên + công dụng) không phải tên thuần ↔ công dụng ⇒ vẫn là cặp khai thường.
   const r = C.kiemRanhGioi('841459', nhapDongCung('841459'));
-  check('3h 841459: .10↔.30 (công dụng ↔ tên thuần) ⇒ cong2-chong-lan-truc DỪNG; .91↔.92 vẫn là cảnh báo khai thường', r.hopLe === false && co(r.dung, 'cong2-chong-lan-truc:') && co(r.loi, 'cong2-chong-lan-van-ban-truc:84145910+84145930:') && co(r.canhBao, 'cong2-chong-lan-van-ban:84145991+84145992:'), { loi: r.loi, canhBao: r.canhBao.filter((c) => c.startsWith('cong2')) });
+  check('3h 841459: .10↔.30 (công dụng ↔ tên thuần) ⇒ cong2-chong-lan-truc (lỗi, không còn DỪNG — #683); .91↔.92 vẫn là cảnh báo khai thường', r.hopLe === false && co(r.loi, 'cong2-chong-lan-truc:') && !co(r.dung, 'cong2-chong-lan-truc:') && co(r.loi, 'cong2-chong-lan-van-ban-truc:84145910+84145930:') && co(r.canhBao, 'cong2-chong-lan-van-ban:84145991+84145992:'), { loi: r.loi, canhBao: r.canhBao.filter((c) => c.startsWith('cong2')) });
   // Dòng ↔ MỘT tiêu đề (bản đã DUYET): 853620 .20 ↔ 8536201 "Loại hộp đúc" — giữ xanh.
   const r2 = C.kiemRanhGioi('853620', nhapDongCung('853620'));
   check('3i 853620 (dòng ↔ một tiêu đề, bản DUYET) vẫn XANH', r2.hopLe === true, r2.loi);

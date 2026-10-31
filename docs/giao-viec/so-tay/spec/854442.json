@@ -274,6 +274,27 @@
       ]
     }
   },
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "8544421",
+        "8544422",
+        "8544423"
+      ],
+      "truc": {
+        "8544421": "CONG_DUNG",
+        "8544422": "CONG_DUNG",
+        "8544423": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Cáp này là \"Cáp ắc qui\" (tiêu đề 8544423) hay là cáp \"Dùng cho viễn thông\" (8544421 nếu điện áp không quá 80 V; 8544422 nếu điện áp trên 80 V nhưng không quá 1.000 V)? Nếu cáp vừa là cáp ắc qui vừa dùng cho viễn thông, biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "8544421": "Dùng cho viễn thông, điện áp không quá 80 V",
+        "8544422": "Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V",
+        "8544423": "Cáp ắc qui"
+      },
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "8544421",
@@ -312,8 +333,8 @@
     },
     {
       "ma": "8544423",
-      "loai": "DUNG",
-      "ghiChu": "Chồng lấn theo TRỤC ở cấp tiêu đề, không khai chongLanVanBan: tieuDe.8544423 \"Cáp ắc qui\" (trục TÊN) đứng cạnh tieuDe.8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" và tieuDe.8544422 \"Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V\" (trục CÔNG DỤNG + điện áp) — chữ không loại trừ nhau (cáp ắc qui của thiết bị viễn thông thoả cả hai), cả nhánh 8544423 chồng cả hai nhánh anh em ⇒ 12 cặp cong2-chong-lan (.13/.19/.23/.29 × .32/.33/.34/.39). Đây là mẫu 392690/401699 (chồng theo trục ⇒ DỪNG); bộ dò cong2-chong-lan-truc không bắt vì nó đếm anh em cùng tầng ở cấp dòng, còn chồng ở đây nằm ở cấp tiêu đề. Khai 12 cặp thì máy cho XANH (đã thử) nhưng là xanh giả — để đỏ. Không có TB-TCHQ/SEN/chú giải trích được nêu thứ tự."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chồng lấn theo TRỤC ở cấp tiêu đề (#683): tieuDe.8544423 \"Cáp ắc qui\" (trục TÊN, tenLoai) đứng cạnh tieuDe.8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" và tieuDe.8544422 \"Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V\" (trục CÔNG DỤNG, congDung + dienAp) — chữ không loại trừ nhau, không TB-TCHQ/SEN/chú giải nào nêu thứ tự. Không khai chongLanVanBan (không gỡ được trục); khai chongLanTruc cho cụm ba tiêu đề, phanXu null: lúc chạy, cáp ắc qui dùng cho viễn thông ⇒ hồ sơ chưa chốt CHONG_LAN_TRUC kèm câu hỏi phân biệt."
     },
     {
       "ma": "85444292",

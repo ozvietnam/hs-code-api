@@ -97,20 +97,25 @@
       ]
     }
   },
-  "chongLanVanBan": [
+  "chongLanTruc": [
     {
-      "cap": [
+      "nhanh": [
         "94054210",
-        "94054230"
-      ],
-      "lyDo": "Đèn pha bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn pha\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
-    },
-    {
-      "cap": [
         "94054220",
         "94054230"
       ],
-      "lyDo": "Đèn rọi bằng kim loại dùng cho đầu máy/tàu thủy thoả cả hai dòng. .A \"Đèn rọi khác\" .B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\"; hai câu chữ không loại trừ nhau, không có căn cứ thứ tự."
+      "truc": {
+        "94054210": "TEN_LOAI",
+        "94054220": "TEN_LOAI",
+        "94054230": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Đèn này là \"Đèn pha\" (.10) / \"Đèn rọi khác\" (.20) hay là \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\" (.30)? Nếu thoả cả hai, biểu thuế không nêu dòng nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "94054210": "Đèn pha",
+        "94054220": "Đèn rọi khác",
+        "94054230": "đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản"
+      },
+      "phanXu": null
     }
   ],
   "ghiChuSoan": [
@@ -143,6 +148,11 @@
       "ma": "94054240",
       "loai": "QUYET_DINH",
       "ghiChu": "tenLoai \"Đèn báo hiệu\" + dungCho \"thiết bị nhiệt điện gia dụng\"; \"thuộc nhóm 85.16\" là tham chiếu nhóm của chính thiết bị trong chữ, không thêm điều kiện riêng."
+    },
+    {
+      "ma": "94054230",
+      "loai": "QUYET_DINH",
+      "ghiChu": "#683: .10 \"Đèn pha\" / .20 \"Đèn rọi khác\" (tên) ↔ .30 vế B dungCho (công dụng) là chồng lấn TRỤC cấp dòng (vòng 4 bắt) — bỏ hai cặp chongLanVanBan .10↔.30, .20↔.30 (không gỡ được trục), khai chongLanTruc, phanXu null."
     }
   ]
 }

@@ -66,10 +66,11 @@ const nhap88 = (pn6) => nhapDongCung(pn6, THU_MUC_DONG_CUNG_88444A8);
 {
   const b = nhapPr('940541', '662e097');
   const r = C.kiemRanhGioi('940541', b, { cong: [2, 3] });
-  check('3a 940541 (PR #627): .10 "Đèn pha"/.20 "Đèn rọi" (tên) ↔ .30 vế B dungCho (công dụng) ⇒ cong2-chong-lan-truc + DỪNG', co(r.loi, 'cong2-chong-lan-truc:') && co(r.dung, 'cong2-chong-lan-truc:'), r.loi);
+  // #683: cong2-chong-lan-truc vẫn là lỗi nhưng không còn DỪNG — người soạn khai chongLanTruc (test-chong-lan-truc.mjs mục 7).
+  check('3a 940541 (PR #627): .10 "Đèn pha"/.20 "Đèn rọi" (tên) ↔ .30 vế B dungCho (công dụng) ⇒ cong2-chong-lan-truc (lỗi, không còn DỪNG — #683)', co(r.loi, 'cong2-chong-lan-truc:') && !co(r.dung, 'cong2-chong-lan-truc:'), r.loi);
   check('3b … cặp đã khai (.10↔.30, .20↔.30) thành lỗi cong2-chong-lan-van-ban-truc', co(r.loi, 'cong2-chong-lan-van-ban-truc:94054110+94054130:') && co(r.loi, 'cong2-chong-lan-van-ban-truc:94054120+94054130:'), r.loi.filter((l) => l.includes('van-ban')));
   const r2 = C.kiemRanhGioi('940542', nhapDongCung('940542'), { cong: [2, 3] });
-  check('3c 940542 (cùng cấu trúc) cũng DỪNG trục', co(r2.dung, 'cong2-chong-lan-truc:'), r2.loi);
+  check('3c 940542 (cùng cấu trúc) cũng báo trục (lỗi, không còn DỪNG — #683)', co(r2.loi, 'cong2-chong-lan-truc:') && !co(r2.dung, 'cong2-chong-lan-truc:'), r2.loi);
   const r3 = C.kiemRanhGioi('853641', nhap88('853641'));
   check('3d 853641 (loaiRoLe LIET_KE ↔ dungCho — không phải tên thuần) vẫn XANH, không trục', r3.hopLe === true && !co(r3.loi, 'cong2-chong-lan-truc'), r3.loi);
   const r4 = C.kiemRanhGioi('853620', nhapDongCung('853620'));

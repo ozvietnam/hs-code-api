@@ -93,7 +93,7 @@ Cũng áp cho tờ khai `XUAT` (khuôn 2.69 chưa làm ở lát 1), ranh giới 
 | `moTaBanNhap` | chuỗi có chỗ trống `[cần: <nhãn Việt>]` |
 | `nhanBanNhap` | "BẢN NHÁP — hồ sơ chưa đủ căn cứ, không dùng để khai. …" |
 | `lyDoBanNhap[]` | `THIEU_DU_KIEN` \| `MAU_THUAN` \| `CAN_CHUYEN_GIA` \| `khuon-2.69-chua-ho-tro` \| `thieu-du-kien` \| `ranh-gioi-chua-co` \| `trich-khong-nguyen-van` \| `vi-pham` \| `ten-hang-vuot-o` |
-| `cauHoi[]` | `{fact, nhanVi, vi, zh, vaoRanhGioi[]…}` hoặc `{loai: 'PHAN_XU_TIEN_LE', …}` — cùng bộ với `hoSo.ketLuan.cauHoi` |
+| `cauHoi[]` | `{fact, nhanVi, vi, zh, vaoRanhGioi[]…}` hoặc `{loai: 'PHAN_XU_TIEN_LE', …}` hoặc `{loai: 'PHAN_BIET_CHONG_LAN_TRUC', …}` (mục 4) — cùng bộ với `hoSo.ketLuan.cauHoi` |
 | `maTroToi` | chỉ khi `MAU_THUAN` và xác định được dòng anh em duy nhất |
 | `customsDescription` | = `moTaBanNhap` |
 | `compliance` | `level: 'REJECT'`, `score ≤ 39`, `passesCustomsAudit: false`, cảnh báo `HO_SO_BAN_NHAP` (error) |
@@ -112,6 +112,26 @@ Lược đồ (JSDoc đầy đủ ở `lib/ho-so/index.js`): `hoSoId, phienBan{h
 loaiToKhai, maHs, hang, duKien[], duongDiPhapLy[], loaiTru[], kiemHoa[], nhanDien, tienLe[], tinHieuRuiRo[],
 canCu{girRulesApplied (chỉ lib/gir.js), girDisclaimer, canCuPhapLy (chỉ lib/legal-basis.js)}, capDaChac, chotDuoc, chuaChot[],
 ketLuan{trangThai, cauHoi[], chuaChot[], maTroToi?, maCoTheTroToi?}, khuonChuaHoTro? ('2.69' khi XUAT), taiLieuKyThuatNenKem?`.
+
+**Lý do chưa chốt** (`chuaChot[]`, `ketLuan.chuaChot[]` — chuỗi `"<lyDo>:<mã>"`, enum đông cứng `LY_DO_CHUA_CHOT` của
+`lib/ho-so/ly-do.js`): `chua-duyet`, `chua-so-hoa`, `hieu-chinh-lech-chua-phan-xu`, `tieu-de-bi-luoc-ten`, `tang-bi-luoc`,
+`nhom-chua-co-so-tay`, `ma-khong-co-trong-cay`, `anh-em-chua-so-hoa`, `chong-lan-van-ban`, và (#683) **`chong-lan-truc`**.
+Lý do lạ quy về `chua-so-hoa`.
+
+**Chồng lấn trục tên ↔ công dụng** (#683, `CHONG_LAN_TRUC` = `chong-lan-truc`): biểu thuế có nhánh anh em chia theo TÊN cạnh
+nhánh chia theo CÔNG DỤNG (vd 8544.42: tiêu đề "Cáp ắc qui" ↔ "Dùng cho viễn thông…"). Ranh giới đã duyệt khai cụm này ⇒
+`hoSo.chongLanTruc[]` `{id, nhanh[], truc{<nhánh>: TEN_LOAI|CONG_DUNG}, nhanhCuaMa, cauHoiPhanBiet, trich{}, dieuKienNhanh{},
+phanXu|null, ketQuaNhanh?{<nhánh>: THOA|TRAI|CHUA_BIET}, chongLan?, daPhanXu?}`. Khi dữ kiện thoả nhánh của mã **và** một nhánh khác
+trục, chưa phân xử:
+- `ketLuan.trangThai = CAN_CHUYEN_GIA`, `chuaChot` có `chong-lan-truc:<nhánh kia>` (một mục mỗi nhánh kia);
+- `ketLuan.cauHoi[]` thêm `{loai: 'PHAN_BIET_CHONG_LAN_TRUC', idCum, vi (= cauHoiPhanBiet, viết từ chữ biểu), zh, nhanh[],
+  ungVien[] {nhanh, truc, trich, maHs[]}, maUngVien[]}` — bên gọi hỏi người khai / chuyển chuyên gia; **không** `maTroToi`;
+- mục `duongDiPhapLy` của nhánh mã và dưới nó: `ketQua: 'CHUA_SO_HOA'`, `lyDo: 'chong-lan-truc'`, `ketQuaDuKien` (kết quả theo
+  dữ kiện), `chongLanTruc: <id>`; `canCu.girRulesApplied` **không** trích các mục này (không bao giờ tự suy GIR 3(a));
+- nhánh khác trục CHƯA BIẾT (thiếu dữ kiện) ⇒ không `DU_CAN_CU`: `THIEU_DU_KIEN` + câu hỏi dữ kiện `vaoRanhGioi: [<nhánh kia>]`.
+Dữ kiện chỉ thoả một phía ⇒ đường thường. `phanXu` (chỉ Claude/người soát ghi, nguồn `CHU_GIAI` nguyên văn | `TIEN_LE` qua bảng
+hiệu chỉnh | `NGUOI_DUYET`) ⇒ máy theo `chon`: mục nhánh mang `phanXu` + `daPhanXu` của cụm ghi nguồn; mã ở nhánh không được chọn ⇒
+`MAU_THUAN` (`tatDinh: false`) + `maTroToi`. Phân xử không phải GIR, không vào `canCuPhapLy`.
 
 **Lọc theo quyền** (`locTheoQuyen`, mọi endpoint, trước khi trả): chỉ khoá trong `HS_INTERNAL_CALLERS` (mặc định `erp`) nhận
 `MO_TA_GIONG_MA_KHAC` và số đếm kho tờ khai Oz; `cong-oz` (chặn cứng), `HS_API_TOKEN`, lượt công khai **không bao giờ** nhận, ở

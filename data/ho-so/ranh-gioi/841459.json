@@ -149,17 +149,28 @@
   "chongLanVanBan": [
     {
       "cap": [
-        "84145910",
-        "84145930"
-      ],
-      "lyDo": "Hai dòng anh em cùng tầng 841459~r13180: .10 \"Quạt, loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động\" và .30 \"Máy thổi khí (SEN)\" — chữ biểu không loại trừ nhau (sen.84145930: \"Máy thổi khí là quạt ly tâm được lắp ống dẫn\", nên một máy thổi khí chủ yếu dùng làm mát thiết bị viễn thông thoả cả hai); không có căn cứ thứ tự"
-    },
-    {
-      "cap": [
         "84145991",
         "84145992"
       ],
       "lyDo": "Hai dòng anh em cùng tầng 8414599: .91 \"Có lưới bảo vệ\" và .92 \"Quạt gió phòng nổ, loại sử dụng trong hầm lò\" — chữ biểu không loại trừ nhau (quạt gió phòng nổ hầm lò có lưới bảo vệ thoả cả hai); không có căn cứ thứ tự"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "84145910",
+        "84145930"
+      ],
+      "truc": {
+        "84145910": "CONG_DUNG",
+        "84145930": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng này là \"Máy thổi khí\" (.30) hay là quạt \"loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động\" (.10)? Nếu thoả cả hai, biểu thuế không nêu dòng nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "84145910": "Quạt, loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động",
+        "84145930": "Máy thổi khí"
+      },
+      "phanXu": null
     }
   ],
   "ghiChuSoan": [
@@ -187,6 +198,11 @@
       "ma": "84145941",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84145941: \"Có lưới bảo vệ\" ⇒ coLuoiBaoVe CO. Cùng cách ghi cho .91."
+    },
+    {
+      "ma": "84145910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "#683: .10 (công dụng congDung + chiHoacChuYeu) ↔ .30 \"Máy thổi khí\" (tên) là chồng lấn TRỤC cấp dòng (vòng 4 bắt) — bỏ cặp chongLanVanBan .10↔.30 (không gỡ được trục), khai chongLanTruc, phanXu null. Cặp .91↔.92 giữ chongLanVanBan."
     }
   ]
 }
