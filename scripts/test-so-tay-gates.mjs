@@ -80,7 +80,9 @@ check('phân nhóm chưa số hóa ranh giới → KHONG_THE_CHOT (điểm mù)'
 cd = chotDong8({ hs: '85044090', productText: 'Bộ nguồn 260W, đầu vào AC100-240V' });
 check('8504.40 có 2 dòng Loại khác → KHONG_THE_CHOT (không lấy dòng đầu)', cd.ketQua === 'KHONG_THE_CHOT' && ['nhieu-dong-loai-khac', 'phu-dinh-chua-hoan-chinh'].includes(cd.lyDo), JSON.stringify(cd));
 cd = chotDong8({ hs: '85444299', productText: 'Dây cáp mạng USB, đường kính lõi 0.0625mm, vỏ nhựa cách điện' });
-check('8544.42.94 có vế CHẤT LIỆU chưa mô hình → không chốt .94 (bảo thủ)', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
+// L1-4c đợt 3: 854442 đã duyệt + áp vào sổ tay (chatLieu CACH_DIEN, soSoi có kiểu) ⇒ máy hỏi thêm dữ kiện (THIEU_SO_LIEU)
+// thay vì bỏ cuộc; ý của ca vẫn giữ: không tự chốt .94 cho cáp mạng USB (CEO 30/10/2026: cáp dữ liệu theo TB-TCHQ .99).
+check('8544.42.94 → không chốt .94 cho cáp mạng USB (bảo thủ: KHONG_THE_CHOT hoặc THIEU_SO_LIEU)', ['KHONG_THE_CHOT', 'THIEU_SO_LIEU'].includes(cd.ketQua) && cd.hs !== '85444294', JSON.stringify(cd));
 cd = chotDong8({ hs: '40118011', productText: 'Lốp máy xúc lật 14.00-24, đường kính 788mm' });
 check('4011 ngưỡng VÀNH không lấy đường kính ngoài → KHONG_THE_CHOT', cd.ketQua === 'KHONG_THE_CHOT', JSON.stringify(cd));
 cd = chotDong8({ hs: '85044019', productText: 'Bộ đổi nguồn 30W dùng cho tủ điện' });

@@ -4,7 +4,7 @@
   "nhom": "8414",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu-2",
@@ -203,6 +203,13 @@
       "ma": "84145910",
       "loai": "QUYET_DINH",
       "ghiChu": "#683: .10 (công dụng congDung + chiHoacChuYeu) ↔ .30 \"Máy thổi khí\" (tên) là chồng lấn TRỤC cấp dòng (vòng 4 bắt) — bỏ cặp chongLanVanBan .10↔.30 (không gỡ được trục), khai chongLanTruc, phanXu null. Cặp .91↔.92 giữ chongLanVanBan."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+      "ngay": "2026-10-31",
+      "lyDo": "(A) 841459.json:dong8[84145910] THU HẸP: chữ \"…để làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động\" (EN \"for cooling microprocessors, telecommunication apparatus, automatic data processing machines or units of …\") là liệt kê HOẶC, nhưng congDung ghi MỘT chuỗi gồm cả danh sách ⇒ bộ so chữ đòi dữ kiện chứa ĐỦ mọi âm tiết của cả bốn đích (là VÀ): quạt làm mát CPU hay quạt máy chủ viễn thông không thoả .10 (lệch sang .41/.49, hoặc chưa biết). Lược đồ: mảng = hoặc. Làm gì: tách thành mảng chuỗi con nguyên văn (vd congDung \"làm mát\" + dungCho [\"bộ vi xử lý\", \"thiết bị viễn thông\", \"máy xử lý dữ liệu tự động\", \"các khối chức năng của máy xử lý dữ liệu tự động\"], hoặc congDung mảng mỗi đích một chuỗi con) rồi chạy lại cổng; chongLanTruc .10↔.30 giữ (cập nhật nếu trục đổi), phanXu null. Cùng mức MFN 15% với .41/.49 nhưng sai mã 8 số."
     }
   ]
 }

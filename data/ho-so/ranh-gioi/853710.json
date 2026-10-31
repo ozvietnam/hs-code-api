@@ -4,7 +4,7 @@
   "nhom": "8537",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu-2",
@@ -255,6 +255,13 @@
       "ma": "85371099",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ data/ho-so/hieu-chinh-tien-le.json có 853710-01 (6326/TB-TCHQ: bản mạch có bộ xử lý lập trình → .99, chữ .12 bao), 853710-02 (4040, 1159/TB-TCHQ: bảng mạch điều khiển chưa nạp chương trình → .19), 853710-03 (module điều khiển đèn LED: .19 ↔ .99) — đều LECH_CHUA_PHAN_XU. Bản nháp theo CHỮ BIỂU; bảng mang chỗ lệch, không sửa điều kiện theo TB-TCHQ."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+      "ngay": "2026-10-31",
+      "lyDo": "(A) 853710.json:dong8[85371011], [85371012], [85371013] SUY RỘNG: danh từ đầu của ba dòng là \"Bảng điều khiển\" (EN Control panels …), hẹp hơn tiêu đề cha 8537101 \"Bảng chuyển mạch và bảng điều khiển\" (tenLoai [Bảng chuyển mạch, bảng điều khiển]). Ba dòng chỉ ghi dungCho / coBoXuLyLapTrinh nên BẢNG CHUYỂN MẠCH (switchboard) dùng cho hệ DCS thoả .11 (0%), có bộ xử lý lập trình thoả .12 (5%), dùng cho máy điều hoà thoả .13 (0%) — theo chữ phải về .19 (15%). Cổng 5 không đòi phủ danh từ đầu vì thường lặp tên cha; ở đây nó không lặp mà chọn một trong hai danh từ của cha. Làm gì: thêm tenLoai \"Bảng điều khiển\" cho .11/.12/.13 (giữ các điều kiện khác, giữ phanConLai .13, giữ chongLanVanBan .11↔.12 nếu còn đúng). (B) 853710.json:dong8[85371040] SUY RỘNG, ghi chú DE_TRONG chưa xử lý: vế \"120VDC\" mang nghĩa một chiều; bản nháp viết \"chữ VDC không khớp cách đọc của khoá\" nhưng tu-vung@2 loaiDongDien MOT_CHIEU nay đọc \"VDC\" (--tu-vung --khoa=loaiDongDien) ⇒ thêm loaiDongDien TRONG [MOT_CHIEU]; bộ điều khiển động cơ xoay chiều 24–120 V, 300–500 A hiện thoả .40 (15%) thay vì nhánh Loại khác (.92 0% nếu dùng cho DCS). Bảng 853710-01/02/03 LECH_CHUA_PHAN_XU giữ nguyên, ghi chú LECH_TIEN_LE giữ."
     }
   ]
 }
