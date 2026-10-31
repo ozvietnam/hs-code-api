@@ -75,6 +75,7 @@ const kq = (hs, dk) => DK.doiChieuDong8(hs, Object.entries(dk).map(([fact, giaTr
   check('3g cổng 2 tới được .11–.15 ở dạng trung thực (không cong2-dong-khong-toi-duoc)', !loi.some((l) => l.startsWith('cong2-dong-khong-toi-duoc')), loi);
   check('3h không còn điểm mù dungCho 8483901 > .11–.15 (máy ghép được chuỗi đích)', !cb.some((l) => l.startsWith('cong2-diem-mu:dungCho:8483901')), cb.filter((l) => l.startsWith('cong2-diem-mu')));
   check('3i bản trung thực: cổng 0–3 + 5 không lỗi', loi.length === 0, loi);
+  check('3l cổng nêu cách hiểu đích lồng cho người soát (cong2-dich-long:dungCho:8483901>.11…)', cb.includes('cong2-dich-long:dungCho:8483901>84839011'), cb.filter((l) => l.startsWith('cong2-d')));
 }
 
 {
