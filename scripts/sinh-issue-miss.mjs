@@ -71,8 +71,12 @@ function main() {
   const duongDan = (f) => join(goc, f);
   const jsonl = existsSync(duongDan('legal-status-miss.jsonl'))
     ? readFileSync(duongDan('legal-status-miss.jsonl'), 'utf8') : '';
-  const daSinh = existsSync(duongDan('legal-status-issues.json'))
-    ? JSON.parse(readFileSync(duongDan('legal-status-issues.json'), 'utf8')) : {};
+  // State phải bền: khi HS_DATA_DIR là thư mục tạm (mktemp mỗi đêm theo oz-sinh-issue-miss.sh)
+  // thì dùng HS_STATE_DIR/repo-data để không mất trí nhớ và sinh issue trùng mỗi đêm.
+  const thuMucState = process.env.HS_STATE_DIR ? process.env.HS_STATE_DIR : goc;
+  const duongDanState = (f) => join(thuMucState, f);
+  const daSinh = existsSync(duongDanState('legal-status-issues.json'))
+    ? JSON.parse(readFileSync(duongDanState('legal-status-issues.json'), 'utf8')) : {};
 
   const keHoach = locNhieu(gomMiss(docDongJsonl(jsonl))).filter((x) => !daSinh[x.so]);
   const boQua = locNhieu(gomMiss(docDongJsonl(jsonl))).length - keHoach.length;
@@ -89,7 +93,7 @@ function main() {
     daSinh[k.so] = { issue: url, ts: new Date().toISOString() };
     console.log(`[ok] ${k.so} → ${url}`);
   }
-  if (thuc && keHoach.length) writeFileSync(duongDan('legal-status-issues.json'), JSON.stringify(daSinh, null, 1) + '\n');
+  if (thuc && keHoach.length) writeFileSync(duongDanState('legal-status-issues.json'), JSON.stringify(daSinh, null, 1) + '\n');
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) main();
