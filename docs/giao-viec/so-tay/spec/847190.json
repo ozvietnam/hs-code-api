@@ -1,0 +1,29 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "847190",
+  "phien": "zcode:glm-5.3:20261030T1546#soan-847190",
+  "dong8": {
+    "84719010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy đọc mã vạch" }
+      ]
+    },
+    "84719030": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Hệ thống nhận dạng vân tay điện tử" }
+      ]
+    },
+    "84719040": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy đọc ký tự quang học" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "84719010", "loai": "QUYET_DINH", "ghiChu": "tax.84719010: \"Máy đọc mã vạch\" ⇒ tenLoai TEN_LOAI \"Máy đọc mã vạch\"" },
+    { "ma": "84719030", "loai": "QUYET_DINH", "ghiChu": "tax.84719030: \"Hệ thống nhận dạng vân tay điện tử\" ⇒ tenLoai TEN_LOAI \"Hệ thống nhận dạng vân tay điện tử\"" },
+    { "ma": "84719040", "loai": "QUYET_DINH", "ghiChu": "tax.84719040: \"Máy đọc ký tự quang học khác\" — chữ có \"khác\" cuối dòng ⇒ phanConLai: true (phủ định anh em đứng trước 84719010, 84719030); điều kiện tenLoai TEN_LOAI \"Máy đọc ký tự quang học\" (chuỗi con nguyên văn, bỏ chữ \"khác\")" },
+    { "ma": "84719090", "loai": "DE_TRONG", "ghiChu": "tax.84719090: \"Loại khác\" — dòng Loại khác trần, không ghi điều kiện (máy tự phủ định anh em)" }
+  ]
+}
