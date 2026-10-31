@@ -301,11 +301,11 @@ const D12 = [{ op: 'HOAC', phuongAn: [[TEN(BAN)], [BP, DUNG(BAN)]] }];
   const b = nhap533('845290');
   const soTay = C.soTayTuNhap('845290', b);
   const dk = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO' }));
-  // #697: dữ kiện chỉ nêu TÊN ("Bàn") so với tiêu đề viết bằng MÃ ("máy thuộc phân nhóm 8452.10.00") nay là CHUA_BIET (không biết
-  // cái bàn thuộc máy nào — hỏi), không còn TRÁI giả do lệch âm tiết. Tiền đề "ngoài 8452.10" phải được NÓI trong dữ kiện.
+  // #697: tiêu đề "máy thuộc phân nhóm 8452.10.00" có CHỮ MÔ TẢ ("máy") kèm mã ⇒ dữ kiện tên không giải được ("Bàn") vẫn so âm
+  // tiết như trước (không tất định); chỉ điều kiện CHỈ nêu mã mới chấm CHUA_BIET. 10.3a/c nêu rõ máy 8452.29 cho chắc tiền đề.
   const NGOAI = ' của máy thuộc phân nhóm 8452.29';
   const r0 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: 'Bàn' }), { soTay });
-  check('10.3a0 chỉ nói "bộ phận của Bàn" (không nói máy nào) ⇒ không dòng nào CO (hỏi), không chọn giả .91', r0.dongCo.length === 0 && r0.dong.find((d) => d.hs === '84529091')?.ketQua === 'THIEU', r0);
+  check('10.3a0 "bộ phận của Bàn" trần: như trước #697 — chỉ .91', JSON.stringify(r0.dongCo) === JSON.stringify(['84529091']), r0);
   const r1 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: `Bàn${NGOAI}` }), { soTay });
   check('10.3a bàn đạp là bộ phận của "Bàn" (ngoài 8452.10): chỉ .91 (trước: .91 + .92)', JSON.stringify(r1.dongCo) === JSON.stringify(['84529091']) && r1.dong.find((d) => d.hs === '84529092')?.biLanTen === true, r1);
   const r2 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', dungCho: 'máy thuộc phân nhóm 8452.10.00' }), { soTay });
