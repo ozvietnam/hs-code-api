@@ -54,7 +54,17 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "các bếp nấu hoặc bếp có lò nướng bằng ga"
+          "value": [
+            "các bếp nấu",
+            "bếp có lò nướng"
+          ]
+        },
+        {
+          "fact": "nhienLieu",
+          "op": "TRONG",
+          "value": [
+            "GA"
+          ]
         }
       ]
     },
@@ -326,7 +336,25 @@
       ]
     },
     "84818093": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van ngắt nhiên liệu"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "chieu": "PHAI_KHONG",
+          "value": "plastic"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+        }
+      ],
+      "phanConLai": false
     },
     "84818094": {
       "dieuKienSo": [
@@ -365,7 +393,42 @@
       ]
     },
     "84818097": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "BANG_TAY"
+          ]
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<",
+          "value": 3,
+          "donVi": "kg"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "daXuLyBeMat",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": [
+                  "thép không gỉ",
+                  "niken"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
     },
     "84818098": {
       "dieuKienSo": [
@@ -389,24 +452,6 @@
     }
   },
   "dieuKienNut": {
-    "848180~r14535": {
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "săm"
-        }
-      ]
-    },
-    "848180~r14538": {
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "lốp không săm"
-        }
-      ]
-    },
     "8481802": {
       "dieuKienSo": [
         {
@@ -438,6 +483,24 @@
         {
           "fact": "coKhoangPhaTron",
           "op": "CO"
+        }
+      ]
+    },
+    "848180~r14535": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "săm"
+        }
+      ]
+    },
+    "848180~r14538": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "lốp không săm"
         }
       ]
     },
@@ -605,7 +668,7 @@
     {
       "ma": "84818030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84818030 \"Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga\" ⇒ dungCho \"các bếp nấu hoặc bếp có lò nướng bằng ga\" (một chuỗi: \"bằng ga\" chung cho cả hai, EN \"for gas stoves or ranges\"); \"đã hoặc chưa lắp …\" không phải điều kiện. Cổng vòng 5 (#701) báo cong3-liet-ke-trong-mot-chuoi: tách thành mảng [\"các bếp nấu\", \"bếp có lò nướng bằng ga\"] sẽ RỘNG hơn chữ (bếp nấu không dùng ga lọt vào) — cần khoá nhiên liệu (vd nguonNangLuong GA) như 851762 dùng phuongThucTruyenDan; ghi thêm vào danh sách DỪNG của 848180 (GĐ 31/10)."
+      "ghiChu": "tax.84818030 \"Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga\" (EN \"for gas stoves or ranges\") ⇒ dungCho [\"các bếp nấu\",\"bếp có lò nướng\"] (mảng = hoặc, chuỗi con nguyên văn — cổng vòng 5) + nhienLieu TRONG [GA] (khoá tu-vung@2 mới, #577): \"bằng ga\" là định ngữ CHUNG của cả hai danh từ ⇒ điều kiện riêng áp cho mọi đích (cùng mẫu 851762 phuongThucTruyenDan); bếp nấu không dùng ga không lọt vào .30. \"đã hoặc chưa lắp bộ phận đánh lửa điện từ\" không phải điều kiện (có hoặc không đều thuộc dòng)."
     },
     {
       "ma": "8481804",
@@ -638,25 +701,9 @@
       "ghiChu": "Bảng hiệu chỉnh tiền lệ 848180-01 KHONG_LECH (43552/TB-CHQ: bộ van đường ống nước, van bi bằng đồng thau → 8481.80.63). Bản nháp theo CHỮ BIỂU: van bi cho đường ống nước thoả tầng r14551 \"Van đường ống nước\", không thoả r14552 (van cổng/van bướm gang đúc) ⇒ .63 \"Loại khác\" dưới r14551; tầng r14562 \"Loại khác:\" (chứa r14563 \"Van bi\") phủ định r14551 nên không tranh — khớp bảng."
     },
     {
-      "ma": "84818097",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daXuLyBeMat",
-      "ghiChu": "tax.84818097 \"Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken\" (EN \"Other, manually operated, weighing less than 3 kg, surface treated or made of stainless steel or nickel\"): vế \"đã được xử lý bề mặt\" (surface treated) không có khoá. Các vế khác có khoá (cachDieuKhien BANG_TAY, khoiLuong < 3 kg, chatLieu [\"thép không gỉ\",\"niken\"] trong HOAC) nhưng bỏ vế \"xử lý bề mặt\" làm hàng mạ/xử lý bề mặt rơi sang r14584 (đổi mã 8 số) ⇒ không BO_VE được."
-    },
-    {
-      "ma": "84818093",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — tax.84818093 \"Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04\": \"vật liệu khác\" = KHÔNG phải plastic (khác .83/.84 \"bằng plastic\"). Không biểu diễn được: chatLieu chieu PHAI_KHONG \"plastic\" bị cổng 3 chặn (chữ của chính .93 không có \"plastic\"); phanConLai [.83, .84] phủ định CẢ biên đường kính ⇒ van ngắt nhiên liệu bằng plastic, cửa nạp trên 2,5 cm rơi vào .93 thay vì r14579 \"Van plastic khác\" .96 (sai mã — đã thử, cổng 2 không báo vì r14579 phủ định .93). Cần: cho phép điều kiện phủ định chất liệu của anh em (\"bằng vật liệu khác\" ⇒ chatLieu PHAI_KHONG <chất liệu anh em cùng tầng>) — việc của công cụ/Claude."
-    },
-    {
       "ma": "84818041",
       "loai": "QUYET_DINH",
       "ghiChu": "cong3-bien-khong-doc-duoc (duongKinhTrong) ở .41/.51/.64/.66/.71/.78/.81/.84/.95/.98 và r14552 — đã đối chiếu tay: \"từ 1 cm đến 2,5 cm\" / \"từ 1cm đến 2,5 cm\" ⇒ >= 1 và <= 2.5 cm; \"từ 2,5 cm trở xuống\" ⇒ <= 2.5 cm; \"từ 4 cm trở lên\" / \"từ 8 cm trở lên\" ⇒ >= 4 / >= 8 cm."
-    },
-    {
-      "ma": "8481805",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — cụm trục ở tầng 848180 (cong2-chong-lan-truc:848180~r14535/8481802/8481805): con của phân nhóm chia theo BA trục — tên (8481802 \"Van xi lanh khí dầu mỏ hóa lỏng\", r14551 \"Van đường ống nước\", r14559 \"Van nối có núm\", r14556 tên + công dụng), công dụng (r14535 \"dùng cho săm\", r14538 \"dùng cho lốp không săm\", .30 \"dùng cho các bếp nấu …\", 8481804 \"cho chai chất lỏng có ga; … rót bia\") và đặc điểm có/không (8481805 \"có khoang pha trộn lưu chất\" — coKhoangPhaTron, CO_KHONG). Chồng lấn có thật trên chữ, vd van trộn nóng lạnh lắp đường ống nước thoả cả 8481805 lẫn r14551; biểu không ghi thứ tự. chongLanTruc chỉ nhận trục TEN_LOAI/CONG_DUNG (cong3-chong-lan-truc-truc-lech cho 8481805), chongLanVanBan không gỡ được trục ⇒ DỪNG (QUY-TRINH mục 5: nhánh không có khoá tên/công dụng). Cổng 2 còn báo (chưa xử lý vì đã DỪNG): cong2-chong-lan-truc:848180~r14573 (\"Van điều khiển bằng khí nén\" — cachDieuKhien ↔ r14570 \"Van nhiều cửa\"/.84 tên); cong2-dong-khong-toi-duoc:84818071/84818072 dưới r14563 \"Van bi\" — chưa phân tích nguyên nhân."
     },
     {
       "ma": "84818012",
@@ -669,6 +716,93 @@
       "loai": "BO_VE",
       "ve": "Bằng vật liệu khác",
       "lyDo": "Dòng .14 là phần còn lại của tầng r14538 sau .13 \"Bằng đồng hoặc hợp kim đồng\": phanConLai true phủ định đúng điều kiện chất liệu đồng của .13 — \"vật liệu khác\" chính là \"không phải đồng\", không cần điều kiện riêng."
+    },
+    {
+      "ma": "84818097",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84818097 \"Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken\" (EN \"Other, manually operated, weighing less than 3 kg, surface treated or made of stainless steel or nickel\") ⇒ \"Loại khác\" (máy phủ định anh em đứng trước) + cachDieuKhien [BANG_TAY] + khoiLuong < 3 kg + HOAC [[daXuLyBeMat CO], [chatLieu [\"thép không gỉ\",\"niken\"]]]: hai vế nối \"hoặc\" sau các giới hạn chung (tay, < 3 kg) ⇒ HOAC chỉ cho hai vế đó. Khoá daXuLyBeMat (CO_KHONG) mới ở tu-vung@2 (#577) — trước là THIEU_KHOA_TU_VUNG."
+    },
+    {
+      "ma": "84818093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84818093 \"Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" ⇒ tenLoai \"Van ngắt nhiên liệu\" + chatLieu LA chieu PHAI_KHONG \"plastic\" + dungCho \"xe thuộc nhóm 87.02, 87.03 hoặc 87.04\". \"vật liệu khác\" = khác chất liệu của anh em đứng trước cùng tên: tax.84818083/.84 \"Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, …\" — bằng chứng chữ \"plastic\" ở anh em (cổng 3: lib/so-tay.js#vatLieuKhacTheoAnhEm, #577). Không dùng phanConLai [.83, .84]: phủ định cả biên đường kính ⇒ van ngắt nhiên liệu plastic cửa nạp trên 2,5 cm rơi nhầm vào .93 (đúng là r14579 \"Van plastic khác\" .96). phanConLai false: chữ \"khác\" ở đây chỉ phủ định CHẤT LIỆU, không phải phần còn lại của mọi anh em đứng trước."
+    },
+    {
+      "ma": "8481805",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tầng 848180 chia theo BA trục: công dụng (r14535 \"dùng cho săm\", r14538 \"dùng cho lốp không săm\", .30 \"dùng cho các bếp nấu…\", 8481804 \"cho chai chất lỏng có ga; … rót bia\"), tên (8481802 \"Van xi lanh khí dầu mỏ hóa lỏng\", r14551 \"Van đường ống nước\", r14556 \"Núm uống nước…\", r14559 \"Van nối có núm\") và đặc điểm có/không (8481805 \"có khoang pha trộn lưu chất\" — coKhoangPhaTron). Chồng lấn có thật trên chữ (van trộn lắp đường ống nước thoả cả 8481805 lẫn r14551), biểu không ghi thứ tự ⇒ khai chongLanTruc một cụm chín nhánh, trục DAC_DIEM cho 8481805 (quyết định GĐ 31/10 — trục thứ ba cho khoá CO_KHONG/LIET_KE), phanXu null. r14556 có cả tên lẫn dungCho \"lợn\" — khai TEN_LOAI (chồng lấn duy nhất của nó là với 8481805)."
+    },
+    {
+      "ma": "848180~r14573",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dưới tầng r14562: r14573 \"Van điều khiển bằng khí nén\" (cachDieuKhien KHI_NEN — khoá đặc điểm) chồng lấn có thật với các nhánh chia theo tên r14563 \"Van bi\", r14570 \"Van nhiều cửa\", .83/.84/.93 \"Van ngắt nhiên liệu …\" (van bi khí nén, van nhiều cửa khí nén…), biểu không ghi thứ tự ⇒ chongLanTruc r14573 DAC_DIEM ↔ năm nhánh TEN_LOAI, phanXu null. r14566 \"Van cổng, điều khiển bằng tay…\" rời r14573 (BANG_TAY ↔ KHI_NEN) nên không vào cụm. .71/.72 dưới r14563 \"Van bi\" trước không tới được (cong2-dong-khong-toi-duoc) do bộ so chữ coi \"Van bi\" (toàn ASCII) là chữ Anh: so với tên có dấu của anh em luôn chưa biết — sửa ở cổng (ứng viên vector \"Van bi ẑẑẑ\"), không đổi điều kiện."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "848180~r14535",
+        "848180~r14538",
+        "8481802",
+        "84818030",
+        "8481804",
+        "8481805",
+        "848180~r14551",
+        "848180~r14556",
+        "848180~r14559"
+      ],
+      "truc": {
+        "8481802": "TEN_LOAI",
+        "8481804": "CONG_DUNG",
+        "8481805": "DAC_DIEM",
+        "84818030": "CONG_DUNG",
+        "848180~r14535": "CONG_DUNG",
+        "848180~r14538": "CONG_DUNG",
+        "848180~r14551": "TEN_LOAI",
+        "848180~r14556": "TEN_LOAI",
+        "848180~r14559": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Van/vòi này có \"khoang pha trộn lưu chất\" không (8481805); theo chữ biểu nó là van \"dùng cho săm\" (r14535), \"dùng cho lốp không săm\" (r14538), van \"dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga\" (8481.80.30), van \"cho chai chất lỏng có ga\" / \"cho bộ phận rót bia hoạt động bằng ga\" (8481804) — hay là \"Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng\" (8481802), \"Van đường ống nước\" (r14551), \"Núm uống nước dùng cho lợn\" (r14556), \"Van nối có núm\" (r14559)? Hàng thuộc nhiều nhánh cùng lúc (vd van trộn lắp đường ống nước): biểu thuế không nêu thứ tự — cần chuyên gia phân xử.",
+      "trich": {
+        "8481802": "Van xi lanh khí dầu mỏ hóa lỏng (LPG) bằng đồng hoặc hợp kim đồng",
+        "8481804": "Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga",
+        "8481805": "Van và vòi có khoang pha trộn lưu chất",
+        "84818030": "Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga",
+        "848180~r14535": "Van dùng cho săm",
+        "848180~r14538": "Van dùng cho lốp không săm",
+        "848180~r14551": "Van đường ống nước",
+        "848180~r14556": "Núm uống nước dùng cho lợn",
+        "848180~r14559": "Van nối có núm"
+      },
+      "phanXu": null
+    },
+    {
+      "nhanh": [
+        "848180~r14563",
+        "848180~r14570",
+        "848180~r14573",
+        "84818083",
+        "84818084",
+        "84818093"
+      ],
+      "truc": {
+        "84818083": "TEN_LOAI",
+        "84818084": "TEN_LOAI",
+        "84818093": "TEN_LOAI",
+        "848180~r14563": "TEN_LOAI",
+        "848180~r14570": "TEN_LOAI",
+        "848180~r14573": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Van này là \"Van điều khiển bằng khí nén\" (r14573) hay được gọi theo tên loại: \"Van bi\" (r14563), \"Van nhiều cửa\" (r14570), \"Van ngắt nhiên liệu\" bằng plastic hoặc bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04 (8481.80.83/.84/.93)? Van vừa thuộc một tên loại vừa điều khiển bằng khí nén (vd van bi khí nén): biểu thuế không nêu thứ tự — cần chuyên gia phân xử.",
+      "trich": {
+        "84818083": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm",
+        "84818084": "Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm",
+        "84818093": "Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
+        "848180~r14563": "Van bi",
+        "848180~r14570": "Van nhiều cửa",
+        "848180~r14573": "Van điều khiển bằng khí nén"
+      },
+      "phanXu": null
     }
   ]
 }

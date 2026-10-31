@@ -186,3 +186,20 @@ Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.2 
   đầu của dòng) ↔ nhánh anh em không có `dungCho` mà một tiêu đề tổ tiên mang tên đầu X; X, Y rời nhau như luật tên nguyên văn của
   anh em (#692, cùng độ chặt — tên chứa nhau không chứng minh được) ⇒ cổng 2 coi là loại trừ, cảnh báo `cong2-dich-cua-chung-roi`.
   Chỉ là luật chứng minh của cổng: runtime không đổi, hàng thoả cả hai thì động cơ hỏi (cùng lớp khoảng trống #692/#698).
+
+## Vòng 6 (31/10/2026, #577 — gỡ DỪNG 848180, 732690): quyết định GĐ (không mở lại)
+
+- **Trục thứ ba `DAC_DIEM` của `chongLanTruc`**: nhánh chia theo khoá đặc điểm tất định (CO_KHONG / LIET_KE — 8481805
+  `coKhoangPhaTron`, r14573 `cachDieuKhien`) cạnh nhánh chia theo tên/công dụng. Cùng nghĩa hai trục cũ ở cổng
+  (`lib/ho-so/cong-ranh-gioi.js`) và lúc chạy (`lib/ho-so/duong-di.js`, `doi-chieu.js`): hàng thoả ≥ 2 nhánh khác trục ⇒ chưa chốt
+  `chong-lan-truc` + câu hỏi phân biệt; chỉ `phanXu` kiểm được mới chọn; không bao giờ GIR. `truc` phải khớp khoá riêng của nhánh
+  (`cong3-chong-lan-truc-truc-lech`).
+- **"bằng vật liệu khác" ⇒ `chatLieu` `chieu: PHAI_KHONG` <chất liệu của anh em đứng trước>** (848180 .93 ↔ .83/.84 "bằng
+  plastic"): máy kiểm sổ tay (`lib/so-tay.js#vatLieuKhacTheoAnhEm`, cổng 3 + apDung) nhận bằng chứng ở chữ biểu nguyên văn của
+  anh em ĐỨNG TRƯỚC cùng cha khi: trích của mục có "vật liệu khác"/"chất liệu khác"; vị trí CHINH; phần chữ trước cụm đó (cùng tên
+  hàng) có trong chữ anh em. Cổng 5 neo vế "bằng vật liệu khác". Không dùng `phanConLai` thay (phủ định cả biên số của anh em).
+- **Giá trị chữ tự do toàn ASCII** ("Van bi", "Piston", "Micro"…): bộ so chữ lúc chạy coi là chữ Anh nên so với tên có dấu luôn
+  CHUA_BIET; cổng thêm ứng viên vector "<giá trị> ẑẑẑ" (`bangUngVien`) để dòng dưới tới được (848180 .71/.72). Runtime không đổi.
+- **Liệt kê tên của CÙNG một vật** (732690 .70 "mấu, gai, đinh móc" = EN "riding boot spurs"): mảng tên nguyên văn thay thế nhau
+  không rộng nghĩa; định ngữ chung ("lắp trên giày để thúc ngựa") thành điều kiện riêng.
+- Khoá tu-vung@2 mới: `daXuLyBeMat` (CO_KHONG), `nhienLieu` (LIET_KE GA | DIEN) — [`de-xuat-tu-vung-2.md`](de-xuat-tu-vung-2.md).
