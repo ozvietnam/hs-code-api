@@ -108,19 +108,74 @@
  "dong8": [
   {
    "hs": "85181011",
-   "dieuKien": "Micro dải tần 300–3.400 Hz, đường kính ≤10 mm, cao ≤3 mm, dùng trong viễn thông",
+   "dieuKien": "tần số / dải tần >= 300 Hz; tần số / dải tần <= 3400 Hz; đường kính (ngoài) <= 10 mm; chiều cao <= 3 mm; công dụng / mục đích: viễn thông",
    "loaiKhac": false,
    "nguon": "tax.85181011",
    "trich": "85181011 - - - Micro có dải tần số từ 300 Hz đến 3.400 Hz, với đường kính không quá 10 mm và cao không quá 3 mm, dùng trong viễn thông",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tanSo",
+     "op": ">=",
+     "value": 300,
+     "donVi": "Hz"
+    },
+    {
+     "fact": "tanSo",
+     "op": "<=",
+     "value": 3400,
+     "donVi": "Hz"
+    },
+    {
+     "fact": "duongKinh",
+     "op": "<=",
+     "value": 10,
+     "donVi": "mm"
+    },
+    {
+     "fact": "chieuCao",
+     "op": "<=",
+     "value": 3,
+     "donVi": "mm"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "viễn thông"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "bbb647549928da169fb7c9c298e063ceae77dd178dcfc14d052642c23969e6bb"
+    }
+   }
   },
   {
    "hs": "85181019",
-   "dieuKien": "Micro khác, đã hoặc chưa lắp với giá đỡ micro",
+   "dieuKien": "tên loại hàng: Micro",
    "loaiKhac": false,
    "nguon": "tax.85181019",
    "trich": "85181019 - - - Micro khác, đã hoặc chưa lắp ráp cùng với giá đỡ micro",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Micro"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "bbb647549928da169fb7c9c298e063ceae77dd178dcfc14d052642c23969e6bb"
+    }
+   },
+   "phanConLai": true
   },
   {
    "hs": "85181090",
@@ -929,6 +984,27 @@
  },
  "yKienWcoDayDu": false,
  "dieuKienNut": [
+  {
+   "id": "8518101",
+   "nguon": "tieuDe.8518101",
+   "trich": "8518101 Micro",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Micro"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "bbb647549928da169fb7c9c298e063ceae77dd178dcfc14d052642c23969e6bb"
+    }
+   }
+  },
   {
    "id": "8518305",
    "nguon": "tieuDe.8518305",

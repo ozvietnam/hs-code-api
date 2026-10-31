@@ -4,7 +4,7 @@
   "nhom": "8452",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-845290",
@@ -207,6 +207,13 @@
       "ma": "84529011+84529012",
       "loai": "QUYET_DINH",
       "ghiChu": "Cặp .11/.91 \"… bàn đạp các loại\" (tenLoai \"bàn đạp\") ↔ .12/.92 \"Bàn, tủ, chân máy và nắp và các bộ phận của chúng\" (HOAC [[tenLoai Bàn…], [laBoPhan CO, dungCho Bàn…]]): \"bàn đạp\" chứa tên \"Bàn\" — theo quyết định GĐ (a) (#600) \"tên cụ thể hơn thắng\" áp vào phương án HOAC và cặp chéo khoá (cổng 2 và doiChieuPhanNhom cùng lib/dieu-kien-so.js#tenCuTheHonDong) ⇒ .11/.91 thắng, cảnh báo cong2-ten-cu-the-hon. Các tên khác (\"bánh đà\", \"bộ phận che chắn dây đai\"… ↔ bộ phận của \"Bàn\"/\"tủ\"/…) rời nhau theo luật tên nguyên văn của anh em (cong2-ten-anh-em-roi). Không khai chongLanVanBan, không đổi khoá, không bỏ vế mở."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+      "ngay": "2026-10-31",
+      "lyDo": "(A) 845290.json:dong8[84529011] và [84529091] THU HẸP: chữ \"Thân trên và thân dưới máy\" (EN \"Arms and beds\") là HAI hàng (thân trên HOẶC thân dưới; --ve in \"danh từ đầu liên hợp: Thân trên | thân dưới máy\"), nhưng tenLoai ghi MỘT giá trị \"Thân trên và thân dưới máy\" ⇒ bộ so chữ đòi đủ âm tiết trên + dưới. Trong mô hình điều kiện (bộ so âm tiết của cổng 2), \"thân dưới máy khâu\" ⇒ TRAI ở .11 ⇒ .19 (và .91 ⇒ .99): dòng không bao giờ THOẢ cho hàng nêu tên (cùng MFN 25% / 0%). Lúc chạy hôm nay bộ đọc tên chỉ lấy \"thân\" nên ra CHUA_BIET (hỏi, chưa sai mã) — lỗi nằm ở điều kiện, lộ ra khi bộ đọc tên tốt lên; cùng lỗi mà cổng vòng 5 chặn nếu viết \"hoặc\". Vòng 5 (QUY-TRINH 3.2): liệt kê TÊN HÀNG nối \"và\" ⇒ mảng. Máy không bắt vì cong3-liet-ke-trong-mot-chuoi chỉ xét \" hoặc \", \";\", phẩy. Làm gì: tách thành chuỗi con nguyên văn, vd [\"Thân trên\",\"thân dưới máy\"] hoặc [\"Thân trên\",\"thân dưới\"] (\"máy\" lặp tên phân nhóm), cho cả .11 và .91; rồi chạy lại cổng (cặp với .12/.92 xét lại cong2-ten-cu-the-hon/ten-anh-em-roi). Phần còn lại (HOAC .12/.92, tiêu đề 8452901, \"bàn đạp\" ⊃ \"Bàn\") người soát đã đối chiếu, đúng."
     }
   ]
 }

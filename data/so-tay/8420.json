@@ -143,19 +143,78 @@
  "dong8": [
   {
    "hs": "84201010",
-   "dieuKien": "Loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền mạch in hoặc mạch in",
+   "dieuKien": "chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng); công dụng / mục đích: sản xuất tấm nền mạch in hoặc mạch in",
    "loaiKhac": false,
    "nguon": "tax.84201010",
    "trich": "84201010 - - Loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền mạch in hoặc mạch in",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "chiHoacChuYeu",
+     "op": "CO"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": [
+      "sản xuất tấm nền mạch in",
+      "mạch in"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "ba490f1103efad674c1b5f1da3d3c893faddca03032c7aaf60711b760e8438a6"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "84201020",
+     "lyDo": "Chữ biểu tự chồng lấn: .10 \"Loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền mạch in hoặc mạch in\" chia theo mức ràng buộc công dụng; .20 \"Máy là hoặc máy vắt phù hợp sử dụng cho gia đình\" chia theo tên hàng + phạm vi gia đình. Hai câu không loại trừ nhau trên chữ (không câu nào nói \"không dùng cho gia đình\" hay \"trừ máy là\"); không thêm điều kiện tách mà chữ không nói; không có căn cứ thứ tự (TB-TCHQ/SEN/chú giải) trong nguồn của gói."
+    }
+   ]
   },
   {
    "hs": "84201020",
-   "dieuKien": "Máy là hoặc máy vắt phù hợp sử dụng cho gia đình",
+   "dieuKien": "tên loại hàng: Máy là hoặc máy vắt; phạm vi sử dụng: gia đình (gia dụng)",
    "loaiKhac": false,
    "nguon": "tax.84201020",
    "trich": "84201020 - - Máy là hoặc máy vắt phù hợp sử dụng cho gia đình",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Máy là",
+      "máy vắt"
+     ]
+    },
+    {
+     "fact": "phamViSuDung",
+     "op": "TRONG",
+     "value": [
+      "GIA_DINH"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "ba490f1103efad674c1b5f1da3d3c893faddca03032c7aaf60711b760e8438a6"
+    }
+   },
+   "chongLanVanBan": [
+    {
+     "voi": "84201010",
+     "lyDo": "Chữ biểu tự chồng lấn: .10 \"Loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền mạch in hoặc mạch in\" chia theo mức ràng buộc công dụng; .20 \"Máy là hoặc máy vắt phù hợp sử dụng cho gia đình\" chia theo tên hàng + phạm vi gia đình. Hai câu không loại trừ nhau trên chữ (không câu nào nói \"không dùng cho gia đình\" hay \"trừ máy là\"); không thêm điều kiện tách mà chữ không nói; không có căn cứ thứ tự (TB-TCHQ/SEN/chú giải) trong nguồn của gói."
+    }
+   ]
   },
   {
    "hs": "84201090",
