@@ -1,0 +1,211 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "871410",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-871410",
+  "dong8": {
+    "87141010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Yên xe"
+        }
+      ]
+    },
+    "87141020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Nan hoa",
+            "ốc bắt đầu nan hoa"
+          ]
+        }
+      ]
+    },
+    "87141030": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Khung",
+                  "càng xe",
+                  "giảm xóc"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Khung",
+                  "càng xe",
+                  "giảm xóc"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "87141040": {
+      "phanConLai": false,
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Bánh răng",
+                  "hộp số",
+                  "bộ ly hợp",
+                  "thiết bị truyền động"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Bánh răng",
+                  "hộp số",
+                  "bộ ly hợp",
+                  "thiết bị truyền động"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "87141050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vành bánh xe"
+        }
+      ]
+    },
+    "87141060": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Phanh"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Phanh"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "87141070": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Giảm thanh"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Giảm thanh"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "87141010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87141010 \"Yên xe\" ⇒ tenLoai \"Yên xe\"."
+    },
+    {
+      "ma": "87141020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87141020 \"Nan hoa và ốc bắt đầu nan hoa\" (chữ Anh \"Spokes and nipples\") ⇒ tenLoai [\"Nan hoa\",\"ốc bắt đầu nan hoa\"] (mảng = hoặc)."
+    },
+    {
+      "ma": "87141030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87141030 \"Khung và càng xe kể cả càng xe cơ cấu ống lồng, giảm xóc và các bộ phận của chúng\" (chữ Anh \"Frame and forks including telescopic fork, rear suspension and parts thereof\") ⇒ vế MỞ \"và các bộ phận của chúng\" theo quy ước QUY-TRINH 3.11 / mục 4 bước 7: HOAC [[tenLoai [\"Khung\",\"càng xe\",\"giảm xóc\"]], [laBoPhan CO, dungCho [cùng các tên]]]. \"kể cả càng xe cơ cấu ống lồng\" là kể cả (không thành điều kiện riêng, đã nằm trong \"càng xe\")."
+    },
+    {
+      "ma": "87141040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87141040 \"Bánh răng (gearing), hộp số, bộ ly hợp và các thiết bị truyền động khác và bộ phận của chúng\" ⇒ HOAC [[tenLoai [\"Bánh răng\",\"hộp số\",\"bộ ly hợp\",\"thiết bị truyền động\"]], [laBoPhan CO, dungCho [cùng các tên]]] (vế MỞ \"và bộ phận của chúng\"). phanConLai: false — \"khác\" trong \"các thiết bị truyền động khác\" chỉ mở danh sách trong dòng (\"other transmission equipment\"), không trỏ các anh em đứng trước; \"(gearing)\" là ngoặc chú thích."
+    },
+    {
+      "ma": "87141050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87141050 \"Vành bánh xe\" ⇒ tenLoai \"Vành bánh xe\"."
+    },
+    {
+      "ma": "87141060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87141060 \"Phanh và bộ phận của chúng\" ⇒ HOAC [[tenLoai \"Phanh\"], [laBoPhan CO, dungCho \"Phanh\"]] (đúng ví dụ QUY-TRINH 3.11)."
+    },
+    {
+      "ma": "87141070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87141070 \"Giảm thanh (muffers) và các bộ phận của chúng\" ⇒ HOAC [[tenLoai \"Giảm thanh\"], [laBoPhan CO, dungCho \"Giảm thanh\"]]; \"(muffers)\" là ngoặc chú thích."
+    },
+    {
+      "ma": "87141090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87141090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "87141030",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — mẫu \"X và (các) bộ phận của chúng\" ở NHIỀU anh em (.30, .40, .60, .70; QUY-TRINH mục 4 bước 7, vòng 4). Sau khi viết đúng dạng HOAC, cổng 2 báo 18 cặp cong2-chong-lan, đều :khong-tat-dinh (vd .10+.30 \"tenLoai Yên xe + laBoPhan + dungCho Khung\"; .30+.60 \"tenLoai Phanh + laBoPhan + dungCho Khung\"), kèm cong2-chong-lan-truc. Đã thử chongLanTruc (QUY-TRINH 4a) cụm .10/.20/.50 TEN_LOAI ↔ .30/.40/.60/.70 CONG_DUNG (thử tạm, không giữ): 12 cặp tên ↔ bộ phận được phủ nhưng 6 cặp giữa chính bốn dòng HOAC (.30+.40, .30+.60, .30+.70, .40+.60, .40+.70, .60+.70) vẫn lỗi vì mỗi dòng HOAC vừa có nhánh tên vừa có nhánh bộ phận — một nhánh chỉ khai được một trục, bốn dòng chồng nhau đôi một nên không chia hai trục được. Không khai chongLanVanBan (chồng lấn do bộ so chữ ghép khoá, không phải chữ biểu tự chồng), không đổi khoá để né. Cần GĐ chốt cách biểu diễn chung cho mẫu này (cùng ca 845290)."
+    }
+  ]
+}
