@@ -290,3 +290,14 @@ Dự án cần dữ liệu từ cộng đồng để mã HS ngày càng rõ ràn
 
 hãy mở GitHub Issue tại `github.com/ozvietnam/hs-code-api/issues`. Xem
 `CONTRIBUTING.md` nếu đã có.
+
+---
+
+## 🏢 Văn phòng OZ — bắt buộc đọc (ADR-0001, 30/10/2026)
+
+Repo này là **một thành viên** của văn phòng chung OZ Việt Nam. Tri thức công ty, **sổ nhân sự**, bảng việc nằm ở Gitea `ozvietnam/oz-infra-codex` (thư mục `brain/`; sổ tay: `brain/so-tay-thanh-vien.md`).
+
+- **Bạn** = Claude dự án hs-code-api (mã **DA-HS**): lo **code** hs-code-api. Việc trên **server** (.120: biến môi trường, khoá dịch vụ, DB, deploy, container) thuộc **"quản trị server"** (Claude hạ tầng).
+- **Gửi yêu cầu cho quản trị server:** tạo `docs/viec/yeu-cau-YYYY-MM-DD-<slug>.md` theo mẫu `docs/viec/README.md`, commit lên nhánh/PR. Văn phòng quét `docs/viec/` và ghi vào bảng việc chung. **KHÔNG nhờ CEO chuyển thư.**
+- **Leo thang:** chi tiền · xoá dữ liệu · bật tính năng cho khách thật / deploy production · quyết định chiến lược → hỏi CEO (qua Giám đốc @Claudiaozbot), không tự làm.
+- Báo cáo kết quả / cập nhật tiến độ: cập nhật file yêu cầu tương ứng (đánh dấu ô) — quản trị đọc tại đó.
