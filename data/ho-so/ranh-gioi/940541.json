@@ -1,0 +1,176 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "940541",
+  "nhom": "9405",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-940541",
+    "ngay": "2026-10-31"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "94054110",
+      "nguon": "tax.94054110",
+      "trich": "94054110 - - - Đèn pha",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn pha"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94054120",
+      "nguon": "tax.94054120",
+      "trich": "94054120 - - - Đèn rọi khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn rọi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "94054130",
+      "nguon": "tax.94054130",
+      "trich": "94054130 - - - Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Đèn tín hiệu không nhấp nháy"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "sân bay"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "phương tiện giao thông đường sắt",
+                  "đầu máy",
+                  "tàu thủy",
+                  "phương tiện bay",
+                  "hải đăng"
+                ]
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "kim loại"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94054140",
+      "nguon": "tax.94054140",
+      "trich": "94054140 - - - Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn; loại chiếu sáng bên ngoài khác",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "CONG_CONG"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "chiếu sáng bên ngoài"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94054190",
+      "nguon": "tax.94054190",
+      "trich": "94054190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "94054110",
+        "94054120",
+        "94054130"
+      ],
+      "truc": {
+        "94054110": "TEN_LOAI",
+        "94054120": "TEN_LOAI",
+        "94054130": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Đèn này là \"Đèn pha\" (.10) / \"Đèn rọi khác\" (.20) hay là \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\" (.30)? Nếu thoả cả hai, biểu thuế không nêu dòng nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "94054110": "Đèn pha",
+        "94054120": "Đèn rọi khác",
+        "94054130": "đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản"
+      },
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "94054110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94054110 \"Đèn pha\" ⇒ tenLoai \"Đèn pha\"."
+    },
+    {
+      "ma": "94054120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94054120 \"Đèn rọi khác\" = phần còn lại có tên (đèn rọi trừ đèn pha .10) ⇒ phanConLai: true + tenLoai \"Đèn rọi\"."
+    },
+    {
+      "ma": "94054130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94054130 hai vế ngăn bằng \";\" ⇒ HOAC. Vế A \"Đèn tín hiệu không nhấp nháy dùng cho sân bay\" ⇒ tenLoai nguyên cụm \"Đèn tín hiệu không nhấp nháy\" (chuỗi con nguyên văn, giữ vế giới hạn \"không nhấp nháy\" — cách GĐ chấp nhận ở issue #665 cho 940542 cùng chữ; tu-vung@2 không có khoá nhấp nháy, không bỏ vế, không BO_VE) + dungCho \"sân bay\". Vế B \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\" ⇒ dungCho [5 đích] (mảng = hoặc) + chatLieu LA \"kim loại\" (cách đọc \"kim loại cơ bản\"). Đã đối chiếu chữ Anh cùng dòng \"Non-flashing aerodrome beacons; lamps for railway rolling stock, locomotives, aircraft, ships or lighthouses, of base metal\": \"of base metal\" đi với vế sau dấu \";\" ⇒ gắn chất liệu cho vế B."
+    },
+    {
+      "ma": "94054130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "#683 + QUY-TRINH 4a: .10 \"Đèn pha\" / .20 \"Đèn rọi khác\" (khoá tên) ↔ .30 vế B dungCho (khoá công dụng), không chung khoá, chồng thật (đèn pha bằng kim loại cho đầu máy thoả cả hai) ⇒ chồng lấn TRỤC cấp dòng — bỏ hai cặp chongLanVanBan của bản thợ (PR #627), khai chongLanTruc .10/.20 (TEN_LOAI) ↔ .30 (CONG_DUNG), phanXu null (như 940542 trên main)."
+    },
+    {
+      "ma": "94054140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94054140 \"Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn; loại chiếu sáng bên ngoài khác\" ⇒ chỉ điều kiện của hai vế (máy phủ định anh em), HOAC: vế A phamViSuDung TRONG [CONG_CONG] (chữ chứa cách đọc \"công cộng\", \"đường phố\"); vế B congDung \"chiếu sáng bên ngoài\" (\"khác\" cuối vế B lặp ý \"Loại khác\" đầu dòng, không phải phần còn lại riêng)."
+    },
+    {
+      "ma": "94054190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94054190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}
