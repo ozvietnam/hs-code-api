@@ -61,8 +61,11 @@ const tang = (r) => r.loi.filter((l) => l.startsWith('cong1-tang-khong-ma'));
 
 // ── 3. Tầng không đặt được vẫn chặn (DỪNG) ───────────────────────────────────────────────────────────────────
 {
-  const r = C.kiemRanhGioi('870340', C.taoKhung('870340', { phien: PHIEN }));
-  check('3a 870340: r16670 cắt ngang tiêu đề số ⇒ cong1-tang-khong-ma-khong-dat ở từng dòng dưới tầng', ['87034018', '87034019', '87034021'].every((h) => r.loi.includes(`cong1-tang-khong-ma-khong-dat:${h}:r16670`)), tang(r).slice(0, 10));
+  // #606: 870340 r16670 nay đặt được (8703401/8703402 là nhóm chữ số không tên, trong suốt) ⇒ ví dụ KHONG_DAT còn lại 981820 r19155.
+  const r = C.kiemRanhGioi('981820', C.taoKhung('981820', { phien: PHIEN }));
+  check('3a 981820: r19155 trùng tập lá tiêu đề số khác tên ⇒ cong1-tang-khong-ma-khong-dat ở từng dòng dưới tầng', ['98182031', '98182039'].every((h) => r.loi.includes(`cong1-tang-khong-ma-khong-dat:${h}:r19155`)), tang(r).slice(0, 10));
+  const r340 = C.kiemRanhGioi('870340', C.taoKhung('870340', { phien: PHIEN }));
+  check('3a2 870340: r16670 không còn KHONG_DAT (nhóm chữ số không tên trong suốt) — chỉ còn đòi điều kiện tầng', !r340.loi.some((l) => l.startsWith('cong1-tang-khong-ma-khong-dat')) && r340.loi.includes('cong1-chua-so-hoa:87034018:870340~r16670'), tang(r340).slice(0, 10));
   check('3b … nằm trong dung[] (DỪNG)', (r.dung || []).some((d) => d.startsWith('cong1-tang-khong-ma-khong-dat:')), (r.dung || []).slice(0, 5));
   check('3c ma-loi: -khong-dat là DỪNG; cong1-tang-khong-ma (bỏ qua tầng) sửa được — không DỪNG, chỉ cách khai id tầng',
     ML.giaiThich('cong1-tang-khong-ma-khong-dat:87034018:r16670')?.dung === true && !ML.giaiThich('cong1-tang-khong-ma:84145910:r13180')?.dung && /~r/.test(ML.giaiThich('cong1-tang-khong-ma:84145910:r13180')?.cachSua || ''));

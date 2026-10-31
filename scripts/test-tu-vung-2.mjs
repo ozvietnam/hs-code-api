@@ -24,7 +24,8 @@ const check = (n, c, d) => { if (c) { pass += 1; console.log(`PASS ${n}`); } els
 const coTrong = (r, text) => typeof r?.bangChung === 'string' && r.bangChung.length > 0 && text.normalize('NFC').includes(r.bangChung);
 const CJK = /[㐀-鿿]/u;
 const clone = (x) => JSON.parse(JSON.stringify(x));
-const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNapChuongTrinh: 'CO_KHONG', soLoi: 'SO', soSoi: 'SO', tiLe: 'SO', phuongPhapCheTao: 'LIET_KE' };
+// 7 khoá #570 + phuongThucTruyenDan (#606 — 851762 "truyền dẫn dưới dạng sóng vô tuyến", định ngữ chung của điện báo/điện thoại).
+const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNapChuongTrinh: 'CO_KHONG', soLoi: 'SO', soSoi: 'SO', tiLe: 'SO', phuongPhapCheTao: 'LIET_KE', phuongThucTruyenDan: 'LIET_KE' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
@@ -43,7 +44,7 @@ check('kiemSieuTap(@1, @2) = 0 lỗi', typeof T.kiemSieuTap === 'function' && T.
   const lech = tv1.khoa.filter((k) => JSON.stringify(k) !== JSON.stringify(k2.get(k.khoa))).map((k) => k.khoa);
   check(`mọi khoá tu-vung@1 (${tv1.khoa.length}) có trong @2 và GIỐNG HỆT (so JSON)`, tv1.khoa.length === 53 && lech.length === 0, lech);
   const them = tv2.khoa.filter((k) => !tv1.khoa.some((x) => x.khoa === k.khoa)).map((k) => k.khoa).sort();
-  check('@2 chỉ thêm đúng 7 khoá mới', JSON.stringify(them) === JSON.stringify(Object.keys(KHOA_MOI).sort()), them);
+  check(`@2 chỉ thêm đúng ${Object.keys(KHOA_MOI).length} khoá mới`, JSON.stringify(them) === JSON.stringify(Object.keys(KHOA_MOI).sort()), them);
   check('khoá @1 giữ nguyên thứ tự ở đầu danh sách @2', tv1.khoa.every((k, i) => tv2.khoa[i]?.khoa === k.khoa));
 }
 if (typeof T.kiemSieuTap === 'function') {
@@ -89,7 +90,7 @@ for (const [khoa, kieu] of Object.entries(KHOA_MOI)) {
   check(`${khoa}: câu hỏi Vi + Zh (cauHoiCho)`, typeof vi === 'string' && vi.endsWith('?') && typeof zh === 'string' && CJK.test(zh) && /？$/.test(zh), { vi, zh });
   check(`${khoa}: nguonLoai AI_DA_KIEM (chưa chấm duyệt độc lập — không tự gắn CLAUDE_DUYET)`, k?.nguonLoai === 'AI_DA_KIEM', k?.nguonLoai);
 }
-check('chamDuyetDocLap @2: khoá mới CHUA_CHAM, liệt kê đủ 7 khoá', tv2.chamDuyetDocLap?.trangThai === 'CHUA_CHAM' && Object.keys(KHOA_MOI).every((k) => (tv2.chamDuyetDocLap?.khoaChuaCham || []).includes(k)), tv2.chamDuyetDocLap);
+check(`chamDuyetDocLap @2: khoá mới CHUA_CHAM, liệt kê đủ ${Object.keys(KHOA_MOI).length} khoá`, tv2.chamDuyetDocLap?.trangThai === 'CHUA_CHAM' && Object.keys(KHOA_MOI).every((k) => (tv2.chamDuyetDocLap?.khoaChuaCham || []).includes(k)), tv2.chamDuyetDocLap);
 
 const doc = (khoa, t) => { try { return T.docGiaTri(khoa, t); } catch (e) { return { loi: String(e.message) }; } };
 const la = (ten, khoa, t, v, them = {}) => {
@@ -200,12 +201,34 @@ chuaBiet('phủ định "không được rèn"', 'phuongPhapCheTao', 'trục kh�
   check('phuongPhapCheTao hai phương pháp ⇒ ungVien [DUC, DAP]', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['DAP', 'DUC']), r);
 }
 
+// phuongThucTruyenDan — LIET_KE VO_TUYEN | HUU_TUYEN (#606, chữ biểu 851762)
+la('chữ biểu 85176261 "truyền dẫn dưới dạng sóng vô tuyến"', 'phuongThucTruyenDan', 'Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến', 'VO_TUYEN', { bc: 'sóng vô tuyến' });
+la('chữ biểu 85176210 "phát và thu sóng vô tuyến"', 'phuongThucTruyenDan', 'Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp', 'VO_TUYEN');
+la('"không dây" (không phải phủ định — khongPhaiPhuDinh)', 'phuongThucTruyenDan', 'Thiết bị mạng nội bộ không dây', 'VO_TUYEN', { bc: 'không dây' });
+la('En "radio-telephony"', 'phuongThucTruyenDan', 'For radio-telephony or radio-telegraphy', 'VO_TUYEN');
+la('En "wireless"', 'phuongThucTruyenDan', 'wireless access point', 'VO_TUYEN');
+la('Zh "无线"', 'phuongThucTruyenDan', '无线对讲机', 'VO_TUYEN');
+la('chữ biểu 8517624 "hệ thống hữu tuyến"', 'phuongThucTruyenDan', 'Thiết bị dùng cho hệ thống hữu tuyến sóng mang hoặc hệ thống hữu tuyến kỹ thuật số', 'HUU_TUYEN', { bc: 'hữu tuyến' });
+la('"có dây"', 'phuongThucTruyenDan', 'Điện thoại bàn có dây', 'HUU_TUYEN');
+la('En "carrier-current line systems"', 'phuongThucTruyenDan', 'Apparatus for carrier-current line systems or for digital line systems', 'HUU_TUYEN');
+la('En "wired"', 'phuongThucTruyenDan', 'wired headset', 'HUU_TUYEN');
+la('Zh "有线"', 'phuongThucTruyenDan', '有线电话机', 'HUU_TUYEN');
+chuaBiet('"có dây đeo" là dây vật lý, không phải đường truyền', 'phuongThucTruyenDan', 'Đồng hồ có dây đeo bằng da');
+chuaBiet('"line" trần (dây chuyền) không đọc', 'phuongThucTruyenDan', 'production line conveyor');
+chuaBiet('"cordless" không đọc (trùng pin/ắc quy)', 'phuongThucTruyenDan', 'cordless drill 18V');
+chuaBiet('phủ định "không phải loại vô tuyến"', 'phuongThucTruyenDan', 'thiết bị không phải loại vô tuyến');
+{
+  const r = chuaBiet('cả không dây lẫn có dây — không đoán', 'phuongThucTruyenDan', 'bộ điện thoại không dây và có dây');
+  check('phuongThucTruyenDan hai giá trị ⇒ ungVien [HUU_TUYEN, VO_TUYEN]', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['HUU_TUYEN', 'VO_TUYEN']), r);
+}
+
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────
 const viet = (khoa, v) => { try { return T.vietCum(khoa, v); } catch (e) { return `LOI ${e.message}`; } };
 check('vietCum soLoi 2 ⇒ "2 lõi" (đơn vị đếm cách số)', viet('soLoi', 2) === '2 lõi', viet('soLoi', 2));
 check('vietCum soSoi 7 ⇒ "7 sợi"', viet('soSoi', 7) === '7 sợi', viet('soSoi', 7));
 check('vietCum tiLe 0.1 ⇒ "tỉ lệ 0,1 lần"', viet('tiLe', 0.1) === 'tỉ lệ 0,1 lần', viet('tiLe', 0.1));
 check('vietCum phuongPhapCheTao REN ⇒ "được rèn"', viet('phuongPhapCheTao', 'REN') === 'được rèn', viet('phuongPhapCheTao', 'REN'));
+check('vietCum phuongThucTruyenDan VO_TUYEN ⇒ "truyền dẫn vô tuyến"', viet('phuongThucTruyenDan', 'VO_TUYEN') === 'truyền dẫn vô tuyến' && viet('phuongThucTruyenDan', 'HUU_TUYEN') === 'truyền dẫn hữu tuyến', [viet('phuongThucTruyenDan', 'VO_TUYEN'), viet('phuongThucTruyenDan', 'HUU_TUYEN')]);
 check('vietCum chiHoacChuYeu true/false ⇒ không chép chữ biểu "chỉ hoặc chủ yếu"', viet('chiHoacChuYeu', true) === 'chuyên dùng' && viet('chiHoacChuYeu', false) === 'loại dùng chung', [viet('chiHoacChuYeu', true), viet('chiHoacChuYeu', false)]);
 check('vietCum daNapChuongTrinh true/false', viet('daNapChuongTrinh', true) === 'đã nạp chương trình' && viet('daNapChuongTrinh', false) === 'chưa nạp chương trình', [viet('daNapChuongTrinh', true), viet('daNapChuongTrinh', false)]);
 check('vietCum đơn vị @1 KHÔNG đổi ("CS: 75000W" — không cách)', T.vietCum('congSuat', 75000, { tat: true }) === 'CS: 75000W', T.vietCum('congSuat', 75000, { tat: true }));

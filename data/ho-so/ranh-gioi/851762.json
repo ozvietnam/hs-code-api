@@ -70,7 +70,14 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "phát và thu sóng vô tuyến"
+          "value": "phát và thu"
+        },
+        {
+          "fact": "phuongThucTruyenDan",
+          "op": "TRONG",
+          "value": [
+            "VO_TUYEN"
+          ]
         },
         {
           "fact": "dungCho",
@@ -190,8 +197,25 @@
       "hs": "85176253",
       "nguon": "tax.85176253",
       "trich": "85176253 - - - - Thiết bị phát khác dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "điện báo",
+            "điện thoại"
+          ]
+        },
+        {
+          "fact": "phuongThucTruyenDan",
+          "op": "TRONG",
+          "value": [
+            "VO_TUYEN"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "85176259",
@@ -204,7 +228,23 @@
       "hs": "85176261",
       "nguon": "tax.85176261",
       "trich": "85176261 - - - - Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "điện báo",
+            "điện thoại"
+          ]
+        },
+        {
+          "fact": "phuongThucTruyenDan",
+          "op": "TRONG",
+          "value": [
+            "VO_TUYEN"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -254,7 +294,23 @@
       "hs": "85176292",
       "nguon": "tax.85176292",
       "trich": "85176292 - - - - Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "điện báo",
+            "điện thoại"
+          ]
+        },
+        {
+          "fact": "phuongThucTruyenDan",
+          "op": "TRONG",
+          "value": [
+            "VO_TUYEN"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -284,13 +340,29 @@
         "85176243": "Bộ điều khiển và bộ thích ứng (adaptor), kể cả cổng nối, cầu nối, bộ định tuyến và các thiết bị tương tự khác được thiết kế chỉ để kết nối với máy xử lý dữ liệu tự động thuộc nhóm 84.71"
       },
       "phanXu": null
+    },
+    {
+      "nhanh": [
+        "85176291",
+        "85176292"
+      ],
+      "truc": {
+        "85176291": "TEN_LOAI",
+        "85176292": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng là \"Thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin\" hoặc \"thiết bị cảnh báo bằng tin nhắn\" (85176291), hay là thiết bị \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" (85176292) — nếu là thiết bị thu xách tay (máy nhắn tin) dùng cho điện báo/điện thoại vô tuyến thì thuộc dòng nào?",
+      "trich": {
+        "85176291": "Thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin",
+        "85176292": "Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến"
+      },
+      "phanXu": null
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "85176210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85176210 \"Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng\" ⇒ tenLoai \"phát và thu sóng vô tuyến\" + dungCho \"phiên dịch trực tiếp\" (chữ \"sử dụng cho\" ⇒ dungCho, cùng khoá với .52)."
+      "ghiChu": "tax.85176210 \"Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng\" (EN \"Radio transmitters and radio receivers of a kind used for simultaneous interpretation at multilingual conferences\") ⇒ tenLoai \"phát và thu\" + phuongThucTruyenDan [VO_TUYEN] (cách đọc \"sóng vô tuyến\"; EN \"Radio …\") + dungCho \"phiên dịch trực tiếp\" (chữ \"sử dụng cho\" ⇒ dungCho, cùng khoá với .52). \"sóng vô tuyến\" là phương thức truyền dẫn của thiết bị (radio), không phải một phần tên — từ tu-vung@2 có khoá LIET_KE phuongThucTruyenDan (#606) nên ghi bằng khoá tất định; tenLoai \"phát và thu\" cùng giá trị với .52 (QUY-TRINH 3.3)."
     },
     {
       "ma": "85176230",
@@ -328,26 +400,6 @@
       "ghiChu": "tax.85176252 \"Thiết bị phát và thu dùng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng\" ⇒ tenLoai \"phát và thu\" + dungCho \"phiên dịch trực tiếp\"."
     },
     {
-      "ma": "85176252",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — cong2-dong-khong-toi-duoc:85176252. Tiêu đề cha 8517625 \"Thiết bị truyền dẫn khác kết hợp với thiết bị thu\" (EN \"Other transmission apparatus incorporating reception apparatus\") là phần còn lại có tên ⇒ phanConLai true (phủ định .10, .30, 8517624). Tên .52 \"phát và thu\" là tập con âm tiết của tên .10 \"phát và thu sóng vô tuyến\" ⇒ với mọi vector biên, \"không thuộc .10\" chỉ CHUA_BIET (dữ kiện chung hơn tên) ⇒ .52 không tới được; lúc chạy dữ kiện có chữ riêng (vd \"hồng ngoại\") thì tới được — giới hạn bộ sinh vector, không phải chữ biểu. Bỏ phanConLai (hướng chongLanTruc .10/.30 ↔ 8517624/8517625 gợi ý ở issue #606) thì 8517624 dungCho ↔ 8517625 congDung chồng lấn CÙNG trục CONG_DUNG (đã thử: cong2-chong-lan .41/.42/.43/.49 + .51/.59) — chongLanTruc không phủ được; phanConLai chỉ một phần anh em thì không có căn cứ chữ. Không đổi giá trị tên để né (vd thêm \"Thiết bị\" vào .52 chỉ để vector lệch)."
-    },
-    {
-      "ma": "85176253",
-      "loai": "DUNG",
-      "ghiChu": "tax.85176253 \"Thiết bị phát khác dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\": khi gỡ DỪNG ⇒ phanConLai true (\"phát khác\" — phủ định .51, .52) + tenLoai \"Thiết bị phát\" + điều kiện dungCho như .61. DỪNG — định ngữ chung trong khoá dungCho: chữ \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" (EN \"For radio-telephony or radio-telegraphy\"): \"truyền dẫn dưới dạng sóng vô tuyến\" bổ nghĩa CHUNG cho cả \"điện báo\" lẫn \"điện thoại\" (cổng 5 định ngữ chung ⇒ cần một điều kiện riêng). Đã thử: (a) dungCho [\"điện báo\",\"điện thoại\"] + dungCho \"truyền dẫn dưới dạng sóng vô tuyến\" (hai điều kiện cùng khoá trong một mục) ⇒ cong2-dong-khong-toi-duoc ở .53/.61/.92 — cổng 2 chỉ ghép giá trị \"<dưới> <trên>\" giữa NÚT trên/dưới, không ghép hai điều kiện cùng khoá của một mục; (b) một chuỗi gộp \"điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" ⇒ bộ so chữ đòi đủ âm tiết \"báo\" VÀ \"thoại\" ⇒ hẹp hơn chữ (lỗi kiểu \"màn hoặc lưới quang\" PR #629); (c) congDung \"truyền dẫn dưới dạng sóng vô tuyến\" ⇒ .92 (dưới tiêu đề \"Loại khác\" phủ định 8517626 congDung \"truyền dẫn\") không bao giờ tới được, và sai ý: \"truyền dẫn … vô tuyến\" là của điện báo/điện thoại, không phải công dụng của thiết bị; (d) tenLoai \"sóng vô tuyến\" (bản #634) là đổi khoá để né (QUY-TRINH 3.3); bỏ vế \"sóng vô tuyến\" làm thiết bị hữu tuyến lọt .61 thay .69 (đổi mã 8 số) ⇒ không miễn BO_VE được. Cần một trong hai: cổng 2 ghép giá trị cho hai điều kiện cùng khoá chữ tự do trong một mục (như themUngVienGhep cho nút trên/dưới), hoặc khoá LIET_KE phương thức truyền dẫn (vd VO_TUYEN | HUU_TUYEN — cũng dùng được cho 8517624 \"hữu tuyến\" ↔ .10 \"sóng vô tuyến\")."
-    },
-    {
-      "ma": "85176261",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — định ngữ chung trong khoá dungCho: chữ \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" (EN \"For radio-telephony or radio-telegraphy\"): \"truyền dẫn dưới dạng sóng vô tuyến\" bổ nghĩa CHUNG cho cả \"điện báo\" lẫn \"điện thoại\" (cổng 5 định ngữ chung ⇒ cần một điều kiện riêng). Đã thử: (a) dungCho [\"điện báo\",\"điện thoại\"] + dungCho \"truyền dẫn dưới dạng sóng vô tuyến\" (hai điều kiện cùng khoá trong một mục) ⇒ cong2-dong-khong-toi-duoc ở .53/.61/.92 — cổng 2 chỉ ghép giá trị \"<dưới> <trên>\" giữa NÚT trên/dưới, không ghép hai điều kiện cùng khoá của một mục; (b) một chuỗi gộp \"điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" ⇒ bộ so chữ đòi đủ âm tiết \"báo\" VÀ \"thoại\" ⇒ hẹp hơn chữ (lỗi kiểu \"màn hoặc lưới quang\" PR #629); (c) congDung \"truyền dẫn dưới dạng sóng vô tuyến\" ⇒ .92 (dưới tiêu đề \"Loại khác\" phủ định 8517626 congDung \"truyền dẫn\") không bao giờ tới được, và sai ý: \"truyền dẫn … vô tuyến\" là của điện báo/điện thoại, không phải công dụng của thiết bị; (d) tenLoai \"sóng vô tuyến\" (bản #634) là đổi khoá để né (QUY-TRINH 3.3); bỏ vế \"sóng vô tuyến\" làm thiết bị hữu tuyến lọt .61 thay .69 (đổi mã 8 số) ⇒ không miễn BO_VE được. Cần một trong hai: cổng 2 ghép giá trị cho hai điều kiện cùng khoá chữ tự do trong một mục (như themUngVienGhep cho nút trên/dưới), hoặc khoá LIET_KE phương thức truyền dẫn (vd VO_TUYEN | HUU_TUYEN — cũng dùng được cho 8517624 \"hữu tuyến\" ↔ .10 \"sóng vô tuyến\")."
-    },
-    {
-      "ma": "85176292",
-      "loai": "DUNG",
-      "ghiChu": "Cùng chữ với .61 (\"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\"), dưới tiêu đề \"Loại khác\" 8517629 (phủ định 8517626 \"Thiết bị truyền dẫn khác\"). Cùng lý do DỪNG như 85176261."
-    },
-    {
       "ma": "85176291",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.85176291 \"Thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin\" (EN \"Portable receivers for calling, alerting or paging and paging alert devices, including pagers\") ⇒ HOAC [[tenLoai \"Thiết bị thu xách tay\", congDung [\"gọi\", \"báo hiệu\", \"nhắn tin\"]], [tenLoai \"thiết bị cảnh báo bằng tin nhắn\"]]: hai loại hàng nối bằng \"và\"; \"để …\" là mục đích ⇒ congDung, chỉ của thiết bị thu xách tay; \"kể cả máy nhắn tin\" là vế cho phép (PHU)."
@@ -368,9 +420,34 @@
       "ghiChu": "tieuDe.8517626 \"Thiết bị truyền dẫn khác\" ⇒ phanConLai true (phủ định .10, .30, 8517624, 8517625) + congDung \"truyền dẫn\" (cùng khoá với 8517625)."
     },
     {
-      "ma": "85176210",
+      "ma": "85176230",
       "loai": "CHONG_LAN",
-      "ghiChu": "Không khai chongLanTruc cấp phân nhóm .10/.30 ↔ 8517624/8517625 (gợi ý issue #606/#683): với dungCho ở cả .10, .30 lẫn 8517624 (QUY-TRINH 3.3) và phanConLai ở 8517625, cổng 2 không còn thấy chồng lấn nào giữa các nhánh này ⇒ khai sẽ thành cong2-chong-lan-truc-nhanh-thua. Lưu ý cho soát: cổng 2 chỉ gán MỘT giá trị dungCho mỗi vector nên không thấy hàng thoả cả .30 \"chuyển mạch điện báo hoặc điện thoại\" lẫn 8517624 \"dùng cho hệ thống hữu tuyến … kỹ thuật số\" (tổng đài điện thoại cho hệ thống hữu tuyến kỹ thuật số) — chồng lấn này có thật trên chữ nhưng máy không bắt; xử lý khi gỡ DỪNG."
+      "ghiChu": "Chồng lấn có thật trên chữ mà cổng 2 không thấy, ghi cho người soát: .30 \"Thiết bị chuyển mạch điện báo hoặc điện thoại\" (tenLoai \"chuyển mạch\" + dungCho [\"điện báo\",\"điện thoại\"]) ↔ tiêu đề 8517624 \"Thiết bị dùng cho hệ thống hữu tuyến sóng mang hoặc hệ thống hữu tuyến kỹ thuật số\" (dungCho) — tổng đài điện thoại cho hệ thống hữu tuyến kỹ thuật số thoả chữ cả hai. Cổng 2 gán MỘT giá trị dungCho mỗi vector (ghép \"<dưới> <trên>\" chỉ giữa nút trên/dưới) nên không sinh được vector thoả cả hai. Không khai chongLanTruc: hai bên CHUNG khoá dungCho (.30 là tên + công dụng), không phải trục tên ↔ công dụng; máy cũng không thấy cặp nên khai sẽ thành cong2-chong-lan-truc-nhanh-thua. Không thêm phuongThucTruyenDan HUU_TUYEN cho 8517624: chữ \"hữu tuyến\" đã nằm trong giá trị dungCho, thêm khoá vẫn không làm cổng thấy cặp này (.30 không nói phương thức truyền dẫn). Không khai chongLanVanBan cho cặp máy không thấy (sẽ đỏ cong2-chong-lan-van-ban-thua). Lúc chạy: hồ sơ của hàng này sẽ thấy .30 CO và 8517624 THIEU/CO theo dữ kiện — người soát/Claude quyết khi có nguồn."
+    },
+    {
+      "ma": "85176253",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85176253 \"Thiết bị phát khác dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" (EN \"Other transmission apparatus for radio-telephony or radio-telegraphy\") ⇒ phanConLai true (\"phát khác\" = khác .51, .52 đứng trước; trích có chữ \"khác\") + dungCho [\"điện báo\",\"điện thoại\"] + phuongThucTruyenDan [VO_TUYEN]. Định ngữ \"truyền dẫn dưới dạng sóng vô tuyến\" (EN \"radio-\") bổ nghĩa CHUNG cho cả điện báo lẫn điện thoại ⇒ một điều kiện riêng áp cho cả hai (LUAT-CHUNG cổng 5, định ngữ chung), bằng khoá LIET_KE phuongThucTruyenDan mới của tu-vung@2 (#606). Không ghi tenLoai \"Thiết bị phát\": danh từ đầu là \"transmission apparatus\" (EN), lặp danh từ của tiêu đề cha 8517625 \"Thiết bị truyền dẫn khác …\" (congDung \"truyền dẫn\") — cổng 5 không đòi phủ danh từ đầu."
+    },
+    {
+      "ma": "85176261",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85176261 \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" (EN \"For radio-telephony or radio-telegraphy\") ⇒ dungCho [\"điện báo\",\"điện thoại\"] + phuongThucTruyenDan [VO_TUYEN] (cách đọc \"sóng vô tuyến\"). Gỡ DỪNG của bản #691: định ngữ chung \"truyền dẫn dưới dạng sóng vô tuyến\" giờ có khoá tất định riêng, không phải nhét vào dungCho (thử (a)–(d) ở bản trước đều sai/không tới). Thiết bị hữu tuyến dưới 8517626 không thoả VO_TUYEN ⇒ sang .69 đúng chữ."
+    },
+    {
+      "ma": "85176292",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85176292 cùng chữ với .61 ⇒ cùng điều kiện dungCho [\"điện báo\",\"điện thoại\"] + phuongThucTruyenDan [VO_TUYEN], dưới tiêu đề \"Loại khác\" 8517629 (phủ định .10, .30, 8517624, 8517625, 8517626)."
+    },
+    {
+      "ma": "85176252",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gỡ DỪNG cong2-dong-khong-toi-duoc:85176252 (bản #691): .10 nay là tenLoai \"phát và thu\" + phuongThucTruyenDan [VO_TUYEN] + dungCho \"phiên dịch trực tiếp\", .52 là tenLoai \"phát và thu\" + dungCho \"phiên dịch trực tiếp\" (cùng khoá, cùng giá trị tên). Tiêu đề cha 8517625 \"Thiết bị truyền dẫn khác kết hợp với thiết bị thu\" (phanConLai true) phủ định .10 ⇒ .52 tới được bằng vector phương thức truyền dẫn KHÁC vô tuyến (vd hồng ngoại — đúng ranh giới chữ: .10 \"phát và thu sóng vô tuyến\" ↔ .52 \"phát và thu\" dưới \"truyền dẫn khác\"). Không đổi khoá để né: \"sóng vô tuyến\" của .10 là đúng nghĩa phương thức truyền dẫn (EN \"Radio transmitters and radio receivers\")."
+    },
+    {
+      "ma": "85176292",
+      "loai": "CHONG_LAN",
+      "ghiChu": "cong2-chong-lan-truc trong 8517629 (lộ ra khi .92 có điều kiện): .91 \"Thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin\" (chia theo tên — tenLoai, vế \"để gọi…\" là mục đích của thiết bị thu xách tay) ↔ .92 \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\" (chia theo công dụng — dungCho + phuongThucTruyenDan): thiết bị thu xách tay/máy nhắn tin dùng cho điện báo, điện thoại vô tuyến thoả chữ cả hai; hai dòng không chung khoá ⇒ trục tên ↔ công dụng cấp dòng (QUY-TRINH 4 bước 6) ⇒ khai chongLanTruc (phanXu null), không khai chongLanVanBan."
     }
   ]
 }

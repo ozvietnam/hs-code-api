@@ -2,7 +2,7 @@
   "phienBan": "tu-vung@2",
   "ngay": "2026-10-30",
   "nguonLoai": "CLAUDE_DUYET",
-  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570). tu-vung@2 = tu-vung@1 (53 khoá giữ NGUYÊN) + 7 khoá cho ranh giới 6→8 số mà lát 1 cần (đề xuất docs/giao-viec/so-tay/de-xuat-tu-vung-2.md) + hai luật bộ đọc #667/#675 chuyển từ mã vào dữ liệu.",
+  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570). tu-vung@2 = tu-vung@1 (53 khoá giữ NGUYÊN) + 7 khoá cho ranh giới 6→8 số mà lát 1 cần (đề xuất docs/giao-viec/so-tay/de-xuat-tu-vung-2.md) + hai luật bộ đọc #667/#675 chuyển từ mã vào dữ liệu + khoá phuongThucTruyenDan (LIET_KE VO_TUYEN | HUU_TUYEN, #606 — 851762 \"truyền dẫn dưới dạng sóng vô tuyến\").",
   "tienThan": {
     "phienBan": "tu-vung@1",
     "sha256": "67de4948a117f635b731d157b103e1082c6eec56738baef1e295a4352a5ed75e",
@@ -24,11 +24,11 @@
     "tu-vung@2: khoá SO đếm (demSo: soLoi, soSoi) đọc cả số chữ (soChu: \"hai\", \"two\", \"两\"…; số ghép \"mười hai\", \"十二\" ⇒ không đọc) và chữ so sánh sau số/đơn vị (soSanhDem: \"hoặc hơn\", \"trở lên\", \"or more\", \"及以上\" ⇒ >=). donViCachRieng: viết \"2 lõi\" (có cách), khoá @1 vẫn \"75000W\".",
     "tu-vung@2: tiLe (docPhanSo) đọc phân số \"1/10\", \"1:8\" chỉ khi có chữ tỉ lệ đứng trước (cachDoc) hoặc tên kích thước đứng ngay sau (phanSo.sauLa: \"đường kính\"…); không suy tỉ lệ từ hai kích thước rời. \"1/2 inch\", \"50/60Hz\" ⇒ CHUA_BIET.",
     "tu-vung@2: LIET_KE cumDaiThang (phuongPhapCheTao): cụm chồng nhau thì cụm dài thắng (\"đột dập và kéo giãn\" thắng \"dập\", \"kéo giãn\"); hai phương pháp ở hai chỗ khác nhau ⇒ CHUA_BIET + ungVien.",
-    "tu-vung@2: 7 khoá mới mang nguonLoai AI_DA_KIEM (máy kiểm + test) — CHƯA chấm duyệt độc lập (chamDuyetDocLap.khoaChuaCham); nâng CLAUDE_DUYET sau phiên soát độc lập."
+    "tu-vung@2: 8 khoá mới (7 khoá #570 + phuongThucTruyenDan #606) mang nguonLoai AI_DA_KIEM (máy kiểm + test) — CHƯA chấm duyệt độc lập (chamDuyetDocLap.khoaChuaCham); nâng CLAUDE_DUYET sau phiên soát độc lập."
   ],
   "chamDuyetDocLap": {
     "trangThai": "CHUA_CHAM",
-    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 7 khoá mới chưa có phiên chấm độc lập.",
+    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 8 khoá mới (7 khoá #570 + phuongThucTruyenDan #606) chưa có phiên chấm độc lập.",
     "khoaChuaCham": [
       "chiHoacChuYeu",
       "thietKeChoTreEm",
@@ -36,7 +36,8 @@
       "soLoi",
       "soSoi",
       "tiLe",
-      "phuongPhapCheTao"
+      "phuongPhapCheTao",
+      "phuongThucTruyenDan"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -4291,6 +4292,75 @@
         "zh": "产品采用何种加工方法制成（铸造、锻造、热轧/冷轧、拉拔、冲压、焊接、注塑、吹塑、冲剪拉伸）？"
       },
       "ghiChu": "Phương pháp, không phải vật liệu: \"gang đúc\", \"cast iron\" là vật liệu ⇒ không đọc; \"máy hàn\", \"Hàn Quốc\", \"dao kéo\" ⇒ không đọc; \"cán\" trần (cũng là \"tay cầm\") ⇒ không đọc.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "phuongThucTruyenDan",
+      "kieu": "LIET_KE",
+      "nhanVi": "phương thức truyền dẫn",
+      "nhanEn": "transmission medium",
+      "nhanZh": "传输方式",
+      "giaTriHopLe": [
+        "VO_TUYEN",
+        "HUU_TUYEN"
+      ],
+      "moTaGiaTri": {
+        "VO_TUYEN": {
+          "nhanVi": "vô tuyến",
+          "nhanEn": "radio (wireless)",
+          "nhanZh": "无线",
+          "cachDoc": {
+            "vi": [
+              "sóng vô tuyến",
+              "vô tuyến",
+              "không dây",
+              "radio"
+            ],
+            "en": [
+              "radio",
+              "wireless"
+            ],
+            "zh": [
+              "无线"
+            ]
+          },
+          "cachViet": "truyền dẫn vô tuyến"
+        },
+        "HUU_TUYEN": {
+          "nhanVi": "hữu tuyến",
+          "nhanEn": "line (wired)",
+          "nhanZh": "有线",
+          "cachDoc": {
+            "vi": [
+              "hữu tuyến",
+              "có dây(?!\\s+(?:đeo|da|kéo|buộc|treo|rút|xích|thép|đai|curoa|cu-roa))"
+            ],
+            "en": [
+              "wired",
+              "wireline",
+              "line\\s+systems?",
+              "(?:carrier-current|digital)\\s+line"
+            ],
+            "zh": [
+              "有线"
+            ]
+          },
+          "cachViet": "truyền dẫn hữu tuyến"
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị truyền dẫn tín hiệu bằng sóng vô tuyến (không dây) hay qua đường dây (hữu tuyến)?",
+        "zh": "设备是通过无线电波（无线）还是通过线路（有线）传输信号？"
+      },
+      "ghiChu": "Phương thức truyền dẫn của thiết bị/hệ thống viễn thông (#606, 851762): chữ biểu \"truyền dẫn dưới dạng sóng vô tuyến\" (radio-telephony/telegraphy), \"Thiết bị phát và thu sóng vô tuyến\" (radio transmitters), \"hệ thống hữu tuyến\" (line systems). \"có dây\" không đọc khi là dây đeo/da/kéo/buộc… (dây vật lý, không phải đường truyền); \"line\" trần không đọc (dây chuyền, in-line) — chỉ \"line system(s)\", \"carrier-current/digital line\". \"cordless\" không đọc (trùng nguonNangLuong PIN_AC_QUY).",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],

@@ -73,6 +73,11 @@ Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRI
   chữ số làm mất là nút `<pn6>~r<dòng>` trong cây của `--goi`. Tầng có tên ⇒ khai `dieuKienNut` cho id đó (nguồn
   `tieuDe.<pn6>~r<dòng>`); bỏ qua ⇒ `cong1-tang-khong-ma:<hs>:r<dòng>`. Tầng "Loại khác:" trần không ghi điều kiện. Tầng không
   biểu diễn được ⇒ `--goi` in khối DỪNG, cổng 1 chặn `cong1-tang-khong-ma-khong-dat:<hs>:r<dòng>` — không có cách khai để vượt.
+- **Nhóm chữ số không tên trong suốt** (31/10/2026, #606 — 848180): tiêu đề quốc gia 7 số mà cây theo chữ số dựng ra nhưng biểu
+  thuế KHÔNG có dòng nào (không dòng có mã, không tiêu đề không mã nào có đúng tập lá của nút) bị bỏ khỏi lớp tầng
+  (`lib/hs-tree.js#laNhomChuSoKhongTen`, `tangCua(pn6).trongSuot`): con nối thẳng vào cha, "Loại khác" phủ định đủ anh em theo
+  chữ biểu (848180 r14562: mười mục gạch 3). Nhận diện chỉ từ dữ liệu biểu thuế; thiếu biểu thuế ⇒ vẫn chặn
+  `tieu-de-bi-luoc-ten`. Toàn biểu 2026: 58 nút, 24 phân nhóm (chương 27, 40, 84, 85, 87, 98).
 - **Cổng 1** chỉ thử vector thoả điều kiện tầng cha; tầng gốc không có phần còn lại thì vật mang tên ngoài mọi chữ của các con
   coi là ngoài phân nhóm.
 - **Phần còn lại có tên** ("Động cơ khác", "Cáp … plastic khác", "…, loại khác"): `phanConLai: true` (phủ định mọi anh em ĐỨNG
