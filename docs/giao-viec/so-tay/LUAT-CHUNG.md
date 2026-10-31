@@ -84,7 +84,7 @@ Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRI
   TRƯỚC) hoặc mảng mã anh em. Trích phải có chữ "khác". Không dùng trên dòng "Loại khác…". Máy cảnh báo `nghi-phan-con-lai`.
   Nội dung chỉ là "các loại khác" (cả phân nhóm cùng tên, vd 8501.10 r14839 "Động cơ khác, …") ⇒ `phanConLai` đứng một mình,
   `dieuKienSo: []` (#653). "khác" không trỏ anh em đứng trước ⇒ `phanConLai: false` (khai rõ, tắt cảnh báo; luật đi như không ghi).
-- **Tên cụ thể hơn thắng** (`tenCuTheHon`): "bàn đạp" ⊃ "Bàn" không phải chồng lấn. Tên trên đường đi = HỢP âm tiết của các điều
+- **Tên cụ thể hơn thắng** (`tenCuTheHon`; từ #600 cả trong HOAC và cặp chéo khoá — `tenCuTheHonDong`): "bàn đạp" ⊃ "Bàn" không phải chồng lấn. Tên trên đường đi = HỢP âm tiết của các điều
   kiện cùng khoá (tiêu đề "Búp bê" + dòng "Quần áo"). Bên còn ràng buộc chữ tự do trên khoá khác (dungCho/congDung — trục khác,
   853669) thì không phân; bên CHUNG chỉ thêm giới hạn tất định (số, có-không, liệt kê, chất liệu: "Piston, đường kính 50–155 mm" ↔
   "Bạc piston") thì tên chứa trọn vẫn thắng (#653).
@@ -162,9 +162,12 @@ Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.3,
 - **"X và bộ phận" nhiều anh em** (871410, 845290): giữ dạng HOAC. ~~chồng lấn so chữ tự do VẪN là lỗi ⇒ DỪNG~~ — **thay bằng
   quyết định GĐ 31/10/2026 (luật tên nguyên văn của anh em)**: cặp chéo khoá `tenLoai X` ↔ `laBoPhan CO + dungCho Y` giữa hai anh em,
   X/Y là tên đầu NGUYÊN VĂN của chính dòng mình (danh từ đầu hoặc vế "kể cả …" liền sau) và rời nhau đúng như hai giá trị `tenLoai`
-  của anh em (không ứng viên nào thoả cả hai) ⇒ cổng 2 coi là loại trừ, cảnh báo `cong2-ten-anh-em-roi`. Tên chứa nhau ("bàn đạp" ⊃
-  "Bàn"), tên không nguyên văn, tên ↔ công dụng không có laBoPhan (trục) ⇒ vẫn lỗi. Chỉ là luật chứng minh của cổng; runtime
-  không đổi. Chi tiết: QUY-TRINH mục 4 bước 7.
+  của anh em (không ứng viên nào thoả cả hai) ⇒ cổng 2 coi là loại trừ, cảnh báo `cong2-ten-anh-em-roi`. Tên không nguyên văn, tên
+  ↔ công dụng không có laBoPhan (trục) ⇒ vẫn lỗi. Chỉ là luật chứng minh của cổng; runtime không đổi. Chi tiết: QUY-TRINH mục 4 bước 7.
+- **Tên cụ thể hơn thắng vào HOAC + cặp chéo khoá** (quyết định GĐ (a), #600 — 845290): cùng ngữ nghĩa `tenCuTheHon`, mở rộng ở
+  `lib/dieu-kien-so.js#tenCuTheHonDong` — mục có HOAC trải thành các phương án THOẢ, mọi cặp phương án phải phân cùng chiều; cặp
+  chéo khoá `tenLoai X` ↔ `laBoPhan CO + dungCho Y` so tên X ↔ Y (ở cổng chỉ khi X/Y là tên đầu nguyên văn của nút rẽ nhánh). "bàn đạp"
+  ⊃ "Bàn" ⇒ .11 thắng .12, cảnh báo `cong2-ten-cu-the-hon`. Cổng 2 và `doiChieuPhanNhom` lúc chạy gọi CÙNG hàm (không xanh giả).
 - `chiHoacChuYeu` đọc thêm "(được) thiết kế chỉ để", "designed only for" (tu-vung@2; "solely designed for" đã đọc từ trước).
 - Bộ tách vế: "có dải tần số …" là một vế biên số; "có hình dạng đặc biệt hoặc thích hợp để …" là một vế khi chữ Anh xác nhận
   ("shaped or fitted for"); không chắc ⇒ vẫn tách (giữ cờ).

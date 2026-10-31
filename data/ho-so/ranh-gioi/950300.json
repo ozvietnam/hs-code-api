@@ -4,11 +4,11 @@
   "nhom": "9503",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu-2",
-    "ngay": "2026-10-30"
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-950300",
+    "ngay": "2026-10-31"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -106,12 +106,31 @@
       "trich": "95030030 - Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Xe điện",
-            "đường ray",
-            "đèn hiệu"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Xe điện"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "đường ray",
+                  "đèn hiệu",
+                  "phụ kiện"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Xe điện"
+              }
+            ]
           ]
         }
       ],
@@ -141,7 +160,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "bộ đồ chơi xây dựng"
+          "value": "đồ chơi xây dựng"
         },
         {
           "fact": "chatLieu",
@@ -205,16 +224,41 @@
       "trich": "95030091 - - Đồ chơi, xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật; bộ xếp chữ; bộ đồ chơi tạo chữ và tập nói; bộ đồ chơi in hình; bộ đồ chơi đếm (abaci); máy may đồ chơi; máy chữ đồ chơi",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật",
-            "bộ xếp chữ",
-            "bộ đồ chơi tạo chữ và tập nói",
-            "bộ đồ chơi in hình",
-            "bộ đồ chơi đếm",
-            "máy may đồ chơi",
-            "máy chữ đồ chơi"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "xếp khối",
+                  "cắt rời"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "chữ số",
+                  "chữ cái",
+                  "con vật"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "bộ xếp chữ",
+                  "bộ đồ chơi tạo chữ và tập nói",
+                  "bộ đồ chơi in hình",
+                  "bộ đồ chơi đếm",
+                  "máy may đồ chơi",
+                  "máy chữ đồ chơi"
+                ]
+              }
+            ]
           ]
         }
       ],
@@ -287,7 +331,12 @@
     {
       "ma": "95030030",
       "loai": "QUYET_DINH",
-      "ghiChu": "\"Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng\" ⇒ tenLoai [\"Xe điện\",\"đường ray\",\"đèn hiệu\"]; \"các phụ kiện khác của chúng\" không liệt kê được; chữ \"khác\" ở đây không phải phần còn lại của anh em ⇒ không phanConLai (cảnh báo nghi-phan-con-lai:95030030 giữ lại có chủ ý: không ghi phanConLai: false vì scripts/test-cong-cu-vong-2.mjs ca 6d dùng chính dòng này làm mẫu \"thêm phanConLai: false\"; luật đi như nhau)."
+      "ghiChu": "tax.95030030 \"Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng\" (EN \"Electric trains, including tracks, signals and other accessories therefor\") ⇒ HOAC [[tenLoai \"Xe điện\"], [tenLoai [\"đường ray\",\"đèn hiệu\",\"phụ kiện\"], dungCho \"Xe điện\"]]. Vế \"kể cả …\" có vế MỞ \"các phụ kiện khác của chúng\": không liệt kê đóng [Xe điện, đường ray, đèn hiệu] (hẹp hơn chữ — soát đợt 3 #696: phụ kiện khác của xe điện đồ chơi rơi .99). \"của chúng\"/\"therefor\" là định ngữ chung của đường ray, đèn hiệu và phụ kiện (\"các phụ kiện KHÁC\" ⇒ đường ray, đèn hiệu cũng là phụ kiện của xe điện) ⇒ cả ba tên đi kèm dungCho \"Xe điện\" (chuỗi con nguyên văn). \"phụ kiện\" không phải \"bộ phận\" ⇒ không dùng laBoPhan. Chữ \"khác\" ở đây không phải phần còn lại của anh em ⇒ không phanConLai (cảnh báo nghi-phan-con-lai:95030030 giữ lại có chủ ý: không ghi phanConLai: false vì scripts/test-cong-cu-vong-2.mjs ca 6d dùng chính dòng này làm mẫu \"thêm phanConLai: false\"; luật đi như nhau)."
+    },
+    {
+      "ma": "95030030",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cổng 2 đỏ do giới hạn bộ so chữ tự do, không do điều kiện sai chữ: cong2-chong-lan 95030021/95030022/95030029 + 95030030 trên vector ghép tenLoai \"phụ kiện (quần áo) Búp bê\" (tên đường đi tiêu đề 9503002 \"Búp bê\" + tầng r18723 \"Bộ phận và phụ kiện\") cùng dungCho \"Xe điện\". Phụ kiện của búp bê và phụ kiện của xe điện rời nhau theo chữ, nhưng nhánh búp bê không có dungCho (đích nằm ở TÊN tiêu đề cha) nên vector gán dungCho tự do; luật tên nguyên văn của anh em chỉ áp cho cặp anh em cùng cha (tenLoai ↔ laBoPhan + dungCho), không áp ở đây. Đã thử dạng gợi ý của #696 (HOAC [[tenLoai [Xe điện, đường ray, đèn hiệu]], [tenLoai \"phụ kiện\", dungCho \"Xe điện\"]]): cùng 3 lỗi. Không né: không khai chongLanVanBan (chữ không tự chồng), không đổi \"của chúng\" sang tenLoai \"Xe điện\" (đổi khoá), không bỏ vế mở (chính lỗi bị trả về). Cần GĐ quyết công cụ (vd mở rộng luật rời nhau cho đích \"của chúng\" ↔ tên tiêu đề cha, hoặc cho phép dungCho ở tầng r18723)."
     },
     {
       "ma": "95030040",
@@ -297,12 +346,17 @@
     {
       "ma": "95030050",
       "loai": "QUYET_DINH",
-      "ghiChu": "\"Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic\" ⇒ tenLoai \"bộ đồ chơi xây dựng\" + chatLieu LA plastic chieu PHAI_KHONG. \"khác\" (other constructional toys) không trỏ anh em đứng trước trong phân nhóm (không anh em nào là đồ chơi xây dựng) ⇒ phanConLai: false (khai rõ, tắt nghi-phan-con-lai)."
+      "ghiChu": "tax.95030050 \"Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic\" (EN \"Other construction sets and constructional toys\") ⇒ tenLoai \"đồ chơi xây dựng\" (chuỗi con nguyên văn nằm trong \"bộ đồ chơi xây dựng\", phủ cả đồ chơi xây dựng lẻ lẫn bộ — soát đợt 3 #696: \"bộ đồ chơi xây dựng\" hẹp hơn chữ) + chatLieu LA plastic chieu PHAI_KHONG. \"khác\" (other constructional toys) không trỏ anh em đứng trước trong phân nhóm (không anh em nào là đồ chơi xây dựng) ⇒ phanConLai: false (khai rõ, tắt nghi-phan-con-lai)."
     },
     {
       "ma": "95030080",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.95030080 \"Thiết bị giáo dục điện tử tương tác cầm tay được thiết kế chủ yếu cho trẻ em (SEN)\" ⇒ tenLoai \"Thiết bị giáo dục điện tử tương tác cầm tay\" (cùng khoá tên với anh em) + thietKeChoTreEm CO (tu-vung@2, \"được thiết kế chủ yếu cho trẻ em\"). Không thêm điều kiện từ sen.95030080 (pin, ≤ 10 kg) vì chữ biểu của dòng không nói — SEN chỉ mô tả."
+    },
+    {
+      "ma": "95030091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.95030091 \"Đồ chơi, xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật; bộ xếp chữ; bộ đồ chơi tạo chữ và tập nói; bộ đồ chơi in hình; bộ đồ chơi đếm (abaci); máy may đồ chơi; máy chữ đồ chơi\" ⇒ HOAC: [tenLoai [\"xếp khối\",\"cắt rời\"] VÀ tenLoai [\"chữ số\",\"chữ cái\",\"con vật\"]] hoặc [tenLoai [sáu tên sau dấu chấm phẩy]]. Vế đầu là hai liệt kê HOẶC lồng nhau (EN \"Numerical, alphabetical or animal blocks or cut-outs\": khối/hình cắt rời × chữ số/chữ cái/con vật) ⇒ hai điều kiện, mỗi điều kiện một mảng chuỗi con nguyên văn (soát đợt 3 #696: một chuỗi chứa cả liệt kê bị đọc thành VÀ). \"Đồ chơi,\" lặp tên nhóm; \"hình\" là chữ chung của ba hình (không đòi). \"bộ đồ chơi tạo chữ và tập nói\" (EN \"word making and talking sets\") là MỘT tên bộ đồ chơi nối bằng \"và\" ⇒ giữ một chuỗi. \"(abaci)\" là ngoặc chú thích."
     },
     {
       "ma": "95030094",

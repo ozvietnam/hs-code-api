@@ -202,14 +202,21 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
      `--ve` in `DAU`/`PHU "kể cả …"`) và X, Y **rời nhau đúng như cổng vẫn coi hai giá trị `tenLoai` của anh em là rời nhau**: không
      giá trị ứng viên nào của vector thoả cả hai. Máy ghi cảnh báo `cong2-ten-anh-em-roi:<A>+<B>` cho người soát.
    - `dungCho X` ↔ `dungCho Y` (cùng khoá): vector mang một giá trị — máy quyết như cũ.
-   - **Vẫn là LỖI như cũ**: tên chứa tên (845290 .11 "bàn đạp" ⊃ .12 "Bàn": `tenLoai bàn đạp + là bộ phận + dungCho Bàn` làm cả
-     hai CO), tên không nguyên văn của chính dòng ("Má phanh" cho .60 "Phanh và bộ phận của chúng"), cùng một tên hai bên, và tên ↔
-     công dụng KHÔNG có `laBoPhan` (đó là trục — mục 4a). Không áp "tên cụ thể hơn thắng" cho cặp chéo khoá. Chồng lấn so chữ tự do
-     còn lại (`:khong-tat-dinh`) vẫn là lỗi (cổng 2 không nới ở chỗ khác; ngoại lệ trục đã khai `chongLanTruc`, mục 4a).
+   - **Tên chứa tên** (845290 .11 "bàn đạp" ⊃ .12 "Bàn": `tenLoai bàn đạp + là bộ phận + dungCho Bàn` làm cả hai CO) — quyết
+     định GĐ (a), #600: **"tên cụ thể hơn thắng" áp cả vào phương án HOAC và vào cặp chéo khoá**, đúng ngữ nghĩa trường hợp không
+     HOAC (`lib/dieu-kien-so.js#tenCuTheHonDong` gọi lại `tenCuTheHon`, không định nghĩa lại): mỗi mục có HOAC trải thành các
+     phương án THOẢ trên vector; MỌI cặp phương án phải phân được cùng một chiều (cặp chéo khoá so tên X ↔ Y, chỉ nhận khi X/Y là
+     tên đầu nguyên văn của chính nút rẽ nhánh; cặp tên rời nhau là loại trừ như trên). "bàn đạp" thắng cả phương án tên "Bàn" lẫn
+     phương án "bộ phận của Bàn" ⇒ không chồng lấn, cảnh báo `cong2-ten-cu-the-hon:<A>+<B>` cho người soát. Lúc chạy
+     `doiChieuPhanNhom` dùng CÙNG hàm (bỏ dòng bị lấn, không tự chốt). Một cặp phương án không phân được (vd "bàn đạp" là bộ phận
+     của "tủ") ⇒ vẫn lỗi.
+   - **Vẫn là LỖI như cũ**: tên không nguyên văn của chính dòng ("Má phanh" cho .60 "Phanh và bộ phận của chúng"), cùng một tên hai
+     bên, và tên ↔ công dụng KHÔNG có `laBoPhan` (đó là trục — mục 4a). Chồng lấn so chữ tự do còn lại (`:khong-tat-dinh`) vẫn là
+     lỗi (cổng 2 không nới ở chỗ khác; ngoại lệ trục đã khai `chongLanTruc`, mục 4a).
    - Còn lỗi sau luật này ⇒ sửa theo bước 1–5 ở trên; không khai `chongLanVanBan` cho chồng lấn do bộ so chữ, không đổi khoá để né.
    Ca đã gặp: 871410 .30 "Khung và càng xe kể cả …, giảm xóc và các bộ phận của chúng", .40, .60 "Phanh và bộ phận của chúng", .70 ↔
    .10 "Yên xe", .20, .50 — trước 18 cặp `:khong-tat-dinh`, nay loại trừ; 845290 .12/.92 "Bàn, tủ, chân máy và nắp và các bộ phận
-   của chúng" ↔ .11/.91 "… bàn đạp các loại" — "bàn đạp" chứa "Bàn" ⇒ vẫn lỗi.
+   của chúng" ↔ .11/.91 "… bàn đạp các loại" — "bàn đạp" chứa "Bàn" ⇒ tên cụ thể hơn thắng (#600), .11/.91 thắng.
 
 ### 4a. Chồng lấn trục — khai `chongLanTruc` (#683)
 

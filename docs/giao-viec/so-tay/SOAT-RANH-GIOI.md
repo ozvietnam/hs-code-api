@@ -26,6 +26,9 @@
 - [ ] Mỗi cảnh báo `cong2-ten-anh-em-roi:<A>+<B>` (luật tên nguyên văn của anh em, QUY-TRINH mục 4 bước 7): kiểm giá trị `tenLoai`
       / `dungCho` của mẫu "X và (các) bộ phận của chúng" đúng là tên ĐẦU nguyên văn của chính dòng mình (không lấy chữ của anh em,
       không thêm chữ), và hai tên không chứa nhau. Sai ⇒ trả về.
+- [ ] Mỗi cảnh báo `cong2-ten-cu-the-hon:<A>+<B>` (tên cụ thể hơn thắng trong HOAC / cặp chéo khoá, #600): kiểm tên chứa nhau đúng
+      là chữ biểu của hai dòng (vd 845290 .11 "bàn đạp" ⊃ .12 "Bàn") chứ không do giá trị bịa thêm, và giá trị là tên đầu nguyên văn
+      của chính dòng. Sai ⇒ trả về.
 
 ## 2. Phạm vi vế — máy chỉ là bộ tách theo dấu hiệu, người soát vẫn đọc
 
