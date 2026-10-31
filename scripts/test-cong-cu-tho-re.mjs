@@ -70,8 +70,9 @@ const nhap848310 = () => nhap('848310', {
   check('1g phân nhóm không có tầng không mã → tangKhongMa rỗng', Array.isArray(g0.tangKhongMa) && g0.tangKhongMa.length === 0, g0.tangKhongMa);
   const out = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--goi', '--pn6=848310'], { encoding: 'utf8', env: process.env });
   check('1h --goi dạng chữ: tầng không mã đã có nút (id 848310~r14616), không DỪNG', /848310~r14616/.test(out) && /tầng không mã/i.test(out) && !/!!! DỪNG/.test(out), out.slice(0, 600));
-  const out2 = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--goi', '--pn6=870340'], { encoding: 'utf8', env: process.env });
-  check('1i --goi 870340: tầng không đặt được (r16670) ⇒ in DỪNG', /!!! DỪNG/.test(out2) && /r16670/.test(out2), out2.slice(0, 600));
+  // #606: 870340 r16670 nay đặt được (nhóm chữ số không tên trong suốt) ⇒ ví dụ còn lại: 981820 r19155 (trùng tập, khác tên).
+  const out2 = execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--goi', '--pn6=981820'], { encoding: 'utf8', env: process.env });
+  check('1i --goi 981820: tầng không đặt được (r19155) ⇒ in DỪNG', /!!! DỪNG/.test(out2) && /r19155/.test(out2), out2.slice(0, 600));
 }
 
 // ── 2. Cổng 1 phủ kín: chỉ thử vector THOẢ điều kiện của tầng cha ────────────────────────────────────────────────
@@ -309,7 +310,7 @@ const spec830220 = () => ({
   const b7 = clone(nhap850131(true)); b7.ghiChuSoan = [{ ma: '85013170', loai: 'THIEU_KHOA_TU_VUNG', khoaDeXuat: 'soLoi', ghiChu: 'x' }];
   const r7 = C.kiemRanhGioi('850131', b7);
   check('9c kiemRanhGioi trả dung[] cho THIEU_KHOA_TU_VUNG', (r7.dung || []).some((d) => d.startsWith('THIEU_KHOA_TU_VUNG:85013170:soLoi')), r7.dung);
-  const r870 = C.kiemRanhGioi('870340', C.taoKhung('870340', { phien: PHIEN }));
+  const r870 = C.kiemRanhGioi('981820', C.taoKhung('981820', { phien: PHIEN }));
   check('9d tầng không mã KHÔNG đặt được / chồng lấn theo trục nằm trong dung[]', (r870.dung || []).some((d) => d.startsWith('cong1-tang-khong-ma-khong-dat')), (r870.dung || []).slice(0, 5));
   const b8 = clone(nhap850131(true)); b8.ghiChuSoan = [{ ma: '85013170', loai: 'BIA', ghiChu: 'x' }, { ma: '85013130', ghiChu: 'cũ, chưa có loai' }];
   const r8 = C.kiemRanhGioi('850131', b8);

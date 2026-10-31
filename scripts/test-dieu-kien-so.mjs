@@ -221,6 +221,9 @@ const ST8544 = {
 
   // (b) Tiêu đề bị lược tên trên đường đi → CHUA_SO_HOA, lý do tường minh; KHÔNG phủ định anh em của nó như "Loại khác".
   const ST8481 = { nhom: '8481', dong8: [{ hs: '84818011', nguon: 'tax.84818011', trich: 'Bằng đồng hoặc hợp kim đồng', dieuKienSo: [{ fact: 'chatLieu', op: 'LA', value: 'đồng' }] }] };
+  // #606: 8481801 là nhóm chữ số không có dòng biểu thuế ⇒ trong suốt (mặc định). Luật "tiêu đề bị lược tên" vẫn phải đúng khi
+  // không làm trong suốt được (thiếu biểu thuế): tắt trong suốt để kiểm luật đó, rồi bật lại và kiểm đường đi mới.
+  T.datTrongSuot(false);
   const d11 = DK.duongDiDong8('84818011', { soTay: ST8481 });
   const g801 = d11.nhom.find((g) => g.nut === '8481801');
   check('8c 84818011: tiêu đề lược tên 8481801 → nhóm PHAI_CO, dieuKien null, lyDo tieu-de-bi-luoc-ten', g801 && g801.chieu === 'PHAI_CO' && g801.dieuKien === null && g801.lyDo === 'tieu-de-bi-luoc-ten', j(d11.nhom));
@@ -230,6 +233,10 @@ const ST8544 = {
   // Tiêu đề lược tên là ANH EM của dòng Loại khác (84818030 là anh em của 8481801/06/07/08/09): ghi lý do, không âm thầm.
   const d30 = DK.duongDiDong8('84818049', { soTay: ST8481 });
   check('8f tên tiêu đề có trong ten-nut KHOP_TAP (8481804) → nút có tên, PHAI_CO', d30.nhom.some((g) => g.nut === '8481804' && g.chieu === 'PHAI_CO' && !g.lyDo), j(d30.nhom));
+  T.datTrongSuot(true);
+  const d11b = DK.duongDiDong8('84818011', { soTay: ST8481 });
+  check('8f2 (trong suốt — mặc định) 84818011 đi qua tầng r14535 "Van dùng cho săm", không còn nhóm 8481801 / lyDo tieu-de-bi-luoc-ten',
+    !d11b.nhom.some((g) => g.nut === '8481801' || g.lyDo === 'tieu-de-bi-luoc-ten') && d11b.nhom.some((g) => g.nut === '848180~r14535' && g.chieu === 'PHAI_CO'), j(d11b.nhom));
 
   // (c) Anh em là tiêu đề "Loại khác" TRẦN, duy nhất phần còn lại của tầng → bỏ qua (phủ định vòng tròn, không có nội dung).
   const ST8536 = {
@@ -251,12 +258,13 @@ const ST8544 = {
 
   // (d) Tầng có HAI "phần còn lại" trần mà một là tiêu đề → cây đã lược một tầng có tên → CHUA_SO_HOA lý do tang-bi-luoc.
   //     841459 (8414594 + 8414599) trước đây là ví dụ; nay lớp tầng đã dựng lại tầng "Công suất không quá 125 kW" (r13180) /
-  //     "Loại khác" (r13187) nên không còn (#577 tầng không mã). Ví dụ còn lại: 9849348 (98493481 LK trần + tầng r19784 "Loại khác").
+  //     "Loại khác" (r13187) nên không còn (#577 tầng không mã). 9849348 (98493481 + r19784) cũng hết từ #606 (9849348 là nhóm
+  //     chữ số không tên, trong suốt). Ví dụ còn lại: 98493529 (anh em tầng r19831 "Loại khác" trần thứ hai của 984935).
   const d41 = DK.duongDiDong8('84145941', { soTay: { nhom: '8414', dong8: [{ hs: '84145941', nguon: 'tax.84145941', trich: 'Có lưới bảo vệ', dieuKienSo: [{ fact: 'coLuoiBaoVe', op: 'CO' }] }] } });
   check('8j0 84145941: tầng đã dựng lại → không còn tang-bi-luoc, đi qua nút tầng 841459~r13180', !d41.nhom.some((g) => g.lyDo === 'tang-bi-luoc') && d41.nhom.some((g) => g.nut === '841459~r13180'), j(d41.nhom));
-  const d81 = DK.duongDiDong8('98493481', { soTay: { nhom: '9849', dong8: [], dieuKienNut: [] } });
-  const g99 = d81.nhom.find((g) => g.nut === '984934~r19784');
-  check('8j 98493481: anh em là tầng "Loại khác" trần thứ hai của tầng → dieuKien null, lyDo tang-bi-luoc', g99 && g99.chieu === 'PHAI_KHONG' && g99.dieuKien === null && g99.lyDo === 'tang-bi-luoc', j(d81.nhom));
+  const d81 = DK.duongDiDong8('98493529', { soTay: { nhom: '9849', dong8: [], dieuKienNut: [] } });
+  const g99 = d81.nhom.find((g) => g.nut === '984935~r19831');
+  check('8j 98493529: anh em là tầng "Loại khác" trần thứ hai của tầng → dieuKien null, lyDo tang-bi-luoc', g99 && g99.chieu === 'PHAI_KHONG' && g99.dieuKien === null && g99.lyDo === 'tang-bi-luoc', j(d81.nhom));
   check('8k … doiChieuDong8 → CHUA_SO_HOA dù đủ dữ kiện', DK.doiChieuDong8('84145941', [fact('coLuoiBaoVe', true), fact('tenLoai', 'quạt hút')], { soTay: { nhom: '8414', dong8: [] } }).ketQua === 'CHUA_SO_HOA');
 }
 

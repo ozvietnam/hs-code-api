@@ -60,8 +60,9 @@ const dong = (b, hs) => b.dong8.find((d) => d.hs === hs);
 
   // Tiêu đề bị lược tên: luật đi coi như "Loại khác" là sai nghĩa → chặn, không đoán
   const r4 = C.kiemRanhGioi('848180', { ...nhap841350(), pn6: '848180', nhom: '8481', dieuKienNut: [], dong8: [] });
-  check('2f tiêu đề bị lược tên (8481801) trên đường đi → cong1-tieu-de-bi-luoc-ten', r4.loi.includes('cong1-tieu-de-bi-luoc-ten:84818011:8481801'), r4.loi.slice(0, 5));
-  check('2g 848180: tiêu đề lược tên chỉ còn lý do tieu-de-bi-luoc-ten, không còn phủ định anh em của nó như "Loại khác" (#583)',
+  // #606: 8481801 là nhóm chữ số KHÔNG có dòng biểu thuế ⇒ trong suốt trong lớp tầng; 84818011 đi qua tầng r14535 "Van dùng cho săm".
+  check('2f 848180: nhóm chữ số không tên (8481801) không còn chặn tieu-de-bi-luoc-ten; đòi điều kiện tầng r14535', !r4.loi.some((l) => l.startsWith('cong1-tieu-de-bi-luoc-ten')) && r4.loi.includes('cong1-chua-so-hoa:84818011:848180~r14535'), r4.loi.slice(0, 5));
+  check('2g 848180: 84818011 không phủ định anh em của tầng (8481802, .30, 8481804, 8481805) — chỉ "Loại khác" mới phủ định (#583)',
     !r4.loi.some((l) => /^cong1-chua-so-hoa:84818011:(8481802|84818030|8481804|8481805)$/.test(l)), r4.loi.filter((l) => l.includes(':84818011:')));
   // #583: tầng có HAI tiêu đề "Loại khác" trần (8414594 + 8414599) từng là dấu cây lược một tầng có tên → cong1-tang-bi-luoc.
   // #577 (tầng không mã): lớp tầng dựng lại tầng "Công suất không quá 125 kW" (r13180) / "Loại khác" (r13187) ⇒ không còn

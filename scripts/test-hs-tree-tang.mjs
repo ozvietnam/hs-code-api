@@ -54,16 +54,25 @@ const lkTruoc = JSON.stringify(T.loaiKhacOf('84145949'));
 
 // ── 3. Tầng lồng nhau, trùng tập, không đặt được ─────────────────────────────────────────────────────────────
 {
-  check('3a 848180: tầng lồng — r14552 nằm trong r14551 (con .61/.62), r14551 dưới 8481806',
-    T.chaTang('848180~r14552') === '848180~r14551' && T.conTang('848180~r14552').join() === '84818061,84818062' && T.chaTang('848180~r14551') === '8481806', [T.chaTang('848180~r14552'), T.chaTang('848180~r14551')]);
-  check('3b 848180: r14562 "Loại khác" gom 8481807, 8481808, 8481809 (con trực tiếp phân nhóm); r14563 "Van bi" trong 8481807',
-    T.conTang('848180~r14562').join() === '8481807,8481808,8481809' && T.chaTang('848180~r14563') === '8481807', T.conTang('848180~r14562'));
+  // #606: 8481806/8481807/8481808/8481809 là nhóm chữ số KHÔNG có dòng biểu thuế ⇒ trong suốt (scripts/test-hs-tree-trong-suot.mjs).
+  check('3a 848180: tầng lồng — r14552 nằm trong r14551 (con .61/.62), r14551 ngay dưới 848180 (8481806 trong suốt)',
+    T.chaTang('848180~r14552') === '848180~r14551' && T.conTang('848180~r14552').join() === '84818061,84818062' && T.chaTang('848180~r14551') === '848180', [T.chaTang('848180~r14552'), T.chaTang('848180~r14551')]);
+  check('3b 848180: r14562 "Loại khác" gom đủ mười mục gạch 3 (r14563 … r14584); r14563 "Van bi" ngay dưới r14562',
+    T.conTang('848180~r14562').join() === '848180~r14563,848180~r14566,848180~r14570,848180~r14573,84818083,84818084,84818093,848180~r14579,84818097,848180~r14584' && T.chaTang('848180~r14563') === '848180~r14562', T.conTang('848180~r14562'));
   const v9503 = T.tangCua('950300');
   check('3c 950300: r18732 "Loại khác:" trùng đúng tập lá của 9503009 (đã có tên) → TRUNG, không dựng nút',
     v9503.trung.some((x) => x.r === 18732 && x.nut === '9503009') && T.nodeOf('950300~r18732') === null && T.chaTang('95030091') === '9503009', v9503.trung);
+  // #606: 8703401/8703402 là nhóm chữ số không có dòng biểu thuế ⇒ trong suốt ⇒ r16670 đặt được. Tắt trong suốt (như khi thiếu
+  // biểu thuế) thì tầng cắt ngang tiêu đề số vẫn KHONG_DAT, giữ chặn.
+  T.datTrongSuot(false);
   const v8703 = T.tangCua('870340');
-  check('3d 870340: r16670 "Ô tô kiểu Sedan" cắt ngang 8703401/8703402 → KHONG_DAT (giữ chặn), r16661 "Dạng CKD" vẫn dựng được',
-    v8703.khongDat.some((x) => x.r === 16670 && x.lyDo) && T.nodeOf('870340~r16670') === null && T.nodeOf('870340~r16661')?.cap === 'TANG_KHONG_MA', v8703.khongDat.map((x) => `${x.r}:${x.lyDo}`));
+  check('3d 870340 (tắt trong suốt): r16670 "Ô tô kiểu Sedan" cắt ngang 8703401/8703402 → KHONG_DAT (giữ chặn), r16661 "Dạng CKD" vẫn dựng được',
+    v8703.khongDat.some((x) => x.r === 16670 && x.lyDo === 'cat-ngang-nut-so') && T.nodeOf('870340~r16670') === null && T.nodeOf('870340~r16661')?.cap === 'TANG_KHONG_MA', v8703.khongDat.map((x) => `${x.r}:${x.lyDo}`));
+  T.datTrongSuot(true);
+  check('3d2 870340 (bật — mặc định): 8703401/8703402 trong suốt ⇒ r16670 đặt được, con 87034018/19/21', T.tangCua('870340').khongDat.length === 0 && T.conTang('870340~r16670').join() === '87034018,87034019,87034021', T.tangCua('870340').khongDat);
+  const v9818 = T.tangCua('981820');
+  check('3d3 981820: r19155 "Bơm ly tâm khác:" trùng tập lá 9818203 (đã có tên khác) → KHONG_DAT trung-tap-khac-ten, giữ chặn',
+    v9818.khongDat.some((x) => x.r === 19155 && x.lyDo === 'trung-tap-khac-ten') && T.nodeOf('981820~r19155') === null, v9818.khongDat);
   const v1350 = T.tangCua('841350');
   check('3e phân nhóm không có tầng không mã → rỗng; lớp tầng = cây theo chữ số', v1350.tang.length === 0 && v1350.khongDat.length === 0 && T.conTang('841350').join() === T.nodeOf('841350').children.join());
   check('3f danh sách gốc (tangKhongMa) mang trạng thái từng dòng: CO_NUT / TRUNG / KHONG_DAT',
