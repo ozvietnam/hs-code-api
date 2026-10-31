@@ -108,59 +108,258 @@
  "dong8": [
   {
    "hs": "87141010",
-   "dieuKien": "Yên xe (bộ phận và phụ kiện của xe môtô, kể cả xe máy gắn bàn đạp — WCO 871410)",
+   "dieuKien": "tên loại hàng: Yên xe",
    "loaiKhac": false,
    "nguon": "tax.87141010",
    "trich": "87141010 - - Yên xe",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Yên xe"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "4cb4383c976dca9bd7bf8a3e66e2269cc95c77d3177408d741437be42b1ac2b9"
+    }
+   }
   },
   {
    "hs": "87141020",
-   "dieuKien": "Nan hoa và ốc bắt đầu nan hoa (bộ phận và phụ kiện của xe môtô — WCO 871410)",
+   "dieuKien": "tên loại hàng: Nan hoa hoặc ốc bắt đầu nan hoa",
    "loaiKhac": false,
    "nguon": "tax.87141020",
    "trich": "87141020 - - Nan hoa và ốc bắt đầu nan hoa",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Nan hoa",
+      "ốc bắt đầu nan hoa"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "4cb4383c976dca9bd7bf8a3e66e2269cc95c77d3177408d741437be42b1ac2b9"
+    }
+   }
   },
   {
    "hs": "87141030",
-   "dieuKien": "Khung và càng xe kể cả càng xe cơ cấu ống lồng, giảm xóc và các bộ phận của chúng (bộ phận và phụ kiện của xe môtô — WCO 871410)",
+   "dieuKien": "(tên loại hàng: Khung hoặc càng xe hoặc giảm xóc) hoặc (là bộ phận (không phải hàng hoàn chỉnh) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Khung hoặc càng xe hoặc giảm xóc)",
    "loaiKhac": false,
    "nguon": "tax.87141030",
    "trich": "87141030 - - Khung và càng xe kể cả càng xe cơ cấu ống lồng, giảm xóc và các bộ phận của chúng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": [
+         "Khung",
+         "càng xe",
+         "giảm xóc"
+        ]
+       }
+      ],
+      [
+       {
+        "fact": "laBoPhan",
+        "op": "CO"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": [
+         "Khung",
+         "càng xe",
+         "giảm xóc"
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "4cb4383c976dca9bd7bf8a3e66e2269cc95c77d3177408d741437be42b1ac2b9"
+    }
+   }
   },
   {
    "hs": "87141040",
-   "dieuKien": "Bánh răng (gearing), hộp số, bộ ly hợp và các thiết bị truyền động khác và bộ phận của chúng (bộ phận và phụ kiện của xe môtô — WCO 871410)",
+   "dieuKien": "(tên loại hàng: Bánh răng hoặc hộp số hoặc bộ ly hợp hoặc thiết bị truyền động) hoặc (là bộ phận (không phải hàng hoàn chỉnh) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Bánh răng hoặc hộp số hoặc bộ ly hợp hoặc thiết bị truyền động)",
    "loaiKhac": false,
    "nguon": "tax.87141040",
    "trich": "87141040 - - Bánh răng (gearing), hộp số, bộ ly hợp và các thiết bị truyền động khác và bộ phận của chúng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": [
+         "Bánh răng",
+         "hộp số",
+         "bộ ly hợp",
+         "thiết bị truyền động"
+        ]
+       }
+      ],
+      [
+       {
+        "fact": "laBoPhan",
+        "op": "CO"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": [
+         "Bánh răng",
+         "hộp số",
+         "bộ ly hợp",
+         "thiết bị truyền động"
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "4cb4383c976dca9bd7bf8a3e66e2269cc95c77d3177408d741437be42b1ac2b9"
+    }
+   },
+   "phanConLai": false
   },
   {
    "hs": "87141050",
-   "dieuKien": "Vành bánh xe (bộ phận và phụ kiện của xe môtô — WCO 871410)",
+   "dieuKien": "tên loại hàng: Vành bánh xe",
    "loaiKhac": false,
    "nguon": "tax.87141050",
    "trich": "87141050 - - Vành bánh xe",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Vành bánh xe"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "4cb4383c976dca9bd7bf8a3e66e2269cc95c77d3177408d741437be42b1ac2b9"
+    }
+   }
   },
   {
    "hs": "87141060",
-   "dieuKien": "Phanh và bộ phận của chúng (bộ phận và phụ kiện của xe môtô — WCO 871410)",
+   "dieuKien": "(tên loại hàng: Phanh) hoặc (là bộ phận (không phải hàng hoàn chỉnh) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Phanh)",
    "loaiKhac": false,
    "nguon": "tax.87141060",
    "trich": "87141060 - - Phanh và bộ phận của chúng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "Phanh"
+       }
+      ],
+      [
+       {
+        "fact": "laBoPhan",
+        "op": "CO"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": "Phanh"
+       }
+      ]
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "4cb4383c976dca9bd7bf8a3e66e2269cc95c77d3177408d741437be42b1ac2b9"
+    }
+   }
   },
   {
    "hs": "87141070",
-   "dieuKien": "Giảm thanh (muffers) và các bộ phận của chúng (bộ phận và phụ kiện của xe môtô — WCO 871410)",
+   "dieuKien": "(tên loại hàng: Giảm thanh) hoặc (là bộ phận (không phải hàng hoàn chỉnh) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Giảm thanh)",
    "loaiKhac": false,
    "nguon": "tax.87141070",
    "trich": "87141070 - - Giảm thanh (muffers) và các bộ phận của chúng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "Giảm thanh"
+       }
+      ],
+      [
+       {
+        "fact": "laBoPhan",
+        "op": "CO"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": "Giảm thanh"
+       }
+      ]
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+     "ngay": "2026-10-31",
+     "bam": "4cb4383c976dca9bd7bf8a3e66e2269cc95c77d3177408d741437be42b1ac2b9"
+    }
+   }
   },
   {
    "hs": "87141090",

@@ -4,7 +4,7 @@
   "nhom": "9503",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-950300",
@@ -369,6 +369,11 @@
       "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
       "ngay": "2026-10-31",
       "lyDo": "(A) 950300.json:dong8[95030030] THU HẸP: chữ \"Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng\" (EN Electric trains, including tracks, signals and other accessories therefor); bản nháp biến phần kể cả thành danh sách ĐÓNG tenLoai [Xe điện, đường ray, đèn hiệu] và bỏ vế mở \"các phụ kiện khác của chúng\" (ghi chú: không liệt kê được) — đúng kiểu cong5-ve-mo-bi-bo mà máy không thấy vì cả cụm bị xếp PHU. Phụ kiện khác của tàu điện đồ chơi (nhà ga, cầu, bộ chuyển ghi…) rơi .99 (20%) thay vì .30 (10%). Làm gì: phủ vế mở theo quy ước \"X và bộ phận của chúng\": HOAC [[tenLoai [Xe điện, đường ray, đèn hiệu]], [tenLoai \"phụ kiện\", dungCho \"Xe điện\"]] (chuỗi con nguyên văn). (B) dong8[95030091] THU HẸP: giá trị đầu \"xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật\" là một chuỗi chứa liệt kê HOẶC ⇒ bộ so chữ đòi đủ mọi âm tiết (VÀ); khối xếp hình chữ cái không thoả. Tách thành các chuỗi con nguyên văn trong mảng. Cùng MFN 20% với .99. (C) dong8[95030050] THU HẸP nhẹ: tenLoai \"bộ đồ chơi xây dựng\" bỏ \"Đồ chơi … xây dựng\" (EN constructional toys) — dùng chuỗi con \"đồ chơi xây dựng\" (có trong \"bộ đồ chơi xây dựng\") để phủ cả đồ chơi lẻ lẫn bộ. Cùng MFN 20% với .99. Phần còn lại (tầng r18723, .10, .21/.22, .40, .60, .70, .80, .92–.94) đã đối chiếu tay và đúng; bảng 950300-01 KHONG_LECH khớp."
+    },
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+      "ngay": "2026-10-31",
+      "lyDo": "(A) 950300.json:dong8[95030010] THU HẸP: vế MỞ \"và đồ chơi tương tự có bánh\" (EN \"and similar wheeled toys\") được \"phủ\" bằng giá trị tenLoai \"đồ chơi tương tự có bánh\" — bộ so chữ đòi dữ kiện có chữ \"tương tự\", điều mô tả hàng thật không bao giờ viết ⇒ giá trị chết, tương đương liệt kê đóng bốn tên còn lại (quy ước 392690 cấm). Thử: \"xe chòi chân bốn bánh cho trẻ em\", \"ô tô điện đồ chơi trẻ em có bánh, chạy pin\" ⇒ TRAI ở .10 ⇒ rơi .99 (20%) thay vì .10 (10%). Cổng 5 báo \"phủ\" vì chuỗi con có mặt — điểm mù của máy (ghi cho Claude chỉnh tach-ve/cổng 3: giá trị chữ tự do chứa \"tương tự\" không được tính là phủ vế mở). Làm gì: không dùng giá trị có \"tương tự\"; biểu diễn vế mở theo quy ước (bỏ liệt kê, giữ vế giới hạn \"có bánh\" bằng khoá có trong --tu-vung) — không có khoá đứng được ⇒ THIEU_KHOA_TU_VUNG / DUNG để GĐ chốt (cùng ca 761699 .40). Phần còn lại (.30 HOAC \"của chúng\", .91 hai mảng lồng, .50 \"đồ chơi xây dựng\", tầng r18723, cảnh báo cong2-dich-cua-chung-roi Búp bê ↔ Xe điện) người soát đã đối chiếu, đúng."
     }
   ]
 }

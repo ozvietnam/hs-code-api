@@ -921,22 +921,21 @@
    },
    {
     "stt": 5,
-    "maHs": "73269099",
+    "maHs": "39262010",
     "mucSanSang": "NEN_SUA",
     "kiem": [
      {
       "nhom": "K1",
       "trangThai": "CANH_BAO",
       "ma": "THIEU_THONG_SO_THEO_NHOM",
-      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Mác thép trong mô tả ECUS; Dạng hàng trong mô tả ECUS; Kích thước trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
-      "goiYSua": "304, 316, carbon | tấm, ống, hạt… | DxRxC mm/m | dùng cho…",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Loại nhựa trong mô tả ECUS; Dạng hàng trong mô tả ECUS; Kích thước trong mô tả ECUS.",
+      "goiYSua": "PE, PP, PVC… | tấm, ống, hạt… | DxRxC mm/m",
       "basis": "HEURISTIC",
       "evidence": [
-       "MISSING_STEELGRADE: Nhóm 7326 — thiếu Mác thép trong mô tả ECUS",
-       "MISSING_FORM: Nhóm 7326 — thiếu Dạng hàng trong mô tả ECUS",
-       "MISSING_DIMENSIONS: Nhóm 7326 — thiếu Kích thước trong mô tả ECUS",
-       "MISSING_APPLICATION: Nhóm 7326 — thiếu Công dụng cụ thể trong mô tả ECUS",
-       "điểm bộ chấm 50/100 (REJECT)"
+       "MISSING_POLYMERTYPE: Nhóm 3926 — thiếu Loại nhựa trong mô tả ECUS",
+       "MISSING_FORM: Nhóm 3926 — thiếu Dạng hàng trong mô tả ECUS",
+       "MISSING_DIMENSIONS: Nhóm 3926 — thiếu Kích thước trong mô tả ECUS",
+       "điểm bộ chấm 48/100 (REJECT)"
       ],
       "nguon": [
        {
@@ -958,11 +957,11 @@
       "nhom": "K2",
       "trangThai": "CANH_BAO",
       "ma": "KHAC_NHOM",
-      "noiDung": "Mã khai 73269099 khác nhóm 4 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
-      "goiYSua": "Đối chiếu chú giải và tiền lệ của 73269099 và 96170020 (gói căn cứ /api/evidence-pack).",
+      "noiDung": "Mã khai 39262010 khác nhóm 4 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
+      "goiYSua": "Đối chiếu chú giải và tiền lệ của 39262010 và 96170020 (gói căn cứ /api/evidence-pack).",
       "basis": "LLM_ASSERTED",
       "evidence": [
-       "mã khai 73269099",
+       "mã khai 39262010",
        "mã hệ thống chọn 96170020 (trạng thái RESOLVED_BY_LLM, độ tin 70)",
        "lý do (AI): stub"
       ],
@@ -989,7 +988,7 @@
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#73269099",
+        "duongDan": "data/tax.json#39262010",
         "phienBan": "2026-01-01"
        }
       ],
@@ -999,19 +998,19 @@
       "nhom": "K4",
       "trangThai": "DAT",
       "ma": "CO_THE_HUONG_ACFTA",
-      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 10%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 20%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
       "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
       "basis": "RULE_TABLE",
       "evidence": [
-       "ACFTA trong biểu: \"0 (-KH)\"",
+       "ACFTA trong biểu: \"0 (-KH, MM)\"",
        "xuất xứ khai CN",
-       "MFN 10",
+       "MFN 20",
        "ACFTA 0% khi có C/O mẫu E hợp lệ."
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#73269099",
+        "duongDan": "data/tax.json#39262010",
         "phienBan": "2026-01-01"
        },
        {
@@ -1022,18 +1021,19 @@
      },
      {
       "nhom": "K5",
-      "trangThai": "CANH_BAO",
-      "ma": "CAN_KTCN_GIAY_PHEP",
-      "noiDung": "Mã có nghĩa vụ kiểm tra chuyên ngành / giấy phép theo dữ liệu chính sách, dòng chưa ghi giấy phép/KTCN đã có.",
-      "goiYSua": "Chuẩn bị giấy phép / đăng ký kiểm tra chuyên ngành trước khi đăng ký tờ khai, hoặc xác nhận hàng không thuộc diện.",
+      "trangThai": "DAT",
+      "ma": "CO_LUU_Y_CHINH_SACH",
+      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
       "basis": "DETERMINISTIC",
       "evidence": [
-       "BLOCKING: SPHH VLXD nhóm 2 (10/2024/TT-BXD) KTCL sau TQ"
+       "NOTICE: Có thể: cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)"
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "/api/tax?hs=73269099",
+        "duongDan": "/api/tax?hs=39262010",
         "phienBan": "2026-01-01"
        }
       ]
@@ -1096,7 +1096,7 @@
       "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
       "basis": "HEURISTIC",
       "evidence": [
-       "chương 73"
+       "chương 39"
       ],
       "nguon": [
        {
@@ -1152,7 +1152,7 @@
   "tongQuan": {
    "soDong": 5,
    "soLoi": 0,
-   "soCanhBao": 12,
+   "soCanhBao": 11,
    "soChuaKiem": 15,
    "mucSanSang": "NEN_SUA"
   },
@@ -1165,7 +1165,7 @@
     "Dòng 4: mã khai khác nhóm 4 số với mã hệ thống chọn.",
     "Dòng 4: chênh lệch thuế MFN giữa mã khai (20%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm.",
     "Dòng 5: mã khai khác nhóm 4 số với mã hệ thống chọn.",
-    "Dòng 5: chênh lệch thuế MFN giữa mã khai (10%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm."
+    "Dòng 5: chênh lệch thuế MFN giữa mã khai (20%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm."
    ]
   }
  },
@@ -2010,22 +2010,21 @@
    },
    {
     "stt": 5,
-    "maHs": "73269099",
+    "maHs": "39262010",
     "mucSanSang": "NEN_SUA",
     "kiem": [
      {
       "nhom": "K1",
       "trangThai": "CANH_BAO",
       "ma": "THIEU_THONG_SO_THEO_NHOM",
-      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Mác thép trong mô tả ECUS; Dạng hàng trong mô tả ECUS; Kích thước trong mô tả ECUS; Công dụng cụ thể trong mô tả ECUS.",
-      "goiYSua": "304, 316, carbon | tấm, ống, hạt… | DxRxC mm/m | dùng cho…",
+      "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Loại nhựa trong mô tả ECUS; Dạng hàng trong mô tả ECUS; Kích thước trong mô tả ECUS.",
+      "goiYSua": "PE, PP, PVC… | tấm, ống, hạt… | DxRxC mm/m",
       "basis": "HEURISTIC",
       "evidence": [
-       "MISSING_STEELGRADE: Nhóm 7326 — thiếu Mác thép trong mô tả ECUS",
-       "MISSING_FORM: Nhóm 7326 — thiếu Dạng hàng trong mô tả ECUS",
-       "MISSING_DIMENSIONS: Nhóm 7326 — thiếu Kích thước trong mô tả ECUS",
-       "MISSING_APPLICATION: Nhóm 7326 — thiếu Công dụng cụ thể trong mô tả ECUS",
-       "điểm bộ chấm 50/100 (REJECT)"
+       "MISSING_POLYMERTYPE: Nhóm 3926 — thiếu Loại nhựa trong mô tả ECUS",
+       "MISSING_FORM: Nhóm 3926 — thiếu Dạng hàng trong mô tả ECUS",
+       "MISSING_DIMENSIONS: Nhóm 3926 — thiếu Kích thước trong mô tả ECUS",
+       "điểm bộ chấm 48/100 (REJECT)"
       ],
       "nguon": [
        {
@@ -2069,7 +2068,7 @@
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#73269099",
+        "duongDan": "data/tax.json#39262010",
         "phienBan": "2026-01-01"
        }
       ],
@@ -2079,19 +2078,19 @@
       "nhom": "K4",
       "trangThai": "DAT",
       "ma": "CO_THE_HUONG_ACFTA",
-      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 10%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 20%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
       "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
       "basis": "RULE_TABLE",
       "evidence": [
-       "ACFTA trong biểu: \"0 (-KH)\"",
+       "ACFTA trong biểu: \"0 (-KH, MM)\"",
        "xuất xứ khai CN",
-       "MFN 10",
+       "MFN 20",
        "ACFTA 0% khi có C/O mẫu E hợp lệ."
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#73269099",
+        "duongDan": "data/tax.json#39262010",
         "phienBan": "2026-01-01"
        },
        {
@@ -2102,18 +2101,19 @@
      },
      {
       "nhom": "K5",
-      "trangThai": "CANH_BAO",
-      "ma": "CAN_KTCN_GIAY_PHEP",
-      "noiDung": "Mã có nghĩa vụ kiểm tra chuyên ngành / giấy phép theo dữ liệu chính sách, dòng chưa ghi giấy phép/KTCN đã có.",
-      "goiYSua": "Chuẩn bị giấy phép / đăng ký kiểm tra chuyên ngành trước khi đăng ký tờ khai, hoặc xác nhận hàng không thuộc diện.",
+      "trangThai": "DAT",
+      "ma": "CO_LUU_Y_CHINH_SACH",
+      "noiDung": "Không thấy nghĩa vụ bắt buộc theo mã; có lưu ý chính sách cần đọc (evidence).",
       "basis": "DETERMINISTIC",
       "evidence": [
-       "BLOCKING: SPHH VLXD nhóm 2 (10/2024/TT-BXD) KTCL sau TQ"
+       "NOTICE: Có thể: cấm nhập khẩu — 08/2023/TT-BCT",
+       "NOTICE: Hàng tiêu dùng QSD cấp NK (08/2023/TT-BCT - PL1.I)",
+       "NOTICE: HH tạm ngừng KD TNTX CK (08/2023/TT-BCT - PL2)"
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "/api/tax?hs=73269099",
+        "duongDan": "/api/tax?hs=39262010",
         "phienBan": "2026-01-01"
        }
       ]
@@ -2176,7 +2176,7 @@
       "noiDung": "Không thấy dấu hiệu máy móc chưa lắp ráp/tháo rời trong mô tả (nhận bằng từ khoá).",
       "basis": "HEURISTIC",
       "evidence": [
-       "chương 73"
+       "chương 39"
       ],
       "nguon": [
        {
@@ -2221,7 +2221,7 @@
   "tongQuan": {
    "soDong": 5,
    "soLoi": 0,
-   "soCanhBao": 7,
+   "soCanhBao": 6,
    "soChuaKiem": 20,
    "mucSanSang": "NEN_SUA"
   },
