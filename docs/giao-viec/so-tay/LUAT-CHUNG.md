@@ -167,3 +167,17 @@ Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.3,
 - Bộ tách vế: "có dải tần số …" là một vế biên số; "có hình dạng đặc biệt hoặc thích hợp để …" là một vế khi chữ Anh xác nhận
   ("shaped or fitted for"); không chắc ⇒ vẫn tách (giữ cờ).
 - Nhãn `tuVung` = từ vựng runtime lúc `--ap-spec`; sửa nhãn cũ bằng `--nhan-tu-vung` (Claude).
+
+## Vòng 5 (31/10/2026, #577 — sau soát L1-4c đợt 3 #697): quyết định GĐ (không mở lại)
+
+Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.2 và mục 4 (Chồng lấn 7).
+- **Liệt kê HOẶC gói trong MỘT chuỗi chữ tự do** (phát hiện hàng đầu của người soát đợt 3: 841459 .10, 950300 .91): giá trị
+  `TEN_LOAI`/`CONG_DUNG` có " hoặc ", ";" hay liệt kê phẩy, không mã HS ⇒ lỗi `cong3-liet-ke-trong-mot-chuoi:<mã>:<khoá>` (cổng 3,
+  mọi trạng thái — chạy trên 50 bản nháp lúc thêm: không bản DUYET nào trúng). Sửa: mảng chuỗi con nguyên văn. Ngoại lệ theo bằng
+  chứng chữ Anh cùng dòng (cùng cách bộ tách vế đọc "shaped or fitted for"): liệt kê nối "và" có đúng k mục liên hợp sau for/of
+  ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs,
+  round," — 761699 .30); "có hoặc không …".
+- **Đích "của chúng" ↔ tên tiêu đề tổ tiên** (950300, #696): `dungCho Y` từ vế "… của chúng"/"therefor" của một dòng (Y = danh từ
+  đầu của dòng) ↔ nhánh anh em không có `dungCho` mà một tiêu đề tổ tiên mang tên đầu X; X, Y rời nhau như luật tên nguyên văn của
+  anh em (#692, cùng độ chặt — tên chứa nhau không chứng minh được) ⇒ cổng 2 coi là loại trừ, cảnh báo `cong2-dich-cua-chung-roi`.
+  Chỉ là luật chứng minh của cổng: runtime không đổi, hàng thoả cả hai thì động cơ hỏi (cùng lớp khoảng trống #692/#698).

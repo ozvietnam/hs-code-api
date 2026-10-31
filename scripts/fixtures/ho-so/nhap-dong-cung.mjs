@@ -13,6 +13,10 @@ export const THU_MUC_DONG_CUNG_88444A8 = path.join(process.cwd(), 'scripts', 'fi
 // ranh-gioi-pr/<pn6>-<sha>.json = bản nháp trên nhánh PR của thợ (so-hoa/<pn6>) tại commit <sha>, chưa merge — vòng 4.
 export const THU_MUC_DONG_CUNG_PR = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-pr');
 // ranh-gioi-571d7a5/ = bản sao nguyên văn tại commit 571d7a5 (main sau #690) — 871410 dạng HOAC, 845290 (luật tên nguyên văn).
+// ranh-gioi-f457a19/ = bản sao nguyên văn tại commit f457a19 (main sau #697, trước soạn lại #699) — 841459 .10 và 950300 .91
+// gói liệt kê HOẶC trong một chuỗi (vòng 5, cong3-liet-ke-trong-mot-chuoi).
+// ranh-gioi-719cacc/ = bản sao nguyên văn tại commit 719cacc (main sau #699) — 950300 DỪNG (đích "của chúng" ↔ tên tiêu đề tổ
+// tiên, vòng 5) + các bản có giá trị chữ tự do chứa dấu phẩy/"hoặc" (ngoại lệ + ca trúng của cong3-liet-ke-trong-mot-chuoi).
 
 /** Bản nháp đông cứng của một PN6 (đối tượng mới mỗi lần gọi — sửa thoải mái). */
 export function nhapDongCung(pn6, thuMuc = THU_MUC_DONG_CUNG) {

@@ -30,6 +30,14 @@
       là chữ biểu của hai dòng (vd 845290 .11 "bàn đạp" ⊃ .12 "Bàn") chứ không do giá trị bịa thêm, và giá trị là tên đầu nguyên văn
       của chính dòng. Sai ⇒ trả về.
 
+- [ ] Mỗi cảnh báo `cong2-dich-cua-chung-roi:<A>+<B>` (đích "của chúng" ↔ tên tiêu đề tổ tiên, vòng 5 — 950300): kiểm `dungCho`
+      Y đúng là DANH TỪ ĐẦU nguyên văn của chính dòng có "… của chúng"/"therefor", và X (tên đích bên kia) đúng là danh từ đầu
+      nguyên văn của một TIÊU ĐỀ tổ tiên trên nhánh đó (vd 9503002 "Búp bê"), hai tên không chứa nhau. Sai ⇒ trả về.
+- [ ] Không còn lỗi `cong3-liet-ke-trong-mot-chuoi` (máy chặn liệt kê HOẶC gói trong MỘT giá trị chữ tự do — vòng 5). Máy bỏ qua có
+      chủ đích ba ngoại lệ theo chữ Anh (liệt kê "và" liên hợp sau for/of; dấu phẩy thuộc tính "Slugs, round,"; mã HS): người soát
+      vẫn đọc các giá trị còn một chuỗi có dấu phẩy/"và" — chuỗi đó có thật là MỘT hàng/một việc, hay là danh sách hàng thay thế
+      (khi đó phải là mảng)?
+
 ## 2. Phạm vi vế — máy chỉ là bộ tách theo dấu hiệu, người soát vẫn đọc
 
 Với TỪNG dòng có tên và TỪNG tiêu đề có tên, đặt điều kiện cạnh chữ biểu và hỏi ba câu:

@@ -78,6 +78,16 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
      trích phải chứa một cách đọc của giá trị.
    - tên hàng ⇒ `{"fact": "tenLoai", "op": "TEN_LOAI", "value": "<chuỗi con nguyên văn>"}`; công dụng / dùng cho ⇒ `congDung`/`dungCho`
      với `"op": "CONG_DUNG"`. Mảng giá trị = "hoặc".
+   - **Liệt kê ⇒ MẢNG, không gói một chuỗi** (vòng 5, soát đợt 3 #697): bộ so chữ đòi ĐỦ âm tiết của một giá trị, nên
+     `"làm mát bộ vi xử lý, thiết bị viễn thông, … hoặc các khối chức năng …"` trong MỘT chuỗi bị đọc thành VÀ (hẹp hơn chữ).
+     Giá trị có " hoặc ", ";" hay liệt kê phẩy (không có mã HS) ⇒ máy báo `cong3-liet-ke-trong-mot-chuoi:<mã>:<khoá>`. Tách thành
+     mảng chuỗi con nguyên văn; định ngữ chung thành điều kiện riêng (841459 .10: `congDung` "làm mát" + `dungCho` ["bộ vi xử lý",
+     "thiết bị viễn thông", …]); liệt kê lồng thành hai điều kiện mảng (950300 .91: `tenLoai` ["xếp khối","cắt rời"] + `tenLoai`
+     ["chữ số","chữ cái","con vật"]). Máy KHÔNG báo: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau
+     for/of (853710 .30 "dịch chuyển, xử lý và kẹp giữ" ↔ "for transport, handling and storage" — một máy làm đủ các việc); dấu
+     phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or (761699 .30 "Đồng xèng, hình tròn" ↔ "Slugs, round,"); "có hoặc
+     không …"; giá trị có mã HS ("84.29 hoặc 84.30" — máy đã đọc HOẶC). Liệt kê TÊN HÀNG nối "và" ("Xe đạp ba bánh, xe đẩy, xe có
+     bàn đạp và …") vẫn là danh sách hàng thay thế ⇒ mảng.
    - chất liệu ⇒ `{"fact": "chatLieu", "op": "LA", "value": "<vật liệu>", "viTri": "<nếu chữ nói vị trí>"}`.
 3. **Các anh em cùng tầng dùng CÙNG khoá** khi chữ cho phép (vd đều `tenLoai`, hoặc đều `loaiCongTac`) — giảm chồng lấn giả.
    **Không đổi sang khoá khác để né cảnh báo** (vòng 4, lỗi lặp lại ở #620–#647): chữ "dùng cho …" ở tiêu đề và ở dòng con đều là
@@ -213,6 +223,16 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
    - **Vẫn là LỖI như cũ**: tên không nguyên văn của chính dòng ("Má phanh" cho .60 "Phanh và bộ phận của chúng"), cùng một tên hai
      bên, và tên ↔ công dụng KHÔNG có `laBoPhan` (đó là trục — mục 4a). Chồng lấn so chữ tự do còn lại (`:khong-tat-dinh`) vẫn là
      lỗi (cổng 2 không nới ở chỗ khác; ngoại lệ trục đã khai `chongLanTruc`, mục 4a).
+   - **Đích "của chúng" ↔ tên tiêu đề tổ tiên** (quyết định GĐ vòng 5, #696 — 950300): một dòng có vế "… của chúng"/"therefor"
+     viết `dungCho Y` với Y là DANH TỪ ĐẦU nguyên văn của chính dòng (950300 .30 "Xe điện, kể cả đường ray, đèn hiệu và các phụ
+     kiện khác của chúng" ⇒ `HOAC [[tenLoai "Xe điện"], [tenLoai ["đường ray","đèn hiệu","phụ kiện"], dungCho "Xe điện"]]`); nhánh
+     anh em KHÔNG có `dungCho` vì đích nằm ở TÊN một tiêu đề tổ tiên (9503002 "Búp bê" → tầng "Bộ phận và phụ kiện" → .22). Vector
+     ghép "tenLoai phụ kiện quần áo Búp bê + dungCho Xe điện" từng làm hai nhánh cùng CO. Nay: hai tên đích X (danh từ đầu nguyên
+     văn của tiêu đề tổ tiên) và Y rời nhau ĐÚNG như luật tên nguyên văn ở trên (không ứng viên nào thoả cả hai; tên chứa nhau
+     KHÔNG chứng minh được) ⇒ loại trừ, cảnh báo `cong2-dich-cua-chung-roi:<A>+<B>`. X không được là tên hàng của bên kia ("phụ
+     kiện" của tầng r18723 không phải đích); bên tiêu đề có `dungCho` riêng ⇒ luật không áp. Chỉ là luật chứng minh: lúc chạy
+     hàng thoả cả hai (phụ kiện quần áo búp bê dùng cho xe điện) động cơ vẫn thấy hai dòng, không tự chọn — hỏi (cùng lớp khoảng
+     trống đã chấp nhận của #692/#698, hướng an toàn).
    - Còn lỗi sau luật này ⇒ sửa theo bước 1–5 ở trên; không khai `chongLanVanBan` cho chồng lấn do bộ so chữ, không đổi khoá để né.
    Ca đã gặp: 871410 .30 "Khung và càng xe kể cả …, giảm xóc và các bộ phận của chúng", .40, .60 "Phanh và bộ phận của chúng", .70 ↔
    .10 "Yên xe", .20, .50 — trước 18 cặp `:khong-tat-dinh`, nay loại trừ; 845290 .12/.92 "Bàn, tủ, chân máy và nắp và các bộ phận
