@@ -129,7 +129,7 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
     - **Không nuốt vế bổ nghĩa** (vòng 4, lỗi lặp lại):
       - "X và (các) bộ phận của chúng" là vế MỞ — không viết chỉ `tenLoai` "X". Vd 871410 .60 "Phanh và bộ phận của chúng" ⇒
         `{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":"Phanh"}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"Phanh"}]]}`
-        (nhiều anh em cùng mẫu: xem mục 4 "Quy ước X và bộ phận").
+        — X chép NGUYÊN VĂN tên đầu của chính dòng (nhiều anh em cùng mẫu: mục 4 "Quy ước X và bộ phận", luật tên nguyên văn).
       - Chất liệu / loại của **hàng ĐÍCH** sau "dùng cho" thuộc về đích, không phải của hàng: "Phụ kiện dùng cho ống bằng gang đúc" ⇒
         `dungCho` "ống bằng gang đúc" (chuỗi con nguyên văn chứa cả chất liệu) — SAI: `dungCho` "ống" (bỏ vế "bằng gang đúc" ⇒ rộng
         hơn chữ) hoặc `chatLieu` "gang" (gán chất liệu của ống cho phụ kiện ⇒ sai trục).
@@ -192,17 +192,24 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
    cả hai; khai `chongLanVanBan` .10↔.30, .20↔.30 ⇒ máy báo `cong2-chong-lan-truc` (cùng cấu trúc: 940542, 841459 .10↔.30). Ngược lại cặp có/không,
    liệt kê, số ↔ công dụng ("Rơ le kỹ thuật số" `loaiRoLe` ↔ "dùng cho quạt điện" — 853641) vẫn khai `chongLanVanBan` như bước 4.
    **Không DỪNG nữa (#683):** làm theo mục 4a.
-7. **Quy ước "X và (các) bộ phận của chúng" giữa nhiều anh em** (quyết định GĐ vòng 4 — công cụ không đổi): vế này nghĩa là "X, hoặc bộ
-   phận của X" ⇒ giữ đúng dạng `HOAC [[tenLoai X…], [laBoPhan CO, dungCho X…]]` (bước 3.11), không viết tắt thành tenLoai. Dạng này
-   thường sinh `cong2-chong-lan` với các anh em chỉ có tên (vector "tenLoai Yên xe + là bộ phận + dungCho Khung"). Cổng 2 KHÔNG hạ
-   chồng lấn so chữ tự do thành cảnh báo ở bất kỳ đâu (ngoại lệ duy nhất: chồng lấn TRỤC tên ↔ công dụng đã khai `chongLanTruc`, mục 4a) — đuôi `:khong-tat-dinh` chỉ là nhãn, chồng lấn vẫn là LỖI (LUAT-CHUNG, cổng 2;
-   "tên cụ thể hơn thắng" là luật riêng, không phải nới chung). Vậy:
-   - mọi cặp chồng lấn đều `:khong-tat-dinh` (hai bên chữ tự do) ⇒ vẫn đỏ ⇒ **DỪNG** (ghi chú `DUNG` nêu mẫu "X và bộ phận của chúng"
-     nhiều anh em; không khai `chongLanVanBan`, không đổi khoá để né) — Claude/GĐ quyết riêng;
-   - có cặp chồng lấn tất định (không có đuôi) ⇒ chồng lấn thật ⇒ **DỪNG**.
-   Ca đã gặp: 871410 (PR #635) .30 "Khung và càng xe … và các bộ phận của chúng", .40, .60 "Phanh và bộ phận của chúng", .70 ↔ .10 "Yên
-   xe", .20, .50 — 18 cặp, đều `:khong-tat-dinh`; 845290 (PR #633) .12/.92 "Bàn, tủ, chân máy và nắp và các bộ phận của chúng" ↔
-   .11/.91. Cả hai: DỪNG. Không sửa bản nháp của người khác để thử.
+7. **Quy ước "X và (các) bộ phận của chúng" giữa nhiều anh em** (quyết định GĐ 31/10/2026 — thay quyết định vòng 4 "DỪNG"):
+   vế này nghĩa là "X, hoặc bộ phận của X" ⇒ giữ đúng dạng `HOAC [[tenLoai X…], [laBoPhan CO, dungCho X…]]` (bước 3.11), không viết
+   tắt thành tenLoai, không đổi khoá. Một vector biên gán `tenLoai` và `dungCho` độc lập nên dạng này từng sinh `cong2-chong-lan
+   …:khong-tat-dinh` với anh em (vector "tenLoai Yên xe + là bộ phận + dungCho Khung"). **Luật tên nguyên văn của anh em** (chỉ là
+   luật CHỨNG MINH của cổng 2 — lúc chạy động cơ vẫn đánh giá dữ kiện, dữ kiện chưa rõ thì `CHUA_BIET` ⇒ hỏi):
+   - Trong một cha, cặp CHÉO KHOÁ `tenLoai X` (dòng A) ↔ `laBoPhan CO` + `dungCho Y` (dòng B) là **loại trừ** khi X và Y đều là
+     **tên đầu NGUYÊN VĂN của chính dòng mình** (chữ biểu của dòng, trong mệnh đề danh từ đầu hoặc vế "kể cả …" đứng liền sau nó —
+     `--ve` in `DAU`/`PHU "kể cả …"`) và X, Y **rời nhau đúng như cổng vẫn coi hai giá trị `tenLoai` của anh em là rời nhau**: không
+     giá trị ứng viên nào của vector thoả cả hai. Máy ghi cảnh báo `cong2-ten-anh-em-roi:<A>+<B>` cho người soát.
+   - `dungCho X` ↔ `dungCho Y` (cùng khoá): vector mang một giá trị — máy quyết như cũ.
+   - **Vẫn là LỖI như cũ**: tên chứa tên (845290 .11 "bàn đạp" ⊃ .12 "Bàn": `tenLoai bàn đạp + là bộ phận + dungCho Bàn` làm cả
+     hai CO), tên không nguyên văn của chính dòng ("Má phanh" cho .60 "Phanh và bộ phận của chúng"), cùng một tên hai bên, và tên ↔
+     công dụng KHÔNG có `laBoPhan` (đó là trục — mục 4a). Không áp "tên cụ thể hơn thắng" cho cặp chéo khoá. Chồng lấn so chữ tự do
+     còn lại (`:khong-tat-dinh`) vẫn là lỗi (cổng 2 không nới ở chỗ khác; ngoại lệ trục đã khai `chongLanTruc`, mục 4a).
+   - Còn lỗi sau luật này ⇒ sửa theo bước 1–5 ở trên; không khai `chongLanVanBan` cho chồng lấn do bộ so chữ, không đổi khoá để né.
+   Ca đã gặp: 871410 .30 "Khung và càng xe kể cả …, giảm xóc và các bộ phận của chúng", .40, .60 "Phanh và bộ phận của chúng", .70 ↔
+   .10 "Yên xe", .20, .50 — trước 18 cặp `:khong-tat-dinh`, nay loại trừ; 845290 .12/.92 "Bàn, tủ, chân máy và nắp và các bộ phận
+   của chúng" ↔ .11/.91 "… bàn đạp các loại" — "bàn đạp" chứa "Bàn" ⇒ vẫn lỗi.
 
 ### 4a. Chồng lấn trục — khai `chongLanTruc` (#683)
 

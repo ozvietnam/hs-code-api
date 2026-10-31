@@ -23,6 +23,10 @@
       `DE_TRONG` / "người soát xem"). Đúng ⇒ ghi kết luận khi duyệt: `--giai-quyet=<mã>:<kết luận>` (một lần cho mỗi mục; kết luận
       "người soát xem" / rỗng không được nhận). Sai ⇒ trả về.
 
+- [ ] Mỗi cảnh báo `cong2-ten-anh-em-roi:<A>+<B>` (luật tên nguyên văn của anh em, QUY-TRINH mục 4 bước 7): kiểm giá trị `tenLoai`
+      / `dungCho` của mẫu "X và (các) bộ phận của chúng" đúng là tên ĐẦU nguyên văn của chính dòng mình (không lấy chữ của anh em,
+      không thêm chữ), và hai tên không chứa nhau. Sai ⇒ trả về.
+
 ## 2. Phạm vi vế — máy chỉ là bộ tách theo dấu hiệu, người soát vẫn đọc
 
 Với TỪNG dòng có tên và TỪNG tiêu đề có tên, đặt điều kiện cạnh chữ biểu và hỏi ba câu:
