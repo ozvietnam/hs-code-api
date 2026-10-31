@@ -82,7 +82,8 @@ const TIEU_DE = 'Chữ biểu: tieuDe.8544423 "Cáp ắc qui" (trục tên) đ�
   bA.chongLanVanBan = CAP_854442.map((cap) => ({ cap, lyDo: TIEU_DE }));
   const rA = C.kiemRanhGioi('854442', bA, { cong: [2, 3] });
   check('3b khai đủ 12 cặp (trích tiêu đề) ⇒ VẪN ĐỎ', rA.hopLe === false, rA.loi.slice(0, 5));
-  check('3c … cong2-chong-lan-truc:8544423 (chồng theo trục cấp tiêu đề) và nằm trong dung[]', co(rA.loi, 'cong2-chong-lan-truc:8544423:') && co(rA.dung, 'cong2-chong-lan-truc:8544423:'), rA.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
+  // #683 (quyết định GĐ): cong2-chong-lan-truc không còn là DỪNG — người soạn khai chongLanTruc (test-chong-lan-truc.mjs).
+  check('3c … cong2-chong-lan-truc:8544423 (chồng theo trục cấp tiêu đề), là lỗi nhưng không còn trong dung[] (#683)', co(rA.loi, 'cong2-chong-lan-truc:8544423:') && !co(rA.dung, 'cong2-chong-lan-truc:8544423:'), rA.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
   check('3d … cặp đã khai trong cụm trục KHÔNG hạ thành cảnh báo (lỗi cong2-chong-lan-van-ban-truc)', CAP_854442.every(([a, b]) => co(rA.loi, `cong2-chong-lan-van-ban-truc:${a}+${b}:`)) && !co(rA.canhBao, 'cong2-chong-lan-van-ban:'), rA.loi.filter((l) => l.startsWith('cong2-chong-lan-van-ban')).length);
   check('3e … lý do chỉ trích tiêu đề tổ tiên, không trích chữ của dòng nào trong cặp ⇒ cong3-chong-lan-chi-trich-tieu-de', CAP_854442.every(([a, b]) => rA.loi.includes(`cong3-chong-lan-chi-trich-tieu-de:${a}+${b}`)), rA.loi.filter((l) => l.startsWith('cong3-chong-lan')));
   // Biến thể B: lý do trích cả chữ của hai dòng ⇒ hết lỗi trích, nhưng chồng theo trục vẫn đỏ + DỪNG.
@@ -90,7 +91,7 @@ const TIEU_DE = 'Chữ biểu: tieuDe.8544423 "Cáp ắc qui" (trục tên) đ�
   bB.chongLanVanBan = CAP_854442.map(([a, b]) => ({ cap: [a, b], lyDo: `${TIEU_DE}; .${a.slice(6)} "${CHU[a]}" ↔ .${b.slice(6)} "${CHU[b]}"` }));
   const rB = C.kiemRanhGioi('854442', bB, { cong: [2, 3] });
   check('3f khai đủ 12 cặp, trích đúng chữ hai dòng ⇒ không lỗi cong3-chong-lan-*', !rB.loi.some((l) => l.startsWith('cong3-chong-lan')), rB.loi.filter((l) => l.startsWith('cong3-chong-lan')));
-  check('3g … vẫn ĐỎ + DỪNG cong2-chong-lan-truc:8544423 (thiết kế trục, không phải chữ tự chồng)', rB.hopLe === false && co(rB.dung, 'cong2-chong-lan-truc:8544423:'), rB.dung);
+  check('3g … vẫn ĐỎ cong2-chong-lan-truc:8544423 (thiết kế trục, không phải chữ tự chồng — khai chongLanTruc, #683)', rB.hopLe === false && co(rB.loi, 'cong2-chong-lan-truc:8544423:'), rB.loi.filter((l) => l.startsWith('cong2-chong-lan-truc')));
 }
 {
   // Khai hợp lệ (dòng ↔ dòng): 841459 .10 ↔ .30 (sen.84145930 "Máy thổi khí là quạt ly tâm…") — giữ xanh.
