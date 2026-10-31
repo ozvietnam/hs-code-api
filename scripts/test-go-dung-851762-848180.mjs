@@ -54,7 +54,8 @@ const duKien = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri,
   check('2a 848180: apSpec không lỗi spec', a.loi.length === 0 && Boolean(a.banNhap), a.loi);
   const r = a.banNhap ? C.kiemRanhGioi('848180', a.banNhap, { cong: [0, 1, 3] }) : { loi: ['khong-co-ban-nhap'], canhBao: [], dung: [] };
   check('2b không còn cong1-tieu-de-bi-luoc-ten / cong1-tang-* (nhóm chữ số 8481801/06/07/08/09 trong suốt)', !r.loi.some((l) => /^cong1-(tieu-de-bi-luoc-ten|tang-)/.test(l)), r.loi.filter((l) => /luoc|tang/.test(l)).slice(0, 5));
-  check('2c cổng 0/1/3: lỗi duy nhất là cong1-chua-so-hoa của đúng hai mục DỪNG (.93, .97)', r.loi.length > 0 && r.loi.every((l) => /^cong1-chua-so-hoa:\d{8}:8481809[37]$/.test(l)), r.loi);
+  // GĐ 31/10: cổng vòng 5 (#701) báo đúng .30 gói "các bếp nấu hoặc bếp có lò nướng bằng ga" (vế "bằng ga" chung — tách mảng thì rộng hơn chữ, cần khoá nhiên liệu) ⇒ thêm vào danh sách DỪNG, không ép xanh.
+  check('2c cổng 0/1/3: lỗi chỉ là cong1-chua-so-hoa của hai mục DỪNG (.93, .97) + liệt kê một chuỗi ở .30 (vế "bằng ga" chung)', r.loi.length > 0 && r.loi.every((l) => /^cong1-chua-so-hoa:\d{8}:8481809[37]$/.test(l) || l === 'cong3-liet-ke-trong-mot-chuoi:84818030:dungCho'), r.loi);
   check('2d DỪNG đúng ba lý do: THIEU_KHOA_TU_VUNG .97 (xử lý bề mặt), DUNG .93 ("vật liệu khác"), DUNG 8481805 (trục ba chiều)',
     JSON.stringify([...(r.dung || [])].sort()) === JSON.stringify(['DUNG:8481805', 'DUNG:84818093', 'THIEU_KHOA_TU_VUNG:84818097:daXuLyBeMat']), r.dung);
   const v = a.banNhap ? C.kiemVe('848180', a.banNhap) : { loi: ['x'], canhBao: [] };
