@@ -93,7 +93,9 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
    **Không đổi sang khoá khác để né cảnh báo** (vòng 4, lỗi lặp lại ở #620–#647): chữ "dùng cho …" ở tiêu đề và ở dòng con đều là
    `dungCho`; không viết tiêu đề bằng `congDung` hay dòng con bằng `tenLoai` chỉ để né `cong2-diem-mu` /
    `cong2-dong-khong-toi-duoc`. Đổi khoá làm máy mất phép so cùng trục — che lỗi chứ không sửa. Máy đã tự ghép giá trị
-   "<dưới> <trên>" cho cùng khoá (#653); vẫn không tới được ⇒ DỪNG. Gợi ý nào của công cụ bảo đổi khoá là lỗi công cụ, báo Claude.
+   "<dưới> <trên>" cho cùng khoá (#653); hai bên đều nêu MÃ HS rời nhau ("Bộ phận của hàng hóa thuộc phân nhóm 8483.10" ↔ dòng
+   con "Dùng cho xe kéo thuộc phân nhóm 8701…") là ĐÍCH LỒNG — máy ghép chuỗi đích "<trên> dùng cho <dưới>" (#693, 848390). Vẫn
+   không tới được ⇒ DỪNG. Gợi ý nào của công cụ bảo đổi khoá là lỗi công cụ, báo Claude.
    - Ví dụ SAI (851762, PR #634): tiêu đề `8517624` "Thiết bị dùng cho hệ thống hữu tuyến…" ghi `congDung` "để tránh điểm mù với
      85176243 dùng dungCho"; `85176261` "Dùng cho điện báo hoặc điện thoại…" ghi `tenLoai` "sóng vô tuyến" "để tránh điểm mù với
      tiêu đề cha dùng congDung". ĐÚNG: cả ba ghi `dungCho` (chữ "dùng cho" ⇒ `dungCho`), để cảnh báo hiện ra cho người soát.
