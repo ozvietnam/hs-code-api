@@ -243,19 +243,40 @@
  "dong8": [
   {
    "hs": "85011021",
-   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.15 hoặc 84.18 hoặc 84.50 hoặc 85.09 hoặc 85.16",
    "loaiKhac": false,
    "nguon": "tax.85011021",
    "trich": "85011021 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "84.15",
+      "84.18",
+      "84.50",
+      "85.09",
+      "85.16"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   }
   },
   {
    "hs": "85011022",
-   "dieuKien": "Loại khác, công suất không quá 5 W (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W)",
+   "dieuKien": "công suất <= 5 W",
    "loaiKhac": true,
    "nguon": "tax.85011022",
    "trich": "85011022 - - - - Loại khác, công suất không quá 5 W",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "CLAUDE_DUYET",
    "phamViLoaiKhac": {
     "nguonLoai": "MAY_SUY",
     "cha": "8501102",
@@ -264,6 +285,22 @@
     ],
     "toTienCoTen": "850110",
     "dinhNghiaDuoc": true
+   },
+   "dieuKienSo": [
+    {
+     "fact": "congSuat",
+     "op": "<=",
+     "value": 5,
+     "donVi": "W"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
    }
   },
   {
@@ -286,19 +323,57 @@
   },
   {
    "hs": "85011030",
-   "dieuKien": "Động cơ hướng trục: động cơ một pha cỡ nhỏ, có độ chính xác cao dùng cho ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD), ổ đĩa kỹ thuật số đa dụng (DVD); quay đĩa với tốc độ từ 3.000 đến 10.000 vòng/phút (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "kiểu động cơ điện (8501.10): động cơ hướng trục (quay đĩa)",
    "loaiKhac": false,
-   "nguon": "sen.85011030",
-   "trich": "Động cơ hướng trục là động cơ một pha cỡ nhỏ, có độ chính xác cao được dùng cho các loại ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD), ổ đĩa kỹ thuật số đa dụng (DVD), v.v....",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguon": "tax.85011030",
+   "trich": "85011030 - - - Động cơ hướng trục (SEN)",
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "kieuDongCoDien",
+     "op": "TRONG",
+     "value": [
+      "HUONG_TRUC"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   }
   },
   {
    "hs": "85011041",
-   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.15 hoặc 84.18 hoặc 84.50 hoặc 85.09 hoặc 85.16",
    "loaiKhac": false,
    "nguon": "tax.85011041",
    "trich": "85011041 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "84.15",
+      "84.18",
+      "84.50",
+      "85.09",
+      "85.16"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   }
   },
   {
    "hs": "85011049",
@@ -319,11 +394,32 @@
   },
   {
    "hs": "85011051",
-   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.15 hoặc 84.18 hoặc 84.50 hoặc 85.09 hoặc 85.16",
    "loaiKhac": false,
    "nguon": "tax.85011051",
    "trich": "85011051 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "84.15",
+      "84.18",
+      "84.50",
+      "85.09",
+      "85.16"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   }
   },
   {
    "hs": "85011059",
@@ -344,19 +440,57 @@
   },
   {
    "hs": "85011060",
-   "dieuKien": "Động cơ hướng trục: động cơ một pha cỡ nhỏ, có độ chính xác cao dùng cho ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD), ổ đĩa kỹ thuật số đa dụng (DVD); quay đĩa với tốc độ từ 3.000 đến 10.000 vòng/phút (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "kiểu động cơ điện (8501.10): động cơ hướng trục (quay đĩa)",
    "loaiKhac": false,
-   "nguon": "sen.85011060",
-   "trich": "Động cơ hướng trục là động cơ một pha cỡ nhỏ, có độ chính xác cao được dùng cho các loại ổ đĩa cứng (HD), ổ đĩa mềm (FD), ổ đĩa compact (CD), ổ đĩa kỹ thuật số đa dụng (DVD), v.v....",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguon": "tax.85011060",
+   "trich": "85011060 - - - Động cơ hướng trục (SEN)",
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "kieuDongCoDien",
+     "op": "TRONG",
+     "value": [
+      "HUONG_TRUC"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   }
   },
   {
    "hs": "85011091",
-   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850110: Electric motors; of an output not exceeding 37.5W); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.15 hoặc 84.18 hoặc 84.50 hoặc 85.09 hoặc 85.16",
    "loaiKhac": false,
    "nguon": "tax.85011091",
    "trich": "85011091 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "84.15",
+      "84.18",
+      "84.50",
+      "85.09",
+      "85.16"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   }
   },
   {
    "hs": "85011099",
@@ -633,11 +767,32 @@
   },
   {
    "hs": "85014011",
-   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850140: Electric motors; AC motors, single-phase); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.15 hoặc 84.18 hoặc 84.50 hoặc 85.09 hoặc 85.16",
    "loaiKhac": false,
    "nguon": "tax.85014011",
    "trich": "85014011 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "84.15",
+      "84.18",
+      "84.50",
+      "85.09",
+      "85.16"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "cdc58740cd9f25773bb6920e26429dfd478f7c89d46dc12e9f31281b8a510c82"
+    }
+   }
   },
   {
    "hs": "85014019",
@@ -658,11 +813,32 @@
   },
   {
    "hs": "85014021",
-   "dieuKien": "Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16 (thuộc WCO 850140: Electric motors; AC motors, single-phase); nguồn có nhiều dòng trùng chữ — dòng cha không có trong nguồn — đối chiếu biểu thuế",
+   "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 84.15 hoặc 84.18 hoặc 84.50 hoặc 85.09 hoặc 85.16",
    "loaiKhac": false,
    "nguon": "tax.85014021",
    "trich": "85014021 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "84.15",
+      "84.18",
+      "84.50",
+      "85.09",
+      "85.16"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "cdc58740cd9f25773bb6920e26429dfd478f7c89d46dc12e9f31281b8a510c82"
+    }
+   }
   },
   {
    "hs": "85014029",
@@ -1967,5 +2143,136 @@
    ]
   }
  },
- "yKienWcoDayDu": false
+ "yKienWcoDayDu": false,
+ "dieuKienNut": [
+  {
+   "id": "850110~r14830",
+   "nguon": "tieuDe.850110~r14830",
+   "trich": "850110~r14830 Động cơ một chiều",
+   "dieuKienSo": [
+    {
+     "fact": "loaiDongDien",
+     "op": "TRONG",
+     "value": [
+      "MOT_CHIEU"
+     ]
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   }
+  },
+  {
+   "id": "850110~r14839",
+   "nguon": "tieuDe.850110~r14839",
+   "trich": "850110~r14839 Động cơ khác, kể cả động cơ vạn năng (một chiều/xoay chiều)",
+   "dieuKienSo": [],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   },
+   "phanConLai": true
+  },
+  {
+   "id": "8501102",
+   "nguon": "tieuDe.8501102",
+   "trich": "8501102 Động cơ bước",
+   "dieuKienSo": [
+    {
+     "fact": "kieuDongCoDien",
+     "op": "TRONG",
+     "value": [
+      "BUOC"
+     ]
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   }
+  },
+  {
+   "id": "8501105",
+   "nguon": "tieuDe.8501105",
+   "trich": "8501105 Động cơ bước",
+   "dieuKienSo": [
+    {
+     "fact": "kieuDongCoDien",
+     "op": "TRONG",
+     "value": [
+      "BUOC"
+     ]
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "c127e5477b6ada8560e0eb6e171fece3342c3b8eb0379a6ac6f992ded27e15c3"
+    }
+   }
+  },
+  {
+   "id": "8501401",
+   "nguon": "tieuDe.8501401",
+   "trich": "8501401 Công suất không quá 1 kW",
+   "dieuKienSo": [
+    {
+     "fact": "congSuat",
+     "op": "<=",
+     "value": 1,
+     "donVi": "kW"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "cdc58740cd9f25773bb6920e26429dfd478f7c89d46dc12e9f31281b8a510c82"
+    }
+   }
+  },
+  {
+   "id": "8501402",
+   "nguon": "tieuDe.8501402",
+   "trich": "8501402 Công suất trên 1 kW",
+   "dieuKienSo": [
+    {
+     "fact": "congSuat",
+     "op": ">",
+     "value": 1,
+     "donVi": "kW"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+     "ngay": "2026-10-31",
+     "bam": "cdc58740cd9f25773bb6920e26429dfd478f7c89d46dc12e9f31281b8a510c82"
+    }
+   }
+  }
+ ]
 }

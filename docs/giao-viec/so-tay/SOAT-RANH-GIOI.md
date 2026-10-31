@@ -23,6 +23,10 @@
       `DE_TRONG` / "người soát xem"). Đúng ⇒ ghi kết luận khi duyệt: `--giai-quyet=<mã>:<kết luận>` (một lần cho mỗi mục; kết luận
       "người soát xem" / rỗng không được nhận). Sai ⇒ trả về.
 
+- [ ] Mỗi cảnh báo `cong2-ten-anh-em-roi:<A>+<B>` (luật tên nguyên văn của anh em, QUY-TRINH mục 4 bước 7): kiểm giá trị `tenLoai`
+      / `dungCho` của mẫu "X và (các) bộ phận của chúng" đúng là tên ĐẦU nguyên văn của chính dòng mình (không lấy chữ của anh em,
+      không thêm chữ), và hai tên không chứa nhau. Sai ⇒ trả về.
+
 ## 2. Phạm vi vế — máy chỉ là bộ tách theo dấu hiệu, người soát vẫn đọc
 
 Với TỪNG dòng có tên và TỪNG tiêu đề có tên, đặt điều kiện cạnh chữ biểu và hỏi ba câu:
@@ -54,4 +58,5 @@ Mỗi lỗi ghi `<tệp>:<mục>` + **THU HẸP / SUY RỘNG** + chữ nguyên v
   rồi `--ap-dung --pn6=<pn6>`.
 - Không đạt ⇒ `--tra-ve --pn6=<pn6> --phien=… --ly-do="(A) <tệp>:<mục> THU HẸP/SUY RỘNG: … (B) …"` + mở issue sửa cho PN6.
 - PR soát ghi: tỉ lệ sai theo mục / theo dòng 8 số bị ảnh hưởng / theo phân nhóm; số vế máy báo và số người soát xác nhận đúng
-  (đo tỉ lệ báo oan của cổng 5); rút mẫu cho CEO soát xác suất như đợt 1–2.
+  (đo tỉ lệ báo oan của cổng 5). Đợt 1–2 có rút mẫu cho CEO soát xác suất. Từ đợt 3, CEO bỏ phiếu soát xác suất
+  (31/10/2026, AskUserQuestion trong phiên GĐ); chất lượng do máy kiểm 5 cổng + soát độc lập + đo bench khi chạy bóng.

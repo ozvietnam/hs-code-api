@@ -156,11 +156,15 @@ Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.3,
 - **Trục tên ↔ công dụng cấp dòng**: hai DÒNG anh em, một chỉ khoá tên, một có khoá công dụng, không chung khoá, chồng lấn thật ⇒
   `cong2-chong-lan-truc` — kể cả chỉ 2 anh em (940541, 940542, 841459 .10↔.30). Dòng có HOAC xét từng phương án. Không DỪNG nữa
   (#683): khai `chongLanTruc` (nhánh, trục, `cauHoiPhanBiet`, trích nguyên văn, `phanXu: null`) — QUY-TRINH mục 4a; người soạn KHÔNG
-  điền `phanXu`. Cổng 2 hạ các cặp đó thành cảnh báo `cong2-chong-lan-truc-da-khai`; đây là ngoại lệ duy nhất của "cổng 2 không nới".
+  điền `phanXu`. Cổng 2 hạ các cặp đó thành cảnh báo `cong2-chong-lan-truc-da-khai`; đây là ngoại lệ duy nhất của "cổng 2 không nới" (luật tên nguyên văn của anh em, mục dưới, không hạ lỗi thành cảnh báo mà chứng minh hai dòng loại trừ nhau).
 - **Giá trị LIET_KE định nghĩa đúng bằng các vế của tiêu đề** (8536503 `NGAT_SOC_DONG`): người soạn khai `BO_VE` có lyDo trích định
   nghĩa; người soát chấp nhận hoặc trả về. Công cụ không đổi.
-- **"X và bộ phận" nhiều anh em** (871410, 845290): giữ dạng HOAC; chồng lấn so chữ tự do (`:khong-tat-dinh`) VẪN là lỗi (cổng 2 không
-  nới ở đâu) ⇒ DỪNG; chồng lấn tất định ⇒ DỪNG.
+- **"X và bộ phận" nhiều anh em** (871410, 845290): giữ dạng HOAC. ~~chồng lấn so chữ tự do VẪN là lỗi ⇒ DỪNG~~ — **thay bằng
+  quyết định GĐ 31/10/2026 (luật tên nguyên văn của anh em)**: cặp chéo khoá `tenLoai X` ↔ `laBoPhan CO + dungCho Y` giữa hai anh em,
+  X/Y là tên đầu NGUYÊN VĂN của chính dòng mình (danh từ đầu hoặc vế "kể cả …" liền sau) và rời nhau đúng như hai giá trị `tenLoai`
+  của anh em (không ứng viên nào thoả cả hai) ⇒ cổng 2 coi là loại trừ, cảnh báo `cong2-ten-anh-em-roi`. Tên chứa nhau ("bàn đạp" ⊃
+  "Bàn"), tên không nguyên văn, tên ↔ công dụng không có laBoPhan (trục) ⇒ vẫn lỗi. Chỉ là luật chứng minh của cổng; runtime
+  không đổi. Chi tiết: QUY-TRINH mục 4 bước 7.
 - `chiHoacChuYeu` đọc thêm "(được) thiết kế chỉ để", "designed only for" (tu-vung@2; "solely designed for" đã đọc từ trước).
 - Bộ tách vế: "có dải tần số …" là một vế biên số; "có hình dạng đặc biệt hoặc thích hợp để …" là một vế khi chữ Anh xác nhận
   ("shaped or fitted for"); không chắc ⇒ vẫn tách (giữ cờ).
