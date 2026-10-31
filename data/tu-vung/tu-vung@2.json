@@ -2,7 +2,7 @@
   "phienBan": "tu-vung@2",
   "ngay": "2026-10-30",
   "nguonLoai": "CLAUDE_DUYET",
-  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570). tu-vung@2 = tu-vung@1 (53 khoá giữ NGUYÊN) + 7 khoá cho ranh giới 6→8 số mà lát 1 cần (đề xuất docs/giao-viec/so-tay/de-xuat-tu-vung-2.md) + hai luật bộ đọc #667/#675 chuyển từ mã vào dữ liệu + khoá phuongThucTruyenDan (LIET_KE VO_TUYEN | HUU_TUYEN, #606 — 851762 \"truyền dẫn dưới dạng sóng vô tuyến\").",
+  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570). tu-vung@2 = tu-vung@1 (53 khoá giữ NGUYÊN) + 7 khoá cho ranh giới 6→8 số mà lát 1 cần (đề xuất docs/giao-viec/so-tay/de-xuat-tu-vung-2.md) + hai luật bộ đọc #667/#675 chuyển từ mã vào dữ liệu + khoá phuongThucTruyenDan (LIET_KE VO_TUYEN | HUU_TUYEN, #606 — 851762 \"truyền dẫn dưới dạng sóng vô tuyến\") + hai khoá daXuLyBeMat (CO_KHONG, \"đã được xử lý bề mặt\") và nhienLieu (LIET_KE GA | DIEN, \"bằng ga\") (#577 — 848180 .97, .30).",
   "tienThan": {
     "phienBan": "tu-vung@1",
     "sha256": "67de4948a117f635b731d157b103e1082c6eec56738baef1e295a4352a5ed75e",
@@ -24,11 +24,11 @@
     "tu-vung@2: khoá SO đếm (demSo: soLoi, soSoi) đọc cả số chữ (soChu: \"hai\", \"two\", \"两\"…; số ghép \"mười hai\", \"十二\" ⇒ không đọc) và chữ so sánh sau số/đơn vị (soSanhDem: \"hoặc hơn\", \"trở lên\", \"or more\", \"及以上\" ⇒ >=). donViCachRieng: viết \"2 lõi\" (có cách), khoá @1 vẫn \"75000W\".",
     "tu-vung@2: tiLe (docPhanSo) đọc phân số \"1/10\", \"1:8\" chỉ khi có chữ tỉ lệ đứng trước (cachDoc) hoặc tên kích thước đứng ngay sau (phanSo.sauLa: \"đường kính\"…); không suy tỉ lệ từ hai kích thước rời. \"1/2 inch\", \"50/60Hz\" ⇒ CHUA_BIET.",
     "tu-vung@2: LIET_KE cumDaiThang (phuongPhapCheTao): cụm chồng nhau thì cụm dài thắng (\"đột dập và kéo giãn\" thắng \"dập\", \"kéo giãn\"); hai phương pháp ở hai chỗ khác nhau ⇒ CHUA_BIET + ungVien.",
-    "tu-vung@2: 8 khoá mới (7 khoá #570 + phuongThucTruyenDan #606) mang nguonLoai AI_DA_KIEM (máy kiểm + test) — CHƯA chấm duyệt độc lập (chamDuyetDocLap.khoaChuaCham); nâng CLAUDE_DUYET sau phiên soát độc lập."
+    "tu-vung@2: 10 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577) mang nguonLoai AI_DA_KIEM (máy kiểm + test) — CHƯA chấm duyệt độc lập (chamDuyetDocLap.khoaChuaCham); nâng CLAUDE_DUYET sau phiên soát độc lập."
   ],
   "chamDuyetDocLap": {
     "trangThai": "CHUA_CHAM",
-    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 8 khoá mới (7 khoá #570 + phuongThucTruyenDan #606) chưa có phiên chấm độc lập.",
+    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 10 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180) chưa có phiên chấm độc lập.",
     "khoaChuaCham": [
       "chiHoacChuYeu",
       "thietKeChoTreEm",
@@ -37,7 +37,9 @@
       "soSoi",
       "tiLe",
       "phuongPhapCheTao",
-      "phuongThucTruyenDan"
+      "phuongThucTruyenDan",
+      "daXuLyBeMat",
+      "nhienLieu"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -4361,6 +4363,139 @@
         "zh": "设备是通过无线电波（无线）还是通过线路（有线）传输信号？"
       },
       "ghiChu": "Phương thức truyền dẫn của thiết bị/hệ thống viễn thông (#606, 851762): chữ biểu \"truyền dẫn dưới dạng sóng vô tuyến\" (radio-telephony/telegraphy), \"Thiết bị phát và thu sóng vô tuyến\" (radio transmitters), \"hệ thống hữu tuyến\" (line systems). \"có dây\" không đọc khi là dây đeo/da/kéo/buộc… (dây vật lý, không phải đường truyền); \"line\" trần không đọc (dây chuyền, in-line) — chỉ \"line system(s)\", \"carrier-current/digital line\". \"cordless\" không đọc (trùng nguonNangLuong PIN_AC_QUY).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "daXuLyBeMat",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã được xử lý bề mặt",
+      "nhanEn": "surface treated",
+      "nhanZh": "表面经过处理",
+      "cachDoc": {
+        "vi": [
+          "(?:đã\\s+(?:được\\s+)?)?xử\\s+lý\\s+bề\\s+mặt"
+        ],
+        "en": [
+          "surface[- ]treated",
+          "surface\\s+treatment"
+        ],
+        "zh": [
+          "表面处理",
+          "表面经过处理",
+          "表面已处理"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [],
+        "en": [
+          "untreated\\s+surface",
+          "without\\s+surface\\s+treatment"
+        ],
+        "zh": [
+          "表面未处理"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã xử lý bề mặt",
+        "viPhuDinh": "chưa xử lý bề mặt"
+      },
+      "cauHoi": {
+        "vi": "Bề mặt hàng đã được xử lý (surface treated) hay chưa?",
+        "zh": "产品表面是否经过处理？"
+      },
+      "ghiChu": "Chữ biểu 8481.80.97 \"Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken\" (EN \"surface treated or made of stainless steel or nickel\", #577 848180). Chỉ đọc đúng cụm \"xử lý bề mặt\" / \"surface treated|treatment\" / 表面处理 — không suy từ tên lớp phủ (mạ, sơn, phủ…) vì chữ biểu không liệt kê; \"chưa/không xử lý bề mặt\" là phủ định (phuDinh).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "nhienLieu",
+      "kieu": "LIET_KE",
+      "nhanVi": "nhiên liệu / nguồn nhiệt (bếp, lò)",
+      "nhanEn": "fuel (stoves, ovens)",
+      "nhanZh": "燃料（灶具、烤箱）",
+      "giaTriHopLe": [
+        "GA",
+        "DIEN"
+      ],
+      "moTaGiaTri": {
+        "GA": {
+          "nhanVi": "ga (khí đốt)",
+          "nhanEn": "gas",
+          "nhanZh": "燃气",
+          "cachDoc": {
+            "vi": [
+              "bằng\\s+ga",
+              "dùng\\s+ga",
+              "chạy\\s+ga",
+              "đốt\\s+ga",
+              "bếp\\s+ga",
+              "lò\\s+(?:nướng\\s+)?ga",
+              "khí\\s+đốt"
+            ],
+            "en": [
+              "gas[- ](?:fired|burning|powered)",
+              "gas\\s+(?:stoves?|cookers?|ranges?|ovens?|hobs?|burners?|grills?)"
+            ],
+            "zh": [
+              "燃气",
+              "煤气"
+            ]
+          },
+          "cachViet": "dùng ga"
+        },
+        "DIEN": {
+          "nhanVi": "điện",
+          "nhanEn": "electric",
+          "nhanZh": "电",
+          "cachDoc": {
+            "vi": [
+              "bếp\\s+(?:điện|từ|hồng\\s+ngoại)",
+              "lò\\s+(?:nướng\\s+)?điện",
+              "(?:đun|nấu|nướng)\\s+bằng\\s+điện"
+            ],
+            "en": [
+              "electric\\s+(?:stoves?|cookers?|ranges?|ovens?|hobs?|grills?)",
+              "induction\\s+(?:cookers?|hobs?)"
+            ],
+            "zh": [
+              "电炉",
+              "电磁炉",
+              "电烤箱",
+              "电陶炉"
+            ]
+          },
+          "cachViet": "dùng điện"
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Bếp/lò mà hàng dùng cho (hoặc chính hàng) đốt bằng ga (khí đốt) hay dùng điện?",
+        "zh": "该产品（或其所用于的灶具/烤箱）使用燃气还是电？"
+      },
+      "ghiChu": "Nhiên liệu / nguồn nhiệt của bếp, lò (#577 848180 .30 \"các bếp nấu hoặc bếp có lò nướng bằng ga\", EN \"gas stoves or ranges\": \"bằng ga\" là định ngữ CHUNG của cả hai danh từ). Khoá @1 nguonNangLuong (pin / điện lưới / quang điện) giữ nguyên — @1 khoá theo bench, không thêm giá trị. Không đọc \"ga\" trần, \"có ga\" (đồ uống có ga), \"gas\" trần (van gas, bình gas — khí là lưu chất, không phải nhiên liệu đốt của hàng), \"bằng gang\"; \"hoạt động bằng ga\" của bộ phận rót bia (8481804, ga là khí đẩy) cũng đọc GA — khoá chỉ làm điều kiện ở .30, đi cùng dungCho bếp. \"bằng điện\" trần không đọc (thường là cách điều khiển — cachDieuKhien / hoatDongBangDien).",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],

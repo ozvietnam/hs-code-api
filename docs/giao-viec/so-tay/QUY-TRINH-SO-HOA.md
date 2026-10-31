@@ -255,6 +255,9 @@ Khi `--kiem` báo `cong2-chong-lan-truc:<nút>:<các nhánh>` và bạn đã ch�
    ```
    - `truc`: `TEN_LOAI` khi điều kiện RIÊNG của nhánh có khoá tên (`tenLoai`); `CONG_DUNG` khi có khoá công dụng (`congDung`,
      `dungCho`). Máy đối chiếu với khoá thật (`cong3-chong-lan-truc-truc-lech`). Mọi nhánh cùng một trục ⇒ không phải trục, DỪNG.
+     `DAC_DIEM` (vòng 6, quyết định GĐ 31/10 — 848180) khi nhánh chia theo khoá ĐẶC ĐIỂM tất định CO_KHONG/LIET_KE: 8481805 "Van và
+     vòi có khoang pha trộn lưu chất" (`coKhoangPhaTron`), r14573 "Van điều khiển bằng khí nén" (`cachDieuKhien`). Cùng nghĩa: chồng
+     lấn giữa nhánh khác trục ⇒ chưa chốt, hỏi `cauHoiPhanBiet`; chỉ `phanXu` kiểm được mới chọn; `lib/gir.js` không trích.
    - `trich`: chữ biểu NGUYÊN VĂN của chính từng nhánh (như `trich` của mục) — máy kiểm bằng cùng bộ kiểm của cổng 3.
    - `cauHoiPhanBiet`: một câu hỏi tiếng Việt, viết TỪ chữ biểu, giúp người khai/chuyên gia nói hàng thuộc nhánh nào; kết thúc
      bằng `?`. Không trả lời hộ, không nêu nhánh nào "ưu tiên".
@@ -272,7 +275,7 @@ Khi `--kiem` báo `cong2-chong-lan-truc:<nút>:<các nhánh>` và bạn đã ch�
 | Tầng không mã KHÔNG biểu diễn được | `--goi` in `!!! DỪNG — … TẦNG KHÔNG MÃ`; lỗi `cong1-tang-khong-ma-khong-dat` (tầng có nút `<pn6>~r<dòng>` thì khai `dieuKienNut`, không DỪNG) |
 | Tiêu đề bị lược tên / tầng bị lược | `CHẶN: tieu-de-bi-luoc-ten`; lỗi `cong1-tieu-de-bi-luoc-ten`, `cong1-tang-bi-luoc` |
 | Thiếu khoá từ vựng | spec dùng khoá lạ (`THIEU_KHOA_TU_VUNG`, mã 3), hoặc bạn ghi ghi chú `THIEU_KHOA_TU_VUNG` |
-| Chồng lấn theo trục mà không khai được `chongLanTruc` (mọi nhánh cùng trục, nhánh không có khoá tên/công dụng) | `cong0-chong-lan-truc-mot-truc`, `cong3-chong-lan-truc-truc-lech` không sửa được (khai được ⇒ mục 4a, không DỪNG) |
+| Chồng lấn theo trục mà không khai được `chongLanTruc` (mọi nhánh cùng trục, nhánh không có khoá tên/công dụng/đặc điểm CO_KHONG·LIET_KE) | `cong0-chong-lan-truc-mot-truc`, `cong3-chong-lan-truc-truc-lech` không sửa được (khai được ⇒ mục 4a, không DỪNG) |
 | Phân nhóm có cờ tiền lệ mà bảng hiệu chỉnh CHƯA CÓ MỤC cho PN6 | `[CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — … chưa có mục …]`; DỪNG `can-bang-hieu-chinh-tien-le:<pn6>:chua-co` (bảng đã có mục ⇒ không DỪNG) |
 | Dòng không tới được mà không sửa được | lỗi `cong2-dong-khong-toi-duoc` khi giá trị đã đúng chữ và anh em cùng khoá — KHÔNG đổi khoá để né (bước 3.3) |
 | Cổng nào đó chỉ xanh được nếu bịa chữ / thêm điều kiện chữ không nói | bất kỳ |
