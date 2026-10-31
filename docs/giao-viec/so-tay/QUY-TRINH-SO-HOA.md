@@ -148,9 +148,37 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
    "khác" cuối dòng.
 5. Không bước nào khớp ⇒ DỪNG.
 6. **Chồng lấn theo TRỤC** (một nhánh chia theo tên cạnh nhánh chia theo công dụng — 392690, 401699, 854442 "Cáp ắc qui" ↔ "Dùng
-   cho viễn thông…") ⇒ `cong2-chong-lan-truc`, DỪNG. Máy bắt cả ở cấp TIÊU ĐỀ/TẦNG (nhánh chồng ≥ 2 nhánh anh em khi cụm có tiêu
+   cho viễn thông…") ⇒ `cong2-chong-lan-truc`. Máy bắt cả ở cấp TIÊU ĐỀ/TẦNG (nhánh chồng ≥ 2 nhánh anh em khi cụm có tiêu
    đề, hoặc hai tiêu đề chia theo tên ↔ công dụng). Khai `chongLanVanBan` KHÔNG gỡ được trục — kể cả khai đủ mọi cặp; cặp khai
    trong cụm trục thành lỗi `cong2-chong-lan-van-ban-truc`. Thấy nhiều cặp chồng cùng một cặp tiêu đề ⇒ nghĩ tới trục trước.
+   **Không DỪNG nữa (#683):** làm theo mục 4a.
+
+### 4a. Chồng lấn trục — khai `chongLanTruc` (#683)
+
+Khi `--kiem` báo `cong2-chong-lan-truc:<nút>:<các nhánh>` và bạn đã chắc chồng lấn KHÔNG do khoá/biên sai (bước 1–3 ở trên):
+
+1. Xoá mọi cặp `chongLanVanBan` của cụm đó (nếu có).
+2. Thêm vào spec — MỘT mục cho cả cụm, các nhánh là anh em cùng cha (nút in sau mã lỗi + các nhánh in sau dấu `:`):
+   ```json
+   "chongLanTruc": [{
+     "nhanh": ["8544421", "8544422", "8544423"],
+     "truc": { "8544421": "CONG_DUNG", "8544422": "CONG_DUNG", "8544423": "TEN_LOAI" },
+     "cauHoiPhanBiet": "Cáp này là \"Cáp ắc qui\" (8544423) hay là cáp \"Dùng cho viễn thông\" (8544421/8544422)? …",
+     "trich": { "8544421": "Dùng cho viễn thông, điện áp không quá 80 V", "8544422": "…", "8544423": "Cáp ắc qui" },
+     "phanXu": null
+   }]
+   ```
+   - `truc`: `TEN_LOAI` khi điều kiện RIÊNG của nhánh có khoá tên (`tenLoai`); `CONG_DUNG` khi có khoá công dụng (`congDung`,
+     `dungCho`). Máy đối chiếu với khoá thật (`cong3-chong-lan-truc-truc-lech`). Mọi nhánh cùng một trục ⇒ không phải trục, DỪNG.
+   - `trich`: chữ biểu NGUYÊN VĂN của chính từng nhánh (như `trich` của mục) — máy kiểm bằng cùng bộ kiểm của cổng 3.
+   - `cauHoiPhanBiet`: một câu hỏi tiếng Việt, viết TỪ chữ biểu, giúp người khai/chuyên gia nói hàng thuộc nhánh nào; kết thúc
+     bằng `?`. Không trả lời hộ, không nêu nhánh nào "ưu tiên".
+   - **`phanXu` LUÔN `null`.** Chỉ Claude/người soát điền, và chỉ khi có nguồn kiểm được: chú giải nguyên văn (`CHU_GIAI`), tiền lệ
+     qua bảng hiệu chỉnh (`TIEN_LE`), hoặc quyết định người duyệt (`NGUOI_DUYET {nguoi, ngay, quyetDinh, kenh}`). Spec có
+     `phanXu` khác `null` ⇒ `spec-khoa-cam`. Không tự suy "mô tả cụ thể nhất" (GIR 3(a)), không ghi nhãn GIR.
+3. `--ap-spec` rồi `--kiem`: cặp chồng giữa nhánh khác trục hết lỗi, còn cảnh báo `cong2-chong-lan-truc-da-khai` (giữ). Cặp ngoài
+   cụm, cặp cùng trục vẫn là lỗi — sửa theo bước 1–3. Xoá ghi chú `DUNG` cũ của cụm nếu cổng đã xanh.
+4. Lúc chạy, hàng thoả cả hai nhánh ⇒ hồ sơ trả chưa chốt `chong-lan-truc` kèm `cauHoiPhanBiet` — máy không tự chọn nhánh.
 
 ## 5. Điều kiện DỪNG (không tự xử lý — báo Claude)
 
@@ -159,7 +187,7 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
 | Tầng không mã KHÔNG biểu diễn được | `--goi` in `!!! DỪNG — … TẦNG KHÔNG MÃ`; lỗi `cong1-tang-khong-ma-khong-dat` (tầng có nút `<pn6>~r<dòng>` thì khai `dieuKienNut`, không DỪNG) |
 | Tiêu đề bị lược tên / tầng bị lược | `CHẶN: tieu-de-bi-luoc-ten`; lỗi `cong1-tieu-de-bi-luoc-ten`, `cong1-tang-bi-luoc` |
 | Thiếu khoá từ vựng | spec dùng khoá lạ (`THIEU_KHOA_TU_VUNG`, mã 3), hoặc bạn ghi ghi chú `THIEU_KHOA_TU_VUNG` |
-| Chồng lấn theo trục | lỗi `cong2-chong-lan-truc` |
+| Chồng lấn theo trục mà không khai được `chongLanTruc` (mọi nhánh cùng trục, nhánh không có khoá tên/công dụng) | `cong0-chong-lan-truc-mot-truc`, `cong3-chong-lan-truc-truc-lech` không sửa được (khai được ⇒ mục 4a, không DỪNG) |
 | Phân nhóm có cờ tiền lệ mà bảng hiệu chỉnh CHƯA CÓ MỤC cho PN6 | `[CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — … chưa có mục …]`; DỪNG `can-bang-hieu-chinh-tien-le:<pn6>:chua-co` (bảng đã có mục ⇒ không DỪNG) |
 | Dòng không tới được mà không sửa được | lỗi `cong2-dong-khong-toi-duoc` sau khi đã thử đổi khoá |
 | Cổng nào đó chỉ xanh được nếu bịa chữ / thêm điều kiện chữ không nói | bất kỳ |
@@ -199,6 +227,7 @@ Closes #<số issue>
 - phanConLai: <mã | không>
 - HOAC: <mã | không>
 - chongLanVanBan: <cặp + một câu lý do | không>
+- chongLanTruc: <nhánh + trục + câu hỏi phân biệt | không> (phanXu luôn null)
 
 ### Cảnh báo còn lại và cách tôi xử lý
 - <mã cảnh báo> — <đã đối chiếu tay / ghi chú gì>
@@ -230,8 +259,9 @@ Người soát: Claude
 | Liệt kê + "Loại khác, <vế>" + trích lược | [`853650`](../../../data/ho-so/ranh-gioi/853650.json) | `LIET_KE`, lược "…" tiêu đề dài |
 | Tiêu đề lồng nhau | [`853669`](../../../data/ho-so/ranh-gioi/853669.json) | Loại khác ở nhiều tầng |
 | Chữ biểu tự chồng lấn (khai đúng) | [`853641`](../../../data/ho-so/ranh-gioi/853641.json), [`853620`](../../../data/ho-so/ranh-gioi/853620.json) | `chongLanVanBan` trích hai nhánh |
+| Chồng lấn trục tên ↔ công dụng (khai đúng) | [`854442`](../../../data/ho-so/ranh-gioi/854442.json) ("Cáp ắc qui" ↔ "Dùng cho viễn thông…") | `chongLanTruc`, `phanXu: null` |
 | Phần còn lại có tên | [`850131`](../../../data/ho-so/ranh-gioi/850131.json) ("Động cơ khác"), [`848190`](../../../data/ho-so/ranh-gioi/848190.json) ("Thân, loại khác") | `phanConLai` |
 | Tầng không mã có tên | [`848310`](../../../data/ho-so/ranh-gioi/848310.json), [`853690`](../../../data/ho-so/ranh-gioi/853690.json) | `dieuKienNut` cho `<pn6>~r<dòng>` |
-| ĐỎ đúng (không ép) | [`841459`](../../../data/ho-so/ranh-gioi/841459.json), [`854442`](../../../data/ho-so/ranh-gioi/854442.json) (thiếu khoá từ vựng), [`950300`](../../../data/ho-so/ranh-gioi/950300.json), [`850110`](../../../data/ho-so/ranh-gioi/850110.json) (dòng không tới được do giới hạn bộ so chữ), [`392690`](../../../data/ho-so/ranh-gioi/392690.json), [`401699`](../../../data/ho-so/ranh-gioi/401699.json) (chồng lấn theo trục) | khi nào để đỏ và DỪNG |
+| ĐỎ đúng (không ép) | [`841459`](../../../data/ho-so/ranh-gioi/841459.json), [`950300`](../../../data/ho-so/ranh-gioi/950300.json), [`850110`](../../../data/ho-so/ranh-gioi/850110.json) (dòng không tới được do giới hạn bộ so chữ), [`392690`](../../../data/ho-so/ranh-gioi/392690.json), [`401699`](../../../data/ho-so/ranh-gioi/401699.json) (chồng lấn theo trục, chưa khai `chongLanTruc`) | khi nào để đỏ và DỪNG |
 
-Các bản trên là JSON nháp do máy sinh; spec tương ứng của bạn chỉ chứa phần `dieuKienSo` / `ghiChuSoan` / `chongLanVanBan`.
+Các bản trên là JSON nháp do máy sinh; spec tương ứng của bạn chỉ chứa phần `dieuKienSo` / `ghiChuSoan` / `chongLanVanBan` / `chongLanTruc`.
