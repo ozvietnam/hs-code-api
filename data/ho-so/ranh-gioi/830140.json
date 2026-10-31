@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "830140",
+  "nhom": "8301",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@1",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode:glm-5.3:20261030T1546#soan-830140",
+    "ngay": "2026-10-30"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "83014010",
+      "nguon": "tax.83014010",
+      "trich": "83014010 - - Còng, xích tay",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Còng",
+            "xích tay"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "83014020",
+      "nguon": "tax.83014020",
+      "trich": "83014020 - - Khóa cửa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khóa cửa"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "83014090",
+      "nguon": "tax.83014090",
+      "trich": "83014090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "83014010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83014010 \"83014010 - - Còng, xích tay\": hai tên gọi ngăn bằng dấu phẩy ⇒ tenLoai [\"Còng\", \"xích tay\"] (mảng = HOẶC, mỗi chuỗi con nguyên văn của câu trích). So chữ tự do (tenLoai) — không tất định."
+    },
+    {
+      "ma": "83014020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83014020 \"83014020 - - Khóa cửa\" ⇒ tenLoai \"Khóa cửa\" (chuỗi con nguyên văn). Cùng khoá tenLoai với 83014010 theo quy trình 3.3. So chữ tự do — không tất định."
+    },
+    {
+      "ma": "83014090",
+      "loai": "DE_TRONG",
+      "ghiChu": "tax.83014090 \"83014090 - - Loại khác\" — dòng \"Loại khác\" trần: không ghi điều kiện, máy tự phủ định hai anh em đứng trước."
+    }
+  ]
+}
