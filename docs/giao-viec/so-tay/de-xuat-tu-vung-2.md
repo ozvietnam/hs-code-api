@@ -57,3 +57,12 @@ spec dùng khoá không có trong `tu-vung@1` bị từ chối với `THIEU_KHOA
 
 Bộ đọc cũng đổi hai điểm không cần dữ liệu: cụm giá trị KHÔNG bị phủ định ("không hoàn chỉnh") không còn được đọc thành giá trị
 KHÔNG (bỏ, không đoán); bằng chứng phủ định chỉ gồm chữ phủ định khi giá trị thật sự đến từ phủ định.
+
+## Bổ sung #606 (31/10/2026) — `phuongThucTruyenDan`
+
+Đã thêm vào `tu-vung@2` (không đụng `tu-vung@1` — khoá bench): `phuongThucTruyenDan` LIET_KE `VO_TUYEN` ("sóng vô tuyến", "vô
+tuyến", "không dây", "radio"; EN radio, wireless; ZH 无线) | `HUU_TUYEN` ("hữu tuyến", "có dây" trừ dây đeo/da/kéo…; EN wired,
+wireline, line system(s), carrier-current/digital line; ZH 有线). Lý do: 851762 .53/.61/.92 "điện báo hoặc điện thoại truyền dẫn
+dưới dạng sóng vô tuyến" — định ngữ chung của hai danh từ (EN "radio-telephony or radio-telegraphy") cần một điều kiện riêng.
+`nguonLoai` AI_DA_KIEM, nằm trong `chamDuyetDocLap.khoaChuaCham` (chờ chấm độc lập).
+
