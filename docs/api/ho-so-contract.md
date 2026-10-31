@@ -49,7 +49,7 @@ Bên gọi khai = sự thật **nguồn `KHACH`** (bằng chứng = chính chu�
 | `packaging` | chuỗi ≤ 200 | `hoSo.nhanDien.quyCachDongGoi` |
 | `origin` | chuỗi | **không** vào hồ sơ/chuỗi mô tả (tờ khai nhập khai xuất xứ ở ô riêng; "xuất xứ" bị cấm trong chuỗi). Đường cũ dùng như trước |
 | `brand`, `model` | chuỗi | `duKien[]` `nhanHieu` / `model` nguồn `KHACH` (`"không nhãn hiệu"` ⇒ `KHONG_HIEU`) |
-| `duKien[]` | `{fact, giaTri, donVi?, nguon?, bangChung?}` | giữ `nguon` của bên gọi (`KHACH`\|`NSX`\|`ANH`\|`AI_CHUA_KIEM`); `TB_TCHQ`/`SUY_RA`/khoá ngoài từ vựng bị loại |
+| `duKien[]` | `{fact, giaTri, donVi?, nguon?, bangChung?, tuongTu?}` | giữ `nguon` của bên gọi (`KHACH`\|`NSX`\|`ANH`\|`AI_CHUA_KIEM`); `TB_TCHQ`/`SUY_RA`/khoá ngoài từ vựng bị loại; `tuongTu {<khoaTuongTu>: bool}` chỉ trên `tenLoai` — trả lời câu hỏi `TUONG_TU` (mục 4) |
 | `hoSoId` | uuid | **không** tra cứu (bộ não không lưu hồ sơ): luôn dựng lại; ghi lại ở `hoSoMeta.hoSoIdTruoc` |
 | `hoSo` | — | **bỏ qua hoàn toàn** (ranh giới tin cậy §8.1) |
 
@@ -93,7 +93,7 @@ Cũng áp cho tờ khai `XUAT` (khuôn 2.69 chưa làm ở lát 1), ranh giới 
 | `moTaBanNhap` | chuỗi có chỗ trống `[cần: <nhãn Việt>]` |
 | `nhanBanNhap` | "BẢN NHÁP — hồ sơ chưa đủ căn cứ, không dùng để khai. …" |
 | `lyDoBanNhap[]` | `THIEU_DU_KIEN` \| `MAU_THUAN` \| `CAN_CHUYEN_GIA` \| `khuon-2.69-chua-ho-tro` \| `thieu-du-kien` \| `ranh-gioi-chua-co` \| `trich-khong-nguyen-van` \| `vi-pham` \| `ten-hang-vuot-o` |
-| `cauHoi[]` | `{fact, nhanVi, vi, zh, vaoRanhGioi[]…}` hoặc `{loai: 'PHAN_XU_TIEN_LE', …}` hoặc `{loai: 'PHAN_BIET_CHONG_LAN_TRUC', …}` (mục 4) — cùng bộ với `hoSo.ketLuan.cauHoi` |
+| `cauHoi[]` | `{fact, nhanVi, vi, zh, vaoRanhGioi[]…}` hoặc `{loai: 'PHAN_XU_TIEN_LE', …}` hoặc `{loai: 'PHAN_BIET_CHONG_LAN_TRUC', …}` hoặc `{loai: 'TUONG_TU', …}` (mục 4) — cùng bộ với `hoSo.ketLuan.cauHoi` |
 | `maTroToi` | chỉ khi `MAU_THUAN` và xác định được dòng anh em duy nhất |
 | `customsDescription` | = `moTaBanNhap` |
 | `compliance` | `level: 'REJECT'`, `score ≤ 39`, `passesCustomsAudit: false`, cảnh báo `HO_SO_BAN_NHAP` (error) |
@@ -132,6 +132,18 @@ trục, chưa phân xử:
 Dữ kiện chỉ thoả một phía ⇒ đường thường. `phanXu` (chỉ Claude/người soát ghi, nguồn `CHU_GIAI` nguyên văn | `TIEN_LE` qua bảng
 hiệu chỉnh | `NGUOI_DUYET`) ⇒ máy theo `chon`: mục nhánh mang `phanXu` + `daPhanXu` của cụm ghi nguồn; mã ở nhánh không được chọn ⇒
 `MAU_THUAN` (`tatDinh: false`) + `maTroToi`. Phân xử không phải GIR, không vào `canCuPhapLy`.
+
+**Vế mở "X, Y và các loại tương tự"** (#577 vòng 7, quyết định GĐ — op `TUONG_TU` của `lib/dieu-kien-so.js`): ranh giới ghi
+`{fact: 'tenLoai', op: 'TUONG_TU', value: [<các hàng NÊU TÊN>]}`. Tên hàng khớp một hàng nêu ⇒ `CO` như `TEN_LOAI`; tên khác ⇒
+**không** `MAU_THUAN` (không bao giờ loại vì khác tên) mà `THIEU` + câu hỏi riêng:
+- `ketLuan.cauHoi[]` thêm `{loai: 'TUONG_TU', fact: 'tenLoai', khoaTuongTu, giaTriNeu[], tenDaDoc, vaoRanhGioi[], vi, zh,
+  cachTraLoi}` — vd `vi: 'Hàng "xe chòi chân bốn bánh" có thuộc loại tương tự "Xe đạp ba bánh", "xe đẩy", "xe có bàn đạp"
+  không? …'`; không kèm câu hỏi tên hàng chung (`fact: 'tenLoai'`) khi đã có tên; `ketLuan.trangThai` ít nhất `THIEU_DU_KIEN`.
+- **Trả lời**: gửi lại `duKien[] {fact: 'tenLoai', giaTri: <tenDaDoc>, tuongTu: {<khoaTuongTu>: true|false}}` (chỉ trên `tenLoai`,
+  giá trị boolean; sai kiểu ⇒ bỏ trường, ghi `llmBiLoai`/`biLoai` lý do `ben-goi-tuong-tu-sai-kieu`). `true` ⇒ ranh giới `CO`,
+  `false` ⇒ `MAU_THUAN` — cả hai `tatDinh: false`, mục đường đi mang `tuongTuTheoTraLoi: true`.
+- `canCu.girRulesApplied` **không** trích ranh giới có `TUONG_TU` khi chưa đối chiếu ra `CO` bằng tên nêu, hay khi `CO` theo câu trả
+  lời (`tuongTuTheoTraLoi`) — chữ biểu không nêu tên hàng đó.
 
 **Lọc theo quyền** (`locTheoQuyen`, mọi endpoint, trước khi trả): chỉ khoá trong `HS_INTERNAL_CALLERS` (mặc định `erp`) nhận
 `MO_TA_GIONG_MA_KHAC` và số đếm kho tờ khai Oz; `cong-oz` (chặn cứng), `HS_API_TOKEN`, lượt công khai **không bao giờ** nhận, ở

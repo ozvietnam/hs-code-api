@@ -87,7 +87,18 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
      for/of (853710 .30 "dịch chuyển, xử lý và kẹp giữ" ↔ "for transport, handling and storage" — một máy làm đủ các việc); dấu
      phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or (761699 .30 "Đồng xèng, hình tròn" ↔ "Slugs, round,"); "có hoặc
      không …"; giá trị có mã HS ("84.29 hoặc 84.30" — máy đã đọc HOẶC). Liệt kê TÊN HÀNG nối "và" ("Xe đạp ba bánh, xe đẩy, xe có
-     bàn đạp và …") vẫn là danh sách hàng thay thế ⇒ mảng.
+     bàn đạp và …") vẫn là danh sách hàng thay thế ⇒ mảng. **Vòng 7 (soát đợt 4 #711):** máy bắt cả HAI tên hàng nối "và" khi
+     chữ Anh cùng vế nối hai danh từ đầu bằng and/or (vế trước số nhiều): 392620 .20 "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads
+     or shields" ⇒ tenLoai ["Miếng đệm","miếng bảo vệ"] + tenLoai "vai" (định ngữ chung, điều kiện riêng cùng khoá = VÀ); 845290 .11
+     "Thân trên và thân dưới máy" ↔ "Arms and beds" ⇒ ["Thân trên","thân dưới", …]; 851762 .10 "phát và thu" ↔ "Radio transmitters
+     and radio receivers" ⇒ ["phát","thu"]. Máy KHÔNG báo danh từ ghép một hàng (.52 "Thiết bị phát và thu" ↔ "Transmission and
+     reception apparatus"; 950300 .91 "bộ đồ chơi tạo chữ và tập nói" ↔ "word making and talking sets") — giữ một chuỗi.
+   - **Vế mở "X, Y và các loại tương tự" ⇒ op `TUONG_TU`** (quyết định GĐ vòng 7): `{"fact": "tenLoai", "op": "TUONG_TU", "value":
+     ["X", "Y"]}` — value là các hàng NÊU TÊN nguyên văn đứng trước cụm "… tương tự" (KHÔNG chứa chữ "tương tự": giá trị đó chết ⇒
+     `cong5-gia-tri-tuong-tu`). Giới hạn chung ("dùng cho Z") là điều kiện riêng: 761699 .40 "Ống chỉ, lõi suốt, guồng quay tơ và sản
+     phẩm tương tự dùng cho sợi dệt" ⇒ `tenLoai TUONG_TU ["Ống chỉ","lõi suốt","guồng quay tơ"]` + `dungCho "sợi dệt"`. Giới hạn chỉ của
+     hàng tương tự (EN "similar wheeled toys") ⇒ HOAC: 950300 .10 ⇒ `HOAC [[tenLoai TEN_LOAI ["Xe đạp ba bánh","xe đẩy","xe có bàn
+     đạp"]], [tenLoai TUONG_TU [ba tên đó], coBanh CO], [tenLoai TEN_LOAI "xe của búp bê"]]`. Lúc chạy tên khác ⇒ hỏi, không TRÁI.
    - chất liệu ⇒ `{"fact": "chatLieu", "op": "LA", "value": "<vật liệu>", "viTri": "<nếu chữ nói vị trí>"}`.
 3. **Các anh em cùng tầng dùng CÙNG khoá** khi chữ cho phép (vd đều `tenLoai`, hoặc đều `loaiCongTac`) — giảm chồng lấn giả.
    **Không đổi sang khoá khác để né cảnh báo** (vòng 4, lỗi lặp lại ở #620–#647): chữ "dùng cho …" ở tiêu đề và ở dòng con đều là
@@ -129,8 +140,9 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
       cần phủ.
     - **Vế MỞ** ("… và các loại tương tự", "và các thiết bị tương tự", "và bộ phận của chúng", "và các loại … khác") ⇒ KHÔNG liệt kê
       đóng danh sách đứng trước nó thành điều kiện (quy ước 392690) — làm vậy là **HẸP hơn chữ** ⇒ `cong5-ve-mo-bi-bo`. Hai cách đúng:
-      phủ chính vế mở ("X và bộ phận của chúng" ⇒ `{"op":"HOAC","phuongAn":[[tenLoai "X"],[laBoPhan CO, dungCho "X"]]}`), hoặc bỏ điều
-      kiện liệt kê rồi miễn vế giới hạn chứa danh sách bằng `BO_VE` (dưới).
+      phủ chính vế mở ("X và bộ phận của chúng" ⇒ `{"op":"HOAC","phuongAn":[[tenLoai "X"],[laBoPhan CO, dungCho "X"]]}`; "X, Y và các
+      loại tương tự" ⇒ `tenLoai TUONG_TU ["X","Y"]` — vòng 7, bước 3.2), hoặc bỏ điều kiện liệt kê rồi miễn vế giới hạn chứa danh sách
+      bằng `BO_VE` (dưới). **Không** "phủ" vế mở bằng giá trị chứa chữ "tương tự" ("đồ chơi tương tự có bánh") ⇒ `cong5-gia-tri-tuong-tu`.
     - **Định ngữ chung** đi với MỌI danh từ đầu liên hợp — đối chiếu chữ Anh của cùng dòng: "Connection and contact elements **for wires
       and cables**" ⇒ "Đầu nối và các bộ phận … cho dây dẫn và cáp" là định ngữ CHUNG: tenLoai ["Đầu nối","các bộ phận"] + một điều kiện
       riêng cho "dây dẫn và cáp", không nhét định ngữ vào một giá trị tenLoai. "Fans and handscreens" ⇒ "kéo bằng tay" chỉ của màn che:
@@ -234,6 +246,12 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
      hàng thoả cả hai (phụ kiện quần áo búp bê dùng cho xe điện) động cơ vẫn thấy hai dòng, không tự chọn — hỏi (cùng lớp khoảng
      trống đã chấp nhận của #692/#698, hướng an toàn).
    - Còn lỗi sau luật này ⇒ sửa theo bước 1–5 ở trên; không khai `chongLanVanBan` cho chồng lấn do bộ so chữ, không đổi khoá để né.
+8. **Vế mở TUONG_TU** (quyết định GĐ vòng 7, #711): dòng "X, Y và các loại tương tự" viết bằng `tenLoai TUONG_TU` (bước 3.2) KHÔNG
+   chồng lấn tất định với anh em nêu tên khác: tên của anh em ("Búp bê", "Nhôm bịt đầu ống") cho dòng TUONG_TU kết quả CHƯA BIẾT
+   (lúc chạy hỏi "có thuộc loại tương tự … không?"), không THOẢ. Máy ghi cảnh báo `cong2-tuong-tu-chua-chot:<A>+<B>` cho người soát —
+   giữ, **không** khai `chongLanTruc`/`chongLanVanBan` cho cặp đó (761699 bị trả về vì cụm `chongLanTruc` bảy nhánh sinh ra từ chính cách
+   biểu diễn). Chồng lấn THẬT vẫn là lỗi (vd anh em không có tên mà điều kiện tất định trùng — vector "tên ngoài danh sách + trả lời
+   có" làm hai dòng cùng CO).
    Ca đã gặp: 871410 .30 "Khung và càng xe kể cả …, giảm xóc và các bộ phận của chúng", .40, .60 "Phanh và bộ phận của chúng", .70 ↔
    .10 "Yên xe", .20, .50 — trước 18 cặp `:khong-tat-dinh`, nay loại trừ; 845290 .12/.92 "Bàn, tủ, chân máy và nắp và các bộ phận
    của chúng" ↔ .11/.91 "… bàn đạp các loại" — "bàn đạp" chứa "Bàn" ⇒ tên cụ thể hơn thắng (#600), .11/.91 thắng.
@@ -350,6 +368,7 @@ Người soát: Claude
 | Chồng lấn trục tên ↔ công dụng (khai đúng) | [`854442`](../../../data/ho-so/ranh-gioi/854442.json) (cấp tiêu đề: "Cáp ắc qui" ↔ "Dùng cho viễn thông…"), [`940542`](../../../data/ho-so/ranh-gioi/940542.json), [`841459`](../../../data/ho-so/ranh-gioi/841459.json) (cấp dòng) | `chongLanTruc`, `phanXu: null` |
 | Phần còn lại có tên | [`850131`](../../../data/ho-so/ranh-gioi/850131.json) ("Động cơ khác"), [`848190`](../../../data/ho-so/ranh-gioi/848190.json) ("Thân, loại khác") | `phanConLai` |
 | Tầng không mã có tên | [`848310`](../../../data/ho-so/ranh-gioi/848310.json), [`853690`](../../../data/ho-so/ranh-gioi/853690.json) | `dieuKienNut` cho `<pn6>~r<dòng>` |
+| Vế mở "… và các loại tương tự" (vòng 7) | [`761699`](../../../data/ho-so/ranh-gioi/761699.json) .40, [`950300`](../../../data/ho-so/ranh-gioi/950300.json) .10 | `TUONG_TU` + giới hạn riêng; HOAC khi giới hạn chỉ của hàng tương tự |
 | ĐỎ đúng (không ép) | [`950300`](../../../data/ho-so/ranh-gioi/950300.json), [`850110`](../../../data/ho-so/ranh-gioi/850110.json) (dòng không tới được do giới hạn bộ so chữ), [`392690`](../../../data/ho-so/ranh-gioi/392690.json), [`401699`](../../../data/ho-so/ranh-gioi/401699.json) (chồng lấn theo trục, chưa khai `chongLanTruc`) | khi nào để đỏ và DỪNG |
 
 Các bản trên là JSON nháp do máy sinh; spec tương ứng của bạn chỉ chứa phần `dieuKienSo` / `ghiChuSoan` / `chongLanVanBan` / `chongLanTruc`.

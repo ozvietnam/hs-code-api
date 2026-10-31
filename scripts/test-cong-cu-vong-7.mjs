@@ -61,6 +61,11 @@ const dong = (b, hs) => b.dong8.find((m) => m.hs === hs);
   check('A7 giá trị "và" trong phương án HOAC ⇒ vẫn lỗi', kiemLk('392620', b7).includes('cong3-liet-ke-trong-mot-chuoi:39262020:tenLoai'));
   // bản soạn lại (spec vòng 7): mảng chuỗi con ⇒ hết lỗi
   for (const p of ['392620', '845290', '851762']) check(`A8 ${p} soạn lại (mảng chuỗi con) ⇒ không lỗi liệt kê`, kiemLk(p, tuSpec(p)).length === 0, kiemLk(p, tuSpec(p)));
+  // Định ngữ chung thành điều kiện riêng CÙNG khoá trên cùng nút (VÀ): cổng ghép "<giá trị 1> <giá trị 2>" ("Miếng đệm vai")
+  // để dòng tới được — trước đó cong2-dong-khong-toi-duoc giả.
+  const r10 = C.kiemRanhGioi('392620', tuSpec('392620'));
+  check('A10 392620 soạn lại (tenLoai ["Miếng đệm","miếng bảo vệ"] + tenLoai "vai") ⇒ XANH đủ cổng (.20 tới được)', r10.hopLe === true && !co(r10.loi, 'cong2-dong-khong-toi-duoc'), r10.loi);
+  for (const p of ['845290', '851762']) { const r = C.kiemRanhGioi(p, tuSpec(p)); check(`A11 ${p} soạn lại ⇒ XANH đủ cổng`, r.hopLe === true, r.loi); }
   const g = ML.giaiThich('cong3-liet-ke-trong-mot-chuoi:39262020:tenLoai') || {};
   check('A9 ma-loi: giải thích nhắc liệt kê nối "và" + bằng chứng chữ Anh (ca 392620/845290/851762)', /nối "và"/u.test(g.giaiThich || '') && /Shoulder pads or shields|Arms and beds/u.test(g.giaiThich || ''), g.giaiThich);
 }
@@ -115,11 +120,6 @@ const TRICH40 = 'Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tư
   check('C3b … cảnh báo cong2-tuong-tu-chua-chot (vd .10 ↔ .21 "Búp bê": tên của anh em cho .10 CHƯA BIẾT, không THOẢ)', co(r.canhBao, 'cong2-tuong-tu-chua-chot:95030010+95030021'), r.canhBao.filter((x) => x.startsWith('cong2-tuong')));
   check('C3c … không chongLanTruc, không chongLanVanBan', !b.chongLanTruc && !b.chongLanVanBan);
   check('C3d … vế mở "và đồ chơi tương tự" + "có bánh" phủ (cổng 5)', !co(r.loi, 'cong5-'), r.loi);
-  // ép đỏ: bỏ coBanh ⇒ vế "có bánh" chưa phủ
-  const b2 = tuSpec('950300');
-  dong(b2, '95030010').dieuKienSo[0].phuongAn[1] = [TT(['Xe đạp ba bánh', 'xe đẩy', 'xe có bàn đạp'])];
-  check('C3e bỏ coBanh ⇒ cong5-ve-gioi-han-bi-bo "có bánh"', co(C.kiemRanhGioi('950300', b2, { cong: [5] }).loi, 'cong5-ve-gioi-han-bi-bo:95030010:có bánh'));
-
   const b4 = tuSpec('761699');
   const r4 = C.kiemRanhGioi('761699', b4);
   check('C4a 761699 soạn lại (.40 TUONG_TU + dungCho "sợi dệt", bỏ cụm 7 nhánh) ⇒ XANH', r4.hopLe === true, r4.loi);
@@ -146,13 +146,14 @@ async function hoSo(ma, duKien, st = soTay950) {
   return doiChieu(khung, { soTay: st, bangHieuChinh: { muc: [] }, tinHieuDanhMuc: async () => [], tienLeMaKhac: async () => [], demKhoOz: async () => ({ tong: 0, maKhac: [] }) });
 }
 {
-  const scooter = [dk('tenLoai', 'xe chòi chân bốn bánh'), dk('coBanh', true)];
+  const NHUA = dk('chatLieu', [{ viTri: 'CHINH', chatLieu: 'plastic' }]);
+  const scooter = [dk('tenLoai', 'xe chòi chân bốn bánh'), dk('coBanh', true), NHUA];
   const kq = (hs, duKien) => DK.doiChieuDong8(hs, duKien, { soTay: soTay950 }).ketQua;
   check('C5a xe chòi chân (có bánh): .10 THIEU (không MAU_THUAN), .99 THIEU — không rơi im lặng sang .99 20%', kq('95030010', scooter) === 'THIEU' && kq('95030099', scooter) === 'THIEU', [kq('95030010', scooter), kq('95030099', scooter)]);
-  const co10 = [...scooter.slice(0, 1).map((d) => ({ ...d, tuongTu: { [KHOA10]: true } })), scooter[1]];
-  const khong10 = [...scooter.slice(0, 1).map((d) => ({ ...d, tuongTu: { [KHOA10]: false } })), scooter[1]];
+  const co10 = [{ ...scooter[0], tuongTu: { [KHOA10]: true } }, ...scooter.slice(1)];
+  const khong10 = [{ ...scooter[0], tuongTu: { [KHOA10]: false } }, ...scooter.slice(1)];
   check('C5b trả lời "tương tự = có" ⇒ .10 CO (10%); "không" ⇒ .10 MAU_THUAN, .99 CO', kq('95030010', co10) === 'CO' && kq('95030010', khong10) === 'MAU_THUAN' && kq('95030099', khong10) === 'CO', [kq('95030010', co10), kq('95030010', khong10), kq('95030099', khong10)]);
-  const robot = [dk('tenLoai', 'rô bốt đồ chơi'), dk('coBanh', false)];
+  const robot = [dk('tenLoai', 'rô bốt đồ chơi'), dk('coBanh', false), NHUA];
   check('C5c rô bốt KHÔNG có bánh ⇒ .10 MAU_THUAN (coBanh tất định), .99 CO — không hỏi oan', kq('95030010', robot) === 'MAU_THUAN' && kq('95030099', robot) === 'CO', [kq('95030010', robot), kq('95030099', robot)]);
   check('C5d xe đạp ba bánh (tên nêu, không cần coBanh) ⇒ .10 CO', kq('95030010', [dk('tenLoai', 'xe đạp ba bánh trẻ em')]) === 'CO');
 

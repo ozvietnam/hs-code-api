@@ -36,6 +36,7 @@ Thêm, không thay: điều kiện cũ (fact snake_case như `duong_kinh`, op `<
 | `CO_KHONG` | `{fact, op: CO\|KHONG}` | một mẫu `cachDoc` của khoá |
 | `LIET_KE` | `{fact, op: TRONG, value: [..]}` (mọi giá trị ∈ `giaTriHopLe`) | mẫu `cachDoc` của TỪNG giá trị |
 | `TEN_LOAI` / `CONG_DUNG` | `{fact, op: TEN_LOAI\|CONG_DUNG, value: chuỗi \| [chuỗi, …] ("hoặc")}` | chính chữ của từng giá trị |
+| vế mở "X, Y và các loại tương tự" (vòng 7) | `{fact: tenLoai, op: TUONG_TU, value: [<các hàng NÊU TÊN>]}` (không `chieu`) | cụm mở "tương tự"/"similar"/"the like" + chính chữ của từng tên nêu |
 | `CHAT_LIEU_THEO_VI_TRI` | `{fact: chatLieu, op: LA, value: chuỗi \| [..], viTri?}` | mẫu của vật liệu (+ chữ vị trí nếu ≠ CHINH) |
 
 - `chieu: PHAI_KHONG` (mặc định `PHAI_CO`) chỉ cho `TRONG`/`TEN_LOAI`/`CONG_DUNG`/`LA`; với `CO_KHONG`/`SO` dùng `KHONG` / đảo op.
@@ -203,3 +204,25 @@ Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.2 
 - **Liệt kê tên của CÙNG một vật** (732690 .70 "mấu, gai, đinh móc" = EN "riding boot spurs"): mảng tên nguyên văn thay thế nhau
   không rộng nghĩa; định ngữ chung ("lắp trên giày để thúc ngựa") thành điều kiện riêng.
 - Khoá tu-vung@2 mới: `daXuLyBeMat` (CO_KHONG), `nhienLieu` (LIET_KE GA | DIEN) — [`de-xuat-tu-vung-2.md`](de-xuat-tu-vung-2.md).
+
+## Vòng 7 (31/10/2026, #577 — sau soát L1-4c đợt 4 #711): quyết định GĐ (không mở lại)
+
+Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.2, 3.11 và mục 4 (Chồng lấn 8).
+- **Liệt kê tên hàng nối "và" gói MỘT chuỗi** (phát hiện hàng đầu đợt 4: 392620 .20, 845290 .11/.91, 851762 .10): `cong3-liet-ke-trong-mot-chuoi`
+  bắt cả " và " khi CẢ HAI bằng chứng có mặt — chữ " và " của giá trị nằm trong mệnh đề DANH TỪ ĐẦU của vế chữ biểu, và chữ Anh cùng
+  vế nối hai danh từ đầu bằng and/or với vế trước là danh từ số nhiều ("Shoulder pads or shields", "Arms and beds", "Radio
+  transmitters and radio receivers"). Không báo: danh từ ghép một hàng ("Transmission and reception apparatus" 851762 .52, "word
+  making and talking sets" 950300 .91, "Control and adaptor units"), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính — 732690 .30
+  "for hubless cast iron pipes and pipe fittings"). Chạy trên 50 bản nháp lúc thêm: không bản DUYET nào trúng. Sửa: mảng chuỗi con
+  nguyên văn; định ngữ chung thành điều kiện riêng (392620 .20: tenLoai ["Miếng đệm","miếng bảo vệ"] + tenLoai "vai").
+- **Giá trị chứa "tương tự"/"similar" là giá trị CHẾT** (950300 .10 "đồ chơi tương tự có bánh" — mô tả hàng thật không có chữ đó, xe
+  chòi chân rơi .99 20% thay vì .10 10%): cổng 5 không tính nó là phủ vế mở và báo lỗi `cong5-gia-tri-tuong-tu:<mã>:<khoá>`.
+- **Op `TUONG_TU` cho vế mở "X, Y và các sản phẩm/loại tương tự [dùng cho Z]"** (761699 .40, 950300 .10): (1) hàng NÊU TÊN (X, Y) khớp
+  tất định như TEN_LOAI; (2) hàng chỉ "tương tự" ⇒ lúc chạy CHƯA BIẾT — hỏi người khai/chuyên gia ("Hàng có thuộc loại tương tự X,
+  Y không?", câu hỏi `TUONG_TU`), không bao giờ tự chọn, không bao giờ TRÁI chỉ vì khác tên; câu trả lời `duKien tenLoai .tuongTu
+  {<khoá>: true|false}` ⇒ THOẢ/TRÁI không tất định, `lib/gir.js` không trích; (3) phần giới hạn (dùng cho Z, chất liệu, "có bánh")
+  vẫn là điều kiện tất định riêng; (4) **không** dùng `chongLanTruc` để nuốt chồng lấn do cách biểu diễn này (761699 cụm 7 nhánh bị
+  trả về đúng vì vậy). Cổng 3: trích phải có cụm mở + mọi tên nêu nguyên văn (`dieu-kien-so-tuong-tu-*`). Cổng 2: tên của anh em
+  cho dòng TUONG_TU kết quả CHƯA BIẾT, không THOẢ ⇒ không chồng lấn tất định; cặp mà câu trả lời "có" sẽ làm hai dòng cùng CO ⇒ cảnh
+  báo `cong2-tuong-tu-chua-chot` (không khai chongLanTruc). Vector biên thêm "tên ngoài danh sách + trả lời có/không" để dòng "Loại
+  khác" tới được. Giới hạn chỉ của hàng tương tự (EN "similar wheeled toys") ⇒ HOAC [[TEN_LOAI X…], [TUONG_TU X…, <giới hạn>]].
