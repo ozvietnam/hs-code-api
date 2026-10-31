@@ -1,0 +1,93 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "842010",
+  "nhom": "8420",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-842010",
+    "ngay": "2026-10-31"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84201010",
+      "nguon": "tax.84201010",
+      "trich": "84201010 - - Loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền mạch in hoặc mạch in",
+      "dieuKienSo": [
+        {
+          "fact": "chiHoacChuYeu",
+          "op": "CO"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất tấm nền mạch in",
+            "mạch in"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84201020",
+      "nguon": "tax.84201020",
+      "trich": "84201020 - - Máy là hoặc máy vắt phù hợp sử dụng cho gia đình",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy là",
+            "máy vắt"
+          ]
+        },
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84201090",
+      "nguon": "tax.84201090",
+      "trich": "84201090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "84201010",
+        "84201020"
+      ],
+      "lyDo": "Chữ biểu tự chồng lấn: .10 \"Loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền mạch in hoặc mạch in\" chia theo mức ràng buộc công dụng; .20 \"Máy là hoặc máy vắt phù hợp sử dụng cho gia đình\" chia theo tên hàng + phạm vi gia đình. Hai câu không loại trừ nhau trên chữ (không câu nào nói \"không dùng cho gia đình\" hay \"trừ máy là\"); không thêm điều kiện tách mà chữ không nói; không có căn cứ thứ tự (TB-TCHQ/SEN/chú giải) trong nguồn của gói."
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84201010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84201010 \"Loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền mạch in hoặc mạch in\" ⇒ chiHoacChuYeu CO (tu-vung@2, cách đọc \"chỉ sử dụng hoặc chủ yếu sử dụng\") + congDung [\"sản xuất tấm nền mạch in\", \"mạch in\"] (mảng = \"hoặc\" của \"tấm nền mạch in hoặc mạch in\"; không gộp thành một chuỗi vì bộ so chữ đòi đủ âm tiết ⇒ hẹp hơn chữ). Giá trị thứ hai là vế tỉnh lược của \"(để sản xuất) mạch in\": bộ so chữ không ghép được động từ chung \"sản xuất\" cho từng vế của \"hoặc\" (hai điều kiện congDung trong một mục làm dòng không tới được — đã thử)."
+    },
+    {
+      "ma": "84201020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84201020 \"Máy là hoặc máy vắt phù hợp sử dụng cho gia đình\" ⇒ tenLoai [\"Máy là\", \"máy vắt\"] (mảng = hoặc) + phamViSuDung TRONG [GIA_DINH] (cách đọc \"gia đình\" trong vế \"phù hợp sử dụng cho gia đình\")."
+    },
+    {
+      "ma": "84201010",
+      "loai": "CHONG_LAN",
+      "ghiChu": "cong2-chong-lan 84201010+84201020 (vector chiHoacChuYeu=CO, congDung mạch in, tenLoai Máy là, GIA_DINH): chữ biểu tự chồng, khai chongLanVanBan. Không phải trục tên ↔ công dụng theo luật cấp dòng (.20 có thêm phamViSuDung LIET_KE, .10 có chiHoacChuYeu CO_KHONG — máy không coi là trục). Lúc chạy cặp này không tự chốt."
+    }
+  ]
+}

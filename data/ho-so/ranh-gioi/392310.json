@@ -1,0 +1,75 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "392310",
+  "nhom": "3923",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-392310",
+    "ngay": "2026-10-31"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "39231010",
+      "nguon": "tax.39231010",
+      "trich": "39231010 - - Hộp đựng phim, băng từ và đĩa quang",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hộp"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phim",
+            "băng từ",
+            "đĩa quang"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39231020",
+      "nguon": "tax.39231020",
+      "trich": "39231020 - - Loại khác, có hình dạng đặc biệt hoặc thích hợp để vận chuyển hoặc đóng gói các tấm bán dẫn mỏng, màn hoặc lưới quang (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm bán dẫn mỏng",
+            "màn",
+            "lưới quang"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39231090",
+      "nguon": "tax.39231090",
+      "trich": "39231090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "39231010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39231010 \"Hộp đựng phim, băng từ và đĩa quang\" ⇒ tenLoai \"Hộp\" + dungCho [\"phim\", \"băng từ\", \"đĩa quang\"] (\"đựng\" ⇒ hàng đi cùng; mảng = hoặc: hộp đựng một trong ba loại đều thuộc dòng)."
+    },
+    {
+      "ma": "39231020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39231020 \"Loại khác, có hình dạng đặc biệt hoặc thích hợp để vận chuyển hoặc đóng gói các tấm bán dẫn mỏng, màn hoặc lưới quang\" — dòng \"Loại khác, <vế>\": chỉ ghi điều kiện của vế. Chữ Anh cùng dòng \"specially shaped or fitted for the conveyance or packing of semiconductor wafers, masks, or reticles\": \"có hình dạng đặc biệt hoặc thích hợp\" cùng bổ nghĩa cho \"để vận chuyển hoặc đóng gói …\" (bộ tách vòng 4 đọc là một vế) ⇒ dungCho [\"tấm bán dẫn mỏng\", \"màn\", \"lưới quang\"] — tách \"màn hoặc lưới quang\" thành hai giá trị (\"masks, or reticles\"): một chuỗi gộp đòi đủ âm tiết \"màn\", \"lưới\", \"quang\" ⇒ hẹp hơn chữ (góp ý soát PR #629)."
+    }
+  ]
+}

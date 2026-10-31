@@ -1,0 +1,34 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "848180",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-848180",
+  "dong8": {},
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "8481801",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — tầng chữ số không tên (CHẶN tieu-de-bi-luoc-ten) mà công cụ không biểu diễn được. Cây theo chữ số giữ 5 nút 7 số KHÔNG có dòng nào trong biểu thuế: 8481801 (con: tầng r14535 \"Van dùng cho săm:\", r14538 \"Van dùng cho lốp không săm:\"), 8481806 (con: r14551 \"Van đường ống nước:\", r14556 \"Núm uống nước dùng cho lợn:\", r14559 \"Van nối có núm:\"), và 8481807/8481808/8481809 nằm DƯỚI tầng r14562 \"Loại khác:\" (gạch 2). Trong biểu thuế, con trực tiếp của r14562 là mười mục gạch 3: r14563 \"Van bi:\", r14566 \"Van cổng, điều khiển bằng tay, bằng sắt hoặc thép:\", r14570 \"Van nhiều cửa:\", r14573 \"Van điều khiển bằng khí nén:\", 84818083, 84818084, 84818093, r14579 \"Van plastic khác:\", 84818097 \"Loại khác, điều khiển bằng tay, …\", r14584 \"Loại khác:\" — cây chia chúng thành ba nhóm chữ số giả nên 84818097 / r14584 (\"Loại khác\") chỉ phủ định anh em trong 8481809 (.93, r14579) thay vì cả chín mục gạch 3 đứng trước (sai nghĩa nếu cứ đi theo cây). Luật đi lib/dieu-kien-so.js#duongDiDong8 coi mọi nút này là tiêu đề bị lược tên (PHAI_CO dieuKien null, lyDo tieu-de-bi-luoc-ten) và cổng 1 (lib/ho-so/cong-ranh-gioi.js#kiemPhuKin) chặn mọi tổ tiên không tên — khai dieuKienNut cho nút chữ số không gỡ được, và không có tên nguyên văn nào trong biểu thuế để khai. Cần (RUNTIME, ngoài phạm vi người soạn): lớp tầng của lib/hs-tree.js (chaTang/conTang) làm TRONG SUỐT nút chữ số 7 số không tên khi mọi con của nó đều là dòng/tầng có hàng trong biểu thuế (nút chỉ là nhóm chữ số, không có hàng biểu thuế) — đưa các con lên làm con trực tiếp của tầng cha (848180 hoặc r14562), hoặc luật đi duongDiDong8 bỏ qua nút đó và tính anh em ở tầng cha; sửa chỉ trong cổng (lib/ho-so/*) sẽ cho XANH giả vì lúc chạy vẫn trả CHUA_SO_HOA. Sau khi gỡ: phân nhóm có cờ hiệu chỉnh tiền lệ, bảng đã có mục 848180-01 (84818063 ↔ chữ 84818066) ⇒ soạn theo chữ biểu + ghi LECH_TIEN_LE."
+    },
+    {
+      "ma": "8481806",
+      "loai": "DUNG",
+      "ghiChu": "Cùng lý do DỪNG như 8481801 (nút chữ số không tên gom r14551, r14556, r14559)."
+    },
+    {
+      "ma": "8481807",
+      "loai": "DUNG",
+      "ghiChu": "Cùng lý do DỪNG như 8481801 (nút chữ số không tên dưới tầng r14562, gom r14563, r14566, r14570)."
+    },
+    {
+      "ma": "8481808",
+      "loai": "DUNG",
+      "ghiChu": "Cùng lý do DỪNG như 8481801 (nút chữ số không tên dưới tầng r14562, gom r14573, 84818083, 84818084)."
+    },
+    {
+      "ma": "8481809",
+      "loai": "DUNG",
+      "ghiChu": "Cùng lý do DỪNG như 8481801 (nút chữ số không tên dưới tầng r14562, gom 84818093, r14579, 84818097, r14584; tenViNghi \"Loại khác\" chỉ là khớp tiền tố)."
+    }
+  ]
+}
