@@ -51,14 +51,15 @@ const nhap88 = (pn6) => nhapDongCung(pn6, THU_MUC_DONG_CUNG_88444A8);
   const c11 = { fact: 'dungCho', op: 'CONG_DUNG', value: 'xe kéo thuộc phân nhóm 8701.10 hoặc 8701.91 đến 8701.95' };
   check('2e bộ so lúc chạy: hàng cho xe kéo 8701.93 THOẢ .11 (trước: TRÁI)', DK.danhGiaDieuKien(c11, { fact: 'dungCho', giaTri: 'phân nhóm 8701.93' }).trangThai === 'THOA');
   check('2f … xe kéo 8701.99 (ngoài dải) vẫn TRÁI', DK.danhGiaDieuKien(c11, { fact: 'dungCho', giaTri: 'phân nhóm 8701.99' }).trangThai === 'TRAI');
-  // 848390 (đông cứng, main 88444a8): .13/.93 "xe kéo KHÁC thuộc nhóm 87.01", .15/.95 "hàng hóa KHÁC thuộc Chương 87" không
-  // ghi phanConLai — cổng trước đây không thử mã GIỮA dải nên xanh giả; nay vector "8701.9x" làm .11 và .13 cùng CO.
+  // 848390 (đông cứng, main 88444a8): xe kéo 8701.92 (GIỮA dải) — trước đây .11 TRÁI và luật đi đẩy hàng sang .13 "xe kéo
+  // KHÁC thuộc nhóm 87.01" (sai mã); nay chỉ .11 CO.
   const b = nhap88('848390');
-  const r = C.kiemRanhGioi('848390', b, { cong: [2] });
-  check('2g 848390 đông cứng: cổng 2 thử mã giữa dải ⇒ chồng lấn .11+.13 và .91+.93', co(r.loi, 'cong2-chong-lan:84839011+84839013:') && co(r.loi, 'cong2-chong-lan:84839091+84839093:'), r.loi);
-  for (const hs of ['84839013', '84839015', '84839093', '84839095']) b.dong8.find((m) => m.hs === hs).phanConLai = true;
+  const soTay = C.soTayTuNhap('848390', b);
+  const dk = [{ fact: 'dungCho', giaTri: 'phân nhóm 8701.92' }, { fact: 'laBoPhan', giaTri: true }, { fact: 'congDung', giaTri: '8483.10' }].map((x) => ({ ...x, nguon: 'KHACH', trangThai: 'DA_CO' }));
+  const coDong = ['84839011', '84839013', '84839014', '84839015', '84839019'].filter((hs) => DK.doiChieuDong8(hs, dk, { soTay }).ketQua === 'CO');
+  check('2g 848390 đông cứng: bộ phận cho xe kéo 8701.92 ⇒ chỉ .11 CO (không rơi sang .13 "xe kéo khác")', coDong.length === 1 && coDong[0] === '84839011', coDong);
   const r2 = C.kiemRanhGioi('848390', b);
-  check('2h … ghi phanConLai cho các dòng "… khác thuộc …" ⇒ XANH', r2.hopLe === true, r2.loi);
+  check('2h … cổng (có thử mã giữa dải) vẫn XANH cho 848390 đông cứng', r2.hopLe === true, r2.loi);
 }
 
 // ── 3. Chồng lấn TRỤC tên ↔ công dụng ở cấp DÒNG (hai anh em, không tiêu đề) — 940541 ────────────────────────────────────
