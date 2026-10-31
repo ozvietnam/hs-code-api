@@ -1,0 +1,112 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "851810",
+  "nhom": "8518",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "DUYET",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-851810",
+    "ngay": "2026-10-31"
+  },
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
+    "ngay": "2026-10-31",
+    "ghiChu": "Đối chiếu tay biên (cảnh báo cong3-bien-khong-doc-duoc): \"từ 300 Hz\" >= 300, \"đến 3.400 Hz\" <= 3400 (dải làm việc của micro: dải ⊆ [300,3400] thì THOẢ, rộng hơn thì CHƯA BIẾT — hướng hỏi), đường kính <= 10 mm, cao <= 3 mm, congDung viễn thông. .19 \"Micro khác\" phanConLai + tenLoai Micro; \"đã hoặc chưa lắp ráp cùng với giá đỡ\" là vế cho phép. Tiêu đề 8518101 Micro. Không tiền lệ liên quan.",
+    "bam": "bbb647549928da169fb7c9c298e063ceae77dd178dcfc14d052642c23969e6bb"
+  },
+  "dieuKienNut": [
+    {
+      "id": "8518101",
+      "nguon": "tieuDe.8518101",
+      "trich": "8518101 Micro",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Micro"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85181011",
+      "nguon": "tax.85181011",
+      "trich": "85181011 - - - Micro có dải tần số từ 300 Hz đến 3.400 Hz, với đường kính không quá 10 mm và cao không quá 3 mm, dùng trong viễn thông",
+      "dieuKienSo": [
+        {
+          "fact": "tanSo",
+          "op": ">=",
+          "value": 300,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "tanSo",
+          "op": "<=",
+          "value": 3400,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 10,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 3,
+          "donVi": "mm"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "viễn thông"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85181019",
+      "nguon": "tax.85181019",
+      "trich": "85181019 - - - Micro khác, đã hoặc chưa lắp ráp cùng với giá đỡ micro",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Micro"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": true
+    },
+    {
+      "hs": "85181090",
+      "nguon": "tax.85181090",
+      "trich": "85181090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85181011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85181011 \"Micro có dải tần số từ 300 Hz đến 3.400 Hz, với đường kính không quá 10 mm và cao không quá 3 mm, dùng trong viễn thông\" ⇒ tanSo >= 300 Hz VÀ tanSo <= 3400 Hz (\"từ 300 Hz\" ⇒ >=, \"đến 3.400 Hz\" ⇒ <=, \"3.400\" = 3400 — đã đối chiếu tay biên cho cảnh báo cong3-bien-khong-doc-duoc); duongKinh <= 10 mm (\"không quá 10 mm\"); chieuCao <= 3 mm (\"cao không quá 3 mm\"); congDung \"viễn thông\" (\"dùng trong viễn thông\"). \"Dải tần 300–3.400 Hz\" là dải làm việc của micro (EN \"having a frequency range of 300 Hz to 3,400 Hz\"), không phải một tần số: hai biên trên cùng khoá tanSo so được khi dữ kiện là một số; dữ kiện là một dải thì bộ đọc tanSo phải đọc cả hai đầu — ghi lại để bước soát L1-4c đối chiếu cách đọc. Bộ tách vòng 4 đọc \"có dải tần số từ 300 Hz đến 3.400 Hz\" là một vế biên số (hết cong5-ve-gioi-han-bi-bo \"có dải\")."
+    },
+    {
+      "ma": "85181019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85181019 \"Micro khác, đã hoặc chưa lắp ráp cùng với giá đỡ micro\" ⇒ phanConLai: true (phủ định anh em đứng trước 85181011; trích có chữ \"khác\") + tenLoai \"Micro\". Vế \"đã hoặc chưa lắp ráp cùng với giá đỡ micro\" là vế cho phép (đã hoặc chưa), không thu hẹp ⇒ không thành điều kiện."
+    },
+    {
+      "ma": "8518101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8518101 \"Micro\" ⇒ tenLoai \"Micro\"."
+    }
+  ]
+}

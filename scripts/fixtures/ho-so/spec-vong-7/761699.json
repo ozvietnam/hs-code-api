@@ -1,0 +1,174 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "761699",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-761699",
+  "dong8": {
+    "76169920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhôm bịt đầu ống"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất bút chì"
+        }
+      ]
+    },
+    "76169930": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đồng xèng, hình tròn"
+        },
+        {
+          "fact": "tiLe",
+          "op": ">",
+          "value": 0.1,
+          "donVi": "lần"
+        }
+      ]
+    },
+    "76169940": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Ống chỉ",
+            "lõi suốt",
+            "guồng quay tơ"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sợi dệt"
+        }
+      ]
+    },
+    "76169951": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chớp lật"
+        }
+      ]
+    },
+    "76169960": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máng",
+            "chén"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "hứng mủ cao su"
+        }
+      ]
+    },
+    "76169970": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hộp đựng thuốc lá điếu"
+        }
+      ]
+    },
+    "76169980": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sản phẩm dạng lưới"
+        },
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "DOT_DAP_KEO_GIAN"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7616995": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rèm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "76169920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169920 \"Nhôm bịt đầu ống loại phù hợp dùng để sản xuất bút chì (SEN)\" ⇒ tenLoai \"Nhôm bịt đầu ống\" + congDung \"sản xuất bút chì\" (vế giới hạn \"phù hợp dùng để sản xuất bút chì\"; chữ Anh \"Ferrules of a kind suitable for use in the manufacture of pencils\")."
+    },
+    {
+      "ma": "76169930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169930 \"Đồng xèng, hình tròn, kích thước chiều dày trên 1/10 đường kính (SEN)\" ⇒ tiLe > 0.1 lần (tu-vung@2, \"trên\" = >, \"1/10\" đọc phân số; tử/mẫu = chiều dày/đường kính) + tenLoai nguyên cụm \"Đồng xèng, hình tròn\" (chữ Anh \"Slugs, round, …\": \"hình tròn\" là thuộc tính giới hạn, tu-vung@2 không có khoá hình dạng ⇒ giữ trong chuỗi con nguyên văn thay vì bỏ — cùng cách GĐ chấp nhận ở #665)."
+    },
+    {
+      "ma": "76169940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Soạn lại theo trả về #703 + quyết định GĐ vòng 7 (op TUONG_TU). tax.76169940 \"Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt\" (EN \"Bobbins, spools, reels and similar supports for textile yarn\") ⇒ tenLoai TUONG_TU [\"Ống chỉ\",\"lõi suốt\",\"guồng quay tơ\"] (vế MỞ \"và sản phẩm tương tự\": hàng nêu tên THOẢ, hàng chỉ \"tương tự\" ⇒ CHƯA BIẾT, hỏi) + dungCho \"sợi dệt\" (\"for textile yarn\" giới hạn CẢ hàng nêu tên lẫn hàng tương tự). Bỏ cụm chongLanTruc bảy nhánh của bản trước: chồng lấn đó do cách biểu diễn (chỉ còn dungCho), không phải chữ biểu chồng — soát đợt 4 trả về; với TUONG_TU, tên của anh em (\"Nhôm bịt đầu ống\", \"Rèm\"…) cho .40 CHƯA BIẾT chứ không THOẢ nên không có chồng lấn tất định (cảnh báo cong2-tuong-tu-chua-chot cho người soát)."
+    },
+    {
+      "ma": "7616995",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7616995 \"Rèm\" ⇒ tenLoai \"Rèm\"."
+    },
+    {
+      "ma": "76169951",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169951 \"Rèm chớp lật(SEN)\" dưới tiêu đề \"Rèm\" ⇒ tenLoai \"chớp lật\" (chuỗi con nguyên văn); tên trên đường đi = hợp âm tiết tiêu đề + dòng = \"Rèm chớp lật\" (LUAT-CHUNG, tên trên đường đi #653). Ghi \"Rèm chớp lật\" trọn ⇒ cong2-dong-khong-toi-duoc:76169959 (vector \"Rèm\" chỉ CHUA_BIET với \"Rèm chớp lật\"); với \"chớp lật\" dòng .59 tới được (vector \"Rèm\") và .51 tới được (vector ghép \"chớp lật Rèm\") — cùng khoá tenLoai, không đổi khoá."
+    },
+    {
+      "ma": "76169959",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169959 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "76169960",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169960 \"Máng và chén để hứng mủ cao su\" ⇒ tenLoai [\"Máng\",\"chén\"] (mảng = hoặc) + congDung \"hứng mủ cao su\" (vế giới hạn \"để hứng mủ cao su\", định ngữ chung của cả hai danh từ — chữ Anh \"Spouts and cups of a kind used for latex collection\")."
+    },
+    {
+      "ma": "76169970",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169970 \"Hộp đựng thuốc lá điếu\" ⇒ tenLoai \"Hộp đựng thuốc lá điếu\"."
+    },
+    {
+      "ma": "76169980",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169980 \"Sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" (chữ Anh \"Expanded metal\") ⇒ tenLoai \"Sản phẩm dạng lưới\" + phuongPhapCheTao TRONG [DOT_DAP_KEO_GIAN] (tu-vung@2, cách đọc \"đột dập và kéo giãn\" / \"kéo giãn thành lưới\")."
+    },
+    {
+      "ma": "76169980",
+      "loai": "BO_VE",
+      "ve": "được tạo hình",
+      "lyDo": "Bộ tách vế đọc sai cấu trúc: \"được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" là MỘT vế (động từ \"được tạo hình\" + cách thức \"bằng phương pháp …\"), chữ Anh cùng dòng chỉ là \"Expanded metal\". Ý của cả cụm đã phủ bởi phuongPhapCheTao DOT_DAP_KEO_GIAN; \"được tạo hình\" không mang giới hạn riêng nào ngoài phương pháp đó, bỏ nó không đổi mã."
+    },
+    {
+      "ma": "76169990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76169990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

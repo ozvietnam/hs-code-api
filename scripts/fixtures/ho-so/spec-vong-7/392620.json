@@ -1,0 +1,103 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "392620",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-392620",
+  "dong8": {
+    "39262010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Găng tay",
+            "tạp dề",
+            "yếm cho trẻ em"
+          ]
+        }
+      ]
+    },
+    "39262020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Miếng đệm",
+            "miếng bảo vệ"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vai"
+        }
+      ]
+    },
+    "39262030": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Lót",
+            "đệm"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "các sản phẩm may mặc",
+            "các đồ phụ trợ của quần áo"
+          ]
+        }
+      ]
+    },
+    "39262060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hàng may mặc"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "chống các chất hóa học",
+            "phóng xạ",
+            "chống cháy"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "39262010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39262010: \"Găng tay; tạp dề; yếm cho trẻ em (SEN)\" ⇒ tenLoai TEN_LOAI [\"Găng tay\",\"tạp dề\",\"yếm cho trẻ em\"] (mảng = hoặc, 3 vế tên hàng liệt kê bằng dấu ;)"
+    },
+    {
+      "ma": "39262020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Soạn lại theo trả về #702 + cổng vòng 7 (liệt kê nối \"và\"). tax.39262020 \"Miếng đệm và miếng bảo vệ vai (SEN)\" (EN \"Shoulder pads or shields\"): HAI hàng thay thế (pads OR shields) chung định ngữ \"vai\" (shoulder) ⇒ tenLoai [\"Miếng đệm\",\"miếng bảo vệ\"] (mảng = hoặc, chuỗi con nguyên văn) + một điều kiện tenLoai RIÊNG \"vai\" áp cho cả hai (LUAT-CHUNG cổng 5: định ngữ chung ⇒ điều kiện riêng; cùng khoá hai điều kiện = VÀ, như 950300 .91). Không dùng dungCho \"vai\": \"vai\" là một phần TÊN hàng (miếng đệm vai), còn dungCho lúc chạy đọc chữ sau \"dùng cho\" (\"dùng cho áo vest\") nên sẽ TRÁI oan. Bản trước gói một chuỗi \"Miếng đệm và miếng bảo vệ vai\" ⇒ bộ so chữ đòi đủ âm tiết (đọc thành VÀ): miếng đệm vai đứng một mình rơi .30."
+    },
+    {
+      "ma": "39262030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39262030: \"Lót, đệm khác cho các sản phẩm may mặc hoặc cho các đồ phụ trợ của quần áo\" — \"khác\" ⇒ phần còn lại có tên, phanConLai: true (phủ định 39262010, 39262020 đứng trước); tên ⇒ tenLoai [\"Lót\",\"đệm\"]; vế GIỚI HẠN \"cho các sản phẩm may mặc hoặc cho các đồ phụ trợ của quần áo\" ⇒ dungCho [\"các sản phẩm may mặc\",\"các đồ phụ trợ của quần áo\"] (mảng = hoặc, chuỗi con nguyên văn) — sửa theo góp ý soát PR #620"
+    },
+    {
+      "ma": "39262060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39262060: \"Hàng may mặc dùng để chống các chất hóa học, phóng xạ hoặc chống cháy\" ⇒ tenLoai TEN_LOAI \"Hàng may mặc\" + congDung CONG_DUNG [\"chống các chất hóa học\",\"phóng xạ\",\"chống cháy\"] (\"dùng để\" ⇒ công dụng; mảng = hoặc theo chữ liệt kê)"
+    },
+    {
+      "ma": "39262090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39262090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}
