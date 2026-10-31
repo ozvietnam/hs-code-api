@@ -1,0 +1,55 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "851830",
+  "phien": "zcode-vps131:20261030T0924#soan-851830",
+  "dong8": {
+    "85183010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Tai nghe" },
+        { "fact": "coKhungChupQuaDau", "op": "CO" }
+      ]
+    },
+    "85183020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Tai nghe" },
+        { "fact": "coKhungChupQuaDau", "op": "KHONG" }
+      ]
+    },
+    "85183040": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Tay cầm nghe - nói của điện thoại hữu tuyến" }
+      ]
+    },
+    "85183051": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["8517.13.00", "8517.14.00"] }
+      ]
+    },
+    "85183059": {
+      "dieuKienSo": []
+    },
+    "85183090": {
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "8518305": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bộ micro/loa kết hợp" }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8518305",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Sửa theo soát trả về L1-4c: tiêu đề \"Bộ micro/loa kết hợp khác\" là PHẦN CÒN LẠI CÓ TÊN (chữ \"khác\" loại các anh em đứng trước .10/.20 tai nghe và .40 tay cầm nghe - nói) ⇒ thêm \"phanConLai\": true; điều kiện tenLoai \"Bộ micro/loa kết hợp\" giữ nguyên. Trước đó chỉ tenLoai ⇒ điều kiện rộng hơn chữ biểu (không loại trừ .10/.20/.40); lệch tiền thuế: .40 MFN 0% ↔ .51/.59 MFN 15%."
+    },
+    {
+      "ma": "85183051",
+      "loai": "QUYET_DINH",
+      "ghiChu": "dungCho so chữ tự do với mã phân nhóm 8517.13.00/8517.14.00 (điện thoại thông minh / điện thoại di động khác) — không tất định."
+    }
+  ]
+}
