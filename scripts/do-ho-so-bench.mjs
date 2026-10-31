@@ -159,7 +159,7 @@ export async function chayBench({ boDe = path.join(ROOT, 'data', 'bench', 'mo-ta
     if (x && c.moTaMau.includes(x.tu)) {
       const l = await dung(API, dvMoTa(API, c.maHs, c.moTaMau.replace(x.tu, x.sang)));
       const kl = l.loi ? {} : l.hoSo.ketLuan || {};
-      r.doiAnhEm = { bat: kl.trangThai === 'MAU_THUAN' && r.chuanTrangThai !== 'MAU_THUAN', chiDungMa: String(kl.maTroToi || '').replace(/\D/g, '') === String(x.maTroToi || '').replace(/\D/g, ''), trangThai: kl.trangThai || null };
+      r.doiAnhEm = { bat: kl.trangThai === 'MAU_THUAN' && r.chuanTrangThai !== 'MAU_THUAN', chiDungMa: String(kl.maTroToi || '').replace(/\D/g, '') === String(x.maTroToi || '').replace(/\D/g, ''), trangThai: kl.trangThai || null, maTroToi: kl.maTroToi ? String(kl.maTroToi).replace(/\D/g, '') : null };
     }
     dong.push(r);
   }
@@ -190,7 +190,7 @@ export async function chayBench({ boDe = path.join(ROOT, 'data', 'bench', 'mo-ta
   }
   return {
     boDe: path.relative(ROOT, boDe), soCa: dong.length, cheDoViet: 'MAY', mang: { lanGoiLlmBiChan: dem.llm, lanGoiFetch: dem.fetch },
-    theoCa: dong.map((r) => ({ id: r.id, maHs: r.maHs, lat: r.lat, trangThai: r.trangThai || null, banNhap: r.banNhap ?? null, chuanTrangThai: r.chuanTrangThai, doiAnhEm: r.doiAnhEm ? r.doiAnhEm.trangThai : null, boDuKien: r.boDuKien.map((b) => b.trangThai) })),
+    theoCa: dong.map((r) => ({ id: r.id, maHs: r.maHs, lat: r.lat, trangThai: r.trangThai || null, banNhap: r.banNhap ?? null, chuanTrangThai: r.chuanTrangThai, doiAnhEm: r.doiAnhEm ? r.doiAnhEm.trangThai : null, doiAnhEmMa: r.doiAnhEm ? r.doiAnhEm.maTroToi : null, boDuKien: r.boDuKien.map((b) => b.trangThai) })),
     tong, soTruoc: SO_TRUOC, nguong: NGUONG,
   };
 }
