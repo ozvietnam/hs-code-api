@@ -1,10 +1,15 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "853710",
-  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu-2",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-853710",
   "dong8": {
     "85371011": {
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng điều khiển"
+        },
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
@@ -15,6 +20,11 @@
     "85371012": {
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng điều khiển"
+        },
+        {
           "fact": "coBoXuLyLapTrinh",
           "op": "CO"
         }
@@ -22,6 +32,11 @@
     },
     "85371013": {
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng điều khiển"
+        },
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
@@ -93,6 +108,13 @@
           "donVi": "VDC"
         },
         {
+          "fact": "loaiDongDien",
+          "op": "TRONG",
+          "value": [
+            "MOT_CHIEU"
+          ]
+        },
+        {
           "fact": "dongDien",
           "op": ">=",
           "value": 300,
@@ -160,17 +182,17 @@
     {
       "ma": "85371011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85371011 \"… thích hợp sử dụng cho hệ thống điều khiển phân tán\" ⇒ dungCho \"hệ thống điều khiển phân tán\" (\"Bảng điều khiển\" đã ở tiêu đề). .92 cùng chữ ⇒ cùng điều kiện (tầng 8537109 phủ định 8537101 nên không chồng)."
+      "ghiChu": "tax.85371011 \"Bảng điều khiển của loại thích hợp sử dụng cho hệ thống điều khiển phân tán\" ⇒ tenLoai \"Bảng điều khiển\" (danh từ đầu của dòng, EN \"Control panels\" — HẸP hơn tiêu đề cha 8537101 \"Bảng chuyển mạch và bảng điều khiển\", nên phải ghi: thiếu nó thì bảng chuyển mạch cũng thoả .11; soát đợt 3 #694) + dungCho \"hệ thống điều khiển phân tán\". .92 cùng chữ công dụng ⇒ cùng điều kiện dungCho (tầng 8537109 phủ định 8537101 nên không chồng)."
     },
     {
       "ma": "85371012",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85371012 \"Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)\" ⇒ coBoXuLyLapTrinh CO. SEN chỉ mô tả công dụng, không thành điều kiện."
+      "ghiChu": "tax.85371012 \"Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)\" ⇒ tenLoai \"Bảng điều khiển\" (danh từ đầu, EN \"Control panels\", hẹp hơn tiêu đề cha — #694) + coBoXuLyLapTrinh CO. SEN chỉ mô tả công dụng, không thành điều kiện."
     },
     {
       "ma": "85371013",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85371013 \"Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN)\" ⇒ dungCho [6 nhóm, đủ, đúng thứ tự] + phanConLai: true (\"khác\" = trừ .11, .12)."
+      "ghiChu": "tax.85371013 \"Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN)\" ⇒ tenLoai \"Bảng điều khiển\" (danh từ đầu \"Bảng điều khiển khác\", EN \"Other control panels\", hẹp hơn tiêu đề cha — #694) + dungCho [6 nhóm, đủ, đúng thứ tự, mảng = hoặc] + phanConLai: true (\"khác\" = trừ .11, .12)."
     },
     {
       "ma": "85371020",
@@ -180,12 +202,12 @@
     {
       "ma": "85371030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85371030 ⇒ tenLoai \"Bộ điều khiển logic có khả năng lập trình\" + dungCho \"máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn\" (chuỗi con nguyên văn)."
+      "ghiChu": "tax.85371030 ⇒ tenLoai \"Bộ điều khiển logic có khả năng lập trình\" + dungCho \"máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn\" (chuỗi con nguyên văn). Liệt kê \"dịch chuyển, xử lý và kẹp giữ\" nối bằng \"và\" (EN \"transport, handling and storage\"), không phải \"hoặc\" ⇒ giữ một chuỗi (đọc VA đúng chữ), không tách thành mảng HOẶC (sẽ rộng hơn chữ)."
     },
     {
       "ma": "85371040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85371040 \"Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A\" ⇒ tenLoai \"Bộ điều khiển động cơ\" + dienAp >= 24 V, <= 120 V (VDC) + dongDien >= 300 A, <= 500 A (\"từ … đến\" gồm hai mốc; cong3-bien-khong-doc-duoc — đã đối chiếu tay biên với chữ \"từ 24V đến 120VDC\", \"từ 300A đến 500A\"). Vế \"DC\" (một chiều) không ghi loaiDongDien vì chữ \"VDC\" không khớp cách đọc của khoá (một chiều | điện DC) — DE_TRONG, người soát lưu ý."
+      "ghiChu": "tax.85371040 \"Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A\" ⇒ tenLoai \"Bộ điều khiển động cơ\" + dienAp >= 24 V, <= 120 V (VDC) + loaiDongDien TRONG [MOT_CHIEU] (chữ \"120VDC\", EN \"120 V DC\"; tu-vung@2 MOT_CHIEU đọc \"VDC\" — soát đợt 3 #694) + dongDien >= 300 A, <= 500 A (\"từ … đến\" gồm hai mốc; cong3-bien-khong-doc-duoc — đã đối chiếu tay biên với chữ \"từ 24V đến 120VDC\", \"từ 300A đến 500A\")."
     },
     {
       "ma": "85371091",
