@@ -210,7 +210,9 @@ function nhap853641() {
     const b = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
     // #653: chỉ cổng 0 + 3 (không sinh vector) — 840991 (~6 triệu vector) từng thêm ~20 s CI cho một kiểm chỉ cần hai cổng này.
     const r = C.kiemRanhGioi(b.pn6, b, { cong: [0, 3] });
-    const loi03 = r.loi.filter((l) => /^cong[03]-/.test(l));
+    // cong3-liet-ke-trong-mot-chuoi (vòng 5) là kiểm CHẤT LƯỢNG điều kiện (liệt kê HOẶC gói một chuỗi), không phải trích bịa —
+    // bản NHAP/TRA_VE được đỏ vì nó như cổng 2/5; bản DUYET vẫn phải xanh đủ cổng (8d).
+    const loi03 = r.loi.filter((l) => /^cong[03]-/.test(l) && !l.startsWith('cong3-liet-ke-trong-mot-chuoi:'));
     check(`8b ${f}: cổng 0 + cổng 3 xanh (không trích bịa, nhãn đúng)`, loi03.length === 0, loi03);
     check(`8c ${f}: chưa ai duyệt → mọi mục AI_DA_KIEM`, b.trangThai !== 'DUYET' ? [...b.dong8, ...(b.dieuKienNut || [])].every((m) => m.nguonLoai === 'AI_DA_KIEM') : true);
     // Bản đã DUYET phải xanh đủ 4 cổng (sửa công cụ làm đỏ bản đã duyệt = phát hiện, không sửa điều kiện đã duyệt).
