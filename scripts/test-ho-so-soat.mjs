@@ -89,9 +89,14 @@ check('ca "đổi anh em" và "bỏ dữ kiện" thật sự đổi mô tả', M
 const { taxData } = require('../lib/data.js');
 const HS = require('../lib/ho-so/index.js');
 const NGOAI = '85166090'; // nồi chiên — ngoài lát 1
-const LAT1_CHUA_DUYET = BO_DE.ca.map((c) => c.maHs).find((m) => { process.env.HS_HO_SO = 'on'; const r = HS.laMaLat1(m) && !HS.hoSoApDung(m); delete process.env.HS_HO_SO; return r; });
+const chuaApDung = (m) => { process.env.HS_HO_SO = 'on'; const r = HS.laMaLat1(m) && !HS.hoSoApDung(m); delete process.env.HS_HO_SO; return r; };
+// L1-4c đợt 4: mọi mã lát 1 của bộ đề #543 nay đã duyệt ranh giới ⇒ lấy thêm từ danh sách 50 phân nhóm lát 1 (dòng 5 chỉ cần
+// MỘT mã lát 1 chưa duyệt, mô tả là chữ thử chung — không phụ thuộc ca của bộ đề).
+const LAT1_PN6 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'ho-so', 'lat-1.json'), 'utf8')).phanNhom.map((p) => p.pn6);
+const LAT1_CHUA_DUYET = BO_DE.ca.map((c) => c.maHs).find(chuaApDung)
+  || Object.keys(taxData).sort().find((m) => m.length === 8 && LAT1_PN6.includes(m.slice(0, 6)) && chuaApDung(m));
 check('mã ngoài lát 1 có trong biểu', Boolean(taxData[NGOAI]) && !HS.laMaLat1(NGOAI));
-check('bộ đề #543 có mã lát 1 chưa duyệt ranh giới (để kiểm "không áp dụng")', Boolean(LAT1_CHUA_DUYET), LAT1_CHUA_DUYET);
+check('có mã lát 1 chưa duyệt ranh giới (bộ đề #543, hoặc danh sách lát 1) để kiểm "không áp dụng"', Boolean(LAT1_CHUA_DUYET), LAT1_CHUA_DUYET);
 
 const dong = (stt, maHs, moTa, o = {}) => ({ stt, maHs, moTa, xuatXu: 'CN', donViTinh: 'chiếc', soLuong: 100, triGia: { soTien: '500.00', tienTe: 'USD', dieuKien: 'FOB' }, ...o });
 const DONG = [
