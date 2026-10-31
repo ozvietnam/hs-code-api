@@ -4,7 +4,7 @@
   "nhom": "9503",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-950300",
@@ -49,14 +49,41 @@
       "trich": "95030010 - Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh; xe của búp bê",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Xe đạp ba bánh",
-            "xe đẩy",
-            "xe có bàn đạp",
-            "đồ chơi tương tự có bánh",
-            "xe của búp bê"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Xe đạp ba bánh",
+                  "xe đẩy",
+                  "xe có bàn đạp"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "Xe đạp ba bánh",
+                  "xe đẩy",
+                  "xe có bàn đạp"
+                ]
+              },
+              {
+                "fact": "coBanh",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "xe của búp bê"
+              }
+            ]
           ]
         }
       ],
@@ -321,7 +348,7 @@
     {
       "ma": "95030010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.95030010: năm tên nêu đích danh ⇒ tenLoai mảng (hoặc). \"xe của búp bê\" ⊃ \"Búp bê\" — tenCuTheHon phân (tên cụ thể hơn thắng), không khai chồng lấn."
+      "ghiChu": "Soạn lại theo trả về #706 + quyết định GĐ vòng 7 (op TUONG_TU). tax.95030010 \"Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh; xe của búp bê\" (EN \"Tricycles, scooters, pedal cars and similar wheeled toys; dolls' carriages\") ⇒ HOAC ba phương án: (1) hàng NÊU TÊN tenLoai TEN_LOAI [\"Xe đạp ba bánh\",\"xe đẩy\",\"xe có bàn đạp\"]; (2) vế MỞ \"và đồ chơi tương tự có bánh\" ⇒ tenLoai TUONG_TU [ba tên đó] + coBanh CO (\"có bánh\"/\"wheeled\" chỉ giới hạn đồ chơi TƯƠNG TỰ — hàng nêu tên vốn có bánh nên không đòi coBanh ở phương án 1); (3) vế 2 tenLoai \"xe của búp bê\". Bỏ giá trị chết \"đồ chơi tương tự có bánh\" (soát đợt 4: mô tả hàng thật không có chữ \"tương tự\" ⇒ xe chòi chân rơi .99 20%). Lúc chạy: tên khớp một hàng nêu tên ⇒ THOẢ; tên khác (xe chòi chân, ô tô điện đồ chơi) ⇒ CHƯA BIẾT + câu hỏi \"có thuộc loại tương tự … không?\" (không bao giờ TRÁI chỉ vì khác tên), có bánh = không ⇒ TRÁI tất định."
     },
     {
       "ma": "950300~r18723",

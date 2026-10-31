@@ -4,7 +4,7 @@
   "nhom": "3926",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-392620",
@@ -38,7 +38,15 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Miếng đệm và miếng bảo vệ vai"
+          "value": [
+            "Miếng đệm",
+            "miếng bảo vệ"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vai"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -107,7 +115,7 @@
     {
       "ma": "39262020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.39262020: \"Miếng đệm và miếng bảo vệ vai (SEN)\" ⇒ tenLoai \"Miếng đệm và miếng bảo vệ vai\" (một khối). Chữ Anh \"Shoulder pads or shields\": \"vai\" chung cho cả hai danh từ đầu — giữ một khối để không tách định ngữ (tách [\"Miếng đệm\",\"miếng bảo vệ vai\"] sẽ rộng hơn chữ); thử tenLoai [\"Miếng đệm\",\"miếng bảo vệ\"] + tenLoai \"vai\" ⇒ cong2-dong-khong-toi-duoc (bộ so không ghép hai điều kiện cùng khoá trên một dòng) nên không dùng"
+      "ghiChu": "Soạn lại theo trả về #702 + cổng vòng 7 (liệt kê nối \"và\"). tax.39262020 \"Miếng đệm và miếng bảo vệ vai (SEN)\" (EN \"Shoulder pads or shields\"): HAI hàng thay thế (pads OR shields) chung định ngữ \"vai\" (shoulder) ⇒ tenLoai [\"Miếng đệm\",\"miếng bảo vệ\"] (mảng = hoặc, chuỗi con nguyên văn) + một điều kiện tenLoai RIÊNG \"vai\" áp cho cả hai (LUAT-CHUNG cổng 5: định ngữ chung ⇒ điều kiện riêng; cùng khoá hai điều kiện = VÀ, như 950300 .91). Không dùng dungCho \"vai\": \"vai\" là một phần TÊN hàng (miếng đệm vai), còn dungCho lúc chạy đọc chữ sau \"dùng cho\" (\"dùng cho áo vest\") nên sẽ TRÁI oan. Bản trước gói một chuỗi \"Miếng đệm và miếng bảo vệ vai\" ⇒ bộ so chữ đòi đủ âm tiết (đọc thành VÀ): miếng đệm vai đứng một mình rơi .30."
     },
     {
       "ma": "39262030",

@@ -36,7 +36,12 @@
 - [ ] Không còn lỗi `cong3-liet-ke-trong-mot-chuoi` (máy chặn liệt kê HOẶC gói trong MỘT giá trị chữ tự do — vòng 5). Máy bỏ qua có
       chủ đích ba ngoại lệ theo chữ Anh (liệt kê "và" liên hợp sau for/of; dấu phẩy thuộc tính "Slugs, round,"; mã HS): người soát
       vẫn đọc các giá trị còn một chuỗi có dấu phẩy/"và" — chuỗi đó có thật là MỘT hàng/một việc, hay là danh sách hàng thay thế
-      (khi đó phải là mảng)?
+      (khi đó phải là mảng)? Từ vòng 7 máy bắt cả HAI tên hàng nối "và" (chữ Anh "pads or shields", "Arms and beds") nhưng bỏ qua danh từ
+      ghép ("Transmission and reception apparatus") — người soát vẫn đọc chuỗi còn chữ "và".
+- [ ] Mỗi điều kiện `TUONG_TU` (vế mở "X, Y và các loại tương tự", vòng 7): value đúng là các hàng NÊU TÊN nguyên văn đứng trước cụm
+      "… tương tự" (không thêm, không bớt, không chứa chữ "tương tự"); giới hạn đi kèm ("dùng cho sợi dệt", "có bánh") đã là điều kiện
+      riêng và áp đúng phạm vi (chung cho cả hàng nêu tên, hay chỉ cho hàng tương tự ⇒ HOAC). Cảnh báo `cong2-tuong-tu-chua-chot` là
+      đúng thiết kế (lúc chạy hỏi) — trả về nếu người soạn lại khai `chongLanTruc`/`chongLanVanBan` cho cặp đó.
 
 ## 2. Phạm vi vế — máy chỉ là bộ tách theo dấu hiệu, người soát vẫn đọc
 
