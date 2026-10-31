@@ -132,7 +132,8 @@ const nhap88 = (pn6) => nhapDongCung(pn6, THU_MUC_DONG_CUNG_88444A8);
   check('8a fixture 848390 mang nhãn tu-vung@1', /"tuVung": "tu-vung@1"/.test(goc));
   const p = gieoNhap('848390', JSON.parse(goc));
   fs.writeFileSync(p, goc); // giữ nguyên định dạng gốc
-  const k = cli('--nhan-tu-vung', '--pn6=848390');
+  // Spec ĐÔNG CỨNG cùng commit với bản nháp (spec sống của 848390 đã soạn lại ở #693 — không còn khớp bản nháp cũ này).
+  const k = spawnSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--nhan-tu-vung', '--pn6=848390'], { encoding: 'utf8', env: { ...process.env, HS_SPEC_DIR: path.join(THU_MUC_DONG_CUNG_88444A8, 'spec') } });
   const sau = fs.readFileSync(p, 'utf8');
   const khac = goc.split('\n').filter((l, i) => l !== sau.split('\n')[i]);
   check('8b --nhan-tu-vung: nhãn thành tu-vung@2, chỉ đúng MỘT dòng đổi', k.status === 0 && /"tuVung": "tu-vung@2"/.test(sau) && khac.length === 1 && goc.split('\n').length === sau.split('\n').length, { status: k.status, out: k.stdout + k.stderr, khac });
@@ -300,11 +301,16 @@ const D12 = [{ op: 'HOAC', phuongAn: [[TEN(BAN)], [BP, DUNG(BAN)]] }];
   const b = nhap533('845290');
   const soTay = C.soTayTuNhap('845290', b);
   const dk = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO' }));
-  const r1 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: 'Bàn' }), { soTay });
+  // #697: tiêu đề "máy thuộc phân nhóm 8452.10.00" có CHỮ MÔ TẢ ("máy") kèm mã ⇒ dữ kiện tên không giải được ("Bàn") vẫn so âm
+  // tiết như trước (không tất định); chỉ điều kiện CHỈ nêu mã mới chấm CHUA_BIET. 10.3a/c nêu rõ máy 8452.29 cho chắc tiền đề.
+  const NGOAI = ' của máy thuộc phân nhóm 8452.29';
+  const r0 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: 'Bàn' }), { soTay });
+  check('10.3a0 "bộ phận của Bàn" trần: như trước #697 — chỉ .91', JSON.stringify(r0.dongCo) === JSON.stringify(['84529091']), r0);
+  const r1 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: `Bàn${NGOAI}` }), { soTay });
   check('10.3a bàn đạp là bộ phận của "Bàn" (ngoài 8452.10): chỉ .91 (trước: .91 + .92)', JSON.stringify(r1.dongCo) === JSON.stringify(['84529091']) && r1.dong.find((d) => d.hs === '84529092')?.biLanTen === true, r1);
   const r2 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', dungCho: 'máy thuộc phân nhóm 8452.10.00' }), { soTay });
   check('10.3b bàn đạp của máy 8452.10.00: chỉ .11 (phương án tên "Bàn" của .12 bị lấn)', JSON.stringify(r2.dongCo) === JSON.stringify(['84529011']), r2);
-  const r3 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: 'tủ' }), { soTay });
+  const r3 = DK.doiChieuPhanNhom('845290', dk({ tenLoai: 'bàn đạp', laBoPhan: true, dungCho: `tủ${NGOAI}` }), { soTay });
   check('10.3c bàn đạp là bộ phận của "tủ": không phân được ⇒ vẫn .91 + .92 (không tự chốt)', JSON.stringify(r3.dongCo) === JSON.stringify(['84529091', '84529092']), r3);
   // Luật "tên nguyên văn rời nhau" (tenAnhEmRoi) vẫn chỉ là luật chứng minh của cổng: runtime không đổi (9.4e).
   const b7 = nhap571('871410'); const st7 = C.soTayTuNhap('871410', b7);

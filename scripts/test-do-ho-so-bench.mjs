@@ -41,13 +41,19 @@ if (B) {
     check('đường mới: trích dẫn sai = 0', kq.tong.tatCa.trichSai.sai === 0, kq.tong.tatCa.trichSai);
     const bd9603 = kq.theoCa.find((r) => r.id === 'BD-96-03');
     check('#675 BD-96-03 đổi sang dòng anh em ⇒ MAU_THUAN (luật đọc "Vỏ ngoài rời của", không cần LLM)', bd9603 && bd9603.doiAnhEm === 'MAU_THUAN', bd9603);
-    // L1-4c đợt 3 (850110, 854442 duyệt) nới tập áp dụng. Ca BIẾT TRƯỢT, có lý do: BD-85-08 đổi sang 85011091 "dùng cho hàng
-    // hóa thuộc nhóm 84.15…" — điều kiện dungCho theo MÃ nhóm (đúng chữ biểu), mô tả hàng nêu TÊN hàng đích không nêu mã ⇒ bộ so
-    // (lib/dieu-kien-so.js#soMa) không nối tên ↔ mã ⇒ THIEU_DU_KIEN thay vì MAU_THUAN. Mọi ca trượt KHÁC vẫn đỏ; ca bắt phải đúng mã.
-    const BIET_TRUOT = new Set(['BD-85-08']);
+    // L1-4c đợt 3 (850110, 854442 duyệt) nới tập áp dụng: BD-85-08 đổi sang 85011091 "dùng cho hàng hóa thuộc nhóm 84.15…".
+    // #697 fix/soma-ten-ma: bộ so tên↔mã (lib/ten-sang-ma.js) + đọc "dùng cho" sau danh sách "không phải …" ⇒ BẮT được (MAU_THUAN).
+    // maTroToi còn null CÓ LÝ DO: đường của .91 phủ định 8501105/85011060 theo kieuDongCoDien, mà bộ đọc LIET_KE chưa đọc danh sách
+    // phủ định "không phải động cơ bước, không phải động cơ hướng trục" ⇒ .91 chưa thoả TRỌN đường đi ⇒ không trỏ mã (an toàn).
+    // Luật: không ca nào trượt; ca bắt hoặc trỏ ĐÚNG mã anh em, hoặc (chỉ ca trong danh sách) không trỏ mã nào — không bao giờ sai mã.
+    const BIET_KHONG_TRO = new Set(['BD-85-08']);
     const daeAD = kq.theoCa.filter((r) => r.lat === 'apDung' && r.doiAnhEm);
-    const truotLa = daeAD.filter((r) => r.doiAnhEm !== 'MAU_THUAN' && !BIET_TRUOT.has(r.id)).map((r) => r.id);
-    check('#675 áp dụng: mọi ca bắt đều chỉ đúng mã anh em; không ca trượt ngoài danh sách biết trượt', kq.tong.apDung.doiAnhEm.chiDungMa === kq.tong.apDung.doiAnhEm.bat && kq.tong.apDung.doiAnhEm.bat >= 1 && !truotLa.length, { tong: kq.tong.apDung.doiAnhEm, truotLa });
+    const truot = daeAD.filter((r) => r.doiAnhEm !== 'MAU_THUAN').map((r) => r.id);
+    const khongTroLa = daeAD.filter((r) => r.doiAnhEm === 'MAU_THUAN' && !r.doiAnhEmMa && !BIET_KHONG_TRO.has(r.id)).map((r) => r.id);
+    const saiMa = kq.tong.apDung.doiAnhEm.bat - kq.tong.apDung.doiAnhEm.chiDungMa - daeAD.filter((r) => r.doiAnhEm === 'MAU_THUAN' && !r.doiAnhEmMa).length;
+    check('#675/#697 áp dụng: bắt MỌI ca đổi anh em (2/2), không ca nào trỏ SAI mã; không trỏ mã chỉ ở ca biết lý do', kq.tong.apDung.doiAnhEm.bat === kq.tong.apDung.doiAnhEm.n && kq.tong.apDung.doiAnhEm.n >= 2 && !truot.length && !khongTroLa.length && saiMa === 0, { tong: kq.tong.apDung.doiAnhEm, truot, khongTroLa, saiMa });
+    const bd8501 = kq.theoCa.find((r) => r.id === 'BD-85-01');
+    check('#697 BD-85-01 (85444299, cáp sạc điện thoại — CEO chốt theo TB-TCHQ .99): ca chuẩn KHÔNG còn MAU_THUAN', bd8501 && bd8501.chuanTrangThai && bd8501.chuanTrangThai !== 'MAU_THUAN', bd8501);
     check('kết quả chỉ có số + mã/id công khai (không câu mô tả)', !JSON.stringify(kq).includes('moTaMau') && !/Bình giữ nhiệt|Cáp sạc/.test(JSON.stringify(kq)));
   }
 }
