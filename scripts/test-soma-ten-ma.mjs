@@ -77,6 +77,15 @@ const kq = (hs, dk) => DK.doiChieuDong8(hs, Object.entries(dk).map(([fact, giaTr
   check('3i bản trung thực: cổng 0–3 + 5 không lỗi', loi.length === 0, loi);
 }
 
+{
+  // 3j. 841391 (DUYET): .90 "Của bơm khác" (dungCho "bơm", phanConLai) phủ định .10–.30 viết bằng mã. "bơm" ↔ mã nay CHUA_BIET (hỏi)
+  //     ⇒ cổng phải có vector "bơm + ngoài mọi mã" để vẫn tới được .90 (không đỏ giả bản đã duyệt).
+  const b = JSON.parse(fs.readFileSync('scripts/fixtures/ho-so/ranh-gioi-dich-long/841391.json', 'utf8'));
+  let r; try { r = C.kiemRanhGioi('841391', b); } catch (e) { r = { loi: [`nem:${e.message}`] }; }
+  check('3j 841391 (đông cứng): .90 "Của bơm khác" vẫn tới được — cổng không lỗi', (r.loi || []).length === 0, r.loi);
+  check('3k "8413.20.10" ↔ dữ kiện "bơm" ⇒ CHUA_BIET (không biết bơm có thuộc 8413.20.10)', dung('8413.20.10', 'bơm') === 'CHUA_BIET', dung('8413.20.10', 'bơm'));
+}
+
 // ── 4. Đọc "dùng cho" sau một danh sách phủ định "không phải A, B, …" ─────────────────────────────────────────────────
 {
   const r = TV.docGiaTri('dungCho', 'Động cơ điện xoay chiều 25 W, không phải động cơ bước, không phải động cơ hướng trục, dùng cho máy điều hòa không khí');
