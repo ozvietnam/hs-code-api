@@ -122,7 +122,11 @@ for (const ma of ['85362019', '85362099', '85366999', '84135090', '85444299']) {
   const bang = H.taiBang();
   const lechTran = bang.muc.filter((m) => m.maHs === '85444299' && m.dongChuBieu === '85444294' && m.loai === 'LECH_CHUA_PHAN_XU' && !m.dieuKien);
   if (lechTran.length) check('85444299 (thật): còn LECH_CHUA_PHAN_XU không điều kiện ⇒ .94 CHUA_SO_HOA', e94.ketQua === 'CHUA_SO_HOA', e94);
-  check('85444299 (thật): không chốt được ⇒ capDaChac 6', r.capDaChac === 6 && r.chotDuoc === false, r.chuaChot);
+  // L1-4c đợt 3: 854442 đã CLAUDE_DUYET + áp vào sổ tay; bảng 854442-01/02/03 là TIEN_LE_THAY_CHU_BIEU có dieuKien (CEO
+  // 30/10/2026) ⇒ không còn ẩn số ⇒ chốt được ở cấp 8 (như ca tiêm rT bên dưới). Ranh giới chưa duyệt hoặc còn LECH trần ⇒ cấp 6.
+  const daDuyet854442 = loadSoTay('8544').dong8.filter((d) => d.hs.startsWith('854442') && !d.loaiKhac).every((d) => ['CLAUDE_DUYET', 'NGUOI_DUYET'].includes(d.nguonLoai));
+  if (daDuyet854442 && !lechTran.length) check('85444299 (thật): 854442 đã duyệt, bảng không LECH trần ⇒ capDaChac 8, chốt được', r.capDaChac === 8 && r.chotDuoc === true, r.chuaChot);
+  else check('85444299 (thật): không chốt được ⇒ capDaChac 6', r.capDaChac === 6 && r.chotDuoc === false, r.chuaChot);
   check('39269099 (thật): mục KHONG_LECH không thành hieuChinh', JSON.stringify(D.dungDuongDi('39269099', 'NHAP')).indexOf('KHONG_LECH') < 0);
 
   // Nhân quả trên sổ tay TIÊM: ranh giới 854442 lấy từ bản nháp ĐÔNG CỨNG (fixture, bản tại fc5a538 — mọi dòng có
