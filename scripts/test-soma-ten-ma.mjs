@@ -49,6 +49,8 @@ check('2g tên mơ hồ: "87.01" ↔ "xe kéo" (8701 + 8716) ⇒ CHUA_BIET; "Ch�
 check('2h tên mơ hồ nhưng MỌI ứng viên ngoài dải ⇒ TRAI ("84.29" ↔ "xe đạp")', dung('84.29', 'xe đạp') === 'TRAI', dung('84.29', 'xe đạp'));
 check('2i dữ kiện nêu mã: giữ nguyên như cũ ("Chương 87" ↔ "xe thuộc nhóm 87.11" THOA; "87.11" ↔ "87.02, 87.03 hoặc 87.11" CHUA_BIET)', dung('Chương 87', 'xe thuộc nhóm 87.11') === 'THOA' && dung('87.11', '87.02, 87.03 hoặc 87.11') === 'CHUA_BIET', [dung('Chương 87', 'xe thuộc nhóm 87.11'), dung('87.11', '87.02, 87.03 hoặc 87.11')]);
 check('2j điều kiện không mã: so chữ như cũ ("điện thoại" ↔ "máy xúc" TRAI)', dung('điện thoại', 'máy xúc') === 'TRAI', dung('điện thoại', 'máy xúc'));
+check('2k điều kiện có CHỮ MÔ TẢ kèm mã + tên không giải được ⇒ so âm tiết như cũ (85362020 "thiết bị nhiệt điện gia dụng thuộc nhóm 85.16" ↔ "tủ điện công nghiệp" TRAI)', dung('thiết bị nhiệt điện gia dụng thuộc nhóm 85.16', 'tủ điện công nghiệp') === 'TRAI', dung('thiết bị nhiệt điện gia dụng thuộc nhóm 85.16', 'tủ điện công nghiệp'));
+check('2l … nhưng không bao giờ THOA chỉ nhờ âm tiết ("xe kéo thuộc phân nhóm 8701.10 …" ↔ "xe kéo" ⇒ CHUA_BIET)', dung('xe kéo thuộc phân nhóm 8701.10 hoặc 8701.91 đến 8701.95', 'xe kéo') === 'CHUA_BIET', dung('xe kéo thuộc phân nhóm 8701.10 hoặc 8701.91 đến 8701.95', 'xe kéo'));
 
 // ── 3. Đích lồng (#693, 848390) ────────────────────────────────────────────────────────────────────────────────────────
 const CHUOI = '8483.10 dùng cho xe kéo thuộc phân nhóm 8701.91';
