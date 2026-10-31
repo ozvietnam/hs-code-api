@@ -4,7 +4,7 @@
   "nhom": "8483",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode:glm-5.3:20261030T1540#soan-848390",
@@ -199,6 +199,13 @@
       "ma": "84839095",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84839095: \"Dùng cho hàng hóa khác thuộc Chương 87\" ⇒ phanConLai true (phủ định 84839091, 84839093, 84839094) + dungCho \"Chương 87\", cùng cấu trúc 84839015."
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+      "ngay": "2026-10-31",
+      "lyDo": "(A) 848390.json:dieuKienNut[8483901] ĐỔI KHOÁ ĐỂ NÉ (cấm từ vòng 4, QUY-TRINH 3.3): chữ \"Bộ phận của hàng hóa thuộc phân nhóm 8483.10\" là hàng ĐÍCH mà bộ phận thuộc về ⇒ dungCho, nhưng bản nháp ghi congDung \"8483.10\" và ghi chú tự nói lý do là \"để tránh điểm mù với các dòng con đều dùng dungCho\". Người soát thử ghi dungCho \"8483.10\" (không đổi gì khác): cổng ĐỎ cong2-dong-khong-toi-duoc:84839011/13/14/15 + cong2-diem-mu:dungCho:8483901>8483901x — tức bản XANH hiện tại là xanh giả, bốn dòng .11–.15 chưa từng được cổng 2 thử thật. Làm gì: dùng dungCho cho tiêu đề; còn không tới được thì DỪNG (QUY-TRINH mục 5, ghi chú DUNG) và báo Claude/GĐ: hai đích \"dùng cho\" lồng nhau (trục 8483.10 ↔ xe 87.xx) trên cùng một khoá; bộ so mã soMa không nhận giá trị ghép hai mã. Không đổi sang congDung/tenLoai."
     }
   ]
 }

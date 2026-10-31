@@ -61,4 +61,5 @@ Mỗi lỗi ghi `<tệp>:<mục>` + **THU HẸP / SUY RỘNG** + chữ nguyên v
   rồi `--ap-dung --pn6=<pn6>`.
 - Không đạt ⇒ `--tra-ve --pn6=<pn6> --phien=… --ly-do="(A) <tệp>:<mục> THU HẸP/SUY RỘNG: … (B) …"` + mở issue sửa cho PN6.
 - PR soát ghi: tỉ lệ sai theo mục / theo dòng 8 số bị ảnh hưởng / theo phân nhóm; số vế máy báo và số người soát xác nhận đúng
-  (đo tỉ lệ báo oan của cổng 5); rút mẫu cho CEO soát xác suất như đợt 1–2.
+  (đo tỉ lệ báo oan của cổng 5). Đợt 1–2 có rút mẫu cho CEO soát xác suất. Từ đợt 3, CEO bỏ phiếu soát xác suất
+  (31/10/2026, AskUserQuestion trong phiên GĐ); chất lượng do máy kiểm 5 cổng + soát độc lập + đo bench khi chạy bóng.

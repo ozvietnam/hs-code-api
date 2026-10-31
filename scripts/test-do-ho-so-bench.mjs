@@ -41,7 +41,13 @@ if (B) {
     check('đường mới: trích dẫn sai = 0', kq.tong.tatCa.trichSai.sai === 0, kq.tong.tatCa.trichSai);
     const bd9603 = kq.theoCa.find((r) => r.id === 'BD-96-03');
     check('#675 BD-96-03 đổi sang dòng anh em ⇒ MAU_THUAN (luật đọc "Vỏ ngoài rời của", không cần LLM)', bd9603 && bd9603.doiAnhEm === 'MAU_THUAN', bd9603);
-    check('#675 áp dụng: bắt + chỉ đúng mã anh em 1/1', kq.tong.apDung.doiAnhEm.bat === kq.tong.apDung.doiAnhEm.n && kq.tong.apDung.doiAnhEm.chiDungMa === kq.tong.apDung.doiAnhEm.n && kq.tong.apDung.doiAnhEm.n >= 1, kq.tong.apDung.doiAnhEm);
+    // L1-4c đợt 3 (850110, 854442 duyệt) nới tập áp dụng. Ca BIẾT TRƯỢT, có lý do: BD-85-08 đổi sang 85011091 "dùng cho hàng
+    // hóa thuộc nhóm 84.15…" — điều kiện dungCho theo MÃ nhóm (đúng chữ biểu), mô tả hàng nêu TÊN hàng đích không nêu mã ⇒ bộ so
+    // (lib/dieu-kien-so.js#soMa) không nối tên ↔ mã ⇒ THIEU_DU_KIEN thay vì MAU_THUAN. Mọi ca trượt KHÁC vẫn đỏ; ca bắt phải đúng mã.
+    const BIET_TRUOT = new Set(['BD-85-08']);
+    const daeAD = kq.theoCa.filter((r) => r.lat === 'apDung' && r.doiAnhEm);
+    const truotLa = daeAD.filter((r) => r.doiAnhEm !== 'MAU_THUAN' && !BIET_TRUOT.has(r.id)).map((r) => r.id);
+    check('#675 áp dụng: mọi ca bắt đều chỉ đúng mã anh em; không ca trượt ngoài danh sách biết trượt', kq.tong.apDung.doiAnhEm.chiDungMa === kq.tong.apDung.doiAnhEm.bat && kq.tong.apDung.doiAnhEm.bat >= 1 && !truotLa.length, { tong: kq.tong.apDung.doiAnhEm, truotLa });
     check('kết quả chỉ có số + mã/id công khai (không câu mô tả)', !JSON.stringify(kq).includes('moTaMau') && !/Bình giữ nhiệt|Cáp sạc/.test(JSON.stringify(kq)));
   }
 }
