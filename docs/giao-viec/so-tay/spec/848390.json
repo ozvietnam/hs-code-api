@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "848390",
-  "phien": "zcode:glm-5.3:20261030T1540#soan-848390",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-848390",
   "dong8": {
     "84839011": {
       "dieuKienSo": [
@@ -52,12 +52,12 @@
     "8483901": {
       "dieuKienSo": [
         { "fact": "laBoPhan", "op": "CO" },
-        { "fact": "congDung", "op": "CONG_DUNG", "value": "8483.10" }
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "8483.10" }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "8483901", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8483901: \"Bộ phận của hàng hóa thuộc phân nhóm 8483.10\" ⇒ laBoPhan CO (cachDoc \"bộ phận\") + congDung \"8483.10\". Dùng congDung (không phải dungCho) để tránh điểm mù với các dòng con đều dùng dungCho cho mã 87.xx." },
+    { "ma": "8483901", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8483901: \"Bộ phận của hàng hóa thuộc phân nhóm 8483.10\" ⇒ laBoPhan CO (cachDoc \"bộ phận\") + dungCho \"8483.10\" — hàng ĐÍCH mà bộ phận thuộc về, cùng khoá dungCho với các dòng con \"Dùng cho …\" (QUY-TRINH 3.3, không đổi khoá). Hai đích lồng nhau (bộ phận của hàng 8483.10 → hàng ấy dùng cho xe 87.xx): máy chấm theo chuỗi đích (lib/dieu-kien-so.js#tachDichLong, #693)." },
     { "ma": "84839011", "loai": "QUYET_DINH", "ghiChu": "tax.84839011: \"Dùng cho xe kéo thuộc phân nhóm 8701.10 hoặc 8701.91 đến 8701.95\" ⇒ dungCho lấy nguyên vế đích \"xe kéo thuộc phân nhóm 8701.10 hoặc 8701.91 đến 8701.95\" (một giá trị, không tách \"xe kéo\" và mã vì vector chỉ mang một giá trị mỗi fact). Dải \"8701.91 đến 8701.95\" giữ nguyên văn — bộ so mã đối chiếu theo cấp mã, không tự diễn dịch dải." },
     { "ma": "84839013", "loai": "QUYET_DINH", "ghiChu": "tax.84839013: \"Dùng cho xe kéo khác thuộc nhóm 87.01\" ⇒ phanConLai true (\"xe kéo khác\" = phần còn lại có tên, phủ định 84839011) + điều kiện vế dungCho \"thuộc nhóm 87.01\". Chữ \"xe kéo\" không lặp lại ở vế vì 87.01 vốn là mã xe kéo và phanConLai đã tách khỏi 84839011 (xe kéo dải trên)." },
     { "ma": "84839014", "loai": "QUYET_DINH", "ghiChu": "tax.84839014: \"Dùng cho hàng hóa thuộc nhóm 87.11\" ⇒ dungCho \"87.11\" (mã nhóm, so theo cấp mã)." },

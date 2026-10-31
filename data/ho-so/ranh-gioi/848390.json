@@ -4,11 +4,11 @@
   "nhom": "8483",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode:glm-5.3:20261030T1540#soan-848390",
-    "ngay": "2026-10-30"
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-848390",
+    "ngay": "2026-10-31"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -22,7 +22,7 @@
           "op": "CO"
         },
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "8483.10"
         }
@@ -158,7 +158,7 @@
     {
       "ma": "8483901",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8483901: \"Bộ phận của hàng hóa thuộc phân nhóm 8483.10\" ⇒ laBoPhan CO (cachDoc \"bộ phận\") + congDung \"8483.10\". Dùng congDung (không phải dungCho) để tránh điểm mù với các dòng con đều dùng dungCho cho mã 87.xx."
+      "ghiChu": "tieuDe.8483901: \"Bộ phận của hàng hóa thuộc phân nhóm 8483.10\" ⇒ laBoPhan CO (cachDoc \"bộ phận\") + dungCho \"8483.10\" — hàng ĐÍCH mà bộ phận thuộc về, cùng khoá dungCho với các dòng con \"Dùng cho …\" (QUY-TRINH 3.3, không đổi khoá). Hai đích lồng nhau (bộ phận của hàng 8483.10 → hàng ấy dùng cho xe 87.xx): máy chấm theo chuỗi đích (lib/dieu-kien-so.js#tachDichLong, #693)."
     },
     {
       "ma": "84839011",
