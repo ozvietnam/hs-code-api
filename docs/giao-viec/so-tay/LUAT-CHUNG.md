@@ -85,7 +85,10 @@ Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRI
   "Bạc piston") thì tên chứa trọn vẫn thắng (#653).
 - **"dùng cho" có nghĩa**: bộ so âm tiết giữ "dùng cho"/"sử dụng cho" (không bỏ như hư từ): "dùng cho điện ảnh" không nằm trong
   "chứa phim điện ảnh" (#653). "cho" đứng một mình vẫn bỏ.
-- **dungCho theo cấp mã HS**: "nhóm 87.11" thoả "Chương 87"; ngược lại chưa biết.
+- **dungCho theo cấp mã HS**: "nhóm 87.11" thoả "Chương 87"; ngược lại chưa biết. **Dải mã** (vòng 4): "8701.91 đến 8701.95", "từ
+  A đến B", "A–B" (cùng cấp, cùng chương, A < B) nở thành mọi mã có trong cây giữa hai đầu — cả lúc cổng lẫn lúc chạy
+  (`lib/dieu-kien-so.js#maThamChieu`/`daiMa`); cổng 2 thử thêm một mã GIỮA dải (848390: xe kéo 8701.92 trước đây rơi sang .13 "xe
+  kéo khác").
 - **HOẶC của các nhóm VÀ**: `{op: "HOAC", phuongAn: [[đk…], [đk…]]}` — ≥ 2 phương án, mọi vế là khoá tu-vung@1, không lồng, không
   `chieu`. Dùng khi mỗi vế của chữ biểu có ngưỡng riêng (9405.42.30, 8536505); KHÔNG gộp ngưỡng của một vế cho cả dòng.
 - **Vector biên** (#653): khoá `LIET_KE` có thêm một giá trị "ngoài mọi giá trị liệt kê" (dòng dưới "Loại khác" phủ định khoá liệt
@@ -138,3 +141,20 @@ Luật (không mở lại):
 - Máy là bộ tách theo dấu hiệu, có thể đọc sai cấu trúc câu: đọc sai ⇒ `BO_VE` có lý do giải thích cấu trúc, người soát quyết; báo
   Claude để chỉnh bộ tách (không ép điều kiện cho máy vui).
 
+## Vòng 4 (31/10/2026, #577 — soát 21 PR thợ #620–#647): quyết định GĐ (không mở lại)
+
+Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.3, 3.8, 3.11, 4 (Chồng lấn 6–7), 4.8.
+- **Không đổi khoá để né** `cong2-diem-mu` / `cong2-dong-khong-toi-duoc`: anh em và tiêu đề–dòng con cùng ý dùng cùng khoá (851762).
+- Dòng **"Loại khác" trần** không ghi `DE_TRONG` (bật `cong5-de-trong-chua-xu-ly` suông) — không ghi gì hoặc `QUYET_DINH`.
+- **Không nuốt vế**: "X và (các) bộ phận của chúng" (vế mở ⇒ HOAC), chất liệu/loại của hàng ĐÍCH ("dùng cho ống bằng gang đúc" ⇒
+  `dungCho` "ống bằng gang đúc"), "gồm …" (giới hạn, kể cả trong "kể cả …" — 8536505).
+- **Trục tên ↔ công dụng cấp dòng**: hai DÒNG anh em, một chỉ khoá tên, một có khoá công dụng, không chung khoá, chồng lấn thật ⇒
+  `cong2-chong-lan-truc`, DỪNG — kể cả chỉ 2 anh em (940541, 940542, 841459 .10↔.30). Dòng có HOAC xét từng phương án.
+- **Giá trị LIET_KE định nghĩa đúng bằng các vế của tiêu đề** (8536503 `NGAT_SOC_DONG`): người soạn khai `BO_VE` có lyDo trích định
+  nghĩa; người soát chấp nhận hoặc trả về. Công cụ không đổi.
+- **"X và bộ phận" nhiều anh em** (871410, 845290): giữ dạng HOAC; chồng lấn so chữ tự do (`:khong-tat-dinh`) VẪN là lỗi (cổng 2 không
+  nới ở đâu) ⇒ DỪNG; chồng lấn tất định ⇒ DỪNG.
+- `chiHoacChuYeu` đọc thêm "(được) thiết kế chỉ để", "designed only for" (tu-vung@2; "solely designed for" đã đọc từ trước).
+- Bộ tách vế: "có dải tần số …" là một vế biên số; "có hình dạng đặc biệt hoặc thích hợp để …" là một vế khi chữ Anh xác nhận
+  ("shaped or fitted for"); không chắc ⇒ vẫn tách (giữ cờ).
+- Nhãn `tuVung` = từ vựng runtime lúc `--ap-spec`; sửa nhãn cũ bằng `--nhan-tu-vung` (Claude).
