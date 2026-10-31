@@ -8,7 +8,10 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "phát và thu"
+          "value": [
+            "phát",
+            "thu"
+          ]
         },
         {
           "fact": "phuongThucTruyenDan",
@@ -269,7 +272,7 @@
     {
       "ma": "85176210",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85176210 \"Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng\" (EN \"Radio transmitters and radio receivers of a kind used for simultaneous interpretation at multilingual conferences\") ⇒ tenLoai \"phát và thu\" + phuongThucTruyenDan [VO_TUYEN] (cách đọc \"sóng vô tuyến\"; EN \"Radio …\") + dungCho \"phiên dịch trực tiếp\" (chữ \"sử dụng cho\" ⇒ dungCho, cùng khoá với .52). \"sóng vô tuyến\" là phương thức truyền dẫn của thiết bị (radio), không phải một phần tên — từ tu-vung@2 có khoá LIET_KE phuongThucTruyenDan (#606) nên ghi bằng khoá tất định; tenLoai \"phát và thu\" cùng giá trị với .52 (QUY-TRINH 3.3)."
+      "ghiChu": "Soạn lại theo trả về #705 + cổng vòng 7 (liệt kê nối \"và\"). tax.85176210 \"Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng\" (EN \"Radio transmitters and radio receivers of a kind used for simultaneous interpretation at multilingual conferences\"): HAI hàng (máy phát, máy thu) ⇒ tenLoai [\"phát\",\"thu\"] (mảng = hoặc, chuỗi con nguyên văn; bản trước \"phát và thu\" đọc thành VÀ ⇒ máy thu phiên dịch rơi .99) + phuongThucTruyenDan [VO_TUYEN] (\"sóng vô tuyến\"; EN \"Radio …\" chung cho cả hai) + dungCho \"phiên dịch trực tiếp\" (\"sử dụng cho\" ⇒ dungCho, cùng khoá với .52). .52 \"Thiết bị phát và thu\" (EN \"Transmission and reception apparatus\" — MỘT thiết bị thu phát, dưới tiêu đề \"… kết hợp với thiết bị thu\") giữ \"phát và thu\" một chuỗi."
     },
     {
       "ma": "85176230",

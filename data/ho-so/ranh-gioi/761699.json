@@ -4,7 +4,7 @@
   "nhom": "7616",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-761699",
@@ -69,6 +69,15 @@
       "nguon": "tax.76169940",
       "trich": "76169940 - - - Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Ống chỉ",
+            "lõi suốt",
+            "guồng quay tơ"
+          ]
+        },
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
@@ -159,39 +168,6 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "chongLanTruc": [
-    {
-      "nhanh": [
-        "76169920",
-        "76169930",
-        "76169940",
-        "7616995",
-        "76169960",
-        "76169970",
-        "76169980"
-      ],
-      "truc": {
-        "7616995": "TEN_LOAI",
-        "76169920": "TEN_LOAI",
-        "76169930": "TEN_LOAI",
-        "76169940": "CONG_DUNG",
-        "76169960": "TEN_LOAI",
-        "76169970": "TEN_LOAI",
-        "76169980": "TEN_LOAI"
-      },
-      "cauHoiPhanBiet": "Hàng nhôm này là \"Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt\" (.40), hay là một trong các hàng nêu tên: \"Nhôm bịt đầu ống loại phù hợp dùng để sản xuất bút chì\" (.20), \"Đồng xèng, hình tròn…\" (.30), \"Rèm\" (7616995), \"Máng và chén để hứng mủ cao su\" (.60), \"Hộp đựng thuốc lá điếu\" (.70), \"Sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" (.80)? Nếu thoả cả hai, biểu thuế không nêu dòng nào được ưu tiên — cần chuyên gia phân xử.",
-      "trich": {
-        "7616995": "7616995 Rèm",
-        "76169920": "Nhôm bịt đầu ống loại phù hợp dùng để sản xuất bút chì",
-        "76169930": "Đồng xèng, hình tròn, kích thước chiều dày trên 1/10 đường kính",
-        "76169940": "Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt",
-        "76169960": "Máng và chén để hứng mủ cao su",
-        "76169970": "Hộp đựng thuốc lá điếu",
-        "76169980": "Sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới"
-      },
-      "phanXu": null
-    }
-  ],
   "ghiChuSoan": [
     {
       "ma": "76169920",
@@ -206,12 +182,7 @@
     {
       "ma": "76169940",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.76169940 \"Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt\" (chữ Anh \"Bobbins, spools, reels and similar supports for textile yarn\"): vế MỞ \"và sản phẩm tương tự\" ⇒ KHÔNG liệt kê đóng ba tên (quy ước 392690, QUY-TRINH 3.11 — bản thợ PR #636 liệt kê đóng ⇒ cong5-ve-mo-bi-bo); chỉ giữ vế GIỚI HẠN \"dùng cho sợi dệt\" ⇒ dungCho \"sợi dệt\"."
-    },
-    {
-      "ma": "76169940",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Sau khi bỏ danh sách đóng, .40 chỉ còn khoá công dụng (dungCho) cạnh các anh em chỉ/chủ yếu theo tên (.20, .30, tiêu đề 7616995, .60, .70, .80) ⇒ máy báo cong2-chong-lan-truc:76169940 (tên ↔ công dụng). Khai chongLanTruc theo QUY-TRINH 4a: .40 CONG_DUNG ↔ các nhánh tên TEN_LOAI (.20, .60 có thêm congDung nhưng điều kiện riêng có khoá tên), phanXu null — hàng thoả cả hai thì lúc chạy hỏi chuyên gia, máy không tự chọn."
+      "ghiChu": "Soạn lại theo trả về #703 + quyết định GĐ vòng 7 (op TUONG_TU). tax.76169940 \"Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt\" (EN \"Bobbins, spools, reels and similar supports for textile yarn\") ⇒ tenLoai TUONG_TU [\"Ống chỉ\",\"lõi suốt\",\"guồng quay tơ\"] (vế MỞ \"và sản phẩm tương tự\": hàng nêu tên THOẢ, hàng chỉ \"tương tự\" ⇒ CHƯA BIẾT, hỏi) + dungCho \"sợi dệt\" (\"for textile yarn\" giới hạn CẢ hàng nêu tên lẫn hàng tương tự). Bỏ cụm chongLanTruc bảy nhánh của bản trước: chồng lấn đó do cách biểu diễn (chỉ còn dungCho), không phải chữ biểu chồng — soát đợt 4 trả về; với TUONG_TU, tên của anh em (\"Nhôm bịt đầu ống\", \"Rèm\"…) cho .40 CHƯA BIẾT chứ không THOẢ nên không có chồng lấn tất định (cảnh báo cong2-tuong-tu-chua-chot cho người soát)."
     },
     {
       "ma": "7616995",
