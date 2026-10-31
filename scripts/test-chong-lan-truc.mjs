@@ -152,7 +152,9 @@ check('6b LY_DO_CHUA_CHOT.CHONG_LAN_TRUC = "chong-lan-truc" (enum đông cứng)
 }
 
 // (a) Cáp ắc qui dùng cho viễn thông 12 V, cách điện plastic — thoả cả 8544421 và 8544423.
-const CHONG = [dk('tenLoai', 'Cáp ắc qui'), dk('congDung', 'viễn thông'), dk('dienAp', 12, 'V'), dk('chatLieu', PLASTIC), dk('dungCho', 'trạm thu phát sóng')];
+// #697: dungCho nêu mã nhóm của hàng đích — tên trần "trạm thu phát sóng" không có trong cây HS nên so với ".32 Cho xe thuộc nhóm
+// 87.02…" nay là CHUA_BIET (hỏi), không còn TRÁI giả; ca này kiểm trục tên ↔ công dụng, không kiểm tên ↔ mã.
+const CHONG = [dk('tenLoai', 'Cáp ắc qui'), dk('congDung', 'viễn thông'), dk('dienAp', 12, 'V'), dk('chatLieu', PLASTIC), dk('dungCho', 'trạm thu phát sóng thuộc nhóm 85.17')];
 let vdChong = null;
 {
   const h = await hoSo('85444213', CHONG);

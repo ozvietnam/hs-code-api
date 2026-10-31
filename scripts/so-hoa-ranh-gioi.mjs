@@ -275,7 +275,8 @@ if (args.help || args.h || !argv.length) {
     if (txt == null) { console.log(`${p}: chưa có bản nháp`); continue; }
     const b = JSON.parse(txt);
     if (b.tuVung === tvMoi) { console.log(`${p}: giữ — đã ${tvMoi}`); continue; }
-    const tepSpec = path.join('docs', 'giao-viec', 'so-tay', 'spec', `${p}.json`);
+    // HS_SPEC_DIR: thư mục spec thay thế (chỉ test dùng — spec đông cứng đi cùng bản nháp đông cứng).
+    const tepSpec = path.join(process.env.HS_SPEC_DIR || path.join('docs', 'giao-viec', 'so-tay', 'spec'), `${p}.json`);
     if (b.trangThai === 'NHAP' && fs.existsSync(tepSpec)) {
       const { banNhap, loi, dung } = C.apSpec(JSON.parse(fs.readFileSync(tepSpec, 'utf8')), b, { ngay: b.soanBoi?.ngay || null });
       if (loi.length || dung.length) { console.log(`${p}: BỎ QUA — spec không áp được (${[...loi, ...dung][0]})`); continue; }

@@ -181,7 +181,10 @@ const DUNG = (v) => ({ fact: 'dungCho', op: 'CONG_DUNG', value: v });
   const b = suaNhap('401699');
   const m = b.dong8.find((x) => x.hs === '40169917'); m.dieuKienSo = m.dieuKienSo.map((c) => (c.fact === 'dungCho' ? { ...c, value: 'nhóm 88.04' } : c));
   const r = C.kiemRanhGioi('401699', b);
-  check('7i ghép không thoả được (mã HS khác nhánh) ⇒ vẫn cong2-dong-khong-toi-duoc + cong2-diem-mu', coLoi(r, 'cong2-dong-khong-toi-duoc:40169917') && coCanh(r, 'cong2-diem-mu:dungCho:4016991>40169917'), r.canhBao.filter((c) => c.startsWith('cong2-diem')));
+  // #693 (đích lồng): hai dải mã RỜI nhau ở tiêu đề và dòng con nay được máy ghép thành chuỗi đích "<trên> dùng cho <dưới>"
+  // (848390 "Bộ phận của hàng hóa thuộc phân nhóm 8483.10" ↔ "Dùng cho xe kéo thuộc 8701…") ⇒ dòng tới được, nhưng cổng PHẢI
+  // nêu cách hiểu đó cho người soát (cong2-dich-long) — dòng ghi mã trái tiêu đề không được xanh im lặng.
+  check('7i mã HS khác nhánh (rời nhau) ⇒ ghép theo đích lồng nhưng BÁO cong2-dich-long cho người soát', coCanh(r, 'cong2-dich-long:dungCho:4016991>40169917'), r.canhBao.filter((c) => /cong2-(diem|dich)/.test(c)));
   // 950300: vector ghép "Quần áo Búp bê" thoả .21 "Búp bê" lẫn .22 (tiêu đề "Búp bê" + "Quần áo") — đường của .22 khớp HỢP
   // {quần, áo, búp, bê} ⊃ {búp, bê} của .21 ⇒ tên cụ thể hơn thắng, không phải chồng lấn (quần áo búp bê là .22).
   const r2 = C.kiemRanhGioi('950300', docNhap('950300'));
