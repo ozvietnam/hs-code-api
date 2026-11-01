@@ -833,8 +833,8 @@
     },
     {
       "ma": "840991~r12982",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — cong1-khong-phu-kin:840991~r12982 do luật đi, không do chữ: tầng không mã r12982 \"Dùng cho tàu thuyền thuộc Chương 89:\" chỉ có hai con 8409915/8409916 \"Cho động cơ máy thủy công suất …\" (EN \"For marine propulsion engines …\"), KHÔNG có con phần còn lại. Theo #661 (bổ sung cổng 5) vế \"Cho động cơ máy thủy\" phải phủ (đã ghi dungCho \"động cơ máy thủy\"), và bộ phận cho động cơ không phải động cơ đẩy của tàu thuộc 8409917 \"Dùng cho động cơ khác\". Nhưng luật đi xuống tầng theo điều kiện của TẦNG: hàng đó thoả r12982 (dungCho Chương 89), trái cả .915/.916, còn phanConLai của 8409917 phủ định cả tầng r12982 ⇒ không tới dòng nào (cổng 1 thấy đúng lỗ hổng này). Không viết được bằng spec hiện có: phanConLai mảng chỉ nhận anh em cùng cha (không nhận con của tầng), đẩy \"động cơ máy thủy\" lên tầng r12982 là thêm điều kiện chữ tầng không nói (cổng 3), bỏ vế bằng BO_VE trái #661. Cần đổi công cụ: phần còn lại có tên phủ định ĐIỀU KIỆN CỦA CÁC CON khi tầng anh em không có con phần còn lại (hoặc cho phanConLai trỏ tới mã con của tầng anh em) — cả cổng 1/2 lẫn luật đi lúc chạy (lib/dieu-kien-so.js#duongDiDong8)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tầng không mã r12982 \"Dùng cho tàu thuyền thuộc Chương 89:\" ⇒ dungCho \"Chương 89\"; hai con 8409915/8409916 \"Cho động cơ máy thủy công suất …\" (EN \"For marine propulsion engines …\") không phủ kín tầng (không có con phần còn lại). Theo quyết định GĐ vòng 8 (#661): phanConLai của 8409917 \"Dùng cho động cơ khác\" phủ định \"tầng r12982 VÀ một con\" — bộ phận cho động cơ PHỤ của tàu (thoả tầng, trái cả .915/.916) rơi về 8409917, đúng bổ sung #661. Không đẩy chữ \"động cơ máy thủy\" lên tầng, không BO_VE vế của con. Gỡ ghi chú DUNG cũ."
     }
   ]
 }
