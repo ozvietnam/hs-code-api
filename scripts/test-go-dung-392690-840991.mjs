@@ -169,6 +169,10 @@ const nhom = (hs, st = st840) => DK.duongDiDong8(hs, { soTay: st }).nhom;
   const b2 = clone(b840); b2.dieuKienNut.find((m) => m.id === '8409917').phanConLai = ['8409914'];
   const r2 = C.kiemRanhGioi('840991', b2, { cong: [0, 1] });
   check('B4b … phanConLai không nêu r12982 ⇒ vẫn cong1-khong-phu-kin:840991~r12982 (cổng không nới bừa)', co(r2.loi, 'cong1-khong-phu-kin:840991~r12982'), r2.loi);
+  // Tầng phủ kín có phần còn lại nêu tên (848180 r14566 ← r14579 phanConLai): khoá của chuỗi rơi chỉ vét cho vector không vào
+  // con nào ⇒ không thêm tổ hợp, không lấy mẫu (lần đầu cài vòng 8 làm r14566 vượt 100.000 tổ hợp ⇒ cong1-lay-mau).
+  const r848 = C.kiemRanhGioi('848180', C.apSpec(JSON.parse(fs.readFileSync('scripts/fixtures/ho-so/spec-vong-6/848180.json', 'utf8')), null, { ngay: '2026-10-31' }).banNhap, { cong: [0, 1] });
+  check('B4d 848180 cổng 1: không cong1-lay-mau mới ở r14566, không lỗi cổng 1', !co(r848.canhBao, 'cong1-lay-mau:848180~r14566') && !r848.loi.some((l) => l.startsWith('cong1-')), { loi: r848.loi, canhBao: r848.canhBao.filter((c) => c.startsWith('cong1')) });
   check('B4c LUAT-CHUNG + QUY-TRINH ghi: phanConLai phủ định điều kiện anh em; anh em là tầng ⇒ tầng VÀ một con', /tầng VÀ/i.test(docMd('LUAT-CHUNG.md')) && /tầng VÀ/i.test(docMd('QUY-TRINH-SO-HOA.md')));
 }
 
