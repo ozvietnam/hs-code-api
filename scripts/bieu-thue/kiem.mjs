@@ -31,6 +31,14 @@ if (trung.length) fail(`${trung.length} mã 8 số trùng ngoài chương 98 (vd
 const khongMoTa = dong.filter((d) => d.soChuSo === 8 && !d.moTaVi);
 if (khongMoTa.length) fail(`${khongMoTa.length} dòng 8 số không có mô tả tiếng Việt (vd ${khongMoTa.slice(0, 5).map((d) => d.ma).join(', ')})`);
 for (const id of Object.keys(tn.ten)) { const n = T.nodeOf(id); if (!n || n.id !== id) fail(`ten-nut trỏ nút không có trong cây: ${id}`); }
+// tenMa (tên phân nhóm 6 số theo dòng có mã, #725): phải là mã 6 số của sheet chính và tên phải đúng nguyên văn dòng đó.
+const dong6 = new Map(); for (const d of dong) if (d.soChuSo === 6 && !dong6.has(d.maChuan)) dong6.set(d.maChuan, d);
+for (const [id, v] of Object.entries(tn.tenMa || {})) {
+  const d = dong6.get(id);
+  if (!d) fail(`tenMa trỏ mã không có dòng 6 số trong sheet chính: ${id}`);
+  else if (!String(d.moTaVi).includes(v.tenVi)) fail(`tenMa ${id} không nguyên văn dòng biểu r${d.r}`);
+}
+if (!tn.tenMa) console.log('CẢNH BÁO ten-nut.json chưa có tenMa — chạy node scripts/bieu-thue/bo-sung-ten-ma.mjs --phien-ban=' + ver);
 const t = T.tree(); const ao = [...new Set(t.nodes.values())].filter((n) => n.suyRa);
 const coTen = ao.filter((n) => tn.ten[n.id]);
 console.log(`biểu ${ver} sheet chính ${dc.sheetChinh}: ${dong.length} dòng mã (8 số: ${dong.filter((d) => d.soChuSo === 8).length}, trùng ch.98: ${dc.maTrung.length}); tax.json ${dc.soTax}, thiếu ${dc.thieuTrongBieu.length}, mới ${dc.moiSoVoiTax.length}; ${tk.cotThue.length} cột thuế (mọi sheet)`);
