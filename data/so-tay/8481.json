@@ -1191,43 +1191,126 @@
   },
   {
    "hs": "84819010",
-   "dieuKien": "8481.90 – Bộ phận › - - Vỏ của van cổng hoặc van cống có đường kính trong cửa nạp hoặc cửa thoát trên 50 mm nhưng không quá 400 mm",
+   "dieuKien": "tên loại hàng: Vỏ; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): van cổng hoặc van cống; đường kính trong (cửa nạp/cửa thoát, DN) > 50 mm; đường kính trong (cửa nạp/cửa thoát, DN) <= 400 mm",
    "loaiKhac": false,
    "nguon": "tax.84819010",
    "trich": "84819010 - - Vỏ của van cổng hoặc van cống có đường kính trong cửa nạp hoặc cửa thoát trên 50 mm nhưng không quá 400 mm",
-   "nguonLoai": "AI_DA_KIEM",
+   "nguonLoai": "CLAUDE_DUYET",
    "dieuKienSo": [
     {
-     "fact": "duong_kinh",
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Vỏ"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "van cổng",
+      "van cống"
+     ]
+    },
+    {
+     "fact": "duongKinhTrong",
      "op": ">",
      "value": 50,
      "donVi": "mm"
+    },
+    {
+     "fact": "duongKinhTrong",
+     "op": "<=",
+     "value": 400,
+     "donVi": "mm"
     }
-   ]
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+     "ngay": "2026-11-01",
+     "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+    }
+   }
   },
   {
    "hs": "84819021",
-   "dieuKien": "8481.90 – Bộ phận › - - - Thân, dùng cho vòi nước",
+   "dieuKien": "tên loại hàng: Thân; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): vòi nước",
    "loaiKhac": false,
    "nguon": "tax.84819021",
    "trich": "84819021 - - - Thân, dùng cho vòi nước",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thân"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "vòi nước"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+     "ngay": "2026-11-01",
+     "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+    }
+   }
   },
   {
    "hs": "84819022",
-   "dieuKien": "8481.90 – Bộ phận › - - - Thân, dùng cho van xi lanh khí dầu mỏ hoá lỏng (LPG)",
+   "dieuKien": "tên loại hàng: Thân; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): van xi lanh khí dầu mỏ hoá lỏng",
    "loaiKhac": false,
    "nguon": "tax.84819022",
-   "trich": "84819022 - - - Thân, dùng cho van xi lanh khí dầu mỏ hoá lỏng (LPG)",
-   "nguonLoai": "AI_DA_KIEM"
+   "trich": "84819022 - - - Thân, dùng cho van xi lanh khí dầu mỏ hoá lỏng (LPG) ",
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thân"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "van xi lanh khí dầu mỏ hoá lỏng"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+     "ngay": "2026-11-01",
+     "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+    }
+   }
   },
   {
    "hs": "84819023",
-   "dieuKien": "8481.90 – Bộ phận › - - - Thân, loại khác",
+   "dieuKien": "tên loại hàng: Thân",
    "loaiKhac": false,
    "nguon": "tax.84819023",
    "trich": "84819023 - - - Thân, loại khác",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thân"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+     "ngay": "2026-11-01",
+     "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+    }
+   },
+   "phanConLai": true
   },
   {
    "hs": "84819029",
@@ -1250,11 +1333,26 @@
   },
   {
    "hs": "84819031",
-   "dieuKien": "8481.90 – Bộ phận › - - - Bằng đồng hoặc hợp kim đồng",
+   "dieuKien": "chất liệu (theo vị trí): đồng",
    "loaiKhac": false,
    "nguon": "tax.84819031",
    "trich": "84819031 - - - Bằng đồng hoặc hợp kim đồng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "đồng"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+     "ngay": "2026-11-01",
+     "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+    }
+   }
   },
   {
    "hs": "84819039",
@@ -1275,11 +1373,26 @@
   },
   {
    "hs": "84819041",
-   "dieuKien": "8481.90 – Bộ phận › - - - Bằng đồng hoặc hợp kim đồng",
+   "dieuKien": "chất liệu (theo vị trí): đồng",
    "loaiKhac": false,
    "nguon": "tax.84819041",
    "trich": "84819041 - - - Bằng đồng hoặc hợp kim đồng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "đồng"
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+     "ngay": "2026-11-01",
+     "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+    }
+   }
   },
   {
    "hs": "84819049",
@@ -2207,6 +2320,98 @@
      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
      "ngay": "2026-10-30",
      "bam": "153bbe9e4d70c28a80e1222eb15239a1cf730a92b49b7f6eeeed57502506f6c2"
+    }
+   }
+  },
+  {
+   "id": "8481902",
+   "nguon": "tieuDe.8481902",
+   "trich": "8481902 Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "săm",
+      "lốp không săm"
+     ],
+     "chieu": "PHAI_KHONG"
+    },
+    {
+     "fact": "duongKinhTrong",
+     "op": "<=",
+     "value": 25,
+     "donVi": "mm"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+     "ngay": "2026-11-01",
+     "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+    }
+   }
+  },
+  {
+   "id": "8481903",
+   "nguon": "tieuDe.8481903",
+   "trich": "8481903 Thân hoặc đầu van của săm hoặc lốp không săm",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Thân",
+      "đầu van"
+     ]
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "săm",
+      "lốp không săm"
+     ]
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+     "ngay": "2026-11-01",
+     "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
+    }
+   }
+  },
+  {
+   "id": "8481904",
+   "nguon": "tieuDe.8481904",
+   "trich": "8481904 Lõi van của săm hoặc lốp không săm",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Lõi van"
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "săm",
+      "lốp không săm"
+     ]
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+     "ngay": "2026-11-01",
+     "bam": "16dd74e91ee02b931c773354e808c4d0540c2a410323442c98ae8d1dd0e0db80"
     }
    }
   }

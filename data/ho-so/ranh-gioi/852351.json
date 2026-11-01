@@ -4,7 +4,7 @@
   "nhom": "8523",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-852351",
@@ -212,6 +212,11 @@
       "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
       "ngay": "2026-10-30",
       "lyDo": "852351.json:dong8[85235130] SUY RỘNG: vế 1 của chữ là \"loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động\". Bản nháp coi phần \"được ghi … máy xử lý dữ liệu tự động\" là cách mô tả (DE_TRONG) và bỏ — nhưng đó là tiêu chí phân biệt (có thể thao tác/tương tác qua máy xử lý dữ liệu tự động). Bỏ đi thì thẻ nhớ chứa phim/âm thanh thuần (không tương tác) thoả .30 (0%) thay vì .91/.92/.99 (10%). Cần giữ tiêu chí tương tác (khoá có sẵn hoặc THIEU_KHOA_TU_VUNG nếu không có)."
+    },
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+      "ngay": "2026-11-01",
+      "lyDo": "(A) data/ho-so/ranh-gioi/852351.json:dong8[85235130] phương án 1 THU HẸP: \"thông qua một máy xử lý dữ liệu tự động\" (EN \"by means of an automatic data processing machine\") ghi bằng dungCho \"máy xử lý dữ liệu tự động\". dungCho là khoá ĐÍCH DÙNG một giá trị: hàng có \"dùng cho\" thật (máy vi tính, hệ thống dẫn đường) làm điều kiện TRÁI ⇒ .30 MAU_THUAN. Thử doiChieuPhanNhom: thẻ nhớ chứa trò chơi, congDung đủ \"tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh … có thể tương tác với người sử dụng\", dungCho \"máy vi tính\" (chính là máy xử lý dữ liệu tự động) ⇒ .99 (MFN 10%) thay vì .30 (MFN 0%); mô tả nguyên văn 6108/TB-TCHQ (thẻ SD bản đồ \"dùng cho hệ thống dẫn đường … thông qua máy xử lý dữ liệu tự động\" → 8523.51.30) ⇒ .99. \"thông qua\" không phải \"dùng cho\" (QUY-TRINH 3.2–3.3). Sửa: điều kiện congDung chuỗi con nguyên văn (thử trong bộ nhớ: .30 thành THIEU — hỏi — thay vì MAU_THUAN), hoặc THIEU_KHOA_TU_VUNG nếu cần khoá có/không riêng. (B) dong8[85235191] SUY RỘNG: congDung PHAI_KHONG [..., \"phim tài liệu khác\"] — \"khác\" là \"other\" của \"and other documentary movies\"; bộ so chữ đòi đủ âm tiết nên giá trị chết (mô tả thật không có chữ \"khác\"; cùng lớp giá trị chết \"tương tự\" vòng 7). Thử: \"chứa phim điện ảnh, phim tài liệu\" ⇒ .91 không bị loại; chỉ khi có chữ \"khác\" mới TRÁI. Sửa: \"phim tài liệu\". .91/.92/.99 trùng 27 cột thuế nhưng sai mã 8 số. Phần còn lại đạt: BO_VE \"được ghi ở dạng mã nhị phân để máy có thể đọc được\" (thiết bị lưu trữ thể rắn luôn ghi số), 8523511 daGhi KHONG, 8523512, .11/.21 (529/TB-TCHQ → .11 khớp), .92."
     }
   ]
 }
