@@ -921,7 +921,7 @@
    },
    {
     "stt": 5,
-    "maHs": "39262010",
+    "maHs": "39269010",
     "mucSanSang": "NEN_SUA",
     "kiem": [
      {
@@ -957,11 +957,11 @@
       "nhom": "K2",
       "trangThai": "CANH_BAO",
       "ma": "KHAC_NHOM",
-      "noiDung": "Mã khai 39262010 khác nhóm 4 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
-      "goiYSua": "Đối chiếu chú giải và tiền lệ của 39262010 và 96170020 (gói căn cứ /api/evidence-pack).",
+      "noiDung": "Mã khai 39269010 khác nhóm 4 số so với mã hệ thống chọn 96170020. Xem lại mã trước khi truyền, hoặc chuẩn bị giải trình.",
+      "goiYSua": "Đối chiếu chú giải và tiền lệ của 39269010 và 96170020 (gói căn cứ /api/evidence-pack).",
       "basis": "LLM_ASSERTED",
       "evidence": [
-       "mã khai 39262010",
+       "mã khai 39269010",
        "mã hệ thống chọn 96170020 (trạng thái RESOLVED_BY_LLM, độ tin 70)",
        "lý do (AI): stub"
       ],
@@ -988,7 +988,7 @@
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#39262010",
+        "duongDan": "data/tax.json#39269010",
         "phienBan": "2026-01-01"
        }
       ],
@@ -998,19 +998,19 @@
       "nhom": "K4",
       "trangThai": "DAT",
       "ma": "CO_THE_HUONG_ACFTA",
-      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 20%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 5% (MFN 15%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
       "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
       "basis": "RULE_TABLE",
       "evidence": [
-       "ACFTA trong biểu: \"0 (-KH, MM)\"",
+       "ACFTA trong biểu: \"5 (-KH, ID, MM)\"",
        "xuất xứ khai CN",
-       "MFN 20",
-       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+       "MFN 15",
+       "ACFTA 5% khi có C/O mẫu E hợp lệ."
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#39262010",
+        "duongDan": "data/tax.json#39269010",
         "phienBan": "2026-01-01"
        },
        {
@@ -1033,7 +1033,7 @@
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "/api/tax?hs=39262010",
+        "duongDan": "/api/tax?hs=39269010",
         "phienBan": "2026-01-01"
        }
       ]
@@ -1165,7 +1165,7 @@
     "Dòng 4: mã khai khác nhóm 4 số với mã hệ thống chọn.",
     "Dòng 4: chênh lệch thuế MFN giữa mã khai (20%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm.",
     "Dòng 5: mã khai khác nhóm 4 số với mã hệ thống chọn.",
-    "Dòng 5: chênh lệch thuế MFN giữa mã khai (20%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm."
+    "Dòng 5: chênh lệch thuế MFN giữa mã khai (15%) và mã hệ thống chọn (25%) ≥ 5 điểm phần trăm."
    ]
   }
  },
@@ -2010,7 +2010,7 @@
    },
    {
     "stt": 5,
-    "maHs": "39262010",
+    "maHs": "39269010",
     "mucSanSang": "NEN_SUA",
     "kiem": [
      {
@@ -2068,7 +2068,7 @@
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#39262010",
+        "duongDan": "data/tax.json#39269010",
         "phienBan": "2026-01-01"
        }
       ],
@@ -2078,19 +2078,19 @@
       "nhom": "K4",
       "trangThai": "DAT",
       "ma": "CO_THE_HUONG_ACFTA",
-      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 0% (MFN 20%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
+      "noiDung": "Dòng không khai ACFTA. Biểu có ưu đãi ACFTA 5% (MFN 15%) cho xuất xứ CN nếu có C/O mẫu E hợp lệ.",
       "goiYSua": "Cân nhắc xin C/O mẫu E để hưởng ACFTA.",
       "basis": "RULE_TABLE",
       "evidence": [
-       "ACFTA trong biểu: \"0 (-KH, MM)\"",
+       "ACFTA trong biểu: \"5 (-KH, ID, MM)\"",
        "xuất xứ khai CN",
-       "MFN 20",
-       "ACFTA 0% khi có C/O mẫu E hợp lệ."
+       "MFN 15",
+       "ACFTA 5% khi có C/O mẫu E hợp lệ."
       ],
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "data/tax.json#39262010",
+        "duongDan": "data/tax.json#39269010",
         "phienBan": "2026-01-01"
        },
        {
@@ -2113,7 +2113,7 @@
       "nguon": [
        {
         "backend": "hs-code-api",
-        "duongDan": "/api/tax?hs=39262010",
+        "duongDan": "/api/tax?hs=39269010",
         "phienBan": "2026-01-01"
        }
       ]
