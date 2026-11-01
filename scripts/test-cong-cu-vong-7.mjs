@@ -34,6 +34,11 @@ const TT = (v) => ({ fact: 'tenLoai', op: 'TUONG_TU', value: v });
 const lietKe = (r) => r.loi.filter((l) => l.startsWith('cong3-liet-ke-trong-mot-chuoi:'));
 const kiemLk = (pn6, b) => lietKe(C.kiemRanhGioi(pn6, b, { cong: [3] }));
 const dong = (b, hs) => b.dong8.find((m) => m.hs === hs);
+// Vòng 8 (#713): spec đông cứng vòng 7 của 950300 còn .40 liệt kê ĐÓNG ["mô hình thu nhỏ theo tỷ lệ","mô hình giải trí"] — đúng lỗi
+// soát đợt 5 trả về, nay cổng 5 bắt (vế mở "và các mô hình giải trí tương tự"). Phần vòng 7 kiểm .10 nên vá .40 như bản vòng 8.
+const vaV8 = (b) => { dong(b, '95030040').dieuKienSo = [{ fact: 'tenLoai', op: 'TUONG_TU', value: ['mô hình thu nhỏ theo tỷ lệ'] }]; return b; };
+// Vòng 8: thiếu viDuHang của chongLanTruc không thuộc phạm vi vòng 7 (spec đông cứng soạn trước luật này).
+const ngoaiV8 = (ds) => ds.filter((l) => !l.startsWith('cong2-chong-lan-truc-thieu-vi-du:'));
 
 // ════ A. Liệt kê tên hàng nối " và " gói MỘT chuỗi (phát hiện hàng đầu soát đợt 4) ═════════════════════════════════════
 {
@@ -65,7 +70,7 @@ const dong = (b, hs) => b.dong8.find((m) => m.hs === hs);
   // để dòng tới được — trước đó cong2-dong-khong-toi-duoc giả.
   const r10 = C.kiemRanhGioi('392620', tuSpec('392620'));
   check('A10 392620 soạn lại (tenLoai ["Miếng đệm","miếng bảo vệ"] + tenLoai "vai") ⇒ XANH đủ cổng (.20 tới được)', r10.hopLe === true && !co(r10.loi, 'cong2-dong-khong-toi-duoc'), r10.loi);
-  for (const p of ['845290', '851762']) { const r = C.kiemRanhGioi(p, tuSpec(p)); check(`A11 ${p} soạn lại ⇒ XANH đủ cổng`, r.hopLe === true, r.loi); }
+  for (const p of ['845290', '851762']) { const r = C.kiemRanhGioi(p, tuSpec(p)); check(`A11 ${p} soạn lại ⇒ XANH đủ cổng (trừ thiếu viDuHang — vòng 8)`, ngoaiV8(r.loi).length === 0, r.loi); }
   const g = ML.giaiThich('cong3-liet-ke-trong-mot-chuoi:39262020:tenLoai') || {};
   check('A9 ma-loi: giải thích nhắc liệt kê nối "và" + bằng chứng chữ Anh (ca 392620/845290/851762)', /nối "và"/u.test(g.giaiThich || '') && /Shoulder pads or shields|Arms and beds/u.test(g.giaiThich || ''), g.giaiThich);
 }
@@ -114,7 +119,7 @@ const TRICH40 = 'Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tư
 
 // ════ C. Cổng: 950300 + 761699 soạn lại bằng TUONG_TU ═══════════════════════════════════════════════════════════════
 {
-  const b = tuSpec('950300');
+  const b = vaV8(tuSpec('950300'));
   const r = C.kiemRanhGioi('950300', b);
   check('C3a 950300 soạn lại (.10 HOAC tên nêu | TUONG_TU + coBanh | xe của búp bê) ⇒ XANH', r.hopLe === true, r.loi);
   check('C3b … cảnh báo cong2-tuong-tu-chua-chot (vd .10 ↔ .21 "Búp bê": tên của anh em cho .10 CHƯA BIẾT, không THOẢ)', co(r.canhBao, 'cong2-tuong-tu-chua-chot:95030010+95030021'), r.canhBao.filter((x) => x.startsWith('cong2-tuong')));
@@ -136,7 +141,7 @@ const TRICH40 = 'Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tư
 
 // ════ C. Lúc chạy: CHƯA BIẾT ⇒ câu hỏi nêu các tên; trả lời ⇒ chốt; GIR không trích dòng tương tự ═════════════════════
 const PHIEN_SOAT = 'https://claude.ai/code/session_TESTV7#soat-v7';
-const ban950 = C.duyet(tuSpec('950300'), { phien: PHIEN_SOAT, ngay: '2026-10-31' });
+const ban950 = C.duyet(vaV8(tuSpec('950300')), { phien: PHIEN_SOAT, ngay: '2026-10-31' });
 const soTay950 = C.apDung(ban950, loadSoTay('9503'));
 const dk = (fact, giaTri, them = {}) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO', bangChung: String(giaTri), ...them });
 const KHOA10 = DK.khoaTuongTu(TT(['Xe đạp ba bánh', 'xe đẩy', 'xe có bàn đạp']));
@@ -150,11 +155,13 @@ async function hoSo(ma, duKien, st = soTay950) {
   const scooter = [dk('tenLoai', 'xe chòi chân bốn bánh'), dk('coBanh', true), NHUA];
   const kq = (hs, duKien) => DK.doiChieuDong8(hs, duKien, { soTay: soTay950 }).ketQua;
   check('C5a xe chòi chân (có bánh): .10 THIEU (không MAU_THUAN), .99 THIEU — không rơi im lặng sang .99 20%', kq('95030010', scooter) === 'THIEU' && kq('95030099', scooter) === 'THIEU', [kq('95030010', scooter), kq('95030099', scooter)]);
+  // Vòng 8 (#713): .40 cũng là TUONG_TU ["mô hình thu nhỏ theo tỷ lệ"] ⇒ để tới .99 người khai còn trả lời "không tương tự" cho .40.
+  const KHOA40 = 'mô hình thu nhỏ theo tỷ lệ';
   const co10 = [{ ...scooter[0], tuongTu: { [KHOA10]: true } }, ...scooter.slice(1)];
-  const khong10 = [{ ...scooter[0], tuongTu: { [KHOA10]: false } }, ...scooter.slice(1)];
-  check('C5b trả lời "tương tự = có" ⇒ .10 CO (10%); "không" ⇒ .10 MAU_THUAN, .99 CO', kq('95030010', co10) === 'CO' && kq('95030010', khong10) === 'MAU_THUAN' && kq('95030099', khong10) === 'CO', [kq('95030010', co10), kq('95030010', khong10), kq('95030099', khong10)]);
-  const robot = [dk('tenLoai', 'rô bốt đồ chơi'), dk('coBanh', false), NHUA];
-  check('C5c rô bốt KHÔNG có bánh ⇒ .10 MAU_THUAN (coBanh tất định), .99 CO — không hỏi oan', kq('95030010', robot) === 'MAU_THUAN' && kq('95030099', robot) === 'CO', [kq('95030010', robot), kq('95030099', robot)]);
+  const khong10 = [{ ...scooter[0], tuongTu: { [KHOA10]: false, [KHOA40]: false } }, ...scooter.slice(1)];
+  check('C5b trả lời "tương tự = có" ⇒ .10 CO (10%); "không" (cả .10 lẫn .40) ⇒ .10 MAU_THUAN, .99 CO', kq('95030010', co10) === 'CO' && kq('95030010', khong10) === 'MAU_THUAN' && kq('95030099', khong10) === 'CO', [kq('95030010', co10), kq('95030010', khong10), kq('95030099', khong10)]);
+  const robot = [{ ...dk('tenLoai', 'rô bốt đồ chơi'), tuongTu: { [KHOA40]: false } }, dk('coBanh', false), NHUA];
+  check('C5c rô bốt KHÔNG có bánh ⇒ .10 MAU_THUAN (coBanh tất định — không hỏi câu tương tự của .10), .99 CO khi đã trả lời câu tương tự của .40 (vòng 8)', kq('95030010', robot) === 'MAU_THUAN' && kq('95030099', robot) === 'CO', [kq('95030010', robot), kq('95030099', robot)]);
   check('C5d xe đạp ba bánh (tên nêu, không cần coBanh) ⇒ .10 CO', kq('95030010', [dk('tenLoai', 'xe đạp ba bánh trẻ em')]) === 'CO');
 
   const h = await hoSo('95030010', scooter);

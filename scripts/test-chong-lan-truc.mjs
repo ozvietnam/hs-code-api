@@ -22,11 +22,17 @@ const clone = (x) => JSON.parse(JSON.stringify(x));
 
 const NHANH = ['8544421', '8544422', '8544423'];
 const CAU_HOI = 'Cáp này là "Cáp ắc qui" (nhánh 8544423) hay là cáp "Dùng cho viễn thông" (8544421 nếu điện áp không quá 80 V, 8544422 nếu trên 80 V nhưng không quá 1.000 V)? Cáp vừa là cáp ắc qui vừa dùng cho viễn thông: biểu thuế không nêu thứ tự — cần chuyên gia phân xử.';
+// Vòng 8 (#577, quyết định GĐ): mỗi cặp nhánh khác trục mà cụm phủ cần một hàng THẬT thoả cả hai nhánh (viDuHang).
+const VI_DU = [
+  { cap: ['8544421', '8544423'], hang: 'Cáp ắc qui dùng để cấp nguồn cho thiết bị viễn thông, điện áp 48 V, đã lắp đầu nối' },
+  { cap: ['8544422', '8544423'], hang: 'Cáp ắc qui dùng để cấp nguồn cho thiết bị viễn thông, điện áp 220 V, đã lắp đầu nối' },
+];
 const CLT = (them = {}) => ({
   nhanh: [...NHANH],
   truc: { 8544421: 'CONG_DUNG', 8544422: 'CONG_DUNG', 8544423: 'TEN_LOAI' },
   cauHoiPhanBiet: CAU_HOI,
   trich: { 8544421: 'Dùng cho viễn thông, điện áp không quá 80 V', 8544422: 'Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V', 8544423: 'Cáp ắc qui' },
+  viDuHang: VI_DU.map((v) => ({ ...v, cap: [...v.cap] })),
   phanXu: null,
   ...them,
 });
@@ -77,7 +83,7 @@ let banXanh = null;
     check(`${ten}; 12 cặp vẫn lỗi`, r.hopLe === false && r.loi.includes(ma) && r.loi.filter((l) => l.startsWith('cong2-chong-lan:')).length === 12, r.loi.filter((l) => !l.startsWith('cong2-chong-lan:')));
   }
   // Khai thiếu nhánh: chỉ cặp giữa nhánh đã khai được gỡ; cặp với 8544422 vẫn lỗi + vẫn báo trục.
-  const r = C.kiemRanhGioi('854442', nhap([CLT({ nhanh: ['8544421', '8544423'], truc: { 8544421: 'CONG_DUNG', 8544423: 'TEN_LOAI' }, trich: { 8544421: CLT().trich[8544421], 8544423: 'Cáp ắc qui' } })]), C23);
+  const r = C.kiemRanhGioi('854442', nhap([CLT({ nhanh: ['8544421', '8544423'], truc: { 8544421: 'CONG_DUNG', 8544423: 'TEN_LOAI' }, trich: { 8544421: CLT().trich[8544421], 8544423: 'Cáp ắc qui' }, viDuHang: [VI_DU[0]] })]), C23);
   const cap = r.loi.filter((l) => l.startsWith('cong2-chong-lan:')).map((l) => l.split(':')[1]);
   check('3f khai thiếu nhánh 8544422 ⇒ 6 cặp .23/.29 vẫn lỗi, 6 cặp .13/.19 đã gỡ', cap.length === 6 && cap.every((k) => /^8544422[39]\+/.test(k)), cap);
   check('3g … vẫn báo cong2-chong-lan-truc:8544423 (cụm chưa phủ hết)', co(r.loi, 'cong2-chong-lan-truc:8544423:'), r.loi.filter((l) => l.includes('truc')));
@@ -213,6 +219,10 @@ let vdChong = null;
     truc: { 94054110: 'TEN_LOAI', 94054120: 'TEN_LOAI', 94054130: 'CONG_DUNG' },
     cauHoiPhanBiet: 'Đèn này là "Đèn pha" / "Đèn rọi khác" hay là "đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản"?',
     trich: { 94054110: 'Đèn pha', 94054120: 'Đèn rọi khác', 94054130: 'đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản' },
+    viDuHang: [
+      { cap: ['94054110', '94054130'], hang: 'Đèn pha dùng cho tàu thủy, bằng kim loại cơ bản' },
+      { cap: ['94054120', '94054130'], hang: 'Đèn rọi dùng cho tàu thủy, bằng kim loại cơ bản' },
+    ],
     phanXu: null,
   }];
   const r = C.kiemRanhGioi('940541', b, C23);

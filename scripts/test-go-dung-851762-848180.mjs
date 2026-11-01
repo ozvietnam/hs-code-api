@@ -30,7 +30,9 @@ const duKien = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri,
   // Vòng 7 (#711, #705): spec đông cứng này còn .10 tenLoai "phát và thu" (EN "Radio transmitters and radio receivers" — hai hàng)
   // — đúng lỗi soát đợt 4 trả về, nay cổng 3 bắt. Ngoài lỗi đó bản này phải xanh đủ cổng như lúc gỡ DỪNG.
   const LOI_V7 = 'cong3-liet-ke-trong-mot-chuoi:85176210:tenLoai';
-  check('1b 851762: đủ cổng XANH trừ đúng lỗi vòng 7 (liệt kê "và" .10), không DỪNG', r.loi.filter((l) => l !== LOI_V7).length === 0 && r.loi.includes(LOI_V7) && (r.dung || []).length === 0, { loi: r.loi.slice(0, 8), dung: r.dung });
+  // Vòng 8: spec đông cứng soạn trước luật viDuHang ⇒ thiếu ví dụ là lỗi (NHAP); không thuộc phạm vi test này.
+  const ngoaiV8 = (l) => !l.startsWith('cong2-chong-lan-truc-thieu-vi-du:');
+  check('1b 851762: đủ cổng XANH trừ đúng lỗi vòng 7 (liệt kê "và" .10) và thiếu viDuHang (vòng 8), không DỪNG', r.loi.filter((l) => l !== LOI_V7 && ngoaiV8(l)).length === 0 && r.loi.includes(LOI_V7) && (r.dung || []).length === 0, { loi: r.loi.slice(0, 8), dung: r.dung });
   check('1c không còn cong2-dong-khong-toi-duoc:85176252', !r.loi.some((l) => l.startsWith('cong2-dong-khong-toi-duoc')), r.loi);
   check('1d chồng lấn trục đã khai: .41/.42 ↔ .43 và .91 ↔ .92 (cảnh báo, không lỗi)', r.canhBao.includes('cong2-chong-lan-truc-da-khai:85176241,85176242,85176243:2') && r.canhBao.includes('cong2-chong-lan-truc-da-khai:85176291,85176292:1'), r.canhBao.filter((x) => x.startsWith('cong2')));
   const dk = (hs) => a.banNhap?.dong8.find((m) => m.hs === hs)?.dieuKienSo || [];
