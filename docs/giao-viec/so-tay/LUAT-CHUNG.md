@@ -85,6 +85,8 @@ Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRI
   TRƯỚC) hoặc mảng mã anh em. Trích phải có chữ "khác". Không dùng trên dòng "Loại khác…". Máy cảnh báo `nghi-phan-con-lai`.
   Nội dung chỉ là "các loại khác" (cả phân nhóm cùng tên, vd 8501.10 r14839 "Động cơ khác, …") ⇒ `phanConLai` đứng một mình,
   `dieuKienSo: []` (#653). "khác" không trỏ anh em đứng trước ⇒ `phanConLai: false` (khai rõ, tắt cảnh báo; luật đi như không ghi).
+  Vòng 8 (#661): phủ định ĐIỀU KIỆN của anh em được nêu; anh em là tầng mà các con không phủ kín ⇒ phủ định "tầng VÀ một con"
+  (hàng thoả tầng mà không vào con nào rơi về phần còn lại) — mục Vòng 8 dưới.
 - **Tên cụ thể hơn thắng** (`tenCuTheHon`; từ #600 cả trong HOAC và cặp chéo khoá — `tenCuTheHonDong`): "bàn đạp" ⊃ "Bàn" không phải chồng lấn. Tên trên đường đi = HỢP âm tiết của các điều
   kiện cùng khoá (tiêu đề "Búp bê" + dòng "Quần áo"). Bên còn ràng buộc chữ tự do trên khoá khác (dungCho/congDung — trục khác,
   853669) thì không phân; bên CHUNG chỉ thêm giới hạn tất định (số, có-không, liệt kê, chất liệu: "Piston, đường kính 50–155 mm" ↔
@@ -106,7 +108,8 @@ Quy trình từng bước cho MỘT phân nhóm: [`QUY-TRINH-SO-HOA.md`](QUY-TRI
 - **CHONG_LAN_VAN_BAN có máy chặn**: `lyDo` phải trích nguyên văn (ngoặc kép) chữ biểu của CẢ HAI nhánh rẽ
   (`cong3-chong-lan-thieu-trich`) và ít nhất một câu trích là chữ của chính một dòng trong cặp (`cong3-chong-lan-chi-trich-tieu-de`);
   chồng lấn theo TRỤC (392690, 401699, 854442 — một nhánh chồng ≥ 3 nhánh anh em; ≥ 2 khi cụm có tiêu đề/tầng; hai tiêu đề chia theo
-  tên ↔ công dụng) ⇒ `cong2-chong-lan-truc`, DỪNG — khai chongLanVanBan không gỡ được (cặp khai thành `cong2-chong-lan-van-ban-truc`). Chồng lấn do bộ so chữ hay "khác" cuối dòng: không khai — dùng `phanConLai` hoặc để đỏ.
+  tên ↔ công dụng) ⇒ `cong2-chong-lan-truc`, DỪNG — khai chongLanVanBan không gỡ được (cặp KHÁC trục khai thành `cong2-chong-lan-van-ban-truc`;
+  cặp CÙNG trục trong cụm được khai — Vòng 8). Chồng lấn do bộ so chữ hay "khác" cuối dòng: không khai — dùng `phanConLai` hoặc để đỏ.
 - **Định danh phiên**: `<định danh>#<soan|soat>-<nhãn>` (vd `https://claude.ai/code/session_…#soan-830220`,
   `cursor:<mô hình>:<yyyymmddThhmm>#soan-830220`). `--duyet` đòi `#soat-…`; cùng định danh + nhãn chỉ đổi vai = tự duyệt.
 - **ghiChuSoan** `{ma, loai, ghiChu, khoaDeXuat?}`, `loai` ∈ `QUYET_DINH | DE_TRONG | CHONG_LAN | LECH_TIEN_LE | THIEU_KHOA_TU_VUNG | DUNG | BO_VE`
@@ -226,3 +229,27 @@ Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.2,
   cho dòng TUONG_TU kết quả CHƯA BIẾT, không THOẢ ⇒ không chồng lấn tất định; cặp mà câu trả lời "có" sẽ làm hai dòng cùng CO ⇒ cảnh
   báo `cong2-tuong-tu-chua-chot` (không khai chongLanTruc). Vector biên thêm "tên ngoài danh sách + trả lời có/không" để dòng "Loại
   khác" tới được. Giới hạn chỉ của hàng tương tự (EN "similar wheeled toys") ⇒ HOAC [[TEN_LOAI X…], [TUONG_TU X…, <giới hạn>]].
+
+## Vòng 8 (01/11/2026, #577 — gỡ hai DỪNG còn lại của #715: 392690, 840991): quyết định GĐ (không mở lại)
+
+Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.6 và mục 4 (Chồng lấn 6) + 4a.
+- **`chongLanVanBan` cùng trục trong cụm trục** (392690 #683): cặp mà HAI nhánh rẽ CÙNG TRỤC — cả hai `CONG_DUNG` (3926904 "Các thiết
+  bị, dụng cụ an toàn và bảo vệ" `congDung` ↔ 3926905 "Các sản phẩm dùng cho công nghiệp" `dungCho`: mặt nạ hàn dùng trong công
+  nghiệp) hoặc cả hai `TEN_LOAI` — được khai `chongLanVanBan` kể cả khi nút thuộc một cụm `chongLanTruc`. Lệnh cấm vòng 3 chỉ nhắm
+  cặp KHÁC trục: tên ↔ công dụng vẫn phải qua `chongLanTruc` (khai `chongLanVanBan` cho cặp khác trục ⇒ `cong2-chong-lan-van-ban-truc`).
+  Trục của nhánh = trục khai trong `chongLanTruc` hợp lệ; nhánh không thuộc cụm khai thì suy từ khoá riêng (khoá công dụng không
+  khoá tên ⇒ CONG_DUNG; khoá tên không khoá công dụng ⇒ TEN_LOAI; lẫn cả hai ⇒ không coi là cùng trục). Mọi đòi hỏi cũ giữ nguyên:
+  `lyDo` trích nguyên văn chữ CẢ HAI nhánh (`cong3-chong-lan-thieu-trich`), ít nhất một câu là chữ của chính một dòng
+  (`cong3-chong-lan-chi-trich-tieu-de`), khai cặp không chồng lấn ⇒ `cong2-chong-lan-van-ban-thua`. Cụm trục hết báo khi mọi cặp
+  khác trục được `chongLanTruc` phủ và mọi cặp cùng trục đã khai. Lúc chạy không đổi: `chongLanVanBan` ⇒ hai mã, không tự chọn.
+- **Cụm `chongLanTruc` phải có hàng THẬT thoả cả hai nhánh**: không dựng cụm từ cặp mà vector biên gán tên và công dụng độc lập
+  ("Khóa, … nút chặn dây" ↔ "Loại dùng để chứa ngũ cốc" — không hàng nào vừa là khoá/móc/nút chặn vừa là loại dùng để chứa ngũ cốc).
+  Không có hàng thật ⇒ không khai cụm; chồng lấn còn lại là của cách biểu diễn ⇒ DỪNG, báo Claude.
+- **Phần còn lại có tên phủ định ĐIỀU KIỆN của anh em được nêu** (840991 #661): `phanConLai` (true = anh em đứng trước; mảng = anh
+  em liệt kê) phủ định điều kiện của từng anh em đó; anh em là TẦNG mà các con không phủ kín tầng (không con "Loại khác" trần, không
+  con phần còn lại có tên đứng một mình) ⇒ phủ định "điều kiện tầng VÀ điều kiện của một con" — hàng thoả tầng mà không vào con nào
+  rơi về phần còn lại. 840991: tầng r12982 "Dùng cho tàu thuyền thuộc Chương 89" chỉ có hai con "Cho động cơ máy thủy …" (EN "marine
+  propulsion engines"); bộ phận động cơ phụ của tàu ⇒ 8409917 "Dùng cho động cơ khác". Cùng nghĩa ở cổng 1 (tầng không phủ kín mà
+  hàng rơi về phần còn lại nêu tầng ⇒ không lỗ), cổng 2 và lúc chạy (`lib/dieu-kien-so.js#duongDiDong8` nhóm `conTang`,
+  `chamConTang`; `lib/ho-so/duong-di.js` → `doi-chieu.js`). Con chưa số hoá/chưa duyệt ⇒ giữ phủ định cả tầng (hướng an toàn).
+  Dòng/tiêu đề "Loại khác" trần **không đổi** (vẫn phủ định cả điều kiện anh em, tầng không phủ kín vẫn là `cong1-khong-phu-kin`).
