@@ -17,7 +17,8 @@
       "evidence": [
        "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
        "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
-       "điểm bộ chấm 69/100 (REJECT)"
+       "đã đọc được: material: \"thép\"",
+       "điểm bộ chấm 79/100 (REJECT); trừ: MISSING_DIMENSIONS −8, MISSING_APPLICATION −8, MIXED_LANGUAGE −5"
       ],
       "nguon": [
        {
@@ -33,7 +34,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 79,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -245,7 +248,8 @@
       "evidence": [
        "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
        "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
-       "điểm bộ chấm 69/100 (REJECT)"
+       "đã đọc được: material: \"thép\"",
+       "điểm bộ chấm 79/100 (REJECT); trừ: MISSING_DIMENSIONS −8, MISSING_APPLICATION −8, MIXED_LANGUAGE −5"
       ],
       "nguon": [
        {
@@ -261,7 +265,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 79,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -473,7 +479,8 @@
       "evidence": [
        "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
        "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
-       "điểm bộ chấm 69/100 (REJECT)"
+       "đã đọc được: material: \"thép\"",
+       "điểm bộ chấm 79/100 (REJECT); trừ: MISSING_DIMENSIONS −8, MISSING_APPLICATION −8, MIXED_LANGUAGE −5"
       ],
       "nguon": [
        {
@@ -489,7 +496,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 79,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -701,7 +710,8 @@
       "evidence": [
        "MISSING_VOLTAGE: Nhóm 8516 — thiếu Điện áp trong mô tả ECUS",
        "MISSING_APPLIANCEFUNCTION: Nhóm 8516 — thiếu Chức năng thiết bị trong mô tả ECUS",
-       "điểm bộ chấm 48/100 (REJECT)"
+       "đã đọc được: power: \"1500W\"",
+       "điểm bộ chấm 73/100 (REJECT); trừ: CONDITION_DEFAULTED −5, MISSING_VOLTAGE −8, MISSING_APPLIANCEFUNCTION −8, RECOMMENDED_MODELNUMBER −3, RECOMMENDED_FREQUENCY −3"
       ],
       "nguon": [
        {
@@ -717,7 +727,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 73,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -927,6 +939,27 @@
      {
       "nhom": "K1",
       "trangThai": "CANH_BAO",
+      "ma": "MISSING_MATERIAL",
+      "noiDung": "Chương 39 khuyến nghị ghi thành phần/vật liệu",
+      "goiYSua": "Ghi rõ chất liệu/thành phần.",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "Câu khai (48 ký tự) — MISSING_MATERIAL ở thanhPhanCauTao",
+       "điểm bộ chấm 48/100 (REJECT); trừ: MISSING_MATERIAL −10, MISSING_POLYMERTYPE −8, MISSING_FORM −8, MISSING_DIMENSIONS −8, RECOMMENDED_THICKNESS −3, MISMATCH_HS −10, MIXED_LANGUAGE −5"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       }
+      ],
+      "diem": 48,
+      "mucDiem": "REJECT"
+     },
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
       "ma": "THIEU_THONG_SO_THEO_NHOM",
       "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Loại nhựa trong mô tả ECUS; Dạng hàng trong mô tả ECUS; Kích thước trong mô tả ECUS.",
       "goiYSua": "PE, PP, PVC… | tấm, ống, hạt… | DxRxC mm/m",
@@ -934,8 +967,7 @@
       "evidence": [
        "MISSING_POLYMERTYPE: Nhóm 3926 — thiếu Loại nhựa trong mô tả ECUS",
        "MISSING_FORM: Nhóm 3926 — thiếu Dạng hàng trong mô tả ECUS",
-       "MISSING_DIMENSIONS: Nhóm 3926 — thiếu Kích thước trong mô tả ECUS",
-       "điểm bộ chấm 48/100 (REJECT)"
+       "MISSING_DIMENSIONS: Nhóm 3926 — thiếu Kích thước trong mô tả ECUS"
       ],
       "nguon": [
        {
@@ -951,7 +983,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 48,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -1152,7 +1186,7 @@
   "tongQuan": {
    "soDong": 5,
    "soLoi": 0,
-   "soCanhBao": 11,
+   "soCanhBao": 12,
    "soChuaKiem": 15,
    "mucSanSang": "NEN_SUA"
   },
@@ -1186,7 +1220,8 @@
       "evidence": [
        "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
        "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
-       "điểm bộ chấm 69/100 (REJECT)"
+       "đã đọc được: material: \"thép\"",
+       "điểm bộ chấm 79/100 (REJECT); trừ: MISSING_DIMENSIONS −8, MISSING_APPLICATION −8, MIXED_LANGUAGE −5"
       ],
       "nguon": [
        {
@@ -1202,7 +1237,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 79,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -1394,7 +1431,8 @@
       "evidence": [
        "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
        "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
-       "điểm bộ chấm 69/100 (REJECT)"
+       "đã đọc được: material: \"thép\"",
+       "điểm bộ chấm 79/100 (REJECT); trừ: MISSING_DIMENSIONS −8, MISSING_APPLICATION −8, MIXED_LANGUAGE −5"
       ],
       "nguon": [
        {
@@ -1410,7 +1448,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 79,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -1602,7 +1642,8 @@
       "evidence": [
        "MISSING_DIMENSIONS: Nhóm 9617 — thiếu Kích thước trong mô tả ECUS",
        "MISSING_APPLICATION: Nhóm 9617 — thiếu Công dụng cụ thể trong mô tả ECUS",
-       "điểm bộ chấm 69/100 (REJECT)"
+       "đã đọc được: material: \"thép\"",
+       "điểm bộ chấm 79/100 (REJECT); trừ: MISSING_DIMENSIONS −8, MISSING_APPLICATION −8, MIXED_LANGUAGE −5"
       ],
       "nguon": [
        {
@@ -1618,7 +1659,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 79,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -1810,7 +1853,8 @@
       "evidence": [
        "MISSING_VOLTAGE: Nhóm 8516 — thiếu Điện áp trong mô tả ECUS",
        "MISSING_APPLIANCEFUNCTION: Nhóm 8516 — thiếu Chức năng thiết bị trong mô tả ECUS",
-       "điểm bộ chấm 48/100 (REJECT)"
+       "đã đọc được: power: \"1500W\"",
+       "điểm bộ chấm 73/100 (REJECT); trừ: CONDITION_DEFAULTED −5, MISSING_VOLTAGE −8, MISSING_APPLIANCEFUNCTION −8, RECOMMENDED_MODELNUMBER −3, RECOMMENDED_FREQUENCY −3"
       ],
       "nguon": [
        {
@@ -1826,7 +1870,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 73,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -2016,6 +2062,27 @@
      {
       "nhom": "K1",
       "trangThai": "CANH_BAO",
+      "ma": "MISSING_MATERIAL",
+      "noiDung": "Chương 39 khuyến nghị ghi thành phần/vật liệu",
+      "goiYSua": "Ghi rõ chất liệu/thành phần.",
+      "basis": "HEURISTIC",
+      "evidence": [
+       "Câu khai (48 ký tự) — MISSING_MATERIAL ở thanhPhanCauTao",
+       "điểm bộ chấm 48/100 (REJECT); trừ: MISSING_MATERIAL −10, MISSING_POLYMERTYPE −8, MISSING_FORM −8, MISSING_DIMENSIONS −8, RECOMMENDED_THICKNESS −3, MISMATCH_HS −10, MIXED_LANGUAGE −5"
+      ],
+      "nguon": [
+       {
+        "backend": "hs-code-api",
+        "duongDan": "lib/declaration-validator.js#validateDeclaration",
+        "phienBan": "Chỉ tiêu 1.78 điểm (1) mẫu số 01 Phụ lục II Thông tư 38/2015/TT-BTC (sửa đổi bởi TT 39/2018/TT-BTC, TT 121/2025/TT-BTC); CV 5189/TCHQ-GSQL (2019); CV 755/TCHQ-GSQL (2020)"
+       }
+      ],
+      "diem": 48,
+      "mucDiem": "REJECT"
+     },
+     {
+      "nhom": "K1",
+      "trangThai": "CANH_BAO",
       "ma": "THIEU_THONG_SO_THEO_NHOM",
       "noiDung": "Mô tả nên có thêm thông số đặc thù của nhóm hàng: Loại nhựa trong mô tả ECUS; Dạng hàng trong mô tả ECUS; Kích thước trong mô tả ECUS.",
       "goiYSua": "PE, PP, PVC… | tấm, ống, hạt… | DxRxC mm/m",
@@ -2023,8 +2090,7 @@
       "evidence": [
        "MISSING_POLYMERTYPE: Nhóm 3926 — thiếu Loại nhựa trong mô tả ECUS",
        "MISSING_FORM: Nhóm 3926 — thiếu Dạng hàng trong mô tả ECUS",
-       "MISSING_DIMENSIONS: Nhóm 3926 — thiếu Kích thước trong mô tả ECUS",
-       "điểm bộ chấm 48/100 (REJECT)"
+       "MISSING_DIMENSIONS: Nhóm 3926 — thiếu Kích thước trong mô tả ECUS"
       ],
       "nguon": [
        {
@@ -2040,7 +2106,9 @@
         "backend": "hs-code-api",
         "duongDan": "data/chapter-declaration-fields.json"
        }
-      ]
+      ],
+      "diem": 48,
+      "mucDiem": "REJECT"
      },
      {
       "nhom": "K2",
@@ -2221,7 +2289,7 @@
   "tongQuan": {
    "soDong": 5,
    "soLoi": 0,
-   "soCanhBao": 6,
+   "soCanhBao": 7,
    "soChuaKiem": 20,
    "mucSanSang": "NEN_SUA"
   },

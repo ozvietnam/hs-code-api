@@ -1047,11 +1047,10 @@
     },
     "85044019": {
       "heading": "8504",
-      "titleVi": "Củ sạc điện thoại/adaptor",
+      "titleVi": "Bộ nguồn/biến đổi tĩnh điện dùng cho máy xử lý dữ liệu tự động, thiết bị viễn thông — loại khác (củ sạc, adaptor)",
       "addRequired": [
         "outputVoltage",
         "power",
-        "connectivity",
         "modelNumber"
       ],
       "removeRequired": [
@@ -1059,10 +1058,13 @@
         "phaseCount",
         "hasSim"
       ],
-      "noteVi": "Sạc — điện áp ra, công suất, cổng (USB-C/Lightning), model",
+      "noteVi": "Bộ nguồn/sạc — điện áp vào/ra, công suất, model; cổng ra (USB-C…) nếu có",
       "ozPriority": 1,
       "ozCount": 49,
-      "source": "expert"
+      "source": "expert",
+      "addRecommended": [
+        "connectivity"
+      ]
     },
     "85044090": {
       "heading": "8504",
@@ -1140,9 +1142,8 @@
     },
     "85249100": {
       "heading": "8524",
-      "titleVi": "Màn hình điện thoại (linh kiện)",
+      "titleVi": "Mô-đun màn hình dẹt bằng tinh thể lỏng (LCD), có mạch điều khiển",
       "addRequired": [
-        "screenSize",
         "panelType",
         "modelNumber",
         "application"
@@ -1150,11 +1151,16 @@
       "removeRequired": [
         "hasSim",
         "storageCapacity",
-        "networkGeneration"
+        "networkGeneration",
+        "screenSize"
       ],
-      "noteVi": "Màn hình thay thế — inch, LCD/OLED, model tương thích",
+      "noteVi": "Mô-đun LCD — độ phân giải (vd 20x4 ký tự, 128x64 điểm), loại tấm nền, model, lắp cho thiết bị gì; kích thước inch/mm nếu có",
       "ozPriority": 2,
-      "source": "expert"
+      "source": "expert",
+      "addRecommended": [
+        "screenSize",
+        "dimensions"
+      ]
     },
     "85285920": {
       "heading": "8528",
@@ -1240,28 +1246,28 @@
     },
     "85369012": {
       "heading": "8536",
-      "titleVi": "Đầu kết nối dây điện",
+      "titleVi": "Đầu nối, bộ phận nối cho dây dẫn và cáp — dòng điện dưới 16 A",
       "addRequired": [
         "modelNumber",
         "dimensions",
         "application",
-        "connectivity"
+        "connectorType"
       ],
-      "noteVi": "Wire connector — loại giắc, số cực, dòng/áp, model",
+      "noteVi": "Đầu nối dây/cáp — kiểu đầu nối (đầu cốt, chân pin, giắc…), số cực, dòng/áp, model",
       "ozPriority": 2,
       "ozCount": 23,
       "source": "expert"
     },
     "85369094": {
       "heading": "8536",
-      "titleVi": "Đầu nối kiểu giắc cắm",
+      "titleVi": "Thiết bị đấu nối khác thuộc 8536.90 — loại khác (không phải đầu nối dây dẫn/cáp 8536.90.1x)",
       "addRequired": [
         "modelNumber",
         "dimensions",
         "application",
-        "connectivity"
+        "connectorType"
       ],
-      "noteVi": "Connector — loại giắc, số cực, dòng/áp, model",
+      "noteVi": "Thiết bị đấu nối khác — kiểu đầu nối, số cực, dòng/áp, model; nối cho dây dẫn/cáp thì xem 8536.90.1x",
       "ozPriority": 2,
       "ozCount": 15,
       "source": "expert"
@@ -1326,8 +1332,7 @@
       "titleVi": "Vi mạch IC",
       "addRequired": [
         "modelNumber",
-        "application",
-        "material"
+        "application"
       ],
       "noteVi": "IC — mã chip/part number, chức năng (MCU/PMIC…), lắp board gì",
       "ozPriority": 2,
