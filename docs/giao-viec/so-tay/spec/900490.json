@@ -1,0 +1,29 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "900490",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-900490",
+  "dong8": {
+    "90049010": {
+      "dieuKienSo": [
+        { "fact": "hieuChinhThiLuc", "op": "CO" }
+      ]
+    },
+    "90049050": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Kính bảo hộ" }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    {
+      "cap": ["90049010", "90049050"],
+      "lyDo": "Chữ biểu tự chồng lấn: .10 \"Kính thuốc\" (hiệu chỉnh thị lực) và .50 \"Kính bảo hộ\" không loại trừ nhau — kính bảo hộ có độ thoả cả hai (chữ Anh phân nhóm \"corrective, protective or other\" liệt kê song song, không thứ tự). Không có căn cứ thứ tự trích được (precedents.json chỉ có 90049090; chú giải 90.04 không nói); lúc chạy không tự chốt, hỏi người khai."
+    }
+  ],
+  "ghiChuSoan": [
+    { "ma": "90049010", "loai": "QUYET_DINH", "ghiChu": "tax.90049010 \"Kính thuốc\" ⇒ hieuChinhThiLuc CO (cachDoc của khoá có \"kính thuốc\")." },
+    { "ma": "90049050", "loai": "QUYET_DINH", "ghiChu": "tax.90049050 \"Kính bảo hộ\" ⇒ tenLoai TEN_LOAI \"Kính bảo hộ\" (chuỗi con nguyên văn)." },
+    { "ma": "90049010+90049050", "loai": "CHONG_LAN", "ghiChu": "Cặp .10↔.50 khai chongLanVanBan (đúng ví dụ GĐ 30/10/2026 ở LUAT-CHUNG mục chữ biểu tự chồng lấn). Không bịa điều kiện tách (LUAT-CHUNG luật 7)." },
+    { "ma": "90049090", "loai": "QUYET_DINH", "ghiChu": "tax.90049090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}
