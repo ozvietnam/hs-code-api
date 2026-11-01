@@ -62,7 +62,9 @@ const bo392690 = () => { const b = nhapFb('392690'); b.ghiChuSoan = (b.ghiChuSoa
   check('A1a khai 10 cặp cùng trục CONG_DUNG trong cụm trục ⇒ KHÔNG cong2-chong-lan-van-ban-truc', !co(r1.loi, 'cong2-chong-lan-van-ban-truc:'), r1.loi);
   check('A1b … cảnh báo cong2-chong-lan-van-ban cho đúng 10 cặp', CAP_CUNG_TRUC.every((c) => co(r1.canhBao, `cong2-chong-lan-van-ban:${khoa(c)}:`)), r1.canhBao);
   check('A1c … cụm trục 3926903/04/05 hết lỗi cong2-chong-lan-truc (cặp khác trục đã phủ bởi chongLanTruc, cặp cùng trục đã khai)', !co(r1.loi, 'cong2-chong-lan-truc:'), r1.loi);
-  check('A1d … bản nháp XANH (mọi cổng)', r1.hopLe === true, r1.loi);
+  // Luật viDuHang (vòng 8, #721 — merge sau) đòi một hàng thật cho mỗi cặp cụm phủ; bản đông cứng fb2706c soạn trước luật đó nên
+  // chỉ còn đúng các lỗi cong2-chong-lan-truc-thieu-vi-du — ngoài ra xanh.
+  check('A1d … ngoài cong2-chong-lan-truc-thieu-vi-du (luật viDuHang, bản đông cứng soạn trước) không còn lỗi nào', r1.loi.every((l) => l.startsWith('cong2-chong-lan-truc-thieu-vi-du:')), r1.loi);
   check('A1e … cụm chongLanTruc vẫn chỉ phủ cặp khác trục (cảnh báo -da-khai giữ 17 cặp)', co(r1.canhBao, 'cong2-chong-lan-truc-da-khai:39269010,39269020,3926903,3926904,3926905,39269060,3926908:17'), r1.canhBao);
 
   // A2: đòi hỏi cũ giữ nguyên + cặp KHÁC trục vẫn bị cấm.

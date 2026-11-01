@@ -492,33 +492,27 @@
   "chongLanTruc": [
     {
       "nhanh": [
-        "39269010",
-        "39269020",
-        "3926903",
-        "3926904",
         "3926905",
-        "39269060",
         "3926908"
       ],
       "truc": {
-        "3926903": "CONG_DUNG",
-        "3926904": "CONG_DUNG",
         "3926905": "CONG_DUNG",
-        "3926908": "TEN_LOAI",
-        "39269010": "TEN_LOAI",
-        "39269020": "TEN_LOAI",
-        "39269060": "TEN_LOAI"
+        "3926908": "TEN_LOAI"
       },
-      "cauHoiPhanBiet": "Hàng plastic này được nêu TÊN ở một dòng/tiêu đề (\"Phao cho lưới đánh cá\" 39269010; \"Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng\" 39269020; \"Dụng cụ cho gia cầm ăn\" 39269060; \"Tấm thẻ để trình bày đồ nữ trang …; chuỗi hạt; phom giày\" 3926908) hay thuộc nhóm theo CÔNG DỤNG (\"Các sản phẩm vệ sinh, y tế và phẫu thuật\" 3926903; \"Các thiết bị, dụng cụ an toàn và bảo vệ\" 3926904; \"Các sản phẩm dùng cho công nghiệp\" 3926905)? Nếu hàng vừa mang tên ở nhánh tên vừa có công dụng ở nhánh công dụng (vd phom giày dùng trong sản xuất giày công nghiệp), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+      "cauHoiPhanBiet": "Hàng plastic này được nêu TÊN ở tiêu đề \"Tấm thẻ để trình bày đồ nữ trang hoặc những đồ vật nhỏ để trang điểm cá nhân; chuỗi hạt; phom giày\" (3926908) hay thuộc nhóm theo CÔNG DỤNG \"Các sản phẩm dùng cho công nghiệp\" (3926905)? Nếu hàng vừa mang tên ở 3926908 vừa dùng cho công nghiệp (vd phom giày dùng cho công nghiệp sản xuất giày), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
       "trich": {
-        "3926903": "Các sản phẩm vệ sinh, y tế và phẫu thuật",
-        "3926904": "Các thiết bị, dụng cụ an toàn và bảo vệ",
         "3926905": "Các sản phẩm dùng cho công nghiệp",
-        "3926908": "Tấm thẻ để trình bày đồ nữ trang hoặc những đồ vật nhỏ để trang điểm cá nhân; chuỗi hạt; phom giày",
-        "39269010": "Phao cho lưới đánh cá",
-        "39269020": "Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng",
-        "39269060": "Dụng cụ cho gia cầm ăn"
+        "3926908": "Tấm thẻ để trình bày đồ nữ trang hoặc những đồ vật nhỏ để trang điểm cá nhân; chuỗi hạt; phom giày"
       },
+      "viDuHang": [
+        {
+          "cap": [
+            "3926905",
+            "3926908"
+          ],
+          "hang": "Phom giày bằng plastic dùng cho công nghiệp sản xuất giày"
+        }
+      ],
       "phanXu": null
     }
   ],
@@ -627,12 +621,12 @@
     {
       "ma": "392690",
       "loai": "QUYET_DINH",
-      "ghiChu": "Chồng lấn trục (#683): khai chongLanTruc MỘT cụm cấp phân nhóm — 3926903/3926904/3926905 (CONG_DUNG) ↔ 39269010/39269020/39269060/3926908 (TEN_LOAI), phanXu null. Cặp CÙNG trục CONG_DUNG trong cụm (3926903/3926904 ↔ 3926905, 10 cặp dòng) khai chongLanVanBan theo quyết định GĐ vòng 8 (01/11/2026): chồng lấn thật của chữ hai tiêu đề công dụng (mặt nạ hàn, đệm cứu sinh dùng trong công nghiệp). Bỏ cụm .91 ↔ .93 của bản trước (xem ghi chú DUNG 39269091)."
+      "ghiChu": "Chồng lấn trục (#683) theo luật viDuHang (vòng 8): chỉ cặp 3926905 \"Các sản phẩm dùng cho công nghiệp\" (CONG_DUNG) ↔ 3926908 \"… phom giày\" (TEN_LOAI) có hàng THẬT thoả cả hai (phom giày dùng cho công nghiệp sản xuất giày) ⇒ cụm chongLanTruc hai nhánh, viDuHang, phanXu null. Cặp CÙNG trục CONG_DUNG (3926903/3926904 ↔ 3926905, 10 cặp dòng) khai chongLanVanBan theo quyết định GĐ vòng 8b: chồng lấn thật của chữ hai tiêu đề công dụng (mặt nạ hàn, đệm cứu sinh dùng trong công nghiệp). Bỏ khỏi cụm (xem ghi chú DUNG 39269091) mọi cặp tên ↔ công dụng không có hàng thật."
     },
     {
       "ma": "39269091",
       "loai": "DUNG",
-      "ghiChu": "DỪNG — cong2-chong-lan:39269091+39269093 (khong-tat-dinh) + cong2-chong-lan-truc (dòng tên ↔ dòng công dụng). tax.39269091 \"Loại dùng để chứa ngũ cốc\" (SEN: bao bì PVC hình khối chứa ngũ cốc) ⇒ congDung \"chứa ngũ cốc\"; tax.39269093 \"Khóa, khóa điều chỉnh, móc treo và nút chặn dây\" ⇒ tenLoai [4 tên]. Vector biên gán tenLoai \"Khóa\" + congDung \"chứa ngũ cốc\" ĐỘC LẬP nên hai dòng cùng CO, nhưng không có hàng THẬT nào vừa là khoá/khoá điều chỉnh/móc treo/nút chặn dây vừa là \"loại dùng để chứa ngũ cốc\" (khoá kéo của bao chứa ngũ cốc là bộ phận, không phải vật chứa). Theo quyết định GĐ vòng 8 cụm chongLanTruc .91 ↔ .93 (ví dụ cũ \"nút chặn dây chuyên cho bao chứa ngũ cốc\" không thoả .91) không được tồn tại ⇒ đã bỏ. Không khai chongLanVanBan (cặp khác trục ⇒ -van-ban-truc, và không phải chữ biểu tự chồng). Không đổi khoá/thêm điều kiện chữ không nói (QUY-TRINH 3.3, luật 4). Cần quyết định công cụ/GĐ: cách chứng minh \"dòng không tên chỉ nêu công dụng chứa X\" rời \"dòng nêu tên hàng không phải vật chứa\" (vd khoá tu-vung kiểu vật chứa, hoặc luật chứng minh của cổng như #692), hoặc chấp nhận cặp là khoảng trống lúc chạy (hai mã, hỏi)."
+      "ghiChu": "DỪNG — chồng lấn GIẢ tên ↔ công dụng do vector biên gán tenLoai và congDung/dungCho ĐỘC LẬP, không có hàng thật thoả cả hai nhánh nên không khai được chongLanTruc (luật viDuHang vòng 8; quyết định GĐ vòng 8b về cụm .91↔.93): (1) .91 \"Loại dùng để chứa ngũ cốc\" (congDung \"chứa ngũ cốc\"; SEN: bao bì PVC hình khối chứa ngũ cốc) ↔ .93 \"Khóa, khóa điều chỉnh, móc treo và nút chặn dây\" (tenLoai) — không hàng nào vừa là khoá/móc treo/nút chặn dây vừa là loại dùng để chứa ngũ cốc (ví dụ cũ \"nút chặn dây chuyên cho bao chứa ngũ cốc\" không thoả .91); (2) 39269010 \"Phao cho lưới đánh cá\", 39269020 \"Quạt và màn che kéo bằng tay …\", 39269060 \"Dụng cụ cho gia cầm ăn\", 3926908 \"Tấm thẻ …; chuỗi hạt; phom giày\" (tên) ↔ 3926903 \"Các sản phẩm vệ sinh, y tế và phẫu thuật\" / 3926904 \"Các thiết bị, dụng cụ an toàn và bảo vệ\" (công dụng), và 39269020 ↔ 3926905 \"Các sản phẩm dùng cho công nghiệp\" — không có mặt hàng thật (phao lưới cá là sản phẩm y tế? quạt tay là thiết bị bảo hộ? …). Không đổi khoá được (tên hàng ↔ nhóm công dụng là hai ý khác nhau của chữ biểu, QUY-TRINH 3.3), không thêm điều kiện chữ không nói (luật 4), không chongLanVanBan cho cặp khác trục. Cần quyết định công cụ/GĐ: một luật chứng minh của cổng cho \"tên hàng X ↔ nhóm công dụng Y mà không hàng thật nào thoả cả hai\" (vd người soát xác nhận cặp rời, như #692), hoặc chấp nhận cặp là khoảng trống lúc chạy (hai mã, hỏi)."
     }
   ]
 }
