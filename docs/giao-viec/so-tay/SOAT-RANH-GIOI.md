@@ -38,6 +38,10 @@
       vẫn đọc các giá trị còn một chuỗi có dấu phẩy/"và" — chuỗi đó có thật là MỘT hàng/một việc, hay là danh sách hàng thay thế
       (khi đó phải là mảng)? Từ vòng 7 máy bắt cả HAI tên hàng nối "và" (chữ Anh "pads or shields", "Arms and beds") nhưng bỏ qua danh từ
       ghép ("Transmission and reception apparatus") — người soát vẫn đọc chuỗi còn chữ "và".
+- [ ] Mỗi mục `chongLanTruc` (vòng 8): đọc TỪNG `viDuHang` — `hang` có phải một mặt hàng CÓ THẬT, thoả cả hai nhánh theo chữ biểu
+      (không chỉ thoả bộ đọc: "van dùng cho săm có khoang pha trộn" máy đọc được nhưng không có thật)? Mỗi cặp phủ đều có ví dụ (máy
+      chặn thiếu/sai). Ví dụ gượng ép ⇒ trả về: cặp đó là chồng lấn GIẢ do cách chọn khoá (761699, 848180), không phải trục. Bản DUYET
+      cũ chưa có ví dụ chỉ cảnh báo `cong2-chong-lan-truc-thieu-vi-du` — khi soát lại thì đòi bổ sung.
 - [ ] Mỗi điều kiện `TUONG_TU` (vế mở "X, Y và các loại tương tự", vòng 7): value đúng là các hàng NÊU TÊN nguyên văn đứng trước cụm
       "… tương tự" (không thêm, không bớt, không chứa chữ "tương tự"); giới hạn đi kèm ("dùng cho sợi dệt", "có bánh") đã là điều kiện
       riêng và áp đúng phạm vi (chung cho cả hàng nêu tên, hay chỉ cho hàng tương tự ⇒ HOAC). Cảnh báo `cong2-tuong-tu-chua-chot` là
