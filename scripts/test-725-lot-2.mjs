@@ -36,7 +36,7 @@ const describeHandler = require('../api/describe.js');
 const classifyHandler = require('../api/classify.js');
 const { validateDeclaration, normalizeDeclaration, nhanHieuMauThuan, mucTheoDiem, tuAnhThuong } = require('../lib/declaration-validator');
 const { phatHienTruong, timMaHang } = require('../lib/truong-dac-thu');
-const { composeWithMeta } = require('../lib/describe-compose');
+const { composeWithMeta, tyLeLapY } = require('../lib/describe-compose');
 const { getDeclarationFieldSpec } = require('../lib/compliance-data');
 const { docAcfta } = require('../lib/acfta');
 
@@ -194,6 +194,64 @@ const dem = (s, sub) => String(s).split(sub).length - 1;
   const kq2 = await soat([{ stt: 1, maHs: '85249100', moTa: 'Mô-đun màn hình LCD ký tự 20x4 ký tự, kích thước 98x60mm, mã LM-2004Q, điện áp 5V, dùng cho bảng điều khiển, mới 100%', xuatXu: 'CN', donViTinh: 'chiếc', thueSuatKhai: { loai: 'ACFTA', nk: '0' }, coFormE: true }]);
   const evK4 = kiemCua(kq2, 1, 'K4').flatMap((m) => m.evidence);
   check('#24 K4: evidence ACFTA dễ đọc, vẫn giữ chuỗi gốc', evK4.some((e) => /ACFTA trong biểu: 3 mức gộp từ dòng 10 số của biểu gốc: 0% \(trừ KH\) ×2; 0% \(chuỗi gốc "0 \(-KH\)\/0 \(-KH\)\/0"\)/.test(e)), evK4);
+}
+
+// ═══ 41. Rút gọn câu khai: công dụng lặp ý bỏ trước, nhãn hiệu bỏ SAU CÙNG (lô 3) ═══════════════════════
+{
+  // Dòng tổng hợp: tên hàng đã có "dùng đóng ngắt mạch điện…" nên khối "công dụng: Đóng ngắt mạch điện an toàn…" lặp ý.
+  const d = {
+    tenHang: 'Công tắc đảo chiều 3 vị trí dùng đóng ngắt mạch điện trong tủ điều khiển máy công nghiệp, 3 cực, dòng 20A',
+    nhanHieu: 'VELTRA', model: 'LW26-20', congDung: 'Đóng ngắt mạch điện an toàn cho tủ điều khiển', thongSoKyThuat: ['Điện áp: 440V'],
+    xuatXu: { nameVi: 'Trung Quốc' }, tinhTrang: 'Mới 100%',
+  };
+  const day = composeWithMeta(d);
+  check('#41 ca thử: bản đầy đủ > 200, bỏ riêng khối công dụng thì vừa', day.fullLength > 200 && day.fullLength - 'công dụng: Đóng ngắt mạch điện an toàn cho tủ điều khiển; '.length <= 200, day.fullLength);
+  for (const [ten, opts] of [['mặc định', {}], ['keepSpecs (máy 84/85)', { keepSpecs: true }], ['dự phòng (AI tắt)', { uuTien: 'duPhong' }], ['dự phòng + keepSpecs', { keepSpecs: true, uuTien: 'duPhong' }]]) {
+    const r = composeWithMeta(d, opts);
+    check(`#41 ${ten}: giữ "nhãn hiệu VELTRA", ≤ 200 ký tự, công dụng lặp ý bị bỏ`, /nhãn hiệu VELTRA/.test(r.text) && r.length <= 200 && !/công dụng:/.test(r.text) && r.dropped.includes('congDung') && !r.dropped.includes('nhanHieu'), { t: r.text, dropped: r.dropped });
+  }
+  check('#41 tyLeLapY: công dụng lặp ý ≥ 60%, công dụng mới < 60%', tyLeLapY(d.tenHang, d.congDung) >= 0.6 && tyLeLapY(d.tenHang, 'Chống thấm nước, chịu rung, lắp trên thanh ray DIN') < 0.6, [tyLeLapY(d.tenHang, d.congDung), tyLeLapY(d.tenHang, 'Chống thấm nước, chịu rung, lắp trên thanh ray DIN')]);
+
+  // Công dụng KHÔNG lặp ý: vẫn là khối phụ bỏ trước nhãn hiệu (đường dự phòng trước đây bỏ nhãn hiệu trước công dụng).
+  const e = { ...d, congDung: 'Chống thấm nước, chịu rung, lắp trên thanh ray DIN trong tủ điện ngoài trời' };
+  const re = composeWithMeta(e, { uuTien: 'duPhong' });
+  check('#41 dự phòng: công dụng mới (không lặp) bỏ trước, nhãn hiệu vẫn còn khi vừa 200', re.length <= 200 && /nhãn hiệu VELTRA/.test(re.text) && re.dropped.indexOf('nhanHieu') === -1, { t: re.text, dropped: re.dropped });
+  // Đường dự phòng: nhãn hiệu bỏ SAU công dụng và thành phần (model + thông số phân biệt mã vẫn trên nhãn hiệu — #725 lỗi 31).
+  const dai = { tenHang: `${'Công tắc đảo chiều công nghiệp nhiều vị trí '.repeat(2)}loại 3 cực dòng 20A`, nhanHieu: 'VELTRA', model: 'LW26-20', thanhPhanCauTao: 'vỏ nhựa ABS, tiếp điểm bạc', congDung: 'Lắp trong tủ điện điều khiển máy đóng gói', xuatXu: { nameVi: 'Trung Quốc' }, tinhTrang: 'Mới 100%' };
+  const rd = composeWithMeta(dai, { uuTien: 'duPhong' });
+  check('#41 dự phòng: công dụng + thành phần bỏ trước nhãn hiệu; model còn', rd.dropped.includes('congDung') && rd.dropped.includes('thanhPhanCauTao') && (rd.dropped.indexOf('nhanHieu') === -1 || rd.dropped.indexOf('nhanHieu') > rd.dropped.indexOf('thanhPhanCauTao')) && /model LW26-20/.test(rd.text), { dropped: rd.dropped, t: rd.text });
+  const j = await describe({ hsCode: '85365099', productName: d.tenHang, origin: 'CN', condition: 'Mới 100%', brand: 'VELTRA', model: 'LW26-20', purpose: d.congDung, technicalSpec: 'Điện áp: 440V' });
+  check('#41 describe (AI tắt): câu khai ≤ 200 và còn "nhãn hiệu VELTRA"', j.customsDescription.length <= 200 && /nhãn hiệu VELTRA/.test(j.customsDescription), j.customsDescription);
+}
+
+// ═══ 42. dimensions không lấy từ model/mã hàng hay cỡ ren (lô 3) ════════════════════════════════════════
+{
+  const dim = (declaration) => phatHienTruong({ key: 'dimensions' }, declaration, {});
+  check('#42 "20X4" trong model "20X4-I2C" không phải kích thước', !dim({ tenHang: 'Mô-đun màn hình LCD ký tự, model 20X4-I2C, điện áp 5V', model: '20X4-I2C' }).co, dim({ tenHang: 'Mô-đun màn hình LCD ký tự, model 20X4-I2C', model: '20X4-I2C' }));
+  check('#42 "20x4 ký tự" + model 20X4-I2C vẫn không phải kích thước', !dim({ tenHang: 'Mô-đun màn hình LCD 20x4 ký tự, model 20X4-I2C', model: '20X4-I2C' }).co);
+  check('#42 cỡ ren "M16x10mm" không phải kích thước', !dim({ tenHang: 'Vít cấy đầu nối ren M16x10mm bằng thép' }).co && !dim({ tenHang: 'Bu lông M8x1.25 bằng inox' }).co);
+  const t = dim({ tenHang: 'Mô-đun LCD ký tự 20x4 ký tự, kích thước 98x60mm, model 20X4-I2C' });
+  check('#42 kích thước thật vẫn đọc được (98x60), không lấy 20X4', t.co && /^98\s*x\s*60/i.test(t.giaTri), t);
+  check('#42 kích thước thật: "120x80x40mm", "100 x 50 mm", "kích thước 30x20" vẫn có', dim({ tenHang: 'Hộp nhựa 120x80x40mm' }).co && dim({ tenHang: 'Tấm đệm 100 x 50 mm' }).co && /^30x20/.test(dim({ tenHang: 'Đầu nối có kích thước 30x20' }).giaTri || ''));
+  check('#42 ren + kích thước cùng câu: lấy kích thước, không lấy ren', /^30x20/.test(dim({ tenHang: 'Vít M8x1.25 thép; đầu nối có kích thước 30x20' }).giaTri || ''));
+  // Đi qua bộ chấm thật: model/cỡ ren không làm hết MISSING_DIMENSIONS ở hàng cần kích thước.
+  const spec = getDeclarationFieldSpec('73181590');
+  if ((spec?.required || []).some((f) => f.key === 'dimensions')) {
+    const v = validateDeclaration(normalizeDeclaration({ tenHang: 'Bu lông ren M16x10mm bằng thép, mã BL-1610', xuatXu: 'CN', donViTinh: 'cái', tinhTrang: 'Mới 100%' }), '73181590', {});
+    check('#42 bộ chấm: cỡ ren M16x10mm không làm mất cảnh báo thiếu kích thước', v.warnings.some((w) => w.code === 'MISSING_DIMENSIONS'), v.warnings.map((w) => w.code));
+  }
+}
+
+// ═══ 43. MIXED_LANGUAGE không tính thuật ngữ kỹ thuật / tên chuẩn giao tiếp (lô 3) ══════════════════════
+{
+  const mix = (tenHang, extra = {}) => validateDeclaration(normalizeDeclaration({ tenHang, xuatXu: 'CN', donViTinh: 'cái', tinhTrang: 'Mới 100%', ...extra }), '85258900', {}).warnings.some((w) => w.code === 'MIXED_LANGUAGE');
+  check('#43 không báo: "camera" + "FireWire"', !mix('Camera công nghiệp giao tiếp FireWire, độ phân giải 5MP, mã CM-5F'));
+  check('#43 không báo: Ethernet, Bluetooth, WiFi, USB, HDMI, LED, LCD, router, module', !mix('Mô-đun router WiFi hai băng tần, cổng Ethernet, Bluetooth 5.0, cổng USB và HDMI, đèn LED, màn hình LCD, module mở rộng'));
+  check('#43 tuAnhThuong: các thuật ngữ trên trả rỗng', tuAnhThuong({ tenHang: 'Camera FireWire Ethernet Bluetooth WiFi USB HDMI LED LCD router module cho máy kiểm tra' }).length === 0, tuAnhThuong({ tenHang: 'Camera FireWire Ethernet Bluetooth WiFi USB HDMI LED LCD router module cho máy kiểm tra' }));
+  check('#43 vẫn báo: "power supply" đi cùng "camera" (chỉ bắt từ Anh thường, không bắt camera)', mix('Camera giám sát IP kèm power supply 12V') && JSON.stringify(tuAnhThuong({ tenHang: 'Camera giám sát IP kèm power supply 12V' })) === JSON.stringify(['power', 'supply']), tuAnhThuong({ tenHang: 'Camera giám sát IP kèm power supply 12V' }));
+  check('#43 vẫn báo: "cable", "switch" thay từ Việt', mix('Dây cable nối camera FireWire') && mix('Switch gạt 2 vị trí dùng cho máy in'));
+  const j = await describe({ hsCode: '85258900', productName: 'Camera công nghiệp giao tiếp FireWire, độ phân giải 5MP, mã CM-5F, dùng giám sát dây chuyền', origin: 'CN', condition: 'Mới 100%' });
+  check('#43 describe: dòng camera FireWire → không MIXED_LANGUAGE', !codes(j).includes('MIXED_LANGUAGE'), codes(j));
 }
 
 console.log(`\n${passed} passed, ${failed} failed`);
