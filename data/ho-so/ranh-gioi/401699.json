@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q",
-    "ngay": "2026-10-30"
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-401699",
+    "ngay": "2026-11-01"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -39,12 +39,14 @@
           "op": "CONG_DUNG",
           "value": [
             "máy",
-            "thiết bị điện hoặc cơ khí",
+            "thiết bị điện",
+            "cơ khí",
             "mục đích kỹ thuật"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     }
   ],
   "dong8": [
@@ -172,7 +174,10 @@
           "value": "xe đạp"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "40169916"
+      ]
     },
     {
       "hs": "40169919",
@@ -342,172 +347,161 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "4016991",
+        "40169920",
+        "40169930",
+        "40169940",
+        "4016995",
+        "40169960",
+        "40169970"
+      ],
+      "truc": {
+        "4016991": "CONG_DUNG",
+        "4016995": "CONG_DUNG",
+        "40169920": "CONG_DUNG",
+        "40169930": "TEN_LOAI",
+        "40169940": "TEN_LOAI",
+        "40169960": "TEN_LOAI",
+        "40169970": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng cao su này được nêu TÊN ở một dòng (\"Dải cao su\" 40169930; \"Tấm, miếng rời ghép với nhau để ốp tường\" 40169940; \"Lót đường ray (rail pad)\" 40169960; \"Loại chịu lực xây dựng kể cả lực cầu\" 40169970) hay thuộc nhánh theo CÔNG DỤNG (\"Bộ phận và phụ kiện dùng cho xe thuộc Chương 87\" 4016991; \"Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\" 40169920; \"Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác\" 4016995)? Nếu hàng vừa mang tên ở nhánh tên vừa có công dụng ở nhánh công dụng (vd dải cao su làm bộ phận ô tô), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "4016991": "Bộ phận và phụ kiện dùng cho xe thuộc Chương 87",
+        "4016995": "Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác",
+        "40169920": "Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04",
+        "40169930": "Dải cao su",
+        "40169940": "Tấm, miếng rời ghép với nhau để ốp tường",
+        "40169960": "Lót đường ray (rail pad)",
+        "40169970": "Loại chịu lực xây dựng kể cả lực cầu"
+      },
+      "phanXu": null
+    },
+    {
+      "nhanh": [
+        "40169911",
+        "40169912",
+        "40169915",
+        "40169916"
+      ],
+      "truc": {
+        "40169911": "CONG_DUNG",
+        "40169912": "CONG_DUNG",
+        "40169915": "CONG_DUNG",
+        "40169916": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Bộ phận/phụ kiện xe này là \"Chắn bùn xe đạp\" (40169916) hay là loại \"Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05\" (40169911), \"Dùng cho xe thuộc nhóm 87.11\" (40169912), \"Dùng cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16\" (40169915)? Nếu chắn bùn dùng cho xe của các nhóm đó, biểu thuế không nêu dòng nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "40169911": "Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa",
+        "40169912": "Dùng cho xe thuộc nhóm 87.11",
+        "40169915": "Dùng cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16",
+        "40169916": "Chắn bùn xe đạp"
+      },
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "401699",
-      "ghiChu": "CẤU TRÚC (phân nhóm lớn, 20 dòng): 4016.99 trộn HAI kiểu tiêu chí ngang hàng ở tầng 3 gạch — theo CÔNG DỤNG ([4016991] bộ phận xe Chương 87, .20 dù xoay 88.04, [4016995] dùng cho máy/thiết bị/mục đích kỹ thuật) và theo TÊN HÀNG (.30 dải cao su, .40 tấm ốp tường, .60 lót đường ray, .70 gối chịu lực) — rồi [4016999 \"Loại khác\" trần: .91 khăn trải bàn, .99]. Một hàng có thể vừa mang tên ở nhánh tên vừa có công dụng ở nhánh công dụng (dải cao su làm bộ phận ô tô) ⇒ chữ biểu CHỒNG LẤN THẬT. Theo quyết định GĐ 30/10: không tự đặt điều kiện phân tách; uuTien chỉ khi có căn cứ — data/precedents.json KHÔNG có TB-TCHQ nào ở 401699xx phân xử các cặp này (chỉ có #40169959[0] 7167/TB-TCHQ thanh lót cối nghiền → .59, không đụng nhánh tên), 4016.99 không có SEN cho các dòng này, chú giải nhóm 40.16 không nói thứ tự ⇒ 12 cặp khai ở chongLanVanBan (cổng 2 hạ thành cảnh báo; lúc chạy không tự chốt, trả CANH_BAO + câu hỏi). Quy ước chọn khoá: dòng phân biệt bằng tên ⇒ tenLoai; bằng hàng đích ⇒ dungCho; bằng mục đích ⇒ congDung."
+      "loai": "QUYET_DINH",
+      "ghiChu": "CẤU TRÚC: 4016.99 trộn hai kiểu tiêu chí ngang hàng — theo CÔNG DỤNG (4016991 bộ phận xe Chương 87, .20 dù xoay 88.04, 4016995 dùng cho máy/thiết bị/mục đích kỹ thuật) và theo TÊN HÀNG (.30 dải cao su, .40 tấm ốp tường, .60 lót đường ray, .70 gối chịu lực), rồi 4016999 \"Loại khác\" trần. Chồng lấn trục (#683): bỏ 12 cặp chongLanVanBan cũ (khai chongLanVanBan không gỡ được trục), khai chongLanTruc hai cụm đúng như GĐ liệt kê ở #683 — (1) cấp phân nhóm 4016991/40169920/4016995 (CONG_DUNG) ↔ .30/.40/.60/.70 (TEN_LOAI); (2) trong 4016991: .16 (TEN_LOAI) ↔ .11/.12/.15 (CONG_DUNG). phanXu null — precedents.json không có TB-TCHQ nào ở 401699xx phân xử các cặp này."
     },
     {
       "ma": "4016991",
-      "ghiChu": "tieuDe.4016991 \"Bộ phận và phụ kiện dùng cho xe thuộc Chương 87\" ⇒ laBoPhan CO (mẫu \"bộ phận\") + dungCho \"xe thuộc Chương 87\". HẠN CHẾ CHA–CON của so chữ: tiêu đề và dòng con (.11 \"87.02…\", .12 \"87.11\", .17 \"xe đạp\") cùng khoá dungCho, một dữ kiện dungCho phải thoả cả hai chữ (vd \"xe đạp thuộc Chương 87\") — cổng 2 gần như không sinh được vector đi tới .11–.18 nên tầng này \"xanh\" YẾU; người duyệt soát tay .11/.13 (viền kính cửa) và .16/.17/.18."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4016991 \"Bộ phận và phụ kiện dùng cho xe thuộc Chương 87\" ⇒ laBoPhan CO (mẫu \"bộ phận\") + dungCho \"xe thuộc Chương 87\". Dòng con dùng cùng khoá dungCho (.11 \"87.02…\", .12 \"87.11\", .17 \"xe đạp\"); \"nhóm 87.xx\" thoả \"Chương 87\" theo cấp mã HS (LUAT-CHUNG)."
     },
     {
       "ma": "40169911",
+      "loai": "QUYET_DINH",
       "ghiChu": "\"Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa\" ⇒ dungCho [4 số nhóm] + tenLoai \"viền cao su quanh kính cửa\" chieu PHAI_KHONG (chữ \"trừ\"). Số nhóm ghi đúng dạng chữ biểu \"87.02\" để so chữ."
     },
     {
       "ma": "40169912",
+      "loai": "QUYET_DINH",
       "ghiChu": "dungCho \"87.11\"."
     },
     {
       "ma": "40169913",
+      "loai": "QUYET_DINH",
       "ghiChu": "tenLoai \"Viền cao su quanh kính cửa\" + dungCho [\"87.02\",\"87.03\",\"87.04\"] (không có 87.05 — đúng chữ). Loại trừ lẫn nhau với .11 nhờ cặp PHAI_KHONG/PHAI_CO cùng tên."
     },
     {
       "ma": "40169915",
+      "loai": "QUYET_DINH",
       "ghiChu": "dungCho [\"87.09\",\"87.13\",\"87.15\",\"87.16\"]."
     },
     {
       "ma": "40169916",
+      "loai": "QUYET_DINH",
       "ghiChu": "\"Chắn bùn xe đạp (SEN)\" ⇒ tenLoai \"Chắn bùn xe đạp\". SEN 4016.99.16–.18 chỉ định nghĩa chung bộ phận/phụ kiện xe đạp, không thêm tiêu chí cho chắn bùn."
     },
     {
       "ma": "40169917",
-      "ghiChu": "\"Bộ phận của xe đạp (SEN)\" ⇒ tenLoai \"Bộ phận\" + dungCho \"xe đạp\". Tiêu chí thật của SEN (bộ phận \"cần thiết và không thể thiếu đối với việc vận hành\", phụ kiện \"chỉ hỗ trợ thêm\") không có khoá từ vựng ⇒ không số hoá; người duyệt xem."
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Bộ phận của xe đạp (SEN)\" ⇒ tenLoai \"Bộ phận\" + dungCho \"xe đạp\". Tiêu chí của SEN (bộ phận \"cần thiết và không thể thiếu đối với việc vận hành\", phụ kiện \"chỉ hỗ trợ thêm\") không có khoá từ vựng ⇒ không số hoá; ranh giới .17 ↔ .18 đi theo tên \"Bộ phận\" ↔ \"Phụ kiện\"."
     },
     {
       "ma": "40169918",
-      "ghiChu": "\"Phụ kiện khác của xe đạp (SEN)\" ⇒ tenLoai \"Phụ kiện\" + dungCho \"xe đạp\"; \"khác\" = ngoài chắn bùn .16."
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Phụ kiện khác của xe đạp (SEN)\" (EN \"Other bicycle accessories\") ⇒ tenLoai \"Phụ kiện\" + dungCho \"xe đạp\" + phanConLai [\"40169916\"]: \"khác\" = ngoài chắn bùn xe đạp .16 (phụ kiện đã nêu tên đứng trước); không trỏ .17 \"Bộ phận\"."
     },
     {
       "ma": "40169920",
-      "ghiChu": "\"Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\" ⇒ dungCho \"dù xoay thuộc nhóm 88.04\". Chồng lấn chữ biểu với .30/.40/.60/.70 (vd dải cao su của dù xoay) — xem chongLanVanBan."
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\" ⇒ dungCho \"dù xoay thuộc nhóm 88.04\". Chồng lấn với .30/.40/.60/.70 (vd dải cao su của dù xoay) là chồng lấn trục — khai trong cụm chongLanTruc cấp phân nhóm."
     },
     {
       "ma": "40169930",
+      "loai": "QUYET_DINH",
       "ghiChu": "tenLoai \"Dải cao su\"."
     },
     {
       "ma": "40169940",
+      "loai": "QUYET_DINH",
       "ghiChu": "\"Tấm, miếng rời ghép với nhau để ốp tường\" ⇒ tenLoai [\"Tấm\",\"miếng rời\"] + congDung \"ốp tường\"."
     },
     {
       "ma": "4016995",
-      "ghiChu": "tieuDe.4016995 \"Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác\" ⇒ dungCho [\"máy\",\"thiết bị điện hoặc cơ khí\",\"mục đích kỹ thuật\"]. Cùng hạn chế cha–con với .54 (dungCho \"hệ thống dây điện của ô tô\"). \"khác\" (sản phẩm khác) = ngoài các nhánh trước — không có khoá."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4016995 \"Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác\" (EN \"Other articles of a kind used in machinery or mechanical or electrical appliances, or for other technical uses\") ⇒ dungCho [\"máy\",\"thiết bị điện\",\"cơ khí\",\"mục đích kỹ thuật\"] — mảng chuỗi con nguyên văn (trước đây \"thiết bị điện hoặc cơ khí\" gói \" hoặc \" trong một chuỗi ⇒ cong3-liet-ke-trong-mot-chuoi, bộ so chữ đọc thành VÀ). \"cơ khí\" là phần tử của \"các thiết bị điện hoặc cơ khí\" (mechanical appliances). \"Các sản phẩm khác\" (EN \"Other articles\") là phần còn lại có tên ⇒ phanConLai: true (phủ định các anh em ĐỨNG TRƯỚC: 4016991, .20, .30, .40 — chữ \"khác\" trỏ đúng các nhánh đó); các anh em đứng sau (.60, .70) vẫn chồng lấn trục, giữ trong cụm chongLanTruc."
     },
     {
       "ma": "40169951",
+      "loai": "QUYET_DINH",
       "ghiChu": "tenLoai \"Trục lăn cao su\"."
     },
     {
       "ma": "40169952",
+      "loai": "QUYET_DINH",
       "ghiChu": "\"Cốt làm lốp (Tyre mould bladders)(SEN)\" ⇒ tenLoai \"Cốt làm lốp\". SEN chỉ mô tả cấu tạo, không thêm tiêu chí có khoá."
     },
     {
       "ma": "40169953",
+      "loai": "QUYET_DINH",
       "ghiChu": "tenLoai \"Nắp chụp cách điện\"."
     },
     {
       "ma": "40169954",
+      "loai": "QUYET_DINH",
       "ghiChu": "tenLoai [\"Vòng\",\"vỏ bọc\"] + dungCho \"hệ thống dây điện của ô tô\"."
     },
     {
       "ma": "40169960",
+      "loai": "QUYET_DINH",
       "ghiChu": "tenLoai \"Lót đường ray\"."
     },
     {
       "ma": "40169970",
+      "loai": "QUYET_DINH",
       "ghiChu": "\"Loại chịu lực xây dựng kể cả lực cầu\" (gối chịu lực công trình, kể cả gối cầu) ⇒ tenLoai \"chịu lực xây dựng\" — CỐ Ý dùng tenLoai (không congDung) để cùng khoá với các dòng tên anh em, tránh chồng lấn giả do trộn khoá; so chữ tự do."
     },
     {
       "ma": "40169991",
+      "loai": "QUYET_DINH",
       "ghiChu": "tenLoai \"Khăn trải bàn\" (dưới 4016999 \"Loại khác\" trần)."
-    }
-  ],
-  "chongLanVanBan": [
-    {
-      "cap": [
-        "40169919",
-        "40169930"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện xe Chương 87 (4016991, phần còn lại) và nhánh theo tên \"Dải cao su\" (.30) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Dải cao su\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 4016991 \"Bộ phận và phụ kiện dùng cho xe thuộc Chương 87\" ↔ 40169930 \"Dải cao su\"."
-    },
-    {
-      "cap": [
-        "40169919",
-        "40169940"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện xe Chương 87 (4016991, phần còn lại) và nhánh theo tên \"Tấm, miếng rời … ốp tường\" (.40) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Tấm, miếng rời … ốp tường\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 4016991 \"Bộ phận và phụ kiện dùng cho xe thuộc Chương 87\" ↔ 40169940 \"Tấm, miếng rời ghép với nhau để ốp tường\"."
-    },
-    {
-      "cap": [
-        "40169919",
-        "40169960"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện xe Chương 87 (4016991, phần còn lại) và nhánh theo tên \"Lót đường ray\" (.60) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Lót đường ray\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 4016991 \"Bộ phận và phụ kiện dùng cho xe thuộc Chương 87\" ↔ 40169960 \"Lót đường ray (rail pad)\"."
-    },
-    {
-      "cap": [
-        "40169919",
-        "40169970"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện xe Chương 87 (4016991, phần còn lại) và nhánh theo tên \"Loại chịu lực xây dựng\" (.70) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Loại chịu lực xây dựng\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 4016991 \"Bộ phận và phụ kiện dùng cho xe thuộc Chương 87\" ↔ 40169970 \"Loại chịu lực xây dựng kể cả lực cầu\"."
-    },
-    {
-      "cap": [
-        "40169920",
-        "40169930"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện dù xoay 88.04 (.20) và nhánh theo tên \"Dải cao su\" (.30) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Dải cao su\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 40169920 \"Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\" ↔ 40169930 \"Dải cao su\"."
-    },
-    {
-      "cap": [
-        "40169920",
-        "40169940"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện dù xoay 88.04 (.20) và nhánh theo tên \"Tấm, miếng rời … ốp tường\" (.40) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Tấm, miếng rời … ốp tường\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 40169920 \"Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\" ↔ 40169940 \"Tấm, miếng rời ghép với nhau để ốp tường\"."
-    },
-    {
-      "cap": [
-        "40169920",
-        "40169960"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện dù xoay 88.04 (.20) và nhánh theo tên \"Lót đường ray\" (.60) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Lót đường ray\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 40169920 \"Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\" ↔ 40169960 \"Lót đường ray (rail pad)\"."
-    },
-    {
-      "cap": [
-        "40169920",
-        "40169970"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng bộ phận/phụ kiện dù xoay 88.04 (.20) và nhánh theo tên \"Loại chịu lực xây dựng\" (.70) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Loại chịu lực xây dựng\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 40169920 \"Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04\" ↔ 40169970 \"Loại chịu lực xây dựng kể cả lực cầu\"."
-    },
-    {
-      "cap": [
-        "40169930",
-        "40169959"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng sản phẩm dùng cho máy, thiết bị điện/cơ khí, mục đích kỹ thuật (4016995, phần còn lại) và nhánh theo tên \"Dải cao su\" (.30) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Dải cao su\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 40169930 \"Dải cao su\" ↔ 4016995 \"Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác\"."
-    },
-    {
-      "cap": [
-        "40169940",
-        "40169959"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng sản phẩm dùng cho máy, thiết bị điện/cơ khí, mục đích kỹ thuật (4016995, phần còn lại) và nhánh theo tên \"Tấm, miếng rời … ốp tường\" (.40) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Tấm, miếng rời … ốp tường\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 40169940 \"Tấm, miếng rời ghép với nhau để ốp tường\" ↔ 4016995 \"Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác\"."
-    },
-    {
-      "cap": [
-        "40169959",
-        "40169960"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng sản phẩm dùng cho máy, thiết bị điện/cơ khí, mục đích kỹ thuật (4016995, phần còn lại) và nhánh theo tên \"Lót đường ray\" (.60) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Lót đường ray\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 4016995 \"Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác\" ↔ 40169960 \"Lót đường ray (rail pad)\"."
-    },
-    {
-      "cap": [
-        "40169959",
-        "40169970"
-      ],
-      "lyDo": "Chữ biểu chồng lấn: nhánh theo công dụng sản phẩm dùng cho máy, thiết bị điện/cơ khí, mục đích kỹ thuật (4016995, phần còn lại) và nhánh theo tên \"Loại chịu lực xây dựng\" (.70) ngang hàng ở tầng 3 gạch; một hàng có thể thoả cả hai (vd \"Loại chịu lực xây dựng\" có công dụng đó). Không có căn cứ uuTien: precedents.json không có TB-TCHQ phân xử cặp này (401699xx chỉ có #40169959[0] 7167/TB-TCHQ, không đụng nhánh tên), không có SEN/chú giải nêu thứ tự. Trích hai nhánh rẽ: 4016995 \"Các sản phẩm khác sử dụng cho máy hoặc các thiết bị điện hoặc cơ khí, hoặc cho các mục đích kỹ thuật khác\" ↔ 40169970 \"Loại chịu lực xây dựng kể cả lực cầu\"."
     }
   ]
 }

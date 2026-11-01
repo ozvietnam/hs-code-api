@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "848190",
-  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-848190",
   "dong8": {
     "84819010": {
       "dieuKienSo": [
@@ -96,14 +96,6 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": [
-            "vòi",
-            "van"
-          ]
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
             "săm",
             "lốp không săm"
           ],
@@ -164,7 +156,7 @@
     {
       "ma": "8481902",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8481902 \"Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống\" ⇒ dungCho [\"vòi\",\"van\"] + dungCho PHAI_KHONG [\"săm\",\"lốp không săm\"] (vế \"trừ …\") + duongKinhTrong <= 25 mm (\"từ 25 mm trở xuống\" = <=). Vế \"và các thiết bị tương tự\" không liệt kê được — DE_TRONG."
+      "ghiChu": "tieuDe.8481902 \"Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống\" ⇒ dungCho PHAI_KHONG [\"săm\",\"lốp không săm\"] (vế \"trừ …\") + duongKinhTrong <= 25 mm (\"từ 25 mm trở xuống\" = <=). Không ghi dungCho dương [\"vòi\",\"van\"]: danh sách có vế MỞ \"và các thiết bị tương tự\" nên ghi đóng là HẸP hơn chữ (trả về #662); nhóm 84.81 vốn chỉ gồm vòi, van và thiết bị tương tự nên vế dương không phân biệt gì trong phân nhóm (cách sửa của người soát ở #662)."
     },
     {
       "ma": "84819021",
@@ -185,6 +177,12 @@
       "ma": "8481902",
       "loai": "QUYET_DINH",
       "ghiChu": "cong3-bien-khong-doc-duoc:8481902:duongKinhTrong — đã đối chiếu tay: \"có đường kính trong từ 25 mm trở xuống\" ⇒ <= 25 mm."
+    },
+    {
+      "ma": "8481902",
+      "loai": "BO_VE",
+      "ve": "và các thiết bị tương tự",
+      "lyDo": "Vế mở KHÔNG bị cắt: danh sách \"vòi, van các loại\" không còn ghi thành điều kiện dương (trả về #662). Máy báo hẹp chỉ vì điều kiện dungCho PHAI_KHONG [\"săm\",\"lốp không săm\"] neo vào ngoặc \"(trừ van dùng cho săm và lốp không săm)\" nằm trong cùng mệnh đề với danh sách — đó là vế loại trừ, không phải liệt kê đóng. Thiết bị tương tự (≤ 25 mm, không phải van săm/lốp) vẫn thoả tầng 8481902. Bộ tách vế đọc ngoặc loại trừ như danh sách — cần chỉnh công cụ."
     }
   ]
 }
