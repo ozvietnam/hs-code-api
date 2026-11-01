@@ -4,7 +4,7 @@
   "nhom": "9503",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-950300",
@@ -405,6 +405,11 @@
       "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot5",
       "ngay": "2026-11-01",
       "lyDo": "(A) 950300.json:dong8[95030040] THU HẸP: chữ \"Các mô hình thu nhỏ theo tỷ lệ (\"scale\") và các mô hình giải trí tương tự, có hoặc không vận hành\" (EN \"Reduced size (\"scale\") models and similar recreational models, working or not\") có vế MỞ \"và các mô hình giải trí tương tự\" — đúng mẫu \"X và các loại tương tự\" của vòng 7 — nhưng bản nháp liệt kê ĐÓNG tenLoai TEN_LOAI [\"mô hình thu nhỏ theo tỷ lệ\",\"mô hình giải trí\"] (bỏ chữ \"tương tự\" để thành một tên đóng). Mô tả hàng thật hiếm khi có đủ âm tiết \"mô hình giải trí\" hay \"thu nhỏ theo tỷ lệ\". Thử trên đường đọc lúc chạy (docTenLoaiDayDu → doiChieuPhanNhom): \"Mô hình máy bay bằng nhựa, không vận hành\" ⇒ .40 MAU_THUAN; \"Mô hình ô tô thu nhỏ tỷ lệ 1:18 bằng hợp kim kẽm\" ⇒ .40 MAU_THUAN — chính hàng tiêu biểu của .40 (MFN 10%) bị loại, còn .99 (MFN 20%) ở lại. Cùng lớp lỗi với .10 đợt 4 (#706). Làm gì: viết vế mở bằng op TUONG_TU (QUY-TRINH 3.2, vòng 7): tenLoai TUONG_TU [\"mô hình thu nhỏ theo tỷ lệ\"] — hàng NÊU TÊN đứng trước cụm \"… tương tự\" là \"mô hình thu nhỏ theo tỷ lệ\"; \"mô hình giải trí\" là loại của hàng tương tự, không phải tên nêu riêng (nếu muốn giữ nó THOẢ tất định thì phải lý giải trong ghiChuSoan). \"có hoặc không vận hành\" không thu hẹp. Thử lại: mô hình máy bay ⇒ .40 CHƯA BIẾT (hỏi \"có thuộc loại tương tự … không?\"), không MAU_THUAN. Không khai chongLanTruc cho các cặp cong2-tuong-tu-chua-chot mới. Phần sửa .10 (HOAC TEN_LOAI/TUONG_TU+coBanh/xe của búp bê) và .30, .91, .50, r18723 đã soát: đạt. Ghi cho Claude: bộ tách vế (lib/ho-so/tach-ve.js) đọc cả cụm \"Các mô hình … và các mô hình giải trí tương tự\" là DAU nên cổng 5 không đòi phủ vế MO này."
+    },
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot7",
+      "ngay": "2026-11-01",
+      "lyDo": "950300.json:dieuKienNut[9503002]+[950300~r18723]+dong8[95030022] THU HẸP: .22/.29 (10%) chỉ với được hàng có tên đầu chứa đủ \"búp bê\" + \"bộ phận|phụ kiện\"; quần áo búp bê mô tả tự nhiên (\"Quần áo cho búp bê\", tenLoai \"quần áo\") MAU_THUAN ở 9503002 (tenLoai \"Búp bê\") và r18723 (tenLoai [Bộ phận, phụ kiện]) ⇒ doiChieuPhanNhom: .22/.29 TRÁI, .99 (20%) còn THIEU và thành CO sau khi trả lời .10/.40/.94 (10% -> 20%). \"Quần áo búp bê\" chỉ tới .21. Làm gì: đưa đích búp bê vào đường tiêu đề theo bảng luật chung dòng 5/9 (đích dungCho) hoặc DUNG nếu không diễn đạt được; không đổi khoá để né. Phần còn lại đạt: .10 (xe chòi chân ⇒ THIEU, hỏi), .40 (mô hình máy bay ⇒ THIEU, hỏi), .30, .91, .50."
     }
   ]
 }
