@@ -399,14 +399,19 @@
       "ghiChu": "Nguồn tax.39269093 ⇒ tenLoai 4 giá trị [\"Khóa\",\"khóa điều chỉnh\",\"móc treo\",\"nút chặn dây\"]. \"Khóa\" ngắn và rộng; giữ vì đúng chữ biểu (SEN 39269093: khoá nhựa buộc dây đai/túi)."
     },
     {
-      "ma": "392690",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Chồng lấn trục (#683): khai chongLanTruc hai cụm đúng như GĐ liệt kê ở #683 — (1) cấp phân nhóm: 3926903/3926904/3926905 (CONG_DUNG) ↔ 39269010/39269020/39269060/3926908 (TEN_LOAI); (2) trong tầng 3926909: .91 (CONG_DUNG) ↔ .93 (TEN_LOAI). phanXu null. Bỏ ghi chú \"mẫu\" cũ (để đỏ có chủ đích) vì cơ chế chongLanTruc đã có."
+      "ma": "39269093",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ (data/ho-so/hieu-chinh-tien-le.json) đã có mục cho 392690: 392690-01 LECH_CHUA_PHAN_XU (99/TB-TCHQ xếp khóa hãm nhựa 3926.90.99 ↔ chữ biểu tax.39269093 \"Khóa, …\"), 392690-02/-03 KHONG_LECH (.32, .53). Soạn .93 theo CHỮ BIỂU (tenLoai [4 tên]); lệch giữa tiền lệ và chữ biểu do bảng/động cơ hồ sơ xử lý, không sửa điều kiện theo tiền lệ."
     },
     {
-      "ma": "3926905",
+      "ma": "392690",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chồng lấn trục (#683): khai chongLanTruc MỘT cụm cấp phân nhóm — 3926903/3926904/3926905 (CONG_DUNG) ↔ 39269010/39269020/39269060/3926908 (TEN_LOAI), phanXu null. Cặp CÙNG trục CONG_DUNG trong cụm (3926903/3926904 ↔ 3926905, 10 cặp dòng) khai chongLanVanBan theo quyết định GĐ vòng 8 (01/11/2026): chồng lấn thật của chữ hai tiêu đề công dụng (mặt nạ hàn, đệm cứu sinh dùng trong công nghiệp). Bỏ cụm .91 ↔ .93 của bản trước (xem ghi chú DUNG 39269091)."
+    },
+    {
+      "ma": "39269091",
       "loai": "DUNG",
-      "ghiChu": "DỪNG — còn 10 cặp cong2-chong-lan CÙNG TRỤC công dụng: 3926903 \"Các sản phẩm vệ sinh, y tế và phẫu thuật\" (congDung) ↔ 3926905 \"Các sản phẩm dùng cho công nghiệp\" (dungCho), và 3926904 \"Các thiết bị, dụng cụ an toàn và bảo vệ\" (congDung) ↔ 3926905 (vd .42/.44/.49 ↔ .53/.55/.59; .32/.39 ↔ .53/.55/.59). Đây là chồng lấn THẬT của chữ biểu (mặt nạ hàn, đệm cứu sinh dùng trong công nghiệp thoả cả \"thiết bị an toàn và bảo vệ\" lẫn \"sản phẩm dùng cho công nghiệp\"), không do bộ so chữ. Không gỡ được bằng công cụ hiện có: chongLanTruc từ chối cặp cùng trục (CONG_DUNG ↔ CONG_DUNG); chongLanVanBan cho cặp nằm trong cụm trục thành lỗi cong2-chong-lan-van-ban-truc (đã thử cặp .42↔.59); viết 3926905 bằng congDung (để một vector chỉ mang một giá trị) là đổi khoá né cổng — trái QUY-TRINH 3.3 (chữ \"dùng cho\" ⇒ dungCho). Cần quyết định công cụ/GĐ: cho chongLanVanBan áp cho cặp cùng trục công dụng trong cụm trục (chữ biểu tự chồng giữa hai nhóm công dụng), hoặc cho một mục chongLanTruc chứa cặp cùng trục CONG_DUNG có câu hỏi phân biệt riêng."
+      "ghiChu": "DỪNG — cong2-chong-lan:39269091+39269093 (khong-tat-dinh) + cong2-chong-lan-truc (dòng tên ↔ dòng công dụng). tax.39269091 \"Loại dùng để chứa ngũ cốc\" (SEN: bao bì PVC hình khối chứa ngũ cốc) ⇒ congDung \"chứa ngũ cốc\"; tax.39269093 \"Khóa, khóa điều chỉnh, móc treo và nút chặn dây\" ⇒ tenLoai [4 tên]. Vector biên gán tenLoai \"Khóa\" + congDung \"chứa ngũ cốc\" ĐỘC LẬP nên hai dòng cùng CO, nhưng không có hàng THẬT nào vừa là khoá/khoá điều chỉnh/móc treo/nút chặn dây vừa là \"loại dùng để chứa ngũ cốc\" (khoá kéo của bao chứa ngũ cốc là bộ phận, không phải vật chứa). Theo quyết định GĐ vòng 8 cụm chongLanTruc .91 ↔ .93 (ví dụ cũ \"nút chặn dây chuyên cho bao chứa ngũ cốc\" không thoả .91) không được tồn tại ⇒ đã bỏ. Không khai chongLanVanBan (cặp khác trục ⇒ -van-ban-truc, và không phải chữ biểu tự chồng). Không đổi khoá/thêm điều kiện chữ không nói (QUY-TRINH 3.3, luật 4). Cần quyết định công cụ/GĐ: cách chứng minh \"dòng không tên chỉ nêu công dụng chứa X\" rời \"dòng nêu tên hàng không phải vật chứa\" (vd khoá tu-vung kiểu vật chứa, hoặc luật chứng minh của cổng như #692), hoặc chấp nhận cặp là khoảng trống lúc chạy (hai mã, hỏi)."
     }
   ],
   "chongLanTruc": [
@@ -440,22 +445,78 @@
         "3926908": "Tấm thẻ để trình bày đồ nữ trang hoặc những đồ vật nhỏ để trang điểm cá nhân; chuỗi hạt; phom giày"
       },
       "phanXu": null
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "39269032",
+        "39269059"
+      ],
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .32 \"Khuôn plastic lấy dấu răng\" thuộc \"Các sản phẩm vệ sinh, y tế và phẫu thuật\" ↔ .59 \"Loại khác\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"sản phẩm vệ sinh, y tế và phẫu thuật\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
     },
     {
-      "nhanh": [
-        "39269091",
-        "39269093"
+      "cap": [
+        "39269039",
+        "39269053"
       ],
-      "truc": {
-        "39269091": "CONG_DUNG",
-        "39269093": "TEN_LOAI"
-      },
-      "cauHoiPhanBiet": "Hàng là \"Khóa, khóa điều chỉnh, móc treo và nút chặn dây\" (39269093) hay là \"Loại dùng để chứa ngũ cốc\" (39269091)? Nếu hàng nêu tên ở .93 mà lại thuộc loại dùng để chứa ngũ cốc (vd nút chặn dây chuyên cho bao chứa ngũ cốc), biểu thuế không nêu dòng nào được ưu tiên — cần chuyên gia phân xử.",
-      "trich": {
-        "39269091": "Loại dùng để chứa ngũ cốc",
-        "39269093": "Khóa, khóa điều chỉnh, móc treo và nút chặn dây"
-      },
-      "phanXu": null
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .39 \"Loại khác\" thuộc \"Các sản phẩm vệ sinh, y tế và phẫu thuật\" ↔ .53 \"Băng truyền (dây curoa) hoặc đai truyền hoặc băng tải hoặc đai tải\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"sản phẩm vệ sinh, y tế và phẫu thuật\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
+    },
+    {
+      "cap": [
+        "39269039",
+        "39269055"
+      ],
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .39 \"Loại khác\" thuộc \"Các sản phẩm vệ sinh, y tế và phẫu thuật\" ↔ .55 \"Móc hình chữ J hoặc khối chùm bằng plastic dùng cho ngòi nổ, kíp nổ\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"sản phẩm vệ sinh, y tế và phẫu thuật\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
+    },
+    {
+      "cap": [
+        "39269039",
+        "39269059"
+      ],
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .39 \"Loại khác\" thuộc \"Các sản phẩm vệ sinh, y tế và phẫu thuật\" ↔ .59 \"Loại khác\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"sản phẩm vệ sinh, y tế và phẫu thuật\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
+    },
+    {
+      "cap": [
+        "39269041",
+        "39269059"
+      ],
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .41 \"Lá chắn bảo vệ của cảnh sát\" thuộc \"Các thiết bị, dụng cụ an toàn và bảo vệ\" ↔ .59 \"Loại khác\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"thiết bị, dụng cụ an toàn và bảo vệ\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
+    },
+    {
+      "cap": [
+        "39269042",
+        "39269059"
+      ],
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .42 \"Mặt nạ bảo hộ sử dụng khi hàn\" thuộc \"Các thiết bị, dụng cụ an toàn và bảo vệ\" ↔ .59 \"Loại khác\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"thiết bị, dụng cụ an toàn và bảo vệ\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
+    },
+    {
+      "cap": [
+        "39269044",
+        "39269059"
+      ],
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .44 \"Đệm cứu sinh dùng để bảo vệ người ngã từ trên cao xuống\" thuộc \"Các thiết bị, dụng cụ an toàn và bảo vệ\" ↔ .59 \"Loại khác\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"thiết bị, dụng cụ an toàn và bảo vệ\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
+    },
+    {
+      "cap": [
+        "39269049",
+        "39269053"
+      ],
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .49 \"Loại khác\" thuộc \"Các thiết bị, dụng cụ an toàn và bảo vệ\" ↔ .53 \"Băng truyền (dây curoa) hoặc đai truyền hoặc băng tải hoặc đai tải\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"thiết bị, dụng cụ an toàn và bảo vệ\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
+    },
+    {
+      "cap": [
+        "39269049",
+        "39269055"
+      ],
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .49 \"Loại khác\" thuộc \"Các thiết bị, dụng cụ an toàn và bảo vệ\" ↔ .55 \"Móc hình chữ J hoặc khối chùm bằng plastic dùng cho ngòi nổ, kíp nổ\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"thiết bị, dụng cụ an toàn và bảo vệ\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
+    },
+    {
+      "cap": [
+        "39269049",
+        "39269059"
+      ],
+      "lyDo": "Chữ biểu tự chồng giữa hai nhóm theo CÔNG DỤNG (cùng trục CONG_DUNG, vòng 8): .49 \"Loại khác\" thuộc \"Các thiết bị, dụng cụ an toàn và bảo vệ\" ↔ .59 \"Loại khác\" thuộc \"Các sản phẩm dùng cho công nghiệp\". Hai tiêu đề không loại trừ nhau — một sản phẩm plastic có thể vừa thuộc nhóm \"thiết bị, dụng cụ an toàn và bảo vệ\" vừa dùng cho công nghiệp; biểu thuế không nêu nhóm nào ưu tiên; không có căn cứ thứ tự (TB-TCHQ, SEN, chú giải)."
     }
   ]
 }
