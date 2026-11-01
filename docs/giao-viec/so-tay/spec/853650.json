@@ -1,0 +1,265 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853650",
+  "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-853650",
+  "dong8": {
+    "85365020": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "TU_DONG_RO_DIEN_QUA_TAI"
+          ]
+        }
+      ]
+    },
+    "85365032": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "quạt điện",
+            "thiết bị sóng vô tuyến"
+          ]
+        }
+      ]
+    },
+    "85365033": {
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ]
+    },
+    "85365040": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "MINI_NOI_COM"
+          ]
+        }
+      ]
+    },
+    "85365051": {
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ]
+    },
+    "85365061": {
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ]
+    },
+    "85365095": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "DAO_CHIEU_HOAC_CAU_CHI"
+          ]
+        }
+      ]
+    },
+    "85365096": {
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8536503": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "NGAT_SOC_DONG"
+          ]
+        }
+      ],
+      "trich": "8536503 Loại ngắt mạch khi có sốc dòng điện cao (SEN); loại đảo mạch dùng cho bếp và bếp có lò nướng(SEN); công tắc micro; công tắc nguồn cho máy thu truyền hình hoặc thu sóng vô tuyến; công tắc cho quạt điện; …"
+    },
+    "8536505": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "loaiCongTac",
+                "op": "TRONG",
+                "value": [
+                  "DIEN_TU_HOAC_BAT_NHANH"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "công tắc điện tử"
+              }
+            ],
+            [
+              {
+                "fact": "loaiCongTac",
+                "op": "TRONG",
+                "value": [
+                  "DIEN_TU_HOAC_BAT_NHANH"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "công tắc điện cơ bật nhanh"
+              },
+              {
+                "fact": "dongDien",
+                "op": "<=",
+                "value": 11,
+                "donVi": "A"
+              }
+            ]
+          ]
+        }
+      ],
+      "trich": "8536505 Công tắc điện tử dùng cho mạch xoay chiều gồm mạch vào và mạch ra kết nối điều khiển bằng quang học … công tắc điện cơ bật nhanh dùng cho dòng điện không quá 11 A"
+    },
+    "8536506": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiCongTac",
+          "op": "TRONG",
+          "value": [
+            "MANG_DIEN_GIA_DUNG"
+          ]
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 500,
+          "donVi": "V"
+        },
+        {
+          "fact": "dongDien",
+          "op": "<=",
+          "value": 20,
+          "donVi": "A"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "853650",
+      "loai": "QUYET_DINH",
+      "ghiChu": "CẤU TRÚC: 8536.50 có 5 nhánh ngang hàng ở tầng 2 gạch (.20, [8536503], .40, [8536505], [8536506 \"Loại khác, …\"]) + [8536509 \"Loại khác\" trần]. tu-vung@1 có sẵn khoá LIET_KE loaiCongTac với 6 giá trị dựng ĐÚNG theo các nhánh này ⇒ dùng nó: liệt kê là tất định (một vector chỉ mang một giá trị), nên cổng 2 không thấy chồng lấn giữa các nhánh. Mỗi giá trị cần MỘT mẫu cachDoc có trong câu trích (cổng 3). Tầng 3 gạch dưới mỗi nhánh tách bằng dongDien < 16 A. Kết quả: XANH, không chồng lấn."
+    },
+    {
+      "ma": "85365020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85365020 \"Loại tự động ngắt mạch khi có hiện tượng rò điện và quá tải\" ⇒ loaiCongTac TRONG [TU_DONG_RO_DIEN_QUA_TAI]; mẫu cachDoc khớp chữ \"rò điện\"."
+    },
+    {
+      "ma": "8536503",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nguồn tieuDe.8536503, tên > 300 ký tự ⇒ lược \"…\" ở cuối. ⇒ loaiCongTac TRONG [NGAT_SOC_DONG]: giá trị này được định nghĩa (nhanVi tu-vung@2 \"ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa\") đúng bằng sáu vế của tiêu đề; mẫu đọc khớp trong trích: \"công tắc micro\". Các vế máy báo chưa phủ được miễn BO_VE trích định nghĩa (quyết định GĐ vòng 4, QUY-TRINH 3.11)."
+    },
+    {
+      "ma": "8536503",
+      "loai": "BO_VE",
+      "ve": "đảo mạch dùng cho bếp và bếp có lò nướng",
+      "lyDo": "Giá trị NGAT_SOC_DONG của loaiCongTac được định nghĩa (nhanVi tu-vung@2: \"ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa\") đúng bằng sáu vế của tiêu đề 8536503, gồm vế này; máy chỉ neo được chữ đọc \"công tắc micro\" của giá trị (quyết định GĐ vòng 4)."
+    },
+    {
+      "ma": "8536503",
+      "loai": "BO_VE",
+      "ve": "cho máy thu truyền hình hoặc thu sóng vô tuyến",
+      "lyDo": "Giá trị NGAT_SOC_DONG của loaiCongTac được định nghĩa (nhanVi tu-vung@2: \"ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa\") đúng bằng sáu vế của tiêu đề 8536503, gồm vế này; máy chỉ neo được chữ đọc \"công tắc micro\" của giá trị (quyết định GĐ vòng 4)."
+    },
+    {
+      "ma": "8536503",
+      "loai": "BO_VE",
+      "ve": "cho quạt điện",
+      "lyDo": "Giá trị NGAT_SOC_DONG của loaiCongTac được định nghĩa (nhanVi tu-vung@2: \"ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa\") đúng bằng sáu vế của tiêu đề 8536503, gồm vế này; máy chỉ neo được chữ đọc \"công tắc micro\" của giá trị (quyết định GĐ vòng 4)."
+    },
+    {
+      "ma": "8536503",
+      "loai": "BO_VE",
+      "ve": "cho máy điều hòa không khí",
+      "lyDo": "Giá trị NGAT_SOC_DONG của loaiCongTac được định nghĩa (nhanVi tu-vung@2: \"ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa\") đúng bằng sáu vế của tiêu đề 8536503, gồm vế này; máy chỉ neo được chữ đọc \"công tắc micro\" của giá trị (quyết định GĐ vòng 4)."
+    },
+    {
+      "ma": "85365032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Của loại thích hợp dùng cho quạt điện hoặc thiết bị sóng vô tuyến\" ⇒ dungCho [\"quạt điện\", \"thiết bị sóng vô tuyến\"] — mảng = HOẶC; mỗi phần tử là chuỗi con nguyên văn. So chữ tự do ⇒ không tất định."
+    },
+    {
+      "ma": "85365033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác, <vế>\": chỉ ghi điều kiện của VẾ (\"dùng cho dòng điện danh định dưới 16 A\" ⇒ dongDien < 16 A); phần \"Loại khác\" máy tự sinh (PHAI_KHONG .32). Không chép lại điều kiện của tiêu đề cha."
+    },
+    {
+      "ma": "85365040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Công tắc mini thích hợp dùng cho nồi cơm điện hoặc lò nướng\" ⇒ loaiCongTac TRONG [MINI_NOI_COM] (mẫu \"nồi cơm\", \"lò nướng\")."
+    },
+    {
+      "ma": "8536505",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nguồn tieuDe.8536505, lược giữa bằng \"…\". Ba vế: (1) công tắc điện tử dùng cho mạch xoay chiều, ghép quang; (2) công tắc điện tử … gồm một tranzito và một chip logic … dùng cho điện áp không quá 1.000 V; (3) công tắc điện cơ bật nhanh dùng cho dòng điện không quá 11 A. Trả về #645/#616: biên \"không quá 11 A\" chỉ của vế (3) bị mất ⇒ HOAC (LUAT-CHUNG nêu đích danh 8536505): [loaiCongTac DIEN_TU_HOAC_BAT_NHANH + tenLoai \"công tắc điện tử\"] | [loaiCongTac DIEN_TU_HOAC_BAT_NHANH + tenLoai \"công tắc điện cơ bật nhanh\" + dongDien <= 11 A]. Không gộp 11 A cho cả tiêu đề. tenLoai (chuỗi con nguyên văn, danh từ đầu của từng vế) tách hai loại công tắc vì loaiCongTac gói chung cả ba vế trong MỘT giá trị (khoá @1, không thêm giá trị được). \"không quá 1.000 V\" của vế (2) lặp chữ nhóm 85.36 (\"dùng cho điện áp không quá 1.000V\") — cổng 5 tính lặp tổ tiên. Vế (2) \"gồm một tranzito và một chip logic\" được neo bằng chữ đọc \"tranzito\" của giá trị DIEN_TU_HOAC_BAT_NHANH."
+    },
+    {
+      "ma": "8536505",
+      "loai": "BO_VE",
+      "ve": "dùng cho mạch xoay chiều gồm mạch vào và mạch ra kết nối điều khiển",
+      "lyDo": "Giới hạn riêng của vế (1) (mạch xoay chiều, mạch vào/ra ghép quang — EN \"Electronic AC switches consisting of optically coupled input and output circuits\") nằm trong định nghĩa giá trị DIEN_TU_HOAC_BAT_NHANH của loaiCongTac (nhanVi tu-vung@2 \"công tắc điện tử (bán dẫn, thyristor) hoặc điện cơ bật nhanh\" — đúng bằng ba vế của tiêu đề 8536505), cùng quy ước GĐ vòng 4 với 8536503; tu-vung@2 không có khoá ghép quang. Hướng sai đã biết: công tắc điện tử không ghép quang/không xoay chiều và không gồm tranzito + chip logic vẫn khớp phương án công tắc điện tử."
+    },
+    {
+      "ma": "85365051",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Dòng điện dưới 16 A\" ⇒ dongDien < 16 A. Tương tự .61. Đối chiếu (chỉ để người duyệt tham khảo, không làm căn cứ điều kiện): precedents.json#85365051[0] (4012/TB-TCHQ, công tắc điện cơ bật nhanh cho đèn phanh xe máy) xếp .51 — cùng chiều với giá trị DIEN_TU_HOAC_BAT_NHANH của 8536505."
+    },
+    {
+      "ma": "85365061",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "precedents.json#85365061[0] (3387/TB-TCHQ, cảm biến từ cho xi lanh → .61) lệch cách đọc chữ biểu — thuộc bảng hiệu chỉnh tiền lệ L1-4b (#617), không sửa trong bản nháp (#645 mục B). Bản nháp soạn theo CHỮ BIỂU."
+    },
+    {
+      "ma": "8536506",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề \"Loại khác, loại đóng ngắt mạch dùng trong mạng điện gia dụng điện áp không quá 500 V và giới hạn dòng danh định không quá 20 A\" — dạng \"Loại khác, <vế>\" ⇒ ghi điều kiện của vế: loaiCongTac [MANG_DIEN_GIA_DUNG] (mẫu \"mạng điện gia dụng\") + dienAp <= 500 V + dongDien <= 20 A (cả ba có chữ trong câu trích; \"không quá\" = <=). Máy tự thêm PHAI_KHONG các anh em."
+    },
+    {
+      "ma": "85365095",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Công tắc đảo chiều … loại dùng khởi động động cơ điện; thiết bị đóng cắt có cầu chì\" ⇒ loaiCongTac [DAO_CHIEU_HOAC_CAU_CHI] (mẫu \"đảo chiều\"). Dòng nằm dưới 8536509 \"Loại khác\" trần."
+    },
+    {
+      "ma": "85365096",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Loại khác, dòng điện dưới 16 A\" ⇒ chỉ vế dongDien < 16 A; máy phủ định .95."
+    }
+  ]
+}
