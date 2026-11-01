@@ -4,11 +4,11 @@
   "nhom": "8409",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "TRA_VE",
+  "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu",
-    "ngay": "2026-10-30"
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-840991",
+    "ngay": "2026-10-31"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -87,6 +87,11 @@
       "trich": "8409915 Cho động cơ máy thủy công suất không quá 22,38 kW",
       "dieuKienSo": [
         {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ máy thủy"
+        },
+        {
           "fact": "congSuat",
           "op": "<=",
           "value": 22.38,
@@ -101,6 +106,11 @@
       "trich": "8409916 Cho động cơ máy thủy công suất trên 22,38 kW",
       "dieuKienSo": [
         {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ máy thủy"
+        },
+        {
           "fact": "congSuat",
           "op": ">",
           "value": 22.38,
@@ -113,13 +123,7 @@
       "id": "8409917",
       "nguon": "tieuDe.8409917",
       "trich": "8409917 Dùng cho động cơ khác",
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "động cơ"
-        }
-      ],
+      "dieuKienSo": [],
       "nguonLoai": "AI_DA_KIEM",
       "phanConLai": true
     }
@@ -131,9 +135,27 @@
       "trich": "84099111 - - - - Chế hòa khí và bộ phận của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Chế hòa khí"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -277,9 +299,27 @@
       "trich": "84099121 - - - - Chế hòa khí và bộ phận của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Chế hòa khí"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -393,9 +433,27 @@
       "trich": "84099131 - - - - Chế hòa khí và bộ phận của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Chế hòa khí"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -487,9 +545,27 @@
       "trich": "84099141 - - - - Chế hòa khí và bộ phận của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Chế hòa khí"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -821,9 +897,27 @@
       "trich": "84099171 - - - - Chế hòa khí và bộ phận của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Chế hòa khí"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -960,12 +1054,12 @@
     {
       "ma": "8409917",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8409917 \"Dùng cho động cơ khác\" ⇒ dungCho \"động cơ\" + phanConLai: true (phủ định mọi tầng anh em đứng trước)."
+      "ghiChu": "tieuDe.8409917 \"Dùng cho động cơ khác\" (EN \"For other engines\") ⇒ phanConLai: true đứng một mình, dieuKienSo [] (#653, cùng dạng 850110~r14839): cả phân nhóm 840991 là bộ phận \"Chỉ dùng hoặc chủ yếu dùng cho động cơ đốt trong …\" nên \"dùng cho động cơ\" lặp ý phân nhóm, nội dung thật chỉ là phủ định các tầng anh em đứng trước. Trước đây ghi dungCho \"động cơ\" + phanConLai: hẹp hơn chữ khi mô tả bộ phận không nhắc chữ \"động cơ\" (lộ ra khi .71 có phương án dungCho \"Chế hòa khí\" — cong1-khong-phu-kin tầng gốc)."
     },
     {
       "ma": "8409915",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8409915 \"Cho động cơ máy thủy công suất không quá 22,38 kW\" ⇒ congSuat <= 22.38 kW; .916 \"… trên 22,38 kW\" ⇒ congSuat > 22.38 kW. Công suất là của động cơ máy thủy mà bộ phận dùng cho (chữ tiêu đề), không phải của bộ phận — người soát lưu ý khi hỏi dữ kiện."
+      "ghiChu": "tieuDe.8409915 \"Cho động cơ máy thủy công suất không quá 22,38 kW\" ⇒ dungCho \"động cơ máy thủy\" + congSuat <= 22.38 kW; .916 \"Cho động cơ máy thủy công suất trên 22,38 kW\" ⇒ dungCho \"động cơ máy thủy\" + congSuat > 22.38 kW (bổ sung #661: vế \"Cho động cơ máy thủy\" là giới hạn — bộ phận cho động cơ phụ của tàu không phải động cơ máy thủy). Công suất là của động cơ máy thủy mà bộ phận dùng cho (chữ tiêu đề), không phải của bộ phận."
     },
     {
       "ma": "84099113",
@@ -979,8 +1073,8 @@
     },
     {
       "ma": "84099111",
-      "loai": "DE_TRONG",
-      "ghiChu": "\"Chế hòa khí và bộ phận của chúng\" ⇒ tenLoai \"Chế hòa khí\"; vế \"và bộ phận của chúng\" không có khoá riêng (laBoPhan là có/không chung, không nói bộ phận CỦA chế hòa khí) — bộ phận chế hòa khí được nhận khi mô tả hàng có chữ \"chế hòa khí\". Áp cho .11/.21/.31/.41/.71."
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Chế hòa khí và bộ phận của chúng\" là vế MỞ \"X và bộ phận của chúng\" ⇒ HOAC [[tenLoai \"Chế hòa khí\"], [laBoPhan CO, dungCho \"Chế hòa khí\"]] (QUY-TRINH 3.11, trả về #661: TEN_LOAI đọc danh từ đầu nên \"Kim phao của chế hòa khí\" không thoả tenLoai). X chép nguyên văn tên đầu của chính dòng. Áp cho .11/.21/.31/.41/.71."
     },
     {
       "ma": "84099112",
@@ -989,13 +1083,24 @@
     },
     {
       "ma": "84099118",
-      "loai": "CHONG_LAN",
-      "ghiChu": "ĐỎ có chủ đích: cong2-chong-lan .16+.18 (và .26+.28, .46+.48, .76+.78) do BỘ SO CHỮ — \"Bạc piston\" chứa chuỗi \"Piston\" của dòng .x6 \"Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm\"; tenCuTheHon không áp vì dòng .x6 còn ràng buộc duongKinh. Chữ biểu KHÔNG tự chồng (bạc/chốt piston không phải piston) nên không khai chongLanVanBan; .18 không có chữ \"khác\" nên không dùng phanConLai. Cần sửa công cụ (tenCuTheHon khi bên chung còn ràng buộc khoá khác) — không ép."
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Bạc piston và chốt piston\" ⇒ tenLoai [\"Bạc piston\",\"chốt piston\"]; anh em .x6 \"Piston, có đường kính ngoài …\" — chồng lấn do bộ so chữ cũ (\"Bạc piston\" chứa \"Piston\") đã được \"tên cụ thể hơn thắng\" xử lý từ #653 (bên chung chỉ thêm biên số tất định); cổng 2 không còn báo. Chữ biểu không tự chồng nên không khai chongLanVanBan."
     },
     {
       "ma": "84099113",
       "loai": "QUYET_DINH",
       "ghiChu": "cong3-bien-khong-doc-duoc trên mọi dòng ống xi lanh/piston có ngưỡng: đã đối chiếu tay — \"từ 50 mm trở lên\" = >= 50 mm, \"nhưng không quá 155 mm\" = <= 155 mm."
+    },
+    {
+      "ma": "8409917",
+      "loai": "BO_VE",
+      "ve": "Dùng cho động cơ khác",
+      "lyDo": "Vế lặp ý phân nhóm 840991 (\"Chỉ dùng hoặc chủ yếu dùng cho động cơ đốt trong kiểu piston …\"): mọi hàng của phân nhóm đã là bộ phận dùng cho động cơ; phần \"khác\" được phủ bằng phanConLai: true (phủ định mọi tầng anh em đứng trước), đúng quy ước #653 cho phần còn lại có tên đứng một mình."
+    },
+    {
+      "ma": "840991~r12982",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong1-khong-phu-kin:840991~r12982 do luật đi, không do chữ: tầng không mã r12982 \"Dùng cho tàu thuyền thuộc Chương 89:\" chỉ có hai con 8409915/8409916 \"Cho động cơ máy thủy công suất …\" (EN \"For marine propulsion engines …\"), KHÔNG có con phần còn lại. Theo #661 (bổ sung cổng 5) vế \"Cho động cơ máy thủy\" phải phủ (đã ghi dungCho \"động cơ máy thủy\"), và bộ phận cho động cơ không phải động cơ đẩy của tàu thuộc 8409917 \"Dùng cho động cơ khác\". Nhưng luật đi xuống tầng theo điều kiện của TẦNG: hàng đó thoả r12982 (dungCho Chương 89), trái cả .915/.916, còn phanConLai của 8409917 phủ định cả tầng r12982 ⇒ không tới dòng nào (cổng 1 thấy đúng lỗ hổng này). Không viết được bằng spec hiện có: phanConLai mảng chỉ nhận anh em cùng cha (không nhận con của tầng), đẩy \"động cơ máy thủy\" lên tầng r12982 là thêm điều kiện chữ tầng không nói (cổng 3), bỏ vế bằng BO_VE trái #661. Cần đổi công cụ: phần còn lại có tên phủ định ĐIỀU KIỆN CỦA CÁC CON khi tầng anh em không có con phần còn lại (hoặc cho phanConLai trỏ tới mã con của tầng anh em) — cả cổng 1/2 lẫn luật đi lúc chạy (lib/dieu-kien-so.js#duongDiDong8)."
     }
   ],
   "traVe": [
