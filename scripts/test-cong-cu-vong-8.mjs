@@ -125,5 +125,81 @@ const C23 = { cong: [2, 3] };
   check('B7 950300 TRA_VE (liệt kê đóng ["mô hình thu nhỏ theo tỷ lệ","mô hình giải trí"]) ⇒ cong5-ve-mo-bi-bo:95030040', co(r.loi, 'cong5-ve-mo-bi-bo:95030040:và các mô hình giải trí tương tự'), r.loi);
 }
 
+// ── C. 950300 soạn lại (#713): .40 TUONG_TU ["mô hình thu nhỏ theo tỷ lệ"] ─────────────────────────────────────────────────
+const DK = require('../lib/dieu-kien-so.js');
+const { docKhoa } = require('../lib/ho-so/doc-du-kien.js');
+const SPEC8 = (pn6) => JSON.parse(fs.readFileSync(path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'spec-vong-8', `${pn6}.json`), 'utf8'));
+const tuSpec8 = (pn6) => { const r = C.apSpec(SPEC8(pn6), null, { ngay: '2026-11-01' }); if (!r.banNhap) throw new Error(`spec ${pn6}: ${r.loi.join(' | ')}`); return r; };
+/** Dữ kiện đọc từ một mô tả hàng (cùng bộ đọc lúc chạy) cho mọi khoá của sổ tay. */
+const docHang = (soTay, t) => {
+  const facts = [...new Set(DK.traiPhang([...soTay.dong8, ...soTay.dieuKienNut].flatMap((m) => m.dieuKienSo)).flatMap((c) => DK.factCuaDieuKien(c)))];
+  return facts.map((f) => [f, docKhoa(f, t)]).filter(([, r]) => r && r.trangThai === 'DA_CO')
+    .map(([f, r]) => ({ fact: f, giaTri: r.giaTri, ...(r.donVi ? { donVi: r.donVi } : {}), nguon: 'KHACH', trangThai: 'DA_CO', bangChung: r.bangChung }));
+};
+{
+  const { banNhap: b, loi } = tuSpec8('950300');
+  const d40 = b.dong8.find((m) => m.hs === '95030040').dieuKienSo;
+  check('C1 apSpec 950300 không lỗi; .40 = [tenLoai TUONG_TU ["mô hình thu nhỏ theo tỷ lệ"]]', loi.length === 0 && JSON.stringify(d40) === JSON.stringify([{ fact: 'tenLoai', op: 'TUONG_TU', value: ['mô hình thu nhỏ theo tỷ lệ'] }]), d40);
+  const cu = JSON.parse(fs.readFileSync(path.join(DC_49, '950300.json'), 'utf8'));
+  const dk = (x, hs) => JSON.stringify(x.dong8.find((m) => m.hs === hs).dieuKienSo);
+  check('C2 .10 (soát đợt 5 đạt) và các dòng khác giữ nguyên — chỉ .40 đổi', b.dong8.every((m) => m.hs === '95030040' || dk(b, m.hs) === dk(cu, m.hs)) && JSON.stringify(b.dieuKienNut) === JSON.stringify(cu.dieuKienNut));
+  const r = C.kiemRanhGioi('950300', b);
+  check('C3 950300 XANH đủ cổng (cổng 5 phủ vế mở .40 bằng TUONG_TU; .91–.93 tới được nhờ vector "tên anh em + không tương tự")', r.hopLe === true, r.loi);
+  check('C4 … cảnh báo cong2-tuong-tu-chua-chot cho .40 ↔ anh em nêu tên (đúng thiết kế, không khai chongLanTruc)', co(r.canhBao, 'cong2-tuong-tu-chua-chot:95030021+95030040') && !b.chongLanTruc && !b.chongLanVanBan, r.canhBao.filter((c) => c.includes('tuong-tu')));
+  const v = C.phanTichVe('950300', b).chiTiet.find((x) => x.ma === '95030040').ve.flatMap((x) => x.menhDe);
+  check('C5 … vế MỞ "và các mô hình giải trí tương tự" trạng thái PHU', v.some((x) => x.loai === 'MO' && x.trangThai === 'PHU'), v);
+  // Lúc chạy (sổ tay sinh từ bản nháp, dữ kiện đọc bằng docKhoa — như người soát đợt 5).
+  const soTay = C.soTayTuNhap('950300', b);
+  const pn = (dk, st = soTay) => DK.doiChieuPhanNhom('950300', dk, { soTay: st });
+  const ket = (r1, hs) => r1.dong.find((d) => d.hs === hs).ketQua;
+  const mb = pn(docHang(soTay, 'Mô hình máy bay bằng nhựa'));
+  check('C6 "Mô hình máy bay bằng nhựa" ⇒ .40 HỎI (THIEU), không còn MAU_THUAN như bản trả về; không tự chốt .99', ket(mb, '95030040') === 'THIEU' && !mb.dongCo.includes('95030099'), mb.dong);
+  const stCu = C.soTayTuNhap('950300', cu);
+  const cu40 = pn(docHang(stCu, 'Mô hình máy bay bằng nhựa'), stCu);
+  check('C7 … (đối chứng) bản trả về 49dae40: .40 MAU_THUAN', ket(cu40, '95030040') === 'MAU_THUAN', cu40.dong);
+  const KHOA40 = DK.khoaTuongTu(d40[0]);
+  const oto = docHang(soTay, 'Mô hình ô tô thu nhỏ tỷ lệ 1:18');
+  check('C8 "Mô hình ô tô thu nhỏ tỷ lệ 1:18": bộ đọc tên không có "theo tỷ lệ" ⇒ .40 HỎI câu tương tự (không TRÁI)', ket(pn(oto), '95030040') === 'THIEU', oto);
+  const otoCo = oto.map((d) => (d.fact === 'tenLoai' ? { ...d, tuongTu: { [KHOA40]: true } } : d));
+  check('C9 … trả lời "tương tự mô hình thu nhỏ theo tỷ lệ = có" ⇒ chỉ .40', JSON.stringify(pn(otoCo).dongCo) === '["95030040"]', pn(otoCo).dong);
+  const ten = [{ fact: 'tenLoai', giaTri: 'mô hình thu nhỏ theo tỷ lệ của ô tô', nguon: 'KHACH', trangThai: 'DA_CO' }];
+  check('C10 tên nêu đủ "mô hình thu nhỏ theo tỷ lệ" ⇒ .40 tất định', JSON.stringify(pn(ten).dongCo) === '["95030040"]', pn(ten).dong);
+}
+
+// ── D. 848180 soạn lại (#714): anh em nêu đích cùng khoá dungCho; trục chỉ cặp có hàng thật ─────────────────────────────────
+{
+  const { banNhap: b, loi } = tuSpec8('848180');
+  const nut = (id) => b.dieuKienNut.find((m) => m.id === id).dieuKienSo;
+  check('D1 apSpec 848180 không lỗi', loi.length === 0, loi);
+  check('D2 anh em nêu ĐÍCH cùng khoá dungCho: r14535 "săm", r14538 "lốp không săm", 8481802 "xi lanh khí dầu mỏ hóa lỏng", r14551 "đường ống nước"',
+    nut('848180~r14535')[0].fact === 'dungCho' && nut('848180~r14538')[0].fact === 'dungCho' && nut('8481802').some((c) => c.fact === 'dungCho' && c.value === 'xi lanh khí dầu mỏ hóa lỏng')
+    && JSON.stringify(nut('848180~r14551')) === JSON.stringify([{ fact: 'dungCho', op: 'CONG_DUNG', value: 'đường ống nước' }]));
+  check('D3 r14559 "Van nối có núm" giữ tenLoai (tên loại van, không đổi khoá để né)', JSON.stringify(nut('848180~r14559')) === JSON.stringify([{ fact: 'tenLoai', op: 'TEN_LOAI', value: 'Van nối có núm' }]));
+  const cu = JSON.parse(fs.readFileSync(path.join(DC_49, '848180.json'), 'utf8'));
+  const giu = ['84818093', '84818097', '84818030', '84818012', '84818014'];
+  check('D4 phần soát đợt 5 đạt giữ nguyên (.93 vật liệu khác, .97 daXuLyBeMat, .30 nhienLieu GA, .12/.14)', giu.every((hs) => JSON.stringify(b.dong8.find((m) => m.hs === hs)) === JSON.stringify(cu.dong8.find((m) => m.hs === hs))));
+  check('D5 BO_VE .12/.14 giữ', ['84818012', '84818014'].every((ma) => b.ghiChuSoan.some((g) => g.loai === 'BO_VE' && g.ma === ma)));
+  const [c0, c1] = b.chongLanTruc || [];
+  check('D6 cụm trục tầng 848180 chỉ còn 8481805 (DAC_DIEM) ↔ r14551 (CONG_DUNG), có viDuHang', b.chongLanTruc.length === 2 && JSON.stringify(c0.nhanh) === '["8481805","848180~r14551"]' && c0.truc['8481805'] === 'DAC_DIEM' && c0.truc['848180~r14551'] === 'CONG_DUNG' && c0.viDuHang.length === 1 && c0.phanXu === null);
+  check('D7 cụm r14562 giữ 6 nhánh, viDuHang đủ 5 cặp r14573 ↔ tên', c1.nhanh.length === 6 && c1.viDuHang.length === 5 && c1.viDuHang.every((v) => v.cap.includes('848180~r14573')) && c1.phanXu === null);
+  for (const c of [c0, c1]) for (const v of c.viDuHang) {
+    const [p, q] = v.cap;
+    check(`D8 hàng ví dụ ${p}↔${q} thoả cả hai nhánh: "${v.hang}"`, C.thuViDuHang('848180', b, p, q, v.hang).thoa && C.thuViDuHang('848180', b, q, p, v.hang).thoa);
+  }
+  const r = C.kiemRanhGioi('848180', b, { cong: [0, 1, 3, 5] });
+  check('D9 cổng 0/1/3/5 XANH; DỪNG đúng hai ghi chú DUNG (8481805, r14559 — cặp không có hàng thật, chờ GĐ chốt luật chứng minh)', r.hopLe === true && JSON.stringify(r.dung.sort()) === '["DUNG:8481805","DUNG:848180~r14559"]', { loi: r.loi, dung: r.dung });
+  // Ba vector của người soát đợt 5, thử lại trên bản soạn lại.
+  const soTay = C.soTayTuNhap('848180', b);
+  const dkv = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO' }));
+  const ca = (hs, o) => DK.doiChieuDong8(hs, dkv(o), { soTay }).ketQua === 'CO';
+  const DONG = [{ viTri: 'CHINH', chatLieu: 'đồng' }];
+  check('D10 "Van đường ống nước" + dùng cho "săm" ⇒ không còn .11 và .63 cùng CO (cùng khoá dungCho)', !(ca('84818011', { tenLoai: 'Van đường ống nước', dungCho: 'săm', chatLieu: DONG }) && ca('84818063', { tenLoai: 'Van đường ống nước', dungCho: 'săm', chatLieu: DONG })));
+  check('D11 "Van xi lanh khí dầu mỏ hóa lỏng" + dùng cho "lốp không săm" ⇒ không còn .13 và .21 cùng CO', !(ca('84818013', { tenLoai: 'Van xi lanh khí dầu mỏ hóa lỏng', dungCho: 'lốp không săm', chatLieu: DONG, duongKinhTrong: 10 }) && ca('84818021', { tenLoai: 'Van xi lanh khí dầu mỏ hóa lỏng', dungCho: 'lốp không săm', chatLieu: DONG, duongKinhTrong: 10 })));
+  check('D12 (DỪNG có chủ đích) "Van nối có núm" + có khoang pha trộn ⇒ .59 và .67 vẫn cùng CO trên vector — khoá đặc điểm ↔ tên, không có hàng thật nên không khai trục',
+    ca('84818059', { tenLoai: 'Van nối có núm', coKhoangPhaTron: true, chatLieu: DONG, duongKinhTrong: 30 }) && ca('84818067', { tenLoai: 'Van nối có núm', coKhoangPhaTron: true, chatLieu: DONG, duongKinhTrong: 30 }));
+  const tron = { ...Object.fromEntries(docHang(soTay, c0.viDuHang[0].hang).map((d) => [d.fact, d.giaTri])), chatLieu: DONG, duongKinhTrong: 20 };
+  check('D13 van trộn nước nóng lạnh bằng đồng dùng cho đường ống nước ⇒ thoả 8481805 lẫn r14551 lúc chạy (.59 và .63 cùng CO — trục đã khai, hỏi chuyên gia)', ca('84818059', tron) && ca('84818063', tron), tron);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);
