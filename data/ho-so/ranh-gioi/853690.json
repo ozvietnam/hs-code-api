@@ -4,7 +4,7 @@
   "nhom": "8536",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-853690",
@@ -277,6 +277,11 @@
       "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot2",
       "ngay": "2026-10-30",
       "lyDo": "(A) 853690.json:dieuKienNut[8536901] SUY RỘNG: tenLoai [\"Đầu nối\", \"các bộ phận dùng để nối cho dây dẫn và cáp\", …] tách \"Đầu nối\" khỏi \"cho dây dẫn và cáp\". Chữ Anh của tầng (tieu-de r15846) là \"Connection and contact elements for wires and cables\" — \"cho dây dẫn và cáp\" đi với cả hai. Để \"Đầu nối\" đứng một mình thì đầu nối không dùng cho dây/cáp (vd nối bo mạch) thoả 8536901 → .12/.19 (0%) thay vì tầng \"Loại khác\" r15856 → .93/.94/.99 (25%). TB-TCHQ 3925, 5525 (precedents.json#85369094) xếp cổng kết nối linh kiện/bo mạch vào .94. (B) 853690.json:dong8[85369093] SUY RỘNG (cùng thuế 25%): \"Phiến đầu nối\" đứng riêng; chữ Anh \"Telephone patch panels\" — \"cáp điện thoại\" đi với cả phiến đầu nối."
+    },
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+      "ngay": "2026-11-01",
+      "lyDo": "(A) data/ho-so/ranh-gioi/853690.json:dong8[85369093] THU HẸP (đối xứng: dieuKienNut[8536901] SUY RỘNG): hàng chính danh của .93 \"Phiến đầu nối … cáp điện thoại\" (EN \"Telephone patch panels\") luôn thoả 8536901 (tenLoai \"Đầu nối\" nằm trong \"Phiến đầu nối\", dungCho \"cáp\" nằm trong \"cáp điện thoại\"), mà .93 nằm dưới 8536909 \"Loại khác\" phủ định 8536901 ⇒ giá trị \"Phiến đầu nối\" của .93 chết. Thử doiChieuPhanNhom: tenLoai \"Phiến đầu nối\", dungCho \"cáp điện thoại\", 1 A ⇒ .12 CO (MFN 0%), .93 MAU_THUAN (MFN 25%); chỉ \"Khối đấu nối\" mới tới .93. Ghi chú người soạn đã thấy giới hạn này nhưng so thuế với .94 — chênh thật là .12 0% ↔ .93 25%. Đây là chồng lấn chữ biểu giữa tiêu đề 8536901 và một dòng dưới \"Loại khác\" mà công cụ chưa có cách khai (không được thêm PHAI_KHONG chữ không nói; chongLanVanBan không gỡ được luật đi \"Loại khác\") ⇒ phải DỪNG cho Claude/GĐ quyết công cụ, không để XANH. Phần đạt: 8536901 HOAC định ngữ chung \"cho dây dẫn và cáp\" (#664 đã sửa); bỏ chongLanVanBan .12↔.32, .19↔.39 đúng (tên cụ thể hơn thắng: dungCho \"cáp đồng trục\" ⊃ \"cáp\", cả hai nguyên văn tiêu đề của chính mình; đầu nối cáp đồng trục ⇒ 8536903 đúng tiêu đề riêng); .40 kẹp pin; biên < 16 A; bảng 853690-01 KHONG_LECH."
     }
   ]
 }
