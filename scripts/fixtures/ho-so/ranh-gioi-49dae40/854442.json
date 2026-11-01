@@ -1,0 +1,465 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "854442",
+  "nhom": "8544",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "DUYET",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4-claude-giu-2",
+    "ngay": "2026-10-30"
+  },
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot3",
+    "ngay": "2026-10-31",
+    "ghiChu": "Đối chiếu tay: tiêu đề viễn thông <=80 V / >80 và <=1000 V, .13/.23 cách điện cao su/plastic/giấy, tầng r16065, .32/.34 dungCho 4 nhóm, .91/.92 soSoi >= 2 (+ phanConLai .91), .94/.95/.96 đường kính lõi + phanConLai, .97 cao su/giấy. chongLanTruc 8544421/8544422 (CONG_DUNG) ↔ 8544423 Cáp ắc qui (TEN_LOAI): trục đúng, trích nguyên văn tiêu đề, câu hỏi phân biệt lấy từ chữ biểu và trả lời được, phanXu null (không điền). Ghi nhận không chặn: BO_VE 85444292 nay thừa (cổng 5 đã đọc \"hai\"); ghi chú LECH_TIEN_LE còn viết 854442-02/-03 LECH_CHUA_PHAN_XU — bảng hiện là TIEN_LE_THAY_CHU_BIEU + NGUOI_DUYET (CEO 30/10/2026, theo TB-TCHQ .99), lúc chạy bảng quyết định; câu hỏi phân biệt kết bằng câu trần thuật sau dấu hỏi.",
+    "bam": "a314ead882ad054c43e800f926ae967a362964ec9ac63c7f8027be81d39e4208"
+  },
+  "dieuKienNut": [
+    {
+      "id": "854442~r16065",
+      "nguon": "tieuDe.854442~r16065",
+      "trich": "854442~r16065 Cách điện bằng cao su hoặc plastic",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "8544421",
+      "nguon": "tieuDe.8544421",
+      "trich": "8544421 Dùng cho viễn thông, điện áp không quá 80 V",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "viễn thông"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 80,
+          "donVi": "V"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "8544422",
+      "nguon": "tieuDe.8544422",
+      "trich": "8544422 Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "viễn thông"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 80,
+          "donVi": "V"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "V"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "id": "8544423",
+      "nguon": "tieuDe.8544423",
+      "trich": "8544423 Cáp ắc qui",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp ắc qui"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85444211",
+      "nguon": "tax.85444211",
+      "trich": "85444211 - - - - Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cáp điện thoại ngầm dưới biển",
+            "cáp điện báo ngầm dưới biển",
+            "cáp chuyển tiếp vô tuyến ngầm dưới biển"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444213",
+      "nguon": "tax.85444213",
+      "trich": "85444213 - - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444219",
+      "nguon": "tax.85444219",
+      "trich": "85444219 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444221",
+      "nguon": "tax.85444221",
+      "trich": "85444221 - - - - Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cáp điện thoại ngầm dưới biển",
+            "cáp điện báo ngầm dưới biển",
+            "cáp chuyển tiếp vô tuyến ngầm dưới biển"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444223",
+      "nguon": "tax.85444223",
+      "trich": "85444223 - - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444229",
+      "nguon": "tax.85444229",
+      "trich": "85444229 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444232",
+      "nguon": "tax.85444232",
+      "trich": "85444232 - - - - - Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.11"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444233",
+      "nguon": "tax.85444233",
+      "trich": "85444233 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444234",
+      "nguon": "tax.85444234",
+      "trich": "85444234 - - - - - Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.11"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444239",
+      "nguon": "tax.85444239",
+      "trich": "85444239 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444291",
+      "nguon": "tax.85444291",
+      "trich": "85444291 - - - - Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp dữ liệu dẹt"
+        },
+        {
+          "fact": "soSoi",
+          "op": ">=",
+          "value": 2,
+          "donVi": "sợi"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444292",
+      "nguon": "tax.85444292",
+      "trich": "85444292 - - - - Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp dữ liệu dẹt"
+        },
+        {
+          "fact": "soSoi",
+          "op": ">=",
+          "value": 2,
+          "donVi": "sợi"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "85444291"
+      ]
+    },
+    {
+      "hs": "85444294",
+      "nguon": "tax.85444294",
+      "trich": "85444294 - - - - Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp điện"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        },
+        {
+          "fact": "duongKinhLoi",
+          "op": "<=",
+          "value": 5,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444295",
+      "nguon": "tax.85444295",
+      "trich": "85444295 - - - - Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính trên 5 mm nhưng không quá 19,5 mm ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp điện"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        },
+        {
+          "fact": "duongKinhLoi",
+          "op": ">",
+          "value": 5,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhLoi",
+          "op": "<=",
+          "value": 19.5,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444296",
+      "nguon": "tax.85444296",
+      "trich": "85444296 - - - - Cáp điện cách điện bằng plastic khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp điện"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": [
+        "85444294",
+        "85444295"
+      ]
+    },
+    {
+      "hs": "85444297",
+      "nguon": "tax.85444297",
+      "trich": "85444297 - - - - Cáp điện cách điện bằng cao su hoặc giấy",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp điện"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85444299",
+      "nguon": "tax.85444299",
+      "trich": "85444299 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "8544421",
+        "8544422",
+        "8544423"
+      ],
+      "truc": {
+        "8544421": "CONG_DUNG",
+        "8544422": "CONG_DUNG",
+        "8544423": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Cáp này là \"Cáp ắc qui\" (tiêu đề 8544423) hay là cáp \"Dùng cho viễn thông\" (8544421 nếu điện áp không quá 80 V; 8544422 nếu điện áp trên 80 V nhưng không quá 1.000 V)? Nếu cáp vừa là cáp ắc qui vừa dùng cho viễn thông, biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "8544421": "Dùng cho viễn thông, điện áp không quá 80 V",
+        "8544422": "Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V",
+        "8544423": "Cáp ắc qui"
+      },
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8544421",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" ⇒ congDung \"viễn thông\" + dienAp <= 80 V; tieuDe.8544422 \"… điện áp trên 80 V nhưng không quá 1.000 V\" ⇒ congDung \"viễn thông\" + dienAp > 80 V và <= 1000 V. tieuDe.8544423 \"Cáp ắc qui\" ⇒ tenLoai. 8544429 \"Loại khác\" trần."
+    },
+    {
+      "ma": "85444211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Ba loại cáp ngầm dưới biển nêu đích danh ⇒ tenLoai mảng (hoặc), chuỗi con nguyên văn; .21 như .11. .13/.23 \"Loại khác, cách điện bằng cao su, plastic hoặc giấy\" ⇒ chỉ vế: chatLieu LA [cao su, plastic, giấy] viTri CACH_DIEN."
+    },
+    {
+      "ma": "854442~r16065",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Soạn lại sau PR #619 (tầng không mã thành nút ảo): tieuDe.854442~r16065 \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu LA [cao su, plastic] viTri CACH_DIEN; tầng r16068 \"Loại khác:\" trần. .32/.34 \"Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11\" ⇒ dungCho [4 nhóm, đủ, đúng thứ tự]."
+    },
+    {
+      "ma": "85444291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85444291 \"Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy\" ⇒ tenLoai \"Cáp dữ liệu dẹt\" + soSoi >= 2 sợi (tu-vung@2; \"hai sợi hoặc hơn\" = >= 2; \"sợi\" ở đây là sợi dẫn — chữ Anh cùng dòng \"having two lines or more\" — đơn vị chữ biểu là \"sợi\" nên dùng soSoi, không dùng soLoi vì chữ không có \"lõi\"; không HOAC soSoi/soLoi vì vế soLoi không có chữ để trích) + chatLieu CACH_DIEN [cao su, plastic, giấy]. tax.85444292 \"Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác\" ⇒ cùng tenLoai + soSoi >= 2 + phanConLai [\"85444291\"] (\"loại khác\" cuối dòng = ngoài .91)."
+    },
+    {
+      "ma": "85444294",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm\" ⇒ tenLoai \"Cáp điện\" + chatLieu plastic CACH_DIEN + duongKinhLoi <= 5 mm; .95 \"… trên 5 mm nhưng không quá 19,5 mm\" ⇒ duongKinhLoi > 5 và <= 19.5 mm."
+    },
+    {
+      "ma": "85444296",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Soạn lại sau PR #590: tax.85444296 \"Cáp điện cách điện bằng plastic khác\" ⇒ tenLoai \"Cáp điện\" + chatLieu plastic CACH_DIEN + phanConLai [\"85444294\",\"85444295\"] (\"khác\" = ngoài hai dòng plastic theo đường kính lõi; không tự ghi duongKinhLoi > 19.5 vì số đó không có trong chữ .96). .97 \"Cáp điện cách điện bằng cao su hoặc giấy\" ⇒ chatLieu [cao su, giấy] CACH_DIEN."
+    },
+    {
+      "ma": "85444299",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ: 854442-01 TIEN_LE_THAY_CHU_BIEU (1709, 1710, 1711/TB-TCHQ: cáp sạc điện thoại lõi < 5 mm → .99 thay vì .94), 854442-02 và 854442-03 LECH_CHUA_PHAN_XU. Bản nháp theo CHỮ BIỂU (.94); bảng mang hiệu chỉnh, tầng hồ sơ (L1-5b) xét mục bảng có dieuKien trước."
+    },
+    {
+      "ma": "8544423",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chồng lấn theo TRỤC ở cấp tiêu đề (#683): tieuDe.8544423 \"Cáp ắc qui\" (trục TÊN, tenLoai) đứng cạnh tieuDe.8544421 \"Dùng cho viễn thông, điện áp không quá 80 V\" và tieuDe.8544422 \"Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V\" (trục CÔNG DỤNG, congDung + dienAp) — chữ không loại trừ nhau, không TB-TCHQ/SEN/chú giải nào nêu thứ tự. Không khai chongLanVanBan (không gỡ được trục); khai chongLanTruc cho cụm ba tiêu đề, phanXu null: lúc chạy, cáp ắc qui dùng cho viễn thông ⇒ hồ sơ chưa chốt CHONG_LAN_TRUC kèm câu hỏi phân biệt."
+    },
+    {
+      "ma": "85444292",
+      "loai": "BO_VE",
+      "ve": "có hai sợi hoặc hơn, loại khác",
+      "lyDo": "Vế KHÔNG bị bỏ: \"hai sợi hoặc hơn\" đã phủ bằng soSoi >= 2 sợi (cổng 3 đọc được số viết bằng chữ qua demSo của tu-vung@2) và \"loại khác\" đã phủ bằng phanConLai [\"85444291\"]; bộ neo cổng 5 (tach-ve.js soTrongChu) chỉ neo số viết bằng chữ số nên không thấy \"hai\" — ghi miễn để ghi nhận chỗ máy đọc thiếu, điều kiện giữ nguyên, không đổi mã."
+    },
+    {
+      "ma": "85444232",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Bản trước DỪNG ở cong2-qua-nhieu-to-hop .32/.33/.34/.39 × .94/.95/.96; công cụ vòng 2 (#653) lấy mẫu tất định khi > 100.000 tổ hợp ⇒ nay chỉ còn cảnh báo cong2-lay-mau (cặp .32/.33/.34/.39 × .99 kiểm theo mẫu, không vét cạn) — gỡ ghi chú DUNG."
+    }
+  ]
+}

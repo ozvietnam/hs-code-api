@@ -270,6 +270,10 @@ Khi `--kiem` báo `cong2-chong-lan-truc:<nút>:<các nhánh>` và bạn đã ch�
      "truc": { "8544421": "CONG_DUNG", "8544422": "CONG_DUNG", "8544423": "TEN_LOAI" },
      "cauHoiPhanBiet": "Cáp này là \"Cáp ắc qui\" (8544423) hay là cáp \"Dùng cho viễn thông\" (8544421/8544422)? …",
      "trich": { "8544421": "Dùng cho viễn thông, điện áp không quá 80 V", "8544422": "…", "8544423": "Cáp ắc qui" },
+     "viDuHang": [
+       { "cap": ["8544421", "8544423"], "hang": "Cáp ắc qui dùng để cấp nguồn cho thiết bị viễn thông, điện áp 48 V, đã lắp đầu nối" },
+       { "cap": ["8544422", "8544423"], "hang": "Cáp ắc qui dùng để cấp nguồn cho thiết bị viễn thông, điện áp 220 V, đã lắp đầu nối" }
+     ],
      "phanXu": null
    }]
    ```
@@ -281,10 +285,21 @@ Khi `--kiem` báo `cong2-chong-lan-truc:<nút>:<các nhánh>` và bạn đã ch�
    - `trich`: chữ biểu NGUYÊN VĂN của chính từng nhánh (như `trich` của mục) — máy kiểm bằng cùng bộ kiểm của cổng 3.
    - `cauHoiPhanBiet`: một câu hỏi tiếng Việt, viết TỪ chữ biểu, giúp người khai/chuyên gia nói hàng thuộc nhánh nào; kết thúc
      bằng `?`. Không trả lời hộ, không nêu nhánh nào "ưu tiên".
+   - **`viDuHang` — MỖI cặp phải có một hàng THẬT** (vòng 8, quyết định GĐ sau #716: `chongLanTruc` đã hai lần nuốt chồng lấn do
+     cách chọn khoá — 761699 cụm 7 nhánh, 848180 cụm 9 nhánh). Mỗi cặp nhánh KHÁC TRỤC mà cụm phủ (cặp cổng 2 thật sự thấy chồng lấn
+     trong cụm — `--kiem` in từng cặp thiếu) cần `{"cap": ["<idA>", "<idB>"], "hang": "<một mặt hàng có thật thoả CẢ HAI nhánh theo
+     chữ biểu>"}`. Máy đọc `hang` thành dữ kiện bằng CÙNG bộ đọc lúc chạy (`docKhoa`) và đối chiếu bằng CÙNG bộ so (`doiChieuDong8`)
+     trên chính bản nháp: viết rõ dữ kiện của cả hai nhánh ("… dùng cho <đích>", số + đơn vị, chất liệu). Thiếu ⇒
+     `cong2-chong-lan-truc-thieu-vi-du:<cụm>:<cặp>`; hàng không thoả cả hai nhánh ⇒ `cong2-chong-lan-truc-vi-du-sai:<cụm>:<cặp>`; thử
+     trước: `require("./lib/ho-so/cong-ranh-gioi").thuViDuHang(pn6, banNhap, id, idKia, hang)`. **Không nghĩ ra hàng thật nào ⇒ cặp
+     đó là chồng lấn GIẢ do cách viết**: đưa anh em cùng ý về cùng khoá (bước 3.3, Chồng lấn bước 2 — 848180: "Van đường ống nước",
+     "Van xi lanh khí … (LPG)" nêu ĐÍCH như "Van dùng cho săm" ⇒ đều `dungCho`); vẫn còn ⇒ bỏ cặp khỏi cụm và DỪNG (ghi chú `DUNG`).
+     Không bịa hàng để máy xanh — người soát đọc từng `hang`. Bản DUYET soát trước luật này chỉ nhận cảnh báo (không sửa sau duyệt);
+     NHAP/TRA_VE là lỗi.
    - **`phanXu` LUÔN `null`.** Chỉ Claude/người soát điền, và chỉ khi có nguồn kiểm được: chú giải nguyên văn (`CHU_GIAI`), tiền lệ
      qua bảng hiệu chỉnh (`TIEN_LE`), hoặc quyết định người duyệt (`NGUOI_DUYET {nguoi, ngay, quyetDinh, kenh}`). Spec có
      `phanXu` khác `null` ⇒ `spec-khoa-cam`. Không tự suy "mô tả cụ thể nhất" (GIR 3(a)), không ghi nhãn GIR.
-3. `--ap-spec` rồi `--kiem`: cặp chồng giữa nhánh khác trục hết lỗi, còn cảnh báo `cong2-chong-lan-truc-da-khai` (giữ). Cặp ngoài
+3. `--ap-spec` rồi `--kiem`: cặp chồng giữa nhánh khác trục hết lỗi (khi đủ `viDuHang` đúng), còn cảnh báo `cong2-chong-lan-truc-da-khai` (giữ). Cặp ngoài
    cụm, cặp cùng trục vẫn là lỗi — sửa theo bước 1–3. Xoá ghi chú `DUNG` cũ của cụm nếu cổng đã xanh.
 4. Lúc chạy, hàng thoả cả hai nhánh ⇒ hồ sơ trả chưa chốt `chong-lan-truc` kèm `cauHoiPhanBiet` — máy không tự chọn nhánh.
 
@@ -295,7 +310,7 @@ Khi `--kiem` báo `cong2-chong-lan-truc:<nút>:<các nhánh>` và bạn đã ch�
 | Tầng không mã KHÔNG biểu diễn được | `--goi` in `!!! DỪNG — … TẦNG KHÔNG MÃ`; lỗi `cong1-tang-khong-ma-khong-dat` (tầng có nút `<pn6>~r<dòng>` thì khai `dieuKienNut`, không DỪNG) |
 | Tiêu đề bị lược tên / tầng bị lược | `CHẶN: tieu-de-bi-luoc-ten`; lỗi `cong1-tieu-de-bi-luoc-ten`, `cong1-tang-bi-luoc` |
 | Thiếu khoá từ vựng | spec dùng khoá lạ (`THIEU_KHOA_TU_VUNG`, mã 3), hoặc bạn ghi ghi chú `THIEU_KHOA_TU_VUNG` |
-| Chồng lấn theo trục mà không khai được `chongLanTruc` (mọi nhánh cùng trục, nhánh không có khoá tên/công dụng/đặc điểm CO_KHONG·LIET_KE) | `cong0-chong-lan-truc-mot-truc`, `cong3-chong-lan-truc-truc-lech` không sửa được (khai được ⇒ mục 4a, không DỪNG) |
+| Chồng lấn theo trục mà không khai được `chongLanTruc` (mọi nhánh cùng trục, nhánh không có khoá tên/công dụng/đặc điểm CO_KHONG·LIET_KE, hoặc cặp không có hàng thật nào cho `viDuHang` — vòng 8) | `cong0-chong-lan-truc-mot-truc`, `cong3-chong-lan-truc-truc-lech` không sửa được (khai được ⇒ mục 4a, không DỪNG) |
 | Phân nhóm có cờ tiền lệ mà bảng hiệu chỉnh CHƯA CÓ MỤC cho PN6 | `[CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — … chưa có mục …]`; DỪNG `can-bang-hieu-chinh-tien-le:<pn6>:chua-co` (bảng đã có mục ⇒ không DỪNG) |
 | Dòng không tới được mà không sửa được | lỗi `cong2-dong-khong-toi-duoc` khi giá trị đã đúng chữ và anh em cùng khoá — KHÔNG đổi khoá để né (bước 3.3) |
 | Cổng nào đó chỉ xanh được nếu bịa chữ / thêm điều kiện chữ không nói | bất kỳ |
@@ -335,7 +350,7 @@ Closes #<số issue>
 - phanConLai: <mã | không>
 - HOAC: <mã | không>
 - chongLanVanBan: <cặp + một câu lý do | không>
-- chongLanTruc: <nhánh + trục + câu hỏi phân biệt | không> (phanXu luôn null)
+- chongLanTruc: <nhánh + trục + câu hỏi phân biệt + viDuHang từng cặp | không> (phanXu luôn null)
 
 ### Cảnh báo còn lại và cách tôi xử lý
 - <mã cảnh báo> — <đã đối chiếu tay / ghi chú gì>

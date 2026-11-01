@@ -226,3 +226,23 @@ Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) bước 3.2,
   cho dòng TUONG_TU kết quả CHƯA BIẾT, không THOẢ ⇒ không chồng lấn tất định; cặp mà câu trả lời "có" sẽ làm hai dòng cùng CO ⇒ cảnh
   báo `cong2-tuong-tu-chua-chot` (không khai chongLanTruc). Vector biên thêm "tên ngoài danh sách + trả lời có/không" để dòng "Loại
   khác" tới được. Giới hạn chỉ của hàng tương tự (EN "similar wheeled toys") ⇒ HOAC [[TEN_LOAI X…], [TUONG_TU X…, <giới hạn>]].
+
+## Vòng 8 (01/11/2026, #577 — sau soát L1-4c đợt 5 #716): quyết định GĐ (không mở lại)
+
+Chi tiết + ví dụ: [`QUY-TRINH-SO-HOA.md`](QUY-TRINH-SO-HOA.md) mục 4a.
+- **Mỗi cặp `chongLanTruc` cần một hàng THẬT** (`viDuHang`): `chongLanTruc` đã hai lần nuốt chồng lấn do cách chọn khoá (761699,
+  848180). Mỗi mục khai `viDuHang: [{cap: [idA, idB], hang}]` cho MỌI cặp nhánh khác trục mà cụm phủ (cặp cổng 2 thật sự thấy chồng
+  lấn trong cụm). Thiếu ⇒ `cong2-chong-lan-truc-thieu-vi-du:<cụm>:<cặp>`; `hang` đọc thành dữ kiện bằng cùng bộ đọc lúc chạy
+  (`lib/ho-so/doc-du-kien.js#docKhoa`) và đối chiếu bằng cùng bộ so (`lib/dieu-kien-so.js#doiChieuDong8`) mà không thoả cả hai nhánh
+  ⇒ `cong2-chong-lan-truc-vi-du-sai:<cụm>:<cặp>` (kiểm cả ở cổng 0+3). Bản DUYET (soát trước luật này: 841459, 851762, 854442,
+  940541, 940542) chỉ nhận CẢNH BÁO — không sửa sau duyệt; NHAP/TRA_VE là LỖI. `viDuHang` thuộc băm duyệt. Cặp không có hàng thật ⇒
+  không khai trục: đưa anh em cùng ý về cùng khoá (848180: "Van đường ống nước", "Van xi lanh khí … (LPG)" nêu đích như "Van dùng
+  cho săm" ⇒ `dungCho`), còn lại ⇒ DỪNG. Máy chỉ kiểm hàng ví dụ nhất quán với điều kiện; hàng có thật hay không do người soát đọc.
+- **Vế mở dài "… và các <1–6 chữ> tương tự"** (950300 .40 "Các mô hình thu nhỏ theo tỷ lệ ("scale") và các mô hình giải trí tương
+  tự"): bộ tách vế nhận là vế MỞ khi chữ Anh cùng dòng có "similar"/"the like" và không chữ nào chen giữa là dấu hiệu bổ nghĩa
+  (bằng, có, dùng, cho, …). Mẫu cũ (≤ 4 chữ) không đổi. Vế mở có "tương tự" chỉ được phủ bằng `TUONG_TU` (hoặc khoá khác): một giá
+  trị `TEN_LOAI` neo trong chính vế mở ("mô hình giải trí") là liệt kê đóng thêm một tên — vẫn `cong5-ve-mo-bi-bo`. Chạy trên mọi
+  bản nháp lúc thêm: chỉ 950300 (TRA_VE) đổi; không bản DUYET nào lật.
+- **Vector "tên anh em + tương tự = KHÔNG"**: tên NÊU của một anh em kèm câu trả lời "không tương tự" cho mọi điều kiện TUONG_TU là
+  câu trả lời trung thực — cổng thêm vector này để dòng dưới tầng "Loại khác" phủ định một dòng chỉ có TUONG_TU tới được (950300
+  .91–.93). Lúc chạy không đổi: hàng không nêu tên dưới 950300 được hỏi câu "tương tự" của .10 và .40.
