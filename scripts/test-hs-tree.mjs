@@ -69,8 +69,15 @@ check('render được từ chương', /^CHƯƠNG 85/.test(T.render('85')) && /N
     lk2.truDayDu.join() === lk2.anhEmCoTen.join() && T.namedExclusionLeaves('85044090').join() === T.namedSiblingLeaves('85044090').join());
   check('mã không phải Loại khác: namedExclusionLeaves ≡ namedSiblingLeaves, exclusionLeavesByTier rỗng',
     T.namedExclusionLeaves('85044011').join() === T.namedSiblingLeaves('85044011').join() && T.exclusionLeavesByTier('85044011').length === 0);
-  // dinhNghiaDuoc xét MỌI tầng: tầng nhóm 0206 còn "Loại khác, tươi hoặc ướp lạnh" có điều kiện → chưa định nghĩa được.
-  check('02062900: tầng trên còn "Loại khác, …" có điều kiện → dinhNghiaDuoc false', T.loaiKhacOf('02062900').dinhNghiaDuoc === false);
+  // dinhNghiaDuoc xét MỌI tầng mà dòng thật sự phải phủ định. #725: 02062900 nằm dưới nhóm con có tên 02062 "Của động vật họ
+  // trâu bò, đông lạnh" → tầng nhóm 0206 KHÔNG trừ 02068000 "Loại khác, tươi hoặc ướp lạnh" (khác nhánh) → định nghĩa được.
+  const lk0206 = T.loaiKhacOf('02062900');
+  check('02062900 (#725): điều kiện nhóm con 02062 + chỉ trừ 02062100/02062200 → dinhNghiaDuoc true',
+    lk0206.dinhNghiaDuoc === true && lk0206.truDayDu.join() === '02062100,02062200' && lk0206.dieuKienTieuDe.some((d) => d.nut === '02062'), lk0206);
+  // Dòng mà tầng trên thật sự còn "Loại khác, …" có điều kiện → chưa định nghĩa được, kèm lý do.
+  const lk8481 = T.loaiKhacOf('84818099');
+  check('84818099: trừ 84818097 "Loại khác, điều khiển bằng tay…" → dinhNghiaDuoc false, lý do TRU_DONG_LOAI_KHAC_CO_DIEU_KIEN',
+    lk8481.dinhNghiaDuoc === false && lk8481.lyDoKhongDinhNghia.some((l) => l.loai === 'TRU_DONG_LOAI_KHAC_CO_DIEU_KIEN' && l.ma.includes('84818097')), lk8481);
 }
 
 // Chương 98 (không có trong WCO) vẫn dựng được bằng chữ số.

@@ -5,7 +5,8 @@
  *   data/bieu-thue/<phien-ban>/bieu-chinh.jsonl.gz   sheet chính (nhiều mã 8 số nhất): mọi dòng có mã, mọi cột, chuỗi gốc
  *   data/bieu-thue/<phien-ban>/tieu-de.jsonl.gz      mọi dòng tiêu đề không mã của mọi sheet (gạch, chữ, mã trước/sau)
  *   data/bieu-thue/<phien-ban>/sheet/<sheet>.jsonl.gz  các sheet còn lại (FTA theo năm, XK, CU/MOI…) — gitignored, tái sinh được
- *   data/bieu-thue/<phien-ban>/ten-nut.json   tên NGUYÊN VĂN biểu thuế cho nút ảo của cây (lib/hs-tree.js)
+ *   data/bieu-thue/<phien-ban>/ten-nut.json   tên NGUYÊN VĂN biểu thuế cho nút ảo của cây (lib/hs-tree.js); `tenMa` = tên phân nhóm 6 số
+ *                                              theo dòng có mã 6 số của sheet chính
  *   data/bieu-thue/<phien-ban>/tong-ket.json  sha256, số liệu, bảo toàn ô, đối chiếu tax.json, sheet không nhận ra
  *   data/oz-export/bieu-thue-raw/<phien-ban>/<sheet>.jsonl  bản THÔ từng ô (gitignored — tệp lớn, tái sinh được)
  * Từ chối ghi khi bảo toàn ô không đủ hoặc có sheet không nhận ra mà chưa --bo-qua-sheet=<tên,…> có ý thức.
@@ -52,7 +53,9 @@ const tongKet = { phienBan: ver, tep: tho.tep, sha256: tho.sha256, luc: new Date
 fs.writeFileSync(path.join(dir, 'cot.json'), JSON.stringify(cot, null, 1));
 B.ghiJsonlGz(path.join(dir, 'tieu-de.jsonl.gz'), tieuDe);
 for (const f of ['dong.json', 'tieu-de.json']) { try { fs.unlinkSync(path.join(dir, f)); } catch { /* bản cũ không có */ } }
-fs.writeFileSync(path.join(dir, 'ten-nut.json'), JSON.stringify({ nguonLoai: 'NGUYEN_VAN', nguon: `bieu-thue@${ver}`, ten: tenNut, khongNoi }, null, 1));
+// Tên phân nhóm 6 số theo chính dòng có mã của sheet chính (#725 lỗi 29) — noiTieuDeVaoCay chỉ nối tiêu đề không mã.
+const tenMa = B.tenTheoMa(dong.filter((d) => d.sheet === dc.sheetChinh));
+fs.writeFileSync(path.join(dir, 'ten-nut.json'), JSON.stringify({ nguonLoai: 'NGUYEN_VAN', nguon: `bieu-thue@${ver}`, ten: tenNut, khongNoi, tenMa }, null, 1));
 fs.writeFileSync(path.join(dir, 'doi-chieu-tax.json'), JSON.stringify(dc, null, 1));
 fs.writeFileSync(path.join(dir, 'tong-ket.json'), JSON.stringify(tongKet, null, 1));
 console.log(JSON.stringify(tongKet, null, 1));

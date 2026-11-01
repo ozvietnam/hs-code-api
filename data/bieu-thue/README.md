@@ -10,7 +10,7 @@ Mỗi phiên bản một thư mục `<YYYY.MM.DD>/`:
 | `bieu-chinh.jsonl.gz` | sheet chính (BT2026): mọi dòng có mã (2/4/6/8/10 số), mọi cột, **chuỗi gốc** (`"0 (-CN)"`, `"*"`), `thue{}` 27 mức (MFN, TT, VAT, ACFTA, ATIGA, AJCEP, VJEPA, AKFTA, AANZFTA, AIFTA, VKFTA, VCFTA, VN-EAEU, CPTPP, AHKFTA, VN-Cuba, EVFTA, UKVFTA, VN-Lào, VN-Campuchia, VIFTA, RCEP A–F, TTĐB, XK, XK-CPTPP/EV/UKV, BVMT), `canCu{mức: {vanBan, hieuLuc}}` nghị định + ngày hiệu lực của TỪNG mức, vị trí dòng `r` | `NGUYEN_VAN` |
 | `tieu-de.jsonl.gz` | mọi dòng tiêu đề không mã của mọi sheet (chương, nhóm, nhóm con `- Loại khác:`), số gạch, mã trước/sau | `NGUYEN_VAN` |
 | `sheet/<sheet>.jsonl.gz` | 30 sheet còn lại (bảng từng sheet ở dưới): lộ trình từng FTA theo năm/mốc (`thue["atiga@2026"]`…), biểu XK, mã cũ/mới (CU/MOI) — **gitignored**, tái sinh bằng `trich.mjs` | `NGUYEN_VAN` |
-| `ten-nut.json` | tên nguyên văn biểu thuế cho nút ảo của cây (`lib/hs-tree.js`): nhóm một gạch 5 số, tiêu đề quốc gia 7 số | `NGUYEN_VAN` |
+| `ten-nut.json` | tên nguyên văn biểu thuế cho nút ảo của cây (`lib/hs-tree.js`): nhóm một gạch 5 số, tiêu đề quốc gia 7 số (`ten`, nối tiêu đề không mã); `tenMa` = tên phân nhóm 6 số theo CHÍNH dòng có mã 6 số của sheet chính (#725 — trước đó 987 phân nhóm chỉ có tên WCO tiếng Anh; bản trích cũ nâng bằng `node scripts/bieu-thue/bo-sung-ten-ma.mjs --phien-ban=<bản>`) | `NGUYEN_VAN` |
 | `doi-chieu-tax.json`, `tong-ket.json` | sha256 tệp, số liệu, bảo toàn ô, mã thiếu/thừa so với `tax.json` | — |
 
 Bản thô từng ô: `data/oz-export/bieu-thue-raw/<phiên bản>/<sheet>.jsonl` (gitignored, tái sinh được bằng `trich.mjs`).
