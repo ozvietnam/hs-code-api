@@ -41,7 +41,7 @@
                 ]
               },
               {
-                "fact": "dungCho",
+                "fact": "congDung",
                 "op": "CONG_DUNG",
                 "value": "máy xử lý dữ liệu tự động"
               }
@@ -72,7 +72,7 @@
             "phim du lịch",
             "phim kỹ thuật",
             "phim khoa học",
-            "phim tài liệu khác"
+            "phim tài liệu"
           ],
           "chieu": "PHAI_KHONG"
         }
@@ -135,12 +135,12 @@
     {
       "ma": "85235130",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85235130 \"Loại khác, <vế>\": hai vế cách nhau bằng \";\" ⇒ HOAC. Vế 1 (EN \"of a kind used for reproducing representations of instructions, data, sound and image, recorded in a machine readable binary form, and capable of being manipulated or providing interactivity to a user, by means of an automatic data processing machine\") ⇒ congDung \"tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh\" + congDung [\"có thể thao tác\",\"có thể tương tác với người sử dụng\"] (\"hoặc\" ⇒ mảng) + dungCho \"máy xử lý dữ liệu tự động\" (\"thông qua một máy xử lý dữ liệu tự động\" — định ngữ chung của cả \"thao tác\" lẫn \"tương tác\" theo chữ Anh, nên là điều kiện riêng). Tiêu chí tương tác là tiêu chí phân biệt .30 với .91/.92/.99 (trả về #663: bỏ nó thì phương tiện chứa phim/âm thanh thuần thoả .30). tu-vung@2 không có khoá có/không cho \"tương tác qua máy xử lý dữ liệu\" ⇒ chuỗi con nguyên văn (cách người soát #663 cho phép); so chữ tự do, lúc chạy thường CHƯA BIẾT ⇒ hỏi. Vế 2 ⇒ tenLoai \"phương tiện lưu trữ được định dạng riêng\" (giữ nguyên). \"(đã ghi)\" đã được tầng r15544 (phủ định \"Loại chưa ghi\") bao."
+      "ghiChu": "tax.85235130 \"Loại khác, <vế>\": hai vế cách nhau bằng \";\" ⇒ HOAC. Vế 1 (EN \"of a kind used for reproducing representations of instructions, data, sound and image, recorded in a machine readable binary form, and capable of being manipulated or providing interactivity to a user, by means of an automatic data processing machine\") ⇒ congDung \"tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh\" + congDung [\"có thể thao tác\",\"có thể tương tác với người sử dụng\"] (\"hoặc\" ⇒ mảng) + congDung \"máy xử lý dữ liệu tự động\" (\"thông qua một máy xử lý dữ liệu tự động\" — định ngữ chung của cả \"thao tác\" lẫn \"tương tác\" theo chữ Anh, nên là điều kiện riêng; ghi congDung, KHÔNG phải dungCho: \"thông qua\" là một phần định nghĩa hàng, không phải đích dùng — trả về #717). Tiêu chí tương tác là tiêu chí phân biệt .30 với .91/.92/.99 (trả về #663: bỏ nó thì phương tiện chứa phim/âm thanh thuần thoả .30). tu-vung@2 không có khoá có/không cho \"tương tác qua máy xử lý dữ liệu\" ⇒ chuỗi con nguyên văn (cách người soát #663 cho phép); so chữ tự do, lúc chạy thường CHƯA BIẾT ⇒ hỏi. Vế 2 ⇒ tenLoai \"phương tiện lưu trữ được định dạng riêng\" (giữ nguyên). \"(đã ghi)\" đã được tầng r15544 (phủ định \"Loại chưa ghi\") bao."
     },
     {
       "ma": "85235191",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85235191 \"Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác\" ⇒ congDung \"chứa phim điện ảnh\" + congDung PHAI_KHONG [5 loại phim bị trừ]. tax.85235192 \"Loại khác, dùng cho điện ảnh\" ⇒ dungCho \"điện ảnh\" (chữ \"dùng cho\"). Hai dòng đều \"Loại khác, <vế>\" nên luật đi phủ định lẫn nhau; khoá khác nhau vì chữ khác nghĩa (chứa nội dung ↔ dùng cho) — ghi cùng khoá congDung thì bộ so âm tiết bỏ \"dùng cho\" và \"điện ảnh\" ⊂ \"chứa phim điện ảnh\" làm .91 không bao giờ tới được (cong2-dong-khong-toi-duoc)."
+      "ghiChu": "tax.85235191 \"Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác\" ⇒ congDung \"chứa phim điện ảnh\" + congDung PHAI_KHONG [5 loại phim bị trừ; \"phim tài liệu khác\" ghi \"phim tài liệu\" vì \"khác\" là \"other\" của \"and other documentary movies\" (bảng luật chung dòng 4: không giá trị chứa \"khác\") — trả về #717]. tax.85235192 \"Loại khác, dùng cho điện ảnh\" ⇒ dungCho \"điện ảnh\" (chữ \"dùng cho\"). Hai dòng đều \"Loại khác, <vế>\" nên luật đi phủ định lẫn nhau; khoá khác nhau vì chữ khác nghĩa (chứa nội dung ↔ dùng cho) — ghi cùng khoá congDung thì bộ so âm tiết bỏ \"dùng cho\" và \"điện ảnh\" ⊂ \"chứa phim điện ảnh\" làm .91 không bao giờ tới được (cong2-dong-khong-toi-duoc)."
     },
     {
       "ma": "85235130",
