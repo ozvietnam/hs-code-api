@@ -4,7 +4,7 @@
   "nhom": "8536",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-853650",
@@ -346,6 +346,11 @@
       "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot1",
       "ngay": "2026-10-30",
       "lyDo": "(A) data/ho-so/ranh-gioi/853650.json:dieuKienNut[8536505] — checklist (1)/(2): chữ biểu có ngưỡng riêng cho vế 'công tắc điện cơ bật nhanh dùng cho dòng điện không quá 11 A'; giá trị DIEN_TU_HOAC_BAT_NHANH (nhanVi tu-vung: 'công tắc điện tử … hoặc điện cơ bật nhanh', KHÔNG có 11 A) mà không kèm biên ⇒ SUY RỘNG: công tắc bật nhanh 12–15 A sẽ vào .51 (MFN 0%) thay vì 8536506/.61 (15%) hoặc .96 (10%). LUAT-CHUNG (#577 gia cố) nêu đích danh 8536505 là ca HOAC (mỗi vế một nhóm VÀ, không gộp ngưỡng); ghi chú soạn 'lược đồ không có HOẶC' đã cũ. Nếu một giá trị liệt kê không tách được vế điện tử với vế bật nhanh thì DỪNG THIEU_KHOA_TU_VUNG, không ép. (B) checklist (4): precedents.json#85365061[0] (3387/TB-TCHQ, cảm biến từ xác định vị trí piston xi lanh → 8536.50.61 'mạng điện gia dụng') lệch cách đọc chữ biểu của bản nháp (máy sẽ đưa vào .51 hoặc .96) và bản nháp không nhắc tới ⇒ cần mục data/ho-so/hieu-chinh-tien-le.json (L1-4b, đang dựng) trước khi duyệt lại — CHỜ L1-4b. Các mục còn lại (.20, 8536503, .32/.33, .40, 8536506 <=500 V & <=20 A, .51/.61/.96 <16 A, .95) đạt."
+    },
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot6",
+      "ngay": "2026-11-01",
+      "lyDo": "(A) data/ho-so/ranh-gioi/853650.json:dieuKienNut[8536505] phương án 1 SUY RỘNG: [loaiCongTac DIEN_TU_HOAC_BAT_NHANH + tenLoai \"công tắc điện tử\"] không mang giới hạn của vế 1 (\"dùng cho mạch xoay chiều gồm mạch vào và mạch ra kết nối điều khiển bằng quang học\" — BO_VE) lẫn vế 2 (\"gồm một tranzito và một chip logic\" — cổng 5 tính \"phủ\" chỉ nhờ chữ đọc \"tranzito\" của giá trị, nhưng giá trị đọc ra từ \"công tắc điện tử\"/\"bán dẫn\" bất kỳ). QUY-TRINH 3.8 (quyết định GĐ vòng 4, nêu đích danh 8536505): \"gồm …\" là GIỚI HẠN, phải phủ. BO_VE theo định nghĩa LIET_KE KHÔNG chấp nhận ở đây: nhanVi của DIEN_TU_HOAC_BAT_NHANH (\"công tắc điện tử (bán dẫn, thyristor) hoặc điện cơ bật nhanh\") RỘNG hơn ba vế, không \"đúng bằng\"; chính lyDo BO_VE tự nhận hướng sai. Thử doiChieuPhanNhom: \"Công tắc điện tử cảm ứng dùng cho mạch một chiều 12 V, 2 A\" ⇒ .51 CO (MFN 0%) — theo chữ phải 8536509 .96 (MFN 10%) hoặc hỏi. Sửa: thiếu khoá ghép quang/xoay chiều và tranzito + chip logic ⇒ THIEU_KHOA_TU_VUNG + DỪNG, không BO_VE. (B) dieuKienNut[8536503] SUY RỘNG (từ vựng): giá trị NGAT_SOC_DONG đọc \"micro\\s?switch\", \"微动开关\" — đó là công tắc hành trình micro (snap-action, thuộc vế 3 của 8536505; 4012/TB-TCHQ công tắc điện cơ bật nhanh → 8536.50.51), không phải \"công tắc micro\" = \"microphone switches\" của 8536503. Thử: \"Micro switch 5A 250V\", \"Công tắc hành trình micro switch, 10 A\" ⇒ 8536503 (.32/.33, MFN 0/15%) thay vì .51 (0%). BO_VE bốn vế 8536503 dựa trên \"giá trị định nghĩa đúng bằng sáu vế\" không đứng khi cách đọc của giá trị khác định nghĩa. Người soạn không sửa được tu-vung ⇒ Claude sửa cachDoc NGAT_SOC_DONG rồi soạn lại; trước đó DỪNG. Phần đạt: .20, .40, .95 (loaiCongTac), biên < 16 A của .33/.51/.61/.96, 8536506 (<= 500 V, <= 20 A), HOAC giữ 11 A chỉ cho vế 3 (#645 đã sửa)."
     }
   ]
 }
