@@ -81,8 +81,11 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   // 4907 (tem bưu chính) chưa có sổ tay; 1509 đã có từ lô 059 (27/10), 4011 từ vòng soạn 20 nhóm 11/10.
   const x = rt.advise({ topHs: '49070029', candidates: [] });
   assert('nhóm chưa có sổ tay: vẫn có viTri + loaiKhac suy từ chữ số, trạng thái CHUA_CO_SO_TAY_CHO_NHOM', x.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && x.viTri && x.loaiKhac && x.loaiKhac.anhEmCoTen[0].hs === '49070021' && x.loaiKhac.anhEmCoTen[0].tang === '4907002' && !x.loaiKhac.anhEmCoTen[0].trich, JSON.stringify(x));
-  // Đợt 0A: 49070029 nằm dưới tiêu đề bị lược 4907002 → phạm vi đủ còn trừ các dòng có tên của nhóm 4907.
-  assert('4907: anhEmCoTen đủ hai tầng (49070021 tầng 4907002; 49070010, 49070050, 49070060 tầng 4907) + truTheoTang 2 tầng', ['49070010', '49070050', '49070060'].every((h) => x.loaiKhac.anhEmCoTen.some((a) => a.hs === h && a.tang === '4907')) && x.loaiKhac.truTheoTang.map((g) => g.nut).join() === '4907002,4907', JSON.stringify(x.loaiKhac));
+  // #725: tiêu đề 4907002 nay có tên nguyên văn biểu thuế ("Tem bưu chính, tem thuế…") → là điều kiện KHẲNG ĐỊNH; tầng nhóm
+  // 4907 không trừ 49070010/50/60 (khác nhánh). Trước đây (Đợt 0A, tiêu đề coi như bị lược) ba dòng này bị liệt là "trừ".
+  assert('4907 (#725): chỉ trừ 49070021; tầng 4907 phaiThuoc 4907002 + dieuKienTieuDe nguyên văn', x.loaiKhac.anhEmCoTen.map((a) => a.hs).join() === '49070021'
+    && x.loaiKhac.truTheoTang.map((g) => g.nut).join() === '4907002,4907' && x.loaiKhac.truTheoTang[1].tru.length === 0 && x.loaiKhac.truTheoTang[1].phaiThuoc?.id === '4907002'
+    && x.loaiKhac.dieuKienTieuDe.some((d) => d.id === '4907002' && /Tem bưu chính/.test(d.tenVi)), JSON.stringify(x.loaiKhac));
   const y = rt.advise({ topHs: '8504', candidates: [] });
   assert('mã 4 số: viTri là nhóm, không có loaiKhac', y.viTri.nut.startsWith('Nhóm 8504') && !y.loaiKhac);
   process.env.HS_SOTAY_RUNTIME = 'false';

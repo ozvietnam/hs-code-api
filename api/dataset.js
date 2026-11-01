@@ -339,7 +339,7 @@ module.exports = async function handler(req, res) {
       }
       const n = T.nodeOf(hs);
       if (!n) return res.status(404).json({ found: false, hs, message: 'Mã không có trong biểu thuế / cây' });
-      const nut = (x) => ({ id: x.id, cap: x.cap, ten: T.labelOf(x), tenVi: x.tenVi || null, tenEn: x.tenEn || null, suyRa: Boolean(x.suyRa), ...(x.cap === 8 ? { loaiKhac: Boolean(x.loaiKhac), gach: x.gach } : {}) });
+      const nut = (x) => ({ id: x.id, cap: x.cap, ten: T.labelOf(x), tenVi: x.tenVi || null, tenEn: x.tenEn || null, suyRa: Boolean(x.suyRa), ...(x.tenNguon ? { tenNguon: x.tenNguon, tenNguonLoai: 'NGUYEN_VAN' } : {}), ...(x.cap === 8 ? { loaiKhac: Boolean(x.loaiKhac), gach: x.gach } : {}) });
       const cha = n.parent ? T.nodeOf(n.parent) : null;
       const con = n.children.slice(0, 200).map((id) => nut(T.nodeOf(id)));
       const src = S.sourcesOf(n.id);
@@ -353,7 +353,7 @@ module.exports = async function handler(req, res) {
         con, ...(n.children.length > 200 ? { conConLai: n.children.length - 200 } : {}),
         ...(lk ? { loaiKhac: lk } : {}),
         nguon: src ? src.nguon : {},
-        ghiChu: 'Cấu trúc suy từ chữ số của mã (2 chương, 4 nhóm, 5–6 phân nhóm WCO, 7 tiêu đề quốc gia, 8 dòng). Nút suyRa=true là tiêu đề bị lược khi nhập biểu thuế: cấu trúc chắc, tên chưa có — không bịa. Nhãn nguồn: NGUYEN_VAN / DA_KIEM / AI_CHUA_KIEM.',
+        ghiChu: 'Cấu trúc suy từ chữ số của mã (2 chương, 4 nhóm, 5–6 phân nhóm WCO, 7 tiêu đề quốc gia, 8 dòng). Nút suyRa=true là tiêu đề bị lược khi nhập biểu thuế: cấu trúc chắc; tên có thì lấy nguyên văn biểu thuế Tổng cục (tenNguon), không có thì để null — không bịa. Phạm vi \"Loại khác\" đi theo dòng gạch của biểu (kể cả tiêu đề không mã). Nhãn nguồn: NGUYEN_VAN / DA_KIEM / AI_CHUA_KIEM.',
       });
     }
 
