@@ -4,7 +4,7 @@
   "nhom": "9503",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-950300",
@@ -401,6 +401,11 @@
       "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot4",
       "ngay": "2026-10-31",
       "lyDo": "(A) 950300.json:dong8[95030010] THU HẸP: vế MỞ \"và đồ chơi tương tự có bánh\" (EN \"and similar wheeled toys\") được \"phủ\" bằng giá trị tenLoai \"đồ chơi tương tự có bánh\" — bộ so chữ đòi dữ kiện có chữ \"tương tự\", điều mô tả hàng thật không bao giờ viết ⇒ giá trị chết, tương đương liệt kê đóng bốn tên còn lại (quy ước 392690 cấm). Thử: \"xe chòi chân bốn bánh cho trẻ em\", \"ô tô điện đồ chơi trẻ em có bánh, chạy pin\" ⇒ TRAI ở .10 ⇒ rơi .99 (20%) thay vì .10 (10%). Cổng 5 báo \"phủ\" vì chuỗi con có mặt — điểm mù của máy (ghi cho Claude chỉnh tach-ve/cổng 3: giá trị chữ tự do chứa \"tương tự\" không được tính là phủ vế mở). Làm gì: không dùng giá trị có \"tương tự\"; biểu diễn vế mở theo quy ước (bỏ liệt kê, giữ vế giới hạn \"có bánh\" bằng khoá có trong --tu-vung) — không có khoá đứng được ⇒ THIEU_KHOA_TU_VUNG / DUNG để GĐ chốt (cùng ca 761699 .40). Phần còn lại (.30 HOAC \"của chúng\", .91 hai mảng lồng, .50 \"đồ chơi xây dựng\", tầng r18723, cảnh báo cong2-dich-cua-chung-roi Búp bê ↔ Xe điện) người soát đã đối chiếu, đúng."
+    },
+    {
+      "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot5",
+      "ngay": "2026-11-01",
+      "lyDo": "(A) 950300.json:dong8[95030040] THU HẸP: chữ \"Các mô hình thu nhỏ theo tỷ lệ (\"scale\") và các mô hình giải trí tương tự, có hoặc không vận hành\" (EN \"Reduced size (\"scale\") models and similar recreational models, working or not\") có vế MỞ \"và các mô hình giải trí tương tự\" — đúng mẫu \"X và các loại tương tự\" của vòng 7 — nhưng bản nháp liệt kê ĐÓNG tenLoai TEN_LOAI [\"mô hình thu nhỏ theo tỷ lệ\",\"mô hình giải trí\"] (bỏ chữ \"tương tự\" để thành một tên đóng). Mô tả hàng thật hiếm khi có đủ âm tiết \"mô hình giải trí\" hay \"thu nhỏ theo tỷ lệ\". Thử trên đường đọc lúc chạy (docTenLoaiDayDu → doiChieuPhanNhom): \"Mô hình máy bay bằng nhựa, không vận hành\" ⇒ .40 MAU_THUAN; \"Mô hình ô tô thu nhỏ tỷ lệ 1:18 bằng hợp kim kẽm\" ⇒ .40 MAU_THUAN — chính hàng tiêu biểu của .40 (MFN 10%) bị loại, còn .99 (MFN 20%) ở lại. Cùng lớp lỗi với .10 đợt 4 (#706). Làm gì: viết vế mở bằng op TUONG_TU (QUY-TRINH 3.2, vòng 7): tenLoai TUONG_TU [\"mô hình thu nhỏ theo tỷ lệ\"] — hàng NÊU TÊN đứng trước cụm \"… tương tự\" là \"mô hình thu nhỏ theo tỷ lệ\"; \"mô hình giải trí\" là loại của hàng tương tự, không phải tên nêu riêng (nếu muốn giữ nó THOẢ tất định thì phải lý giải trong ghiChuSoan). \"có hoặc không vận hành\" không thu hẹp. Thử lại: mô hình máy bay ⇒ .40 CHƯA BIẾT (hỏi \"có thuộc loại tương tự … không?\"), không MAU_THUAN. Không khai chongLanTruc cho các cặp cong2-tuong-tu-chua-chot mới. Phần sửa .10 (HOAC TEN_LOAI/TUONG_TU+coBanh/xe của búp bê) và .30, .91, .50, r18723 đã soát: đạt. Ghi cho Claude: bộ tách vế (lib/ho-so/tach-ve.js) đọc cả cụm \"Các mô hình … và các mô hình giải trí tương tự\" là DAU nên cổng 5 không đòi phủ vế MO này."
     }
   ]
 }

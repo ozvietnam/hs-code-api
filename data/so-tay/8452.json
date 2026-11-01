@@ -146,19 +146,84 @@
   },
   {
    "hs": "84529011",
-   "dieuKien": "Phân nhóm 8452.90, nhóm dòng 8452.90.1x — thân trên/dưới máy; đế đỡ; bánh đà; che chắn dây đai; bàn đạp",
+   "dieuKien": "tên loại hàng: Thân trên hoặc thân dưới hoặc đế đỡ hoặc bánh đà hoặc bộ phận che chắn dây đai hoặc bàn đạp",
    "loaiKhac": false,
    "nguon": "tax.84529011",
    "trich": "84529011 - - - Thân trên và thân dưới máy; đế đỡ có hoặc không có khung; bánh đà; bộ phận che chắn dây đai; bàn đạp các loại",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Thân trên",
+      "thân dưới",
+      "đế đỡ",
+      "bánh đà",
+      "bộ phận che chắn dây đai",
+      "bàn đạp"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot5",
+     "ngay": "2026-11-01",
+     "bam": "20620ddc77e6c71de2922b0e68d6276ec38174ed6677d09339e23b59cdfe4c68"
+    }
+   }
   },
   {
    "hs": "84529012",
-   "dieuKien": "Phân nhóm 8452.90, nhóm dòng 8452.90.1x — bàn, tủ, chân máy, nắp và bộ phận của chúng",
+   "dieuKien": "(tên loại hàng: Bàn hoặc tủ hoặc chân máy hoặc nắp) hoặc (là bộ phận (không phải hàng hoàn chỉnh) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Bàn hoặc tủ hoặc chân máy hoặc nắp)",
    "loaiKhac": false,
    "nguon": "tax.84529012",
    "trich": "84529012 - - - Bàn, tủ, chân máy và nắp và các bộ phận của chúng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": [
+         "Bàn",
+         "tủ",
+         "chân máy",
+         "nắp"
+        ]
+       }
+      ],
+      [
+       {
+        "fact": "laBoPhan",
+        "op": "CO"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": [
+         "Bàn",
+         "tủ",
+         "chân máy",
+         "nắp"
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot5",
+     "ngay": "2026-11-01",
+     "bam": "20620ddc77e6c71de2922b0e68d6276ec38174ed6677d09339e23b59cdfe4c68"
+    }
+   }
   },
   {
    "hs": "84529019",
@@ -180,19 +245,84 @@
   },
   {
    "hs": "84529091",
-   "dieuKien": "Phân nhóm 8452.90, nhóm dòng 8452.90.9x — thân trên/dưới máy; đế đỡ; bánh đà; che chắn dây đai; bàn đạp",
+   "dieuKien": "tên loại hàng: Thân trên hoặc thân dưới hoặc đế đỡ hoặc bánh đà hoặc bộ phận che chắn dây đai hoặc bàn đạp",
    "loaiKhac": false,
    "nguon": "tax.84529091",
    "trich": "84529091 - - - Thân trên và thân dưới máy; đế đỡ có hoặc không có khung; bánh đà; bộ phận che chắn dây đai; bàn đạp các loại",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Thân trên",
+      "thân dưới",
+      "đế đỡ",
+      "bánh đà",
+      "bộ phận che chắn dây đai",
+      "bàn đạp"
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot5",
+     "ngay": "2026-11-01",
+     "bam": "20620ddc77e6c71de2922b0e68d6276ec38174ed6677d09339e23b59cdfe4c68"
+    }
+   }
   },
   {
    "hs": "84529092",
-   "dieuKien": "Phân nhóm 8452.90, nhóm dòng 8452.90.9x — bàn, tủ, chân máy, nắp và bộ phận của chúng",
+   "dieuKien": "(tên loại hàng: Bàn hoặc tủ hoặc chân máy hoặc nắp) hoặc (là bộ phận (không phải hàng hoàn chỉnh) và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): Bàn hoặc tủ hoặc chân máy hoặc nắp)",
    "loaiKhac": false,
    "nguon": "tax.84529092",
    "trich": "84529092 - - - Bàn, tủ, chân máy và nắp và các bộ phận của chúng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "CLAUDE_DUYET",
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": [
+         "Bàn",
+         "tủ",
+         "chân máy",
+         "nắp"
+        ]
+       }
+      ],
+      [
+       {
+        "fact": "laBoPhan",
+        "op": "CO"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": [
+         "Bàn",
+         "tủ",
+         "chân máy",
+         "nắp"
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot5",
+     "ngay": "2026-11-01",
+     "bam": "20620ddc77e6c71de2922b0e68d6276ec38174ed6677d09339e23b59cdfe4c68"
+    }
+   }
   },
   {
    "hs": "84529099",
@@ -385,5 +515,28 @@
     "phamViLoaiKhac"
    ]
   }
- }
+ },
+ "dieuKienNut": [
+  {
+   "id": "8452901",
+   "nguon": "tieuDe.8452901",
+   "trich": "8452901 Của máy thuộc phân nhóm 8452.10.00",
+   "dieuKienSo": [
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "máy thuộc phân nhóm 8452.10.00"
+    }
+   ],
+   "nguonLoai": "CLAUDE_DUYET",
+   "ranhGioi": {
+    "phienBan": "ranh-gioi@1",
+    "duyet": {
+     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soat-l1-4c-dot5",
+     "ngay": "2026-11-01",
+     "bam": "20620ddc77e6c71de2922b0e68d6276ec38174ed6677d09339e23b59cdfe4c68"
+    }
+   }
+  }
+ ]
 }
