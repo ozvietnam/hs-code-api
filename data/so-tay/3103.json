@@ -1,0 +1,275 @@
+{
+ "nhom": "3103",
+ "phamVi": {
+  "text": "Phân khoáng hoặc phân hoá học, chứa phospho (như superphosphat, xỉ bazơ, phosphat tự nhiên nung, canxi hydro orthophosphat...), trừ loại tạo thành hình dạng hoặc đóng gói quy định tại nhóm 31.05.",
+  "nguon": "nhom3103.nhom",
+  "trich": "Nhóm này chỉ áp dụng cho các mặt hàng sau, với điều kiện chúng không tạo thành dạng hoặc đóng gói như mô tả trong nhóm 31.05",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_phan_bon_khoang_hoac_hoa_hoc_chua_phospho_quy_dinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch31.chuong",
+   "trich": "Nhóm 31.03 chỉ áp dụng cho các mặt hàng dưới đây, với điều kiện không được tạo thành các hình dạng hoặc đóng gói theo cách thức đã được mô tả trong nhóm 31.05",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Canxi hydrogenorthophosphat chứa dưới 0,2% trọng lượng flo tính trên sản phẩm khô khan",
+   "sangNhom": "2835",
+   "nguon": "nhom3103.nhom",
+   "trich": "Canxi hydrogenorthophosphat chứa dưới 0,2% trọng lượng flo tính theo trọng lượng trên sản phẩm khô, khan, thuộc nhóm 28.35.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Sản phẩm chứa phosphat khác như phosphat natri",
+   "sangNhom": "2835",
+   "nguon": "nhom3103.nhom",
+   "trich": "nhóm này không bao gồm các sản phẩm chứa phosphat cho dù đã hoặc chưa xác định về mặt hóa học (như phosphat natri, nhóm 28.35)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là canxi hydrogenorthophosphat chứa dưới 0,2% trọng lượng flo khan nước?",
+   "neuCo": "2835",
+   "neuKhong": "3103",
+   "nguon": "nhom3103.nhom",
+   "trich": "Canxi hydrogenorthophosphat chứa dưới 0,2% trọng lượng flo tính theo trọng lượng trên sản phẩm khô, khan, thuộc nhóm 28.35.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là phosphat natri?",
+   "neuCo": "2835",
+   "neuKhong": "3103",
+   "nguon": "nhom3103.nhom",
+   "trich": "nhóm này không bao gồm các sản phẩm chứa phosphat cho dù đã hoặc chưa xác định về mặt hóa học (như phosphat natri, nhóm 28.35)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "310311",
+   "fact": "ham_luong_p2o5",
+   "op": ">=",
+   "value": 35,
+   "donVi": "%",
+   "nguon": "wco.310311",
+   "trich": "containing by weight 35% or more of diphosphorus pentaoxide (P2O5)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "31031110",
+   "dieuKien": "Loại dùng làm thức ăn chăn nuôi (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.31031110",
+   "trich": "31031110 - - - Loại dùng làm thức ăn chăn nuôi (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "31031190",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.31031190",
+   "trich": "31031190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "310311",
+    "truAnhEm": [
+     "31031110"
+    ],
+    "truDayDu": [
+     "31031110"
+    ],
+    "toTienCoTen": "310311",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "31031910",
+   "dieuKien": "Loại dùng làm thức ăn chăn nuôi (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.31031910",
+   "trich": "31031910 - - - Loại dùng làm thức ăn chăn nuôi (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "31031990",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.31031990",
+   "trich": "31031990 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "310319",
+    "truAnhEm": [
+     "31031910"
+    ],
+    "truDayDu": [
+     "31031910"
+    ],
+    "toTienCoTen": "310319",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "31039010",
+   "dieuKien": "Phân phosphat đã nung (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.31039010",
+   "trich": "31039010 - - Phân phosphat đã nung (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "31039090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.31039090",
+   "trich": "31039090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "310390",
+    "truAnhEm": [
+     "31039010"
+    ],
+    "truDayDu": [
+     "31039010"
+    ],
+    "toTienCoTen": "310390",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3103",
+    "cap": 4,
+    "cha": "31",
+    "tenVi": "Phân khoáng hoặc phân hóa học, có chứa phosphat (phân lân).",
+    "tenEn": "Fertilizers; mineral or chemical, phosphatic",
+    "suyRa": false
+   },
+   {
+    "id": "31031",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "3103",
+    "tenVi": "Supephosphat",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "310311",
+    "cap": 6,
+    "cha": "31031",
+    "tenVi": "Chứa diphosphorus pentaoxide (P2O5) từ 35% trở lên tính theo trọng lượng",
+    "tenEn": "Fertilizers, mineral or chemical; phosphatic, superphosphates, containing by weight 35% or more of diphosphorus pentaoxide (P2O5)",
+    "suyRa": false
+   },
+   {
+    "id": "31031110",
+    "cap": 8,
+    "cha": "310311",
+    "tenVi": "Loại dùng làm thức ăn chăn nuôi (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "31031190",
+    "cap": 8,
+    "cha": "310311",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "310319",
+    "cap": 6,
+    "cha": "31031",
+    "tenVi": "Loại khác",
+    "tenEn": "Fertilizers, mineral or chemical; phosphatic, superphosphates, other than containing by weight 35% or more of diphosphorus pentaoxide (P2O5)",
+    "suyRa": false
+   },
+   {
+    "id": "31031910",
+    "cap": 8,
+    "cha": "310319",
+    "tenVi": "Loại dùng làm thức ăn chăn nuôi (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "31031990",
+    "cap": 8,
+    "cha": "310319",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "310390",
+    "cap": 6,
+    "cha": "3103",
+    "tenVi": "Loại khác",
+    "tenEn": "Fertilizers, mineral or chemical; phosphatic, n.e.c. in heading no. 3103",
+    "suyRa": false
+   },
+   {
+    "id": "31039010",
+    "cap": 8,
+    "cha": "310390",
+    "tenVi": "Phân phosphat đã nung (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "31039090",
+    "cap": 8,
+    "cha": "310390",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch31.chuong",
+  "nhom3103.nhom",
+  "tax.31031110",
+  "tax.31031190",
+  "tax.31031910",
+  "tax.31031990",
+  "tax.31039010",
+  "tax.31039090",
+  "wco.310311"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:18:11.904Z",
+  "ms": 6
+ },
+ "kiemTra": {
+  "tong": 13,
+  "dat": 13,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
