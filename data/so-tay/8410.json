@@ -1,0 +1,192 @@
+{
+ "nhom": "8410",
+ "phamVi": {
+  "text": "Các loại tuabin thủy lực và bánh xe guồng nước thu động năng từ chuyển động của chất lỏng, và bộ phận của chúng.",
+  "nguon": "nhom8410.nhom",
+  "trich": "Nhóm này bao gồm các loại tuabin thủy lực và bánh xe guồng nước, chúng có thể tự thu được động năng từ năng lượng có được do sự chuyển động của khối chất lỏng hoặc chất lỏng chịu áp lực (ví dụ như dòng nước chảy hoặc thác nước, áp lực của nước, dầu hoặc các loại lưu chất đặc biệt).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_tuabin_thuy_luc_hoac_banh_xe_guong_nuoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8410.nhom",
+   "trich": "Nhóm này bao gồm các loại tuabin thủy lực và bánh xe guồng nước, chúng có thể tự thu được động năng từ năng lượng có được do sự chuyển động của khối chất lỏng hoặc chất lỏng chịu áp lực",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Guồng nước có gắn cánh quạt dùng cho tàu thủy",
+   "sangNhom": "8487",
+   "nguon": "nhom8410.nhom",
+   "trich": "Tuy có hình dáng bên ngoài giống nhau, nhưng loại guồng nước có gắn cánh quạt dùng cho tầu thủy không thuộc nhóm này (nhóm 84.87).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Máy đo tốc độ nước trong ngành thủy học",
+   "sangNhom": "9015",
+   "nguon": "nhom8410.nhom",
+   "trich": "Nhóm này cũng không gồm các máy đo tốc độ nước trong ngành thủy học (nhóm 90.15).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là guồng nước có gắn cánh quạt dùng cho tàu thủy không?",
+   "neuCo": "8487",
+   "neuKhong": "8410",
+   "nguon": "nhom8410.nhom",
+   "trich": "Tuy có hình dáng bên ngoài giống nhau, nhưng loại guồng nước có gắn cánh quạt dùng cho tầu thủy không thuộc nhóm này (nhóm 84.87).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là máy đo tốc độ nước trong ngành thủy học không?",
+   "neuCo": "9015",
+   "neuKhong": "8410",
+   "nguon": "nhom8410.nhom",
+   "trich": "Nhóm này cũng không gồm các máy đo tốc độ nước trong ngành thủy học (nhóm 90.15).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "841011",
+   "fact": "cong_suat",
+   "op": "<=",
+   "value": 1000,
+   "donVi": "kW",
+   "nguon": "wco.841011",
+   "trich": "841011 Turbines; hydraulic turbines and water wheels, of a power not exceeding 1000kW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "841013",
+   "fact": "cong_suat",
+   "op": ">",
+   "value": 10000,
+   "donVi": "kW",
+   "nguon": "wco.841013",
+   "trich": "841013 Turbines; hydraulic turbines and water wheels, of a power exceeding 10000kW",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "84101100",
+   "dieuKien": "Công suất không quá 1.000 kW",
+   "loaiKhac": false,
+   "nguon": "tax.84101100",
+   "trich": "84101100 - - Công suất không quá 1.000 kW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84101200",
+   "dieuKien": "Công suất trên 1.000 kW nhưng không quá 10.000 kW",
+   "loaiKhac": false,
+   "nguon": "tax.84101200",
+   "trich": "84101200 - - Công suất trên 1.000 kW nhưng không quá 10.000 kW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84101300",
+   "dieuKien": "Công suất trên 10.000 kW",
+   "loaiKhac": false,
+   "nguon": "tax.84101300",
+   "trich": "84101300 - - Công suất trên 10.000 kW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84109000",
+   "dieuKien": "Bộ phận, kể cả bộ điều chỉnh",
+   "loaiKhac": false,
+   "nguon": "tax.84109000",
+   "trich": "84109000 - Bộ phận, kể cả bộ điều chỉnh",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8410",
+    "cap": 4,
+    "cha": "84",
+    "tenVi": "Tua bin thủy lực, bánh xe guồng nước, và các bệ điều chỉnh của chúng.",
+    "tenEn": "Turbines; hydraulic water wheels and regulators therefor",
+    "suyRa": false
+   },
+   {
+    "id": "84101",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8410",
+    "tenVi": "Tua bin thủy lực và bánh xe guồng nước",
+    "tenEn": "Hydraulic turbines and water wheels",
+    "suyRa": true
+   },
+   {
+    "id": "84101100",
+    "cap": 8,
+    "cha": "84101",
+    "tenVi": "Công suất không quá 1.000 kW",
+    "tenEn": "Turbines; hydraulic turbines and water wheels, of a power not exceeding 1000kW",
+    "suyRa": false,
+    "laPhanNhom": "841011"
+   },
+   {
+    "id": "84101200",
+    "cap": 8,
+    "cha": "84101",
+    "tenVi": "Công suất trên 1.000 kW nhưng không quá 10.000 kW",
+    "tenEn": "Turbines; hydraulic turbines and water wheels, of a power exceeding 1000kW but not exceeding 10000kW",
+    "suyRa": false,
+    "laPhanNhom": "841012"
+   },
+   {
+    "id": "84101300",
+    "cap": 8,
+    "cha": "84101",
+    "tenVi": "Công suất trên 10.000 kW",
+    "tenEn": "Turbines; hydraulic turbines and water wheels, of a power exceeding 10000kW",
+    "suyRa": false,
+    "laPhanNhom": "841013"
+   },
+   {
+    "id": "84109000",
+    "cap": 8,
+    "cha": "8410",
+    "tenVi": "Bộ phận, kể cả bộ điều chỉnh",
+    "tenEn": "Turbines; parts of hydraulic turbines and water wheels, including regulators",
+    "suyRa": false,
+    "laPhanNhom": "841090"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8410.nhom",
+  "tax.84101100",
+  "tax.84101200",
+  "tax.84101300",
+  "tax.84109000",
+  "wco.841011",
+  "wco.841013"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T09:30:59.693Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 12,
+  "dat": 12,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
