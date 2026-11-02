@@ -1,0 +1,891 @@
+Số hoá ranh giới cho 30 phân nhóm 6 số (850120 850132 850133 850151 850152 850153 850161 850162 850172 850180 850212 850213 850220 850231 850239 850300 850421 850422 850423 850431 850432 850433 850434 850440 850450 850490 850590 850610 850660 850680). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lyDo thật, hoặc THIEU_KHOA_TU_VUNG. Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Không giải thích ngoài các khối json.
+
+=== GÓI PN6 850120 ===
+# 850120 — Động cơ vạn năng một chiều/xoay chiều có công suất trên 37,5 W
+
+850120 — Electric motors; universal AC/DC of an output exceeding 37.5W
+  [8501201] Công suất không quá 1 kW
+    85012012 Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    85012019 Loại khác  [LK]
+  [8501202] Công suất trên 1 kW
+    85012021 Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    85012029 Loại khác  [LK]
+
+- 8501201 TIEU_DE
+    tieuDe.8501201 [32 ký tự]: 8501201 Công suất không quá 1 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 1 kW"
+- 85012012 DONG8
+    tax.85012012 [86 ký tự]: 85012012 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+- 85012019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85012019 [24 ký tự]: 85012019 - - - Loại khác
+- 8501202 TIEU_DE
+    tieuDe.8501202 [27 ký tự]: 8501202 Công suất trên 1 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 1 kW"
+- 85012021 DONG8
+    tax.85012021 [86 ký tự]: 85012021 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+- 85012029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85012029 [24 ký tự]: 85012029 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850120; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850132 ===
+# 850132 — Công suất trên 750 W nhưng không quá 75 kW
+
+850132 — Electric motors and generators; DC, of an output exceeding 750W but not exceeding 75kW
+  [8501322] Công suất trên 750 W nhưng không quá 37,5 kW
+    85013221 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    85013224 Động cơ dùng cho xe của Chương 87
+    85013225 Động cơ khác
+    85013226 Máy phát điện
+  [8501323] Công suất trên 37,5 kW nhưng không quá 75 kW
+    85013231 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+    85013232 Động cơ khác
+    85013233 Máy phát điện
+
+- 8501322 TIEU_DE
+    tieuDe.8501322 [52 ký tự]: 8501322 Công suất trên 750 W nhưng không quá 37,5 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 750 W nhưng không quá 37,5 kW"
+- 85013221 DONG8
+    tax.85013221 [96 ký tự]: 85013221 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+- 85013224 DONG8
+    tax.85013224 [50 ký tự]: 85013224 - - - - Động cơ dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85013225 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85013225 [29 ký tự]: 85013225 - - - - Động cơ khác
+- 85013226 DONG8
+    tax.85013226 [30 ký tự]: 85013226 - - - - Máy phát điện
+- 8501323 TIEU_DE
+    tieuDe.8501323 [52 ký tự]: 8501323 Công suất trên 37,5 kW nhưng không quá 75 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 37,5 kW nhưng không quá 75 kW"
+- 85013231 DONG8
+    tax.85013231 [82 ký tự]: 85013231 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+    vế phải phủ (cổng 5): [GIỚI HẠN] "loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50"
+- 85013232 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85013232 [29 ký tự]: 85013232 - - - - Động cơ khác
+- 85013233 DONG8
+    tax.85013233 [30 ký tự]: 85013233 - - - - Máy phát điện
+
+Nguồn cấp phân nhóm: wco.850132; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850133 ===
+# 850133 — Công suất trên 75 kW nhưng không quá 375 kW
+
+850133 — Electric motors and generators; DC, of an output exceeding 75kW but not exceeding 375kW
+  85013310 Loại dùng cho xe của Chương 87
+  85013390 Loại khác  [LK]
+
+- 85013310 DONG8
+    tax.85013310 [45 ký tự]: 85013310 - - - Loại dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85013390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85013390 [24 ký tự]: 85013390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850133; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850151 ===
+# 850151 — Công suất không quá 750 W
+
+850151 — Electric motors; AC motors, multi-phase, of an output not exceeding 750W
+  85015111 Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+  85015119 Loại khác  [LK]
+
+- 85015111 DONG8
+    tax.85015111 [86 ký tự]: 85015111 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+- 85015119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85015119 [24 ký tự]: 85015119 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850151; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850152 ===
+# 850152 — Công suất trên 750 W nhưng không quá 75 kW
+
+850152 — Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW
+  [8501521] Công suất không quá 1 kW
+    85015211 Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    85015212 Loại dùng cho xe của Chương 87
+    85015219 Loại khác  [LK]
+  [8501522] Công suất trên 1 kW nhưng không quá 37,5 kW
+    85015221 Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    85015222 Loại dùng cho xe của Chương 87
+    85015229 Loại khác  [LK]
+  [8501523] Công suất trên 37,5 kW nhưng không quá 75 kW
+    85015231 Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+    85015232 Loại dùng cho xe của Chương 87
+    85015239 Loại khác  [LK]
+
+- 8501521 TIEU_DE
+    tieuDe.8501521 [32 ký tự]: 8501521 Công suất không quá 1 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 1 kW"
+- 85015211 DONG8
+    tax.85015211 [88 ký tự]: 85015211 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+- 85015212 DONG8
+    tax.85015212 [47 ký tự]: 85015212 - - - - Loại dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85015219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85015219 [26 ký tự]: 85015219 - - - - Loại khác
+- 8501522 TIEU_DE
+    tieuDe.8501522 [51 ký tự]: 8501522 Công suất trên 1 kW nhưng không quá 37,5 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 1 kW nhưng không quá 37,5 kW"
+- 85015221 DONG8
+    tax.85015221 [88 ký tự]: 85015221 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+- 85015222 DONG8
+    tax.85015222 [47 ký tự]: 85015222 - - - - Loại dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85015229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85015229 [26 ký tự]: 85015229 - - - - Loại khác
+- 8501523 TIEU_DE
+    tieuDe.8501523 [52 ký tự]: 8501523 Công suất trên 37,5 kW nhưng không quá 75 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 37,5 kW nhưng không quá 75 kW"
+- 85015231 DONG8
+    tax.85015231 [74 ký tự]: 85015231 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50"
+- 85015232 DONG8
+    tax.85015232 [47 ký tự]: 85015232 - - - - Loại dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85015239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85015239 [26 ký tự]: 85015239 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850152; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850153 ===
+# 850153 — Công suất trên 75 kW
+
+850153 — Electric motors; AC motors, multi-phase, of an output exceeding 75kW
+  85015310 Loại dùng cho xe của Chương 87
+  85015390 Loại khác  [LK]
+
+- 85015310 DONG8
+    tax.85015310 [45 ký tự]: 85015310 - - - Loại dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85015390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85015390 [24 ký tự]: 85015390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850153; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850161 ===
+# 850161 — Công suất không quá 75 kVA
+
+850161 — Generators; AC generators, (alternators), other than photovoltaic generators, of an output not exceeding 75kVA
+  85016110 Công suất không quá 12,5 kVA
+  85016120 Công suất trên 12,5 kVA
+
+- 85016110 DONG8
+    tax.85016110 [43 ký tự]: 85016110 - - - Công suất không quá 12,5 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 12,5 kVA"
+- 85016120 DONG8
+    tax.85016120 [38 ký tự]: 85016120 - - - Công suất trên 12,5 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 12,5 kVA"
+
+Nguồn cấp phân nhóm: wco.850161; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850162 ===
+# 850162 — Công suất trên 75 kVA nhưng không quá 375 kVA
+
+850162 — Electric generators; AC generators, (alternators), other than photovoltaic generators, of an output exceeding 75kVA but not exceeding 375kVA
+  85016210 Công suất trên 75 kVA nhưng không quá 150 kVA
+  85016220 Công suất trên 150 kVA nhưng không quá 375 kVA
+
+- 85016210 DONG8
+    tax.85016210 [60 ký tự]: 85016210 - - - Công suất trên 75 kVA nhưng không quá 150 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 75 kVA nhưng không quá 150 kVA"
+- 85016220 DONG8
+    tax.85016220 [61 ký tự]: 85016220 - - - Công suất trên 150 kVA nhưng không quá 375 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 150 kVA nhưng không quá 375 kVA"
+
+Nguồn cấp phân nhóm: wco.850162; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850172 ===
+# 850172 — Công suất trên 50 W
+
+850172 — Electric generators; photovoltaic DC generators, of an output exceeding 50W
+  85017210 Công suất không quá 750 W
+  85017220 Công suất trên 750 W nhưng không quá 37,5 kW
+  85017230 Công suất trên 37,5 kW nhưng không quá 75 kW
+  85017240 Công suất trên 75 kW
+
+- 85017210 DONG8
+    tax.85017210 [40 ký tự]: 85017210 - - - Công suất không quá 750 W
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 750 W"
+- 85017220 DONG8
+    tax.85017220 [59 ký tự]: 85017220 - - - Công suất trên 750 W nhưng không quá 37,5 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 750 W nhưng không quá 37,5 kW"
+- 85017230 DONG8
+    tax.85017230 [59 ký tự]: 85017230 - - - Công suất trên 37,5 kW nhưng không quá 75 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 37,5 kW nhưng không quá 75 kW"
+- 85017240 DONG8
+    tax.85017240 [35 ký tự]: 85017240 - - - Công suất trên 75 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 75 kW"
+
+Nguồn cấp phân nhóm: wco.850172; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850180 ===
+# 850180 — Máy phát quang điện xoay chiều
+
+850180 — Electric generators; (excluding generating sets), photovoltaic AC generators (alternators)
+  85018010 Công suất không quá 75 kVA
+  85018020 Công suất trên 75 kVA nhưng không quá 375 kVA
+  85018030 Công suất trên 375 kVA nhưng không quá 750 kVA
+  85018040 Công suất trên 750 kVA
+
+- 85018010 DONG8
+    tax.85018010 [39 ký tự]: 85018010 - - Công suất không quá 75 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 75 kVA"
+- 85018020 DONG8
+    tax.85018020 [58 ký tự]: 85018020 - - Công suất trên 75 kVA nhưng không quá 375 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 75 kVA nhưng không quá 375 kVA"
+- 85018030 DONG8
+    tax.85018030 [59 ký tự]: 85018030 - - Công suất trên 375 kVA nhưng không quá 750 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 375 kVA nhưng không quá 750 kVA"
+- 85018040 DONG8
+    tax.85018040 [35 ký tự]: 85018040 - - Công suất trên 750 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 750 kVA"
+
+Nguồn cấp phân nhóm: wco.850180; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850212 ===
+# 850212 — Công suất trên 75 kVA nhưng không quá 375 kVA
+
+850212 — Electric generating sets; with compression-ignition internal combustion piston engines (diesel or semi-diesel engines), of an output exceeding 75kVA but not exceeding 375kVA
+  85021210 Công suất trên 75 kVA nhưng không quá 125 kVA
+  85021220 Công suất trên 125 kVA nhưng không quá 375 kVA
+
+- 85021210 DONG8
+    tax.85021210 [60 ký tự]: 85021210 - - - Công suất trên 75 kVA nhưng không quá 125 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 75 kVA nhưng không quá 125 kVA"
+- 85021220 DONG8
+    tax.85021220 [61 ký tự]: 85021220 - - - Công suất trên 125 kVA nhưng không quá 375 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 125 kVA nhưng không quá 375 kVA"
+
+Nguồn cấp phân nhóm: wco.850212; chú giải: nhom8502.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850213 ===
+# 850213 — Công suất trên 375 kVA
+
+850213 — Electric generating sets; with compression-ignition internal combustion piston engines (diesel or semi-diesel engines), of an output exceeding 375kVA
+  85021320 Công suất từ 12.500 kVA trở lên
+  85021390 Loại khác  [LK]
+
+- 85021320 DONG8
+    tax.85021320 [46 ký tự]: 85021320 - - - Công suất từ 12.500 kVA trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất từ 12.500 kVA trở lên"
+- 85021390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85021390 [24 ký tự]: 85021390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850213; chú giải: nhom8502.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850220 ===
+# 850220 — Tổ máy phát điện với động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+
+850220 — Electric generating sets; with spark-ignition internal combustion piston engines
+  85022010 Công suất không quá 75 kVA
+  85022020 Công suất trên 75 kVA nhưng không quá 100 kVA
+  85022030 Công suất trên 100 kVA nhưng không quá 10.000 kVA
+  [8502204] Công suất trên 10.000 kVA
+    85022042 Công suất từ 12.500 kVA trở lên
+    85022049 Loại khác  [LK]
+
+- 85022010 DONG8
+    tax.85022010 [39 ký tự]: 85022010 - - Công suất không quá 75 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 75 kVA"
+- 85022020 DONG8
+    tax.85022020 [58 ký tự]: 85022020 - - Công suất trên 75 kVA nhưng không quá 100 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 75 kVA nhưng không quá 100 kVA"
+- 85022030 DONG8
+    tax.85022030 [62 ký tự]: 85022030 - - Công suất trên 100 kVA nhưng không quá 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 100 kVA nhưng không quá 10.000 kVA"
+- 8502204 TIEU_DE
+    tieuDe.8502204 [33 ký tự]: 8502204 Công suất trên 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 10.000 kVA"
+- 85022042 DONG8
+    tax.85022042 [46 ký tự]: 85022042 - - - Công suất từ 12.500 kVA trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất từ 12.500 kVA trở lên"
+- 85022049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85022049 [24 ký tự]: 85022049 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850220; chú giải: nhom8502.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850231 ===
+# 850231 — Chạy bằng sức gió
+
+850231 — Electric generating sets; wind-powered, (excluding those with spark-ignition or compression-ignition internal combustion piston engines)
+  85023110 Công suất không quá 10.000 kVA
+  85023120 Công suất trên 10.000 kVA
+
+- 85023110 DONG8
+    tax.85023110 [45 ký tự]: 85023110 - - - Công suất không quá 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 10.000 kVA"
+- 85023120 DONG8
+    tax.85023120 [40 ký tự]: 85023120 - - - Công suất trên 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 10.000 kVA"
+
+Nguồn cấp phân nhóm: wco.850231; chú giải: nhom8502.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850239 ===
+# 850239 — Loại khác
+
+850239 — Electric generating sets; (excluding those with spark-ignition or compression-ignition internal combustion piston engines), other than wind powered
+  85023910 Công suất không quá 10 kVA
+  85023920 Công suất trên 10 kVA nhưng không quá 10.000 kVA
+  [8502393] Công suất trên 10.000 kVA
+    85023932 Công suất từ 12.500 kVA trở lên
+    85023939 Loại khác  [LK]
+
+- 85023910 DONG8
+    tax.85023910 [41 ký tự]: 85023910 - - - Công suất không quá 10 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 10 kVA"
+- 85023920 DONG8
+    tax.85023920 [63 ký tự]: 85023920 - - - Công suất trên 10 kVA nhưng không quá 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 10 kVA nhưng không quá 10.000 kVA"
+- 8502393 TIEU_DE
+    tieuDe.8502393 [33 ký tự]: 8502393 Công suất trên 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 10.000 kVA"
+- 85023932 DONG8
+    tax.85023932 [48 ký tự]: 85023932 - - - - Công suất từ 12.500 kVA trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất từ 12.500 kVA trở lên"
+- 85023939 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85023939 [26 ký tự]: 85023939 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850239; chú giải: nhom8502.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850300 ===
+# 850300 — Các bộ phận chỉ dùng hoặc chủ yếu dùng cho các loại máy thuộc nhóm 85.01 hoặc 85.02.
+
+NHÓM 8503 — Các bộ phận chỉ dùng hoặc chủ yếu dùng cho các loại máy thuộc nhóm 85.01 hoặc 85.02.
+  85030020 Bộ phận của máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02, công suất từ 12.500 kVA trở lên
+  85030090 Loại khác  [LK]
+
+- 85030020 DONG8
+    tax.85030020 [122 ký tự]: 85030020 - Bộ phận của máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02, công suất từ 12.500 kVA trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của máy phát điện (kể cả tổ máy phát điện) thuộc nhóm 85.01 hoặc 85.02" · [GIỚI HẠN] "công suất từ 12.500 kVA trở lên"
+- 85030090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85030090 [20 ký tự]: 85030090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.850300; chú giải: nhom8503.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850421 ===
+# 850421 — Có công suất danh định không quá 650 kVA
+
+850421 — Electrical transformers; liquid dielectric, having a power handling capacity not exceeding 650kVA
+  [8504211] Máy ổn áp từng nấc (biến áp tự ngẫu); máy biến đổi đo lường (1) có công suất danh định không quá 5 kVA
+    85042111 Máy biến đổi đo lường (1) loại công suất danh định không quá 1 kVA và đầu điện áp cao từ 110 kV trở lên (SEN)
+    85042119 Loại khác (SEN)  [LK]
+  [8504219] Loại khác
+    85042192 Có công suất danh định trên 10 kVA và đầu điện áp cao từ 110 kV trở lên (SEN)
+    85042193 Có công suất danh định trên 10 kVA và đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (SEN)
+    85042199 Loại khác  [LK]
+
+- 8504211 TIEU_DE
+    tieuDe.8504211 [110 ký tự]: 8504211 Máy ổn áp từng nấc (biến áp tự ngẫu); máy biến đổi đo lường (1) có công suất danh định không quá 5 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất danh định không quá 5 kVA"
+- 85042111 DONG8
+    tax.85042111 [126 ký tự]: 85042111 - - - - Máy biến đổi đo lường (1) loại công suất danh định không quá 1 kVA và đầu điện áp cao từ 110 kV trở lên (SEN)
+    sen.85042111 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "công suất danh định không quá 1 kVA và đầu" · [GIỚI HẠN] "điện áp cao từ 110 kV trở lên"
+- 85042119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85042119 [32 ký tự]: 85042119 - - - - Loại khác (SEN)
+    sen.85042119 [749 ký tự]: MÁY ỔN ÁP TỪNG NẤC (BIẾN ÁP TỰ NGẪU) Đây là các biến áp tự ngẫu loại ngâm dầu được dùng để điều chỉnh điện áp theo từng nấc. Các đặc điểm tiêu chuẩn bao gồm: bể chứa dầu kín, thiết bị xả áp, ống cách điện, trục đấu nối khối thiết bị, bộ chỉ thị mức dầu, van xả,... 1. Sơn polyeste chịu ăn mòn trong các điều kiện môi trường khắc nghiệt. 2. Vỏ thép không gỉ 3. Thùng chứa dầu kín có thiết bị xả áp để thoát các loại khí sinh ra trong quá trình hoạt động. 4. Thiết bị chống sét bằng biến trở oxít kim loại (MOV). 5. Bộ chỉ thị mức dầu để xác định mức dầu so với mức nền. 6. Tụ điện động cơ của hộp điều khiển 7. Phích cắm phân cực đơn 8. Khối đầu nối có nắp che 9. Bảng điều khiển 10. Cuộn dây và bộ chuyển đổi đầu nối điện 11. Ống cách điện
+- 8504219 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8504219 [17 ký tự]: 8504219 Loại khác
+- 85042192 DONG8
+    tax.85042192 [94 ký tự]: 85042192 - - - - Có công suất danh định trên 10 kVA và đầu điện áp cao từ 110 kV trở lên (SEN)
+    sen.85042192 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 10 kVA và đầu" · [GIỚI HẠN] "điện áp cao từ 110 kV trở lên"
+- 85042193 DONG8
+    tax.85042193 [112 ký tự]: 85042193 - - - - Có công suất danh định trên 10 kVA và đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (SEN)
+    sen.85042193 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 10 kVA và đầu" · [GIỚI HẠN] "điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV"
+- 85042199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85042199 [26 ký tự]: 85042199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850421; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850422 ===
+# 850422 — Có công suất danh định trên 650 kVA nhưng không quá 10.000 kVA
+
+850422 — Electrical transformers; liquid dielectric, having a power handling capacity exceeding 650kVA but not exceeding 10,000kVA
+  [8504221] Máy ổn áp từng nấc (biến áp tự ngẫu)
+    85042211 Đầu điện áp cao từ 66 kV trở lên (SEN)
+    85042219 Loại khác (SEN)  [LK]
+  [8504229] Loại khác
+    85042292 Đầu điện áp cao từ 110 kV trở lên (SEN)
+    85042293 Đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (SEN)
+    85042299 Loại khác  [LK]
+
+- 8504221 TIEU_DE
+    tieuDe.8504221 [44 ký tự]: 8504221 Máy ổn áp từng nấc (biến áp tự ngẫu)
+- 85042211 DONG8
+    tax.85042211 [55 ký tự]: 85042211 - - - - Đầu điện áp cao từ 66 kV trở lên (SEN)
+    sen.85042211 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "điện áp cao từ 66 kV trở lên"
+- 85042219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85042219 [32 ký tự]: 85042219 - - - - Loại khác (SEN)
+    sen.85042219 [749 ký tự]: MÁY ỔN ÁP TỪNG NẤC (BIẾN ÁP TỰ NGẪU) Đây là các biến áp tự ngẫu loại ngâm dầu được dùng để điều chỉnh điện áp theo từng nấc. Các đặc điểm tiêu chuẩn bao gồm: bể chứa dầu kín, thiết bị xả áp, ống cách điện, trục đấu nối khối thiết bị, bộ chỉ thị mức dầu, van xả,... 1. Sơn polyeste chịu ăn mòn trong các điều kiện môi trường khắc nghiệt. 2. Vỏ thép không gỉ 3. Thùng chứa dầu kín có thiết bị xả áp để thoát các loại khí sinh ra trong quá trình hoạt động. 4. Thiết bị chống sét bằng biến trở oxít kim loại (MOV). 5. Bộ chỉ thị mức dầu để xác định mức dầu so với mức nền. 6. Tụ điện động cơ của hộp điều khiển 7. Phích cắm phân cực đơn 8. Khối đầu nối có nắp che 9. Bảng điều khiển 10. Cuộn dây và bộ chuyển đổi đầu nối điện 11. Ống cách điện
+- 8504229 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8504229 [17 ký tự]: 8504229 Loại khác
+- 85042292 DONG8
+    tax.85042292 [56 ký tự]: 85042292 - - - - Đầu điện áp cao từ 110 kV trở lên (SEN)
+    sen.85042292 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "điện áp cao từ 110 kV trở lên"
+- 85042293 DONG8
+    tax.85042293 [74 ký tự]: 85042293 - - - - Đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (SEN)
+    sen.85042293 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV"
+- 85042299 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85042299 [26 ký tự]: 85042299 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850422; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850423 ===
+# 850423 — Có công suất danh định trên 10.000 kVA
+
+850423 — Electrical transformers; liquid dielectric, having a power handling capacity exceeding 10,000kVA
+  85042310 Có công suất danh định không quá 15.000 kVA
+  [8504232] Có công suất danh định trên 15.000 kVA
+    85042321 Không quá 20.000 kVA
+    85042322 Trên 20.000 kVA nhưng không quá 30.000 kVA
+    85042329 Loại khác  [LK]
+
+- 85042310 DONG8
+    tax.85042310 [58 ký tự]: 85042310 - - - Có công suất danh định không quá 15.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định không quá 15.000 kVA"
+- 8504232 TIEU_DE
+    tieuDe.8504232 [46 ký tự]: 8504232 Có công suất danh định trên 15.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 15.000 kVA"
+- 85042321 DONG8
+    tax.85042321 [37 ký tự]: 85042321 - - - - Không quá 20.000 kVA
+- 85042322 DONG8
+    tax.85042322 [59 ký tự]: 85042322 - - - - Trên 20.000 kVA nhưng không quá 30.000 kVA
+- 85042329 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85042329 [26 ký tự]: 85042329 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850423; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850431 ===
+# 850431 — Có công suất danh định không quá 1 kVA
+
+850431 — Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA
+  [8504311] Máy biến áp đo lường
+    85043111 Điện áp từ 110 kV trở lên
+    85043112 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+    85043113 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+    85043119 Loại khác  [LK]
+  [8504312] Máy biến dòng đo lường
+    [850431~r14985] Dùng cho đường dây có điện áp từ 110 kV trở lên  (tầng không mã, biểu thuế r14985, gạch 4)
+      85043121 Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)  (gạch 5)
+      85043122 Loại khác  [LK]  (gạch 5)
+    85043123 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+    85043124 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+    85043129 Loại khác  [LK]
+  85043130 Máy biến áp quét về (biến áp tần số quét ngược) (SEN)
+  85043140 Máy biến điện trung tần
+  [8504319] Loại khác
+    85043191 Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+    85043192 Biến áp thích ứng khác (SEN)
+    85043193 Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)
+    85043199 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    850431~r14985 (gạch 4) "Dùng cho đường dây có điện áp từ 110 kV trở lên:" — dòng dưới: 85043121, 85043122
+
+- 8504311 TIEU_DE
+    tieuDe.8504311 [28 ký tự]: 8504311 Máy biến áp đo lường
+- 85043111 DONG8
+    tax.85043111 [42 ký tự]: 85043111 - - - - Điện áp từ 110 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 110 kV trở lên"
+- 85043112 DONG8
+    tax.85043112 [60 ký tự]: 85043112 - - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 66 kV trở lên, nhưng dưới 110 kV"
+- 85043113 DONG8
+    tax.85043113 [58 ký tự]: 85043113 - - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 1 kV trở lên, nhưng dưới 66 kV"
+- 85043119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043119 [26 ký tự]: 85043119 - - - - Loại khác
+- 8504312 TIEU_DE
+    tieuDe.8504312 [30 ký tự]: 8504312 Máy biến dòng đo lường
+- 850431~r14985 TIEU_DE
+    tieuDe.850431~r14985 [61 ký tự]: 850431~r14985 Dùng cho đường dây có điện áp từ 110 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho đường dây" · [GIỚI HẠN] "có điện áp từ 110 kV trở lên"
+- 85043121 DONG8
+    tax.85043121 [95 ký tự]: 85043121 - - - - - Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)
+    sen.85043121 [696 ký tự]: MÁY BIẾN DÒNG DẠNG VÒNG DÙNG CHO ĐƯỜNG DÂY CÓ ĐIỆN ÁP KHÔNG QUÁ 220 kV Trong kỹ thuật điện, máy biến dòng được sử dụng để đo dòng điện. Máy biến dòng cùng với máy biến áp (máy biến thế), được biết đến như là các máy biến điện dùng cho thiết bị đo lường. Khi dòng điện trong mạch quá cao để nối trực tiếp đến thiết bị đo lường, máy biến dòng sẽ cung cấp dòng điện đã giảm với tỷ lệ chính xác cho các thiết bị đo và ghi. Máy biến dòng cũng cách ly các thiết bị đo khỏi điện áp rất cao trong mạch cần kiểm soát. Máy biến dòng cũng được sử dụng phổ biến việc đo và trong các rơle bảo vệ trong công nghiệp điện. Một ví dụ điển hình của máy biến dòng đo dải đơn điện áp thấp là máy biến dòng dạng vòng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho đường dây" · [GIỚI HẠN] "có điện áp không quá 220 kV"
+- 85043122 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043122 [28 ký tự]: 85043122 - - - - - Loại khác
+- 85043123 DONG8
+    tax.85043123 [60 ký tự]: 85043123 - - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 66 kV trở lên, nhưng dưới 110 kV"
+- 85043124 DONG8
+    tax.85043124 [58 ký tự]: 85043124 - - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 1 kV trở lên, nhưng dưới 66 kV"
+- 85043129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043129 [26 ký tự]: 85043129 - - - - Loại khác
+- 85043130 DONG8
+    tax.85043130 [68 ký tự]: 85043130 - - - Máy biến áp quét về (biến áp tần số quét ngược) (SEN)
+    sen.85043130 [331 ký tự]: MÁY BIẾN ÁP QUÉT VỀ (BIẾN ÁP TẦN SỐ QUÉT NGƯỢC) Biến áp quét về được sử dụng trong thiết bị thu truyền hình để cung cấp điện áp hồi lưu theo chiều ngang, mức điện áp cao hơn cho điện cực dương thứ hai của đèn hình, và điện áp mảnh cho chỉnh lưu cao áp. Biến áp quét về cũng được gọi là biến áp đầu ra ngang hay biến áp quét ngang.
+- 85043140 DONG8
+    tax.85043140 [38 ký tự]: 85043140 - - - Máy biến điện trung tần
+- 8504319 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8504319 [17 ký tự]: 8504319 Loại khác
+- 85043191 DONG8
+    tax.85043191 [89 ký tự]: 85043191 - - - - Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự"
+- 85043192 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85043192 [45 ký tự]: 85043192 - - - - Biến áp thích ứng khác (SEN)
+    sen.85043192 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043193 DONG8
+    tax.85043193 [130 ký tự]: 85043193 - - - - Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)
+    sen.85043193 [515 ký tự]: MÁY BIẾN ÁP TĂNG/GIẢM TỪNG NẤC (STEP UP/DOWN TRANSFORMERS); MÁY ĐIỀU CHỈNH ĐIỆN ÁP TRƯỢT (SLIDE REGULATORS) Máy biến áp tăng/giảm từng nấc và máy điều chỉnh điện áp trượt là các máy biến áp có đầu vào không ổn định trong các dải điện áp nhất định và có đầu ra là các điện áp nhất định mà có thể được điều chỉnh bằng tay. Máy ổn áp là các máy biến áp có đầu vào không ổn định trong các dải điện áp nhất định và có đầu ra là các điện áp cố định mà có thể được điều chỉnh bằng thiết bị điện tử kết nối với điện áp vào.
+- 85043199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043199 [26 ký tự]: 85043199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850431; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850432 ===
+# 850432 — Công suất danh định trên 1 kVA nhưng không quá 16 kVA
+
+850432 — Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA
+  [8504321] Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA
+    85043211 Biến áp thích ứng (SEN)
+    85043219 Loại khác  [LK]
+  85043220 Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự  [LK có điều kiện]
+  85043230 Loại khác, tần số tối thiểu 3 MHz  [LK có điều kiện]
+  [8504324] Loại khác, có công suất danh định không quá 10 kVA
+    85043241 Biến áp thích ứng (SEN)
+    85043249 Loại khác  [LK]
+  [8504325] Loại khác, có công suất danh định trên 10 kVA
+    85043251 Biến áp thích ứng (SEN)
+    85043259 Loại khác  [LK]
+
+- 8504321 TIEU_DE
+    tieuDe.8504321 [96 ký tự]: 8504321 Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "công suất danh định không quá 5 kVA"
+- 85043211 DONG8
+    tax.85043211 [40 ký tự]: 85043211 - - - - Biến áp thích ứng (SEN)
+    sen.85043211 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043219 [26 ký tự]: 85043219 - - - - Loại khác
+- 85043220 DONG8
+    tax.85043220 [97 ký tự]: 85043220 - - - Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự"
+- 85043230 DONG8
+    tax.85043230 [48 ký tự]: 85043230 - - - Loại khác, tần số tối thiểu 3 MHz
+    vế phải phủ (cổng 5): [GIỚI HẠN] "tần số tối thiểu 3 MHz"
+- 8504324 TIEU_DE
+    tieuDe.8504324 [58 ký tự]: 8504324 Loại khác, có công suất danh định không quá 10 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất danh định không quá 10 kVA"
+- 85043241 DONG8
+    tax.85043241 [40 ký tự]: 85043241 - - - - Biến áp thích ứng (SEN)
+    sen.85043241 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043249 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043249 [26 ký tự]: 85043249 - - - - Loại khác
+- 8504325 TIEU_DE
+    tieuDe.8504325 [53 ký tự]: 8504325 Loại khác, có công suất danh định trên 10 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất danh định trên 10 kVA"
+- 85043251 DONG8
+    tax.85043251 [40 ký tự]: 85043251 - - - - Biến áp thích ứng (SEN)
+    sen.85043251 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043259 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043259 [26 ký tự]: 85043259 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850432; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850433 ===
+# 850433 — Có công suất danh định trên 16 kVA nhưng không quá 500 kVA
+
+850433 — Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 16kVA but not exceeding 500kVA
+  [8504331] Có đầu điện áp cao từ 66 kV trở lên
+    85043311 Biến áp thích ứng (SEN)
+    85043319 Loại khác (SEN)  [LK]
+  [8504339] Loại khác
+    85043391 Biến áp thích ứng (SEN)
+    85043399 Loại khác  [LK]
+
+- 8504331 TIEU_DE
+    tieuDe.8504331 [43 ký tự]: 8504331 Có đầu điện áp cao từ 66 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đầu" · [GIỚI HẠN] "điện áp cao từ 66 kV trở lên"
+- 85043311 DONG8
+    tax.85043311 [40 ký tự]: 85043311 - - - - Biến áp thích ứng (SEN)
+    sen.85043311 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043319 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043319 [32 ký tự]: 85043319 - - - - Loại khác (SEN)
+    sen.85043319 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 8504339 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8504339 [17 ký tự]: 8504339 Loại khác
+- 85043391 DONG8
+    tax.85043391 [40 ký tự]: 85043391 - - - - Biến áp thích ứng (SEN)
+    sen.85043391 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043399 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043399 [26 ký tự]: 85043399 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850433; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850434 ===
+# 850434 — Có công suất danh định trên 500 kVA
+
+850434 — Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA
+  [8504341] Có công suất danh định không quá 15.000 kVA
+    [850434~r15019] Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên  (tầng không mã, biểu thuế r15019, gạch 4)
+      85043411 Biến áp thích ứng (SEN)  (gạch 5)
+      85043412 Máy biến áp loại khô phòng nổ (SEN)  (gạch 5)
+      85043413 Loại khác (SEN)  [LK]  (gạch 5)
+    [850434~r15023] Loại khác  (tầng không mã, biểu thuế r15023, gạch 4)
+      85043414 Biến áp thích ứng (SEN)  (gạch 5)
+      85043415 Máy biến áp loại khô phòng nổ  (gạch 5)
+      85043419 Loại khác  [LK]  (gạch 5)
+  [8504342] Có công suất danh định trên 15.000 kVA
+    [850434~r15028] Có đầu điện áp cao từ 66 kV trở lên  (tầng không mã, biểu thuế r15028, gạch 4)
+      85043422 Biến áp thích ứng (SEN)  (gạch 5)
+      85043423 Máy biến áp loại khô phòng nổ (SEN)  (gạch 5)
+      85043424 Loại khác (SEN)  [LK]  (gạch 5)
+    [850434~r15032] Loại khác  (tầng không mã, biểu thuế r15032, gạch 4)
+      85043425 Biến áp thích ứng (SEN)  (gạch 5)
+      85043426 Máy biến áp loại khô phòng nổ  (gạch 5)
+      85043429 Loại khác  [LK]  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    850434~r15019 (gạch 4) "Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên:" — dòng dưới: 85043411, 85043412, 85043413
+    850434~r15023 (gạch 4) "Loại khác:" — dòng dưới: 85043414, 85043415, 85043419
+    850434~r15028 (gạch 4) "Có đầu điện áp cao từ 66 kV trở lên:" — dòng dưới: 85043422, 85043423, 85043424
+    850434~r15032 (gạch 4) "Loại khác:" — dòng dưới: 85043425, 85043426, 85043429
+
+- 8504341 TIEU_DE
+    tieuDe.8504341 [51 ký tự]: 8504341 Có công suất danh định không quá 15.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định không quá 15.000 kVA"
+- 850434~r15019 TIEU_DE
+    tieuDe.850434~r15019 [88 ký tự]: 850434~r15019 Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 10.000 kVA và đầu" · [GIỚI HẠN] "điện áp cao từ 66 kV trở lên"
+- 85043411 DONG8
+    tax.85043411 [42 ký tự]: 85043411 - - - - - Biến áp thích ứng (SEN)
+    sen.85043411 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043412 DONG8
+    tax.85043412 [54 ký tự]: 85043412 - - - - - Máy biến áp loại khô phòng nổ (SEN)
+    sen.85043412 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 85043413 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043413 [34 ký tự]: 85043413 - - - - - Loại khác (SEN)
+    sen.85043413 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 850434~r15023 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.850434~r15023 [23 ký tự]: 850434~r15023 Loại khác
+- 85043414 DONG8
+    tax.85043414 [42 ký tự]: 85043414 - - - - - Biến áp thích ứng (SEN)
+    sen.85043414 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043415 DONG8
+    tax.85043415 [49 ký tự]: 85043415 - - - - - Máy biến áp loại khô phòng nổ 
+- 85043419 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043419 [28 ký tự]: 85043419 - - - - - Loại khác
+- 8504342 TIEU_DE
+    tieuDe.8504342 [46 ký tự]: 8504342 Có công suất danh định trên 15.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 15.000 kVA"
+- 850434~r15028 TIEU_DE
+    tieuDe.850434~r15028 [49 ký tự]: 850434~r15028 Có đầu điện áp cao từ 66 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đầu" · [GIỚI HẠN] "điện áp cao từ 66 kV trở lên"
+- 85043422 DONG8
+    tax.85043422 [42 ký tự]: 85043422 - - - - - Biến áp thích ứng (SEN)
+    sen.85043422 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043423 DONG8
+    tax.85043423 [54 ký tự]: 85043423 - - - - - Máy biến áp loại khô phòng nổ (SEN)
+    sen.85043423 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 85043424 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043424 [34 ký tự]: 85043424 - - - - - Loại khác (SEN)
+    sen.85043424 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 850434~r15032 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.850434~r15032 [23 ký tự]: 850434~r15032 Loại khác
+- 85043425 DONG8
+    tax.85043425 [42 ký tự]: 85043425 - - - - - Biến áp thích ứng (SEN)
+    sen.85043425 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043426 DONG8
+    tax.85043426 [48 ký tự]: 85043426 - - - - - Máy biến áp loại khô phòng nổ
+- 85043429 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043429 [28 ký tự]: 85043429 - - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850434; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850440 ===
+# 850440 — Máy biến đổi tĩnh điện  [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ]
+
+850440 — Electrical static converters
+  [8504401] Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông
+    85044011 Bộ nguồn cấp điện liên tục (UPS) (SEN)
+    85044019 Loại khác  [LK]
+  85044020 Máy nạp ắc qui, pin có công suất danh định trên 100 kVA
+  85044030 Bộ chỉnh lưu khác
+  85044040 Bộ nghịch lưu
+  85044090 Loại khác  [LK]
+
+- 8504401 TIEU_DE
+    tieuDe.8504401 [102 ký tự]: 8504401 Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông"
+- 85044011 DONG8
+    tax.85044011 [53 ký tự]: 85044011 - - - Bộ nguồn cấp điện liên tục (UPS) (SEN)
+    sen.85044011 [453 ký tự]: BỘ NGUỒN CẤP ĐIỆN LIÊN TỤC (UPS) Bộ nguồn cấp điện liên tục là bộ biến đổi điện bao gồm các biến điện, các ắc quy chì-axit được gắn kín với đầu ra, hoặc các tấm mạch in lắp cùng với các điện trở, tụ điện, rơ le,...Các thiết bị này bảo vệ nguồn điện, chống sốc điện, lọc nhiễu và nạp ắc quy tức thời. UPS được sử dụng cho các hệ thống máy tính, các thiết bị điện, thiết bị viễn thông, trạm đầu cuối thu thập dữ liệu và các thiết bị điện tử nhạy cảm khác.
+- 85044019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85044019 [24 ký tự]: 85044019 - - - Loại khác
+- 85044020 DONG8
+    tax.85044020 [68 ký tự]: 85044020 - - Máy nạp ắc qui, pin có công suất danh định trên 100 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất danh định trên 100 kVA"
+- 85044030 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85044030 [30 ký tự]: 85044030 - - Bộ chỉnh lưu khác
+- 85044040 DONG8
+    tax.85044040 [26 ký tự]: 85044040 - - Bộ nghịch lưu
+- 85044090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85044090 [22 ký tự]: 85044090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850440; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850450 ===
+# 850450 — Cuộn cảm khác
+
+850450 — Electrical inductors; n.e.c. in heading no. 8504
+  85045010 Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông
+  85045020 Cuộn cảm cố định kiểu con chip (SEN)
+  [8504509] Loại khác
+    85045093 Có công suất danh định không quá 2.500 kVA
+    85045094 Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA
+    85045095 Có công suất danh định trên 10.000 kVA
+
+- 85045010 DONG8
+    tax.85045010 [143 ký tự]: 85045010 - - Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông"
+- 85045020 DONG8
+    tax.85045020 [49 ký tự]: 85045020 - - Cuộn cảm cố định kiểu con chip (SEN)
+    sen.85045020 [298 ký tự]: CUỘN CẢM CỐ ĐỊNH KIỂU CON CHIP Các cuộn cảm cố định kiểu con chíp có dạng những con chip nhỏ sử dụng cho đầu ghi băng video (VTRs), tivi, điện thoại di động... dùng cho các mức điện thế và cường độ dòng điện thấp. Chúng được sử dụng trong mạch điện để hạn chế dòng điện khi có hiện tượng đoản mạch.
+- 8504509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8504509 [17 ký tự]: 8504509 Loại khác
+- 85045093 DONG8
+    tax.85045093 [57 ký tự]: 85045093 - - - Có công suất danh định không quá 2.500 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định không quá 2.500 kVA"
+- 85045094 DONG8
+    tax.85045094 [79 ký tự]: 85045094 - - - Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA"
+- 85045095 DONG8
+    tax.85045095 [53 ký tự]: 85045095 - - - Có công suất danh định trên 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 10.000 kVA"
+
+Nguồn cấp phân nhóm: wco.850450; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850490 ===
+# 850490 — Bộ phận
+
+850490 — Electrical transformers, static converters and inductors; parts thereof
+  85049010 Của hàng hóa thuộc phân nhóm 8504.10
+  85049020 Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10
+  [8504903] Dùng cho máy biến điện có công suất không quá 10.000 kVA
+    85049031 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    85049039 Loại khác  [LK]
+  [8504904] Dùng cho máy biến điện có công suất trên 10.000 kVA
+    85049041 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    85049049 Loại khác  [LK]
+  85049090 Loại khác  [LK]
+
+- 85049010 DONG8
+    tax.85049010 [49 ký tự]: 85049010 - - Của hàng hóa thuộc phân nhóm 8504.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8504.10"
+- 85049020 DONG8
+    tax.85049020 [104 ký tự]: 85049020 - - Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10"
+- 8504903 TIEU_DE
+    tieuDe.8504903 [64 ký tự]: 8504903 Dùng cho máy biến điện có công suất không quá 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy biến điện" · [GIỚI HẠN] "có công suất không quá 10.000 kVA"
+- 85049031 DONG8
+    tax.85049031 [137 ký tự]: 85049031 - - - Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho biến áp phân phối và biến áp nguồn"
+- 85049039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049039 [24 ký tự]: 85049039 - - - Loại khác
+- 8504904 TIEU_DE
+    tieuDe.8504904 [59 ký tự]: 8504904 Dùng cho máy biến điện có công suất trên 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy biến điện" · [GIỚI HẠN] "có công suất trên 10.000 kVA"
+- 85049041 DONG8
+    tax.85049041 [137 ký tự]: 85049041 - - - Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho biến áp phân phối và biến áp nguồn"
+- 85049049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049049 [24 ký tự]: 85049049 - - - Loại khác
+- 85049090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049090 [22 ký tự]: 85049090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850490; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850590 ===
+# 850590 — Loại khác, kể cả các bộ phận
+
+850590 — Magnets; electro-magnets, holding devices and parts n.e.c. in heading no. 8505
+  85059010 Nam châm điện chỉ dùng hoặc chủ yếu dùng cho thiết bị chụp cộng hưởng từ, trừ nam châm điện thuộc nhóm 90.18
+  85059020 Đầu nâng điện từ
+  85059090 Loại khác  [LK]
+
+- 85059010 DONG8 (gợi ý khoá tu-vung@2: chiHoacChuYeu — "chỉ hoặc chủ yếu dùng cho" — xem --tu-vung --khoa=<khoá>)
+    tax.85059010 [122 ký tự]: 85059010 - - Nam châm điện chỉ dùng hoặc chủ yếu dùng cho thiết bị chụp cộng hưởng từ, trừ nam châm điện thuộc nhóm 90.18 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chỉ dùng hoặc chủ yếu dùng cho thiết bị chụp cộng hưởng từ" · [GIỚI HẠN] "trừ nam châm điện thuộc nhóm 90.18"
+- 85059020 DONG8
+    tax.85059020 [30 ký tự]: 85059020 - - Đầu nâng điện từ 
+- 85059090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85059090 [22 ký tự]: 85059090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850590; chú giải: nhom8505.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850610 ===
+# 850610 — Bằng dioxit mangan
+
+850610 — Cells and batteries; primary, manganese dioxide
+  [8506101] Có thể tích bên ngoài không quá 300 cm3
+    85061011 Bằng kẽm-cacbon
+    85061012 Bằng kiềm
+    85061019 Loại khác  [LK]
+  [8506109] Loại khác
+    85061091 Bằng kẽm-cacbon
+    85061099 Loại khác  [LK]
+
+- 8506101 TIEU_DE
+    tieuDe.8506101 [47 ký tự]: 8506101 Có thể tích bên ngoài không quá 300 cm3
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có thể tích bên ngoài không quá 300 cm3"
+- 85061011 DONG8
+    tax.85061011 [31 ký tự]: 85061011 - - - Bằng kẽm-cacbon 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng kẽm-cacbon"
+- 85061012 DONG8
+    tax.85061012 [25 ký tự]: 85061012 - - - Bằng kiềm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng kiềm"
+- 85061019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85061019 [24 ký tự]: 85061019 - - - Loại khác
+- 8506109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8506109 [17 ký tự]: 8506109 Loại khác
+- 85061091 DONG8
+    tax.85061091 [31 ký tự]: 85061091 - - - Bằng kẽm-cacbon 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng kẽm-cacbon"
+- 85061099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85061099 [24 ký tự]: 85061099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850610; chú giải: nhom8506.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850660 ===
+# 850660 — Bằng kẽm-khí
+
+850660 — Cells and batteries; primary, air-zinc
+  85066010 Có thể tích ngoài không quá 300 cm3
+  85066090 Loại khác  [LK]
+
+- 85066010 DONG8
+    tax.85066010 [48 ký tự]: 85066010 - - Có thể tích ngoài không quá 300 cm3
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có thể tích ngoài không quá 300 cm3"
+- 85066090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85066090 [22 ký tự]: 85066090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850660; chú giải: nhom8506.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850680 ===
+# 850680 — Pin và bộ pin khác
+
+850680 — Cells and batteries; primary, (other than manganese dioxide, mercuric oxide, silver oxide, lithium or air-zinc)
+  85068030 Có thể tích ngoài không quá 300 cm3
+  85068090 Loại khác  [LK]
+
+- 85068030 DONG8
+    tax.85068030 [48 ký tự]: 85068030 - - Có thể tích ngoài không quá 300 cm3
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có thể tích ngoài không quá 300 cm3"
+- 85068090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85068090 [22 ký tự]: 85068090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850680; chú giải: nhom8506.nhom, ch85.chuong, phan85.phan
