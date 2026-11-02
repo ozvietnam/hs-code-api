@@ -1,0 +1,45 @@
+{
+  "nhom": "2806",
+  "nguoiSoat": "dev-soat-doc-lap-lo082",
+  "luc": "2026-11-02T08:40:00+07:00",
+  "phamViSoat": 6,
+  "soat": 6,
+  "docNgoaiPhamVi": 4,
+  "tongMuc": 10,
+  "giu": 6,
+  "sua": 0,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2806 (lô 082, PR #732) — người soát dev-soat-doc-lap-lo082 ≠ người soạn dev-zcode-mm. Đọc TOÀN BỘ [nhom2806.nhom] cùng các khối wco.*/tax.*/sen.* của nhóm; đối chiếu từng mục phamVi/boPhan/dieuKienVao/loaiTru/phanBiet với câu nguồn (máy xanh: check-so-tay 100 % + check-trich-nguyen-van byte-exact, nhưng máy KHÔNG biết câu trích có nói ĐÚNG điều mục khẳng định hay không). KẾT QUẢ: 0 mục SỬA, 0 mục xoá. LỖI SỬA (một lớp lỗi duy nhất, lặp ở 5 nhóm): bản nháp bỏ DÒNG DẪN \"Nhóm này không bao gồm:\" ⇒ câu trích chỉ còn danh sách hàng, không nói đó là loại trừ. Chi tiết từng mục ở thayDoi. KHÔNG sửa câu nguồn/mã để lách máy; KHÔNG thêm chữ ngoài nguồn; giữ nguyên ký tự (cắt trích thẳng từ tệp nguồn). GHI NHẬN: 2806 là nhóm DUY NHẤT của lô đã có vế loại trừ NGAY TRONG CÂU (không tách dòng dẫn) — \"Nhóm này không bao gồm axit hypochlorous, axit cloric hoặc axit percloric (nhóm 28.11).\" và \"Nhóm này cũng không gồm lưu huỳnh diclorua dioxit (sulphuryl chloride) (nhóm 28.12), mà đôi khi nó được hiểu nhầm là \"clorosulphuric axit\".\" ⇒ cả 2 mục loaiTru và 2 mục phanBiet đều tự nói đúng điều mục khẳng định, GIỮ NGUYÊN. GHI NHẬN: boPhan theo mẫu nhà (\"Nhóm này gồm hai phần ngang hàng: (A) …; (B) …\" / \"Hai phần: …\") — mẫu này xuất hiện ở hàng trăm nhóm, KHÔNG phải lỗi. GHI NHẬN: dieuKienVao RỖNG là ĐÚNG — không có câu nào ràng buộc phủ CẢ nhóm 2806 (chỉ có mô tả tính chất axit) ⇒ không thêm (bài học lô 045/051/060: điều kiện vào nhóm phải phủ cả nhóm, và điều kiện cấp phân nhóm thuộc dong8/tieuChi6 chứ không thuộc dieuKienVao). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): 2 mục tieuChi6 lấy `value` tiếng Việt từ dòng biểu thuế (\"Hydro clorua (axit hydrocloric)\") trong khi `nguon`/`trich` là dòng WCO tiếng Anh (\"280610 Hydrogen chloride (hydrochloric acid)\") — luật 10 nói tieuChi6 lấy từ chú giải/SEN/wco.<6 số> và không lấy từ tax.*; nhưng `value` ở đây là TÊN HÀNG, không phải ngưỡng số, và tên tiếng Việt là tên biểu thuế quốc gia ⇒ để người duyệt quyết định.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích \"(A) HYDRO CLORUA (AXIT CLOHYDRIC) … (B) AXIT CLOROSULPHURIC (CHLOROSULPHONIC ACID)\" nêu đúng hai phần ngang hàng của nhóm; `text` (\"Hydro clorua (axit clohydric) … Axit clorosulphuric (chlorosulphonic acid)\") chỉ lặp lại tiêu đề các phần, không thêm chữ nào ngoài nguồn. Đúng mẫu nhà (phạm vi nhóm có phần ngang hàng thì nêu tiêu đề các phần nối bằng \"…\")."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích có TRỌN vế loại trừ ngay trong câu: \"Nhóm này không bao gồm axit hypochlorous, axit cloric hoặc axit percloric (nhóm 28.11).\" — nêu đích danh 28.11, mã có trong câu ⇒ hợp lệ theo luật 3. Không dính lớp lỗi \"mất dòng dẫn\" của các nhóm khác trong lô."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"Nhóm này cũng không gồm lưu huỳnh diclorua dioxit (sulphuryl chloride) (nhóm 28.12), mà đôi khi nó được hiểu nhầm là \"clorosulphuric axit\".\" — có vế \"không gồm\" + đích danh 28.12 + vế ngoại lệ (\"mà đôi khi nó được hiểu nhầm\") nằm TRONG câu trích, không bị dấu lược nuốt. Đích 28.12 nêu đúng."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích tự nói hàng bị loại và nêu đích 28.11; câu hỏi \"Hàng này là axit hypochlorous, axit cloric hoặc axit percloric không?\" không nhắc mã phân nhóm ⇒ hợp lệ theo luật 4. Nhánh \"không → 2806\" là chính nhóm này, đúng mẫu nhà (neuKhong = nhóm đang xét)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích có vế loại trừ + đích 28.12; hỏi về đặc tính hàng (\"lưu huỳnh diclorua dioxit (sulphuryl chloride)\") không nhắc mã ⇒ hợp lệ theo luật 4."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `quyTac`/`tomTat` theo đúng mẫu nhà (\"Nhóm này gồm hai phần ngang hàng: (A) …; (B) …\" / \"Hai phần: …\"); tiêu đề hai phần lấy nguyên văn từ nguồn, không thêm chữ."
+    }
+  ]
+}
