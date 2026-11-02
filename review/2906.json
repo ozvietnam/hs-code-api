@@ -1,0 +1,56 @@
+{
+  "nhom": "2906",
+  "nguoiSoat": "dev-soat-doc-lap-lo090",
+  "luc": "2026-11-02T19:45:00+07:00",
+  "soat": 7,
+  "giu": 4,
+  "sua": 3,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2906 — 7 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 2 loaiTru + 2 phanBiet). `boPhan` = null là ĐÚNG (chú giải nhóm 29.06 không có quy tắc bộ phận). Đọc kèm 6 tieuChi6 + 6 dong8 nhưng KHÔNG sửa. SỬA 3 — (1) `phamVi.text` tràn trần clip runtime (234 ký tự) ⇒ mất định ngữ \"của chúng\" ở vế (B); (2) `loaiTru[1].dieuKien` 61 ký tự > trần clip 55 ⇒ runtime cắt mất trọn vế \"vitamin D2\" (nguồn nêu đích danh CẢ HAI: \"Cả ergosterol và vitamin D2 đều được xếp vào nhóm 29.36.\") ⇒ đưa định danh lên đầu; (3) `phanBiet[1].hoi` chỉ hỏi ergosterol ⇒ hàng là vitamin D2 trả lời \"không\" rơi nhầm 29.06 ⇒ gộp hai vế thành MỘT câu hỏi có/không (không tách thành hai nhánh điều kiện độc lập). KHÔNG xoá.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "TRÀN TRẦN CLIP RUNTIME (máy KHÔNG bắt). `text` 234 ký tự > trần 220 ⇒ runtime cắt đuôi vế (B): \"…nitro hóa hoặc nitroso…\" — mất định ngữ \"của chúng\" (vế (B) của 29.06 là rượu thơm; nếu mất định ngữ thì nhánh (A)/(B) đọc như hai nhóm khác nhau). SỬA: rút còn 218 ký tự (bỏ mạo từ \"Các\" ở (A),(B)) — giữ đủ vế (A) \"rượu cyclanic, cyclenic hoặc cycloterpenic\" và vế (B) \"rượu thơm\", mỗi vế kèm đủ 4 loại dẫn xuất (halogen/sulphonat/nitro/nitroso) và \"của chúng\". `trich` giữ nguyên (byte-exact, 232 ≤ 300).",
+      "sua": {
+        "text": "(A) Rượu cyclanic, cyclenic hoặc cycloterpenic và dẫn xuất halogen hóa, sulphonat hóa, nitro hóa hoặc nitroso hóa của chúng. … (B) Rượu thơm và dẫn xuất halogen hóa, sulphonat hóa, nitro hóa hoặc nitroso hóa của chúng."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (câu chú giải Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (Chú giải 3 Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 loaiTru[0] (Chú giải 1(A) Phần I, giữ ngoại lệ \"trừ quặng phóng xạ\")."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "TRÀN TRẦN CLIP RUNTIME — MẤT VẾ ĐỊNH DANH (máy KHÔNG bắt). Runtime in `clip(x.dieuKien, 55)` (lib/so-tay-gates.js:137); bản nháp 61 ký tự ⇒ dòng \"LOẠI TRỪ\" hiện ra dừng ở \"…và vita…\" ⇒ mất trọn vế \"vitamin D2\" — trong khi nguồn nêu đích danh CẢ HAI: \"Cả ergosterol và vitamin D2 đều được xếp vào nhóm 29.36.\" SỬA: đưa định danh lên đầu (theo đúng câu \"Cả ergosterol và vitamin D2\" của nguồn) để clip không cắt mất, giữ nguyên ngoại nhánh \"(có trong nấm mốc và trong lúa mạch)\". `trich` giữ nguyên (byte-exact [nhom2906.nhom]).",
+      "sua": {
+        "dieuKien": "Ergosterol và vitamin D2 (có trong nấm mốc và trong lúa mạch)"
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 phanBiet[0] (hỏi đúng vế định danh 28.44/28.45; Có→2844|2845, Không→2906)."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "NHÁNH \"KHÔNG\" SAI — `hoi` BỎ SÓT MỘT VẾ LOẠI TRỪ (máy KHÔNG bắt). Câu trích: \"Nhóm này không bao gồm ergosterol… Cả ergosterol và vitamin D2 đều được xếp vào nhóm 29.36.\" — tức CẢ HAI hàng đều bị loại trừ sang 29.36. Nhưng `hoi` chỉ hỏi \"Hàng này là ergosterol không?\" ⇒ hàng là VITAMIN D2 trả lời \"không\" rơi vào nhánh `neuKhong` = 2906, tức sổ tay bảo vitamin D2 thuộc 29.06 — SAI (nguồn nói rõ vào 29.36). SỬA: gộp hai vế thành MỘT câu hỏi có/không (đúng văn bản nhà, vd 0206/0106 \"Hàng là thịt hoặc phụ phẩm…\"), không tách thành hai nhánh điều kiện độc lập. Cả \"ergosterol\" và \"vitamin D2\" đều có trong câu trích. `trich`, `neuCo` (29.36) và `neuKhong` (29.06) giữ nguyên.",
+      "sua": {
+        "hoi": "Hàng này là ergosterol hoặc vitamin D2 không?"
+      }
+    }
+  ]
+}

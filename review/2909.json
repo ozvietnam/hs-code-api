@@ -1,0 +1,40 @@
+{
+  "nhom": "2909",
+  "nguoiSoat": "dev-soat-doc-lap-lo090",
+  "luc": "2026-11-02T19:45:00+07:00",
+  "soat": 5,
+  "giu": 4,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2909 — 5 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 1 loaiTru + 1 phanBiet). `boPhan` = null là ĐÚNG (chú giải nhóm 29.09 không có quy tắc bộ phận). Đọc kèm 10 tieuChi6 + 10 dong8 nhưng KHÔNG sửa. Đối chiếu toàn bộ khối [nhom2909.nhom]: nhóm KHÔNG có câu loại trừ nào ⇒ 1 loaiTru là đủ. SỬA 1 — `phamVi.text` 311 ký tự > trần clip 220 ⇒ runtime cắt đúng trước vế (D) ⇒ mô hình không thấy \"peroxit\" trong phạm vi 29.09 (2909.60 là phân nhóm có thật). Sửa: rút còn 216 ký tự, giữ trọn cấu trúc (I)–(IV) của vế (A) (sinh ra 4 phân nhóm 2909.11/.12/.20/.30) và giữ trọn vế (D); phần \"peroxit axetal và peroxit hemiaxetal\" được lược theo CÙNG CHIỀU với `trich` (vốn đã lược sẵn) nên `text` và `trich` vẫn khớp 1-1. KHÔNG xoá.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "TRÀN TRẦN CLIP RUNTIME — MẤT HẲN MỘT VẾ (máy KHÔNG bắt). `text` 311 ký tự > trần 220 ⇒ runtime cắt đúng trước vế (D) ⇒ dòng \"Phạm vi:\" hiện ra dừng ở vế (C) ⇒ mô hình KHÔNG thấy \"peroxit\" trong phạm vi 29.09, trong khi 2909.60 (\"Peroxit rượu, peroxit ete, peroxit axetal và peroxit hemiaxetal, peroxit xeton\") là một phân nhóm có thật. SỬA: rút `text` còn 216 ký tự — bỏ mạo từ \"Các\" (đều với (B),(C)), bỏ \"ete\" lặp ở (I)–(IV), và lược đúng phần giữa của tiêu đề (D) (\"peroxit axetal và peroxit hemiaxetal\") — LƯỚC CÙNG CHIỀU với `trich` (vốn đã lược \"PEROXIT AXETAL VÀ PEROXIT HEMIAXETAL VÀ\") nên `text` và `trich` vẫn khớp 1-1; GIỮ ĐỦ cấu trúc (I)–(IV) của vế (A) (đây là cấu trúc sinh ra 4 phân nhóm 2909.11/.12/.20/.30) và giữ trọn vế (D). `trich` giữ nguyên (byte-exact, 276 ký tự ≤ 300).",
+      "sua": {
+        "text": "(A) Ete: (I) mạch hở đối xứng; (II) không đối xứng; (III) cyclanic, cyclenic hoặc cycloterpenic; (IV) thơm. … (B) Rượu - ete. … (C) Phenol - ete và phenol- rượu - ete. … (D) Peroxit rượu, peroxit ete … peroxit xeton."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (câu chú giải Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (Chú giải 3 Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 loaiTru[0] (Chú giải 1(A) Phần I, giữ ngoại lệ \"trừ quặng phóng xạ\")."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 phanBiet[0] (hỏi đúng vế định danh; Có→2844|2845, Không→2909)."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "nhom": "2904",
+  "nguoiSoat": "dev-soat-doc-lap-lo090",
+  "luc": "2026-11-02T19:45:00+07:00",
+  "soat": 7,
+  "giu": 6,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2904 — 7 mục trong phạm vi mục 4 của SOAT-LO (1 phamVi + 2 dieuKienVao + 2 loaiTru + 2 phanBiet). `boPhan` = null là ĐÚNG: chú giải nhóm 29.04 ([nhom2904.nhom]) không có quy tắc bộ phận nào. Đọc kèm 10 tieuChi6 + 11 dong8 nhưng KHÔNG sửa (ngoài phạm vi mục 4). Mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn (check-trich-nguyen-van xanh); đích loại trừ 28.44/28.45 và 36.02 đều có mặt trong câu trích; ngoại lệ \"trừ quặng phóng xạ\" KHÔNG bị cắt. SỬA 1 — `phamVi.text` tràn trần clip runtime (clip 220 của lib/so-tay-gates.js:134): 281 ký tự ⇒ runtime cắt đúng giữa vế (G) ⇒ mô hình không thấy nhánh (G). KHÔNG xoá mục nào.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "TRÀN TRẦN CLIP RUNTIME (máy KHÔNG bắt). `soTayBlock` in `clip(s.phamVi.text, 220)` (lib/so-tay-gates.js:134) — bản nháp 281 ký tự ⇒ runtime cắt đúng giữa vế (G): dòng \"Phạm vi:\" hiện ra dừng ở \"(G) Các dẫn…\" ⇒ mô hình KHÔNG thấy vế (G) \"các dẫn xuất nitrosulphohalogen hóa hoặc các dẫn xuất kết hợp khác\" (một nhánh đáng kể của nhóm). SỬA: rút `text` còn 191 ký tự, bỏ mạo từ \"Các dẫn xuất\" lặp ở (B)–(F) và dùng \";\" làm dấu phân cách mục — GIỮ ĐỦ cả 7 vế (A)–(G), không mất vế nào. `trich` giữ nguyên (byte-exact [nhom2904.nhom], 274 ký tự ≤ 300).",
+      "sua": {
+        "text": "(A) Các dẫn xuất sulphonat hóa; (B) nitro hóa; (C) nitroso hóa; (D) sulphohalogen hóa; (E) nitrohalogen hóa; (F) nitrosulphonat hóa; (G) nitrosulphohalogen hóa hoặc các dẫn xuất kết hợp khác."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn trong [ch29.chuong] (Chú giải Chi tiết Tổng quát phần (A)): \"Những hợp chất đã được xác định về mặt hoá học riêng biệt chứa những chất khác có thể được cố ý thêm vào trong hoặc sau khi sản xuất chúng (kể cả quá trình tinh chế) bị loại trừ khỏi chương này.\" — câu khẳng định đúng điều kiện (hợp chất được xác định hoá học riêng biệt + có chất khác cố ý thêm = KHÔNG thuộc nhóm). `ngoaiTru` nêu đúng ngoại lệ Chú giải 1(f),(g) (chất ổn định, chống bụi, chất màu, chất có mùi, chất gây nôn) — có trong [ch29.chuong]."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn [ch29.chuong] mục 3: \"Các mặt hàng có thể xếp vào hai hoặc nhiều nhóm thuộc Chương này phải xếp vào nhóm có số thứ tự sau cùng.\" — đúng luật \"sau cùng\"; `ngoaiTru` nêu đúng giới hạn \"không áp dụng cho cấp phân nhóm (Chú giải phân nhóm 2)\" ([ch29.chuong], mục 2 Chú giải phân nhóm). Đây cũng là mẫu nhà (data/so-tay/2917.json dùng đúng hai `fact` này cho Chương 29)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn [phan29.phan] Chú giải 1(A) Phần I, giữ cả ngoại lệ \"(trừ quặng phóng xạ)\" ngay trong câu (không mất ngoại lệ); đích 28.44 và 28.45 đều có mặt trong câu ⇒ `sangNhom` \"2844|2845\" hợp lệ theo luật 3. `dieuKien` diễn đạt đúng nghĩa nguồn (mặt hàng đáp ứng mô tả 28.44/28.45, trừ quặng phóng xạ)."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn [nhom2904.nhom]: \"Các hỗn hợp nổ đã được điều chế của các dẫn xuất này không được xếp vào nhóm này (xếp vào nhóm 36.02)\" — có dấu hiệu loại trừ rõ ràng + đích danh 36.02 trong câu. Không có nhánh \"thường…\"/\"tùy từng trường hợp\" nào bị cắt."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi hỏi đúng vế định danh của nhóm 28.44/28.45 (\"hợp chất phóng xạ hoặc đồng vị phóng xạ\"), nhánh Có→\"2844|2845\" (đích có trong câu trích), nhánh Không→\"2904\" (chính nhóm đang xét). Không đảo chiều. Ngoại lệ \"trừ quặng phóng xạ\" vẫn nằm trong `trich` và trong `loaiTru[0].dieuKien` ⇒ không mất ngoại lệ."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"hỗn hợp nổ đã được điều chế của các dẫn xuất này\" khớp đúng câu nguồn; nhánh Có→36.02, nhánh Không→2904. Đích 36.02 có trong câu trích."
+    }
+  ]
+}
