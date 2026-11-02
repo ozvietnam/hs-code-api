@@ -1,0 +1,1280 @@
+Số hoá ranh giới cho 10 phân nhóm 6 số (850490 850610 850660 850680 850710 850720 851120 851130 851140 851150). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG. Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Khoá từ vựng MỚI (doDay, congSuatBieuKien, dungTich, theTich, sanLuongHoi, dungLuong, dangNguyenSinh, heDienHoa, daLapRap, daHoaDeo, coBoLoc, tinhDanHoi, loaiSoiDet, phuongPhapIn) đã có trong mục TỪ VỰNG: dùng chúng thay vì DỪNG. Không giải thích ngoài các khối json.
+
+
+=== GÓI PN6 850490 ===
+# 850490 — Bộ phận
+
+850490 — Electrical transformers, static converters and inductors; parts thereof
+  85049010 Của hàng hóa thuộc phân nhóm 8504.10
+  85049020 Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10
+  [8504903] Dùng cho máy biến điện có công suất không quá 10.000 kVA
+    85049031 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    85049039 Loại khác  [LK]
+  [8504904] Dùng cho máy biến điện có công suất trên 10.000 kVA
+    85049041 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    85049049 Loại khác  [LK]
+  85049090 Loại khác  [LK]
+
+- 85049010 DONG8
+    tax.85049010 [49 ký tự]: 85049010 - - Của hàng hóa thuộc phân nhóm 8504.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8504.10"
+- 85049020 DONG8
+    tax.85049020 [104 ký tự]: 85049020 - - Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10"
+- 8504903 TIEU_DE
+    tieuDe.8504903 [64 ký tự]: 8504903 Dùng cho máy biến điện có công suất không quá 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy biến điện" · [GIỚI HẠN] "có công suất không quá 10.000 kVA"
+- 85049031 DONG8
+    tax.85049031 [137 ký tự]: 85049031 - - - Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho biến áp phân phối và biến áp nguồn"
+- 85049039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049039 [24 ký tự]: 85049039 - - - Loại khác
+- 8504904 TIEU_DE
+    tieuDe.8504904 [59 ký tự]: 8504904 Dùng cho máy biến điện có công suất trên 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy biến điện" · [GIỚI HẠN] "có công suất trên 10.000 kVA"
+- 85049041 DONG8
+    tax.85049041 [137 ký tự]: 85049041 - - - Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho biến áp phân phối và biến áp nguồn"
+- 85049049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049049 [24 ký tự]: 85049049 - - - Loại khác
+- 85049090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049090 [22 ký tự]: 85049090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850490; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
+
+=== GÓI PN6 850610 ===
+# 850610 — Bằng dioxit mangan
+
+850610 — Cells and batteries; primary, manganese dioxide
+  [8506101] Có thể tích bên ngoài không quá 300 cm3
+    85061011 Bằng kẽm-cacbon
+    85061012 Bằng kiềm
+    85061019 Loại khác  [LK]
+  [8506109] Loại khác
+    85061091 Bằng kẽm-cacbon
+    85061099 Loại khác  [LK]
+
+- 8506101 TIEU_DE
+    tieuDe.8506101 [47 ký tự]: 8506101 Có thể tích bên ngoài không quá 300 cm3
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có thể tích bên ngoài không quá 300 cm3"
+- 85061011 DONG8
+    tax.85061011 [31 ký tự]: 85061011 - - - Bằng kẽm-cacbon 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng kẽm-cacbon"
+- 85061012 DONG8
+    tax.85061012 [25 ký tự]: 85061012 - - - Bằng kiềm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng kiềm"
+- 85061019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85061019 [24 ký tự]: 85061019 - - - Loại khác
+- 8506109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8506109 [17 ký tự]: 8506109 Loại khác
+- 85061091 DONG8
+    tax.85061091 [31 ký tự]: 85061091 - - - Bằng kẽm-cacbon 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng kẽm-cacbon"
+- 85061099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85061099 [24 ký tự]: 85061099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850610; chú giải: nhom8506.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
+
+=== GÓI PN6 850660 ===
+# 850660 — Bằng kẽm-khí
+
+850660 — Cells and batteries; primary, air-zinc
+  85066010 Có thể tích ngoài không quá 300 cm3
+  85066090 Loại khác  [LK]
+
+- 85066010 DONG8
+    tax.85066010 [48 ký tự]: 85066010 - - Có thể tích ngoài không quá 300 cm3
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có thể tích ngoài không quá 300 cm3"
+- 85066090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85066090 [22 ký tự]: 85066090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850660; chú giải: nhom8506.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
+
+=== GÓI PN6 850680 ===
+# 850680 — Pin và bộ pin khác
+
+850680 — Cells and batteries; primary, (other than manganese dioxide, mercuric oxide, silver oxide, lithium or air-zinc)
+  85068030 Có thể tích ngoài không quá 300 cm3
+  85068090 Loại khác  [LK]
+
+- 85068030 DONG8
+    tax.85068030 [48 ký tự]: 85068030 - - Có thể tích ngoài không quá 300 cm3
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có thể tích ngoài không quá 300 cm3"
+- 85068090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85068090 [22 ký tự]: 85068090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850680; chú giải: nhom8506.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
+
+=== GÓI PN6 850710 ===
+# 850710 — Bằng axit - chì, loại dùng để khởi động động cơ piston
+
+850710 — Electric accumulators; lead-acid, of a kind used for starting piston engines, including separators, whether or not rectangular (including square)
+  85071010 Dùng cho máy bay
+  [8507109] Loại khác
+    [850710~r15093] Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah  (tầng không mã, biểu thuế r15093, gạch 3)
+      85071092 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm  (gạch 4)
+      85071095 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm  (gạch 4)
+      85071096 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm  (gạch 4)
+    [850710~r15097] Loại khác  (tầng không mã, biểu thuế r15097, gạch 3)
+      85071097 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm  (gạch 4)
+      85071098 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm  (gạch 4)
+      85071099 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    850710~r15093 (gạch 3) "Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah:" — dòng dưới: 85071092, 85071095, 85071096
+    850710~r15097 (gạch 3) "Loại khác:" — dòng dưới: 85071097, 85071098, 85071099
+
+- 85071010 DONG8
+    tax.85071010 [29 ký tự]: 85071010 - - Dùng cho máy bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy bay"
+- 8507109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8507109 [17 ký tự]: 8507109 Loại khác
+- 850710~r15093 TIEU_DE
+    tieuDe.850710~r15093 [88 ký tự]: 850710~r15093 Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah"
+- 85071092 DONG8
+    tax.85071092 [77 ký tự]: 85071092 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 85071095 DONG8
+    tax.85071095 [94 ký tự]: 85071095 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 85071096 DONG8
+    tax.85071096 [72 ký tự]: 85071096 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 850710~r15097 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.850710~r15097 [23 ký tự]: 850710~r15097 Loại khác
+- 85071097 DONG8
+    tax.85071097 [77 ký tự]: 85071097 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 85071098 DONG8
+    tax.85071098 [94 ký tự]: 85071098 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 85071099 DONG8
+    tax.85071099 [72 ký tự]: 85071099 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+
+Nguồn cấp phân nhóm: wco.850710; chú giải: nhom8507.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
+
+=== GÓI PN6 850720 ===
+# 850720 — Ắc qui axit - chì khác
+
+850720 — Electric accumulators; lead-acid, (other than for starting piston engines), including separators, whether or not rectangular (including square)
+  85072010 Dùng cho máy bay
+  [8507209] Loại khác
+    [850720~r15104] Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah  (tầng không mã, biểu thuế r15104, gạch 3)
+      85072094 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm  (gạch 4)
+      85072095 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm  (gạch 4)
+      85072096 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm  (gạch 4)
+    [850720~r15108] Loại khác  (tầng không mã, biểu thuế r15108, gạch 3)
+      85072097 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm  (gạch 4)
+      85072098 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm  (gạch 4)
+      85072099 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    850720~r15104 (gạch 3) "Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah:" — dòng dưới: 85072094, 85072095, 85072096
+    850720~r15108 (gạch 3) "Loại khác:" — dòng dưới: 85072097, 85072098, 85072099
+
+- 85072010 DONG8
+    tax.85072010 [29 ký tự]: 85072010 - - Dùng cho máy bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy bay"
+- 8507209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8507209 [17 ký tự]: 8507209 Loại khác
+- 850720~r15104 TIEU_DE
+    tieuDe.850720~r15104 [88 ký tự]: 850720~r15104 Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah"
+- 85072094 DONG8
+    tax.85072094 [77 ký tự]: 85072094 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 85072095 DONG8
+    tax.85072095 [94 ký tự]: 85072095 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 85072096 DONG8
+    tax.85072096 [72 ký tự]: 85072096 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 850720~r15108 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.850720~r15108 [23 ký tự]: 850720~r15108 Loại khác
+- 85072097 DONG8
+    tax.85072097 [77 ký tự]: 85072097 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 85072098 DONG8
+    tax.85072098 [94 ký tự]: 85072098 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+- 85072099 DONG8
+    tax.85072099 [72 ký tự]: 85072099 - - - - Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm" · [GIỚI HẠN] "(không bao gồm đầu cực và tay cầm)"
+
+Nguồn cấp phân nhóm: wco.850720; chú giải: nhom8507.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
+
+=== GÓI PN6 851120 ===
+# 851120 — Magneto đánh lửa; dynamo mangneto; bánh đà từ tính
+
+851120 — Ignition or starting equipment; ignition magnetos, magneto-dynamos and magnetic flywheels, of a kind used for spark or compression-ignition internal combustion engines
+  85112010 Loại dùng cho động cơ của phương tiện bay
+  [8511202] Sử dụng cho động cơ ô tô
+    85112021 Loại chưa được lắp ráp
+    85112029 Loại khác  [LK]
+  [8511209] Loại khác
+    85112091 Loại chưa được lắp ráp
+    85112099 Loại khác  [LK]
+
+- 85112010 DONG8
+    tax.85112010 [54 ký tự]: 85112010 - - Loại dùng cho động cơ của phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của phương tiện bay"
+- 8511202 TIEU_DE
+    tieuDe.8511202 [32 ký tự]: 8511202 Sử dụng cho động cơ ô tô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ ô tô"
+- 85112021 DONG8
+    tax.85112021 [38 ký tự]: 85112021 - - - Loại chưa được lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa được lắp ráp"
+- 85112029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85112029 [24 ký tự]: 85112029 - - - Loại khác
+- 8511209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8511209 [17 ký tự]: 8511209 Loại khác
+- 85112091 DONG8
+    tax.85112091 [38 ký tự]: 85112091 - - - Loại chưa được lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa được lắp ráp"
+- 85112099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85112099 [24 ký tự]: 85112099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851120; chú giải: nhom8511.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
+
+=== GÓI PN6 851130 ===
+# 851130 — Bộ phân phối điện; cuộn dây đánh lửa
+
+851130 — Ignition or starting equipment; distributors and ignition coils of a kind used for spark-ignition or compression-ignition internal combustion engines
+  85113030 Loại dùng cho động cơ của phương tiện bay
+  [8511304] Sử dụng cho động cơ ô tô
+    85113041 Loại chưa được lắp ráp
+    85113049 Loại khác  [LK]
+  [8511309] Loại khác
+    85113091 Loại chưa được lắp ráp
+    85113099 Loại khác  [LK]
+
+- 85113030 DONG8
+    tax.85113030 [54 ký tự]: 85113030 - - Loại dùng cho động cơ của phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của phương tiện bay"
+- 8511304 TIEU_DE
+    tieuDe.8511304 [32 ký tự]: 8511304 Sử dụng cho động cơ ô tô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ ô tô"
+- 85113041 DONG8
+    tax.85113041 [38 ký tự]: 85113041 - - - Loại chưa được lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa được lắp ráp"
+- 85113049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85113049 [24 ký tự]: 85113049 - - - Loại khác
+- 8511309 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8511309 [17 ký tự]: 8511309 Loại khác
+- 85113091 DONG8
+    tax.85113091 [38 ký tự]: 85113091 - - - Loại chưa được lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa được lắp ráp"
+- 85113099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85113099 [24 ký tự]: 85113099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851130; chú giải: nhom8511.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
+
+=== GÓI PN6 851140 ===
+# 851140 — Động cơ khởi động và máy tổ hợp hai tính năng khởi động và phát điện
+
+851140 — Ignition or starting equipment; starter motors and dual purpose starter-generators, of a kind used for spark or compression-ignition internal combustion engines
+  85114010 Loại dùng cho động cơ của phương tiện bay
+  [8511402] Động cơ khởi động khác chưa lắp ráp
+    85114021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85114029 Loại khác  [LK]
+  [8511403] Động cơ khởi động đã lắp ráp sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    85114031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+    85114032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    85114033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+  [8511409] Loại khác
+    85114091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85114099 Loại khác  [LK]
+
+- 85114010 DONG8
+    tax.85114010 [54 ký tự]: 85114010 - - Loại dùng cho động cơ của phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của phương tiện bay"
+- 8511402 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8511402 [43 ký tự]: 8511402 Động cơ khởi động khác chưa lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lắp ráp"
+- 85114021 DONG8
+    tax.85114021 [83 ký tự]: 85114021 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85114029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85114029 [24 ký tự]: 85114029 - - - Loại khác
+- 8511403 TIEU_DE
+    tieuDe.8511403 [97 ký tự]: 8511403 Động cơ khởi động đã lắp ráp sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05"
+- 85114031 DONG8
+    tax.85114031 [59 ký tự]: 85114031 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.01 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.01"
+- 85114032 DONG8
+    tax.85114032 [76 ký tự]: 85114032 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+- 85114033 DONG8
+    tax.85114033 [58 ký tự]: 85114033 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.05"
+- 8511409 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8511409 [17 ký tự]: 8511409 Loại khác
+- 85114091 DONG8
+    tax.85114091 [83 ký tự]: 85114091 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85114099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85114099 [24 ký tự]: 85114099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851140; chú giải: nhom8511.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
+
+=== GÓI PN6 851150 ===
+# 851150 — Máy phát điện khác
+
+851150 — Ignition or starting equipment; generators n.e.c. in heading no. 8511, of a kind used for spark or compression-ignition internal combustion engines
+  85115010 Loại dùng cho động cơ của phương tiện bay
+  [8511502] Máy phát điện xoay chiều khác chưa lắp ráp
+    85115021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85115029 Loại khác  [LK]
+  [8511503] Máy phát điện xoay chiều đã lắp ráp dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    85115031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+    85115032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    85115033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+  [8511509] Loại khác
+    85115091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85115099 Loại khác  [LK]
+
+- 85115010 DONG8
+    tax.85115010 [54 ký tự]: 85115010 - - Loại dùng cho động cơ của phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của phương tiện bay"
+- 8511502 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8511502 [50 ký tự]: 8511502 Máy phát điện xoay chiều khác chưa lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lắp ráp"
+- 85115021 DONG8
+    tax.85115021 [83 ký tự]: 85115021 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85115029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85115029 [24 ký tự]: 85115029 - - - Loại khác
+- 8511503 TIEU_DE
+    tieuDe.8511503 [101 ký tự]: 8511503 Máy phát điện xoay chiều đã lắp ráp dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05"
+- 85115031 DONG8
+    tax.85115031 [59 ký tự]: 85115031 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.01 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.01"
+- 85115032 DONG8
+    tax.85115032 [76 ký tự]: 85115032 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+- 85115033 DONG8
+    tax.85115033 [58 ký tự]: 85115033 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.05"
+- 8511509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8511509 [17 ký tự]: 8511509 Loại khác
+- 85115091 DONG8
+    tax.85115091 [83 ký tự]: 85115091 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85115099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85115099 [24 ký tự]: 85115099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851150; chú giải: nhom8511.nhom, ch85.chuong, phan85.phan
+Luật:
+  * Chỉ dùng khoá tu-vung (danh sách tuVung — runtime tu-vung@2) với đúng op của kiểu; không dùng fact cũ snake_case, không HOAC.
+  * trich chép NGUYÊN VĂN từ đúng nguồn của chính mục (tax.<chính dòng>, tieuDe.<chính tiêu đề>, SEN/chú giải); mọi đoạn lược "…" phải có trong nguồn, đúng thứ tự.
+  * Điều kiện chỉ nói điều câu trích nói (LUAT-CHUNG luật 7): biên ≤/< đúng chữ ("không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=); "Không …" = op KHONG.
+  * Dòng "Loại khác" trần và tiêu đề "Loại khác" trần: không ghi điều kiện (máy phủ định anh em). "Loại khác, <vế>": chỉ ghi điều kiện của vế.
+  * Tiêu đề có tên (dieuKienNut): nguồn tieuDe.<id> = tên nguyên văn biểu thuế Tổng cục.
+  * Không diễn đạt được bằng từ vựng hiện có → để trống dieuKienSo và ghi ghiChuSoan {ma, ghiChu}: cổng 1 sẽ chặn, đúng ý (không ép).
+  * Không tự gắn CLAUDE_DUYET; nhãn do duyet() của phiên soát độc lập gán.
+  * Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) là nút `<pn6>~r<dòng>` trong cây của gói: tầng có tên ⇒ khai dieuKienNut cho id đó (nguồn tieuDe.<pn6>~r<dòng>), bỏ qua ⇒ cong1-tang-khong-ma; tầng "Loại khác:" trần không ghi điều kiện. Gói có tầng trangThai KHONG_DAT ⇒ DỪNG, báo Claude (cổng 1 chặn mọi dòng dưới tầng, không có cách vượt).
+  * Cổng 5 (vế bổ nghĩa, #659): mọi vế GIỚI HẠN ("không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)") phải có điều kiện đọc tới; vế MỞ ("… và các loại tương tự", "và bộ phận của chúng") không được bị cắt bằng danh sách đóng; định ngữ chung đi với MỌI danh từ đầu liên hợp. Không phủ được ⇒ ghiChuSoan {ma, loai: "BO_VE", ve: "<nguyên văn>", lyDo} hoặc DỪNG — ghi chú DE_TRONG / "người soát xem" KHÔNG phải đã xử lý. Xem vế: --ve --pn6=<pn6>.
+  * Chữ biểu TỰ chồng lấn (hai dòng cùng thoả, chữ không tách): không bịa điều kiện tách; khai chongLanVanBan [{cap:[hsA,hsB], lyDo}] (cổng 2 thành cảnh báo, runtime không tự chốt). Thứ tự ưu tiên chỉ khi có căn cứ trích được (TB-TCHQ, SEN/chú giải, GIR qua lib/gir.js).
+  * Chồng lấn TRỤC (cong2-chong-lan-truc: nhánh anh em chia theo tên cạnh nhánh chia theo công dụng, #683): KHÔNG khai chongLanVanBan; khai chongLanTruc [{nhanh: [<id anh em>…], truc: {<id>: "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê), cauHoiPhanBiet: "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu>?", trich: {<id>: "<chữ biểu nguyên văn của nhánh>"}, viDuHang: [{cap: [<idA>, <idB>], hang: "<một hàng THẬT thoả cả hai nhánh theo chữ biểu>"} — MỖI cặp nhánh khác trục mà cụm phủ], phanXu: null}]. Cặp không có hàng thật ⇒ không khai trục (DỪNG). KHÔNG điền phanXu (chỉ Claude/người soát, khi có chú giải/tiền lệ/người duyệt).
+
+Từ vựng tu-vung@2 (chi tiết + cách đọc: --tu-vung --khoa=<khoá>):
+  dienAp: SO op <= < >= > đơn vị V
+  dongDien: SO op <= < >= > đơn vị A
+  congSuat: SO op <= < >= > đơn vị W
+  tanSo: SO op <= < >= > đơn vị Hz
+  luuLuong: SO op <= < >= > đơn vị m3/h
+  dungTichXiLanh: SO op <= < >= > đơn vị cc
+  khoiLuong: SO op <= < >= > đơn vị kg
+  duongKinh: SO op <= < >= > đơn vị mm
+  duongKinhTrong: SO op <= < >= > đơn vị mm
+  duongKinhLoi: SO op <= < >= > đơn vị mm
+  chieuCao: SO op <= < >= > đơn vị mm
+  kichThuoc: SO op <= < >= > đơn vị mm
+  chieuDaiCuon: SO op <= < >= > đơn vị m
+  daGanDauNoi: CO_KHONG op CO KHONG
+  coCachDien: CO_KHONG op CO KHONG
+  coBoXuLyLapTrinh: CO_KHONG op CO KHONG
+  coKhungChupQuaDau: CO_KHONG op CO KHONG
+  hieuChinhThiLuc: CO_KHONG op CO KHONG
+  chongNang: CO_KHONG op CO KHONG
+  coChucNangGhi: CO_KHONG op CO KHONG
+  daGhi: CO_KHONG op CO KHONG
+  coLuoiBaoVe: CO_KHONG op CO KHONG
+  coManHinh: CO_KHONG op CO KHONG
+  coCamera: CO_KHONG op CO KHONG
+  coBanh: CO_KHONG op CO KHONG
+  hoatDongBangDien: CO_KHONG op CO KHONG
+  coKetHopThietBiThu: CO_KHONG op CO KHONG
+  coGiaNhiet: CO_KHONG op CO KHONG
+  laBoPhan: CO_KHONG op CO KHONG
+  datChim: CO_KHONG op CO KHONG
+  coKhoangPhaTron: CO_KHONG op CO KHONG
+  loaiDongDien: LIET_KE op TRONG [MOT_CHIEU|XOAY_CHIEU]
+  soPha: LIET_KE op TRONG [MOT_PHA|NHIEU_PHA]
+  kieuDotChay: LIET_KE op TRONG [TIA_LUA_DIEN|CHAY_NEN]
+  nguonSang: LIET_KE op TRONG [LED|HUYNH_QUANG|HALOGEN|SOI_DOT]
+  nguonNangLuong: LIET_KE op TRONG [PIN_AC_QUY|DIEN_LUOI|QUANG_DIEN]
+  cachDieuKhien: LIET_KE op TRONG [BANG_TAY|DIEN_TU|DONG_CO|KHI_NEN|THUY_LUC|NHIET]
+  kieuBom: LIET_KE op TRONG [PISTON|LY_TAM|QUAY|TAY]
+  loaiRoLe: LIET_KE op TRONG [KY_THUAT_SO|BAN_DAN|DIEN_TU]
+  loaiCongTac: LIET_KE op TRONG [TU_DONG_RO_DIEN_QUA_TAI|NGAT_SOC_DONG|MINI_NOI_COM|DIEN_TU_HOAC_BAT_NHANH|MANG_DIEN_GIA_DUNG|DAO_CHIEU_HOAC_CAU_CHI]
+  loaiPhichOCam: LIET_KE op TRONG [PHICH_CAM_DIEN_THOAI|TIN_HIEU_HINH_TIENG|CAP_DONG_TRUC_MACH_IN|THONG_THUONG]
+  phamViSuDung: LIET_KE op TRONG [GIA_DINH|CONG_NGHIEP|CONG_CONG]
+  mauHienThi: LIET_KE op TRONG [MAU|DON_SAC]
+  kieuDongCoDien: LIET_KE op TRONG [BUOC|HUONG_TRUC]
+  tinhTrang: LIET_KE op TRONG [MOI|DA_QUA_SU_DUNG]
+  chatLieu: CHAT_LIEU_THEO_VI_TRI op LA [plastic|cao su|giấy|gỗ|kim loại|sắt thép|thép không gỉ|gang|đồng|nhôm|kẽm|niken|thủy tinh|gốm sứ|vải dệt]
+  dungCho: CONG_DUNG op CONG_DUNG
+  congDung: CONG_DUNG op CONG_DUNG
+  tenLoai: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhanHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  model: TEN_LOAI op TEN_LOAI TUONG_TU
+  kyMaHieu: TEN_LOAI op TEN_LOAI TUONG_TU
+  nhaSanXuat: TEN_LOAI op TEN_LOAI TUONG_TU
+  chiHoacChuYeu: CO_KHONG op CO KHONG
+  thietKeChoTreEm: CO_KHONG op CO KHONG
+  daNapChuongTrinh: CO_KHONG op CO KHONG
+  soLoi: SO op <= < >= > đơn vị lõi
+  soSoi: SO op <= < >= > đơn vị sợi
+  tiLe: SO op <= < >= > đơn vị lần
+  phuongPhapCheTao: LIET_KE op TRONG [DUC|REN|CAN_NONG|CAN_NGUOI|KEO|DAP|HAN|EP_PHUN|THOI|DOT_DAP_KEO_GIAN]
+  phuongThucTruyenDan: LIET_KE op TRONG [VO_TUYEN|HUU_TUYEN]
+  daXuLyBeMat: CO_KHONG op CO KHONG
+  nhienLieu: LIET_KE op TRONG [GA|DIEN]
+  phuongPhapIn: LIET_KE op TRONG [BATIK|IN_LUOI|IN_KY_THUAT_SO|IN_CHUYEN_NHIET]
+  tinhDanHoi: CO_KHONG op CO KHONG
+  loaiSoiDet: LIET_KE op TRONG [BONG|SOI_THUC_VAT_KHAC|LEN_LONG_DONG_VAT_MIN|TO_TAM|SOI_TONG_HOP|SOI_TAI_TAO]
+  doDay: SO op <= < >= > đơn vị mm
+  congSuatBieuKien: SO op <= < >= > đơn vị kVA
+  dangNguyenSinh: LIET_KE op TRONG [LONG_HOAC_NHAO|PHAN_TAN|HAT_VIEN_VAY_MANH]
+  daLapRap: CO_KHONG op CO KHONG
+  dungTich: SO op <= < >= > đơn vị lít
+  sanLuongHoi: SO op <= < >= > đơn vị tấn/giờ
+  theTich: SO op <= < >= > đơn vị cm3
+  heDienHoa: LIET_KE op TRONG [KEM_CACBON|KIEM]
+  dungLuong: SO op <= < >= > đơn vị Ah
+  daHoaDeo: CO_KHONG op CO KHONG
+  coBoLoc: CO_KHONG op CO KHONG
