@@ -6,7 +6,8 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 for (const k of ['GEMINI_API_KEY', 'GEMINI_FREE_KEYS', 'HERMES_API_KEY', 'HERMES_BASE_URL', 'MINIMAX_API_KEY', 'MINIMAX_MODEL',
   'MINIMAX_ENRICH_MODEL', 'MINIMAX_FALLBACK_MODEL', 'OPENROUTER_API_KEY', 'DEEPSEEK_API_KEY', 'LLM_TIMEOUT_MS_DEFAULT',
-  'LLM_TIMEOUT_MS_UNDERSTAND', 'LLM_TIMEOUT_MS_GIR', 'LLM_NGAT_MACH_LOI_LIEN_TIEP', 'LLM_NGAT_MACH_NGHI_MS', 'LOOP_PROVIDER']) delete process.env[k];
+  'LLM_TIMEOUT_MS_UNDERSTAND', 'LLM_TIMEOUT_MS_GIR', 'LLM_NGAT_MACH_LOI_LIEN_TIEP', 'LLM_NGAT_MACH_NGHI_MS', 'LOOP_PROVIDER',
+  'LOOP_THINKING_OFF_TIMEOUT_MS']) delete process.env[k];
 
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${x}`); } };
@@ -138,13 +139,19 @@ llmTier.callLLMJson = async (s, u, opts) => {
 const log = [];
 r = await engineLoop.callWithFallback('sys', 'user', { step: 'understand', timeoutMs: 100000, minimax: { model: 'MiniMax-M3' } }, log);
 check('callWithFallback: lần 1 dùng timeout theo bước (50000, không phải 100000)', seen[0]?.timeoutMs === 50000, JSON.stringify(seen[0]));
-check('thinking-off retry: timeout ≤ 30000 + thinking disabled', seen[1]?.timeoutMs === 30000 && seen[1]?.minimax?.extraBody?.thinking?.type === 'disabled', JSON.stringify(seen[1]));
+// #725-45: trần lần "tắt suy nghĩ" 30 s → 45 s (1,5 × ~30 s một lời gọi MiniMax-M2.7-highspeed đo trên prod 02/11).
+check('thinking-off retry: timeout ≤ 45000 + thinking disabled', seen[1]?.timeoutMs === 45000 && seen[1]?.minimax?.extraBody?.thinking?.type === 'disabled', JSON.stringify(seen[1]));
 check('engine.log ghi fallback kèm cause + timeoutMs', log.some((e) => e.fallback === 'thinking-off' && /timeout/.test(e.cause) && e.timeoutMs === 50000), JSON.stringify(log));
 check('kết quả có fallback: true', r.fallback === true && r.json.ok === 1);
+process.env.LOOP_THINKING_OFF_TIMEOUT_MS = '30000';
+seen.length = 0;
+await engineLoop.callWithFallback('sys', 'user', { step: 'understand', timeoutMs: 100000 }, []);
+check('LOOP_THINKING_OFF_TIMEOUT_MS=30000 ghi đè trần tắt suy nghĩ', seen[1]?.timeoutMs === 30000, JSON.stringify(seen.map((o) => o.timeoutMs)));
+delete process.env.LOOP_THINKING_OFF_TIMEOUT_MS;
 process.env.LLM_TIMEOUT_MS_UNDERSTAND = '20000';
 seen.length = 0;
 await engineLoop.callWithFallback('sys', 'user', { step: 'understand', timeoutMs: 100000 }, []);
-check('bước 20000 → thinking-off dùng min(20000, 30000) = 20000', seen[1]?.timeoutMs === 20000, JSON.stringify(seen.map((o) => o.timeoutMs)));
+check('bước 20000 → thinking-off dùng min(20000, 45000) = 20000', seen[1]?.timeoutMs === 20000, JSON.stringify(seen.map((o) => o.timeoutMs)));
 llmTier.callLLMJson = origCall;
 delete process.env.LLM_TIMEOUT_MS_UNDERSTAND;
 
