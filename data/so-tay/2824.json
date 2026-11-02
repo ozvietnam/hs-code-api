@@ -1,0 +1,118 @@
+{
+ "nhom": "2824",
+ "phamVi": {
+  "text": "Chì oxit: chì monoxit (litharge, massicot), trilead tetraoxit (chì đỏ, minium), chì dioxit (anhydrit chì).",
+  "nguon": "nhom2824.nhom",
+  "trich": "(1) Chì oxit (chì monoxit, dạng màu đỏ - litharge, dạng màu vàng - massicot) (PbO). … (2) Trilead tetraoxit (oxit saline chì, chì đỏ, minium) (công thức gần đúng Pb3O4). … (3) Chì dioxit (oxit chì màu xám, anhydrit chì) (PbO2).",
+  "nguonLoai": "NGUOI_DUYET"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "282410",
+   "fact": "loai_vat",
+   "op": "=",
+   "value": "Chì monoxit (litharge, maxicot)",
+   "donVi": null,
+   "nguon": "wco.282410",
+   "trich": "282410 Lead; lead monoxide (litharge, massicot)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "282490",
+   "fact": "loai_vat",
+   "op": "=",
+   "value": "Các oxit chì khác",
+   "donVi": null,
+   "nguon": "wco.282490",
+   "trich": "282490 Lead oxides; n.e.c. in heading no. 2824",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "28241000",
+   "dieuKien": "Chì monoxit (litharge, maxicot)",
+   "nguon": "tax.28241000",
+   "trich": "28241000 - Chì monoxit (litharge, maxicot)",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "28249000",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2824.90",
+   "nguon": "tax.28249000",
+   "trich": "28249000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "2824",
+    "truAnhEm": [
+     "28241000"
+    ],
+    "truDayDu": [
+     "28241000"
+    ],
+    "toTienCoTen": "2824",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2824",
+    "cap": 4,
+    "cha": "28",
+    "tenVi": "Chì oxit; chì đỏ và chì da cam.",
+    "tenEn": "Lead oxides; red lead and orange lead",
+    "suyRa": false
+   },
+   {
+    "id": "28241000",
+    "cap": 8,
+    "cha": "2824",
+    "tenVi": "Chì monoxit (litharge, maxicot)",
+    "tenEn": "Lead; lead monoxide (litharge, massicot)",
+    "suyRa": false,
+    "laPhanNhom": "282410"
+   },
+   {
+    "id": "28249000",
+    "cap": 8,
+    "cha": "2824",
+    "tenVi": "Loại khác",
+    "tenEn": "Lead oxides; n.e.c. in heading no. 2824",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "282490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2824.nhom",
+  "tax.28241000",
+  "tax.28249000",
+  "wco.282410",
+  "wco.282490"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-11-02T06:37:33.371Z",
+  "ms": 301
+ },
+ "kiemTra": {
+  "tong": 5,
+  "dat": 5,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
