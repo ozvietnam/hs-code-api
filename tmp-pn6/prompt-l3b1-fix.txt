@@ -1,0 +1,836 @@
+VÒNG SỬA. Dưới đây là 6 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (0) cong0-phan-con-lai-thua ⇒ BỎ "phanConLai": true ở dòng đó (dòng không phải "Loại khác" trần hoặc đã có điều kiện khác phủ hết); chỉ dùng phanConLai cho dòng "Loại khác/Other" thật; cong5-gia-tri-tuong-tu ⇒ bỏ chữ "tương tự" khỏi giá trị, tách mảng; cong5-ve-mo-bi-bo ⇒ vế mở "và … tương tự" phải có điều kiện hoặc BO_VE lyDo thật. (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 842139 ===
+--- GÓI ---
+# 842139 — Loại khác
+
+842139 — Machinery; for filtering or purifying gases, other than intake air filters, catalytic converters or particulate filters for internal combustion engines
+  84213920 Máy lọc không khí
+  84213930 Loại khác, có vỏ bằng thép không gỉ và có lỗ ống đầu vào và đầu ra có đường kính trong không quá 1,3 cm  [LK có điều kiện]
+  84213990 Loại khác  [LK]
+
+- 84213920 DONG8
+    tax.84213920 [32 ký tự]: 84213920 - - - Máy lọc không khí
+- 84213930 DONG8
+    tax.84213930 [118 ký tự]: 84213930 - - - Loại khác, có vỏ bằng thép không gỉ và có lỗ ống đầu vào và đầu ra có đường kính trong không quá 1,3 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có vỏ" · [GIỚI HẠN] "bằng thép không gỉ và có lỗ ống đầu vào và đầu ra" · [GIỚI HẠN] "có đường kính trong không quá 1,3 cm"
+- 84213990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84213990 [24 ký tự]: 84213990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842139; chú giải: nhom8421.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842139",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842139",
+  "dong8": {
+    "84213920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy lọc không khí"
+        }
+      ]
+    },
+    "84213930": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "thép không gỉ",
+          "viTri": "VO"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 1.3,
+          "donVi": "cm"
+        }
+      ],
+      "phanConLai": [
+        "84213920"
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84213920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84213920: \"Máy lọc không khí\" ⇒ tenLoai TEN_LOAI \"Máy lọc không khí\""
+    },
+    {
+      "ma": "84213930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84213930: \"có vỏ bằng thép không gỉ và có lỗ ống đầu vào và đầu ra có đường kính trong không quá 1,3 cm\" ⇒ chatLieu thép không gỉ vị trí VO, duongKinhTrong <= 1.3 cm; phanConLai phủ 84213920"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong0-phan-con-lai-thua:84213930
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 842199 ===
+--- GÓI ---
+# 842199 — Loại khác
+
+842199 — Machinery; parts for filtering or purifying liquids or gases
+  [8421992] Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23
+    84219921 Của phân nhóm 8421.23.11 hoặc 8421.23.21 (SEN)
+    84219929 Loại khác (SEN)  [LK]
+  84219930 Của hàng hóa thuộc phân nhóm 8421.31
+  84219940 Của hàng hóa thuộc phân nhóm 8421.29.50
+  84219950 Của hàng hóa thuộc phân nhóm 8421.29.60
+  84219960 Của hàng hóa thuộc phân nhóm 8421.39.30
+  84219970 Của hàng hóa thuộc phân nhóm 8421.39.90
+  [8421999] Loại khác
+    84219991 Của hàng hóa thuộc phân nhóm 8421.29.20
+    84219994 Của hàng hóa thuộc phân nhóm 8421.21.11
+    84219996 Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91
+    84219997 Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99
+    84219999 Loại khác  [LK]
+
+- 8421992 TIEU_DE
+    tieuDe.8421992 [56 ký tự]: 8421992 Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của thiết bị lọc thuộc phân nhóm 8421.23"
+- 84219921 DONG8
+    tax.84219921 [63 ký tự]: 84219921 - - - - Của phân nhóm 8421.23.11 hoặc 8421.23.21 (SEN)
+    sen.84219921 [790 ký tự]: LÕI LỌC CỦA THIẾT BỊ LỌC THUỘC PHÂN NHÓM 8421.23 Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23 là các bộ phận thiết yếu của các thiết bị lọc dầu hoặc xăng dùng trong động cơ đốt trong. Chúng được sản xuất và bán như một thiết bị ban đầu và bộ phận thay thế để sử dụng trong bộ lọc dầu hoặc xăng của ô tô. Các bộ phận thiết yếu của các linh kiện này là các vật liệu lọc có nhiều loại và hình dạng khác nhau, có thể được gắn trên các khung, lõi hoặc những thứ tương tự. Khi dầu hoặc xăng lọt qua bộ phận (phần tử) lọc, các hạt có kích thước lớn hơn bị giữ lại trên bề mặt của vật liệu lọc, vì thế chỉ có xăng và dầu sạch thấm qua bộ phận (phần tử) lọc. Bộ phận (phần tử) lọc hoạt động để loại bỏ các tạp chất trong xăng hoặc dầu, làm sạch xăng dầu để chúng được sử dụng tối ưu cho động cơ.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của phân nhóm 8421.23.11 hoặc 8421.23.21"
+- 84219929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84219929 [32 ký tự]: 84219929 - - - - Loại khác (SEN)
+    sen.84219929 [790 ký tự]: LÕI LỌC CỦA THIẾT BỊ LỌC THUỘC PHÂN NHÓM 8421.23 Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23 là các bộ phận thiết yếu của các thiết bị lọc dầu hoặc xăng dùng trong động cơ đốt trong. Chúng được sản xuất và bán như một thiết bị ban đầu và bộ phận thay thế để sử dụng trong bộ lọc dầu hoặc xăng của ô tô. Các bộ phận thiết yếu của các linh kiện này là các vật liệu lọc có nhiều loại và hình dạng khác nhau, có thể được gắn trên các khung, lõi hoặc những thứ tương tự. Khi dầu hoặc xăng lọt qua bộ phận (phần tử) lọc, các hạt có kích thước lớn hơn bị giữ lại trên bề mặt của vật liệu lọc, vì thế chỉ có xăng và dầu sạch thấm qua bộ phận (phần tử) lọc. Bộ phận (phần tử) lọc hoạt động để loại bỏ các tạp chất trong xăng hoặc dầu, làm sạch xăng dầu để chúng được sử dụng tối ưu cho động cơ.
+- 84219930 DONG8
+    tax.84219930 [51 ký tự]: 84219930 - - - Của hàng hóa thuộc phân nhóm 8421.31
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.31"
+- 84219940 DONG8
+    tax.84219940 [54 ký tự]: 84219940 - - - Của hàng hóa thuộc phân nhóm 8421.29.50
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.29.50"
+- 84219950 DONG8
+    tax.84219950 [54 ký tự]: 84219950 - - - Của hàng hóa thuộc phân nhóm 8421.29.60
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.29.60"
+- 84219960 DONG8
+    tax.84219960 [54 ký tự]: 84219960 - - - Của hàng hóa thuộc phân nhóm 8421.39.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.39.30"
+- 84219970 DONG8
+    tax.84219970 [54 ký tự]: 84219970 - - - Của hàng hóa thuộc phân nhóm 8421.39.90
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.39.90"
+- 8421999 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8421999 [17 ký tự]: 8421999 Loại khác
+- 84219991 DONG8
+    tax.84219991 [56 ký tự]: 84219991 - - - - Của hàng hóa thuộc phân nhóm 8421.29.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.29.20"
+- 84219994 DONG8
+    tax.84219994 [56 ký tự]: 84219994 - - - - Của hàng hóa thuộc phân nhóm 8421.21.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.21.11"
+- 84219996 DONG8
+    tax.84219996 [72 ký tự]: 84219996 - - - - Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91"
+- 84219997 DONG8
+    tax.84219997 [72 ký tự]: 84219997 - - - - Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99"
+- 84219999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84219999 [26 ký tự]: 84219999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842199; chú giải: nhom8421.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842199",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842199",
+  "dong8": {
+    "84219921": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8421.23.11",
+            "8421.23.21"
+          ]
+        }
+      ]
+    },
+    "84219930": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.31"
+        }
+      ]
+    },
+    "84219940": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.29.50"
+        }
+      ]
+    },
+    "84219950": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.29.60"
+        }
+      ]
+    },
+    "84219960": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.39.30"
+        }
+      ]
+    },
+    "84219970": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.39.90"
+        }
+      ]
+    },
+    "84219991": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.29.20"
+        }
+      ]
+    },
+    "84219994": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.21.11"
+        }
+      ]
+    },
+    "84219996": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8421.23.11",
+            "8421.23.91"
+          ]
+        }
+      ]
+    },
+    "84219997": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8421.23.19",
+            "8421.23.99"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8421992": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lõi lọc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.23"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8421992",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8421992: \"Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23\" ⇒ tenLoai TEN_LOAI \"Lõi lọc\", dungCho CONG_DUNG \"8421.23\""
+    },
+    {
+      "ma": "84219921",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219921: \"Của phân nhóm 8421.23.11 hoặc 8421.23.21\" ⇒ dungCho CONG_DUNG [\"8421.23.11\", \"8421.23.21\"]"
+    },
+    {
+      "ma": "84219930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219930: \"Của hàng hóa thuộc phân nhóm 8421.31\" ⇒ dungCho CONG_DUNG \"8421.31\""
+    },
+    {
+      "ma": "84219940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219940: \"Của hàng hóa thuộc phân nhóm 8421.29.50\" ⇒ dungCho CONG_DUNG \"8421.29.50\""
+    },
+    {
+      "ma": "84219950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219950: \"Của hàng hóa thuộc phân nhóm 8421.29.60\" ⇒ dungCho CONG_DUNG \"8421.29.60\""
+    },
+    {
+      "ma": "84219960",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219960: \"Của hàng hóa thuộc phân nhóm 8421.39.30\" ⇒ dungCho CONG_DUNG \"8421.39.30\""
+    },
+    {
+      "ma": "84219970",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219970: \"Của hàng hóa thuộc phân nhóm 8421.39.90\" ⇒ dungCho CONG_DUNG \"8421.39.90\""
+    },
+    {
+      "ma": "84219991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219991: \"Của hàng hóa thuộc phân nhóm 8421.29.20\" ⇒ dungCho CONG_DUNG \"8421.29.20\""
+    },
+    {
+      "ma": "84219994",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219994: \"Của hàng hóa thuộc phân nhóm 8421.21.11\" ⇒ dungCho CONG_DUNG \"8421.21.11\""
+    },
+    {
+      "ma": "84219996",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219996: \"Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91\" ⇒ dungCho CONG_DUNG [\"8421.23.11\", \"8421.23.91\"]"
+    },
+    {
+      "ma": "84219997",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219997: \"Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99\" ⇒ dungCho CONG_DUNG [\"8421.23.19\", \"8421.23.99\"]"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-dong-khong-toi-duoc:84219991
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-dong-khong-toi-duoc:84219994
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 842441 ===
+--- GÓI ---
+# 842441 — Thiết bị phun xách tay
+
+842441 — Mechanical appliances; agricultural or horticultural sprayers; portable sprayers
+  84244110 Thiết bị phun thuốc trừ sâu hoạt động bằng tay
+  84244120 Loại khác, không hoạt động bằng điện  [LK có điều kiện]
+  84244190 Loại khác  [LK]
+
+- 84244110 DONG8
+    tax.84244110 [61 ký tự]: 84244110 - - - Thiết bị phun thuốc trừ sâu hoạt động bằng tay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "trừ sâu hoạt động" · [GIỚI HẠN] "bằng tay"
+- 84244120 DONG8
+    tax.84244120 [51 ký tự]: 84244120 - - - Loại khác, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84244190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84244190 [24 ký tự]: 84244190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842441; chú giải: nhom8424.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842441",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842441",
+  "dong8": {
+    "84244110": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "trừ sâu"
+        },
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "BANG_TAY"
+          ]
+        }
+      ]
+    },
+    "84244120": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "phanConLai": [
+        "84244110"
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84244110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84244110: \"Thiết bị phun thuốc trừ sâu hoạt động bằng tay\" ⇒ congDung CONG_DUNG \"trừ sâu\", cachDieuKhien BANG_TAY"
+    },
+    {
+      "ma": "84244120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84244120: \"Loại khác, không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG, phanConLai phủ 84244110"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong0-phan-con-lai-thua:84244120
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 842482 ===
+--- GÓI ---
+# 842482 — Dùng trong nông nghiệp hoặc làm vườn
+
+842482 — Mechanical appliances; agricultural or horticultural, n.e.c. in heading 8424
+  84248210 Hệ thống tưới kiểu nhỏ giọt
+  84248220 Loại khác, hoạt động bằng điện  [LK có điều kiện]
+  84248230 Loại khác, không hoạt động bằng điện  [LK có điều kiện]
+
+- 84248210 DONG8
+    tax.84248210 [42 ký tự]: 84248210 - - - Hệ thống tưới kiểu nhỏ giọt
+- 84248220 DONG8
+    tax.84248220 [45 ký tự]: 84248220 - - - Loại khác, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84248230 DONG8
+    tax.84248230 [51 ký tự]: 84248230 - - - Loại khác, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.842482; chú giải: nhom8424.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842482",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842482",
+  "dong8": {
+    "84248210": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hệ thống tưới kiểu nhỏ giọt"
+        }
+      ]
+    },
+    "84248220": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": [
+        "84248210"
+      ]
+    },
+    "84248230": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "phanConLai": [
+        "84248210"
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84248210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84248210: \"Hệ thống tưới kiểu nhỏ giọt\" ⇒ tenLoai TEN_LOAI \"Hệ thống tưới kiểu nhỏ giọt\""
+    },
+    {
+      "ma": "84248220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84248220: \"Loại khác, hoạt động bằng điện\" ⇒ hoatDongBangDien CO, phanConLai phủ 84248210"
+    },
+    {
+      "ma": "84248230",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84248230: \"Loại khác, không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG, phanConLai phủ 84248210"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong0-phan-con-lai-thua:84248220
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong0-phan-con-lai-thua:84248230
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 842490 ===
+--- GÓI ---
+# 842490 — Bộ phận
+
+842490 — Mechanical appliances; parts of machines projecting, dispersing or spraying liquids or powders, whether or not hand-operated
+  84249010 Của bình dập lửa
+  [8424902] Của súng phun và các thiết bị tương tự
+    [842490~r13578] Hoạt động bằng điện  (tầng không mã, biểu thuế r13578, gạch 3)
+      84249021 Của hàng hóa thuộc phân nhóm 8424.20.11  (gạch 4)
+      84249023 Loại khác  [LK]  (gạch 4)
+    [842490~r13581] Không hoạt động bằng điện  (tầng không mã, biểu thuế r13581, gạch 3)
+      84249024 Của hàng hóa thuộc phân nhóm 8424.20.21  (gạch 4)
+      84249029 Loại khác  [LK]  (gạch 4)
+  84249030 Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự
+  [8424909] Của thiết bị khác
+    84249093 Của hàng hóa thuộc phân nhóm 8424.82.10
+    84249094 Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30
+    84249095 Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20
+    84249096 Của hàng hóa thuộc phân nhóm 8424.89.40
+    84249099 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    842490~r13578 (gạch 3) "Hoạt động bằng điện:" — dòng dưới: 84249021, 84249023
+    842490~r13581 (gạch 3) "Không hoạt động bằng điện:" — dòng dưới: 84249024, 84249029
+
+- 84249010 DONG8
+    tax.84249010 [29 ký tự]: 84249010 - - Của bình dập lửa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của bình dập lửa"
+- 8424902 TIEU_DE
+    tieuDe.8424902 [46 ký tự]: 8424902 Của súng phun và các thiết bị tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của súng phun" · [MỞ] "và các thiết bị tương tự"
+- 842490~r13578 TIEU_DE
+    tieuDe.842490~r13578 [33 ký tự]: 842490~r13578 Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84249021 DONG8
+    tax.84249021 [56 ký tự]: 84249021 - - - - Của hàng hóa thuộc phân nhóm 8424.20.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.20.11"
+- 84249023 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84249023 [26 ký tự]: 84249023 - - - - Loại khác
+- 842490~r13581 TIEU_DE
+    tieuDe.842490~r13581 [39 ký tự]: 842490~r13581 Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84249024 DONG8
+    tax.84249024 [56 ký tự]: 84249024 - - - - Của hàng hóa thuộc phân nhóm 8424.20.21
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.20.21"
+- 84249029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84249029 [26 ký tự]: 84249029 - - - - Loại khác
+- 84249030 DONG8
+    tax.84249030 [85 ký tự]: 84249030 - - Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự"
+- 8424909 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8424909 [25 ký tự]: 8424909 Của thiết bị khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị khác"
+- 84249093 DONG8
+    tax.84249093 [54 ký tự]: 84249093 - - - Của hàng hóa thuộc phân nhóm 8424.82.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.82.10"
+- 84249094 DONG8
+    tax.84249094 [94 ký tự]: 84249094 - - - Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30"
+- 84249095 DONG8
+    tax.84249095 [82 ký tự]: 84249095 - - - Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20"
+- 84249096 DONG8
+    tax.84249096 [54 ký tự]: 84249096 - - - Của hàng hóa thuộc phân nhóm 8424.89.40
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.89.40"
+- 84249099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84249099 [24 ký tự]: 84249099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842490; chú giải: nhom8424.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842490",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842490",
+  "dong8": {
+    "84249010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bình dập lửa"
+        }
+      ]
+    },
+    "84249021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8424.20.11"
+        }
+      ]
+    },
+    "84249024": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8424.20.21"
+        }
+      ]
+    },
+    "84249030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy phun bắn hơi nước",
+            "cát",
+            "máy phun bắn tia tương tự"
+          ]
+        }
+      ]
+    },
+    "84249093": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8424.82.10"
+        }
+      ]
+    },
+    "84249094": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8424.41.10",
+            "8424.41.20",
+            "8424.49.20",
+            "8424.82.30"
+          ]
+        }
+      ]
+    },
+    "84249095": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8424.41.90",
+            "8424.49.10",
+            "8424.82.20"
+          ]
+        }
+      ]
+    },
+    "84249096": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8424.89.40"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8424902": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "súng phun",
+            "thiết bị tương tự"
+          ]
+        }
+      ]
+    },
+    "842490~r13578": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "842490~r13581": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8424909": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84249010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249010: \"Của bình dập lửa\" ⇒ dungCho CONG_DUNG \"bình dập lửa\""
+    },
+    {
+      "ma": "8424902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8424902: \"Của súng phun và các thiết bị tương tự\" ⇒ dungCho CONG_DUNG [\"súng phun\", \"thiết bị tương tự\"]"
+    },
+    {
+      "ma": "842490~r13578",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.842490~r13578: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84249021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249021: \"Của hàng hóa thuộc phân nhóm 8424.20.11\" ⇒ dungCho CONG_DUNG \"8424.20.11\""
+    },
+    {
+      "ma": "842490~r13581",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.842490~r13581: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84249024",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249024: \"Của hàng hóa thuộc phân nhóm 8424.20.21\" ⇒ dungCho CONG_DUNG \"8424.20.21\""
+    },
+    {
+      "ma": "84249030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249030: \"Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự\" ⇒ dungCho CONG_DUNG mảng các thiết bị đích"
+    },
+    {
+      "ma": "8424909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8424909: \"Của thiết bị khác\" ⇒ phanConLai true, dieuKienSo []"
+    },
+    {
+      "ma": "84249093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249093: \"Của hàng hóa thuộc phân nhóm 8424.82.10\" ⇒ dungCho CONG_DUNG \"8424.82.10\""
+    },
+    {
+      "ma": "84249094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249094: \"Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30\" ⇒ dungCho CONG_DUNG mảng 4 mã"
+    },
+    {
+      "ma": "84249095",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249095: \"Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20\" ⇒ dungCho CONG_DUNG mảng 3 mã"
+    },
+    {
+      "ma": "84249096",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249096: \"Của hàng hóa thuộc phân nhóm 8424.89.40\" ⇒ dungCho CONG_DUNG \"8424.89.40\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-gia-tri-tuong-tu:84249030:dungCho
+      → Một giá trị chữ tự do (TEN_LOAI/CONG_DUNG, hoặc tên nêu của TUONG_TU) chứa "tương tự"/"similar" — vd 950300 .10 tenLoai "đồ chơi tương tự có bánh". Mô tả hàng thật không bao giờ viết chữ "tương tự", nên giá trị này là giá trị CHẾT (không hàng nào khớp): vế mở bị liệt kê đóng một cách trá hình — xe chòi chân rơi .99 (20%) thay vì .10 (10%). Máy không tính giá trị đó là phủ vế mở (soát L1-4c đợt 4 #711). Sửa: Biểu diễn vế mở "X, Y và các loại tương tự" bằng op 
+    ✗ cong5-ve-mo-bi-bo:84249030:và các loại máy phun bắn tia tương tự
+      → Vế MỞ ("… và các loại tương tự", "và bộ phận của chúng", "và các loại … khác") bị bỏ trong khi danh sách đứng trước nó lại được liệt kê ĐÓNG thành điều kiện — điều kiện HẸP hơn chữ. Sửa: Không ghi danh sách đóng làm điều kiện khi chữ có vế mở (quy ước 392690): bỏ điều kiện liệt kê rồi khai BO_VE cho vế giới hạn chứa danh sách (kèm lý do); hoặc phủ chính vế mở — "X và bộ phận của chúng" ⇒ {"op":"HOAC","phuongAn":[[tenLoai "X"],[laBoPhan CO, dungCho "X
+    ✗ cong5-gia-tri-tuong-tu:8424902:dungCho
+    ✗ cong5-ve-mo-bi-bo:8424902:và các thiết bị tương tự
+    ✗ cong5-ve-gioi-han-bi-bo:8424909:Của thiết bị khác
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+    ✗ cong2-dong-khong-toi-duoc:84249093
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-dong-khong-toi-duoc:84249094
+    ✗ cong2-dong-khong-toi-duoc:84249095
+    ✗ cong2-dong-khong-toi-duoc:84249096
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 842890 ===
+--- GÓI ---
+# 842890 — Máy khác
+
+842890 — Lifting, handling, loading or unloading machinery; n.e.c. in heading no. 8425, 8426, 8427 or 8428
+  84289020 Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+  84289030 Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự
+  84289090 Loại khác  [LK]
+
+- 84289020 DONG8
+    tax.84289020 [105 ký tự]: 84289020 - - Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp"
+- 84289030 DONG8
+    tax.84289030 [156 ký tự]: 84289030 - - Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự
+- 84289090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84289090 [22 ký tự]: 84289090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842890; chú giải: nhom8428.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842890",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842890",
+  "dong8": {
+    "84289020": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dịch chuyển, xử lý và kẹp giữ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    },
+    "84289030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Thiết bị đẩy xe goòng trong hầm mỏ",
+            "thanh ngang xe goòng",
+            "đầu máy",
+            "thiết bị lật toa xe",
+            "thiết bị giữ xe goòng chạy đường sắt"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84289020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84289020: \"để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\" ⇒ congDung giữ nguyên chuỗi liên hợp nối và; dungCho tách mảng 3 đối tượng"
+    },
+    {
+      "ma": "84289030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84289030: \"Thiết bị đẩy xe goòng... và các thiết bị giữ xe goòng chạy đường sắt tương tự\" ⇒ vế mở có tương tự dùng tenLoai TUONG_TU"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:84289020+84289030:congDung=dịch chuyển, xử lý và kẹp giữ,dungCho=tấm mạch in,tenLoai=Thiết bị đẩy xe goòng trong hầm mỏ:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan-truc:84289020:84289030
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho …
+    ✗ cong2-chong-lan-truc:84289030:84289020
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
