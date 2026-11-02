@@ -28,7 +28,9 @@ const clone = (x) => JSON.parse(JSON.stringify(x));
 // + daXuLyBeMat, nhienLieu (#577 — 848180 .97 "đã được xử lý bề mặt", .30 "bếp nấu hoặc bếp có lò nướng bằng ga")
 // + 4 khoá lát 2 (02/11, de-xuat-khoa-lat-2.md quét + studio-loop, GĐ duyệt): phuongPhapIn (5208.59.10/6204 "in batik truyền thống"),
 //   tinhDanHoi (6006.x.10 "Đàn hồi (kết hợp với sợi cao su)", 6001.92.30), loaiSoiDet (6306 "Từ bông", 5515.99.10), doDay (7308.30.10).
-const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNapChuongTrinh: 'CO_KHONG', soLoi: 'SO', soSoi: 'SO', tiLe: 'SO', phuongPhapCheTao: 'LIET_KE', phuongThucTruyenDan: 'LIET_KE', daXuLyBeMat: 'CO_KHONG', nhienLieu: 'LIET_KE', phuongPhapIn: 'LIET_KE', tinhDanHoi: 'CO_KHONG', loaiSoiDet: 'LIET_KE', doDay: 'SO' };
+const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNapChuongTrinh: 'CO_KHONG', soLoi: 'SO', soSoi: 'SO', tiLe: 'SO', phuongPhapCheTao: 'LIET_KE', phuongThucTruyenDan: 'LIET_KE', daXuLyBeMat: 'CO_KHONG', nhienLieu: 'LIET_KE', phuongPhapIn: 'LIET_KE', tinhDanHoi: 'CO_KHONG', loaiSoiDet: 'LIET_KE', doDay: 'SO',
+  // + 10 khoá lô 2 (02/11, Studio soạn, máy kiểm): 848xxx/850xxx/39xx DỪNG THIEU_KHOA_TU_VUNG
+  congSuatBieuKien: 'SO', dungTich: 'SO', theTich: 'SO', sanLuongHoi: 'SO', dungLuong: 'SO', dangNguyenSinh: 'LIET_KE', heDienHoa: 'LIET_KE', daLapRap: 'CO_KHONG', daHoaDeo: 'CO_KHONG', coBoLoc: 'CO_KHONG' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
@@ -311,6 +313,20 @@ la('Zh "厚度 3mm"', 'doDay', '钢板 厚度 3mm', 3);
 }
 chuaBiet('"8 mm" trần không có chữ dày — không đoán', 'doDay', 'ống thép 8 mm');
 chuaBiet('đường kính không phải độ dày', 'doDay', 'ống thép đường kính 20 mm');
+
+// ── 10 khoá lô 2 (02/11) — đọc thử ─────────────────────────────────────────────────────────────────────────────────
+la('congSuatBieuKien "75 kVA"', 'congSuatBieuKien', 'Máy phát điện xoay chiều công suất 75 kVA', 75);
+la('dungTich "250 lít"', 'dungTich', 'Bình chứa dung tích 250 lít', 250);
+la('theTich "thể tích ngoài 250 cm3"', 'theTich', 'Pin có thể tích ngoài 250 cm3', 250);
+chuaBiet('theTich "thể tích" trần không đọc (tránh lẫn dungTich)', 'theTich', 'thể tích 500 ml');
+la('sanLuongHoi "10 tấn/giờ"', 'sanLuongHoi', 'lò hơi sản lượng hơi 10 tấn/giờ', 10);
+la('dungLuong "100Ah"', 'dungLuong', 'ắc quy dung lượng 100Ah', 100);
+la('daLapRap "đã lắp ráp" ⇒ true', 'daLapRap', 'xe đã lắp ráp hoàn chỉnh', true);
+la('daLapRap "chưa lắp ráp" ⇒ false', 'daLapRap', 'xe chưa lắp ráp', false);
+la('daHoaDeo "đã hóa dẻo" ⇒ true', 'daHoaDeo', 'PVC đã hóa dẻo', true);
+la('coBoLoc "không có bộ lọc" ⇒ false', 'coBoLoc', 'máy bơm không có bộ lọc', false);
+la('dangNguyenSinh "dạng hạt"', 'dangNguyenSinh', 'polyme dạng hạt', 'HAT_VIEN_VAY_MANH');
+la('heDienHoa "hệ kiềm"', 'heDienHoa', 'pin hệ kiềm', 'KIEM');
 
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────
 const viet = (khoa, v) => { try { return T.vietCum(khoa, v); } catch (e) { return `LOI ${e.message}`; } };
