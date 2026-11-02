@@ -21,4 +21,7 @@ Quét ở trên chỉ thấy khoá thiếu; chạy thật còn lộ **giá trị
 | `phuongPhapCheTao` | `IN_BATIK` hoặc tương đương | 52085910 "in batik truyền thống" | #874 |
 | `phuongPhapCheTao` | `LAP_RAP_BANG_KHOP_NOI` (lắp ráp bằng khớp nối) | 730810/730820 "được lắp ráp bằng các khớp nối (SEN)" — cái chính phân biệt với dòng 'Loại khác' | #858, #864 |
 
+| `loaiCaoSu` (khoá MỚI) | tự nhiên / khác | 401512/401519 "cao su tự nhiên lưu hóa" ↔ "cao su lưu hóa khác" — chatLieu chỉ có 'cao su' chung, mượn là rộng hơn chữ | #860, #866 |
+| `loaiXoPha` (khoá MỚI) | thành phần pha sợi | 55159910 "Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn" | #879 |
+
 Kèm theo: 520859 còn chờ mục bảng hiệu chỉnh tiền lệ L1-4b (`can-bang-hieu-chinh-tien-le`).
