@@ -1,0 +1,80 @@
+{
+ "nhom": "2813",
+ "nguoiSoat": "dev-soat-doc-lap-lo083",
+ "luc": "2026-11-02T10:05:00+07:00",
+ "phamViSoat": 8,
+ "soat": 8,
+ "docNgoaiPhamVi": 4,
+ "tongMuc": 12,
+ "giu": 3,
+ "sua": 4,
+ "xoa": 1,
+ "chen": 1,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 083 — nhóm 2813 (8 mục trong phạm vi mục 4 [1 phamVi + 1 dieuKienVao + 3 loaiTru + 3 phanBiet] + 4 mục đọc thêm [2 tieuChi6 + 2 dong8]). Người soát dev-soat-doc-lap-lo083 ≠ người soạn dev-zcode-mm. Đọc LẠI [nhom2813.nhom] + [ch28.chuong] + [phan28.phan] + wco.*/tax.*; đối chiếu TỪNG mục với câu nguồn. KẾT QUẢ: 4 SỬA, 1 XOÁ, 1 CHÈN, 3 GIỮ. LỚP LỖI 1 (xoá): dieuKienVao mượn câu CẤP CHƯƠNG (mã hoá 'va' trong khi nguồn 'hoặc') — xem thayDoi[0]; nền nhà: 12/12 nhóm Chương 28 đã gộp đều rỗng, 0/644 nhóm trong kho trích câu này. LỚP LỖI 2 (sửa, 4 mục): MẤT DÒNG DẪN — loaiTru[1]/[2] và phanBiet[1]/[2] chép câu trích BẮT ĐẦU NGAY TỪ '(a)/(b)' trong khi nguồn có dòng dẫn riêng 'Nhóm này không bao gồm:' ngay phía trên ⇒ câu trích chỉ còn là một danh sách hàng, KHÔNG nói đó là hàng BỊ LOẠI hay ĐƯỢC BAO GỒM; nặng nhất ở phanBiet (nhánh 'có → 28.12/28.53' không có căn cứ trong câu trích). Đây đúng lớp lỗi lô 082 đã sửa ở 5 nhóm (2806/2807/2809/2811) và lô 049 (0806) — chứng minh lớp lỗi này PHỔ BIẾN. LỚP LỖI 3 (chèn, 1 mục): bản soạn BỎ SÓT một phân biệt có đích danh — xem thayDoi[5]. GHI NHẬN: phamVi trích câu mở đầu 'Các hợp chất hai thành phần quan trọng nhất của nhóm này là: …' + 4 mục (1)(2)(3)(4) — phạm vi nhóm tự nói; text chép lại đúng, không thêm chữ — GIỮ. GHI NHẬN: nhóm KHÔNG có phần ngang hàng (A)/(B) (chỉ có mục đánh số (1)–(4)) nên không có `boPhan` — đúng, không thêm. GHI NHẬN (ngoài phạm vi, KHÔNG sửa): tieuChi6[281390].fact = 'la_sulphua_cua_phi_kim_loai' KHÔNG nêu 'trừ carbon' và không nêu 'phospho trisulphua thương phẩm' (WCO: 'Sulphides of non-metals, (excluding carbon); commercial phosphorus trisulphide') ⇒ không phân biệt được với 281310 (carbon disulphua); `dong8[28139000].dieuKien` thì ĐÃ đủ ('sulphua của phi kim loại (trừ carbon) và phospho trisulphua thương phẩm'); mẫu nhà có cả hai kiểu (020319 fact 'la_thit_lon_khac' thiếu vế 'n.e.c.', 030199 fact 'khac_trong_nhom_0301' có đủ) — để người duyệt xem.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mượn câu cấp CHƯƠNG + mã hoá sai logic) — XOÁ. (1) Câu trích 'KHÁI QUÁT CHUNG Trừ khi có những yêu cầu khác, Chương 28 được giới hạn cho các nguyên tố hóa học riêng biệt và các hợp chất đã được xác định về mặt hóa học riêng biệt.' nằm ở [ch28.chuong], áp cho CẢ Chương 28 — KHÔNG phải điều kiện riêng của nhóm 2813. (2) Mã hoá SAI CHIỀU: fact 'la_nguyen_to_hoa_hoc_rieng_biet_va_hop_chat_xac_dinh_ve_mat_hoa_hoc_rieng_biet' dùng 'va' nên boolean '= true' đòi hàng thỏa CẢ HAI vế; nguồn là 'hoặc'. Hàng của nhóm 2813 (sulphua của phi kim loại) đều là HỢP CHẤT, không phải nguyên tố ⇒ điều kiện FALSE với chính hàng của nhóm. (3) NỀN NHÀ đo trước khi bác: 12/12 nhóm Chương 28 đã gộp trong kho (2716, 2801–2811) đều RỖNG; 0/644 nhóm trong kho trích câu này; lô 082 đã ghi 'dieuKienVao RỖNG là ĐÚNG — các điều kiện của nhóm nằm ở từng phần, không có câu nào phủ CẢ nhóm'. (4) Đoạn KHÁI QUÁT CHUNG còn định nghĩa thuật ngữ ⇒ câu ĐỊNH NGHĨA, mà luật lô 030 yêu cầu dieuKienVao phải trích câu RÀNG BUỘC. Thà bỏ mục còn hơn mục không có căn cứ. KHÔNG sửa câu nguồn."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` = 'Các hợp chất hai thành phần quan trọng nhất của nhóm này là: … (1) Carbon disulphua (CS2). … (2) Silic disulphua (SiS2). … (3) Asen sulphua. … (4) Phospho sulphua.' — nguyên văn, có vế dẫn 'là:' nên phạm vi nhóm tự nói; `text` chép lại đúng, không thêm chữ ngoài nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này không bao gồm asen sulphua tự nhiên (disulphua hoặc realgar (hùng hoàng), trisulphua hoặc orpiment) (nhóm 25.30).' — có vế dẫn 'không bao gồm' + nhóm đích 25.30 nguyên văn; `dieuKien` chép đúng vế bị loại."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — MẤT DÒNG DẪN. Mục này nằm trong khối 'Nhóm này không bao gồm:' (dòng dẫn nguyên văn ngay phía trên mục (a) trong [nhom2813.nhom]); bản nháp chép câu trích BẮT ĐẦU NGAY TỪ '(a) Hợp chất hai thành phần của lưu huỳnh với halogen…' nên câu trích chỉ còn là MỘT DANH SÁCH HÀNG, không có vế 'không bao gồm' ⇒ người đọc không biết đó là hàng BỊ LOẠI hay ĐƯỢC BAO GỒM. Cùng lớp lỗi đã sửa ở lô 082 (2806/2807/2809/2811) và lô 049 (0806). SỬA: thêm dòng dẫn nguyên văn byte-exact vào đầu câu trích, nối bằng dấu lược ' … '. Đoạn bị lược chỉ là xuống dòng giữa dòng dẫn và mục đầu tiên — KHÔNG chứa ngoại lệ nào bị nuốt. `dieuKien` và `sangNhom` giữ nguyên. Không sửa mã/nguồn.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (a) Hợp chất hai thành phần của lưu huỳnh với halogen (ví dụ, lưu huỳnh clorua (nhóm 28.12)."
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — MẤT DÒNG DẪN. Mục nằm trong khối 'Nhóm này không bao gồm:' (dòng dẫn nguyên văn ngay phía trên mục (b) trong [nhom2813.nhom]); bản nháp chép câu trích bắt đầu ngay từ '(b) Oxysulphua…' ⇒ chỉ còn là danh sách hàng, không nói là hàng BỊ LOẠI hay ĐƯỢC BAO GỒM. SỬA: thêm dòng dẫn nguyên văn byte-exact, nối bằng ' … '; đoạn bị lược không chứa ngoại lệ. `dieuKien`/`sangNhom` giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (b) Oxysulphua (ví dụ, của asen, cacbon và silic) và các thiohalogenua của phi kim loại (ví dụ, phospho clorosulphua và thiocarbonyl clorua) (nhóm 28.53)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này không bao gồm asen sulphua tự nhiên (disulphua hoặc realgar (hùng hoàng), trisulphua hoặc orpiment) (nhóm 25.30).' — có vế dẫn + nhóm đích; chiều Có/Không đúng (có → 2530, không → 2813 = chính nhóm, mẫu nhà 1113/1175)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — MẤT DÒNG DẪN, nặng nhất ở phanBiet. Bản nháp chép câu trích bắt đầu ngay từ '(a) Hợp chất hai thành phần của lưu huỳnh với halogen…' ⇒ NHÁNH 'có → 28.12' KHÔNG có căn cứ trong câu trích (đúng lớp lỗi SOAT-LO ghi: nhánh 'không' của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ thì người soát phải bắt). SỬA: thêm dòng dẫn 'Nhóm này không bao gồm:' nguyên văn byte-exact, nối bằng ' … '. `hoi`/`neuCo`/`neuKhong` giữ nguyên (nhánh không → 2813 = chính nhóm, mẫu nhà).",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (a) Hợp chất hai thành phần của lưu huỳnh với halogen (ví dụ, lưu huỳnh clorua (nhóm 28.12)."
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — MẤT DÒNG DẪN. Câu trích bắt đầu ngay từ '(b) Oxysulphua…' trong khi nguồn có dòng dẫn 'Nhóm này không bao gồm:' phía trên ⇒ nhánh 'có → 28.53' không có căn cứ trong câu trích. SỬA: thêm dòng dẫn nguyên văn byte-exact, nối bằng ' … '. Các trường khác giữ nguyên.",
+   "sua": {
+    "trich": "Nhóm này không bao gồm: … (b) Oxysulphua (ví dụ, của asen, cacbon và silic) và các thiohalogenua của phi kim loại (ví dụ, phospho clorosulphua và thiocarbonyl clorua) (nhóm 28.53)."
+   }
+  },
+  {
+   "index": "phanBiet",
+   "hanhDong": "chen",
+   "lyDo": "CHÈN — BẢN SOẠN BỎ SÓT MỘT PHÂN BIỆT CÓ ĐÍCH DANH. [nhom2813.nhom] mục (b) Diasen trisulphua ghi nguyên văn: 'Với sulphua kiềm, nó tạo thành thioasenit thuộc nhóm 28.42.' (mục (c) Diasen pentasulphua lặp lại: 'Với sulphua kiềm, nó cũng chuyển thành dạng thioasenat thuộc nhóm 28.42.'). Câu có vị ngữ phân loại + NHÓM ĐÍCH 28.42 nêu rõ ⇒ đủ điều kiện luật 4 và luật 3. Bản soạn không tạo mục nào cho trường hợp này, trong khi CÙNG LÔ này lại có (2815 đã ghi 'nó đôi khi được trộn với nước vôi và khi đó được phân loại vào nhóm 30.03 hoặc 30.04') ⇒ thiếu sót bất nhất. Mục chèn dùng NGUYÊN VĂN: `hoi` hỏi về đặc tính hàng (không nhắc mã), `neuCo` = 2842, `neuKhong` = 2813 (chính nhóm — mẫu nhà), `trich` kéo chủ thể '(b) Diasen trisulphua…' để câu trích tự nói; đoạn bị lược chỉ là phần mô tả tính chất, KHÔNG chứa ngoại lệ. CHỈ tạo MỘT mục cho câu hỏi này (luật: không tạo nhiều mục cùng một câu hỏi cho các cặp mã khác nhau) dù nguồn nêu hai chỗ. Runtime chỉ lấy 4 phanBiet đầu (lib/so-tay-gates.js:141) — sau khi chèn nhóm này có 4 mục, vẫn nằm trong cửa sổ.",
+   "muc": {
+    "hoi": "Hàng này có được trộn với sulphua kiềm không?",
+    "neuCo": "2842",
+    "neuKhong": "2813",
+    "nguon": "nhom2813.nhom",
+    "trich": "(b) Diasen trisulphua (opiment nhân tạo, auripiment giả, sulphua màu vàng) (As2S3). … Với sulphua kiềm, nó tạo thành thioasenit thuộc nhóm 28.42."
+   }
+  }
+ ]
+}
