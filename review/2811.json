@@ -1,0 +1,82 @@
+{
+  "nhom": "2811",
+  "nguoiSoat": "dev-soat-doc-lap-lo082",
+  "luc": "2026-11-02T08:40:00+07:00",
+  "phamViSoat": 10,
+  "soat": 10,
+  "docNgoaiPhamVi": 20,
+  "tongMuc": 30,
+  "giu": 5,
+  "sua": 5,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2811 (lô 082, PR #732) — người soát dev-soat-doc-lap-lo082 ≠ người soạn dev-zcode-mm. Đọc TOÀN BỘ [nhom2811.nhom] cùng các khối wco.*/tax.*/sen.* của nhóm; đối chiếu từng mục phamVi/boPhan/dieuKienVao/loaiTru/phanBiet với câu nguồn (máy xanh: check-so-tay 100 % + check-trich-nguyen-van byte-exact, nhưng máy KHÔNG biết câu trích có nói ĐÚNG điều mục khẳng định hay không). KẾT QUẢ: 5 mục SỬA, 0 mục xoá. LỖI SỬA (một lớp lỗi duy nhất, lặp ở 5 nhóm): bản nháp bỏ DÒNG DẪN \"Nhóm này không bao gồm:\" ⇒ câu trích chỉ còn danh sách hàng, không nói đó là loại trừ. Chi tiết từng mục ở thayDoi. KHÔNG sửa câu nguồn/mã để lách máy; KHÔNG thêm chữ ngoài nguồn; giữ nguyên ký tự (cắt trích thẳng từ tệp nguồn). LỖI RIÊNG CỦA 2811 (ngoài lớp lỗi chung): boPhan bỏ sót phần (N) CÁC AXIT PHỨC — chi tiết ở thayDoi. GHI NHẬN: mục loại trừ (a) \"Silica tự nhiên, ví dụ thạch anh và đất tảo cát (diatomaceous earth) (Chương 25, trừ các loại đá quý hoặc đá bán quý- xem Chú giải Chi tiết của nhóm 71.03 và 71.05)\" KHÔNG thể ghi thành loaiTru/phanBiet: luật 3 loại trừ \"Chương N\" (chỉ nêu Chương 25, không nêu mã nhóm đích), và luật 4 đòi mã NGOÀI nhóm phải có trong câu trích — nhóm 71.03/71.05 chỉ là \"xem Chú giải Chi tiết\", nhánh \"không → 2811\" sẽ sai với hàng thuộc Chương 25 ⇒ BỎ SÓT CÓ CHỦ ĐÍCH, không phải lỗi; đã ghi ở PR cho người duyệt. GHI NHẬN: loaiTru[2] (arsenic hydrides → 28.50) và loaiTru[3] (axit antimonic/oxit antimon → 28.25) GIỮ NGUYÊN — câu trích tự nói rõ (\"Nhóm này loại trừ arsenic hydrides (ví dụ, AsH3) (nhóm 28.50).\" / \"…axit antimonic và oxit antimon phân loại vào nhóm 28.25.\"), không dính lớp lỗi mất dòng dẫn. GHI NHẬN: loaiTru[0] là mục HEDGE (\"thường được phân loại vào nhóm 38.24\") — theo luật nhà (\"câu nguồn nói \"thường thuộc/nằm nhóm X\" thì BỎ\") thì đứng riêng nó KHÔNG phải loại trừ dứt khoát; chỉ khi giữ dòng dẫn \"Nhóm này không bao gồm:\" thì mới thành loại trừ dứt khoát ⇒ đã SỬA câu trích theo hướng đó (đây là lý do riêng của mục này, không chỉ là lớp lỗi chung). GHI NHẬN: luật máy `HEDGE_LOAI_TRU` (lib/so-tay.js:190) bắt \"thường nằm/thuộc/được xếp/xếp\" nhưng KHÔNG bắt \"thường được phân loại\" ⇒ máy xanh với câu trích có \"thường\"; đề xuất thêm \"được phân loại\" vào luật máy cho các lô sau (ngoài phạm vi lô dữ liệu — không sửa lib/ trong lô này). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): cay.tenDien cho 281119 (\"Axit vô cơ khác\") và 281129 (\"Hợp chất vô cơ chứa oxy khác của phi kim loại\") là TÊN DỊCH từ dòng WCO tiếng Anh, không phải tên nguồn Việt; riêng 281129, \"n.e.c. in item no. 2811.2\" nghĩa là \"phần còn lại của 2811.2\" — dịch \"khác\" không giữ được nghĩa \"trừ 2811.2\" (memory: WCO \"n.e.c. in heading X\" = phần dư CỦA X) ⇒ để người duyệt quyết định; 281122 lấy từ [nhom2811.nhom] (\"Silic dioxit (silica tinh khiết, anhydrit silic) SiO2.\") là nguồn Việt nên đúng. GHI NHẬN: dong8[4]/[7]/[10] dùng mẫu nhà \"Phần còn lại của phân nhóm 2811.19 / 2811.22 / 2811.29 — dòng biểu thuế ghi \"Loại khác\"\" — đúng mẫu nhà; dong8[2] (28111910) để trống `dieuKien` (không ghi \"Axit arsenic\" như tên dòng) là thiếu sót nhỏ ngoài phạm vi soát ⇒ đã ghi ở PR cho người duyệt. GHI NHẬN: dieuKienVao RỖNG là ĐÚNG — không có câu ràng buộc nào phủ CẢ nhóm 2811 (câu \"Nhóm này cũng bao gồm các axit dạng phức…\" chỉ nói về phần (N)).",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích \"Nhóm này bao gồm các axit khoáng và các anhydrit và các oxit khác của các phi kim.\" CÓ vế dẫn \"Nhóm này bao gồm\" ⇒ phạm vi nhóm tự nói; `text` là chính câu nguồn."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — cùng lớp lỗi đã sửa ở lô 049 (nhóm 0806, mục loaiTru[0]/phanBiet[0]: mất dòng dẫn \"Chương này cũng không bao gồm:\"). Mục loaiTru[0] của nhóm 2811 nằm dưới dòng dẫn riêng \"Nhóm này không bao gồm:\" trong [nhom2811.nhom]; bản nháp chép câu trích BẮT ĐẦU NGAY TỪ \"(a)/(b)/(c)\" nên câu trích chỉ còn là một danh sách hàng, KHÔNG có vế \"không bao gồm\" ⇒ người đọc (và máy) không biết đó là hàng BỊ LOẠI hay hàng ĐƯỢC BAO GỒM. Hệ quả nặng nhất ở phanBiet: nhánh \"có → 28.xx\" không có căn cứ trong câu trích, đúng lớp lỗi SOAT-LO ghi (\"Nhánh 'không' của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ\"). SỬA: thêm dòng dẫn nguyên văn byte-exact vào đầu câu trích, nối bằng dấu lược \" … \". Đoạn bị lược chỉ là xuống dòng giữa dòng dẫn và mục đầu tiên — KHÔNG chứa ngoại lệ nào bị nuốt. Không sửa mã/nguồn, không thêm chữ ngoài nguồn. LÝ DO RIÊNG của mục này (ngoài lớp lỗi chung): câu \"(b) Keo thể huyền phù của silica THƯỜNG được phân loại vào nhóm 38.24 trừ khi được điều chế riêng cho các mục đích đặc biệt…\" là câu HEDGE — luật nhà quy định loaiTru mà câu nguồn nói \"thường … nhóm X\" thì BỎ (không phải loại trừ dứt khoát). Chỉ khi giữ dòng dẫn \"Nhóm này không bao gồm:\" thì mục (b) mới là loại trừ dứt khoát của nhóm ⇒ sửa câu trích theo hướng đó (thêm dòng dẫn), không đổi `dieuKien`/`sangNhom`. Đoạn bị lược là mục (a) (silica tự nhiên, Chương 25) — mục (a) không mang ngoại lệ của mục (b); vế \"trừ khi …\" của chính mục (b) nằm TRONG câu trích, không bị nuốt.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (b) Keo thể huyền phù của silica thường được phân loại vào nhóm 38.24 trừ khi được điều chế riêng cho các mục đích đặc biệt (ví dụ, như chất xử lý hoàn tất vải dệt thuộc nhóm 38.09)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — cùng lớp lỗi đã sửa ở lô 049 (nhóm 0806, mục loaiTru[0]/phanBiet[0]: mất dòng dẫn \"Chương này cũng không bao gồm:\"). Mục loaiTru[1] của nhóm 2811 nằm dưới dòng dẫn riêng \"Nhóm này không bao gồm:\" trong [nhom2811.nhom]; bản nháp chép câu trích BẮT ĐẦU NGAY TỪ \"(a)/(b)/(c)\" nên câu trích chỉ còn là một danh sách hàng, KHÔNG có vế \"không bao gồm\" ⇒ người đọc (và máy) không biết đó là hàng BỊ LOẠI hay hàng ĐƯỢC BAO GỒM. Hệ quả nặng nhất ở phanBiet: nhánh \"có → 28.xx\" không có căn cứ trong câu trích, đúng lớp lỗi SOAT-LO ghi (\"Nhánh 'không' của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ\"). SỬA: thêm dòng dẫn nguyên văn byte-exact vào đầu câu trích, nối bằng dấu lược \" … \". Đoạn bị lược chỉ là xuống dòng giữa dòng dẫn và mục đầu tiên — KHÔNG chứa ngoại lệ nào bị nuốt. Không sửa mã/nguồn, không thêm chữ ngoài nguồn. Đoạn bị lược là mục (a) (silica tự nhiên, Chương 25) và mục (b) — mục (c) không mang vế ngoại lệ riêng nên không mất nghĩa.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (c) Gel silica có tẩm thêm muối coban (được dùng như một chất chỉ thị độ ẩm) (nhóm 38.24)."
+      }
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"Nhóm này loại trừ arsenic hydrides (ví dụ, AsH3) (nhóm 28.50).\" — vế loại trừ nằm TRONG câu, đích 28.50 nêu đúng; `dieuKien` giữ nguyên lỗi chính tả \"arsenic\" của nguồn."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"Do antimon được xem là một kim loại trong Danh mục này, axit antimonic và oxit antimon phân loại vào nhóm 28.25.\" — câu tự nói hàng đó thuộc 28.25 (tức bị loại khỏi 2811), đích danh 28.25 có trong câu ⇒ hợp lệ theo luật 3. Câu không nằm trong danh sách \"không bao gồm\" mà là mệnh đề phân loại dứt khoát ⇒ không dính lớp lỗi mất dòng dẫn."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — cùng lớp lỗi đã sửa ở lô 049 (nhóm 0806, mục loaiTru[0]/phanBiet[0]: mất dòng dẫn \"Chương này cũng không bao gồm:\"). Mục phanBiet[0] của nhóm 2811 nằm dưới dòng dẫn riêng \"Nhóm này không bao gồm:\" trong [nhom2811.nhom]; bản nháp chép câu trích BẮT ĐẦU NGAY TỪ \"(a)/(b)/(c)\" nên câu trích chỉ còn là một danh sách hàng, KHÔNG có vế \"không bao gồm\" ⇒ người đọc (và máy) không biết đó là hàng BỊ LOẠI hay hàng ĐƯỢC BAO GỒM. Hệ quả nặng nhất ở phanBiet: nhánh \"có → 28.xx\" không có căn cứ trong câu trích, đúng lớp lỗi SOAT-LO ghi (\"Nhánh 'không' của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ\"). SỬA: thêm dòng dẫn nguyên văn byte-exact vào đầu câu trích, nối bằng dấu lược \" … \". Đoạn bị lược chỉ là xuống dòng giữa dòng dẫn và mục đầu tiên — KHÔNG chứa ngoại lệ nào bị nuốt. Không sửa mã/nguồn, không thêm chữ ngoài nguồn.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (b) Keo thể huyền phù của silica thường được phân loại vào nhóm 38.24 trừ khi được điều chế riêng cho các mục đích đặc biệt (ví dụ, như chất xử lý hoàn tất vải dệt thuộc nhóm 38.09)."
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — cùng lớp lỗi đã sửa ở lô 049 (nhóm 0806, mục loaiTru[0]/phanBiet[0]: mất dòng dẫn \"Chương này cũng không bao gồm:\"). Mục phanBiet[1] của nhóm 2811 nằm dưới dòng dẫn riêng \"Nhóm này không bao gồm:\" trong [nhom2811.nhom]; bản nháp chép câu trích BẮT ĐẦU NGAY TỪ \"(a)/(b)/(c)\" nên câu trích chỉ còn là một danh sách hàng, KHÔNG có vế \"không bao gồm\" ⇒ người đọc (và máy) không biết đó là hàng BỊ LOẠI hay hàng ĐƯỢC BAO GỒM. Hệ quả nặng nhất ở phanBiet: nhánh \"có → 28.xx\" không có căn cứ trong câu trích, đúng lớp lỗi SOAT-LO ghi (\"Nhánh 'không' của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ\"). SỬA: thêm dòng dẫn nguyên văn byte-exact vào đầu câu trích, nối bằng dấu lược \" … \". Đoạn bị lược chỉ là xuống dòng giữa dòng dẫn và mục đầu tiên — KHÔNG chứa ngoại lệ nào bị nuốt. Không sửa mã/nguồn, không thêm chữ ngoài nguồn.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (c) Gel silica có tẩm thêm muối coban (được dùng như một chất chỉ thị độ ẩm) (nhóm 38.24)."
+      }
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích có vế \"loại trừ\" + đích 28.50; hỏi về đặc tính hàng, không nhắc mã ⇒ hợp lệ theo luật 4."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu trích nêu đích 28.25 và nói hàng đó phân loại vào 28.25 ⇒ nhánh \"có → 2825\" có căn cứ; hỏi về đặc tính hàng, không nhắc mã ⇒ hợp lệ theo luật 4."
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (bỏ sót một phần của nhóm ⇒ phạm vi bị HẸP lại) — nhóm 2811 có 14 phần: (A) HỢP CHẤT CỦA FLO, (B) CÁC HỢP CHẤT CỦA CLO, (C) CÁC HỢP CHẤT CỦA BROM, (D) HỢP CHẤT CỦA IỐT, (E) HỢP CHẤT CỦA LƯU HUỲNH, (F) CÁC HỢP CHẤT CỦA SELEN, (G) CÁC HỢP CHẤT CỦA TELUA, (H) CÁC HỢP CHẤT CỦA NITƠ, (IJ) CÁC HỢP CHẤT CỦA PHOTPHO, (K) HỢP CHẤT CỦA ASEN, (L) CÁC HỢP CHẤT CỦA CACBON, (M) CÁC HỢP CHẤT CỦA SILIC và (N) CÁC AXIT PHỨC. Bản nháp chỉ liệt kê 13 thành phần phi kim loại (theo đúng danh sách mà nguồn chú thích ở dưới) và BỎ SÓT phần (N) — mà (N) lại là phần mà câu \"Nhóm này cũng bao gồm các axit dạng phức … (ví dụ, chloro - axit) … (axit tungstosilicic, axit tungstoboric)\" nói rõ là THUỘC nhóm. `tomTat` vì thế hẹp hơn thực tế: người đọc tưởng nhóm chỉ gồm 13 họ theo phi kim, không có axit phức. SỬA: thêm \"(N) CÁC AXIT PHỨC\" vào `quyTac` và `tomTat`, và nối tiêu đề \"(N) CÁC AXIT PHỨC\" (nguyên văn từ nguồn) vào cuối câu trích. Đoạn lược giữa danh sách 13 thành phần và tiêu đề (N) là các tiêu đề phần (A)–(M) — không chứa ngoại lệ nào bị nuốt.",
+      "sua": {
+        "quyTac": "Các chất quan trọng nhất được liệt kê theo thành phần phi kim loại: flo, clo, brom, iot, lưu huỳnh, selen, telu, nitơ, photpho, asen, cacbon, silic; (N) CÁC AXIT PHỨC.",
+        "tomTat": "Liệt kê theo thành phần phi kim loại: flo, clo, brom, iot, lưu huỳnh, selen, telu, nitơ, photpho, asen, cacbon, silic; (N) CÁC AXIT PHỨC.",
+        "trich": "Các chất quan trọng nhất được liệt kê dưới đây căn cứ theo thành phần phi kim loại của chúng (*): … * Theo thứ tự như sau: flo, clo, brom, iot, lưu huỳnh, selen, telu, nitơ, photpho, asen, cacbon, silic. … (N) CÁC AXIT PHỨC"
+      }
+    }
+  ]
+}

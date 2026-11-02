@@ -1,0 +1,46 @@
+{
+ "nhom": "2802",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-11-02T08:50:00+07:00",
+ "soat": 6,
+ "giu": 5,
+ "sua": 1,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 081 — nhóm 2802 (6 mục: 5 trong phạm vi mục 4 [1 phamVi + 2 loaiTru + 2 phanBiet] + 1 dong8 đọc thêm). Đọc LẠI từng mục cùng nguồn tmp/so-tay/nguon/2802.txt. XOÁ 0, SỬA 1, GIỮ 5. KIỂM MÁY (tự viết, không tin máy nhà): byte-exact 6/6 câu trích có thật trong đúng khối nguồn (so khớp từng byte, không nén squash); không có trích vượt 300 ký tự; chiều Có/Không đúng hết; mã đích 25.03 có thật trong câu trích.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` = '(A) LƯU HUỲNH THĂNG HOA HOẶC KẾT TỦA … (B) LƯU HUỲNH DẠNG KEO' — lấy đúng hai tiêu đề mục (A) và (B) của chú giải nhóm, lược bằng '…' theo luật 2; `text` diễn lại đúng hai dạng (thăng hoa/kết tủa và dạng keo) không thêm gì. KHÔNG lấy câu 'Lưu huỳnh ở hai dạng này thường có độ tinh khiết khoảng 99,5%' vì có từ rào 'thường'."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: 'Nhóm này loại trừ lưu huỳnh chưa tinh chế được điều chế bằng phương pháp Frasch và lưu huỳnh đã tinh chế, thậm chí chúng có độ tinh khiết rất cao (nhóm 25.03).' Đích danh 25.03 có trong câu; `dieuKien` giữ TRỌN cả hai vế ('… bằng phương pháp Frasch và lưu huỳnh đã tinh chế') — không cắt vế. GHI NHẬN: câu trích có vế 'thậm chí chúng có độ tinh khiết rất cao' — đây là ngoại lệ PHỤ (lưu huỳnh tinh chế dù rất tinh khiết vẫn loại), `dieuKien` đã nêu đúng."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: 'Dụng lưu huỳnh kết tủa trong nhóm này không nên lẫn với dạng lưu huỳnh “thu hồi” (được nghiền hoặc làm thật mịn) mà đôi khi được mô tả như là dạng “kết tủa” nhưng lại được phân loại trong nhóm 25.03.' `dieuKien` giữ đủ định ngữ điều kiện ('mà đôi khi được mô tả như là dạng kết tủa') — KHÔNG cắt né câu rào 'đôi khi'; đích 25.03 có thật trong trích."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là lưu huỳnh thu hồi (được nghiền hoặc làm thật mịn) không?' → có→2503, không→2802. Chiều Có/Không đúng với nguồn: dạng 'thu hồi' được phân loại ở nhóm 25.03. Cụm trong ngoặc '(được nghiền hoặc làm thật mịn)' có nguyên văn trong trích; không mất vế điều kiện 'mô tả như là dạng kết tủa' vì vế đó thuộc về mốc phân biệt và đã nằm đầy đủ ở loaiTru[1]."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA — MỘT NHÁNH CỦA LUẬT 'A VÀ B' BỊ TÁCH, NHÁNH 'KHÔNG' SAI. Nguồn loại trừ HAI dạng: 'lưu huỳnh chưa tinh chế được điều chế bằng phương pháp Frasch **và** lưu huỳnh đã tinh chế' (cả hai đều sang 25.03). Câu hỏi cũ chỉ hỏi vế thứ nhất ('lưu huỳnh chưa tinh chế … bằng phương pháp Frasch') nên nhánh 'không → 2802' loại nhầm LƯU HUỲNH ĐÃ TINH CHẾ (tinh khiết rất cao vẫn thuộc 25.03 theo chính câu trích). Cùng lớp lỗi SOAT-LO nêu: 'một nhánh của A hoặc B bị tách thành điều kiện độc lập'. Sửa: `hoi` phủ cả hai vế, giữ nguyên chiều có/không và `trich` (nguyên văn, không đổi). Độ dài `hoi` sau sửa = 106 ký tự ≤ trần clip 110 của runtime (lib/so-tay-gates.js:141) nên không bị cắt.",
+   "sua": {
+    "hoi": "Hàng này là lưu huỳnh chưa tinh chế được điều chế bằng phương pháp Frasch hoặc lưu huỳnh đã tinh chế không?"
+   }
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28020000 là dòng 8 số duy nhất của nhóm; `dieuKien` chép đúng tên dòng biểu thuệ ('Lưu huỳnh, thăng hoa hoặc kết tủa; lưu huỳnh dạng keo'); `trich` byte-exact khối tax.28020000."
+  }
+ ]
+}

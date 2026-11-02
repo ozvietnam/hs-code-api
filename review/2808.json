@@ -1,0 +1,57 @@
+{
+  "nhom": "2808",
+  "nguoiSoat": "dev-soat-doc-lap-lo082",
+  "luc": "2026-11-02T08:40:00+07:00",
+  "phamViSoat": 6,
+  "soat": 6,
+  "docNgoaiPhamVi": 1,
+  "tongMuc": 7,
+  "giu": 2,
+  "sua": 4,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2808 (lô 082, PR #732) — người soát dev-soat-doc-lap-lo082 ≠ người soạn dev-zcode-mm. Đọc TOÀN BỘ [nhom2808.nhom] cùng các khối wco.*/tax.*/sen.* của nhóm; đối chiếu từng mục phamVi/boPhan/dieuKienVao/loaiTru/phanBiet với câu nguồn (máy xanh: check-so-tay 100 % + check-trich-nguyen-van byte-exact, nhưng máy KHÔNG biết câu trích có nói ĐÚNG điều mục khẳng định hay không). KẾT QUẢ: 4 mục SỬA, 0 mục xoá. LỖI SỬA (một lớp lỗi duy nhất, lặp ở 5 nhóm): bản nháp bỏ DÒNG DẪN \"Nhóm này không bao gồm:\" ⇒ câu trích chỉ còn danh sách hàng, không nói đó là loại trừ. Chi tiết từng mục ở thayDoi. KHÔNG sửa câu nguồn/mã để lách máy; KHÔNG thêm chữ ngoài nguồn; giữ nguyên ký tự (cắt trích thẳng từ tệp nguồn). GHI NHẬN: danh sách loại trừ của 2808 bắt đủ (a)/(b), cả hai cùng sang 28.11 — không bỏ sót. GHI NHẬN: mục loaiTru[0] giữ nguyên cả vế trong ngoặc \"(không nhầm lẫn với các axit sulphonitric ở trên)\" — đó là CHÚ THÍCH của chính mục (a), không phải ngoại lệ của mục khác; không cắt bỏ. GHI NHẬN: 2808 có đúng 1 dòng biểu thuế (28080000) ⇒ `dong8` đủ, không thừa không thiếu. GHI NHẬN: tieuChi6 rỗng là đúng — không có tiêu chí kỹ thuật cấp 6 số trong nguồn (chú giải/SEN/wco) để ghi. GHI NHẬN: dieuKienVao RỖNG là ĐÚNG — không có câu ràng buộc nào phủ CẢ nhóm 2808 trong nguồn.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. \"(A) AXIT NITRIC … (B) AXIT SULPHONITRIC\" nêu đúng hai phần ngang hàng; `text` (\"Axit nitric … Axit sulphonitric\") chỉ lặp tiêu đề, không thêm chữ."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — cùng lớp lỗi đã sửa ở lô 049 (nhóm 0806, mục loaiTru[0]/phanBiet[0]: mất dòng dẫn \"Chương này cũng không bao gồm:\"). Mục loaiTru[0] của nhóm 2808 nằm dưới dòng dẫn riêng \"Nhóm này không bao gồm:\" trong [nhom2808.nhom]; bản nháp chép câu trích BẮT ĐẦU NGAY TỪ \"(a)/(b)/(c)\" nên câu trích chỉ còn là một danh sách hàng, KHÔNG có vế \"không bao gồm\" ⇒ người đọc (và máy) không biết đó là hàng BỊ LOẠI hay hàng ĐƯỢC BAO GỒM. Hệ quả nặng nhất ở phanBiet: nhánh \"có → 28.xx\" không có căn cứ trong câu trích, đúng lớp lỗi SOAT-LO ghi (\"Nhánh 'không' của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ\"). SỬA: thêm dòng dẫn nguyên văn byte-exact vào đầu câu trích, nối bằng dấu lược \" … \". Đoạn bị lược chỉ là xuống dòng giữa dòng dẫn và mục đầu tiên — KHÔNG chứa ngoại lệ nào bị nuốt. Không sửa mã/nguồn, không thêm chữ ngoài nguồn.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (a) Axit aminosulphonic (axit sulphamic) (nhóm 28.11) (không nhầm lẫn với các axit sulphonitric ở trên)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — cùng lớp lỗi đã sửa ở lô 049 (nhóm 0806, mục loaiTru[0]/phanBiet[0]: mất dòng dẫn \"Chương này cũng không bao gồm:\"). Mục loaiTru[1] của nhóm 2808 nằm dưới dòng dẫn riêng \"Nhóm này không bao gồm:\" trong [nhom2808.nhom]; bản nháp chép câu trích BẮT ĐẦU NGAY TỪ \"(a)/(b)/(c)\" nên câu trích chỉ còn là một danh sách hàng, KHÔNG có vế \"không bao gồm\" ⇒ người đọc (và máy) không biết đó là hàng BỊ LOẠI hay hàng ĐƯỢC BAO GỒM. Hệ quả nặng nhất ở phanBiet: nhánh \"có → 28.xx\" không có căn cứ trong câu trích, đúng lớp lỗi SOAT-LO ghi (\"Nhánh 'không' của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ\"). SỬA: thêm dòng dẫn nguyên văn byte-exact vào đầu câu trích, nối bằng dấu lược \" … \". Đoạn bị lược chỉ là xuống dòng giữa dòng dẫn và mục đầu tiên — KHÔNG chứa ngoại lệ nào bị nuốt. Không sửa mã/nguồn, không thêm chữ ngoài nguồn.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (b) Hydro azid, các axit của nitơ và các dạng oxit nitơ khác nhau (nhóm 28.11)."
+      }
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — cùng lớp lỗi đã sửa ở lô 049 (nhóm 0806, mục loaiTru[0]/phanBiet[0]: mất dòng dẫn \"Chương này cũng không bao gồm:\"). Mục phanBiet[0] của nhóm 2808 nằm dưới dòng dẫn riêng \"Nhóm này không bao gồm:\" trong [nhom2808.nhom]; bản nháp chép câu trích BẮT ĐẦU NGAY TỪ \"(a)/(b)/(c)\" nên câu trích chỉ còn là một danh sách hàng, KHÔNG có vế \"không bao gồm\" ⇒ người đọc (và máy) không biết đó là hàng BỊ LOẠI hay hàng ĐƯỢC BAO GỒM. Hệ quả nặng nhất ở phanBiet: nhánh \"có → 28.xx\" không có căn cứ trong câu trích, đúng lớp lỗi SOAT-LO ghi (\"Nhánh 'không' của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ\"). SỬA: thêm dòng dẫn nguyên văn byte-exact vào đầu câu trích, nối bằng dấu lược \" … \". Đoạn bị lược chỉ là xuống dòng giữa dòng dẫn và mục đầu tiên — KHÔNG chứa ngoại lệ nào bị nuốt. Không sửa mã/nguồn, không thêm chữ ngoài nguồn.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (a) Axit aminosulphonic (axit sulphamic) (nhóm 28.11) (không nhầm lẫn với các axit sulphonitric ở trên)."
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "sua",
+      "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — cùng lớp lỗi đã sửa ở lô 049 (nhóm 0806, mục loaiTru[0]/phanBiet[0]: mất dòng dẫn \"Chương này cũng không bao gồm:\"). Mục phanBiet[1] của nhóm 2808 nằm dưới dòng dẫn riêng \"Nhóm này không bao gồm:\" trong [nhom2808.nhom]; bản nháp chép câu trích BẮT ĐẦU NGAY TỪ \"(a)/(b)/(c)\" nên câu trích chỉ còn là một danh sách hàng, KHÔNG có vế \"không bao gồm\" ⇒ người đọc (và máy) không biết đó là hàng BỊ LOẠI hay hàng ĐƯỢC BAO GỒM. Hệ quả nặng nhất ở phanBiet: nhánh \"có → 28.xx\" không có căn cứ trong câu trích, đúng lớp lỗi SOAT-LO ghi (\"Nhánh 'không' của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ\"). SỬA: thêm dòng dẫn nguyên văn byte-exact vào đầu câu trích, nối bằng dấu lược \" … \". Đoạn bị lược chỉ là xuống dòng giữa dòng dẫn và mục đầu tiên — KHÔNG chứa ngoại lệ nào bị nuốt. Không sửa mã/nguồn, không thêm chữ ngoài nguồn.",
+      "sua": {
+        "trich": "Nhóm này không bao gồm: … (b) Hydro azid, các axit của nitơ và các dạng oxit nitơ khác nhau (nhóm 28.11)."
+      }
+    },
+    {
+      "index": "boPhan",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Mẫu nhà; tiêu đề phần lấy nguyên văn từ nguồn."
+    }
+  ]
+}

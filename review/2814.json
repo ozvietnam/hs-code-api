@@ -1,0 +1,41 @@
+{
+ "nhom": "2814",
+ "nguoiSoat": "dev-soat-doc-lap-lo083",
+ "luc": "2026-11-02T10:05:00+07:00",
+ "phamViSoat": 5,
+ "soat": 5,
+ "docNgoaiPhamVi": 4,
+ "tongMuc": 9,
+ "giu": 4,
+ "sua": 0,
+ "xoa": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 083 — nhóm 2814 (5 mục trong phạm vi mục 4 [1 phamVi + 1 dieuKienVao + 1 loaiTru + 2 phanBiet] + 4 mục đọc thêm [2 tieuChi6 + 2 dong8]). Người soát dev-soat-doc-lap-lo083 ≠ người soạn dev-zcode-mm. Đọc LẠI [nhom2814.nhom] + [ch28.chuong] + [phan28.phan] + wco.*/tax.*; đối chiếu TỪNG mục với câu nguồn. KẾT QUẢ: 0 SỬA, 1 XOÁ, 0 CHÈN, 4 GIỮ — nhóm này soạn KHỎE nhất trong lô: mọi câu trích tự nói đúng điều mục khẳng định. LỚP LỖI DUY NHẤT (xoá): dieuKienVao mượn câu CẤP CHƯƠNG, mã hoá 'va' trong khi nguồn 'hoặc' ⇒ boolean FALSE với chính hàng của nhóm (amoniac là hợp chất, không phải nguyên tố) — xem thayDoi[0]. NỀN NHÀ đo trước khi bác: 12/12 nhóm Chương 28 đã gộp trong kho (2716, 2801–2811) đều RỖNG; 0/644 nhóm trong kho trích câu này; lô 082 đã ghi 'dieuKienVao RỖNG là ĐÚNG'. GHI NHẬN: loaiTru[0] 'Dung dịch cồn của amoniac bị loại trừ (nhóm 38.24).' có dấu hiệu loại trừ + nhóm đích — GIỮ; phanBiet[0] dùng đúng câu đó — GIỮ. GHI NHẬN: phanBiet[1] hỏi 'amoniac khan hay amoniac trong dung dịch nước' → 28141000/28142000; hai mã 8 số nằm TRONG nhóm nên luật 4 (mã ngoài nhóm phải có trong câu trích) không áp; chiều Có/Không đúng vì câu trích liệt kê đúng hai mục (1)/(2) — GIỮ. GHI NHẬN: nhóm KHÔNG có phần ngang hàng (A)/(B) (chỉ mục đánh số (1)/(2)) nên không có `boPhan` — đúng, không thêm. GHI NHẬN (ngoài phạm vi, KHÔNG sửa): nguồn có câu '(thường chứa 20, 27 hoặc 34% NH3)' — ngưỡng số 'thường' mà không mã hoá (không có điều kiện số) vì không có câu nào ràng buộc phủ cả nhóm; không sửa vì ngoài phạm vi.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mượn câu cấp CHƯƠNG + mã hoá sai logic) — XOÁ. (1) Câu trích 'KHÁI QUÁT CHUNG Trừ khi có những yêu cầu khác, Chương 28 được giới hạn cho các nguyên tố hóa học riêng biệt và các hợp chất đã được xác định về mặt hóa học riêng biệt.' nằm ở [ch28.chuong], áp cho CẢ Chương 28 — KHÔNG phải điều kiện riêng của nhóm 2814. (2) Mã hoá SAI CHIỀU: fact 'la_nguyen_to_hoa_hoc_rieng_biet_va_hop_chat_xac_dinh_ve_mat_hoa_hoc_rieng_biet' dùng 'va' nên boolean '= true' đòi hàng thỏa CẢ HAI vế; nguồn là 'hoặc'. Amoniac (NH3/NH4OH) là HỢP CHẤT, không phải nguyên tố ⇒ điều kiện FALSE với chính hàng của nhóm. (3) NỀN NHÀ đo trước khi bác: 12/12 nhóm Chương 28 đã gộp trong kho (2716, 2801–2811) đều RỖNG; 0/644 nhóm trong kho trích câu này; lô 082 đã ghi 'dieuKienVao RỖNG là ĐÚNG — các điều kiện của nhóm nằm ở từng phần, không có câu nào phủ CẢ nhóm'. (4) Đoạn KHÁI QUÁT CHUNG còn định nghĩa thuật ngữ ⇒ câu ĐỊNH NGHĨA, mà luật lô 030 yêu cầu dieuKienVao phải trích câu RÀNG BUỘC. Thà bỏ mục còn hơn mục không có căn cứ. KHÔNG sửa câu nguồn."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` chép nguyên văn hai mục (1) Amoniac khan (NH3) … (2) Amoniac trong dung dịch nước (NH4OH) của [nhom2814.nhom]; `text` = 'Amoniac khan và amoniac trong dung dịch nước.' chỉ nối hai tên có trong nguồn, không thêm chữ."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Dung dịch cồn của amoniac bị loại trừ (nhóm 38.24).' — có dấu hiệu loại trừ ('bị loại trừ') + nhóm đích 38.24 nguyên văn; `dieuKien` chép đúng vế bị loại."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Dùng đúng câu nguồn có nhóm đích 38.24; chiều Có/Không đúng (có → 3824, không → 2814 = chính nhóm, mẫu nhà 1113/1175). `hoi` không nhắc mã ✓."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Câu trích liệt kê đúng hai mục (1)/(2) của nguồn nên phạm vi của câu hỏi tự nói; chiều Có/Không khớp hai dòng 8 số 28141000 (khan) / 28142000 (dung dịch nước) theo biểu thuế. `neuCo`/`neuKhong` là mã 8 số TRONG nhóm nên luật 4 không áp; mẫu nhà có 189/1175 mục phanBiet dùng mã 8 số ở nhánh."
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+ "nhom": "2812",
+ "nguoiSoat": "dev-soat-doc-lap-lo083",
+ "luc": "2026-11-02T10:05:00+07:00",
+ "phamViSoat": 11,
+ "soat": 11,
+ "docNgoaiPhamVi": 18,
+ "tongMuc": 29,
+ "giu": 9,
+ "sua": 2,
+ "xoa": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LỘC LẬP lô 083 — nhóm 2812 (11 mục trong phạm vi mục 4 [1 phamVi + 1 dieuKienVao + 6 loaiTru + 3 phanBiet] + 18 mục đọc thêm [9 tieuChi6 + 9 dong8]). Người soát dev-soat-doc-lap-lo083 ≠ người soạn dev-zcode-mm. Đọc LẠI [nhom2812.nhom] (133 dòng) + [ch28.chuong] + [phan28.phan] + wco.*/tax.* của nhóm; đối chiếu TỪNG mục với câu nguồn (máy xanh: check-so-tay 100 % + check-trich-nguyen-van byte-exact — nhưng máy KHÔNG biết câu trích có nói ĐÚNG điều mục khẳng định hay không). KẾT QUẢ: 3 SỬA, 1 XOÁ, 0 CHÈN, 8 GIỮ. LỚP LỖI 1 (xoá): dieuKienVao mượn câu CẤP CHƯƠNG — xem thayDoi[0]. LỚP LỖI 2 (sửa, 2 mục): câu trích tự nó không nói điều mục khẳng định — mất CHỦ THỂ (đại từ «Nó» không có antecedent trong trích) ở phanBiet[1]. LỚP LỖI 3 (sửa, 1 mục): dong8[28121900].dieuKien trỏ SAI CẤP HS — xem thayDoi[2]. GHI NHẬN: phamVi trích đủ 3 tiêu đề phần (A)(B)(C) nguyên văn, text chép lại đúng, không thêm chữ — GIỮ. GHI NHẬN: loaiTru[0..4] và loaiTru[5] (nguồn ch28.chuong) đều có DẤU HIỆU LOẠI TRỪ + số nhóm đích trong câu trích — GIỮ, kể cả loaiTru[5] dù nguồn là cấp Chương (nói riêng «cacbon clorua oxit» = 2812.11 nên vẫn là loại trừ của nhóm này). GHI NHẬN: loaiTru[2].dieuKien dài 155 ký tự ⇒ runtime clip(55) cắt mất 100 ký tự, còn lại «cacbon tetra clorua, hexachloroethane, hexachlorobenzen…» — vẫn đủ để nhận diện hàng; nền nhà 43,5 % nhãn loaiTru vượt 55 nên KHÔNG rút gọn (rút gọn = mất mục). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): tieuChi6[281219].fact = 'la_arsen_triclorua_va_clorua_oxit_khac' đọc theo nghĩa DANH SÁCH nhưng mã hoá thành boolean (A VÀ B) ⇒ điều kiện đúng là FALSE cho mọi hàng thực tế (hàng hoặc là asen triclorua, hoặc là clorua khác); mẫu nhà chấp nhận «la_» + danh sách (269 fact có '_va_') nên để người duyệt xem. GHI NHẬN (ngoài phạm vi, KHÔNG sửa): dong8[28129000].dieuKien dùng chữ «khác» (khớp tiêu đề phần (C) của chính nguồn nhom2812.nhom) thay vì «trừ clorua» (nguyên văn WCO 'excluding chloride') — hai cách diễn đạt cùng nghĩa, nên để người duyệt xem.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mượn câu cấp CHƯƠNG + mã hoá sai logic) — XOÁ. (1) Câu trích 'KHÁI QUÁT CHUNG Trừ khi có những yêu cầu khác, Chương 28 được giới hạn cho các nguyên tố hóa học riêng biệt và các hợp chất đã được xác định về mặt hóa học riêng biệt.' nằm ở [ch28.chuong], áp cho CẢ Chương 28 — KHÔNG phải điều kiện riêng của nhóm 2812. (2) Mã hoá SAI CHIỀU: fact 'la_nguyen_to_hoa_hoc_rieng_biet_va_hop_chat_xac_dinh_ve_mat_hoa_hoc_rieng_biet' dùng 'va' nên boolean '= true' đòi hàng thỏa CẢ HAI vế; nguồn là 'hoặc' (nguyên tố HOẶC hợp chất). Hàng của nhóm 2812 (clorua, oxit clorua, halogenua của phi kim loại) đều là HỢP CHẤT, không phải nguyên tố ⇒ điều kiện này FALSE với chính hàng của nhóm. (3) NỀN NHÀ đo trước khi bác: 12/12 nhóm Chương 28 đã gộp trong kho (2716, 2801–2811 — lô 081 + lô 082) đều có dieuKienVao RỖNG; 0/644 nhóm trong kho có mục nào trích câu này; lô 082 đã ghi rõ trong review/2809.json 'dieuKienVao RỖNG là ĐÚNG — các điều kiện của nhóm nằm ở từng phần (A)/(B)/(C), không có câu nào phủ CẢ nhóm'. (4) Đoạn KHÁI QUÁT CHUNG còn định nghĩa thuật ngữ ('Một hợp chất đã được xác định về mặt hóa học riêng biệt gồm có…') ⇒ câu ĐỊNH NGHĨA, mà luật lô 030 yêu cầu dieuKienVao phải trích câu RÀNG BUỘC. Thà bỏ mục còn hơn mục không có căn cứ. KHÔNG sửa câu nguồn."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` chép nguyên văn 3 tiêu đề phần (A)(B)(C) của [nhom2812.nhom], nối bằng dấu lược ' … '; `text` chép lại đúng ba tiêu đề, KHÔNG thêm chữ nào không có trong nguồn. Đây là phạm vi nhóm theo đúng luật 'phamVi phải nêu PHẠM VI nhóm' (lô 030) — không phải vật liệu, không phải một phần."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Câu trích 'Phosphonium chloride (PH4Cl) bị loại trừ (nhóm 28.53).' có DẤU HIỆU LOẠI TRỪ ('bị loại trừ') và nêu ĐÍCH DANH nhóm đích 28.53 ngay trong câu ⇒ đủ luật 3. `dieuKien` chép đúng vế bị loại, không thêm chữ."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Các sản phẩm thay thế của hydro silicides như trichlorosilane (SiHCl3) bị loại trừ (nhóm 28.53).' — có dấu hiệu loại trừ + nhóm đích 28.53 trong câu. `dieuKien` giữ đúng vế bị loại."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Câu trích 'Nhóm này không bao gồm cacbon tetra clorua … (nhóm 29.03)' có vế dẫn 'không bao gồm' + nhóm đích 29.03 ⇒ loại trừ đích danh, không phải ví dụ linh kiện. `dieuKien` chỉ dùng chữ có trong câu trích (bỏ ngoặc công thức, như mẫu nhà); cụm 'là các dẫn xuất clo hóa của hydrocarbon' là chữ nguồn ('đây là các dẫn xuất clo hóa của hydrocarbon'). GHI NHẬN: nhãn dài 155 ký tự > trần clip runtime 55 (nền nhà 43,5 % nhãn loaiTru vượt 55) — KHÔNG rút gọn vì rút gọn sẽ mất cả danh sách hàng; để người duyệt xem."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này không bao gồm axit chlorosulphuric (“sulphuric chlorohydrin”) (ClSO2.OH) (nhóm 28.06).' — có vế dẫn loại trừ + nhóm đích 28.06."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này không bao gồm phospho bromua (PH4Br) (nhóm 28.53) và carbon bromua (nhóm 29.03).' — hai nhóm đích 28.53 và 29.03 đều nêu trong câu; `sangNhom` nhiều đích '2853|2903' là mẫu nhà (309/2810 mục loaiTru trong kho)."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn là [ch28.chuong] nhưng câu nói RIÊNG về 'cacbon clorua oxit' (= carbonyl diclorua / phosgene = 2812.11, CÓ trong nhóm này) nên vẫn là loại trừ có căn cứ cho nhóm 2812; câu có 'bị loại trừ khỏi Chương này và được phân loại vào nhóm 38.24' ⇒ nhóm đích nêu rõ. `dieuKien` chỉ lược chữ 'được' của nguồn, không thêm ý riêng."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Khi hòa tan trong toluen hoặc benzen, nó được phân loại vào nhóm 38.24.' — có vị ngữ phân loại + nhóm đích 38.24 nguyên văn. Chiều Có/Không đúng: có hòa tan trong toluen/benzen → 38.24, không → 2812 (chính nhóm — mẫu nhà 1113/1175). Đoạn lược ' … ' chỉ che phần mô tả quy trình sản xuất, KHÔNG chứa ngoại lệ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — mất CHỦ THỂ. Bản nháp chép câu trích BẮT ĐẦU BẰNG ĐẠI TỪ 'Nó tạo phức với các hợp chất hữu cơ…'; chủ thể của 'Nó' là 'Bo triflorua (BF3)' nằm ở câu TRƯỚC, ngoài trích ⇒ người đọc (và mô hình) không biết mình đang hỏi về hàng nào; hơn nữa `hoi` đang hỏi chung cho CẢ nhóm trong khi nguồn nói riêng về bo triflorua. NỀN NHÀ đo trước: trích đầu bằng đại từ chỉ 72/15107 mục (0,5 %) — hiếm; mẫu nhà còn lại là nêu đích danh sản phẩm trong `hoi` (lô 082: 'Hàng này là lưu huỳnh diclorua dioxit (sulphuryl chloride) không?'). SỬA: (a) `trich` kéo thêm chủ thể '(c) Bo triflorua (BF3).' nguyên văn, nối bằng dấu lược ' … '; đoạn bị lược là phần mô tả điều chế/công dụng, KHÔNG chứa ngoại lệ nào bị nuốt; (b) `hoi` nêu đích danh 'bo triflorua (BF3)' theo mẫu nhà. Không sửa mã/nguồn, không thêm chữ ngoài nguồn.",
+   "sua": {
+    "hoi": "Hàng này là bo triflorua (BF3) tạo phức với các hợp chất hữu cơ không?",
+    "trich": "(c) Bo triflorua (BF3). … Nó tạo phức với các hợp chất hữu cơ (ví dụ, dietyl ete, axit axetic hoặc phenol); các hợp chất này, cũng được sử dụng làm chất xúc tác, và được phân loại vào nhóm 29.42."
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Photpho iodua (PH4I) được phân loại vào nhóm 28.53.' — có vị ngữ phân loại + nhóm đích; `hoi` hỏi đúng đối tượng. GHI NHẬN: nguồn ghi 'Photpho' (lỗi chính tả của nguồn) còn `hoi` dùng 'fotpho' — luật 2 chỉ yêu cầu GIỮ NGUYÊN trong `trich`, mà `trich` đã giữ nguyên 'Photpho'."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (trỏ SAI CẤP HS — mã không có trong câu trích) — SỬA. Câu trích (nguồn wco.281219) là '281219 Arsenic trichloride and other chlorides and chloride oxides, n.e.c. in item no. 2812'. Mệnh đề 'n.e.c. in item no. 2812' chỉ tới MỤC 2812 (heading 2812 = nhóm 4 số của chính nhóm này), KHÔNG phải phân nhóm 2812.19 — bản nháp dịch thành 'chưa nêu ở nơi khác trong phân nhóm 2812.19', tức là tự trỏ về chính dòng đang đứng ⇒ vô nghĩa và sai cấp. NỀN NHÀ đo trước khi bác: mẫu nhà dùng đúng cấp của mệnh đề — 'n.e.c. in heading 0301' → fact 'khac_trong_nhom_0301' (030199), 'n.e.c. in chapter 2' → 'khac_trong_chuong_02' (020890); 'n.e.c. in item no. 0203.1' (mục 5 số) → 'la_thit_lon_khac' (020319). ⇒ SỬA thành 'nhóm 2812' (4 số = heading 2812). GHI NHẬN: đây là mục `dong8` (ngoài mục 4 của SOAT-LO) nhưng lô 081 đã sửa `dong8` tương tự (mục trích sai tên dòng); SOAT-LO liệt kê 'mã 8 số thêm vào text/tomTat/dieuKien' là lớp lỗi người soát phải bắt.",
+   "sua": {
+    "dieuKien": "Loại khác: asen triclorua và các clorua hoặc oxit clorua khác chưa nêu ở nơi khác trong nhóm 2812"
+   }
+  }
+ ],
+ "suaNgoaiPhamVi": 1
+}
