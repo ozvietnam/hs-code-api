@@ -1,0 +1,57 @@
+{
+ "nhom": "2816",
+ "nguoiSoat": "dev-soat-doc-lap-lo083",
+ "luc": "2026-11-02T10:05:00+07:00",
+ "phamViSoat": 7,
+ "soat": 7,
+ "docNgoaiPhamVi": 4,
+ "tongMuc": 11,
+ "giu": 4,
+ "sua": 2,
+ "xoa": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 083 — nhóm 2816 (7 mục trong phạm vi mục 4 [1 phamVi + 1 dieuKienVao + 2 loaiTru + 3 phanBiet] + 4 mục đọc thêm [2 tieuChi6 + 2 dong8]). Người soát dev-soat-doc-lap-lo083 ≠ người soạn dev-zcode-mm. Đọc LẠI [nhom2816.nhom] + [ch28.chuong] + [phan28.phan] + wco.*/tax.*; đối chiếu TỪNG mục với câu nguồn. KẾT QUẢ: 2 SỬA, 1 XOÁ, 0 CHÈN, 4 GIỮ. LỚP LỖI 1 (xoá): dieuKienVao mượn câu CẤP CHƯƠNG, mã hoá 'va' trong khi nguồn 'hoặc' ⇒ boolean FALSE với chính hàng của nhóm — xem thayDoi[0]; nền nhà 12/12 nhóm Chương 28 đã gộp đều rỗng, 0/644 nhóm trong kho trích câu này. LỚP LỖI 2 (sửa, 1 mục): loaiTru[0].dieuKien có DẤU NGOẶC THỪA ')' không có trong nguồn (lỗi gõ tay) — xem thayDoi[2]. LỚP LỖI 3 (sửa, 1 mục): phanBiet[2] — nhánh 'không' → 28161000 chỉ suy từ cấu trúc anh em, câu trích không nói tới phần (A) — xem thayDoi[4]. GHI NHẬN: phamVi trích đủ 3 tiêu đề phần (A)(B)(C) nguyên văn — GIỮ; nhóm có phần ngang hàng nhưng bản soạn không ghi `boPhan`: KHÔNG thêm (xem lý do ở review/2815.json — `boPhan` tuỳ chọn, lô 081 có 4 nhóm có phần ngang hàng mà không có `boPhan`). GHI NHẬN: loaiTru[1].dieuKien 'sản phẩm thô nung đơn thuần bari carbonat tự nhiên' rút gọn so với nguồn 'sản phẩm thô thu được bởi nung đơn thuần bari carbonat tự nhiên (whitherite)' — KHÔNG sửa: định ngữ giới hạn ('nung đơn thuần bari carbonat tự nhiên') vẫn còn nguyên, và bổ sung 'thu được bởi' sẽ đẩy nhãn lên 56 ký tự, vượt trần clip runtime 55 ⇒ cắt mất đuôi; nền nhà có 43,5 % nhãn loaiTru vượt 55 nên không ép. GHI NHẬN: loaiTru[0].dieuKien 87 ký tự > trần clip 55 ⇒ runtime cắt mất ngưỡng '2,5g mỗi tinh thể' (nhịp 'này' của bản nháp đã cảnh báo trong PR #735) — giữ nguyên vì rút gọn sẽ mất định ngữ giới hạn; để người duyệt xem. GHI NHẬN: loaiTru[0] gộp HAI nhánh (magiê oxit → 25.19; tinh thể nuôi cấy ≥ 2,5g → 38.24) vào một nhãn với `sangNhom` nhiều đích '2519|3824' — mẫu nhà (309/2810 mục loaiTru nhiều đích).",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mượn câu cấp CHƯƠNG + mã hoá sai logic) — XOÁ. (1) Câu trích 'KHÁI QUÁT CHUNG Trừ khi có những yêu cầu khác, Chương 28 được giới hạn cho các nguyên tố hóa học riêng biệt và các hợp chất đã được xác định về mặt hóa học riêng biệt.' nằm ở [ch28.chuong], áp cho CẢ Chương 28 — KHÔNG phải điều kiện riêng của nhóm 2816. (2) Mã hoá SAI CHIỀU: fact 'la_nguyen_to_hoa_hoc_rieng_biet_va_hop_chat_xac_dinh_ve_mat_hoa_hoc_rieng_biet' dùng 'va' nên boolean '= true' đòi hàng thỏa CẢ HAI vế; nguồn là 'hoặc'. Magie hydroxit/peroxit, stronti, bari đều là HỢP CHẤT, không phải nguyên tố ⇒ điều kiện FALSE với chính hàng của nhóm. (3) NỀN NHÀ đo trước khi bác: 12/12 nhóm Chương 28 đã gộp trong kho (2716, 2801–2811) đều RỖNG; 0/644 nhóm trong kho trích câu này; lô 082 đã ghi 'dieuKienVao RỖNG là ĐÚNG'. (4) Đoạn KHÁI QUÁT CHUNG còn định nghĩa thuật ngữ ⇒ câu ĐỊNH NGHĨA, mà luật lô 030 yêu cầu dieuKienVao phải trích câu RÀNG BUỘC. Thà bỏ mục còn hơn mục không có căn cứ. KHÔNG sửa câu nguồn."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` chép nguyên văn 3 tiêu đề phần (A)(B)(C) của [nhom2816.nhom] nối bằng ' … '; `text` liệt kê đúng 3 tên, không thêm chữ ngoài nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI GÕ TAY (không có trong nguồn) — bỏ DẤU NGOẶC THỪA ')' ở cuối nhãn. `dieuKien` hiện là 'magiê oxit, hoặc ở dạng tinh thể nuôi cấy có trọng lượng không ít hơn 2,5g mỗi tinh thể)' — dấu ')' không mở ở đâu, KHÔNG có trong câu nguồn ('Magiê oxit được loại trừ (nhóm 25.19 hoặc nếu ở dạng tinh thể nuôi cấy, trọng lượng không ít hơn 2,5g mỗi tinh thể, nhóm 38.24).') ⇒ lỗi gõ tay của bản nháp, không phải chữ nguồn. Luật 2 chỉ yêu cầu GIỮ NGUYÊN lỗi chính tả CỦA NGUỒN trong `trich`; `dieuKien` là nhãn tự viết nên phải sạch. SỬA: bỏ ')' cuối, giữ nguyên mọi từ và ngưỡng '2,5g mỗi tinh thể' (KHÔNG rút gọn nhãn — nền nhà 43,5 % nhãn loaiTru vượt trần clip 55; rút gọn sẽ mất định ngữ giới hạn). `sangNhom`/`nguon`/`trich` giữ nguyên.",
+   "sua": {
+    "dieuKien": "magiê oxit, hoặc ở dạng tinh thể nuôi cấy có trọng lượng không ít hơn 2,5g mỗi tinh thể"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này loại trừ sản phẩm thô thu được bởi nung đơn thuần bari carbonat tự nhiên (whitherite) (nhóm 25.11).' — có dấu hiệu loại trừ + nhóm đích 25.11 nguyên văn; `dieuKien` rút gọn nhưng vẫn giữ định ngữ giới hạn 'nung đơn thuần bari carbonat tự nhiên' (thêm 'thu được bởi' sẽ vượt trần clip runtime 55) — xem ghiChu."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Câu trích 'Magiê oxit được loại trừ (nhóm 25.19 hoặc nếu ở dạng tinh thể nuôi cấy, trọng lượng không ít hơn 2,5g mỗi tinh thể, nhóm 38.24).' — có nhóm đích 25.19 và 38.24 nguyên văn + đủ điều kiện giới hạn (≥ 2,5g mỗi tinh thể); chiều Có/Không đúng (có → 2519|3824, không → 2816 = chính nhóm). `neuCo` nhiều đích là mẫu nhà (189/1175 mục phanBiet dùng mã 8 số/nhóm kết hợp)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Dùng đúng câu nguồn 'Nhóm này loại trừ sản phẩm thô thu được bởi nung đơn thuần bari carbonat tự nhiên (whitherite) (nhóm 25.11).' — có nhóm đích + `hoi` nêu đúng đối tượng; chiều Có/Không đúng (có → 2511, không → 2816 = chính nhóm)."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (nhánh 'không' chỉ suy từ cấu trúc anh em) — câu trích không nói tới phần (A). Bản nháp chép '(B) STRONTI OXIT, HYDROXIT VÀ PEROXIT … (C) BARI OXIT, HYDROXIT VÀ PEROXIT' ⇒ trích KHÔNG có phần (A) (magie) mà nhánh 'không' của mục lại trỏ tới 28161000 (magie hydroxit và magie peroxit) ⇒ nhánh 'không' KHÔNG có căn cứ trong câu trích, đúng lớp lỗi SOAT-LO ghi ('Nhánh \"không\" của phanBiet chỉ suy từ cấu trúc anh em / danh sách loại trừ'). SỬA: `trich` kéo thêm phần (A) nguyên văn, nối bằng ' … ' ⇒ câu trích tự nói đủ ba phần (magie / stronti / bari) nên nhánh 'không' → 28161000 có căn cứ. Đoạn bị lược chỉ là các tiêu đề phần, KHÔNG chứa ngoại lệ. `hoi`/`neuCo`/`neuKhong` giữ nguyên.",
+   "sua": {
+    "trich": "(A) MAGIE HYDROXIT VÀ MAGIE PEROXIT … (B) STRONTI OXIT, HYDROXIT VÀ PEROXIT … (C) BARI OXIT, HYDROXIT VÀ PEROXIT"
+   }
+  }
+ ]
+}

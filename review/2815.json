@@ -1,0 +1,59 @@
+{
+ "nhom": "2815",
+ "nguoiSoat": "dev-soat-doc-lap-lo083",
+ "luc": "2026-11-02T10:05:00+07:00",
+ "phamViSoat": 8,
+ "soat": 8,
+ "docNgoaiPhamVi": 8,
+ "tongMuc": 16,
+ "giu": 6,
+ "sua": 1,
+ "xoa": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 083 — nhóm 2815 (8 mục trong phạm vi mục 4 [1 phamVi + 1 dieuKienVao + 2 loaiTru + 4 phanBiet] + 8 mục đọc thêm [4 tieuChi6 + 4 dong8]). Người soát dev-soat-doc-lap-lo083 ≠ người soạn dev-zcode-mm. Đọc LẮI [nhom2815.nhom] + [ch28.chuong] + [phan28.phan] + wco.*/tax.*; đối chiếu TỪNG mục với câu nguồn. KẾT QUẢ: 1 SỬA, 1 XOÁ, 0 CHÈN, 6 GIỮ. LỚP LỖI 1 (xoá): dieuKienVao mượn câu CẤP CHƯƠNG, mã hoá 'va' trong khi nguồn 'hoặc' ⇒ boolean FALSE với chính hàng của nhóm — xem thayDoi[0]; nền nhà 12/12 nhóm Chương 28 đã gộp đều rỗng, 0/644 nhóm trong kho trích câu này. LỚP LỖI 2 (sửa, 1 mục): phanBiet[1] — câu trích chỉ là MẢNH DANH TỪ trong ngoặc, không có vị ngữ nên không tự nói 'K2CO3 thuộc nhóm 28.36' — xem thayDoi[2]. GHI NHẬN: phamVi trích đủ 4 tiêu đề phần (A)(B)(C)(D) nguyên văn — GIỮ; nhóm CÓ phần ngang hàng (A)–(D) nhưng bản soạn không ghi `boPhan`: KHÔNG thêm, vì `boPhan` là khối TUỲ CHỌN của nhà — lô 081 (đã gộp, cùng Chương 28) có 4 nhóm có phần ngang hàng (2801 A/B/C/D, 2802 A/B, 2804 A/B/C, 2805 A/B/C/D) mà VẪN KHÔNG có `boPhan`; lô 082 thì có 6/6. Nhà chưa thống nhất ⇒ để người duyệt quyết định. GHI NHẬN: loaiTru[0] giữ nguyên cả vế sau dấu chấm phẩy trong nguồn? KHÔNG — nguồn viết '… (nhóm 38.04); từ các dung dịch kiềm này có thể thu được dầu tall của nhóm 38.03 và NaOH tái sinh.'; bản nháp cắt sau '(nhóm 38.04)' nên câu trích không chứa ngoại lệ (vế sau nêu CHIẾT 38.03, không phủ định mục đang trích) — GIỮ. GHI NHẬN: nhãn loaiTru[0] dài 129 ký tự > trần clip runtime 55 (nền nhà 43,5 % nhãn loaiTru vượt 55) — KHÔNG rút gọn vì rút gọn = mất định ngữ giới hạn ('thu được như sản phẩm còn dư từ sản xuất bột gỗ…'); để người duyệt xem. GHI NHẬN: phanBiet[2]/[3] có vị ngữ phân loại + nhóm đích (30.03/30.04 và 38.24) — GIỮ; câu có 'đôi khi' là điều kiện có-không nên câu hỏi 'có được trộn với nước vôi để dùng trong y học không?' là đúng; câu trích giữ nguyên dấu lược '…' CỦA NGUỒN trong ngoặc ('một chút của muối đồng hoặc niken, ...') — GIỮ.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mượn câu cấp CHƯƠNG + mã hoá sai logic) — XOÁ. (1) Câu trích 'KHÁI QUÁT CHUNG Trừ khi có những yêu cầu khác, Chương 28 được giới hạn cho các nguyên tố hóa học riêng biệt và các hợp chất đã được xác định về mặt hóa học riêng biệt.' nằm ở [ch28.chuong], áp cho CẢ Chương 28 — KHÔNG phải điều kiện riêng của nhóm 2815. (2) Mã hoá SAI CHIỀU: fact 'la_nguyen_to_hoa_hoc_rieng_biet_va_hop_chat_xac_dinh_ve_mat_hoa_hoc_rieng_biet' dùng 'va' nên boolean '= true' đòi hàng thỏa CẢ HAI vế; nguồn là 'hoặc'. Natri/kali hydroxit, peroxit đều là HỢP CHẤT, không phải nguyên tố ⇒ điều kiện FALSE với chính hàng của nhóm. (3) NỀN NHÀ đo trước khi bác: 12/12 nhóm Chương 28 đã gộp trong kho (2716, 2801–2811) đều RỖNG; 0/644 nhóm trong kho trích câu này; lô 082 đã ghi 'dieuKienVao RỖNG là ĐÚNG'. (4) Đoạn KHÁI QUÁT CHUNG còn định nghĩa thuật ngữ ⇒ câu ĐỊNH NGHĨA, mà luật lô 030 yêu cầu dieuKienVao phải trích câu RÀNG BUỘC. Thà bỏ mục còn hơn mục không có căn cứ. KHÔNG sửa câu nguồn."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` chép nguyên văn 4 tiêu đề phần (A)(B)(C)(D) của [nhom2815.nhom] nối bằng ' … '; `text` liệt kê đúng 4 tên, không thêm chữ ngoài nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này không bao gồm cặn dung dịch kiềm (soda dung dịch kiềm) thu được như sản phẩm còn dư từ sản xuất bột gỗ bằng quá trình kiềm hóa hoặc sulphat hóa (nhóm 38.04)' — có vế dẫn + nhóm đích 38.04 nguyên văn; `dieuKien` giữ trọn định ngữ giới hạn ('thu được như sản phẩm còn dư từ sản xuất bột gỗ bằng quá trình kiềm hóa hoặc sulphat hóa') theo luật."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này cũng không bao gồm hỗn hợp của NaOH và vôi được gọi là \"vôi sôđa\" (nhóm 38.24).' — có vế dẫn + nhóm đích 38.24; `dieuKien` chép nguyên văn (giữ cả dấu nháy kép của nguồn)."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Natri hydroxit (xút ăn da) (NaOH) không nên nhầm với soda thương phẩm, là carbonat natri (nhóm 28.36).' — có nhóm đích 28.36 nguyên văn + vị ngữ 'không nên nhầm'; chiều Có/Không đúng (có → 2836, không → 2815 = chính nhóm)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (câu trích không tự nói điều mục khẳng định) — câu trích chỉ là MẢNH DANH TỪ trong ngoặc. Bản nháp chép 'K2CO3 (kali carbonat) (nhóm 28.36)' — một cụm KHÔNG CÓ VỊ NGỮ, không nói 'K2CO3 được phân loại vào nhóm 28.36' ⇒ mục khẳng định điều câu trích không nói (đúng lớp lỗi lô 030: 'Câu trích phải tự nó nói điều mục khẳng định'). Nguồn [nhom2815.nhom] viết nguyên văn: 'Nó phải được phân biệt với K2CO3 (kali carbonat) (nhóm 28.36) hoặc potash thương phẩm (một cái tên được áp dụng lỏng lẻo ở một số nước cho một vài muối kali nào đó, đặc biệt là dạng clorua).' SỬA: `trich` lấy trọn câu đó (nguyên văn byte-exact, 198 ký tự ≤ 300) ⇒ câu tự nói 'phải phân biệt với' và nêu nhóm đích 28.36; lấy trọn cả vế 'hoặc potash thương phẩm…' để không bỏ dở mệnh đề. `hoi`/`neuCo`/`neuKhong` giữ nguyên.",
+   "sua": {
+    "trich": "Nó phải được phân biệt với K2CO3 (kali carbonat) (nhóm 28.36) hoặc potash thương phẩm (một cái tên được áp dụng lỏng lẻo ở một số nước cho một vài muối kali nào đó, đặc biệt là dạng clorua)."
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. '…đối với mục đích này, nó đôi khi được trộn với nước vôi và khi đó được phân loại vào nhóm 30.03 hoặc 30.04.' — có vị ngữ phân loại + hai nhóm đích nguyên văn; `hoi` là câu hỏi có/không về đặc tính hàng (không nhắc mã) nên 'đôi khi' không gây lỗi — điều kiện là 'CÓ trộn với nước vôi để dùng trong y học' thì sang 30.03/30.04."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Khi trộn lẫn với các chất xúc tác (một chút của muối đồng hoặc niken, ...) để nhanh chóng tạo ra hydro peroxit, nó thuộc chế phẩm nhóm 38.24.' — có nhóm đích 38.24 nguyên văn; dấu lược '…' trong ngoặc là CỦA NGUỒN (không phải dấu lược của bản nháp) nên phải giữ nguyên."
+  }
+ ]
+}

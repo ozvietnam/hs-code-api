@@ -1,0 +1,56 @@
+{
+ "nhom": "2817",
+ "nguoiSoat": "dev-soat-doc-lap-lo083",
+ "luc": "2026-11-02T10:05:00+07:00",
+ "phamViSoat": 8,
+ "soat": 8,
+ "docNgoaiPhamVi": 2,
+ "tongMuc": 10,
+ "giu": 7,
+ "sua": 0,
+ "xoa": 1,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 083 — nhóm 2817 (8 mục trong phạm vi mục 4 [1 phamVi + 1 dieuKienVao + 4 loaiTru + 2 phanBiet] + 2 mục đọc thêm [2 dong8; KHÔNG có tieuChi6 vì nhóm 2817 không có phân nhóm 6 số]). Người soát dev-soat-doc-lap-lo083 ≠ người soạn dev-zcode-mm. Đọc LẠI [nhom2817.nhom] + [ch28.chuong] + [phan28.phan] + wco.281700 + tax.*; đối chiếu TỪNG mục với câu nguồn. KẾT QUẢ: 0 SỬA, 1 XOÁ, 0 CHÈN, 7 GIỮ — nhóm soạn KHỎE nhất trong lô: đây là nhóm DUY NHẤT của lô giữ được DÒNG DẪN 'Nhóm này không bao gồm:' trong mọi câu trích loại trừ (2813 thì mất dòng dẫn ở 4 mục). LỚP LỖI DUY NHẤT (xoá): dieuKienVao mượn câu CẤP CHƯƠNG, mã hoá 'va' trong khi nguồn 'hoặc' ⇒ boolean FALSE với chính hàng của nhóm — xem thayDoi[0]; nền nhà 12/12 nhóm Chương 28 đã gộp đều rỗng, 0/644 nhóm trong kho trích câu này. GHI NHẬN: cả 4 loaiTru giữ nguyên vì câu trích ĐÃ có 'Nhóm này không bao gồm: … (a)/(b)/(c)/(d)' + nhóm đích trong câu — đúng mẫu lô 082 (2809/2811). GHI NHẬN: phanBiet[0] hỏi 'kẽm oxit hay kẽm peroxit' → 28170010/28170020; hai mã 8 số nằm TRONG nhóm (luật 4 không áp) và câu trích liệt kê đúng hai phần (A)/(B) khớp tên hai dòng biểu thuế ⇒ GIỮ. GHI NHẬN: phanBiet[1] dùng đúng câu loại trừ (a) có dòng dẫn + nhóm đích 26.08 — GIỮ. GHI NHẬN: nhóm CÓ 2 phần ngang hàng (A)/(B) nhưng bản soạn không ghi `boPhan`: KHÔNG thêm (`boPhan` tuỳ chọn — xem lý do ở review/2815.json). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): 2 dong8 dùng nguồn nhom2817.nhom (không phải tax.*) — mẫu nhà có 91/6872 dong8 như vậy (24/92 trong số đó CÓ tieuChi) ⇒ chấp nhận; lý do dùng nguồn nhom là biểu thuế chỉ ghi '- - Kẽm oxit' / '- - Kẽm peroxit' nên không có câu nào để làm tiêu chí phân biệt, còn nguồn nhom có 'tính chất lưỡng tính' (28170010) và 'không hòa tan trong nước' (28170020). GHI NHẬN (ngoài phạm vi, KHÔNG sửa): dong8[28170020].tieuChi fact 'hoa_tan_trong_nuoc' value=false — ĐÚNG CHIỀU (nguồn: 'không hòa tan trong nước'), không phải lỗi đảo chiều; nhưng hai dòng dùng HAI khoá khác nhau (lưỡng tính / hòa tan) nên không đối xứng nhau — để người duyệt xem.",
+ "thayDoi": [
+  {
+   "index": "dieuKienVao[0]",
+   "hanhDong": "xoa",
+   "lyDo": "LỖI MÁY KHÔNG BẮT (mượn câu cấp CHƯƠNG + mã hoá sai logic) — XOÁ. (1) Câu trích 'KHÁI QUÁT CHUNG Trừ khi có những yêu cầu khác, Chương 28 được giới hạn cho các nguyên tố hóa học riêng biệt và các hợp chất đã được xác định về mặt hóa học riêng biệt.' nằm ở [ch28.chuong], áp cho CẢ Chương 28 — KHÔNG phải điều kiện riêng của nhóm 2817. (2) Mã hoá SAI CHIỀU: fact 'la_nguyen_to_hoa_hoc_rieng_biet_va_hop_chat_xac_dinh_ve_mat_hoa_hoc_rieng_biet' dùng 'va' nên boolean '= true' đòi hàng thỏa CẢ HAI vế; nguồn là 'hoặc'. Kẽm oxit/peroxit đều là HỢP CHẤT, không phải nguyên tố ⇒ điều kiện FALSE với chính hàng của nhóm. (3) NỀN NHÀ đo trước khi bác: 12/12 nhóm Chương 28 đã gộp trong kho (2716, 2801–2811) đều RỖNG; 0/644 nhóm trong kho trích câu này; lô 082 đã ghi 'dieuKienVao RỖNG là ĐÚNG'. (4) Đoạn KHÁI QUÁT CHUNG còn định nghĩa thuật ngữ ⇒ câu ĐỊNH NGHĨA, mà luật lô 030 yêu cầu dieuKienVao phải trích câu RÀNG BUỘC. Thà bỏ mục còn hơn mục không có căn cứ. KHÔNG sửa câu nguồn."
+  },
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` chép nguyên văn hai tiêu đề phần (A) KẼM OXIT … (B) KẼM PEROXIT của [nhom2817.nhom]; `text` = 'Kẽm oxit; kẽm peroxit.' chỉ nêu hai tên có trong nguồn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này không bao gồm: … (a) Kẽm oxit hoặc zincite tự nhiên (nhóm 26.08).' — có DÒNG DẪN 'không bao gồm' + nhóm đích 26.08 nguyên văn; `dieuKien` chép đúng vế bị loại."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này không bao gồm: … (b) Cặn của quá trình luyện kim kẽm được hiểu như vảy kẽm, váng kẽm hoặc xi luyện kim, chúng cũng gồm oxit không tinh khiết (nhóm 26.20).' — có dòng dẫn + nhóm đích 26.20."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này không bao gồm: … (c) Kẽm hydroxit (Zn(OH)2) hoặc dạng keo trắng, hoặc hydroperoxit (nhóm 28.25).' — có dòng dẫn + nhóm đích 28.25; `dieuKien` chép đúng vế bị loại."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Nhóm này không bao gồm: … (d) Kẽm oxit không tinh khiết, đôi khi cũng được hiểu như kẽm xám (nhóm 32.06).' — có dòng dẫn + nhóm đích 32.06. GHI NHẬN: nguồn có 'đôi khi' (đôi khi cũng được hiểu như kẽm xám) nhưng vế CHÍNH của câu là 'Kẽm oxit không tinh khiết' (loại trừ dứt khoát) ⇒ vẫn là loại trừ, không phải HEDGE."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Câu trích '(A) KẼM OXIT … (B) KẼM PEROXIT' liệt kê đúng hai phần, khớp tên hai dòng biểu thuế 28170010 ('- - Kẽm oxit') và 28170020 ('- - Kẽm peroxit'); hai mã 8 số nằm TRONG nhóm nên luật 4 không áp; chiều Có/Không đúng."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Dùng đúng câu loại trừ (a) — có dòng dẫn 'Nhóm này không bao gồm:' + nhóm đích 26.08 nguyên văn; chiều Có/Không đúng (có → 2608, không → 2817 = chính nhóm, mẫu nhà 1113/1175)."
+  }
+ ]
+}
