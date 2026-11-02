@@ -87,10 +87,12 @@ TARGET=data APPLY=1 node scripts/apply-review-lo087.mjs        # CHỈ nâng ngu
 | lớp kiểm thứ 4 — tự viết (`tmp/lo087/kiem.mjs`, KHÔNG commit) | byte-exact từng mảnh trích · mã đích có trong câu · **gác từ mức B** (mọi từ ≥ 3 ký tự trong `text`/`dieuKien`/`hoi` nằm trong câu trích của chính mục) · trần clip · câu rào · mất ngoại lệ ngay sau trích. Sau soát: **0 lỗi còn** (2 mục vượt trần 110 còn lại là 2.3) |
 | quét câu loại trừ chưa phủ (`tmp/lo087/quet.mjs`, KHÔNG commit) | 6 nhóm × mọi câu có *"loại trừ/không bao gồm"* — chỉ còn 1 khoảng trống thật (2841 chrysoberyl, xem 2.3 số 2); các câu còn lại là dẫn nhập cấp CHƯƠNG hoặc ghi chú định nghĩa (CO2/HCN/SiO2 → 28.11) ⇒ đúng là không mã hoá được |
 | `scan-so-tay-soat.mjs 2836,2837,2839,2840,2841,2842` (máy quét của nhà) | **TRÀN-CLIP 20 → 17** (đúng 3 mục em sửa), `TỪ-NGOÀI-NGUỒN` **38 → 38** và `LƯỚC-NGOẠI-LỆ` **8 → 8** (không phát sinh cảnh báo mới; 38 cảnh báo `TỪ-NGOÀI-NGUỒN` là khuôn mẫu chữ của nhà — `loai`/`vat`/`khac` trong `tieuChi6`/`dong8`) |
-| `npm run so-tay:check` | **662 nhóm, 16.284 mục, 0 mục không kiểm được nguồn** |
+| `npm run so-tay:check` | **745 nhóm, 17.736 mục, 0 mục không kiểm được nguồn** (sau khi gộp `main`: lô 088 + vòng 03/04/05 — trước khi gộp là 662 nhóm / 16.284 mục) |
 | `node scripts/check-cay.mjs --nhom=2836,…,2842 --chi-tiet` | **6 nhóm, 0 lỗi lệch cây, 6 nhóm "đủ"** (đủ `dong8`, đủ tên nút ảo, đủ tiêu chí 6 số) |
 | `npm test` | **ALL TESTS PASSED** (21 passed, 0 failed) |
 | nhãn `nguonLoai` sau soát | **102 mục → `NGUOI_DUYET`** (5 khối đã soi: 2836 27 · 2837 9 · 2839 5 · 2840 3 · 2841 33 · 2842 25); `tieuChi6` (27) + `dong8` (34) giữ `AI_DA_KIEM` (ngoài phạm vi soát), `cay` giữ `MAY_SUY` |
+
+**Gộp `main` để gỡ CONFLICTING** (PR không CONFLICTING thì GitHub KHÔNG tạo được merge ref ⇒ workflow `pull_request` không chạy, CI im lặng — bài học lô 047/054/084): `TIEN-TRINH.md` ghép bằng `scripts/merge-tien-trinh.mjs` (giữ trọn 82 khối chung của HEAD, thêm 2 khối lô 088 của main; đã so **TỪNG DÒNG** từng khối — 0 khối lệch, không mất dòng của phiên khác); `so-tay-lo.csv` lấy bản của main (LF) + dòng 087 của nhánh này (`dang-lam, dev-zcode-mm, 845`) — khác main **đúng 1 dòng**.
 
 **Cấu trúc lô 087 sau soát — 163 mục** (không đổi): `phamVi` 6 · `dieuKienVao` 0 · `loaiTru` 48 · `phanBiet` 48 · `tieuChi6` 27 · `dong8` 34 · `cay.tenDien` 0.
 
