@@ -1,0 +1,612 @@
+VÒNG SỬA. Dưới đây là 4 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (0) Đơn vị phải ghi đúng chữ trích ("m³/h" chứ không "m3/h"); ngưỡng số phải có nguyên văn trong trích; "Bằng/Từ <vật liệu>" ⇒ chatLieu chỉ khi giá trị đọc được chữ trích (fluoropolyme KHÔNG đọc được ⇒ THIEU_KHOA_TU_VUNG, không ép plastic). (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 841490 ===
+--- GÓI ---
+# 841490 — Bộ phận
+
+841490 — Pumps and compressors; parts, of air or vacuum pumps, air or other gas compressors and fans, ventilating or recycling hoods incorporating a fan
+  [8414902] Của quạt
+    84149021 Của hàng hóa thuộc nhóm 84.15, 84.18, 85.09 hoặc 85.16
+    84149022 Của máy thổi khí
+    84149029 Loại khác  [LK]
+  [8414903] Của nắp chụp hút
+    84149031 Của hàng hóa thuộc phân nhóm 8414.60
+    84149032 Của hàng hóa thuộc phân nhóm 8414.80
+  [8414904] Của hàng hóa thuộc phân nhóm 8414.10
+    84149041 Dùng cho máy hoạt động bằng điện
+    84149042 Dùng cho máy không hoạt động bằng điện
+  84149050 Của hàng hóa thuộc phân nhóm 8414.20
+  84149060 Của hàng hóa thuộc phân nhóm 8414.30
+  84149070 Của hàng hóa thuộc phân nhóm 8414.40
+  84149080 Của hàng hóa thuộc phân nhóm 8414.70
+  84149090 Của máy bơm hoặc máy nén khác
+
+- 8414902 TIEU_DE
+    tieuDe.8414902 [16 ký tự]: 8414902 Của quạt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của quạt"
+- 84149021 DONG8
+    tax.84149021 [69 ký tự]: 84149021 - - - Của hàng hóa thuộc nhóm 84.15, 84.18, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc nhóm 84.15, 84.18, 85.09 hoặc 85.16"
+- 84149022 DONG8
+    tax.84149022 [31 ký tự]: 84149022 - - - Của máy thổi khí
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy thổi khí"
+- 84149029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84149029 [24 ký tự]: 84149029 - - - Loại khác
+- 8414903 TIEU_DE
+    tieuDe.8414903 [24 ký tự]: 8414903 Của nắp chụp hút
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của nắp chụp hút"
+- 84149031 DONG8
+    tax.84149031 [51 ký tự]: 84149031 - - - Của hàng hóa thuộc phân nhóm 8414.60
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8414.60"
+- 84149032 DONG8
+    tax.84149032 [51 ký tự]: 84149032 - - - Của hàng hóa thuộc phân nhóm 8414.80
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8414.80"
+- 8414904 TIEU_DE
+    tieuDe.8414904 [44 ký tự]: 8414904 Của hàng hóa thuộc phân nhóm 8414.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8414.10"
+- 84149041 DONG8
+    tax.84149041 [47 ký tự]: 84149041 - - - Dùng cho máy hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84149042 DONG8
+    tax.84149042 [53 ký tự]: 84149042 - - - Dùng cho máy không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84149050 DONG8
+    tax.84149050 [49 ký tự]: 84149050 - - Của hàng hóa thuộc phân nhóm 8414.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8414.20"
+- 84149060 DONG8
+    tax.84149060 [49 ký tự]: 84149060 - - Của hàng hóa thuộc phân nhóm 8414.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8414.30"
+- 84149070 DONG8
+    tax.84149070 [49 ký tự]: 84149070 - - Của hàng hóa thuộc phân nhóm 8414.40
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8414.40"
+- 84149080 DONG8
+    tax.84149080 [49 ký tự]: 84149080 - - Của hàng hóa thuộc phân nhóm 8414.70
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8414.70"
+- 84149090 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84149090 [42 ký tự]: 84149090 - - Của máy bơm hoặc máy nén khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy bơm hoặc máy nén khác"
+
+Nguồn cấp phân nhóm: wco.841490; chú giải: nhom8414.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841490",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841490",
+  "dong8": {
+    "84149021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ]
+    },
+    "84149022": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thổi khí"
+        }
+      ]
+    },
+    "84149031": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.60"
+        }
+      ]
+    },
+    "84149032": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.80"
+        }
+      ]
+    },
+    "84149041": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84149042": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "84149050": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.20"
+        }
+      ]
+    },
+    "84149060": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.30"
+        }
+      ]
+    },
+    "84149070": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.40"
+        }
+      ]
+    },
+    "84149080": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.70"
+        }
+      ]
+    },
+    "84149090": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {
+    "8414902": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "quạt"
+        }
+      ]
+    },
+    "8414903": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nắp chụp hút"
+        }
+      ]
+    },
+    "8414904": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8414.10"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8414902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8414902: \"Của quạt\" ⇒ dungCho CONG_DUNG \"quạt\""
+    },
+    {
+      "ma": "84149021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149021: \"Của hàng hóa thuộc nhóm 84.15, 84.18, 85.09 hoặc 85.16\" ⇒ dungCho CONG_DUNG [\"84.15\", \"84.18\", \"85.09\", \"85.16\"]"
+    },
+    {
+      "ma": "84149022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149022: \"Của máy thổi khí\" ⇒ dungCho CONG_DUNG \"máy thổi khí\""
+    },
+    {
+      "ma": "8414903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8414903: \"Của nắp chụp hút\" ⇒ dungCho CONG_DUNG \"nắp chụp hút\""
+    },
+    {
+      "ma": "84149031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149031: \"Của hàng hóa thuộc phân nhóm 8414.60\" ⇒ dungCho CONG_DUNG \"8414.60\""
+    },
+    {
+      "ma": "84149032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149032: \"Của hàng hóa thuộc phân nhóm 8414.80\" ⇒ dungCho CONG_DUNG \"8414.80\""
+    },
+    {
+      "ma": "8414904",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8414904: \"Của hàng hóa thuộc phân nhóm 8414.10\" ⇒ dungCho CONG_DUNG \"8414.10\""
+    },
+    {
+      "ma": "84149041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149041: \"Dùng cho máy hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84149042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149042: \"Dùng cho máy không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84149050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149050: \"Của hàng hóa thuộc phân nhóm 8414.20\" ⇒ dungCho CONG_DUNG \"8414.20\""
+    },
+    {
+      "ma": "84149060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149060: \"Của hàng hóa thuộc phân nhóm 8414.30\" ⇒ dungCho CONG_DUNG \"8414.30\""
+    },
+    {
+      "ma": "84149070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149070: \"Của hàng hóa thuộc phân nhóm 8414.40\" ⇒ dungCho CONG_DUNG \"8414.40\""
+    },
+    {
+      "ma": "84149080",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149080: \"Của hàng hóa thuộc phân nhóm 8414.70\" ⇒ dungCho CONG_DUNG \"8414.70\""
+    },
+    {
+      "ma": "84149090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84149090: \"Của máy bơm hoặc máy nén khác\" ⇒ phanConLai true"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-ve-gioi-han-bi-bo:84149090:Của máy bơm hoặc máy nén khác
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 841899 ===
+--- GÓI ---
+# 841899 — Loại khác
+
+841899 — Refrigerating or freezing equipment; parts thereof, other than furniture
+  84189910 Thiết bị làm bay hơi hoặc ngưng tụ
+  84189940 Panel nhôm cán-ghép dùng cho hàng hóa thuộc phân nhóm 8418.10.31, 8418.10.32, 8418.21.10, 8418.21.90 hoặc 8418.29.00 (SEN)
+  84189990 Loại khác  [LK]
+
+- 84189910 DONG8
+    tax.84189910 [49 ký tự]: 84189910 - - - Thiết bị làm bay hơi hoặc ngưng tụ
+- 84189940 DONG8
+    tax.84189940 [137 ký tự]: 84189940 - - - Panel nhôm cán-ghép dùng cho hàng hóa thuộc phân nhóm 8418.10.31, 8418.10.32, 8418.21.10, 8418.21.90 hoặc 8418.29.00 (SEN)
+    sen.84189940 [488 ký tự]: PANEL NHÔM CÁN-GHÉP DÙNG CHO HÀNG HÓA THUỘC PHÂN NHÓM 8418.10.31, 8418.10.32, 8418.21.10, 8418.21.90 HOẶC 8418.29.00 Tủ lạnh và máy làm lạnh hiện đại sử dụng các tấm panel nhôm chế tạo bằng phương pháp cán - ghép. Panel loại này được cấu tạo từ 2 tấm nhôm ghép vào với nhau bằng phương pháp cán. Trước khi cán, các đường rãnh được in bên trên tấm nhôm bằng than chì. Sau khi cán, các đường rãnh được tạo ra bằng cách ép tấm đó với áp suất từ 100 đến 150 bar. Panel nhôm (Aluminium roll-b
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc phân nhóm 8418.10.31, 8418.10.32, 8418.21.10, 8418.21.90 hoặc 8418.29.00"
+- 84189990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84189990 [24 ký tự]: 84189990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841899; chú giải: nhom8418.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841899",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841899",
+  "dong8": {
+    "84189910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thiết bị làm bay hơi",
+            "ngưng tụ"
+          ]
+        }
+      ]
+    },
+    "84189940": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Panel"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "nhôm"
+        },
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "CAN_NONG"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8418.10.31",
+            "8418.10.32",
+            "8418.21.10",
+            "8418.21.90",
+            "8418.29.00"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84189910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84189910: \"Thiết bị làm bay hơi hoặc ngưng tụ\" ⇒ tenLoai TEN_LOAI [\"Thiết bị làm bay hơi\", \"ngưng tụ\"]"
+    },
+    {
+      "ma": "84189940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84189940: \"Panel nhôm cán-ghép dùng cho hàng hóa thuộc phân nhóm 8418.10.31, 8418.10.32, 8418.21.10, 8418.21.90 hoặc 8418.29.00\" ⇒ tenLoai \"Panel\", chatLieu nhôm, phuongPhapCheTao CAN_NONG (cán), dungCho [\"8418.10.31\", \"8418.10.32\", \"8418.21.10\", \"8418.21.90\", \"8418.29.00\"]"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84189940:dieu-kien-so-trong-khong-co-trong-trich:CAN_NONG
+      → Câu trích không có cách đọc của giá trị liệt kê. Sửa: Mỗi giá trị cần một mẫu cachDoc có trong trich (xem --tu-vung).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 841950 ===
+--- GÓI ---
+# 841950 — Bộ phận trao đổi nhiệt
+
+841950 — Heat exchange units; not used for domestic purposes
+  84195010 Tháp làm mát
+  84195020 Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống (SEN)
+  [8419509] Loại khác
+    84195091 Hoạt động bằng điện
+    84195092 Không hoạt động bằng điện
+
+- 84195010 DONG8
+    tax.84195010 [25 ký tự]: 84195010 - - Tháp làm mát
+- 84195020 DONG8
+    tax.84195020 [131 ký tự]: 84195020 - - Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống (SEN)
+    sen.84195020 [867 ký tự]: BỘ TRAO ĐỔI NHIỆT LÀM BẰNG CÁC ỐNG FLUOROPOLYME, VỚI ỐNG ĐẦU VÀO VÀ ỐNG RA CÓ ĐƯỜNG KÍNH TRONG TỪ 3CM TRỞ XUỐNG Các thiết bị trao đổi nhiệt sử dụng các ống fluoropolymer (thay vì ống kim loại như thép không gỉ, đồng, nhôm) để tạo điều kiện lý tưởng phù hợp cho việc truyền nhiệt trong môi trường hoạt động mạnh về mặt hóa học và trong những trường hợp yêu cầu “rất cao hoặc siêu tinh khiết”. Việc làm nóng và làm mát lưu chất bằng các cuộn dây fluoropolymer được ưu tiên khi độ tinh khiết là quan trọng hàng đầu, ví dụ như trong quá trình xử lý chất bán dẫn khi sự nhiễm bẩn từ bề mặt trao đổi nhiệt không được chấp nhận. Trong những trường hợp này, điều quan trọng là vật liệu trao đổi nhiệt không bị ăn mòn hoặc ngấm vào hóa chất đang được xử lý. Ví dụ về bộ trao đổi nhiệt làm bằng các ống fluoropolyme (Example of a heat exchanger made of tubes of fluoropolymer)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng các ống fluoropolyme, với ống đầu vào và ống ra" · [GIỚI HẠN] "có đường kính trong từ 3 cm trở xuống"
+- 8419509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8419509 [17 ký tự]: 8419509 Loại khác
+- 84195091 DONG8
+    tax.84195091 [34 ký tự]: 84195091 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84195092 DONG8
+    tax.84195092 [40 ký tự]: 84195092 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.841950; chú giải: nhom8419.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841950",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841950",
+  "dong8": {
+    "84195010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tháp làm mát"
+        }
+      ]
+    },
+    "84195020": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 3,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "84195091": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84195092": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84195010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84195010: \"Tháp làm mát\" ⇒ tenLoai TEN_LOAI \"Tháp làm mát\""
+    },
+    {
+      "ma": "84195020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84195020: \"Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống (SEN)\" ⇒ chatLieu \"plastic\" (fluoropolyme là polyme), duongKinhTrong <= 3 cm"
+    },
+    {
+      "ma": "84195091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84195091: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84195092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84195092: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84195020:dieu-kien-so-la-khong-co-trong-trich:plastic
+      → Câu trích không có cách đọc của chất liệu. Sửa: Trích đoạn có tên chất liệu.
+    ✗ cong5-ve-gioi-han-bi-bo:84195020:bằng các ống fluoropolyme, với ống đầu vào và ống ra
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+    ✗ cong2-chong-lan:84195010+84195020:chatLieu=CHINH:plastic,duongKinhTrong=29.99997,tenLoai=Tháp làm mát:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 841990 ===
+--- GÓI ---
+# 841990 — Bộ phận
+
+841990 — Machinery, plant and laboratory equipment; parts of equipment for treating materials by a process involving a change of temperature
+  [8419901] Của thiết bị hoạt động bằng điện
+    84199012 Của máy xử lý vật liệu bằng quá trình gia nhiệt, để sản xuất tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+    84199013 Vỏ của tháp làm mát
+    84199019 Loại khác  [LK]
+  [8419902] Của thiết bị không hoạt động bằng điện
+    84199022 Của thiết bị đun nước nóng nhanh bằng ga, loại sử dụng trong gia đình
+    84199029 Loại khác  [LK]
+
+- 8419901 TIEU_DE
+    tieuDe.8419901 [40 ký tự]: 8419901 Của thiết bị hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84199012 DONG8
+    tax.84199012 [123 ký tự]: 84199012 - - - Của máy xử lý vật liệu bằng quá trình gia nhiệt, để sản xuất tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy xử lý vật liệu" · [GIỚI HẠN] "bằng quá trình gia nhiệt" · [GIỚI HẠN] "để sản xuất tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp"
+- 84199013 DONG8
+    tax.84199013 [34 ký tự]: 84199013 - - - Vỏ của tháp làm mát
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của tháp làm mát"
+- 84199019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84199019 [24 ký tự]: 84199019 - - - Loại khác
+- 8419902 TIEU_DE
+    tieuDe.8419902 [46 ký tự]: 8419902 Của thiết bị không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84199022 DONG8
+    tax.84199022 [84 ký tự]: 84199022 - - - Của thiết bị đun nước nóng nhanh bằng ga, loại sử dụng trong gia đình
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị đun nước nóng nhanh" · [GIỚI HẠN] "bằng ga" · [GIỚI HẠN] "loại sử dụng trong gia đình"
+- 84199029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84199029 [24 ký tự]: 84199029 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841990; chú giải: nhom8419.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841990",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841990",
+  "dong8": {
+    "84199012": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    },
+    "84199013": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vỏ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tháp làm mát"
+        }
+      ]
+    },
+    "84199022": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị đun nước nóng nhanh bằng ga"
+        },
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8419901": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "8419902": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8419901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8419901: \"Của thiết bị hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84199012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84199012: \"Của máy xử lý vật liệu bằng quá trình gia nhiệt, để sản xuất tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\" ⇒ dungCho CONG_DUNG [\"sản xuất tấm mạch in\", \"tấm dây in\", \"mạch in đã lắp ráp\"]"
+    },
+    {
+      "ma": "84199013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84199013: \"Vỏ của tháp làm mát\" ⇒ tenLoai TEN_LOAI \"Vỏ\", dungCho CONG_DUNG \"tháp làm mát\""
+    },
+    {
+      "ma": "8419902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8419902: \"Của thiết bị không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84199022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84199022: \"Của thiết bị đun nước nóng nhanh bằng ga, loại sử dụng trong gia đình\" ⇒ dungCho CONG_DUNG \"thiết bị đun nước nóng nhanh bằng ga\", phamViSuDung TRONG [\"GIA_DINH\"]"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-ve-gioi-han-bi-bo:84199012:Của máy xử lý vật liệu bằng quá trình gia nhiệt
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
