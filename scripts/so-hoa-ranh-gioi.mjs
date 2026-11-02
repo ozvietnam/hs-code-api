@@ -37,7 +37,7 @@ Lệnh của CLAUDE (thợ KHÔNG chạy):
                                                                   ghi chú DE_TRONG/"người soát xem" cần một --giai-quyet)
   --tra-ve --pn6=X --phien=… --ly-do=…                            trả về người soạn
   --ap-dung --pn6=X                                               đưa bản DUYET vào data/so-tay/<nhóm>.json
-  --tom-tat                                                       trạng thái 50 phân nhóm lát 1
+  --tom-tat                                                       trạng thái 50 phân nhóm lát 1 + 100 phân nhóm lát 2
   --nhan-tu-vung [--pn6=a,b]                                      ghi nhãn "tuVung" = từ vựng runtime (cổng chạy với bản này) — CHỈ đổi
                                                                   dòng nhãn; bản NHAP có spec mà sinh lại khác ngoài nhãn ⇒ BỎ QUA
 
@@ -71,6 +71,7 @@ const ghi = (rel, obj) => { const p = dataPath(rel); fs.mkdirSync(path.dirname(p
 function danhSach() {
   if (args.pn6) return String(args.pn6).split(',').map((x) => x.replace(/\D/g, '')).filter(Boolean);
   if (args.dot) return C.phanNhomCuaDot(Number(args.dot));
+  if (args.lat2) return C.phanNhomLat2();
   return null;
 }
 function moiBanNhap() {
@@ -295,6 +296,11 @@ if (args.help || args.h || !argv.length) {
       const r = b ? C.kiemRanhGioi(p, b) : null;
       console.log(`đợt ${d} ${p}${C.canHieuChinh(p) ? ' [hiệu chỉnh]' : ''}: ${b ? `${b.trangThai} ${r.hopLe ? 'XANH' : `ĐỎ (${r.loi.length} lỗi)`}${r.dung?.length ? ' DỪNG' : ''}` : 'chưa có nháp'}`);
     }
+  }
+  for (const p of C.phanNhomLat2()) {
+    const b = docNhap(p);
+    const r = b ? C.kiemRanhGioi(p, b) : null;
+    console.log(`lát 2 ${p}${C.canHieuChinh(p) ? ' [hiệu chỉnh]' : ''}: ${b ? `${b.trangThai} ${r.hopLe ? 'XANH' : `ĐỎ (${r.loi.length} lỗi)`}${r.dung?.length ? ' DỪNG' : ''}` : 'chưa có nháp'}`);
   }
 } else {
   console.error('Lệnh không rõ — chạy --help.');

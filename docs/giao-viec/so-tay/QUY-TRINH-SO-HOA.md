@@ -1,5 +1,6 @@
 # Quy trình số hoá ranh giới MỘT phân nhóm 6 số (PN6) — cho thợ (agent code giá rẻ)
 
+> Mới vào nhận việc lát 2? Đọc [`NHAN-VIEC.md`](NHAN-VIEC.md) trước.
 > #577 (L1-4). Một issue nhãn `job` = một PN6 = một nhánh = một PR. Claude soát và duyệt; thợ KHÔNG duyệt.
 > Người soát (L1-4c) dùng bảng soát [`SOAT-RANH-GIOI.md`](SOAT-RANH-GIOI.md).
 > Làm ĐÚNG thứ tự, từng bước. Không chắc ⇒ DỪNG (mục 4) — dừng đúng chỗ được tính là làm tốt, ép cho xanh là làm hỏng.
