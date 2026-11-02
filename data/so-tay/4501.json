@@ -1,0 +1,139 @@
+{
+ "nhom": "4501",
+ "phamVi": {
+  "text": "Lie tự nhiên, thô hoặc sơ chế; phế liệu lie; lie đã ép, nghiền thành hạt hoặc thành bột.",
+  "nguon": "nhom4501.nhom",
+  "trich": "Nhóm này bao gồm:\n\n(1) Lie tự nhiên, thô hoặc đã sơ chế … (2) Các phế liệu của lie tự nhiên hoặc lie kết dính … (3) Lie đã ép, nghiền thành hạt hoặc thành bột",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_lie_tu_nhien_o_dang_tho_so_che_hat_bot_phe_lieu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch45.chuong",
+   "trich": "Chương này bao gồm lie tự nhiên và lie kết dính ở mọi dạng (kể cả các mặt hàng từ lie và lie kết dính), trừ các loại đã bị loại trừ ở phần cuối Chú giải chi tiết nhóm 45.03.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Lie được bóc vỏ hoặc đẽo thô thành hình vuông",
+   "sangNhom": "4502",
+   "nguon": "nhom4501.nhom",
+   "trich": "tuy nhiên, lie được bóc vỏ (lấy đi lớp vỏ ngoài cùng), hoặc đẽo thô thành hình vuông bị loại trừ (nhóm 45.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Lie kết dính",
+   "sangNhom": "4504",
+   "nguon": "nhom4501.nhom",
+   "trich": "tuy vậy, lie kết kính bị loại trừ (nhóm 45.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là lie đã bóc vỏ hoặc đẽo thô thành hình vuông?",
+   "neuCo": "4502",
+   "neuKhong": "4501",
+   "nguon": "nhom4501.nhom",
+   "trich": "tuy nhiên, lie được bóc vỏ (lấy đi lớp vỏ ngoài cùng), hoặc đẽo thô thành hình vuông bị loại trừ (nhóm 45.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là lie kết dính?",
+   "neuCo": "4504",
+   "neuKhong": "4501",
+   "nguon": "nhom4501.nhom",
+   "trich": "tuy vậy, lie kết kính bị loại trừ (nhóm 45.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "45011000",
+   "dieuKien": "Lie tự nhiên, thô hoặc đã sơ chế",
+   "loaiKhac": false,
+   "nguon": "tax.45011000",
+   "trich": "45011000 - Lie tự nhiên, thô hoặc đã sơ chế",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "45019000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.45019000",
+   "trich": "45019000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "4501",
+    "truAnhEm": [
+     "45011000"
+    ],
+    "truDayDu": [
+     "45011000"
+    ],
+    "toTienCoTen": "4501",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4501",
+    "cap": 4,
+    "cha": "45",
+    "tenVi": "Lie tự nhiên, thô hoặc đã sơ chế; lie phế liệu; lie đã ép, nghiền thành hạt hoặc thành bột.",
+    "tenEn": "Natural cork, raw or simply prepared; waste cork; crushed, granulated or ground cork",
+    "suyRa": false
+   },
+   {
+    "id": "45011000",
+    "cap": 8,
+    "cha": "4501",
+    "tenVi": "Lie tự nhiên, thô hoặc đã sơ chế",
+    "tenEn": "Cork; natural cork, raw or simply prepared",
+    "suyRa": false,
+    "laPhanNhom": "450110"
+   },
+   {
+    "id": "45019000",
+    "cap": 8,
+    "cha": "4501",
+    "tenVi": "Loại khác",
+    "tenEn": "Cork; waste cork, crushed, granulated or ground cork",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "450190"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch45.chuong",
+  "nhom4501.nhom",
+  "tax.45011000",
+  "tax.45019000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:57:18.629Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

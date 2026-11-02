@@ -1,0 +1,38 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853190",
+  "phien": "zcode-sub:glm-5.3:20261102T1743#soan-853190",
+  "dong8": {
+    "85319010": {
+      "dieuKienSo": [
+        { "fact": "laBoPhan", "op": "CO" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "phân nhóm 8531.20, 8531.80.21 hoặc 8531.80.29" }
+      ]
+    },
+    "85319020": {
+      "phanConLai": false,
+      "dieuKienSo": [
+        { "op": "HOAC", "phuongAn": [
+          [ { "fact": "dungCho", "op": "CONG_DUNG", "value": "chuông cửa" } ],
+          [ { "fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị báo hiệu" }, { "fact": "dungCho", "op": "CONG_DUNG", "value": "âm thanh" } ]
+        ] },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "cửa" }
+      ]
+    },
+    "85319030": {
+      "phanConLai": ["85319020"],
+      "dieuKienSo": [
+        { "op": "HOAC", "phuongAn": [
+          [ { "fact": "dungCho", "op": "CONG_DUNG", "value": "chuông" } ],
+          [ { "fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị báo hiệu" }, { "fact": "dungCho", "op": "CONG_DUNG", "value": "âm thanh" } ]
+        ] }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "85319010", "loai": "QUYET_DINH", "ghiChu": "tax.85319010 \"Bộ phận kể cả mạch in đã lắp ráp của phân nhóm 8531.20, 8531.80.21 hoặc 8531.80.29\" (EN \"Parts including printed circuit assemblies of subheading 8531.20, 8531.80.21 or 8531.80.29\") ⇒ laBoPhan CO (trích có chữ \"Bộ phận\") + dungCho \"phân nhóm 8531.20, 8531.80.21 hoặc 8531.80.29\" (dẫn mã giữ nguyên chuỗi, máy đọc HOẶC theo mã HS — BẢNG-LUẬ dòng 9). \"kể cả mạch in đã lắp ráp\" là vế \"kể cả …\" (including), không phải \"gồm\" (consisting of) ⇒ không thành điều kiện (QUY-TRINH 3.8)." },
+    { "ma": "85319020", "loai": "QUYET_DINH", "ghiChu": "tax.85319020 \"Của chuông cửa hoặc các thiết bị báo hiệu bằng âm thanh khác dùng cho cửa\" (EN \"Of door bells or other door sound signalling apparatus\") ⇒ đích (vế \"Của …\") viết bằng dungCho theo khuôn 85318011: HOAC [[dungCho \"chuông cửa\"],[dungCho \"thiết bị báo hiệu\" + dungCho \"âm thanh\")] — \"bằng âm thanh\" chỉ định ngữ của \"thiết bị báo hiệu\" (EN \"sound\" premodifies \"signalling apparatus\"); dungCho \"cửa\" là định ngữ chung của cả hai vế (EN \"door\" premodifies cả \"bells\" lẫn \"apparatus\"), phủ vế \"dùng cho cửa\". phanConLai false: \"khác\" loại trừ chính chuông cửa, không trỏ anh em." },
+    { "ma": "85319030", "loai": "QUYET_DINH", "ghiChu": "tax.85319030 \"Của chuông hoặc các thiết bị báo hiệu bằng âm thanh khác\" (EN \"Of other bells or sound signalling apparatus\") ⇒ phanConLai [\"85319020\"] — EN \"other bells\" = chuông NGOÀI chuông cửa của 85319020, bộ phận chuông cửa đã bị .20 nhận; trích có chữ \"khác\". Đích: HOAC [[dungCho \"chuông\"],[dungCho \"thiết bị báo hiệu\" + dungCho \"âm thanh\"]], cùng khuôn .20 nhưng không có \"cửa\" (phần còn lại sau khi tách chuông cửa)." }
+  ]
+}
