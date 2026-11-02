@@ -12495,6 +12495,7 @@ TARGET=data APPLY=1 node scripts/apply-review-lo086.mjs        # CHỈ nâng ngu
 | `node scripts/check-cay.mjs --nhom=… --chi-tiet` | **6 nhóm, 0 lỗi lệch cây** (nền nhà: "còn trống ten-dien-trung-bieu-thue" là thông tin, không phải lỗi) |
 | nhãn `nguonLoai` sau soát | **82 mục → `NGUOI_DUYET`** (2830: 29 · 2831: 3 · 2832: 6 · 2833: 22 · 2834: 12 · 2835: 10); `tieuChi6` + `dong8` giữ `AI_DA_KIEM` (ngoài phạm vi soát), `cay.tenDien` giữ `AI_DA_KIEM` |
 | `npm test` | **ALL TESTS PASSED** |
+| CI PR #843 (commit `3ec1118d`) | `bench` **SUCCESS** (9m02s) · `test` **SUCCESS** (16m14s) — **XANH** |
 
 **Cấu trúc lô 086 sau soát — 153 mục** (không đổi số mục): `phamVi` 6 · `dieuKienVao` 0 · `loaiTru` 36 · `phanBiet` 36 · `boPhan` 4 · `tieuChi6` 28 · `cay.tenDien` 5 · `dong8` 38.
 
