@@ -169,12 +169,51 @@
     },
     {
       "hs": "85318011",
-      "dieuKien": "Chuông cửa và các thiết bị báo hiệu bằng âm thanh khác dùng cho cửa (853180)",
-      "tieuChi": null,
+      "dieuKien": "(tên loại hàng: Chuông cửa) hoặc (tên loại hàng: thiết bị báo hiệu và tên loại hàng: âm thanh); dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): cửa",
       "loaiKhac": false,
       "nguon": "tax.85318011",
-      "trich": "85318011 - - - Chuông cửa và các thiết bị báo hiệu bằng âm thanh khác dùng cho cửa",
-      "nguonLoai": "NGUOI_DUYET"
+      "trich": "85318011 - - - Chuông cửa và các thiết bị báo hiệu bằng âm thanh khác dùng cho cửa ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chuông cửa"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị báo hiệu"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "âm thanh"
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cửa"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat#soat-853180",
+          "ngay": "2026-11-02",
+          "bam": "d335f5a13b8d42b5811c0c7fdeaaca129e26bd5981f224546f98ea177648febe"
+        }
+      },
+      "phanConLai": false
     },
     {
       "hs": "85318019",
@@ -196,12 +235,31 @@
     },
     {
       "hs": "85318021",
-      "dieuKien": "Màn hình sử dụng huỳnh quang chân không (853180)",
-      "tieuChi": null,
+      "dieuKien": "tên loại hàng: Màn hình; tên loại hàng: huỳnh quang chân không",
       "loaiKhac": false,
       "nguon": "tax.85318021",
       "trich": "85318021 - - - Màn hình sử dụng huỳnh quang chân không",
-      "nguonLoai": "NGUOI_DUYET"
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Màn hình"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "huỳnh quang chân không"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat#soat-853180",
+          "ngay": "2026-11-02",
+          "bam": "d335f5a13b8d42b5811c0c7fdeaaca129e26bd5981f224546f98ea177648febe"
+        }
+      }
     },
     {
       "hs": "85318029",
