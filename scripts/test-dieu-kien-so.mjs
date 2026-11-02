@@ -268,5 +268,14 @@ const ST8544 = {
   check('8k … doiChieuDong8 → CHUA_SO_HOA dù đủ dữ kiện', DK.doiChieuDong8('84145941', [fact('coLuoiBaoVe', true), fact('tenLoai', 'quạt hút')], { soTay: { nhom: '8414', dong8: [] } }).ketQua === 'CHUA_SO_HOA');
 }
 
+// 9. soCoTrongTrich — số thập phân chữ biểu viết thêm 0 cuối (841510 "21,10 kW" = 21.1); không nhận chữ số khác / số dài hơn.
+{
+  const f = DK.soCoTrongTrich;
+  check('9a 21.1 có trong "không quá 21,10 kW"', f(21.1, 'không quá 21,10 kW') === true);
+  check('9b 26.3 KHÔNG có trong "26,38 kW"', f(26.3, 'không quá 26,38 kW') === false);
+  check('9c 21 KHÔNG có trong "210 kg"', f(21, 'trên 210 kg') === false);
+  check('9d 1000 có trong "1.000 kg"; 2.5 có trong "2,50 mm"; 2.5 không có trong "2,501"', f(1000, 'trên 1.000 kg') && f(2.5, '2,50 mm') && !f(2.5, '2,501'));
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
