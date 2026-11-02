@@ -3,11 +3,11 @@
  "nguoiSoat": "dev-soat-doc-lap-lo081",
  "luc": "2026-11-02T09:10:00+07:00",
  "soat": 30,
- "giu": 30,
- "sua": 0,
+ "giu": 28,
+ "sua": 2,
  "xoa": 0,
  "chen": 1,
- "ghiChu": "SOÁT ĐỘC LẬP lô 081 — nhóm 2804 (30 mục: 8 trong phạm vi mục 4 [1 phamVi + 3 loaiTru + 4 phanBiet] + 22 đọc thêm [11 tieuChi6 + 11 dong8]). Đọc LẠI từng mục cùng nguồn tmp/so-tay/nguon/2804.txt. XOÁ 0, SỬA 0, CHÈN 1, GIỮ 28. KIỂM MÁY (tự viết, không tin máy nhà): byte-exact 30/30 câu trích có thật trong đúng khối nguồn (so khớp từng byte, không nén squash); không có trích vượt 300 ký tự; hai ngưỡng số 99,99 của 280461/280469 có nguyên văn trong trích ('not less than 99.99%' / 'less than 99.99%') và đơn vị '%' khớp; chiều Có/Không của cả 4 phanBiet đúng.",
+ "ghiChu": "SOÁT ĐỘC LẬP lô 081 — nhóm 2804 (30 mục: 8 trong phạm vi mục 4 [1 phamVi + 3 loaiTru + 4 phanBiet] + 22 đọc thêm [11 tieuChi6 + 11 dong8]). Đọc LẠI từng mục cùng nguồn tmp/so-tay/nguon/2804.txt. XOÁ 0, SỬA 2, CHÈN 1, GIỮ 28. KIỂM MÁY (tự viết, không tin máy nhà): byte-exact 30/30 câu trích (sau khi sửa: 2 câu trích 2804 dài 275 ký tự vẫn byte-exact) có thật trong đúng khối nguồn (so khớp từng byte, không nén squash); không có trích vượt 300 ký tự; hai ngưỡng số 99,99 của 280461/280469 có nguyên văn trong trích ('not less than 99.99%' / 'less than 99.99%') và đơn vị '%' khớp; chiều Có/Không của cả 4 phanBiet đúng.",
  "thayDoi": [
   {
    "index": "phamVi",
@@ -26,8 +26,11 @@
   },
   {
    "index": "loaiTru[2]",
-   "hanhDong": "giu",
-   "lyDo": "GIỮ (có ghi nhận). Nguồn: 'Chúng được phân loại trong nhóm này với điều kiện là chúng ở dạng chưa gia công như kéo hoặc ở dạng ống, hoặc dụng thanh. Khi cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự, thì chúng được phân loại ở nhóm 38.18.' Đích 38.18 nêu danh; `dieuKien` = 'Phi kim cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự' — chữ 'phi kim' là CHỦ THỂ của chính nhóm 2804 (đã nêu ở `phamVi` và `cay.tenVi`), không phải hiểu biết riêng. GHI NHẬN cho người duyệt: câu trích BẮT ĐẦU BẰNG ĐẠI TỪ 'Chúng' (tiền ngữ 'Một vài phi kim trong nhóm này (ví dụ, silic và selen) …' nằm ở câu trước) nên đọc đứng một mình hơi mồ côi; người soát KHÔNG mở rộng trích vì mở rộng sẽ lộ ra chữ 'một vài phi kim (ví dụ, silic và selen)' — tức là điều kiện loại trừ có thể CHỈ áp cho một vài phi kim, mà `dieuKien` bị runtime cắt còn 55 ký tự (lib/so-tay-gates.js:137) nên không mang nổi chữ 'một vài'. Để người duyệt quyết có thu hẹp `dieuKien` cho đúng hay không."
+   "hanhDong": "sua",
+   "lyDo": "SỬA — TRÍCH DÙNG ĐẠI TỪ, MẤT CHỦ THỂ (lớp lỗi máy KHÔNG bắt, đã có tiền lệ NGAY Ở LÔ 081 VÒNG SOÁT TRƯỚC cho đúng nhóm 2804 này). Câu trích cũ BẮT ĐẦU BẰNG 'Chúng' — đại từ không có chủ thể khi đọc đứng một mình; tiền ngữ 'Một vài phi kim trong nhóm này (ví dụ, silic và selen) …' nằm ở câu TRƯỚC trong nguồn. `dieuKien` = 'Phi kim cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự' có chữ 'phi kim' mà câu trích cũ KHÔNG có ⇒ vi phạm gác soát từ mức B của nhà (mọi từ ≥3 ký tự trong `dieuKien`/`hoi` phải có trong câu trích của chính mục). Sửa: nối thêm tiền ngữ bằng dấu lược ' … ' (luật 2 cho phép lược) ⇒ trích 275 ký tự ≤ trần 300, byte-exact, và câu trích tự nó nói đúng điều mục khẳng định. `dieuKien`, `sangNhom`, `nguon` giữ nguyên. GHI NHẬN cho người duyệt: trích mới lộ ra chữ 'một vài phi kim (ví dụ, silic và selen)' — tức là điều kiện loại trừ có thể CHỈ áp cho một vài phi kim của nhóm, trong khi `dieuKien` bị runtime cắt còn 55 ký tự (lib/so-tay-gates.js:137) nên không mang nổi chữ 'một vài'; đề xuất người duyệt xem có thu hẹp `dieuKien` cho đúng phạm vi hay không.",
+   "sua": {
+    "trich": "Một vài phi kim trong nhóm này (ví dụ, silic và selen) … Chúng được phân loại trong nhóm này với điều kiện là chúng ở dạng chưa gia công như kéo hoặc ở dạng ống, hoặc dụng thanh. Khi cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự, thì chúng được phân loại ở nhóm 38.18."
+   }
   },
   {
    "index": "loaiTru",
@@ -57,8 +60,11 @@
   },
   {
    "index": "phanBiet[3]",
-   "hanhDong": "giu",
-   "lyDo": "GIỮ. 'Hàng này là phi kim cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự không?' → có→3818, không→2804. Đích 38.18 nêu danh trong trích; câu hỏi không nhắc mã. Xem ghi nhận ở loaiTru[2] về tiền ngữ 'Chúng'."
+   "hanhDong": "sua",
+   "lyDo": "SỬA — CÙNG LỚP LỖI VỚI loaiTru[2] (trích dùng đại từ 'Chúng', mất chủ thể; `hoi` có chữ 'phi kim' mà trích cũ không có). Sửa: nối tiền ngữ bằng ' … ' ⇒ trích 275 ký tự ≤ 300, byte-exact; `hoi`, `neuCo`, `neuKhong`, `nguon` giữ nguyên. Chiều Có/Không đúng: 'Hàng này là phi kim cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự không?' → có→3818 (đích nêu danh trong trích), không→2804.",
+   "sua": {
+    "trich": "Một vài phi kim trong nhóm này (ví dụ, silic và selen) … Chúng được phân loại trong nhóm này với điều kiện là chúng ở dạng chưa gia công như kéo hoặc ở dạng ống, hoặc dụng thanh. Khi cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự, thì chúng được phân loại ở nhóm 38.18."
+   }
   },
   {
    "index": "tieuChi6[0]",

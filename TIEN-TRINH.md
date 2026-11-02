@@ -11546,7 +11546,7 @@ npm run so-tay:check && npm test
 | 2805 | 23 | 13 | 10 |
 | **Tổng** | **89** | **45** | **44** |
 
-**Kết quả: XOÁ 0 · SỬA 3 · CHÈN 2 · GIỮ 84** ⇒ sau soát **91 mục** (89 + 2 mục chèn).
+**Kết quả: XOÁ 0 · SỬA 5 · CHÈN 2 · GIỮ 84** ⇒ sau soát **91 mục** (89 + 2 mục chèn).
 
 ## 2. KIỂM MÁY tự viết (không tin bộ kiểm của nhà — bộ đó dùng `squash` nên lọt lỗi gõ tay)
 
@@ -11556,13 +11556,15 @@ npm run so-tay:check && npm test
 - Quét "từ trong `text`/`dieuKien`/`hoi` mà không có trong câu trích" cho **89/89 mục**: chỉ 3 mục có từ thiếu thật — 2803 `phanBiet[4]` ("muội axetylen"), 2803 `phanBiet[5]` ("muội carbon"), 2804 `loaiTru[2]` ("phi kim"); 2 mục còn lại chỉ thiếu liên từ ("hoặc"/"hay").
 - **ĐO NỀN NHÀ trước khi bác** (để không xoá nhầm mẫu đúng): `phanBiet` có `neuKhong` = chính nhóm **951/1197** mục; câu hỏi dạng "Hàng này là X không?" **43 mục**; `dong8` có `nguon` khác `tax.*` **1330/6897**; `dieuKien` dài > 90 ký tự **3242/6897**; loại trừ có đích trong ngoặc "(ví dụ…)" **10 mục** đã gộp.
 
-## 3. SỬA 3 + CHÈN 2 — lý do từng mục
+## 3. SỬA 5 + CHÈN 2 — lý do từng mục
 
 ### SỬA
 
 1. **2803 `phanBiet[4]` — trích CẮT ĐÚNG TRƯỚC CÂU ĐỊNH NGHĨA.** Câu hỏi "Hàng này là muội axetylen không?" → có→28030020, nhưng trích cũ chỉ có "…và axetylen." — **không có chữ "muội axetylen"**; câu định nghĩa ngay sau đó ("Muội axetylen, là một sản phẩm rất mịn và tinh khiết, được tạo ra do sự phân hủy tức thời của khí nén axetylen bằng cách sử dụng tia lửa điện.") bị cắt mất ⇒ mục khẳng định điều trích không nói (kiểu "cắt trích né câu rào"). Sửa: nối nguyên văn câu định nghĩa → 247 ký tự.
 2. **2802 `phanBiet[1]` — MỘT NHÁNH CỦA LUẬT "A VÀ B" BỊ TÁCH ⇒ nhánh "không" SAI.** Nguồn loại trừ CẢ "lưu huỳnh chưa tinh chế … bằng phương pháp Frasch" LẪN "lưu huỳnh đã tinh chế" (cả hai → 25.03); câu hỏi cũ chỉ hỏi vế thứ nhất nên "không → 2802" loại nhầm lưu huỳnh đã tinh chế. Sửa: `hoi` phủ cả hai vế (107 ký tự ≤ trần clip 110).
 3. **2803 `dong8[2]` (28030049) — câu trong sổ tay MÂU THUẪN NỘI BỘ, phạm vi "Loại khác" không rõ.** Câu cũ nói "tiêu đề quốc gia 2803.00.4 **không có trong nguồn**" — SAI: biểu thuế CÓ tên ("Muội carbon khác", `data/bieu-thue/2026.04.05/ten-nut.json`) và chính khối `cay` của nhóm đã dùng tên đó. Câu cũ cũng không nêu dòng anh em phải loại (28030041) ⇒ phạm vi "Loại khác" mơ hồ. Sửa theo mẫu nhà (0301/0105/0714, lô 066 vòng 2): "Loại khác: phần còn lại của tiêu đề quốc gia 2803.00.4 (Muội carbon khác), trừ 28030041" (87 ký tự ≤ trần clip 90).
+
+4. **2804 `loaiTru[2]` + `phanBiet[3]` — TRÍCH DÙNG ĐẠI TỪ, MẤT CHỦ THỂ (lớp lỗi máy KHÔNG bắt; đã có tiền lệ NGAY Ở LÔ 081 VÒNG SOÁT TRƯỚC cho đúng nhóm 2804 này — memory `so-tay-lo081-soat-doc-lap` mục 2).** Trích bắt đầu bằng "Chúng" (tiền ngữ "Một vài phi kim trong nhóm này (ví dụ, silic và selen) …" nằm ở câu TRƯỚC) mà `dieuKien`/`hoi` lại có chữ "phi kim" ⇒ vi phạm gác soát từ mức B của nhà. Sửa: nối tiền ngữ bằng dấu lược " … " (luật 2) ⇒ trích 275 ký tự ≤ 300, byte-exact, tự nó nói đúng điều mục khẳng định. `dieuKien`/`sangNhom`/`hoi`/`neuCo`/`neuKhong` giữ nguyên.
 
 ### CHÈN (loại trừ có ĐÍCH DANH mà bản soạn bỏ sót)
 
