@@ -29,3 +29,17 @@ Quét ở trên chỉ thấy khoá thiếu; chạy thật còn lộ **giá trị
 | `loaiXoPha` (bằng chứng thêm) | sợi đàn hồi / sợi cao su / xơ staple | 60019230 "Chứa sợi đàn hồi hoặc sợi cao su" — chatLieu LA 'cao su' sai trục CHỨA ≠ BẰNG | #880 |
 
 Kèm theo: 520859 còn chờ mục bảng hiệu chỉnh tiền lệ L1-4b (`can-bang-hieu-chinh-tien-le`).
+
+## Bổ sung từ studio-loop (02/11, 70 PN6 lát 2 do Gemini soạn, cổng máy kiểm)
+
+Gemini được dặn: không có khoá ⇒ `dieuKienSo: []` + ghi chú `THIEU_KHOA_TU_VUNG` (kèm `khoaDeXuat`). Máy gom từ 73 spec (p1–p3), mỗi dòng là một mục dòng 8 số:
+
+| Loại | Khoá đề xuất | Số mục | Gặp ở (mẫu) | Chữ biểu |
+|---|---|---|---|---|
+| THIEU_KHOA_TU_VUNG | `phuongPhapIn` | 9 | 620442/62044210; 620432/62043210; 620419/62041911; 620449/62044910 | tax.62044210 "Được in bằng phương pháp batik truyền thống (SEN)" thiếu khoá phương pháp in |
+| THIEU_KHOA_TU_VUNG | `tinhDanHoi` | 8 | 600643/60064310; 600642/60064210; 600634/60063410; 600644/60064410 | tax.60064310 "Đàn hồi (kết hợp với sợi cao su)" thiếu khoá tính đàn hồi / kết hợp sợi cao  |
+| THIEU_KHOA_TU_VUNG | `loaiSoiDet` | 4 | 630629/63062910; 630619/63061910; 630619/63061920; 630640/63064010 | Từ bông |
+| DUNG | `—` | 1 | 701990/701990 | CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ |
+| THIEU_KHOA_TU_VUNG | `doDay` | 1 | 730830/73083010 | tax.73083010 "có độ dày từ 6 mm đến 8 mm" thiếu khoá đại lượng độ dày doDay (SO, mm) |
+
+Đề xuất gộp với bảng trên: `loaiSoiDet` ≈ `loaiXoPha`/vật liệu dệt (giá trị: bông, xơ tổng hợp, xơ nhân tạo, len/lông động vật mịn, sợi thực vật nhóm 53.05, tơ tằm…); `phuongPhapIn` giá trị `BATIK_TRUYEN_THONG` ≈ `phuongPhapCheTao: IN_BATIK` ở trên — chọn một; `tinhDanHoi` ≈ `loaiXoPha` giá trị `SOI_DAN_HOI_HOAC_CAO_SU` (chữ biểu 6006: "Đàn hồi (kết hợp với sợi cao su)", 6001: "Chứa sợi đàn hồi hoặc sợi cao su"); `doDay` (SO, mm) trùng đề xuất quét. Duyệt 4 khoá này mở lại: 9 PN6 chương 62 (#944–#952), 8 PN6 chương 60 (#953–#960), 3 PN6 6306 (#912–#914), 730830 (#943), cộng #859/#869/#874/#879/#880 của thợ.
