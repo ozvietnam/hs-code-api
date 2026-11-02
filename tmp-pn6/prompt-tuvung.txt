@@ -1,0 +1,89 @@
+ĐỀ XUẤT KHOÁ TỪ VỰNG. Dưới đây là các khoá bị THIẾU (PN6 DỪNG THIEU_KHOA_TU_VUNG), gom theo khoá đề xuất, kèm số lần và ví dụ chữ biểu. Với MỖI khoá (ưu tiên khoá có ≥2 lần), soạn một mục bổ sung cho tu-vung đúng khuôn các khoá hiện có trong mục TỪ VỰNG của system instructions (tên camelCase, kiểu SO/LIET_KE/CO_KHONG, đơn vị nếu là số, các giá trị liệt kê và cách ĐỌC từ chữ biểu — chỉ dùng chữ NGUYÊN VĂN có trong ví dụ, không bịa giá trị). Nếu hai khoá đề xuất cùng một trục thì gộp. Khoá nào không đủ chữ biểu để định nghĩa chắc chắn thì liệt kê riêng dưới 'KHONG_DU_CHU'. Trả về MỘT khối ```json duy nhất {"phienBan":"tu-vung-bo-sung@1","khoa":[...],"khongDuChu":[...]}, không giải thích.
+
+## congSuatBieuKien — 62 lần
+- PN6 850161 mã 85016110: tax.85016110: "Công suất không quá 12,5 kVA" thiếu khoá đơn vị kVA (công suất biểu kiến của máy phát xoay chiều / máy biến áp)
+- PN6 850161 mã 85016120: tax.85016120: "Công suất trên 12,5 kVA" thiếu khoá đơn vị kVA
+- PN6 850162 mã 85016210: tax.85016210: "Công suất trên 75 kVA nhưng không quá 150 kVA" thiếu khoá đơn vị kVA
+- PN6 850162 mã 85016220: tax.85016220: "Công suất trên 150 kVA nhưng không quá 375 kVA" thiếu khoá đơn vị kVA
+
+## dangNguyenSinh — 49 lần
+- PN6 390110 mã 3901101: tieuDe.3901101: "Dạng lỏng hoặc dạng nhão" thiếu khoá biểu diễn dạng vật lý nguyên sinh của polyme
+- PN6 390190 mã 39019040: tax.39019040: "Dạng phân tán" thiếu khoá biểu diễn dạng vật lý nguyên sinh của polyme
+- PN6 390210 mã 39021030: tax.39021030: "Dạng phân tán" thiếu khoá biểu diễn dạng vật lý nguyên sinh của polyme
+- PN6 390210 mã 39021040: tax.39021040: "Dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự" thiếu khoá biểu diễn dạng vật lý nguyên sinh của polyme
+
+## mucDoLapRap — 6 lần
+- PN6 851120 mã 85112021: tax.85112021: "Loại chưa được lắp ráp" thiếu khoá trạng thái/mức độ lắp ráp (CKD/SKD/chưa lắp ráp)
+- PN6 851120 mã 85112091: tax.85112091: "Loại chưa được lắp ráp" thiếu khoá trạng thái/mức độ lắp ráp (CKD/SKD/chưa lắp ráp)
+- PN6 851130 mã 85113041: tax.85113041: "Loại chưa được lắp ráp" thiếu khoá trạng thái lắp ráp
+- PN6 851130 mã 85113091: tax.85113091: "Loại chưa được lắp ráp" thiếu khoá trạng thái lắp ráp
+
+## dungTich — 5 lần
+- PN6 841810 mã 84181031: Thiếu khoá SO dungTich (đơn vị: lít) để biểu diễn "dung tích không quá 230 lít", "dung tích trên 200 lít" (tu-vung@2 chỉ có dungTichXiLanh đơn vị cc/cm3)
+- PN6 841821 mã 84182110: Thiếu khoá SO dungTich (đơn vị: lít) để biểu diễn "Dung tích không quá 230 lít"
+- PN6 841830 mã 84183010: Thiếu khoá SO dungTich (đơn vị: lít) để biểu diễn "Dung tích không quá 200 lít"
+- PN6 841840 mã 84184010: Thiếu khoá SO dungTich (đơn vị: lít) để biểu diễn "Dung tích không quá 200 lít"
+
+## sanLuongHoi — 4 lần
+- PN6 840212 mã 84021211: công suất hơi nước trên 15 tấn/giờ thiếu khoá sản lượng/lưu lượng hơi nước đơn vị tấn/giờ (luuLuong chỉ có m3/h, l/h; congSuat chỉ có W, kW, HP)
+- PN6 840212 mã 84021221: công suất hơi nước trên 15 tấn/giờ thiếu khoá sản lượng/lưu lượng hơi nước đơn vị tấn/giờ
+- PN6 840219 mã 84021911: công suất hơi trên 15 tấn/giờ thiếu khoá sản lượng/lưu lượng hơi đơn vị tấn/giờ
+- PN6 840219 mã 84021921: công suất hơi trên 15 tấn/giờ thiếu khoá sản lượng/lưu lượng hơi đơn vị tấn/giờ
+
+## theTich — 3 lần
+- PN6 850610 mã 8506101: tieuDe.8506101: "Có thể tích bên ngoài không quá 300 cm3" thiếu khoá theTich (dungTichXiLanh chỉ áp dụng cho động cơ, không áp dụng cho pin)
+- PN6 850660 mã 85066010: tax.85066010: "Có thể tích ngoài không quá 300 cm3" thiếu khoá theTich
+- PN6 850680 mã 85068030: tax.85068030: "Có thể tích ngoài không quá 300 cm3" thiếu khoá theTich
+
+## heDienHoa — 3 lần
+- PN6 850610 mã 85061011: tax.85061011: "Bằng kẽm-cacbon" thiếu khoá hệ điện hoá của pin (chatLieu không có kẽm-cacbon)
+- PN6 850610 mã 85061012: tax.85061012: "Bằng kiềm" thiếu khoá hệ điện hoá của pin (kiềm không có trong chatLieu)
+- PN6 850610 mã 85061091: tax.85061091: "Bằng kẽm-cacbon" thiếu khoá hệ điện hoá của pin
+
+## donVi_m3_tren_phut — 3 lần
+- PN6 841581 mã 84158112: Khoá luuLuong trong tu-vung@2 có các đơn vị m3/h, l/h, l/min, m3/min nhưng chữ trích là "m3/phút", đơn vị viết chuẩn cần khớp hoặc tu-vung chấp nhận m3/phút
+- PN6 841582 mã 84158211: Khoá luuLuong có đơn vị m3/min, chữ biểu là m3/phút
+- PN6 841583 mã 84158311: Khoá luuLuong có đơn vị m3/min, chữ biểu là m3/phút
+
+## dungLuong — 2 lần
+- PN6 850710 mã 850710~r15093: tieuDe.850710~r15093: "có dung lượng phóng điện không quá 200 Ah" thiếu khoá dung lượng (Ah)
+- PN6 850720 mã 850720~r15104: tieuDe.850720~r15104: "có dung lượng phóng điện không quá 200 Ah" thiếu khoá dung lượng (Ah)
+
+## monomerAlphaOlefin — 2 lần
+- PN6 390110 mã 39011012: tax.39011012: "chứa các monomer alpha-olefin từ 5% trở xuống" thiếu khoá hàm lượng monomer
+- PN6 390110 mã 39011092: tax.39011092: "chứa các monomer alpha-olefin từ 5% trở xuống" thiếu khoá hàm lượng monomer
+
+## daHoaDeo — 2 lần
+- PN6 391220 mã 3912201: tieuDe.3912201 "Chưa hóa dẻo" thiếu khoá CO_KHONG daHoaDeo để biểu diễn tình trạng hoá dẻo
+- PN6 391220 mã 39122020: tax.39122020 "Đã hóa dẻo" thiếu khoá CO_KHONG daHoaDeo
+
+## coBoLoc — 2 lần
+- PN6 841460 mã 841460: Thiếu khoá CO_KHONG để biểu diễn tiêu đề 8414601 "Đã lắp bộ phận lọc" và 8414609 "Chưa lắp bộ phận lọc"
+- PN6 841470 mã 841470: Thiếu khoá CO_KHONG để biểu diễn tiêu đề 8414701 "Đã lắp bộ phận lọc" và 8414702 "Chưa lắp bộ phận lọc"
+
+## doDay — 1 lần
+- PN6 842129 mã 84212960: tax.84212960: "với độ dày không quá 140 micron" thiếu khoá doDay; chất liệu fluoropolyme không trùng hoàn toàn plastic trần
+
+## theTichChua — 1 lần
+- PN6 842489 mã 84248910: tax.84248910: "có dung tích không quá 3 lít" thiếu khoá dung tích/thể tích chứa cho bình phun gia dụng
+
+## lucRungCuaTrong — 1 lần
+- PN6 842940 mã 84294040: tax.84294040: "với lực rung của trống không quá 20 tấn tính theo khối lượng" là lực rung của trống, không phải khối lượng xe lu (không dùng khoiLuong để tránh sai trục)
+
+## doBenVaDapIzod — 1 lần
+- PN6 390390 mã 39039091: tax.39039091: "có độ bền va đập bằng phương pháp Izod nhỏ hơn 80 J/m ở 23oC" thiếu khoá độ bền va đập và đơn vị J/m
+
+## congNgheSanXuat — 1 lần
+- PN6 390410 mã 39041010: tax.39041010: "sản xuất theo công nghệ huyền phù" thiếu khoá công nghệ sản xuất polyme
+
+## congSuat — 1 lần
+- PN6 840682 mã 84068210: tax.84068210 "Công suất đầu ra không quá 5 MW" thiếu đơn vị MW trong khoá congSuat (chỉ có W, mW, kW, HP)
+
+## congSuatLamLanh — 1 lần
+- PN6 841430 mã 84143040: tax.84143040: "Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên" ⇒ thiếu khoá cho công suất làm lạnh (khác congSuat) và dung tích làm việc một chu kỳ máy nén (khác dungTichXiLanh động cơ)
+
+## chieuRong — 1 lần
+- PN6 841480 mã 841480~r13208: Thiếu khoá SO chieuRong để biểu diễn "kích thước chiều ngang tối đa trên 120 cm" và thiếu coBoLoc cho 8414801/8414802
+
+## loaiNhua — 1 lần
+- PN6 841950 mã 84195020: tax.84195020: "fluoropolyme" không có trong cách đọc của tu-vung chatLieu (chỉ có plastic chung), không được ép sang plastic
