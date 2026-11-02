@@ -1,0 +1,490 @@
+VÒNG SỬA. Dưới đây là 5 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 842390 ===
+--- GÓI ---
+# 842390 — Quả cân của các loại cân; các bộ phận của cân
+
+842390 — Weighing machines; weights of all kinds, parts of weighing machinery
+  84239010 Quả cân
+  84239030 Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ (SEN)
+  84239040 Bộ phận của các loại cân khác
+
+- 84239010 DONG8
+    tax.84239010 [20 ký tự]: 84239010 - - Quả cân
+- 84239030 DONG8
+    tax.84239030 [81 ký tự]: 84239030 - - Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ (SEN)
+    sen.84239030 [1136 ký tự]: BỘ PHẬN CỦA CÂN ĐIỆN TỬ, TRỪ LOẠI SỬ DỤNG ĐỂ CÂN XE CÓ ĐỘNG CƠ Một vài ví dụ về bộ phận của cân điện tử, trừ loại sử dụng để cân xe (Examples of parts of weighing machinery using electronic means fo ● Weigh Modules (Mô-đun cân) ● Scale platform and weighing tray (Bàn cân và đĩa cân) ● Housing, casing and other parts (Thân, vỏ và các bộ phận khác) Một vài ví dụ về bộ phận của cân điện tử, loại sử dụng để cân xe tải ● Mô-đun cân - loại dùng để cân xe chở hàng, thường sử dụng mô- đun kiểu nén. ● Cầu của cân điện tử (kiểu chìm, kiểu nửa nổi nửa chìm, kiểu nổi, kiểu di động) ● Axle pads (two-pad or four-pad type) (Bàn Cân trục (loại 2 bàn hoặc 4 bàn) Một vài ví dụ về các bộ phận dùng chung của (các loại) cân điện tử ● Bộ chỉ thị cân/đầu hiển thị cân (Terminal/Indicator) ● Tấm mạch in (PCB boards) Các bộ phận của cân thường được xác định dựa trên tên bộ phận và số hiệu của chúng. Để phân loại bộ phận của cân điện tử loại thường dùng để cân xe có động cơ và loại cân khác, trong trường hợp không xác định được mục đích sử dụng cụ thể, phải áp dụng Quy tắc 3c của Quy tắc tổng quát về phân loại hàng hóa theo Danh mục HS.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cân điện tử" · [GIỚI HẠN] "trừ loại sử dụng để cân xe có động cơ"
+- 84239040 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84239040 [42 ký tự]: 84239040 - - Bộ phận của các loại cân khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của các loại cân khác"
+
+Nguồn cấp phân nhóm: wco.842390; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842390",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842390",
+  "dong8": {
+    "84239010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả cân"
+        }
+      ]
+    },
+    "84239030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cân điện tử"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cân xe có động cơ",
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    },
+    "84239040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84239010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84239010: \"Quả cân\" ⇒ tenLoai Quả cân"
+    },
+    {
+      "ma": "84239030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84239030: \"Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ\" ⇒ tenLoai Bộ phận, laBoPhan CO, dungCho cân điện tử, loại trừ cân xe có động cơ"
+    },
+    {
+      "ma": "84239040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84239040: \"Bộ phận của các loại cân khác\" ⇒ tenLoai Bộ phận, laBoPhan CO, phanConLai true"
+    },
+    {
+      "ma": "84239040",
+      "loai": "BO_VE",
+      "ve": "của các loại cân khác",
+      "lyDo": "dòng là phần còn lại có tên (phanConLai: true), phủ định cân điện tử của 84239030"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-khong-phu-kin:842390:dungCho=cân điện tử,laBoPhan=false,tenLoai=Bộ phận
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 903090 ===
+--- GÓI ---
+# 903090 — Bộ phận và phụ kiện
+
+903090 — Instruments, apparatus for measuring, checking electrical quantities, not meters of heading no. 9028; parts and accessories, for measuring or detecting alpha, beta, gamma, x-ray, cosmic and other radiations
+  90309010 Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+  90309030 Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309040 Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309090 Loại khác  [LK]
+
+- 90309010 DONG8
+    tax.90309010 [113 ký tự]: 90309010 - - Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82"
+- 90309030 DONG8
+    tax.90309030 [132 ký tự]: 90309030 - - Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị quang học" · [GIỚI HẠN] "để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309040 DONG8
+    tax.90309040 [145 ký tự]: 90309040 - - Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị" · [GIỚI HẠN] "dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90309090 [22 ký tự]: 90309090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903090; chú giải: nhom9030.nhom, ch90.chuong
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "903090",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-903090",
+  "dong8": {
+    "90309010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "9030.40",
+            "9030.82"
+          ]
+        }
+      ]
+    },
+    "90309030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dụng cụ và thiết bị quang học"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    },
+    "90309040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đo hoặc kiểm tra đại lượng điện"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "90309010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90309010: \"thuộc phân nhóm 9030.40 hoặc 9030.82\" ⇒ dungCho [9030.40, 9030.82]"
+    },
+    {
+      "ma": "90309030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90309030: của dụng cụ quang học đo kiểm tấm mạch in/tấm dây in và mạch in đã lắp ráp ⇒ dungCho dụng cụ và thiết bị quang học, congDung [tấm mạch in, tấm dây in, mạch in đã lắp ráp]"
+    },
+    {
+      "ma": "90309040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90309040: của dụng cụ thiết bị đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp ⇒ dungCho đo hoặc kiểm tra đại lượng điện, congDung [tấm mạch in, tấm dây in, mạch in đã lắp ráp]"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-liet-ke-trong-mot-chuoi:90309040:dungCho
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và 
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 732010 ===
+--- GÓI ---
+# 732010 — Lò xo lá và các lá lò xo
+
+732010 — Iron or steel; leaf-springs and leaves therefor
+  [7320101] Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30
+    73201011 Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+    73201012 Dùng cho xe có động cơ khác
+    73201019 Loại khác  [LK]
+  73201090 Loại khác  [LK]
+
+- 7320101 TIEU_DE
+    tieuDe.7320101 [76 ký tự]: 7320101 Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30"
+- 73201011 DONG8
+    tax.73201011 [72 ký tự]: 73201011 - - - Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+- 73201012 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.73201012 [42 ký tự]: 73201012 - - - Dùng cho xe có động cơ khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ khác"
+- 73201019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73201019 [24 ký tự]: 73201019 - - - Loại khác
+- 73201090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73201090 [22 ký tự]: 73201090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732010; chú giải: nhom7320.nhom, ch73.chuong, phan73.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "732010",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-732010",
+  "dong8": {
+    "73201011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe có động cơ thuộc nhóm 87.02",
+            "87.03",
+            "87.04"
+          ]
+        }
+      ]
+    },
+    "73201012": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ khác"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {
+    "7320101": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe có động cơ",
+            "các loại máy thuộc nhóm 84.29 hoặc 84.30"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7320101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7320101 \"Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho mảng 2 phương án"
+    },
+    {
+      "ma": "73201011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73201011 \"Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04\" ⇒ dungCho mảng các nhóm mã"
+    },
+    {
+      "ma": "73201012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73201012 \"Dùng cho xe có động cơ khác\" ⇒ dungCho \"xe có động cơ khác\", phanConLai: true phủ định 73201011"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-dong-khong-toi-duoc:73201012
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+      → (cảnh báo) Nút trên và nút dưới cùng khoá chữ tự do, giá trị nêu hai dải MÃ HS rời nhau — máy coi là ĐÍCH LỒNG ("Bộ phận của hàng hóa thuộc phân nhóm 8483.10" ↔ dòng con "Dùng cho xe kéo thuộc 8701…": bộ phận của X, X dùng cho Y) và ghép chuỗi đích "<trên> dùng cho <dưới>" để thử nhánh dưới. Lúc chạy mỗi tầng chấm đích của nó; dữ kiện chỉ nêu một đích ⇒ tầng kia hỏi. Sửa: Người soát đối chiếu chữ: hai đích thật sự lồng nhau thì giữ (ghi chú cho ngư
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 620190 ===
+--- GÓI ---
+# 620190 — Từ các vật liệu dệt khác
+
+620190 — Coats; men's or boys', overcoats, rain-coats, car-coats, capes, cloaks and similar, of textile materials (other than wool, fine animal hair, cotton or man-made fibres), other than those of heading no. 6203 (not knitted or crocheted)
+  [6201901] Từ tơ tằm
+    62019011 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    62019019 Loại khác  [LK]
+  [6201902] Từ ramie
+    62019021 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    62019029 Loại khác  [LK]
+  62019090 Loại khác  [LK]
+
+- 6201901 TIEU_DE
+    tieuDe.6201901 [17 ký tự]: 6201901 Từ tơ tằm
+- 62019011 DONG8
+    tax.62019011 [304 ký tự]: 62019011 - - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62019019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62019019 [24 ký tự]: 62019019 - - - Loại khác
+- 6201902 TIEU_DE
+    tieuDe.6201902 [16 ký tự]: 6201902 Từ ramie
+- 62019021 DONG8
+    tax.62019021 [304 ký tự]: 62019021 - - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62019029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62019029 [24 ký tự]: 62019029 - - - Loại khác
+- 62019090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62019090 [22 ký tự]: 62019090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620190; chú giải: nhom6201.nhom, ch62.chuong, phan62.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "620190",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-620190",
+  "dong8": {
+    "62019011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Áo khoác ngoài",
+            "áo mưa",
+            "áo choàng mặc khi đi xe",
+            "áo choàng không tay",
+            "áo khoác không tay",
+            "áo choàng ponchos",
+            "áo khoác dạ trùm qua hông",
+            "áo khoác dạ dáng dài",
+            "áo khoác có mũ trùm đầu",
+            "áo khoác kiểu duffel",
+            "áo khoác mỏng",
+            "trench coats",
+            "áo khoác bằng vải gabardines",
+            "áo khoác ghi lê có đệm"
+          ]
+        }
+      ],
+      "trich": "Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines … áo khoác ghi lê có đệm"
+    },
+    "62019021": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Áo khoác ngoài",
+            "áo mưa",
+            "áo choàng mặc khi đi xe",
+            "áo choàng không tay",
+            "áo khoác không tay",
+            "áo choàng ponchos",
+            "áo khoác dạ trùm qua hông",
+            "áo khoác dạ dáng dài",
+            "áo khoác có mũ trùm đầu",
+            "áo khoác kiểu duffel",
+            "áo khoác mỏng",
+            "trench coats",
+            "áo khoác bằng vải gabardines",
+            "áo khoác ghi lê có đệm"
+          ]
+        }
+      ],
+      "trich": "Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines … áo khoác ghi lê có đệm"
+    }
+  },
+  "dieuKienNut": {
+    "6201901": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "vải dệt"
+        }
+      ]
+    },
+    "6201902": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "vải dệt"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "6201901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6201901 \"Từ tơ tằm\" ⇒ chatLieu \"vải dệt\""
+    },
+    {
+      "ma": "62019011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.62019011: Danh sách các kiểu áo khoác/áo choàng ⇒ tenLoai mảng các loại áo nguyên văn; trích rút gọn <= 300 ký tự"
+    },
+    {
+      "ma": "6201902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6201902 \"Từ ramie\" ⇒ chatLieu \"vải dệt\""
+    },
+    {
+      "ma": "62019021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.62019021: Danh sách các kiểu áo khoác/áo choàng ⇒ tenLoai mảng các loại áo nguyên văn; trích rút gọn <= 300 ký tự"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:6201901:dieu-kien-so-la-khong-co-trong-trich:vải dệt
+      → Câu trích không có cách đọc của chất liệu. Sửa: Trích đoạn có tên chất liệu.
+    ✗ cong3-muc:6201902:dieu-kien-so-la-khong-co-trong-trich:vải dệt
+      → Câu trích không có cách đọc của chất liệu. Sửa: Trích đoạn có tên chất liệu.
+    ✗ cong2-chong-lan:62019011+62019021:chatLieu=CHINH:vải dệt,tenLoai=Áo khoác ngoài:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:62019019+62019029:chatLieu=CHINH:vải dệt,tenLoai=ẑẑẑ:khong-tat-dinh
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 620429 ===
+--- GÓI ---
+# 620429 — Từ các vật liệu dệt khác
+
+620429 — Ensembles; women's or girls', of textile materials n.e.c. in item no. 6204.2 (not knitted or crocheted)
+  62042910 Từ tơ tằm
+  62042990 Loại khác  [LK]
+
+- 62042910 DONG8
+    tax.62042910 [24 ký tự]: 62042910 - - - Từ tơ tằm
+- 62042990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62042990 [24 ký tự]: 62042990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620429; chú giải: nhom6204.nhom, ch62.chuong, phan62.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "620429",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-620429",
+  "dong8": {
+    "62042910": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "vải dệt"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "62042910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.62042910 \"Từ tơ tằm\" ⇒ chatLieu \"vải dệt\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:62042910:dieu-kien-so-la-khong-co-trong-trich:vải dệt
+      → Câu trích không có cách đọc của chất liệu. Sửa: Trích đoạn có tên chất liệu.
