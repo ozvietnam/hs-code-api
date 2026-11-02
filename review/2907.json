@@ -1,0 +1,70 @@
+{
+  "nhom": "2907",
+  "nguoiSoat": "dev-soat-doc-lap-lo090",
+  "luc": "2026-11-02T19:45:00+07:00",
+  "soat": 11,
+  "giu": 10,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2907 — 11 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 4 loaiTru + 4 phanBiet). `boPhan` = null là ĐÚNG (chú giải nhóm 29.07 không có quy tắc bộ phận). Đọc kèm 9 tieuChi6 + 10 dong8 nhưng KHÔNG sửa. Đã đối chiếu 3 câu loại trừ của nguồn (phenol <90%, cresol <95%, xylenol <95% — tất cả về 27.07): khai đủ 3, `trich` của mục phenol gộp đủ CẢ vế điều kiện vào (≥90%) lẫn vế loại trừ (nối bằng \" … \") nên không mất ngoại lệ. 4 câu hỏi phân biệt hỏi NGƯỢC điều kiện (≥90%?) nhưng ánh xạ đúng: Có → 2907, Không → 2707. KHÔNG đảo chiều. `phamVi.text` 212 ký tự ≤ trần clip 220 ⇒ không sửa. KHÔNG xoá. SỬA thêm 1 — `phanBiet[0]` (quy tắc chuyển hàng phóng xạ, Chú giải 1(A) Phần I): ngoại lệ \"trừ quặng phóng xạ\" CÓ trong câu trích nhưng `hoi` không mang ⇒ hàng là quặng phóng xạ (nguồn xếp vào Phần V) trả lời \"có\" rồi bị dẫn nhầm sang 28.44/28.45. Thêm \"Trừ quặng phóng xạ.\" vào chính câu hỏi (mẫu nhà 0305 đã soát; nền nhà chỉ 39/2047 = 1 % `phanBiet` để ngoại lệ ngoài `hoi`) và rút \"là mặt hàng\" cho vừa trần clip 110.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ NGUYÊN. `text` 212 ký tự ≤ trần clip 220 ⇒ runtime hiện trọn; `trich` 208 ký tự byte-exact [nhom2907.nhom], gồm câu định nghĩa phenol + đủ 4 tiêu đề (A)–(D), đúng thứ tự nguồn; `text` khớp 1-1 với trích."
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (câu chú giải Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (Chú giải 3 Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 loaiTru[0] (Chú giải 1(A) Phần I, giữ ngoại lệ \"trừ quặng phóng xạ\")."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` gồm đủ hai câu nguồn ([nhom2907.nhom] dòng \"Để xếp vào nhóm này, phenol phải có độ tinh khiết từ 90% trở lên tính theo trọng lượng.\" + \"Phenol có độ tinh khiết thấp hơn bị loại trừ (nhóm 27.07).\") nối bằng dấu lược \" … \" đúng quy ước ⇒ không mất vế điều kiện VÀ vế loại trừ; đích 27.07 trong câu; ngưỡng 90% trong câu."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn một câu: \"Để xếp vào nhóm này, những cresol đơn chất hoặc cresol hỗn hợp phải chứa cresol từ 95% trở lên tính theo trọng lượng, tất cả những đồng phân cresol được tính cùng nhau. Những cresol có độ tinh khiết thấp hơn bị loại trừ (nhóm 27.07).\" — đủ điều kiện vào + loại trừ; đích 27.07 trong câu."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn một câu về xylenol (≥95% / loại trừ 27.07) — đủ điều kiện vào + loại trừ; đích 27.07 trong câu."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT NGOẠI LỆ TRONG CÂU HỎI (máy KHÔNG bắt được). Câu trích có ngoại lệ rõ ràng \"(trừ quặng phóng xạ)\" nhưng `hoi` không mang ngoại lệ ⇒ hàng là QUẶNG PHÓNG XẠ (nguồn xếp vào Phần V, xem Chú giải 1 Phần I) trả lời \"có\" cho câu hỏi này rồi bị dẫn sang 28.44/28.45 — SAI. Mẫu nhà (0305, đã soát độc lập) đưa ngoại lệ vào CHÍNH câu hỏi: \"…? Trừ <ngoại lệ>.\"; nền nhà chỉ 39/2047 (1 %) `phanBiet` để ngoại lệ ngoài `hoi` — 5 mục này là ngoại lệ của ngoại lệ. SỬA: thêm \"Trừ quặng phóng xạ.\" (nguyên văn trong câu trích) và rút \"là mặt hàng\" cho vừa trần clip 110 của runtime; `trich`, `neuCo` (2844|2845) và `neuKhong` (chính nhóm) giữ nguyên.",
+      "sua": {
+        "hoi": "Hàng này đáp ứng mô tả của các hợp chất phóng xạ hoặc các đồng vị phóng xạ không? Trừ quặng phóng xạ."
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Hỏi \"là phenol có độ tinh khiết từ 90% trở lên\" — hướng NGƯỢC với câu loại trừ nhưng ánh xạ đúng: Có (≥90%) → 2907 (giữ nhóm), Không (<90%) → 2707 (bị loại trừ). Đích 27.07 có trong câu trích. KHÔNG đảo chiều."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Cùng lý do với phanBiet[1] cho cresol (Có khi ≥95% → 2907; Không → 2707). Đích trong câu trích."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Cùng lý do với phanBiet[1] cho xylenol (Có khi ≥95% → 2907; Không → 2707). Đích trong câu trích."
+    }
+  ]
+}
