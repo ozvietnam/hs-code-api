@@ -25,11 +25,12 @@
     "tu-vung@2: tiLe (docPhanSo) đọc phân số \"1/10\", \"1:8\" chỉ khi có chữ tỉ lệ đứng trước (cachDoc) hoặc tên kích thước đứng ngay sau (phanSo.sauLa: \"đường kính\"…); không suy tỉ lệ từ hai kích thước rời. \"1/2 inch\", \"50/60Hz\" ⇒ CHUA_BIET.",
     "tu-vung@2: LIET_KE cumDaiThang (phuongPhapCheTao): cụm chồng nhau thì cụm dài thắng (\"đột dập và kéo giãn\" thắng \"dập\", \"kéo giãn\"); hai phương pháp ở hai chỗ khác nhau ⇒ CHUA_BIET + ungVien.",
     "tu-vung@2: 10 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577) mang nguonLoai AI_DA_KIEM (máy kiểm + test) — CHƯA chấm duyệt độc lập (chamDuyetDocLap.khoaChuaCham); nâng CLAUDE_DUYET sau phiên soát độc lập.",
-    "tu-vung@2 (02/11): 4 khoá lát 2 — phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay (đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md, mục quét + \"Bổ sung từ studio-loop\", GĐ duyệt) — nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. phuongPhapIn thay đề xuất phuongPhapCheTao IN_BATIK; tinhDanHoi thay loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU (trục CHỨA); loaiSoiDet gộp loaiXoPha. Khoá @1 không đổi."
+    "tu-vung@2 (02/11): 4 khoá lát 2 — phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay (đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md, mục quét + \"Bổ sung từ studio-loop\", GĐ duyệt) — nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. phuongPhapIn thay đề xuất phuongPhapCheTao IN_BATIK; tinhDanHoi thay loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU (trục CHỨA); loaiSoiDet gộp loaiXoPha. Khoá @1 không đổi.",
+    "tu-vung@2 (02/11, lô 2): 10 khoá — congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc — Studio soạn, máy kiểm; nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi."
   ],
   "chamDuyetDocLap": {
     "trangThai": "CHUA_CHAM",
-    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập.",
+    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập. +10 khoá 02/11 (lô 2: congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc) chưa chấm độc lập.",
     "khoaChuaCham": [
       "chiHoacChuYeu",
       "thietKeChoTreEm",
@@ -44,7 +45,17 @@
       "phuongPhapIn",
       "tinhDanHoi",
       "loaiSoiDet",
-      "doDay"
+      "doDay",
+      "congSuatBieuKien",
+      "dangNguyenSinh",
+      "daLapRap",
+      "dungTich",
+      "sanLuongHoi",
+      "theTich",
+      "heDienHoa",
+      "dungLuong",
+      "daHoaDeo",
+      "coBoLoc"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -161,6 +172,25 @@
     "tiLe": {
       "lần": 1,
       "%": 0.01
+    },
+    "bieuKien": {
+      "kVA": 1,
+      "MVA": 1000
+    },
+    "theTich": {
+      "cm3": 1,
+      "ml": 1,
+      "lít": 1000,
+      "m3": 1000000,
+      "cc": 1
+    },
+    "luuLuongKhoiLuong": {
+      "tấn/giờ": 1,
+      "kg/giờ": 0.001
+    },
+    "dungLuongDien": {
+      "Ah": 1,
+      "mAh": 0.001
     }
   },
   "bietDanhDonVi": {
@@ -240,7 +270,30 @@
     "lần": "lần",
     "倍": "lần",
     "%": "%",
-    "phần trăm": "%"
+    "phần trăm": "%",
+    "kva": "kVA",
+    "mva": "MVA",
+    "lít": "lít",
+    "lit": "lít",
+    "liter": "lít",
+    "litre": "lít",
+    "升": "lít",
+    "ml": "ml",
+    "mililít": "ml",
+    "毫升": "ml",
+    "m3": "m3",
+    "m³": "m3",
+    "立方米": "m3",
+    "tấn/giờ": "tấn/giờ",
+    "tấn/h": "tấn/giờ",
+    "t/h": "tấn/giờ",
+    "吨/小时": "tấn/giờ",
+    "kg/giờ": "kg/giờ",
+    "kg/h": "kg/giờ",
+    "ah": "Ah",
+    "mah": "mAh",
+    "安时": "Ah",
+    "毫安时": "mAh"
   },
   "khoa": [
     {
@@ -4965,6 +5018,554 @@
         "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"
       },
       "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "congSuatBieuKien",
+      "kieu": "SO",
+      "nhanVi": "công suất biểu kiến",
+      "nhanEn": "apparent power",
+      "nhanZh": "视在功率",
+      "heDonVi": "bieuKien",
+      "donViChuan": "kVA",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "công\\s+suất(?:\\s+biểu\\s+kiến)?",
+          "công\\s+suất\\s+phát"
+        ],
+        "en": [
+          "apparent\\s+power",
+          "output",
+          "rating"
+        ],
+        "zh": [
+          "视在功率",
+          "输出功率",
+          "容量",
+          "功率"
+        ]
+      },
+      "cachViet": {
+        "vi": "công suất biểu kiến {giaTri} kVA"
+      },
+      "cauHoi": {
+        "vi": "Công suất biểu kiến (kVA) của máy là bao nhiêu?",
+        "zh": "机器的视在功率（kVA）是多少？"
+      },
+      "ghiChu": "Chữ biểu 8501.61.10 \"Công suất không quá 12,5 kVA\", 8501.61.20 \"Công suất trên 12,5 kVA\", 8501.62.10 \"Công suất trên 75 kVA nhưng không quá 150 kVA\" (máy phát điện xoay chiều). Đơn vị kVA là công suất biểu kiến (apparent power), khác với kW/W là công suất tác dụng (khoá congSuat).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "dangNguyenSinh",
+      "kieu": "LIET_KE",
+      "nhanVi": "dạng vật lý nguyên sinh của polyme",
+      "nhanEn": "primary form physical state",
+      "nhanZh": "聚合物初级形态物理形状",
+      "giaTriHopLe": [
+        "LONG_HOAC_NHAO",
+        "PHAN_TAN",
+        "HAT_VIEN_VAY_MANH"
+      ],
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Polyme ở dạng nguyên sinh nào (dạng lỏng/nhão, phân tán, hay hạt/viên/vẩy/mảnh)?",
+        "zh": "聚合物属于哪种初级形态（液态/膏状、分散体、还是颗粒/片状等）？"
+      },
+      "ghiChu": "Chữ biểu tiêu đề 3901.10.1 \"Dạng lỏng hoặc dạng nhão\", 3901.90.40 \"Dạng phân tán\", 3902.10.30 \"Dạng phân tán\" theo Chú giải 6 Chương 39 về các dạng nguyên sinh (primary forms) của polyme.",
+      "nguonLoai": "AI_DA_KIEM",
+      "moTaGiaTri": {
+        "LONG_HOAC_NHAO": {
+          "nhanVi": "dạng lỏng hoặc dạng nhão",
+          "nhanEn": "liquid or paste form",
+          "nhanZh": "液态或膏状",
+          "cachDoc": {
+            "vi": [
+              "dạng\\s+lỏng\\s+hoặc\\s+(?:dạng\\s+)?nhão",
+              "dạng\\s+lỏng",
+              "dạng\\s+nhão"
+            ],
+            "en": [
+              "liquid\\s+or\\s+paste\\s+form",
+              "liquids?\\s+and\\s+pastes?",
+              "liquid",
+              "paste"
+            ],
+            "zh": [
+              "液态或膏状",
+              "液态",
+              "膏状",
+              "液体",
+              "膏体"
+            ]
+          }
+        },
+        "PHAN_TAN": {
+          "nhanVi": "dạng phân tán",
+          "nhanEn": "dispersions",
+          "nhanZh": "分散体",
+          "cachDoc": {
+            "vi": [
+              "dạng\\s+phân\\s+tán",
+              "phân\\s+tán"
+            ],
+            "en": [
+              "dispersions?",
+              "dispersed\\s+form"
+            ],
+            "zh": [
+              "分散体",
+              "分散状"
+            ]
+          }
+        },
+        "HAT_VIEN_VAY_MANH": {
+          "nhanVi": "dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự",
+          "nhanEn": "granules, flakes, pellets, powder and similar forms",
+          "nhanZh": "颗粒、粉末、片状等类似形状",
+          "cachDoc": {
+            "vi": [
+              "dạng\\s+hạt",
+              "viên",
+              "hạt\\s+cườm",
+              "vẩy",
+              "mảnh",
+              "dạng\\s+bột",
+              "dạng\\s+khối\\s+không\\s+đều"
+            ],
+            "en": [
+              "granules?",
+              "flakes?",
+              "pellets?",
+              "powders?",
+              "blocks\\s+of\\s+irregular\\s+shape"
+            ],
+            "zh": [
+              "颗粒",
+              "粉末",
+              "片状",
+              "碎块",
+              "不规则块状"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "khoa": "daLapRap",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã lắp ráp",
+      "nhanEn": "assembled",
+      "nhanZh": "已组装",
+      "cachDoc": {
+        "vi": [
+          "(?:đã\\s+)?(?:được\\s+)?lắp\\s+ráp",
+          "hoàn\\s+chỉnh",
+          "nguyên\\s+chiếc"
+        ],
+        "en": [
+          "assembled",
+          "in\\s+assembled\\s+condition",
+          "complete\\s+assembly"
+        ],
+        "zh": [
+          "已组装",
+          "组装好的",
+          "整装"
+        ],
+        "phuDinh": [
+          "chưa",
+          "không",
+          "chưa được",
+          "chưa qua",
+          "unassembled",
+          "not assembled",
+          "disassembled",
+          "未",
+          "不",
+          "未经"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "chưa\\s+(?:được\\s+)?lắp\\s+ráp",
+          "chưa\\s+lắp\\s+ráp",
+          "dạng\\s+rời",
+          "tháo\\s+rời",
+          "CKD",
+          "SKD"
+        ],
+        "en": [
+          "unassembled",
+          "not\\s+assembled",
+          "disassembled",
+          "knocked-?down",
+          "CKD",
+          "SKD"
+        ],
+        "zh": [
+          "未组装",
+          "未经组装",
+          "散件",
+          "拆散"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã lắp ráp",
+        "viPhuDinh": "chưa lắp ráp"
+      },
+      "cauHoi": {
+        "vi": "Hàng đã được lắp ráp hoàn chỉnh hay ở dạng chưa lắp ráp (rời kiện)?",
+        "zh": "货物是已组装还是未组装（散件）？"
+      },
+      "ghiChu": "Phân biệt hàng đã lắp ráp và chưa lắp ráp theo chữ biểu (vd: 8415, 8708... Biểu thuế có các tiêu chí \"Đã được lắp ráp\" / \"Chưa được lắp ráp\").",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "dungTich",
+      "kieu": "SO",
+      "nhanVi": "dung tích chứa",
+      "nhanEn": "capacity",
+      "nhanZh": "容积/容量",
+      "heDonVi": "theTich",
+      "donViChuan": "lít",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "dung\\s+tích(?:\\s+chứa)?",
+          "sức\\s+chứa",
+          "thể\\s+tích\\s+chứa"
+        ],
+        "en": [
+          "capacity",
+          "storage\\s+capacity",
+          "volume"
+        ],
+        "zh": [
+          "容积",
+          "容量",
+          "容积量"
+        ]
+      },
+      "cachViet": {
+        "vi": "dung tích {giaTri} lít"
+      },
+      "cauHoi": {
+        "vi": "Dung tích chứa của hàng (tủ lạnh, tủ đông, bồn chứa) là bao nhiêu lít?",
+        "zh": "器具（冰箱、冷柜、储罐等）的有效容积是多少升（l）？"
+      },
+      "ghiChu": "Chữ biểu 8418.10.31 \"dung tích không quá 230 lít\", 8418.21.10 \"Dung tích không quá 230 lít\", 8418.30.10 \"Dung tích không quá 200 lít\". Khoá SO dung tích chứa (lít) dùng cho thiết bị bảo quản, lạnh; phân biệt với dungTichXiLanh (chỉ dùng cho động cơ piston, đơn vị cc/cm3).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "sanLuongHoi",
+      "kieu": "SO",
+      "nhanVi": "sản lượng hơi / công suất hơi",
+      "nhanEn": "steam production capacity",
+      "nhanZh": "蒸发量/产汽量",
+      "heDonVi": "luuLuongKhoiLuong",
+      "donViChuan": "tấn/giờ",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "công\\s+suất\\s+hơi(?:\\s+nước)?",
+          "sản\\s+lượng\\s+hơi(?:\\s+nước)?",
+          "năng\\s+suất\\s+sinh\\s+hơi"
+        ],
+        "en": [
+          "steam\\s+production",
+          "steam\\s+generating\\s+capacity",
+          "steam\\s+output",
+          "evaporation\\s+capacity"
+        ],
+        "zh": [
+          "产汽量",
+          "蒸发量",
+          "蒸汽产量",
+          "产汽率"
+        ]
+      },
+      "cachViet": {
+        "vi": "sản lượng hơi {giaTri} tấn/giờ"
+      },
+      "cauHoi": {
+        "vi": "Công suất sinh hơi / sản lượng hơi của nồi hơi là bao nhiêu tấn/giờ?",
+        "zh": "锅炉的产汽量/蒸发量是多少吨/小时？"
+      },
+      "ghiChu": "Chữ biểu 8402.12.11 \"công suất hơi nước trên 15 tấn/giờ\", 8402.12.21, 8402.19.11 \"công suất hơi trên 15 tấn/giờ\". Nồi hơi tạo hơi nước thuộc nhóm 84.02.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "theTich",
+      "kieu": "SO",
+      "nhanVi": "thể tích ngoài / thể tích bên ngoài",
+      "nhanEn": "external volume",
+      "nhanZh": "外部体积",
+      "heDonVi": "theTich",
+      "donViChuan": "cm3",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "thể\\s+tích(?:\\s+bên)?\\s+ngoài",
+          "thể\\s+tích\\s+ngoài",
+          "thể\\s+tích\\s+khối"
+        ],
+        "en": [
+          "external\\s+volume",
+          "outer\\s+volume",
+          "volume"
+        ],
+        "zh": [
+          "外部体积",
+          "外体积",
+          "体积"
+        ]
+      },
+      "cachViet": {
+        "vi": "thể tích {giaTri} cm3"
+      },
+      "cauHoi": {
+        "vi": "Thể tích bên ngoài của pin hoặc hàng hóa là bao nhiêu cm3?",
+        "zh": "电池/物品的外部体积是多少立方厘米（cm³）？"
+      },
+      "ghiChu": "Chữ biểu tiêu đề 8506.10.1 \"Có thể tích bên ngoài không quá 300 cm3\", 8506.60.10, 8506.80.30 \"Có thể tích ngoài không quá 300 cm3\" (pin nguyên tố và bộ pin nguyên tố thuộc nhóm 85.06).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "heDienHoa",
+      "kieu": "LIET_KE",
+      "nhanVi": "hệ điện hóa của pin",
+      "nhanEn": "electrochemical system",
+      "nhanZh": "电池电化学体系",
+      "giaTriHopLe": [
+        "KEM_CACBON",
+        "KIEM"
+      ],
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Pin thuộc hệ điện hoá nào (kẽm-cacbon hay kiềm)?",
+        "zh": "电池属于哪种电化学体系（锌碳还是碱性）？"
+      },
+      "ghiChu": "Chữ biểu 8506.10.11 \"Bằng kẽm-cacbon\", 8506.10.12 \"Bằng kiềm\", 8506.10.91 \"Bằng kẽm-cacbon\". Phân biệt hệ điện hóa của pin đi-oxit mangan thuộc nhóm 85.06 (trục hệ điện hoá, không thể đưa vào chatLieu).",
+      "nguonLoai": "AI_DA_KIEM",
+      "moTaGiaTri": {
+        "KEM_CACBON": {
+          "nhanVi": "kẽm-cacbon",
+          "nhanEn": "zinc-carbon",
+          "nhanZh": "锌-碳",
+          "cachDoc": {
+            "vi": [
+              "(?:bằng\\s+)?kẽm[- ]cacbon",
+              "kẽm[- ]than",
+              "zinc[- ]carbon"
+            ],
+            "en": [
+              "zinc[- ]carbon",
+              "zinc\\s+carbon"
+            ],
+            "zh": [
+              "锌碳",
+              "锌-碳",
+              "碳性"
+            ]
+          }
+        },
+        "KIEM": {
+          "nhanVi": "kiềm",
+          "nhanEn": "alkaline",
+          "nhanZh": "碱性",
+          "cachDoc": {
+            "vi": [
+              "(?:bằng\\s+)?kiềm",
+              "alkaline"
+            ],
+            "en": [
+              "alkaline",
+              "zinc[- ]manganese\\s+dioxide\\s*\\(alkaline\\)"
+            ],
+            "zh": [
+              "碱性",
+              "碱性锌锰"
+            ]
+          }
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      }
+    },
+    {
+      "khoa": "dungLuong",
+      "kieu": "SO",
+      "nhanVi": "dung lượng phóng điện",
+      "nhanEn": "discharge capacity",
+      "nhanZh": "放电容量",
+      "heDonVi": "dungLuongDien",
+      "donViChuan": "Ah",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "dung\\s+lượng(?:\\s+phóng\\s+điện)?",
+          "dung\\s+lượng\\s+ắc\\s+quy",
+          "dung\\s+lượng\\s+pin"
+        ],
+        "en": [
+          "discharge\\s+capacity",
+          "capacity",
+          "rated\\s+capacity"
+        ],
+        "zh": [
+          "放电容量",
+          "容量",
+          "额定容量"
+        ]
+      },
+      "cachViet": {
+        "vi": "dung lượng {giaTri} Ah"
+      },
+      "cauHoi": {
+        "vi": "Dung lượng phóng điện của ắc quy là bao nhiêu Ah?",
+        "zh": "蓄电池的放电容量是多少安时（Ah）？"
+      },
+      "ghiChu": "Chữ biểu tiêu đề 850710~r15093, 850720~r15104 \"có dung lượng phóng điện không quá 200 Ah\" (Ắc quy điện nhóm 85.07).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "daHoaDeo",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã hóa dẻo",
+      "nhanEn": "plasticised",
+      "nhanZh": "已塑化",
+      "cachDoc": {
+        "vi": [
+          "(?:đã\\s+)?hóa\\s+dẻo",
+          "dẻo\\s+hóa",
+          "plasticised",
+          "plasticized"
+        ],
+        "en": [
+          "plasticis(?:ed|ing)",
+          "plasticiz(?:ed|ing)"
+        ],
+        "zh": [
+          "已塑化",
+          "增塑",
+          "塑化"
+        ],
+        "phuDinh": [
+          "chưa",
+          "không",
+          "chưa được",
+          "chưa qua",
+          "non-?",
+          "un-?",
+          "not",
+          "未",
+          "不",
+          "未经"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "chưa\\s+(?:được\\s+)?hóa\\s+dẻo",
+          "chưa\\s+hóa\\s+dẻo",
+          "không\\s+hóa\\s+dẻo"
+        ],
+        "en": [
+          "non-?plasticis(?:ed)?",
+          "unplasticis(?:ed)?",
+          "non-?plasticiz(?:ed)?",
+          "unplasticiz(?:ed)?",
+          "not\\s+plasticis(?:ed)?"
+        ],
+        "zh": [
+          "未塑化",
+          "未增塑",
+          "未经塑化"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã hóa dẻo",
+        "viPhuDinh": "chưa hóa dẻo"
+      },
+      "cauHoi": {
+        "vi": "Xenlulo và các dẫn xuất hoá học của nó đã được hóa dẻo hay chưa hóa dẻo?",
+        "zh": "纤维素及其化学衍生物是否经过塑化处理？"
+      },
+      "ghiChu": "Chữ biểu tiêu đề 3912.20.1 \"Chưa hóa dẻo\" và dòng 3912.20.20 \"Đã hóa dẻo\" (xenlulo nitrat nhóm 39.12).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "coBoLoc",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đã lắp bộ phận lọc",
+      "nhanEn": "fitted with a filter",
+      "nhanZh": "装有过滤器",
+      "cachDoc": {
+        "vi": [
+          "(?:đã\\s+)?(?:lắp|gắn|trang\\s+bị)\\s+bộ\\s+phận\\s+lọc",
+          "(?:đã\\s+)?(?:lắp|gắn)\\s+(?:màng|lưới|bộ)\\s+lọc",
+          "có\\s+bộ\\s+lọc"
+        ],
+        "en": [
+          "fitted\\s+with\\s+(?:a\\s+)?filter",
+          "incorporating\\s+(?:a\\s+)?filter",
+          "with\\s+(?:a\\s+)?filter"
+        ],
+        "zh": [
+          "装有过滤器",
+          "带过滤器",
+          "配有滤清器",
+          "附带滤网"
+        ],
+        "phuDinh": [
+          "chưa",
+          "không",
+          "chưa được",
+          "without",
+          "no",
+          "not",
+          "未",
+          "不",
+          "无"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "chưa\\s+(?:lắp|gắn|trang\\s+bị)\\s+bộ\\s+phận\\s+lọc",
+          "chưa\\s+lắp\\s+bộ\\s+lọc",
+          "không\\s+(?:có\\s+)?bộ\\s+lọc"
+        ],
+        "en": [
+          "not\\s+fitted\\s+with\\s+(?:a\\s+)?filter",
+          "without\\s+(?:a\\s+)?filter"
+        ],
+        "zh": [
+          "未装过滤器",
+          "不带过滤器",
+          "无滤网"
+        ]
+      },
+      "cachViet": {
+        "vi": "đã lắp bộ phận lọc",
+        "viPhuDinh": "chưa lắp bộ phận lọc"
+      },
+      "cauHoi": {
+        "vi": "Thiết bị hút khói/thông gió đã được lắp bộ phận lọc hay chưa?",
+        "zh": "抽油烟机/排气罩是否装有过滤器？"
+      },
+      "ghiChu": "Chữ biểu tiêu đề 8414.60.1 / 8414.70.1 \"Đã lắp bộ phận lọc\" và 8414.60.9 / 8414.70.2 \"Chưa lắp bộ phận lọc\" (nhóm 84.14).",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
