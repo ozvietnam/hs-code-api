@@ -1,0 +1,111 @@
+{
+ "nhom": "7601",
+ "phamVi": {
+  "text": "Nhôm chưa gia công",
+  "nguon": "nhom7601.nhom",
+  "trich": "Nhóm này bao gồm nhôm chưa gia công ở trạng thái lỏng, khối, thỏi, phiến, tấm dày, thanh phôi kéo dây, hoặc các dạng tương tự thu được bằng việc đúc nhôm đã được điện phân hoặc hoặc bằng việc nấu chảy phế liệu hoặc mảnh vụn kim loại.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_nhom_chua_gia_cong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch76.chuong",
+   "trich": "Nhôm chưa gia công, nhôm phế liệu và nhôm mảnh vụn (nhóm 76.01 và 76.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Bột và vảy nhôm",
+   "sangNhom": "7603",
+   "nguon": "nhom7601.nhom",
+   "trich": "Nhóm này không bao gồm bột và vảy nhôm (nhóm 76.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là bột và vảy nhôm thuộc nhóm 76.03 không?",
+   "neuCo": "7603",
+   "neuKhong": "7601",
+   "nguon": "nhom7601.nhom",
+   "trich": "Nhóm này không bao gồm bột và vảy nhôm (nhóm 76.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "76011000",
+   "dieuKien": "Nhôm, không hợp kim",
+   "loaiKhac": false,
+   "nguon": "tax.76011000",
+   "trich": "76011000 - Nhôm, không hợp kim",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "76012000",
+   "dieuKien": "Hợp kim nhôm",
+   "loaiKhac": false,
+   "nguon": "tax.76012000",
+   "trich": "76012000 - Hợp kim nhôm",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7601",
+    "cap": 4,
+    "cha": "76",
+    "tenVi": "Nhôm chưa gia công",
+    "tenEn": "Aluminium; unwrought",
+    "suyRa": false
+   },
+   {
+    "id": "76011000",
+    "cap": 8,
+    "cha": "7601",
+    "tenVi": "Nhôm, không hợp kim",
+    "tenEn": "Aluminium; unwrought, (not alloyed)",
+    "suyRa": false,
+    "laPhanNhom": "760110"
+   },
+   {
+    "id": "76012000",
+    "cap": 8,
+    "cha": "7601",
+    "tenVi": "Hợp kim nhôm",
+    "tenEn": "Aluminium; unwrought, alloys",
+    "suyRa": false,
+    "laPhanNhom": "760120"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch76.chuong",
+  "nhom7601.nhom",
+  "tax.76011000",
+  "tax.76012000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:54:35.827Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

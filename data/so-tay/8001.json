@@ -1,0 +1,111 @@
+{
+ "nhom": "8001",
+ "phamVi": {
+  "text": "Thiếc chưa gia công",
+  "nguon": "nhom8001.nhom",
+  "trich": "Nhóm này bao gồm thiếc chưa gia công ở dạng hình khối, thỏi, thanh, que, cục, phiến hoặc các dạng tương tự, và các mảnh, các hạt và các sản phẩm tương tự bằng thiếc.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_thiec_chua_qua_gia_cong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch80.chuong",
+   "trich": "Thiếc chưa qua gia công và thiếc phế liệu và mảnh vụn (nhóm 80.01 và 80.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Thiếc ở dạng bột và vảy",
+   "sangNhom": "8007",
+   "nguon": "nhom8001.nhom",
+   "trich": "Nhóm này loại trừ thiếc ở dạng bột và vảy (nhóm 80.07).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là thiếc ở dạng bột và vảy thuộc nhóm 80.07 không?",
+   "neuCo": "8007",
+   "neuKhong": "8001",
+   "nguon": "nhom8001.nhom",
+   "trich": "Nhóm này loại trừ thiếc ở dạng bột và vảy (nhóm 80.07).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "80011000",
+   "dieuKien": "Thiếc, không hợp kim",
+   "loaiKhac": false,
+   "nguon": "tax.80011000",
+   "trich": "80011000 - Thiếc, không hợp kim",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "80012000",
+   "dieuKien": "Hợp kim thiếc",
+   "loaiKhac": false,
+   "nguon": "tax.80012000",
+   "trich": "80012000 - Hợp kim thiếc",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8001",
+    "cap": 4,
+    "cha": "80",
+    "tenVi": "Thiếc chưa gia công",
+    "tenEn": "Tin; unwrought",
+    "suyRa": false
+   },
+   {
+    "id": "80011000",
+    "cap": 8,
+    "cha": "8001",
+    "tenVi": "Thiếc, không hợp kim",
+    "tenEn": "Tin; unwrought, not alloyed",
+    "suyRa": false,
+    "laPhanNhom": "800110"
+   },
+   {
+    "id": "80012000",
+    "cap": 8,
+    "cha": "8001",
+    "tenVi": "Hợp kim thiếc",
+    "tenEn": "Tin; unwrought, alloys",
+    "suyRa": false,
+    "laPhanNhom": "800120"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch80.chuong",
+  "nhom8001.nhom",
+  "tax.80011000",
+  "tax.80012000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:54:35.925Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
