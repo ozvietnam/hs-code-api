@@ -6,7 +6,7 @@
 
 # LÔ 083 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 02/11/2026)
 
-- **Nhánh:** `so-tay/lo-083` (worktree `hs-code-api-wt-st-lo083`) · **PR** — **KHÔNG merge** (chờ soát độc lập)
+- **Nhánh:** `so-tay/lo-083` (worktree `hs-code-api-wt-st-lo083`) · **PR #735** — **KHÔNG merge** (chờ soát độc lập)
 - **Nhóm:** `2812 2813 2814 2815 2816 2817` (Chương 28: halogenua + oxit halogenua phi kim loại · sulphua phi kim loại · amoniac · NaOH/KOH + peroxit · Mg/ Sr/ Ba hydroxit-oxit-peroxit · ZnO/ZnO2) — lấy theo CSV dòng 083, khớp brief
 - **Cột mẫu của nhóm:** 6 nhóm — 29 · 12 · 9 · 16 · 11 · 10 mục
 
@@ -124,7 +124,9 @@ Ngưỡng số DUY NHẤT mang tính ràng buộc là 2816: "trọng lượng **
 
 **Cấu trúc lô 083 — 87 mục**: `phamVi` 6 · `dieuKienVao` 6 · `loaiTru` 18 · `phanBiet` 17 · `tieuChi6` 19 · `cay.tenDien` 0 · `dong8` 21 (21/21 dòng 8 số khớp cây + biểu thuế).
 
-**Ghi danh CSV**: dòng 083 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm`.
+**Ghi danh CSV**: dòng 083 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm` (cột `pr` để trống — người duyệt điền khi gộp, đúng như lô 081/082/084).
+
+**PR #735** — https://github.com/ozvietnam/hs-code-api/pull/735 (đã rebase lên `origin/main` c079d085, không xung đột).
 
 
 
