@@ -1,0 +1,172 @@
+{
+ "nhom": "5704",
+ "phamVi": {
+  "text": "Thảm và các loại hàng dệt trải sàn khác, bằng phớt, chưa được chần sợi nổi vòng hoặc gắn lông nhung, đã hoặc chưa hoàn thiện",
+  "nguon": "nhom5704.nhom",
+  "trich": "Nhóm này bao gồm các loại thảm và các loại hàng dệt trải sàn khác, bằng phớt, về mặt ý nghĩa của thuật ngữ “phớt”, xem Chú giải chi tiết nhóm 56.02.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_tham_trai_san_bang_phot",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5704.nhom",
+   "trich": "Nhóm này bao gồm các loại thảm và các loại hàng dệt trải sàn khác, bằng phớt",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "570410",
+   "fact": "dien_tich_be_mat_toi_da",
+   "op": "<=",
+   "value": 0.3,
+   "donVi": "m2",
+   "nguon": "wco.570410",
+   "trich": "having a maximum surface area of 0.3m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "570420",
+   "fact": "dien_tich_be_mat_toi_da",
+   "op": "<=",
+   "value": 1,
+   "donVi": "m2",
+   "nguon": "wco.570420",
+   "trich": "having a maximum surface area exceeding 0.3 m2 but not exceeding 1 m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "570420",
+   "fact": "dien_tich_be_mat_toi_da",
+   "op": ">",
+   "value": 0.3,
+   "donVi": "m2",
+   "nguon": "wco.570420",
+   "trich": "having a maximum surface area exceeding 0.3 m2 but not exceeding 1 m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "570490",
+   "fact": "dien_tich_be_mat_toi_da",
+   "op": ">",
+   "value": 1,
+   "donVi": "m2",
+   "nguon": "wco.570490",
+   "trich": "having a maximum surface area exceeding 1 m2",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "57041000",
+   "dieuKien": "Các tấm để ghép, có diện tích bề mặt tối đa là 0,3 m2",
+   "loaiKhac": false,
+   "nguon": "tax.57041000",
+   "trich": "57041000 - Các tấm để ghép, có diện tích bề mặt tối đa là 0,3 m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "57042000",
+   "dieuKien": "Các tấm để ghép, có diện tích bề mặt tối đa trên 0,3 m2 nhưng không quá 1 m2",
+   "loaiKhac": false,
+   "nguon": "tax.57042000",
+   "trich": "57042000 - Các tấm để ghép, có diện tích bề mặt tối đa trên 0,3 m2 nhưng không quá 1 m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "57049000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.57049000",
+   "trich": "57049000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5704",
+    "truAnhEm": [
+     "57041000",
+     "57042000"
+    ],
+    "truDayDu": [
+     "57041000",
+     "57042000"
+    ],
+    "toTienCoTen": "5704",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5704",
+    "cap": 4,
+    "cha": "57",
+    "tenVi": "Thảm và các loại hàng dệt trải sàn khác, từ phớt, không tạo búi hoặc phủ xơ vụn, đã hoặc chưa hoàn thiện.",
+    "tenEn": "Carpets and other textile floor coverings; of felt, (not tufted or flocked), whether or not made up",
+    "suyRa": false
+   },
+   {
+    "id": "57041000",
+    "cap": 8,
+    "cha": "5704",
+    "tenVi": "Các tấm để ghép, có diện tích bề mặt tối đa là 0,3 m2",
+    "tenEn": "Textile floor coverings; felt tiles, (not tufted or flocked), whether or not made up, having a maximum surface area of 0.3m2",
+    "suyRa": false,
+    "laPhanNhom": "570410"
+   },
+   {
+    "id": "57042000",
+    "cap": 8,
+    "cha": "5704",
+    "tenVi": "Các tấm để ghép, có diện tích bề mặt tối đa trên 0,3 m2 nhưng không quá 1 m2",
+    "tenEn": "Carpets and other textile floor coverings; of felt, (not tufted or flocked), whether or not made up, having a maximum surface area exceeding 0.3 m2 but not exceeding 1 m2",
+    "suyRa": false,
+    "laPhanNhom": "570420"
+   },
+   {
+    "id": "57049000",
+    "cap": 8,
+    "cha": "5704",
+    "tenVi": "Loại khác",
+    "tenEn": "Carpets and other textile floor coverings; of felt, (not tufted or flocked), in the piece, whether or not made up, having a maximum surface area exceeding 1 m2",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "570490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5704.nhom",
+  "tax.57041000",
+  "tax.57042000",
+  "tax.57049000",
+  "wco.570410",
+  "wco.570420",
+  "wco.570490"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:27:45.998Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan57.phan (46130→25000)"
+  ]
+ }
+}

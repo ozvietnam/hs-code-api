@@ -1,0 +1,587 @@
+{
+ "nhom": "5205",
+ "phamVi": {
+  "text": "Sợi bông (trừ chỉ khâu), có tỷ trọng bông từ 85% trở lên tính theo khối lượng, chưa đóng gói để bán lẻ.",
+  "nguon": "nhom5205.nhom",
+  "trich": "Nhóm này bao gồm sợi bông (trừ chỉ khâu), có thể là sợi đơn hoặc sợi xe, thu được sau quá trình kéo sợi thô thuộc nhóm 52.03, miễn là có tỷ trọng bông từ 85% trở lên.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_soi_bong_chua_dong_goi_ban_le_ty_trong_tu_85_phan_tram_tro_len",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "chi khâu"
+   ],
+   "nguon": "nhom5205.nhom",
+   "trich": "Nhóm này bao gồm sợi bông (trừ chỉ khâu), có thể là sợi đơn hoặc sợi xe, thu được sau quá trình kéo sợi thô thuộc nhóm 52.03, miễn là có tỷ trọng bông từ 85% trở lên.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Sợi bông thuộc phạm vi định nghĩa của dây xe, chão bện, dây thừng, v.v...",
+   "sangNhom": "5607",
+   "nguon": "nhom5205.nhom",
+   "trich": "Tuy nhiên, những sợi như vậy không thuộc nhóm này nếu chúng thuộc phạm vi định nghĩa của dây xe, chão bện, dây thừng, v.v ... (nhóm 56.07) hay đã được đóng gói để bán lẻ",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là sợi bông thuộc phạm vi định nghĩa của dây xe, chão bện, thừng thuộc nhóm 56.07?",
+   "neuCo": "5607",
+   "neuKhong": "5205",
+   "nguon": "nhom5205.nhom",
+   "trich": "Tuy nhiên, những sợi như vậy không thuộc nhóm này nếu chúng thuộc phạm vi định nghĩa của dây xe, chão bện, dây thừng, v.v ... (nhóm 56.07) hay đã được đóng gói để bán lẻ",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "520511",
+   "fact": "do_manh_decitex",
+   "op": ">=",
+   "value": 714.29,
+   "donVi": "decitex",
+   "nguon": "wco.520511",
+   "trich": "measuring 714.29 decitex or more",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "520515",
+   "fact": "do_manh_decitex",
+   "op": "<",
+   "value": 125,
+   "donVi": "decitex",
+   "nguon": "wco.520515",
+   "trich": "measuring less than 125 decitex",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "520521",
+   "fact": "do_manh_decitex",
+   "op": ">=",
+   "value": 714.29,
+   "donVi": "decitex",
+   "nguon": "wco.520521",
+   "trich": "measuring 714.29 decitex or more",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "520528",
+   "fact": "do_manh_decitex",
+   "op": "<",
+   "value": 83.33,
+   "donVi": "decitex",
+   "nguon": "wco.520528",
+   "trich": "measuring less than 83.33 decitex",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "52051100",
+   "dieuKien": "Sợi có độ mảnh từ 714,29 decitex trở lên (chi số mét không quá 14)",
+   "loaiKhac": false,
+   "nguon": "tax.52051100",
+   "trich": "52051100 - - Sợi có độ mảnh từ 714,29 decitex trở lên (chi số mét không quá 14)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52051200",
+   "dieuKien": "Sợi có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét trên 14 đến 43)",
+   "loaiKhac": false,
+   "nguon": "tax.52051200",
+   "trich": "52051200 - - Sợi có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét trên 14 đến 43)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52051300",
+   "dieuKien": "Sợi có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét trên 43 đến 52)",
+   "loaiKhac": false,
+   "nguon": "tax.52051300",
+   "trich": "52051300 - - Sợi có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét trên 43 đến 52)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52051400",
+   "dieuKien": "Sợi có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét trên 52 đến 80)",
+   "loaiKhac": false,
+   "nguon": "tax.52051400",
+   "trich": "52051400 - - Sợi có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét trên 52 đến 80)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52051500",
+   "dieuKien": "Sợi có độ mảnh dưới 125 decitex (chi số mét trên 80)",
+   "loaiKhac": false,
+   "nguon": "tax.52051500",
+   "trich": "52051500 - - Sợi có độ mảnh dưới 125 decitex (chi số mét trên 80)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52052100",
+   "dieuKien": "Sợi có độ mảnh từ 714,29 decitex trở lên (chi số mét không quá 14)",
+   "loaiKhac": false,
+   "nguon": "tax.52052100",
+   "trich": "52052100 - - Sợi có độ mảnh từ 714,29 decitex trở lên (chi số mét không quá 14)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52052200",
+   "dieuKien": "Sợi có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét trên 14 đến 43)",
+   "loaiKhac": false,
+   "nguon": "tax.52052200",
+   "trich": "52052200 - - Sợi có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét trên 14 đến 43)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52052300",
+   "dieuKien": "Sợi có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét trên 43 đến 52)",
+   "loaiKhac": false,
+   "nguon": "tax.52052300",
+   "trich": "52052300 - - Sợi có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét trên 43 đến 52)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52052400",
+   "dieuKien": "Sợi có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét trên 52 đến 80)",
+   "loaiKhac": false,
+   "nguon": "tax.52052400",
+   "trich": "52052400 - - Sợi có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét trên 52 đến 80)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52052600",
+   "dieuKien": "Sợi có độ mảnh từ 106,38 decitex đến dưới 125 decitex (chi số mét trên 80 đến 94)",
+   "loaiKhac": false,
+   "nguon": "tax.52052600",
+   "trich": "52052600 - - Sợi có độ mảnh từ 106,38 decitex đến dưới 125 decitex (chi số mét trên 80 đến 94)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52052700",
+   "dieuKien": "Sợi có độ mảnh từ 83,33 decitex đến dưới 106,38 decitex (chi số mét trên 94 đến 120)",
+   "loaiKhac": false,
+   "nguon": "tax.52052700",
+   "trich": "52052700 - - Sợi có độ mảnh từ 83,33 decitex đến dưới 106,38 decitex (chi số mét trên 94 đến 120)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52052800",
+   "dieuKien": "Sợi có độ mảnh dưới 83,33 decitex (chi số mét trên 120)",
+   "loaiKhac": false,
+   "nguon": "tax.52052800",
+   "trich": "52052800 - - Sợi có độ mảnh dưới 83,33 decitex (chi số mét trên 120)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52053100",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 714,29 decitex trở lên (chi số mét sợi đơn không quá 14)",
+   "loaiKhac": false,
+   "nguon": "tax.52053100",
+   "trich": "52053100 - - Từ mỗi sợi đơn có độ mảnh từ 714,29 decitex trở lên (chi số mét sợi đơn không quá 14)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52053200",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét sợi đơn trên 14 đến 43)",
+   "loaiKhac": false,
+   "nguon": "tax.52053200",
+   "trich": "52053200 - - Từ mỗi sợi đơn có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét sợi đơn trên 14 đến 43)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52053300",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét sợi đơn trên 43 đến 52)",
+   "loaiKhac": false,
+   "nguon": "tax.52053300",
+   "trich": "52053300 - - Từ mỗi sợi đơn có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét sợi đơn trên 43 đến 52)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52053400",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét sợi đơn trên 52 đến 80)",
+   "loaiKhac": false,
+   "nguon": "tax.52053400",
+   "trich": "52053400 - - Từ mỗi sợi đơn có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét sợi đơn trên 52 đến 80)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52053500",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh dưới 125 decitex (chi số mét sợi đơn trên 80)",
+   "loaiKhac": false,
+   "nguon": "tax.52053500",
+   "trich": "52053500 - - Từ mỗi sợi đơn có độ mảnh dưới 125 decitex (chi số mét sợi đơn trên 80)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52054100",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 714,29 decitex trở lên (chi số mét sợi đơn không quá 14)",
+   "loaiKhac": false,
+   "nguon": "tax.52054100",
+   "trich": "52054100 - - Từ mỗi sợi đơn có độ mảnh từ 714,29 decitex trở lên (chi số mét sợi đơn không quá 14)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52054200",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét sợi đơn trên 14 đến 43)",
+   "loaiKhac": false,
+   "nguon": "tax.52054200",
+   "trich": "52054200 - - Từ mỗi sợi đơn có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét sợi đơn trên 14 đến 43)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52054300",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét sợi đơn trên 43 đến 52)",
+   "loaiKhac": false,
+   "nguon": "tax.52054300",
+   "trich": "52054300 - - Từ mỗi sợi đơn có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét sợi đơn trên 43 đến 52)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52054400",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét sợi đơn trên 52 đến 80)",
+   "loaiKhac": false,
+   "nguon": "tax.52054400",
+   "trich": "52054400 - - Từ mỗi sợi đơn có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét sợi đơn trên 52 đến 80)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52054600",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 106,38 decitex đến dưới 125 decitex (chi số mét sợi đơn trên 80 đến 94)",
+   "loaiKhac": false,
+   "nguon": "tax.52054600",
+   "trich": "52054600 - - Từ mỗi sợi đơn có độ mảnh từ 106,38 decitex đến dưới 125 decitex (chi số mét sợi đơn trên 80 đến 94)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52054700",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh từ 83,33 decitex đến dưới 106,38 decitex (chi số mét sợi đơn trên 94 đến 120)",
+   "loaiKhac": false,
+   "nguon": "tax.52054700",
+   "trich": "52054700 - - Từ mỗi sợi đơn có độ mảnh từ 83,33 decitex đến dưới 106,38 decitex (chi số mét sợi đơn trên 94 đến 120)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "52054800",
+   "dieuKien": "Từ mỗi sợi đơn có độ mảnh dưới 83,33 decitex (chi số mét sợi đơn trên 120)",
+   "loaiKhac": false,
+   "nguon": "tax.52054800",
+   "trich": "52054800 - - Từ mỗi sợi đơn có độ mảnh dưới 83,33 decitex (chi số mét sợi đơn trên 120)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5205",
+    "cap": 4,
+    "cha": "52",
+    "tenVi": "Sợi bông (trừ chỉ khâu), có hàm lượng bông chiếm từ 85% trở lên tính theo khối lượng, chưa đóng gói để bán lẻ.",
+    "tenEn": "Cotton yarn (other than sewing thread), containing 85% or more by weight of cotton, not put up for retail sale",
+    "suyRa": false
+   },
+   {
+    "id": "52051",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5205",
+    "tenVi": "Sợi đơn, làm từ xơ không chải kỹ",
+    "tenEn": "Single yarn, of uncombed fibres",
+    "suyRa": true
+   },
+   {
+    "id": "52051100",
+    "cap": 8,
+    "cha": "52051",
+    "tenVi": "Sợi có độ mảnh từ 714,29 decitex trở lên (chi số mét không quá 14)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of uncombed fibres, 85% or more by weight of cotton, measuring 714.29 decitex or more, (not exceeding 14 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520511"
+   },
+   {
+    "id": "52051200",
+    "cap": 8,
+    "cha": "52051",
+    "tenVi": "Sợi có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét trên 14 đến 43)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of uncombed fibres, 85% or more by weight of cotton, less than 714.29 but not less than 232.56 decitex (exceeding 14 but not exceeding 43 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520512"
+   },
+   {
+    "id": "52051300",
+    "cap": 8,
+    "cha": "52051",
+    "tenVi": "Sợi có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét trên 43 đến 52)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of uncombed fibres, 85% or more by weight of cotton, less than 232.56 but not less than 192.31 decitex (exceeding 43 but not exceeding 52 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520513"
+   },
+   {
+    "id": "52051400",
+    "cap": 8,
+    "cha": "52051",
+    "tenVi": "Sợi có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét trên 52 đến 80)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of uncombed fibres, 85% or more by weight of cotton, less than 192.31 but not less than 125 decitex (exceeding 52 but not exceeding 80 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520514"
+   },
+   {
+    "id": "52051500",
+    "cap": 8,
+    "cha": "52051",
+    "tenVi": "Sợi có độ mảnh dưới 125 decitex (chi số mét trên 80)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of uncombed fibres, 85% or more by weight of cotton, measuring less than 125 decitex (exceeding 80 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520515"
+   },
+   {
+    "id": "52052",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5205",
+    "tenVi": "Sợi đơn, làm từ xơ chải kỹ",
+    "tenEn": "Single yarn, of combed fibres",
+    "suyRa": true
+   },
+   {
+    "id": "52052100",
+    "cap": 8,
+    "cha": "52052",
+    "tenVi": "Sợi có độ mảnh từ 714,29 decitex trở lên (chi số mét không quá 14)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of combed fibres, 85% or more by weight of cotton, measuring 714.29 decitex or more, (not exceeding 14 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520521"
+   },
+   {
+    "id": "52052200",
+    "cap": 8,
+    "cha": "52052",
+    "tenVi": "Sợi có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét trên 14 đến 43)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of combed fibres, 85% or more by weight of cotton, less than 714.29 but not less than 232.56 decitex (exceeding 14 but not exceeding 43 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520522"
+   },
+   {
+    "id": "52052300",
+    "cap": 8,
+    "cha": "52052",
+    "tenVi": "Sợi có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét trên 43 đến 52)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of combed fibres, 85% or more by weight of cotton, less than 232.56 but not less than 192.31 decitex (exceeding 43 but not exceeding 52 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520523"
+   },
+   {
+    "id": "52052400",
+    "cap": 8,
+    "cha": "52052",
+    "tenVi": "Sợi có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét trên 52 đến 80)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of combed fibres, 85% or more by weight of cotton, less than 192.31 but not less than 125 decitex (exceeding 52 but not exceeding 80 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520524"
+   },
+   {
+    "id": "52052600",
+    "cap": 8,
+    "cha": "52052",
+    "tenVi": "Sợi có độ mảnh từ 106,38 decitex đến dưới 125 decitex (chi số mét trên 80 đến 94)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of combed fibres, 85% or more by weight of cotton, less than 125 but not less than 106.38 decitex (over 80 but not over 94 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520526"
+   },
+   {
+    "id": "52052700",
+    "cap": 8,
+    "cha": "52052",
+    "tenVi": "Sợi có độ mảnh từ 83,33 decitex đến dưới 106,38 decitex (chi số mét trên 94 đến 120)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of combed fibres, 85% or more by weight of cotton, less than 106.38 but not less than 83.33 decitex (over 94 but not over 120 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520527"
+   },
+   {
+    "id": "52052800",
+    "cap": 8,
+    "cha": "52052",
+    "tenVi": "Sợi có độ mảnh dưới 83,33 decitex (chi số mét trên 120)",
+    "tenEn": "Cotton yarn; (not sewing thread), single, of combed fibres, 85% or more by weight of cotton, measuring less than 83.33 decitex (exceeding 120 metric number), not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520528"
+   },
+   {
+    "id": "52053",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5205",
+    "tenVi": "Sợi xe (folded) hoặc sợi cáp, làm từ xơ không chải kỹ",
+    "tenEn": "Multiple (folded) or cabled yarn, of uncombed fibres",
+    "suyRa": true
+   },
+   {
+    "id": "52053100",
+    "cap": 8,
+    "cha": "52053",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 714,29 decitex trở lên (chi số mét sợi đơn không quá 14)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of uncombed fibres, 85% or more by weight of cotton, 714.29 decitex or more (not exceeding 14 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520531"
+   },
+   {
+    "id": "52053200",
+    "cap": 8,
+    "cha": "52053",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét sợi đơn trên 14 đến 43)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of uncombed fibres, 85% or more by weight of cotton, 714.28 to 232.56 decitex (15 to 43 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520532"
+   },
+   {
+    "id": "52053300",
+    "cap": 8,
+    "cha": "52053",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét sợi đơn trên 43 đến 52)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of uncombed fibres, 85% or more by weight of cotton, 232.55 to 192.31 decitex (44 to 52 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520533"
+   },
+   {
+    "id": "52053400",
+    "cap": 8,
+    "cha": "52053",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét sợi đơn trên 52 đến 80)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of uncombed fibres, 85% or more by weight of cotton, 192.30 to 125 decitex (53 to 80 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520534"
+   },
+   {
+    "id": "52053500",
+    "cap": 8,
+    "cha": "52053",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh dưới 125 decitex (chi số mét sợi đơn trên 80)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of uncombed fibres, 85% or more by weight of cotton, less than 125 decitex (exceeding 80 metric number), per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520535"
+   },
+   {
+    "id": "52054",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5205",
+    "tenVi": "Sợi xe (folded) hoặc sợi cáp, từ xơ chải kỹ",
+    "tenEn": "Multiple (folded) or cabled yarn, of combed fibres",
+    "suyRa": true
+   },
+   {
+    "id": "52054100",
+    "cap": 8,
+    "cha": "52054",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 714,29 decitex trở lên (chi số mét sợi đơn không quá 14)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of combed fibres, 85% or more by weight of cotton, 714.29 decitex or more (not exceeding 14 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520541"
+   },
+   {
+    "id": "52054200",
+    "cap": 8,
+    "cha": "52054",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 232,56 decitex đến dưới 714,29 decitex (chi số mét sợi đơn trên 14 đến 43)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of combed fibres, 85% or more by weight of cotton, 714.28 to 232.56 decitex (15 to 43 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520542"
+   },
+   {
+    "id": "52054300",
+    "cap": 8,
+    "cha": "52054",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 192,31 decitex đến dưới 232,56 decitex (chi số mét sợi đơn trên 43 đến 52)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of combed fibres, 85% or more by weight of cotton, 232.55 to 192.31 decitex (44 to 52 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520543"
+   },
+   {
+    "id": "52054400",
+    "cap": 8,
+    "cha": "52054",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 125 decitex đến dưới 192,31 decitex (chi số mét sợi đơn trên 52 đến 80)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of combed fibres, 85% or more by weight of cotton, 192.30 to 125 decitex (53 to 80 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520544"
+   },
+   {
+    "id": "52054600",
+    "cap": 8,
+    "cha": "52054",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 106,38 decitex đến dưới 125 decitex (chi số mét sợi đơn trên 80 đến 94)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of combed fibres, 85% or more by weight of cotton, 124 to 106.38 decitex (81 to 94 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520546"
+   },
+   {
+    "id": "52054700",
+    "cap": 8,
+    "cha": "52054",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh từ 83,33 decitex đến dưới 106,38 decitex (chi số mét sợi đơn trên 94 đến 120)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of combed fibres, 85% or more by weight of cotton, 106.37 to 83.33 decitex (95 to 120 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520547"
+   },
+   {
+    "id": "52054800",
+    "cap": 8,
+    "cha": "52054",
+    "tenVi": "Từ mỗi sợi đơn có độ mảnh dưới 83,33 decitex (chi số mét sợi đơn trên 120)",
+    "tenEn": "Cotton yarn; (not sewing thread), multiple or cabled, of combed fibres, 85% or more by weight of cotton, less than 83.33 decitex (exceeding 120 metric number) per single yarn, not for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "520548"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5205.nhom",
+  "tax.52051100",
+  "tax.52051200",
+  "tax.52051300",
+  "tax.52051400",
+  "tax.52051500",
+  "tax.52052100",
+  "tax.52052200",
+  "tax.52052300",
+  "tax.52052400",
+  "tax.52052600",
+  "tax.52052700",
+  "tax.52052800",
+  "tax.52053100",
+  "tax.52053200",
+  "tax.52053300",
+  "tax.52053400",
+  "tax.52053500",
+  "tax.52054100",
+  "tax.52054200",
+  "tax.52054300",
+  "tax.52054400",
+  "tax.52054600",
+  "tax.52054700",
+  "tax.52054800",
+  "wco.520511",
+  "wco.520515",
+  "wco.520521",
+  "wco.520528"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:16:22.189Z",
+  "ms": 6
+ },
+ "kiemTra": {
+  "tong": 32,
+  "dat": 32,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan52.phan (46130→25000)"
+  ]
+ }
+}

@@ -1,0 +1,193 @@
+{
+ "nhom": "7804",
+ "phamVi": {
+  "text": "Tấm, lá, dải và lá mỏng bằng chì; bột và vảy chì",
+  "nguon": "nhom7804.nhom",
+  "trich": "Chì ở dạng tấm, lá, dải và lá mỏng được định nghĩa trong Chú giải 9 (d) Phần XV.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_tam_la_dai_la_mong_bot_vay_chi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch78.chuong",
+   "trich": "Các sản phẩm thu được bởi việc cán hoặc ép đùn chì chưa gia công của nhóm 78.01 (nhóm 78.04 và 78.06), bột và vảy chì (nhóm 78.04)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "780411",
+   "fact": "chieu_day",
+   "op": "<=",
+   "value": 0.2,
+   "donVi": "mm",
+   "nguon": "wco.780411",
+   "trich": "Lead; sheets, strip and foil, of a thickness (excluding any backing) not exceeding 0.2mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "780419",
+   "fact": "chieu_day",
+   "op": ">",
+   "value": 0.2,
+   "donVi": "mm",
+   "nguon": "wco.780419",
+   "trich": "Lead; plates, sheets, strip and foil, of a thickness (excluding any backing) exceeding 0.2mm",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "78041110",
+   "dieuKien": "Chiều dày không quá 0,15 mm",
+   "loaiKhac": false,
+   "nguon": "tax.78041110",
+   "trich": "78041110 - - - Chiều dày không quá 0,15 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "78041190",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.78041190",
+   "trich": "78041190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "780411",
+    "truAnhEm": [
+     "78041110"
+    ],
+    "truDayDu": [
+     "78041110"
+    ],
+    "toTienCoTen": "780411",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "78041900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.78041900",
+   "trich": "78041900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "78041",
+    "truAnhEm": [
+     "780411"
+    ],
+    "truDayDu": [
+     "780411"
+    ],
+    "toTienCoTen": "7804",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "78042000",
+   "dieuKien": "Bột và vảy chì",
+   "loaiKhac": false,
+   "nguon": "tax.78042000",
+   "trich": "78042000 - Bột và vảy chì",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7804",
+    "cap": 4,
+    "cha": "78",
+    "tenVi": "Chì ở dạng tấm, lá, dải và lá mỏng; bột và vảy chì.",
+    "tenEn": "Lead; plates, sheets, strip and foil, lead powders and flakes",
+    "suyRa": false
+   },
+   {
+    "id": "78041",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "7804",
+    "tenVi": "Chì ở dạng tấm, lá, dải và lá mỏng",
+    "tenEn": "Plates, sheets, strip and foil",
+    "suyRa": true
+   },
+   {
+    "id": "780411",
+    "cap": 6,
+    "cha": "78041",
+    "tenVi": "Lá, dải và lá mỏng có chiều dày (trừ phần bồi) không quá 0,2 mm",
+    "tenEn": "Lead; sheets, strip and foil, of a thickness (excluding any backing) not exceeding 0.2mm",
+    "suyRa": false
+   },
+   {
+    "id": "78041110",
+    "cap": 8,
+    "cha": "780411",
+    "tenVi": "Chiều dày không quá 0,15 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "78041190",
+    "cap": 8,
+    "cha": "780411",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "78041900",
+    "cap": 8,
+    "cha": "78041",
+    "tenVi": "Loại khác",
+    "tenEn": "Lead; plates, sheets, strip and foil, of a thickness (excluding any backing) exceeding 0.2mm",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "780419"
+   },
+   {
+    "id": "78042000",
+    "cap": 8,
+    "cha": "7804",
+    "tenVi": "Bột và vảy chì",
+    "tenEn": "Lead; powders and flakes",
+    "suyRa": false,
+    "laPhanNhom": "780420"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch78.chuong",
+  "nhom7804.nhom",
+  "tax.78041110",
+  "tax.78041190",
+  "tax.78041900",
+  "tax.78042000",
+  "wco.780411",
+  "wco.780419"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:54:35.896Z",
+  "ms": 6
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
