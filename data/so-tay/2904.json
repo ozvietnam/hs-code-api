@@ -1,20 +1,47 @@
 {
  "nhom": "2904",
+ "phamVi": {
+  "text": "(A) Các dẫn xuất sulphonat hóa. … (B) Các dẫn xuất nitro hóa. … (C) Các dẫn xuất nitroso hóa. … (D) Các dẫn xuất sulphohalogen hóa. … (E) Các dẫn xuất nitrohalogen hóa. … (F) Các dẫn xuất nitrosulphonat hóa. … (G) Các dẫn xuất nitrosulphohalogen hóa hoặc các dẫn xuất kết hợp khác.",
+  "nguon": "nhom2904.nhom",
+  "trich": "(A) CÁC DẪN XUẤT SULPHONAT HÓA … (B) CÁC DẪN XUẤT NITRO HÓA … (C) CÁC DẪN XUẤT NITROSO HÓA … (D) CÁC DẪN XUẤT SULPHOHALOGEN HÓA … (E) CÁC DẪN XUẤT NITROHALOGEN HÓA … (F) CÁC DẪN XUẤT NITROSULPHONAT HÓA … (G) CÁC DẪN XUẤT NITROSULPHOHALOGEN HÓA HOẶC CÁC DẪN XUẤT KẾT HỢP KHÁC",
+  "nguonLoai": "AI_DA_KIEM"
+ },
  "dieuKienVao": [
   {
-   "fact": "la_dan_xuat_sulphonat_nitrat_hoac_nitroso_cua_hydrocarbon",
+   "fact": "co_chat_khac_co_y_them_vao_cho_cong_dung_rieng",
    "op": "=",
-   "value": true,
+   "value": false,
    "donVi": null,
-   "ngoaiTru": [],
-   "nguon": "nhom2904.nhom",
-   "trich": "Đây là những hydrocarbon mà một hay nhiều nguyên tử hydro của chúng được thay thế bằng số lượng các nhóm sulpho (-SO3H) tương ứng; chúng thường được gọi là axit sulphonic.",
+   "ngoaiTru": [
+    "chất ổn định, chống bụi, chất màu, chất có mùi, chất gây nôn theo Chú giải 1(f),(g)"
+   ],
+   "nguon": "ch29.chuong",
+   "trich": "Những hợp chất đã được xác định về mặt hoá học riêng biệt chứa những chất khác có thể được cố ý thêm vào trong hoặc sau khi sản xuất chúng (kể cả quá trình tinh chế) bị loại trừ khỏi chương này.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "co_the_xep_vao_nhom_co_so_thu_tu_sau_hon_trong_chuong_29",
+   "op": "=",
+   "value": false,
+   "donVi": null,
+   "ngoaiTru": [
+    "không áp dụng cho cấp phân nhóm (Chú giải phân nhóm 2)"
+   ],
+   "nguon": "ch29.chuong",
+   "trich": "3. Các mặt hàng có thể xếp vào hai hoặc nhiều nhóm thuộc Chương này phải xếp vào nhóm có số thứ tự sau cùng.",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "loaiTru": [
   {
-   "dieuKien": "Các hỗn hợp nổ đã được điều chế của các dẫn xuất nitrat hoá",
+   "dieuKien": "Mặt hàng (trừ quặng phóng xạ) đáp ứng các mô tả trong nhóm 28.44 hoặc 28.45",
+   "sangNhom": "2844|2845",
+   "nguon": "phan29.phan",
+   "trich": "1.- (A) Các mặt hàng (trừ quặng phóng xạ) đáp ứng các mô tả trong nhóm 28.44 hoặc 28.45\nphải được xếp vào các nhóm đó và không được đưa vào nhóm nào khác của Danh mục.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các hỗn hợp nổ đã được điều chế của các dẫn xuất này",
    "sangNhom": "3602",
    "nguon": "nhom2904.nhom",
    "trich": "Các hỗn hợp nổ đã được điều chế của các dẫn xuất này không được xếp vào nhóm này (xếp vào nhóm 36.02)",
@@ -23,7 +50,15 @@
  ],
  "phanBiet": [
   {
-   "hoi": "Hàng là các hỗn hợp nổ đã được điều chế?",
+   "hoi": "Hàng này là mặt hàng đáp ứng mô tả của các hợp chất phóng xạ hoặc các đồng vị phóng xạ không?",
+   "neuCo": "2844|2845",
+   "neuKhong": "2904",
+   "nguon": "phan29.phan",
+   "trich": "1.- (A) Các mặt hàng (trừ quặng phóng xạ) đáp ứng các mô tả trong nhóm 28.44 hoặc 28.45\nphải được xếp vào các nhóm đó và không được đưa vào nhóm nào khác của Danh mục.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng này là hỗn hợp nổ đã được điều chế của các dẫn xuất này không?",
    "neuCo": "3602",
    "neuKhong": "2904",
    "nguon": "nhom2904.nhom",
@@ -31,27 +66,128 @@
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
- "tieuChi6": [],
+ "tieuChi6": [
+  {
+   "hs6": "290410",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Dẫn xuất hydrocarbon chỉ chứa các nhóm sulpho, muối và etyl este của chúng",
+   "donVi": null,
+   "nguon": "wco.290410",
+   "trich": "290410 Derivatives of hydrocarbons; containing only sulpho groups, their salts and ethyl esters, whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "290420",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Dẫn xuất hydrocarbon chỉ chứa nhóm nitro hoặc nhóm nitroso",
+   "donVi": null,
+   "nguon": "wco.290420",
+   "trich": "290420 Derivatives of hydrocarbons; containing only nitro or only nitroso groups, whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "290431",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Perfluorooctane sulphonic axit (PFOS)",
+   "donVi": null,
+   "nguon": "wco.290431",
+   "trich": "290431 Derivatives of hydrocarbons; perfluorooctane sulphonic acid, whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "290432",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Ammonium perfluorooctane sulphonate",
+   "donVi": null,
+   "nguon": "wco.290432",
+   "trich": "290432 Derivatives of hydrocarbons; ammonium perfluorooctane sulphonate, whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "290433",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Lithium perfluorooctane sulphonate",
+   "donVi": null,
+   "nguon": "wco.290433",
+   "trich": "290433 Derivatives of hydrocarbons; lithium perfluorooctane sulphonate, whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "290434",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Kali perfluorooctane sulphonate",
+   "donVi": null,
+   "nguon": "wco.290434",
+   "trich": "290434 Derivatives of hydrocarbons; potassium perfluorooctane sulphonate, whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "290435",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Muối khác của perfluorooctane sulphonic axit",
+   "donVi": null,
+   "nguon": "wco.290435",
+   "trich": "290435 Derivatives of hydrocarbons; salts of perfluorooctane sulphonic acid n.e.c in heading no. 2904, whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "290436",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Perfluorooctane sulphonyl fluoride",
+   "donVi": null,
+   "nguon": "wco.290436",
+   "trich": "290436 Derivatives of hydrocarbons; perfluorooctane sulphonyl fluoride, whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "290491",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Trichloronitromethane (chloropicrin)",
+   "donVi": null,
+   "nguon": "wco.290491",
+   "trich": "290491 Derivatives of hydrocarbons; trichloronitromethane (chloropicrin), whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "290499",
+   "fact": "loai_hang",
+   "op": "=",
+   "value": "Dẫn xuất hydrocarbon khác thuộc nhóm 29.04",
+   "donVi": null,
+   "nguon": "wco.290499",
+   "trich": "290499 Derivatives of hydrocarbons n.e.c. in heading no. 2904, whether or not halogenated",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
  "dong8": [
   {
    "hs": "29041000",
    "dieuKien": "Các dẫn xuất chỉ chứa các nhóm sulpho, muối  và etyl este của chúng",
-   "loaiKhac": false,
    "nguon": "tax.29041000",
    "trich": "29041000 - Các dẫn xuất chỉ chứa các nhóm sulpho, muối  và etyl este của chúng",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
   },
   {
    "hs": "29042010",
-   "dieuKien": "Trinitrotoluen",
-   "loaiKhac": false,
+   "dieuKien": "- Trinitrotoluen",
    "nguon": "tax.29042010",
    "trich": "29042010 - - Trinitrotoluen",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
   },
   {
    "hs": "29042090",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "dieuKien": "Loại khác (khác 29042010)",
    "loaiKhac": true,
    "nguon": "tax.29042090",
    "trich": "29042090 - - Loại khác",
@@ -71,63 +207,63 @@
   },
   {
    "hs": "29043100",
-   "dieuKien": "Perfluorooctane sulphonic axit",
-   "loaiKhac": false,
+   "dieuKien": "- Perfluorooctane sulphonic axit",
    "nguon": "tax.29043100",
    "trich": "29043100 - - Perfluorooctane sulphonic axit",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
   },
   {
    "hs": "29043200",
-   "dieuKien": "Ammonium perfluorooctane sulphonate",
-   "loaiKhac": false,
+   "dieuKien": "- Ammonium perfluorooctane sulphonate",
    "nguon": "tax.29043200",
    "trich": "29043200 - - Ammonium perfluorooctane sulphonate",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
   },
   {
    "hs": "29043300",
-   "dieuKien": "Lithium perfluorooctane sulphonate",
-   "loaiKhac": false,
+   "dieuKien": "- Lithium perfluorooctane sulphonate",
    "nguon": "tax.29043300",
    "trich": "29043300 - - Lithium perfluorooctane sulphonate",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
   },
   {
    "hs": "29043400",
-   "dieuKien": "Kali perfluorooctane sulphonate",
-   "loaiKhac": false,
+   "dieuKien": "- Kali perfluorooctane sulphonate",
    "nguon": "tax.29043400",
    "trich": "29043400 - - Kali perfluorooctane sulphonate",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
   },
   {
    "hs": "29043500",
-   "dieuKien": "Muối khác của perfluorooctane sulphonic axit",
-   "loaiKhac": false,
+   "dieuKien": "- Muối khác của perfluorooctane sulphonic axit",
    "nguon": "tax.29043500",
    "trich": "29043500 - - Muối khác của perfluorooctane sulphonic axit",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
   },
   {
    "hs": "29043600",
-   "dieuKien": "Perfluorooctane sulphonyl fluoride",
-   "loaiKhac": false,
+   "dieuKien": "- Perfluorooctane sulphonyl fluoride",
    "nguon": "tax.29043600",
    "trich": "29043600 - - Perfluorooctane sulphonyl fluoride",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
   },
   {
    "hs": "29049100",
-   "dieuKien": "Trichloronitromethane (chloropicrin)",
-   "loaiKhac": false,
+   "dieuKien": "- Trichloronitromethane (chloropicrin)",
    "nguon": "tax.29049100",
    "trich": "29049100 - - Trichloronitromethane (chloropicrin)",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
   },
   {
    "hs": "29049900",
-   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "dieuKien": "Loại khác (khác 29049100)",
    "loaiKhac": true,
    "nguon": "tax.29049900",
    "trich": "29049900 - - Loại khác",
@@ -288,7 +424,9 @@
   "tenDien": []
  },
  "dungTuNguon": [
+  "ch29.chuong",
   "nhom2904.nhom",
+  "phan29.phan",
   "tax.29041000",
   "tax.29042010",
   "tax.29042090",
@@ -299,19 +437,29 @@
   "tax.29043500",
   "tax.29043600",
   "tax.29049100",
-  "tax.29049900"
+  "tax.29049900",
+  "wco.290410",
+  "wco.290420",
+  "wco.290431",
+  "wco.290432",
+  "wco.290433",
+  "wco.290434",
+  "wco.290435",
+  "wco.290436",
+  "wco.290491",
+  "wco.290499"
  ],
  "phienBan": "HS2022",
  "taoBoi": {
-  "provider": "google-studio:gemini-flash",
+  "provider": "dev-zcode-mm",
   "model": null,
-  "luc": "2026-11-02T10:50:29.965Z",
-  "ms": 8
+  "luc": "2026-11-02T11:11:20.803Z",
+  "ms": 293
  },
  "kiemTra": {
-  "tong": 15,
-  "dat": 14,
-  "loai": 1,
+  "tong": 28,
+  "dat": 28,
+  "loai": 0,
   "nguonBiCat": []
  }
 }
