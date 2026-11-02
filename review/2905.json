@@ -1,0 +1,75 @@
+{
+  "nhom": "2905",
+  "nguoiSoat": "dev-soat-doc-lap-lo090",
+  "luc": "2026-11-02T19:45:00+07:00",
+  "soat": 12,
+  "giu": 11,
+  "sua": 1,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2905 — 12 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 6 loaiTru + 3 phanBiet). `boPhan` = null là ĐÚNG (chú giải nhóm 29.05 không có quy tắc bộ phận). Đọc kèm 20 tieuChi6 + 20 dong8 nhưng KHÔNG sửa. Đã đối chiếu TOÀN BỘ 6 câu loại trừ của nguồn (etanol 22.07/22.08; naphta gỗ 38.07; rượu béo <90% 38.23; glyxerin <95% 15.20; sorbitol 38.24; cộng Chú giải 1(A) Phần I 28.44/28.45) — lô 090 khai đủ 6, không thừa không thiếu. GHI NHẬN: bản đã merge ở main (PR #887) có khai thêm loại trừ \"dầu tạp → 38.24\"; nguồn 29.05 KHÔNG có câu loại trừ như vậy (chỉ nói nguồn gốc sản xuất rượu amyl) ⇒ lô 090 không khai là ĐÚNG luật 3. SỬA 1 — `phamVi.text` tràn trần clip runtime (237 ký tự) ⇒ mất định ngữ \"của rượu mạch hở\" ở vế (D). KHÔNG xoá.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "TRÀN TRẦN CLIP RUNTIME (máy KHÔNG bắt). `text` 237 ký tự > trần 220 ⇒ runtime cắt đuôi vế (D): \"…nitro hóa hoặc nitroso hóa…\" — MẤT định ngữ \"của rượu mạch hở\" (định ngữ phân biệt vế (D) của nhóm này với (A)/(B) của nhóm 29.06). SỬA: rút còn 215 ký tự (bỏ mạo từ \"Các\" ở (C),(D) cho đều với (A),(B); gom \"rượu hai chức\"/\"các rượu đa chức khác\" thành \"hai chức\"/\"đa chức khác\" sau dấu hai chấm của (C)) — giữ đủ 4 vế (A),(B),(C) kèm (I),(II), (D) và định ngữ \"của rượu mạch hở\". `trich` giữ nguyên (byte-exact, 236 ký tự ≤ 300).",
+      "sua": {
+        "text": "(A) Những rượu no đơn chức. … (B) Rượu đơn chức không no. … (C) Rượu hai chức và đa chức khác: (I) hai chức; (II) đa chức khác. … (D) Dẫn xuất halogen hóa, sunphonat hóa, nitro hóa hoặc nitroso hóa của rượu mạch hở."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (câu chú giải Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (Chú giải 3 Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 loaiTru[0] (Chú giải 1(A) Phần I, giữ ngoại lệ \"trừ quặng phóng xạ\")."
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn [nhom2905.nhom]: \"Nhóm này không bao gồm etanol (ethyl alcohol), tinh khiết hay không tinh khiết (xem Chú giải Chi tiết nhóm 22.07 và 22.08).\" — có dấu hiệu loại trừ + đích danh 22.07 và 22.08 trong câu ⇒ `sangNhom` \"2207|2208\" hợp lệ. `dieuKien` 54 ký tự, còn nguyên sau clip(55)."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn: \"Nhóm này không bao gồm các rượu béo có độ tinh khiết dưới 90% (tính theo trọng lượng của sản phẩm khô) (nhóm 38.23).\" — đích 38.23 trong câu; ngưỡng 90% có trong câu trích; sau clip(55) vẫn còn \"Các rượu béo có độ tinh khiết dưới 90%\" ⇒ định danh còn."
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn: \"Để được xếp trong nhóm này, glyxerin phải có độ tinh khiết từ 95% trở lên (được tính theo trọng lượng của sản phẩm khô). Glyxerin có độ tinh khiết thấp hơn (glyxerin thô) bị loại trừ (nhóm 15.20).\" — đủ cả vế ĐIỀU KIỆN vào (≥95%) lẫn vế loại trừ, đích 15.20 trong câu, ngưỡng 95% trong câu."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn: \"Nhóm này loại trừ sorbitol của nhóm 38.24.\" — dấu hiệu loại trừ + đích 38.24 trong câu. GHI NHẬN: PR #887 (bản đã merge) có khai thêm một loại trừ \"dầu tạp → 38.24\" cho 2905; nguồn 2905 KHÔNG có câu loại trừ nào như vậy (câu ở mục (4) chỉ nói nguồn gốc sản xuất rượu amyl từ dầu tạp \"trong nhóm 38.24\", KHÔNG phải loại trừ) ⇒ lô 090 không khai loại trừ đó là ĐÚNG luật 3; giữ nguyên."
+    },
+    {
+      "index": "loaiTru[5]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. `trich` nguyên văn: \"Naphta gỗ (rượu metyl thô) thu được bởi quá trình chưng cất khô của gỗ thì bị loại trừ (nhóm 38.07).\" — đích 38.07 trong câu; sau clip(55) còn \"Naphta gỗ (rượu metyl thô)\" ⇒ định danh còn."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"là etanol (ethyl alcohol), tinh khiết hay không tinh khiết\" khớp đúng câu nguồn; nhánh Có→2207|2208, Không→2905. Đích có trong câu trích."
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Câu hỏi \"là rượu béo có độ tinh khiết dưới 90%\" khớp đúng câu nguồn; nhánh Có→38.23, Không→2905; ngưỡng 90% có trong câu trích."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ (có ghi nhận nhỏ). Câu hỏi \"là glyxerin (glycerol) có độ tinh khiết dưới 95%\" — ngưỡng 95% có trong câu trích, hướng đúng (Có → 15.20 khi <95%, Không → 2905 khi ≥95%), đảo chiều đúng. GHI NHẬN: chữ \"glycerol\" trong ngoặc KHÔNG nằm trong câu trích của mục này (trích chỉ có \"glyxerin\"), nhưng CÓ trong [nhom2905.nhom] (\"Glycerol (còn được biết đến là glyxerin)\") ⇒ không phải hiểu biết riêng của người soạn; giữ nguyên vì giúp người khai nhận ra mặt hàng (dùng cho tờ khai)."
+    }
+  ]
+}

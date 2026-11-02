@@ -1,0 +1,101 @@
+{
+ "nhom": "2903",
+ "nguoiSoat": "dev-soat-doc-lap-lo089",
+ "luc": "2026-11-02T19:40:00+07:00",
+ "daKiem": 15,
+ "soat": 15,
+ "giu": 11,
+ "sua": 4,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2903 (lô 089, PR #893) — người soạn dev-zcode-mm, người soát độc lập (dev-soat-doc-lap-lo089). Đã đọc TOÀN BỘ khối [nhom2903.nhom] của tmp/so-tay/nguon/2903.txt (7.773 ký tự, 8 phần A–H) và đối chiếu TỪNG mục trong 3 khối phải soát (phamVi · loaiTru · phanBiet). MÁY (kiểm riêng, KHÔNG dựa vào check-so-tay): 15/15 câu trích byte-exact trong đúng khối nguồn; mọi mã đích có trong câu trích; gác từ mức B; không câu trích nào cắt trước câu rào; mọi `phanBiet` hỏi đúng vật bị loại trừ, nhánh không = 2903. KẾT QUẢ: 15 mục soát → 11 GIỮ · 4 SỬA · 0 XOÁ. Lớp lỗi thật: loaiTru[3]/[5] + phanBiet[3]/[5] — BỎ VẾ DẪN \"hỗn hợp\" ⇒ điều kiện rộng hơn nguồn (mọi polycloronaphtalen/polychlorobiphenyl rắn dạng sáp, kể cả loại KHÔNG phải hỗn hợp, bị đẩy 34.04) ⇒ sửa, thêm lại \"hỗn hợp\" (nguyên văn trong câu trích). GHI NHẬN (không sửa): loaiTru[2] dài 60 ký tự > trần clip 55 (lúc chạy còn \"…hoặc lựu đạn chữa…\") nhưng `phanBiet[2].hoi` (77 ký tự ≤ 110) mang trọn vế nên thông tin KHÔNG mất trong prompt (nền nhà 40,3 % vượt trần) ⇒ GIỮ; câu trích của mục này ghép 3 mảnh nguồn bằng \"…\" (phần A, phần E, phần F đều có câu loại trừ này) — nguyên văn, byte-exact ⇒ GIỮ.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích byte-exact trong [nhom2903.nhom]; `text` bám đúng danh từ nguồn, không hẹp hơn không rộng hơn phạm vi nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2903.nhom] nêu đích danh 3404 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2903.nhom] nêu đích danh 3824 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2903.nhom] nêu đích danh 3813 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "BỎ VẾ DẪN \"hỗn hợp\" ⇒ ĐIỀU KIỆN RỘNG HƠN NGUỒN. Nguồn: \"Các polycloronaphtalen ở dạng lỏng, được phân loại vào nhóm này nếu chúng KHÔNG PHẢI LÀ HỖN HỢP; nhưng nếu là hỗn hợp ở dạng rắn mang tính chất của sáp nhân tạo thì bị loại trừ (nhóm 34.04).\" — chỉ PCN là HỖN HỢP ở thể rắn dạng sáp mới ra 34.04; PCN rắn không phải hỗn hợp vẫn ở 2903. Bản nháp mất \"hỗn hợp\" ⇒ mọi PCN rắn dạng sáp bị đẩy 34.04. Sửa: thêm lại \"hỗn hợp\" (nguyên văn trong câu trích).",
+   "sua": {
+    "dieuKien": "hỗn hợp polycloronaphtalen ở dạng rắn mang tính chất của sáp nhân tạo"
+   }
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2903.nhom] nêu đích danh 3824 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "sua",
+   "lyDo": "BỎ VẾ DẪN \"hỗn hợp\" ⇒ ĐIỀU KIỆN RỘNG HƠN NGUỒN — cùng lớp với loaiTru[3]. Nguồn: \"Nhóm này cũng không bao gồm polychlorobiphenyls LÀ HỖN HỢP của các dẫn xuất clo hóa; những chất này ở thể rắn có đặc tính của sáp nhân tạo thì thuộc nhóm 34.04, và polychlorobiphenyls dạng lỏng phân loại vào nhóm 38.24\" — vế loại trừ là PCB là hỗn hợp. Sửa: thêm lại \"hỗn hợp\" (nguyên văn trong câu trích).",
+   "sua": {
+    "dieuKien": "hỗn hợp polychlorobiphenyls ở thể rắn có đặc tính của sáp nhân tạo"
+   }
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2903.nhom] nêu đích danh 3824 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (cloroparafin rắn có đặc tính của sáp nhân tạo); nhánh có → 3404 (có trong câu trích), nhánh không → 2903 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (cloroparafin lỏng); nhánh có → 3824 (có trong câu trích), nhánh không → 2903 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Những sản phẩm nạp cho bình chữa cháy hoặc lựu đạn chữa cháy); nhánh có → 3813 (có trong câu trích), nhánh không → 2903 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải có vế \"hỗn hợp\" (loaiTru[3]); 88 ký tự ≤ trần 110 nên lúc chạy không bị cắt. Đích 34.04 có trong câu trích; nhánh không = 2903.",
+   "sua": {
+    "hoi": "Hàng này là hỗn hợp polycloronaphtalen ở dạng rắn mang tính chất của sáp nhân tạo không?"
+   }
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hỗn hợp các đồng phân hexabromobiphenyls); nhánh có → 3824 (có trong câu trích), nhánh không → 2903 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải có vế \"hỗn hợp\" (loaiTru[5]); 85 ký tự ≤ trần 110 nên lúc chạy không bị cắt. Đích 34.04 có trong câu trích; nhánh không = 2903.",
+   "sua": {
+    "hoi": "Hàng này là hỗn hợp polychlorobiphenyls ở thể rắn có đặc tính của sáp nhân tạo không?"
+   }
+  },
+  {
+   "index": "phanBiet[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (polychlorobiphenyls dạng lỏng); nhánh có → 3824 (có trong câu trích), nhánh không → 2903 là phần bù của nhánh có. GIỮ NGUYÊN."
+  }
+ ]
+}
