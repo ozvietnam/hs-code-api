@@ -1,0 +1,153 @@
+{
+ "nhom": "8713",
+ "phamVi": {
+  "text": "Xe, xe lăn hoặc các xe tương tự, được thiết kế đặc biệt để chở người tàn tật, có hoặc không có cơ cấu đẩy cơ khí.",
+  "nguon": "nhom8713.nhom",
+  "trich": "Nhóm này bao gồm các loại xe, xe lăn, hoặc các xe tương tự, được thiết kế đặc biệt để chở người tàn tật, có hoặc không có cơ cấu đẩy dạng cơ khí.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_xe_thiet_ke_dac_biet_cho_nguoi_tan_tat",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8713.nhom",
+   "trich": "Nhóm này bao gồm các loại xe, xe lăn, hoặc các xe tương tự, được thiết kế đặc biệt để chở người tàn tật, có hoặc không có cơ cấu đẩy dạng cơ khí.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các xe thông thường được thay đổi đơn giản phù hợp để sử dụng cho người tàn tật (ví dụ xe ô tô lắp côn tay, ga tay)",
+   "sangNhom": "8703",
+   "nguon": "nhom8713.nhom",
+   "trich": "(a) Các xe thông thường được thay đổi đơn giản phù hợp để sử dụng cho người tàn tật, (ví dụ, xe ôtô lắp côn tay, ga tay, v.v...) (nhóm 87.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các xe đạp hai bánh có bàn đạp đặc biệt để đạp được bằng một chân",
+   "sangNhom": "8712",
+   "nguon": "nhom8713.nhom",
+   "trich": "các xe đạp hai bánh có bàn đạp đặc biệt để đạp được bằng một chân (nhóm 87.12)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các xe cáng thương",
+   "sangNhom": "9402",
+   "nguon": "nhom8713.nhom",
+   "trich": "(b) Các xe cáng thương (nhóm 94.02)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là xe thông thường được thay đổi đơn giản phù hợp để sử dụng cho người tàn tật (như ô tô lắp côn tay, ga tay)?",
+   "neuCo": "8703",
+   "neuKhong": "8713",
+   "nguon": "nhom8713.nhom",
+   "trich": "(a) Các xe thông thường được thay đổi đơn giản phù hợp để sử dụng cho người tàn tật, (ví dụ, xe ôtô lắp côn tay, ga tay, v.v...) (nhóm 87.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là xe đạp hai bánh có bàn đạp đặc biệt để đạp được bằng một chân?",
+   "neuCo": "8712",
+   "neuKhong": "8713",
+   "nguon": "nhom8713.nhom",
+   "trich": "các xe đạp hai bánh có bàn đạp đặc biệt để đạp được bằng một chân (nhóm 87.12)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là xe cáng thương?",
+   "neuCo": "9402",
+   "neuKhong": "8713",
+   "nguon": "nhom8713.nhom",
+   "trich": "(b) Các xe cáng thương (nhóm 94.02)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "87131000",
+   "dieuKien": "Loại không có cơ cấu đẩy cơ khí",
+   "loaiKhac": false,
+   "nguon": "tax.87131000",
+   "trich": "87131000 - Loại không có cơ cấu đẩy cơ khí",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87139000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.87139000",
+   "trich": "87139000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8713",
+    "truAnhEm": [
+     "87131000"
+    ],
+    "truDayDu": [
+     "87131000"
+    ],
+    "toTienCoTen": "8713",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8713",
+    "cap": 4,
+    "cha": "87",
+    "tenVi": "Các loại xe dành cho người tàn tật, có hoặc không lắp động cơ hoặc cơ cấu đẩy cơ khí khác.",
+    "tenEn": "Carriages for disabled persons; whether or not motorised or otherwise mechanically propelled",
+    "suyRa": false
+   },
+   {
+    "id": "87131000",
+    "cap": 8,
+    "cha": "8713",
+    "tenVi": "Loại không có cơ cấu đẩy cơ khí",
+    "tenEn": "Carriages for disabled persons; not mechanically propelled",
+    "suyRa": false,
+    "laPhanNhom": "871310"
+   },
+   {
+    "id": "87139000",
+    "cap": 8,
+    "cha": "8713",
+    "tenVi": "Loại khác",
+    "tenEn": "Carriages for disabled persons; mechanically propelled",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "871390"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8713.nhom",
+  "tax.87131000",
+  "tax.87139000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T08:23:02.615Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 10,
+  "dat": 10,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
