@@ -11439,7 +11439,7 @@ TARGET=data APPLY=1 node scripts/apply-review-lo080.mjs        # CHỈ nâng ngu
 
 # LÔ 081 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 02/11/2026 07:45)
 
-- **Nhánh:** `so-tay/lo-081` (worktree `hs-code-api-wt-st-lo081`) · **PR #PRNUM** — **KHÔNG merge** (chờ soát độc lập)
+- **Nhánh:** `so-tay/lo-081` (worktree `hs-code-api-wt-st-lo081`) · **PR #731** — **KHÔNG merge** (chờ soát độc lập)
 - **Nhóm:** `2716 2801 2802 2803 2804 2805` — 2716 năng lượng điện · 2801 flo/clo/brom/iot · 2802 lưu huỳnh · 2803 carbon & muội carbon · 2804 hydro, khí hiếm và các phi kim khác · 2805 kim loại kiềm/kiềm thổ/đất hiếm/thủy ngân (theo CSV dòng 081, khớp brief)
 - **Nguồn:** `tmp/so-tay/nguon/{2716,2801,2802,2803,2804,2805}.txt` (149.709 ký tự) + `_he-thong.txt` — đọc HẾT 6 tệp
 - **KẾT QUẢ:** **89/89 mục đạt (100 %)** · **0 mục rớt** · `npm run so-tay:check` = 638 nhóm / 15.876 mục / **0 lỗi** · `npm test` xanh
