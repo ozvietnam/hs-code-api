@@ -1,0 +1,48 @@
+{
+  "nhom": "2908",
+  "nguoiSoat": "dev-soat-doc-lap-lo090",
+  "luc": "2026-11-02T19:45:00+07:00",
+  "soat": 6,
+  "giu": 4,
+  "sua": 2,
+  "xoa": 0,
+  "ghiChu": "SOÁT ĐỘC LẬP 2908 — 6 mục trong phạm vi mục 4 (1 phamVi + 3 dieuKienVao + 1 loaiTru + 1 phanBiet). `boPhan` = null là ĐÚNG (chú giải nhóm 29.08 không có quy tắc bộ phận). Đọc kèm 5 tieuChi6 + 5 dong8 nhưng KHÔNG sửa. Đối chiếu toàn bộ khối [nhom2908.nhom]: nhóm KHÔNG có câu loại trừ nào (chỉ có tiêu đề (A)–(D) + câu định nghĩa) ⇒ 1 loaiTru (Chú giải 1(A) Phần I) là đủ. SỬA 1 — `phamVi.text` vượt câu trích (thêm câu định nghĩa không có trong `trich`) VÀ tràn trần clip runtime (339 ký tự ⇒ cắt giữa câu định nghĩa). Sửa: `text` chỉ giữ 4 tiêu đề (A)–(D), khớp 1-1 với `trich`; câu định nghĩa KHÔNG mất khỏi sổ tay vì là trích nguyên văn của `dieuKienVao[0]`. KHÔNG xoá. SỬA thêm 1 — `phanBiet[0]` (quy tắc chuyển hàng phóng xạ, Chú giải 1(A) Phần I): ngoại lệ \"trừ quặng phóng xạ\" CÓ trong câu trích nhưng `hoi` không mang ⇒ hàng là quặng phóng xạ (nguồn xếp vào Phần V) trả lời \"có\" rồi bị dẫn nhầm sang 28.44/28.45. Thêm \"Trừ quặng phóng xạ.\" vào chính câu hỏi (mẫu nhà 0305 đã soát; nền nhà chỉ 39/2047 = 1 % `phanBiet` để ngoại lệ ngoài `hoi`) và rút \"là mặt hàng\" cho vừa trần clip 110.",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "sua",
+      "lyDo": "HAI LỖI MÁY KHÔNG BẮT. (1) `text` vượt câu trích: bản nháp có thêm câu định nghĩa \"Các chất này thu được từ rượu-phenol và phenol bằng cách thay thế 1 hay nhiều nguyên tử hydro bằng 1 halogen, 1 nhóm sulpho (-SO3H), 1 nhóm nitro (-NO2), 1 nhóm nitroso (-NO) hoặc bằng sự kết hợp của các nhóm này.\" — câu này KHÔNG có trong `trich` (trích chỉ có 4 tiêu đề (A)–(D)) ⇒ vi phạm nguyên tắc \"text khớp 1-1 với trích\" (tiền lệ lô 0401/0404). (2) TRÀN TRẦN CLIP RUNTIME: `text` 339 ký tự > trần 220 ⇒ runtime cắt GIỮA CÂU định nghĩa (\"…1 nhóm nitroso (-NO) hoặc bằng sự kết hợp của các nhóm này.\" bị cắt mất đuôi), đọc như câu còn tiếp. SỬA: `text` chỉ giữ 4 tiêu đề (A)–(D) — khớp 1-1 với `trich` (121 ký tự) và còn 125 ký tự ⇒ runtime hiện trọn vẹn. Câu định nghĩa KHÔNG bị mất khỏi sổ tay: nó là trích nguyên văn của `dieuKienVao[0]` (fact \"la_dan_xuat_cua_ruou_phenol_va_phenol_bang_cach_thay_the_nguyen_tu_hydro\" = true), và vế (D) \"nitroso hóa\" trong phạm vi vẫn nêu đủ. `trich` giữ nguyên (byte-exact, 121 ≤ 300).",
+      "sua": {
+        "text": "(A) Các dẫn xuất halogen hóa. … (B) Các dẫn xuất sulphonat hóa. … (C) Các dẫn xuất nitro hóa. … (D) Các dẫn xuất nitroso hóa."
+      }
+    },
+    {
+      "index": "dieuKienVao[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ. Đây là câu định nghĩa của nhóm, trích nguyên văn [nhom2908.nhom]: \"Những chất này thu được từ những rượu - phenol và phenol bằng cách thay thế 1 hay nhiều nguyên tử hydro bằng 1 halogen, 1 nhóm sulpho (-SO3H), 1 nhóm nitro (-NO2), 1 nhóm nitroso (-NO) hoặc bằng sự kết hợp của các nhóm này.\" — `fact` diễn đạt đúng nội dung câu (giá trị true), và đây là chỗ giữ câu định nghĩa sau khi rút `phamVi.text` cho vừa trần clip."
+    },
+    {
+      "index": "dieuKienVao[1]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (câu chú giải Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "dieuKienVao[2]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 (Chú giải 3 Chương 29, mẫu nhà 2917)."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "giu",
+      "lyDo": "GIỮ — cùng lý do với 2904 loaiTru[0] (Chú giải 1(A) Phần I, giữ ngoại lệ \"trừ quặng phóng xạ\")."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "MẤT NGOẠI LỆ TRONG CÂU HỎI (máy KHÔNG bắt được). Câu trích có ngoại lệ rõ ràng \"(trừ quặng phóng xạ)\" nhưng `hoi` không mang ngoại lệ ⇒ hàng là QUẶNG PHÓNG XẠ (nguồn xếp vào Phần V, xem Chú giải 1 Phần I) trả lời \"có\" cho câu hỏi này rồi bị dẫn sang 28.44/28.45 — SAI. Mẫu nhà (0305, đã soát độc lập) đưa ngoại lệ vào CHÍNH câu hỏi: \"…? Trừ <ngoại lệ>.\"; nền nhà chỉ 39/2047 (1 %) `phanBiet` để ngoại lệ ngoài `hoi` — 5 mục này là ngoại lệ của ngoại lệ. SỬA: thêm \"Trừ quặng phóng xạ.\" (nguyên văn trong câu trích) và rút \"là mặt hàng\" cho vừa trần clip 110 của runtime; `trich`, `neuCo` (2844|2845) và `neuKhong` (chính nhóm) giữ nguyên.",
+      "sua": {
+        "hoi": "Hàng này đáp ứng mô tả của các hợp chất phóng xạ hoặc các đồng vị phóng xạ không? Trừ quặng phóng xạ."
+      }
+    }
+  ]
+}
