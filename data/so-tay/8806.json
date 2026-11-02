@@ -1,0 +1,460 @@
+{
+ "nhom": "8806",
+ "phamVi": {
+  "text": "Phương tiện bay không người lái (drone, UAV) được thiết kế để bay không có người lái trên phương tiện.",
+  "nguon": "nhom8806.nhom",
+  "trich": "Theo Chú giải 1 của Chương này, nhóm này bao gồm phương tiện không người lái, được thiết kế để bay mà không có người lái trên máy bay, trừ những loại được nêu trong nhóm 88.01.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_phuong_tien_bay_khong_nguoi_lai",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "phuong_tien_bay_thuoc_nhom_8801",
+    "do_choi_bay_chi_cho_muc_dich_giai_tri"
+   ],
+   "nguon": "ch88.chuong",
+   "trich": "1. Theo mục đích của Chương này, khái niệm “phương tiện bay không người lái” có nghĩa là bất kỳ phương tiện bay nào, trừ các phương tiện bay thuộc nhóm 88.01, được thiết kế để bay mà không có người lái trên phương tiện bay.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Phương tiện bay không người lái không dùng động cơ thuộc nhóm 88.01",
+   "sangNhom": "8801",
+   "nguon": "nhom8806.nhom",
+   "trich": "trừ những loại được nêu trong nhóm 88.01.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Đồ chơi hoặc mô hình bay được thiết kế chỉ nhằm mục đích giải trí",
+   "sangNhom": "9503",
+   "nguon": "nhom8806.nhom",
+   "trich": "Nhóm này cũng loại trừ các đồ chơi hoặc mô hình bay được thiết kế chỉ nhằm mục đích giải trí, và không được thiết kế để thực hiện các chức năng thực dụng. … (nhóm 95.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là phương tiện bay không người lái thuộc nhóm 88.01?",
+   "neuCo": "8801",
+   "neuKhong": "8806",
+   "nguon": "nhom8806.nhom",
+   "trich": "trừ những loại được nêu trong nhóm 88.01.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là đồ chơi hoặc mô hình bay chỉ nhằm mục đích giải trí?",
+   "neuCo": "9503",
+   "neuKhong": "8806",
+   "nguon": "nhom8806.nhom",
+   "trich": "Nhóm này cũng loại trừ các đồ chơi hoặc mô hình bay được thiết kế chỉ nhằm mục đích giải trí, và không được thiết kế để thực hiện các chức năng thực dụng. … (nhóm 95.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "880621",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": "<=",
+   "value": 250,
+   "donVi": "g",
+   "nguon": "wco.880621",
+   "trich": "880621 Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of not more than 250g",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880622",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": "<=",
+   "value": 7,
+   "donVi": "kg",
+   "nguon": "wco.880622",
+   "trich": "880622 Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of more than 250g but not more than 7kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880623",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": "<=",
+   "value": 25,
+   "donVi": "kg",
+   "nguon": "wco.880623",
+   "trich": "880623 Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of more than 7kg but not more than 25kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880624",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": "<=",
+   "value": 150,
+   "donVi": "kg",
+   "nguon": "wco.880624",
+   "trich": "880624 Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of more than 25kg but not more than 150kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880629",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": ">",
+   "value": 150,
+   "donVi": "kg",
+   "nguon": "wco.880629",
+   "trich": "880629 Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of more than 150kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880691",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": "<=",
+   "value": 250,
+   "donVi": "g",
+   "nguon": "wco.880691",
+   "trich": "880691 Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight not more than 250g",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880692",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": "<=",
+   "value": 7,
+   "donVi": "kg",
+   "nguon": "wco.880692",
+   "trich": "880692 Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight more than 250g but not more than 7kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880693",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": "<=",
+   "value": 25,
+   "donVi": "kg",
+   "nguon": "wco.880693",
+   "trich": "880693 Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight more than 7kg but not more than 25kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880694",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": "<=",
+   "value": 150,
+   "donVi": "kg",
+   "nguon": "wco.880694",
+   "trich": "880694 Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight more than 25kg but not more than 150kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880699",
+   "fact": "trong_luong_cat_canh_toi_da",
+   "op": ">",
+   "value": 150,
+   "donVi": "kg",
+   "nguon": "wco.880699",
+   "trich": "880699 Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight more than 150kg",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "88061000",
+   "dieuKien": "Được thiết kế để vận chuyển hành khách",
+   "loaiKhac": false,
+   "nguon": "tax.88061000",
+   "trich": "88061000 - Được thiết kế để vận chuyển hành khách",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88062100",
+   "dieuKien": "Trọng lượng cất cánh tối đa không quá 250 g",
+   "loaiKhac": false,
+   "nguon": "tax.88062100",
+   "trich": "88062100 - - Trọng lượng cất cánh tối đa không quá 250 g",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88062200",
+   "dieuKien": "Trọng lượng cất cánh tối đa trên 250 g nhưng không quá 7 kg",
+   "loaiKhac": false,
+   "nguon": "tax.88062200",
+   "trich": "88062200 - - Trọng lượng cất cánh tối đa trên 250 g nhưng không quá 7 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88062300",
+   "dieuKien": "Trọng lượng cất cánh tối đa trên 7 kg nhưng không quá 25 kg",
+   "loaiKhac": false,
+   "nguon": "tax.88062300",
+   "trich": "88062300 - - Trọng lượng cất cánh tối đa trên 7 kg nhưng không quá 25 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88062400",
+   "dieuKien": "Trọng lượng cất cánh tối đa trên 25 kg nhưng không quá 150 kg",
+   "loaiKhac": false,
+   "nguon": "tax.88062400",
+   "trich": "88062400 - - Trọng lượng cất cánh tối đa trên 25 kg nhưng không quá 150 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88062900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.88062900",
+   "trich": "88062900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "88062",
+    "truAnhEm": [
+     "88062100",
+     "88062200",
+     "88062300",
+     "88062400"
+    ],
+    "truDayDu": [
+     "88062100",
+     "88062200",
+     "88062300",
+     "88062400",
+     "88061000",
+     "88069"
+    ],
+    "toTienCoTen": "8806",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "88069100",
+   "dieuKien": "Trọng lượng cất cánh tối đa không quá 250 g",
+   "loaiKhac": false,
+   "nguon": "tax.88069100",
+   "trich": "88069100 - - Trọng lượng cất cánh tối đa không quá 250 g",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88069200",
+   "dieuKien": "Trọng lượng cất cánh tối đa trên 250 g nhưng không quá 7 kg",
+   "loaiKhac": false,
+   "nguon": "tax.88069200",
+   "trich": "88069200 - - Trọng lượng cất cánh tối đa trên 250 g nhưng không quá 7 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88069300",
+   "dieuKien": "Trọng lượng cất cánh tối đa trên 7 kg nhưng không quá 25 kg",
+   "loaiKhac": false,
+   "nguon": "tax.88069300",
+   "trich": "88069300 - - Trọng lượng cất cánh tối đa trên 7 kg nhưng không quá 25 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88069400",
+   "dieuKien": "Trọng lượng cất cánh tối đa trên 25 kg nhưng không quá 150 kg",
+   "loaiKhac": false,
+   "nguon": "tax.88069400",
+   "trich": "88069400 - - Trọng lượng cất cánh tối đa trên 25 kg nhưng không quá 150 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88069900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.88069900",
+   "trich": "88069900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "88069",
+    "truAnhEm": [
+     "88069100",
+     "88069200",
+     "88069300",
+     "88069400"
+    ],
+    "truDayDu": [
+     "88069100",
+     "88069200",
+     "88069300",
+     "88069400",
+     "88061000",
+     "88062"
+    ],
+    "toTienCoTen": "8806",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8806",
+    "cap": 4,
+    "cha": "88",
+    "tenVi": "Phương tiện bay không người lái.",
+    "tenEn": "Unmanned aircraft",
+    "suyRa": false
+   },
+   {
+    "id": "88061000",
+    "cap": 8,
+    "cha": "8806",
+    "tenVi": "Được thiết kế để vận chuyển hành khách",
+    "tenEn": "Unmanned aircraft; for carriage of passengers",
+    "suyRa": false,
+    "laPhanNhom": "880610"
+   },
+   {
+    "id": "88062",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8806",
+    "tenVi": "Loại khác, chỉ sử dụng cho chuyến bay được điều khiển từ xa",
+    "tenEn": "Other, for remote-controlled flight only",
+    "suyRa": true
+   },
+   {
+    "id": "88062100",
+    "cap": 8,
+    "cha": "88062",
+    "tenVi": "Trọng lượng cất cánh tối đa không quá 250 g",
+    "tenEn": "Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of not more than 250g",
+    "suyRa": false,
+    "laPhanNhom": "880621"
+   },
+   {
+    "id": "88062200",
+    "cap": 8,
+    "cha": "88062",
+    "tenVi": "Trọng lượng cất cánh tối đa trên 250 g nhưng không quá 7 kg",
+    "tenEn": "Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of more than 250g but not more than 7kg",
+    "suyRa": false,
+    "laPhanNhom": "880622"
+   },
+   {
+    "id": "88062300",
+    "cap": 8,
+    "cha": "88062",
+    "tenVi": "Trọng lượng cất cánh tối đa trên 7 kg nhưng không quá 25 kg",
+    "tenEn": "Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of more than 7kg but not more than 25kg",
+    "suyRa": false,
+    "laPhanNhom": "880623"
+   },
+   {
+    "id": "88062400",
+    "cap": 8,
+    "cha": "88062",
+    "tenVi": "Trọng lượng cất cánh tối đa trên 25 kg nhưng không quá 150 kg",
+    "tenEn": "Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of more than 25kg but not more than 150kg",
+    "suyRa": false,
+    "laPhanNhom": "880624"
+   },
+   {
+    "id": "88062900",
+    "cap": 8,
+    "cha": "88062",
+    "tenVi": "Loại khác",
+    "tenEn": "Unmanned aircraft; for remote-controlled flight only, for other than for carriage of passengers, with the maximum take-off weight of more than 150kg",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "880629"
+   },
+   {
+    "id": "88069",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8806",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "88069100",
+    "cap": 8,
+    "cha": "88069",
+    "tenVi": "Trọng lượng cất cánh tối đa không quá 250 g",
+    "tenEn": "Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight not more than 250g",
+    "suyRa": false,
+    "laPhanNhom": "880691"
+   },
+   {
+    "id": "88069200",
+    "cap": 8,
+    "cha": "88069",
+    "tenVi": "Trọng lượng cất cánh tối đa trên 250 g nhưng không quá 7 kg",
+    "tenEn": "Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight more than 250g but not more than 7kg",
+    "suyRa": false,
+    "laPhanNhom": "880692"
+   },
+   {
+    "id": "88069300",
+    "cap": 8,
+    "cha": "88069",
+    "tenVi": "Trọng lượng cất cánh tối đa trên 7 kg nhưng không quá 25 kg",
+    "tenEn": "Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight more than 7kg but not more than 25kg",
+    "suyRa": false,
+    "laPhanNhom": "880693"
+   },
+   {
+    "id": "88069400",
+    "cap": 8,
+    "cha": "88069",
+    "tenVi": "Trọng lượng cất cánh tối đa trên 25 kg nhưng không quá 150 kg",
+    "tenEn": "Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight more than 25kg but not more than 150kg",
+    "suyRa": false,
+    "laPhanNhom": "880694"
+   },
+   {
+    "id": "88069900",
+    "cap": 8,
+    "cha": "88069",
+    "tenVi": "Loại khác",
+    "tenEn": "Unmanned aircraft; for other than remote-controlled flight and other than for carriage of passengers with a maximum take-off weight more than 150kg",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "880699"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch88.chuong",
+  "nhom8806.nhom",
+  "tax.88061000",
+  "tax.88062100",
+  "tax.88062200",
+  "tax.88062300",
+  "tax.88062400",
+  "tax.88062900",
+  "tax.88069100",
+  "tax.88069200",
+  "tax.88069300",
+  "tax.88069400",
+  "tax.88069900",
+  "wco.880621",
+  "wco.880622",
+  "wco.880623",
+  "wco.880624",
+  "wco.880629",
+  "wco.880691",
+  "wco.880692",
+  "wco.880693",
+  "wco.880694",
+  "wco.880699"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.861Z",
+  "ms": 8
+ },
+ "kiemTra": {
+  "tong": 27,
+  "dat": 27,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
