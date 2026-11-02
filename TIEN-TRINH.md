@@ -2493,6 +2493,7 @@ Brief `brief-st-lo048.md` **dòng 4** ghi đúng nhóm (`0713 0714 0801 0802 080
 | `node scripts/check-trich-nguyen-van.mjs` | **OK — 194 mục, mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn** |
 | `npm run so-tay:check` | **422 nhóm, 12.470 mục, 0 mục không kiểm được nguồn** |
 | `npm test` | **ALL TESTS PASSED** (exit 0) |
+| đối chiếu `tmp/so-tay/raw` vs `data/so-tay` | **6/6 KHỚP 100 %** (bỏ các trường máy gán: `nguonLoai`, `cay`, `loaiKhac`, `phamViLoaiKhac`, `dungTuNguon`, `phienBan`, `taoBoi`, `kiemTra`) |
 | `node scripts/check-cay.mjs --nhom=<6 nhóm> --chi-tiet` | 6/6 nhóm **0 lỗi lệch cây**, "đủ" (đủ `dong8`, đủ tên nút ảo, đủ tiêu chí 6 số) |
 
 ## Quyết định soạn (để người soát độc lập đối chiếu)
