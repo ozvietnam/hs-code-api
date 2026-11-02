@@ -86,6 +86,24 @@ Nhãn `nguonLoai` sau soát: **144 mục → `NGUOI_DUYET`** (5 khối đã soi:
 - Bổ sung lỗi kệ sách mới vào phần 1 của `so-tay-giao-ngoai.md`; lỗi lặp lại thì đưa thành luật máy (`lib/so-tay.js`).
 - Gộp PR + cập nhật `so-tay-lo.csv` (`trang_thai=xong`, `pr`).
 
+## 8. PR lại CONFLICTING — đã merge `main` vào nhánh, giữ bản lô 089
+
+Sau khi push, PR #893 báo **CONFLICTING** vì `main` đã có `data/so-tay/{2850,2852,2853}.json`
+từ "vòng 19" (30 nhóm, soạn hàng loặt, nhãn `AI_DA_KIEM` **chưa soát**). Đã `git merge origin/main`
+vào nhánh và chọn bản lô 089 (`git checkout --ours`) — cùng quyết định đã ghi ở mục 7 body PR #893
+cho 2901/2902/2903, nay lý do rõ hơn vì bản lô 089 đã qua soát:
+
+| Nhóm | "vòng 19" (trên `main`) | lô 089 (đã soát) |
+|---|---|---|
+| 2850 | 11 `loaiTru` · 11 `phanBiet` · 1 `dieuKienVao` · `AI_DA_KIEM` | **27** · **27** · **0** · `NGUOI_DUYET` |
+| 2852 | 4 · 4 · 0 · `AI_DA_KIEM` | **5** · **5** · 0 · `NGUOI_DUYET` |
+| 2853 | 10 · 10 · 1 · `AI_DA_KIEM` | **10** · **10** · **0** · `NGUOI_DUYET` |
+
+Bản "vòng 19" ghi `dieuKienVao` lấy từ câu **ĐỊNH NGHĨA** của nhóm (sai theo luật soát) và chưa qua
+soát độc lập; bản lô 089 có đủ mọi câu loại trừ của chú giải và 144 mục đã nâng `NGUOI_DUYET`.
+Kiểm sau merge: `so-tay:check` 1132 nhóm / 23.967 mục / **0 lỗi** · `check-cay` **0 lỗi lệch cây** ·
+`npm test` **exit 0**. PR **vẫn chưa merge**.
+
 ---
 
 # LÔ 089 — SOẠN sổ tay chú giải — 2850 2852 2853 2901 2902 2903 (02/11/2026, phiên `dev-zcode-mm`)
