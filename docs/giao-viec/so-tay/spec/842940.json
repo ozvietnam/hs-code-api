@@ -1,0 +1,60 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842940",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842940",
+  "dong8": {
+    "84294030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy đầm"
+        }
+      ]
+    },
+    "84294040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe lu rung"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 20,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "84294050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xe lu rung lăn đường"
+        }
+      ],
+      "phanConLai": [
+        "84294040"
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84294030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84294030: \"Máy đầm\" ⇒ tenLoai \"Máy đầm\""
+    },
+    {
+      "ma": "84294040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84294040: \"Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng\" ⇒ tenLoai \"Xe lu rung\" + khoiLuong <= 20 tấn"
+    },
+    {
+      "ma": "84294050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84294050: \"Các loại xe lu rung lăn đường khác\" ⇒ tenLoai \"xe lu rung lăn đường\", phanConLai phủ định .40"
+    }
+  ]
+}

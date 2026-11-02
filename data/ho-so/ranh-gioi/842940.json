@@ -1,0 +1,89 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "842940",
+  "nhom": "8429",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842940",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84294030",
+      "nguon": "tax.84294030",
+      "trich": "84294030 - - Máy đầm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy đầm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84294040",
+      "nguon": "tax.84294040",
+      "trich": "84294040 - - Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe lu rung"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 20,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84294050",
+      "nguon": "tax.84294050",
+      "trich": "84294050 - - Các loại xe lu rung lăn đường khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xe lu rung lăn đường"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "84294040"
+      ]
+    },
+    {
+      "hs": "84294090",
+      "nguon": "tax.84294090",
+      "trich": "84294090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84294030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84294030: \"Máy đầm\" ⇒ tenLoai \"Máy đầm\""
+    },
+    {
+      "ma": "84294040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84294040: \"Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng\" ⇒ tenLoai \"Xe lu rung\" + khoiLuong <= 20 tấn"
+    },
+    {
+      "ma": "84294050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84294050: \"Các loại xe lu rung lăn đường khác\" ⇒ tenLoai \"xe lu rung lăn đường\", phanConLai phủ định .40"
+    }
+  ]
+}

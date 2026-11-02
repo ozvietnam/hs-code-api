@@ -1,0 +1,184 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850710",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850710",
+  "dong8": {
+    "85071010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy bay"
+        }
+      ]
+    },
+    "85071092": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 13,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85071095": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": ">",
+          "value": 13,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 23,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85071096": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": ">",
+          "value": 23,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85071097": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 13,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85071098": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": ">",
+          "value": 13,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 23,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85071099": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": ">",
+          "value": 23,
+          "donVi": "cm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "850710~r15093": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 12,
+          "donVi": "V"
+        },
+        {
+          "fact": "dungLuong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "Ah"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85071010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85071010: \"Dùng cho máy bay\" ⇒ dungCho máy bay"
+    },
+    {
+      "ma": "850710~r15093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.850710~r15093: \"Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah\" ⇒ dienAp <= 12 V, dungLuong <= 200 Ah"
+    },
+    {
+      "ma": "85071092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85071092: \"Chiều cao ... không quá 13 cm\" ⇒ chieuCao <= 13 cm"
+    },
+    {
+      "ma": "85071092",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Quy ước loại trừ phụ kiện đi kèm khi đo kích thước chiều cao theo tiêu chuẩn kỹ thuật của ắc qui."
+    },
+    {
+      "ma": "85071095",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85071095: \"Chiều cao ... trên 13 cm nhưng không quá 23 cm\" ⇒ chieuCao > 13 cm, chieuCao <= 23 cm"
+    },
+    {
+      "ma": "85071095",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Quy ước loại trừ phụ kiện đi kèm khi đo kích thước chiều cao theo tiêu chuẩn kỹ thuật của ắc qui."
+    },
+    {
+      "ma": "85071096",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85071096: \"Chiều cao ... trên 23 cm\" ⇒ chieuCao > 23 cm"
+    },
+    {
+      "ma": "85071096",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Quy ước loại trừ phụ kiện đi kèm khi đo kích thước chiều cao theo tiêu chuẩn kỹ thuật của ắc qui."
+    },
+    {
+      "ma": "85071097",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85071097: \"Chiều cao ... không quá 13 cm\" ⇒ chieuCao <= 13 cm"
+    },
+    {
+      "ma": "85071097",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Quy ước loại trừ phụ kiện đi kèm khi đo kích thước chiều cao theo tiêu chuẩn kỹ thuật của ắc qui."
+    },
+    {
+      "ma": "85071098",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85071098: \"Chiều cao ... trên 13 cm nhưng không quá 23 cm\" ⇒ chieuCao > 13 cm, chieuCao <= 23 cm"
+    },
+    {
+      "ma": "85071098",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Quy ước loại trừ phụ kiện đi kèm khi đo kích thước chiều cao theo tiêu chuẩn kỹ thuật của ắc qui."
+    },
+    {
+      "ma": "85071099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85071099: \"Chiều cao ... trên 23 cm\" ⇒ chieuCao > 23 cm"
+    },
+    {
+      "ma": "85071099",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Quy ước loại trừ phụ kiện đi kèm khi đo kích thước chiều cao theo tiêu chuẩn kỹ thuật của ắc qui."
+    }
+  ]
+}
