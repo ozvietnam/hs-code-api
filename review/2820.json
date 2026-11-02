@@ -1,0 +1,85 @@
+{
+  "nhom": "2820",
+  "nguoiSoat": "dev-soat-doc-lap-lo084",
+  "luc": "2026-11-02T11:20:00+07:00",
+  "soat": 12,
+  "giu": 9,
+  "sua": 2,
+  "xoa": 0,
+  "chen": 1,
+  "ghiChu": "SOÁT ĐỘC LẬP 2820 (11 mục trong phạm vi: 1 phamVi · 5 loaiTru · 5 phanBiet; đọc thêm 2 tieuChi6 + 2 dong8 nhưng KHÔNG sửa — ngoài phạm vi). 2 mục sửa, 0 xoá, 1 chèn (tách vế loại trừ mangan dioxit thành hai mục).",
+  "thayDoi": [
+    {
+      "index": "phamVi",
+      "hanhDong": "giu",
+      "lyDo": "Câu trích ghép 4 tiêu đề (2)(3)(4)(5) nguyên văn. Thiếu tiêu đề \"(1) Mangan dioxit (MnO2)\" là LỖI TẦNG DATA, không phải lỗi soạn: data/chu-giai-heading.json[\"2820\"].nhom mở đầu bằng \"Là tác nhân oxy hóa rất mạnh\" — thân đoạn của mục (1) mà mất tiêu đề; chữ \"Mangan dioxit\" không có trong khối nguồn nên không thể chép vào trích mà không sửa nguồn (luật 8). Ghi vào mô tả PR, không ép. Xem thêm \"Chất màu từ đất\" — loại trừ (a) là đầy đủ."
+    },
+    {
+      "index": "loaiTru[0]",
+      "hanhDong": "sua",
+      "lyDo": "Đối chiếu: \"Nhóm này không bao gồm mangan dioxit khan tự nhiên (pyrolusite) VÀ mangan dioxyt tự nhiên đã hydrat hóa (psilomelane) (nhóm 26.02).\" Nguồn loại trừ HAI vật liệu; bản nháp chỉ giữ \"mangan dioxit khan tự nhiên (pyrolusite)\" ⇒ mangan dioxyt tự nhiên đã hydrat hóa (psilomelane) không bị loại, xếp nhầm 2820 thay vì 2602. Tách thành HAI mục (mỗi vật liệu một mục, cùng đích 26.02) để mỗi điều kiện vừa trần clip 55 mà không mất chữ.",
+      "sua": {
+        "dieuKien": "mangan dioxit khan tự nhiên"
+      }
+    },
+    {
+      "index": "loaiTru",
+      "hanhDong": "chen",
+      "lyDo": "Vế thứ hai của câu loại trừ 2820 — xem lyDo ở loaiTru[0].",
+      "muc": {
+        "dieuKien": "mangan dioxyt tự nhiên đã hydrat hóa",
+        "sangNhom": "2602",
+        "nguon": "nhom2820.nhom",
+        "trich": "Nhóm này không bao gồm mangan dioxit khan tự nhiên (pyrolusite) và mangan dioxyt tự nhiên đã hydrat hóa (psilomelane) (nhóm 26.02)."
+      }
+    },
+    {
+      "index": "loaiTru[1]",
+      "hanhDong": "giu",
+      "lyDo": "Đối chiếu: \"Manganous hydrôxit bị loại trừ (nhóm 28.25).\" Khớp nguyên văn, đích 2825 đúng. GIỮ NGUYÊN."
+    },
+    {
+      "index": "loaiTru[2]",
+      "hanhDong": "giu",
+      "lyDo": "Đối chiếu: \"Nhóm này không bao gồm mangan oxit tự nhiên (braunite - nhóm 26.02) và mangan hydroxit (nhóm 28.25).\" Hai mục loại trừ với hai đích, điều kiện và sangNhom khớp. GIỮ NGUYÊN. (Mẫu nhà: lô 0403/0405/0406 dùng y hệt dạng \"A ... và B ...\" cho hai đích khác nhau — 0403 \"Casein, albumin sữa và casein đã được làm cứng\" → 3501|3502|3913 — nên dạng \"và\" ở đây là chuẩn nhà, KHÔNG sửa.)"
+    },
+    {
+      "index": "loaiTru[3]",
+      "hanhDong": "giu",
+      "lyDo": "Đối chiếu: \"Oxit saline tự nhiên của mangan (hausmannite) bị loại trừ (nhóm 26.02).\" Khớp nguyên văn. GIỮ NGUYÊN."
+    },
+    {
+      "index": "loaiTru[4]",
+      "hanhDong": "giu",
+      "lyDo": "Đối chiếu: \"Axit permanganic bị loại trừ (nhóm 28.25).\" Khớp nguyên văn. GIỮ NGUYÊN."
+    },
+    {
+      "index": "phanBiet[0]",
+      "hanhDong": "sua",
+      "lyDo": "Cùng lý do loaiTru[0]: phải hỏi cả hai vật liệu bị loại trừ (pyrolusite và psilomelane), nguồn dùng \"và\" nên giữ \"và\" (mẫu nhà 0403/0405).",
+      "sua": {
+        "hoi": "Hàng này là mangan dioxit khan tự nhiên và mangan dioxyt tự nhiên đã hydrat hóa không?"
+      }
+    },
+    {
+      "index": "phanBiet[1]",
+      "hanhDong": "giu",
+      "lyDo": "Khớp: manganous hydrôxit → 2825 / không → 2820. GIỮ NGUYÊN."
+    },
+    {
+      "index": "phanBiet[2]",
+      "hanhDong": "giu",
+      "lyDo": "Khớp: mangan oxit tự nhiên (braunite) và mangan hydroxit → 2602|2825 / không → 2820. Dạng \"và\" là mẫu nhà (xem loaiTru[2]). GIỮ NGUYÊN."
+    },
+    {
+      "index": "phanBiet[3]",
+      "hanhDong": "giu",
+      "lyDo": "Khớp: oxit saline tự nhiên của mangan (hausmannite) → 2602 / không → 2820. GIỮ NGUYÊN."
+    },
+    {
+      "index": "phanBiet[4]",
+      "hanhDong": "giu",
+      "lyDo": "Khớp: axit permanganic → 2825 / không → 2820. GIỮ NGUYÊN."
+    }
+  ]
+}
