@@ -1,0 +1,103 @@
+{
+ "nhom": "2901",
+ "nguoiSoat": "dev-soat-doc-lap-lo089",
+ "luc": "2026-11-02T19:40:00+07:00",
+ "daKiem": 13,
+ "soat": 13,
+ "giu": 5,
+ "sua": 8,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2901 (lô 089, PR #893) — người soạn dev-zcode-mm, người soát độc lập (dev-soat-doc-lap-lo089). Đã đọc TOÀN BỘ khối [nhom2901.nhom] của tmp/so-tay/nguon/2901.txt (5.422 ký tự, 2 phần A–B) và đối chiếu TỪNG mục trong 3 khối phải soát (phamVi · loaiTru · phanBiet). MÁY (kiểm riêng, KHÔNG dựa vào check-so-tay): 13/13 câu trích byte-exact trong đúng khối nguồn; mọi mã đích có trong câu trích; gác từ mức B; không câu trích nào cắt trước câu rào; mọi `phanBiet` hỏi đúng vật bị loại trừ, nhánh không = 2901. KẾT QUẢ: 13 mục soát → 5 GIỮ · 8 SỬA · 0 XOÁ. Lớp lỗi thật: (1) 3 mục loaiTru + 3 phanBiet — ĐIỀU KIỆN THIẾU NGƯỠNG SỐ (\"Etan/Etylen với độ tinh khiết thấp hơn\" mà không có \"95%\"; \"Propylen … thấp hơn\" mà không có \"90%\"). Nền nhà: 2/2 mục cùng dạng (\"độ tinh khiết … thấp/nhỏ hơn\") đều ghi ngưỡng (mẫu 2933 \"Pyridin có độ tinh khiết thấp hơn 95%\"), lô 089 để trống 7 mục ⇒ lúc chạy (runtime chỉ in `dieuKien`, KHÔNG in câu trích) câu hỏi không có mốc để trả lời ⇒ sửa, số lấy nguyên văn từ câu trích; (2) loaiTru[2]+phanBiet[2] — BỎ VẾ DẪN \"tương tự\" ⇒ điều kiện rộng hơn nguồn (mọi hydrocacbon khí thô thay vì hydrocacbon khí thô TƯƠNG TỰ) ⇒ sửa, bỏ lượng từ \"những\" để còn 54 ký tự (≤ trần 55, không bị cắt lúc chạy), mọi từ còn lại nguyên văn trong nguồn. GHI NHẬN (không sửa): loaiTru[0] \"Metan và propan (C3H8) với 3 nguyên tử cacbon\" — nguồn dùng \"và\" để nối hai vật liệu (metan; propan có 3 nguyên tử cacbon); bản nháp chép nguyên văn, giữ nguyên (luật 7: không thêm hiểu biết riêng vào `dieuKien`).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích byte-exact trong [nhom2901.nhom]; `text` bám đúng danh từ nguồn, không hẹp hơn không rộng hơn phạm vi nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2901.nhom] nêu đích danh 2711 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "sua",
+   "lyDo": "ĐIỀU KIỆN THIẾU NGƯỠNG SỐ — nền nhà: 2/2 mục `loaiTru` có \"độ tinh khiết … thấp/nhỏ hơn\" đều ghi con số ngưỡng (mẫu nhà 2933: \"Pyridin có độ tinh khiết thấp hơn 95%\"), còn lô 089 để trống 7 mục. Nguồn: \"Để được phân loại vào nhóm này, etan phải có độ tinh khiết từ 95% trở lên tính theo thể tích. … Etan với độ tinh khiết thấp hơn bị loại trừ (nhóm 27.11).\" — \"thấp hơn\" mà không có ngưỡng thì vô nghĩa khi chạy (runtime chỉ in `dieuKien`, không in câu trích). Sửa: thêm ngưỡng 95% (có trong câu trích); cơ sở \"tính theo thể tích\" nằm ở `dong8` 29012100 + `dieuKienSo`.",
+   "sua": {
+    "dieuKien": "Etan với độ tinh khiết thấp hơn 95%"
+   }
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "BỎ VẾ DẪN \"tương tự\" ⇒ ĐIỀU KIỆN RỘNG HƠN NGUỒN. Nguồn: \"Nhưng nhóm này loại trừ butan thô, khí dầu thô và những hydrocacbon khí thô TƯƠNG TỰ thuộc nhóm 27.11.\" — \"tương tự\" giới hạn vế thứ ba (chỉ hydrocacbon khí thô TƯƠNG TỰ như butan thô / khí dầu thô). Bản nháp mất vế này ⇒ mọi hydrocacbon khí thô bị đẩy 27.11. Sửa: thêm lại \"tương tự\"; bỏ lượng từ \"những\" để còn 54 ký tự (≤ trần clip 55, không bị cắt lúc chạy) — mọi từ còn lại nguyên văn trong nguồn.",
+   "sua": {
+    "dieuKien": "butan thô, khí dầu thô và hydrocacbon khí thô tương tự"
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "Thiếu ngưỡng số — cùng lớp với loaiTru[1]. Nguồn: \"Để được phân loại vào nhóm này, etylen phải có độ tinh khiết từ 95% trở lên tính theo thể tích. Etylen có độ tinh khiết thấp hơn thì bị loại trừ (nhóm 27.11).\" Sửa: thêm \"95%\" (có trong câu trích); cơ sở \"tính theo thể tích\" ở `dong8` 29012100 + `dieuKienSo`.",
+   "sua": {
+    "dieuKien": "Etylen có độ tinh khiết thấp hơn 95%"
+   }
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "sua",
+   "lyDo": "Thiếu ngưỡng số — cùng lớp với loaiTru[1]. Nguồn: \"Để xếp vào nhóm này, propene (propylen) phải có độ tinh khiết từ 90% trở lên tính theo thể tích. Propylen có độ tinh khiết thấp hơn thì bị loại trừ (nhóm 27.11).\" Sửa: thêm \"90%\"; cơ sở \"tính theo thể tích\" ở `dong8` 29012200 + `dieuKienSo`.",
+   "sua": {
+    "dieuKien": "Propylen có độ tinh khiết thấp hơn 90%"
+   }
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2901.nhom] nêu đích danh 2711 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Metan và propan (C3H8) với 3 nguyên tử cacbon); nhánh có → 2711 (có trong câu trích), nhánh không → 2901 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải có ngưỡng thì mới trả lời được (loaiTru[1]); 54 ký tự ≤ trần 110 nên lúc chạy không bị cắt. Đích 27.11 có trong câu trích; nhánh không = 2901.",
+   "sua": {
+    "hoi": "Hàng này là Etan với độ tinh khiết thấp hơn 95% không?"
+   }
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa cùng loaiTru[2]: hỏi đủ vế \"tương tự\" (73 ký tự ≤ trần 110 nên lúc chạy không bị cắt); đích 27.11 có trong câu trích; nhánh không = 2901.",
+   "sua": {
+    "hoi": "Hàng này là butan thô, khí dầu thô và hydrocacbon khí thô tương tự không?"
+   }
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải có ngưỡng (loaiTru[3]); 55 ký tự ≤ trần 110; đích 27.11 có trong câu trích; nhánh không = 2901.",
+   "sua": {
+    "hoi": "Hàng này là Etylen có độ tinh khiết thấp hơn 95% không?"
+   }
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải có ngưỡng (loaiTru[4]); 57 ký tự ≤ trần 110; đích 27.11 có trong câu trích; nhánh không = 2901.",
+   "sua": {
+    "hoi": "Hàng này là Propylen có độ tinh khiết thấp hơn 90% không?"
+   }
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (những khí hydrocarbon thô); nhánh có → 2711 (có trong câu trích), nhánh không → 2901 là phần bù của nhánh có. GIỮ NGUYÊN."
+  }
+ ]
+}
