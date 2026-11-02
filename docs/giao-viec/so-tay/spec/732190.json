@@ -1,0 +1,55 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "732190",
+  "phien": "zcode-sub:glm-5.3:20261102T1641#soan-732190",
+  "dong8": {
+    "73219010": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "bếp dầu hỏa" }
+      ]
+    },
+    "73219021": {
+      "dieuKienSo": []
+    },
+    "73219029": {
+      "dieuKienSo": []
+    },
+    "73219090": {
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "7321902": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73219010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73219010 \"73219010 - - Của bếp dầu hỏa (SEN)\" ⇒ dungCho \"bếp dầu hỏa\" (chuỗi con nguyên văn của vế GIỚI HẠN \"Của bếp dầu hỏa\"; \"Của X\" = bộ phận của X, đích là bếp dầu hỏa — cùng mẫu 848390). Không thêm laBoPhan CO vì câu trích của chính mục không chứa cách đọc \"bộ phận\" (SEN in hoa \"BỘ PHẬN CỦA BẾP DẦU HỎA\" không phải nguồn tax của dòng)."
+    },
+    {
+      "ma": "7321902",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "nhienLieu",
+      "ghiChu": "tieuDe.7321902 \"7321902 Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí (SEN)\": định ngữ chung \"dùng nhiên liệu khí\" (BẢNG-LUAT dòng 3 — phải thành điều kiện riêng) không có khoá. nhienLieu (tu-vung@2) chỉ có GA (cachDoc \"bằng ga|dùng ga|khí đốt…\") và DIEN — không giá trị nào đọc \"nhiên liệu khí\", câu trích không chứa cachDoc của GA/DIEN nên không dùng TRONG được. Cần thêm giá trị nhiên liệu khí cho nhienLieu. Bỏ vế làm đổi mã 8 số (bộ phận của dụng cụ nấu dùng nhiên liệu khác sẽ lọt tầng .2 thay vì .90) ⇒ không BO_VE, không bịa."
+    },
+    {
+      "ma": "73219021",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "phuongPhapCheTao",
+      "ghiChu": "tax.73219021 \"73219021 - - - Đầu đốt (burner); các bộ phận được sản xuất bằng quá trình dập hoặc ép(SEN)\": ý \"các bộ phận được sản xuất bằng quá trình dập hoặc ép\" — chữ \"dập HOẶC ép\" nhưng phuongPhapCheTao (tu-vung@2) có DAP (\"dập\") mà không có giá trị đọc \"ép\" (EP_PHUN là \"ép phun\" — khác). TRONG [DAP] một mình hẹp hơn chữ. Theo QUY-TRINH 3.7 để trống cả mục (kể cả ý \"Đầu đốt\" diễn đạt được) ⇒ sẽ DỪNG. Cần thêm giá trị ÉP cho phuongPhapCheTao."
+    },
+    {
+      "ma": "73219029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73219029 \"73219029 - - - Loại khác\" trần ⇒ không điều kiện (máy tự phủ định anh em 73219021)."
+    },
+    {
+      "ma": "73219090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73219090 \"73219090 - - Loại khác\" trần ⇒ không điều kiện (máy tự phủ định anh em đứng trước)."
+    }
+  ]
+}
