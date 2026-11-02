@@ -1,0 +1,1086 @@
+VÒNG SỬA. Dưới đây là 9 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (0) cong0-phan-con-lai-thua ⇒ BỎ "phanConLai": true ở dòng đó (chỉ dùng cho dòng "Loại khác/Other" thật); spec-hinh-dang: ghiChuSoan chỉ ở cấp spec (mảng ghiChuSoan gốc), KHÔNG đặt trong dong8.<mã>; cong3 congDung phải là chuỗi con NGUYÊN VĂN của trích. (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 843139 ===
+--- GÓI ---
+# 843139 — Loại khác
+
+843139 — Machinery; parts of the machinery of heading no. 8428, (other than lifts, skip hoists or escalators)
+  84313910 Của hàng hóa thuộc phân nhóm 8428.20.10, 8428.32.10, 8428.33.10 hoặc 8428.39.10
+  84313940 Của máy tự động dùng để dịch chuyển, xử lý và kẹp giữ các tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+  84313950 Loại khác, của hàng hóa thuộc phân nhóm 8428.90  [LK có điều kiện]
+  84313990 Loại khác  [LK]
+
+- 84313910 DONG8
+    tax.84313910 [95 ký tự]: 84313910 - - - Của hàng hóa thuộc phân nhóm 8428.20.10, 8428.32.10, 8428.33.10 hoặc 8428.39.10 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8428.20.10, 8428.32.10, 8428.33.10 hoặc 8428.39.10"
+- 84313940 DONG8
+    tax.84313940 [120 ký tự]: 84313940 - - - Của máy tự động dùng để dịch chuyển, xử lý và kẹp giữ các tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy tự động" · [GIỚI HẠN] "dùng để dịch chuyển, xử lý và kẹp giữ các tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp"
+- 84313950 DONG8
+    tax.84313950 [62 ký tự]: 84313950 - - - Loại khác, của hàng hóa thuộc phân nhóm 8428.90
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của hàng hóa thuộc phân nhóm 8428.90"
+- 84313990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84313990 [24 ký tự]: 84313990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.843139; chú giải: nhom8431.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "843139",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843139",
+  "dong8": {
+    "84313910": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8428.20.10",
+            "8428.32.10",
+            "8428.33.10",
+            "8428.39.10"
+          ]
+        }
+      ]
+    },
+    "84313940": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "dịch chuyển",
+            "xử lý",
+            "kẹp giữ"
+          ]
+        }
+      ]
+    },
+    "84313950": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8428.90"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84313910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84313910: \"Của hàng hóa thuộc phân nhóm 8428.20.10, 8428.32.10, 8428.33.10 hoặc 8428.39.10\" ⇒ dungCho mã HS"
+    },
+    {
+      "ma": "84313940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84313940: \"Của máy tự động dùng để dịch chuyển, xử lý và kẹp giữ các tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\" ⇒ dungCho các đối tượng và congDung dịch chuyển, xử lý, kẹp giữ"
+    },
+    {
+      "ma": "84313950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84313950: \"Loại khác, của hàng hóa thuộc phân nhóm 8428.90\" ⇒ dungCho \"8428.90\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-ve-gioi-han-bi-bo:84313940:Của máy tự động
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 843280 ===
+--- GÓI ---
+# 843280 — Máy khác
+
+843280 — Rollers; for lawns or sports-grounds
+  84328010 Dùng trong nông nghiệp hoặc làm vườn
+  84328020 Máy cán cho bãi cỏ hoặc cho sân chơi thể thao
+  84328090 Loại khác  [LK]
+
+- 84328010 DONG8
+    tax.84328010 [49 ký tự]: 84328010 - - Dùng trong nông nghiệp hoặc làm vườn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng trong nông nghiệp hoặc làm vườn"
+- 84328020 DONG8
+    tax.84328020 [58 ký tự]: 84328020 - - Máy cán cho bãi cỏ hoặc cho sân chơi thể thao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho bãi cỏ hoặc cho sân chơi thể thao"
+- 84328090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84328090 [22 ký tự]: 84328090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.843280; chú giải: nhom8432.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "843280",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843280",
+  "dong8": {
+    "84328010": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "nông nghiệp",
+            "làm vườn"
+          ]
+        }
+      ]
+    },
+    "84328020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy cán"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bãi cỏ",
+            "sân chơi thể thao"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84328010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84328010: \"Dùng trong nông nghiệp hoặc làm vườn\" ⇒ congDung [\"nông nghiệp\", \"làm vườn\"]"
+    },
+    {
+      "ma": "84328020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84328020: \"Máy cán cho bãi cỏ hoặc cho sân chơi thể thao\" ⇒ tenLoai \"Máy cán\" + dungCho [\"bãi cỏ\", \"sân chơi thể thao\"]"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:84328010+84328020:congDung=nông nghiệp,dungCho=bãi cỏ,tenLoai=Máy cán:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 843290 ===
+--- GÓI ---
+# 843290 — Bộ phận
+
+843290 — Machinery; parts of machinery for soil preparation or cultivation or for rollers for lawns or sports-grounds
+  84329010 Của máy thuộc phân nhóm 8432.80.90
+  84329020 Của máy cán cho bãi cỏ hoặc cho sân chơi thể thao
+  84329090 Loại khác  [LK]
+
+- 84329010 DONG8
+    tax.84329010 [47 ký tự]: 84329010 - - Của máy thuộc phân nhóm 8432.80.90
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy thuộc phân nhóm 8432.80.90"
+- 84329020 DONG8
+    tax.84329020 [62 ký tự]: 84329020 - - Của máy cán cho bãi cỏ hoặc cho sân chơi thể thao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy cán" · [GIỚI HẠN] "cho bãi cỏ hoặc cho sân chơi thể thao"
+- 84329090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84329090 [22 ký tự]: 84329090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.843290; chú giải: nhom8432.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "843290",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843290",
+  "dong8": {
+    "84329010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8432.80.90"
+        }
+      ]
+    },
+    "84329020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy cán cho bãi cỏ",
+            "máy cán cho sân chơi thể thao"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84329010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84329010: \"Của máy thuộc phân nhóm 8432.80.90\" ⇒ dungCho \"8432.80.90\""
+    },
+    {
+      "ma": "84329020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84329020: \"Của máy cán cho bãi cỏ hoặc cho sân chơi thể thao\" ⇒ dungCho các loại máy cán"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84329020:dieu-kien-so-cong-dung-khong-co-trong-trich:máy cán cho sân chơi thể thao
+      → Giá trị CONG_DUNG không phải chuỗi con của câu trích. Sửa: Chép chuỗi con nguyên văn từ trich.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 843319 ===
+--- GÓI ---
+# 843319 — Loại khác
+
+843319 — Mowers; for lawns, parks or sports-grounds, other than with the cutting device rotating in a horizontal plane
+  84331910 Không dùng động cơ
+  84331990 Loại khác  [LK]
+
+- 84331910 DONG8
+    tax.84331910 [33 ký tự]: 84331910 - - - Không dùng động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không dùng động cơ"
+- 84331990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84331990 [24 ký tự]: 84331990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.843319; chú giải: nhom8433.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "843319",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843319",
+  "dong8": {
+    "84331910": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ghiChuSoan": [
+        {
+          "ma": "84331910",
+          "loai": "BO_VE",
+          "ve": "Không dùng động cơ",
+          "lyDo": "tu-vung@2 chưa có khoá coDongCo; không dùng động cơ bao gồm không dùng động cơ điện, phủ bằng hoatDongBangDien KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84331910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84331910: \"Không dùng động cơ\" ⇒ hoatDongBangDien KHONG (máy cắt cỏ đẩy tay thủ công)"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ spec-hinh-dang:dong8.84331910.ghiChuSoan — khoá mục hợp lệ: dieuKienSo, trich, nguon, phanConLai
+      → Spec sai lược đồ ranh-gioi-spec@1. Sửa: Xem mẫu trong --help và docs/giao-viec/so-tay/QUY-TRINH-SO-HOA.md.
+
+=== PN6 843390 ===
+--- GÓI ---
+# 843390 — Bộ phận
+
+843390 — Harvesting machinery; parts, including parts of threshing machinery, straw or fodder balers and grass or hay mowers
+  84339010 Bánh xe đẩy (castor), có đường kính (gồm cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là bánh xe hoặc lốp lắp vào đó có chiều rộng trên 30 mm
+  84339020 Loại khác, của hàng hóa thuộc phân nhóm 8433.11.00 hoặc 8433.19.90  [LK có điều kiện]
+  84339030 Loại khác, của hàng hóa thuộc phân nhóm 8433.19.10  [LK có điều kiện]
+  84339090 Loại khác  [LK]
+
+- 84339010 DONG8
+    tax.84339010 [167 ký tự]: 84339010 - - Bánh xe đẩy (castor), có đường kính (gồm cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là bánh xe hoặc lốp lắp vào đó có chiều rộng trên 30 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính (gồm cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là bánh xe hoặc lốp lắp vào đó" · [GIỚI HẠN] "có chiều rộng trên 30 mm"
+- 84339020 DONG8
+    tax.84339020 [79 ký tự]: 84339020 - - Loại khác, của hàng hóa thuộc phân nhóm 8433.11.00 hoặc 8433.19.90
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của hàng hóa thuộc phân nhóm 8433.11.00 hoặc 8433.19.90"
+- 84339030 DONG8
+    tax.84339030 [63 ký tự]: 84339030 - - Loại khác, của hàng hóa thuộc phân nhóm 8433.19.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của hàng hóa thuộc phân nhóm 8433.19.10"
+- 84339090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84339090 [22 ký tự]: 84339090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.843390; chú giải: nhom8433.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "843390",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843390",
+  "dong8": {
+    "84339010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh xe đẩy"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 100,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "mm"
+        }
+      ],
+      "ghiChuSoan": [
+        {
+          "ma": "84339010",
+          "loai": "BO_VE",
+          "ve": "có chiều rộng trên 30 mm",
+          "lyDo": "tu-vung@2 chưa có khoá chieuRong; điều kiện đường kính đã đủ phân định khỏi các dòng anh em"
+        }
+      ]
+    },
+    "84339020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8433.11.00",
+            "8433.19.90"
+          ]
+        }
+      ]
+    },
+    "84339030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8433.19.10"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84339010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84339010: \"Bánh xe đẩy (castor), có đường kính...\" ⇒ tenLoai \"Bánh xe đẩy\" và duongKinh > 100 mm, <= 250 mm"
+    },
+    {
+      "ma": "84339020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84339020: \"Loại khác, của hàng hóa thuộc phân nhóm 8433.11.00 hoặc 8433.19.90\" ⇒ dungCho các mã HS tương ứng"
+    },
+    {
+      "ma": "84339030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84339030: \"Loại khác, của hàng hóa thuộc phân nhóm 8433.19.10\" ⇒ dungCho \"8433.19.10\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ spec-hinh-dang:dong8.84339010.ghiChuSoan — khoá mục hợp lệ: dieuKienSo, trich, nguon, phanConLai
+      → Spec sai lược đồ ranh-gioi-spec@1. Sửa: Xem mẫu trong --help và docs/giao-viec/so-tay/QUY-TRINH-SO-HOA.md.
+
+=== PN6 843710 ===
+--- GÓI ---
+# 843710 — Máy làm sạch, tuyển chọn hoặc phân loại hạt giống, hạt hoặc các loại rau đậu đã được làm khô
+
+843710 — Machines; for cleaning, sorting or grading seed, grain or dried leguminous vegetables
+  84371010 Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện
+  84371020 Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện
+  84371030 Loại khác, hoạt động bằng điện  [LK có điều kiện]
+  84371040 Loại khác, không hoạt động bằng điện  [LK có điều kiện]
+
+- 84371010 DONG8
+    tax.84371010 [128 ký tự]: 84371010 - - Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho các loại hạt, hoạt động" · [GIỚI HẠN] "bằng điện" · [GIỚI HẠN] "bằng điện"
+- 84371020 DONG8
+    tax.84371020 [140 ký tự]: 84371020 - - Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho các loại hạt" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84371030 DONG8
+    tax.84371030 [43 ký tự]: 84371030 - - Loại khác, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84371040 DONG8
+    tax.84371040 [49 ký tự]: 84371040 - - Loại khác, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.843710; chú giải: nhom8437.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "843710",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843710",
+  "dong8": {
+    "84371010": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hạt"
+        }
+      ]
+    },
+    "84371020": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hạt"
+        }
+      ]
+    },
+    "84371030": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": [
+        "84371010"
+      ]
+    },
+    "84371040": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "phanConLai": [
+        "84371020"
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84371010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84371010: \"Dùng cho các loại hạt, hoạt động bằng điện...\" ⇒ hoatDongBangDien CO + dungCho \"hạt\""
+    },
+    {
+      "ma": "84371020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84371020: \"Dùng cho các loại hạt, không hoạt động bằng điện...\" ⇒ hoatDongBangDien KHONG + dungCho \"hạt\""
+    },
+    {
+      "ma": "84371030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84371030: \"Loại khác, hoạt động bằng điện\" ⇒ hoatDongBangDien CO + phanConLai phủ 84371010"
+    },
+    {
+      "ma": "84371040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84371040: \"Loại khác, không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG + phanConLai phủ 84371020"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong0-phan-con-lai-thua:84371030
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong0-phan-con-lai-thua:84371040
+    ✗ cong5-ve-mo-bi-bo:84371010:và các loại máy làm sạch tương tự
+      → Vế MỞ ("… và các loại tương tự", "và bộ phận của chúng", "và các loại … khác") bị bỏ trong khi danh sách đứng trước nó lại được liệt kê ĐÓNG thành điều kiện — điều kiện HẸP hơn chữ. Sửa: Không ghi danh sách đóng làm điều kiện khi chữ có vế mở (quy ước 392690): bỏ điều kiện liệt kê rồi khai BO_VE cho vế giới hạn chứa danh sách (kèm lý do); hoặc phủ chính vế mở — "X và bộ phận của chúng" ⇒ {"op":"HOAC","phuongAn":[[tenLoai "X"],[laBoPhan CO, dungCho "X
+    ✗ cong5-ve-mo-bi-bo:84371020:và các loại máy làm sạch tương tự
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 843780 ===
+--- GÓI ---
+# 843780 — Máy khác
+
+843780 — Machinery; for use in the milling industry or for the working of cereals or dried leguminous vegetables, other than farm-type machinery
+  84378010 Máy bóc vỏ trấu và máy xát gạo hình côn, hoạt động bằng điện
+  84378020 Máy bóc vỏ trấu và máy xát gạo hình côn, không hoạt động bằng điện
+  84378030 Máy nghiền cà phê và ngô dạng công nghiệp, hoạt động bằng điện
+  84378040 Máy nghiền cà phê và ngô dạng công nghiệp, không hoạt động bằng điện
+  [8437805] Loại khác, hoạt động bằng điện
+    84378051 Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ
+    84378059 Loại khác  [LK]
+  [8437806] Loại khác, không hoạt động bằng điện
+    84378061 Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ
+    84378069 Loại khác  [LK]
+
+- 84378010 DONG8
+    tax.84378010 [73 ký tự]: 84378010 - - Máy bóc vỏ trấu và máy xát gạo hình côn, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84378020 DONG8
+    tax.84378020 [79 ký tự]: 84378020 - - Máy bóc vỏ trấu và máy xát gạo hình côn, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84378030 DONG8
+    tax.84378030 [75 ký tự]: 84378030 - - Máy nghiền cà phê và ngô dạng công nghiệp, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84378040 DONG8
+    tax.84378040 [81 ký tự]: 84378040 - - Máy nghiền cà phê và ngô dạng công nghiệp, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 8437805 TIEU_DE
+    tieuDe.8437805 [38 ký tự]: 8437805 Loại khác, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84378051 DONG8
+    tax.84378051 [85 ký tự]: 84378051 - - - Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ
+- 84378059 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84378059 [24 ký tự]: 84378059 - - - Loại khác
+- 8437806 TIEU_DE
+    tieuDe.8437806 [44 ký tự]: 8437806 Loại khác, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84378061 DONG8
+    tax.84378061 [85 ký tự]: 84378061 - - - Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ
+- 84378069 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84378069 [24 ký tự]: 84378069 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.843780; chú giải: nhom8437.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "843780",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843780",
+  "dong8": {
+    "84378010": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy bóc vỏ trấu",
+            "máy xát gạo hình côn"
+          ]
+        }
+      ]
+    },
+    "84378020": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy bóc vỏ trấu",
+            "máy xát gạo hình côn"
+          ]
+        }
+      ]
+    },
+    "84378030": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy nghiền cà phê và ngô"
+        }
+      ]
+    },
+    "84378040": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy nghiền cà phê và ngô"
+        }
+      ]
+    },
+    "84378051": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy đánh bóng gạo",
+            "máy giần",
+            "sàng",
+            "rây",
+            "máy làm sạch cám",
+            "máy bóc vỏ"
+          ]
+        }
+      ]
+    },
+    "84378061": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy đánh bóng gạo",
+            "máy giần",
+            "sàng",
+            "rây",
+            "máy làm sạch cám",
+            "máy bóc vỏ"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8437805": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": [
+        "84378010",
+        "84378030"
+      ]
+    },
+    "8437806": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "phanConLai": [
+        "84378020",
+        "84378040"
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84378010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84378010: \"Máy bóc vỏ trấu và máy xát gạo hình côn, hoạt động bằng điện\" ⇒ hoatDongBangDien CO + tenLoai"
+    },
+    {
+      "ma": "84378020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84378020: \"Máy bóc vỏ trấu và máy xát gạo hình côn, không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG + tenLoai"
+    },
+    {
+      "ma": "84378030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84378030: \"Máy nghiền cà phê và ngô dạng công nghiệp, hoạt động bằng điện\" ⇒ hoatDongBangDien CO + tenLoai"
+    },
+    {
+      "ma": "84378040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84378040: \"Máy nghiền cà phê và ngô dạng công nghiệp, không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG + tenLoai"
+    },
+    {
+      "ma": "8437805",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8437805: \"Loại khác, hoạt động bằng điện\" ⇒ hoatDongBangDien CO + phanConLai phủ 84378010, 84378030"
+    },
+    {
+      "ma": "84378051",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84378051: \"Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ\" ⇒ tenLoai mảng các loại máy"
+    },
+    {
+      "ma": "8437806",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8437806: \"Loại khác, không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG + phanConLai phủ 84378020, 84378040"
+    },
+    {
+      "ma": "84378061",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84378061: \"Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ\" ⇒ tenLoai mảng các loại máy"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong0-phan-con-lai-thua:8437805
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong0-phan-con-lai-thua:8437806
+    ✗ cong5-dinh-ngu-tach:84378010:bằng điện
+      → Định ngữ chung bị tách: theo chữ Anh của cùng dòng, vế bổ nghĩa đi với CẢ các danh từ đầu liên hợp (gắn cho một phần ⇒ rộng hơn chữ) hoặc chỉ với danh từ CUỐI (gắn cho tất cả ⇒ hẹp hơn chữ). Sửa: Định ngữ chung ⇒ một điều kiện riêng phủ định ngữ cho mọi danh từ đầu (vd tenLoai ["A","B"] + dungCho "<định ngữ>"); định ngữ chỉ của danh từ cuối ⇒ HOAC [[tenLoai A], [tenLoai B, <điều kiện định ngữ>]]. Máy đọc sai cấu trúc ⇒ BO_VE với ve = định ng�
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 843880 ===
+--- GÓI ---
+# 843880 — Máy khác
+
+843880 — Machinery; used in the industrial preparation or manufacture of food or drink, n.e.c. in heading no. 8438
+  [8438801] Máy xát vỏ cà phê
+    84388011 Hoạt động bằng điện
+    84388012 Không hoạt động bằng điện
+  [8438802] Máy chế biến cá, động vật giáp xác hoặc động vật thân mềm
+    84388021 Hoạt động bằng điện
+    84388022 Không hoạt động bằng điện
+  [8438809] Loại khác
+    84388091 Hoạt động bằng điện
+    84388092 Không hoạt động bằng điện
+
+- 8438801 TIEU_DE
+    tieuDe.8438801 [25 ký tự]: 8438801 Máy xát vỏ cà phê
+- 84388011 DONG8
+    tax.84388011 [34 ký tự]: 84388011 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84388012 DONG8
+    tax.84388012 [40 ký tự]: 84388012 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 8438802 TIEU_DE
+    tieuDe.8438802 [65 ký tự]: 8438802 Máy chế biến cá, động vật giáp xác hoặc động vật thân mềm
+- 84388021 DONG8
+    tax.84388021 [34 ký tự]: 84388021 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84388022 DONG8
+    tax.84388022 [40 ký tự]: 84388022 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 8438809 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8438809 [17 ký tự]: 8438809 Loại khác
+- 84388091 DONG8
+    tax.84388091 [34 ký tự]: 84388091 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84388092 DONG8
+    tax.84388092 [40 ký tự]: 84388092 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.843880; chú giải: nhom8438.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "843880",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843880",
+  "dong8": {
+    "84388011": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84388012": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "84388021": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84388022": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "84388091": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84388092": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8438801": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy xát vỏ cà phê"
+        }
+      ]
+    },
+    "8438802": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "chế biến cá",
+            "động vật giáp xác",
+            "động vật thân mềm"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8438801",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8438801: \"Máy xát vỏ cà phê\" ⇒ tenLoai \"Máy xát vỏ cà phê\""
+    },
+    {
+      "ma": "84388011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84388011: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84388012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84388012: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "8438802",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8438802: \"Máy chế biến cá, động vật giáp xác hoặc động vật thân mềm\" ⇒ congDung [\"chế biến cá\", \"động vật giáp xác\", \"động vật thân mềm\"]"
+    },
+    {
+      "ma": "84388021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84388021: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84388022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84388022: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84388091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84388091: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84388092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84388092: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:84388011+84388021:congDung=chế biến cá,hoatDongBangDien=true,tenLoai=Máy xát vỏ cà phê:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:84388012+84388022:congDung=chế biến cá,hoatDongBangDien=false,tenLoai=Máy xát vỏ cà phê:khong-tat-dinh
+    ✗ cong2-chong-lan-truc:8438801:8438802
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho …
+    ✗ cong2-chong-lan-truc:8438802:8438801
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 844331 ===
+--- GÓI ---
+# 844331 — Máy kết hợp hai hoặc nhiều chức năng in, copy hoặc fax, có khả năng kết nối với máy xử lý dữ liệu tự động hoặc kết nối mạng
+
+844331 — Printing, copying, and facsimile machines; machines which perform two or more of the functions of printing, copying or facsimile transmission, capable of connecting to an automatic data processing machine or to a network
+  [8443311] Máy in-copy, in bằng công nghệ in phun
+    84433111 Loại màu
+    84433119 Loại khác  [LK]
+  [8443312] Máy in-copy, in bằng công nghệ laser
+    84433121 Loại màu
+    84433129 Loại khác  [LK]
+  [8443313] Máy in-copy-fax kết hợp
+    84433131 Loại màu
+    84433139 Loại khác  [LK]
+  [8443319] Loại khác
+    84433191 Máy in-copy-scan-fax kết hợp
+    84433199 Loại khác  [LK]
+
+- 8443311 TIEU_DE
+    tieuDe.8443311 [46 ký tự]: 8443311 Máy in-copy, in bằng công nghệ in phun
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng công nghệ in phun"
+- 84433111 DONG8
+    tax.84433111 [25 ký tự]: 84433111 - - - - Loại màu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "màu"
+- 84433119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84433119 [26 ký tự]: 84433119 - - - - Loại khác
+- 8443312 TIEU_DE
+    tieuDe.8443312 [44 ký tự]: 8443312 Máy in-copy, in bằng công nghệ laser
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng công nghệ laser"
+- 84433121 DONG8
+    tax.84433121 [25 ký tự]: 84433121 - - - - Loại màu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "màu"
+- 84433129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84433129 [26 ký tự]: 84433129 - - - - Loại khác
+- 8443313 TIEU_DE
+    tieuDe.8443313 [31 ký tự]: 8443313 Máy in-copy-fax kết hợp
+- 84433131 DONG8
+    tax.84433131 [25 ký tự]: 84433131 - - - - Loại màu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "màu"
+- 84433139 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84433139 [26 ký tự]: 84433139 - - - - Loại khác
+- 8443319 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8443319 [17 ký tự]: 8443319 Loại khác
+- 84433191 DONG8
+    tax.84433191 [45 ký tự]: 84433191 - - - - Máy in-copy-scan-fax kết hợp
+- 84433199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84433199 [26 ký tự]: 84433199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.844331; chú giải: nhom8443.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "844331",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-844331",
+  "dong8": {
+    "84433111": {
+      "dieuKienSo": [
+        {
+          "fact": "mauHienThi",
+          "op": "TRONG",
+          "value": [
+            "MAU"
+          ]
+        }
+      ]
+    },
+    "84433121": {
+      "dieuKienSo": [
+        {
+          "fact": "mauHienThi",
+          "op": "TRONG",
+          "value": [
+            "MAU"
+          ]
+        }
+      ]
+    },
+    "84433131": {
+      "dieuKienSo": [
+        {
+          "fact": "mauHienThi",
+          "op": "TRONG",
+          "value": [
+            "MAU"
+          ]
+        }
+      ]
+    },
+    "84433191": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy in-copy-scan-fax"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8443311": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy in-copy"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "in bằng công nghệ in phun"
+        }
+      ]
+    },
+    "8443312": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy in-copy"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "in bằng công nghệ laser"
+        }
+      ]
+    },
+    "8443313": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy in-copy-fax"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8443311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8443311: \"Máy in-copy, in bằng công nghệ in phun\" ⇒ tenLoai \"Máy in-copy\" + congDung \"in bằng công nghệ in phun\""
+    },
+    {
+      "ma": "84433111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84433111: \"Loại màu\" ⇒ mauHienThi MAU"
+    },
+    {
+      "ma": "8443312",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8443312: \"Máy in-copy, in bằng công nghệ laser\" ⇒ tenLoai \"Máy in-copy\" + congDung \"in bằng công nghệ laser\""
+    },
+    {
+      "ma": "84433121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84433121: \"Loại màu\" ⇒ mauHienThi MAU"
+    },
+    {
+      "ma": "8443313",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8443313: \"Máy in-copy-fax kết hợp\" ⇒ tenLoai \"Máy in-copy-fax\""
+    },
+    {
+      "ma": "84433131",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84433131: \"Loại màu\" ⇒ mauHienThi MAU"
+    },
+    {
+      "ma": "84433191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84433191: \"Máy in-copy-scan-fax kết hợp\" ⇒ tenLoai \"Máy in-copy-scan-fax\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:84433111+84433131:congDung=in bằng công nghệ in phun,mauHienThi=MAU,tenLoai=Máy in-copy-scan-fax:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:84433119+84433139:congDung=in bằng công nghệ in phun,mauHienThi=DON_SAC,tenLoai=Máy in-copy-scan-fax:khong-tat-dinh
+    ✗ cong2-chong-lan:84433121+84433131:congDung=in bằng công nghệ laser,mauHienThi=MAU,tenLoai=Máy in-copy-scan-fax:khong-tat-dinh
+    ✗ cong2-chong-lan:84433129+84433139:congDung=in bằng công nghệ laser,mauHienThi=DON_SAC,tenLoai=Máy in-copy-scan-fax:khong-tat-dinh
+    ✗ cong2-dong-khong-toi-duoc:84433191
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-chong-lan-truc:8443313:8443311,8443312
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho …
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
