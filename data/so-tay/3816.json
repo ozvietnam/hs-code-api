@@ -1,0 +1,141 @@
+{
+ "nhom": "3816",
+ "phamVi": {
+  "text": "Các loại xi măng, vữa, bê tông chịu lửa và các loại vật liệu chịu lửa tương tự, kể cả hỗn hợp dolomite ramming, trừ các sản phẩm thuộc nhóm 38.01.",
+  "nguon": "wco.381600",
+  "trich": "Refractory cements, mortars, concretes and similar compositions, including dolomite ramming mix, other than products of heading 38.01",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_che_pham_vat_lieu_chiu_lua",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3816.nhom",
+   "trich": "Nhóm này bao gồm một số chế phẩm (ví dụ, lớp lót cho lò nung) với thành phần cơ bản là các vật liệu chịu lửa như samốt và đất dinat (dinas earth), corundum đã tán vụn hoặc nghiền, thạch anh dạng bột, đá phấn, dolomite đã nung, với một chất kết dính chịu lửa được thêm vào (ví dụ, natri silicat, magie hoặc kẽm flosilicat).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các bột nhão chứa carbon",
+   "sangNhom": "3801",
+   "nguon": "nhom3816.nhom",
+   "trich": "Nhóm này không bao gồm các bột nhão chứa carbon của nhóm 38.01.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hóa có phải là các bột nhão chứa carbon thuộc nhóm 38.01 không?",
+   "neuCo": "3801",
+   "neuKhong": "3816",
+   "nguon": "nhom3816.nhom",
+   "trich": "Nhóm này không bao gồm các bột nhão chứa carbon của nhóm 38.01.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "38160010",
+   "dieuKien": "Xi măng chịu lửa",
+   "loaiKhac": false,
+   "nguon": "tax.38160010",
+   "trich": "38160010 - Xi măng chịu lửa",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "38160020",
+   "dieuKien": "Hỗn hợp dolomite ramming",
+   "loaiKhac": false,
+   "nguon": "tax.38160020",
+   "trich": "38160020 - Hỗn hợp dolomite ramming",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "38160090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.38160090",
+   "trich": "38160090 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "3816",
+    "truAnhEm": [
+     "38160010",
+     "38160020"
+    ],
+    "truDayDu": [
+     "38160010",
+     "38160020"
+    ],
+    "toTienCoTen": "3816",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3816",
+    "cap": 4,
+    "cha": "38",
+    "tenVi": "Xi măng, vữa, bê tông chịu lửa và các loại vật liệu kết cấu tương tự, kể cả hỗn hợp dolomite ramming, trừ các sản phẩm thuộc nhóm 38.01.",
+    "tenEn": "Refractory cements, mortars, concretes and similar compositions, including dolomite ramming mix, other than products of heading 38.01",
+    "suyRa": false
+   },
+   {
+    "id": "38160010",
+    "cap": 8,
+    "cha": "3816",
+    "tenVi": "Xi măng chịu lửa",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "38160020",
+    "cap": 8,
+    "cha": "3816",
+    "tenVi": "Hỗn hợp dolomite ramming",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "38160090",
+    "cap": 8,
+    "cha": "3816",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3816.nhom",
+  "tax.38160010",
+  "tax.38160020",
+  "tax.38160090",
+  "wco.381600"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:48:34.137Z",
+  "ms": 1125
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

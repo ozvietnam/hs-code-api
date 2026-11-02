@@ -1,0 +1,170 @@
+{
+ "nhom": "8103",
+ "phamVi": {
+  "text": "Tantan và các sản phẩm từ tantan, kể cả phế liệu và mảnh vụn, dạng bột và các sản phẩm khác.",
+  "nguon": "nhom8103.nhom",
+  "trich": "Nhóm này bao gồm Tantan ở tất cả các dạng của nó: dạng bột, khối, phế liệu và mảnh vụn, các thanh, dây, sợi, lá, dải, lá mỏng, dạng hình, các loại ống và các sản phẩm khác (ví dụ: các lò xo và vải kim loại (luới thép)) không được đề cập riêng biệt hơn ở bất cứ nơi nào khác.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_tantan_va_san_pham_cua_tantan",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch81.chuong",
+   "trich": "Chương này chỉ giới hạn bao gồm sau đây: các kim loại cơ bản, các hợp kim của chúng, và các sản phẩm của chúng mà không được đề cập riêng ở bất cứ phần nào trong Danh mục.\n\n(A) Vôn-fram (wolfram) (nhóm 81.01), Molybden (Mo) (nhóm 81.02), Tantan(Ta) nhóm 81.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Quặng tantan và niobite (columbite)",
+   "sangNhom": "2615",
+   "nguon": "nhom8103.nhom",
+   "trich": "Tantan chủ yếu được tách từ các loại quặng Tantan và Niobite (columbite) (nhóm 26.15)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là quặng tantan hoặc niobite (columbite)?",
+   "neuCo": "2615",
+   "neuKhong": "8103",
+   "nguon": "nhom8103.nhom",
+   "trich": "Tantan chủ yếu được tách từ các loại quặng Tantan và Niobite (columbite) (nhóm 26.15)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "81032000",
+   "dieuKien": "Tantan chưa gia công, kể cả thanh và que thu được từ quá trình thiêu kết; bột",
+   "loaiKhac": false,
+   "nguon": "tax.81032000",
+   "trich": "81032000 - Tantan chưa gia công, kể cả thanh và que thu được từ quá trình thiêu kết; bột",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "81033000",
+   "dieuKien": "Phế liệu và mảnh vụn",
+   "loaiKhac": false,
+   "nguon": "tax.81033000",
+   "trich": "81033000 - Phế liệu và mảnh vụn",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "81039100",
+   "dieuKien": "Chén nung (crucible)",
+   "loaiKhac": false,
+   "nguon": "tax.81039100",
+   "trich": "81039100 - - Chén nung (crucible)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "81039900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.81039900",
+   "trich": "81039900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "81039",
+    "truAnhEm": [
+     "81039100"
+    ],
+    "truDayDu": [
+     "81039100",
+     "81032000",
+     "81033000"
+    ],
+    "toTienCoTen": "8103",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8103",
+    "cap": 4,
+    "cha": "81",
+    "tenVi": "Tantan và các sản phẩm làm từ tantan, kể cả phế liệu và mảnh vụn.",
+    "tenEn": "Tantalum; articles thereof, including waste and scrap",
+    "suyRa": false
+   },
+   {
+    "id": "81032000",
+    "cap": 8,
+    "cha": "8103",
+    "tenVi": "Tantan chưa gia công, kể cả thanh và que thu được từ quá trình thiêu kết; bột",
+    "tenEn": "Tantalum; unwrought, including bars and rods obtained simply by sintering, powders",
+    "suyRa": false,
+    "laPhanNhom": "810320"
+   },
+   {
+    "id": "81033000",
+    "cap": 8,
+    "cha": "8103",
+    "tenVi": "Phế liệu và mảnh vụn",
+    "tenEn": "Tantalum; waste and scrap",
+    "suyRa": false,
+    "laPhanNhom": "810330"
+   },
+   {
+    "id": "81039",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8103",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "81039100",
+    "cap": 8,
+    "cha": "81039",
+    "tenVi": "Chén nung (crucible)",
+    "tenEn": "Tantalum; crucibles",
+    "suyRa": false,
+    "laPhanNhom": "810391"
+   },
+   {
+    "id": "81039900",
+    "cap": 8,
+    "cha": "81039",
+    "tenVi": "Loại khác",
+    "tenEn": "Tantalum; articles n.e.c. in heading no. 8103",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "810399"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch81.chuong",
+  "nhom8103.nhom",
+  "tax.81032000",
+  "tax.81033000",
+  "tax.81039100",
+  "tax.81039900"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.614Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

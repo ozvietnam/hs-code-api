@@ -1,0 +1,81 @@
+{
+ "nhom": "2852",
+ "nguoiSoat": "dev-soat-doc-lap-lo089",
+ "luc": "2026-11-02T19:40:00+07:00",
+ "daKiem": 11,
+ "soat": 11,
+ "giu": 7,
+ "sua": 4,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2852 (lô 089, PR #893) — người soạn dev-zcode-mm, người soát độc lập (dev-soat-doc-lap-lo089). Đã đọc TOÀN BỘ khối [nhom2852.nhom] của tmp/so-tay/nguon/2852.txt (5.381 ký tự) và đối chiếu TỪNG mục trong 3 khối phải soát (phamVi · loaiTru · phanBiet). MÁY (kiểm riêng, KHÔNG dựa vào check-so-tay): 11/11 câu trích byte-exact trong đúng khối nguồn; mọi mã đích có trong câu trích; gác từ mức B — mọi từ ≥3 ký tự trong text/dieuKien/hoi có trong câu trích của CHÍNH mục; không câu trích nào cắt trước câu rào; mọi `phanBiet` hỏi đúng vật bị loại trừ, nhánh không = 2852. KẾT QUẢ: 11 mục soát → 7 GIỮ · 4 SỬA · 0 XOÁ. 4 lớp lỗi thật (máy check-so-tay KHÔNG bắt được): (1) loaiTru[0]+phanBiet[0] — BỎ VẾ DẪN \"tự nhiên\" ⇒ điều kiện rộng hơn nguồn VÀ MÂU THUẪN với dòng 8 số 28529020 (\"Thủy ngân sulphua; …\") của CHÍNH lô này ⇒ thủy ngân sunphua nhân tạo bị đẩy nhầm 26.17; (2) loaiTru[2]+phanBiet[2] — điều kiện kết thúc bằng DẤU PHẨY (0/3.780 mục nền nhà) ⇒ câu hỏi đọc lệch \"… kim loại quý, không?\"; (3) loaiTru[3] dài 59 ký tự > trần clip 55 — lúc chạy còn \"…và các kim loại cơ…\", nhưng `phanBiet[3].hoi` (48 ký tự ≤ 110) mang trọn vế nên thông tin KHÔNG mất trong prompt (nền nhà: 40,3 % `loaiTru.dieuKien` vượt trần) ⇒ GIỮ; (4) loaiTru[1] — nguồn ghi \"Thủy ngân (nhóm 28.05 hoặc Chương 30)\": luật 3 không mã hoá được \"Chương N\" nên chỉ lấy 28.05 (đã ghi ở hồ sơ soạn) ⇒ GIỮ, GHI NHẬN cho người duyệt.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích byte-exact trong [nhom2852.nhom]; `text` bám đúng danh từ nguồn, không hẹp hơn không rộng hơn phạm vi nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "BỎ VẾ DẪN \"tự nhiên\" ⇒ ĐIỀU KIỆN RỘNG HƠN NGUỒN, MÂU THUẪN VỚI DÒNG 8 SỐ CÙNG LÔ. Nguồn: \"Thủy ngân sunphua tự nhiên (sunphua thủy ngân, thần sa tự nhiên) bị loại trừ (nhóm 26.17).\" — CHỈ sunphua tự nhiên (thần sa) mới ra 26.17; bản nháp ghi \"Thủy ngân sunphua\" (không có \"tự nhiên\") ⇒ tờ khai khai \"thủy ngân sulphua\" nhân tạo cũng bị đẩy nhầm 26.17, trong khi CHÍNH LÔ này có dòng 28529020 \"Thủy ngân sulphua; …\" (thuộc 2852). Sửa: thêm lại \"tự nhiên\" (nguyên văn trong câu trích).",
+   "sua": {
+    "dieuKien": "Thủy ngân sunphua tự nhiên"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2852.nhom] nêu đích danh 2805 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "sua",
+   "lyDo": "ĐIỀU KIỆN KẾT THÚC BẰNG DẤU PHẨY — 0/3.780 mục `loaiTru` nền nhà có dấu phẩy cuối (đo 02/11/2026). Nguồn: \"(b) Những hỗn hống của kim loại quý, những hỗn hống chứa đồng thời kim loại quý và các kim loại cơ bản (nhóm 28.43)\" — dấu phẩy là dấu ngăn vế, không thuộc điều kiện. Câu hỏi đọc lệch \"… kim loại quý, không?\". Sửa: bỏ dấu phẩy cuối (câu trích GIỮ NGUYÊN).",
+   "sua": {
+    "dieuKien": "Những hỗn hống của kim loại quý"
+   }
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2852.nhom] nêu đích danh 2843 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2852.nhom] nêu đích danh 2853 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải hỏi đúng vật bị loại trừ — theo loaiTru[0]: sunphua TỰ NHIÊN. Trước đó hỏi chung \"Thủy ngân sunphua\" ⇒ tờ khai sunphua nhân tạo trả lời \"có\" ⇒ rơi nhầm 26.17. Đích 26.17 có trong câu trích; nhánh không = 2852 (phần bù của nhánh có).",
+   "sua": {
+    "hoi": "Hàng này là Thủy ngân sunphua tự nhiên không?"
+   }
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Thủy ngân); nhánh có → 2805 (có trong câu trích), nhánh không → 2852 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "sua",
+   "lyDo": "Bỏ dấu phẩy thừa trong câu hỏi (cùng lớp với loaiTru[2]); hỏi đúng vật bị loại trừ, đích 28.43 có trong câu trích, nhánh không = 2852.",
+   "sua": {
+    "hoi": "Hàng này là Những hỗn hống của kim loại quý không?"
+   }
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hỗn hống chứa đồng thời kim loại quý và các kim loại cơ bản); nhánh có → 2843 (có trong câu trích), nhánh không → 2852 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (những hỗn hống của toàn bộ kim loại cơ bản); nhánh có → 2853 (có trong câu trích), nhánh không → 2852 là phần bù của nhánh có. GIỮ NGUYÊN."
+  }
+ ]
+}

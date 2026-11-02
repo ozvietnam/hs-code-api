@@ -1,0 +1,133 @@
+{
+ "nhom": "7218",
+ "phamVi": {
+  "text": "Thép không gỉ ở dạng thỏi đúc hoặc dạng thô khác; bán thành phẩm bằng thép không gỉ.",
+  "nguon": "ch72.chuong",
+  "trich": "Thép không gỉ\n\nLà loại thép hợp kim có hàm lượng carbon không quá 1,2% tính theo khối lượng và crôm từ 10,5% trở lên tính theo khối lượng, có thể chứa hoặc không chứa các nguyên tố khác.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_thep_khong_gi_dang_thoi_hoac_ban_thanh_pham",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch72.chuong",
+   "trich": "Thép không gỉ\n\nLà loại thép hợp kim có hàm lượng carbon không quá 1,2% tính theo khối lượng và crôm từ 10,5% trở lên tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "72181000",
+   "dieuKien": "Ở dạng thỏi đúc và dạng thô khác",
+   "loaiKhac": false,
+   "nguon": "tax.72181000",
+   "trich": "72181000 - Ở dạng thỏi đúc và dạng thô khác",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72189100",
+   "dieuKien": "Có mặt cắt ngang hình chữ nhật (trừ hình vuông)",
+   "loaiKhac": false,
+   "nguon": "tax.72189100",
+   "trich": "72189100 - - Có mặt cắt ngang hình chữ nhật (trừ hình vuông)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72189900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.72189900",
+   "trich": "72189900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "72189",
+    "truAnhEm": [
+     "72189100"
+    ],
+    "truDayDu": [
+     "72189100",
+     "72181000"
+    ],
+    "toTienCoTen": "7218",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7218",
+    "cap": 4,
+    "cha": "72",
+    "tenVi": "Thép không gỉ ở dạng thỏi đúc hoặc dạng thô khác; bán thành phẩm của thép không gỉ.",
+    "tenEn": "Stainless steel in ingots or other primary forms; semi-finished products of stainless steel",
+    "suyRa": false
+   },
+   {
+    "id": "72181000",
+    "cap": 8,
+    "cha": "7218",
+    "tenVi": "Ở dạng thỏi đúc và dạng thô khác",
+    "tenEn": "Steel, stainless; ingots and other primary forms",
+    "suyRa": false,
+    "laPhanNhom": "721810"
+   },
+   {
+    "id": "72189",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "7218",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "72189100",
+    "cap": 8,
+    "cha": "72189",
+    "tenVi": "Có mặt cắt ngang hình chữ nhật (trừ hình vuông)",
+    "tenEn": "Steel, stainless; semi-finished products, of rectangular (other than square) cross-section",
+    "suyRa": false,
+    "laPhanNhom": "721891"
+   },
+   {
+    "id": "72189900",
+    "cap": 8,
+    "cha": "72189",
+    "tenVi": "Loại khác",
+    "tenEn": "Steel, stainless; semi-finished products, other than of rectangular cross-section",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "721899"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch72.chuong",
+  "tax.72181000",
+  "tax.72189100",
+  "tax.72189900"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T10:43:04.915Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 5,
+  "dat": 5,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

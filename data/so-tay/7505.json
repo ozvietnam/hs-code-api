@@ -1,0 +1,193 @@
+{
+ "nhom": "7505",
+ "phamVi": {
+  "text": "Thanh, que, hình và dây bằng niken",
+  "nguon": "ch75.chuong",
+  "trich": "Các sản phẩm thông thường thu được bằng cán, rèn, kéo dãn, ép đùn phôi niken chưa gia công của nhóm 75.02 (nhóm 75.05 và 75.06).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_thanh_que_hinh_va_day_bang_niken",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch75.chuong",
+   "trich": "Các sản phẩm thông thường thu được bằng cán, rèn, kéo dãn, ép đùn phôi niken chưa gia công của nhóm 75.02 (nhóm 75.05 và 75.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Sợi trộn kim loại",
+   "sangNhom": "5605",
+   "nguon": "nhom7505.nhom",
+   "trich": "Sợi trộn kim loại (nhóm 56.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Thanh, que hoặc các dạng hình, đã được gia công để sử dụng làm kết cấu",
+   "sangNhom": "7508",
+   "nguon": "nhom7505.nhom",
+   "trich": "Thanh, que hoặc các dạng hình, đã được gia công để sử dụng làm kết cấu (nhóm 75.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Thanh đã bọc cách điện và dây kể cả dây tráng men",
+   "sangNhom": "8544",
+   "nguon": "nhom7505.nhom",
+   "trich": "Thanh đã bọc cách điện (được hiểu chung là “thanh góp”) và dây (bao gồm cả dây tráng men) (nhóm 85.44).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là sợi trộn kim loại thuộc nhóm 56.05 không?",
+   "neuCo": "5605",
+   "neuKhong": "7505",
+   "nguon": "nhom7505.nhom",
+   "trich": "Sợi trộn kim loại (nhóm 56.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là thanh, que hoặc các dạng hình đã gia công để dùng làm kết cấu thuộc nhóm 75.08 không?",
+   "neuCo": "7508",
+   "neuKhong": "7505",
+   "nguon": "nhom7505.nhom",
+   "trich": "Thanh, que hoặc các dạng hình, đã được gia công để sử dụng làm kết cấu (nhóm 75.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là thanh đã bọc cách điện hoặc dây thuộc nhóm 85.44 không?",
+   "neuCo": "8544",
+   "neuKhong": "7505",
+   "nguon": "nhom7505.nhom",
+   "trich": "Thanh đã bọc cách điện (được hiểu chung là “thanh góp”) và dây (bao gồm cả dây tráng men) (nhóm 85.44).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "75051100",
+   "dieuKien": "Bằng niken, không hợp kim",
+   "loaiKhac": false,
+   "nguon": "tax.75051100",
+   "trich": "75051100 - - Bằng niken, không hợp kim",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "75051200",
+   "dieuKien": "Bằng hợp kim niken",
+   "loaiKhac": false,
+   "nguon": "tax.75051200",
+   "trich": "75051200 - - Bằng hợp kim niken",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "75052100",
+   "dieuKien": "Bằng niken, không hợp kim",
+   "loaiKhac": false,
+   "nguon": "tax.75052100",
+   "trich": "75052100 - - Bằng niken, không hợp kim",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "75052200",
+   "dieuKien": "Bằng hợp kim niken",
+   "loaiKhac": false,
+   "nguon": "tax.75052200",
+   "trich": "75052200 - - Bằng hợp kim niken",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7505",
+    "cap": 4,
+    "cha": "75",
+    "tenVi": "Niken ở dạng thanh, que, hình và dây.",
+    "tenEn": "Nickel; bars, rods, profiles and wire",
+    "suyRa": false
+   },
+   {
+    "id": "75051",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "7505",
+    "tenVi": "Thanh, que và hình",
+    "tenEn": "Bars, rods and profiles",
+    "suyRa": true
+   },
+   {
+    "id": "75051100",
+    "cap": 8,
+    "cha": "75051",
+    "tenVi": "Bằng niken, không hợp kim",
+    "tenEn": "Nickel; bars, rods and profiles, not alloyed",
+    "suyRa": false,
+    "laPhanNhom": "750511"
+   },
+   {
+    "id": "75051200",
+    "cap": 8,
+    "cha": "75051",
+    "tenVi": "Bằng hợp kim niken",
+    "tenEn": "Nickel; bars, rods and profiles, of nickel alloys",
+    "suyRa": false,
+    "laPhanNhom": "750512"
+   },
+   {
+    "id": "75052",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "7505",
+    "tenVi": "Dây",
+    "tenEn": "Wire",
+    "suyRa": true
+   },
+   {
+    "id": "75052100",
+    "cap": 8,
+    "cha": "75052",
+    "tenVi": "Bằng niken, không hợp kim",
+    "tenEn": "Nickel; wire, not alloyed",
+    "suyRa": false,
+    "laPhanNhom": "750521"
+   },
+   {
+    "id": "75052200",
+    "cap": 8,
+    "cha": "75052",
+    "tenVi": "Bằng hợp kim niken",
+    "tenEn": "Nickel; wire, of nickel alloys",
+    "suyRa": false,
+    "laPhanNhom": "750522"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch75.chuong",
+  "nhom7505.nhom",
+  "tax.75051100",
+  "tax.75051200",
+  "tax.75052100",
+  "tax.75052200"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:54:35.798Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 12,
+  "dat": 12,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

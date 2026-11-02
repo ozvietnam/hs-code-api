@@ -1,0 +1,113 @@
+{
+ "nhom": "9016",
+ "phamVi": {
+  "text": "Cân có độ nhạy từ 5cg (50mg) trở lên, có hoặc không có quả cân; và các bộ phận, phụ kiện của chúng.",
+  "nguon": "nhom9016.nhom",
+  "trich": "Nhóm này bao gồm tất cả các loại cân, kể cả cân điện tử, miễn là độ nhạy của chúng là 5cg hoặc chính xác hơn.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "do_nhay_5cg_hoac_chinh_xac_hon",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom9016.nhom",
+   "trich": "độ nhạy của chúng là 5cg hoặc chính xác hơn.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các quả cân ở dạng riêng lẻ",
+   "sangNhom": "8423",
+   "nguon": "nhom9016.nhom",
+   "trich": "còn những quả cân ở dạng riêng lẻ, mà ngay cả nếu được làm bằng kim loại quý, thì bị loại trừ (nhóm 84.23).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Cân có độ nhậy trên 5cg",
+   "sangNhom": "8423",
+   "nguon": "nhom9016.nhom",
+   "trich": "Cân có độ nhậy trên 5cg bị loại trừ (nhóm 84.23).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Chân đế loại một chân, hai chân, ba chân",
+   "sangNhom": "9620",
+   "nguon": "nhom9016.nhom",
+   "trich": "Mặt khác, chân đế loại một chân (monopods), hai chân (bipods), ba chân (tripods) và các sản phẩm tương tự mặc dù được thiết kế riêng biệt cho các máy của nhóm, không được bao gồm trong nhóm này, (nhóm 96.20)”",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là các quả cân ở dạng riêng lẻ hoặc cân có độ nhạy kém hơn 5cg thuộc nhóm 84.23?",
+   "neuCo": "8423",
+   "neuKhong": "9016",
+   "nguon": "nhom9016.nhom",
+   "trich": "còn những quả cân ở dạng riêng lẻ, mà ngay cả nếu được làm bằng kim loại quý, thì bị loại trừ (nhóm 84.23).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là chân đế loại tripod/monopod thuộc nhóm 96.20?",
+   "neuCo": "9620",
+   "neuKhong": "9016",
+   "nguon": "nhom9016.nhom",
+   "trich": "Mặt khác, chân đế loại một chân (monopods), hai chân (bipods), ba chân (tripods) và các sản phẩm tương tự mặc dù được thiết kế riêng biệt cho các máy của nhóm, không được bao gồm trong nhóm này, (nhóm 96.20)”",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "90160000",
+   "dieuKien": "Cân với độ nhậy 5cg (50mg) hoặc chính xác hơn, có hoặc không có quả cân",
+   "loaiKhac": false,
+   "nguon": "tax.90160000",
+   "trich": "90160000 Cân với độ nhậy 5cg (50mg) hoặc chính xác hơn, có hoặc không có quả cân",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9016",
+    "cap": 4,
+    "cha": "90",
+    "tenVi": "Cân với độ nhậy 5cg (50mg) hoặc chính xác hơn, có hoặc không có quả cân.",
+    "tenEn": "Balances; of a sensitivity of 5cg or better, with or without weights",
+    "suyRa": false
+   },
+   {
+    "id": "90160000",
+    "cap": 8,
+    "cha": "9016",
+    "tenVi": "Cân với độ nhậy 5cg (50mg) hoặc chính xác hơn, có hoặc không có quả cân",
+    "tenEn": "Balances; of a sensitivity of 5cg or better, with or without weights",
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom9016.nhom",
+  "tax.90160000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T09:46:41.845Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 8,
+  "loai": 1,
+  "nguonBiCat": []
+ }
+}

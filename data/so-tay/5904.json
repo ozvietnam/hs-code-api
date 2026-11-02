@@ -1,0 +1,129 @@
+{
+ "nhom": "5904",
+ "phamVi": {
+  "text": "Vải sơn lót sàn (linoleum); các loại thảm trải sàn gồm lớp tráng hoặc phủ trên lớp bồi là vật liệu dệt",
+  "nguon": "nhom5904.nhom",
+  "trich": "Vải sơn là loại vải có lớp bồi là vật liệu dệt (thường là vải canvas làm từ sợi đay nhưng thỉnh thoảng cũng được làm bằng bông...) được phủ một mặt bằng chất kết dính đặc bao gồm dầu hạt lanh đã ôxy hóa, nhựa cây và gôm và chất làm đầy (thường là lie (bần) tán nhỏ đôi lúc là mạt cưa hoặc bột gỗ)",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Thảm nền dệt hoặc các sản phẩm khác làm từ lie (bần) kết dính",
+   "sangNhom": "4504",
+   "nguon": "nhom5904.nhom",
+   "trich": "Loại vật liệu này không được nhầm lẫn với loại thảm nền dệt hoặc các sản phẩm khác làm từ lie (bần) kết dính thuộc nhóm 45.04",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Phần lót trong của giày",
+   "sangNhom": "6406",
+   "nguon": "nhom5904.nhom",
+   "trich": "Nhóm này cũng không bao gồm phần lót trong của giày (nhóm 64.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là thảm từ lie kết dính chuyển sang nhóm 45.04 không?",
+   "neuCo": "4504",
+   "neuKhong": "5904",
+   "nguon": "nhom5904.nhom",
+   "trich": "Loại vật liệu này không được nhầm lẫn với loại thảm nền dệt hoặc các sản phẩm khác làm từ lie (bần) kết dính thuộc nhóm 45.04",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là phần lót trong của giày chuyển sang nhóm 64.06 không?",
+   "neuCo": "6406",
+   "neuKhong": "5904",
+   "nguon": "nhom5904.nhom",
+   "trich": "Nhóm này cũng không bao gồm phần lót trong của giày (nhóm 64.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "59041000",
+   "dieuKien": "Vải sơn",
+   "loaiKhac": false,
+   "nguon": "tax.59041000",
+   "trich": "59041000 - Vải sơn",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "59049000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.59049000",
+   "trich": "59049000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5904",
+    "truAnhEm": [
+     "59041000"
+    ],
+    "truDayDu": [
+     "59041000"
+    ],
+    "toTienCoTen": "5904",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5904",
+    "cap": 4,
+    "cha": "59",
+    "tenVi": "Vải sơn, đã hoặc chưa cắt thành hình; các loại trải sàn có một lớp tráng hoặc phủ gắn trên lớp bồi là vật liệu dệt, đã hoặc chưa cắt thành hình.",
+    "tenEn": "Linoleum, whether or not cut to shape; floor coverings consisting of a coating or covering applied on a textile backing, whether or not cut to shape",
+    "suyRa": false
+   },
+   {
+    "id": "59041000",
+    "cap": 8,
+    "cha": "5904",
+    "tenVi": "Vải sơn",
+    "tenEn": "Linoleum, whether or not cut to shape",
+    "suyRa": false,
+    "laPhanNhom": "590410"
+   },
+   {
+    "id": "59049000",
+    "cap": 8,
+    "cha": "5904",
+    "tenVi": "Loại khác",
+    "tenEn": "Textiles floor coverings; consisting of a coating or covering applied on a textile backing, whether or not cut to shape, other than linoleum",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "590490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5904.nhom",
+  "tax.59041000",
+  "tax.59049000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:27:46.131Z",
+  "ms": 6
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan59.phan (46130→25000)"
+  ]
+ }
+}
