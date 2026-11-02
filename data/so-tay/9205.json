@@ -1,0 +1,177 @@
+{
+ "nhom": "9205",
+ "phamVi": {
+  "text": "Nhạc cụ hơi (ví dụ: đàn organ ống có phím, đàn accordion, kèn clarinet, kèn trompet, kèn túi), trừ đàn organ phiên chợ và đàn quay gió của người hát rong trên đường phố.",
+  "nguon": "nhom9205.nhom",
+  "trich": "Nhóm này bao gồm các nhạc cụ hơi không được nêu trong nhóm 92.08 (ví dụ, đàn organ phiên chợ, đàn quay gió của người hát rong trên đường phố, dụng cụ âm thanh phát tín hiệu.v.v..) mặc dù ở một mức độ nào đó chúng cũng có thể được coi là nhạc cụ hơi.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_nhac_cu_hoi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom9205.nhom",
+   "trich": "Nhóm này bao gồm các nhạc cụ hơi không được nêu trong nhóm 92.08",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Tủ đàn ống hoặc hộp đựng đàn không đi kèm",
+   "sangNhom": "9209",
+   "nguon": "nhom9205.nhom",
+   "trich": "Nếu không đi kèm với nhau, thì chúng bị loại trừ (nhóm 92.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Đàn ống, đàn organ trên đường phố không có bàn phím",
+   "sangNhom": "9208",
+   "nguon": "nhom9205.nhom",
+   "trich": "Nhóm này không bao gồm đàn ống, đàn organ trên đường phố và nhạc cụ ống tương tự, không có bàn phím, có thể được điều khiển tự động hoặc bằng tay quay (nhóm 92.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Đàn organ điện tử",
+   "sangNhom": "9207",
+   "nguon": "nhom9205.nhom",
+   "trich": "Đàn organ điện tử được phân loại vào nhóm 92.07.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là tủ đàn ống hoặc hộp đựng đàn rời?",
+   "neuCo": "9209",
+   "neuKhong": "9205",
+   "nguon": "nhom9205.nhom",
+   "trich": "Nếu không đi kèm với nhau, thì chúng bị loại trừ (nhóm 92.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là đàn organ đường phố không bàn phím?",
+   "neuCo": "9208",
+   "neuKhong": "9205",
+   "nguon": "nhom9205.nhom",
+   "trich": "Nhóm này không bao gồm đàn ống, đàn organ trên đường phố và nhạc cụ ống tương tự, không có bàn phím, có thể được điều khiển tự động hoặc bằng tay quay (nhóm 92.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là đàn organ điện tử?",
+   "neuCo": "9207",
+   "neuKhong": "9205",
+   "nguon": "nhom9205.nhom",
+   "trich": "Đàn organ điện tử được phân loại vào nhóm 92.07.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "92051000",
+   "dieuKien": "Các loại kèn đồng",
+   "loaiKhac": false,
+   "nguon": "tax.92051000",
+   "trich": "92051000 - Các loại kèn đồng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "92059010",
+   "dieuKien": "Các loại đàn organ ống có phím; đàn đạp hơi (harmonium) và loại nhạc cụ có phím tương tự có bộ phận lưỡi gà không bằng kim loại",
+   "loaiKhac": false,
+   "nguon": "tax.92059010",
+   "trich": "92059010 - - Các loại đàn organ ống có phím; đàn đạp hơi (harmonium) và loại nhạc cụ có phím tương tự có bộ phận lưỡi gà không bằng kim loại",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "92059090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.92059090",
+   "trich": "92059090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "920590",
+    "truAnhEm": [
+     "92059010"
+    ],
+    "truDayDu": [
+     "92059010"
+    ],
+    "toTienCoTen": "920590",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9205",
+    "cap": 4,
+    "cha": "92",
+    "tenVi": "Nhạc cụ hơi (ví dụ, các loại đàn organ ống có phím, đàn accordion, clarinet, trumpet, kèn túi), trừ các loại đàn organ phiên chợ, đàn quay gió của người hát rong trên đường phố.",
+    "tenEn": "Musical instruments; wind (e.g. keyboard pipe organs, accordions, clarinets, trumpets, bagpipes), other than fairground organs and mechanical street organs",
+    "suyRa": false
+   },
+   {
+    "id": "92051000",
+    "cap": 8,
+    "cha": "9205",
+    "tenVi": "Các loại kèn đồng",
+    "tenEn": "Musical instruments; brass-wind (e.g. trumpets), other than fairground organs and mechanical street organs",
+    "suyRa": false,
+    "laPhanNhom": "920510"
+   },
+   {
+    "id": "920590",
+    "cap": 6,
+    "cha": "9205",
+    "tenVi": "Loại khác",
+    "tenEn": "Musical instruments; wind, other than brass, (eg. clarinet, bagpipes, pipe organs), other than fairground organs and mechanical street organs",
+    "suyRa": false
+   },
+   {
+    "id": "92059010",
+    "cap": 8,
+    "cha": "920590",
+    "tenVi": "Các loại đàn organ ống có phím; đàn đạp hơi (harmonium) và loại nhạc cụ có phím tương tự có bộ phận lưỡi gà không bằng kim loại",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "92059090",
+    "cap": 8,
+    "cha": "920590",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom9205.nhom",
+  "tax.92051000",
+  "tax.92059010",
+  "tax.92059090"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:25:42.797Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 11,
+  "dat": 11,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

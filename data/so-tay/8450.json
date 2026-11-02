@@ -1,0 +1,394 @@
+{
+ "nhom": "8450",
+ "phamVi": {
+  "text": "Máy giặt gia đình hoặc trong hiệu giặt, kể cả máy có cả chức năng giặt và sấy, và các bộ phận của chúng.",
+  "nguon": "nhom8450.nhom",
+  "trich": "Nhóm này bao gồm máy giặt gia đình hoặc trong hiệu giặt (dùng hoặc không dùng điện và ở bất kỳ trọng lượng nào), chúng thường được sử dụng trong gia đình, trong tiệm giặt ủi, bệnh viện v...v... để làm sạch vải lanh và các sản phẩm hoàn thiện khác... Nhóm này cũng bao gồm máy có cả chức năng giặt và sấy.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_may_giat_gia_dinh_hoac_hieu_giat",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8450.nhom",
+   "trich": "Nhóm này bao gồm máy giặt gia đình hoặc trong hiệu giặt (dùng hoặc không dùng điện và ở bất kỳ trọng lượng nào)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Máy giặt khô",
+   "sangNhom": "8451",
+   "nguon": "nhom8450.nhom",
+   "trich": "Tuy nhiên, máy giặt khô thuộc nhóm 84.51.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là máy giặt khô không?",
+   "neuCo": "8451",
+   "neuKhong": "8450",
+   "nguon": "nhom8450.nhom",
+   "trich": "Tuy nhiên, máy giặt khô thuộc nhóm 84.51.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "845011",
+   "fact": "suc_chua_vai_kho",
+   "op": "<=",
+   "value": 10,
+   "donVi": "kg",
+   "nguon": "wco.845011",
+   "trich": "845011 Washing machines; household or laundry-type, fully-automatic, (of a dry linen capacity not exceeding 10kg)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "845020",
+   "fact": "suc_chua_vai_kho",
+   "op": ">",
+   "value": 10,
+   "donVi": "kg",
+   "nguon": "wco.845020",
+   "trich": "845020 Washing machines; household or laundry-type, of a dry linen capacity exceeding 10kg",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "84501110",
+   "dieuKien": "Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+   "loaiKhac": false,
+   "nguon": "tax.84501110",
+   "trich": "84501110 - - - Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84501190",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84501190",
+   "trich": "84501190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "845011",
+    "truAnhEm": [
+     "84501110"
+    ],
+    "truDayDu": [
+     "84501110"
+    ],
+    "toTienCoTen": "845011",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84501210",
+   "dieuKien": "Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+   "loaiKhac": false,
+   "nguon": "tax.84501210",
+   "trich": "84501210 - - - Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84501290",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84501290",
+   "trich": "84501290 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "845012",
+    "truAnhEm": [
+     "84501210"
+    ],
+    "truDayDu": [
+     "84501210"
+    ],
+    "toTienCoTen": "845012",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84501911",
+   "dieuKien": "Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+   "loaiKhac": false,
+   "nguon": "tax.84501911",
+   "trich": "84501911 - - - - Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84501919",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84501919",
+   "trich": "84501919 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8450191",
+    "truAnhEm": [
+     "84501911"
+    ],
+    "truDayDu": [
+     "84501911"
+    ],
+    "toTienCoTen": "845019",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84501991",
+   "dieuKien": "Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+   "loaiKhac": false,
+   "nguon": "tax.84501991",
+   "trich": "84501991 - - - - Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84501999",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84501999",
+   "trich": "84501999 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8450199",
+    "truAnhEm": [
+     "84501991"
+    ],
+    "truDayDu": [
+     "84501991",
+     "8450191"
+    ],
+    "toTienCoTen": "845019",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84502000",
+   "dieuKien": "Máy giặt, có sức chứa trên 10 kg vải khô một lần giặt",
+   "loaiKhac": false,
+   "nguon": "tax.84502000",
+   "trich": "84502000 - Máy giặt, có sức chứa trên 10 kg vải khô một lần giặt",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84509010",
+   "dieuKien": "Của máy thuộc phân nhóm 8450.20.00",
+   "loaiKhac": false,
+   "nguon": "tax.84509010",
+   "trich": "84509010 - - Của máy thuộc phân nhóm 8450.20.00",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84509020",
+   "dieuKien": "Của máy thuộc phân nhóm 8450.11, 8450.12 hoặc 8450.19",
+   "loaiKhac": false,
+   "nguon": "tax.84509020",
+   "trich": "84509020 - - Của máy thuộc phân nhóm 8450.11, 8450.12 hoặc 8450.19",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8450",
+    "cap": 4,
+    "cha": "84",
+    "tenVi": "Máy giặt gia đình hoặc trong hiệu giặt, kể cả máy giặt có chức năng sấy khô (+).",
+    "tenEn": "Household or laundry-type washing machines; including machines which both wash and dry",
+    "suyRa": false
+   },
+   {
+    "id": "84501",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8450",
+    "tenVi": "Máy giặt, có sức chứa không quá 10 kg vải khô một lần giặt",
+    "tenEn": "Machines, each of a dry linen capacity not exceeding 10 kg",
+    "suyRa": true
+   },
+   {
+    "id": "845011",
+    "cap": 6,
+    "cha": "84501",
+    "tenVi": "Máy tự động hoàn toàn",
+    "tenEn": "Washing machines; household or laundry-type, fully-automatic, (of a dry linen capacity not exceeding 10kg)",
+    "suyRa": false
+   },
+   {
+    "id": "84501110",
+    "cap": 8,
+    "cha": "845011",
+    "tenVi": "Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84501190",
+    "cap": 8,
+    "cha": "845011",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "845012",
+    "cap": 6,
+    "cha": "84501",
+    "tenVi": "Máy giặt khác, có chức năng sấy ly tâm",
+    "tenEn": "Washing machines; household or laundry-type, with built-in centrifugal drier, (not fully-automatic), of a dry linen capacity not exceeding 10kg",
+    "suyRa": false
+   },
+   {
+    "id": "84501210",
+    "cap": 8,
+    "cha": "845012",
+    "tenVi": "Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84501290",
+    "cap": 8,
+    "cha": "845012",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "845019",
+    "cap": 6,
+    "cha": "84501",
+    "tenVi": "Loại khác",
+    "tenEn": "Washing machines; household or laundry-type, not fully-automatic, without built-in centrifugal drier, of a dry linen capacity not exceeding 10kg",
+    "suyRa": false
+   },
+   {
+    "id": "8450191",
+    "cap": "TIEU_DE_QG",
+    "cha": "845019",
+    "tenVi": "Hoạt động bằng điện",
+    "tenEn": "Electrically operated",
+    "suyRa": true
+   },
+   {
+    "id": "84501911",
+    "cap": 8,
+    "cha": "8450191",
+    "tenVi": "Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84501919",
+    "cap": 8,
+    "cha": "8450191",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8450199",
+    "cap": "TIEU_DE_QG",
+    "cha": "845019",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "84501991",
+    "cap": 8,
+    "cha": "8450199",
+    "tenVi": "Loại có sức chứa không quá 6 kg vải khô một lần giặt",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84501999",
+    "cap": 8,
+    "cha": "8450199",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "84502000",
+    "cap": 8,
+    "cha": "8450",
+    "tenVi": "Máy giặt, có sức chứa trên 10 kg vải khô một lần giặt",
+    "tenEn": "Washing machines; household or laundry-type, of a dry linen capacity exceeding 10kg",
+    "suyRa": false,
+    "laPhanNhom": "845020"
+   },
+   {
+    "id": "845090",
+    "cap": 6,
+    "cha": "8450",
+    "tenVi": "Bộ phận",
+    "tenEn": "Washing machines; parts for household or laundry-type",
+    "suyRa": false
+   },
+   {
+    "id": "84509010",
+    "cap": 8,
+    "cha": "845090",
+    "tenVi": "Của máy thuộc phân nhóm 8450.20.00",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84509020",
+    "cap": 8,
+    "cha": "845090",
+    "tenVi": "Của máy thuộc phân nhóm 8450.11, 8450.12 hoặc 8450.19",
+    "tenEn": null,
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8450.nhom",
+  "tax.84501110",
+  "tax.84501190",
+  "tax.84501210",
+  "tax.84501290",
+  "tax.84501911",
+  "tax.84501919",
+  "tax.84501991",
+  "tax.84501999",
+  "tax.84502000",
+  "tax.84509010",
+  "tax.84509020",
+  "wco.845011",
+  "wco.845020"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T09:30:59.822Z",
+  "ms": 11
+ },
+ "kiemTra": {
+  "tong": 17,
+  "dat": 17,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

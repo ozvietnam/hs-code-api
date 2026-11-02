@@ -1,0 +1,124 @@
+{
+ "nhom": "8603",
+ "phamVi": {
+  "text": "Toa xe chở khách, toa xe hàng và toa xe hành lý loại tự hành dùng cho đường sắt hoặc tàu điện, trừ các loại thuộc nhóm 86.04.",
+  "nguon": "nhom8603.nhom",
+  "trich": "Toa xe khách tự hành của đường sắt hoặc đường tàu điện, toa xe hàng và toa xe hành lý, khác với các đầu máy xe lửa, ngoài việc được trang bị một bộ phận sinh công, chúng cũng được thiết kế để chuyên chở hành khách hoặc hàng hóa.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_toa_xe_duong_sat_hoac_tau_dien_tu_hanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch86.chuong",
+   "trich": "toa xe hay toa tàu điện và ô tô chạy trên đường ray đã được gắn động cơ (nhóm 86.01 đến 86.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Xe buýt đường bộ được chuyển đổi thành ô tô ray",
+   "sangNhom": "8702",
+   "nguon": "nhom8603.nhom",
+   "trich": "nhóm này loại trừ các xe buýt đường bộ được chuyển đổi thành ô tô ray đơn giản bằng cách thay đổi bánh xe và khóa hệ thống lái, động cơ còn lại không thay đổi (nhóm 87.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là xe buýt đường bộ được chuyển đổi thành ô tô ray?",
+   "neuCo": "8702",
+   "neuKhong": "8603",
+   "nguon": "nhom8603.nhom",
+   "trich": "nhóm này loại trừ các xe buýt đường bộ được chuyển đổi thành ô tô ray đơn giản bằng cách thay đổi bánh xe và khóa hệ thống lái, động cơ còn lại không thay đổi (nhóm 87.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "86031000",
+   "dieuKien": "Loại chạy bằng nguồn điện bên ngoài",
+   "loaiKhac": false,
+   "nguon": "tax.86031000",
+   "trich": "86031000 - Loại chạy bằng nguồn điện bên ngoài",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "86039000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.86039000",
+   "trich": "86039000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8603",
+    "truAnhEm": [
+     "86031000"
+    ],
+    "truDayDu": [
+     "86031000"
+    ],
+    "toTienCoTen": "8603",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8603",
+    "cap": 4,
+    "cha": "86",
+    "tenVi": "Toa xe khách, toa xe hàng và toa xe hành lý, loại tự hành dùng trên đường sắt hoặc đường tàu điện, trừ loại thuộc nhóm 86.04",
+    "tenEn": "Railway or tramway coaches, vans and trucks; self-propelled tenders, other than those of heading no. 8604",
+    "suyRa": false
+   },
+   {
+    "id": "86031000",
+    "cap": 8,
+    "cha": "8603",
+    "tenVi": "Loại chạy bằng nguồn điện bên ngoài",
+    "tenEn": "Railway or tramway coaches, vans and trucks; self-propelled, powered from an external source of electricity (excluding those of heading no. 8604)",
+    "suyRa": false,
+    "laPhanNhom": "860310"
+   },
+   {
+    "id": "86039000",
+    "cap": 8,
+    "cha": "8603",
+    "tenVi": "Loại khác",
+    "tenEn": "Railway or tramway coaches, vans and trucks; self-propelled, powered other than from an external source of electricity (excluding those of heading no. 8604)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "860390"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch86.chuong",
+  "nhom8603.nhom",
+  "tax.86031000",
+  "tax.86039000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.800Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
