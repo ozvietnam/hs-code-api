@@ -12396,3 +12396,11 @@ Tất cả `dieuKien` đều dựng **từ chính câu trích của mục** (aud
 | 2835 `loaiTru[2]` | "canxi phosphat và canxi nhôm phosphat tự nhiên, apatit" | "(a) Canxi phosphat tự nhiên, apatit và canxi nhôm phosphat tự nhiên" | **ĐẢO THỨ TỰ** để "tự nhiên" phủ cả hai; không bỏ mục nào |
 
 Ngoài ra `cay.tenDien.tenVi` (5 mục) là **bản dịch** tên WCO tiếng Anh (mẫu nhà 2811/281119/281129) — không phải trích; `tieuChi6[].value` (28 mục) là **bản dịch** tên WCO (mẫu nhà lô 081/084).
+
+### Bước 11 — Nộp
+
+- Commit `f864a1f4` — `data(so-tay): lô 086 — 6 nhóm 2830–2835, 153/153 mục (#365)`.
+- Commit `aeab8dbc` — `docs(so-tay): ghi PR #843 cho lô 086 (#365)`.
+- Đẩy nhánh `so-tay/lo-086` lên `origin`.
+- **Mở PR #843** — https://github.com/ozvietnam/hs-code-api/pull/843 (9 tệp: 6 `data/so-tay/*.json` + `bao-cao/lo-086.json` + dòng CSV + `TIEN-TRINH.md`; **KHÔNG** commit `tmp/`).
+- **KHÔNG merge PR #843** — chờ soát độc lập.
