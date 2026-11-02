@@ -1,0 +1,108 @@
+{
+ "nhom": "5203",
+ "phamVi": {
+  "text": "Xơ bông, đã chải thô hoặc chải kỹ.",
+  "nguon": "nhom5203.nhom",
+  "trich": "Nhóm này bao gồm xơ bông (kể cả nguyên liệu bông tái chế hay phế liệu bông khác) mà đã được chải thô hay chải kỹ, đã được hay chưa được chuẩn bị cho kéo sợi.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_xo_bong_da_chai_tho_hoac_chai_ky",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5203.nhom",
+   "trich": "Nhóm này bao gồm xơ bông (kể cả nguyên liệu bông tái chế hay phế liệu bông khác) mà đã được chải thô hay chải kỹ, đã được hay chưa được chuẩn bị cho kéo sợi.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Mền xơ",
+   "sangNhom": "5601",
+   "nguon": "nhom5203.nhom",
+   "trich": "còn mền xơ thì được phân loại vào nhóm 56.01 hoặc, nếu đã được tẩm thuốc hay đóng gói để bán lẻ cho những mục đích y tế hoặc phẫu thuật thì thuộc nhóm 30.05.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Mền xơ đã được tẩm thuốc hay đóng gói để bán lẻ cho những mục đích y tế hoặc phẫu thuật",
+   "sangNhom": "3005",
+   "nguon": "nhom5203.nhom",
+   "trich": "nếu đã được tẩm thuốc hay đóng gói để bán lẻ cho những mục đích y tế hoặc phẫu thuật thì thuộc nhóm 30.05.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là mền xơ thuộc nhóm 56.01?",
+   "neuCo": "5601",
+   "neuKhong": "5203",
+   "nguon": "nhom5203.nhom",
+   "trich": "còn mền xơ thì được phân loại vào nhóm 56.01 hoặc, nếu đã được tẩm thuốc hay đóng gói để bán lẻ cho những mục đích y tế hoặc phẫu thuật thì thuộc nhóm 30.05.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là mền xơ đã được tẩm thuốc hay đóng gói để bán lẻ cho mục đích y tế hoặc phẫu thuật thuộc nhóm 30.05?",
+   "neuCo": "3005",
+   "neuKhong": "5203",
+   "nguon": "nhom5203.nhom",
+   "trich": "nếu đã được tẩm thuốc hay đóng gói để bán lẻ cho những mục đích y tế hoặc phẫu thuật thì thuộc nhóm 30.05.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "52030000",
+   "dieuKien": "Xơ bông, chải thô hoặc chải kỹ",
+   "loaiKhac": false,
+   "nguon": "tax.52030000",
+   "trich": "52030000 Xơ bông, chải thô hoặc chải kỹ",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5203",
+    "cap": 4,
+    "cha": "52",
+    "tenVi": "Xơ bông, chải thô hoặc chải kỹ.",
+    "tenEn": "Cotton, carded or combed",
+    "suyRa": false
+   },
+   {
+    "id": "52030000",
+    "cap": 8,
+    "cha": "5203",
+    "tenVi": "Xơ bông, chải thô hoặc chải kỹ",
+    "tenEn": "Cotton; carded or combed",
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5203.nhom",
+  "tax.52030000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:16:22.173Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan52.phan (46130→25000)"
+  ]
+ }
+}
