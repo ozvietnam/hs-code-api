@@ -31,3 +31,17 @@ Không đọc `data/bench/*`, `data/oz-export/*`, `data/oz-gold-final.jsonl` (xe
 
 - Thợ **không tự duyệt, không tự merge** PR của mình.
 - Người soát là một phiên **khác** phiên soạn, độc lập, dùng [`SOAT-RANH-GIOI.md`](SOAT-RANH-GIOI.md). Duyệt và merge do Claude.
+
+## 5. Runner chuẩn `nhan-viec.sh` (duyệt 02/11 — bớt lỗi cơ khí)
+
+Thợ chỉ soạn spec; phần còn lại chạy một lệnh (worktree + npm install riêng + nhận việc →
+test exit-code đúng + chặn tệp ngoài quy định + PR đúng mẫu + dọn dẹp):
+
+```bash
+bash scripts/nhan-viec.sh mo  <pn6> <số issue>   # mở
+# …soạn spec trong worktree theo QUY-TRINH-SO-HOA.md…
+bash scripts/nhan-viec.sh nop <pn6> <số issue>   # nộp (PR; DỪNG tự draft)
+```
+
+Trước khi nhận việc lớn: xem bảng khoá còn thiếu `de-xuat-khoa-lat-2.md` (sinh bởi
+`node scripts/quet-khoa-lat-2.mjs`) — PN6 nằm trong bảng ⇒ cân nhắc để Claude duyệt khoá @2 trước.
