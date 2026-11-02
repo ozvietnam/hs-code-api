@@ -9,6 +9,8 @@
 Nhóm của lô: **2824, 2825, 2826, 2827, 2828, 2829** (Chương 28 — hóa chất vô cơ).
 Kết quả: **128/128 mục đạt (100 %)** — 6 nhóm, 0 mục rớt, 0 mục bị máy loại.
 
+PR: **#842** (nhánh `so-tay/lo-085`) — **KHÔNG merge**, chờ người soát độc lập đổi nhãn `nguonLoai` sang `NGUOI_DUYET`.
+
 Cấu trúc: `phamVi` 6 · `dieuKienVao` 0 · `loaiTru` 27 · `phanBiet` 27 · `tieuChi6` 31 · `dong8` 37 = **128 mục**.
 
 ## 0. Bước đọc bắt buộc
