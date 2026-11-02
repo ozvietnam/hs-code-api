@@ -1,0 +1,1170 @@
+VÒNG SỬA. Dưới đây là 6 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 850132 ===
+--- GÓI ---
+# 850132 — Công suất trên 750 W nhưng không quá 75 kW
+
+850132 — Electric motors and generators; DC, of an output exceeding 750W but not exceeding 75kW
+  [8501322] Công suất trên 750 W nhưng không quá 37,5 kW
+    85013221 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    85013224 Động cơ dùng cho xe của Chương 87
+    85013225 Động cơ khác
+    85013226 Máy phát điện
+  [8501323] Công suất trên 37,5 kW nhưng không quá 75 kW
+    85013231 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+    85013232 Động cơ khác
+    85013233 Máy phát điện
+
+- 8501322 TIEU_DE
+    tieuDe.8501322 [52 ký tự]: 8501322 Công suất trên 750 W nhưng không quá 37,5 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 750 W nhưng không quá 37,5 kW"
+- 85013221 DONG8
+    tax.85013221 [96 ký tự]: 85013221 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+- 85013224 DONG8
+    tax.85013224 [50 ký tự]: 85013224 - - - - Động cơ dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85013225 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85013225 [29 ký tự]: 85013225 - - - - Động cơ khác
+- 85013226 DONG8
+    tax.85013226 [30 ký tự]: 85013226 - - - - Máy phát điện
+- 8501323 TIEU_DE
+    tieuDe.8501323 [52 ký tự]: 8501323 Công suất trên 37,5 kW nhưng không quá 75 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 37,5 kW nhưng không quá 75 kW"
+- 85013231 DONG8
+    tax.85013231 [82 ký tự]: 85013231 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+    vế phải phủ (cổng 5): [GIỚI HẠN] "loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50"
+- 85013232 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85013232 [29 ký tự]: 85013232 - - - - Động cơ khác
+- 85013233 DONG8
+    tax.85013233 [30 ký tự]: 85013233 - - - - Máy phát điện
+
+Nguồn cấp phân nhóm: wco.850132; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850132",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850132",
+  "dong8": {
+    "85013221": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ]
+    },
+    "85013224": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 87"
+        }
+      ]
+    },
+    "85013225": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        }
+      ],
+      "phanConLai": [
+        "85013221",
+        "85013224"
+      ]
+    },
+    "85013226": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phát điện"
+        }
+      ]
+    },
+    "85013231": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50"
+          ]
+        }
+      ]
+    },
+    "85013232": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        }
+      ],
+      "phanConLai": [
+        "85013231"
+      ]
+    },
+    "85013233": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phát điện"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8501322": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 750,
+          "donVi": "W"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 37.5,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8501323": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 37.5,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 75,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8501322",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501322: \"Công suất trên 750 W nhưng không quá 37,5 kW\" ⇒ congSuat > 750 W, congSuat <= 37.5 kW"
+    },
+    {
+      "ma": "85013221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013221: \"Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ tenLoai Động cơ, dungCho nở dải mã"
+    },
+    {
+      "ma": "85013224",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013224: \"Động cơ dùng cho xe của Chương 87\" ⇒ tenLoai Động cơ, dungCho \"Chương 87\""
+    },
+    {
+      "ma": "85013225",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013225: \"Động cơ khác\" ⇒ tenLoai Động cơ, phanConLai phủ định 85013221 và 85013224"
+    },
+    {
+      "ma": "85013226",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013226: \"Máy phát điện\" ⇒ tenLoai Máy phát điện"
+    },
+    {
+      "ma": "8501323",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501323: \"Công suất trên 37,5 kW nhưng không quá 75 kW\" ⇒ congSuat > 37.5 kW, congSuat <= 75 kW"
+    },
+    {
+      "ma": "85013231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013231: \"Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50\" ⇒ tenLoai Động cơ, dungCho nở dải mã"
+    },
+    {
+      "ma": "85013232",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013232: \"Động cơ khác\" ⇒ tenLoai Động cơ, phanConLai phủ định 85013231"
+    },
+    {
+      "ma": "85013233",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013233: \"Máy phát điện\" ⇒ tenLoai Máy phát điện"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-khong-phu-kin:850132:congSuat=749.99925
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+    ✗ cong1-khong-phu-kin:8501322:congSuat=750.00075,dungCho=84.15,tenLoai=ẑẑẑ
+    ✗ cong1-khong-phu-kin:8501323:congSuat=37500.0375,dungCho=84.15,tenLoai=ẑẑẑ
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 850152 ===
+--- GÓI ---
+# 850152 — Công suất trên 750 W nhưng không quá 75 kW
+
+850152 — Electric motors; AC motors, multi-phase, of an output exceeding 750W but not exceeding 75kW
+  [8501521] Công suất không quá 1 kW
+    85015211 Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    85015212 Loại dùng cho xe của Chương 87
+    85015219 Loại khác  [LK]
+  [8501522] Công suất trên 1 kW nhưng không quá 37,5 kW
+    85015221 Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    85015222 Loại dùng cho xe của Chương 87
+    85015229 Loại khác  [LK]
+  [8501523] Công suất trên 37,5 kW nhưng không quá 75 kW
+    85015231 Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+    85015232 Loại dùng cho xe của Chương 87
+    85015239 Loại khác  [LK]
+
+- 8501521 TIEU_DE
+    tieuDe.8501521 [32 ký tự]: 8501521 Công suất không quá 1 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 1 kW"
+- 85015211 DONG8
+    tax.85015211 [88 ký tự]: 85015211 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+- 85015212 DONG8
+    tax.85015212 [47 ký tự]: 85015212 - - - - Loại dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85015219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85015219 [26 ký tự]: 85015219 - - - - Loại khác
+- 8501522 TIEU_DE
+    tieuDe.8501522 [51 ký tự]: 8501522 Công suất trên 1 kW nhưng không quá 37,5 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 1 kW nhưng không quá 37,5 kW"
+- 85015221 DONG8
+    tax.85015221 [88 ký tự]: 85015221 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16"
+- 85015222 DONG8
+    tax.85015222 [47 ký tự]: 85015222 - - - - Loại dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85015229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85015229 [26 ký tự]: 85015229 - - - - Loại khác
+- 8501523 TIEU_DE
+    tieuDe.8501523 [52 ký tự]: 8501523 Công suất trên 37,5 kW nhưng không quá 75 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 37,5 kW nhưng không quá 75 kW"
+- 85015231 DONG8
+    tax.85015231 [74 ký tự]: 85015231 - - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50"
+- 85015232 DONG8
+    tax.85015232 [47 ký tự]: 85015232 - - - - Loại dùng cho xe của Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe của Chương 87"
+- 85015239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85015239 [26 ký tự]: 85015239 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850152; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850152",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850152",
+  "dong8": {
+    "85015211": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ]
+    },
+    "85015212": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 87"
+        }
+      ]
+    },
+    "85015221": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ]
+    },
+    "85015222": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 87"
+        }
+      ]
+    },
+    "85015231": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50"
+          ]
+        }
+      ]
+    },
+    "85015232": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 87"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8501521": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 1,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8501522": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 37.5,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8501523": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 37.5,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 75,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8501521",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501521: \"Công suất không quá 1 kW\" ⇒ congSuat <= 1 kW"
+    },
+    {
+      "ma": "85015211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85015211: \"Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ dungCho nở mã HS"
+    },
+    {
+      "ma": "85015212",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85015212: \"Loại dùng cho xe của Chương 87\" ⇒ dungCho \"Chương 87\""
+    },
+    {
+      "ma": "8501522",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501522: \"Công suất trên 1 kW nhưng không quá 37,5 kW\" ⇒ congSuat > 1 kW, congSuat <= 37.5 kW"
+    },
+    {
+      "ma": "85015221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85015221: \"Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ dungCho nở mã HS"
+    },
+    {
+      "ma": "85015222",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85015222: \"Loại dùng cho xe của Chương 87\" ⇒ dungCho \"Chương 87\""
+    },
+    {
+      "ma": "8501523",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501523: \"Công suất trên 37,5 kW nhưng không quá 75 kW\" ⇒ congSuat > 37.5 kW, congSuat <= 75 kW"
+    },
+    {
+      "ma": "85015231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85015231: \"Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50\" ⇒ dungCho nở mã HS"
+    },
+    {
+      "ma": "85015232",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85015232: \"Loại dùng cho xe của Chương 87\" ⇒ dungCho \"Chương 87\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-khong-phu-kin:850152:congSuat=75000.075
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 850431 ===
+--- GÓI ---
+# 850431 — Có công suất danh định không quá 1 kVA
+
+850431 — Electrical transformers; n.e.c. in item no. 8504.2, having a power handling capacity not exceeding 1kVA
+  [8504311] Máy biến áp đo lường
+    85043111 Điện áp từ 110 kV trở lên
+    85043112 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+    85043113 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+    85043119 Loại khác  [LK]
+  [8504312] Máy biến dòng đo lường
+    [850431~r14985] Dùng cho đường dây có điện áp từ 110 kV trở lên  (tầng không mã, biểu thuế r14985, gạch 4)
+      85043121 Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)  (gạch 5)
+      85043122 Loại khác  [LK]  (gạch 5)
+    85043123 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+    85043124 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+    85043129 Loại khác  [LK]
+  85043130 Máy biến áp quét về (biến áp tần số quét ngược) (SEN)
+  85043140 Máy biến điện trung tần
+  [8504319] Loại khác
+    85043191 Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+    85043192 Biến áp thích ứng khác (SEN)
+    85043193 Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)
+    85043199 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    850431~r14985 (gạch 4) "Dùng cho đường dây có điện áp từ 110 kV trở lên:" — dòng dưới: 85043121, 85043122
+
+- 8504311 TIEU_DE
+    tieuDe.8504311 [28 ký tự]: 8504311 Máy biến áp đo lường
+- 85043111 DONG8
+    tax.85043111 [42 ký tự]: 85043111 - - - - Điện áp từ 110 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 110 kV trở lên"
+- 85043112 DONG8
+    tax.85043112 [60 ký tự]: 85043112 - - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 66 kV trở lên, nhưng dưới 110 kV"
+- 85043113 DONG8
+    tax.85043113 [58 ký tự]: 85043113 - - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 1 kV trở lên, nhưng dưới 66 kV"
+- 85043119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043119 [26 ký tự]: 85043119 - - - - Loại khác
+- 8504312 TIEU_DE
+    tieuDe.8504312 [30 ký tự]: 8504312 Máy biến dòng đo lường
+- 850431~r14985 TIEU_DE
+    tieuDe.850431~r14985 [61 ký tự]: 850431~r14985 Dùng cho đường dây có điện áp từ 110 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho đường dây" · [GIỚI HẠN] "có điện áp từ 110 kV trở lên"
+- 85043121 DONG8
+    tax.85043121 [95 ký tự]: 85043121 - - - - - Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)
+    sen.85043121 [696 ký tự]: MÁY BIẾN DÒNG DẠNG VÒNG DÙNG CHO ĐƯỜNG DÂY CÓ ĐIỆN ÁP KHÔNG QUÁ 220 kV Trong kỹ thuật điện, máy biến dòng được sử dụng để đo dòng điện. Máy biến dòng cùng với máy biến áp (máy biến thế), được biết đến như là các máy biến điện dùng cho thiết bị đo lường. Khi dòng điện trong mạch quá cao để nối trực tiếp đến thiết bị đo lường, máy biến dòng sẽ cung cấp dòng điện đã giảm với tỷ lệ chính xác cho các thiết bị đo và ghi. Máy biến dòng cũng cách ly các thiết bị đo khỏi điện áp rất cao trong mạch cần kiểm soát. Máy biến dòng cũng được sử dụng phổ biến việc đo và trong các rơle bảo vệ trong công nghiệp điện. Một ví dụ điển hình của máy biến dòng đo dải đơn điện áp thấp là máy biến dòng dạng vòng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho đường dây" · [GIỚI HẠN] "có điện áp không quá 220 kV"
+- 85043122 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043122 [28 ký tự]: 85043122 - - - - - Loại khác
+- 85043123 DONG8
+    tax.85043123 [60 ký tự]: 85043123 - - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 66 kV trở lên, nhưng dưới 110 kV"
+- 85043124 DONG8
+    tax.85043124 [58 ký tự]: 85043124 - - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Điện áp từ 1 kV trở lên, nhưng dưới 66 kV"
+- 85043129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043129 [26 ký tự]: 85043129 - - - - Loại khác
+- 85043130 DONG8
+    tax.85043130 [68 ký tự]: 85043130 - - - Máy biến áp quét về (biến áp tần số quét ngược) (SEN)
+    sen.85043130 [331 ký tự]: MÁY BIẾN ÁP QUÉT VỀ (BIẾN ÁP TẦN SỐ QUÉT NGƯỢC) Biến áp quét về được sử dụng trong thiết bị thu truyền hình để cung cấp điện áp hồi lưu theo chiều ngang, mức điện áp cao hơn cho điện cực dương thứ hai của đèn hình, và điện áp mảnh cho chỉnh lưu cao áp. Biến áp quét về cũng được gọi là biến áp đầu ra ngang hay biến áp quét ngang.
+- 85043140 DONG8
+    tax.85043140 [38 ký tự]: 85043140 - - - Máy biến điện trung tần
+- 8504319 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8504319 [17 ký tự]: 8504319 Loại khác
+- 85043191 DONG8
+    tax.85043191 [89 ký tự]: 85043191 - - - - Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự"
+- 85043192 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85043192 [45 ký tự]: 85043192 - - - - Biến áp thích ứng khác (SEN)
+    sen.85043192 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043193 DONG8
+    tax.85043193 [130 ký tự]: 85043193 - - - - Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)
+    sen.85043193 [515 ký tự]: MÁY BIẾN ÁP TĂNG/GIẢM TỪNG NẤC (STEP UP/DOWN TRANSFORMERS); MÁY ĐIỀU CHỈNH ĐIỆN ÁP TRƯỢT (SLIDE REGULATORS) Máy biến áp tăng/giảm từng nấc và máy điều chỉnh điện áp trượt là các máy biến áp có đầu vào không ổn định trong các dải điện áp nhất định và có đầu ra là các điện áp nhất định mà có thể được điều chỉnh bằng tay. Máy ổn áp là các máy biến áp có đầu vào không ổn định trong các dải điện áp nhất định và có đầu ra là các điện áp cố định mà có thể được điều chỉnh bằng thiết bị điện tử kết nối với điện áp vào.
+- 85043199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043199 [26 ký tự]: 85043199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850431; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850431",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850431",
+  "dong8": {
+    "85043111": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85043112": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85043113": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 1,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85043121": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến dòng dạng vòng"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 220,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85043123": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85043124": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 1,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85043130": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy biến áp quét về",
+            "biến áp tần số quét ngược"
+          ]
+        }
+      ]
+    },
+    "85043140": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến điện trung tần"
+        }
+      ]
+    },
+    "85043191": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đồ chơi",
+            "mô hình thu nhỏ",
+            "mô hình giải trí"
+          ]
+        }
+      ]
+    },
+    "85043192": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ],
+      "phanConLai": [
+        "85043191"
+      ]
+    },
+    "85043193": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy biến áp tăng/giảm từng nấc",
+            "Step up/down transformers",
+            "máy điều chỉnh điện áp trượt",
+            "slide regulators"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8504311": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến áp đo lường"
+        }
+      ]
+    },
+    "8504312": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến dòng đo lường"
+        }
+      ]
+    },
+    "850431~r14985": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8504311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504311: \"Máy biến áp đo lường\" ⇒ tenLoai"
+    },
+    {
+      "ma": "85043111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043111: \"Điện áp từ 110 kV trở lên\" ⇒ dienAp >= 110 kV"
+    },
+    {
+      "ma": "85043112",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043112: \"Điện áp từ 66 kV trở lên, nhưng dưới 110 kV\" ⇒ dienAp >= 66 kV, dienAp < 110 kV"
+    },
+    {
+      "ma": "85043113",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043113: \"Điện áp từ 1 kV trở lên, nhưng dưới 66 kV\" ⇒ dienAp >= 1 kV, dienAp < 66 kV"
+    },
+    {
+      "ma": "8504312",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504312: \"Máy biến dòng đo lường\" ⇒ tenLoai"
+    },
+    {
+      "ma": "850431~r14985",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.850431~r14985: \"Dùng cho đường dây có điện áp từ 110 kV trở lên\" ⇒ dienAp >= 110 kV"
+    },
+    {
+      "ma": "85043121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043121: \"Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)\" ⇒ tenLoai \"Máy biến dòng dạng vòng\", dienAp <= 220 kV"
+    },
+    {
+      "ma": "85043123",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043123: \"Điện áp từ 66 kV trở lên, nhưng dưới 110 kV\" ⇒ dienAp >= 66 kV, dienAp < 110 kV"
+    },
+    {
+      "ma": "85043124",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043124: \"Điện áp từ 1 kV trở lên, nhưng dưới 66 kV\" ⇒ dienAp >= 1 kV, dienAp < 66 kV"
+    },
+    {
+      "ma": "85043130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043130: \"Máy biến áp quét về (biến áp tần số quét ngược) (SEN)\" ⇒ tenLoai"
+    },
+    {
+      "ma": "85043140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043140: \"Máy biến điện trung tần\" ⇒ tenLoai"
+    },
+    {
+      "ma": "85043191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043191: \"Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự\" ⇒ dungCho mảng"
+    },
+    {
+      "ma": "85043192",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043192: \"Biến áp thích ứng khác (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\", phanConLai phủ định 85043191"
+    },
+    {
+      "ma": "85043193",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043193: \"Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)\" ⇒ tenLoai mảng"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-ve-gioi-han-bi-bo:850431~r14985:Dùng cho đường dây
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+    ✗ cong2-chong-lan:85043191+85043193:dungCho=đồ chơi,tenLoai=Máy biến áp tăng/giảm từng nấc:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan-truc:85043191:85043193
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho …
+    ✗ cong2-chong-lan-truc:85043193:85043191
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+
+=== PN6 850433 ===
+--- GÓI ---
+# 850433 — Có công suất danh định trên 16 kVA nhưng không quá 500 kVA
+
+850433 — Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 16kVA but not exceeding 500kVA
+  [8504331] Có đầu điện áp cao từ 66 kV trở lên
+    85043311 Biến áp thích ứng (SEN)
+    85043319 Loại khác (SEN)  [LK]
+  [8504339] Loại khác
+    85043391 Biến áp thích ứng (SEN)
+    85043399 Loại khác  [LK]
+
+- 8504331 TIEU_DE
+    tieuDe.8504331 [43 ký tự]: 8504331 Có đầu điện áp cao từ 66 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đầu" · [GIỚI HẠN] "điện áp cao từ 66 kV trở lên"
+- 85043311 DONG8
+    tax.85043311 [40 ký tự]: 85043311 - - - - Biến áp thích ứng (SEN)
+    sen.85043311 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043319 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043319 [32 ký tự]: 85043319 - - - - Loại khác (SEN)
+    sen.85043319 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 8504339 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8504339 [17 ký tự]: 8504339 Loại khác
+- 85043391 DONG8
+    tax.85043391 [40 ký tự]: 85043391 - - - - Biến áp thích ứng (SEN)
+    sen.85043391 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043399 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043399 [26 ký tự]: 85043399 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850433; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850433",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850433",
+  "dong8": {
+    "85043311": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ]
+    },
+    "85043391": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8504331": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8504331",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504331: \"Có đầu điện áp cao từ 66 kV trở lên\" ⇒ dienAp >= 66 kV"
+    },
+    {
+      "ma": "85043311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043311: \"Biến áp thích ứng (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\""
+    },
+    {
+      "ma": "85043391",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043391: \"Biến áp thích ứng (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-ve-gioi-han-bi-bo:8504331:Có đầu
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 850790 ===
+--- GÓI ---
+# 850790 — Bộ phận
+
+850790 — Electric accumulators; parts n.e.c. in heading no. 8507
+  [8507901] Các bản cực
+    85079011 Của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99
+    85079012 Dùng cho máy bay
+    85079019 Loại khác  [LK]
+  [8507909] Loại khác
+    85079091 Dùng cho máy bay
+    85079092 Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)
+    85079093 Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99  [LK có điều kiện]
+    85079099 Loại khác  [LK]
+
+- 8507901 TIEU_DE
+    tieuDe.8507901 [19 ký tự]: 8507901 Các bản cực
+- 85079011 DONG8
+    tax.85079011 [118 ký tự]: 85079011 - - - Của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99"
+- 85079012 DONG8
+    tax.85079012 [31 ký tự]: 85079012 - - - Dùng cho máy bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy bay"
+- 85079019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85079019 [24 ký tự]: 85079019 - - - Loại khác
+- 8507909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8507909 [17 ký tự]: 8507909 Loại khác
+- 85079091 DONG8
+    tax.85079091 [31 ký tự]: 85079091 - - - Dùng cho máy bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy bay"
+- 85079092 DONG8
+    tax.85079092 [96 ký tự]: 85079092 - - - Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để sử dụng, làm từ mọi vật liệu" · [GIỚI HẠN] "trừ poly(vinyl clorua)"
+- 85079093 DONG8
+    tax.85079093 [129 ký tự]: 85079093 - - - Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99"
+- 85079099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85079099 [24 ký tự]: 85079099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850790; chú giải: nhom8507.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850790",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850790",
+  "dong8": {
+    "85079011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8507.10.92",
+            "8507.10.95",
+            "8507.10.96",
+            "8507.10.97",
+            "8507.10.98",
+            "8507.10.99"
+          ]
+        }
+      ]
+    },
+    "85079012": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy bay"
+        }
+      ]
+    },
+    "85079091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy bay"
+        }
+      ]
+    },
+    "85079092": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vách ngăn ắc qui"
+        }
+      ]
+    },
+    "85079093": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8507.10.92",
+            "8507.10.95",
+            "8507.10.96",
+            "8507.10.97",
+            "8507.10.98",
+            "8507.10.99"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8507901": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bản cực"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8507901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8507901: \"Các bản cực\" ⇒ tenLoai TEN_LOAI \"bản cực\""
+    },
+    {
+      "ma": "85079011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079011: \"Của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99\" ⇒ dungCho CONG_DUNG danh sách mã"
+    },
+    {
+      "ma": "85079012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079012: \"Dùng cho máy bay\" ⇒ dungCho CONG_DUNG \"máy bay\""
+    },
+    {
+      "ma": "85079091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079091: \"Dùng cho máy bay\" ⇒ dungCho CONG_DUNG \"máy bay\""
+    },
+    {
+      "ma": "85079092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079092: \"Vách ngăn ắc qui\" ⇒ tenLoai TEN_LOAI \"Vách ngăn ắc qui\""
+    },
+    {
+      "ma": "85079092",
+      "loai": "BO_VE",
+      "ve": "để sử dụng, làm từ mọi vật liệu",
+      "lyDo": "Cụm 'sẵn sàng để sử dụng, làm từ mọi vật liệu' là tình trạng thành phẩm và cho phép mọi chất liệu nên không tạo điều kiện giới hạn"
+    },
+    {
+      "ma": "85079092",
+      "loai": "BO_VE",
+      "ve": "trừ poly(vinyl clorua)",
+      "lyDo": "Loại trừ chất liệu PVC cụ thể, trong tu-vung@2 không có phân loại chi tiết hạt nhựa PVC để phủ định riêng"
+    },
+    {
+      "ma": "85079093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079093: \"của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99\" ⇒ dungCho CONG_DUNG danh sách mã"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:85079091+85079092:dungCho=máy bay,tenLoai=Vách ngăn ắc qui:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-dong-khong-toi-duoc:85079093
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-chong-lan-truc:85079091:85079092
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho …
+    ✗ cong2-chong-lan-truc:85079092:85079091
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 851610 ===
+--- GÓI ---
+# 851610 — Dụng cụ điện đun nước nóng tức thời hoặc đun nước nóng có dự trữ và đun nước nóng kiểu nhúng
+
+851610 — Heaters; electric, instantaneous or storage water and immersion heaters
+  [8516101] Loại đun nước nóng tức thời hoặc đun nước nóng có dự trữ
+    85161011 Bình thủy điện (water dispenser) đun nước nóng, loại gia dụng (SEN)
+    85161019 Loại khác  [LK]
+  85161030 Loại đun nước nóng kiểu nhúng
+
+- 8516101 TIEU_DE
+    tieuDe.8516101 [64 ký tự]: 8516101 Loại đun nước nóng tức thời hoặc đun nước nóng có dự trữ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "đun nước nóng tức thời hoặc đun nước nóng" · [GIỚI HẠN] "có dự trữ"
+- 85161011 DONG8
+    tax.85161011 [82 ký tự]: 85161011 - - - Bình thủy điện (water dispenser) đun nước nóng, loại gia dụng (SEN)
+    sen.85161011 [392 ký tự]: BÌNH THỦY ĐIỆN (WATER DISPENSER) ĐUN NƯỚC NÓNG, LOẠI GIA DỤNG Bình thủy điện đun nước nóng, loại gia dụng là một loại thiết bị dùng để cung cấp nước uống nóng và nước uống ở nhiệt độ bình thường từ bình chứa nước. Thiết bị này không được trang bị bơm hoặc bất kỳ thiết bị cơ khí cung cấp chất lỏng tương tự nào khác, mà chỉ đơn thuần cấp nước bởi trọng lực thông qua 02 van cơ khí riêng biệt.
+- 85161019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85161019 [24 ký tự]: 85161019 - - - Loại khác
+- 85161030 DONG8
+    tax.85161030 [42 ký tự]: 85161030 - - Loại đun nước nóng kiểu nhúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "đun nước nóng kiểu nhúng"
+
+Nguồn cấp phân nhóm: wco.851610; chú giải: nhom8516.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "851610",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-851610",
+  "dong8": {
+    "85161011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bình thủy điện"
+        },
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        }
+      ]
+    },
+    "85161030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "kiểu nhúng"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8516101": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tức thời",
+            "có dự trữ"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8516101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8516101: \"Loại đun nước nóng tức thời hoặc đun nước nóng có dự trữ\" ⇒ tenLoai TEN_LOAI [\"tức thời\", \"có dự trữ\"]"
+    },
+    {
+      "ma": "85161011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85161011: \"Bình thủy điện ... loại gia dụng\" ⇒ tenLoai TEN_LOAI \"Bình thủy điện\" + phamViSuDung TRONG [\"GIA_DINH\"]"
+    },
+    {
+      "ma": "85161030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85161030: \"Loại đun nước nóng kiểu nhúng\" ⇒ tenLoai TEN_LOAI \"kiểu nhúng\" (đối chiếu với tiêu đề 8516101)"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-khong-phu-kin:851610:tenLoai=Bình thủy điện
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
