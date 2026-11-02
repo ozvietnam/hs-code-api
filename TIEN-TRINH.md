@@ -4,10 +4,62 @@
 
 ---
 
+# LÔ 088 — SOÁT ĐỘC LẬP (phiên `dev-zcode-mm`, 02/11/2026)
+
+Nhóm: **2843, 2844, 2845, 2846, 2847, 2849** (PR #846). Vai **SOÁT** (khác người soạn).
+Kết quả: **45 mục trong 5 khối phải soát → 2 SỬA · 2 TÁCH (thành 4) · 0 XOÁ · 41 giữ nguyên**; sổ tay sau soát **99/99 mục (100 %)**.
+
+## 1. Quy trình đã làm
+
+- Đọc `docs/giao-viec/so-tay/SOAT-LO.md` + `LUAT-CHUNG.md` (11 luật) trước khi code.
+- Đọc TOÀN BỘ khối `[nhom284X.nhom]` của 6 nhóm trong `tmp/so-tay/nguon/` (và `[ch28.chuong]` của 2845) — không đọc lướt.
+- Đối chiếu **từng** `phamVi` · `boPhan` · `dieuKienVao` · `loaiTru` · `phanBiet` với nguồn: câu trích có thật không, và có NÓI ĐÚNG điều mục khẳng định không.
+- Hồ sơ soát: `review/2843.json` … `review/2849.json` — **mỗi mục một dòng** (kể cả mục giữ nguyên) kèm lý do.
+- Áp: `scripts/apply-review-lo088.mjs` (2 pha: `TARGET=raw` áp thayDoi → `TARGET=data` chỉ đổi `nguonLoai`).
+
+```
+TARGET=raw  APPLY=1 node scripts/apply-review-lo088.mjs
+node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw
+node scripts/build-so-tay.mjs --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" \
+  --bao-cao=data/so-tay/bao-cao/lo-088.json --nhom=2843,2844,2845,2846,2847,2849
+TARGET=data APPLY=1 node scripts/apply-review-lo088.mjs
+```
+
+**MỚI so với lô 067:** `chen` có thêm trường **`viTri`** (vị trí chèn) — lô 088 tách câu loại trừ "cacbua silic" của 2849 thành 2 vế, phải chèn mục mới **ngay sau vế cũ** (và để mục mới của `phanBiet` không rơi vào vị trí bị runtime cắt `slice(0, 4)`).
+
+## 2. Hai lỗi thật (máy KHÔNG bắt được)
+
+| # | Nhóm / mục | Lỗi | Cách sửa |
+|---|---|---|---|
+| 1 | 2847 `phamVi` | `text` bỏ vế **"Nhóm này cũng bao gồm"** ⇒ biến vế BỔ SUNG thành **toàn bộ phạm vi nhóm** — nhóm 2847 bị đọc thành "chỉ hydro peroxit làm rắn với ure". Biểu thuế nói ngược: tiêu đề nhóm *"Hydro petroxit, đã hoặc chưa làm rắn bằng urê"*, dòng 28470010 = *"- Dạng lỏng"* (H2O2 thường) | sửa `text` thêm "bao gồm"; giữ `trich`/`nguon` |
+| 2 | 2849 `loaiTru[0]` + `phanBiet[0]` | Một câu loại trừ có **hai** vế điều kiện + **hai** đích; bản nháp gộp nhãn 166 ký tự (đích `6804\|6805`) và câu hỏi **bỏ hẳn** vế *"cho bồi nguyên liệu dệt, giấy hoặc bìa giấy hoặc cho các vật liệu khác"* ⇒ **mọi** bột/hạt SiC bị đẩy sang 68.05 | tách thành 2 `loaiTru` (6805 / 6804) + 2 `phanBiet` (6805 / 6804), mỗi mục đủ điều kiện của vế mình — đúng luật *"nhãn nhiều đích ⇒ mỗi đích một mục"* |
+
+## 3. GHI NHẬN cho người duyệt (không tự sửa)
+
+1. **2843 `loaiTru[1]`** nhãn 145 ký tự ⇒ clip 55 mất "proustite"; **nhưng `phanBiet[1]` (97 ký tự) có đủ 5 khoáng** ⇒ thông tin không mất trong prompt ⇒ giữ (nền nhà 42,7 % nhãn vượt 55).
+2. **2844 `loaiTru[1]`** bỏ vế giới hạn *"sẵn sàng được đưa vào các lò phản ứng hạt nhân…"* ⇒ nhãn rộng hơn nguồn **đọc đứng**; `phanBiet[1]` (104 ký tự) mang nguyên vẹn vế giới hạn ⇒ giữ.
+3. **2845 `dieuKienVao[0]`** chỉ phủ nhánh **đồng vị**, chưa phủ **hợp chất** của chúng (nước nặng 28.45.10…) — điều kiện boolean chỉ là gợi ý trong prompt (cổng máy chỉ kích hoạt với ngưỡng số) và `phamVi` đã phủ cả nhóm ⇒ giữ.
+4. **Trần `s.phanBiet.slice(0, 4)`** (`lib/so-tay-gates.js`) — 2849 nay có 5 `phanBiet` ⇒ mục thứ 5 không hiện ở dòng *"Câu hỏi phân biệt"* (thông tin vẫn còn ở dòng *"LOẠI TRỪ"*). 55 nhóm sẵn có đã vượt 4 ⇒ **nâng trần 4 → 6 là thay đổi riêng ở `lib/`**, không thuộc lô dữ liệu này.
+
+## 4. Kết quả kiểm (sau soát)
+
+| Lệnh | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | **99/99 mục, 0 mục không kiểm được nguồn** |
+| `check-trich-nguyen-van.mjs` | **OK — 99 mục nguyên văn tuyệt đối trong đúng khối nguồn** |
+| `scripts/verify-review-lo088.mjs` | **sạch** — trích byte-exact · gác từ mức B (mọi từ ≥3 ký tự trong `text`/`dieuKien`/`hoi` có trong câu trích của chính mục đó) · trần clip `hoi` ≤110 · `text` ≤220 |
+| `npm run so-tay:check` | **662 nhóm, 16.220 mục, 0 mục không kiểm được nguồn** |
+| `node scripts/check-cay.mjs --nhom=<6 nhóm> --chi-tiet` | **6/6 nhóm đủ, 0 lỗi lệch cây** |
+| `npm test` | **ALL TESTS PASSED** — 90/90 + 21/21 |
+
+`nguonLoai`: 47 mục thuộc 5 khối đã soát → **`NGUOI_DUYET`**; `tieuChi6`/`dong8`/`cay` giữ `AI_DA_KIEM` (luật 11).
+
+---
+
 # LÔ 088 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 02/11/2026)
 
 Nhóm của lô: **2843, 2844, 2845, 2846, 2847, 2849** (Chương 28 — hóa chất vô cơ: kim loại quý dạng keo · nguyên tố & đồng vị phóng xạ · đồng vị bền vững · kim loại đất hiếm/ytri/scandi · hydro peroxit · cacbua).
-Kết quả: **97/97 mục đạt (100 %)** — 6 nhóm, 0 mục rớt, 0 mục bị máy loại.
+Kết quả: **97/97 mục đạt (100 %)** — 6 nhóm, 0 mục rớt, 0 mục bị máy loại. *(Sau vòng soát độc lập: 99/99 — xem mục "LÔ 088 — SOÁT ĐỘC LẬP" ở trên.)*
 
 ## 0. Bước đọc bắt buộc
 
@@ -120,7 +172,7 @@ Ngoại lệ của lớp kiểm: gloss mẫu nhà *"Loại khác: phần còn l�
 
 ### PR
 
-Lô 088 mở PR **#846** (`data(so-tay): lô 088 — 6 nhóm 2843–2849, 97/97 mục`) — **KHÔNG merge**, chờ vòng soát độc lập. CSV dòng 088: `dang-lam, dev-zcode-mm, 846`.
+Lô 088 mở PR **#846** — **KHÔNG merge**. *(Đã qua vòng soát độc lập 02/11/2026: PR body + tiêu đề cập nhật 99/99 mục; xem mục "LÔ 088 — SOÁT ĐỘC LẬP" ở trên.)* CSV dòng 088: `dang-lam, dev-zcode-mm, 846` — **người soát độc lập KHÔNG tự cập nhật CSV** (việc của người duyệt).
 
 ---
 

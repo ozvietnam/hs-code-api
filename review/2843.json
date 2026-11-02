@@ -1,0 +1,21 @@
+{
+ "nhom": "2843",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-11-02T15:45:00+07:00",
+ "daKiem": 9,
+ "soat": 9,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2843 (lô 088, PR #846) — người soạn dev-zcode-mm, người soát độc lập. Đã đọc TOÀN BỘ khối [nhom2843.nhom] (139 dòng, 3 phần A/B/C) của tmp/so-tay/nguon/2843.txt và đối chiếu TỪNG mục trong tmp/so-tay/raw/2843.json. MÁY: 9/9 câu trích byte-exact trong đúng khối nguồn (kiểm riêng, không dựa vào check-so-tay), tất cả ≤ 300 ký tự, không câu nào cắt trước câu rào. KẾT QUẢ: 9/9 mục GIỮ NGUYÊN, 0 sửa, 0 xoá.\n\nCơ sở giữ từng mục: (1) phamVi — chép đúng 3 tiêu đề (A) KIM LOẠI QUÝ DẠNG KEO / (B) HỢP CHẤT VÔ CƠ HOẶC HỮU CƠ CỦA KIM LOẠI QUÝ, ĐÃ HOẶC CHƯA XÁC ĐỊNH VỀ MẶT HÓA HỌC / (C) HỖN HỐNG CỦA KIM LOẠI QUÝ; phạm vi hẹp đúng bằng nhóm. (2) loaiTru[0]+[1] — hai câu loại trừ bạc tự nhiên (Cerargyrite, bạc sừng; argenite/pyragyrite/stephanite/polybasite/proustite) đích 26.16; số 26.16 CÓ trong câu trích, đúng luật 3. (3) loaiTru[2] — hỗn hống hoàn toàn của kim loại cơ bản → 28.53; biểu thuế xác nhận 28.53 có 'amalgams, not precious metal amalgams' nên đích đúng. (4) loaiTru[3] — hợp chất thuỷ ngân trừ hỗn hống → 28.52; tiêu đề biểu thuế 28.52 là 'Các hợp chất vô cơ hoặc hữu cơ của thủy ngân, đã hoặc chưa xác định về mặt hóa học, trừ hỗn hống' — nhãn của mục khớp CHÍNH XÁC tiêu đề đích, không đảo chiều. (5) 4 phanBiet — mỗi câu hỏi hỏi đúng vật bị loại trừ, nhánh 'có' đi tới đúng nhóm trích và nhánh 'không' là chính nhóm này; KHÔNG có phanBiet nào suy nhánh 'không' từ cấu trúc anh em (luật SOAT-LO).\n\nGHI NHẬN (không sửa, để người duyệt xem): (a) loaiTru[1].dieuKien dài 145 ký tự > trần clip 55 của runtime (lib/so-tay-gates.js) nên lúc chạy chỉ còn 'bạc sulphua tự nhiên (argenite), bạc và antimon sulphua…' — mất vế proustite. NHƯNG phanBiet[1].hoi (97 ký tự ≤ 110) có đủ cả 5 khoáng nên thông tin KHÔNG mất trong prompt; nền nhà 42,7 % loaiTru.dieuKien vượt trần nên không sửa. (b) loaiTru[0].dieuKien đổi vị trí 'Cerargyrite' (nguồn: 'Cerargyrite (hoặc bạc sừng), clorua và iodua của bạc tự nhiên') thành ngoặc ở cuối — không thêm chữ, không đổi tập hàng, không đổi đích nên giữ. (c) Không có mục nào mờ: không câu trích nào thiếu, không câu nào cắt trước 'tùy từng trường hợp'/'thường…'.",
+ "thayDoi": [
+  {"index": "phamVi", "hanhDong": "giu", "lyDo": "Chép đúng 3 tiêu đề phần A/B/C của nhóm, đủ cả 3 vế; câu trích nguyên văn byte-exact."},
+  {"index": "loaiTru[0]", "hanhDong": "giu", "lyDo": "Câu 'Cerargyrite (hoặc bạc sừng), clorua và iodua của bạc tự nhiên, được loại trừ (nhóm 26.16)' nêu đích danh 26.16; nhãn bỏ ngoặc chú thích (hoặc bạc sừng) là đúng văn phong nhà."},
+  {"index": "loaiTru[1]", "hanhDong": "giu", "lyDo": "Câu loại trừ bạc sulphua tự nhiên nguyên văn, có (nhóm 26.16); nhãn giữ nguyên cả 3 nhóm khoáng."},
+  {"index": "loaiTru[2]", "hanhDong": "giu", "lyDo": "'hỗn hống hoàn toàn của kim loại cơ bản' → 28.53; số 28.53 có trong trích, đích khớp tiêu đề biểu thuế."},
+  {"index": "loaiTru[3]", "hanhDong": "giu", "lyDo": "'hợp chất thuỷ ngân, trừ hỗn hống' → 28.52; khớp CHÍNH XÁC tiêu đề nhóm 28.52 của biểu thuế, không đảo chiều."},
+  {"index": "phanBiet[0]", "hanhDong": "giu", "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Cerargyrite/bạc sừng, clorua và iodua bạc tự nhiên); có→26.16, không→28.43; mã đích có trong trích."},
+  {"index": "phanBiet[1]", "hanhDong": "giu", "lyDo": "Câu hỏi liệt kê đủ 5 khoáng bạc sulphua tự nhiên, 97 ký tự (≤ trần 110) nên không bị cắt; nhánh có/không đúng."},
+  {"index": "phanBiet[2]", "hanhDong": "giu", "lyDo": "Hỏi đúng hỗn hống hoàn toàn của kim loại cơ bản; có→28.53, không→28.43."},
+  {"index": "phanBiet[3]", "hanhDong": "giu", "lyDo": "Hỏi đúng hợp chất thuỷ ngân (trừ hỗn hống); có→28.52, không→28.43."}
+ ]
+}

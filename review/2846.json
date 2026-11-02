@@ -1,0 +1,20 @@
+{
+ "nhom": "2846",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-11-02T15:45:00+07:00",
+ "daKiem": 8,
+ "soat": 8,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2846 (lô 088, PR #846) — người soạn dev-zcode-mm, người soát độc lập. Đã đọc TOÀN BỘ khối [nhom2846.nhom] (31 dòng) của tmp/so-tay/nguon/2846.txt và đối chiếu từng mục trong tmp/so-tay/raw/2846.json. MÁY: 8/8 câu trích byte-exact trong đúng khối nguồn, tất cả ≤ 300 ký tự. KẾT QUẢ: 8/8 mục GIỮ NGUYÊN, 0 sửa, 0 xoá.\n\nCơ sở giữ: (1) phamVi — nối đúng câu mở nhóm 'Nhóm này bao gồm các hợp chất hữu cơ hay vô cơ của ytri, seandi hoặc của các kim loại đất hiếm thuộc nhóm 28.05' với câu 'Nhóm này cũng bao gồm các muối kép hoặc phức của chúng với các kim loại khác'; không bỏ vế nào. (2) dieuKienVao[0] — điều kiện vào nhóm bám đúng câu mở. (3) loaiTru[0] — các hỗn hợp muối europi/samari với oxalat và clorua xeri + sunphat xeri → 38.24; câu trích cắt bằng dấu lược '…' nhưng phần bị lược chỉ là LÝ DO ('vì những ví dụ này không phải là các hợp chất bắt nguồn trực tiếp từ hỗn hợp của các nguyên tố, nhưng chúng là hỗn hợp của các hợp chất, điều đó có thể xem là đủ được tạo ra có chủ định cho mục đích đặc biệt và vì vậy'), phần giữ lại vẫn có CHỦ THỂ (hỗn hợp nào) và ĐÍCH (38.24). (4) loaiTru[1] — hợp chất tự nhiên của kim loại đất hiếm → 25.30 và 26.12; CẢ HAI số có trong câu trích. (5) loaiTru[2] — muối và hợp chất của prometi → 28.44; số 28.44 có trong trích. (6) 3 phanBiet — nhánh 'không' đều là chính 28.46, không suy từ cấu trúc anh em; mã đích mọi mục đều có trong câu trích.\n\nGHI NHẬN (không sửa, để người duyệt xem): (a) loaiTru[1].dieuKien dài 62 ký tự > trần clip 55 nên lúc chạy mất đuôi '(xenotim, m…' — tức mất chữ 'monazit'. NHƯNG phanBiet[1].hoi (87 ký tự ≤ 110) vẫn hỏi đủ 'ví dụ xenotim, hoặc monazit', và dòng loại trừ hiện đích 25.30/26.12 nên người đọc vẫn thấy đủ; đây cũng chính là điểm đã được người soạn sửa ở vòng soạn (ghi nhận trong bài học lô 088). (b) loaiTru[0].dieuKien dài 104 ký tự, clip còn 'hỗn hợp của các nitrat europi và samari với muối oxalat…' — mất nhánh 'clorua xeri và sunphat xeri', nhưng phanBiet[0].hoi (103 ký tự) hỏi đủ CẢ HAI nhánh nên không mất thông tin ở runtime. (c) loaiTru[2].dieuKien 57 ký tự, clip mất đuôi 'của prome…' — vẫn đủ nhận diện (muối và hợp chất của prometi), phanBiet[2] hỏi đủ. (d) Không có mục nào mờ: không câu trích nào thiếu, không câu nào cắt trước câu rào.",
+ "thayDoi": [
+  {"index": "phamVi", "hanhDong": "giu", "lyDo": "Nối đúng câu mở nhóm với câu 'cũng bao gồm các muối kép hoặc phức'; đủ hai vế của phạm vi."},
+  {"index": "dieuKienVao[0]", "hanhDong": "giu", "lyDo": "Điều kiện vào nhóm bám đúng câu mở, không thêm chữ ngoài trích."},
+  {"index": "loaiTru[0]", "hanhDong": "giu", "lyDo": "Dấu lược chỉ cắt LÝ DO, giữ lại chủ thể và đích 38.24; phanBiet[0] hỏi đủ cả hai nhánh."},
+  {"index": "loaiTru[1]", "hanhDong": "giu", "lyDo": "Cả 25.30 và 26.12 đều có trong câu trích; nhãn là ví dụ của nguồn, không phải đích."},
+  {"index": "loaiTru[2]", "hanhDong": "giu", "lyDo": "'muối và các hợp chất khác, hữu cơ hoặc vô cơ, của prometi' → 28.44; số 28.44 có trong trích."},
+  {"index": "phanBiet[0]", "hanhDong": "giu", "lyDo": "Hỏi đủ hai hỗn hợp loại trừ; có→38.24, không→28.46."},
+  {"index": "phanBiet[1]", "hanhDong": "giu", "lyDo": "Hỏi đúng hợp chất tự nhiên của kim loại đất hiếm (ví dụ xenotim, monazit); có→25.30/26.12, không→28.46; mã đích có trong trích."},
+  {"index": "phanBiet[2]", "hanhDong": "giu", "lyDo": "Hỏi đúng muối/hợp chất của prometi; có→28.44, không→28.46."}
+ ]
+}

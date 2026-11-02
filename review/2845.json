@@ -1,0 +1,15 @@
+{
+ "nhom": "2845",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-11-02T15:45:00+07:00",
+ "daKiem": 3,
+ "soat": 3,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2845 (lô 088, PR #846) — người soạn dev-zcode-mm, người soát độc lập. Đã đọc TOÀN BỘ khối [nhom2845.nhom] (17 dòng) VÀ khối [ch28.chuong] của tmp/so-tay/nguon/2845.txt (đọc tới mục 'Chú giải 1' và các đoạn phân loại 28.44/28.45) rồi đối chiếu từng mục trong tmp/so-tay/raw/2845.json. MÁY: 3/3 câu trích byte-exact trong đúng khối nguồn đã ghi, tất cả ≤ 300 ký tự. KẾT QUẢ: 3/3 mục GIỮ NGUYÊN, 0 sửa, 0 xoá.\n\nCơ sở giữ: (1) phamVi — chép nguyên văn câu mở nhóm 'Nhóm này bao gồm các đồng vị bền vững, đó là các chất không phải đồng vị phóng xạ và các hợp chất hữu cơ hoặc vô cơ của chúng, đã hoặc chưa được xác định về một hóa học'; nội dung `text` chỉ thêm dấu chấm câu ở vế giữa, không thêm chữ. (2) dieuKienVao[0] — câu trích là chính câu định nghĩa 'đồng vị bền vững' của nhóm; fact 'la_dong_vi_ben_vung' = true là điều kiện VÀO nhóm theo đúng câu nguồn. (3) phanBiet[0] — câu hỏi 'Hàng này là đồng vị phóng xạ không?' lấy từ khối [ch28.chuong] ('Nhóm 28.44 - Các nguyên tố phóng xạ, đồng vị phóng xạ hoặc các hợp chất (vô cơ hoặc hữu cơ) và hỗn hợp có chứa các chất này.'), nhánh có→28.44, không→28.45; mã 28.44 có trong trích.\n\nGHI NHẬN (không sửa, để người duyệt xem): (a) dieuKienVao[0] chỉ phủ nhánh ĐỒNG VỊ, chưa phủ nhánh HỢP CHẤT của chúng (nước nặng 28.45.10, metan nặng, axit acetic nặng…) — nhưng (i) điều kiện boolean chỉ là GỢI Ý trong prompt (cổng máy lib/so-tay-gates.js chỉ kích hoạt với ngưỡng số, không dùng boolean để loại hàng), (ii) phamVi của chính nhóm đã phủ đủ 'các đồng vị bền vững … và các hợp chất hữu cơ hoặc vô cơ của chúng', và (iii) nhóm 2844 có dieuKienVao cùng dạng ('có hiện tượng của chất phóng xạ') — nên KHÔNG sửa, chỉ ghi nhận cho người duyệt. (b) Câu hỏi phân biệt ở mức đồng vị: hợp chất của đồng vị phóng xạ (ví dụ NaCl phóng xạ) trả lời 'không' theo câu hỏi này; nhưng chính nhóm 2844 hỏi ngược lại ('Hàng này là các đồng vị bền vững không?') và trả 'không' → ở lại 28.44, nên chiều đi của cặp vẫn đúng. (c) Không dùng câu 'Chú giải quy định các chất này … được phân loại ở nhóm 28.45' của [ch28.chuong] làm trích cũng được — câu đã ghi (mô tả phạm vi nhóm 28.44) nêu đích 28.44 rõ ràng và là nguồn CHÍNH THỨC của mục này nên giữ nguyên.",
+ "thayDoi": [
+  {"index": "phamVi", "hanhDong": "giu", "lyDo": "Chép nguyên văn câu mở nhóm, đủ cả đồng vị lẫn hợp chất của chúng; `text` chỉ thêm dấu chấm câu, không thêm chữ."},
+  {"index": "dieuKienVao[0]", "hanhDong": "giu", "lyDo": "Fact 'la_dong_vi_ben_vung' = true bám đúng câu định nghĩa trong trích; điều kiện boolean chỉ là gợi ý, không chặn hàng."},
+  {"index": "phanBiet[0]", "hanhDong": "giu", "lyDo": "Nguồn [ch28.chuong] mô tả phạm vi nhóm 28.44 nêu rõ 'đồng vị phóng xạ'; nhánh có→28.44, không→28.45, mã đích có trong trích."}
+ ]
+}
