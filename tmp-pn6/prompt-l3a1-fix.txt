@@ -1,0 +1,2189 @@
+VÒNG SỬA. Dưới đây là 7 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (0) Đơn vị phải ghi đúng chữ trích ("m³/h" chứ không "m3/h"); ngưỡng số phải có nguyên văn trong trích. (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 840732 ===
+--- GÓI ---
+# 840732 — Dung tích xi lanh trên 50 cc nhưng không quá 250 cc
+
+840732 — Engines; reciprocating piston engines, of a kind used for the propulsion of vehicles of chapter 87, of a cylinder capacity exceeding 50cc but not exceeding 250cc
+  [8407321] Dung tích xilanh trên 50 cc nhưng không quá 110 cc
+    84073211 Dùng cho xe thuộc nhóm 87.01
+    84073212 Dùng cho xe thuộc nhóm 87.11
+    84073219 Loại khác  [LK]
+  [8407322] Dung tích xilanh trên 110 cc nhưng không quá 250 cc
+    84073222 Dùng cho xe thuộc nhóm 87.11
+    84073229 Loại khác  [LK]
+
+- 8407321 TIEU_DE
+    tieuDe.8407321 [58 ký tự]: 8407321 Dung tích xilanh trên 50 cc nhưng không quá 110 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xilanh trên 50 cc nhưng không quá 110 cc"
+- 84073211 DONG8
+    tax.84073211 [45 ký tự]: 84073211 - - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 84073212 DONG8
+    tax.84073212 [45 ký tự]: 84073212 - - - - Dùng cho xe thuộc nhóm 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.11"
+- 84073219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84073219 [26 ký tự]: 84073219 - - - - Loại khác
+- 8407322 TIEU_DE
+    tieuDe.8407322 [59 ký tự]: 8407322 Dung tích xilanh trên 110 cc nhưng không quá 250 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xilanh trên 110 cc nhưng không quá 250 cc"
+- 84073222 DONG8
+    tax.84073222 [45 ký tự]: 84073222 - - - - Dùng cho xe thuộc nhóm 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.11"
+- 84073229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84073229 [26 ký tự]: 84073229 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.840732; chú giải: nhom8407.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "840732",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840732",
+  "dong8": {
+    "84073211": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ]
+    },
+    "84073212": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.11"
+        }
+      ]
+    },
+    "84073222": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.11"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8407321": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 50,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 110,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "8407322": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 110,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "cc"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8407321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8407321: \"Dung tích xilanh trên 50 cc nhưng không quá 110 cc\" ⇒ dungTichXiLanh > 50 cc và <= 110 cc"
+    },
+    {
+      "ma": "84073211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073211: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""
+    },
+    {
+      "ma": "84073212",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073212: \"Dùng cho xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""
+    },
+    {
+      "ma": "8407322",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8407322: \"Dung tích xilanh trên 110 cc nhưng không quá 250 cc\" ⇒ dungTichXiLanh > 110 cc và <= 250 cc"
+    },
+    {
+      "ma": "84073222",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073222: \"Dùng cho xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-khong-phu-kin:840732:dungTichXiLanh=49.99995
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 840999 ===
+--- GÓI ---
+# 840999 — Loại khác
+
+840999 — Engines; parts for internal combustion piston engines (excluding spark-ignition)
+  [8409991] Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30
+    84099911 Chế hòa khí và bộ phận của chúng
+    84099912 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099913 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099914 Ống xi lanh khác
+    84099915 Quy lát và nắp quy lát
+    84099916 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099917 Piston khác
+    84099918 Bạc piston và chốt piston
+    84099919 Loại khác  [LK]
+  [8409992] Dùng cho động cơ của xe thuộc nhóm 87.01
+    84099921 Chế hòa khí và bộ phận của chúng
+    84099922 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099923 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099924 Ống xi lanh khác
+    84099925 Quy lát và nắp quy lát
+    84099926 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099927 Piston khác
+    84099929 Loại khác  [LK]
+  [8409993] Dùng cho động cơ của xe thuộc nhóm 87.11
+    84099931 Chế hòa khí và bộ phận của chúng
+    84099932 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099934 Quy lát và nắp quy lát
+    84099936 Bạc piston và chốt piston
+    84099937 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm; piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099938 Ống xi lanh và piston khác
+    84099939 Loại khác  [LK]
+  [8409994] Dùng cho động cơ của xe khác thuộc Chương 87
+    84099941 Chế hòa khí và bộ phận của chúng
+    84099942 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099943 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099944 Ống xi lanh khác
+    84099945 Quy lát và nắp quy lát
+    84099946 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099947 Piston khác
+    84099948 Bạc piston và chốt piston
+    84099949 Loại khác  [LK]
+  [840999~r13043] Dùng cho động cơ tàu thuyền thuộc Chương 89  (tầng không mã, biểu thuế r13043, gạch 3)
+    [8409995] Cho động cơ máy thủy công suất không quá 22,38 kW
+      84099951 Thân động cơ (cylinder block); hộp trục khuỷu  (gạch 5)
+      84099952 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099953 Ống xi lanh khác  (gạch 5)
+      84099954 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099955 Piston khác  (gạch 5)
+      84099959 Loại khác  [LK]  (gạch 5)
+    [8409996] Cho động cơ máy thủy công suất trên 22,38 kW
+      84099961 Thân động cơ (cylinder block); hộp trục khuỷu  (gạch 5)
+      84099962 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099963 Ống xi lanh khác  (gạch 5)
+      84099964 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099965 Piston khác  (gạch 5)
+      84099969 Loại khác  [LK]  (gạch 5)
+  [8409997] Dùng cho động cơ khác
+    84099971 Chế hòa khí và bộ phận của chúng
+    84099972 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099973 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099974 Ống xi lanh khác
+    84099975 Quy lát và nắp quy lát
+    84099976 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099977 Piston khác
+    84099978 Bạc piston và chốt piston
+    84099979 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    840999~r13043 (gạch 3) "Dùng cho động cơ tàu thuyền thuộc Chương 89:" — dòng dưới: 84099951, 84099952, 84099953, 84099954, 84099955, 84099959, 84099961, 84099962, 84099963, 84099964, 84099965, 84099969
+
+- 8409991 TIEU_DE
+    tieuDe.8409991 [60 ký tự]: 8409991 Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30"
+- 84099911 DONG8
+    tax.84099911 [49 ký tự]: 84099911 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099912 DONG8
+    tax.84099912 [62 ký tự]: 84099912 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099913 DONG8
+    tax.84099913 [91 ký tự]: 84099913 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099914 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099914 [34 ký tự]: 84099914 - - - - Ống xi lanh khác 
+- 84099915 DONG8
+    tax.84099915 [39 ký tự]: 84099915 - - - - Quy lát và nắp quy lát
+- 84099916 DONG8
+    tax.84099916 [85 ký tự]: 84099916 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099917 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099917 [28 ký tự]: 84099917 - - - - Piston khác
+- 84099918 DONG8
+    tax.84099918 [42 ký tự]: 84099918 - - - - Bạc piston và chốt piston
+- 84099919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099919 [26 ký tự]: 84099919 - - - - Loại khác
+- 8409992 TIEU_DE
+    tieuDe.8409992 [48 ký tự]: 8409992 Dùng cho động cơ của xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của xe thuộc nhóm 87.01"
+- 84099921 DONG8
+    tax.84099921 [49 ký tự]: 84099921 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099922 DONG8
+    tax.84099922 [62 ký tự]: 84099922 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099923 DONG8
+    tax.84099923 [91 ký tự]: 84099923 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099924 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099924 [34 ký tự]: 84099924 - - - - Ống xi lanh khác 
+- 84099925 DONG8
+    tax.84099925 [39 ký tự]: 84099925 - - - - Quy lát và nắp quy lát
+- 84099926 DONG8
+    tax.84099926 [85 ký tự]: 84099926 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099927 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099927 [28 ký tự]: 84099927 - - - - Piston khác
+- 84099929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099929 [26 ký tự]: 84099929 - - - - Loại khác
+- 8409993 TIEU_DE
+    tieuDe.8409993 [48 ký tự]: 8409993 Dùng cho động cơ của xe thuộc nhóm 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của xe thuộc nhóm 87.11"
+- 84099931 DONG8
+    tax.84099931 [49 ký tự]: 84099931 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099932 DONG8
+    tax.84099932 [62 ký tự]: 84099932 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099934 DONG8
+    tax.84099934 [39 ký tự]: 84099934 - - - - Quy lát và nắp quy lát
+- 84099936 DONG8
+    tax.84099936 [42 ký tự]: 84099936 - - - - Bạc piston và chốt piston
+- 84099937 DONG8
+    tax.84099937 [160 ký tự]: 84099937 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm; piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm" · [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099938 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099938 [43 ký tự]: 84099938 - - - - Ống xi lanh và piston khác
+- 84099939 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099939 [26 ký tự]: 84099939 - - - - Loại khác
+- 8409994 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8409994 [52 ký tự]: 8409994 Dùng cho động cơ của xe khác thuộc Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của xe khác thuộc Chương 87"
+- 84099941 DONG8
+    tax.84099941 [49 ký tự]: 84099941 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099942 DONG8
+    tax.84099942 [62 ký tự]: 84099942 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099943 DONG8
+    tax.84099943 [91 ký tự]: 84099943 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099944 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099944 [34 ký tự]: 84099944 - - - - Ống xi lanh khác 
+- 84099945 DONG8
+    tax.84099945 [39 ký tự]: 84099945 - - - - Quy lát và nắp quy lát
+- 84099946 DONG8
+    tax.84099946 [85 ký tự]: 84099946 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099947 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099947 [28 ký tự]: 84099947 - - - - Piston khác
+- 84099948 DONG8
+    tax.84099948 [42 ký tự]: 84099948 - - - - Bạc piston và chốt piston
+- 84099949 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099949 [26 ký tự]: 84099949 - - - - Loại khác
+- 840999~r13043 TIEU_DE
+    tieuDe.840999~r13043 [57 ký tự]: 840999~r13043 Dùng cho động cơ tàu thuyền thuộc Chương 89
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ tàu thuyền thuộc Chương 89"
+- 8409995 TIEU_DE
+    tieuDe.8409995 [57 ký tự]: 8409995 Cho động cơ máy thủy công suất không quá 22,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Cho động cơ máy thủy" · [GIỚI HẠN] "công suất không quá 22,38 kW"
+- 84099951 DONG8
+    tax.84099951 [64 ký tự]: 84099951 - - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099952 DONG8
+    tax.84099952 [93 ký tự]: 84099952 - - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099953 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099953 [36 ký tự]: 84099953 - - - - - Ống xi lanh khác 
+- 84099954 DONG8
+    tax.84099954 [87 ký tự]: 84099954 - - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099955 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099955 [30 ký tự]: 84099955 - - - - - Piston khác
+- 84099959 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099959 [28 ký tự]: 84099959 - - - - - Loại khác
+- 8409996 TIEU_DE
+    tieuDe.8409996 [52 ký tự]: 8409996 Cho động cơ máy thủy công suất trên 22,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Cho động cơ máy thủy" · [GIỚI HẠN] "công suất trên 22,38 kW"
+- 84099961 DONG8
+    tax.84099961 [64 ký tự]: 84099961 - - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099962 DONG8
+    tax.84099962 [93 ký tự]: 84099962 - - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099963 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099963 [36 ký tự]: 84099963 - - - - - Ống xi lanh khác 
+- 84099964 DONG8
+    tax.84099964 [87 ký tự]: 84099964 - - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099965 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099965 [30 ký tự]: 84099965 - - - - - Piston khác
+- 84099969 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099969 [28 ký tự]: 84099969 - - - - - Loại khác
+- 8409997 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8409997 [29 ký tự]: 8409997 Dùng cho động cơ khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ khác"
+- 84099971 DONG8
+    tax.84099971 [49 ký tự]: 84099971 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099972 DONG8
+    tax.84099972 [62 ký tự]: 84099972 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099973 DONG8
+    tax.84099973 [91 ký tự]: 84099973 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099974 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099974 [34 ký tự]: 84099974 - - - - Ống xi lanh khác 
+- 84099975 DONG8
+    tax.84099975 [39 ký tự]: 84099975 - - - - Quy lát và nắp quy lát
+- 84099976 DONG8
+    tax.84099976 [85 ký tự]: 84099976 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099977 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099977 [28 ký tự]: 84099977 - - - - Piston khác
+- 84099978 DONG8
+    tax.84099978 [42 ký tự]: 84099978 - - - - Bạc piston và chốt piston
+- 84099979 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099979 [26 ký tự]: 84099979 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.840999; chú giải: nhom8409.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "840999",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840999",
+  "dong8": {
+    "84099911": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "84099912": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "cylinder block",
+            "hộp trục khuỷu"
+          ]
+        }
+      ]
+    },
+    "84099913": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099914": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "phanConLai": [
+        "84099913"
+      ]
+    },
+    "84099915": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quy lát",
+            "nắp quy lát"
+          ]
+        }
+      ]
+    },
+    "84099916": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099917": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "phanConLai": [
+        "84099916"
+      ]
+    },
+    "84099918": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bạc piston",
+            "chốt piston"
+          ]
+        }
+      ]
+    },
+    "84099921": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "84099922": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "cylinder block",
+            "hộp trục khuỷu"
+          ]
+        }
+      ]
+    },
+    "84099923": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099924": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "phanConLai": [
+        "84099923"
+      ]
+    },
+    "84099925": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quy lát",
+            "nắp quy lát"
+          ]
+        }
+      ]
+    },
+    "84099926": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099927": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "phanConLai": [
+        "84099926"
+      ]
+    },
+    "84099931": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "84099932": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "cylinder block",
+            "hộp trục khuỷu"
+          ]
+        }
+      ]
+    },
+    "84099934": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quy lát",
+            "nắp quy lát"
+          ]
+        }
+      ]
+    },
+    "84099936": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bạc piston",
+            "chốt piston"
+          ]
+        }
+      ]
+    },
+    "84099937": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Ống xi lanh"
+              },
+              {
+                "fact": "duongKinhTrong",
+                "op": ">=",
+                "value": 50,
+                "donVi": "mm"
+              },
+              {
+                "fact": "duongKinhTrong",
+                "op": "<=",
+                "value": 155,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "piston"
+              },
+              {
+                "fact": "duongKinh",
+                "op": ">=",
+                "value": 50,
+                "donVi": "mm"
+              },
+              {
+                "fact": "duongKinh",
+                "op": "<=",
+                "value": 155,
+                "donVi": "mm"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "84099938": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ống xi lanh",
+            "piston"
+          ]
+        }
+      ],
+      "phanConLai": [
+        "84099937"
+      ]
+    },
+    "84099941": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "84099942": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "cylinder block",
+            "hộp trục khuỷu"
+          ]
+        }
+      ]
+    },
+    "84099943": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099944": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "phanConLai": [
+        "84099943"
+      ]
+    },
+    "84099945": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quy lát",
+            "nắp quy lát"
+          ]
+        }
+      ]
+    },
+    "84099946": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099947": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "phanConLai": [
+        "84099946"
+      ]
+    },
+    "84099948": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bạc piston",
+            "chốt piston"
+          ]
+        }
+      ]
+    },
+    "84099951": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "cylinder block",
+            "hộp trục khuỷu"
+          ]
+        }
+      ]
+    },
+    "84099952": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099953": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "phanConLai": [
+        "84099952"
+      ]
+    },
+    "84099954": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099955": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "phanConLai": [
+        "84099954"
+      ]
+    },
+    "84099961": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "cylinder block",
+            "hộp trục khuỷu"
+          ]
+        }
+      ]
+    },
+    "84099962": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099963": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "phanConLai": [
+        "84099962"
+      ]
+    },
+    "84099964": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099965": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "phanConLai": [
+        "84099964"
+      ]
+    },
+    "84099971": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "84099972": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân động cơ",
+            "cylinder block",
+            "hộp trục khuỷu"
+          ]
+        }
+      ]
+    },
+    "84099973": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099974": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "phanConLai": [
+        "84099973"
+      ]
+    },
+    "84099975": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quy lát",
+            "nắp quy lát"
+          ]
+        }
+      ]
+    },
+    "84099976": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84099977": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "phanConLai": [
+        "84099976"
+      ]
+    },
+    "84099978": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bạc piston",
+            "chốt piston"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8409991": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.29",
+            "84.30"
+          ]
+        }
+      ]
+    },
+    "8409992": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ]
+    },
+    "8409993": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.11"
+        }
+      ]
+    },
+    "8409994": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 87"
+        }
+      ],
+      "phanConLai": [
+        "8409992",
+        "8409993"
+      ]
+    },
+    "840999~r13043": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 89"
+        }
+      ]
+    },
+    "8409995": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "máy thủy"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 22.38,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8409996": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "máy thủy"
+        },
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 22.38,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8409997": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8409991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409991: \"Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho [\"84.29\",\"84.30\"]"
+    },
+    {
+      "ma": "84099911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099911: \"Chế hòa khí và bộ phận của chúng\" ⇒ HOAC tenLoai Chế hòa khí / laBoPhan CO + dungCho Chế hòa khí"
+    },
+    {
+      "ma": "84099912",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099912: \"Thân động cơ (cylinder block); hộp trục khuỷu\" ⇒ tenLoai tách mảng [\"Thân động cơ\",\"cylinder block\",\"hộp trục khuỷu\"]"
+    },
+    {
+      "ma": "84099913",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099913: \"Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Ống xi lanh + duongKinhTrong >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099914",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099914: \"Ống xi lanh khác\" ⇒ tenLoai Ống xi lanh + phanConLai [\"84099913\"]"
+    },
+    {
+      "ma": "84099915",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099915: \"Quy lát và nắp quy lát\" ⇒ tenLoai tách mảng [\"Quy lát\",\"nắp quy lát\"]"
+    },
+    {
+      "ma": "84099916",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099916: \"Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Piston + duongKinh >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099917",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099917: \"Piston khác\" ⇒ tenLoai Piston + phanConLai [\"84099916\"]"
+    },
+    {
+      "ma": "84099918",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099918: \"Bạc piston và chốt piston\" ⇒ tenLoai tách mảng [\"Bạc piston\",\"chốt piston\"]"
+    },
+    {
+      "ma": "8409992",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409992: \"Dùng cho động cơ của xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""
+    },
+    {
+      "ma": "84099921",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099921: \"Chế hòa khí và bộ phận của chúng\" ⇒ HOAC tenLoai Chế hòa khí / laBoPhan CO + dungCho Chế hòa khí"
+    },
+    {
+      "ma": "84099922",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099922: \"Thân động cơ (cylinder block); hộp trục khuỷu\" ⇒ tenLoai tách mảng [\"Thân động cơ\",\"cylinder block\",\"hộp trục khuỷu\"]"
+    },
+    {
+      "ma": "84099923",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099923: \"Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Ống xi lanh + duongKinhTrong >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099924",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099924: \"Ống xi lanh khác\" ⇒ tenLoai Ống xi lanh + phanConLai [\"84099923\"]"
+    },
+    {
+      "ma": "84099925",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099925: \"Quy lát và nắp quy lát\" ⇒ tenLoai tách mảng [\"Quy lát\",\"nắp quy lát\"]"
+    },
+    {
+      "ma": "84099926",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099926: \"Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Piston + duongKinh >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099927",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099927: \"Piston khác\" ⇒ tenLoai Piston + phanConLai [\"84099926\"]"
+    },
+    {
+      "ma": "8409993",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409993: \"Dùng cho động cơ của xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""
+    },
+    {
+      "ma": "84099931",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099931: \"Chế hòa khí và bộ phận của chúng\" ⇒ HOAC tenLoai Chế hòa khí / laBoPhan CO + dungCho Chế hòa khí"
+    },
+    {
+      "ma": "84099932",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099932: \"Thân động cơ (cylinder block); hộp trục khuỷu\" ⇒ tenLoai tách mảng [\"Thân động cơ\",\"cylinder block\",\"hộp trục khuỷu\"]"
+    },
+    {
+      "ma": "84099934",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099934: \"Quy lát và nắp quy lát\" ⇒ tenLoai tách mảng [\"Quy lát\",\"nắp quy lát\"]"
+    },
+    {
+      "ma": "84099936",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099936: \"Bạc piston và chốt piston\" ⇒ tenLoai tách mảng [\"Bạc piston\",\"chốt piston\"]"
+    },
+    {
+      "ma": "84099937",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099937: \"Ống xi lanh...; piston...\" ⇒ HOAC [Ống xi lanh duongKinhTrong 50-155 mm] hoặc [piston duongKinh 50-155 mm]"
+    },
+    {
+      "ma": "84099938",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099938: \"Ống xi lanh và piston khác\" ⇒ tenLoai tách mảng [\"Ống xi lanh\",\"piston\"] + phanConLai [\"84099937\"]"
+    },
+    {
+      "ma": "8409994",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409994: \"Dùng cho động cơ của xe khác thuộc Chương 87\" ⇒ dungCho \"Chương 87\", phanConLai [\"8409992\",\"8409993\"]"
+    },
+    {
+      "ma": "84099941",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099941: \"Chế hòa khí và bộ phận của chúng\" ⇒ HOAC tenLoai Chế hòa khí / laBoPhan CO + dungCho Chế hòa khí"
+    },
+    {
+      "ma": "84099942",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099942: \"Thân động cơ (cylinder block); hộp trục khuỷu\" ⇒ tenLoai tách mảng [\"Thân động cơ\",\"cylinder block\",\"hộp trục khuỷu\"]"
+    },
+    {
+      "ma": "84099943",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099943: \"Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Ống xi lanh + duongKinhTrong >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099944",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099944: \"Ống xi lanh khác\" ⇒ tenLoai Ống xi lanh + phanConLai [\"84099943\"]"
+    },
+    {
+      "ma": "84099945",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099945: \"Quy lát và nắp quy lát\" ⇒ tenLoai tách mảng [\"Quy lát\",\"nắp quy lát\"]"
+    },
+    {
+      "ma": "84099946",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099946: \"Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Piston + duongKinh >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099947",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099947: \"Piston khác\" ⇒ tenLoai Piston + phanConLai [\"84099946\"]"
+    },
+    {
+      "ma": "84099948",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099948: \"Bạc piston và chốt piston\" ⇒ tenLoai tách mảng [\"Bạc piston\",\"chốt piston\"]"
+    },
+    {
+      "ma": "840999~r13043",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.840999~r13043: \"Dùng cho động cơ tàu thuyền thuộc Chương 89\" ⇒ dungCho \"Chương 89\""
+    },
+    {
+      "ma": "8409995",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409995: \"Cho động cơ máy thủy công suất không quá 22,38 kW\" ⇒ congDung \"máy thủy\" + congSuat <= 22.38 kW"
+    },
+    {
+      "ma": "84099951",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099951: \"Thân động cơ (cylinder block); hộp trục khuỷu\" ⇒ tenLoai tách mảng [\"Thân động cơ\",\"cylinder block\",\"hộp trục khuỷu\"]"
+    },
+    {
+      "ma": "84099952",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099952: \"Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Ống xi lanh + duongKinhTrong >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099953",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099953: \"Ống xi lanh khác\" ⇒ tenLoai Ống xi lanh + phanConLai [\"84099952\"]"
+    },
+    {
+      "ma": "84099954",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099954: \"Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Piston + duongKinh >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099955",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099955: \"Piston khác\" ⇒ tenLoai Piston + phanConLai [\"84099954\"]"
+    },
+    {
+      "ma": "8409996",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409996: \"Cho động cơ máy thủy công suất trên 22,38 kW\" ⇒ congDung \"máy thủy\" + congSuat > 22.38 kW"
+    },
+    {
+      "ma": "84099961",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099961: \"Thân động cơ (cylinder block); hộp trục khuỷu\" ⇒ tenLoai tách mảng [\"Thân động cơ\",\"cylinder block\",\"hộp trục khuỷu\"]"
+    },
+    {
+      "ma": "84099962",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099962: \"Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Ống xi lanh + duongKinhTrong >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099963",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099963: \"Ống xi lanh khác\" ⇒ tenLoai Ống xi lanh + phanConLai [\"84099962\"]"
+    },
+    {
+      "ma": "84099964",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099964: \"Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Piston + duongKinh >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099965",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099965: \"Piston khác\" ⇒ tenLoai Piston + phanConLai [\"84099964\"]"
+    },
+    {
+      "ma": "8409997",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8409997: \"Dùng cho động cơ khác\" ⇒ phanConLai: true"
+    },
+    {
+      "ma": "84099971",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099971: \"Chế hòa khí và bộ phận của chúng\" ⇒ HOAC tenLoai Chế hòa khí / laBoPhan CO + dungCho Chế hòa khí"
+    },
+    {
+      "ma": "84099972",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099972: \"Thân động cơ (cylinder block); hộp trục khuỷu\" ⇒ tenLoai tách mảng [\"Thân động cơ\",\"cylinder block\",\"hộp trục khuỷu\"]"
+    },
+    {
+      "ma": "84099973",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099973: \"Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Ống xi lanh + duongKinhTrong >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099974",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099974: \"Ống xi lanh khác\" ⇒ tenLoai Ống xi lanh + phanConLai [\"84099973\"]"
+    },
+    {
+      "ma": "84099975",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099975: \"Quy lát và nắp quy lát\" ⇒ tenLoai tách mảng [\"Quy lát\",\"nắp quy lát\"]"
+    },
+    {
+      "ma": "84099976",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099976: \"Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai Piston + duongKinh >= 50 mm và <= 155 mm"
+    },
+    {
+      "ma": "84099977",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099977: \"Piston khác\" ⇒ tenLoai Piston + phanConLai [\"84099976\"]"
+    },
+    {
+      "ma": "84099978",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84099978: \"Bạc piston và chốt piston\" ⇒ tenLoai tách mảng [\"Bạc piston\",\"chốt piston\"]"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-ve-gioi-han-bi-bo:8409997:Dùng cho động cơ khác
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Hai anh em chỉ chồng trên vector ghép CHÉO KHOÁ "tenLoai X" (một bên) + "là bộ phận, dungCho Y" (bên kia) — mẫu "X và (các) bộ phận của chúng" (871410, 845290). X và Y đều là tên đầu NGUYÊN VĂN của chính dòng mình (mệnh đề danh từ đầu hoặc vế "kể cả …" liền sau) và rời nhau đúng như hai giá trị tenLoai của anh em (không ứng viên nào thoả cả hai) ⇒ cổng coi là loại trừ (quyết định GĐ 31/10/2026). Chỉ là luật chứng minh của cổng — lúc chạy động cơ v�
+      → (cảnh báo) Hai dòng cùng THOẢ trên một vector nhưng "tên cụ thể hơn thắng" phân được — chỉ nhờ phần mở rộng #600 (quyết định GĐ (a)): điều kiện nằm trong phương án HOAC, hoặc cặp CHÉO KHOÁ "tenLoai X" ↔ "là bộ phận, dungCho Y" với X chứa trọn Y (845290 .11 "bàn đạp" ⊃ .12 "bộ phận của Bàn"). Cặp chéo khoá chỉ nhận khi X, Y là tên đầu NGUYÊN VĂN của chính nút rẽ nhánh. Lúc chạy doiChieuPhanNhom dùng cùng hàm (lib/dieu-kien-so.js#tenCuTheHonDong) nên bỏ đúng dòng bị l
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 841290 ===
+--- GÓI ---
+# 841290 — Bộ phận
+
+841290 — Engines; parts, for engines and motors of heading no. 8412
+  84129010 Của động cơ thuộc phân nhóm 8412.10
+  84129020 Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi
+  84129090 Loại khác  [LK]
+
+- 84129010 DONG8
+    tax.84129010 [48 ký tự]: 84129010 - - Của động cơ thuộc phân nhóm 8412.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của động cơ thuộc phân nhóm 8412.10"
+- 84129020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84129020 [95 ký tự]: 84129020 - - Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của động cơ/mô tơ" · [GIỚI HẠN] "dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi"
+- 84129090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84129090 [22 ký tự]: 84129090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841290; chú giải: nhom8412.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841290",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841290",
+  "dong8": {
+    "84129010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8412.10"
+        }
+      ]
+    },
+    "84129020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi",
+            "động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84129010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84129010: \"Của động cơ thuộc phân nhóm 8412.10\" ⇒ dungCho \"8412.10\""
+    },
+    {
+      "ma": "84129020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84129020: \"Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi\" ⇒ dungCho tổ máy..."
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-liet-ke-trong-mot-chuoi:84129020:dungCho
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và 
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 841360 ===
+--- GÓI ---
+# 841360 — Bơm hoạt động kiểu piston quay khác
+
+841360 — Pumps; rotary positive displacement pumps, n.e.c. in heading no. 8413, for liquids
+  [8413603] Bơm nước, với lưu lượng không quá 8.000 m³/h
+    84136031 Hoạt động bằng điện
+    84136032 Không hoạt động bằng điện
+  84136040 Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h
+  84136090 Loại khác  [LK]
+
+- 8413603 TIEU_DE
+    tieuDe.8413603 [52 ký tự]: 8413603 Bơm nước, với lưu lượng không quá 8.000 m³/h
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với lưu lượng không quá 8.000 m³/h"
+- 84136031 DONG8
+    tax.84136031 [34 ký tự]: 84136031 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84136032 DONG8
+    tax.84136032 [40 ký tự]: 84136032 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84136040 DONG8
+    tax.84136040 [80 ký tự]: 84136040 - - Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h"
+- 84136090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84136090 [22 ký tự]: 84136090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841360; chú giải: nhom8413.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841360",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841360",
+  "dong8": {
+    "84136031": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84136032": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "84136040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 8000,
+          "donVi": "m3/h"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 13000,
+          "donVi": "m3/h"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8413603": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m3/h"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8413603",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413603: \"Bơm nước, với lưu lượng không quá 8.000 m³/h\" ⇒ tenLoai Bơm nước + luuLuong <= 8000 m3/h"
+    },
+    {
+      "ma": "84136031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84136031: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84136032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84136032: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84136040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84136040: \"Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h\" ⇒ tenLoai Bơm nước + luuLuong > 8000 m3/h và <= 13000 m3/h"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84136040:dieu-kien-so-don-vi-khong-co-trong-trich:m3/h
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+    ✗ cong3-muc:8413603:dieu-kien-so-don-vi-khong-co-trong-trich:m3/h
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 841370 ===
+--- GÓI ---
+# 841370 — Bơm ly tâm khác
+
+841370 — Pumps; centrifugal, n.e.c. in heading no. 8413, for liquids
+  [8413701] Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ
+    84137011 Với đường kính cửa hút không quá 200 mm (SEN)
+    84137019 Loại khác (SEN)  [LK]
+  [8413703] Bơm nước được thiết kế đặt chìm dưới nước
+    84137031 Với đường kính cửa hút không quá 200 mm
+    84137039 Loại khác  [LK]
+  [8413704] Bơm nước khác, với lưu lượng không quá 8.000 m³/h
+    84137042 Với đường kính cửa hút không quá 200 mm, hoạt động bằng điện
+    84137043 Với đường kính cửa hút không quá 200 mm, không hoạt động bằng điện
+    84137049 Loại khác  [LK]
+  [8413705] Bơm nước khác, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h
+    84137051 Với đường kính cửa hút không quá 200 mm
+    84137059 Loại khác  [LK]
+  [8413709] Loại khác
+    84137091 Với đường kính cửa hút không quá 200 mm
+    84137099 Loại khác  [LK]
+
+- 8413701 TIEU_DE
+    tieuDe.8413701 [142 ký tự]: 8413701 Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được truyền động" · [GIỚI HẠN] "bằng dây đai hoặc khớp nối trực tiếp" · [GIỚI HẠN] "trừ loại bơm đồng trục với động cơ"
+- 84137011 DONG8
+    tax.84137011 [60 ký tự]: 84137011 - - - Với đường kính cửa hút không quá 200 mm (SEN)
+    sen.84137011 [479 ký tự]: BƠM NƯỚC MỘT TẦNG, MỘT CHIỀU HÚT, TRỤC NGANG ĐƯỢC TRUYỀN ĐỘNG BẰNG DÂY ĐAI HOẶC KHỚP NỐI TRỰC TIẾP, TRỪ LOẠI BƠM ĐỒNG TRỤC VỚI ĐỘNG CƠ Đây là loại bơm nước ly tâm một tầng (có một quạt đẩy), một chiều hút (nước được hút vào qua cánh quạt chỉ từ một phía) với một trục trung tâm nằm ngang, chạy bằng một mô tơ nhờ vành đai truyền động (pu-ly đai truyền) hoặc khớp trục. Nó không giống như các bơm truyền động trực tiếp trong đó trục chính thường được nối với trục động cơ (mô tơ).
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Với đường kính cửa hút không quá 200 mm"
+- 84137019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84137019 [30 ký tự]: 84137019 - - - Loại khác (SEN)
+    sen.84137019 [479 ký tự]: BƠM NƯỚC MỘT TẦNG, MỘT CHIỀU HÚT, TRỤC NGANG ĐƯỢC TRUYỀN ĐỘNG BẰNG DÂY ĐAI HOẶC KHỚP NỐI TRỰC TIẾP, TRỪ LOẠI BƠM ĐỒNG TRỤC VỚI ĐỘNG CƠ Đây là loại bơm nước ly tâm một tầng (có một quạt đẩy), một chiều hút (nước được hút vào qua cánh quạt chỉ từ một phía) với một trục trung tâm nằm ngang, chạy bằng một mô tơ nhờ vành đai truyền động (pu-ly đai truyền) hoặc khớp trục. Nó không giống như các bơm truyền động trực tiếp trong đó trục chính thường được nối với trục động cơ (mô tơ).
+- 8413703 TIEU_DE
+    tieuDe.8413703 [49 ký tự]: 8413703 Bơm nước được thiết kế đặt chìm dưới nước
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được thiết kế đặt chìm dưới nước"
+- 84137031 DONG8
+    tax.84137031 [54 ký tự]: 84137031 - - - Với đường kính cửa hút không quá 200 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Với đường kính cửa hút không quá 200 mm"
+- 84137039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84137039 [24 ký tự]: 84137039 - - - Loại khác
+- 8413704 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8413704 [57 ký tự]: 8413704 Bơm nước khác, với lưu lượng không quá 8.000 m³/h
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với lưu lượng không quá 8.000 m³/h"
+- 84137042 DONG8
+    tax.84137042 [75 ký tự]: 84137042 - - - Với đường kính cửa hút không quá 200 mm, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Với đường kính cửa hút không quá 200 mm, hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84137043 DONG8
+    tax.84137043 [81 ký tự]: 84137043 - - - Với đường kính cửa hút không quá 200 mm, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Với đường kính cửa hút không quá 200 mm" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84137049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84137049 [24 ký tự]: 84137049 - - - Loại khác
+- 8413705 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8413705 [80 ký tự]: 8413705 Bơm nước khác, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h"
+- 84137051 DONG8
+    tax.84137051 [54 ký tự]: 84137051 - - - Với đường kính cửa hút không quá 200 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Với đường kính cửa hút không quá 200 mm"
+- 84137059 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84137059 [24 ký tự]: 84137059 - - - Loại khác
+- 8413709 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8413709 [17 ký tự]: 8413709 Loại khác
+- 84137091 DONG8
+    tax.84137091 [54 ký tự]: 84137091 - - - Với đường kính cửa hút không quá 200 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Với đường kính cửa hút không quá 200 mm"
+- 84137099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84137099 [24 ký tự]: 84137099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841370; chú giải: nhom8413.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841370",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841370",
+  "dong8": {
+    "84137011": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84137031": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84137042": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84137043": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "84137051": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84137091": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8413701": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "bằng dây đai hoặc khớp nối trực tiếp"
+        }
+      ]
+    },
+    "8413703": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "datChim",
+          "op": "CO"
+        }
+      ]
+    },
+    "8413704": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m3/h"
+        }
+      ],
+      "phanConLai": [
+        "8413701",
+        "8413703"
+      ]
+    },
+    "8413705": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 8000,
+          "donVi": "m3/h"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 13000,
+          "donVi": "m3/h"
+        }
+      ],
+      "phanConLai": [
+        "8413701",
+        "8413703"
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8413701",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413701: \"Bơm nước một tầng... được truyền động bằng dây đai hoặc khớp nối trực tiếp...\" ⇒ tenLoai Bơm nước + congDung \"bằng dây đai hoặc khớp nối trực tiếp\""
+    },
+    {
+      "ma": "8413701",
+      "loai": "BO_VE",
+      "ve": "trừ loại bơm đồng trục với động cơ",
+      "lyDo": "Vế trừ phạm vi loại trừ của tiêu đề, đã được phân biệt bởi điều kiện truyền động bằng dây đai hoặc khớp nối trực tiếp"
+    },
+    {
+      "ma": "84137011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84137011: \"Với đường kính cửa hút không quá 200 mm\" ⇒ duongKinhTrong <= 200 mm"
+    },
+    {
+      "ma": "8413703",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413703: \"Bơm nước được thiết kế đặt chìm dưới nước\" ⇒ tenLoai Bơm nước + datChim CO"
+    },
+    {
+      "ma": "84137031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84137031: \"Với đường kính cửa hút không quá 200 mm\" ⇒ duongKinhTrong <= 200 mm"
+    },
+    {
+      "ma": "8413704",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413704: \"Bơm nước khác, với lưu lượng không quá 8.000 m³/h\" ⇒ tenLoai Bơm nước + luuLuong <= 8000 m3/h, phanConLai [\"8413701\",\"8413703\"]"
+    },
+    {
+      "ma": "84137042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84137042: \"Với đường kính cửa hút không quá 200 mm, hoạt động bằng điện\" ⇒ duongKinhTrong <= 200 mm + hoatDongBangDien CO"
+    },
+    {
+      "ma": "84137043",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84137043: \"Với đường kính cửa hút không quá 200 mm, không hoạt động bằng điện\" ⇒ duongKinhTrong <= 200 mm + hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "8413705",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413705: \"Bơm nước khác, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h\" ⇒ tenLoai Bơm nước + luuLuong > 8000 và <= 13000 m3/h, phanConLai [\"8413701\",\"8413703\"]"
+    },
+    {
+      "ma": "84137051",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84137051: \"Với đường kính cửa hút không quá 200 mm\" ⇒ duongKinhTrong <= 200 mm"
+    },
+    {
+      "ma": "84137091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84137091: \"Với đường kính cửa hút không quá 200 mm\" ⇒ duongKinhTrong <= 200 mm"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:8413704:dieu-kien-so-don-vi-khong-co-trong-trich:m3/h
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+    ✗ cong3-muc:8413705:dieu-kien-so-don-vi-khong-co-trong-trich:m3/h
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+    ✗ cong3-liet-ke-trong-mot-chuoi:8413701:congDung
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và 
+    ✗ cong5-ve-gioi-han-bi-bo:8413701:được truyền động
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+    ✗ cong2-chong-lan:84137011+84137031:congDung=bằng dây đai hoặc khớp nối trực tiếp,datChim=true,duongKinhTrong=199.9998,tenLoai=Bơm nước:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:84137019+84137039:congDung=bằng dây đai hoặc khớp nối trực tiếp,datChim=true,duongKinhTrong=200.0002,tenLoai=Bơm nước:khong-tat-dinh
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 841381 ===
+--- GÓI ---
+# 841381 — Bơm
+
+841381 — Pumps and liquid elevators; n.e.c. in heading no. 8413
+  84138113 Bơm nước, với lưu lượng không quá 8.000 m³/h, hoạt động bằng điện
+  84138114 Bơm nước, với lưu lượng không quá 8.000 m³/h, không hoạt động bằng điện
+  84138115 Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h
+  84138119 Loại khác  [LK]
+
+- 84138113 DONG8
+    tax.84138113 [80 ký tự]: 84138113 - - - Bơm nước, với lưu lượng không quá 8.000 m³/h, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với lưu lượng không quá 8.000 m³/h, hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84138114 DONG8
+    tax.84138114 [86 ký tự]: 84138114 - - - Bơm nước, với lưu lượng không quá 8.000 m³/h, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với lưu lượng không quá 8.000 m³/h" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84138115 DONG8
+    tax.84138115 [82 ký tự]: 84138115 - - - Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h"
+- 84138119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84138119 [24 ký tự]: 84138119 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841381; chú giải: nhom8413.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841381",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841381",
+  "dong8": {
+    "84138113": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m3/h"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84138114": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m3/h"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "84138115": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 8000,
+          "donVi": "m3/h"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 13000,
+          "donVi": "m3/h"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84138113",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84138113: \"Bơm nước, với lưu lượng không quá 8.000 m³/h, hoạt động bằng điện\" ⇒ tenLoai Bơm nước + luuLuong <= 8000 m3/h + hoatDongBangDien CO"
+    },
+    {
+      "ma": "84138114",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84138114: \"Bơm nước, với lưu lượng không quá 8.000 m³/h, không hoạt động bằng điện\" ⇒ tenLoai Bơm nước + luuLuong <= 8000 m3/h + hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84138115",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84138115: \"Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h\" ⇒ tenLoai Bơm nước + luuLuong > 8000 m3/h và <= 13000 m3/h"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84138113:dieu-kien-so-don-vi-khong-co-trong-trich:m3/h
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+    ✗ cong3-muc:84138114:dieu-kien-so-don-vi-khong-co-trong-trich:m3/h
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+    ✗ cong3-muc:84138115:dieu-kien-so-don-vi-khong-co-trong-trich:m3/h
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 841430 ===
+--- GÓI ---
+# 841430 — Máy nén sử dụng trong thiết bị làm lạnh
+
+841430 — Compressors; of a kind used in refrigerating equipment
+  84143040 Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên
+  84143090 Loại khác  [LK]
+
+- 84143040 DONG8
+    tax.84143040 [110 ký tự]: 84143040 - - Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất làm lạnh trên 21,10 kW" · [GIỚI HẠN] "có dung tích làm việc trên một chu kỳ từ 220 cc trở lên"
+- 84143090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84143090 [22 ký tự]: 84143090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841430; chú giải: nhom8414.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841430",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841430",
+  "dong8": {
+    "84143040": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "congSuat",
+                "op": ">",
+                "value": 21.1,
+                "donVi": "kW"
+              }
+            ],
+            [
+              {
+                "fact": "dungTichXiLanh",
+                "op": ">=",
+                "value": 220,
+                "donVi": "cc"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84143040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84143040: \"Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên\" ⇒ HOAC [congSuat > 21.1 kW] hoặc [dungTichXiLanh >= 220 cc]"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84143040:dieu-kien-so-nguong-khong-co-trong-trich:21.1
+      → Ngưỡng số không có trong câu trích. Sửa: Số phải có nguyên văn trong trich ("1.000" = 1000, "19,5" = 19.5).
