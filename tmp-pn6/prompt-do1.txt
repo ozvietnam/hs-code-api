@@ -1,0 +1,1365 @@
+VÒNG SỬA. Dưới đây là 13 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 321590 ===
+--- GÓI ---
+# 321590 — Loại khác
+
+321590 — Ink; writing, drawing and other inks, n.e.c. in heading no. 3215, whether or not concentrated or solid
+  32159010 Khối carbon loại dùng để sản xuất giấy than
+  32159060 Mực vẽ hoặc mực viết
+  32159070 Mực dùng cho máy nhân bản thuộc nhóm 84.72 (SEN)
+  32159090 Loại khác  [LK]
+
+- 32159010 DONG8
+    tax.32159010 [56 ký tự]: 32159010 - - Khối carbon loại dùng để sản xuất giấy than
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để sản xuất giấy than"
+- 32159060 DONG8
+    tax.32159060 [33 ký tự]: 32159060 - - Mực vẽ hoặc mực viết
+- 32159070 DONG8
+    tax.32159070 [61 ký tự]: 32159070 - - Mực dùng cho máy nhân bản thuộc nhóm 84.72 (SEN)
+    sen.32159070 [1200 ký tự]: MỰC DÙNG CHO MÁY NHÂN BẢN THUỘC NHÓM 84.72 Mực dùng cho máy nhân bản in keo và máy nhân bản sử dụng giấy sáp. Máy nhân bản sử dụng mực in keo gelatin hoặc cồn đã được cải tiến để dùng mực nhân bản sử dụng giấy sáp ở dạng bột nhão hoặc dạng bán lỏng. Loại mực này đã thay thế hầu hết loại mực nhân bản in keo do tính chất dễ sử dụng, sạch sẽ, chịu nước và lâu phai. Kiểu in này gọi là in rô-nê-ô, còn gọi là in sử dụng giấy sáp hoặc in trục. Trong quá trình này, giấy sáp được tách ra khỏi tập giấy sáp trên máy đánh chữ hoặc sử dụng bút trâm để cho mực đi qua để tạo ra các bản sao từ máy nhân bản loại trống hoặc loại xilanh đôi. Mực chứa bên trong trống hoặc xilanh đi qua một tấm phủ vào giấy sáp từ đó in ra giấy, tạo thành chữ/ chữ số như đã thực hiện trên giấy sáp. Công thức chung của mực dùng cho máy nhân bản như sau: Độ pH: Không quá 7 Độ nhớt: trong khoảng 25 - 30 posies Muội đèn: 10,5% Tông tím: 1,10% Hydrat nhôm: 3,8% Vecni mạch dài: 3,1% Dầu thầu dầu: 65,5% Mỡ cừu: 16,0% Công thức điển hình của mực in trục thay đổi từ loại này đến loại khác như sau: Sáp paraffin cứng: 3% Sáp montain tẩy trắng: 3% Xanh tím: 5% Xanh milori: 6% Sáp montan thô: 15% Muội đèn: 20% Dầu 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy nhân bản thuộc nhóm 84.72"
+- 32159090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.32159090 [22 ký tự]: 32159090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.321590; chú giải: nhom3215.nhom, ch32.chuong, phan32.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "321590",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-321590",
+  "dong8": {
+    "32159010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khối carbon"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất giấy than"
+        }
+      ]
+    },
+    "32159060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Mực vẽ",
+            "mực viết"
+          ]
+        }
+      ]
+    },
+    "32159070": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mực"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy nhân bản thuộc nhóm 84.72"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "32159010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32159010: \"Khối carbon loại dùng để sản xuất giấy than\" ⇒ tenLoai TEN_LOAI \"Khối carbon\", congDung CONG_DUNG \"sản xuất giấy than\""
+    },
+    {
+      "ma": "32159060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32159060: \"Mực vẽ hoặc mực viết\" ⇒ tenLoai TEN_LOAI [\"Mực vẽ\", \"mực viết\"]"
+    },
+    {
+      "ma": "32159070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32159070: \"Mực dùng cho máy nhân bản thuộc nhóm 84.72 (SEN)\" ⇒ tenLoai TEN_LOAI \"Mực\", dungCho CONG_DUNG \"máy nhân bản thuộc nhóm 84.72\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:32159060+32159070:dungCho=máy nhân bản thuộc nhóm 84.72,tenLoai=Mực vẽ:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 842320 ===
+--- GÓI ---
+# 842320 — Cân băng tải
+
+842320 — Weighing machines; scales for continuous weighing of goods on conveyors
+  84232010 Cân điện tử
+  84232090 Loại khác  [LK]
+
+- 84232010 DONG8
+    tax.84232010 [24 ký tự]: 84232010 - - Cân điện tử
+- 84232090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84232090 [22 ký tự]: 84232090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842320; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842320",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842320",
+  "dong8": {
+    "84232010": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84232010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84232010: \"Cân điện tử\" ⇒ hoatDongBangDien CO"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84232010:dieu-kien-so-co-khong-co-trong-trich:hoatDongBangDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+
+=== PN6 842330 ===
+--- GÓI ---
+# 842330 — Cân trọng lượng cố định và cân dùng cho việc đóng gói vật liệu với trọng lượng xác định trước vào bao túi hoặc đồ chứa, kể cả cân phễu
+
+842330 — Weighing machines; constant weight scales and scales for discharging a predetermined weight of material into a bag or container, including hopper scales
+  84233010 Cân điện tử
+  84233090 Loại khác  [LK]
+
+- 84233010 DONG8
+    tax.84233010 [24 ký tự]: 84233010 - - Cân điện tử
+- 84233090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84233090 [22 ký tự]: 84233090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842330; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842330",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842330",
+  "dong8": {
+    "84233010": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84233010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84233010: \"Cân điện tử\" ⇒ hoatDongBangDien CO"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84233010:dieu-kien-so-co-khong-co-trong-trich:hoatDongBangDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+
+=== PN6 842381 ===
+--- GÓI ---
+# 842381 — Có khả năng cân tối đa không quá 30 kg
+
+842381 — Weighing machines; other than personal, conveyor or constant weight scales, having a maximum weighing capacity not exceeding 30kg (excluding balances of a sensitivity of 5cg or better)
+  84238110 Cân điện tử
+  84238190 Loại khác  [LK]
+
+- 84238110 DONG8
+    tax.84238110 [26 ký tự]: 84238110 - - - Cân điện tử
+- 84238190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238190 [24 ký tự]: 84238190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842381; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842381",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842381",
+  "dong8": {
+    "84238110": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84238110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84238110: \"Cân điện tử\" ⇒ hoatDongBangDien CO"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84238110:dieu-kien-so-co-khong-co-trong-trich:hoatDongBangDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+
+=== PN6 842382 ===
+--- GÓI ---
+# 842382 — Có khả năng cân tối đa trên 30 kg nhưng không quá 5.000 kg
+
+842382 — Weighing machines; other than personal, conveyor or constant weight scales, having a maximum weighing capacity exceeding 30kg but not exceeding 5000kg
+  [8423823] Có khả năng cân tối đa không quá 1.000 kg
+    84238231 Cân điện tử, dùng để cân xe có động cơ
+    84238232 Cân điện tử khác
+    84238239 Loại khác  [LK]
+  [8423824] Có khả năng cân tối đa trên 1.000 kg
+    84238241 Cân điện tử, dùng để cân xe có động cơ
+    84238242 Cân điện tử khác
+    84238249 Loại khác  [LK]
+
+- 8423823 TIEU_DE
+    tieuDe.8423823 [49 ký tự]: 8423823 Có khả năng cân tối đa không quá 1.000 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có khả năng cân tối đa" · [GIỚI HẠN] "không quá 1.000 kg"
+- 84238231 DONG8
+    tax.84238231 [55 ký tự]: 84238231 - - - - Cân điện tử, dùng để cân xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để cân xe có động cơ"
+- 84238232 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84238232 [33 ký tự]: 84238232 - - - - Cân điện tử khác
+- 84238239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238239 [26 ký tự]: 84238239 - - - - Loại khác
+- 8423824 TIEU_DE
+    tieuDe.8423824 [44 ký tự]: 8423824 Có khả năng cân tối đa trên 1.000 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có khả năng cân tối đa" · [GIỚI HẠN] "trên 1.000 kg"
+- 84238241 DONG8
+    tax.84238241 [55 ký tự]: 84238241 - - - - Cân điện tử, dùng để cân xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để cân xe có động cơ"
+- 84238242 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84238242 [33 ký tự]: 84238242 - - - - Cân điện tử khác
+- 84238249 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238249 [26 ký tự]: 84238249 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842382; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842382",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842382",
+  "dong8": {
+    "84238231": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ]
+    },
+    "84238232": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": true
+    },
+    "84238241": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ]
+    },
+    "84238242": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {
+    "8423823": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "kg"
+        }
+      ]
+    },
+    "8423824": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 1000,
+          "donVi": "kg"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8423823",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8423823: \"không quá 1.000 kg\" ⇒ khoiLuong <= 1000 kg"
+    },
+    {
+      "ma": "84238231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84238231: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ hoatDongBangDien CO, dungCho xe có động cơ"
+    },
+    {
+      "ma": "84238232",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84238232: \"Cân điện tử khác\" ⇒ hoatDongBangDien CO, phanConLai true"
+    },
+    {
+      "ma": "8423824",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8423824: \"trên 1.000 kg\" ⇒ khoiLuong > 1000 kg"
+    },
+    {
+      "ma": "84238241",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84238241: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ hoatDongBangDien CO, dungCho xe có động cơ"
+    },
+    {
+      "ma": "84238242",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84238242: \"Cân điện tử khác\" ⇒ hoatDongBangDien CO, phanConLai true"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84238231:dieu-kien-so-co-khong-co-trong-trich:hoatDongBangDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong3-muc:84238232:dieu-kien-so-co-khong-co-trong-trich:hoatDongBangDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong3-muc:84238241:dieu-kien-so-co-khong-co-trong-trich:hoatDongBangDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong3-muc:84238242:dieu-kien-so-co-khong-co-trong-trich:hoatDongBangDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 842389 ===
+--- GÓI ---
+# 842389 — Loại khác
+
+842389 — Weighing machines; other than personal, conveyor or constant weight scales, having a maximum weighing capacity exceeding 5000kg
+  84238910 Cân điện tử
+  84238990 Loại khác  [LK]
+
+- 84238910 DONG8
+    tax.84238910 [26 ký tự]: 84238910 - - - Cân điện tử
+- 84238990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238990 [24 ký tự]: 84238990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842389; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842389",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842389",
+  "dong8": {
+    "84238910": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84238910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84238910: \"Cân điện tử\" ⇒ hoatDongBangDien CO"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:84238910:dieu-kien-so-co-khong-co-trong-trich:hoatDongBangDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+
+=== PN6 842390 ===
+--- GÓI ---
+# 842390 — Quả cân của các loại cân; các bộ phận của cân
+
+842390 — Weighing machines; weights of all kinds, parts of weighing machinery
+  84239010 Quả cân
+  84239030 Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ (SEN)
+  84239040 Bộ phận của các loại cân khác
+
+- 84239010 DONG8
+    tax.84239010 [20 ký tự]: 84239010 - - Quả cân
+- 84239030 DONG8
+    tax.84239030 [81 ký tự]: 84239030 - - Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ (SEN)
+    sen.84239030 [1136 ký tự]: BỘ PHẬN CỦA CÂN ĐIỆN TỬ, TRỪ LOẠI SỬ DỤNG ĐỂ CÂN XE CÓ ĐỘNG CƠ Một vài ví dụ về bộ phận của cân điện tử, trừ loại sử dụng để cân xe (Examples of parts of weighing machinery using electronic means fo ● Weigh Modules (Mô-đun cân) ● Scale platform and weighing tray (Bàn cân và đĩa cân) ● Housing, casing and other parts (Thân, vỏ và các bộ phận khác) Một vài ví dụ về bộ phận của cân điện tử, loại sử dụng để cân xe tải ● Mô-đun cân - loại dùng để cân xe chở hàng, thường sử dụng mô- đun kiểu nén. ● Cầu của cân điện tử (kiểu chìm, kiểu nửa nổi nửa chìm, kiểu nổi, kiểu di động) ● Axle pads (two-pad or four-pad type) (Bàn Cân trục (loại 2 bàn hoặc 4 bàn) Một vài ví dụ về các bộ phận dùng chung của (các loại) cân điện tử ● Bộ chỉ thị cân/đầu hiển thị cân (Terminal/Indicator) ● Tấm mạch in (PCB boards) Các bộ phận của cân thường được xác định dựa trên tên bộ phận và số hiệu của chúng. Để phân loại bộ phận của cân điện tử loại thường dùng để cân xe có động cơ và loại cân khác, trong trường hợp không xác định được mục đích sử dụng cụ thể, phải áp dụng Quy tắc 3c của Quy tắc tổng quát về phân loại hàng hóa theo Danh mục HS.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cân điện tử" · [GIỚI HẠN] "trừ loại sử dụng để cân xe có động cơ"
+- 84239040 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84239040 [42 ký tự]: 84239040 - - Bộ phận của các loại cân khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của các loại cân khác"
+
+Nguồn cấp phân nhóm: wco.842390; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842390",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842390",
+  "dong8": {
+    "84239010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả cân"
+        }
+      ]
+    },
+    "84239030": {
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cân điện tử"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cân xe có động cơ",
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    },
+    "84239040": {
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84239010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84239010: \"Quả cân\" ⇒ tenLoai Quả cân"
+    },
+    {
+      "ma": "84239030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84239030: \"Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ\" ⇒ laBoPhan CO, dungCho cân điện tử, loại trừ cân xe có động cơ"
+    },
+    {
+      "ma": "84239040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84239040: \"Bộ phận của các loại cân khác\" ⇒ laBoPhan CO, phanConLai true"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-ve-gioi-han-bi-bo:84239040:của các loại cân khác
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+    ✗ cong2-chong-lan:84239010+84239030:dungCho=cân điện tử,laBoPhan=true,tenLoai=Quả cân:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan-truc:84239010:84239030
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho …
+    ✗ cong2-chong-lan-truc:84239030:84239010
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 853929 ===
+--- GÓI ---
+# 853929 — Loại khác
+
+853929 — Lamps; filament, (excluding ultra-violet or infra-red), n.e.c. in item no. 8539.2
+  85392910 Dùng cho thiết bị y tế
+  85392920 Dùng cho xe có động cơ
+  85392930 Bóng đèn phản xạ khác
+  [8539294] Bóng đèn flash; bóng đèn hiệu cỡ nhỏ, danh định đến 2,25 V
+    85392941 Loại thích hợp dùng cho thiết bị y tế
+    85392949 Loại khác  [LK]
+  85392950 Loại khác, có công suất trên 200 W nhưng không quá 300 W và điện áp trên 100 V  [LK có điều kiện]
+  85392960 Loại khác, có công suất không quá 200 W và điện áp không quá 100 V  [LK có điều kiện]
+  85392990 Loại khác  [LK]
+
+- 85392910 DONG8
+    tax.85392910 [37 ký tự]: 85392910 - - - Dùng cho thiết bị y tế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho thiết bị y tế"
+- 85392920 DONG8
+    tax.85392920 [37 ký tự]: 85392920 - - - Dùng cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ"
+- 85392930 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85392930 [36 ký tự]: 85392930 - - - Bóng đèn phản xạ khác
+- 8539294 TIEU_DE
+    tieuDe.8539294 [66 ký tự]: 8539294 Bóng đèn flash; bóng đèn hiệu cỡ nhỏ, danh định đến 2,25 V
+- 85392941 DONG8
+    tax.85392941 [54 ký tự]: 85392941 - - - - Loại thích hợp dùng cho thiết bị y tế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "thích hợp dùng cho thiết bị y tế"
+- 85392949 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85392949 [26 ký tự]: 85392949 - - - - Loại khác
+- 85392950 DONG8
+    tax.85392950 [93 ký tự]: 85392950 - - - Loại khác, có công suất trên 200 W nhưng không quá 300 W và điện áp trên 100 V
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất trên 200 W nhưng không quá 300 W" · [GIỚI HẠN] "điện áp trên 100 V"
+- 85392960 DONG8
+    tax.85392960 [81 ký tự]: 85392960 - - - Loại khác, có công suất không quá 200 W và điện áp không quá 100 V
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất không quá 200 W" · [GIỚI HẠN] "điện áp không quá 100 V"
+- 85392990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85392990 [24 ký tự]: 85392990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853929; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853929",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-853929",
+  "dong8": {
+    "85392910": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị y tế"
+        }
+      ]
+    },
+    "85392920": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ]
+    },
+    "85392930": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bóng đèn phản xạ"
+        }
+      ],
+      "phanConLai": true
+    },
+    "85392941": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị y tế"
+        }
+      ]
+    },
+    "85392950": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 200,
+          "donVi": "W"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 300,
+          "donVi": "W"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 100,
+          "donVi": "V"
+        }
+      ]
+    },
+    "85392960": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 200,
+          "donVi": "W"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 100,
+          "donVi": "V"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8539294": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Bóng đèn flash"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bóng đèn hiệu"
+              },
+              {
+                "fact": "dienAp",
+                "op": "<=",
+                "value": 2.25,
+                "donVi": "V"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85392910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392910: \"Dùng cho thiết bị y tế\" ⇒ dungCho thiết bị y tế"
+    },
+    {
+      "ma": "85392920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392920: \"Dùng cho xe có động cơ\" ⇒ dungCho xe có động cơ"
+    },
+    {
+      "ma": "85392930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392930: \"Bóng đèn phản xạ khác\" ⇒ tenLoai Bóng đèn phản xạ, phanConLai true"
+    },
+    {
+      "ma": "8539294",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8539294: \"Bóng đèn flash; bóng đèn hiệu cỡ nhỏ, danh định đến 2,25 V\" ⇒ HOAC bóng đèn flash hoặc bóng đèn hiệu đến 2.25 V"
+    },
+    {
+      "ma": "85392941",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392941: \"thích hợp dùng cho thiết bị y tế\" ⇒ dungCho thiết bị y tế"
+    },
+    {
+      "ma": "85392950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392950: \"công suất trên 200 W nhưng không quá 300 W và điện áp trên 100 V\" ⇒ congSuat > 200 W, <= 300 W, dienAp > 100 V"
+    },
+    {
+      "ma": "85392960",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392960: \"công suất không quá 200 W và điện áp không quá 100 V\" ⇒ congSuat <= 200 W, dienAp <= 100 V"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:85392910+85392941:dienAp=99.9999,dungCho=thiết bị y tế,tenLoai=Bóng đèn flash:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:85392920+85392949:dienAp=99.9999,dungCho=xe có động cơ,tenLoai=Bóng đèn flash:khong-tat-dinh
+    ✗ cong2-chong-lan-truc:8539294:85392910,85392920
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho …
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 853990 ===
+--- GÓI ---
+# 853990 — Bộ phận
+
+853990 — Lamps; parts of the lamps of heading no. 8539
+  85399010 Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc
+  85399020 Loại khác, dùng cho đèn của xe có động cơ  [LK có điều kiện]
+  85399030 Loại khác, của phân nhóm 8539.51.00  [LK có điều kiện]
+  85399090 Loại khác  [LK]
+
+- 85399010 DONG8
+    tax.85399010 [96 ký tự]: 85399010 - - Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho bóng đèn huỳnh quang" · [GIỚI HẠN] "dùng cho bóng đèn dây tóc"
+- 85399020 DONG8
+    tax.85399020 [54 ký tự]: 85399020 - - Loại khác, dùng cho đèn của xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho đèn của xe có động cơ"
+- 85399030 DONG8
+    tax.85399030 [48 ký tự]: 85399030 - - Loại khác, của phân nhóm 8539.51.00
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của phân nhóm 8539.51.00"
+- 85399090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85399090 [22 ký tự]: 85399090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853990; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853990",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-853990",
+  "dong8": {
+    "85399010": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Nắp bịt"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "nhôm",
+                "viTri": "CHINH"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "bóng đèn huỳnh quang"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đui xoáy"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "nhôm",
+                "viTri": "CHINH"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "bóng đèn dây tóc"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "85399020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đèn của xe có động cơ"
+        }
+      ]
+    },
+    "85399030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8539.51.00"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "85399010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85399010: \"Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc\" ⇒ HOAC nắp bịt nhôm dùng cho bóng đèn huỳnh quang, đui xoáy nhôm dùng cho bóng đèn dây tóc"
+    },
+    {
+      "ma": "85399020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85399020: \"Loại khác, dùng cho đèn của xe có động cơ\" ⇒ dungCho đèn của xe có động cơ"
+    },
+    {
+      "ma": "85399030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85399030: \"Loại khác, của phân nhóm 8539.51.00\" ⇒ dungCho 8539.51.00"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-dong-khong-toi-duoc:85399030
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 903033 ===
+--- GÓI ---
+# 903033 — Loại khác, không bao gồm thiết bị ghi
+
+903033 — Instruments and apparatus; for measuring or checking voltage, current, resistance or power, without a recording device (excluding multimeters)
+  90303310 Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+  90303320 Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định
+  90303330 Ampe kế và vôn kế dùng cho xe có động cơ
+  90303340 Dụng cụ đo điện trở khác
+  90303390 Loại khác  [LK]
+
+- 90303310 DONG8
+    tax.90303310 [150 ký tự]: 90303310 - - - Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp"
+- 90303320 DONG8
+    tax.90303320 [271 ký tự]: 90303320 - - - Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được thiết kế" · [GIỚI HẠN] "để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà" · [GIỚI HẠN] "có thể làm hỏng mạch điện tử"
+- 90303330 DONG8
+    tax.90303330 [55 ký tự]: 90303330 - - - Ampe kế và vôn kế dùng cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe có động cơ"
+- 90303340 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.90303340 [39 ký tự]: 90303340 - - - Dụng cụ đo điện trở khác
+- 90303390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90303390 [24 ký tự]: 90303390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903033; chú giải: nhom9030.nhom, ch90.chuong
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "903033",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-903033",
+  "dong8": {
+    "90303310": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    },
+    "90303320": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dụng cụ và thiết bị đo trở kháng"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "phóng tĩnh điện"
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "thiết bị điều khiển tĩnh điện",
+                  "thiết bị tĩnh điện nối đất",
+                  "thiết bị tĩnh điện cố định"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "90303330": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ampe kế",
+            "vôn kế"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ]
+    },
+    "90303340": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dụng cụ đo điện trở"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "90303310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90303310: đo kiểm tra điện áp, dòng điện, điện trở, công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp ⇒ congDung tấm mạch in, tấm dây in, mạch in đã lắp ráp"
+    },
+    {
+      "ma": "90303320",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90303320: Dụng cụ thiết bị đo trở kháng cảnh báo phóng tĩnh điện; dụng cụ kiểm tra thiết bị tĩnh điện ⇒ HOAC"
+    },
+    {
+      "ma": "90303330",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90303330: \"Ampe kế và vôn kế dùng cho xe có động cơ\" ⇒ tenLoai [Ampe kế, vôn kế], dungCho xe có động cơ"
+    },
+    {
+      "ma": "90303340",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90303340: \"Dụng cụ đo điện trở khác\" ⇒ tenLoai Dụng cụ đo điện trở, phanConLai true"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:90303320:dieu-kien-so-cong-dung-khong-co-trong-trich:thiết bị tĩnh điện cố định
+      → Giá trị CONG_DUNG không phải chuỗi con của câu trích. Sửa: Chép chuỗi con nguyên văn từ trich.
+    ✗ cong3-liet-ke-trong-mot-chuoi:90303320:tenLoai
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và 
+    ✗ cong5-ve-gioi-han-bi-bo:90303320:được thiết kế
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+    ✗ cong5-ve-gioi-han-bi-bo:90303320:có thể làm hỏng mạch điện tử
+    ✗ cong2-chong-lan:90303310+90303330:congDung=tấm mạch in,dungCho=xe có động cơ,tenLoai=Ampe kế:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:90303320+90303330:congDung=thiết bị điều khiển tĩnh điện,dungCho=xe có động cơ,tenLoai=Ampe kế:khong-tat-dinh
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 903090 ===
+--- GÓI ---
+# 903090 — Bộ phận và phụ kiện
+
+903090 — Instruments, apparatus for measuring, checking electrical quantities, not meters of heading no. 9028; parts and accessories, for measuring or detecting alpha, beta, gamma, x-ray, cosmic and other radiations
+  90309010 Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+  90309030 Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309040 Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309090 Loại khác  [LK]
+
+- 90309010 DONG8
+    tax.90309010 [113 ký tự]: 90309010 - - Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82"
+- 90309030 DONG8
+    tax.90309030 [132 ký tự]: 90309030 - - Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị quang học" · [GIỚI HẠN] "để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309040 DONG8
+    tax.90309040 [145 ký tự]: 90309040 - - Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị" · [GIỚI HẠN] "dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90309090 [22 ký tự]: 90309090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903090; chú giải: nhom9030.nhom, ch90.chuong
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "903090",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-903090",
+  "dong8": {
+    "90309010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "9030.40",
+            "9030.82"
+          ]
+        }
+      ]
+    },
+    "90309030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dụng cụ và thiết bị quang học"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    },
+    "90309040": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "90309010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90309010: \"thuộc phân nhóm 9030.40 hoặc 9030.82\" ⇒ dungCho [9030.40, 9030.82]"
+    },
+    {
+      "ma": "90309030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90309030: của dụng cụ quang học đo kiểm tấm mạch in/tấm dây in và mạch in đã lắp ráp ⇒ dungCho dụng cụ và thiết bị quang học, congDung [tấm mạch in, tấm dây in, mạch in đã lắp ráp]"
+    },
+    {
+      "ma": "90309040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90309040: đo kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp ⇒ congDung [tấm mạch in, tấm dây in, mạch in đã lắp ráp]"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:90309010+90309040:congDung=tấm mạch in,dungCho=9030.40:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:90309030+90309040:congDung=tấm mạch in,dungCho=dụng cụ và thiết bị quang học:khong-tat-dinh
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 391890 ===
+--- GÓI ---
+# 391890 — Từ plastic khác
+
+391890 — Floor, wall or ceiling coverings; of plastics (excluding polymers of vinyl chloride), whether or not self-adhesive, in rolls or in the form of tiles
+  [3918901] Tấm trải sàn
+    39189011 Dạng tấm rời để ghép, bằng polyetylen
+    39189013 Loại khác, bằng polyetylen  [LK có điều kiện]
+    39189014 Từ các dẫn xuất hóa học của cao su tự nhiên
+    39189015 Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39189016 Từ sợi lưu hóa
+    39189019 Loại khác  [LK]
+  [3918909] Loại khác
+    39189091 Từ polyetylen
+    39189092 Từ các dẫn xuất hóa học của cao su tự nhiên
+    39189093 Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39189094 Từ sợi lưu hóa
+    39189099 Loại khác  [LK]
+
+- 3918901 TIEU_DE
+    tieuDe.3918901 [20 ký tự]: 3918901 Tấm trải sàn
+- 39189011 DONG8
+    tax.39189011 [52 ký tự]: 39189011 - - - Dạng tấm rời để ghép, bằng polyetylen
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ghép" · [GIỚI HẠN] "bằng polyetylen"
+- 39189013 DONG8
+    tax.39189013 [41 ký tự]: 39189013 - - - Loại khác, bằng polyetylen
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng polyetylen"
+- 39189014 DONG8
+    tax.39189014 [58 ký tự]: 39189014 - - - Từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39189015 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39189015 [177 ký tự]: 39189015 - - - Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39189016 DONG8
+    tax.39189016 [29 ký tự]: 39189016 - - - Từ sợi lưu hóa
+- 39189019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39189019 [24 ký tự]: 39189019 - - - Loại khác
+- 3918909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3918909 [17 ký tự]: 3918909 Loại khác
+- 39189091 DONG8
+    tax.39189091 [28 ký tự]: 39189091 - - - Từ polyetylen
+- 39189092 DONG8
+    tax.39189092 [58 ký tự]: 39189092 - - - Từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39189093 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39189093 [177 ký tự]: 39189093 - - - Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39189094 DONG8
+    tax.39189094 [29 ký tự]: 39189094 - - - Từ sợi lưu hóa
+- 39189099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39189099 [24 ký tự]: 39189099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391890; chú giải: nhom3918.nhom, ch39.chuong
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "391890",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-391890",
+  "dong8": {
+    "39189011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tấm rời để ghép"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CHINH"
+        }
+      ]
+    },
+    "39189013": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CHINH"
+        }
+      ]
+    },
+    "39189014": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "cao su",
+          "viTri": "CHINH"
+        }
+      ]
+    },
+    "39189015": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xenlulo"
+        }
+      ],
+      "phanConLai": true
+    },
+    "39189016": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sợi lưu hóa"
+        }
+      ]
+    },
+    "39189091": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CHINH"
+        }
+      ]
+    },
+    "39189092": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "cao su",
+          "viTri": "CHINH"
+        }
+      ]
+    },
+    "39189093": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xenlulo"
+        }
+      ],
+      "phanConLai": true
+    },
+    "39189094": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sợi lưu hóa"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "3918901": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "Tấm trải sàn"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "3918901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3918901: \"Tấm trải sàn\" ⇒ congDung Tấm trải sàn"
+    },
+    {
+      "ma": "39189011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39189011: \"Dạng tấm rời để ghép, bằng polyetylen\" ⇒ tenLoai tấm rời để ghép, chatLieu plastic (polyetylen đọc plastic)"
+    },
+    {
+      "ma": "39189013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39189013: \"bằng polyetylen\" ⇒ chatLieu plastic"
+    },
+    {
+      "ma": "39189014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39189014: \"cao su tự nhiên\" ⇒ chatLieu cao su"
+    },
+    {
+      "ma": "39189015",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39189015: \"Từ các polyme trùng hợp khác... xenlulo\" ⇒ tenLoai xenlulo, phanConLai true"
+    },
+    {
+      "ma": "39189016",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39189016: \"Từ sợi lưu hóa\" ⇒ tenLoai sợi lưu hóa"
+    },
+    {
+      "ma": "39189091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39189091: \"Từ polyetylen\" ⇒ chatLieu plastic"
+    },
+    {
+      "ma": "39189092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39189092: \"cao su tự nhiên\" ⇒ chatLieu cao su"
+    },
+    {
+      "ma": "39189093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39189093: \"Từ các polyme trùng hợp khác... xenlulo\" ⇒ tenLoai xenlulo, phanConLai true"
+    },
+    {
+      "ma": "39189094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39189094: \"Từ sợi lưu hóa\" ⇒ tenLoai sợi lưu hóa"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:39189014+39189016:chatLieu=CHINH:cao su,congDung=Tấm trải sàn,tenLoai=sợi lưu hóa:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:39189091+39189094:chatLieu=CHINH:plastic,congDung=ẑẑẑ,tenLoai=sợi lưu hóa:khong-tat-dinh
+    ✗ cong2-chong-lan:39189092+39189094:chatLieu=CHINH:cao su,congDung=ẑẑẑ,tenLoai=sợi lưu hóa:khong-tat-dinh
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 640620 ===
+--- GÓI ---
+# 640620 — Đế ngoài và gót giày, bằng cao su hoặc plastic
+
+640620 — Footwear; parts, outer soles and heels, of rubber or plastics
+  64062010 Bằng cao su
+  64062020 Bằng plastic
+
+- 64062010 DONG8
+    tax.64062010 [24 ký tự]: 64062010 - - Bằng cao su
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su"
+- 64062020 DONG8
+    tax.64062020 [25 ký tự]: 64062020 - - Bằng plastic
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng plastic"
+
+Nguồn cấp phân nhóm: wco.640620; chú giải: nhom6406.nhom, ch64.chuong, phan64.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "640620",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-640620",
+  "dong8": {
+    "64062010": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "cao su",
+          "viTri": "CHINH"
+        }
+      ]
+    },
+    "64062020": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CHINH"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "64062010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64062010: \"Bằng cao su\" ⇒ chatLieu cao su"
+    },
+    {
+      "ma": "64062020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64062020: \"Bằng plastic\" ⇒ chatLieu plastic"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-khong-phu-kin:640620:chatLieu=CHINH:giấy
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
