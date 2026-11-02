@@ -1,0 +1,214 @@
+{
+ "nhom": "3302",
+ "phamVi": {
+  "text": "Hỗn hợp các chất thơm và hỗn hợp (kể cả dung dịch cồn) có thành phần cơ bản là một hoặc nhiều chất thơm dùng làm nguyên liệu thô trong công nghiệp; các chế phẩm khác có thành phần cơ bản là chất thơm dùng sản xuất đồ uống.",
+  "nguon": "nhom3302.nhom",
+  "trich": "Nhóm này bao gồm các hỗn hợp dưới đây với điều kiện chúng được dùng như nguyên liệu thô trong ngành công nghiệp sản xuất nước hoa, thực phẩm hoặc đồ uống (như là, trong sản xuất mứt kẹo, thực phẩm hoặc các chất tạo hương cho đồ uống) hoặc trong các ngành công nghiệp khác (như là, sản xuất xà phòng)",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_hon_hop_chat_thom_lam_nguyen_lieu_cong_nghiep_hoac_pha_che_do_uong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch33.chuong",
+   "trich": "Khái niệm \"chất thơm\" trong nhóm 33.02 chỉ liên quan tới các chất thuộc nhóm 33.01, các thành phần thơm tách từ các chất đó hoặc chất thơm tổng hợp.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Chế phẩm sản xuất đồ uống có thành phần cơ bản không phải chất thơm nhóm 33.02",
+   "sangNhom": "2106",
+   "nguon": "nhom3302.nhom",
+   "trich": "Nhóm này không bao gồm các chế phẩm có hoặc không có cồn được dùng trong sản xuất đồ uống, với thành phần cơ bản là các chất trừ các chất thơm đã được mô tả trong Chú giải 2 của Chương này (nhóm 21.06, trừ khi chúng chưa được chi tiết hoặc ghi ở nơi khác trong Danh mục).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là chế phẩm sản xuất đồ uống không dựa trên chất thơm của Chú giải 2 Chương 33?",
+   "neuCo": "2106",
+   "neuKhong": "3302",
+   "nguon": "nhom3302.nhom",
+   "trich": "Nhóm này không bao gồm các chế phẩm có hoặc không có cồn được dùng trong sản xuất đồ uống, với thành phần cơ bản là các chất trừ các chất thơm đã được mô tả trong Chú giải 2 của Chương này (nhóm 21.06, trừ khi chúng chưa được chi tiết hoặc ghi ở nơi khác trong Danh mục).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "33021010",
+   "dieuKien": "Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng lỏng",
+   "loaiKhac": false,
+   "nguon": "tax.33021010",
+   "trich": "33021010 - - Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng lỏng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "33021020",
+   "dieuKien": "Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng khác ",
+   "loaiKhac": false,
+   "nguon": "tax.33021020",
+   "trich": "33021020 - - Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng khác ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "33021030",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.33021030",
+   "trich": "33021030 - - Loại khác, không chứa cồn",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "330210",
+    "truAnhEm": [
+     "33021010",
+     "33021020"
+    ],
+    "truDayDu": [
+     "33021010",
+     "33021020"
+    ],
+    "toTienCoTen": "330210",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "33021090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.33021090",
+   "trich": "33021090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "330210",
+    "truAnhEm": [
+     "33021010",
+     "33021020",
+     "33021030"
+    ],
+    "truDayDu": [
+     "33021010",
+     "33021020",
+     "33021030"
+    ],
+    "toTienCoTen": "330210",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "33029000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.33029000",
+   "trich": "33029000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "3302",
+    "truAnhEm": [
+     "330210"
+    ],
+    "truDayDu": [
+     "330210"
+    ],
+    "toTienCoTen": "3302",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3302",
+    "cap": 4,
+    "cha": "33",
+    "tenVi": "Hỗn hợp các chất thơm và các hỗn hợp (kể cả dung dịch có cồn) với thành phần chủ yếu gồm một hoặc nhiều các chất thơm này, dùng làm nguyên liệu thô trong công nghiệp; các chế phẩm khác làm từ các chất thơm, dùng cho sản xuất đồ uống.",
+    "tenEn": "Odoriferous substances and mixtures (including alcoholic solutions) with a basis of one or more of these substances, of a kind used as raw materials in industry; other preparations based on odoriferous substances, of a kind used for beverage manufacture",
+    "suyRa": false
+   },
+   {
+    "id": "330210",
+    "cap": 6,
+    "cha": "3302",
+    "tenVi": "Loại dùng trong công nghiệp thực phẩm hoặc đồ uống",
+    "tenEn": "Odoriferous substances and mixtures; of a kind used in the food or drink industries",
+    "suyRa": false
+   },
+   {
+    "id": "33021010",
+    "cap": 8,
+    "cha": "330210",
+    "tenVi": "Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng lỏng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "33021020",
+    "cap": 8,
+    "cha": "330210",
+    "tenVi": "Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng khác",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "33021030",
+    "cap": 8,
+    "cha": "330210",
+    "tenVi": "Loại khác, không chứa cồn",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "33021090",
+    "cap": 8,
+    "cha": "330210",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "33029000",
+    "cap": 8,
+    "cha": "3302",
+    "tenVi": "Loại khác",
+    "tenEn": "Odoriferous substances and mixtures; used as raw materials in industries other than the food or drink industries",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "330290"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch33.chuong",
+  "nhom3302.nhom",
+  "tax.33021010",
+  "tax.33021020",
+  "tax.33021030",
+  "tax.33021090",
+  "tax.33029000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:18:11.998Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

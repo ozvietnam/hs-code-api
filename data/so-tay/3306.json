@@ -1,0 +1,152 @@
+{
+ "nhom": "3306",
+ "phamVi": {
+  "text": "Chế phẩm dùng cho vệ sinh răng hoặc miệng, kể cả bột và bột nhão làm chặt hàm răng giả; chỉ tơ nha khoa làm sạch kẽ răng đóng gói bán lẻ.",
+  "nguon": "nhom3306.nhom",
+  "trich": "Nhóm này gồm các chế phẩm dùng vệ sinh răng hoặc miệng như: … (I) Thuốc đánh răng ở tất cả các dạng … (II) Các chế phẩm dùng để xúc miệng và làm thơm miệng. … (III) Các loại kem, bột và viên nén làm chặt hàm răng giả. … Nhóm này cũng bao gồm chỉ tơ nha khoa dùng làm sạch kẽ răng, đã được đóng gói riêng để bán lẻ (sợi cọ răng).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "33061010",
+   "dieuKien": "Bột và bột nhão dùng ngừa bệnh cho răng (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.33061010",
+   "trich": "33061010 - - Bột và bột nhão dùng ngừa bệnh cho răng (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "33061090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.33061090",
+   "trich": "33061090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "330610",
+    "truAnhEm": [
+     "33061010"
+    ],
+    "truDayDu": [
+     "33061010"
+    ],
+    "toTienCoTen": "330610",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "33062000",
+   "dieuKien": "Chỉ tơ nha khoa làm sạch kẽ răng (dental floss)",
+   "loaiKhac": false,
+   "nguon": "tax.33062000",
+   "trich": "33062000 - Chỉ tơ nha khoa làm sạch kẽ răng (dental floss)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "33069000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.33069000",
+   "trich": "33069000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "3306",
+    "truAnhEm": [
+     "330610",
+     "33062000"
+    ],
+    "truDayDu": [
+     "330610",
+     "33062000"
+    ],
+    "toTienCoTen": "3306",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3306",
+    "cap": 4,
+    "cha": "33",
+    "tenVi": "Chế phẩm dùng cho vệ sinh răng hoặc miệng, kể cả bột và bột nhão làm chặt chân răng; chỉ tơ nha khoa làm sạch kẽ răng (dental floss), đã đóng gói để bán lẻ.",
+    "tenEn": "Oral or dental hygiene preparations; including fixative pastes and powders; yarn used to clean between the teeth (dental floss), in individual retail packages",
+    "suyRa": false
+   },
+   {
+    "id": "330610",
+    "cap": 6,
+    "cha": "3306",
+    "tenVi": "Sản phẩm đánh răng",
+    "tenEn": "Oral or dental hygiene preparations; dentifrices",
+    "suyRa": false
+   },
+   {
+    "id": "33061010",
+    "cap": 8,
+    "cha": "330610",
+    "tenVi": "Bột và bột nhão dùng ngừa bệnh cho răng (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "33061090",
+    "cap": 8,
+    "cha": "330610",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "33062000",
+    "cap": 8,
+    "cha": "3306",
+    "tenVi": "Chỉ tơ nha khoa làm sạch kẽ răng (dental floss)",
+    "tenEn": "Oral or dental hygiene preparations; yarn used to clean between the teeth (dental floss)",
+    "suyRa": false,
+    "laPhanNhom": "330620"
+   },
+   {
+    "id": "33069000",
+    "cap": 8,
+    "cha": "3306",
+    "tenVi": "Loại khác",
+    "tenEn": "Oral or dental hygiene preparations; other than dentifrices",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "330690"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3306.nhom",
+  "tax.33061010",
+  "tax.33061090",
+  "tax.33062000",
+  "tax.33069000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:18:12.017Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 5,
+  "loai": 1,
+  "nguonBiCat": []
+ }
+}
