@@ -1,0 +1,79 @@
+{
+ "nhom": "2801",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-11-02T08:45:00+07:00",
+ "soat": 11,
+ "giu": 11,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 1,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 081 — nhóm 2801 (11 mục: 5 trong phạm vi mục 4 [1 phamVi + 1 loaiTru + 3 phanBiet] + 6 đọc thêm [3 tieuChi6 + 3 dong8]). Đọc LẠI từng mục cùng nguồn tmp/so-tay/nguon/2801.txt. XOÁ 0, SỬA 0, CHÈN 1. KIỂM MÁY (tự viết, không tin máy nhà): byte-exact 11/11 câu trích có thật trong đúng khối nguồn (so khớp từng byte, không nén squash); không có trích vượt 300 ký tự; chiều Có/Không của cả 3 phanBiet đúng; mã ngoài nhóm trong câu trích (28.44) có thật. NỀN NHÀ đo trước khi kết luận: `phanBiet` có `neuKhong` = chính nhóm là mẫu chuẩn (951/1197 mục trong data/so-tay); câu hỏi dạng 'Hàng này là X không?' là mẫu nhà (43 mục, vd 2710/2714/2715) — KHÔNG xoá vì thấy 'hỏi tuần tự'.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` = 'Nhóm này bao gồm các phi kim như halogen, trừ nguyên tố phóng xạ nhân tạo (nhóm 28.44)' — câu định nghĩa phạm vi nhóm, byte-exact, và nguyên văn cả VẾ LOẠI TRỪ (28.44) ⇒ phamVi không bị cắt mất ngoại lệ. `text` chép lại đúng phạm vi, không thêm hiểu biết riêng. Hợp lệ làm phamVi lẫn làm căn cứ cho loaiTru[0] (cùng một câu nguồn — đúng mẫu nhà 196/321 nhóm)."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn nêu ĐÍCH DANH nhóm đích trong chính câu trích: 'trừ nguyên tố phóng xạ nhân tạo (nhóm 28.44)'. `dieuKien` = 'Nguyên tố phóng xạ nhân tạo' chép đúng vế bị loại; `sangNhom` = 2844 khớp số trong trích. Không cắt trích né câu rào (không có 'thường'/'tùy từng trường hợp' trong câu)."
+  },
+  {
+   "index": "loaiTru",
+   "hanhDong": "chen",
+   "lyDo": "CHÈN — THIẾU MỘT LOẠI TRỪ CÓ ĐÍCH DANH. Nguồn nhom2801.nhom, mục (C) BROM, ghi nguyên văn: 'Nhóm này loại trừ các dung dịch brom trong axit axetic (nhóm 38.24).' Đây là loại trừ cấp NHÓM của chính nhóm 2801 với đích 38.24 nêu rõ trong câu ⇒ đủ điều kiện luật 3 (không phải ví dụ linh kiện, không phải dải, không phải 'Chương N'). Bản soạn bỏ sót mục này. Mục chèn dùng NGUYÊN VĂN: `dieuKien` = 'Các dung dịch brom trong axit axetic', `sangNhom` = '3824', `nguon` = 'nhom2801.nhom', `trich` = câu nguyên văn. Không thêm `phanBiet` kèm: nhóm này đã có 3 phanBiet và runtime chỉ lấy 4 mục đầu (lib/so-tay-gates.js:141) — một phanBiet thêm sẽ rơi ngoài cửa sổ; còn `loaiTru` thì runtime dùng ĐỦ mọi mục (lib/so-tay-runtime.js#canGiaiTrinh) nên loại trừ này vẫn được báo 'cần giải trình hồ sơ' khi 38.24 là ứng viên.",
+   "muc": {
+    "dieuKien": "Các dung dịch brom trong axit axetic",
+    "sangNhom": "3824",
+    "nguon": "nhom2801.nhom",
+    "trich": "Nhóm này loại trừ các dung dịch brom trong axit axetic (nhóm 38.24)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là clo không?' → có→28011000 (dòng Clo của biểu thuệ), không→2801 (chính nhóm — mẫu nhà 951/1197). Chiều Có/Không đúng: câu trích nói về CLO và dòng 28011000 tên là 'Clo'. Trích byte-exact trong khối nhom2801.nhom, ngay sau tiêu đề '(B) CLO' nên chủ thể rõ."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là iot không?' → có→28012000 (dòng Iot), không→2801. Chiều đúng; trích byte-exact, ngay sau tiêu đề '(D) IOT'."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là flo không?' → có→28013000 (dòng 'Flo; brom' của biểu thuệ), không→2801. Lưu ý cho người duyệt: dòng 28013000 GỘP flo VÀ brom, nên nhánh 'không' (→2801) không đưa brom về 28013000 — nhưng nguồn có mục '(C) BROM' riêng nên người soạn có thể khai thêm phanBiet 'Hàng này là brom không?' (có→28013000) nhưng khi đó mục này sẽ rơi ngoài cửa sổ 4 phanBiet đầu của runtime; câu hỏi hiện tại không SAI, nên giữ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280110: `trich` = '280110 Chlorine' byte-exact trong wco.280110; `value` = 'Clo' là tên dòng biểu thuệ 28011000 ('Clo') — không thêm hiểu biết riêng; `fact` 'loai_vat' là khoá tự do đã có 31 mục trong sổ tay nhà."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280120: 'Iot' — `trich` = '280120 Iodine' byte-exact; tên khớp dòng biểu thuệ 28012000 ('Iot')."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280130: `value` = 'Flo; brom' chép đúng tên dòng biểu thuệ 28013000 ('Flo; brom'); `trich` = '280130 Fluorine; bromine' byte-exact trong wco.280130. (Ghi nhận: tên WCO tiếng Anh còn 'fluorine' chưa dịch trong `trich` — `trich` phải nguyên văn nên không sửa; `value` mới là bản Việt theo biểu thuế.)"
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28011000 - Clo; `trich` byte-exact khối tax.28011000; `loaiKhac` máy suy = false."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28012000 - Iot; `trich` byte-exact; `loaiKhac` = false."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28013000 - Flo; brom; `trich` byte-exact; `loaiKhac` = false."
+  }
+ ]
+}

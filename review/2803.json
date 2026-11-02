@@ -1,0 +1,104 @@
+{
+ "nhom": "2803",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-11-02T09:00:00+07:00",
+ "soat": 17,
+ "giu": 15,
+ "sua": 2,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 081 — nhóm 2803 (17 mục: 13 trong phạm vi mục 4 [1 phamVi + 6 loaiTru + 6 phanBiet] + 4 dong8 đọc thêm). Đọc LẠI từng mục cùng nguồn tmp/so-tay/nguon/2803.txt. XOÁ 0, SỬA 2, GIỮ 15. KIỂM MÁY (tự viết, không tin máy nhà): byte-exact 17/17 câu trích có thật trong đúng khối nguồn (so khớp từng byte, không nén squash — bộ kim của nhà dùng squash nên lọt lỗi gõ tay); không có trích vượt 300 ký tự; chiều Có/Không của cả 6 phanBiet đúng; mọi mã ngoài nhóm nêu trong câu trích có thật. ĐỐI CHIẾU NỀN NHÀ (đo trước khi kết luận): (1) `phanBiet` có `neuKhong` = chính nhóm là mẫu chuẩn (951/1197 mục); (2) loại trừ có đích trong ngoặc '(ví dụ, nhóm 38.01)' đã có tiền lệ gộp trong nhà (1502/7304/8304/8305/8484) nên KHÔNG xoá loạiTru[2]; (3) dòng 'Loại khác' ghi 'phần còn lại của nhóm' theo mẫu 2709 (cùng cấu trúc: 2 dòng có tên + 1 dòng Loại khác dưới nhóm 4 số). GHI NHẬN cho người duyệt: `phanBiet` của nhóm này có 6 mục nhưng runtime chỉ đưa 4 mục ĐẦU vào prompt (lib/so-tay-gates.js:141 slice(0,4)) ⇒ phanBiet[4] (muội axetylen) và phanBiet[5] (muội carbon loại sử dụng để sản xuất cao su) KHÔNG tới được mô hình; nhóm này còn phân biệt được 2 dòng 8 số trong nhóm mà không có câu hỏi nào tới được. Đề xuất người duyệt sắp xếp lại thứ tự phanBiet (mục phân biệt dòng trong nhóm lên trước); người soát KHÔNG tự đổi thứ tự vì hồ sơ review chỉ sửa/xoá/chèn theo index.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Chú giải nhóm 2803 không có câu định nghĩa phạm vi (chỉ có 'Carbon là một phi kim dạng rắn' + 'Nhóm này bao gồm các loại carbon sau đây.'), nên phạm vi lấy từ tên phân nhóm chính thức WCO 280300: `trich` = '280300 Carbon; carbon blacks and other forms of carbon n.e.c.' byte-exact khối wco.280300; `text` là bản Việt của đúng tên đó và trùng với `cay.tenVi` do máy sinh (không tự thêm tên phân nhóm theo hiểu biết riêng). GHI NHẬN: 'n.e.c.' dịch thành 'chưa được chi tiết hoặc ghi ở nơi khác' là cách dịch của cây HS, không phải do người soạn."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: 'Nhóm này không bao gồm: … (a) Graphit tự nhiên (nhóm 25.04).' Đích 25.04 nêu danh trong câu; `dieuKien` = 'Graphit tự nhiên' chép đúng mục (a)."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: '… (c) Một số chất màu từ muội khoáng của nhóm 32.06 (ví dụ, muội nhôm, muội silic, muội sét).' Đích 32.06 nằm ở VẾ CHÍNH, KHÔNG nằm trong ngoặc '(ví dụ, …)' ⇒ đủ điều kiện luật 3. `dieuKien` chép đúng vế bị loại."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (có cân nhắc, xem nêu). Nguồn: '… (d) Graphit nhân tạo; graphit dạng keo hoặc dạng bán keo (ví dụ, nhóm 38.01).' Đích 38.01 nằm trong ngoặc '(ví dụ, …)' — theo bài học lô 033 thì đích trong ngoặc ví dụ phải bỏ. ĐO NỀN NHÀ TRƯỚC KHI BÁC: 10 mục loaiTru đã gộp trong sổ tay có đích nằm trong ngoặc '(ví dụ…)' (0602/1502/7304/7307/8304/8305/8455/8464/8484) ⇒ đây là tiền lệ ĐÃ ĐƯỢC DUYỆT, không phải lỗi riêng của lô 081. Thêm nữa ở đây vế bị loại ('graphit nhân tạo; graphit dạng keo hoặc dạng bán keo') CHÍNH LÀ hàng bị loại và 38.01 đúng là nơi đến của nó — khác với 7304 (luật thật là 'thuộc Chương 87', ví dụ mới là 87.08/87.14). GIỮ."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: '… (e) Carbon hoạt tính, muội động vật (nhóm 38.02).' Đích 38.02 nêu danh; `dieuKien` chép đúng vế."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: '… (f) Than củi (nhóm 44.02).' Đích 44.02 nêu danh; `dieuKien` chép đúng vế."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: '… (g) Carbon kết tinh ở dạng kim cương (nhóm 71.02 và 71.04).' Cả hai đích 71.02 và 71.04 nêu danh; `dieuKien` chép đúng vế. GHI NHẬN: mục (b) của danh mục nguồn ('Carbon tự nhiên ở dạng nhiên liệu rắn … và khí carbon (Chương 27)') đã được bản soạn BỎ — đúng quy tắc nhà: loại trừ cấp CHƯƠNG không mã hoá được thành `sangNhom` (chỉ mã hoá được 4 số), nên không chèn."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là graphit tự nhiên không?' → có→2504, không→2803. Chiều đúng; đích 25.04 có thật trong trích; câu hỏi không nhắc mã (đúng luật của phanBiet)."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là graphit nhân tạo, graphit dạng keo hoặc dạng bán keo không?' → có→3801, không→2803. Chiều đúng; đích 38.01 có thật trong trích; `dieuKien` loại trừ tương ứng giữ nguyên."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là carbon hoạt tính hoặc muội động vật không?' → có→3802, không→2803. Chiều đúng; đích 38.02 có thật. (Dấu 'hoặc' trong câu hỏi không có trong trích vì nguồn liệt kê bằng dấu phẩy 'Carbon hoạt tính, muội động vật' — cùng nghĩa, không thêm chữ mới.)"
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là than củi không?' → có→4402, không→2803. Chiều đúng; đích 44.02 có thật trong trích."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA — TRÍCH CẮT ĐÚNG TRƯỚC CÂU ĐỊNH NGHĨA, MỤC KHẲNG ĐỊNH ĐIỀU TRÍCH KHÔNG NÓI (kiểu lỗi 'cắt trích né câu rào' mà SOAT-LO liệt kê). Câu hỏi 'Hàng này là muội axetylen không?' → có→28030020 (dòng 'Muội axetylen'), nhưng `trich` cũ chỉ lấy '(1) Các loại khí tự nhiên như metan, các khí antraxen (tức là, khí đã chế hòa với antraxen) và axetylen.' — CÂU TRÍCH KHÔNG CÓ CHỮ 'muội axetylen', chỉ có 'axetylen' (khí, KHÔNG thuộc nhóm 2803). Câu định nghĩa ngay sau đó trong nguồn — 'Muội axetylen, là một sản phẩm rất mịn và tinh khiết, được tạo ra do sự phân hủy tức thời của khí nén axetylen bằng cách sử dụng tia lửa điện.' — là câu mới định nghĩa đúng vật liệu và đã bị cắt khỏi trích. Sửa: nối thêm câu định nghĩa (nguyên văn, liền kề, không lược) → trích 247 ký tự ≤ trần 300 của luật 2. `hoi`, `neuCo`, `neuKhong`, `nguon` giữ nguyên.",
+   "sua": {
+    "trich": "(1) Các loại khí tự nhiên như metan, các khí antraxen (tức là, khí đã chế hòa với antraxen) và axetylen. Muội axetylen, là một sản phẩm rất mịn và tinh khiết, được tạo ra do sự phân hủy tức thời của khí nén axetylen bằng cách sử dụng tia lửa điện."
+   }
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là muội carbon loại sử dụng để sản xuất cao su không?' → có→28030041. Phần PHÂN BIỆT ('loại sử dụng để sản xuất cao su') có nguyên văn trong dòng biểu thuệ 28030041; chữ 'muội carbon' là TÊN NHÓM 2803 (đã nêu ở `phamVi` và ở `cay.tenVi`), không phải hiểu biết riêng. GHI NHẬN: khối sen.28030041 (SEN 2022) có tiêu đề 'MUỘI CARBON LOẠI SỬ DỤNG ĐỂ SẢN XUẤT CAO' — có thể dùng làm nguồn để câu hỏi có trọn cả tên hàng, nhưng dòng biểu thuệ là nguồn chuẩn cho tên dòng 8 số nên giữ nguyên."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28030020 - Muội axetylen; `trich` byte-exact khối tax.28030020; `loaiKhac` máy suy = false."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28030041 - - Loại sử dụng để sản xuất cao su (SEN); `trich` byte-exact khối tax.28030041 (chữ '(SEN)' là một phần của dòng biểu thuệ, không phải chú thích thêm của người soạn)."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA — CÂU TRONG SỔ TAY MÂU THUẪN NỘI BỘ VÀ PHẠM VI 'Loại khác' KHÔNG RÕ. Câu cũ: 'Loại khác (dòng cha — tiêu đề quốc gia 2803.00.4 không có trong nguồn — đối chiếu biểu thuế)'. (1) 'không có trong nguồn' là SAI so với chính tệp sổ tay này: biểu thuế CÓ tên tiêu đề quốc gia 2803.00.4 là 'Muội carbon khác' (data/bieu-thue/2026.04.05/ten-nut.json, doTinCay=KHOP_TAP) và khối `cay` do máy sinh của nhóm 2803 đã dùng đúng tên đó ⇒ tệp tự mâu thuẫn. (2) Câu cũ không nêu DÒNG ANH EM phải loại (28030041 'Loại sử dụng để sản xuất cao su') ⇒ người đọc không biết 'Loại khác' của 2803.00.4 phủ phần nào, và mất điều kiện phân biệt với 28030090 (cũng 'Loại khác' nhưng ở cấp nhóm). Sửa theo mẫu nhà đã duyệt (0301/0105/0714, lô 066 vòng 2 — 'Loại khác: phần còn lại của tiêu đề quốc gia X, trừ <dòng>'): `dieuKien` = 'Loại khác: phần còn lại của tiêu đề quốc gia 2803.00.4 (Muội carbon khác), trừ 28030041'. Độ dài 87 ký tự ≤ trần clip 90 của runtime (lib/so-tay-gates.js:139) nên mã 28030041 không bị cắt giữa chừng. Câu chú thích '— đối chiếu biểu thuế' bị bỏ vì thêm vào sẽ vượt trần 90; nguồn của tên nêu ở `lyDo` này. `trich`/`nguon` giữ nguyên.",
+   "sua": {
+    "dieuKien": "Loại khác: phần còn lại của tiêu đề quốc gia 2803.00.4 (Muội carbon khác), trừ 28030041"
+   }
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 'Loại khác: phần còn lại của nhóm 2803' khớp đúng mẫu nhà 2709 (cùng cấu trúc cây: 2709 có 27090010 + 27090020 rồi 27090090 'Loại khác: phần còn lại của nhóm 2709'). GHI NHẬN cho người duyệt: có thể nêu thêm hai anh em bị loại (28030020 muội axetylen và tiêu đề quốc gia 2803.00.4) để rõ hơn, nhưng cách ghi tên tiêu đề quốc gia cần đúng id cây (2803004, không phải một dòng biểu thuệ) nên người soát KHÔNG tự thêm — để người duyệt quyết."
+  }
+ ]
+}

@@ -1,0 +1,128 @@
+{
+ "nhom": "2805",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-11-02T09:20:00+07:00",
+ "soat": 23,
+ "giu": 23,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 081 — nhóm 2805 (23 mục: 13 trong phạm vi mục 4 [1 phamVi + 5 loaiTru + 7 phanBiet] + 10 đọc thêm [5 tieuChi6 + 5 dong8]). Đọc LẠI từng mục cùng nguồn tmp/so-tay/nguon/2805.txt. XOÁ 0, SỬA 0, GIỮ 23. KIỂM MÁY (tự viết, không tin máy nhà): byte-exact 23/23 câu trích có thật trong đúng khối nguồn (so khớp từng byte, không nén squash); không có trích vượt 300 ký tự; chiều Có/Không của cả 7 phanBiet đúng; mọi mã đích nêu trong câu trích có thật. ĐẶC BIỆT: khối nguồn nhom2805.nhom BỊ NHIỄM — cuối khối có đoạn 'PHÂN CHƯƠNG II: AXIT VÔ CƠ VÀ CÁC HỢP CHẤT VÔ CƠ CÓ CHỨA OXY CỦA CÁC PHI KIM LOẠI' (thuộc Phân Chương II, KHÔNG phải nhóm 2805). ĐÃ GÁC: không mục nào của nhóm trích vào đoạn nhiễm này (đã kiểm từng byte vị trí của 23 câu trích trong khối). Lỗi chính tả gốc giữ nguyên ('magic' thay 'magie', 'Antimon chủ yếu'… — luật 2).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` lấy đúng bốn tiêu đề mục của chú giải nhóm theo thứ tự nguồn: '(A) CÁC KIM LOẠI KIỀM … (B) KIM LOẠI KIỀM THỔ … (C) KIM LOẠI ĐẤT HIẾM; SCANDI VÀ YTRI, ĐÃ HOẶC CHƯA PHA TRỘN HOẶC TẠO HỢP KIM VỚI NHAU … (D) THỦY NGÂN'; `text` diễn lại đúng, không lẫn nội dung Phân Chương II. GHI NHẬN: mục (C) trong nguồn còn có câu 'Các kim loại đất hiếm … hoặc nhóm lanthan bao gồm các nguyên tố có số nguyên tử (*) từ 57 đến 71' — không đưa vào `phamVi` (dài, và `phamVi.text` bị runtime cắt 220 ký tự); nội dung này đã nằm ở dong8 28053000."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: 'Nhóm này không bao gồm hỗn hống natri (nhóm 28.53).' Đích 28.53 nêu danh; `dieuKien` = 'Hỗn hống natri' chép đúng vế."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: 'Kim loại kiềm có tính phóng xạ franxi bị loại trừ (nhóm 28.44).' Đích 28.44 nêu danh; `dieuKien` chép đúng vế ('Franxi (kim loại kiềm có tính phóng xạ)') không thêm chữ."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (có ghi nhận). Nguồn: 'Nhóm này không bao gồm radi, một nguyên tố phóng xạ (nhóm 28.44), magic (nhóm 81.04), hoặc bery (nhóm 81.12); những nguyên tố này giống các kim loại kiềm thổ trong một số phương diện.' Ba đích 28.44/81.04/81.12 đều nêu danh; `dieuKien` = 'Radi, magic hoặc bery' chép đúng ba chủ thể. GHI NHẬN: ở đây 3 vế bị GỘP vào 1 mục (sangNhom '2844|8104|8112'), còn ở 2804 người soạn TÁCH doteri/triti thành 2 mục — không nhất quán. Vẫn GIỮ vì câu khẳng định không sai (hàng thuộc một trong ba dạng đó thì sang một trong ba nhóm đó), và tách 3 mục ở `loaiTru` sẽ đẩy 2 mục mới ra sau mảng — vô hại vì runtime dùng ĐỦ mọi mục loaiTru. GHI NHẬN thứ hai: nhánh 'không' của `phanBiet[2]` cùng nội dung nên trỏ về 2805, trong khi bery (8112) và magic (8104) là kim loại kiềm thổ — 'không' có nghĩa 'không thuộc một trong ba dạng bị loại' ⇒ vẫn ở 2805, đúng."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: 'Nhóm này không bao gồm các loại muối và hợp chất của kim loại đất hiếm, của ytri và scandi (nhóm 28.46).' Đích 28.46 nêu danh; `dieuKien` chép đúng vế."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: 'Prometi (nguyên tố 61), là chất phóng xạ, được phân loại trong nhóm 28.44.' Đích 28.44 nêu danh; `dieuKien` = 'Prometi (nguyên tố 61)' chép đúng."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là hỗn hống natri không?' → có→2853, không→2805; chiều đúng; đích 28.53 có thật trong trích."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là franxi không?' → có→2844, không→2805; chiều đúng; đích 28.44 có thật."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là radi, magic hoặc bery không?' → có→2844|8104|8112, không→2805; chiều đúng; cả ba đích có thật trong trích. Xem ghi nhận ở loaiTru[2]."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là muối hoặc hợp chất của kim loại đất hiếm, của ytri hay scandi không?' → có→2846, không→2805; chiều đúng; đích 28.46 có thật."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là prometi không?' → có→2844, không→2805; chiều đúng; đích 28.44 có thật."
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là thủy ngân không?' → có→28054000 (dòng Thủy ngân), không→2805; chiều đúng; trích nói đúng đối tượng ('Thủy ngân (quicksilver) là kim loại duy nhất có dạng lỏng ở nhiệt độ phòng')."
+  },
+  {
+   "index": "phanBiet[6]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là natri không?' → có→28051100 (dòng Natri), không→2805; chiều đúng; trích nằm ngay sau tiêu đề '(2) Natri.' nên chủ thể rõ."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280511: `trich` = '280511 Alkali or alkali-earth metals; sodium' byte-exact; `value` = 'Natri' theo dòng biểu thuệ 28051100."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280512: 'Canxi' — `trich` = '280512 Alkali or alkali-earth metals; calcium' byte-exact; khớp dòng biểu thuệ 28051200."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280519: `value` = 'Kim loại kiềm hoặc kim loại kiềm thổ khác natri và canxi' dịch đúng 'Alkali or alkali-earth metals; other than sodium and calcium'; `trich` byte-exact."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280530: `value` = 'Kim loại đất hiếm, scandi và ytri, đã hoặc chưa pha trộn hoặc tạo hợp kim với nhau' dịch đúng 'Earth-metals, rare; scandium and yttrium, whether or not intermixed or interalloyed'; `trich` byte-exact."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280540: 'Thủy ngân' — `trich` = '280540 Mercury' byte-exact; khớp dòng biểu thuệ 28054000."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28051100 - - Natri; byte-exact; `loaiKhac` = false."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28051200 - - Canxi; byte-exact; `loaiKhac` = false."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 'Loại khác — phần còn lại của phân nhóm 2805.19 (WCO: Alkali or alkali-earth metals; other than sodium and calcium)' — mẫu nhà; `trich` byte-exact tax.28051900."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm, có ghi nhận). `dieuKien` = 'Kim loại đất hiếm, scandi và ytri đã hoặc chưa pha trộn hoặc tạo hợp kim với nhau; gồm cả \"Mischmetal\" (hợp kim có chứa 45 đến 55% xezi); hợp kim có hơn 5% sắt hoặc có thêm magic hoặc các kim loại khác thì không thuộc nhóm này.' — `nguon` = nhom2805.nhom, `trich` = 'Ví dụ, nhóm này bao gồm \"Mischmetal\", đó là loại hợp kim có chứa 45 đến 55% xezi … Khi hợp kim có hơn 5% sắt hoặc có thêm magic hoặc các kim loại khác thì nó không thuộc nhóm này, (ví dụ, nếu nó mang đặc tính của một hợp kim pyrophoric thì chúng thuộc nhóm 36.06).' (lược bằng '…' theo luật 2, giữ nguyên lỗi 'magic' của nguồn). GIỮ vì: (1) dòng 8 số dài là bình thường — 3242/6897 dòng trong sổ tay nhà có `dieuKien` > 90 ký tự; (2) nguồn khác tax.* cho dong8 là mẫu nhà (1330/6897 dòng, vd nhom0101.nhom / sen.01022911). GHI NHẬN cho người duyệt: (a) VẾ ĐẦU của `dieuKien` ('Kim loại đất hiếm, scandi và ytri …') lấy từ TÊN DÒNG BIỂU THUẾ 28053000 còn `trich` chỉ phủ phần Mischmetal ⇒ câu trích không phủ hết câu chữ của `dieuKien`; (b) vế cuối là điều kiện PHỦ ĐỊNH ('không thuộc nhóm này') đứng trong điều kiện của dòng — đọc lướt có thể nhầm; (c) điều kiện biên 'hợp kim > 5% sắt thì không thuộc nhóm này' chỉ nằm ở `dong8`, chưa có chỗ nào trong khối `dieuKienVao` (điều kiện VÀO nhóm không mang điều kiện phủ định; nếu muốn khai phải dùng `ngoaiTru` của một dieuKienVao) — người soát KHÔNG tự soạn vì vượt phạm vi sửa lỗi; đề xuất người duyệt xem có khai hay không."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28054000 - Thủy ngân; byte-exact; `loaiKhac` = false."
+  }
+ ]
+}

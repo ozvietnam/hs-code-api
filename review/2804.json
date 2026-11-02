@@ -1,0 +1,174 @@
+{
+ "nhom": "2804",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-11-02T09:10:00+07:00",
+ "soat": 30,
+ "giu": 30,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 1,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 081 — nhóm 2804 (30 mục: 8 trong phạm vi mục 4 [1 phamVi + 3 loaiTru + 4 phanBiet] + 22 đọc thêm [11 tieuChi6 + 11 dong8]). Đọc LẠI từng mục cùng nguồn tmp/so-tay/nguon/2804.txt. XOÁ 0, SỬA 0, CHÈN 1, GIỮ 28. KIỂM MÁY (tự viết, không tin máy nhà): byte-exact 30/30 câu trích có thật trong đúng khối nguồn (so khớp từng byte, không nén squash); không có trích vượt 300 ký tự; hai ngưỡng số 99,99 của 280461/280469 có nguyên văn trong trích ('not less than 99.99%' / 'less than 99.99%') và đơn vị '%' khớp; chiều Có/Không của cả 4 phanBiet đúng.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. `trich` lấy đúng ba tiêu đề mục và tám tiểu mục của chú giải nhóm theo THỨ TỰ NGUỒN: '(A) HYDRO … (B) KHÍ HIẾM … (C) CÁC PHI KIM KHÁC … (1) Nitơ. … (2) Ôxy. … (3) Bo. … (4) Telu. … (5) Silic. … (6) Photpho. … (7) Asen. … (8) Selen.' — đã đối chiếu từng tiểu mục với nguồn (mục (8) là 'Selen.' có dấu chấm). `text` liệt kê đúng các tiểu mục, không thêm tính chất nào."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nguồn: 'Nhóm này không bao gồm doteri (đồng vị bền vững của hydro) thuộc nhóm 28.45, và triti (đồng vị phóng xạ của hydro) thuộc nhóm 28.44.' Bản soạn TÁCH thành 2 mục, mỗi vế một đích — đúng, giữ được ánh xạ doteri→28.45 / triti→28.44 (đối chiếu lô 080/083 của nhà: cũng tách). `dieuKien` giữ đủ định ngữ ('đồng vị bền vững của hydro' / 'đồng vị phóng xạ của hydro')."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Cùng câu nguồn, vế triti; đích 28.44 nêu danh trong câu."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (có ghi nhận). Nguồn: 'Chúng được phân loại trong nhóm này với điều kiện là chúng ở dạng chưa gia công như kéo hoặc ở dạng ống, hoặc dụng thanh. Khi cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự, thì chúng được phân loại ở nhóm 38.18.' Đích 38.18 nêu danh; `dieuKien` = 'Phi kim cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự' — chữ 'phi kim' là CHỦ THỂ của chính nhóm 2804 (đã nêu ở `phamVi` và `cay.tenVi`), không phải hiểu biết riêng. GHI NHẬN cho người duyệt: câu trích BẮT ĐẦU BẰNG ĐẠI TỪ 'Chúng' (tiền ngữ 'Một vài phi kim trong nhóm này (ví dụ, silic và selen) …' nằm ở câu trước) nên đọc đứng một mình hơi mồ côi; người soát KHÔNG mở rộng trích vì mở rộng sẽ lộ ra chữ 'một vài phi kim (ví dụ, silic và selen)' — tức là điều kiện loại trừ có thể CHỈ áp cho một vài phi kim, mà `dieuKien` bị runtime cắt còn 55 ký tự (lib/so-tay-gates.js:137) nên không mang nổi chữ 'một vài'. Để người duyệt quyết có thu hẹp `dieuKien` cho đúng hay không."
+  },
+  {
+   "index": "loaiTru",
+   "hanhDong": "chen",
+   "lyDo": "CHÈN — THIẾU MỘT LOẠI TRỪ CÓ ĐÍCH DANH. Nguồn nhom2804.nhom, nguyên văn: 'Trong Danh mục, antimon được phân loại như là một kim loại (nhóm 81.10).' Antimon không thuộc nhóm 2804 (tiêu đề 81.10 'Antimon' có thật trong chú giải-heading) và nguồn nêu ĐÍCH DANH nhóm đích ⇒ đủ điều kiện luật 3. Cùng kiểu với mục người soạn đã khai ở 2805 ('Prometi (nguyên tố 61), là chất phóng xạ, được phân loại trong nhóm 28.44.' → loaiTru sang 2844). Bản soạn bỏ sót mục này. Mục chèn dùng nguyên văn.",
+   "muc": {
+    "dieuKien": "Antimon",
+    "sangNhom": "8110",
+    "nguon": "nhom2804.nhom",
+    "trich": "Trong Danh mục, antimon được phân loại như là một kim loại (nhóm 81.10)."
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là radon không?' → có→2844, không→2804. Nguồn: 'Radon là khí trơ phóng xạ thuộc nhóm 28.44 được tạo ra bởi sự phân rã phóng xạ từ radium.' Đích 28.44 nêu danh trong câu; chiều Có/Không đúng."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là hydro không?' → có→28041000 (dòng Hydro), không→2804. Trích có lược '…' bỏ câu 'Nó được chứa dưới dạng nén trong trong các bình bằng thép dày.' — câu bị lược KHÔNG chứa ngoại lệ/điều kiện loại trừ nên không mất nghĩa. `hoi` không nhắc mã ✓."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là argon không?' → có→28042100 (dòng Argon), không→28042900 (dòng 'Loại khác' của 2804.29 = khí hiếm khác argon, khớp đúng tên WCO 'other than argon'). Đây là mẫu `neuKhong` trỏ tới ANH EM trong cùng nhóm (246/1197 mục nhà) — hợp lệ, và là mẫu duy nhất trong lô này có nhánh 'không' không phải chính nhóm."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. 'Hàng này là phi kim cắt thành dạng đĩa, dạng bánh hoặc các dạng tương tự không?' → có→3818, không→2804. Đích 38.18 nêu danh trong trích; câu hỏi không nhắc mã. Xem ghi nhận ở loaiTru[2] về tiền ngữ 'Chúng'."
+  },
+  {
+   "index": "tieuChi6[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280410: `trich` = '280410 Hydrogen' byte-exact; `value` = 'Hydro' theo dòng biểu thuệ 28041000."
+  },
+  {
+   "index": "tieuChi6[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280421: 'Argon' — `trich` = '280421 Gases, rare; argon' byte-exact; tên khớp dòng biểu thuệ."
+  },
+  {
+   "index": "tieuChi6[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280429: `value` = 'Khí hiếm khác argon' dịch đúng 'Gases, rare; other than argon'; `trich` byte-exact."
+  },
+  {
+   "index": "tieuChi6[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280430: 'Nitơ' — `trich` = '280430 Nitrogen' byte-exact; khớp dòng biểu thuệ 28043000 ('Nitơ')."
+  },
+  {
+   "index": "tieuChi6[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280440: 'Oxy' — `trich` = '280440 Oxygen' byte-exact; khớp dòng biểu thuệ 28044000 ('Oxy')."
+  },
+  {
+   "index": "tieuChi6[5]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280450: 'Bo; telu' — `trich` = '280450 Boron; tellurium' byte-exact; khớp dòng biểu thuệ 28045000 ('Bo; telu')."
+  },
+  {
+   "index": "tieuChi6[6]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280461: ngưỡng `>= 99.99 %` — số có nguyên văn trong trích ('containing by weight not less than 99.99% of silicon'); `fact` 'ham_luong_silic' là khoá tự do đúng nhóm 'ham_luong_*' của nhà (0401/0405/1205/1514/1905/2002 đều dùng % cho hàm lượng), KHÔNG bị cổng ngưỡng đọc nhầm kg (cổng đó khớp /khoi_luong|trong_luong/)."
+  },
+  {
+   "index": "tieuChi6[7]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280469: ngưỡng `< 99.99 %` — số có nguyên văn trong trích ('containing by weight less than 99.99% of silicon')."
+  },
+  {
+   "index": "tieuChi6[8]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280470: 'Phospho' — `trich` = '280470 Phosphorus' byte-exact; khớp dòng biểu thuệ."
+  },
+  {
+   "index": "tieuChi6[9]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280480: 'Arsen' — `trich` = '280480 Arsenic' byte-exact; khớp dòng biểu thuệ 28048000 ('Arsen')."
+  },
+  {
+   "index": "tieuChi6[10]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 280490: 'Selen' — `trich` = '280490 Selenium' byte-exact; khớp dòng biểu thuệ."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28041000 - Hydro; `trich` byte-exact; `loaiKhac` = false."
+  },
+  {
+   "index": "dong8[1]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28042100 - - Argon; `trich` byte-exact; `loaiKhac` = false."
+  },
+  {
+   "index": "dong8[2]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 'Loại khác — phần còn lại của phân nhóm 2804.29 (WCO: Gases, rare; other than argon)' — mẫu nhà (dòng Loại khác ở cấp phân nhóm 6 số, nêu tên WCO trong ngoặc; vd 2805.19/2805.30 cùng lô); `trich` byte-exact tax.28042900."
+  },
+  {
+   "index": "dong8[3]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28043000 - Nitơ; byte-exact."
+  },
+  {
+   "index": "dong8[4]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28044000 - Oxy; byte-exact."
+  },
+  {
+   "index": "dong8[5]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28045000 - Bo; telu; byte-exact."
+  },
+  {
+   "index": "dong8[6]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28046100 'Có hàm lượng silic không dưới 99,99% tính theo trọng lượng' — `dieuKien` chép nguyên văn tên dòng biểu thuệ (không diễn giải lại, không thêm chữ); `trich` byte-exact; `loaiKhac` = false."
+  },
+  {
+   "index": "dong8[7]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 'Loại khác — phần còn lại của phân nhóm 2804.69 (WCO: Silicon; containing by weight less than 99.99% of silicon)' — mẫu nhà như dong8[2]; `trich` byte-exact tax.28046900."
+  },
+  {
+   "index": "dong8[8]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28047000 - Phospho; byte-exact."
+  },
+  {
+   "index": "dong8[9]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28048000 - Arsen; byte-exact."
+  },
+  {
+   "index": "dong8[10]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm). 28049000 - Selen; byte-exact. GHI NHẬN chung cho nhóm 2804: mục loại trừ 'selen ở dạng keo huyền phù (được sử dụng trong y học) (Chương 30)' của nguồn đã được bản soạn BỎ — đúng quy tắc nhà: đích cấp CHƯƠNG không mã hoá được thành `sangNhom` (chỉ mã hoá được 4 số). Không chèn."
+  }
+ ]
+}
