@@ -4,6 +4,202 @@
 
 ---
 
+# LÔ 089 — SOÁT ĐỘC LẬP — 2850 2852 2853 2901 2902 2903 (02/11/2026, phiên `dev-soat-doc-lap-lo089`)
+
+Người soát **KHÁC người soạn** (`dev-zcode-mm`). Brief: `brief-st-soat-lo089.md` (oz-dev-kit).
+Đọc trước: `docs/giao-viec/so-tay/LUAT-CHUNG.md` (11 luật) + `docs/giao-viec/so-tay/SOAT-LO.md`.
+**KHÔNG merge PR #893** — chờ người duyệt. **KHÔNG tự cập nhật `so-tay-lo.csv`** (việc của người duyệt).
+
+## 1. Phạm vi soát — TOÀN BỘ 146 mục trong 5 khối, không lấy mẫu
+
+| Nhóm | Mục soát | Cấu trúc khối phải soát |
+|---|---|---|
+| 2850 | 55 | 1 `phamVi` · 27 `loaiTru` · 27 `phanBiet` |
+| 2852 | 11 | 1 `phamVi` · 5 `loaiTru` · 5 `phanBiet` |
+| 2853 | 23 | 1 `phamVi` · 11 `loaiTru` · 11 `phanBiet` |
+| 2901 | 13 | 1 `phamVi` · 6 `loaiTru` · 6 `phanBiet` |
+| 2902 | 29 | 1 `phamVi` · 14 `loaiTru` · 14 `phanBiet` |
+| 2903 | 15 | 1 `phamVi` · 7 `loaiTru` · 7 `phanBiet` |
+
+`boPhan` + `dieuKienVao` rỗng ở cả 6 nhóm ⇒ không có mục nào để soát ở 2 khối đó.
+Mỗi mục đọc cùng nguồn `tmp/so-tay/nguon/<nhom>.txt` (khối `nhom<nhom>.nhom`).
+`tieuChi6` + `dong8` + `cay` **đọc và đối chiếu nhưng KHÔNG sửa** (ngoài phạm vi soát theo SOAT-LO.md).
+
+Hồ sơ: `review/{2850,2852,2853,2901,2902,2903}.json` (mỗi mục một dòng `lyDo` + kết luận `giu`/`sua`/`xoa`).
+Script áp 2 pha: `scripts/apply-review-lo089.mjs` (sao cách của `apply-review-lo088.mjs`).
+
+## 2. Kết quả: **146 mục soát · 116 GIỮ · 28 SỬA · 2 XOÁ**
+
+Sổ tay sau soát: **271/271 mục (100 %)** (273 − 2 mục xoá).
+
+## 3. Sáu lớp lỗi đã bắt (máy `check-so-tay` KHÔNG bắt được)
+
+| # | Nhóm | Mục | Lớp lỗi | Cách sửa |
+|---|---|---|---|---|
+| 1 | 2852 | `loaiTru[0]` + `phanBiet[0]` | **BỎ VẾ DẪN ⇒ ĐIỀU KIỆN RỘNG HƠN NGUỒN, MÂU THUẪN VỚI DÒNG 8 SỐ CÙNG LÔ.** Nguồn: *"Thủy ngân sunphua **tự nhiên** (sunphua thủy ngân, thần sa tự nhiên) bị loại trừ (nhóm 26.17)"* — bản nháp ghi *"Thủy ngân sunphua"* ⇒ thủy ngân sunphua **nhân tạo** cũng bị đẩy 26.17, trong khi CHÍNH lô này có dòng 28529020 *"Thủy ngân sulphua; …"* (thuộc 2852) | Thêm lại "tự nhiên" (nguyên văn trong câu trích). Câu hỏi sửa kèm |
+| 2 | 2853 | `loaiTru[10]` + `phanBiet[10]` | **ĐIỀU KIỆN GHÉP CẮT HỎNG.** Bản nháp ghi *"Những hợp chất của **trừ các hỗn hống**"* — ghép *"Những hợp chất của [thủy ngân]"* với vế *"trừ các hỗn hống"*; không phải cụm từ nào có trong nguồn | Sửa theo câu trích nguyên văn: *"Những hợp chất của thủy ngân, đã hoặc chưa xác định về mặt hóa học"*. Đích 28.52 (= 2852) khớp CHÍNH XÁC tiêu đề biểu thuế nhóm đích (đối chiếu mục tương ứng lô 088: 2843 `loaiTru[3]` → 28.52) |
+| 3 | 2853 | `loaiTru[6]` + `phanBiet[6]` | **RƠI MỘT NHÁNH "HOẶC" ⇒ ĐIỀU KIỆN HẸP HƠN NGUỒN.** Nguồn: *"Khi đóng gói như thuốc ở dạng đã phân thành liều **hoặc đóng gói để bán lẻ**, thì nước được xếp vào nhóm 30.04"* — bản nháp giữ vế 1, bỏ vế 2 ⇒ nước đóng gói để bán lẻ rơi nhầm 2853 thay vì 30.04 | Giữ trọn cả hai vế (nguyên văn trong câu trích). Câu hỏi 91 ký tự ≤ trần clip 110 nên lúc chạy không bị cắt |
+| 4 | 2853 | `loaiTru[9]` + `phanBiet[9]` | **TÁCH NHÁNH "CÓ HAY KHÔNG" THÀNH MỤC RIÊNG** (lớp lỗi SOAT-LO dành riêng cho người soát) + câu hỏi dính *"không … không"* — nguồn: *"Những hỗn hống chứa kim loại quý, **có hay không** kết hợp với các kim loại cơ bản, bị loại trừ (nhóm 28.43)"* | **XOÁ** mục rời + câu hỏi của nó. `loaiTru[8]` ("Những hỗn hống chứa kim loại quý") đã phủ trọn cả hai vế; câu trích của [8] vẫn giữ nguyên "có hay không" |
+| 5 | 2901 · 2902 | 6 `loaiTru` + 6 `phanBiet` | **ĐIỀU KIỆN THIẾU NGƯỠNG SỐ.** *"Etan với độ tinh khiết **thấp hơn**"* mà không có "95 %" ⇒ lúc chạy (runtime chỉ in `dieuKien`, KHÔNG in câu trích) câu hỏi không có mốc để trả lời. Nền nhà: 2/2 mục cùng dạng đều ghi ngưỡng (mẫu 2933 *"Pyridin có độ tinh khiết thấp hơn 95%"*), lô 089 để trống 7 mục | Thêm ngưỡng lấy nguyên văn từ câu trích: etan/etylen 95 %, propen 90 %, benzen/toluen 95 %, anthracen 90 %. Cơ sở đo (thể tích / trọng lượng) nằm ở `dong8` + `dieuKienSo` |
+| 6 | 2852 · 2901 · 2902 · 2903 | 8 `loaiTru` + 8 `phanBiet` | **BỎ VẾ DẪN ⇒ ĐIỀU KIỆN RỘNG HƠN NGUỒN.** 2852 `loaiTru[2]` kết thúc bằng DẤU PHẨY (0/3.780 mục nền nhà) ⇒ câu hỏi đọc lệch *"… kim loại quý, không?"*; 2901 `loaiTru[2]` mất *"tương tự"*; 2902 `loaiTru[4]` mất *"được tạo ra từ quá trình chưng cất hoặc xử lý khác của các gỗ thuộc loài cây lá kim"* (mọi dầu terpenic khác bị đẩy 38.05, trong khi `loaiTru[2]` "những tinh dầu" → 33.01 mới là chỗ đúng); 2903 `loaiTru[3]`/`[5]` mất *"hỗn hợp"* | Thêm lại vế giới hạn (nguyên văn trong câu trích). Ở 2901 bỏ lượng từ "những" để còn 54 ký tự (≤ trần clip 55, không bị cắt lúc chạy) |
+
+## 4. ĐO NỀN NHÀ (đo trước khi bác đề xuất — 02/11/2026, trên `data/so-tay/` TRƯỚC khi sửa lô 089)
+
+| Phép đo | Nền nhà (loại trừ 6 nhóm lô 089) | Lô 089 trước khi soát | Kết luận |
+|---|---|---|---|
+| `loaiTru.dieuKien` kết thúc bằng dấu phẩy | **0 / 3.780** | 1 (2852 `[2]`) | Bất thường ⇒ SỬA |
+| `phanBiet.hoi` chứa *"không … không"* | **0 / 2.225** | 1 (2853 `[9]`) | Bất thường ⇒ XOÁ |
+| `loaiTru` có *"độ tinh khiết … thấp/nhỏ hơn"* mà ghi con số ngưỡng | **2 / 2 (100 %)** | 0 / 7 | Bất thường ⇒ SỬA 6 mục |
+| `loaiTru.dieuKien` dài > 55 (trần clip runtime) | 40,3 % | 4 mục | Nền nhà ⇒ GIỮ (kèm GHI NHẬN) |
+| `phanBiet.hoi` dài > 110 | 0,2 % | 1 mục | Nền nhà ⇒ GIỮ |
+| `phamVi.text` dài > 220 | 17,0 % | 1 mục (2853, 244 ký tự) | Nền nhà ⇒ GIỮ |
+| trích có *"tương tự"* mà điều kiện bỏ mất | 24,6 % | 1 | Nền nhà (không bất thường) — nhưng vẫn SỬA vì điều kiện rộng hơn nguồn và có thể đo được |
+| `phanBiet` nào có `neuKhong` ≠ chính nhóm / lệch đích so với `loaiTru` | 0 | 0 | Sạch |
+
+**Mức độ can thiệp:** 30/146 mục = 20,5 % (lô 087: 17/102 = 17 %; lô 088: 4/45 = 9 %) — lô 089 có nhiều mục `loaiTru` hơn nên tỷ lệ cao hơn.
+
+## 5. GHI NHẬN (không sửa — người duyệt xem)
+
+- **2850**: nguồn ghi *"Các hợp chất của **4 nhóm**"* nhưng có 5 phần (A)–(E) — lỗi của NGUỒN; `phamVi.text` đã tránh con số này. Nguồn phần (D) ghi *"phospho (nhóm **28.48**)"* — **28.48 không tồn tại** trong Danh mục (28.47 → 28.49), hai phần khác của cùng chú giải ghi *"phospho (nhóm 28.53)"* ⇒ mục loại trừ tương ứng BỎ (người soạn đã ghi, luật 8: không sửa mã nguồn). *"hợp kim silic nhôm ở Chương 76"* và *"Thủy ngân (nhóm 28.05 hoặc Chương 30)"* không mã hoá được (luật 3: "Chương N" không phải số nhóm).
+- **2853**: `phamVi.text` 244 ký tự > trần 220 ⇒ lúc chạy mất đuôi *"trừ hỗn hống của kim loại quý"* — nhưng phần đó CÓ trong `loaiTru[8]`/`[9]` cùng nhóm ⇒ không mất kết luận. Câu cuối nguồn *"…trừ các hỗn hống thuộc nhóm 28.52"* có vế "trừ" là NGOẠI LỆ (hỗn hống) còn đích 28.52 = 2852 là nhóm hợp chất thủy ngân ⇒ phần "trừ" đã bỏ khỏi **điều kiện** (điều kiện chỉ nêu "hợp chất của thủy ngân"), **câu trích giữ nguyên**; hỗn hống vẫn ở 2853 theo phần (E).
+- **2901**: `loaiTru[0]` *"Metan và propan (C3H8) với 3 nguyên tử cacbon"* — nguồn dùng "và" để nối hai vật liệu (metan; propan có 3 nguyên tử cacbon); bản nháp chép nguyên văn, giữ nguyên (luật 7).
+- **2902**: `loaiTru[9]` *"Naphtalen có độ tinh khiết thấp hơn"* — nguồn dùng đúng câu chữ đó nhưng tiêu chí thật là **điểm kết tinh từ 79,4 ºC** (đã có trong câu trích); không ghi "95 %" vì nguồn không có. `loaiTru[12]`/`[13]` tách một vế *"dodecylbenzenes và nonylnaphthalenes là hỗn hợp alkylaren"* thành hai mục (cùng đích 38.17) ⇒ câu hỏi đọc *"Hàng này là dodecylbenzenes là hỗn hợp alkylaren không?"* hơi vướng ("là … là", 16/2.079 câu hỏi nền nhà có mẫu này) — KHÔNG sửa (giữ nguyên danh từ nguồn).
+- **2903**: `loaiTru[2]` dài 60 ký tự > trần 55 (lúc chạy còn *"…hoặc lựu đạn chữa…"*) nhưng `phanBiet[2].hoi` (77 ký tự ≤ 110) mang trọn vế ⇒ thông tin KHÔNG mất trong prompt. Câu trích của mục này ghép 3 mảnh nguồn bằng "…" (phần A, E, F đều có câu loại trừ này) — nguyên văn, byte-exact.
+
+## 6. Máy kiểm đã chạy (SAU khi sửa)
+
+| Lệnh | Kết quả |
+|---|---|
+| `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` | 271/271 đạt, **0 mục không kiểm được nguồn** |
+| `node scripts/check-trich-nguyen-van.mjs` | **OK — 271 mục**, mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn |
+| `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-089.json` | **271/271 (100 %)**, `nhomLoi []`, `tyLeDat 100` |
+| `npm run so-tay:check` | 896 nhóm, 20.677 mục, **0 mục không kiểm được nguồn** |
+| `node scripts/check-cay.mjs --nhom=… --chi-tiet` | **0 lỗi lệch cây**; còn trống `phan-nhom-chua-co-tieu-chi × 13` (13 phân nhóm tên "Loại khác" — đã ghi ở hồ sơ soạn) |
+| `npm test` | **exit 0** — 0 fail ở mọi bộ con |
+
+Nhãn `nguonLoai` sau soát: **144 mục → `NGUOI_DUYET`** (5 khối đã soi: 2850 55 · 2852 11 · 2853 21 · 2901 13 · 2902 29 · 2903 15);
+`tieuChi6` (51) + `dong8` (76) giữ `AI_DA_KIEM` (ngoài phạm vi soát), `cay` giữ `MAY_SUY`.
+
+## 7. Chưa làm (việc của NGƯỜI DUYỆT — theo SOAT-LO.md)
+
+- Tự soát ngẫu nhiên ≥ 10 % số mục còn lại.
+- Bổ sung lỗi kệ sách mới vào phần 1 của `so-tay-giao-ngoai.md`; lỗi lặp lại thì đưa thành luật máy (`lib/so-tay.js`).
+- Gộp PR + cập nhật `so-tay-lo.csv` (`trang_thai=xong`, `pr`).
+
+## 8. PR lại CONFLICTING — đã merge `main` vào nhánh, giữ bản lô 089
+
+Sau khi push, PR #893 báo **CONFLICTING** vì `main` đã có `data/so-tay/{2850,2852,2853}.json`
+từ "vòng 19" (30 nhóm, soạn hàng loặt, nhãn `AI_DA_KIEM` **chưa soát**). Đã `git merge origin/main`
+vào nhánh và chọn bản lô 089 (`git checkout --ours`) — cùng quyết định đã ghi ở mục 7 body PR #893
+cho 2901/2902/2903, nay lý do rõ hơn vì bản lô 089 đã qua soát:
+
+| Nhóm | "vòng 19" (trên `main`) | lô 089 (đã soát) |
+|---|---|---|
+| 2850 | 11 `loaiTru` · 11 `phanBiet` · 1 `dieuKienVao` · `AI_DA_KIEM` | **27** · **27** · **0** · `NGUOI_DUYET` |
+| 2852 | 4 · 4 · 0 · `AI_DA_KIEM` | **5** · **5** · 0 · `NGUOI_DUYET` |
+| 2853 | 10 · 10 · 1 · `AI_DA_KIEM` | **10** · **10** · **0** · `NGUOI_DUYET` |
+
+Bản "vòng 19" ghi `dieuKienVao` lấy từ câu **ĐỊNH NGHĨA** của nhóm (sai theo luật soát) và chưa qua
+soát độc lập; bản lô 089 có đủ mọi câu loại trừ của chú giải và 144 mục đã nâng `NGUOI_DUYET`.
+Kiểm sau merge: `so-tay:check` 1132 nhóm / 23.967 mục / **0 lỗi** · `check-cay` **0 lỗi lệch cây** ·
+`npm test` **exit 0**. PR **vẫn chưa merge**.
+
+---
+
+# LÔ 089 — SOẠN sổ tay chú giải — 2850 2852 2853 2901 2902 2903 (02/11/2026, phiên `dev-zcode-mm`)
+
+Brief: `brief-st-lo089.md` (oz-dev-kit). Đọc trước: `docs/giao-viec/so-tay/LUAT-CHUNG.md` (11 luật) + `docs/giao-viec/so-tay/SOAN-LO.md`.
+**KHÔNG merge PR** — chờ người duyệt. Cột `pr` trong `so-tay-lo.csv` để người duyệt điền.
+
+## 1. Các bước đã làm
+
+1. **Đọc nguồn** — `node scripts/build-so-tay.mjs --nhom=2850,2852,2853,2901,2902,2903 --xuat-nguon=tmp/so-tay/nguon`
+   → 6 tệp nguồn (38–59 KB) + `_he-thong.txt`. Đọc TRỌN khối `nhom<4>.nhom` của cả 6 nhóm + mọi
+   `wco.*` / `tax.*`; quét `ch28.chuong` / `ch29.chuong` / `phan28.phan` / `phan29.phan` để tìm phần
+   liên quan (ch28 D37: "Nhóm 28.53 bao gồm đồng phosphua … trên 15 %"; ch29 D61: chú giải chi tiết
+   29.01/29.02/29.07/29.33 nêu tiêu chuẩn tinh khiết).
+2. **Dựng bộ cắt byte-exact** (`tmp/lo089/lib.mjs` + `tmp/lo089/spec/<nhom>.mjs` + `gen.mjs`) —
+   KHÔNG gõ tay bất kỳ câu trích nào: mọi `trich` cắt từ tệp nguồn theo **chỉ số đoạn + khoảng
+   token**, neo chỉ dùng ký tự không dấu ⇒ không thể méo ký tự. `gen.mjs` tự soát:
+   (a) mọi mảnh câu trích phải là **substring byte-exact** của đúng khối nguồn; (b) mọi từ ≥3 ký tự
+   trong `text`/`dieuKien`/`hoi` phải có trong câu trích **so giữ dấu**; (c) không có ký tự điều khiển.
+3. **Kiểm bản nháp** — `node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw` → **273/273 đạt, 0 lỗi**.
+4. **Kiểm byte-exact lần 2** — `node scripts/check-trich-nguyen-van.mjs` → OK 273 mục.
+5. **Quét lớp lỗi soát** — `node scripts/scan-so-tay-soat.mjs` + `node scripts/check-ngoai-le-sau-trich.mjs`:
+   không có cảnh báo `LƯỚC-NGOẠI-LỆ`; `TỪ-NGOÀI-NGUỒN` chỉ là mẫu chữ của nhà (`Hàng` trong khuôn câu hỏi,
+   `loai_vat` trong tên tiêu chí) — đã biết là cảnh báo giả (memory lô 081 #26).
+6. **Nạp** — `node scripts/build-so-tay.mjs --nhom=… --tu-tep=tmp/so-tay/raw --force
+   --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-089.json` → **mục đạt 273/273 (100 %)**.
+7. **Kiểm sau nạp** — `npm run so-tay:check` → 791 nhóm, 18 997 mục, **0 mục không kiểm được nguồn**;
+   `node scripts/check-cay.mjs --nhom=… --chi-tiet` → **0 lỗi lệch cây**; `npm test` → **exit 0** (5 889 PASS).
+
+## 2. Kết quả: 273 mục / 6 nhóm
+
+| Nhóm | Mục | Cấu trúc |
+|---|---|---|
+| 2850 | 56 | 1 `phamVi` · 27 `loaiTru` · 27 `phanBiet` · 1 `dong8` |
+| 2852 | 19 | 1 `phamVi` · 5 `loaiTru` · 5 `phanBiet` · 2 `tieuChi6` · 6 `dong8` |
+| 2853 | 27 | 1 `phamVi` · 11 `loaiTru` · 11 `phanBiet` · 1 `tieuChi6` · 3 `dong8` |
+| 2901 | 26 | 1 `phamVi` · 6 `loaiTru` · 6 `phanBiet` · 5 `tieuChi6` · 8 `dong8` |
+| 2902 | 53 | 1 `phamVi` · 14 `loaiTru` · 14 `phanBiet` · 10 `tieuChi6` · 14 `dong8` |
+| 2903 | 92 | 1 `phamVi` · 7 `loaiTru` · 7 `phanBiet` · 33 `tieuChi6` · 44 `dong8` |
+
+`dieuKienVao` **rỗng ở cả 6 nhóm** — lý do ở mục 4.
+
+## 3. Mục `dieuKien` có ghi điều mà câu trích KHÔNG nói
+
+- **Không có mục nào.** Mọi `dieuKien`/`text`/`hoi` đều cắt ra từ chính câu trích của mục đó
+  (`gen.mjs` kiểm từ so giữ dấu ⇒ không có từ nào vượt ngoài câu trích).
+- Ngoại lệ duy nhất: dấu nối **"có"** trong `loaiTru.dieuKien` của 2902 (benzen) — câu trích 29.02
+  viết "Nếu **độ tinh khiết** thấp hơn…" (không lặp chủ ngữ) nên phải chèn "có" để câu hỏi đọc được;
+  `"có"` có trong nguồn của nhóm, không thêm điều kiện nào.
+- `tieuChi6[].value` tiếng Việt còn nguồn `wco.*` tiếng Anh ⇒ không kiểm từ được theo câu trích;
+  thay vào đó kiểm mọi từ của `value` có trong **toàn bộ khối nguồn của nhóm** (bắt lỗi méo ký tự).
+
+## 4. Quyết định của người soạn (cần người duyệt xem lại)
+
+0. **Trùng lặp với lô "vòng 10/11"** — trong lúc phiên này chạy, `main` đã có
+   `data/so-tay/2901|2902|2903.json` từ PR #888/#889 ("vòng 10: nạp 20 nhóm chương 29", "vòng 11: nạp
+   19 nhóm chương 29" — Gemini soạn hàng loạt, nhãn `AI_DA_KIEM` **chưa soát**), trong khi
+   `docs/giao-viec/so-tay-lo.csv` vẫn gán 3 nhóm đó cho **lô 089** ⇒ `add/add` conflict, PR
+   CONFLICTING ⇒ **GitHub bỏ qua workflow ⇒ CI im lặng** (lần 5 — memory `so-tay-pr-conflict-lam-ci-im-lang`).
+   Xử lý: `git merge origin/main` vào nhánh rồi chọn **bản lô 089** (`git checkout --ours` cho
+   2901/2902/2903); đối chiếu và nêu bảng so sánh trong mô tả PR #893 mục 7 (lô 089 có nhiều
+   `loaiTru`/`phanBiet`/`tieuChi6` hơn nhưng **không** có `dieuKienVao` mà bản "vòng" có). Sau khi
+   hết CONFLICTING, CI (`test` 9m17s, `bench` 11m55s) chạy và **xanh**.
+
+1. **`dieuKienVao` rỗng ở cả 6 nhóm.** Luật chung: điều kiện vào nhóm phải phủ **CẢ** nhóm 4 số.
+   2850 có 5 phần (A)–(E), 2853 có 5 phần (A)–(E), 2903 có 8 phần (A)–(H) ⇒ không câu nào phủ trọn
+   nhóm. 2901/2902 có câu ràng buộc nhưng chỉ cho **một phần** (chưa no / thơm). 2852 thì câu định nghĩa
+   chứa "đã hoặc chưa" ⇒ máy loại theo `CAU_CHO_PHEP`. ⇒ để rỗng, không đoán.
+2. **BỎ 1 mục `loaiTru` của 2850**: chú giải 28.50 (phần D, silicua) ghi "phospho (nhóm **28.48**)" —
+   nhóm 28.48 **không tồn tại** trong Danh mục (28.47 → 28.49); hai phần khác của cùng chú giải ghi
+   "phospho (nhóm 28.53)". Luật 8 (không sửa mã nguồn để máy kiểm cho qua) ⇒ **bỏ mục**, báo ở đây.
+3. **Không mã hoá được 3 loại trừ theo "Chương N"** (luật 3): "hợp kim silic nhôm ở Chương 76" (2850),
+   "Thủy ngân (nhóm 28.05 hoặc **Chương 30**)" (2852) — chỉ lấy phần có mã 4 số.
+4. **BỎ 2 mục `loaiTru` của 2853 có dấu hiệu "thường"** (máy tự loại): "Nếu dưới giới hạn này thì chúng
+   **thường** được xếp vào Chương 74" (đồng phosphua) — vừa là "thường" vừa chỉ nêu Chương.
+5. **13 phân nhóm 6 số chưa có `tieuChi6`** (cảnh báo `check-cay`, không phải lỗi): 285390, 290129,
+   290219, 290290, 290319, 290329, 290349, 290359, 290369, 290377, 290379, 290389, 290399 — tất cả
+   đều mang tên biểu thuế "**Loại khác**", không có mô tả tiếng Việt để viết `value`; tên WCO của
+   chúng chỉ là "n.e.c. in heading no. …" (tiếng Anh). Để trống thay vì bịa.
+6. **Ngưỡng số chỉ ghi ở nơi câu trích có đủ số + đơn vị**: 2901 (etan ≥ 95 %, etylen ≥ 95 %, propen
+   ≥ 90 % — theo thể tích) và 2902 (benzen/toluen/xylen ≥ 95 % — theo trọng lượng) ⇒ ghi ở
+   `dong8[].tieuChi` + `dong8[].dieuKienSo`. Naphtalen (điểm kết tinh ≥ 79,4 ºC), phenanthrene,
+   anthracene (≥ 90 %) nằm ở dòng "Loại khác" 29029090 ⇒ **không** gắn ngưỡng vào dòng đó (sẽ
+   chặn sai); ngưỡng vẫn nằm trong câu trích của mục `loaiTru` tương ứng.
+7. **Khác biệt chính tả giữa biểu thuế và chú giải (không sửa nguồn)**: biểu thuệ ghi "**Propen**
+   (propylen)" 29012200 còn chú giải ghi "**propene** (propylen)" ⇒ `dong8` 29012200 dùng câu trích
+   chú giải (để có ngưỡng 90 %) nên `dieuKien` ghi "Propene (propylen)"; tương tự 28529010 biểu thuế
+   ghi "Thủy ngân **tanat**" còn chú giải ghi "Thủy ngân **lactat**" ⇒ dùng chữ biểu thuệ.
+8. **Trần clip runtime** — 12 mục vượt trần (nền nhà: `loaiTru.dieuKien` > 55 = 40,3 %,
+   `dong8.dieuKien` > 90 = 42,5 %, `phamVi.text` > 220 = 17,0 %): 7 `dong8.dieuKien` là **tên dòng
+   biểu thuệ** dài (không cắt được mà không sai), 4 `loaiTru.dieuKien` dài 58–61 ký tự, 1
+   `phamVi.text` của 2853 dài 244 ký tự (mất đuôi "trừ hỗn hống của kim loại quý" — thông tin này
+   **có** trong mục `loaiTru` tương ứng nên không mất kết luận).
+
+---
+
 # LÔ 087 — SOÁT ĐỘC LẬP — 2836 2837 2839 2840 2841 2842 (02/11/2026, phiên `dev-soat-doc-lap-lo087`)
 
 Người soát **KHÁC người soạn** (`dev-zcode-mm`). Brief: `brief-st-soat-lo087.md` (oz-dev-kit).
