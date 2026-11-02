@@ -1,0 +1,100 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "520859",
+  "nhom": "5208",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261102T1700#soan-520859",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "52085910",
+      "nguon": "tax.52085910",
+      "trich": "52085910 - - - Được in bằng phương pháp batik truyền thống (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52085920",
+      "nguon": "tax.52085920",
+      "trich": "52085920 - - - Loại khác, vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vải vân chéo"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "soSoi",
+                "op": ">=",
+                "value": 3,
+                "donVi": "sợi"
+              },
+              {
+                "fact": "soSoi",
+                "op": "<=",
+                "value": 3,
+                "donVi": "sợi"
+              }
+            ],
+            [
+              {
+                "fact": "soSoi",
+                "op": ">=",
+                "value": 4,
+                "donVi": "sợi"
+              },
+              {
+                "fact": "soSoi",
+                "op": "<=",
+                "value": 4,
+                "donVi": "sợi"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "52085990",
+      "nguon": "tax.52085990",
+      "trich": "52085990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "52085910",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "phuongPhapCheTao",
+      "ghiChu": "tax.52085910 \"52085910 - - - Được in bằng phương pháp batik truyền thống (SEN)\": vế GIỚI HẠN \"Được in\" và \"bằng phương pháp batik truyền thống\" không có khoá — phuongPhapCheTao (tu-vung@2) không có giá trị nào đọc \"in\"/\"batik\" (chỉ DUC/REN/CAN_NONG/CAN_NGUOI/KEO/DAP/HAN/EP_PHUN/THOI/DOT_DAP_KEO_GIAN). Cần thêm giá trị in batik (vd IN_BATIK, đọc \"in bằng phương pháp batik truyền thống\"/EN \"batik\"). Không bịa, không mượn."
+    },
+    {
+      "ma": "52085920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.52085920 \"52085920 - - - Loại khác, vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân\" ⇒ \"Loại khác\" (máy phủ định anh em 52085910 — cùng mẫu 84818097) + điều kiện vế: tenLoai \"vải vân chéo\" (danh từ đầu nguyên văn của vế) + HOAC [[soSoi = 3 sợi], [soSoi = 4 sợi]] — \"3 sợi HOẶC 4 sợi\" là hai ngưỡng riêng (QUY-TRINH 3.5), không có op \"=\" nên chốt mỗi ngưỡng bằng cặp >= và <= cùng số (3; 4) — cả hai số đều có trong trích. \"kể cả vải vân chéo dấu nhân\" là vế kể cả (PHU, cổng 5 không đòi phủ) — không thành điều kiện. Đơn vị chữ là \"sợi\" ⇒ soSoi, không dùng soLoi (chữ không có \"lõi\" — cùng quy tắc 854442)."
+    },
+    {
+      "ma": "52085990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.52085990 \"52085990 - - - Loại khác\" trần ⇒ không điều kiện (máy tự phủ định anh em đứng trước)."
+    },
+    {
+      "ma": "520859",
+      "loai": "DUNG",
+      "ghiChu": "Gói --goi đánh cờ [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ máy sẽ DỪNG can-bang-hieu-chinh-tien-le:520859:chua-co bất kể nội dung spec. Spec soạn đầy phần làm được (dòng .10 thiếu khoá như ghi chú; dòng .20 và .90 hoàn chỉnh) để Claude thêm bảng hiệu chỉnh rồi chạy lại; không cố ép."
+    }
+  ]
+}
