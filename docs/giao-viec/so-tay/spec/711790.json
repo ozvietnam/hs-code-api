@@ -1,0 +1,65 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "711790",
+  "phien": "zcode-sub:glm-5.3:20261102T1649#soan-711790",
+  "dong8": {
+    "71179010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vòng" }
+      ]
+    },
+    "71179020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "đồ trang sức" }
+      ],
+      "phanConLai": true
+    },
+    "71179094": {
+      "dieuKienSo": [],
+      "phanConLai": false
+    },
+    "71179099": {
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "7117909": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bộ phận" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "71179010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71179010 \"71179010 - - Vòng\" ⇒ tenLoai \"Vòng\" (chuỗi con nguyên văn). So chữ tự do — không tất định."
+    },
+    {
+      "ma": "71179020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71179020 \"71179020 - - Các đồ trang sức khác\": phần còn lại có tên — vế khẳng định \"đồ trang sức\" ⇒ tenLoai \"đồ trang sức\" (nguyên văn), chữ \"khác\" ⇒ phanConLai: true phủ định anh em đứng trước 71179010 \"Vòng\" (tiền lệ 85013170, 84819023; cùng cấu trúc 71171920). Không phủ 7117909 \"Bộ phận\" (đứng sau)."
+    },
+    {
+      "ma": "7117909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7117909 \"7117909 Bộ phận\" ⇒ tenLoai \"Bộ phận\" (chuỗi con nguyên văn, danh từ trần; cùng khoá tenLoai với 71179010/71179020 — BANG-LUAT dòng 10; tiền lệ 40169917, 71171990)."
+    },
+    {
+      "ma": "71179094",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chatLieu (bổ sung giá trị: vật liệu khắc từ động vật/thực vật/khoáng sản đã gia công — mai rùa, ngà, xương, sừng, san hô, xà cừ — và cách đọc \"sứ\" cho gốm sứ)",
+      "ghiChu": "tax.71179094 \"71179094 - - - Làm toàn bộ bằng plastic, thủy tinh, gỗ, vật liệu khắc từ mai rùa, ngà, xương, sừng, san hô, xà cừ và các loại động vật khác đã gia công, vật liệu khắc từ thực vật đã gia công, vật liệu khắc từ khoáng sản đã gia công, hoặc bằng sứ\": chatLieu@2 chỉ có plastic/thủy tinh/gỗ (và gốm sứ nhưng cách đọc \"gốm sứ\" không khớp chữ \"bằng sứ\"); toàn bộ nhóm \"vật liệu khắc từ … đã gia công\" không có khoá giá trị. Chỉ ghi chatLieu [plastic, thủy tinh, gỗ] sẽ bỏ vế vật liệu khắc ⇒ hàng ngà/sừng/xà cừ… rơi nhầm sang 71179099 — đổi mã 8 số ⇒ DỪNG, không mượn khoá gần nghĩa."
+    },
+    {
+      "ma": "71179094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ \"các loại động vật khác\" trong tax.71179094 là vế MỞ của danh sách chất liệu (động vật khác đã gia công dùng làm vật liệu khắc), KHÔNG phải phần còn lại của anh em ⇒ phanConLai: false."
+    },
+    {
+      "ma": "71179099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71179099 \"71179099 - - - Loại khác\" trần ⇒ không điều kiện (máy tự phủ định anh em)."
+    }
+  ]
+}
