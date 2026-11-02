@@ -1,0 +1,131 @@
+{
+ "nhom": "5505",
+ "phamVi": {
+  "text": "Phế liệu từ các loại sợi nhân tạo (kể cả phế liệu xơ, phế liệu sợi và nguyên liệu tái chế)",
+  "nguon": "nhom5505.nhom",
+  "trich": "Nhóm này cũng bao gồm các phế liệu xơ nhân tạo (sợi filament và xơ staple, xem Chú giải tổng quát của Chương 54)",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Mền xơ, bông",
+   "sangNhom": "5601",
+   "nguon": "nhom5505.nhom",
+   "trich": "(a) Mền xơ, bông (nhóm 30.05 hoặc 56.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Xơ phế liệu đã được chải thô, chải kỹ, hoặc gia công cách khác để kéo sợi",
+   "sangNhom": "5506",
+   "nguon": "nhom5505.nhom",
+   "trich": "(b) Xơ phế liệu đã được chải thô, chải kỹ, hoặc gia công cách khác để kéo sợi (nhóm 55.06 hoặc 55.07).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Xơ vụn và bụi xơ và kết xơ từ công nghiệp dệt",
+   "sangNhom": "5601",
+   "nguon": "nhom5505.nhom",
+   "trich": "(c) Xơ vụn và bụi xơ và kết xơ từ công nghiệp dệt (nhóm 56.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là mền xơ, bông chuyển sang nhóm 56.01 không?",
+   "neuCo": "5601",
+   "neuKhong": "5505",
+   "nguon": "nhom5505.nhom",
+   "trich": "(a) Mền xơ, bông (nhóm 30.05 hoặc 56.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là xơ phế liệu đã được chải thô, chải kỹ, hoặc gia công cách khác để kéo sợi chuyển sang nhóm 55.06 không?",
+   "neuCo": "5506",
+   "neuKhong": "5505",
+   "nguon": "nhom5505.nhom",
+   "trich": "(b) Xơ phế liệu đã được chải thô, chải kỹ, hoặc gia công cách khác để kéo sợi (nhóm 55.06 hoặc 55.07).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là xơ vụn và bụi xơ và kết xơ từ công nghiệp dệt chuyển sang nhóm 56.01 không?",
+   "neuCo": "5601",
+   "neuKhong": "5505",
+   "nguon": "nhom5505.nhom",
+   "trich": "(c) Xơ vụn và bụi xơ và kết xơ từ công nghiệp dệt (nhóm 56.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "55051000",
+   "dieuKien": "Từ các xơ tổng hợp",
+   "loaiKhac": false,
+   "nguon": "tax.55051000",
+   "trich": "55051000 - Từ các xơ tổng hợp",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "55052000",
+   "dieuKien": "Từ các xơ tái tạo",
+   "loaiKhac": false,
+   "nguon": "tax.55052000",
+   "trich": "55052000 - Từ các xơ tái tạo",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5505",
+    "cap": 4,
+    "cha": "55",
+    "tenVi": "Phế liệu (kể cả phế liệu xơ, phế liệu sợi và nguyên liệu tái chế) từ xơ nhân tạo.",
+    "tenEn": "Waste (including noils, yarn waste and garnetted stock), of man-made fibres",
+    "suyRa": false
+   },
+   {
+    "id": "55051000",
+    "cap": 8,
+    "cha": "5505",
+    "tenVi": "Từ các xơ tổng hợp",
+    "tenEn": "Fibres; waste (including noils, yarn waste and garnetted stock), of synthetic fibres",
+    "suyRa": false,
+    "laPhanNhom": "550510"
+   },
+   {
+    "id": "55052000",
+    "cap": 8,
+    "cha": "5505",
+    "tenVi": "Từ các xơ tái tạo",
+    "tenEn": "Fibres; waste (including noils, yarn waste and garnetted stock), of artificial fibres",
+    "suyRa": false,
+    "laPhanNhom": "550520"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5505.nhom",
+  "tax.55051000",
+  "tax.55052000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:27:45.908Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan55.phan (46130→25000)"
+  ]
+ }
+}

@@ -1,0 +1,603 @@
+{
+ "nhom": "4805",
+ "phamVi": {
+  "text": "Giấy và bìa không tráng khác, ở dạng cuộn hoặc tờ, chưa được gia công hơn mức quy định tại Chú giải 3 của Chương 48.",
+  "nguon": "nhom4805.nhom",
+  "trich": "Nhóm này bao gồm giấy và bìa không tráng sản xuất bằng máy dưới dạng cuộn hoặc tờ (liên quan đến kích thước, xem Chú giải 8 của Chương này), trừ loại được chi tiết tại các nhóm từ 48.01 tới 48.04.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_giay_va_bia_khong_trang_chua_duoc_chi_tiet_noi_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "các nhóm từ 48.01 tới 48.04"
+   ],
+   "nguon": "nhom4805.nhom",
+   "trich": "Nhóm này bao gồm giấy và bìa không tráng sản xuất bằng máy dưới dạng cuộn hoặc tờ (liên quan đến kích thước, xem Chú giải 8 của Chương này), trừ loại được chi tiết tại các nhóm từ 48.01 tới 48.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Ván sợi",
+   "sangNhom": "4411",
+   "nguon": "nhom4805.nhom",
+   "trich": "Nhóm này cũng loại trừ ván sợi (nhóm 44.11).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là ván sợi?",
+   "neuCo": "4411",
+   "neuKhong": "4805",
+   "nguon": "nhom4805.nhom",
+   "trich": "Nhóm này cũng loại trừ ván sợi (nhóm 44.11).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "480524",
+   "fact": "dinh_luong",
+   "op": "<=",
+   "value": 150,
+   "donVi": "g/m2",
+   "nguon": "wco.480524",
+   "trich": "weight 150g/m2, or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "480525",
+   "fact": "dinh_luong",
+   "op": ">",
+   "value": 150,
+   "donVi": "g/m2",
+   "nguon": "wco.480525",
+   "trich": "weight over 150g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "480591",
+   "fact": "dinh_luong",
+   "op": "<=",
+   "value": 150,
+   "donVi": "g/m2",
+   "nguon": "wco.480591",
+   "trich": "weight 150g/m2 or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "480593",
+   "fact": "dinh_luong",
+   "op": ">=",
+   "value": 225,
+   "donVi": "g/m2",
+   "nguon": "wco.480593",
+   "trich": "weight 225/m2 or more",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "48051100",
+   "dieuKien": "Từ bột giấy bán hóa ",
+   "loaiKhac": false,
+   "nguon": "tax.48051100",
+   "trich": "48051100 - - Từ bột giấy bán hóa ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48051200",
+   "dieuKien": "Từ bột giấy rơm rạ",
+   "loaiKhac": false,
+   "nguon": "tax.48051200",
+   "trich": "48051200 - - Từ bột giấy rơm rạ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48051910",
+   "dieuKien": "Định lượng trên 150 g/m2 nhưng dưới 225 g/m2",
+   "loaiKhac": false,
+   "nguon": "tax.48051910",
+   "trich": "48051910 - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48051990",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.48051990",
+   "trich": "48051990 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "480519",
+    "truAnhEm": [
+     "48051910"
+    ],
+    "truDayDu": [
+     "48051910"
+    ],
+    "toTienCoTen": "480519",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "48052400",
+   "dieuKien": "Có định lượng từ 150 g/m2 trở xuống",
+   "loaiKhac": false,
+   "nguon": "tax.48052400",
+   "trich": "48052400 - - Có định lượng từ 150 g/m2 trở xuống",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48052510",
+   "dieuKien": "Có định lượng dưới 225 g/m2",
+   "loaiKhac": false,
+   "nguon": "tax.48052510",
+   "trich": "48052510 - - - Có định lượng dưới 225 g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48052590",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.48052590",
+   "trich": "48052590 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "480525",
+    "truAnhEm": [
+     "48052510"
+    ],
+    "truDayDu": [
+     "48052510"
+    ],
+    "toTienCoTen": "480525",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "48053010",
+   "dieuKien": "Giấy đã nhuộm màu dùng để bao quanh hộp diêm bằng gỗ(SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.48053010",
+   "trich": "48053010 - - Giấy đã nhuộm màu dùng để bao quanh hộp diêm bằng gỗ(SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48053090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.48053090",
+   "trich": "48053090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "480530",
+    "truAnhEm": [
+     "48053010"
+    ],
+    "truDayDu": [
+     "48053010"
+    ],
+    "toTienCoTen": "480530",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "48054000",
+   "dieuKien": "Giấy lọc và bìa lọc",
+   "loaiKhac": false,
+   "nguon": "tax.48054000",
+   "trich": "48054000 - Giấy lọc và bìa lọc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48055000",
+   "dieuKien": "Giấy nỉ và bìa nỉ",
+   "loaiKhac": false,
+   "nguon": "tax.48055000",
+   "trich": "48055000 - Giấy nỉ và bìa nỉ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48059110",
+   "dieuKien": "Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng",
+   "loaiKhac": false,
+   "nguon": "tax.48059110",
+   "trich": "48059110 - - - Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48059120",
+   "dieuKien": "Loại dùng để sản xuất giấy vàng mã(SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.48059120",
+   "trich": "48059120 - - - Loại dùng để sản xuất giấy vàng mã(SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48059190",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.48059190",
+   "trich": "48059190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "480591",
+    "truAnhEm": [
+     "48059110",
+     "48059120"
+    ],
+    "truDayDu": [
+     "48059110",
+     "48059120"
+    ],
+    "toTienCoTen": "480591",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "48059210",
+   "dieuKien": "Giấy và bìa nhiều lớp(SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.48059210",
+   "trich": "48059210 - - - Giấy và bìa nhiều lớp(SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48059290",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.48059290",
+   "trich": "48059290 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "480592",
+    "truAnhEm": [
+     "48059210"
+    ],
+    "truDayDu": [
+     "48059210"
+    ],
+    "toTienCoTen": "480592",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "48059310",
+   "dieuKien": "Giấy và bìa nhiều lớp(SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.48059310",
+   "trich": "48059310 - - - Giấy và bìa nhiều lớp(SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48059320",
+   "dieuKien": "Giấy thấm (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.48059320",
+   "trich": "48059320 - - - Giấy thấm (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "48059390",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.48059390",
+   "trich": "48059390 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "480593",
+    "truAnhEm": [
+     "48059310",
+     "48059320"
+    ],
+    "truDayDu": [
+     "48059310",
+     "48059320"
+    ],
+    "toTienCoTen": "480593",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4805",
+    "cap": 4,
+    "cha": "48",
+    "tenVi": "Giấy và bìa không tráng khác, ở dạng cuộn hoặc tờ, chưa được gia công hơn mức đã chi tiết trong Chú giải 3 của Chương này.(+).",
+    "tenEn": "Uncoated paper and paperboard n.e.c., in rolls or sheets",
+    "suyRa": false
+   },
+   {
+    "id": "48051",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "4805",
+    "tenVi": "Giấy để tạo lớp sóng",
+    "tenEn": "Fluting paper",
+    "suyRa": true
+   },
+   {
+    "id": "48051100",
+    "cap": 8,
+    "cha": "48051",
+    "tenVi": "Từ bột giấy bán hóa",
+    "tenEn": "Paper and paperboard; uncoated, semi-chemical fluting paper, rolls or sheets",
+    "suyRa": false,
+    "laPhanNhom": "480511"
+   },
+   {
+    "id": "48051200",
+    "cap": 8,
+    "cha": "48051",
+    "tenVi": "Từ bột giấy rơm rạ",
+    "tenEn": "Paper and paperboard; uncoated, straw fluting paper, rolls or sheets",
+    "suyRa": false,
+    "laPhanNhom": "480512"
+   },
+   {
+    "id": "480519",
+    "cap": 6,
+    "cha": "48051",
+    "tenVi": "Loại khác",
+    "tenEn": "Paper and paperboard; uncoated, fluting paper other than semi-chemical or straw, rolls or sheets",
+    "suyRa": false
+   },
+   {
+    "id": "48051910",
+    "cap": 8,
+    "cha": "480519",
+    "tenVi": "Định lượng trên 150 g/m2 nhưng dưới 225 g/m2",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "48051990",
+    "cap": 8,
+    "cha": "480519",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "48052",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "4805",
+    "tenVi": "Bìa lớp mặt (chủ yếu hoặc toàn bộ từ bột giấy tái chế)",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "48052400",
+    "cap": 8,
+    "cha": "48052",
+    "tenVi": "Có định lượng từ 150 g/m2 trở xuống",
+    "tenEn": "Paper & paperboard; uncoated, testliner (recycled linerboard), weight 150g/m2, or less, in rolls or sheets",
+    "suyRa": false,
+    "laPhanNhom": "480524"
+   },
+   {
+    "id": "480525",
+    "cap": 6,
+    "cha": "48052",
+    "tenVi": "Định lượng trên 150 g/m2",
+    "tenEn": "Paper & paperboard; uncoated, testliner (recycled linerboard), weight over 150g/m2, in rolls or sheets",
+    "suyRa": false
+   },
+   {
+    "id": "48052510",
+    "cap": 8,
+    "cha": "480525",
+    "tenVi": "Có định lượng dưới 225 g/m2",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "48052590",
+    "cap": 8,
+    "cha": "480525",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "480530",
+    "cap": 6,
+    "cha": "4805",
+    "tenVi": "Giấy bao gói làm từ bột giấy sulphit",
+    "tenEn": "Paper and paperboard; sulphite wrapping paper, uncoated, in rolls or sheets",
+    "suyRa": false
+   },
+   {
+    "id": "48053010",
+    "cap": 8,
+    "cha": "480530",
+    "tenVi": "Giấy đã nhuộm màu dùng để bao quanh hộp diêm bằng gỗ(SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "48053090",
+    "cap": 8,
+    "cha": "480530",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "48054000",
+    "cap": 8,
+    "cha": "4805",
+    "tenVi": "Giấy lọc và bìa lọc",
+    "tenEn": "Paper and paperboard; filter paper and paperboard, uncoated, in rolls or sheets",
+    "suyRa": false,
+    "laPhanNhom": "480540"
+   },
+   {
+    "id": "48055000",
+    "cap": 8,
+    "cha": "4805",
+    "tenVi": "Giấy nỉ và bìa nỉ",
+    "tenEn": "Paper and paperboard; felt paper and paperboard, uncoated, in rolls or sheets",
+    "suyRa": false,
+    "laPhanNhom": "480550"
+   },
+   {
+    "id": "48059",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "4805",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "480591",
+    "cap": 6,
+    "cha": "48059",
+    "tenVi": "Có định lượng từ 150 g/m2 trở xuống",
+    "tenEn": "Paper and paperboard; uncoated, weight 150g/m2 or less, in rolls or sheets, n.e.c. in heading no.4805",
+    "suyRa": false
+   },
+   {
+    "id": "48059110",
+    "cap": 8,
+    "cha": "480591",
+    "tenVi": "Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "48059120",
+    "cap": 8,
+    "cha": "480591",
+    "tenVi": "Loại dùng để sản xuất giấy vàng mã(SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "48059190",
+    "cap": 8,
+    "cha": "480591",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "480592",
+    "cap": 6,
+    "cha": "48059",
+    "tenVi": "Có định lượng trên 150 g/m2 nhưng dưới 225 g/m2",
+    "tenEn": "Paper and paperboard; uncoated, weight more than 150g/m2 but less than 225 g/m2, in rolls or sheets, n.e.c. in heading no. 4805",
+    "suyRa": false
+   },
+   {
+    "id": "48059210",
+    "cap": 8,
+    "cha": "480592",
+    "tenVi": "Giấy và bìa nhiều lớp(SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "48059290",
+    "cap": 8,
+    "cha": "480592",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "480593",
+    "cap": 6,
+    "cha": "48059",
+    "tenVi": "Có định lượng từ 225 g/m2 trở lên",
+    "tenEn": "Paper and paperboard; uncoated, weight 225/m2 or more, in rolls or sheets, n.e.c. in heading no. 4805",
+    "suyRa": false
+   },
+   {
+    "id": "48059310",
+    "cap": 8,
+    "cha": "480593",
+    "tenVi": "Giấy và bìa nhiều lớp(SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "48059320",
+    "cap": 8,
+    "cha": "480593",
+    "tenVi": "Giấy thấm (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "48059390",
+    "cap": 8,
+    "cha": "480593",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom4805.nhom",
+  "tax.48051100",
+  "tax.48051200",
+  "tax.48051910",
+  "tax.48051990",
+  "tax.48052400",
+  "tax.48052510",
+  "tax.48052590",
+  "tax.48053010",
+  "tax.48053090",
+  "tax.48054000",
+  "tax.48055000",
+  "tax.48059110",
+  "tax.48059120",
+  "tax.48059190",
+  "tax.48059210",
+  "tax.48059290",
+  "tax.48059310",
+  "tax.48059320",
+  "tax.48059390",
+  "wco.480524",
+  "wco.480525",
+  "wco.480591",
+  "wco.480593"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:07:44.858Z",
+  "ms": 15
+ },
+ "kiemTra": {
+  "tong": 27,
+  "dat": 27,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

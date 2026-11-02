@@ -1,0 +1,160 @@
+{
+ "nhom": "7901",
+ "phamVi": {
+  "text": "Kẽm chưa gia công",
+  "nguon": "nhom7901.nhom",
+  "trich": "Nhóm này bao gồm kẽm chưa gia công ở các mức độ khác nhau về độ tinh khiết từ kẽm thương phẩm (Xem chú giải chung ở trên) đến kẽm đã được tinh chế, nó có thể ở dạng khối, tấm, thỏi, phiến hoặc các dạng tương tự hoặc có dạng viên.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_kem_chua_qua_gia_cong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch79.chuong",
+   "trich": "Kẽm thương phẩm và kẽm chưa qua gia công, phế liệu và các mảnh vụn (nhóm 79.01 và 79.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Bụi, bột, vẩy kẽm",
+   "sangNhom": "7903",
+   "nguon": "nhom7901.nhom",
+   "trich": "Nhóm này loại trừ bụi, bột, vẩy kẽm (nhóm 79.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là bụi, bột, vẩy kẽm thuộc nhóm 79.03 không?",
+   "neuCo": "7903",
+   "neuKhong": "7901",
+   "nguon": "nhom7901.nhom",
+   "trich": "Nhóm này loại trừ bụi, bột, vẩy kẽm (nhóm 79.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "790111",
+   "fact": "ham_luong_kem",
+   "op": ">=",
+   "value": 99.99,
+   "donVi": "%",
+   "nguon": "wco.790111",
+   "trich": "Zinc; unwrought, (not alloyed), containing by weight 99.99% or more of zinc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "790112",
+   "fact": "ham_luong_kem",
+   "op": "<",
+   "value": 99.99,
+   "donVi": "%",
+   "nguon": "wco.790112",
+   "trich": "Zinc; unwrought, (not alloyed), containing by weight less than 99.99% of zinc",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "79011100",
+   "dieuKien": "Có hàm lượng kẽm từ 99,99% trở lên tính theo khối lượng",
+   "loaiKhac": false,
+   "nguon": "tax.79011100",
+   "trich": "79011100 - - Có hàm lượng kẽm từ 99,99% trở lên tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "79011200",
+   "dieuKien": "Có hàm lượng kẽm dưới 99,99% tính theo khối lượng ",
+   "loaiKhac": false,
+   "nguon": "tax.79011200",
+   "trich": "79011200 - - Có hàm lượng kẽm dưới 99,99% tính theo khối lượng ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "79012000",
+   "dieuKien": "Hợp kim kẽm",
+   "loaiKhac": false,
+   "nguon": "tax.79012000",
+   "trich": "79012000 - Hợp kim kẽm",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7901",
+    "cap": 4,
+    "cha": "79",
+    "tenVi": "Kẽm chưa gia công",
+    "tenEn": "Zinc; unwrought",
+    "suyRa": false
+   },
+   {
+    "id": "79011",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "7901",
+    "tenVi": "Kẽm, không hợp kim",
+    "tenEn": "Zinc, not alloyed",
+    "suyRa": true
+   },
+   {
+    "id": "79011100",
+    "cap": 8,
+    "cha": "79011",
+    "tenVi": "Có hàm lượng kẽm từ 99,99% trở lên tính theo khối lượng",
+    "tenEn": "Zinc; unwrought, (not alloyed), containing by weight 99.99% or more of zinc",
+    "suyRa": false,
+    "laPhanNhom": "790111"
+   },
+   {
+    "id": "79011200",
+    "cap": 8,
+    "cha": "79011",
+    "tenVi": "Có hàm lượng kẽm dưới 99,99% tính theo khối lượng",
+    "tenEn": "Zinc; unwrought, (not alloyed), containing by weight less than 99.99% of zinc",
+    "suyRa": false,
+    "laPhanNhom": "790112"
+   },
+   {
+    "id": "79012000",
+    "cap": 8,
+    "cha": "7901",
+    "tenVi": "Hợp kim kẽm",
+    "tenEn": "Zinc; unwrought, alloys",
+    "suyRa": false,
+    "laPhanNhom": "790120"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch79.chuong",
+  "nhom7901.nhom",
+  "tax.79011100",
+  "tax.79011200",
+  "tax.79012000",
+  "wco.790111",
+  "wco.790112"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:54:35.904Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
