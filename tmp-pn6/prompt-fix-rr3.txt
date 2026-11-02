@@ -1,0 +1,620 @@
+VÒNG SỬA. Dưới đây là 3 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 850490 ===
+--- GÓI ---
+# 850490 — Bộ phận
+
+850490 — Electrical transformers, static converters and inductors; parts thereof
+  85049010 Của hàng hóa thuộc phân nhóm 8504.10
+  85049020 Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10
+  [8504903] Dùng cho máy biến điện có công suất không quá 10.000 kVA
+    85049031 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    85049039 Loại khác  [LK]
+  [8504904] Dùng cho máy biến điện có công suất trên 10.000 kVA
+    85049041 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    85049049 Loại khác  [LK]
+  85049090 Loại khác  [LK]
+
+- 85049010 DONG8
+    tax.85049010 [49 ký tự]: 85049010 - - Của hàng hóa thuộc phân nhóm 8504.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8504.10"
+- 85049020 DONG8
+    tax.85049020 [104 ký tự]: 85049020 - - Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10"
+- 8504903 TIEU_DE
+    tieuDe.8504903 [64 ký tự]: 8504903 Dùng cho máy biến điện có công suất không quá 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy biến điện" · [GIỚI HẠN] "có công suất không quá 10.000 kVA"
+- 85049031 DONG8
+    tax.85049031 [137 ký tự]: 85049031 - - - Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho biến áp phân phối và biến áp nguồn"
+- 85049039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049039 [24 ký tự]: 85049039 - - - Loại khác
+- 8504904 TIEU_DE
+    tieuDe.8504904 [59 ký tự]: 8504904 Dùng cho máy biến điện có công suất trên 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy biến điện" · [GIỚI HẠN] "có công suất trên 10.000 kVA"
+- 85049041 DONG8
+    tax.85049041 [137 ký tự]: 85049041 - - - Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho biến áp phân phối và biến áp nguồn"
+- 85049049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049049 [24 ký tự]: 85049049 - - - Loại khác
+- 85049090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049090 [22 ký tự]: 85049090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850490; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850490",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850490",
+  "dong8": {
+    "85049010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8504.10"
+        }
+      ]
+    },
+    "85049020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mạch in"
+        },
+        {
+          "fact": "daLapRap",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8504.40.11",
+            "8504.40.19",
+            "8504.50.10"
+          ]
+        }
+      ]
+    },
+    "85049031": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tấm",
+            "cụm tấm tản nhiệt",
+            "ống tản nhiệt"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "biến áp phân phối",
+            "biến áp nguồn"
+          ]
+        }
+      ]
+    },
+    "85049041": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tấm",
+            "cụm tấm tản nhiệt",
+            "ống tản nhiệt"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "biến áp phân phối",
+            "biến áp nguồn"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8504903": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy biến điện"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "8504904": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy biến điện"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85049010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85049010: \"Của hàng hóa thuộc phân nhóm 8504.10\" ⇒ dungCho 8504.10"
+    },
+    {
+      "ma": "85049020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85049020: \"Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10\" ⇒ tenLoai Mạch in, daLapRap CO, dungCho 8504.40.11, 8504.40.19, 8504.50.10"
+    },
+    {
+      "ma": "8504903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504903: \"Dùng cho máy biến điện có công suất không quá 10.000 kVA\" ⇒ dungCho máy biến điện, congSuatBieuKien <= 10000 kVA"
+    },
+    {
+      "ma": "85049031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85049031: \"Tấm, cụm tấm tản nhiệt; ống tản nhiệt... dùng cho biến áp phân phối và biến áp nguồn\" ⇒ tenLoai Tấm, cụm tấm tản nhiệt, ống tản nhiệt; dungCho biến áp phân phối, biến áp nguồn"
+    },
+    {
+      "ma": "8504904",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504904: \"Dùng cho máy biến điện có công suất trên 10.000 kVA\" ⇒ dungCho máy biến điện, congSuatBieuKien > 10000 kVA"
+    },
+    {
+      "ma": "85049041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85049041: \"Tấm, cụm tấm tản nhiệt; ống tản nhiệt... dùng cho biến áp phân phối và biến áp nguồn\" ⇒ tenLoai Tấm, cụm tấm tản nhiệt, ống tản nhiệt; dungCho biến áp phân phối, biến áp nguồn"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-dinh-ngu-tach:85049031:tấm tản nhiệt
+      → Định ngữ chung bị tách: theo chữ Anh của cùng dòng, vế bổ nghĩa đi với CẢ các danh từ đầu liên hợp (gắn cho một phần ⇒ rộng hơn chữ) hoặc chỉ với danh từ CUỐI (gắn cho tất cả ⇒ hẹp hơn chữ). Sửa: Định ngữ chung ⇒ một điều kiện riêng phủ định ngữ cho mọi danh từ đầu (vd tenLoai ["A","B"] + dungCho "<định ngữ>"); định ngữ chỉ của danh từ cuối ⇒ HOAC [[tenLoai A], [tenLoai B, <điều kiện định ngữ>]]. Máy đọc sai cấu trúc ⇒ BO_VE với ve = định ng�
+    ✗ cong5-dinh-ngu-tach:85049041:tấm tản nhiệt
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 851140 ===
+--- GÓI ---
+# 851140 — Động cơ khởi động và máy tổ hợp hai tính năng khởi động và phát điện
+
+851140 — Ignition or starting equipment; starter motors and dual purpose starter-generators, of a kind used for spark or compression-ignition internal combustion engines
+  85114010 Loại dùng cho động cơ của phương tiện bay
+  [8511402] Động cơ khởi động khác chưa lắp ráp
+    85114021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85114029 Loại khác  [LK]
+  [8511403] Động cơ khởi động đã lắp ráp sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    85114031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+    85114032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    85114033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+  [8511409] Loại khác
+    85114091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85114099 Loại khác  [LK]
+
+- 85114010 DONG8
+    tax.85114010 [54 ký tự]: 85114010 - - Loại dùng cho động cơ của phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của phương tiện bay"
+- 8511402 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8511402 [43 ký tự]: 8511402 Động cơ khởi động khác chưa lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lắp ráp"
+- 85114021 DONG8
+    tax.85114021 [83 ký tự]: 85114021 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85114029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85114029 [24 ký tự]: 85114029 - - - Loại khác
+- 8511403 TIEU_DE
+    tieuDe.8511403 [97 ký tự]: 8511403 Động cơ khởi động đã lắp ráp sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05"
+- 85114031 DONG8
+    tax.85114031 [59 ký tự]: 85114031 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.01 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.01"
+- 85114032 DONG8
+    tax.85114032 [76 ký tự]: 85114032 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+- 85114033 DONG8
+    tax.85114033 [58 ký tự]: 85114033 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.05"
+- 8511409 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8511409 [17 ký tự]: 8511409 Loại khác
+- 85114091 DONG8
+    tax.85114091 [83 ký tự]: 85114091 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85114099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85114099 [24 ký tự]: 85114099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851140; chú giải: nhom8511.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "851140",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-851140",
+  "dong8": {
+    "85114010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ của phương tiện bay"
+        }
+      ]
+    },
+    "85114021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.05"
+          ]
+        }
+      ]
+    },
+    "85114031": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ]
+    },
+    "85114032": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
+        }
+      ]
+    },
+    "85114033": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.05"
+        }
+      ]
+    },
+    "85114091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.05"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8511402": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ khởi động"
+        },
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "phanConLai": true
+    },
+    "8511403": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ khởi động"
+        },
+        {
+          "fact": "daLapRap",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.01",
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.05"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85114010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85114010: \"Loại dùng cho động cơ của phương tiện bay\" ⇒ dungCho động cơ của phương tiện bay"
+    },
+    {
+      "ma": "8511402",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8511402: \"Động cơ khởi động khác chưa lắp ráp\" ⇒ tenLoai Động cơ khởi động, daLapRap KHONG, phanConLai true phủ định 85114010"
+    },
+    {
+      "ma": "85114021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85114021: \"Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05\" ⇒ dungCho 87.02, 87.03, 87.04, 87.05"
+    },
+    {
+      "ma": "8511403",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8511403: \"Động cơ khởi động đã lắp ráp sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05\" ⇒ tenLoai Động cơ khởi động, daLapRap CO, dungCho dải từ 87.01 đến 87.05"
+    },
+    {
+      "ma": "85114031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85114031: \"Sử dụng cho động cơ của xe thuộc nhóm 87.01\" ⇒ dungCho 87.01"
+    },
+    {
+      "ma": "85114032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85114032: \"Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" ⇒ dungCho 87.02, 87.03, 87.04"
+    },
+    {
+      "ma": "85114033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85114033: \"Sử dụng cho động cơ của xe thuộc nhóm 87.05\" ⇒ dungCho 87.05"
+    },
+    {
+      "ma": "85114091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85114091: \"Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05\" ⇒ dungCho 87.02, 87.03, 87.04, 87.05"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:8511403:dieu-kien-so-cong-dung-khong-co-trong-trich:87.02
+      → Giá trị CONG_DUNG không phải chuỗi con của câu trích. Sửa: Chép chuỗi con nguyên văn từ trich.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 851150 ===
+--- GÓI ---
+# 851150 — Máy phát điện khác
+
+851150 — Ignition or starting equipment; generators n.e.c. in heading no. 8511, of a kind used for spark or compression-ignition internal combustion engines
+  85115010 Loại dùng cho động cơ của phương tiện bay
+  [8511502] Máy phát điện xoay chiều khác chưa lắp ráp
+    85115021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85115029 Loại khác  [LK]
+  [8511503] Máy phát điện xoay chiều đã lắp ráp dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    85115031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+    85115032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    85115033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+  [8511509] Loại khác
+    85115091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85115099 Loại khác  [LK]
+
+- 85115010 DONG8
+    tax.85115010 [54 ký tự]: 85115010 - - Loại dùng cho động cơ của phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của phương tiện bay"
+- 8511502 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8511502 [50 ký tự]: 8511502 Máy phát điện xoay chiều khác chưa lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lắp ráp"
+- 85115021 DONG8
+    tax.85115021 [83 ký tự]: 85115021 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85115029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85115029 [24 ký tự]: 85115029 - - - Loại khác
+- 8511503 TIEU_DE
+    tieuDe.8511503 [101 ký tự]: 8511503 Máy phát điện xoay chiều đã lắp ráp dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05"
+- 85115031 DONG8
+    tax.85115031 [59 ký tự]: 85115031 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.01 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.01"
+- 85115032 DONG8
+    tax.85115032 [76 ký tự]: 85115032 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+- 85115033 DONG8
+    tax.85115033 [58 ký tự]: 85115033 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.05"
+- 8511509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8511509 [17 ký tự]: 8511509 Loại khác
+- 85115091 DONG8
+    tax.85115091 [83 ký tự]: 85115091 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85115099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85115099 [24 ký tự]: 85115099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851150; chú giải: nhom8511.nhom, ch85.chuong, phan85.phan
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "851150",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-851150",
+  "dong8": {
+    "85115010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ của phương tiện bay"
+        }
+      ]
+    },
+    "85115021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.05"
+          ]
+        }
+      ]
+    },
+    "85115031": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ]
+    },
+    "85115032": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
+        }
+      ]
+    },
+    "85115033": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.05"
+        }
+      ]
+    },
+    "85115091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.05"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8511502": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phát điện xoay chiều"
+        },
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "phanConLai": true
+    },
+    "8511503": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phát điện xoay chiều"
+        },
+        {
+          "fact": "daLapRap",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.01",
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.05"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85115010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115010: \"Loại dùng cho động cơ của phương tiện bay\" ⇒ dungCho động cơ của phương tiện bay"
+    },
+    {
+      "ma": "8511502",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8511502: \"Máy phát điện xoay chiều khác chưa lắp ráp\" ⇒ tenLoai Máy phát điện xoay chiều, daLapRap KHONG, phanConLai true phủ định 85115010"
+    },
+    {
+      "ma": "85115021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115021: \"Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05\" ⇒ dungCho 87.02, 87.03, 87.04, 87.05"
+    },
+    {
+      "ma": "8511503",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8511503: \"Máy phát điện xoay chiều đã lắp ráp dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05\" ⇒ tenLoai Máy phát điện xoay chiều, daLapRap CO, dungCho dải từ 87.01 đến 87.05"
+    },
+    {
+      "ma": "85115031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115031: \"Sử dụng cho động cơ của xe thuộc nhóm 87.01\" ⇒ dungCho 87.01"
+    },
+    {
+      "ma": "85115032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115032: \"Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" ⇒ dungCho 87.02, 87.03, 87.04"
+    },
+    {
+      "ma": "85115033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115033: \"Sử dụng cho động cơ của xe thuộc nhóm 87.05\" ⇒ dungCho 87.05"
+    },
+    {
+      "ma": "85115091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115091: \"Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05\" ⇒ dungCho 87.02, 87.03, 87.04, 87.05"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:8511503:dieu-kien-so-cong-dung-khong-co-trong-trich:87.02
+      → Giá trị CONG_DUNG không phải chuỗi con của câu trích. Sửa: Chép chuỗi con nguyên văn từ trich.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
