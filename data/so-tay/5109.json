@@ -1,0 +1,131 @@
+{
+ "nhom": "5109",
+ "phamVi": {
+  "text": "Sợi len lông cừu hoặc sợi lông động vật loại mịn, đã đóng gói để bán lẻ.",
+  "nguon": "nhom5109.nhom",
+  "trich": "Nhóm này gồm cả sợi len xe (worsted yarns) hay sợi len thường hay sợi làm từ lông động vật loại mịn, khi đóng gói để bán lẻ ở các dạng",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_soi_len_hoac_long_dong_vat_min_dong_goi_ban_le",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5109.nhom",
+   "trich": "Nhóm này gồm cả sợi len xe (worsted yarns) hay sợi len thường hay sợi làm từ lông động vật loại mịn, khi đóng gói để bán lẻ ở các dạng",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "510910",
+   "fact": "ham_luong_long_cuu_hoac_long_dong_vat_loai_min",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.510910",
+   "trich": "containing 85% or more by weight of wool or fine animal hair",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "510990",
+   "fact": "ham_luong_long_cuu_hoac_long_dong_vat_loai_min",
+   "op": "<",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.510990",
+   "trich": "containing less than 85% by weight of wool or fine animal hair",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "51091000",
+   "dieuKien": "Có hàm lượng lông cừu hoặc lông động vật loại mịn chiếm từ 85% trở lên tính theo khối lượng",
+   "loaiKhac": false,
+   "nguon": "tax.51091000",
+   "trich": "51091000 - Có hàm lượng lông cừu hoặc lông động vật loại mịn chiếm từ 85% trở lên tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "51099000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.51099000",
+   "trich": "51099000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5109",
+    "truAnhEm": [
+     "51091000"
+    ],
+    "truDayDu": [
+     "51091000"
+    ],
+    "toTienCoTen": "5109",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5109",
+    "cap": 4,
+    "cha": "51",
+    "tenVi": "Sợi len lông cừu hoặc lông động vật loại mịn, đã đóng gói để bán lẻ.",
+    "tenEn": "Yarn of wool or of fine animal hair, put up for retail sale",
+    "suyRa": false
+   },
+   {
+    "id": "51091000",
+    "cap": 8,
+    "cha": "5109",
+    "tenVi": "Có hàm lượng lông cừu hoặc lông động vật loại mịn chiếm từ 85% trở lên tính theo khối lượng",
+    "tenEn": "Yarn; of wool or of fine animal hair, containing 85% or more by weight of wool or fine animal hair, put up for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "510910"
+   },
+   {
+    "id": "51099000",
+    "cap": 8,
+    "cha": "5109",
+    "tenVi": "Loại khác",
+    "tenEn": "Yarn; of wool or of fine animal hair, containing less than 85% by weight of wool or fine animal hair, put up for retail sale",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "510990"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5109.nhom",
+  "tax.51091000",
+  "tax.51099000",
+  "wco.510910",
+  "wco.510990"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:16:22.107Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan51.phan (46130→25000)"
+  ]
+ }
+}

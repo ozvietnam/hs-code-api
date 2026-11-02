@@ -41,8 +41,10 @@ nop)
   cd "$wt"
   [ -f "$spec" ] || { echo "✗ thiếu $spec — soạn trước khi nộp"; exit 2; }
   node scripts/so-hoa-ranh-gioi.mjs --ap-spec="$spec" > /tmp/nv-ap-$PN6.log 2>&1 || true
-  node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6="$PN6" > /tmp/nv-kiem-$PN6.log 2>&1
-  kiem=$?
+  # set -e: phải bắt mã thoát của --kiem ngay tại dòng lệnh, không được để script chết
+  # ở nhánh mã 3 (DỪNG) trước khi kịp tạo PR draft (bug gặp ở job #837 — 711790)
+  kiem=0
+  node scripts/so-hoa-ranh-gioi.mjs --kiem --pn6="$PN6" > /tmp/nv-kiem-$PN6.log 2>&1 || kiem=$?
   [ "$kiem" = 0 ] || [ "$kiem" = 3 ] || { echo "✗ --kiem mã $kiem (1=đỏ sửa được — sửa spec rồi nop lại; 2=spec sai)"; cat /tmp/nv-kiem-$PN6.log; exit 1; }
   if [ "$kiem" = 0 ]; then ket="XANH"; else
     ket="DỪNG: $(grep -oE 'DỪNG[^:]*: .*' /tmp/nv-kiem-$PN6.log | head -1 | sed 's/.*: *//' | cut -c1-60)"

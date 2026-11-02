@@ -1,0 +1,186 @@
+{
+ "nhom": "7413",
+ "phamVi": {
+  "text": "Dây tao, cáp, chùm tao tết xoắn và các loại tương tự bằng đồng, không cách điện",
+  "nguon": "nhom7413.nhom",
+  "trich": "Vì tính dẫn điện tuyệt vời, đồng thường được sử dụng trong sản xuất dây dẫn và cáp điện; được xếp trong nhóm những sản phẩm ngay cả khi có lõi thép hoặc kim loại khác với điều kiện là đồng hơn hẳn về khối lượng (xem Chú giải 7 Phần XV).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_san_pham_day_dan_cap_dong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch74.chuong",
+   "trich": "Chương này bao gồm đồng và hợp kim của nó và các sản phẩm chủ yếu bằng đồng.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Dây, cáp cách điện",
+   "sangNhom": "8544",
+   "nguon": "nhom7413.nhom",
+   "trich": "Tuy nhiên nhóm này không bao gồm dây, cáp cách điện (nhóm 85.44).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là dây, cáp cách điện thuộc nhóm 85.44 không?",
+   "neuCo": "8544",
+   "neuKhong": "7413",
+   "nguon": "nhom7413.nhom",
+   "trich": "Tuy nhiên nhóm này không bao gồm dây, cáp cách điện (nhóm 85.44).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "74130011",
+   "dieuKien": "Cáp",
+   "loaiKhac": false,
+   "nguon": "tax.74130011",
+   "trich": "74130011 - - Cáp",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "74130019",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.74130019",
+   "trich": "74130019 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7413001",
+    "truAnhEm": [
+     "74130011"
+    ],
+    "truDayDu": [
+     "74130011"
+    ],
+    "toTienCoTen": "7413",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "74130091",
+   "dieuKien": "Cáp",
+   "loaiKhac": false,
+   "nguon": "tax.74130091",
+   "trich": "74130091 - - Cáp",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "74130099",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.74130099",
+   "trich": "74130099 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7413009",
+    "truAnhEm": [
+     "74130091"
+    ],
+    "truDayDu": [
+     "74130091",
+     "7413001"
+    ],
+    "toTienCoTen": "7413",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7413",
+    "cap": 4,
+    "cha": "74",
+    "tenVi": "Dây bện tao, cáp, dây tết và các loại tương tự, bằng đồng, chưa được cách điện.",
+    "tenEn": "Copper; stranded wire, cables, plaited bands and the like, not electrically insulated",
+    "suyRa": false
+   },
+   {
+    "id": "7413001",
+    "cap": "TIEU_DE_QG",
+    "cha": "7413",
+    "tenVi": "Có đường kính không quá 28,28 mm",
+    "tenEn": "Of a diameter not exceeding 28.28 mm",
+    "suyRa": true
+   },
+   {
+    "id": "74130011",
+    "cap": 8,
+    "cha": "7413001",
+    "tenVi": "Cáp",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "74130019",
+    "cap": 8,
+    "cha": "7413001",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "7413009",
+    "cap": "TIEU_DE_QG",
+    "cha": "7413",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "74130091",
+    "cap": 8,
+    "cha": "7413009",
+    "tenVi": "Cáp",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "74130099",
+    "cap": 8,
+    "cha": "7413009",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch74.chuong",
+  "nhom7413.nhom",
+  "tax.74130011",
+  "tax.74130019",
+  "tax.74130091",
+  "tax.74130099"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:54:35.769Z",
+  "ms": 1302
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
