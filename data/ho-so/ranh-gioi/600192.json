@@ -1,0 +1,57 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "600192",
+  "nhom": "6001",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261102T1702#soan-600192",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "60019220",
+      "nguon": "tax.60019220",
+      "trich": "60019220 - - - Vải nổi vòng (pile) từ xơ staple 100% polyeste, có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "60019230",
+      "nguon": "tax.60019230",
+      "trich": "60019230 - - - Chứa sợi đàn hồi hoặc sợi cao su",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "60019290",
+      "nguon": "tax.60019290",
+      "trich": "60019290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "60019220",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chieuRong (SO, mm) — sổ tay nhóm 6001 cũ đã phải dùng fact riêng chieu_rong_vai; kèm chatLieu bổ sung cách đọc 'polyeste/polyester' và khoá phân biệt xơ staple/sợi dài (vd loaiXoSoi)",
+      "ghiChu": "tax.60019220 \"60019220 - - - Vải nổi vòng (pile) từ xơ staple 100% polyeste, có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn\": (1) 'chiều rộng' không có khoá — kichThuoc chỉ đọc 'kích thước/KT/quy cách/size' (dài x rộng x cao), mượn làm chiều rộng là khoá gần nghĩa; (2) 'xơ staple 100% polyeste' — chatLieu@2 không có cách đọc 'polyeste' (chỉ nylon/polyme/PP/PE/PET…) và không có khoá xơ staple so sợi dài; (3) vế 'phù hợp để sử dụng trong sản xuất con lăn sơn' ghi được bằng dungCho nhưng để rời một mình hai vế trên sẽ đổi mã 8 số (vải polyeste rộng 63,5–76,2 mm dùng con lăn sơn rơi nhầm .90) ⇒ để trống cả mục, DỪNG."
+    },
+    {
+      "ma": "60019230",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chuaSoiDanHoiHoacSoiCaoSu (CO_KHONG)",
+      "ghiChu": "tax.60019230 \"60019230 - - - Chứa sợi đàn hồi hoặc sợi cao su\": không có khoá thành phần sợi (sợi đàn hồi / sợi cao su). chatLieu LA 'cao su' là sai trục — 'chứa' (thành phần một phần sợi) khác 'bằng' (chất liệu chính), và 'sợi đàn hồi' không có giá trị nào. Sổ tay nhóm 6001 cũ cũng để tieuChi null cho dòng này ⇒ DỪNG."
+    },
+    {
+      "ma": "60019290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.60019290 \"60019290 - - - Loại khác\" trần ⇒ không điều kiện (máy tự phủ định anh em)."
+    }
+  ]
+}
