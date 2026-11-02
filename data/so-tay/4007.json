@@ -1,0 +1,107 @@
+{
+ "nhom": "4007",
+ "phamVi": {
+  "text": "Chỉ sợi và dây bện bằng cao su lưu hóa.",
+  "nguon": "wco.400700",
+  "trich": "Rubber; vulcanised, thread and cord",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_chi_soi_hoac_day_ben_bang_cao_su_luu_hoa",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom4007.nhom",
+   "trich": "Nhóm này bao gồm: … (1) Chỉ sợi làm hoàn toàn bằng cao su lưu hoá (tao dây đơn) của bất kỳ mặt cắt ngang nào với điều kiện là không có kích thước mặt cắt ngang nào vượt quá 5mm.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Chỉ sợi cao su lưu hóa có kích thước mặt cắt ngang vượt quá 5mm",
+   "sangNhom": "4008",
+   "nguon": "nhom4007.nhom",
+   "trich": "Nếu vượt quá thì loại chỉ sợi này bị loại trừ (nhóm 40.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Chỉ sợi và dây bện cao su phủ vật liệu dệt",
+   "sangNhom": "5604",
+   "nguon": "nhom4007.nhom",
+   "trich": "Ví dụ, chỉ sợi và dây bện cao su phủ vật liệu dệt thuộc nhóm 56.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Chỉ sợi cao su có kích thước mặt cắt ngang vượt quá 5mm thuộc nhóm 40.08 không?",
+   "neuCo": "4008",
+   "neuKhong": "4007",
+   "nguon": "nhom4007.nhom",
+   "trich": "Nếu vượt quá thì loại chỉ sợi này bị loại trừ (nhóm 40.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Chỉ sợi hoặc dây bện có được phủ vật liệu dệt thuộc nhóm 56.04 không?",
+   "neuCo": "5604",
+   "neuKhong": "4007",
+   "nguon": "nhom4007.nhom",
+   "trich": "Ví dụ, chỉ sợi và dây bện cao su phủ vật liệu dệt thuộc nhóm 56.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "40070000",
+   "dieuKien": "Chỉ sợi và dây bện bằng cao su lưu hóa",
+   "loaiKhac": false,
+   "nguon": "tax.40070000",
+   "trich": "40070000 Chỉ sợi và dây bện bằng cao su lưu hóa",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4007",
+    "cap": 4,
+    "cha": "40",
+    "tenVi": "Chỉ sợi và dây bện bằng cao su lưu hóa.",
+    "tenEn": "Vulcanised rubber thread and cord",
+    "suyRa": false
+   },
+   {
+    "id": "40070000",
+    "cap": 8,
+    "cha": "4007",
+    "tenVi": "Chỉ sợi và dây bện bằng cao su lưu hóa",
+    "tenEn": "Rubber; vulcanised, thread and cord",
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom4007.nhom",
+  "tax.40070000",
+  "wco.400700"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:48:34.337Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
