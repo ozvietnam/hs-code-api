@@ -56,6 +56,16 @@ Brief: `brief-st-lo089.md` (oz-dev-kit). Đọc trước: `docs/giao-viec/so-tay
 
 ## 4. Quyết định của người soạn (cần người duyệt xem lại)
 
+0. **Trùng lặp với lô "vòng 10/11"** — trong lúc phiên này chạy, `main` đã có
+   `data/so-tay/2901|2902|2903.json` từ PR #888/#889 ("vòng 10: nạp 20 nhóm chương 29", "vòng 11: nạp
+   19 nhóm chương 29" — Gemini soạn hàng loạt, nhãn `AI_DA_KIEM` **chưa soát**), trong khi
+   `docs/giao-viec/so-tay-lo.csv` vẫn gán 3 nhóm đó cho **lô 089** ⇒ `add/add` conflict, PR
+   CONFLICTING ⇒ **GitHub bỏ qua workflow ⇒ CI im lặng** (lần 5 — memory `so-tay-pr-conflict-lam-ci-im-lang`).
+   Xử lý: `git merge origin/main` vào nhánh rồi chọn **bản lô 089** (`git checkout --ours` cho
+   2901/2902/2903); đối chiếu và nêu bảng so sánh trong mô tả PR #893 mục 7 (lô 089 có nhiều
+   `loaiTru`/`phanBiet`/`tieuChi6` hơn nhưng **không** có `dieuKienVao` mà bản "vòng" có). Sau khi
+   hết CONFLICTING, CI (`test` 9m17s, `bench` 11m55s) chạy và **xanh**.
+
 1. **`dieuKienVao` rỗng ở cả 6 nhóm.** Luật chung: điều kiện vào nhóm phải phủ **CẢ** nhóm 4 số.
    2850 có 5 phần (A)–(E), 2853 có 5 phần (A)–(E), 2903 có 8 phần (A)–(H) ⇒ không câu nào phủ trọn
    nhóm. 2901/2902 có câu ràng buộc nhưng chỉ cho **một phần** (chưa no / thơm). 2852 thì câu định nghĩa
