@@ -6,7 +6,7 @@
  *  1. `searchPrecedents("glove box gas purification")` top 5 chứa ĐỦ bộ ba: WCO 842139/1 + CBP M82907 + ABF TCO 1679759.
  *  2. `searchPrecedents("sealed chamber glove ports")` — likewise (top 5).
  *  3. Mọi match có `xacMinh` ∈ {NGUON_A, NGUON_B, CHUA}; record TCO 1679759 = NGUON_A và có `banChat`.
- *  4. `soNguonDongThuan` xuất hiện trong dossier của classify response.
+ *  4. `soNguonDongThuan` xuất hiện trong classify response — chỉ đếm tiền lệ tên hàng giống hàng đang phân loại (#725-46).
  *  5. Tầng 1 synonyms (`data/synonyms.json`, phapLy:true + nhan:NGUYEN_VAN) dùng để seed boost, không sinh từ mới.
  */
 import './test-isolate-data.mjs';
@@ -109,12 +109,17 @@ assert('flat index chứa TB-TCHQ', flat.some((p) => p.source === 'TB-TCHQ'), 'n
   script = [R1_GLOVEBOX, CHOT_842139];
   const r = await classify(GLOVEBOX, {});
   const sigs = r.rankingSignals || [];
-  const hasSndt = sigs.some((s) => s.signal === 'signal:soNguonDongThuan');
-  assert('CASE 4: rankingSignals có signal:soNguonDongThuan cho mã 842139 (có WCO + TCO đồng thuận)', hasSndt, JSON.stringify(sigs));
-  if (hasSndt) {
-    const sig = sigs.find((s) => s.signal === 'signal:soNguonDongThuan');
-    assert('CASE 4: soNguonDongThuan.effect đếm ≥2 nguồn độc lập (TCO + WCO)', sig && /(WCO|TCO)/i.test(JSON.stringify(sig.effect || '')), JSON.stringify(sig));
-  }
+  // #725 lỗi 46: trước đây tín hiệu đếm MỌI tiền lệ cùng 4 số đầu → "WCO 842139/1 đồng thuận" cho hộp găng tay, trong khi ý
+  // kiến đó nói về BUỒNG PHUN SƠN. Nay chỉ đếm tiền lệ có tên hàng giống hàng đang phân loại → không được tính WCO 842139/1.
+  const sig = sigs.find((s) => s.signal === 'signal:soNguonDongThuan');
+  assert('CASE 4: soNguonDongThuan không đếm WCO 842139/1 (buồng phun sơn) cho hộp găng tay', !sig || !/WCO/i.test(JSON.stringify(sig.effect || '')), JSON.stringify(sig));
+  // Tín hiệu vẫn xuất hiện khi có ≥ 2 nguồn độc lập tên hàng giống: terminal đồng mạ thiếc → 85369012 (TB 6201/3055/3205…).
+  const R1_T = { product: { nameVi: 'Đầu nối dây điện (terminal) đồng mạ thiếc', purpose: 'nối dây dẫn', material: 'đồng mạ thiếc', evidence: {} }, hypotheses: [{ chapter: '85', heading4: '8536', subheading6: '853690', why: 'đầu nối dây', confidence: 80 }], verify: { searchVi: ['đầu nối dây điện'], codes8: ['85369012'], micQuery: null, unknowns: [] } };
+  const CHOT_T = { decision: 'CHOT', hs: '85369012', confidence: 80, reason: 'đầu nối cho dây dẫn, dưới 16 A', basis: [{ stream: 'SAN_PHAM', claim: 'đồng mạ thiếc', evidence: 'đồng mạ thiếc' }], conditions: [], alternatives: [], questions: [] };
+  script = [R1_T, CHOT_T, { ...CHOT_T, explanations: [] }, { ...CHOT_T, explanations: [] }];
+  const r2 = await classify({ tenHang: 'Đầu nối dây điện terminal bằng đồng mạ thiếc, dùng để nối dây dẫn, dòng điện dưới 16A' }, {});
+  const sig2 = (r2.rankingSignals || []).find((s) => s.signal === 'signal:soNguonDongThuan');
+  assert('CASE 4: rankingSignals có signal:soNguonDongThuan cho 85369012 (≥2 TB-TCHQ tên hàng giống)', sig2 && sig2.independent >= 2 && /TB-TCHQ/.test(sig2.effect) && /tên hàng giống/.test(sig2.effect), JSON.stringify(r2.rankingSignals));
 }
 
 // ───────────────────────────────────────────────────────────────────────────
