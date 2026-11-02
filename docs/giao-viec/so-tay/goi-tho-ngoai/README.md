@@ -10,19 +10,21 @@
 2. **Chỉ trích từ nguồn trong gói soạn** (`goi-soan/<nhóm>.json`, trường `nguon`). Không dùng kiến thức riêng, không tra web, không trích Wikipedia/WCO ngoài gói.
 3. **Không bịa điều kiện** để "cho đủ". Mục không có căn cứ nguyên văn ⇒ bỏ hẳn mục đó (thiếu còn sửa được, bịa là hỏng).
 4. Một nhóm = một file JSON tên đúng `<nhóm 4 số>.json` (vd `9701.json`).
+5. **Khoá nguồn hợp lệ chỉ là các khoá có trong `nguon` của gói** (`nhom<4>.nhom`, `ch<2>.chuong`, `phan<2>.phan`, `wco.<6 số>`, `tax.<8 số>`; một số gói có thêm `sen.<mã>`). Khoá không có trong gói ⇒ mục bị loại.
+6. Luật máy kiểm thêm (ngoài trích nguyên văn): `dieuKienVao` chỉ trích từ `nhom*/ch*/phan*` (không dùng wco/sen/tax) và không trích câu *cho phép* ("ngay cả khi…", "vẫn được phân loại…", "đã hoặc chưa…"); `loaiTru.sangNhom` và `phanBiet.neuCo` phải là mã có thật VÀ được nêu trong chính câu `trich` (viết "Chương 49" không đủ để ghi 4911 — chỉ ghi mã nhóm có trong câu); `phanBiet.hoi` không chứa mã phân nhóm dạng `9701.21`; `tieuChi6` lấy từ chú giải/`wco.*`, không lấy từ `tax.*`, và ngưỡng số phải có trong câu trích.
 
 ## 1. Phạm vi đợt này — 8 nhóm
 
 | Nhóm | Tên tóm tắt | Gói soạn |
 |---|---|---|
-| 9613 | Bản in offset, chưa gấp | `goi-soan/9613.json` (16 nguồn, 10 dòng 8 số) |
-| 9614 | Bản in khác, chưa gấp | `goi-soan/9614.json` (5 nguồn, 2 dòng 8 số) |
-| 9701 | Nghệ thuật: tranh, vẽ, collage | `goi-soan/9701.json` (15 nguồn, 6 dòng 8 số) |
-| 9702 | Bưu thiếp in, lịch | `goi-soan/9702.json` |
-| 9703 | Bản khắc gốc, bản in gốc | `goi-soan/9703.json` |
-| 9704 | Bức tượng gốc | `goi-soan/9704.json` |
-| 9705 | Bộ sưu tập kiểu mẫu có giá trị sưu tầm | `goi-soan/9705.json` |
-| 9706 | Đồ cổ trên 100 năm | `goi-soan/9706.json` |
+| 9613 | Bật lửa các loại và bộ phận | `goi-soan/9613.json` (16 nguồn, 10 dòng 8 số) |
+| 9614 | Tẩu thuốc, đót thuốc và bộ phận | `goi-soan/9614.json` (5 nguồn, 2 dòng 8 số) |
+| 9701 | Tranh vẽ tay, tranh khảm, hình ghép nghệ thuật | `goi-soan/9701.json` (15 nguồn, 6 dòng 8 số) |
+| 9702 | Bản khắc, bản in, bản in lytô nguyên bản | `goi-soan/9702.json` |
+| 9703 | Tác phẩm điêu khắc, tượng nguyên bản | `goi-soan/9703.json` |
+| 9704 | Tem bưu điện, tem thuế, ấn phẩm bưu điện (sưu tập) | `goi-soan/9704.json` |
+| 9705 | Bộ sưu tập: khảo cổ, lịch sử, sinh vật, tiền cổ | `goi-soan/9705.json` |
+| 9706 | Đồ cổ trên 100 năm (không thuộc 97.01–97.05) | `goi-soan/9706.json` |
 
 Gói soạn sinh bằng `node scripts/goi-soan-so-tay.mjs --nhom=<4 số>` — chứa: `nguon` (TOÀN BỘ văn bản nguyên văn được phép trích, mỗi mã nguồn một giá trị), `dong8` (danh sách dòng 8 số phải phủ), `huongDan`.
 
@@ -36,9 +38,9 @@ Gói soạn sinh bằng `node scripts/goi-soan-so-tay.mjs --nhom=<4 số>` — c
   "loaiTru": [ { "dieuKien": "<hiện tượng bị loại>", "sangNhom": "<nhóm 4 số đích>", "nguon": "<mã>", "trich": "<nguyên văn>" } ],
   "phanBiet": [ { "hoi": "<câu hỏi yes/no cho người khai>", "neuCo": "<nhóm nếu đúng>", "neuKhong": "<nhóm nếu sai>", "nguon": "<mã>", "trich": "<nguyên văn>" } ],
   "tieuChi6": [ { "hs6": "<6 số>", "fact": "<khoá>", "op": "<=|<|>=|>|=", "value": <số hoặc chuỗi>, "donVi": "<đơn vị như chữ trích>", "nguon": "<mã>", "trich": "<nguyên văn>" } ],
-  "dong8": [ { "hs": "<8 số>", "dieuKien": "<điều kiện/tên dòng bằng tiếng Việt>", "loaiKhac": <true chỉ khi tên dòng là 'Loại khác'>, "nguon": "tax.<8 số>", "trich": "<hs> - <tên dòng nguyên văn từ gói>" } ],
+  "dong8": [ { "hs": "<8 số>", "dieuKien": "<điều kiện/tên dòng bằng tiếng Việt>", "loaiKhac": <true chỉ khi tên dòng là 'Loại khác'>, "nguon": "tax.<8 số>", "trich": "<chép NGUYÊN giá trị nguon['tax.<8 số>'] của gói>" } ],
   "phienBan": "HS2022",
-  "taoBoi": { "provider": "google-studio:<tên model>", "luc": "<ISO timestamp>", "ms": null }
+  "taoBoi": { "provider": "google-studio:<tên model>" }
 }
 ```
 
@@ -49,7 +51,7 @@ Quy tắc từng phần:
 - **`loaiTru`** (bắt buộc nếu chú giải có "Nhóm này không bao gồm…"): mỗi mục một hiện tượng bị loại + `sangNhom` là nhóm đích mà chú giải chỉ dẫn.
 - **`phanBiet`** (nếu có loaiTru): sinh từ loaiTru — mỗi cái một câu hỏi `hoi` nhắm đúng hiện tượng, `neuCo` = `sangNhom`, `neuKhong` = nhóm hiện tại.
 - **`tieuChi6`** (tuỳ chọn, chỉ khi nguồn có TIÊU CHÍ SỐ/ĐỊNH LƯỢNG phân biệt các phân nhóm 6 số — vd "trên 100 năm tuổi", "không quá 3 chiếm"): mỗi tiêu chí một mục, `fact` khóa gạch dưới, op so sánh, value + donVi đúng như chữ.
-- **`dong8`** (BẮT BUỘC, phủ MỌI dòng 8 số trong `dong8` của gói soạn — đủ số lượng, không thêm không bớt): mỗi dòng một mục. `nguon` luôn `tax.<8 số>`. `trich` = `<hs> - <tên dòng nguyên văn>` (chép từ `dong8[].tenVi` của gói — giữ nguyên mức gạch đầu dòng `-`/`- -`). `dieuKien`: mô tả điều kiện/tên dòng bằng tiếng Việt dễ hiểu; nếu tên dòng chỉ là "Loại khác" thì mô tả bản chất phần còn lại (những gì KHÔNG thuộc các dòng anh em đã nêu) và `loaiKhac: true`.
+- **`dong8`** (BẮT BUỘC, phủ MỌI dòng 8 số trong `dong8` của gói soạn — đủ số lượng, không thêm không bớt): mỗi dòng một mục. `nguon` luôn `tax.<8 số>`. `trich` = chép NGUYÊN giá trị `nguon['tax.<hs>']` của gói (đã có sẵn mã + gạch đầu dòng + tên; không tự ghép, không thêm gạch). `dieuKien`: mô tả điều kiện/tên dòng bằng tiếng Việt dễ hiểu; nếu tên dòng chỉ là "Loại khác" thì mô tả bản chất phần còn lại (những gì KHÔNG thuộc các dòng anh em đã nêu) và `loaiKhac: true`.
 - **KHÔNG ghi** các trường máy quản: `cay`, `kiemTra`, `nguonLoai`, `boPhan`, `yKienWco`, `bangQuyetDinh` — máy sinh/gắn lúc nạp.
 
 ### Ví dụ thật (nhóm 1209 đã duyệt — chép khuôn, không chép nội dung)
@@ -96,6 +98,6 @@ Xem thêm nhóm thật đầy đủ: [`data/so-tay/8482.json`](../../../data/so-
 
 ## 5. Mẹo theo từng nhóm đợt này
 
-- **9613/9614**: chú giải nhóm phân biệt rõ "offset" vs "in khác"; SEN có thêm chi tiết công nghệ in — dùng `sen.<mã>` cho tiêu chí in offset nếu chú giải nhóm chưa đủ.
+- **9613/9614**: gói KHÔNG có nguồn `sen.*` — chỉ dùng `nhom<4>.nhom`, `ch96.chuong`, `wco.*`, `tax.*`. Loại trừ của 9613 nằm ở câu cuối chú giải nhóm (36.03, 36.06, 59.08/70.19); của 9614 là thuốc lá điện tử (85.43).
 - **9701/9703/9704**: chữ chú giải quan trọng nhất là "hoàn toàn do tác giả tạo ra bằng tay" / "bản gốc" — đặt `dieuKienVao.fact` đúng bản chất này.
 - **9705/9706**: tiêu chí định lượng có sẵn trong chú giải ("có giá trị sưu tầm", "tuổi trên 100 năm") — mạnh dạn làm `tieuChi6` với `fact` như `tuoi_tren_100_nam`, trích nguyên văn câu chứa con số/tiêu chí.

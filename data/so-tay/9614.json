@@ -1,0 +1,131 @@
+{
+ "nhom": "9614",
+ "phamVi": {
+  "text": "Tẩu thuốc các loại (kể cả tẩu dài, điếu ống), bát điếu, đót thuốc lá và xì gà, khối gỗ nhỏ hoặc rễ cây đã đẽo gọt thô để làm tẩu và các bộ phận của chúng.",
+  "nguon": "nhom9614.nhom",
+  "trich": "Nhóm này bao gồm:\n\n(1) Tẩu thuốc các loại (kể cả tẩu dài của người da đỏ Bắc Mỹ, tẩu dài của người Thổ Nhĩ Kỳ, điếu ống,...).\n\n(2) Bát điếu.\n\n(3) Đót thuốc lá và xì gà.\n\n(4) Khối gỗ nhỏ hoặc rễ cây thạch thảo trắng được đẽo gọt thô thành hình để làm tẩu.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_tau_thuoc_bat_dieu_dot_thuoc_la_hoac_xi_ga",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom9614.nhom",
+   "trich": "Nhóm này bao gồm:\n\n(1) Tẩu thuốc các loại (kể cả tẩu dài của người da đỏ Bắc Mỹ, tẩu dài của người Thổ Nhĩ Kỳ, điếu ống,...).\n\n(2) Bát điếu.\n\n(3) Đót thuốc lá và xì gà.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "la_go_hoac_re_cay_deo_got_tho_thanh_hinh_de_lam_tau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom9614.nhom",
+   "trich": "(4) Khối gỗ nhỏ hoặc rễ cây thạch thảo trắng được đẽo gọt thô thành hình để làm tẩu.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Thiết bị điện tử dùng cho thuốc lá điện tử và các thiết bị điện hóa hơi cá nhân tương tự",
+   "sangNhom": "8543",
+   "nguon": "nhom9614.nhom",
+   "trich": "Thiết bị điện tử dùng cho thuốc lá điện tử và các thiết bị điện hóa hơi cá nhân tương tự, có hoặc không có hình dạng tẩu thuốc hoặc tẩu nước (nhóm 85.43).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hóa có phải là thiết bị điện tử dùng cho thuốc lá điện tử hoặc thiết bị điện hóa hơi cá nhân tương tự không?",
+   "neuCo": "8543",
+   "neuKhong": "9614",
+   "nguon": "nhom9614.nhom",
+   "trich": "Thiết bị điện tử dùng cho thuốc lá điện tử và các thiết bị điện hóa hơi cá nhân tương tự, có hoặc không có hình dạng tẩu thuốc hoặc tẩu nước (nhóm 85.43).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "96140010",
+   "dieuKien": "Gỗ hoặc rễ cây đã tạo dáng thô để làm tẩu thuốc",
+   "loaiKhac": false,
+   "nguon": "tax.96140010",
+   "trich": "96140010 - Gỗ hoặc rễ cây đã tạo dáng thô để làm tẩu thuốc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "96140090",
+   "dieuKien": "Tẩu thuốc, đót thuốc lá hoặc xì gà và các bộ phận khác (trừ gỗ hoặc rễ cây đã tạo dáng thô)",
+   "loaiKhac": true,
+   "nguon": "tax.96140090",
+   "trich": "96140090 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "9614",
+    "truAnhEm": [
+     "96140010"
+    ],
+    "truDayDu": [
+     "96140010"
+    ],
+    "toTienCoTen": "9614",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9614",
+    "cap": 4,
+    "cha": "96",
+    "tenVi": "Tẩu thuốc (kể cả điếu bát) và đót xì gà hoặc đót thuốc lá, và bộ phận của chúng.",
+    "tenEn": "Smoking pipes (including pipe bowls) and cigar or cigarette holders, and parts thereof",
+    "suyRa": false
+   },
+   {
+    "id": "96140010",
+    "cap": 8,
+    "cha": "9614",
+    "tenVi": "Gỗ hoặc rễ cây đã tạo dáng thô để làm tẩu thuốc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "96140090",
+    "cap": 8,
+    "cha": "9614",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom9614.nhom",
+  "tax.96140010",
+  "tax.96140090"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T07:36:24.693Z",
+  "ms": 7
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
