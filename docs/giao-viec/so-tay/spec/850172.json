@@ -1,0 +1,82 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850172",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850172",
+  "dong8": {
+    "85017210": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 750,
+          "donVi": "W"
+        }
+      ]
+    },
+    "85017220": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 750,
+          "donVi": "W"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 37.5,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "85017230": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 37.5,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 75,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "85017240": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 75,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "85017210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85017210: \"Công suất không quá 750 W\" ⇒ congSuat <= 750 W"
+    },
+    {
+      "ma": "85017220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85017220: \"Công suất trên 750 W nhưng không quá 37,5 kW\" ⇒ congSuat > 750 W, congSuat <= 37.5 kW"
+    },
+    {
+      "ma": "85017230",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85017230: \"Công suất trên 37,5 kW nhưng không quá 75 kW\" ⇒ congSuat > 37.5 kW, congSuat <= 75 kW"
+    },
+    {
+      "ma": "85017240",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85017240: \"Công suất trên 75 kW\" ⇒ congSuat > 75 kW"
+    }
+  ]
+}
