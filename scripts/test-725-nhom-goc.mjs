@@ -167,7 +167,8 @@ check('#18/#30 titleVi 85249100 không còn là "Màn hình điện thoại"', !
   const cumGoc = new Set(m.fullText.split('; '));
   const thanCau = d.replace(DUOI, '').split('; ');
   check('#31 rút gọn theo ranh giới cụm: mọi cụm trong câu khai là cụm nguyên của bản đầy đủ (không mảnh "die")', thanCau.every((c) => cumGoc.has(c) || c === 'thông số: ' + c.slice(10) && m.fullText.includes(c)), { d, full: m.fullText });
-  check('#31 rút gọn: nhãn hiệu bỏ trước model/thông số', m.dropped[0] === 'nhanHieu' && !d.includes('LASERTECH'), m.dropped);
+  // #725 lỗi 41 (lô 3): nhãn hiệu bỏ SAU công dụng/thành phần, vẫn trước model/thông số phân biệt mã.
+  check('#31 rút gọn: nhãn hiệu bỏ sau công dụng/thành phần, trước model/thông số', m.dropped.indexOf('nhanHieu') > m.dropped.indexOf('congDung') && m.dropped.indexOf('congDung') !== -1 && !d.includes('LASERTECH') && !m.dropped.includes('model'), m.dropped);
   check('#31 rút gọn: giữ thông số phân biệt mã (công suất laser, điện áp), bỏ thông số phụ trước', /Công suất laser: 100W/.test(d) && /Điện áp: 220V/.test(d), d);
   // Lỗi 20: con số trong LENGTH_EXCEEDED khớp descriptionMeta.
   const w = (j.compliance.warnings || []).find((x) => x.code === 'LENGTH_EXCEEDED');
