@@ -1,0 +1,144 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "401180",
+  "nhom": "4011",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-401180",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4011801",
+      "nguon": "tieuDe.4011801",
+      "trich": "4011801 Lắp vành có đường kính không quá 24 inch",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 24,
+          "donVi": "inch"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "4011803",
+      "nguon": "tieuDe.4011803",
+      "trich": "4011803 Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 24,
+          "donVi": "inch"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe kéo",
+            "máy thuộc nhóm 84.29 hoặc 84.30",
+            "xe nâng hàng",
+            "xe và máy xếp dỡ công nghiệp khác"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "40118011",
+      "nguon": "tax.40118011",
+      "trich": "40118011 - - - Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe kéo",
+            "máy thuộc nhóm 84.29 hoặc 84.30",
+            "xe nâng hàng",
+            "xe cút kít",
+            "xe và máy xếp dỡ công nghiệp khác"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40118019",
+      "nguon": "tax.40118019",
+      "trich": "40118019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40118031",
+      "nguon": "tax.40118031",
+      "trich": "40118031 - - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.29 hoặc 84.30"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40118039",
+      "nguon": "tax.40118039",
+      "trich": "40118039 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40118040",
+      "nguon": "tax.40118040",
+      "trich": "40118040 - - Lắp vành có đường kính trên 24 inch, loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 24,
+          "donVi": "inch"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "4011801",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4011801 \"Lắp vành có đường kính không quá 24 inch\" ⇒ duongKinh <= 24 inch"
+    },
+    {
+      "ma": "40118011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40118011 \"Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác\" ⇒ dungCho mảng các loại xe/máy"
+    },
+    {
+      "ma": "4011803",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4011803 \"Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác\" ⇒ duongKinh > 24 inch VÀ dungCho mảng các xe/máy"
+    },
+    {
+      "ma": "40118031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40118031 \"Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho \"máy thuộc nhóm 84.29 hoặc 84.30\""
+    },
+    {
+      "ma": "40118040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40118040 \"Lắp vành có đường kính trên 24 inch, loại khác\" ⇒ duongKinh > 24 inch, phanConLai: true phủ định 4011803"
+    }
+  ]
+}
