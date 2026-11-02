@@ -1,0 +1,138 @@
+{
+ "nhom": "3213",
+ "phamVi": {
+  "text": "Màu dùng cho hội hoạ, học đường hoặc sơn bảng hiệu, chất màu pha, màu trang trí và các loại tương tự, dạng viên, tuýp, lọ, khay hoặc dạng đóng gói tương tự.",
+  "nguon": "nhom3213.nhom",
+  "trich": "Nhóm này gồm các loại màu và các loại sơn đã được điều chế loại được sử dụng cho nghệ thuật hội họa, học đường hoặc sơn bảng hiệu, chất màu pha (modifying tints), màu trang trí và các loại màu tương tự, ở dạng viên, tuýp, hộp, lọ, khay hay các dạng hoặc đóng gói tương tự",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_mau_ve_hoi_hoa_dong_goi_vien_tuyp_hop_lo_khay",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3213.nhom",
+   "trich": "với điều kiện chúng ở dạng viên hoặc tuýp, bình nhỏ hoặc lọ nhỏ, khay hoặc các dạng hoặc đóng gói tương tự.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các loại mực in, mực ấn",
+   "sangNhom": "3215",
+   "nguon": "nhom3213.nhom",
+   "trich": "Nhóm này không bao gồm các loại mực in (hoặc các loại mầu), mực ấn, kể cả ở dạng lỏng hoặc rắn, hoặc các sản phẩm khác được phân loại vào nhóm 32.15",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Phấn màu, bút chì màu",
+   "sangNhom": "9609",
+   "nguon": "nhom3213.nhom",
+   "trich": "phấn màu, bút chì màu và các đồ tương tự (nhóm 96.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là mực in, mực ấn?",
+   "neuCo": "3215",
+   "neuKhong": "3213",
+   "nguon": "nhom3213.nhom",
+   "trich": "Nhóm này không bao gồm các loại mực in (hoặc các loại mầu), mực ấn, kể cả ở dạng lỏng hoặc rắn, hoặc các sản phẩm khác được phân loại vào nhóm 32.15",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là phấn màu, bút chì màu?",
+   "neuCo": "9609",
+   "neuKhong": "3213",
+   "nguon": "nhom3213.nhom",
+   "trich": "phấn màu, bút chì màu và các đồ tương tự (nhóm 96.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "32131000",
+   "dieuKien": "Bộ màu vẽ",
+   "loaiKhac": false,
+   "nguon": "tax.32131000",
+   "trich": "32131000 - Bộ màu vẽ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "32139000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.32139000",
+   "trich": "32139000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "3213",
+    "truAnhEm": [
+     "32131000"
+    ],
+    "truDayDu": [
+     "32131000"
+    ],
+    "toTienCoTen": "3213",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3213",
+    "cap": 4,
+    "cha": "32",
+    "tenVi": "Chất màu dùng cho nghệ thuật hội họa, học đường hoặc sơn bảng hiệu, chất màu pha (modifying tints), màu trang trí và các loại màu tương tự, ở dạng viên, tuýp, hộp, lọ, khay hay các dạng hoặc đóng gói tương tự.",
+    "tenEn": "Colours; artists, students, or signboard painters, modifying tints, amusement colours and the like; in tablets, tubes, jars, bottles, pan or in similar forms or packings",
+    "suyRa": false
+   },
+   {
+    "id": "32131000",
+    "cap": 8,
+    "cha": "3213",
+    "tenVi": "Bộ màu vẽ",
+    "tenEn": "Colours; in sets, of a kind used by artists, students or signboard painters",
+    "suyRa": false,
+    "laPhanNhom": "321310"
+   },
+   {
+    "id": "32139000",
+    "cap": 8,
+    "cha": "3213",
+    "tenVi": "Loại khác",
+    "tenEn": "Colours; (other than in sets), of a kind used by artists, students or signboard painters",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "321390"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3213.nhom",
+  "tax.32131000",
+  "tax.32139000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:18:11.978Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

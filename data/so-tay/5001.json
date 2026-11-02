@@ -1,0 +1,93 @@
+{
+ "nhom": "5001",
+ "phamVi": {
+  "text": "Kén tằm phù hợp dùng làm tơ.",
+  "nguon": "nhom5001.nhom",
+  "trich": "Nhóm này chỉ áp dụng cho những loại kén có thể quay tơ cho loại tơ thô như đã phân loại trong nhóm 50.02, loại trừ kén không quay tơ được (nhóm 50.03).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_ken_tam_quay_to_duoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5001.nhom",
+   "trich": "Nhóm này chỉ áp dụng cho những loại kén có thể quay tơ cho loại tơ thô như đã phân loại trong nhóm 50.02, loại trừ kén không quay tơ được (nhóm 50.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Kén không quay tơ được",
+   "sangNhom": "5003",
+   "nguon": "nhom5001.nhom",
+   "trich": "loại trừ kén không quay tơ được (nhóm 50.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là kén tằm không thể quay tơ được?",
+   "neuCo": "5003",
+   "neuKhong": "5001",
+   "nguon": "nhom5001.nhom",
+   "trich": "loại trừ kén không quay tơ được (nhóm 50.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "50010000",
+   "dieuKien": "Kén tằm phù hợp dùng làm tơ",
+   "loaiKhac": false,
+   "nguon": "tax.50010000",
+   "trich": "50010000 Kén tằm phù hợp dùng làm tơ",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5001",
+    "cap": 4,
+    "cha": "50",
+    "tenVi": "Kén tằm phù hợp dùng làm tơ.",
+    "tenEn": "Silk-worm cocoons suitable for reeling",
+    "suyRa": false
+   },
+   {
+    "id": "50010000",
+    "cap": 8,
+    "cha": "5001",
+    "tenVi": "Kén tằm phù hợp dùng làm tơ",
+    "tenEn": "Silk; silk-worm cocoons suitable for reeling",
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5001.nhom",
+  "tax.50010000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:07:44.960Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 5,
+  "dat": 5,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan50.phan (46130→25000)"
+  ]
+ }
+}

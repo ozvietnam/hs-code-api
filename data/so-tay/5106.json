@@ -1,0 +1,118 @@
+{
+ "nhom": "5106",
+ "phamVi": {
+  "text": "Sợi len lông cừu chải thô, chưa đóng gói để bán lẻ.",
+  "nguon": "nhom5106.nhom",
+  "trich": "Nhóm này bao gồm những sợi len đơn hay những sợi len chập từ nhiều sợi đơn, thu được từ việc xe những sợi thô của lông cừu đã chải thô (nhưng chưa chải kỹ).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_soi_len_long_cuu_chai_tho_chua_dong_goi_ban_le",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5106.nhom",
+   "trich": "Nhóm này bao gồm những sợi len đơn hay những sợi len chập từ nhiều sợi đơn, thu được từ việc xe những sợi thô của lông cừu đã chải thô (nhưng chưa chải kỹ).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "510610",
+   "fact": "ham_luong_long_cuu",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.510610",
+   "trich": "containing 85% or more by weight of wool",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "510620",
+   "fact": "ham_luong_long_cuu",
+   "op": "<",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.510620",
+   "trich": "containing less than 85% by weight of wool",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "51061000",
+   "dieuKien": "Có hàm lượng lông cừu chiếm từ 85% trở lên tính theo khối lượng",
+   "loaiKhac": false,
+   "nguon": "tax.51061000",
+   "trich": "51061000 - Có hàm lượng lông cừu chiếm từ 85% trở lên tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "51062000",
+   "dieuKien": "Có hàm lượng lông cừu chiếm dưới 85% tính theo khối lượng",
+   "loaiKhac": false,
+   "nguon": "tax.51062000",
+   "trich": "51062000 - Có hàm lượng lông cừu chiếm dưới 85% tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5106",
+    "cap": 4,
+    "cha": "51",
+    "tenVi": "Sợi len lông cừu chải thô, chưa đóng gói để bán lẻ.",
+    "tenEn": "Yarn of carded wool, not put up for retail sale",
+    "suyRa": false
+   },
+   {
+    "id": "51061000",
+    "cap": 8,
+    "cha": "5106",
+    "tenVi": "Có hàm lượng lông cừu chiếm từ 85% trở lên tính theo khối lượng",
+    "tenEn": "Yarn; of carded wool, containing 85% or more by weight of wool, not put up for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "510610"
+   },
+   {
+    "id": "51062000",
+    "cap": 8,
+    "cha": "5106",
+    "tenVi": "Có hàm lượng lông cừu chiếm dưới 85% tính theo khối lượng",
+    "tenEn": "Yarn; of carded wool, containing less than 85% by weight of wool, not put up for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "510620"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5106.nhom",
+  "tax.51061000",
+  "tax.51062000",
+  "wco.510610",
+  "wco.510620"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:16:22.087Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan51.phan (46130→25000)"
+  ]
+ }
+}

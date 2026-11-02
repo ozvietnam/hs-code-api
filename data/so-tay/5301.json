@@ -1,0 +1,201 @@
+{
+ "nhom": "5301",
+ "phamVi": {
+  "text": "Lanh, dạng nguyên liệu thô hoặc đã gia công nhưng chưa kéo thành sợi; tô (tow) lanh và phế liệu lanh (kể cả phế liệu sợi và bông tái chế).",
+  "nguon": "nhom5301.nhom",
+  "trich": "Nhóm này bao gồm lanh thô, lanh đã ngâm, lanh đã đập, lanh đã chải hoặc gia công bằng cách khác nhưng chưa kéo thành sợi.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_lanh_chua_keo_thanh_soi_hoac_to_phe_lieu_lanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5301.nhom",
+   "trich": "Nhóm này bao gồm lanh thô, lanh đã ngâm, lanh đã đập, lanh đã chải hoặc gia công bằng cách khác nhưng chưa kéo thành sợi.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các mẩu gỗ tạo thành trong quá trình đập",
+   "sangNhom": "4401",
+   "nguon": "nhom5301.nhom",
+   "trich": "Các mẩu gỗ tạo thành trong quá trình đập (nhóm 44.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Lanh Ấn Độ (Abroma augusta)",
+   "sangNhom": "5303",
+   "nguon": "nhom5301.nhom",
+   "trich": "Các nguyên liệu xơ lanh gốc thực vật đôi khi được biết như là lanh Ấn Độ (Abroma augusta) (nhóm 53.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Gai hoặc lanh New Zealand (Formium tenax)",
+   "sangNhom": "5305",
+   "nguon": "nhom5301.nhom",
+   "trich": "gai hoặc lanh New Zealand (Formium tenax) (nhóm 53.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là các mẩu gỗ tạo thành trong quá trình đập thuộc nhóm 44.01?",
+   "neuCo": "4401",
+   "neuKhong": "5301",
+   "nguon": "nhom5301.nhom",
+   "trich": "Các mẩu gỗ tạo thành trong quá trình đập (nhóm 44.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là lanh Ấn Độ thuộc nhóm 53.03?",
+   "neuCo": "5303",
+   "neuKhong": "5301",
+   "nguon": "nhom5301.nhom",
+   "trich": "Các nguyên liệu xơ lanh gốc thực vật đôi khi được biết như là lanh Ấn Độ (Abroma augusta) (nhóm 53.03)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là gai hoặc lanh New Zealand thuộc nhóm 53.05?",
+   "neuCo": "5305",
+   "neuKhong": "5301",
+   "nguon": "nhom5301.nhom",
+   "trich": "gai hoặc lanh New Zealand (Formium tenax) (nhóm 53.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "53011000",
+   "dieuKien": "Lanh, dạng nguyên liệu thô hoặc đã ngâm",
+   "loaiKhac": false,
+   "nguon": "tax.53011000",
+   "trich": "53011000 - Lanh, dạng nguyên liệu thô hoặc đã ngâm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "53012100",
+   "dieuKien": "Đã tách lõi hoặc đã đập",
+   "loaiKhac": false,
+   "nguon": "tax.53012100",
+   "trich": "53012100 - - Đã tách lõi hoặc đã đập",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "53012900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.53012900",
+   "trich": "53012900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "53012",
+    "truAnhEm": [
+     "53012100"
+    ],
+    "truDayDu": [
+     "53012100",
+     "53011000",
+     "53013000"
+    ],
+    "toTienCoTen": "5301",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "53013000",
+   "dieuKien": "Tô (tow) lanh hoặc phế liệu lanh",
+   "loaiKhac": false,
+   "nguon": "tax.53013000",
+   "trich": "53013000 - Tô (tow) lanh hoặc phế liệu lanh",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5301",
+    "cap": 4,
+    "cha": "53",
+    "tenVi": "Lanh, dạng nguyên liệu thô hoặc đã chế biến nhưng chưa kéo thành sợi; tô (tow) lanh và phế liệu lanh (kể cả phế liệu sơi và sợi tái chế) (+).",
+    "tenEn": "Flax, raw or processed but not spun; flax tow and waste (including yarn waste and garnetted stock)",
+    "suyRa": false
+   },
+   {
+    "id": "53011000",
+    "cap": 8,
+    "cha": "5301",
+    "tenVi": "Lanh, dạng nguyên liệu thô hoặc đã ngâm",
+    "tenEn": "Flax; raw or retted, but not spun",
+    "suyRa": false,
+    "laPhanNhom": "530110"
+   },
+   {
+    "id": "53012",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5301",
+    "tenVi": "Lanh, đã tách lõi, đã đập, đã chải hoặc gia công bằng cách khác, nhưng chưa kéo thành sợi",
+    "tenEn": "Flax, broken, scutched, hackled or otherwise processed, but not spun",
+    "suyRa": true
+   },
+   {
+    "id": "53012100",
+    "cap": 8,
+    "cha": "53012",
+    "tenVi": "Đã tách lõi hoặc đã đập",
+    "tenEn": "Flax; broken or scutched, but not spun",
+    "suyRa": false,
+    "laPhanNhom": "530121"
+   },
+   {
+    "id": "53012900",
+    "cap": 8,
+    "cha": "53012",
+    "tenVi": "Loại khác",
+    "tenEn": "Flax; hackled or otherwise processed, but not spun",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "530129"
+   },
+   {
+    "id": "53013000",
+    "cap": 8,
+    "cha": "5301",
+    "tenVi": "Tô (tow) lanh hoặc phế liệu lanh",
+    "tenEn": "Flax; tow and waste, including yarn waste and garnetted stock",
+    "suyRa": false,
+    "laPhanNhom": "530130"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5301.nhom",
+  "tax.53011000",
+  "tax.53012100",
+  "tax.53012900",
+  "tax.53013000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:16:22.214Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 12,
+  "dat": 12,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan53.phan (46130→25000)"
+  ]
+ }
+}

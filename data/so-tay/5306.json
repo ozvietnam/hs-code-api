@@ -1,0 +1,127 @@
+{
+ "nhom": "5306",
+ "phamVi": {
+  "text": "Sợi lanh (đơn, xe hoặc cáp).",
+  "nguon": "nhom5306.nhom",
+  "trich": "Nhóm này bao gồm các sợi đơn thu được bằng cách kéo các sợi thô (roving) từ xơ lanh thuộc nhóm 53.01 và sợi xe (folded) hoặc sợi cáp được sản xuất bằng cách kết hợp các sợi đơn đó.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_soi_lanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5306.nhom",
+   "trich": "Nhóm này bao gồm các sợi đơn thu được bằng cách kéo các sợi thô (roving) từ xơ lanh thuộc nhóm 53.01 và sợi xe (folded) hoặc sợi cáp được sản xuất bằng cách kết hợp các sợi đơn đó.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Sợi thuộc phạm vi định nghĩa về dây xe, chão bện, v.v...",
+   "sangNhom": "5607",
+   "nguon": "nhom5306.nhom",
+   "trich": "Tuy nhiên, chúng bị loại khỏi nhóm này nếu các sợi trên thuộc phạm vi định nghĩa về dây xe, chão bện, v.v... (nhóm 56.07)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Sợi trộn kim loại, bao gồm sợi lanh kết hợp với sợi kim loại theo tỷ lệ bất kỳ",
+   "sangNhom": "5605",
+   "nguon": "nhom5306.nhom",
+   "trich": "Sợi trộn kim loại, bao gồm sợi lanh kết hợp với sợi kim loại theo tỷ lệ bất kỳ thì bị loại trừ (nhóm 56.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là sợi lanh thuộc định nghĩa dây xe, chão bện thuộc nhóm 56.07?",
+   "neuCo": "5607",
+   "neuKhong": "5306",
+   "nguon": "nhom5306.nhom",
+   "trich": "Tuy nhiên, chúng bị loại khỏi nhóm này nếu các sợi trên thuộc phạm vi định nghĩa về dây xe, chão bện, v.v... (nhóm 56.07)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là sợi lanh trộn kim loại thuộc nhóm 56.05?",
+   "neuCo": "5605",
+   "neuKhong": "5306",
+   "nguon": "nhom5306.nhom",
+   "trich": "Sợi trộn kim loại, bao gồm sợi lanh kết hợp với sợi kim loại theo tỷ lệ bất kỳ thì bị loại trừ (nhóm 56.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "53061000",
+   "dieuKien": "Sợi đơn",
+   "loaiKhac": false,
+   "nguon": "tax.53061000",
+   "trich": "53061000 - Sợi đơn",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "53062000",
+   "dieuKien": "Sợi xe (folded) hoặc sợi cáp",
+   "loaiKhac": false,
+   "nguon": "tax.53062000",
+   "trich": "53062000 - Sợi xe (folded) hoặc sợi cáp",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5306",
+    "cap": 4,
+    "cha": "53",
+    "tenVi": "Sợi lanh.",
+    "tenEn": "Flax yarn",
+    "suyRa": false
+   },
+   {
+    "id": "53061000",
+    "cap": 8,
+    "cha": "5306",
+    "tenVi": "Sợi đơn",
+    "tenEn": "Yarn; of flax, single",
+    "suyRa": false,
+    "laPhanNhom": "530610"
+   },
+   {
+    "id": "53062000",
+    "cap": 8,
+    "cha": "5306",
+    "tenVi": "Sợi xe (folded) hoặc sợi cáp",
+    "tenEn": "Yarn; of flax, multiple (folded) or cabled",
+    "suyRa": false,
+    "laPhanNhom": "530620"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5306.nhom",
+  "tax.53061000",
+  "tax.53062000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:16:22.246Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan53.phan (46130→25000)"
+  ]
+ }
+}
