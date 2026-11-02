@@ -1,0 +1,135 @@
+{
+ "nhom": "7201",
+ "phamVi": {
+  "text": "Gang thỏi và gang kính dạng thỏi, khối hoặc dạng thô khác",
+  "nguon": "nhom7201.nhom",
+  "trich": "Gang thỏi được định nghĩa trong Chú giải 1 (a) của chương này.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_gang_thoi_hoac_gang_kinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch72.chuong",
+   "trich": "Là loại hợp kim sắt-carbon không có tính rèn, có hàm lượng carbon trên 2% tính theo khối lượng và có thể chứa một hoặc nhiều nguyên tố khác trong giới hạn dưới đây:",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "720110",
+   "fact": "ham_luong_phospho",
+   "op": "<=",
+   "value": 0.5,
+   "donVi": "%",
+   "nguon": "wco.720110",
+   "trich": "720110 Iron; non-alloy pig iron containing by weight 0.5% or less of phosphorus, in pigs, blocks or other primary forms",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "720120",
+   "fact": "ham_luong_phospho",
+   "op": ">",
+   "value": 0.5,
+   "donVi": "%",
+   "nguon": "wco.720120",
+   "trich": "720120 Iron; non-alloy pig iron containing by weight more than 0.5% of phosphorus, in pigs, blocks or other primary forms",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "72011000",
+   "dieuKien": "Gang thỏi không hợp kim có hàm lượng phospho chiếm từ 0,5% trở xuống tính theo khối lượng ",
+   "loaiKhac": false,
+   "nguon": "tax.72011000",
+   "trich": "72011000 - Gang thỏi không hợp kim có hàm lượng phospho chiếm từ 0,5% trở xuống tính theo khối lượng ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72012000",
+   "dieuKien": "Gang thỏi không hợp kim có hàm lượng phospho chiếm trên 0,5% tính theo khối lượng",
+   "loaiKhac": false,
+   "nguon": "tax.72012000",
+   "trich": "72012000 - Gang thỏi không hợp kim có hàm lượng phospho chiếm trên 0,5% tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72015000",
+   "dieuKien": "Gang thỏi hợp kim; gang kính",
+   "loaiKhac": false,
+   "nguon": "tax.72015000",
+   "trich": "72015000 - Gang thỏi hợp kim; gang kính",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7201",
+    "cap": 4,
+    "cha": "72",
+    "tenVi": "Gang thỏi và, gang kính ở dạng thỏi, dạng khối hoặc dạng thô khác.",
+    "tenEn": "Pig iron and spiegeleisen in pigs, blocks or other primary forms",
+    "suyRa": false
+   },
+   {
+    "id": "72011000",
+    "cap": 8,
+    "cha": "7201",
+    "tenVi": "Gang thỏi không hợp kim có hàm lượng phospho chiếm từ 0,5% trở xuống tính theo khối lượng",
+    "tenEn": "Iron; non-alloy pig iron containing by weight 0.5% or less of phosphorus, in pigs, blocks or other primary forms",
+    "suyRa": false,
+    "laPhanNhom": "720110"
+   },
+   {
+    "id": "72012000",
+    "cap": 8,
+    "cha": "7201",
+    "tenVi": "Gang thỏi không hợp kim có hàm lượng phospho chiếm trên 0,5% tính theo khối lượng",
+    "tenEn": "Iron; non-alloy pig iron containing by weight more than 0.5% of phosphorus, in pigs, blocks or other primary forms",
+    "suyRa": false,
+    "laPhanNhom": "720120"
+   },
+   {
+    "id": "72015000",
+    "cap": 8,
+    "cha": "7201",
+    "tenVi": "Gang thỏi hợp kim; gang kính",
+    "tenEn": "Iron; alloy pig iron; spiegeleisen, in pigs, blocks or other primary forms",
+    "suyRa": false,
+    "laPhanNhom": "720150"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch72.chuong",
+  "nhom7201.nhom",
+  "tax.72011000",
+  "tax.72012000",
+  "tax.72015000",
+  "wco.720110",
+  "wco.720120"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T10:50:30.108Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
