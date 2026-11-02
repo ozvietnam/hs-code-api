@@ -1,0 +1,179 @@
+{
+ "nhom": "8709",
+ "phamVi": {
+  "text": "Xe loại tự hành dùng trong nhà máy, kho tàng, bến cảng hoặc sân bay để vận chuyển hàng hoá trong phạm vi hẹp hoặc kéo rơ-moóc nhỏ trên sân ga; và các bộ phận của chúng.",
+  "nguon": "nhom8709.nhom",
+  "trich": "Nhóm này bao gồm một nhóm xe loại tự hành dùng trong nhà máy, kho tàng, bến cảng hoặc sân bay để vận chuyển các hàng hoá khác nhau trong phạm vi hẹp (hàng hoá hoặc côngtennơ) hoặc để kéo rơ moóc nhỏ trên sân ga.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_xe_tu_hanh_van_chuyen_pham_vi_hep_hoac_keo_ro_mooc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8709.nhom",
+   "trich": "Nhóm này bao gồm một nhóm xe loại tự hành dùng trong nhà máy, kho tàng, bến cảng hoặc sân bay để vận chuyển các hàng hoá khác nhau trong phạm vi hẹp (hàng hoá hoặc côngtennơ) hoặc để kéo rơ moóc nhỏ trên sân ga.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Thiết bị xếp dỡ container và xe tải công trình có lắp cần cẩu",
+   "sangNhom": "8426",
+   "nguon": "nhom8709.nhom",
+   "trich": "(a) Thiết bị xếp dỡ container và xe tải công trình (work struck) có lắp cần cẩu (nhóm 84.26)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các xe nâng hàng và xe tải công trình khác có gắn thiết bị nâng hạ, cặp giữ hàng",
+   "sangNhom": "8427",
+   "nguon": "nhom8709.nhom",
+   "trich": "(b) Các xe nâng hàng và xe tải công trình khác có gắn thiết bị nâng hạ, cặp giữ hàng (nhóm 84.27)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các xe tự đổ",
+   "sangNhom": "8704",
+   "nguon": "nhom8709.nhom",
+   "trich": "(c) Các xe tự đổ (nhóm 87.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là thiết bị xếp dỡ container hoặc xe tải công trình có lắp cần cẩu?",
+   "neuCo": "8426",
+   "neuKhong": "8709",
+   "nguon": "nhom8709.nhom",
+   "trich": "(a) Thiết bị xếp dỡ container và xe tải công trình (work struck) có lắp cần cẩu (nhóm 84.26)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là xe nâng hàng hoặc xe tải công trình khác có gắn thiết bị nâng hạ, cặp giữ hàng?",
+   "neuCo": "8427",
+   "neuKhong": "8709",
+   "nguon": "nhom8709.nhom",
+   "trich": "(b) Các xe nâng hàng và xe tải công trình khác có gắn thiết bị nâng hạ, cặp giữ hàng (nhóm 84.27)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là xe tự đổ?",
+   "neuCo": "8704",
+   "neuKhong": "8709",
+   "nguon": "nhom8709.nhom",
+   "trich": "(c) Các xe tự đổ (nhóm 87.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "87091100",
+   "dieuKien": "Loại chạy điện",
+   "loaiKhac": false,
+   "nguon": "tax.87091100",
+   "trich": "87091100 - - Loại chạy điện",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87091900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.87091900",
+   "trich": "87091900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "87091",
+    "truAnhEm": [
+     "87091100"
+    ],
+    "truDayDu": [
+     "87091100"
+    ],
+    "toTienCoTen": "8709",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "87099000",
+   "dieuKien": "Các bộ phận",
+   "loaiKhac": false,
+   "nguon": "tax.87099000",
+   "trich": "87099000 - Các bộ phận",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8709",
+    "cap": 4,
+    "cha": "87",
+    "tenVi": "Xe vận chuyển, loại tự hành, không lắp kèm thiết bị nâng hạ hoặc cặp giữ, thuộc loại dùng trong nhà máy, kho hàng, bến cảng hoặc sân bay",
+    "tenEn": "Works trucks, self-propelled, (not fitted with lifting or handling equipment), for factories, warehouses etc, for short distance transport of goods, tractors used on railway station platforms; parts thereof",
+    "suyRa": false
+   },
+   {
+    "id": "87091",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8709",
+    "tenVi": "Xe",
+    "tenEn": "Vehicles",
+    "suyRa": true
+   },
+   {
+    "id": "87091100",
+    "cap": 8,
+    "cha": "87091",
+    "tenVi": "Loại chạy điện",
+    "tenEn": "Vehicles; electrical, self-propelled, (not fitted with lifting or handling equipment), of the type used for short distance transport of goods in factories, warehouses, dock areas or airports",
+    "suyRa": false,
+    "laPhanNhom": "870911"
+   },
+   {
+    "id": "87091900",
+    "cap": 8,
+    "cha": "87091",
+    "tenVi": "Loại khác",
+    "tenEn": "Vehicles; (not electrical), self-propelled, without handling equipment, used for short distance transport of goods in factories, airports and such, and tractors of the type used on railway station platforms",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "870919"
+   },
+   {
+    "id": "87099000",
+    "cap": 8,
+    "cha": "8709",
+    "tenVi": "Các bộ phận",
+    "tenEn": "Vehicles; parts of the vehicles of heading no. 8709",
+    "suyRa": false,
+    "laPhanNhom": "870990"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8709.nhom",
+  "tax.87091100",
+  "tax.87091900",
+  "tax.87099000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T08:23:02.604Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 11,
+  "dat": 11,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

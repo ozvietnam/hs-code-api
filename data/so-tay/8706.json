@@ -1,0 +1,414 @@
+{
+ "nhom": "8706",
+ "phamVi": {
+  "text": "Khung gầm hoặc tổ hợp thân xe với khung gầm của các loại xe cơ giới thuộc các nhóm từ 87.01 đến 87.05, đã lắp động cơ, hệ thống truyền động, cơ cấu lái và các cầu xe (có hoặc chưa có bánh xe), tức là những xe cơ giới chưa có thân xe.",
+  "nguon": "nhom8706.nhom",
+  "trich": "Nhóm này gồm khung gầm hoặc tổ hợp thân xe với khung gầm (kết cấu khung xe hoặc khung với thân xe liền khối), của các xe cơ giới thuộc các nhóm từ 87.01 đến 87.05, đã lắp động cơ, và hệ thống truyền động, và cơ cấu lái và các cầu xe (có hoặc chưa có bánh xe).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_khung_gam_da_lap_dong_co_cua_xe_co_gioi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8706.nhom",
+   "trich": "Nhóm này gồm khung gầm hoặc tổ hợp thân xe với khung gầm (kết cấu khung xe hoặc khung với thân xe liền khối), của các xe cơ giới thuộc các nhóm từ 87.01 đến 87.05, đã lắp động cơ, và hệ thống truyền động, và cơ cấu lái và các cầu xe (có hoặc chưa có bánh xe).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "la_xe_co_gioi_chua_co_than_xe",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8706.nhom",
+   "trich": "Nhóm này gồm những xe cơ giới chưa có thân xe.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các khung gầm có lắp động cơ và cabin",
+   "sangNhom": "8702",
+   "nguon": "nhom8706.nhom",
+   "trich": "(a) Các khung gầm có lắp động cơ và cabin, carbin có thể hoàn chỉnh hoặc chưa hoàn chỉnh (ví dụ chưa có chỗ ngồi) (nhóm 87.02 đến 87.04) (xem chú thích 3 của Chương này).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các khung gầm chưa lắp động cơ, đã hoặc chưa lắp các bộ phận máy khác",
+   "sangNhom": "8708",
+   "nguon": "nhom8706.nhom",
+   "trich": "(b) Các khung gầm chưa lắp động cơ, đã hoặc chưa lắp các bộ phận máy khác (nhóm 87.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là khung gầm có lắp động cơ và cabin không?",
+   "neuCo": "8702",
+   "neuKhong": "8706",
+   "nguon": "nhom8706.nhom",
+   "trich": "(a) Các khung gầm có lắp động cơ và cabin, carbin có thể hoàn chỉnh hoặc chưa hoàn chỉnh (ví dụ chưa có chỗ ngồi) (nhóm 87.02 đến 87.04) (xem chú thích 3 của Chương này).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là khung gầm chưa lắp động cơ không?",
+   "neuCo": "8708",
+   "neuKhong": "8706",
+   "nguon": "nhom8706.nhom",
+   "trich": "(b) Các khung gầm chưa lắp động cơ, đã hoặc chưa lắp các bộ phận máy khác (nhóm 87.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "87060011",
+   "dieuKien": "Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01",
+   "loaiKhac": false,
+   "nguon": "tax.87060011",
+   "trich": "87060011 - - Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87060019",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.87060019",
+   "trich": "87060019 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8706001",
+    "truAnhEm": [
+     "87060011"
+    ],
+    "truDayDu": [
+     "87060011"
+    ],
+    "toTienCoTen": "8706",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "87060021",
+   "dieuKien": "Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van) ",
+   "loaiKhac": false,
+   "nguon": "tax.87060021",
+   "trich": "87060021 - - Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van) ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87060022",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.87060022",
+   "trich": "87060022 - - Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8706002",
+    "truAnhEm": [
+     "87060021",
+     "87060023"
+    ],
+    "truDayDu": [
+     "87060021",
+     "87060023"
+    ],
+    "toTienCoTen": "8706",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "87060023",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.87060023",
+   "trich": "87060023 - - Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8706002",
+    "truAnhEm": [
+     "87060021",
+     "87060022"
+    ],
+    "truDayDu": [
+     "87060021",
+     "87060022"
+    ],
+    "toTienCoTen": "8706",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "87060031",
+   "dieuKien": "Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự",
+   "loaiKhac": false,
+   "nguon": "tax.87060031",
+   "trich": "87060031 - - Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87060032",
+   "dieuKien": "Dùng cho ô tô cứu thương",
+   "loaiKhac": false,
+   "nguon": "tax.87060032",
+   "trich": "87060032 - - Dùng cho ô tô cứu thương",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87060033",
+   "dieuKien": "Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)",
+   "loaiKhac": false,
+   "nguon": "tax.87060033",
+   "trich": "87060033 - - Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87060034",
+   "dieuKien": "Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.87060034",
+   "trich": "87060034 - - Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87060039",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.87060039",
+   "trich": "87060039 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8706003",
+    "truAnhEm": [
+     "87060031",
+     "87060032",
+     "87060033",
+     "87060034"
+    ],
+    "truDayDu": [
+     "87060031",
+     "87060032",
+     "87060033",
+     "87060034"
+    ],
+    "toTienCoTen": "8706",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "87060041",
+   "dieuKien": "Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
+   "loaiKhac": false,
+   "nguon": "tax.87060041",
+   "trich": "87060041 - - Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87060042",
+   "dieuKien": "Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "loaiKhac": false,
+   "nguon": "tax.87060042",
+   "trich": "87060042 - - Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "87060050",
+   "dieuKien": "Dùng cho xe thuộc nhóm 87.05",
+   "loaiKhac": false,
+   "nguon": "tax.87060050",
+   "trich": "87060050 - Dùng cho xe thuộc nhóm 87.05",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8706",
+    "cap": 4,
+    "cha": "87",
+    "tenVi": "8706 - Khung gầm đã lắp động cơ, dùng cho xe có động cơ thuộc các nhóm từ 87.01 đến 87.05.",
+    "tenEn": "Chassis; fitted with engines, for the motor vehicles of heading no. 8701 to 8705",
+    "suyRa": false
+   },
+   {
+    "id": "8706001",
+    "cap": "TIEU_DE_QG",
+    "cha": "8706",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.01",
+    "tenEn": "For vehicles of heading 87.01",
+    "suyRa": true
+   },
+   {
+    "id": "87060011",
+    "cap": 8,
+    "cha": "8706001",
+    "tenVi": "Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "87060019",
+    "cap": 8,
+    "cha": "8706001",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8706002",
+    "cap": "TIEU_DE_QG",
+    "cha": "8706",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.02",
+    "tenEn": "For vehicles of heading 87.02",
+    "suyRa": true
+   },
+   {
+    "id": "87060021",
+    "cap": 8,
+    "cha": "8706002",
+    "tenVi": "Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "87060022",
+    "cap": 8,
+    "cha": "8706002",
+    "tenVi": "Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "87060023",
+    "cap": 8,
+    "cha": "8706002",
+    "tenVi": "Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8706003",
+    "cap": "TIEU_DE_QG",
+    "cha": "8706",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.03",
+    "tenEn": "For vehicles of heading 87.03",
+    "suyRa": true
+   },
+   {
+    "id": "87060031",
+    "cap": 8,
+    "cha": "8706003",
+    "tenVi": "Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "87060032",
+    "cap": 8,
+    "cha": "8706003",
+    "tenVi": "Dùng cho ô tô cứu thương",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "87060033",
+    "cap": 8,
+    "cha": "8706003",
+    "tenVi": "Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "87060034",
+    "cap": 8,
+    "cha": "8706003",
+    "tenVi": "Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "87060039",
+    "cap": 8,
+    "cha": "8706003",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8706004",
+    "cap": "TIEU_DE_QG",
+    "cha": "8706",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.04",
+    "tenEn": "For vehicles of heading 87.04",
+    "suyRa": true
+   },
+   {
+    "id": "87060041",
+    "cap": 8,
+    "cha": "8706004",
+    "tenVi": "Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "87060042",
+    "cap": 8,
+    "cha": "8706004",
+    "tenVi": "Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "87060050",
+    "cap": 8,
+    "cha": "8706",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.05",
+    "tenEn": null,
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8706.nhom",
+  "tax.87060011",
+  "tax.87060019",
+  "tax.87060021",
+  "tax.87060022",
+  "tax.87060023",
+  "tax.87060031",
+  "tax.87060032",
+  "tax.87060033",
+  "tax.87060034",
+  "tax.87060039",
+  "tax.87060041",
+  "tax.87060042",
+  "tax.87060050"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T08:23:02.580Z",
+  "ms": 7
+ },
+ "kiemTra": {
+  "tong": 20,
+  "dat": 20,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
