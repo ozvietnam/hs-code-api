@@ -1,0 +1,174 @@
+{
+ "nhom": "3104",
+ "phamVi": {
+  "text": "Phân khoáng hoặc phân hoá học, chứa kali (như kali clorua, kali sulphat, muối kali tự nhiên thô...), trừ trường hợp tạo thành hình dạng hoặc đóng gói quy định tại nhóm 31.05.",
+  "nguon": "nhom3104.nhom",
+  "trich": "Nhóm này chỉ áp dụng cho các loại hàng hóa, với điều kiện chúng không được tạo thành dạng hoặc được đóng gói như mô tả ở nhóm 31.05",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_phan_bon_khoang_hoac_hoa_hoc_chua_kali_quy_dinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch31.chuong",
+   "trich": "Nhóm 31.04 chỉ áp dụng cho các loại mặt hàng dưới đây, với điều kiện là chúng không được tạo thành các hình dạng hoặc đóng gói theo cách thức được mô tả ở nhóm 31.05",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các tinh thể kali clorua nuôi cấy mỗi tinh thể nặng từ 2,5g trở lên",
+   "sangNhom": "3824",
+   "nguon": "nhom3104.nhom",
+   "trich": "nhưng không bao gồm các tinh thể nuôi cấy (trừ các tinh thể quang học) mỗi tinh thể nặng từ 2,5g trở lên thuộc nhóm 38.24",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các tinh thể quang học của kali clorua",
+   "sangNhom": "9001",
+   "nguon": "nhom3104.nhom",
+   "trich": "và cũng không bao gồm các tinh thể quang học của kali clorua (nhóm 90.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Sản phẩm chứa kali khác như carbonat kali",
+   "sangNhom": "2836",
+   "nguon": "nhom3104.nhom",
+   "trich": "nhóm này không bao gồm các sản phẩm chứa kali, đã hoặc chưa xác định về mặt hóa học (như carbonat kali thuộc nhóm 28.36)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là tinh thể kali clorua nuôi cấy nặng từ 2,5g trở lên (trừ tinh thể quang học)?",
+   "neuCo": "3824",
+   "neuKhong": "3104",
+   "nguon": "nhom3104.nhom",
+   "trich": "nhưng không bao gồm các tinh thể nuôi cấy (trừ các tinh thể quang học) mỗi tinh thể nặng từ 2,5g trở lên thuộc nhóm 38.24",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là bộ phận/tinh thể quang học của kali clorua?",
+   "neuCo": "9001",
+   "neuKhong": "3104",
+   "nguon": "nhom3104.nhom",
+   "trich": "và cũng không bao gồm các tinh thể quang học của kali clorua (nhóm 90.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là carbonat kali?",
+   "neuCo": "2836",
+   "neuKhong": "3104",
+   "nguon": "nhom3104.nhom",
+   "trich": "nhóm này không bao gồm các sản phẩm chứa kali, đã hoặc chưa xác định về mặt hóa học (như carbonat kali thuộc nhóm 28.36)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "31042000",
+   "dieuKien": "Kali clorua ",
+   "loaiKhac": false,
+   "nguon": "tax.31042000",
+   "trich": "31042000 - Kali clorua ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "31043000",
+   "dieuKien": "Kali sulphat",
+   "loaiKhac": false,
+   "nguon": "tax.31043000",
+   "trich": "31043000 - Kali sulphat",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "31049000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.31049000",
+   "trich": "31049000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "3104",
+    "truAnhEm": [
+     "31042000",
+     "31043000"
+    ],
+    "truDayDu": [
+     "31042000",
+     "31043000"
+    ],
+    "toTienCoTen": "3104",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3104",
+    "cap": 4,
+    "cha": "31",
+    "tenVi": "Phân khoáng hoặc phân hóa học, có chứa kali.",
+    "tenEn": "Fertilizers; mineral or chemical, potassic",
+    "suyRa": false
+   },
+   {
+    "id": "31042000",
+    "cap": 8,
+    "cha": "3104",
+    "tenVi": "Kali clorua",
+    "tenEn": "Fertilizers, mineral or chemical; potassic, potassium chloride",
+    "suyRa": false,
+    "laPhanNhom": "310420"
+   },
+   {
+    "id": "31043000",
+    "cap": 8,
+    "cha": "3104",
+    "tenVi": "Kali sulphat",
+    "tenEn": "Fertilizers, mineral or chemical; potassic, potassium sulphate",
+    "suyRa": false,
+    "laPhanNhom": "310430"
+   },
+   {
+    "id": "31049000",
+    "cap": 8,
+    "cha": "3104",
+    "tenVi": "Loại khác",
+    "tenEn": "Fertilizers, mineral or chemical; potassic, n.e.c. in heading no. 3104",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "310490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch31.chuong",
+  "nhom3104.nhom",
+  "tax.31042000",
+  "tax.31043000",
+  "tax.31049000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:18:11.910Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 11,
+  "dat": 11,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

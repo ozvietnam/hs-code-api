@@ -1,0 +1,272 @@
+{
+ "nhom": "5111",
+ "phamVi": {
+  "text": "Vải dệt thoi từ sợi len lông cừu chải thô hoặc từ sợi lông động vật loại mịn chải thô.",
+  "nguon": "nhom5111.nhom",
+  "trich": "Nhóm này bao gồm các mặt hàng dệt thoi (như đã định nghĩa trong mục (I) (C) của Chú giải tổng quát Phần XI) làm bằng các sợi xe từ lông cừu đã chải thô hay lông động vật dạng mịn đã chải thô.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_vai_det_thoi_tu_long_cuu_hoac_long_dong_vat_min_chai_tho",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5111.nhom",
+   "trich": "Nhóm này bao gồm các mặt hàng dệt thoi (như đã định nghĩa trong mục (I) (C) của Chú giải tổng quát Phần XI) làm bằng các sợi xe từ lông cừu đã chải thô hay lông động vật dạng mịn đã chải thô.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ",
+   "sangNhom": "3005",
+   "nguon": "nhom5111.nhom",
+   "trich": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ (nhóm 30.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Vải dệt thoi phục vụ cho kỹ thuật",
+   "sangNhom": "5911",
+   "nguon": "nhom5111.nhom",
+   "trich": "Vải dệt thoi phục vụ cho kỹ thuật ở nhóm 59.11.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ thuộc nhóm 30.05?",
+   "neuCo": "3005",
+   "neuKhong": "5111",
+   "nguon": "nhom5111.nhom",
+   "trich": "Băng dùng trong y tế, đã tẩm thuốc hay đã đóng gói để bán lẻ (nhóm 30.05).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là vải dệt thoi phục vụ cho kỹ thuật thuộc nhóm 59.11?",
+   "neuCo": "5911",
+   "neuKhong": "5111",
+   "nguon": "nhom5111.nhom",
+   "trich": "Vải dệt thoi phục vụ cho kỹ thuật ở nhóm 59.11.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "511111",
+   "fact": "trong_luong_vai",
+   "op": "<=",
+   "value": 300,
+   "donVi": "g/m2",
+   "nguon": "wco.511111",
+   "trich": "of a weight not exceeding 300g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "511119",
+   "fact": "trong_luong_vai",
+   "op": ">",
+   "value": 300,
+   "donVi": "g/m2",
+   "nguon": "wco.511119",
+   "trich": "of a weight exceeding 300g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "51111100",
+   "dieuKien": "Định lượng không quá 300 g/m2",
+   "loaiKhac": false,
+   "nguon": "tax.51111100",
+   "trich": "51111100 - - Định lượng không quá 300 g/m2",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "51111900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.51111900",
+   "trich": "51111900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "51111",
+    "truAnhEm": [
+     "51111100"
+    ],
+    "truDayDu": [
+     "51111100"
+    ],
+    "toTienCoTen": "5111",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "51112000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.51112000",
+   "trich": "51112000 - Loại khác, pha chủ yếu hoặc pha duy nhất với sợi filament nhân tạo",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5111",
+    "truAnhEm": [
+     "51111",
+     "51113000"
+    ],
+    "truDayDu": [
+     "51111",
+     "51113000"
+    ],
+    "toTienCoTen": "5111",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "51113000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.51113000",
+   "trich": "51113000 - Loại khác, pha chủ yếu hoặc pha duy nhất với xơ staple nhân tạo",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5111",
+    "truAnhEm": [
+     "51111",
+     "51112000"
+    ],
+    "truDayDu": [
+     "51111",
+     "51112000"
+    ],
+    "toTienCoTen": "5111",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "51119000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.51119000",
+   "trich": "51119000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5111",
+    "truAnhEm": [
+     "51111",
+     "51112000",
+     "51113000"
+    ],
+    "truDayDu": [
+     "51111",
+     "51112000",
+     "51113000"
+    ],
+    "toTienCoTen": "5111",
+    "dinhNghiaDuoc": false
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5111",
+    "cap": 4,
+    "cha": "51",
+    "tenVi": "Vải dệt thoi từ sợi len lông cừu chải thô hoặc từ sợi lông động vật loại mịn chải thô.",
+    "tenEn": "Woven fabrics of carded wool or of carded fine animal hair",
+    "suyRa": false
+   },
+   {
+    "id": "51111",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5111",
+    "tenVi": "Có hàm lượng lông cừu hoặc lông động vật loại mịn chiếm từ 85% trở lên tính theo khối lượng",
+    "tenEn": "Containing 85% or more by weight of wool or of fine animal hair",
+    "suyRa": true
+   },
+   {
+    "id": "51111100",
+    "cap": 8,
+    "cha": "51111",
+    "tenVi": "Định lượng không quá 300 g/m2",
+    "tenEn": "Fabrics, woven; of carded wool or of carded fine animal hair, containing 85% or more by weight of wool or of fine animal hair, of a weight not exceeding 300g/m2",
+    "suyRa": false,
+    "laPhanNhom": "511111"
+   },
+   {
+    "id": "51111900",
+    "cap": 8,
+    "cha": "51111",
+    "tenVi": "Loại khác",
+    "tenEn": "Fabrics, woven; of carded wool or of carded fine animal hair, containing 85% or more by weight of wool or of fine animal hair, of a weight exceeding 300g/m2",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "511119"
+   },
+   {
+    "id": "51112000",
+    "cap": 8,
+    "cha": "5111",
+    "tenVi": "Loại khác, pha chủ yếu hoặc pha duy nhất với sợi filament nhân tạo",
+    "tenEn": "Fabrics, woven; of carded wool or carded fine animal hair, containing less than 85% by weight of wool or fine animal hair, mixed mainly or solely with man-made filaments",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "511120"
+   },
+   {
+    "id": "51113000",
+    "cap": 8,
+    "cha": "5111",
+    "tenVi": "Loại khác, pha chủ yếu hoặc pha duy nhất với xơ staple nhân tạo",
+    "tenEn": "Fabrics, woven; of carded wool or carded fine animal hair, containing less than 85% by weight of wool or fine animal hair, mixed mainly or solely with man-made staple fibres",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "511130"
+   },
+   {
+    "id": "51119000",
+    "cap": 8,
+    "cha": "5111",
+    "tenVi": "Loại khác",
+    "tenEn": "Fabrics, woven; of carded wool or carded fine animal hair, containing less than 85% by weight of wool or fine animal hair, mixed mainly or solely with fibres n.e.c. in heading no. 5111",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "511190"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5111.nhom",
+  "tax.51111100",
+  "tax.51111900",
+  "tax.51112000",
+  "tax.51113000",
+  "tax.51119000",
+  "wco.511111",
+  "wco.511119"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:16:22.127Z",
+  "ms": 6
+ },
+ "kiemTra": {
+  "tong": 13,
+  "dat": 13,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan51.phan (46130→25000)"
+  ]
+ }
+}

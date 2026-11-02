@@ -1,0 +1,150 @@
+{
+ "nhom": "7603",
+ "phamVi": {
+  "text": "Bột và vảy nhôm",
+  "nguon": "nhom7603.nhom",
+  "trich": "Nhóm này bao gồm bột nhôm được định nghĩa ở Chú giải 8(b), phần XV và vảy nhôm.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_bot_va_vay_nhom",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch76.chuong",
+   "trich": "Bột nhôm và vảy nhôm (nhóm 76.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các viên nhôm",
+   "sangNhom": "7601",
+   "nguon": "nhom7603.nhom",
+   "trich": "Các viên nhôm (nhóm 76.01)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các vân hoa cắt từ nhôm lá mỏng",
+   "sangNhom": "8308",
+   "nguon": "nhom7603.nhom",
+   "trich": "Các vân hoa cắt từ nhôm lá mỏng (nhóm 83.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là các viên nhôm thuộc nhóm 76.01 không?",
+   "neuCo": "7601",
+   "neuKhong": "7603",
+   "nguon": "nhom7603.nhom",
+   "trich": "Các viên nhôm (nhóm 76.01)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là các vân hoa cắt từ nhôm lá mỏng thuộc nhóm 83.08 không?",
+   "neuCo": "8308",
+   "neuKhong": "7603",
+   "nguon": "nhom7603.nhom",
+   "trich": "Các vân hoa cắt từ nhôm lá mỏng (nhóm 83.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "76031000",
+   "dieuKien": "Bột không có cấu trúc lớp",
+   "loaiKhac": false,
+   "nguon": "tax.76031000",
+   "trich": "76031000 - Bột không có cấu trúc lớp",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "76032010",
+   "dieuKien": "Vảy nhôm",
+   "loaiKhac": false,
+   "nguon": "tax.76032010",
+   "trich": "76032010 - - Vảy nhôm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "76032020",
+   "dieuKien": "Bột có cấu trúc lớp",
+   "loaiKhac": false,
+   "nguon": "tax.76032020",
+   "trich": "76032020 - - Bột có cấu trúc lớp",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7603",
+    "cap": 4,
+    "cha": "76",
+    "tenVi": "Bột và vảy nhôm",
+    "tenEn": "Aluminium; powders and flakes",
+    "suyRa": false
+   },
+   {
+    "id": "76031000",
+    "cap": 8,
+    "cha": "7603",
+    "tenVi": "Bột không có cấu trúc lớp",
+    "tenEn": "Aluminium; powders of non-lamellar structure",
+    "suyRa": false,
+    "laPhanNhom": "760310"
+   },
+   {
+    "id": "760320",
+    "cap": 6,
+    "cha": "7603",
+    "tenVi": "Bột có cấu trúc lớp; vảy nhôm",
+    "tenEn": "Aluminium; powders of lamellar structure, flakes",
+    "suyRa": false
+   },
+   {
+    "id": "76032010",
+    "cap": 8,
+    "cha": "760320",
+    "tenVi": "Vảy nhôm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "76032020",
+    "cap": 8,
+    "cha": "760320",
+    "tenVi": "Bột có cấu trúc lớp",
+    "tenEn": null,
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch76.chuong",
+  "nhom7603.nhom",
+  "tax.76031000",
+  "tax.76032010",
+  "tax.76032020"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:54:35.835Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

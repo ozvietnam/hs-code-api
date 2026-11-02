@@ -1,0 +1,302 @@
+{
+ "nhom": "3706",
+ "phamVi": {
+  "text": "Phim dùng trong điện ảnh, đã phơi sáng và đã tráng, đã hoặc chưa kết hợp với rãnh tiếng hoặc chỉ chứa duy nhất rãnh tiếng.",
+  "nguon": "nhom3706.nhom",
+  "trich": "Nhóm này bao gồm phim dùng trong điện ảnh với chiều rộng tiêu chuẩn hoặc tiêu chuẩn phụ đã tráng dùng để chiếu ảnh động, âm bản hoặc dương bản, chỉ chứa hình ảnh nhìn tương quan, hoặc cả hình ảnh nhìn tương quan và âm thanh",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_phim_dien_anh_da_phoi_sang_va_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3706.nhom",
+   "trich": "Nhóm này bao gồm phim dùng trong điện ảnh với chiều rộng tiêu chuẩn hoặc tiêu chuẩn phụ đã tráng dùng để chiếu ảnh động, âm bản hoặc dương bản, chỉ chứa hình ảnh nhìn tương quan, hoặc cả hình ảnh nhìn tương quan và âm thanh",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Phim có rãnh tiếng được tạo ra đơn lẻ thông qua xử lý trừ quang điện",
+   "sangNhom": "8523",
+   "nguon": "nhom3706.nhom",
+   "trich": "Phim có rãnh tiếng được tạo ra đơn lẻ thông qua xử lý trừ quang điện (ví dụ, bằng cách khắc máy hoặc ghi băng từ) không thuộc nhóm này (nhóm 85.23).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là phim có rãnh tiếng ghi bằng từ tính đơn lẻ thuộc nhóm 85.23?",
+   "neuCo": "8523",
+   "neuKhong": "3706",
+   "nguon": "nhom3706.nhom",
+   "trich": "Phim có rãnh tiếng được tạo ra đơn lẻ thông qua xử lý trừ quang điện (ví dụ, bằng cách khắc máy hoặc ghi băng từ) không thuộc nhóm này (nhóm 85.23).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "370690",
+   "fact": "chieu_rong_duoi_35mm",
+   "op": "<",
+   "value": 35,
+   "donVi": "mm",
+   "nguon": "wco.370690",
+   "trich": "370690 Cinematographic film; exposed and developed, whether or not incorporating a sound track or consisting only of sound track, of a width less than 35mm",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "37061010",
+   "dieuKien": "Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.37061010",
+   "trich": "37061010 - - Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37061030",
+   "dieuKien": "Phim tài liệu khác",
+   "loaiKhac": false,
+   "nguon": "tax.37061030",
+   "trich": "37061030 - - Phim tài liệu khác",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37061040",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37061040",
+   "trich": "37061040 - - Loại khác, chỉ có duy nhất rãnh tiếng",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370610",
+    "truAnhEm": [
+     "37061010",
+     "37061030"
+    ],
+    "truDayDu": [
+     "37061010",
+     "37061030"
+    ],
+    "toTienCoTen": "370610",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37061090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37061090",
+   "trich": "37061090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370610",
+    "truAnhEm": [
+     "37061010",
+     "37061030",
+     "37061040"
+    ],
+    "truDayDu": [
+     "37061010",
+     "37061030",
+     "37061040"
+    ],
+    "toTienCoTen": "370610",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "37069010",
+   "dieuKien": "Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.37069010",
+   "trich": "37069010 - - Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37069030",
+   "dieuKien": "Phim tài liệu khác",
+   "loaiKhac": false,
+   "nguon": "tax.37069030",
+   "trich": "37069030 - - Phim tài liệu khác",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37069040",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37069040",
+   "trich": "37069040 - - Loại khác, chỉ có duy nhất rãnh tiếng",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370690",
+    "truAnhEm": [
+     "37069010",
+     "37069030"
+    ],
+    "truDayDu": [
+     "37069010",
+     "37069030"
+    ],
+    "toTienCoTen": "370690",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37069090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37069090",
+   "trich": "37069090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370690",
+    "truAnhEm": [
+     "37069010",
+     "37069030",
+     "37069040"
+    ],
+    "truDayDu": [
+     "37069010",
+     "37069030",
+     "37069040"
+    ],
+    "toTienCoTen": "370690",
+    "dinhNghiaDuoc": false
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3706",
+    "cap": 4,
+    "cha": "37",
+    "tenVi": "Phim dùng trong điện ảnh, đã phơi sáng và đã tráng, đã hoặc chưa có rảnh tiếng hoặc chỉ có duy nhất rãnh tiếng.",
+    "tenEn": "Cinematographic film; exposed and developed, whether or not incorporating sound track or consisting only of sound track",
+    "suyRa": false
+   },
+   {
+    "id": "370610",
+    "cap": 6,
+    "cha": "3706",
+    "tenVi": "Loại chiều rộng từ 35 mm trở lên",
+    "tenEn": "Cinematographic film; exposed and developed, whether or not incorporating sound track or consisting only of sound track, of a width of 35cm or more",
+    "suyRa": false
+   },
+   {
+    "id": "37061010",
+    "cap": 8,
+    "cha": "370610",
+    "tenVi": "Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37061030",
+    "cap": 8,
+    "cha": "370610",
+    "tenVi": "Phim tài liệu khác",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37061040",
+    "cap": 8,
+    "cha": "370610",
+    "tenVi": "Loại khác, chỉ có duy nhất rãnh tiếng",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "37061090",
+    "cap": 8,
+    "cha": "370610",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "370690",
+    "cap": 6,
+    "cha": "3706",
+    "tenVi": "Loại khác",
+    "tenEn": "Cinematographic film; exposed and developed, whether or not incorporating a sound track or consisting only of sound track, of a width less than 35mm",
+    "suyRa": false
+   },
+   {
+    "id": "37069010",
+    "cap": 8,
+    "cha": "370690",
+    "tenVi": "Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37069030",
+    "cap": 8,
+    "cha": "370690",
+    "tenVi": "Phim tài liệu khác",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37069040",
+    "cap": 8,
+    "cha": "370690",
+    "tenVi": "Loại khác, chỉ có duy nhất rãnh tiếng",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "37069090",
+    "cap": 8,
+    "cha": "370690",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3706.nhom",
+  "tax.37061010",
+  "tax.37061030",
+  "tax.37061040",
+  "tax.37061090",
+  "tax.37069010",
+  "tax.37069030",
+  "tax.37069040",
+  "tax.37069090",
+  "wco.370690"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:42:26.309Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 13,
+  "dat": 13,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

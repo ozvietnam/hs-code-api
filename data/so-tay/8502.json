@@ -1,0 +1,532 @@
+{
+ "nhom": "8502",
+ "phamVi": {
+  "text": "Nhóm 8502 bao gồm các tổ máy phát điện (tổ hợp giữa máy phát điện và máy kéo sơ cấp ngoại trừ động cơ điện) và máy biến đổi điện quay.",
+  "nguon": "nhom8502.nhom",
+  "trich": "Thuật ngữ ‘các tổ máy phát điện’ được áp dụng vào tổ hợp một máy phát điện và bất kỳ máy kéo sơ cấp ngoại trừ động cơ điện (ví dụ, tua-bin thủy lực, tua-bin hơi nước, bánh xe gió, máy hơi nước, động cơ đốt trong).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_to_may_phat_dien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "động cơ điện"
+   ],
+   "nguon": "nhom8502.nhom",
+   "trich": "Thuật ngữ ‘các tổ máy phát điện’ được áp dụng vào tổ hợp một máy phát điện và bất kỳ máy kéo sơ cấp ngoại trừ động cơ điện (ví dụ, tua-bin thủy lực, tua-bin hơi nước, bánh xe gió, máy hơi nước, động cơ đốt trong).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "la_may_bien_doi_dien_quay",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8502.nhom",
+   "trich": "Các máy loại này chủ yếu bao gồm một máy phát điện kết hợp một phần kéo sa cấp có động cơ điện, chúng được gắn cố định trên cùng một bệ, dù trong các trường hợp cụ thể hai chức năng được kết hạp thành một tổ hợp với những cuộn dây dùng chung.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Tổ máy phát điện cho thiết bị hàn hiện diện cùng đầu kẹp que hàn hoặc thiết bị hàn",
+   "sangNhom": "8515",
+   "nguon": "nhom8502.nhom",
+   "trich": "Tuy nhiên, chúng được loại trừ (nhóm 85.15) khi mà hiện diện cùng đầu kẹp que hàn hoặc thiết bị hàn.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là tổ máy phát điện cho thiết bị hàn hiện diện cùng đầu kẹp que hàn hoặc thiết bị hàn không?",
+   "neuCo": "8515",
+   "neuKhong": "8502",
+   "nguon": "nhom8502.nhom",
+   "trich": "Tuy nhiên, chúng được loại trừ (nhóm 85.15) khi mà hiện diện cùng đầu kẹp que hàn hoặc thiết bị hàn.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "850211",
+   "fact": "cong_suat",
+   "op": "<=",
+   "value": 75,
+   "donVi": "kVA",
+   "nguon": "wco.850211",
+   "trich": "of an output not exceeding 75kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "850212",
+   "fact": "cong_suat",
+   "op": ">",
+   "value": 75,
+   "donVi": "kVA",
+   "nguon": "wco.850212",
+   "trich": "of an output exceeding 75kVA but not exceeding 375kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "850212",
+   "fact": "cong_suat",
+   "op": "<=",
+   "value": 375,
+   "donVi": "kVA",
+   "nguon": "wco.850212",
+   "trich": "of an output exceeding 75kVA but not exceeding 375kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "850213",
+   "fact": "cong_suat",
+   "op": ">",
+   "value": 375,
+   "donVi": "kVA",
+   "nguon": "wco.850213",
+   "trich": "of an output exceeding 375kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "85021100",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu nén cháy (diesel hoặc bán diesel), công suất không quá 75 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85021100",
+   "trich": "85021100 - - Công suất không quá 75 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85021210",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu nén cháy (diesel hoặc bán diesel), công suất trên 75 kVA nhưng không quá 125 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85021210",
+   "trich": "85021210 - - - Công suất trên 75 kVA nhưng không quá 125 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85021220",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu nén cháy (diesel hoặc bán diesel), công suất trên 125 kVA nhưng không quá 375 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85021220",
+   "trich": "85021220 - - - Công suất trên 125 kVA nhưng không quá 375 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85021320",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu nén cháy (diesel hoặc bán diesel), công suất từ 12.500 kVA trở lên",
+   "loaiKhac": false,
+   "nguon": "tax.85021320",
+   "trich": "85021320 - - - Công suất từ 12.500 kVA trở lên",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85021390",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu nén cháy (diesel hoặc bán diesel), công suất trên 375 kVA nhưng dưới 12.500 kVA (loại khác ngoài công suất từ 12.500 kVA trở lên)",
+   "loaiKhac": true,
+   "nguon": "tax.85021390",
+   "trich": "85021390 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "850213",
+    "truAnhEm": [
+     "85021320"
+    ],
+    "truDayDu": [
+     "85021320"
+    ],
+    "toTienCoTen": "850213",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "85022010",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu tia lửa điện, công suất không quá 75 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85022010",
+   "trich": "85022010 - - Công suất không quá 75 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85022020",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu tia lửa điện, công suất trên 75 kVA nhưng không quá 100 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85022020",
+   "trich": "85022020 - - Công suất trên 75 kVA nhưng không quá 100 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85022030",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu tia lửa điện, công suất trên 100 kVA nhưng không quá 10.000 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85022030",
+   "trich": "85022030 - - Công suất trên 100 kVA nhưng không quá 10.000 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85022042",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu tia lửa điện, công suất từ 12.500 kVA trở lên",
+   "loaiKhac": false,
+   "nguon": "tax.85022042",
+   "trich": "85022042 - - - Công suất từ 12.500 kVA trở lên",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85022049",
+   "dieuKien": "Tổ máy phát điện có động cơ đốt trong kiểu tia lửa điện, công suất trên 10.000 kVA nhưng dưới 12.500 kVA (loại khác ngoài công suất từ 12.500 kVA trở lên)",
+   "loaiKhac": true,
+   "nguon": "tax.85022049",
+   "trich": "85022049 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8502204",
+    "truAnhEm": [
+     "85022042"
+    ],
+    "truDayDu": [
+     "85022042"
+    ],
+    "toTienCoTen": "850220",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "85023110",
+   "dieuKien": "Tổ máy phát điện chạy bằng năng lượng gió, công suất không quá 10.000 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85023110",
+   "trich": "85023110 - - - Công suất không quá 10.000 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85023120",
+   "dieuKien": "Tổ máy phát điện chạy bằng năng lượng gió, công suất trên 10.000 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85023120",
+   "trich": "85023120 - - - Công suất trên 10.000 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85023910",
+   "dieuKien": "Tổ máy phát điện khác (không chạy bằng động cơ đốt trong piston hoặc sức gió), công suất không quá 10 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85023910",
+   "trich": "85023910 - - - Công suất không quá 10 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85023920",
+   "dieuKien": "Tổ máy phát điện khác (không chạy bằng động cơ đốt trong piston hoặc sức gió), công suất trên 10 kVA nhưng không quá 10.000 kVA",
+   "loaiKhac": false,
+   "nguon": "tax.85023920",
+   "trich": "85023920 - - - Công suất trên 10 kVA nhưng không quá 10.000 kVA",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85023932",
+   "dieuKien": "Tổ máy phát điện khác, công suất từ 12.500 kVA trở lên",
+   "loaiKhac": false,
+   "nguon": "tax.85023932",
+   "trich": "85023932 - - - - Công suất từ 12.500 kVA trở lên",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "85023939",
+   "dieuKien": "Tổ máy phát điện khác, công suất trên 10.000 kVA nhưng dưới 12.500 kVA (loại khác ngoài công suất từ 12.500 kVA trở lên)",
+   "loaiKhac": true,
+   "nguon": "tax.85023939",
+   "trich": "85023939 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8502393",
+    "truAnhEm": [
+     "85023932"
+    ],
+    "truDayDu": [
+     "85023932"
+    ],
+    "toTienCoTen": "850239",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "85024000",
+   "dieuKien": "Máy biến đổi điện quay",
+   "loaiKhac": false,
+   "nguon": "tax.85024000",
+   "trich": "85024000 - Máy biến đổi điện quay",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8502",
+    "cap": 4,
+    "cha": "85",
+    "tenVi": "Tổ máy phát điện và máy biến đổi điện quay.",
+    "tenEn": "Electric generating sets and rotary converters",
+    "suyRa": false
+   },
+   {
+    "id": "85021",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8502",
+    "tenVi": "Tổ máy phát điện với động cơ đốt trong kiểu piston cháy do nén (động cơ diesel hoặc bán diesel)",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "85021100",
+    "cap": 8,
+    "cha": "85021",
+    "tenVi": "Công suất không quá 75 kVA",
+    "tenEn": "Electric generating sets; with compression-ignition internal combustion piston engines (diesel or semi-diesel engines), of an output not exceeding 75kVA",
+    "suyRa": false,
+    "laPhanNhom": "850211"
+   },
+   {
+    "id": "850212",
+    "cap": 6,
+    "cha": "85021",
+    "tenVi": "Công suất trên 75 kVA nhưng không quá 375 kVA",
+    "tenEn": "Electric generating sets; with compression-ignition internal combustion piston engines (diesel or semi-diesel engines), of an output exceeding 75kVA but not exceeding 375kVA",
+    "suyRa": false
+   },
+   {
+    "id": "85021210",
+    "cap": 8,
+    "cha": "850212",
+    "tenVi": "Công suất trên 75 kVA nhưng không quá 125 kVA",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85021220",
+    "cap": 8,
+    "cha": "850212",
+    "tenVi": "Công suất trên 125 kVA nhưng không quá 375 kVA",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "850213",
+    "cap": 6,
+    "cha": "85021",
+    "tenVi": "Công suất trên 375 kVA",
+    "tenEn": "Electric generating sets; with compression-ignition internal combustion piston engines (diesel or semi-diesel engines), of an output exceeding 375kVA",
+    "suyRa": false
+   },
+   {
+    "id": "85021320",
+    "cap": 8,
+    "cha": "850213",
+    "tenVi": "Công suất từ 12.500 kVA trở lên",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85021390",
+    "cap": 8,
+    "cha": "850213",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "850220",
+    "cap": 6,
+    "cha": "8502",
+    "tenVi": "Tổ máy phát điện với động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện",
+    "tenEn": "Electric generating sets; with spark-ignition internal combustion piston engines",
+    "suyRa": false
+   },
+   {
+    "id": "85022010",
+    "cap": 8,
+    "cha": "850220",
+    "tenVi": "Công suất không quá 75 kVA",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85022020",
+    "cap": 8,
+    "cha": "850220",
+    "tenVi": "Công suất trên 75 kVA nhưng không quá 100 kVA",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85022030",
+    "cap": 8,
+    "cha": "850220",
+    "tenVi": "Công suất trên 100 kVA nhưng không quá 10.000 kVA",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "8502204",
+    "cap": "TIEU_DE_QG",
+    "cha": "850220",
+    "tenVi": "Công suất trên 10.000 kVA",
+    "tenEn": "Of an output exceeding 10,000 kVA",
+    "suyRa": true
+   },
+   {
+    "id": "85022042",
+    "cap": 8,
+    "cha": "8502204",
+    "tenVi": "Công suất từ 12.500 kVA trở lên",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85022049",
+    "cap": 8,
+    "cha": "8502204",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "85023",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8502",
+    "tenVi": "Tổ máy phát điện khác",
+    "tenEn": "Other generating sets",
+    "suyRa": true
+   },
+   {
+    "id": "850231",
+    "cap": 6,
+    "cha": "85023",
+    "tenVi": "Chạy bằng sức gió",
+    "tenEn": "Electric generating sets; wind-powered, (excluding those with spark-ignition or compression-ignition internal combustion piston engines)",
+    "suyRa": false
+   },
+   {
+    "id": "85023110",
+    "cap": 8,
+    "cha": "850231",
+    "tenVi": "Công suất không quá 10.000 kVA",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85023120",
+    "cap": 8,
+    "cha": "850231",
+    "tenVi": "Công suất trên 10.000 kVA",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "850239",
+    "cap": 6,
+    "cha": "85023",
+    "tenVi": "Loại khác",
+    "tenEn": "Electric generating sets; (excluding those with spark-ignition or compression-ignition internal combustion piston engines), other than wind powered",
+    "suyRa": false
+   },
+   {
+    "id": "85023910",
+    "cap": 8,
+    "cha": "850239",
+    "tenVi": "Công suất không quá 10 kVA",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85023920",
+    "cap": 8,
+    "cha": "850239",
+    "tenVi": "Công suất trên 10 kVA nhưng không quá 10.000 kVA",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "8502393",
+    "cap": "TIEU_DE_QG",
+    "cha": "850239",
+    "tenVi": "Công suất trên 10.000 kVA",
+    "tenEn": "Of an output exceeding 10,000 kVA",
+    "suyRa": true
+   },
+   {
+    "id": "85023932",
+    "cap": 8,
+    "cha": "8502393",
+    "tenVi": "Công suất từ 12.500 kVA trở lên",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "85023939",
+    "cap": 8,
+    "cha": "8502393",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "85024000",
+    "cap": 8,
+    "cha": "8502",
+    "tenVi": "Máy biến đổi điện quay",
+    "tenEn": "Electric rotary converters",
+    "suyRa": false,
+    "laPhanNhom": "850240"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8502.nhom",
+  "tax.85021100",
+  "tax.85021210",
+  "tax.85021220",
+  "tax.85021320",
+  "tax.85021390",
+  "tax.85022010",
+  "tax.85022020",
+  "tax.85022030",
+  "tax.85022042",
+  "tax.85022049",
+  "tax.85023110",
+  "tax.85023120",
+  "tax.85023910",
+  "tax.85023920",
+  "tax.85023932",
+  "tax.85023939",
+  "tax.85024000",
+  "wco.850211",
+  "wco.850212",
+  "wco.850213"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T08:17:29.893Z",
+  "ms": 13
+ },
+ "kiemTra": {
+  "tong": 26,
+  "dat": 26,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
