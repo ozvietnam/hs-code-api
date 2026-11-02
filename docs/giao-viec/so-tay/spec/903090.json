@@ -1,0 +1,91 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "903090",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-903090",
+  "dong8": {
+    "90309010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "9030.40",
+            "9030.82"
+          ]
+        }
+      ]
+    },
+    "90309030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dụng cụ và thiết bị quang học"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    },
+    "90309040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dụng cụ và thiết bị"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "đo",
+            "kiểm tra"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "đại lượng điện"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "90309010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90309010: \"thuộc phân nhóm 9030.40 hoặc 9030.82\" ⇒ dungCho [9030.40, 9030.82]"
+    },
+    {
+      "ma": "90309030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90309030: của dụng cụ quang học đo kiểm tấm mạch in/tấm dây in và mạch in đã lắp ráp ⇒ dungCho dụng cụ và thiết bị quang học, congDung [tấm mạch in, tấm dây in, mạch in đã lắp ráp]"
+    },
+    {
+      "ma": "90309040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90309040: tách mảng đo, kiểm tra để tránh cong3-liet-ke-trong-mot-chuoi; dungCho dụng cụ và thiết bị, congDung đại lượng điện và đối tượng mạch in"
+    },
+    {
+      "ma": "90309040",
+      "loai": "DUNG",
+      "ghiChu": "cong2-dong-khong-toi-duoc:90309040 sau 2 vòng sửa (studio-loop): dòng \"Loại khác, dùng cho …\" không tới được vì anh em .10/.30 dùng congDung/dungCho chồng; không đổi khoá để né (QUY-TRINH 3.3). DỪNG, báo Claude."
+    }
+  ]
+}
