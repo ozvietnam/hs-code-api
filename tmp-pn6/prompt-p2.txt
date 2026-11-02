@@ -1,0 +1,696 @@
+Số hoá ranh giới cho 30 phân nhóm 6 số (842310 842320 842330 842381 842382 842389 842390 741220 853910 853921 853922 853929 853931 853939 853952 853990 903033 903082 903084 903089 903090 391810 391890 701980 701990 830890 481830 640610 640620 640690). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lyDo thật, hoặc THIEU_KHOA_TU_VUNG. Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Không giải thích ngoài các khối json.
+
+=== GÓI PN6 842310 ===
+# 842310 — Cân người, kể cả cân trẻ em; cân sử dụng trong gia đình
+
+842310 — Weighing machines; personal (including baby scales) and household scales
+  84231010 Hoạt động bằng điện
+  84231020 Không hoạt động bằng điện
+
+- 84231010 DONG8
+    tax.84231010 [32 ký tự]: 84231010 - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84231020 DONG8
+    tax.84231020 [38 ký tự]: 84231020 - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.842310; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842320 ===
+# 842320 — Cân băng tải
+
+842320 — Weighing machines; scales for continuous weighing of goods on conveyors
+  84232010 Cân điện tử
+  84232090 Loại khác  [LK]
+
+- 84232010 DONG8
+    tax.84232010 [24 ký tự]: 84232010 - - Cân điện tử
+- 84232090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84232090 [22 ký tự]: 84232090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842320; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842330 ===
+# 842330 — Cân trọng lượng cố định và cân dùng cho việc đóng gói vật liệu với trọng lượng xác định trước vào bao túi hoặc đồ chứa, kể cả cân phễu
+
+842330 — Weighing machines; constant weight scales and scales for discharging a predetermined weight of material into a bag or container, including hopper scales
+  84233010 Cân điện tử
+  84233090 Loại khác  [LK]
+
+- 84233010 DONG8
+    tax.84233010 [24 ký tự]: 84233010 - - Cân điện tử
+- 84233090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84233090 [22 ký tự]: 84233090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842330; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842381 ===
+# 842381 — Có khả năng cân tối đa không quá 30 kg
+
+842381 — Weighing machines; other than personal, conveyor or constant weight scales, having a maximum weighing capacity not exceeding 30kg (excluding balances of a sensitivity of 5cg or better)
+  84238110 Cân điện tử
+  84238190 Loại khác  [LK]
+
+- 84238110 DONG8
+    tax.84238110 [26 ký tự]: 84238110 - - - Cân điện tử
+- 84238190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238190 [24 ký tự]: 84238190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842381; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842382 ===
+# 842382 — Có khả năng cân tối đa trên 30 kg nhưng không quá 5.000 kg
+
+842382 — Weighing machines; other than personal, conveyor or constant weight scales, having a maximum weighing capacity exceeding 30kg but not exceeding 5000kg
+  [8423823] Có khả năng cân tối đa không quá 1.000 kg
+    84238231 Cân điện tử, dùng để cân xe có động cơ
+    84238232 Cân điện tử khác
+    84238239 Loại khác  [LK]
+  [8423824] Có khả năng cân tối đa trên 1.000 kg
+    84238241 Cân điện tử, dùng để cân xe có động cơ
+    84238242 Cân điện tử khác
+    84238249 Loại khác  [LK]
+
+- 8423823 TIEU_DE
+    tieuDe.8423823 [49 ký tự]: 8423823 Có khả năng cân tối đa không quá 1.000 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có khả năng cân tối đa" · [GIỚI HẠN] "không quá 1.000 kg"
+- 84238231 DONG8
+    tax.84238231 [55 ký tự]: 84238231 - - - - Cân điện tử, dùng để cân xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để cân xe có động cơ"
+- 84238232 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84238232 [33 ký tự]: 84238232 - - - - Cân điện tử khác
+- 84238239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238239 [26 ký tự]: 84238239 - - - - Loại khác
+- 8423824 TIEU_DE
+    tieuDe.8423824 [44 ký tự]: 8423824 Có khả năng cân tối đa trên 1.000 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có khả năng cân tối đa" · [GIỚI HẠN] "trên 1.000 kg"
+- 84238241 DONG8
+    tax.84238241 [55 ký tự]: 84238241 - - - - Cân điện tử, dùng để cân xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để cân xe có động cơ"
+- 84238242 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84238242 [33 ký tự]: 84238242 - - - - Cân điện tử khác
+- 84238249 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238249 [26 ký tự]: 84238249 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842382; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842389 ===
+# 842389 — Loại khác
+
+842389 — Weighing machines; other than personal, conveyor or constant weight scales, having a maximum weighing capacity exceeding 5000kg
+  84238910 Cân điện tử
+  84238990 Loại khác  [LK]
+
+- 84238910 DONG8
+    tax.84238910 [26 ký tự]: 84238910 - - - Cân điện tử
+- 84238990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238990 [24 ký tự]: 84238990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842389; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842390 ===
+# 842390 — Quả cân của các loại cân; các bộ phận của cân
+
+842390 — Weighing machines; weights of all kinds, parts of weighing machinery
+  84239010 Quả cân
+  84239030 Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ (SEN)
+  84239040 Bộ phận của các loại cân khác
+
+- 84239010 DONG8
+    tax.84239010 [20 ký tự]: 84239010 - - Quả cân
+- 84239030 DONG8
+    tax.84239030 [81 ký tự]: 84239030 - - Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ (SEN)
+    sen.84239030 [1136 ký tự]: BỘ PHẬN CỦA CÂN ĐIỆN TỬ, TRỪ LOẠI SỬ DỤNG ĐỂ CÂN XE CÓ ĐỘNG CƠ Một vài ví dụ về bộ phận của cân điện tử, trừ loại sử dụng để cân xe (Examples of parts of weighing machinery using electronic means fo ● Weigh Modules (Mô-đun cân) ● Scale platform and weighing tray (Bàn cân và đĩa cân) ● Housing, casing and other parts (Thân, vỏ và các bộ phận khác) Một vài ví dụ về bộ phận của cân điện tử, loại sử dụng để cân xe tải ● Mô-đun cân - loại dùng để cân xe chở hàng, thường sử dụng mô- đun kiểu nén. ● Cầu của cân điện tử (kiểu chìm, kiểu nửa nổi nửa chìm, kiểu nổi, kiểu di động) ● Axle pads (two-pad or four-pad type) (Bàn Cân trục (loại 2 bàn hoặc 4 bàn) Một vài ví dụ về các bộ phận dùng chung của (các loại) cân điện tử ● Bộ chỉ thị cân/đầu hiển thị cân (Terminal/Indicator) ● Tấm mạch in (PCB boards) Các bộ phận của cân thường được xác định dựa trên tên bộ phận và số hiệu của chúng. Để phân loại bộ phận của cân điện tử loại thường dùng để cân xe có động cơ và loại cân khác, trong trường hợp không xác định được mục đích sử dụng cụ thể, phải áp dụng Quy tắc 3c của Quy tắc tổng quát về phân loại hàng hóa theo Danh mục HS.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cân điện tử" · [GIỚI HẠN] "trừ loại sử dụng để cân xe có động cơ"
+- 84239040 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84239040 [42 ký tự]: 84239040 - - Bộ phận của các loại cân khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của các loại cân khác"
+
+Nguồn cấp phân nhóm: wco.842390; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 741220 ===
+# 741220 — Bằng hợp kim đồng
+
+741220 — Copper; tube or pipe fittings (e.g. couplings, elbows, sleeves) of copper alloys
+  74122020 Phụ kiện ghép nối cho ống vòi(SEN)
+  [7412209] Loại khác
+    74122091 Bằng hợp kim đồng - kẽm (đồng thau)
+    74122099 Loại khác  [LK]
+
+- 74122020 DONG8
+    tax.74122020 [47 ký tự]: 74122020 - - Phụ kiện ghép nối cho ống vòi(SEN)
+    sen.74122020 [272 ký tự]: PHỤ KIỆN GHÉP NỐI CHO ỐNG VÒI Phụ kiện ghép nối cho ống vòi dùng cho vòi mềm hoặc các loại ống mềm tương tự khác là phụ kiện được làm bằng hợp kim đồng mà đặc điểm chính là chúng không có ren để phù hợp với đặc tính mềm dẻo của vòi mềm hoặc các loại ống mềm tương tự khác.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho ống vòi"
+- 7412209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7412209 [17 ký tự]: 7412209 Loại khác
+- 74122091 DONG8
+    tax.74122091 [50 ký tự]: 74122091 - - - Bằng hợp kim đồng - kẽm (đồng thau)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng hợp kim đồng - kẽm (đồng thau)"
+- 74122099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.74122099 [24 ký tự]: 74122099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.741220; chú giải: nhom7412.nhom, ch74.chuong, phan74.phan
+
+=== GÓI PN6 853910 ===
+# 853910 — Đèn pha gắn kín (sealed beam lamp units)
+
+853910 — Lamps; sealed beam units
+  85391010 Dùng cho xe có động cơ thuộc Chương 87
+  85391090 Loại khác  [LK]
+
+- 85391010 DONG8
+    tax.85391010 [51 ký tự]: 85391010 - - Dùng cho xe có động cơ thuộc Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ thuộc Chương 87"
+- 85391090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85391090 [22 ký tự]: 85391090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853910; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 853921 ===
+# 853921 — Bóng đèn ha-lo-gien vonfram
+
+853921 — Lamps; filament, (excluding ultra-violet or infra-red), tungsten halogen
+  85392120 Dùng cho thiết bị y tế
+  85392130 Dùng cho xe có động cơ
+  85392140 Bóng đèn phản xạ khác
+  85392190 Loại khác  [LK]
+
+- 85392120 DONG8
+    tax.85392120 [37 ký tự]: 85392120 - - - Dùng cho thiết bị y tế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho thiết bị y tế"
+- 85392130 DONG8
+    tax.85392130 [37 ký tự]: 85392130 - - - Dùng cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ"
+- 85392140 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85392140 [36 ký tự]: 85392140 - - - Bóng đèn phản xạ khác
+- 85392190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85392190 [24 ký tự]: 85392190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853921; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 853922 ===
+# 853922 — Loại khác, có công suất không quá 200 W và điện áp trên 100 V
+
+853922 — Lamps; filament, (excluding ultra-violet or infra-red), of a power not exceeding 200W and for a voltage exceeding 100 volts, other than tungsten halogen
+  85392220 Dùng cho thiết bị y tế
+  [8539223] Bóng đèn phản xạ khác
+    85392231 Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+    85392232 Loại dùng trong chiếu sáng trang trí, công suất trên 60 W
+    85392233 Loại khác, dùng cho chiếu sáng gia dụng  [LK có điều kiện]
+    85392239 Loại khác  [LK]
+  [8539229] Loại khác
+    85392291 Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+    85392293 Loại khác, dùng cho chiếu sáng gia dụng  [LK có điều kiện]
+    85392299 Loại khác  [LK]
+
+- 85392220 DONG8
+    tax.85392220 [37 ký tự]: 85392220 - - - Dùng cho thiết bị y tế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho thiết bị y tế"
+- 8539223 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8539223 [29 ký tự]: 8539223 Bóng đèn phản xạ khác
+- 85392231 DONG8
+    tax.85392231 [79 ký tự]: 85392231 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong chiếu sáng trang trí" · [GIỚI HẠN] "công suất không quá 60 W"
+- 85392232 DONG8
+    tax.85392232 [74 ký tự]: 85392232 - - - - Loại dùng trong chiếu sáng trang trí, công suất trên 60 W
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong chiếu sáng trang trí" · [GIỚI HẠN] "công suất trên 60 W"
+- 85392233 DONG8
+    tax.85392233 [56 ký tự]: 85392233 - - - - Loại khác, dùng cho chiếu sáng gia dụng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho chiếu sáng gia dụng"
+- 85392239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85392239 [26 ký tự]: 85392239 - - - - Loại khác
+- 8539229 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8539229 [17 ký tự]: 8539229 Loại khác
+- 85392291 DONG8
+    tax.85392291 [79 ký tự]: 85392291 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong chiếu sáng trang trí" · [GIỚI HẠN] "công suất không quá 60 W"
+- 85392293 DONG8
+    tax.85392293 [56 ký tự]: 85392293 - - - - Loại khác, dùng cho chiếu sáng gia dụng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho chiếu sáng gia dụng"
+- 85392299 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85392299 [26 ký tự]: 85392299 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853922; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 853929 ===
+# 853929 — Loại khác
+
+853929 — Lamps; filament, (excluding ultra-violet or infra-red), n.e.c. in item no. 8539.2
+  85392910 Dùng cho thiết bị y tế
+  85392920 Dùng cho xe có động cơ
+  85392930 Bóng đèn phản xạ khác
+  [8539294] Bóng đèn flash; bóng đèn hiệu cỡ nhỏ, danh định đến 2,25 V
+    85392941 Loại thích hợp dùng cho thiết bị y tế
+    85392949 Loại khác  [LK]
+  85392950 Loại khác, có công suất trên 200 W nhưng không quá 300 W và điện áp trên 100 V  [LK có điều kiện]
+  85392960 Loại khác, có công suất không quá 200 W và điện áp không quá 100 V  [LK có điều kiện]
+  85392990 Loại khác  [LK]
+
+- 85392910 DONG8
+    tax.85392910 [37 ký tự]: 85392910 - - - Dùng cho thiết bị y tế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho thiết bị y tế"
+- 85392920 DONG8
+    tax.85392920 [37 ký tự]: 85392920 - - - Dùng cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ"
+- 85392930 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85392930 [36 ký tự]: 85392930 - - - Bóng đèn phản xạ khác
+- 8539294 TIEU_DE
+    tieuDe.8539294 [66 ký tự]: 8539294 Bóng đèn flash; bóng đèn hiệu cỡ nhỏ, danh định đến 2,25 V
+- 85392941 DONG8
+    tax.85392941 [54 ký tự]: 85392941 - - - - Loại thích hợp dùng cho thiết bị y tế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "thích hợp dùng cho thiết bị y tế"
+- 85392949 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85392949 [26 ký tự]: 85392949 - - - - Loại khác
+- 85392950 DONG8
+    tax.85392950 [93 ký tự]: 85392950 - - - Loại khác, có công suất trên 200 W nhưng không quá 300 W và điện áp trên 100 V
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất trên 200 W nhưng không quá 300 W" · [GIỚI HẠN] "điện áp trên 100 V"
+- 85392960 DONG8
+    tax.85392960 [81 ký tự]: 85392960 - - - Loại khác, có công suất không quá 200 W và điện áp không quá 100 V
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất không quá 200 W" · [GIỚI HẠN] "điện áp không quá 100 V"
+- 85392990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85392990 [24 ký tự]: 85392990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853929; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 853931 ===
+# 853931 — Bóng đèn huỳnh quang, ca-tốt nóng
+
+853931 — Lamps; discharge, (excluding ultra-violet), fluorescent, hot cathode
+  85393110 Ống huỳnh quang dùng cho đèn huỳnh quang com-pắc
+  85393120 Loại khác, dạng ống thẳng dùng cho đèn huỳnh quang khác  [LK có điều kiện]
+  85393130 Bóng đèn huỳnh quang com-pắc đã có chấn lưu lắp liền (SEN)
+  85393190 Loại khác  [LK]
+
+- 85393110 DONG8
+    tax.85393110 [63 ký tự]: 85393110 - - - Ống huỳnh quang dùng cho đèn huỳnh quang com-pắc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho đèn huỳnh quang com-pắc"
+- 85393120 DONG8
+    tax.85393120 [70 ký tự]: 85393120 - - - Loại khác, dạng ống thẳng dùng cho đèn huỳnh quang khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho đèn huỳnh quang khác"
+- 85393130 DONG8
+    tax.85393130 [73 ký tự]: 85393130 - - - Bóng đèn huỳnh quang com-pắc đã có chấn lưu lắp liền (SEN)
+    sen.85393130 [448 ký tự]: BÓNG ĐÈN HUỲNH QUANG COM-PẮC ĐÃ CÓ CHẤN LƯU LẮP LIỀN Bóng đèn huỳnh quang com-pắc đã có chấn lưu lắp liền là loại đèn huỳnh quang tích hợp trong đó ống đèn và chấn lưu được gắn liền trong một khối duy nhất và không thể thay thế, như là một phần của đui đèn (bulb base). Đèn huỳnh quang com-pắc đã có chấn lưu lắp liền khác với bộ đèn huỳnh quang không tích hợp mà có bóng đèn có thể thay thế được và chấn lưu riêng biệt trong máng đèn hoặc giá đèn.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chấn lưu lắp liền"
+- 85393190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85393190 [24 ký tự]: 85393190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853931; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 853939 ===
+# 853939 — Loại khác
+
+853939 — Lamps; discharge, (excluding ultra-violet, excluding fluorescent, hot cathode)
+  85393910 Ống huỳnh quang dùng cho đèn huỳnh quang com-pắc
+  85393920 Bóng đèn huỳnh quang ca-tốt lạnh (CCFLs) để chiếu sáng từ phía sau của màn hình dẹt
+  85393940 Bóng đèn huỳnh quang ca-tốt lạnh khác
+  85393990 Loại khác  [LK]
+
+- 85393910 DONG8
+    tax.85393910 [63 ký tự]: 85393910 - - - Ống huỳnh quang dùng cho đèn huỳnh quang com-pắc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho đèn huỳnh quang com-pắc"
+- 85393920 DONG8
+    tax.85393920 [98 ký tự]: 85393920 - - - Bóng đèn huỳnh quang ca-tốt lạnh (CCFLs) để chiếu sáng từ phía sau của màn hình dẹt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chiếu sáng từ phía sau của màn hình dẹt"
+- 85393940 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85393940 [52 ký tự]: 85393940 - - - Bóng đèn huỳnh quang ca-tốt lạnh khác
+- 85393990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85393990 [24 ký tự]: 85393990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853939; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 853952 ===
+# 853952 — Bóng đèn đi-ốt phát quang (LED)
+
+853952 — Lamps; light-emitting diode (LED) light sources, light-emitting diode (LED) lamps
+  85395210 Loại đầu đèn ren xoáy
+  85395290 Loại khác  [LK]
+
+- 85395210 DONG8
+    tax.85395210 [36 ký tự]: 85395210 - - - Loại đầu đèn ren xoáy
+    vế phải phủ (cổng 5): [GIỚI HẠN] "đầu đèn ren xoáy"
+- 85395290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85395290 [24 ký tự]: 85395290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853952; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 853990 ===
+# 853990 — Bộ phận
+
+853990 — Lamps; parts of the lamps of heading no. 8539
+  85399010 Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc
+  85399020 Loại khác, dùng cho đèn của xe có động cơ  [LK có điều kiện]
+  85399030 Loại khác, của phân nhóm 8539.51.00  [LK có điều kiện]
+  85399090 Loại khác  [LK]
+
+- 85399010 DONG8
+    tax.85399010 [96 ký tự]: 85399010 - - Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho bóng đèn huỳnh quang" · [GIỚI HẠN] "dùng cho bóng đèn dây tóc"
+- 85399020 DONG8
+    tax.85399020 [54 ký tự]: 85399020 - - Loại khác, dùng cho đèn của xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho đèn của xe có động cơ"
+- 85399030 DONG8
+    tax.85399030 [48 ký tự]: 85399030 - - Loại khác, của phân nhóm 8539.51.00
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của phân nhóm 8539.51.00"
+- 85399090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85399090 [22 ký tự]: 85399090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853990; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 903033 ===
+# 903033 — Loại khác, không bao gồm thiết bị ghi
+
+903033 — Instruments and apparatus; for measuring or checking voltage, current, resistance or power, without a recording device (excluding multimeters)
+  90303310 Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+  90303320 Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định
+  90303330 Ampe kế và vôn kế dùng cho xe có động cơ
+  90303340 Dụng cụ đo điện trở khác
+  90303390 Loại khác  [LK]
+
+- 90303310 DONG8
+    tax.90303310 [150 ký tự]: 90303310 - - - Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp"
+- 90303320 DONG8
+    tax.90303320 [271 ký tự]: 90303320 - - - Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được thiết kế" · [GIỚI HẠN] "để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà" · [GIỚI HẠN] "có thể làm hỏng mạch điện tử"
+- 90303330 DONG8
+    tax.90303330 [55 ký tự]: 90303330 - - - Ampe kế và vôn kế dùng cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe có động cơ"
+- 90303340 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.90303340 [39 ký tự]: 90303340 - - - Dụng cụ đo điện trở khác
+- 90303390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90303390 [24 ký tự]: 90303390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903033; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903082 ===
+# 903082 — Để đo hoặc kiểm tra các vi mạch hoặc linh kiện bán dẫn (kể cả mạch tích hợp)
+
+903082 — Instruments and apparatus; for measuring or checking semiconductor wafers or devices (including integrated circuits)
+  90308210 Máy kiểm tra vi mạch tích hợp
+  90308290 Loại khác  [LK]
+
+- 90308210 DONG8
+    tax.90308210 [44 ký tự]: 90308210 - - - Máy kiểm tra vi mạch tích hợp
+- 90308290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90308290 [24 ký tự]: 90308290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903082; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903084 ===
+# 903084 — Loại khác, có kèm thiết bị ghi
+
+903084 — Instruments and apparatus; n.e.c. in heading no. 9030, with a recording device
+  90308410 Dụng cụ và thiết bị để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90308490 Loại khác  [LK]
+
+- 90308410 DONG8
+    tax.90308410 [118 ký tự]: 90308410 - - - Dụng cụ và thiết bị để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90308490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90308490 [24 ký tự]: 90308490 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903084; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903089 ===
+# 903089 — Loại khác
+
+903089 — Instruments and apparatus; n.e.c. in heading no. 9030, without a recording device
+  90308910 Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90308990 Loại khác  [LK]
+
+- 90308910 DONG8
+    tax.90308910 [148 ký tự]: 90308910 - - - Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không kèm thiết bị ghi" · [GIỚI HẠN] "dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90308990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90308990 [24 ký tự]: 90308990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903089; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903090 ===
+# 903090 — Bộ phận và phụ kiện
+
+903090 — Instruments, apparatus for measuring, checking electrical quantities, not meters of heading no. 9028; parts and accessories, for measuring or detecting alpha, beta, gamma, x-ray, cosmic and other radiations
+  90309010 Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+  90309030 Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309040 Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309090 Loại khác  [LK]
+
+- 90309010 DONG8
+    tax.90309010 [113 ký tự]: 90309010 - - Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82"
+- 90309030 DONG8
+    tax.90309030 [132 ký tự]: 90309030 - - Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị quang học" · [GIỚI HẠN] "để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309040 DONG8
+    tax.90309040 [145 ký tự]: 90309040 - - Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị" · [GIỚI HẠN] "dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90309090 [22 ký tự]: 90309090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903090; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 391810 ===
+# 391810 — Từ các polyme từ vinyl clorua
+
+391810 — Floor, wall or ceiling coverings; of polymers of vinyl chloride, whether or not self-adhesive, in rolls or in the form of tiles
+  [3918101] Tấm trải sàn
+    39181011 Dạng tấm rời để ghép
+    39181019 Loại khác  [LK]
+  39181090 Loại khác  [LK]
+
+- 3918101 TIEU_DE
+    tieuDe.3918101 [20 ký tự]: 3918101 Tấm trải sàn
+- 39181011 DONG8
+    tax.39181011 [35 ký tự]: 39181011 - - - Dạng tấm rời để ghép
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ghép"
+- 39181019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39181019 [24 ký tự]: 39181019 - - - Loại khác
+- 39181090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39181090 [22 ký tự]: 39181090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391810; chú giải: nhom3918.nhom, ch39.chuong
+
+=== GÓI PN6 391890 ===
+# 391890 — Từ plastic khác
+
+391890 — Floor, wall or ceiling coverings; of plastics (excluding polymers of vinyl chloride), whether or not self-adhesive, in rolls or in the form of tiles
+  [3918901] Tấm trải sàn
+    39189011 Dạng tấm rời để ghép, bằng polyetylen
+    39189013 Loại khác, bằng polyetylen  [LK có điều kiện]
+    39189014 Từ các dẫn xuất hóa học của cao su tự nhiên
+    39189015 Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39189016 Từ sợi lưu hóa
+    39189019 Loại khác  [LK]
+  [3918909] Loại khác
+    39189091 Từ polyetylen
+    39189092 Từ các dẫn xuất hóa học của cao su tự nhiên
+    39189093 Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39189094 Từ sợi lưu hóa
+    39189099 Loại khác  [LK]
+
+- 3918901 TIEU_DE
+    tieuDe.3918901 [20 ký tự]: 3918901 Tấm trải sàn
+- 39189011 DONG8
+    tax.39189011 [52 ký tự]: 39189011 - - - Dạng tấm rời để ghép, bằng polyetylen
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ghép" · [GIỚI HẠN] "bằng polyetylen"
+- 39189013 DONG8
+    tax.39189013 [41 ký tự]: 39189013 - - - Loại khác, bằng polyetylen
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng polyetylen"
+- 39189014 DONG8
+    tax.39189014 [58 ký tự]: 39189014 - - - Từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39189015 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39189015 [177 ký tự]: 39189015 - - - Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39189016 DONG8
+    tax.39189016 [29 ký tự]: 39189016 - - - Từ sợi lưu hóa
+- 39189019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39189019 [24 ký tự]: 39189019 - - - Loại khác
+- 3918909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3918909 [17 ký tự]: 3918909 Loại khác
+- 39189091 DONG8
+    tax.39189091 [28 ký tự]: 39189091 - - - Từ polyetylen
+- 39189092 DONG8
+    tax.39189092 [58 ký tự]: 39189092 - - - Từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39189093 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39189093 [177 ký tự]: 39189093 - - - Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39189094 DONG8
+    tax.39189094 [29 ký tự]: 39189094 - - - Từ sợi lưu hóa
+- 39189099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39189099 [24 ký tự]: 39189099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391890; chú giải: nhom3918.nhom, ch39.chuong
+
+=== GÓI PN6 701980 ===
+# 701980 — Len thủy tinh và các sản phẩm từ len thủy tinh
+
+701980 — Glass fibres; glass wool and articles thereof
+  70198010 Len thủy tinh
+  70198020 Các sản phẩm từ len thủy tinh
+
+- 70198010 DONG8
+    tax.70198010 [26 ký tự]: 70198010 - - Len thủy tinh
+- 70198020 DONG8
+    tax.70198020 [42 ký tự]: 70198020 - - Các sản phẩm từ len thủy tinh
+
+Nguồn cấp phân nhóm: wco.701980; chú giải: nhom7019.nhom, ch70.chuong, phan70.phan
+
+=== GÓI PN6 701990 ===
+# 701990 — Loại khác  [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ]
+
+701990 — Glass fibres; n.e.c. in heading no. 7019
+  70199020 Rèm (blinds)(SEN)
+  70199030 Xơ thủy tinh, trừ len thủy tinh
+  70199040 Vật liệu bọc ngoài đường ống bằng sợi thủy tinh đã được thấm tẩm nhựa đường hoặc nhựa than đá(SEN)
+  70199050 Vải dệt thoi từ sợi thô
+  70199090 Loại khác  [LK]
+
+- 70199020 DONG8
+    tax.70199020 [30 ký tự]: 70199020 - - Rèm (blinds)(SEN)
+    sen.70199020 [548 ký tự]: RÈM (BLINDS) Thuật ngữ rèm cửa sổ cũng có thể được sử dụng để mô tả lớp phủ cửa sổ nói chung - trong trường hợp này rèm cửa sổ bao gồm hầu hết mọi loại che cửa sổ, tức là rèm lật, rèm cuốn, màn che dạng tổ ong, rèm bằng gỗ, rèm Roman. Rèm thủy tinh nói chung, bao gồm rèm gỗ hoặc acrylic kết hợp với tấm thủy tinh (kiểu kẹp sandwich), đóng khung nhôm vừa với cửa sổ hoặc cửa ra vào để có thể ngăn bụi, ngăn nứt vỡ và dấu tay. Trong trường hợp rèm gỗ hoặc acrylic không kết hợp với tấm thủy tinh được phân loại theo chất liệu của Chương 39 hoặc 44.
+- 70199030 DONG8
+    tax.70199030 [44 ký tự]: 70199030 - - Xơ thủy tinh, trừ len thủy tinh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "trừ len thủy tinh"
+- 70199040 DONG8
+    tax.70199040 [111 ký tự]: 70199040 - - Vật liệu bọc ngoài đường ống bằng sợi thủy tinh đã được thấm tẩm nhựa đường hoặc nhựa than đá(SEN)
+    sen.70199040 [417 ký tự]: VẬT LIỆU BỌC NGOÀI ĐƯỜNG ỐNG BẰNG SỢI THUỶ TINH ĐÃ ĐƯỢC THẤM TẨM NHỰA ĐƯỜNG HOẶC NHỰA THAN ĐÁ Đây là sản phẩm không dệt được chế tạo bằng cách gia cố sợi thủy tinh ngẫu nhiên theo chiều dọc và sau đó thấm tẩm với nhựa đường (asphalt) hoặc nhựa than đá. Nó được dùng làm lớp bọc bên ngoài để gia cố cho đường ống và có khả năng chống ăn mòn. Nó có sẵn ở dạng cuộn. Vỏ bọc ngoài bằng sợi thủy tinh Coal tar impregnated
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng sợi thủy tinh đã" · [GIỚI HẠN] "được thấm tẩm nhựa đường hoặc nhựa than đá"
+- 70199050 DONG8
+    tax.70199050 [36 ký tự]: 70199050 - - Vải dệt thoi từ sợi thô
+- 70199090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.70199090 [22 ký tự]: 70199090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.701990; chú giải: nhom7019.nhom, ch70.chuong, phan70.phan
+
+=== GÓI PN6 830890 ===
+# 830890 — Loại khác, kể cả các bộ phận
+
+830890 — Clasps, frames with clasps, buckles, buckle clasps; of base metal, of a kind used for clothing & accessories, footwear, jewellery, wrist-watches, books, awnings, leather goods, travel goods, saddlery etc, including parts
+  83089010 Hạt trang trí
+  83089020 Trang kim
+  83089090 Loại khác  [LK]
+
+- 83089010 DONG8
+    tax.83089010 [26 ký tự]: 83089010 - - Hạt trang trí
+- 83089020 DONG8
+    tax.83089020 [22 ký tự]: 83089020 - - Trang kim
+- 83089090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.83089090 [22 ký tự]: 83089090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.830890; chú giải: nhom8308.nhom, ch83.chuong, phan83.phan
+
+=== GÓI PN6 481830 ===
+# 481830 — Khăn trải bàn và khăn ăn
+
+481830 — Paper articles; tablecloths and serviettes, of paper, cellulose wadding or fibres
+  48183010 Khăn trải bàn
+  48183020 Khăn ăn (serviettes)
+
+- 48183010 DONG8
+    tax.48183010 [26 ký tự]: 48183010 - - Khăn trải bàn
+- 48183020 DONG8
+    tax.48183020 [33 ký tự]: 48183020 - - Khăn ăn (serviettes)
+
+Nguồn cấp phân nhóm: wco.481830; chú giải: nhom4818.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 640610 ===
+# 640610 — Mũ giày và các bộ phận của chúng, trừ miếng lót bằng vật liệu cứng trong mũ giày
+
+640610 — Footwear; parts, uppers and parts thereof, other than stiffeners
+  64061010 Mũi giày bằng kim loại
+  64061090 Loại khác  [LK]
+
+- 64061010 DONG8
+    tax.64061010 [35 ký tự]: 64061010 - - Mũi giày bằng kim loại
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng kim loại"
+- 64061090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.64061090 [22 ký tự]: 64061090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.640610; chú giải: nhom6406.nhom, ch64.chuong, phan64.phan
+
+=== GÓI PN6 640620 ===
+# 640620 — Đế ngoài và gót giày, bằng cao su hoặc plastic
+
+640620 — Footwear; parts, outer soles and heels, of rubber or plastics
+  64062010 Bằng cao su
+  64062020 Bằng plastic
+
+- 64062010 DONG8
+    tax.64062010 [24 ký tự]: 64062010 - - Bằng cao su
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su"
+- 64062020 DONG8
+    tax.64062020 [25 ký tự]: 64062020 - - Bằng plastic
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng plastic"
+
+Nguồn cấp phân nhóm: wco.640620; chú giải: nhom6406.nhom, ch64.chuong, phan64.phan
+
+=== GÓI PN6 640690 ===
+# 640690 — Loại khác
+
+640690 — Footwear; parts, n.e.c. in heading 6406
+  64069010 Bằng gỗ
+  [6406902] Bằng kim loại
+    64069021 Bằng sắt hoặc thép
+    64069022 Bằng đồng
+    64069023 Bằng nhôm
+    64069029 Loại khác  [LK]
+  [6406904] Bằng cao su
+    64069041 Tấm lót giày
+    64069042 Đế giày đã hoàn thiện (SEN)
+    64069049 Loại khác  [LK]
+  [6406905] Bằng plastic
+    64069051 Tấm lót giày
+    64069052 Đế giày đã hoàn thiện (SEN)
+    64069059 Loại khác  [LK]
+  [6406909] Loại khác
+    64069091 Ghệt, ống ôm sát chân (leggings) và các loại tương tự và bộ phận của chúng
+    64069099 Loại khác  [LK]
+
+- 64069010 DONG8
+    tax.64069010 [20 ký tự]: 64069010 - - Bằng gỗ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng gỗ"
+- 6406902 TIEU_DE
+    tieuDe.6406902 [21 ký tự]: 6406902 Bằng kim loại
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng kim loại"
+- 64069021 DONG8
+    tax.64069021 [33 ký tự]: 64069021 - - - Bằng sắt hoặc thép
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng sắt hoặc thép"
+- 64069022 DONG8
+    tax.64069022 [24 ký tự]: 64069022 - - - Bằng đồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng đồng"
+- 64069023 DONG8
+    tax.64069023 [24 ký tự]: 64069023 - - - Bằng nhôm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng nhôm"
+- 64069029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.64069029 [24 ký tự]: 64069029 - - - Loại khác
+- 6406904 TIEU_DE
+    tieuDe.6406904 [19 ký tự]: 6406904 Bằng cao su
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su"
+- 64069041 DONG8
+    tax.64069041 [27 ký tự]: 64069041 - - - Tấm lót giày
+- 64069042 DONG8
+    tax.64069042 [42 ký tự]: 64069042 - - - Đế giày đã hoàn thiện (SEN)
+    sen.64069042 [191 ký tự]: ĐẾ GIÀY ĐÃ HOÀN THIỆN Giày bao gồm 4 phần chính: đế ngoài, đế trong, đế giữa và mũ giày. Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày.
+- 64069049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.64069049 [24 ký tự]: 64069049 - - - Loại khác
+- 6406905 TIEU_DE
+    tieuDe.6406905 [20 ký tự]: 6406905 Bằng plastic
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng plastic"
+- 64069051 DONG8
+    tax.64069051 [27 ký tự]: 64069051 - - - Tấm lót giày
+- 64069052 DONG8
+    tax.64069052 [42 ký tự]: 64069052 - - - Đế giày đã hoàn thiện (SEN)
+    sen.64069052 [191 ký tự]: ĐẾ GIÀY ĐÃ HOÀN THIỆN Giày bao gồm 4 phần chính: đế ngoài, đế trong, đế giữa và mũ giày. Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày.
+- 64069059 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.64069059 [24 ký tự]: 64069059 - - - Loại khác
+- 6406909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.6406909 [17 ký tự]: 6406909 Loại khác
+- 64069091 DONG8
+    tax.64069091 [89 ký tự]: 64069091 - - - Ghệt, ống ôm sát chân (leggings) và các loại tương tự và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và các loại tương tự" · [MỞ] "và bộ phận của chúng"
+- 64069099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.64069099 [24 ký tự]: 64069099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.640690; chú giải: nhom6406.nhom, ch64.chuong, phan64.phan
