@@ -1,0 +1,190 @@
+{
+ "nhom": "8606",
+ "phamVi": {
+  "text": "Toa chở hàng trên đường ray xe lửa hoặc đường tàu điện, loại không tự hành.",
+  "nguon": "nhom8606.nhom",
+  "trich": "Nhóm này bao gồm các phương tiện dùng để chuyên chở hàng hóa trên các mạng đường sắt (của các loại đường ray). Nhóm này cũng bao gồm các phương tiện nhỏ hoặc toa chở hàng để vận chuyển hàng hóa bằng đường sắt",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_toa_xe_cho_hang_khong_tu_hanh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch86.chuong",
+   "trich": "xe lửa hoặc xe điện chở hàng, toa gòong và toa trần, v.v...) (nhóm 86.05 và 86.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các rơ moóc đường sắt thiết kế để vận chuyển bởi toa chở hàng có ray dẫn hướng",
+   "sangNhom": "8716",
+   "nguon": "nhom8606.nhom",
+   "trich": "Các rơ moóc đường sắt được thiết kế để vận chuyển bởi các toa chở hàng gắn với đường ray dẫn hướng bị loại trừ (nhóm 87.16).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là rơ moóc đường sắt thiết kế để vận chuyển bởi các toa chở hàng gắn ray dẫn hướng?",
+   "neuCo": "8716",
+   "neuKhong": "8606",
+   "nguon": "nhom8606.nhom",
+   "trich": "Các rơ moóc đường sắt được thiết kế để vận chuyển bởi các toa chở hàng gắn với đường ray dẫn hướng bị loại trừ (nhóm 87.16).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "86061000",
+   "dieuKien": "Toa xe xi téc và các loại toa tương tự",
+   "loaiKhac": false,
+   "nguon": "tax.86061000",
+   "trich": "86061000 - Toa xe xi téc và các loại toa tương tự",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "86063000",
+   "dieuKien": "Toa chở hàng và toa goòng tự dỡ tải, trừ các loại thuộc phân nhóm 8606.10",
+   "loaiKhac": false,
+   "nguon": "tax.86063000",
+   "trich": "86063000 - Toa chở hàng và toa goòng tự dỡ tải, trừ các loại thuộc phân nhóm 8606.10",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "86069100",
+   "dieuKien": "Loại có nắp đậy và đóng kín",
+   "loaiKhac": false,
+   "nguon": "tax.86069100",
+   "trich": "86069100 - - Loại có nắp đậy và đóng kín",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "86069200",
+   "dieuKien": "Loại mở, với các thành bên không thể tháo rời có chiều cao trên 60 cm",
+   "loaiKhac": false,
+   "nguon": "tax.86069200",
+   "trich": "86069200 - - Loại mở, với các thành bên không thể tháo rời có chiều cao trên 60 cm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "86069900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.86069900",
+   "trich": "86069900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "86069",
+    "truAnhEm": [
+     "86069100",
+     "86069200"
+    ],
+    "truDayDu": [
+     "86069100",
+     "86069200",
+     "86061000",
+     "86063000"
+    ],
+    "toTienCoTen": "8606",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8606",
+    "cap": 4,
+    "cha": "86",
+    "tenVi": "Toa xe hàng và toa gòong dùng trên đường sắt hoặc đường tàu điện, không tự hành.",
+    "tenEn": "Railway or tramway goods vans and wagons; not self-propelled",
+    "suyRa": false
+   },
+   {
+    "id": "86061000",
+    "cap": 8,
+    "cha": "8606",
+    "tenVi": "Toa xe xi téc và các loại toa tương tự",
+    "tenEn": "Railway or tramway goods vans and wagons; tank wagons and the like, not self-propelled",
+    "suyRa": false,
+    "laPhanNhom": "860610"
+   },
+   {
+    "id": "86063000",
+    "cap": 8,
+    "cha": "8606",
+    "tenVi": "Toa chở hàng và toa goòng tự dỡ tải, trừ các loại thuộc phân nhóm 8606.10",
+    "tenEn": "Railway or tramway goods vans and wagons; self-discharging, not self-propelled, excluding those of item no. 8606.10",
+    "suyRa": false,
+    "laPhanNhom": "860630"
+   },
+   {
+    "id": "86069",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8606",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "86069100",
+    "cap": 8,
+    "cha": "86069",
+    "tenVi": "Loại có nắp đậy và đóng kín",
+    "tenEn": "Railway or tramway goods vans and wagons; covered and closed, not self-propelled",
+    "suyRa": false,
+    "laPhanNhom": "860691"
+   },
+   {
+    "id": "86069200",
+    "cap": 8,
+    "cha": "86069",
+    "tenVi": "Loại mở, với các thành bên không thể tháo rời có chiều cao trên 60 cm",
+    "tenEn": "Railway or tramway goods vans and wagons; open, with non-removable sides of a height exceeding 60cm, not self-propelled",
+    "suyRa": false,
+    "laPhanNhom": "860692"
+   },
+   {
+    "id": "86069900",
+    "cap": 8,
+    "cha": "86069",
+    "tenVi": "Loại khác",
+    "tenEn": "Railway or tramway goods vans and wagons; n.e.c. in heading no. 8606, not self-propelled",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "860699"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch86.chuong",
+  "nhom8606.nhom",
+  "tax.86061000",
+  "tax.86063000",
+  "tax.86069100",
+  "tax.86069200",
+  "tax.86069900"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.817Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

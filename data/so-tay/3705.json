@@ -1,0 +1,174 @@
+{
+ "nhom": "3705",
+ "phamVi": {
+  "text": "Bản và phim tạo ảnh, đã phơi sáng và đã tráng, trừ phim dùng trong điện ảnh.",
+  "nguon": "nhom3705.nhom",
+  "trich": "Nhóm này bao gồm tấm để tạo ảnh và phim tạo ảnh thuộc nhóm 37.01 hoặc 37.02 sau khi phơi sáng và đã tráng, với điều kiện là, nếu có các dãy lỗ kéo phim, chúng thuộc loại dùng để sao lại hoặc chiếu những hình ảnh tĩnh.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_tam_hoac_phim_tao_anh_da_phoi_sang_va_da_trang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3705.nhom",
+   "trich": "Nhóm này bao gồm tấm để tạo ảnh và phim tạo ảnh thuộc nhóm 37.01 hoặc 37.02 sau khi phơi sáng và đã tráng, với điều kiện là, nếu có các dãy lỗ kéo phim, chúng thuộc loại dùng để sao lại hoặc chiếu những hình ảnh tĩnh.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Phim đã tráng dùng cho máy chiếu điện ảnh để tạo ra ảnh động",
+   "sangNhom": "3706",
+   "nguon": "nhom3705.nhom",
+   "trich": "(a) Phim đã tráng dùng cho máy chiếu điện ảnh để tạo ra ảnh động (nhóm 37.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các tấm kính ảnh đã tráng dùng cho mục đích in ấn dùng ngay",
+   "sangNhom": "8442",
+   "nguon": "nhom3705.nhom",
+   "trich": "(c) Các tấm kính ảnh đã tráng dùng cho mục đích in ấn (ví dụ, offset), dùng ngay (nhóm 84.42).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là phim điện ảnh đã tráng chiếu ảnh động thuộc nhóm 37.06?",
+   "neuCo": "3706",
+   "neuKhong": "3705",
+   "nguon": "nhom3705.nhom",
+   "trich": "(a) Phim đã tráng dùng cho máy chiếu điện ảnh để tạo ra ảnh động (nhóm 37.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là tấm kính ảnh đã tráng dùng in ấn dùng ngay thuộc nhóm 84.42?",
+   "neuCo": "8442",
+   "neuKhong": "3705",
+   "nguon": "nhom3705.nhom",
+   "trich": "(c) Các tấm kính ảnh đã tráng dùng cho mục đích in ấn (ví dụ, offset), dùng ngay (nhóm 84.42).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "37050010",
+   "dieuKien": "Dùng cho chụp X quang",
+   "loaiKhac": false,
+   "nguon": "tax.37050010",
+   "trich": "37050010 - Dùng cho chụp X quang",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37050020",
+   "dieuKien": "Vi phim (microfilm)",
+   "loaiKhac": false,
+   "nguon": "tax.37050020",
+   "trich": "37050020 - Vi phim (microfilm)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37050030",
+   "dieuKien": "Dùng để tái tạo bản in offset",
+   "loaiKhac": false,
+   "nguon": "tax.37050030",
+   "trich": "37050030 - Dùng để tái tạo bản in offset",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37050090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37050090",
+   "trich": "37050090 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "3705",
+    "truAnhEm": [
+     "37050010",
+     "37050020",
+     "37050030"
+    ],
+    "truDayDu": [
+     "37050010",
+     "37050020",
+     "37050030"
+    ],
+    "toTienCoTen": "3705",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3705",
+    "cap": 4,
+    "cha": "37",
+    "tenVi": "Tấm và phim để tạo ảnh, đã phơi sáng và đã tráng, trừ phim dùng trong điện ảnh.",
+    "tenEn": "Photographic plates and film; exposed and developed, other than cinematographic film",
+    "suyRa": false
+   },
+   {
+    "id": "37050010",
+    "cap": 8,
+    "cha": "3705",
+    "tenVi": "Dùng cho chụp X quang",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37050020",
+    "cap": 8,
+    "cha": "3705",
+    "tenVi": "Vi phim (microfilm)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37050030",
+    "cap": 8,
+    "cha": "3705",
+    "tenVi": "Dùng để tái tạo bản in offset",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37050090",
+    "cap": 8,
+    "cha": "3705",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3705.nhom",
+  "tax.37050010",
+  "tax.37050020",
+  "tax.37050030",
+  "tax.37050090"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:42:26.303Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 10,
+  "dat": 10,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

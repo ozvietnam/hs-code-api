@@ -1,0 +1,150 @@
+{
+ "nhom": "9110",
+ "phamVi": {
+  "text": "Máy đồng hồ hoàn chỉnh, chưa lắp ráp hoặc đã lắp ráp một phần (cụm máy); máy đồng hồ chưa hoàn chỉnh, đã lắp ráp; máy đồng hồ thô.",
+  "nguon": "nhom9110.nhom",
+  "trich": "Cụm máy là một bộ hoàn chỉnh các bộ phận chưa lắp ráp hay được lắp ráp một phần của máy đồng hồ thời gian hay máy đồng hồ cá nhân (mua bán được dưới dạng này).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_may_dong_ho_chua_lap_rap_hoac_chua_hoan_chinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom9110.nhom",
+   "trich": "Cụm máy là một bộ hoàn chỉnh các bộ phận chưa lắp ráp hay được lắp ráp một phần của máy đồng hồ thời gian hay máy đồng hồ cá nhân (mua bán được dưới dạng này).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "91101100",
+   "dieuKien": "Máy đồng hồ đủ bộ, chưa lắp ráp hoặc đã lắp ráp từng phần (cụm máy)",
+   "loaiKhac": false,
+   "nguon": "tax.91101100",
+   "trich": "91101100 - - Máy đồng hồ đủ bộ, chưa lắp ráp hoặc đã lắp ráp từng phần (cụm máy)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "91101200",
+   "dieuKien": "Máy đồng hồ chưa đủ bộ, đã lắp ráp",
+   "loaiKhac": false,
+   "nguon": "tax.91101200",
+   "trich": "91101200 - - Máy đồng hồ chưa đủ bộ, đã lắp ráp",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "91101900",
+   "dieuKien": "Máy đồng hồ chưa đủ bộ, chưa lắp ráp",
+   "loaiKhac": false,
+   "nguon": "tax.91101900",
+   "trich": "91101900 - - Máy đồng hồ chưa đủ bộ, chưa lắp ráp",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "91109000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.91109000",
+   "trich": "91109000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "9110",
+    "truAnhEm": [
+     "91101"
+    ],
+    "truDayDu": [
+     "91101"
+    ],
+    "toTienCoTen": "9110",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9110",
+    "cap": 4,
+    "cha": "91",
+    "tenVi": "Máy đồng hồ thời gian hoặc đồng hồ cá nhân đủ bộ, chưa lắp ráp hoặc đã lắp ráp từng phần (cụm máy); máy đồng hồ thời gian hoặc máy đồng hồ cá nhân chưa đủ bộ, đã lắp ráp; máy đồng hồ thời gian hoặc máy đồng hồ cá nhân chưa đủ bộ, chưa lắp ráp.",
+    "tenEn": "Watch or clock movements, complete, unassembled or partly assembled (movement sets); incomplete watch or clock movements, assembled; rough watch or clock movements",
+    "suyRa": false
+   },
+   {
+    "id": "91101",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "9110",
+    "tenVi": "Của đồng hồ cá nhân",
+    "tenEn": "Of watches",
+    "suyRa": true
+   },
+   {
+    "id": "91101100",
+    "cap": 8,
+    "cha": "91101",
+    "tenVi": "Máy đồng hồ đủ bộ, chưa lắp ráp hoặc đã lắp ráp từng phần (cụm máy)",
+    "tenEn": "Watches; complete movements, unassembled or partly assembled (movement sets)",
+    "suyRa": false,
+    "laPhanNhom": "911011"
+   },
+   {
+    "id": "91101200",
+    "cap": 8,
+    "cha": "91101",
+    "tenVi": "Máy đồng hồ chưa đủ bộ, đã lắp ráp",
+    "tenEn": "Watches; incomplete movements, assembled",
+    "suyRa": false,
+    "laPhanNhom": "911012"
+   },
+   {
+    "id": "91101900",
+    "cap": 8,
+    "cha": "91101",
+    "tenVi": "Máy đồng hồ chưa đủ bộ, chưa lắp ráp",
+    "tenEn": "Watches; rough movements",
+    "suyRa": false,
+    "laPhanNhom": "911019"
+   },
+   {
+    "id": "91109000",
+    "cap": 8,
+    "cha": "9110",
+    "tenVi": "Loại khác",
+    "tenEn": "Clocks; movements, whether or not complete, incomplete, assembled or unassembled",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "911090"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom9110.nhom",
+  "tax.91101100",
+  "tax.91101200",
+  "tax.91101900",
+  "tax.91109000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:25:42.781Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

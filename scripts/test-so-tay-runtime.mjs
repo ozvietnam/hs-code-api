@@ -79,6 +79,9 @@ assert('dữ liệu thật: không có trường nguyên văn nào lọt ra (ch�
   const w = rt.advise({ topHs: '85042111', candidates: [] });
   assert('mã có tên (không Loại khác): có viTri (cha là tiêu đề bị lược), không có loaiKhac', w.viTri && w.viTri.cha.id === '8504211' && w.viTri.cha.suyRa === true && !w.loaiKhac);
   // 4907 (tem bưu chính) chưa có sổ tay; 1509 đã có từ lô 059 (27/10), 4011 từ vòng soạn 20 nhóm 11/10.
+  // Cách ly khỏi dữ liệu thật: file hỏng ở HS_DATA_DIR che sổ tay 4907 thật (nếu đã soạn) → runtime coi như chưa có.
+  fs.writeFileSync(dataPath('so-tay', '4907.json'), '{ không phải json');
+  rt.reset();
   const x = rt.advise({ topHs: '49070029', candidates: [] });
   assert('nhóm chưa có sổ tay: vẫn có viTri + loaiKhac suy từ chữ số, trạng thái CHUA_CO_SO_TAY_CHO_NHOM', x.trangThai === 'CHUA_CO_SO_TAY_CHO_NHOM' && x.viTri && x.loaiKhac && x.loaiKhac.anhEmCoTen[0].hs === '49070021' && x.loaiKhac.anhEmCoTen[0].tang === '4907002' && !x.loaiKhac.anhEmCoTen[0].trich, JSON.stringify(x));
   // #725: tiêu đề 4907002 nay có tên nguyên văn biểu thuế ("Tem bưu chính, tem thuế…") → là điều kiện KHẲNG ĐỊNH; tầng nhóm

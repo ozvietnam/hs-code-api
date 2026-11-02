@@ -1,0 +1,289 @@
+{
+ "nhom": "2850",
+ "nguoiSoat": "dev-soat-doc-lap-lo089",
+ "luc": "2026-11-02T19:40:00+07:00",
+ "daKiem": 55,
+ "soat": 55,
+ "giu": 55,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2850 (lô 089, PR #893) — người soạn dev-zcode-mm, người soát độc lập (dev-soat-doc-lap-lo089). Đã đọc TOÀN BỘ khối [nhom2850.nhom] của tmp/so-tay/nguon/2850.txt (4.675 ký tự, 5 phần A–E) và đối chiếu TỪNG mục trong 3 khối phải soát (phamVi · loaiTru · phanBiet) với tmp/so-tay/raw/2850.json. MÁY (kiểm riêng bằng script, KHÔNG dựa vào check-so-tay): 55/55 câu trích byte-exact trong đúng khối nguồn (mỗi mảnh ≥6 ký tự là substring); mọi mã đích có trong câu trích; gác từ mức B — mọi từ ≥3 ký tự trong text/dieuKien/hoi có trong câu trích của CHÍNH mục; không câu trích nào cắt trước câu rào (\"tùy…/thường…\"); mọi `phanBiet` hỏi đúng vật bị loại trừ, nhánh có→đích trích, nhánh không = 2850 (phần bù của nhánh có). KẾT QUẢ: 55/55 GIỮ NGUYÊN — 0 sửa, 0 xoá. GHI NHẬN (không sửa, người duyệt xem): (a) nguồn ghi \"Các hợp chất của 4 nhóm\" nhưng có 5 phần (A)–(E) — lỗi của NGUỒN, `phamVi.text` đã tránh con số này; (b) chú giải phần (D) ghi \"phospho (nhóm 28.48)\" — 28.48 KHÔNG tồn tại trong Danh mục (28.47 → 28.49), hai phần khác của cùng chú giải ghi \"phospho (nhóm 28.53)\" ⇒ mục loại trừ tương ứng BỎ (đã ghi ở hồ sơ soạn, luật 8: không sửa mã nguồn); (c) \"hợp kim silic nhôm ở Chương 76\" và \"Thủy ngân (nhóm 28.05 hoặc Chương 30)\" không mã hoá được (luật 3: \"Chương N\" không phải số nhóm); (d) 4 mục `loaiTru` có dấu phẩy cuối — đó là dấu ngăn vế của DANH SÁCH trong nguồn (\"oxy (nhóm 22.01, 28.45, 28.47 và 28.53);\"), không phải dấu phẩy cụt câu, nên GIỮ (khác với 2852 loaiTru[2] — với đó dấu phẩy nằm giữa câu và câu hỏi đọc lệch).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích byte-exact trong [nhom2850.nhom]; `text` bám đúng danh từ nguồn, không hẹp hơn không rộng hơn phạm vi nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2201 / 2845 / 2847 / 2853 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2811 / 2814 / 2825 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2853 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2901 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2806 / 2811 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2843 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2811 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2812 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2813 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2814 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2853 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[11]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2843 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[12]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2844 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[13]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2811 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[14]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2812 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[15]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2815 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[16]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2849 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[17]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2843 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[18]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 7202 / 7405 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[19]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 7405 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[20]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2810 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[21]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2812 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[22]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2813 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[23]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2843 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[24]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2853 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[25]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 2849 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[26]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2850.nhom] nêu đích danh 7405 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của hydro với oxy); nhánh có → 2201|2845|2847|2853 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của hydro với nitơ); nhánh có → 2811|2814|2825 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của hydro với phospho); nhánh có → 2853 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của hydro với cacbon); nhánh có → 2901 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của hydro với một số phi kim khác); nhánh có → 2806|2811 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Paladi hydrua và các hydrua kim loại quý khác); nhánh có → 2843 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của nitơ với oxy); nhánh có → 2811 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của nitơ với halogen); nhánh có → 2812 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của nitơ với lưu huỳnh); nhánh có → 2813 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của nitơ với hydro); nhánh có → 2814 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[10]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của nitơ với cacbon); nhánh có → 2853 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[11]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Bạc nitrua và các nitrua của kim loại quý khác); nhánh có → 2843 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[12]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (thori và urani nitrua); nhánh có → 2844 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[13]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (sự kết hợp của silic với oxy); nhánh có → 2811 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[14]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (sự kết hợp của silic với halogen); nhánh có → 2812 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[15]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (sự kết hợp của silic với lưu huỳnh); nhánh có → 2815 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[16]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Carbon silicua (silic cacbua)); nhánh có → 2849 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[17]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (silicua của bạch kim và kim loại quý khác); nhánh có → 2843 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[18]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp kim sắt và các hợp kim chủ có chứa silic); nhánh có → 7202|7405 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[19]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp kim đồng silic chủ yếu); nhánh có → 7405 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[20]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của bo với oxy); nhánh có → 2810 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[21]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của bo với halogen); nhánh có → 2812 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[22]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của bo với lưu huỳnh); nhánh có → 2813 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[23]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của bo với kim loại quý); nhánh có → 2843 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[24]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của bo với phospho); nhánh có → 2853 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[25]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp chất của bo với carbon); nhánh có → 2849 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[26]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (hợp kim chủ đồng - bo); nhánh có → 7405 (có trong câu trích), nhánh không → 2850 là phần bù của nhánh có. GIỮ NGUYÊN."
+  }
+ ]
+}
