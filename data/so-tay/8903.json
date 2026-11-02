@@ -1,0 +1,406 @@
+{
+ "nhom": "8903",
+ "phamVi": {
+  "text": "Du thuyền và các loại tàu thuyền khác dùng cho giải trí hoặc thể thao; thuyền chèo và canô.",
+  "nguon": "nhom8903.nhom",
+  "trich": "Nhóm này bao gồm tất cả các tàu thuyền dùng cho giải trí hoặc thể thao cũng như tất cả các thuyền dùng mái chèo và xuồng (canô).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_tau_thuyen_dung_cho_giai_tri_the_thao_hoac_thuyen_cheo",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8903.nhom",
+   "trich": "Nhóm này bao gồm tất cả các tàu thuyền dùng cho giải trí hoặc thể thao cũng như tất cả các thuyền dùng mái chèo và xuồng (canô).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các thuyền cứu hộ khác không dùng mái chèo",
+   "sangNhom": "8906",
+   "nguon": "nhom8903.nhom",
+   "trich": "(các thuyền cứu hộ khác thuộc nhóm 89.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các ván buồm",
+   "sangNhom": "9506",
+   "nguon": "nhom8903.nhom",
+   "trich": "Tuy nhiên, các ván buồm bị loại trừ (nhóm 95.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là thuyền cứu hộ không dùng mái chèo?",
+   "neuCo": "8906",
+   "neuKhong": "8903",
+   "nguon": "nhom8903.nhom",
+   "trich": "(các thuyền cứu hộ khác thuộc nhóm 89.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là ván buồm?",
+   "neuCo": "9506",
+   "neuKhong": "8903",
+   "nguon": "nhom8903.nhom",
+   "trich": "Tuy nhiên, các ván buồm bị loại trừ (nhóm 95.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "890311",
+   "fact": "trong_luong_khong_tai_khong_qua_100kg",
+   "op": "<=",
+   "value": 100,
+   "donVi": "kg",
+   "nguon": "wco.890311",
+   "trich": "unladen (net) weight (excluding the motor) not exceeding 100kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "890312",
+   "fact": "trong_luong_khong_tai_khong_qua_100kg",
+   "op": "<=",
+   "value": 100,
+   "donVi": "kg",
+   "nguon": "wco.890312",
+   "trich": "unladen (net) weight not exceeding 100kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "890321",
+   "fact": "chieu_dai_khong_qua_7_5m",
+   "op": "<=",
+   "value": 7.5,
+   "donVi": "m",
+   "nguon": "wco.890321",
+   "trich": "of a length not exceeding 7.5m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "890331",
+   "fact": "chieu_dai_khong_qua_7_5m",
+   "op": "<=",
+   "value": 7.5,
+   "donVi": "m",
+   "nguon": "wco.890331",
+   "trich": "of a length not exceeding 7.5m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "890393",
+   "fact": "chieu_dai_khong_qua_7_5m",
+   "op": "<=",
+   "value": 7.5,
+   "donVi": "m",
+   "nguon": "wco.890393",
+   "trich": "of a length not exceeding 7.5m",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "89031100",
+   "dieuKien": "Được trang bị hoặc thiết kế để lắp với động cơ, trọng lượng không tải (tịnh) (không bao gồm động cơ) không quá 100 kg",
+   "loaiKhac": false,
+   "nguon": "tax.89031100",
+   "trich": "89031100 - - Được trang bị hoặc thiết kế để lắp với động cơ, trọng lượng không tải (tịnh) (không bao gồm động cơ) không quá 100 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89031200",
+   "dieuKien": "Không được thiết kế để sử dụng với động cơ và trọng lượng không tải (tịnh) không quá 100 kg",
+   "loaiKhac": false,
+   "nguon": "tax.89031200",
+   "trich": "89031200 - - Không được thiết kế để sử dụng với động cơ và trọng lượng không tải (tịnh) không quá 100 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89031900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.89031900",
+   "trich": "89031900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "89031",
+    "truAnhEm": [
+     "89031100",
+     "89031200"
+    ],
+    "truDayDu": [
+     "89031100",
+     "89031200"
+    ],
+    "toTienCoTen": "8903",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "89032100",
+   "dieuKien": "Có chiều dài không quá 7,5 m",
+   "loaiKhac": false,
+   "nguon": "tax.89032100",
+   "trich": "89032100 - - Có chiều dài không quá 7,5 m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89032200",
+   "dieuKien": "Có chiều dài trên 7,5 m nhưng không quá 24 m",
+   "loaiKhac": false,
+   "nguon": "tax.89032200",
+   "trich": "89032200 - - Có chiều dài trên 7,5 m nhưng không quá 24 m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89032300",
+   "dieuKien": "Có chiều dài trên 24 m",
+   "loaiKhac": false,
+   "nguon": "tax.89032300",
+   "trich": "89032300 - - Có chiều dài trên 24 m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89033100",
+   "dieuKien": "Có chiều dài không quá 7,5 m",
+   "loaiKhac": false,
+   "nguon": "tax.89033100",
+   "trich": "89033100 - - Có chiều dài không quá 7,5 m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89033200",
+   "dieuKien": "Có chiều dài trên 7,5 m nhưng không quá 24 m",
+   "loaiKhac": false,
+   "nguon": "tax.89033200",
+   "trich": "89033200 - - Có chiều dài trên 7,5 m nhưng không quá 24 m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89033300",
+   "dieuKien": "Có chiều dài trên 24 m",
+   "loaiKhac": false,
+   "nguon": "tax.89033300",
+   "trich": "89033300 - - Có chiều dài trên 24 m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89039300",
+   "dieuKien": "Có chiều dài không quá 7,5 m",
+   "loaiKhac": false,
+   "nguon": "tax.89039300",
+   "trich": "89039300 - - Có chiều dài không quá 7,5 m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89039900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.89039900",
+   "trich": "89039900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "89039",
+    "truAnhEm": [
+     "89039300"
+    ],
+    "truDayDu": [
+     "89039300",
+     "89031",
+     "89032",
+     "89033"
+    ],
+    "toTienCoTen": "8903",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8903",
+    "cap": 4,
+    "cha": "89",
+    "tenVi": "Du thuyền hạng nhẹ và các loại tàu thuyền khác phục vụ nghỉ ngơi, giải trí hoặc thể thao; thuyền dùng mái chèo và canô (+).",
+    "tenEn": "Yachts and other vessels; for pleasure or sports, rowing boats and canoes",
+    "suyRa": false
+   },
+   {
+    "id": "89031",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8903",
+    "tenVi": "Thuyền, xuồng có thể bơm hơi (bao gồm cả thuyền, xuồng thân cứng có thể bơm hơi)",
+    "tenEn": "Inflatable (including rigid hull inflatable) boats",
+    "suyRa": true
+   },
+   {
+    "id": "89031100",
+    "cap": 8,
+    "cha": "89031",
+    "tenVi": "Được trang bị hoặc thiết kế để lắp với động cơ, trọng lượng không tải (tịnh) (không bao gồm động cơ) không quá 100 kg",
+    "tenEn": "Yachts and other vessels; for pleasure or sports, inflatable (including rigid hull inflatable), fitted or designed to be fitted with a motor, unladen (net) weight (excluding the motor) not exceeding 100kg",
+    "suyRa": false,
+    "laPhanNhom": "890311"
+   },
+   {
+    "id": "89031200",
+    "cap": 8,
+    "cha": "89031",
+    "tenVi": "Không được thiết kế để sử dụng với động cơ và trọng lượng không tải (tịnh) không quá 100 kg",
+    "tenEn": "Yachts and other vessels; for pleasure or sports, inflatable (including rigid hull inflatable), not designed to be used with a motor and unladen (net) weight not exceeding 100kg",
+    "suyRa": false,
+    "laPhanNhom": "890312"
+   },
+   {
+    "id": "89031900",
+    "cap": 8,
+    "cha": "89031",
+    "tenVi": "Loại khác",
+    "tenEn": "Yachts and other vessels; for pleasure or sports, inflatable (including rigid hull inflatable), unladen (net) weight exceeding 100kg",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "890319"
+   },
+   {
+    "id": "89032",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8903",
+    "tenVi": "Thuyền buồm, trừ loại có thể bơm hơi, có hoặc không có động cơ phụ trợ",
+    "tenEn": "Sailboats, other than inflatable, with or without auxiliary motor",
+    "suyRa": true
+   },
+   {
+    "id": "89032100",
+    "cap": 8,
+    "cha": "89032",
+    "tenVi": "Có chiều dài không quá 7,5 m",
+    "tenEn": "Sailboats; (other than inflatable) with or without auxiliary motor, for pleasure or sports, of a length not exceeding 7.5m",
+    "suyRa": false,
+    "laPhanNhom": "890321"
+   },
+   {
+    "id": "89032200",
+    "cap": 8,
+    "cha": "89032",
+    "tenVi": "Có chiều dài trên 7,5 m nhưng không quá 24 m",
+    "tenEn": "Sailboats; (other than inflatable) with or without auxiliary motor, for pleasure or sports, of a length exceeding 7.5m but not exceeding 24m",
+    "suyRa": false,
+    "laPhanNhom": "890322"
+   },
+   {
+    "id": "89032300",
+    "cap": 8,
+    "cha": "89032",
+    "tenVi": "Có chiều dài trên 24 m",
+    "tenEn": "Sailboats; (other than inflatable) with or without auxiliary motor, for pleasure or sports, of a length exceeding 24m",
+    "suyRa": false,
+    "laPhanNhom": "890323"
+   },
+   {
+    "id": "89033",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8903",
+    "tenVi": "Thuyền máy, trừ loại có thể bơm hơi, không bao gồm thuyền máy có gắn máy bên ngoài",
+    "tenEn": "Motorboats, other than inflatable, not including outboard motorboats",
+    "suyRa": true
+   },
+   {
+    "id": "89033100",
+    "cap": 8,
+    "cha": "89033",
+    "tenVi": "Có chiều dài không quá 7,5 m",
+    "tenEn": "Motorboats; (other than outboard motorboats), for pleasure or sports, other than inflatable, of a length not exceeding 7.5m",
+    "suyRa": false,
+    "laPhanNhom": "890331"
+   },
+   {
+    "id": "89033200",
+    "cap": 8,
+    "cha": "89033",
+    "tenVi": "Có chiều dài trên 7,5 m nhưng không quá 24 m",
+    "tenEn": "Motorboats; (other than outboard motorboats), for pleasure or sports, other than inflatable, of a length exceeding 7.5m but not exceeding 24m",
+    "suyRa": false,
+    "laPhanNhom": "890332"
+   },
+   {
+    "id": "89033300",
+    "cap": 8,
+    "cha": "89033",
+    "tenVi": "Có chiều dài trên 24 m",
+    "tenEn": "Motorboats; (other than outboard motorboats), for pleasure or sports, other than inflatable, of a length exceeding 24m",
+    "suyRa": false,
+    "laPhanNhom": "890333"
+   },
+   {
+    "id": "89039",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8903",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "89039300",
+    "cap": 8,
+    "cha": "89039",
+    "tenVi": "Có chiều dài không quá 7,5 m",
+    "tenEn": "Vessels; (other than sailboats and motorboats), for pleasure or sports, other than inflatable, of a length not exceeding 7.5m",
+    "suyRa": false,
+    "laPhanNhom": "890393"
+   },
+   {
+    "id": "89039900",
+    "cap": 8,
+    "cha": "89039",
+    "tenVi": "Loại khác",
+    "tenEn": "Vessels; (other than sailboats and motorboats), for pleasure or sports, other than inflatable, of a length exceeding 7.5m",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "890399"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8903.nhom",
+  "tax.89031100",
+  "tax.89031200",
+  "tax.89031900",
+  "tax.89032100",
+  "tax.89032200",
+  "tax.89032300",
+  "tax.89033100",
+  "tax.89033200",
+  "tax.89033300",
+  "tax.89039300",
+  "tax.89039900",
+  "wco.890311",
+  "wco.890312",
+  "wco.890321",
+  "wco.890331",
+  "wco.890393"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:25:42.681Z",
+  "ms": 13
+ },
+ "kiemTra": {
+  "tong": 22,
+  "dat": 22,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

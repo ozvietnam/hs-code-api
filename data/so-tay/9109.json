@@ -1,0 +1,138 @@
+{
+ "nhom": "9109",
+ "phamVi": {
+  "text": "Máy đồng hồ thời gian, hoàn chỉnh và đã lắp ráp.",
+  "nguon": "nhom9109.nhom",
+  "trich": "Nhóm này bao gồm các loại máy đồng hồ thời gian đã lắp ráp, có thể nói là hoàn chỉnh và sẵn sàng sử dụng; những máy đồng hồ này có thiết bị hiển thị thời gian theo công nghệ analog\n\n(kim), có thể có hay không có mặt số hay kim.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_may_dong_ho_thoi_gian_da_lap_rap_hoan_chinh",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom9109.nhom",
+   "trich": "Nhóm này bao gồm các loại máy đồng hồ thời gian đã lắp ráp, có thể nói là hoàn chỉnh và sẵn sàng sử dụng",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Mô tơ chạy bằng dây cót hoặc đối trọng không phù hợp lắp bộ điều tốc",
+   "sangNhom": "8412",
+   "nguon": "nhom9109.nhom",
+   "trich": "(a) Mô tơ chạy bằng dây cót hoặc đối trọng, v.v., không được lắp, cũng không phù hợp để lắp bộ phận điều tốc, thuộc nhóm 84.12 (ví dụ những mô tơ sử dụng trong hộp âm nhạc).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Máy đồng hồ cá nhân",
+   "sangNhom": "9108",
+   "nguon": "nhom9109.nhom",
+   "trich": "(b) Máy đồng hồ cá nhân theo định nghĩa ở Chú giải 3 của Chương (xem Chú giải chi tiết nhóm 91.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là mô tơ chạy bằng dây cót hoặc đối trọng không có bộ điều tốc?",
+   "neuCo": "8412",
+   "neuKhong": "9109",
+   "nguon": "nhom9109.nhom",
+   "trich": "(a) Mô tơ chạy bằng dây cót hoặc đối trọng, v.v., không được lắp, cũng không phù hợp để lắp bộ phận điều tốc, thuộc nhóm 84.12 (ví dụ những mô tơ sử dụng trong hộp âm nhạc).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là máy đồng hồ cá nhân (kích thước dày không quá 12mm và rộng/dài không quá 50mm)?",
+   "neuCo": "9108",
+   "neuKhong": "9109",
+   "nguon": "nhom9109.nhom",
+   "trich": "(b) Máy đồng hồ cá nhân theo định nghĩa ở Chú giải 3 của Chương (xem Chú giải chi tiết nhóm 91.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "91091000",
+   "dieuKien": "Hoạt động bằng điện",
+   "loaiKhac": false,
+   "nguon": "tax.91091000",
+   "trich": "91091000 - Hoạt động bằng điện",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "91099000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.91099000",
+   "trich": "91099000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "9109",
+    "truAnhEm": [
+     "91091000"
+    ],
+    "truDayDu": [
+     "91091000"
+    ],
+    "toTienCoTen": "9109",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9109",
+    "cap": 4,
+    "cha": "91",
+    "tenVi": "Máy đồng hồ thời gian, hoàn chỉnh và đã lắp ráp.",
+    "tenEn": "Clock movements; complete and assembled",
+    "suyRa": false
+   },
+   {
+    "id": "91091000",
+    "cap": 8,
+    "cha": "9109",
+    "tenVi": "Hoạt động bằng điện",
+    "tenEn": "Clock movements; complete and assembled, electrically operated",
+    "suyRa": false,
+    "laPhanNhom": "910910"
+   },
+   {
+    "id": "91099000",
+    "cap": 8,
+    "cha": "9109",
+    "tenVi": "Loại khác",
+    "tenEn": "Clock movements; complete and assembled, other than electrically operated",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "910990"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom9109.nhom",
+  "tax.91091000",
+  "tax.91099000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:25:42.776Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
