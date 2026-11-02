@@ -20,8 +20,11 @@ const { parseJsonLoose } = require('../lib/parse-json');
 class Tho { constructor(c) { this.c = c; } }
 const UNDEF = (k, v) => (v === undefined ? '__undefined__' : v);
 let script = []; let calls = [];
-llmTier.callLLMJson = async (system, user, opts = {}) => {
-  calls.push({ system, user, opts: JSON.stringify(opts, UNDEF), keys: Object.keys(opts), thinkingOff: opts.minimax?.extraBody?.thinking?.type === 'disabled', maxTokens: opts.maxTokens });
+llmTier.callLLMJson = async (system, user, optsIn = {}) => {
+  // #725-45: hanChotMs = hạn chót tuyệt đối của lượt (Date.now() + ngân sách) — dấu thời gian đổi mỗi lần chạy, bản gốc không có;
+  // tách khỏi phần so từng byte (vẫn ghi lại để phần B kiểm có truyền đúng không).
+  const { hanChotMs, ...opts } = optsIn;
+  calls.push({ system, user, opts: JSON.stringify(opts, UNDEF), keys: Object.keys(opts), thinkingOff: opts.minimax?.extraBody?.thinking?.type === 'disabled', maxTokens: opts.maxTokens, timeoutMs: opts.timeoutMs, hanChotMs });
   const next = script.shift();
   if (next instanceof Error) throw next;
   if (next instanceof Tho) {
@@ -106,7 +109,7 @@ const SC = {
   'B1b on — lượt chạy lại hỏng': () => ({ attrs: TOY, env: { ZAI_WEB_FACTS: 'on' }, web: WEB_GIA, steps: [R1_TOY, TOY_HOI, new Error('HTTP 429 Token Plan rate limit')] }),
 };
 
-const ENV_KEYS = ['HS_SO_TAY', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS', 'ZAI_WEB_FACTS'];
+const ENV_KEYS = ['HS_SO_TAY', 'HS_GON_DAU_RA', 'HS_MAX_VONG_SUA', 'R1_MAX_TOKENS', 'GIR_MAX_TOKENS', 'ZAI_WEB_FACTS', 'LOOP_THINKING_OFF_TIMEOUT_MS'];
 /** Chạy một kịch bản qua `mod` (GOC/MOI) với env cho trước; trả lời gọi AI + phản hồi đã bỏ trường đo giờ. */
 async function chay(mod, scName, env = {}) {
   const sc = SC[scName]();
@@ -119,7 +122,8 @@ async function chay(mod, scName, env = {}) {
   let out = null; let err = null;
   const ghiOut = process.stdout.write; // dòng đo b1b_web (có ts) không thuộc phần so sánh
   if (sc.web) process.stdout.write = () => true;
-  try { out = await mod.classifyLoop(clone(sc.attrs), {}); } catch (e) { err = String(e?.stack || e); } finally { process.stdout.write = ghiOut; }
+  // kenhGoi 'erp' (#725-45): bản gốc chỉ có câu "bấm Áp mã lại" — kênh ERP giữ đúng câu đó; kênh khác có kiểm riêng ở phần B.
+  try { out = await mod.classifyLoop(clone(sc.attrs), { kenhGoi: 'erp' }); } catch (e) { err = String(e?.stack || e); } finally { process.stdout.write = ghiOut; }
   webMod.webFacts = webThat;
   for (const k of ENV_KEYS) { if (saved[k] === undefined) delete process.env[k]; else process.env[k] = saved[k]; }
   ozMod.searchOzByKeyword = ozThat;
@@ -138,7 +142,8 @@ const sha = (s) => createHash('sha256').update(s, 'utf8').digest('hex');
 // Băm prompt hệ thống của origin/main 6280c65 (độc lập dữ liệu) — đổi chữ SYS_R1/SYS_R2 là đỏ ở đây.
 check('A0 SYS_R1 trùng origin/main 6280c65 (sha256 ghim)', sha(MOI.SYS_R1) === '2ceb6b55f3cced0ece9bca9cb3d004d91654865a94cfc4bd0df130bd63807f8d' && MOI.SYS_R1 === GOC.SYS_R1, sha(MOI.SYS_R1));
 check('A0 SYS_R2 trùng origin/main 6280c65 (sha256 ghim)', sha(MOI.SYS_R2) === '6d1267b2028d80fa264b4c3bb34fafabfc3dadd80d69fe40714d965077cd5677' && MOI.SYS_R2 === GOC.SYS_R2, sha(MOI.SYS_R2));
-const TAT = { HS_GON_DAU_RA: 'off', HS_MAX_VONG_SUA: 'off' };
+// #725-45 nâng trần lần "tắt suy nghĩ" 30 s → 45 s (LOOP_THINKING_OFF_TIMEOUT_MS); so từng byte với bản gốc thì ghim lại 30 s.
+const TAT = { HS_GON_DAU_RA: 'off', HS_MAX_VONG_SUA: 'off', LOOP_THINKING_OFF_TIMEOUT_MS: '30000' };
 for (const name of Object.keys(SC)) {
   const a = await chay(GOC, name);
   const b = await chay(MOI, name, TAT);
@@ -149,7 +154,7 @@ for (const name of Object.keys(SC)) {
 // Biến thể tắt khác: HS_GON_DAU_RA nhận 0/false; với HS_MAX_VONG_SUA chỉ "off" là công tắc tắt ("0" là trần 0 vòng sửa).
 {
   const a = await chay(GOC, 'câu trích bịa ×3 — chặn tới trần');
-  const b = await chay(MOI, 'câu trích bịa ×3 — chặn tới trần', { HS_GON_DAU_RA: '0', HS_MAX_VONG_SUA: 'OFF' });
+  const b = await chay(MOI, 'câu trích bịa ×3 — chặn tới trần', { HS_GON_DAU_RA: '0', HS_MAX_VONG_SUA: 'OFF', LOOP_THINKING_OFF_TIMEOUT_MS: '30000' });
   check('A HS_GON_DAU_RA=0 + HS_MAX_VONG_SUA=OFF (hoa) cũng = origin/main', JSON.stringify(a.calls) === JSON.stringify(b.calls) && JSON.stringify(a.out) === JSON.stringify(b.out), lechDau(JSON.stringify(a.calls), JSON.stringify(b.calls)));
 }
 
