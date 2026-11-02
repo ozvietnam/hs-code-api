@@ -1,0 +1,29 @@
+{
+ "nhom": "2840",
+ "nguoiSoat": "dev-soat-doc-lap-lo087",
+ "luc": "2026-11-02T17:30:00+07:00",
+ "daKiem": 3,
+ "soat": 3,
+ "giu": 3,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2840 (lô 087, PR #845) — người soạn dev-zcode-mm, người soát độc lập. Đã đọc TOÀN BỘ khối [nhom2840.nhom] của tmp/so-tay/nguon/2840.txt và đối chiếu TỪNG mục trong 5 khối phải soát (phamVi · boPhan · dieuKienVao · loaiTru · phanBiet) với tmp/so-tay/raw/2840.json. MÁY: mọi câu trích byte-exact trong đúng khối nguồn (kiểm riêng bằng squash, không dựa vào check-so-tay), mọi mã đích có trong câu trích, gác từ mức B (mọi từ ≥ 3 ký tự trong text/dieuKien/hoi nằm trong câu trích của chính mục), không câu trích nào cắt trước câu rào (\"tùy…/thường…\"). SỬA: 0 mục — mọi câu trích mới cắt bằng script từ tệp nguồn (byte-exact), không gõ tay. XOÁ: 0 — không mục nào mờ máy (mọi câu trích đều có thật và nói đúng điều mục khẳng định). GHI NHẬN (không sửa) xem từng mục có ghi chú.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích byte-exact trong [nhom2840.nhom], ghép 2 mảnh; `text` bám đúng danh từ nguồn, không hẹp hơn không rộng hơn phạm vi nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Các natri borat tự nhiên (kernite, tincal), được dùng để chế các borat của nhóm này, và các canxi borat tự nhiên (pandermite, priceite), được dùng trong sản xuất axit boric, chúng đều được loại trừ (nhóm 25.28).\" — nêu đích danh 2528 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN. GHI NHẬN — nguồn giới hạn loại trừ theo CÔNG DỤNG (\"natri borat tự nhiên… được dùng để chế các borat của nhóm này\" và \"canxi borat tự nhiên… được dùng trong sản xuất axit boric\"); bản nháp bỏ hai vế này nên điều kiện RỘNG hơn nguồn. KHÔNG sửa: (i) kết quả phân loại không đổi — borat tự nhiên luôn về 2528 (quặng borat tự nhiên, theo biểu thuế 25280000); (ii) nếu thu hẹp theo công dụng thì hàng borat tự nhiên dùng mục đích khác sẽ trả lời \"không\" ⇒ rơi nhầm 2840. Đề xuất cho người duyệt: giữ nguyên, chỉ ghi chú trong mô tả PR."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2528 / không→2840; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN. GHI NHẬN — xem loaiTru[0]."
+  }
+ ]
+}

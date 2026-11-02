@@ -1,0 +1,151 @@
+{
+ "nhom": "2842",
+ "nguoiSoat": "dev-soat-doc-lap-lo087",
+ "luc": "2026-11-02T17:30:00+07:00",
+ "daKiem": 25,
+ "soat": 25,
+ "giu": 21,
+ "sua": 4,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2842 (lô 087, PR #845) — người soạn dev-zcode-mm, người soát độc lập. Đã đọc TOÀN BỘ khối [nhom2842.nhom] của tmp/so-tay/nguon/2842.txt và đối chiếu TỪNG mục trong 5 khối phải soát (phamVi · boPhan · dieuKienVao · loaiTru · phanBiet) với tmp/so-tay/raw/2842.json. MÁY: mọi câu trích byte-exact trong đúng khối nguồn (kiểm riêng bằng squash, không dựa vào check-so-tay), mọi mã đích có trong câu trích, gác từ mức B (mọi từ ≥ 3 ký tự trong text/dieuKien/hoi nằm trong câu trích của chính mục), không câu trích nào cắt trước câu rào (\"tùy…/thường…\"). SỬA: 4 mục — mọi câu trích mới cắt bằng script từ tệp nguồn (byte-exact), không gõ tay. XOÁ: 0 — không mục nào mờ máy (mọi câu trích đều có thật và nói đúng điều mục khẳng định). GHI NHẬN (không sửa) xem từng mục có ghi chú.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích byte-exact trong [nhom2842.nhom], ghép 2 mảnh; `text` bám đúng danh từ nguồn, không hẹp hơn không rộng hơn phạm vi nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Thủy ngân fulminat và thủy ngân II thiocyanat được loại trừ (nhóm 28.52).\" — nêu đích danh 2852 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Nhóm này không bao gồm: … (a) Niken asenat tự nhiên (ví dụ, annabergite) (nhóm 25.30).\" — nêu đích danh 2530 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Nhóm này không bao gồm: … (b) Arsenides (nhóm 28.53).\" — nêu đích danh 2853 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA — điều kiện bị cắt cụt ở dấu phẩy (\"Zorgite, một dạng đồng chì selenua tự nhiên,\") vì cắt theo ranh giới câu nguồn. Bỏ dấu phẩy cuối, giữ nguyên câu trích.",
+   "sua": {
+    "dieuKien": "Zorgite, một dạng đồng chì selenua tự nhiên"
+   }
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Pyromorphite (phosphat và clorua chì) và vanadinite (vanadat và clorua chì) được loại trừ vì chúng là quặng kim loại tự nhiên của nhóm 26.07 và 26.15 tương ứng.\" — nêu đích danh 2607|2615 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN. GHI NHẬN — đích ghi \"2607|2615\" cho hai khoáng (pyromorphite → 2607, vanadinite → 2615 theo \"tương ứng\" của nguồn). KHÔNG tách: câu hỏi giữ TRỌN cả hai khoáng, không mất nhánh nào — cùng luật với 2839 loaiTru[1]."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Cobaltite (sunphua và asenua của coban) và germanit (đồng germano- sunphua) được loại trừ khỏi nhóm này vì chúng là quặng tự nhiên của nhóm 26.05 và 26.17 tương ứng.\" — nêu đích danh 2605|2617 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN. GHI NHẬN — đích ghi \"2605|2617\" cho hai khoáng (cobaltite → 2605, germanit → 2617 theo \"tương ứng\" của nguồn). KHÔNG tách, cùng lý do loaiTru[4]."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Tuy nhiên, nhôm silicat chứa chất gắn (ví dụ, zeolit chứa đất sét silica -bazơ) bị loại trừ (nhóm 38.24).\" — nêu đích danh 3824 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN. GHI NHẬN — nguồn có thêm câu \"Kích thước hạt có thể thường được sử dụng để nhận biết zeolit chứa chất gắn (thường trên 5 micron).\" Câu trích cố tình dừng trước đó vì cổng HEDGE_LOAI_TRU khớp \"(thường\" (bài học lô 087 mục 32) ⇒ ngưỡng 5 micron KHÔNG vào sổ tay. Đây là quyết định của người soạn đã ghi ở mô tả PR #845; người duyệt quyết có khai ngưỡng này (đòi sửa cổng) hay không."
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Nhóm này không bao gồm: … (a) Muối flo phức (nhóm 28.26).\" — nêu đích danh 2826 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Nhóm này không bao gồm: … (b) Phèn (nhóm 28.33).\" — nêu đích danh 2833 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Nhóm này không bao gồm: … (c) Cyanua phức (nhóm 28.37).\" — nêu đích danh 2837 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Nhóm này không bao gồm: … (d) Muối của axit hydrazoic (azit) (nhóm 28.50).\" — nêu đích danh 2850 (có trong câu trích); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[11]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA — điều kiện 107 ký tự và câu hỏi 126 ký tự ⇒ clip runtime 110 cắt mất hẳn vế thứ hai \"đồng thủy ngân iodua\" (cùng đích 2852) ⇒ hàng đồng thủy ngân iodua trả lời \"không\" ⇒ rơi nhầm 2842. Bỏ ngoặc đồng nghĩa để giữ trọn cả hai vế trong trần clip (ngoặc vẫn nguyên văn trong câu trích).",
+   "sua": {
+    "dieuKien": "Clorua của amoni với thủy ngân và đồng thủy ngân iodua"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2852 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2530 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2853 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA — theo điều kiện mới: câu hỏi đọc liền (\"…tự nhiên không?\" thay vì \"…tự nhiên, không?\").",
+   "sua": {
+    "hoi": "Hàng này là Zorgite, một dạng đồng chì selenua tự nhiên không?"
+   }
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2607|2615 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2605|2617 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[6]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→3824 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2826 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2833 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2837 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[10]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (\"undefined\"); nhánh có→2850 / không→2842; mã đích có trong câu trích, nhánh \"không\" là phần bù của nhánh \"có\". GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[11]",
+   "hanhDong": "sua",
+   "lyDo": "SỬA — theo điều kiện mới: câu hỏi 73 ký tự, giữ trọn cả hai vế đích 2852.",
+   "sua": {
+    "hoi": "Hàng này là Clorua của amoni với thủy ngân và đồng thủy ngân iodua không?"
+   }
+  }
+ ]
+}
