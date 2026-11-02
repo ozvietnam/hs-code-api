@@ -79,6 +79,7 @@ node scripts/build-so-tay.mjs --nhom=2818,2819,2820,2821,2822,2823 --tu-tep=tmp/
 | `node scripts/check-cay.mjs` | **638 nhóm, 0 lỗi lệch cây**; riêng 6 nhóm lô 084: **6 nhóm đủ** (có cây, đủ `dong8`, đủ tên nút ảo, đủ tiêu chí 6 số) |
 | `node scripts/check-trich-nguyen-van.mjs` (sau nạp) | **OK — 77 mục nguyên văn tuyệt đối** |
 | `npm test` | **ALL TESTS PASSED** (exit 0) |
+| đối chiếu `tmp/so-tay/raw` vs `data/so-tay` | **6/6 KHỚP 100 %** (bỏ các trường máy gán: `nguonLoai`, `cay`, `loaiKhac`, `phamViLoaiKhac`, `dungTuNguon`, `phienBan`, `taoBoi`, `kiemTra`) |
 
 ## 6. Nhóm có nguồn mỏng / bất thường — CẦN NGƯỜI DUYỆT ĐỌC
 
