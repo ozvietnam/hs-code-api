@@ -1,0 +1,63 @@
+SOẠN ĐẦY ĐỦ MỤC TỪ VỰNG. Dưới đây là 2 mục mẫu ĐÃ CÓ trong tu-vung@2 (một CO_KHONG: tinhDanHoi, một SO: doDay) — khuôn bắt buộc. Tiếp đó là 10 khoá cần bổ sung (đề xuất sơ bộ + chữ biểu ví dụ). Với MỖI khoá soạn MỘT mục đầy đủ đúng khuôn mẫu: khoa, kieu, nhanVi/nhanEn/nhanZh, cachDoc (vi/en/zh regex; CO_KHONG thêm phuDinh/cachDocKhong; SO thêm heDonVi, donViChuan, canNguCanh nếu cần), cachViet, cauHoi, ghiChu (trích NGUYÊN VĂN chữ biểu làm căn cứ, nêu PN6/mã), nguonLoai 'AI_DA_KIEM'. Khoá LIET_KE: thêm các giá trị (id viết HOA_GẠCH_DƯỚI) mỗi giá trị có cachDoc riêng, theo khuôn khoá LIET_KE hiện có nếu em suy ra được từ mẫu; nếu không chắc khuôn LIET_KE thì để khoá đó vào 'khongChac'. Regex chỉ dựa vào chữ có thật trong ví dụ + từ đồng nghĩa phổ biến, không bịa ngưỡng/giá trị. Trả về MỘT khối ```json {"khoa":[mục...],"khongChac":[tên khoá...]} duy nhất, không giải thích.
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+=== 10 KHOÁ CẦN BỔ SUNG (đề xuất sơ bộ) ===
+
+## congSuatBieuKien
+{"kieu": "SO", "nhanVi": "công suất biểu kiến", "opHopLe": ["<=", "<", ">=", ">"], "donVi": ["kVA"], "donViChuan": "kVA", "cachDocDonVi": ["kVA", "kva"]}
+  ví dụ PN6 850161 mã 85016110: tax.85016110: "Công suất không quá 12,5 kVA" thiếu khoá đơn vị kVA (công suất biểu kiến của máy phát xoay chiều / máy biến áp)
+  ví dụ PN6 850161 mã 85016120: tax.85016120: "Công suất trên 12,5 kVA" thiếu khoá đơn vị kVA
+  ví dụ PN6 850162 mã 85016210: tax.85016210: "Công suất trên 75 kVA nhưng không quá 150 kVA" thiếu khoá đơn vị kVA
+
+## dangNguyenSinh
+{"kieu": "LIET_KE", "nhanVi": "dạng vật lý nguyên sinh của polyme", "opHopLe": ["TRONG"], "giaTriHopLe": [{"giaTri": "LONG_HOAC_NHAO", "nhanVi": "dạng lỏng hoặc dạng nhão", "cachDoc": ["Dạng lỏng hoặc dạng nhão", "dạng lỏng", "dạng nhão"]}, {"giaTri": "PHAN_TAN", "nhanVi": "dạng phân tán", "cachDoc": ["Dạng phân tán", "dạng phân tán"]}, {"giaTri": "HAT_VIEN_VAY_MANH", "nhanVi": "dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự", "cachDoc": ["Dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự", "hạt", "viên", "hạt cườm", "vẩy", "mảnh"]}]}
+  ví dụ PN6 390110 mã 3901101: tieuDe.3901101: "Dạng lỏng hoặc dạng nhão" thiếu khoá biểu diễn dạng vật lý nguyên sinh của polyme
+  ví dụ PN6 390190 mã 39019040: tax.39019040: "Dạng phân tán" thiếu khoá biểu diễn dạng vật lý nguyên sinh của polyme
+  ví dụ PN6 390210 mã 39021030: tax.39021030: "Dạng phân tán" thiếu khoá biểu diễn dạng vật lý nguyên sinh của polyme
+
+## daLapRap
+{"kieu": "CO_KHONG", "nhanVi": "đã lắp ráp", "opHopLe": ["CO", "KHONG"], "cachDoc": {"CO": ["đã được lắp ráp", "đã lắp ráp"], "KHONG": ["Loại chưa được lắp ráp", "chưa được lắp ráp", "chưa lắp ráp"]}}
+
+## dungTich
+{"kieu": "SO", "nhanVi": "dung tích chứa", "opHopLe": ["<=", "<", ">=", ">"], "donVi": ["lít", "l"], "donViChuan": "lít", "cachDocDonVi": ["lít", "l"]}
+  ví dụ PN6 841810 mã 84181031: Thiếu khoá SO dungTich (đơn vị: lít) để biểu diễn "dung tích không quá 230 lít", "dung tích trên 200 lít" (tu-vung@2 chỉ có dungTichXiLanh đơn vị cc/cm3)
+  ví dụ PN6 841821 mã 84182110: Thiếu khoá SO dungTich (đơn vị: lít) để biểu diễn "Dung tích không quá 230 lít"
+  ví dụ PN6 841830 mã 84183010: Thiếu khoá SO dungTich (đơn vị: lít) để biểu diễn "Dung tích không quá 200 lít"
+
+## sanLuongHoi
+{"kieu": "SO", "nhanVi": "sản lượng hơi / công suất hơi", "opHopLe": ["<=", "<", ">=", ">"], "donVi": ["tấn/giờ"], "donViChuan": "tấn/giờ", "cachDocDonVi": ["tấn/giờ", "tấn/h"]}
+  ví dụ PN6 840212 mã 84021211: công suất hơi nước trên 15 tấn/giờ thiếu khoá sản lượng/lưu lượng hơi nước đơn vị tấn/giờ (luuLuong chỉ có m3/h, l/h; congSuat chỉ có W, kW, HP)
+  ví dụ PN6 840212 mã 84021221: công suất hơi nước trên 15 tấn/giờ thiếu khoá sản lượng/lưu lượng hơi nước đơn vị tấn/giờ
+  ví dụ PN6 840219 mã 84021911: công suất hơi trên 15 tấn/giờ thiếu khoá sản lượng/lưu lượng hơi đơn vị tấn/giờ
+
+## theTich
+{"kieu": "SO", "nhanVi": "thể tích ngoài / thể tích bên ngoài", "opHopLe": ["<=", "<", ">=", ">"], "donVi": ["cm3"], "donViChuan": "cm3", "cachDocDonVi": ["cm3", "cm³"]}
+  ví dụ PN6 850610 mã 8506101: tieuDe.8506101: "Có thể tích bên ngoài không quá 300 cm3" thiếu khoá theTich (dungTichXiLanh chỉ áp dụng cho động cơ, không áp dụng cho pin)
+  ví dụ PN6 850660 mã 85066010: tax.85066010: "Có thể tích ngoài không quá 300 cm3" thiếu khoá theTich
+  ví dụ PN6 850680 mã 85068030: tax.85068030: "Có thể tích ngoài không quá 300 cm3" thiếu khoá theTich
+
+## heDienHoa
+{"kieu": "LIET_KE", "nhanVi": "hệ điện hóa của pin", "opHopLe": ["TRONG"], "giaTriHopLe": [{"giaTri": "KEM_CACBON", "nhanVi": "kẽm-cacbon", "cachDoc": ["kẽm-cacbon", "Bằng kẽm-cacbon"]}, {"giaTri": "KIEM", "nhanVi": "kiềm", "cachDoc": ["kiềm", "Bằng kiềm"]}]}
+  ví dụ PN6 850610 mã 85061011: tax.85061011: "Bằng kẽm-cacbon" thiếu khoá hệ điện hoá của pin (chatLieu không có kẽm-cacbon)
+  ví dụ PN6 850610 mã 85061012: tax.85061012: "Bằng kiềm" thiếu khoá hệ điện hoá của pin (kiềm không có trong chatLieu)
+  ví dụ PN6 850610 mã 85061091: tax.85061091: "Bằng kẽm-cacbon" thiếu khoá hệ điện hoá của pin
+
+## dungLuong
+{"kieu": "SO", "nhanVi": "dung lượng phóng điện", "opHopLe": ["<=", "<", ">=", ">"], "donVi": ["Ah"], "donViChuan": "Ah", "cachDocDonVi": ["Ah", "ah"]}
+  ví dụ PN6 850710 mã 850710~r15093: tieuDe.850710~r15093: "có dung lượng phóng điện không quá 200 Ah" thiếu khoá dung lượng (Ah)
+  ví dụ PN6 850720 mã 850720~r15104: tieuDe.850720~r15104: "có dung lượng phóng điện không quá 200 Ah" thiếu khoá dung lượng (Ah)
+
+## daHoaDeo
+{"kieu": "CO_KHONG", "nhanVi": "đã hóa dẻo", "opHopLe": ["CO", "KHONG"], "cachDoc": {"CO": ["Đã hóa dẻo", "đã hóa dẻo"], "KHONG": ["Chưa hóa dẻo", "chưa hóa dẻo"]}}
+  ví dụ PN6 391220 mã 3912201: tieuDe.3912201 "Chưa hóa dẻo" thiếu khoá CO_KHONG daHoaDeo để biểu diễn tình trạng hoá dẻo
+  ví dụ PN6 391220 mã 39122020: tax.39122020 "Đã hóa dẻo" thiếu khoá CO_KHONG daHoaDeo
+
+## coBoLoc
+{"kieu": "CO_KHONG", "nhanVi": "đã lắp bộ phận lọc", "opHopLe": ["CO", "KHONG"], "cachDoc": {"CO": ["Đã lắp bộ phận lọc", "đã lắp bộ phận lọc"], "KHONG": ["Chưa lắp bộ phận lọc", "chưa lắp bộ phận lọc"]}}
+  ví dụ PN6 841460 mã 841460: Thiếu khoá CO_KHONG để biểu diễn tiêu đề 8414601 "Đã lắp bộ phận lọc" và 8414609 "Chưa lắp bộ phận lọc"
+  ví dụ PN6 841470 mã 841470: Thiếu khoá CO_KHONG để biểu diễn tiêu đề 8414701 "Đã lắp bộ phận lọc" và 8414702 "Chưa lắp bộ phận lọc"
