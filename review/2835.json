@@ -1,0 +1,66 @@
+{
+ "nhom": "2835",
+ "nguoiSoat": "dev-soat-doc-lap-lo086",
+ "luc": "2026-11-02T14:05:00+07:00",
+ "soat": 10,
+ "giu": 9,
+ "sua": 1,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2835 (10 mục trong phạm vi: 1 phamVi · 1 boPhan · 4 loaiTru · 4 phanBiet; đọc thêm 8 tieuChi6 + 12 dong8 + 1 cay.tenDien nhưng KHÔNG sửa — ngoài phạm vi theo SOAT-LO.md). 9 giữ · 1 sửa · 0 xoá. Đối chiếu tmp/so-tay/nguon/2835.txt, khối nhom2835.nhom. Ghi chú nguồn (không mã hoá được, đã ghi ở commit của người soạn): \"Nhôm phosphat tự nhiên (wavellite) được loại trừ (nhóm 25. 30)\" — lỗi khoảng trắng trong nguồn làm máy không nhận mã 2530 trong câu trích ⇒ không mã hoá được loaiTru; \"(b) Các loại khoáng phosphat tự nhiên khác của Chương 25 hoặc 26\" chỉ nêu CHƯƠNG ⇒ không có mã đích 4 số.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Nhóm có 3 phần ngang hàng (A) PHOSPHINAT · (B) PHOSPHONAT · (C) PHOSPHAT VÀ POLYPHOSPHAT; phamVi nêu đúng định nghĩa cả ba phần. Các đoạn lược chỉ nuốt phần thân phần (A)/(B) và câu dẫn \"Ngoài các loại trừ nêu trong phần giới thiệu của Phân Chương này\" (loại trừ CHUNG của Chương — theo luật nhà không chép vào từng nhóm) ⇒ không mất ngoại lệ phân loại của nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "boPhan",
+   "hanhDong": "giu",
+   "lyDo": "boPhan nêu đúng 3 phần ngang hàng + định nghĩa, tomTat đúng khuôn nhà, trích nguyên văn 6 mảnh; các đoạn lược không chứa ngoại lệ phân loại của nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "sua",
+   "lyDo": "Điều kiện dài 56 ký tự > trần clip runtime 55 (lib/so-tay-gates.js) ⇒ prompt cắt GIỮA TỪ: \"amoni dihydroorthophosphat và diamoni hydroorthophosph…\" (mất chữ \"at\"), tên hóa học bị cắt cụt. Sửa bằng cách đổi dấu nối \"và\" thành dấu phẩy (danh sách 2 mục loại trừ) ⇒ giữ TRỌN cả hai tên hóa học, còn 52 ký tự ≤ 55. Câu trích giữ nguyên (đã đủ: \"…tinh khiết hay không tinh khiết, và hoặc dạng hỗn hợp của chúng, được loại trừ khỏi nhóm này (nhóm 31.05)\").",
+   "sua": {
+    "dieuKien": "amoni dihydroorthophosphat, diamoni hydroorthophosphat"
+   }
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Canxi hydroorthophosphat có chứa không ít hơn 0,2% khối lượng là flo tính toán theo sản phẩm khô khan được loại trừ (nhóm 31.03 hoặc 31.05).\" — đủ hai đích 3103 + 3105; điều kiện \"có ≥ 0,2% khối lượng flo\" là cách viết ngắn của \"không ít hơn 0,2%\" ✓ (cơ sở tính \"theo sản phẩm khô khan\" nằm trong câu trích). GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"Nhóm này cũng không bao gồm một số dạng phosphat nhất định: … (a) Canxi phosphat tự nhiên, apatit và canxi nhôm phosphat tự nhiên (nhóm 25.10).\" — đích 2510 đúng, điều kiện phủ đủ 3 loại khoáng trong câu nguồn ✓. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn: \"…(d) Đá quý và bán quý (nhóm 71.03 hoặc 71.05)\" — đủ hai đích 7103 + 7105 ✓. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi \"Hàng này là amoni dihydroorthophosphat và diamoni hydroorthophosphat không?\" dài 74 ký tự ≤ trần clip 110 ⇒ không bị cắt, giữ nguyên; có→3105 / không→2835 ✓. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi về canxi hydroorthophosphat có ≥ 0,2% khối lượng flo; có→3103|3105 / không→2835 ✓. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi về canxi phosphat và canxi nhôm phosphat tự nhiên, apatit; có→2510 / không→2835 ✓. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi về đá quý và bán quý; có→7103|7105 / không→2835 ✓. GIỮ NGUYÊN."
+  }
+ ]
+}
