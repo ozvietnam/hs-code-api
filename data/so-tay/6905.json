@@ -1,0 +1,138 @@
+{
+ "nhom": "6905",
+ "phamVi": {
+  "text": "Ngói lợp, chụp ống khói, nắp ống khói, ống thông gió, các chi tiết kiến trúc bằng gốm và các sản phẩm xây dựng bằng gốm khác",
+  "nguon": "nhom6905.nhom",
+  "trich": "Nhóm này bao gồm các loại sản phẩm không chịu lửa, thường là đồ gốm thông thường nhưng đôi khi ít nhiều được tạo thành thủy tinh, mà, giống như gạch, được dùng trong công việc xây dựng.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_ngoi_lop_chup_ong_khoi_chi_tiet_kien_truc_bang_gom",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom6905.nhom",
+   "trich": "Nhóm này bao gồm :\n\n(1) Ngói lợp mái (để làm mái, tường phủ, v.v.). … (2) Chụp ống khói, nắp chụp, lớp lót ống khói, hộp ống dẫn khói, v.v. … (3) Các đồ trang trí kiến trúc cho các toà nhà, trên tường, cổng, v.v",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Gạch lát thuộc nhóm 69.07",
+   "sangNhom": "6907",
+   "nguon": "nhom6905.nhom",
+   "trich": "và về khía cạnh này chúng khác với loại gạch lát thuộc nhóm 69.07.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các loại ống dẫn, máng dẫn và các sản phẩm tương tự như ống thoát nước mưa",
+   "sangNhom": "6906",
+   "nguon": "nhom6905.nhom",
+   "trich": "Nhóm này không bao gồm các loại ống dẫn, máng dẫn và các sản phẩm tương tự như ống thoát nước mưa (nhóm 69.06), kể cả khi được dùng cho các mục đích xây dựng.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là gạch lát phẳng thuộc nhóm 69.07?",
+   "neuCo": "6907",
+   "neuKhong": "6905",
+   "nguon": "nhom6905.nhom",
+   "trich": "và về khía cạnh này chúng khác với loại gạch lát thuộc nhóm 69.07.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là ống dẫn nước mưa, máng dẫn gốm sứ thuộc nhóm 69.06?",
+   "neuCo": "6906",
+   "neuKhong": "6905",
+   "nguon": "nhom6905.nhom",
+   "trich": "Nhóm này không bao gồm các loại ống dẫn, máng dẫn và các sản phẩm tương tự như ống thoát nước mưa (nhóm 69.06), kể cả khi được dùng cho các mục đích xây dựng.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "69051000",
+   "dieuKien": "Ngói lợp mái",
+   "loaiKhac": false,
+   "nguon": "tax.69051000",
+   "trich": "69051000 - Ngói lợp mái",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "69059000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.69059000",
+   "trich": "69059000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "6905",
+    "truAnhEm": [
+     "69051000"
+    ],
+    "truDayDu": [
+     "69051000"
+    ],
+    "toTienCoTen": "6905",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "6905",
+    "cap": 4,
+    "cha": "69",
+    "tenVi": "Ngói lợp, ống khói, chụp ống khói, lớp lót trong ống khói, hàng trang trí kiến trúc và hàng xây dựng bằng gốm, sứ khác",
+    "tenEn": "Roofing tiles, chimney-pots, cowls, chimney liners, architectural ornaments and other ceramic constructional goods",
+    "suyRa": false
+   },
+   {
+    "id": "69051000",
+    "cap": 8,
+    "cha": "6905",
+    "tenVi": "Ngói lợp mái",
+    "tenEn": "Ceramic roofing tiles",
+    "suyRa": false,
+    "laPhanNhom": "690510"
+   },
+   {
+    "id": "69059000",
+    "cap": 8,
+    "cha": "6905",
+    "tenVi": "Loại khác",
+    "tenEn": "Ceramic chimney-pots, cowls, chimney liners, architectural ornaments and other constructional goods (excluding roofing tiles)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "690590"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom6905.nhom",
+  "tax.69051000",
+  "tax.69059000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:37:35.307Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

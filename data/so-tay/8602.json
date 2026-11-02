@@ -1,0 +1,139 @@
+{
+ "nhom": "8602",
+ "phamVi": {
+  "text": "Các đầu máy đường sắt khác (như đầu máy diesel, đầu máy hơi nước); toa tiếp liệu đầu máy xe lửa.",
+  "nguon": "nhom8602.nhom",
+  "trich": "Nhóm này bao gồm tất cả các đầu máy đường sắt trừ loại được cung cấp nguồn điện từ bên ngoài hoặc từ các ắc quy điện (nhóm 86.01) không phụ thuộc vào lọai động cơ",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_dau_may_xe_lua_khac_hoac_toa_tiep_lieu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch86.chuong",
+   "trich": "Nhóm 86.02 cũng bao gồm các toa tiếp liệu đầu máy.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Đầu máy đường sắt chạy bằng nguồn điện bên ngoài hoặc từ ắc quy điện",
+   "sangNhom": "8601",
+   "nguon": "nhom8602.nhom",
+   "trich": "trừ loại được cung cấp nguồn điện từ bên ngoài hoặc từ các ắc quy điện (nhóm 86.01)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Xe kéo chế tạo để có thể vừa di chuyển trên đường ray và cả trên đường bộ",
+   "sangNhom": "8701",
+   "nguon": "nhom8602.nhom",
+   "trich": "Các xe kéo được chế tạo để có thể vừa di chuyển trên đường ray và cả trên đường bộ được loại trừ khỏi nhóm này (nhóm 87.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là đầu máy cung cấp nguồn điện từ bên ngoài hoặc từ ắc quy điện?",
+   "neuCo": "8601",
+   "neuKhong": "8602",
+   "nguon": "nhom8602.nhom",
+   "trich": "trừ loại được cung cấp nguồn điện từ bên ngoài hoặc từ các ắc quy điện (nhóm 86.01)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là xe kéo chế tạo để vừa di chuyển trên đường ray vừa di chuyển trên đường bộ?",
+   "neuCo": "8701",
+   "neuKhong": "8602",
+   "nguon": "nhom8602.nhom",
+   "trich": "Các xe kéo được chế tạo để có thể vừa di chuyển trên đường ray và cả trên đường bộ được loại trừ khỏi nhóm này (nhóm 87.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "86021000",
+   "dieuKien": "Đầu máy diesel truyền động điện (1)",
+   "loaiKhac": false,
+   "nguon": "tax.86021000",
+   "trich": "86021000 - Đầu máy diesel truyền động điện (1)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "86029000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.86029000",
+   "trich": "86029000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8602",
+    "truAnhEm": [
+     "86021000"
+    ],
+    "truDayDu": [
+     "86021000"
+    ],
+    "toTienCoTen": "8602",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8602",
+    "cap": 4,
+    "cha": "86",
+    "tenVi": "Đầu máy di chuyển trên đường ray khác; toa tiếp liệu đầu máy.",
+    "tenEn": "Rail locomotives; (other than those of heading no. 8601), locomotive tenders",
+    "suyRa": false
+   },
+   {
+    "id": "86021000",
+    "cap": 8,
+    "cha": "8602",
+    "tenVi": "Đầu máy diesel truyền động điện (1)",
+    "tenEn": "Rail locomotives; diesel-electric powered",
+    "suyRa": false,
+    "laPhanNhom": "860210"
+   },
+   {
+    "id": "86029000",
+    "cap": 8,
+    "cha": "8602",
+    "tenVi": "Loại khác",
+    "tenEn": "Rail locomotives and locomotive tenders; other than diesel-electric powered",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "860290"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch86.chuong",
+  "nhom8602.nhom",
+  "tax.86021000",
+  "tax.86029000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.795Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

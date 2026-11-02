@@ -1,0 +1,214 @@
+{
+ "nhom": "8406",
+ "phamVi": {
+  "text": "Tuabin hơi nước và các loại tuabin hơi khác (kể cả tuabin hơi thủy ngân) và các bộ phận của chúng.",
+  "nguon": "nhom8406.nhom",
+  "trich": "Nhóm này gồm các loại tuabin hơi nước sử dụng động năng do sự kết hợp của hơi nước tác động lên cánh tuabin và vành rô to.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_tuabin_hoi_nuoc_hoac_tuabin_hoi_khac",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8406.nhom",
+   "trich": "Nhóm này gồm các loại tuabin hơi nước sử dụng động năng do sự kết hợp của hơi nước tác động lên cánh tuabin và vành rô to.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Bộ phận giảm tốc độ và bộ phận đảo chiều trình bày riêng",
+   "sangNhom": "8483",
+   "nguon": "nhom8406.nhom",
+   "trich": "Bộ phận giảm tốc độ và bộ phận đảo chiều nếu trình bày riêng sẽ bị loại trừ (nhóm 84.83).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là bộ phận giảm tốc độ hoặc bộ phận đảo chiều trình bày riêng không?",
+   "neuCo": "8483",
+   "neuKhong": "8406",
+   "nguon": "nhom8406.nhom",
+   "trich": "Bộ phận giảm tốc độ và bộ phận đảo chiều nếu trình bày riêng sẽ bị loại trừ (nhóm 84.83).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "840681",
+   "fact": "cong_suat_dau_ra",
+   "op": ">",
+   "value": 40,
+   "donVi": "MW",
+   "nguon": "wco.840681",
+   "trich": "840681 Turbines; steam and other vapour turbines, (for other than marine propulsion), of an output exceeding 40MW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "840682",
+   "fact": "cong_suat_dau_ra",
+   "op": "<=",
+   "value": 40,
+   "donVi": "MW",
+   "nguon": "wco.840682",
+   "trich": "840682 Turbines; steam and other vapour turbines, (for other than marine propulsion), of an output not exceeding 40MW",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "84061000",
+   "dieuKien": "Tua bin dùng cho máy thủy",
+   "loaiKhac": false,
+   "nguon": "tax.84061000",
+   "trich": "84061000 - Tua bin dùng cho máy thủy",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84068100",
+   "dieuKien": "Công suất đầu ra trên 40 MW",
+   "loaiKhac": false,
+   "nguon": "tax.84068100",
+   "trich": "84068100 - - Công suất đầu ra trên 40 MW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84068210",
+   "dieuKien": "Công suất đầu ra không quá 5 MW",
+   "loaiKhac": false,
+   "nguon": "tax.84068210",
+   "trich": "84068210 - - - Công suất đầu ra không quá 5 MW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84068290",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84068290",
+   "trich": "84068290 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "840682",
+    "truAnhEm": [
+     "84068210"
+    ],
+    "truDayDu": [
+     "84068210"
+    ],
+    "toTienCoTen": "840682",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84069000",
+   "dieuKien": "Bộ phận",
+   "loaiKhac": false,
+   "nguon": "tax.84069000",
+   "trich": "84069000 - Bộ phận",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8406",
+    "cap": 4,
+    "cha": "84",
+    "tenVi": "Tua bin hơi nước và các loại tua bin hơi khác.",
+    "tenEn": "Turbines; steam and other vapour turbines",
+    "suyRa": false
+   },
+   {
+    "id": "84061000",
+    "cap": 8,
+    "cha": "8406",
+    "tenVi": "Tua bin dùng cho máy thủy",
+    "tenEn": "Turbines; steam and other vapour turbines, for marine propulsion",
+    "suyRa": false,
+    "laPhanNhom": "840610"
+   },
+   {
+    "id": "84068",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8406",
+    "tenVi": "Tua bin loại khác",
+    "tenEn": "Other turbines",
+    "suyRa": true
+   },
+   {
+    "id": "84068100",
+    "cap": 8,
+    "cha": "84068",
+    "tenVi": "Công suất đầu ra trên 40 MW",
+    "tenEn": "Turbines; steam and other vapour turbines, (for other than marine propulsion), of an output exceeding 40MW",
+    "suyRa": false,
+    "laPhanNhom": "840681"
+   },
+   {
+    "id": "840682",
+    "cap": 6,
+    "cha": "84068",
+    "tenVi": "Công suất đầu ra không quá 40 MW",
+    "tenEn": "Turbines; steam and other vapour turbines, (for other than marine propulsion), of an output not exceeding 40MW",
+    "suyRa": false
+   },
+   {
+    "id": "84068210",
+    "cap": 8,
+    "cha": "840682",
+    "tenVi": "Công suất đầu ra không quá 5 MW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84068290",
+    "cap": 8,
+    "cha": "840682",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "84069000",
+    "cap": 8,
+    "cha": "8406",
+    "tenVi": "Bộ phận",
+    "tenEn": "Turbines; parts of steam and other vapour turbines",
+    "suyRa": false,
+    "laPhanNhom": "840690"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8406.nhom",
+  "tax.84061000",
+  "tax.84068100",
+  "tax.84068210",
+  "tax.84068290",
+  "tax.84069000",
+  "wco.840681",
+  "wco.840682"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T09:30:59.685Z",
+  "ms": 14
+ },
+ "kiemTra": {
+  "tong": 11,
+  "dat": 11,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

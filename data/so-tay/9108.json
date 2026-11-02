@@ -1,0 +1,218 @@
+{
+ "nhom": "9108",
+ "phamVi": {
+  "text": "Máy đồng hồ cá nhân, đã hoàn chỉnh và lắp ráp.",
+  "nguon": "nhom9108.nhom",
+  "trich": "Nhóm này áp dụng đối với các máy đồng hồ đã lắp ráp, không có vỏ, nghĩa là đã hoàn chỉnh và sẵn sàng để sử dụng.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_may_dong_ho_ca_nhan_hoan_chinh_va_lap_rap",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch91.chuong",
+   "trich": "khái niệm “máy đồng hồ cá nhân” (bộ phận chuyển động của đồng hồ) được hiểu là các bộ phận được điều chỉnh bằng con lắc và dây tóc, tinh thể thạch anh hoặc bất kỳ một hệ thống nào khác có khả năng xác định khoảng cách thời gian, có kèm theo mặt hiển thị hoặc hệ thống có mặt hiển thị bằng cơ học. Máy đồng hồ cá nhân như vậy có chiều dày không quá 12 mm và chiều rộng, chiều dài hoặc đường kính không quá 50 mm.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Máy đồng hồ thời gian có kích thước lớn hơn hoặc không đáp ứng điều kiện máy đồng hồ cá nhân",
+   "sangNhom": "9109",
+   "nguon": "nhom9108.nhom",
+   "trich": "Nhóm này không bao gồm những máy đồng hồ không đáp ứng các điều kiện trên đây (nhóm 91.09 hay 91.10)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các động cơ hoạt động bằng dây cót",
+   "sangNhom": "8412",
+   "nguon": "nhom9108.nhom",
+   "trich": "và các động cơ hoạt động bằng dây cót thuộc nhóm 84.12.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là máy đồng hồ kích thước lớn (độ dày trên 12mm hoặc kích thước trên 50mm)?",
+   "neuCo": "9109",
+   "neuKhong": "9108",
+   "nguon": "nhom9108.nhom",
+   "trich": "Nhóm này không bao gồm những máy đồng hồ không đáp ứng các điều kiện trên đây (nhóm 91.09 hay 91.10)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là động cơ hoạt động bằng dây cót?",
+   "neuCo": "8412",
+   "neuKhong": "9108",
+   "nguon": "nhom9108.nhom",
+   "trich": "và các động cơ hoạt động bằng dây cót thuộc nhóm 84.12.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "91081100",
+   "dieuKien": "Chỉ có mặt hiển thị bằng cơ học hoặc có một thiết bị được kết hợp với mặt hiển thị bằng cơ học",
+   "loaiKhac": false,
+   "nguon": "tax.91081100",
+   "trich": "91081100 - - Chỉ có mặt hiển thị bằng cơ học hoặc có một thiết bị được kết hợp với mặt hiển thị bằng cơ học",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "91081200",
+   "dieuKien": "Chỉ có mặt hiển thị bằng quang điện tử",
+   "loaiKhac": false,
+   "nguon": "tax.91081200",
+   "trich": "91081200 - - Chỉ có mặt hiển thị bằng quang điện tử",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "91081900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.91081900",
+   "trich": "91081900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "91081",
+    "truAnhEm": [
+     "91081100",
+     "91081200"
+    ],
+    "truDayDu": [
+     "91081100",
+     "91081200"
+    ],
+    "toTienCoTen": "9108",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "91082000",
+   "dieuKien": "Có bộ phận lên giây tự động",
+   "loaiKhac": false,
+   "nguon": "tax.91082000",
+   "trich": "91082000 - Có bộ phận lên giây tự động",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "91089000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.91089000",
+   "trich": "91089000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "9108",
+    "truAnhEm": [
+     "91081",
+     "91082000"
+    ],
+    "truDayDu": [
+     "91081",
+     "91082000"
+    ],
+    "toTienCoTen": "9108",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "9108",
+    "cap": 4,
+    "cha": "91",
+    "tenVi": "Máy đồng hồ cá nhân, hoàn chỉnh và đã lắp ráp.",
+    "tenEn": "Watch movements; complete and assembled",
+    "suyRa": false
+   },
+   {
+    "id": "91081",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "9108",
+    "tenVi": "Hoạt động bằng điện",
+    "tenEn": "Electrically operated",
+    "suyRa": true
+   },
+   {
+    "id": "91081100",
+    "cap": 8,
+    "cha": "91081",
+    "tenVi": "Chỉ có mặt hiển thị bằng cơ học hoặc có một thiết bị được kết hợp với mặt hiển thị bằng cơ học",
+    "tenEn": "Watch movements; complete and assembled, electrically operated, with mechanical display only or with a device to which a mechanical display can be incorporated",
+    "suyRa": false,
+    "laPhanNhom": "910811"
+   },
+   {
+    "id": "91081200",
+    "cap": 8,
+    "cha": "91081",
+    "tenVi": "Chỉ có mặt hiển thị bằng quang điện tử",
+    "tenEn": "Watch movements; complete and assembled, electrically operated, by means of solar cells, with opto-electronic display",
+    "suyRa": false,
+    "laPhanNhom": "910812"
+   },
+   {
+    "id": "91081900",
+    "cap": 8,
+    "cha": "91081",
+    "tenVi": "Loại khác",
+    "tenEn": "Watch movements; complete and assembled, electrically operated, by means of solar cells, without mechanical display or device including such or opto-electronic display",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "910819"
+   },
+   {
+    "id": "91082000",
+    "cap": 8,
+    "cha": "9108",
+    "tenVi": "Có bộ phận lên giây tự động",
+    "tenEn": "Watch movements; complete and assembled, with automatic winding",
+    "suyRa": false,
+    "laPhanNhom": "910820"
+   },
+   {
+    "id": "91089000",
+    "cap": 8,
+    "cha": "9108",
+    "tenVi": "Loại khác",
+    "tenEn": "Watch movements; complete and assembled, not automatic winding or electrically operated",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "910890"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch91.chuong",
+  "nhom9108.nhom",
+  "tax.91081100",
+  "tax.91081200",
+  "tax.91081900",
+  "tax.91082000",
+  "tax.91089000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:25:42.769Z",
+  "ms": 7
+ },
+ "kiemTra": {
+  "tong": 11,
+  "dat": 11,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
