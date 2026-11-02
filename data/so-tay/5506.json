@@ -1,0 +1,185 @@
+{
+ "nhom": "5506",
+ "phamVi": {
+  "text": "Xơ staple tổng hợp, đã chải thô, chải kỹ hoặc gia công cách khác để kéo sợi",
+  "nguon": "nhom5506.nhom",
+  "trich": "Nhóm này bao gồm các loại xơ staple tổng hợp (kể cả các phế liệu của xơ staple tổng hợp hoặc phế liệu sợi filament) đã qua các xử lý như chải thô, chải kỹ hoặc các xử lý khác để kéo sợi.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_xo_staple_tong_hop_da_chai_de_keo_soi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5506.nhom",
+   "trich": "Nhóm này bao gồm các loại xơ staple tổng hợp (kể cả các phế liệu của xơ staple tổng hợp hoặc phế liệu sợi filament) đã qua các xử lý như chải thô, chải kỹ hoặc các xử lý khác để kéo sợi.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Mền xơ, bông",
+   "sangNhom": "5601",
+   "nguon": "nhom5506.nhom",
+   "trich": "Nhóm này không bao gồm mền xơ, bông (nhóm 30.05 hoặc 56.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là mền xơ, bông chuyển sang nhóm 56.01 không?",
+   "neuCo": "5601",
+   "neuKhong": "5506",
+   "nguon": "nhom5506.nhom",
+   "trich": "Nhóm này không bao gồm mền xơ, bông (nhóm 30.05 hoặc 56.01).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "55061000",
+   "dieuKien": "Từ ni lông hoặc các polyamit khác",
+   "loaiKhac": false,
+   "nguon": "tax.55061000",
+   "trich": "55061000 - Từ ni lông hoặc các polyamit khác",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "55062000",
+   "dieuKien": "Từ các polyeste",
+   "loaiKhac": false,
+   "nguon": "tax.55062000",
+   "trich": "55062000 - Từ các polyeste",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "55063000",
+   "dieuKien": "Từ acrylic hoặc modacrylic",
+   "loaiKhac": false,
+   "nguon": "tax.55063000",
+   "trich": "55063000 - Từ acrylic hoặc modacrylic",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "55064000",
+   "dieuKien": "Từ polypropylen",
+   "loaiKhac": false,
+   "nguon": "tax.55064000",
+   "trich": "55064000 - Từ polypropylen",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "55069000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.55069000",
+   "trich": "55069000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5506",
+    "truAnhEm": [
+     "55061000",
+     "55062000",
+     "55063000",
+     "55064000"
+    ],
+    "truDayDu": [
+     "55061000",
+     "55062000",
+     "55063000",
+     "55064000"
+    ],
+    "toTienCoTen": "5506",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5506",
+    "cap": 4,
+    "cha": "55",
+    "tenVi": "Xơ staple tổng hợp, đã chải thô, chải kỹ hoăc gia công cách khác để kéo sợi.",
+    "tenEn": "Synthetic staple fibres, carded, combed or otherwise processed for spinning",
+    "suyRa": false
+   },
+   {
+    "id": "55061000",
+    "cap": 8,
+    "cha": "5506",
+    "tenVi": "Từ ni lông hoặc các polyamit khác",
+    "tenEn": "Fibres; synthetic staple fibres, of nylon or other polyamides, carded, combed or otherwise processed for spinning",
+    "suyRa": false,
+    "laPhanNhom": "550610"
+   },
+   {
+    "id": "55062000",
+    "cap": 8,
+    "cha": "5506",
+    "tenVi": "Từ các polyeste",
+    "tenEn": "Fibres; synthetic staple fibres, of polyesters, carded, combed or otherwise processed for spinning",
+    "suyRa": false,
+    "laPhanNhom": "550620"
+   },
+   {
+    "id": "55063000",
+    "cap": 8,
+    "cha": "5506",
+    "tenVi": "Từ acrylic hoặc modacrylic",
+    "tenEn": "Fibres; synthetic staple fibres, acrylic or modacrylic, carded, combed or otherwise processed for spinning",
+    "suyRa": false,
+    "laPhanNhom": "550630"
+   },
+   {
+    "id": "55064000",
+    "cap": 8,
+    "cha": "5506",
+    "tenVi": "Từ polypropylen",
+    "tenEn": "Fibres; synthetic staple fibres, of polypropylene, carded, combed or otherwise processed for spinning",
+    "suyRa": false,
+    "laPhanNhom": "550640"
+   },
+   {
+    "id": "55069000",
+    "cap": 8,
+    "cha": "5506",
+    "tenVi": "Loại khác",
+    "tenEn": "Fibres; synthetic staple fibres, n.e.c. in heading no. 5506, carded, combed or otherwise processed for spinning",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "550690"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5506.nhom",
+  "tax.55061000",
+  "tax.55062000",
+  "tax.55063000",
+  "tax.55064000",
+  "tax.55069000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:27:45.923Z",
+  "ms": 6
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan55.phan (46130→25000)"
+  ]
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "nhom": "7224",
+ "dieuKienVao": [
+  {
+   "fact": "la_thep_hop_kim_khac_dang_thoi_hoac_ban_thanh_pham",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch72.chuong",
+   "trich": "Thép hợp kim khác\n\nLà những loại thép có thành phần không tuân theo định nghĩa của \"thép không gỉ\" và chứa ít nhất một trong các nguyên tố với hàm lượng sau:",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "72241000",
+   "dieuKien": "Ở dạng thỏi đúc và dạng thô khác",
+   "loaiKhac": false,
+   "nguon": "tax.72241000",
+   "trich": "72241000 - Ở dạng thỏi đúc và dạng thô khác",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72249000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.72249000",
+   "trich": "72249000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7224",
+    "truAnhEm": [
+     "72241000"
+    ],
+    "truDayDu": [
+     "72241000"
+    ],
+    "toTienCoTen": "7224",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7224",
+    "cap": 4,
+    "cha": "72",
+    "tenVi": "Thép hợp kim khác ở dạng thỏi đúc hoặc dạng thô khác; các bán thành phẩm bằng thép hợp kim khác",
+    "tenEn": "Alloy steel in ingots or other primary forms, semi-finished products of other alloy steel",
+    "suyRa": false
+   },
+   {
+    "id": "72241000",
+    "cap": 8,
+    "cha": "7224",
+    "tenVi": "Ở dạng thỏi đúc và dạng thô khác",
+    "tenEn": "Steel, alloy; ingots and other primary forms",
+    "suyRa": false,
+    "laPhanNhom": "722410"
+   },
+   {
+    "id": "72249000",
+    "cap": 8,
+    "cha": "7224",
+    "tenVi": "Loại khác",
+    "tenEn": "Steel, alloy; semi-finished products",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "722490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch72.chuong",
+  "tax.72241000",
+  "tax.72249000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T10:43:04.970Z",
+  "ms": 8
+ },
+ "kiemTra": {
+  "tong": 4,
+  "dat": 3,
+  "loai": 1,
+  "nguonBiCat": []
+ }
+}

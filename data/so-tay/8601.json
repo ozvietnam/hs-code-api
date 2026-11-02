@@ -1,0 +1,94 @@
+{
+ "nhom": "8601",
+ "phamVi": {
+  "text": "Đầu máy xe lửa chạy điện (chạy bằng nguồn điện bên ngoài hoặc bằng ắc quy điện).",
+  "nguon": "nhom8601.nhom",
+  "trich": "Nhóm này bao gồm tất cả các lọai đầu máy chạy điện trong đó năng lượng điện cần thiết được cung cấp từ ắc qui đặt trên phương tiện, hoặc từ các đường dẫn điện bên ngoài có thể là đường ray hoặc đường cáp điện treo.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_dau_may_xe_lua_chay_dien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch86.chuong",
+   "trich": "Phương tiện đường sắt tự hành các lọai, như đầu máy, toa xe hay toa tàu điện và ô tô chạy trên đường ray đã được gắn động cơ (nhóm 86.01 đến 86.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "86011000",
+   "dieuKien": "Loại chạy bằng nguồn điện bên ngoài",
+   "loaiKhac": false,
+   "nguon": "tax.86011000",
+   "trich": "86011000 - Loại chạy bằng nguồn điện bên ngoài",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "86012000",
+   "dieuKien": "Loại chạy bằng ắc qui điện",
+   "loaiKhac": false,
+   "nguon": "tax.86012000",
+   "trich": "86012000 - Loại chạy bằng ắc qui điện",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8601",
+    "cap": 4,
+    "cha": "86",
+    "tenVi": "Đầu máy di chuyển trên đường sắt chạy bằng nguồn điện bên ngoài hoặc bằng ắc qui điện.",
+    "tenEn": "Rail locomotives; powered from an external source of electricity or by electric accumulators",
+    "suyRa": false
+   },
+   {
+    "id": "86011000",
+    "cap": 8,
+    "cha": "8601",
+    "tenVi": "Loại chạy bằng nguồn điện bên ngoài",
+    "tenEn": "Rail locomotives; powered from an external source of electricity",
+    "suyRa": false,
+    "laPhanNhom": "860110"
+   },
+   {
+    "id": "86012000",
+    "cap": 8,
+    "cha": "8601",
+    "tenVi": "Loại chạy bằng ắc qui điện",
+    "tenEn": "Rail locomotives; powered by electric accumulators",
+    "suyRa": false,
+    "laPhanNhom": "860120"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch86.chuong",
+  "nhom8601.nhom",
+  "tax.86011000",
+  "tax.86012000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.788Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 4,
+  "dat": 4,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

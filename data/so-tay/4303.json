@@ -1,0 +1,163 @@
+{
+ "nhom": "4303",
+ "phamVi": {
+  "text": "Tất cả các mặt hàng may mặc, bộ phận và đồ phụ trợ quần áo làm bằng da lông hoặc lót da lông; các mặt hàng khác làm bằng da lông.",
+  "nguon": "nhom4303.nhom",
+  "trich": "Ngoại trừ những loại được đề cập bên dưới, nhóm này bao gồm tất cả các mặt hàng may mặc, kể cả bộ phận và đồ phụ trợ quần áo (bao tay, khăn choàng, cavat, cổ áo...) làm bằng:\n\n(A) Da lông.\n\n(B) Chất liệu khác được lót bằng da lông.\n\n(C) Chất liệu khác có da lông ở mặt ngoài (trừ những đồ trang trí đơn thuần).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_hang_may_mac_do_phu_tro_quan_ao_bang_da_long_hoac_lot_da_long",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch43.chuong",
+   "trich": "Nhóm 43.03 kể cả da lông và các phần da lông, được ghép cùng với vật liệu khác, và da lông và các phần da lông, được may lại với nhau tạo thành quần áo hay các chi tiết hoặc phụ trợ quần áo hoặc dưới dạng sản phẩm khác.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các mặt hàng thuộc phần đầu của nhóm 42.02",
+   "sangNhom": "4202",
+   "nguon": "nhom4303.nhom",
+   "trich": "Các mặt hàng thuộc phần đầu của nhóm 42.02.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Găng tay thường, găng tay hở ngón và găng tay bao, bằng da thuộc và da lông",
+   "sangNhom": "4203",
+   "nguon": "nhom4303.nhom",
+   "trich": "Găng tay thường, găng tay hở ngón và găng tay bao, bằng da thuộc và da lông (nhóm 42.03) (găng tay toàn bộ bằng da lông vẫn thuộc nhóm này).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là các mặt hàng thuộc phần đầu của nhóm 42.02?",
+   "neuCo": "4202",
+   "neuKhong": "4303",
+   "nguon": "nhom4303.nhom",
+   "trich": "Các mặt hàng thuộc phần đầu của nhóm 42.02.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là găng tay thường, găng tay hở ngón và găng tay bao bằng da thuộc kết hợp da lông?",
+   "neuCo": "4203",
+   "neuKhong": "4303",
+   "nguon": "nhom4303.nhom",
+   "trich": "Găng tay thường, găng tay hở ngón và găng tay bao, bằng da thuộc và da lông (nhóm 42.03) (găng tay toàn bộ bằng da lông vẫn thuộc nhóm này).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "43031000",
+   "dieuKien": "Hàng may mặc và đồ phụ trợ quần áo",
+   "loaiKhac": false,
+   "nguon": "tax.43031000",
+   "trich": "43031000 - Hàng may mặc và đồ phụ trợ quần áo",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "43039020",
+   "dieuKien": "Sản phẩm dùng cho mục đích công nghiệp",
+   "loaiKhac": false,
+   "nguon": "tax.43039020",
+   "trich": "43039020 - - Sản phẩm dùng cho mục đích công nghiệp",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "43039090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.43039090",
+   "trich": "43039090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "430390",
+    "truAnhEm": [
+     "43039020"
+    ],
+    "truDayDu": [
+     "43039020"
+    ],
+    "toTienCoTen": "430390",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4303",
+    "cap": 4,
+    "cha": "43",
+    "tenVi": "Hàng may mặc, đồ phụ trợ quần áo và các vật phẩm khác bằng da lông.",
+    "tenEn": "Articles of apparel, clothing accessories and other articles of furskin",
+    "suyRa": false
+   },
+   {
+    "id": "43031000",
+    "cap": 8,
+    "cha": "4303",
+    "tenVi": "Hàng may mặc và đồ phụ trợ quần áo",
+    "tenEn": "Furskin articles; apparel and clothing accessories",
+    "suyRa": false,
+    "laPhanNhom": "430310"
+   },
+   {
+    "id": "430390",
+    "cap": 6,
+    "cha": "4303",
+    "tenVi": "Loại khác",
+    "tenEn": "Furskin articles; other than apparel and clothing accessories",
+    "suyRa": false
+   },
+   {
+    "id": "43039020",
+    "cap": 8,
+    "cha": "430390",
+    "tenVi": "Sản phẩm dùng cho mục đích công nghiệp",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "43039090",
+    "cap": 8,
+    "cha": "430390",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch43.chuong",
+  "nhom4303.nhom",
+  "tax.43031000",
+  "tax.43039020",
+  "tax.43039090"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:57:18.493Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
