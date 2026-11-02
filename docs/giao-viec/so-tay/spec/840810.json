@@ -1,0 +1,66 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "840810",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840810",
+  "dong8": {
+    "84081010": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 22.38,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "84081020": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 22.38,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 100,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "84081030": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 100,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 750,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84081010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84081010: \"Công suất không quá 22,38 kW\" ⇒ congSuat <= 22.38 kW"
+    },
+    {
+      "ma": "84081020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84081020: \"Công suất trên 22,38 kW nhưng không quá 100 kW\" ⇒ congSuat > 22.38 kW và <= 100 kW"
+    },
+    {
+      "ma": "84081030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84081030: \"Công suất trên 100 kW nhưng không quá 750 kW\" ⇒ congSuat > 100 kW và <= 750 kW"
+    }
+  ]
+}

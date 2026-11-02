@@ -1,0 +1,103 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841330",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841330",
+  "dong8": {
+    "84133030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nhiên liệu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
+        }
+      ]
+    },
+    "84133040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
+        }
+      ]
+    },
+    "84133051": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84133052": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": ">",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8413305": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84133030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84133030: \"Bơm nhiên liệu loại sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04\" ⇒ tenLoai Bơm nhiên liệu + dungCho [87.02, 87.03, 87.04]"
+    },
+    {
+      "ma": "84133040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84133040: \"Bơm nước loại được sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04\" ⇒ tenLoai Bơm nước + dungCho [87.02, 87.03, 87.04]"
+    },
+    {
+      "ma": "8413305",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413305: \"Loại khác, loại ly tâm\" ⇒ kieuBom LY_TAM"
+    },
+    {
+      "ma": "84133051",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84133051: \"Với đường kính cửa hút không quá 200 mm\" ⇒ duongKinhTrong <= 200 mm"
+    },
+    {
+      "ma": "84133052",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84133052: \"Với đường kính cửa hút trên 200 mm\" ⇒ duongKinhTrong > 200 mm"
+    }
+  ]
+}
