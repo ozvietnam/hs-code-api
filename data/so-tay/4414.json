@@ -1,0 +1,139 @@
+{
+ "nhom": "4414",
+ "phamVi": {
+  "text": "Khung bằng gỗ dùng cho tranh, ảnh, gương hoặc các vật phẩm tương tự.",
+  "nguon": "nhom4414.nhom",
+  "trich": "Nhóm này bao gồm khung gỗ với mọi hình dáng và kích thước, dù được cắt thành miếng từ gỗ khối đặc hay được ghép từ quá trình tạo chuỗi hay tạo khuôn. Khung gỗ trong nhóm này cũng có thể là gỗ khảm hay gỗ dát.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_khung_go",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch44.chuong",
+   "trich": "Các nhóm từ 44.14 đến 44.21 áp dụng đối với các sản phẩm có mô tả tương ứng từ các loại ván dăm hoặc ván tương tự, ván sợi ép, ván ghép hoặc gỗ đã được làm tăng độ rắn, áp dụng tương tự đối với các sản phẩm này từ gỗ.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các tranh và ảnh in sẵn được trình bày trong khung gỗ khi khung không tạo ra đặc tính cơ bản",
+   "sangNhom": "4911",
+   "nguon": "nhom4414.nhom",
+   "trich": "trong các trường hợp khác, những mặt hàng như vậy được phân loại vào nhóm 49.11.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Gương đã đóng khung",
+   "sangNhom": "7009",
+   "nguon": "nhom4414.nhom",
+   "trich": "Gương đã đóng khung cũng bị loại trừ (nhóm 70.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là tranh ảnh in có khung nhưng khung không tạo nên đặc tính cơ bản?",
+   "neuCo": "4911",
+   "neuKhong": "4414",
+   "nguon": "nhom4414.nhom",
+   "trich": "trong các trường hợp khác, những mặt hàng như vậy được phân loại vào nhóm 49.11.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là gương đã đóng khung?",
+   "neuCo": "7009",
+   "neuKhong": "4414",
+   "nguon": "nhom4414.nhom",
+   "trich": "Gương đã đóng khung cũng bị loại trừ (nhóm 70.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "44141000",
+   "dieuKien": "Từ gỗ nhiệt đới",
+   "loaiKhac": false,
+   "nguon": "tax.44141000",
+   "trich": "44141000 - Từ gỗ nhiệt đới",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "44149000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.44149000",
+   "trich": "44149000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "4414",
+    "truAnhEm": [
+     "44141000"
+    ],
+    "truDayDu": [
+     "44141000"
+    ],
+    "toTienCoTen": "4414",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4414",
+    "cap": 4,
+    "cha": "44",
+    "tenVi": "Khung tranh, khung ảnh, khung gương bằng gỗ hoặc các sản phẩm bằng gỗ tương tự.",
+    "tenEn": "Wooden frames; for paintings, photographs, mirrors or similar objects",
+    "suyRa": false
+   },
+   {
+    "id": "44141000",
+    "cap": 8,
+    "cha": "4414",
+    "tenVi": "Từ gỗ nhiệt đới",
+    "tenEn": "Wooden frames; for paintings, photographs, mirrors or similar objects; of tropical wood",
+    "suyRa": false,
+    "laPhanNhom": "441410"
+   },
+   {
+    "id": "44149000",
+    "cap": 8,
+    "cha": "4414",
+    "tenVi": "Loại khác",
+    "tenEn": "Wooden frames; for paintings, photographs, mirrors or similar objects; not of tropical wood",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "441490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch44.chuong",
+  "nhom4414.nhom",
+  "tax.44141000",
+  "tax.44149000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:57:18.612Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
