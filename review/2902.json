@@ -1,0 +1,183 @@
+{
+ "nhom": "2902",
+ "nguoiSoat": "dev-soat-doc-lap-lo089",
+ "luc": "2026-11-02T19:40:00+07:00",
+ "daKiem": 29,
+ "soat": 29,
+ "giu": 21,
+ "sua": 8,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2902 (lô 089, PR #893) — người soạn dev-zcode-mm, người soát độc lập (dev-soat-doc-lap-lo089). Đã đọc TOÀN BỘ khối [nhom2902.nhom] của tmp/so-tay/nguon/2902.txt (7.202 ký tự, 3 phần A–C + các mục (a)–(d)) và đối chiếu TỪNG mục trong 3 khối phải soát (phamVi · loaiTru · phanBiet). MÁY (kiểm riêng, KHÔNG dựa vào check-so-tay): 29/29 câu trích byte-exact trong đúng khối nguồn; mọi mã đích có trong câu trích; gác từ mức B; không câu trích nào cắt trước câu rào; mọi `phanBiet` hỏi đúng vật bị loại trừ, nhánh không = 2902. KẾT QUẢ: 29 mục soát → 21 GIỮ · 8 SỬA · 0 XOÁ. Lớp lỗi thật: (1) loaiTru[4]+phanBiet[4] — BỎ VẾ DẪN CUỐI (\"được tạo ra từ quá trình chưng cất hoặc xử lý khác của các gỗ thuộc loài cây lá kim\") ⇒ điều kiện rộng hơn nguồn: mọi dầu terpenic khác (vd dầu cam) bị đẩy 38.05, trong khi loaiTru[2] (\"những tinh dầu\" → 33.01) mới là chỗ đúng của chúng ⇒ sửa; (2) 3 mục loaiTru + 3 phanBiet — THIẾU NGƯỠNG SỐ (benzen/toluen \"thấp hơn\" mà không có 95 %, anthracene \"thấp hơn\" mà không có 90 %; nền nhà 2/2 mục cùng dạng đều ghi ngưỡng) ⇒ sửa. GHI NHẬN (không sửa): (a) loaiTru[9] \"Naphtalen có độ tinh khiết thấp hơn\" — nguồn dùng đúng câu chữ đó nhưng tiêu chí thật là ĐIỂM KẾT TINH từ 79,4 ºC (đã có trong câu trích); không ghi \"95 %\" vì nguồn không có ⇒ GIỮ, người duyệt xem; (b) loaiTru[12]/[13] + phanBiet — nguồn một vế \"dodecylbenzenes và nonylnaphthalenes là hỗn hợp alkylaren\" tách thành hai mục (cùng đích 38.17) nên câu hỏi đọc \"Hàng này là dodecylbenzenes là hỗn hợp alkylaren không?\" hơi vướng (\"là … là\", 16/2.079 câu hỏi nền nhà có mẫu này) — KHÔNG sửa (giữ nguyên danh từ nguồn).",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích byte-exact trong [nhom2902.nhom]; `text` bám đúng danh từ nguồn, không hẹp hơn không rộng hơn phạm vi nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 3204 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 3805 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 3301 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 3805 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "sua",
+   "lyDo": "BỎ VẾ DẪN CUỐI ⇒ ĐIỀU KIỆN RỘNG HƠN NGUỒN. Nguồn: \"Nhóm này không bao gồm những tinh dầu (nhóm 33.01), và gôm, gỗ hoặc sulphat turpentine và những loại dầu terpenic khác ĐƯỢC TẠO RA TỪ quá trình chưng cất hoặc xử lý khác của các gỗ thuộc loài cây lá kim (nhóm 38.05).\" — vế bị mất là điều kiện giới hạn, không phải chỉ là bổ nghĩa: chỉ dầu terpenic TỪ GỖ THUỘC LOÀI CÂY LÁ KIM mới ra 38.05. Bản nháp ghi \"những loại dầu terpenic khác\" ⇒ mọi dầu terpenic khác (vd dầu cam) bị đẩy 38.05, trong khi loaiTru[2] (\"những tinh dầu\" → 33.01) mới là chỗ đúng của chúng. Sửa: thêm lại trọn vế giới hạn (nguyên văn trong câu trích).",
+   "sua": {
+    "dieuKien": "những loại dầu terpenic khác được tạo ra từ quá trình chưng cất hoặc xử lý khác của các gỗ thuộc loài cây lá kim"
+   }
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "sua",
+   "lyDo": "ĐIỀU KIỆN THIẾU NGƯỠNG SỐ — nền nhà 2/2 mục cùng dạng đều ghi ngưỡng (mẫu 2933: \"Pyridin có độ tinh khiết thấp hơn 95%\"). Nguồn: \"Để được xếp vào nhóm này, benzen phải tinh khiết từ 95% trở lên tính theo trọng lượng. Nếu độ tinh khiết thấp hơn thì sẽ bị loại trừ (nhóm 27.07).\" Sửa: thêm \"95%\" (có trong câu trích); cơ sở \"tính theo trọng lượng\" ở `dong8` 29022000 + `dieuKienSo`.",
+   "sua": {
+    "dieuKien": "benzen có độ tinh khiết thấp hơn 95%"
+   }
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "sua",
+   "lyDo": "Thiếu ngưỡng số — cùng lớp với loaiTru[5]. Nguồn: \"Để được xếp ở nhóm này, toluen phải tinh khiết từ 95% trở lên tính theo trọng lượng. Nếu toluen ở độ tinh khiết thấp hơn thì sẽ bị loại trừ (nhóm 27.07).\" Sửa: thêm \"95%\"; cơ sở \"tính theo trọng lượng\" ở `dong8` 29023000 + `dieuKienSo`.",
+   "sua": {
+    "dieuKien": "toluen ở độ tinh khiết thấp hơn 95%"
+   }
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 2707 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 3805 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 2707 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 2707 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[11]",
+   "hanhDong": "sua",
+   "lyDo": "Thiếu ngưỡng số — cùng lớp với loaiTru[5]. Nguồn: \"Để được phân loại vào nhóm này, anthracene phải có độ tinh khiết từ 90% trở lên tính theo trọng lượng. Với độ tinh khiết thấp hơn sẽ bị loại trừ (nhóm 27.07).\" Sửa: thêm \"90%\"; cơ sễ \"tính theo trọng lượng\" ở câu trích (dòng 29029090 \"Loại khác\" nên KHÔNG gắn ngưỡng — đã ghi ở hồ sơ soạn).",
+   "sua": {
+    "dieuKien": "anthracene có độ tinh khiết thấp hơn 90%"
+   }
+  },
+  {
+   "index": "loaiTru[12]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 3817 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[13]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2902.nhom] nêu đích danh 3817 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (caroten tổng hợp); nhánh có → 3204 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Dipenten thô); nhánh có → 3805 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (những tinh dầu); nhánh có → 3301 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (gôm, gỗ hoặc sulphat turpentine); nhánh có → 3805 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải phủ vế giới hạn (đích 38.05 có trong câu trích); 131 ký tự > trần 110 nên lúc chạy còn \"…các gỗ thuộc loài cây lá\" — vẫn đủ để LLM không nhận nhầm dầu terpenic không phải từ gỗ lá kim. Nhánh không = 2902.",
+   "sua": {
+    "hoi": "Hàng này là những loại dầu terpenic khác được tạo ra từ quá trình chưng cất hoặc xử lý khác của các gỗ thuộc loài cây lá kim không?"
+   }
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải có ngưỡng (loaiTru[5]); 55 ký tự ≤ trần 110; đích 27.07 có trong câu trích; nhánh không = 2902.",
+   "sua": {
+    "hoi": "Hàng này là benzen có độ tinh khiết thấp hơn 95% không?"
+   }
+  },
+  {
+   "index": "phanBiet[6]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải có ngưỡng (loaiTru[6]); 54 ký tự ≤ trần 110; đích 27.07 có trong câu trích; nhánh không = 2902.",
+   "sua": {
+    "hoi": "Hàng này là toluen ở độ tinh khiết thấp hơn 95% không?"
+   }
+  },
+  {
+   "index": "phanBiet[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (xylen có độ tinh khiết nhỏ hơn 95%); nhánh có → 2707 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (p-cymene thô); nhánh có → 3805 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[9]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Naphtalen có độ tinh khiết thấp hơn); nhánh có → 2707 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[10]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Phenanthrene ở dạng thô); nhánh có → 2707 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[11]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải có ngưỡng (loaiTru[11]); 59 ký tự ≤ trần 110; đích 27.07 có trong câu trích; nhánh không = 2902.",
+   "sua": {
+    "hoi": "Hàng này là anthracene có độ tinh khiết thấp hơn 90% không?"
+   }
+  },
+  {
+   "index": "phanBiet[12]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (dodecylbenzenes là hỗn hợp alkylaren); nhánh có → 3817 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[13]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (nonylnaphthalenes là hỗn hợp alkylaren); nhánh có → 3817 (có trong câu trích), nhánh không → 2902 là phần bù của nhánh có. GIỮ NGUYÊN."
+  }
+ ]
+}
