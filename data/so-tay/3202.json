@@ -1,0 +1,127 @@
+{
+ "nhom": "3202",
+ "phamVi": {
+  "text": "Các chất thuộc da hữu cơ tổng hợp; các chất thuộc da vô cơ; các chế phẩm thuộc da, có hoặc không chứa các chất thuộc da tự nhiên; các chế phẩm enzym dùng cho việc ngâm mềm da trước khi thuộc.",
+  "nguon": "nhom3202.nhom",
+  "trich": "Nhóm này bao gồm: … (I) Các sản phẩm thuộc da. … (A) Các chất thuộc da hữu cơ tổng hợp … (B) Các sản phẩm thuộc da vô cơ hay \"chất thuộc da dạng khoáng\" … (II) Nước ngâm mềm da nhân tạo",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [
+  {
+   "dieuKien": "Dung dịch kiềm thải từ quá trình sản xuất bột giấy từ gỗ",
+   "sangNhom": "3804",
+   "nguon": "nhom3202.nhom",
+   "trich": "Dung dịch kiềm thải ra từ quá trình sản xuất bột giấy từ gỗ, đã hoặc chưa cô đặc (nhóm 38.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các tác nhân hoàn thiện, chế phẩm trợ nhuộm không dùng chủ yếu làm nguyên liệu thuộc da",
+   "sangNhom": "3809",
+   "nguon": "nhom3202.nhom",
+   "trich": "Các tác nhân hoàn thiện, các thuốc nhuộm thúc đẩy quá trình nhuộm hoặc cố định thuốc nhuộm và các chế phẩm, các sản phẩm khác (ví dụ, chế phẩm hồ vải và cẩn màu), được sử dụng trong công nghiệp da, với điều kiện chúng không được dùng chủ yếu như là nguyên liệu thuộc da (nhóm 38.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là dung dịch kiềm thải ra từ sản xuất bột giấy từ gỗ?",
+   "neuCo": "3804",
+   "neuKhong": "3202",
+   "nguon": "nhom3202.nhom",
+   "trich": "Dung dịch kiềm thải ra từ quá trình sản xuất bột giấy từ gỗ, đã hoặc chưa cô đặc (nhóm 38.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là tác nhân hoàn thiện dệt/da thuộc nhóm 38.09?",
+   "neuCo": "3809",
+   "neuKhong": "3202",
+   "nguon": "nhom3202.nhom",
+   "trich": "Các tác nhân hoàn thiện, các thuốc nhuộm thúc đẩy quá trình nhuộm hoặc cố định thuốc nhuộm và các chế phẩm, các sản phẩm khác (ví dụ, chế phẩm hồ vải và cẩn màu), được sử dụng trong công nghiệp da, với điều kiện chúng không được dùng chủ yếu như là nguyên liệu thuộc da (nhóm 38.09).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "32021000",
+   "dieuKien": "Chất thuộc da hữu cơ tổng hợp ",
+   "loaiKhac": false,
+   "nguon": "tax.32021000",
+   "trich": "32021000 - Chất thuộc da hữu cơ tổng hợp ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "32029000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.32029000",
+   "trich": "32029000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "3202",
+    "truAnhEm": [
+     "32021000"
+    ],
+    "truDayDu": [
+     "32021000"
+    ],
+    "toTienCoTen": "3202",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3202",
+    "cap": 4,
+    "cha": "32",
+    "tenVi": "Chất thuộc da hữu cơ tổng hợp; chất thuộc da vô cơ; các chế phẩm thuộc da, có hoặc không chứa chất thuộc da tự nhiên; các chế phẩm chứa enzym dùng cho tiền thuộc da.",
+    "tenEn": "Tanning substances; synthetic organic or inorganic tanning substances; tanning preparations, whether or not containing natural tanning substances, enzymatic preparations for pre-tanning",
+    "suyRa": false
+   },
+   {
+    "id": "32021000",
+    "cap": 8,
+    "cha": "3202",
+    "tenVi": "Chất thuộc da hữu cơ tổng hợp",
+    "tenEn": "Tanning substances; synthetic organic tanning substances",
+    "suyRa": false,
+    "laPhanNhom": "320210"
+   },
+   {
+    "id": "32029000",
+    "cap": 8,
+    "cha": "3202",
+    "tenVi": "Loại khác",
+    "tenEn": "Tanning substances; inorganic tanning substances; tanning preparations, whether or not containing natural tanning substances; enzymatic preparations for pre- tanning",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "320290"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3202.nhom",
+  "tax.32021000",
+  "tax.32029000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:18:11.927Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 7,
+  "loai": 1,
+  "nguonBiCat": []
+ }
+}

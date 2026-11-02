@@ -1,0 +1,556 @@
+{
+ "nhom": "8901",
+ "phamVi": {
+  "text": "Tàu thủy chở khách, du thuyền, phà, tàu chở hàng, sà lan và các tàu thuyền tương tự để vận chuyển người hoặc hàng hóa.",
+  "nguon": "nhom8901.nhom",
+  "trich": "Nhóm này bao gồm tất cả tàu thuyền dùng để vận chuyển người hoặc hàng hóa, trừ tàu thuyền thuộc nhóm 89.03 và xuồng cứu hộ (trừ loại thuyền dùng mái chèo), các tàu chở quân và tầu bệnh viện (nhóm 89.06)",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_tau_thuyen_van_chuyen_nguoi_hoac_hang_hoa",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "tau_thuyen_thuoc_nhom_8903",
+    "xuong_cuu_ho_tau_cho_quan_tau_benh_vien"
+   ],
+   "nguon": "nhom8901.nhom",
+   "trich": "Nhóm này bao gồm tất cả tàu thuyền dùng để vận chuyển người hoặc hàng hóa, trừ tàu thuyền thuộc nhóm 89.03 và xuồng cứu hộ (trừ loại thuyền dùng mái chèo), các tàu chở quân và tầu bệnh viện (nhóm 89.06)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Du thuyền và các loại tàu thuyền khác dùng cho giải trí hoặc thể thao thuộc nhóm 89.03",
+   "sangNhom": "8903",
+   "nguon": "nhom8901.nhom",
+   "trich": "trừ tàu thuyền thuộc nhóm 89.03",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các tàu chở quân và tàu bệnh viện",
+   "sangNhom": "8906",
+   "nguon": "nhom8901.nhom",
+   "trich": "các tàu chở quân và tầu bệnh viện (nhóm 89.06)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là du thuyền hoặc tàu thuyền dùng cho giải trí, thể thao thuộc nhóm 89.03?",
+   "neuCo": "8903",
+   "neuKhong": "8901",
+   "nguon": "nhom8901.nhom",
+   "trich": "trừ tàu thuyền thuộc nhóm 89.03",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là tàu chở quân hoặc tàu bệnh viện thuộc nhóm 89.06?",
+   "neuCo": "8906",
+   "neuKhong": "8901",
+   "nguon": "nhom8901.nhom",
+   "trich": "các tàu chở quân và tầu bệnh viện (nhóm 89.06)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "89011010",
+   "dieuKien": "Tổng dung tích (gross tonnage) không quá 26 ",
+   "loaiKhac": false,
+   "nguon": "tax.89011010",
+   "trich": "89011010 - - Tổng dung tích (gross tonnage) không quá 26 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89011020",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
+   "loaiKhac": false,
+   "nguon": "tax.89011020",
+   "trich": "89011020 - - Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89011060",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000 ",
+   "loaiKhac": false,
+   "nguon": "tax.89011060",
+   "trich": "89011060 - - Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89011070",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000 ",
+   "loaiKhac": false,
+   "nguon": "tax.89011070",
+   "trich": "89011070 - - Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89011080",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000",
+   "loaiKhac": false,
+   "nguon": "tax.89011080",
+   "trich": "89011080 - - Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89011090",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 5.000",
+   "loaiKhac": false,
+   "nguon": "tax.89011090",
+   "trich": "89011090 - - Tổng dung tích (gross tonnage) trên 5.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89012050",
+   "dieuKien": "Tổng dung tích (gross tonnage) không quá 5.000",
+   "loaiKhac": false,
+   "nguon": "tax.89012050",
+   "trich": "89012050 - - Tổng dung tích (gross tonnage) không quá 5.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89012071",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000",
+   "loaiKhac": false,
+   "nguon": "tax.89012071",
+   "trich": "89012071 - - - Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89012072",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000",
+   "loaiKhac": false,
+   "nguon": "tax.89012072",
+   "trich": "89012072 - - - Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89012073",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000",
+   "loaiKhac": false,
+   "nguon": "tax.89012073",
+   "trich": "89012073 - - - Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89012080",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 50.000",
+   "loaiKhac": false,
+   "nguon": "tax.89012080",
+   "trich": "89012080 - - Tổng dung tích (gross tonnage) trên 50.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89013050",
+   "dieuKien": "Tổng dung tích (gross tonnage) không quá 5.000",
+   "loaiKhac": false,
+   "nguon": "tax.89013050",
+   "trich": "89013050 - - Tổng dung tích (gross tonnage) không quá 5.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89013070",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
+   "loaiKhac": false,
+   "nguon": "tax.89013070",
+   "trich": "89013070 - - Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89013080",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 50.000",
+   "loaiKhac": false,
+   "nguon": "tax.89013080",
+   "trich": "89013080 - - Tổng dung tích (gross tonnage) trên 50.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019011",
+   "dieuKien": "Tổng dung tích (gross tonnage) không quá 26 ",
+   "loaiKhac": false,
+   "nguon": "tax.89019011",
+   "trich": "89019011 - - - Tổng dung tích (gross tonnage) không quá 26 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019012",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
+   "loaiKhac": false,
+   "nguon": "tax.89019012",
+   "trich": "89019012 - - - Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019014",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 500",
+   "loaiKhac": false,
+   "nguon": "tax.89019014",
+   "trich": "89019014 - - - Tổng dung tích (gross tonnage) trên 500",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019031",
+   "dieuKien": "Tổng dung tích (gross tonnage) không quá 26 ",
+   "loaiKhac": false,
+   "nguon": "tax.89019031",
+   "trich": "89019031 - - - Tổng dung tích (gross tonnage) không quá 26 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019032",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
+   "loaiKhac": false,
+   "nguon": "tax.89019032",
+   "trich": "89019032 - - - Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019033",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000 ",
+   "loaiKhac": false,
+   "nguon": "tax.89019033",
+   "trich": "89019033 - - - Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019034",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000 ",
+   "loaiKhac": false,
+   "nguon": "tax.89019034",
+   "trich": "89019034 - - - Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000 ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019035",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000",
+   "loaiKhac": false,
+   "nguon": "tax.89019035",
+   "trich": "89019035 - - - Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019036",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
+   "loaiKhac": false,
+   "nguon": "tax.89019036",
+   "trich": "89019036 - - - Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "89019037",
+   "dieuKien": "Tổng dung tích (gross tonnage) trên 50.000",
+   "loaiKhac": false,
+   "nguon": "tax.89019037",
+   "trich": "89019037 - - - Tổng dung tích (gross tonnage) trên 50.000",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8901",
+    "cap": 4,
+    "cha": "89",
+    "tenVi": "Tàu thủy chở khách, thuyền, xuồng du lịch, phà, tàu thủy chở hàng, xà lan và các tàu thuyền tương tự để vận chuyển người hoặc hàng hóa",
+    "tenEn": "Cruise ships, excursion boats, ferry-boats, cargo ships, barges and similar vessels for the transport of persons or goods",
+    "suyRa": false
+   },
+   {
+    "id": "890110",
+    "cap": 6,
+    "cha": "8901",
+    "tenVi": "Tàu thủy chở khách, thuyền, xuồng du lịch và các tàu thuyền tương tự được thiết kế chủ yếu để vận chuyển người; phà các loại",
+    "tenEn": "Cruise ships, excursion boats and similar vessels, principally designed for the transport of persons, ferry boats of all kinds",
+    "suyRa": false
+   },
+   {
+    "id": "89011010",
+    "cap": 8,
+    "cha": "890110",
+    "tenVi": "Tổng dung tích (gross tonnage) không quá 26",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89011020",
+    "cap": 8,
+    "cha": "890110",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89011060",
+    "cap": 8,
+    "cha": "890110",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89011070",
+    "cap": 8,
+    "cha": "890110",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89011080",
+    "cap": 8,
+    "cha": "890110",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89011090",
+    "cap": 8,
+    "cha": "890110",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 5.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "890120",
+    "cap": 6,
+    "cha": "8901",
+    "tenVi": "Tàu chở chất lỏng hoặc khí hóa lỏng",
+    "tenEn": "Tankers",
+    "suyRa": false
+   },
+   {
+    "id": "89012050",
+    "cap": 8,
+    "cha": "890120",
+    "tenVi": "Tổng dung tích (gross tonnage) không quá 5.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "8901207",
+    "cap": "TIEU_DE_QG",
+    "cha": "890120",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
+    "tenEn": "Of a gross tonnage exceeding 5,000 but not exceeding 50,000",
+    "suyRa": true
+   },
+   {
+    "id": "89012071",
+    "cap": 8,
+    "cha": "8901207",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89012072",
+    "cap": 8,
+    "cha": "8901207",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89012073",
+    "cap": 8,
+    "cha": "8901207",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89012080",
+    "cap": 8,
+    "cha": "890120",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 50.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "890130",
+    "cap": 6,
+    "cha": "8901",
+    "tenVi": "Tàu thuyền đông lạnh, trừ loại thuộc phân nhóm 8901.20",
+    "tenEn": "Vessels, refrigerated; other than tankers",
+    "suyRa": false
+   },
+   {
+    "id": "89013050",
+    "cap": 8,
+    "cha": "890130",
+    "tenVi": "Tổng dung tích (gross tonnage) không quá 5.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89013070",
+    "cap": 8,
+    "cha": "890130",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89013080",
+    "cap": 8,
+    "cha": "890130",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 50.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "890190",
+    "cap": 6,
+    "cha": "8901",
+    "tenVi": "Tàu thuyền khác để vận chuyển hàng hóa và tàu thuyền khác để vận chuyển cả người và hàng hóa",
+    "tenEn": "Vessels; n.e.c. in heading no. 8901, for the transport of goods and other vessels for the transport of both persons and goods",
+    "suyRa": false
+   },
+   {
+    "id": "8901901",
+    "cap": "TIEU_DE_QG",
+    "cha": "890190",
+    "tenVi": "Không có động cơ đẩy",
+    "tenEn": "Not motorised",
+    "suyRa": true
+   },
+   {
+    "id": "89019011",
+    "cap": 8,
+    "cha": "8901901",
+    "tenVi": "Tổng dung tích (gross tonnage) không quá 26",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89019012",
+    "cap": 8,
+    "cha": "8901901",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89019014",
+    "cap": 8,
+    "cha": "8901901",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 500",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "8901903",
+    "cap": "TIEU_DE_QG",
+    "cha": "890190",
+    "tenVi": "Có động cơ đẩy",
+    "tenEn": "Motorised",
+    "suyRa": true
+   },
+   {
+    "id": "89019031",
+    "cap": 8,
+    "cha": "8901903",
+    "tenVi": "Tổng dung tích (gross tonnage) không quá 26",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89019032",
+    "cap": 8,
+    "cha": "8901903",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89019033",
+    "cap": 8,
+    "cha": "8901903",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89019034",
+    "cap": 8,
+    "cha": "8901903",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89019035",
+    "cap": 8,
+    "cha": "8901903",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89019036",
+    "cap": 8,
+    "cha": "8901903",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "89019037",
+    "cap": 8,
+    "cha": "8901903",
+    "tenVi": "Tổng dung tích (gross tonnage) trên 50.000",
+    "tenEn": null,
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8901.nhom",
+  "tax.89011010",
+  "tax.89011020",
+  "tax.89011060",
+  "tax.89011070",
+  "tax.89011080",
+  "tax.89011090",
+  "tax.89012050",
+  "tax.89012071",
+  "tax.89012072",
+  "tax.89012073",
+  "tax.89012080",
+  "tax.89013050",
+  "tax.89013070",
+  "tax.89013080",
+  "tax.89019011",
+  "tax.89019012",
+  "tax.89019014",
+  "tax.89019031",
+  "tax.89019032",
+  "tax.89019033",
+  "tax.89019034",
+  "tax.89019035",
+  "tax.89019036",
+  "tax.89019037"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.879Z",
+  "ms": 8
+ },
+ "kiemTra": {
+  "tong": 30,
+  "dat": 30,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

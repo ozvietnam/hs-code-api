@@ -1,0 +1,151 @@
+{
+ "nhom": "7801",
+ "phamVi": {
+  "text": "Chì chưa gia công",
+  "nguon": "nhom7801.nhom",
+  "trich": "Nhóm này bao gồm chì chưa gia công ở mức độ tinh khiết khác nhau, từ các thỏi chì không tinh khiết hoặc chì có chứa bạc đến chì tinh khiết bằng phương pháp điện phân.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_chi_chua_gia_cong",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch78.chuong",
+   "trich": "Chì chưa gia công, phế liệu và các mảnh chì vụn (các nhóm 78.01 và 78.02).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Bột hoặc vảy chì",
+   "sangNhom": "7804",
+   "nguon": "nhom7801.nhom",
+   "trich": "Nhóm này loại trừ bột hoặc vảy chì (nhóm 78.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là bột hoặc vảy chì thuộc nhóm 78.04 không?",
+   "neuCo": "7804",
+   "neuKhong": "7801",
+   "nguon": "nhom7801.nhom",
+   "trich": "Nhóm này loại trừ bột hoặc vảy chì (nhóm 78.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "78011000",
+   "dieuKien": "Chì tinh luyện",
+   "loaiKhac": false,
+   "nguon": "tax.78011000",
+   "trich": "78011000 - Chì tinh luyện",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "78019100",
+   "dieuKien": "Có hàm lượng antimon tính theo khối lượng là lớn nhất so với hàm lượng của các nguyên tố khác ngoài chì",
+   "loaiKhac": false,
+   "nguon": "tax.78019100",
+   "trich": "78019100 - - Có hàm lượng antimon tính theo khối lượng là lớn nhất so với hàm lượng của các nguyên tố khác ngoài chì",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "78019900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.78019900",
+   "trich": "78019900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "78019",
+    "truAnhEm": [
+     "78019100"
+    ],
+    "truDayDu": [
+     "78019100",
+     "78011000"
+    ],
+    "toTienCoTen": "7801",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7801",
+    "cap": 4,
+    "cha": "78",
+    "tenVi": "Chì chưa gia công",
+    "tenEn": "Lead; unwrought",
+    "suyRa": false
+   },
+   {
+    "id": "78011000",
+    "cap": 8,
+    "cha": "7801",
+    "tenVi": "Chì tinh luyện",
+    "tenEn": "Lead; unwrought, refined",
+    "suyRa": false,
+    "laPhanNhom": "780110"
+   },
+   {
+    "id": "78019",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "7801",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "78019100",
+    "cap": 8,
+    "cha": "78019",
+    "tenVi": "Có hàm lượng antimon tính theo khối lượng là lớn nhất so với hàm lượng của các nguyên tố khác ngoài chì",
+    "tenEn": "Lead; unwrought, unrefined, containing by weight antimony as the principal other element",
+    "suyRa": false,
+    "laPhanNhom": "780191"
+   },
+   {
+    "id": "78019900",
+    "cap": 8,
+    "cha": "78019",
+    "tenVi": "Loại khác",
+    "tenEn": "Lead; unwrought, unrefined, not containing by weight antimony as the principal other element",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "780199"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch78.chuong",
+  "nhom7801.nhom",
+  "tax.78011000",
+  "tax.78019100",
+  "tax.78019900"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:54:35.884Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

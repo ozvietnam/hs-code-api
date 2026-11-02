@@ -1,0 +1,146 @@
+{
+ "nhom": "8807",
+ "phamVi": {
+  "text": "Bộ phận của các hàng hóa thuộc các nhóm 88.01, 88.02 hoặc 88.06 (cánh quạt, rôto, bộ càng - bánh và các bộ phận khác).",
+  "nguon": "nhom8807.nhom",
+  "trich": "Nhóm này bao gồm các bộ phận của các hàng hóa thuộc các nhóm 88.01, 88.02 hoặc 88.06, nếu các bộ phận này đáp ứng đủ hai điều kiện sau:\n\n(i) Được xác định phù hợp để chỉ hoặc chủ yếu sử dụng cho các hàng hóa thuộc các nhóm đã nêu trên; và\n\n(ii) Chúng không bị loại trừ theo những quy định của Chú giải của Phần XVII",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_bo_phan_phuong_tien_bay_thuoc_nhom_8801_8802_8806",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8807.nhom",
+   "trich": "Nhóm này bao gồm các bộ phận của các hàng hóa thuộc các nhóm 88.01, 88.02 hoặc 88.06, nếu các bộ phận này đáp ứng đủ hai điều kiện sau:\n\n(i) Được xác định phù hợp để chỉ hoặc chủ yếu sử dụng cho các hàng hóa thuộc các nhóm đã nêu trên",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "88071000",
+   "dieuKien": "Cánh quạt và rôto và các bộ phận của chúng",
+   "loaiKhac": false,
+   "nguon": "tax.88071000",
+   "trich": "88071000 - Cánh quạt và rôto và các bộ phận của chúng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88072000",
+   "dieuKien": "Bộ càng- bánh và các bộ phận của chúng",
+   "loaiKhac": false,
+   "nguon": "tax.88072000",
+   "trich": "88072000 - Bộ càng- bánh và các bộ phận của chúng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88073000",
+   "dieuKien": "Các bộ phận khác của máy bay, trực thăng hoặc phương tiện bay không người lái",
+   "loaiKhac": false,
+   "nguon": "tax.88073000",
+   "trich": "88073000 - Các bộ phận khác của máy bay, trực thăng hoặc phương tiện bay không người lái",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88079000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.88079000",
+   "trich": "88079000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8807",
+    "truAnhEm": [
+     "88071000",
+     "88072000",
+     "88073000"
+    ],
+    "truDayDu": [
+     "88071000",
+     "88072000",
+     "88073000"
+    ],
+    "toTienCoTen": "8807",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8807",
+    "cap": 4,
+    "cha": "88",
+    "tenVi": "Các bộ phận của các mặt hàng thuộc nhóm 88.01, 88.02 hoặc 88.06.",
+    "tenEn": "Aircraft; parts of goods of heading 8801, 8802 or 8806",
+    "suyRa": false
+   },
+   {
+    "id": "88071000",
+    "cap": 8,
+    "cha": "8807",
+    "tenVi": "Cánh quạt và rôto và các bộ phận của chúng",
+    "tenEn": "Aircraft and spacecraft; propellers and rotors and parts thereof",
+    "suyRa": false,
+    "laPhanNhom": "880710"
+   },
+   {
+    "id": "88072000",
+    "cap": 8,
+    "cha": "8807",
+    "tenVi": "Bộ càng- bánh và các bộ phận của chúng",
+    "tenEn": "Aircraft and spacecraft; under-carriages and parts thereof",
+    "suyRa": false,
+    "laPhanNhom": "880720"
+   },
+   {
+    "id": "88073000",
+    "cap": 8,
+    "cha": "8807",
+    "tenVi": "Các bộ phận khác của máy bay, trực thăng hoặc phương tiện bay không người lái",
+    "tenEn": "Aircraft and spacecraft; parts of aeroplanes, helicopters or unmanned aircraft n.e.c. in heading no. 8807",
+    "suyRa": false,
+    "laPhanNhom": "880730"
+   },
+   {
+    "id": "88079000",
+    "cap": 8,
+    "cha": "8807",
+    "tenVi": "Loại khác",
+    "tenEn": "Aircraft and spacecraft; parts thereof n.e.c. in chapter 88",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "880790"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8807.nhom",
+  "tax.88071000",
+  "tax.88072000",
+  "tax.88073000",
+  "tax.88079000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.869Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
