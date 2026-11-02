@@ -1,0 +1,20 @@
+{
+ "nhom": "2844",
+ "nguoiSoat": "NGUOI_DUYET",
+ "luc": "2026-11-02T15:45:00+07:00",
+ "daKiem": 8,
+ "soat": 8,
+ "xoa": 0,
+ "sua": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2844 (lô 088, PR #846) — người soạn dev-zcode-mm, người soát độc lập. Đã đọc TOÀN BỘ khối [nhom2844.nhom] (245 dòng, 4 phần I–IV) của tmp/so-tay/nguon/2844.txt và đối chiếu từng mục trong tmp/so-tay/raw/2844.json. MÁY: 8/8 câu trích byte-exact trong đúng khối nguồn, tất cả ≤ 300 ký tự. KẾT QUẢ: 8/8 mục GIỮ NGUYÊN, 0 sửa, 0 xoá.\n\nCơ sở giữ: (1) phamVi — chép đúng tiêu đề phần (III) 'CÁC NGUYÊN TỐ HÓA HỌC PHÓNG XẠ, CÁC ĐỒNG VỊ PHÓNG XẠ VÀ HỢP CHẤT CỦA CHÚNG; HỖN HỢP VÀ CÁC PHẾ LIỆU CÓ CHỨA CÁC SẢN PHẨM TRÊN' và phần (IV) '…CÓ KHẢ NĂNG PHÂN TÁCH VÀ LÀM GIÀU…'; cả hai vế có trong trích, không bỏ phần nào của nhóm (nhóm 2844 = phần (III) + (IV), phần (I)/(II) là phần định nghĩa). (2) dieuKienVao[0] — câu 'Nhóm này chỉ bao gồm những đồng vị đó mà có hiện tượng của chất phóng xạ' nói đúng điều kiện VÀO nhóm; bỏ ngoặc chú thích '(miêu tả dưới đây)' là được (ngoặc chú thích không phải vế điều kiện). (3) loaiTru[0] — 'các đồng vị bền vững' → 28.45, số 28.45 có trong trích. (4) loaiTru[1]+[2] — hai loại trừ sang 84.01 (nguồn neutron tập hợp; dụng thỏi, tấm, hình cầu đựng trong bao bì), 84.01 CÓ trong cả hai câu trích. (5) 3 phanBiet — nhánh 'không' đều là chính 28.44 (không suy từ cấu trúc anh em), nhánh 'có' đi tới nhóm được nêu trong trích.\n\nGHI NHẬN (không sửa, để người duyệt xem): (a) loaiTru[1].dieuKien 'các nguồn neutron đã được tập hợp lại' (39 ký tự, KHÔNG bị clip) bỏ vế giới hạn 'sẵn sàng được đưa vào các lò phản ứng hạt nhân để bắt đầu một phản ứng dây truyền phân hạch', nên nhãn RỘNG HƠN nguồn nếu đọc đứng. NHƯNG phanBiet[1].hoi (104 ký tự ≤ trần 110) mang nguyên vẹn vế giới hạn đó, nên câu hỏi mà người khai phải trả lời vẫn đúng; nền nhà 42,7 % nhãn loaiTru vượt trần 55 nên không sửa. (b) phamVi.text dài ĐÚNG 220 ký tự — bằng trần clip của runtime (clip chỉ cắt khi > 220) nên còn nguyên; lưu ý nhóm soạn sau nếu thêm chữ thì phải rút lại. (c) dieuKienVao[0] và phanBiet[0] của nhóm này cùng hỏi ở mức ĐỒNG VỊ (chưa phủ hợp chất của đồng vị) — nhưng điều kiện boolean chỉ là gợi ý trong prompt (cổng máy lib/so-tay-gates.js chỉ kích hoạt với ngưỡng số) và phamVi đã phủ cả nhóm; ghi nhận cho người duyệt.",
+ "thayDoi": [
+  {"index": "phamVi", "hanhDong": "giu", "lyDo": "Chép đủ cả hai tiêu đề phần (III) và (IV) — nhóm 2844 gồm hai phần ngang hàng; không bỏ vế nào."},
+  {"index": "dieuKienVao[0]", "hanhDong": "giu", "lyDo": "'có hiện tượng của chất phóng xạ' là điều kiện VÀO nhóm theo đúng câu nguồn; bỏ ngoặc chú thích là được."},
+  {"index": "loaiTru[0]", "hanhDong": "giu", "lyDo": "'các đồng vị bền vững' → 28.45; số 28.45 có trong câu trích, đúng luật 3."},
+  {"index": "loaiTru[1]", "hanhDong": "giu", "lyDo": "Câu trích nêu đích danh (nhóm 84.01); vế giới hạn 'sẵn sàng…' đã được phanBiet[1] mang nguyên vẹn nên không mất thông tin ở runtime."},
+  {"index": "loaiTru[2]", "hanhDong": "giu", "lyDo": "Câu trích nêu đích danh (nhóm 84.01); nhãn bỏ vế 'gắn với các dạng đặc biệt dùng cho mục đích vận chuyển' nhưng phanBiet[2] vẫn hỏi đủ."},
+  {"index": "phanBiet[0]", "hanhDong": "giu", "lyDo": "Hỏi đúng đồng vị bền vững; có→28.45, không→28.44; mã đích có trong trích."},
+  {"index": "phanBiet[1]", "hanhDong": "giu", "lyDo": "Câu hỏi mang nguyên vẹn vế giới hạn 'sẵn sàng được đưa vào các lò phản ứng hạt nhân'; 104 ký tự nên không bị cắt."},
+  {"index": "phanBiet[2]", "hanhDong": "giu", "lyDo": "Hỏi đúng dụng thỏi, tấm và hình cầu đựng trong bao bì; có→84.01, không→28.44."}
+ ]
+}
