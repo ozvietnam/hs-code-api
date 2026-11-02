@@ -1,0 +1,40 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "711719",
+  "phien": "zcode-sub:glm-5.3:20261102T1638#soan-711719",
+  "dong8": {
+    "71171910": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vòng" }
+      ]
+    },
+    "71171920": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "đồ trang sức" }
+      ],
+      "phanConLai": true
+    },
+    "71171990": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bộ phận" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "71171910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71171910 \"71171910 - - - Vòng\" ⇒ tenLoai \"Vòng\" (chuỗi con nguyên văn). So chữ tự do — không tất định."
+    },
+    {
+      "ma": "71171920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71171920 \"71171920 - - - Các đồ trang sức khác\": phần còn lại có tên — vế khẳng định \"đồ trang sức\" ⇒ tenLoai \"đồ trang sức\" (nguyên văn), chữ \"khác\" ⇒ phanConLai: true phủ định anh em đứng trước 71171910 \"Vòng\" (tiền lệ 85013170 \"Động cơ khác\", 84819023 \"Thân, loại khác\"). Không phủ 71171990 \"Bộ phận\" (đứng sau)."
+    },
+    {
+      "ma": "71171990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71171990 \"71171990 - - - Bộ phận\" ⇒ tenLoai \"Bộ phận\" (chuỗi con nguyên văn, danh từ trần như \"Vòng\" của 71171910 — BANG-LUAT dòng 10: ba anh em cùng nêu tên ⇒ cùng khoá tenLoai; không dùng laBoPhan CO vì tạo chồng lấn giả tên ↔ đặc điểm). Tiền lệ 40169917 dùng tenLoai \"Bộ phận\"."
+    }
+  ]
+}
