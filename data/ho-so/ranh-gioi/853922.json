@@ -1,0 +1,179 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "853922",
+  "nhom": "8539",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-853922",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8539223",
+      "nguon": "tieuDe.8539223",
+      "trich": "8539223 Bóng đèn phản xạ khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bóng đèn phản xạ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85392220",
+      "nguon": "tax.85392220",
+      "trich": "85392220 - - - Dùng cho thiết bị y tế",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị y tế"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85392231",
+      "nguon": "tax.85392231",
+      "trich": "85392231 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng trang trí"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 60,
+          "donVi": "W"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85392232",
+      "nguon": "tax.85392232",
+      "trich": "85392232 - - - - Loại dùng trong chiếu sáng trang trí, công suất trên 60 W",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng trang trí"
+        },
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 60,
+          "donVi": "W"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85392233",
+      "nguon": "tax.85392233",
+      "trich": "85392233 - - - - Loại khác, dùng cho chiếu sáng gia dụng",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng gia dụng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85392239",
+      "nguon": "tax.85392239",
+      "trich": "85392239 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85392291",
+      "nguon": "tax.85392291",
+      "trich": "85392291 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng trang trí"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 60,
+          "donVi": "W"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85392293",
+      "nguon": "tax.85392293",
+      "trich": "85392293 - - - - Loại khác, dùng cho chiếu sáng gia dụng",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng gia dụng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85392299",
+      "nguon": "tax.85392299",
+      "trich": "85392299 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85392220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392220: \"Dùng cho thiết bị y tế\" ⇒ dungCho thiết bị y tế"
+    },
+    {
+      "ma": "8539223",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8539223: \"Bóng đèn phản xạ khác\" ⇒ tenLoai Bóng đèn phản xạ, phanConLai true"
+    },
+    {
+      "ma": "85392231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392231: \"chiếu sáng trang trí, công suất không quá 60 W\" ⇒ congDung chiếu sáng trang trí, congSuat <= 60 W"
+    },
+    {
+      "ma": "85392232",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392232: \"chiếu sáng trang trí, công suất trên 60 W\" ⇒ congDung chiếu sáng trang trí, congSuat > 60 W"
+    },
+    {
+      "ma": "85392233",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392233: \"chiếu sáng gia dụng\" ⇒ congDung chiếu sáng gia dụng"
+    },
+    {
+      "ma": "85392291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392291: \"chiếu sáng trang trí, công suất không quá 60 W\" ⇒ congDung chiếu sáng trang trí, congSuat <= 60 W"
+    },
+    {
+      "ma": "85392293",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392293: \"chiếu sáng gia dụng\" ⇒ congDung chiếu sáng gia dụng"
+    }
+  ]
+}
