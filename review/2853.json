@@ -1,0 +1,141 @@
+{
+ "nhom": "2853",
+ "nguoiSoat": "dev-soat-doc-lap-lo089",
+ "luc": "2026-11-02T19:40:00+07:00",
+ "daKiem": 23,
+ "soat": 23,
+ "giu": 17,
+ "sua": 4,
+ "xoa": 2,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP 2853 (lô 089, PR #893) — người soạn dev-zcode-mm, người soát độc lập (dev-soat-doc-lap-lo089). Đã đọc TOÀN BỘ khối [nhom2853.nhom] của tmp/so-tay/nguon/2853.txt (5.744 ký tự, 5 phần A–E) và đối chiếu TỪNG mục trong 3 khối phải soát (phamVi · loaiTru · phanBiet). MÁY (kiểm riêng, KHÔNG dựa vào check-so-tay): 23/23 câu trích byte-exact trong đúng khối nguồn; mọi mã đích có trong câu trích; gác từ mức B; không câu trích nào cắt trước câu rào; mọi `phanBiet` hỏi đúng vật bị loại trừ, nhánh không = 2853. KẾT QUẢ: 23 mục soát → 17 GIỮ · 4 SỬA · 2 XOÁ. Lớp lỗi thật: (1) loaiTru[10]+phanBiet[10] — ĐIỀU KIỆN GHÉP CẮT HỎNG (\"Những hợp chất của trừ các hỗn hống\" — không phải cụm từ nào có trong nguồn) ⇒ sửa theo câu trích nguyên văn; (2) loaiTru[6]+phanBiet[6] — RƠI MỘT NHÁNH \"hoặc\" ⇒ điều kiện hẹp hơn nguồn ⇒ nước đóng gói để bán lẻ rơi nhầm 2853 thay vì 30.04; (3) loaiTru[9]+phanBiet[9] — TÁCH NHÁNH \"CÓ HAY KHÔNG\" thành mục độc lập (lớp lỗi SOAT-LO dành riêng cho người soát) + câu hỏi dính \"không … không\" (0/2.225 câu hỏi nền nhà) ⇒ XOÁ mục rời, giữ mục [8] vốn đã phủ trọn; (4) `phamVi.text` dài 244 > trần 220 ⇒ lúc chạy mất đuôi \"trừ hỗn hống của kim loại quý\" — nhưng phần đó CÓ trong loaiTru[8]/[9] cùng nhóm nên không mất kết luận (nền nhà 17,0 % `phamVi.text` vượt trần) ⇒ GIỮ. GHI NHẬN: câu cuối nguồn \"Những hợp chất của thủy ngân, đã hoặc chưa xác định về mặt hóa học, trừ các hỗn hống thuộc nhóm 28.52.\" có vế \"trừ\" là NGOẠI LỆ (hỗn hống), còn đích 28.52 = 2852 là nhóm hợp chất thủy ngân — nên phần \"trừ các hỗn hống\" đã bỏ khỏi ĐIỀU KIỆN (điều kiện chỉ nêu \"hợp chất của thủy ngân\"), giữ nguyên câu trích; hỗn hống vẫn ở 2853 theo phần (E) của chính chú giải này.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "Câu trích byte-exact trong [nhom2853.nhom]; `text` bám đúng danh từ nguồn, không hẹp hơn không rộng hơn phạm vi nhóm. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[0]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2853.nhom] nêu đích danh 2809 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[1]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2853.nhom] nêu đích danh 2812 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[2]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2853.nhom] nêu đích danh 2813 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[3]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2853.nhom] nêu đích danh 2843 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[4]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2853.nhom] nêu đích danh 7202 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[5]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2853.nhom] nêu đích danh 2201 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[6]",
+   "hanhDong": "sua",
+   "lyDo": "RƠI MỘT NHÁNH ĐIỀU KIỆN ⇒ ĐIỀU KIỆN HẸP HƠN NGUỒN. Nguồn: \"Khi đóng gói như thuốc ở dạng đã phân thành liều HOẶC đóng gói để bán lẻ, thì nước được xếp vào nhóm 30.04.\" — hai vế song song, cùng đích 30.04. Bản nháp giữ vế \"đã phân thành liều\" và BỎ vế \"hoặc đóng gói để bán lẻ\" ⇒ tờ khai \"nước đóng gói để bán lẻ\" trả lời \"không\" ⇒ rơi nhầm 2853 (đúng phải là 30.04). Sửa: giữ trọn cả hai vế (nguyên văn trong câu trích).",
+   "sua": {
+    "dieuKien": "Khi đóng gói như thuốc ở dạng đã phân thành liều hoặc đóng gói để bán lẻ"
+   }
+  },
+  {
+   "index": "loaiTru[7]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2853.nhom] nêu đích danh 3102 / 3105 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[8]",
+   "hanhDong": "giu",
+   "lyDo": "Nguồn [nhom2853.nhom] nêu đích danh 2843 — số nhóm có trong câu trích (luật 3); điều kiện bám đúng danh từ nguồn; dấu hiệu loại trừ còn trong câu. GIỮ NGUYÊN."
+  },
+  {
+   "index": "loaiTru[9]",
+   "hanhDong": "xoa",
+   "lyDo": "TÁCH NHÁNH \"CÓ HAY KHÔNG\" ⇒ MỘT NHÁNH BỊ TÁCH THÀNH ĐIỀU KIỆN ĐỘC LẬP (lớp lỗi máy KHÔNG bắt — SOAT-LO.md). Nguồn: \"Những hỗn hống chứa kim loại quý, CÓ HAY KHÔNG kết hợp với các kim loại cơ bản, bị loại trừ (nhóm 28.43).\" — \"có hay không\" là vế \"dù có hay không\" của CHÍNH một điều kiện, nghĩa là hỗn hống chứa kim loại quý (có base metal hay không) ĐỀU bị loại trừ. Bản nháp tách vế \"không kết hợp với các kim loại cơ bản\" thành một mục riêng: (i) trùng lặp — loaiTru[8] (\"Những hỗn hống chứa kim loại quý\") đã phủ trọn cả hai vế; (ii) câu hỏi sinh ra \"Hàng này là không kết hợp với các kim loại cơ bản không?\" — chuỗi \"không … không\" (0/2.225 câu hỏi nền nhà). XOÁ mục rời; thông tin \"có hay không\" vẫn nguyên văn trong câu trích của loaiTru[8]."
+  },
+  {
+   "index": "loaiTru[10]",
+   "hanhDong": "sua",
+   "lyDo": "ĐIỀU KIỆN GHÉP CẮT HỎNG — không phải cụm từ nào có trong nguồn. Bản nháp ghi \"Những hợp chất của trừ các hỗn hống\" = ghép \"Những hợp chất của [thủy ngân]\" với vế \"trừ các hỗn hống\". Sửa theo câu trích nguyên văn: \"Những hợp chất của thủy ngân, đã hoặc chưa xác định về mặt hóa học, trừ các hỗn hống thuộc nhóm 28.52.\" Đích 28.52 (= 2852, \"Các hợp chất vô cơ hoặc hữu cơ của thủy ngân…\") có trong câu trích và khớp CHÍNH XÁC tiêu đề biểu thuế của nhóm đích — đối chiếu mục tương ứng của lô 088 (2843 loaiTru[3]: \"hợp chất thuỷ ngân, trừ hỗn hống\" → 28.52).",
+   "sua": {
+    "dieuKien": "Những hợp chất của thủy ngân, đã hoặc chưa xác định về mặt hóa học"
+   }
+  },
+  {
+   "index": "phanBiet[0]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Hợp chất của Phospho với Oxy); nhánh có → 2809 (có trong câu trích), nhánh không → 2853 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[1]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Hợp chất của Phospho với halogens); nhánh có → 2812 (có trong câu trích), nhánh không → 2853 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[2]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Hợp chất của Phospho với sulphua); nhánh có → 2813 (có trong câu trích), nhánh không → 2853 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[3]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Phosphua của bạch kim và các kim loại quý); nhánh có → 2843 (có trong câu trích), nhánh không → 2853 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[4]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Ferrophosphorus (Phosphua sắt)); nhánh có → 7202 (có trong câu trích), nhánh không → 2853 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[5]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Nước tự nhiên, thậm chí nếu đã được lọc, tiệt trùng); nhánh có → 2201 (có trong câu trích), nhánh không → 2853 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[6]",
+   "hanhDong": "sua",
+   "lyDo": "Câu hỏi phải phủ TRỌN cả hai vế \"hoặc\" (đích 30.04 có trong câu trích); 91 ký tự ≤ trần clip 110 nên lúc chạy không bị cắt. Nhánh không = 2853 (phần bù của nhánh có).",
+   "sua": {
+    "hoi": "Hàng này là Khi đóng gói như thuốc ở dạng đã phân thành liều hoặc đóng gói để bán lẻ không?"
+   }
+  },
+  {
+   "index": "phanBiet[7]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (canxi cyanamit); nhánh có → 3102|3105 (có trong câu trích), nhánh không → 2853 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[8]",
+   "hanhDong": "giu",
+   "lyDo": "Câu hỏi hỏi đúng vật bị loại trừ (Những hỗn hống chứa kim loại quý); nhánh có → 2843 (có trong câu trích), nhánh không → 2853 là phần bù của nhánh có. GIỮ NGUYÊN."
+  },
+  {
+   "index": "phanBiet[9]",
+   "hanhDong": "xoa",
+   "lyDo": "XOÁ cùng loaiTru[9] (nhánh \"không\" rời của cụm \"có hay không\"). Câu hỏi \"Hàng này là không kết hợp với các kim loại cơ bản không?\" dính \"không … không\" — 0/2.225 câu hỏi nền nhà có mẫu này; hỏi vậy thì tờ khai hỗn hống bạc (không có base metal) trả lời \"không\" ⇒ rơi nhầm 2853 thay vì 28.43. Câu hỏi của loaiTru[8] đã hỏi đúng vật bị loại trừ."
+  },
+  {
+   "index": "phanBiet[10]",
+   "hanhDong": "sua",
+   "lyDo": "Sửa cùng loaiTru[10]: hỏi đúng vật bị loại trừ (hợp chất của thủy ngân) thay vì câu hỏi hỏng. Đích 28.52 có trong câu trích; nhánh không = 2853 (phần bù của nhánh có).",
+   "sua": {
+    "hoi": "Hàng này là Những hợp chất của thủy ngân, đã hoặc chưa xác định về mặt hóa học không?"
+   }
+  }
+ ]
+}
