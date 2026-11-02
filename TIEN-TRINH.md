@@ -11533,3 +11533,7 @@ node scripts/build-so-tay.mjs --nhom=2818,2819,2820,2821,2822,2823 --tu-tep=tmp/
 1. **Lỗi tầng data ở 2820** (thiếu tiêu đề "(1) Mangan dioxit (MnO2)") — đề xuất sửa `data/chu-giai-heading.json` rồi dựng lại nhóm 2820.
 2. **2821 (a) — loại trừ "chất màu từ đất < 70 % Fe2O3" không có nhóm đích** trong nguồn ⇒ chưa mã hoá được; nếu biết nhóm đích thực tế thì bổ sung `loaiTru` + `phanBiet`.
 3. **`phamVi` 2820 chưa nêu mangan dioxit** — sau khi sửa lỗi tầng data thì dựng lại, câu trích sẽ nêu được cả (1).
+
+### PR
+
+Lô 084 mở PR **#734** (`data(so-tay): lô 084 — 6 nhóm 2818–2823, 77/77 mục`) — **KHÔNG merge**, chờ vòng soát độc lập. CSV dòng 084: `dang-lam, dev-zcode-mm, 734`.
