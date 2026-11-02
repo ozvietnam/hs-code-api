@@ -1,0 +1,23 @@
+{
+ "nhom": "2716",
+ "nguoiSoat": "dev-soat-doc-lap-lo081",
+ "luc": "2026-11-02T08:40:00+07:00",
+ "soat": 2,
+ "giu": 2,
+ "sua": 0,
+ "xoa": 0,
+ "chen": 0,
+ "ghiChu": "SOÁT ĐỘC LẬP lô 081 — nhóm 2716 (2 mục: 1 phamVi trong phạm vi mục 4 + 1 dong8 đọc thêm). Đọc LẠI từng mục cùng nguồn tmp/so-tay/nguon/2716.txt. XOÁ 0, SỬA 0, GIỮ 2. KIỂM MÁY (tự viết, không tin máy nhà): byte-exact 2/2 câu trích có thật trong đúng khối nguồn (so khớp từng byte, không nén squash); không có trích vượt 300 ký tự; không có từ nào trong text/dieuKien/hoi mà không có trong câu trích. NGUỒN HẠN CHẾ: nhom2716.nhom chỉ có câu 'Không chú giải.' ⇒ nhóm không có chú giải nhóm; nguồn duy nhất mô tả hàng là dòng biểu thuệ 27160000 'Năng lượng điện.' và tên WCO 271600 'Electrical energy'. GHI NHẬN cho người duyệt (không tự sửa): (1) `phamVi` lấy từ dòng biểu thuệ 8 số chứ không phải tên WCO 6 số — chấp nhận được vì đó là nguồn tiếng Việt duy nhất của nhóm và câu trích byte-exact; nếu người duyệt muốn thống nhất với các nhóm khác trong lô (2803/2804/2805 lấy phạm vi từ chú giải nhóm) thì phải có câu nào đó trong nguồn. (2) Nhóm không có `dieuKienVao` — hợp lệ: không có câu nào phủ cả nhóm (luật 'dieuKienVao phải phủ CẢ nhóm'), và cổng sau không loại nhóm chỉ vì thiếu dieuKienVao.",
+ "thayDoi": [
+  {
+   "index": "phamVi",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ. Nhóm 2716 KHÔNG có chú giải nhóm ('Không chú giải.' trong nhom2716.nhom) nên phạm vi nhóm chỉ có thể lấy từ dòng biểu thuệ: trich = '27160000 Năng lượng điện.' byte-exact trong khối tax.27160000; `text` = 'Năng lượng điện.' chép đúng tên dòng biểu thuệ, không thêm tính chất/nhóm vật liệu nào. Không có ngoại lệ nào để mất."
+  },
+  {
+   "index": "dong8[0]",
+   "hanhDong": "giu",
+   "lyDo": "GIỮ (đọc thêm, ngoài phạm vi mục 4). 27160000 là dòng 8 số DUY NHẤT của nhóm 2716; `dieuKien` = 'Năng lượng điện' chép đúng tên dòng biểu thuệ; `trich` byte-exact; `loaiKhac` do máy suy (tên dòng không bắt đầu bằng 'Loại khác') = false, đúng."
+  }
+ ]
+}
