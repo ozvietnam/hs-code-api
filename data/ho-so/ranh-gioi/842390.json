@@ -1,0 +1,91 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "842390",
+  "nhom": "8423",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842390",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84239010",
+      "nguon": "tax.84239010",
+      "trich": "84239010 - - Quả cân",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả cân"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84239030",
+      "nguon": "tax.84239030",
+      "trich": "84239030 - - Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cân điện tử"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cân xe có động cơ",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84239040",
+      "nguon": "tax.84239040",
+      "trich": "84239040 - - Bộ phận của các loại cân khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84239010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84239010: \"Quả cân\" ⇒ tenLoai Quả cân"
+    },
+    {
+      "ma": "84239030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84239030: \"Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ\" ⇒ tenLoai Bộ phận, dungCho cân điện tử, loại trừ cân xe có động cơ"
+    },
+    {
+      "ma": "84239040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84239040: \"Bộ phận của các loại cân khác\" ⇒ tenLoai Bộ phận, phanConLai true"
+    },
+    {
+      "ma": "84239040",
+      "loai": "BO_VE",
+      "ve": "của các loại cân khác",
+      "lyDo": "dòng là phần còn lại có tên (phanConLai: true), phủ định cân điện tử của 84239030"
+    }
+  ]
+}
