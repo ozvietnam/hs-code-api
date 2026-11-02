@@ -15,13 +15,13 @@ Nhận bản nháp `tmp/so-tay/raw/29xx.json` của phiên `dev-zcode-mm` + ngu�
 
 | nhóm | mục | giữ | sửa | xoá |
 |---|---|---|---|---|
-| 2904 | 7 | 6 | 1 | 0 |
+| 2904 | 7 | 5 | 2 | 0 |
 | 2905 | 12 | 11 | 1 | 0 |
-| 2906 | 7 | 4 | 3 | 0 |
-| 2907 | 11 | 11 | 0 | 0 |
-| 2908 | 6 | 5 | 1 | 0 |
-| 2909 | 5 | 4 | 1 | 0 |
-| **TỔNG** | **48** | **41** | **7** | **0** |
+| 2906 | 7 | 3 | 4 | 0 |
+| 2907 | 11 | 10 | 1 | 0 |
+| 2908 | 6 | 4 | 2 | 0 |
+| 2909 | 5 | 3 | 2 | 0 |
+| **TỔNG** | **48** | **36** | **12** | **0** |
 
 `boPhan` = null ở cả 6 nhóm là **ĐÚNG**: chú giải nhóm 29.04–29.09 không có quy tắc bộ phận nào.
 `tieuChi6` + `dong8` đã đọc để đối chiếu nhưng **KHÔNG sửa** (ngoài phạm vi mục 4).
@@ -43,7 +43,7 @@ chỉ đổi `nguonLoai`).
 - **`nguonLoai`**: 48/48 mục trong phạm vi đã đổi `AI_DA_KIEM` → **`NGUOI_DUYET`** (luật 11). `tieuChi6`/`dong8`
   (122 mục) vẫn `AI_DA_KIEM` — ngoài phạm vi soát.
 
-## 3. 7 mục SỬA — toàn bộ là lớp lỗi MÁY KHÔNG bắt được
+## 3. 12 mục SỬA — toàn bộ là lớp lỗi MÁY KHÔNG bắt được
 
 | # | nhóm | mục | lỗi | cách sửa |
 |---|---|---|---|---|
@@ -54,11 +54,15 @@ chỉ đổi `nguonLoai`).
 | 5 | 2906 | `phanBiet[1].hoi` | **nhánh "không" sai**: hỏi mỗi ergosterol ⇒ hàng là **vitamin D2** trả lời "không" rơi nhầm 29.06 (nguồn nói rõ vào 29.36) | gộp hai vế thành MỘT câu hỏi có/không: "Hàng này là ergosterol **hoặc** vitamin D2 không?" (không tách thành 2 nhánh điều kiện độc lập) |
 | 6 | 2908 | `phamVi.text` | (a) `text` **vượt câu trích** (thêm câu định nghĩa không có trong `trich`) — vi phạm "text khớp 1-1 với trích"; (b) tràn trần clip (339 > 220) ⇒ cắt **giữa câu** định nghĩa | `text` chỉ giữ 4 tiêu đề (A)–(D), khớp 1-1 với `trich` (125 ký tự). Câu định nghĩa **không mất** khỏi sổ tay: là trích nguyên văn của `dieuKienVao[0]` |
 | 7 | 2909 | `phamVi.text` | tràn trần clip (311 > 220) ⇒ runtime cắt đúng trước vế **(D)** ⇒ mô hình **không thấy "peroxit"** trong phạm vi 29.09 (2909.60 là phân nhóm có thật) | rút còn **216** ký tự; giữ trọn cấu trúc (I)–(IV) của vế (A) và trọn vế (D); phần "peroxit axetal và peroxit hemiaxetal" lược **cùng chiều** với `trich` (vốn đã lược) nên `text`/`trich` vẫn khớp 1-1 |
+| 8–12 | 2904, 2906, 2907, 2908, 2909 | `phanBiet[0].hoi` | **mất ngoại lệ trong câu hỏi**: ngoại lệ "trừ quặng phóng xạ" CÓ trong câu trích nhưng `hoi` không mang ⇒ hàng là **quặng phóng xạ** (nguồn xếp vào Phần V) trả lời "có" rồi bị dẫn nhầm sang 28.44/28.45 | thêm "Trừ quặng phóng xạ." vào chính câu hỏi (mẫu nhà 0305 đã soát) và rút "là mặt hàng" cho vừa trần clip 110 → 101 ký tự |
 
 **Nền nhà đo trước khi sửa** (theo luật "đo nền nhà trước khi bác đề xuất"): 139/857 nhóm có `phamVi.text`
 > 220 ký tự (16 %) ⇒ đây là tình trạng chung của nhà, không phải lỗi riêng lô 090; tiền lệ soát đã sửa: lô 087
 (trần clip 110 mất hẳn vế), lô 1404 (clip 55 mất định danh), lô 1513/1517 (tràn trần `dong8`/`phanBiet`),
 lô 2304 (`phamVi.text` vượt 220 ⇒ cắt đúng dấu chấm câu).
+Với lỗi "mất ngoại lệ trong `hoi`": nền nhà **39/2047 `phanBiet` (1 %)** để ngoại lệ ngoài câu hỏi ⇒ 5 mục của
+lô 090 là ngoại lệ của ngoại lệ; mẫu nhà đã soát (`data/so-tay/0305.json`, `nguoiLoai=NGUOI_DUYET`) đặt ngoại lệ
+ngay trong câu hỏi.
 
 **KHÔNG xoá mục nào**: không mục nào "mờ máy" — mọi câu trích có thật, đúng khối nguồn, đúng nghĩa.
 
@@ -78,6 +82,7 @@ lô 2304 (`phamVi.text` vượt 220 ⇒ cắt đúng dấu chấm câu).
   đổi 6 nhóm chỉ để lấy 4 ký tự trích dẫn thì không đáng).
 - **`phanBiet` hỏi NGƯỢC điều kiện ở 2907**: "là phenol có độ tinh khiết **từ 90% trở lên**" ⇒ Có → 2907,
   Không → 2707. Ánh xạ ĐÚNG (không phải đảo chiều) — đã kiểm từng nhánh.
+- **2905 không có `phanBiet` cho quy tắc phóng xạ** (các nhóm kia có): `loaiTru[0]` vẫn khai đủ ⇒ cổng loại trừ vẫn chạy; `phanBiet` là câu hỏi phụ (không bắt buộc — mẫu nhà `2917` cũng chỉ có `loaiTru` cho quy tắc này) ⇒ KHÔNG thêm (thêm mục mới vượt phạm vi soát).
 - **`loaiTru[0]` giống hệt nhau ở cả 6 nhóm** (Chú giải 1(A) Phần I, 28.44/28.45) — giống mẫu nhà 2917; đích
   in riêng nên 6 dòng "→ 28.44/28.45" vẫn phân biệt được, không lỗi kiểu lô 1404 (3 dòng giống nhau khác đích).
 
@@ -97,7 +102,7 @@ npm test                                                       # ALL TESTS PASSE
 Kiểm bằng mắt trên khối runtime (`soTayBlock`): sau sửa, dòng "Phạm vi:" của cả 6 nhóm hiện **trọn vẹn**
 (có vế (G) của 2904, có vế (D) peroxit của 2909, có định ngữ "của rượu mạch hở" của 2905, có "của chúng"
 của 2906); dòng "LOẠI TRỪ" của 2906 hiện "Ergosterol và vitamin D2 …"; dòng "Câu hỏi phân biệt" của 2906
-hiện "Hàng này là ergosterol hoặc vitamin D2 không? có→29.36 / không→29.06".
+hiện "Hàng này là ergosterol hoặc vitamin D2 không? có→29.36 / không→29.06"; dòng "Câu hỏi phân biệt" của 2904/2906/2907/2908/2909 hiện trọn ngoại lệ "Trừ quặng phóng xạ." (101 ký tự ≤ trần clip 110).
 
 ## 6. VIỆC CỦA NGƯỜI DUYỆT (KHÔNG phải của em)
 

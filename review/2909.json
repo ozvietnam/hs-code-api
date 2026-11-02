@@ -3,10 +3,10 @@
   "nguoiSoat": "dev-soat-doc-lap-lo090",
   "luc": "2026-11-02T19:45:00+07:00",
   "soat": 5,
-  "giu": 4,
-  "sua": 1,
+  "giu": 3,
+  "sua": 2,
   "xoa": 0,
-  "ghiChu": "SOÁT ĐỘC LẬP 2909 — 5 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 1 loaiTru + 1 phanBiet). `boPhan` = null là ĐÚNG (chú giải nhóm 29.09 không có quy tắc bộ phận). Đọc kèm 10 tieuChi6 + 10 dong8 nhưng KHÔNG sửa. Đối chiếu toàn bộ khối [nhom2909.nhom]: nhóm KHÔNG có câu loại trừ nào ⇒ 1 loaiTru là đủ. SỬA 1 — `phamVi.text` 311 ký tự > trần clip 220 ⇒ runtime cắt đúng trước vế (D) ⇒ mô hình không thấy \"peroxit\" trong phạm vi 29.09 (2909.60 là phân nhóm có thật). Sửa: rút còn 216 ký tự, giữ trọn cấu trúc (I)–(IV) của vế (A) (sinh ra 4 phân nhóm 2909.11/.12/.20/.30) và giữ trọn vế (D); phần \"peroxit axetal và peroxit hemiaxetal\" được lược theo CÙNG CHIỀU với `trich` (vốn đã lược sẵn) nên `text` và `trich` vẫn khớp 1-1. KHÔNG xoá.",
+  "ghiChu": "SOÁT ĐỘC LẬP 2909 — 5 mục trong phạm vi mục 4 (1 phamVi + 2 dieuKienVao + 1 loaiTru + 1 phanBiet). `boPhan` = null là ĐÚNG (chú giải nhóm 29.09 không có quy tắc bộ phận). Đọc kèm 10 tieuChi6 + 10 dong8 nhưng KHÔNG sửa. Đối chiếu toàn bộ khối [nhom2909.nhom]: nhóm KHÔNG có câu loại trừ nào ⇒ 1 loaiTru là đủ. SỬA 1 — `phamVi.text` 311 ký tự > trần clip 220 ⇒ runtime cắt đúng trước vế (D) ⇒ mô hình không thấy \"peroxit\" trong phạm vi 29.09 (2909.60 là phân nhóm có thật). Sửa: rút còn 216 ký tự, giữ trọn cấu trúc (I)–(IV) của vế (A) (sinh ra 4 phân nhóm 2909.11/.12/.20/.30) và giữ trọn vế (D); phần \"peroxit axetal và peroxit hemiaxetal\" được lược theo CÙNG CHIỀU với `trich` (vốn đã lược sẵn) nên `text` và `trich` vẫn khớp 1-1.  SỬA thêm 1 — `phanBiet[0]` (quy tắc chuyển hàng phóng xạ, Chú giải 1(A) Phần I): ngoại lệ \"trừ quặng phóng xạ\" CÓ trong câu trích nhưng `hoi` không mang ⇒ hàng là quặng phóng xạ (nguồn xếp vào Phần V) trả lời \"có\" rồi bị dẫn nhầm sang 28.44/28.45. Thêm \"Trừ quặng phóng xạ.\" vào chính câu hỏi (mẫu nhà 0305 đã soát; nền nhà chỉ 39/2047 = 1 % `phanBiet` để ngoại lệ ngoài `hoi`) và rút \"là mặt hàng\" cho vừa trần clip 110. KHÔNG xoá.",
   "thayDoi": [
     {
       "index": "phamVi",
@@ -33,8 +33,11 @@
     },
     {
       "index": "phanBiet[0]",
-      "hanhDong": "giu",
-      "lyDo": "GIỮ — cùng lý do với 2904 phanBiet[0] (hỏi đúng vế định danh; Có→2844|2845, Không→2909)."
+      "hanhDong": "sua",
+      "lyDo": "MẤT NGOẠI LỆ TRONG CÂU HỎI (máy KHÔNG bắt được). Câu trích có ngoại lệ rõ ràng \"(trừ quặng phóng xạ)\" nhưng `hoi` không mang ngoại lệ ⇒ hàng là QUẶNG PHÓNG XẠ (nguồn xếp vào Phần V, xem Chú giải 1 Phần I) trả lời \"có\" cho câu hỏi này rồi bị dẫn sang 28.44/28.45 — SAI. Mẫu nhà (0305, đã soát độc lập) đưa ngoại lệ vào CHÍNH câu hỏi: \"…? Trừ <ngoại lệ>.\"; nền nhà chỉ 39/2047 (1 %) `phanBiet` để ngoại lệ ngoài `hoi` — 5 mục này là ngoại lệ của ngoại lệ. SỬA: thêm \"Trừ quặng phóng xạ.\" (nguyên văn trong câu trích) và rút \"là mặt hàng\" cho vừa trần clip 110 của runtime; `trich`, `neuCo` (2844|2845) và `neuKhong` (chính nhóm) giữ nguyên.",
+      "sua": {
+        "hoi": "Hàng này đáp ứng mô tả của các hợp chất phóng xạ hoặc các đồng vị phóng xạ không? Trừ quặng phóng xạ."
+      }
     }
   ]
 }
