@@ -1,0 +1,45 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "401519",
+  "nhom": "4015",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261102T1642#soan-401519",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "40151910",
+      "nguon": "tax.40151910",
+      "trich": "40151910 - - - Bằng cao su tự nhiên lưu hóa",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40151990",
+      "nguon": "tax.40151990",
+      "trich": "40151990 - - - Bằng cao su lưu hóa khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "40151910",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "loaiCaoSu",
+      "ghiChu": "tax.40151910 \"40151910 - - - Bằng cao su tự nhiên lưu hóa\" — ranh giới với 40151990 là cao su TỰ NHIÊN lưu hóa hay cao su lưu hóa KHÁC. Khoá chatLieu của tu-vung@2 chỉ có giá trị \"cao su\" (không tách tự nhiên/tổng hợp); dùng chatLieu \"cao su\" cho .10 sẽ bỏ chữ \"tự nhiên\" ⇒ rộng hơn chữ, không mượn."
+    },
+    {
+      "ma": "40151990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40151990 \"40151990 - - - Bằng cao su lưu hóa khác\" — chữ \"khác\" chỉ loại cao su của anh em 40151910 đứng trước ⇒ phanConLai: true (phủ định 40151910). Điều kiện phủ được anh em phụ thuộc khoá còn thiếu (xem THIEU_KHOA_TU_VUNG của 40151910)."
+    }
+  ]
+}
