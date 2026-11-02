@@ -274,6 +274,7 @@ const ST8544 = {
   check('9a 21.1 có trong "không quá 21,10 kW"', f(21.1, 'không quá 21,10 kW') === true);
   check('9b 26.3 KHÔNG có trong "26,38 kW"', f(26.3, 'không quá 26,38 kW') === false);
   check('9c 21 KHÔNG có trong "210 kg"', f(21, 'trên 210 kg') === false);
+  check('9e 2 có trong "2,0 gam"; 1.5 KHÔNG có trong "1.500 kg"; 2.5 KHÔNG có trong "2.500 cc"', f(2, 'không vượt quá 2,0 gam') && !f(1.5, '1.500 kg') && !f(2.5, '2.500 cc'));
   check('9d 1000 có trong "1.000 kg"; 2.5 có trong "2,50 mm"; 2.5 không có trong "2,501"', f(1000, 'trên 1.000 kg') && f(2.5, '2,50 mm') && !f(2.5, '2,501'));
 }
 
