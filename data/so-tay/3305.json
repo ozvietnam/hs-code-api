@@ -1,0 +1,200 @@
+{
+ "nhom": "3305",
+ "phamVi": {
+  "text": "Các chế phẩm dùng cho tóc (dầu gội đầu, thuốc uốn/duỗi tóc, keo xịt tóc, sáp vuốt tóc, thuốc nhuộm tóc...).",
+  "nguon": "nhom3305.nhom",
+  "trich": "Nhóm này gồm có: … (1) Các loại dầu gội đầu, chứa xà phòng hoặc các chất hữu cơ hoạt động bề mặt khác … (2) Các chế phẩm uốn tóc hoặc duỗi tóc. … (3) Keo xịt tóc (đôi khi gọi là “keo vuốt tóc”). … (4) Các chế phẩm dùng cho tóc khác",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_che_pham_dung_cho_toc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3305.nhom",
+   "trich": "Các chế phẩm dùng cho tóc khác, như là các sáp chải tóc; các loại dầu, các loại kem (pomades) và các chất định hình; các loại thuốc nhuộm tóc và các chế phẩm tẩy màu tóc; kem nhuộm tóc.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Chế phẩm dùng cho lông trên các phần khác của cơ thể",
+   "sangNhom": "3307",
+   "nguon": "nhom3305.nhom",
+   "trich": "Các chế phẩm được dùng cho lông trên các phần khác của cơ thể người, trừ loại dùng cho tóc bị loại trừ (nhóm 33.07).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là chế phẩm tẩy lông hoặc dùng cho lông trên các phần khác của cơ thể ngoài tóc?",
+   "neuCo": "3307",
+   "neuKhong": "3305",
+   "nguon": "nhom3305.nhom",
+   "trich": "Các chế phẩm được dùng cho lông trên các phần khác của cơ thể người, trừ loại dùng cho tóc bị loại trừ (nhóm 33.07).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "33051010",
+   "dieuKien": "Có tính chất chống nấm",
+   "loaiKhac": false,
+   "nguon": "tax.33051010",
+   "trich": "33051010 - - Có tính chất chống nấm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "33051090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.33051090",
+   "trich": "33051090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "330510",
+    "truAnhEm": [
+     "33051010"
+    ],
+    "truDayDu": [
+     "33051010"
+    ],
+    "toTienCoTen": "330510",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "33052000",
+   "dieuKien": "Chế phẩm uốn tóc hoặc làm duỗi tóc",
+   "loaiKhac": false,
+   "nguon": "tax.33052000",
+   "trich": "33052000 - Chế phẩm uốn tóc hoặc làm duỗi tóc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "33053000",
+   "dieuKien": "Keo xịt tóc (hair lacquers)",
+   "loaiKhac": false,
+   "nguon": "tax.33053000",
+   "trich": "33053000 - Keo xịt tóc (hair lacquers)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "33059000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.33059000",
+   "trich": "33059000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "3305",
+    "truAnhEm": [
+     "330510",
+     "33052000",
+     "33053000"
+    ],
+    "truDayDu": [
+     "330510",
+     "33052000",
+     "33053000"
+    ],
+    "toTienCoTen": "3305",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3305",
+    "cap": 4,
+    "cha": "33",
+    "tenVi": "Chế phẩm dùng cho tóc.",
+    "tenEn": "Hair preparations; for use on the hair",
+    "suyRa": false
+   },
+   {
+    "id": "330510",
+    "cap": 6,
+    "cha": "3305",
+    "tenVi": "Dầu gội đầu",
+    "tenEn": "Hair preparations; shampoos",
+    "suyRa": false
+   },
+   {
+    "id": "33051010",
+    "cap": 8,
+    "cha": "330510",
+    "tenVi": "Có tính chất chống nấm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "33051090",
+    "cap": 8,
+    "cha": "330510",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "33052000",
+    "cap": 8,
+    "cha": "3305",
+    "tenVi": "Chế phẩm uốn tóc hoặc làm duỗi tóc",
+    "tenEn": "Hair preparations; for permanent waving or straightening",
+    "suyRa": false,
+    "laPhanNhom": "330520"
+   },
+   {
+    "id": "33053000",
+    "cap": 8,
+    "cha": "3305",
+    "tenVi": "Keo xịt tóc (hair lacquers)",
+    "tenEn": "Hair preparations; lacquers",
+    "suyRa": false,
+    "laPhanNhom": "330530"
+   },
+   {
+    "id": "33059000",
+    "cap": 8,
+    "cha": "3305",
+    "tenVi": "Loại khác",
+    "tenEn": "Hair preparations; n.e.c. in heading no. 3305",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "330590"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3305.nhom",
+  "tax.33051010",
+  "tax.33051090",
+  "tax.33052000",
+  "tax.33053000",
+  "tax.33059000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:18:12.012Z",
+  "ms": 5
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

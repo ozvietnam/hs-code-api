@@ -1,0 +1,381 @@
+{
+ "nhom": "8802",
+ "phamVi": {
+  "text": "Phương tiện bay khác (máy bay, trực thăng); tàu vũ trụ (kể cả vệ tinh) và tàu bay trong quỹ đạo và phương tiện đẩy để phóng tàu vũ trụ.",
+  "nguon": "nhom8802.nhom",
+  "trich": "(1) Các phương tiện bay nặng hơn không khí hoạt động bằng một máy đẩy. Nhóm này bao gồm các loại máy bay (đỗ trên mặt đất, trên mặt nước và cả mặt đất mặt nước), máy bay ổn định nhờ hồi chuyển (được trang bị với một hoặc nhiều cánh quạt quay tự do quanh trục thẳng đứng), và các máy bay trực thăng",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_phuong_tien_bay_co_dong_co_hoac_tau_vu_tru",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch88.chuong",
+   "trich": "phương tiện bay khác (các nhóm 88.02 hoặc 88.06), tàu vũ trụ (kể cả vệ tinh) và phương tiện đẩy để phóng tầu vũ trụ (nhóm 88.02)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các tên lửa chiến đấu, tên lửa được dẫn đường và vũ khí chiến tranh tương tự",
+   "sangNhom": "9306",
+   "nguon": "nhom8802.nhom",
+   "trich": "các tên lửa chiến đấu, các tên lửa được dẫn đường, ví dụ “tên lửa đạn đạo”, và các vũ khí chiến tranh tương tự mà không truyền đến vật phóng một vận tốc lớn hơn 7.000m/giây (nhóm 93.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Phương tiện bay không người lái",
+   "sangNhom": "8806",
+   "nguon": "nhom8802.nhom",
+   "trich": "(b) Phương tiện bay không người lái được nêu tại Chú giải 1 Chương này (nhóm 88.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các đồ chơi hoặc mô hình để giải trí",
+   "sangNhom": "9503",
+   "nguon": "nhom8802.nhom",
+   "trich": "(c) Các đồ chơi hoặc mô hình để giải trí (nhóm 95.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Các mô hình thiết kế cho trò chơi di chuyển trong công viên giải trí hoặc hội chợ",
+   "sangNhom": "9508",
+   "nguon": "nhom8802.nhom",
+   "trich": "(d) Các mô hình được thiết kế đặc biệt cho trò chơi di chuyển trong công viên giải trí hoặc trong các trò chơi hội chợ (nhóm 95.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là tên lửa chiến đấu, tên lửa đạn đạo hoặc vũ khí chiến tranh tương tự?",
+   "neuCo": "9306",
+   "neuKhong": "8802",
+   "nguon": "nhom8802.nhom",
+   "trich": "các tên lửa chiến đấu, các tên lửa được dẫn đường, ví dụ “tên lửa đạn đạo”, và các vũ khí chiến tranh tương tự mà không truyền đến vật phóng một vận tốc lớn hơn 7.000m/giây (nhóm 93.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là phương tiện bay không người lái?",
+   "neuCo": "8806",
+   "neuKhong": "8802",
+   "nguon": "nhom8802.nhom",
+   "trich": "(b) Phương tiện bay không người lái được nêu tại Chú giải 1 Chương này (nhóm 88.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là đồ chơi hoặc mô hình để giải trí?",
+   "neuCo": "9503",
+   "neuKhong": "8802",
+   "nguon": "nhom8802.nhom",
+   "trich": "(c) Các đồ chơi hoặc mô hình để giải trí (nhóm 95.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là mô hình thiết kế đặc biệt cho trò chơi tại công viên giải trí hoặc hội chợ?",
+   "neuCo": "9508",
+   "neuKhong": "8802",
+   "nguon": "nhom8802.nhom",
+   "trich": "(d) Các mô hình được thiết kế đặc biệt cho trò chơi di chuyển trong công viên giải trí hoặc trong các trò chơi hội chợ (nhóm 95.08).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "880211",
+   "fact": "trong_luong_khong_tai",
+   "op": "<=",
+   "value": 2000,
+   "donVi": "kg",
+   "nguon": "wco.880211",
+   "trich": "880211 Helicopters, except unmanned; of an unladen weight not exceeding 2000kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880212",
+   "fact": "trong_luong_khong_tai",
+   "op": ">",
+   "value": 2000,
+   "donVi": "kg",
+   "nguon": "wco.880212",
+   "trich": "880212 Helicopters, except unmanned; of an unladen weight exceeding 2000kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "880220",
+   "fact": "trong_luong_khong_tai",
+   "op": "<=",
+   "value": 2000,
+   "donVi": "kg",
+   "nguon": "wco.880220",
+   "trich": "880220 Aeroplanes and other aircraft, except unmanned; of an unladen weight not exceeding 2000kg",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "88021100",
+   "dieuKien": "Trọng lượng không tải không quá 2.000 kg",
+   "loaiKhac": false,
+   "nguon": "tax.88021100",
+   "trich": "88021100 - - Trọng lượng không tải không quá 2.000 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88021200",
+   "dieuKien": "Trọng lượng không tải trên 2.000 kg",
+   "loaiKhac": false,
+   "nguon": "tax.88021200",
+   "trich": "88021200 - - Trọng lượng không tải trên 2.000 kg",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88022010",
+   "dieuKien": "Máy bay",
+   "loaiKhac": false,
+   "nguon": "tax.88022010",
+   "trich": "88022010 - - Máy bay",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88022090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.88022090",
+   "trich": "88022090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "880220",
+    "truAnhEm": [
+     "88022010"
+    ],
+    "truDayDu": [
+     "88022010"
+    ],
+    "toTienCoTen": "880220",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "88023010",
+   "dieuKien": "Máy bay",
+   "loaiKhac": false,
+   "nguon": "tax.88023010",
+   "trich": "88023010 - - Máy bay",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88023090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.88023090",
+   "trich": "88023090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "880230",
+    "truAnhEm": [
+     "88023010"
+    ],
+    "truDayDu": [
+     "88023010"
+    ],
+    "toTienCoTen": "880230",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "88024010",
+   "dieuKien": "Máy bay",
+   "loaiKhac": false,
+   "nguon": "tax.88024010",
+   "trich": "88024010 - - Máy bay",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "88024090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.88024090",
+   "trich": "88024090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "880240",
+    "truAnhEm": [
+     "88024010"
+    ],
+    "truDayDu": [
+     "88024010"
+    ],
+    "toTienCoTen": "880240",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "88026000",
+   "dieuKien": "Tàu vũ trụ (kể cả vệ tinh) và tàu bay trong quỹ đạo và phương tiện đẩy để phóng tàu vũ trụ",
+   "loaiKhac": false,
+   "nguon": "tax.88026000",
+   "trich": "88026000 - Tàu vũ trụ (kể cả vệ tinh) và tàu bay trong quỹ đạo và phương tiện đẩy để phóng tàu vũ trụ",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8802",
+    "cap": 4,
+    "cha": "88",
+    "tenVi": "Phương tiện bay khác (ví dụ, trực thăng, máy bay); trừ phương tiện bay không người lái thuộc nhóm 88.06; tàu vũ trụ (kể cả vệ tinh) và tàu bay trong quĩ đạo và phương tiện đẩy để phóng tàu vũ trụ.",
+    "tenEn": "Aircraft n.e.c. in heading no. 8801, except unmanned aircraft of heading 8806, (e.g. helicopters, aeroplanes); spacecraft (including satellites) and suborbital and spacecraft launch vehicles",
+    "suyRa": false
+   },
+   {
+    "id": "88021",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8802",
+    "tenVi": "Trực thăng",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "88021100",
+    "cap": 8,
+    "cha": "88021",
+    "tenVi": "Trọng lượng không tải không quá 2.000 kg",
+    "tenEn": "Helicopters, except unmanned; of an unladen weight not exceeding 2000kg",
+    "suyRa": false,
+    "laPhanNhom": "880211"
+   },
+   {
+    "id": "88021200",
+    "cap": 8,
+    "cha": "88021",
+    "tenVi": "Trọng lượng không tải trên 2.000 kg",
+    "tenEn": "Helicopters, except unmanned; of an unladen weight exceeding 2000kg",
+    "suyRa": false,
+    "laPhanNhom": "880212"
+   },
+   {
+    "id": "880220",
+    "cap": 6,
+    "cha": "8802",
+    "tenVi": "Máy bay và phương tiện bay khác, có trọng lượng không tải không quá 2.000 kg",
+    "tenEn": "Aeroplanes and other aircraft, except unmanned; of an unladen weight not exceeding 2000kg",
+    "suyRa": false
+   },
+   {
+    "id": "88022010",
+    "cap": 8,
+    "cha": "880220",
+    "tenVi": "Máy bay",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "88022090",
+    "cap": 8,
+    "cha": "880220",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "880230",
+    "cap": 6,
+    "cha": "8802",
+    "tenVi": "Máy bay và phương tiện bay khác, có trọng lượng không tải trên 2.000 kg nhưng không quá 15.000 kg",
+    "tenEn": "Aeroplanes and other aircraft, except unmanned; of an unladen weight exceeding 2000kg but not exceeding 15,000kg",
+    "suyRa": false
+   },
+   {
+    "id": "88023010",
+    "cap": 8,
+    "cha": "880230",
+    "tenVi": "Máy bay",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "88023090",
+    "cap": 8,
+    "cha": "880230",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "880240",
+    "cap": 6,
+    "cha": "8802",
+    "tenVi": "Máy bay và phương tiện bay khác, có trọng lượng không tải trên 15.000kg",
+    "tenEn": "Aeroplanes and other aircraft, except unmanned; of an unladen weight exceeding 15,000kg",
+    "suyRa": false
+   },
+   {
+    "id": "88024010",
+    "cap": 8,
+    "cha": "880240",
+    "tenVi": "Máy bay",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "88024090",
+    "cap": 8,
+    "cha": "880240",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "88026000",
+    "cap": 8,
+    "cha": "8802",
+    "tenVi": "Tàu vũ trụ (kể cả vệ tinh) và tàu bay trong quỹ đạo và phương tiện đẩy để phóng tàu vũ trụ",
+    "tenEn": "Spacecraft; (including satellites) and suborbital and spacecraft launch vehicles",
+    "suyRa": false,
+    "laPhanNhom": "880260"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch88.chuong",
+  "nhom8802.nhom",
+  "tax.88021100",
+  "tax.88021200",
+  "tax.88022010",
+  "tax.88022090",
+  "tax.88023010",
+  "tax.88023090",
+  "tax.88024010",
+  "tax.88024090",
+  "tax.88026000",
+  "wco.880211",
+  "wco.880212",
+  "wco.880220"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.842Z",
+  "ms": 9
+ },
+ "kiemTra": {
+  "tong": 24,
+  "dat": 22,
+  "loai": 2,
+  "nguonBiCat": []
+ }
+}

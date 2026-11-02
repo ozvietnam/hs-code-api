@@ -1,0 +1,811 @@
+{
+ "nhom": "8407",
+ "phamVi": {
+  "text": "Động cơ đốt trong kiểu piston chuyển động tịnh tiến hoặc chuyển động quay tròn, đánh lửa bằng tia lửa điện; kể cả động cơ cho xe cộ.",
+  "nguon": "nhom8407.nhom",
+  "trich": "Nhóm này bao gồm các loại động cơ piston đốt trong chuyển động tịnh tiến hoặc kiểu piston chuyển động quay tròn, đốt cháy bằng tia lửa điện (động cơ có rôto đĩa 3 thuỳ kiểu Wankel), mồi lửa bằng tia lửa điện, trừ loại thuộc Chương 95. Kể cả loại động cơ cho xe có động cơ.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_dong_co_piston_dot_trong_danh_lua_bang_tia_lua_dien",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "thuộc Chương 95"
+   ],
+   "nguon": "nhom8407.nhom",
+   "trich": "các loại động cơ piston đốt trong chuyển động tịnh tiến hoặc kiểu piston chuyển động quay tròn, đốt cháy bằng tia lửa điện (động cơ có rôto đĩa 3 thuỳ kiểu Wankel), mồi lửa bằng tia lửa điện, trừ loại thuộc Chương 95.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Thiết bị tạo khí ga đặt ngoài động cơ",
+   "sangNhom": "8405",
+   "nguon": "nhom8407.nhom",
+   "trich": "thông thường thiết bị tạo khí ga nằm ngoài động cơ, và trong trường hợp này, máy tạo khí luôn luôn được phân loại thuộc nhóm 84.05.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Bộ phận của các động cơ thuộc nhóm này",
+   "sangNhom": "8409",
+   "nguon": "nhom8407.nhom",
+   "trich": "bộ phận của các động cơ thuộc nhóm này được phân loại vào nhóm 84.09.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là máy tạo khí ga nằm ngoài động cơ?",
+   "neuCo": "8405",
+   "neuKhong": "8407",
+   "nguon": "nhom8407.nhom",
+   "trich": "thông thường thiết bị tạo khí ga nằm ngoài động cơ, và trong trường hợp này, máy tạo khí luôn luôn được phân loại thuộc nhóm 84.05.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là bộ phận của động cơ thuộc nhóm này?",
+   "neuCo": "8409",
+   "neuKhong": "8407",
+   "nguon": "nhom8407.nhom",
+   "trich": "bộ phận của các động cơ thuộc nhóm này được phân loại vào nhóm 84.09.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "840731",
+   "fact": "dung_tich_xi_lanh_khong_qua_50cc",
+   "op": "<=",
+   "value": 50,
+   "donVi": "cc",
+   "nguon": "wco.840731",
+   "trich": "of a cylinder capacity not exceeding 50cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "840732",
+   "fact": "dung_tich_xi_lanh_tren_50cc_den_250cc",
+   "op": "<=",
+   "value": 250,
+   "donVi": "cc",
+   "nguon": "wco.840732",
+   "trich": "of a cylinder capacity exceeding 50cc but not exceeding 250cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "840733",
+   "fact": "dung_tich_xi_lanh_tren_250cc_den_1000cc",
+   "op": "<=",
+   "value": 1000,
+   "donVi": "cc",
+   "nguon": "wco.840733",
+   "trich": "of a cylinder capacity exceeding 250cc but not exceeding 1000cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "840734",
+   "fact": "dung_tich_xi_lanh_tren_1000cc",
+   "op": ">",
+   "value": 1000,
+   "donVi": "cc",
+   "nguon": "wco.840734",
+   "trich": "of a cylinder capacity exceeding 1000cc",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "84071000",
+   "dieuKien": "Động cơ phương tiện bay",
+   "loaiKhac": false,
+   "nguon": "tax.84071000",
+   "trich": "84071000 - Động cơ phương tiện bay",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84072110",
+   "dieuKien": "Công suất không quá 22,38 kW",
+   "loaiKhac": false,
+   "nguon": "tax.84072110",
+   "trich": "84072110 - - - Công suất không quá 22,38 kW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84072190",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84072190",
+   "trich": "84072190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "840721",
+    "truAnhEm": [
+     "84072110"
+    ],
+    "truDayDu": [
+     "84072110"
+    ],
+    "toTienCoTen": "840721",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84072920",
+   "dieuKien": "Công suất không quá 22,38 kW",
+   "loaiKhac": false,
+   "nguon": "tax.84072920",
+   "trich": "84072920 - - - Công suất không quá 22,38 kW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84072990",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84072990",
+   "trich": "84072990 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "840729",
+    "truAnhEm": [
+     "84072920"
+    ],
+    "truDayDu": [
+     "84072920"
+    ],
+    "toTienCoTen": "840729",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84073100",
+   "dieuKien": "Dung tích xi lanh không quá 50 cc",
+   "loaiKhac": false,
+   "nguon": "tax.84073100",
+   "trich": "84073100 - - Dung tích xi lanh không quá 50 cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073211",
+   "dieuKien": "Dùng cho xe thuộc nhóm 87.01",
+   "loaiKhac": false,
+   "nguon": "tax.84073211",
+   "trich": "84073211 - - - - Dùng cho xe thuộc nhóm 87.01",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073212",
+   "dieuKien": "Dùng cho xe thuộc nhóm 87.11",
+   "loaiKhac": false,
+   "nguon": "tax.84073212",
+   "trich": "84073212 - - - - Dùng cho xe thuộc nhóm 87.11",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073219",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84073219",
+   "trich": "84073219 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8407321",
+    "truAnhEm": [
+     "84073211",
+     "84073212"
+    ],
+    "truDayDu": [
+     "84073211",
+     "84073212"
+    ],
+    "toTienCoTen": "840732",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84073222",
+   "dieuKien": "Dùng cho xe thuộc nhóm 87.11",
+   "loaiKhac": false,
+   "nguon": "tax.84073222",
+   "trich": "84073222 - - - - Dùng cho xe thuộc nhóm 87.11",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073229",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84073229",
+   "trich": "84073229 - - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8407322",
+    "truAnhEm": [
+     "84073222"
+    ],
+    "truDayDu": [
+     "84073222"
+    ],
+    "toTienCoTen": "840732",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84073310",
+   "dieuKien": "Dùng cho xe thuộc nhóm 87.01",
+   "loaiKhac": false,
+   "nguon": "tax.84073310",
+   "trich": "84073310 - - - Dùng cho xe thuộc nhóm 87.01",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073320",
+   "dieuKien": "Dùng cho xe thuộc nhóm 87.11",
+   "loaiKhac": false,
+   "nguon": "tax.84073320",
+   "trich": "84073320 - - - Dùng cho xe thuộc nhóm 87.11",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073390",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84073390",
+   "trich": "84073390 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "840733",
+    "truAnhEm": [
+     "84073310",
+     "84073320"
+    ],
+    "truDayDu": [
+     "84073310",
+     "84073320"
+    ],
+    "toTienCoTen": "840733",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84073440",
+   "dieuKien": "Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc",
+   "loaiKhac": false,
+   "nguon": "tax.84073440",
+   "trich": "84073440 - - - - Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073450",
+   "dieuKien": "Dùng cho xe khác thuộc nhóm 87.01",
+   "loaiKhac": false,
+   "nguon": "tax.84073450",
+   "trich": "84073450 - - - - Dùng cho xe khác thuộc nhóm 87.01",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073460",
+   "dieuKien": "Dùng cho xe thuộc nhóm 87.11",
+   "loaiKhac": false,
+   "nguon": "tax.84073460",
+   "trich": "84073460 - - - - Dùng cho xe thuộc nhóm 87.11",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073471",
+   "dieuKien": "Dung tích xi lanh không quá 2.000 cc",
+   "loaiKhac": false,
+   "nguon": "tax.84073471",
+   "trich": "84073471 - - - - - Dung tích xi lanh không quá 2.000 cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073472",
+   "dieuKien": "Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
+   "loaiKhac": false,
+   "nguon": "tax.84073472",
+   "trich": "84073472 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073473",
+   "dieuKien": "Dung tích xi lanh trên 3.000 cc",
+   "loaiKhac": false,
+   "nguon": "tax.84073473",
+   "trich": "84073473 - - - - - Dung tích xi lanh trên 3.000 cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073491",
+   "dieuKien": "Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc",
+   "loaiKhac": false,
+   "nguon": "tax.84073491",
+   "trich": "84073491 - - - - Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073492",
+   "dieuKien": "Dùng cho xe khác thuộc nhóm 87.01",
+   "loaiKhac": false,
+   "nguon": "tax.84073492",
+   "trich": "84073492 - - - - Dùng cho xe khác thuộc nhóm 87.01",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073493",
+   "dieuKien": "Dùng cho xe thuộc nhóm 87.11",
+   "loaiKhac": false,
+   "nguon": "tax.84073493",
+   "trich": "84073493 - - - - Dùng cho xe thuộc nhóm 87.11",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073494",
+   "dieuKien": "Dung tích xi lanh không quá 2.000 cc",
+   "loaiKhac": false,
+   "nguon": "tax.84073494",
+   "trich": "84073494 - - - - - Dung tích xi lanh không quá 2.000 cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073495",
+   "dieuKien": "Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
+   "loaiKhac": false,
+   "nguon": "tax.84073495",
+   "trich": "84073495 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84073499",
+   "dieuKien": "Dung tích xi lanh trên 3.000 cc",
+   "loaiKhac": false,
+   "nguon": "tax.84073499",
+   "trich": "84073499 - - - - - Dung tích xi lanh trên 3.000 cc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84079010",
+   "dieuKien": "Công suất không quá 18,65 kW",
+   "loaiKhac": false,
+   "nguon": "tax.84079010",
+   "trich": "84079010 - - Công suất không quá 18,65 kW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84079020",
+   "dieuKien": "Công suất trên 18,65 kW nhưng không quá 22,38 kW",
+   "loaiKhac": false,
+   "nguon": "tax.84079020",
+   "trich": "84079020 - - Công suất trên 18,65 kW nhưng không quá 22,38 kW",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84079090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84079090",
+   "trich": "84079090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "840790",
+    "truAnhEm": [
+     "84079010",
+     "84079020"
+    ],
+    "truDayDu": [
+     "84079010",
+     "84079020"
+    ],
+    "toTienCoTen": "840790",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8407",
+    "cap": 4,
+    "cha": "84",
+    "tenVi": "Động cơ đốt trong kiểu piston chuyển động tịnh tiến hoặc kiểu piston chuyển động quay đốt cháy bằng tia lửa điện (+).",
+    "tenEn": "Reciprocating or rotary internal combustion piston engines",
+    "suyRa": false
+   },
+   {
+    "id": "84071000",
+    "cap": 8,
+    "cha": "8407",
+    "tenVi": "Động cơ phương tiện bay",
+    "tenEn": "Engines; for aircraft, spark-ignition reciprocating or rotary internal combustion piston engines",
+    "suyRa": false,
+    "laPhanNhom": "840710"
+   },
+   {
+    "id": "84072",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8407",
+    "tenVi": "Động cơ máy thủy",
+    "tenEn": "Marine propulsion engines",
+    "suyRa": true
+   },
+   {
+    "id": "840721",
+    "cap": 6,
+    "cha": "84072",
+    "tenVi": "Động cơ gắn ngoài",
+    "tenEn": "Engines; outboard motors for marine propulsion, spark-ignition reciprocating or rotary internal combustion piston engines",
+    "suyRa": false
+   },
+   {
+    "id": "84072110",
+    "cap": 8,
+    "cha": "840721",
+    "tenVi": "Công suất không quá 22,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84072190",
+    "cap": 8,
+    "cha": "840721",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "840729",
+    "cap": 6,
+    "cha": "84072",
+    "tenVi": "Loại khác",
+    "tenEn": "Engines; for marine propulsion, (other than outboard motors), spark-ignition reciprocating or rotary internal combustion piston engines",
+    "suyRa": false
+   },
+   {
+    "id": "84072920",
+    "cap": 8,
+    "cha": "840729",
+    "tenVi": "Công suất không quá 22,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84072990",
+    "cap": 8,
+    "cha": "840729",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "84073",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8407",
+    "tenVi": "Động cơ đốt trong kiểu piston chuyển động tịnh tiến dùng để tạo động lực cho các loại xe thuộc Chương 87",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "84073100",
+    "cap": 8,
+    "cha": "84073",
+    "tenVi": "Dung tích xi lanh không quá 50 cc",
+    "tenEn": "Engines; reciprocating piston engines, of a kind used for the propulsion of vehicles of chapter 87, of a cylinder capacity not exceeding 50cc",
+    "suyRa": false,
+    "laPhanNhom": "840731"
+   },
+   {
+    "id": "840732",
+    "cap": 6,
+    "cha": "84073",
+    "tenVi": "Dung tích xi lanh trên 50 cc nhưng không quá 250 cc",
+    "tenEn": "Engines; reciprocating piston engines, of a kind used for the propulsion of vehicles of chapter 87, of a cylinder capacity exceeding 50cc but not exceeding 250cc",
+    "suyRa": false
+   },
+   {
+    "id": "8407321",
+    "cap": "TIEU_DE_QG",
+    "cha": "840732",
+    "tenVi": "Dung tích xilanh trên 50 cc nhưng không quá 110 cc",
+    "tenEn": "Exceeding 50 cc but not exceeding 110 cc",
+    "suyRa": true
+   },
+   {
+    "id": "84073211",
+    "cap": 8,
+    "cha": "8407321",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.01",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073212",
+    "cap": 8,
+    "cha": "8407321",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.11",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073219",
+    "cap": 8,
+    "cha": "8407321",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "8407322",
+    "cap": "TIEU_DE_QG",
+    "cha": "840732",
+    "tenVi": "Dung tích xilanh trên 110 cc nhưng không quá 250 cc",
+    "tenEn": "Exceeding 110 cc but not exceeding 250 cc",
+    "suyRa": true
+   },
+   {
+    "id": "84073222",
+    "cap": 8,
+    "cha": "8407322",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.11",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073229",
+    "cap": 8,
+    "cha": "8407322",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "840733",
+    "cap": 6,
+    "cha": "84073",
+    "tenVi": "Dung tích xi lanh trên 250 cc nhưng không quá 1.000 cc",
+    "tenEn": "Engines; reciprocating piston engines, of a kind used for the propulsion of vehicles of chapter 87, of a cylinder capacity exceeding 250cc but not exceeding 1000cc",
+    "suyRa": false
+   },
+   {
+    "id": "84073310",
+    "cap": 8,
+    "cha": "840733",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.01",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073320",
+    "cap": 8,
+    "cha": "840733",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.11",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073390",
+    "cap": 8,
+    "cha": "840733",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "840734",
+    "cap": 6,
+    "cha": "84073",
+    "tenVi": "Dung tích xi lanh trên 1.000 cc",
+    "tenEn": "Engines; reciprocating piston engines, of a kind used for the propulsion of vehicles of chapter 87, of a cylinder capacity exceeding 1000cc",
+    "suyRa": false
+   },
+   {
+    "id": "84073440",
+    "cap": 8,
+    "cha": "840734",
+    "tenVi": "Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073450",
+    "cap": 8,
+    "cha": "840734",
+    "tenVi": "Dùng cho xe khác thuộc nhóm 87.01",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073460",
+    "cap": 8,
+    "cha": "840734",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.11",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "8407347",
+    "cap": "TIEU_DE_QG",
+    "cha": "840734",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "84073471",
+    "cap": 8,
+    "cha": "8407347",
+    "tenVi": "Dung tích xi lanh không quá 2.000 cc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073472",
+    "cap": 8,
+    "cha": "8407347",
+    "tenVi": "Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073473",
+    "cap": 8,
+    "cha": "8407347",
+    "tenVi": "Dung tích xi lanh trên 3.000 cc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "8407349",
+    "cap": "TIEU_DE_QG",
+    "cha": "840734",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "84073491",
+    "cap": 8,
+    "cha": "8407349",
+    "tenVi": "Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073492",
+    "cap": 8,
+    "cha": "8407349",
+    "tenVi": "Dùng cho xe khác thuộc nhóm 87.01",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073493",
+    "cap": 8,
+    "cha": "8407349",
+    "tenVi": "Dùng cho xe thuộc nhóm 87.11",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073494",
+    "cap": 8,
+    "cha": "8407349",
+    "tenVi": "Dung tích xi lanh không quá 2.000 cc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073495",
+    "cap": 8,
+    "cha": "8407349",
+    "tenVi": "Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84073499",
+    "cap": 8,
+    "cha": "8407349",
+    "tenVi": "Dung tích xi lanh trên 3.000 cc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "840790",
+    "cap": 6,
+    "cha": "8407",
+    "tenVi": "Động cơ khác",
+    "tenEn": "Engines; rotary internal combustion piston engines, for other than aircraft or marine propulsion",
+    "suyRa": false
+   },
+   {
+    "id": "84079010",
+    "cap": 8,
+    "cha": "840790",
+    "tenVi": "Công suất không quá 18,65 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84079020",
+    "cap": 8,
+    "cha": "840790",
+    "tenVi": "Công suất trên 18,65 kW nhưng không quá 22,38 kW",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84079090",
+    "cap": 8,
+    "cha": "840790",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8407.nhom",
+  "tax.84071000",
+  "tax.84072110",
+  "tax.84072190",
+  "tax.84072920",
+  "tax.84072990",
+  "tax.84073100",
+  "tax.84073211",
+  "tax.84073212",
+  "tax.84073219",
+  "tax.84073222",
+  "tax.84073229",
+  "tax.84073310",
+  "tax.84073320",
+  "tax.84073390",
+  "tax.84073440",
+  "tax.84073450",
+  "tax.84073460",
+  "tax.84073471",
+  "tax.84073472",
+  "tax.84073473",
+  "tax.84073491",
+  "tax.84073492",
+  "tax.84073493",
+  "tax.84073494",
+  "tax.84073495",
+  "tax.84073499",
+  "tax.84079010",
+  "tax.84079020",
+  "tax.84079090",
+  "wco.840731",
+  "wco.840732",
+  "wco.840733",
+  "wco.840734"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T09:46:41.536Z",
+  "ms": 19
+ },
+ "kiemTra": {
+  "tong": 40,
+  "dat": 39,
+  "loai": 1,
+  "nguonBiCat": []
+ }
+}

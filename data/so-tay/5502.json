@@ -1,0 +1,125 @@
+{
+ "nhom": "5502",
+ "phamVi": {
+  "text": "Tô filament tái tạo đáp ứng các tiêu chuẩn kỹ thuật quy định trong Chú giải 1 Chương 55",
+  "nguon": "ch55.chuong",
+  "trich": "Các nhóm 55.01 và 55.02 chỉ áp dụng với tô filament nhân tạo, bao gồm các filament song song có cùng chiều dài tương đương chiều dài của tô (tow), thoả mãn các chỉ tiêu kỹ thuật dưới đây:",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_to_filament_nhan_tao_song_song",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch55.chuong",
+   "trich": "Các nhóm 55.01 và 55.02 chỉ áp dụng với tô filament nhân tạo, bao gồm các filament song song có cùng chiều dài tương đương chiều dài của tô (tow)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Tô (tow) có chiều dài không quá 2 m",
+   "sangNhom": "5504",
+   "nguon": "ch55.chuong",
+   "trich": "Tô (tow) có chiều dài không quá 2 m thì được xếp vào nhóm 55.03 hoặc 55.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là tô filament có chiều dài không quá 2 m chuyển sang nhóm 55.04 không?",
+   "neuCo": "5504",
+   "neuKhong": "5502",
+   "nguon": "ch55.chuong",
+   "trich": "Tô (tow) có chiều dài không quá 2 m thì được xếp vào nhóm 55.03 hoặc 55.04.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "55021000",
+   "dieuKien": "Từ xenlulo axetat",
+   "loaiKhac": false,
+   "nguon": "tax.55021000",
+   "trich": "55021000 - Từ xenlulo axetat",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "55029000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.55029000",
+   "trich": "55029000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "5502",
+    "truAnhEm": [
+     "55021000"
+    ],
+    "truDayDu": [
+     "55021000"
+    ],
+    "toTienCoTen": "5502",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5502",
+    "cap": 4,
+    "cha": "55",
+    "tenVi": "Tô (tow) filament tái tạo.",
+    "tenEn": "Artificial filament tow",
+    "suyRa": false
+   },
+   {
+    "id": "55021000",
+    "cap": 8,
+    "cha": "5502",
+    "tenVi": "Từ xenlulo axetat",
+    "tenEn": "Fibres; artificial filament tow of cellulose acetate",
+    "suyRa": false,
+    "laPhanNhom": "550210"
+   },
+   {
+    "id": "55029000",
+    "cap": 8,
+    "cha": "5502",
+    "tenVi": "Loại khác",
+    "tenEn": "Fibres; artificial filament tow, other than cellulose acetate",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "550290"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch55.chuong",
+  "tax.55021000",
+  "tax.55029000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:27:45.876Z",
+  "ms": 538
+ },
+ "kiemTra": {
+  "tong": 6,
+  "dat": 6,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan55.phan (46130→25000)"
+  ]
+ }
+}

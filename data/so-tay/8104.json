@@ -1,0 +1,226 @@
+{
+ "nhom": "8104",
+ "phamVi": {
+  "text": "Magiê và các sản phẩm bằng magiê, kể cả phế liệu và mảnh vụn, dạng chưa gia công, bột, hạt, mạt giũa và phoi tiện.",
+  "nguon": "nhom8104.nhom",
+  "trich": "Nhóm này bao gồm :\n\n(1) Magie chưa gia công ở dạng thỏi, các thanh có khía rãnh, phiến, que, bánh, khối lập phương và các dạng tương tự.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_magie_va_san_pham_cua_magie",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch81.chuong",
+   "trich": "Chương này chỉ giới hạn bao gồm sau đây: các kim loại cơ bản, các hợp kim của chúng, và các sản phẩm của chúng mà không được đề cập riêng ở bất cứ phần nào trong Danh mục.\n\n(A) Vôn-fram (wolfram) (nhóm 81.01), Molybden (Mo) (nhóm 81.02), Tantan(Ta) nhóm 81.03), Magie(Mg) (nhóm 81.04)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Xỉ, tro và phần còn lại của quá trình sản xuất của magiê",
+   "sangNhom": "2620",
+   "nguon": "nhom8104.nhom",
+   "trich": "Nhóm này không bao gồm xỉ, tro và phần còn lại của quá trình sản xuất của magie (nhóm 26.20).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là xỉ, tro hoặc phần còn lại của quá trình sản xuất magiê?",
+   "neuCo": "2620",
+   "neuKhong": "8104",
+   "nguon": "nhom8104.nhom",
+   "trich": "Nhóm này không bao gồm xỉ, tro và phần còn lại của quá trình sản xuất của magie (nhóm 26.20).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "810411",
+   "fact": "ham_luong_magie",
+   "op": ">=",
+   "value": 99.8,
+   "donVi": "%",
+   "nguon": "wco.810411",
+   "trich": "810411 Magnesium; unwrought, containing at least 99.8% by weight of magnesium",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "810419",
+   "fact": "ham_luong_magie",
+   "op": "<",
+   "value": 99.8,
+   "donVi": "%",
+   "nguon": "wco.810419",
+   "trich": "810419 Magnesium; unwrought, containing less than 99.8% by weight of magnesium",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "81041100",
+   "dieuKien": "Có chứa hàm lượng magiê ít nhất 99,8% tính theo khối lượng",
+   "loaiKhac": false,
+   "nguon": "tax.81041100",
+   "trich": "81041100 - - Có chứa hàm lượng magiê ít nhất 99,8% tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "81041900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.81041900",
+   "trich": "81041900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "81041",
+    "truAnhEm": [
+     "81041100"
+    ],
+    "truDayDu": [
+     "81041100"
+    ],
+    "toTienCoTen": "8104",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "81042000",
+   "dieuKien": "Phế liệu và mảnh vụn",
+   "loaiKhac": false,
+   "nguon": "tax.81042000",
+   "trich": "81042000 - Phế liệu và mảnh vụn",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "81043000",
+   "dieuKien": "Mạt giũa, phoi tiện và hạt, đã được phân loại theo kích cỡ; bột",
+   "loaiKhac": false,
+   "nguon": "tax.81043000",
+   "trich": "81043000 - Mạt giũa, phoi tiện và hạt, đã được phân loại theo kích cỡ; bột",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "81049000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.81049000",
+   "trich": "81049000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "8104",
+    "truAnhEm": [
+     "81041",
+     "81042000",
+     "81043000"
+    ],
+    "truDayDu": [
+     "81041",
+     "81042000",
+     "81043000"
+    ],
+    "toTienCoTen": "8104",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8104",
+    "cap": 4,
+    "cha": "81",
+    "tenVi": "Magie và các sản phẩm của magie, kể cả phế liệu và mảnh vụn(+).",
+    "tenEn": "Magnesium; articles thereof, including waste and scrap",
+    "suyRa": false
+   },
+   {
+    "id": "81041",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8104",
+    "tenVi": "Magiê chưa gia công",
+    "tenEn": "Unwrought magnesium",
+    "suyRa": true
+   },
+   {
+    "id": "81041100",
+    "cap": 8,
+    "cha": "81041",
+    "tenVi": "Có chứa hàm lượng magiê ít nhất 99,8% tính theo khối lượng",
+    "tenEn": "Magnesium; unwrought, containing at least 99.8% by weight of magnesium",
+    "suyRa": false,
+    "laPhanNhom": "810411"
+   },
+   {
+    "id": "81041900",
+    "cap": 8,
+    "cha": "81041",
+    "tenVi": "Loại khác",
+    "tenEn": "Magnesium; unwrought, containing less than 99.8% by weight of magnesium",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "810419"
+   },
+   {
+    "id": "81042000",
+    "cap": 8,
+    "cha": "8104",
+    "tenVi": "Phế liệu và mảnh vụn",
+    "tenEn": "Magnesium; waste and scrap",
+    "suyRa": false,
+    "laPhanNhom": "810420"
+   },
+   {
+    "id": "81043000",
+    "cap": 8,
+    "cha": "8104",
+    "tenVi": "Mạt giũa, phoi tiện và hạt, đã được phân loại theo kích cỡ; bột",
+    "tenEn": "Magnesium; raspings, turnings and granules, graded according to size, powders",
+    "suyRa": false,
+    "laPhanNhom": "810430"
+   },
+   {
+    "id": "81049000",
+    "cap": 8,
+    "cha": "8104",
+    "tenVi": "Loại khác",
+    "tenEn": "Magnesium; articles n.e.c. in heading no. 8104",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "810490"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch81.chuong",
+  "nhom8104.nhom",
+  "tax.81041100",
+  "tax.81041900",
+  "tax.81042000",
+  "tax.81043000",
+  "tax.81049000",
+  "wco.810411",
+  "wco.810419"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T13:06:43.623Z",
+  "ms": 6
+ },
+ "kiemTra": {
+  "tong": 11,
+  "dat": 11,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

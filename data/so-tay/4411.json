@@ -1,0 +1,296 @@
+{
+ "nhom": "4411",
+ "phamVi": {
+  "text": "Ván sợi bằng gỗ hoặc bằng các loại vật liệu có chất gỗ khác, đã hoặc chưa liên kết bằng keo hoặc các chất kết dính hữu cơ khác.",
+  "nguon": "nhom4411.nhom",
+  "trich": "Hầu hết các ván sợi được chế tạo từ dăm mảnh, được gỡ xơ theo cách cơ học (khử xơ) hoặc hấp cho xơ rời ra hoặc được chế từ các chất liệu ligno-cellulosic đã được gỡ sợi khác (thu được, ví dụ, từ bã mía hay tre). Những sợi xơ trong ván được nhận biết bằng kính hiển vi.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_van_soi",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch44.chuong",
+   "trich": "Ván dăm và các loại ván tương tự, ván sợi, gỗ ghép và gỗ đã được làm tăng độ rắn (các nhóm 44.10 đến 44.13).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Ván dăm dù có hoặc không ghép với một hoặc một vài ván sợi",
+   "sangNhom": "4410",
+   "nguon": "nhom4411.nhom",
+   "trich": "Ván dăm dù có hoặc không ghép với một hoặc một vài ván sợi (nhóm 44.10).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Gỗ ghép với lõi gồm ván sợi",
+   "sangNhom": "4412",
+   "nguon": "nhom4411.nhom",
+   "trich": "Gỗ ghép với lõi gồm ván sợi (nhóm 44.12).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Panel gỗ xốp thường có cả hai mặt là ván sợi",
+   "sangNhom": "4418",
+   "nguon": "nhom4411.nhom",
+   "trich": "Panel gỗ xốp thường có cả hai mặt là ván sợi (nhóm 44.18).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng có phải là ván dăm có hoặc không ghép với ván sợi?",
+   "neuCo": "4410",
+   "neuKhong": "4411",
+   "nguon": "nhom4411.nhom",
+   "trich": "Ván dăm dù có hoặc không ghép với một hoặc một vài ván sợi (nhóm 44.10).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là gỗ ghép có lõi bằng ván sợi?",
+   "neuCo": "4412",
+   "neuKhong": "4411",
+   "nguon": "nhom4411.nhom",
+   "trich": "Gỗ ghép với lõi gồm ván sợi (nhóm 44.12).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng có phải là panel gỗ xốp có hai mặt là ván sợi?",
+   "neuCo": "4418",
+   "neuKhong": "4411",
+   "nguon": "nhom4411.nhom",
+   "trich": "Panel gỗ xốp thường có cả hai mặt là ván sợi (nhóm 44.18).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "441112",
+   "fact": "chieu_day",
+   "op": "<=",
+   "value": 5,
+   "donVi": "mm",
+   "nguon": "wco.441112",
+   "trich": "of a thickness not exceeding 5 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "441113",
+   "fact": "chieu_day",
+   "op": "<=",
+   "value": 9,
+   "donVi": "mm",
+   "nguon": "wco.441113",
+   "trich": "of a thickness exceeding 5 mm but not exceeding 9 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "441114",
+   "fact": "chieu_day",
+   "op": ">",
+   "value": 9,
+   "donVi": "mm",
+   "nguon": "wco.441114",
+   "trich": "of a thickness exceeding 9 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "441192",
+   "fact": "ty_trong",
+   "op": ">",
+   "value": 0.8,
+   "donVi": "g/cm3",
+   "nguon": "wco.441192",
+   "trich": "of a density exceeding 0.8g/cm3",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "441193",
+   "fact": "ty_trong",
+   "op": "<=",
+   "value": 0.8,
+   "donVi": "g/cm3",
+   "nguon": "wco.441193",
+   "trich": "of a density exceeding 0.5g/cm3 but not 0.8g/cm3",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "441194",
+   "fact": "ty_trong",
+   "op": "<=",
+   "value": 0.5,
+   "donVi": "g/cm3",
+   "nguon": "wco.441194",
+   "trich": "of a density not exceeding 0.5g/cm3",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "44111200",
+   "dieuKien": "Loại có chiều dày không quá 5 mm",
+   "loaiKhac": false,
+   "nguon": "tax.44111200",
+   "trich": "44111200 - - Loại có chiều dày không quá 5 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "44111300",
+   "dieuKien": "Loại có chiều dày trên 5 mm nhưng không quá 9 mm",
+   "loaiKhac": false,
+   "nguon": "tax.44111300",
+   "trich": "44111300 - - Loại có chiều dày trên 5 mm nhưng không quá 9 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "44111400",
+   "dieuKien": "Loại có chiều dày trên 9 mm",
+   "loaiKhac": false,
+   "nguon": "tax.44111400",
+   "trich": "44111400 - - Loại có chiều dày trên 9 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "44119200",
+   "dieuKien": "Có tỷ trọng trên 0,8 g/cm³",
+   "loaiKhac": false,
+   "nguon": "tax.44119200",
+   "trich": "44119200 - - Có tỷ trọng trên 0,8 g/cm³",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "44119300",
+   "dieuKien": "Có tỷ trọng trên 0,5 g/cm³ nhưng không quá 0,8 g/cm³",
+   "loaiKhac": false,
+   "nguon": "tax.44119300",
+   "trich": "44119300 - - Có tỷ trọng trên 0,5 g/cm³ nhưng không quá 0,8 g/cm³",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "44119400",
+   "dieuKien": "Có tỷ trọng không quá 0,5 g/cm³ ",
+   "loaiKhac": false,
+   "nguon": "tax.44119400",
+   "trich": "44119400 - - Có tỷ trọng không quá 0,5 g/cm³ ",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4411",
+    "cap": 4,
+    "cha": "44",
+    "tenVi": "Ván sợi bằng gỗ hoặc bằng các loại vật liệu có chất gỗ khác, đã hoặc chưa ghép lại bằng keo hoặc bằng các chất kết dính hữu cơ khác.",
+    "tenEn": "Fibreboard of wood or other ligneous materials, whether or not bonded with resins or other organic substances",
+    "suyRa": false
+   },
+   {
+    "id": "44111",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "4411",
+    "tenVi": "Ván sợi có tỷ trọng trung bình (MDF)",
+    "tenEn": "Medium density fibreboard (MDF)",
+    "suyRa": true
+   },
+   {
+    "id": "44111200",
+    "cap": 8,
+    "cha": "44111",
+    "tenVi": "Loại có chiều dày không quá 5 mm",
+    "tenEn": "Medium density fibreboard (MDF), of a thickness not exceeding 5 mm",
+    "suyRa": false,
+    "laPhanNhom": "441112"
+   },
+   {
+    "id": "44111300",
+    "cap": 8,
+    "cha": "44111",
+    "tenVi": "Loại có chiều dày trên 5 mm nhưng không quá 9 mm",
+    "tenEn": "Medium density fibreboard (MDF), of a thickness exceeding 5 mm but not exceeding 9 mm",
+    "suyRa": false,
+    "laPhanNhom": "441113"
+   },
+   {
+    "id": "44111400",
+    "cap": 8,
+    "cha": "44111",
+    "tenVi": "Loại có chiều dày trên 9 mm",
+    "tenEn": "Medium density fibreboard (MDF), of a thickness exceeding 9 mm",
+    "suyRa": false,
+    "laPhanNhom": "441114"
+   },
+   {
+    "id": "44119",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "4411",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "44119200",
+    "cap": 8,
+    "cha": "44119",
+    "tenVi": "Có tỷ trọng trên 0,8 g/cm³",
+    "tenEn": "Fibreboard (other than MDF) of a density exceeding 0.8g/cm3, of wood or other ligneous materials, bonded or not with resins or other organic substances",
+    "suyRa": false,
+    "laPhanNhom": "441192"
+   },
+   {
+    "id": "44119300",
+    "cap": 8,
+    "cha": "44119",
+    "tenVi": "Có tỷ trọng trên 0,5 g/cm³ nhưng không quá 0,8 g/cm³",
+    "tenEn": "Fibreboard (other than MDF) of a density exceeding 0.5g/cm3 but not 0.8g/cm3, of wood or other ligneous materials, bonded or not with resins or other organic substances",
+    "suyRa": false,
+    "laPhanNhom": "441193"
+   },
+   {
+    "id": "44119400",
+    "cap": 8,
+    "cha": "44119",
+    "tenVi": "Có tỷ trọng không quá 0,5 g/cm³",
+    "tenEn": "Fibreboard (other than MDF) of a density not exceeding 0.5g/cm3, of wood or other ligneous materials, bonded or not with resins or other organic substances",
+    "suyRa": false,
+    "laPhanNhom": "441194"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch44.chuong",
+  "nhom4411.nhom",
+  "tax.44111200",
+  "tax.44111300",
+  "tax.44111400",
+  "tax.44119200",
+  "tax.44119300",
+  "tax.44119400",
+  "wco.441112",
+  "wco.441113",
+  "wco.441114",
+  "wco.441192",
+  "wco.441193",
+  "wco.441194"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:57:18.605Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 20,
+  "dat": 20,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

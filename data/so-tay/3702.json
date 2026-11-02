@@ -1,0 +1,873 @@
+{
+ "nhom": "3702",
+ "phamVi": {
+  "text": "Phim tạo ảnh dạng cuộn, đã phủ chất nhạy, chưa phơi sáng, bằng các vật liệu trừ giấy, bìa hoặc vật liệu dệt; phim chụp ảnh lấy ngay dạng cuộn.",
+  "nguon": "nhom3702.nhom",
+  "trich": "Nhóm này bao gồm:\n\n(A) Phim tạo ảnh ở dạng cuộn, bằng loại vật liệu bất kỳ trừ giấy, bìa hoặc vật liệu dệt.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_phim_tao_anh_dang_cuon_chua_phoi_sang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3702.nhom",
+   "trich": "Phim chụp ảnh ở dạng cuộn (nghĩa là trừ dạng phẳng), đã phủ chất nhạy, chưa phơi sáng thường là poly (ethylene terephthalate), axetat cellulose hoặc những vật liệu mềm tương tự và thường cho sự phơi sáng lớn.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Phim bằng giấy, bìa hoặc vật liệu dệt",
+   "sangNhom": "3703",
+   "nguon": "nhom3702.nhom",
+   "trich": "Nhóm này không bao gồm những phim như vậy bằng giấy (ví dụ, giấy \"phim\" dùng để làm âm bản), bìa hoặc vật liệu dệt (nhóm 37.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Phim in ngay dạng phẳng, đã được phủ chất nhạy, chưa phơi sáng",
+   "sangNhom": "3701",
+   "nguon": "nhom3702.nhom",
+   "trich": "Tuy nhiên, phim in ngay dạng phẳng, đã được phủ chất nhạy, chưa phơi sáng, thì bị loại trừ (nhóm 37.01)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Phim trắng chưa ghi dùng để ghi âm cơ học",
+   "sangNhom": "8523",
+   "nguon": "nhom3702.nhom",
+   "trich": "(c) Phim trắng chưa ghi dùng để ghi âm cơ học (nhóm 85.23).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là phim bằng giấy, bìa hoặc vật liệu dệt thuộc nhóm 37.03?",
+   "neuCo": "3703",
+   "neuKhong": "3702",
+   "nguon": "nhom3702.nhom",
+   "trich": "Nhóm này không bao gồm những phim như vậy bằng giấy (ví dụ, giấy \"phim\" dùng để làm âm bản), bìa hoặc vật liệu dệt (nhóm 37.03).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là phim in ngay dạng phẳng chưa phơi sáng thuộc nhóm 37.01?",
+   "neuCo": "3701",
+   "neuKhong": "3702",
+   "nguon": "nhom3702.nhom",
+   "trich": "Tuy nhiên, phim in ngay dạng phẳng, đã được phủ chất nhạy, chưa phơi sáng, thì bị loại trừ (nhóm 37.01)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là phim trắng chưa ghi dùng ghi âm cơ học thuộc nhóm 85.23?",
+   "neuCo": "8523",
+   "neuKhong": "3702",
+   "nguon": "nhom3702.nhom",
+   "trich": "(c) Phim trắng chưa ghi dùng để ghi âm cơ học (nhóm 85.23).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "370231",
+   "fact": "chieu_rong_khong_qua_105mm",
+   "op": "<=",
+   "value": 105,
+   "donVi": "mm",
+   "nguon": "wco.370231",
+   "trich": "370231 Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, without sprocket holes, of a width not exceeding 105mm (other than of paper, paperboard or textiles)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "370241",
+   "fact": "chieu_rong_tren_610mm",
+   "op": ">",
+   "value": 610,
+   "donVi": "mm",
+   "nguon": "wco.370241",
+   "trich": "370241 Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, without sprocket holes, of a width exceeding 610mm and of a length exceeding 200m (other than of paper, paperboard or textiles)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "370241",
+   "fact": "chieu_dai_tren_200m",
+   "op": ">",
+   "value": 200,
+   "donVi": "m",
+   "nguon": "wco.370241",
+   "trich": "370241 Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, without sprocket holes, of a width exceeding 610mm and of a length exceeding 200m (other than of paper, paperboard or textiles)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "370243",
+   "fact": "chieu_dai_khong_qua_200m",
+   "op": "<=",
+   "value": 200,
+   "donVi": "m",
+   "nguon": "wco.370243",
+   "trich": "370243 Photographic film; in rolls, sensitised, unexposed, without sprocket holes, of a width exceeding 610mm and of a length not exceeding 200m (other than of paper, paperboard or textiles)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "370252",
+   "fact": "chieu_rong_khong_qua_16mm",
+   "op": "<=",
+   "value": 16,
+   "donVi": "mm",
+   "nguon": "wco.370252",
+   "trich": "370252 Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, of a width not exceeding 16mm (other than of paper, paperboard or textiles)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "370256",
+   "fact": "chieu_rong_tren_35mm",
+   "op": ">",
+   "value": 35,
+   "donVi": "mm",
+   "nguon": "wco.370256",
+   "trich": "370256 Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, of a width exceeding 35mm (other than of paper, paperboard or textiles)",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "37021000",
+   "dieuKien": "Dùng cho chụp X quang",
+   "loaiKhac": false,
+   "nguon": "tax.37021000",
+   "trich": "37021000 - Dùng cho chụp X quang",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37023100",
+   "dieuKien": "Dùng cho ảnh màu (đa màu)",
+   "loaiKhac": false,
+   "nguon": "tax.37023100",
+   "trich": "37023100 - - Dùng cho ảnh màu (đa màu)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37023200",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37023200",
+   "trich": "37023200 - - Loại khác, có tráng nhũ tương bạc halogenua",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "37023",
+    "truAnhEm": [
+     "37023100"
+    ],
+    "truDayDu": [
+     "37023100",
+     "37021000",
+     "37024",
+     "37025",
+     "37029"
+    ],
+    "toTienCoTen": "3702",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37023900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37023900",
+   "trich": "37023900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "37023",
+    "truAnhEm": [
+     "37023100",
+     "37023200"
+    ],
+    "truDayDu": [
+     "37023100",
+     "37023200",
+     "37021000",
+     "37024",
+     "37025",
+     "37029"
+    ],
+    "toTienCoTen": "3702",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "37024100",
+   "dieuKien": "Loại chiều rộng trên 610 mm và chiều dài trên 200 m, dùng cho ảnh màu (đa màu)",
+   "loaiKhac": false,
+   "nguon": "tax.37024100",
+   "trich": "37024100 - - Loại chiều rộng trên 610 mm và chiều dài trên 200 m, dùng cho ảnh màu (đa màu)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37024210",
+   "dieuKien": "Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+   "loaiKhac": false,
+   "nguon": "tax.37024210",
+   "trich": "37024210 - - - Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37024290",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37024290",
+   "trich": "37024290 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370242",
+    "truAnhEm": [
+     "37024210"
+    ],
+    "truDayDu": [
+     "37024210"
+    ],
+    "toTienCoTen": "370242",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37024300",
+   "dieuKien": "Loại chiều rộng trên 610 mm và chiều dài không quá 200 m",
+   "loaiKhac": false,
+   "nguon": "tax.37024300",
+   "trich": "37024300 - - Loại chiều rộng trên 610 mm và chiều dài không quá 200 m",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37024400",
+   "dieuKien": "Loại chiều rộng trên 105 mm nhưng không quá 610 mm",
+   "loaiKhac": false,
+   "nguon": "tax.37024400",
+   "trich": "37024400 - - Loại chiều rộng trên 105 mm nhưng không quá 610 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37025220",
+   "dieuKien": "Loại phù hợp dùng cho điện ảnh",
+   "loaiKhac": false,
+   "nguon": "tax.37025220",
+   "trich": "37025220 - - - Loại phù hợp dùng cho điện ảnh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37025290",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37025290",
+   "trich": "37025290 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370252",
+    "truAnhEm": [
+     "37025220"
+    ],
+    "truDayDu": [
+     "37025220"
+    ],
+    "toTienCoTen": "370252",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37025300",
+   "dieuKien": "Loại chiều rộng trên 16 mm nhưng không quá 35 mm và chiều dài không quá 30 m, dùng làm phim chiếu",
+   "loaiKhac": false,
+   "nguon": "tax.37025300",
+   "trich": "37025300 - - Loại chiều rộng trên 16 mm nhưng không quá 35 mm và chiều dài không quá 30 m, dùng làm phim chiếu",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37025440",
+   "dieuKien": "Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+   "loaiKhac": false,
+   "nguon": "tax.37025440",
+   "trich": "37025440 - - - Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37025490",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37025490",
+   "trich": "37025490 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370254",
+    "truAnhEm": [
+     "37025440"
+    ],
+    "truDayDu": [
+     "37025440"
+    ],
+    "toTienCoTen": "370254",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37025520",
+   "dieuKien": "Loại phù hợp dùng cho điện ảnh",
+   "loaiKhac": false,
+   "nguon": "tax.37025520",
+   "trich": "37025520 - - - Loại phù hợp dùng cho điện ảnh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37025550",
+   "dieuKien": "Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+   "loaiKhac": false,
+   "nguon": "tax.37025550",
+   "trich": "37025550 - - - Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37025590",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37025590",
+   "trich": "37025590 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370255",
+    "truAnhEm": [
+     "37025520",
+     "37025550"
+    ],
+    "truDayDu": [
+     "37025520",
+     "37025550"
+    ],
+    "toTienCoTen": "370255",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37025620",
+   "dieuKien": "Loại phù hợp dùng cho điện ảnh",
+   "loaiKhac": false,
+   "nguon": "tax.37025620",
+   "trich": "37025620 - - - Loại phù hợp dùng cho điện ảnh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37025690",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37025690",
+   "trich": "37025690 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370256",
+    "truAnhEm": [
+     "37025620"
+    ],
+    "truDayDu": [
+     "37025620"
+    ],
+    "toTienCoTen": "370256",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37029610",
+   "dieuKien": "Loại phù hợp dùng cho điện ảnh",
+   "loaiKhac": false,
+   "nguon": "tax.37029610",
+   "trich": "37029610 - - - Loại phù hợp dùng cho điện ảnh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37029690",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37029690",
+   "trich": "37029690 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370296",
+    "truAnhEm": [
+     "37029610"
+    ],
+    "truDayDu": [
+     "37029610"
+    ],
+    "toTienCoTen": "370296",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37029710",
+   "dieuKien": "Loại phù hợp dùng cho điện ảnh",
+   "loaiKhac": false,
+   "nguon": "tax.37029710",
+   "trich": "37029710 - - - Loại phù hợp dùng cho điện ảnh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37029790",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37029790",
+   "trich": "37029790 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370297",
+    "truAnhEm": [
+     "37029710"
+    ],
+    "truDayDu": [
+     "37029710"
+    ],
+    "toTienCoTen": "370297",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37029810",
+   "dieuKien": "Loại phù hợp dùng cho điện ảnh",
+   "loaiKhac": false,
+   "nguon": "tax.37029810",
+   "trich": "37029810 - - - Loại phù hợp dùng cho điện ảnh",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "37029830",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37029830",
+   "trich": "37029830 - - - Loại khác, chiều dài từ 120 m trở lên",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370298",
+    "truAnhEm": [
+     "37029810"
+    ],
+    "truDayDu": [
+     "37029810"
+    ],
+    "toTienCoTen": "370298",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "37029890",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.37029890",
+   "trich": "37029890 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "370298",
+    "truAnhEm": [
+     "37029810",
+     "37029830"
+    ],
+    "truDayDu": [
+     "37029810",
+     "37029830"
+    ],
+    "toTienCoTen": "370298",
+    "dinhNghiaDuoc": false
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3702",
+    "cap": 4,
+    "cha": "37",
+    "tenVi": "Phim để tạo ảnh ở dạng cuộn, có phủ lớp chất nhạy, chưa phơi sáng, bằng vật liệu bất kỳ trừ giấy, bìa hoặc vật liệu dệt; phim in ngay ở dạng cuộn, có phủ lớp chất nhạy, chưa phơi sáng.",
+    "tenEn": "Photographic film in rolls, sensitised, unexposed, of any material other than paper, paperboard or textiles; instant print film in rolls, sensitised, unexposed",
+    "suyRa": false
+   },
+   {
+    "id": "37021000",
+    "cap": 8,
+    "cha": "3702",
+    "tenVi": "Dùng cho chụp X quang",
+    "tenEn": "Photographic film; for x-rays, in rolls, sensitised and unexposed (other than of paper, paperboard or textiles)",
+    "suyRa": false,
+    "laPhanNhom": "370210"
+   },
+   {
+    "id": "37023",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "3702",
+    "tenVi": "Phim loại khác, không có dãy lỗ kéo phim, có chiều rộng không quá 105 mm",
+    "tenEn": "Other film, without perforations, of a width not exceeding 105 mm",
+    "suyRa": true
+   },
+   {
+    "id": "37023100",
+    "cap": 8,
+    "cha": "37023",
+    "tenVi": "Dùng cho ảnh màu (đa màu)",
+    "tenEn": "Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, without sprocket holes, of a width not exceeding 105mm (other than of paper, paperboard or textiles)",
+    "suyRa": false,
+    "laPhanNhom": "370231"
+   },
+   {
+    "id": "37023200",
+    "cap": 8,
+    "cha": "37023",
+    "tenVi": "Loại khác, có tráng nhũ tương bạc halogenua",
+    "tenEn": "Photographic film; in rolls, with silver halide emulsion, sensitised, unexposed, without sprocket holes, of a width not exceeding 105mm (other than of paper, paperboard or textiles)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "370232"
+   },
+   {
+    "id": "37023900",
+    "cap": 8,
+    "cha": "37023",
+    "tenVi": "Loại khác",
+    "tenEn": "Photographic film; in rolls, (other than with silver halide emulsion and for colour photography), sensitised, unexposed, without sprocket holes, of a width not exceeding 105mm (other than of paper, paperboard or textiles)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "370239"
+   },
+   {
+    "id": "37024",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "3702",
+    "tenVi": "Phim loại khác, không có dãy lỗ kéo phim, có chiều rộng trên 105 mm",
+    "tenEn": "Other film, without perforations, of a width exceeding 105 mm",
+    "suyRa": true
+   },
+   {
+    "id": "37024100",
+    "cap": 8,
+    "cha": "37024",
+    "tenVi": "Loại chiều rộng trên 610 mm và chiều dài trên 200 m, dùng cho ảnh màu (đa màu)",
+    "tenEn": "Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, without sprocket holes, of a width exceeding 610mm and of a length exceeding 200m (other than of paper, paperboard or textiles)",
+    "suyRa": false,
+    "laPhanNhom": "370241"
+   },
+   {
+    "id": "370242",
+    "cap": 6,
+    "cha": "37024",
+    "tenVi": "Loại chiều rộng trên 610 mm và chiều dài trên 200 m, trừ loại dùng cho ảnh màu",
+    "tenEn": "Photographic film; in rolls, (other than for colour photography), sensitised, unexposed, without sprocket holes, of a width exceeding 610mm and of a length exceeding 200m (other than of paper, paperboard or textiles)",
+    "suyRa": false
+   },
+   {
+    "id": "37024210",
+    "cap": 8,
+    "cha": "370242",
+    "tenVi": "Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37024290",
+    "cap": 8,
+    "cha": "370242",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "37024300",
+    "cap": 8,
+    "cha": "37024",
+    "tenVi": "Loại chiều rộng trên 610 mm và chiều dài không quá 200 m",
+    "tenEn": "Photographic film; in rolls, sensitised, unexposed, without sprocket holes, of a width exceeding 610mm and of a length not exceeding 200m (other than of paper, paperboard or textiles)",
+    "suyRa": false,
+    "laPhanNhom": "370243"
+   },
+   {
+    "id": "37024400",
+    "cap": 8,
+    "cha": "37024",
+    "tenVi": "Loại chiều rộng trên 105 mm nhưng không quá 610 mm",
+    "tenEn": "Photographic film; in rolls, sensitised, unexposed, without sprocket holes, of a width exceeding 105mm but not exceeding 610mm (other than of paper, paperboard or textiles)",
+    "suyRa": false,
+    "laPhanNhom": "370244"
+   },
+   {
+    "id": "37025",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "3702",
+    "tenVi": "Phim loại khác, dùng cho ảnh màu (đa màu)",
+    "tenEn": "Other film, for colour photography (polychrome)",
+    "suyRa": true
+   },
+   {
+    "id": "370252",
+    "cap": 6,
+    "cha": "37025",
+    "tenVi": "Loại chiều rộng không quá 16 mm",
+    "tenEn": "Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, of a width not exceeding 16mm (other than of paper, paperboard or textiles)",
+    "suyRa": false
+   },
+   {
+    "id": "37025220",
+    "cap": 8,
+    "cha": "370252",
+    "tenVi": "Loại phù hợp dùng cho điện ảnh",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37025290",
+    "cap": 8,
+    "cha": "370252",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "37025300",
+    "cap": 8,
+    "cha": "37025",
+    "tenVi": "Loại chiều rộng trên 16 mm nhưng không quá 35 mm và chiều dài không quá 30 m, dùng làm phim chiếu",
+    "tenEn": "Photographic film; for colour photography (polychrome) slides, in rolls, sensitised, unexposed, of a width exceeding 16mm but not exceeding 35mm and of a length not exceeding 30m (other than of paper, paperboard or textiles)",
+    "suyRa": false,
+    "laPhanNhom": "370253"
+   },
+   {
+    "id": "370254",
+    "cap": 6,
+    "cha": "37025",
+    "tenVi": "Loại chiều rộng trên 16 mm nhưng không quá 35 mm và chiều dài không quá 30 m, trừ loại dùng làm phim chiếu",
+    "tenEn": "Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, of a width exceeding 16mm but not 35mm and of a length not exceeding 30m, excluding film for slides (other than of paper, paperboard or textiles)",
+    "suyRa": false
+   },
+   {
+    "id": "37025440",
+    "cap": 8,
+    "cha": "370254",
+    "tenVi": "Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37025490",
+    "cap": 8,
+    "cha": "370254",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "370255",
+    "cap": 6,
+    "cha": "37025",
+    "tenVi": "Loại chiều rộng trên 16 mm nhưng không quá 35 mm và chiều dài trên 30 m",
+    "tenEn": "Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, of a width exceeding 16mm but not 35mm and of a length exceeding 30m (other than of paper, paperboard or textiles)",
+    "suyRa": false
+   },
+   {
+    "id": "37025520",
+    "cap": 8,
+    "cha": "370255",
+    "tenVi": "Loại phù hợp dùng cho điện ảnh",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37025550",
+    "cap": 8,
+    "cha": "370255",
+    "tenVi": "Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37025590",
+    "cap": 8,
+    "cha": "370255",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "370256",
+    "cap": 6,
+    "cha": "37025",
+    "tenVi": "Loại chiều rộng trên 35 mm",
+    "tenEn": "Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, of a width exceeding 35mm (other than of paper, paperboard or textiles)",
+    "suyRa": false
+   },
+   {
+    "id": "37025620",
+    "cap": 8,
+    "cha": "370256",
+    "tenVi": "Loại phù hợp dùng cho điện ảnh",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37025690",
+    "cap": 8,
+    "cha": "370256",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "37029",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "3702",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "370296",
+    "cap": 6,
+    "cha": "37029",
+    "tenVi": "Loại chiều rộng không quá 35 mm và chiều dài không quá 30 m",
+    "tenEn": "Photographic film; other than for colour photography, in rolls, sensitised, unexposed, of a width not exceeding 35mm and of a length not exceeding 30m (other than of paper, paperboard or textiles)",
+    "suyRa": false
+   },
+   {
+    "id": "37029610",
+    "cap": 8,
+    "cha": "370296",
+    "tenVi": "Loại phù hợp dùng cho điện ảnh",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37029690",
+    "cap": 8,
+    "cha": "370296",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "370297",
+    "cap": 6,
+    "cha": "37029",
+    "tenVi": "Loại chiều rộng không quá 35 mm và chiều dài trên 30 m",
+    "tenEn": "Photographic film; other than for colour photography, in rolls, sensitised, unexposed, of a width not exceeding 35mm and of a length exceeding 30m (other than paper, paperboard or textiles)",
+    "suyRa": false
+   },
+   {
+    "id": "37029710",
+    "cap": 8,
+    "cha": "370297",
+    "tenVi": "Loại phù hợp dùng cho điện ảnh",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37029790",
+    "cap": 8,
+    "cha": "370297",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "370298",
+    "cap": 6,
+    "cha": "37029",
+    "tenVi": "Loại chiều rộng trên 35 mm",
+    "tenEn": "Photographic film; other than for colour photography, in rolls, sensitised, unexposed, of a width exceeding 35mm (other than of paper, paperboard or textiles)",
+    "suyRa": false
+   },
+   {
+    "id": "37029810",
+    "cap": 8,
+    "cha": "370298",
+    "tenVi": "Loại phù hợp dùng cho điện ảnh",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "37029830",
+    "cap": 8,
+    "cha": "370298",
+    "tenVi": "Loại khác, chiều dài từ 120 m trở lên",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "37029890",
+    "cap": 8,
+    "cha": "370298",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3702.nhom",
+  "tax.37021000",
+  "tax.37023100",
+  "tax.37023200",
+  "tax.37023900",
+  "tax.37024100",
+  "tax.37024210",
+  "tax.37024290",
+  "tax.37024300",
+  "tax.37024400",
+  "tax.37025220",
+  "tax.37025290",
+  "tax.37025300",
+  "tax.37025440",
+  "tax.37025490",
+  "tax.37025520",
+  "tax.37025550",
+  "tax.37025590",
+  "tax.37025620",
+  "tax.37025690",
+  "tax.37029610",
+  "tax.37029690",
+  "tax.37029710",
+  "tax.37029790",
+  "tax.37029810",
+  "tax.37029830",
+  "tax.37029890",
+  "wco.370231",
+  "wco.370241",
+  "wco.370243",
+  "wco.370252",
+  "wco.370256"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:42:26.286Z",
+  "ms": 20
+ },
+ "kiemTra": {
+  "tong": 40,
+  "dat": 40,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

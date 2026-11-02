@@ -1,0 +1,158 @@
+{
+ "nhom": "4103",
+ "phamVi": {
+  "text": "Da sống loại khác (tươi, hoặc muối, làm khô, ngâm vôi, ngâm axit hoặc bảo quản cách khác, nhưng chưa thuộc, chưa làm thành da giấy hoặc xử lý thêm), đã hoặc chưa khử lông hoặc lạng xẻ, trừ các loại thuộc nhóm 41.01 hoặc 41.02.",
+  "nguon": "nhom4103.nhom",
+  "trich": "Nhóm này bao gồm: … (A) Tất cả các loại da sống không có lông hoặc đã khử lông, trừ loại thuộc nhóm 41.01 hoặc 41.02.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_da_song_loai_khac_chua_thuoc",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom4103.nhom",
+   "trich": "Nhóm này bao gồm: … (A) Tất cả các loại da sống không có lông hoặc đã khử lông, trừ loại thuộc nhóm 41.01 hoặc 41.02. Nhóm này bao gồm da chim, gia cầm mà lông vũ và lông tơ của nó đã bị loại bỏ, và các loại da cá, da của loài bò sát và da dê hoặc da dê non đã được khử lông (kể cả dê và dê non Yemen, Mông Cổ hoặc Tây Tạng).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Da chim, gia cầm còn lông vũ hoặc lông tơ",
+   "sangNhom": "0505",
+   "nguon": "nhom4103.nhom",
+   "trich": "(c) Da chim, gia cầm và các phần của da chim, gia cầm còn lông vũ hoặc lông tơ, thuộc nhóm 05.05 hoặc 67.01.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Da vụn và phế liệu tương tự từ da sống",
+   "sangNhom": "0511",
+   "nguon": "nhom4103.nhom",
+   "trich": "(b) Da vụn và phế liệu tương tự từ da sống (nhóm 05.11).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hóa có phải là da chim còn lông vũ thuộc nhóm 05.05 hoặc 67.01 không?",
+   "neuCo": "0505",
+   "neuKhong": "4103",
+   "nguon": "nhom4103.nhom",
+   "trich": "(c) Da chim, gia cầm và các phần của da chim, gia cầm còn lông vũ hoặc lông tơ, thuộc nhóm 05.05 hoặc 67.01.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hóa có phải là da vụn hoặc phế liệu từ da sống thuộc nhóm 05.11 không?",
+   "neuCo": "0511",
+   "neuKhong": "4103",
+   "nguon": "nhom4103.nhom",
+   "trich": "(b) Da vụn và phế liệu tương tự từ da sống (nhóm 05.11).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "41032000",
+   "dieuKien": "Của loài bò sát",
+   "loaiKhac": false,
+   "nguon": "tax.41032000",
+   "trich": "41032000 - Của loài bò sát",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "41033000",
+   "dieuKien": "Của lợn",
+   "loaiKhac": false,
+   "nguon": "tax.41033000",
+   "trich": "41033000 - Của lợn",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "41039000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.41039000",
+   "trich": "41039000 - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "4103",
+    "truAnhEm": [
+     "41032000",
+     "41033000"
+    ],
+    "truDayDu": [
+     "41032000",
+     "41033000"
+    ],
+    "toTienCoTen": "4103",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4103",
+    "cap": 4,
+    "cha": "41",
+    "tenVi": "Da sống của loài động vật khác (tươi, hoặc muối, khô, ngâm vôi, axit hoá hoặc được bảo quản cách khác, nhưng chưa thuộc, chưa làm thành da giấy hoặc gia công thêm), đã hoặc chưa khử lông hoặc lạng xẻ, trừ các loại đã loại trừ trong Chú giải 1(b) hoặc 1(c) của Chương này.",
+    "tenEn": "Raw hides and skins n.e.c in headings no. 4101, 4102; fresh, salted, dried, pickled or otherwise preserved, not further prepared, whether or not dehaired or split",
+    "suyRa": false
+   },
+   {
+    "id": "41032000",
+    "cap": 8,
+    "cha": "4103",
+    "tenVi": "Của loài bò sát",
+    "tenEn": "Hides and skins; raw, of reptiles (fresh or salted, dried, limed, pickled or otherwise preserved, but not tanned, parchment-dressed or further prepared), whether or not dehaired or split",
+    "suyRa": false,
+    "laPhanNhom": "410320"
+   },
+   {
+    "id": "41033000",
+    "cap": 8,
+    "cha": "4103",
+    "tenVi": "Của lợn",
+    "tenEn": "Hides and skins; raw, of swine, (fresh or salted, dried, limed, pickled or otherwise preserved, but not tanned, parchment-dressed or further prepared), whether or not dehaired or split",
+    "suyRa": false,
+    "laPhanNhom": "410330"
+   },
+   {
+    "id": "41039000",
+    "cap": 8,
+    "cha": "4103",
+    "tenVi": "Loại khác",
+    "tenEn": "Hides and skins; raw, of animals n.e.c. in this chapter, fresh, salted, dried, limed, pickled or otherwise preserved, (but not tanned, parchment-dressed or further prepared), whether or not dehaired or split",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "410390"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom4103.nhom",
+  "tax.41032000",
+  "tax.41033000",
+  "tax.41039000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:48:34.358Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 9,
+  "dat": 9,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
