@@ -1,0 +1,228 @@
+{
+ "nhom": "2906",
+ "phamVi": {
+  "text": "Rượu vòng và các dẫn xuất halogen hoá, sulphonat hoá, nitrat hoá hoặc nitroso hoá của chúng",
+  "nguon": "nhom2906.nhom",
+  "trich": "Phân Chương III: PHENOLS, RƯỢU PHENOL, VÀ CÁC DẪN XUẤT HALOGEN HÓA, SULPHONAT HÓA, NITRO HÓA HOẶC NITROSO HÓA CỦA CHÚNG",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_ruou_vong_hoac_dan_xuat",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2906.nhom",
+   "trich": "Rượu thơm có nhóm hydroxyl (-OH) không liên kết với vòng thơm nhưng liên kết với mạch cạnh.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Ergosterol và vitamin D2",
+   "sangNhom": "2936",
+   "nguon": "nhom2906.nhom",
+   "trich": "Cả ergosterol và vitamin D2 đều được xếp vào nhóm 29.36.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là ergosterol hoặc vitamin D2?",
+   "neuCo": "2936",
+   "neuKhong": "2906",
+   "nguon": "nhom2906.nhom",
+   "trich": "Cả ergosterol và vitamin D2 đều được xếp vào nhóm 29.36.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "29061100",
+   "dieuKien": "Menthol",
+   "loaiKhac": false,
+   "nguon": "tax.29061100",
+   "trich": "29061100 - - Menthol",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "29061200",
+   "dieuKien": "Cyclohexanol, methylcyclohexanols và dimethylcyclohexanols",
+   "loaiKhac": false,
+   "nguon": "tax.29061200",
+   "trich": "29061200 - - Cyclohexanol, methylcyclohexanols và dimethylcyclohexanols",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "29061300",
+   "dieuKien": "Sterols và inositols",
+   "loaiKhac": false,
+   "nguon": "tax.29061300",
+   "trich": "29061300 - - Sterols và inositols",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "29061900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.29061900",
+   "trich": "29061900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "29061",
+    "truAnhEm": [
+     "29061100",
+     "29061200",
+     "29061300"
+    ],
+    "truDayDu": [
+     "29061100",
+     "29061200",
+     "29061300"
+    ],
+    "toTienCoTen": "2906",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "29062100",
+   "dieuKien": "Rượu benzyl",
+   "loaiKhac": false,
+   "nguon": "tax.29062100",
+   "trich": "29062100 - - Rượu benzyl",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "29062900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.29062900",
+   "trich": "29062900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "29062",
+    "truAnhEm": [
+     "29062100"
+    ],
+    "truDayDu": [
+     "29062100"
+    ],
+    "toTienCoTen": "2906",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2906",
+    "cap": 4,
+    "cha": "29",
+    "tenVi": "Rượu mạch vòng và các dẫn xuất halogen hóa, sulphonat hóa, nitro hóa hoặc nitroso hóa của chúng.",
+    "tenEn": "Alcohols; cyclic, and their halogenated, sulphonated, nitrated or nitrosated derivatives",
+    "suyRa": false
+   },
+   {
+    "id": "29061",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2906",
+    "tenVi": "Cyclanic, cyclenic hoặc cycloterpenic",
+    "tenEn": "Cyclanic, cyclenic or cycloterpenic",
+    "suyRa": true
+   },
+   {
+    "id": "29061100",
+    "cap": 8,
+    "cha": "29061",
+    "tenVi": "Menthol",
+    "tenEn": "Alcohols; cyclanic, cyclenic or cycloterpenic and derivatives, menthol",
+    "suyRa": false,
+    "laPhanNhom": "290611"
+   },
+   {
+    "id": "29061200",
+    "cap": 8,
+    "cha": "29061",
+    "tenVi": "Cyclohexanol, methylcyclohexanols và dimethylcyclohexanols",
+    "tenEn": "Alcohols; cyclanic, cyclenic or cycloterpenic and derivatives, cyclohexanol, methylcyclohexanols and dimethylcyclohexanols",
+    "suyRa": false,
+    "laPhanNhom": "290612"
+   },
+   {
+    "id": "29061300",
+    "cap": 8,
+    "cha": "29061",
+    "tenVi": "Sterols và inositols",
+    "tenEn": "Alcohols; cyclanic, cyclenic or cycloterpenic and derivatives, sterols and inositols",
+    "suyRa": false,
+    "laPhanNhom": "290613"
+   },
+   {
+    "id": "29061900",
+    "cap": 8,
+    "cha": "29061",
+    "tenVi": "Loại khác",
+    "tenEn": "Alcohols; cyclanic, cyclenic or cycloterpenic and derivatives, n.e.c. in item no. 2906.1",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "290619"
+   },
+   {
+    "id": "29062",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2906",
+    "tenVi": "Loại thơm",
+    "tenEn": "Aromatic",
+    "suyRa": true
+   },
+   {
+    "id": "29062100",
+    "cap": 8,
+    "cha": "29062",
+    "tenVi": "Rượu benzyl",
+    "tenEn": "Alcohols; aromatic alcohols and derivatives, benzyl alcohol",
+    "suyRa": false,
+    "laPhanNhom": "290621"
+   },
+   {
+    "id": "29062900",
+    "cap": 8,
+    "cha": "29062",
+    "tenVi": "Loại khác",
+    "tenEn": "Alcohols; aromatic and derivatives, other than benzyl alcohol",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "290629"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2906.nhom",
+  "tax.29061100",
+  "tax.29061200",
+  "tax.29061300",
+  "tax.29061900",
+  "tax.29062100",
+  "tax.29062900"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T10:50:29.986Z",
+  "ms": 8
+ },
+ "kiemTra": {
+  "tong": 10,
+  "dat": 10,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

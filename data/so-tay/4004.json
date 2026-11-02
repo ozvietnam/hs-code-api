@@ -1,0 +1,107 @@
+{
+ "nhom": "4004",
+ "phamVi": {
+  "text": "Phế liệu, phế thải và mảnh vụn từ cao su (trừ cao su cứng) và bột và hạt thu được từ chúng.",
+  "nguon": "nhom4004.nhom",
+  "trich": "Nhóm này bao gồm: … (1) Phế liệu, phế thải và mảnh vụn cao su từ sản xuất hoặc gia công cao su chưa được lưu hoá hoặc cao su đã được lưu hoá (trừ cao su cứng).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_phe_lieu_phe_thai_manh_vun_cao_su",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch40.chuong",
+   "trich": "Theo mục đích của nhóm 40.04, khái niệm “phế liệu, phế thải và mảnh vụn\" chỉ các chất thải cao su, chất phế liệu, mảnh vụn từ quá trình sản xuất hoặc gia công cao su và các sản phẩm cao su không còn sử dụng được như mục đích ban đầu của chúng vì cắt ra thành từng mảnh, mài mòn hoặc các lý do khác.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Lốp đã qua sử dụng thích hợp cho việc đắp lại",
+   "sangNhom": "4012",
+   "nguon": "nhom4004.nhom",
+   "trich": "Nhóm này loại trừ lốp đã qua sử dụng, thích hợp cho việc đắp lại (nhóm 40.12).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Phế liệu, phế thải, mảnh vụn, bột và hạt từ cao su cứng",
+   "sangNhom": "4017",
+   "nguon": "nhom4004.nhom",
+   "trich": "Nhóm này loại trừ phế liệu, phế thải, mảnh vụn, bột và hạt từ cao su cứng (nhóm 40.17).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Lốp đã qua sử dụng có còn thích hợp để đắp lại thuộc nhóm 40.12 không?",
+   "neuCo": "4012",
+   "neuKhong": "4004",
+   "nguon": "nhom4004.nhom",
+   "trich": "Nhóm này loại trừ lốp đã qua sử dụng, thích hợp cho việc đắp lại (nhóm 40.12).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Phế liệu, bột hạt cao su có phải từ cao su cứng thuộc nhóm 40.17 không?",
+   "neuCo": "4017",
+   "neuKhong": "4004",
+   "nguon": "nhom4004.nhom",
+   "trich": "Nhóm này loại trừ phế liệu, phế thải, mảnh vụn, bột và hạt từ cao su cứng (nhóm 40.17).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "40040000",
+   "dieuKien": "Phế liệu, phế thải và mảnh vụn từ cao su (trừ cao su cứng) và bột và hạt thu được từ chúng",
+   "loaiKhac": false,
+   "nguon": "tax.40040000",
+   "trich": "40040000 Phế liệu, phế thải và mảnh vụn từ cao su (trừ cao su cứng) và bột và hạt thu được từ chúng",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "4004",
+    "cap": 4,
+    "cha": "40",
+    "tenVi": "Phế liệu, phế thải và mảnh vụn từ cao su (trừ cao su cứng) và bột và hạt thu được từ chúng.",
+    "tenEn": "Waste, parings and scrap of rubber (other than hard rubber) and powders and granules obtained therefrom",
+    "suyRa": false
+   },
+   {
+    "id": "40040000",
+    "cap": 8,
+    "cha": "4004",
+    "tenVi": "Phế liệu, phế thải và mảnh vụn từ cao su (trừ cao su cứng) và bột và hạt thu được từ chúng",
+    "tenEn": "Rubber; waste, parings and scrap of rubber (other than hard rubber) and powders and granules obtained therefrom",
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch40.chuong",
+  "nhom4004.nhom",
+  "tax.40040000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:48:34.318Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

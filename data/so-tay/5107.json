@@ -1,0 +1,135 @@
+{
+ "nhom": "5107",
+ "phamVi": {
+  "text": "Sợi len lông cừu chải kỹ, chưa đóng gói để bán lẻ.",
+  "nguon": "nhom5107.nhom",
+  "trich": "Nhóm này gồm nhũng sợi len xe ở dạng sợi đơn hay sợi chập từ nhiều sợi đơn thu được qua quá trình xe những sợi thô (roving) từ lông cừu đã chải kỹ.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_soi_len_long_cuu_chai_ky_chua_dong_goi_ban_le",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom5107.nhom",
+   "trich": "Nhóm này gồm nhũng sợi len xe ở dạng sợi đơn hay sợi chập từ nhiều sợi đơn thu được qua quá trình xe những sợi thô (roving) từ lông cừu đã chải kỹ.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Sợi từ lông cừu đã chải thô thu được từ lông cừu đã chải kỹ, ở dạng từng đoạn hoặc sợi đã chải thô và chải kỹ",
+   "sangNhom": "5106",
+   "nguon": "nhom5107.nhom",
+   "trich": "Nhóm này không bao gồm những sợi từ lông cừu đã chải thô thu được từ lông cừu đã chải kỹ, ở dạng từng đoạn hoặc sợi đã chải thô và chải kỹ (nhóm 51.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là sợi từ lông cừu đã chải thô thu được từ lông cừu đã chải kỹ, ở dạng từng đoạn hoặc sợi đã chải thô và chải kỹ thuộc nhóm 51.06?",
+   "neuCo": "5106",
+   "neuKhong": "5107",
+   "nguon": "nhom5107.nhom",
+   "trich": "Nhóm này không bao gồm những sợi từ lông cừu đã chải thô thu được từ lông cừu đã chải kỹ, ở dạng từng đoạn hoặc sợi đã chải thô và chải kỹ (nhóm 51.06).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "510710",
+   "fact": "ham_luong_long_cuu",
+   "op": ">=",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.510710",
+   "trich": "containing 85% or more by weight of wool",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "510720",
+   "fact": "ham_luong_long_cuu",
+   "op": "<",
+   "value": 85,
+   "donVi": "%",
+   "nguon": "wco.510720",
+   "trich": "containing less than 85% by weight of wool",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "51071000",
+   "dieuKien": "Có hàm lượng lông cừu chiếm từ 85% trở lên tính theo khối lượng",
+   "loaiKhac": false,
+   "nguon": "tax.51071000",
+   "trich": "51071000 - Có hàm lượng lông cừu chiếm từ 85% trở lên tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "51072000",
+   "dieuKien": "Có hàm lượng lông cừu chiếm dưới 85% tính theo khối lượng",
+   "loaiKhac": false,
+   "nguon": "tax.51072000",
+   "trich": "51072000 - Có hàm lượng lông cừu chiếm dưới 85% tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5107",
+    "cap": 4,
+    "cha": "51",
+    "tenVi": "Sợi len lông cừu chải kỹ, chưa đóng gói để bán lẻ.",
+    "tenEn": "Yarn of combed wool, not put up for retail sale",
+    "suyRa": false
+   },
+   {
+    "id": "51071000",
+    "cap": 8,
+    "cha": "5107",
+    "tenVi": "Có hàm lượng lông cừu chiếm từ 85% trở lên tính theo khối lượng",
+    "tenEn": "Yarn; of combed wool, containing 85% or more by weight of wool, not put up for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "510710"
+   },
+   {
+    "id": "51072000",
+    "cap": 8,
+    "cha": "5107",
+    "tenVi": "Có hàm lượng lông cừu chiếm dưới 85% tính theo khối lượng",
+    "tenEn": "Yarn; of combed wool, containing less than 85% by weight of wool, not put up for retail sale",
+    "suyRa": false,
+    "laPhanNhom": "510720"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom5107.nhom",
+  "tax.51071000",
+  "tax.51072000",
+  "wco.510710",
+  "wco.510720"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:16:22.094Z",
+  "ms": 3
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": [
+   "phan51.phan (46130→25000)"
+  ]
+ }
+}

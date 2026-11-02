@@ -1,0 +1,453 @@
+{
+ "nhom": "5403",
+ "phamVi": {
+  "text": "Sợi filament tái tạo (trừ chỉ khâu), chưa đóng gói để bán lẻ, kể cả sợi monofilament tái tạo có độ mảnh dưới 67 decitex.",
+  "nguon": "ch54.chuong",
+  "trich": "Chương này bao gồm các loại sợi filament nhân tạo và sợi nhân tạo và vải dệt thoi từ các loại sợi filament như vậy",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_soi_filament_tai_tao_chua_dong_goi_ban_le",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch54.chuong",
+   "trich": "Chương này bao gồm các loại sợi filament nhân tạo và sợi nhân tạo và vải dệt thoi từ các loại sợi filament như vậy",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "540310",
+   "fact": "do_manh_filament",
+   "op": "<",
+   "value": 67,
+   "donVi": "decitex",
+   "nguon": "wco.540310",
+   "trich": "monofilament (less than 67 decitex)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "540331",
+   "fact": "so_vong_xoan_tren_met",
+   "op": "<=",
+   "value": 120,
+   "donVi": "vòng xoắn trên mét",
+   "nguon": "wco.540331",
+   "trich": "single, untwisted or twisted 120 turns per metre or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "540332",
+   "fact": "so_vong_xoan_tren_met",
+   "op": ">",
+   "value": 120,
+   "donVi": "vòng xoắn trên mét",
+   "nguon": "wco.540332",
+   "trich": "single, twisted more than 120 turns per metre",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "54031000",
+   "dieuKien": "Sợi có độ bền cao từ viscose rayon",
+   "loaiKhac": false,
+   "nguon": "tax.54031000",
+   "trich": "54031000 - Sợi có độ bền cao từ viscose rayon",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "54033110",
+   "dieuKien": "Sợi dún",
+   "loaiKhac": false,
+   "nguon": "tax.54033110",
+   "trich": "54033110 - - - Sợi dún",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "54033190",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.54033190",
+   "trich": "54033190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "540331",
+    "truAnhEm": [
+     "54033110"
+    ],
+    "truDayDu": [
+     "54033110"
+    ],
+    "toTienCoTen": "540331",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "54033210",
+   "dieuKien": "Sợi dún",
+   "loaiKhac": false,
+   "nguon": "tax.54033210",
+   "trich": "54033210 - - - Sợi dún",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "54033290",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.54033290",
+   "trich": "54033290 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "540332",
+    "truAnhEm": [
+     "54033210"
+    ],
+    "truDayDu": [
+     "54033210"
+    ],
+    "toTienCoTen": "540332",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "54033310",
+   "dieuKien": "Sợi dún",
+   "loaiKhac": false,
+   "nguon": "tax.54033310",
+   "trich": "54033310 - - - Sợi dún",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "54033390",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.54033390",
+   "trich": "54033390 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "540333",
+    "truAnhEm": [
+     "54033310"
+    ],
+    "truDayDu": [
+     "54033310"
+    ],
+    "toTienCoTen": "540333",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "54033910",
+   "dieuKien": "Sợi dún",
+   "loaiKhac": false,
+   "nguon": "tax.54033910",
+   "trich": "54033910 - - - Sợi dún",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "54033990",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.54033990",
+   "trich": "54033990 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "540339",
+    "truAnhEm": [
+     "54033910"
+    ],
+    "truDayDu": [
+     "54033910"
+    ],
+    "toTienCoTen": "540339",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "54034110",
+   "dieuKien": "Sợi dún",
+   "loaiKhac": false,
+   "nguon": "tax.54034110",
+   "trich": "54034110 - - - Sợi dún",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "54034190",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.54034190",
+   "trich": "54034190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "540341",
+    "truAnhEm": [
+     "54034110"
+    ],
+    "truDayDu": [
+     "54034110"
+    ],
+    "toTienCoTen": "540341",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "54034200",
+   "dieuKien": "Từ xenlulo axetat",
+   "loaiKhac": false,
+   "nguon": "tax.54034200",
+   "trich": "54034200 - - Từ xenlulo axetat",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "54034900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.54034900",
+   "trich": "54034900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "54034",
+    "truAnhEm": [
+     "540341",
+     "54034200"
+    ],
+    "truDayDu": [
+     "540341",
+     "54034200",
+     "54031000",
+     "54033"
+    ],
+    "toTienCoTen": "5403",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "5403",
+    "cap": 4,
+    "cha": "54",
+    "tenVi": "5403-10 - Sợi có độ bền cao từ viscose rayon",
+    "tenEn": "Artificial filament yarn (other than sewing thread), not put up for retail sale, including artificial monofilament of less than 67 decitex",
+    "suyRa": false
+   },
+   {
+    "id": "54031000",
+    "cap": 8,
+    "cha": "5403",
+    "tenVi": "Sợi có độ bền cao từ viscose rayon",
+    "tenEn": "Yarn, artificial; filament, monofilament (less than 67 decitex), of high tenacity viscose rayon, not for retail sale, not sewing thread",
+    "suyRa": false,
+    "laPhanNhom": "540310"
+   },
+   {
+    "id": "54033",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5403",
+    "tenVi": "Sợi khác, đơn",
+    "tenEn": "Other yarn, single",
+    "suyRa": true
+   },
+   {
+    "id": "540331",
+    "cap": 6,
+    "cha": "54033",
+    "tenVi": "Từ viscose rayon, không xoắn hoặc xoắn không quá 120 vòng xoắn trên mét",
+    "tenEn": "Yarn, artificial; filament, monofilament (less than 67 decitex), of viscose rayon (not high tenacity), single, untwisted or twisted 120 turns per metre or less, not for retail sale, not sewing thread",
+    "suyRa": false
+   },
+   {
+    "id": "54033110",
+    "cap": 8,
+    "cha": "540331",
+    "tenVi": "Sợi dún",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "54033190",
+    "cap": 8,
+    "cha": "540331",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "540332",
+    "cap": 6,
+    "cha": "54033",
+    "tenVi": "Từ viscose rayon, xoắn trên 120 vòng xoắn trên mét",
+    "tenEn": "Yarn, artificial; filament, monofilament (less than 67 decitex), of viscose rayon (not high tenacity), single, twisted more than 120 turns per metre, not for retail sale, not sewing thread",
+    "suyRa": false
+   },
+   {
+    "id": "54033210",
+    "cap": 8,
+    "cha": "540332",
+    "tenVi": "Sợi dún",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "54033290",
+    "cap": 8,
+    "cha": "540332",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "540333",
+    "cap": 6,
+    "cha": "54033",
+    "tenVi": "Từ xenlulo axetat",
+    "tenEn": "Yarn, artificial; filament, monofilament (less than 67 decitex), of cellulose acetate, single, not for retail sale, not sewing thread",
+    "suyRa": false
+   },
+   {
+    "id": "54033310",
+    "cap": 8,
+    "cha": "540333",
+    "tenVi": "Sợi dún",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "54033390",
+    "cap": 8,
+    "cha": "540333",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "540339",
+    "cap": 6,
+    "cha": "54033",
+    "tenVi": "Loại khác",
+    "tenEn": "Yarn, artificial; filament, monofilament (less than 67 decitex), single, n.e.c. in heading no. 5403, not for retail sale, not sewing thread",
+    "suyRa": false
+   },
+   {
+    "id": "54033910",
+    "cap": 8,
+    "cha": "540339",
+    "tenVi": "Sợi dún",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "54033990",
+    "cap": 8,
+    "cha": "540339",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "54034",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "5403",
+    "tenVi": "Sợi khác, sợi xe (folded) hoặc sợi cáp",
+    "tenEn": "Other yarn, multiple (folded) or cabled",
+    "suyRa": true
+   },
+   {
+    "id": "540341",
+    "cap": 6,
+    "cha": "54034",
+    "tenVi": "Từ viscose rayon",
+    "tenEn": "Yarn, artificial; filament, monofilament (less than 67 decitex), of viscose rayon (not high tenacity), multiple (folded) or cabled, not for retail sale, not sewing thread",
+    "suyRa": false
+   },
+   {
+    "id": "54034110",
+    "cap": 8,
+    "cha": "540341",
+    "tenVi": "Sợi dún",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "54034190",
+    "cap": 8,
+    "cha": "540341",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "54034200",
+    "cap": 8,
+    "cha": "54034",
+    "tenVi": "Từ xenlulo axetat",
+    "tenEn": "Yarn, artificial; filament, monofilament (less than 67 decitex), of cellulose acetate, multiple (folded) or cabled, not for retail sale, not sewing thread",
+    "suyRa": false,
+    "laPhanNhom": "540342"
+   },
+   {
+    "id": "54034900",
+    "cap": 8,
+    "cha": "54034",
+    "tenVi": "Loại khác",
+    "tenEn": "Yarn, artificial; filament, monofilament (less than 67 decitex), multiple (folded) or cabled, n.e.c. in heading no. 5403, not for retail sale, not sewing thread",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "540349"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch54.chuong",
+  "tax.54031000",
+  "tax.54033110",
+  "tax.54033190",
+  "tax.54033210",
+  "tax.54033290",
+  "tax.54033310",
+  "tax.54033390",
+  "tax.54033910",
+  "tax.54033990",
+  "tax.54034110",
+  "tax.54034190",
+  "tax.54034200",
+  "tax.54034900",
+  "wco.540310",
+  "wco.540331",
+  "wco.540332"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T12:16:22.288Z",
+  "ms": 12
+ },
+ "kiemTra": {
+  "tong": 18,
+  "dat": 18,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

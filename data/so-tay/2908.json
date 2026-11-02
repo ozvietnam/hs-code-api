@@ -1,0 +1,192 @@
+{
+ "nhom": "2908",
+ "phamVi": {
+  "text": "Dẫn xuất halogen hoá, sulphonat hoá, nitrat hoá hoặc nitroso hoá của phenol hoặc rượu - phenol",
+  "nguon": "nhom2908.nhom",
+  "trich": "Những chất này thu được từ những rượu - phenol và phenol bằng cách thay thế 1 hay nhiều nguyên tử hydro bằng 1 halogen, 1 nhóm sulpho (-SO3H), 1 nhóm nitro (-NO2), 1 nhóm nitroso (-NO) hoặc bằng sự kết hợp của các nhóm này.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_dan_xuat_phenol_hoac_ruou_phenol",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom2908.nhom",
+   "trich": "Những chất này thu được từ những rượu - phenol và phenol bằng cách thay thế 1 hay nhiều nguyên tử hydro bằng 1 halogen, 1 nhóm sulpho (-SO3H), 1 nhóm nitro (-NO2), 1 nhóm nitroso (-NO) hoặc bằng sự kết hợp của các nhóm này.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "29081100",
+   "dieuKien": "Pentachlorophenol (ISO)",
+   "loaiKhac": false,
+   "nguon": "tax.29081100",
+   "trich": "29081100 - - Pentachlorophenol (ISO)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "29081900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.29081900",
+   "trich": "29081900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "29081",
+    "truAnhEm": [
+     "29081100"
+    ],
+    "truDayDu": [
+     "29081100"
+    ],
+    "toTienCoTen": "2908",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "29089100",
+   "dieuKien": "Dinoseb (ISO) và các muối của nó",
+   "loaiKhac": false,
+   "nguon": "tax.29089100",
+   "trich": "29089100 - - Dinoseb (ISO) và các muối của nó",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "29089200",
+   "dieuKien": "4,6-Dinitro-o-cresol (DNOC (ISO)) và các muối của nó",
+   "loaiKhac": false,
+   "nguon": "tax.29089200",
+   "trich": "29089200 - - 4,6-Dinitro-o-cresol (DNOC (ISO)) và các muối của nó",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "29089900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.29089900",
+   "trich": "29089900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "29089",
+    "truAnhEm": [
+     "29089100",
+     "29089200"
+    ],
+    "truDayDu": [
+     "29089100",
+     "29089200",
+     "29081"
+    ],
+    "toTienCoTen": "2908",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2908",
+    "cap": 4,
+    "cha": "29",
+    "tenVi": "Dẫn xuất halogen hóa, sulphonat hóa, nitro hóa hoặc nitroso hóa của phenols hoặc của rượu-phenol.",
+    "tenEn": "Phenols or phenol-alcohols; halogenated, sulphonated, nitrated or nitrosated derivatives",
+    "suyRa": false
+   },
+   {
+    "id": "29081",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2908",
+    "tenVi": "Các dẫn xuất chỉ chứa các nguyên tử halogen thay thế và muối của chúng",
+    "tenEn": "Derivatives containing only halogen substituents and their salts",
+    "suyRa": true
+   },
+   {
+    "id": "29081100",
+    "cap": 8,
+    "cha": "29081",
+    "tenVi": "Pentachlorophenol (ISO)",
+    "tenEn": "Phenol or phenol-alcohol derivatives containing only halogen substituents and their salts; pentachlorophenol (ISO)",
+    "suyRa": false,
+    "laPhanNhom": "290811"
+   },
+   {
+    "id": "29081900",
+    "cap": 8,
+    "cha": "29081",
+    "tenVi": "Loại khác",
+    "tenEn": "Phenol or phenol-alcohol derivatives containing only halogen substituents and their salts; other than pentachlorophenol (ISO)",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "290819"
+   },
+   {
+    "id": "29089",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2908",
+    "tenVi": "Loại khác",
+    "tenEn": "Other",
+    "suyRa": true
+   },
+   {
+    "id": "29089100",
+    "cap": 8,
+    "cha": "29089",
+    "tenVi": "Dinoseb (ISO) và các muối của nó",
+    "tenEn": "Phenol or phenol-alcohol derivatives, sulphonated, nitrated or nitrosated derivatives thereof; dinoseb (ISO) and its salts",
+    "suyRa": false,
+    "laPhanNhom": "290891"
+   },
+   {
+    "id": "29089200",
+    "cap": 8,
+    "cha": "29089",
+    "tenVi": "4,6-Dinitro-o-cresol (DNOC (ISO)) và các muối của nó",
+    "tenEn": "Phenol or phenol-alcohol derivatives, sulphonated, nitrated or nitrosated derivatives thereof; 4,6-dinitro-o-cresol (DNOC (ISO)) and its salts",
+    "suyRa": false,
+    "laPhanNhom": "290892"
+   },
+   {
+    "id": "29089900",
+    "cap": 8,
+    "cha": "29089",
+    "tenVi": "Loại khác",
+    "tenEn": "Phenol or phenol-alcohol derivatives, sulphonated, nitrated or nitrosated derivatives thereof; other than dinoseb (ISO), and 4,6-dinitro-o-cresol (DNOC (ISO)), and their salts",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "290899"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2908.nhom",
+  "tax.29081100",
+  "tax.29081900",
+  "tax.29089100",
+  "tax.29089200",
+  "tax.29089900"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T10:50:30.004Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 7,
+  "dat": 7,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

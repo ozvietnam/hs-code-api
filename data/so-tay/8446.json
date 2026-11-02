@@ -1,0 +1,240 @@
+{
+ "nhom": "8446",
+ "phamVi": {
+  "text": "Máy dệt vải (khung cửi dệt thoi và không thoi, dệt tay hoặc dệt máy) dùng cho sợi dệt hoặc sợi khác.",
+  "nguon": "nhom8446.nhom",
+  "trich": "Nhóm này bao gồm máy dệt vải dùng để sản xuất vải bằng cách dệt, sử dụng các sợi dệt (kể cả sợi xơ thực vật) hoặc các sợi khác (ví dụ, sợi kim loại, sợi thủy tinh hoặc sợi amiăng).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_may_det_vai",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom8446.nhom",
+   "trich": "Nhóm này bao gồm máy dệt vải dùng để sản xuất vải bằng cách dệt, sử dụng các sợi dệt (kể cả sợi xơ thực vật) hoặc các sợi khác (ví dụ, sợi kim loại, sợi thủy tinh hoặc sợi amiăng).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Bộ phận và phụ kiện của máy dệt trình bày riêng",
+   "sangNhom": "8448",
+   "nguon": "nhom8446.nhom",
+   "trich": "các bộ phận và phụ kiện của máy dệt thuộc nhóm này được phân loại trong nhóm 84.48.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Máy móc được thiết kế dùng để kết hợp dây kim loại để tạo thành lưới kim loại nặng",
+   "sangNhom": "8463",
+   "nguon": "nhom8446.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm máy móc được thiết kế dùng để kết hợp dây kim loại, bằng các quá trình khác nhau, để tạo thành lưới kim loại nặng (xem Chú giải chi tiết nhóm 84.63).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là bộ phận và phụ kiện máy dệt trình bày riêng thuộc nhóm 84.48 không?",
+   "neuCo": "8448",
+   "neuKhong": "8446",
+   "nguon": "nhom8446.nhom",
+   "trich": "các bộ phận và phụ kiện của máy dệt thuộc nhóm này được phân loại trong nhóm 84.48.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng hoá có phải là máy kết hợp dây kim loại làm lưới nặng thuộc nhóm 84.63 không?",
+   "neuCo": "8463",
+   "neuKhong": "8446",
+   "nguon": "nhom8446.nhom",
+   "trich": "Tuy nhiên, nhóm này không bao gồm máy móc được thiết kế dùng để kết hợp dây kim loại, bằng các quá trình khác nhau, để tạo thành lưới kim loại nặng (xem Chú giải chi tiết nhóm 84.63).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "844610",
+   "fact": "kho_rong_vai_det",
+   "op": "<=",
+   "value": 30,
+   "donVi": "cm",
+   "nguon": "wco.844610",
+   "trich": "844610 Weaving machines (looms); for weaving fabrics of a width 30cm or less",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "844621",
+   "fact": "kho_rong_vai_det",
+   "op": ">",
+   "value": 30,
+   "donVi": "cm",
+   "nguon": "wco.844621",
+   "trich": "844621 Weaving machines (looms); for weaving fabrics of a width exceeding 30cm, shuttle type, power looms",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "844630",
+   "fact": "kho_rong_vai_det",
+   "op": ">",
+   "value": 30,
+   "donVi": "cm",
+   "nguon": "wco.844630",
+   "trich": "844630 Weaving machines (looms); for weaving fabrics of a width exceeding 30cm, shuttleless type",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "84461010",
+   "dieuKien": "Hoạt động bằng điện",
+   "loaiKhac": false,
+   "nguon": "tax.84461010",
+   "trich": "84461010 - - Hoạt động bằng điện",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84461020",
+   "dieuKien": "Không hoạt động bằng điện",
+   "loaiKhac": false,
+   "nguon": "tax.84461020",
+   "trich": "84461020 - - Không hoạt động bằng điện",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84462100",
+   "dieuKien": "Máy dệt khung cửi có động cơ",
+   "loaiKhac": false,
+   "nguon": "tax.84462100",
+   "trich": "84462100 - - Máy dệt khung cửi có động cơ",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "84462900",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.84462900",
+   "trich": "84462900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "84462",
+    "truAnhEm": [
+     "84462100"
+    ],
+    "truDayDu": [
+     "84462100"
+    ],
+    "toTienCoTen": "8446",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "84463000",
+   "dieuKien": "Cho vải dệt có khổ rộng trên 30 cm, loại dệt không thoi",
+   "loaiKhac": false,
+   "nguon": "tax.84463000",
+   "trich": "84463000 - Cho vải dệt có khổ rộng trên 30 cm, loại dệt không thoi",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "8446",
+    "cap": 4,
+    "cha": "84",
+    "tenVi": "Máy dệt.",
+    "tenEn": "Weaving machines (looms)",
+    "suyRa": false
+   },
+   {
+    "id": "844610",
+    "cap": 6,
+    "cha": "8446",
+    "tenVi": "Cho vải dệt có khổ rộng không quá 30 cm",
+    "tenEn": "Weaving machines (looms); for weaving fabrics of a width 30cm or less",
+    "suyRa": false
+   },
+   {
+    "id": "84461010",
+    "cap": 8,
+    "cha": "844610",
+    "tenVi": "Hoạt động bằng điện",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84461020",
+    "cap": 8,
+    "cha": "844610",
+    "tenVi": "Không hoạt động bằng điện",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "84462",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "8446",
+    "tenVi": "Cho vải dệt có khổ rộng trên 30 cm, loại dệt thoi",
+    "tenEn": "For weaving fabrics of a width exceeding 30 cm, shuttle type",
+    "suyRa": true
+   },
+   {
+    "id": "84462100",
+    "cap": 8,
+    "cha": "84462",
+    "tenVi": "Máy dệt khung cửi có động cơ",
+    "tenEn": "Weaving machines (looms); for weaving fabrics of a width exceeding 30cm, shuttle type, power looms",
+    "suyRa": false,
+    "laPhanNhom": "844621"
+   },
+   {
+    "id": "84462900",
+    "cap": 8,
+    "cha": "84462",
+    "tenVi": "Loại khác",
+    "tenEn": "Weaving machines (looms); for weaving fabrics of a width exceeding 30cm, shuttle type, other than power looms",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "844629"
+   },
+   {
+    "id": "84463000",
+    "cap": 8,
+    "cha": "8446",
+    "tenVi": "Cho vải dệt có khổ rộng trên 30 cm, loại dệt không thoi",
+    "tenEn": "Weaving machines (looms); for weaving fabrics of a width exceeding 30cm, shuttleless type",
+    "suyRa": false,
+    "laPhanNhom": "844630"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom8446.nhom",
+  "tax.84461010",
+  "tax.84461020",
+  "tax.84462100",
+  "tax.84462900",
+  "tax.84463000",
+  "wco.844610",
+  "wco.844621",
+  "wco.844630"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T09:30:59.808Z",
+  "ms": 7
+ },
+ "kiemTra": {
+  "tong": 14,
+  "dat": 14,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
