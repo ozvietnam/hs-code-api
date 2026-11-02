@@ -1,0 +1,91 @@
+{
+ "nhom": "3605",
+ "phamVi": {
+  "text": "Diêm, trừ các sản phẩm pháo thuộc nhóm 36.04.",
+  "nguon": "nhom3605.nhom",
+  "trich": "Nhóm này bao gồm diêm tạo ra lửa khi được cọ sát vào bề mặt ráp (đôi khi được chế tạo riêng cho mục đích đó).",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_diem_tao_ra_lua_khi_co_sat",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom3605.nhom",
+   "trich": "Nhóm này bao gồm diêm tạo ra lửa khi được cọ sát vào bề mặt ráp (đôi khi được chế tạo riêng cho mục đích đó).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Diêm Bengal và các sản phẩm pháo hoa khác",
+   "sangNhom": "3604",
+   "nguon": "nhom3605.nhom",
+   "trich": "Nhóm này không bao gồm diêm Bengal và các sản phẩm pháo hoa khác, mặc dù chúng được đốt cháy bằng việc cọ sát và có hình dạng giống như que diêm (nhóm 36.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng hoá có phải là diêm Bengal hoặc sản phẩm pháo hoa thuộc nhóm 36.04?",
+   "neuCo": "3604",
+   "neuKhong": "3605",
+   "nguon": "nhom3605.nhom",
+   "trich": "Nhóm này không bao gồm diêm Bengal và các sản phẩm pháo hoa khác, mặc dù chúng được đốt cháy bằng việc cọ sát và có hình dạng giống như que diêm (nhóm 36.04).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [],
+ "dong8": [
+  {
+   "hs": "36050000",
+   "dieuKien": "Diêm, trừ các sản phẩm pháo thuộc nhóm 36.04",
+   "loaiKhac": false,
+   "nguon": "tax.36050000",
+   "trich": "36050000 Diêm, trừ các sản phẩm pháo thuộc nhóm 36.04",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "3605",
+    "cap": 4,
+    "cha": "36",
+    "tenVi": "Diêm, trừ các sản phẩm pháo thuộc nhóm 36.04.",
+    "tenEn": "Matches; other than pyrotechnic articles of heading no. 3604",
+    "suyRa": false
+   },
+   {
+    "id": "36050000",
+    "cap": 8,
+    "cha": "3605",
+    "tenVi": "Diêm, trừ các sản phẩm pháo thuộc nhóm 36.04",
+    "tenEn": "Matches; other than pyrotechnic articles of heading no. 3604",
+    "suyRa": false
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom3605.nhom",
+  "tax.36050000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T11:42:26.255Z",
+  "ms": 1
+ },
+ "kiemTra": {
+  "tong": 5,
+  "dat": 5,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
