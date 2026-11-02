@@ -104,7 +104,9 @@ module.exports = async function handler(req, res) {
     // L1-5d (#648): cờ HS_HO_SO=on + mã top thuộc lát 1 ⇒ thêm `hoSo`, khối `ecus` sinh bằng vietMoTa; off/shadow ⇒ kết quả y cũ.
     // Trường mới của bên gọi (loaiToKhai, manufacturer…) chỉ đi vào động cơ hồ sơ, không vào `attrs` của phản hồi.
     const attrsHoSo = { ...attrs, loaiToKhai: body?.loaiToKhai, manufacturer: body?.manufacturer, dimensions: body?.dimensions, condition: body?.condition, packaging: body?.packaging, brand: body?.brand, model: body?.model, duKien: body?.duKien };
-    const chay = (quyen) => classify(attrs, { tier, debug }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
+    // #725-45: kenhGoi = tên khoá dịch vụ (null = công khai/HS_API_TOKEN) — chỉ ERP (có nút "Áp mã") nhận câu "bấm Áp mã lại".
+    const kenhGoi = serviceCaller(req);
+    const chay = (quyen) => classify(attrs, { tier, debug, kenhGoi }).then((kq) => ganHoSoClassify(kq, attrsHoSo, quyen));
     if (serviceCaller(req) !== null) {
       // Dữ liệu khách (#237 J1): LLM bên trong chỉ đi nhà cung cấp hợp lệ, không qua tầng miễn phí.
       const { result, usage } = await run(() => withPrivateData(() => withUsage(() => chay({ noiBo: laNoiBoOz(req), caller: serviceCaller(req) }))));
