@@ -1,0 +1,376 @@
+{
+ "nhom": "7213",
+ "phamVi": {
+  "text": "Thanh và que bằng sắt hoặc thép không hợp kim, được cán nóng, ở dạng cuộn cuốn không đều.",
+  "nguon": "nhom7213.nhom",
+  "trich": "Các thanh và que, được cán nóng, ở dạng cuộn cuốn không đều được định nghĩa trong Chú giải 1 (1) của chương này.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_thanh_que_can_nong_cuon_khong_deu",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "ch72.chuong",
+   "trich": "Thanh và que, cán nóng, ở dạng cuộn cuốn không đều\n\nCác sản phẩm cán nóng dạng cuộn cuốn không đều, có mặt cắt ngang đông đặc hình tròn, hình dẻ quạt, bầu dục, chữ nhật (kể cả hình vuông), tam giác hoặc đa giác lồi",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Các thanh và que đã được nắn thẳng và cắt theo chiều dài",
+   "sangNhom": "7214",
+   "nguon": "nhom7213.nhom",
+   "trich": "Nhóm này không bao gồm các thanh và que của kiểu này, đã được nắn thẳng và cắt theo chiều dài (nhóm 72.14).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là thanh và que đã được nắn thẳng và cắt theo chiều dài?",
+   "neuCo": "7214",
+   "neuKhong": "7213",
+   "nguon": "nhom7213.nhom",
+   "trich": "Nhóm này không bao gồm các thanh và que của kiểu này, đã được nắn thẳng và cắt theo chiều dài (nhóm 72.14).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "721391",
+   "fact": "duong_kinh_mat_cat_ngang",
+   "op": "<",
+   "value": 14,
+   "donVi": "mm",
+   "nguon": "wco.721391",
+   "trich": "721391 Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils, n.e.c. in heading no. 7213, of circular cross-section measuring less than 14mm in diameter",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "721399",
+   "fact": "duong_kinh_mat_cat_ngang",
+   "op": ">=",
+   "value": 14,
+   "donVi": "mm",
+   "nguon": "wco.721399",
+   "trich": "721399 Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils, n.e.c. in heading no. 7213, of circular cross-section measuring 14mm or more in diameter",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "72131010",
+   "dieuKien": "Có đường kính mặt cắt ngang hình tròn không quá 50 mm",
+   "loaiKhac": false,
+   "nguon": "tax.72131010",
+   "trich": "72131010 - - Có đường kính mặt cắt ngang hình tròn không quá 50 mm",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72131090",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.72131090",
+   "trich": "72131090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "721310",
+    "truAnhEm": [
+     "72131010"
+    ],
+    "truDayDu": [
+     "72131010"
+    ],
+    "toTienCoTen": "721310",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "72132000",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.72132000",
+   "trich": "72132000 - Loại khác, bằng thép dễ cắt gọt",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "7213",
+    "truAnhEm": [
+     "721310",
+     "72139"
+    ],
+    "truDayDu": [
+     "721310",
+     "72139"
+    ],
+    "toTienCoTen": "7213",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "72139110",
+   "dieuKien": "Loại dùng để sản xuất que hàn (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.72139110",
+   "trich": "72139110 - - - Loại dùng để sản xuất que hàn (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72139120",
+   "dieuKien": "Thép cốt bê tông",
+   "loaiKhac": false,
+   "nguon": "tax.72139120",
+   "trich": "72139120 - - - Thép cốt bê tông",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72139130",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.72139130",
+   "trich": "72139130 - - - Loại khác, có hàm lượng carbon từ 0,6% trở lên, hàm lượng photpho không quá 0,03% và hàm lượng lưu huỳnh không quá 0,035% tính theo khối lượng",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "721391",
+    "truAnhEm": [
+     "72139110",
+     "72139120"
+    ],
+    "truDayDu": [
+     "72139110",
+     "72139120"
+    ],
+    "toTienCoTen": "721391",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "72139190",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.72139190",
+   "trich": "72139190 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "721391",
+    "truAnhEm": [
+     "72139110",
+     "72139120",
+     "72139130"
+    ],
+    "truDayDu": [
+     "72139110",
+     "72139120",
+     "72139130"
+    ],
+    "toTienCoTen": "721391",
+    "dinhNghiaDuoc": false
+   }
+  },
+  {
+   "hs": "72139910",
+   "dieuKien": "Loại dùng để sản xuất que hàn (SEN)",
+   "loaiKhac": false,
+   "nguon": "tax.72139910",
+   "trich": "72139910 - - - Loại dùng để sản xuất que hàn (SEN)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72139920",
+   "dieuKien": "Thép cốt bê tông",
+   "loaiKhac": false,
+   "nguon": "tax.72139920",
+   "trich": "72139920 - - - Thép cốt bê tông",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "72139990",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.72139990",
+   "trich": "72139990 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "721399",
+    "truAnhEm": [
+     "72139910",
+     "72139920"
+    ],
+    "truDayDu": [
+     "72139910",
+     "72139920"
+    ],
+    "toTienCoTen": "721399",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7213",
+    "cap": 4,
+    "cha": "72",
+    "tenVi": "Sắt hoặc thép không hợp kim, dạng thanh và que, ở dạng cuộn cuốn không đều, được cán nóng.",
+    "tenEn": "Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils",
+    "suyRa": false
+   },
+   {
+    "id": "721310",
+    "cap": 6,
+    "cha": "7213",
+    "tenVi": "Có răng khía, rãnh, gân hoặc các dạng khác được tạo thành trong quá trình cán",
+    "tenEn": "Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils, containing indentations, ribs, grooves or other deformations produced during the rolling process",
+    "suyRa": false
+   },
+   {
+    "id": "72131010",
+    "cap": 8,
+    "cha": "721310",
+    "tenVi": "Có đường kính mặt cắt ngang hình tròn không quá 50 mm",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "72131090",
+    "cap": 8,
+    "cha": "721310",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "72132000",
+    "cap": 8,
+    "cha": "7213",
+    "tenVi": "Loại khác, bằng thép dễ cắt gọt",
+    "tenEn": "Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils, of free-cutting steel",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "721320"
+   },
+   {
+    "id": "72139",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "7213",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "721391",
+    "cap": 6,
+    "cha": "72139",
+    "tenVi": "Có đường kính mặt cắt ngang hình tròn dưới 14 mm",
+    "tenEn": "Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils, n.e.c. in heading no. 7213, of circular cross-section measuring less than 14mm in diameter",
+    "suyRa": false
+   },
+   {
+    "id": "72139110",
+    "cap": 8,
+    "cha": "721391",
+    "tenVi": "Loại dùng để sản xuất que hàn (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "72139120",
+    "cap": 8,
+    "cha": "721391",
+    "tenVi": "Thép cốt bê tông",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "72139130",
+    "cap": 8,
+    "cha": "721391",
+    "tenVi": "Loại khác, có hàm lượng carbon từ 0,6% trở lên, hàm lượng photpho không quá 0,03% và hàm lượng lưu huỳnh không quá 0,035% tính theo khối lượng",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "72139190",
+    "cap": 8,
+    "cha": "721391",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "721399",
+    "cap": 6,
+    "cha": "72139",
+    "tenVi": "Loại khác",
+    "tenEn": "Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils, n.e.c. in heading no. 7213, of circular cross-section measuring 14mm or more in diameter",
+    "suyRa": false
+   },
+   {
+    "id": "72139910",
+    "cap": 8,
+    "cha": "721399",
+    "tenVi": "Loại dùng để sản xuất que hàn (SEN)",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "72139920",
+    "cap": 8,
+    "cha": "721399",
+    "tenVi": "Thép cốt bê tông",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "72139990",
+    "cap": 8,
+    "cha": "721399",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch72.chuong",
+  "nhom7213.nhom",
+  "tax.72131010",
+  "tax.72131090",
+  "tax.72132000",
+  "tax.72139110",
+  "tax.72139120",
+  "tax.72139130",
+  "tax.72139190",
+  "tax.72139910",
+  "tax.72139920",
+  "tax.72139990",
+  "wco.721391",
+  "wco.721399"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T10:43:04.855Z",
+  "ms": 10
+ },
+ "kiemTra": {
+  "tong": 16,
+  "dat": 16,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}

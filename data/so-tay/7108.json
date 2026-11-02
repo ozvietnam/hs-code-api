@@ -1,0 +1,205 @@
+{
+ "nhom": "7108",
+ "phamVi": {
+  "text": "Vàng (kể cả vàng mạ bạch kim), chưa gia công hoặc ở dạng bán thành phẩm, hoặc dạng bột.",
+  "nguon": "nhom7108.nhom",
+  "trich": "Nhóm này bao gồm nhiều dạng khác nhau như chưa gia công, dạng bán thành phẩm hoặc dạng bột của vàng hoặc hợp kim vàng (như được định nghĩa trong Chú giải chung), hoặc của vàng mạ bạch kim. Tuy nhiên, nhóm này không bao gồm vàng phủ kim loại quý.",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [
+  {
+   "fact": "la_vang_hoac_hop_kim_vang",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [
+    "vang phu kim loai quy"
+   ],
+   "nguon": "nhom7108.nhom",
+   "trich": "Nhóm này bao gồm nhiều dạng khác nhau như chưa gia công, dạng bán thành phẩm hoặc dạng bột của vàng hoặc hợp kim vàng (như được định nghĩa trong Chú giải chung), hoặc của vàng mạ bạch kim.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "loaiTru": [
+  {
+   "dieuKien": "Vàng trắng chứa từ 2% trọng lượng trở lên là paladi",
+   "sangNhom": "7110",
+   "nguon": "nhom7108.nhom",
+   "trich": "Những vàng \"trắng\" khác chứa 2% trọng lượng trở lên bằng paladi và vì vậy mà bị loại trừ (nhóm 71.10).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "phanBiet": [
+  {
+   "hoi": "Hàng là vàng trắng chứa từ 2% trọng lượng trở lên bằng paladi?",
+   "neuCo": "7110",
+   "neuKhong": "7108",
+   "nguon": "nhom7108.nhom",
+   "trich": "Những vàng \"trắng\" khác chứa 2% trọng lượng trở lên bằng paladi và vì vậy mà bị loại trừ (nhóm 71.10).",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "tieuChi6": [
+  {
+   "hs6": "710811",
+   "fact": "ti_le_lot_qua_sang_0_5mm",
+   "op": ">=",
+   "value": 90,
+   "donVi": "%",
+   "nguon": "ch71.chuong",
+   "trich": "Theo mục đích của các phân nhóm 7106.10, 7108.11, 7110.11, 7110.21, 7110.31 và 7110.41, khái niệm \"bột\" và \"dạng bột\" có nghĩa là các sản phẩm có 90% trở lên tính theo khối lượng lọt qua rây (sàng) có đường kính mắt rây (sàng) 0,5 mm.",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "71081100",
+   "dieuKien": "Dạng bột",
+   "loaiKhac": false,
+   "nguon": "tax.71081100",
+   "trich": "71081100 - - Dạng bột",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "71081210",
+   "dieuKien": "Dạng cục, thỏi hoặc thanh đúc",
+   "loaiKhac": false,
+   "nguon": "tax.71081210",
+   "trich": "71081210 - - - Dạng cục, thỏi hoặc thanh đúc",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "71081290",
+   "dieuKien": "Loại khác (phần còn lại của phân nhóm)",
+   "loaiKhac": true,
+   "nguon": "tax.71081290",
+   "trich": "71081290 - - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "710812",
+    "truAnhEm": [
+     "71081210"
+    ],
+    "truDayDu": [
+     "71081210"
+    ],
+    "toTienCoTen": "710812",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "71081300",
+   "dieuKien": "Dạng bán thành phẩm khác",
+   "loaiKhac": false,
+   "nguon": "tax.71081300",
+   "trich": "71081300 - - Dạng bán thành phẩm khác",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs": "71082000",
+   "dieuKien": "Dạng tiền tệ",
+   "loaiKhac": false,
+   "nguon": "tax.71082000",
+   "trich": "71082000 - Dạng tiền tệ",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "7108",
+    "cap": 4,
+    "cha": "71",
+    "tenVi": "Vàng (kể cả vàng mạ bạch kim) chưa gia công hoặc ở dạng bán thành phẩm, hoặc ở dạng bột (+).",
+    "tenEn": "Gold (including gold plated with platinum) unwrought or in semi-manufactured forms, or in powder form",
+    "suyRa": false
+   },
+   {
+    "id": "71081",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "7108",
+    "tenVi": "Không phải dạng tiền tệ",
+    "tenEn": "Non-monetary",
+    "suyRa": true
+   },
+   {
+    "id": "71081100",
+    "cap": 8,
+    "cha": "71081",
+    "tenVi": "Dạng bột",
+    "tenEn": "Metals; gold, non-monetary, powder",
+    "suyRa": false,
+    "laPhanNhom": "710811"
+   },
+   {
+    "id": "710812",
+    "cap": 6,
+    "cha": "71081",
+    "tenVi": "Dạng chưa gia công khác",
+    "tenEn": "Metals; gold, non-monetary, unwrought (but not powder)",
+    "suyRa": false
+   },
+   {
+    "id": "71081210",
+    "cap": 8,
+    "cha": "710812",
+    "tenVi": "Dạng cục, thỏi hoặc thanh đúc",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "71081290",
+    "cap": 8,
+    "cha": "710812",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   },
+   {
+    "id": "71081300",
+    "cap": 8,
+    "cha": "71081",
+    "tenVi": "Dạng bán thành phẩm khác",
+    "tenEn": "Metals; gold, semi-manufactured",
+    "suyRa": false,
+    "laPhanNhom": "710813"
+   },
+   {
+    "id": "71082000",
+    "cap": 8,
+    "cha": "7108",
+    "tenVi": "Dạng tiền tệ",
+    "tenEn": "Gold, monetary",
+    "suyRa": false,
+    "laPhanNhom": "710820"
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "ch71.chuong",
+  "nhom7108.nhom",
+  "tax.71081100",
+  "tax.71081210",
+  "tax.71081290",
+  "tax.71081300",
+  "tax.71082000"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "google-studio:gemini-flash",
+  "model": null,
+  "luc": "2026-11-02T10:37:08.715Z",
+  "ms": 4
+ },
+ "kiemTra": {
+  "tong": 10,
+  "dat": 10,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
