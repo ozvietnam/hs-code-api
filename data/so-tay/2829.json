@@ -1,0 +1,192 @@
+{
+ "nhom": "2829",
+ "phamVi": {
+  "text": "(A) Clorat. … (B) Perclorat. … (C) Bromat và perbromat. … (D) Iodat và periodat.",
+  "nguon": "nhom2829.nhom",
+  "trich": "Ngoài những loại trừ đã được nêu trong phần giới thiệu của Phân Chương này, nhóm này bao gồm clorat và perclorat, bromat và perbromat, và iodat và periodat của kim loại. … (A) CLORAT … (B) PERCLORAT … (C) BROMAT VÀ PERBROMAT … (D) IODAT VÀ PERIODAT",
+  "nguonLoai": "AI_DA_KIEM"
+ },
+ "dieuKienVao": [],
+ "loaiTru": [],
+ "phanBiet": [],
+ "tieuChi6": [
+  {
+   "hs6": "282911",
+   "fact": "loai_vat",
+   "op": "=",
+   "value": "Của natri",
+   "donVi": null,
+   "nguon": "wco.282911",
+   "trich": "282911 Chlorates; of sodium",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "282919",
+   "fact": "loai_vat",
+   "op": "=",
+   "value": "Các clorat khác, trừ của natri",
+   "donVi": null,
+   "nguon": "wco.282919",
+   "trich": "282919 Chlorates; other than sodium",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hs6": "282990",
+   "fact": "loai_vat",
+   "op": "=",
+   "value": "Các perclorat, bromat và perbromat, iodat và periodat",
+   "donVi": null,
+   "nguon": "wco.282990",
+   "trich": "282990 Perchlorates; bromates and perbromates; iodates and periodates",
+   "nguonLoai": "AI_DA_KIEM"
+  }
+ ],
+ "dong8": [
+  {
+   "hs": "28291100",
+   "dieuKien": "Của natri",
+   "nguon": "tax.28291100",
+   "trich": "28291100 - - Của natri",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "28291900",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2829.19",
+   "nguon": "tax.28291900",
+   "trich": "28291900 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "28291",
+    "truAnhEm": [
+     "28291100"
+    ],
+    "truDayDu": [
+     "28291100"
+    ],
+    "toTienCoTen": "2829",
+    "dinhNghiaDuoc": true
+   }
+  },
+  {
+   "hs": "28299010",
+   "dieuKien": "Natri perclorat",
+   "nguon": "tax.28299010",
+   "trich": "28299010 - - Natri perclorat",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": false
+  },
+  {
+   "hs": "28299090",
+   "dieuKien": "Loại khác: phần còn lại của phân nhóm 2829.90",
+   "nguon": "tax.28299090",
+   "trich": "28299090 - - Loại khác",
+   "nguonLoai": "AI_DA_KIEM",
+   "loaiKhac": true,
+   "phamViLoaiKhac": {
+    "nguonLoai": "MAY_SUY",
+    "cha": "282990",
+    "truAnhEm": [
+     "28299010"
+    ],
+    "truDayDu": [
+     "28299010"
+    ],
+    "toTienCoTen": "282990",
+    "dinhNghiaDuoc": true
+   }
+  }
+ ],
+ "cay": {
+  "nguonLoai": "MAY_SUY",
+  "sinhTu": "lib/hs-tree.js",
+  "nut": [
+   {
+    "id": "2829",
+    "cap": 4,
+    "cha": "28",
+    "tenVi": "Clorat và perclorat; bromat và perbromat; iodat và periodat.",
+    "tenEn": "Chlorates and perchlorates; bromates and perbromates; iodates and periodates",
+    "suyRa": false
+   },
+   {
+    "id": "28291",
+    "cap": "NHOM_MOT_GACH",
+    "cha": "2829",
+    "tenVi": "Clorat",
+    "tenEn": null,
+    "suyRa": true
+   },
+   {
+    "id": "28291100",
+    "cap": 8,
+    "cha": "28291",
+    "tenVi": "Của natri",
+    "tenEn": "Chlorates; of sodium",
+    "suyRa": false,
+    "laPhanNhom": "282911"
+   },
+   {
+    "id": "28291900",
+    "cap": 8,
+    "cha": "28291",
+    "tenVi": "Loại khác",
+    "tenEn": "Chlorates; other than sodium",
+    "suyRa": false,
+    "loaiKhac": true,
+    "laPhanNhom": "282919"
+   },
+   {
+    "id": "282990",
+    "cap": 6,
+    "cha": "2829",
+    "tenVi": "Loại khác",
+    "tenEn": "Perchlorates; bromates and perbromates; iodates and periodates",
+    "suyRa": false
+   },
+   {
+    "id": "28299010",
+    "cap": 8,
+    "cha": "282990",
+    "tenVi": "Natri perclorat",
+    "tenEn": null,
+    "suyRa": false
+   },
+   {
+    "id": "28299090",
+    "cap": 8,
+    "cha": "282990",
+    "tenVi": "Loại khác",
+    "tenEn": null,
+    "suyRa": false,
+    "loaiKhac": true
+   }
+  ],
+  "tenDien": []
+ },
+ "dungTuNguon": [
+  "nhom2829.nhom",
+  "tax.28291100",
+  "tax.28291900",
+  "tax.28299010",
+  "tax.28299090",
+  "wco.282911",
+  "wco.282919",
+  "wco.282990"
+ ],
+ "phienBan": "HS2022",
+ "taoBoi": {
+  "provider": "dev-zcode-mm",
+  "model": null,
+  "luc": "2026-11-02T05:37:39.773Z",
+  "ms": 2
+ },
+ "kiemTra": {
+  "tong": 8,
+  "dat": 8,
+  "loai": 0,
+  "nguonBiCat": []
+ }
+}
