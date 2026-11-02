@@ -1,8 +1,8 @@
 {
   "phienBan": "tu-vung@2",
-  "ngay": "2026-10-30",
+  "ngay": "2026-11-02",
   "nguonLoai": "CLAUDE_DUYET",
-  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570). tu-vung@2 = tu-vung@1 (53 khoá giữ NGUYÊN) + 7 khoá cho ranh giới 6→8 số mà lát 1 cần (đề xuất docs/giao-viec/so-tay/de-xuat-tu-vung-2.md) + hai luật bộ đọc #667/#675 chuyển từ mã vào dữ liệu + khoá phuongThucTruyenDan (LIET_KE VO_TUYEN | HUU_TUYEN, #606 — 851762 \"truyền dẫn dưới dạng sóng vô tuyến\") + hai khoá daXuLyBeMat (CO_KHONG, \"đã được xử lý bề mặt\") và nhienLieu (LIET_KE GA | DIEN, \"bằng ga\") (#577 — 848180 .97, .30).",
+  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570). tu-vung@2 = tu-vung@1 (53 khoá giữ NGUYÊN) + 7 khoá cho ranh giới 6→8 số mà lát 1 cần (đề xuất docs/giao-viec/so-tay/de-xuat-tu-vung-2.md) + hai luật bộ đọc #667/#675 chuyển từ mã vào dữ liệu + khoá phuongThucTruyenDan (LIET_KE VO_TUYEN | HUU_TUYEN, #606 — 851762 \"truyền dẫn dưới dạng sóng vô tuyến\") + hai khoá daXuLyBeMat (CO_KHONG, \"đã được xử lý bề mặt\") và nhienLieu (LIET_KE GA | DIEN, \"bằng ga\") (#577 — 848180 .97, .30). + 4 khoá lát 2 (02/11, đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md — GĐ duyệt): phuongPhapIn (LIET_KE BATIK | IN_LUOI | IN_KY_THUAT_SO | IN_CHUYEN_NHIET — 5208.59.10, 6204.x \"in bằng phương pháp batik truyền thống\"), tinhDanHoi (CO_KHONG — 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\", 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\"), loaiSoiDet (LIET_KE BONG | SOI_THUC_VAT_KHAC | LEN_LONG_DONG_VAT_MIN | TO_TAM | SOI_TONG_HOP | SOI_TAI_TAO — 6306 \"Từ bông\", 5515.99.10 lông cừu), doDay (SO mm — 7308.30.10 \"độ dày từ 6 mm đến 8 mm\").",
   "tienThan": {
     "phienBan": "tu-vung@1",
     "sha256": "67de4948a117f635b731d157b103e1082c6eec56738baef1e295a4352a5ed75e",
@@ -24,11 +24,12 @@
     "tu-vung@2: khoá SO đếm (demSo: soLoi, soSoi) đọc cả số chữ (soChu: \"hai\", \"two\", \"两\"…; số ghép \"mười hai\", \"十二\" ⇒ không đọc) và chữ so sánh sau số/đơn vị (soSanhDem: \"hoặc hơn\", \"trở lên\", \"or more\", \"及以上\" ⇒ >=). donViCachRieng: viết \"2 lõi\" (có cách), khoá @1 vẫn \"75000W\".",
     "tu-vung@2: tiLe (docPhanSo) đọc phân số \"1/10\", \"1:8\" chỉ khi có chữ tỉ lệ đứng trước (cachDoc) hoặc tên kích thước đứng ngay sau (phanSo.sauLa: \"đường kính\"…); không suy tỉ lệ từ hai kích thước rời. \"1/2 inch\", \"50/60Hz\" ⇒ CHUA_BIET.",
     "tu-vung@2: LIET_KE cumDaiThang (phuongPhapCheTao): cụm chồng nhau thì cụm dài thắng (\"đột dập và kéo giãn\" thắng \"dập\", \"kéo giãn\"); hai phương pháp ở hai chỗ khác nhau ⇒ CHUA_BIET + ungVien.",
-    "tu-vung@2: 10 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577) mang nguonLoai AI_DA_KIEM (máy kiểm + test) — CHƯA chấm duyệt độc lập (chamDuyetDocLap.khoaChuaCham); nâng CLAUDE_DUYET sau phiên soát độc lập."
+    "tu-vung@2: 10 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577) mang nguonLoai AI_DA_KIEM (máy kiểm + test) — CHƯA chấm duyệt độc lập (chamDuyetDocLap.khoaChuaCham); nâng CLAUDE_DUYET sau phiên soát độc lập.",
+    "tu-vung@2 (02/11): 4 khoá lát 2 — phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay (đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md, mục quét + \"Bổ sung từ studio-loop\", GĐ duyệt) — nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. phuongPhapIn thay đề xuất phuongPhapCheTao IN_BATIK; tinhDanHoi thay loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU (trục CHỨA); loaiSoiDet gộp loaiXoPha. Khoá @1 không đổi."
   ],
   "chamDuyetDocLap": {
     "trangThai": "CHUA_CHAM",
-    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 10 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180) chưa có phiên chấm độc lập.",
+    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập.",
     "khoaChuaCham": [
       "chiHoacChuYeu",
       "thietKeChoTreEm",
@@ -39,7 +40,11 @@
       "phuongPhapCheTao",
       "phuongThucTruyenDan",
       "daXuLyBeMat",
-      "nhienLieu"
+      "nhienLieu",
+      "phuongPhapIn",
+      "tinhDanHoi",
+      "loaiSoiDet",
+      "doDay"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -4496,6 +4501,470 @@
         "zh": "该产品（或其所用于的灶具/烤箱）使用燃气还是电？"
       },
       "ghiChu": "Nhiên liệu / nguồn nhiệt của bếp, lò (#577 848180 .30 \"các bếp nấu hoặc bếp có lò nướng bằng ga\", EN \"gas stoves or ranges\": \"bằng ga\" là định ngữ CHUNG của cả hai danh từ). Khoá @1 nguonNangLuong (pin / điện lưới / quang điện) giữ nguyên — @1 khoá theo bench, không thêm giá trị. Không đọc \"ga\" trần, \"có ga\" (đồ uống có ga), \"gas\" trần (van gas, bình gas — khí là lưu chất, không phải nhiên liệu đốt của hàng), \"bằng gang\"; \"hoạt động bằng ga\" của bộ phận rót bia (8481804, ga là khí đẩy) cũng đọc GA — khoá chỉ làm điều kiện ở .30, đi cùng dungCho bếp. \"bằng điện\" trần không đọc (thường là cách điều khiển — cachDieuKhien / hoatDongBangDien).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "phuongPhapIn",
+      "kieu": "LIET_KE",
+      "nhanVi": "phương pháp in (vải, hàng dệt)",
+      "nhanEn": "printing method (textiles)",
+      "nhanZh": "印花方法（纺织品）",
+      "giaTriHopLe": [
+        "BATIK",
+        "IN_LUOI",
+        "IN_KY_THUAT_SO",
+        "IN_CHUYEN_NHIET"
+      ],
+      "moTaGiaTri": {
+        "BATIK": {
+          "nhanVi": "in batik truyền thống",
+          "nhanEn": "batik (traditional)",
+          "nhanZh": "蜡染",
+          "cachDoc": {
+            "vi": [
+              "in\\s+(?:bằng\\s+phương\\s+pháp\\s+)?batik(?:\\s+truyền\\s+thống)?",
+              "batik",
+              "vải\\s+batik",
+              "nhuộm\\s+sáp"
+            ],
+            "en": [
+              "batik(?:[- ]printed|[- ]dyed)?",
+              "wax[- ]resist(?:\\s+(?:printed|dyed|printing|dyeing))?"
+            ],
+            "zh": [
+              "蜡染",
+              "蜡防印花",
+              "巴迪克"
+            ]
+          },
+          "cachViet": "in batik truyền thống"
+        },
+        "IN_LUOI": {
+          "nhanVi": "in lưới (in lụa)",
+          "nhanEn": "screen printed",
+          "nhanZh": "丝网印花",
+          "cachDoc": {
+            "vi": [
+              "in\\s+lưới",
+              "in\\s+lụa",
+              "in\\s+kéo\\s+lụa"
+            ],
+            "en": [
+              "(?:silk[- ])?screen[- ]print(?:ed|ing)?",
+              "serigraph(?:y|ed)"
+            ],
+            "zh": [
+              "丝网印",
+              "丝印",
+              "网印"
+            ]
+          },
+          "cachViet": "in lưới"
+        },
+        "IN_KY_THUAT_SO": {
+          "nhanVi": "in kỹ thuật số",
+          "nhanEn": "digital printed",
+          "nhanZh": "数码印花",
+          "cachDoc": {
+            "vi": [
+              "in\\s+kỹ\\s+thuật\\s+số",
+              "in\\s+phun\\s+kỹ\\s+thuật\\s+số",
+              "in\\s+digital"
+            ],
+            "en": [
+              "digital(?:ly)?[- ]print(?:ed|ing)?",
+              "inkjet[- ]print(?:ed|ing)?"
+            ],
+            "zh": [
+              "数码印花",
+              "数码印",
+              "数码直喷"
+            ]
+          },
+          "cachViet": "in kỹ thuật số"
+        },
+        "IN_CHUYEN_NHIET": {
+          "nhanVi": "in chuyển nhiệt",
+          "nhanEn": "heat-transfer printed",
+          "nhanZh": "热转印",
+          "cachDoc": {
+            "vi": [
+              "in\\s+chuyển\\s+nhiệt",
+              "in\\s+ép\\s+nhiệt",
+              "in\\s+thăng\\s+hoa"
+            ],
+            "en": [
+              "(?:heat|thermal)[- ]transfer[- ]print(?:ed|ing)?",
+              "sublimation[- ]print(?:ed|ing)?",
+              "dye[- ]sublimation"
+            ],
+            "zh": [
+              "热转印",
+              "热升华",
+              "升华印花"
+            ]
+          },
+          "cachViet": "in chuyển nhiệt"
+        }
+      },
+      "cumDaiThang": true,
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Vải/hàng dệt được in bằng phương pháp nào (in batik truyền thống, in lưới, in kỹ thuật số, in chuyển nhiệt)?",
+        "zh": "面料/纺织品采用何种印花方法（传统蜡染、丝网印花、数码印花、热转印）？"
+      },
+      "ghiChu": "Phương pháp in của vải / hàng dệt — chữ biểu \"Được in bằng phương pháp batik truyền thống (SEN)\" ở 5208.59.10, 6204.42.10, 6204.32.10, 6204.19.11, 6204.49.10… (lát 2, đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md mục studio-loop; thay đề xuất phuongPhapCheTao IN_BATIK — in là hoàn tất vải, không phải chế tạo hàng). Chỉ đọc cụm nêu PHƯƠNG PHÁP; \"đã in\", \"vải in hoa\", \"printed\" trần (600634 \"Đã in\" là trạng thái in, không phải phương pháp) ⇒ không đọc. Các giá trị ngoài BATIK chỉ để người khai trả lời \"in bằng cách khác\" (về dòng Loại khác) — chữ biểu chưa phân biệt chúng.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "tinhDanHoi",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)",
+      "nhanEn": "elastic (containing elastomeric yarn or rubber thread)",
+      "nhanZh": "弹性（含弹性纱线或橡胶线）",
+      "cachDoc": {
+        "vi": [
+          "(?:tính\\s+)?đàn\\s+hồi",
+          "sợi\\s+đàn\\s+hồi",
+          "sợi\\s+cao\\s+su",
+          "chỉ\\s+cao\\s+su",
+          "spandex",
+          "elastane",
+          "lycra"
+        ],
+        "en": [
+          "elastic(?:ity)?",
+          "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)",
+          "rubber\\s+threads?",
+          "spandex",
+          "elastane",
+          "lycra",
+          "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"
+        ],
+        "zh": [
+          "弹性",
+          "弹力",
+          "橡胶线",
+          "橡筋",
+          "氨纶",
+          "莱卡"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [],
+        "en": [
+          "non-?elastic",
+          "inelastic",
+          "non-?stretch"
+        ],
+        "zh": [
+          "无弹性",
+          "无弹力",
+          "不含弹性"
+        ]
+      },
+      "cachViet": {
+        "vi": "đàn hồi",
+        "viPhuDinh": "không đàn hồi"
+      },
+      "cauHoi": {
+        "vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?",
+        "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"
+      },
+      "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "loaiSoiDet",
+      "kieu": "LIET_KE",
+      "nhanVi": "loại xơ/sợi dệt (vật liệu dệt chủ yếu)",
+      "nhanEn": "textile fibre type (predominant textile material)",
+      "nhanZh": "纺织纤维种类（主要纺织材料）",
+      "giaTriHopLe": [
+        "BONG",
+        "SOI_THUC_VAT_KHAC",
+        "LEN_LONG_DONG_VAT_MIN",
+        "TO_TAM",
+        "SOI_TONG_HOP",
+        "SOI_TAI_TAO"
+      ],
+      "moTaGiaTri": {
+        "BONG": {
+          "nhanVi": "từ bông",
+          "nhanEn": "of cotton",
+          "nhanZh": "棉",
+          "cachDoc": {
+            "vi": [
+              "(?:từ|bằng|chất\\s+liệu)\\s+bông(?!\\s*(?:thủy\\s+tinh|thuỷ\\s+tinh|khoáng|gòn|tai|hoa))",
+              "(?:sợi|xơ|vải)\\s+bông(?!\\s*(?:thủy|thuỷ|khoáng|gòn))",
+              "bông\\s*100\\s*%",
+              "100\\s*%\\s*bông",
+              "cotton"
+            ],
+            "en": [
+              "cotton"
+            ],
+            "zh": [
+              "(?<![石木])棉(?!花糖)",
+              "纯棉",
+              "全棉"
+            ]
+          },
+          "cachViet": "từ bông"
+        },
+        "SOI_THUC_VAT_KHAC": {
+          "nhanVi": "từ sợi dệt thực vật khác (đay, lanh, gai, xơ dừa… nhóm 53.05)",
+          "nhanEn": "of other vegetable textile fibres (jute, flax, ramie, coir…)",
+          "nhanZh": "其他植物纺织纤维（黄麻、亚麻、苎麻、椰壳纤维等）",
+          "cachDoc": {
+            "vi": [
+              "(?:sợi|xơ)\\s+(?:dệt\\s+)?thực\\s+vật",
+              "(?:từ|bằng|sợi|vải|xơ)\\s+(?:đay|lanh|gai|lanh\\s+gai|xơ\\s+dừa|sisal|chuối\\s+sợi|dứa\\s+sợi)",
+              "vải\\s+lanh",
+              "vải\\s+đay"
+            ],
+            "en": [
+              "vegetable\\s+(?:textile\\s+)?fib(?:re|er)s?",
+              "jute",
+              "flax",
+              "linen",
+              "ramie",
+              "sisal",
+              "coir",
+              "hemp",
+              "abaca"
+            ],
+            "zh": [
+              "植物纤维",
+              "植物纺织纤维",
+              "黄麻",
+              "亚麻",
+              "苎麻",
+              "剑麻",
+              "椰壳纤维",
+              "大麻纤维",
+              "蕉麻"
+            ]
+          },
+          "cachViet": "từ sợi dệt thực vật"
+        },
+        "LEN_LONG_DONG_VAT_MIN": {
+          "nhanVi": "từ lông cừu hoặc lông động vật loại mịn (len)",
+          "nhanEn": "of wool or fine animal hair",
+          "nhanZh": "羊毛或动物细毛",
+          "cachDoc": {
+            "vi": [
+              "(?:từ|bằng|sợi|vải|xơ|chất\\s+liệu)\\s+len",
+              "len\\s*100\\s*%",
+              "100\\s*%\\s*len",
+              "lông\\s+cừu",
+              "lông\\s+động\\s+vật\\s+(?:loại\\s+)?mịn",
+              "cashmere",
+              "mohair",
+              "alpaca",
+              "len\\s+lông\\s+(?:cừu|dê|thỏ)"
+            ],
+            "en": [
+              "wool(?:len|en)?",
+              "fine\\s+animal\\s+hair",
+              "cashmere",
+              "mohair",
+              "alpaca",
+              "merino",
+              "angora"
+            ],
+            "zh": [
+              "羊毛",
+              "动物细毛",
+              "羊绒",
+              "马海毛",
+              "羊驼毛",
+              "美利奴",
+              "安哥拉"
+            ]
+          },
+          "cachViet": "từ len"
+        },
+        "TO_TAM": {
+          "nhanVi": "từ tơ tằm",
+          "nhanEn": "of silk",
+          "nhanZh": "蚕丝",
+          "cachDoc": {
+            "vi": [
+              "tơ\\s+tằm",
+              "(?:từ|bằng|sợi|vải|chất\\s+liệu)\\s+lụa(?!\\s+in)",
+              "lụa\\s*100\\s*%",
+              "100\\s*%\\s*lụa"
+            ],
+            "en": [
+              "silk(?![- ]?screen)"
+            ],
+            "zh": [
+              "蚕丝",
+              "真丝",
+              "桑蚕丝",
+              "(?<!人造)丝绸"
+            ]
+          },
+          "cachViet": "từ tơ tằm"
+        },
+        "SOI_TONG_HOP": {
+          "nhanVi": "từ sợi/xơ tổng hợp (polyeste, nylon, acrylic, polypropylen…)",
+          "nhanEn": "of synthetic fibres (polyester, nylon, acrylic, polypropylene…)",
+          "nhanZh": "合成纤维（涤纶、锦纶、腈纶、丙纶等）",
+          "cachDoc": {
+            "vi": [
+              "(?:sợi|xơ|vải|chất\\s+liệu)\\s+tổng\\s+hợp",
+              "polyeste(?:r)?",
+              "poly\\s*este(?:r)?",
+              "nylon",
+              "ni-?lông",
+              "polyamit",
+              "polyamide",
+              "acrylic",
+              "polypropylen(?:e)?",
+              "elastan(?:e)?\\s+tổng\\s+hợp"
+            ],
+            "en": [
+              "synthetic\\s+(?:fib(?:re|er)s?|yarns?|filaments?|textile)",
+              "polyester",
+              "nylon",
+              "polyamide",
+              "acrylic",
+              "polypropylene",
+              "polyethylene\\s+(?:fib(?:re|er)s?|yarns?)"
+            ],
+            "zh": [
+              "合成纤维",
+              "合纤",
+              "涤纶",
+              "聚酯纤维",
+              "锦纶",
+              "尼龙",
+              "腈纶",
+              "丙纶",
+              "聚丙烯纤维"
+            ]
+          },
+          "cachViet": "từ sợi tổng hợp"
+        },
+        "SOI_TAI_TAO": {
+          "nhanVi": "từ sợi/xơ tái tạo (visco, rayon, modal, lyocell…)",
+          "nhanEn": "of artificial fibres (viscose, rayon, modal, lyocell…)",
+          "nhanZh": "人造纤维（粘胶、人造丝、莫代尔、莱赛尔等）",
+          "cachDoc": {
+            "vi": [
+              "(?:sợi|xơ|vải|chất\\s+liệu)\\s+tái\\s+tạo",
+              "visco(?:se)?",
+              "vít-?cô",
+              "rayon",
+              "modal",
+              "lyocell",
+              "tencel",
+              "xơ\\s+axetat",
+              "sợi\\s+axetat"
+            ],
+            "en": [
+              "artificial\\s+(?:fib(?:re|er)s?|yarns?|filaments?|textile)",
+              "viscose",
+              "rayon",
+              "modal",
+              "lyocell",
+              "tencel",
+              "cupro",
+              "acetate\\s+(?:fib(?:re|er)s?|yarns?)"
+            ],
+            "zh": [
+              "人造纤维",
+              "粘胶",
+              "黏胶",
+              "人造丝",
+              "莫代尔",
+              "莱赛尔",
+              "天丝",
+              "铜氨纤维",
+              "醋酸纤维"
+            ]
+          },
+          "cachViet": "từ sợi tái tạo"
+        }
+      },
+      "cumDaiThang": true,
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng dệt làm từ loại xơ/sợi nào là chủ yếu (bông; sợi dệt thực vật khác như đay, lanh, gai; len/lông động vật loại mịn; tơ tằm; sợi tổng hợp như polyeste, nylon; sợi tái tạo như visco)?",
+        "zh": "纺织品主要由哪种纤维制成（棉；其他植物纤维如黄麻、亚麻、苎麻；羊毛/动物细毛；蚕丝；合成纤维如涤纶、尼龙；人造纤维如粘胶）？"
+      },
+      "ghiChu": "Loại xơ/sợi dệt của hàng dệt — chữ biểu \"Từ bông\" (6306.29.10, 6306.19.20, 6306.40.10), \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (6306.19.10), \"Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn\" (5515.99.10) — lát 2, đề xuất de-xuat-khoa-lat-2.md (loaiXoPha + studio-loop loaiSoiDet, gộp một khoá). \"Từ X\" ở chương 50–63 là vật liệu dệt CHIẾM TRỘI theo Chú giải 2 Phần XI: hàng pha (\"cotton 80% polyester 20%\") đọc được hai giá trị ⇒ CHUA_BIET + ungVien, người khai chốt theo tỉ trọng. Vật liệu không phải xơ dệt (bông thủy tinh, bông khoáng, bông gòn/tai/hoa; da lông cừu là da) ⇒ không đọc. Sợi đàn hồi / sợi cao su là trục CHỨA (tinhDanHoi), không nằm ở đây. Khoá @1 chatLieu (\"vải dệt\" chung) giữ nguyên.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "doDay",
+      "kieu": "SO",
+      "nhanVi": "độ dày",
+      "nhanEn": "thickness",
+      "nhanZh": "厚度",
+      "heDonVi": "dai",
+      "donViChuan": "mm",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "độ\\s+dày",
+          "dày",
+          "bề\\s+dày",
+          "chiều\\s+dày"
+        ],
+        "en": [
+          "thickness",
+          "thick",
+          "gauge"
+        ],
+        "zh": [
+          "厚度",
+          "厚",
+          "板厚",
+          "壁厚"
+        ]
+      },
+      "cachViet": {
+        "vi": "dày {giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?",
+        "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"
+      },
+      "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
