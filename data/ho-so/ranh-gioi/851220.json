@@ -1,0 +1,76 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "851220",
+  "nhom": "8512",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261102T1632#soan-851220",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85122020",
+      "nguon": "tax.85122020",
+      "trich": "85122020 - - Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan chưa lắp ráp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thiết bị chiếu sáng",
+            "tạo tín hiệu trực quan"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chưa lắp ráp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85122091",
+      "nguon": "tax.85122091",
+      "trich": "85122091 - - - Dùng cho xe máy",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe máy"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85122099",
+      "nguon": "tax.85122099",
+      "trich": "85122099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85122020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85122020 \"Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan chưa lắp ráp\" (EN \"Unassembled lighting or visual signalling equipment\") ⇒ tenLoai [\"Thiết bị chiếu sáng\",\"tạo tín hiệu trực quan\"] (EN \"lighting or visual signalling\" nối hai hàng bằng or ⇒ mảng = hoặc) + tenLoai \"chưa lắp ráp\" là định ngữ chung của cả hai tên ⇒ điều kiện riêng cùng khoá (VÀ), theo khuôn 392620 .20."
+    },
+    {
+      "ma": "85122020",
+      "loai": "BO_VE",
+      "ve": "chưa lắp ráp",
+      "lyDo": "Máy tách chỉ nhận định ngữ ở HẬU ngữ chữ Anh nên đọc \"Unassembled lighting or visual signalling equipment\" là liên hợp không định ngữ và coi \"chưa lắp ráp\" chỉ thuộc danh từ cuối; thực tế \"Unassembled\" là định ngữ đứng TRƯỚC, chung cho cả \"lighting\" lẫn \"visual signalling\" (thiết bị chiếu sáng đã lắp ráp thuộc 8512209, không thuộc dòng này) nên viết HOAC [[Thiết bị chiếu sáng],[tạo tín hiệu trực quan, chưa lắp ráp]] sẽ rộng hơn chữ và làm 85122020 chồng 85122091; giữ dạng VÀ tenLoai [2 tên] + tenLoai \"chưa lắp ráp\"."
+    },
+    {
+      "ma": "85122091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85122091 \"Dùng cho xe máy\" (EN \"For motorcycles\") ⇒ dungCho \"xe máy\" (dòng chỉ có vế dùng cho, không có tên riêng)."
+    }
+  ]
+}
