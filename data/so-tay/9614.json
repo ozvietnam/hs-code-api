@@ -1,29 +1,36 @@
 {
  "nhom": "9614",
  "phamVi": {
-  "text": "Tẩu thuốc các loại, bát điếu, đót thuốc lá và xì gà, phôi gỗ/rễ cây đẽo thô để làm tẩu, và bộ phận của chúng (thân, đầu tẩu, nắp, đầu lọc...).",
+  "text": "Tẩu thuốc các loại (kể cả tẩu dài, điếu ống), bát điếu, đót thuốc lá và xì gà, khối gỗ nhỏ hoặc rễ cây đã đẽo gọt thô để làm tẩu và các bộ phận của chúng.",
   "nguon": "nhom9614.nhom",
-  "trich": "Nhóm này bao gồm: (1) Tẩu thuốc các loại … (2) Bát điếu. (3) Đót thuốc lá và xì gà. (4) Khối gỗ nhỏ hoặc rễ cây thạch thảo trắng được đẽo gọt thô thành hình để làm tẩu.",
+  "trich": "Nhóm này bao gồm:\n\n(1) Tẩu thuốc các loại (kể cả tẩu dài của người da đỏ Bắc Mỹ, tẩu dài của người Thổ Nhĩ Kỳ, điếu ống,...).\n\n(2) Bát điếu.\n\n(3) Đót thuốc lá và xì gà.\n\n(4) Khối gỗ nhỏ hoặc rễ cây thạch thảo trắng được đẽo gọt thô thành hình để làm tẩu.",
   "nguonLoai": "AI_DA_KIEM"
  },
  "dieuKienVao": [
   {
-   "fact": "la_tau_thuoc_dot_thuoc_hoac_bo_phan",
+   "fact": "la_tau_thuoc_bat_dieu_dot_thuoc_la_hoac_xi_ga",
    "op": "=",
    "value": true,
    "donVi": null,
-   "ngoaiTru": [
-    "đồ phụ trợ như nạo điếu, giẻ lau ống điếu",
-    "thiết bị điện tử của thuốc lá điện tử"
-   ],
+   "ngoaiTru": [],
    "nguon": "nhom9614.nhom",
-   "trich": "Nhóm này cũng bao gồm các bộ phận sau: thân và đầu tẩu; nắp tẩu; bát điếu; dụng cụ nhồi thuốc; các bộ phận bên trong (kể cả đầu lọc),....",
+   "trich": "Nhóm này bao gồm:\n\n(1) Tẩu thuốc các loại (kể cả tẩu dài của người da đỏ Bắc Mỹ, tẩu dài của người Thổ Nhĩ Kỳ, điếu ống,...).\n\n(2) Bát điếu.\n\n(3) Đót thuốc lá và xì gà.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "la_go_hoac_re_cay_deo_got_tho_thanh_hinh_de_lam_tau",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
+   "nguon": "nhom9614.nhom",
+   "trich": "(4) Khối gỗ nhỏ hoặc rễ cây thạch thảo trắng được đẽo gọt thô thành hình để làm tẩu.",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "loaiTru": [
   {
-   "dieuKien": "Thiết bị điện tử dùng cho thuốc lá điện tử, thiết bị hoá hơi cá nhân, dù có hình dạng tẩu thuốc hoặc tẩu nước",
+   "dieuKien": "Thiết bị điện tử dùng cho thuốc lá điện tử và các thiết bị điện hóa hơi cá nhân tương tự",
    "sangNhom": "8543",
    "nguon": "nhom9614.nhom",
    "trich": "Thiết bị điện tử dùng cho thuốc lá điện tử và các thiết bị điện hóa hơi cá nhân tương tự, có hoặc không có hình dạng tẩu thuốc hoặc tẩu nước (nhóm 85.43).",
@@ -32,7 +39,7 @@
  ],
  "phanBiet": [
   {
-   "hoi": "Hàng là thuốc lá điện tử hoặc thiết bị hoá hơi cá nhân chạy điện (kể cả loại có hình dạng tẩu)?",
+   "hoi": "Hàng hóa có phải là thiết bị điện tử dùng cho thuốc lá điện tử hoặc thiết bị điện hóa hơi cá nhân tương tự không?",
    "neuCo": "8543",
    "neuKhong": "9614",
    "nguon": "nhom9614.nhom",
@@ -44,7 +51,7 @@
  "dong8": [
   {
    "hs": "96140010",
-   "dieuKien": "Phôi gỗ hoặc rễ cây (thạch thảo trắng) đã đẽo tạo dáng thô để làm tẩu thuốc",
+   "dieuKien": "Gỗ hoặc rễ cây đã tạo dáng thô để làm tẩu thuốc",
    "loaiKhac": false,
    "nguon": "tax.96140010",
    "trich": "96140010 - Gỗ hoặc rễ cây đã tạo dáng thô để làm tẩu thuốc",
@@ -52,7 +59,7 @@
   },
   {
    "hs": "96140090",
-   "dieuKien": "Tẩu thuốc thành phẩm, bát điếu, đót thuốc lá/xì gà và bộ phận của chúng (không phải phôi gỗ/rễ thô)",
+   "dieuKien": "Tẩu thuốc, đót thuốc lá hoặc xì gà và các bộ phận khác (trừ gỗ hoặc rễ cây đã tạo dáng thô)",
    "loaiKhac": true,
    "nguon": "tax.96140090",
    "trich": "96140090 - Loại khác",
@@ -110,14 +117,14 @@
  ],
  "phienBan": "HS2022",
  "taoBoi": {
-  "provider": "tu-tep",
+  "provider": "google-studio:gemini-flash",
   "model": null,
-  "luc": "2026-11-02T05:06:46.862Z",
-  "ms": 4
+  "luc": "2026-11-02T07:36:24.693Z",
+  "ms": 7
  },
  "kiemTra": {
-  "tong": 6,
-  "dat": 6,
+  "tong": 7,
+  "dat": 7,
   "loai": 0,
   "nguonBiCat": []
  }

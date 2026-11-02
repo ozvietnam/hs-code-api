@@ -1,20 +1,19 @@
 {
  "nhom": "9706",
  "phamVi": {
-  "text": "Mọi đồ cổ có tuổi trên 100 năm không thuộc các nhóm 97.01 đến 97.05 (đồ đạc, sách in cổ, đồ sứ, hàng dệt, kim hoàn, đèn, đồng hồ, nhạc cụ...), kể cả đồ cổ đã sửa chữa, phục chế mà vẫn giữ đặc tính ban đầu.",
+  "text": "Mọi đồ vật cổ có tuổi trên 100 năm, trừ các vật phẩm thuộc các nhóm từ 97.01 đến 97.05.",
   "nguon": "nhom9706.nhom",
   "trich": "Nhóm này bao gồm mọi đồ vật cổ có hơn 100 năm tuổi, với điều kiện chúng không thuộc vào nhóm 97.01 đến 97.05.",
   "nguonLoai": "AI_DA_KIEM"
  },
  "dieuKienVao": [
   {
-   "fact": "la_do_co_tuoi_tren_100_nam",
+   "fact": "la_do_vat_co_hon_100_nam_tuoi",
    "op": "=",
    "value": true,
    "donVi": null,
    "ngoaiTru": [
-    "đồ thuộc nhóm 97.01 đến 97.05",
-    "ngọc trai, đá quý, đá bán quý"
+    "các vật phẩm thuộc nhóm 97.01 đến 97.05"
    ],
    "nguon": "nhom9706.nhom",
    "trich": "Nhóm này bao gồm mọi đồ vật cổ có hơn 100 năm tuổi, với điều kiện chúng không thuộc vào nhóm 97.01 đến 97.05.",
@@ -23,35 +22,20 @@
  ],
  "loaiTru": [
   {
-   "dieuKien": "Ngọc trai thiên nhiên hoặc nuôi cấy, đá quý hoặc đá bán quý, bất kể tuổi",
-   "sangNhom": "7101|7103",
+   "dieuKien": "Ngọc trai thiên nhiên hoặc nuôi cấy và đá quý hoặc bán quý, cho dù tuổi của chúng thế nào",
+   "sangNhom": "7101",
    "nguon": "nhom9706.nhom",
    "trich": "Nhóm này không bao gồm ngọc trai thiên nhiên hoặc nuôi cấy và đá quý hoặc bán quý, cho dù tuổi của chúng thế nào (thuộc nhóm 71.01 đến 71.03)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "dieuKien": "Bản khắc, bản in nguyên bản cổ (thuộc nhóm 97.02)",
-   "sangNhom": "9702",
-   "nguon": "nhom9706.nhom",
-   "trich": "(2) Các sản phẩm của công nghiệp in: sách in cổ trước năm 1500 và các sách khác, âm nhạc, bản đồ, bản khắc (trừ loại thuộc nhóm 97.02).",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "phanBiet": [
   {
-   "hoi": "Hàng là ngọc trai, đá quý hoặc đá bán quý (dù rất cổ)?",
-   "neuCo": "7101|7103",
+   "hoi": "Hàng hóa là ngọc trai thiên nhiên hoặc nuôi cấy, đá quý hoặc đá bán quý?",
+   "neuCo": "7101",
    "neuKhong": "9706",
    "nguon": "nhom9706.nhom",
    "trich": "Nhóm này không bao gồm ngọc trai thiên nhiên hoặc nuôi cấy và đá quý hoặc bán quý, cho dù tuổi của chúng thế nào (thuộc nhóm 71.01 đến 71.03)",
-   "nguonLoai": "AI_DA_KIEM"
-  },
-  {
-   "hoi": "Hàng là bản khắc, bản in hoặc bản in lytô nguyên bản do nghệ nhân làm tay?",
-   "neuCo": "9702",
-   "neuKhong": "9706",
-   "nguon": "nhom9706.nhom",
-   "trich": "(2) Các sản phẩm của công nghiệp in: sách in cổ trước năm 1500 và các sách khác, âm nhạc, bản đồ, bản khắc (trừ loại thuộc nhóm 97.02).",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
@@ -88,7 +72,7 @@
   },
   {
    "hs": "97069000",
-   "dieuKien": "Đồ cổ có tuổi trên 100 năm nhưng không quá 250 năm",
+   "dieuKien": "Đồ cổ loại khác (có tuổi trên 100 năm nhưng không quá 250 năm)",
    "loaiKhac": true,
    "nguon": "tax.97069000",
    "trich": "97069000 - Loại khác",
@@ -150,14 +134,14 @@
  ],
  "phienBan": "HS2022",
  "taoBoi": {
-  "provider": "tu-tep",
+  "provider": "google-studio:gemini-flash",
   "model": null,
-  "luc": "2026-11-02T05:06:46.931Z",
-  "ms": 5
+  "luc": "2026-11-02T07:36:24.778Z",
+  "ms": 4
  },
  "kiemTra": {
-  "tong": 10,
-  "dat": 10,
+  "tong": 8,
+  "dat": 8,
   "loai": 0,
   "nguonBiCat": []
  }

@@ -1,23 +1,28 @@
 {
  "nhom": "9613",
  "phamVi": {
-  "text": "Bật lửa các loại (cơ, điện, hoá học, không dùng cơ) — bỏ túi, để bàn, gắn tường, gắn bếp ga, dùng trong xe — và bộ phận nhận biết được của bật lửa.",
+  "text": "Bật lửa các loại (bật lửa cơ, điện, hoá học, không dùng cơ) và các bộ phận có thể xác định là của bật lửa.",
   "nguon": "nhom9613.nhom",
-  "trich": "Nhóm này bao gồm: (1) Các bật lửa cơ. … (2) Các bật lửa điện: … (3) Các bật lửa hoá học. … (4) Các bật lửa không dùng cơ. … Bật lửa xếp trong nhóm này có thể thuộc loại bỏ túi, hoặc đặt trên bàn, hoặc có thể được thiết kế để gắn trên tường, gắn vào bếp ga... nhóm này cũng bao gồm các bật lửa loại dùng trong xe hơi hoặc xe cộ khác.",
+  "trich": "Nhóm này bao gồm:\n\n(1) Các bật lửa cơ. … (2) Các bật lửa điện: … (3) Các bật lửa hoá học. … (4) Các bật lửa không dùng cơ. … Nhóm này cũng bao gồm các bộ phận có thể xác định là của bật lửa",
   "nguonLoai": "AI_DA_KIEM"
  },
  "dieuKienVao": [
   {
-   "fact": "la_bat_lua_hoac_bo_phan_bat_lua",
+   "fact": "la_bat_lua",
    "op": "=",
    "value": true,
    "donVi": null,
-   "ngoaiTru": [
-    "bộ phận đánh lửa nhóm 36.03",
-    "đá lửa nhóm 36.06",
-    "bấc",
-    "nhiên liệu đóng bình nạp bật lửa"
-   ],
+   "ngoaiTru": [],
+   "nguon": "nhom9613.nhom",
+   "trich": "Nhóm này bao gồm:\n\n(1) Các bật lửa cơ.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "fact": "la_bo_phan_cua_bat_lua",
+   "op": "=",
+   "value": true,
+   "donVi": null,
+   "ngoaiTru": [],
    "nguon": "nhom9613.nhom",
    "trich": "Nhóm này cũng bao gồm các bộ phận có thể xác định là của bật lửa (ví dụ, vỏ bật lửa, bánh xe đánh lửa, bình chứa nhiên liệu rỗng hoặc đầy).",
    "nguonLoai": "AI_DA_KIEM"
@@ -25,37 +30,44 @@
  ],
  "loaiTru": [
   {
-   "dieuKien": "Bộ phận đánh lửa (pyrophoric) của nhóm 36.03",
+   "dieuKien": "Các bộ phận đánh lửa",
    "sangNhom": "3603",
    "nguon": "nhom9613.nhom",
    "trich": "Nhóm này không bao gồm các bộ phận đánh lửa của nhóm 36.03",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
-   "dieuKien": "Đá lửa rời",
+   "dieuKien": "Đá lửa",
    "sangNhom": "3606",
    "nguon": "nhom9613.nhom",
-   "trich": "đá lửa (nhóm 36.06)",
+   "trich": "Nhóm này không bao gồm … đá lửa (nhóm 36.06)",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
-   "dieuKien": "Bấc bật lửa",
-   "sangNhom": "5908|7019",
+   "dieuKien": "Bấc bằng vật liệu dệt",
+   "sangNhom": "5908",
    "nguon": "nhom9613.nhom",
-   "trich": "bấc (nhóm 59.08 hoặc 70.19)",
+   "trich": "Nhóm này không bao gồm … bấc (nhóm 59.08 hoặc 70.19)",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
-   "dieuKien": "Nhiên liệu đóng trong bình (lọ, chai, can) để nạp cho bật lửa",
+   "dieuKien": "Bấc bằng sợi thủy tinh",
+   "sangNhom": "7019",
+   "nguon": "nhom9613.nhom",
+   "trich": "Nhóm này không bao gồm … bấc (nhóm 59.08 hoặc 70.19)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "dieuKien": "Nhiên liệu đóng trong các bình chứa thuộc loại dùng để cung cấp hoặc bơm lại cho bật lửa",
    "sangNhom": "3606",
    "nguon": "nhom9613.nhom",
-   "trich": "nhiên liệu đóng trong các bình chứa (lọ, chai, can...) thuộc loại dùng để cung cấp hoặc bơm lại cho bật lửa châm thuốc lá hoặc các loại bật lửa tương tự (nói chung nhóm 36.06)",
+   "trich": "Nhóm này không bao gồm … nhiên liệu đóng trong các bình chứa (lọ, chai, can...) thuộc loại dùng để cung cấp hoặc bơm lại cho bật lửa châm thuốc lá hoặc các loại bật lửa tương tự (nói chung nhóm 36.06).",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "phanBiet": [
   {
-   "hoi": "Hàng chỉ là bộ phận đánh lửa (hợp kim đánh lửa) rời, không phải bật lửa hay vỏ/bánh xe/bình của bật lửa?",
+   "hoi": "Hàng là các bộ phận đánh lửa thuộc nhóm 36.03?",
    "neuCo": "3603",
    "neuKhong": "9613",
    "nguon": "nhom9613.nhom",
@@ -63,27 +75,35 @@
    "nguonLoai": "AI_DA_KIEM"
   },
   {
-   "hoi": "Hàng là đá lửa rời?",
+   "hoi": "Hàng là đá lửa?",
    "neuCo": "3606",
    "neuKhong": "9613",
    "nguon": "nhom9613.nhom",
-   "trich": "đá lửa (nhóm 36.06)",
+   "trich": "Nhóm này không bao gồm … đá lửa (nhóm 36.06)",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
-   "hoi": "Hàng là bấc (sợi dệt hoặc sợi thuỷ tinh) rời?",
-   "neuCo": "5908|7019",
+   "hoi": "Hàng là bấc thuộc nhóm 59.08?",
+   "neuCo": "5908",
    "neuKhong": "9613",
    "nguon": "nhom9613.nhom",
-   "trich": "bấc (nhóm 59.08 hoặc 70.19)",
+   "trich": "Nhóm này không bao gồm … bấc (nhóm 59.08 hoặc 70.19)",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
-   "hoi": "Hàng là bình/lọ/can nhiên liệu (gas, xăng) để nạp bật lửa?",
+   "hoi": "Hàng là bấc thuộc nhóm 70.19?",
+   "neuCo": "7019",
+   "neuKhong": "9613",
+   "nguon": "nhom9613.nhom",
+   "trich": "Nhóm này không bao gồm … bấc (nhóm 59.08 hoặc 70.19)",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "hoi": "Hàng là nhiên liệu đóng trong bình chứa dùng để bơm lại cho bật lửa?",
    "neuCo": "3606",
    "neuKhong": "9613",
    "nguon": "nhom9613.nhom",
-   "trich": "nhiên liệu đóng trong các bình chứa (lọ, chai, can...) thuộc loại dùng để cung cấp hoặc bơm lại cho bật lửa châm thuốc lá hoặc các loại bật lửa tương tự (nói chung nhóm 36.06)",
+   "trich": "Nhóm này không bao gồm … nhiên liệu đóng trong các bình chứa (lọ, chai, can...) thuộc loại dùng để cung cấp hoặc bơm lại cho bật lửa châm thuốc lá hoặc các loại bật lửa tương tự (nói chung nhóm 36.06).",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
@@ -91,7 +111,7 @@
  "dong8": [
   {
    "hs": "96131010",
-   "dieuKien": "Bật lửa bỏ túi, dùng ga, không nạp lại được, bằng plastic",
+   "dieuKien": "Bật lửa ga bỏ túi, không nạp lại được, bằng plastic",
    "loaiKhac": false,
    "nguon": "tax.96131010",
    "trich": "96131010 - - Bằng plastic",
@@ -99,7 +119,7 @@
   },
   {
    "hs": "96131090",
-   "dieuKien": "Bật lửa bỏ túi, dùng ga, không nạp lại được, bằng vật liệu khác plastic (kim loại...)",
+   "dieuKien": "Bật lửa ga bỏ túi, không nạp lại được, trừ loại bằng plastic",
    "loaiKhac": true,
    "nguon": "tax.96131090",
    "trich": "96131090 - - Loại khác",
@@ -119,7 +139,7 @@
   },
   {
    "hs": "96132010",
-   "dieuKien": "Bật lửa bỏ túi, dùng ga, nạp lại được, bằng plastic",
+   "dieuKien": "Bật lửa ga bỏ túi, nạp lại được, bằng plastic",
    "loaiKhac": false,
    "nguon": "tax.96132010",
    "trich": "96132010 - - Bằng plastic",
@@ -127,7 +147,7 @@
   },
   {
    "hs": "96132090",
-   "dieuKien": "Bật lửa bỏ túi, dùng ga, nạp lại được, bằng vật liệu khác plastic",
+   "dieuKien": "Bật lửa ga bỏ túi, nạp lại được, trừ loại bằng plastic",
    "loaiKhac": true,
    "nguon": "tax.96132090",
    "trich": "96132090 - - Loại khác",
@@ -155,7 +175,7 @@
   },
   {
    "hs": "96138020",
-   "dieuKien": "Bật lửa châm thuốc lá hoặc bật lửa để bàn (không phải loại bỏ túi dùng ga), bằng plastic",
+   "dieuKien": "Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic",
    "loaiKhac": false,
    "nguon": "tax.96138020",
    "trich": "96138020 - - Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic",
@@ -163,7 +183,7 @@
   },
   {
    "hs": "96138030",
-   "dieuKien": "Bật lửa châm thuốc lá hoặc bật lửa để bàn (không phải loại bỏ túi dùng ga), không bằng plastic",
+   "dieuKien": "Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic",
    "loaiKhac": false,
    "nguon": "tax.96138030",
    "trich": "96138030 - - Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic",
@@ -171,7 +191,7 @@
   },
   {
    "hs": "96138090",
-   "dieuKien": "Bật lửa khác: không phải bỏ túi dùng ga, không phải áp điện cho lò/bếp, không phải bật lửa châm thuốc/để bàn (vd bật lửa xe hơi, bật lửa điện, hoá học)",
+   "dieuKien": "Bật lửa khác chưa được chi tiết ở các dòng trên",
    "loaiKhac": true,
    "nguon": "tax.96138090",
    "trich": "96138090 - - Loại khác",
@@ -195,7 +215,7 @@
   },
   {
    "hs": "96139010",
-   "dieuKien": "Bộ phận: ống/bình chứa nạp lại được của bật lửa cơ khí, đã chứa nhiên liệu lỏng hoặc khí hoá lỏng",
+   "dieuKien": "Ống chứa hoặc bộ phận chứa khác có thể nạp lại của bật lửa cơ khí, có chứa nhiên liệu lỏng hoặc khí hóa lỏng",
    "loaiKhac": false,
    "nguon": "tax.96139010",
    "trich": "96139010 - - Ống chứa hoặc bộ phận chứa khác có thể nạp lại của bật lửa cơ khí, có chứa nhiên liệu lỏng hoặc khí hóa lỏng",
@@ -203,7 +223,7 @@
   },
   {
    "hs": "96139090",
-   "dieuKien": "Bộ phận khác của bật lửa (vỏ, bánh xe đánh lửa, bình rỗng...), trừ đá lửa và bấc",
+   "dieuKien": "Bộ phận khác của bật lửa",
    "loaiKhac": true,
    "nguon": "tax.96139090",
    "trich": "96139090 - - Loại khác",
@@ -368,14 +388,14 @@
  ],
  "phienBan": "HS2022",
  "taoBoi": {
-  "provider": "tu-tep",
+  "provider": "google-studio:gemini-flash",
   "model": null,
-  "luc": "2026-11-02T05:06:46.846Z",
-  "ms": 1286
+  "luc": "2026-11-02T07:36:24.665Z",
+  "ms": 2411
  },
  "kiemTra": {
-  "tong": 20,
-  "dat": 20,
+  "tong": 23,
+  "dat": 23,
   "loai": 0,
   "nguonBiCat": []
  }
