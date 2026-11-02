@@ -11436,3 +11436,92 @@ TARGET=data APPLY=1 node scripts/apply-review-lo080.mjs        # CHỈ nâng ngu
 | nhãn `nguonLoai` sau soát | **72 mục → `NGUOI_DUYET`** (2710: 18 · 2711: 8 · 2712: 11 · 2713: 8 · 2714: 13 · 2715: 14); `tieuChi6` + `dong8` giữ `AI_DA_KIEM` (ngoài phạm vi soát), `cay` giữ `MAY_SUY` |
 
 **Cấu trúc lô 080 sau soát — 162 mục**: `phamVi` 6 · `dieuKienVao` 2 · `loaiTru` 32 · `phanBiet` 32 · `tieuChi6` 26 · `cay.tenDien` 1 · `dong8` 63.
+
+# LÔ 081 — soạn sổ tay chú giải (phiên `dev-zcode-mm`, 02/11/2026 07:45)
+
+- **Nhánh:** `so-tay/lo-081` (worktree `hs-code-api-wt-st-lo081`) · **PR #PRNUM** — **KHÔNG merge** (chờ soát độc lập)
+- **Nhóm:** `2716 2801 2802 2803 2804 2805` — 2716 năng lượng điện · 2801 flo/clo/brom/iot · 2802 lưu huỳnh · 2803 carbon & muội carbon · 2804 hydro, khí hiếm và các phi kim khác · 2805 kim loại kiềm/kiềm thổ/đất hiếm/thủy ngân (theo CSV dòng 081, khớp brief)
+- **Nguồn:** `tmp/so-tay/nguon/{2716,2801,2802,2803,2804,2805}.txt` (149.709 ký tự) + `_he-thong.txt` — đọc HẾT 6 tệp
+- **KẾT QUẢ:** **89/89 mục đạt (100 %)** · **0 mục rớt** · `npm run so-tay:check` = 638 nhóm / 15.876 mục / **0 lỗi** · `npm test` xanh
+
+## 0. Bước đọc bắt buộc (quy trình 3 tầng — KHÔNG đọc trọn `so-tay-giao-ngoai.md`)
+
+1. `brief-st-lo081.md` — nhóm `2716 2801 2802 2803 2804 2805`; lệnh có sẵn + yêu cầu ghi danh CSV + mô tả PR.
+2. `docs/giao-viec/so-tay/LUAT-CHUNG.md` — **11 luật**: chép nguyên văn ≤ 300 ký tự; `loaiTru` chỉ khi **nêu đích danh**; `phanBiet` mã ngoài nhóm phải có trong trích; `dong8` đủ mọi dòng `tax.*`; không sửa câu trích; `cay` do máy sinh; **không ghi `nguonLoai`**.
+3. `docs/giao-viec/so-tay/SOAN-LO.md` — 4 lệnh có sẵn + "Mô tả PR phải có" + bảng **lỗi máy TỰ LOẠI**.
+4. `tmp/so-tay/nguon/_he-thong.txt` — lược đồ + bài học bước 1 (60 nhóm 07/10/2026) + bài học soát lô 030 (23/10/2026).
+
+## 1. Xuất nguồn
+
+```
+node scripts/build-so-tay.mjs --nhom=2716,2801,2802,2803,2804,2805 --xuat-nguon=tmp/so-tay/nguon
+```
+
+→ 6 tệp nguồn + `_he-thong.txt`.
+
+**Đọc HẾT 6 tệp.** Hai khối dùng chung đã đo md5: `ch28.chuong` **giống nhau byte-exact ở cả 5 nhóm 2801–2805** (`95a7fb34…`) và `phan28.phan` cũng vậy (`b1d139c9…`) ⇒ đọc 1 lần, dùng lại cho 5 nhóm.
+
+**LỖI TẦNG DATA (phải gác):** cuối `nhom2805.nhom` dính khối **"PHÂN CHƯƠNG II: AXIT VÔ CƠ VÀ CÁC HỢP CHẤT VÔ CƠ CÓ CHỨA OXY CỦA CÁC PHI KIM LOẠI"** (từ dòng 92) — khối của nhóm khác, KHÔNG dùng làm căn cứ. Bộ cắt của em **tự gác**: mọi mảnh trích của 2805 phải nằm TRƯỚC dòng 92, không thì script báo đỏ.
+
+## 2. BỘ CẮT TRÍCH BYTE-EXACT (`tmp/lo081/cut.mjs` + `tmp/lo081/spec.mjs`)
+
+Bài học lô 071 + memory `hien-thi-khong-byte-exact-tieng-viet` + `soat-ghi-tay-lai-thi-sai-ky-tu`: **KHÔNG gõ tay một câu trích nào.**
+
+- Mỗi câu trích viết dạng **khoá KHÔNG DẤU** + (nếu cần) khoá cắt đuôi câu.
+- Bộ cắt gấp dấu (NFD + bỏ `\p{M}` + map `đ/Đ/ơ/ư`) để định vị trong nguồn, rồi cắt **đúng biên ký tự** của bản gốc ⇒ kết quả là đoạn NGUYÊN VĂN của nguồn (kể cả ngoặc và dấu chấm cuối câu).
+- `SC(...)` cắt bớt đuôi câu (vd câu "Mischmetal" 245 ký tự → cắt sau "45 đến 55% xezi") để giữ `trich` ≤ 300 ký tự.
+
+⇒ **89/89 mảnh trích nguyên văn tuyệt đối** (`check-trich-nguyen-van.mjs` xanh cả lúc soạn lẫn sau khi nạp).
+
+## 3. Soạn bản nháp + máy kiểm
+
+```
+node tmp/lo081/spec.mjs                                   # sinh tmp/so-tay/raw/<nhom>.json
+node scripts/check-so-tay.mjs --raw=tmp/so-tay/raw        # máy kiểm mục
+node scripts/check-trich-nguyen-van.mjs                   # byte-exact
+node tmp/lo081/audit5.mjs tmp/so-tay/raw                  # lớp kiểm thứ 5 (tự viết)
+```
+
+**Cấu trúc lô 081 — 89 mục**: `phamVi` 6 · `dieuKienVao` **0** · `loaiTru` 17 · `phanBiet` 22 · `tieuChi6` 19 · `dong8` 25.
+
+- **`dieuKienVao` = 0 ở cả 6 nhóm** — có chủ ý: nguồn nhóm chỉ có câu **ĐỊNH NGHĨA / mô tả sản xuất** ("Clo là một chất khí…", "Hydro được điều chế bằng…"), **không có câu RÀNG BUỘC phủ CẢ nhóm** ⇒ theo luật "chỉ đặt khi câu đó phủ CẢ nhóm" ⇒ để rỗng. Các ngưỡng thật (silic ≥/< 99,99 %, hợp kim > 5 % sắt) đặt đúng tầng: `tieuChi6` (6 số) và `dong8` (8 số).
+- **`loaiTru` chỉ ghi khi câu trích có DẤU HIỆU LOẠI TRỪ** ("không bao gồm", "loại trừ", "không nên lẫn với", "sẽ thuộc nhóm") và **nêu đích danh** số nhóm.
+
+## 4. Nạp + kiểm toàn repo
+
+```
+node scripts/build-so-tay.mjs --nhom=2716,2801,2802,2803,2804,2805 --tu-tep=tmp/so-tay/raw --force \
+  --nguoi-soan="dev-zcode-mm" --bao-cao=data/so-tay/bao-cao/lo-081.json
+npm run so-tay:check && npm test
+```
+
+⇒ `data/so-tay/{2716,2801,2802,2803,2804,2805}.json` + `data/so-tay/bao-cao/lo-081.json` (**89/89, 100 %**). **KHÔNG commit `tmp/`.**
+
+## 5. Những chỗ NGƯỜI SOÁT cần để mắt (lớp lỗi máy KHÔNG bắt)
+
+1. **2716 — nguồn mỏng nhất lô:** `nhom2716.nhom` chỉ ghi **"Không chú giải."** ⇒ `phamVi` lấy từ dòng biểu thuế `tax.27160000` ("27160000 Năng lượng điện."), **không có** `dieuKienVao`/`loaiTru`/`phanBiet`/`tieuChi6` (2 mục nguồn).
+2. **2803 — mục (b) của danh sách loại trừ KHÔNG mã hoá được:** "(b) Carbon tự nhiên ở dạng nhiên liệu rắn (than antraxit, than đá, than non); than cốc, nhiên liệu tích tụ và khí carbon **(Chương 27)**" — luật chỉ cho đích danh là nhóm 4 số ⇒ **BỎ mục này**, không ghi "Chương 27" vào `sangNhom`. **6/7 loại trừ của 2803 đã ghi** (a)(c)(d)(e)(f)(g).
+3. **2803 — mục (d) nêu đích 38.01 DẠNG "VÍ DỤ":** "(d) Graphit nhân tạo; graphit dạng keo hoặc dạng bán keo **(ví dụ, nhóm 38.01)**" — em **VẪN ghi** `loaiTru` 3801 vì đó là nơi hàng bị loại về (không phải ví dụ linh kiện); nhưng nếu người soát cho rằng "ví dụ" ở đây là dấu hiệu chỉ-ví-dụ thì **XOÁ mục này**.
+4. **2803 — `phamVi` lấy từ tên WCO** (`wco.280300`: "Carbon; carbon blacks and other forms of carbon n.e.c.") ⇒ `text` là bản Việt của tên đó, **khớp đúng tiêu đề nhóm trong cây** ("Carbon (muội carbon và các dạng khác của carbon chưa được chi tiết hoặc ghi ở nơi khác)"). Khuôn mẫu nhà có sẵn (6004 · 6102 · 7412 dùng `nguon: wco.*` cho `phamVi`).
+5. **2803 — hai dòng "Loại khác" (28030049 / 28030090) nguồn KHÔNG phân biệt được:** em ghi theo khuôn mẫu nhà — 28030049: "Loại khác (dòng cha — tiêu đề quốc gia 2803.00.4 không có trong nguồn — đối chiếu biểu thuế)"; 28030090: "Loại khác: phần còn lại của nhóm 2803". Máy tự suy phạm vi chính xác qua `phamViLoaiKhac`.
+6. **2805 — câu "Mischmetal"** (vốn bị bỏ sót ở lần soạn trước): bản nháp giữ **đủ hai vế** — thành phần ("hợp kim có chứa 45 đến 55% xezi…") + **ngưỡng sắt** ("Khi hợp kim có hơn 5% sắt … thì nó không thuộc nhóm này") — trong `dong8` của 28053000. Ví dụ trong ngoặc "pyrophoric ⇒ **nhóm 36.06**" là **VÍ DỤ** ⇒ **không** ghi `loaiTru` 36.06.
+7. **2804 — loại trừ CHUNG của Chương**: Chú giải 8 Chương 28 (nguyên tố đã kích tạp ở dạng đĩa ⇒ 38.18) là luật chung cả Chương ⇒ **không** chép vào 2804. Nhưng **bản nháp CÓ ghi riêng** từ `nhom2804.nhom` ("Một vài phi kim trong nhóm này … Khi cắt thành dạng đĩa, dạng bánh … nhóm 38.18") ⇒ `loaiTru` 3818 + 1 câu hỏi phân biệt. Người soát xác nhận điểm này.
+8. **2802 — "thường có độ tinh khiết khoảng 99,5%"** là **MÔ TẢ** (có "thường"), không phải ngưỡng ⇒ **không** mã hoá thành điều kiện. Tương tự "Thông thường hydro được coi là một phi kim" (chỉ phủ phần (A), không phủ cả nhóm) ⇒ không đưa vào `dieuKienVao`.
+9. **Ba dòng "Loại khác" lấy điều kiện từ tên WCO 6 số** (28042900 · 28046900 · 28051900) vì dòng biểu thuất chỉ ghi "Loại khác" — dùng khuôn mẫu nhà: "Loại khác — phần còn lại của phân nhóm 2804.29 (WCO: Gases, rare; other than argon)".
+10. **`tieuChi6` dùng khoá `loai_vat` (có sẵn trong từ vựng nhà) + `ham_luong_silic` (số 99,99 % theo tên WCO).** Hai tiêu chí silic là **ngưỡng thật** ⇒ có ích cho lớp hồ sơ 6→8 số.
+
+## 6. Lệnh + kết quả kiểm
+
+| Lệnh | Kết quả |
+|---|---|
+| `check-so-tay.mjs --raw=tmp/so-tay/raw` | **6 nhóm — 89/89 mục, 0 mục không kiểm được nguồn (100 %)** |
+| `check-trich-nguyen-van.mjs` (byte-exact) | **OK — 89 mục, mọi câu trích nguyên văn tuyệt đối trong đúng khối nguồn** (chạy lại sau khi nạp: OK) |
+| `audit5.mjs` (lớp kiểm thứ 5 — tự viết) | **6/89 mục có từ chưa có trong câu trích — 6/6 là KHUÔN MẪU CHỮ CỦA NHÀ** (dịch tên WCO sang Việt ở `phamVi` 2803 · mẫu "(dòng cha … đối chiếu biểu thuế)" · mẫu "(WCO: …)") ⇒ **0 lỗi thật** |
+| `npm run so-tay:check` | **638 nhóm, 15.876 mục, 0 mục không kiểm được nguồn** |
+| `node scripts/check-cay.mjs --nhom=2716,2801,2802,2803,2804,2805` | **6 nhóm, 0 lỗi lệch cây, 6/6 nhóm ĐỦ** (đủ cây, đủ dong8, đủ tên nút ảo, đủ tiêu chí 6 số) |
+| `npm test` | **ALL TESTS PASSED** |
+| `data/so-tay/bao-cao/lo-081.json` | **6 nhóm · 89 mục · 89 đạt · 100 % · 0 nhóm lỗi** |
+
+**Ghi danh:** `docs/giao-viec/so-tay-lo.csv` dòng 081 → `trang_thai=dang-lam`, `nguoi_lam=dev-zcode-mm` (người soát mới được đặt `xong`).
+
+**Nộp:** commit `data/so-tay/*.json` + `data/so-tay/bao-cao/lo-081.json` + dòng CSV + `TIEN-TRINH.md` — **KHÔNG commit `tmp/`** · push nhánh `so-tay/lo-081` · mở PR · **KHÔNG merge**.
