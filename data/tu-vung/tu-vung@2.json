@@ -26,11 +26,12 @@
     "tu-vung@2: LIET_KE cumDaiThang (phuongPhapCheTao): cụm chồng nhau thì cụm dài thắng (\"đột dập và kéo giãn\" thắng \"dập\", \"kéo giãn\"); hai phương pháp ở hai chỗ khác nhau ⇒ CHUA_BIET + ungVien.",
     "tu-vung@2: 10 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577) mang nguonLoai AI_DA_KIEM (máy kiểm + test) — CHƯA chấm duyệt độc lập (chamDuyetDocLap.khoaChuaCham); nâng CLAUDE_DUYET sau phiên soát độc lập.",
     "tu-vung@2 (02/11): 4 khoá lát 2 — phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay (đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md, mục quét + \"Bổ sung từ studio-loop\", GĐ duyệt) — nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. phuongPhapIn thay đề xuất phuongPhapCheTao IN_BATIK; tinhDanHoi thay loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU (trục CHỨA); loaiSoiDet gộp loaiXoPha. Khoá @1 không đổi.",
-    "tu-vung@2 (02/11, lô 2): 10 khoá — congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc — Studio soạn, máy kiểm; nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi."
+    "tu-vung@2 (02/11, lô 2): 10 khoá — congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc — Studio soạn, máy kiểm; nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi.",
+    "tu-vung@2 (03/11, lô 4): 5 khoá — dungLamGiong, dongBaoBiKinKhiDeBanLe, nongDoCon, phuongPhapBaoQuan, dangBaoCheThuoc — Studio soạn (quét biểu thuế ch.01–30), máy kiểm; nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio chưa chắc 5 khoá để lại vòng sau: mucDoTinhCheDau, chiSoIot, ronXangDau, daRangThucPham, tachXuongCoHoc."
   ],
   "chamDuyetDocLap": {
     "trangThai": "CHUA_CHAM",
-    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập. +10 khoá 02/11 (lô 2: congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc) chưa chấm độc lập. +9 khoá 03/11 (lô 3 thép ch.72/73: hamLuongCarbon, gioiHanChay, chieuRong, khaNangChiuApLuc, duongCheoNgoai, coRen, doBenKeo, hamLuongNiken, lopMaPhu) chưa chấm độc lập.",
+    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập. +10 khoá 02/11 (lô 2: congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc) chưa chấm độc lập. +9 khoá 03/11 (lô 3 thép ch.72/73: hamLuongCarbon, gioiHanChay, chieuRong, khaNangChiuApLuc, duongCheoNgoai, coRen, doBenKeo, hamLuongNiken, lopMaPhu) chưa chấm độc lập. +5 khoá 03/11 (lô 4 nông sản/thực phẩm/dược ch.01–30: dungLamGiong, dongBaoBiKinKhiDeBanLe, nongDoCon, phuongPhapBaoQuan, dangBaoCheThuoc) chưa chấm độc lập.",
     "khoaChuaCham": [
       "chiHoacChuYeu",
       "thietKeChoTreEm",
@@ -64,7 +65,12 @@
       "coRen",
       "doBenKeo",
       "hamLuongNiken",
-      "lopMaPhu"
+      "lopMaPhu",
+      "dungLamGiong",
+      "dongBaoBiKinKhiDeBanLe",
+      "nongDoCon",
+      "phuongPhapBaoQuan",
+      "dangBaoCheThuoc"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -6032,6 +6038,456 @@
       "cachViet": {
         "vi": "{giaTri}"
       }
+    },
+    {
+      "khoa": "dungLamGiong",
+      "kieu": "CO_KHONG",
+      "nhanVi": "để nhân giống / làm giống / gieo trồng",
+      "nhanEn": "for breeding / for sowing / for propagation",
+      "nhanZh": "用于繁育/改良种用/播种",
+      "cachDoc": {
+        "vi": [
+          "(?:loại\\s+)?thuần\\s+chủng\\s+để\\s+nhân\\s+giống",
+          "(?:dùng\\s+)?(?:để|làm)\\s+nhân\\s+giống",
+          "phù\\s+hợp\\s+để\\s+(?:làm\\s+giống|gieo\\s+trồng)",
+          "phù\\s+hợp\\s+để\\s+gieo/trồng",
+          "củ\\s+giống",
+          "hạt\\s+giống",
+          "cây\\s+giống"
+        ],
+        "en": [
+          "pure-?bred\\s+breeding",
+          "for\\s+breeding",
+          "for\\s+sowing",
+          "for\\s+propagation",
+          "suitable\\s+for\\s+sowing",
+          "seed\\s+potatoes",
+          "seed"
+        ],
+        "zh": [
+          "改良种用",
+          "纯种",
+          "繁育用",
+          "种用",
+          "播种用",
+          "留种用",
+          "种畜",
+          "种苗",
+          "种禽"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không dùng",
+          "không",
+          "chưa",
+          "trừ",
+          "loại khác",
+          "other than",
+          "not for",
+          "non-?",
+          "非",
+          "不",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+dùng\\s+(?:để\\s+)?(?:nhân\\s+giống|làm\\s+giống|gieo\\s+trồng)",
+          "trừ\\s+(?:loại\\s+)?(?:để\\s+)?nhân\\s+giống"
+        ],
+        "en": [
+          "not\\s+for\\s+breeding",
+          "other\\s+than\\s+for\\s+breeding",
+          "not\\s+for\\s+sowing"
+        ],
+        "zh": [
+          "非种用",
+          "非繁育用",
+          "非播种用"
+        ]
+      },
+      "cachViet": {
+        "vi": "để nhân giống/gieo trồng",
+        "viPhuDinh": "không dùng để nhân giống/gieo trồng"
+      },
+      "cauHoi": {
+        "vi": "Hàng có dùng để nhân giống, làm giống hoặc gieo trồng không?",
+        "zh": "该产品是否用于繁育、引种改良或播种？"
+      },
+      "ghiChu": "Chữ biểu 0101.30.10 \"Loại thuần chủng để nhân giống\", 0105.11.10 \"Để nhân giống\", 0703.10.11 \"Củ giống\", 0713.10.10 \"Phù hợp để gieo trồng\", 1207.10.10 \"Hạt cọ phù hợp để gieo/trồng\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "dongBaoBiKinKhiDeBanLe",
+      "kieu": "CO_KHONG",
+      "nhanVi": "đóng bao bì kín khí để bán lẻ",
+      "nhanEn": "in airtight containers for retail sale",
+      "nhanZh": "装于零售用气密包装",
+      "cachDoc": {
+        "vi": [
+          "đóng\\s+bao\\s+bì\\s+kín\\s+khí\\s+để\\s+bán\\s+lẻ",
+          "đóng\\s+(?:trong\\s+)?bao\\s+bì\\s+kín\\s+khí",
+          "bao\\s+bì\\s+kín\\s+khí",
+          "hộp\\s+kín\\s+khí"
+        ],
+        "en": [
+          "in\\s+airtight\\s+containers?\\s+for\\s+retail\\s+sale",
+          "in\\s+airtight\\s+containers?",
+          "airtight\\s+pack(?:ag(?:e|ing))?",
+          "hermetically\\s+sealed\\s+containers?"
+        ],
+        "zh": [
+          "气密包装",
+          "用于零售的气密包装",
+          "零售用气密容器",
+          "密封包装"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "not in",
+          "without",
+          "non-?",
+          "非",
+          "未",
+          "不"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+đóng\\s+bao\\s+bì\\s+kín\\s+khí(?:\\s+để\\s+bán\\s+lẻ)?"
+        ],
+        "en": [
+          "not\\s+in\\s+airtight\\s+containers"
+        ],
+        "zh": [
+          "非气密包装",
+          "未装于气密容器"
+        ]
+      },
+      "cachViet": {
+        "vi": "đóng bao bì kín khí để bán lẻ",
+        "viPhuDinh": "không đóng bao bì kín khí để bán lẻ"
+      },
+      "cauHoi": {
+        "vi": "Hàng có được đóng trong bao bì kín khí để bán lẻ không?",
+        "zh": "该货物是否装于用于零售的气密容器/包装中？"
+      },
+      "ghiChu": "Chữ biểu 1601.00.10, 1602.10.10, 1604.11.10, 2005.20.11 \"Đóng bao bì kín khí để bán lẻ\" (EN \"In airtight containers for retail sale\").",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "nongDoCon",
+      "kieu": "SO",
+      "nhanVi": "nồng độ cồn (% thể tích)",
+      "nhanEn": "alcoholic strength by volume",
+      "nhanZh": "酒精度（按容量计）",
+      "heDonVi": "phanTram",
+      "donViChuan": "%",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "nồng\\s+độ\\s+cồn",
+          "hàm\\s+lượng\\s+cồn",
+          "độ\\s+cồn",
+          "nồng\\s+độ\\s+rượu"
+        ],
+        "en": [
+          "alcoholic?\\s+strength(?:\\s+by\\s+volume)?",
+          "alcohol(?:ic)?\\s+content",
+          "abv",
+          "vol(?:ume)?\\s+alcohol"
+        ],
+        "zh": [
+          "酒精度",
+          "酒精含量",
+          "乙醇含量",
+          "按容量计酒精"
+        ]
+      },
+      "cachViet": {
+        "vi": "nồng độ cồn {giaTri}% theo thể tích"
+      },
+      "cauHoi": {
+        "vi": "Nồng độ cồn tính theo thể tích của đồ uống/cồn là bao nhiêu %?",
+        "zh": "该酒品/液体的按容量计酒精度（酒精含量）是多少%？"
+      },
+      "ghiChu": "Chữ biểu 2203.00.11 \"Có nồng độ cồn không quá 5,8% tính theo thể tích\", 2204.21.11 \"Có nồng độ cồn không quá 15% tính theo thể tích\", 2208.70.10 \"Có nồng độ cồn không quá 57% tính theo thể tích\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "phuongPhapBaoQuan",
+      "kieu": "LIET_KE",
+      "nhanVi": "phương pháp bảo quản / trạng thái bảo quản",
+      "nhanEn": "state of preservation / processing",
+      "nhanZh": "保存/加工处理状态",
+      "giaTriHopLe": [
+        "SONG",
+        "TUOI_UOP_LANH",
+        "DONG_LANH",
+        "KHO_MUOI",
+        "HUN_KHOI"
+      ],
+      "moTaGiaTri": {
+        "SONG": {
+          "nhanVi": "sống",
+          "nhanEn": "live",
+          "nhanZh": "活",
+          "cachDoc": {
+            "vi": [
+              "\\bsống\\b",
+              "còn\\s+sống"
+            ],
+            "en": [
+              "\\blive\\b"
+            ],
+            "zh": [
+              "活",
+              "活的"
+            ]
+          },
+          "cachViet": "sống"
+        },
+        "TUOI_UOP_LANH": {
+          "nhanVi": "tươi hoặc ướp lạnh",
+          "nhanEn": "fresh or chilled",
+          "nhanZh": "鲜或冷",
+          "cachDoc": {
+            "vi": [
+              "tươi(?:\\s+hoặc\\s+ướp\\s+lạnh)?",
+              "ướp\\s+lạnh"
+            ],
+            "en": [
+              "fresh(?:\\s+or\\s+chilled)?",
+              "chilled"
+            ],
+            "zh": [
+              "鲜",
+              "冷",
+              "鲜或冷"
+            ]
+          },
+          "cachViet": "tươi hoặc ướp lạnh"
+        },
+        "DONG_LANH": {
+          "nhanVi": "đông lạnh",
+          "nhanEn": "frozen",
+          "nhanZh": "冻",
+          "cachDoc": {
+            "vi": [
+              "đông\\s+lạnh",
+              "cấp\\s+đông"
+            ],
+            "en": [
+              "frozen"
+            ],
+            "zh": [
+              "冻",
+              "冷冻"
+            ]
+          },
+          "cachViet": "đông lạnh"
+        },
+        "KHO_MUOI": {
+          "nhanVi": "khô, muối hoặc ngâm nước muối",
+          "nhanEn": "dried, salted or in brine",
+          "nhanZh": "干、盐腌或盐渍",
+          "cachDoc": {
+            "vi": [
+              "khô(?:,\\s*muối\\s+hoặc\\s+ngâm\\s+nước\\s+muối)?",
+              "làm\\s+khô",
+              "muối",
+              "ngâm\\s+nước\\s+muối"
+            ],
+            "en": [
+              "dried(?:,\\s*salted\\s+or\\s+in\\s+brine)?",
+              "salted",
+              "in\\s+brine"
+            ],
+            "zh": [
+              "干",
+              "盐腌",
+              "盐渍",
+              "干、盐腌或盐渍"
+            ]
+          },
+          "cachViet": "khô, muối hoặc ngâm nước muối"
+        },
+        "HUN_KHOI": {
+          "nhanVi": "hun khói",
+          "nhanEn": "smoked",
+          "nhanZh": "熏制",
+          "cachDoc": {
+            "vi": [
+              "hun\\s+khói",
+              "xông\\s+khói"
+            ],
+            "en": [
+              "smoked"
+            ],
+            "zh": [
+              "熏",
+              "熏制"
+            ]
+          },
+          "cachViet": "hun khói"
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Hàng ở trạng thái sống, tươi/ướp lạnh, đông lạnh, hun khói hay khô/muối?",
+        "zh": "该产品属于活、鲜/冷、冻、熏制还是干/腌制状态？"
+      },
+      "ghiChu": "Chữ biểu 0306.11.10 \"Hun khói\", 0306.31.20 \"Loại khác, sống\", 0306.31.30 \"Tươi hoặc ướp lạnh\", 0307.60.40 \"Khô, muối hoặc ngâm nước muối\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "dangBaoCheThuoc",
+      "kieu": "LIET_KE",
+      "nhanVi": "dạng bào chế / đường dùng của thuốc",
+      "nhanEn": "dosage form / route of administration",
+      "nhanZh": "药品剂型/给药途径",
+      "giaTriHopLe": [
+        "DANG_UONG",
+        "DANG_MO",
+        "DANG_TIEM",
+        "DANG_TRUYEN",
+        "MIENG_DAN_THAM_THAU"
+      ],
+      "moTaGiaTri": {
+        "DANG_UONG": {
+          "nhanVi": "dạng uống",
+          "nhanEn": "oral form",
+          "nhanZh": "口服剂型",
+          "cachDoc": {
+            "vi": [
+              "dạng\\s+uống",
+              "thuốc\\s+uống",
+              "viên\\s+uống"
+            ],
+            "en": [
+              "oral\\s+form",
+              "in\\s+oral\\s+form",
+              "for\\s+oral\\s+administration"
+            ],
+            "zh": [
+              "口服",
+              "口服剂型",
+              "口服形式"
+            ]
+          },
+          "cachViet": "dạng uống"
+        },
+        "DANG_MO": {
+          "nhanVi": "dạng mỡ",
+          "nhanEn": "ointment form",
+          "nhanZh": "软膏剂型",
+          "cachDoc": {
+            "vi": [
+              "dạng\\s+mỡ",
+              "thuốc\\s+mỡ",
+              "kem\\s+bôi"
+            ],
+            "en": [
+              "ointment(?:\\s+form)?",
+              "in\\s+ointment\\s+form"
+            ],
+            "zh": [
+              "软膏",
+              "软膏剂",
+              "膏状"
+            ]
+          },
+          "cachViet": "dạng mỡ"
+        },
+        "DANG_TIEM": {
+          "nhanVi": "dạng tiêm",
+          "nhanEn": "injectable form",
+          "nhanZh": "注射剂型",
+          "cachDoc": {
+            "vi": [
+              "dạng\\s+tiêm",
+              "dùng\\s+để\\s+tiêm",
+              "thuốc\\s+tiêm"
+            ],
+            "en": [
+              "injectable\\s+form",
+              "for\\s+injection",
+              "injections?"
+            ],
+            "zh": [
+              "注射",
+              "注射剂",
+              "注射用"
+            ]
+          },
+          "cachViet": "dạng tiêm"
+        },
+        "DANG_TRUYEN": {
+          "nhanVi": "dạng truyền",
+          "nhanEn": "infusion form",
+          "nhanZh": "输液剂型",
+          "cachDoc": {
+            "vi": [
+              "dạng\\s+truyền",
+              "dung\\s+dịch\\s+truyền",
+              "tiêm\\s+truyền"
+            ],
+            "en": [
+              "infusion(?:\\s+form)?",
+              "for\\s+infusion"
+            ],
+            "zh": [
+              "输注",
+              "输液",
+              "滴注"
+            ]
+          },
+          "cachViet": "dạng truyền"
+        },
+        "MIENG_DAN_THAM_THAU": {
+          "nhanVi": "miếng dán thẩm thấu qua da",
+          "nhanEn": "transdermal patch",
+          "nhanZh": "透皮贴剂",
+          "cachDoc": {
+            "vi": [
+              "miếng\\s+(?:dán\\s+)?thẩm\\s+thấu\\s+qua\\s+da",
+              "cao\\s+dán\\s+thấm\\s+qua\\s+da"
+            ],
+            "en": [
+              "transdermal\\s+patch(?:es)?",
+              "transdermal\\s+administration"
+            ],
+            "zh": [
+              "透皮贴剂",
+              "经皮贴片"
+            ]
+          },
+          "cachViet": "miếng thẩm thấu qua da"
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Thuốc ở dạng bào chế nào (dạng uống, dạng mỡ, tiêm, truyền hay miếng dán qua da)?",
+        "zh": "该药品属于何种剂型/给药形式（口服、软膏、注射、输液或透皮贴剂）？"
+      },
+      "ghiChu": "Chữ biểu 3004.10.16 \"dạng uống (*)\", 3004.20.32 \"Dạng mỡ\", 3004.49.80 \"dùng để tiêm\", 3004.90.91 \"dạng truyền\", 3004.90.10 \"Miếng thẩm thấu qua da\".",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "khongPhaiPhuDinh": [

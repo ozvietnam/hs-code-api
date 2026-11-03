@@ -32,7 +32,9 @@ const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNap
   // + 10 khoá lô 2 (02/11, Studio soạn, máy kiểm): 848xxx/850xxx/39xx DỪNG THIEU_KHOA_TU_VUNG
   congSuatBieuKien: 'SO', dungTich: 'SO', theTich: 'SO', sanLuongHoi: 'SO', dungLuong: 'SO', dangNguyenSinh: 'LIET_KE', heDienHoa: 'LIET_KE', daLapRap: 'CO_KHONG', daHoaDeo: 'CO_KHONG', coBoLoc: 'CO_KHONG',
   // + 9 khoá lô 3 (03/11, Studio soạn, máy kiểm): thép ch.72/73 DỪNG THIEU_KHOA_TU_VUNG
-  hamLuongCarbon: 'SO', gioiHanChay: 'SO', chieuRong: 'SO', khaNangChiuApLuc: 'SO', duongCheoNgoai: 'SO', coRen: 'CO_KHONG', doBenKeo: 'SO', hamLuongNiken: 'SO', lopMaPhu: 'LIET_KE' };
+  hamLuongCarbon: 'SO', gioiHanChay: 'SO', chieuRong: 'SO', khaNangChiuApLuc: 'SO', duongCheoNgoai: 'SO', coRen: 'CO_KHONG', doBenKeo: 'SO', hamLuongNiken: 'SO', lopMaPhu: 'LIET_KE',
+  // + 5 khoá lô 4 (03/11, Studio quét biểu thuế ch.01–30, máy kiểm): nông sản/thực phẩm/đồ uống/dược
+  dungLamGiong: 'CO_KHONG', dongBaoBiKinKhiDeBanLe: 'CO_KHONG', nongDoCon: 'SO', phuongPhapBaoQuan: 'LIET_KE', dangBaoCheThuoc: 'LIET_KE' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
