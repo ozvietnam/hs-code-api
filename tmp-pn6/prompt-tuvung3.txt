@@ -1,0 +1,42 @@
+SOẠN ĐẦY ĐỦ MỤC TỪ VỰNG (lô 3: thép ch.72–73). Dưới đây là mẫu CÓ SẴN trong tu-vung@2 (CO_KHONG tinhDanHoi; SO doDay) — khuôn bắt buộc — rồi 9 khoá cần bổ sung với chữ biểu ví dụ. QUY TẮC LƯỢC ĐỒ (máy kiểm sẽ ĐỎ nếu sai): (1) khoá SO: heDonVi PHẢI là tên một hệ đã có trong bảng dưới HOẶC khai hệ mới trong "heDonViMoi" (vd {"apSuat":{"psi":1,"MPa":145.04}}), donViChuan phải là một đơn vị của hệ đó; chiều dài dùng hệ "dai" (mm/cm/m/inch), donViChuan mm hoặc m; thêm bí danh viết tắt (chữ thường) vào "bietDanhMoi" {"psi":"psi","mpa":"MPa"}; (2) khoá SO có canNguCanh:true thì cachDoc vi/en/zh phải có ≥1 mẫu; (3) mọi khoá có nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi} (SO: chuỗi có {giaTri} và đơn vị), ghiChu trích NGUYÊN VĂN chữ biểu, nguonLoai "AI_DA_KIEM"; (4) khoá CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong, cachViet{vi,viPhuDinh}; (5) khoá LIET_KE (nếu cần): giaTriHopLe = MẢNG CHUỖI id HOA_GẠCH_DƯỚI, VÀ moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet?}} (cachViet chuỗi không có ()/;/ " / "), cachDoc cấp khoá = {"vi":[],"en":[],"zh":[]}. Quy ước SO: hàm lượng % tính theo khối lượng dùng hệ mới "phanTram" {"%":1} (không dùng hệ tiLe); giới hạn chảy/độ bền kéo MPa hoặc psi hệ mới; không bịa ngưỡng. Với MỖI khoá soạn MỘT mục đầy đủ. Trả về MỘT khối ```json {"khoa":[mục...],"heDonViMoi":{...},"bietDanhMoi":{...},"khongChac":[tên khoá...]} duy nhất, không giải thích.
+
+=== HỆ ĐƠN VỊ ĐÃ CÓ (heDonVi) ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+=== 9 KHOÁ CẦN SOẠN (đề xuất + chữ biểu ví dụ từ các DỪNG thật) ===
+- hamLuongCarbon:
+    PN6 721061: tieuDe.7210611: "Có hàm lượng carbon dưới 0,6% tính theo khối lượng" thiếu khoá hamLuongCarbon
+    PN6 720928: tax.72092810: "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm" thiếu khoá hamLuongCarbon
+    PN6 721020: tax.72102010: "Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm" thiếu khoá hamLuongCarbon
+- gioiHanChay:
+    PN6 730451: tax.73045120 "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi" thiếu khoá giới hạn chảy psi
+    PN6 730423: tax.73042310 "Có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống" thiếu khoá biểu diễn giới hạn chảy/áp lực psi và ren
+    PN6 730690: tax.73069091 thiếu khoá giới hạn chảy psi
+- chieuRong:
+    PN6 720916: tax.72091610: "Chiều rộng không quá 1.250 mm" thiếu khoá chieuRong (SO)
+    PN6 721123: tax.72112320: "chiều rộng không quá 400 mm" thiếu khoá chieuRong (SO)
+    PN6 720927: tax.72092710: "Chiều rộng không quá 1.250 mm" thiếu khoá chieuRong (SO)
+- khaNangChiuApLuc:
+    PN6 730439: tax.73043920 "Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi" thiếu khoá áp lực psi
+    PN6 730690: tax.73069094 "Các loại ống dẫn chịu áp lực cao khác..." thiếu tiêu chí phân biệt áp lực cao
+    PN6 730690: tax.73069095 thiếu tiêu chí phân biệt áp lực cao
+- duongCheoNgoai:
+    PN6 730690: tax.73069011 thiếu khoá đường chéo ngoài
+    PN6 730690: tax.73069096 thiếu khoá đường chéo ngoài
+    PN6 730661: tax.73066110 "Có đường chéo ngoài của mặt cắt ngang dưới 12,5 mm" thiếu khoá đường chéo ngoài (duongKinh chỉ dành cho hình tròn)
+- coRen:
+    PN6 730451: tax.73045110 "Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)" thiếu khoá ren trong và ren ngoài
+    PN6 730431: tax.73043110 "Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)" thiếu khoá cho ren trong và ren ngoài
+- doBenKeo:
+    PN6 720839: tax.72083940: thiếu khoá doBenKeo (MPa) và chieuRong để biểu diễn "độ bền kéo tối đa 550 Mpa và chiều rộng không quá 1.250 mm"
+- hamLuongNiken:
+    PN6 730640: tax.73064030 "Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm" thiếu khoá hàm lượng niken
+- lopMaPhu:
+    PN6 730630: tieuDe.7306302 thiếu khoá mạ đồng, tráng nhựa flo hoặc kẽm cromat
