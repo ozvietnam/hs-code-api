@@ -1,0 +1,669 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ thuyTinhQuangHoc ===
+{
+ "khoa": "thuyTinhQuangHoc",
+ "kieu": "CO_KHONG",
+ "nhanVi": "thủy tinh/kính quang học (chưa gia công quang học)",
+ "nhanEn": "optical glass (not optically worked)",
+ "nhanZh": "光学玻璃（未经光学加工）",
+ "cachDoc": {
+  "vi": [
+   "(?:thủy\\s+tinh|kính)\\s+quang\\s+học(?:,\\s*chưa\\s+được\\s+gia\\s+công\\s+về\\s+mặt\\s+quang\\s+học)?",
+   "thủy\\s+tinh\\s+quang\\s+học",
+   "kính\\s+quang\\s+học"
+  ],
+  "en": [
+   "optical\\s+glass(?:,\\s*not\\s+optically\\s+worked)?"
+  ],
+  "zh": [
+   "光学玻璃",
+   "未经光学加工的光学玻璃"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "other than",
+   "not",
+   "non-?",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+(?:thủy\\s+tinh|kính)\\s+quang\\s+học"
+  ],
+  "en": [
+   "other\\s+than\\s+optical\\s+glass",
+   "not\\s+optical\\s+glass"
+  ],
+  "zh": [
+   "非光学玻璃"
+  ]
+ },
+ "cachViet": {
+  "vi": "thủy tinh quang học",
+  "viPhuDinh": "không phải thủy tinh quang học"
+ },
+ "cauHoi": {
+  "vi": "Kính hoặc thủy tinh có phải là kính quang học (chưa gia công quang học) không?",
+  "zh": "该玻璃产品是否属于未经光学加工的光学玻璃？"
+ },
+ "ghiChu": "Chữ biểu 7003.12.10 \"Thủy tinh quang học, chưa được gia công về mặt quang học\", 7004.20.10 \"Kính quang học, chưa được gia công về mặt quang học\", 7006.00.10 \"Kính quang học, chưa được gia công về mặt quang học\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+70031210 Thủy tinh quang học, chưa được gia công về mặt quang học
+70031220 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70031290 Loại khác
+70042010 Kính quang học, chưa được gia công về mặt quang học
+70042020 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70042090 Loại khác
+70060010 Kính quang học, chưa được gia công về mặt quang học
+70060090 Loại khác
+
+=== KHOÁ tiLe ===
+{
+ "khoa": "tiLe",
+ "kieu": "SO",
+ "nhanVi": "tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)",
+ "nhanEn": "ratio (e.g. thickness to diameter)",
+ "nhanZh": "比例（如厚度与直径之比）",
+ "heDonVi": "tiLe",
+ "donViChuan": "lần",
+ "canNguCanh": true,
+ "docPhanSo": true,
+ "donViCachRieng": true,
+ "phanSo": {
+  "sauLa": {
+   "vi": [
+    "đường\\s+kính",
+    "chiều\\s+dài",
+    "chiều\\s+rộng",
+    "chiều\\s+dày",
+    "độ\\s+dày"
+   ],
+   "en": [
+    "(?:of\\s+(?:the\\s+|its\\s+)?)?(?:diameter|length|width|thickness)"
+   ],
+   "zh": [
+    "直径",
+    "长度",
+    "宽度",
+    "厚度"
+   ]
+  }
+ },
+ "cachDoc": {
+  "vi": [
+   "tỉ\\s+lệ",
+   "tỷ\\s+lệ",
+   "gấp"
+  ],
+  "en": [
+   "ratio",
+   "times"
+  ],
+  "zh": [
+   "比例",
+   "比率",
+   "之比",
+   "倍"
+  ]
+ },
+ "cachViet": {
+  "vi": "tỉ lệ {giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Tỉ lệ giữa hai kích thước mà dòng biểu thuế nêu là bao nhiêu (vd chiều dày 2 mm / đường kính 20 mm = 1/10)?",
+  "zh": "税则所述两个尺寸之间的比例是多少（例如厚度2毫米/直径20毫米=1/10）？"
+ },
+ "ghiChu": "Không thứ nguyên, quy về \"lần\" (1/10 = 0,1; 10% = 0,1; gấp 3 lần = 3). Đại lượng tử/mẫu lấy từ câu trích của điều kiện (vd 7616.99.30 \"chiều dày trên 1/10 đường kính\"). Máy KHÔNG suy tỉ lệ từ hai kích thước rời.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+76169920 Nhôm bịt đầu ống loại phù hợp dùng để sản xuất bút chì (SEN)
+76169930 Đồng xèng, hình tròn, kích thước chiều dày trên 1/10 đường kính (SEN)
+76169940 Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt
+76169951 Rèm chớp lật(SEN)
+76169959 Loại khác
+76169960 Máng và chén để hứng mủ cao su
+76169970 Hộp đựng thuốc lá điếu
+76169980 Sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới
+76169990 Loại khác
+
+=== KHOÁ tinhDanHoi ===
+{
+ "khoa": "tinhDanHoi",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)",
+ "nhanEn": "elastic (containing elastomeric yarn or rubber thread)",
+ "nhanZh": "弹性（含弹性纱线或橡胶线）",
+ "cachDoc": {
+  "vi": [
+   "(?:tính\\s+)?đàn\\s+hồi",
+   "sợi\\s+đàn\\s+hồi",
+   "sợi\\s+cao\\s+su",
+   "chỉ\\s+cao\\s+su",
+   "spandex",
+   "elastane",
+   "lycra"
+  ],
+  "en": [
+   "elastic(?:ity)?",
+   "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)",
+   "rubber\\s+threads?",
+   "spandex",
+   "elastane",
+   "lycra",
+   "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"
+  ],
+  "zh": [
+   "弹性",
+   "弹力",
+   "橡胶线",
+   "橡筋",
+   "氨纶",
+   "莱卡"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không có",
+   "không",
+   "chưa",
+   "ko",
+   "chẳng",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "没有",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [],
+  "en": [
+   "non-?elastic",
+   "inelastic",
+   "non-?stretch"
+  ],
+  "zh": [
+   "无弹性",
+   "无弹力",
+   "不含弹性"
+  ]
+ },
+ "cachViet": {
+  "vi": "đàn hồi",
+  "viPhuDinh": "không đàn hồi"
+ },
+ "cauHoi": {
+  "vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?",
+  "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"
+ },
+ "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+60019220 Vải nổi vòng (pile) từ xơ staple 100% polyeste, có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn
+60019230 Chứa sợi đàn hồi hoặc sợi cao su
+60019290 Loại khác
+
+=== KHOÁ tinhNangBaoHo ===
+{
+ "khoa": "tinhNangBaoHo",
+ "kieu": "LIET_KE",
+ "nhanVi": "tính năng bảo hộ chuyên dụng của quần áo",
+ "nhanEn": "protective feature of garments",
+ "nhanZh": "服装专用防护性能",
+ "giaTriHopLe": [
+  "CHONG_CHAY",
+  "CHONG_HOA_CHAT_PHONG_XA",
+  "CHONG_NO"
+ ],
+ "moTaGiaTri": {
+  "CHONG_CHAY": {
+   "nhanVi": "chống cháy",
+   "nhanEn": "fire-resistant / flame-retardant",
+   "nhanZh": "阻燃/防火",
+   "cachDoc": {
+    "vi": [
+     "chống\\s+cháy",
+     "chống\\s+lửa",
+     "chịu\\s+nhiệt\\s+chống\\s+cháy",
+     "chống\\s+bắt\\s+lửa"
+    ],
+    "en": [
+     "fire-?resistant",
+     "flame-?retardant",
+     "fire\\s+protection"
+    ],
+    "zh": [
+     "防火",
+     "阻燃",
+     "防着火"
+    ]
+   },
+   "cachViet": "chống cháy"
+  },
+  "CHONG_HOA_CHAT_PHONG_XA": {
+   "nhanVi": "chống các chất hóa học hoặc phóng xạ",
+   "nhanEn": "chemical or radiation protection",
+   "nhanZh": "防化学品或防辐射",
+   "cachDoc": {
+    "vi": [
+     "chống\\s+(?:các\\s+)?chất\\s+hóa\\s+học(?:\\s+hoặc\\s+phóng\\s+xạ)?",
+     "chống\\s+hóa\\s+chất",
+     "chống\\s+phóng\\s+xạ"
+    ],
+    "en": [
+     "chemical\\s+(?:or\\s+radiation\\s+)?protection",
+     "anti-?chemical",
+     "radiation-?proof"
+    ],
+    "zh": [
+     "防化学品",
+     "防辐射",
+     "防化学品或防辐射"
+    ]
+   },
+   "cachViet": "chống hóa chất hoặc phóng xạ"
+  },
+  "CHONG_NO": {
+   "nhanVi": "chống nổ",
+   "nhanEn": "explosion protection / bomb disposal",
+   "nhanZh": "防爆",
+   "cachDoc": {
+    "vi": [
+     "chống\\s+nổ",
+     "bảo\\s+hộ\\s+chống\\s+nổ",
+     "phòng\\s+nổ"
+    ],
+    "en": [
+     "anti-?explosion",
+     "explosion-?proof",
+     "bomb\\s+disposal"
+    ],
+    "zh": [
+     "防爆",
+     "防爆炸",
+     "排爆"
+    ]
+   },
+   "cachViet": "chống nổ"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Quần áo bảo hộ có tính năng chuyên dụng nào (chống cháy, chống hóa chất/phóng xạ hay chống nổ)?",
+  "zh": "该防护服具备何种专用防护性能（防火、防化学品/辐射或防爆）？"
+ },
+ "ghiChu": "Chữ biểu 6113.00.30 \"Quần áo chống cháy\", 6210.20.30 \"Quần áo chống các chất hóa học hoặc phóng xạ\", 6211.43.30 \"Bộ quần áo bảo hộ chống nổ\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+61130010 Bộ đồ của thợ lặn (SEN)
+61130030 Quần áo chống cháy (SEN)
+61130040 Quần áo bảo hộ khác
+61130090 Loại khác
+62102020 Quần áo chống cháy (SEN)
+62102030 Quần áo chống các chất hóa học hoặc phóng xạ
+62102040 Quần áo bảo hộ khác
+62102090 Loại khác
+62114310 Áo phẫu thuật
+62114320 Áo choàng không tay dùng để cầu nguyện (SEN)
+62114330 Bộ quần áo bảo hộ chống nổ
+62114340 Quần áo đấu kiếm hoặc đấu vật
+62114350 Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)
+62114360 Bộ quần áo nhảy dù liền thân
+62114370 Sarong loại hình ống (SEN)
+62114390 Loại khác
+
+=== KHOÁ tinhTrangTayTrang ===
+{
+ "khoa": "tinhTrangTayTrang",
+ "kieu": "LIET_KE",
+ "nhanVi": "tình trạng tẩy trắng (của xơ, sợi hoặc vải dệt)",
+ "nhanEn": "bleaching status (of fibres, yarn or fabric)",
+ "nhanZh": "漂白状态（纤维、纱线或织物）",
+ "giaTriHopLe": [
+  "CHUA_TAY_TRANG",
+  "DA_TAY_TRANG"
+ ],
+ "moTaGiaTri": {
+  "CHUA_TAY_TRANG": {
+   "nhanVi": "chưa tẩy trắng",
+   "nhanEn": "unbleached",
+   "nhanZh": "未漂白",
+   "cachDoc": {
+    "vi": [
+     "chưa\\s+tẩy\\s+trắng",
+     "chưa\\s+tẩy",
+     "vải\\s+mộc",
+     "sợi\\s+mộc",
+     "mộc"
+    ],
+    "en": [
+     "unbleached",
+     "in\\s+the\\s+grey",
+     "greige",
+     "raw"
+    ],
+    "zh": [
+     "未漂白",
+     "本色",
+     "生坯"
+    ]
+   },
+   "cachViet": "chưa tẩy trắng"
+  },
+  "DA_TAY_TRANG": {
+   "nhanVi": "đã tẩy trắng",
+   "nhanEn": "bleached",
+   "nhanZh": "已漂白",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+tẩy\\s+trắng",
+     "đã\\s+tẩy",
+     "tẩy\\s+trắng"
+    ],
+    "en": [
+     "bleached"
+    ],
+    "zh": [
+     "已漂白",
+     "漂白"
+    ]
+   },
+   "cachViet": "đã tẩy trắng"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Hàng dệt (xơ, sợi, vải) ở tình trạng chưa tẩy trắng hay đã tẩy trắng?",
+  "zh": "纺织品（纤维、纱线、面料）是未漂白还是已漂白状态？"
+ },
+ "ghiChu": "Chữ biểu 5204.11.10, 5407.10.91, 5408.10.10 \"Chưa tẩy trắng\". (5007.10.20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" gộp cả hai giá trị — không đọc được, đúng ý.)",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+52041110 Chưa tẩy trắng
+52041190 Loại khác
+54071020 Vải làm lốp xe; vải làm băng tải (SEN)
+54071091 Chưa tẩy trắng
+54071099 Loại khác
+54081010 Chưa tẩy trắng
+54081090 Loại khác
+
+=== KHOÁ tocDo ===
+{
+ "khoa": "tocDo",
+ "kieu": "SO",
+ "nhanVi": "tốc độ (quay / vận hành)",
+ "nhanEn": "speed (rotational / operating)",
+ "nhanZh": "转速",
+ "heDonVi": "tocDo",
+ "donViChuan": "v/ph",
+ "canNguCanh": false,
+ "cachDoc": {
+  "vi": [
+   "tốc độ quay",
+   "tốc độ vận hành",
+   "vòng/phút",
+   "vòng / phút"
+  ],
+  "en": [
+   "speed",
+   "rpm",
+   "r/min"
+  ],
+  "zh": [
+   "转速"
+  ]
+ },
+ "cachViet": {
+  "vi": "tốc độ quay {giaTri} v/ph"
+ },
+ "cauHoi": {
+  "vi": "Tốc độ quay (vòng/phút) là bao nhiêu?",
+  "zh": "转速是多少（转/分）？"
+ },
+ "nguonLoai": "AI_DA_KIEM"
+}
+
+=== KHOÁ tongDungTichTau ===
+{
+ "khoa": "tongDungTichTau",
+ "kieu": "SO",
+ "nhanVi": "tổng dung tích tàu thuyền (gross tonnage - GT)",
+ "nhanEn": "gross tonnage of vessel (GT)",
+ "nhanZh": "船舶总吨位（GT）",
+ "heDonVi": "tongDungTich",
+ "donViChuan": "GT",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "tổng\\s+dung\\s+tích(?:\\s*\\(gross\\s+tonnage\\))?",
+   "dung\\s+tích\\s+toàn\\s+phần",
+   "dung\\s+tích\\s+đăng\\s+ký",
+   "\\bgt\\b"
+  ],
+  "en": [
+   "gross\\s+tonnage",
+   "gross\\s+register(?:ed)?\\s+tonnage",
+   "\\bgt\\b",
+   "\\bgrt\\b"
+  ],
+  "zh": [
+   "总吨位",
+   "注册总吨",
+   "总吨",
+   "\\bgt\\b"
+  ]
+ },
+ "cachViet": {
+  "vi": "tổng dung tích {giaTri} GT"
+ },
+ "cauHoi": {
+  "vi": "Tổng dung tích (gross tonnage - GT) của tàu thuyền là bao nhiêu?",
+  "zh": "该船舶的总吨位（GT）是多少？"
+ },
+ "ghiChu": "Chữ biểu 8901.10.10 \"Tổng dung tích (gross tonnage) không quá 26\", 8901.20.50 \"Tổng dung tích (gross tonnage) không quá 5.000\", 8902.00.31 \"Tổng dung tích (gross tonnage) không quá 26\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docThem": [
+  {
+   "mau": "(?<=(?:tổng\\s+dung\\s+tích|gross\\s+tonnage)\\)?\\s*(?:không\\s+quá|trên|từ|dưới|not\\s+exceeding|exceeding|of)?\\s*)(\\d+(?:[.,]\\d+)*)(?!\\s*(?:m3|m³|lít|l\\b))",
+   "donVi": "GT"
+  }
+ ],
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+89011010 Tổng dung tích (gross tonnage) không quá 26
+89011020 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89011060 Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000
+89011070 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89011080 Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000
+89011090 Tổng dung tích (gross tonnage) trên 5.000
+89012050 Tổng dung tích (gross tonnage) không quá 5.000
+89012071 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000
+89012072 Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000
+89012073 Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000
+89012080 Tổng dung tích (gross tonnage) trên 50.000
+89020031 Tổng dung tích (gross tonnage) không quá 26
+89020032 Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40
+89020033 Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101
+89020034 Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250
+89020035 Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000
+89020036 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89020037 Tổng dung tích (gross tonnage) trên 4.000
+89020041 Tổng dung tích (gross tonnage) không quá 26
+89020042 Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40
+89020043 Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101
+89020044 Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250
+89020045 Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000
+
+=== KHOÁ triSoOctan ===
+{
+ "khoa": "triSoOctan",
+ "kieu": "SO",
+ "nhanVi": "trị số octan (RON / Octane)",
+ "nhanEn": "research octane number (RON / Octane)",
+ "nhanZh": "辛烷值（RON）",
+ "heDonVi": "triSoOctan",
+ "donViChuan": "RON",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "\\bron\\b",
+   "trị\\s+số\\s+octan(?:e)?",
+   "chỉ\\s+số\\s+octan(?:e)?",
+   "\\boctan(?:e)?\\b"
+  ],
+  "en": [
+   "research\\s+octane\\s+number",
+   "\\bron\\b",
+   "octane\\s+number",
+   "octane\\s+rating",
+   "\\boctane\\b"
+  ],
+  "zh": [
+   "研究法辛烷值",
+   "辛烷值",
+   "\\bron\\b"
+  ]
+ },
+ "cachViet": {
+  "vi": "RON {giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Trị số octan nghiên cứu (RON) của xăng động cơ là bao nhiêu?",
+  "zh": "该车用汽油的研究法辛烷值（RON）是多少？"
+ },
+ "ghiChu": "Chữ biểu 2710.12.11 \"RON 97 và cao hơn\", 2710.12.12 \"RON 90 và cao hơn nhưng dưới RON 97\", 2710.12.31 \"Octane 100 và cao hơn\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docThem": [
+  {
+   "mau": "(?<=\\bRON\\s*)(\\d{2,3})(?!\\d)",
+   "donVi": "RON"
+  },
+  {
+   "mau": "(?<=\\bOctane?\\s*)(\\d{2,3})(?!\\d)",
+   "donVi": "octane"
+  }
+ ],
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+27101211 RON 97 và cao hơn
+27101212 RON 90 và cao hơn nhưng dưới RON 97
+27101213 RON khác
+27101221 Chưa pha chế
+27101222 Pha chế với ethanol
+27101223 Loại khác
+27101224 Chưa pha chế
+27101225 Pha chế với ethanol
+27101226 Loại khác
+27101227 Chưa pha chế
+27101228 Pha chế với ethanol
+27101229 Loại khác
+
+=== KHOÁ laPhanDoan ===
+{
+ "khoa": "laPhanDoan",
+ "kieu": "CO_KHONG",
+ "nhanVi": "là phần phân đoạn của dầu/mỡ (olein, stearin)",
+ "nhanEn": "fraction of oil/fat (olein, stearin)",
+ "nhanZh": "油脂分馏馏分（油精、硬脂）",
+ "cachDoc": {
+  "vi": [
+   "(?:các\\s+)?phần\\s+phân\\s+đoạn(?:\\s+thể\\s+rắn)?",
+   "phân\\s+đoạn",
+   "olein",
+   "stearin"
+  ],
+  "en": [
+   "fractions?",
+   "solid\\s+fractions?",
+   "olein",
+   "stearin"
+  ],
+  "zh": [
+   "分馏段",
+   "馏分",
+   "固体馏分",
+   "油精",
+   "硬脂"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "chưa",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+(?:phần\\s+)?phân\\s+đoạn",
+   "dầu\\s+nguyên\\s+(?:chất|khối)"
+  ],
+  "en": [
+   "not\\s+(?:a\\s+)?fraction",
+   "unfractionated"
+  ],
+  "zh": [
+   "非馏分",
+   "未分馏"
+  ]
+ },
+ "cachViet": {
+  "vi": "phần phân đoạn",
+  "viPhuDinh": "không phải phần phân đoạn"
+ },
+ "cauHoi": {
+  "vi": "Dầu/mỡ có phải phần phân đoạn (olein, stearin, phần thể rắn) không?",
+  "zh": "该油脂是否为分馏馏分（油精、硬脂、固体馏分）？"
+ },
+ "ghiChu": "Chữ biểu 1507.90.10 \"Các phần phân đoạn của dầu đậu tương chưa tinh chế\", 1504.10.20 \"Các phần phân đoạn thể rắn\". Tách từ mucDoTinhCheDau.PHAN_DOAN (03/11).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+15079010 Các phần phân đoạn của dầu đậu tương chưa tinh chế
+15079020 Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)
+15079090 Loại khác
+15041020 Các phần phân đoạn thể rắn
+15041090 Loại khác
+

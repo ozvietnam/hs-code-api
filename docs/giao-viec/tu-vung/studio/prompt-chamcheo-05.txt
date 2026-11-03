@@ -1,0 +1,1054 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ nongDoCon ===
+{
+ "khoa": "nongDoCon",
+ "kieu": "SO",
+ "nhanVi": "nồng độ cồn (% thể tích)",
+ "nhanEn": "alcoholic strength by volume",
+ "nhanZh": "酒精度（按容量计）",
+ "heDonVi": "phanTram",
+ "donViChuan": "%",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "nồng\\s+độ\\s+cồn",
+   "hàm\\s+lượng\\s+cồn",
+   "độ\\s+cồn",
+   "nồng\\s+độ\\s+rượu"
+  ],
+  "en": [
+   "alcoholic?\\s+strength(?:\\s+by\\s+volume)?",
+   "alcohol(?:ic)?\\s+content",
+   "abv",
+   "vol(?:ume)?\\s+alcohol"
+  ],
+  "zh": [
+   "酒精度",
+   "酒精含量",
+   "乙醇含量",
+   "按容量计酒精"
+  ]
+ },
+ "cachViet": {
+  "vi": "nồng độ cồn {giaTri}% theo thể tích"
+ },
+ "cauHoi": {
+  "vi": "Nồng độ cồn tính theo thể tích của đồ uống/cồn là bao nhiêu %?",
+  "zh": "该酒品/液体的按容量计酒精度（酒精含量）是多少%？"
+ },
+ "ghiChu": "Chữ biểu 2203.00.11 \"Có nồng độ cồn không quá 5,8% tính theo thể tích\", 2204.21.11 \"Có nồng độ cồn không quá 15% tính theo thể tích\", 2208.70.10 \"Có nồng độ cồn không quá 57% tính theo thể tích\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+22030011 Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)
+22030019 Loại khác (SEN)
+22030091 Có nồng độ cồn không quá 5,8% tính theo thể tích
+22030099 Loại khác
+22042111 Có nồng độ cồn không quá 15% tính theo thể tích
+22042113 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+22042114 Có nồng độ cồn trên 23% tính theo thể tích
+22042121 Có nồng độ cồn không quá 15% tính theo thể tích
+22042122 Có nồng độ cồn trên 15% tính theo thể tích
+22087010 Có nồng độ cồn không quá 57% tính theo thể tích
+22087090 Loại khác
+
+=== KHOÁ phuongPhapBaoQuan ===
+{
+ "khoa": "phuongPhapBaoQuan",
+ "kieu": "LIET_KE",
+ "nhanVi": "phương pháp bảo quản / trạng thái bảo quản",
+ "nhanEn": "state of preservation / processing",
+ "nhanZh": "保存/加工处理状态",
+ "giaTriHopLe": [
+  "SONG",
+  "TUOI_UOP_LANH",
+  "DONG_LANH",
+  "KHO_MUOI",
+  "HUN_KHOI"
+ ],
+ "moTaGiaTri": {
+  "SONG": {
+   "nhanVi": "sống",
+   "nhanEn": "live",
+   "nhanZh": "活",
+   "cachDoc": {
+    "vi": [
+     "\\bsống\\b",
+     "còn\\s+sống"
+    ],
+    "en": [
+     "\\blive\\b"
+    ],
+    "zh": [
+     "活",
+     "活的"
+    ]
+   },
+   "cachViet": "sống"
+  },
+  "TUOI_UOP_LANH": {
+   "nhanVi": "tươi hoặc ướp lạnh",
+   "nhanEn": "fresh or chilled",
+   "nhanZh": "鲜或冷",
+   "cachDoc": {
+    "vi": [
+     "tươi(?:\\s+hoặc\\s+ướp\\s+lạnh)?",
+     "ướp\\s+lạnh"
+    ],
+    "en": [
+     "fresh(?:\\s+or\\s+chilled)?",
+     "chilled"
+    ],
+    "zh": [
+     "鲜",
+     "冷",
+     "鲜或冷"
+    ]
+   },
+   "cachViet": "tươi hoặc ướp lạnh"
+  },
+  "DONG_LANH": {
+   "nhanVi": "đông lạnh",
+   "nhanEn": "frozen",
+   "nhanZh": "冻",
+   "cachDoc": {
+    "vi": [
+     "đông\\s+lạnh",
+     "cấp\\s+đông"
+    ],
+    "en": [
+     "frozen"
+    ],
+    "zh": [
+     "冻",
+     "冷冻"
+    ]
+   },
+   "cachViet": "đông lạnh"
+  },
+  "KHO_MUOI": {
+   "nhanVi": "khô, muối hoặc ngâm nước muối",
+   "nhanEn": "dried, salted or in brine",
+   "nhanZh": "干、盐腌或盐渍",
+   "cachDoc": {
+    "vi": [
+     "khô(?:,\\s*muối\\s+hoặc\\s+ngâm\\s+nước\\s+muối)?",
+     "làm\\s+khô",
+     "muối",
+     "ngâm\\s+nước\\s+muối"
+    ],
+    "en": [
+     "dried(?:,\\s*salted\\s+or\\s+in\\s+brine)?",
+     "salted",
+     "in\\s+brine"
+    ],
+    "zh": [
+     "干",
+     "盐腌",
+     "盐渍",
+     "干、盐腌或盐渍"
+    ]
+   },
+   "cachViet": "khô, muối hoặc ngâm nước muối"
+  },
+  "HUN_KHOI": {
+   "nhanVi": "hun khói",
+   "nhanEn": "smoked",
+   "nhanZh": "熏制",
+   "cachDoc": {
+    "vi": [
+     "hun\\s+khói",
+     "xông\\s+khói"
+    ],
+    "en": [
+     "smoked"
+    ],
+    "zh": [
+     "熏",
+     "熏制"
+    ]
+   },
+   "cachViet": "hun khói"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Hàng ở trạng thái sống, tươi/ướp lạnh, đông lạnh, hun khói hay khô/muối?",
+  "zh": "该产品属于活、鲜/冷、冻、熏制还是干/腌制状态？"
+ },
+ "ghiChu": "Chữ biểu 0306.11.10 \"Hun khói\", 0306.31.20 \"Loại khác, sống\", 0306.31.30 \"Tươi hoặc ướp lạnh\", 0307.60.40 \"Khô, muối hoặc ngâm nước muối\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+03061110 Hun khói
+03061190 Loại khác
+03063110 Để nhân giống
+03063120 Loại khác, sống
+03063130 Tươi hoặc ướp lạnh
+03076010 Sống
+03076020 Tươi, ướp lạnh hoặc đông lạnh
+03076040 Khô, muối hoặc ngâm nước muối
+03076050 Hun khói
+
+=== KHOÁ phuongPhapCheTao ===
+{
+ "khoa": "phuongPhapCheTao",
+ "kieu": "LIET_KE",
+ "nhanVi": "phương pháp chế tạo",
+ "nhanEn": "method of manufacture",
+ "nhanZh": "加工方法",
+ "giaTriHopLe": [
+  "DUC",
+  "REN",
+  "CAN_NONG",
+  "CAN_NGUOI",
+  "KEO",
+  "DAP",
+  "HAN",
+  "EP_PHUN",
+  "THOI",
+  "DOT_DAP_KEO_GIAN"
+ ],
+ "moTaGiaTri": {
+  "DUC": {
+   "nhanVi": "đúc",
+   "nhanEn": "cast",
+   "nhanZh": "铸造",
+   "cachDoc": {
+    "vi": [
+     "(?<!gang\\s)(?<!thép\\s)đúc(?!\\s+phun)",
+     "được\\s+đúc"
+    ],
+    "en": [
+     "(?<!die-)cast(?!\\s+iron)(?:ing)?",
+     "die-?cast(?:ing)?"
+    ],
+    "zh": [
+     "铸造",
+     "压铸",
+     "铸件",
+     "精铸"
+    ]
+   },
+   "cachViet": "được đúc"
+  },
+  "REN": {
+   "nhanVi": "rèn",
+   "nhanEn": "forged",
+   "nhanZh": "锻造",
+   "cachDoc": {
+    "vi": [
+     "rèn(?:\\s+dập)?",
+     "được\\s+rèn"
+    ],
+    "en": [
+     "forged",
+     "forging",
+     "drop-?forged"
+    ],
+    "zh": [
+     "锻造",
+     "锻件",
+     "模锻"
+    ]
+   },
+   "cachViet": "được rèn"
+  },
+  "CAN_NONG": {
+   "nhanVi": "cán nóng",
+   "nhanEn": "hot-rolled",
+   "nhanZh": "热轧",
+   "cachDoc": {
+    "vi": [
+     "cán\\s+nóng"
+    ],
+    "en": [
+     "hot[- ]rolled"
+    ],
+    "zh": [
+     "热轧"
+    ]
+   },
+   "cachViet": "cán nóng"
+  },
+  "CAN_NGUOI": {
+   "nhanVi": "cán nguội",
+   "nhanEn": "cold-rolled",
+   "nhanZh": "冷轧",
+   "cachDoc": {
+    "vi": [
+     "cán\\s+nguội"
+    ],
+    "en": [
+     "cold[- ]rolled"
+    ],
+    "zh": [
+     "冷轧"
+    ]
+   },
+   "cachViet": "cán nguội"
+  },
+  "KEO": {
+   "nhanVi": "kéo (kéo nguội, kéo sợi)",
+   "nhanEn": "drawn",
+   "nhanZh": "拉拔",
+   "cachDoc": {
+    "vi": [
+     "kéo\\s+nguội",
+     "kéo\\s+nóng",
+     "được\\s+kéo(?!\\s+giãn)"
+    ],
+    "en": [
+     "cold[- ]drawn",
+     "drawn"
+    ],
+    "zh": [
+     "冷拔",
+     "拉拔"
+    ]
+   },
+   "cachViet": "được kéo"
+  },
+  "DAP": {
+   "nhanVi": "dập",
+   "nhanEn": "stamped",
+   "nhanZh": "冲压",
+   "cachDoc": {
+    "vi": [
+     "(?:đột\\s+)?dập(?:\\s+nguội)?",
+     "được\\s+dập"
+    ],
+    "en": [
+     "stamped",
+     "stamping"
+    ],
+    "zh": [
+     "冲压",
+     "冲压件"
+    ]
+   },
+   "cachViet": "được dập"
+  },
+  "HAN": {
+   "nhanVi": "hàn",
+   "nhanEn": "welded",
+   "nhanZh": "焊接",
+   "cachDoc": {
+    "vi": [
+     "được\\s+hàn",
+     "hàn\\s+nối",
+     "có\\s+mối\\s+hàn"
+    ],
+    "en": [
+     "welded"
+    ],
+    "zh": [
+     "焊接",
+     "焊管"
+    ]
+   },
+   "cachViet": "được hàn"
+  },
+  "EP_PHUN": {
+   "nhanVi": "ép phun",
+   "nhanEn": "injection-moulded",
+   "nhanZh": "注塑",
+   "cachDoc": {
+    "vi": [
+     "ép\\s+phun",
+     "đúc\\s+phun"
+    ],
+    "en": [
+     "injection[- ]mou?lded",
+     "injection\\s+mou?lding"
+    ],
+    "zh": [
+     "注塑"
+    ]
+   },
+   "cachViet": "ép phun"
+  },
+  "THOI": {
+   "nhanVi": "thổi khuôn",
+   "nhanEn": "blow-moulded",
+   "nhanZh": "吹塑",
+   "cachDoc": {
+    "vi": [
+     "thổi\\s+khuôn",
+     "được\\s+thổi",
+     "ép\\s+thổi"
+    ],
+    "en": [
+     "blow[- ]mou?ld(?:ed|ing)"
+    ],
+    "zh": [
+     "吹塑"
+    ]
+   },
+   "cachViet": "thổi khuôn"
+  },
+  "DOT_DAP_KEO_GIAN": {
+   "nhanVi": "đột dập và kéo giãn (lưới kéo giãn)",
+   "nhanEn": "expanded (slit and stretched)",
+   "nhanZh": "冲剪拉伸（拉伸网）",
+   "cachDoc": {
+    "vi": [
+     "đột\\s+dập\\s+và\\s+kéo\\s+giãn",
+     "kéo\\s+giãn\\s+thành\\s+lưới",
+     "lưới\\s+kéo\\s+giãn"
+    ],
+    "en": [
+     "expanded\\s+metal",
+     "slit\\s+and\\s+(?:stretched|expanded)"
+    ],
+    "zh": [
+     "拉伸网",
+     "钢板网",
+     "冲剪拉伸"
+    ]
+   },
+   "cachViet": "đột dập và kéo giãn thành lưới"
+  }
+ },
+ "cumDaiThang": true,
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Hàng được chế tạo bằng phương pháp nào (đúc, rèn, cán nóng/cán nguội, kéo, dập, hàn, ép phun, thổi khuôn, đột dập và kéo giãn)?",
+  "zh": "产品采用何种加工方法制成（铸造、锻造、热轧/冷轧、拉拔、冲压、焊接、注塑、吹塑、冲剪拉伸）？"
+ },
+ "ghiChu": "Phương pháp, không phải vật liệu: \"gang đúc\", \"cast iron\" là vật liệu ⇒ không đọc; \"máy hàn\", \"Hàn Quốc\", \"dao kéo\" ⇒ không đọc; \"cán\" trần (cũng là \"tay cầm\") ⇒ không đọc.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+
+=== KHOÁ phuongPhapIn ===
+{
+ "khoa": "phuongPhapIn",
+ "kieu": "LIET_KE",
+ "nhanVi": "phương pháp in (vải, hàng dệt)",
+ "nhanEn": "printing method (textiles)",
+ "nhanZh": "印花方法（纺织品）",
+ "giaTriHopLe": [
+  "BATIK",
+  "IN_LUOI",
+  "IN_KY_THUAT_SO",
+  "IN_CHUYEN_NHIET"
+ ],
+ "moTaGiaTri": {
+  "BATIK": {
+   "nhanVi": "in batik truyền thống",
+   "nhanEn": "batik (traditional)",
+   "nhanZh": "蜡染",
+   "cachDoc": {
+    "vi": [
+     "in\\s+(?:bằng\\s+phương\\s+pháp\\s+)?batik(?:\\s+truyền\\s+thống)?",
+     "batik",
+     "vải\\s+batik",
+     "nhuộm\\s+sáp"
+    ],
+    "en": [
+     "batik(?:[- ]printed|[- ]dyed)?",
+     "wax[- ]resist(?:\\s+(?:printed|dyed|printing|dyeing))?"
+    ],
+    "zh": [
+     "蜡染",
+     "蜡防印花",
+     "巴迪克"
+    ]
+   },
+   "cachViet": "in batik truyền thống"
+  },
+  "IN_LUOI": {
+   "nhanVi": "in lưới (in lụa)",
+   "nhanEn": "screen printed",
+   "nhanZh": "丝网印花",
+   "cachDoc": {
+    "vi": [
+     "in\\s+lưới",
+     "in\\s+lụa",
+     "in\\s+kéo\\s+lụa"
+    ],
+    "en": [
+     "(?:silk[- ])?screen[- ]print(?:ed|ing)?",
+     "serigraph(?:y|ed)"
+    ],
+    "zh": [
+     "丝网印",
+     "丝印",
+     "网印"
+    ]
+   },
+   "cachViet": "in lưới"
+  },
+  "IN_KY_THUAT_SO": {
+   "nhanVi": "in kỹ thuật số",
+   "nhanEn": "digital printed",
+   "nhanZh": "数码印花",
+   "cachDoc": {
+    "vi": [
+     "in\\s+kỹ\\s+thuật\\s+số",
+     "in\\s+phun\\s+kỹ\\s+thuật\\s+số",
+     "in\\s+digital"
+    ],
+    "en": [
+     "digital(?:ly)?[- ]print(?:ed|ing)?",
+     "inkjet[- ]print(?:ed|ing)?"
+    ],
+    "zh": [
+     "数码印花",
+     "数码印",
+     "数码直喷"
+    ]
+   },
+   "cachViet": "in kỹ thuật số"
+  },
+  "IN_CHUYEN_NHIET": {
+   "nhanVi": "in chuyển nhiệt",
+   "nhanEn": "heat-transfer printed",
+   "nhanZh": "热转印",
+   "cachDoc": {
+    "vi": [
+     "in\\s+chuyển\\s+nhiệt",
+     "in\\s+ép\\s+nhiệt",
+     "in\\s+thăng\\s+hoa"
+    ],
+    "en": [
+     "(?:heat|thermal)[- ]transfer[- ]print(?:ed|ing)?",
+     "sublimation[- ]print(?:ed|ing)?",
+     "dye[- ]sublimation"
+    ],
+    "zh": [
+     "热转印",
+     "热升华",
+     "升华印花"
+    ]
+   },
+   "cachViet": "in chuyển nhiệt"
+  }
+ },
+ "cumDaiThang": true,
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Vải/hàng dệt được in bằng phương pháp nào (in batik truyền thống, in lưới, in kỹ thuật số, in chuyển nhiệt)?",
+  "zh": "面料/纺织品采用何种印花方法（传统蜡染、丝网印花、数码印花、热转印）？"
+ },
+ "ghiChu": "Phương pháp in của vải / hàng dệt — chữ biểu \"Được in bằng phương pháp batik truyền thống (SEN)\" ở 5208.59.10, 6204.42.10, 6204.32.10, 6204.19.11, 6204.49.10… (lát 2, đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md mục studio-loop; thay đề xuất phuongPhapCheTao IN_BATIK — in là hoàn tất vải, không phải chế tạo hàng). Chỉ đọc cụm nêu PHƯƠNG PHÁP; \"đã in\", \"vải in hoa\", \"printed\" trần (600634 \"Đã in\" là trạng thái in, không phải phương pháp) ⇒ không đọc. Các giá trị ngoài BATIK chỉ để người khai trả lời \"in bằng cách khác\" (về dòng Loại khác) — chữ biểu chưa phân biệt chúng.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+52085910 Được in bằng phương pháp batik truyền thống (SEN)
+52085920 Loại khác, vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân
+52085990 Loại khác
+62044210 Được in bằng phương pháp batik truyền thống (SEN)
+62044290 Loại khác
+62043210 Được in bằng phương pháp batik truyền thống (SEN)
+62043290 Loại khác
+
+=== KHOÁ phuongThucTruyenDan ===
+{
+ "khoa": "phuongThucTruyenDan",
+ "kieu": "LIET_KE",
+ "nhanVi": "phương thức truyền dẫn",
+ "nhanEn": "transmission medium",
+ "nhanZh": "传输方式",
+ "giaTriHopLe": [
+  "VO_TUYEN",
+  "HUU_TUYEN"
+ ],
+ "moTaGiaTri": {
+  "VO_TUYEN": {
+   "nhanVi": "vô tuyến",
+   "nhanEn": "radio (wireless)",
+   "nhanZh": "无线",
+   "cachDoc": {
+    "vi": [
+     "sóng vô tuyến",
+     "vô tuyến",
+     "không dây",
+     "radio"
+    ],
+    "en": [
+     "radio",
+     "wireless"
+    ],
+    "zh": [
+     "无线"
+    ]
+   },
+   "cachViet": "truyền dẫn vô tuyến"
+  },
+  "HUU_TUYEN": {
+   "nhanVi": "hữu tuyến",
+   "nhanEn": "line (wired)",
+   "nhanZh": "有线",
+   "cachDoc": {
+    "vi": [
+     "hữu tuyến",
+     "có dây(?!\\s+(?:đeo|da|kéo|buộc|treo|rút|xích|thép|đai|curoa|cu-roa))"
+    ],
+    "en": [
+     "wired",
+     "wireline",
+     "line\\s+systems?",
+     "(?:carrier-current|digital)\\s+line"
+    ],
+    "zh": [
+     "有线"
+    ]
+   },
+   "cachViet": "truyền dẫn hữu tuyến"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Thiết bị truyền dẫn tín hiệu bằng sóng vô tuyến (không dây) hay qua đường dây (hữu tuyến)?",
+  "zh": "设备是通过无线电波（无线）还是通过线路（有线）传输信号？"
+ },
+ "ghiChu": "Phương thức truyền dẫn của thiết bị/hệ thống viễn thông (#606, 851762): chữ biểu \"truyền dẫn dưới dạng sóng vô tuyến\" (radio-telephony/telegraphy), \"Thiết bị phát và thu sóng vô tuyến\" (radio transmitters), \"hệ thống hữu tuyến\" (line systems). \"có dây\" không đọc khi là dây đeo/da/kéo/buộc… (dây vật lý, không phải đường truyền); \"line\" trần không đọc (dây chuyền, in-line) — chỉ \"line system(s)\", \"carrier-current/digital line\". \"cordless\" không đọc (trùng nguonNangLuong PIN_AC_QUY).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+
+=== KHOÁ sanLuongHoi ===
+{
+ "khoa": "sanLuongHoi",
+ "kieu": "SO",
+ "nhanVi": "sản lượng hơi / công suất hơi",
+ "nhanEn": "steam production capacity",
+ "nhanZh": "蒸发量/产汽量",
+ "heDonVi": "luuLuongKhoiLuong",
+ "donViChuan": "tấn/giờ",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "công\\s+suất\\s+hơi(?:\\s+nước)?",
+   "sản\\s+lượng\\s+hơi(?:\\s+nước)?",
+   "năng\\s+suất\\s+sinh\\s+hơi"
+  ],
+  "en": [
+   "steam\\s+production",
+   "steam\\s+generating\\s+capacity",
+   "steam\\s+output",
+   "evaporation\\s+capacity"
+  ],
+  "zh": [
+   "产汽量",
+   "蒸发量",
+   "蒸汽产量",
+   "产汽率"
+  ]
+ },
+ "cachViet": {
+  "vi": "sản lượng hơi {giaTri} tấn/giờ"
+ },
+ "cauHoi": {
+  "vi": "Công suất sinh hơi / sản lượng hơi của nồi hơi là bao nhiêu tấn/giờ?",
+  "zh": "锅炉的产汽量/蒸发量是多少吨/小时？"
+ },
+ "ghiChu": "Chữ biểu 8402.12.11 \"công suất hơi nước trên 15 tấn/giờ\", 8402.12.21, 8402.19.11 \"công suất hơi trên 15 tấn/giờ\". Nồi hơi tạo hơi nước thuộc nhóm 84.02.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+84021211 Nồi hơi với công suất hơi nước trên 15 tấn/giờ
+84021219 Loại khác
+84021221 Nồi hơi với công suất hơi nước trên 15 tấn/giờ
+84021229 Loại khác
+84021911 Nồi hơi với công suất hơi trên 15 tấn/giờ
+84021919 Loại khác
+84021921 Nồi hơi với công suất hơi trên 15 tấn/giờ
+84021929 Loại khác
+
+=== KHOÁ soLoi ===
+{
+ "khoa": "soLoi",
+ "kieu": "SO",
+ "nhanVi": "số lõi dẫn (ruột dẫn)",
+ "nhanEn": "number of conductors (cores)",
+ "nhanZh": "芯数",
+ "heDonVi": "loi",
+ "donViChuan": "lõi",
+ "demSo": true,
+ "donViCachRieng": true,
+ "cachDoc": {
+  "vi": [
+   "số\\s+lõi",
+   "lõi",
+   "ruột\\s+dẫn"
+  ],
+  "en": [
+   "cores?",
+   "conductors?"
+  ],
+  "zh": [
+   "芯数",
+   "芯"
+  ]
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Cáp/dây có bao nhiêu lõi (ruột) dẫn điện?",
+  "zh": "电缆/电线有几芯（几根导体）？"
+ },
+ "ghiChu": "Đếm lõi dẫn điện (\"2 lõi\", \"bốn ruột\", \"4芯\", \"two or more cores\" ⇒ >= 2). \"đường kính lõi 2 mm\" là duongKinhLoi. \"N sợi\" đọc ở soSoi.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+
+=== KHOÁ soSoi ===
+{
+ "khoa": "soSoi",
+ "kieu": "SO",
+ "nhanVi": "số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ \"sợi\")",
+ "nhanEn": "number of strands/wires/fibres",
+ "nhanZh": "股数（根数、纤芯数）",
+ "heDonVi": "soi",
+ "donViChuan": "sợi",
+ "demSo": true,
+ "donViCachRieng": true,
+ "cachDoc": {
+  "vi": [
+   "số\\s+sợi",
+   "sợi"
+  ],
+  "en": [
+   "strands?",
+   "fib(?:re|er)s?"
+  ],
+  "zh": [
+   "股",
+   "纤芯"
+  ]
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Cáp/dây có bao nhiêu sợi (sợi dẫn, sợi bện hoặc sợi quang)?",
+  "zh": "电缆/电线有多少股（根导线、绞丝或光纤芯）？"
+ },
+ "ghiChu": "Đếm theo chữ \"sợi\" (\"hai sợi hoặc hơn\" ⇒ >= 2 — 8544.42.91 \"Cáp dữ liệu dẹt có hai sợi hoặc hơn\", sợi ở đây là sợi dẫn). Biểu dùng \"sợi\" cho cả sợi dẫn lẫn sợi bện/sợi quang; khách có thể khai \"lõi\" — người soạn có thể ghi HOAC soSoi/soLoi khi chữ biểu \"sợi\" nghĩa là lõi dẫn.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+85444211 Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển
+85444213 Loại khác, cách điện bằng cao su, plastic hoặc giấy
+85444219 Loại khác
+85444221 Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển
+85444223 Loại khác, cách điện bằng cao su, plastic hoặc giấy
+85444229 Loại khác
+85444232 Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+85444233 Loại khác
+85444234 Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+85444239 Loại khác
+85444291 Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy
+85444292 Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác
+
+=== KHOÁ soiDun ===
+{
+ "khoa": "soiDun",
+ "kieu": "CO_KHONG",
+ "nhanVi": "sợi dún (textured yarn)",
+ "nhanEn": "textured yarn",
+ "nhanZh": "变形纱",
+ "cachDoc": {
+  "vi": [
+   "sợi\\s+dún",
+   "dún",
+   "sợi\\s+co\\s+dún"
+  ],
+  "en": [
+   "textured\\s+yarns?",
+   "texturized\\s+yarns?"
+  ],
+  "zh": [
+   "变形纱",
+   "假捻纱"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "chưa",
+   "ko",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+dún",
+   "sợi\\s+thẳng"
+  ],
+  "en": [
+   "non-?textured",
+   "flat\\s+yarn"
+  ],
+  "zh": [
+   "非变形纱",
+   "平身丝",
+   "平纱"
+  ]
+ },
+ "cachViet": {
+  "vi": "sợi dún",
+  "viPhuDinh": "không phải sợi dún"
+ },
+ "cauHoi": {
+  "vi": "Sợi có phải là sợi dún (textured yarn) không?",
+  "zh": "该纱线是否为变形纱（textured yarn）？"
+ },
+ "ghiChu": "Chữ biểu 5403.31.10 \"Sợi dún\"",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+54033110 Sợi dún
+54033190 Loại khác
+
+=== KHOÁ tachXuongCoHoc ===
+{
+ "khoa": "tachXuongCoHoc",
+ "kieu": "CO_KHONG",
+ "nhanVi": "thịt tách hoặc lọc khỏi xương bằng phương pháp cơ học (MSM/MDM)",
+ "nhanEn": "mechanically separated/deboned meat (MSM/MDM)",
+ "nhanZh": "经机械去骨或机械分离的肉（MSM/MDM）",
+ "cachDoc": {
+  "vi": [
+   "(?:thịt\\s+)?(?:đã\\s+được\\s+)?(?:lọc|tách)(?:\\s+hoặc\\s+tách)?\\s+khỏi\\s+xương\\s+bằng\\s+phương\\s+pháp\\s+cơ\\s+học",
+   "tách\\s+xương\\s+cơ\\s+học",
+   "thịt\\s+tách\\s+xương\\s+cơ\\s+học",
+   "\\bmsm\\b",
+   "\\bmdm\\b"
+  ],
+  "en": [
+   "mechanically\\s+deboned(?:\\s+meat)?",
+   "mechanically\\s+separated(?:\\s+meat)?",
+   "\\bmdm\\b",
+   "\\bmsm\\b"
+  ],
+  "zh": [
+   "机械去骨",
+   "机械分离肉",
+   "机械骨肉分离"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "chưa",
+   "non-?",
+   "not",
+   "other than",
+   "非",
+   "未",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+thịt\\s+(?:lọc|tách)\\s+khỏi\\s+xương\\s+bằng\\s+phương\\s+pháp\\s+cơ\\s+học",
+   "không\\s+tách\\s+xương\\s+cơ\\s+học"
+  ],
+  "en": [
+   "not\\s+mechanically\\s+separated",
+   "not\\s+mechanically\\s+deboned"
+  ],
+  "zh": [
+   "非机械去骨",
+   "非机械分离"
+  ]
+ },
+ "cachViet": {
+  "vi": "tách khỏi xương bằng phương pháp cơ học",
+  "viPhuDinh": "không tách khỏi xương bằng phương pháp cơ học"
+ },
+ "cauHoi": {
+  "vi": "Thịt có phải loại đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (MSM/MDM) không?",
+  "zh": "该肉类是否为经机械去骨或机械分离所得的肉（MSM/MDM）？"
+ },
+ "ghiChu": "Chữ biểu 0207.14.91, 0207.27.91, 1602.31.91 \"Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học\" (EN \"Mechanically deboned or separated meat\").",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+02071410 Cánh
+02071420 Đùi
+02071430 Gan
+02071491 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+02071499 Loại khác
+02072710 Gan
+02072791 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+02072799 Loại khác
+16023110 Đóng bao bì kín khí để bán lẻ
+16023191 Từ thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+16023199 Loại khác
+
+=== KHOÁ theTich ===
+{
+ "khoa": "theTich",
+ "kieu": "SO",
+ "nhanVi": "thể tích ngoài / thể tích bên ngoài",
+ "nhanEn": "external volume",
+ "nhanZh": "外部体积",
+ "heDonVi": "theTich",
+ "donViChuan": "cm3",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "thể\\s+tích(?:\\s+bên)?\\s+ngoài",
+   "thể\\s+tích\\s+ngoài",
+   "thể\\s+tích\\s+khối"
+  ],
+  "en": [
+   "external\\s+volume",
+   "outer\\s+volume",
+   "volume"
+  ],
+  "zh": [
+   "外部体积",
+   "外体积",
+   "体积"
+  ]
+ },
+ "cachViet": {
+  "vi": "thể tích {giaTri} cm3"
+ },
+ "cauHoi": {
+  "vi": "Thể tích bên ngoài của pin hoặc hàng hóa là bao nhiêu cm3?",
+  "zh": "电池/物品的外部体积是多少立方厘米（cm³）？"
+ },
+ "ghiChu": "Chữ biểu tiêu đề 8506.10.1 \"Có thể tích bên ngoài không quá 300 cm3\", 8506.60.10, 8506.80.30 \"Có thể tích ngoài không quá 300 cm3\" (pin nguyên tố và bộ pin nguyên tố thuộc nhóm 85.06).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+85066010 Có thể tích ngoài không quá 300 cm3
+85066090 Loại khác
+85068030 Có thể tích ngoài không quá 300 cm3
+85068090 Loại khác
+
+=== KHOÁ thietKeChoTreEm ===
+{
+ "khoa": "thietKeChoTreEm",
+ "kieu": "CO_KHONG",
+ "nhanVi": "được thiết kế chủ yếu cho trẻ em",
+ "nhanEn": "designed principally for children",
+ "nhanZh": "主要为儿童设计",
+ "cachDoc": {
+  "vi": [
+   "(?:được\\s+)?thiết\\s+kế\\s+(?:chủ\\s+yếu\\s+|chuyên\\s+|riêng\\s+)?cho\\s+(?:trẻ\\s+em|trẻ|bé)(?!(?:\\s+em)?\\s+dưới\\s+\\d)",
+   "(?:dành|phù\\s+hợp)\\s+cho\\s+(?:trẻ\\s+em|trẻ|bé)(?!(?:\\s+em)?\\s+dưới\\s+\\d)",
+   "đồ\\s+chơi\\s+trẻ\\s+em",
+   "(?:dành|phù\\s+hợp)\\s+(?:dùng\\s+)?cho\\s+trẻ\\s+(?:sơ\\s+sinh|nhỏ)"
+  ],
+  "en": [
+   "designed\\s+(?:principally\\s+|primarily\\s+|mainly\\s+|specifically\\s+)?for\\s+(?:children|kids)(?!\\s+under\\s+\\d)",
+   "for\\s+(?:children|kids)\\s+aged",
+   "children'?s\\s+toy"
+  ],
+  "zh": [
+   "儿童玩具",
+   "儿童学习机",
+   "专为儿童",
+   "适合儿童",
+   "儿童用",
+   "供儿童",
+   "儿童益智"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không có",
+   "không",
+   "chưa",
+   "ko",
+   "chẳng",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "没有",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "dành\\s+cho\\s+người\\s+lớn",
+   "cho\\s+người\\s+lớn"
+  ],
+  "en": [
+   "for\\s+adults"
+  ],
+  "zh": [
+   "成人用",
+   "成人"
+  ]
+ },
+ "cachViet": {
+  "vi": "dành cho trẻ em",
+  "viPhuDinh": "không dành cho trẻ em"
+ },
+ "cauHoi": {
+  "vi": "Hàng có được thiết kế chủ yếu cho trẻ em sử dụng không (độ tuổi khuyến nghị bao nhiêu)?",
+  "zh": "该产品是否主要为儿童设计使用（建议年龄是多少）？"
+ },
+ "ghiChu": "9503.00.80 \"được thiết kế chủ yếu cho trẻ em\". Nhãn cảnh báo \"không dành cho trẻ em dưới N tuổi\" / \"not suitable for children under N\" KHÔNG đọc (không đoán).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+95030010 Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh; xe của búp bê
+95030021 Búp bê, có hoặc không có trang phục
+95030022 Quần áo và phụ kiện quần áo; giầy và mũ
+95030029 Loại khác
+95030030 Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng
+95030040 Các mô hình thu nhỏ theo tỷ lệ ("scale") và các mô hình giải trí tương tự, có hoặc không vận hành
+95030050 Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic
+95030060 Đồ chơi hình con vật hoặc sinh vật không phải hình người
+95030070 Các loại đồ chơi đố trí (puzzles)
+95030080 Thiết bị giáo dục điện tử tương tác cầm tay được thiết kế chủ yếu cho trẻ em (SEN)
+95030091 Đồ chơi, xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật; bộ xếp chữ; bộ đồ chơi tạo chữ và tập nói; bộ đồ chơi in hình; bộ đồ chơi đếm (abaci); máy may đồ chơi; máy chữ đồ chơi
+95030092 Dây nhảy
+

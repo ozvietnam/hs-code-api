@@ -1,0 +1,1034 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ daPhaThemDuongHoacRuou ===
+{
+ "khoa": "daPhaThemDuongHoacRuou",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu (rau quả chế biến)",
+ "nhanEn": "containing added sugar or other sweetening matter or spirit (preserved fruit)",
+ "nhanZh": "已添加糖或其他甜味剂或酒精（果实制品）",
+ "cachDoc": {
+  "vi": [
+   "pha\\s+thêm\\s+đường",
+   "thêm\\s+đường",
+   "chất\\s+tạo\\s+ngọt",
+   "pha\\s+thêm\\s+rượu",
+   "ngâm\\s+rượu",
+   "ngâm\\s+đường"
+  ],
+  "en": [
+   "added\\s+sugar",
+   "sweetening\\s+matter",
+   "containing\\s+added\\s+sugar",
+   "added\\s+spirit",
+   "in\\s+spirit",
+   "preserved\\s+in\\s+alcohol"
+  ],
+  "zh": [
+   "加糖",
+   "含加糖",
+   "添加糖",
+   "甜味剂",
+   "加酒精",
+   "浸酒"
+  ],
+  "phuDinh": [
+   "không",
+   "chưa",
+   "ko",
+   "chẳng",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+pha\\s+đường",
+   "chưa\\s+thêm\\s+đường",
+   "không\\s+chứa\\s+cồn",
+   "không\\s+pha\\s+rượu"
+  ],
+  "en": [
+   "not\\s+containing\\s+added\\s+sugar",
+   "without\\s+added\\s+sugar",
+   "unsweetened",
+   "without\\s+spirit"
+  ],
+  "zh": [
+   "不含加糖",
+   "未加糖",
+   "无加糖",
+   "不含酒精"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã pha thêm đường hoặc chất tạo ngọt hoặc rượu",
+  "viPhuDinh": "chưa pha thêm đường, chất tạo ngọt hoặc rượu"
+ },
+ "cauHoi": {
+  "vi": "Quả/sản phẩm đã pha thêm đường, chất tạo ngọt khác hoặc rượu không?",
+  "zh": "果品是否已添加糖、其他甜味剂或酒精？"
+ },
+ "ghiChu": "Chữ biểu 2008.30.10 \"Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu\"",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+20083010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20083090 Loại khác
+
+=== KHOÁ daRang ===
+{
+ "khoa": "daRang",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã rang",
+ "nhanEn": "roasted",
+ "nhanZh": "已烘焙/已炒",
+ "cachDoc": {
+  "vi": [
+   "đã\\s+rang(?:\\s+chín|\\s+sấy)?",
+   "rang\\s+(?:muối|bơ|chín)",
+   "hạt\\s+rang"
+  ],
+  "en": [
+   "roasted",
+   "roast"
+  ],
+  "zh": [
+   "已烘焙",
+   "已炒",
+   "烘炒",
+   "炒制",
+   "烤制"
+  ],
+  "phuDinh": [
+   "chưa",
+   "không",
+   "chưa rang",
+   "không rang",
+   "unroasted",
+   "not roasted",
+   "raw",
+   "未",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+rang",
+   "không\\s+rang",
+   "chưa\\s+qua\\s+rang"
+  ],
+  "en": [
+   "unroasted",
+   "not\\s+roasted"
+  ],
+  "zh": [
+   "未烘焙",
+   "未炒",
+   "生"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã rang",
+  "viPhuDinh": "chưa rang"
+ },
+ "cauHoi": {
+  "vi": "Hàng (hạt, đậu phộng, cà phê, ngũ cốc) đã qua rang chưa?",
+  "zh": "该产品（坚果、花生、谷物等）是否已经烘焙或炒制？"
+ },
+ "ghiChu": "Chữ biểu 2008.11.10 \"Đã rang\", 2008.19.91 \"Đã rang\", 1904.20.10 \"chưa rang\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+20081110 Đã rang
+20081120 Bơ lạc
+20081190 Loại khác
+20081910 Hạt điều
+20081991 Đã rang
+20081999 Loại khác
+19042010 Thực phẩm chế biến từ mảnh ngũ cốc chưa rang
+19042090 Loại khác
+
+=== KHOÁ daTrangMen ===
+{
+ "khoa": "daTrangMen",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã tráng men (gạch gốm, sứ)",
+ "nhanEn": "glazed (ceramic tiles)",
+ "nhanZh": "已上釉/上釉（陶瓷砖）",
+ "cachDoc": {
+  "vi": [
+   "đã\\s+tráng\\s+men",
+   "tráng\\s+men",
+   "gạch\\s+men",
+   "phủ\\s+men"
+  ],
+  "en": [
+   "glazed",
+   "glazed\\s+tiles?"
+  ],
+  "zh": [
+   "已上釉",
+   "上釉",
+   "施釉",
+   "釉面砖"
+  ],
+  "phuDinh": [
+   "không tráng men",
+   "chưa tráng men",
+   "không",
+   "chưa",
+   "unglazed",
+   "un-?glazed",
+   "not glazed",
+   "非",
+   "未",
+   "不上釉",
+   "未上釉"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+tráng\\s+men",
+   "chưa\\s+tráng\\s+men"
+  ],
+  "en": [
+   "unglazed",
+   "not\\s+glazed"
+  ],
+  "zh": [
+   "未上釉",
+   "不上釉",
+   "无釉"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã tráng men",
+  "viPhuDinh": "không tráng men"
+ },
+ "cauHoi": {
+  "vi": "Gạch gốm hoặc phiến lát đã được tráng men chưa?",
+  "zh": "该陶瓷砖或铺地砖是否已经上釉？"
+ },
+ "ghiChu": "Chữ biểu 6907.21.21 \"không tráng men\", 6907.21.23 \"đã tráng men\", 6907.40.21 \"Không tráng men\", 6907.40.22 \"Đã tráng men\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+69072110 Tấm lót của loại sử dụng cho máy nghiền, không tráng men(SEN)
+69072121 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+69072122 Loại khác, không tráng men
+69072123 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+69072124 Loại khác, đã tráng men
+69072191 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+69072192 Loại khác, không tráng men
+69072193 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+69072194 Loại khác, đã tráng men
+69074010 Của loại sử dụng để lót máy nghiền, không tráng men
+69074021 Không tráng men
+69074022 Đã tráng men
+69074091 Không tráng men
+69074092 Đã tráng men
+
+=== KHOÁ daTrangPhuEpLop ===
+{
+ "khoa": "daTrangPhuEpLop",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)",
+ "nhanEn": "impregnated, coated, covered or laminated (textiles)",
+ "nhanZh": "经浸渍、涂布、包覆或层压（纺织物）",
+ "cachDoc": {
+  "vi": [
+   "đã\\s+(?:ngâm\\s+tẩm,\\s*)?tráng,\\s*phủ\\s+hoặc\\s+ép\\s+lớp",
+   "đã\\s+tráng,\\s*phủ\\s+hoặc\\s+ép\\s+lớp",
+   "đã\\s+ngâm\\s+tẩm,\\s*tráng\\s+hoặc\\s+phủ",
+   "tráng\\s+phủ",
+   "ép\\s+lớp"
+  ],
+  "en": [
+   "impregnated,\\s*coated,\\s*covered\\s+or\\s+laminated",
+   "coated,\\s*covered\\s+or\\s+laminated",
+   "impregnated,\\s*coated\\s+or\\s+covered"
+  ],
+  "zh": [
+   "经浸渍、涂布、包覆或层压",
+   "涂布或层压",
+   "浸渍或涂布"
+  ],
+  "phuDinh": [
+   "không phải",
+   "chưa",
+   "không",
+   "uncoated",
+   "unlaminated",
+   "not impregnated",
+   "非",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+(?:ngâm\\s+tẩm,\\s*)?tráng,\\s*phủ\\s+hoặc\\s+ép\\s+lớp",
+   "không\\s+tráng\\s+phủ"
+  ],
+  "en": [
+   "not\\s+coated",
+   "not\\s+impregnated",
+   "neither\\s+coated\\s+nor\\s+laminated"
+  ],
+  "zh": [
+   "未经涂布",
+   "未浸渍",
+   "未经层压"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã ngâm tẩm tráng phủ hoặc ép lớp",
+  "viPhuDinh": "chưa ngâm tẩm tráng phủ hoặc ép lớp"
+ },
+ "cauHoi": {
+  "vi": "Vải dệt đã được ngâm tẩm, tráng, phủ hoặc ép lớp chưa?",
+  "zh": "该纺织物是否经过浸渍、涂布、包覆或层压处理？"
+ },
+ "ghiChu": "Chữ biểu 5801.10.10 \"Đã tráng, phủ hoặc ép lớp\", 5802.30.10 \"Đã ngâm tẩm, tráng hoặc phủ\", 5804.10.11 \"Đã ngâm tẩm, tráng, phủ hoặc ép lớp\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+58011010 Đã tráng, phủ hoặc ép lớp
+58011090 Loại khác
+58023010 Đã ngâm tẩm, tráng hoặc phủ
+58023020 Dệt thoi, từ bông hoặc sợi nhân tạo
+58023030 Dệt thoi, từ vật liệu khác
+58023090 Loại khác
+58041011 Đã ngâm tẩm, tráng, phủ hoặc ép lớp
+58041019 Loại khác
+58041021 Đã ngâm tẩm, tráng, phủ hoặc ép lớp
+58041029 Loại khác
+58041091 Đã ngâm tẩm, tráng, phủ hoặc ép lớp
+58041099 Loại khác
+
+=== KHOÁ daXuLyBeMat ===
+{
+ "khoa": "daXuLyBeMat",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã được xử lý bề mặt",
+ "nhanEn": "surface treated",
+ "nhanZh": "表面经过处理",
+ "cachDoc": {
+  "vi": [
+   "(?:đã\\s+(?:được\\s+)?)?xử\\s+lý\\s+bề\\s+mặt"
+  ],
+  "en": [
+   "surface[- ]treated",
+   "surface\\s+treatment"
+  ],
+  "zh": [
+   "表面处理",
+   "表面经过处理",
+   "表面已处理"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không có",
+   "không",
+   "chưa",
+   "ko",
+   "chẳng",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "没有",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [],
+  "en": [
+   "untreated\\s+surface",
+   "without\\s+surface\\s+treatment"
+  ],
+  "zh": [
+   "表面未处理"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã xử lý bề mặt",
+  "viPhuDinh": "chưa xử lý bề mặt"
+ },
+ "cauHoi": {
+  "vi": "Bề mặt hàng đã được xử lý (surface treated) hay chưa?",
+  "zh": "产品表面是否经过处理？"
+ },
+ "ghiChu": "Chữ biểu 8481.80.97 \"Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken\" (EN \"surface treated or made of stainless steel or nickel\", #577 848180). Chỉ đọc đúng cụm \"xử lý bề mặt\" / \"surface treated|treatment\" / 表面处理 — không suy từ tên lớp phủ (mạ, sơn, phủ…) vì chữ biểu không liệt kê; \"chưa/không xử lý bề mặt\" là phủ định (phuDinh).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+84818011 Bằng đồng hoặc hợp kim đồng
+84818012 Bằng vật liệu khác
+84818013 Bằng đồng hoặc hợp kim đồng
+84818014 Bằng vật liệu khác
+84818021 Có đường kính cửa nạp hoặc cửa thoát không quá 2,5 cm
+84818022 Có đường kính cửa nạp hoặc cửa thoát trên 2,5 cm
+84818030 Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga
+84818041 Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm
+84818049 Loại khác
+84818051 Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm
+84818059 Loại khác
+84818061 Van cổng điều khiển bằng tay có đường kính trong trên 5 cm nhưng không quá 40 cm
+
+=== KHOÁ dangBaoCheThuoc ===
+{
+ "khoa": "dangBaoCheThuoc",
+ "kieu": "LIET_KE",
+ "nhanVi": "dạng bào chế / đường dùng của thuốc",
+ "nhanEn": "dosage form / route of administration",
+ "nhanZh": "药品剂型/给药途径",
+ "giaTriHopLe": [
+  "DANG_UONG",
+  "DANG_MO",
+  "DANG_TIEM",
+  "DANG_TRUYEN",
+  "MIENG_DAN_THAM_THAU"
+ ],
+ "moTaGiaTri": {
+  "DANG_UONG": {
+   "nhanVi": "dạng uống",
+   "nhanEn": "oral form",
+   "nhanZh": "口服剂型",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+uống",
+     "thuốc\\s+uống",
+     "viên\\s+uống"
+    ],
+    "en": [
+     "oral\\s+form",
+     "in\\s+oral\\s+form",
+     "for\\s+oral\\s+administration"
+    ],
+    "zh": [
+     "口服",
+     "口服剂型",
+     "口服形式"
+    ]
+   },
+   "cachViet": "dạng uống"
+  },
+  "DANG_MO": {
+   "nhanVi": "dạng mỡ",
+   "nhanEn": "ointment form",
+   "nhanZh": "软膏剂型",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+mỡ",
+     "thuốc\\s+mỡ",
+     "kem\\s+bôi"
+    ],
+    "en": [
+     "ointment(?:\\s+form)?",
+     "in\\s+ointment\\s+form"
+    ],
+    "zh": [
+     "软膏",
+     "软膏剂",
+     "膏状"
+    ]
+   },
+   "cachViet": "dạng mỡ"
+  },
+  "DANG_TIEM": {
+   "nhanVi": "dạng tiêm",
+   "nhanEn": "injectable form",
+   "nhanZh": "注射剂型",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+tiêm",
+     "dùng\\s+để\\s+tiêm",
+     "thuốc\\s+tiêm"
+    ],
+    "en": [
+     "injectable\\s+form",
+     "for\\s+injection",
+     "injections?"
+    ],
+    "zh": [
+     "注射",
+     "注射剂",
+     "注射用"
+    ]
+   },
+   "cachViet": "dạng tiêm"
+  },
+  "DANG_TRUYEN": {
+   "nhanVi": "dạng truyền",
+   "nhanEn": "infusion form",
+   "nhanZh": "输液剂型",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+truyền",
+     "dung\\s+dịch\\s+truyền",
+     "tiêm\\s+truyền"
+    ],
+    "en": [
+     "infusion(?:\\s+form)?",
+     "for\\s+infusion"
+    ],
+    "zh": [
+     "输注",
+     "输液",
+     "滴注"
+    ]
+   },
+   "cachViet": "dạng truyền"
+  },
+  "MIENG_DAN_THAM_THAU": {
+   "nhanVi": "miếng dán thẩm thấu qua da",
+   "nhanEn": "transdermal patch",
+   "nhanZh": "透皮贴剂",
+   "cachDoc": {
+    "vi": [
+     "miếng\\s+(?:dán\\s+)?thẩm\\s+thấu\\s+qua\\s+da",
+     "cao\\s+dán\\s+thấm\\s+qua\\s+da"
+    ],
+    "en": [
+     "transdermal\\s+patch(?:es)?",
+     "transdermal\\s+administration"
+    ],
+    "zh": [
+     "透皮贴剂",
+     "经皮贴片"
+    ]
+   },
+   "cachViet": "miếng thẩm thấu qua da"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Thuốc ở dạng bào chế nào (dạng uống, dạng mỡ, tiêm, truyền hay miếng dán qua da)?",
+  "zh": "该药品属于何种剂型/给药形式（口服、软膏、注射、输液或透皮贴剂）？"
+ },
+ "ghiChu": "Chữ biểu 3004.10.16 \"dạng uống (*)\", 3004.20.32 \"Dạng mỡ\", 3004.90.91 \"dạng truyền\", 3004.90.10 \"Miếng thẩm thấu qua da\". (3004.49.80 gộp \"dùng để tiêm; … dạng uống\" hai giá trị — không đọc được, đúng ý.)",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+30041015 Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng
+30041016 Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)
+30041019 Loại khác
+30041020 Chứa các streptomycin hoặc các dẫn xuất của chúng
+30042010 Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ
+30042031 Dạng uống (*)
+30042032 Dạng mỡ
+30042039 Loại khác
+30042071 Dạng uống (*) hoặc dạng mỡ
+30042079 Loại khác
+30042091 Dạng uống (*) hoặc dạng mỡ
+30042099 Loại khác
+30049010 Miếng thẩm thấu qua da dùng điều trị bệnh ung thư hoặc bệnh tim
+30049020 Nước vô trùng đóng kín để xông, loại dược phẩm (SEN)
+30049030 Thuốc sát trùng (Antiseptics)
+30049041 Chứa procain hydroclorua
+30049049 Loại khác
+30049051 Chứa axit acetylsalicylic, paracetamol hoặc dipyrone (INN), dạng uống (*)
+30049053 Chứa diclofenac, dạng uống (*)
+30049054 Chứa piroxicam (INN) hoặc ibuprofen
+30049055 Loại khác, dạng dầu xoa bóp
+30049059 Loại khác
+30049062 Chứa primaquine
+30049064 Chứa artemisinin trừ các loại thuộc phân nhóm 3004.60.10
+
+=== KHOÁ dangBinhXit ===
+{
+ "khoa": "dangBinhXit",
+ "kieu": "CO_KHONG",
+ "nhanVi": "dạng bình xịt (aerosol)",
+ "nhanEn": "in aerosol container",
+ "nhanZh": "装于气雾剂罐（气雾状）",
+ "cachDoc": {
+  "vi": [
+   "dạng\\s+bình\\s+xịt",
+   "bình\\s+xịt",
+   "chai\\s+xịt",
+   "\\baerosol\\b"
+  ],
+  "en": [
+   "in\\s+aerosol\\s+containers?",
+   "aerosol\\s+cans?",
+   "aerosol\\s+spray",
+   "\\baerosol\\b"
+  ],
+  "zh": [
+   "气雾剂罐",
+   "气雾罐装",
+   "气雾剂",
+   "喷雾罐"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "chưa",
+   "non-?",
+   "not",
+   "without",
+   "非",
+   "未",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+dạng\\s+bình\\s+xịt",
+   "không\\s+đóng\\s+bình\\s+xịt"
+  ],
+  "en": [
+   "not\\s+in\\s+aerosol\\s+containers",
+   "non-?aerosol"
+  ],
+  "zh": [
+   "非气雾剂",
+   "未装于气雾剂罐"
+  ]
+ },
+ "cachViet": {
+  "vi": "dạng bình xịt",
+  "viPhuDinh": "không phải dạng bình xịt"
+ },
+ "cauHoi": {
+  "vi": "Chế phẩm có được đóng gói ở dạng bình xịt (aerosol) không?",
+  "zh": "该制剂是否装于气雾剂容器/气雾罐中？"
+ },
+ "ghiChu": "Chữ biểu 3808.52.20 \"dạng bình xịt\", 3808.59.11 \"Dạng bình xịt\", 3808.61.30 \"Dạng bình xịt\", 3808.91.30 \"Dạng bình xịt\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+38085210 Thuốc bảo quản gỗ, là chế phẩm chứa chất trừ côn trùng hoặc trừ nấm, trừ chất phủ bề mặt
+38085220 Thuốc trừ nấm và thuốc trừ côn trùng dạng bình xịt
+38085290 Loại khác
+38085911 Dạng bình xịt
+38085919 Loại khác
+38085921 Dạng bình xịt
+38085929 Loại khác
+38085931 Dạng bình xịt
+38085939 Loại khác
+38085940 Thuốc chống nảy mầm
+38085950 Thuốc điều hòa sinh trưởng cây trồng
+38085960 Thuốc khử trùng (Disinfectants)
+38085991 Thuốc bảo quản gỗ, là chế phẩm chứa chất trừ côn trùng hoặc trừ nấm, trừ chất phủ bề mặt
+38085999 Loại khác
+38086110 Hương vòng chống muỗi
+38086120 Tấm thuốc diệt muỗi (SEN)
+38086130 Dạng bình xịt
+38086140 Loại khác, dạng lỏng
+38086150 Loại khác, có chức năng khử mùi
+38086190 Loại khác
+
+=== KHOÁ dangCuon ===
+{
+ "khoa": "dangCuon",
+ "kieu": "CO_KHONG",
+ "nhanVi": "ở dạng cuộn (dây hàn, que hàn, tấm, dải)",
+ "nhanEn": "in coils / in rolls",
+ "nhanZh": "成卷/卷状",
+ "cachDoc": {
+  "vi": [
+   "(?:ở\\s+)?dạng\\s+cuộn",
+   "cuộn\\s+dây",
+   "cuộn\\s+tấm",
+   "dạng\\s+cuộn\\s+tròn"
+  ],
+  "en": [
+   "in\\s+coils?",
+   "in\\s+rolls?",
+   "coiled"
+  ],
+  "zh": [
+   "成卷",
+   "卷状",
+   "卷材",
+   "成盘"
+  ],
+  "phuDinh": [
+   "không phải dạng cuộn",
+   "dạng thẳng",
+   "dạng que",
+   "dạng thanh",
+   "không",
+   "chưa",
+   "not in coils",
+   "straight",
+   "in cut lengths",
+   "非",
+   "未",
+   "不成卷",
+   "直条"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+dạng\\s+cuộn",
+   "ở\\s+dạng\\s+thanh",
+   "ở\\s+dạng\\s+que",
+   "dạng\\s+thẳng"
+  ],
+  "en": [
+   "not\\s+in\\s+coils",
+   "in\\s+straight\\s+lengths?",
+   "in\\s+cut\\s+lengths?"
+  ],
+  "zh": [
+   "不成卷",
+   "非卷状",
+   "直条状"
+  ]
+ },
+ "cachViet": {
+  "vi": "dạng cuộn",
+  "viPhuDinh": "không phải dạng cuộn"
+ },
+ "cauHoi": {
+  "vi": "Hàng hóa (que hàn, dây kim loại, tấm nhôm) có ở dạng cuộn không?",
+  "zh": "该产品（焊丝、金属线、铝板等）是否为成卷/卷状？"
+ },
+ "ghiChu": "Chữ biểu 8311.10.10 \"Dạng cuộn\", 8311.20.21 \"Dạng cuộn\", 7606.12.32 \"dạng cuộn (SEN)\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+83111010 Dạng cuộn
+83111090 Loại khác
+83112021 Dạng cuộn
+83112029 Loại khác
+83112090 Loại khác
+76061220 Đế bản nhôm, chưa nhạy, dùng trong công nghệ in
+76061232 Để làm lon (kể cả đáy lon và nắp lon), dạng cuộn(SEN)
+76061233 Loại khác, bằng hợp kim nhôm 5082 hoặc 5182, có chiều rộng trên 1m, dạng cuộn (SEN)
+76061234 Loại khác, tấm litô hợp kim HA 1052 độ cứng H19 và hợp kim HA 1050 độ cứng H18
+76061235 Loại khác, đã gia công bề mặt
+76061239 Loại khác
+76061290 Loại khác
+
+=== KHOÁ dangLong ===
+{
+ "khoa": "dangLong",
+ "kieu": "CO_KHONG",
+ "nhanVi": "ở dạng lỏng",
+ "nhanEn": "in liquid form",
+ "nhanZh": "呈液体状",
+ "cachDoc": {
+  "vi": [
+   "dạng\\s+lỏng",
+   "thể\\s+lỏng",
+   "chất\\s+lỏng"
+  ],
+  "en": [
+   "liquid\\s+form",
+   "in\\s+liquid",
+   "liquid",
+   "liquids"
+  ],
+  "zh": [
+   "液体",
+   "液态",
+   "呈液体状"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "chưa",
+   "ko",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "dạng\\s+bột",
+   "dạng\\s+rắn",
+   "đông\\s+lạnh",
+   "dạng\\s+hạt"
+  ],
+  "en": [
+   "solid",
+   "powder",
+   "frozen",
+   "granules"
+  ],
+  "zh": [
+   "固体",
+   "固态",
+   "粉状",
+   "冻结"
+  ]
+ },
+ "cachViet": {
+  "vi": "dạng lỏng",
+  "viPhuDinh": "dạng khác (không phải dạng lỏng)"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm ở dạng lỏng hay ở dạng khác?",
+  "zh": "产品是否呈液体状？"
+ },
+ "ghiChu": "Chữ biểu 0401.10.10 \"Dạng lỏng\" và 0401.40.10 \"Sữa dạng lỏng\"",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+04011010 Dạng lỏng
+04011090 Loại khác
+04014010 Sữa dạng lỏng
+04014020 Sữa dạng đông lạnh
+04014090 Loại khác
+
+=== KHOÁ dangNguyenSinh ===
+{
+ "khoa": "dangNguyenSinh",
+ "kieu": "LIET_KE",
+ "nhanVi": "dạng vật lý nguyên sinh của polyme",
+ "nhanEn": "primary form physical state",
+ "nhanZh": "聚合物初级形态物理形状",
+ "giaTriHopLe": [
+  "LONG_HOAC_NHAO",
+  "PHAN_TAN",
+  "HAT_VIEN_VAY_MANH"
+ ],
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Polyme ở dạng nguyên sinh nào (dạng lỏng/nhão, phân tán, hay hạt/viên/vẩy/mảnh)?",
+  "zh": "聚合物属于哪种初级形态（液态/膏状、分散体、还是颗粒/片状等）？"
+ },
+ "ghiChu": "Chữ biểu tiêu đề 3901.10.1 \"Dạng lỏng hoặc dạng nhão\", 3901.90.40 \"Dạng phân tán\", 3902.10.30 \"Dạng phân tán\" theo Chú giải 6 Chương 39 về các dạng nguyên sinh (primary forms) của polyme.",
+ "nguonLoai": "AI_DA_KIEM",
+ "moTaGiaTri": {
+  "LONG_HOAC_NHAO": {
+   "nhanVi": "dạng lỏng hoặc dạng nhão",
+   "nhanEn": "liquid or paste form",
+   "nhanZh": "液态或膏状",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+lỏng\\s+hoặc\\s+(?:dạng\\s+)?nhão",
+     "dạng\\s+lỏng",
+     "dạng\\s+nhão"
+    ],
+    "en": [
+     "liquid\\s+or\\s+paste\\s+form",
+     "liquids?\\s+and\\s+pastes?",
+     "liquid",
+     "paste"
+    ],
+    "zh": [
+     "液态或膏状",
+     "液态",
+     "膏状",
+     "液体",
+     "膏体"
+    ]
+   }
+  },
+  "PHAN_TAN": {
+   "nhanVi": "dạng phân tán",
+   "nhanEn": "dispersions",
+   "nhanZh": "分散体",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+phân\\s+tán",
+     "phân\\s+tán"
+    ],
+    "en": [
+     "dispersions?",
+     "dispersed\\s+form"
+    ],
+    "zh": [
+     "分散体",
+     "分散状"
+    ]
+   }
+  },
+  "HAT_VIEN_VAY_MANH": {
+   "nhanVi": "dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự",
+   "nhanEn": "granules, flakes, pellets, powder and similar forms",
+   "nhanZh": "颗粒、粉末、片状等类似形状",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+hạt",
+     "viên",
+     "hạt\\s+cườm",
+     "vẩy",
+     "mảnh",
+     "dạng\\s+bột",
+     "dạng\\s+khối\\s+không\\s+đều"
+    ],
+    "en": [
+     "granules?",
+     "flakes?",
+     "pellets?",
+     "powders?",
+     "blocks\\s+of\\s+irregular\\s+shape"
+    ],
+    "zh": [
+     "颗粒",
+     "粉末",
+     "片状",
+     "碎块",
+     "不规则块状"
+    ]
+   }
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ }
+}
+--- dòng biểu liên quan ---
+39019040 Dạng phân tán(SEN)
+39019090 Loại khác
+39021030 Dạng phân tán(SEN)
+39021040 Dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự (SEN)
+39021090 Loại khác
+
+=== KHOÁ dinhLuong ===
+{
+ "khoa": "dinhLuong",
+ "kieu": "SO",
+ "nhanVi": "định lượng giấy hoặc bìa",
+ "nhanEn": "grammage / basis weight of paper",
+ "nhanZh": "纸或纸板定量（克重）",
+ "heDonVi": "dinhLuong",
+ "donViChuan": "g/m2",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "định\\s+lượng",
+   "gam\\s+trên\\s+mét\\s+vuông",
+   "\\bgsm\\b",
+   "g/m2",
+   "g/m²"
+  ],
+  "en": [
+   "grammage",
+   "basis\\s+weight",
+   "substance",
+   "\\bgsm\\b",
+   "g/m2",
+   "g/m²"
+  ],
+  "zh": [
+   "定量",
+   "克重",
+   "每平方米克重",
+   "每平方米克数"
+  ]
+ },
+ "cachViet": {
+  "vi": "định lượng {giaTri} g/m2"
+ },
+ "cauHoi": {
+  "vi": "Định lượng của giấy hoặc bìa là bao nhiêu g/m2 (gsm)?",
+  "zh": "该纸或纸板的定量（克重）是多少g/m²？"
+ },
+ "ghiChu": "Chữ biểu 4802.58.91 \"Định lượng trên 150 g/m2 nhưng dưới 225 g/m2\", 4804.51.20 \"định lượng từ 600g/m2 trở lên\", 4823.90.51 \"định lượng từ 150 g/m2 trở xuống\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+48025821 Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)
+48025829 Loại khác (SEN)
+48025831 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48025839 Loại khác
+48025891 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+48025899 Loại khác
+48045110 Giấy kraft cách điện (SEN)
+48045120 Bìa ép có định lượng từ 600g/m2 trở lên
+48045130 Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+48045190 Loại khác
+48239010 Khung kén tằm
+48239020 Thẻ trưng bày đồ trang sức, kể cả loại cho đồ trang sức cá nhân hoặc các vật dụng cá nhân được để trong ví, túi xách hoặc mang trên người
+48239030 Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy
+48239040 Bộ ống giấy để sản xuất pháo hoa(SEN)
+48239051 Có định lượng từ 150 g/m2 trở xuống
+48239059 Loại khác
+48239060 Thẻ jacquard đã đục lỗ
+48239070 Quạt và màn che kéo bằng tay
+48239091 Giấy silicon(SEN)
+48239092 Giấy vàng mã(SEN)
+48239094 Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vân toàn bộ
+48239095 Tấm phủ sàn
+
+=== KHOÁ doBenKeo ===
+{
+ "khoa": "doBenKeo",
+ "kieu": "SO",
+ "nhanVi": "độ bền kéo",
+ "nhanEn": "tensile strength",
+ "nhanZh": "抗拉强度",
+ "heDonVi": "apSuat",
+ "donViChuan": "MPa",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "độ\\s+bền\\s+kéo",
+   "sức\\s+bền\\s+kéo",
+   "giới\\s+hạn\\s+bền\\s+kéo"
+  ],
+  "en": [
+   "tensile\\s+strength",
+   "ultimate\\s+tensile\\s+strength"
+  ],
+  "zh": [
+   "抗拉强度",
+   "抗张强度",
+   "拉伸强度"
+  ]
+ },
+ "cachViet": {
+  "vi": "độ bền kéo {giaTri} MPa"
+ },
+ "cauHoi": {
+  "vi": "Độ bền kéo của thép là bao nhiêu MPa?",
+  "zh": "钢材的抗拉强度是多少兆帕（MPa）？"
+ },
+ "ghiChu": "Trích chữ biểu 7208.39.40 \"độ bền kéo tối đa 550 Mpa và chiều rộng không quá 1.250 mm\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+72083910 Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm
+72083920 Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày trên 0,17 mm nhưng không quá 1,5 mm
+72083930 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng và chiều dày không quá 1,5 mm
+72083940 Chiều dày trên 2 mm, độ bền kéo tối đa 550 Mpa và chiều rộng không quá 1.250 mm
+72083990 Loại khác
+

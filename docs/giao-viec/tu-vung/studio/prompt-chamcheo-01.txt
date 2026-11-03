@@ -1,0 +1,858 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ chiHoacChuYeu ===
+{
+ "khoa": "chiHoacChuYeu",
+ "kieu": "CO_KHONG",
+ "nhanVi": "chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)",
+ "nhanEn": "solely or principally used with/for",
+ "nhanZh": "专用或主要用于",
+ "cachDoc": {
+  "vi": [
+   "(?<!không\\s)chỉ\\s+(?:dùng|sử\\s+dụng)(?:\\s+hoặc\\s+chủ\\s+yếu\\s+(?:dùng|sử\\s+dụng))?",
+   "chỉ\\s+hoặc\\s+chủ\\s+yếu",
+   "chủ\\s+yếu\\s+(?:dùng|sử\\s+dụng)",
+   "chuyên\\s+(?:dùng|dụng)",
+   "(?:được\\s+)?thiết\\s+kế\\s+(?:chủ\\s+yếu|chuyên|riêng)\\s+(?:cho|để)",
+   "dùng\\s+riêng\\s+cho",
+   "(?:được\\s+)?thiết\\s+kế\\s+chỉ\\s+để"
+  ],
+  "en": [
+   "solely\\s+or\\s+principally",
+   "(?:solely|exclusively|principally|mainly|primarily)\\s+(?:used|designed)",
+   "dedicated",
+   "designed\\s+(?:primarily|mainly|principally|exclusively|specifically)\\s+for",
+   "designed\\s+only\\s+for",
+   "specially\\s+designed"
+  ],
+  "zh": [
+   "专用",
+   "专门用于",
+   "主要用于",
+   "仅用于",
+   "只用于",
+   "专为"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không có",
+   "không",
+   "chưa",
+   "ko",
+   "chẳng",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "没有",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "đa\\s+dụng",
+   "đa\\s+mục\\s+đích",
+   "dùng\\s+chung\\s+cho\\s+nhiều"
+  ],
+  "en": [
+   "general[- ]purpose",
+   "multi-?purpose"
+  ],
+  "zh": [
+   "通用",
+   "多用途"
+  ]
+ },
+ "cachViet": {
+  "vi": "chuyên dùng",
+  "viPhuDinh": "loại dùng chung"
+ },
+ "cauHoi": {
+  "vi": "Hàng có phải loại chỉ dùng hoặc chủ yếu dùng cho máy/hàng hóa đã khai (chuyên dùng) không, hay dùng chung cho nhiều loại?",
+  "zh": "该产品是否仅用于或主要用于所申报的机器/商品（专用），还是通用于多种用途？"
+ },
+ "ghiChu": "Mức ràng buộc \"chỉ hoặc chủ yếu\" (8414.59.10, 8420.10.10, 8537.10.20) — khác \"dùng cho\" trần: cổng không coi hai câu tương đương. Đi kèm dungCho/congDung để ghi ĐỐI TƯỢNG. \"không chỉ dùng cho\" không đọc (không đoán).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+84145910 Quạt, loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động (SEN)
+84145920 Quạt gió phòng nổ, loại sử dụng trong hầm lò
+84145930 Máy thổi khí (SEN)
+84145941 Có lưới bảo vệ
+84145949 Loại khác
+84145950 Máy thổi khí (SEN)
+84145991 Có lưới bảo vệ
+84145992 Quạt gió phòng nổ, loại sử dụng trong hầm lò
+84145999 Loại khác
+84201010 Loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền mạch in hoặc mạch in
+84201020 Máy là hoặc máy vắt phù hợp sử dụng cho gia đình
+84201090 Loại khác
+85371011 Bảng điều khiển của loại thích hợp sử dụng cho hệ thống điều khiển phân tán
+85371012 Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)
+85371013 Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN)
+85371019 Loại khác
+85371020 Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25
+85371030 Bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn
+85371040 Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A
+85371091 Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện
+85371092 Loại phù hợp sử dụng cho hệ thống điều khiển phân tán
+85371099 Loại khác
+
+=== KHOÁ chiSoIot ===
+{
+ "khoa": "chiSoIot",
+ "kieu": "SO",
+ "nhanVi": "chỉ số iốt (IV)",
+ "nhanEn": "iodine value (IV)",
+ "nhanZh": "碘值/碘价（IV）",
+ "heDonVi": "chiSoIot",
+ "donViChuan": "IV",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "chỉ\\s+số\\s+i(?:-)?ốt",
+   "chỉ\\s+số\\s+iot",
+   "chỉ\\s+số\\s+i-o-đin",
+   "hàm\\s+lượng\\s+iốt"
+  ],
+  "en": [
+   "iodine\\s+value",
+   "iodine\\s+number",
+   "iodine\\s+index",
+   "\\biv\\b"
+  ],
+  "zh": [
+   "碘值",
+   "碘价",
+   "碘指数"
+  ]
+ },
+ "cachViet": {
+  "vi": "chỉ số iốt {giaTri} IV"
+ },
+ "cauHoi": {
+  "vi": "Chỉ số iốt (IV) của sản phẩm dầu/chất béo là bao nhiêu?",
+  "zh": "该油脂产品的碘值（IV）是多少？"
+ },
+ "ghiChu": "Chữ biểu 1511.90.31 \"chỉ số iốt từ 30 trở lên, nhưng dưới 40\", 1511.90.37 \"chỉ số iốt từ 55 trở lên, nhưng dưới 60\", 1516.20.91 \"chỉ số iốt trên 48\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docThem": [
+  {
+   "mau": "(?<=chỉ\\s+số\\s+i(?:-?ốt|ot|-o-đin)\\s+(?:từ|trên|dưới|không\\s+quá|không\\s+dưới|tối\\s+đa|tối\\s+thiểu)?\\s*)(\\d+(?:[.,]\\d+)?)(?![\\d.,]*\\s*%)",
+   "donVi": "IV"
+  },
+  {
+   "mau": "(?<=iodine\\s+(?:value|number)\\s+(?:of|from|above|below|not\\s+exceeding)?\\s*)(\\d+(?:[.,]\\d+)?)",
+   "donVi": "IV"
+  }
+ ],
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+15119020 Dầu tinh chế
+15119031 Có chỉ số iốt từ 30 trở lên, nhưng dưới 40
+15119032 Loại khác
+15119036 Đóng gói với khối lượng tịnh không quá 25kg
+15119037 Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60
+15119039 Loại khác
+15119041 Các phần phân đoạn thể rắn (SEN)
+15119042 Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)
+15119049 Loại khác (SEN)
+15162011 Của đậu tương
+15162012 Của ngô (maize)
+15162014 Của dừa
+15162017 Của lạc
+15162018 Của hạt lanh
+15162019 Loại khác
+15162021 Của quả cọ dầu, dạng thô
+15162022 Của quả cọ dầu, trừ dạng thô
+15162023 Của hạt cọ, dạng thô
+15162024 Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+15162025 Của olein hạt cọ, dạng thô
+15162026 Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+
+=== KHOÁ chieuRong ===
+{
+ "khoa": "chieuRong",
+ "kieu": "SO",
+ "nhanVi": "chiều rộng",
+ "nhanEn": "width",
+ "nhanZh": "宽度",
+ "heDonVi": "dai",
+ "donViChuan": "mm",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "chiều\\s+rộng",
+   "bề\\s+rộng",
+   "khổ\\s+rộng",
+   "rộng"
+  ],
+  "en": [
+   "width",
+   "wide"
+  ],
+  "zh": [
+   "宽度",
+   "宽",
+   "板宽"
+  ]
+ },
+ "cachViet": {
+  "vi": "chiều rộng {giaTri} mm"
+ },
+ "cauHoi": {
+  "vi": "Chiều rộng của sản phẩm cán phẳng là bao nhiêu mm?",
+  "zh": "平板轧材的宽度是多少毫米（mm）？"
+ },
+ "ghiChu": "Trích chữ biểu 7209.16.10, 7209.27.10 \"Chiều rộng không quá 1.250 mm\" và 7211.23.20 \"chiều rộng không quá 400 mm\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+72091610 Chiều rộng không quá 1.250 mm
+72091690 Loại khác
+72092710 Chiều rộng không quá 1.250 mm
+72092790 Loại khác
+72112310 Dạng lượn sóng
+72112320 Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+72112330 Loại khác, chiều dày không quá 0,17 mm
+72112390 Loại khác
+
+=== KHOÁ coBoLoc ===
+{
+ "khoa": "coBoLoc",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã lắp bộ phận lọc",
+ "nhanEn": "fitted with a filter",
+ "nhanZh": "装有过滤器",
+ "cachDoc": {
+  "vi": [
+   "(?:đã\\s+)?(?:lắp|gắn|trang\\s+bị)\\s+bộ\\s+phận\\s+lọc",
+   "(?:đã\\s+)?(?:lắp|gắn)\\s+(?:màng|lưới|bộ)\\s+lọc",
+   "có\\s+bộ\\s+lọc"
+  ],
+  "en": [
+   "fitted\\s+with\\s+(?:a\\s+)?filter",
+   "incorporating\\s+(?:a\\s+)?filter",
+   "with\\s+(?:a\\s+)?filter"
+  ],
+  "zh": [
+   "装有过滤器",
+   "带过滤器",
+   "配有滤清器",
+   "附带滤网"
+  ],
+  "phuDinh": [
+   "chưa",
+   "không",
+   "chưa được",
+   "without",
+   "no",
+   "not",
+   "未",
+   "不",
+   "无"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+(?:lắp|gắn|trang\\s+bị)\\s+bộ\\s+phận\\s+lọc",
+   "chưa\\s+lắp\\s+bộ\\s+lọc",
+   "không\\s+(?:có\\s+)?bộ\\s+lọc"
+  ],
+  "en": [
+   "not\\s+fitted\\s+with\\s+(?:a\\s+)?filter",
+   "without\\s+(?:a\\s+)?filter"
+  ],
+  "zh": [
+   "未装过滤器",
+   "不带过滤器",
+   "无滤网"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã lắp bộ phận lọc",
+  "viPhuDinh": "chưa lắp bộ phận lọc"
+ },
+ "cauHoi": {
+  "vi": "Thiết bị hút khói/thông gió đã được lắp bộ phận lọc hay chưa?",
+  "zh": "抽油烟机/排气罩是否装有过滤器？"
+ },
+ "ghiChu": "Chữ biểu tiêu đề 8414.60.1 / 8414.70.1 \"Đã lắp bộ phận lọc\" và 8414.60.9 / 8414.70.2 \"Chưa lắp bộ phận lọc\" (nhóm 84.14).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+
+=== KHOÁ coMauTruTrang ===
+{
+ "khoa": "coMauTruTrang",
+ "kieu": "CO_KHONG",
+ "nhanVi": "có màu trừ màu trắng (sợi dệt hoặc xơ dệt)",
+ "nhanEn": "coloured, other than white (yarn or staple fibre)",
+ "nhanZh": "除白色以外的有色品（纱线或短纤）",
+ "cachDoc": {
+  "vi": [
+   "có\\s+màu\\s+trừ\\s+màu\\s+trắng",
+   "có\\s+màu",
+   "nhuộm\\s+màu",
+   "sợi\\s+màu",
+   "xơ\\s+màu"
+  ],
+  "en": [
+   "colou?red(?:,\\s+other\\s+than\\s+white)?",
+   "dyed",
+   "dope\\s+dyed"
+  ],
+  "zh": [
+   "有色",
+   "除白色以外的有色品",
+   "染色",
+   "色丝",
+   "原液着色"
+  ],
+  "phuDinh": [
+   "không",
+   "chưa",
+   "ko",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "màu\\s+trắng",
+   "trắng",
+   "chưa\\s+nhuộm",
+   "mộc"
+  ],
+  "en": [
+   "white",
+   "undyed",
+   "raw",
+   "natural"
+  ],
+  "zh": [
+   "白色",
+   "本色",
+   "未染色"
+  ]
+ },
+ "cachViet": {
+  "vi": "có màu trừ màu trắng",
+  "viPhuDinh": "màu trắng hoặc chưa nhuộm màu"
+ },
+ "cauHoi": {
+  "vi": "Xơ hoặc sợi có màu (trừ màu trắng) không?",
+  "zh": "纤维或纱线是否为除白色以外的有色品？"
+ },
+ "ghiChu": "Chữ biểu 5402.33.10 \"Loại có màu trừ màu trắng\"",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+54023310 Loại có màu trừ màu trắng (SEN)
+54023390 Loại khác
+
+=== KHOÁ coNong ===
+{
+ "khoa": "coNong",
+ "kieu": "SO",
+ "nhanVi": "cỡ nòng súng / cỡ đạn",
+ "nhanEn": "calibre / bore size of firearm or ammunition",
+ "nhanZh": "枪械口径/弹药口径",
+ "heDonVi": "dai",
+ "donViChuan": "mm",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "cỡ\\s+nòng",
+   "cỡ\\s+đạn",
+   "khẩu\\s+độ",
+   "cỡ"
+  ],
+  "en": [
+   "calib(?:re|er)",
+   "bore(?:\\s+size)?",
+   "gauge"
+  ],
+  "zh": [
+   "口径",
+   "枪膛口径",
+   "子弹口径"
+  ]
+ },
+ "cachViet": {
+  "vi": "cỡ nòng {giaTri} mm"
+ },
+ "cauHoi": {
+  "vi": "Cỡ nòng của súng hoặc cỡ đạn là bao nhiêu mm (hoặc cal)?",
+  "zh": "该枪械或弹药的口径是多少毫米（mm）？"
+ },
+ "ghiChu": "Chữ biểu 9303.90.10 \"cỡ nòng từ 20 mm trở lên\". (Đạn cỡ .22 ở 9306.30.11/.91 là cỡ inch viết tắt — chưa đọc được, để vòng sau.)",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+93039010 Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm
+93039090 Loại khác
+93063011 Đạn cỡ .22
+93063019 Loại khác
+93063020 Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng
+93063030 Dùng cho súng thể thao, súng săn hoặc súng bắn bia, súng trường và súng cacbin, trừ súng shotgun
+93063091 Đạn cỡ 22
+93063099 Loại khác
+
+=== KHOÁ coRen ===
+{
+ "khoa": "coRen",
+ "kieu": "CO_KHONG",
+ "nhanVi": "có ren (ở đầu hoặc thân ống)",
+ "nhanEn": "threaded (internal, external or at pipe ends)",
+ "nhanZh": "有螺纹（管端或内/外螺纹）",
+ "cachDoc": {
+  "vi": [
+   "có\\s+ren",
+   "tiện\\s+ren",
+   "xoáy\\s+ren",
+   "ren\\s+trong",
+   "ren\\s+ngoài",
+   "được\\s+tiện\\s+ren",
+   "bước\\s+ren"
+  ],
+  "en": [
+   "thread(?:ed)?",
+   "threading",
+   "screwed",
+   "with\\s+threads?"
+  ],
+  "zh": [
+   "带螺纹",
+   "有螺纹",
+   "螺纹",
+   "车螺纹"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không có",
+   "không",
+   "chưa",
+   "ko",
+   "chẳng",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "没有",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+(?:có\\s+)?ren(?:\\s+ở\\s+đầu\\s+ống)?",
+   "đầu\\s+trơn",
+   "chưa\\s+tiện\\s+ren"
+  ],
+  "en": [
+   "unthreaded",
+   "without\\s+threads?",
+   "plain\\s+end(?:ed)?",
+   "non-?threaded"
+  ],
+  "zh": [
+   "无螺纹",
+   "不带螺纹",
+   "未攻丝",
+   "平端"
+  ]
+ },
+ "cachViet": {
+  "vi": "có ren",
+  "viPhuDinh": "không có ren"
+ },
+ "cauHoi": {
+  "vi": "Ống thép có ren (ren trong, ren ngoài hoặc ren ở đầu ống) không?",
+  "zh": "钢管是否有螺纹（内螺纹、外螺纹或管端螺纹）？"
+ },
+ "ghiChu": "Trích chữ biểu 7304.51.10, 7304.31.10 \"Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)\" và 7304.23.10 \"Có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+73045110 Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)
+73045120 Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi
+73045190 Loại khác
+73043110 Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)
+73043120 Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi
+73043140 Loại khác, có đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng
+73043190 Loại khác
+73042310 Có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống
+73042390 Loại khác
+
+=== KHOÁ congSuatBieuKien ===
+{
+ "khoa": "congSuatBieuKien",
+ "kieu": "SO",
+ "nhanVi": "công suất biểu kiến",
+ "nhanEn": "apparent power",
+ "nhanZh": "视在功率",
+ "heDonVi": "bieuKien",
+ "donViChuan": "kVA",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "công\\s+suất(?:\\s+biểu\\s+kiến)?",
+   "công\\s+suất\\s+phát"
+  ],
+  "en": [
+   "apparent\\s+power",
+   "output",
+   "rating"
+  ],
+  "zh": [
+   "视在功率",
+   "输出功率",
+   "容量",
+   "功率"
+  ]
+ },
+ "cachViet": {
+  "vi": "công suất biểu kiến {giaTri} kVA"
+ },
+ "cauHoi": {
+  "vi": "Công suất biểu kiến (kVA) của máy là bao nhiêu?",
+  "zh": "机器的视在功率（kVA）是多少？"
+ },
+ "ghiChu": "Chữ biểu 8501.61.10 \"Công suất không quá 12,5 kVA\", 8501.61.20 \"Công suất trên 12,5 kVA\", 8501.62.10 \"Công suất trên 75 kVA nhưng không quá 150 kVA\" (máy phát điện xoay chiều). Đơn vị kVA là công suất biểu kiến (apparent power), khác với kW/W là công suất tác dụng (khoá congSuat).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+85016110 Công suất không quá 12,5 kVA
+85016120 Công suất trên 12,5 kVA
+85016210 Công suất trên 75 kVA nhưng không quá 150 kVA
+85016220 Công suất trên 150 kVA nhưng không quá 375 kVA
+
+=== KHOÁ daHoaDeo ===
+{
+ "khoa": "daHoaDeo",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã hóa dẻo",
+ "nhanEn": "plasticised",
+ "nhanZh": "已塑化",
+ "cachDoc": {
+  "vi": [
+   "(?:đã\\s+)?hóa\\s+dẻo",
+   "dẻo\\s+hóa",
+   "plasticised",
+   "plasticized"
+  ],
+  "en": [
+   "plasticis(?:ed|ing)",
+   "plasticiz(?:ed|ing)"
+  ],
+  "zh": [
+   "已塑化",
+   "增塑",
+   "塑化"
+  ],
+  "phuDinh": [
+   "chưa",
+   "không",
+   "chưa được",
+   "chưa qua",
+   "non-?",
+   "un-?",
+   "not",
+   "未",
+   "不",
+   "未经"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+(?:được\\s+)?hóa\\s+dẻo",
+   "chưa\\s+hóa\\s+dẻo",
+   "không\\s+hóa\\s+dẻo"
+  ],
+  "en": [
+   "non-?plasticis(?:ed)?",
+   "unplasticis(?:ed)?",
+   "non-?plasticiz(?:ed)?",
+   "unplasticiz(?:ed)?",
+   "not\\s+plasticis(?:ed)?"
+  ],
+  "zh": [
+   "未塑化",
+   "未增塑",
+   "未经塑化"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã hóa dẻo",
+  "viPhuDinh": "chưa hóa dẻo"
+ },
+ "cauHoi": {
+  "vi": "Xenlulo và các dẫn xuất hoá học của nó đã được hóa dẻo hay chưa hóa dẻo?",
+  "zh": "纤维素及其化学衍生物是否经过塑化处理？"
+ },
+ "ghiChu": "Chữ biểu tiêu đề 3912.20.1 \"Chưa hóa dẻo\" và dòng 3912.20.20 \"Đã hóa dẻo\" (xenlulo nitrat nhóm 39.12).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+39122011 Nitroxenlulo đã ngâm nước (SEN)
+39122012 Nitroxenlulo đã ngâm cồn
+39122019 Loại khác
+39122020 Đã hóa dẻo
+
+=== KHOÁ daIn ===
+{
+ "khoa": "daIn",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã in (nội dung, họa tiết, vạch chia)",
+ "nhanEn": "printed",
+ "nhanZh": "已印刷",
+ "cachDoc": {
+  "vi": [
+   "đã\\s+(?:được\\s+)?in",
+   "có\\s+in",
+   "in\\s+sẵn"
+  ],
+  "en": [
+   "printed",
+   "pre-?printed"
+  ],
+  "zh": [
+   "已印刷",
+   "印刷有",
+   "已印制"
+  ],
+  "phuDinh": [
+   "chưa in",
+   "không in",
+   "chưa",
+   "không",
+   "unprinted",
+   "not printed",
+   "plain",
+   "未印刷",
+   "未印",
+   "白坯"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+in",
+   "không\\s+in"
+  ],
+  "en": [
+   "unprinted",
+   "not\\s+printed"
+  ],
+  "zh": [
+   "未印刷",
+   "无印刷"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã in",
+  "viPhuDinh": "chưa in"
+ },
+ "cauHoi": {
+  "vi": "Giấy, cuộn ghi hoặc ấn phẩm đã được in chưa?",
+  "zh": "该纸品、记录纸或卡片是否已经印刷？"
+ },
+ "ghiChu": "Chữ biểu 4810.13.10 \"Đã in, loại dùng cho máy ghi tự động\", 4810.14.10 \"Đã in, dùng cho máy ghi tự động\", 4911.99.30 \"Bộ thẻ đã được in nội dung\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+48101310 Đã in, loại dùng cho máy ghi tự động, có chiều rộng từ 150 mm trở xuống(SEN)
+48101391 Có chiều rộng từ 150 mm trở xuống
+48101399 Loại khác
+48101410 Đã in, dùng cho máy ghi tự động, không có chiều nào trên 360 mm (SEN)
+48101491 Không có chiều nào trên 360 mm
+48101499 Loại khác
+49119910 Thẻ in sẵn cho đồ trang sức hoặc cho các đồ tư trang nhỏ trang điểm cá nhân hoặc đồ dùng cá nhân thường được mang theo trong ví, túi sách tay hoặc mang theo người (SEN)
+49119920 Nhãn đã được in để báo nguy hiểm dễ nổ trừ loại thuộc nhóm 48.21 (SEN)
+49119930 Bộ thẻ đã được in nội dung về giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa (SEN)
+49119940 Ấn phẩm in cấp quyền truy cập, cài đặt, tái bản hoặc ấn phẩm in khác sử dụng phần mềm (bao gồm cả trò chơi), dữ liệu, nội dung internet (bao gồm cả nội dung trong trò chơi hoặc trong ứng dụng) hoặc các dịch vụ, hoặc dịch vụ viễn thông (bao gồm cả dịch vụ di động) (SEN)
+49119990 Loại khác
+
+=== KHOÁ daLapRap ===
+{
+ "khoa": "daLapRap",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã lắp ráp",
+ "nhanEn": "assembled",
+ "nhanZh": "已组装",
+ "cachDoc": {
+  "vi": [
+   "(?:đã\\s+)?(?:được\\s+)?lắp\\s+ráp",
+   "hoàn\\s+chỉnh",
+   "nguyên\\s+chiếc"
+  ],
+  "en": [
+   "assembled",
+   "in\\s+assembled\\s+condition",
+   "complete\\s+assembly"
+  ],
+  "zh": [
+   "已组装",
+   "组装好的",
+   "整装"
+  ],
+  "phuDinh": [
+   "chưa",
+   "không",
+   "chưa được",
+   "chưa qua",
+   "unassembled",
+   "not assembled",
+   "disassembled",
+   "未",
+   "不",
+   "未经"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+(?:được\\s+)?lắp\\s+ráp",
+   "chưa\\s+lắp\\s+ráp",
+   "dạng\\s+rời",
+   "tháo\\s+rời",
+   "CKD",
+   "SKD"
+  ],
+  "en": [
+   "unassembled",
+   "not\\s+assembled",
+   "disassembled",
+   "knocked-?down",
+   "CKD",
+   "SKD"
+  ],
+  "zh": [
+   "未组装",
+   "未经组装",
+   "散件",
+   "拆散"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã lắp ráp",
+  "viPhuDinh": "chưa lắp ráp"
+ },
+ "cauHoi": {
+  "vi": "Hàng đã được lắp ráp hoàn chỉnh hay ở dạng chưa lắp ráp (rời kiện)?",
+  "zh": "货物是已组装还是未组装（散件）？"
+ },
+ "ghiChu": "Phân biệt hàng đã lắp ráp và chưa lắp ráp theo chữ biểu (vd: 8415, 8708... Biểu thuế có các tiêu chí \"Đã được lắp ráp\" / \"Chưa được lắp ráp\").",
+ "nguonLoai": "AI_DA_KIEM"
+}
+
+=== KHOÁ daNapChuongTrinh ===
+{
+ "khoa": "daNapChuongTrinh",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã nạp chương trình/firmware (bo mạch, vi điều khiển)",
+ "nhanEn": "programmed (firmware loaded)",
+ "nhanZh": "已烧录程序/固件",
+ "cachDoc": {
+  "vi": [
+   "đã\\s+(?:được\\s+)?(?:nạp|ghi|cài)(?:\\s+sẵn)?\\s+(?:chương\\s+trình|phần\\s+mềm|firmware|code|dữ\\s+liệu\\s+điều\\s+khiển)",
+   "nạp\\s+sẵn\\s+(?:chương\\s+trình|phần\\s+mềm|firmware)",
+   "(?<!máy\\s)(?<!bộ\\s)(?<!mạch\\s)nạp\\s+(?:chương\\s+trình|phần\\s+mềm|firmware)",
+   "có\\s+(?:sẵn\\s+)?(?:firmware|chương\\s+trình\\s+điều\\s+khiển)"
+  ],
+  "en": [
+   "pre-?programmed",
+   "programmed",
+   "firmware\\s+(?:installed|loaded|flashed)",
+   "flashed",
+   "loaded\\s+with\\s+(?:firmware|software)"
+  ],
+  "zh": [
+   "已烧录",
+   "已烧写",
+   "已编程",
+   "已写入程序",
+   "已刷固件",
+   "含固件"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không có",
+   "không",
+   "chưa",
+   "ko",
+   "chẳng",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "没有",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+(?:được\\s+|trải\\s+qua\\s+quá\\s+trình\\s+)?(?:nạp|ghi|cài)(?:\\s+sẵn)?\\s+(?:chương\\s+trình|phần\\s+mềm|firmware|code|dữ\\s+liệu\\s+điều\\s+khiển)(?:\\s+điều\\s+khiển)?"
+  ],
+  "en": [
+   "unprogrammed",
+   "not\\s+programmed",
+   "without\\s+firmware",
+   "blank\\s+(?:MCU|chip)"
+  ],
+  "zh": [
+   "未烧录",
+   "未编程",
+   "未写入程序",
+   "空片"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã nạp chương trình",
+  "viPhuDinh": "chưa nạp chương trình"
+ },
+ "cauHoi": {
+  "vi": "Bo mạch đã nạp chương trình/firmware điều khiển chưa, hay còn trắng (chưa nạp chương trình)?",
+  "zh": "电路板是否已烧录控制程序/固件，还是空白（未烧录）？"
+ },
+ "ghiChu": "Dữ kiện phân biệt của hiệu chỉnh tiền lệ 853710-01/02/03 (4040, 1159/TB-TCHQ: bảng mạch \"chưa ghi dữ liệu/phần mềm điều khiển\" → 8537.10.19). Khác coBoXuLyLapTrinh (có bộ xử lý lập trình được) và daGhi (phương tiện lưu trữ đã ghi). \"máy/bộ/mạch nạp chương trình\" là thiết bị nạp ⇒ không đọc.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+85371011 Bảng điều khiển của loại thích hợp sử dụng cho hệ thống điều khiển phân tán
+85371012 Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)
+85371013 Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN)
+85371019 Loại khác
+85371020 Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25
+85371030 Bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn
+85371040 Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A
+85371091 Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện
+85371092 Loại phù hợp sử dụng cho hệ thống điều khiển phân tán
+85371099 Loại khác
+

@@ -1,0 +1,1225 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ heDienHoa ===
+{
+ "khoa": "heDienHoa",
+ "kieu": "LIET_KE",
+ "nhanVi": "hệ điện hóa của pin",
+ "nhanEn": "electrochemical system",
+ "nhanZh": "电池电化学体系",
+ "giaTriHopLe": [
+  "KEM_CACBON",
+  "KIEM"
+ ],
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Pin thuộc hệ điện hoá nào (kẽm-cacbon hay kiềm)?",
+  "zh": "电池属于哪种电化学体系（锌碳还是碱性）？"
+ },
+ "ghiChu": "Chữ biểu 8506.10.11 \"Bằng kẽm-cacbon\", 8506.10.12 \"Bằng kiềm\", 8506.10.91 \"Bằng kẽm-cacbon\". Phân biệt hệ điện hóa của pin đi-oxit mangan thuộc nhóm 85.06 (trục hệ điện hoá, không thể đưa vào chatLieu).",
+ "nguonLoai": "AI_DA_KIEM",
+ "moTaGiaTri": {
+  "KEM_CACBON": {
+   "nhanVi": "kẽm-cacbon",
+   "nhanEn": "zinc-carbon",
+   "nhanZh": "锌-碳",
+   "cachDoc": {
+    "vi": [
+     "(?:bằng\\s+)?kẽm[- ]cacbon",
+     "kẽm[- ]than",
+     "zinc[- ]carbon"
+    ],
+    "en": [
+     "zinc[- ]carbon",
+     "zinc\\s+carbon"
+    ],
+    "zh": [
+     "锌碳",
+     "锌-碳",
+     "碳性"
+    ]
+   }
+  },
+  "KIEM": {
+   "nhanVi": "kiềm",
+   "nhanEn": "alkaline",
+   "nhanZh": "碱性",
+   "cachDoc": {
+    "vi": [
+     "(?:bằng\\s+)?kiềm",
+     "alkaline"
+    ],
+    "en": [
+     "alkaline",
+     "zinc[- ]manganese\\s+dioxide\\s*\\(alkaline\\)"
+    ],
+    "zh": [
+     "碱性",
+     "碱性锌锰"
+    ]
+   }
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ }
+}
+--- dòng biểu liên quan ---
+85061011 Bằng kẽm-cacbon
+85061012 Bằng kiềm
+85061019 Loại khác
+85061091 Bằng kẽm-cacbon
+85061099 Loại khác
+
+=== KHOÁ hinhDangCatGocKinh ===
+{
+ "khoa": "hinhDangCatGocKinh",
+ "kieu": "CO_KHONG",
+ "nhanVi": "tấm kính hình vuông hoặc hình chữ nhật (kể cả đã hoặc chưa cắt góc)",
+ "nhanEn": "glass sheet of square or rectangular shape (whether or not having cut corners)",
+ "nhanZh": "玻璃板为正方形或矩形（包括已切去或未切去角的）",
+ "cachDoc": {
+  "vi": [
+   "hình\\s+vuông",
+   "hình\\s+chữ\\s+nhật"
+  ],
+  "en": [
+   "square",
+   "rectangular",
+   "rectangle"
+  ],
+  "zh": [
+   "正方形",
+   "长方形",
+   "矩形"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "chưa",
+   "ko",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "hình\\s+tròn",
+   "hình\\s+ovan",
+   "hình\\s+dáng\\s+khác",
+   "uốn\\s+cong"
+  ],
+  "en": [
+   "round",
+   "circular",
+   "oval",
+   "curved",
+   "bent",
+   "other\\s+shape"
+  ],
+  "zh": [
+   "圆形",
+   "椭圆形",
+   "弯曲",
+   "异形"
+  ]
+ },
+ "cachViet": {
+  "vi": "hình vuông hoặc hình chữ nhật (đã hoặc chưa cắt góc)",
+  "viPhuDinh": "hình dạng khác (không phải vuông hoặc chữ nhật)"
+ },
+ "cauHoi": {
+  "vi": "Tấm kính có hình vuông hoặc hình chữ nhật (kể cả loại đã cắt một hoặc nhiều góc) không?",
+  "zh": "玻璃板是否为正方形或矩形（包括已切去或未切去一个或多个角）？"
+ },
+ "ghiChu": "Chữ biểu 7005.21.20 \"hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc\" Vế \"đã hoặc chưa cắt một hoặc nhiều góc\" chỉ là phụ chú, không phải tiêu chí (bỏ khỏi cachDoc 03/11).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+70052110 Kính quang học, chưa được gia công về mặt quang học
+70052120 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70052190 Loại khác
+
+=== KHOÁ khaNangChiuApLuc ===
+{
+ "khoa": "khaNangChiuApLuc",
+ "kieu": "SO",
+ "nhanVi": "khả năng chịu áp lực",
+ "nhanEn": "pressure resistance capability",
+ "nhanZh": "耐压能力",
+ "heDonVi": "apSuat",
+ "donViChuan": "psi",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "khả\\s+năng\\s+chịu\\s+áp\\s+lực",
+   "chịu\\s+áp\\s+lực",
+   "áp\\s+lực\\s+chịu\\s+được",
+   "áp\\s+suất\\s+chịu\\s+được"
+  ],
+  "en": [
+   "pressure\\s+capacity",
+   "pressure\\s+resistance",
+   "withstand(?:ing)?\\s+pressure",
+   "pressure\\s+rating"
+  ],
+  "zh": [
+   "耐压能力",
+   "承受压力",
+   "承压能力",
+   "耐压",
+   "承压"
+  ]
+ },
+ "cachViet": {
+  "vi": "chịu áp lực {giaTri} psi"
+ },
+ "cauHoi": {
+  "vi": "Khả năng chịu áp lực của ống dẫn là bao nhiêu psi?",
+  "zh": "管道的耐压能力是多少磅/平方英寸（psi）？"
+ },
+ "ghiChu": "Trích chữ biểu 7304.39.20 \"Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+73043920 Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi
+73043940 Loại khác, có đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng
+73043990 Loại khác
+
+=== KHOÁ kieuDet ===
+{
+ "khoa": "kieuDet",
+ "kieu": "LIET_KE",
+ "nhanVi": "kiểu dệt / cấu trúc dệt của vải",
+ "nhanEn": "weave pattern / fabric structure",
+ "nhanZh": "织造组织 / 织物结构",
+ "giaTriHopLe": [
+  "VAN_DIEM",
+  "VAN_CHEO",
+  "NOI_VONG_DA_CAT",
+  "NOI_VONG_CHUA_CAT"
+ ],
+ "moTaGiaTri": {
+  "VAN_DIEM": {
+   "nhanVi": "vân điểm (plain weave)",
+   "nhanEn": "plain weave",
+   "nhanZh": "平纹",
+   "cachDoc": {
+    "vi": [
+     "vân\\s+điểm",
+     "dệt\\s+vân\\s+điểm",
+     "dệt\\s+trơn"
+    ],
+    "en": [
+     "plain\\s+weave",
+     "plain\\s+woven",
+     "taffeta\\s+weave"
+    ],
+    "zh": [
+     "平纹",
+     "平纹组织"
+    ]
+   },
+   "cachViet": "vân điểm"
+  },
+  "VAN_CHEO": {
+   "nhanVi": "vân chéo (twill weave)",
+   "nhanEn": "twill weave",
+   "nhanZh": "斜纹",
+   "cachDoc": {
+    "vi": [
+     "vân\\s+chéo",
+     "vân\\s+chéo\\s+3\\s+sợi",
+     "vân\\s+chéo\\s+4\\s+sợi",
+     "vân\\s+chéo\\s+dấu\\s+nhân",
+     "dệt\\s+chéo"
+    ],
+    "en": [
+     "twill\\s+weave",
+     "twill",
+     "cross\\s+twill"
+    ],
+    "zh": [
+     "斜纹",
+     "十字斜纹"
+    ]
+   },
+   "cachViet": "vân chéo"
+  },
+  "NOI_VONG_DA_CAT": {
+   "nhanVi": "sợi nổi vòng đã cắt (cut pile)",
+   "nhanEn": "cut pile",
+   "nhanZh": "割绒",
+   "cachDoc": {
+    "vi": [
+     "sợi\\s+nổi\\s+vòng\\s+đã\\s+cắt",
+     "nổi\\s+vòng\\s+đã\\s+cắt",
+     "cắt\\s+vòng",
+     "cắt\\s+lông"
+    ],
+    "en": [
+     "cut\\s+pile",
+     "cut\\s+loop"
+    ],
+    "zh": [
+     "割绒",
+     "割圈"
+    ]
+   },
+   "cachViet": "sợi nổi vòng đã cắt"
+  },
+  "NOI_VONG_CHUA_CAT": {
+   "nhanVi": "sợi nổi vòng không cắt (uncut pile / loop pile)",
+   "nhanEn": "uncut pile / loop pile",
+   "nhanZh": "未割绒 / 毛圈",
+   "cachDoc": {
+    "vi": [
+     "sợi\\s+nổi\\s+vòng\\s+không\\s+cắt",
+     "nổi\\s+vòng\\s+chưa\\s+cắt",
+     "không\\s+cắt\\s+vòng"
+    ],
+    "en": [
+     "uncut\\s+pile",
+     "loop\\s+pile"
+    ],
+    "zh": [
+     "未割绒",
+     "毛圈",
+     "不割圈"
+    ]
+   },
+   "cachViet": "sợi nổi vòng không cắt"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Vải có kiểu dệt gì (vân điểm, vân chéo, hay sợi nổi vòng đã cắt / chưa cắt)?",
+  "zh": "面料属于哪种织造组织（平纹、斜纹、割绒或未割绒）？"
+ },
+ "ghiChu": "Chữ biểu 5310.10.10 \"Vải dệt vân điểm\", 5208.59.20 \"vải vân chéo 3 sợi hoặc vân chéo 4 sợi\", 5801.37.11 \"Sợi nổi vòng đã cắt\"",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+53101010 Vải dệt vân điểm
+53101090 Loại khác
+52085910 Được in bằng phương pháp batik truyền thống (SEN)
+52085920 Loại khác, vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân
+52085990 Loại khác
+58013711 Sợi nổi vòng đã cắt
+58013712 Sợi nổi vòng không cắt
+58013791 Sợi nổi vòng đã cắt
+58013792 Sợi nổi vòng không cắt
+
+=== KHOÁ loaiMuiBaoVe ===
+{
+ "khoa": "loaiMuiBaoVe",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại mũi bảo vệ của giày dép",
+ "nhanEn": "type of protective toecap of footwear",
+ "nhanZh": "鞋靴保护包头类型",
+ "giaTriHopLe": [
+  "KIM_LOAI",
+  "PHI_KIM_LOAI"
+ ],
+ "moTaGiaTri": {
+  "KIM_LOAI": {
+   "nhanVi": "mũi gắn kim loại để bảo vệ",
+   "nhanEn": "protective metal toecap",
+   "nhanZh": "金属保护包头",
+   "cachDoc": {
+    "vi": [
+     "mũi\\s+(?:giày\\s+)?(?:được\\s+)?gắn\\s+kim\\s+loại(?:\\s+để\\s+bảo\\s+vệ)?",
+     "mũi\\s+kim\\s+loại",
+     "mũi\\s+thép"
+    ],
+    "en": [
+     "protective\\s+metal\\s+toe-?caps?",
+     "metal\\s+toe-?caps?",
+     "steel\\s+toe-?caps?"
+    ],
+    "zh": [
+     "金属保护包头",
+     "金属包头",
+     "钢头"
+    ]
+   },
+   "cachViet": "mũi gắn kim loại để bảo vệ"
+  },
+  "PHI_KIM_LOAI": {
+   "nhanVi": "mũi gắn bảo vệ không phải kim loại",
+   "nhanEn": "protective toecap other than metal",
+   "nhanZh": "非金属保护包头",
+   "cachDoc": {
+    "vi": [
+     "mũi\\s+(?:giày\\s+)?(?:được\\s+)?gắn\\s+bảo\\s+vệ\\s+không\\s+phải\\s+kim\\s+loại",
+     "mũi\\s+bảo\\s+vệ\\s+phi\\s+kim(?:\\s+loại)?",
+     "mũi\\s+composite"
+    ],
+    "en": [
+     "protective\\s+toe-?caps?\\s+other\\s+than\\s+metal",
+     "non-?metal\\s+toe-?caps?",
+     "composite\\s+toe-?caps?"
+    ],
+    "zh": [
+     "非金属保护包头",
+     "非金属包头",
+     "复合材料包头"
+    ]
+   },
+   "cachViet": "mũi gắn bảo vệ không phải kim loại"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Mũi giày dép được gắn phần bảo vệ bằng kim loại hay bằng vật liệu không phải kim loại (composite)?",
+  "zh": "该鞋靴的保护包头是金属材质还是非金属材质（如复合材料）？"
+ },
+ "ghiChu": "Chữ biểu 6401.92.10 \"Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)\", 6402.91.91 \"Loại có mũi giày được gắn kim loại để bảo vệ\". (6404.19.10 \"Loại có mũi giày được gắn bảo vệ\" không nêu vật liệu — không đọc được, đúng ý.)",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+64019210 Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+64019290 Loại khác
+64029110 Giày lặn
+64029191 Loại có mũi giày được gắn kim loại để bảo vệ
+64029192 Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+64029199 Loại khác
+64041910 Loại có mũi giày được gắn bảo vệ
+64041990 Loại khác
+
+=== KHOÁ loaiSoiDet ===
+{
+ "khoa": "loaiSoiDet",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại xơ/sợi dệt (vật liệu dệt chủ yếu)",
+ "nhanEn": "textile fibre type (predominant textile material)",
+ "nhanZh": "纺织纤维种类（主要纺织材料）",
+ "giaTriHopLe": [
+  "BONG",
+  "SOI_THUC_VAT_KHAC",
+  "LEN_LONG_DONG_VAT_MIN",
+  "TO_TAM",
+  "SOI_TONG_HOP",
+  "SOI_TAI_TAO"
+ ],
+ "moTaGiaTri": {
+  "BONG": {
+   "nhanVi": "từ bông",
+   "nhanEn": "of cotton",
+   "nhanZh": "棉",
+   "cachDoc": {
+    "vi": [
+     "(?:từ|bằng|chất\\s+liệu)\\s+bông(?!\\s*(?:thủy\\s+tinh|thuỷ\\s+tinh|khoáng|gòn|tai|hoa))",
+     "(?:sợi|xơ|vải)\\s+bông(?!\\s*(?:thủy|thuỷ|khoáng|gòn))",
+     "bông\\s*100\\s*%",
+     "100\\s*%\\s*bông",
+     "cotton"
+    ],
+    "en": [
+     "cotton"
+    ],
+    "zh": [
+     "(?<![石木])棉(?!花糖)",
+     "纯棉",
+     "全棉"
+    ]
+   },
+   "cachViet": "từ bông"
+  },
+  "SOI_THUC_VAT_KHAC": {
+   "nhanVi": "từ sợi dệt thực vật khác (đay, lanh, gai, xơ dừa… nhóm 53.05)",
+   "nhanEn": "of other vegetable textile fibres (jute, flax, ramie, coir…)",
+   "nhanZh": "其他植物纺织纤维（黄麻、亚麻、苎麻、椰壳纤维等）",
+   "cachDoc": {
+    "vi": [
+     "(?:sợi|xơ)\\s+(?:dệt\\s+)?thực\\s+vật",
+     "(?:từ|bằng|sợi|vải|xơ)\\s+(?:đay|lanh|gai|lanh\\s+gai|xơ\\s+dừa|sisal|chuối\\s+sợi|dứa\\s+sợi)",
+     "vải\\s+lanh",
+     "vải\\s+đay"
+    ],
+    "en": [
+     "vegetable\\s+(?:textile\\s+)?fib(?:re|er)s?",
+     "jute",
+     "flax",
+     "linen",
+     "ramie",
+     "sisal",
+     "coir",
+     "hemp",
+     "abaca"
+    ],
+    "zh": [
+     "植物纤维",
+     "植物纺织纤维",
+     "黄麻",
+     "亚麻",
+     "苎麻",
+     "剑麻",
+     "椰壳纤维",
+     "大麻纤维",
+     "蕉麻"
+    ]
+   },
+   "cachViet": "từ sợi dệt thực vật"
+  },
+  "LEN_LONG_DONG_VAT_MIN": {
+   "nhanVi": "từ lông cừu hoặc lông động vật loại mịn (len)",
+   "nhanEn": "of wool or fine animal hair",
+   "nhanZh": "羊毛或动物细毛",
+   "cachDoc": {
+    "vi": [
+     "(?:từ|bằng|sợi|vải|xơ|chất\\s+liệu)\\s+len",
+     "len\\s*100\\s*%",
+     "100\\s*%\\s*len",
+     "lông\\s+cừu",
+     "lông\\s+động\\s+vật\\s+(?:loại\\s+)?mịn",
+     "cashmere",
+     "mohair",
+     "alpaca",
+     "len\\s+lông\\s+(?:cừu|dê|thỏ)"
+    ],
+    "en": [
+     "wool(?:len|en)?",
+     "fine\\s+animal\\s+hair",
+     "cashmere",
+     "mohair",
+     "alpaca",
+     "merino",
+     "angora"
+    ],
+    "zh": [
+     "羊毛",
+     "动物细毛",
+     "羊绒",
+     "马海毛",
+     "羊驼毛",
+     "美利奴",
+     "安哥拉"
+    ]
+   },
+   "cachViet": "từ len"
+  },
+  "TO_TAM": {
+   "nhanVi": "từ tơ tằm",
+   "nhanEn": "of silk",
+   "nhanZh": "蚕丝",
+   "cachDoc": {
+    "vi": [
+     "tơ\\s+tằm",
+     "(?:từ|bằng|sợi|vải|chất\\s+liệu)\\s+lụa(?!\\s+in)",
+     "lụa\\s*100\\s*%",
+     "100\\s*%\\s*lụa"
+    ],
+    "en": [
+     "silk(?![- ]?screen)"
+    ],
+    "zh": [
+     "蚕丝",
+     "真丝",
+     "桑蚕丝",
+     "(?<!人造)丝绸"
+    ]
+   },
+   "cachViet": "từ tơ tằm"
+  },
+  "SOI_TONG_HOP": {
+   "nhanVi": "từ sợi/xơ tổng hợp (polyeste, nylon, acrylic, polypropylen…)",
+   "nhanEn": "of synthetic fibres (polyester, nylon, acrylic, polypropylene…)",
+   "nhanZh": "合成纤维（涤纶、锦纶、腈纶、丙纶等）",
+   "cachDoc": {
+    "vi": [
+     "(?:sợi|xơ|vải|chất\\s+liệu)\\s+tổng\\s+hợp",
+     "polyeste(?:r)?",
+     "poly\\s*este(?:r)?",
+     "nylon",
+     "ni-?lông",
+     "polyamit",
+     "polyamide",
+     "acrylic",
+     "polypropylen(?:e)?",
+     "elastan(?:e)?\\s+tổng\\s+hợp"
+    ],
+    "en": [
+     "synthetic\\s+(?:fib(?:re|er)s?|yarns?|filaments?|textile)",
+     "polyester",
+     "nylon",
+     "polyamide",
+     "acrylic",
+     "polypropylene",
+     "polyethylene\\s+(?:fib(?:re|er)s?|yarns?)"
+    ],
+    "zh": [
+     "合成纤维",
+     "合纤",
+     "涤纶",
+     "聚酯纤维",
+     "锦纶",
+     "尼龙",
+     "腈纶",
+     "丙纶",
+     "聚丙烯纤维"
+    ]
+   },
+   "cachViet": "từ sợi tổng hợp"
+  },
+  "SOI_TAI_TAO": {
+   "nhanVi": "từ sợi/xơ tái tạo (visco, rayon, modal, lyocell…)",
+   "nhanEn": "of artificial fibres (viscose, rayon, modal, lyocell…)",
+   "nhanZh": "人造纤维（粘胶、人造丝、莫代尔、莱赛尔等）",
+   "cachDoc": {
+    "vi": [
+     "(?:sợi|xơ|vải|chất\\s+liệu)\\s+tái\\s+tạo",
+     "visco(?:se)?",
+     "vít-?cô",
+     "rayon",
+     "modal",
+     "lyocell",
+     "tencel",
+     "xơ\\s+axetat",
+     "sợi\\s+axetat"
+    ],
+    "en": [
+     "artificial\\s+(?:fib(?:re|er)s?|yarns?|filaments?|textile)",
+     "viscose",
+     "rayon",
+     "modal",
+     "lyocell",
+     "tencel",
+     "cupro",
+     "acetate\\s+(?:fib(?:re|er)s?|yarns?)"
+    ],
+    "zh": [
+     "人造纤维",
+     "粘胶",
+     "黏胶",
+     "人造丝",
+     "莫代尔",
+     "莱赛尔",
+     "天丝",
+     "铜氨纤维",
+     "醋酸纤维"
+    ]
+   },
+   "cachViet": "từ sợi tái tạo"
+  }
+ },
+ "cumDaiThang": true,
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Hàng dệt làm từ loại xơ/sợi nào là chủ yếu (bông; sợi dệt thực vật khác như đay, lanh, gai; len/lông động vật loại mịn; tơ tằm; sợi tổng hợp như polyeste, nylon; sợi tái tạo như visco)?",
+  "zh": "纺织品主要由哪种纤维制成（棉；其他植物纤维如黄麻、亚麻、苎麻；羊毛/动物细毛；蚕丝；合成纤维如涤纶、尼龙；人造纤维如粘胶）？"
+ },
+ "ghiChu": "Loại xơ/sợi dệt của hàng dệt — chữ biểu \"Từ bông\" (6306.29.10, 6306.19.20, 6306.40.10), \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (6306.19.10), \"Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn\" (5515.99.10) — lát 2, đề xuất de-xuat-khoa-lat-2.md (loaiXoPha + studio-loop loaiSoiDet, gộp một khoá). \"Từ X\" ở chương 50–63 là vật liệu dệt CHIẾM TRỘI theo Chú giải 2 Phần XI: hàng pha (\"cotton 80% polyester 20%\") đọc được hai giá trị ⇒ CHUA_BIET + ungVien, người khai chốt theo tỉ trọng. Vật liệu không phải xơ dệt (bông thủy tinh, bông khoáng, bông gòn/tai/hoa; da lông cừu là da) ⇒ không đọc. Sợi đàn hồi / sợi cao su là trục CHỨA (tinhDanHoi), không nằm ở đây. Khoá @1 chatLieu (\"vải dệt\" chung) giữ nguyên.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+63062910 Từ bông
+63062990 Loại khác
+63061910 Từ sợi dệt thực vật thuộc nhóm 53.05
+63061920 Từ bông
+63061990 Loại khác
+63064010 Từ bông
+63064090 Loại khác
+
+=== KHOÁ lopMaPhu ===
+{
+ "khoa": "lopMaPhu",
+ "kieu": "LIET_KE",
+ "nhanVi": "lớp mạ hoặc tráng phủ bề mặt",
+ "nhanEn": "surface coating or plating type",
+ "nhanZh": "表面涂层或镀层类型",
+ "giaTriHopLe": [
+  "MA_DONG",
+  "TRANG_NHUA_FLO",
+  "TRANG_KEM_CROMAT",
+  "TRANG_THIEC"
+ ],
+ "moTaGiaTri": {
+  "MA_DONG": {
+   "nhanVi": "mạ đồng",
+   "nhanEn": "copper plated",
+   "nhanZh": "镀铜",
+   "cachDoc": {
+    "vi": [
+     "mạ\\s+đồng",
+     "tráng\\s+đồng",
+     "phủ\\s+đồng"
+    ],
+    "en": [
+     "copper\\s+plated?",
+     "copper\\s+coat(?:ed|ing)?"
+    ],
+    "zh": [
+     "镀铜",
+     "包铜",
+     "涂铜"
+    ]
+   },
+   "cachViet": "mạ đồng"
+  },
+  "TRANG_NHUA_FLO": {
+   "nhanVi": "tráng nhựa flo",
+   "nhanEn": "fluororesin coated",
+   "nhanZh": "涂氟树脂",
+   "cachDoc": {
+    "vi": [
+     "tráng\\s+nhựa\\s+flo",
+     "phủ\\s+nhựa\\s+flo",
+     "nhựa\\s+flo",
+     "fluororesin",
+     "teflon",
+     "ptfe"
+    ],
+    "en": [
+     "fluororesin\\s+coat(?:ed|ing)?",
+     "fluoropolymer\\s+coat(?:ed|ing)?",
+     "teflon\\s+coat(?:ed|ing)?",
+     "ptfe\\s+coat(?:ed|ing)?"
+    ],
+    "zh": [
+     "涂氟树脂",
+     "氟树脂涂层",
+     "聚四氟乙烯涂层",
+     "特氟龙涂层"
+    ]
+   },
+   "cachViet": "tráng nhựa flo"
+  },
+  "TRANG_KEM_CROMAT": {
+   "nhanVi": "tráng kẽm-cromat",
+   "nhanEn": "zinc-chromate coated",
+   "nhanZh": "涂锌-铬酸盐",
+   "cachDoc": {
+    "vi": [
+     "tráng\\s+kẽm\\s*[-–]?\\s*cromat",
+     "mạ\\s+kẽm\\s*[-–]?\\s*cromat",
+     "kẽm\\s*[-–]?\\s*cromat"
+    ],
+    "en": [
+     "zinc\\s*[-–]?\\s*chromate(?:\\s+coat(?:ed|ing)?)?",
+     "zinc\\s+chromate"
+    ],
+    "zh": [
+     "锌铬酸盐",
+     "镀锌铬酸盐",
+     "涂锌铬酸盐",
+     "锌-铬酸盐"
+    ]
+   },
+   "cachViet": "tráng kẽm cromat"
+  },
+  "TRANG_THIEC": {
+   "nhanVi": "tráng thiếc",
+   "nhanEn": "tin-plated",
+   "nhanZh": "镀锡",
+   "cachDoc": {
+    "vi": [
+     "(?:được\\s+)?tráng\\s+thiếc",
+     "mạ\\s+thiếc"
+    ],
+    "en": [
+     "tin-?\\s*plated",
+     "tinned"
+    ],
+    "zh": [
+     "镀锡"
+    ]
+   },
+   "cachViet": "tráng thiếc"
+  }
+ },
+ "cachDoc": {
+  "vi": [
+   "mạ",
+   "tráng",
+   "phủ",
+   "lớp\\s+phủ"
+  ],
+  "en": [
+   "plated",
+   "coated",
+   "coating"
+  ],
+  "zh": [
+   "镀",
+   "涂",
+   "涂层"
+  ]
+ },
+ "cauHoi": {
+  "vi": "Ống thép được mạ đồng, tráng nhựa flo hay tráng kẽm-cromat?",
+  "zh": "钢管表面是镀铜、涂氟树脂还是涂锌-铬酸盐？"
+ },
+ "ghiChu": "Trích chữ biểu phân nhóm 7306.30.2: \"Được mạ đồng, tráng nhựa flo hoặc tráng kẽm-cromat\". + 7310.10.10 / 7310.21.10 \"Được tráng thiếc\" (quét sót máy 03/11).",
+ "nguonLoai": "AI_DA_KIEM",
+ "cachViet": {
+  "vi": "{giaTri}"
+ }
+}
+--- dòng biểu liên quan ---
+73101010 Được tráng thiếc
+73101091 Được đúc, rèn hoặc dập, ở dạng thô
+73101099 Loại khác
+73102111 Được tráng thiếc
+73102119 Loại khác
+73102191 Được tráng thiếc
+73102199 Loại khác
+
+=== KHOÁ mucDoGiaCongGo ===
+{
+ "khoa": "mucDoGiaCongGo",
+ "kieu": "LIET_KE",
+ "nhanVi": "mức độ gia công của gỗ xẻ",
+ "nhanEn": "working state of sawn wood",
+ "nhanZh": "锯材加工程度",
+ "giaTriHopLe": [
+  "XE_DOC_CHUA_GIA_CONG",
+  "BAO_CHA_NHAM_NOI_DAU"
+ ],
+ "moTaGiaTri": {
+  "XE_DOC_CHUA_GIA_CONG": {
+   "nhanVi": "đã xẻ dọc, chưa gia công thêm",
+   "nhanEn": "sawn lengthwise, not further worked",
+   "nhanZh": "经纵锯，未经进一步加工",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+xẻ\\s+dọc(?:,\\s*chưa\\s+gia\\s+công\\s+thêm)?",
+     "xẻ\\s+dọc\\s+chưa\\s+gia\\s+công"
+    ],
+    "en": [
+     "sawn\\s+lengthwise(?:,\\s*not\\s+further\\s+worked)?",
+     "not\\s+further\\s+worked"
+    ],
+    "zh": [
+     "经纵锯",
+     "未经进一步加工",
+     "纵锯未加工"
+    ]
+   },
+   "cachViet": "đã xẻ dọc chưa gia công thêm"
+  },
+  "BAO_CHA_NHAM_NOI_DAU": {
+   "nhanVi": "đã bào, đã chà nhám hoặc nối đầu",
+   "nhanEn": "planed, sanded or end-jointed",
+   "nhanZh": "经刨光、砂光或指榫接合",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+bào(?:,\\s*đã\\s+chà\\s+nhám\\s+hoặc\\s+nối\\s+đầu)?",
+     "đã\\s+chà\\s+nhám",
+     "nối\\s+đầu",
+     "ghép\\s+đầu",
+     "finger-?joint(?:ed)?"
+    ],
+    "en": [
+     "planed(?:,\\s*sanded\\s+or\\s+end-?jointed)?",
+     "sanded",
+     "end-?jointed",
+     "finger-?jointed"
+    ],
+    "zh": [
+     "经刨光",
+     "经砂光",
+     "指榫接合",
+     "端接",
+     "指接"
+    ]
+   },
+   "cachViet": "đã bào chà nhám hoặc nối đầu"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Gỗ đã xẻ dọc chưa gia công thêm hay đã được bào, chà nhám hoặc nối đầu?",
+  "zh": "该木材是仅经纵锯未经进一步加工，还是已经刨光、砂光或指榫接合？"
+ },
+ "ghiChu": "Chữ biểu 4407.11.10 \"Đã xẻ dọc, chưa gia công thêm\", 4407.21.10 \"Đã bào, đã chà nhám hoặc nối đầu\", 4407.23.10 \"Đã xẻ dọc, chưa gia công thêm\", 4407.23.20 \"Đã bào, đã chà nhám hoặc nối đầu\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+44071110 Đã xẻ dọc, chưa gia công thêm
+44071190 Loại khác
+44072110 Đã bào, đã chà nhám hoặc nối đầu
+44072190 Loại khác
+44072310 Đã xẻ dọc, chưa gia công thêm
+44072320 Đã bào, đã chà nhám hoặc nối đầu
+44072390 Loại khác
+
+=== KHOÁ mucDoTinhCheDau ===
+{
+ "khoa": "mucDoTinhCheDau",
+ "kieu": "LIET_KE",
+ "nhanVi": "mức độ tinh chế của dầu và chất béo",
+ "nhanEn": "degree of refining of oil and fats",
+ "nhanZh": "油脂精炼程度",
+ "giaTriHopLe": [
+  "DANG_THO",
+  "DA_TINH_CHE"
+ ],
+ "moTaGiaTri": {
+  "DANG_THO": {
+   "nhanVi": "dầu thô / dạng thô / chưa tinh chế",
+   "nhanEn": "crude / unrefined form",
+   "nhanZh": "初榨/原油/未经精炼",
+   "cachDoc": {
+    "vi": [
+     "dầu\\s+thô",
+     "dạng\\s+thô",
+     "chưa\\s+tinh\\s+chế",
+     "nguyên\\s+chất"
+    ],
+    "en": [
+     "crude(?:\\s+oil)?",
+     "unrefined",
+     "in\\s+crude\\s+form",
+     "virgin"
+    ],
+    "zh": [
+     "初榨",
+     "毛油",
+     "粗油",
+     "原油",
+     "未经精炼"
+    ]
+   },
+   "cachViet": "dạng thô hoặc chưa tinh chế"
+  },
+  "DA_TINH_CHE": {
+   "nhanVi": "đã tinh chế / RBD",
+   "nhanEn": "refined / RBD (refined, bleached and deodorised)",
+   "nhanZh": "精炼/RBD（经精炼、脱色和脱臭）",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+tinh\\s+chế",
+     "dầu\\s+tinh\\s+chế",
+     "tinh\\s+chế,\\s*tẩy\\s+và\\s+khử\\s+mùi",
+     "\\brbd\\b",
+     "trung\\s+hòa\\s+hóa,\\s*tẩy\\s+và\\s+khử\\s+mùi",
+     "\\bnbd\\b",
+     "trừ\\s+dạng\\s+thô"
+    ],
+    "en": [
+     "refined(?:\\s+oil)?",
+     "rbd",
+     "refined,\\s*bleached\\s+and\\s+deodori[sz]ed",
+     "neutrali[sz]ed,\\s*bleached\\s+and\\s+deodori[sz]ed",
+     "other\\s+than\\s+crude"
+    ],
+    "zh": [
+     "精炼",
+     "精制",
+     "rbd",
+     "脱色及脱臭",
+     "非初榨"
+    ]
+   },
+   "cachViet": "đã tinh chế"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Dầu hoặc chất béo ở dạng thô/chưa tinh chế, đã tinh chế (RBD) hay phần phân đoạn?",
+  "zh": "该油脂属于初榨/原油、经精炼（RBD）还是分馏馏分？"
+ },
+ "ghiChu": "Chữ biểu 1510.90.10 \"Dầu thô\", 1512.19.20 \"Đã tinh chế\", 1507.90.10 \"Các phần phân đoạn của dầu đậu tương chưa tinh chế\", 1513.29.94 \"đã tinh chế, tẩy và khử mùi (RBD)\". Giá trị PHAN_DOAN tách thành khoá laPhanDoan (03/11): \"Các phần phân đoạn … chưa tinh chế\" vừa là phân đoạn vừa là thô — hai trục.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+15109010 Dầu thô
+15109020 Các phần phân đoạn của dầu chưa tinh chế
+15109090 Loại khác
+15121910 Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế
+15121920 Đã tinh chế
+15121990 Loại khác
+15079010 Các phần phân đoạn của dầu đậu tương chưa tinh chế
+15079020 Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)
+15079090 Loại khác
+
+=== KHOÁ ngamQuaThauKinhSLR ===
+{
+ "khoa": "ngamQuaThauKinhSLR",
+ "kieu": "CO_KHONG",
+ "nhanVi": "có bộ ngắm qua thấu kính (phản chiếu đơn - SLR)",
+ "nhanEn": "with a through-the-lens viewfinder (single-lens reflex - SLR)",
+ "nhanZh": "带单镜头反光取景器（单反-SLR）",
+ "cachDoc": {
+  "vi": [
+   "có\\s+bộ\\s+ngắm\\s+qua\\s+thấu\\s+kính",
+   "kính\\s+phản\\s+chiếu\\s+đơn",
+   "máy\\s+ảnh\\s+slr",
+   "\\bslr\\b"
+  ],
+  "en": [
+   "through-?the-?lens\\s+viewfinder",
+   "single-?lens\\s+reflex",
+   "\\bslr\\b"
+  ],
+  "zh": [
+   "单镜头反光",
+   "单反",
+   "镜头取景",
+   "\\bslr\\b"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "other than",
+   "非",
+   "不",
+   "无"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+có\\s+bộ\\s+ngắm\\s+qua\\s+thấu\\s+kính",
+   "không\\s+phải\\s+máy\\s+ảnh\\s+slr"
+  ],
+  "en": [
+   "without\\s+a\\s+through-?the-?lens\\s+viewfinder",
+   "other\\s+than\\s+single-?lens\\s+reflex",
+   "non-?slr"
+  ],
+  "zh": [
+   "非单镜头反光",
+   "非单反",
+   "无镜头取景器"
+  ]
+ },
+ "cachViet": {
+  "vi": "có bộ ngắm qua thấu kính SLR",
+  "viPhuDinh": "không có bộ ngắm qua thấu kính SLR"
+ },
+ "cauHoi": {
+  "vi": "Máy ảnh có bộ ngắm qua thấu kính phản chiếu đơn (SLR) không?",
+  "zh": "该照相机是否具有单镜头反光（单反/SLR）通过镜头取景装置？"
+ },
+ "ghiChu": "Chữ biểu 9006.53.10 \"Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))\", 9006.59.11 \"Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+90065310 Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))
+90065390 Loại khác
+90065911 Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))
+90065919 Loại khác
+90065921 Máy vẽ ảnh laser
+90065929 Loại khác
+90065930 Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành
+90065990 Loại khác
+
+=== KHOÁ nhienLieu ===
+{
+ "khoa": "nhienLieu",
+ "kieu": "LIET_KE",
+ "nhanVi": "nhiên liệu / nguồn nhiệt (bếp, lò)",
+ "nhanEn": "fuel (stoves, ovens)",
+ "nhanZh": "燃料（灶具、烤箱）",
+ "giaTriHopLe": [
+  "GA",
+  "DIEN"
+ ],
+ "moTaGiaTri": {
+  "GA": {
+   "nhanVi": "ga (khí đốt)",
+   "nhanEn": "gas",
+   "nhanZh": "燃气",
+   "cachDoc": {
+    "vi": [
+     "bằng\\s+ga",
+     "dùng\\s+ga",
+     "chạy\\s+ga",
+     "đốt\\s+ga",
+     "bếp\\s+ga",
+     "lò\\s+(?:nướng\\s+)?ga",
+     "khí\\s+đốt"
+    ],
+    "en": [
+     "gas[- ](?:fired|burning|powered)",
+     "gas\\s+(?:stoves?|cookers?|ranges?|ovens?|hobs?|burners?|grills?)"
+    ],
+    "zh": [
+     "燃气",
+     "煤气"
+    ]
+   },
+   "cachViet": "dùng ga"
+  },
+  "DIEN": {
+   "nhanVi": "điện",
+   "nhanEn": "electric",
+   "nhanZh": "电",
+   "cachDoc": {
+    "vi": [
+     "bếp\\s+(?:điện|từ|hồng\\s+ngoại)",
+     "lò\\s+(?:nướng\\s+)?điện",
+     "(?:đun|nấu|nướng)\\s+bằng\\s+điện"
+    ],
+    "en": [
+     "electric\\s+(?:stoves?|cookers?|ranges?|ovens?|hobs?|grills?)",
+     "induction\\s+(?:cookers?|hobs?)"
+    ],
+    "zh": [
+     "电炉",
+     "电磁炉",
+     "电烤箱",
+     "电陶炉"
+    ]
+   },
+   "cachViet": "dùng điện"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Bếp/lò mà hàng dùng cho (hoặc chính hàng) đốt bằng ga (khí đốt) hay dùng điện?",
+  "zh": "该产品（或其所用于的灶具/烤箱）使用燃气还是电？"
+ },
+ "ghiChu": "Nhiên liệu / nguồn nhiệt của bếp, lò (#577 848180 .30 \"các bếp nấu hoặc bếp có lò nướng bằng ga\", EN \"gas stoves or ranges\": \"bằng ga\" là định ngữ CHUNG của cả hai danh từ). Khoá @1 nguonNangLuong (pin / điện lưới / quang điện) giữ nguyên — @1 khoá theo bench, không thêm giá trị. Không đọc \"ga\" trần, \"có ga\" (đồ uống có ga), \"gas\" trần (van gas, bình gas — khí là lưu chất, không phải nhiên liệu đốt của hàng), \"bằng gang\"; \"hoạt động bằng ga\" của bộ phận rót bia (8481804, ga là khí đẩy) cũng đọc GA — khoá chỉ làm điều kiện ở .30, đi cùng dungCho bếp. \"bằng điện\" trần không đọc (thường là cách điều khiển — cachDieuKhien / hoatDongBangDien).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+
+=== KHOÁ nhieuLop ===
+{
+ "khoa": "nhieuLop",
+ "kieu": "CO_KHONG",
+ "nhanVi": "nhiều lớp (giấy/bìa/gỗ nhiều lớp)",
+ "nhanEn": "multi-ply / laminated",
+ "nhanZh": "多层（纸/板/复合材）",
+ "cachDoc": {
+  "vi": [
+   "nhiều\\s+lớp",
+   "đa\\s+lớp",
+   "ghép\\s+nhiều\\s+lớp",
+   "bồi\\s+nhiều\\s+lớp"
+  ],
+  "en": [
+   "multi-?ply",
+   "multi-?layer(?:ed)?",
+   "laminated"
+  ],
+  "zh": [
+   "多层",
+   "复合多层",
+   "多层纸"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "chưa",
+   "đơn lớp",
+   "một lớp",
+   "single-?ply",
+   "mono-?layer",
+   "非",
+   "单层"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+nhiều\\s+lớp",
+   "chỉ\\s+có\\s+một\\s+lớp",
+   "đơn\\s+lớp"
+  ],
+  "en": [
+   "single-?ply",
+   "not\\s+multi-?ply"
+  ],
+  "zh": [
+   "非多层",
+   "单层"
+  ]
+ },
+ "cachViet": {
+  "vi": "nhiều lớp",
+  "viPhuDinh": "không phải nhiều lớp"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm (giấy, bìa hoặc sàn) có cấu tạo nhiều lớp (multi-ply) không?",
+  "zh": "该产品（纸、纸板或板材）是否为多层结构？"
+ },
+ "ghiChu": "Chữ biểu 4802.54.50 \"Giấy và bìa nhiều lớp\", 4802.55.70 \"Giấy nhiều lớp\", 4805.92.10 \"Giấy và bìa nhiều lớp\", 4418.73.20 \"nhiều lớp từ tre\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+48025411 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)
+48025419 Loại khác (SEN)
+48025421 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)
+48025429 Loại khác (SEN)
+48025430 Giấy làm nền sản xuất giấy tráng nhôm(SEN)
+48025440 Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp
+48025450 Giấy và bìa nhiều lớp(SEN)
+48025490 Loại khác
+48025521 Có chiều rộng không quá 15 cm (SEN)
+48025529 Loại khác (SEN)
+48025540 Giấy làm nền sản xuất giấy tráng nhôm(SEN)
+48025550 Giấy làm nền sản xuất giấy chống dính (SEN)
+48025561 Có chiều rộng không quá 15 cm
+48025569 Loại khác
+48025570 Giấy nhiều lớp(SEN)
+48025590 Loại khác
+48059210 Giấy và bìa nhiều lớp(SEN)
+48059290 Loại khác
+

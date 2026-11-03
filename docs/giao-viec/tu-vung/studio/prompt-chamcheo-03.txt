@@ -1,0 +1,666 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ doDay ===
+{
+ "khoa": "doDay",
+ "kieu": "SO",
+ "nhanVi": "độ dày",
+ "nhanEn": "thickness",
+ "nhanZh": "厚度",
+ "heDonVi": "dai",
+ "donViChuan": "mm",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "độ\\s+dày",
+   "dày",
+   "bề\\s+dày",
+   "chiều\\s+dày"
+  ],
+  "en": [
+   "thickness",
+   "thick",
+   "gauge"
+  ],
+  "zh": [
+   "厚度",
+   "厚",
+   "板厚",
+   "壁厚"
+  ]
+ },
+ "cachViet": {
+  "vi": "dày {giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?",
+  "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"
+ },
+ "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+73083010 Cửa ra vào, có độ dày từ 6 mm đến 8 mm
+73083090 Loại khác
+
+=== KHOÁ dongBaoBiKinKhiDeBanLe ===
+{
+ "khoa": "dongBaoBiKinKhiDeBanLe",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đóng bao bì kín khí để bán lẻ",
+ "nhanEn": "in airtight containers for retail sale",
+ "nhanZh": "装于零售用气密包装",
+ "cachDoc": {
+  "vi": [
+   "đóng\\s+bao\\s+bì\\s+kín\\s+khí\\s+để\\s+bán\\s+lẻ",
+   "đóng\\s+(?:trong\\s+)?bao\\s+bì\\s+kín\\s+khí",
+   "bao\\s+bì\\s+kín\\s+khí",
+   "hộp\\s+kín\\s+khí"
+  ],
+  "en": [
+   "in\\s+airtight\\s+containers?\\s+for\\s+retail\\s+sale",
+   "in\\s+airtight\\s+containers?",
+   "airtight\\s+pack(?:ag(?:e|ing))?",
+   "hermetically\\s+sealed\\s+containers?"
+  ],
+  "zh": [
+   "气密包装",
+   "用于零售的气密包装",
+   "零售用气密容器",
+   "密封包装"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "chưa",
+   "not in",
+   "without",
+   "non-?",
+   "非",
+   "未",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+đóng\\s+bao\\s+bì\\s+kín\\s+khí(?:\\s+để\\s+bán\\s+lẻ)?"
+  ],
+  "en": [
+   "not\\s+in\\s+airtight\\s+containers"
+  ],
+  "zh": [
+   "非气密包装",
+   "未装于气密容器"
+  ]
+ },
+ "cachViet": {
+  "vi": "đóng bao bì kín khí để bán lẻ",
+  "viPhuDinh": "không đóng bao bì kín khí để bán lẻ"
+ },
+ "cauHoi": {
+  "vi": "Hàng có được đóng trong bao bì kín khí để bán lẻ không?",
+  "zh": "该货物是否装于用于零售的气密容器/包装中？"
+ },
+ "ghiChu": "Chữ biểu 1601.00.10, 1602.10.10, 1604.11.10, 2005.20.11 \"Đóng bao bì kín khí để bán lẻ\" (EN \"In airtight containers for retail sale\").",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+16010010 Đóng bao bì kín khí để bán lẻ
+16010090 Loại khác
+16021010 Chứa thịt lợn, đóng bao bì kín khí để bán lẻ
+16021090 Loại khác
+16041110 Đóng bao bì kín khí để bán lẻ
+16041190 Loại khác
+
+=== KHOÁ dongGoiBanLe ===
+{
+ "khoa": "dongGoiBanLe",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đóng gói để bán lẻ",
+ "nhanEn": "put up for retail sale",
+ "nhanZh": "零售包装",
+ "cachDoc": {
+  "vi": [
+   "đóng\\s+gói\\s+để\\s+bán\\s+lẻ",
+   "bán\\s+lẻ",
+   "đóng\\s+gói\\s+bán\\s+lẻ",
+   "bao\\s+bì\\s+bán\\s+lẻ"
+  ],
+  "en": [
+   "put\\s+up\\s+for\\s+retail\\s+sale",
+   "retail\\s+pack(?:ing|age|aged)?",
+   "for\\s+retail\\s+sale"
+  ],
+  "zh": [
+   "零售包装",
+   "供零售用",
+   "零售用"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "chưa",
+   "ko",
+   "non-?",
+   "without",
+   "no",
+   "not",
+   "无",
+   "非",
+   "不",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "đóng\\s+gói\\s+công\\s+nghiệp",
+   "dạng\\s+rời",
+   "hàng\\s+xá",
+   "chưa\\s+đóng\\s+gói\\s+bán\\s+lẻ"
+  ],
+  "en": [
+   "in\\s+bulk",
+   "not\\s+put\\s+up\\s+for\\s+retail\\s+sale",
+   "industrial\\s+pack(?:ing)?"
+  ],
+  "zh": [
+   "非零售包装",
+   "散装",
+   "大包装"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã đóng gói để bán lẻ",
+  "viPhuDinh": "chưa đóng gói để bán lẻ (đóng gói công nghiệp hoặc dạng rời)"
+ },
+ "cauHoi": {
+  "vi": "Hàng hóa đã được đóng gói để bán lẻ chưa?",
+  "zh": "商品是否已配有零售包装？"
+ },
+ "ghiChu": "Chữ biểu 5401.10.10 \"Đã đóng gói để bán lẻ\" và 2403.11.10 \"Đã được đóng gói để bán lẻ\"",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+54011010 Đã đóng gói để bán lẻ
+54011090 Loại khác
+24031110 Đã được đóng gói để bán lẻ
+24031190 Loại khác
+
+=== KHOÁ dungLamGiong ===
+{
+ "khoa": "dungLamGiong",
+ "kieu": "CO_KHONG",
+ "nhanVi": "để nhân giống / làm giống / gieo trồng",
+ "nhanEn": "for breeding / for sowing / for propagation",
+ "nhanZh": "用于繁育/改良种用/播种",
+ "cachDoc": {
+  "vi": [
+   "(?:loại\\s+)?thuần\\s+chủng\\s+để\\s+nhân\\s+giống",
+   "(?:dùng\\s+)?(?:để|làm)\\s+nhân\\s+giống",
+   "phù\\s+hợp\\s+để\\s+(?:làm\\s+giống|gieo\\s+trồng)",
+   "phù\\s+hợp\\s+để\\s+gieo/trồng",
+   "củ\\s+giống",
+   "hạt\\s+giống",
+   "cây\\s+giống"
+  ],
+  "en": [
+   "pure-?bred\\s+breeding",
+   "for\\s+breeding",
+   "for\\s+sowing",
+   "for\\s+propagation",
+   "suitable\\s+for\\s+sowing",
+   "seed\\s+potatoes",
+   "seed"
+  ],
+  "zh": [
+   "改良种用",
+   "纯种",
+   "繁育用",
+   "种用",
+   "播种用",
+   "留种用",
+   "种畜",
+   "种苗",
+   "种禽"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không dùng",
+   "không",
+   "chưa",
+   "trừ",
+   "loại khác",
+   "other than",
+   "not for",
+   "non-?",
+   "非",
+   "不",
+   "未"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+dùng\\s+(?:để\\s+)?(?:nhân\\s+giống|làm\\s+giống|gieo\\s+trồng)",
+   "trừ\\s+(?:loại\\s+)?(?:để\\s+)?nhân\\s+giống"
+  ],
+  "en": [
+   "not\\s+for\\s+breeding",
+   "other\\s+than\\s+for\\s+breeding",
+   "not\\s+for\\s+sowing"
+  ],
+  "zh": [
+   "非种用",
+   "非繁育用",
+   "非播种用"
+  ]
+ },
+ "cachViet": {
+  "vi": "để nhân giống/gieo trồng",
+  "viPhuDinh": "không dùng để nhân giống/gieo trồng"
+ },
+ "cauHoi": {
+  "vi": "Hàng có dùng để nhân giống, làm giống hoặc gieo trồng không?",
+  "zh": "该产品是否用于繁育、引种改良或播种？"
+ },
+ "ghiChu": "Chữ biểu 0101.30.10 \"Loại thuần chủng để nhân giống\", 0105.11.10 \"Để nhân giống\", 0703.10.11 \"Củ giống\", 0713.10.10 \"Phù hợp để gieo trồng\", 1207.10.10 \"Hạt cọ phù hợp để gieo/trồng\".",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+01013010 Loại thuần chủng để nhân giống
+01013090 Loại khác
+01051110 Để nhân giống (SEN)
+01051190 Loại khác
+07031011 Củ giống
+07031019 Loại khác
+07031021 Củ giống
+07031029 Loại khác
+
+=== KHOÁ dungLuong ===
+{
+ "khoa": "dungLuong",
+ "kieu": "SO",
+ "nhanVi": "dung lượng phóng điện",
+ "nhanEn": "discharge capacity",
+ "nhanZh": "放电容量",
+ "heDonVi": "dungLuongDien",
+ "donViChuan": "Ah",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "dung\\s+lượng(?:\\s+phóng\\s+điện)?",
+   "dung\\s+lượng\\s+ắc\\s+quy",
+   "dung\\s+lượng\\s+pin"
+  ],
+  "en": [
+   "discharge\\s+capacity",
+   "capacity",
+   "rated\\s+capacity"
+  ],
+  "zh": [
+   "放电容量",
+   "容量",
+   "额定容量"
+  ]
+ },
+ "cachViet": {
+  "vi": "dung lượng {giaTri} Ah"
+ },
+ "cauHoi": {
+  "vi": "Dung lượng phóng điện của ắc quy là bao nhiêu Ah?",
+  "zh": "蓄电池的放电容量是多少安时（Ah）？"
+ },
+ "ghiChu": "Chữ biểu tiêu đề 850710~r15093, 850720~r15104 \"có dung lượng phóng điện không quá 200 Ah\" (Ắc quy điện nhóm 85.07).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+
+=== KHOÁ dungMotLan ===
+{
+ "khoa": "dungMotLan",
+ "kieu": "CO_KHONG",
+ "nhanVi": "dùng một lần (dụng cụ y tế, vật tư tiêu hao)",
+ "nhanEn": "disposable / single-use",
+ "nhanZh": "一次性使用",
+ "cachDoc": {
+  "vi": [
+   "dùng\\s+một\\s+lần",
+   "sử\\s+dụng\\s+một\\s+lần",
+   "tiêu\\s+hao\\s+một\\s+lần"
+  ],
+  "en": [
+   "disposable",
+   "single-?use"
+  ],
+  "zh": [
+   "一次性",
+   "一次性使用",
+   "一次性耗材"
+  ],
+  "phuDinh": [
+   "dùng nhiều lần",
+   "tái sử dụng",
+   "không phải dùng một lần",
+   "reusable",
+   "not disposable",
+   "非一次性",
+   "重复使用"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "dùng\\s+nhiều\\s+lần",
+   "tái\\s+sử\\s+dụng",
+   "không\\s+phải\\s+dùng\\s+một\\s+lần"
+  ],
+  "en": [
+   "reusable",
+   "not\\s+disposable"
+  ],
+  "zh": [
+   "非一次性",
+   "可重复使用"
+  ]
+ },
+ "cachViet": {
+  "vi": "dùng một lần",
+  "viPhuDinh": "không phải dùng một lần"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm hoặc dụng cụ có phải loại chỉ dùng một lần (disposable) không?",
+  "zh": "该产品/器具是否属于一次性使用物品？"
+ },
+ "ghiChu": "Chữ biểu 9018.31.10 \"Bơm tiêm dùng một lần\" (EN \"disposable syringes\").",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+90183110 Bơm tiêm dùng một lần
+90183190 Loại khác
+
+=== KHOÁ dungTich ===
+{
+ "khoa": "dungTich",
+ "kieu": "SO",
+ "nhanVi": "dung tích chứa",
+ "nhanEn": "capacity",
+ "nhanZh": "容积/容量",
+ "heDonVi": "theTich",
+ "donViChuan": "lít",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "dung\\s+tích(?:\\s+chứa)?",
+   "sức\\s+chứa",
+   "thể\\s+tích\\s+chứa"
+  ],
+  "en": [
+   "capacity",
+   "storage\\s+capacity",
+   "volume"
+  ],
+  "zh": [
+   "容积",
+   "容量",
+   "容积量"
+  ]
+ },
+ "cachViet": {
+  "vi": "dung tích {giaTri} lít"
+ },
+ "cauHoi": {
+  "vi": "Dung tích chứa của hàng (tủ lạnh, tủ đông, bồn chứa) là bao nhiêu lít?",
+  "zh": "器具（冰箱、冷柜、储罐等）的有效容积是多少升（l）？"
+ },
+ "ghiChu": "Chữ biểu 8418.10.31 \"dung tích không quá 230 lít\", 8418.21.10 \"Dung tích không quá 230 lít\", 8418.30.10 \"Dung tích không quá 200 lít\". Khoá SO dung tích chứa (lít) dùng cho thiết bị bảo quản, lạnh; phân biệt với dungTichXiLanh (chỉ dùng cho động cơ piston, đơn vị cc/cm3).",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+84181031 Loại gia dụng, có dung tích không quá 230 lít
+84181032 Loại gia dụng khác, có dung tích trên 230 lít
+84181039 Loại khác
+84181040 Loại khác, phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm
+84181091 Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít
+84181099 Loại khác
+84182110 Dung tích không quá 230 lít
+84182190 Loại khác
+84183010 Dung tích không quá 200 lít
+84183090 Loại khác
+
+=== KHOÁ duongCheoNgoai ===
+{
+ "khoa": "duongCheoNgoai",
+ "kieu": "SO",
+ "nhanVi": "đường chéo ngoài mặt cắt ngang",
+ "nhanEn": "external diagonal of cross-section",
+ "nhanZh": "截面外对角线",
+ "heDonVi": "dai",
+ "donViChuan": "mm",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "đường\\s+chéo\\s+ngoài(?:\\s+của\\s+mặt\\s+cắt\\s+ngang)?",
+   "đường\\s+chéo\\s+ngoại"
+  ],
+  "en": [
+   "external\\s+diagonal(?:\\s+of\\s+(?:the\\s+)?cross-?section)?",
+   "outer\\s+diagonal",
+   "outside\\s+diagonal"
+  ],
+  "zh": [
+   "外对角线",
+   "截面外对角线"
+  ]
+ },
+ "cachViet": {
+  "vi": "đường chéo ngoài {giaTri} mm"
+ },
+ "cauHoi": {
+  "vi": "Đường chéo ngoài của mặt cắt ngang ống là bao nhiêu mm?",
+  "zh": "管截面的外对角线是多少毫米（mm）？"
+ },
+ "ghiChu": "Trích chữ biểu 7306.61.10 \"Có đường chéo ngoài của mặt cắt ngang dưới 12,5 mm\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+73066110 Có đường chéo ngoài của mặt cắt ngang dưới 12,5 mm
+73066190 Loại khác
+
+=== KHOÁ duongKinhVanh ===
+{
+ "khoa": "duongKinhVanh",
+ "kieu": "SO",
+ "nhanVi": "đường kính vành bánh xe (mâm xe lắp lốp)",
+ "nhanEn": "rim diameter",
+ "nhanZh": "适配轮辋直径",
+ "heDonVi": "dai",
+ "donViChuan": "mm",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "đường\\s+kính\\s+vành",
+   "lắp\\s+vành(?:\\s+có\\s+đường\\s+kính)?",
+   "cỡ\\s+vành",
+   "đường\\s+kính\\s+mâm"
+  ],
+  "en": [
+   "rim\\s+diameter",
+   "rim\\s+size",
+   "wheel\\s+diameter"
+  ],
+  "zh": [
+   "轮辋直径",
+   "轮毂直径",
+   "轮辋尺寸"
+  ]
+ },
+ "cachViet": {
+  "vi": "đường kính vành {giaTri} mm"
+ },
+ "cauHoi": {
+  "vi": "Đường kính vành bánh xe (mâm xe) mà lốp lắp vào là bao nhiêu inch?",
+  "zh": "该轮胎适配的轮辋（轮毂）直径是多少英寸？"
+ },
+ "ghiChu": "Chữ biểu 4011.20.11 \"lắp vành có đường kính không quá 16 inch\", 4011.20.12 \"lắp vành có đường kính trên 16 inch\", 4011.80.40 \"Lắp vành có đường kính trên 24 inch\". Chuẩn mm theo quy ước chiều dài (inch×25,4; 16 inch = 406,4 mm).",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+40112011 Có chiều rộng không quá 230 mm và lắp vành có đường kính không quá 16 inch (SEN)
+40112012 Có chiều rộng không quá 230 mm và lắp vành có đường kính trên 16 inch (SEN)
+40112013 Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)
+40112019 Loại khác
+40112090 Loại khác
+40118011 Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác
+40118019 Loại khác
+40118031 Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+40118039 Loại khác
+40118040 Lắp vành có đường kính trên 24 inch, loại khác
+
+=== KHOÁ gioiHanChay ===
+{
+ "khoa": "gioiHanChay",
+ "kieu": "SO",
+ "nhanVi": "giới hạn chảy",
+ "nhanEn": "yield strength",
+ "nhanZh": "屈服强度",
+ "heDonVi": "apSuat",
+ "donViChuan": "psi",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "giới\\s+hạn\\s+chảy(?:\\s*\\([0-9]+\\))?",
+   "độ\\s+chảy",
+   "điểm\\s+chảy"
+  ],
+  "en": [
+   "yield\\s+strength",
+   "yield\\s+point"
+  ],
+  "zh": [
+   "屈服强度",
+   "屈服点",
+   "屈服极限"
+  ]
+ },
+ "cachViet": {
+  "vi": "giới hạn chảy {giaTri} psi"
+ },
+ "cauHoi": {
+  "vi": "Giới hạn chảy của ống thép là bao nhiêu psi?",
+  "zh": "钢管的屈服强度是多少磅/平方英寸（psi）？"
+ },
+ "ghiChu": "Trích chữ biểu 7304.51.20 \"Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi\" và 7304.23.10 \"Có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+73045110 Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)
+73045120 Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi
+73045190 Loại khác
+73042310 Có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống
+73042390 Loại khác
+
+=== KHOÁ hamLuongCarbon ===
+{
+ "khoa": "hamLuongCarbon",
+ "kieu": "SO",
+ "nhanVi": "hàm lượng carbon",
+ "nhanEn": "carbon content",
+ "nhanZh": "含碳量",
+ "heDonVi": "phanTram",
+ "donViChuan": "%",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "hàm\\s+lượng\\s+carbon",
+   "hàm\\s+lượng\\s+cacbon",
+   "hàm\\s+lượng\\s+c\\b",
+   "carbon",
+   "cacbon"
+  ],
+  "en": [
+   "carbon\\s+content",
+   "carbon"
+  ],
+  "zh": [
+   "含碳量",
+   "碳含量",
+   "碳"
+  ]
+ },
+ "cachViet": {
+  "vi": "hàm lượng carbon {giaTri}%"
+ },
+ "cauHoi": {
+  "vi": "Hàm lượng carbon của thép chiếm bao nhiêu % tính theo khối lượng?",
+  "zh": "钢材按重量计含碳量是多少百分比（%）？"
+ },
+ "ghiChu": "Trích chữ biểu 7206.10.10, 7209.28.10, 7210.20.10: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+72061010 Có hàm lượng carbon trên 0,6% tính theo khối lượng
+72061090 Loại khác
+72092810 Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm
+72092890 Loại khác
+72102010 Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm
+72102090 Loại khác
+
+=== KHOÁ hamLuongNiken ===
+{
+ "khoa": "hamLuongNiken",
+ "kieu": "SO",
+ "nhanVi": "hàm lượng niken",
+ "nhanEn": "nickel content",
+ "nhanZh": "含镍量",
+ "heDonVi": "phanTram",
+ "donViChuan": "%",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "hàm\\s+lượng\\s+niken",
+   "hàm\\s+lượng\\s+nicken",
+   "hàm\\s+lượng\\s+ni\\b",
+   "niken",
+   "nicken",
+   "nickel"
+  ],
+  "en": [
+   "nickel\\s+content",
+   "nickel"
+  ],
+  "zh": [
+   "含镍量",
+   "镍含量",
+   "镍"
+  ]
+ },
+ "cachViet": {
+  "vi": "hàm lượng niken {giaTri}%"
+ },
+ "cauHoi": {
+  "vi": "Hàm lượng niken trong ống thép là bao nhiêu % tính theo khối lượng?",
+  "zh": "钢管按重量计含镍量是多少百分比（%）？"
+ },
+ "ghiChu": "Trích chữ biểu 7306.40.30 \"Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm\".",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+73064011 Với đường kính ngoài không quá 12,5 mm
+73064019 Loại khác
+73064020 Ống và ống dẫn bằng thép không gỉ, có đường kính ngoài trên 105 mm
+73064030 Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm
+73064090 Loại khác
+
