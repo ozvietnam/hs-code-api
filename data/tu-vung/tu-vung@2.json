@@ -32,7 +32,8 @@
     "tu-vung@2 (03/11, lô 6): 6 khoá — dinhLuong, mucDoGiaCongGo, dangBinhXit, nhieuLop, daIn, duongKinhVanh — ch.31–38, 40–49 (hoá chất, giấy, gỗ, cao su, da). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: dangHinhHocGiay, tiLeDauKhoang, coChucNangKhuMui, doTruongNoBloom.",
     "tu-vung@2 (03/11, lô 7): 5 khoá — daTrangMen, tinhNangBaoHo, daTrangPhuEpLop, loaiMuiBaoVe, thuyTinhQuangHoc — ch.50–71 (dệt may, giày dép, gốm, thuỷ tinh). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, doManhSoi.",
     "tu-vung@2 (03/11, lô 8): 5 khoá — tongDungTichTau, dangCuon, coNong, ngamQuaThauKinhSLR, dungMotLan — ch.74–83, 86, 88–97 (kim loại màu, tàu thuyền, quang học, vũ khí, y tế). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: luongGianNuoc, apSuatHoatDong, hinhDangMatCatNgang, cauTrucLopBotKimLoai, troChoiMayRuiCoThuong.",
-    "tu-vung@2 (03/11, lô 9 — vòng quét sót): 8 khoá — tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, daPhaThemDuongHoacRuou, soiDun, coMauTruTrang, dongGoiBanLe, dangLong — chat mới, Gemini đọc lại toàn bộ 4.165 dòng các chương đã quét; xử lý 13 tiêu chí khongChac lô 6–8 (4 GHÉP: dangHinhHocGiay→dangCuon, coChucNangKhuMui→congDung, luongGianNuoc→khoiLuong, troChoiMayRuiCoThuong→congDung; 6 BỎ: tiLeDauKhoang, doTruongNoBloom, doManhSoi, apSuatHoatDong, hinhDangMatCatNgang, cauTrucLopBotKimLoai; 3 SOẠN) + 5 khoá từ pn6Sot ≥3 PN6. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: cauTrucSoiDon, daLenMen, daThien, daTietTrung, daXay, gioiTinhNguoiMac."
+    "tu-vung@2 (03/11, lô 9 — vòng quét sót): 8 khoá — tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, daPhaThemDuongHoacRuou, soiDun, coMauTruTrang, dongGoiBanLe, dangLong — chat mới, Gemini đọc lại toàn bộ 4.165 dòng các chương đã quét; xử lý 13 tiêu chí khongChac lô 6–8 (4 GHÉP: dangHinhHocGiay→dangCuon, coChucNangKhuMui→congDung, luongGianNuoc→khoiLuong, troChoiMayRuiCoThuong→congDung; 6 BỎ: tiLeDauKhoang, doTruongNoBloom, doManhSoi, apSuatHoatDong, hinhDangMatCatNgang, cauTrucLopBotKimLoai; 3 SOẠN) + 5 khoá từ pn6Sot ≥3 PN6. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: cauTrucSoiDon, daLenMen, daThien, daTietTrung, daXay, gioiTinhNguoiMac.",
+    "tu-vung@2 (03/11, sửa đọc): khoá mới phải ĐỌC ĐƯỢC chữ biểu nó trích (test \"khoá mới đọc được ghiChu\"). Cờ docMoRong (chỉ khoá @2 số, không đụng vân tay @1): cửa sổ ngữ cảnh 50 ký tự, so sánh đứng sau theo soSanhSauMoRong (\"trở lên\", \"và cao hơn\", \"or more\"), docThem mang op. docThem cho chiSoIot (IV), triSoOctan (RON/octane), tongDungTichTau (GT); laPhanDoan tách từ mucDoTinhCheDau; lopMaPhu + TRANG_THIEC; sửa cachDoc daIn, thietKeChoTreEm, hinhDangCatGocKinh."
   ],
   "chamDuyetDocLap": {
     "trangThai": "CHUA_CHAM",
@@ -104,7 +105,8 @@
       "soiDun",
       "coMauTruTrang",
       "dongGoiBanLe",
-      "dangLong"
+      "dangLong",
+      "laPhanDoan"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -3942,7 +3944,8 @@
         "vi": [
           "(?:được\\s+)?thiết\\s+kế\\s+(?:chủ\\s+yếu\\s+|chuyên\\s+|riêng\\s+)?cho\\s+(?:trẻ\\s+em|trẻ|bé)(?!(?:\\s+em)?\\s+dưới\\s+\\d)",
           "(?:dành|phù\\s+hợp)\\s+cho\\s+(?:trẻ\\s+em|trẻ|bé)(?!(?:\\s+em)?\\s+dưới\\s+\\d)",
-          "đồ\\s+chơi\\s+trẻ\\s+em"
+          "đồ\\s+chơi\\s+trẻ\\s+em",
+          "(?:dành|phù\\s+hợp)\\s+(?:dùng\\s+)?cho\\s+trẻ\\s+(?:sơ\\s+sinh|nhỏ)"
         ],
         "en": [
           "designed\\s+(?:principally\\s+|primarily\\s+|mainly\\s+|specifically\\s+)?for\\s+(?:children|kids)(?!\\s+under\\s+\\d)",
@@ -5684,8 +5687,9 @@
         "vi": "Hàm lượng carbon của thép chiếm bao nhiêu % tính theo khối lượng?",
         "zh": "钢材按重量计含碳量是多少百分比（%）？"
       },
-      "ghiChu": "Trích chữ biểu 7210.61.11, 7209.28.10, 7210.20.10: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "ghiChu": "Trích chữ biểu 7206.10.10, 7209.28.10, 7210.20.10: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\".",
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "gioiHanChay",
@@ -5720,7 +5724,8 @@
         "zh": "钢管的屈服强度是多少磅/平方英寸（psi）？"
       },
       "ghiChu": "Trích chữ biểu 7304.51.20 \"Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi\" và 7304.23.10 \"Có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "chieuRong",
@@ -5756,7 +5761,8 @@
         "zh": "平板轧材的宽度是多少毫米（mm）？"
       },
       "ghiChu": "Trích chữ biểu 7209.16.10, 7209.27.10 \"Chiều rộng không quá 1.250 mm\" và 7211.23.20 \"chiều rộng không quá 400 mm\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "khaNangChiuApLuc",
@@ -5796,7 +5802,8 @@
         "zh": "管道的耐压能力是多少磅/平方英寸（psi）？"
       },
       "ghiChu": "Trích chữ biểu 7304.39.20 \"Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "duongCheoNgoai",
@@ -5830,7 +5837,8 @@
         "zh": "管截面的外对角线是多少毫米（mm）？"
       },
       "ghiChu": "Trích chữ biểu 7306.61.10 \"Có đường chéo ngoài của mặt cắt ngang dưới 12,5 mm\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "coRen",
@@ -5941,7 +5949,8 @@
         "zh": "钢材的抗拉强度是多少兆帕（MPa）？"
       },
       "ghiChu": "Trích chữ biểu 7208.39.40 \"độ bền kéo tối đa 550 Mpa và chiều rộng không quá 1.250 mm\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "hamLuongNiken",
@@ -5979,7 +5988,8 @@
         "zh": "钢管按重量计含镍量是多少百分比（%）？"
       },
       "ghiChu": "Trích chữ biểu 7306.40.30 \"Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "lopMaPhu",
@@ -5990,7 +6000,8 @@
       "giaTriHopLe": [
         "MA_DONG",
         "TRANG_NHUA_FLO",
-        "TRANG_KEM_CROMAT"
+        "TRANG_KEM_CROMAT",
+        "TRANG_THIEC"
       ],
       "moTaGiaTri": {
         "MA_DONG": {
@@ -6065,6 +6076,25 @@
             ]
           },
           "cachViet": "tráng kẽm cromat"
+        },
+        "TRANG_THIEC": {
+          "nhanVi": "tráng thiếc",
+          "nhanEn": "tin-plated",
+          "nhanZh": "镀锡",
+          "cachDoc": {
+            "vi": [
+              "(?:được\\s+)?tráng\\s+thiếc",
+              "mạ\\s+thiếc"
+            ],
+            "en": [
+              "tin-?\\s*plated",
+              "tinned"
+            ],
+            "zh": [
+              "镀锡"
+            ]
+          },
+          "cachViet": "tráng thiếc"
         }
       },
       "cachDoc": {
@@ -6089,7 +6119,7 @@
         "vi": "Ống thép được mạ đồng, tráng nhựa flo hay tráng kẽm-cromat?",
         "zh": "钢管表面是镀铜、涂氟树脂还是涂锌-铬酸盐？"
       },
-      "ghiChu": "Trích chữ biểu phân nhóm 7306.30.2: \"Được mạ đồng, tráng nhựa flo hoặc tráng kẽm-cromat\".",
+      "ghiChu": "Trích chữ biểu phân nhóm 7306.30.2: \"Được mạ đồng, tráng nhựa flo hoặc tráng kẽm-cromat\". + 7310.10.10 / 7310.21.10 \"Được tráng thiếc\" (quét sót máy 03/11).",
       "nguonLoai": "AI_DA_KIEM",
       "cachViet": {
         "vi": "{giaTri}"
@@ -6270,7 +6300,8 @@
         "zh": "该酒品/液体的按容量计酒精度（酒精含量）是多少%？"
       },
       "ghiChu": "Chữ biểu 2203.00.11 \"Có nồng độ cồn không quá 5,8% tính theo thể tích\", 2204.21.11 \"Có nồng độ cồn không quá 15% tính theo thể tích\", 2208.70.10 \"Có nồng độ cồn không quá 57% tính theo thể tích\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "phuongPhapBaoQuan",
@@ -6542,7 +6573,7 @@
         "vi": "Thuốc ở dạng bào chế nào (dạng uống, dạng mỡ, tiêm, truyền hay miếng dán qua da)?",
         "zh": "该药品属于何种剂型/给药形式（口服、软膏、注射、输液或透皮贴剂）？"
       },
-      "ghiChu": "Chữ biểu 3004.10.16 \"dạng uống (*)\", 3004.20.32 \"Dạng mỡ\", 3004.49.80 \"dùng để tiêm\", 3004.90.91 \"dạng truyền\", 3004.90.10 \"Miếng thẩm thấu qua da\".",
+      "ghiChu": "Chữ biểu 3004.10.16 \"dạng uống (*)\", 3004.20.32 \"Dạng mỡ\", 3004.90.91 \"dạng truyền\", 3004.90.10 \"Miếng thẩm thấu qua da\". (3004.49.80 gộp \"dùng để tiêm; … dạng uống\" hai giá trị — không đọc được, đúng ý.)",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -6553,8 +6584,7 @@
       "nhanZh": "油脂精炼程度",
       "giaTriHopLe": [
         "DANG_THO",
-        "DA_TINH_CHE",
-        "PHAN_DOAN"
+        "DA_TINH_CHE"
       ],
       "moTaGiaTri": {
         "DANG_THO": {
@@ -6614,33 +6644,6 @@
             ]
           },
           "cachViet": "đã tinh chế"
-        },
-        "PHAN_DOAN": {
-          "nhanVi": "phần phân đoạn của dầu",
-          "nhanEn": "fractions of oil",
-          "nhanZh": "分馏馏分",
-          "cachDoc": {
-            "vi": [
-              "(?:các\\s+)?phần\\s+phân\\s+đoạn(?:\\s+thể\\s+rắn)?",
-              "phân\\s+đoạn",
-              "olein",
-              "stearin"
-            ],
-            "en": [
-              "fractions?",
-              "solid\\s+fractions?",
-              "olein",
-              "stearin"
-            ],
-            "zh": [
-              "分馏段",
-              "馏分",
-              "固体馏分",
-              "油精",
-              "硬脂"
-            ]
-          },
-          "cachViet": "phần phân đoạn"
         }
       },
       "cachDoc": {
@@ -6655,7 +6658,7 @@
         "vi": "Dầu hoặc chất béo ở dạng thô/chưa tinh chế, đã tinh chế (RBD) hay phần phân đoạn?",
         "zh": "该油脂属于初榨/原油、经精炼（RBD）还是分馏馏分？"
       },
-      "ghiChu": "Chữ biểu 1510.90.10 \"Dầu thô\", 1512.19.20 \"Đã tinh chế\", 1507.90.10 \"Các phần phân đoạn của dầu đậu tương chưa tinh chế\", 1513.29.94 \"đã tinh chế, tẩy và khử mùi (RBD)\".",
+      "ghiChu": "Chữ biểu 1510.90.10 \"Dầu thô\", 1512.19.20 \"Đã tinh chế\", 1507.90.10 \"Các phần phân đoạn của dầu đậu tương chưa tinh chế\", 1513.29.94 \"đã tinh chế, tẩy và khử mùi (RBD)\". Giá trị PHAN_DOAN tách thành khoá laPhanDoan (03/11): \"Các phần phân đoạn … chưa tinh chế\" vừa là phân đoạn vừa là thô — hai trục.",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -6694,7 +6697,18 @@
         "zh": "该油脂产品的碘值（IV）是多少？"
       },
       "ghiChu": "Chữ biểu 1511.90.31 \"chỉ số iốt từ 30 trở lên, nhưng dưới 40\", 1511.90.37 \"chỉ số iốt từ 55 trở lên, nhưng dưới 60\", 1516.20.91 \"chỉ số iốt trên 48\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docThem": [
+        {
+          "mau": "(?<=chỉ\\s+số\\s+i(?:-?ốt|ot|-o-đin)\\s+(?:từ|trên|dưới|không\\s+quá|không\\s+dưới|tối\\s+đa|tối\\s+thiểu)?\\s*)(\\d+(?:[.,]\\d+)?)(?![\\d.,]*\\s*%)",
+          "donVi": "IV"
+        },
+        {
+          "mau": "(?<=iodine\\s+(?:value|number)\\s+(?:of|from|above|below|not\\s+exceeding)?\\s*)(\\d+(?:[.,]\\d+)?)",
+          "donVi": "IV"
+        }
+      ],
+      "docMoRong": true
     },
     {
       "khoa": "triSoOctan",
@@ -6733,7 +6747,18 @@
         "zh": "该车用汽油的研究法辛烷值（RON）是多少？"
       },
       "ghiChu": "Chữ biểu 2710.12.11 \"RON 97 và cao hơn\", 2710.12.12 \"RON 90 và cao hơn nhưng dưới RON 97\", 2710.12.31 \"Octane 100 và cao hơn\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docThem": [
+        {
+          "mau": "(?<=\\bRON\\s*)(\\d{2,3})(?!\\d)",
+          "donVi": "RON"
+        },
+        {
+          "mau": "(?<=\\bOctane?\\s*)(\\d{2,3})(?!\\d)",
+          "donVi": "octane"
+        }
+      ],
+      "docMoRong": true
     },
     {
       "khoa": "daRang",
@@ -6900,7 +6925,8 @@
         "zh": "该纸或纸板的定量（克重）是多少g/m²？"
       },
       "ghiChu": "Chữ biểu 4802.58.91 \"Định lượng trên 150 g/m2 nhưng dưới 225 g/m2\", 4804.51.20 \"định lượng từ 600g/m2 trở lên\", 4823.90.51 \"định lượng từ 150 g/m2 trở xuống\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "mucDoGiaCongGo",
@@ -7109,7 +7135,7 @@
       "nhanZh": "已印刷",
       "cachDoc": {
         "vi": [
-          "đã\\s+in",
+          "đã\\s+(?:được\\s+)?in",
           "có\\s+in",
           "in\\s+sẵn"
         ],
@@ -7195,7 +7221,8 @@
         "zh": "该轮胎适配的轮辋（轮毂）直径是多少英寸？"
       },
       "ghiChu": "Chữ biểu 4011.20.11 \"lắp vành có đường kính không quá 16 inch\", 4011.20.12 \"lắp vành có đường kính trên 16 inch\", 4011.80.40 \"Lắp vành có đường kính trên 24 inch\". Chuẩn mm theo quy ước chiều dài (inch×25,4; 16 inch = 406,4 mm).",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "daTrangMen",
@@ -7490,7 +7517,7 @@
         "vi": "Mũi giày dép được gắn phần bảo vệ bằng kim loại hay bằng vật liệu không phải kim loại (composite)?",
         "zh": "该鞋靴的保护包头是金属材质还是非金属材质（如复合材料）？"
       },
-      "ghiChu": "Chữ biểu 6401.92.10 \"Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)\", 6402.91.91 \"Loại có mũi giày được gắn kim loại để bảo vệ\", 6404.19.10 \"Loại có mũi giày được gắn bảo vệ\".",
+      "ghiChu": "Chữ biểu 6401.92.10 \"Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)\", 6402.91.91 \"Loại có mũi giày được gắn kim loại để bảo vệ\". (6404.19.10 \"Loại có mũi giày được gắn bảo vệ\" không nêu vật liệu — không đọc được, đúng ý.)",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -7582,7 +7609,14 @@
         "zh": "该船舶的总吨位（GT）是多少？"
       },
       "ghiChu": "Chữ biểu 8901.10.10 \"Tổng dung tích (gross tonnage) không quá 26\", 8901.20.50 \"Tổng dung tích (gross tonnage) không quá 5.000\", 8902.00.31 \"Tổng dung tích (gross tonnage) không quá 26\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "docThem": [
+        {
+          "mau": "(?<=(?:tổng\\s+dung\\s+tích|gross\\s+tonnage)\\)?\\s*(?:không\\s+quá|trên|từ|dưới|not\\s+exceeding|exceeding|of)?\\s*)(\\d+(?:[.,]\\d+)*)(?!\\s*(?:m3|m³|lít|l\\b))",
+          "donVi": "GT"
+        }
+      ],
+      "docMoRong": true
     },
     {
       "khoa": "dangCuon",
@@ -7687,8 +7721,9 @@
         "vi": "Cỡ nòng của súng hoặc cỡ đạn là bao nhiêu mm (hoặc cal)?",
         "zh": "该枪械或弹药的口径是多少毫米（mm）？"
       },
-      "ghiChu": "Chữ biểu 9303.90.10 \"cỡ nòng từ 20 mm trở lên\", 9306.30.11 \"Đạn cỡ .22\", 9306.30.91 \"Đạn cỡ 22\".",
-      "nguonLoai": "AI_DA_KIEM"
+      "ghiChu": "Chữ biểu 9303.90.10 \"cỡ nòng từ 20 mm trở lên\". (Đạn cỡ .22 ở 9306.30.11/.91 là cỡ inch viết tắt — chưa đọc được, để vòng sau.)",
+      "nguonLoai": "AI_DA_KIEM",
+      "docMoRong": true
     },
     {
       "khoa": "ngamQuaThauKinhSLR",
@@ -7879,7 +7914,7 @@
         "vi": "Hàng dệt (xơ, sợi, vải) ở tình trạng chưa tẩy trắng hay đã tẩy trắng?",
         "zh": "纺织品（纤维、纱线、面料）是未漂白还是已漂白状态？"
       },
-      "ghiChu": "Chữ biểu 5204.11.10 \"Chưa tẩy trắng\" và 5007.10.20 \"Chưa tẩy trắng hoặc đã tẩy trắng\"",
+      "ghiChu": "Chữ biểu 5204.11.10, 5407.10.91, 5408.10.10 \"Chưa tẩy trắng\". (5007.10.20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" gộp cả hai giá trị — không đọc được, đúng ý.)",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -7891,24 +7926,17 @@
       "cachDoc": {
         "vi": [
           "hình\\s+vuông",
-          "hình\\s+chữ\\s+nhật",
-          "cắt\\s+góc",
-          "vát\\s+góc",
-          "cắt\\s+một\\s+hoặc\\s+nhiều\\s+góc"
+          "hình\\s+chữ\\s+nhật"
         ],
         "en": [
           "square",
           "rectangular",
-          "rectangle",
-          "cut\\s+corners?",
-          "bevelled\\s+corners?"
+          "rectangle"
         ],
         "zh": [
           "正方形",
           "长方形",
-          "矩形",
-          "切角",
-          "倒角"
+          "矩形"
         ],
         "phuDinh": [
           "không phải",
@@ -7955,7 +7983,7 @@
         "vi": "Tấm kính có hình vuông hoặc hình chữ nhật (kể cả loại đã cắt một hoặc nhiều góc) không?",
         "zh": "玻璃板是否为正方形或矩形（包括已切去或未切去一个或多个角）？"
       },
-      "ghiChu": "Chữ biểu 7005.21.20 \"hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc\"",
+      "ghiChu": "Chữ biểu 7005.21.20 \"hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc\" Vế \"đã hoặc chưa cắt một hoặc nhiều góc\" chỉ là phụ chú, không phải tiêu chí (bỏ khỏi cachDoc 03/11).",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -8420,6 +8448,67 @@
       },
       "ghiChu": "Chữ biểu 0401.10.10 \"Dạng lỏng\" và 0401.40.10 \"Sữa dạng lỏng\"",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "laPhanDoan",
+      "kieu": "CO_KHONG",
+      "nhanVi": "là phần phân đoạn của dầu/mỡ (olein, stearin)",
+      "nhanEn": "fraction of oil/fat (olein, stearin)",
+      "nhanZh": "油脂分馏馏分（油精、硬脂）",
+      "cachDoc": {
+        "vi": [
+          "(?:các\\s+)?phần\\s+phân\\s+đoạn(?:\\s+thể\\s+rắn)?",
+          "phân\\s+đoạn",
+          "olein",
+          "stearin"
+        ],
+        "en": [
+          "fractions?",
+          "solid\\s+fractions?",
+          "olein",
+          "stearin"
+        ],
+        "zh": [
+          "分馏段",
+          "馏分",
+          "固体馏分",
+          "油精",
+          "硬脂"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "non-?",
+          "not",
+          "非",
+          "不"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+phải\\s+(?:phần\\s+)?phân\\s+đoạn",
+          "dầu\\s+nguyên\\s+(?:chất|khối)"
+        ],
+        "en": [
+          "not\\s+(?:a\\s+)?fraction",
+          "unfractionated"
+        ],
+        "zh": [
+          "非馏分",
+          "未分馏"
+        ]
+      },
+      "cachViet": {
+        "vi": "phần phân đoạn",
+        "viPhuDinh": "không phải phần phân đoạn"
+      },
+      "cauHoi": {
+        "vi": "Dầu/mỡ có phải phần phân đoạn (olein, stearin, phần thể rắn) không?",
+        "zh": "该油脂是否为分馏馏分（油精、硬脂、固体馏分）？"
+      },
+      "ghiChu": "Chữ biểu 1507.90.10 \"Các phần phân đoạn của dầu đậu tương chưa tinh chế\", 1504.10.20 \"Các phần phân đoạn thể rắn\". Tách từ mucDoTinhCheDau.PHAN_DOAN (03/11).",
+      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "khongPhaiPhuDinh": [
@@ -8615,6 +8704,22 @@
       "or fewer",
       "及以下",
       "以下"
+    ]
+  },
+  "soSanhSauMoRong": {
+    ">=": [
+      "trở lên",
+      "và cao hơn",
+      "or more",
+      "and above",
+      "and higher"
+    ],
+    "<=": [
+      "trở xuống",
+      "và thấp hơn",
+      "or less",
+      "and below",
+      "and lower"
     ]
   }
 }
