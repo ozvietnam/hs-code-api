@@ -38,7 +38,9 @@ const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNap
   // + 5 khoá lô 5 (03/11, vòng 2 cùng phiên Studio): dầu mỡ ch.15, xăng 2710, hạt rang, thịt tách xương cơ học
   mucDoTinhCheDau: 'LIET_KE', chiSoIot: 'SO', triSoOctan: 'SO', daRang: 'CO_KHONG', tachXuongCoHoc: 'CO_KHONG',
   // + 6 khoá lô 6 (03/11, Studio quét biểu thuế, máy kiểm): ch.31–38, 40–49 (hoá chất, giấy, gỗ, cao su, da)
-  dinhLuong: 'SO', mucDoGiaCongGo: 'LIET_KE', dangBinhXit: 'CO_KHONG', nhieuLop: 'CO_KHONG', daIn: 'CO_KHONG', duongKinhVanh: 'SO' };
+  dinhLuong: 'SO', mucDoGiaCongGo: 'LIET_KE', dangBinhXit: 'CO_KHONG', nhieuLop: 'CO_KHONG', daIn: 'CO_KHONG', duongKinhVanh: 'SO',
+  // + 5 khoá lô 7 (03/11, Studio quét biểu thuế, máy kiểm): ch.50–71 (dệt may, giày dép, gốm, thuỷ tinh)
+  daTrangMen: 'CO_KHONG', tinhNangBaoHo: 'LIET_KE', daTrangPhuEpLop: 'CO_KHONG', loaiMuiBaoVe: 'LIET_KE', thuyTinhQuangHoc: 'CO_KHONG' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
