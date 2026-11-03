@@ -10,3 +10,9 @@
 | `apSuat` | SO | bar | 4 | 902620/90262050, 930400/93040010, 984937/984937~r19857 … | "Máy đo áp suất sử dụng cho xe có động cơ" — áp suất làm việc |
 | `nhietDo` | SO | °C | 1 | 902519/90251911 | "Máy đo nhiệt độ dùng cho xe có động cơ" — nhiệt độ (lò, thiết bị) |
 
+
+## Đính chính sau khi đối chiếu @2 hiện hành (03/11)
+
+- `duongKinhLapVanh` — **RÚT LẠI**: lô 6 đã có `duongKinhVanh` (cachDoc khớp "lắp vành có đường kính"). Nhóm lốp 4011 mở khoá hoàn toàn bằng `chieuRong` (đã duyệt) + `duongKinhVanh`.
+- `apSuat`, `nhietDo` — **KHÔNG thêm**: chữ biểu là "Máy **đo** áp suất/nhiệt độ dùng cho xe có động cơ" (9025/9026) — đó là CÔNG DỤNG, khoá `congDung` có sẵn xử được; không phải ngưỡng số.
+- Chỉ thêm: **`tocDo`** (SO, v/ph — "tốc độ quay trên 50.000 vòng/phút" 846595, 871160, 902920).
