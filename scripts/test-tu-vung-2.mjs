@@ -32,7 +32,21 @@ const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNap
   // + 10 khoá lô 2 (02/11, Studio soạn, máy kiểm): 848xxx/850xxx/39xx DỪNG THIEU_KHOA_TU_VUNG
   congSuatBieuKien: 'SO', dungTich: 'SO', theTich: 'SO', sanLuongHoi: 'SO', dungLuong: 'SO', dangNguyenSinh: 'LIET_KE', heDienHoa: 'LIET_KE', daLapRap: 'CO_KHONG', daHoaDeo: 'CO_KHONG', coBoLoc: 'CO_KHONG',
   // + 9 khoá lô 3 (03/11, Studio soạn, máy kiểm): thép ch.72/73 DỪNG THIEU_KHOA_TU_VUNG
-  hamLuongCarbon: 'SO', gioiHanChay: 'SO', chieuRong: 'SO', khaNangChiuApLuc: 'SO', duongCheoNgoai: 'SO', coRen: 'CO_KHONG', doBenKeo: 'SO', hamLuongNiken: 'SO', lopMaPhu: 'LIET_KE' };
+  hamLuongCarbon: 'SO', gioiHanChay: 'SO', chieuRong: 'SO', khaNangChiuApLuc: 'SO', duongCheoNgoai: 'SO', coRen: 'CO_KHONG', doBenKeo: 'SO', hamLuongNiken: 'SO', lopMaPhu: 'LIET_KE',
+  // + 5 khoá lô 4 (03/11, Studio quét biểu thuế ch.01–30, máy kiểm): nông sản/thực phẩm/đồ uống/dược
+  dungLamGiong: 'CO_KHONG', dongBaoBiKinKhiDeBanLe: 'CO_KHONG', nongDoCon: 'SO', phuongPhapBaoQuan: 'LIET_KE', dangBaoCheThuoc: 'LIET_KE',
+  // + 5 khoá lô 5 (03/11, vòng 2 cùng phiên Studio): dầu mỡ ch.15, xăng 2710, hạt rang, thịt tách xương cơ học
+  mucDoTinhCheDau: 'LIET_KE', chiSoIot: 'SO', triSoOctan: 'SO', daRang: 'CO_KHONG', tachXuongCoHoc: 'CO_KHONG',
+  // + 6 khoá lô 6 (03/11, Studio quét biểu thuế, máy kiểm): ch.31–38, 40–49 (hoá chất, giấy, gỗ, cao su, da)
+  dinhLuong: 'SO', mucDoGiaCongGo: 'LIET_KE', dangBinhXit: 'CO_KHONG', nhieuLop: 'CO_KHONG', daIn: 'CO_KHONG', duongKinhVanh: 'SO',
+  // + 5 khoá lô 7 (03/11, Studio quét biểu thuế, máy kiểm): ch.50–71 (dệt may, giày dép, gốm, thuỷ tinh)
+  daTrangMen: 'CO_KHONG', tinhNangBaoHo: 'LIET_KE', daTrangPhuEpLop: 'CO_KHONG', loaiMuiBaoVe: 'LIET_KE', thuyTinhQuangHoc: 'CO_KHONG',
+  // + 5 khoá lô 8 (03/11, Studio quét biểu thuế, máy kiểm): ch.74–83, 86, 88–97 (kim loại màu, tàu thuyền, quang học, vũ khí, y tế)
+  tongDungTichTau: 'SO', dangCuon: 'CO_KHONG', coNong: 'SO', ngamQuaThauKinhSLR: 'CO_KHONG', dungMotLan: 'CO_KHONG',
+  // + 8 khoá lô 9 — vòng quét sót (03/11, Studio quét biểu thuế, máy kiểm): chat mới, Gemini đọc lại toàn bộ 4.165 dòng các chương đã quét; xử lý 13 tiêu chí khongChac lô 6–8 (4 GHÉP: dangHinhHocGiay→dangCuon, coChucNangKhuMui→congDung, luongGianNuoc→khoiLuong, troChoiMayRuiCoThuong→congDung; 6 BỎ: tiLeDauKhoang, doTruongNoBloom, doManhSoi, apSuatHoatDong, hinhDangMatCatNgang, cauTrucLopBotKimLoai; 3 SOẠN) + 5 khoá từ pn6Sot ≥3 PN6
+  tinhTrangTayTrang: 'LIET_KE', hinhDangCatGocKinh: 'CO_KHONG', kieuDet: 'LIET_KE', daPhaThemDuongHoacRuou: 'CO_KHONG', soiDun: 'CO_KHONG', coMauTruTrang: 'CO_KHONG', dongGoiBanLe: 'CO_KHONG', dangLong: 'CO_KHONG',
+  // + laPhanDoan (03/11, tách từ mucDoTinhCheDau.PHAN_DOAN khi sửa đọc)
+  laPhanDoan: 'CO_KHONG' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
@@ -96,6 +110,28 @@ for (const [khoa, kieu] of Object.entries(KHOA_MOI)) {
   let vi = null; let zh = null; try { vi = T.cauHoiCho(khoa, 'vi'); zh = T.cauHoiCho(khoa, 'zh'); } catch { /* đỏ ở dưới */ }
   check(`${khoa}: câu hỏi Vi + Zh (cauHoiCho)`, typeof vi === 'string' && vi.endsWith('?') && typeof zh === 'string' && CJK.test(zh) && /？$/.test(zh), { vi, zh });
   check(`${khoa}: nguonLoai AI_DA_KIEM (chưa chấm duyệt độc lập — không tự gắn CLAUDE_DUYET)`, k?.nguonLoai === 'AI_DA_KIEM', k?.nguonLoai);
+}
+// ── Khoá mới phải ĐỌC ĐƯỢC chữ biểu nó trích (03/11): mã 8 số trong ghiChu (ngoài ngoặc đơn) ⇒ docGiaTri trên dòng biểu thật = DA_CO.
+// Lô Studio 4–9 có 20/151 trích không đọc được (cửa sổ ngữ cảnh ngắn, thang không đơn vị IV/RON/GT, cụm phụ chú) — cổng máy mới bắt được.
+{
+  const zlib = require('node:zlib');
+  const tep = 'data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz';
+  const dong = new Map(zlib.gunzipSync(fs.readFileSync(tep)).toString('utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l))
+    .filter((r) => r.sheet === 'BT2026' && r.soChuSo === 8).map((r) => [r.maChuan, String(r.moTaVi).replace(/^(?:-\s*)+/, '').trim()]));
+  let soTrich = 0; const loi = [];
+  for (const khoa of Object.keys(KHOA_MOI)) {
+    const k = T.layKhoa(khoa);
+    const ngoaiNgoac = String(k.ghiChu || '').replace(/\([^)]*\)/g, ' ');
+    const ma = [...new Set((ngoaiNgoac.match(/\b\d{4}\.\d{2}\.\d{2}\b|\b\d{8}\b/g) || []).map((x) => x.replace(/\./g, '')))].filter((c) => dong.has(c));
+    for (const c of ma) {
+      const text = dong.get(c);
+      if (/^loại khác/i.test(text)) continue;
+      soTrich += 1;
+      const v = T.docGiaTri(khoa, text);
+      if (v.trangThai !== 'DA_CO') loi.push(`${khoa}:${c}:${text.slice(0, 50)}`);
+    }
+  }
+  check(`khoá mới đọc được chữ biểu nó trích trong ghiChu (${soTrich} dòng, 0 không đọc được)`, soTrich > 60 && loi.length === 0, loi);
 }
 check(`chamDuyetDocLap @2: khoá mới CHUA_CHAM, liệt kê đủ ${Object.keys(KHOA_MOI).length} khoá`, tv2.chamDuyetDocLap?.trangThai === 'CHUA_CHAM' && Object.keys(KHOA_MOI).every((k) => (tv2.chamDuyetDocLap?.khoaChuaCham || []).includes(k)), tv2.chamDuyetDocLap);
 
