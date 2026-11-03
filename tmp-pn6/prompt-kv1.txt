@@ -1,0 +1,2172 @@
+QUÉT VÀ SOẠN KHOÁ TỪ VỰNG CÒN THIẾU cho biểu thuế (mục đích: số hoá ranh giới giữa các dòng 8 số cùng phân nhóm 6 số). Dưới đây là (A) danh sách khoá ĐÃ CÓ trong tu-vung@2, (B) hệ đơn vị đã có, (C) mẫu khoá đúng khuôn, (D) các PN6 với mô tả từng dòng 8 số nguyên văn. NHIỆM VỤ: với mỗi PN6, đọc mô tả các dòng; nếu phân biệt các dòng dựa vào MỘT TIÊU CHÍ mà KHÔNG khoá nào ở (A) biểu diễn được (đại lượng đo có đơn vị như chiều dài, độ dày, dung tích, công suất, tốc độ, khối lượng, áp suất, hàm lượng…; hoặc có/không một đặc điểm; hoặc một tập giá trị liệt kê như kiểu, dạng, loại động cơ…) thì SOẠN khoá mới. KHÔNG soạn lại khoá đã có (kể cả khi tên khác nhưng cùng ý: dùng khoá cũ). Gộp mọi PN6 dùng cùng tiêu chí về MỘT khoá (tên camelCase tiếng Việt không dấu, ngắn, tổng quát; không gắn với một mặt hàng nếu tiêu chí dùng chung). Tiêu chí quá đặc thù chỉ xuất hiện 1 lần và không đo/liệt kê được gọn: bỏ qua. Không bịa ngưỡng; ghiChu trích NGUYÊN VĂN 1–3 chữ biểu ví dụ kèm mã 8 số; thêm trường "pn6Mau" (tối đa 5 PN6) và "soDong" (số dòng 8 số dùng tiêu chí này). QUY TẮC LƯỢC ĐỒ (máy kiểm sẽ ĐỎ nếu sai): (1) khoá SO: heDonVi PHẢI là hệ đã có ở (B) HOẶC khai hệ mới trong "heDonViMoi" (vd {"nhietDo":{"°C":1}}), donViChuan là đơn vị của hệ đó; thêm bí danh viết tắt chữ thường vào "bietDanhMoi"; (2) khoá SO canNguCanh:true ⇒ cachDoc vi/en/zh có ≥1 mẫu; (3) mọi khoá: nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi} (SO: chuỗi có {giaTri} và đơn vị), ghiChu, nguonLoai "AI_DA_KIEM"; (4) CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong, cachViet{vi,viPhuDinh}; (5) LIET_KE: giaTriHopLe = MẢNG CHUỖI id HOA_GẠCH_DƯỚI, moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet?}} (cachViet chuỗi không có ()/;/ " / "), cachDoc cấp khoá = {"vi":[],"en":[],"zh":[]} và cachViet cấp khoá = {"vi":"{giaTri}"}. Hàm lượng % khối lượng dùng hệ phanTram; áp suất hệ apSuat (psi, MPa). ĐẦU RA: MỘT khối ```json {"khoa":[mục...],"heDonViMoi":{...},"bietDanhMoi":{...},"khongChac":[tên khoá...]} duy nhất, không giải thích. Nếu số khoá vượt khả năng đầu ra, ưu tiên khoá có soDong lớn nhất và ghi trong "khongChac" các tiêu chí còn bỏ sót.
+
+=== (A) KHOÁ ĐÃ CÓ ===
+dienAp(SO,V) điện áp
+dongDien(SO,A) dòng điện (định mức)
+congSuat(SO,W) công suất
+tanSo(SO,Hz) tần số / dải tần
+luuLuong(SO,m3/h) lưu lượng
+dungTichXiLanh(SO,cc) dung tích xi lanh
+khoiLuong(SO,kg) khối lượng
+duongKinh(SO,mm) đường kính (ngoài)
+duongKinhTrong(SO,mm) đường kính trong (cửa nạp/cửa thoát, DN)
+duongKinhLoi(SO,mm) đường kính lõi (mỗi lõi dẫn điện)
+chieuCao(SO,mm) chiều cao
+kichThuoc(SO,mm) kích thước (dài x rộng x cao)
+chieuDaiCuon(SO,m) chiều dài (hàng dài: dây, cáp, ống, cuộn)
+daGanDauNoi(CO_KHONG) đã gắn đầu nối
+coCachDien(CO_KHONG) có cách điện
+coBoXuLyLapTrinh(CO_KHONG) có trang bị bộ xử lý lập trình
+coKhungChupQuaDau(CO_KHONG) có khung chụp qua đầu
+hieuChinhThiLuc(CO_KHONG) hiệu chỉnh thị lực (kính thuốc)
+chongNang(CO_KHONG) chống nắng (kính râm)
+coChucNangGhi(CO_KHONG) có chức năng ghi (hình/âm)
+daGhi(CO_KHONG) đã ghi (có dữ liệu)
+coLuoiBaoVe(CO_KHONG) có lưới bảo vệ
+coManHinh(CO_KHONG) có màn hình hiển thị
+coCamera(CO_KHONG) có camera
+coBanh(CO_KHONG) có bánh xe
+hoatDongBangDien(CO_KHONG) hoạt động bằng điện
+coKetHopThietBiThu(CO_KHONG) kết hợp thiết bị thu
+coGiaNhiet(CO_KHONG) có gia nhiệt
+laBoPhan(CO_KHONG) là bộ phận (không phải hàng hoàn chỉnh)
+datChim(CO_KHONG) loại đặt chìm
+coKhoangPhaTron(CO_KHONG) có khoang pha trộn lưu chất
+loaiDongDien(LIET_KE) loại dòng điện
+soPha(LIET_KE) số pha
+kieuDotChay(LIET_KE) kiểu đốt cháy của động cơ piston
+nguonSang(LIET_KE) nguồn sáng
+nguonNangLuong(LIET_KE) nguồn năng lượng
+cachDieuKhien(LIET_KE) cách điều khiển / vận hành
+kieuBom(LIET_KE) kiểu bơm
+loaiRoLe(LIET_KE) loại rơ le
+loaiCongTac(LIET_KE) loại thiết bị đóng ngắt (8536.50)
+loaiPhichOCam(LIET_KE) loại phích cắm / ổ cắm (8536.69)
+phamViSuDung(LIET_KE) phạm vi sử dụng
+mauHienThi(LIET_KE) màu hiển thị
+kieuDongCoDien(LIET_KE) kiểu động cơ điện (8501.10)
+tinhTrang(LIET_KE) tình trạng hàng
+chatLieu(CHAT_LIEU_THEO_VI_TRI) chất liệu (theo vị trí)
+dungCho(CONG_DUNG) dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)
+congDung(CONG_DUNG) công dụng / mục đích
+tenLoai(TEN_LOAI) tên loại hàng
+nhanHieu(TEN_LOAI) nhãn hiệu
+model(TEN_LOAI) model
+kyMaHieu(TEN_LOAI) ký, mã hiệu
+nhaSanXuat(TEN_LOAI) nhà sản xuất
+chiHoacChuYeu(CO_KHONG) chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)
+thietKeChoTreEm(CO_KHONG) được thiết kế chủ yếu cho trẻ em
+daNapChuongTrinh(CO_KHONG) đã nạp chương trình/firmware (bo mạch, vi điều khiển)
+soLoi(SO,lõi) số lõi dẫn (ruột dẫn)
+soSoi(SO,sợi) số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ "sợi")
+tiLe(SO,lần) tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)
+phuongPhapCheTao(LIET_KE) phương pháp chế tạo
+phuongThucTruyenDan(LIET_KE) phương thức truyền dẫn
+daXuLyBeMat(CO_KHONG) đã được xử lý bề mặt
+nhienLieu(LIET_KE) nhiên liệu / nguồn nhiệt (bếp, lò)
+phuongPhapIn(LIET_KE) phương pháp in (vải, hàng dệt)
+tinhDanHoi(CO_KHONG) đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)
+loaiSoiDet(LIET_KE) loại xơ/sợi dệt (vật liệu dệt chủ yếu)
+doDay(SO,mm) độ dày
+congSuatBieuKien(SO,kVA) công suất biểu kiến
+dangNguyenSinh(LIET_KE) dạng vật lý nguyên sinh của polyme
+daLapRap(CO_KHONG) đã lắp ráp
+dungTich(SO,lít) dung tích chứa
+sanLuongHoi(SO,tấn/giờ) sản lượng hơi / công suất hơi
+theTich(SO,cm3) thể tích ngoài / thể tích bên ngoài
+heDienHoa(LIET_KE) hệ điện hóa của pin
+dungLuong(SO,Ah) dung lượng phóng điện
+daHoaDeo(CO_KHONG) đã hóa dẻo
+coBoLoc(CO_KHONG) đã lắp bộ phận lọc
+hamLuongCarbon(SO,%) hàm lượng carbon
+gioiHanChay(SO,psi) giới hạn chảy
+chieuRong(SO,mm) chiều rộng
+khaNangChiuApLuc(SO,psi) khả năng chịu áp lực
+duongCheoNgoai(SO,mm) đường chéo ngoài mặt cắt ngang
+coRen(CO_KHONG) có ren (ở đầu hoặc thân ống)
+doBenKeo(SO,MPa) độ bền kéo
+hamLuongNiken(SO,%) hàm lượng niken
+lopMaPhu(LIET_KE) lớp mạ hoặc tráng phủ bề mặt
+
+=== (B) HỆ ĐƠN VỊ ĐÃ CÓ ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"], "phanTram": ["%"], "apSuat": ["psi", "MPa"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+
+=== (D) CÁC PN6 (mã 8 số + mô tả nguyên văn) ===
+## 010130
+01013010 Loại thuần chủng để nhân giống
+01013090 Loại khác
+## 010229
+01022911 Bò thiến (SEN)
+01022919 Loại khác
+01022990 Loại khác
+## 010290
+01029010 Loại thuần chủng để nhân giống
+01029090 Loại khác
+## 010410
+01041010 Loại thuần chủng để nhân giống
+01041090 Loại khác
+## 010420
+01042010 Loại thuần chủng để nhân giống
+01042090 Loại khác
+## 010511
+01051110 Để nhân giống (SEN)
+01051190 Loại khác
+## 010512
+01051210 Để nhân giống (SEN)
+01051290 Loại khác
+## 010513
+01051310 Để nhân giống (SEN)
+01051390 Loại khác
+## 010514
+01051410 Để nhân giống (SEN)
+01051490 Loại khác
+## 010515
+01051510 Để nhân giống (SEN)
+01051590 Loại khác
+## 010594
+01059410 Để nhân giống (SEN), trừ gà chọi
+01059441 Khối lượng không quá 2 kg
+01059449 Loại khác
+01059491 Khối lượng không quá 2 kg
+01059499 Loại khác
+## 010599
+01059910 Vịt, ngan để nhân giống (SEN)
+01059920 Vịt, ngan loại khác
+01059930 Ngỗng, gà tây và gà lôi để nhân giống (SEN)
+01059940 Ngỗng, gà tây và gà lôi loại khác
+## 010612
+01061210 Cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ cá voi Cetacea); lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+01061220 Hải cẩu, sư tử biển và hải mã (con moóc) (động vật có vú thuộc phân bộ Pinnipedia)
+## 020714
+02071410 Cánh
+02071420 Đùi
+02071430 Gan
+02071491 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+02071499 Loại khác
+## 020727
+02072710 Gan
+02072791 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+02072799 Loại khác
+## 020745
+02074510 Gan béo
+02074590 Loại khác
+## 020755
+02075510 Gan béo
+02075590 Loại khác
+## 020760
+02076010 Chưa chặt mảnh, tươi hoặc ướp lạnh
+02076020 Chưa chặt mảnh, đông lạnh
+02076030 Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh
+02076040 Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh
+## 020840
+02084010 Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+02084090 Loại khác
+## 020890
+02089010 Đùi ếch
+02089090 Loại khác
+## 021019
+02101930 Thịt lợn muối xông khói (bacon); thịt mông đùi (hams) không xương
+02101990 Loại khác
+## 021092
+02109210 Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+02109290 Loại khác
+## 021099
+02109910 Thịt gà thái miếng đã được làm khô đông lạnh (SEN)
+02109920 Da lợn khô
+02109990 Loại khác
+## 030111
+03011110 Cá bột
+03011191 Cá chép Koi (Cyprinus carpio)
+03011192 Cá vàng (Carassius auratus)
+03011193 Cá chọi Thái Lan (Beta splendens)
+03011195 Cá rồng (Scleropages formosus)
+03011199 Loại khác
+## 030119
+03011910 Cá bột
+03011990 Loại khác
+## 030193
+03019321 Để nhân giống, trừ cá bột (SEN)
+03019322 Cá bột
+03019329 Loại khác
+03019331 Để nhân giống, trừ cá bột (SEN)
+03019332 Cá bột
+03019339 Loại khác
+## 030199
+03019911 Để nhân giống (SEN)
+03019919 Loại khác
+03019922 Cá chép khác, để nhân giống (SEN)
+03019923 Cá chép loại khác (SEN)
+03019924 Loại khác, để nhân giống
+03019929 Loại khác
+03019931 Cá măng biển để nhân giống (SEN)
+03019932 Cá măng biển, loại khác (SEN)
+03019933 Cá mú chấm nhỏ (Plectropomus leopardus)(SEN)
+03019934 Cá mú hoa nâu/cá mú cọp (Epinephelus fuscoguttatus) (SEN)
+03019935 Cá mú dẹt (Cromileptes altivelis) (SEN)
+03019936 Cá mú loại khác
+03019941 Cá rô phi (Oreochromis spp.)(SEN)
+03019942 Cá chép khác, để nhân giống (SEN)
+03019949 Loại khác
+03019950 Cá biển khác
+03019990 Loại khác
+## 030272
+03027210 Cá tra đuôi vàng (Pangasius pangasius)
+03027290 Loại khác
+## 030289
+03028911 Cá mú
+03028912 Cá bạc (Pentaprion longimanus)
+03028913 Cá mối hoa (Trachinocephalus myops)
+03028914 Cá hố savalai (Lepturacanthus savala), cá đù Belanger (Johnius belangerii), cá đù Reeve (Chrysochir aureus) và cá đù mắt to (Pennahia anea)
+03028915 Cá nhụ Ấn Độ (Polynemus indicus)
+03028916 Cá sòng gió (Megalaspis cordyla), cá hiên chấm (Drepane punctata) và cá nhồng lớn (Sphyraena barracuda)
+03028917 Cá chim đen (Parastromatus niger)
+03028918 Cá hồng bạc (Lutjanus argentimaculatus)
+03028919 Loại khác
+03028922 Cá đòng đong đầm lầy (Puntius chola)
+03028923 Cá sạo bạc (Pomadasys argenteus)
+03028927 Cá mòi Hilsa (Tenualosa ilisha)
+03028928 Cá leo (Wallago attu) và cá tra dầu (Sperata seenghala)
+03028929 Loại khác
+## 030345
+03034510 Cá ngừ vây xanh Đại Tây Dương (Thunnus thynnus)
+03034590 Cá ngừ vây xanh Thái Bình Dương (Thunnus orientalis)
+## 030349
+03034910 Cá ngừ bò (Thunnus tonggol) (SEN)
+03034990 Loại khác
+## 030354
+03035410 Cá nục hoa (Scomber scombrus, Scomber australasicus) (SEN)
+03035420 Cá thu ngừ Thái Bình Dương (sa ba) (Scomber japonicus) (SEN)
+## 030359
+03035910 Cá bạc má (Rastrelliger kanagurta); cá bạc má đảo (Rastrelliger faughni)
+03035920 Cá chim trắng (Pampus spp.)
+03035990 Loại khác
+## 030389
+03038911 Cá mú
+03038913 Cá mối hoa (Trachinocephalus myops)
+03038914 Cá hố savalai (Lepturacanthus savala), cá đù Belanger (Johnius belangerii), cá đù Reeve (Chrysochir aureus) và cá đù mắt to (Pennahia anea)
+03038915 Cá nhụ Ấn Độ (Polynemus indicus)
+03038916 Cá sòng gió (Megalaspis cordyla), cá hiên chấm (Drepane punctata) và cá nhồng lớn (Sphyraena barracuda)
+03038917 Cá chim đen (Parastromatus niger)
+03038918 Cá hồng bạc (Lutjanus argentimaculatus)
+03038919 Loại khác
+03038922 Cá đòng đong đầm lầy (Puntius chola)
+03038923 Cá măng biển (Chanos chanos) (SEN)
+03038924 Cá sạo bạc (Pomadasys argenteus)
+03038927 Cá mòi Hilsa (Tenualosa ilisha)
+03038928 Cá leo (Wallago attu) và cá tra dầu (Sperata seenghala)
+03038929 Loại khác
+## 030489
+03048910 Cá nục heo cờ (Coryphaena hippurus) (SEN)
+03048990 Loại khác
+## 030499
+03049910 Surimi (thịt cá xay) (SEN)
+03049990 Loại khác
+## 030520
+03052010 Của cá nước ngọt, làm khô, muối hoặc ngâm nước muối
+03052090 Loại khác
+## 030539
+03053910 Cá nhói nước ngọt (Xenentodon cancila), cá phèn dải vàng (Upeneus vittatus) và cá khế lược mang dài (Ulua mentalis)
+03053920 Cá hố savalai (Lepturacanthus savala), cá đù Belanger (Johnius belangerii), cá đù Reeve (Chrysochir aureus) và cá đù mắt to (Pennahia anea)
+03053991 Của cá nước ngọt
+03053992 Của cá biển
+03053999 Loại khác
+## 030549
+03054910 Cá ngừ vằn (cá ngừ sọc dưa) (Katsuwonus pelamis)
+03054990 Loại khác
+## 030559
+03055921 Cá cơm (cá trỏng) (Stolephorus spp., Coilia spp., Setipinna spp., Lycothrissa spp., Thryssa spp. và Encrasicholina spp.) (SEN)
+03055929 Loại khác
+03055990 Loại khác
+## 030569
+03056910 Cá biển
+03056990 Loại khác
+## 030571
+03057110 Khô hoặc hun khói
+03057190 Loại khác
+## 030572
+03057211 Của cá tuyết (SEN)
+03057219 Loại khác (SEN)
+03057291 Của cá tuyết
+03057299 Loại khác
+## 030579
+03057910 Của cá tuyết
+03057990 Loại khác
+## 030611
+03061110 Hun khói
+03061190 Loại khác
+## 030612
+03061210 Hun khói
+03061290 Loại khác
+## 030614
+03061411 Cua, ghẹ vỏ mềm
+03061419 Loại khác
+03061491 Ghẹ (thuộc họ Portunidae)
+03061492 Cua hoàng đế/cua vua Alaska (thuộc họ Lithodidae)
+03061493 Cua tuyết (thuộc họ Origoniidae)
+03061499 Loại khác
+## 030617
+03061711 Đã bỏ đầu
+03061719 Loại khác
+03061721 Đã bỏ đầu, còn đuôi
+03061722 Đã bỏ đầu, bỏ đuôi
+03061729 Loại khác
+03061730 Tôm càng xanh (Macrobrachium rosenbergii)
+03061790 Loại khác
+## 030631
+03063110 Để nhân giống
+03063120 Loại khác, sống
+03063130 Tươi hoặc ướp lạnh
+## 030632
+03063210 Để nhân giống
+03063220 Loại khác, sống
+03063230 Tươi hoặc ướp lạnh
+## 030633
+03063311 Sống
+03063312 Tươi hoặc ướp lạnh
+03063391 Sống
+03063392 Tươi hoặc ướp lạnh
+## 030635
+03063510 Để nhân giống (SEN)
+03063520 Loại khác, sống
+03063530 Tươi hoặc ướp lạnh
+## 030636
+03063611 Tôm sú (Penaeus monodon) (SEN)
+03063612 Tôm thẻ chân trắng (Litopenaeus vannamei) (SEN)
+03063613 Tôm càng xanh (Macrobrachium rosenbergii) (SEN)
+03063619 Loại khác (SEN)
+03063621 Tôm sú (Penaeus monodon)
+03063622 Tôm thẻ chân trắng (Litopenaeus vannamei)
+03063623 Tôm càng xanh (Macrobrachium rosenbergii)
+03063629 Loại khác
+03063631 Tôm sú (Penaeus monodon)
+03063632 Tôm thẻ chân trắng (Litopenaeus vannamei)
+03063633 Tôm càng xanh (Macrobrachium rosenbergii)
+03063639 Loại khác
+## 030639
+03063910 Sống
+03063920 Tươi hoặc ướp lạnh
+## 030691
+03069121 Hun khói
+03069129 Loại khác
+03069131 Hun khói
+03069139 Loại khác
+## 030692
+03069221 Hun khói
+03069229 Loại khác
+03069231 Hun khói
+03069239 Loại khác
+## 030693
+03069321 Hun khói
+03069329 Loại khác
+03069331 Hun khói
+03069339 Loại khác
+## 030694
+03069421 Hun khói
+03069429 Loại khác
+03069431 Hun khói
+03069439 Loại khác
+## 030695
+03069521 Còn vỏ, đã hấp chín hoặc luộc chín trong nước
+03069529 Loại khác
+03069530 Loại khác
+## 030699
+03069921 Hun khói
+03069929 Loại khác
+03069931 Hun khói
+03069939 Loại khác
+## 030711
+03071110 Sống
+03071120 Tươi hoặc ướp lạnh
+## 030719
+03071920 Khô, muối hoặc ngâm nước muối
+03071930 Hun khói
+## 030721
+03072110 Sống
+03072120 Tươi hoặc ướp lạnh
+## 030729
+03072930 Khô, muối hoặc ngâm nước muối
+03072940 Hun khói
+## 030731
+03073110 Sống
+03073120 Tươi hoặc ướp lạnh
+## 030739
+03073930 Khô, muối hoặc ngâm nước muối
+03073940 Hun khói
+## 030742
+03074211 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074219 Loại khác
+03074221 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074229 Loại khác
+## 030743
+03074310 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074390 Loại khác
+## 030749
+03074921 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074929 Loại khác
+03074931 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074939 Loại khác
+## 030751
+03075110 Sống
+03075120 Tươi hoặc ướp lạnh
+## 030759
+03075920 Khô, muối hoặc ngâm nước muối
+03075930 Hun khói
+## 030760
+03076010 Sống
+03076020 Tươi, ướp lạnh hoặc đông lạnh
+03076040 Khô, muối hoặc ngâm nước muối
+03076050 Hun khói
+## 030771
+03077110 Sống
+03077120 Tươi hoặc ướp lạnh
+## 030779
+03077930 Khô, muối hoặc ngâm nước muối
+03077940 Hun khói
+## 030781
+03078110 Sống
+03078120 Tươi hoặc ướp lạnh
+## 030782
+03078210 Sống
+03078220 Tươi hoặc ướp lạnh
+## 030787
+03078710 Khô, muối hoặc ngâm nước muối
+03078720 Hun khói
+## 030788
+03078810 Khô, muối hoặc ngâm nước muối
+03078820 Hun khói
+## 030791
+03079110 Sống
+03079120 Tươi hoặc ướp lạnh
+## 030799
+03079930 Khô, muối hoặc ngâm nước muối
+03079940 Hun khói
+## 030811
+03081110 Sống
+03081120 Tươi hoặc ướp lạnh
+## 030819
+03081920 Khô, muối hoặc ngâm nước muối
+03081930 Hun khói
+## 030821
+03082110 Sống
+03082120 Tươi hoặc ướp lạnh
+## 030829
+03082920 Khô, muối hoặc ngâm nước muối
+03082930 Hun khói
+## 030830
+03083010 Sống
+03083020 Tươi hoặc ướp lạnh
+03083030 Đông lạnh
+03083040 Khô, muối hoặc ngâm nước muối
+03083050 Hun khói
+## 030890
+03089010 Sống
+03089020 Tươi hoặc ướp lạnh
+03089030 Đông lạnh
+03089040 Khô, muối hoặc ngâm nước muối
+03089050 Hun khói
+## 030990
+03099011 Tươi hoặc ướp lạnh
+03099012 Đông lạnh
+03099019 Loại khác
+03099021 Tươi hoặc ướp lạnh
+03099022 Đông lạnh
+03099029 Loại khác
+03099090 Của động vật thủy sinh không xương sống khác
+## 040110
+04011010 Dạng lỏng
+04011090 Loại khác
+## 040120
+04012010 Dạng lỏng
+04012090 Loại khác
+## 040140
+04014010 Sữa dạng lỏng
+04014020 Sữa dạng đông lạnh
+04014090 Loại khác
+## 040150
+04015010 Dạng lỏng
+04015090 Loại khác
+## 040210
+04021041 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+04021042 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+04021049 Loại khác
+04021091 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+04021092 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+04021099 Loại khác
+## 040221
+04022120 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+04022130 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+04022190 Loại khác
+## 040229
+04022920 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+04022930 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+04022990 Loại khác
+## 040320
+04032011 Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao
+04032019 Loại khác
+04032091 Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao
+04032099 Loại khác
+## 040390
+04039010 Buttermilk
+04039090 Loại khác
+## 040410
+04041011 Whey, thích hợp sử dụng cho người (SEN)
+04041019 Loại khác
+04041091 Whey, thích hợp sử dụng cho người (SEN)
+04041099 Loại khác
+## 040590
+04059010 Chất béo khan của bơ
+04059020 Dầu bơ (butteroil)
+04059030 Ghee
+04059090 Loại khác
+## 040610
+04061010 Pho mát tươi (chưa ủ chín hoặc chưa xử lý), kể cả pho mát whey
+04061020 Curd
+## 040620
+04062010 Đóng gói với trọng lượng cả bì trên 20 kg
+04062090 Loại khác
+## 040711
+04071110 Để nhân giống
+04071190 Loại khác
+## 040719
+04071911 Để nhân giống
+04071919 Loại khác
+04071991 Để nhân giống
+04071999 Loại khác
+## 040729
+04072910 Của vịt, ngan
+04072990 Loại khác
+## 040790
+04079010 Của gà thuộc loài Gallus domesticus
+04079020 Của vịt, ngan
+04079090 Loại khác
+## 041090
+04109010 Tổ yến
+04109020 Trứng rùa
+04109090 Loại khác
+## 050510
+05051010 Lông vũ của vịt, ngan
+05051090 Loại khác
+## 050590
+05059010 Lông vũ của vịt, ngan
+05059090 Loại khác
+## 050790
+05079020 Mai động vật họ rùa
+05079090 Loại khác
+## 050800
+05080020 Mai, vỏ động vật thân mềm, động vật giáp xác hoặc động vật da gai
+05080090 Loại khác
+## 051191
+05119110 Sẹ và bọc trứng
+05119120 Trứng Artemia (trứng Brine shrimp)
+05119130 Da cá
+05119190 Loại khác
+## 051199
+05119910 Tinh dịch động vật nuôi
+05119920 Trứng tằm
+05119930 Bọt biển thiên nhiên
+05119990 Loại khác
+## 060120
+06012010 Cây rau diếp xoăn
+06012020 Rễ rau diếp xoăn
+06012090 Loại khác
+## 060210
+06021010 Của cây phong lan
+06021020 Của cây cao su
+06021090 Loại khác
+## 060290
+06029010 Cành giâm và cành ghép phong lan có rễ
+06029020 Cây phong lan giống
+06029040 Gốc cây cao su có chồi (SEN)
+06029050 Cây cao su giống (SEN)
+06029060 Chồi mọc từ gỗ cây cao su (SEN)
+06029090 Loại khác
+## 060420
+06042010 Rêu và địa y
+06042090 Loại khác
+## 060490
+06049010 Rêu và địa y
+06049090 Loại khác
+## 070190
+07019010 Loại thường dùng để làm khoai tây chiên (chipping potatoes) (SEN)
+07019090 Loại khác
+## 070310
+07031011 Củ giống
+07031019 Loại khác
+07031021 Củ giống
+07031029 Loại khác
+## 070320
+07032010 Củ giống
+07032090 Loại khác
+## 070390
+07039010 Củ giống
+07039090 Loại khác
+## 070410
+07041010 Súp lơ (1) (Caulifower)
+07041020 Đầu súp lơ xanh (headed broccoli)
+07041090 Súp lơ xanh khác
+## 070490
+07049010 Bắp cải cuộn (cuộn tròn) (SEN)
+07049020 Cải bẹ xanh (Chinese mustard) (SEN)
+07049030 Bắp cải khác
+07049090 Loại khác
+## 070610
+07061010 Cà rốt
+07061020 Củ cải
+## 070820
+07082010 Đậu Pháp (SEN)
+07082020 Đậu dài
+07082090 Loại khác
+## 070959
+07095920 Nấm cục trừ loại Tuber spp.
+07095990 Loại khác
+## 070960
+07096010 Quả ớt (chillies) (quả thuộc chi Capsicum)
+07096090 Loại khác
+## 070999
+07099910 Ngô ngọt
+07099920 Đậu bắp (Okra)
+07099990 Loại khác
+## 071120
+07112010 Đã bảo quản bằng khí sunphurơ
+07112090 Loại khác
+## 071140
+07114010 Đã bảo quản bằng khí sunphurơ
+07114090 Loại khác
+## 071151
+07115110 Đã bảo quản bằng khí sunphurơ
+07115190 Loại khác
+## 071159
+07115910 Đã bảo quản bằng khí sunphurơ
+07115990 Loại khác
+## 071190
+07119010 Ngô ngọt
+07119020 Quả ớt (chillies) (quả thuộc chi Capsicum)
+07119030 Nụ bạch hoa
+07119040 Hành tây, đã được bảo quản bằng khí sunphurơ
+07119050 Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ
+07119060 Loại khác, đã được bảo quản bằng khí sunphurơ
+07119090 Loại khác
+## 071239
+07123910 Nấm cục (truffles)
+07123990 Loại khác
+## 071290
+07129010 Tỏi
+07129020 Ngô ngọt
+07129090 Loại khác
+## 071310
+07131010 Phù hợp để gieo trồng
+07131090 Loại khác
+## 071320
+07132010 Phù hợp để gieo trồng
+07132090 Loại khác
+## 071331
+07133110 Phù hợp để gieo trồng
+07133190 Loại khác
+## 071332
+07133210 Phù hợp để gieo trồng
+07133290 Loại khác
+## 071333
+07133310 Phù hợp để gieo trồng
+07133390 Loại khác
+## 071334
+07133410 Phù hợp để gieo trồng
+07133490 Loại khác
+## 071335
+07133510 Phù hợp để gieo trồng
+07133590 Loại khác
+## 071339
+07133910 Phù hợp để gieo trồng
+07133990 Loại khác
+## 071340
+07134010 Phù hợp để gieo trồng
+07134090 Loại khác
+## 071350
+07135010 Phù hợp để gieo trồng
+07135090 Loại khác
+## 071360
+07136010 Phù hợp để gieo trồng
+07136090 Loại khác
+## 071390
+07139010 Phù hợp để gieo trồng
+07139090 Loại khác
+## 071410
+07141011 Lát đã được làm khô
+07141019 Loại khác
+07141091 Đông lạnh
+07141099 Loại khác
+## 071420
+07142010 Đông lạnh
+07142090 Loại khác
+## 071430
+07143010 Đông lạnh
+07143090 Loại khác
+## 071440
+07144010 Đông lạnh
+07144090 Loại khác
+## 071450
+07145010 Đông lạnh
+07145090 Loại khác
+## 071490
+07149011 Đông lạnh
+07149019 Loại khác
+07149091 Đông lạnh
+07149099 Loại khác
+## 080119
+08011910 Quả dừa non (SEN)
+08011990 Loại khác
+## 080212
+08021210 Đã chần (blanched) (SEN)
+08021290 Loại khác
+## 080310
+08031010 Tươi
+08031020 Khô
+## 080390
+08039010 Chuối ngự (Lady's finger banana) (SEN)
+08039020 Chuối Cavendish (Musa acuminata) (SEN)
+08039030 Chuối Chestnut (Chestnut banana) (lai giữa Musa acuminata và Musa balbisiana, giống Berangan) (SEN)
+08039090 Loại khác
+## 080450
+08045010 Quả ổi
+08045021 Tươi
+08045022 Khô
+08045030 Quả măng cụt
+## 080510
+08051010 Tươi
+08051020 Khô
+## 080550
+08055010 Quả chanh vàng (lemon) (Citrus limon, Citrus limonum) (SEN)
+08055020 Quả chanh xanh (chanh ta Citrus aurantifolia, chanh không hạt Citrus latifolia)(SEN)
+## 080940
+08094010 Quả mận
+08094020 Quả mận gai
+## 081090
+08109010 Quả nhãn; Quả nhãn Mata Kucing (SEN)
+08109020 Quả vải
+08109030 Quả chôm chôm
+08109040 Quả bòn bon (Lanzones)
+08109050 Quả mít (kể cả mít Cempedak và mít Nangka)
+08109060 Quả me
+08109070 Quả khế
+08109091 Salacca (quả da rắn)
+08109092 Quả thanh long
+08109093 Quả hồng xiêm (quả sapôchê)
+08109094 Quả lựu (Punica spp.), quả mãng cầu hoặc quả na (Annona spp.), quả roi (bell fruit) (Syzygium spp., Eugenia spp.), quả thanh trà (Bouea spp.), quả chanh leo (dây) (Passiflora spp.), quả sấu đỏ (Sandoricum spp.), quả táo ta (Ziziphus spp.) và quả dâu da đất (Baccaurea spp.) (SEN)
+08109099 Loại khác
+## 081290
+08129010 Quả dâu tây
+08129090 Loại khác
+## 081340
+08134010 Quả nhãn
+08134020 Quả me
+08134090 Loại khác
+## 081350
+08135010 Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+08135020 Quả hạch (nuts) khác chiếm đa số về khối lượng
+08135030 Quả chà là chiếm đa số về khối lượng
+08135040 Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+08135090 Loại khác
+## 090111
+09011120 Arabica (SEN)
+09011130 Robusta (SEN)
+09011190 Loại khác
+## 090112
+09011220 Arabica (SEN) hoặc Robusta (SEN)
+09011290 Loại khác
+## 090121
+09012111 Arabica (SEN)
+09012112 Robusta (SEN)
+09012119 Loại khác
+09012120 Đã xay
+## 090122
+09012210 Chưa xay
+09012220 Đã xay
+## 090190
+09019010 Vỏ quả và vỏ lụa cà phê
+09019020 Các chất thay thế có chứa cà phê
+## 090210
+09021010 Lá chè
+09021090 Loại khác
+## 090220
+09022010 Lá chè
+09022090 Loại khác
+## 090230
+09023010 Lá chè
+09023090 Loại khác
+## 090240
+09024010 Lá chè
+09024090 Loại khác
+## 090411
+09041110 Trắng
+09041120 Đen
+09041190 Loại khác
+## 090412
+09041210 Trắng
+09041220 Đen
+09041290 Loại khác
+## 090421
+09042110 Quả ớt (chillies) (quả thuộc chi Capsicum)
+09042190 Loại khác
+## 090422
+09042210 Quả ớt (chillies) (quả thuộc chi Capsicum)
+09042290 Loại khác
+## 090961
+09096110 Của hoa hồi anise (tiểu hồi)
+09096120 Của hoa hồi badian (đại hồi)
+09096130 Của cây ca-rum (caraway)
+09096190 Loại khác
+## 090962
+09096210 Của hoa hồi anise (tiểu hồi)
+09096220 Của hoa hồi badian (đại hồi)
+09096230 Của cây ca-rum (caraway)
+09096290 Loại khác
+## 091091
+09109110 Cà ri (curry)
+09109190 Loại khác
+## 091099
+09109910 Húng tây, cỏ xạ hương; lá nguyệt quế
+09109990 Loại khác
+## 100199
+10019911 Meslin (SEN)
+10019912 Hạt lúa mì đã bỏ lớp vỏ ngoài cùng (SEN)
+10019919 Loại khác (SEN)
+10019991 Meslin
+10019999 Loại khác (SEN)
+## 100590
+10059010 Loại dùng để rang nổ (popcorn) (SEN)
+10059091 Thích hợp sử dụng cho người (SEN)
+10059099 Loại khác
+## 100610
+10061010 Phù hợp để gieo trồng
+10061090 Loại khác
+## 100620
+10062010 Gạo Hom Mali (SEN)
+10062090 Loại khác
+## 100630
+10063030 Gạo nếp (SEN)
+10063040 Gạo Hom Mali (SEN)
+10063050 Gạo Basmati (SEN)
+10063060 Gạo Malys (SEN)
+10063070 Gạo thơm khác (SEN)
+10063091 Gạo đồ (1)
+10063099 Loại khác
+## 100640
+10064010 Loại dùng làm thức ăn chăn nuôi (SEN)
+10064090 Loại khác (SEN)
+## 110100
+11010011 Tăng cường vi chất dinh dưỡng (SEN)
+11010019 Loại khác
+11010020 Bột meslin
+## 110290
+11029010 Bột gạo
+11029020 Bột lúa mạch đen
+11029090 Loại khác
+## 110319
+11031910 Của meslin
+11031920 Của gạo
+11031990 Loại khác
+## 110419
+11041910 Của ngô
+11041990 Loại khác
+## 110429
+11042920 Của lúa mạch
+11042990 Loại khác
+## 110620
+11062010 Từ sắn
+11062020 Từ cọ sago
+11062090 Loại khác
+## 110819
+11081910 Tinh bột cọ sago
+11081990 Loại khác
+## 120710
+12071010 Hạt cọ phù hợp để gieo/trồng (SEN)
+12071030 Nhân hạt cọ
+12071090 Loại khác
+## 120740
+12074010 Loại ăn được
+12074090 Loại khác
+## 120799
+12079940 Hạt illipe (quả hạch illipe)
+12079950 Chùm quả tươi của cây cọ dầu
+12079990 Loại khác
+## 120929
+12092910 Hạt cỏ đuôi mèo (Phleum pratense)
+12092990 Loại khác
+## 120991
+12099110 Hạt hành tây
+12099190 Loại khác
+## 120999
+12099920 Hạt cây cao su
+12099930 Hạt cây kenaf
+12099990 Loại khác
+## 121120
+12112010 Tươi hoặc khô
+12112090 Loại khác
+## 121190
+12119011 Cây gai dầu, đã cắt, nghiền hoặc dạng bột
+12119012 Cây gai dầu, ở dạng khác
+12119013 Rễ cây ba gạc hoa đỏ (SEN)
+12119015 Rễ cây cam thảo
+12119017 Loại khác, tươi hoặc khô, đã cắt, nghiền hoặc dạng bột
+12119018 Loại khác, đã cắt, nghiền hoặc dạng bột
+12119019 Loại khác
+12119091 Cây kim cúc, đã cắt, nghiền hoặc dạng bột
+12119092 Cây kim cúc, ở dạng khác
+12119094 Mảnh gỗ đàn hương
+12119095 Mảnh gỗ trầm hương (Gaharu) (SEN)
+12119097 Vỏ cây persea (Persea Kurzii Kosterm) (SEN)
+12119098 Loại khác, đã cắt, nghiền hoặc dạng bột
+12119099 Loại khác
+## 121221
+12122111 Eucheuma spinosum(SEN)
+12122112 Eucheuma cottonii (SEN)
+12122113 Gracilaria spp.
+12122119 Loại khác
+12122190 Loại khác
+## 121229
+12122911 Loại dùng làm dược phẩm
+12122919 Loại khác
+12122920 Loại khác, tươi, ướp lạnh hoặc khô
+12122930 Loại khác, đông lạnh
+## 121293
+12129310 Phù hợp để làm giống
+12129390 Loại khác
+## 121299
+12129910 Hạt và nhân hạt của quả mơ, đào (kể cả xuân đào) hoặc mận (SEN)
+12129990 Loại khác
+## 130190
+13019030 Nhựa cây gai dầu
+13019040 Nhựa cánh kiến đỏ
+13019090 Loại khác
+## 130211
+13021110 Bột thuốc phiện (Pulvis opii)
+13021190 Loại khác
+## 130219
+13021920 Chiết xuất và cồn thuốc của cây gai dầu
+13021940 Nhựa và các chiết xuất thực vật từ hoa cúc hoặc rễ cây có chứa rotenone
+13021950 Sơn mài (sơn mài tự nhiên)
+13021990 Loại khác
+## 130239
+13023911 Dạng bột, tinh chế một phần (SEN)
+13023912 Dạng bột, đã tinh chế (SEN)
+13023913 Carrageen dạng mảnh đã xử lý kiềm (ATCC) (SEN)
+13023919 Loại khác
+13023990 Loại khác
+## 140120
+14012010 Nguyên cây
+14012021 Đường kính không quá 12 mm (SEN)
+14012029 Loại khác (SEN)
+14012030 Vỏ (cật) đã tách (SEN)
+14012090 Loại khác
+## 140490
+14049020 Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm
+14049030 Bông gòn
+14049091 Vỏ hạt cọ
+14049092 Chùm không quả của cây cọ dầu
+14049099 Loại khác
+## 150290
+15029010 Loại ăn được
+15029090 Loại khác
+## 150300
+15030010 Stearin mỡ lợn hoặc oleostearin
+15030090 Loại khác
+## 150410
+15041020 Các phần phân đoạn thể rắn
+15041090 Loại khác
+## 150420
+15042010 Các phần phân đoạn thể rắn
+15042090 Loại khác
+## 150500
+15050010 Lanolin
+15050090 Loại khác
+## 150790
+15079010 Các phần phân đoạn của dầu đậu tương chưa tinh chế
+15079020 Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)
+15079090 Loại khác
+## 150920
+15092010 Đóng gói với khối lượng tịnh không quá 30 kg
+15092090 Loại khác
+## 150990
+15099011 Đóng gói với khối lượng tịnh không quá 30 kg
+15099019 Loại khác
+15099091 Đóng gói với khối lượng tịnh không quá 30 kg
+15099099 Loại khác
+## 151090
+15109010 Dầu thô
+15109020 Các phần phân đoạn của dầu chưa tinh chế
+15109090 Loại khác
+## 151190
+15119020 Dầu tinh chế
+15119031 Có chỉ số iốt từ 30 trở lên, nhưng dưới 40
+15119032 Loại khác
+15119036 Đóng gói với khối lượng tịnh không quá 25kg
+15119037 Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60
+15119039 Loại khác
+15119041 Các phần phân đoạn thể rắn (SEN)
+15119042 Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)
+15119049 Loại khác (SEN)
+## 151219
+15121910 Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế
+15121920 Đã tinh chế
+15121990 Loại khác
+## 151229
+15122910 Các phần phân đoạn của dầu hạt bông chưa tinh chế
+15122990 Loại khác
+## 151311
+15131110 Dầu dừa nguyên chất (SEN)
+15131190 Loại khác
+## 151319
+15131910 Các phần phân đoạn của dầu dừa chưa tinh chế
+15131990 Loại khác
+## 151321
+15132110 Dầu hạt cọ (SEN)
+15132190 Loại khác
+## 151329
+15132911 Các phần phân đoạn thể rắn của dầu hạt cọ chưa tinh chế (SEN)
+15132912 Các phần phân đoạn thể rắn của dầu cọ ba-ba-su chưa tinh chế
+15132913 Loại khác, của dầu hạt cọ chưa tinh chế (olein hạt cọ) (SEN)
+15132914 Loại khác, của dầu cọ ba-ba-su chưa tinh chế
+15132991 Các phần phân đoạn thể rắn của dầu hạt cọ (SEN)
+15132992 Các phần phân đoạn thể rắn của dầu cọ ba-ba-su
+15132994 Olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+15132995 Dầu hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) (SEN)
+15132996 Loại khác, của dầu hạt cọ (SEN)
+15132997 Loại khác, của dầu cọ ba-ba-su
+## 151419
+15141910 Các phần phân đoạn của dầu chưa tinh chế
+15141920 Đã tinh chế
+15141990 Loại khác
+## 151499
+15149910 Các phần phân đoạn của dầu chưa tinh chế
+15149990 Loại khác
+## 151529
+15152911 Các phần phân đoạn thể rắn
+15152919 Loại khác
+15152991 Các phần phân đoạn thể rắn
+15152999 Loại khác
+## 151530
+15153010 Dầu thô
+15153090 Loại khác
+## 151550
+15155010 Dầu thô
+15155020 Các phần phân đoạn của dầu chưa tinh chế
+15155090 Loại khác
+## 151590
+15159011 Dầu thô (SEN)
+15159012 Các phần phân đoạn của dầu chưa tinh chế (SEN)
+15159019 Loại khác (SEN)
+15159021 Dầu thô
+15159022 Các phần phân đoạn của dầu chưa tinh chế
+15159029 Loại khác
+15159031 Dầu thô
+15159032 Các phần phân đoạn của dầu chưa tinh chế
+15159039 Loại khác
+15159091 Dầu thô
+15159092 Các phần phân đoạn của dầu chưa tinh chế
+15159099 Loại khác
+## 151610
+15161020 Đã tái este hóa
+15161090 Loại khác
+## 151620
+15162011 Của đậu tương
+15162012 Của ngô (maize)
+15162014 Của dừa
+15162017 Của lạc
+15162018 Của hạt lanh
+15162019 Loại khác
+15162021 Của quả cọ dầu, dạng thô
+15162022 Của quả cọ dầu, trừ dạng thô
+15162023 Của hạt cọ, dạng thô
+15162024 Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+15162025 Của olein hạt cọ, dạng thô
+15162026 Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+15162029 Loại khác
+15162031 Của lạc; của dừa; của đậu tương
+15162032 Của hạt lanh
+15162033 Của ô liu
+15162034 Của quả cọ dầu (SEN)
+15162035 Của hạt cọ (SEN)
+15162039 Loại khác
+15162041 Của hạt thầu dầu (sáp opal)
+15162042 Của dừa
+15162043 Của lạc
+15162044 Của hạt lanh
+15162045 Của ô liu
+15162046 Của quả cọ dầu (SEN)
+15162047 Của hạt cọ (SEN)
+15162048 Của đậu tương
+15162049 Loại khác
+15162051 Của hạt lanh
+15162052 Của ô liu
+15162053 Của đậu tương
+15162054 Của lạc, cọ dầu hoặc dừa
+15162059 Loại khác
+15162061 Dạng thô
+15162062 Đã tinh chế, tẩy và khử mùi (RBD)
+15162069 Loại khác
+15162091 Stearin cọ, có chỉ số iốt trên 48
+15162092 Của hạt lanh
+15162093 Của ô liu
+15162094 Của đậu tương
+15162096 Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)
+15162098 Của lạc, của cọ dầu hoặc của dừa
+15162099 Loại khác
+## 151710
+15171010 Đóng bao bì kín khí để bán lẻ
+15171090 Loại khác
+## 151790
+15179010 Chế phẩm giả ghee
+15179020 Margarin lỏng
+15179030 Của loại sử dụng như chế phẩm tách khuôn
+15179043 Shortening
+15179044 Chế phẩm giả mỡ lợn
+15179050 Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng
+15179061 Thành phần chủ yếu là dầu lạc
+15179062 Thành phần chủ yếu là dầu cọ thô
+15179063 Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh không quá 25kg
+15179064 Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh trên 25kg
+15179065 Thành phần chủ yếu là dầu hạt cọ
+15179066 Thành phần chủ yếu là olein hạt cọ
+15179067 Thành phần chủ yếu là dầu đậu tương hoặc dầu dừa
+15179068 Thành phần chủ yếu là dầu hạt illipe
+15179069 Loại khác
+15179080 Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng
+15179090 Loại khác
+## 151800
+15180012 Mỡ và dầu động vật
+15180014 Dầu lạc, dầu đậu tương, dầu cọ hoặc dầu dừa
+15180015 Dầu hạt lanh và các phần phân đoạn của dầu hạt lanh
+15180016 Dầu ô liu và các phần phân đoạn của dầu ô liu
+15180019 Loại khác
+15180020 Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật khác nhau
+15180032 Của dầu cọ hoặc olein hạt cọ, đã trung hòa hóa, tẩy và khử mùi (NBD) hoặc đã tinh chế, tẩy và khử mùi (RBD)
+15180033 Của hạt lanh
+15180034 Của ô liu
+15180035 Của lạc
+15180036 Của đậu tương hoặc dừa
+15180037 Của hạt bông
+15180038 Của quả cọ dầu hoặc của hạt cọ, loại khác
+15180039 Loại khác
+15180060 Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng và chất béo hoặc dầu thực vật hoặc các phần phân đoạn của chúng
+15180090 Loại khác
+## 152000
+15200010 Glyxerin thô
+15200090 Loại khác
+## 152190
+15219010 Sáp ong và sáp côn trùng khác
+15219020 Sáp cá nhà táng
+## 152200
+15220010 Chất nhờn
+15220090 Loại khác
+## 160100
+16010010 Đóng bao bì kín khí để bán lẻ
+16010090 Loại khác
+## 160210
+16021010 Chứa thịt lợn, đóng bao bì kín khí để bán lẻ
+16021090 Loại khác
+## 160231
+16023110 Đóng bao bì kín khí để bán lẻ
+16023191 Từ thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+16023199 Loại khác
+## 160232
+16023210 Ca-ri gà, đóng bao bì kín khí để bán lẻ
+16023290 Loại khác
+## 160241
+16024110 Đóng bao bì kín khí để bán lẻ
+16024190 Loại khác
+## 160242
+16024210 Đóng bao bì kín khí để bán lẻ
+16024290 Loại khác
+## 160249
+16024911 Đóng bao bì kín khí để bán lẻ
+16024919 Loại khác
+16024991 Đóng bao bì kín khí để bán lẻ
+16024999 Loại khác
+## 160250
+16025010 Đóng bao bì kín khí để bán lẻ
+16025090 Loại khác
+## 160290
+16029010 Ca-ri cừu, đóng bao bì kín khí để bán lẻ
+16029020 Các chế phẩm từ tiết
+16029090 Loại khác (SEN)
+## 160300
+16030010 Từ thịt
+16030090 Loại khác
+## 160411
+16041110 Đóng bao bì kín khí để bán lẻ
+16041190 Loại khác
+## 160412
+16041210 Đóng bao bì kín khí để bán lẻ
+16041290 Loại khác
+## 160413
+16041311 Đóng bao bì kín khí để bán lẻ
+16041319 Loại khác
+16041391 Đóng bao bì kín khí để bán lẻ
+16041399 Loại khác
+## 160414
+16041411 Từ cá ngừ đại dương
+16041419 Loại khác
+16041491 Cá ngừ đã làm chín sơ (SEN)
+16041499 Loại khác
+## 160415
+16041510 Đóng bao bì kín khí để bán lẻ
+16041590 Loại khác
+## 160416
+16041610 Đóng bao bì kín khí để bán lẻ
+16041690 Loại khác
+## 160417
+16041710 Đóng bao bì kín khí để bán lẻ
+16041790 Loại khác
+## 160418
+16041810 Đã chế biến để sử dụng ngay
+16041891 Đóng bao bì kín khí để bán lẻ
+16041899 Loại khác
+## 160419
+16041920 Cá sòng (horse mackerel), đóng bao bì kín khí để bán lẻ
+16041930 Loại khác, đóng bao bì kín khí để bán lẻ
+16041990 Loại khác
+## 160420
+16042020 Xúc xích cá
+16042030 Cá viên
+16042040 Cá dạng bột nhão
+16042091 Đóng bao bì kín khí để bán lẻ
+16042099 Loại khác
+## 160510
+16051011 Ghẹ (thuộc họ Portunidae)
+16051012 Cua hoàng đế/cua vua Alaska (cua thuộc họ Lithodidae)
+16051013 Cua tuyết (cua thuộc họ Oregoniidae)
+16051014 Loại khác
+16051090 Loại khác
+## 160529
+16052920 Tôm dạng viên
+16052930 Tôm tẩm bột
+16052990 Loại khác
+## 160554
+16055410 Đóng bao bì kín khí để bán lẻ
+16055490 Loại khác
+## 160557
+16055710 Đóng bao bì kín khí để bán lẻ
+16055790 Loại khác
+## 170199
+17019910 Đường đã tinh luyện
+17019990 Loại khác
+## 170230
+17023010 Glucoza
+17023020 Xirô glucoza
+## 170260
+17026010 Fructoza
+17026020 Xirô fructoza
+## 170290
+17029011 Mantoza tinh khiết về mặt hóa học
+17029019 Loại khác
+17029020 Mật ong nhân tạo, đã hoặc chưa pha trộn với mật ong tự nhiên
+17029030 Đường đã pha hương liệu hoặc chất màu (trừ mantoza)
+17029040 Đường caramen
+17029051 Đường sáp dừa (Coconut sap sugar) (SEN)
+17029059 Loại khác (SEN)
+17029091 Xi rô đường
+17029099 Loại khác
+## 170310
+17031010 Đã pha thêm hương liệu hoặc chất màu
+17031090 Loại khác
+## 170390
+17039010 Đã pha thêm hương liệu hoặc chất màu
+17039090 Loại khác
+## 170490
+17049010 Kẹo và viên ngậm ho
+17049020 Sô cô la trắng
+17049091 Dẻo, có chứa gelatin (SEN)
+17049099 Loại khác
+## 180100
+18010010 Đã lên men (SEN)
+18010090 Loại khác
+## 180620
+18062010 Kẹo sô cô la ở dạng khối, miếng hoặc thanh
+18062090 Loại khác
+## 180690
+18069010 Kẹo sô cô la ở dạng viên (tablets) hoặc viên ngậm (pastilles)
+18069030 Các chế phẩm thực phẩm từ bột, bột thô, tinh bột hoặc chiết xuất malt, có chứa từ 40% trở lên nhưng không quá 50% tính theo khối lượng là ca cao đã khử toàn bộ chất béo
+18069040 Các chế phẩm thực phẩm làm từ sản phẩm thuộc các nhóm từ 04.01 đến 04.04, có chứa từ 5% trở lên nhưng không quá 10% tính theo khối lượng là ca cao đã khử toàn bộ chất béo, được chế biến đặc biệt cho trẻ sơ sinh hoặc trẻ nhỏ, chưa đóng gói để bán lẻ
+18069090 Loại khác
+## 190110
+19011010 Từ chiết xuất malt
+19011020 Từ sản phẩm thuộc các nhóm từ 04.01 đến 04.04
+19011030 Từ bột đỗ tương
+19011091 Sản phẩm dinh dưỡng y tế(SEN)
+19011092 Loại khác, dùng cho trẻ trên một tuổi nhưng không quá ba tuổi
+19011099 Loại khác
+## 190120
+19012010 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao
+19012020 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao
+19012030 Loại khác, không chứa ca cao
+19012040 Loại khác, chứa ca cao
+## 190190
+19019011 Sản phẩm dinh dưỡng y tế (SEN)
+19019019 Loại khác
+19019020 Chiết xuất malt
+19019031 Chứa sữa (SEN)
+19019032 Loại khác, chứa bột ca cao
+19019039 Loại khác
+19019041 Dạng bột
+19019049 Dạng khác
+19019091 Sản phẩm dinh dưỡng y tế (SEN)
+19019099 Loại khác
+## 190219
+19021920 Mì, bún làm từ gạo (kể cả bee hoon)
+19021930 Miến
+19021940 Mì khác
+19021990 Loại khác
+## 190220
+19022010 Được nhồi thịt hoặc phụ phẩm dạng thịt sau giết mổ
+19022030 Được nhồi cá, động vật giáp xác hoặc động vật thân mềm
+19022090 Loại khác
+## 190230
+19023020 Mì, bún làm từ gạo (kể cả bee hoon)
+19023030 Miến
+19023040 Mì ăn liền khác
+19023090 Loại khác
+## 190410
+19041010 Chứa ca cao
+19041090 Loại khác
+## 190420
+19042010 Thực phẩm chế biến từ mảnh ngũ cốc chưa rang
+19042090 Loại khác
+## 190490
+19049010 Các chế phẩm từ gạo, kể cả gạo đã nấu chín sơ
+19049090 Loại khác
+## 190531
+19053110 Không chứa ca cao
+19053120 Chứa ca cao
+## 190532
+19053210 Bánh waffles (SEN)
+19053220 Bánh xốp wafers (SEN)
+## 190540
+19054010 Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây
+19054090 Loại khác
+## 190590
+19059010 Bánh quy không ngọt dùng cho trẻ mọc răng hoặc thay răng
+19059020 Bánh quy không ngọt khác
+19059030 Bánh ga tô (cakes)
+19059040 Bánh bột nhào (pastry)
+19059050 Các loại bánh không bột
+19059060 Vỏ viên nhộng và sản phẩm tương tự dùng trong dược phẩm
+19059070 Bánh thánh, bánh xốp sealing wafers, bánh đa và các sản phẩm tương tự
+19059080 Các sản phẩm thực phẩm giòn có hương liệu khác
+19059090 Loại khác
+## 200190
+20019010 Hành tây
+20019090 Loại khác
+## 200290
+20029010 Bột cà chua dạng sệt (SEN)
+20029020 Bột cà chua
+20029090 Loại khác
+## 200390
+20039010 Nấm cục (truffles)
+20039090 Loại khác
+## 200490
+20049010 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20049090 Loại khác
+## 200510
+20051020 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20051030 Phù hợp dùng cho mục đích ăn kiêng
+## 200520
+20052011 Đóng bao bì kín khí để bán lẻ (SEN)
+20052019 Loại khác (SEN)
+20052091 Đóng bao bì kín khí để bán lẻ
+20052099 Loại khác
+## 200559
+20055910 Đóng bao bì kín khí để bán lẻ
+20055990 Loại khác
+## 200599
+20059910 Đóng bao bì kín khí để bán lẻ
+20059990 Loại khác
+## 200799
+20079910 Trái cây dạng nhão, trừ xoài, dứa hoặc dâu tây dạng nhão
+20079920 Mứt và thạch trái cây
+20079930 Xoài nghiền (Mango purée) (SEN)
+20079990 Loại khác
+## 200811
+20081110 Đã rang
+20081120 Bơ lạc
+20081190 Loại khác
+## 200819
+20081910 Hạt điều
+20081991 Đã rang
+20081999 Loại khác
+## 200820
+20082010 Đóng bao bì kín khí để bán lẻ
+20082090 Loại khác
+## 200830
+20083010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20083090 Loại khác
+## 200860
+20086010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20086090 Loại khác
+## 200870
+20087010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20087090 Loại khác
+## 200893
+20089310 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089390 Loại khác
+## 200897
+20089710 Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089720 Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089790 Loại khác
+## 200899
+20089910 Quả vải
+20089920 Quả nhãn
+20089930 Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089940 Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089990 Loại khác
+## 200981
+20098110 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20098190 Loại khác
+## 200989
+20098910 Nước ép từ quả lý chua đen
+20098920 Nước dừa (SEN)
+20098930 Nước dừa cô đặc (SEN)
+20098940 Nước xoài ép cô đặc
+20098991 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20098999 Loại khác
+## 200990
+20099010 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20099091 Dùng ngay được
+20099099 Loại khác
+## 210111
+21011111 Được đóng gói với khối lượng tịnh không dưới 20kg
+21011119 Loại khác
+21011190 Loại khác
+## 210112
+21011210 Hỗn hợp dạng bột nhão có thành phần cơ bản là cà phê rang xay, có chứa chất béo thực vật
+21011291 Các chế phẩm cà phê có thành phần cơ bản là các chất chiết xuất, tinh chất hoặc chất cô đặc có chứa đường, có chứa hoặc không chứa kem
+21011292 Các chế phẩm cà phê có thành phần cơ bản là cà phê rang xay có chứa đường, có chứa hoặc không chứa kem
+21011299 Loại khác
+## 210120
+21012020 Chiết xuất từ chè để sản xuất các chế phẩm chè, dạng bột
+21012030 Các chế phẩm chè gồm hỗn hợp của chè, sữa bột và đường
+21012090 Loại khác
+## 210220
+21022010 Loại dùng trong chăn nuôi động vật
+21022090 Loại khác
+## 210390
+21039011 Tương ớt
+21039012 Nước mắm
+21039013 Nước xốt loại khác
+21039019 Loại khác
+21039021 Mắm tôm (mắm ruốc) kể cả belachan (blachan) (SEN)
+21039029 Loại khác
+## 210410
+21041011 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+21041019 Loại khác
+21041091 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+21041099 Loại khác
+## 210420
+21042011 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+21042019 Loại khác
+21042091 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+21042099 Loại khác
+## 210690
+21069011 Váng đậu khô và váng đậu khô dạng thanh
+21069012 Đậu phụ tươi (tofu)
+21069019 Loại khác
+21069020 Cồn dạng bột
+21069030 Kem không sữa
+21069041 Dạng bột
+21069049 Loại khác
+21069053 Sản phẩm từ sâm
+21069054 Các chế phẩm khác được sử dụng làm nguyên liệu thô để sản xuất chất cô đặc tổng hợp
+21069055 Loại khác, chất cô đặc tổng hợp để pha đơn giản với nước làm đồ uống
+21069059 Loại khác
+21069061 Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng
+21069062 Loại sử dụng để sản xuất đồ uống có cồn, dạng khác
+21069064 Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng
+21069065 Loại sử dụng để sản xuất đồ uống có cồn, dạng khác
+21069066 Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng lỏng
+21069067 Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng khác
+21069069 Loại khác
+21069071 Thực phẩm bảo vệ sức khỏe từ sâm
+21069072 Thực phẩm bảo vệ sức khỏe khác
+21069073 Hỗn hợp vi chất để bổ sung vào thực phẩm (SEN)
+21069081 Các chế phẩm thực phẩm dùng cho trẻ sơ sinh hoặc trẻ nhỏ thiếu lactaza
+21069089 Loại khác
+21069091 Hỗn hợp khác của hóa chất với thực phẩm hoặc các chất khác có giá trị dinh dưỡng, dùng để chế biến thực phẩm
+21069092 Xirô đã pha màu hoặc hương liệu
+21069093 Nước cốt dừa, đã hoặc chưa làm thành bột (SEN)
+21069095 Seri kaya (SEN)
+21069096 Sản phẩm dinh dưỡng y tế khác (SEN)
+21069097 Tempeh (SEN)
+21069098 Các chế phẩm hương liệu khác (SEN)
+21069099 Loại khác
+## 220110
+22011010 Nước khoáng
+22011020 Nước có ga
+## 220190
+22019010 Nước đá và tuyết
+22019090 Loại khác
+## 220210
+22021020 Nước tăng lực có hoặc không có ga(SEN)
+22021030 Nước khoáng xô đa hoặc nước có ga, loại khác, có hương liệu
+22021090 Loại khác
+## 220299
+22029910 Đồ uống chứa sữa tiệt trùng có hương liệu
+22029920 Đồ uống sữa đậu nành
+22029930 Đồ uống từ nước dừa (SEN)
+22029940 Đồ uống có chứa cà phê hoặc đồ uống có hương liệu cà phê
+22029950 Đồ uống không có ga khác dùng ngay được không cần pha loãng
+22029990 Loại khác
+## 220300
+22030011 Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)
+22030019 Loại khác (SEN)
+22030091 Có nồng độ cồn không quá 5,8% tính theo thể tích
+22030099 Loại khác
+## 220421
+22042111 Có nồng độ cồn không quá 15% tính theo thể tích
+22042113 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+22042114 Có nồng độ cồn trên 23% tính theo thể tích
+22042121 Có nồng độ cồn không quá 15% tính theo thể tích
+22042122 Có nồng độ cồn trên 15% tính theo thể tích
+## 220422
+22042211 Có nồng độ cồn không quá 15% tính theo thể tích
+22042212 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+22042213 Có nồng độ cồn trên 23% tính theo thể tích
+22042221 Có nồng độ cồn không quá 15% tính theo thể tích
+22042222 Có nồng độ cồn trên 15% tính theo thể tích
+## 220429
+22042911 Có nồng độ cồn không quá 15% tính theo thể tích
+22042912 Có nồng độ cồn trên 15% tính theo thể tích
+22042921 Có nồng độ cồn không quá 15% tính theo thể tích
+22042922 Có nồng độ cồn trên 15% tính theo thể tích
+## 220430
+22043010 Có nồng độ cồn không quá 15% tính theo thể tích
+22043020 Có nồng độ cồn trên 15% tính theo thể tích
+## 220510
+22051010 Có nồng độ cồn không quá 15% tính theo thể tích
+22051020 Có nồng độ cồn trên 15% tính theo thể tích
+## 220590
+22059010 Có nồng độ cồn không quá 15% tính theo thể tích
+22059020 Có nồng độ cồn trên 15% tính theo thể tích
+## 220600
+22060010 Vang táo hoặc vang lê
+22060020 Rượu sa kê (SEN)
+22060031 Loại trong đồ đựng không quá 2 lít (SEN)
+22060039 Loại khác (SEN)
+22060041 Có nồng độ cồn không quá 1,14% tính theo thể tích (SEN)
+22060049 Loại khác (SEN)
+22060050 Vang mật ong
+22060060 Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)
+22060091 Rượu gạo khác (kể cả rượu gạo bổ)(SEN)
+22060099 Loại khác
+## 220720
+22072011 Cồn etylic có nồng độ trên 99% tính theo thể tích
+22072019 Loại khác
+22072090 Loại khác
+## 220820
+22082050 Rượu brandy
+22082090 Loại khác
+## 220830
+22083010 Được đựng trong đồ chứa trên 5 lít
+22083090 Loại khác
+## 220870
+22087010 Có nồng độ cồn không quá 57% tính theo thể tích
+22087090 Loại khác
+## 220890
+22089010 Rượu bổ sam-su có nồng độ cồn không quá 40% tính theo thể tích (SEN)
+22089020 Rượu bổ sam-su có nồng độ cồn trên 40% tính theo thể tích(SEN)
+22089030 Rượu sam-su khác có nồng độ cồn không quá 40% tính theo thể tích (SEN)
+22089040 Rượu sam-su khác có nồng độ cồn trên 40% tính theo thể tích (SEN)
+22089050 Rượu arrack hoặc rượu dứa có nồng độ cồn không quá 40% tính theo thể tích
+22089060 Rượu arrack hoặc rượu dứa có nồng độ cồn trên 40% tính theo thể tích
+22089070 Rượu đắng và các loại đồ uống tương tự có nồng độ cồn không quá 57% tính theo thể tích
+22089080 Rượu đắng và các loại đồ uống tương tự có nồng độ cồn trên 57% tính theo thể tích
+22089091 Có nồng độ cồn không quá 1,14% tính theo thể tích
+22089099 Loại khác
+## 230120
+23012010 Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng
+23012020 Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng
+23012090 Loại khác
+## 230230
+23023010 Cám và cám mịn (pollard)(SEN)
+23023090 Loại khác
+## 230240
+23024010 Từ thóc gạo
+23024090 Loại khác
+## 230310
+23031010 Từ sắn hoặc cọ sago
+23031090 Loại khác
+## 230400
+23040010 Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người(SEN)
+23040021 Thích hợp dùng làm thức ăn cho người(SEN)
+23040029 Loại khác
+23040090 Loại khác
+## 230641
+23064110 Từ hạt cải dầu rape có hàm lượng axit eruxic thấp
+23064120 Từ hạt cải dầu colza có hàm lượng axit eruxic thấp
+## 230649
+23064910 Từ hạt cải dầu rape khác
+23064920 Từ hạt cải dầu colza khác
+## 230660
+23066010 Dạng xay hoặc dạng viên
+23066090 Loại khác
+## 230690
+23069010 Từ mầm ngô
+23069090 Loại khác
+## 230910
+23091010 Chứa thịt
+23091090 Loại khác
+## 230990
+23099011 Loại dùng cho gia cầm
+23099012 Loại dùng cho lợn
+23099013 Loại dùng cho tôm
+23099014 Loại dùng cho động vật linh trưởng
+23099019 Loại khác
+23099020 Chất tổng hợp, chất bổ sung thức ăn hoặc phụ gia thức ăn
+23099090 Loại khác
+## 240110
+24011010 Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+24011020 Loại Virginia, trừ loại sấy bằng không khí nóng
+24011040 Loại Burley
+24011050 Loại khác, được sấy bằng không khí nóng
+24011090 Loại khác
+## 240120
+24012010 Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+24012020 Loại Virginia, trừ loại sấy bằng không khí nóng
+24012030 Loại Oriental
+24012040 Loại Burley
+24012050 Loại khác, được sấy bằng không khí nóng (flue-cured)
+24012090 Loại khác
+## 240130
+24013010 Cọng thuốc lá
+24013090 Loại khác
+## 240220
+24022010 Thuốc lá Bi-đi (Beedies) (SEN)
+24022020 Thuốc lá điếu, có chứa thành phần từ đinh hương (SEN)
+24022090 Loại khác
+## 240290
+24029010 Xì gà, xì gà xén hai đầu và xì gà nhỏ làm từ các nguyên liệu thay thế lá thuốc lá
+24029020 Thuốc lá điếu làm từ các nguyên liệu thay thế lá thuốc lá
+## 240311
+24031110 Đã được đóng gói để bán lẻ
+24031190 Loại khác
+## 240319
+24031911 Ang Hoon (SEN)
+24031919 Loại khác
+24031920 Lá thuốc lá đã chế biến khác để sản xuất thuốc lá điếu
+24031991 Ang Hoon (SEN)
+24031999 Loại khác
+## 240391
+24039110 Đã được đóng gói để bán lẻ
+24039190 Loại khác
+## 240399
+24039910 Chiết xuất và tinh chất lá thuốc lá
+24039930 Các nguyên liệu thay thế lá thuốc lá đã chế biến
+24039940 Thuốc lá bột để hít, ngậm, khô hoặc không khô (SEN)
+24039950 Thuốc lá dạng nhai và dạng ngậm (sucking)
+24039990 Loại khác
+## 240412
+24041210 Dạng lỏng hoặc gel dùng cho thuốc lá điện tử (SEN)
+24041290 Loại khác
+## 240419
+24041910 Chứa các nguyên liệu thay thế lá thuốc lá
+24041920 Chứa các nguyên liệu thay thế nicotin
+## 240491
+24049110 Kẹo cao su có nicotin (SEN)
+24049190 Loại khác
+## 240492
+24049210 Miếng dán nicotin (SEN)
+24049290 Loại khác
+## 250100
+25010010 Muối thực phẩm
+25010020 Muối mỏ chưa chế biến
+25010050 Nước biển
+25010091 Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt (SEN)
+25010093 Có hàm lượng natri clorua từ 97% trở lên, tính theo hàm lượng khô (SEN)
+25010099 Loại khác
+## 250840
+25084010 Đất hồ (đất tẩy màu)
+25084090 Loại khác
+## 251010
+25101010 Apatít (apatite)
+25101090 Loại khác
+## 251020
+25102010 Apatít (apatite)
+25102090 Loại khác
+## 251512
+25151210 Dạng khối (SEN)
+25151220 Dạng tấm (SEN)
+## 251612
+25161210 Dạng khối (SEN)
+25161220 Dạng tấm (SEN)
+## 251620
+25162010 Thô hoặc đã đẽo thô
+25162020 Mới chỉ cắt, bằng cưa hoặc cách khác, thành khối hoặc tấm hình chữ nhật (kể cả hình vuông)
+## 251990
+25199010 Magiê ôxít nấu chảy; magiê ôxít nung trơ (thiêu kết)
+25199090 Loại khác
+## 252020
+25202010 Loại phù hợp dùng trong nha khoa
+25202090 Loại khác
+## 252310
+25231010 Loại dùng để sản xuất xi măng trắng
+25231090 Loại khác
+## 252329
+25232910 Xi măng màu
+25232990 Loại khác
+## 252620
+25262010 Bột talc
+25262090 Loại khác
+## 252910
+25291010 Potash tràng thạch; soda tràng thạch(SEN)
+25291090 Loại khác
+## 253020
+25302010 Kiezerit
+25302020 Epsomite (magiê sulphat tự nhiên)
+## 253090
+25309010 Cát zircon cỡ hạt micron (zircon silicat) loại dùng làm chất cản quang
+25309090 Loại khác
+## 260111
+26011110 Hematite và tinh quặng hematite(SEN)
+26011190 Loại khác
+## 260112
+26011210 Hematite và tinh quặng hematite(SEN)
+26011290 Loại khác
+## 261400
+26140010 Quặng inmenit và tinh quặng inmenit(SEN)
+26140090 Loại khác
+## 262099
+26209910 Xỉ và phần chưa cháy hết (hardhead) của thiếc(SEN)
+26209990 Loại khác
+## 262190
+26219010 Các muối kali thô thu được từ cặn mật củ cải đường trong công nghiệp sản xuất đường (SEN)
+26219090 Loại khác
+## 270112
+27011210 Than để luyện cốc (SEN)
+27011290 Loại khác
+## 270300
+27030010 Than bùn, đã hoặc chưa ép thành kiện, nhưng chưa đóng bánh
+27030020 Than bùn đã đóng bánh
+## 270400
+27040010 Than cốc và than nửa cốc luyện từ than đá
+27040020 Than cốc và than nửa cốc luyện từ than non hoặc than bùn
+27040030 Muội bình chưng than đá
+## 270799
+27079910 Nguyên liệu để sản xuất than đen(SEN)
+27079990 Loại khác
+## 270900
+27090010 Dầu mỏ thô
+27090020 Condensate
+27090090 Loại khác
+## 271012
+27101211 RON 97 và cao hơn
+27101212 RON 90 và cao hơn nhưng dưới RON 97
+27101213 RON khác
+27101221 Chưa pha chế
+27101222 Pha chế với ethanol
+27101223 Loại khác
+27101224 Chưa pha chế
+27101225 Pha chế với ethanol
+27101226 Loại khác
+27101227 Chưa pha chế
+27101228 Pha chế với ethanol
+27101229 Loại khác
+27101231 Octane 100 và cao hơn(SEN)
+27101239 Loại khác (SEN)
+27101240 Tetrapropylene
+27101250 Dung môi trắng (white spirit)(SEN)
+27101260 Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng
+27101270 Dung môi nhẹ khác (SEN)
+27101280 Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ
+27101291 Alpha olefins
+27101292 Loại khác, spirit dầu mỏ(1), có độ chớp cháy dưới 23oC
+27101299 Loại khác
+## 271019
+27101920 Dầu thô đã tách phần nhẹ
+27101930 Nguyên liệu để sản xuất than đen(SEN)
+27101941 Dầu khoáng đã tinh chế để sản xuất dầu bôi trơn (SEN)
+27101942 Dầu bôi trơn cho động cơ máy bay
+27101944 Mỡ bôi trơn
+27101945 Dầu bôi trơn cho nguyên liệu dệt(SEN)
+27101946 Dầu bôi trơn khác
+27101950 Dầu dùng trong bộ hãm thủy lực (dầu phanh)
+27101960 Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và dầu dùng cho bộ phận ngắt mạch
+27101971 Nhiên liệu diesel cho ô tô
+27101972 Nhiên liệu diesel khác
+27101979 Dầu nhiên liệu
+27101981 Nhiên liệu động cơ máy bay (nhiên liệu phản lực) có độ chớp cháy từ 23oC trở lên
+27101982 Nhiên liệu động cơ máy bay (nhiên liệu phản lực) có độ chớp cháy dưới 23oC
+27101983 Các kerosine khác
+27101989 Dầu trung khác và các chế phẩm (SEN)
+27101990 Loại khác
+## 271114
+27111410 Etylen
+27111490 Loại khác
+## 271121
+27112110 Loại sử dụng làm nhiên liệu động cơ(SEN)
+27112190 Loại khác
+## 271290
+27129010 Sáp parafin
+27129090 Loại khác
+## 271500
+27150010 Chất phủ hắc ín polyurethan (SEN)
+27150090 Loại khác
+## 280300
+28030020 Muội axetylen
+28030041 Loại sử dụng để sản xuất cao su (SEN)
+28030049 Loại khác
+28030090 Loại khác
+## 280700
+28070010 Axit sulphuric chứa H2SO4 trên 80% tính theo trọng lượng
+28070090 Loại khác
+## 280920
+28092031 Axit hypophosphoric (SEN)
+28092032 Axit phosphoric (SEN)
+28092039 Loại khác (SEN)
+28092091 Axit hypophosphoric
+28092092 Axit phosphoric
+28092099 Loại khác
+## 281000
+28100010 Oxit bo
+28100020 Axit boric
+## 281119
+28111910 Axit arsenic
+28111920 Axit aminosulphonic (axit sulphamic)
+28111990 Loại khác
+## 281122
+28112210 Dạng bột
+28112290 Loại khác
+## 281129
+28112910 Diarsenic pentaoxit
+28112920 Dioxit lưu huỳnh
+28112990 Loại khác
+## 281700
+28170010 Kẽm oxit
+28170020 Kẽm peroxit
+## 282720
+28272010 Chứa từ 73% đến 80% tính theo trọng lượng
+28272090 Loại khác
+## 282739
+28273910 Của bari hoặc của coban
+28273920 Của sắt
+28273930 Của kẽm
+28273990 Loại khác
+## 282890
+28289010 Natri hypoclorit
+28289090 Loại khác
+## 282990
+28299010 Natri perclorat
+28299090 Loại khác
+## 283090
+28309010 Sulphua cađimi hoặc sulphua kẽm
+28309090 Loại khác
+## 283322
+28332210 Loại thương phẩm (SEN)
+28332290 Loại khác
+## 283329
+28332920 Chì sulphat tribasic
+28332930 Của crôm
+28332940 Của kẽm
+28332990 Loại khác
+## 283429
+28342910 Của bismut
+28342990 Loại khác
+## 283525
+28352510 Loại dùng làm thức ăn chăn nuôi (SEN)
+28352590 Loại khác
+## 283529
+28352910 Của trinatri
+28352990 Loại khác
+## 283531
+28353110 Loại dùng cho thực phẩm (SEN)
+28353190 Loại khác
+## 283539
+28353910 Tetranatri pyrophosphat
+28353990 Loại khác
+## 283650
+28365010 Loại dùng cho thực phẩm hoặc dược phẩm (SEN)
+28365090 Loại khác
+## 283699
+28369910 Amoni carbonat thương phẩm
+28369920 Chì carbonat
+28369990 Loại khác
+## 283919
+28391920 Natri orthosilicat; natri pyrosilicat
+28391990 Loại khác
+## 284290
+28429010 Natri arsenit
+28429020 Muối của đồng hoặc crom
+28429030 Fulminat, xyanat và thioxyanat khác
+28429090 Loại khác
+## 284410
+28441010 Urani tự nhiên và các hợp chất của nó
+28441090 Loại khác
+## 284420
+28442010 Urani đã làm giàu thành U 235 và hợp chất của nó; plutoni và hợp chất của nó
+28442090 Loại khác
+## 284430
+28443010 Urani đã làm giàu thành U 235 và hợp chất của nó; thori và hợp chất của nó
+28443090 Loại khác
+## 284700
+28470010 Dạng lỏng
+28470090 Loại khác
+## 285210
+28521010 Thủy ngân sulphat
+28521020 Các hợp chất của thủy ngân được dùng như chất phát quang
+28521090 Loại khác
+## 285290
+28529010 Thủy ngân tanat
+28529020 Thủy ngân sulphua; thủy ngân polysulphua; thủy ngân polyphosphat; thủy ngân carbua; hợp chất thủy ngân dị vòng thuộc 2934.99.90; dẫn xuất của pepton thủy ngân; các dẫn xuất protein khác của thủy ngân
+28529090 Loại khác
+## 285390
+28539010 Nước khử khoáng
+28539090 Loại khác
+## 290129
+29012910 Axetylen
+29012920 Hexen và các đồng phân của nó
+29012990 Loại khác
+## 290290
+29029010 Dodecylbenzen
+29029020 Các loại alkylbenzen khác
+29029090 Loại khác
+## 290311
+29031110 Clorometan (clorua metyl)
+29031190 Loại khác
+## 290319
+29031920 1,1,1-Tricloroetan (metyl cloroform)
+29031990 Loại khác
+## 290420
+29042010 Trinitrotoluen
+29042090 Loại khác
+## 290729
+29072910 Rượu-phenol
+29072990 Loại khác
+## 291249
+29124910 Aldehyt - rượu khác
+29124990 Loại khác
+## 291429
+29142910 Long não
+29142990 Loại khác
+## 291529
+29152910 Natri axetat; các coban axetat
+29152990 Loại khác
+## 291539
+29153910 Isobutyl axetat
+29153920 2- Ethoxyetyl axetat
+29153990 Loại khác
+## 291570
+29157010 Axit palmitic, muối và este của nó
+29157020 Axit stearic
+29157030 Muối và este của axit stearic
+## 291590
+29159020 Axit lauric, axit myristic, muối và este của chúng
+29159030 Axit caprylic, muối và este của nó
+29159040 Axit capric, muối và este của nó
+29159090 Loại khác
+## 291614
+29161410 Metyl metacrylat
+29161490 Loại khác
+## 291632
+29163210 Benzoyl peroxit
+29163220 Benzoyl clorua
+## 291639
+29163910 Axit axetic 2,4- Diclorophenyl và muối và este của nó
+29163920 Este của axit phenylaxetic
+29163990 Loại khác
+## 291712
+29171210 Dioctyl adipat
+29171290 Loại khác
+## 291734
+29173410 Dibutyl orthophthalates
+29173490 Loại khác
+## 291739
+29173910 Trioctyltrimellitate
+29173920 Các hợp chất phthalic khác của loại được sử dụng như chất hóa dẻo và este của anhydrit phthalic (SEN)
+29173990 Loại khác
+## 291815
+29181510 Canxi citrat
+29181590 Loại khác
+## 291829
+29182910 Este sulphonic alkyl của phenol
+29182990 Loại khác
+## 292219
+29221910 Ethambutol và muối của nó, este và các dẫn xuất khác
+29221920 Rượu n-butyl D-2-Amino (D-2-Amino-n-Butyl-alcohol)
+29221990 Loại khác
+## 292242
+29224210 Axit glutamic
+29224220 Muối natri của axit glutamic (MSG)
+29224290 Muối khác
+## 292250
+29225010 p-Aminosalicylic axit và muối, este và các dẫn xuất khác của nó
+29225090 Loại khác
+## 292320
+29232011 Từ thực vật
+29232019 Loại khác
+29232090 Loại khác
+## 292412
+29241210 Fluoroacetamide (ISO) và phosphamidon (ISO)
+29241220 Monocrotophos (ISO)
+## 292419
+29241910 Carisoprodol
+29241990 Loại khác
+## 292421
+29242110 4- Ethoxyphenylurea (dulcin)
+29242120 Diuron và monuron
+29242190 Loại khác
+## 292429
+29242910 Aspartame
+29242920 Butylphenylmethyl carbamate; methyl isopropyl phenyl carbamate
+29242930 Acetaminophen (paracetamol); salicylamide; ethoxybenzamide
+29242990 Loại khác
+## 292700
+29270010 Azodicarbonamide
+29270090 Loại khác
+## 292800
+29280010 Linuron
+29280090 Loại khác
+## 292910
+29291010 Diphenylmetan diisoxyanat (MDI)
+29291020 Toluen diisoxyanat
+29291090 Loại khác
+## 292990
+29299010 Natri xyclamat
+29299020 Các xyclamat khác
+29299090 Loại khác
+## 293090
+29309010 Dithiocarbonates
+29309090 Loại khác
+## 293110
+29311010 Chì tetrametyl
+29311020 Chì tetraetyl
+## 293149
+29314910 N-(phosphonomethyl) glycine
+29314920 Muối của N-(phosphonomethyl) glycine
+29314990 Loại khác
+## 293159
+29315910 Ethephon
+29315990 Loại khác
+## 293190
+29319041 Dạng lỏng
+29319049 Loại khác
+29319050 Dimethyltin dichloride
+29319090 Loại khác
+## 293220
+29322010 Coumarin (1,2-Benzopyrone), methylcoumarins và ethylcoumarins
+29322090 Loại khác
+## 293339
+29333910 Clopheniramin và isoniazid
+29333930 Muối paraquat
+29333990 Loại khác
+## 293349
+29334910 Dextromethorphan
+29334990 Loại khác
+## 293359
+29335910 Diazinon
+29335990 Loại khác
+## 293399
+29339910 Mebendazole và parbendazole
+29339990 Loại khác
+## 293499
+29349910 Các axit nucleic và muối của chúng
+29349920 Sultones; sultams; diltiazem
+29349930 Axit 6-Aminopenicillanic
+29349940 3-Azido-3-deoxythymidine
+29349950 Oxadiazon, với độ tinh khiết tối thiểu là 94%
+29349990 Loại khác
+## 293790
+29379010 Hợp chất amino chức oxy
+29379020 Epinephrine; các dẫn xuất của amino - axit
+29379090 Loại khác
+## 293911
+29391110 Cao thuốc phiện và muối của chúng
+29391190 Loại khác
+## 293920
+29392010 Quinine và các muối của nó
+29392090 Loại khác
+## 294110
+29411011 Không tiệt trùng (SEN)
+29411019 Loại khác (SEN)
+29411020 Ampicillin và muối của nó
+29411090 Loại khác
+## 300212
+30021210 Kháng huyết thanh; dung dịch đạm huyết thanh; bột hemoglobin
+30021290 Loại khác
+## 300241
+30024110 Vắc xin uốn ván
+30024120 Vắc xin ho gà, sởi, viêm màng não hoặc bại liệt
+30024190 Loại khác
+## 300310
+30031010 Chứa amoxicillin (INN) hoặc muối của nó
+30031020 Chứa ampicillin (INN) hoặc muối của nó
+30031090 Loại khác
+## 300410
+30041015 Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng
+30041016 Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)
+30041019 Loại khác
+30041020 Chứa các streptomycin hoặc các dẫn xuất của chúng
+## 300420
+30042010 Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ
+30042031 Dạng uống (*)
+30042032 Dạng mỡ
+30042039 Loại khác
+30042071 Dạng uống (*) hoặc dạng mỡ
+30042079 Loại khác
+30042091 Dạng uống (*) hoặc dạng mỡ
+30042099 Loại khác
+## 300432
+30043210 Chứa dexamethasone hoặc các dẫn xuất của chúng
+30043240 Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide
+30043290 Loại khác
+## 300449
+30044911 Dạng uống (*) hoặc tiêm
+30044919 Loại khác
+30044951 Dạng uống (*)
+30044959 Loại khác
+30044960 Chứa theophylline, dạng uống (*)
+30044970 Chứa atropine sulphate
+30044980 Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)
+30044990 Loại khác
+## 300450
+30045010 Loại phù hợp cho trẻ em, dạng xirô
+30045021 Dạng uống (*)
+30045029 Loại khác
+30045091 Chứa vitamin A, B hoặc C
+30045099 Loại khác
+## 300460
+30046010 Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác
+30046020 Chứa artesunate hoặc chloroquine
+30046090 Loại khác
+## 300490
+30049010 Miếng thẩm thấu qua da dùng điều trị bệnh ung thư hoặc bệnh tim
+30049020 Nước vô trùng đóng kín để xông, loại dược phẩm (SEN)
+30049030 Thuốc sát trùng (Antiseptics)
+30049041 Chứa procain hydroclorua
+30049049 Loại khác
+30049051 Chứa axit acetylsalicylic, paracetamol hoặc dipyrone (INN), dạng uống (*)
+30049053 Chứa diclofenac, dạng uống (*)
+30049054 Chứa piroxicam (INN) hoặc ibuprofen
+30049055 Loại khác, dạng dầu xoa bóp
+30049059 Loại khác
+30049062 Chứa primaquine
+30049064 Chứa artemisinin trừ các loại thuộc phân nhóm 3004.60.10
+30049065 Thuốc đông y từ thảo dược (SEN)
+30049069 Loại khác
+30049071 Chứa piperazine hoặc mebendazole (INN)
+30049072 Thuốc đông y từ thảo dược (SEN)
+30049079 Loại khác
+30049081 Chứa deferoxamine, dạng tiêm (SEN)
+30049082 Thuốc chống HIV/AIDS (SEN)
+30049089 Loại khác (SEN)
+30049091 Chứa natri clorua hoặc glucose, dạng truyền
+30049092 Chứa sorbitol hoặc salbutamol, dạng truyền
+30049093 Chứa sorbitol hoặc salbutamol, ở dạng khác
+30049094 Chứa cimetidine (INN) hoặc ranitidine (INN) trừ dạng tiêm
+30049095 Chứa phenobarbital, diazepam hoặc chlorpromazine, trừ dạng tiêm hoặc dạng truyền
+30049096 Thuốc nhỏ mũi có chứa naphazoline, xylometazoline hoặc oxymetazoline
+30049098 Thuốc đông y từ thảo dược (SEN)
+30049099 Loại khác

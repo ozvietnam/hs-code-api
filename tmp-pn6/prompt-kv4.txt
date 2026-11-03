@@ -1,0 +1,3283 @@
+QUÉT VÀ SOẠN KHOÁ TỪ VỰNG CÒN THIẾU cho biểu thuế (mục đích: số hoá ranh giới giữa các dòng 8 số cùng phân nhóm 6 số). Dưới đây là (A) danh sách khoá ĐÃ CÓ trong tu-vung@2, (B) hệ đơn vị đã có, (C) mẫu khoá đúng khuôn, (D) các PN6 với mô tả từng dòng 8 số nguyên văn. NHIỆM VỤ: với mỗi PN6, đọc mô tả các dòng; nếu phân biệt các dòng dựa vào MỘT TIÊU CHÍ mà KHÔNG khoá nào ở (A) biểu diễn được (đại lượng đo có đơn vị như chiều dài, độ dày, dung tích, công suất, tốc độ, khối lượng, áp suất, hàm lượng…; hoặc có/không một đặc điểm; hoặc một tập giá trị liệt kê như kiểu, dạng, loại động cơ…) thì SOẠN khoá mới. KHÔNG soạn lại khoá đã có (kể cả khi tên khác nhưng cùng ý: dùng khoá cũ). Gộp mọi PN6 dùng cùng tiêu chí về MỘT khoá (tên camelCase tiếng Việt không dấu, ngắn, tổng quát; không gắn với một mặt hàng nếu tiêu chí dùng chung). Tiêu chí quá đặc thù chỉ xuất hiện 1 lần và không đo/liệt kê được gọn: bỏ qua. Không bịa ngưỡng; ghiChu trích NGUYÊN VĂN 1–3 chữ biểu ví dụ kèm mã 8 số; thêm trường "pn6Mau" (tối đa 5 PN6) và "soDong" (số dòng 8 số dùng tiêu chí này). QUY TẮC LƯỢC ĐỒ (máy kiểm sẽ ĐỎ nếu sai): (1) khoá SO: heDonVi PHẢI là hệ đã có ở (B) HOẶC khai hệ mới trong "heDonViMoi" (vd {"nhietDo":{"°C":1}}), donViChuan là đơn vị của hệ đó; thêm bí danh viết tắt chữ thường vào "bietDanhMoi"; (2) khoá SO canNguCanh:true ⇒ cachDoc vi/en/zh có ≥1 mẫu; (3) mọi khoá: nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi} (SO: chuỗi có {giaTri} và đơn vị), ghiChu, nguonLoai "AI_DA_KIEM"; (4) CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong, cachViet{vi,viPhuDinh}; (5) LIET_KE: giaTriHopLe = MẢNG CHUỖI id HOA_GẠCH_DƯỚI, moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet?}} (cachViet chuỗi không có ()/;/ " / "), cachDoc cấp khoá = {"vi":[],"en":[],"zh":[]} và cachViet cấp khoá = {"vi":"{giaTri}"}. Hàm lượng % khối lượng dùng hệ phanTram; áp suất hệ apSuat (psi, MPa). ĐẦU RA: MỘT khối ```json {"khoa":[mục...],"heDonViMoi":{...},"bietDanhMoi":{...},"khongChac":[tên khoá...]} duy nhất, không giải thích. Nếu số khoá vượt khả năng đầu ra, ưu tiên khoá có soDong lớn nhất và ghi trong "khongChac" các tiêu chí còn bỏ sót.
+
+=== (A) KHOÁ ĐÃ CÓ ===
+dienAp(SO,V) điện áp
+dongDien(SO,A) dòng điện (định mức)
+congSuat(SO,W) công suất
+tanSo(SO,Hz) tần số / dải tần
+luuLuong(SO,m3/h) lưu lượng
+dungTichXiLanh(SO,cc) dung tích xi lanh
+khoiLuong(SO,kg) khối lượng
+duongKinh(SO,mm) đường kính (ngoài)
+duongKinhTrong(SO,mm) đường kính trong (cửa nạp/cửa thoát, DN)
+duongKinhLoi(SO,mm) đường kính lõi (mỗi lõi dẫn điện)
+chieuCao(SO,mm) chiều cao
+kichThuoc(SO,mm) kích thước (dài x rộng x cao)
+chieuDaiCuon(SO,m) chiều dài (hàng dài: dây, cáp, ống, cuộn)
+daGanDauNoi(CO_KHONG) đã gắn đầu nối
+coCachDien(CO_KHONG) có cách điện
+coBoXuLyLapTrinh(CO_KHONG) có trang bị bộ xử lý lập trình
+coKhungChupQuaDau(CO_KHONG) có khung chụp qua đầu
+hieuChinhThiLuc(CO_KHONG) hiệu chỉnh thị lực (kính thuốc)
+chongNang(CO_KHONG) chống nắng (kính râm)
+coChucNangGhi(CO_KHONG) có chức năng ghi (hình/âm)
+daGhi(CO_KHONG) đã ghi (có dữ liệu)
+coLuoiBaoVe(CO_KHONG) có lưới bảo vệ
+coManHinh(CO_KHONG) có màn hình hiển thị
+coCamera(CO_KHONG) có camera
+coBanh(CO_KHONG) có bánh xe
+hoatDongBangDien(CO_KHONG) hoạt động bằng điện
+coKetHopThietBiThu(CO_KHONG) kết hợp thiết bị thu
+coGiaNhiet(CO_KHONG) có gia nhiệt
+laBoPhan(CO_KHONG) là bộ phận (không phải hàng hoàn chỉnh)
+datChim(CO_KHONG) loại đặt chìm
+coKhoangPhaTron(CO_KHONG) có khoang pha trộn lưu chất
+loaiDongDien(LIET_KE) loại dòng điện
+soPha(LIET_KE) số pha
+kieuDotChay(LIET_KE) kiểu đốt cháy của động cơ piston
+nguonSang(LIET_KE) nguồn sáng
+nguonNangLuong(LIET_KE) nguồn năng lượng
+cachDieuKhien(LIET_KE) cách điều khiển / vận hành
+kieuBom(LIET_KE) kiểu bơm
+loaiRoLe(LIET_KE) loại rơ le
+loaiCongTac(LIET_KE) loại thiết bị đóng ngắt (8536.50)
+loaiPhichOCam(LIET_KE) loại phích cắm / ổ cắm (8536.69)
+phamViSuDung(LIET_KE) phạm vi sử dụng
+mauHienThi(LIET_KE) màu hiển thị
+kieuDongCoDien(LIET_KE) kiểu động cơ điện (8501.10)
+tinhTrang(LIET_KE) tình trạng hàng
+chatLieu(CHAT_LIEU_THEO_VI_TRI) chất liệu (theo vị trí)
+dungCho(CONG_DUNG) dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)
+congDung(CONG_DUNG) công dụng / mục đích
+tenLoai(TEN_LOAI) tên loại hàng
+nhanHieu(TEN_LOAI) nhãn hiệu
+model(TEN_LOAI) model
+kyMaHieu(TEN_LOAI) ký, mã hiệu
+nhaSanXuat(TEN_LOAI) nhà sản xuất
+chiHoacChuYeu(CO_KHONG) chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)
+thietKeChoTreEm(CO_KHONG) được thiết kế chủ yếu cho trẻ em
+daNapChuongTrinh(CO_KHONG) đã nạp chương trình/firmware (bo mạch, vi điều khiển)
+soLoi(SO,lõi) số lõi dẫn (ruột dẫn)
+soSoi(SO,sợi) số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ "sợi")
+tiLe(SO,lần) tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)
+phuongPhapCheTao(LIET_KE) phương pháp chế tạo
+phuongThucTruyenDan(LIET_KE) phương thức truyền dẫn
+daXuLyBeMat(CO_KHONG) đã được xử lý bề mặt
+nhienLieu(LIET_KE) nhiên liệu / nguồn nhiệt (bếp, lò)
+phuongPhapIn(LIET_KE) phương pháp in (vải, hàng dệt)
+tinhDanHoi(CO_KHONG) đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)
+loaiSoiDet(LIET_KE) loại xơ/sợi dệt (vật liệu dệt chủ yếu)
+doDay(SO,mm) độ dày
+congSuatBieuKien(SO,kVA) công suất biểu kiến
+dangNguyenSinh(LIET_KE) dạng vật lý nguyên sinh của polyme
+daLapRap(CO_KHONG) đã lắp ráp
+dungTich(SO,lít) dung tích chứa
+sanLuongHoi(SO,tấn/giờ) sản lượng hơi / công suất hơi
+theTich(SO,cm3) thể tích ngoài / thể tích bên ngoài
+heDienHoa(LIET_KE) hệ điện hóa của pin
+dungLuong(SO,Ah) dung lượng phóng điện
+daHoaDeo(CO_KHONG) đã hóa dẻo
+coBoLoc(CO_KHONG) đã lắp bộ phận lọc
+hamLuongCarbon(SO,%) hàm lượng carbon
+gioiHanChay(SO,psi) giới hạn chảy
+chieuRong(SO,mm) chiều rộng
+khaNangChiuApLuc(SO,psi) khả năng chịu áp lực
+duongCheoNgoai(SO,mm) đường chéo ngoài mặt cắt ngang
+coRen(CO_KHONG) có ren (ở đầu hoặc thân ống)
+doBenKeo(SO,MPa) độ bền kéo
+hamLuongNiken(SO,%) hàm lượng niken
+lopMaPhu(LIET_KE) lớp mạ hoặc tráng phủ bề mặt
+
+=== (B) HỆ ĐƠN VỊ ĐÃ CÓ ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"], "phanTram": ["%"], "apSuat": ["psi", "MPa"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+
+=== (D) CÁC PN6 (mã 8 số + mô tả nguyên văn) ===
+## 846029
+84602910 Hoạt động bằng điện
+84602920 Không hoạt động bằng điện
+## 846031
+84603110 Máy công cụ, điều khiển số, có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định và có công suất không quá 0,74 kW, để mài sắc các mũi khoan bằng vật liệu carbua với đường kính chuôi không quá 3,175 mm
+84603190 Loại khác
+## 846039
+84603910 Hoạt động bằng điện
+84603920 Không hoạt động bằng điện
+## 846090
+84609010 Hoạt động bằng điện
+84609020 Không hoạt động bằng điện
+## 846190
+84619020 Máy bào
+84619090 Loại khác
+## 846222
+84622210 Điều khiển số
+84622290 Loại khác
+## 846232
+84623210 Điều khiển số
+84623290 Loại khác
+## 846261
+84626111 Máy rèn khuôn hoặc máy dập khuôn
+84626119 Loại khác
+84626191 Máy rèn khuôn hoặc máy dập khuôn
+84626199 Loại khác
+## 846262
+84626211 Máy rèn khuôn hoặc máy dập khuôn
+84626219 Loại khác
+84626291 Máy rèn khuôn hoặc máy dập khuôn
+84626299 Loại khác
+## 846263
+84626310 Máy rèn khuôn hoặc máy dập khuôn
+84626390 Loại khác
+## 846269
+84626910 Máy rèn khuôn hoặc máy dập khuôn
+84626990 Loại khác
+## 846290
+84629010 Máy rèn khuôn hoặc máy dập khuôn
+84629090 Loại khác
+## 846310
+84631010 Hoạt động bằng điện
+84631020 Không hoạt động bằng điện
+## 846320
+84632010 Hoạt động bằng điện
+84632020 Không hoạt động bằng điện
+## 846330
+84633010 Hoạt động bằng điện
+84633020 Không hoạt động bằng điện
+## 846390
+84639010 Hoạt động bằng điện
+84639020 Không hoạt động bằng điện
+## 846410
+84641010 Hoạt động bằng điện
+84641020 Không hoạt động bằng điện
+## 846420
+84642010 Hoạt động bằng điện
+84642020 Không hoạt động bằng điện
+## 846490
+84649010 Hoạt động bằng điện
+84649020 Không hoạt động bằng điện
+## 846591
+84659110 Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in
+84659190 Loại khác
+## 846592
+84659210 Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in, có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm, dùng để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in
+84659290 Loại khác
+## 846593
+84659310 Hoạt động bằng điện
+84659320 Không hoạt động bằng điện
+## 846595
+84659510 Máy khoan để sản xuất các tấm mạch in hoặc tấm dây in, có tốc độ quay trên 50.000 vòng/phút và có thể lắp vừa được mũi khoan có đường kính chuôi không quá 3,175 mm
+84659590 Loại khác
+## 846599
+84659910 Máy tiện
+84659950 Máy để đẽo bavia bề mặt của tấm mạch in hoặc tấm dây in trong quá trình sản xuất; máy để khắc vạch lên tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in; máy ép lớp mỏng để sản xuất tấm mạch in hoặc tấm dây in
+84659960 Loại khác, hoạt động bằng điện
+84659990 Loại khác
+## 846610
+84661010 Dùng cho máy thuộc phân nhóm 8456.40.10, 8456.90.20, 8460.31.10, 8465.91.10, 8465.92.10, 8465.95.10 hoặc 8465.99.50
+84661090 Loại khác
+## 846620
+84662010 Dùng cho máy thuộc phân nhóm 8456.40.10, 8456.90.20, 8460.31.10, 8465.91.10, 8465.92.10, 8465.95.10 hoặc 8465.99.50
+84662090 Loại khác
+## 846693
+84669330 Dùng cho máy thuộc các phân nhóm 8456.11.10, 8456.12.10, 8456.20.00, hoặc 8456.30.00, loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in, mạch in đã lắp ráp, bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71; dùng cho máy thuộc các phân nhóm 8457.10, 8458.91.00, 8459.21.00, 8459.29.10, 8459.61.00, 8459.69.10, hoặc 8461.50.00, loại chỉ được sử dụng hoặc chủ yếu để sản xuất bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71
+84669340 Dùng cho máy thuộc phân nhóm 8456.50.00
+84669390 Loại khác
+## 846791
+84679110 Của loại cơ điện
+84679190 Loại khác
+## 846799
+84679910 Của hàng hóa thuộc phân nhóm 8467.21.00, 8467.22.00 hoặc 8467.29.00
+84679990 Loại khác
+## 846820
+84682010 Dụng cụ hàn hoặc cắt kim loại sử dụng khí ga, điều khiển bằng tay (loại không cầm tay)
+84682090 Loại khác
+## 846890
+84689020 Của hàng hóa thuộc phân nhóm 8468.20.10
+84689090 Loại khác
+## 847090
+84709010 Máy đóng dấu bưu phí
+84709090 Loại khác
+## 847130
+84713020 Máy tính xách tay kể cả notebook và subnotebook
+84713090 Loại khác
+## 847141
+84714110 Máy tính cá nhân trừ máy tính loại xách tay của phân nhóm 8471.30
+84714190 Loại khác
+## 847149
+84714910 Máy tính cá nhân trừ máy tính loại xách tay của phân nhóm 8471.30
+84714990 Loại khác
+## 847150
+84715010 Bộ xử lý dùng cho máy tính cá nhân (kể cả loại máy xách tay)
+84715090 Loại khác
+## 847160
+84716030 Bàn phím máy tính
+84716040 Thiết bị nhập theo tọa độ X-Y, kể cả chuột, bút quang, cần điều khiển, bi xoay, và màn hình cảm ứng
+84716090 Loại khác
+## 847170
+84717020 Ổ đĩa cứng
+84717030 Ổ băng
+84717040 Ổ đĩa quang, kể cả ổ CD-ROM, ổ DVD và ổ CD có thể ghi được (CD-R)
+84717090 Loại khác
+## 847180
+84718010 Bộ điều khiển và bộ thích ứng
+84718070 Card âm thanh hoặc card hình ảnh
+84718090 Loại khác
+## 847290
+84729010 Máy thanh toán tiền tự động
+84729041 Tự động
+84729049 Loại khác
+84729050 Máy xử lý văn bản
+84729060 Loại khác, hoạt động bằng điện
+84729090 Loại khác, không hoạt động bằng điện
+## 847330
+84733010 Tấm mạch in đã lắp ráp
+84733090 Loại khác
+## 847350
+84735010 Thích hợp dùng cho máy thuộc nhóm 84.71
+84735090 Loại khác
+## 847410
+84741010 Hoạt động bằng điện
+84741020 Không hoạt động bằng điện
+## 847420
+84742011 Dùng cho đá
+84742019 Loại khác
+84742021 Dùng cho đá
+84742029 Loại khác
+## 847431
+84743110 Hoạt động bằng điện
+84743120 Không hoạt động bằng điện
+## 847432
+84743211 Có công suất không quá 80 tấn/giờ
+84743219 Loại khác
+84743221 Có công suất không quá 80 tấn/giờ
+84743229 Loại khác
+## 847439
+84743910 Hoạt động bằng điện
+84743920 Không hoạt động bằng điện
+## 847480
+84748010 Hoạt động bằng điện
+84748020 Không hoạt động bằng điện
+## 847590
+84759030 Của máy móc thuộc phân nhóm 8475.21.00
+84759090 Loại khác
+## 847689
+84768910 Máy đổi tiền
+84768990 Loại khác
+## 847690
+84769010 Của máy đổi tiền
+84769090 Loại khác
+## 847710
+84771010 Để đúc cao su
+84771031 Máy đúc phun sản phẩm poly(vinyl chloride) (PVC)
+84771039 Loại khác
+## 847720
+84772010 Để đùn cao su
+84772020 Để đùn plastic
+## 847740
+84774010 Để đúc hoặc tạo hình cao su
+84774020 Để đúc hoặc tạo hình plastic
+## 847759
+84775910 Dùng cho cao su
+84775920 Dùng cho plastic
+## 847780
+84778010 Để gia công cao su hoặc sản xuất các sản phẩm từ cao su, hoạt động bằng điện
+84778020 Để gia công cao su hoặc sản xuất các sản phẩm từ cao su, không hoạt động bằng điện
+84778031 Máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in
+84778039 Loại khác
+84778040 Để gia công plastic hoặc sản xuất các sản phẩm từ plastic, không hoạt động bằng điện
+## 847790
+84779010 Của máy gia công cao su hoặc sản xuất các sản phẩm từ cao su hoạt động bằng điện
+84779020 Của máy để gia công cao su hoặc sản xuất các sản phẩm từ cao su không hoạt động bằng điện
+84779032 Bộ phận của máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in
+84779039 Loại khác
+84779040 Của máy để gia công plastic hoặc các sản phẩm từ plastic, không hoạt động bằng điện
+## 847810
+84781010 Hoạt động bằng điện
+84781020 Không hoạt động bằng điện
+## 847910
+84791010 Hoạt động bằng điện
+84791020 Không hoạt động bằng điện
+## 847920
+84792010 Hoạt động bằng điện
+84792020 Không hoạt động bằng điện
+## 847940
+84794010 Hoạt động bằng điện
+84794020 Không hoạt động bằng điện
+## 847981
+84798110 Hoạt động bằng điện
+84798120 Không hoạt động bằng điện
+## 847982
+84798210 Hoạt động bằng điện
+84798220 Không hoạt động bằng điện
+## 847989
+84798910 Thiết bị tự động sắp đặt hoặc loại bỏ các linh kiện hoặc phần tử tiếp xúc chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in đã lắp ráp
+84798950 Máy lắp ráp các bo mạch nhánh của bộ xử lý trung tâm (CPU) vào các vỏ hoặc hộp đựng bằng plastic; thiết bị tái sinh dung dịch hóa học dùng trong sản xuất tấm mạch in hoặc tấm dây in; thiết bị làm sạch cơ học bề mặt của tấm mạch in hoặc tấm dây in trong sản xuất; thiết bị đồng chỉnh tấm mạch in hoặc tấm dây in hoặc mạch in đã lắp ráp trong quá trình sản xuất
+84798961 Máy bán hàng dịch vụ tự động (Automatic service-vending machines)
+84798969 Loại khác
+84798970 Loại khác, không hoạt động bằng điện
+## 847990
+84799010 Của hàng hóa thuộc phân nhóm 8479.89.10
+84799050 Của hàng hóa thuộc phân nhóm 8479.89.50
+84799090 Loại khác
+## 848030
+84803010 Bằng đồng
+84803090 Loại khác
+## 848071
+84807110 Khuôn làm đế giày, dép
+84807190 Loại khác
+## 848079
+84807910 Khuôn làm đế giày, dép
+84807990 Loại khác
+## 848110
+84811011 Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm
+84811019 Loại khác
+84811021 Có đường kính trong không quá 2,5 cm
+84811022 Có đường kính trong trên 2,5 cm
+84811091 Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm
+84811099 Loại khác
+## 848130
+84813010 Van cản, bằng gang đúc, có đường kính trong cửa nạp từ 4 cm đến 60 cm
+84813020 Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống
+84813040 Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm
+84813090 Loại khác
+## 848140
+84814010 Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống
+84814030 Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm
+84814090 Loại khác
+## 848320
+84832020 Dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+84832030 Dùng cho động cơ xe của Chương 87
+84832090 Loại khác
+## 848330
+84833030 Dùng cho động cơ xe của Chương 87
+84833090 Loại khác
+## 848530
+84853010 Bằng lắng đọng thủy tinh
+84853090 Loại khác
+## 848590
+84859010 Của phân nhóm 8485.20.00
+84859090 Loại khác
+## 848610
+84861010 Thiết bị làm nóng nhanh tấm bán dẫn mỏng
+84861020 Máy làm khô bằng phương pháp quay ly tâm để chế tạo tấm bán dẫn mỏng
+84861030 Máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng
+84861040 Máy và thiết bị để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip
+84861050 Máy mài, đánh bóng và phủ dùng trong chế tạo tấm bán dẫn mỏng
+84861060 Thiết bị làm phát triển hoặc kéo khối bán dẫn đơn tinh thể
+84861090 Loại khác
+## 848620
+84862011 Thiết bị kết tủa khí hóa dùng cho ngành sản xuất bán dẫn
+84862012 Máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay
+84862013 Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng; thiết bị lắng đọng vật lý dùng cho sản xuất bán dẫn
+84862019 Loại khác
+84862021 Máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn
+84862029 Loại khác
+84862031 Máy dùng tia sáng để làm sạch và tẩy rửa chất bẩn bám trên các đầu chân dẫn điện kim loại của các cụm linh kiện bán dẫn trước khi tiến hành điện phân; dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng
+84862032 Thiết bị sử dụng cho các bản mẫu khắc khô trên vật liệu bán dẫn
+84862033 Thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng
+84862039 Loại khác
+84862041 Thiết bị in trực tiếp lên tấm bán dẫn mỏng
+84862042 Thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại
+84862049 Loại khác
+84862051 Thiết bị khắc để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng
+84862059 Loại khác
+84862091 Máy cắt laser để cắt các đường tiếp xúc bằng các chùm tia laser trong các sản phẩm bán dẫn
+84862092 Máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn
+84862093 Lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn trên các tấm bán dẫn mỏng
+84862094 Lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng cho sản xuất linh kiện bán dẫn trên các tấm bán dẫn mỏng
+84862095 Máy tự động dịch chuyển hoặc bóc tách các linh kiện hoặc phần tiếp xúc trên các nguyên liệu bán dẫn
+84862099 Loại khác
+## 848630
+84863010 Thiết bị khắc axit bằng phương pháp khô lên tấm nền của màn hình dẹt
+84863020 Thiết bị khắc axit bằng phương pháp ướt, hiện ảnh, tẩy rửa hoặc làm sạch màn hình dẹt
+84863030 Thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt; thiết bị để tạo phủ lớp nhũ tương cảm quang lên các nền của màn hình dẹt bằng phương pháp quay; thiết bị tạo kết tủa vật lý lên các lớp nền của màn hình dẹt
+84863090 Loại khác
+## 848640
+84864010 Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn
+84864020 Thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn; máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn
+84864030 Khuôn để sản xuất linh kiện bán dẫn
+84864040 Kính hiển vi quang học soi nổi được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+84864050 Kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+84864060 Kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+84864070 Thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các tấm nền phủ lớp cản quang trong quá trình khắc
+84864090 Loại khác
+## 848690
+84869011 Của thiết bị nung nóng nhanh tấm bán dẫn mỏng
+84869012 Của thiết bị làm khô bằng phương pháp quay dùng cho quá trình gia công tấm bản mỏng
+84869013 Của máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng
+84869014 Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ
+84869015 Loại khác
+84869016 Của máy mài, đánh bóng và mài rà dùng cho quá trình sản xuất tấm bán dẫn mỏng
+84869017 Của thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể
+84869019 Loại khác
+84869021 Của thiết bị kết tủa và bay hơi dùng cho sản xuất bán dẫn
+84869022 Của máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; của thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay
+84869023 Của máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên tấm bán dẫn mỏng; của thiết bị để lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác
+84869024 Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ
+84869025 Loại khác
+84869026 Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ
+84869027 Loại khác
+84869028 Của lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng; của lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng
+84869029 Loại khác
+84869031 Của thiết bị để khắc axit bằng phương pháp khô lên các tấm nền của màn hình dẹt
+84869032 Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ
+84869033 Loại khác
+84869034 Của thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt
+84869035 Của thiết bị để tạo lớp phủ nhũ tương cảm quang lên tấm nền của màn hình dẹt
+84869036 Của thiết bị để tạo kết tủa vật lý lên các đế của màn hình dẹt
+84869039 Loại khác
+84869041 Của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn
+84869042 Của thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn
+84869043 Của máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn
+84869044 Của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+84869045 Của kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+84869046 Của thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các đế phủ lớp cản quang trong quá trình khắc, kể cả mạch in đã lắp ráp
+84869049 Loại khác
+## 850132
+85013221 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+85013224 Động cơ dùng cho xe của Chương 87
+85013225 Động cơ khác
+85013226 Máy phát điện
+85013231 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+85013232 Động cơ khác
+85013233 Máy phát điện
+## 850162
+85016210 Công suất trên 75 kVA nhưng không quá 150 kVA
+85016220 Công suất trên 150 kVA nhưng không quá 375 kVA
+## 850212
+85021210 Công suất trên 75 kVA nhưng không quá 125 kVA
+85021220 Công suất trên 125 kVA nhưng không quá 375 kVA
+## 850431
+85043111 Điện áp từ 110 kV trở lên
+85043112 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+85043113 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+85043119 Loại khác
+85043121 Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)
+85043122 Loại khác
+85043123 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+85043124 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+85043129 Loại khác
+85043130 Máy biến áp quét về (biến áp tần số quét ngược) (SEN)
+85043140 Máy biến điện trung tần
+85043191 Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+85043192 Biến áp thích ứng khác (SEN)
+85043193 Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)
+85043199 Loại khác
+## 850432
+85043211 Biến áp thích ứng (SEN)
+85043219 Loại khác
+85043220 Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+85043230 Loại khác, tần số tối thiểu 3 MHz
+85043241 Biến áp thích ứng (SEN)
+85043249 Loại khác
+85043251 Biến áp thích ứng (SEN)
+85043259 Loại khác
+## 850434
+85043411 Biến áp thích ứng (SEN)
+85043412 Máy biến áp loại khô phòng nổ (SEN)
+85043413 Loại khác (SEN)
+85043414 Biến áp thích ứng (SEN)
+85043415 Máy biến áp loại khô phòng nổ
+85043419 Loại khác
+85043422 Biến áp thích ứng (SEN)
+85043423 Máy biến áp loại khô phòng nổ (SEN)
+85043424 Loại khác (SEN)
+85043425 Biến áp thích ứng (SEN)
+85043426 Máy biến áp loại khô phòng nổ
+85043429 Loại khác
+## 850440
+85044011 Bộ nguồn cấp điện liên tục (UPS) (SEN)
+85044019 Loại khác
+85044020 Máy nạp ắc qui, pin có công suất danh định trên 100 kVA
+85044030 Bộ chỉnh lưu khác
+85044040 Bộ nghịch lưu
+85044090 Loại khác
+## 850450
+85045010 Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông
+85045020 Cuộn cảm cố định kiểu con chip (SEN)
+85045093 Có công suất danh định không quá 2.500 kVA
+85045094 Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA
+85045095 Có công suất danh định trên 10.000 kVA
+## 850490
+85049010 Của hàng hóa thuộc phân nhóm 8504.10
+85049020 Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10
+85049031 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+85049039 Loại khác
+85049041 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+85049049 Loại khác
+85049090 Loại khác
+## 850710
+85071010 Dùng cho máy bay
+85071092 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+85071095 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+85071096 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+85071097 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+85071098 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+85071099 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+## 850720
+85072010 Dùng cho máy bay
+85072094 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+85072095 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+85072096 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+85072097 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+85072098 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+85072099 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+## 850780
+85078011 Bằng sắt-niken
+85078019 Loại khác
+85078020 Loại dùng cho máy tính xách tay kể cả loại notebook và subnotebook
+85078091 Bằng sắt-niken
+85078099 Loại khác
+## 850790
+85079011 Của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99
+85079012 Dùng cho máy bay
+85079019 Loại khác
+85079091 Dùng cho máy bay
+85079092 Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)
+85079093 Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99
+85079099 Loại khác
+## 851140
+85114010 Loại dùng cho động cơ của phương tiện bay
+85114021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+85114029 Loại khác
+85114031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+85114032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+85114033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+85114091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+85114099 Loại khác
+## 851150
+85115010 Loại dùng cho động cơ của phương tiện bay
+85115021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+85115029 Loại khác
+85115031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+85115032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+85115033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+85115091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+85115099 Loại khác
+## 851660
+85166010 Nồi nấu cơm
+85166090 Loại khác
+## 851679
+85167910 Ấm đun nước
+85167990 Loại khác
+## 851690
+85169021 Các tấm toả nhiệt (sealed hotplates) dùng cho thiết bị gia dụng
+85169029 Loại khác
+85169030 Của hàng hóa thuộc phân nhóm 8516.10
+85169040 Của điện trở đốt nóng bằng điện dùng cho máy đúc chữ hoặc máy sắp chữ
+85169090 Loại khác
+## 851779
+85177910 Của bộ điều khiển và bộ thích ứng (adaptor) kể cả cổng nối, cầu nối và bộ định tuyến
+85177921 Của điện thoại di động (cellular telephones)
+85177929 Loại khác
+85177931 Dùng cho điện thoại hoặc điện báo hữu tuyến
+85177932 Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến
+85177939 Loại khác
+85177991 Dùng cho điện thoại hoặc điện báo hữu tuyến
+85177992 Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến
+85177999 Loại khác
+## 851821
+85182110 Loa thùng
+85182190 Loại khác
+## 851822
+85182210 Loa thùng
+85182290 Loại khác
+## 851829
+85182920 Loa, không có vỏ, có dải tần số 300 Hz đến 3.400 Hz, với đường kính không quá 50 mm, dùng trong viễn thông
+85182990 Loại khác
+## 851840
+85184020 Sử dụng như bộ lặp (nhắc lại) trong điện thoại hữu tuyến
+85184030 Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến
+85184040 Loại khác, có từ 6 đường tín hiệu đầu vào trở lên, có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất
+85184090 Loại khác
+## 851850
+85185010 Có dải công suất từ 240 W trở lên
+85185020 Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V
+85185090 Loại khác
+## 851890
+85189010 Của hàng hóa thuộc phân nhóm 8518.10.11, 8518.29.20, 8518.30.40 hoặc 8518.40.20, kể cả mạch in đã lắp ráp
+85189020 Của hàng hóa thuộc phân nhóm 8518.40.40
+85189030 Của hàng hóa thuộc phân nhóm 8518.21 hoặc 8518.22
+85189040 Của hàng hóa thuộc phân nhóm 8518.29.90
+85189090 Loại khác
+## 851920
+85192010 Máy ghi hoạt động bằng đồng xu, token hoặc đĩa
+85192090 Loại khác
+## 851981
+85198110 Máy ghi âm cassette bỏ túi, kích thước không quá 170 mm x 100 mm x 45 mm
+85198120 Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài
+85198130 Đầu đĩa compact
+85198141 Loại dùng cho điện ảnh hoặc phát thanh
+85198149 Loại khác
+85198150 Máy ghi điều lọc (dictating machines), loại chỉ hoạt động bằng nguồn điện ngoài
+85198161 Loại dùng cho điện ảnh hoặc phát thanh
+85198162 Máy trả lời điện thoại
+85198169 Loại khác
+85198171 Loại dùng cho điện ảnh hoặc phát thanh (SEN)
+85198179 Loại khác
+85198191 Loại dùng cho điện ảnh hoặc phát thanh
+85198199 Loại khác
+## 851989
+85198910 Máy tái tạo âm thanh dùng trong điện ảnh
+85198920 Máy quay đĩa (record players) có hoặc không có loa
+85198930 Loại dùng cho điện ảnh hoặc phát thanh
+85198940 Thiết bị tái tạo âm thanh khác
+85198990 Loại khác
+## 852110
+85211010 Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN)
+85211090 Loại khác
+## 852190
+85219011 Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN)
+85219019 Loại khác
+85219091 Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN)
+85219099 Loại khác
+## 852290
+85229020 Tấm mạch in đã lắp ráp dùng cho máy trả lời điện thoại
+85229030 Tấm mạch in đã lắp ráp dùng cho máy ghi hoặc tái tạo âm thanh dùng trong lĩnh vực điện ảnh
+85229040 Cơ cấu ghi hoặc đọc băng video hoặc audio và đĩa compact
+85229050 Đầu đọc hình hoặc âm thanh, kiểu từ tính; đầu và thanh xoá từ
+85229091 Bộ phận và phụ kiện khác của thiết bị ghi hoặc tái tạo âm thanh dùng trong điện ảnh
+85229092 Bộ phận khác của máy trả lời điện thoại
+85229093 Bộ phận và phụ kiện khác của hàng hóa thuộc phân nhóm 8519.81 hoặc nhóm 85.21
+85229099 Loại khác
+## 852321
+85232110 Chưa ghi
+85232190 Loại khác
+## 852329
+85232911 Băng máy tính
+85232919 Loại khác
+85232921 Băng video
+85232929 Loại khác
+85232931 Băng máy tính
+85232933 Băng video
+85232939 Loại khác
+85232941 Băng máy tính
+85232942 Loại dùng cho điện ảnh
+85232943 Băng video khác
+85232949 Loại khác
+85232951 Băng máy tính
+85232952 Băng video
+85232959 Loại khác
+85232961 Loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+85232962 Loại dùng cho điện ảnh
+85232963 Băng video khác
+85232969 Loại khác
+85232971 Đĩa cứng và đĩa mềm máy vi tính
+85232979 Loại khác
+85232981 Loại dùng cho máy vi tính
+85232982 Loại khác
+85232983 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+85232985 Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác
+85232986 Loại khác, dùng cho điện ảnh
+85232989 Loại khác
+85232991 Loại dùng cho máy vi tính
+85232992 Loại khác
+85232993 Loại dùng cho máy vi tính
+85232994 Loại khác
+85232995 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+85232999 Loại khác
+## 852341
+85234110 Loại dùng cho máy vi tính
+85234190 Loại khác
+## 852349
+85234911 Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh
+85234912 Đĩa chứa nội dung giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa
+85234913 Loại khác
+85234914 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+85234915 Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác
+85234916 Loại khác, dùng cho điện ảnh
+85234919 Loại khác
+85234991 Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh
+85234992 Loại chỉ sử dụng để tái tạo âm thanh
+85234993 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+85234999 Loại khác
+## 852359
+85235910 Thẻ không tiếp xúc (dạng "card" và dạng "tag")(*)
+85235921 Loại dùng cho máy vi tính
+85235929 Loại khác
+85235930 Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh
+85235940 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+85235990 Loại khác
+## 852380
+85238040 Đĩa ghi âm sử dụng kỹ thuật analog
+85238051 Loại dùng cho máy vi tính
+85238059 Loại khác
+85238091 Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh
+85238092 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+85238099 Loại khác
+## 852581
+85258110 Camera ghi hình ảnh
+85258120 Camera truyền hình
+85258190 Loại khác
+## 852582
+85258210 Camera ghi hình ảnh
+85258220 Camera truyền hình
+85258290 Loại khác
+## 852583
+85258310 Camera ghi hình ảnh
+85258320 Camera truyền hình
+85258390 Loại khác
+## 852610
+85261010 Ra đa, loại dùng trên mặt đất, hoặc trang bị trên máy bay dân dụng, hoặc chỉ dùng cho tàu thuyền đi biển
+85261090 Loại khác
+## 852691
+85269110 Thiết bị dẫn đường bằng sóng vô tuyến, loại dùng trên máy bay dân dụng, hoặc chỉ dùng cho tàu thuyền đi biển
+85269190 Loại khác
+## 852713
+85271310 Loại xách tay
+85271390 Loại khác
+## 852719
+85271920 Loại xách tay
+85271990 Loại khác
+## 852721
+85272110 Có khả năng nhận và giải mã tín hiệu hệ thống dữ liệu vô tuyến kỹ thuật số
+85272190 Loại khác
+## 852791
+85279110 Loại xách tay
+85279190 Loại khác
+## 852792
+85279220 Hoạt động bằng nguồn điện lưới
+85279290 Loại khác
+## 852799
+85279920 Hoạt động bằng nguồn điện lưới
+85279990 Loại khác
+## 852849
+85284910 Loại màu
+85284920 Loại đơn sắc
+## 852869
+85286910 Công suất chiếu lên màn ảnh có đường chéo từ 300 inch trở lên
+85286990 Loại khác
+## 852871
+85287111 Hoạt động bằng nguồn điện lưới
+85287119 Loại khác
+85287191 Hoạt động bằng nguồn điện lưới
+85287199 Loại khác
+## 852872
+85287210 Hoạt động bằng pin
+85287291 Loại sử dụng ống đèn hình tia ca-tốt
+85287292 Loại màn hình tinh thể lỏng (LCD), đi-ốt phát quang (LED) và màn hình dẹt khác
+85287299 Loại khác
+## 852910
+85291021 Dùng cho máy thu truyền hình
+85291029 Loại khác
+85291030 Ăng ten vệ tinh, ăng ten lưỡng cực và các loại ăng ten roi (rabbit antennae) sử dụng cho máy thu hình hoặc máy thu thanh
+85291040 Bộ lọc và tách tín hiệu ăng ten
+85291060 Loa hoặc phễu tiếp sóng (ống dẫn sóng)
+85291093 Loại dùng với thiết bị truyền dẫn để phát sóng vô tuyến
+85291094 Loại dùng với thiết bị truyền dẫn truyền hình
+85291099 Loại khác
+## 852990
+85299020 Dùng cho bộ giải mã
+85299040 Dùng cho máy camera số hoặc camera ghi hình ảnh
+85299051 Dùng cho hàng hóa thuộc phân nhóm 8525.50 hoặc 8525.60
+85299052 Dùng cho hàng hóa thuộc phân nhóm 8527.13, 8527.19, 8527.21, 8527.29, 8527.91 hoặc 8527.99
+85299053 Dùng cho màn hình dẹt
+85299054 Loại khác, dùng cho máy thu truyền hình
+85299055 Loại khác
+85299059 Loại khác
+85299091 Dùng cho máy thu truyền hình
+85299094 Loại khác, dùng cho màn hình dẹt
+85299099 Loại khác
+## 853110
+85311010 Báo trộm
+85311020 Báo cháy
+85311030 Báo khói; chuông báo động cá nhân bỏ túi (còi rú)
+85311090 Loại khác
+## 853310
+85331010 Điện trở dán
+85331090 Loại khác
+## 853400
+85340010 Một mặt
+85340020 Hai mặt
+85340030 Nhiều lớp
+85340090 Loại khác
+## 853521
+85352110 Loại hộp đúc
+85352120 Bộ ngắt mạch chống dòng rò tiếp (chạm) đất ELCB
+85352190 Loại khác
+## 853529
+85352910 Bộ ngắt mạch chống dòng rò tiếp (chạm) đất ELCB
+85352990 Loại khác
+## 853530
+85353011 Thiết bị ngắt có điện áp dưới 36 kV
+85353019 Loại khác
+85353020 Dùng cho điện áp từ 66 kV trở lên
+85353090 Loại khác
+## 853590
+85359010 Đầu nối đã lắp ráp và bộ chuyển đổi theo nấc dùng cho máy biến áp phân phối hoặc biến áp nguồn (SEN)
+85359020 Công tắc đảo chiều (change-over switches) loại dùng khởi động động cơ điện
+85359090 Loại khác
+## 853610
+85361011 Thích hợp dùng cho quạt điện
+85361012 Loại khác, dòng điện dưới 16 A
+85361013 Khối cầu chì, loại sử dụng cho xe có động cơ (SEN)
+85361019 Loại khác
+85361091 Thích hợp dùng cho quạt điện
+85361092 Loại khác, dòng điện dưới 16 A
+85361093 Khối cầu chì, loại sử dụng cho xe có động cơ (SEN)
+85361099 Loại khác
+## 853630
+85363010 Bộ chống sét
+85363020 Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện
+85363090 Loại khác
+## 853661
+85366111 Dòng điện dưới 16 A
+85366119 Loại khác
+85366191 Dòng điện dưới 16 A
+85366199 Loại khác
+## 853670
+85367010 Bằng gốm
+85367020 Bằng đồng
+85367090 Loại khác
+## 853720
+85372011 Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên
+85372019 Loại khác
+85372021 Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên
+85372029 Loại khác
+85372090 Loại khác
+## 853810
+85381011 Bộ phận của bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn
+85381012 Của loại sử dụng trong các thiết bị sóng vô tuyến
+85381019 Loại khác
+85381021 Bộ phận của bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn
+85381022 Của loại sử dụng trong các thiết bị sóng vô tuyến
+85381029 Loại khác
+## 853910
+85391010 Dùng cho xe có động cơ thuộc Chương 87
+85391090 Loại khác
+## 853921
+85392120 Dùng cho thiết bị y tế
+85392130 Dùng cho xe có động cơ
+85392140 Bóng đèn phản xạ khác
+85392190 Loại khác
+## 853922
+85392220 Dùng cho thiết bị y tế
+85392231 Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+85392232 Loại dùng trong chiếu sáng trang trí, công suất trên 60 W
+85392233 Loại khác, dùng cho chiếu sáng gia dụng
+85392239 Loại khác
+85392291 Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+85392293 Loại khác, dùng cho chiếu sáng gia dụng
+85392299 Loại khác
+## 853929
+85392910 Dùng cho thiết bị y tế
+85392920 Dùng cho xe có động cơ
+85392930 Bóng đèn phản xạ khác
+85392941 Loại thích hợp dùng cho thiết bị y tế
+85392949 Loại khác
+85392950 Loại khác, có công suất trên 200 W nhưng không quá 300 W và điện áp trên 100 V
+85392960 Loại khác, có công suất không quá 200 W và điện áp không quá 100 V
+85392990 Loại khác
+## 853931
+85393110 Ống huỳnh quang dùng cho đèn huỳnh quang com-pắc
+85393120 Loại khác, dạng ống thẳng dùng cho đèn huỳnh quang khác
+85393130 Bóng đèn huỳnh quang com-pắc đã có chấn lưu lắp liền (SEN)
+85393190 Loại khác
+## 853939
+85393910 Ống huỳnh quang dùng cho đèn huỳnh quang com-pắc
+85393920 Bóng đèn huỳnh quang ca-tốt lạnh (CCFLs) để chiếu sáng từ phía sau của màn hình dẹt
+85393940 Bóng đèn huỳnh quang ca-tốt lạnh khác
+85393990 Loại khác
+## 853952
+85395210 Loại đầu đèn ren xoáy
+85395290 Loại khác
+## 853990
+85399010 Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc
+85399020 Loại khác, dùng cho đèn của xe có động cơ
+85399030 Loại khác, của phân nhóm 8539.51.00
+85399090 Loại khác
+## 854040
+85404010 Ống hiển thị dữ liệu/đồ họa, loại màu, của loại dùng cho hàng hóa thuộc nhóm 85.25
+85404090 Loại khác
+## 854330
+85433020 Thiết bị xử lý ướt bằng phương pháp nhúng trong dung dịch hóa chất hoặc điện hóa, để tách hoặc không tách vật liệu gia công trên nền (tấm đế) của bản mạch PCB/PWBs(1)
+85433091 Máy mạ điện và điện phân chỉ dùng hoặc chủ yếu dùng để sản xuất mạch in
+85433099 Loại khác
+## 854370
+85437010 Máy cung cấp năng lượng cho hàng rào điện
+85437021 Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04
+85437029 Loại khác
+85437030 Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển
+85437040 Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)
+85437050 Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)
+85437060 Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại
+85437090 Loại khác
+## 854390
+85439010 Của hàng hóa thuộc phân nhóm 8543.10 hoặc 8543.20
+85439020 Của hàng hóa thuộc phân nhóm 8543.30.20
+85439030 Của hàng hóa thuộc phân nhóm 8543.70.30
+85439040 Của hàng hóa thuộc phân nhóm 8543.70.40
+85439090 Loại khác
+## 854411
+85441120 Có một lớp phủ ngoài hoặc bọc bằng giấy, vật liệu dệt hoặc poly(vinyl clorua)
+85441130 Có lớp phủ ngoài bằng dầu bóng (lacquer)
+85441140 Có lớp phủ ngoài bằng men tráng (enamel)
+85441190 Loại khác
+## 854420
+85442011 Cách điện bằng cao su hoặc plastic
+85442019 Loại khác
+85442021 Cách điện bằng cao su hoặc plastic
+85442029 Loại khác
+85442031 Cách điện bằng cao su hoặc plastic
+85442039 Loại khác
+85442041 Cách điện bằng cao su hoặc plastic
+85442049 Loại khác
+## 854430
+85443012 Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+85443013 Loại khác
+85443014 Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+85443019 Loại khác
+85443091 Cách điện bằng cao su hoặc plastic
+85443099 Loại khác
+## 854449
+85444911 Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển
+85444913 Loại khác, cách điện bằng cao su, plastic hoặc giấy
+85444919 Loại khác
+85444921 Dây đơn có vỏ bọc (chống nhiễu) dùng trong sản xuất bó dây dẫn điện của ô tô
+85444922 Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 19,5 mm
+85444923 Cáp điện cách điện bằng plastic khác
+85444924 Loại khác, cách điện bằng cao su, plastic hoặc giấy
+85444929 Loại khác
+85444931 Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển
+85444932 Loại khác, cách điện bằng plastic
+85444933 Loại khác, cách điện bằng cao su hoặc giấy
+85444939 Loại khác
+85444941 Cáp bọc cách điện bằng plastic
+85444942 Loại khác, cách điện bằng cao su, plastic hoặc giấy
+85444949 Loại khác
+## 854460
+85446011 Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm
+85446012 Loại khác, cách điện bằng cao su, plastic hoặc giấy
+85446019 Loại khác
+85446021 Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm
+85446022 Loại khác, cách điện bằng cao su, plastic hoặc giấy
+85446029 Loại khác
+85446031 Cách điện bằng cao su, plastic hoặc giấy
+85446039 Loại khác
+## 854470
+85447010 Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển
+85447090 Loại khác
+## 854620
+85462010 Cách điện xuyên của máy biến điện (máy biến áp và máy biến dòng) và cách điện của thiết bị ngắt mạch
+85462090 Loại khác
+## 854790
+85479010 Ống dẫn dây điện và các khớp nối của chúng, làm bằng kim loại cơ bản được lót bằng vật liệu cách điện
+85479090 Loại khác
+## 854911
+85491111 Của loại dùng cho máy bay
+85491112 Loại khác, của phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95
+85491119 Loại khác
+85491120 Phế liệu và phế thải chủ yếu chứa sắt
+85491130 Phế liệu và phế thải chủ yếu chứa đồng
+85491191 Của loại dùng cho máy bay
+85491192 Loại khác, của phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95
+85491199 Loại khác
+## 854912
+85491210 Của pin và bộ pin
+85491220 Của ắc qui điện loại dùng cho máy bay
+85491290 Loại khác
+## 854913
+85491310 Của pin và bộ pin
+85491320 Của ắc qui điện loại dùng cho máy bay
+85491390 Loại khác
+## 854914
+85491410 Của pin và bộ pin
+85491420 Của ắc qui điện loại dùng cho máy bay
+85491490 Loại khác
+## 854919
+85491910 Của pin và bộ pin
+85491920 Của ắc qui điện loại dùng cho máy bay
+85491990 Loại khác
+## 854991
+85499110 Thủy tinh từ ống tia ca-tốt hoặc thủy tinh hoạt hóa khác
+85499190 Loại khác
+## 860800
+86080020 Thiết bị cơ điện
+86080090 Loại khác
+## 860900
+86090010 Bằng kim loại cơ bản
+86090090 Loại khác
+## 870110
+87011011 Dùng cho nông nghiệp
+87011019 Loại khác
+87011091 Dùng cho nông nghiệp
+87011099 Loại khác
+## 870121
+87012110 Dạng CKD (SEN)
+87012190 Loại khác
+## 870122
+87012210 Dạng CKD (SEN)
+87012290 Loại khác
+## 870123
+87012310 Dạng CKD (SEN)
+87012390 Loại khác
+## 870124
+87012410 Dạng CKD (SEN)
+87012490 Loại khác
+## 870129
+87012910 Dạng CKD (SEN)
+87012990 Loại khác
+## 870191
+87019110 Máy kéo nông nghiệp
+87019190 Loại khác
+## 870192
+87019210 Máy kéo nông nghiệp
+87019290 Loại khác
+## 870193
+87019310 Máy kéo nông nghiệp
+87019390 Loại khác
+## 870194
+87019410 Máy kéo nông nghiệp
+87019490 Loại khác
+## 870195
+87019510 Máy kéo nông nghiệp
+87019590 Loại khác
+## 870210
+87021010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87021041 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+87021042 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87021049 Loại khác
+87021050 Loại khác
+87021060 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87021071 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+87021072 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87021079 Loại khác
+87021081 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+87021082 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87021089 Loại khác
+87021091 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87021099 Loại khác
+## 870220
+87022010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87022022 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+87022023 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87022029 Loại khác
+87022031 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+87022032 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87022039 Loại khác
+87022041 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87022049 Loại khác
+87022050 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87022061 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+87022062 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87022069 Loại khác
+87022071 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+87022072 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87022079 Loại khác
+87022091 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87022099 Loại khác
+## 870230
+87023010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87023021 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87023029 Loại khác
+87023031 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87023039 Loại khác
+87023041 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87023049 Loại khác
+87023050 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87023061 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87023069 Loại khác
+87023071 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87023079 Loại khác
+87023091 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87023099 Loại khác
+## 870240
+87024010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87024021 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87024029 Loại khác
+87024031 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87024039 Loại khác
+87024041 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87024049 Loại khác
+87024050 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87024061 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87024069 Loại khác
+87024071 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87024079 Loại khác
+87024091 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87024099 Loại khác
+## 870290
+87029010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87029021 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87029029 Loại khác
+87029031 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87029032 Loại khác
+87029033 Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87029039 Loại khác
+87029040 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87029051 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87029059 Loại khác
+87029061 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87029069 Loại khác
+87029071 Khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn
+87029079 Loại khác
+87029080 Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87029090 Loại khác
+## 870310
+87031010 Xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự
+87031090 Loại khác
+## 870321
+87032111 Xe đua cỡ nhỏ (SEN)
+87032112 Xe địa hình ATV (All-Terrain Vehicles)
+87032113 Ô tô cứu thương
+87032114 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87032115 Ô tô kiểu Sedan (SEN)(1)
+87032121 Loại bốn bánh chủ động
+87032129 Loại khác
+87032131 Xe 3 bánh (SEN)
+87032139 Loại khác
+87032141 Xe đua cỡ nhỏ (SEN)
+87032142 Xe địa hình ATV (All-Terrain Vehicles)
+87032143 Ô tô cứu thương
+87032144 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87032145 Ô tô kiểu Sedan (SEN) (1)
+87032151 Loại bốn bánh chủ động
+87032159 Loại khác
+87032191 Xe 3 bánh (SEN)
+87032199 Loại khác
+## 870322
+87032211 Xe đua cỡ nhỏ (SEN)
+87032212 Xe địa hình ATV (All-Terrain Vehicles)
+87032213 Ô tô cứu thương
+87032214 Ô tô tang lễ
+87032215 Ô tô chở phạm nhân
+87032216 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87032217 Ô tô kiểu Sedan (SEN) (1)
+87032221 Loại bốn bánh chủ động
+87032229 Loại khác
+87032230 Loại khác
+87032241 Xe đua cỡ nhỏ (SEN)
+87032242 Xe địa hình ATV (All-Terrain Vehicles)
+87032243 Ô tô cứu thương
+87032244 Ô tô tang lễ
+87032245 Ô tô chở phạm nhân
+87032246 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87032247 Ô tô kiểu Sedan (SEN) (1)
+87032251 Loại bốn bánh chủ động
+87032259 Loại khác
+87032290 Loại khác
+## 870323
+87032311 Ô tô cứu thương
+87032312 Ô tô tang lễ
+87032313 Ô tô chở phạm nhân
+87032314 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87032321 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87032322 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87032323 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87032324 Dung tích xi lanh trên 2.500 cc
+87032331 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87032332 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87032333 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87032334 Dung tích xi lanh trên 2.500 cc
+87032335 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87032336 Dung tích xi lanh trên 2.000 cc
+87032341 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87032342 Dung tích xi lanh trên 2.000 cc
+87032351 Ô tô cứu thương
+87032352 Ô tô tang lễ
+87032353 Ô tô chở phạm nhân
+87032354 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87032355 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87032356 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87032357 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87032358 Dung tích xi lanh trên 2.500 cc
+87032361 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87032362 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87032363 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87032364 Dung tích xi lanh trên 2.500 cc
+87032365 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87032366 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87032367 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87032368 Dung tích xi lanh trên 2.500 cc
+87032371 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87032372 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87032373 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87032374 Dung tích xi lanh trên 2.500 cc
+## 870324
+87032411 Ô tô cứu thương
+87032412 Ô tô tang lễ
+87032413 Ô tô chở phạm nhân
+87032414 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87032415 Ô tô kiểu Sedan (SEN) (1)
+87032421 Loại bốn bánh chủ động
+87032429 Loại khác
+87032430 Loại khác
+87032441 Ô tô cứu thương
+87032442 Ô tô tang lễ
+87032443 Ô tô chở phạm nhân
+87032444 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87032445 Loại bốn bánh chủ động
+87032449 Loại khác
+87032451 Loại bốn bánh chủ động
+87032459 Loại khác
+87032461 Loại bốn bánh chủ động
+87032469 Loại khác
+## 870331
+87033111 Xe đua cỡ nhỏ (SEN)
+87033112 Xe địa hình ATV (All-Terrain Vehicles)
+87033113 Ô tô cứu thương
+87033114 Ô tô tang lễ
+87033115 Ô tô chở phạm nhân
+87033116 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87033117 Ô tô kiểu Sedan (SEN) (1)
+87033121 Loại bốn bánh chủ động
+87033129 Loại khác
+87033131 Xe ba bánh (SEN)
+87033139 Loại khác
+87033141 Xe đua cỡ nhỏ (SEN)
+87033142 Xe địa hình ATV (All-Terrain Vehicles)
+87033143 Ô tô cứu thương
+87033144 Ô tô tang lễ
+87033145 Ô tô chở phạm nhân
+87033146 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87033147 Ô tô kiểu Sedan (SEN) (1)
+87033151 Loại bốn bánh chủ động
+87033159 Loại khác
+87033191 Xe ba bánh (SEN)
+87033199 Loại khác
+## 870332
+87033211 Ô tô cứu thương
+87033212 Ô tô tang lễ
+87033213 Ô tô chở phạm nhân
+87033214 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87033221 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87033222 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87033223 Dung tích xi lanh trên 2.000 cc
+87033231 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87033232 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87033233 Dung tích xi lanh trên 2.000 cc
+87033234 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87033235 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87033236 Dung tích xi lanh trên 2.000 cc
+87033241 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87033242 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87033243 Dung tích xi lanh trên 2.000 cc
+87033251 Ô tô cứu thương
+87033252 Ô tô tang lễ
+87033253 Ô tô chở phạm nhân
+87033254 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87033261 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87033262 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87033263 Dung tích xi lanh trên 2.000 cc
+87033271 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87033272 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87033273 Dung tích xi lanh trên 2.000 cc
+87033274 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87033275 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87033276 Dung tích xi lanh trên 2.000 cc
+87033281 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87033282 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87033283 Dung tích xi lanh trên 2.000 cc
+## 870333
+87033311 Ô tô cứu thương
+87033312 Ô tô tang lễ
+87033313 Ô tô chở phạm nhân
+87033314 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87033321 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87033322 Dung tích xi lanh trên 3.000 cc
+87033331 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87033332 Dung tích xi lanh trên 3.000 cc
+87033333 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87033334 Dung tích xi lanh trên 3.000 cc
+87033340 Loại khác
+87033351 Ô tô cứu thương
+87033352 Ô tô tang lễ
+87033353 Ô tô chở phạm nhân
+87033354 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87033361 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87033362 Dung tích xi lanh trên 3.000 cc
+87033371 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87033372 Dung tích xi lanh trên 3.000 cc
+87033380 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+87033390 Loại khác
+## 870340
+87034011 Xe đua cỡ nhỏ (SEN)
+87034012 Xe địa hình ATV (All-Terrain Vehicles)
+87034013 Ô tô cứu thương
+87034014 Ô tô tang lễ
+87034015 Ô tô chở phạm nhân
+87034016 Dung tích xi lanh không quá 2.000 cc
+87034017 Dung tích xi lanh trên 2.000 cc
+87034018 Dung tích xi lanh không quá 1.500 cc
+87034019 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87034021 Dung tích xi lanh trên 2.000 cc
+87034022 Dung tích xi lanh không quá 1.500 cc
+87034023 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87034024 Dung tích xi lanh trên 2.000 cc
+87034025 Dung tích xi lanh không quá 2.000 cc
+87034026 Dung tích xi lanh trên 2.000 cc
+87034027 Dung tích xi lanh không quá 2.000 cc
+87034028 Dung tích xi lanh trên 2.000 cc
+87034031 Xe đua cỡ nhỏ (SEN)
+87034032 Dung tích xi lanh không quá 1.000 cc
+87034033 Dung tích xi lanh trên 1.000 cc
+87034034 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87034035 Dung tích xi lanh trên 1.500 cc nhưng không quá 3.000 cc
+87034036 Loại khác
+87034041 Dung tích xi lanh không quá 1.000 cc
+87034042 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87034043 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87034044 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87034045 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87034046 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87034047 Dung tích xi lanh trên 3.000 cc
+87034051 Dung tích xi lanh không quá 1.000 cc
+87034052 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87034053 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87034054 Dung tích xi lanh trên 1.800 cc nhưng không quá 3.000 cc
+87034055 Dung tích xi lanh trên 3.000 cc
+87034056 Dung tích xi lanh không quá 1.500 cc
+87034057 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87034058 Dung tích xi lanh trên 2.000 cc
+87034061 Dung tích xi lanh không quá 1.000 cc
+87034062 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87034063 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87034064 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87034065 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87034066 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87034067 Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động
+87034068 Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động
+87034071 Dung tích xi lanh không quá 1.000 cc
+87034072 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87034073 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87034074 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87034075 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87034076 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87034077 Dung tích xi lanh trên 3.000 cc
+87034081 Dung tích xi lanh không quá 1.000 cc
+87034082 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87034083 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87034084 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87034085 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87034086 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87034087 Dung tích xi lanh trên 3.000 cc
+87034091 Dung tích xi lanh không quá 1.000 cc
+87034092 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87034093 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87034094 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87034095 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87034096 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87034097 Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động
+87034098 Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động
+## 870350
+87035011 Xe đua cỡ nhỏ (SEN)
+87035012 Xe địa hình ATV (All-Terrain Vehicles)
+87035013 Ô tô cứu thương
+87035014 Ô tô tang lễ
+87035015 Ô tô chở phạm nhân
+87035016 Dung tích xi lanh không quá 2.000 cc
+87035017 Dung tích xi lanh trên 2.000 cc
+87035018 Dung tích xi lanh không quá 1.500 cc
+87035019 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87035021 Dung tích xi lanh trên 2.000 cc
+87035022 Dung tích xi lanh không quá 1.500 cc
+87035023 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87035024 Dung tích xi lanh trên 2.000 cc
+87035025 Dung tích xi lanh không quá 2.000 cc
+87035026 Dung tích xi lanh trên 2.000 cc
+87035027 Dung tích xi lanh không quá 2.000 cc
+87035028 Dung tích xi lanh trên 2.000 cc
+87035031 Xe đua cỡ nhỏ (SEN)
+87035032 Dung tích xi lanh không quá 1.000 cc
+87035033 Dung tích xi lanh trên 1.000 cc
+87035034 Dung tích xi lanh không quá 1.500 cc
+87035035 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.500 cc
+87035036 Dung tích xi lanh trên 2.500 cc
+87035041 Dung tích xi lanh không quá 1.000 cc
+87035042 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87035043 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87035044 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87035045 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87035046 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87035047 Dung tích xi lanh trên 3.000 cc
+87035051 Dung tích xi lanh không quá 1.000 cc
+87035052 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87035053 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87035054 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.500 cc
+87035055 Dung tích xi lanh trên 2.500 cc
+87035056 Dung tích xi lanh không quá 1.500 cc
+87035057 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87035058 Dung tích xi lanh trên 2.000 cc
+87035061 Dung tích xi lanh không quá 1.000 cc
+87035062 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87035063 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87035064 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87035065 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87035066 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87035067 Dung tích xi lanh trên 3.000 cc
+87035071 Dung tích xi lanh không quá 1.000 cc
+87035072 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87035073 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87035074 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87035075 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87035076 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87035077 Dung tích xi lanh trên 3.000 cc
+87035081 Dung tích xi lanh không quá 1.000 cc
+87035082 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87035083 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87035084 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87035085 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87035086 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87035087 Dung tích xi lanh trên 3.000 cc
+87035091 Dung tích xi lanh không quá 1.000 cc
+87035092 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87035093 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87035094 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87035095 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87035096 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87035097 Dung tích xi lanh trên 3.000 cc
+## 870360
+87036011 Xe đua cỡ nhỏ (SEN)
+87036012 Xe địa hình ATV (All-Terrain Vehicles)
+87036013 Ô tô cứu thương
+87036014 Ô tô tang lễ
+87036015 Ô tô chở phạm nhân
+87036016 Dung tích xi lanh không quá 2.000 cc
+87036017 Dung tích xi lanh trên 2.000 cc
+87036018 Dung tích xi lanh không quá 1.500 cc
+87036019 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87036021 Dung tích xi lanh trên 2.000 cc
+87036022 Dung tích xi lanh không quá 1.500 cc
+87036023 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87036024 Dung tích xi lanh trên 2.000 cc
+87036025 Dung tích xi lanh không quá 2.000 cc
+87036026 Dung tích xi lanh trên 2.000 cc
+87036027 Dung tích xi lanh không quá 2.000 cc
+87036028 Dung tích xi lanh trên 2.000 cc
+87036031 Xe đua cỡ nhỏ (SEN)
+87036032 Dung tích xi lanh không quá 1.000 cc
+87036033 Dung tích xi lanh trên 1.000 cc
+87036034 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87036035 Dung tích xi lanh trên 1.500 cc nhưng không quá 3.000 cc
+87036036 Loại khác
+87036041 Dung tích xi lanh không quá 1.000 cc
+87036042 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87036043 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87036044 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87036045 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87036046 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87036047 Dung tích xi lanh trên 3.000 cc
+87036051 Dung tích xi lanh không quá 1.000 cc
+87036052 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87036053 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87036054 Dung tích xi lanh trên 1.800 cc nhưng không quá 3.000 cc
+87036055 Dung tích xi lanh trên 3.000 cc
+87036056 Dung tích xi lanh không quá 1.500 cc
+87036057 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87036058 Dung tích xi lanh trên 2.000 cc
+87036061 Dung tích xi lanh không quá 1.000 cc
+87036062 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87036063 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87036064 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87036065 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87036066 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87036067 Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động
+87036068 Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động
+87036071 Dung tích xi lanh không quá 1.000 cc
+87036072 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87036073 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87036074 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87036075 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87036076 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87036077 Dung tích xi lanh trên 3.000 cc
+87036081 Dung tích xi lanh không quá 1.000 cc
+87036082 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87036083 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87036084 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87036085 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87036086 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87036087 Dung tích xi lanh trên 3.000 cc
+87036091 Dung tích xi lanh không quá 1.000 cc
+87036092 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87036093 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87036094 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87036095 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87036096 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87036097 Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động
+87036098 Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động
+## 870370
+87037011 Xe đua cỡ nhỏ (SEN)
+87037012 Xe địa hình ATV (All-Terrain Vehicles)
+87037013 Ô tô cứu thương
+87037014 Ô tô tang lễ
+87037015 Ô tô chở phạm nhân
+87037016 Dung tích xi lanh không quá 2.000 cc
+87037017 Dung tích xi lanh trên 2.000 cc
+87037018 Dung tích xi lanh không quá 1.500 cc
+87037019 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87037021 Dung tích xi lanh trên 2.000 cc
+87037022 Dung tích xi lanh không quá 1.500 cc
+87037023 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87037024 Dung tích xi lanh trên 2.000 cc
+87037025 Dung tích xi lanh không quá 2.000 cc
+87037026 Dung tích xi lanh trên 2.000 cc
+87037027 Dung tích xi lanh không quá 2.000 cc
+87037028 Dung tích xi lanh trên 2.000 cc
+87037031 Xe đua cỡ nhỏ (SEN)
+87037032 Dung tích xi lanh không quá 1.000 cc
+87037033 Dung tích xi lanh trên 1.000 cc
+87037034 Dung tích xi lanh không quá 1.500 cc
+87037035 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.500 cc
+87037036 Dung tích xi lanh trên 2.500 cc
+87037041 Dung tích xi lanh không quá 1.000 cc
+87037042 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87037043 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87037044 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87037045 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87037046 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87037047 Dung tích xi lanh trên 3.000 cc
+87037051 Dung tích xi lanh không quá 1.000 cc
+87037052 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87037053 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87037054 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.500 cc
+87037055 Dung tích xi lanh trên 2.500 cc
+87037056 Dung tích xi lanh không quá 1.500 cc
+87037057 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc
+87037058 Dung tích xi lanh trên 2.000 cc
+87037061 Dung tích xi lanh không quá 1.000 cc
+87037062 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87037063 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87037064 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87037065 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87037066 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87037067 Dung tích xi lanh trên 3.000 cc
+87037071 Dung tích xi lanh không quá 1.000 cc
+87037072 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87037073 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87037074 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87037075 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87037076 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87037077 Dung tích xi lanh trên 3.000 cc
+87037081 Dung tích xi lanh không quá 1.000 cc
+87037082 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87037083 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87037084 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87037085 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87037086 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87037087 Dung tích xi lanh trên 3.000 cc
+87037091 Dung tích xi lanh không quá 1.000 cc
+87037092 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+87037093 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+87037094 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+87037095 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc
+87037096 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+87037097 Dung tích xi lanh trên 3.000 cc
+## 870380
+87038011 Xe đua cỡ nhỏ (SEN)
+87038012 Xe địa hình ATV (All-Terrain Vehicles)
+87038013 Ô tô cứu thương
+87038014 Ô tô tang lễ
+87038015 Ô tô chở phạm nhân
+87038016 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87038017 Ô tô kiểu Sedan (SEN) (1)
+87038018 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+87038019 Loại khác
+87038091 Xe đua cỡ nhỏ (SEN)
+87038092 Xe địa hình ATV (All-Terrain Vehicles)
+87038093 Ô tô cứu thương
+87038094 Ô tô tang lễ
+87038095 Ô tô chở phạm nhân
+87038096 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87038097 Ô tô kiểu Sedan (SEN) (1)
+87038098 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+87038099 Loại khác
+## 870390
+87039011 Xe đua cỡ nhỏ (SEN)
+87039012 Xe địa hình ATV (All-Terrain Vehicles)
+87039013 Ô tô cứu thương
+87039014 Ô tô tang lễ
+87039015 Ô tô chở phạm nhân
+87039016 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87039017 Ô tô kiểu Sedan (SEN) (1)
+87039018 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+87039019 Loại khác
+87039091 Xe đua cỡ nhỏ (SEN)
+87039092 Xe địa hình ATV (All-Terrain Vehicles)
+87039093 Ô tô cứu thương
+87039094 Ô tô tang lễ
+87039095 Ô tô chở phạm nhân
+87039096 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+87039097 Ô tô kiểu Sedan (SEN) (1)
+87039098 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+87039099 Loại khác
+## 870410
+87041013 Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn
+87041014 Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn
+87041015 Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn
+87041016 Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn
+87041017 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn
+87041018 Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+87041031 Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn
+87041032 Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn
+87041033 Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn
+87041034 Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn
+87041035 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 38 tấn
+87041036 Khối lượng toàn bộ theo thiết kế (SEN) trên 38 tấn nhưng không quá 45 tấn
+87041037 Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+## 870421
+87042111 Ô tô tải đông lạnh (1)
+87042112 Ô tô pick-up (1)
+87042113 Xe ba bánh (SEN)
+87042119 Loại khác
+87042121 Ô tô tải đông lạnh (1)
+87042122 Ô tô thu gom phế thải có bộ phận nén phế thải
+87042123 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87042124 Ô tô bọc thép để chở hàng hóa có giá trị
+87042125 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87042126 Ô tô pick-up (1)
+87042127 Xe ba bánh (SEN)
+87042129 Loại khác
+## 870422
+87042211 Ô tô tải đông lạnh (1)
+87042219 Loại khác
+87042221 Ô tô tải đông lạnh (1)
+87042222 Ô tô thu gom phế thải có bộ phận nén phế thải
+87042223 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87042224 Ô tô bọc thép để chở hàng hóa có giá trị
+87042225 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87042229 Loại khác
+87042231 Ô tô tải đông lạnh (1)
+87042239 Loại khác
+87042241 Ô tô tải đông lạnh (1)
+87042242 Ô tô thu gom phế thải có bộ phận nén phế thải
+87042243 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87042245 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87042246 Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+87042247 Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn
+87042251 Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+87042259 Loại khác
+## 870423
+87042311 Ô tô tải đông lạnh (1)
+87042319 Loại khác
+87042321 Ô tô tải đông lạnh (1)
+87042322 Ô tô thu gom phế thải có bộ phận nén phế thải
+87042323 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87042324 Ô tô bọc thép để chở hàng hóa có giá trị
+87042325 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87042329 Loại khác
+87042351 Ô tô tải đông lạnh (1)
+87042359 Loại khác
+87042361 Ô tô tải đông lạnh (1)
+87042362 Ô tô thu gom phế thải có bộ phận nén phế thải
+87042363 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87042364 Ô tô bọc thép để chở hàng hóa có giá trị
+87042365 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87042366 Ô tô tự đổ
+87042369 Loại khác
+87042371 Ô tô tải đông lạnh (1)
+87042379 Loại khác
+87042381 Ô tô tải đông lạnh (1)
+87042382 Ô tô thu gom phế thải có bộ phận nén phế thải
+87042384 Ô tô bọc thép để chở hàng hóa có giá trị
+87042385 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87042386 Ô tô tự đổ
+87042389 Loại khác
+## 870431
+87043111 Ô tô tải đông lạnh (1)
+87043112 Ô tô pick-up (1)
+87043113 Xe ba bánh (SEN)
+87043119 Loại khác
+87043121 Ô tô tải đông lạnh (1)
+87043122 Ô tô thu gom phế thải có bộ phận nén phế thải
+87043123 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87043124 Ô tô bọc thép để chở hàng hóa có giá trị
+87043125 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87043126 Ô tô pick-up (1)
+87043127 Xe ba bánh (SEN)
+87043129 Loại khác
+## 870432
+87043211 Ô tô tải đông lạnh (1)
+87043219 Loại khác
+87043221 Ô tô tải đông lạnh (1)
+87043222 Ô tô thu gom phế thải có bộ phận nén phế thải
+87043223 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87043224 Ô tô bọc thép để chở hàng hóa có giá trị
+87043225 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87043229 Loại khác
+87043231 Ô tô tải đông lạnh (1)
+87043239 Loại khác
+87043241 Ô tô tải đông lạnh (1)
+87043242 Ô tô thu gom phế thải có bộ phận nén phế thải
+87043243 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87043244 Ô tô bọc thép để chở hàng hóa có giá trị
+87043245 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87043248 Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+87043249 Loại khác
+87043251 Ô tô tải đông lạnh (1)
+87043259 Loại khác
+87043261 Ô tô tải đông lạnh (1)
+87043262 Ô tô thu gom phế thải có bộ phận nén phế thải
+87043263 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87043264 Ô tô bọc thép để chở hàng hóa có giá trị
+87043265 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87043269 Loại khác
+87043272 Ô tô tải đông lạnh (1)
+87043279 Loại khác
+87043281 Ô tô tải đông lạnh (1)
+87043282 Ô tô thu gom phế thải có bộ phận nén phế thải
+87043283 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87043284 Ô tô bọc thép để chở hàng hóa có giá trị
+87043285 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87043286 Ô tô tự đổ
+87043289 Loại khác
+87043291 Ô tô tải đông lạnh (1)
+87043292 Loại khác
+87043293 Ô tô tải đông lạnh (1)
+87043294 Ô tô thu gom phế thải có bộ phận nén phế thải
+87043295 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87043296 Ô tô bọc thép để chở hàng hóa có giá trị
+87043297 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87043298 Ô tô tự đổ
+87043299 Loại khác
+## 870441
+87044111 Ô tô tải đông lạnh (1)
+87044119 Loại khác
+87044121 Ô tô tải đông lạnh (1)
+87044122 Ô tô thu gom phế thải có bộ phận nén phế thải
+87044123 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87044124 Ô tô bọc thép để chở hàng hóa có giá trị
+87044125 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87044126 Ô tô pick-up (1)
+87044127 Xe ba bánh (SEN)
+87044129 Loại khác
+## 870442
+87044211 Ô tô tải đông lạnh (1)
+87044219 Loại khác
+87044221 Ô tô tải đông lạnh (1)
+87044222 Ô tô thu gom phế thải có bộ phận nén phế thải
+87044223 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87044224 Ô tô bọc thép để chở hàng hóa có giá trị
+87044225 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87044229 Loại khác
+87044231 Ô tô tải đông lạnh (1)
+87044239 Loại khác
+87044241 Ô tô tải đông lạnh (1)
+87044242 Ô tô thu gom phế thải có bộ phận nén phế thải
+87044243 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87044245 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87044246 Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+87044247 Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn
+87044251 Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+87044259 Loại khác
+## 870443
+87044311 Ô tô tải đông lạnh (1)
+87044319 Loại khác
+87044321 Ô tô tải đông lạnh (1)
+87044322 Ô tô thu gom phế thải có bộ phận nén phế thải
+87044323 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87044324 Ô tô bọc thép để chở hàng hóa có giá trị
+87044325 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87044329 Loại khác
+87044351 Ô tô tải đông lạnh (1)
+87044359 Loại khác
+87044361 Ô tô tải đông lạnh (1)
+87044362 Ô tô thu gom phế thải có bộ phận nén phế thải
+87044363 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87044364 Ô tô bọc thép để chở hàng hóa có giá trị
+87044365 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87044369 Loại khác
+87044371 Ô tô tải đông lạnh (1)
+87044379 Loại khác
+87044381 Ô tô tải đông lạnh (1)
+87044386 Ô tô tự đổ
+87044389 Loại khác
+## 870451
+87045111 Ô tô tải đông lạnh (1)
+87045119 Loại khác
+87045121 Ô tô tải đông lạnh (1)
+87045122 Ô tô thu gom phế thải có bộ phận nén phế thải
+87045123 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87045124 Ô tô bọc thép để chở hàng hóa có giá trị
+87045125 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87045126 Ô tô pick-up (1)
+87045127 Xe ba bánh (SEN)
+87045129 Loại khác
+## 870452
+87045211 Ô tô tải đông lạnh (1)
+87045219 Loại khác
+87045221 Ô tô tải đông lạnh (1)
+87045222 Ô tô thu gom phế thải có bộ phận nén phế thải
+87045223 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87045224 Ô tô bọc thép để chở hàng hóa có giá trị
+87045225 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87045229 Loại khác
+87045231 Ô tô tải đông lạnh (1)
+87045239 Loại khác
+87045241 Ô tô tải đông lạnh (1)
+87045242 Ô tô thu gom phế thải có bộ phận nén phế thải
+87045243 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87045244 Ô tô bọc thép để chở hàng hóa có giá trị
+87045245 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87045248 Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+87045249 Loại khác
+87045251 Ô tô tải đông lạnh (1)
+87045259 Loại khác
+87045261 Ô tô tải đông lạnh (1)
+87045262 Ô tô thu gom phế thải có bộ phận nén phế thải
+87045263 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87045264 Ô tô bọc thép để chở hàng hóa có giá trị
+87045265 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87045269 Loại khác
+87045272 Ô tô tải đông lạnh (1)
+87045279 Loại khác
+87045281 Ô tô tải đông lạnh (1)
+87045282 Ô tô thu gom phế thải có bộ phận nén phế thải
+87045283 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+87045284 Ô tô bọc thép để chở hàng hóa có giá trị
+87045285 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+87045286 Ô tô tự đổ
+87045289 Loại khác
+87045291 Ô tô tải đông lạnh (1)
+87045292 Loại khác
+87045293 Ô tô tải đông lạnh (1)
+87045294 Ô tô tự đổ
+87045299 Loại khác
+## 870460
+87046011 Ô tô pick-up (1)
+87046012 Xe ba bánh (SEN)
+87046019 Loại khác
+87046021 Ô tô pick-up (1)
+87046022 Xe ba bánh (SEN)
+87046029 Loại khác
+87046091 Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn
+87046092 Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn
+87046093 Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 45 tấn
+87046094 Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+## 870490
+87049010 Dạng CKD (SEN)
+87049091 Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn
+87049092 Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn
+87049093 Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn
+87049094 Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 45 tấn
+87049095 Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+## 870590
+87059050 Xe làm sạch đường; xe hút bùn, bể phốt; xe y tế lưu động; xe phun tưới các loại
+87059060 Xe điều chế chất nổ di động (SEN)
+87059090 Loại khác
+## 870600
+87060011 Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01
+87060019 Loại khác
+87060021 Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87060022 Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn
+87060023 Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87060031 Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự
+87060032 Dùng cho ô tô cứu thương
+87060033 Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+87060034 Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)
+87060039 Loại khác
+87060041 Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn
+87060042 Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+87060050 Dùng cho xe thuộc nhóm 87.05
+## 870710
+87071010 Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự
+87071020 Dùng cho ô tô cứu thương
+87071030 Dùng cho xe được thiết kế đặc biệt để đi trên tuyết
+87071090 Loại khác
+## 870790
+87079011 Cabin lái dùng cho xe thuộc phân nhóm 8701.21, 8701.22, 8701.23, 8701.24 hoặc 8701.29
+87079019 Loại khác
+87079021 Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+87079029 Loại khác
+87079030 Dùng cho xe thuộc nhóm 87.05
+87079040 Cabin lái dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ
+87079090 Loại khác
+## 870810
+87081010 Dùng cho xe thuộc nhóm 87.01
+87081090 Loại khác
+## 870822
+87082210 Dùng cho xe thuộc nhóm 87.01
+87082220 Dùng cho xe thuộc nhóm 87.03
+87082230 Dùng cho xe thuộc nhóm 87.02, 87.04 hoặc 87.05
+## 870829
+87082911 Dùng cho xe thuộc nhóm 87.01
+87082915 Đỡ tay trên cửa xe dùng cho xe thuộc nhóm 87.03
+87082916 Loại khác, dùng cho xe thuộc nhóm 87.03
+87082917 Dùng cho xe thuộc phân nhóm 8704.10
+87082918 Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+87082919 Loại khác
+87082920 Bộ phận của dây đai an toàn
+87082992 Dùng cho xe thuộc nhóm 87.01
+87082993 Phụ kiện trang trí nội thất (SEN); chắn bùn
+87082994 Thanh chống nắp ca pô
+87082995 Loại khác
+87082996 Phụ kiện trang trí nội thất (SEN); chắn bùn
+87082997 Thanh chống nắp ca pô
+87082998 Loại khác
+87082999 Loại khác
+## 870830
+87083010 Dùng cho xe thuộc nhóm 87.01
+87083021 Phanh trống, phanh đĩa hoặc phanh hơi
+87083029 Loại khác
+87083030 Phanh trống, phanh đĩa hoặc phanh hơi cho xe thuộc nhóm 87.02 hoặc 87.04
+87083090 Loại khác
+## 870840
+87084011 Dùng cho xe thuộc nhóm 87.03
+87084013 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+87084014 Dùng cho xe thuộc nhóm 87.01
+87084019 Loại khác
+87084025 Dùng cho xe thuộc nhóm 87.01
+87084026 Dùng cho xe thuộc nhóm 87.03
+87084027 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+87084029 Loại khác
+87084091 Dùng cho xe thuộc nhóm 87.01
+87084092 Dùng cho xe thuộc nhóm 87.03
+87084099 Loại khác
+## 870850
+87085011 Dùng cho xe thuộc nhóm 87.03
+87085013 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+87085015 Dùng cho xe thuộc nhóm 87.01
+87085019 Loại khác
+87085025 Dùng cho xe thuộc nhóm 87.01
+87085026 Dùng cho xe thuộc nhóm 87.03
+87085027 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+87085029 Loại khác
+87085091 Bánh răng vành khăn và bánh răng quả dứa (SEN)
+87085092 Loại khác
+87085094 Bánh răng vành khăn và bánh răng quả dứa (SEN)
+87085095 Loại khác
+87085096 Bánh răng vành khăn và bánh răng quả dứa (SEN)
+87085099 Loại khác
+## 870870
+87087015 Dùng cho xe thuộc nhóm 87.01
+87087016 Dùng cho xe thuộc nhóm 87.03
+87087017 Dùng cho xe thuộc phân nhóm 8704.10
+87087018 Loại khác
+87087019 Loại khác
+87087021 Dùng cho xe thuộc nhóm 87.01
+87087022 Dùng cho xe thuộc nhóm 87.03
+87087023 Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)
+87087029 Loại khác
+87087031 Dùng cho xe thuộc nhóm 87.01
+87087032 Dùng cho xe thuộc nhóm 87.03
+87087033 Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+87087034 Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+87087039 Loại khác
+87087095 Dùng cho xe thuộc nhóm 87.01
+87087096 Dùng cho thuộc nhóm 87.02 hoặc 87.04
+87087097 Dùng cho xe thuộc nhóm 87.03
+87087099 Loại khác
+## 870880
+87088015 Dùng cho xe thuộc nhóm 87.01
+87088016 Dùng cho xe thuộc nhóm 87.03
+87088017 Dùng cho xe thuộc phân nhóm 8704.10 hoặc nhóm 87.05
+87088019 Loại khác
+87088091 Dùng cho xe thuộc nhóm 87.01
+87088092 Dùng cho xe thuộc nhóm 87.03
+87088099 Loại khác
+## 870891
+87089115 Dùng cho xe thuộc nhóm 87.01
+87089116 Dùng cho xe thuộc nhóm 87.03
+87089117 Dùng cho xe thuộc phân nhóm 8704.10
+87089118 Loại khác
+87089119 Loại khác
+87089191 Dùng cho xe thuộc nhóm 87.01
+87089193 Nút xả(SEN) dùng cho xe thuộc nhóm 87.03
+87089194 Nút xả(SEN) dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)
+87089195 Loại khác, dùng cho xe thuộc nhóm 87.03
+87089199 Loại khác
+## 870892
+87089210 Dùng cho xe thuộc nhóm 87.01
+87089220 Dùng cho xe thuộc nhóm 87.03
+87089251 Ống xả và bộ giảm thanh
+87089252 Bộ phận (SEN)
+87089261 Ống xả và bộ giảm thanh
+87089262 Bộ phận (SEN)
+87089290 Loại khác
+## 870893
+87089350 Dùng cho xe thuộc nhóm 87.01
+87089360 Dùng cho xe thuộc nhóm 87.03
+87089370 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+87089390 Loại khác
+## 870894
+87089411 Dùng cho xe thuộc nhóm 87.01
+87089419 Loại khác
+87089494 Dùng cho xe thuộc nhóm 87.01
+87089495 Dùng cho xe thuộc nhóm 87.03
+87089499 Loại khác
+## 870895
+87089510 Túi khí an toàn lắp với hệ thống bơm phồng
+87089590 Bộ phận
+## 870899
+87089911 Thùng nhiên liệu chưa lắp ráp; khung giá đỡ động cơ
+87089919 Loại khác
+87089921 Thùng nhiên liệu
+87089924 Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu (filler pipes); ống dẫn hướng có đầu nối với bình nhiên liệu (filler hose); đai giữ bình nhiên liệu (SEN)
+87089925 Các bộ phận khác (SEN)
+87089930 Chân ga (bàn đạp ga), chân phanh (bàn đạp phanh) hoặc chân côn (bàn đạp côn)
+87089940 Giá đỡ hoặc khay đỡ bình ắc quy và khung của nó
+87089950 Tấm hướng luồng khí tản nhiệt (SEN)
+87089961 Dùng cho xe thuộc nhóm 87.02
+87089962 Dùng cho xe thuộc nhóm 87.03
+87089963 Dùng cho xe thuộc nhóm 87.04
+87089970 Khung giá đỡ động cơ
+87089980 Loại khác
+87089991 Thùng nhiên liệu chưa lắp ráp; khung giá đỡ động cơ
+87089999 Loại khác
+## 871110
+87111012 Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ
+87111014 Xe "powered kick scooter"; xe “pocket motorcycle” (SEN)
+87111015 Xe mô tô và xe scooter khác
+87111019 Loại khác
+87111092 Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ
+87111094 Xe "powered kick scooter"; xe “pocket motorcycle” (SEN)
+87111095 Xe mô tô và xe scooter khác
+87111099 Loại khác
+## 871120
+87112011 Xe mô tô địa hình (SEN)
+87112012 Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ
+87112013 Xe “pocket motorcycle” (SEN)
+87112014 Dung tích xi lanh trên 150 cc nhưng không quá 200 cc
+87112015 Dung tích xi lanh trên 200 cc nhưng không quá 250 cc
+87112016 Loại khác
+87112019 Loại khác
+87112091 Xe mô tô địa hình (SEN)
+87112092 Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ
+87112093 Xe “pocket motorcycle” (SEN)
+87112094 Dung tích xi lanh trên 150 cc nhưng không quá 200 cc
+87112095 Dung tích xi lanh trên 200 cc nhưng không quá 250 cc
+87112096 Loại khác
+87112099 Loại khác
+## 871130
+87113011 Dạng CKD (SEN)
+87113019 Loại khác
+87113030 Loại khác, dạng CKD (SEN)
+87113090 Loại khác
+## 871140
+87114011 Dạng CKD (SEN)
+87114019 Loại khác (SEN)
+87114020 Loại khác, dạng CKD (SEN)
+87114090 Loại khác
+## 871150
+87115020 Dạng CKD (SEN)
+87115090 Loại khác
+## 871160
+87116011 Xe đạp
+87116012 Xe "kick scooter"; xe tự cân bằng "self-balancing cycle"; xe "pocket motorcycle” (SEN)
+87116013 Xe mô tô khác
+87116019 Loại khác
+87116092 Xe "kick scooter"; xe tự cân bằng "self-balancing cycle"; xe "pocket motorcycle” (SEN)
+87116093 Xe mô tô khác
+87116094 Xe đạp, có động cơ điện phụ trợ không quá 250 W và tốc độ tối đa không quá 25 km/h
+87116095 Xe đạp khác
+87116099 Loại khác
+## 871190
+87119040 Thùng xe có bánh (side-cars)
+87119060 Loại khác, dạng CKD (SEN)
+87119090 Loại khác
+## 871200
+87120010 Xe đạp đua
+87120020 Xe đạp được thiết kế dành cho trẻ em (SEN)
+87120030 Xe đạp khác
+87120090 Loại khác
+## 871420
+87142011 Có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm
+87142012 Có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm
+87142019 Loại khác
+87142090 Loại khác
+## 871491
+87149110 Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)
+87149191 Bộ phận của càng xe đạp
+87149199 Loại khác
+## 871492
+87149210 Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)
+87149290 Loại khác
+## 871493
+87149310 Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)
+87149390 Loại khác
+## 871494
+87149410 Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)
+87149490 Loại khác
+## 871495
+87149510 Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)
+87149590 Loại khác
+## 871496
+87149610 Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)
+87149690 Loại khác
+## 871499
+87149911 Tay lái, cọc lái, chắn bùn, tấm phản quang (1), giá đỡ, cáp điều khiển, giá hoặc vấu bắt đèn; phụ kiện khác (SEN)
+87149912 Bánh xích và trục khuỷu; bộ phận khác (SEN)
+87149991 Tay lái, cọc lái, chắn bùn, tấm phản quang (1), giá đỡ, cáp điều khiển, giá hoặc vấu bắt đèn; phụ kiện khác (SEN)
+87149993 Ốc bắt đầu nan hoa
+87149994 Bánh xích và trục khuỷu; bộ phận khác (SEN)
+## 871639
+87163940 Rơ-moóc và sơ mi rơ-moóc dùng trong nông nghiệp
+87163991 Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn
+87163999 Loại khác
+## 871680
+87168010 Xe kéo và xe đẩy, xe kéo, xe đẩy bằng tay để chở hàng và các loại xe tương tự được vận hành bằng tay sử dụng trong các nhà máy hoặc phân xưởng, trừ xe cút kít
+87168020 Xe cút kít
+87168090 Loại khác
+## 871690
+87169013 Dùng cho hàng hóa thuộc phân nhóm 8716.20
+87169019 Loại khác
+87169021 Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm
+87169022 Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, hoặc hơn 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm
+87169023 Loại khác, dùng cho các loại xe thuộc phân nhóm 8716.80.10
+87169024 Loại khác, dùng cho các loại xe thuộc phân nhóm 8716.80.20
+87169094 Nan hoa và ốc bắt đầu nan hoa
+87169095 Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm
+87169096 Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, hoặc hơn 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm
+87169099 Loại khác
+## 880220
+88022010 Máy bay
+88022090 Loại khác
+## 880230
+88023010 Máy bay
+88023090 Loại khác
+## 880240
+88024010 Máy bay
+88024090 Loại khác
+## 880400
+88040010 Dù xoay và bộ phận của chúng
+88040090 Loại khác
+## 880529
+88052910 Thiết bị huấn luyện bay mặt đất
+88052990 Loại khác
+## 890110
+89011010 Tổng dung tích (gross tonnage) không quá 26
+89011020 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89011060 Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000
+89011070 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89011080 Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000
+89011090 Tổng dung tích (gross tonnage) trên 5.000
+## 890120
+89012050 Tổng dung tích (gross tonnage) không quá 5.000
+89012071 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000
+89012072 Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000
+89012073 Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000
+89012080 Tổng dung tích (gross tonnage) trên 50.000
+## 890130
+89013050 Tổng dung tích (gross tonnage) không quá 5.000
+89013070 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+89013080 Tổng dung tích (gross tonnage) trên 50.000
+## 890190
+89019011 Tổng dung tích (gross tonnage) không quá 26
+89019012 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89019014 Tổng dung tích (gross tonnage) trên 500
+89019031 Tổng dung tích (gross tonnage) không quá 26
+89019032 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89019033 Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000
+89019034 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89019035 Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000
+89019036 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+89019037 Tổng dung tích (gross tonnage) trên 50.000
+## 890200
+89020031 Tổng dung tích (gross tonnage) không quá 26
+89020032 Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40
+89020033 Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101
+89020034 Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250
+89020035 Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000
+89020036 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89020037 Tổng dung tích (gross tonnage) trên 4.000
+89020041 Tổng dung tích (gross tonnage) không quá 26
+89020042 Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40
+89020043 Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101
+89020044 Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250
+89020045 Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000
+89020046 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89020047 Tổng dung tích (gross tonnage) trên 4.000
+## 890400
+89040010 Tổng dung tích (gross tonnage) không quá 26
+89040032 Công suất không quá 1.200 hp
+89040033 Công suất trên 1.200 hp nhưng không quá 3.200 hp
+89040034 Công suất trên 3.200 hp nhưng không quá 4.000 hp
+89040035 Công suất trên 4.000 hp
+## 890590
+89059010 Ụ nổi sửa chữa tàu
+89059090 Loại khác
+## 890690
+89069010 Có lượng giãn nước không quá 30 tấn
+89069020 Có lượng giãn nước trên 30 tấn nhưng không quá 300 tấn
+89069090 Loại khác
+## 890790
+89079010 Các loại phao nổi (buoys)
+89079090 Loại khác
+## 900110
+90011010 Sử dụng cho viễn thông và cho ngành điện khác
+90011090 Loại khác
+## 900190
+90019010 Sử dụng cho máy ảnh hoặc máy quay phim hoặc máy chiếu
+90019090 Loại khác
+## 900220
+90022010 Dùng cho máy chiếu phim
+90022020 Dùng cho máy quay phim, máy ảnh và máy chiếu khác
+90022090 Loại khác
+## 900290
+90029020 Dùng cho máy chiếu phim
+90029030 Dùng cho máy quay phim, máy ảnh và máy chiếu khác
+90029090 Loại khác
+## 900580
+90058010 Dụng cụ thiên văn, trừ dụng cụ thiên văn vô tuyến
+90058090 Loại khác
+## 900590
+90059010 Dùng cho dụng cụ thiên văn, trừ dụng cụ thiên văn vô tuyến
+90059090 Loại khác
+## 900653
+90065310 Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))
+90065390 Loại khác
+## 900659
+90065911 Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))
+90065919 Loại khác
+90065921 Máy vẽ ảnh laser
+90065929 Loại khác
+90065930 Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành
+90065990 Loại khác
+## 900691
+90069110 Sử dụng cho máy vẽ ảnh laser thuộc phân nhóm 9006.59.21
+90069140 Loại khác, dùng cho máy ảnh của phân nhóm 9006.40 hoặc 9006.53
+90069150 Loại khác, dùng cho máy ảnh của phân nhóm 9006.59.11 hoặc 9006.59.19
+90069190 Loại khác
+## 900699
+90069910 Sử dụng cho thiết bị đèn chớp máy ảnh
+90069990 Loại khác
+## 900720
+90072010 Dùng cho phim khổ rộng dưới 16 mm
+90072090 Loại khác
+## 900850
+90085010 Máy đọc vi phim, vi thẻ hoặc vi bản khác, có hoặc không có khả năng sao chép
+90085090 Loại khác
+## 900890
+90089020 Của máy phóng và máy thu nhỏ ảnh (trừ máy chiếu phim)
+90089090 Loại khác
+## 901050
+90105010 Máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in
+90105020 Thiết bị biên tập và ghi tựa đề điện ảnh; thiết bị đọc X quang; máy chụp quang sử dụng cho quá trình tách màu ra phim; máy plate maker tự động
+90105090 Loại khác
+## 901060
+90106010 Của loại từ 300 inch trở lên
+90106090 Loại khác
+## 901090
+90109020 Của hàng hóa thuộc phân nhóm 9010.10.00
+90109030 Bộ phận và phụ kiện của máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in
+90109090 Loại khác
+## 901310
+90131010 Kính ngắm để lắp vào vũ khí; kính tiềm vọng
+90131020 Kính viễn vọng được thiết kế là bộ phận của máy, thiết bị, dụng cụ hoặc bộ dụng cụ của Chương này hoặc Phần XVI
+## 901380
+90138010 Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90138090 Loại khác
+## 901390
+90139010 Của hàng hóa thuộc phân nhóm 9013.20.00
+90139060 Của hàng hóa thuộc phân nhóm 9013.80.10
+90139070 Của hàng hóa thuộc phân nhóm 9013.10.10
+90139090 Loại khác
+## 901480
+90148011 Máy dò siêu âm (Sonar) hoặc máy đo sâu hồi âm
+90148019 Loại khác
+90148090 Loại khác
+## 901490
+90149010 Của thiết bị và dụng cụ, dùng trên tàu thuyền, hoạt động cùng với máy xử lý dữ liệu tự động
+90149090 Loại khác
+## 901510
+90151010 Dùng trong việc chụp ảnh hoặc quay phim
+90151090 Loại khác
+## 901580
+90158010 Thiết bị quan trắc sóng vô tuyến và gió điện từ
+90158090 Loại khác
+## 901710
+90171010 Máy vẽ (Plotters)
+90171090 Loại khác
+## 901790
+90179030 Bộ phận và phụ kiện của máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in
+90179040 Bộ phận và phụ kiện, kể cả mạch in đã lắp ráp, của máy vẽ khác
+90179090 Loại khác
+## 901831
+90183110 Bơm tiêm dùng một lần
+90183190 Loại khác
+## 901839
+90183910 Ống thông
+90183990 Loại khác
+## 901890
+90189010 Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)
+90189020 Bộ theo dõi tĩnh mạch
+90189031 Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử
+90189039 Loại khác
+90189090 Loại khác
+## 901910
+90191010 Hoạt động bằng điện
+90191090 Loại khác
+## 901920
+90192010 Máy trợ thở xâm lấn (SEN)
+90192020 Máy trợ thở khác
+90192090 Loại khác
+## 902000
+90200010 Mặt nạ khuôn mặt (full face) chống hóa học, sinh học, phóng xạ và hạt nhân (CBRN)
+90200090 Loại khác
+## 902110
+90211010 Bằng sắt hoặc thép
+90211090 Loại khác
+## 902129
+90212910 Bằng sắt hoặc thép
+90212920 Bằng titan
+90212990 Loại khác
+## 902219
+90221910 Thiết bị sử dụng tia X để kiểm tra vật lý các điểm hàn nối trên tấm mạch in/tấm dây in
+90221990 Loại khác
+## 902290
+90229010 Bộ phận và phụ kiện của thiết bị sử dụng tia X để kiểm tra vật lý các điểm hàn nối trên mạch in đã lắp ráp
+90229020 Bộ phận và phụ kiện của thiết bị khác sử dụng tia X
+90229090 Loại khác
+## 902410
+90241010 Hoạt động bằng điện
+90241020 Không hoạt động bằng điện
+## 902480
+90248010 Hoạt động bằng điện
+90248020 Không hoạt động bằng điện
+## 902519
+90251911 Máy đo nhiệt độ dùng cho xe có động cơ
+90251919 Loại khác
+90251920 Không hoạt động bằng điện
+## 902610
+90261050 Dụng cụ đo mức sử dụng cho xe có động cơ
+90261090 Loại khác
+## 902620
+90262050 Máy đo áp suất sử dụng cho xe có động cơ
+90262090 Loại khác
+## 902789
+90278910 Lộ sáng kế
+90278990 Loại khác
+## 902810
+90281010 Thiết bị đo khí loại lắp trên bình ga
+90281090 Loại khác
+## 902820
+90282020 Công tơ nước
+90282090 Loại khác
+## 902830
+90283010 Máy đếm ki-lô-oát giờ
+90283090 Loại khác
+## 902890
+90289010 Vỏ hoặc thân của công tơ nước
+90289090 Loại khác
+## 902910
+90291020 Máy đếm cây số để tính tiền taxi
+90291090 Loại khác
+## 902920
+90292010 Đồng hồ tốc độ dùng cho xe có động cơ
+90292020 Máy đo tốc độ góc cho xe có động cơ
+90292090 Loại khác
+## 902990
+90299010 Của hàng hóa thuộc phân nhóm 9029.10; của máy hoạt nghiệm thuộc phân nhóm 9029.20
+90299020 Của đồng hồ chỉ tốc độ và máy đo tốc độ góc của phân nhóm 9029.20
+## 903033
+90303310 Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+90303320 Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định
+90303330 Ampe kế và vôn kế dùng cho xe có động cơ
+90303340 Dụng cụ đo điện trở khác
+90303390 Loại khác
+## 903082
+90308210 Máy kiểm tra vi mạch tích hợp
+90308290 Loại khác
+## 903084
+90308410 Dụng cụ và thiết bị để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90308490 Loại khác
+## 903089
+90308910 Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90308990 Loại khác
+## 903090
+90309010 Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+90309030 Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90309040 Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90309090 Loại khác
+## 903149
+90314910 Dụng cụ và thiết bị quang học để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn
+90314920 Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90314930 Dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90314990 Loại khác
+## 903180
+90318010 Thiết bị kiểm tra cáp
+90318090 Loại khác
+## 903190
+90319030 Bộ phận và phụ kiện kể cả mạch in đã lắp ráp dùng cho các dụng cụ và thiết bị quang học để kiểm tra các vi mạch hoặc linh kiện bán dẫn hoặc kiểm tra mặt nạ, mặt nạ quang hoặc lưới ca rô sử dụng trong sản xuất các linh kiện bán dẫn; bộ phận và phụ kiện của các thiết bị đo độ nhiễm bẩn bề mặt của vi mạch bán dẫn
+90319040 Của thiết bị quang học xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90319050 Của dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90319090 Loại khác
+## 903289
+90328910 Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền
+90328920 Dụng cụ và thiết bị tự động để điều chỉnh hoặc điều khiển dung dịch hóa chất hoặc điện hóa trong sản xuất tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+90328931 Bộ điều chỉnh điện áp tự động (ổn áp)
+90328939 Loại khác
+90328990 Loại khác
+## 903290
+90329010 Của hàng hóa thuộc phân nhóm 9032.89.10
+90329020 Của hàng hóa thuộc phân nhóm 9032.89.20
+90329090 Loại khác
+## 910400
+91040010 Dùng cho xe cộ
+91040090 Loại khác
+## 910690
+91069010 Dụng cụ đo thời gian đậu xe
+91069090 Loại khác
+## 920590
+92059010 Các loại đàn organ ống có phím; đàn đạp hơi (harmonium) và loại nhạc cụ có phím tương tự có bộ phận lưỡi gà không bằng kim loại
+92059090 Loại khác
+## 920890
+92089010 Dụng cụ tạo âm thanh để nhử mồi, tù và và các dụng cụ thổi bằng miệng khác để tạo âm thanh
+92089090 Loại khác
+## 920991
+92099110 Tấm đỡ đàn dây, đàn phím và khung kim loại của đàn piano loại đứng
+92099190 Loại khác
+## 930320
+93032010 Súng shotgun săn (SEN)
+93032090 Loại khác
+## 930330
+93033010 Súng trường săn
+93033090 Loại khác
+## 930390
+93039010 Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm
+93039090 Loại khác
+## 930400
+93040010 Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2
+93040090 Loại khác
+## 930591
+93059110 Bằng da thuộc hoặc vật liệu dệt (SEN)
+93059190 Loại khác
+## 930599
+93059911 Bằng da thuộc hoặc vật liệu dệt (SEN)
+93059919 Loại khác
+93059991 Bằng da thuộc hoặc vật liệu dệt (SEN)
+93059999 Loại khác
+## 930630
+93063011 Đạn cỡ .22
+93063019 Loại khác
+93063020 Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng
+93063030 Dùng cho súng thể thao, súng săn hoặc súng bắn bia, súng trường và súng cacbin, trừ súng shotgun
+93063091 Đạn cỡ 22
+93063099 Loại khác
+## 930690
+93069010 Bom, lựu đạn, ngư lôi, mìn, tên lửa và các loại đạn dược tương tự và bộ phận của chúng
+93069090 Loại khác
+## 940120
+94012010 Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+94012090 Loại khác
+## 940169
+94016910 Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)
+94016990 Loại khác
+## 940179
+94017910 Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)
+94017990 Loại khác
+## 940199
+94019910 Của ghế thuộc phân nhóm 9401.10.00
+94019921 Miếng tựa đầu và tay vịn của ghế thuộc phân nhóm 9401.20.10
+94019929 Loại khác
+94019930 Của ghế thuộc phân nhóm 9401.31.00 và 9401.39.00
+94019991 Bằng plastic
+94019999 Loại khác
+## 940210
+94021010 Ghế nha khoa và các bộ phận của chúng
+94021030 Ghế cắt tóc hoặc các loại ghế tương tự và các bộ phận của chúng
+## 940290
+94029011 Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)
+94029012 Bàn mổ, hoạt động bằng điện (SEN)
+94029013 Bàn mổ, không hoạt động bằng điện (SEN)
+94029014 Bàn khám (SEN)
+94029015 Giường bệnh (SEN)
+94029019 Loại khác
+94029090 Loại khác
+## 940320
+94032010 Tủ hút hơi độc (SEN)
+94032090 Loại khác
+## 940360
+94036010 Tủ hút hơi độc (SEN)
+94036090 Loại khác
+## 940370
+94037010 Xe tập đi cho trẻ em
+94037020 Tủ hút hơi độc (SEN)
+94037090 Loại khác
+## 940389
+94038910 Tủ hút hơi độc (SEN)
+94038990 Loại khác
+## 940399
+94039910 Của phân nhóm 9403.70.10
+94039990 Loại khác
+## 940421
+94042110 Bằng cao su xốp, đã hoặc chưa bọc
+94042120 Bằng plastic xốp, đã hoặc chưa bọc
+## 940429
+94042910 Đệm lò xo
+94042920 Loại khác, làm nóng/làm mát (SEN)
+94042990 Loại khác
+## 940511
+94051110 Đèn cho phòng mổ
+94051191 Đèn rọi
+94051199 Loại khác
+## 940519
+94051910 Đèn cho phòng mổ
+94051991 Đèn rọi
+94051992 Đèn gắn bóng đèn huỳnh quang
+94051999 Loại khác
+## 940521
+94052110 Đèn cho phòng mổ
+94052190 Loại khác
+## 940529
+94052910 Đèn cho phòng mổ
+94052990 Loại khác
+## 940549
+94054910 Đèn pha
+94054920 Đèn rọi khác
+94054930 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+94054940 Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16
+94054950 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn
+94054960 Loại chiếu sáng bên ngoài khác
+94054990 Loại khác
+## 940550
+94055011 Bằng đồng sử dụng trong nghi lễ tôn giáo
+94055019 Loại khác
+94055040 Đèn bão
+94055050 Đèn thợ mỏ và đèn thợ khai thác đá
+94055090 Loại khác
+## 940561
+94056110 Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+94056190 Loại khác
+## 940569
+94056910 Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+94056990 Loại khác
+## 940591
+94059110 Dùng cho đèn phòng mổ
+94059120 Dùng cho đèn rọi
+94059140 Chao đèn hình cầu hoặc thông phong đèn
+94059150 Dùng cho đèn pha
+94059190 Loại khác
+## 940592
+94059210 Dùng cho đèn phòng mổ
+94059220 Dùng cho đèn rọi
+94059230 Dùng cho đèn pha
+94059290 Loại khác
+## 940599
+94059910 Chụp đèn bằng vật liệu dệt
+94059920 Chụp đèn bằng vật liệu khác
+94059930 Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19
+94059940 Dùng cho đèn pha hoặc đèn rọi
+94059950 Loại khác, bằng gốm, sứ hoặc kim loại
+94059990 Loại khác
+## 940610
+94061010 Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt
+94061090 Loại khác
+## 940620
+94062010 Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt
+94062090 Loại khác
+## 940690
+94069011 Bằng sắt hoặc bằng thép
+94069012 Bằng plastic
+94069019 Loại khác
+94069020 Loại khác, bằng plastic hoặc bằng nhôm
+94069030 Loại khác, bằng sắt hoặc thép
+94069040 Loại khác, bằng xi măng, bằng bê tông hoặc đá nhân tạo
+94069090 Loại khác
+## 950420
+95042020 Bàn bi-a các loại
+95042030 Phấn xoa đầu gậy bi-a
+95042090 Loại khác
+## 950430
+95043030 Trò chơi may rủi ngẫu nhiên với giải thưởng nhận ngay bằng tiền mặt; các bộ phận và phụ kiện của chúng
+95043040 Máy trò chơi bắn bi (pintables) hoặc các máy trò chơi tự động (có khe nhét xèng hoặc xu) khác
+95043050 Loại khác, bộ phận bằng gỗ, giấy hoặc plastic
+95043090 Loại khác
+## 950450
+95045010 Loại sử dụng với một bộ thu truyền hình
+95045090 Loại khác
+## 950490
+95049010 Các loại đồ phụ trợ để chơi bowling
+95049021 Bằng gỗ, giấy hoặc plastic
+95049029 Loại khác
+95049032 Bàn thiết kế để chơi bạc bằng gỗ hoặc plastic
+95049033 Loại bàn khác thiết kế để chơi bạc
+95049034 Quân bài Mạt chược bằng gỗ, giấy hoặc plastic
+95049035 Quân bài Mạt chược khác
+95049036 Loại khác, bằng gỗ, giấy hoặc plastic
+95049039 Loại khác
+95049092 Bằng gỗ hoặc bằng plastic
+95049093 Loại khác
+95049095 Bằng gỗ, giấy hoặc plastic
+95049099 Loại khác
+## 950640
+95064010 Bàn
+95064090 Loại khác
+## 950699
+95069910 Cung (kể cả nỏ) và mũi tên
+95069920 Lưới (*), đệm bảo vệ ống chân và tấm ốp bảo vệ ống chân
+95069930 Quả cầu lông
+95069990 Loại khác
+## 960110
+96011010 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96011090 Loại khác
+## 960190
+96019011 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96019012 Nhân nuôi cấy ngọc trai (SEN)
+96019019 Loại khác
+96019021 Đồ trang trí
+96019029 Loại khác
+96019091 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96019099 Loại khác
+## 960200
+96020010 Vỏ viên nhộng bằng gelatin dùng cho dược phẩm
+96020020 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96020090 Loại khác
+## 960310
+96031010 Bàn chải
+96031020 Chổi
+## 960390
+96039010 Túm và búi đã làm sẵn để làm chổi hoặc bàn chải
+96039020 Dụng cụ cơ học vận hành bằng tay để quét sàn, không có động cơ
+96039040 Bàn chải khác
+96039090 Loại khác
+## 960400
+96040010 Bằng kim loại
+96040090 Loại khác
+## 960810
+96081010 Có thân chủ yếu bằng plastic
+96081090 Loại khác
+## 960830
+96083020 Bút máy
+96083090 Loại khác
+## 960860
+96086010 Bằng plastic
+96086090 Loại khác
+## 960891
+96089110 Bằng vàng hoặc mạ vàng
+96089190 Loại khác
+## 960899
+96089910 Bút viết giấy nhân bản
+96089991 Bộ phận của bút bi, bằng plastic
+96089999 Loại khác
+## 960910
+96091010 Bút chì đen
+96091090 Loại khác
+## 960990
+96099010 Bút chì bằng đá phiến (slate) dùng trong trường học
+96099030 Bút chì và bút màu khác trừ loại thuộc phân nhóm 9609.10
+96099091 Phấn vẽ hoặc phấn viết
+96099099 Loại khác
+## 961000
+96100010 Bảng đá phiến (slate) dùng trong trường học
+96100090 Loại khác
+## 961210
+96121010 Bằng vật liệu dệt
+96121090 Loại khác
+## 961310
+96131010 Bằng plastic
+96131090 Loại khác
+## 961320
+96132010 Bằng plastic
+96132090 Loại khác
+## 961380
+96138010 Bật lửa áp điện dùng cho lò và bếp
+96138020 Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic
+96138030 Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic
+96138090 Loại khác
+## 961390
+96139010 Ống chứa hoặc bộ phận chứa khác có thể nạp lại của bật lửa cơ khí, có chứa nhiên liệu lỏng hoặc khí hóa lỏng
+96139090 Loại khác
+## 961400
+96140010 Gỗ hoặc rễ cây đã tạo dáng thô để làm tẩu thuốc
+96140090 Loại khác
+## 961511
+96151120 Bằng cao su cứng
+96151130 Bằng plastic
+## 961590
+96159011 Bằng nhôm
+96159012 Bằng sắt hoặc thép
+96159013 Bằng plastic
+96159019 Loại khác
+96159021 Bằng plastic
+96159022 Bằng sắt hoặc thép
+96159023 Bằng nhôm
+96159029 Loại khác
+96159091 Bằng nhôm
+96159092 Bằng sắt hoặc thép
+96159093 Bằng plastic
+96159099 Loại khác
+## 961610
+96161010 Bình, lọ xịt nước hoa và bình, lọ xịt trang điểm tương tự
+96161020 Các bộ phận gá lắp và đầu xịt
+## 961900
+96190011 Lõi thấm hút bằng vật liệu dệt
+96190012 Băng vệ sinh (miếng) và băng vệ sinh dạng ống (tampons) từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+96190013 Bỉm và miếng lót vệ sinh trẻ em từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+96190014 Loại khác, từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+96190019 Loại khác
+96190092 Băng vệ sinh (miếng)
+96190093 Loại khác, dệt kim hoặc móc
+96190099 Loại khác
+## 962000
+96200010 Bằng plastic
+96200020 Bằng carbon và graphit
+96200030 Bằng sắt và thép
+96200040 Bằng nhôm
+96200050 Bằng gỗ
+96200090 Loại khác
+## 980417
+98041711 Đã bỏ đầu
+98041719 Loại khác
+98041721 Đã bỏ đầu, còn đuôi
+98041722 Đã bỏ đầu, bỏ đuôi
+98041729 Loại khác
+98041730 Tôm càng xanh (Macrobrachium rosenbergii)
+98041790 Loại khác
+## 980419
+98041900 Loại khác, kể cả bột thô, bột mịn và viên của động vật giáp xác, thích hợp dùng làm thức ăn cho người
+98041900 Loại khác, kể cả bột thô, bột mịn và viên của động vật giáp xác, thích hợp dùng làm thức ăn cho người
+## 980428
+98042811 Còn vỏ, đã hấp chín hoặc luộc chín trong nước
+98042819 Loại khác
+98042890 Loại khác
+## 980500
+98050000 Quả và hạt có dầu để làm giống.
+98050000 Quả và hạt có dầu để làm giống.
+98050000 Quả và hạt có dầu để làm giống.
+98050000 Quả và hạt có dầu để làm giống.
+98050000 Quả và hạt có dầu để làm giống.
+98050000 Quả và hạt có dầu để làm giống.
+98050000 Quả và hạt có dầu để làm giống.
+98050000 Quả và hạt có dầu để làm giống.
+98050000 Quả và hạt có dầu để làm giống.
+## 980800
+98080010 Vải canvas đã được ngâm tẩm, tráng, phủ hoặc ép với nylon hoặc các polyamit khác
+98080090 Loại khác
+## 981000
+98100010 Sắt hoặc thép không hợp kim, dạng thanh và que, ở dạng cuộn cuốn không đều, được cán nóng, có đường kính mặt cắt ngang hình tròn dưới 14 mm để sản xuất tanh lốp xe
+98100010 Sắt hoặc thép không hợp kim, dạng thanh và que, ở dạng cuộn cuốn không đều, được cán nóng, có đường kính mặt cắt ngang hình tròn dưới 14 mm để sản xuất tanh lốp xe
+98100090 Sản phẩm bằng dây sắt hoặc thép để sản xuất tanh lốp xe
+## 981100
+98110010 Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng
+98110010 Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng
+98110010 Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng
+98110010 Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng
+98110010 Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng
+98110090 Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng
+## 981200
+98120010 Đã lắp ráp hoàn chỉnh
+98120010 Đã lắp ráp hoàn chỉnh
+98120010 Đã lắp ráp hoàn chỉnh
+98120010 Đã lắp ráp hoàn chỉnh
+98120090 Loại khác, dùng cho xe thuộc phân nhóm 8701.10
+## 981600
+98160000 Khung đèn thợ mỏ hoặc thợ khai thác đá; bộ phận khác dùng cho đèn thợ mỏ, đèn mổ.
+98160000 Khung đèn thợ mỏ hoặc thợ khai thác đá; bộ phận khác dùng cho đèn thợ mỏ, đèn mổ.
+## 981730
+98173010 Biến áp thích ứng
+98173010 Biến áp thích ứng
+98173010 Biến áp thích ứng
+98173010 Biến áp thích ứng
+98173090 Loại khác
+98173090 Loại khác
+98173090 Loại khác
+98173090 Loại khác
+## 981811
+98181110 Nắp chụp cách điện
+98181190 Loại khác
+## 981812
+98181211 Có hàm lượng carbon từ 0,6% trở lên tính theo trọng lượng
+98181219 Loại khác
+98181291 Chiều dày từ 5 mm trở xuống
+98181299 Loại khác
+## 981813
+98181310 Vít cho kim loại
+98181310 Vít cho kim loại
+98181390 Chốt hãm và chốt định vị
+## 981814
+98181410 Lò xo lá và các lá lò xo
+98181490 Lò xo cuộn
+## 981819
+98181910 Chế hòa khí và bộ phận của chúng
+98181920 Thân động cơ (cylinder block)
+98181930 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+98181940 Ống xi lanh khác
+98181950 Quy lát và nắp quy lát
+98181960 Piston, có đường kính ngoài từ 50 mm trở lên nhưng không quá 155 mm
+98181970 Piston khác
+98181990 Loại khác
+## 981820
+98182010 Bơm nước bằng tay
+98182021 Loại ly tâm
+98182021 Loại ly tâm
+98182029 Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay
+98182031 Với đường kính cửa hút không quá 200mm
+98182039 Loại khác
+98182090 Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19
+## 981821
+98182110 Máy thổi khí
+98182121 Có lưới bảo vệ
+98182129 Loại khác
+## 981822
+98182211 Công suất làm mát không quá 26,38 kW
+98182219 Loại khác
+98182220 Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW
+98182231 Của máy có công suất làm lạnh trên 26,38 kW nhưng không quá 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút
+98182239 Của máy có công suất làm lạnh trên 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút
+## 981824
+98182410 Hoạt động bằng điện
+98182410 Hoạt động bằng điện
+98182490 Không hoạt động bằng điện
+98182490 Không hoạt động bằng điện
+## 981826
+98182610 Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm
+98182690 Loại khác, trừ loại bằng đồng hoặc hợp kim đồng với đường kính trong từ 2,5 cm trở xuống
+## 981832
+98183200 Bộ phận kể cả tấm mạch in đã lắp ráp của phích cắm điện thoại; đầu nối và các bộ phận dùng để nối cho dây và cáp; đầu dò dẹt dưới dạng miếng lát nhiều lớp (wafer prober), dùng cho điện áp không quá 1.000 V
+98183200 Bộ phận kể cả tấm mạch in đã lắp ráp của phích cắm điện thoại; đầu nối và các bộ phận dùng để nối cho dây và cáp; đầu dò dẹt dưới dạng miếng lát nhiều lớp (wafer prober), dùng cho điện áp không quá 1.000 V
+98183200 Bộ phận kể cả tấm mạch in đã lắp ráp của phích cắm điện thoại; đầu nối và các bộ phận dùng để nối cho dây và cáp; đầu dò dẹt dưới dạng miếng lát nhiều lớp (wafer prober), dùng cho điện áp không quá 1.000 V
+98183200 Bộ phận kể cả tấm mạch in đã lắp ráp của phích cắm điện thoại; đầu nối và các bộ phận dùng để nối cho dây và cáp; đầu dò dẹt dưới dạng miếng lát nhiều lớp (wafer prober), dùng cho điện áp không quá 1.000 V
+## 982130
+98213014 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+98213015 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98213015 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98213025 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+98213025 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+98213026 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98213026 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98213026 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98213035 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+98213035 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+98213036 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98213036 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98213036 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98213036 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98213094 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+98213094 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+## 982710
+98271010 Ống chống và ống có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống
+98271090 Loại khác
+98271090 Loại khác
+## 982790
+98279010 Ống chống và ống có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống
+98279090 Loại khác
+98279090 Loại khác
+## 983210
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+98321000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng sức nén (diesel hoặc bán diesel)
+## 983290
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+98329000 Loại có động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện
+## 983412
+98341210 Ốc vít bằng thép, INOX 304, ren tiêu chuẩn 1, mạ chống rỉ, đường kính dưới 1.4 mm
+98341210 Ốc vít bằng thép, INOX 304, ren tiêu chuẩn 1, mạ chống rỉ, đường kính dưới 1.4 mm
+98341290 Nguyên liệu, vật tư, linh kiện và bộ phận phụ trợ để sản xuất các sản phẩm CNTT trọng điểm
+98341290 Nguyên liệu, vật tư, linh kiện và bộ phận phụ trợ để sản xuất các sản phẩm CNTT trọng điểm
+## 983416
+98341600 Mô tơ, công suất không quá 5 W
+98341600 Mô tơ, công suất không quá 5 W
+## 983417
+98341700 Cuộn biến áp dùng cho các thiết bị điện tử, viễn thông, công suất danh định nhỏ hơn 0,1 kVA
+98341700 Cuộn biến áp dùng cho các thiết bị điện tử, viễn thông, công suất danh định nhỏ hơn 0,1 kVA
+## 983421
+98342100 Cầu chì dùng cho các thiết bị điện tử, có giới hạn dòng danh định không quá 1,5 A
+98342100 Cầu chì dùng cho các thiết bị điện tử, có giới hạn dòng danh định không quá 1,5 A
+## 983424
+98342400 Giắc cắm, đầu nối cổng nối USB, giắc mạng để nối dây dẫn tín hiệu
+98342400 Giắc cắm, đầu nối cổng nối USB, giắc mạng để nối dây dẫn tín hiệu
+## 983426
+98342600 Cáp nối truyền dữ liệu dạng dẹt từ 2 sợi trở lên
+98342600 Cáp nối truyền dữ liệu dạng dẹt từ 2 sợi trở lên
+## 983433
+98343300 Bộ phận khác, trừ bộ phận của bộ điều khiển, bộ thích ứng, thiết bị truyền dẫn, tấm mạch in, ăng ten
+98343300 Bộ phận khác, trừ bộ phận của bộ điều khiển, bộ thích ứng, thiết bị truyền dẫn, tấm mạch in, ăng ten
+98343300 Bộ phận khác, trừ bộ phận của bộ điều khiển, bộ thích ứng, thiết bị truyền dẫn, tấm mạch in, ăng ten
+98343300 Bộ phận khác, trừ bộ phận của bộ điều khiển, bộ thích ứng, thiết bị truyền dẫn, tấm mạch in, ăng ten
+98343300 Bộ phận khác, trừ bộ phận của bộ điều khiển, bộ thích ứng, thiết bị truyền dẫn, tấm mạch in, ăng ten
+## 983438
+98343800 Tấm, phiến, màng, lá và dải khác, bằng plastic dùng để sản xuất sản phẩm công nghệ thông tin
+98343800 Tấm, phiến, màng, lá và dải khác, bằng plastic dùng để sản xuất sản phẩm công nghệ thông tin
+98343800 Tấm, phiến, màng, lá và dải khác, bằng plastic dùng để sản xuất sản phẩm công nghệ thông tin
+98343800 Tấm, phiến, màng, lá và dải khác, bằng plastic dùng để sản xuất sản phẩm công nghệ thông tin
+98343800 Tấm, phiến, màng, lá và dải khác, bằng plastic dùng để sản xuất sản phẩm công nghệ thông tin
+98343800 Tấm, phiến, màng, lá và dải khác, bằng plastic dùng để sản xuất sản phẩm công nghệ thông tin
+98343800 Tấm, phiến, màng, lá và dải khác, bằng plastic dùng để sản xuất sản phẩm công nghệ thông tin
+98343800 Tấm, phiến, màng, lá và dải khác, bằng plastic dùng để sản xuất sản phẩm công nghệ thông tin
+## 983440
+98344000 Dây bện tao, thừng và cáp dùng để sản xuất sản phẩm công nghệ thông tin
+98344000 Dây bện tao, thừng và cáp dùng để sản xuất sản phẩm công nghệ thông tin
+## 983610
+98361010 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+98361090 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+98361090 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+## 983620
+98362010 Ô tô đông lạnh
+98362010 Ô tô đông lạnh
+98362020 Ô tô thu gom phế thải có bộ phận nén phế thải
+98362020 Ô tô thu gom phế thải có bộ phận nén phế thải
+98362030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+98362030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+98362040 Ô tô bọc thép để chở hàng hóa có giá trị
+98362040 Ô tô bọc thép để chở hàng hóa có giá trị
+98362050 Ô tô chở bùn có thùng rời nâng hạ được
+98362050 Ô tô chở bùn có thùng rời nâng hạ được
+98362090 Loại khác
+98362090 Loại khác
+## 983630
+98363010 Ô tô đông lạnh
+98363010 Ô tô đông lạnh
+98363020 Ô tô thu gom phế thải có bộ phận nén phế thải
+98363020 Ô tô thu gom phế thải có bộ phận nén phế thải
+98363030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+98363030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+98363040 Ô tô bọc thép để chở hàng hóa có giá trị
+98363040 Ô tô bọc thép để chở hàng hóa có giá trị
+98363050 Ô tô chở bùn có thùng rời nâng hạ được
+98363050 Ô tô chở bùn có thùng rời nâng hạ được
+98363060 Ô tô tự đổ
+98363060 Ô tô tự đổ
+98363090 Loại khác
+98363090 Loại khác
+## 983640
+98364010 Ô tô đông lạnh
+98364010 Ô tô đông lạnh
+98364020 Ô tô thu gom phế thải có bộ phận nén phế thải
+98364020 Ô tô thu gom phế thải có bộ phận nén phế thải
+98364030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+98364030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+98364040 Ô tô bọc thép để chở hàng hóa có giá trị
+98364040 Ô tô bọc thép để chở hàng hóa có giá trị
+98364050 Ô tô chở bùn có thùng rời nâng hạ được
+98364050 Ô tô chở bùn có thùng rời nâng hạ được
+98364090 Loại khác
+98364090 Loại khác
+## 983650
+98365010 Ô tô đông lạnh
+98365010 Ô tô đông lạnh
+98365020 Ô tô thu gom phế thải có bộ phận nén phế thải
+98365020 Ô tô thu gom phế thải có bộ phận nén phế thải
+98365030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+98365030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+98365040 Ô tô bọc thép để chở hàng hóa có giá trị
+98365040 Ô tô bọc thép để chở hàng hóa có giá trị
+98365050 Ô tô chở bùn có thùng rời nâng hạ được
+98365050 Ô tô chở bùn có thùng rời nâng hạ được
+98365060 Ô tô tự đổ
+98365060 Ô tô tự đổ
+98365090 Loại khác
+98365090 Loại khác
+## 983690
+98369000 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 45 tấn
+98369000 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 45 tấn
+## 983700
+98370000 Hạt nhựa PolyPropylene dạng nguyên sinh.
+98370000 Hạt nhựa PolyPropylene dạng nguyên sinh.
+## 984011
+98401100 Lõi kim loại thép Metal segment (14x24) mm
+98401100 Lõi kim loại thép Metal segment (14x24) mm
+## 984120
+98412000 Bằng sắt hoặc thép
+98412000 Bằng sắt hoặc thép
+## 984410
+98441090 Loại khác
+98441090 Loại khác
+98441090 Loại khác
+98441090 Loại khác
+98441090 Loại khác
+## 984420
+98442010 Rơ-moóc và sơ mi rơ-moóc loại nhà lưu động, dùng làm nhà ở hoặc cắm trại
+98442020 Rơ-moóc và sơ mi rơ-moóc loại tự bốc hoặc dỡ hàng dùng trong nông nghiệp
+98442031 Rơ-moóc và sơ mi rơ-moóc gắn xi téc
+98442032 Rơ-moóc và sơ mi rơ-moóc dùng trong nông nghiệp
+98442033 Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn
+98442039 Loại khác
+98442090 Rơ-moóc và sơ mi rơ-moóc khác
+## 984590
+98459010 Ống dẫn sử dụng cho dẫn dầu hộp số ô tô
+98459020 Vành bánh xe
+98459090 Ống xả
+## 984600
+98460010 Hoạt động bằng nguồn điện lưới
+98460090 Loại khác
+## 984800
+98480000 Kính quang học, chưa được gia công về mặt quang học.
+98480000 Kính quang học, chưa được gia công về mặt quang học.
+## 984912
+98491210 Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)
+98491211 Chiều rộng không quá 450 mm
+98491211 Chiều rộng không quá 450 mm
+98491211 Chiều rộng không quá 450 mm
+98491211 Chiều rộng không quá 450 mm
+98491219 Loại khác
+98491290 Loại dùng cho xe thuộc Chương 87
+## 984913
+98491310 Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)
+98491311 Chiều rộng không quá 450 mm
+98491319 Loại khác
+## 984914
+98491411 Dùng cho loại lốp có chiều rộng không quá 450 mm
+98491419 Dùng cho loại lốp có chiều rộng trên 450 mm
+98491421 Dùng cho loại lốp có chiều rộng không quá 450 mm
+98491429 Dùng cho loại lốp có chiều rộng trên 450 mm
+98491431 Phù hợp lắp cho loại lốp có chiều rộng không quá 450 mm
+98491439 Phù hợp lắp cho loại lốp có chiều rộng trên 450 mm
+## 984915
+98491510 Miếng đệm và vành khung tròn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04
+98491521 Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa
+98491529 Viền cao su quanh kính cửa, dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+## 984916
+98491610 Phù hợp dùng cho xe thuộc Chương 87
+98491690 Phù hợp dùng cho xe thuộc Chương 87
+## 984918
+98491810 Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+98491820 Dùng cho xe có động cơ khác
+98491830 Dùng cho xe có động cơ
+98491890 Dùng cho xe có động cơ
+## 984920
+98492011 Dung tích xi lanh không quá 50 cc
+98492012 Loại khác
+98492013 Loại khác
+98492014 Loại khác
+98492015 Dung tích xi lanh không quá 2.000 cc
+98492016 Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc
+98492017 Dung tích xi lanh trên 3.000 cc
+98492018 Dung tích xi lanh không quá 2.000 cc
+98492019 Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc
+98492020 Dung tích xi lanh trên 3.000 cc
+## 984921
+98492111 Dung tích xi lanh không quá 2.000 cc
+98492112 Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc
+98492113 Dung tích xi lanh trên 3.500 cc
+98492114 Dung tích xi lanh không quá 2.000 cc
+98492115 Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc
+98492119 Dung tích xi lanh trên 3.500 cc
+## 984922
+98492211 Chế hòa khí và bộ phận của chúng
+98492212 Thân động cơ (cylinder block); hộp trục khuỷu
+98492213 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+98492214 Ống xi lanh khác
+98492215 Quy lát và nắp quy lát
+98492216 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+98492217 Piston khác
+98492218 Bạc piston và chốt piston
+98492219 Loại khác
+98492221 Chế hòa khí và bộ phận của chúng
+98492222 Thân động cơ (cylinder block); hộp trục khuỷu
+98492223 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+98492224 Ống xi lanh khác
+98492225 Quy lát và nắp quy lát
+98492226 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+98492227 Piston khác
+98492228 Bạc piston và chốt piston
+98492229 Loại khác
+## 984923
+98492311 Bơm nhiên liệu loại sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+98492319 Bơm nước loại được sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+## 984925
+98492511 Công suất làm mát không quá 26,38 kW
+98492519 Loại khác
+98492521 Công suất làm mát không quá 26,38 kW
+98492529 Loại khác
+98492531 Công suất làm mát không quá 26,38 kW
+98492539 Loại khác
+98492541 Công suất làm mát không quá 26,38 kW
+98492549 Loại khác
+98492590 Thiết bị làm bay hơi hoặc ngưng tụ dùng cho máy điều hoà không khí lắp trên xe có động cơ
+## 984926
+98492611 Bộ lọc dầu
+98492619 Loại khác
+98492621 Loại khác, thiết bị lọc xăng
+98492629 Loại khác, thiết bị lọc dầu
+98492630 Dùng cho xe có động cơ thuộc Chương 87
+98492640 Của hàng hóa thuộc phân nhóm 8421.31
+98492690 Loại khác
+98492690 Loại khác
+## 984927
+98492710 Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+98492790 Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+## 984928
+98492811 Cho xe có dung tích xi lanh không quá 2.000 cc
+98492812 Cho xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc
+98492813 Cho xe có dung tích xi lanh trên 3.000 cc
+98492820 Dùng cho động cơ xe của Chương 87
+98492830 Dùng cho động cơ xe của Chương 87
+98492840 Dùng cho xe thuộc Chương 87
+98492850 Bánh đà và ròng rọc, kể cả khối pu li
+98492860 Ly hợp và khớp nối trục (kể cả khớp nối vạn năng)
+98492891 Dùng cho hàng hóa khác thuộc Chương 87
+98492899 Dùng cho hàng hóa khác thuộc Chương 87
+## 984929
+98492910 Sử dụng cho động cơ ô tô
+98492921 Loại chưa được lắp ráp
+98492929 Loại khác
+98492931 Loại chưa được lắp ráp
+98492939 Loại khác
+98492941 Sử dụng cho động cơ của nhóm 87.02, 87.03, 87.04 hoặc 87.05
+98492942 Sử dụng cho động cơ của các nhóm 87.02, 87.03 hoặc 87.04
+98492943 Sử dụng cho động cơ của nhóm 87.05
+98492949 Sử dụng cho động cơ của các nhóm 87.02, 87.03, 87.04 hoặc 87.05
+98492950 Sử dụng cho động cơ của các nhóm 87.02, 87.03, 87.04 hoặc 87.05
+98492961 Sử dụng cho động cơ của các nhóm 87.02, 87.03 hoặc 87.04
+98492969 Sử dụng cho động cơ của nhóm 87.05
+98492971 Sử dụng cho động cơ của nhóm 87.02, 87.03, 87.04 hoặc 87.05
+98492979 Loại khác
+98492980 Sử dụng cho động cơ ô tô
+98492990 Sử dụng cho động cơ ô tô
+## 984930
+98493010 Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan chưa lắp ráp
+98493020 Loại khác
+98493031 Còi, đã lắp ráp
+98493032 Thiết bị tín hiệu âm thanh chưa lắp ráp
+98493033 Thiết bị dò chướng ngại vật (cảnh báo) cho xe cộ
+98493039 Loại khác
+98493040 Cái gạt nước, gạt và chống tạo sương và tuyết
+98493050 Của hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40
+## 984931
+98493110 Khối cầu chì, loại sử dụng cho xe có động cơ
+98493190 Khối cầu chì, loại sử dụng cho xe có động cơ
+## 984932
+98493210 Dùng cho xe có động cơ thuộc Chương 87
+98493220 Dùng cho xe có động cơ
+98493230 Dùng cho xe có động cơ
+98493290 Loại khác, dùng cho đèn của xe có động cơ
+98493290 Loại khác, dùng cho đèn của xe có động cơ
+## 984933
+98493310 Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04
+98493320 Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04
+98493330 Cho xe thuộc nhóm 87.02, 87.03, 87.04
+98493340 Cho xe thuộc nhóm 87.02, 87.03, 87.04
+## 984934
+98493411 Loại khác
+98493412 Dây đai an toàn
+98493413 Đỡ tay trên cửa xe dùng cho xe thuộc nhóm 87.03
+98493414 Loại khác, dùng cho xe thuộc nhóm 87.03
+98493415 Dùng cho xe thuộc phân nhóm 8704.10
+98493416 Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+98493417 Loại khác
+98493418 Bộ phận của dây đai an toàn
+98493419 Phụ kiện trang trí nội thất; chắn bùn
+98493420 Thanh chống nắp ca pô
+98493421 Loại khác
+98493421 Loại khác
+98493422 Phụ kiện trang trí nội thất; chắn bùn
+98493423 Thanh chống nắp ca pô
+98493424 Loại khác
+98493424 Loại khác
+98493429 Loại khác
+98493429 Loại khác
+98493431 Phanh trống, phanh đĩa hoặc phanh hơi
+98493432 Loại khác
+98493433 Phanh trống, phanh đĩa hoặc phanh hơi cho xe thuộc nhóm 87.02 hoặc 87.04
+98493439 Loại khác
+98493441 Dùng cho xe thuộc nhóm 87.03
+98493442 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+98493443 Loại khác
+98493444 Dùng cho xe thuộc nhóm 87.03
+98493445 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+98493446 Loại khác
+98493447 Dùng cho xe thuộc nhóm 87.03
+98493449 Loại khác
+98493451 Dùng cho xe thuộc nhóm 87.03
+98493452 Dùng cho xe thuộc nhóm 87.04 hoặc nhóm 87.05
+98493453 Loại khác
+98493454 Dùng cho xe thuộc nhóm 87.03
+98493455 Dùng cho xe thuộc nhóm 87.04 hoặc nhóm 87.05
+98493456 Loại khác
+98493457 Bánh răng vành khăn và bánh răng quả dứa
+98493458 Loại khác
+98493459 Bánh răng vành khăn và bánh răng quả dứa
+98493460 Loại khác
+98493471 Dùng cho xe thuộc nhóm 87.03
+98493472 Dùng cho xe thuộc phân nhóm 8704.10
+98493473 Loại khác
+98493474 Loại khác
+98493475 Dùng cho xe thuộc nhóm 87.03
+98493476 Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)
+98493477 Loại khác
+98493478 Dùng cho xe thuộc nhóm 87.03
+98493479 Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế trên 45 tấn
+98493480 Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+98493481 Loại khác
+98493482 Dùng cho xe thuộc nhóm 87.02 hoặc 87.04
+98493483 Dùng cho xe thuộc nhóm 87.03
+98493489 Loại khác
+98493491 Dùng cho xe thuộc nhóm 87.03
+98493492 Dùng cho xe thuộc phân nhóm 8704.10 hoặc nhóm 87.05
+98493493 Loại khác
+98493494 Dùng cho xe thuộc nhóm 87.03
+98493499 Loại khác
+## 984935
+98493510 Dùng cho xe thuộc nhóm 87.03
+98493521 Dùng cho xe thuộc phân nhóm 8704.10
+98493522 Loại khác
+98493529 Loại khác
+98493531 Nút xả dùng cho xe thuộc nhóm 87.03
+98493532 Nút xả dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)
+98493533 Loại khác, dùng cho xe thuộc nhóm 87.03
+98493539 Loại khác
+98493541 Dùng cho xe thuộc nhóm 87.03
+98493542 Ống xả và bộ giảm thanh
+98493543 Bộ phận
+98493544 Ống xả và bộ giảm thanh
+98493545 Bộ phận
+98493549 Loại khác
+98493551 Dùng cho xe thuộc nhóm 87.03
+98493552 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+98493559 Loại khác
+98493561 Loại khác
+98493562 Dùng cho xe thuộc nhóm 87.03
+98493569 Loại khác
+98493571 Túi khí an toàn lắp với hệ thống bơm phồng
+98493579 Bộ phận
+98493581 Thùng nhiên liệu
+98493582 Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu (filler pipes); ống dẫn hướng có đầu nối với bình nhiên liệu (filler hose); đai giữ bình nhiên liệu
+98493583 Các bộ phận khác
+98493584 Chân ga (bàn đạp ga), chân phanh (bàn đạp phanh) hoặc chân côn (bàn đạp côn)
+98493585 Giá đỡ hoặc khay đỡ bình ắc qui và khung của nó
+98493586 Tấm hướng luồng khí tản nhiệt
+98493587 Dùng cho xe thuộc nhóm 87.02
+98493588 Dùng cho xe thuộc nhóm 87.03
+98493589 Dùng cho xe thuộc nhóm 87.04
+98493590 Khung giá đỡ động cơ
+98493591 Loại khác
+98493592 Thùng nhiên liệu chưa lắp ráp; khung giá đỡ động cơ
+98493599 Loại khác
+## 984937
+98493711 Dụng cụ đo mức sử dụng cho xe có động cơ, hoạt động bằng điện
+98493719 Dụng cụ đo mức sử dụng cho xe có động cơ, không hoạt động bằng điện
+98493790 Máy đo áp suất sử dụng cho xe có động cơ, không hoạt động bằng điện
+## 984938
+98493810 Đồng hồ tốc độ dùng cho xe có động cơ
+98493810 Đồng hồ tốc độ dùng cho xe có động cơ
+98493890 Máy đo tốc độ góc cho xe có động cơ
+98493890 Máy đo tốc độ góc cho xe có động cơ
+## 984939
+98493910 Dùng cho xe cộ
+98493990 Loại khác
+## 984940
+98494011 Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+98494019 Loại khác
+98494021 Miếng lót cho tựa đầu của ghế thuộc phân nhóm 9401.20.10
+98494022 Loại khác
+98494022 Loại khác
+## 984941
+98494110 Kết hợp với thiết bị ghi hoặc tái tạo âm thanh
+98494110 Kết hợp với thiết bị ghi hoặc tái tạo âm thanh
+98494190 Loại khác
+## 984942
+98494210 Động cơ vạn năng một chiều/xoay chiều có công suất trên 1 kW
+98494221 Công suất trên 750 W nhưng không quá 37,5 kW
+98494222 Công suất trên 37,5 kW nhưng không quá 75 kW
+98494230 Động cơ xoay chiều khác, một pha, công suất trên 1 kW
+98494240 Động cơ xoay chiều khác, đa pha, công suất trên 1 kW nhưng không quá 37,5 kW
+## 984943
+98494310 Bằng liti
+98494321 Có thể tích ngoài không quá 300 cm3
+98494321 Có thể tích ngoài không quá 300 cm3
+98494329 Loại khác
+98494390 Bộ phận
+## 984946
+98494600 Engine ECU và các bộ điều khiển khác, được sử dụng cho xe có động cơ
+98494600 Engine ECU và các bộ điều khiển khác, được sử dụng cho xe có động cơ
