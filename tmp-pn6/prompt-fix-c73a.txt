@@ -1,0 +1,237 @@
+VÒNG SỬA. Dưới đây là 7 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 730711 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730711",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-730711",
+  "dong8": {
+    "73071110": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ống hoặc ống dẫn không có đầu nối"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73071110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73071110 \"Phụ kiện của ống hoặc ống dẫn không có đầu nối (SEN)\" ⇒ dungCho \"ống hoặc ống dẫn không có đầu nối\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-liet-ke-trong-mot-chuoi:73071110:dungCho
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và 
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 730721 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730721",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-730721",
+  "dong8": {
+    "73072110": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<",
+          "value": 150,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73072110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73072110 \"Có đường kính trong dưới 15 cm\" ⇒ duongKinhTrong < 150 mm (15 cm = 150 mm)"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73072110:dieu-kien-so-nguong-khong-co-trong-trich:150
+      → Ngưỡng số không có trong câu trích. Sửa: Số phải có nguyên văn trong trich ("1.000" = 1000, "19,5" = 19.5).
+    ✗ cong5-ve-gioi-han-bi-bo:73072110:Có đường kính trong dưới 15 cm
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+
+=== PN6 730722 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730722",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-730722",
+  "dong8": {
+    "73072210": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<",
+          "value": 150,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73072210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73072210 \"Có đường kính trong dưới 15 cm\" ⇒ duongKinhTrong < 150 mm (15 cm = 150 mm)"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73072210:dieu-kien-so-nguong-khong-co-trong-trich:150
+      → Ngưỡng số không có trong câu trích. Sửa: Số phải có nguyên văn trong trich ("1.000" = 1000, "19,5" = 19.5).
+    ✗ cong5-ve-gioi-han-bi-bo:73072210:Có đường kính trong dưới 15 cm
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+
+=== PN6 730723 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730723",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-730723",
+  "dong8": {
+    "73072310": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<",
+          "value": 150,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73072310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73072310 \"Có đường kính trong dưới 15 cm\" ⇒ duongKinhTrong < 150 mm (15 cm = 150 mm)"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73072310:dieu-kien-so-nguong-khong-co-trong-trich:150
+      → Ngưỡng số không có trong câu trích. Sửa: Số phải có nguyên văn trong trich ("1.000" = 1000, "19,5" = 19.5).
+    ✗ cong5-ve-gioi-han-bi-bo:73072310:Có đường kính trong dưới 15 cm
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+
+=== PN6 730729 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730729",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-730729",
+  "dong8": {
+    "73072910": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<",
+          "value": 150,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73072910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73072910 \"Có đường kính trong dưới 15 cm\" ⇒ duongKinhTrong < 150 mm (15 cm = 150 mm)"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73072910:dieu-kien-so-nguong-khong-co-trong-trich:150
+      → Ngưỡng số không có trong câu trích. Sửa: Số phải có nguyên văn trong trich ("1.000" = 1000, "19,5" = 19.5).
+    ✗ cong5-ve-gioi-han-bi-bo:73072910:Có đường kính trong dưới 15 cm
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+
+=== PN6 730791 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730791",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-730791",
+  "dong8": {
+    "73079110": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<",
+          "value": 150,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73079110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73079110 \"Có đường kính trong dưới 15 cm\" ⇒ duongKinhTrong < 150 mm (15 cm = 150 mm)"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73079110:dieu-kien-so-nguong-khong-co-trong-trich:150
+      → Ngưỡng số không có trong câu trích. Sửa: Số phải có nguyên văn trong trich ("1.000" = 1000, "19,5" = 19.5).
+    ✗ cong5-ve-gioi-han-bi-bo:73079110:Có đường kính trong dưới 15 cm
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+
+=== PN6 730792 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730792",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-730792",
+  "dong8": {
+    "73079210": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<",
+          "value": 150,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73079210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73079210 \"Có đường kính trong dưới 15 cm\" ⇒ duongKinhTrong < 150 mm (15 cm = 150 mm)"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73079210:dieu-kien-so-nguong-khong-co-trong-trich:150
+      → Ngưỡng số không có trong câu trích. Sửa: Số phải có nguyên văn trong trich ("1.000" = 1000, "19,5" = 19.5).
+    ✗ cong5-ve-gioi-han-bi-bo:73079210:Có đường kính trong dưới 15 cm
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
