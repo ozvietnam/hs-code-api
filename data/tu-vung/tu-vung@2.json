@@ -30,7 +30,7 @@
   ],
   "chamDuyetDocLap": {
     "trangThai": "CHUA_CHAM",
-    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập. +10 khoá 02/11 (lô 2: congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc) chưa chấm độc lập.",
+    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập. +10 khoá 02/11 (lô 2: congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc) chưa chấm độc lập. +9 khoá 03/11 (lô 3 thép ch.72/73: hamLuongCarbon, gioiHanChay, chieuRong, khaNangChiuApLuc, duongCheoNgoai, coRen, doBenKeo, hamLuongNiken, lopMaPhu) chưa chấm độc lập.",
     "khoaChuaCham": [
       "chiHoacChuYeu",
       "thietKeChoTreEm",
@@ -55,7 +55,16 @@
       "heDienHoa",
       "dungLuong",
       "daHoaDeo",
-      "coBoLoc"
+      "coBoLoc",
+      "hamLuongCarbon",
+      "gioiHanChay",
+      "chieuRong",
+      "khaNangChiuApLuc",
+      "duongCheoNgoai",
+      "coRen",
+      "doBenKeo",
+      "hamLuongNiken",
+      "lopMaPhu"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -191,6 +200,13 @@
     "dungLuongDien": {
       "Ah": 1,
       "mAh": 0.001
+    },
+    "phanTram": {
+      "%": 1
+    },
+    "apSuat": {
+      "psi": 1,
+      "MPa": 145.04
     }
   },
   "bietDanhDonVi": {
@@ -293,7 +309,11 @@
     "ah": "Ah",
     "mah": "mAh",
     "安时": "Ah",
-    "毫安时": "mAh"
+    "毫安时": "mAh",
+    "pct": "%",
+    "percent": "%",
+    "psi": "psi",
+    "mpa": "MPa"
   },
   "khoa": [
     {
@@ -5567,6 +5587,451 @@
       },
       "ghiChu": "Chữ biểu tiêu đề 8414.60.1 / 8414.70.1 \"Đã lắp bộ phận lọc\" và 8414.60.9 / 8414.70.2 \"Chưa lắp bộ phận lọc\" (nhóm 84.14).",
       "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "hamLuongCarbon",
+      "kieu": "SO",
+      "nhanVi": "hàm lượng carbon",
+      "nhanEn": "carbon content",
+      "nhanZh": "含碳量",
+      "heDonVi": "phanTram",
+      "donViChuan": "%",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "hàm\\s+lượng\\s+carbon",
+          "hàm\\s+lượng\\s+cacbon",
+          "hàm\\s+lượng\\s+c\\b",
+          "carbon",
+          "cacbon"
+        ],
+        "en": [
+          "carbon\\s+content",
+          "carbon"
+        ],
+        "zh": [
+          "含碳量",
+          "碳含量",
+          "碳"
+        ]
+      },
+      "cachViet": {
+        "vi": "hàm lượng carbon {giaTri}%"
+      },
+      "cauHoi": {
+        "vi": "Hàm lượng carbon của thép chiếm bao nhiêu % tính theo khối lượng?",
+        "zh": "钢材按重量计含碳量是多少百分比（%）？"
+      },
+      "ghiChu": "Trích chữ biểu 7210.61.11, 7209.28.10, 7210.20.10: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "gioiHanChay",
+      "kieu": "SO",
+      "nhanVi": "giới hạn chảy",
+      "nhanEn": "yield strength",
+      "nhanZh": "屈服强度",
+      "heDonVi": "apSuat",
+      "donViChuan": "psi",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "giới\\s+hạn\\s+chảy(?:\\s*\\([0-9]+\\))?",
+          "độ\\s+chảy",
+          "điểm\\s+chảy"
+        ],
+        "en": [
+          "yield\\s+strength",
+          "yield\\s+point"
+        ],
+        "zh": [
+          "屈服强度",
+          "屈服点",
+          "屈服极限"
+        ]
+      },
+      "cachViet": {
+        "vi": "giới hạn chảy {giaTri} psi"
+      },
+      "cauHoi": {
+        "vi": "Giới hạn chảy của ống thép là bao nhiêu psi?",
+        "zh": "钢管的屈服强度是多少磅/平方英寸（psi）？"
+      },
+      "ghiChu": "Trích chữ biểu 7304.51.20 \"Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi\" và 7304.23.10 \"Có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "chieuRong",
+      "kieu": "SO",
+      "nhanVi": "chiều rộng",
+      "nhanEn": "width",
+      "nhanZh": "宽度",
+      "heDonVi": "dai",
+      "donViChuan": "mm",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "chiều\\s+rộng",
+          "bề\\s+rộng",
+          "khổ\\s+rộng",
+          "rộng"
+        ],
+        "en": [
+          "width",
+          "wide"
+        ],
+        "zh": [
+          "宽度",
+          "宽",
+          "板宽"
+        ]
+      },
+      "cachViet": {
+        "vi": "chiều rộng {giaTri} mm"
+      },
+      "cauHoi": {
+        "vi": "Chiều rộng của sản phẩm cán phẳng là bao nhiêu mm?",
+        "zh": "平板轧材的宽度是多少毫米（mm）？"
+      },
+      "ghiChu": "Trích chữ biểu 7209.16.10, 7209.27.10 \"Chiều rộng không quá 1.250 mm\" và 7211.23.20 \"chiều rộng không quá 400 mm\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "khaNangChiuApLuc",
+      "kieu": "SO",
+      "nhanVi": "khả năng chịu áp lực",
+      "nhanEn": "pressure resistance capability",
+      "nhanZh": "耐压能力",
+      "heDonVi": "apSuat",
+      "donViChuan": "psi",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "khả\\s+năng\\s+chịu\\s+áp\\s+lực",
+          "chịu\\s+áp\\s+lực",
+          "áp\\s+lực\\s+chịu\\s+được",
+          "áp\\s+suất\\s+chịu\\s+được"
+        ],
+        "en": [
+          "pressure\\s+capacity",
+          "pressure\\s+resistance",
+          "withstand(?:ing)?\\s+pressure",
+          "pressure\\s+rating"
+        ],
+        "zh": [
+          "耐压能力",
+          "承受压力",
+          "承压能力",
+          "耐压",
+          "承压"
+        ]
+      },
+      "cachViet": {
+        "vi": "chịu áp lực {giaTri} psi"
+      },
+      "cauHoi": {
+        "vi": "Khả năng chịu áp lực của ống dẫn là bao nhiêu psi?",
+        "zh": "管道的耐压能力是多少磅/平方英寸（psi）？"
+      },
+      "ghiChu": "Trích chữ biểu 7304.39.20 \"Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "duongCheoNgoai",
+      "kieu": "SO",
+      "nhanVi": "đường chéo ngoài mặt cắt ngang",
+      "nhanEn": "external diagonal of cross-section",
+      "nhanZh": "截面外对角线",
+      "heDonVi": "dai",
+      "donViChuan": "mm",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "đường\\s+chéo\\s+ngoài(?:\\s+của\\s+mặt\\s+cắt\\s+ngang)?",
+          "đường\\s+chéo\\s+ngoại"
+        ],
+        "en": [
+          "external\\s+diagonal(?:\\s+of\\s+(?:the\\s+)?cross-?section)?",
+          "outer\\s+diagonal",
+          "outside\\s+diagonal"
+        ],
+        "zh": [
+          "外对角线",
+          "截面外对角线"
+        ]
+      },
+      "cachViet": {
+        "vi": "đường chéo ngoài {giaTri} mm"
+      },
+      "cauHoi": {
+        "vi": "Đường chéo ngoài của mặt cắt ngang ống là bao nhiêu mm?",
+        "zh": "管截面的外对角线是多少毫米（mm）？"
+      },
+      "ghiChu": "Trích chữ biểu 7306.61.10 \"Có đường chéo ngoài của mặt cắt ngang dưới 12,5 mm\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "coRen",
+      "kieu": "CO_KHONG",
+      "nhanVi": "có ren (ở đầu hoặc thân ống)",
+      "nhanEn": "threaded (internal, external or at pipe ends)",
+      "nhanZh": "有螺纹（管端或内/外螺纹）",
+      "cachDoc": {
+        "vi": [
+          "có\\s+ren",
+          "tiện\\s+ren",
+          "xoáy\\s+ren",
+          "ren\\s+trong",
+          "ren\\s+ngoài",
+          "được\\s+tiện\\s+ren",
+          "bước\\s+ren"
+        ],
+        "en": [
+          "thread(?:ed)?",
+          "threading",
+          "screwed",
+          "with\\s+threads?"
+        ],
+        "zh": [
+          "带螺纹",
+          "有螺纹",
+          "螺纹",
+          "车螺纹"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không có",
+          "không",
+          "chưa",
+          "ko",
+          "chẳng",
+          "non-?",
+          "without",
+          "no",
+          "not",
+          "无",
+          "非",
+          "不",
+          "没有",
+          "未"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+(?:có\\s+)?ren(?:\\s+ở\\s+đầu\\s+ống)?",
+          "đầu\\s+trơn",
+          "chưa\\s+tiện\\s+ren"
+        ],
+        "en": [
+          "unthreaded",
+          "without\\s+threads?",
+          "plain\\s+end(?:ed)?",
+          "non-?threaded"
+        ],
+        "zh": [
+          "无螺纹",
+          "不带螺纹",
+          "未攻丝",
+          "平端"
+        ]
+      },
+      "cachViet": {
+        "vi": "có ren",
+        "viPhuDinh": "không có ren"
+      },
+      "cauHoi": {
+        "vi": "Ống thép có ren (ren trong, ren ngoài hoặc ren ở đầu ống) không?",
+        "zh": "钢管是否有螺纹（内螺纹、外螺纹或管端螺纹）？"
+      },
+      "ghiChu": "Trích chữ biểu 7304.51.10, 7304.31.10 \"Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)\" và 7304.23.10 \"Có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "doBenKeo",
+      "kieu": "SO",
+      "nhanVi": "độ bền kéo",
+      "nhanEn": "tensile strength",
+      "nhanZh": "抗拉强度",
+      "heDonVi": "apSuat",
+      "donViChuan": "MPa",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "độ\\s+bền\\s+kéo",
+          "sức\\s+bền\\s+kéo",
+          "giới\\s+hạn\\s+bền\\s+kéo"
+        ],
+        "en": [
+          "tensile\\s+strength",
+          "ultimate\\s+tensile\\s+strength"
+        ],
+        "zh": [
+          "抗拉强度",
+          "抗张强度",
+          "拉伸强度"
+        ]
+      },
+      "cachViet": {
+        "vi": "độ bền kéo {giaTri} MPa"
+      },
+      "cauHoi": {
+        "vi": "Độ bền kéo của thép là bao nhiêu MPa?",
+        "zh": "钢材的抗拉强度是多少兆帕（MPa）？"
+      },
+      "ghiChu": "Trích chữ biểu 7208.39.40 \"độ bền kéo tối đa 550 Mpa và chiều rộng không quá 1.250 mm\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "hamLuongNiken",
+      "kieu": "SO",
+      "nhanVi": "hàm lượng niken",
+      "nhanEn": "nickel content",
+      "nhanZh": "含镍量",
+      "heDonVi": "phanTram",
+      "donViChuan": "%",
+      "canNguCanh": true,
+      "cachDoc": {
+        "vi": [
+          "hàm\\s+lượng\\s+niken",
+          "hàm\\s+lượng\\s+nicken",
+          "hàm\\s+lượng\\s+ni\\b",
+          "niken",
+          "nicken",
+          "nickel"
+        ],
+        "en": [
+          "nickel\\s+content",
+          "nickel"
+        ],
+        "zh": [
+          "含镍量",
+          "镍含量",
+          "镍"
+        ]
+      },
+      "cachViet": {
+        "vi": "hàm lượng niken {giaTri}%"
+      },
+      "cauHoi": {
+        "vi": "Hàm lượng niken trong ống thép là bao nhiêu % tính theo khối lượng?",
+        "zh": "钢管按重量计含镍量是多少百分比（%）？"
+      },
+      "ghiChu": "Trích chữ biểu 7306.40.30 \"Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm\".",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "lopMaPhu",
+      "kieu": "LIET_KE",
+      "nhanVi": "lớp mạ hoặc tráng phủ bề mặt",
+      "nhanEn": "surface coating or plating type",
+      "nhanZh": "表面涂层或镀层类型",
+      "giaTriHopLe": [
+        "MA_DONG",
+        "TRANG_NHUA_FLO",
+        "TRANG_KEM_CROMAT"
+      ],
+      "moTaGiaTri": {
+        "MA_DONG": {
+          "nhanVi": "mạ đồng",
+          "nhanEn": "copper plated",
+          "nhanZh": "镀铜",
+          "cachDoc": {
+            "vi": [
+              "mạ\\s+đồng",
+              "tráng\\s+đồng",
+              "phủ\\s+đồng"
+            ],
+            "en": [
+              "copper\\s+plated?",
+              "copper\\s+coat(?:ed|ing)?"
+            ],
+            "zh": [
+              "镀铜",
+              "包铜",
+              "涂铜"
+            ]
+          },
+          "cachViet": "mạ đồng"
+        },
+        "TRANG_NHUA_FLO": {
+          "nhanVi": "tráng nhựa flo",
+          "nhanEn": "fluororesin coated",
+          "nhanZh": "涂氟树脂",
+          "cachDoc": {
+            "vi": [
+              "tráng\\s+nhựa\\s+flo",
+              "phủ\\s+nhựa\\s+flo",
+              "nhựa\\s+flo",
+              "fluororesin",
+              "teflon",
+              "ptfe"
+            ],
+            "en": [
+              "fluororesin\\s+coat(?:ed|ing)?",
+              "fluoropolymer\\s+coat(?:ed|ing)?",
+              "teflon\\s+coat(?:ed|ing)?",
+              "ptfe\\s+coat(?:ed|ing)?"
+            ],
+            "zh": [
+              "涂氟树脂",
+              "氟树脂涂层",
+              "聚四氟乙烯涂层",
+              "特氟龙涂层"
+            ]
+          },
+          "cachViet": "tráng nhựa flo"
+        },
+        "TRANG_KEM_CROMAT": {
+          "nhanVi": "tráng kẽm-cromat",
+          "nhanEn": "zinc-chromate coated",
+          "nhanZh": "涂锌-铬酸盐",
+          "cachDoc": {
+            "vi": [
+              "tráng\\s+kẽm\\s*[-–]?\\s*cromat",
+              "mạ\\s+kẽm\\s*[-–]?\\s*cromat",
+              "kẽm\\s*[-–]?\\s*cromat"
+            ],
+            "en": [
+              "zinc\\s*[-–]?\\s*chromate(?:\\s+coat(?:ed|ing)?)?",
+              "zinc\\s+chromate"
+            ],
+            "zh": [
+              "锌铬酸盐",
+              "镀锌铬酸盐",
+              "涂锌铬酸盐",
+              "锌-铬酸盐"
+            ]
+          },
+          "cachViet": "tráng kẽm cromat"
+        }
+      },
+      "cachDoc": {
+        "vi": [
+          "mạ",
+          "tráng",
+          "phủ",
+          "lớp\\s+phủ"
+        ],
+        "en": [
+          "plated",
+          "coated",
+          "coating"
+        ],
+        "zh": [
+          "镀",
+          "涂",
+          "涂层"
+        ]
+      },
+      "cauHoi": {
+        "vi": "Ống thép được mạ đồng, tráng nhựa flo hay tráng kẽm-cromat?",
+        "zh": "钢管表面是镀铜、涂氟树脂还是涂锌-铬酸盐？"
+      },
+      "ghiChu": "Trích chữ biểu phân nhóm 7306.30.2: \"Được mạ đồng, tráng nhựa flo hoặc tráng kẽm-cromat\".",
+      "nguonLoai": "AI_DA_KIEM",
+      "cachViet": {
+        "vi": "{giaTri}"
+      }
     }
   ],
   "khongPhaiPhuDinh": [

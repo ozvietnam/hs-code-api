@@ -30,7 +30,9 @@ const clone = (x) => JSON.parse(JSON.stringify(x));
 //   tinhDanHoi (6006.x.10 "Đàn hồi (kết hợp với sợi cao su)", 6001.92.30), loaiSoiDet (6306 "Từ bông", 5515.99.10), doDay (7308.30.10).
 const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNapChuongTrinh: 'CO_KHONG', soLoi: 'SO', soSoi: 'SO', tiLe: 'SO', phuongPhapCheTao: 'LIET_KE', phuongThucTruyenDan: 'LIET_KE', daXuLyBeMat: 'CO_KHONG', nhienLieu: 'LIET_KE', phuongPhapIn: 'LIET_KE', tinhDanHoi: 'CO_KHONG', loaiSoiDet: 'LIET_KE', doDay: 'SO',
   // + 10 khoá lô 2 (02/11, Studio soạn, máy kiểm): 848xxx/850xxx/39xx DỪNG THIEU_KHOA_TU_VUNG
-  congSuatBieuKien: 'SO', dungTich: 'SO', theTich: 'SO', sanLuongHoi: 'SO', dungLuong: 'SO', dangNguyenSinh: 'LIET_KE', heDienHoa: 'LIET_KE', daLapRap: 'CO_KHONG', daHoaDeo: 'CO_KHONG', coBoLoc: 'CO_KHONG' };
+  congSuatBieuKien: 'SO', dungTich: 'SO', theTich: 'SO', sanLuongHoi: 'SO', dungLuong: 'SO', dangNguyenSinh: 'LIET_KE', heDienHoa: 'LIET_KE', daLapRap: 'CO_KHONG', daHoaDeo: 'CO_KHONG', coBoLoc: 'CO_KHONG',
+  // + 9 khoá lô 3 (03/11, Studio soạn, máy kiểm): thép ch.72/73 DỪNG THIEU_KHOA_TU_VUNG
+  hamLuongCarbon: 'SO', gioiHanChay: 'SO', chieuRong: 'SO', khaNangChiuApLuc: 'SO', duongCheoNgoai: 'SO', coRen: 'CO_KHONG', doBenKeo: 'SO', hamLuongNiken: 'SO', lopMaPhu: 'LIET_KE' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
