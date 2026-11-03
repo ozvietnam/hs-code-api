@@ -1,0 +1,5631 @@
+QUÉT SÓT KHOÁ TỪ VỰNG BIỂU THUẾ — VÒNG KIỂM TRA (mục đích: số hoá ranh giới giữa các dòng 8 số cùng phân nhóm 6 số). Các vòng trước đã quét và soạn thêm khoá; (A) là danh sách khoá HIỆN CÓ (đã gồm mọi khoá vòng trước), (B) hệ đơn vị, (C) mẫu khoá đúng khuôn, (D) toàn bộ PN6 có ≥2 dòng 8 số của các chương đã quét.
+
+NHIỆM VỤ 1 — XỬ LÝ 13 TIÊU CHÍ vòng trước để lại "khongChac" (chưa soạn):
+- lô 6 (ch.31–38,40–49): dangHinhHocGiay, tiLeDauKhoang, coChucNangKhuMui, doTruongNoBloom
+- lô 7 (ch.50–71): tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, doManhSoi
+- lô 8 (ch.74–83,86,88–97): luongGianNuoc, apSuatHoatDong, hinhDangMatCatNgang, cauTrucLopBotKimLoai, troChoiMayRuiCoThuong
+Với mỗi tiêu chí: tìm trong (D) các dòng 8 số dùng tiêu chí đó, rồi quyết định MỘT trong ba: (a) GHEP vào khoá đã có ở (A) (ghi rõ khoá nào; nếu cần thêm giá trị LIET_KE thì ghi trong "boSungGiaTri": {khoa: {ID_MOI: {nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}}); (b) SOAN khoá mới đúng khuôn vào "khoa"; (c) BO kèm lý do ngắn (chỉ xuất hiện 1 lần, không đo/liệt kê được gọn).
+
+NHIỆM VỤ 2 — QUÉT SÓT: đọc lại TOÀN BỘ (D). Với mỗi PN6 mà các dòng 8 số phân biệt nhau bằng một tiêu chí KHÔNG khoá nào ở (A) biểu diễn được (kể cả sau nhiệm vụ 1), liệt kê trong "pn6Sot": [{"pn6":"xxxxxx","tieuChi":"…","khoaDeXuat":"tenKhoa"}]. Gộp các PN6 cùng tiêu chí về MỘT khoaDeXuat. KHÔNG liệt kê: 'Loại khác'; tên hoá chất/thuốc/mặt hàng cụ thể; tiêu chí đã có khoá (vd 'Dùng cho xe máy' → dungCho, 'Từ bông' → loaiSoiDet, công suất/điện áp/kích thước → khoá SO sẵn có). Với khoaDeXuat có ≥3 PN6, SOẠN luôn khoá mới đúng khuôn vào "khoa".
+
+QUY TẮC LƯỢC ĐỒ (máy kiểm sẽ ĐỎ nếu sai): (1) khoá SO: heDonVi PHẢI là hệ đã có ở (B) HOẶC khai hệ mới trong "heDonViMoi"; donViChuan là đơn vị gốc của hệ (chiều dài: mm, không dùng inch/cm làm chuẩn); thêm bí danh viết tắt chữ thường vào "bietDanhMoi"; (2) khoá SO canNguCanh:true ⇒ cachDoc vi/en/zh có ≥1 mẫu; (3) mọi khoá: nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi} (SO: chuỗi có {giaTri} và đơn vị), ghiChu trích NGUYÊN VĂN 1–3 chữ biểu kèm mã 8 số, nguonLoai "AI_DA_KIEM", pn6Mau (≤5), soDong; (4) CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong, cachViet{vi,viPhuDinh}; (5) LIET_KE: giaTriHopLe = MẢNG id HOA_GẠCH_DƯỚI, moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}, cachDoc cấp khoá = {"vi":[],"en":[],"zh":[]}, cachViet cấp khoá = {"vi":"{giaTri}"}.
+
+ĐẦU RA: MỘT khối ```json {"xuLyKhongChac":[{"tieuChi":"…","quyetDinh":"GHEP|SOAN|BO","khoa":"…","lyDo":"…"}],"boSungGiaTri":{},"khoa":[…],"heDonViMoi":{},"bietDanhMoi":{},"pn6Sot":[…]} duy nhất, không giải thích.
+
+=== (A) KHOÁ ĐÃ CÓ ===
+dienAp(SO,V) điện áp
+dongDien(SO,A) dòng điện (định mức)
+congSuat(SO,W) công suất
+tanSo(SO,Hz) tần số / dải tần
+luuLuong(SO,m3/h) lưu lượng
+dungTichXiLanh(SO,cc) dung tích xi lanh
+khoiLuong(SO,kg) khối lượng
+duongKinh(SO,mm) đường kính (ngoài)
+duongKinhTrong(SO,mm) đường kính trong (cửa nạp/cửa thoát, DN)
+duongKinhLoi(SO,mm) đường kính lõi (mỗi lõi dẫn điện)
+chieuCao(SO,mm) chiều cao
+kichThuoc(SO,mm) kích thước (dài x rộng x cao)
+chieuDaiCuon(SO,m) chiều dài (hàng dài: dây, cáp, ống, cuộn)
+daGanDauNoi(CO_KHONG) đã gắn đầu nối
+coCachDien(CO_KHONG) có cách điện
+coBoXuLyLapTrinh(CO_KHONG) có trang bị bộ xử lý lập trình
+coKhungChupQuaDau(CO_KHONG) có khung chụp qua đầu
+hieuChinhThiLuc(CO_KHONG) hiệu chỉnh thị lực (kính thuốc)
+chongNang(CO_KHONG) chống nắng (kính râm)
+coChucNangGhi(CO_KHONG) có chức năng ghi (hình/âm)
+daGhi(CO_KHONG) đã ghi (có dữ liệu)
+coLuoiBaoVe(CO_KHONG) có lưới bảo vệ
+coManHinh(CO_KHONG) có màn hình hiển thị
+coCamera(CO_KHONG) có camera
+coBanh(CO_KHONG) có bánh xe
+hoatDongBangDien(CO_KHONG) hoạt động bằng điện
+coKetHopThietBiThu(CO_KHONG) kết hợp thiết bị thu
+coGiaNhiet(CO_KHONG) có gia nhiệt
+laBoPhan(CO_KHONG) là bộ phận (không phải hàng hoàn chỉnh)
+datChim(CO_KHONG) loại đặt chìm
+coKhoangPhaTron(CO_KHONG) có khoang pha trộn lưu chất
+loaiDongDien(LIET_KE) loại dòng điện
+soPha(LIET_KE) số pha
+kieuDotChay(LIET_KE) kiểu đốt cháy của động cơ piston
+nguonSang(LIET_KE) nguồn sáng
+nguonNangLuong(LIET_KE) nguồn năng lượng
+cachDieuKhien(LIET_KE) cách điều khiển / vận hành
+kieuBom(LIET_KE) kiểu bơm
+loaiRoLe(LIET_KE) loại rơ le
+loaiCongTac(LIET_KE) loại thiết bị đóng ngắt (8536.50)
+loaiPhichOCam(LIET_KE) loại phích cắm / ổ cắm (8536.69)
+phamViSuDung(LIET_KE) phạm vi sử dụng
+mauHienThi(LIET_KE) màu hiển thị
+kieuDongCoDien(LIET_KE) kiểu động cơ điện (8501.10)
+tinhTrang(LIET_KE) tình trạng hàng
+chatLieu(CHAT_LIEU_THEO_VI_TRI) chất liệu (theo vị trí)
+dungCho(CONG_DUNG) dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)
+congDung(CONG_DUNG) công dụng / mục đích
+tenLoai(TEN_LOAI) tên loại hàng
+nhanHieu(TEN_LOAI) nhãn hiệu
+model(TEN_LOAI) model
+kyMaHieu(TEN_LOAI) ký, mã hiệu
+nhaSanXuat(TEN_LOAI) nhà sản xuất
+chiHoacChuYeu(CO_KHONG) chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)
+thietKeChoTreEm(CO_KHONG) được thiết kế chủ yếu cho trẻ em
+daNapChuongTrinh(CO_KHONG) đã nạp chương trình/firmware (bo mạch, vi điều khiển)
+soLoi(SO,lõi) số lõi dẫn (ruột dẫn)
+soSoi(SO,sợi) số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ "sợi")
+tiLe(SO,lần) tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)
+phuongPhapCheTao(LIET_KE) phương pháp chế tạo
+phuongThucTruyenDan(LIET_KE) phương thức truyền dẫn
+daXuLyBeMat(CO_KHONG) đã được xử lý bề mặt
+nhienLieu(LIET_KE) nhiên liệu / nguồn nhiệt (bếp, lò)
+phuongPhapIn(LIET_KE) phương pháp in (vải, hàng dệt)
+tinhDanHoi(CO_KHONG) đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)
+loaiSoiDet(LIET_KE) loại xơ/sợi dệt (vật liệu dệt chủ yếu)
+doDay(SO,mm) độ dày
+congSuatBieuKien(SO,kVA) công suất biểu kiến
+dangNguyenSinh(LIET_KE) dạng vật lý nguyên sinh của polyme
+daLapRap(CO_KHONG) đã lắp ráp
+dungTich(SO,lít) dung tích chứa
+sanLuongHoi(SO,tấn/giờ) sản lượng hơi / công suất hơi
+theTich(SO,cm3) thể tích ngoài / thể tích bên ngoài
+heDienHoa(LIET_KE) hệ điện hóa của pin
+dungLuong(SO,Ah) dung lượng phóng điện
+daHoaDeo(CO_KHONG) đã hóa dẻo
+coBoLoc(CO_KHONG) đã lắp bộ phận lọc
+hamLuongCarbon(SO,%) hàm lượng carbon
+gioiHanChay(SO,psi) giới hạn chảy
+chieuRong(SO,mm) chiều rộng
+khaNangChiuApLuc(SO,psi) khả năng chịu áp lực
+duongCheoNgoai(SO,mm) đường chéo ngoài mặt cắt ngang
+coRen(CO_KHONG) có ren (ở đầu hoặc thân ống)
+doBenKeo(SO,MPa) độ bền kéo
+hamLuongNiken(SO,%) hàm lượng niken
+lopMaPhu(LIET_KE) lớp mạ hoặc tráng phủ bề mặt
+dungLamGiong(CO_KHONG) để nhân giống / làm giống / gieo trồng
+dongBaoBiKinKhiDeBanLe(CO_KHONG) đóng bao bì kín khí để bán lẻ
+nongDoCon(SO,%) nồng độ cồn (% thể tích)
+phuongPhapBaoQuan(LIET_KE) phương pháp bảo quản / trạng thái bảo quản
+dangBaoCheThuoc(LIET_KE) dạng bào chế / đường dùng của thuốc
+mucDoTinhCheDau(LIET_KE) mức độ tinh chế của dầu và chất béo
+chiSoIot(SO,IV) chỉ số iốt (IV)
+triSoOctan(SO,RON) trị số octan (RON / Octane)
+daRang(CO_KHONG) đã rang
+tachXuongCoHoc(CO_KHONG) thịt tách hoặc lọc khỏi xương bằng phương pháp cơ học (MSM/MDM)
+dinhLuong(SO,g/m2) định lượng giấy hoặc bìa
+mucDoGiaCongGo(LIET_KE) mức độ gia công của gỗ xẻ
+dangBinhXit(CO_KHONG) dạng bình xịt (aerosol)
+nhieuLop(CO_KHONG) nhiều lớp (giấy/bìa/gỗ nhiều lớp)
+daIn(CO_KHONG) đã in (nội dung, họa tiết, vạch chia)
+duongKinhVanh(SO,mm) đường kính vành bánh xe (mâm xe lắp lốp)
+daTrangMen(CO_KHONG) đã tráng men (gạch gốm, sứ)
+tinhNangBaoHo(LIET_KE) tính năng bảo hộ chuyên dụng của quần áo
+daTrangPhuEpLop(CO_KHONG) đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)
+loaiMuiBaoVe(LIET_KE) loại mũi bảo vệ của giày dép
+thuyTinhQuangHoc(CO_KHONG) thủy tinh/kính quang học (chưa gia công quang học)
+tongDungTichTau(SO,GT) tổng dung tích tàu thuyền (gross tonnage - GT)
+dangCuon(CO_KHONG) ở dạng cuộn (dây hàn, que hàn, tấm, dải)
+coNong(SO,mm) cỡ nòng súng / cỡ đạn
+ngamQuaThauKinhSLR(CO_KHONG) có bộ ngắm qua thấu kính (phản chiếu đơn - SLR)
+dungMotLan(CO_KHONG) dùng một lần (dụng cụ y tế, vật tư tiêu hao)
+
+=== (B) HỆ ĐƠN VỊ ĐÃ CÓ ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"], "phanTram": ["%"], "apSuat": ["psi", "MPa"], "chiSoIot": ["IV"], "triSoOctan": ["RON", "octane"], "dinhLuong": ["g/m2", "gsm"], "tongDungTich": ["GT"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+
+=== (D) CÁC PN6 (mã 8 số + mô tả nguyên văn) ===
+## 010130
+01013010 Loại thuần chủng để nhân giống
+01013090 Loại khác
+## 010229
+01022911 Bò thiến (SEN)
+01022919 Loại khác
+01022990 Loại khác
+## 010290
+01029010 Loại thuần chủng để nhân giống
+01029090 Loại khác
+## 010410
+01041010 Loại thuần chủng để nhân giống
+01041090 Loại khác
+## 010420
+01042010 Loại thuần chủng để nhân giống
+01042090 Loại khác
+## 010511
+01051110 Để nhân giống (SEN)
+01051190 Loại khác
+## 010512
+01051210 Để nhân giống (SEN)
+01051290 Loại khác
+## 010513
+01051310 Để nhân giống (SEN)
+01051390 Loại khác
+## 010514
+01051410 Để nhân giống (SEN)
+01051490 Loại khác
+## 010515
+01051510 Để nhân giống (SEN)
+01051590 Loại khác
+## 010594
+01059410 Để nhân giống (SEN), trừ gà chọi
+01059441 Khối lượng không quá 2 kg
+01059449 Loại khác
+01059491 Khối lượng không quá 2 kg
+01059499 Loại khác
+## 010599
+01059910 Vịt, ngan để nhân giống (SEN)
+01059920 Vịt, ngan loại khác
+01059930 Ngỗng, gà tây và gà lôi để nhân giống (SEN)
+01059940 Ngỗng, gà tây và gà lôi loại khác
+## 010612
+01061210 Cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ cá voi Cetacea); lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+01061220 Hải cẩu, sư tử biển và hải mã (con moóc) (động vật có vú thuộc phân bộ Pinnipedia)
+## 020714
+02071410 Cánh
+02071420 Đùi
+02071430 Gan
+02071491 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+02071499 Loại khác
+## 020727
+02072710 Gan
+02072791 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+02072799 Loại khác
+## 020745
+02074510 Gan béo
+02074590 Loại khác
+## 020755
+02075510 Gan béo
+02075590 Loại khác
+## 020760
+02076010 Chưa chặt mảnh, tươi hoặc ướp lạnh
+02076020 Chưa chặt mảnh, đông lạnh
+02076030 Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh
+02076040 Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh
+## 020840
+02084010 Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+02084090 Loại khác
+## 020890
+02089010 Đùi ếch
+02089090 Loại khác
+## 021019
+02101930 Thịt lợn muối xông khói (bacon); thịt mông đùi (hams) không xương
+02101990 Loại khác
+## 021092
+02109210 Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+02109290 Loại khác
+## 021099
+02109910 Thịt gà thái miếng đã được làm khô đông lạnh (SEN)
+02109920 Da lợn khô
+02109990 Loại khác
+## 030111
+03011110 Cá bột
+03011191 Cá chép Koi (Cyprinus carpio)
+03011192 Cá vàng (Carassius auratus)
+03011193 Cá chọi Thái Lan (Beta splendens)
+03011195 Cá rồng (Scleropages formosus)
+03011199 Loại khác
+## 030119
+03011910 Cá bột
+03011990 Loại khác
+## 030193
+03019321 Để nhân giống, trừ cá bột (SEN)
+03019322 Cá bột
+03019329 Loại khác
+03019331 Để nhân giống, trừ cá bột (SEN)
+03019332 Cá bột
+03019339 Loại khác
+## 030199
+03019911 Để nhân giống (SEN)
+03019919 Loại khác
+03019922 Cá chép khác, để nhân giống (SEN)
+03019923 Cá chép loại khác (SEN)
+03019924 Loại khác, để nhân giống
+03019929 Loại khác
+03019931 Cá măng biển để nhân giống (SEN)
+03019932 Cá măng biển, loại khác (SEN)
+03019933 Cá mú chấm nhỏ (Plectropomus leopardus)(SEN)
+03019934 Cá mú hoa nâu/cá mú cọp (Epinephelus fuscoguttatus) (SEN)
+03019935 Cá mú dẹt (Cromileptes altivelis) (SEN)
+03019936 Cá mú loại khác
+03019941 Cá rô phi (Oreochromis spp.)(SEN)
+03019942 Cá chép khác, để nhân giống (SEN)
+03019949 Loại khác
+03019950 Cá biển khác
+03019990 Loại khác
+## 030272
+03027210 Cá tra đuôi vàng (Pangasius pangasius)
+03027290 Loại khác
+## 030289
+03028911 Cá mú
+03028912 Cá bạc (Pentaprion longimanus)
+03028913 Cá mối hoa (Trachinocephalus myops)
+03028914 Cá hố savalai (Lepturacanthus savala), cá đù Belanger (Johnius belangerii), cá đù Reeve (Chrysochir aureus) và cá đù mắt to (Pennahia anea)
+03028915 Cá nhụ Ấn Độ (Polynemus indicus)
+03028916 Cá sòng gió (Megalaspis cordyla), cá hiên chấm (Drepane punctata) và cá nhồng lớn (Sphyraena barracuda)
+03028917 Cá chim đen (Parastromatus niger)
+03028918 Cá hồng bạc (Lutjanus argentimaculatus)
+03028919 Loại khác
+03028922 Cá đòng đong đầm lầy (Puntius chola)
+03028923 Cá sạo bạc (Pomadasys argenteus)
+03028927 Cá mòi Hilsa (Tenualosa ilisha)
+03028928 Cá leo (Wallago attu) và cá tra dầu (Sperata seenghala)
+03028929 Loại khác
+## 030345
+03034510 Cá ngừ vây xanh Đại Tây Dương (Thunnus thynnus)
+03034590 Cá ngừ vây xanh Thái Bình Dương (Thunnus orientalis)
+## 030349
+03034910 Cá ngừ bò (Thunnus tonggol) (SEN)
+03034990 Loại khác
+## 030354
+03035410 Cá nục hoa (Scomber scombrus, Scomber australasicus) (SEN)
+03035420 Cá thu ngừ Thái Bình Dương (sa ba) (Scomber japonicus) (SEN)
+## 030359
+03035910 Cá bạc má (Rastrelliger kanagurta); cá bạc má đảo (Rastrelliger faughni)
+03035920 Cá chim trắng (Pampus spp.)
+03035990 Loại khác
+## 030389
+03038911 Cá mú
+03038913 Cá mối hoa (Trachinocephalus myops)
+03038914 Cá hố savalai (Lepturacanthus savala), cá đù Belanger (Johnius belangerii), cá đù Reeve (Chrysochir aureus) và cá đù mắt to (Pennahia anea)
+03038915 Cá nhụ Ấn Độ (Polynemus indicus)
+03038916 Cá sòng gió (Megalaspis cordyla), cá hiên chấm (Drepane punctata) và cá nhồng lớn (Sphyraena barracuda)
+03038917 Cá chim đen (Parastromatus niger)
+03038918 Cá hồng bạc (Lutjanus argentimaculatus)
+03038919 Loại khác
+03038922 Cá đòng đong đầm lầy (Puntius chola)
+03038923 Cá măng biển (Chanos chanos) (SEN)
+03038924 Cá sạo bạc (Pomadasys argenteus)
+03038927 Cá mòi Hilsa (Tenualosa ilisha)
+03038928 Cá leo (Wallago attu) và cá tra dầu (Sperata seenghala)
+03038929 Loại khác
+## 030489
+03048910 Cá nục heo cờ (Coryphaena hippurus) (SEN)
+03048990 Loại khác
+## 030499
+03049910 Surimi (thịt cá xay) (SEN)
+03049990 Loại khác
+## 030520
+03052010 Của cá nước ngọt, làm khô, muối hoặc ngâm nước muối
+03052090 Loại khác
+## 030539
+03053910 Cá nhói nước ngọt (Xenentodon cancila), cá phèn dải vàng (Upeneus vittatus) và cá khế lược mang dài (Ulua mentalis)
+03053920 Cá hố savalai (Lepturacanthus savala), cá đù Belanger (Johnius belangerii), cá đù Reeve (Chrysochir aureus) và cá đù mắt to (Pennahia anea)
+03053991 Của cá nước ngọt
+03053992 Của cá biển
+03053999 Loại khác
+## 030549
+03054910 Cá ngừ vằn (cá ngừ sọc dưa) (Katsuwonus pelamis)
+03054990 Loại khác
+## 030559
+03055921 Cá cơm (cá trỏng) (Stolephorus spp., Coilia spp., Setipinna spp., Lycothrissa spp., Thryssa spp. và Encrasicholina spp.) (SEN)
+03055929 Loại khác
+03055990 Loại khác
+## 030569
+03056910 Cá biển
+03056990 Loại khác
+## 030571
+03057110 Khô hoặc hun khói
+03057190 Loại khác
+## 030572
+03057211 Của cá tuyết (SEN)
+03057219 Loại khác (SEN)
+03057291 Của cá tuyết
+03057299 Loại khác
+## 030579
+03057910 Của cá tuyết
+03057990 Loại khác
+## 030611
+03061110 Hun khói
+03061190 Loại khác
+## 030612
+03061210 Hun khói
+03061290 Loại khác
+## 030614
+03061411 Cua, ghẹ vỏ mềm
+03061419 Loại khác
+03061491 Ghẹ (thuộc họ Portunidae)
+03061492 Cua hoàng đế/cua vua Alaska (thuộc họ Lithodidae)
+03061493 Cua tuyết (thuộc họ Origoniidae)
+03061499 Loại khác
+## 030617
+03061711 Đã bỏ đầu
+03061719 Loại khác
+03061721 Đã bỏ đầu, còn đuôi
+03061722 Đã bỏ đầu, bỏ đuôi
+03061729 Loại khác
+03061730 Tôm càng xanh (Macrobrachium rosenbergii)
+03061790 Loại khác
+## 030631
+03063110 Để nhân giống
+03063120 Loại khác, sống
+03063130 Tươi hoặc ướp lạnh
+## 030632
+03063210 Để nhân giống
+03063220 Loại khác, sống
+03063230 Tươi hoặc ướp lạnh
+## 030633
+03063311 Sống
+03063312 Tươi hoặc ướp lạnh
+03063391 Sống
+03063392 Tươi hoặc ướp lạnh
+## 030635
+03063510 Để nhân giống (SEN)
+03063520 Loại khác, sống
+03063530 Tươi hoặc ướp lạnh
+## 030636
+03063611 Tôm sú (Penaeus monodon) (SEN)
+03063612 Tôm thẻ chân trắng (Litopenaeus vannamei) (SEN)
+03063613 Tôm càng xanh (Macrobrachium rosenbergii) (SEN)
+03063619 Loại khác (SEN)
+03063621 Tôm sú (Penaeus monodon)
+03063622 Tôm thẻ chân trắng (Litopenaeus vannamei)
+03063623 Tôm càng xanh (Macrobrachium rosenbergii)
+03063629 Loại khác
+03063631 Tôm sú (Penaeus monodon)
+03063632 Tôm thẻ chân trắng (Litopenaeus vannamei)
+03063633 Tôm càng xanh (Macrobrachium rosenbergii)
+03063639 Loại khác
+## 030639
+03063910 Sống
+03063920 Tươi hoặc ướp lạnh
+## 030691
+03069121 Hun khói
+03069129 Loại khác
+03069131 Hun khói
+03069139 Loại khác
+## 030692
+03069221 Hun khói
+03069229 Loại khác
+03069231 Hun khói
+03069239 Loại khác
+## 030693
+03069321 Hun khói
+03069329 Loại khác
+03069331 Hun khói
+03069339 Loại khác
+## 030694
+03069421 Hun khói
+03069429 Loại khác
+03069431 Hun khói
+03069439 Loại khác
+## 030695
+03069521 Còn vỏ, đã hấp chín hoặc luộc chín trong nước
+03069529 Loại khác
+03069530 Loại khác
+## 030699
+03069921 Hun khói
+03069929 Loại khác
+03069931 Hun khói
+03069939 Loại khác
+## 030711
+03071110 Sống
+03071120 Tươi hoặc ướp lạnh
+## 030719
+03071920 Khô, muối hoặc ngâm nước muối
+03071930 Hun khói
+## 030721
+03072110 Sống
+03072120 Tươi hoặc ướp lạnh
+## 030729
+03072930 Khô, muối hoặc ngâm nước muối
+03072940 Hun khói
+## 030731
+03073110 Sống
+03073120 Tươi hoặc ướp lạnh
+## 030739
+03073930 Khô, muối hoặc ngâm nước muối
+03073940 Hun khói
+## 030742
+03074211 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074219 Loại khác
+03074221 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074229 Loại khác
+## 030743
+03074310 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074390 Loại khác
+## 030749
+03074921 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074929 Loại khác
+03074931 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+03074939 Loại khác
+## 030751
+03075110 Sống
+03075120 Tươi hoặc ướp lạnh
+## 030759
+03075920 Khô, muối hoặc ngâm nước muối
+03075930 Hun khói
+## 030760
+03076010 Sống
+03076020 Tươi, ướp lạnh hoặc đông lạnh
+03076040 Khô, muối hoặc ngâm nước muối
+03076050 Hun khói
+## 030771
+03077110 Sống
+03077120 Tươi hoặc ướp lạnh
+## 030779
+03077930 Khô, muối hoặc ngâm nước muối
+03077940 Hun khói
+## 030781
+03078110 Sống
+03078120 Tươi hoặc ướp lạnh
+## 030782
+03078210 Sống
+03078220 Tươi hoặc ướp lạnh
+## 030787
+03078710 Khô, muối hoặc ngâm nước muối
+03078720 Hun khói
+## 030788
+03078810 Khô, muối hoặc ngâm nước muối
+03078820 Hun khói
+## 030791
+03079110 Sống
+03079120 Tươi hoặc ướp lạnh
+## 030799
+03079930 Khô, muối hoặc ngâm nước muối
+03079940 Hun khói
+## 030811
+03081110 Sống
+03081120 Tươi hoặc ướp lạnh
+## 030819
+03081920 Khô, muối hoặc ngâm nước muối
+03081930 Hun khói
+## 030821
+03082110 Sống
+03082120 Tươi hoặc ướp lạnh
+## 030829
+03082920 Khô, muối hoặc ngâm nước muối
+03082930 Hun khói
+## 030830
+03083010 Sống
+03083020 Tươi hoặc ướp lạnh
+03083030 Đông lạnh
+03083040 Khô, muối hoặc ngâm nước muối
+03083050 Hun khói
+## 030890
+03089010 Sống
+03089020 Tươi hoặc ướp lạnh
+03089030 Đông lạnh
+03089040 Khô, muối hoặc ngâm nước muối
+03089050 Hun khói
+## 030990
+03099011 Tươi hoặc ướp lạnh
+03099012 Đông lạnh
+03099019 Loại khác
+03099021 Tươi hoặc ướp lạnh
+03099022 Đông lạnh
+03099029 Loại khác
+03099090 Của động vật thủy sinh không xương sống khác
+## 040110
+04011010 Dạng lỏng
+04011090 Loại khác
+## 040120
+04012010 Dạng lỏng
+04012090 Loại khác
+## 040140
+04014010 Sữa dạng lỏng
+04014020 Sữa dạng đông lạnh
+04014090 Loại khác
+## 040150
+04015010 Dạng lỏng
+04015090 Loại khác
+## 040210
+04021041 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+04021042 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+04021049 Loại khác
+04021091 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+04021092 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+04021099 Loại khác
+## 040221
+04022120 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+04022130 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+04022190 Loại khác
+## 040229
+04022920 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+04022930 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+04022990 Loại khác
+## 040320
+04032011 Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao
+04032019 Loại khác
+04032091 Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao
+04032099 Loại khác
+## 040390
+04039010 Buttermilk
+04039090 Loại khác
+## 040410
+04041011 Whey, thích hợp sử dụng cho người (SEN)
+04041019 Loại khác
+04041091 Whey, thích hợp sử dụng cho người (SEN)
+04041099 Loại khác
+## 040590
+04059010 Chất béo khan của bơ
+04059020 Dầu bơ (butteroil)
+04059030 Ghee
+04059090 Loại khác
+## 040610
+04061010 Pho mát tươi (chưa ủ chín hoặc chưa xử lý), kể cả pho mát whey
+04061020 Curd
+## 040620
+04062010 Đóng gói với trọng lượng cả bì trên 20 kg
+04062090 Loại khác
+## 040711
+04071110 Để nhân giống
+04071190 Loại khác
+## 040719
+04071911 Để nhân giống
+04071919 Loại khác
+04071991 Để nhân giống
+04071999 Loại khác
+## 040729
+04072910 Của vịt, ngan
+04072990 Loại khác
+## 040790
+04079010 Của gà thuộc loài Gallus domesticus
+04079020 Của vịt, ngan
+04079090 Loại khác
+## 041090
+04109010 Tổ yến
+04109020 Trứng rùa
+04109090 Loại khác
+## 050510
+05051010 Lông vũ của vịt, ngan
+05051090 Loại khác
+## 050590
+05059010 Lông vũ của vịt, ngan
+05059090 Loại khác
+## 050790
+05079020 Mai động vật họ rùa
+05079090 Loại khác
+## 050800
+05080020 Mai, vỏ động vật thân mềm, động vật giáp xác hoặc động vật da gai
+05080090 Loại khác
+## 051191
+05119110 Sẹ và bọc trứng
+05119120 Trứng Artemia (trứng Brine shrimp)
+05119130 Da cá
+05119190 Loại khác
+## 051199
+05119910 Tinh dịch động vật nuôi
+05119920 Trứng tằm
+05119930 Bọt biển thiên nhiên
+05119990 Loại khác
+## 060120
+06012010 Cây rau diếp xoăn
+06012020 Rễ rau diếp xoăn
+06012090 Loại khác
+## 060210
+06021010 Của cây phong lan
+06021020 Của cây cao su
+06021090 Loại khác
+## 060290
+06029010 Cành giâm và cành ghép phong lan có rễ
+06029020 Cây phong lan giống
+06029040 Gốc cây cao su có chồi (SEN)
+06029050 Cây cao su giống (SEN)
+06029060 Chồi mọc từ gỗ cây cao su (SEN)
+06029090 Loại khác
+## 060420
+06042010 Rêu và địa y
+06042090 Loại khác
+## 060490
+06049010 Rêu và địa y
+06049090 Loại khác
+## 070190
+07019010 Loại thường dùng để làm khoai tây chiên (chipping potatoes) (SEN)
+07019090 Loại khác
+## 070310
+07031011 Củ giống
+07031019 Loại khác
+07031021 Củ giống
+07031029 Loại khác
+## 070320
+07032010 Củ giống
+07032090 Loại khác
+## 070390
+07039010 Củ giống
+07039090 Loại khác
+## 070410
+07041010 Súp lơ (1) (Caulifower)
+07041020 Đầu súp lơ xanh (headed broccoli)
+07041090 Súp lơ xanh khác
+## 070490
+07049010 Bắp cải cuộn (cuộn tròn) (SEN)
+07049020 Cải bẹ xanh (Chinese mustard) (SEN)
+07049030 Bắp cải khác
+07049090 Loại khác
+## 070610
+07061010 Cà rốt
+07061020 Củ cải
+## 070820
+07082010 Đậu Pháp (SEN)
+07082020 Đậu dài
+07082090 Loại khác
+## 070959
+07095920 Nấm cục trừ loại Tuber spp.
+07095990 Loại khác
+## 070960
+07096010 Quả ớt (chillies) (quả thuộc chi Capsicum)
+07096090 Loại khác
+## 070999
+07099910 Ngô ngọt
+07099920 Đậu bắp (Okra)
+07099990 Loại khác
+## 071120
+07112010 Đã bảo quản bằng khí sunphurơ
+07112090 Loại khác
+## 071140
+07114010 Đã bảo quản bằng khí sunphurơ
+07114090 Loại khác
+## 071151
+07115110 Đã bảo quản bằng khí sunphurơ
+07115190 Loại khác
+## 071159
+07115910 Đã bảo quản bằng khí sunphurơ
+07115990 Loại khác
+## 071190
+07119010 Ngô ngọt
+07119020 Quả ớt (chillies) (quả thuộc chi Capsicum)
+07119030 Nụ bạch hoa
+07119040 Hành tây, đã được bảo quản bằng khí sunphurơ
+07119050 Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ
+07119060 Loại khác, đã được bảo quản bằng khí sunphurơ
+07119090 Loại khác
+## 071239
+07123910 Nấm cục (truffles)
+07123990 Loại khác
+## 071290
+07129010 Tỏi
+07129020 Ngô ngọt
+07129090 Loại khác
+## 071310
+07131010 Phù hợp để gieo trồng
+07131090 Loại khác
+## 071320
+07132010 Phù hợp để gieo trồng
+07132090 Loại khác
+## 071331
+07133110 Phù hợp để gieo trồng
+07133190 Loại khác
+## 071332
+07133210 Phù hợp để gieo trồng
+07133290 Loại khác
+## 071333
+07133310 Phù hợp để gieo trồng
+07133390 Loại khác
+## 071334
+07133410 Phù hợp để gieo trồng
+07133490 Loại khác
+## 071335
+07133510 Phù hợp để gieo trồng
+07133590 Loại khác
+## 071339
+07133910 Phù hợp để gieo trồng
+07133990 Loại khác
+## 071340
+07134010 Phù hợp để gieo trồng
+07134090 Loại khác
+## 071350
+07135010 Phù hợp để gieo trồng
+07135090 Loại khác
+## 071360
+07136010 Phù hợp để gieo trồng
+07136090 Loại khác
+## 071390
+07139010 Phù hợp để gieo trồng
+07139090 Loại khác
+## 071410
+07141011 Lát đã được làm khô
+07141019 Loại khác
+07141091 Đông lạnh
+07141099 Loại khác
+## 071420
+07142010 Đông lạnh
+07142090 Loại khác
+## 071430
+07143010 Đông lạnh
+07143090 Loại khác
+## 071440
+07144010 Đông lạnh
+07144090 Loại khác
+## 071450
+07145010 Đông lạnh
+07145090 Loại khác
+## 071490
+07149011 Đông lạnh
+07149019 Loại khác
+07149091 Đông lạnh
+07149099 Loại khác
+## 080119
+08011910 Quả dừa non (SEN)
+08011990 Loại khác
+## 080212
+08021210 Đã chần (blanched) (SEN)
+08021290 Loại khác
+## 080310
+08031010 Tươi
+08031020 Khô
+## 080390
+08039010 Chuối ngự (Lady's finger banana) (SEN)
+08039020 Chuối Cavendish (Musa acuminata) (SEN)
+08039030 Chuối Chestnut (Chestnut banana) (lai giữa Musa acuminata và Musa balbisiana, giống Berangan) (SEN)
+08039090 Loại khác
+## 080450
+08045010 Quả ổi
+08045021 Tươi
+08045022 Khô
+08045030 Quả măng cụt
+## 080510
+08051010 Tươi
+08051020 Khô
+## 080550
+08055010 Quả chanh vàng (lemon) (Citrus limon, Citrus limonum) (SEN)
+08055020 Quả chanh xanh (chanh ta Citrus aurantifolia, chanh không hạt Citrus latifolia)(SEN)
+## 080940
+08094010 Quả mận
+08094020 Quả mận gai
+## 081090
+08109010 Quả nhãn; Quả nhãn Mata Kucing (SEN)
+08109020 Quả vải
+08109030 Quả chôm chôm
+08109040 Quả bòn bon (Lanzones)
+08109050 Quả mít (kể cả mít Cempedak và mít Nangka)
+08109060 Quả me
+08109070 Quả khế
+08109091 Salacca (quả da rắn)
+08109092 Quả thanh long
+08109093 Quả hồng xiêm (quả sapôchê)
+08109094 Quả lựu (Punica spp.), quả mãng cầu hoặc quả na (Annona spp.), quả roi (bell fruit) (Syzygium spp., Eugenia spp.), quả thanh trà (Bouea spp.), quả chanh leo (dây) (Passiflora spp.), quả sấu đỏ (Sandoricum spp.), quả táo ta (Ziziphus spp.) và quả dâu da đất (Baccaurea spp.) (SEN)
+08109099 Loại khác
+## 081290
+08129010 Quả dâu tây
+08129090 Loại khác
+## 081340
+08134010 Quả nhãn
+08134020 Quả me
+08134090 Loại khác
+## 081350
+08135010 Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+08135020 Quả hạch (nuts) khác chiếm đa số về khối lượng
+08135030 Quả chà là chiếm đa số về khối lượng
+08135040 Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+08135090 Loại khác
+## 090111
+09011120 Arabica (SEN)
+09011130 Robusta (SEN)
+09011190 Loại khác
+## 090112
+09011220 Arabica (SEN) hoặc Robusta (SEN)
+09011290 Loại khác
+## 090121
+09012111 Arabica (SEN)
+09012112 Robusta (SEN)
+09012119 Loại khác
+09012120 Đã xay
+## 090122
+09012210 Chưa xay
+09012220 Đã xay
+## 090190
+09019010 Vỏ quả và vỏ lụa cà phê
+09019020 Các chất thay thế có chứa cà phê
+## 090210
+09021010 Lá chè
+09021090 Loại khác
+## 090220
+09022010 Lá chè
+09022090 Loại khác
+## 090230
+09023010 Lá chè
+09023090 Loại khác
+## 090240
+09024010 Lá chè
+09024090 Loại khác
+## 090411
+09041110 Trắng
+09041120 Đen
+09041190 Loại khác
+## 090412
+09041210 Trắng
+09041220 Đen
+09041290 Loại khác
+## 090421
+09042110 Quả ớt (chillies) (quả thuộc chi Capsicum)
+09042190 Loại khác
+## 090422
+09042210 Quả ớt (chillies) (quả thuộc chi Capsicum)
+09042290 Loại khác
+## 090961
+09096110 Của hoa hồi anise (tiểu hồi)
+09096120 Của hoa hồi badian (đại hồi)
+09096130 Của cây ca-rum (caraway)
+09096190 Loại khác
+## 090962
+09096210 Của hoa hồi anise (tiểu hồi)
+09096220 Của hoa hồi badian (đại hồi)
+09096230 Của cây ca-rum (caraway)
+09096290 Loại khác
+## 091091
+09109110 Cà ri (curry)
+09109190 Loại khác
+## 091099
+09109910 Húng tây, cỏ xạ hương; lá nguyệt quế
+09109990 Loại khác
+## 100199
+10019911 Meslin (SEN)
+10019912 Hạt lúa mì đã bỏ lớp vỏ ngoài cùng (SEN)
+10019919 Loại khác (SEN)
+10019991 Meslin
+10019999 Loại khác (SEN)
+## 100590
+10059010 Loại dùng để rang nổ (popcorn) (SEN)
+10059091 Thích hợp sử dụng cho người (SEN)
+10059099 Loại khác
+## 100610
+10061010 Phù hợp để gieo trồng
+10061090 Loại khác
+## 100620
+10062010 Gạo Hom Mali (SEN)
+10062090 Loại khác
+## 100630
+10063030 Gạo nếp (SEN)
+10063040 Gạo Hom Mali (SEN)
+10063050 Gạo Basmati (SEN)
+10063060 Gạo Malys (SEN)
+10063070 Gạo thơm khác (SEN)
+10063091 Gạo đồ (1)
+10063099 Loại khác
+## 100640
+10064010 Loại dùng làm thức ăn chăn nuôi (SEN)
+10064090 Loại khác (SEN)
+## 110100
+11010011 Tăng cường vi chất dinh dưỡng (SEN)
+11010019 Loại khác
+11010020 Bột meslin
+## 110290
+11029010 Bột gạo
+11029020 Bột lúa mạch đen
+11029090 Loại khác
+## 110319
+11031910 Của meslin
+11031920 Của gạo
+11031990 Loại khác
+## 110419
+11041910 Của ngô
+11041990 Loại khác
+## 110429
+11042920 Của lúa mạch
+11042990 Loại khác
+## 110620
+11062010 Từ sắn
+11062020 Từ cọ sago
+11062090 Loại khác
+## 110819
+11081910 Tinh bột cọ sago
+11081990 Loại khác
+## 120710
+12071010 Hạt cọ phù hợp để gieo/trồng (SEN)
+12071030 Nhân hạt cọ
+12071090 Loại khác
+## 120740
+12074010 Loại ăn được
+12074090 Loại khác
+## 120799
+12079940 Hạt illipe (quả hạch illipe)
+12079950 Chùm quả tươi của cây cọ dầu
+12079990 Loại khác
+## 120929
+12092910 Hạt cỏ đuôi mèo (Phleum pratense)
+12092990 Loại khác
+## 120991
+12099110 Hạt hành tây
+12099190 Loại khác
+## 120999
+12099920 Hạt cây cao su
+12099930 Hạt cây kenaf
+12099990 Loại khác
+## 121120
+12112010 Tươi hoặc khô
+12112090 Loại khác
+## 121190
+12119011 Cây gai dầu, đã cắt, nghiền hoặc dạng bột
+12119012 Cây gai dầu, ở dạng khác
+12119013 Rễ cây ba gạc hoa đỏ (SEN)
+12119015 Rễ cây cam thảo
+12119017 Loại khác, tươi hoặc khô, đã cắt, nghiền hoặc dạng bột
+12119018 Loại khác, đã cắt, nghiền hoặc dạng bột
+12119019 Loại khác
+12119091 Cây kim cúc, đã cắt, nghiền hoặc dạng bột
+12119092 Cây kim cúc, ở dạng khác
+12119094 Mảnh gỗ đàn hương
+12119095 Mảnh gỗ trầm hương (Gaharu) (SEN)
+12119097 Vỏ cây persea (Persea Kurzii Kosterm) (SEN)
+12119098 Loại khác, đã cắt, nghiền hoặc dạng bột
+12119099 Loại khác
+## 121221
+12122111 Eucheuma spinosum(SEN)
+12122112 Eucheuma cottonii (SEN)
+12122113 Gracilaria spp.
+12122119 Loại khác
+12122190 Loại khác
+## 121229
+12122911 Loại dùng làm dược phẩm
+12122919 Loại khác
+12122920 Loại khác, tươi, ướp lạnh hoặc khô
+12122930 Loại khác, đông lạnh
+## 121293
+12129310 Phù hợp để làm giống
+12129390 Loại khác
+## 121299
+12129910 Hạt và nhân hạt của quả mơ, đào (kể cả xuân đào) hoặc mận (SEN)
+12129990 Loại khác
+## 130190
+13019030 Nhựa cây gai dầu
+13019040 Nhựa cánh kiến đỏ
+13019090 Loại khác
+## 130211
+13021110 Bột thuốc phiện (Pulvis opii)
+13021190 Loại khác
+## 130219
+13021920 Chiết xuất và cồn thuốc của cây gai dầu
+13021940 Nhựa và các chiết xuất thực vật từ hoa cúc hoặc rễ cây có chứa rotenone
+13021950 Sơn mài (sơn mài tự nhiên)
+13021990 Loại khác
+## 130239
+13023911 Dạng bột, tinh chế một phần (SEN)
+13023912 Dạng bột, đã tinh chế (SEN)
+13023913 Carrageen dạng mảnh đã xử lý kiềm (ATCC) (SEN)
+13023919 Loại khác
+13023990 Loại khác
+## 140120
+14012010 Nguyên cây
+14012021 Đường kính không quá 12 mm (SEN)
+14012029 Loại khác (SEN)
+14012030 Vỏ (cật) đã tách (SEN)
+14012090 Loại khác
+## 140490
+14049020 Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm
+14049030 Bông gòn
+14049091 Vỏ hạt cọ
+14049092 Chùm không quả của cây cọ dầu
+14049099 Loại khác
+## 150290
+15029010 Loại ăn được
+15029090 Loại khác
+## 150300
+15030010 Stearin mỡ lợn hoặc oleostearin
+15030090 Loại khác
+## 150410
+15041020 Các phần phân đoạn thể rắn
+15041090 Loại khác
+## 150420
+15042010 Các phần phân đoạn thể rắn
+15042090 Loại khác
+## 150500
+15050010 Lanolin
+15050090 Loại khác
+## 150790
+15079010 Các phần phân đoạn của dầu đậu tương chưa tinh chế
+15079020 Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)
+15079090 Loại khác
+## 150920
+15092010 Đóng gói với khối lượng tịnh không quá 30 kg
+15092090 Loại khác
+## 150990
+15099011 Đóng gói với khối lượng tịnh không quá 30 kg
+15099019 Loại khác
+15099091 Đóng gói với khối lượng tịnh không quá 30 kg
+15099099 Loại khác
+## 151090
+15109010 Dầu thô
+15109020 Các phần phân đoạn của dầu chưa tinh chế
+15109090 Loại khác
+## 151190
+15119020 Dầu tinh chế
+15119031 Có chỉ số iốt từ 30 trở lên, nhưng dưới 40
+15119032 Loại khác
+15119036 Đóng gói với khối lượng tịnh không quá 25kg
+15119037 Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60
+15119039 Loại khác
+15119041 Các phần phân đoạn thể rắn (SEN)
+15119042 Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)
+15119049 Loại khác (SEN)
+## 151219
+15121910 Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế
+15121920 Đã tinh chế
+15121990 Loại khác
+## 151229
+15122910 Các phần phân đoạn của dầu hạt bông chưa tinh chế
+15122990 Loại khác
+## 151311
+15131110 Dầu dừa nguyên chất (SEN)
+15131190 Loại khác
+## 151319
+15131910 Các phần phân đoạn của dầu dừa chưa tinh chế
+15131990 Loại khác
+## 151321
+15132110 Dầu hạt cọ (SEN)
+15132190 Loại khác
+## 151329
+15132911 Các phần phân đoạn thể rắn của dầu hạt cọ chưa tinh chế (SEN)
+15132912 Các phần phân đoạn thể rắn của dầu cọ ba-ba-su chưa tinh chế
+15132913 Loại khác, của dầu hạt cọ chưa tinh chế (olein hạt cọ) (SEN)
+15132914 Loại khác, của dầu cọ ba-ba-su chưa tinh chế
+15132991 Các phần phân đoạn thể rắn của dầu hạt cọ (SEN)
+15132992 Các phần phân đoạn thể rắn của dầu cọ ba-ba-su
+15132994 Olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+15132995 Dầu hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) (SEN)
+15132996 Loại khác, của dầu hạt cọ (SEN)
+15132997 Loại khác, của dầu cọ ba-ba-su
+## 151419
+15141910 Các phần phân đoạn của dầu chưa tinh chế
+15141920 Đã tinh chế
+15141990 Loại khác
+## 151499
+15149910 Các phần phân đoạn của dầu chưa tinh chế
+15149990 Loại khác
+## 151529
+15152911 Các phần phân đoạn thể rắn
+15152919 Loại khác
+15152991 Các phần phân đoạn thể rắn
+15152999 Loại khác
+## 151530
+15153010 Dầu thô
+15153090 Loại khác
+## 151550
+15155010 Dầu thô
+15155020 Các phần phân đoạn của dầu chưa tinh chế
+15155090 Loại khác
+## 151590
+15159011 Dầu thô (SEN)
+15159012 Các phần phân đoạn của dầu chưa tinh chế (SEN)
+15159019 Loại khác (SEN)
+15159021 Dầu thô
+15159022 Các phần phân đoạn của dầu chưa tinh chế
+15159029 Loại khác
+15159031 Dầu thô
+15159032 Các phần phân đoạn của dầu chưa tinh chế
+15159039 Loại khác
+15159091 Dầu thô
+15159092 Các phần phân đoạn của dầu chưa tinh chế
+15159099 Loại khác
+## 151610
+15161020 Đã tái este hóa
+15161090 Loại khác
+## 151620
+15162011 Của đậu tương
+15162012 Của ngô (maize)
+15162014 Của dừa
+15162017 Của lạc
+15162018 Của hạt lanh
+15162019 Loại khác
+15162021 Của quả cọ dầu, dạng thô
+15162022 Của quả cọ dầu, trừ dạng thô
+15162023 Của hạt cọ, dạng thô
+15162024 Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+15162025 Của olein hạt cọ, dạng thô
+15162026 Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+15162029 Loại khác
+15162031 Của lạc; của dừa; của đậu tương
+15162032 Của hạt lanh
+15162033 Của ô liu
+15162034 Của quả cọ dầu (SEN)
+15162035 Của hạt cọ (SEN)
+15162039 Loại khác
+15162041 Của hạt thầu dầu (sáp opal)
+15162042 Của dừa
+15162043 Của lạc
+15162044 Của hạt lanh
+15162045 Của ô liu
+15162046 Của quả cọ dầu (SEN)
+15162047 Của hạt cọ (SEN)
+15162048 Của đậu tương
+15162049 Loại khác
+15162051 Của hạt lanh
+15162052 Của ô liu
+15162053 Của đậu tương
+15162054 Của lạc, cọ dầu hoặc dừa
+15162059 Loại khác
+15162061 Dạng thô
+15162062 Đã tinh chế, tẩy và khử mùi (RBD)
+15162069 Loại khác
+15162091 Stearin cọ, có chỉ số iốt trên 48
+15162092 Của hạt lanh
+15162093 Của ô liu
+15162094 Của đậu tương
+15162096 Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)
+15162098 Của lạc, của cọ dầu hoặc của dừa
+15162099 Loại khác
+## 151710
+15171010 Đóng bao bì kín khí để bán lẻ
+15171090 Loại khác
+## 151790
+15179010 Chế phẩm giả ghee
+15179020 Margarin lỏng
+15179030 Của loại sử dụng như chế phẩm tách khuôn
+15179043 Shortening
+15179044 Chế phẩm giả mỡ lợn
+15179050 Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng
+15179061 Thành phần chủ yếu là dầu lạc
+15179062 Thành phần chủ yếu là dầu cọ thô
+15179063 Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh không quá 25kg
+15179064 Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh trên 25kg
+15179065 Thành phần chủ yếu là dầu hạt cọ
+15179066 Thành phần chủ yếu là olein hạt cọ
+15179067 Thành phần chủ yếu là dầu đậu tương hoặc dầu dừa
+15179068 Thành phần chủ yếu là dầu hạt illipe
+15179069 Loại khác
+15179080 Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng
+15179090 Loại khác
+## 151800
+15180012 Mỡ và dầu động vật
+15180014 Dầu lạc, dầu đậu tương, dầu cọ hoặc dầu dừa
+15180015 Dầu hạt lanh và các phần phân đoạn của dầu hạt lanh
+15180016 Dầu ô liu và các phần phân đoạn của dầu ô liu
+15180019 Loại khác
+15180020 Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật khác nhau
+15180032 Của dầu cọ hoặc olein hạt cọ, đã trung hòa hóa, tẩy và khử mùi (NBD) hoặc đã tinh chế, tẩy và khử mùi (RBD)
+15180033 Của hạt lanh
+15180034 Của ô liu
+15180035 Của lạc
+15180036 Của đậu tương hoặc dừa
+15180037 Của hạt bông
+15180038 Của quả cọ dầu hoặc của hạt cọ, loại khác
+15180039 Loại khác
+15180060 Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng và chất béo hoặc dầu thực vật hoặc các phần phân đoạn của chúng
+15180090 Loại khác
+## 152000
+15200010 Glyxerin thô
+15200090 Loại khác
+## 152190
+15219010 Sáp ong và sáp côn trùng khác
+15219020 Sáp cá nhà táng
+## 152200
+15220010 Chất nhờn
+15220090 Loại khác
+## 160100
+16010010 Đóng bao bì kín khí để bán lẻ
+16010090 Loại khác
+## 160210
+16021010 Chứa thịt lợn, đóng bao bì kín khí để bán lẻ
+16021090 Loại khác
+## 160231
+16023110 Đóng bao bì kín khí để bán lẻ
+16023191 Từ thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+16023199 Loại khác
+## 160232
+16023210 Ca-ri gà, đóng bao bì kín khí để bán lẻ
+16023290 Loại khác
+## 160241
+16024110 Đóng bao bì kín khí để bán lẻ
+16024190 Loại khác
+## 160242
+16024210 Đóng bao bì kín khí để bán lẻ
+16024290 Loại khác
+## 160249
+16024911 Đóng bao bì kín khí để bán lẻ
+16024919 Loại khác
+16024991 Đóng bao bì kín khí để bán lẻ
+16024999 Loại khác
+## 160250
+16025010 Đóng bao bì kín khí để bán lẻ
+16025090 Loại khác
+## 160290
+16029010 Ca-ri cừu, đóng bao bì kín khí để bán lẻ
+16029020 Các chế phẩm từ tiết
+16029090 Loại khác (SEN)
+## 160300
+16030010 Từ thịt
+16030090 Loại khác
+## 160411
+16041110 Đóng bao bì kín khí để bán lẻ
+16041190 Loại khác
+## 160412
+16041210 Đóng bao bì kín khí để bán lẻ
+16041290 Loại khác
+## 160413
+16041311 Đóng bao bì kín khí để bán lẻ
+16041319 Loại khác
+16041391 Đóng bao bì kín khí để bán lẻ
+16041399 Loại khác
+## 160414
+16041411 Từ cá ngừ đại dương
+16041419 Loại khác
+16041491 Cá ngừ đã làm chín sơ (SEN)
+16041499 Loại khác
+## 160415
+16041510 Đóng bao bì kín khí để bán lẻ
+16041590 Loại khác
+## 160416
+16041610 Đóng bao bì kín khí để bán lẻ
+16041690 Loại khác
+## 160417
+16041710 Đóng bao bì kín khí để bán lẻ
+16041790 Loại khác
+## 160418
+16041810 Đã chế biến để sử dụng ngay
+16041891 Đóng bao bì kín khí để bán lẻ
+16041899 Loại khác
+## 160419
+16041920 Cá sòng (horse mackerel), đóng bao bì kín khí để bán lẻ
+16041930 Loại khác, đóng bao bì kín khí để bán lẻ
+16041990 Loại khác
+## 160420
+16042020 Xúc xích cá
+16042030 Cá viên
+16042040 Cá dạng bột nhão
+16042091 Đóng bao bì kín khí để bán lẻ
+16042099 Loại khác
+## 160510
+16051011 Ghẹ (thuộc họ Portunidae)
+16051012 Cua hoàng đế/cua vua Alaska (cua thuộc họ Lithodidae)
+16051013 Cua tuyết (cua thuộc họ Oregoniidae)
+16051014 Loại khác
+16051090 Loại khác
+## 160529
+16052920 Tôm dạng viên
+16052930 Tôm tẩm bột
+16052990 Loại khác
+## 160554
+16055410 Đóng bao bì kín khí để bán lẻ
+16055490 Loại khác
+## 160557
+16055710 Đóng bao bì kín khí để bán lẻ
+16055790 Loại khác
+## 170199
+17019910 Đường đã tinh luyện
+17019990 Loại khác
+## 170230
+17023010 Glucoza
+17023020 Xirô glucoza
+## 170260
+17026010 Fructoza
+17026020 Xirô fructoza
+## 170290
+17029011 Mantoza tinh khiết về mặt hóa học
+17029019 Loại khác
+17029020 Mật ong nhân tạo, đã hoặc chưa pha trộn với mật ong tự nhiên
+17029030 Đường đã pha hương liệu hoặc chất màu (trừ mantoza)
+17029040 Đường caramen
+17029051 Đường sáp dừa (Coconut sap sugar) (SEN)
+17029059 Loại khác (SEN)
+17029091 Xi rô đường
+17029099 Loại khác
+## 170310
+17031010 Đã pha thêm hương liệu hoặc chất màu
+17031090 Loại khác
+## 170390
+17039010 Đã pha thêm hương liệu hoặc chất màu
+17039090 Loại khác
+## 170490
+17049010 Kẹo và viên ngậm ho
+17049020 Sô cô la trắng
+17049091 Dẻo, có chứa gelatin (SEN)
+17049099 Loại khác
+## 180100
+18010010 Đã lên men (SEN)
+18010090 Loại khác
+## 180620
+18062010 Kẹo sô cô la ở dạng khối, miếng hoặc thanh
+18062090 Loại khác
+## 180690
+18069010 Kẹo sô cô la ở dạng viên (tablets) hoặc viên ngậm (pastilles)
+18069030 Các chế phẩm thực phẩm từ bột, bột thô, tinh bột hoặc chiết xuất malt, có chứa từ 40% trở lên nhưng không quá 50% tính theo khối lượng là ca cao đã khử toàn bộ chất béo
+18069040 Các chế phẩm thực phẩm làm từ sản phẩm thuộc các nhóm từ 04.01 đến 04.04, có chứa từ 5% trở lên nhưng không quá 10% tính theo khối lượng là ca cao đã khử toàn bộ chất béo, được chế biến đặc biệt cho trẻ sơ sinh hoặc trẻ nhỏ, chưa đóng gói để bán lẻ
+18069090 Loại khác
+## 190110
+19011010 Từ chiết xuất malt
+19011020 Từ sản phẩm thuộc các nhóm từ 04.01 đến 04.04
+19011030 Từ bột đỗ tương
+19011091 Sản phẩm dinh dưỡng y tế(SEN)
+19011092 Loại khác, dùng cho trẻ trên một tuổi nhưng không quá ba tuổi
+19011099 Loại khác
+## 190120
+19012010 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao
+19012020 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao
+19012030 Loại khác, không chứa ca cao
+19012040 Loại khác, chứa ca cao
+## 190190
+19019011 Sản phẩm dinh dưỡng y tế (SEN)
+19019019 Loại khác
+19019020 Chiết xuất malt
+19019031 Chứa sữa (SEN)
+19019032 Loại khác, chứa bột ca cao
+19019039 Loại khác
+19019041 Dạng bột
+19019049 Dạng khác
+19019091 Sản phẩm dinh dưỡng y tế (SEN)
+19019099 Loại khác
+## 190219
+19021920 Mì, bún làm từ gạo (kể cả bee hoon)
+19021930 Miến
+19021940 Mì khác
+19021990 Loại khác
+## 190220
+19022010 Được nhồi thịt hoặc phụ phẩm dạng thịt sau giết mổ
+19022030 Được nhồi cá, động vật giáp xác hoặc động vật thân mềm
+19022090 Loại khác
+## 190230
+19023020 Mì, bún làm từ gạo (kể cả bee hoon)
+19023030 Miến
+19023040 Mì ăn liền khác
+19023090 Loại khác
+## 190410
+19041010 Chứa ca cao
+19041090 Loại khác
+## 190420
+19042010 Thực phẩm chế biến từ mảnh ngũ cốc chưa rang
+19042090 Loại khác
+## 190490
+19049010 Các chế phẩm từ gạo, kể cả gạo đã nấu chín sơ
+19049090 Loại khác
+## 190531
+19053110 Không chứa ca cao
+19053120 Chứa ca cao
+## 190532
+19053210 Bánh waffles (SEN)
+19053220 Bánh xốp wafers (SEN)
+## 190540
+19054010 Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây
+19054090 Loại khác
+## 190590
+19059010 Bánh quy không ngọt dùng cho trẻ mọc răng hoặc thay răng
+19059020 Bánh quy không ngọt khác
+19059030 Bánh ga tô (cakes)
+19059040 Bánh bột nhào (pastry)
+19059050 Các loại bánh không bột
+19059060 Vỏ viên nhộng và sản phẩm tương tự dùng trong dược phẩm
+19059070 Bánh thánh, bánh xốp sealing wafers, bánh đa và các sản phẩm tương tự
+19059080 Các sản phẩm thực phẩm giòn có hương liệu khác
+19059090 Loại khác
+## 200190
+20019010 Hành tây
+20019090 Loại khác
+## 200290
+20029010 Bột cà chua dạng sệt (SEN)
+20029020 Bột cà chua
+20029090 Loại khác
+## 200390
+20039010 Nấm cục (truffles)
+20039090 Loại khác
+## 200490
+20049010 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20049090 Loại khác
+## 200510
+20051020 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20051030 Phù hợp dùng cho mục đích ăn kiêng
+## 200520
+20052011 Đóng bao bì kín khí để bán lẻ (SEN)
+20052019 Loại khác (SEN)
+20052091 Đóng bao bì kín khí để bán lẻ
+20052099 Loại khác
+## 200559
+20055910 Đóng bao bì kín khí để bán lẻ
+20055990 Loại khác
+## 200599
+20059910 Đóng bao bì kín khí để bán lẻ
+20059990 Loại khác
+## 200799
+20079910 Trái cây dạng nhão, trừ xoài, dứa hoặc dâu tây dạng nhão
+20079920 Mứt và thạch trái cây
+20079930 Xoài nghiền (Mango purée) (SEN)
+20079990 Loại khác
+## 200811
+20081110 Đã rang
+20081120 Bơ lạc
+20081190 Loại khác
+## 200819
+20081910 Hạt điều
+20081991 Đã rang
+20081999 Loại khác
+## 200820
+20082010 Đóng bao bì kín khí để bán lẻ
+20082090 Loại khác
+## 200830
+20083010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20083090 Loại khác
+## 200860
+20086010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20086090 Loại khác
+## 200870
+20087010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20087090 Loại khác
+## 200893
+20089310 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089390 Loại khác
+## 200897
+20089710 Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089720 Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089790 Loại khác
+## 200899
+20089910 Quả vải
+20089920 Quả nhãn
+20089930 Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089940 Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+20089990 Loại khác
+## 200981
+20098110 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20098190 Loại khác
+## 200989
+20098910 Nước ép từ quả lý chua đen
+20098920 Nước dừa (SEN)
+20098930 Nước dừa cô đặc (SEN)
+20098940 Nước xoài ép cô đặc
+20098991 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20098999 Loại khác
+## 200990
+20099010 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+20099091 Dùng ngay được
+20099099 Loại khác
+## 210111
+21011111 Được đóng gói với khối lượng tịnh không dưới 20kg
+21011119 Loại khác
+21011190 Loại khác
+## 210112
+21011210 Hỗn hợp dạng bột nhão có thành phần cơ bản là cà phê rang xay, có chứa chất béo thực vật
+21011291 Các chế phẩm cà phê có thành phần cơ bản là các chất chiết xuất, tinh chất hoặc chất cô đặc có chứa đường, có chứa hoặc không chứa kem
+21011292 Các chế phẩm cà phê có thành phần cơ bản là cà phê rang xay có chứa đường, có chứa hoặc không chứa kem
+21011299 Loại khác
+## 210120
+21012020 Chiết xuất từ chè để sản xuất các chế phẩm chè, dạng bột
+21012030 Các chế phẩm chè gồm hỗn hợp của chè, sữa bột và đường
+21012090 Loại khác
+## 210220
+21022010 Loại dùng trong chăn nuôi động vật
+21022090 Loại khác
+## 210390
+21039011 Tương ớt
+21039012 Nước mắm
+21039013 Nước xốt loại khác
+21039019 Loại khác
+21039021 Mắm tôm (mắm ruốc) kể cả belachan (blachan) (SEN)
+21039029 Loại khác
+## 210410
+21041011 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+21041019 Loại khác
+21041091 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+21041099 Loại khác
+## 210420
+21042011 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+21042019 Loại khác
+21042091 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+21042099 Loại khác
+## 210690
+21069011 Váng đậu khô và váng đậu khô dạng thanh
+21069012 Đậu phụ tươi (tofu)
+21069019 Loại khác
+21069020 Cồn dạng bột
+21069030 Kem không sữa
+21069041 Dạng bột
+21069049 Loại khác
+21069053 Sản phẩm từ sâm
+21069054 Các chế phẩm khác được sử dụng làm nguyên liệu thô để sản xuất chất cô đặc tổng hợp
+21069055 Loại khác, chất cô đặc tổng hợp để pha đơn giản với nước làm đồ uống
+21069059 Loại khác
+21069061 Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng
+21069062 Loại sử dụng để sản xuất đồ uống có cồn, dạng khác
+21069064 Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng
+21069065 Loại sử dụng để sản xuất đồ uống có cồn, dạng khác
+21069066 Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng lỏng
+21069067 Loại khác, sử dụng để sản xuất đồ uống có cồn, dạng khác
+21069069 Loại khác
+21069071 Thực phẩm bảo vệ sức khỏe từ sâm
+21069072 Thực phẩm bảo vệ sức khỏe khác
+21069073 Hỗn hợp vi chất để bổ sung vào thực phẩm (SEN)
+21069081 Các chế phẩm thực phẩm dùng cho trẻ sơ sinh hoặc trẻ nhỏ thiếu lactaza
+21069089 Loại khác
+21069091 Hỗn hợp khác của hóa chất với thực phẩm hoặc các chất khác có giá trị dinh dưỡng, dùng để chế biến thực phẩm
+21069092 Xirô đã pha màu hoặc hương liệu
+21069093 Nước cốt dừa, đã hoặc chưa làm thành bột (SEN)
+21069095 Seri kaya (SEN)
+21069096 Sản phẩm dinh dưỡng y tế khác (SEN)
+21069097 Tempeh (SEN)
+21069098 Các chế phẩm hương liệu khác (SEN)
+21069099 Loại khác
+## 220110
+22011010 Nước khoáng
+22011020 Nước có ga
+## 220190
+22019010 Nước đá và tuyết
+22019090 Loại khác
+## 220210
+22021020 Nước tăng lực có hoặc không có ga(SEN)
+22021030 Nước khoáng xô đa hoặc nước có ga, loại khác, có hương liệu
+22021090 Loại khác
+## 220299
+22029910 Đồ uống chứa sữa tiệt trùng có hương liệu
+22029920 Đồ uống sữa đậu nành
+22029930 Đồ uống từ nước dừa (SEN)
+22029940 Đồ uống có chứa cà phê hoặc đồ uống có hương liệu cà phê
+22029950 Đồ uống không có ga khác dùng ngay được không cần pha loãng
+22029990 Loại khác
+## 220300
+22030011 Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)
+22030019 Loại khác (SEN)
+22030091 Có nồng độ cồn không quá 5,8% tính theo thể tích
+22030099 Loại khác
+## 220421
+22042111 Có nồng độ cồn không quá 15% tính theo thể tích
+22042113 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+22042114 Có nồng độ cồn trên 23% tính theo thể tích
+22042121 Có nồng độ cồn không quá 15% tính theo thể tích
+22042122 Có nồng độ cồn trên 15% tính theo thể tích
+## 220422
+22042211 Có nồng độ cồn không quá 15% tính theo thể tích
+22042212 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+22042213 Có nồng độ cồn trên 23% tính theo thể tích
+22042221 Có nồng độ cồn không quá 15% tính theo thể tích
+22042222 Có nồng độ cồn trên 15% tính theo thể tích
+## 220429
+22042911 Có nồng độ cồn không quá 15% tính theo thể tích
+22042912 Có nồng độ cồn trên 15% tính theo thể tích
+22042921 Có nồng độ cồn không quá 15% tính theo thể tích
+22042922 Có nồng độ cồn trên 15% tính theo thể tích
+## 220430
+22043010 Có nồng độ cồn không quá 15% tính theo thể tích
+22043020 Có nồng độ cồn trên 15% tính theo thể tích
+## 220510
+22051010 Có nồng độ cồn không quá 15% tính theo thể tích
+22051020 Có nồng độ cồn trên 15% tính theo thể tích
+## 220590
+22059010 Có nồng độ cồn không quá 15% tính theo thể tích
+22059020 Có nồng độ cồn trên 15% tính theo thể tích
+## 220600
+22060010 Vang táo hoặc vang lê
+22060020 Rượu sa kê (SEN)
+22060031 Loại trong đồ đựng không quá 2 lít (SEN)
+22060039 Loại khác (SEN)
+22060041 Có nồng độ cồn không quá 1,14% tính theo thể tích (SEN)
+22060049 Loại khác (SEN)
+22060050 Vang mật ong
+22060060 Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)
+22060091 Rượu gạo khác (kể cả rượu gạo bổ)(SEN)
+22060099 Loại khác
+## 220720
+22072011 Cồn etylic có nồng độ trên 99% tính theo thể tích
+22072019 Loại khác
+22072090 Loại khác
+## 220820
+22082050 Rượu brandy
+22082090 Loại khác
+## 220830
+22083010 Được đựng trong đồ chứa trên 5 lít
+22083090 Loại khác
+## 220870
+22087010 Có nồng độ cồn không quá 57% tính theo thể tích
+22087090 Loại khác
+## 220890
+22089010 Rượu bổ sam-su có nồng độ cồn không quá 40% tính theo thể tích (SEN)
+22089020 Rượu bổ sam-su có nồng độ cồn trên 40% tính theo thể tích(SEN)
+22089030 Rượu sam-su khác có nồng độ cồn không quá 40% tính theo thể tích (SEN)
+22089040 Rượu sam-su khác có nồng độ cồn trên 40% tính theo thể tích (SEN)
+22089050 Rượu arrack hoặc rượu dứa có nồng độ cồn không quá 40% tính theo thể tích
+22089060 Rượu arrack hoặc rượu dứa có nồng độ cồn trên 40% tính theo thể tích
+22089070 Rượu đắng và các loại đồ uống tương tự có nồng độ cồn không quá 57% tính theo thể tích
+22089080 Rượu đắng và các loại đồ uống tương tự có nồng độ cồn trên 57% tính theo thể tích
+22089091 Có nồng độ cồn không quá 1,14% tính theo thể tích
+22089099 Loại khác
+## 230120
+23012010 Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng
+23012020 Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng
+23012090 Loại khác
+## 230230
+23023010 Cám và cám mịn (pollard)(SEN)
+23023090 Loại khác
+## 230240
+23024010 Từ thóc gạo
+23024090 Loại khác
+## 230310
+23031010 Từ sắn hoặc cọ sago
+23031090 Loại khác
+## 230400
+23040010 Bột đậu tương đã được khử chất béo, thích hợp dùng làm thức ăn cho người(SEN)
+23040021 Thích hợp dùng làm thức ăn cho người(SEN)
+23040029 Loại khác
+23040090 Loại khác
+## 230641
+23064110 Từ hạt cải dầu rape có hàm lượng axit eruxic thấp
+23064120 Từ hạt cải dầu colza có hàm lượng axit eruxic thấp
+## 230649
+23064910 Từ hạt cải dầu rape khác
+23064920 Từ hạt cải dầu colza khác
+## 230660
+23066010 Dạng xay hoặc dạng viên
+23066090 Loại khác
+## 230690
+23069010 Từ mầm ngô
+23069090 Loại khác
+## 230910
+23091010 Chứa thịt
+23091090 Loại khác
+## 230990
+23099011 Loại dùng cho gia cầm
+23099012 Loại dùng cho lợn
+23099013 Loại dùng cho tôm
+23099014 Loại dùng cho động vật linh trưởng
+23099019 Loại khác
+23099020 Chất tổng hợp, chất bổ sung thức ăn hoặc phụ gia thức ăn
+23099090 Loại khác
+## 240110
+24011010 Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+24011020 Loại Virginia, trừ loại sấy bằng không khí nóng
+24011040 Loại Burley
+24011050 Loại khác, được sấy bằng không khí nóng
+24011090 Loại khác
+## 240120
+24012010 Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+24012020 Loại Virginia, trừ loại sấy bằng không khí nóng
+24012030 Loại Oriental
+24012040 Loại Burley
+24012050 Loại khác, được sấy bằng không khí nóng (flue-cured)
+24012090 Loại khác
+## 240130
+24013010 Cọng thuốc lá
+24013090 Loại khác
+## 240220
+24022010 Thuốc lá Bi-đi (Beedies) (SEN)
+24022020 Thuốc lá điếu, có chứa thành phần từ đinh hương (SEN)
+24022090 Loại khác
+## 240290
+24029010 Xì gà, xì gà xén hai đầu và xì gà nhỏ làm từ các nguyên liệu thay thế lá thuốc lá
+24029020 Thuốc lá điếu làm từ các nguyên liệu thay thế lá thuốc lá
+## 240311
+24031110 Đã được đóng gói để bán lẻ
+24031190 Loại khác
+## 240319
+24031911 Ang Hoon (SEN)
+24031919 Loại khác
+24031920 Lá thuốc lá đã chế biến khác để sản xuất thuốc lá điếu
+24031991 Ang Hoon (SEN)
+24031999 Loại khác
+## 240391
+24039110 Đã được đóng gói để bán lẻ
+24039190 Loại khác
+## 240399
+24039910 Chiết xuất và tinh chất lá thuốc lá
+24039930 Các nguyên liệu thay thế lá thuốc lá đã chế biến
+24039940 Thuốc lá bột để hít, ngậm, khô hoặc không khô (SEN)
+24039950 Thuốc lá dạng nhai và dạng ngậm (sucking)
+24039990 Loại khác
+## 240412
+24041210 Dạng lỏng hoặc gel dùng cho thuốc lá điện tử (SEN)
+24041290 Loại khác
+## 240419
+24041910 Chứa các nguyên liệu thay thế lá thuốc lá
+24041920 Chứa các nguyên liệu thay thế nicotin
+## 240491
+24049110 Kẹo cao su có nicotin (SEN)
+24049190 Loại khác
+## 240492
+24049210 Miếng dán nicotin (SEN)
+24049290 Loại khác
+## 250100
+25010010 Muối thực phẩm
+25010020 Muối mỏ chưa chế biến
+25010050 Nước biển
+25010091 Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt (SEN)
+25010093 Có hàm lượng natri clorua từ 97% trở lên, tính theo hàm lượng khô (SEN)
+25010099 Loại khác
+## 250840
+25084010 Đất hồ (đất tẩy màu)
+25084090 Loại khác
+## 251010
+25101010 Apatít (apatite)
+25101090 Loại khác
+## 251020
+25102010 Apatít (apatite)
+25102090 Loại khác
+## 251512
+25151210 Dạng khối (SEN)
+25151220 Dạng tấm (SEN)
+## 251612
+25161210 Dạng khối (SEN)
+25161220 Dạng tấm (SEN)
+## 251620
+25162010 Thô hoặc đã đẽo thô
+25162020 Mới chỉ cắt, bằng cưa hoặc cách khác, thành khối hoặc tấm hình chữ nhật (kể cả hình vuông)
+## 251990
+25199010 Magiê ôxít nấu chảy; magiê ôxít nung trơ (thiêu kết)
+25199090 Loại khác
+## 252020
+25202010 Loại phù hợp dùng trong nha khoa
+25202090 Loại khác
+## 252310
+25231010 Loại dùng để sản xuất xi măng trắng
+25231090 Loại khác
+## 252329
+25232910 Xi măng màu
+25232990 Loại khác
+## 252620
+25262010 Bột talc
+25262090 Loại khác
+## 252910
+25291010 Potash tràng thạch; soda tràng thạch(SEN)
+25291090 Loại khác
+## 253020
+25302010 Kiezerit
+25302020 Epsomite (magiê sulphat tự nhiên)
+## 253090
+25309010 Cát zircon cỡ hạt micron (zircon silicat) loại dùng làm chất cản quang
+25309090 Loại khác
+## 260111
+26011110 Hematite và tinh quặng hematite(SEN)
+26011190 Loại khác
+## 260112
+26011210 Hematite và tinh quặng hematite(SEN)
+26011290 Loại khác
+## 261400
+26140010 Quặng inmenit và tinh quặng inmenit(SEN)
+26140090 Loại khác
+## 262099
+26209910 Xỉ và phần chưa cháy hết (hardhead) của thiếc(SEN)
+26209990 Loại khác
+## 262190
+26219010 Các muối kali thô thu được từ cặn mật củ cải đường trong công nghiệp sản xuất đường (SEN)
+26219090 Loại khác
+## 270112
+27011210 Than để luyện cốc (SEN)
+27011290 Loại khác
+## 270300
+27030010 Than bùn, đã hoặc chưa ép thành kiện, nhưng chưa đóng bánh
+27030020 Than bùn đã đóng bánh
+## 270400
+27040010 Than cốc và than nửa cốc luyện từ than đá
+27040020 Than cốc và than nửa cốc luyện từ than non hoặc than bùn
+27040030 Muội bình chưng than đá
+## 270799
+27079910 Nguyên liệu để sản xuất than đen(SEN)
+27079990 Loại khác
+## 270900
+27090010 Dầu mỏ thô
+27090020 Condensate
+27090090 Loại khác
+## 271012
+27101211 RON 97 và cao hơn
+27101212 RON 90 và cao hơn nhưng dưới RON 97
+27101213 RON khác
+27101221 Chưa pha chế
+27101222 Pha chế với ethanol
+27101223 Loại khác
+27101224 Chưa pha chế
+27101225 Pha chế với ethanol
+27101226 Loại khác
+27101227 Chưa pha chế
+27101228 Pha chế với ethanol
+27101229 Loại khác
+27101231 Octane 100 và cao hơn(SEN)
+27101239 Loại khác (SEN)
+27101240 Tetrapropylene
+27101250 Dung môi trắng (white spirit)(SEN)
+27101260 Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng
+27101270 Dung môi nhẹ khác (SEN)
+27101280 Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ
+27101291 Alpha olefins
+27101292 Loại khác, spirit dầu mỏ(1), có độ chớp cháy dưới 23oC
+27101299 Loại khác
+## 271019
+27101920 Dầu thô đã tách phần nhẹ
+27101930 Nguyên liệu để sản xuất than đen(SEN)
+27101941 Dầu khoáng đã tinh chế để sản xuất dầu bôi trơn (SEN)
+27101942 Dầu bôi trơn cho động cơ máy bay
+27101944 Mỡ bôi trơn
+27101945 Dầu bôi trơn cho nguyên liệu dệt(SEN)
+27101946 Dầu bôi trơn khác
+27101950 Dầu dùng trong bộ hãm thủy lực (dầu phanh)
+27101960 Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và dầu dùng cho bộ phận ngắt mạch
+27101971 Nhiên liệu diesel cho ô tô
+27101972 Nhiên liệu diesel khác
+27101979 Dầu nhiên liệu
+27101981 Nhiên liệu động cơ máy bay (nhiên liệu phản lực) có độ chớp cháy từ 23oC trở lên
+27101982 Nhiên liệu động cơ máy bay (nhiên liệu phản lực) có độ chớp cháy dưới 23oC
+27101983 Các kerosine khác
+27101989 Dầu trung khác và các chế phẩm (SEN)
+27101990 Loại khác
+## 271114
+27111410 Etylen
+27111490 Loại khác
+## 271121
+27112110 Loại sử dụng làm nhiên liệu động cơ(SEN)
+27112190 Loại khác
+## 271290
+27129010 Sáp parafin
+27129090 Loại khác
+## 271500
+27150010 Chất phủ hắc ín polyurethan (SEN)
+27150090 Loại khác
+## 280300
+28030020 Muội axetylen
+28030041 Loại sử dụng để sản xuất cao su (SEN)
+28030049 Loại khác
+28030090 Loại khác
+## 280700
+28070010 Axit sulphuric chứa H2SO4 trên 80% tính theo trọng lượng
+28070090 Loại khác
+## 280920
+28092031 Axit hypophosphoric (SEN)
+28092032 Axit phosphoric (SEN)
+28092039 Loại khác (SEN)
+28092091 Axit hypophosphoric
+28092092 Axit phosphoric
+28092099 Loại khác
+## 281000
+28100010 Oxit bo
+28100020 Axit boric
+## 281119
+28111910 Axit arsenic
+28111920 Axit aminosulphonic (axit sulphamic)
+28111990 Loại khác
+## 281122
+28112210 Dạng bột
+28112290 Loại khác
+## 281129
+28112910 Diarsenic pentaoxit
+28112920 Dioxit lưu huỳnh
+28112990 Loại khác
+## 281700
+28170010 Kẽm oxit
+28170020 Kẽm peroxit
+## 282720
+28272010 Chứa từ 73% đến 80% tính theo trọng lượng
+28272090 Loại khác
+## 282739
+28273910 Của bari hoặc của coban
+28273920 Của sắt
+28273930 Của kẽm
+28273990 Loại khác
+## 282890
+28289010 Natri hypoclorit
+28289090 Loại khác
+## 282990
+28299010 Natri perclorat
+28299090 Loại khác
+## 283090
+28309010 Sulphua cađimi hoặc sulphua kẽm
+28309090 Loại khác
+## 283322
+28332210 Loại thương phẩm (SEN)
+28332290 Loại khác
+## 283329
+28332920 Chì sulphat tribasic
+28332930 Của crôm
+28332940 Của kẽm
+28332990 Loại khác
+## 283429
+28342910 Của bismut
+28342990 Loại khác
+## 283525
+28352510 Loại dùng làm thức ăn chăn nuôi (SEN)
+28352590 Loại khác
+## 283529
+28352910 Của trinatri
+28352990 Loại khác
+## 283531
+28353110 Loại dùng cho thực phẩm (SEN)
+28353190 Loại khác
+## 283539
+28353910 Tetranatri pyrophosphat
+28353990 Loại khác
+## 283650
+28365010 Loại dùng cho thực phẩm hoặc dược phẩm (SEN)
+28365090 Loại khác
+## 283699
+28369910 Amoni carbonat thương phẩm
+28369920 Chì carbonat
+28369990 Loại khác
+## 283919
+28391920 Natri orthosilicat; natri pyrosilicat
+28391990 Loại khác
+## 284290
+28429010 Natri arsenit
+28429020 Muối của đồng hoặc crom
+28429030 Fulminat, xyanat và thioxyanat khác
+28429090 Loại khác
+## 284410
+28441010 Urani tự nhiên và các hợp chất của nó
+28441090 Loại khác
+## 284420
+28442010 Urani đã làm giàu thành U 235 và hợp chất của nó; plutoni và hợp chất của nó
+28442090 Loại khác
+## 284430
+28443010 Urani đã làm giàu thành U 235 và hợp chất của nó; thori và hợp chất của nó
+28443090 Loại khác
+## 284700
+28470010 Dạng lỏng
+28470090 Loại khác
+## 285210
+28521010 Thủy ngân sulphat
+28521020 Các hợp chất của thủy ngân được dùng như chất phát quang
+28521090 Loại khác
+## 285290
+28529010 Thủy ngân tanat
+28529020 Thủy ngân sulphua; thủy ngân polysulphua; thủy ngân polyphosphat; thủy ngân carbua; hợp chất thủy ngân dị vòng thuộc 2934.99.90; dẫn xuất của pepton thủy ngân; các dẫn xuất protein khác của thủy ngân
+28529090 Loại khác
+## 285390
+28539010 Nước khử khoáng
+28539090 Loại khác
+## 290129
+29012910 Axetylen
+29012920 Hexen và các đồng phân của nó
+29012990 Loại khác
+## 290290
+29029010 Dodecylbenzen
+29029020 Các loại alkylbenzen khác
+29029090 Loại khác
+## 290311
+29031110 Clorometan (clorua metyl)
+29031190 Loại khác
+## 290319
+29031920 1,1,1-Tricloroetan (metyl cloroform)
+29031990 Loại khác
+## 290420
+29042010 Trinitrotoluen
+29042090 Loại khác
+## 290729
+29072910 Rượu-phenol
+29072990 Loại khác
+## 291249
+29124910 Aldehyt - rượu khác
+29124990 Loại khác
+## 291429
+29142910 Long não
+29142990 Loại khác
+## 291529
+29152910 Natri axetat; các coban axetat
+29152990 Loại khác
+## 291539
+29153910 Isobutyl axetat
+29153920 2- Ethoxyetyl axetat
+29153990 Loại khác
+## 291570
+29157010 Axit palmitic, muối và este của nó
+29157020 Axit stearic
+29157030 Muối và este của axit stearic
+## 291590
+29159020 Axit lauric, axit myristic, muối và este của chúng
+29159030 Axit caprylic, muối và este của nó
+29159040 Axit capric, muối và este của nó
+29159090 Loại khác
+## 291614
+29161410 Metyl metacrylat
+29161490 Loại khác
+## 291632
+29163210 Benzoyl peroxit
+29163220 Benzoyl clorua
+## 291639
+29163910 Axit axetic 2,4- Diclorophenyl và muối và este của nó
+29163920 Este của axit phenylaxetic
+29163990 Loại khác
+## 291712
+29171210 Dioctyl adipat
+29171290 Loại khác
+## 291734
+29173410 Dibutyl orthophthalates
+29173490 Loại khác
+## 291739
+29173910 Trioctyltrimellitate
+29173920 Các hợp chất phthalic khác của loại được sử dụng như chất hóa dẻo và este của anhydrit phthalic (SEN)
+29173990 Loại khác
+## 291815
+29181510 Canxi citrat
+29181590 Loại khác
+## 291829
+29182910 Este sulphonic alkyl của phenol
+29182990 Loại khác
+## 292219
+29221910 Ethambutol và muối của nó, este và các dẫn xuất khác
+29221920 Rượu n-butyl D-2-Amino (D-2-Amino-n-Butyl-alcohol)
+29221990 Loại khác
+## 292242
+29224210 Axit glutamic
+29224220 Muối natri của axit glutamic (MSG)
+29224290 Muối khác
+## 292250
+29225010 p-Aminosalicylic axit và muối, este và các dẫn xuất khác của nó
+29225090 Loại khác
+## 292320
+29232011 Từ thực vật
+29232019 Loại khác
+29232090 Loại khác
+## 292412
+29241210 Fluoroacetamide (ISO) và phosphamidon (ISO)
+29241220 Monocrotophos (ISO)
+## 292419
+29241910 Carisoprodol
+29241990 Loại khác
+## 292421
+29242110 4- Ethoxyphenylurea (dulcin)
+29242120 Diuron và monuron
+29242190 Loại khác
+## 292429
+29242910 Aspartame
+29242920 Butylphenylmethyl carbamate; methyl isopropyl phenyl carbamate
+29242930 Acetaminophen (paracetamol); salicylamide; ethoxybenzamide
+29242990 Loại khác
+## 292700
+29270010 Azodicarbonamide
+29270090 Loại khác
+## 292800
+29280010 Linuron
+29280090 Loại khác
+## 292910
+29291010 Diphenylmetan diisoxyanat (MDI)
+29291020 Toluen diisoxyanat
+29291090 Loại khác
+## 292990
+29299010 Natri xyclamat
+29299020 Các xyclamat khác
+29299090 Loại khác
+## 293090
+29309010 Dithiocarbonates
+29309090 Loại khác
+## 293110
+29311010 Chì tetrametyl
+29311020 Chì tetraetyl
+## 293149
+29314910 N-(phosphonomethyl) glycine
+29314920 Muối của N-(phosphonomethyl) glycine
+29314990 Loại khác
+## 293159
+29315910 Ethephon
+29315990 Loại khác
+## 293190
+29319041 Dạng lỏng
+29319049 Loại khác
+29319050 Dimethyltin dichloride
+29319090 Loại khác
+## 293220
+29322010 Coumarin (1,2-Benzopyrone), methylcoumarins và ethylcoumarins
+29322090 Loại khác
+## 293339
+29333910 Clopheniramin và isoniazid
+29333930 Muối paraquat
+29333990 Loại khác
+## 293349
+29334910 Dextromethorphan
+29334990 Loại khác
+## 293359
+29335910 Diazinon
+29335990 Loại khác
+## 293399
+29339910 Mebendazole và parbendazole
+29339990 Loại khác
+## 293499
+29349910 Các axit nucleic và muối của chúng
+29349920 Sultones; sultams; diltiazem
+29349930 Axit 6-Aminopenicillanic
+29349940 3-Azido-3-deoxythymidine
+29349950 Oxadiazon, với độ tinh khiết tối thiểu là 94%
+29349990 Loại khác
+## 293790
+29379010 Hợp chất amino chức oxy
+29379020 Epinephrine; các dẫn xuất của amino - axit
+29379090 Loại khác
+## 293911
+29391110 Cao thuốc phiện và muối của chúng
+29391190 Loại khác
+## 293920
+29392010 Quinine và các muối của nó
+29392090 Loại khác
+## 294110
+29411011 Không tiệt trùng (SEN)
+29411019 Loại khác (SEN)
+29411020 Ampicillin và muối của nó
+29411090 Loại khác
+## 300212
+30021210 Kháng huyết thanh; dung dịch đạm huyết thanh; bột hemoglobin
+30021290 Loại khác
+## 300241
+30024110 Vắc xin uốn ván
+30024120 Vắc xin ho gà, sởi, viêm màng não hoặc bại liệt
+30024190 Loại khác
+## 300310
+30031010 Chứa amoxicillin (INN) hoặc muối của nó
+30031020 Chứa ampicillin (INN) hoặc muối của nó
+30031090 Loại khác
+## 300410
+30041015 Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng
+30041016 Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)
+30041019 Loại khác
+30041020 Chứa các streptomycin hoặc các dẫn xuất của chúng
+## 300420
+30042010 Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ
+30042031 Dạng uống (*)
+30042032 Dạng mỡ
+30042039 Loại khác
+30042071 Dạng uống (*) hoặc dạng mỡ
+30042079 Loại khác
+30042091 Dạng uống (*) hoặc dạng mỡ
+30042099 Loại khác
+## 300432
+30043210 Chứa dexamethasone hoặc các dẫn xuất của chúng
+30043240 Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide
+30043290 Loại khác
+## 300449
+30044911 Dạng uống (*) hoặc tiêm
+30044919 Loại khác
+30044951 Dạng uống (*)
+30044959 Loại khác
+30044960 Chứa theophylline, dạng uống (*)
+30044970 Chứa atropine sulphate
+30044980 Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)
+30044990 Loại khác
+## 300450
+30045010 Loại phù hợp cho trẻ em, dạng xirô
+30045021 Dạng uống (*)
+30045029 Loại khác
+30045091 Chứa vitamin A, B hoặc C
+30045099 Loại khác
+## 300460
+30046010 Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác
+30046020 Chứa artesunate hoặc chloroquine
+30046090 Loại khác
+## 300490
+30049010 Miếng thẩm thấu qua da dùng điều trị bệnh ung thư hoặc bệnh tim
+30049020 Nước vô trùng đóng kín để xông, loại dược phẩm (SEN)
+30049030 Thuốc sát trùng (Antiseptics)
+30049041 Chứa procain hydroclorua
+30049049 Loại khác
+30049051 Chứa axit acetylsalicylic, paracetamol hoặc dipyrone (INN), dạng uống (*)
+30049053 Chứa diclofenac, dạng uống (*)
+30049054 Chứa piroxicam (INN) hoặc ibuprofen
+30049055 Loại khác, dạng dầu xoa bóp
+30049059 Loại khác
+30049062 Chứa primaquine
+30049064 Chứa artemisinin trừ các loại thuộc phân nhóm 3004.60.10
+30049065 Thuốc đông y từ thảo dược (SEN)
+30049069 Loại khác
+30049071 Chứa piperazine hoặc mebendazole (INN)
+30049072 Thuốc đông y từ thảo dược (SEN)
+30049079 Loại khác
+30049081 Chứa deferoxamine, dạng tiêm (SEN)
+30049082 Thuốc chống HIV/AIDS (SEN)
+30049089 Loại khác (SEN)
+30049091 Chứa natri clorua hoặc glucose, dạng truyền
+30049092 Chứa sorbitol hoặc salbutamol, dạng truyền
+30049093 Chứa sorbitol hoặc salbutamol, ở dạng khác
+30049094 Chứa cimetidine (INN) hoặc ranitidine (INN) trừ dạng tiêm
+30049095 Chứa phenobarbital, diazepam hoặc chlorpromazine, trừ dạng tiêm hoặc dạng truyền
+30049096 Thuốc nhỏ mũi có chứa naphazoline, xylometazoline hoặc oxymetazoline
+30049098 Thuốc đông y từ thảo dược (SEN)
+30049099 Loại khác
+## 300510
+30051010 Đã tráng phủ hoặc thấm tẩm dược chất
+30051090 Loại khác
+## 300590
+30059010 Băng (SEN)
+30059020 Gạc (SEN)
+30059090 Loại khác
+## 300610
+30061010 Chỉ tự tiêu vô trùng dùng cho nha khoa hoặc phẫu thuật; miếng chắn dính vô trùng dùng trong nha khoa hoặc phẫu thuật, có hoặc không tự tiêu
+30061090 Loại khác
+## 300630
+30063010 Bari sulphat, dạng uống (*)
+30063020 Các chất thử nguồn gốc vi sinh, loại phù hợp để chẩn đoán sinh học trong thú y
+30063030 Các chất thử chẩn đoán vi sinh khác
+30063090 Loại khác
+## 300640
+30064010 Xi măng hàn răng và các chất hàn răng khác
+30064020 Xi măng gắn xương
+## 300692
+30069210 Của thuốc điều trị ung thư, HIV/AIDS hoặc các bệnh khó chữa khác
+30069290 Loại khác
+## 310100
+31010010 Nguồn gốc chỉ từ thực vật
+31010092 Nguồn gốc từ động vật (trừ phân chim, dơi), đã qua xử lý hóa học
+31010099 Loại khác
+## 310311
+31031110 Loại dùng làm thức ăn chăn nuôi (SEN)
+31031190 Loại khác
+## 310319
+31031910 Loại dùng làm thức ăn chăn nuôi (SEN)
+31031990 Loại khác
+## 310390
+31039010 Phân phosphat đã nung (SEN)
+31039090 Loại khác
+## 310510
+31051010 Supephosphat và phân phosphat đã nung
+31051020 Phân khoáng hoặc phân hóa học có chứa hai hoặc ba trong số các nguyên tố cấu thành phân bón là nitơ, phospho và kali
+31051090 Loại khác
+## 320300
+32030010 Loại sử dụng trong công nghiệp thực phẩm hoặc đồ uống
+32030090 Loại khác
+## 320411
+32041110 Dạng thô (SEN)
+32041190 Loại khác
+## 320412
+32041210 Thuốc nhuộm axit
+32041290 Loại khác
+## 320417
+32041710 Thuốc màu hữu cơ tổng hợp ở dạng bột
+32041790 Loại khác
+## 320611
+32061110 Thuốc màu
+32061190 Loại khác
+## 320619
+32061910 Thuốc màu
+32061990 Loại khác
+## 320620
+32062010 Màu vàng crom, màu xanh crom và màu da cam molybdat hoặc màu đỏ molybdat từ hợp chất crom
+32062090 Loại khác
+## 320641
+32064110 Các chế phẩm
+32064190 Loại khác
+## 320642
+32064210 Các chế phẩm
+32064290 Loại khác
+## 320649
+32064911 Của các chất màu vô cơ từ hợp chất cađimi hoặc hexacyanoferrates (ferrocyanides và ferricyanides)
+32064919 Loại khác
+32064990 Loại khác
+## 320650
+32065010 Các chế phẩm
+32065090 Loại khác
+## 320720
+32072010 Frit men (phối liệu men) (SEN)
+32072090 Loại khác
+## 320810
+32081011 Dùng trong nha khoa (SEN)
+32081019 Loại khác
+32081020 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32081090 Loại khác
+## 320820
+32082040 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32082070 Vecni (kể cả dầu bóng), loại dùng trong nha khoa (SEN)
+32082090 Loại khác
+## 320890
+32089011 Dùng trong nha khoa (SEN)
+32089019 Loại khác
+32089021 Dùng trong nha khoa (SEN)
+32089029 Loại khác
+32089030 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32089090 Loại khác
+## 320910
+32091010 Vecni (kể cả dầu bóng)
+32091040 Sơn cho da thuộc (SEN)
+32091050 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32091090 Loại khác
+## 321000
+32100010 Vecni (kể cả dầu bóng)
+32100020 Màu keo
+32100030 Thuốc màu nước đã pha chế dùng để hoàn thiện da
+32100091 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32100099 Loại khác
+## 321290
+32129011 Bột nhão nhôm
+32129013 Loại chì trắng phân tán trong dầu
+32129014 Loại khác, để sản xuất sơn cho da thuộc
+32129019 Loại khác
+32129021 Loại sử dụng trong công nghiệp thực phẩm hoặc đồ uống
+32129022 Thuốc nhuộm khác
+32129029 Loại khác
+## 321511
+32151110 Mực in được làm khô bằng tia cực tím (SEN)
+32151120 Mực thể rắn ở các hình dạng được thiết kế để đưa vào các thiết bị thuộc phân nhóm 8443.31, 8443.32 hoặc 8443.39 (SEN)
+32151190 Loại khác
+## 321519
+32151910 Mực thể rắn ở các hình dạng được thiết kế để đưa vào các thiết bị thuộc phân nhóm 8443.31, 8443.32 hoặc 8443.39 (SEN)
+32151990 Loại khác
+## 321590
+32159010 Khối carbon loại dùng để sản xuất giấy than
+32159060 Mực vẽ hoặc mực viết
+32159070 Mực dùng cho máy nhân bản thuộc nhóm 84.72 (SEN)
+32159090 Loại khác
+## 330129
+33012920 Của cây đàn hương
+33012930 Của cây sả (citronella) (SEN)
+33012940 Của cây nhục đậu khấu (nutmeg)
+33012950 Của cây đinh hương (clove)
+33012960 Của cây hoắc hương (parchouli)
+33012970 Của cây sả chanh (lemon grass), quế (cinnamon), gừng (ginger), bạch đậu khấu (cardamom) hoặc thì là (fennel)
+33012990 Loại khác
+## 330190
+33019010 Nước cất và dung dịch nước của các loại tinh dầu phù hợp dùng để làm thuốc
+33019020 Nhựa dầu đã chiết
+33019090 Loại khác
+## 330210
+33021010 Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng lỏng
+33021020 Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng khác
+33021030 Loại khác, không chứa cồn
+33021090 Loại khác
+## 330499
+33049920 Chế phẩm ngăn ngừa mụn trứng cá
+33049930 Kem và dung dịch (lotion) bôi mặt hoặc bôi da khác
+33049990 Loại khác
+## 330510
+33051010 Có tính chất chống nấm
+33051090 Loại khác
+## 330610
+33061010 Bột và bột nhão dùng ngừa bệnh cho răng (SEN)
+33061090 Loại khác
+## 330741
+33074110 Bột thơm (hương) sử dụng trong nghi lễ tôn giáo
+33074190 Loại khác
+## 330749
+33074910 Các chế phẩm làm thơm phòng, có hoặc không có đặc tính khử trùng
+33074990 Loại khác
+## 330790
+33079010 Chế phẩm vệ sinh động vật
+33079030 Khăn và giấy, đã được thấm hoặc phủ nước hoa hoặc mỹ phẩm
+33079040 Nước hoa hoặc mỹ phẩm khác, kể cả chế phẩm làm rụng lông
+33079050 Dung dịch dùng cho kính áp tròng hoặc mắt nhân tạo (SEN)
+33079090 Loại khác
+## 340111
+34011140 Xà phòng đã tẩm thuốc kể cả xà phòng sát khuẩn
+34011150 Xà phòng khác kể cả xà phòng tắm
+34011161 Bằng sản phẩm không dệt được đóng gói để bán lẻ
+34011169 Loại khác
+34011170 Loại khác, bằng giấy, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy
+34011190 Loại khác
+## 340119
+34011910 Bằng nỉ hoặc sản phẩm không dệt, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy
+34011920 Bằng giấy, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy
+34011990 Loại khác
+## 340120
+34012020 Phôi xà phòng
+34012091 Dùng để tẩy mực, khử mực giấy tái chế
+34012099 Loại khác
+## 340231
+34023110 Alkylbenzen đã sulphonat hóa (SEN)
+34023190 Loại khác
+## 340239
+34023910 Cồn béo đã sulphat hóa (SEN)
+34023990 Loại khác
+## 340242
+34024210 Hydroxyl-terminated polybutadiene
+34024290 Loại khác
+## 340249
+34024910 Loại thích hợp để sử dụng trong các chế phẩm chữa cháy
+34024990 Loại khác
+## 340250
+34025011 Chế phẩm hoạt động bề mặt
+34025012 Chế phẩm giặt, rửa hoặc chế phẩm làm sạch dạng anion, kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn
+34025019 Loại khác
+34025091 Chế phẩm hoạt động bề mặt
+34025092 Chế phẩm giặt, rửa hoặc chế phẩm làm sạch dạng anion, kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn
+34025099 Loại khác
+## 340290
+34029011 Tác nhân thấm ướt dạng anion
+34029012 Chế phẩm giặt, rửa hoặc chế phẩm làm sạch dạng anion, kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn
+34029013 Chế phẩm giặt, rửa hoặc chế phẩm làm sạch khác, kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn
+34029014 Chế phẩm hoạt động bề mặt dạng anion khác
+34029019 Loại khác
+34029091 Tác nhân thấm ướt dạng anion
+34029092 Chế phẩm giặt, rửa hoặc chế phẩm làm sạch dạng anion, kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn
+34029093 Chế phẩm giặt, rửa hoặc chế phẩm làm sạch khác, kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn
+34029094 Chế phẩm hoạt động bề mặt dạng anion khác
+34029099 Loại khác
+## 340311
+34031111 Chế phẩm dầu bôi trơn
+34031119 Loại khác
+34031190 Loại khác
+## 340319
+34031911 Chế phẩm dùng cho động cơ của phương tiện bay
+34031912 Chế phẩm khác chứa dầu silicon
+34031919 Loại khác
+34031990 Loại khác
+## 340391
+34039111 Chế phẩm chứa dầu silicon
+34039119 Loại khác
+34039190 Loại khác
+## 340399
+34039911 Chế phẩm dùng cho động cơ của phương tiện bay
+34039912 Chế phẩm khác chứa dầu silicon
+34039919 Loại khác
+34039990 Loại khác
+## 340490
+34049010 Của than non đã biến đổi hóa học
+34049090 Loại khác
+## 340590
+34059010 Chất đánh bóng kim loại
+34059090 Loại khác
+## 340700
+34070010 Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em
+34070020 Các chế phẩm được coi như "sáp dùng trong nha khoa" hoặc như "hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự
+34070030 Chế phẩm khác dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)
+## 350190
+35019010 Các muối của casein và các dẫn xuất casein khác
+35019020 Keo casein
+## 350300
+35030041 Dạng bột có độ trương nở từ A-250 hoặc B-230 trở lên theo hệ thống thang đo Bloom (SEN)
+35030049 Loại khác
+35030050 Loại điều chế từ bong bóng cá (Isinglass)
+35030061 Các loại keo có nguồn gốc từ cá
+35030069 Loại khác
+## 350510
+35051010 Dextrin; tinh bột tan hoặc tinh bột đã rang
+35051090 Loại khác
+## 350691
+35069110 Chất kết dính dạng free-film trong suốt quang học và chất kết dính dạng lỏng có thể đóng rắn trong suốt quang học chỉ được sử dụng hoặc được sử dụng chủ yếu để sản xuất màn hình dẹt hoặc màn hình cảm ứng (SEN)
+35069190 Loại khác
+## 360490
+36049020 Pháo hoa nhỏ và kíp nổ dùng làm đồ chơi
+36049040 Pháo hiệu (SEN)
+36049050 Pháo thăng thiên (SEN)
+36049090 Loại khác
+## 360690
+36069010 Nhiên liệu rắn hoặc bán rắn, cồn rắn và các nhiên liệu được điều chế tương tự
+36069020 Đá lửa dùng cho bật lửa
+36069030 Hợp kim xeri-sắt và các hợp kim tự cháy khác ở tất cả các dạng
+36069090 Loại khác
+## 370191
+37019110 Loại phù hợp dùng cho công nghiệp in
+37019190 Loại khác
+## 370199
+37019910 Loại phù hợp dùng cho công nghiệp in
+37019990 Loại khác
+## 370242
+37024210 Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+37024290 Loại khác
+## 370252
+37025220 Loại phù hợp dùng cho điện ảnh
+37025290 Loại khác
+## 370254
+37025440 Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+37025490 Loại khác
+## 370255
+37025520 Loại phù hợp dùng cho điện ảnh
+37025550 Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+37025590 Loại khác
+## 370256
+37025620 Loại phù hợp dùng cho điện ảnh
+37025690 Loại khác
+## 370296
+37029610 Loại phù hợp dùng cho điện ảnh
+37029690 Loại khác
+## 370297
+37029710 Loại phù hợp dùng cho điện ảnh
+37029790 Loại khác
+## 370298
+37029810 Loại phù hợp dùng cho điện ảnh
+37029830 Loại khác, chiều dài từ 120 m trở lên
+37029890 Loại khác
+## 370310
+37031010 Chiều rộng không quá 1.000 mm
+37031090 Loại khác
+## 370400
+37040010 Tấm hoặc phim dùng cho chụp X quang
+37040090 Loại khác
+## 370500
+37050010 Dùng cho chụp X quang
+37050020 Vi phim (microfilm)
+37050030 Dùng để tái tạo bản in offset
+37050090 Loại khác
+## 370610
+37061010 Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học (SEN)
+37061030 Phim tài liệu khác
+37061040 Loại khác, chỉ có duy nhất rãnh tiếng
+37061090 Loại khác
+## 370690
+37069010 Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học (SEN)
+37069030 Phim tài liệu khác
+37069040 Loại khác, chỉ có duy nhất rãnh tiếng
+37069090 Loại khác
+## 370790
+37079010 Vật liệu phát sáng
+37079090 Loại khác
+## 380210
+38021010 Từ than gáo dừa (SEN)
+38021090 Loại khác
+## 380290
+38029010 Bauxit hoạt tính
+38029020 Đất sét hoạt tính hoặc đất hoạt tính
+38029090 Loại khác
+## 380400
+38040010 Dung dịch kiềm sulphit cô đặc
+38040020 Chất kết dính calcium lignin sulphonates (Ca2LS) được dùng trong sản xuất gạch chịu lửa
+38040090 Loại khác
+## 380630
+38063010 Dạng khối
+38063090 Loại khác
+## 380690
+38069010 Gôm nấu chảy lại ở dạng khối
+38069090 Loại khác
+## 380852
+38085210 Thuốc bảo quản gỗ, là chế phẩm chứa chất trừ côn trùng hoặc trừ nấm, trừ chất phủ bề mặt
+38085220 Thuốc trừ nấm và thuốc trừ côn trùng dạng bình xịt
+38085290 Loại khác
+## 380859
+38085911 Dạng bình xịt
+38085919 Loại khác
+38085921 Dạng bình xịt
+38085929 Loại khác
+38085931 Dạng bình xịt
+38085939 Loại khác
+38085940 Thuốc chống nảy mầm
+38085950 Thuốc điều hòa sinh trưởng cây trồng
+38085960 Thuốc khử trùng (Disinfectants)
+38085991 Thuốc bảo quản gỗ, là chế phẩm chứa chất trừ côn trùng hoặc trừ nấm, trừ chất phủ bề mặt
+38085999 Loại khác
+## 380861
+38086110 Hương vòng chống muỗi
+38086120 Tấm thuốc diệt muỗi (SEN)
+38086130 Dạng bình xịt
+38086140 Loại khác, dạng lỏng
+38086150 Loại khác, có chức năng khử mùi
+38086190 Loại khác
+## 380862
+38086210 Bột dùng làm hương vòng chống muỗi
+38086220 Hương vòng chống muỗi
+38086230 Tấm thuốc diệt muỗi (SEN)
+38086240 Dạng bình xịt
+38086250 Loại khác, dạng lỏng
+38086290 Loại khác
+## 380869
+38086910 Bột dùng làm hương vòng chống muỗi
+38086990 Loại khác
+## 380891
+38089110 Các chế phẩm trung gian chứa 2-(methylpropyl-phenol methylcarbamate)
+38089120 Loại khác, dạng bột dùng làm hương vòng chống muỗi
+38089130 Dạng bình xịt
+38089140 Hương vòng chống muỗi
+38089150 Tấm thuốc diệt muỗi (SEN)
+38089191 Có chức năng khử mùi (SEN)
+38089199 Loại khác
+## 380892
+38089211 Với hàm lượng validamycin không quá 3% tính theo khối lượng tịnh
+38089219 Loại khác
+38089290 Loại khác
+## 380893
+38089311 Dạng bình xịt
+38089319 Loại khác
+38089320 Thuốc chống nảy mầm
+38089330 Thuốc điều hòa sinh trưởng cây trồng
+## 380894
+38089410 Có chứa hỗn hợp các axit hắc ín than đá và các chất kiềm
+38089420 Loại khác, dạng bình xịt
+38089490 Loại khác
+## 380899
+38089910 Thuốc bảo quản gỗ, chứa chất diệt côn trùng hoặc trừ nấm
+38089990 Loại khác
+## 380991
+38099110 Tác nhân làm mềm (softening agents)
+38099190 Loại khác
+## 381121
+38112110 Đã đóng gói để bán lẻ
+38112190 Loại khác
+## 381190
+38119010 Chế phẩm chống gỉ hoặc chống ăn mòn
+38119090 Loại khác
+## 381600
+38160010 Xi măng chịu lửa
+38160020 Hỗn hợp dolomite ramming
+38160090 Loại khác
+## 382100
+38210010 Môi trường nuôi cấy đã điều chế để phát triển các vi sinh vật
+38210090 Loại khác
+## 382290
+38229010 Dải và băng chỉ thị màu dùng cho nồi hấp khử trùng (SEN)
+38229090 Loại khác
+## 382319
+38231911 Dầu axit dừa (SEN)
+38231919 Loại khác (SEN)
+38231920 Axit béo chưng cất từ cọ (SEN)
+38231930 Axit béo chưng cất từ nhân hạt cọ (SEN)
+38231990 Loại khác
+## 382370
+38237010 Dạng sáp
+38237090 Loại khác
+## 382499
+38249910 Các chất tẩy mực, chất sửa giấy nến (stencil correctors), chất lỏng dùng để xóa và các băng để xóa khác (trừ những hàng hóa thuộc nhóm 96.12), đã đóng gói để bán lẻ
+38249930 Bột nhão để sao in với thành phần cơ bản là gelatin, ở dạng rời hoặc dùng ngay (ví dụ, bồi trên giấy hoặc trên vật liệu dệt)
+38249940 Hỗn hợp dung môi vô cơ (SEN)
+38249950 Dầu acetone (SEN)
+38249960 Các chế phẩm hóa chất có chứa bột ngọt (monosodium glutamate)
+38249970 Các chế phẩm hóa chất khác, dùng trong chế biến thực phẩm
+38249991 Naphthenic axit, muối không tan trong nước của chúng và este của chúng
+38249999 Loại khác
+## 382530
+38253010 Bơm tiêm, kim tiêm, ống dẫn lưu và các loại tương tự
+38253090 Loại khác
+## 382600
+38260010 Este metyl từ dừa (CME) (SEN)
+38260021 Có hàm lượng este metyl từ 96,5% trở lên nhưng không quá 98% (SEN)
+38260022 Có hàm lượng este metyl trên 98% (SEN)
+38260029 Loại khác (SEN)
+38260030 Loại khác
+38260090 Loại khác
+## 382711
+38271110 Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch, có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum (SEN)
+38271190 Loại khác
+## 382739
+38273910 Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch, có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum (SEN)
+38273990 Loại khác
+## 382761
+38276110 Chứa hỗn hợp của HFC-125, HFC-143a và HFC-134a (HFC-404a)
+38276120 Chứa hỗn hợp của HFC-125 và HFC-143a (HFC-507a)
+38276190 Loại khác
+## 382763
+38276310 Chứa hỗn hợp của HFC-32 và HFC-125 (HFC-410a)
+38276390 Loại khác
+## 400110
+40011011 Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+40011019 Loại khác
+40011021 Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+40011029 Loại khác
+## 400121
+40012110 RSS hạng 1 (SEN)
+40012120 RSS hạng 2 (SEN)
+40012130 RSS hạng 3 (SEN)
+40012140 RSS hạng 4 (SEN)
+40012150 RSS hạng 5 (SEN)
+40012190 Loại khác
+## 400122
+40012210 TSNR 10 (SEN)
+40012220 TSNR 20 (SEN)
+40012230 TSNR L (SEN)
+40012240 TSNR CV (SEN)
+40012250 TSNR GP (SEN)
+40012260 TSNR 5 (SEN)
+40012290 Loại khác
+## 400129
+40012910 Cao su dạng tờ được làm khô bằng không khí(SEN)
+40012920 Crếp từ mủ cao su (SEN)
+40012930 Crếp làm đế giày (SEN)
+40012950 Crếp loại khác
+40012960 Cao su chế biến cao cấp
+40012970 Váng cao su
+40012980 Loại tận thu (trên cây, dưới đất hoặc loại đã xông khói) và phần thừa lại trên chén(SEN)
+40012994 Cao su tự nhiên đã khử protein (DPNR) (SEN)
+40012996 Loại khác
+40012999 Loại khác
+## 400130
+40013020 Dạng nguyên sinh
+40013090 Loại khác
+## 400219
+40021910 Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+40021990 Loại khác
+## 400220
+40022010 Dạng nguyên sinh
+40022090 Loại khác
+## 400231
+40023110 Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+40023190 Loại khác
+## 400239
+40023910 Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+40023990 Loại khác
+## 400249
+40024910 Dạng nguyên sinh
+40024990 Loại khác
+## 400259
+40025910 Dạng nguyên sinh
+40025990 Loại khác
+## 400260
+40026010 Dạng nguyên sinh
+40026090 Loại khác
+## 400270
+40027010 Dạng nguyên sinh
+40027090 Loại khác
+## 400280
+40028010 Hỗn hợp mủ cao su tự nhiên với mủ cao su tổng hợp
+40028090 Loại khác
+## 400299
+40029930 Cao su tự nhiên đã epoxy hóa (ENR)
+40029940 Loại khác, dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+40029990 Loại khác
+## 400510
+40051010 Của nhựa tự nhiên
+40051090 Loại khác
+## 400591
+40059110 Của nhựa tự nhiên
+40059190 Loại khác
+## 400599
+40059910 Dạng latex (dạng mủ cao su)
+40059920 Cao su tự nhiên được pha trộn với các chất trừ carbon hoặc silica
+40059990 Loại khác
+## 400690
+40069011 Các sản phẩm
+40069019 Loại khác
+40069090 Loại khác
+## 400811
+40081110 Chiều dày trên 5 mm, có một mặt được lót vải dệt
+40081120 Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường
+40081190 Loại khác
+## 400821
+40082110 Chiều dày trên 5 mm, có một mặt được lót vải dệt
+40082120 Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường
+40082130 Băng chắn nước (SEN)
+40082140 Tờ cao su dùng làm đế giày
+40082190 Loại khác
+## 400912
+40091210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+40091290 Loại khác
+## 400921
+40092110 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+40092190 Loại khác
+## 400922
+40092210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+40092290 Loại khác
+## 400931
+40093110 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+40093191 Ống dẫn nhiên liệu, ống dẫn nhiệt và ống dẫn nước, dùng cho xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+40093199 Loại khác
+## 400932
+40093210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+40093290 Loại khác
+## 400941
+40094110 Ống vòi cao su dùng cho bếp ga (SEN)
+40094190 Loại khác
+## 400942
+40094210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+40094220 Ống vòi cao su dùng cho bếp ga (SEN)
+40094290 Loại khác
+## 401120
+40112011 Có chiều rộng không quá 230 mm và lắp vành có đường kính không quá 16 inch (SEN)
+40112012 Có chiều rộng không quá 230 mm và lắp vành có đường kính trên 16 inch (SEN)
+40112013 Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)
+40112019 Loại khác
+40112090 Loại khác
+## 401180
+40118011 Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác
+40118019 Loại khác
+40118031 Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+40118039 Loại khác
+40118040 Lắp vành có đường kính trên 24 inch, loại khác
+## 401190
+40119010 Loại dùng cho xe thuộc Chương 87
+40119020 Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+40119090 Loại khác
+## 401212
+40121210 Chiều rộng không quá 450 mm
+40121290 Loại khác
+## 401219
+40121920 Loại dùng cho máy thuộc nhóm 84.27
+40121930 Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+40121941 Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp
+40121949 Loại khác
+40121990 Loại khác
+## 401220
+40122010 Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)
+40122021 Chiều rộng không quá 450 mm
+40122029 Loại khác
+40122030 Loại sử dụng cho phương tiện bay
+40122040 Loại dùng cho xe môtô
+40122050 Loại dùng cho xe đạp
+40122060 Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+40122071 Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp
+40122079 Loại khác
+40122080 Loại dùng cho máy thuộc nhóm 84.27
+40122091 Lốp trơn (SEN)
+40122099 Loại khác
+## 401290
+40129014 Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng không quá 450 mm
+40129017 Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng trên 450 mm
+40129019 Loại khác
+40129021 Chiều rộng không quá 450 mm
+40129022 Có chiều rộng trên 450 mm
+40129071 Chiều rộng không quá 450 mm (SEN)
+40129072 Có chiều rộng trên 450 mm (SEN)
+40129080 Lót vành
+40129090 Loại khác
+## 401310
+40131011 Dùng cho loại lốp có chiều rộng không quá 450 mm
+40131019 Dùng cho loại lốp có chiều rộng trên 450 mm
+40131021 Dùng cho loại lốp có chiều rộng không quá 450 mm
+40131029 Dùng cho loại lốp có chiều rộng trên 450 mm
+## 401390
+40139011 Dùng cho loại lốp có chiều rộng không quá 450 mm
+40139019 Dùng cho loại lốp có chiều rộng trên 450 mm
+40139020 Loại dùng cho xe môtô
+40139031 Dùng cho loại lốp có chiều rộng không quá 450 mm
+40139039 Dùng cho loại lốp có chiều rộng trên 450 mm
+40139040 Loại sử dụng cho phương tiện bay
+40139091 Dùng cho loại lốp có chiều rộng không quá 450 mm
+40139099 Dùng cho loại lốp có chiều rộng trên 450 mm
+## 401490
+40149010 Núm vú của bình cho trẻ em ăn và các loại tương tự
+40149040 Nút đậy dùng cho dược phẩm
+40149050 Bao ngón tay
+40149090 Loại khác
+## 401512
+40151210 Bằng cao su tự nhiên lưu hóa
+40151290 Bằng cao su lưu hóa khác
+## 401519
+40151910 Bằng cao su tự nhiên lưu hóa
+40151990 Bằng cao su lưu hóa khác
+## 401590
+40159010 Tạp dề chì để chống phóng xạ
+40159020 Bộ đồ của thợ lặn
+40159090 Loại khác
+## 401610
+40161010 Lót, đệm cho các sản phẩm may mặc hoặc cho các đồ phụ trợ của quần áo
+40161020 Tấm, miếng ghép với nhau để lát nền và ốp tường
+40161090 Loại khác
+## 401691
+40169110 Tấm, đệm (mat)
+40169120 Dạng tấm rời để ghép
+40169190 Loại khác
+## 401692
+40169210 Đầu tẩy (eraser tips)
+40169290 Loại khác
+## 401693
+40169310 Loại dùng để cách điện cho các chân tụ điện (SEN)
+40169320 Miếng đệm và vành khung tròn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+40169390 Loại khác
+## 401699
+40169911 Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa
+40169912 Dùng cho xe thuộc nhóm 87.11
+40169913 Viền cao su quanh kính cửa, dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+40169915 Dùng cho xe thuộc nhóm 87.09, 87.13, 87.15 hoặc 87.16
+40169916 Chắn bùn xe đạp (SEN)
+40169917 Bộ phận của xe đạp (SEN)
+40169918 Phụ kiện khác của xe đạp (SEN)
+40169919 Loại khác
+40169920 Bộ phận và phụ kiện của dù xoay thuộc nhóm 88.04
+40169930 Dải cao su
+40169940 Tấm, miếng rời ghép với nhau để ốp tường
+40169951 Trục lăn cao su
+40169952 Cốt làm lốp (Tyre mould bladders)(SEN)
+40169953 Nắp chụp cách điện
+40169954 Vòng và vỏ bọc bằng cao su sử dụng cho hệ thống dây điện của ô tô
+40169959 Loại khác
+40169960 Lót đường ray (rail pad)
+40169970 Loại chịu lực xây dựng kể cả lực cầu
+40169991 Khăn trải bàn
+40169999 Loại khác
+## 401700
+40170010 Tấm, miếng ghép với nhau để lát nền và ốp tường
+40170020 Các sản phẩm bằng cao su cứng khác
+40170090 Loại khác
+## 410190
+41019010 Đã được chuẩn bị để thuộc
+41019090 Loại khác
+## 410411
+41041110 Của động vật họ trâu bò, đã thuộc thực vật
+41041190 Loại khác
+## 420211
+42021110 Vali hoặc túi, cặp có kích thước tối đa 56cm x 45cm x 25cm
+42021190 Loại khác
+## 420212
+42021211 Mặt ngoài bằng sợi lưu hóa(SEN)
+42021219 Loại khác (SEN)
+42021291 Mặt ngoài bằng sợi lưu hóa
+42021299 Loại khác
+## 420219
+42021920 Mặt ngoài bằng bìa
+42021990 Loại khác
+## 420222
+42022210 Mặt ngoài bằng tấm plastic
+42022220 Mặt ngoài bằng vật liệu dệt
+## 420291
+42029111 Túi đựng đồ Bowling
+42029119 Loại khác
+42029190 Loại khác
+## 420292
+42029210 Túi đựng đồ vệ sinh cá nhân, bằng tấm plastic
+42029220 Túi đựng đồ Bowling
+42029290 Loại khác
+## 420299
+42029910 Mặt ngoài bằng sợi lưu hóa hoặc bìa
+42029990 Loại khác
+## 420321
+42032110 Găng tay bóng chày và găng tay bóng mềm
+42032190 Loại khác
+## 420329
+42032910 Găng tay bảo hộ lao động
+42032990 Loại khác
+## 420500
+42050010 Dây buộc giày; tấm lót (mats)
+42050020 Dây đai an toàn và dây bảo vệ dùng trong công nghiệp
+42050030 Dây hoặc dây tết bằng da thuộc dùng cho đồ trang sức hoặc sản phẩm trang điểm cá nhân
+42050040 Sản phẩm khác dùng cho máy móc hoặc thiết bị cơ khí hoặc mục đích kỹ thuật khác
+42050090 Loại khác
+## 430390
+43039020 Sản phẩm dùng cho mục đích công nghiệp
+43039090 Loại khác
+## 430400
+43040010 Da lông nhân tạo
+43040020 Sản phẩm dùng cho mục đích công nghiệp
+43040091 Túi thể thao
+43040099 Loại khác
+## 440220
+44022010 Than gáo dừa
+44022090 Loại khác
+## 440311
+44031110 Cột sào, khúc gỗ xẻ và gỗ lạng
+44031190 Loại khác
+## 440312
+44031210 Cột sào, khúc gỗ xẻ và gỗ lạng
+44031290 Loại khác
+## 440321
+44032110 Cột sào, khúc gỗ xẻ và gỗ lạng
+44032190 Loại khác
+## 440322
+44032210 Cột sào, khúc gỗ xẻ và gỗ lạng
+44032290 Loại khác
+## 440323
+44032310 Cột sào, khúc gỗ xẻ và gỗ lạng
+44032390 Loại khác
+## 440324
+44032410 Cột sào, khúc gỗ xẻ và gỗ lạng
+44032490 Loại khác
+## 440325
+44032510 Cột sào, khúc gỗ xẻ và gỗ lạng
+44032590 Loại khác
+## 440326
+44032610 Cột sào, khúc gỗ xẻ và gỗ lạng
+44032690 Loại khác
+## 440341
+44034110 Cột sào, khúc gỗ xẻ và gỗ lạng
+44034190 Loại khác
+## 440342
+44034210 Cột sào, khúc gỗ xẻ và gỗ lạng
+44034290 Loại khác
+## 440349
+44034910 Cột sào, khúc gỗ xẻ và gỗ lạng
+44034990 Loại khác
+## 440391
+44039110 Cột sào, khúc gỗ xẻ và gỗ lạng
+44039190 Loại khác
+## 440393
+44039310 Cột sào, khúc gỗ xẻ và gỗ lạng
+44039390 Loại khác
+## 440394
+44039410 Cột sào, khúc gỗ xẻ và gỗ lạng
+44039490 Loại khác
+## 440395
+44039510 Cột sào, khúc gỗ xẻ và gỗ lạng
+44039590 Loại khác
+## 440396
+44039610 Cột sào, khúc gỗ xẻ và gỗ lạng
+44039690 Loại khác
+## 440397
+44039710 Cột sào, khúc gỗ xẻ và gỗ lạng
+44039790 Loại khác
+## 440398
+44039810 Cột sào, khúc gỗ xẻ và gỗ lạng
+44039890 Loại khác
+## 440399
+44039910 Cột sào, khúc gỗ xẻ và gỗ lạng
+44039990 Loại khác
+## 440420
+44042010 Nan gỗ (Chipwood)
+44042090 Loại khác
+## 440500
+44050010 Sợi gỗ
+44050020 Bột gỗ
+## 440711
+44071110 Đã xẻ dọc, chưa gia công thêm
+44071190 Loại khác
+## 440719
+44071910 Đã xẻ dọc, chưa gia công thêm
+44071990 Loại khác
+## 440721
+44072110 Đã bào, đã chà nhám hoặc nối đầu
+44072190 Loại khác
+## 440722
+44072210 Đã bào, đã chà nhám hoặc nối đầu
+44072290 Loại khác
+## 440723
+44072310 Đã xẻ dọc, chưa gia công thêm
+44072320 Đã bào, đã chà nhám hoặc nối đầu
+44072390 Loại khác
+## 440725
+44072512 Đã xẻ dọc, chưa gia công thêm
+44072513 Đã bào, đã chà nhám hoặc nối đầu
+44072519 Loại khác
+44072521 Đã bào, đã chà nhám hoặc nối đầu
+44072529 Loại khác
+## 440726
+44072620 Đã xẻ dọc, chưa gia công thêm
+44072630 Đã bào, đã chà nhám hoặc nối đầu
+44072690 Loại khác
+## 440727
+44072720 Đã xẻ dọc, chưa gia công thêm
+44072730 Đã bào, đã chà nhám hoặc nối đầu
+44072790 Loại khác
+## 440728
+44072810 Đã bào, đã chà nhám hoặc nối đầu
+44072890 Loại khác
+## 440729
+44072912 Đã xẻ dọc, chưa gia công thêm
+44072913 Đã bào, đã chà nhám hoặc nối đầu
+44072919 Loại khác
+44072922 Đã xẻ dọc, chưa gia công thêm
+44072923 Đã bào, đã chà nhám hoặc nối đầu
+44072929 Loại khác
+44072932 Đã xẻ dọc, chưa gia công thêm
+44072933 Đã bào, đã chà nhám hoặc nối đầu
+44072939 Loại khác
+44072942 Đã xẻ dọc, chưa gia công thêm
+44072943 Đã bào, đã chà nhám hoặc nối đầu
+44072949 Loại khác
+44072951 Đã bào, đã chà nhám hoặc nối đầu
+44072959 Loại khác
+44072972 Đã xẻ dọc, chưa gia công thêm
+44072973 Đã bào, đã chà nhám hoặc nối đầu
+44072979 Loại khác
+44072982 Đã xẻ dọc, chưa gia công thêm
+44072983 Đã bào, đã chà nhám hoặc nối đầu
+44072989 Loại khác
+44072991 Gỗ Jongkong (Dactylocladus spp.) và gỗ Merbau (Intsia spp.), đã bào, đã chà nhám hoặc nối đầu
+44072992 Gỗ Jongkong (Dactylocladus spp.) và gỗ Merbau (Intsia spp.), loại khác
+44072994 Gỗ Albizia (Paraserianthes falcataria), đã bào, đã chà nhám hoặc nối đầu
+44072995 Gỗ Albizia (Paraserianthes falcataria), loại khác
+44072996 Gỗ cao su (Hevea Brasiliensis), đã bào, đã chà nhám hoặc nối đầu
+44072997 Gỗ cao su (Hevea Brasiliensis), loại khác
+44072998 Loại khác, đã bào, đã chà nhám hoặc nối đầu
+44072999 Loại khác
+## 440791
+44079120 Đã xẻ dọc, chưa gia công thêm
+44079130 Đã bào, đã chà nhám hoặc nối đầu
+44079190 Loại khác
+## 440792
+44079210 Đã bào, đã chà nhám hoặc nối đầu
+44079290 Loại khác
+## 440793
+44079310 Đã bào, đã chà nhám hoặc nối đầu
+44079390 Loại khác
+## 440794
+44079410 Đã bào, đã chà nhám hoặc nối đầu
+44079490 Loại khác
+## 440795
+44079510 Đã bào, đã chà nhám hoặc nối đầu
+44079590 Loại khác
+## 440796
+44079610 Đã bào, đã chà nhám hoặc nối đầu
+44079690 Loại khác
+## 440797
+44079710 Đã bào, đã chà nhám hoặc nối đầu
+44079790 Loại khác
+## 440799
+44079910 Đã bào, đã chà nhám hoặc nối đầu
+44079990 Loại khác
+## 440810
+44081010 Thanh mỏng bằng gỗ tuyết tùng loại sử dụng để sản xuất bút chì (SEN); gỗ thông Radiata loại sử dụng để sản xuất ván ghép (blockboard)(SEN)
+44081030 Làm lớp mặt (face veneer sheets)
+44081090 Loại khác
+## 440839
+44083910 Thanh mỏng bằng gỗ Jelutong loại sử dụng để sản xuất bút chì (SEN)
+44083920 Làm lớp mặt (face veneer sheets)
+44083990 Loại khác
+## 440890
+44089010 Làm lớp mặt (face veneer sheets)
+44089090 Loại khác
+## 441241
+44124110 Với ít nhất một lớp ngoài bằng gỗ tếch
+44124190 Loại khác
+## 441291
+44129110 Với ít nhất một lớp ngoài bằng gỗ tếch
+44129190 Loại khác
+## 441600
+44160010 Tấm ván cong
+44160090 Loại khác
+## 441700
+44170010 Khuôn (phom) của giày hoặc ủng
+44170090 Loại khác
+## 441873
+44187310 Cho sàn khảm (mosaic floors)
+44187320 Loại khác, nhiều lớp từ tre
+44187390 Loại khác
+## 441881
+44188110 Hình khối (SEN)
+44188190 Loại khác
+## 442090
+44209010 Các đồ nội thất bằng gỗ không thuộc Chương 94
+44209020 Hộp và các vật chứa nhỏ khác dùng và thích hợp để mang trong túi (pocket), trong túi xách hoặc bên người
+44209090 Loại khác
+## 442191
+44219110 Lõi cuộn chỉ, ống sợi và suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự
+44219120 Thanh gỗ để làm diêm
+44219130 Que kẹo, que kem và thìa xúc kem
+44219140 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+44219150 Chuỗi hạt cầu nguyện
+44219160 Tăm
+44219170 Các loại que dùng để làm nhang (nén hương)(SEN)
+44219190 Loại khác
+## 442199
+44219910 Lõi cuộn chỉ, ống sợi và suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự
+44219920 Thanh gỗ để làm diêm
+44219930 Móc gỗ hoặc ghim gỗ dùng cho giày, dép
+44219940 Que kẹo, que kem và thìa xúc kem
+44219970 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+44219980 Tăm
+44219993 Chuỗi hạt cầu nguyện
+44219994 Chuỗi hạt khác
+44219995 Các loại que dùng để làm nhang (nén hương) (SEN)
+44219996 Lõi gỗ ghép (barecore) (SEN)
+44219999 Loại khác
+## 460192
+46019210 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+46019220 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+46019290 Loại khác
+## 460193
+46019310 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+46019320 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+46019390 Loại khác
+## 460194
+46019410 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+46019420 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+46019490 Loại khác
+## 460199
+46019910 Chiếu và thảm
+46019920 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+46019930 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+46019990 Loại khác
+## 460211
+46021110 Túi và vali du lịch
+46021120 Giỏ đựng chai
+46021190 Loại khác
+## 460212
+46021210 Túi và vali du lịch
+46021220 Giỏ đựng chai
+46021290 Loại khác
+## 460219
+46021910 Túi và vali du lịch
+46021920 Giỏ đựng chai
+46021990 Loại khác
+## 460290
+46029010 Túi và vali du lịch
+46029020 Giỏ đựng chai
+46029090 Loại khác
+## 470200
+47020010 Từ gỗ cây lá kim
+47020020 Từ gỗ cây không thuộc loài cây lá kim
+## 470693
+47069310 Bột giấy abaca (SEN)
+47069390 Loại khác
+## 480100
+48010011 Ở dạng cuộn, có chiều rộng trên 28 cm nhưng không quá 36 cm
+48010012 Ở dạng cuộn, loại khác
+48010013 Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+48010014 Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+48010021 Ở dạng cuộn, có chiều rộng trên 28 cm nhưng không quá 36 cm
+48010022 Ở dạng cuộn, loại khác
+48010023 Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+48010024 Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+## 480220
+48022010 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48022090 Loại khác
+## 480240
+48024010 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48024090 Loại khác
+## 480254
+48025411 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)
+48025419 Loại khác (SEN)
+48025421 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)
+48025429 Loại khác (SEN)
+48025430 Giấy làm nền sản xuất giấy tráng nhôm(SEN)
+48025440 Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp
+48025450 Giấy và bìa nhiều lớp(SEN)
+48025490 Loại khác
+## 480255
+48025521 Có chiều rộng không quá 15 cm (SEN)
+48025529 Loại khác (SEN)
+48025540 Giấy làm nền sản xuất giấy tráng nhôm(SEN)
+48025550 Giấy làm nền sản xuất giấy chống dính (SEN)
+48025561 Có chiều rộng không quá 15 cm
+48025569 Loại khác
+48025570 Giấy nhiều lớp(SEN)
+48025590 Loại khác
+## 480256
+48025621 Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)
+48025629 Loại khác (SEN)
+48025641 Có chiều rộng không quá 36 cm ở dạng tờ hình chữ nhật (kể cả hình vuông) và ở dạng không gấp
+48025649 Loại khác
+48025650 Giấy nhiều lớp(SEN)
+48025690 Loại khác
+## 480257
+48025721 Không có chiều nào trên 36 cm ở dạng không gấp
+48025729 Loại khác
+48025730 Giấy nhiều lớp(SEN)
+48025790 Loại khác
+## 480258
+48025821 Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)
+48025829 Loại khác (SEN)
+48025831 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48025839 Loại khác
+48025891 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+48025899 Loại khác
+## 480261
+48026131 Có chiều rộng không quá 15 cm (SEN)
+48026139 Loại khác (SEN)
+48026141 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)
+48026149 Loại khác (SEN)
+48026151 Có chiều rộng không quá 15 cm
+48026159 Loại khác
+48026160 Giấy nhiều lớp(SEN)
+48026191 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+48026199 Loại khác
+## 480262
+48026211 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)
+48026219 Loại khác (SEN)
+48026221 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)
+48026229 Loại khác (SEN)
+48026231 Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48026239 Loại khác
+48026291 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+48026299 Loại khác
+## 480269
+48026911 Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48026919 Loại khác
+48026991 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+48026999 Loại khác
+## 480300
+48030030 Tấm xenlulo hoặc màng xơ sợi xenlulo
+48030090 Loại khác
+## 480421
+48042110 Loại dùng làm bao xi măng (SEN)
+48042190 Loại khác
+## 480429
+48042910 Loại dùng làm bao xi măng (SEN)
+48042990 Loại khác
+## 480431
+48043110 Giấy kraft cách điện (SEN)
+48043130 Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+48043140 Giấy làm nền sản xuất giấy ráp (SEN)
+48043150 Loại dùng làm bao xi măng (SEN)
+48043190 Loại khác
+## 480439
+48043910 Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+48043920 Giấy và bìa dùng để làm bao bì thực phẩm (SEN)
+48043990 Loại khác
+## 480441
+48044110 Giấy kraft cách điện (SEN)
+48044190 Loại khác
+## 480442
+48044210 Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+48044290 Loại khác
+## 480449
+48044910 Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+48044990 Loại khác
+## 480451
+48045110 Giấy kraft cách điện (SEN)
+48045120 Bìa ép có định lượng từ 600g/m2 trở lên
+48045130 Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+48045190 Loại khác
+## 480452
+48045210 Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+48045290 Loại khác
+## 480459
+48045910 Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+48045990 Loại khác
+## 480519
+48051910 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+48051990 Loại khác
+## 480525
+48052510 Có định lượng dưới 225 g/m2
+48052590 Loại khác
+## 480530
+48053010 Giấy đã nhuộm màu dùng để bao quanh hộp diêm bằng gỗ(SEN)
+48053090 Loại khác
+## 480591
+48059110 Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng
+48059120 Loại dùng để sản xuất giấy vàng mã(SEN)
+48059190 Loại khác
+## 480592
+48059210 Giấy và bìa nhiều lớp(SEN)
+48059290 Loại khác
+## 480593
+48059310 Giấy và bìa nhiều lớp(SEN)
+48059320 Giấy thấm (SEN)
+48059390 Loại khác
+## 480890
+48089020 Đã làm chun hoặc làm nhăn
+48089030 Đã rập nổi
+48089090 Loại khác
+## 480990
+48099010 Giấy than và các loại giấy sao chép tương tự
+48099090 Loại khác
+## 481013
+48101310 Đã in, loại dùng cho máy ghi tự động, có chiều rộng từ 150 mm trở xuống(SEN)
+48101391 Có chiều rộng từ 150 mm trở xuống
+48101399 Loại khác
+## 481014
+48101410 Đã in, dùng cho máy ghi tự động, không có chiều nào trên 360 mm (SEN)
+48101491 Không có chiều nào trên 360 mm
+48101499 Loại khác
+## 481019
+48101910 Đã in, loại dùng cho máy ghi tự động, không có chiều nào trên 360 mm ở dạng không gấp(SEN)
+48101990 Loại khác
+## 481022
+48102210 Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)
+48102290 Loại khác
+## 481029
+48102910 Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)
+48102991 Dạng cuộn có chiều rộng không quá 150 mm, hoặc dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+48102999 Loại khác
+## 481031
+48103130 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+48103190 Loại khác
+## 481032
+48103230 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+48103290 Loại khác
+## 481039
+48103930 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+48103990 Loại khác
+## 481092
+48109240 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+48109290 Loại khác
+## 481099
+48109940 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+48109990 Loại khác
+## 481110
+48111020 Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48111090 Loại khác
+## 481141
+48114120 Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48114190 Loại khác
+## 481151
+48115131 Tấm phủ sàn
+48115139 Loại khác
+48115191 Tấm phủ sàn
+48115199 Loại khác
+## 481159
+48115920 Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng
+48115941 Tấm phủ sàn
+48115949 Loại khác
+48115991 Tấm phủ sàn
+48115999 Loại khác
+## 481160
+48116020 Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48116091 Tấm phủ sàn
+48116099 Loại khác
+## 481190
+48119041 Tấm phủ sàn
+48119042 Giấy tạo vân(SEN)
+48119049 Loại khác
+48119091 Tấm phủ sàn
+48119092 Giấy tạo vân(SEN)
+48119093 Loại khác, tấm xenlulo hoặc màng xơ sợi xenlulo
+48119099 Loại khác
+## 481320
+48132010 Giấy sáp ghép đầu lọc thuốc lá điếu (cigarette tipping paper) (SEN)
+48132021 Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)
+48132022 Giấy cuốn đầu lọc có độ xốp hơn 12 cm3 (min-1. cm-2) trong đơn vị thấm khí CORESTA (SEN)
+48132023 Giấy cuốn đầu lọc khác (SEN)
+48132029 Loại khác
+48132031 Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)
+48132032 Giấy cuốn đầu lọc (Plug wrap paper) (SEN)
+48132039 Loại khác
+## 481390
+48139011 Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)
+48139012 Giấy sáp ghép đầu lọc thuốc lá điếu (cigarette tipping paper) (SEN)
+48139019 Loại khác
+48139091 Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)
+48139099 Loại khác
+## 481420
+48142010 Có chiều rộng không quá 60 cm
+48142091 Giấy dán tường dạng tranh (Photo murals) (SEN)
+48142099 Loại khác
+## 481620
+48162010 Dạng cuộn với chiều rộng trên 15 cm nhưng không quá 36 cm
+48162090 Loại khác
+## 481690
+48169010 Giấy than
+48169020 Giấy dùng để sao chụp khác
+48169030 Tấm in offset
+48169040 Giấy chuyển nhiệt
+48169050 Loại khác, dạng cuộn có chiều rộng trên 15 cm nhưng không quá 36 cm
+48169090 Loại khác
+## 481830
+48183010 Khăn trải bàn
+48183020 Khăn ăn (serviettes)
+## 482110
+48211010 Nhãn mác dùng cho đồ trang sức, kể cả loại cho đồ trang sức cá nhân hoặc các vật dụng cá nhân được để trong ví, túi xách hoặc mang trên người(SEN)
+48211090 Loại khác
+## 482190
+48219010 Nhãn mác dùng cho đồ trang sức, kể cả loại cho đồ trang sức cá nhân hoặc các vật dụng cá nhân được để trong ví, túi xách hoặc mang trên người(SEN)
+48219090 Loại khác
+## 482210
+48221010 Hình nón cụt (cones)
+48221090 Loại khác
+## 482290
+48229010 Hình nón cụt (cones)
+48229090 Loại khác
+## 482320
+48232010 Dạng dải, cuộn hoặc tờ
+48232090 Loại khác
+## 482340
+48234021 Giấy ghi điện tâm đồ
+48234029 Loại khác
+48234090 Loại khác
+## 482390
+48239010 Khung kén tằm
+48239020 Thẻ trưng bày đồ trang sức, kể cả loại cho đồ trang sức cá nhân hoặc các vật dụng cá nhân được để trong ví, túi xách hoặc mang trên người
+48239030 Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy
+48239040 Bộ ống giấy để sản xuất pháo hoa(SEN)
+48239051 Có định lượng từ 150 g/m2 trở xuống
+48239059 Loại khác
+48239060 Thẻ jacquard đã đục lỗ
+48239070 Quạt và màn che kéo bằng tay
+48239091 Giấy silicon(SEN)
+48239092 Giấy vàng mã(SEN)
+48239094 Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vân toàn bộ
+48239095 Tấm phủ sàn
+48239096 Loại khác, đã cắt thành hình trừ hình chữ nhật hoặc hình vuông
+48239099 Loại khác
+## 490199
+49019910 Sách giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa
+49019990 Loại khác
+## 490290
+49029010 Tạp chí và ấn phẩm định kỳ về giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa (SEN)
+49029090 Loại khác
+## 490700
+49070010 Giấy bạc ngân hàng (banknotes), loại pháp định(*)
+49070021 Tem bưu chính
+49070029 Loại khác
+49070050 Mẫu séc
+49070060 Giấy chứng nhận cổ phần, cổ phiếu hoặc trái phiếu và các loại chứng từ sở hữu tương tự
+49070090 Loại khác
+## 491110
+49111010 Catalog chỉ liệt kê tên sách và các ấn phẩm về giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa
+49111090 Loại khác
+## 491191
+49119110 Bản thiết kế
+49119121 Giải phẫu học và thực vật học
+49119129 Loại khác
+49119191 Giải phẫu học và thực vật học
+49119199 Loại khác
+## 491199
+49119910 Thẻ in sẵn cho đồ trang sức hoặc cho các đồ tư trang nhỏ trang điểm cá nhân hoặc đồ dùng cá nhân thường được mang theo trong ví, túi sách tay hoặc mang theo người (SEN)
+49119920 Nhãn đã được in để báo nguy hiểm dễ nổ trừ loại thuộc nhóm 48.21 (SEN)
+49119930 Bộ thẻ đã được in nội dung về giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa (SEN)
+49119940 Ấn phẩm in cấp quyền truy cập, cài đặt, tái bản hoặc ấn phẩm in khác sử dụng phần mềm (bao gồm cả trò chơi), dữ liệu, nội dung internet (bao gồm cả nội dung trong trò chơi hoặc trong ứng dụng) hoặc các dịch vụ, hoặc dịch vụ viễn thông (bao gồm cả dịch vụ di động) (SEN)
+49119990 Loại khác
+## 500710
+50071020 Chưa tẩy trắng hoặc đã tẩy trắng
+50071030 Được in bằng phương pháp batik truyền thống (SEN)
+50071090 Loại khác
+## 500720
+50072020 Chưa tẩy trắng hoặc đã tẩy trắng
+50072030 Được in bằng phương pháp batik truyền thống (SEN)
+50072090 Loại khác
+## 500790
+50079020 Chưa tẩy trắng hoặc đã tẩy trắng
+50079030 Được in bằng phương pháp batik truyền thống (SEN)
+50079090 Loại khác
+## 511211
+51121110 Được in bằng phương pháp batik truyền thống (SEN)
+51121190 Loại khác
+## 511219
+51121910 Được in bằng phương pháp batik truyền thống (SEN)
+51121990 Loại khác
+## 520411
+52041110 Chưa tẩy trắng
+52041190 Loại khác
+## 520831
+52083110 Vải voan (Voile)(SEN)
+52083190 Loại khác
+## 520841
+52084110 Vải Ikat(SEN)
+52084190 Loại khác
+## 520842
+52084210 Vải Ikat(SEN)
+52084290 Loại khác
+## 520851
+52085110 Được in bằng phương pháp batik truyền thống (SEN)
+52085190 Loại khác
+## 520852
+52085210 Được in bằng phương pháp batik truyền thống (SEN)
+52085290 Loại khác
+## 520859
+52085910 Được in bằng phương pháp batik truyền thống (SEN)
+52085920 Loại khác, vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân
+52085990 Loại khác
+## 520911
+52091110 Vải duck và vải canvas(SEN)
+52091190 Loại khác
+## 520951
+52095110 Được in bằng phương pháp batik truyền thống (SEN)
+52095190 Loại khác
+## 520952
+52095210 Được in bằng phương pháp batik truyền thống (SEN)
+52095290 Loại khác
+## 520959
+52095910 Được in bằng phương pháp batik truyền thống (SEN)
+52095990 Loại khác
+## 521041
+52104110 Vải Ikat (SEN)
+52104190 Loại khác
+## 521051
+52105110 Được in bằng phương pháp batik truyền thống (SEN)
+52105190 Loại khác
+## 521059
+52105910 Được in bằng phương pháp batik truyền thống (SEN)
+52105990 Loại khác
+## 521141
+52114110 Vải Ikat(SEN)
+52114190 Loại khác
+## 521151
+52115110 Được in bằng phương pháp batik truyền thống (SEN)
+52115190 Loại khác
+## 521152
+52115210 Được in bằng phương pháp batik truyền thống (SEN)
+52115290 Loại khác
+## 521159
+52115910 Được in bằng phương pháp batik truyền thống (SEN)
+52115990 Loại khác
+## 521215
+52121510 Được in bằng phương pháp batik truyền thống (SEN)
+52121590 Loại khác
+## 521225
+52122510 Được in bằng phương pháp batik truyền thống (SEN)
+52122590 Loại khác
+## 530500
+53050010 Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave); tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)
+53050021 Xơ dừa, loại thô
+53050022 Xơ dừa khác
+53050023 Xơ chuối abaca
+53050090 Loại khác
+## 530890
+53089010 Sợi giấy
+53089090 Loại khác
+## 531010
+53101010 Vải dệt vân điểm
+53101090 Loại khác
+## 531100
+53110010 Được in bằng phương pháp batik truyền thống (SEN)
+53110020 Vải bố (burlap) từ xơ chuối abaca (SEN)
+53110090 Loại khác
+## 540110
+54011010 Đã đóng gói để bán lẻ
+54011090 Loại khác
+## 540120
+54012010 Đã đóng gói để bán lẻ
+54012090 Loại khác
+## 540233
+54023310 Loại có màu trừ màu trắng (SEN)
+54023390 Loại khác
+## 540244
+54024410 Từ các polyeste
+54024420 Từ polypropylen
+54024490 Loại khác
+## 540246
+54024610 Loại có màu trừ màu trắng (SEN)
+54024690 Loại khác
+## 540247
+54024710 Loại có màu trừ màu trắng (SEN)
+54024790 Loại khác
+## 540331
+54033110 Sợi dún
+54033190 Loại khác
+## 540332
+54033210 Sợi dún
+54033290 Loại khác
+## 540333
+54033310 Sợi dún
+54033390 Loại khác
+## 540339
+54033910 Sợi dún
+54033990 Loại khác
+## 540341
+54034110 Sợi dún
+54034190 Loại khác
+## 540710
+54071020 Vải làm lốp xe; vải làm băng tải (SEN)
+54071091 Chưa tẩy trắng
+54071099 Loại khác
+## 540741
+54074110 Vải lưới ni lông dệt thoi từ sợi filament không xoắn thích hợp để sử dụng như vật liệu gia cố cho vải sơn dầu
+54074190 Loại khác
+## 540761
+54076110 Chưa tẩy trắng hoặc đã tẩy trắng
+54076190 Loại khác
+## 540769
+54076910 Chưa tẩy trắng hoặc đã tẩy trắng
+54076990 Loại khác
+## 540810
+54081010 Chưa tẩy trắng
+54081090 Loại khác
+## 550320
+55032010 Loại có màu trừ màu trắng (SEN)
+55032090 Loại khác
+## 550390
+55039010 Từ polyvinyl alcohol
+55039090 Loại khác
+## 550810
+55081010 Đã đóng gói để bán lẻ
+55081090 Loại khác
+## 550820
+55082010 Đã đóng gói để bán lẻ
+55082090 Loại khác
+## 550952
+55095210 Sợi đơn
+55095290 Loại khác
+## 551110
+55111010 Sợi dệt kim, sợi móc và chỉ thêu
+55111090 Loại khác
+## 551120
+55112010 Sợi dệt kim, sợi móc và chỉ thêu
+55112090 Loại khác
+## 551599
+55159910 Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn
+55159990 Loại khác
+## 560122
+56012210 Tô (tow) đầu lọc thuốc lá (SEN)
+56012290 Loại khác
+## 560130
+56013010 Xơ vụn polyamit
+56013020 Xơ vụn bằng polypropylen
+56013090 Loại khác
+## 560490
+56049010 Chỉ giả catgut, bằng sợi tơ tằm
+56049020 Sợi dệt được ngâm tẩm cao su
+56049030 Sợi có độ bền cao từ polyeste, ni lông hoặc polyamit khác hoặc từ viscose rayon
+56049090 Loại khác
+## 560750
+56075010 Sợi bện (cord) cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde; sợi polyamit và sợi polytetrafloro-ethylen có độ mảnh lớn hơn 10.000 decitex, dùng để làm kín các loại bơm, van và các sản phẩm tương tự
+56075090 Loại khác
+## 560790
+56079010 Từ các xơ tái tạo
+56079021 Từ xơ chuối abaca (Manila hemp hoặc Musa textilis Nee)
+56079022 Từ các xơ (lá thực vật) cứng khác
+56079030 Từ đay hoặc các loại xơ libe dệt khác thuộc nhóm 53.03
+56079090 Loại khác
+## 560819
+56081920 Túi lưới
+56081990 Loại khác
+## 560890
+56089010 Túi lưới
+56089090 Loại khác
+## 570110
+57011010 Thảm cầu nguyện (SEN)
+57011090 Loại khác
+## 570190
+57019011 Thảm cầu nguyện (SEN)
+57019019 Loại khác
+57019020 Từ xơ đay
+57019091 Thảm cầu nguyện (SEN)
+57019099 Loại khác
+## 570239
+57023910 Từ bông
+57023920 Từ xơ đay
+57023990 Loại khác
+## 570241
+57024110 Thảm cầu nguyện (SEN)
+57024190 Loại khác
+## 570242
+57024210 Thảm cầu nguyện (SEN)
+57024290 Loại khác
+## 570249
+57024911 Thảm cầu nguyện (SEN)
+57024919 Loại khác
+57024920 Từ xơ đay
+57024991 Thảm cầu nguyện (SEN)
+57024999 Loại khác
+## 570250
+57025010 Từ bông
+57025020 Từ xơ đay
+57025090 Loại khác
+## 570291
+57029110 Thảm cầu nguyện (SEN)
+57029190 Loại khác
+## 570292
+57029210 Thảm cầu nguyện (SEN)
+57029290 Loại khác
+## 570299
+57029911 Thảm cầu nguyện (SEN)
+57029919 Loại khác
+57029920 Từ xơ đay
+57029991 Thảm cầu nguyện (SEN)
+57029999 Loại khác
+## 570310
+57031010 Thảm lót chân, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+57031020 Thảm cầu nguyện (SEN)
+57031030 Thảm trải sàn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+57031090 Loại khác
+## 570329
+57032910 Thảm cầu nguyện (SEN)
+57032990 Loại khác
+## 570339
+57033910 Thảm cầu nguyện (SEN)
+57033990 Loại khác
+## 570390
+57039011 Thảm cầu nguyện (SEN)
+57039019 Loại khác
+57039021 Thảm lót chân, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+57039022 Thảm trải sàn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+57039029 Loại khác
+57039091 Thảm lót chân, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+57039092 Thảm cầu nguyện (SEN)
+57039093 Thảm trải sàn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+57039099 Loại khác
+## 570500
+57050011 Thảm cầu nguyện (SEN)
+57050019 Loại khác
+57050021 Tấm trải sàn không dệt, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+57050029 Loại khác
+57050091 Thảm cầu nguyện (SEN)
+57050092 Tấm trải sàn không dệt, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+57050099 Loại khác
+## 580110
+58011010 Đã tráng, phủ hoặc ép lớp
+58011090 Loại khác
+## 580121
+58012110 Đã tráng, phủ hoặc ép lớp
+58012190 Loại khác
+## 580122
+58012210 Đã tráng, phủ hoặc ép lớp
+58012290 Loại khác
+## 580123
+58012310 Đã tráng, phủ hoặc ép lớp
+58012390 Loại khác
+## 580126
+58012610 Đã tráng, phủ hoặc ép lớp
+58012690 Loại khác
+## 580127
+58012710 Đã tráng, phủ hoặc ép lớp
+58012790 Loại khác
+## 580131
+58013110 Đã tráng, phủ hoặc ép lớp
+58013190 Loại khác
+## 580132
+58013210 Đã tráng, phủ hoặc ép lớp
+58013290 Loại khác
+## 580133
+58013310 Đã tráng, phủ hoặc ép lớp
+58013390 Loại khác
+## 580136
+58013610 Đã tráng, phủ hoặc ép lớp
+58013690 Loại khác
+## 580137
+58013711 Sợi nổi vòng đã cắt
+58013712 Sợi nổi vòng không cắt
+58013791 Sợi nổi vòng đã cắt
+58013792 Sợi nổi vòng không cắt
+## 580190
+58019011 Đã tráng, phủ hoặc ép lớp
+58019019 Loại khác
+58019091 Đã tráng, phủ hoặc ép lớp
+58019099 Loại khác
+## 580210
+58021010 Chưa tẩy trắng
+58021090 Loại khác
+## 580220
+58022010 Từ lông cừu hoặc lông động vật loại mịn
+58022090 Loại khác
+## 580230
+58023010 Đã ngâm tẩm, tráng hoặc phủ
+58023020 Dệt thoi, từ bông hoặc sợi nhân tạo
+58023030 Dệt thoi, từ vật liệu khác
+58023090 Loại khác
+## 580300
+58030010 Từ bông
+58030020 Từ xơ nhân tạo
+58030030 Từ lông cừu hoặc lông động vật loại mịn
+58030090 Loại khác
+## 580410
+58041011 Đã ngâm tẩm, tráng, phủ hoặc ép lớp
+58041019 Loại khác
+58041021 Đã ngâm tẩm, tráng, phủ hoặc ép lớp
+58041029 Loại khác
+58041091 Đã ngâm tẩm, tráng, phủ hoặc ép lớp
+58041099 Loại khác
+## 580421
+58042110 Đã ngâm tẩm, tráng, phủ hoặc ép lớp
+58042190 Loại khác
+## 580429
+58042910 Đã ngâm tẩm, tráng, phủ hoặc ép lớp
+58042990 Loại khác
+## 580500
+58050010 Từ bông
+58050090 Loại khác
+## 580610
+58061010 Từ tơ tằm
+58061020 Từ bông
+58061090 Loại khác
+## 580620
+58062010 Băng loại dùng để quấn tay cầm hoặc cán của các dụng cụ thể thao
+58062090 Loại khác
+## 580631
+58063110 Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự
+58063120 Làm nền cho giấy cách điện
+58063130 Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm
+58063190 Loại khác
+## 580632
+58063210 Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi
+58063240 Làm nền cho giấy cách điện
+58063250 Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm
+58063290 Loại khác
+## 580639
+58063910 Từ tơ tằm
+58063991 Làm nền cho giấy cách điện
+58063992 Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự
+58063993 Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm
+58063999 Loại khác
+## 580790
+58079010 Vải không dệt
+58079090 Loại khác
+## 580810
+58081010 Kết hợp với sợi cao su
+58081090 Loại khác
+## 580890
+58089010 Kết hợp với sợi cao su
+58089090 Loại khác
+## 581100
+58110010 Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô
+58110090 Loại khác
+## 590190
+59019010 Vải can
+59019020 Vải canvas đã xử lý để vẽ
+59019090 Loại khác
+## 590210
+59021011 Từ sợi ni lông 6 (Nylon-6)(SEN)
+59021019 Loại khác(SEN)
+59021091 Từ sợi ni lông 6 (Nylon-6)
+59021099 Loại khác
+## 590220
+59022020 Vải tráng cao su làm mép lốp(SEN)
+59022091 Chứa bông
+59022099 Loại khác
+## 590310
+59031010 Vải lót(SEN)
+59031090 Loại khác
+## 590390
+59039010 Vải canvas đã được ngâm tẩm, tráng, phủ hoặc ép với nylon hoặc các polyamit khác
+59039090 Loại khác
+## 590500
+59050010 Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô
+59050090 Loại khác
+## 590699
+59069910 Tấm vải cao su phù hợp sử dụng tại bệnh viện
+59069990 Loại khác
+## 590700
+59070010 Các loại vải dệt được ngâm tẩm, tráng hoặc phủ với dầu hoặc các chế phẩm từ dầu
+59070030 Các loại vải dệt được ngâm tẩm, tráng hoặc phủ với hóa chất chịu lửa
+59070040 Các loại vải được ngâm tẩm, tráng hoặc phủ với nhung xơ vụn, toàn bộ bề mặt được phủ với xơ vụn dệt
+59070050 Các loại vải được ngâm tẩm, tráng hoặc phủ lớp sáp, hắc ín, bi-tum hoặc các sản phẩm tương tự
+59070060 Các loại vải được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác
+59070090 Loại khác
+## 590800
+59080010 Bấc; mạng đèn măng xông
+59080090 Loại khác
+## 590900
+59090010 Các loại vòi cứu hỏa
+59090090 Loại khác
+## 591190
+59119010 Miếng đệm và miếng chèn
+59119090 Loại khác
+## 600192
+60019220 Vải nổi vòng (pile) từ xơ staple 100% polyeste, có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn
+60019230 Chứa sợi đàn hồi hoặc sợi cao su
+60019290 Loại khác
+## 600410
+60041010 Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng
+60041090 Loại khác
+## 600536
+60053610 Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi
+60053690 Loại khác
+## 600537
+60053710 Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi
+60053790 Loại khác
+## 600538
+60053810 Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi
+60053890 Loại khác
+## 600539
+60053910 Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi
+60053990 Loại khác
+## 600590
+60059010 Từ lông cừu hoặc lông động vật loại mịn
+60059090 Loại khác
+## 600631
+60063110 Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm
+60063120 Đàn hồi (kết hợp với sợi cao su)
+60063190 Loại khác
+## 600632
+60063210 Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm
+60063220 Đàn hồi (kết hợp với sợi cao su)
+60063290 Loại khác
+## 600633
+60063310 Đàn hồi (kết hợp với sợi cao su)
+60063390 Loại khác
+## 600634
+60063410 Đàn hồi (kết hợp với sợi cao su)
+60063490 Loại khác
+## 600641
+60064110 Đàn hồi (kết hợp với sợi cao su)
+60064190 Loại khác
+## 600642
+60064210 Đàn hồi (kết hợp với sợi cao su)
+60064290 Loại khác
+## 600643
+60064310 Đàn hồi (kết hợp với sợi cao su)
+60064390 Loại khác
+## 600644
+60064410 Đàn hồi (kết hợp với sợi cao su)
+60064490 Loại khác
+## 610339
+61033910 Từ ramie, sợi lanh hoặc tơ tằm
+61033990 Loại khác
+## 610419
+61041920 Từ bông
+61041990 Loại khác
+## 610520
+61052010 Từ sợi tổng hợp
+61052020 Từ sợi tái tạo
+## 610819
+61081920 Từ lông cừu hoặc lông động vật loại mịn
+61081930 Từ bông
+61081940 Từ tơ tằm
+61081990 Loại khác
+## 610910
+61091010 Dùng cho nam giới hoặc trẻ em trai
+61091020 Dùng cho phụ nữ hoặc trẻ em gái
+## 610990
+61099010 Dùng cho nam giới hoặc trẻ em trai, từ ramie, lanh hoặc tơ tằm
+61099020 Dùng cho nam giới hoặc trẻ em trai, từ các vật liệu dệt khác
+61099030 Dùng cho phụ nữ hoặc trẻ em gái
+## 611190
+61119010 Từ lông cừu hoặc lông động vật loại mịn
+61119090 Loại khác
+## 611241
+61124110 Đồ bơi độn ngực (dùng cho người sau phẫu thuật ngực)
+61124190 Loại khác
+## 611249
+61124910 Đồ bơi độn ngực (dùng cho người sau phẫu thuật ngực)
+61124990 Loại khác
+## 611300
+61130010 Bộ đồ của thợ lặn (SEN)
+61130030 Quần áo chống cháy (SEN)
+61130040 Quần áo bảo hộ khác
+61130090 Loại khác
+## 611430
+61143020 Quần áo chống cháy (SEN)
+61143090 Loại khác
+## 611490
+61149010 Từ lông cừu hoặc lông động vật loại mịn
+61149090 Loại khác
+## 611510
+61151010 Vớ cho người giãn tĩnh mạch, từ sợi tổng hợp
+61151090 Loại khác
+## 611529
+61152910 Từ bông
+61152990 Loại khác
+## 611530
+61153010 Từ bông
+61153090 Loại khác
+## 611610
+61161010 Găng tay của thợ lặn
+61161090 Loại khác
+## 611710
+61171010 Từ bông
+61171090 Loại khác
+## 611780
+61178011 Từ lông cừu hoặc lông động vật loại mịn
+61178019 Loại khác
+61178020 Băng cổ tay, băng đầu gối, băng mắt cá chân
+61178090 Loại khác
+## 620120
+62012010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+62012090 Loại khác
+## 620130
+62013010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+62013090 Loại khác
+## 620140
+62014010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+62014090 Loại khác
+## 620190
+62019011 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+62019019 Loại khác
+62019021 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+62019029 Loại khác
+62019090 Loại khác
+## 620220
+62022010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+62022090 Loại khác
+## 620230
+62023010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+62023090 Loại khác
+## 620240
+62024010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+62024090 Loại khác
+## 620290
+62029010 Từ tơ tằm
+62029020 Từ ramie
+62029090 Loại khác
+## 620319
+62031911 Được in bằng phương pháp batik truyền thống (SEN)
+62031919 Loại khác
+62031921 Được in bằng phương pháp batik truyền thống (SEN)
+62031929 Loại khác
+62031990 Loại khác
+## 620322
+62032210 Được in bằng phương pháp batik truyền thống (SEN)
+62032290 Loại khác
+## 620329
+62032910 Từ lông cừu hoặc lông động vật loại mịn
+62032990 Loại khác
+## 620332
+62033210 Được in bằng phương pháp batik truyền thống (SEN)
+62033290 Loại khác
+## 620342
+62034210 Quần yếm có dây đeo
+62034290 Loại khác
+## 620349
+62034910 Từ tơ tằm
+62034990 Loại khác
+## 620412
+62041210 Được in bằng phương pháp batik truyền thống (SEN)
+62041290 Loại khác
+## 620419
+62041911 Được in bằng phương pháp batik truyền thống (SEN)
+62041919 Loại khác
+62041990 Loại khác
+## 620422
+62042210 Được in bằng phương pháp batik truyền thống (SEN)
+62042290 Loại khác
+## 620429
+62042910 Từ tơ tằm
+62042990 Loại khác
+## 620432
+62043210 Được in bằng phương pháp batik truyền thống (SEN)
+62043290 Loại khác
+## 620439
+62043911 Được in bằng phương pháp batik truyền thống (SEN)
+62043919 Loại khác
+62043990 Loại khác
+## 620442
+62044210 Được in bằng phương pháp batik truyền thống (SEN)
+62044290 Loại khác
+## 620449
+62044910 Được in bằng phương pháp batik truyền thống (SEN)
+62044990 Loại khác
+## 620452
+62045210 Được in bằng phương pháp batik truyền thống (SEN)
+62045290 Loại khác
+## 620459
+62045910 Được in bằng phương pháp batik truyền thống (SEN)
+62045990 Loại khác
+## 620520
+62052010 Được in bằng phương pháp batik truyền thống (SEN)
+62052020 Áo Barong Tagalog (SEN)
+62052090 Loại khác
+## 620530
+62053010 Áo Barong Tagalog (SEN)
+62053090 Loại khác
+## 620590
+62059010 Từ lông cừu hoặc lông động vật loại mịn
+62059091 Được in bằng phương pháp batik truyền thống (SEN)
+62059092 Áo Barong Tagalog (SEN)
+62059099 Loại khác
+## 620610
+62061010 Được in bằng phương pháp batik truyền thống (SEN)
+62061090 Loại khác
+## 620630
+62063010 Được in bằng phương pháp batik truyền thống (SEN)
+62063090 Loại khác
+## 620721
+62072110 Được in bằng phương pháp batik truyền thống (SEN)
+62072190 Loại khác
+## 620729
+62072910 Từ tơ tằm
+62072990 Loại khác
+## 620799
+62079910 Từ sợi nhân tạo
+62079990 Loại khác
+## 620821
+62082110 Được in bằng phương pháp batik truyền thống (SEN)
+62082190 Loại khác
+## 620829
+62082910 Được in bằng phương pháp batik truyền thống (SEN)
+62082990 Loại khác
+## 620891
+62089110 Được in bằng phương pháp batik truyền thống (SEN)
+62089190 Loại khác
+## 620892
+62089210 Được in bằng phương pháp batik truyền thống (SEN)
+62089290 Loại khác
+## 620899
+62089910 Từ lông cừu hoặc lông động vật loại mịn
+62089990 Loại khác
+## 620920
+62092030 Áo phông, áo sơ mi, bộ quần áo pyjama và các loại tương tự
+62092040 Bộ com-lê, quần và các loại tương tự
+62092090 Loại khác
+## 620930
+62093010 Bộ com-lê, quần và các loại tương tự
+62093030 Áo phông, áo sơ mi, bộ quần áo pyjama và các loại tương tự
+62093040 Phụ kiện may mặc
+62093090 Loại khác
+## 621010
+62101011 Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)
+62101019 Loại khác
+62101090 Loại khác
+## 621020
+62102020 Quần áo chống cháy (SEN)
+62102030 Quần áo chống các chất hóa học hoặc phóng xạ
+62102040 Quần áo bảo hộ khác
+62102090 Loại khác
+## 621030
+62103020 Quần áo chống cháy (SEN)
+62103030 Quần áo chống các chất hóa học hoặc phóng xạ
+62103040 Quần áo bảo hộ khác
+62103090 Loại khác
+## 621040
+62104010 Quần áo chống cháy (SEN)
+62104020 Quần áo chống các chất hóa học hoặc phóng xạ
+62104090 Loại khác
+## 621050
+62105010 Quần áo chống cháy (SEN)
+62105020 Quần áo chống các chất hóa học hoặc phóng xạ
+62105090 Loại khác
+## 621132
+62113210 Quần áo đấu kiếm hoặc đấu vật
+62113220 Áo choàng hành hương (Ihram)(SEN)
+62113290 Loại khác
+## 621133
+62113310 Quần áo đấu kiếm hoặc đấu vật
+62113320 Quần áo chống cháy(SEN)
+62113330 Quần áo chống các chất hóa học hoặc phóng xạ
+62113340 Áo choàng hành hương (Ihram)(SEN)
+62113390 Loại khác
+## 621139
+62113910 Quần áo đấu kiếm hoặc đấu vật
+62113920 Quần áo chống cháy(SEN)
+62113930 Quần áo chống các chất hóa học hoặc phóng xạ
+62113940 Áo choàng hành hương (Ihram)(SEN)
+62113990 Loại khác
+## 621142
+62114210 Quần áo đấu kiếm hoặc đấu vật
+62114220 Áo choàng không tay dùng để cầu nguyện (SEN)
+62114230 Sarong loại hình ống (SEN)
+62114290 Loại khác
+## 621143
+62114310 Áo phẫu thuật
+62114320 Áo choàng không tay dùng để cầu nguyện (SEN)
+62114330 Bộ quần áo bảo hộ chống nổ
+62114340 Quần áo đấu kiếm hoặc đấu vật
+62114350 Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)
+62114360 Bộ quần áo nhảy dù liền thân
+62114370 Sarong loại hình ống (SEN)
+62114390 Loại khác
+## 621149
+62114910 Quần áo đấu kiếm hoặc đấu vật
+62114920 Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)
+62114931 Từ lông cừu hoặc lông động vật mịn(SEN)
+62114939 Loại khác (SEN)
+62114950 Sarong loại hình ống (SEN)
+62114960 Loại khác, từ lông cừu hoặc lông động vật loại mịn
+62114990 Loại khác
+## 621210
+62121011 Xu chiêng độn ngực (dùng cho người sau phẫu thuật ngực)
+62121019 Loại khác
+62121091 Xu chiêng độn ngực (dùng cho người sau phẫu thuật ngực)
+62121099 Loại khác
+## 621220
+62122010 Từ bông
+62122090 Từ các vật liệu dệt khác
+## 621230
+62123010 Từ bông
+62123090 Từ các vật liệu dệt khác
+## 621290
+62129011 Hàng may mặc, loại có tính đàn hồi bó chặt, để điều trị mô vết sẹo và ghép da(SEN)
+62129012 Hàng may mặc hỗ trợ cho các môn điền kinh
+62129019 Loại khác
+62129091 Hàng may mặc, loại có tính đàn hồi bó chặt, để điều trị mô vết sẹo và ghép da(SEN)
+62129092 Hàng may mặc hỗ trợ cho các môn điền kinh
+62129099 Loại khác
+## 621320
+62132010 Được in bằng phương pháp batik truyền thống (SEN)
+62132090 Loại khác
+## 621390
+62139011 Được in bằng phương pháp batik truyền thống (SEN)
+62139019 Loại khác
+62139091 Được in bằng phương pháp batik truyền thống (SEN)
+62139099 Loại khác
+## 621410
+62141010 Được in bằng phương pháp batik truyền thống (SEN)
+62141090 Loại khác
+## 621430
+62143010 Được in bằng phương pháp batik truyền thống (SEN)
+62143090 Loại khác
+## 621440
+62144010 Được in bằng phương pháp batik truyền thống (SEN)
+62144090 Loại khác
+## 621490
+62149010 Được in bằng phương pháp batik truyền thống (SEN)
+62149090 Loại khác
+## 621510
+62151010 Được in bằng phương pháp batik truyền thống (SEN)
+62151090 Loại khác
+## 621520
+62152010 Được in bằng phương pháp batik truyền thống (SEN)
+62152090 Loại khác
+## 621590
+62159010 Được in bằng phương pháp batik truyền thống (SEN)
+62159090 Loại khác
+## 621600
+62160010 Găng tay bảo hộ lao động, găng tay hở ngón và găng bao tay
+62160091 Từ lông cừu hoặc lông động vật loại mịn
+62160092 Từ bông
+62160099 Loại khác
+## 621710
+62171010 Đai Ju đô
+62171090 Loại khác
+## 630130
+63013010 Được in bằng phương pháp batik truyền thống (SEN)
+63013090 Loại khác
+## 630140
+63014010 Vải không dệt
+63014090 Loại khác
+## 630190
+63019010 Vải không dệt
+63019090 Loại khác
+## 630222
+63022210 Vải không dệt
+63022290 Loại khác
+## 630232
+63023210 Vải không dệt
+63023290 Loại khác
+## 630251
+63025110 Được in bằng phương pháp batik truyền thống (SEN)
+63025190 Loại khác
+## 630259
+63025910 Từ lanh
+63025990 Loại khác
+## 630299
+63029910 Từ lanh
+63029990 Loại khác
+## 630319
+63031910 Từ bông
+63031990 Loại khác
+## 630419
+63041910 Từ bông
+63041920 Loại khác, không dệt
+63041990 Loại khác
+## 630491
+63049110 Màn chống muỗi
+63049190 Loại khác
+## 630510
+63051011 Từ đay
+63051019 Loại khác
+63051021 Từ đay
+63051029 Loại khác
+## 630532
+63053210 Từ vải không dệt
+63053220 Dệt kim hoặc móc
+63053290 Loại khác
+## 630533
+63053310 Dệt kim hoặc móc
+63053320 Bằng sợi dệt dạng dải hoặc tương tự
+63053390 Loại khác
+## 630539
+63053910 Từ vải không dệt
+63053920 Dệt kim hoặc móc
+63053990 Loại khác
+## 630590
+63059010 Từ gai dầu thuộc nhóm 53.05
+63059020 Từ dừa (xơ dừa) thuộc nhóm 53.05
+63059090 Loại khác
+## 630619
+63061910 Từ sợi dệt thực vật thuộc nhóm 53.05
+63061920 Từ bông
+63061990 Loại khác
+## 630629
+63062910 Từ bông
+63062990 Loại khác
+## 630640
+63064010 Từ bông
+63064090 Loại khác
+## 630690
+63069010 Từ vải không dệt
+63069091 Từ bông
+63069099 Loại khác
+## 630710
+63071010 Từ vải không dệt trừ phớt
+63071020 Từ phớt
+63071090 Loại khác
+## 630790
+63079030 Tấm phủ ô che cắt sẵn hình tam giác
+63079040 Khẩu trang phẫu thuật
+63079061 Phù hợp dùng trong công nghiệp
+63079069 Loại khác
+63079070 Quạt và màn che kéo bằng tay
+63079080 Dây buộc dùng cho giày, ủng, áo nịt ngực (corset) và các loại tương tự(SEN)
+63079090 Loại khác
+## 631010
+63101010 Vải vụn đã qua sử dụng hoặc mới
+63101090 Loại khác
+## 631090
+63109010 Vải vụn đã qua sử dụng hoặc mới
+63109090 Loại khác
+## 640192
+64019210 Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+64019290 Loại khác
+## 640199
+64019910 Giày cổ cao quá đầu gối
+64019990 Loại khác
+## 640219
+64021910 Giày, dép cho đấu vật
+64021990 Loại khác
+## 640291
+64029110 Giày lặn
+64029191 Loại có mũi giày được gắn kim loại để bảo vệ
+64029192 Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+64029199 Loại khác
+## 640299
+64029910 Loại có mũi giày được gắn kim loại để bảo vệ
+64029920 Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+64029990 Loại khác
+## 640319
+64031910 Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự
+64031920 Ủng để cưỡi ngựa; giày chơi bowling
+64031930 Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình
+64031990 Loại khác
+## 640359
+64035910 Giày chơi bowling
+64035990 Loại khác
+## 640391
+64039110 Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ
+64039120 Ủng để cưỡi ngựa
+64039130 Loại khác, có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+64039190 Loại khác
+## 640399
+64039910 Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ
+64039920 Giày chơi bowling
+64039930 Loại khác, có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+64039990 Loại khác
+## 640411
+64041110 Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự
+64041120 Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình
+64041190 Loại khác
+## 640419
+64041910 Loại có mũi giày được gắn bảo vệ
+64041990 Loại khác
+## 640610
+64061010 Mũi giày bằng kim loại
+64061090 Loại khác
+## 640620
+64062010 Bằng cao su
+64062020 Bằng plastic
+## 640690
+64069010 Bằng gỗ
+64069021 Bằng sắt hoặc thép
+64069022 Bằng đồng
+64069023 Bằng nhôm
+64069029 Loại khác
+64069041 Tấm lót giày
+64069042 Đế giày đã hoàn thiện (SEN)
+64069049 Loại khác
+64069051 Tấm lót giày
+64069052 Đế giày đã hoàn thiện (SEN)
+64069059 Loại khác
+64069091 Ghệt, ống ôm sát chân (leggings) và các loại tương tự và bộ phận của chúng
+64069099 Loại khác
+## 650500
+65050010 Mũ và các vật đội đầu sử dụng cho mục đích tôn giáo
+65050020 Lưới bao tóc
+65050090 Loại khác
+## 650610
+65061010 Mũ bảo hiểm cho người đi xe máy
+65061020 Mũ bảo hộ công nghiệp và mũ bảo hiểm cho lính cứu hỏa, trừ mũ bảo hộ bằng thép
+65061030 Mũ bảo hộ bằng thép
+65061040 Mũ dùng trong chơi water-polo
+65061090 Loại khác
+## 650699
+65069910 Bằng da lông
+65069990 Loại khác
+## 660390
+66039010 Cho hàng hóa thuộc nhóm 66.01
+66039020 Cho hàng hóa thuộc nhóm 66.02
+## 670290
+67029010 Bằng giấy
+67029020 Bằng vật liệu dệt
+67029090 Loại khác
+## 680229
+68022910 Đá vôi khác
+68022990 Loại khác
+## 680291
+68029110 Đá hoa (marble)
+68029190 Loại khác
+## 680293
+68029310 Dạng tấm đã được đánh bóng
+68029390 Loại khác
+## 680790
+68079010 Tấm lát (tiles)
+68079090 Loại khác
+## 680800
+68080020 Ngói lợp mái
+68080040 Tấm lát (tiles) khác
+68080091 Từ xơ thực vật
+68080099 Loại khác
+## 680919
+68091910 Tấm lát (tiles)
+68091990 Loại khác
+## 680990
+68099010 Khuôn bằng thạch cao dùng trong nha khoa
+68099090 Loại khác
+## 681019
+68101910 Tấm lát (tiles)
+68101990 Loại khác
+## 681091
+68109110 Cọc xây dựng bằng bê tông (SEN)
+68109190 Loại khác
+## 681140
+68114010 Tấm làn sóng
+68114021 Gạch lát nền hoặc ốp tường chứa plastic
+68114022 Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn
+68114029 Loại khác
+68114030 Ống hoặc ống dẫn
+68114040 Các phụ kiện để ghép nối ống hoặc ống dẫn
+68114050 Các sản phẩm khác, của loại sử dụng cho xây dựng
+68114090 Loại khác
+## 681182
+68118210 Gạch lát nền hoặc ốp tường chứa plastic
+68118220 Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn
+68118290 Loại khác
+## 681189
+68118910 Ống hoặc ống dẫn
+68118920 Các phụ kiện để ghép nối ống hoặc ống dẫn
+68118930 Các sản phẩm khác, của loại sử dụng cho xây dựng
+68118990 Loại khác
+## 681280
+68128020 Quần áo
+68128030 Giấy, bìa cứng và nỉ
+68128050 Phụ kiện quần áo, giày dép và vật đội đầu; sợi crocidolite đã được gia công; các hỗn hợp với thành phần cơ bản là crocidolite hoặc có thành phần cơ bản là crocidolite và magie carbonat; sợi và chỉ; sợi bện (cord) và dây, đã hoặc chưa bện; vải dệt kim hoặc dệt thoi
+68128090 Loại khác
+## 681291
+68129110 Quần áo
+68129190 Loại khác
+## 681299
+68129920 Gạch lát nền hoặc ốp tường
+68129930 Giấy, bìa cứng và nỉ
+68129940 Vật liệu ghép nối làm bằng sợi amiăng ép, ở dạng tấm hoặc cuộn
+68129951 Các hỗn hợp với thành phần cơ bản là amiăng hoặc có thành phần cơ bản là amiăng và magie carbonat loại dùng để sản xuất các mặt hàng thuộc nhóm 68.13
+68129959 Loại khác
+68129990 Loại khác
+## 681320
+68132010 Lót và đệm phanh
+68132090 Loại khác
+## 681513
+68151310 Sợi hoặc chỉ
+68151390 Loại khác
+## 681519
+68151910 Sợi hoặc chỉ
+68151920 Gạch xây, phiến lát, gạch lát sàn, các loại vật liệu dùng để lát và các sản phẩm xây dựng tương tự
+68151990 Loại khác
+## 690721
+69072110 Tấm lót của loại sử dụng cho máy nghiền, không tráng men(SEN)
+69072121 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+69072122 Loại khác, không tráng men
+69072123 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+69072124 Loại khác, đã tráng men
+69072191 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+69072192 Loại khác, không tráng men
+69072193 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+69072194 Loại khác, đã tráng men
+## 690722
+69072211 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+69072212 Loại khác, không tráng men
+69072213 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+69072214 Loại khác, đã tráng men
+69072291 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+69072292 Loại khác, không tráng men
+69072293 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+69072294 Loại khác, đã tráng men
+## 690723
+69072311 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+69072312 Loại khác, không tráng men
+69072313 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+69072314 Loại khác, đã tráng men
+69072391 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+69072392 Loại khác, không tráng men
+69072393 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+69072394 Loại khác, đã tráng men
+## 690730
+69073011 Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+69073019 Loại khác
+69073091 Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+69073099 Loại khác
+## 690740
+69074010 Của loại sử dụng để lót máy nghiền, không tráng men
+69074021 Không tráng men
+69074022 Đã tráng men
+69074091 Không tráng men
+69074092 Đã tráng men
+## 691310
+69131010 Hộp đựng thuốc lá và gạt tàn trang trí
+69131090 Loại khác
+## 691390
+69139010 Hộp đựng thuốc lá và gạt tàn trang trí
+69139090 Loại khác
+## 700231
+70023110 Loại sử dụng để sản xuất ống chân không(SEN)
+70023190 Loại khác
+## 700232
+70023210 Loại sử dụng để sản xuất ống chân không(SEN)
+70023230 Ống thủy tinh borosilicate của loại sử dụng để sản xuất ống dạng phial/ampoule
+70023240 Loại khác, của loại thủy tinh borosilicate trung tính trong suốt, có đường kính từ 3 mm đến 22 mm
+70023290 Loại khác
+## 700239
+70023910 Loại sử dụng để sản xuất ống chân không(SEN)
+70023920 Loại khác, của loại thủy tinh borosilicate trung tính trong suốt, có đường kính từ 3 mm đến 22 mm
+70023990 Loại khác
+## 700312
+70031210 Thủy tinh quang học, chưa được gia công về mặt quang học
+70031220 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70031290 Loại khác
+## 700319
+70031910 Thủy tinh quang học, chưa được gia công về mặt quang học
+70031920 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70031990 Loại khác
+## 700320
+70032010 Hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70032090 Loại khác
+## 700330
+70033010 Hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70033090 Loại khác
+## 700420
+70042010 Kính quang học, chưa được gia công về mặt quang học
+70042020 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70042090 Loại khác
+## 700490
+70049010 Kính quang học, chưa được gia công về mặt quang học
+70049020 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70049090 Loại khác
+## 700510
+70051010 Kính quang học, chưa được gia công về mặt quang học
+70051090 Loại khác
+## 700521
+70052110 Kính quang học, chưa được gia công về mặt quang học
+70052120 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70052190 Loại khác
+## 700529
+70052910 Kính quang học, chưa được gia công về mặt quang học
+70052920 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70052990 Loại khác
+## 700530
+70053010 Hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+70053090 Loại khác
+## 700600
+70060010 Kính quang học, chưa được gia công về mặt quang học
+70060090 Loại khác
+## 700711
+70071110 Phù hợp dùng cho xe thuộc Chương 87
+70071120 Phù hợp dùng cho phương tiện bay hoặc tàu vũ trụ thuộc Chương 88
+70071190 Loại khác
+## 700719
+70071910 Phù hợp dùng cho các máy thuộc nhóm 84.29 hoặc 84.30
+70071990 Loại khác
+## 700721
+70072110 Phù hợp dùng cho xe thuộc Chương 87
+70072120 Phù hợp dùng cho phương tiện bay hoặc tàu vũ trụ thuộc Chương 88
+70072190 Loại khác
+## 700729
+70072910 Phù hợp dùng cho các máy thuộc nhóm 84.29 hoặc 84.30
+70072990 Loại khác
+## 701090
+70109010 Bình lớn có vỏ bọc ngoài và bình thót cổ
+70109040 Chai, lọ và ống dạng phial, để đựng thuốc kháng sinh, huyết thanh và các chất tiêm truyền khác; chai để đựng dung dịch tiêm, truyền tĩnh mạch
+70109091 Có dung tích trên 1 lít
+70109099 Loại khác
+## 701110
+70111010 Trụ (stem) giữ dây tóc bóng đèn
+70111090 Loại khác
+## 701400
+70140010 Loại phù hợp dùng cho xe có động cơ
+70140090 Loại khác
+## 701590
+70159010 Kính đồng hồ thời gian hoặc đồng hồ cá nhân
+70159090 Loại khác
+## 701710
+70171010 Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng
+70171090 Loại khác
+## 701810
+70181010 Hạt bi thủy tinh
+70181090 Loại khác
+## 701890
+70189010 Mắt thủy tinh(SEN)
+70189090 Loại khác
+## 701980
+70198010 Len thủy tinh
+70198020 Các sản phẩm từ len thủy tinh
+## 701990
+70199020 Rèm (blinds)(SEN)
+70199030 Xơ thủy tinh, trừ len thủy tinh
+70199040 Vật liệu bọc ngoài đường ống bằng sợi thủy tinh đã được thấm tẩm nhựa đường hoặc nhựa than đá(SEN)
+70199050 Vải dệt thoi từ sợi thô
+70199090 Loại khác
+## 702000
+70200011 Loại dùng để sản xuất các sản phẩm acrylic(SEN)
+70200019 Loại khác
+70200020 Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng
+70200030 Ruột phích hoặc ruột bình chân không khác
+70200040 Ống chân không sử dụng trong bình nước nóng năng lượng mặt trời
+70200090 Loại khác
+## 710310
+71031010 Rubi
+71031020 Ngọc bích (nephrite và jadeite)
+71031090 Loại khác
+## 710391
+71039110 Rubi
+71039190 Loại khác
+## 710410
+71041010 Chưa được gia công
+71041020 Đã gia công
+## 710812
+71081210 Dạng cục, thỏi hoặc thanh đúc
+71081290 Loại khác
+## 711011
+71101110 Dạng cục, thỏi, thanh đúc hoặc dạng bột
+71101190 Loại khác
+## 711021
+71102110 Dạng cục, thỏi, thanh đúc hoặc dạng bột
+71102190 Loại khác
+## 711031
+71103110 Dạng cục, thỏi, thanh đúc hoặc dạng bột
+71103190 Loại khác
+## 711041
+71104110 Dạng cục, thỏi, thanh đúc hoặc dạng bột
+71104190 Loại khác
+## 711100
+71110010 Bạc hoặc vàng, mạ bạch kim
+71110090 Loại khác
+## 711299
+71129910 Từ bạc, kể cả kim loại dát phủ bạc trừ mảnh vụn có chứa các kim loại quý khác
+71129990 Loại khác
+## 711311
+71131110 Bộ phận
+71131190 Loại khác
+## 711319
+71131910 Bộ phận
+71131990 Loại khác
+## 711320
+71132010 Bộ phận
+71132090 Loại khác
+## 711590
+71159010 Bằng vàng hoặc bạc
+71159020 Bằng kim loại dát phủ vàng hoặc bạc
+71159090 Loại khác
+## 711711
+71171110 Bộ phận
+71171190 Loại khác
+## 711719
+71171910 Vòng
+71171920 Các đồ trang sức khác
+71171990 Bộ phận
+## 711790
+71179010 Vòng
+71179020 Các đồ trang sức khác
+71179094 Làm toàn bộ bằng plastic, thủy tinh, gỗ, vật liệu khắc từ mai rùa, ngà, xương, sừng, san hô, xà cừ và các loại động vật khác đã gia công, vật liệu khắc từ thực vật đã gia công, vật liệu khắc từ khoáng sản đã gia công, hoặc bằng sứ
+71179099 Loại khác
+## 711810
+71181010 Tiền bằng bạc
+71181090 Loại khác
+## 711890
+71189010 Tiền bằng vàng, loại pháp định (*) hoặc không phải loại pháp định
+71189020 Tiền bằng bạc, loại pháp định (*)
+71189090 Loại khác
+## 740100
+74010010 Sten đồng
+74010020 Đồng xi măng hóa (đồng kết tủa)
+## 740200
+74020010 Đồng xốp (blister copper)
+74020090 Loại khác
+## 740710
+74071030 Dạng hình
+74071041 Mặt cắt ngang hình vuông hoặc hình chữ nhật
+74071049 Loại khác
+## 740811
+74081120 Có kích thước mặt cắt ngang lớn nhất không quá 8 mm
+74081130 Có kích thước mặt cắt ngang lớn nhất trên 8 mm nhưng không quá 14 mm
+74081190 Loại khác
+## 740819
+74081910 Được phủ, mạ hoặc tráng vàng hoặc bạc (SEN)
+74081990 Loại khác
+## 740829
+74082910 Hợp kim đồng-thiếc (đồng thanh)(SEN)
+74082990 Loại khác
+## 741011
+74101110 Tấm ép lớp được dát phủ đồng dùng làm tấm mạch in (SEN)
+74101190 Loại khác
+## 741220
+74122020 Phụ kiện ghép nối cho ống vòi(SEN)
+74122091 Bằng hợp kim đồng - kẽm (đồng thau)
+74122099 Loại khác
+## 741300
+74130011 Cáp
+74130019 Loại khác
+74130091 Cáp
+74130099 Loại khác
+## 741510
+74151010 Đinh
+74151020 Ghim dập
+74151090 Loại khác
+## 741533
+74153310 Đinh vít
+74153320 Bu lông và đai ốc
+## 741810
+74181010 Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự
+74181030 Thiết bị nấu hoặc đun nóng dùng trong gia đình, không dùng điện và các bộ phận của các sản phẩm này
+74181090 Loại khác
+## 741920
+74192010 Xích và các bộ phận của xích
+74192020 Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt
+74192090 Loại khác
+## 741980
+74198010 Xích và các bộ phận của xích
+74198021 Đai liền cho máy móc
+74198029 Loại khác
+74198030 Lò xo
+74198040 Hộp đựng thuốc lá điếu
+74198050 Thiết bị nấu hoặc đun nóng, trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này
+74198060 Các vật dụng được thiết kế riêng sử dụng trong nghi lễ tôn giáo (SEN)
+74198070 A-nốt mạ điện; dụng cụ đo dung tích (trừ loại gia dụng)
+74198080 Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt
+74198090 Loại khác
+## 750890
+75089030 Bu lông và đai ốc
+75089050 Các sản phẩm mạ điện a-nốt, bao gồm cả các sản phẩm sản xuất bằng phương pháp điện phân
+75089090 Loại khác
+## 760320
+76032010 Vảy nhôm
+76032020 Bột có cấu trúc lớp
+## 760410
+76041010 Dạng thanh và que
+76041090 Loại khác
+## 760421
+76042110 Loại phù hợp để làm dàn lạnh của máy điều hòa không khí cho xe có động cơ (SEN)
+76042120 Thanh đệm bằng nhôm cho cửa ra vào và cửa sổ (SEN)
+76042190 Loại khác
+## 760429
+76042910 Dạng thanh và que được ép đùn
+76042930 Dạng hình chữ Y dùng cho dây khóa kéo, ở dạng cuộn
+76042990 Loại khác
+## 760519
+76051910 Đường kính không quá 0,0508 mm
+76051990 Loại khác
+## 760529
+76052910 Có đường kính không quá 0,254 mm
+76052990 Loại khác
+## 760611
+76061110 Được dát phẳng hoặc tạo hình bằng phương pháp cán hoặc ép, nhưng chưa xử lý bề mặt
+76061190 Loại khác
+## 760612
+76061220 Đế bản nhôm, chưa nhạy, dùng trong công nghệ in
+76061232 Để làm lon (kể cả đáy lon và nắp lon), dạng cuộn(SEN)
+76061233 Loại khác, bằng hợp kim nhôm 5082 hoặc 5182, có chiều rộng trên 1m, dạng cuộn (SEN)
+76061234 Loại khác, tấm litô hợp kim HA 1052 độ cứng H19 và hợp kim HA 1050 độ cứng H18
+76061235 Loại khác, đã gia công bề mặt
+76061239 Loại khác
+76061290 Loại khác
+## 760720
+76072010 Nhôm lá mỏng cách nhiệt(SEN)
+76072091 Được in hình mẫu, hoặc màu vàng hoặc màu bạc
+76072099 Loại khác
+## 761010
+76101010 Cửa ra vào và các loại khung cửa ra vào và ngưỡng cửa ra vào
+76101090 Loại khác
+## 761090
+76109030 Mái phao trong hoặc mái phao ngoài dùng cho bể chứa xăng dầu(SEN)
+76109091 Cầu và nhịp cầu; tháp hoặc cột lưới
+76109099 Loại khác
+## 761290
+76129010 Đồ chứa được đúc liền phù hợp dùng để đựng sữa tươi (SEN)
+76129090 Loại khác
+## 761410
+76141011 Có đường kính không quá 25,3 mm
+76141012 Có đường kính trên 25,3 mm nhưng không quá 28,28 mm
+76141019 Loại khác
+76141090 Loại khác
+## 761490
+76149011 Có đường kính không quá 25,3 mm
+76149012 Có đường kính trên 25,3 mm nhưng không quá 28,28 mm
+76149019 Loại khác
+76149090 Loại khác
+## 761510
+76151010 Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự
+76151090 Loại khác
+## 761520
+76152020 Bô để giường bệnh, bô đi tiểu hoặc bô để phòng ngủ
+76152090 Loại khác
+## 761610
+76161010 Đinh
+76161020 Ghim dập và đinh móc; bulông và đai ốc
+76161090 Loại khác
+## 761699
+76169920 Nhôm bịt đầu ống loại phù hợp dùng để sản xuất bút chì (SEN)
+76169930 Đồng xèng, hình tròn, kích thước chiều dày trên 1/10 đường kính (SEN)
+76169940 Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt
+76169951 Rèm chớp lật(SEN)
+76169959 Loại khác
+76169960 Máng và chén để hứng mủ cao su
+76169970 Hộp đựng thuốc lá điếu
+76169980 Sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới
+76169990 Loại khác
+## 780411
+78041110 Chiều dày không quá 0,15 mm
+78041190 Loại khác
+## 780600
+78060020 Thanh, que, dạng hình và dây
+78060030 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+78060040 Len chì; vòng đệm; tấm điện a-nốt
+78060090 Loại khác
+## 790500
+79050040 Chiều dày không quá 0,15 mm
+79050090 Loại khác
+## 790700
+79070030 Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác
+79070040 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+79070091 Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+79070092 Các sản phẩm gia dụng khác
+79070093 Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin(SEN)
+79070099 Loại khác
+## 800300
+80030010 Thanh và que hàn
+80030090 Loại khác
+## 800700
+80070020 Dạng tấm, lá và dải, có chiều dày trên 0,2 mm
+80070030 Lá mỏng (đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự), có chiều dày (trừ phần bồi) không quá 0,2 mm; dạng bột và vảy
+80070040 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+80070091 Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+80070092 Các sản phẩm gia dụng khác
+80070093 Ống có thể gấp lại được (collapsible tubes)
+80070099 Loại khác
+## 810199
+81019910 Thanh và que, trừ các loại thu được từ quá trình thiêu kết; dạng hình, lá, dải và lá mỏng
+81019990 Loại khác
+## 810520
+81052010 Coban chưa gia công
+81052090 Loại khác
+## 810610
+81061010 Bismut chưa gia công; phế liệu và mảnh vụn; bột
+81061090 Loại khác
+## 810690
+81069010 Bismut chưa gia công; phế liệu và mảnh vụn; bột
+81069090 Loại khác
+## 811100
+81110010 Phế liệu và mảnh vụn
+81110090 Loại khác
+## 811269
+81126910 Chưa gia công; bột
+81126990 Loại khác
+## 820130
+82013010 Dụng cụ xới, làm tơi đất và cào đất
+82013090 Loại khác
+## 820299
+82029910 Lưỡi cưa thẳng
+82029990 Loại khác
+## 821192
+82119250 Loại phù hợp dùng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+82119292 Dao thợ săn, dao thợ lặn và dao đa năng
+82119299 Loại khác
+## 821193
+82119321 Có cán bằng kim loại cơ bản
+82119329 Loại khác
+82119330 Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên
+82119390 Loại khác
+## 821194
+82119410 Loại phù hợp dùng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+82119490 Loại khác
+## 821220
+82122010 Lưỡi dao cạo kép
+82122090 Loại khác
+## 830140
+83014010 Còng, xích tay
+83014020 Khóa cửa
+83014090 Loại khác
+## 830220
+83022010 Loại có đường kính (bao gồm cả lốp) trên 100 mm nhưng không quá 250 mm
+83022090 Loại khác
+## 830230
+83023010 Bản lề để móc khóa (Hasps)(SEN)
+83023090 Loại khác
+## 830241
+83024131 Bản lề để móc khóa (Hasps)(SEN)
+83024139 Loại khác
+83024190 Loại khác
+## 830242
+83024220 Bản lề để móc khóa (Hasps)(SEN)
+83024290 Loại khác
+## 830249
+83024910 Loại phù hợp cho yên cương
+83024991 Bản lề để móc khóa (Hasps)(SEN)
+83024999 Loại khác
+## 830400
+83040010 Tủ đựng hồ sơ và tủ đựng bộ phiếu thư mục
+83040091 Bằng nhôm
+83040092 Bằng niken
+83040099 Loại khác
+## 830510
+83051010 Dùng cho bìa gáy xoắn
+83051090 Loại khác
+## 830520
+83052010 Loại sử dụng cho văn phòng
+83052020 Loại khác, bằng sắt hoặc thép
+83052090 Loại khác
+## 830590
+83059010 Kẹp giấy
+83059090 Loại khác
+## 830629
+83062910 Bằng đồng hoặc chì
+83062920 Bằng niken
+83062930 Bằng nhôm
+83062990 Loại khác
+## 830630
+83063010 Bằng đồng
+83063091 Gương kim loại phản chiếu hình ảnh giao thông đặt tại các giao lộ hoặc các góc đường
+83063099 Loại khác
+## 830890
+83089010 Hạt trang trí
+83089020 Trang kim
+83089090 Loại khác
+## 830990
+83099010 Bao thiếc bịt nút chai
+83099020 Nắp của hộp (lon) nhôm
+83099060 Nắp bình phun xịt, bằng thiếc
+83099070 Nắp hộp khác
+83099081 Nút chai; nút xoáy
+83099089 Loại khác
+83099091 Nút chai; nút xoáy
+83099092 Nắp (bung) cho thùng kim loại; chụp nắp thùng (bung covers); dụng cụ niêm phong; bịt (bảo vệ) các góc hòm
+83099099 Loại khác
+## 831110
+83111010 Dạng cuộn
+83111090 Loại khác
+## 831120
+83112021 Dạng cuộn
+83112029 Loại khác
+83112090 Loại khác
+## 831130
+83113021 Dạng cuộn
+83113029 Loại khác
+83113091 Dạng cuộn
+83113099 Loại khác
+## 860800
+86080020 Thiết bị cơ điện
+86080090 Loại khác
+## 860900
+86090010 Bằng kim loại cơ bản
+86090090 Loại khác
+## 880220
+88022010 Máy bay
+88022090 Loại khác
+## 880230
+88023010 Máy bay
+88023090 Loại khác
+## 880240
+88024010 Máy bay
+88024090 Loại khác
+## 880400
+88040010 Dù xoay và bộ phận của chúng
+88040090 Loại khác
+## 880529
+88052910 Thiết bị huấn luyện bay mặt đất
+88052990 Loại khác
+## 890110
+89011010 Tổng dung tích (gross tonnage) không quá 26
+89011020 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89011060 Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000
+89011070 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89011080 Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000
+89011090 Tổng dung tích (gross tonnage) trên 5.000
+## 890120
+89012050 Tổng dung tích (gross tonnage) không quá 5.000
+89012071 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000
+89012072 Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000
+89012073 Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000
+89012080 Tổng dung tích (gross tonnage) trên 50.000
+## 890130
+89013050 Tổng dung tích (gross tonnage) không quá 5.000
+89013070 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+89013080 Tổng dung tích (gross tonnage) trên 50.000
+## 890190
+89019011 Tổng dung tích (gross tonnage) không quá 26
+89019012 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89019014 Tổng dung tích (gross tonnage) trên 500
+89019031 Tổng dung tích (gross tonnage) không quá 26
+89019032 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89019033 Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000
+89019034 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89019035 Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000
+89019036 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+89019037 Tổng dung tích (gross tonnage) trên 50.000
+## 890200
+89020031 Tổng dung tích (gross tonnage) không quá 26
+89020032 Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40
+89020033 Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101
+89020034 Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250
+89020035 Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000
+89020036 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89020037 Tổng dung tích (gross tonnage) trên 4.000
+89020041 Tổng dung tích (gross tonnage) không quá 26
+89020042 Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40
+89020043 Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101
+89020044 Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250
+89020045 Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000
+89020046 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89020047 Tổng dung tích (gross tonnage) trên 4.000
+## 890400
+89040010 Tổng dung tích (gross tonnage) không quá 26
+89040032 Công suất không quá 1.200 hp
+89040033 Công suất trên 1.200 hp nhưng không quá 3.200 hp
+89040034 Công suất trên 3.200 hp nhưng không quá 4.000 hp
+89040035 Công suất trên 4.000 hp
+## 890590
+89059010 Ụ nổi sửa chữa tàu
+89059090 Loại khác
+## 890690
+89069010 Có lượng giãn nước không quá 30 tấn
+89069020 Có lượng giãn nước trên 30 tấn nhưng không quá 300 tấn
+89069090 Loại khác
+## 890790
+89079010 Các loại phao nổi (buoys)
+89079090 Loại khác
+## 900110
+90011010 Sử dụng cho viễn thông và cho ngành điện khác
+90011090 Loại khác
+## 900190
+90019010 Sử dụng cho máy ảnh hoặc máy quay phim hoặc máy chiếu
+90019090 Loại khác
+## 900220
+90022010 Dùng cho máy chiếu phim
+90022020 Dùng cho máy quay phim, máy ảnh và máy chiếu khác
+90022090 Loại khác
+## 900290
+90029020 Dùng cho máy chiếu phim
+90029030 Dùng cho máy quay phim, máy ảnh và máy chiếu khác
+90029090 Loại khác
+## 900490
+90049010 Kính thuốc
+90049050 Kính bảo hộ
+90049090 Loại khác
+## 900580
+90058010 Dụng cụ thiên văn, trừ dụng cụ thiên văn vô tuyến
+90058090 Loại khác
+## 900590
+90059010 Dùng cho dụng cụ thiên văn, trừ dụng cụ thiên văn vô tuyến
+90059090 Loại khác
+## 900653
+90065310 Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))
+90065390 Loại khác
+## 900659
+90065911 Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))
+90065919 Loại khác
+90065921 Máy vẽ ảnh laser
+90065929 Loại khác
+90065930 Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành
+90065990 Loại khác
+## 900691
+90069110 Sử dụng cho máy vẽ ảnh laser thuộc phân nhóm 9006.59.21
+90069140 Loại khác, dùng cho máy ảnh của phân nhóm 9006.40 hoặc 9006.53
+90069150 Loại khác, dùng cho máy ảnh của phân nhóm 9006.59.11 hoặc 9006.59.19
+90069190 Loại khác
+## 900699
+90069910 Sử dụng cho thiết bị đèn chớp máy ảnh
+90069990 Loại khác
+## 900720
+90072010 Dùng cho phim khổ rộng dưới 16 mm
+90072090 Loại khác
+## 900850
+90085010 Máy đọc vi phim, vi thẻ hoặc vi bản khác, có hoặc không có khả năng sao chép
+90085090 Loại khác
+## 900890
+90089020 Của máy phóng và máy thu nhỏ ảnh (trừ máy chiếu phim)
+90089090 Loại khác
+## 901050
+90105010 Máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in
+90105020 Thiết bị biên tập và ghi tựa đề điện ảnh; thiết bị đọc X quang; máy chụp quang sử dụng cho quá trình tách màu ra phim; máy plate maker tự động
+90105090 Loại khác
+## 901060
+90106010 Của loại từ 300 inch trở lên
+90106090 Loại khác
+## 901090
+90109020 Của hàng hóa thuộc phân nhóm 9010.10.00
+90109030 Bộ phận và phụ kiện của máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in
+90109090 Loại khác
+## 901310
+90131010 Kính ngắm để lắp vào vũ khí; kính tiềm vọng
+90131020 Kính viễn vọng được thiết kế là bộ phận của máy, thiết bị, dụng cụ hoặc bộ dụng cụ của Chương này hoặc Phần XVI
+## 901380
+90138010 Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90138090 Loại khác
+## 901390
+90139010 Của hàng hóa thuộc phân nhóm 9013.20.00
+90139060 Của hàng hóa thuộc phân nhóm 9013.80.10
+90139070 Của hàng hóa thuộc phân nhóm 9013.10.10
+90139090 Loại khác
+## 901480
+90148011 Máy dò siêu âm (Sonar) hoặc máy đo sâu hồi âm
+90148019 Loại khác
+90148090 Loại khác
+## 901490
+90149010 Của thiết bị và dụng cụ, dùng trên tàu thuyền, hoạt động cùng với máy xử lý dữ liệu tự động
+90149090 Loại khác
+## 901510
+90151010 Dùng trong việc chụp ảnh hoặc quay phim
+90151090 Loại khác
+## 901580
+90158010 Thiết bị quan trắc sóng vô tuyến và gió điện từ
+90158090 Loại khác
+## 901710
+90171010 Máy vẽ (Plotters)
+90171090 Loại khác
+## 901720
+90172010 Thước
+90172040 Máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in
+90172050 Máy vẽ khác
+90172090 Loại khác
+## 901790
+90179030 Bộ phận và phụ kiện của máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in
+90179040 Bộ phận và phụ kiện, kể cả mạch in đã lắp ráp, của máy vẽ khác
+90179090 Loại khác
+## 901831
+90183110 Bơm tiêm dùng một lần
+90183190 Loại khác
+## 901839
+90183910 Ống thông
+90183990 Loại khác
+## 901890
+90189010 Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)
+90189020 Bộ theo dõi tĩnh mạch
+90189031 Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử
+90189039 Loại khác
+90189090 Loại khác
+## 901910
+90191010 Hoạt động bằng điện
+90191090 Loại khác
+## 901920
+90192010 Máy trợ thở xâm lấn (SEN)
+90192020 Máy trợ thở khác
+90192090 Loại khác
+## 902000
+90200010 Mặt nạ khuôn mặt (full face) chống hóa học, sinh học, phóng xạ và hạt nhân (CBRN)
+90200090 Loại khác
+## 902110
+90211010 Bằng sắt hoặc thép
+90211090 Loại khác
+## 902129
+90212910 Bằng sắt hoặc thép
+90212920 Bằng titan
+90212990 Loại khác
+## 902219
+90221910 Thiết bị sử dụng tia X để kiểm tra vật lý các điểm hàn nối trên tấm mạch in/tấm dây in
+90221990 Loại khác
+## 902290
+90229010 Bộ phận và phụ kiện của thiết bị sử dụng tia X để kiểm tra vật lý các điểm hàn nối trên mạch in đã lắp ráp
+90229020 Bộ phận và phụ kiện của thiết bị khác sử dụng tia X
+90229090 Loại khác
+## 902410
+90241010 Hoạt động bằng điện
+90241020 Không hoạt động bằng điện
+## 902480
+90248010 Hoạt động bằng điện
+90248020 Không hoạt động bằng điện
+## 902519
+90251911 Máy đo nhiệt độ dùng cho xe có động cơ
+90251919 Loại khác
+90251920 Không hoạt động bằng điện
+## 902610
+90261050 Dụng cụ đo mức sử dụng cho xe có động cơ
+90261090 Loại khác
+## 902620
+90262050 Máy đo áp suất sử dụng cho xe có động cơ
+90262090 Loại khác
+## 902789
+90278910 Lộ sáng kế
+90278990 Loại khác
+## 902810
+90281010 Thiết bị đo khí loại lắp trên bình ga
+90281090 Loại khác
+## 902820
+90282020 Công tơ nước
+90282090 Loại khác
+## 902830
+90283010 Máy đếm ki-lô-oát giờ
+90283090 Loại khác
+## 902890
+90289010 Vỏ hoặc thân của công tơ nước
+90289090 Loại khác
+## 902910
+90291020 Máy đếm cây số để tính tiền taxi
+90291090 Loại khác
+## 902920
+90292010 Đồng hồ tốc độ dùng cho xe có động cơ
+90292020 Máy đo tốc độ góc cho xe có động cơ
+90292090 Loại khác
+## 902990
+90299010 Của hàng hóa thuộc phân nhóm 9029.10; của máy hoạt nghiệm thuộc phân nhóm 9029.20
+90299020 Của đồng hồ chỉ tốc độ và máy đo tốc độ góc của phân nhóm 9029.20
+## 903033
+90303310 Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+90303320 Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định
+90303330 Ampe kế và vôn kế dùng cho xe có động cơ
+90303340 Dụng cụ đo điện trở khác
+90303390 Loại khác
+## 903082
+90308210 Máy kiểm tra vi mạch tích hợp
+90308290 Loại khác
+## 903084
+90308410 Dụng cụ và thiết bị để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90308490 Loại khác
+## 903089
+90308910 Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90308990 Loại khác
+## 903090
+90309010 Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+90309030 Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90309040 Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90309090 Loại khác
+## 903149
+90314910 Dụng cụ và thiết bị quang học để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn
+90314920 Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90314930 Dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90314990 Loại khác
+## 903180
+90318010 Thiết bị kiểm tra cáp
+90318090 Loại khác
+## 903190
+90319030 Bộ phận và phụ kiện kể cả mạch in đã lắp ráp dùng cho các dụng cụ và thiết bị quang học để kiểm tra các vi mạch hoặc linh kiện bán dẫn hoặc kiểm tra mặt nạ, mặt nạ quang hoặc lưới ca rô sử dụng trong sản xuất các linh kiện bán dẫn; bộ phận và phụ kiện của các thiết bị đo độ nhiễm bẩn bề mặt của vi mạch bán dẫn
+90319040 Của thiết bị quang học xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90319050 Của dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90319090 Loại khác
+## 903289
+90328910 Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền
+90328920 Dụng cụ và thiết bị tự động để điều chỉnh hoặc điều khiển dung dịch hóa chất hoặc điện hóa trong sản xuất tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+90328931 Bộ điều chỉnh điện áp tự động (ổn áp)
+90328939 Loại khác
+90328990 Loại khác
+## 903290
+90329010 Của hàng hóa thuộc phân nhóm 9032.89.10
+90329020 Của hàng hóa thuộc phân nhóm 9032.89.20
+90329090 Loại khác
+## 910400
+91040010 Dùng cho xe cộ
+91040090 Loại khác
+## 910591
+91059110 Đồng hồ hàng hải đo thời gian
+91059190 Loại khác
+## 910599
+91059910 Đồng hồ hàng hải đo thời gian
+91059990 Loại khác
+## 910690
+91069010 Dụng cụ đo thời gian đậu xe
+91069090 Loại khác
+## 920590
+92059010 Các loại đàn organ ống có phím; đàn đạp hơi (harmonium) và loại nhạc cụ có phím tương tự có bộ phận lưỡi gà không bằng kim loại
+92059090 Loại khác
+## 920890
+92089010 Dụng cụ tạo âm thanh để nhử mồi, tù và và các dụng cụ thổi bằng miệng khác để tạo âm thanh
+92089090 Loại khác
+## 920991
+92099110 Tấm đỡ đàn dây, đàn phím và khung kim loại của đàn piano loại đứng
+92099190 Loại khác
+## 930320
+93032010 Súng shotgun săn (SEN)
+93032090 Loại khác
+## 930330
+93033010 Súng trường săn
+93033090 Loại khác
+## 930390
+93039010 Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm
+93039090 Loại khác
+## 930400
+93040010 Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2
+93040090 Loại khác
+## 930591
+93059110 Bằng da thuộc hoặc vật liệu dệt (SEN)
+93059190 Loại khác
+## 930599
+93059911 Bằng da thuộc hoặc vật liệu dệt (SEN)
+93059919 Loại khác
+93059991 Bằng da thuộc hoặc vật liệu dệt (SEN)
+93059999 Loại khác
+## 930630
+93063011 Đạn cỡ .22
+93063019 Loại khác
+93063020 Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng
+93063030 Dùng cho súng thể thao, súng săn hoặc súng bắn bia, súng trường và súng cacbin, trừ súng shotgun
+93063091 Đạn cỡ 22
+93063099 Loại khác
+## 930690
+93069010 Bom, lựu đạn, ngư lôi, mìn, tên lửa và các loại đạn dược tương tự và bộ phận của chúng
+93069090 Loại khác
+## 940120
+94012010 Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+94012090 Loại khác
+## 940169
+94016910 Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)
+94016990 Loại khác
+## 940179
+94017910 Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)
+94017990 Loại khác
+## 940199
+94019910 Của ghế thuộc phân nhóm 9401.10.00
+94019921 Miếng tựa đầu và tay vịn của ghế thuộc phân nhóm 9401.20.10
+94019929 Loại khác
+94019930 Của ghế thuộc phân nhóm 9401.31.00 và 9401.39.00
+94019991 Bằng plastic
+94019999 Loại khác
+## 940210
+94021010 Ghế nha khoa và các bộ phận của chúng
+94021030 Ghế cắt tóc hoặc các loại ghế tương tự và các bộ phận của chúng
+## 940290
+94029011 Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)
+94029012 Bàn mổ, hoạt động bằng điện (SEN)
+94029013 Bàn mổ, không hoạt động bằng điện (SEN)
+94029014 Bàn khám (SEN)
+94029015 Giường bệnh (SEN)
+94029019 Loại khác
+94029090 Loại khác
+## 940320
+94032010 Tủ hút hơi độc (SEN)
+94032090 Loại khác
+## 940360
+94036010 Tủ hút hơi độc (SEN)
+94036090 Loại khác
+## 940370
+94037010 Xe tập đi cho trẻ em
+94037020 Tủ hút hơi độc (SEN)
+94037090 Loại khác
+## 940389
+94038910 Tủ hút hơi độc (SEN)
+94038990 Loại khác
+## 940399
+94039910 Của phân nhóm 9403.70.10
+94039990 Loại khác
+## 940421
+94042110 Bằng cao su xốp, đã hoặc chưa bọc
+94042120 Bằng plastic xốp, đã hoặc chưa bọc
+## 940429
+94042910 Đệm lò xo
+94042920 Loại khác, làm nóng/làm mát (SEN)
+94042990 Loại khác
+## 940511
+94051110 Đèn cho phòng mổ
+94051191 Đèn rọi
+94051199 Loại khác
+## 940519
+94051910 Đèn cho phòng mổ
+94051991 Đèn rọi
+94051992 Đèn gắn bóng đèn huỳnh quang
+94051999 Loại khác
+## 940521
+94052110 Đèn cho phòng mổ
+94052190 Loại khác
+## 940529
+94052910 Đèn cho phòng mổ
+94052990 Loại khác
+## 940541
+94054110 Đèn pha
+94054120 Đèn rọi khác
+94054130 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+94054140 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn; loại chiếu sáng bên ngoài khác
+94054190 Loại khác
+## 940542
+94054210 Đèn pha
+94054220 Đèn rọi khác
+94054230 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+94054240 Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16
+94054250 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn
+94054260 Loại chiếu sáng bên ngoài khác
+94054290 Loại khác
+## 940549
+94054910 Đèn pha
+94054920 Đèn rọi khác
+94054930 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+94054940 Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16
+94054950 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn
+94054960 Loại chiếu sáng bên ngoài khác
+94054990 Loại khác
+## 940550
+94055011 Bằng đồng sử dụng trong nghi lễ tôn giáo
+94055019 Loại khác
+94055040 Đèn bão
+94055050 Đèn thợ mỏ và đèn thợ khai thác đá
+94055090 Loại khác
+## 940561
+94056110 Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+94056190 Loại khác
+## 940569
+94056910 Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+94056990 Loại khác
+## 940591
+94059110 Dùng cho đèn phòng mổ
+94059120 Dùng cho đèn rọi
+94059140 Chao đèn hình cầu hoặc thông phong đèn
+94059150 Dùng cho đèn pha
+94059190 Loại khác
+## 940592
+94059210 Dùng cho đèn phòng mổ
+94059220 Dùng cho đèn rọi
+94059230 Dùng cho đèn pha
+94059290 Loại khác
+## 940599
+94059910 Chụp đèn bằng vật liệu dệt
+94059920 Chụp đèn bằng vật liệu khác
+94059930 Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19
+94059940 Dùng cho đèn pha hoặc đèn rọi
+94059950 Loại khác, bằng gốm, sứ hoặc kim loại
+94059990 Loại khác
+## 940610
+94061010 Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt
+94061090 Loại khác
+## 940620
+94062010 Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt
+94062090 Loại khác
+## 940690
+94069011 Bằng sắt hoặc bằng thép
+94069012 Bằng plastic
+94069019 Loại khác
+94069020 Loại khác, bằng plastic hoặc bằng nhôm
+94069030 Loại khác, bằng sắt hoặc thép
+94069040 Loại khác, bằng xi măng, bằng bê tông hoặc đá nhân tạo
+94069090 Loại khác
+## 950300
+95030010 Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh; xe của búp bê
+95030021 Búp bê, có hoặc không có trang phục
+95030022 Quần áo và phụ kiện quần áo; giầy và mũ
+95030029 Loại khác
+95030030 Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng
+95030040 Các mô hình thu nhỏ theo tỷ lệ ("scale") và các mô hình giải trí tương tự, có hoặc không vận hành
+95030050 Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic
+95030060 Đồ chơi hình con vật hoặc sinh vật không phải hình người
+95030070 Các loại đồ chơi đố trí (puzzles)
+95030080 Thiết bị giáo dục điện tử tương tác cầm tay được thiết kế chủ yếu cho trẻ em (SEN)
+95030091 Đồ chơi, xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật; bộ xếp chữ; bộ đồ chơi tạo chữ và tập nói; bộ đồ chơi in hình; bộ đồ chơi đếm (abaci); máy may đồ chơi; máy chữ đồ chơi
+95030092 Dây nhảy
+95030093 Hòn bi
+95030094 Các đồ chơi khác, bằng cao su
+95030099 Loại khác
+## 950420
+95042020 Bàn bi-a các loại
+95042030 Phấn xoa đầu gậy bi-a
+95042090 Loại khác
+## 950430
+95043030 Trò chơi may rủi ngẫu nhiên với giải thưởng nhận ngay bằng tiền mặt; các bộ phận và phụ kiện của chúng
+95043040 Máy trò chơi bắn bi (pintables) hoặc các máy trò chơi tự động (có khe nhét xèng hoặc xu) khác
+95043050 Loại khác, bộ phận bằng gỗ, giấy hoặc plastic
+95043090 Loại khác
+## 950450
+95045010 Loại sử dụng với một bộ thu truyền hình
+95045090 Loại khác
+## 950490
+95049010 Các loại đồ phụ trợ để chơi bowling
+95049021 Bằng gỗ, giấy hoặc plastic
+95049029 Loại khác
+95049032 Bàn thiết kế để chơi bạc bằng gỗ hoặc plastic
+95049033 Loại bàn khác thiết kế để chơi bạc
+95049034 Quân bài Mạt chược bằng gỗ, giấy hoặc plastic
+95049035 Quân bài Mạt chược khác
+95049036 Loại khác, bằng gỗ, giấy hoặc plastic
+95049039 Loại khác
+95049092 Bằng gỗ hoặc bằng plastic
+95049093 Loại khác
+95049095 Bằng gỗ, giấy hoặc plastic
+95049099 Loại khác
+## 950640
+95064010 Bàn
+95064090 Loại khác
+## 950699
+95069910 Cung (kể cả nỏ) và mũi tên
+95069920 Lưới (*), đệm bảo vệ ống chân và tấm ốp bảo vệ ống chân
+95069930 Quả cầu lông
+95069990 Loại khác
+## 960110
+96011010 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96011090 Loại khác
+## 960190
+96019011 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96019012 Nhân nuôi cấy ngọc trai (SEN)
+96019019 Loại khác
+96019021 Đồ trang trí
+96019029 Loại khác
+96019091 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96019099 Loại khác
+## 960200
+96020010 Vỏ viên nhộng bằng gelatin dùng cho dược phẩm
+96020020 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96020090 Loại khác
+## 960310
+96031010 Bàn chải
+96031020 Chổi
+## 960390
+96039010 Túm và búi đã làm sẵn để làm chổi hoặc bàn chải
+96039020 Dụng cụ cơ học vận hành bằng tay để quét sàn, không có động cơ
+96039040 Bàn chải khác
+96039090 Loại khác
+## 960400
+96040010 Bằng kim loại
+96040090 Loại khác
+## 960610
+96061010 Bằng plastic
+96061090 Loại khác
+## 960630
+96063010 Bằng plastic
+96063090 Loại khác
+## 960810
+96081010 Có thân chủ yếu bằng plastic
+96081090 Loại khác
+## 960830
+96083020 Bút máy
+96083090 Loại khác
+## 960860
+96086010 Bằng plastic
+96086090 Loại khác
+## 960891
+96089110 Bằng vàng hoặc mạ vàng
+96089190 Loại khác
+## 960899
+96089910 Bút viết giấy nhân bản
+96089991 Bộ phận của bút bi, bằng plastic
+96089999 Loại khác
+## 960910
+96091010 Bút chì đen
+96091090 Loại khác
+## 960990
+96099010 Bút chì bằng đá phiến (slate) dùng trong trường học
+96099030 Bút chì và bút màu khác trừ loại thuộc phân nhóm 9609.10
+96099091 Phấn vẽ hoặc phấn viết
+96099099 Loại khác
+## 961000
+96100010 Bảng đá phiến (slate) dùng trong trường học
+96100090 Loại khác
+## 961210
+96121010 Bằng vật liệu dệt
+96121090 Loại khác
+## 961310
+96131010 Bằng plastic
+96131090 Loại khác
+## 961320
+96132010 Bằng plastic
+96132090 Loại khác
+## 961380
+96138010 Bật lửa áp điện dùng cho lò và bếp
+96138020 Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic
+96138030 Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic
+96138090 Loại khác
+## 961390
+96139010 Ống chứa hoặc bộ phận chứa khác có thể nạp lại của bật lửa cơ khí, có chứa nhiên liệu lỏng hoặc khí hóa lỏng
+96139090 Loại khác
+## 961400
+96140010 Gỗ hoặc rễ cây đã tạo dáng thô để làm tẩu thuốc
+96140090 Loại khác
+## 961511
+96151120 Bằng cao su cứng
+96151130 Bằng plastic
+## 961590
+96159011 Bằng nhôm
+96159012 Bằng sắt hoặc thép
+96159013 Bằng plastic
+96159019 Loại khác
+96159021 Bằng plastic
+96159022 Bằng sắt hoặc thép
+96159023 Bằng nhôm
+96159029 Loại khác
+96159091 Bằng nhôm
+96159092 Bằng sắt hoặc thép
+96159093 Bằng plastic
+96159099 Loại khác
+## 961610
+96161010 Bình, lọ xịt nước hoa và bình, lọ xịt trang điểm tương tự
+96161020 Các bộ phận gá lắp và đầu xịt
+## 961700
+96170010 Phích chân không và các loại bình chân không khác, hoàn chỉnh
+96170020 Các bộ phận, trừ ruột thủy tinh
+## 961900
+96190011 Lõi thấm hút bằng vật liệu dệt
+96190012 Băng vệ sinh (miếng) và băng vệ sinh dạng ống (tampons) từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+96190013 Bỉm và miếng lót vệ sinh trẻ em từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+96190014 Loại khác, từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+96190019 Loại khác
+96190092 Băng vệ sinh (miếng)
+96190093 Loại khác, dệt kim hoặc móc
+96190099 Loại khác
+## 962000
+96200010 Bằng plastic
+96200020 Bằng carbon và graphit
+96200030 Bằng sắt và thép
+96200040 Bằng nhôm
+96200050 Bằng gỗ
+96200090 Loại khác
