@@ -1,0 +1,1035 @@
+QUÉT VÀ SOẠN KHOÁ TỪ VỰNG CÒN THIẾU cho biểu thuế (mục đích: số hoá ranh giới giữa các dòng 8 số cùng phân nhóm 6 số). Dưới đây là (A) danh sách khoá ĐÃ CÓ trong tu-vung@2, (B) hệ đơn vị đã có, (C) mẫu khoá đúng khuôn, (D) các PN6 với mô tả từng dòng 8 số nguyên văn. NHIỆM VỤ: với mỗi PN6, đọc mô tả các dòng; nếu phân biệt các dòng dựa vào MỘT TIÊU CHÍ mà KHÔNG khoá nào ở (A) biểu diễn được (đại lượng đo có đơn vị như chiều dài, độ dày, dung tích, công suất, tốc độ, khối lượng, áp suất, hàm lượng…; hoặc có/không một đặc điểm; hoặc một tập giá trị liệt kê như kiểu, dạng, loại động cơ…) thì SOẠN khoá mới. KHÔNG soạn lại khoá đã có (kể cả khi tên khác nhưng cùng ý: dùng khoá cũ). Gộp mọi PN6 dùng cùng tiêu chí về MỘT khoá (tên camelCase tiếng Việt không dấu, ngắn, tổng quát; không gắn với một mặt hàng nếu tiêu chí dùng chung). Tiêu chí quá đặc thù chỉ xuất hiện 1 lần và không đo/liệt kê được gọn: bỏ qua. Không bịa ngưỡng; ghiChu trích NGUYÊN VĂN 1–3 chữ biểu ví dụ kèm mã 8 số; thêm trường "pn6Mau" (tối đa 5 PN6) và "soDong" (số dòng 8 số dùng tiêu chí này). QUY TẮC LƯỢC ĐỒ (máy kiểm sẽ ĐỎ nếu sai): (1) khoá SO: heDonVi PHẢI là hệ đã có ở (B) HOẶC khai hệ mới trong "heDonViMoi" (vd {"nhietDo":{"°C":1}}), donViChuan là đơn vị của hệ đó; thêm bí danh viết tắt chữ thường vào "bietDanhMoi"; (2) khoá SO canNguCanh:true ⇒ cachDoc vi/en/zh có ≥1 mẫu; (3) mọi khoá: nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi} (SO: chuỗi có {giaTri} và đơn vị), ghiChu, nguonLoai "AI_DA_KIEM"; (4) CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong, cachViet{vi,viPhuDinh}; (5) LIET_KE: giaTriHopLe = MẢNG CHUỖI id HOA_GẠCH_DƯỚI, moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet?}} (cachViet chuỗi không có ()/;/ " / "), cachDoc cấp khoá = {"vi":[],"en":[],"zh":[]} và cachViet cấp khoá = {"vi":"{giaTri}"}. Hàm lượng % khối lượng dùng hệ phanTram; áp suất hệ apSuat (psi, MPa). ĐẦU RA: MỘT khối ```json {"khoa":[mục...],"heDonViMoi":{...},"bietDanhMoi":{...},"khongChac":[tên khoá...]} duy nhất, không giải thích. Nếu số khoá vượt khả năng đầu ra, ưu tiên khoá có soDong lớn nhất và ghi trong "khongChac" các tiêu chí còn bỏ sót.
+
+=== (A) KHOÁ ĐÃ CÓ ===
+dienAp(SO,V) điện áp
+dongDien(SO,A) dòng điện (định mức)
+congSuat(SO,W) công suất
+tanSo(SO,Hz) tần số / dải tần
+luuLuong(SO,m3/h) lưu lượng
+dungTichXiLanh(SO,cc) dung tích xi lanh
+khoiLuong(SO,kg) khối lượng
+duongKinh(SO,mm) đường kính (ngoài)
+duongKinhTrong(SO,mm) đường kính trong (cửa nạp/cửa thoát, DN)
+duongKinhLoi(SO,mm) đường kính lõi (mỗi lõi dẫn điện)
+chieuCao(SO,mm) chiều cao
+kichThuoc(SO,mm) kích thước (dài x rộng x cao)
+chieuDaiCuon(SO,m) chiều dài (hàng dài: dây, cáp, ống, cuộn)
+daGanDauNoi(CO_KHONG) đã gắn đầu nối
+coCachDien(CO_KHONG) có cách điện
+coBoXuLyLapTrinh(CO_KHONG) có trang bị bộ xử lý lập trình
+coKhungChupQuaDau(CO_KHONG) có khung chụp qua đầu
+hieuChinhThiLuc(CO_KHONG) hiệu chỉnh thị lực (kính thuốc)
+chongNang(CO_KHONG) chống nắng (kính râm)
+coChucNangGhi(CO_KHONG) có chức năng ghi (hình/âm)
+daGhi(CO_KHONG) đã ghi (có dữ liệu)
+coLuoiBaoVe(CO_KHONG) có lưới bảo vệ
+coManHinh(CO_KHONG) có màn hình hiển thị
+coCamera(CO_KHONG) có camera
+coBanh(CO_KHONG) có bánh xe
+hoatDongBangDien(CO_KHONG) hoạt động bằng điện
+coKetHopThietBiThu(CO_KHONG) kết hợp thiết bị thu
+coGiaNhiet(CO_KHONG) có gia nhiệt
+laBoPhan(CO_KHONG) là bộ phận (không phải hàng hoàn chỉnh)
+datChim(CO_KHONG) loại đặt chìm
+coKhoangPhaTron(CO_KHONG) có khoang pha trộn lưu chất
+loaiDongDien(LIET_KE) loại dòng điện
+soPha(LIET_KE) số pha
+kieuDotChay(LIET_KE) kiểu đốt cháy của động cơ piston
+nguonSang(LIET_KE) nguồn sáng
+nguonNangLuong(LIET_KE) nguồn năng lượng
+cachDieuKhien(LIET_KE) cách điều khiển / vận hành
+kieuBom(LIET_KE) kiểu bơm
+loaiRoLe(LIET_KE) loại rơ le
+loaiCongTac(LIET_KE) loại thiết bị đóng ngắt (8536.50)
+loaiPhichOCam(LIET_KE) loại phích cắm / ổ cắm (8536.69)
+phamViSuDung(LIET_KE) phạm vi sử dụng
+mauHienThi(LIET_KE) màu hiển thị
+kieuDongCoDien(LIET_KE) kiểu động cơ điện (8501.10)
+tinhTrang(LIET_KE) tình trạng hàng
+chatLieu(CHAT_LIEU_THEO_VI_TRI) chất liệu (theo vị trí)
+dungCho(CONG_DUNG) dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)
+congDung(CONG_DUNG) công dụng / mục đích
+tenLoai(TEN_LOAI) tên loại hàng
+nhanHieu(TEN_LOAI) nhãn hiệu
+model(TEN_LOAI) model
+kyMaHieu(TEN_LOAI) ký, mã hiệu
+nhaSanXuat(TEN_LOAI) nhà sản xuất
+chiHoacChuYeu(CO_KHONG) chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)
+thietKeChoTreEm(CO_KHONG) được thiết kế chủ yếu cho trẻ em
+daNapChuongTrinh(CO_KHONG) đã nạp chương trình/firmware (bo mạch, vi điều khiển)
+soLoi(SO,lõi) số lõi dẫn (ruột dẫn)
+soSoi(SO,sợi) số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ "sợi")
+tiLe(SO,lần) tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)
+phuongPhapCheTao(LIET_KE) phương pháp chế tạo
+phuongThucTruyenDan(LIET_KE) phương thức truyền dẫn
+daXuLyBeMat(CO_KHONG) đã được xử lý bề mặt
+nhienLieu(LIET_KE) nhiên liệu / nguồn nhiệt (bếp, lò)
+phuongPhapIn(LIET_KE) phương pháp in (vải, hàng dệt)
+tinhDanHoi(CO_KHONG) đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)
+loaiSoiDet(LIET_KE) loại xơ/sợi dệt (vật liệu dệt chủ yếu)
+doDay(SO,mm) độ dày
+congSuatBieuKien(SO,kVA) công suất biểu kiến
+dangNguyenSinh(LIET_KE) dạng vật lý nguyên sinh của polyme
+daLapRap(CO_KHONG) đã lắp ráp
+dungTich(SO,lít) dung tích chứa
+sanLuongHoi(SO,tấn/giờ) sản lượng hơi / công suất hơi
+theTich(SO,cm3) thể tích ngoài / thể tích bên ngoài
+heDienHoa(LIET_KE) hệ điện hóa của pin
+dungLuong(SO,Ah) dung lượng phóng điện
+daHoaDeo(CO_KHONG) đã hóa dẻo
+coBoLoc(CO_KHONG) đã lắp bộ phận lọc
+hamLuongCarbon(SO,%) hàm lượng carbon
+gioiHanChay(SO,psi) giới hạn chảy
+chieuRong(SO,mm) chiều rộng
+khaNangChiuApLuc(SO,psi) khả năng chịu áp lực
+duongCheoNgoai(SO,mm) đường chéo ngoài mặt cắt ngang
+coRen(CO_KHONG) có ren (ở đầu hoặc thân ống)
+doBenKeo(SO,MPa) độ bền kéo
+hamLuongNiken(SO,%) hàm lượng niken
+lopMaPhu(LIET_KE) lớp mạ hoặc tráng phủ bề mặt
+dungLamGiong(CO_KHONG) để nhân giống / làm giống / gieo trồng
+dongBaoBiKinKhiDeBanLe(CO_KHONG) đóng bao bì kín khí để bán lẻ
+nongDoCon(SO,%) nồng độ cồn (% thể tích)
+phuongPhapBaoQuan(LIET_KE) phương pháp bảo quản / trạng thái bảo quản
+dangBaoCheThuoc(LIET_KE) dạng bào chế / đường dùng của thuốc
+mucDoTinhCheDau(LIET_KE) mức độ tinh chế của dầu và chất béo
+chiSoIot(SO,IV) chỉ số iốt (IV)
+triSoOctan(SO,RON) trị số octan (RON / Octane)
+daRang(CO_KHONG) đã rang
+tachXuongCoHoc(CO_KHONG) thịt tách hoặc lọc khỏi xương bằng phương pháp cơ học (MSM/MDM)
+
+=== (B) HỆ ĐƠN VỊ ĐÃ CÓ ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"], "phanTram": ["%"], "apSuat": ["psi", "MPa"], "chiSoIot": ["IV"], "triSoOctan": ["RON", "octane"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+
+=== (D) CÁC PN6 (mã 8 số + mô tả nguyên văn) ===
+## 740100
+74010010 Sten đồng
+74010020 Đồng xi măng hóa (đồng kết tủa)
+## 740200
+74020010 Đồng xốp (blister copper)
+74020090 Loại khác
+## 740710
+74071030 Dạng hình
+74071041 Mặt cắt ngang hình vuông hoặc hình chữ nhật
+74071049 Loại khác
+## 740811
+74081120 Có kích thước mặt cắt ngang lớn nhất không quá 8 mm
+74081130 Có kích thước mặt cắt ngang lớn nhất trên 8 mm nhưng không quá 14 mm
+74081190 Loại khác
+## 740819
+74081910 Được phủ, mạ hoặc tráng vàng hoặc bạc (SEN)
+74081990 Loại khác
+## 740829
+74082910 Hợp kim đồng-thiếc (đồng thanh)(SEN)
+74082990 Loại khác
+## 741011
+74101110 Tấm ép lớp được dát phủ đồng dùng làm tấm mạch in (SEN)
+74101190 Loại khác
+## 741220
+74122020 Phụ kiện ghép nối cho ống vòi(SEN)
+74122091 Bằng hợp kim đồng - kẽm (đồng thau)
+74122099 Loại khác
+## 741300
+74130011 Cáp
+74130019 Loại khác
+74130091 Cáp
+74130099 Loại khác
+## 741510
+74151010 Đinh
+74151020 Ghim dập
+74151090 Loại khác
+## 741533
+74153310 Đinh vít
+74153320 Bu lông và đai ốc
+## 741810
+74181010 Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự
+74181030 Thiết bị nấu hoặc đun nóng dùng trong gia đình, không dùng điện và các bộ phận của các sản phẩm này
+74181090 Loại khác
+## 741920
+74192010 Xích và các bộ phận của xích
+74192020 Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt
+74192090 Loại khác
+## 741980
+74198010 Xích và các bộ phận của xích
+74198021 Đai liền cho máy móc
+74198029 Loại khác
+74198030 Lò xo
+74198040 Hộp đựng thuốc lá điếu
+74198050 Thiết bị nấu hoặc đun nóng, trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này
+74198060 Các vật dụng được thiết kế riêng sử dụng trong nghi lễ tôn giáo (SEN)
+74198070 A-nốt mạ điện; dụng cụ đo dung tích (trừ loại gia dụng)
+74198080 Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt
+74198090 Loại khác
+## 750890
+75089030 Bu lông và đai ốc
+75089050 Các sản phẩm mạ điện a-nốt, bao gồm cả các sản phẩm sản xuất bằng phương pháp điện phân
+75089090 Loại khác
+## 760320
+76032010 Vảy nhôm
+76032020 Bột có cấu trúc lớp
+## 760410
+76041010 Dạng thanh và que
+76041090 Loại khác
+## 760421
+76042110 Loại phù hợp để làm dàn lạnh của máy điều hòa không khí cho xe có động cơ (SEN)
+76042120 Thanh đệm bằng nhôm cho cửa ra vào và cửa sổ (SEN)
+76042190 Loại khác
+## 760429
+76042910 Dạng thanh và que được ép đùn
+76042930 Dạng hình chữ Y dùng cho dây khóa kéo, ở dạng cuộn
+76042990 Loại khác
+## 760519
+76051910 Đường kính không quá 0,0508 mm
+76051990 Loại khác
+## 760529
+76052910 Có đường kính không quá 0,254 mm
+76052990 Loại khác
+## 760611
+76061110 Được dát phẳng hoặc tạo hình bằng phương pháp cán hoặc ép, nhưng chưa xử lý bề mặt
+76061190 Loại khác
+## 760612
+76061220 Đế bản nhôm, chưa nhạy, dùng trong công nghệ in
+76061232 Để làm lon (kể cả đáy lon và nắp lon), dạng cuộn(SEN)
+76061233 Loại khác, bằng hợp kim nhôm 5082 hoặc 5182, có chiều rộng trên 1m, dạng cuộn (SEN)
+76061234 Loại khác, tấm litô hợp kim HA 1052 độ cứng H19 và hợp kim HA 1050 độ cứng H18
+76061235 Loại khác, đã gia công bề mặt
+76061239 Loại khác
+76061290 Loại khác
+## 760720
+76072010 Nhôm lá mỏng cách nhiệt(SEN)
+76072091 Được in hình mẫu, hoặc màu vàng hoặc màu bạc
+76072099 Loại khác
+## 761010
+76101010 Cửa ra vào và các loại khung cửa ra vào và ngưỡng cửa ra vào
+76101090 Loại khác
+## 761090
+76109030 Mái phao trong hoặc mái phao ngoài dùng cho bể chứa xăng dầu(SEN)
+76109091 Cầu và nhịp cầu; tháp hoặc cột lưới
+76109099 Loại khác
+## 761290
+76129010 Đồ chứa được đúc liền phù hợp dùng để đựng sữa tươi (SEN)
+76129090 Loại khác
+## 761410
+76141011 Có đường kính không quá 25,3 mm
+76141012 Có đường kính trên 25,3 mm nhưng không quá 28,28 mm
+76141019 Loại khác
+76141090 Loại khác
+## 761490
+76149011 Có đường kính không quá 25,3 mm
+76149012 Có đường kính trên 25,3 mm nhưng không quá 28,28 mm
+76149019 Loại khác
+76149090 Loại khác
+## 761510
+76151010 Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự
+76151090 Loại khác
+## 761520
+76152020 Bô để giường bệnh, bô đi tiểu hoặc bô để phòng ngủ
+76152090 Loại khác
+## 761610
+76161010 Đinh
+76161020 Ghim dập và đinh móc; bulông và đai ốc
+76161090 Loại khác
+## 761699
+76169920 Nhôm bịt đầu ống loại phù hợp dùng để sản xuất bút chì (SEN)
+76169930 Đồng xèng, hình tròn, kích thước chiều dày trên 1/10 đường kính (SEN)
+76169940 Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt
+76169951 Rèm chớp lật(SEN)
+76169959 Loại khác
+76169960 Máng và chén để hứng mủ cao su
+76169970 Hộp đựng thuốc lá điếu
+76169980 Sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới
+76169990 Loại khác
+## 780411
+78041110 Chiều dày không quá 0,15 mm
+78041190 Loại khác
+## 780600
+78060020 Thanh, que, dạng hình và dây
+78060030 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+78060040 Len chì; vòng đệm; tấm điện a-nốt
+78060090 Loại khác
+## 790500
+79050040 Chiều dày không quá 0,15 mm
+79050090 Loại khác
+## 790700
+79070030 Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác
+79070040 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+79070091 Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+79070092 Các sản phẩm gia dụng khác
+79070093 Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin(SEN)
+79070099 Loại khác
+## 800300
+80030010 Thanh và que hàn
+80030090 Loại khác
+## 800700
+80070020 Dạng tấm, lá và dải, có chiều dày trên 0,2 mm
+80070030 Lá mỏng (đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự), có chiều dày (trừ phần bồi) không quá 0,2 mm; dạng bột và vảy
+80070040 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+80070091 Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+80070092 Các sản phẩm gia dụng khác
+80070093 Ống có thể gấp lại được (collapsible tubes)
+80070099 Loại khác
+## 810199
+81019910 Thanh và que, trừ các loại thu được từ quá trình thiêu kết; dạng hình, lá, dải và lá mỏng
+81019990 Loại khác
+## 810520
+81052010 Coban chưa gia công
+81052090 Loại khác
+## 810610
+81061010 Bismut chưa gia công; phế liệu và mảnh vụn; bột
+81061090 Loại khác
+## 810690
+81069010 Bismut chưa gia công; phế liệu và mảnh vụn; bột
+81069090 Loại khác
+## 811100
+81110010 Phế liệu và mảnh vụn
+81110090 Loại khác
+## 811269
+81126910 Chưa gia công; bột
+81126990 Loại khác
+## 820130
+82013010 Dụng cụ xới, làm tơi đất và cào đất
+82013090 Loại khác
+## 820299
+82029910 Lưỡi cưa thẳng
+82029990 Loại khác
+## 821192
+82119250 Loại phù hợp dùng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+82119292 Dao thợ săn, dao thợ lặn và dao đa năng
+82119299 Loại khác
+## 821193
+82119321 Có cán bằng kim loại cơ bản
+82119329 Loại khác
+82119330 Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên
+82119390 Loại khác
+## 821194
+82119410 Loại phù hợp dùng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+82119490 Loại khác
+## 821220
+82122010 Lưỡi dao cạo kép
+82122090 Loại khác
+## 830140
+83014010 Còng, xích tay
+83014020 Khóa cửa
+83014090 Loại khác
+## 830220
+83022010 Loại có đường kính (bao gồm cả lốp) trên 100 mm nhưng không quá 250 mm
+83022090 Loại khác
+## 830230
+83023010 Bản lề để móc khóa (Hasps)(SEN)
+83023090 Loại khác
+## 830241
+83024131 Bản lề để móc khóa (Hasps)(SEN)
+83024139 Loại khác
+83024190 Loại khác
+## 830242
+83024220 Bản lề để móc khóa (Hasps)(SEN)
+83024290 Loại khác
+## 830249
+83024910 Loại phù hợp cho yên cương
+83024991 Bản lề để móc khóa (Hasps)(SEN)
+83024999 Loại khác
+## 830400
+83040010 Tủ đựng hồ sơ và tủ đựng bộ phiếu thư mục
+83040091 Bằng nhôm
+83040092 Bằng niken
+83040099 Loại khác
+## 830510
+83051010 Dùng cho bìa gáy xoắn
+83051090 Loại khác
+## 830520
+83052010 Loại sử dụng cho văn phòng
+83052020 Loại khác, bằng sắt hoặc thép
+83052090 Loại khác
+## 830590
+83059010 Kẹp giấy
+83059090 Loại khác
+## 830629
+83062910 Bằng đồng hoặc chì
+83062920 Bằng niken
+83062930 Bằng nhôm
+83062990 Loại khác
+## 830630
+83063010 Bằng đồng
+83063091 Gương kim loại phản chiếu hình ảnh giao thông đặt tại các giao lộ hoặc các góc đường
+83063099 Loại khác
+## 830890
+83089010 Hạt trang trí
+83089020 Trang kim
+83089090 Loại khác
+## 830990
+83099010 Bao thiếc bịt nút chai
+83099020 Nắp của hộp (lon) nhôm
+83099060 Nắp bình phun xịt, bằng thiếc
+83099070 Nắp hộp khác
+83099081 Nút chai; nút xoáy
+83099089 Loại khác
+83099091 Nút chai; nút xoáy
+83099092 Nắp (bung) cho thùng kim loại; chụp nắp thùng (bung covers); dụng cụ niêm phong; bịt (bảo vệ) các góc hòm
+83099099 Loại khác
+## 831110
+83111010 Dạng cuộn
+83111090 Loại khác
+## 831120
+83112021 Dạng cuộn
+83112029 Loại khác
+83112090 Loại khác
+## 831130
+83113021 Dạng cuộn
+83113029 Loại khác
+83113091 Dạng cuộn
+83113099 Loại khác
+## 860800
+86080020 Thiết bị cơ điện
+86080090 Loại khác
+## 860900
+86090010 Bằng kim loại cơ bản
+86090090 Loại khác
+## 880220
+88022010 Máy bay
+88022090 Loại khác
+## 880230
+88023010 Máy bay
+88023090 Loại khác
+## 880240
+88024010 Máy bay
+88024090 Loại khác
+## 880400
+88040010 Dù xoay và bộ phận của chúng
+88040090 Loại khác
+## 880529
+88052910 Thiết bị huấn luyện bay mặt đất
+88052990 Loại khác
+## 890110
+89011010 Tổng dung tích (gross tonnage) không quá 26
+89011020 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89011060 Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000
+89011070 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89011080 Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000
+89011090 Tổng dung tích (gross tonnage) trên 5.000
+## 890120
+89012050 Tổng dung tích (gross tonnage) không quá 5.000
+89012071 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000
+89012072 Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000
+89012073 Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000
+89012080 Tổng dung tích (gross tonnage) trên 50.000
+## 890130
+89013050 Tổng dung tích (gross tonnage) không quá 5.000
+89013070 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+89013080 Tổng dung tích (gross tonnage) trên 50.000
+## 890190
+89019011 Tổng dung tích (gross tonnage) không quá 26
+89019012 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89019014 Tổng dung tích (gross tonnage) trên 500
+89019031 Tổng dung tích (gross tonnage) không quá 26
+89019032 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+89019033 Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000
+89019034 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89019035 Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000
+89019036 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+89019037 Tổng dung tích (gross tonnage) trên 50.000
+## 890200
+89020031 Tổng dung tích (gross tonnage) không quá 26
+89020032 Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40
+89020033 Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101
+89020034 Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250
+89020035 Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000
+89020036 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89020037 Tổng dung tích (gross tonnage) trên 4.000
+89020041 Tổng dung tích (gross tonnage) không quá 26
+89020042 Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40
+89020043 Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101
+89020044 Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250
+89020045 Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000
+89020046 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+89020047 Tổng dung tích (gross tonnage) trên 4.000
+## 890400
+89040010 Tổng dung tích (gross tonnage) không quá 26
+89040032 Công suất không quá 1.200 hp
+89040033 Công suất trên 1.200 hp nhưng không quá 3.200 hp
+89040034 Công suất trên 3.200 hp nhưng không quá 4.000 hp
+89040035 Công suất trên 4.000 hp
+## 890590
+89059010 Ụ nổi sửa chữa tàu
+89059090 Loại khác
+## 890690
+89069010 Có lượng giãn nước không quá 30 tấn
+89069020 Có lượng giãn nước trên 30 tấn nhưng không quá 300 tấn
+89069090 Loại khác
+## 890790
+89079010 Các loại phao nổi (buoys)
+89079090 Loại khác
+## 900110
+90011010 Sử dụng cho viễn thông và cho ngành điện khác
+90011090 Loại khác
+## 900190
+90019010 Sử dụng cho máy ảnh hoặc máy quay phim hoặc máy chiếu
+90019090 Loại khác
+## 900220
+90022010 Dùng cho máy chiếu phim
+90022020 Dùng cho máy quay phim, máy ảnh và máy chiếu khác
+90022090 Loại khác
+## 900290
+90029020 Dùng cho máy chiếu phim
+90029030 Dùng cho máy quay phim, máy ảnh và máy chiếu khác
+90029090 Loại khác
+## 900490
+90049010 Kính thuốc
+90049050 Kính bảo hộ
+90049090 Loại khác
+## 900580
+90058010 Dụng cụ thiên văn, trừ dụng cụ thiên văn vô tuyến
+90058090 Loại khác
+## 900590
+90059010 Dùng cho dụng cụ thiên văn, trừ dụng cụ thiên văn vô tuyến
+90059090 Loại khác
+## 900653
+90065310 Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))
+90065390 Loại khác
+## 900659
+90065911 Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))
+90065919 Loại khác
+90065921 Máy vẽ ảnh laser
+90065929 Loại khác
+90065930 Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành
+90065990 Loại khác
+## 900691
+90069110 Sử dụng cho máy vẽ ảnh laser thuộc phân nhóm 9006.59.21
+90069140 Loại khác, dùng cho máy ảnh của phân nhóm 9006.40 hoặc 9006.53
+90069150 Loại khác, dùng cho máy ảnh của phân nhóm 9006.59.11 hoặc 9006.59.19
+90069190 Loại khác
+## 900699
+90069910 Sử dụng cho thiết bị đèn chớp máy ảnh
+90069990 Loại khác
+## 900720
+90072010 Dùng cho phim khổ rộng dưới 16 mm
+90072090 Loại khác
+## 900850
+90085010 Máy đọc vi phim, vi thẻ hoặc vi bản khác, có hoặc không có khả năng sao chép
+90085090 Loại khác
+## 900890
+90089020 Của máy phóng và máy thu nhỏ ảnh (trừ máy chiếu phim)
+90089090 Loại khác
+## 901050
+90105010 Máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in
+90105020 Thiết bị biên tập và ghi tựa đề điện ảnh; thiết bị đọc X quang; máy chụp quang sử dụng cho quá trình tách màu ra phim; máy plate maker tự động
+90105090 Loại khác
+## 901060
+90106010 Của loại từ 300 inch trở lên
+90106090 Loại khác
+## 901090
+90109020 Của hàng hóa thuộc phân nhóm 9010.10.00
+90109030 Bộ phận và phụ kiện của máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in
+90109090 Loại khác
+## 901310
+90131010 Kính ngắm để lắp vào vũ khí; kính tiềm vọng
+90131020 Kính viễn vọng được thiết kế là bộ phận của máy, thiết bị, dụng cụ hoặc bộ dụng cụ của Chương này hoặc Phần XVI
+## 901380
+90138010 Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90138090 Loại khác
+## 901390
+90139010 Của hàng hóa thuộc phân nhóm 9013.20.00
+90139060 Của hàng hóa thuộc phân nhóm 9013.80.10
+90139070 Của hàng hóa thuộc phân nhóm 9013.10.10
+90139090 Loại khác
+## 901480
+90148011 Máy dò siêu âm (Sonar) hoặc máy đo sâu hồi âm
+90148019 Loại khác
+90148090 Loại khác
+## 901490
+90149010 Của thiết bị và dụng cụ, dùng trên tàu thuyền, hoạt động cùng với máy xử lý dữ liệu tự động
+90149090 Loại khác
+## 901510
+90151010 Dùng trong việc chụp ảnh hoặc quay phim
+90151090 Loại khác
+## 901580
+90158010 Thiết bị quan trắc sóng vô tuyến và gió điện từ
+90158090 Loại khác
+## 901710
+90171010 Máy vẽ (Plotters)
+90171090 Loại khác
+## 901720
+90172010 Thước
+90172040 Máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in
+90172050 Máy vẽ khác
+90172090 Loại khác
+## 901790
+90179030 Bộ phận và phụ kiện của máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in
+90179040 Bộ phận và phụ kiện, kể cả mạch in đã lắp ráp, của máy vẽ khác
+90179090 Loại khác
+## 901831
+90183110 Bơm tiêm dùng một lần
+90183190 Loại khác
+## 901839
+90183910 Ống thông
+90183990 Loại khác
+## 901890
+90189010 Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)
+90189020 Bộ theo dõi tĩnh mạch
+90189031 Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử
+90189039 Loại khác
+90189090 Loại khác
+## 901910
+90191010 Hoạt động bằng điện
+90191090 Loại khác
+## 901920
+90192010 Máy trợ thở xâm lấn (SEN)
+90192020 Máy trợ thở khác
+90192090 Loại khác
+## 902000
+90200010 Mặt nạ khuôn mặt (full face) chống hóa học, sinh học, phóng xạ và hạt nhân (CBRN)
+90200090 Loại khác
+## 902110
+90211010 Bằng sắt hoặc thép
+90211090 Loại khác
+## 902129
+90212910 Bằng sắt hoặc thép
+90212920 Bằng titan
+90212990 Loại khác
+## 902219
+90221910 Thiết bị sử dụng tia X để kiểm tra vật lý các điểm hàn nối trên tấm mạch in/tấm dây in
+90221990 Loại khác
+## 902290
+90229010 Bộ phận và phụ kiện của thiết bị sử dụng tia X để kiểm tra vật lý các điểm hàn nối trên mạch in đã lắp ráp
+90229020 Bộ phận và phụ kiện của thiết bị khác sử dụng tia X
+90229090 Loại khác
+## 902410
+90241010 Hoạt động bằng điện
+90241020 Không hoạt động bằng điện
+## 902480
+90248010 Hoạt động bằng điện
+90248020 Không hoạt động bằng điện
+## 902519
+90251911 Máy đo nhiệt độ dùng cho xe có động cơ
+90251919 Loại khác
+90251920 Không hoạt động bằng điện
+## 902610
+90261050 Dụng cụ đo mức sử dụng cho xe có động cơ
+90261090 Loại khác
+## 902620
+90262050 Máy đo áp suất sử dụng cho xe có động cơ
+90262090 Loại khác
+## 902789
+90278910 Lộ sáng kế
+90278990 Loại khác
+## 902810
+90281010 Thiết bị đo khí loại lắp trên bình ga
+90281090 Loại khác
+## 902820
+90282020 Công tơ nước
+90282090 Loại khác
+## 902830
+90283010 Máy đếm ki-lô-oát giờ
+90283090 Loại khác
+## 902890
+90289010 Vỏ hoặc thân của công tơ nước
+90289090 Loại khác
+## 902910
+90291020 Máy đếm cây số để tính tiền taxi
+90291090 Loại khác
+## 902920
+90292010 Đồng hồ tốc độ dùng cho xe có động cơ
+90292020 Máy đo tốc độ góc cho xe có động cơ
+90292090 Loại khác
+## 902990
+90299010 Của hàng hóa thuộc phân nhóm 9029.10; của máy hoạt nghiệm thuộc phân nhóm 9029.20
+90299020 Của đồng hồ chỉ tốc độ và máy đo tốc độ góc của phân nhóm 9029.20
+## 903033
+90303310 Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+90303320 Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định
+90303330 Ampe kế và vôn kế dùng cho xe có động cơ
+90303340 Dụng cụ đo điện trở khác
+90303390 Loại khác
+## 903082
+90308210 Máy kiểm tra vi mạch tích hợp
+90308290 Loại khác
+## 903084
+90308410 Dụng cụ và thiết bị để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90308490 Loại khác
+## 903089
+90308910 Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90308990 Loại khác
+## 903090
+90309010 Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+90309030 Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90309040 Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90309090 Loại khác
+## 903149
+90314910 Dụng cụ và thiết bị quang học để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn
+90314920 Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90314930 Dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90314990 Loại khác
+## 903180
+90318010 Thiết bị kiểm tra cáp
+90318090 Loại khác
+## 903190
+90319030 Bộ phận và phụ kiện kể cả mạch in đã lắp ráp dùng cho các dụng cụ và thiết bị quang học để kiểm tra các vi mạch hoặc linh kiện bán dẫn hoặc kiểm tra mặt nạ, mặt nạ quang hoặc lưới ca rô sử dụng trong sản xuất các linh kiện bán dẫn; bộ phận và phụ kiện của các thiết bị đo độ nhiễm bẩn bề mặt của vi mạch bán dẫn
+90319040 Của thiết bị quang học xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90319050 Của dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+90319090 Loại khác
+## 903289
+90328910 Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền
+90328920 Dụng cụ và thiết bị tự động để điều chỉnh hoặc điều khiển dung dịch hóa chất hoặc điện hóa trong sản xuất tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+90328931 Bộ điều chỉnh điện áp tự động (ổn áp)
+90328939 Loại khác
+90328990 Loại khác
+## 903290
+90329010 Của hàng hóa thuộc phân nhóm 9032.89.10
+90329020 Của hàng hóa thuộc phân nhóm 9032.89.20
+90329090 Loại khác
+## 910400
+91040010 Dùng cho xe cộ
+91040090 Loại khác
+## 910591
+91059110 Đồng hồ hàng hải đo thời gian
+91059190 Loại khác
+## 910599
+91059910 Đồng hồ hàng hải đo thời gian
+91059990 Loại khác
+## 910690
+91069010 Dụng cụ đo thời gian đậu xe
+91069090 Loại khác
+## 920590
+92059010 Các loại đàn organ ống có phím; đàn đạp hơi (harmonium) và loại nhạc cụ có phím tương tự có bộ phận lưỡi gà không bằng kim loại
+92059090 Loại khác
+## 920890
+92089010 Dụng cụ tạo âm thanh để nhử mồi, tù và và các dụng cụ thổi bằng miệng khác để tạo âm thanh
+92089090 Loại khác
+## 920991
+92099110 Tấm đỡ đàn dây, đàn phím và khung kim loại của đàn piano loại đứng
+92099190 Loại khác
+## 930320
+93032010 Súng shotgun săn (SEN)
+93032090 Loại khác
+## 930330
+93033010 Súng trường săn
+93033090 Loại khác
+## 930390
+93039010 Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm
+93039090 Loại khác
+## 930400
+93040010 Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2
+93040090 Loại khác
+## 930591
+93059110 Bằng da thuộc hoặc vật liệu dệt (SEN)
+93059190 Loại khác
+## 930599
+93059911 Bằng da thuộc hoặc vật liệu dệt (SEN)
+93059919 Loại khác
+93059991 Bằng da thuộc hoặc vật liệu dệt (SEN)
+93059999 Loại khác
+## 930630
+93063011 Đạn cỡ .22
+93063019 Loại khác
+93063020 Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng
+93063030 Dùng cho súng thể thao, súng săn hoặc súng bắn bia, súng trường và súng cacbin, trừ súng shotgun
+93063091 Đạn cỡ 22
+93063099 Loại khác
+## 930690
+93069010 Bom, lựu đạn, ngư lôi, mìn, tên lửa và các loại đạn dược tương tự và bộ phận của chúng
+93069090 Loại khác
+## 940120
+94012010 Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+94012090 Loại khác
+## 940169
+94016910 Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)
+94016990 Loại khác
+## 940179
+94017910 Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)
+94017990 Loại khác
+## 940199
+94019910 Của ghế thuộc phân nhóm 9401.10.00
+94019921 Miếng tựa đầu và tay vịn của ghế thuộc phân nhóm 9401.20.10
+94019929 Loại khác
+94019930 Của ghế thuộc phân nhóm 9401.31.00 và 9401.39.00
+94019991 Bằng plastic
+94019999 Loại khác
+## 940210
+94021010 Ghế nha khoa và các bộ phận của chúng
+94021030 Ghế cắt tóc hoặc các loại ghế tương tự và các bộ phận của chúng
+## 940290
+94029011 Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)
+94029012 Bàn mổ, hoạt động bằng điện (SEN)
+94029013 Bàn mổ, không hoạt động bằng điện (SEN)
+94029014 Bàn khám (SEN)
+94029015 Giường bệnh (SEN)
+94029019 Loại khác
+94029090 Loại khác
+## 940320
+94032010 Tủ hút hơi độc (SEN)
+94032090 Loại khác
+## 940360
+94036010 Tủ hút hơi độc (SEN)
+94036090 Loại khác
+## 940370
+94037010 Xe tập đi cho trẻ em
+94037020 Tủ hút hơi độc (SEN)
+94037090 Loại khác
+## 940389
+94038910 Tủ hút hơi độc (SEN)
+94038990 Loại khác
+## 940399
+94039910 Của phân nhóm 9403.70.10
+94039990 Loại khác
+## 940421
+94042110 Bằng cao su xốp, đã hoặc chưa bọc
+94042120 Bằng plastic xốp, đã hoặc chưa bọc
+## 940429
+94042910 Đệm lò xo
+94042920 Loại khác, làm nóng/làm mát (SEN)
+94042990 Loại khác
+## 940511
+94051110 Đèn cho phòng mổ
+94051191 Đèn rọi
+94051199 Loại khác
+## 940519
+94051910 Đèn cho phòng mổ
+94051991 Đèn rọi
+94051992 Đèn gắn bóng đèn huỳnh quang
+94051999 Loại khác
+## 940521
+94052110 Đèn cho phòng mổ
+94052190 Loại khác
+## 940529
+94052910 Đèn cho phòng mổ
+94052990 Loại khác
+## 940541
+94054110 Đèn pha
+94054120 Đèn rọi khác
+94054130 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+94054140 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn; loại chiếu sáng bên ngoài khác
+94054190 Loại khác
+## 940542
+94054210 Đèn pha
+94054220 Đèn rọi khác
+94054230 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+94054240 Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16
+94054250 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn
+94054260 Loại chiếu sáng bên ngoài khác
+94054290 Loại khác
+## 940549
+94054910 Đèn pha
+94054920 Đèn rọi khác
+94054930 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+94054940 Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16
+94054950 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn
+94054960 Loại chiếu sáng bên ngoài khác
+94054990 Loại khác
+## 940550
+94055011 Bằng đồng sử dụng trong nghi lễ tôn giáo
+94055019 Loại khác
+94055040 Đèn bão
+94055050 Đèn thợ mỏ và đèn thợ khai thác đá
+94055090 Loại khác
+## 940561
+94056110 Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+94056190 Loại khác
+## 940569
+94056910 Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+94056990 Loại khác
+## 940591
+94059110 Dùng cho đèn phòng mổ
+94059120 Dùng cho đèn rọi
+94059140 Chao đèn hình cầu hoặc thông phong đèn
+94059150 Dùng cho đèn pha
+94059190 Loại khác
+## 940592
+94059210 Dùng cho đèn phòng mổ
+94059220 Dùng cho đèn rọi
+94059230 Dùng cho đèn pha
+94059290 Loại khác
+## 940599
+94059910 Chụp đèn bằng vật liệu dệt
+94059920 Chụp đèn bằng vật liệu khác
+94059930 Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19
+94059940 Dùng cho đèn pha hoặc đèn rọi
+94059950 Loại khác, bằng gốm, sứ hoặc kim loại
+94059990 Loại khác
+## 940610
+94061010 Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt
+94061090 Loại khác
+## 940620
+94062010 Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt
+94062090 Loại khác
+## 940690
+94069011 Bằng sắt hoặc bằng thép
+94069012 Bằng plastic
+94069019 Loại khác
+94069020 Loại khác, bằng plastic hoặc bằng nhôm
+94069030 Loại khác, bằng sắt hoặc thép
+94069040 Loại khác, bằng xi măng, bằng bê tông hoặc đá nhân tạo
+94069090 Loại khác
+## 950300
+95030010 Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh; xe của búp bê
+95030021 Búp bê, có hoặc không có trang phục
+95030022 Quần áo và phụ kiện quần áo; giầy và mũ
+95030029 Loại khác
+95030030 Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng
+95030040 Các mô hình thu nhỏ theo tỷ lệ ("scale") và các mô hình giải trí tương tự, có hoặc không vận hành
+95030050 Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic
+95030060 Đồ chơi hình con vật hoặc sinh vật không phải hình người
+95030070 Các loại đồ chơi đố trí (puzzles)
+95030080 Thiết bị giáo dục điện tử tương tác cầm tay được thiết kế chủ yếu cho trẻ em (SEN)
+95030091 Đồ chơi, xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật; bộ xếp chữ; bộ đồ chơi tạo chữ và tập nói; bộ đồ chơi in hình; bộ đồ chơi đếm (abaci); máy may đồ chơi; máy chữ đồ chơi
+95030092 Dây nhảy
+95030093 Hòn bi
+95030094 Các đồ chơi khác, bằng cao su
+95030099 Loại khác
+## 950420
+95042020 Bàn bi-a các loại
+95042030 Phấn xoa đầu gậy bi-a
+95042090 Loại khác
+## 950430
+95043030 Trò chơi may rủi ngẫu nhiên với giải thưởng nhận ngay bằng tiền mặt; các bộ phận và phụ kiện của chúng
+95043040 Máy trò chơi bắn bi (pintables) hoặc các máy trò chơi tự động (có khe nhét xèng hoặc xu) khác
+95043050 Loại khác, bộ phận bằng gỗ, giấy hoặc plastic
+95043090 Loại khác
+## 950450
+95045010 Loại sử dụng với một bộ thu truyền hình
+95045090 Loại khác
+## 950490
+95049010 Các loại đồ phụ trợ để chơi bowling
+95049021 Bằng gỗ, giấy hoặc plastic
+95049029 Loại khác
+95049032 Bàn thiết kế để chơi bạc bằng gỗ hoặc plastic
+95049033 Loại bàn khác thiết kế để chơi bạc
+95049034 Quân bài Mạt chược bằng gỗ, giấy hoặc plastic
+95049035 Quân bài Mạt chược khác
+95049036 Loại khác, bằng gỗ, giấy hoặc plastic
+95049039 Loại khác
+95049092 Bằng gỗ hoặc bằng plastic
+95049093 Loại khác
+95049095 Bằng gỗ, giấy hoặc plastic
+95049099 Loại khác
+## 950640
+95064010 Bàn
+95064090 Loại khác
+## 950699
+95069910 Cung (kể cả nỏ) và mũi tên
+95069920 Lưới (*), đệm bảo vệ ống chân và tấm ốp bảo vệ ống chân
+95069930 Quả cầu lông
+95069990 Loại khác
+## 960110
+96011010 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96011090 Loại khác
+## 960190
+96019011 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96019012 Nhân nuôi cấy ngọc trai (SEN)
+96019019 Loại khác
+96019021 Đồ trang trí
+96019029 Loại khác
+96019091 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96019099 Loại khác
+## 960200
+96020010 Vỏ viên nhộng bằng gelatin dùng cho dược phẩm
+96020020 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96020090 Loại khác
+## 960310
+96031010 Bàn chải
+96031020 Chổi
+## 960390
+96039010 Túm và búi đã làm sẵn để làm chổi hoặc bàn chải
+96039020 Dụng cụ cơ học vận hành bằng tay để quét sàn, không có động cơ
+96039040 Bàn chải khác
+96039090 Loại khác
+## 960400
+96040010 Bằng kim loại
+96040090 Loại khác
+## 960610
+96061010 Bằng plastic
+96061090 Loại khác
+## 960630
+96063010 Bằng plastic
+96063090 Loại khác
+## 960810
+96081010 Có thân chủ yếu bằng plastic
+96081090 Loại khác
+## 960830
+96083020 Bút máy
+96083090 Loại khác
+## 960860
+96086010 Bằng plastic
+96086090 Loại khác
+## 960891
+96089110 Bằng vàng hoặc mạ vàng
+96089190 Loại khác
+## 960899
+96089910 Bút viết giấy nhân bản
+96089991 Bộ phận của bút bi, bằng plastic
+96089999 Loại khác
+## 960910
+96091010 Bút chì đen
+96091090 Loại khác
+## 960990
+96099010 Bút chì bằng đá phiến (slate) dùng trong trường học
+96099030 Bút chì và bút màu khác trừ loại thuộc phân nhóm 9609.10
+96099091 Phấn vẽ hoặc phấn viết
+96099099 Loại khác
+## 961000
+96100010 Bảng đá phiến (slate) dùng trong trường học
+96100090 Loại khác
+## 961210
+96121010 Bằng vật liệu dệt
+96121090 Loại khác
+## 961310
+96131010 Bằng plastic
+96131090 Loại khác
+## 961320
+96132010 Bằng plastic
+96132090 Loại khác
+## 961380
+96138010 Bật lửa áp điện dùng cho lò và bếp
+96138020 Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic
+96138030 Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic
+96138090 Loại khác
+## 961390
+96139010 Ống chứa hoặc bộ phận chứa khác có thể nạp lại của bật lửa cơ khí, có chứa nhiên liệu lỏng hoặc khí hóa lỏng
+96139090 Loại khác
+## 961400
+96140010 Gỗ hoặc rễ cây đã tạo dáng thô để làm tẩu thuốc
+96140090 Loại khác
+## 961511
+96151120 Bằng cao su cứng
+96151130 Bằng plastic
+## 961590
+96159011 Bằng nhôm
+96159012 Bằng sắt hoặc thép
+96159013 Bằng plastic
+96159019 Loại khác
+96159021 Bằng plastic
+96159022 Bằng sắt hoặc thép
+96159023 Bằng nhôm
+96159029 Loại khác
+96159091 Bằng nhôm
+96159092 Bằng sắt hoặc thép
+96159093 Bằng plastic
+96159099 Loại khác
+## 961610
+96161010 Bình, lọ xịt nước hoa và bình, lọ xịt trang điểm tương tự
+96161020 Các bộ phận gá lắp và đầu xịt
+## 961700
+96170010 Phích chân không và các loại bình chân không khác, hoàn chỉnh
+96170020 Các bộ phận, trừ ruột thủy tinh
+## 961900
+96190011 Lõi thấm hút bằng vật liệu dệt
+96190012 Băng vệ sinh (miếng) và băng vệ sinh dạng ống (tampons) từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+96190013 Bỉm và miếng lót vệ sinh trẻ em từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+96190014 Loại khác, từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+96190019 Loại khác
+96190092 Băng vệ sinh (miếng)
+96190093 Loại khác, dệt kim hoặc móc
+96190099 Loại khác
+## 962000
+96200010 Bằng plastic
+96200020 Bằng carbon và graphit
+96200030 Bằng sắt và thép
+96200040 Bằng nhôm
+96200050 Bằng gỗ
+96200090 Loại khác
