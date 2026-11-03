@@ -1,0 +1,822 @@
+VÒNG SỬA. Dưới đây là 8 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 730890 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730890",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-730890",
+  "dong8": {
+    "73089020": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "CO"
+        }
+      ]
+    },
+    "73089040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ống dẫn",
+            "cống ngầm",
+            "đường hầm"
+          ]
+        }
+      ]
+    },
+    "73089050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khung ray"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "công-ten-nơ trên tàu thủy"
+        }
+      ]
+    },
+    "73089060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máng đỡ cáp điện"
+        }
+      ]
+    },
+    "73089092": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lan can bảo vệ"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73089020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73089020: \"được lắp ráp\" ⇒ daLapRap CO"
+    },
+    {
+      "ma": "73089020",
+      "loai": "BO_VE",
+      "ve": "bằng các khớp nối",
+      "lyDo": "vế phương thức liên kết lắp ráp cấu kiện tiền chế, từ vựng chưa có khoá riêng"
+    },
+    {
+      "ma": "73089040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73089040: \"dùng trong ống dẫn, cống ngầm hoặc đường hầm\" ⇒ dungCho [ống dẫn, cống ngầm, đường hầm]"
+    },
+    {
+      "ma": "73089040",
+      "loai": "BO_VE",
+      "ve": "được làm lượn sóng và uốn cong",
+      "lyDo": "đặc điểm hình dạng gia công tôn sóng cống ngầm, từ vựng chưa có khoá mô tả lượn sóng"
+    },
+    {
+      "ma": "73089050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73089050: \"Khung ray\" ⇒ tenLoai; \"dùng để vận chuyển công-ten-nơ trên tàu thủy\" ⇒ dungCho"
+    },
+    {
+      "ma": "73089060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73089060: \"Máng đỡ cáp điện\" ⇒ tenLoai"
+    },
+    {
+      "ma": "73089060",
+      "loai": "BO_VE",
+      "ve": "có lỗ",
+      "lyDo": "đặc tính có lỗ đục bề mặt của máng cáp đục lỗ, từ vựng chưa có khoá coLo"
+    },
+    {
+      "ma": "73089092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73089092: \"Lan can bảo vệ\" ⇒ tenLoai"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:73089020+73089040:daLapRap=true,dungCho=ống dẫn:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:73089020+73089050:daLapRap=true,dungCho=công-ten-nơ trên tàu thủy,tenLoai=Khung ray:khong-tat-dinh
+    ✗ cong2-chong-lan:73089020+73089060:daLapRap=true,tenLoai=Máng đỡ cáp điện:khong-tat-dinh
+    ✗ cong2-chong-lan:73089040+73089060:dungCho=ống dẫn,tenLoai=Máng đỡ cáp điện:khong-tat-dinh
+    ✗ cong2-chong-lan-truc:73089020:73089040,73089050,73089060
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho …
+    ✗ cong2-chong-lan-truc:73089040:73089020,73089060
+    ✗ cong2-chong-lan-truc:73089060:73089020,73089040
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+
+=== PN6 730900 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730900",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-730900",
+  "dieuKienNut": {
+    "7309001": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "vận chuyển",
+            "đóng gói hàng hóa"
+          ]
+        }
+      ]
+    }
+  },
+  "dong8": {
+    "73090011": {
+      "dieuKienSo": [
+        {
+          "fact": "coCachDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "73090091": {
+      "dieuKienSo": [
+        {
+          "fact": "coCachDien",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7309001",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7309001: \"sử dụng trong vận chuyển hoặc đóng gói hàng hóa\" ⇒ congDung [vận chuyển, đóng gói hàng hóa]"
+    },
+    {
+      "ma": "73090011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73090011: \"được cách nhiệt\" ⇒ coCachDien CO (từ vựng cách nhiệt/cách điện dùng chung bảo ôn)"
+    },
+    {
+      "ma": "73090011",
+      "loai": "BO_VE",
+      "ve": "Được lót",
+      "lyDo": "vế liên hợp 'Được lót hoặc được cách nhiệt', từ vựng chưa có khoá lót riêng"
+    },
+    {
+      "ma": "73090091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73090091: \"được cách nhiệt\" ⇒ coCachDien CO"
+    },
+    {
+      "ma": "73090091",
+      "loai": "BO_VE",
+      "ve": "Được lót",
+      "lyDo": "vế liên hợp 'Được lót hoặc được cách nhiệt', từ vựng chưa có khoá lót riêng"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73090011:dieu-kien-so-co-khong-co-trong-trich:coCachDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong3-muc:73090091:dieu-kien-so-co-khong-co-trong-trich:coCachDien
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 731010 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "731010",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-731010",
+  "dong8": {
+    "73101010": {
+      "dieuKienSo": [
+        {
+          "fact": "daXuLyBeMat",
+          "op": "CO"
+        }
+      ]
+    },
+    "73101091": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "DUC",
+            "REN",
+            "DAP"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73101010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73101010: \"Được tráng thiếc\" ⇒ daXuLyBeMat CO"
+    },
+    {
+      "ma": "73101091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73101091: \"Được đúc, rèn hoặc dập, ở dạng thô\" ⇒ phuongPhapCheTao [DUC, REN, DAP]"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73101010:dieu-kien-so-co-khong-co-trong-trich:daXuLyBeMat
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong5-ve-gioi-han-bi-bo:73101010:Được tráng thiếc
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+
+=== PN6 731021 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "731021",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-731021",
+  "dieuKienNut": {
+    "7310211": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 1,
+          "donVi": "lít"
+        }
+      ]
+    }
+  },
+  "dong8": {
+    "73102111": {
+      "dieuKienSo": [
+        {
+          "fact": "daXuLyBeMat",
+          "op": "CO"
+        }
+      ]
+    },
+    "73102191": {
+      "dieuKienSo": [
+        {
+          "fact": "daXuLyBeMat",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7310211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7310211: \"Có dung tích dưới 1 lít\" ⇒ dungTich < 1 lít"
+    },
+    {
+      "ma": "73102111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73102111: \"Được tráng thiếc\" ⇒ daXuLyBeMat CO"
+    },
+    {
+      "ma": "73102191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73102191: \"Được tráng thiếc\" ⇒ daXuLyBeMat CO"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73102111:dieu-kien-so-co-khong-co-trong-trich:daXuLyBeMat
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong3-muc:73102191:dieu-kien-so-co-khong-co-trong-trich:daXuLyBeMat
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong5-ve-gioi-han-bi-bo:73102111:Được tráng thiếc
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+    ✗ cong5-ve-gioi-han-bi-bo:73102191:Được tráng thiếc
+
+=== PN6 731029 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "731029",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-731029",
+  "dieuKienNut": {
+    "7310291": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 1,
+          "donVi": "lít"
+        }
+      ]
+    }
+  },
+  "dong8": {
+    "73102911": {
+      "dieuKienSo": [
+        {
+          "fact": "daXuLyBeMat",
+          "op": "CO"
+        }
+      ]
+    },
+    "73102991": {
+      "dieuKienSo": [
+        {
+          "fact": "daXuLyBeMat",
+          "op": "CO"
+        }
+      ]
+    },
+    "73102992": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "DUC",
+            "REN",
+            "DAP"
+          ]
+        }
+      ],
+      "phanConLai": false
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7310291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7310291: \"Có dung tích dưới 1 lít\" ⇒ dungTich < 1 lít"
+    },
+    {
+      "ma": "73102911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73102911: \"Được tráng thiếc\" ⇒ daXuLyBeMat CO"
+    },
+    {
+      "ma": "73102991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73102991: \"Được tráng thiếc\" ⇒ daXuLyBeMat CO"
+    },
+    {
+      "ma": "73102992",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73102992: \"Được đúc, rèn hoặc dập khác, ở dạng thô\" ⇒ phuongPhapCheTao [DUC, REN, DAP]; phanConLai false vì 'khác' chỉ phương pháp tạo hình khác với tráng thiếc đứng trước"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:73102911:dieu-kien-so-co-khong-co-trong-trich:daXuLyBeMat
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong3-muc:73102991:dieu-kien-so-co-khong-co-trong-trich:daXuLyBeMat
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong5-ve-gioi-han-bi-bo:73102911:Được tráng thiếc
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+    ✗ cong5-ve-gioi-han-bi-bo:73102991:Được tráng thiếc
+    ✗ cong2-chong-lan:73102991+73102992:daXuLyBeMat=true,dungTich=1,phuongPhapCheTao=DUC
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+
+=== PN6 731100 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "731100",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-731100",
+  "dieuKienNut": {
+    "7311002": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "thép"
+        },
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "DUC"
+          ]
+        }
+      ]
+    }
+  },
+  "dong8": {
+    "73110021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 110,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "khí tự nhiên nén",
+            "CNG",
+            "khí tự nhiên hóa lỏng",
+            "LNG"
+          ]
+        }
+      ]
+    },
+    "73110022": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 110,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "khí tự nhiên nén",
+            "CNG",
+            "khí tự nhiên hóa lỏng",
+            "LNG"
+          ]
+        }
+      ]
+    },
+    "73110023": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "khí dầu mỏ hóa lỏng",
+            "LPG"
+          ]
+        }
+      ]
+    },
+    "73110024": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 110,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "khí dầu mỏ hóa lỏng",
+            "LPG"
+          ]
+        }
+      ]
+    },
+    "73110025": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "khí dầu mỏ hóa lỏng",
+            "LPG"
+          ]
+        }
+      ]
+    },
+    "73110026": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 30,
+          "donVi": "lít"
+        }
+      ]
+    },
+    "73110027": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 110,
+          "donVi": "lít"
+        }
+      ]
+    },
+    "73110091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": "<=",
+          "value": 7.3,
+          "donVi": "lít"
+        }
+      ]
+    },
+    "73110092": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 7.3,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 30,
+          "donVi": "lít"
+        }
+      ]
+    },
+    "73110094": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 110,
+          "donVi": "lít"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7311002",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7311002: \"bằng thép đúc liền\" ⇒ chatLieu thép, phuongPhapCheTao DUC"
+    },
+    {
+      "ma": "73110021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110021: dungTich >= 30 và < 110 lít; dungCho [khí tự nhiên nén, CNG, khí tự nhiên hóa lỏng, LNG]"
+    },
+    {
+      "ma": "73110022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110022: dungTich >= 110 lít; dungCho [khí tự nhiên nén, CNG, khí tự nhiên hóa lỏng, LNG]"
+    },
+    {
+      "ma": "73110023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110023: dungTich < 30 lít; dungCho [khí dầu mỏ hóa lỏng, LPG]"
+    },
+    {
+      "ma": "73110024",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110024: dungTich >= 30 và < 110 lít; dungCho [khí dầu mỏ hóa lỏng, LPG]"
+    },
+    {
+      "ma": "73110025",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110025: \"Loại khác, dùng để chứa khí dầu mỏ hóa lỏng (LPG)\" ⇒ dungCho LPG, máy phủ định dung tích .23, .24"
+    },
+    {
+      "ma": "73110026",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110026: dungTich < 30 lít"
+    },
+    {
+      "ma": "73110027",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110027: dungTich >= 30 và < 110 lít"
+    },
+    {
+      "ma": "73110091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110091: dungTich <= 7.3 lít"
+    },
+    {
+      "ma": "73110092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110092: dungTich > 7.3 và < 30 lít"
+    },
+    {
+      "ma": "73110094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110094: dungTich >= 30 và < 110 lít"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong3-muc:7311002:dieu-kien-so-la-gia-tri-ngoai-danh-sach:thép
+      → Chất liệu ngoài danh sách của khoá chatLieu. Sửa: Dùng giá trị in ở --tu-vung --khoa=chatLieu.
+    ✗ cong2-dong-khong-toi-duoc:73110021
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-dong-khong-toi-duoc:73110022
+    ✗ cong2-dong-khong-toi-duoc:73110023
+    ✗ cong2-dong-khong-toi-duoc:73110024
+    ✗ cong2-dong-khong-toi-duoc:73110025
+    ✗ cong2-dong-khong-toi-duoc:73110026
+    ✗ cong2-dong-khong-toi-duoc:73110027
+    ✗ cong2-dong-khong-toi-duoc:73110029
+
+=== PN6 731210 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "731210",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-731210",
+  "dong8": {
+    "73121010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cuộn dây bện tao kiểu bọc",
+            "dây tao dẹt",
+            "dây cáp chống xoắn"
+          ]
+        }
+      ]
+    },
+    "73121020": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 3,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "73121030": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "nhôm"
+        }
+      ]
+    },
+    "73121091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bê tông dự ứng lực"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73121010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73121010: tenLoai [Cuộn dây bện tao kiểu bọc, dây tao dẹt, dây cáp chống xoắn]"
+    },
+    {
+      "ma": "73121020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73121020: \"bằng đồng thau\" ⇒ chatLieu đồng; duongKinh <= 3 mm"
+    },
+    {
+      "ma": "73121020",
+      "loai": "BO_VE",
+      "ve": "được phủ, mạ hoặc tráng",
+      "lyDo": "vế mô tả phương pháp xử lý bề mặt bằng đồng thau, đã phủ qua chatLieu đồng"
+    },
+    {
+      "ma": "73121030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73121030: \"Được phủ, mạ hoặc tráng nhôm\" ⇒ chatLieu nhôm"
+    },
+    {
+      "ma": "73121091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73121091: \"cho bê tông dự ứng lực\" ⇒ dungCho \"bê tông dự ứng lực\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-chong-lan:73121010+73121020:chatLieu=CHINH:đồng,duongKinh=2.999997,tenLoai=Cuộn dây bện tao kiểu bọc:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Ch
+    ✗ cong2-chong-lan:73121010+73121030:chatLieu=CHINH:nhôm,tenLoai=Cuộn dây bện tao kiểu bọc:khong-tat-dinh
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 731511 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "731511",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-731511",
+  "dong8": {
+    "73151110": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe đạp",
+            "xe mô tô"
+          ]
+        }
+      ]
+    },
+    "73151191": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xích truyền"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": ">=",
+          "value": 6,
+          "donVi": "mm"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 32,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73151110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73151110: \"Xích xe đạp hoặc xích xe mô tô\" ⇒ dungCho [xe đạp, xe mô tô]"
+    },
+    {
+      "ma": "73151191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73151191: tenLoai Xích truyền; độ dài mắt xích từ 6 mm đến 32 mm ⇒ kichThuoc >= 6 và <= 32 mm"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong5-ve-gioi-han-bi-bo:73151191:có độ dài mắt xích
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — 
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
