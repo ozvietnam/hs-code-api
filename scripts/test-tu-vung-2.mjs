@@ -42,7 +42,9 @@ const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNap
   // + 5 khoá lô 7 (03/11, Studio quét biểu thuế, máy kiểm): ch.50–71 (dệt may, giày dép, gốm, thuỷ tinh)
   daTrangMen: 'CO_KHONG', tinhNangBaoHo: 'LIET_KE', daTrangPhuEpLop: 'CO_KHONG', loaiMuiBaoVe: 'LIET_KE', thuyTinhQuangHoc: 'CO_KHONG',
   // + 5 khoá lô 8 (03/11, Studio quét biểu thuế, máy kiểm): ch.74–83, 86, 88–97 (kim loại màu, tàu thuyền, quang học, vũ khí, y tế)
-  tongDungTichTau: 'SO', dangCuon: 'CO_KHONG', coNong: 'SO', ngamQuaThauKinhSLR: 'CO_KHONG', dungMotLan: 'CO_KHONG' };
+  tongDungTichTau: 'SO', dangCuon: 'CO_KHONG', coNong: 'SO', ngamQuaThauKinhSLR: 'CO_KHONG', dungMotLan: 'CO_KHONG',
+  // + 8 khoá lô 9 — vòng quét sót (03/11, Studio quét biểu thuế, máy kiểm): chat mới, Gemini đọc lại toàn bộ 4.165 dòng các chương đã quét; xử lý 13 tiêu chí khongChac lô 6–8 (4 GHÉP: dangHinhHocGiay→dangCuon, coChucNangKhuMui→congDung, luongGianNuoc→khoiLuong, troChoiMayRuiCoThuong→congDung; 6 BỎ: tiLeDauKhoang, doTruongNoBloom, doManhSoi, apSuatHoatDong, hinhDangMatCatNgang, cauTrucLopBotKimLoai; 3 SOẠN) + 5 khoá từ pn6Sot ≥3 PN6
+  tinhTrangTayTrang: 'LIET_KE', hinhDangCatGocKinh: 'CO_KHONG', kieuDet: 'LIET_KE', daPhaThemDuongHoacRuou: 'CO_KHONG', soiDun: 'CO_KHONG', coMauTruTrang: 'CO_KHONG', dongGoiBanLe: 'CO_KHONG', dangLong: 'CO_KHONG' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
