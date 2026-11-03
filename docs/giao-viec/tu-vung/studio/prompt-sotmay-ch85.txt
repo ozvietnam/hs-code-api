@@ -1,0 +1,568 @@
+SOẠN KHOÁ TỪ VỰNG CHO CÁC DÒNG BIỂU THUẾ MÁY CHƯA ĐỌC ĐƯỢC (mục đích: số hoá ranh giới giữa các dòng 8 số cùng PN6). Máy đã chạy mọi khoá ở (A) lên toàn bộ biểu thuế; (D) dưới đây là CHÍNH XÁC những dòng 8 số KHÔNG khoá nào đọc ra giá trị (đánh dấu ✗), kèm các dòng cùng PN6 đã đọc được (✓, ghi khoá đọc) để thấy trục phân biệt.
+
+NHIỆM VỤ: với mỗi dòng ✗, quyết định MỘT trong ba: (a) GHEP — dòng này đọc được bằng khoá đã có ở (A) nếu thêm giá trị/mẫu: ghi trong "boSung": {khoa: {"giaTriMoi": {ID: {nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}, "mauThem": {vi:[…],en:[…],zh:[…]}}}; (b) SOAN — tiêu chí mới, soạn khoá vào "khoa" (gộp mọi dòng/PN6 cùng tiêu chí về MỘT khoá; ưu tiên tiêu chí lặp ở ≥2 PN6); (c) BO — chỉ là tên hàng/tên chất/tên loài, không phải tiêu chí đo-có/không-liệt kê: không làm gì. Không cần liệt kê (c). Không bịa ngưỡng. ghiChu trích NGUYÊN VĂN dòng 8 số kèm mã (chép từ (D)). Mỗi khoá kèm pn6Mau (≤5) và soDong.
+
+QUY TẮC LƯỢC ĐỒ (máy kiểm ĐỎ nếu sai): (1) SO: heDonVi có ở (B) hoặc khai mới trong heDonViMoi; donViChuan là đơn vị gốc của hệ (chiều dài mm, không inch/cm); canNguCanh true; cachViet.vi có {giaTri} + đơn vị; bí danh chữ thường vào bietDanhMoi; thang không đơn vị (chỉ số, RON, GT) thì thêm "docThem":[{"mau":"(?<=…\\s*)(\\d+)","donVi":"<đơn vị hệ>"}] và "docMoRong":true. (2) cachDoc regex không phân biệt hoa thường, vi/en/zh ≥1 mẫu, \\s+ giữa các từ; mẫu PHẢI khớp nguyên văn dòng ✗ trích trong ghiChu (máy sẽ chạy thử). (3) Mọi khoá: nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi}, ghiChu, nguonLoai "AI_DA_KIEM". (4) CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong{vi,en,zh}, cachViet{vi,viPhuDinh}; KHÔNG đưa cụm phụ chú kiểu "đã hoặc chưa …" vào cachDoc. (5) LIET_KE: giaTriHopLe = mảng id HOA_GACH_DUOI; moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}; cachDoc cấp khoá {"vi":[],"en":[],"zh":[]}; cachViet cấp khoá {"vi":"{giaTri}"}; một dòng chỉ được khớp MỘT giá trị (khớp hai giá trị ⇒ tách thành hai khoá/trục).
+
+ĐẦU RA: MỘT khối ```json {"khoa":[…],"boSung":{…},"heDonViMoi":{},"bietDanhMoi":{},"khongChac":[{"khoa":"…","lyDo":"…"}]} duy nhất, không giải thích. Vượt trần đầu ra ⇒ ưu tiên soDong lớn, phần còn lại ghi khongChac; khi được nhắn "tiếp" soạn nốt, không lặp lại.
+
+=== (A) KHOÁ ĐÃ CÓ ===
+dienAp(SO,V) điện áp
+dongDien(SO,A) dòng điện (định mức)
+congSuat(SO,W) công suất
+tanSo(SO,Hz) tần số / dải tần
+luuLuong(SO,m3/h) lưu lượng
+dungTichXiLanh(SO,cc) dung tích xi lanh
+khoiLuong(SO,kg) khối lượng
+duongKinh(SO,mm) đường kính (ngoài)
+duongKinhTrong(SO,mm) đường kính trong (cửa nạp/cửa thoát, DN)
+duongKinhLoi(SO,mm) đường kính lõi (mỗi lõi dẫn điện)
+chieuCao(SO,mm) chiều cao
+kichThuoc(SO,mm) kích thước (dài x rộng x cao)
+chieuDaiCuon(SO,m) chiều dài (hàng dài: dây, cáp, ống, cuộn)
+daGanDauNoi(CO_KHONG) đã gắn đầu nối
+coCachDien(CO_KHONG) có cách điện
+coBoXuLyLapTrinh(CO_KHONG) có trang bị bộ xử lý lập trình
+coKhungChupQuaDau(CO_KHONG) có khung chụp qua đầu
+hieuChinhThiLuc(CO_KHONG) hiệu chỉnh thị lực (kính thuốc)
+chongNang(CO_KHONG) chống nắng (kính râm)
+coChucNangGhi(CO_KHONG) có chức năng ghi (hình/âm)
+daGhi(CO_KHONG) đã ghi (có dữ liệu)
+coLuoiBaoVe(CO_KHONG) có lưới bảo vệ
+coManHinh(CO_KHONG) có màn hình hiển thị
+coCamera(CO_KHONG) có camera
+coBanh(CO_KHONG) có bánh xe
+hoatDongBangDien(CO_KHONG) hoạt động bằng điện
+coKetHopThietBiThu(CO_KHONG) kết hợp thiết bị thu
+coGiaNhiet(CO_KHONG) có gia nhiệt
+laBoPhan(CO_KHONG) là bộ phận (không phải hàng hoàn chỉnh)
+datChim(CO_KHONG) loại đặt chìm
+coKhoangPhaTron(CO_KHONG) có khoang pha trộn lưu chất
+loaiDongDien(LIET_KE) loại dòng điện
+soPha(LIET_KE) số pha
+kieuDotChay(LIET_KE) kiểu đốt cháy của động cơ piston
+nguonSang(LIET_KE) nguồn sáng
+nguonNangLuong(LIET_KE) nguồn năng lượng
+cachDieuKhien(LIET_KE) cách điều khiển / vận hành
+kieuBom(LIET_KE) kiểu bơm
+loaiRoLe(LIET_KE) loại rơ le
+loaiCongTac(LIET_KE) loại thiết bị đóng ngắt (8536.50)
+loaiPhichOCam(LIET_KE) loại phích cắm / ổ cắm (8536.69)
+phamViSuDung(LIET_KE) phạm vi sử dụng
+mauHienThi(LIET_KE) màu hiển thị
+kieuDongCoDien(LIET_KE) kiểu động cơ điện (8501.10)
+tinhTrang(LIET_KE) tình trạng hàng
+chatLieu(CHAT_LIEU_THEO_VI_TRI) chất liệu (theo vị trí)
+dungCho(CONG_DUNG) dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)
+congDung(CONG_DUNG) công dụng / mục đích
+tenLoai(TEN_LOAI) tên loại hàng
+nhanHieu(TEN_LOAI) nhãn hiệu
+model(TEN_LOAI) model
+kyMaHieu(TEN_LOAI) ký, mã hiệu
+nhaSanXuat(TEN_LOAI) nhà sản xuất
+chiHoacChuYeu(CO_KHONG) chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)
+thietKeChoTreEm(CO_KHONG) được thiết kế chủ yếu cho trẻ em
+daNapChuongTrinh(CO_KHONG) đã nạp chương trình/firmware (bo mạch, vi điều khiển)
+soLoi(SO,lõi) số lõi dẫn (ruột dẫn)
+soSoi(SO,sợi) số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ "sợi")
+tiLe(SO,lần) tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)
+phuongPhapCheTao(LIET_KE) phương pháp chế tạo
+phuongThucTruyenDan(LIET_KE) phương thức truyền dẫn
+daXuLyBeMat(CO_KHONG) đã được xử lý bề mặt
+nhienLieu(LIET_KE) nhiên liệu / nguồn nhiệt (bếp, lò)
+phuongPhapIn(LIET_KE) phương pháp in (vải, hàng dệt)
+tinhDanHoi(CO_KHONG) đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)
+loaiSoiDet(LIET_KE) loại xơ/sợi dệt (vật liệu dệt chủ yếu)
+doDay(SO,mm) độ dày
+congSuatBieuKien(SO,kVA) công suất biểu kiến
+dangNguyenSinh(LIET_KE) dạng vật lý nguyên sinh của polyme
+daLapRap(CO_KHONG) đã lắp ráp
+dungTich(SO,lít) dung tích chứa
+sanLuongHoi(SO,tấn/giờ) sản lượng hơi / công suất hơi
+theTich(SO,cm3) thể tích ngoài / thể tích bên ngoài
+heDienHoa(LIET_KE) hệ điện hóa của pin
+dungLuong(SO,Ah) dung lượng phóng điện
+daHoaDeo(CO_KHONG) đã hóa dẻo
+coBoLoc(CO_KHONG) đã lắp bộ phận lọc
+hamLuongCarbon(SO,%) hàm lượng carbon
+gioiHanChay(SO,psi) giới hạn chảy
+chieuRong(SO,mm) chiều rộng
+khaNangChiuApLuc(SO,psi) khả năng chịu áp lực
+duongCheoNgoai(SO,mm) đường chéo ngoài mặt cắt ngang
+coRen(CO_KHONG) có ren (ở đầu hoặc thân ống)
+doBenKeo(SO,MPa) độ bền kéo
+hamLuongNiken(SO,%) hàm lượng niken
+lopMaPhu(LIET_KE) lớp mạ hoặc tráng phủ bề mặt
+dungLamGiong(CO_KHONG) để nhân giống / làm giống / gieo trồng
+dongBaoBiKinKhiDeBanLe(CO_KHONG) đóng bao bì kín khí để bán lẻ
+nongDoCon(SO,%) nồng độ cồn (% thể tích)
+phuongPhapBaoQuan(LIET_KE) phương pháp bảo quản / trạng thái bảo quản
+dangBaoCheThuoc(LIET_KE) dạng bào chế / đường dùng của thuốc
+mucDoTinhCheDau(LIET_KE) mức độ tinh chế của dầu và chất béo
+chiSoIot(SO,IV) chỉ số iốt (IV)
+triSoOctan(SO,RON) trị số octan (RON / Octane)
+daRang(CO_KHONG) đã rang
+tachXuongCoHoc(CO_KHONG) thịt tách hoặc lọc khỏi xương bằng phương pháp cơ học (MSM/MDM)
+dinhLuong(SO,g/m2) định lượng giấy hoặc bìa
+mucDoGiaCongGo(LIET_KE) mức độ gia công của gỗ xẻ
+dangBinhXit(CO_KHONG) dạng bình xịt (aerosol)
+nhieuLop(CO_KHONG) nhiều lớp (giấy/bìa/gỗ nhiều lớp)
+daIn(CO_KHONG) đã in (nội dung, họa tiết, vạch chia)
+duongKinhVanh(SO,mm) đường kính vành bánh xe (mâm xe lắp lốp)
+daTrangMen(CO_KHONG) đã tráng men (gạch gốm, sứ)
+tinhNangBaoHo(LIET_KE) tính năng bảo hộ chuyên dụng của quần áo
+daTrangPhuEpLop(CO_KHONG) đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)
+loaiMuiBaoVe(LIET_KE) loại mũi bảo vệ của giày dép
+thuyTinhQuangHoc(CO_KHONG) thủy tinh/kính quang học (chưa gia công quang học)
+tongDungTichTau(SO,GT) tổng dung tích tàu thuyền (gross tonnage - GT)
+dangCuon(CO_KHONG) ở dạng cuộn (dây hàn, que hàn, tấm, dải)
+coNong(SO,mm) cỡ nòng súng / cỡ đạn
+ngamQuaThauKinhSLR(CO_KHONG) có bộ ngắm qua thấu kính (phản chiếu đơn - SLR)
+dungMotLan(CO_KHONG) dùng một lần (dụng cụ y tế, vật tư tiêu hao)
+tinhTrangTayTrang(LIET_KE) tình trạng tẩy trắng (của xơ, sợi hoặc vải dệt)
+hinhDangCatGocKinh(CO_KHONG) tấm kính hình vuông hoặc hình chữ nhật (kể cả đã hoặc chưa cắt góc)
+kieuDet(LIET_KE) kiểu dệt / cấu trúc dệt của vải
+daPhaThemDuongHoacRuou(CO_KHONG) đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu (rau quả chế biến)
+soiDun(CO_KHONG) sợi dún (textured yarn)
+coMauTruTrang(CO_KHONG) có màu trừ màu trắng (sợi dệt hoặc xơ dệt)
+dongGoiBanLe(CO_KHONG) đóng gói để bán lẻ
+dangLong(CO_KHONG) ở dạng lỏng
+laPhanDoan(CO_KHONG) là phần phân đoạn của dầu/mỡ (olein, stearin)
+
+=== (B) HỆ ĐƠN VỊ ĐÃ CÓ ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"], "phanTram": ["%"], "apSuat": ["psi", "MPa"], "chiSoIot": ["IV"], "triSoOctan": ["RON", "octane"], "dinhLuong": ["g/m2", "gsm"], "tongDungTich": ["GT"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+
+=== (D) PN6 CÓ DÒNG MÁY CHƯA ĐỌC (✗ = chưa đọc, ✓ = đã đọc) ===
+## 850131
+✗ 85013130 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+✗ 85013160 Động cơ dùng cho xe của Chương 87
+✗ 85013170 Động cơ khác
+✗ 85013180 Máy phát điện
+## 850132
+✗ 85013221 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+✗ 85013224 Động cơ dùng cho xe của Chương 87
+✗ 85013225 Động cơ khác
+✗ 85013226 Máy phát điện
+✗ 85013231 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+✗ 85013232 Động cơ khác
+✗ 85013233 Máy phát điện
+## 850423
+✓ 85042310 Có công suất danh định không quá 15.000 kVA
+✗ 85042321 Không quá 20.000 kVA
+✗ 85042322 Trên 20.000 kVA nhưng không quá 30.000 kVA
+✓ 85042329 Loại khác
+## 850431
+✓ 85043111 Điện áp từ 110 kV trở lên
+✓ 85043112 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+✓ 85043113 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+✓ 85043119 Loại khác
+✓ 85043121 Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)
+✓ 85043122 Loại khác
+✓ 85043123 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+✓ 85043124 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+✓ 85043129 Loại khác
+✗ 85043130 Máy biến áp quét về (biến áp tần số quét ngược) (SEN)
+✗ 85043140 Máy biến điện trung tần
+✗ 85043191 Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+✗ 85043192 Biến áp thích ứng khác (SEN)
+✗ 85043193 Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)
+✓ 85043199 Loại khác
+## 850432
+✗ 85043211 Biến áp thích ứng (SEN)
+✓ 85043219 Loại khác
+✗ 85043220 Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+✓ 85043230 Loại khác, tần số tối thiểu 3 MHz
+✗ 85043241 Biến áp thích ứng (SEN)
+✓ 85043249 Loại khác
+✗ 85043251 Biến áp thích ứng (SEN)
+✓ 85043259 Loại khác
+## 850433
+✗ 85043311 Biến áp thích ứng (SEN)
+✓ 85043319 Loại khác (SEN)
+✗ 85043391 Biến áp thích ứng (SEN)
+✓ 85043399 Loại khác
+## 850434
+✗ 85043411 Biến áp thích ứng (SEN)
+✓ 85043412 Máy biến áp loại khô phòng nổ (SEN)
+✓ 85043413 Loại khác (SEN)
+✗ 85043414 Biến áp thích ứng (SEN)
+✓ 85043415 Máy biến áp loại khô phòng nổ
+✓ 85043419 Loại khác
+✗ 85043422 Biến áp thích ứng (SEN)
+✓ 85043423 Máy biến áp loại khô phòng nổ (SEN)
+✓ 85043424 Loại khác (SEN)
+✗ 85043425 Biến áp thích ứng (SEN)
+✓ 85043426 Máy biến áp loại khô phòng nổ
+✓ 85043429 Loại khác
+## 850440
+✗ 85044011 Bộ nguồn cấp điện liên tục (UPS) (SEN)
+✓ 85044019 Loại khác
+✓ 85044020 Máy nạp ắc qui, pin có công suất danh định trên 100 kVA
+✗ 85044030 Bộ chỉnh lưu khác
+✗ 85044040 Bộ nghịch lưu
+✓ 85044090 Loại khác
+## 850450
+✗ 85045010 Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông
+✗ 85045020 Cuộn cảm cố định kiểu con chip (SEN)
+✓ 85045093 Có công suất danh định không quá 2.500 kVA
+✓ 85045094 Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA
+✓ 85045095 Có công suất danh định trên 10.000 kVA
+## 850710
+✓ 85071010 Dùng cho máy bay
+✗ 85071092 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+✗ 85071095 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+✗ 85071096 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+✗ 85071097 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+✗ 85071098 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+✗ 85071099 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+## 850720
+✓ 85072010 Dùng cho máy bay
+✗ 85072094 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+✗ 85072095 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+✗ 85072096 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+✗ 85072097 Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm
+✗ 85072098 Chiều cao (không bao gồm đầu cực và tay cầm) trên 13 cm nhưng không quá 23 cm
+✗ 85072099 Chiều cao (không bao gồm đầu cực và tay cầm) trên 23 cm
+## 850790
+✓ 85079011 Của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99
+✓ 85079012 Dùng cho máy bay
+✓ 85079019 Loại khác
+✓ 85079091 Dùng cho máy bay
+✓ 85079092 Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)
+✗ 85079093 Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99
+✓ 85079099 Loại khác
+## 850980
+✗ 85098010 Máy đánh bóng sàn nhà
+✗ 85098020 Thiết bị tiêu hủy chất thải nhà bếp
+✓ 85098090 Loại khác
+## 851110
+✓ 85111010 Loại dùng cho động cơ của phương tiện bay
+✗ 85111020 Sử dụng cho động cơ ô tô
+✓ 85111090 Loại khác
+## 851140
+✓ 85114010 Loại dùng cho động cơ của phương tiện bay
+✗ 85114021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+✓ 85114029 Loại khác
+✗ 85114031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+✗ 85114032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+✗ 85114033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+✗ 85114091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+✓ 85114099 Loại khác
+## 851150
+✓ 85115010 Loại dùng cho động cơ của phương tiện bay
+✗ 85115021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+✓ 85115029 Loại khác
+✗ 85115031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+✗ 85115032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+✗ 85115033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+✗ 85115091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+✓ 85115099 Loại khác
+## 851180
+✓ 85118010 Loại dùng cho động cơ của phương tiện bay
+✗ 85118020 Sử dụng cho động cơ ô tô
+✓ 85118090 Loại khác
+## 851190
+✓ 85119010 Loại dùng cho động cơ của phương tiện bay
+✗ 85119020 Sử dụng cho động cơ ô tô
+✓ 85119090 Loại khác
+## 851230
+✓ 85123010 Còi, đã lắp ráp
+✓ 85123020 Thiết bị tín hiệu âm thanh chưa lắp ráp
+✗ 85123091 Thiết bị dò chướng ngại vật (cảnh báo) cho xe
+✓ 85123099 Loại khác
+## 851310
+✗ 85131030 Đèn gắn trên mũ thợ mỏ và đèn thợ khai thác đá
+✓ 85131090 Loại khác
+## 851519
+✗ 85151911 Máy hàn sóng
+✓ 85151919 Loại khác
+✓ 85151990 Loại khác
+## 851610
+✓ 85161011 Bình thủy điện (water dispenser) đun nước nóng, loại gia dụng (SEN)
+✓ 85161019 Loại khác
+✗ 85161030 Loại đun nước nóng kiểu nhúng
+## 851660
+✗ 85166010 Nồi nấu cơm
+✓ 85166090 Loại khác
+## 851679
+✗ 85167910 Ấm đun nước
+✓ 85167990 Loại khác
+## 851762
+✓ 85176210 Thiết bị phát và thu sóng vô tuyến sử dụng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng
+✗ 85176230 Thiết bị chuyển mạch điện báo hoặc điện thoại
+✗ 85176241 Bộ điều chế/giải điều chế (modems) kể cả loại sử dụng cáp nối và dạng thẻ cắm
+✗ 85176242 Bộ tập trung hoặc bộ dồn kênh
+✓ 85176243 Bộ điều khiển và bộ thích ứng (adaptor), kể cả cổng nối, cầu nối, bộ định tuyến và các thiết bị tương tự khác được thiết kế chỉ để kết nối với máy xử lý dữ liệu tự động thuộc nhóm 84.71
+✓ 85176249 Loại khác
+✓ 85176251 Thiết bị mạng nội bộ không dây
+✗ 85176252 Thiết bị phát và thu dùng cho phiên dịch trực tiếp tại các hội nghị sử dụng nhiều thứ tiếng
+✓ 85176253 Thiết bị phát khác dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến
+✓ 85176259 Loại khác
+✓ 85176261 Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến
+✓ 85176269 Loại khác
+✗ 85176291 Thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin
+✓ 85176292 Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến
+✓ 85176299 Loại khác
+## 851821
+✗ 85182110 Loa thùng
+✓ 85182190 Loại khác
+## 851822
+✗ 85182210 Loa thùng
+✓ 85182290 Loại khác
+## 851840
+✓ 85184020 Sử dụng như bộ lặp (nhắc lại) trong điện thoại hữu tuyến
+✓ 85184030 Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến
+✗ 85184040 Loại khác, có từ 6 đường tín hiệu đầu vào trở lên, có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất
+✓ 85184090 Loại khác
+## 851920
+✗ 85192010 Máy ghi hoạt động bằng đồng xu, token hoặc đĩa
+✓ 85192090 Loại khác
+## 851981
+✓ 85198110 Máy ghi âm cassette bỏ túi, kích thước không quá 170 mm x 100 mm x 45 mm
+✓ 85198120 Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài
+✗ 85198130 Đầu đĩa compact
+✓ 85198141 Loại dùng cho điện ảnh hoặc phát thanh
+✓ 85198149 Loại khác
+✗ 85198150 Máy ghi điều lọc (dictating machines), loại chỉ hoạt động bằng nguồn điện ngoài
+✓ 85198161 Loại dùng cho điện ảnh hoặc phát thanh
+✗ 85198162 Máy trả lời điện thoại
+✓ 85198169 Loại khác
+✓ 85198171 Loại dùng cho điện ảnh hoặc phát thanh (SEN)
+✓ 85198179 Loại khác
+✓ 85198191 Loại dùng cho điện ảnh hoặc phát thanh
+✓ 85198199 Loại khác
+## 851989
+✗ 85198910 Máy tái tạo âm thanh dùng trong điện ảnh
+✓ 85198920 Máy quay đĩa (record players) có hoặc không có loa
+✓ 85198930 Loại dùng cho điện ảnh hoặc phát thanh
+✗ 85198940 Thiết bị tái tạo âm thanh khác
+✓ 85198990 Loại khác
+## 852290
+✓ 85229020 Tấm mạch in đã lắp ráp dùng cho máy trả lời điện thoại
+✓ 85229030 Tấm mạch in đã lắp ráp dùng cho máy ghi hoặc tái tạo âm thanh dùng trong lĩnh vực điện ảnh
+✗ 85229040 Cơ cấu ghi hoặc đọc băng video hoặc audio và đĩa compact
+✗ 85229050 Đầu đọc hình hoặc âm thanh, kiểu từ tính; đầu và thanh xoá từ
+✓ 85229091 Bộ phận và phụ kiện khác của thiết bị ghi hoặc tái tạo âm thanh dùng trong điện ảnh
+✓ 85229092 Bộ phận khác của máy trả lời điện thoại
+✓ 85229093 Bộ phận và phụ kiện khác của hàng hóa thuộc phân nhóm 8519.81 hoặc nhóm 85.21
+✓ 85229099 Loại khác
+## 852329
+✗ 85232911 Băng máy tính
+✓ 85232919 Loại khác
+✗ 85232921 Băng video
+✓ 85232929 Loại khác
+✗ 85232931 Băng máy tính
+✗ 85232933 Băng video
+✓ 85232939 Loại khác
+✗ 85232941 Băng máy tính
+✓ 85232942 Loại dùng cho điện ảnh
+✗ 85232943 Băng video khác
+✓ 85232949 Loại khác
+✗ 85232951 Băng máy tính
+✗ 85232952 Băng video
+✓ 85232959 Loại khác
+✓ 85232961 Loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+✓ 85232962 Loại dùng cho điện ảnh
+✗ 85232963 Băng video khác
+✓ 85232969 Loại khác
+✗ 85232971 Đĩa cứng và đĩa mềm máy vi tính
+✓ 85232979 Loại khác
+✓ 85232981 Loại dùng cho máy vi tính
+✓ 85232982 Loại khác
+✓ 85232983 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+✗ 85232985 Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác
+✗ 85232986 Loại khác, dùng cho điện ảnh
+✓ 85232989 Loại khác
+✓ 85232991 Loại dùng cho máy vi tính
+✓ 85232992 Loại khác
+✓ 85232993 Loại dùng cho máy vi tính
+✓ 85232994 Loại khác
+✓ 85232995 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+✓ 85232999 Loại khác
+## 852349
+✗ 85234911 Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh
+✗ 85234912 Đĩa chứa nội dung giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa
+✓ 85234913 Loại khác
+✓ 85234914 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+✗ 85234915 Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác
+✗ 85234916 Loại khác, dùng cho điện ảnh
+✓ 85234919 Loại khác
+✗ 85234991 Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh
+✓ 85234992 Loại chỉ sử dụng để tái tạo âm thanh
+✓ 85234993 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+✓ 85234999 Loại khác
+## 852351
+✓ 85235111 Loại dùng cho máy vi tính
+✓ 85235119 Loại khác
+✓ 85235121 Loại dùng cho máy vi tính
+✓ 85235129 Loại khác
+✓ 85235130 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+✗ 85235191 Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác
+✗ 85235192 Loại khác, dùng cho điện ảnh
+✓ 85235199 Loại khác
+## 852359
+✗ 85235910 Thẻ không tiếp xúc (dạng "card" và dạng "tag")(*)
+✓ 85235921 Loại dùng cho máy vi tính
+✓ 85235929 Loại khác
+✗ 85235930 Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh
+✓ 85235940 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+✓ 85235990 Loại khác
+## 852380
+✓ 85238040 Đĩa ghi âm sử dụng kỹ thuật analog
+✓ 85238051 Loại dùng cho máy vi tính
+✓ 85238059 Loại khác
+✗ 85238091 Loại sử dụng để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh
+✓ 85238092 Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)
+✓ 85238099 Loại khác
+## 852713
+✗ 85271310 Loại xách tay
+✓ 85271390 Loại khác
+## 852719
+✗ 85271920 Loại xách tay
+✓ 85271990 Loại khác
+## 852791
+✗ 85279110 Loại xách tay
+✓ 85279190 Loại khác
+## 852869
+✗ 85286910 Công suất chiếu lên màn ảnh có đường chéo từ 300 inch trở lên
+✓ 85286990 Loại khác
+## 852872
+✓ 85287210 Hoạt động bằng pin
+✗ 85287291 Loại sử dụng ống đèn hình tia ca-tốt
+✓ 85287292 Loại màn hình tinh thể lỏng (LCD), đi-ốt phát quang (LED) và màn hình dẹt khác
+✓ 85287299 Loại khác
+## 852910
+✓ 85291021 Dùng cho máy thu truyền hình
+✓ 85291029 Loại khác
+✗ 85291030 Ăng ten vệ tinh, ăng ten lưỡng cực và các loại ăng ten roi (rabbit antennae) sử dụng cho máy thu hình hoặc máy thu thanh
+✗ 85291040 Bộ lọc và tách tín hiệu ăng ten
+✗ 85291060 Loa hoặc phễu tiếp sóng (ống dẫn sóng)
+✓ 85291093 Loại dùng với thiết bị truyền dẫn để phát sóng vô tuyến
+✓ 85291094 Loại dùng với thiết bị truyền dẫn truyền hình
+✓ 85291099 Loại khác
+## 852990
+✓ 85299020 Dùng cho bộ giải mã
+✓ 85299040 Dùng cho máy camera số hoặc camera ghi hình ảnh
+✓ 85299051 Dùng cho hàng hóa thuộc phân nhóm 8525.50 hoặc 8525.60
+✓ 85299052 Dùng cho hàng hóa thuộc phân nhóm 8527.13, 8527.19, 8527.21, 8527.29, 8527.91 hoặc 8527.99
+✓ 85299053 Dùng cho màn hình dẹt
+✗ 85299054 Loại khác, dùng cho máy thu truyền hình
+✓ 85299055 Loại khác
+✓ 85299059 Loại khác
+✓ 85299091 Dùng cho máy thu truyền hình
+✓ 85299094 Loại khác, dùng cho màn hình dẹt
+✓ 85299099 Loại khác
+## 853110
+✗ 85311010 Báo trộm
+✗ 85311020 Báo cháy
+✗ 85311030 Báo khói; chuông báo động cá nhân bỏ túi (còi rú)
+✓ 85311090 Loại khác
+## 853180
+✗ 85318011 Chuông cửa và các thiết bị báo hiệu bằng âm thanh khác dùng cho cửa
+✓ 85318019 Loại khác
+✓ 85318021 Màn hình sử dụng huỳnh quang chân không
+✓ 85318029 Loại khác
+✓ 85318090 Loại khác
+## 853310
+✗ 85331010 Điện trở dán
+✓ 85331090 Loại khác
+## 853400
+✗ 85340010 Một mặt
+✗ 85340020 Hai mặt
+✓ 85340030 Nhiều lớp
+✓ 85340090 Loại khác
+## 853610
+✗ 85361011 Thích hợp dùng cho quạt điện
+✓ 85361012 Loại khác, dòng điện dưới 16 A
+✗ 85361013 Khối cầu chì, loại sử dụng cho xe có động cơ (SEN)
+✓ 85361019 Loại khác
+✗ 85361091 Thích hợp dùng cho quạt điện
+✓ 85361092 Loại khác, dòng điện dưới 16 A
+✗ 85361093 Khối cầu chì, loại sử dụng cho xe có động cơ (SEN)
+✓ 85361099 Loại khác
+## 853630
+✗ 85363010 Bộ chống sét
+✓ 85363020 Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện
+✓ 85363090 Loại khác
+## 853710
+✓ 85371011 Bảng điều khiển của loại thích hợp sử dụng cho hệ thống điều khiển phân tán
+✓ 85371012 Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)
+✗ 85371013 Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN)
+✓ 85371019 Loại khác
+✓ 85371020 Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25
+✓ 85371030 Bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn
+✓ 85371040 Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A
+✓ 85371091 Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện
+✓ 85371092 Loại phù hợp sử dụng cho hệ thống điều khiển phân tán
+✓ 85371099 Loại khác
+## 853921
+✓ 85392120 Dùng cho thiết bị y tế
+✓ 85392130 Dùng cho xe có động cơ
+✗ 85392140 Bóng đèn phản xạ khác
+✓ 85392190 Loại khác
+## 853929
+✓ 85392910 Dùng cho thiết bị y tế
+✓ 85392920 Dùng cho xe có động cơ
+✗ 85392930 Bóng đèn phản xạ khác
+✗ 85392941 Loại thích hợp dùng cho thiết bị y tế
+✓ 85392949 Loại khác
+✓ 85392950 Loại khác, có công suất trên 200 W nhưng không quá 300 W và điện áp trên 100 V
+✓ 85392960 Loại khác, có công suất không quá 200 W và điện áp không quá 100 V
+✓ 85392990 Loại khác
+## 853952
+✗ 85395210 Loại đầu đèn ren xoáy
+✓ 85395290 Loại khác
+## 853990
+✓ 85399010 Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc
+✗ 85399020 Loại khác, dùng cho đèn của xe có động cơ
+✗ 85399030 Loại khác, của phân nhóm 8539.51.00
+✓ 85399090 Loại khác
+## 854370
+✗ 85437010 Máy cung cấp năng lượng cho hàng rào điện
+✓ 85437021 Thiết bị điều khiển từ xa hồng ngoại không dây dùng cho máy chơi trò chơi điện tử video, trừ bộ điều khiển trò chơi thuộc nhóm 95.04
+✓ 85437029 Loại khác
+✗ 85437030 Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển
+✓ 85437040 Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)
+✓ 85437050 Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)
+✓ 85437060 Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại
+✓ 85437090 Loại khác
+## 854411
+✓ 85441120 Có một lớp phủ ngoài hoặc bọc bằng giấy, vật liệu dệt hoặc poly(vinyl clorua)
+✗ 85441130 Có lớp phủ ngoài bằng dầu bóng (lacquer)
+✗ 85441140 Có lớp phủ ngoài bằng men tráng (enamel)
+✓ 85441190 Loại khác
+## 854442
+✓ 85444211 Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển
+✓ 85444213 Loại khác, cách điện bằng cao su, plastic hoặc giấy
+✓ 85444219 Loại khác
+✓ 85444221 Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển
+✓ 85444223 Loại khác, cách điện bằng cao su, plastic hoặc giấy
+✓ 85444229 Loại khác
+✗ 85444232 Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+✓ 85444233 Loại khác
+✗ 85444234 Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+✓ 85444239 Loại khác
+✓ 85444291 Cáp dữ liệu dẹt có hai sợi hoặc hơn, cách điện bằng cao su, plastic hoặc giấy
+✓ 85444292 Cáp dữ liệu dẹt có hai sợi hoặc hơn, loại khác
+✓ 85444294 Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 5 mm
+✓ 85444295 Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính trên 5 mm nhưng không quá 19,5 mm
+✓ 85444296 Cáp điện cách điện bằng plastic khác
+✓ 85444297 Cáp điện cách điện bằng cao su hoặc giấy
+✓ 85444299 Loại khác
+## 854911
+✓ 85491111 Của loại dùng cho máy bay
+✗ 85491112 Loại khác, của phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95
+✓ 85491119 Loại khác
+✓ 85491120 Phế liệu và phế thải chủ yếu chứa sắt
+✓ 85491130 Phế liệu và phế thải chủ yếu chứa đồng
+✓ 85491191 Của loại dùng cho máy bay
+✗ 85491192 Loại khác, của phân nhóm 8507.10.92, 8507.10.95, 8507.20.94 hoặc 8507.20.95
+✓ 85491199 Loại khác

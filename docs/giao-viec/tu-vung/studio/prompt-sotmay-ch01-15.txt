@@ -1,0 +1,718 @@
+SOẠN KHOÁ TỪ VỰNG CHO CÁC DÒNG BIỂU THUẾ MÁY CHƯA ĐỌC ĐƯỢC (mục đích: số hoá ranh giới giữa các dòng 8 số cùng PN6). Máy đã chạy mọi khoá ở (A) lên toàn bộ biểu thuế; (D) dưới đây là CHÍNH XÁC những dòng 8 số KHÔNG khoá nào đọc ra giá trị (đánh dấu ✗), kèm các dòng cùng PN6 đã đọc được (✓, ghi khoá đọc) để thấy trục phân biệt.
+
+NHIỆM VỤ: với mỗi dòng ✗, quyết định MỘT trong ba: (a) GHEP — dòng này đọc được bằng khoá đã có ở (A) nếu thêm giá trị/mẫu: ghi trong "boSung": {khoa: {"giaTriMoi": {ID: {nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}, "mauThem": {vi:[…],en:[…],zh:[…]}}}; (b) SOAN — tiêu chí mới, soạn khoá vào "khoa" (gộp mọi dòng/PN6 cùng tiêu chí về MỘT khoá; ưu tiên tiêu chí lặp ở ≥2 PN6); (c) BO — chỉ là tên hàng/tên chất/tên loài, không phải tiêu chí đo-có/không-liệt kê: không làm gì. Không cần liệt kê (c). Không bịa ngưỡng. ghiChu trích NGUYÊN VĂN dòng 8 số kèm mã (chép từ (D)). Mỗi khoá kèm pn6Mau (≤5) và soDong.
+
+QUY TẮC LƯỢC ĐỒ (máy kiểm ĐỎ nếu sai): (1) SO: heDonVi có ở (B) hoặc khai mới trong heDonViMoi; donViChuan là đơn vị gốc của hệ (chiều dài mm, không inch/cm); canNguCanh true; cachViet.vi có {giaTri} + đơn vị; bí danh chữ thường vào bietDanhMoi; thang không đơn vị (chỉ số, RON, GT) thì thêm "docThem":[{"mau":"(?<=…\\s*)(\\d+)","donVi":"<đơn vị hệ>"}] và "docMoRong":true. (2) cachDoc regex không phân biệt hoa thường, vi/en/zh ≥1 mẫu, \\s+ giữa các từ; mẫu PHẢI khớp nguyên văn dòng ✗ trích trong ghiChu (máy sẽ chạy thử). (3) Mọi khoá: nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi}, ghiChu, nguonLoai "AI_DA_KIEM". (4) CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong{vi,en,zh}, cachViet{vi,viPhuDinh}; KHÔNG đưa cụm phụ chú kiểu "đã hoặc chưa …" vào cachDoc. (5) LIET_KE: giaTriHopLe = mảng id HOA_GACH_DUOI; moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}; cachDoc cấp khoá {"vi":[],"en":[],"zh":[]}; cachViet cấp khoá {"vi":"{giaTri}"}; một dòng chỉ được khớp MỘT giá trị (khớp hai giá trị ⇒ tách thành hai khoá/trục).
+
+ĐẦU RA: MỘT khối ```json {"khoa":[…],"boSung":{…},"heDonViMoi":{},"bietDanhMoi":{},"khongChac":[{"khoa":"…","lyDo":"…"}]} duy nhất, không giải thích. Vượt trần đầu ra ⇒ ưu tiên soDong lớn, phần còn lại ghi khongChac; khi được nhắn "tiếp" soạn nốt, không lặp lại.
+
+=== (A) KHOÁ ĐÃ CÓ ===
+dienAp(SO,V) điện áp
+dongDien(SO,A) dòng điện (định mức)
+congSuat(SO,W) công suất
+tanSo(SO,Hz) tần số / dải tần
+luuLuong(SO,m3/h) lưu lượng
+dungTichXiLanh(SO,cc) dung tích xi lanh
+khoiLuong(SO,kg) khối lượng
+duongKinh(SO,mm) đường kính (ngoài)
+duongKinhTrong(SO,mm) đường kính trong (cửa nạp/cửa thoát, DN)
+duongKinhLoi(SO,mm) đường kính lõi (mỗi lõi dẫn điện)
+chieuCao(SO,mm) chiều cao
+kichThuoc(SO,mm) kích thước (dài x rộng x cao)
+chieuDaiCuon(SO,m) chiều dài (hàng dài: dây, cáp, ống, cuộn)
+daGanDauNoi(CO_KHONG) đã gắn đầu nối
+coCachDien(CO_KHONG) có cách điện
+coBoXuLyLapTrinh(CO_KHONG) có trang bị bộ xử lý lập trình
+coKhungChupQuaDau(CO_KHONG) có khung chụp qua đầu
+hieuChinhThiLuc(CO_KHONG) hiệu chỉnh thị lực (kính thuốc)
+chongNang(CO_KHONG) chống nắng (kính râm)
+coChucNangGhi(CO_KHONG) có chức năng ghi (hình/âm)
+daGhi(CO_KHONG) đã ghi (có dữ liệu)
+coLuoiBaoVe(CO_KHONG) có lưới bảo vệ
+coManHinh(CO_KHONG) có màn hình hiển thị
+coCamera(CO_KHONG) có camera
+coBanh(CO_KHONG) có bánh xe
+hoatDongBangDien(CO_KHONG) hoạt động bằng điện
+coKetHopThietBiThu(CO_KHONG) kết hợp thiết bị thu
+coGiaNhiet(CO_KHONG) có gia nhiệt
+laBoPhan(CO_KHONG) là bộ phận (không phải hàng hoàn chỉnh)
+datChim(CO_KHONG) loại đặt chìm
+coKhoangPhaTron(CO_KHONG) có khoang pha trộn lưu chất
+loaiDongDien(LIET_KE) loại dòng điện
+soPha(LIET_KE) số pha
+kieuDotChay(LIET_KE) kiểu đốt cháy của động cơ piston
+nguonSang(LIET_KE) nguồn sáng
+nguonNangLuong(LIET_KE) nguồn năng lượng
+cachDieuKhien(LIET_KE) cách điều khiển / vận hành
+kieuBom(LIET_KE) kiểu bơm
+loaiRoLe(LIET_KE) loại rơ le
+loaiCongTac(LIET_KE) loại thiết bị đóng ngắt (8536.50)
+loaiPhichOCam(LIET_KE) loại phích cắm / ổ cắm (8536.69)
+phamViSuDung(LIET_KE) phạm vi sử dụng
+mauHienThi(LIET_KE) màu hiển thị
+kieuDongCoDien(LIET_KE) kiểu động cơ điện (8501.10)
+tinhTrang(LIET_KE) tình trạng hàng
+chatLieu(CHAT_LIEU_THEO_VI_TRI) chất liệu (theo vị trí)
+dungCho(CONG_DUNG) dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)
+congDung(CONG_DUNG) công dụng / mục đích
+tenLoai(TEN_LOAI) tên loại hàng
+nhanHieu(TEN_LOAI) nhãn hiệu
+model(TEN_LOAI) model
+kyMaHieu(TEN_LOAI) ký, mã hiệu
+nhaSanXuat(TEN_LOAI) nhà sản xuất
+chiHoacChuYeu(CO_KHONG) chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)
+thietKeChoTreEm(CO_KHONG) được thiết kế chủ yếu cho trẻ em
+daNapChuongTrinh(CO_KHONG) đã nạp chương trình/firmware (bo mạch, vi điều khiển)
+soLoi(SO,lõi) số lõi dẫn (ruột dẫn)
+soSoi(SO,sợi) số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ "sợi")
+tiLe(SO,lần) tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)
+phuongPhapCheTao(LIET_KE) phương pháp chế tạo
+phuongThucTruyenDan(LIET_KE) phương thức truyền dẫn
+daXuLyBeMat(CO_KHONG) đã được xử lý bề mặt
+nhienLieu(LIET_KE) nhiên liệu / nguồn nhiệt (bếp, lò)
+phuongPhapIn(LIET_KE) phương pháp in (vải, hàng dệt)
+tinhDanHoi(CO_KHONG) đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)
+loaiSoiDet(LIET_KE) loại xơ/sợi dệt (vật liệu dệt chủ yếu)
+doDay(SO,mm) độ dày
+congSuatBieuKien(SO,kVA) công suất biểu kiến
+dangNguyenSinh(LIET_KE) dạng vật lý nguyên sinh của polyme
+daLapRap(CO_KHONG) đã lắp ráp
+dungTich(SO,lít) dung tích chứa
+sanLuongHoi(SO,tấn/giờ) sản lượng hơi / công suất hơi
+theTich(SO,cm3) thể tích ngoài / thể tích bên ngoài
+heDienHoa(LIET_KE) hệ điện hóa của pin
+dungLuong(SO,Ah) dung lượng phóng điện
+daHoaDeo(CO_KHONG) đã hóa dẻo
+coBoLoc(CO_KHONG) đã lắp bộ phận lọc
+hamLuongCarbon(SO,%) hàm lượng carbon
+gioiHanChay(SO,psi) giới hạn chảy
+chieuRong(SO,mm) chiều rộng
+khaNangChiuApLuc(SO,psi) khả năng chịu áp lực
+duongCheoNgoai(SO,mm) đường chéo ngoài mặt cắt ngang
+coRen(CO_KHONG) có ren (ở đầu hoặc thân ống)
+doBenKeo(SO,MPa) độ bền kéo
+hamLuongNiken(SO,%) hàm lượng niken
+lopMaPhu(LIET_KE) lớp mạ hoặc tráng phủ bề mặt
+dungLamGiong(CO_KHONG) để nhân giống / làm giống / gieo trồng
+dongBaoBiKinKhiDeBanLe(CO_KHONG) đóng bao bì kín khí để bán lẻ
+nongDoCon(SO,%) nồng độ cồn (% thể tích)
+phuongPhapBaoQuan(LIET_KE) phương pháp bảo quản / trạng thái bảo quản
+dangBaoCheThuoc(LIET_KE) dạng bào chế / đường dùng của thuốc
+mucDoTinhCheDau(LIET_KE) mức độ tinh chế của dầu và chất béo
+chiSoIot(SO,IV) chỉ số iốt (IV)
+triSoOctan(SO,RON) trị số octan (RON / Octane)
+daRang(CO_KHONG) đã rang
+tachXuongCoHoc(CO_KHONG) thịt tách hoặc lọc khỏi xương bằng phương pháp cơ học (MSM/MDM)
+dinhLuong(SO,g/m2) định lượng giấy hoặc bìa
+mucDoGiaCongGo(LIET_KE) mức độ gia công của gỗ xẻ
+dangBinhXit(CO_KHONG) dạng bình xịt (aerosol)
+nhieuLop(CO_KHONG) nhiều lớp (giấy/bìa/gỗ nhiều lớp)
+daIn(CO_KHONG) đã in (nội dung, họa tiết, vạch chia)
+duongKinhVanh(SO,mm) đường kính vành bánh xe (mâm xe lắp lốp)
+daTrangMen(CO_KHONG) đã tráng men (gạch gốm, sứ)
+tinhNangBaoHo(LIET_KE) tính năng bảo hộ chuyên dụng của quần áo
+daTrangPhuEpLop(CO_KHONG) đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)
+loaiMuiBaoVe(LIET_KE) loại mũi bảo vệ của giày dép
+thuyTinhQuangHoc(CO_KHONG) thủy tinh/kính quang học (chưa gia công quang học)
+tongDungTichTau(SO,GT) tổng dung tích tàu thuyền (gross tonnage - GT)
+dangCuon(CO_KHONG) ở dạng cuộn (dây hàn, que hàn, tấm, dải)
+coNong(SO,mm) cỡ nòng súng / cỡ đạn
+ngamQuaThauKinhSLR(CO_KHONG) có bộ ngắm qua thấu kính (phản chiếu đơn - SLR)
+dungMotLan(CO_KHONG) dùng một lần (dụng cụ y tế, vật tư tiêu hao)
+tinhTrangTayTrang(LIET_KE) tình trạng tẩy trắng (của xơ, sợi hoặc vải dệt)
+hinhDangCatGocKinh(CO_KHONG) tấm kính hình vuông hoặc hình chữ nhật (kể cả đã hoặc chưa cắt góc)
+kieuDet(LIET_KE) kiểu dệt / cấu trúc dệt của vải
+daPhaThemDuongHoacRuou(CO_KHONG) đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu (rau quả chế biến)
+soiDun(CO_KHONG) sợi dún (textured yarn)
+coMauTruTrang(CO_KHONG) có màu trừ màu trắng (sợi dệt hoặc xơ dệt)
+dongGoiBanLe(CO_KHONG) đóng gói để bán lẻ
+dangLong(CO_KHONG) ở dạng lỏng
+laPhanDoan(CO_KHONG) là phần phân đoạn của dầu/mỡ (olein, stearin)
+
+=== (B) HỆ ĐƠN VỊ ĐÃ CÓ ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"], "phanTram": ["%"], "apSuat": ["psi", "MPa"], "chiSoIot": ["IV"], "triSoOctan": ["RON", "octane"], "dinhLuong": ["g/m2", "gsm"], "tongDungTich": ["GT"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+
+=== (D) PN6 CÓ DÒNG MÁY CHƯA ĐỌC (✗ = chưa đọc, ✓ = đã đọc) ===
+## 010229
+✗ 01022911 Bò thiến (SEN)
+✓ 01022919 Loại khác
+✓ 01022990 Loại khác
+## 010599
+✓ 01059910 Vịt, ngan để nhân giống (SEN)
+✗ 01059920 Vịt, ngan loại khác
+✓ 01059930 Ngỗng, gà tây và gà lôi để nhân giống (SEN)
+✗ 01059940 Ngỗng, gà tây và gà lôi loại khác
+## 010612
+✗ 01061210 Cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ cá voi Cetacea); lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+✗ 01061220 Hải cẩu, sư tử biển và hải mã (con moóc) (động vật có vú thuộc phân bộ Pinnipedia)
+## 020714
+✗ 02071410 Cánh
+✗ 02071420 Đùi
+✗ 02071430 Gan
+✓ 02071491 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+✓ 02071499 Loại khác
+## 020727
+✗ 02072710 Gan
+✓ 02072791 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+✓ 02072799 Loại khác
+## 020745
+✗ 02074510 Gan béo
+✓ 02074590 Loại khác
+## 020755
+✗ 02075510 Gan béo
+✓ 02075590 Loại khác
+## 020890
+✗ 02089010 Đùi ếch
+✓ 02089090 Loại khác
+## 021019
+✗ 02101930 Thịt lợn muối xông khói (bacon); thịt mông đùi (hams) không xương
+✓ 02101990 Loại khác
+## 030111
+✗ 03011110 Cá bột
+✗ 03011191 Cá chép Koi (Cyprinus carpio)
+✗ 03011192 Cá vàng (Carassius auratus)
+✗ 03011193 Cá chọi Thái Lan (Beta splendens)
+✗ 03011195 Cá rồng (Scleropages formosus)
+✓ 03011199 Loại khác
+## 030119
+✗ 03011910 Cá bột
+✓ 03011990 Loại khác
+## 030193
+✓ 03019321 Để nhân giống, trừ cá bột (SEN)
+✗ 03019322 Cá bột
+✓ 03019329 Loại khác
+✓ 03019331 Để nhân giống, trừ cá bột (SEN)
+✗ 03019332 Cá bột
+✓ 03019339 Loại khác
+## 030199
+✓ 03019911 Để nhân giống (SEN)
+✓ 03019919 Loại khác
+✓ 03019922 Cá chép khác, để nhân giống (SEN)
+✗ 03019923 Cá chép loại khác (SEN)
+✓ 03019924 Loại khác, để nhân giống
+✓ 03019929 Loại khác
+✓ 03019931 Cá măng biển để nhân giống (SEN)
+✗ 03019932 Cá măng biển, loại khác (SEN)
+✗ 03019933 Cá mú chấm nhỏ (Plectropomus leopardus)(SEN)
+✗ 03019934 Cá mú hoa nâu/cá mú cọp (Epinephelus fuscoguttatus) (SEN)
+✗ 03019935 Cá mú dẹt (Cromileptes altivelis) (SEN)
+✗ 03019936 Cá mú loại khác
+✗ 03019941 Cá rô phi (Oreochromis spp.)(SEN)
+✓ 03019942 Cá chép khác, để nhân giống (SEN)
+✓ 03019949 Loại khác
+✗ 03019950 Cá biển khác
+✓ 03019990 Loại khác
+## 030272
+✗ 03027210 Cá tra đuôi vàng (Pangasius pangasius)
+✓ 03027290 Loại khác
+## 030289
+✗ 03028911 Cá mú
+✗ 03028912 Cá bạc (Pentaprion longimanus)
+✗ 03028913 Cá mối hoa (Trachinocephalus myops)
+✗ 03028914 Cá hố savalai (Lepturacanthus savala), cá đù Belanger (Johnius belangerii), cá đù Reeve (Chrysochir aureus) và cá đù mắt to (Pennahia anea)
+✗ 03028915 Cá nhụ Ấn Độ (Polynemus indicus)
+✗ 03028916 Cá sòng gió (Megalaspis cordyla), cá hiên chấm (Drepane punctata) và cá nhồng lớn (Sphyraena barracuda)
+✗ 03028917 Cá chim đen (Parastromatus niger)
+✗ 03028918 Cá hồng bạc (Lutjanus argentimaculatus)
+✓ 03028919 Loại khác
+✗ 03028922 Cá đòng đong đầm lầy (Puntius chola)
+✗ 03028923 Cá sạo bạc (Pomadasys argenteus)
+✗ 03028927 Cá mòi Hilsa (Tenualosa ilisha)
+✗ 03028928 Cá leo (Wallago attu) và cá tra dầu (Sperata seenghala)
+✓ 03028929 Loại khác
+## 030345
+✗ 03034510 Cá ngừ vây xanh Đại Tây Dương (Thunnus thynnus)
+✗ 03034590 Cá ngừ vây xanh Thái Bình Dương (Thunnus orientalis)
+## 030349
+✗ 03034910 Cá ngừ bò (Thunnus tonggol) (SEN)
+✓ 03034990 Loại khác
+## 030354
+✗ 03035410 Cá nục hoa (Scomber scombrus, Scomber australasicus) (SEN)
+✗ 03035420 Cá thu ngừ Thái Bình Dương (sa ba) (Scomber japonicus) (SEN)
+## 030359
+✗ 03035910 Cá bạc má (Rastrelliger kanagurta); cá bạc má đảo (Rastrelliger faughni)
+✓ 03035920 Cá chim trắng (Pampus spp.)
+✓ 03035990 Loại khác
+## 030389
+✗ 03038911 Cá mú
+✗ 03038913 Cá mối hoa (Trachinocephalus myops)
+✗ 03038914 Cá hố savalai (Lepturacanthus savala), cá đù Belanger (Johnius belangerii), cá đù Reeve (Chrysochir aureus) và cá đù mắt to (Pennahia anea)
+✗ 03038915 Cá nhụ Ấn Độ (Polynemus indicus)
+✗ 03038916 Cá sòng gió (Megalaspis cordyla), cá hiên chấm (Drepane punctata) và cá nhồng lớn (Sphyraena barracuda)
+✗ 03038917 Cá chim đen (Parastromatus niger)
+✗ 03038918 Cá hồng bạc (Lutjanus argentimaculatus)
+✓ 03038919 Loại khác
+✗ 03038922 Cá đòng đong đầm lầy (Puntius chola)
+✗ 03038923 Cá măng biển (Chanos chanos) (SEN)
+✗ 03038924 Cá sạo bạc (Pomadasys argenteus)
+✗ 03038927 Cá mòi Hilsa (Tenualosa ilisha)
+✗ 03038928 Cá leo (Wallago attu) và cá tra dầu (Sperata seenghala)
+✓ 03038929 Loại khác
+## 030489
+✗ 03048910 Cá nục heo cờ (Coryphaena hippurus) (SEN)
+✓ 03048990 Loại khác
+## 030499
+✗ 03049910 Surimi (thịt cá xay) (SEN)
+✓ 03049990 Loại khác
+## 030539
+✗ 03053910 Cá nhói nước ngọt (Xenentodon cancila), cá phèn dải vàng (Upeneus vittatus) và cá khế lược mang dài (Ulua mentalis)
+✗ 03053920 Cá hố savalai (Lepturacanthus savala), cá đù Belanger (Johnius belangerii), cá đù Reeve (Chrysochir aureus) và cá đù mắt to (Pennahia anea)
+✓ 03053991 Của cá nước ngọt
+✓ 03053992 Của cá biển
+✓ 03053999 Loại khác
+## 030549
+✗ 03054910 Cá ngừ vằn (cá ngừ sọc dưa) (Katsuwonus pelamis)
+✓ 03054990 Loại khác
+## 030559
+✗ 03055921 Cá cơm (cá trỏng) (Stolephorus spp., Coilia spp., Setipinna spp., Lycothrissa spp., Thryssa spp. và Encrasicholina spp.) (SEN)
+✓ 03055929 Loại khác
+✓ 03055990 Loại khác
+## 030569
+✗ 03056910 Cá biển
+✓ 03056990 Loại khác
+## 030571
+✗ 03057110 Khô hoặc hun khói
+✓ 03057190 Loại khác
+## 030614
+✗ 03061411 Cua, ghẹ vỏ mềm
+✓ 03061419 Loại khác
+✗ 03061491 Ghẹ (thuộc họ Portunidae)
+✗ 03061492 Cua hoàng đế/cua vua Alaska (thuộc họ Lithodidae)
+✗ 03061493 Cua tuyết (thuộc họ Origoniidae)
+✓ 03061499 Loại khác
+## 030617
+✗ 03061711 Đã bỏ đầu
+✓ 03061719 Loại khác
+✗ 03061721 Đã bỏ đầu, còn đuôi
+✗ 03061722 Đã bỏ đầu, bỏ đuôi
+✓ 03061729 Loại khác
+✗ 03061730 Tôm càng xanh (Macrobrachium rosenbergii)
+✓ 03061790 Loại khác
+## 030636
+✗ 03063611 Tôm sú (Penaeus monodon) (SEN)
+✓ 03063612 Tôm thẻ chân trắng (Litopenaeus vannamei) (SEN)
+✗ 03063613 Tôm càng xanh (Macrobrachium rosenbergii) (SEN)
+✓ 03063619 Loại khác (SEN)
+✗ 03063621 Tôm sú (Penaeus monodon)
+✓ 03063622 Tôm thẻ chân trắng (Litopenaeus vannamei)
+✗ 03063623 Tôm càng xanh (Macrobrachium rosenbergii)
+✓ 03063629 Loại khác
+✗ 03063631 Tôm sú (Penaeus monodon)
+✓ 03063632 Tôm thẻ chân trắng (Litopenaeus vannamei)
+✗ 03063633 Tôm càng xanh (Macrobrachium rosenbergii)
+✓ 03063639 Loại khác
+## 030695
+✗ 03069521 Còn vỏ, đã hấp chín hoặc luộc chín trong nước
+✓ 03069529 Loại khác
+✓ 03069530 Loại khác
+## 030742
+✗ 03074211 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+✓ 03074219 Loại khác
+✗ 03074221 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+✓ 03074229 Loại khác
+## 030743
+✗ 03074310 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+✓ 03074390 Loại khác
+## 030749
+✗ 03074921 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+✓ 03074929 Loại khác
+✗ 03074931 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+✓ 03074939 Loại khác
+## 040320
+✗ 04032011 Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao
+✓ 04032019 Loại khác
+✗ 04032091 Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao
+✓ 04032099 Loại khác
+## 040390
+✗ 04039010 Buttermilk
+✓ 04039090 Loại khác
+## 040410
+✗ 04041011 Whey, thích hợp sử dụng cho người (SEN)
+✓ 04041019 Loại khác
+✗ 04041091 Whey, thích hợp sử dụng cho người (SEN)
+✓ 04041099 Loại khác
+## 040590
+✗ 04059010 Chất béo khan của bơ
+✗ 04059020 Dầu bơ (butteroil)
+✗ 04059030 Ghee
+✓ 04059090 Loại khác
+## 040610
+✓ 04061010 Pho mát tươi (chưa ủ chín hoặc chưa xử lý), kể cả pho mát whey
+✗ 04061020 Curd
+## 041090
+✗ 04109010 Tổ yến
+✗ 04109020 Trứng rùa
+✓ 04109090 Loại khác
+## 050510
+✗ 05051010 Lông vũ của vịt, ngan
+✓ 05051090 Loại khác
+## 050590
+✗ 05059010 Lông vũ của vịt, ngan
+✓ 05059090 Loại khác
+## 050790
+✗ 05079020 Mai động vật họ rùa
+✓ 05079090 Loại khác
+## 050800
+✗ 05080020 Mai, vỏ động vật thân mềm, động vật giáp xác hoặc động vật da gai
+✓ 05080090 Loại khác
+## 051191
+✗ 05119110 Sẹ và bọc trứng
+✗ 05119120 Trứng Artemia (trứng Brine shrimp)
+✗ 05119130 Da cá
+✓ 05119190 Loại khác
+## 051199
+✗ 05119910 Tinh dịch động vật nuôi
+✗ 05119920 Trứng tằm
+✗ 05119930 Bọt biển thiên nhiên
+✓ 05119990 Loại khác
+## 060120
+✗ 06012010 Cây rau diếp xoăn
+✗ 06012020 Rễ rau diếp xoăn
+✓ 06012090 Loại khác
+## 060290
+✗ 06029010 Cành giâm và cành ghép phong lan có rễ
+✗ 06029020 Cây phong lan giống
+✓ 06029040 Gốc cây cao su có chồi (SEN)
+✓ 06029050 Cây cao su giống (SEN)
+✓ 06029060 Chồi mọc từ gỗ cây cao su (SEN)
+✓ 06029090 Loại khác
+## 060420
+✗ 06042010 Rêu và địa y
+✓ 06042090 Loại khác
+## 060490
+✗ 06049010 Rêu và địa y
+✓ 06049090 Loại khác
+## 070190
+✗ 07019010 Loại thường dùng để làm khoai tây chiên (chipping potatoes) (SEN)
+✓ 07019090 Loại khác
+## 070410
+✗ 07041010 Súp lơ (1) (Caulifower)
+✗ 07041020 Đầu súp lơ xanh (headed broccoli)
+✗ 07041090 Súp lơ xanh khác
+## 070490
+✗ 07049010 Bắp cải cuộn (cuộn tròn) (SEN)
+✗ 07049020 Cải bẹ xanh (Chinese mustard) (SEN)
+✗ 07049030 Bắp cải khác
+✓ 07049090 Loại khác
+## 070610
+✗ 07061010 Cà rốt
+✗ 07061020 Củ cải
+## 070820
+✗ 07082010 Đậu Pháp (SEN)
+✗ 07082020 Đậu dài
+✓ 07082090 Loại khác
+## 070959
+✗ 07095920 Nấm cục trừ loại Tuber spp.
+✓ 07095990 Loại khác
+## 070960
+✗ 07096010 Quả ớt (chillies) (quả thuộc chi Capsicum)
+✓ 07096090 Loại khác
+## 070999
+✗ 07099910 Ngô ngọt
+✗ 07099920 Đậu bắp (Okra)
+✓ 07099990 Loại khác
+## 071120
+✗ 07112010 Đã bảo quản bằng khí sunphurơ
+✓ 07112090 Loại khác
+## 071140
+✗ 07114010 Đã bảo quản bằng khí sunphurơ
+✓ 07114090 Loại khác
+## 071151
+✗ 07115110 Đã bảo quản bằng khí sunphurơ
+✓ 07115190 Loại khác
+## 071159
+✗ 07115910 Đã bảo quản bằng khí sunphurơ
+✓ 07115990 Loại khác
+## 071190
+✗ 07119010 Ngô ngọt
+✗ 07119020 Quả ớt (chillies) (quả thuộc chi Capsicum)
+✗ 07119030 Nụ bạch hoa
+✗ 07119040 Hành tây, đã được bảo quản bằng khí sunphurơ
+✗ 07119050 Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ
+✗ 07119060 Loại khác, đã được bảo quản bằng khí sunphurơ
+✓ 07119090 Loại khác
+## 071239
+✗ 07123910 Nấm cục (truffles)
+✓ 07123990 Loại khác
+## 071290
+✗ 07129010 Tỏi
+✗ 07129020 Ngô ngọt
+✓ 07129090 Loại khác
+## 080119
+✗ 08011910 Quả dừa non (SEN)
+✓ 08011990 Loại khác
+## 080212
+✗ 08021210 Đã chần (blanched) (SEN)
+✓ 08021290 Loại khác
+## 080390
+✗ 08039010 Chuối ngự (Lady's finger banana) (SEN)
+✗ 08039020 Chuối Cavendish (Musa acuminata) (SEN)
+✗ 08039030 Chuối Chestnut (Chestnut banana) (lai giữa Musa acuminata và Musa balbisiana, giống Berangan) (SEN)
+✓ 08039090 Loại khác
+## 080450
+✗ 08045010 Quả ổi
+✓ 08045021 Tươi
+✓ 08045022 Khô
+✗ 08045030 Quả măng cụt
+## 080550
+✗ 08055010 Quả chanh vàng (lemon) (Citrus limon, Citrus limonum) (SEN)
+✗ 08055020 Quả chanh xanh (chanh ta Citrus aurantifolia, chanh không hạt Citrus latifolia)(SEN)
+## 080940
+✗ 08094010 Quả mận
+✗ 08094020 Quả mận gai
+## 081090
+✗ 08109010 Quả nhãn; Quả nhãn Mata Kucing (SEN)
+✗ 08109020 Quả vải
+✗ 08109030 Quả chôm chôm
+✗ 08109040 Quả bòn bon (Lanzones)
+✗ 08109050 Quả mít (kể cả mít Cempedak và mít Nangka)
+✗ 08109060 Quả me
+✗ 08109070 Quả khế
+✗ 08109091 Salacca (quả da rắn)
+✗ 08109092 Quả thanh long
+✗ 08109093 Quả hồng xiêm (quả sapôchê)
+✗ 08109094 Quả lựu (Punica spp.), quả mãng cầu hoặc quả na (Annona spp.), quả roi (bell fruit) (Syzygium spp., Eugenia spp.), quả thanh trà (Bouea spp.), quả chanh leo (dây) (Passiflora spp.), quả sấu đỏ (Sandoricum spp.), quả táo ta (Ziziphus spp.) và quả dâu da đất (Baccaurea spp.) (SEN)
+✓ 08109099 Loại khác
+## 081290
+✗ 08129010 Quả dâu tây
+✓ 08129090 Loại khác
+## 081340
+✗ 08134010 Quả nhãn
+✗ 08134020 Quả me
+✓ 08134090 Loại khác
+## 081350
+✗ 08135010 Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+✗ 08135020 Quả hạch (nuts) khác chiếm đa số về khối lượng
+✗ 08135030 Quả chà là chiếm đa số về khối lượng
+✗ 08135040 Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+✓ 08135090 Loại khác
+## 090111
+✗ 09011120 Arabica (SEN)
+✗ 09011130 Robusta (SEN)
+✓ 09011190 Loại khác
+## 090112
+✗ 09011220 Arabica (SEN) hoặc Robusta (SEN)
+✓ 09011290 Loại khác
+## 090121
+✗ 09012111 Arabica (SEN)
+✗ 09012112 Robusta (SEN)
+✓ 09012119 Loại khác
+✗ 09012120 Đã xay
+## 090122
+✗ 09012210 Chưa xay
+✗ 09012220 Đã xay
+## 090190
+✗ 09019010 Vỏ quả và vỏ lụa cà phê
+✗ 09019020 Các chất thay thế có chứa cà phê
+## 090210
+✗ 09021010 Lá chè
+✓ 09021090 Loại khác
+## 090220
+✗ 09022010 Lá chè
+✓ 09022090 Loại khác
+## 090230
+✗ 09023010 Lá chè
+✓ 09023090 Loại khác
+## 090240
+✗ 09024010 Lá chè
+✓ 09024090 Loại khác
+## 090411
+✓ 09041110 Trắng
+✗ 09041120 Đen
+✓ 09041190 Loại khác
+## 090412
+✓ 09041210 Trắng
+✗ 09041220 Đen
+✓ 09041290 Loại khác
+## 090421
+✗ 09042110 Quả ớt (chillies) (quả thuộc chi Capsicum)
+✓ 09042190 Loại khác
+## 090422
+✗ 09042210 Quả ớt (chillies) (quả thuộc chi Capsicum)
+✓ 09042290 Loại khác
+## 091091
+✗ 09109110 Cà ri (curry)
+✓ 09109190 Loại khác
+## 091099
+✗ 09109910 Húng tây, cỏ xạ hương; lá nguyệt quế
+✓ 09109990 Loại khác
+## 100199
+✗ 10019911 Meslin (SEN)
+✗ 10019912 Hạt lúa mì đã bỏ lớp vỏ ngoài cùng (SEN)
+✓ 10019919 Loại khác (SEN)
+✗ 10019991 Meslin
+✓ 10019999 Loại khác (SEN)
+## 100590
+✓ 10059010 Loại dùng để rang nổ (popcorn) (SEN)
+✗ 10059091 Thích hợp sử dụng cho người (SEN)
+✓ 10059099 Loại khác
+## 100620
+✗ 10062010 Gạo Hom Mali (SEN)
+✓ 10062090 Loại khác
+## 100630
+✗ 10063030 Gạo nếp (SEN)
+✗ 10063040 Gạo Hom Mali (SEN)
+✗ 10063050 Gạo Basmati (SEN)
+✗ 10063060 Gạo Malys (SEN)
+✗ 10063070 Gạo thơm khác (SEN)
+✗ 10063091 Gạo đồ (1)
+✓ 10063099 Loại khác
+## 110100
+✗ 11010011 Tăng cường vi chất dinh dưỡng (SEN)
+✓ 11010019 Loại khác
+✗ 11010020 Bột meslin
+## 110290
+✗ 11029010 Bột gạo
+✗ 11029020 Bột lúa mạch đen
+✓ 11029090 Loại khác
+## 110819
+✗ 11081910 Tinh bột cọ sago
+✓ 11081990 Loại khác
+## 120710
+✓ 12071010 Hạt cọ phù hợp để gieo/trồng (SEN)
+✗ 12071030 Nhân hạt cọ
+✓ 12071090 Loại khác
+## 120740
+✗ 12074010 Loại ăn được
+✓ 12074090 Loại khác
+## 120799
+✗ 12079940 Hạt illipe (quả hạch illipe)
+✓ 12079950 Chùm quả tươi của cây cọ dầu
+✓ 12079990 Loại khác
+## 120929
+✗ 12092910 Hạt cỏ đuôi mèo (Phleum pratense)
+✓ 12092990 Loại khác
+## 120991
+✗ 12099110 Hạt hành tây
+✓ 12099190 Loại khác
+## 120999
+✓ 12099920 Hạt cây cao su
+✗ 12099930 Hạt cây kenaf
+✓ 12099990 Loại khác
+## 121120
+✗ 12112010 Tươi hoặc khô
+✓ 12112090 Loại khác
+## 121190
+✓ 12119011 Cây gai dầu, đã cắt, nghiền hoặc dạng bột
+✗ 12119012 Cây gai dầu, ở dạng khác
+✗ 12119013 Rễ cây ba gạc hoa đỏ (SEN)
+✗ 12119015 Rễ cây cam thảo
+✓ 12119017 Loại khác, tươi hoặc khô, đã cắt, nghiền hoặc dạng bột
+✓ 12119018 Loại khác, đã cắt, nghiền hoặc dạng bột
+✓ 12119019 Loại khác
+✓ 12119091 Cây kim cúc, đã cắt, nghiền hoặc dạng bột
+✗ 12119092 Cây kim cúc, ở dạng khác
+✓ 12119094 Mảnh gỗ đàn hương
+✓ 12119095 Mảnh gỗ trầm hương (Gaharu) (SEN)
+✗ 12119097 Vỏ cây persea (Persea Kurzii Kosterm) (SEN)
+✓ 12119098 Loại khác, đã cắt, nghiền hoặc dạng bột
+✓ 12119099 Loại khác
+## 121221
+✗ 12122111 Eucheuma spinosum(SEN)
+✗ 12122112 Eucheuma cottonii (SEN)
+✗ 12122113 Gracilaria spp.
+✓ 12122119 Loại khác
+✓ 12122190 Loại khác
+## 121229
+✓ 12122911 Loại dùng làm dược phẩm
+✓ 12122919 Loại khác
+✗ 12122920 Loại khác, tươi, ướp lạnh hoặc khô
+✓ 12122930 Loại khác, đông lạnh
+## 121299
+✗ 12129910 Hạt và nhân hạt của quả mơ, đào (kể cả xuân đào) hoặc mận (SEN)
+✓ 12129990 Loại khác
+## 130211
+✗ 13021110 Bột thuốc phiện (Pulvis opii)
+✓ 13021190 Loại khác
+## 130219
+✗ 13021920 Chiết xuất và cồn thuốc của cây gai dầu
+✓ 13021940 Nhựa và các chiết xuất thực vật từ hoa cúc hoặc rễ cây có chứa rotenone
+✗ 13021950 Sơn mài (sơn mài tự nhiên)
+✓ 13021990 Loại khác
+## 140120
+✗ 14012010 Nguyên cây
+✓ 14012021 Đường kính không quá 12 mm (SEN)
+✓ 14012029 Loại khác (SEN)
+✗ 14012030 Vỏ (cật) đã tách (SEN)
+✓ 14012090 Loại khác
+## 140490
+✓ 14049020 Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm
+✗ 14049030 Bông gòn
+✗ 14049091 Vỏ hạt cọ
+✗ 14049092 Chùm không quả của cây cọ dầu
+✓ 14049099 Loại khác
+## 150290
+✗ 15029010 Loại ăn được
+✓ 15029090 Loại khác
+## 150500
+✗ 15050010 Lanolin
+✓ 15050090 Loại khác
+## 151321
+✗ 15132110 Dầu hạt cọ (SEN)
+✓ 15132190 Loại khác
+## 151329
+✓ 15132911 Các phần phân đoạn thể rắn của dầu hạt cọ chưa tinh chế (SEN)
+✓ 15132912 Các phần phân đoạn thể rắn của dầu cọ ba-ba-su chưa tinh chế
+✓ 15132913 Loại khác, của dầu hạt cọ chưa tinh chế (olein hạt cọ) (SEN)
+✓ 15132914 Loại khác, của dầu cọ ba-ba-su chưa tinh chế
+✓ 15132991 Các phần phân đoạn thể rắn của dầu hạt cọ (SEN)
+✓ 15132992 Các phần phân đoạn thể rắn của dầu cọ ba-ba-su
+✓ 15132994 Olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+✓ 15132995 Dầu hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) (SEN)
+✗ 15132996 Loại khác, của dầu hạt cọ (SEN)
+✗ 15132997 Loại khác, của dầu cọ ba-ba-su
+## 151610
+✗ 15161020 Đã tái este hóa
+✓ 15161090 Loại khác
+## 151790
+✓ 15179010 Chế phẩm giả ghee
+✗ 15179020 Margarin lỏng
+✓ 15179030 Của loại sử dụng như chế phẩm tách khuôn
+✗ 15179043 Shortening
+✓ 15179044 Chế phẩm giả mỡ lợn
+✓ 15179050 Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng
+✗ 15179061 Thành phần chủ yếu là dầu lạc
+✗ 15179062 Thành phần chủ yếu là dầu cọ thô
+✓ 15179063 Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh không quá 25kg
+✓ 15179064 Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh trên 25kg
+✗ 15179065 Thành phần chủ yếu là dầu hạt cọ
+✓ 15179066 Thành phần chủ yếu là olein hạt cọ
+✗ 15179067 Thành phần chủ yếu là dầu đậu tương hoặc dầu dừa
+✗ 15179068 Thành phần chủ yếu là dầu hạt illipe
+✓ 15179069 Loại khác
+✓ 15179080 Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng
+✓ 15179090 Loại khác
+## 151800
+✗ 15180012 Mỡ và dầu động vật
+✗ 15180014 Dầu lạc, dầu đậu tương, dầu cọ hoặc dầu dừa
+✓ 15180015 Dầu hạt lanh và các phần phân đoạn của dầu hạt lanh
+✓ 15180016 Dầu ô liu và các phần phân đoạn của dầu ô liu
+✓ 15180019 Loại khác
+✓ 15180020 Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật khác nhau
+✓ 15180032 Của dầu cọ hoặc olein hạt cọ, đã trung hòa hóa, tẩy và khử mùi (NBD) hoặc đã tinh chế, tẩy và khử mùi (RBD)
+✓ 15180033 Của hạt lanh
+✓ 15180034 Của ô liu
+✓ 15180035 Của lạc
+✓ 15180036 Của đậu tương hoặc dừa
+✓ 15180037 Của hạt bông
+✓ 15180038 Của quả cọ dầu hoặc của hạt cọ, loại khác
+✓ 15180039 Loại khác
+✓ 15180060 Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng và chất béo hoặc dầu thực vật hoặc các phần phân đoạn của chúng
+✓ 15180090 Loại khác
+## 152000
+✗ 15200010 Glyxerin thô
+✓ 15200090 Loại khác
+## 152190
+✗ 15219010 Sáp ong và sáp côn trùng khác
+✗ 15219020 Sáp cá nhà táng
+## 152200
+✗ 15220010 Chất nhờn
+✓ 15220090 Loại khác

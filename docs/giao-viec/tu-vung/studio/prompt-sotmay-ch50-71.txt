@@ -1,0 +1,588 @@
+SOẠN KHOÁ TỪ VỰNG CHO CÁC DÒNG BIỂU THUẾ MÁY CHƯA ĐỌC ĐƯỢC (mục đích: số hoá ranh giới giữa các dòng 8 số cùng PN6). Máy đã chạy mọi khoá ở (A) lên toàn bộ biểu thuế; (D) dưới đây là CHÍNH XÁC những dòng 8 số KHÔNG khoá nào đọc ra giá trị (đánh dấu ✗), kèm các dòng cùng PN6 đã đọc được (✓, ghi khoá đọc) để thấy trục phân biệt.
+
+NHIỆM VỤ: với mỗi dòng ✗, quyết định MỘT trong ba: (a) GHEP — dòng này đọc được bằng khoá đã có ở (A) nếu thêm giá trị/mẫu: ghi trong "boSung": {khoa: {"giaTriMoi": {ID: {nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}, "mauThem": {vi:[…],en:[…],zh:[…]}}}; (b) SOAN — tiêu chí mới, soạn khoá vào "khoa" (gộp mọi dòng/PN6 cùng tiêu chí về MỘT khoá; ưu tiên tiêu chí lặp ở ≥2 PN6); (c) BO — chỉ là tên hàng/tên chất/tên loài, không phải tiêu chí đo-có/không-liệt kê: không làm gì. Không cần liệt kê (c). Không bịa ngưỡng. ghiChu trích NGUYÊN VĂN dòng 8 số kèm mã (chép từ (D)). Mỗi khoá kèm pn6Mau (≤5) và soDong.
+
+QUY TẮC LƯỢC ĐỒ (máy kiểm ĐỎ nếu sai): (1) SO: heDonVi có ở (B) hoặc khai mới trong heDonViMoi; donViChuan là đơn vị gốc của hệ (chiều dài mm, không inch/cm); canNguCanh true; cachViet.vi có {giaTri} + đơn vị; bí danh chữ thường vào bietDanhMoi; thang không đơn vị (chỉ số, RON, GT) thì thêm "docThem":[{"mau":"(?<=…\\s*)(\\d+)","donVi":"<đơn vị hệ>"}] và "docMoRong":true. (2) cachDoc regex không phân biệt hoa thường, vi/en/zh ≥1 mẫu, \\s+ giữa các từ; mẫu PHẢI khớp nguyên văn dòng ✗ trích trong ghiChu (máy sẽ chạy thử). (3) Mọi khoá: nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi}, ghiChu, nguonLoai "AI_DA_KIEM". (4) CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong{vi,en,zh}, cachViet{vi,viPhuDinh}; KHÔNG đưa cụm phụ chú kiểu "đã hoặc chưa …" vào cachDoc. (5) LIET_KE: giaTriHopLe = mảng id HOA_GACH_DUOI; moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}; cachDoc cấp khoá {"vi":[],"en":[],"zh":[]}; cachViet cấp khoá {"vi":"{giaTri}"}; một dòng chỉ được khớp MỘT giá trị (khớp hai giá trị ⇒ tách thành hai khoá/trục).
+
+ĐẦU RA: MỘT khối ```json {"khoa":[…],"boSung":{…},"heDonViMoi":{},"bietDanhMoi":{},"khongChac":[{"khoa":"…","lyDo":"…"}]} duy nhất, không giải thích. Vượt trần đầu ra ⇒ ưu tiên soDong lớn, phần còn lại ghi khongChac; khi được nhắn "tiếp" soạn nốt, không lặp lại.
+
+=== (A) KHOÁ ĐÃ CÓ ===
+dienAp(SO,V) điện áp
+dongDien(SO,A) dòng điện (định mức)
+congSuat(SO,W) công suất
+tanSo(SO,Hz) tần số / dải tần
+luuLuong(SO,m3/h) lưu lượng
+dungTichXiLanh(SO,cc) dung tích xi lanh
+khoiLuong(SO,kg) khối lượng
+duongKinh(SO,mm) đường kính (ngoài)
+duongKinhTrong(SO,mm) đường kính trong (cửa nạp/cửa thoát, DN)
+duongKinhLoi(SO,mm) đường kính lõi (mỗi lõi dẫn điện)
+chieuCao(SO,mm) chiều cao
+kichThuoc(SO,mm) kích thước (dài x rộng x cao)
+chieuDaiCuon(SO,m) chiều dài (hàng dài: dây, cáp, ống, cuộn)
+daGanDauNoi(CO_KHONG) đã gắn đầu nối
+coCachDien(CO_KHONG) có cách điện
+coBoXuLyLapTrinh(CO_KHONG) có trang bị bộ xử lý lập trình
+coKhungChupQuaDau(CO_KHONG) có khung chụp qua đầu
+hieuChinhThiLuc(CO_KHONG) hiệu chỉnh thị lực (kính thuốc)
+chongNang(CO_KHONG) chống nắng (kính râm)
+coChucNangGhi(CO_KHONG) có chức năng ghi (hình/âm)
+daGhi(CO_KHONG) đã ghi (có dữ liệu)
+coLuoiBaoVe(CO_KHONG) có lưới bảo vệ
+coManHinh(CO_KHONG) có màn hình hiển thị
+coCamera(CO_KHONG) có camera
+coBanh(CO_KHONG) có bánh xe
+hoatDongBangDien(CO_KHONG) hoạt động bằng điện
+coKetHopThietBiThu(CO_KHONG) kết hợp thiết bị thu
+coGiaNhiet(CO_KHONG) có gia nhiệt
+laBoPhan(CO_KHONG) là bộ phận (không phải hàng hoàn chỉnh)
+datChim(CO_KHONG) loại đặt chìm
+coKhoangPhaTron(CO_KHONG) có khoang pha trộn lưu chất
+loaiDongDien(LIET_KE) loại dòng điện
+soPha(LIET_KE) số pha
+kieuDotChay(LIET_KE) kiểu đốt cháy của động cơ piston
+nguonSang(LIET_KE) nguồn sáng
+nguonNangLuong(LIET_KE) nguồn năng lượng
+cachDieuKhien(LIET_KE) cách điều khiển / vận hành
+kieuBom(LIET_KE) kiểu bơm
+loaiRoLe(LIET_KE) loại rơ le
+loaiCongTac(LIET_KE) loại thiết bị đóng ngắt (8536.50)
+loaiPhichOCam(LIET_KE) loại phích cắm / ổ cắm (8536.69)
+phamViSuDung(LIET_KE) phạm vi sử dụng
+mauHienThi(LIET_KE) màu hiển thị
+kieuDongCoDien(LIET_KE) kiểu động cơ điện (8501.10)
+tinhTrang(LIET_KE) tình trạng hàng
+chatLieu(CHAT_LIEU_THEO_VI_TRI) chất liệu (theo vị trí)
+dungCho(CONG_DUNG) dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)
+congDung(CONG_DUNG) công dụng / mục đích
+tenLoai(TEN_LOAI) tên loại hàng
+nhanHieu(TEN_LOAI) nhãn hiệu
+model(TEN_LOAI) model
+kyMaHieu(TEN_LOAI) ký, mã hiệu
+nhaSanXuat(TEN_LOAI) nhà sản xuất
+chiHoacChuYeu(CO_KHONG) chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)
+thietKeChoTreEm(CO_KHONG) được thiết kế chủ yếu cho trẻ em
+daNapChuongTrinh(CO_KHONG) đã nạp chương trình/firmware (bo mạch, vi điều khiển)
+soLoi(SO,lõi) số lõi dẫn (ruột dẫn)
+soSoi(SO,sợi) số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ "sợi")
+tiLe(SO,lần) tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)
+phuongPhapCheTao(LIET_KE) phương pháp chế tạo
+phuongThucTruyenDan(LIET_KE) phương thức truyền dẫn
+daXuLyBeMat(CO_KHONG) đã được xử lý bề mặt
+nhienLieu(LIET_KE) nhiên liệu / nguồn nhiệt (bếp, lò)
+phuongPhapIn(LIET_KE) phương pháp in (vải, hàng dệt)
+tinhDanHoi(CO_KHONG) đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)
+loaiSoiDet(LIET_KE) loại xơ/sợi dệt (vật liệu dệt chủ yếu)
+doDay(SO,mm) độ dày
+congSuatBieuKien(SO,kVA) công suất biểu kiến
+dangNguyenSinh(LIET_KE) dạng vật lý nguyên sinh của polyme
+daLapRap(CO_KHONG) đã lắp ráp
+dungTich(SO,lít) dung tích chứa
+sanLuongHoi(SO,tấn/giờ) sản lượng hơi / công suất hơi
+theTich(SO,cm3) thể tích ngoài / thể tích bên ngoài
+heDienHoa(LIET_KE) hệ điện hóa của pin
+dungLuong(SO,Ah) dung lượng phóng điện
+daHoaDeo(CO_KHONG) đã hóa dẻo
+coBoLoc(CO_KHONG) đã lắp bộ phận lọc
+hamLuongCarbon(SO,%) hàm lượng carbon
+gioiHanChay(SO,psi) giới hạn chảy
+chieuRong(SO,mm) chiều rộng
+khaNangChiuApLuc(SO,psi) khả năng chịu áp lực
+duongCheoNgoai(SO,mm) đường chéo ngoài mặt cắt ngang
+coRen(CO_KHONG) có ren (ở đầu hoặc thân ống)
+doBenKeo(SO,MPa) độ bền kéo
+hamLuongNiken(SO,%) hàm lượng niken
+lopMaPhu(LIET_KE) lớp mạ hoặc tráng phủ bề mặt
+dungLamGiong(CO_KHONG) để nhân giống / làm giống / gieo trồng
+dongBaoBiKinKhiDeBanLe(CO_KHONG) đóng bao bì kín khí để bán lẻ
+nongDoCon(SO,%) nồng độ cồn (% thể tích)
+phuongPhapBaoQuan(LIET_KE) phương pháp bảo quản / trạng thái bảo quản
+dangBaoCheThuoc(LIET_KE) dạng bào chế / đường dùng của thuốc
+mucDoTinhCheDau(LIET_KE) mức độ tinh chế của dầu và chất béo
+chiSoIot(SO,IV) chỉ số iốt (IV)
+triSoOctan(SO,RON) trị số octan (RON / Octane)
+daRang(CO_KHONG) đã rang
+tachXuongCoHoc(CO_KHONG) thịt tách hoặc lọc khỏi xương bằng phương pháp cơ học (MSM/MDM)
+dinhLuong(SO,g/m2) định lượng giấy hoặc bìa
+mucDoGiaCongGo(LIET_KE) mức độ gia công của gỗ xẻ
+dangBinhXit(CO_KHONG) dạng bình xịt (aerosol)
+nhieuLop(CO_KHONG) nhiều lớp (giấy/bìa/gỗ nhiều lớp)
+daIn(CO_KHONG) đã in (nội dung, họa tiết, vạch chia)
+duongKinhVanh(SO,mm) đường kính vành bánh xe (mâm xe lắp lốp)
+daTrangMen(CO_KHONG) đã tráng men (gạch gốm, sứ)
+tinhNangBaoHo(LIET_KE) tính năng bảo hộ chuyên dụng của quần áo
+daTrangPhuEpLop(CO_KHONG) đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)
+loaiMuiBaoVe(LIET_KE) loại mũi bảo vệ của giày dép
+thuyTinhQuangHoc(CO_KHONG) thủy tinh/kính quang học (chưa gia công quang học)
+tongDungTichTau(SO,GT) tổng dung tích tàu thuyền (gross tonnage - GT)
+dangCuon(CO_KHONG) ở dạng cuộn (dây hàn, que hàn, tấm, dải)
+coNong(SO,mm) cỡ nòng súng / cỡ đạn
+ngamQuaThauKinhSLR(CO_KHONG) có bộ ngắm qua thấu kính (phản chiếu đơn - SLR)
+dungMotLan(CO_KHONG) dùng một lần (dụng cụ y tế, vật tư tiêu hao)
+tinhTrangTayTrang(LIET_KE) tình trạng tẩy trắng (của xơ, sợi hoặc vải dệt)
+hinhDangCatGocKinh(CO_KHONG) tấm kính hình vuông hoặc hình chữ nhật (kể cả đã hoặc chưa cắt góc)
+kieuDet(LIET_KE) kiểu dệt / cấu trúc dệt của vải
+daPhaThemDuongHoacRuou(CO_KHONG) đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu (rau quả chế biến)
+soiDun(CO_KHONG) sợi dún (textured yarn)
+coMauTruTrang(CO_KHONG) có màu trừ màu trắng (sợi dệt hoặc xơ dệt)
+dongGoiBanLe(CO_KHONG) đóng gói để bán lẻ
+dangLong(CO_KHONG) ở dạng lỏng
+laPhanDoan(CO_KHONG) là phần phân đoạn của dầu/mỡ (olein, stearin)
+
+=== (B) HỆ ĐƠN VỊ ĐÃ CÓ ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"], "phanTram": ["%"], "apSuat": ["psi", "MPa"], "chiSoIot": ["IV"], "triSoOctan": ["RON", "octane"], "dinhLuong": ["g/m2", "gsm"], "tongDungTich": ["GT"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+
+=== (D) PN6 CÓ DÒNG MÁY CHƯA ĐỌC (✗ = chưa đọc, ✓ = đã đọc) ===
+## 530500
+✓ 53050010 Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave); tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)
+✗ 53050021 Xơ dừa, loại thô
+✗ 53050022 Xơ dừa khác
+✓ 53050023 Xơ chuối abaca
+✓ 53050090 Loại khác
+## 550952
+✗ 55095210 Sợi đơn
+✓ 55095290 Loại khác
+## 560122
+✗ 56012210 Tô (tow) đầu lọc thuốc lá (SEN)
+✓ 56012290 Loại khác
+## 560819
+✗ 56081920 Túi lưới
+✓ 56081990 Loại khác
+## 560890
+✗ 56089010 Túi lưới
+✓ 56089090 Loại khác
+## 570110
+✗ 57011010 Thảm cầu nguyện (SEN)
+✓ 57011090 Loại khác
+## 570190
+✗ 57019011 Thảm cầu nguyện (SEN)
+✓ 57019019 Loại khác
+✓ 57019020 Từ xơ đay
+✗ 57019091 Thảm cầu nguyện (SEN)
+✓ 57019099 Loại khác
+## 570241
+✗ 57024110 Thảm cầu nguyện (SEN)
+✓ 57024190 Loại khác
+## 570242
+✗ 57024210 Thảm cầu nguyện (SEN)
+✓ 57024290 Loại khác
+## 570249
+✗ 57024911 Thảm cầu nguyện (SEN)
+✓ 57024919 Loại khác
+✓ 57024920 Từ xơ đay
+✗ 57024991 Thảm cầu nguyện (SEN)
+✓ 57024999 Loại khác
+## 570291
+✗ 57029110 Thảm cầu nguyện (SEN)
+✓ 57029190 Loại khác
+## 570292
+✗ 57029210 Thảm cầu nguyện (SEN)
+✓ 57029290 Loại khác
+## 570299
+✗ 57029911 Thảm cầu nguyện (SEN)
+✓ 57029919 Loại khác
+✓ 57029920 Từ xơ đay
+✗ 57029991 Thảm cầu nguyện (SEN)
+✓ 57029999 Loại khác
+## 570310
+✗ 57031010 Thảm lót chân, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+✗ 57031020 Thảm cầu nguyện (SEN)
+✗ 57031030 Thảm trải sàn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+✓ 57031090 Loại khác
+## 570329
+✗ 57032910 Thảm cầu nguyện (SEN)
+✓ 57032990 Loại khác
+## 570339
+✗ 57033910 Thảm cầu nguyện (SEN)
+✓ 57033990 Loại khác
+## 570390
+✗ 57039011 Thảm cầu nguyện (SEN)
+✓ 57039019 Loại khác
+✗ 57039021 Thảm lót chân, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+✗ 57039022 Thảm trải sàn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+✓ 57039029 Loại khác
+✗ 57039091 Thảm lót chân, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+✗ 57039092 Thảm cầu nguyện (SEN)
+✗ 57039093 Thảm trải sàn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+✓ 57039099 Loại khác
+## 570500
+✗ 57050011 Thảm cầu nguyện (SEN)
+✓ 57050019 Loại khác
+✗ 57050021 Tấm trải sàn không dệt, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+✓ 57050029 Loại khác
+✗ 57050091 Thảm cầu nguyện (SEN)
+✗ 57050092 Tấm trải sàn không dệt, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+✓ 57050099 Loại khác
+## 580620
+✗ 58062010 Băng loại dùng để quấn tay cầm hoặc cán của các dụng cụ thể thao
+✓ 58062090 Loại khác
+## 590800
+✗ 59080010 Bấc; mạng đèn măng xông
+✓ 59080090 Loại khác
+## 590900
+✗ 59090010 Các loại vòi cứu hỏa
+✓ 59090090 Loại khác
+## 591190
+✗ 59119010 Miếng đệm và miếng chèn
+✓ 59119090 Loại khác
+## 600631
+✗ 60063110 Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm
+✓ 60063120 Đàn hồi (kết hợp với sợi cao su)
+✓ 60063190 Loại khác
+## 600632
+✗ 60063210 Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm
+✓ 60063220 Đàn hồi (kết hợp với sợi cao su)
+✓ 60063290 Loại khác
+## 611241
+✗ 61124110 Đồ bơi độn ngực (dùng cho người sau phẫu thuật ngực)
+✓ 61124190 Loại khác
+## 611249
+✗ 61124910 Đồ bơi độn ngực (dùng cho người sau phẫu thuật ngực)
+✓ 61124990 Loại khác
+## 611300
+✗ 61130010 Bộ đồ của thợ lặn (SEN)
+✓ 61130030 Quần áo chống cháy (SEN)
+✗ 61130040 Quần áo bảo hộ khác
+✓ 61130090 Loại khác
+## 611610
+✗ 61161010 Găng tay của thợ lặn
+✓ 61161090 Loại khác
+## 611780
+✓ 61178011 Từ lông cừu hoặc lông động vật loại mịn
+✓ 61178019 Loại khác
+✗ 61178020 Băng cổ tay, băng đầu gối, băng mắt cá chân
+✓ 61178090 Loại khác
+## 620342
+✗ 62034210 Quần yếm có dây đeo
+✓ 62034290 Loại khác
+## 620520
+✓ 62052010 Được in bằng phương pháp batik truyền thống (SEN)
+✗ 62052020 Áo Barong Tagalog (SEN)
+✓ 62052090 Loại khác
+## 620530
+✗ 62053010 Áo Barong Tagalog (SEN)
+✓ 62053090 Loại khác
+## 620590
+✓ 62059010 Từ lông cừu hoặc lông động vật loại mịn
+✓ 62059091 Được in bằng phương pháp batik truyền thống (SEN)
+✗ 62059092 Áo Barong Tagalog (SEN)
+✓ 62059099 Loại khác
+## 620920
+✗ 62092030 Áo phông, áo sơ mi, bộ quần áo pyjama và các loại tương tự
+✗ 62092040 Bộ com-lê, quần và các loại tương tự
+✓ 62092090 Loại khác
+## 620930
+✗ 62093010 Bộ com-lê, quần và các loại tương tự
+✗ 62093030 Áo phông, áo sơ mi, bộ quần áo pyjama và các loại tương tự
+✗ 62093040 Phụ kiện may mặc
+✓ 62093090 Loại khác
+## 621010
+✗ 62101011 Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)
+✓ 62101019 Loại khác
+✓ 62101090 Loại khác
+## 621020
+✓ 62102020 Quần áo chống cháy (SEN)
+✓ 62102030 Quần áo chống các chất hóa học hoặc phóng xạ
+✗ 62102040 Quần áo bảo hộ khác
+✓ 62102090 Loại khác
+## 621030
+✓ 62103020 Quần áo chống cháy (SEN)
+✓ 62103030 Quần áo chống các chất hóa học hoặc phóng xạ
+✗ 62103040 Quần áo bảo hộ khác
+✓ 62103090 Loại khác
+## 621132
+✗ 62113210 Quần áo đấu kiếm hoặc đấu vật
+✗ 62113220 Áo choàng hành hương (Ihram)(SEN)
+✓ 62113290 Loại khác
+## 621133
+✗ 62113310 Quần áo đấu kiếm hoặc đấu vật
+✓ 62113320 Quần áo chống cháy(SEN)
+✓ 62113330 Quần áo chống các chất hóa học hoặc phóng xạ
+✗ 62113340 Áo choàng hành hương (Ihram)(SEN)
+✓ 62113390 Loại khác
+## 621139
+✗ 62113910 Quần áo đấu kiếm hoặc đấu vật
+✓ 62113920 Quần áo chống cháy(SEN)
+✓ 62113930 Quần áo chống các chất hóa học hoặc phóng xạ
+✗ 62113940 Áo choàng hành hương (Ihram)(SEN)
+✓ 62113990 Loại khác
+## 621142
+✗ 62114210 Quần áo đấu kiếm hoặc đấu vật
+✗ 62114220 Áo choàng không tay dùng để cầu nguyện (SEN)
+✗ 62114230 Sarong loại hình ống (SEN)
+✓ 62114290 Loại khác
+## 621143
+✗ 62114310 Áo phẫu thuật
+✗ 62114320 Áo choàng không tay dùng để cầu nguyện (SEN)
+✓ 62114330 Bộ quần áo bảo hộ chống nổ
+✗ 62114340 Quần áo đấu kiếm hoặc đấu vật
+✗ 62114350 Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)
+✗ 62114360 Bộ quần áo nhảy dù liền thân
+✗ 62114370 Sarong loại hình ống (SEN)
+✓ 62114390 Loại khác
+## 621149
+✗ 62114910 Quần áo đấu kiếm hoặc đấu vật
+✗ 62114920 Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)
+✓ 62114931 Từ lông cừu hoặc lông động vật mịn(SEN)
+✓ 62114939 Loại khác (SEN)
+✗ 62114950 Sarong loại hình ống (SEN)
+✓ 62114960 Loại khác, từ lông cừu hoặc lông động vật loại mịn
+✓ 62114990 Loại khác
+## 621210
+✗ 62121011 Xu chiêng độn ngực (dùng cho người sau phẫu thuật ngực)
+✓ 62121019 Loại khác
+✗ 62121091 Xu chiêng độn ngực (dùng cho người sau phẫu thuật ngực)
+✓ 62121099 Loại khác
+## 621290
+✓ 62129011 Hàng may mặc, loại có tính đàn hồi bó chặt, để điều trị mô vết sẹo và ghép da(SEN)
+✗ 62129012 Hàng may mặc hỗ trợ cho các môn điền kinh
+✓ 62129019 Loại khác
+✓ 62129091 Hàng may mặc, loại có tính đàn hồi bó chặt, để điều trị mô vết sẹo và ghép da(SEN)
+✗ 62129092 Hàng may mặc hỗ trợ cho các môn điền kinh
+✓ 62129099 Loại khác
+## 621600
+✗ 62160010 Găng tay bảo hộ lao động, găng tay hở ngón và găng bao tay
+✓ 62160091 Từ lông cừu hoặc lông động vật loại mịn
+✓ 62160092 Từ bông
+✓ 62160099 Loại khác
+## 621710
+✗ 62171010 Đai Ju đô
+✓ 62171090 Loại khác
+## 630419
+✓ 63041910 Từ bông
+✗ 63041920 Loại khác, không dệt
+✓ 63041990 Loại khác
+## 630491
+✗ 63049110 Màn chống muỗi
+✓ 63049190 Loại khác
+## 630790
+✗ 63079030 Tấm phủ ô che cắt sẵn hình tam giác
+✗ 63079040 Khẩu trang phẫu thuật
+✓ 63079061 Phù hợp dùng trong công nghiệp
+✓ 63079069 Loại khác
+✓ 63079070 Quạt và màn che kéo bằng tay
+✗ 63079080 Dây buộc dùng cho giày, ủng, áo nịt ngực (corset) và các loại tương tự(SEN)
+✓ 63079090 Loại khác
+## 640199
+✗ 64019910 Giày cổ cao quá đầu gối
+✓ 64019990 Loại khác
+## 640219
+✗ 64021910 Giày, dép cho đấu vật
+✓ 64021990 Loại khác
+## 640291
+✗ 64029110 Giày lặn
+✓ 64029191 Loại có mũi giày được gắn kim loại để bảo vệ
+✓ 64029192 Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+✓ 64029199 Loại khác
+## 640319
+✗ 64031910 Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự
+✗ 64031920 Ủng để cưỡi ngựa; giày chơi bowling
+✗ 64031930 Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình
+✓ 64031990 Loại khác
+## 640359
+✗ 64035910 Giày chơi bowling
+✓ 64035990 Loại khác
+## 640391
+✓ 64039110 Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ
+✗ 64039120 Ủng để cưỡi ngựa
+✓ 64039130 Loại khác, có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+✓ 64039190 Loại khác
+## 640399
+✓ 64039910 Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ
+✗ 64039920 Giày chơi bowling
+✓ 64039930 Loại khác, có mũi giày được gắn bảo vệ không phải kim loại (SEN)
+✓ 64039990 Loại khác
+## 640411
+✗ 64041110 Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự
+✗ 64041120 Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình
+✓ 64041190 Loại khác
+## 640419
+✗ 64041910 Loại có mũi giày được gắn bảo vệ
+✓ 64041990 Loại khác
+## 640690
+✓ 64069010 Bằng gỗ
+✓ 64069021 Bằng sắt hoặc thép
+✓ 64069022 Bằng đồng
+✓ 64069023 Bằng nhôm
+✓ 64069029 Loại khác
+✗ 64069041 Tấm lót giày
+✗ 64069042 Đế giày đã hoàn thiện (SEN)
+✓ 64069049 Loại khác
+✗ 64069051 Tấm lót giày
+✗ 64069052 Đế giày đã hoàn thiện (SEN)
+✓ 64069059 Loại khác
+✓ 64069091 Ghệt, ống ôm sát chân (leggings) và các loại tương tự và bộ phận của chúng
+✓ 64069099 Loại khác
+## 650500
+✗ 65050010 Mũ và các vật đội đầu sử dụng cho mục đích tôn giáo
+✗ 65050020 Lưới bao tóc
+✓ 65050090 Loại khác
+## 650610
+✗ 65061010 Mũ bảo hiểm cho người đi xe máy
+✓ 65061020 Mũ bảo hộ công nghiệp và mũ bảo hiểm cho lính cứu hỏa, trừ mũ bảo hộ bằng thép
+✓ 65061030 Mũ bảo hộ bằng thép
+✗ 65061040 Mũ dùng trong chơi water-polo
+✓ 65061090 Loại khác
+## 660390
+✗ 66039010 Cho hàng hóa thuộc nhóm 66.01
+✗ 66039020 Cho hàng hóa thuộc nhóm 66.02
+## 680229
+✗ 68022910 Đá vôi khác
+✓ 68022990 Loại khác
+## 680291
+✗ 68029110 Đá hoa (marble)
+✓ 68029190 Loại khác
+## 680293
+✗ 68029310 Dạng tấm đã được đánh bóng
+✓ 68029390 Loại khác
+## 680790
+✗ 68079010 Tấm lát (tiles)
+✓ 68079090 Loại khác
+## 680800
+✗ 68080020 Ngói lợp mái
+✗ 68080040 Tấm lát (tiles) khác
+✓ 68080091 Từ xơ thực vật
+✓ 68080099 Loại khác
+## 680919
+✗ 68091910 Tấm lát (tiles)
+✓ 68091990 Loại khác
+## 680990
+✗ 68099010 Khuôn bằng thạch cao dùng trong nha khoa
+✓ 68099090 Loại khác
+## 681019
+✗ 68101910 Tấm lát (tiles)
+✓ 68101990 Loại khác
+## 681091
+✗ 68109110 Cọc xây dựng bằng bê tông (SEN)
+✓ 68109190 Loại khác
+## 681140
+✗ 68114010 Tấm làn sóng
+✓ 68114021 Gạch lát nền hoặc ốp tường chứa plastic
+✗ 68114022 Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn
+✓ 68114029 Loại khác
+✗ 68114030 Ống hoặc ống dẫn
+✗ 68114040 Các phụ kiện để ghép nối ống hoặc ống dẫn
+✗ 68114050 Các sản phẩm khác, của loại sử dụng cho xây dựng
+✓ 68114090 Loại khác
+## 681182
+✓ 68118210 Gạch lát nền hoặc ốp tường chứa plastic
+✗ 68118220 Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn
+✓ 68118290 Loại khác
+## 681189
+✗ 68118910 Ống hoặc ống dẫn
+✗ 68118920 Các phụ kiện để ghép nối ống hoặc ống dẫn
+✗ 68118930 Các sản phẩm khác, của loại sử dụng cho xây dựng
+✓ 68118990 Loại khác
+## 681280
+✗ 68128020 Quần áo
+✓ 68128030 Giấy, bìa cứng và nỉ
+✓ 68128050 Phụ kiện quần áo, giày dép và vật đội đầu; sợi crocidolite đã được gia công; các hỗn hợp với thành phần cơ bản là crocidolite hoặc có thành phần cơ bản là crocidolite và magie carbonat; sợi và chỉ; sợi bện (cord) và dây, đã hoặc chưa bện; vải dệt kim hoặc dệt thoi
+✓ 68128090 Loại khác
+## 681291
+✗ 68129110 Quần áo
+✓ 68129190 Loại khác
+## 681299
+✗ 68129920 Gạch lát nền hoặc ốp tường
+✓ 68129930 Giấy, bìa cứng và nỉ
+✗ 68129940 Vật liệu ghép nối làm bằng sợi amiăng ép, ở dạng tấm hoặc cuộn
+✗ 68129951 Các hỗn hợp với thành phần cơ bản là amiăng hoặc có thành phần cơ bản là amiăng và magie carbonat loại dùng để sản xuất các mặt hàng thuộc nhóm 68.13
+✓ 68129959 Loại khác
+✓ 68129990 Loại khác
+## 681320
+✗ 68132010 Lót và đệm phanh
+✓ 68132090 Loại khác
+## 681513
+✗ 68151310 Sợi hoặc chỉ
+✓ 68151390 Loại khác
+## 681519
+✗ 68151910 Sợi hoặc chỉ
+✗ 68151920 Gạch xây, phiến lát, gạch lát sàn, các loại vật liệu dùng để lát và các sản phẩm xây dựng tương tự
+✓ 68151990 Loại khác
+## 691310
+✗ 69131010 Hộp đựng thuốc lá và gạt tàn trang trí
+✓ 69131090 Loại khác
+## 691390
+✗ 69139010 Hộp đựng thuốc lá và gạt tàn trang trí
+✓ 69139090 Loại khác
+## 700231
+✗ 70023110 Loại sử dụng để sản xuất ống chân không(SEN)
+✓ 70023190 Loại khác
+## 700232
+✗ 70023210 Loại sử dụng để sản xuất ống chân không(SEN)
+✓ 70023230 Ống thủy tinh borosilicate của loại sử dụng để sản xuất ống dạng phial/ampoule
+✓ 70023240 Loại khác, của loại thủy tinh borosilicate trung tính trong suốt, có đường kính từ 3 mm đến 22 mm
+✓ 70023290 Loại khác
+## 700239
+✗ 70023910 Loại sử dụng để sản xuất ống chân không(SEN)
+✓ 70023920 Loại khác, của loại thủy tinh borosilicate trung tính trong suốt, có đường kính từ 3 mm đến 22 mm
+✓ 70023990 Loại khác
+## 700711
+✗ 70071110 Phù hợp dùng cho xe thuộc Chương 87
+✗ 70071120 Phù hợp dùng cho phương tiện bay hoặc tàu vũ trụ thuộc Chương 88
+✓ 70071190 Loại khác
+## 700719
+✗ 70071910 Phù hợp dùng cho các máy thuộc nhóm 84.29 hoặc 84.30
+✓ 70071990 Loại khác
+## 700721
+✗ 70072110 Phù hợp dùng cho xe thuộc Chương 87
+✗ 70072120 Phù hợp dùng cho phương tiện bay hoặc tàu vũ trụ thuộc Chương 88
+✓ 70072190 Loại khác
+## 700729
+✗ 70072910 Phù hợp dùng cho các máy thuộc nhóm 84.29 hoặc 84.30
+✓ 70072990 Loại khác
+## 701400
+✗ 70140010 Loại phù hợp dùng cho xe có động cơ
+✓ 70140090 Loại khác
+## 701590
+✗ 70159010 Kính đồng hồ thời gian hoặc đồng hồ cá nhân
+✓ 70159090 Loại khác
+## 701990
+✗ 70199020 Rèm (blinds)(SEN)
+✓ 70199030 Xơ thủy tinh, trừ len thủy tinh
+✓ 70199040 Vật liệu bọc ngoài đường ống bằng sợi thủy tinh đã được thấm tẩm nhựa đường hoặc nhựa than đá(SEN)
+✓ 70199050 Vải dệt thoi từ sợi thô
+✓ 70199090 Loại khác
+## 702000
+✓ 70200011 Loại dùng để sản xuất các sản phẩm acrylic(SEN)
+✓ 70200019 Loại khác
+✓ 70200020 Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng
+✗ 70200030 Ruột phích hoặc ruột bình chân không khác
+✓ 70200040 Ống chân không sử dụng trong bình nước nóng năng lượng mặt trời
+✓ 70200090 Loại khác
+## 710310
+✗ 71031010 Rubi
+✗ 71031020 Ngọc bích (nephrite và jadeite)
+✓ 71031090 Loại khác
+## 710391
+✗ 71039110 Rubi
+✓ 71039190 Loại khác
+## 710410
+✗ 71041010 Chưa được gia công
+✗ 71041020 Đã gia công
+## 711100
+✗ 71110010 Bạc hoặc vàng, mạ bạch kim
+✓ 71110090 Loại khác
+## 711719
+✗ 71171910 Vòng
+✗ 71171920 Các đồ trang sức khác
+✓ 71171990 Bộ phận
+## 711790
+✗ 71179010 Vòng
+✗ 71179020 Các đồ trang sức khác
+✓ 71179094 Làm toàn bộ bằng plastic, thủy tinh, gỗ, vật liệu khắc từ mai rùa, ngà, xương, sừng, san hô, xà cừ và các loại động vật khác đã gia công, vật liệu khắc từ thực vật đã gia công, vật liệu khắc từ khoáng sản đã gia công, hoặc bằng sứ
+✓ 71179099 Loại khác
+## 711810
+✗ 71181010 Tiền bằng bạc
+✓ 71181090 Loại khác
+## 711890
+✗ 71189010 Tiền bằng vàng, loại pháp định (*) hoặc không phải loại pháp định
+✗ 71189020 Tiền bằng bạc, loại pháp định (*)
+✓ 71189090 Loại khác

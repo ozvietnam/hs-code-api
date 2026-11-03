@@ -1,0 +1,736 @@
+SOẠN KHOÁ TỪ VỰNG CHO CÁC DÒNG BIỂU THUẾ MÁY CHƯA ĐỌC ĐƯỢC (mục đích: số hoá ranh giới giữa các dòng 8 số cùng PN6). Máy đã chạy mọi khoá ở (A) lên toàn bộ biểu thuế; (D) dưới đây là CHÍNH XÁC những dòng 8 số KHÔNG khoá nào đọc ra giá trị (đánh dấu ✗), kèm các dòng cùng PN6 đã đọc được (✓, ghi khoá đọc) để thấy trục phân biệt.
+
+NHIỆM VỤ: với mỗi dòng ✗, quyết định MỘT trong ba: (a) GHEP — dòng này đọc được bằng khoá đã có ở (A) nếu thêm giá trị/mẫu: ghi trong "boSung": {khoa: {"giaTriMoi": {ID: {nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}, "mauThem": {vi:[…],en:[…],zh:[…]}}}; (b) SOAN — tiêu chí mới, soạn khoá vào "khoa" (gộp mọi dòng/PN6 cùng tiêu chí về MỘT khoá; ưu tiên tiêu chí lặp ở ≥2 PN6); (c) BO — chỉ là tên hàng/tên chất/tên loài, không phải tiêu chí đo-có/không-liệt kê: không làm gì. Không cần liệt kê (c). Không bịa ngưỡng. ghiChu trích NGUYÊN VĂN dòng 8 số kèm mã (chép từ (D)). Mỗi khoá kèm pn6Mau (≤5) và soDong.
+
+QUY TẮC LƯỢC ĐỒ (máy kiểm ĐỎ nếu sai): (1) SO: heDonVi có ở (B) hoặc khai mới trong heDonViMoi; donViChuan là đơn vị gốc của hệ (chiều dài mm, không inch/cm); canNguCanh true; cachViet.vi có {giaTri} + đơn vị; bí danh chữ thường vào bietDanhMoi; thang không đơn vị (chỉ số, RON, GT) thì thêm "docThem":[{"mau":"(?<=…\\s*)(\\d+)","donVi":"<đơn vị hệ>"}] và "docMoRong":true. (2) cachDoc regex không phân biệt hoa thường, vi/en/zh ≥1 mẫu, \\s+ giữa các từ; mẫu PHẢI khớp nguyên văn dòng ✗ trích trong ghiChu (máy sẽ chạy thử). (3) Mọi khoá: nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi}, ghiChu, nguonLoai "AI_DA_KIEM". (4) CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong{vi,en,zh}, cachViet{vi,viPhuDinh}; KHÔNG đưa cụm phụ chú kiểu "đã hoặc chưa …" vào cachDoc. (5) LIET_KE: giaTriHopLe = mảng id HOA_GACH_DUOI; moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}; cachDoc cấp khoá {"vi":[],"en":[],"zh":[]}; cachViet cấp khoá {"vi":"{giaTri}"}; một dòng chỉ được khớp MỘT giá trị (khớp hai giá trị ⇒ tách thành hai khoá/trục).
+
+ĐẦU RA: MỘT khối ```json {"khoa":[…],"boSung":{…},"heDonViMoi":{},"bietDanhMoi":{},"khongChac":[{"khoa":"…","lyDo":"…"}]} duy nhất, không giải thích. Vượt trần đầu ra ⇒ ưu tiên soDong lớn, phần còn lại ghi khongChac; khi được nhắn "tiếp" soạn nốt, không lặp lại.
+
+=== (A) KHOÁ ĐÃ CÓ ===
+dienAp(SO,V) điện áp
+dongDien(SO,A) dòng điện (định mức)
+congSuat(SO,W) công suất
+tanSo(SO,Hz) tần số / dải tần
+luuLuong(SO,m3/h) lưu lượng
+dungTichXiLanh(SO,cc) dung tích xi lanh
+khoiLuong(SO,kg) khối lượng
+duongKinh(SO,mm) đường kính (ngoài)
+duongKinhTrong(SO,mm) đường kính trong (cửa nạp/cửa thoát, DN)
+duongKinhLoi(SO,mm) đường kính lõi (mỗi lõi dẫn điện)
+chieuCao(SO,mm) chiều cao
+kichThuoc(SO,mm) kích thước (dài x rộng x cao)
+chieuDaiCuon(SO,m) chiều dài (hàng dài: dây, cáp, ống, cuộn)
+daGanDauNoi(CO_KHONG) đã gắn đầu nối
+coCachDien(CO_KHONG) có cách điện
+coBoXuLyLapTrinh(CO_KHONG) có trang bị bộ xử lý lập trình
+coKhungChupQuaDau(CO_KHONG) có khung chụp qua đầu
+hieuChinhThiLuc(CO_KHONG) hiệu chỉnh thị lực (kính thuốc)
+chongNang(CO_KHONG) chống nắng (kính râm)
+coChucNangGhi(CO_KHONG) có chức năng ghi (hình/âm)
+daGhi(CO_KHONG) đã ghi (có dữ liệu)
+coLuoiBaoVe(CO_KHONG) có lưới bảo vệ
+coManHinh(CO_KHONG) có màn hình hiển thị
+coCamera(CO_KHONG) có camera
+coBanh(CO_KHONG) có bánh xe
+hoatDongBangDien(CO_KHONG) hoạt động bằng điện
+coKetHopThietBiThu(CO_KHONG) kết hợp thiết bị thu
+coGiaNhiet(CO_KHONG) có gia nhiệt
+laBoPhan(CO_KHONG) là bộ phận (không phải hàng hoàn chỉnh)
+datChim(CO_KHONG) loại đặt chìm
+coKhoangPhaTron(CO_KHONG) có khoang pha trộn lưu chất
+loaiDongDien(LIET_KE) loại dòng điện
+soPha(LIET_KE) số pha
+kieuDotChay(LIET_KE) kiểu đốt cháy của động cơ piston
+nguonSang(LIET_KE) nguồn sáng
+nguonNangLuong(LIET_KE) nguồn năng lượng
+cachDieuKhien(LIET_KE) cách điều khiển / vận hành
+kieuBom(LIET_KE) kiểu bơm
+loaiRoLe(LIET_KE) loại rơ le
+loaiCongTac(LIET_KE) loại thiết bị đóng ngắt (8536.50)
+loaiPhichOCam(LIET_KE) loại phích cắm / ổ cắm (8536.69)
+phamViSuDung(LIET_KE) phạm vi sử dụng
+mauHienThi(LIET_KE) màu hiển thị
+kieuDongCoDien(LIET_KE) kiểu động cơ điện (8501.10)
+tinhTrang(LIET_KE) tình trạng hàng
+chatLieu(CHAT_LIEU_THEO_VI_TRI) chất liệu (theo vị trí)
+dungCho(CONG_DUNG) dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)
+congDung(CONG_DUNG) công dụng / mục đích
+tenLoai(TEN_LOAI) tên loại hàng
+nhanHieu(TEN_LOAI) nhãn hiệu
+model(TEN_LOAI) model
+kyMaHieu(TEN_LOAI) ký, mã hiệu
+nhaSanXuat(TEN_LOAI) nhà sản xuất
+chiHoacChuYeu(CO_KHONG) chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)
+thietKeChoTreEm(CO_KHONG) được thiết kế chủ yếu cho trẻ em
+daNapChuongTrinh(CO_KHONG) đã nạp chương trình/firmware (bo mạch, vi điều khiển)
+soLoi(SO,lõi) số lõi dẫn (ruột dẫn)
+soSoi(SO,sợi) số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ "sợi")
+tiLe(SO,lần) tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)
+phuongPhapCheTao(LIET_KE) phương pháp chế tạo
+phuongThucTruyenDan(LIET_KE) phương thức truyền dẫn
+daXuLyBeMat(CO_KHONG) đã được xử lý bề mặt
+nhienLieu(LIET_KE) nhiên liệu / nguồn nhiệt (bếp, lò)
+phuongPhapIn(LIET_KE) phương pháp in (vải, hàng dệt)
+tinhDanHoi(CO_KHONG) đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)
+loaiSoiDet(LIET_KE) loại xơ/sợi dệt (vật liệu dệt chủ yếu)
+doDay(SO,mm) độ dày
+congSuatBieuKien(SO,kVA) công suất biểu kiến
+dangNguyenSinh(LIET_KE) dạng vật lý nguyên sinh của polyme
+daLapRap(CO_KHONG) đã lắp ráp
+dungTich(SO,lít) dung tích chứa
+sanLuongHoi(SO,tấn/giờ) sản lượng hơi / công suất hơi
+theTich(SO,cm3) thể tích ngoài / thể tích bên ngoài
+heDienHoa(LIET_KE) hệ điện hóa của pin
+dungLuong(SO,Ah) dung lượng phóng điện
+daHoaDeo(CO_KHONG) đã hóa dẻo
+coBoLoc(CO_KHONG) đã lắp bộ phận lọc
+hamLuongCarbon(SO,%) hàm lượng carbon
+gioiHanChay(SO,psi) giới hạn chảy
+chieuRong(SO,mm) chiều rộng
+khaNangChiuApLuc(SO,psi) khả năng chịu áp lực
+duongCheoNgoai(SO,mm) đường chéo ngoài mặt cắt ngang
+coRen(CO_KHONG) có ren (ở đầu hoặc thân ống)
+doBenKeo(SO,MPa) độ bền kéo
+hamLuongNiken(SO,%) hàm lượng niken
+lopMaPhu(LIET_KE) lớp mạ hoặc tráng phủ bề mặt
+dungLamGiong(CO_KHONG) để nhân giống / làm giống / gieo trồng
+dongBaoBiKinKhiDeBanLe(CO_KHONG) đóng bao bì kín khí để bán lẻ
+nongDoCon(SO,%) nồng độ cồn (% thể tích)
+phuongPhapBaoQuan(LIET_KE) phương pháp bảo quản / trạng thái bảo quản
+dangBaoCheThuoc(LIET_KE) dạng bào chế / đường dùng của thuốc
+mucDoTinhCheDau(LIET_KE) mức độ tinh chế của dầu và chất béo
+chiSoIot(SO,IV) chỉ số iốt (IV)
+triSoOctan(SO,RON) trị số octan (RON / Octane)
+daRang(CO_KHONG) đã rang
+tachXuongCoHoc(CO_KHONG) thịt tách hoặc lọc khỏi xương bằng phương pháp cơ học (MSM/MDM)
+dinhLuong(SO,g/m2) định lượng giấy hoặc bìa
+mucDoGiaCongGo(LIET_KE) mức độ gia công của gỗ xẻ
+dangBinhXit(CO_KHONG) dạng bình xịt (aerosol)
+nhieuLop(CO_KHONG) nhiều lớp (giấy/bìa/gỗ nhiều lớp)
+daIn(CO_KHONG) đã in (nội dung, họa tiết, vạch chia)
+duongKinhVanh(SO,mm) đường kính vành bánh xe (mâm xe lắp lốp)
+daTrangMen(CO_KHONG) đã tráng men (gạch gốm, sứ)
+tinhNangBaoHo(LIET_KE) tính năng bảo hộ chuyên dụng của quần áo
+daTrangPhuEpLop(CO_KHONG) đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)
+loaiMuiBaoVe(LIET_KE) loại mũi bảo vệ của giày dép
+thuyTinhQuangHoc(CO_KHONG) thủy tinh/kính quang học (chưa gia công quang học)
+tongDungTichTau(SO,GT) tổng dung tích tàu thuyền (gross tonnage - GT)
+dangCuon(CO_KHONG) ở dạng cuộn (dây hàn, que hàn, tấm, dải)
+coNong(SO,mm) cỡ nòng súng / cỡ đạn
+ngamQuaThauKinhSLR(CO_KHONG) có bộ ngắm qua thấu kính (phản chiếu đơn - SLR)
+dungMotLan(CO_KHONG) dùng một lần (dụng cụ y tế, vật tư tiêu hao)
+tinhTrangTayTrang(LIET_KE) tình trạng tẩy trắng (của xơ, sợi hoặc vải dệt)
+hinhDangCatGocKinh(CO_KHONG) tấm kính hình vuông hoặc hình chữ nhật (kể cả đã hoặc chưa cắt góc)
+kieuDet(LIET_KE) kiểu dệt / cấu trúc dệt của vải
+daPhaThemDuongHoacRuou(CO_KHONG) đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu (rau quả chế biến)
+soiDun(CO_KHONG) sợi dún (textured yarn)
+coMauTruTrang(CO_KHONG) có màu trừ màu trắng (sợi dệt hoặc xơ dệt)
+dongGoiBanLe(CO_KHONG) đóng gói để bán lẻ
+dangLong(CO_KHONG) ở dạng lỏng
+laPhanDoan(CO_KHONG) là phần phân đoạn của dầu/mỡ (olein, stearin)
+
+=== (B) HỆ ĐƠN VỊ ĐÃ CÓ ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"], "phanTram": ["%"], "apSuat": ["psi", "MPa"], "chiSoIot": ["IV"], "triSoOctan": ["RON", "octane"], "dinhLuong": ["g/m2", "gsm"], "tongDungTich": ["GT"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+
+=== (D) PN6 CÓ DÒNG MÁY CHƯA ĐỌC (✗ = chưa đọc, ✓ = đã đọc) ===
+## 840410
+✗ 84041011 Thiết bị loại bỏ muội (máy thổi muội)
+✓ 84041019 Loại khác
+✓ 84041020 Dùng cho nồi hơi thuộc nhóm 84.03
+## 840682
+✗ 84068210 Công suất đầu ra không quá 5 MW
+✓ 84068290 Loại khác
+## 840991
+✓ 84099111 Chế hòa khí và bộ phận của chúng
+✗ 84099112 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099113 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099114 Ống xi lanh khác
+✗ 84099115 Quy lát và nắp quy lát
+✓ 84099116 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099117 Piston khác
+✓ 84099118 Bạc piston và chốt piston
+✓ 84099119 Loại khác
+✓ 84099121 Chế hòa khí và bộ phận của chúng
+✗ 84099122 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099123 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099124 Ống xi lanh khác
+✓ 84099126 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099128 Bạc piston và chốt piston
+✓ 84099129 Loại khác
+✓ 84099131 Chế hòa khí và bộ phận của chúng
+✗ 84099132 Thân động cơ (cylinder block); hộp trục khuỷu
+✗ 84099134 Ống xi lanh
+✗ 84099135 Quy lát và nắp quy lát
+✓ 84099137 Piston
+✓ 84099138 Bạc piston và chốt piston
+✓ 84099139 Loại khác
+✓ 84099141 Chế hòa khí và bộ phận của chúng
+✗ 84099142 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099143 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099144 Ống xi lanh khác
+✗ 84099145 Quy lát và nắp quy lát
+✓ 84099146 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099147 Piston khác
+✓ 84099148 Bạc piston và chốt piston
+✓ 84099149 Loại khác
+✗ 84099151 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099152 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099153 Ống xi lanh khác
+✓ 84099154 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099155 Piston khác
+✓ 84099159 Loại khác
+✗ 84099161 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099162 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099163 Ống xi lanh khác
+✓ 84099164 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099169 Loại khác
+✓ 84099171 Chế hòa khí và bộ phận của chúng
+✗ 84099172 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099173 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099174 Ống xi lanh khác
+✓ 84099176 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099177 Piston khác
+✓ 84099178 Bạc piston và chốt piston
+✓ 84099179 Loại khác
+## 840999
+✓ 84099911 Chế hòa khí và bộ phận của chúng
+✗ 84099912 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099913 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099914 Ống xi lanh khác
+✗ 84099915 Quy lát và nắp quy lát
+✓ 84099916 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099917 Piston khác
+✓ 84099918 Bạc piston và chốt piston
+✓ 84099919 Loại khác
+✓ 84099921 Chế hòa khí và bộ phận của chúng
+✗ 84099922 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099923 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099924 Ống xi lanh khác
+✗ 84099925 Quy lát và nắp quy lát
+✓ 84099926 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099927 Piston khác
+✓ 84099929 Loại khác
+✓ 84099931 Chế hòa khí và bộ phận của chúng
+✗ 84099932 Thân động cơ (cylinder block); hộp trục khuỷu
+✗ 84099934 Quy lát và nắp quy lát
+✓ 84099936 Bạc piston và chốt piston
+✓ 84099937 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm; piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099938 Ống xi lanh và piston khác
+✓ 84099939 Loại khác
+✓ 84099941 Chế hòa khí và bộ phận của chúng
+✗ 84099942 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099943 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099944 Ống xi lanh khác
+✗ 84099945 Quy lát và nắp quy lát
+✓ 84099946 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099947 Piston khác
+✓ 84099948 Bạc piston và chốt piston
+✓ 84099949 Loại khác
+✗ 84099951 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099952 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099953 Ống xi lanh khác
+✓ 84099954 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099955 Piston khác
+✓ 84099959 Loại khác
+✗ 84099961 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099962 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099963 Ống xi lanh khác
+✓ 84099964 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099965 Piston khác
+✓ 84099969 Loại khác
+✓ 84099971 Chế hòa khí và bộ phận của chúng
+✗ 84099972 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 84099973 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 84099974 Ống xi lanh khác
+✗ 84099975 Quy lát và nắp quy lát
+✓ 84099976 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 84099977 Piston khác
+✓ 84099978 Bạc piston và chốt piston
+✓ 84099979 Loại khác
+## 841320
+✗ 84132010 Bơm nước
+✗ 84132020 Bơm hút sữa
+✓ 84132090 Loại khác
+## 841330
+✗ 84133030 Bơm nhiên liệu loại sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+✗ 84133040 Bơm nước loại được sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04 (SEN)
+✗ 84133051 Với đường kính cửa hút không quá 200 mm
+✗ 84133052 Với đường kính cửa hút trên 200 mm
+✓ 84133090 Loại khác
+## 841370
+✗ 84137011 Với đường kính cửa hút không quá 200 mm (SEN)
+✓ 84137019 Loại khác (SEN)
+✗ 84137031 Với đường kính cửa hút không quá 200 mm
+✓ 84137039 Loại khác
+✓ 84137042 Với đường kính cửa hút không quá 200 mm, hoạt động bằng điện
+✓ 84137043 Với đường kính cửa hút không quá 200 mm, không hoạt động bằng điện
+✓ 84137049 Loại khác
+✗ 84137051 Với đường kính cửa hút không quá 200 mm
+✓ 84137059 Loại khác
+✗ 84137091 Với đường kính cửa hút không quá 200 mm
+✓ 84137099 Loại khác
+## 841420
+✗ 84142010 Bơm xe đạp
+✓ 84142090 Loại khác
+## 841451
+✗ 84145110 Quạt bàn và quạt dạng hộp
+✓ 84145191 Có lưới bảo vệ
+✓ 84145199 Loại khác
+## 841459
+✓ 84145910 Quạt, loại chỉ sử dụng hoặc chủ yếu sử dụng để làm mát bộ vi xử lý, thiết bị viễn thông, máy xử lý dữ liệu tự động hoặc các khối chức năng của máy xử lý dữ liệu tự động (SEN)
+✓ 84145920 Quạt gió phòng nổ, loại sử dụng trong hầm lò
+✗ 84145930 Máy thổi khí (SEN)
+✓ 84145941 Có lưới bảo vệ
+✓ 84145949 Loại khác
+✗ 84145950 Máy thổi khí (SEN)
+✓ 84145991 Có lưới bảo vệ
+✓ 84145992 Quạt gió phòng nổ, loại sử dụng trong hầm lò
+✓ 84145999 Loại khác
+## 841460
+✗ 84146011 Tủ hút, lọc không khí sử dụng trong phòng thí nghiệm (SEN)
+✓ 84146019 Loại khác
+✓ 84146091 Phù hợp dùng trong công nghiệp
+✓ 84146099 Loại khác
+## 841470
+✗ 84147011 Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm
+✓ 84147019 Loại khác
+✗ 84147021 Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm
+✓ 84147029 Loại khác
+## 841480
+✗ 84148011 Tủ hút, lọc không khí sử dụng trong phòng thí nghiệm (SEN)
+✓ 84148019 Loại khác
+✓ 84148021 Phù hợp dùng trong công nghiệp
+✓ 84148029 Loại khác
+✓ 84148030 Thiết bị tạo gió có cơ cấu piston dịch chuyển tự do dùng cho tua bin khí
+✗ 84148041 Mô-đun nén khí sử dụng trong khoan dầu mỏ
+✓ 84148042 Dùng cho máy điều hòa không khí của ô tô (SEN)
+✗ 84148043 Dạng kín dùng cho máy điều hòa không khí (SEN)
+✓ 84148049 Loại khác
+✗ 84148050 Máy bơm không khí
+✓ 84148090 Loại khác
+## 841590
+✓ 84159013 Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt
+✗ 84159014 Thiết bị làm bay hơi hoặc ngưng tụ dùng cho máy điều hòa không khí lắp trên xe có động cơ
+✗ 84159015 Khung vỏ, đã hàn và sơn, trừ loại thuộc phân nhóm 8415.90.13
+✓ 84159019 Loại khác
+✓ 84159024 Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt
+✓ 84159025 Loại khác
+✓ 84159026 Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt
+✓ 84159029 Loại khác
+✓ 84159034 Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt
+✓ 84159035 Loại khác
+✓ 84159036 Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt
+✓ 84159039 Loại khác
+✓ 84159044 Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt
+✓ 84159045 Loại khác
+✓ 84159046 Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt
+✓ 84159049 Loại khác
+## 841780
+✗ 84178010 Lò đốt rác thải
+✓ 84178090 Loại khác
+## 841810
+✓ 84181031 Loại gia dụng, có dung tích không quá 230 lít
+✓ 84181032 Loại gia dụng khác, có dung tích trên 230 lít
+✓ 84181039 Loại khác
+✗ 84181040 Loại khác, phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm
+✓ 84181091 Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít
+✓ 84181099 Loại khác
+## 841850
+✗ 84185011 Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm
+✓ 84185019 Loại khác
+✗ 84185091 Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm
+✓ 84185099 Loại khác
+## 841869
+✗ 84186910 Thiết bị làm lạnh đồ uống
+✗ 84186930 Thiết bị cấp nước lạnh (cold water dispenser)
+✓ 84186941 Dùng cho máy điều hòa không khí
+✓ 84186949 Loại khác
+✗ 84186950 Thiết bị sản xuất đá vảy
+✓ 84186990 Loại khác
+## 841899
+✗ 84189910 Thiết bị làm bay hơi hoặc ngưng tụ
+✓ 84189940 Panel nhôm cán-ghép dùng cho hàng hóa thuộc phân nhóm 8418.10.31, 8418.10.32, 8418.21.10, 8418.21.90 hoặc 8418.29.00 (SEN)
+✓ 84189990 Loại khác
+## 841934
+✗ 84193410 Thiết bị làm bay hơi
+✓ 84193420 Loại khác, hoạt động bằng điện
+✓ 84193490 Loại khác
+## 841950
+✗ 84195010 Tháp làm mát
+✓ 84195020 Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống (SEN)
+✓ 84195091 Hoạt động bằng điện
+✓ 84195092 Không hoạt động bằng điện
+## 841990
+✓ 84199012 Của máy xử lý vật liệu bằng quá trình gia nhiệt, để sản xuất tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+✗ 84199013 Vỏ của tháp làm mát
+✓ 84199019 Loại khác
+✓ 84199022 Của thiết bị đun nước nóng nhanh bằng ga, loại sử dụng trong gia đình
+✓ 84199029 Loại khác
+## 842119
+✗ 84211910 Loại sử dụng trong sản xuất đường
+✓ 84211990 Loại khác
+## 842123
+✗ 84212311 Bộ lọc dầu
+✓ 84212319 Loại khác
+✗ 84212321 Bộ lọc dầu
+✓ 84212329 Loại khác
+✗ 84212391 Bộ lọc dầu
+✓ 84212399 Loại khác
+## 842129
+✗ 84212910 Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm
+✗ 84212920 Loại sử dụng trong sản xuất đường
+✗ 84212930 Loại sử dụng trong hoạt động khoan dầu
+✗ 84212940 Loại khác, bộ lọc xăng
+✗ 84212950 Loại khác, bộ lọc dầu
+✗ 84212960 Loại khác, bằng fluoropolyme và có màng lọc hoặc màng tinh chế với độ dày không quá 140 micron (SEN)
+✓ 84212990 Loại khác
+## 842139
+✗ 84213920 Máy lọc không khí
+✓ 84213930 Loại khác, có vỏ bằng thép không gỉ và có lỗ ống đầu vào và đầu ra có đường kính trong không quá 1,3 cm
+✓ 84213990 Loại khác
+## 842320
+✗ 84232010 Cân điện tử
+✓ 84232090 Loại khác
+## 842330
+✗ 84233010 Cân điện tử
+✓ 84233090 Loại khác
+## 842381
+✗ 84238110 Cân điện tử
+✓ 84238190 Loại khác
+## 842382
+✗ 84238231 Cân điện tử, dùng để cân xe có động cơ
+✗ 84238232 Cân điện tử khác
+✓ 84238239 Loại khác
+✗ 84238241 Cân điện tử, dùng để cân xe có động cơ
+✗ 84238242 Cân điện tử khác
+✓ 84238249 Loại khác
+## 842389
+✗ 84238910 Cân điện tử
+✓ 84238990 Loại khác
+## 842390
+✗ 84239010 Quả cân
+✓ 84239030 Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ (SEN)
+✓ 84239040 Bộ phận của các loại cân khác
+## 842410
+✗ 84241010 Loại sử dụng cho phương tiện bay
+✓ 84241090 Loại khác
+## 842420
+✗ 84242011 Dùng trong nông nghiệp hoặc làm vườn
+✓ 84242019 Loại khác
+✗ 84242021 Dùng trong nông nghiệp hoặc làm vườn
+✓ 84242029 Loại khác
+## 842482
+✗ 84248210 Hệ thống tưới kiểu nhỏ giọt
+✓ 84248220 Loại khác, hoạt động bằng điện
+✓ 84248230 Loại khác, không hoạt động bằng điện
+## 842489
+✓ 84248910 Thiết bị phun, xịt hoạt động bằng tay sử dụng trong gia đình có dung tích không quá 3 lít
+✗ 84248920 Đầu bình phun, xịt có gắn vòi
+✓ 84248940 Loại khác, chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền của tấm mạch in hoặc tấm dây in hoặc linh kiện của chúng
+✓ 84248950 Loại khác, hoạt động bằng điện
+✓ 84248990 Loại khác, không hoạt động bằng điện
+## 842542
+✗ 84254210 Kích nâng dùng cho cơ cấu tự đổ của xe tải
+✓ 84254290 Loại khác
+## 842619
+✗ 84261920 Cầu trục
+✗ 84261930 Cổng trục
+✓ 84261990 Loại khác
+## 842810
+✗ 84281031 Để chở người
+✓ 84281039 Loại khác
+✗ 84281040 Tời nâng kiểu gầu nâng (trục tải thùng kíp)
+## 842820
+✗ 84282010 Loại sử dụng trong nông nghiệp
+✓ 84282090 Loại khác
+## 842832
+✗ 84283210 Loại sử dụng trong nông nghiệp
+✓ 84283290 Loại khác
+## 842833
+✗ 84283310 Loại sử dụng trong nông nghiệp
+✓ 84283390 Loại khác
+## 842839
+✗ 84283910 Loại sử dụng trong nông nghiệp
+✓ 84283990 Loại khác
+## 842940
+✗ 84294030 Máy đầm
+✗ 84294040 Xe lu rung, với lực rung của trống không quá 20 tấn tính theo khối lượng
+✗ 84294050 Các loại xe lu rung lăn đường khác
+✓ 84294090 Loại khác
+## 843049
+✗ 84304910 Bệ giàn khoan có các mô-đun tích hợp phù hợp sử dụng trong vận hành khoan (SEN)
+✓ 84304990 Loại khác
+## 843120
+✗ 84312010 Thuộc phân nhóm 8427.10 hoặc 8427.20
+✓ 84312090 Loại khác
+## 843139
+✓ 84313910 Của hàng hóa thuộc phân nhóm 8428.20.10, 8428.32.10, 8428.33.10 hoặc 8428.39.10
+✓ 84313940 Của máy tự động dùng để dịch chuyển, xử lý và kẹp giữ các tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+✗ 84313950 Loại khác, của hàng hóa thuộc phân nhóm 8428.90
+✓ 84313990 Loại khác
+## 843149
+✓ 84314910 Bộ phận của máy thuộc nhóm 84.26
+✗ 84314920 Lưỡi cắt hoặc mũi lưỡi cắt dùng cho máy cào, máy san hoặc máy cạp
+✗ 84314940 Lưỡi cắt hoặc mũi lưỡi cắt dùng cho máy ủi đất lưỡi thẳng hoặc máy ủi đất lưỡi nghiêng
+✓ 84314950 Của xe lu lăn đường
+✓ 84314960 Của hàng hóa thuộc phân nhóm 8430.20.00
+✓ 84314990 Loại khác
+## 843280
+✗ 84328010 Dùng trong nông nghiệp hoặc làm vườn
+✗ 84328020 Máy cán cho bãi cỏ hoặc cho sân chơi thể thao
+✓ 84328090 Loại khác
+## 843319
+✗ 84331910 Không dùng động cơ
+✓ 84331990 Loại khác
+## 843390
+✓ 84339010 Bánh xe đẩy (castor), có đường kính (gồm cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là bánh xe hoặc lốp lắp vào đó có chiều rộng trên 30 mm
+✗ 84339020 Loại khác, của hàng hóa thuộc phân nhóm 8433.11.00 hoặc 8433.19.90
+✗ 84339030 Loại khác, của hàng hóa thuộc phân nhóm 8433.19.10
+✓ 84339090 Loại khác
+## 843680
+✗ 84368011 Dùng trong nông nghiệp hoặc làm vườn
+✓ 84368019 Loại khác
+✗ 84368021 Dùng trong nông nghiệp hoặc làm vườn
+✓ 84368029 Loại khác
+## 843699
+✗ 84369911 Dùng trong nông nghiệp hoặc làm vườn
+✓ 84369919 Loại khác
+✗ 84369921 Dùng trong nông nghiệp hoặc làm vườn
+✓ 84369929 Loại khác
+## 843780
+✓ 84378010 Máy bóc vỏ trấu và máy xát gạo hình côn, hoạt động bằng điện
+✓ 84378020 Máy bóc vỏ trấu và máy xát gạo hình côn, không hoạt động bằng điện
+✓ 84378030 Máy nghiền cà phê và ngô dạng công nghiệp, hoạt động bằng điện
+✓ 84378040 Máy nghiền cà phê và ngô dạng công nghiệp, không hoạt động bằng điện
+✗ 84378051 Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ
+✓ 84378059 Loại khác
+✗ 84378061 Máy đánh bóng gạo, máy giần, sàng, rây, máy làm sạch cám và máy bóc vỏ
+✓ 84378069 Loại khác
+## 844331
+✓ 84433111 Loại màu
+✓ 84433119 Loại khác
+✓ 84433121 Loại màu
+✓ 84433129 Loại khác
+✓ 84433131 Loại màu
+✓ 84433139 Loại khác
+✗ 84433191 Máy in-copy-scan-fax kết hợp
+✓ 84433199 Loại khác
+## 844332
+✓ 84433211 Loại màu
+✓ 84433219 Loại khác
+✓ 84433221 Loại màu
+✓ 84433229 Loại khác
+✓ 84433231 Loại màu
+✓ 84433239 Loại khác
+✗ 84433240 Máy fax
+✓ 84433250 Máy in kiểu lưới dùng để sản xuất các tấm mạch in hoặc tấm dây in
+✗ 84433260 Máy vẽ (Plotters)
+✓ 84433290 Loại khác
+## 844339
+✗ 84433910 Máy photocopy tĩnh điện, hoạt động bằng cách tái tạo hình ảnh gốc trực tiếp lên bản sao (quá trình tái tạo trực tiếp)
+✗ 84433920 Máy photocopy tĩnh điện, hoạt động bằng cách tái tạo hình ảnh gốc lên bản sao thông qua bước trung gian (quá trình tái tạo gián tiếp)
+✗ 84433930 Máy photocopy khác kết hợp hệ thống quang học
+✗ 84433940 Máy in phun
+✓ 84433990 Loại khác
+## 844399
+✓ 84439910 Của máy in kiểu lưới dùng để sản xuất tấm mạch in hoặc tấm dây in
+✗ 84439920 Hộp mực in đã có mực in
+✓ 84439930 Bộ phận cung cấp giấy; bộ phận sắp xếp giấy
+✓ 84439990 Loại khác
+## 844519
+✗ 84451930 Máy tách hạt bông
+✓ 84451940 Loại khác, hoạt động bằng điện
+✓ 84451950 Loại khác, không hoạt động bằng điện
+## 845640
+✓ 84564010 Máy công cụ, điều khiển số, để gia công vật liệu bằng phương pháp bóc tách vật liệu, bằng quá trình xử lý plasma hồ quang, để sản xuất các tấm mạch in hoặc tấm dây in
+✗ 84564020 Máy làm sạch bằng plasma sử dụng để loại bỏ các chất ô nhiễm hữu cơ khỏi các mẫu kính hiển vi điện tử và giá đỡ mẫu
+✓ 84564090 Loại khác
+## 845819
+✗ 84581910 Có bán kính gia công tiện không quá 300 mm
+✓ 84581990 Loại khác
+## 845899
+✗ 84589910 Có bán kính gia công tiện không quá 300 mm
+✓ 84589990 Loại khác
+## 846190
+✗ 84619020 Máy bào
+✓ 84619090 Loại khác
+## 846222
+✗ 84622210 Điều khiển số
+✓ 84622290 Loại khác
+## 846232
+✗ 84623210 Điều khiển số
+✓ 84623290 Loại khác
+## 846261
+✗ 84626111 Máy rèn khuôn hoặc máy dập khuôn
+✓ 84626119 Loại khác
+✗ 84626191 Máy rèn khuôn hoặc máy dập khuôn
+✓ 84626199 Loại khác
+## 846262
+✗ 84626211 Máy rèn khuôn hoặc máy dập khuôn
+✓ 84626219 Loại khác
+✗ 84626291 Máy rèn khuôn hoặc máy dập khuôn
+✓ 84626299 Loại khác
+## 846263
+✗ 84626310 Máy rèn khuôn hoặc máy dập khuôn
+✓ 84626390 Loại khác
+## 846269
+✗ 84626910 Máy rèn khuôn hoặc máy dập khuôn
+✓ 84626990 Loại khác
+## 846290
+✗ 84629010 Máy rèn khuôn hoặc máy dập khuôn
+✓ 84629090 Loại khác
+## 846599
+✗ 84659910 Máy tiện
+✓ 84659950 Máy để đẽo bavia bề mặt của tấm mạch in hoặc tấm dây in trong quá trình sản xuất; máy để khắc vạch lên tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in; máy ép lớp mỏng để sản xuất tấm mạch in hoặc tấm dây in
+✓ 84659960 Loại khác, hoạt động bằng điện
+✓ 84659990 Loại khác
+## 847090
+✗ 84709010 Máy đóng dấu bưu phí
+✓ 84709090 Loại khác
+## 847130
+✗ 84713020 Máy tính xách tay kể cả notebook và subnotebook
+✓ 84713090 Loại khác
+## 847141
+✗ 84714110 Máy tính cá nhân trừ máy tính loại xách tay của phân nhóm 8471.30
+✓ 84714190 Loại khác
+## 847149
+✗ 84714910 Máy tính cá nhân trừ máy tính loại xách tay của phân nhóm 8471.30
+✓ 84714990 Loại khác
+## 847150
+✗ 84715010 Bộ xử lý dùng cho máy tính cá nhân (kể cả loại máy xách tay)
+✓ 84715090 Loại khác
+## 847160
+✗ 84716030 Bàn phím máy tính
+✓ 84716040 Thiết bị nhập theo tọa độ X-Y, kể cả chuột, bút quang, cần điều khiển, bi xoay, và màn hình cảm ứng
+✓ 84716090 Loại khác
+## 847170
+✗ 84717020 Ổ đĩa cứng
+✗ 84717030 Ổ băng
+✗ 84717040 Ổ đĩa quang, kể cả ổ CD-ROM, ổ DVD và ổ CD có thể ghi được (CD-R)
+✓ 84717090 Loại khác
+## 847180
+✗ 84718010 Bộ điều khiển và bộ thích ứng
+✗ 84718070 Card âm thanh hoặc card hình ảnh
+✓ 84718090 Loại khác
+## 847190
+✗ 84719010 Máy đọc mã vạch
+✗ 84719030 Hệ thống nhận dạng vân tay điện tử
+✗ 84719040 Máy đọc ký tự quang học khác
+✓ 84719090 Loại khác
+## 847290
+✗ 84729010 Máy thanh toán tiền tự động
+✗ 84729041 Tự động
+✓ 84729049 Loại khác
+✗ 84729050 Máy xử lý văn bản
+✓ 84729060 Loại khác, hoạt động bằng điện
+✓ 84729090 Loại khác, không hoạt động bằng điện
+## 847350
+✗ 84735010 Thích hợp dùng cho máy thuộc nhóm 84.71
+✓ 84735090 Loại khác
+## 847432
+✗ 84743211 Có công suất không quá 80 tấn/giờ
+✓ 84743219 Loại khác
+✗ 84743221 Có công suất không quá 80 tấn/giờ
+✓ 84743229 Loại khác
+## 847689
+✗ 84768910 Máy đổi tiền
+✓ 84768990 Loại khác
+## 847989
+✓ 84798910 Thiết bị tự động sắp đặt hoặc loại bỏ các linh kiện hoặc phần tử tiếp xúc chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in đã lắp ráp
+✓ 84798950 Máy lắp ráp các bo mạch nhánh của bộ xử lý trung tâm (CPU) vào các vỏ hoặc hộp đựng bằng plastic; thiết bị tái sinh dung dịch hóa học dùng trong sản xuất tấm mạch in hoặc tấm dây in; thiết bị làm sạch cơ học bề mặt của tấm mạch in hoặc tấm dây in trong sản xuất; thiết bị đồng chỉnh tấm mạch in hoặc tấm dây in hoặc mạch in đã lắp ráp trong quá trình sản xuất
+✗ 84798961 Máy bán hàng dịch vụ tự động (Automatic service-vending machines)
+✓ 84798969 Loại khác
+✓ 84798970 Loại khác, không hoạt động bằng điện
+## 848071
+✗ 84807110 Khuôn làm đế giày, dép
+✓ 84807190 Loại khác
+## 848079
+✗ 84807910 Khuôn làm đế giày, dép
+✓ 84807990 Loại khác
+## 848180
+✓ 84818011 Bằng đồng hoặc hợp kim đồng
+✓ 84818012 Bằng vật liệu khác
+✓ 84818013 Bằng đồng hoặc hợp kim đồng
+✓ 84818014 Bằng vật liệu khác
+✓ 84818021 Có đường kính cửa nạp hoặc cửa thoát không quá 2,5 cm
+✓ 84818022 Có đường kính cửa nạp hoặc cửa thoát trên 2,5 cm
+✓ 84818030 Van, đã hoặc chưa lắp bộ phận đánh lửa điện từ, dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga
+✓ 84818041 Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm
+✓ 84818049 Loại khác
+✓ 84818051 Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm
+✓ 84818059 Loại khác
+✓ 84818061 Van cổng điều khiển bằng tay có đường kính trong trên 5 cm nhưng không quá 40 cm
+✓ 84818062 Loại khác
+✓ 84818063 Loại khác
+✓ 84818064 Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm (SEN)
+✓ 84818065 Loại khác (SEN)
+✓ 84818066 Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm
+✓ 84818067 Loại khác
+✓ 84818071 Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm
+✓ 84818072 Loại khác
+✓ 84818073 Có đường kính trong cửa nạp và cửa thoát trên 5 cm nhưng không quá 40 cm
+✓ 84818074 Có đường kính trong cửa nạp và cửa thoát trên 40 cm
+✓ 84818077 Có đường kính trong cửa nạp và cửa thoát không quá 5 cm
+✓ 84818078 Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm
+✓ 84818079 Loại khác
+✓ 84818081 Bằng plastic và có đường kính trong từ 1 cm đến 2,5 cm
+✓ 84818082 Loại khác
+✓ 84818083 Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp dưới 1cm
+✓ 84818084 Van ngắt nhiên liệu bằng plastic dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04, với đường kính trong cửa nạp từ 1cm đến 2,5 cm
+✗ 84818093 Van ngắt nhiên liệu bằng vật liệu khác dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+✓ 84818094 Có đường kính trong cửa nạp dưới 1 cm
+✓ 84818095 Có đường kính trong cửa nạp từ 1 cm đến 2,5 cm
+✓ 84818096 Có đường kính trong cửa nạp trên 2,5 cm
+✓ 84818097 Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken
+✓ 84818098 Vòi nước bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống
+✓ 84818099 Loại khác
+## 848190
+✓ 84819010 Vỏ của van cổng hoặc van cống có đường kính trong cửa nạp hoặc cửa thoát trên 50 mm nhưng không quá 400 mm
+✗ 84819021 Thân, dùng cho vòi nước
+✗ 84819022 Thân, dùng cho van xi lanh khí dầu mỏ hoá lỏng (LPG)
+✗ 84819023 Thân, loại khác
+✓ 84819029 Loại khác
+✓ 84819031 Bằng đồng hoặc hợp kim đồng
+✓ 84819039 Loại khác
+✓ 84819041 Bằng đồng hoặc hợp kim đồng
+✓ 84819049 Loại khác
+✓ 84819090 Loại khác
+## 848620
+✓ 84862011 Thiết bị kết tủa khí hóa dùng cho ngành sản xuất bán dẫn
+✓ 84862012 Máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay
+✓ 84862013 Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng; thiết bị lắng đọng vật lý dùng cho sản xuất bán dẫn
+✓ 84862019 Loại khác
+✓ 84862021 Máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn
+✓ 84862029 Loại khác
+✓ 84862031 Máy dùng tia sáng để làm sạch và tẩy rửa chất bẩn bám trên các đầu chân dẫn điện kim loại của các cụm linh kiện bán dẫn trước khi tiến hành điện phân; dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng
+✓ 84862032 Thiết bị sử dụng cho các bản mẫu khắc khô trên vật liệu bán dẫn
+✓ 84862033 Thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng
+✓ 84862039 Loại khác
+✓ 84862041 Thiết bị in trực tiếp lên tấm bán dẫn mỏng
+✗ 84862042 Thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại
+✓ 84862049 Loại khác
+✓ 84862051 Thiết bị khắc để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng
+✓ 84862059 Loại khác
+✓ 84862091 Máy cắt laser để cắt các đường tiếp xúc bằng các chùm tia laser trong các sản phẩm bán dẫn
+✓ 84862092 Máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn
+✓ 84862093 Lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn trên các tấm bán dẫn mỏng
+✓ 84862094 Lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng cho sản xuất linh kiện bán dẫn trên các tấm bán dẫn mỏng
+✓ 84862095 Máy tự động dịch chuyển hoặc bóc tách các linh kiện hoặc phần tiếp xúc trên các nguyên liệu bán dẫn
+✓ 84862099 Loại khác
+## 848640
+✓ 84864010 Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn
+✓ 84864020 Thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn; máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn
+✓ 84864030 Khuôn để sản xuất linh kiện bán dẫn
+✓ 84864040 Kính hiển vi quang học soi nổi được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+✓ 84864050 Kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+✓ 84864060 Kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+✗ 84864070 Thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các tấm nền phủ lớp cản quang trong quá trình khắc
+✓ 84864090 Loại khác

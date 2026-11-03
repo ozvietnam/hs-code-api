@@ -1,0 +1,878 @@
+SOẠN KHOÁ TỪ VỰNG CHO CÁC DÒNG BIỂU THUẾ MÁY CHƯA ĐỌC ĐƯỢC (mục đích: số hoá ranh giới giữa các dòng 8 số cùng PN6). Máy đã chạy mọi khoá ở (A) lên toàn bộ biểu thuế; (D) dưới đây là CHÍNH XÁC những dòng 8 số KHÔNG khoá nào đọc ra giá trị (đánh dấu ✗), kèm các dòng cùng PN6 đã đọc được (✓, ghi khoá đọc) để thấy trục phân biệt.
+
+NHIỆM VỤ: với mỗi dòng ✗, quyết định MỘT trong ba: (a) GHEP — dòng này đọc được bằng khoá đã có ở (A) nếu thêm giá trị/mẫu: ghi trong "boSung": {khoa: {"giaTriMoi": {ID: {nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}, "mauThem": {vi:[…],en:[…],zh:[…]}}}; (b) SOAN — tiêu chí mới, soạn khoá vào "khoa" (gộp mọi dòng/PN6 cùng tiêu chí về MỘT khoá; ưu tiên tiêu chí lặp ở ≥2 PN6); (c) BO — chỉ là tên hàng/tên chất/tên loài, không phải tiêu chí đo-có/không-liệt kê: không làm gì. Không cần liệt kê (c). Không bịa ngưỡng. ghiChu trích NGUYÊN VĂN dòng 8 số kèm mã (chép từ (D)). Mỗi khoá kèm pn6Mau (≤5) và soDong.
+
+QUY TẮC LƯỢC ĐỒ (máy kiểm ĐỎ nếu sai): (1) SO: heDonVi có ở (B) hoặc khai mới trong heDonViMoi; donViChuan là đơn vị gốc của hệ (chiều dài mm, không inch/cm); canNguCanh true; cachViet.vi có {giaTri} + đơn vị; bí danh chữ thường vào bietDanhMoi; thang không đơn vị (chỉ số, RON, GT) thì thêm "docThem":[{"mau":"(?<=…\\s*)(\\d+)","donVi":"<đơn vị hệ>"}] và "docMoRong":true. (2) cachDoc regex không phân biệt hoa thường, vi/en/zh ≥1 mẫu, \\s+ giữa các từ; mẫu PHẢI khớp nguyên văn dòng ✗ trích trong ghiChu (máy sẽ chạy thử). (3) Mọi khoá: nhanVi, nhanEn, nhanZh, cauHoi{vi,zh}, cachViet{vi}, ghiChu, nguonLoai "AI_DA_KIEM". (4) CO_KHONG: cachDoc{vi,en,zh,phuDinh}, cachDocKhong{vi,en,zh}, cachViet{vi,viPhuDinh}; KHÔNG đưa cụm phụ chú kiểu "đã hoặc chưa …" vào cachDoc. (5) LIET_KE: giaTriHopLe = mảng id HOA_GACH_DUOI; moTaGiaTri = {id:{nhanVi,nhanEn,nhanZh,cachDoc{vi,en,zh},cachViet}}; cachDoc cấp khoá {"vi":[],"en":[],"zh":[]}; cachViet cấp khoá {"vi":"{giaTri}"}; một dòng chỉ được khớp MỘT giá trị (khớp hai giá trị ⇒ tách thành hai khoá/trục).
+
+ĐẦU RA: MỘT khối ```json {"khoa":[…],"boSung":{…},"heDonViMoi":{},"bietDanhMoi":{},"khongChac":[{"khoa":"…","lyDo":"…"}]} duy nhất, không giải thích. Vượt trần đầu ra ⇒ ưu tiên soDong lớn, phần còn lại ghi khongChac; khi được nhắn "tiếp" soạn nốt, không lặp lại.
+
+=== (A) KHOÁ ĐÃ CÓ ===
+dienAp(SO,V) điện áp
+dongDien(SO,A) dòng điện (định mức)
+congSuat(SO,W) công suất
+tanSo(SO,Hz) tần số / dải tần
+luuLuong(SO,m3/h) lưu lượng
+dungTichXiLanh(SO,cc) dung tích xi lanh
+khoiLuong(SO,kg) khối lượng
+duongKinh(SO,mm) đường kính (ngoài)
+duongKinhTrong(SO,mm) đường kính trong (cửa nạp/cửa thoát, DN)
+duongKinhLoi(SO,mm) đường kính lõi (mỗi lõi dẫn điện)
+chieuCao(SO,mm) chiều cao
+kichThuoc(SO,mm) kích thước (dài x rộng x cao)
+chieuDaiCuon(SO,m) chiều dài (hàng dài: dây, cáp, ống, cuộn)
+daGanDauNoi(CO_KHONG) đã gắn đầu nối
+coCachDien(CO_KHONG) có cách điện
+coBoXuLyLapTrinh(CO_KHONG) có trang bị bộ xử lý lập trình
+coKhungChupQuaDau(CO_KHONG) có khung chụp qua đầu
+hieuChinhThiLuc(CO_KHONG) hiệu chỉnh thị lực (kính thuốc)
+chongNang(CO_KHONG) chống nắng (kính râm)
+coChucNangGhi(CO_KHONG) có chức năng ghi (hình/âm)
+daGhi(CO_KHONG) đã ghi (có dữ liệu)
+coLuoiBaoVe(CO_KHONG) có lưới bảo vệ
+coManHinh(CO_KHONG) có màn hình hiển thị
+coCamera(CO_KHONG) có camera
+coBanh(CO_KHONG) có bánh xe
+hoatDongBangDien(CO_KHONG) hoạt động bằng điện
+coKetHopThietBiThu(CO_KHONG) kết hợp thiết bị thu
+coGiaNhiet(CO_KHONG) có gia nhiệt
+laBoPhan(CO_KHONG) là bộ phận (không phải hàng hoàn chỉnh)
+datChim(CO_KHONG) loại đặt chìm
+coKhoangPhaTron(CO_KHONG) có khoang pha trộn lưu chất
+loaiDongDien(LIET_KE) loại dòng điện
+soPha(LIET_KE) số pha
+kieuDotChay(LIET_KE) kiểu đốt cháy của động cơ piston
+nguonSang(LIET_KE) nguồn sáng
+nguonNangLuong(LIET_KE) nguồn năng lượng
+cachDieuKhien(LIET_KE) cách điều khiển / vận hành
+kieuBom(LIET_KE) kiểu bơm
+loaiRoLe(LIET_KE) loại rơ le
+loaiCongTac(LIET_KE) loại thiết bị đóng ngắt (8536.50)
+loaiPhichOCam(LIET_KE) loại phích cắm / ổ cắm (8536.69)
+phamViSuDung(LIET_KE) phạm vi sử dụng
+mauHienThi(LIET_KE) màu hiển thị
+kieuDongCoDien(LIET_KE) kiểu động cơ điện (8501.10)
+tinhTrang(LIET_KE) tình trạng hàng
+chatLieu(CHAT_LIEU_THEO_VI_TRI) chất liệu (theo vị trí)
+dungCho(CONG_DUNG) dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng)
+congDung(CONG_DUNG) công dụng / mục đích
+tenLoai(TEN_LOAI) tên loại hàng
+nhanHieu(TEN_LOAI) nhãn hiệu
+model(TEN_LOAI) model
+kyMaHieu(TEN_LOAI) ký, mã hiệu
+nhaSanXuat(TEN_LOAI) nhà sản xuất
+chiHoacChuYeu(CO_KHONG) chỉ hoặc chủ yếu dùng cho (mức ràng buộc công dụng)
+thietKeChoTreEm(CO_KHONG) được thiết kế chủ yếu cho trẻ em
+daNapChuongTrinh(CO_KHONG) đã nạp chương trình/firmware (bo mạch, vi điều khiển)
+soLoi(SO,lõi) số lõi dẫn (ruột dẫn)
+soSoi(SO,sợi) số sợi (sợi dẫn, sợi bện, sợi quang — theo chữ "sợi")
+tiLe(SO,lần) tỉ lệ giữa hai đại lượng (tử/mẫu theo chữ biểu, vd chiều dày / đường kính)
+phuongPhapCheTao(LIET_KE) phương pháp chế tạo
+phuongThucTruyenDan(LIET_KE) phương thức truyền dẫn
+daXuLyBeMat(CO_KHONG) đã được xử lý bề mặt
+nhienLieu(LIET_KE) nhiên liệu / nguồn nhiệt (bếp, lò)
+phuongPhapIn(LIET_KE) phương pháp in (vải, hàng dệt)
+tinhDanHoi(CO_KHONG) đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)
+loaiSoiDet(LIET_KE) loại xơ/sợi dệt (vật liệu dệt chủ yếu)
+doDay(SO,mm) độ dày
+congSuatBieuKien(SO,kVA) công suất biểu kiến
+dangNguyenSinh(LIET_KE) dạng vật lý nguyên sinh của polyme
+daLapRap(CO_KHONG) đã lắp ráp
+dungTich(SO,lít) dung tích chứa
+sanLuongHoi(SO,tấn/giờ) sản lượng hơi / công suất hơi
+theTich(SO,cm3) thể tích ngoài / thể tích bên ngoài
+heDienHoa(LIET_KE) hệ điện hóa của pin
+dungLuong(SO,Ah) dung lượng phóng điện
+daHoaDeo(CO_KHONG) đã hóa dẻo
+coBoLoc(CO_KHONG) đã lắp bộ phận lọc
+hamLuongCarbon(SO,%) hàm lượng carbon
+gioiHanChay(SO,psi) giới hạn chảy
+chieuRong(SO,mm) chiều rộng
+khaNangChiuApLuc(SO,psi) khả năng chịu áp lực
+duongCheoNgoai(SO,mm) đường chéo ngoài mặt cắt ngang
+coRen(CO_KHONG) có ren (ở đầu hoặc thân ống)
+doBenKeo(SO,MPa) độ bền kéo
+hamLuongNiken(SO,%) hàm lượng niken
+lopMaPhu(LIET_KE) lớp mạ hoặc tráng phủ bề mặt
+dungLamGiong(CO_KHONG) để nhân giống / làm giống / gieo trồng
+dongBaoBiKinKhiDeBanLe(CO_KHONG) đóng bao bì kín khí để bán lẻ
+nongDoCon(SO,%) nồng độ cồn (% thể tích)
+phuongPhapBaoQuan(LIET_KE) phương pháp bảo quản / trạng thái bảo quản
+dangBaoCheThuoc(LIET_KE) dạng bào chế / đường dùng của thuốc
+mucDoTinhCheDau(LIET_KE) mức độ tinh chế của dầu và chất béo
+chiSoIot(SO,IV) chỉ số iốt (IV)
+triSoOctan(SO,RON) trị số octan (RON / Octane)
+daRang(CO_KHONG) đã rang
+tachXuongCoHoc(CO_KHONG) thịt tách hoặc lọc khỏi xương bằng phương pháp cơ học (MSM/MDM)
+dinhLuong(SO,g/m2) định lượng giấy hoặc bìa
+mucDoGiaCongGo(LIET_KE) mức độ gia công của gỗ xẻ
+dangBinhXit(CO_KHONG) dạng bình xịt (aerosol)
+nhieuLop(CO_KHONG) nhiều lớp (giấy/bìa/gỗ nhiều lớp)
+daIn(CO_KHONG) đã in (nội dung, họa tiết, vạch chia)
+duongKinhVanh(SO,mm) đường kính vành bánh xe (mâm xe lắp lốp)
+daTrangMen(CO_KHONG) đã tráng men (gạch gốm, sứ)
+tinhNangBaoHo(LIET_KE) tính năng bảo hộ chuyên dụng của quần áo
+daTrangPhuEpLop(CO_KHONG) đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)
+loaiMuiBaoVe(LIET_KE) loại mũi bảo vệ của giày dép
+thuyTinhQuangHoc(CO_KHONG) thủy tinh/kính quang học (chưa gia công quang học)
+tongDungTichTau(SO,GT) tổng dung tích tàu thuyền (gross tonnage - GT)
+dangCuon(CO_KHONG) ở dạng cuộn (dây hàn, que hàn, tấm, dải)
+coNong(SO,mm) cỡ nòng súng / cỡ đạn
+ngamQuaThauKinhSLR(CO_KHONG) có bộ ngắm qua thấu kính (phản chiếu đơn - SLR)
+dungMotLan(CO_KHONG) dùng một lần (dụng cụ y tế, vật tư tiêu hao)
+tinhTrangTayTrang(LIET_KE) tình trạng tẩy trắng (của xơ, sợi hoặc vải dệt)
+hinhDangCatGocKinh(CO_KHONG) tấm kính hình vuông hoặc hình chữ nhật (kể cả đã hoặc chưa cắt góc)
+kieuDet(LIET_KE) kiểu dệt / cấu trúc dệt của vải
+daPhaThemDuongHoacRuou(CO_KHONG) đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu (rau quả chế biến)
+soiDun(CO_KHONG) sợi dún (textured yarn)
+coMauTruTrang(CO_KHONG) có màu trừ màu trắng (sợi dệt hoặc xơ dệt)
+dongGoiBanLe(CO_KHONG) đóng gói để bán lẻ
+dangLong(CO_KHONG) ở dạng lỏng
+laPhanDoan(CO_KHONG) là phần phân đoạn của dầu/mỡ (olein, stearin)
+
+=== (B) HỆ ĐƠN VỊ ĐÃ CÓ ===
+{"dai": ["mm", "cm", "m", "inch"], "dienAp": ["V", "mV", "kV"], "dongDien": ["A", "mA"], "congSuat": ["W", "mW", "kW", "HP"], "tanSo": ["Hz", "kHz", "MHz", "GHz"], "luuLuong": ["m3/h", "l/h", "l/min", "m3/min"], "theTichXiLanh": ["cc", "cm3"], "khoiLuong": ["kg", "g", "tấn"], "loi": ["lõi"], "soi": ["sợi"], "tiLe": ["lần", "%"], "bieuKien": ["kVA", "MVA"], "theTich": ["cm3", "ml", "lít", "m3", "cc"], "luuLuongKhoiLuong": ["tấn/giờ", "kg/giờ"], "dungLuongDien": ["Ah", "mAh"], "phanTram": ["%"], "apSuat": ["psi", "MPa"], "chiSoIot": ["IV"], "triSoOctan": ["RON", "octane"], "dinhLuong": ["g/m2", "gsm"], "tongDungTich": ["GT"]}
+
+=== MẪU 1 (CO_KHONG) ===
+{"khoa": "tinhDanHoi", "kieu": "CO_KHONG", "nhanVi": "đàn hồi (chứa sợi đàn hồi hoặc sợi cao su)", "nhanEn": "elastic (containing elastomeric yarn or rubber thread)", "nhanZh": "弹性（含弹性纱线或橡胶线）", "cachDoc": {"vi": ["(?:tính\\s+)?đàn\\s+hồi", "sợi\\s+đàn\\s+hồi", "sợi\\s+cao\\s+su", "chỉ\\s+cao\\s+su", "spandex", "elastane", "lycra"], "en": ["elastic(?:ity)?", "elastomeric\\s+(?:yarns?|fib(?:re|er)s?|threads?)", "rubber\\s+threads?", "spandex", "elastane", "lycra", "stretch(?:y|able)?\\s+(?:fabric|knit|yarn|material)"], "zh": ["弹性", "弹力", "橡胶线", "橡筋", "氨纶", "莱卡"], "phuDinh": ["không phải", "không có", "không", "chưa", "ko", "chẳng", "non-?", "without", "no", "not", "无", "非", "不", "没有", "未"]}, "cachDocKhong": {"vi": [], "en": ["non-?elastic", "inelastic", "non-?stretch"], "zh": ["无弹性", "无弹力", "不含弹性"]}, "cachViet": {"vi": "đàn hồi", "viPhuDinh": "không đàn hồi"}, "cauHoi": {"vi": "Vải có đàn hồi không — có chứa sợi đàn hồi (spandex/elastane) hoặc sợi cao su không?", "zh": "面料是否有弹性——是否含弹性纱线（氨纶）或橡胶线？"}, "ghiChu": "Chữ biểu 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\" (EN \"Elastic (combined with rubber threads)\") và 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\" (EN \"Containing elastomeric yarn or rubber thread\") — lát 2, đề xuất de-xuat-khoa-lat-2.md mục studio-loop (thay đề xuất loaiXoPha SOI_DAN_HOI_HOAC_CAO_SU: đây là trục CHỨA, không phải trục chất liệu BẰNG của chatLieu/loaiSoiDet). Đọc tên sợi đàn hồi (spandex/elastane/lycra, 氨纶) là CÓ vì theo Chú giải 13 Phần XI đó chính là sợi đàn hồi. Không đọc \"co giãn\" (nhiều nghĩa: khớp co giãn), \"cao su\" trần (chatLieu), \"dây chun\" (hàng, không phải vải). \"không/chưa đàn hồi\" là phủ định (phuDinh).", "nguonLoai": "AI_DA_KIEM"}
+
+=== MẪU 2 (SO) ===
+{"khoa": "doDay", "kieu": "SO", "nhanVi": "độ dày", "nhanEn": "thickness", "nhanZh": "厚度", "heDonVi": "dai", "donViChuan": "mm", "canNguCanh": true, "cachDoc": {"vi": ["độ\\s+dày", "dày", "bề\\s+dày", "chiều\\s+dày"], "en": ["thickness", "thick", "gauge"], "zh": ["厚度", "厚", "板厚", "壁厚"]}, "cachViet": {"vi": "dày {giaTri}"}, "cauHoi": {"vi": "Độ dày của hàng (tấm, lá, cửa, thành) là bao nhiêu mm?", "zh": "产品（板、片、门、壁）的厚度是多少毫米（mm）？"}, "ghiChu": "Độ dày tấm/lá/que/cửa — chữ biểu 7308.30.10 \"Cửa ra vào, có độ dày từ 6 mm đến 8 mm\" (lát 2, đề xuất de-xuat-khoa-lat-2.md: quét + studio-loop). Khoảng \"dày 6-8 mm\" ⇒ giaTri 6, cacGiaTri [6, 8] — người dùng ngưỡng xét cacGiaTri (như chieuCao); \"từ 6 mm đến 8 mm\" (đơn vị sau cả hai số) đọc số đầu 6 — spec dùng cặp điều kiện >= 6 và <= 8. Cần ngữ cảnh \"dày/thickness/厚\" trong 30 ký tự trước số (canNguCanh) — \"8 mm\" trần không đọc. Độ dày theo tỉ lệ (\"không quá 1/10 đường kính\") là khoá tiLe.", "nguonLoai": "AI_DA_KIEM"}
+
+
+
+=== (D) PN6 CÓ DÒNG MÁY CHƯA ĐỌC (✗ = chưa đọc, ✓ = đã đọc) ===
+## 900110
+✗ 90011010 Sử dụng cho viễn thông và cho ngành điện khác
+✓ 90011090 Loại khác
+## 900490
+✓ 90049010 Kính thuốc
+✗ 90049050 Kính bảo hộ
+✓ 90049090 Loại khác
+## 900659
+✓ 90065911 Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))
+✓ 90065919 Loại khác
+✗ 90065921 Máy vẽ ảnh laser
+✓ 90065929 Loại khác
+✗ 90065930 Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành
+✓ 90065990 Loại khác
+## 900691
+✗ 90069110 Sử dụng cho máy vẽ ảnh laser thuộc phân nhóm 9006.59.21
+✓ 90069140 Loại khác, dùng cho máy ảnh của phân nhóm 9006.40 hoặc 9006.53
+✓ 90069150 Loại khác, dùng cho máy ảnh của phân nhóm 9006.59.11 hoặc 9006.59.19
+✓ 90069190 Loại khác
+## 900850
+✗ 90085010 Máy đọc vi phim, vi thẻ hoặc vi bản khác, có hoặc không có khả năng sao chép
+✓ 90085090 Loại khác
+## 901050
+✓ 90105010 Máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in
+✗ 90105020 Thiết bị biên tập và ghi tựa đề điện ảnh; thiết bị đọc X quang; máy chụp quang sử dụng cho quá trình tách màu ra phim; máy plate maker tự động
+✓ 90105090 Loại khác
+## 901310
+✗ 90131010 Kính ngắm để lắp vào vũ khí; kính tiềm vọng
+✓ 90131020 Kính viễn vọng được thiết kế là bộ phận của máy, thiết bị, dụng cụ hoặc bộ dụng cụ của Chương này hoặc Phần XVI
+## 901480
+✗ 90148011 Máy dò siêu âm (Sonar) hoặc máy đo sâu hồi âm
+✓ 90148019 Loại khác
+✓ 90148090 Loại khác
+## 901710
+✗ 90171010 Máy vẽ (Plotters)
+✓ 90171090 Loại khác
+## 901720
+✗ 90172010 Thước
+✓ 90172040 Máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in
+✗ 90172050 Máy vẽ khác
+✓ 90172090 Loại khác
+## 901839
+✗ 90183910 Ống thông
+✓ 90183990 Loại khác
+## 901890
+✗ 90189010 Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)
+✗ 90189020 Bộ theo dõi tĩnh mạch
+✗ 90189031 Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử
+✓ 90189039 Loại khác
+✓ 90189090 Loại khác
+## 901920
+✗ 90192010 Máy trợ thở xâm lấn (SEN)
+✗ 90192020 Máy trợ thở khác
+✓ 90192090 Loại khác
+## 902000
+✗ 90200010 Mặt nạ khuôn mặt (full face) chống hóa học, sinh học, phóng xạ và hạt nhân (CBRN)
+✓ 90200090 Loại khác
+## 902519
+✗ 90251911 Máy đo nhiệt độ dùng cho xe có động cơ
+✓ 90251919 Loại khác
+✓ 90251920 Không hoạt động bằng điện
+## 902610
+✗ 90261050 Dụng cụ đo mức sử dụng cho xe có động cơ
+✓ 90261090 Loại khác
+## 902620
+✗ 90262050 Máy đo áp suất sử dụng cho xe có động cơ
+✓ 90262090 Loại khác
+## 902789
+✗ 90278910 Lộ sáng kế
+✓ 90278990 Loại khác
+## 902810
+✗ 90281010 Thiết bị đo khí loại lắp trên bình ga
+✓ 90281090 Loại khác
+## 902820
+✗ 90282020 Công tơ nước
+✓ 90282090 Loại khác
+## 902830
+✗ 90283010 Máy đếm ki-lô-oát giờ
+✓ 90283090 Loại khác
+## 902890
+✗ 90289010 Vỏ hoặc thân của công tơ nước
+✓ 90289090 Loại khác
+## 902910
+✗ 90291020 Máy đếm cây số để tính tiền taxi
+✓ 90291090 Loại khác
+## 902920
+✗ 90292010 Đồng hồ tốc độ dùng cho xe có động cơ
+✗ 90292020 Máy đo tốc độ góc cho xe có động cơ
+✓ 90292090 Loại khác
+## 903033
+✓ 90303310 Dụng cụ và thiết bị để đo hoặc kiểm tra điện áp, dòng điện, điện trở hoặc công suất của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+✗ 90303320 Dụng cụ và thiết bị đo trở kháng được thiết kế để cảnh báo dưới dạng hình ảnh và/hoặc dưới dạng âm thanh trong môi trường phóng tĩnh điện mà có thể làm hỏng mạch điện tử; dụng cụ kiểm tra thiết bị điều khiển tĩnh điện và thiết bị tĩnh điện nối đất/cố định
+✗ 90303330 Ampe kế và vôn kế dùng cho xe có động cơ
+✗ 90303340 Dụng cụ đo điện trở khác
+✓ 90303390 Loại khác
+## 903082
+✗ 90308210 Máy kiểm tra vi mạch tích hợp
+✓ 90308290 Loại khác
+## 903180
+✗ 90318010 Thiết bị kiểm tra cáp
+✓ 90318090 Loại khác
+## 903289
+✗ 90328910 Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền
+✓ 90328920 Dụng cụ và thiết bị tự động để điều chỉnh hoặc điều khiển dung dịch hóa chất hoặc điện hóa trong sản xuất tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp
+✗ 90328931 Bộ điều chỉnh điện áp tự động (ổn áp)
+✓ 90328939 Loại khác
+✓ 90328990 Loại khác
+## 910591
+✗ 91059110 Đồng hồ hàng hải đo thời gian
+✓ 91059190 Loại khác
+## 910599
+✗ 91059910 Đồng hồ hàng hải đo thời gian
+✓ 91059990 Loại khác
+## 910690
+✗ 91069010 Dụng cụ đo thời gian đậu xe
+✓ 91069090 Loại khác
+## 920890
+✗ 92089010 Dụng cụ tạo âm thanh để nhử mồi, tù và và các dụng cụ thổi bằng miệng khác để tạo âm thanh
+✓ 92089090 Loại khác
+## 930320
+✗ 93032010 Súng shotgun săn (SEN)
+✓ 93032090 Loại khác
+## 930330
+✗ 93033010 Súng trường săn
+✓ 93033090 Loại khác
+## 930400
+✗ 93040010 Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2
+✓ 93040090 Loại khác
+## 930630
+✗ 93063011 Đạn cỡ .22
+✓ 93063019 Loại khác
+✓ 93063020 Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng
+✓ 93063030 Dùng cho súng thể thao, súng săn hoặc súng bắn bia, súng trường và súng cacbin, trừ súng shotgun
+✗ 93063091 Đạn cỡ 22
+✓ 93063099 Loại khác
+## 940169
+✗ 94016910 Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)
+✓ 94016990 Loại khác
+## 940179
+✗ 94017910 Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)
+✓ 94017990 Loại khác
+## 940199
+✓ 94019910 Của ghế thuộc phân nhóm 9401.10.00
+✗ 94019921 Miếng tựa đầu và tay vịn của ghế thuộc phân nhóm 9401.20.10
+✓ 94019929 Loại khác
+✓ 94019930 Của ghế thuộc phân nhóm 9401.31.00 và 9401.39.00
+✓ 94019991 Bằng plastic
+✓ 94019999 Loại khác
+## 940290
+✗ 94029011 Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)
+✓ 94029012 Bàn mổ, hoạt động bằng điện (SEN)
+✓ 94029013 Bàn mổ, không hoạt động bằng điện (SEN)
+✗ 94029014 Bàn khám (SEN)
+✗ 94029015 Giường bệnh (SEN)
+✓ 94029019 Loại khác
+✓ 94029090 Loại khác
+## 940320
+✗ 94032010 Tủ hút hơi độc (SEN)
+✓ 94032090 Loại khác
+## 940360
+✗ 94036010 Tủ hút hơi độc (SEN)
+✓ 94036090 Loại khác
+## 940370
+✗ 94037010 Xe tập đi cho trẻ em
+✗ 94037020 Tủ hút hơi độc (SEN)
+✓ 94037090 Loại khác
+## 940389
+✗ 94038910 Tủ hút hơi độc (SEN)
+✓ 94038990 Loại khác
+## 940429
+✗ 94042910 Đệm lò xo
+✓ 94042920 Loại khác, làm nóng/làm mát (SEN)
+✓ 94042990 Loại khác
+## 940511
+✗ 94051110 Đèn cho phòng mổ
+✗ 94051191 Đèn rọi
+✓ 94051199 Loại khác
+## 940519
+✗ 94051910 Đèn cho phòng mổ
+✗ 94051991 Đèn rọi
+✓ 94051992 Đèn gắn bóng đèn huỳnh quang
+✓ 94051999 Loại khác
+## 940521
+✗ 94052110 Đèn cho phòng mổ
+✓ 94052190 Loại khác
+## 940529
+✗ 94052910 Đèn cho phòng mổ
+✓ 94052990 Loại khác
+## 940541
+✗ 94054110 Đèn pha
+✗ 94054120 Đèn rọi khác
+✓ 94054130 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+✓ 94054140 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn; loại chiếu sáng bên ngoài khác
+✓ 94054190 Loại khác
+## 940542
+✗ 94054210 Đèn pha
+✗ 94054220 Đèn rọi khác
+✓ 94054230 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+✓ 94054240 Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16
+✓ 94054250 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn
+✗ 94054260 Loại chiếu sáng bên ngoài khác
+✓ 94054290 Loại khác
+## 940549
+✗ 94054910 Đèn pha
+✗ 94054920 Đèn rọi khác
+✓ 94054930 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+✓ 94054940 Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16
+✓ 94054950 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn
+✗ 94054960 Loại chiếu sáng bên ngoài khác
+✓ 94054990 Loại khác
+## 940550
+✓ 94055011 Bằng đồng sử dụng trong nghi lễ tôn giáo
+✓ 94055019 Loại khác
+✗ 94055040 Đèn bão
+✗ 94055050 Đèn thợ mỏ và đèn thợ khai thác đá
+✓ 94055090 Loại khác
+## 940591
+✓ 94059110 Dùng cho đèn phòng mổ
+✓ 94059120 Dùng cho đèn rọi
+✗ 94059140 Chao đèn hình cầu hoặc thông phong đèn
+✓ 94059150 Dùng cho đèn pha
+✓ 94059190 Loại khác
+## 940599
+✓ 94059910 Chụp đèn bằng vật liệu dệt
+✗ 94059920 Chụp đèn bằng vật liệu khác
+✓ 94059930 Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19
+✓ 94059940 Dùng cho đèn pha hoặc đèn rọi
+✓ 94059950 Loại khác, bằng gốm, sứ hoặc kim loại
+✓ 94059990 Loại khác
+## 940610
+✗ 94061010 Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt
+✓ 94061090 Loại khác
+## 940620
+✗ 94062010 Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt
+✓ 94062090 Loại khác
+## 940690
+✓ 94069011 Bằng sắt hoặc bằng thép
+✓ 94069012 Bằng plastic
+✓ 94069019 Loại khác
+✓ 94069020 Loại khác, bằng plastic hoặc bằng nhôm
+✓ 94069030 Loại khác, bằng sắt hoặc thép
+✗ 94069040 Loại khác, bằng xi măng, bằng bê tông hoặc đá nhân tạo
+✓ 94069090 Loại khác
+## 950300
+✓ 95030010 Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh; xe của búp bê
+✗ 95030021 Búp bê, có hoặc không có trang phục
+✗ 95030022 Quần áo và phụ kiện quần áo; giầy và mũ
+✓ 95030029 Loại khác
+✗ 95030030 Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng
+✗ 95030040 Các mô hình thu nhỏ theo tỷ lệ ("scale") và các mô hình giải trí tương tự, có hoặc không vận hành
+✓ 95030050 Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic
+✗ 95030060 Đồ chơi hình con vật hoặc sinh vật không phải hình người
+✗ 95030070 Các loại đồ chơi đố trí (puzzles)
+✓ 95030080 Thiết bị giáo dục điện tử tương tác cầm tay được thiết kế chủ yếu cho trẻ em (SEN)
+✗ 95030091 Đồ chơi, xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật; bộ xếp chữ; bộ đồ chơi tạo chữ và tập nói; bộ đồ chơi in hình; bộ đồ chơi đếm (abaci); máy may đồ chơi; máy chữ đồ chơi
+✗ 95030092 Dây nhảy
+✗ 95030093 Hòn bi
+✓ 95030094 Các đồ chơi khác, bằng cao su
+✓ 95030099 Loại khác
+## 950420
+✗ 95042020 Bàn bi-a các loại
+✗ 95042030 Phấn xoa đầu gậy bi-a
+✓ 95042090 Loại khác
+## 950430
+✓ 95043030 Trò chơi may rủi ngẫu nhiên với giải thưởng nhận ngay bằng tiền mặt; các bộ phận và phụ kiện của chúng
+✗ 95043040 Máy trò chơi bắn bi (pintables) hoặc các máy trò chơi tự động (có khe nhét xèng hoặc xu) khác
+✓ 95043050 Loại khác, bộ phận bằng gỗ, giấy hoặc plastic
+✓ 95043090 Loại khác
+## 950450
+✗ 95045010 Loại sử dụng với một bộ thu truyền hình
+✓ 95045090 Loại khác
+## 950490
+✗ 95049010 Các loại đồ phụ trợ để chơi bowling
+✓ 95049021 Bằng gỗ, giấy hoặc plastic
+✓ 95049029 Loại khác
+✓ 95049032 Bàn thiết kế để chơi bạc bằng gỗ hoặc plastic
+✗ 95049033 Loại bàn khác thiết kế để chơi bạc
+✓ 95049034 Quân bài Mạt chược bằng gỗ, giấy hoặc plastic
+✗ 95049035 Quân bài Mạt chược khác
+✓ 95049036 Loại khác, bằng gỗ, giấy hoặc plastic
+✓ 95049039 Loại khác
+✓ 95049092 Bằng gỗ hoặc bằng plastic
+✓ 95049093 Loại khác
+✓ 95049095 Bằng gỗ, giấy hoặc plastic
+✓ 95049099 Loại khác
+## 950640
+✗ 95064010 Bàn
+✓ 95064090 Loại khác
+## 950699
+✗ 95069910 Cung (kể cả nỏ) và mũi tên
+✗ 95069920 Lưới (*), đệm bảo vệ ống chân và tấm ốp bảo vệ ống chân
+✗ 95069930 Quả cầu lông
+✓ 95069990 Loại khác
+## 960110
+✗ 96011010 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+✓ 96011090 Loại khác
+## 960190
+✗ 96019011 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+✗ 96019012 Nhân nuôi cấy ngọc trai (SEN)
+✓ 96019019 Loại khác
+✗ 96019021 Đồ trang trí
+✓ 96019029 Loại khác
+✗ 96019091 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+✓ 96019099 Loại khác
+## 960200
+✓ 96020010 Vỏ viên nhộng bằng gelatin dùng cho dược phẩm
+✗ 96020020 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+✓ 96020090 Loại khác
+## 960310
+✗ 96031010 Bàn chải
+✗ 96031020 Chổi
+## 960390
+✗ 96039010 Túm và búi đã làm sẵn để làm chổi hoặc bàn chải
+✓ 96039020 Dụng cụ cơ học vận hành bằng tay để quét sàn, không có động cơ
+✗ 96039040 Bàn chải khác
+✓ 96039090 Loại khác
+## 960830
+✗ 96083020 Bút máy
+✓ 96083090 Loại khác
+## 960910
+✗ 96091010 Bút chì đen
+✓ 96091090 Loại khác
+## 960990
+✗ 96099010 Bút chì bằng đá phiến (slate) dùng trong trường học
+✗ 96099030 Bút chì và bút màu khác trừ loại thuộc phân nhóm 9609.10
+✗ 96099091 Phấn vẽ hoặc phấn viết
+✓ 96099099 Loại khác
+## 961000
+✗ 96100010 Bảng đá phiến (slate) dùng trong trường học
+✓ 96100090 Loại khác
+## 961380
+✗ 96138010 Bật lửa áp điện dùng cho lò và bếp
+✓ 96138020 Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic
+✓ 96138030 Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic
+✓ 96138090 Loại khác
+## 961610
+✗ 96161010 Bình, lọ xịt nước hoa và bình, lọ xịt trang điểm tương tự
+✓ 96161020 Các bộ phận gá lắp và đầu xịt
+## 961900
+✓ 96190011 Lõi thấm hút bằng vật liệu dệt
+✓ 96190012 Băng vệ sinh (miếng) và băng vệ sinh dạng ống (tampons) từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+✓ 96190013 Bỉm và miếng lót vệ sinh trẻ em từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+✓ 96190014 Loại khác, từ giấy, bột giấy, tấm xơ sợi xenlulo hoặc màng xơ sợi xenlulo
+✓ 96190019 Loại khác
+✗ 96190092 Băng vệ sinh (miếng)
+✓ 96190093 Loại khác, dệt kim hoặc móc
+✓ 96190099 Loại khác
+## 980417
+✗ 98041711 Đã bỏ đầu
+✓ 98041719 Loại khác
+✗ 98041721 Đã bỏ đầu, còn đuôi
+✗ 98041722 Đã bỏ đầu, bỏ đuôi
+✓ 98041729 Loại khác
+✗ 98041730 Tôm càng xanh (Macrobrachium rosenbergii)
+✓ 98041790 Loại khác
+## 980428
+✗ 98042811 Còn vỏ, đã hấp chín hoặc luộc chín trong nước
+✓ 98042819 Loại khác
+✓ 98042890 Loại khác
+## 980500
+✗ 98050000 Quả và hạt có dầu để làm giống.
+✗ 98050000 Quả và hạt có dầu để làm giống.
+✗ 98050000 Quả và hạt có dầu để làm giống.
+✗ 98050000 Quả và hạt có dầu để làm giống.
+✗ 98050000 Quả và hạt có dầu để làm giống.
+✗ 98050000 Quả và hạt có dầu để làm giống.
+✗ 98050000 Quả và hạt có dầu để làm giống.
+✗ 98050000 Quả và hạt có dầu để làm giống.
+✗ 98050000 Quả và hạt có dầu để làm giống.
+## 981200
+✓ 98120010 Đã lắp ráp hoàn chỉnh
+✓ 98120010 Đã lắp ráp hoàn chỉnh
+✓ 98120010 Đã lắp ráp hoàn chỉnh
+✓ 98120010 Đã lắp ráp hoàn chỉnh
+✗ 98120090 Loại khác, dùng cho xe thuộc phân nhóm 8701.10
+## 981730
+✗ 98173010 Biến áp thích ứng
+✗ 98173010 Biến áp thích ứng
+✗ 98173010 Biến áp thích ứng
+✗ 98173010 Biến áp thích ứng
+✓ 98173090 Loại khác
+✓ 98173090 Loại khác
+✓ 98173090 Loại khác
+✓ 98173090 Loại khác
+## 981813
+✓ 98181310 Vít cho kim loại
+✓ 98181310 Vít cho kim loại
+✗ 98181390 Chốt hãm và chốt định vị
+## 981814
+✗ 98181410 Lò xo lá và các lá lò xo
+✗ 98181490 Lò xo cuộn
+## 981819
+✓ 98181910 Chế hòa khí và bộ phận của chúng
+✗ 98181920 Thân động cơ (cylinder block)
+✓ 98181930 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 98181940 Ống xi lanh khác
+✗ 98181950 Quy lát và nắp quy lát
+✓ 98181960 Piston, có đường kính ngoài từ 50 mm trở lên nhưng không quá 155 mm
+✓ 98181970 Piston khác
+✓ 98181990 Loại khác
+## 981820
+✓ 98182010 Bơm nước bằng tay
+✓ 98182021 Loại ly tâm
+✓ 98182021 Loại ly tâm
+✓ 98182029 Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay
+✗ 98182031 Với đường kính cửa hút không quá 200mm
+✓ 98182039 Loại khác
+✓ 98182090 Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19
+## 981821
+✗ 98182110 Máy thổi khí
+✓ 98182121 Có lưới bảo vệ
+✓ 98182129 Loại khác
+## 982130
+✗ 98213014 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+✗ 98213015 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98213015 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98213025 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+✗ 98213025 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+✗ 98213026 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98213026 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98213026 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98213035 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+✗ 98213035 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+✗ 98213036 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98213036 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98213036 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98213036 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98213094 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+✗ 98213094 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+## 983440
+✗ 98344000 Dây bện tao, thừng và cáp dùng để sản xuất sản phẩm công nghệ thông tin
+✗ 98344000 Dây bện tao, thừng và cáp dùng để sản xuất sản phẩm công nghệ thông tin
+## 983610
+✗ 98361010 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn
+✗ 98361090 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+✗ 98361090 Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn
+## 983620
+✓ 98362010 Ô tô đông lạnh
+✓ 98362010 Ô tô đông lạnh
+✓ 98362020 Ô tô thu gom phế thải có bộ phận nén phế thải
+✓ 98362020 Ô tô thu gom phế thải có bộ phận nén phế thải
+✗ 98362030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+✗ 98362030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+✓ 98362040 Ô tô bọc thép để chở hàng hóa có giá trị
+✓ 98362040 Ô tô bọc thép để chở hàng hóa có giá trị
+✗ 98362050 Ô tô chở bùn có thùng rời nâng hạ được
+✗ 98362050 Ô tô chở bùn có thùng rời nâng hạ được
+✓ 98362090 Loại khác
+✓ 98362090 Loại khác
+## 983630
+✓ 98363010 Ô tô đông lạnh
+✓ 98363010 Ô tô đông lạnh
+✓ 98363020 Ô tô thu gom phế thải có bộ phận nén phế thải
+✓ 98363020 Ô tô thu gom phế thải có bộ phận nén phế thải
+✗ 98363030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+✗ 98363030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+✓ 98363040 Ô tô bọc thép để chở hàng hóa có giá trị
+✓ 98363040 Ô tô bọc thép để chở hàng hóa có giá trị
+✗ 98363050 Ô tô chở bùn có thùng rời nâng hạ được
+✗ 98363050 Ô tô chở bùn có thùng rời nâng hạ được
+✗ 98363060 Ô tô tự đổ
+✗ 98363060 Ô tô tự đổ
+✓ 98363090 Loại khác
+✓ 98363090 Loại khác
+## 983640
+✓ 98364010 Ô tô đông lạnh
+✓ 98364010 Ô tô đông lạnh
+✓ 98364020 Ô tô thu gom phế thải có bộ phận nén phế thải
+✓ 98364020 Ô tô thu gom phế thải có bộ phận nén phế thải
+✗ 98364030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+✗ 98364030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+✓ 98364040 Ô tô bọc thép để chở hàng hóa có giá trị
+✓ 98364040 Ô tô bọc thép để chở hàng hóa có giá trị
+✗ 98364050 Ô tô chở bùn có thùng rời nâng hạ được
+✗ 98364050 Ô tô chở bùn có thùng rời nâng hạ được
+✓ 98364090 Loại khác
+✓ 98364090 Loại khác
+## 983650
+✓ 98365010 Ô tô đông lạnh
+✓ 98365010 Ô tô đông lạnh
+✓ 98365020 Ô tô thu gom phế thải có bộ phận nén phế thải
+✓ 98365020 Ô tô thu gom phế thải có bộ phận nén phế thải
+✗ 98365030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+✗ 98365030 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+✓ 98365040 Ô tô bọc thép để chở hàng hóa có giá trị
+✓ 98365040 Ô tô bọc thép để chở hàng hóa có giá trị
+✗ 98365050 Ô tô chở bùn có thùng rời nâng hạ được
+✗ 98365050 Ô tô chở bùn có thùng rời nâng hạ được
+✗ 98365060 Ô tô tự đổ
+✗ 98365060 Ô tô tự đổ
+✓ 98365090 Loại khác
+✓ 98365090 Loại khác
+## 983690
+✗ 98369000 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 45 tấn
+✗ 98369000 Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 45 tấn
+## 984420
+✗ 98442010 Rơ-moóc và sơ mi rơ-moóc loại nhà lưu động, dùng làm nhà ở hoặc cắm trại
+✗ 98442020 Rơ-moóc và sơ mi rơ-moóc loại tự bốc hoặc dỡ hàng dùng trong nông nghiệp
+✗ 98442031 Rơ-moóc và sơ mi rơ-moóc gắn xi téc
+✗ 98442032 Rơ-moóc và sơ mi rơ-moóc dùng trong nông nghiệp
+✗ 98442033 Có khối lượng hàng chuyên chở theo thiết kế (payload) trên 200 tấn
+✓ 98442039 Loại khác
+✗ 98442090 Rơ-moóc và sơ mi rơ-moóc khác
+## 984590
+✗ 98459010 Ống dẫn sử dụng cho dẫn dầu hộp số ô tô
+✓ 98459020 Vành bánh xe
+✗ 98459090 Ống xả
+## 984912
+✗ 98491210 Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)
+✓ 98491211 Chiều rộng không quá 450 mm
+✓ 98491211 Chiều rộng không quá 450 mm
+✓ 98491211 Chiều rộng không quá 450 mm
+✓ 98491211 Chiều rộng không quá 450 mm
+✓ 98491219 Loại khác
+✓ 98491290 Loại dùng cho xe thuộc Chương 87
+## 984913
+✗ 98491310 Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)
+✓ 98491311 Chiều rộng không quá 450 mm
+✓ 98491319 Loại khác
+## 984915
+✗ 98491510 Miếng đệm và vành khung tròn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04
+✓ 98491521 Dùng cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05, trừ viền cao su quanh kính cửa
+✓ 98491529 Viền cao su quanh kính cửa, dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+## 984916
+✗ 98491610 Phù hợp dùng cho xe thuộc Chương 87
+✗ 98491690 Phù hợp dùng cho xe thuộc Chương 87
+## 984922
+✓ 98492211 Chế hòa khí và bộ phận của chúng
+✗ 98492212 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 98492213 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 98492214 Ống xi lanh khác
+✗ 98492215 Quy lát và nắp quy lát
+✓ 98492216 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 98492217 Piston khác
+✓ 98492218 Bạc piston và chốt piston
+✓ 98492219 Loại khác
+✓ 98492221 Chế hòa khí và bộ phận của chúng
+✗ 98492222 Thân động cơ (cylinder block); hộp trục khuỷu
+✓ 98492223 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+✗ 98492224 Ống xi lanh khác
+✗ 98492225 Quy lát và nắp quy lát
+✓ 98492226 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+✓ 98492227 Piston khác
+✓ 98492228 Bạc piston và chốt piston
+✓ 98492229 Loại khác
+## 984923
+✗ 98492311 Bơm nhiên liệu loại sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+✗ 98492319 Bơm nước loại được sử dụng cho động cơ của xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+## 984925
+✓ 98492511 Công suất làm mát không quá 26,38 kW
+✓ 98492519 Loại khác
+✓ 98492521 Công suất làm mát không quá 26,38 kW
+✓ 98492529 Loại khác
+✓ 98492531 Công suất làm mát không quá 26,38 kW
+✓ 98492539 Loại khác
+✓ 98492541 Công suất làm mát không quá 26,38 kW
+✓ 98492549 Loại khác
+✗ 98492590 Thiết bị làm bay hơi hoặc ngưng tụ dùng cho máy điều hoà không khí lắp trên xe có động cơ
+## 984926
+✗ 98492611 Bộ lọc dầu
+✓ 98492619 Loại khác
+✗ 98492621 Loại khác, thiết bị lọc xăng
+✗ 98492629 Loại khác, thiết bị lọc dầu
+✓ 98492630 Dùng cho xe có động cơ thuộc Chương 87
+✓ 98492640 Của hàng hóa thuộc phân nhóm 8421.31
+✓ 98492690 Loại khác
+✓ 98492690 Loại khác
+## 984927
+✗ 98492710 Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+✗ 98492790 Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+## 984928
+✓ 98492811 Cho xe có dung tích xi lanh không quá 2.000 cc
+✓ 98492812 Cho xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc
+✓ 98492813 Cho xe có dung tích xi lanh trên 3.000 cc
+✓ 98492820 Dùng cho động cơ xe của Chương 87
+✓ 98492830 Dùng cho động cơ xe của Chương 87
+✓ 98492840 Dùng cho xe thuộc Chương 87
+✗ 98492850 Bánh đà và ròng rọc, kể cả khối pu li
+✗ 98492860 Ly hợp và khớp nối trục (kể cả khớp nối vạn năng)
+✓ 98492891 Dùng cho hàng hóa khác thuộc Chương 87
+✓ 98492899 Dùng cho hàng hóa khác thuộc Chương 87
+## 984929
+✗ 98492910 Sử dụng cho động cơ ô tô
+✓ 98492921 Loại chưa được lắp ráp
+✓ 98492929 Loại khác
+✓ 98492931 Loại chưa được lắp ráp
+✓ 98492939 Loại khác
+✗ 98492941 Sử dụng cho động cơ của nhóm 87.02, 87.03, 87.04 hoặc 87.05
+✗ 98492942 Sử dụng cho động cơ của các nhóm 87.02, 87.03 hoặc 87.04
+✗ 98492943 Sử dụng cho động cơ của nhóm 87.05
+✗ 98492949 Sử dụng cho động cơ của các nhóm 87.02, 87.03, 87.04 hoặc 87.05
+✗ 98492950 Sử dụng cho động cơ của các nhóm 87.02, 87.03, 87.04 hoặc 87.05
+✗ 98492961 Sử dụng cho động cơ của các nhóm 87.02, 87.03 hoặc 87.04
+✗ 98492969 Sử dụng cho động cơ của nhóm 87.05
+✗ 98492971 Sử dụng cho động cơ của nhóm 87.02, 87.03, 87.04 hoặc 87.05
+✓ 98492979 Loại khác
+✗ 98492980 Sử dụng cho động cơ ô tô
+✗ 98492990 Sử dụng cho động cơ ô tô
+## 984930
+✓ 98493010 Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan chưa lắp ráp
+✓ 98493020 Loại khác
+✓ 98493031 Còi, đã lắp ráp
+✓ 98493032 Thiết bị tín hiệu âm thanh chưa lắp ráp
+✗ 98493033 Thiết bị dò chướng ngại vật (cảnh báo) cho xe cộ
+✓ 98493039 Loại khác
+✗ 98493040 Cái gạt nước, gạt và chống tạo sương và tuyết
+✓ 98493050 Của hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40
+## 984931
+✗ 98493110 Khối cầu chì, loại sử dụng cho xe có động cơ
+✗ 98493190 Khối cầu chì, loại sử dụng cho xe có động cơ
+## 984932
+✓ 98493210 Dùng cho xe có động cơ thuộc Chương 87
+✓ 98493220 Dùng cho xe có động cơ
+✓ 98493230 Dùng cho xe có động cơ
+✗ 98493290 Loại khác, dùng cho đèn của xe có động cơ
+✗ 98493290 Loại khác, dùng cho đèn của xe có động cơ
+## 984933
+✓ 98493310 Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04
+✓ 98493320 Loại dùng cho xe thuộc nhóm 87.02, 87.03, 87.04
+✗ 98493330 Cho xe thuộc nhóm 87.02, 87.03, 87.04
+✗ 98493340 Cho xe thuộc nhóm 87.02, 87.03, 87.04
+## 984934
+✓ 98493411 Loại khác
+✗ 98493412 Dây đai an toàn
+✗ 98493413 Đỡ tay trên cửa xe dùng cho xe thuộc nhóm 87.03
+✗ 98493414 Loại khác, dùng cho xe thuộc nhóm 87.03
+✓ 98493415 Dùng cho xe thuộc phân nhóm 8704.10
+✓ 98493416 Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+✓ 98493417 Loại khác
+✓ 98493418 Bộ phận của dây đai an toàn
+✗ 98493419 Phụ kiện trang trí nội thất; chắn bùn
+✗ 98493420 Thanh chống nắp ca pô
+✓ 98493421 Loại khác
+✓ 98493421 Loại khác
+✗ 98493422 Phụ kiện trang trí nội thất; chắn bùn
+✗ 98493423 Thanh chống nắp ca pô
+✓ 98493424 Loại khác
+✓ 98493424 Loại khác
+✓ 98493429 Loại khác
+✓ 98493429 Loại khác
+✗ 98493431 Phanh trống, phanh đĩa hoặc phanh hơi
+✓ 98493432 Loại khác
+✗ 98493433 Phanh trống, phanh đĩa hoặc phanh hơi cho xe thuộc nhóm 87.02 hoặc 87.04
+✓ 98493439 Loại khác
+✓ 98493441 Dùng cho xe thuộc nhóm 87.03
+✓ 98493442 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+✓ 98493443 Loại khác
+✓ 98493444 Dùng cho xe thuộc nhóm 87.03
+✓ 98493445 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+✓ 98493446 Loại khác
+✓ 98493447 Dùng cho xe thuộc nhóm 87.03
+✓ 98493449 Loại khác
+✓ 98493451 Dùng cho xe thuộc nhóm 87.03
+✓ 98493452 Dùng cho xe thuộc nhóm 87.04 hoặc nhóm 87.05
+✓ 98493453 Loại khác
+✓ 98493454 Dùng cho xe thuộc nhóm 87.03
+✓ 98493455 Dùng cho xe thuộc nhóm 87.04 hoặc nhóm 87.05
+✓ 98493456 Loại khác
+✗ 98493457 Bánh răng vành khăn và bánh răng quả dứa
+✓ 98493458 Loại khác
+✗ 98493459 Bánh răng vành khăn và bánh răng quả dứa
+✓ 98493460 Loại khác
+✓ 98493471 Dùng cho xe thuộc nhóm 87.03
+✓ 98493472 Dùng cho xe thuộc phân nhóm 8704.10
+✓ 98493473 Loại khác
+✓ 98493474 Loại khác
+✓ 98493475 Dùng cho xe thuộc nhóm 87.03
+✓ 98493476 Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)
+✓ 98493477 Loại khác
+✓ 98493478 Dùng cho xe thuộc nhóm 87.03
+✓ 98493479 Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế trên 45 tấn
+✓ 98493480 Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+✓ 98493481 Loại khác
+✓ 98493482 Dùng cho xe thuộc nhóm 87.02 hoặc 87.04
+✓ 98493483 Dùng cho xe thuộc nhóm 87.03
+✓ 98493489 Loại khác
+✓ 98493491 Dùng cho xe thuộc nhóm 87.03
+✓ 98493492 Dùng cho xe thuộc phân nhóm 8704.10 hoặc nhóm 87.05
+✓ 98493493 Loại khác
+✓ 98493494 Dùng cho xe thuộc nhóm 87.03
+✓ 98493499 Loại khác
+## 984935
+✓ 98493510 Dùng cho xe thuộc nhóm 87.03
+✓ 98493521 Dùng cho xe thuộc phân nhóm 8704.10
+✓ 98493522 Loại khác
+✓ 98493529 Loại khác
+✗ 98493531 Nút xả dùng cho xe thuộc nhóm 87.03
+✗ 98493532 Nút xả dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)
+✗ 98493533 Loại khác, dùng cho xe thuộc nhóm 87.03
+✓ 98493539 Loại khác
+✓ 98493541 Dùng cho xe thuộc nhóm 87.03
+✗ 98493542 Ống xả và bộ giảm thanh
+✓ 98493543 Bộ phận
+✗ 98493544 Ống xả và bộ giảm thanh
+✓ 98493545 Bộ phận
+✓ 98493549 Loại khác
+✓ 98493551 Dùng cho xe thuộc nhóm 87.03
+✓ 98493552 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+✓ 98493559 Loại khác
+✓ 98493561 Loại khác
+✓ 98493562 Dùng cho xe thuộc nhóm 87.03
+✓ 98493569 Loại khác
+✗ 98493571 Túi khí an toàn lắp với hệ thống bơm phồng
+✓ 98493579 Bộ phận
+✗ 98493581 Thùng nhiên liệu
+✓ 98493582 Nửa dưới của thùng nhiên liệu; nắp đậy thùng nhiên liệu; ống dẫn của thùng nhiên liệu (filler pipes); ống dẫn hướng có đầu nối với bình nhiên liệu (filler hose); đai giữ bình nhiên liệu
+✓ 98493583 Các bộ phận khác
+✗ 98493584 Chân ga (bàn đạp ga), chân phanh (bàn đạp phanh) hoặc chân côn (bàn đạp côn)
+✓ 98493585 Giá đỡ hoặc khay đỡ bình ắc qui và khung của nó
+✗ 98493586 Tấm hướng luồng khí tản nhiệt
+✓ 98493587 Dùng cho xe thuộc nhóm 87.02
+✓ 98493588 Dùng cho xe thuộc nhóm 87.03
+✓ 98493589 Dùng cho xe thuộc nhóm 87.04
+✗ 98493590 Khung giá đỡ động cơ
+✓ 98493591 Loại khác
+✓ 98493592 Thùng nhiên liệu chưa lắp ráp; khung giá đỡ động cơ
+✓ 98493599 Loại khác
+## 984938
+✗ 98493810 Đồng hồ tốc độ dùng cho xe có động cơ
+✗ 98493810 Đồng hồ tốc độ dùng cho xe có động cơ
+✗ 98493890 Máy đo tốc độ góc cho xe có động cơ
+✗ 98493890 Máy đo tốc độ góc cho xe có động cơ
+## 984940
+✓ 98494011 Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+✓ 98494019 Loại khác
+✗ 98494021 Miếng lót cho tựa đầu của ghế thuộc phân nhóm 9401.20.10
+✓ 98494022 Loại khác
+✓ 98494022 Loại khác
+## 984941
+✗ 98494110 Kết hợp với thiết bị ghi hoặc tái tạo âm thanh
+✗ 98494110 Kết hợp với thiết bị ghi hoặc tái tạo âm thanh
+✓ 98494190 Loại khác
+## 984946
+✗ 98494600 Engine ECU và các bộ điều khiển khác, được sử dụng cho xe có động cơ
+✗ 98494600 Engine ECU và các bộ điều khiển khác, được sử dụng cho xe có động cơ
