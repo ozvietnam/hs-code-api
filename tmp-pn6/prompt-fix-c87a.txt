@@ -1,0 +1,3097 @@
+VÒNG SỬA. Dưới đây là 10 phân nhóm: gói, spec đã soạn, và LỖI máy (dòng ✗ kèm cách sửa →). Sửa spec cho ĐÚNG lỗi, giữ nguyên phần đã đúng, trả về MỖI PN6 một khối ```json spec ranh-gioi-spec@1 hoàn chỉnh. Luật sửa: (1) Khoá CO_KHONG/LIET_KE chỉ dùng khi chữ trích CHỨA đúng một cách đọc của khoá (mục 'đọc:' trong TỪ VỰNG); không có ⇒ dùng tenLoai TEN_LOAI chuỗi con nguyên văn (vd 'Cân điện tử' ⇒ tenLoai). (2) cong2-chong-lan-truc ⇒ khai chongLanTruc theo mẫu (QUY-TRINH 4a) với viDuHang là hàng THẬT cho từng cặp; không nghĩ ra hàng thật ⇒ bỏ điều kiện gây chồng, để dieuKienSo [] + ghi chú DUNG. (3) cong2-chong-lan (không trục): kiểm biên/giá trị, đưa anh em về cùng khoá, phần còn lại có tên ⇒ phanConLai; chữ biểu thật sự chồng ⇒ chongLanVanBan trích nguyên văn cả hai dòng. (4) cong5-ve-gioi-han-bi-bo ⇒ thêm điều kiện đọc tới vế hoặc BO_VE có lyDo thật. (5) cong3-liet-ke-trong-mot-chuoi ⇒ tách mảng. (6) cong2-dong-khong-toi-duoc / cong1-khong-phu-kin ⇒ xem lại điều kiện anh em (cùng khoá, phanConLai). Không giải thích ngoài các khối json.
+
+=== PN6 870210 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870210",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870210",
+  "dong8": {
+    "87021010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87021041": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87021042": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87021060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87021071": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87021072": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87021081": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87021082": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87021091": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870210~r16314": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8702104": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ]
+    },
+    "8702107": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sử dụng trong sân bay"
+        }
+      ]
+    },
+    "8702108": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870210~r16314",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870210~r16314: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87021010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87021010: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702104",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702104: \"Ô tô khách\" ⇒ tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87021041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87021041: \"từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuong >= 6 tấn và <= 18 tấn"
+    },
+    {
+      "ma": "87021042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87021042: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87021060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87021060: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702107",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702107: \"sử dụng trong sân bay\" ⇒ congDung CONG_DUNG \"sử dụng trong sân bay\""
+    },
+    {
+      "ma": "8702107",
+      "loai": "BO_VE",
+      "ve": "được thiết kế đặc biệt",
+      "lyDo": "Cụm 'được thiết kế đặc biệt' bổ nghĩa gắn liền với mục đích 'sử dụng trong sân bay' đã được quy định."
+    },
+    {
+      "ma": "87021071",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87021071: \"từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuong >= 6 tấn và <= 18 tấn"
+    },
+    {
+      "ma": "87021072",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87021072: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "8702108",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702108: \"Ô tô khách ... khác\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87021081",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87021081: \"từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuong >= 6 tấn và <= 18 tấn"
+    },
+    {
+      "ma": "87021082",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87021082: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87021091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87021091: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-dong-khong-toi-duoc:87021081
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-dong-khong-toi-duoc:87021082
+    ✗ cong2-dong-khong-toi-duoc:87021089
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+
+=== PN6 870220 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870220",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870220",
+  "dong8": {
+    "87022010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87022022": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87022023": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87022031": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87022032": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87022041": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87022050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87022061": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87022062": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87022071": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87022072": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87022091": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870220~r16335": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8702202": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chở từ 30 người trở lên"
+        }
+      ]
+    },
+    "8702203": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "phanConLai": true
+    },
+    "8702206": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sử dụng trong sân bay"
+        }
+      ]
+    },
+    "8702207": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870220~r16335",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870220~r16335: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87022010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022010: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702202: \"chở từ 30 người trở lên\" ⇒ congDung CONG_DUNG \"chở từ 30 người trở lên\""
+    },
+    {
+      "ma": "87022022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022022: \"từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuong >= 6 tấn và <= 18 tấn"
+    },
+    {
+      "ma": "87022023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022023: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "8702203",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702203: \"Ô tô khách ... khác\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87022031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022031: \"từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuong >= 6 tấn và <= 18 tấn"
+    },
+    {
+      "ma": "87022032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022032: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87022041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022041: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87022050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022050: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702206",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702206: \"sử dụng trong sân bay\" ⇒ congDung CONG_DUNG \"sử dụng trong sân bay\""
+    },
+    {
+      "ma": "8702206",
+      "loai": "BO_VE",
+      "ve": "được thiết kế đặc biệt",
+      "lyDo": "Cụm 'được thiết kế đặc biệt' bổ nghĩa cho mục đích sử dụng trong sân bay, đã được quy định."
+    },
+    {
+      "ma": "87022061",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022061: \"từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuong >= 6 tấn và <= 18 tấn"
+    },
+    {
+      "ma": "87022062",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022062: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "8702207",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702207: \"Ô tô khách ... khác\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87022071",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022071: \"từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuong >= 6 tấn và <= 18 tấn"
+    },
+    {
+      "ma": "87022072",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022072: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87022091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022091: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-dong-khong-toi-duoc:87022031
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-dong-khong-toi-duoc:87022032
+    ✗ cong2-dong-khong-toi-duoc:87022039
+    ✗ cong2-dong-khong-toi-duoc:87022071
+    ✗ cong2-dong-khong-toi-duoc:87022072
+    ✗ cong2-dong-khong-toi-duoc:87022079
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+
+=== PN6 870230 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870230",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870230",
+  "dong8": {
+    "87023010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87023021": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87023031": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87023041": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87023050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87023061": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87023071": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87023091": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870230~r16362": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8702302": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chở từ 30 người trở lên"
+        }
+      ]
+    },
+    "8702303": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "phanConLai": true
+    },
+    "8702306": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sử dụng trong sân bay"
+        }
+      ]
+    },
+    "8702307": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870230~r16362",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870230~r16362: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87023010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87023010: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702302",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702302: \"chở từ 30 người trở lên\" ⇒ congDung CONG_DUNG \"chở từ 30 người trở lên\""
+    },
+    {
+      "ma": "87023021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87023021: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "8702303",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702303: \"Ô tô khách ... khác\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87023031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87023031: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87023041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87023041: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87023050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87023050: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702306",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702306: \"sử dụng trong sân bay\" ⇒ congDung CONG_DUNG \"sử dụng trong sân bay\""
+    },
+    {
+      "ma": "8702306",
+      "loai": "BO_VE",
+      "ve": "được thiết kế đặc biệt",
+      "lyDo": "Cụm 'được thiết kế đặc biệt' bổ nghĩa gắn liền với mục đích 'sử dụng trong sân bay' đã được quy định."
+    },
+    {
+      "ma": "87023061",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87023061: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "8702307",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702307: \"Ô tô khách ... khác\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87023071",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87023071: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87023091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87023091: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-dong-khong-toi-duoc:87023031
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-dong-khong-toi-duoc:87023039
+    ✗ cong2-dong-khong-toi-duoc:87023071
+    ✗ cong2-dong-khong-toi-duoc:87023079
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+
+=== PN6 870240 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870240",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870240",
+  "dong8": {
+    "87024010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87024021": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87024031": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87024041": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87024050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87024061": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87024071": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87024091": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870240~r16385": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8702402": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chở từ 30 người trở lên"
+        }
+      ]
+    },
+    "8702403": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "phanConLai": true
+    },
+    "8702406": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sử dụng trong sân bay"
+        }
+      ]
+    },
+    "8702407": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870240~r16385",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870240~r16385: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87024010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87024010: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702402",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702402: \"chở từ 30 người trở lên\" ⇒ congDung CONG_DUNG \"chở từ 30 người trở lên\""
+    },
+    {
+      "ma": "87024021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87024021: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "8702403",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702403: \"Ô tô khách ... khác\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87024031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87024031: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87024041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87024041: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87024050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87024050: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702406",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702406: \"sử dụng trong sân bay\" ⇒ congDung CONG_DUNG \"sử dụng trong sân bay\""
+    },
+    {
+      "ma": "8702406",
+      "loai": "BO_VE",
+      "ve": "được thiết kế đặc biệt",
+      "lyDo": "Cụm 'được thiết kế đặc biệt' bổ nghĩa gắn liền với mục đích 'sử dụng trong sân bay' đã được quy định."
+    },
+    {
+      "ma": "87024061",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87024061: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "8702407",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702407: \"Ô tô khách ... khác\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87024071",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87024071: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87024091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87024091: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong2-dong-khong-toi-duoc:87024031
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-dong-khong-toi-duoc:87024039
+    ✗ cong2-dong-khong-toi-duoc:87024071
+    ✗ cong2-dong-khong-toi-duoc:87024079
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+
+=== PN6 870290 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870290",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870290",
+  "dong8": {
+    "87029010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87029021": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87029031": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87029033": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "phanConLai": true
+    },
+    "87029040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ]
+    },
+    "87029051": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87029061": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87029071": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87029080": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {
+    "870290~r16408": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8702902": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chở từ 30 người trở lên"
+        }
+      ]
+    },
+    "870290~r16413": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "phanConLai": true
+    },
+    "8702905": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sử dụng trong sân bay"
+        }
+      ]
+    },
+    "8702906": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chở từ 30 người trở lên"
+        }
+      ],
+      "phanConLai": true
+    },
+    "8702907": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870290~r16408",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870290~r16408: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87029010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87029010: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702902: \"Ô tô khách ... chở từ 30 người trở lên\" ⇒ tenLoai TEN_LOAI \"Ô tô khách\", congDung CONG_DUNG \"chở từ 30 người trở lên\""
+    },
+    {
+      "ma": "87029021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87029021: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "870290~r16413",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870290~r16413: \"Ô tô khách ... khác\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87029031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87029031: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87029033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87029033: \"Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ phanConLai true, khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "87029040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87029040: \"Ô tô\" ⇒ tenLoai TEN_LOAI \"Ô tô\""
+    },
+    {
+      "ma": "8702905",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702905: \"Ô tô khách ... sử dụng trong sân bay\" ⇒ tenLoai TEN_LOAI \"Ô tô khách\", congDung CONG_DUNG \"sử dụng trong sân bay\""
+    },
+    {
+      "ma": "8702905",
+      "loai": "BO_VE",
+      "ve": "được thiết kế đặc biệt",
+      "lyDo": "Cụm 'được thiết kế đặc biệt' bổ nghĩa gắn liền với mục đích 'sử dụng trong sân bay' đã được quy định."
+    },
+    {
+      "ma": "87029051",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87029051: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "8702906",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702906: \"Ô tô khách ... khác, chở từ 30 người trở lên\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\", congDung CONG_DUNG \"chở từ 30 người trở lên\""
+    },
+    {
+      "ma": "87029061",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87029061: \"trên 24 tấn\" ⇒ khoiLuong > 24 tấn"
+    },
+    {
+      "ma": "8702907",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702907: \"Ô tô khách ... khác\" ⇒ phanConLai true, tenLoai TEN_LOAI \"Ô tô khách\""
+    },
+    {
+      "ma": "87029071",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87029071: \"không quá 24 tấn\" ⇒ khoiLuong <= 24 tấn"
+    },
+    {
+      "ma": "87029080",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87029080: \"Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ phanConLai true, khoiLuong > 24 tấn"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong0-phan-con-lai-thua:87029033
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong0-phan-con-lai-thua:87029080
+    ✗ cong2-dong-khong-toi-duoc:87029031
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn 
+    ✗ cong2-dong-khong-toi-duoc:87029032
+    ✗ cong2-dong-khong-toi-duoc:87029061
+    ✗ cong2-dong-khong-toi-duoc:87029069
+    ✗ cong2-dong-khong-toi-duoc:87029071
+    ✗ cong2-dong-khong-toi-duoc:87029079
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+
+=== PN6 870321 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870321",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870321",
+  "dong8": {
+    "87032111": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đua cỡ nhỏ"
+        }
+      ]
+    },
+    "87032112": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe địa hình ATV"
+        }
+      ]
+    },
+    "87032113": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87032114": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87032115": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "87032121": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    },
+    "87032131": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe 3 bánh"
+        }
+      ]
+    },
+    "87032141": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đua cỡ nhỏ"
+        }
+      ]
+    },
+    "87032142": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe địa hình ATV"
+        }
+      ]
+    },
+    "87032143": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87032144": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87032145": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "87032151": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    },
+    "87032191": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe 3 bánh"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870321~r16437": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8703212": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    },
+    "8703215": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870321~r16437",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870321~r16437: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87032111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032111: \"Xe đua cỡ nhỏ\" ⇒ tenLoai TEN_LOAI \"Xe đua cỡ nhỏ\""
+    },
+    {
+      "ma": "87032112",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032112: \"Xe địa hình ATV\" ⇒ tenLoai TEN_LOAI \"Xe địa hình ATV\""
+    },
+    {
+      "ma": "87032113",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032113: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87032114",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032114: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "87032115",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032115: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "8703212",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8703212: \"Ô tô khác\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87032121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032121: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "87032131",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032131: \"Xe 3 bánh\" ⇒ tenLoai TEN_LOAI \"Xe 3 bánh\""
+    },
+    {
+      "ma": "87032141",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032141: \"Xe đua cỡ nhỏ\" ⇒ tenLoai TEN_LOAI \"Xe đua cỡ nhỏ\""
+    },
+    {
+      "ma": "87032142",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032142: \"Xe địa hình ATV\" ⇒ tenLoai TEN_LOAI \"Xe địa hình ATV\""
+    },
+    {
+      "ma": "87032143",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032143: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87032144",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032144: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "87032145",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032145: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "8703215",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8703215: \"Ô tô khác\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87032151",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032151: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "87032191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032191: \"Xe 3 bánh\" ⇒ tenLoai TEN_LOAI \"Xe 3 bánh\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-chua-so-hoa:87032131:8703212
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87032139:8703212
+    ✗ cong1-chua-so-hoa:87032191:8703215
+    ✗ cong1-chua-so-hoa:87032199:8703215
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 870322 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870322",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870322",
+  "dong8": {
+    "87032211": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đua cỡ nhỏ"
+        }
+      ]
+    },
+    "87032212": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe địa hình ATV"
+        }
+      ]
+    },
+    "87032213": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87032214": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô tang lễ"
+        }
+      ]
+    },
+    "87032215": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô chở phạm nhân"
+        }
+      ]
+    },
+    "87032216": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87032217": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "87032221": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    },
+    "87032241": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đua cỡ nhỏ"
+        }
+      ]
+    },
+    "87032242": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe địa hình ATV"
+        }
+      ]
+    },
+    "87032243": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87032244": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô tang lễ"
+        }
+      ]
+    },
+    "87032245": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô chở phạm nhân"
+        }
+      ]
+    },
+    "87032246": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87032247": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "87032251": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870322~r16462": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8703222": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    },
+    "8703225": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870322~r16462",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870322~r16462: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87032211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032211: \"Xe đua cỡ nhỏ\" ⇒ tenLoai TEN_LOAI \"Xe đua cỡ nhỏ\""
+    },
+    {
+      "ma": "87032212",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032212: \"Xe địa hình ATV\" ⇒ tenLoai TEN_LOAI \"Xe địa hình ATV\""
+    },
+    {
+      "ma": "87032213",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032213: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87032214",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032214: \"Ô tô tang lễ\" ⇒ tenLoai TEN_LOAI \"Ô tô tang lễ\""
+    },
+    {
+      "ma": "87032215",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032215: \"Ô tô chở phạm nhân\" ⇒ tenLoai TEN_LOAI \"Ô tô chở phạm nhân\""
+    },
+    {
+      "ma": "87032216",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032216: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "87032217",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032217: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "8703222",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8703222: \"Ô tô khác\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87032221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032221: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "87032241",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032241: \"Xe đua cỡ nhỏ\" ⇒ tenLoai TEN_LOAI \"Xe đua cỡ nhỏ\""
+    },
+    {
+      "ma": "87032242",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032242: \"Xe địa hình ATV\" ⇒ tenLoai TEN_LOAI \"Xe địa hình ATV\""
+    },
+    {
+      "ma": "87032243",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032243: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87032244",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032244: \"Ô tô tang lễ\" ⇒ tenLoai TEN_LOAI \"Ô tô tang lễ\""
+    },
+    {
+      "ma": "87032245",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032245: \"Ô tô chở phạm nhân\" ⇒ tenLoai TEN_LOAI \"Ô tô chở phạm nhân\""
+    },
+    {
+      "ma": "87032246",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032246: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "87032247",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032247: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "8703225",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8703225: \"Ô tô khác\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87032251",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032251: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-chua-so-hoa:87032230:8703222
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87032290:8703225
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 870323 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870323",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870323",
+  "dong8": {
+    "87032311": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87032312": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô tang lễ"
+        }
+      ]
+    },
+    "87032313": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô chở phạm nhân"
+        }
+      ]
+    },
+    "87032314": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87032321": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032322": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032323": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032324": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032331": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032332": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032333": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032334": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032335": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032336": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032341": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032342": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032351": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87032352": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô tang lễ"
+        }
+      ]
+    },
+    "87032353": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô chở phạm nhân"
+        }
+      ]
+    },
+    "87032354": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87032355": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032356": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032357": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032358": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032361": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032362": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032363": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032364": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032365": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032366": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032367": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032368": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032371": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032372": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032373": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87032374": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870323~r16487": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8703232": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "870323~r16497": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ],
+      "phanConLai": true
+    },
+    "870323~r16502": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    },
+    "870323~r16513": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "870323~r16518": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ],
+      "phanConLai": true
+    },
+    "870323~r16523": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870323~r16487",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16487: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87032311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032311: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87032312",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032312: \"Ô tô tang lễ\" ⇒ tenLoai TEN_LOAI \"Ô tô tang lễ\""
+    },
+    {
+      "ma": "87032313",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032313: \"Ô tô chở phạm nhân\" ⇒ tenLoai TEN_LOAI \"Ô tô chở phạm nhân\""
+    },
+    {
+      "ma": "87032314",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032314: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "8703232",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8703232: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "87032321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032321: \"trên 1.500 cc nhưng không quá 1.800 cc\" ⇒ dungTichXiLanh > 1500 cc và <= 1800 cc"
+    },
+    {
+      "ma": "87032322",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032322: \"trên 1.800 cc nhưng không quá 2.000 cc\" ⇒ dungTichXiLanh > 1800 cc và <= 2000 cc"
+    },
+    {
+      "ma": "87032323",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032323: \"trên 2.000 cc nhưng không quá 2.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 2500 cc"
+    },
+    {
+      "ma": "87032324",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032324: \"trên 2.500 cc\" ⇒ dungTichXiLanh > 2500 cc"
+    },
+    {
+      "ma": "870323~r16497",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16497: \"Ô tô khác ... loại bốn bánh chủ động\" ⇒ phanConLai true, tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "87032331",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032331: \"trên 1.500 cc nhưng không quá 1.800 cc\" ⇒ dungTichXiLanh > 1500 cc và <= 1800 cc"
+    },
+    {
+      "ma": "87032332",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032332: \"trên 1.800 cc nhưng không quá 2.000 cc\" ⇒ dungTichXiLanh > 1800 cc và <= 2000 cc"
+    },
+    {
+      "ma": "87032333",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032333: \"trên 2.000 cc nhưng không quá 2.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 2500 cc"
+    },
+    {
+      "ma": "87032334",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032334: \"trên 2.500 cc\" ⇒ dungTichXiLanh > 2500 cc"
+    },
+    {
+      "ma": "870323~r16502",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16502: \"Ô tô khác ... không phải loại bốn bánh chủ động\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87032335",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032335: \"trên 1.500 cc nhưng không quá 2.000 cc\" ⇒ dungTichXiLanh > 1500 cc và <= 2000 cc"
+    },
+    {
+      "ma": "87032336",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032336: \"trên 2.000 cc\" ⇒ dungTichXiLanh > 2000 cc"
+    },
+    {
+      "ma": "87032341",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032341: \"trên 1.500 cc nhưng không quá 2.000 cc\" ⇒ dungTichXiLanh > 1500 cc và <= 2000 cc"
+    },
+    {
+      "ma": "87032342",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032342: \"trên 2.000 cc\" ⇒ dungTichXiLanh > 2000 cc"
+    },
+    {
+      "ma": "87032351",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032351: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87032352",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032352: \"Ô tô tang lễ\" ⇒ tenLoai TEN_LOAI \"Ô tô tang lễ\""
+    },
+    {
+      "ma": "87032353",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032353: \"Ô tô chở phạm nhân\" ⇒ tenLoai TEN_LOAI \"Ô tô chở phạm nhân\""
+    },
+    {
+      "ma": "87032354",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032354: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "870323~r16513",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16513: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "87032355",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032355: \"trên 1.500 cc nhưng không quá 1.800 cc\" ⇒ dungTichXiLanh > 1500 cc và <= 1800 cc"
+    },
+    {
+      "ma": "87032356",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032356: \"trên 1.800 cc nhưng không quá 2.000 cc\" ⇒ dungTichXiLanh > 1800 cc và <= 2000 cc"
+    },
+    {
+      "ma": "87032357",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032357: \"trên 2.000 cc nhưng không quá 2.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 2500 cc"
+    },
+    {
+      "ma": "87032358",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032358: \"trên 2.500 cc\" ⇒ dungTichXiLanh > 2500 cc"
+    },
+    {
+      "ma": "870323~r16518",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16518: \"Ô tô khác ... loại bốn bánh chủ động\" ⇒ phanConLai true, tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "87032361",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032361: \"trên 1.500 cc nhưng không quá 1.800 cc\" ⇒ dungTichXiLanh > 1500 cc và <= 1800 cc"
+    },
+    {
+      "ma": "87032362",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032362: \"trên 1.800 cc nhưng không quá 2.000 cc\" ⇒ dungTichXiLanh > 1800 cc và <= 2000 cc"
+    },
+    {
+      "ma": "87032363",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032363: \"trên 2.000 cc nhưng không quá 2.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 2500 cc"
+    },
+    {
+      "ma": "87032364",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032364: \"trên 2.500 cc\" ⇒ dungTichXiLanh > 2500 cc"
+    },
+    {
+      "ma": "870323~r16523",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16523: \"Ô tô khác ... không phải loại bốn bánh chủ động\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87032365",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032365: \"trên 1.500 cc nhưng không quá 1.800 cc\" ⇒ dungTichXiLanh > 1500 cc và <= 1800 cc"
+    },
+    {
+      "ma": "87032366",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032366: \"trên 1.800 cc nhưng không quá 2.000 cc\" ⇒ dungTichXiLanh > 1800 cc và <= 2000 cc"
+    },
+    {
+      "ma": "87032367",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032367: \"trên 2.000 cc nhưng không quá 2.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 2500 cc"
+    },
+    {
+      "ma": "87032368",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032368: \"trên 2.500 cc\" ⇒ dungTichXiLanh > 2500 cc"
+    },
+    {
+      "ma": "87032371",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032371: \"trên 1.500 cc nhưng không quá 1.800 cc\" ⇒ dungTichXiLanh > 1500 cc và <= 1800 cc"
+    },
+    {
+      "ma": "87032372",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032372: \"trên 1.800 cc nhưng không quá 2.000 cc\" ⇒ dungTichXiLanh > 1800 cc và <= 2000 cc"
+    },
+    {
+      "ma": "87032373",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032373: \"trên 2.000 cc nhưng không quá 2.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 2500 cc"
+    },
+    {
+      "ma": "87032374",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032374: \"trên 2.500 cc\" ⇒ dungTichXiLanh > 2500 cc"
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-chua-so-hoa:87032341:870323~r16502
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87032342:870323~r16502
+    ✗ cong1-chua-so-hoa:87032371:870323~r16523
+    ✗ cong1-chua-so-hoa:87032372:870323~r16523
+    ✗ cong1-chua-so-hoa:87032373:870323~r16523
+    ✗ cong1-chua-so-hoa:87032374:870323~r16523
+    ✗ cong1-khong-phu-kin:870323~r16502:daLapRap=false,dungTichXiLanh=1499.9985
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+    ✗ cong1-khong-phu-kin:8703234:daLapRap=false,dungTichXiLanh=1499.9985
+    ✗ cong1-khong-phu-kin:870323~r16523:dungTichXiLanh=1499.9985
+    ✗ cong1-khong-phu-kin:8703237:dungTichXiLanh=1499.9985
+
+=== PN6 870324 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870324",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870324",
+  "dong8": {
+    "87032411": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87032412": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô tang lễ"
+        }
+      ]
+    },
+    "87032413": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô chở phạm nhân"
+        }
+      ]
+    },
+    "87032414": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87032415": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "87032421": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    },
+    "87032441": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87032442": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô tang lễ"
+        }
+      ]
+    },
+    "87032443": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô chở phạm nhân"
+        }
+      ]
+    },
+    "87032444": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87032445": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    },
+    "87032451": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    },
+    "87032461": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870324~r16534": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8703242": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    },
+    "870324~r16549": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "8703245": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870324~r16534",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870324~r16534: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87032411",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032411: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87032412",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032412: \"Ô tô tang lễ\" ⇒ tenLoai TEN_LOAI \"Ô tô tang lễ\""
+    },
+    {
+      "ma": "87032413",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032413: \"Ô tô chở phạm nhân\" ⇒ tenLoai TEN_LOAI \"Ô tô chở phạm nhân\""
+    },
+    {
+      "ma": "87032414",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032414: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "87032415",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032415: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "8703242",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8703242: \"Ô tô khác\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87032421",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032421: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "87032441",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032441: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87032442",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032442: \"Ô tô tang lễ\" ⇒ tenLoai TEN_LOAI \"Ô tô tang lễ\""
+    },
+    {
+      "ma": "87032443",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032443: \"Ô tô chở phạm nhân\" ⇒ tenLoai TEN_LOAI \"Ô tô chở phạm nhân\""
+    },
+    {
+      "ma": "87032444",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032444: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "870324~r16549",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870324~r16549: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "87032445",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032445: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "8703245",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8703245: \"Ô tô khác\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87032451",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032451: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "87032461",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87032461: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-chua-so-hoa:87032430:8703242
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87032461:8703245
+    ✗ cong1-chua-so-hoa:87032469:8703245
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+=== PN6 870331 ===
+--- GÓI ---
+--- SPEC ĐÃ SOẠN ---
+```json
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870331",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-870331",
+  "dong8": {
+    "87033111": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đua cỡ nhỏ"
+        }
+      ]
+    },
+    "87033112": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe địa hình ATV"
+        }
+      ]
+    },
+    "87033113": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87033114": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô tang lễ"
+        }
+      ]
+    },
+    "87033115": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô chở phạm nhân"
+        }
+      ]
+    },
+    "87033116": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87033117": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "87033121": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    },
+    "87033131": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe ba bánh"
+        }
+      ]
+    },
+    "87033141": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đua cỡ nhỏ"
+        }
+      ]
+    },
+    "87033142": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe địa hình ATV"
+        }
+      ]
+    },
+    "87033143": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô cứu thương"
+        }
+      ]
+    },
+    "87033144": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô tang lễ"
+        }
+      ]
+    },
+    "87033145": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô chở phạm nhân"
+        }
+      ]
+    },
+    "87033146": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô nhà ở lưu động"
+        }
+      ]
+    },
+    "87033147": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô kiểu Sedan"
+        }
+      ]
+    },
+    "87033151": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bốn bánh chủ động"
+        }
+      ]
+    },
+    "87033191": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe ba bánh"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870331~r16560": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8703312": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    },
+    "8703315": {
+      "dieuKienSo": [],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "870331~r16560",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870331~r16560: \"Dạng CKD\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87033111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033111: \"Xe đua cỡ nhỏ\" ⇒ tenLoai TEN_LOAI \"Xe đua cỡ nhỏ\""
+    },
+    {
+      "ma": "87033112",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033112: \"Xe địa hình ATV\" ⇒ tenLoai TEN_LOAI \"Xe địa hình ATV\""
+    },
+    {
+      "ma": "87033113",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033113: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87033114",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033114: \"Ô tô tang lễ\" ⇒ tenLoai TEN_LOAI \"Ô tô tang lễ\""
+    },
+    {
+      "ma": "87033115",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033115: \"Ô tô chở phạm nhân\" ⇒ tenLoai TEN_LOAI \"Ô tô chở phạm nhân\""
+    },
+    {
+      "ma": "87033116",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033116: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "87033117",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033117: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "8703312",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8703312: \"Ô tô khác\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87033121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033121: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "87033131",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033131: \"Xe ba bánh\" ⇒ tenLoai TEN_LOAI \"Xe ba bánh\""
+    },
+    {
+      "ma": "87033141",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033141: \"Xe đua cỡ nhỏ\" ⇒ tenLoai TEN_LOAI \"Xe đua cỡ nhỏ\""
+    },
+    {
+      "ma": "87033142",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033142: \"Xe địa hình ATV\" ⇒ tenLoai TEN_LOAI \"Xe địa hình ATV\""
+    },
+    {
+      "ma": "87033143",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033143: \"Ô tô cứu thương\" ⇒ tenLoai TEN_LOAI \"Ô tô cứu thương\""
+    },
+    {
+      "ma": "87033144",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033144: \"Ô tô tang lễ\" ⇒ tenLoai TEN_LOAI \"Ô tô tang lễ\""
+    },
+    {
+      "ma": "87033145",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033145: \"Ô tô chở phạm nhân\" ⇒ tenLoai TEN_LOAI \"Ô tô chở phạm nhân\""
+    },
+    {
+      "ma": "87033146",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033146: \"Ô tô nhà ở lưu động\" ⇒ tenLoai TEN_LOAI \"Ô tô nhà ở lưu động\""
+    },
+    {
+      "ma": "87033147",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033147: \"Ô tô kiểu Sedan\" ⇒ tenLoai TEN_LOAI \"Ô tô kiểu Sedan\""
+    },
+    {
+      "ma": "8703315",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8703315: \"Ô tô khác\" ⇒ phanConLai true"
+    },
+    {
+      "ma": "87033151",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033151: \"Loại bốn bánh chủ động\" ⇒ tenLoai TEN_LOAI \"bốn bánh chủ động\""
+    },
+    {
+      "ma": "87033191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87033191: \"Xe ba bánh\" ⇒ tenLoai TEN_LOAI \"Xe ba bánh\""
+    }
+  ]
+}```
+--- LỖI MÁY (--ap-spec) ---
+    ✗ cong1-chua-so-hoa:87033131:8703312
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87033139:8703312
+    ✗ cong1-chua-so-hoa:87033191:8703315
+    ✗ cong1-chua-so-hoa:87033199:8703315
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
