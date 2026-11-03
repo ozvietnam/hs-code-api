@@ -40,12 +40,15 @@ const DAI_LUONG = [
 ];
 
 const argPn6 = process.argv.find((a) => a.startsWith('--pn6='));
+const argPn6File = process.argv.find((a) => a.startsWith('--pn6-file=')); // danh sách PN6 tuỳ ý (JSON mảng) — quét ngoài lat-2
 const argMin = process.argv.find((a) => a.startsWith('--min='));
 const argOut = process.argv.find((a) => a.startsWith('--out='));
 const MIN = argMin ? Number(argMin.slice(6)) : 1;
 const lat2 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/ho-so/lat-2.json'), 'utf8'));
 let ds = lat2.phanNhom || [];
-if (argPn6) {
+if (argPn6File) {
+  ds = JSON.parse(fs.readFileSync(path.resolve(argPn6File.slice(11)), 'utf8')).map((x) => ({ pn6: x }));
+} else if (argPn6) {
   const muon = new Set(argPn6.slice(6).split(',').map((s) => s.replace(/\D/g, '')));
   ds = ds.filter((x) => muon.has(String(x.pn6)));
 }
