@@ -1,0 +1,199 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "840820",
+  "nhom": "8408",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840820",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "840820~r12920",
+      "nguon": "tieuDe.840820~r12920",
+      "trich": "840820~r12920 Đã lắp ráp hoàn chỉnh",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84082010",
+      "nguon": "tax.84082010",
+      "trich": "84082010 - - - Dùng cho xe thuộc phân nhóm 8701.10",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8701.10"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84082021",
+      "nguon": "tax.84082021",
+      "trich": "84082021 - - - - Dung tích xi lanh không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84082022",
+      "nguon": "tax.84082022",
+      "trich": "84082022 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84082023",
+      "nguon": "tax.84082023",
+      "trich": "84082023 - - - - Dung tích xi lanh trên 3.500 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84082093",
+      "nguon": "tax.84082093",
+      "trich": "84082093 - - - Dùng cho xe thuộc phân nhóm 8701.10",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8701.10"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84082094",
+      "nguon": "tax.84082094",
+      "trich": "84082094 - - - - Dung tích xi lanh không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84082095",
+      "nguon": "tax.84082095",
+      "trich": "84082095 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84082096",
+      "nguon": "tax.84082096",
+      "trich": "84082096 - - - - Dung tích xi lanh trên 3.500 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "840820~r12920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.840820~r12920: \"Đã lắp ráp hoàn chỉnh\" ⇒ laBoPhan KHONG (hoàn chỉnh)"
+    },
+    {
+      "ma": "84082010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082010: \"Dùng cho xe thuộc phân nhóm 8701.10\" ⇒ dungCho \"8701.10\""
+    },
+    {
+      "ma": "84082021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082021: \"Dung tích xi lanh không quá 2.000 cc\" ⇒ dungTichXiLanh <= 2000 cc"
+    },
+    {
+      "ma": "84082022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082022: \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 3500 cc"
+    },
+    {
+      "ma": "84082023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082023: \"Dung tích xi lanh trên 3.500 cc\" ⇒ dungTichXiLanh > 3500 cc"
+    },
+    {
+      "ma": "84082093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082093: \"Dùng cho xe thuộc phân nhóm 8701.10\" ⇒ dungCho \"8701.10\""
+    },
+    {
+      "ma": "84082094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082094: \"Dung tích xi lanh không quá 2.000 cc\" ⇒ dungTichXiLanh <= 2000 cc"
+    },
+    {
+      "ma": "84082095",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082095: \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 3500 cc"
+    },
+    {
+      "ma": "84082096",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082096: \"Dung tích xi lanh trên 3.500 cc\" ⇒ dungTichXiLanh > 3500 cc"
+    }
+  ]
+}
