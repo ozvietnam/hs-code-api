@@ -1,0 +1,983 @@
+Số hoá ranh giới cho 29 phân nhóm 6 số (840219 840732 840999 841290 841430 841510 841581 841582 841583 842199 842310 842320 842330 842381 842382 842389 842490 842890 843710 843880 844400 844511 844520 844530 844540 844590 844610 844720 844790). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 840219 ===
+# 840219 — Nồi hơi tạo ra hơi khác, kể cả loại nồi hơi kiểu lai ghép
+
+840219 — Boilers; vapour generating boilers, including hybrid boilers n.e.c. in heading no. 8402
+  [8402191] Hoạt động bằng điện
+    84021911 Nồi hơi với công suất hơi trên 15 tấn/giờ
+    84021919 Loại khác  [LK]
+  [8402192] Không hoạt động bằng điện
+    84021921 Nồi hơi với công suất hơi trên 15 tấn/giờ
+    84021929 Loại khác  [LK]
+
+- 8402191 TIEU_DE
+    tieuDe.8402191 [27 ký tự]: 8402191 Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84021911 DONG8
+    tax.84021911 [58 ký tự]: 84021911 - - - - Nồi hơi với công suất hơi trên 15 tấn/giờ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với công suất hơi trên 15 tấn/giờ"
+- 84021919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84021919 [26 ký tự]: 84021919 - - - - Loại khác
+- 8402192 TIEU_DE
+    tieuDe.8402192 [33 ký tự]: 8402192 Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84021921 DONG8
+    tax.84021921 [58 ký tự]: 84021921 - - - - Nồi hơi với công suất hơi trên 15 tấn/giờ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với công suất hơi trên 15 tấn/giờ"
+- 84021929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84021929 [26 ký tự]: 84021929 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.840219; chú giải: nhom8402.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 840732 ===
+# 840732 — Dung tích xi lanh trên 50 cc nhưng không quá 250 cc
+
+840732 — Engines; reciprocating piston engines, of a kind used for the propulsion of vehicles of chapter 87, of a cylinder capacity exceeding 50cc but not exceeding 250cc
+  [8407321] Dung tích xilanh trên 50 cc nhưng không quá 110 cc
+    84073211 Dùng cho xe thuộc nhóm 87.01
+    84073212 Dùng cho xe thuộc nhóm 87.11
+    84073219 Loại khác  [LK]
+  [8407322] Dung tích xilanh trên 110 cc nhưng không quá 250 cc
+    84073222 Dùng cho xe thuộc nhóm 87.11
+    84073229 Loại khác  [LK]
+
+- 8407321 TIEU_DE
+    tieuDe.8407321 [58 ký tự]: 8407321 Dung tích xilanh trên 50 cc nhưng không quá 110 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xilanh trên 50 cc nhưng không quá 110 cc"
+- 84073211 DONG8
+    tax.84073211 [45 ký tự]: 84073211 - - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 84073212 DONG8
+    tax.84073212 [45 ký tự]: 84073212 - - - - Dùng cho xe thuộc nhóm 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.11"
+- 84073219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84073219 [26 ký tự]: 84073219 - - - - Loại khác
+- 8407322 TIEU_DE
+    tieuDe.8407322 [59 ký tự]: 8407322 Dung tích xilanh trên 110 cc nhưng không quá 250 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xilanh trên 110 cc nhưng không quá 250 cc"
+- 84073222 DONG8
+    tax.84073222 [45 ký tự]: 84073222 - - - - Dùng cho xe thuộc nhóm 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.11"
+- 84073229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84073229 [26 ký tự]: 84073229 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.840732; chú giải: nhom8407.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 840999 ===
+# 840999 — Loại khác
+
+840999 — Engines; parts for internal combustion piston engines (excluding spark-ignition)
+  [8409991] Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30
+    84099911 Chế hòa khí và bộ phận của chúng
+    84099912 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099913 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099914 Ống xi lanh khác
+    84099915 Quy lát và nắp quy lát
+    84099916 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099917 Piston khác
+    84099918 Bạc piston và chốt piston
+    84099919 Loại khác  [LK]
+  [8409992] Dùng cho động cơ của xe thuộc nhóm 87.01
+    84099921 Chế hòa khí và bộ phận của chúng
+    84099922 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099923 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099924 Ống xi lanh khác
+    84099925 Quy lát và nắp quy lát
+    84099926 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099927 Piston khác
+    84099929 Loại khác  [LK]
+  [8409993] Dùng cho động cơ của xe thuộc nhóm 87.11
+    84099931 Chế hòa khí và bộ phận của chúng
+    84099932 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099934 Quy lát và nắp quy lát
+    84099936 Bạc piston và chốt piston
+    84099937 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm; piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099938 Ống xi lanh và piston khác
+    84099939 Loại khác  [LK]
+  [8409994] Dùng cho động cơ của xe khác thuộc Chương 87
+    84099941 Chế hòa khí và bộ phận của chúng
+    84099942 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099943 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099944 Ống xi lanh khác
+    84099945 Quy lát và nắp quy lát
+    84099946 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099947 Piston khác
+    84099948 Bạc piston và chốt piston
+    84099949 Loại khác  [LK]
+  [840999~r13043] Dùng cho động cơ tàu thuyền thuộc Chương 89  (tầng không mã, biểu thuế r13043, gạch 3)
+    [8409995] Cho động cơ máy thủy công suất không quá 22,38 kW
+      84099951 Thân động cơ (cylinder block); hộp trục khuỷu  (gạch 5)
+      84099952 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099953 Ống xi lanh khác  (gạch 5)
+      84099954 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099955 Piston khác  (gạch 5)
+      84099959 Loại khác  [LK]  (gạch 5)
+    [8409996] Cho động cơ máy thủy công suất trên 22,38 kW
+      84099961 Thân động cơ (cylinder block); hộp trục khuỷu  (gạch 5)
+      84099962 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099963 Ống xi lanh khác  (gạch 5)
+      84099964 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099965 Piston khác  (gạch 5)
+      84099969 Loại khác  [LK]  (gạch 5)
+  [8409997] Dùng cho động cơ khác
+    84099971 Chế hòa khí và bộ phận của chúng
+    84099972 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099973 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099974 Ống xi lanh khác
+    84099975 Quy lát và nắp quy lát
+    84099976 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099977 Piston khác
+    84099978 Bạc piston và chốt piston
+    84099979 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    840999~r13043 (gạch 3) "Dùng cho động cơ tàu thuyền thuộc Chương 89:" — dòng dưới: 84099951, 84099952, 84099953, 84099954, 84099955, 84099959, 84099961, 84099962, 84099963, 84099964, 84099965, 84099969
+
+- 8409991 TIEU_DE
+    tieuDe.8409991 [60 ký tự]: 8409991 Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30"
+- 84099911 DONG8
+    tax.84099911 [49 ký tự]: 84099911 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099912 DONG8
+    tax.84099912 [62 ký tự]: 84099912 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099913 DONG8
+    tax.84099913 [91 ký tự]: 84099913 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099914 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099914 [34 ký tự]: 84099914 - - - - Ống xi lanh khác 
+- 84099915 DONG8
+    tax.84099915 [39 ký tự]: 84099915 - - - - Quy lát và nắp quy lát
+- 84099916 DONG8
+    tax.84099916 [85 ký tự]: 84099916 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099917 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099917 [28 ký tự]: 84099917 - - - - Piston khác
+- 84099918 DONG8
+    tax.84099918 [42 ký tự]: 84099918 - - - - Bạc piston và chốt piston
+- 84099919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099919 [26 ký tự]: 84099919 - - - - Loại khác
+- 8409992 TIEU_DE
+    tieuDe.8409992 [48 ký tự]: 8409992 Dùng cho động cơ của xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của xe thuộc nhóm 87.01"
+- 84099921 DONG8
+    tax.84099921 [49 ký tự]: 84099921 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099922 DONG8
+    tax.84099922 [62 ký tự]: 84099922 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099923 DONG8
+    tax.84099923 [91 ký tự]: 84099923 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099924 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099924 [34 ký tự]: 84099924 - - - - Ống xi lanh khác 
+- 84099925 DONG8
+    tax.84099925 [39 ký tự]: 84099925 - - - - Quy lát và nắp quy lát
+- 84099926 DONG8
+    tax.84099926 [85 ký tự]: 84099926 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099927 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099927 [28 ký tự]: 84099927 - - - - Piston khác
+- 84099929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099929 [26 ký tự]: 84099929 - - - - Loại khác
+- 8409993 TIEU_DE
+    tieuDe.8409993 [48 ký tự]: 8409993 Dùng cho động cơ của xe thuộc nhóm 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của xe thuộc nhóm 87.11"
+- 84099931 DONG8
+    tax.84099931 [49 ký tự]: 84099931 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099932 DONG8
+    tax.84099932 [62 ký tự]: 84099932 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099934 DONG8
+    tax.84099934 [39 ký tự]: 84099934 - - - - Quy lát và nắp quy lát
+- 84099936 DONG8
+    tax.84099936 [42 ký tự]: 84099936 - - - - Bạc piston và chốt piston
+- 84099937 DONG8
+    tax.84099937 [160 ký tự]: 84099937 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm; piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm" · [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099938 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099938 [43 ký tự]: 84099938 - - - - Ống xi lanh và piston khác
+- 84099939 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099939 [26 ký tự]: 84099939 - - - - Loại khác
+- 8409994 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8409994 [52 ký tự]: 8409994 Dùng cho động cơ của xe khác thuộc Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của xe khác thuộc Chương 87"
+- 84099941 DONG8
+    tax.84099941 [49 ký tự]: 84099941 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099942 DONG8
+    tax.84099942 [62 ký tự]: 84099942 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099943 DONG8
+    tax.84099943 [91 ký tự]: 84099943 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099944 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099944 [34 ký tự]: 84099944 - - - - Ống xi lanh khác 
+- 84099945 DONG8
+    tax.84099945 [39 ký tự]: 84099945 - - - - Quy lát và nắp quy lát
+- 84099946 DONG8
+    tax.84099946 [85 ký tự]: 84099946 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099947 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099947 [28 ký tự]: 84099947 - - - - Piston khác
+- 84099948 DONG8
+    tax.84099948 [42 ký tự]: 84099948 - - - - Bạc piston và chốt piston
+- 84099949 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099949 [26 ký tự]: 84099949 - - - - Loại khác
+- 840999~r13043 TIEU_DE
+    tieuDe.840999~r13043 [57 ký tự]: 840999~r13043 Dùng cho động cơ tàu thuyền thuộc Chương 89
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ tàu thuyền thuộc Chương 89"
+- 8409995 TIEU_DE
+    tieuDe.8409995 [57 ký tự]: 8409995 Cho động cơ máy thủy công suất không quá 22,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Cho động cơ máy thủy" · [GIỚI HẠN] "công suất không quá 22,38 kW"
+- 84099951 DONG8
+    tax.84099951 [64 ký tự]: 84099951 - - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099952 DONG8
+    tax.84099952 [93 ký tự]: 84099952 - - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099953 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099953 [36 ký tự]: 84099953 - - - - - Ống xi lanh khác 
+- 84099954 DONG8
+    tax.84099954 [87 ký tự]: 84099954 - - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099955 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099955 [30 ký tự]: 84099955 - - - - - Piston khác
+- 84099959 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099959 [28 ký tự]: 84099959 - - - - - Loại khác
+- 8409996 TIEU_DE
+    tieuDe.8409996 [52 ký tự]: 8409996 Cho động cơ máy thủy công suất trên 22,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Cho động cơ máy thủy" · [GIỚI HẠN] "công suất trên 22,38 kW"
+- 84099961 DONG8
+    tax.84099961 [64 ký tự]: 84099961 - - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099962 DONG8
+    tax.84099962 [93 ký tự]: 84099962 - - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099963 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099963 [36 ký tự]: 84099963 - - - - - Ống xi lanh khác 
+- 84099964 DONG8
+    tax.84099964 [87 ký tự]: 84099964 - - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099965 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099965 [30 ký tự]: 84099965 - - - - - Piston khác
+- 84099969 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099969 [28 ký tự]: 84099969 - - - - - Loại khác
+- 8409997 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8409997 [29 ký tự]: 8409997 Dùng cho động cơ khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ khác"
+- 84099971 DONG8
+    tax.84099971 [49 ký tự]: 84099971 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099972 DONG8
+    tax.84099972 [62 ký tự]: 84099972 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099973 DONG8
+    tax.84099973 [91 ký tự]: 84099973 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099974 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099974 [34 ký tự]: 84099974 - - - - Ống xi lanh khác 
+- 84099975 DONG8
+    tax.84099975 [39 ký tự]: 84099975 - - - - Quy lát và nắp quy lát
+- 84099976 DONG8
+    tax.84099976 [85 ký tự]: 84099976 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099977 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099977 [28 ký tự]: 84099977 - - - - Piston khác
+- 84099978 DONG8
+    tax.84099978 [42 ký tự]: 84099978 - - - - Bạc piston và chốt piston
+- 84099979 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099979 [26 ký tự]: 84099979 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.840999; chú giải: nhom8409.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 841290 ===
+# 841290 — Bộ phận
+
+841290 — Engines; parts, for engines and motors of heading no. 8412
+  84129010 Của động cơ thuộc phân nhóm 8412.10
+  84129020 Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi
+  84129090 Loại khác  [LK]
+
+- 84129010 DONG8
+    tax.84129010 [48 ký tự]: 84129010 - - Của động cơ thuộc phân nhóm 8412.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của động cơ thuộc phân nhóm 8412.10"
+- 84129020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84129020 [95 ký tự]: 84129020 - - Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của động cơ/mô tơ" · [GIỚI HẠN] "dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi"
+- 84129090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84129090 [22 ký tự]: 84129090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841290; chú giải: nhom8412.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 841430 ===
+# 841430 — Máy nén sử dụng trong thiết bị làm lạnh
+
+841430 — Compressors; of a kind used in refrigerating equipment
+  84143040 Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên
+  84143090 Loại khác  [LK]
+
+- 84143040 DONG8
+    tax.84143040 [110 ký tự]: 84143040 - - Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất làm lạnh trên 21,10 kW" · [GIỚI HẠN] "có dung tích làm việc trên một chu kỳ từ 220 cc trở lên"
+- 84143090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84143090 [22 ký tự]: 84143090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841430; chú giải: nhom8414.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 841510 ===
+# 841510 — Loại thiết kế để lắp vào cửa sổ, tường, trần hoặc sàn, kiểu một khối (lắp liền trong cùng một vỏ, một cục) hoặc "hệ thống nhiều khối chức năng" (cục nóng, cục lạnh tách biệt)
+
+841510 — Air conditioning machines; comprising a motor-driven fan and elements for changing the temperature and humidity, of a kind designed to be fixed to a window, wall, ceiling or floor, self-contained or split-system
+  84151020 Công suất làm mát không quá 21,10 kW
+  84151030 Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW
+  84151090 Loại khác  [LK]
+
+- 84151020 DONG8
+    tax.84151020 [49 ký tự]: 84151020 - - Công suất làm mát không quá 21,10 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 21,10 kW"
+- 84151030 DONG8
+    tax.84151030 [69 ký tự]: 84151030 - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW"
+- 84151090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84151090 [22 ký tự]: 84151090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841510; chú giải: nhom8415.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 841581 ===
+# 841581 — Kèm theo một bộ phận làm lạnh và một van đảo chiều chu trình nóng/lạnh (bơm nhiệt có đảo chiều)
+
+841581 — Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit and a valve for reversal of the cooling/heat cycle (reversible heat pumps)
+  [8415811] Loại sử dụng cho phương tiện bay
+    84158111 Công suất làm mát không quá 21,10 kW
+    84158112 Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    84158119 Loại khác  [LK]
+  [8415812] Sử dụng cho phương tiện giao thông đường sắt
+    84158121 Công suất làm mát không quá 26,38 kW
+    84158129 Loại khác  [LK]
+  [8415813] Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    84158131 Công suất làm mát không quá 26,38 kW
+    84158139 Loại khác  [LK]
+  [8415819] Loại khác
+    84158195 Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    84158196 Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    [841581~r13262] Loại khác  (tầng không mã, biểu thuế r13262, gạch 4)
+      84158197 Công suất làm mát không quá 21,10 kW  (gạch 5)
+      84158198 Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW  (gạch 5)
+      84158199 Loại khác  [LK]  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    841581~r13262 (gạch 4) "Loại khác:" — dòng dưới: 84158197, 84158198, 84158199
+
+- 8415811 TIEU_DE
+    tieuDe.8415811 [40 ký tự]: 8415811 Loại sử dụng cho phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho phương tiện bay"
+- 84158111 DONG8
+    tax.84158111 [53 ký tự]: 84158111 - - - - Công suất làm mát không quá 21,10 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 21,10 kW"
+- 84158112 DONG8
+    tax.84158112 [117 ký tự]: 84158112 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW" · [GIỚI HẠN] "có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 84158119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158119 [26 ký tự]: 84158119 - - - - Loại khác
+- 8415812 TIEU_DE
+    tieuDe.8415812 [52 ký tự]: 8415812 Sử dụng cho phương tiện giao thông đường sắt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho phương tiện giao thông đường sắt"
+- 84158121 DONG8
+    tax.84158121 [53 ký tự]: 84158121 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158129 [26 ký tự]: 84158129 - - - - Loại khác
+- 8415813 TIEU_DE
+    tieuDe.8415813 [68 ký tự]: 8415813 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)" · [GIỚI HẠN] "(trừ loại thuộc phân nhóm 8415.20)"
+- 84158131 DONG8
+    tax.84158131 [53 ký tự]: 84158131 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158139 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158139 [26 ký tự]: 84158139 - - - - Loại khác
+- 8415819 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8415819 [17 ký tự]: 8415819 Loại khác
+- 84158195 DONG8
+    tax.84158195 [136 ký tự]: 84158195 - - - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW" · [GIỚI HẠN] "có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 84158196 DONG8
+    tax.84158196 [111 ký tự]: 84158196 - - - - Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 26,38 kW" · [GIỚI HẠN] "có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 841581~r13262 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.841581~r13262 [23 ký tự]: 841581~r13262 Loại khác
+- 84158197 DONG8
+    tax.84158197 [55 ký tự]: 84158197 - - - - - Công suất làm mát không quá 21,10 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 21,10 kW"
+- 84158198 DONG8
+    tax.84158198 [75 ký tự]: 84158198 - - - - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW"
+- 84158199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158199 [28 ký tự]: 84158199 - - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841581; chú giải: nhom8415.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 841582 ===
+# 841582 — Loại khác, có kèm theo bộ phận làm lạnh
+
+841582 — Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit
+  [8415821] Loại sử dụng cho phương tiện bay
+    84158211 Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    84158219 Loại khác  [LK]
+  [8415822] Sử dụng cho phương tiện giao thông đường sắt
+    84158221 Công suất làm mát không quá 26,38 kW
+    84158229 Loại khác  [LK]
+  [8415823] Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    84158231 Công suất làm mát không quá 26,38 kW
+    84158239 Loại khác  [LK]
+  [8415829] Loại khác
+    84158291 Công suất làm mát không quá 26,38 kW
+    84158299 Loại khác  [LK]
+
+- 8415821 TIEU_DE
+    tieuDe.8415821 [40 ký tự]: 8415821 Loại sử dụng cho phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho phương tiện bay"
+- 84158211 DONG8
+    tax.84158211 [117 ký tự]: 84158211 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW" · [GIỚI HẠN] "có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 84158219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158219 [26 ký tự]: 84158219 - - - - Loại khác
+- 8415822 TIEU_DE
+    tieuDe.8415822 [52 ký tự]: 8415822 Sử dụng cho phương tiện giao thông đường sắt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho phương tiện giao thông đường sắt"
+- 84158221 DONG8
+    tax.84158221 [53 ký tự]: 84158221 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158229 [26 ký tự]: 84158229 - - - - Loại khác
+- 8415823 TIEU_DE
+    tieuDe.8415823 [68 ký tự]: 8415823 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)" · [GIỚI HẠN] "(trừ loại thuộc phân nhóm 8415.20)"
+- 84158231 DONG8
+    tax.84158231 [53 ký tự]: 84158231 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158239 [26 ký tự]: 84158239 - - - - Loại khác
+- 8415829 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8415829 [17 ký tự]: 8415829 Loại khác
+- 84158291 DONG8
+    tax.84158291 [53 ký tự]: 84158291 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158299 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158299 [26 ký tự]: 84158299 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841582; chú giải: nhom8415.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 841583 ===
+# 841583 — Không gắn kèm bộ phận làm lạnh
+
+841583 — Air conditioning machines; containing a motor driven fan, other than window or wall types, not incorporating a refrigerating unit
+  [8415831] Loại sử dụng cho phương tiện bay
+    84158311 Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    84158319 Loại khác  [LK]
+  [8415832] Sử dụng cho phương tiện giao thông đường sắt
+    84158321 Công suất làm mát không quá 26,38 kW
+    84158329 Loại khác  [LK]
+  [8415833] Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    84158331 Công suất làm mát không quá 26,38 kW
+    84158339 Loại khác  [LK]
+  [8415839] Loại khác
+    84158391 Công suất làm mát không quá 26,38 kW
+    84158399 Loại khác  [LK]
+
+- 8415831 TIEU_DE
+    tieuDe.8415831 [40 ký tự]: 8415831 Loại sử dụng cho phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho phương tiện bay"
+- 84158311 DONG8
+    tax.84158311 [117 ký tự]: 84158311 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW" · [GIỚI HẠN] "có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 84158319 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158319 [26 ký tự]: 84158319 - - - - Loại khác
+- 8415832 TIEU_DE
+    tieuDe.8415832 [52 ký tự]: 8415832 Sử dụng cho phương tiện giao thông đường sắt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho phương tiện giao thông đường sắt"
+- 84158321 DONG8
+    tax.84158321 [53 ký tự]: 84158321 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158329 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158329 [26 ký tự]: 84158329 - - - - Loại khác
+- 8415833 TIEU_DE
+    tieuDe.8415833 [68 ký tự]: 8415833 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)" · [GIỚI HẠN] "(trừ loại thuộc phân nhóm 8415.20)"
+- 84158331 DONG8
+    tax.84158331 [53 ký tự]: 84158331 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158339 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158339 [26 ký tự]: 84158339 - - - - Loại khác
+- 8415839 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8415839 [17 ký tự]: 8415839 Loại khác
+- 84158391 DONG8
+    tax.84158391 [53 ký tự]: 84158391 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158399 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158399 [26 ký tự]: 84158399 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841583; chú giải: nhom8415.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842199 ===
+# 842199 — Loại khác
+
+842199 — Machinery; parts for filtering or purifying liquids or gases
+  [8421992] Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23
+    84219921 Của phân nhóm 8421.23.11 hoặc 8421.23.21 (SEN)
+    84219929 Loại khác (SEN)  [LK]
+  84219930 Của hàng hóa thuộc phân nhóm 8421.31
+  84219940 Của hàng hóa thuộc phân nhóm 8421.29.50
+  84219950 Của hàng hóa thuộc phân nhóm 8421.29.60
+  84219960 Của hàng hóa thuộc phân nhóm 8421.39.30
+  84219970 Của hàng hóa thuộc phân nhóm 8421.39.90
+  [8421999] Loại khác
+    84219991 Của hàng hóa thuộc phân nhóm 8421.29.20
+    84219994 Của hàng hóa thuộc phân nhóm 8421.21.11
+    84219996 Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91
+    84219997 Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99
+    84219999 Loại khác  [LK]
+
+- 8421992 TIEU_DE
+    tieuDe.8421992 [56 ký tự]: 8421992 Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của thiết bị lọc thuộc phân nhóm 8421.23"
+- 84219921 DONG8
+    tax.84219921 [63 ký tự]: 84219921 - - - - Của phân nhóm 8421.23.11 hoặc 8421.23.21 (SEN)
+    sen.84219921 [790 ký tự]: LÕI LỌC CỦA THIẾT BỊ LỌC THUỘC PHÂN NHÓM 8421.23 Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23 là các bộ phận thiết yếu của các thiết bị lọc dầu hoặc xăng dùng trong động cơ đốt trong. Chúng được sản xuất và bán như một thiết bị ban đầu và bộ phận thay thế để sử dụng trong bộ lọc dầu hoặc xăng của ô tô. Các bộ phận thiết yếu của các linh kiện này là các vật liệu lọc có nhiều loại và hình dạng khác nhau, có thể được gắn trên các khung, lõi hoặc những thứ tương tự. Khi dầu hoặc xăng lọt qua bộ phận (phần tử) lọc, các hạt có kích thước lớn hơn bị giữ lại trên bề mặt của vật liệu lọc, vì thế chỉ có xăng và dầu sạch thấm qua bộ phận (phần tử) lọc. Bộ phận (phần tử) lọc hoạt động để loại bỏ các tạp chất trong xăng hoặc dầu, làm sạch xăng dầu để chúng được sử dụng tối ưu cho động cơ.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của phân nhóm 8421.23.11 hoặc 8421.23.21"
+- 84219929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84219929 [32 ký tự]: 84219929 - - - - Loại khác (SEN)
+    sen.84219929 [790 ký tự]: LÕI LỌC CỦA THIẾT BỊ LỌC THUỘC PHÂN NHÓM 8421.23 Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23 là các bộ phận thiết yếu của các thiết bị lọc dầu hoặc xăng dùng trong động cơ đốt trong. Chúng được sản xuất và bán như một thiết bị ban đầu và bộ phận thay thế để sử dụng trong bộ lọc dầu hoặc xăng của ô tô. Các bộ phận thiết yếu của các linh kiện này là các vật liệu lọc có nhiều loại và hình dạng khác nhau, có thể được gắn trên các khung, lõi hoặc những thứ tương tự. Khi dầu hoặc xăng lọt qua bộ phận (phần tử) lọc, các hạt có kích thước lớn hơn bị giữ lại trên bề mặt của vật liệu lọc, vì thế chỉ có xăng và dầu sạch thấm qua bộ phận (phần tử) lọc. Bộ phận (phần tử) lọc hoạt động để loại bỏ các tạp chất trong xăng hoặc dầu, làm sạch xăng dầu để chúng được sử dụng tối ưu cho động cơ.
+- 84219930 DONG8
+    tax.84219930 [51 ký tự]: 84219930 - - - Của hàng hóa thuộc phân nhóm 8421.31
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.31"
+- 84219940 DONG8
+    tax.84219940 [54 ký tự]: 84219940 - - - Của hàng hóa thuộc phân nhóm 8421.29.50
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.29.50"
+- 84219950 DONG8
+    tax.84219950 [54 ký tự]: 84219950 - - - Của hàng hóa thuộc phân nhóm 8421.29.60
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.29.60"
+- 84219960 DONG8
+    tax.84219960 [54 ký tự]: 84219960 - - - Của hàng hóa thuộc phân nhóm 8421.39.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.39.30"
+- 84219970 DONG8
+    tax.84219970 [54 ký tự]: 84219970 - - - Của hàng hóa thuộc phân nhóm 8421.39.90
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.39.90"
+- 8421999 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8421999 [17 ký tự]: 8421999 Loại khác
+- 84219991 DONG8
+    tax.84219991 [56 ký tự]: 84219991 - - - - Của hàng hóa thuộc phân nhóm 8421.29.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.29.20"
+- 84219994 DONG8
+    tax.84219994 [56 ký tự]: 84219994 - - - - Của hàng hóa thuộc phân nhóm 8421.21.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.21.11"
+- 84219996 DONG8
+    tax.84219996 [72 ký tự]: 84219996 - - - - Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91"
+- 84219997 DONG8
+    tax.84219997 [72 ký tự]: 84219997 - - - - Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99"
+- 84219999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84219999 [26 ký tự]: 84219999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842199; chú giải: nhom8421.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842310 ===
+# 842310 — Cân người, kể cả cân trẻ em; cân sử dụng trong gia đình
+
+842310 — Weighing machines; personal (including baby scales) and household scales
+  84231010 Hoạt động bằng điện
+  84231020 Không hoạt động bằng điện
+
+- 84231010 DONG8
+    tax.84231010 [32 ký tự]: 84231010 - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84231020 DONG8
+    tax.84231020 [38 ký tự]: 84231020 - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.842310; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842320 ===
+# 842320 — Cân băng tải
+
+842320 — Weighing machines; scales for continuous weighing of goods on conveyors
+  84232010 Cân điện tử
+  84232090 Loại khác  [LK]
+
+- 84232010 DONG8
+    tax.84232010 [24 ký tự]: 84232010 - - Cân điện tử
+- 84232090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84232090 [22 ký tự]: 84232090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842320; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842330 ===
+# 842330 — Cân trọng lượng cố định và cân dùng cho việc đóng gói vật liệu với trọng lượng xác định trước vào bao túi hoặc đồ chứa, kể cả cân phễu
+
+842330 — Weighing machines; constant weight scales and scales for discharging a predetermined weight of material into a bag or container, including hopper scales
+  84233010 Cân điện tử
+  84233090 Loại khác  [LK]
+
+- 84233010 DONG8
+    tax.84233010 [24 ký tự]: 84233010 - - Cân điện tử
+- 84233090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84233090 [22 ký tự]: 84233090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842330; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842381 ===
+# 842381 — Có khả năng cân tối đa không quá 30 kg
+
+842381 — Weighing machines; other than personal, conveyor or constant weight scales, having a maximum weighing capacity not exceeding 30kg (excluding balances of a sensitivity of 5cg or better)
+  84238110 Cân điện tử
+  84238190 Loại khác  [LK]
+
+- 84238110 DONG8
+    tax.84238110 [26 ký tự]: 84238110 - - - Cân điện tử
+- 84238190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238190 [24 ký tự]: 84238190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842381; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842382 ===
+# 842382 — Có khả năng cân tối đa trên 30 kg nhưng không quá 5.000 kg
+
+842382 — Weighing machines; other than personal, conveyor or constant weight scales, having a maximum weighing capacity exceeding 30kg but not exceeding 5000kg
+  [8423823] Có khả năng cân tối đa không quá 1.000 kg
+    84238231 Cân điện tử, dùng để cân xe có động cơ
+    84238232 Cân điện tử khác
+    84238239 Loại khác  [LK]
+  [8423824] Có khả năng cân tối đa trên 1.000 kg
+    84238241 Cân điện tử, dùng để cân xe có động cơ
+    84238242 Cân điện tử khác
+    84238249 Loại khác  [LK]
+
+- 8423823 TIEU_DE
+    tieuDe.8423823 [49 ký tự]: 8423823 Có khả năng cân tối đa không quá 1.000 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có khả năng cân tối đa" · [GIỚI HẠN] "không quá 1.000 kg"
+- 84238231 DONG8
+    tax.84238231 [55 ký tự]: 84238231 - - - - Cân điện tử, dùng để cân xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để cân xe có động cơ"
+- 84238232 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84238232 [33 ký tự]: 84238232 - - - - Cân điện tử khác
+- 84238239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238239 [26 ký tự]: 84238239 - - - - Loại khác
+- 8423824 TIEU_DE
+    tieuDe.8423824 [44 ký tự]: 8423824 Có khả năng cân tối đa trên 1.000 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có khả năng cân tối đa" · [GIỚI HẠN] "trên 1.000 kg"
+- 84238241 DONG8
+    tax.84238241 [55 ký tự]: 84238241 - - - - Cân điện tử, dùng để cân xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để cân xe có động cơ"
+- 84238242 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84238242 [33 ký tự]: 84238242 - - - - Cân điện tử khác
+- 84238249 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238249 [26 ký tự]: 84238249 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842382; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842389 ===
+# 842389 — Loại khác
+
+842389 — Weighing machines; other than personal, conveyor or constant weight scales, having a maximum weighing capacity exceeding 5000kg
+  84238910 Cân điện tử
+  84238990 Loại khác  [LK]
+
+- 84238910 DONG8
+    tax.84238910 [26 ký tự]: 84238910 - - - Cân điện tử
+- 84238990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84238990 [24 ký tự]: 84238990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842389; chú giải: nhom8423.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842490 ===
+# 842490 — Bộ phận
+
+842490 — Mechanical appliances; parts of machines projecting, dispersing or spraying liquids or powders, whether or not hand-operated
+  84249010 Của bình dập lửa
+  [8424902] Của súng phun và các thiết bị tương tự
+    [842490~r13578] Hoạt động bằng điện  (tầng không mã, biểu thuế r13578, gạch 3)
+      84249021 Của hàng hóa thuộc phân nhóm 8424.20.11  (gạch 4)
+      84249023 Loại khác  [LK]  (gạch 4)
+    [842490~r13581] Không hoạt động bằng điện  (tầng không mã, biểu thuế r13581, gạch 3)
+      84249024 Của hàng hóa thuộc phân nhóm 8424.20.21  (gạch 4)
+      84249029 Loại khác  [LK]  (gạch 4)
+  84249030 Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự
+  [8424909] Của thiết bị khác
+    84249093 Của hàng hóa thuộc phân nhóm 8424.82.10
+    84249094 Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30
+    84249095 Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20
+    84249096 Của hàng hóa thuộc phân nhóm 8424.89.40
+    84249099 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    842490~r13578 (gạch 3) "Hoạt động bằng điện:" — dòng dưới: 84249021, 84249023
+    842490~r13581 (gạch 3) "Không hoạt động bằng điện:" — dòng dưới: 84249024, 84249029
+
+- 84249010 DONG8
+    tax.84249010 [29 ký tự]: 84249010 - - Của bình dập lửa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của bình dập lửa"
+- 8424902 TIEU_DE
+    tieuDe.8424902 [46 ký tự]: 8424902 Của súng phun và các thiết bị tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của súng phun" · [MỞ] "và các thiết bị tương tự"
+- 842490~r13578 TIEU_DE
+    tieuDe.842490~r13578 [33 ký tự]: 842490~r13578 Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84249021 DONG8
+    tax.84249021 [56 ký tự]: 84249021 - - - - Của hàng hóa thuộc phân nhóm 8424.20.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.20.11"
+- 84249023 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84249023 [26 ký tự]: 84249023 - - - - Loại khác
+- 842490~r13581 TIEU_DE
+    tieuDe.842490~r13581 [39 ký tự]: 842490~r13581 Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84249024 DONG8
+    tax.84249024 [56 ký tự]: 84249024 - - - - Của hàng hóa thuộc phân nhóm 8424.20.21
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.20.21"
+- 84249029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84249029 [26 ký tự]: 84249029 - - - - Loại khác
+- 84249030 DONG8
+    tax.84249030 [85 ký tự]: 84249030 - - Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự"
+- 8424909 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8424909 [25 ký tự]: 8424909 Của thiết bị khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị khác"
+- 84249093 DONG8
+    tax.84249093 [54 ký tự]: 84249093 - - - Của hàng hóa thuộc phân nhóm 8424.82.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.82.10"
+- 84249094 DONG8
+    tax.84249094 [94 ký tự]: 84249094 - - - Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30"
+- 84249095 DONG8
+    tax.84249095 [82 ký tự]: 84249095 - - - Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20"
+- 84249096 DONG8
+    tax.84249096 [54 ký tự]: 84249096 - - - Của hàng hóa thuộc phân nhóm 8424.89.40
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.89.40"
+- 84249099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84249099 [24 ký tự]: 84249099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842490; chú giải: nhom8424.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 842890 ===
+# 842890 — Máy khác
+
+842890 — Lifting, handling, loading or unloading machinery; n.e.c. in heading no. 8425, 8426, 8427 or 8428
+  84289020 Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+  84289030 Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự
+  84289090 Loại khác  [LK]
+
+- 84289020 DONG8
+    tax.84289020 [105 ký tự]: 84289020 - - Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp"
+- 84289030 DONG8
+    tax.84289030 [156 ký tự]: 84289030 - - Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự
+- 84289090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84289090 [22 ký tự]: 84289090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842890; chú giải: nhom8428.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 843710 ===
+# 843710 — Máy làm sạch, tuyển chọn hoặc phân loại hạt giống, hạt hoặc các loại rau đậu đã được làm khô
+
+843710 — Machines; for cleaning, sorting or grading seed, grain or dried leguminous vegetables
+  84371010 Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện
+  84371020 Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện
+  84371030 Loại khác, hoạt động bằng điện  [LK có điều kiện]
+  84371040 Loại khác, không hoạt động bằng điện  [LK có điều kiện]
+
+- 84371010 DONG8
+    tax.84371010 [128 ký tự]: 84371010 - - Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho các loại hạt, hoạt động" · [GIỚI HẠN] "bằng điện" · [GIỚI HẠN] "bằng điện"
+- 84371020 DONG8
+    tax.84371020 [140 ký tự]: 84371020 - - Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho các loại hạt" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84371030 DONG8
+    tax.84371030 [43 ký tự]: 84371030 - - Loại khác, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84371040 DONG8
+    tax.84371040 [49 ký tự]: 84371040 - - Loại khác, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.843710; chú giải: nhom8437.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 843880 ===
+# 843880 — Máy khác
+
+843880 — Machinery; used in the industrial preparation or manufacture of food or drink, n.e.c. in heading no. 8438
+  [8438801] Máy xát vỏ cà phê
+    84388011 Hoạt động bằng điện
+    84388012 Không hoạt động bằng điện
+  [8438802] Máy chế biến cá, động vật giáp xác hoặc động vật thân mềm
+    84388021 Hoạt động bằng điện
+    84388022 Không hoạt động bằng điện
+  [8438809] Loại khác
+    84388091 Hoạt động bằng điện
+    84388092 Không hoạt động bằng điện
+
+- 8438801 TIEU_DE
+    tieuDe.8438801 [25 ký tự]: 8438801 Máy xát vỏ cà phê
+- 84388011 DONG8
+    tax.84388011 [34 ký tự]: 84388011 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84388012 DONG8
+    tax.84388012 [40 ký tự]: 84388012 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 8438802 TIEU_DE
+    tieuDe.8438802 [65 ký tự]: 8438802 Máy chế biến cá, động vật giáp xác hoặc động vật thân mềm
+- 84388021 DONG8
+    tax.84388021 [34 ký tự]: 84388021 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84388022 DONG8
+    tax.84388022 [40 ký tự]: 84388022 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 8438809 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8438809 [17 ký tự]: 8438809 Loại khác
+- 84388091 DONG8
+    tax.84388091 [34 ký tự]: 84388091 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84388092 DONG8
+    tax.84388092 [40 ký tự]: 84388092 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.843880; chú giải: nhom8438.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 844400 ===
+# 844400 — Máy ép đùn, kéo chuỗi, tạo dún hoặc máy cắt vật liệu dệt nhân tạo.
+
+NHÓM 8444 — Máy ép đùn, kéo chuỗi, tạo dún hoặc máy cắt vật liệu dệt nhân tạo.
+  84440010 Hoạt động bằng điện
+  84440020 Không hoạt động bằng điện
+
+- 84440010 DONG8
+    tax.84440010 [30 ký tự]: 84440010 - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84440020 DONG8
+    tax.84440020 [36 ký tự]: 84440020 - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.844400; chú giải: nhom8444.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 844511 ===
+# 844511 — Máy chải thô
+
+844511 — Textile machinery; carding machines for preparing textile fibres
+  84451110 Hoạt động bằng điện
+  84451120 Không hoạt động bằng điện
+
+- 84451110 DONG8
+    tax.84451110 [34 ký tự]: 84451110 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84451120 DONG8
+    tax.84451120 [40 ký tự]: 84451120 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.844511; chú giải: nhom8445.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 844520 ===
+# 844520 — Máy kéo sợi
+
+844520 — Textile machinery; spinning machines
+  84452010 Hoạt động bằng điện
+  84452020 Không hoạt động bằng điện
+
+- 84452010 DONG8
+    tax.84452010 [32 ký tự]: 84452010 - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84452020 DONG8
+    tax.84452020 [38 ký tự]: 84452020 - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.844520; chú giải: nhom8445.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 844530 ===
+# 844530 — Máy đậu hoặc máy xe sợi
+
+844530 — Textile machinery; doubling or twisting machines
+  84453010 Hoạt động bằng điện
+  84453020 Không hoạt động bằng điện
+
+- 84453010 DONG8
+    tax.84453010 [32 ký tự]: 84453010 - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84453020 DONG8
+    tax.84453020 [38 ký tự]: 84453020 - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.844530; chú giải: nhom8445.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 844540 ===
+# 844540 — Máy đánh ống (kể cả máy đánh suốt sợi ngang) hoặc máy guồng sợi
+
+844540 — Textile machinery; winding (including weft-winding) or reeling machines
+  84454010 Hoạt động bằng điện
+  84454020 Không hoạt động bằng điện
+
+- 84454010 DONG8
+    tax.84454010 [32 ký tự]: 84454010 - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84454020 DONG8
+    tax.84454020 [38 ký tự]: 84454020 - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.844540; chú giải: nhom8445.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 844590 ===
+# 844590 — Loại khác
+
+844590 — Textile machinery; involved in textile fibre or textile yarn preparation and n.e.c. in heading no. 8445
+  84459010 Hoạt động bằng điện
+  84459020 Không hoạt động bằng điện
+
+- 84459010 DONG8
+    tax.84459010 [32 ký tự]: 84459010 - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84459020 DONG8
+    tax.84459020 [38 ký tự]: 84459020 - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.844590; chú giải: nhom8445.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 844610 ===
+# 844610 — Cho vải dệt có khổ rộng không quá 30 cm
+
+844610 — Weaving machines (looms); for weaving fabrics of a width 30cm or less
+  84461010 Hoạt động bằng điện
+  84461020 Không hoạt động bằng điện
+
+- 84461010 DONG8
+    tax.84461010 [32 ký tự]: 84461010 - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84461020 DONG8
+    tax.84461020 [38 ký tự]: 84461020 - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.844610; chú giải: nhom8446.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 844720 ===
+# 844720 — Máy dệt kim phẳng; máy khâu đính
+
+844720 — Knitting machines; flat, stitch-bonding machines
+  84472010 Hoạt động bằng điện
+  84472020 Không hoạt động bằng điện
+
+- 84472010 DONG8
+    tax.84472010 [32 ký tự]: 84472010 - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84472020 DONG8
+    tax.84472020 [38 ký tự]: 84472020 - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.844720; chú giải: nhom8447.nhom, ch84.chuong, phan84.phan
+
+=== GÓI PN6 844790 ===
+# 844790 — Loại khác
+
+844790 — Machines; for making gimped yarn, tulle, lace, embroidery, trimmings, braid or net and machines for tufting
+  84479010 Hoạt động bằng điện
+  84479020 Không hoạt động bằng điện
+
+- 84479010 DONG8
+    tax.84479010 [32 ký tự]: 84479010 - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84479020 DONG8
+    tax.84479020 [38 ký tự]: 84479020 - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.844790; chú giải: nhom8447.nhom, ch84.chuong, phan84.phan
