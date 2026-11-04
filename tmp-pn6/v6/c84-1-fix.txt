@@ -1,0 +1,849 @@
+VÒNG SỬA — 11 PN6 bị cổng máy chặn (840732 840999 841290 841581 841582 841583 842199 842490 842890 843710 843880). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 840732 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:840732:dungTichXiLanh=49.99995
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"840732","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-840732","dong8":{"84073211":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"84073212":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.11"}]},"84073222":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.11"}]}},"dieuKienNut":{"8407321":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":50,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":110,"donVi":"cc"}]},"8407322":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":110,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":250,"donVi":"cc"}]}},"ghiChuSoan":[{"ma":"8407321","loai":"QUYET_DINH","ghiChu":"tieuDe.8407321: \"Dung tích xilanh trên 50 cc nhưng không quá 110 cc\" ⇒ dungTichXiLanh > 50 cc, <= 110 cc"},{"ma":"8407322","loai":"QUYET_DINH","ghiChu":"tieuDe.8407322: \"Dung tích xilanh trên 110 cc nhưng không quá 250 cc\" ⇒ dungTichXiLanh > 110 cc, <= 250 cc"},{"ma":"84073211","loai":"QUYET_DINH","ghiChu":"tax.84073211: \"xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"84073212","loai":"QUYET_DINH","ghiChu":"tax.84073212: \"xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""},{"ma":"84073222","loai":"QUYET_DINH","ghiChu":"tax.84073222: \"xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""}]}
+```
+
+=== GÓI PN6 840732 ===
+# 840732 — Dung tích xi lanh trên 50 cc nhưng không quá 250 cc
+
+840732 — Engines; reciprocating piston engines, of a kind used for the propulsion of vehicles of chapter 87, of a cylinder capacity exceeding 50cc but not exceeding 250cc
+  [8407321] Dung tích xilanh trên 50 cc nhưng không quá 110 cc
+    84073211 Dùng cho xe thuộc nhóm 87.01
+    84073212 Dùng cho xe thuộc nhóm 87.11
+    84073219 Loại khác  [LK]
+  [8407322] Dung tích xilanh trên 110 cc nhưng không quá 250 cc
+    84073222 Dùng cho xe thuộc nhóm 87.11
+    84073229 Loại khác  [LK]
+
+- 8407321 TIEU_DE
+    tieuDe.8407321 [58 ký tự]: 8407321 Dung tích xilanh trên 50 cc nhưng không quá 110 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xilanh trên 50 cc nhưng không quá 110 cc"
+- 84073211 DONG8
+    tax.84073211 [45 ký tự]: 84073211 - - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 84073212 DONG8
+    tax.84073212 [45 ký tự]: 84073212 - - - - Dùng cho xe thuộc nhóm 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.11"
+- 84073219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84073219 [26 ký tự]: 84073219 - - - - Loại khác
+- 8407322 TIEU_DE
+    tieuDe.8407322 [59 ký tự]: 8407322 Dung tích xilanh trên 110 cc nhưng không quá 250 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xilanh trên 110 cc nhưng không quá 250 cc"
+- 84073222 DONG8
+    tax.84073222 [45 ký tự]: 84073222 - - - - Dùng cho xe thuộc nhóm 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.11"
+- 84073229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84073229 [26 ký tự]: 84073229 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.840732; chú giải: nhom8407.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 840999 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:8409994:dieu-kien-so-co-khong-co-trong-trich:dungChoXeCoDongCo
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong5-ve-gioi-han-bi-bo:8409994:Dùng cho động cơ của xe khác thuộc Chương 87
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có kh
+    ✗ cong5-ve-gioi-han-bi-bo:8409995:Cho động cơ máy thủy
+    ✗ cong5-ve-gioi-han-bi-bo:8409996:Cho động cơ máy thủy
+    ✗ cong5-ve-gioi-han-bi-bo:8409997:Dùng cho động cơ khác
+    ✗ cong2-chong-lan:84099911+84099912:dungCho=84.29,laBoPhan=true,loaiBoPhanDongCoPiston=THAN_DONG_CO_HOP_TRUC_KHUYU,tenLoai=Chế hòa khí:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của ch
+    ✗ cong2-chong-lan:84099911+84099913:dungCho=84.29,duongKinhTrong=50,laBoPhan=true,loaiBoPhanDongCoPiston=ONG_XI_LANH,tenLoai=Chế hòa khí:khong-tat-dinh
+    ✗ cong2-chong-lan:84099911+84099914:dungCho=84.29,duongKinhTrong=49.99995,laBoPhan=true,loaiBoPhanDongCoPiston=ONG_XI_LANH,tenLoai=Chế hòa khí:khong-tat-dinh
+    ✗ cong2-chong-lan:84099911+84099915:dungCho=84.29,laBoPhan=true,loaiBoPhanDongCoPiston=QUY_LAT_VA_NAP,tenLoai=Chế hòa khí:khong-tat-dinh
+    ✗ cong2-chong-lan:84099911+84099941:dungCho=84.29,dungChoXeCoDongCo=true,laBoPhan=true,tenLoai=Chế hòa khí:khong-tat-dinh
+    ✗ cong2-chong-lan:84099911+84099942:dungCho=84.29,dungChoXeCoDongCo=true,laBoPhan=true,loaiBoPhanDongCoPiston=THAN_DONG_CO_HOP_TRUC_KHUYU,tenLoai=Chế hòa khí:khong-tat-dinh
+    ✗ cong2-chong-lan-truc:84099911:84099912,84099913,84099914,84099915
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4)
+    ✗ cong2-chong-lan-truc:84099912:84099911,84099916,84099917,84099918
+    ✗ cong2-chong-lan-truc:84099913:84099911,84099916,84099917,84099918
+    ✗ cong2-chong-lan-truc:84099914:84099911,84099916,84099917,84099918
+    ✗ cong2-chong-lan-truc:84099915:84099911,84099916,84099917,84099918
+    ✗ cong2-chong-lan-truc:8409994:8409991,840999~r13043
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Cặp dòng có hơn giới hạn tổ hợp vector (in: giới hạn/tổng) — cổng 2 đã thử một MẪU tất định, không vét cạn; chồng lấn tìm thấy trong mẫu vẫn là lỗi. Sửa: Không cần sửa; người soát biết cặp này chỉ kiểm theo mẫu (thongKe.layMau).
+      → (cảnh báo) Hai anh em chỉ chồng trên vector ghép CHÉO KHOÁ "tenLoai X" (một bên) + "là bộ phận, dungCho Y" (bên kia) — mẫu "X và (các) bộ phận của chúng" (871410, 845290). X và Y đều là tên đầu NGUYÊN VĂN của chính dòng mình (mệnh đề danh từ đầu hoặc vế "kể cả …" liền sau) và rời nhau đúng như hai giá trị ten
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"840999","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-840999","dong8":{"84099911":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chế hòa khí"}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"Chế hòa khí"}]]}]},"84099912":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["THAN_DONG_CO_HOP_TRUC_KHUYU"]}]},"84099913":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]},{"fact":"duongKinhTrong","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinhTrong","op":"<=","value":155,"donVi":"mm"}]},"84099914":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]}],"phanConLai":["84099913"]},"84099915":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["QUY_LAT_VA_NAP"]}]},"84099916":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"},{"fact":"duongKinh","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinh","op":"<=","value":155,"donVi":"mm"}]},"84099917":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"}],"phanConLai":["84099916"]},"84099918":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bạc piston","chốt piston"]}]},"84099921":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chế hòa khí"}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"Chế hòa khí"}]]}]},"84099922":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["THAN_DONG_CO_HOP_TRUC_KHUYU"]}]},"84099923":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]},{"fact":"duongKinhTrong","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinhTrong","op":"<=","value":155,"donVi":"mm"}]},"84099924":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]}],"phanConLai":["84099923"]},"84099925":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["QUY_LAT_VA_NAP"]}]},"84099926":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"},{"fact":"duongKinh","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinh","op":"<=","value":155,"donVi":"mm"}]},"84099927":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"}],"phanConLai":["84099926"]},"84099931":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chế hòa khí"}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"Chế hòa khí"}]]}]},"84099932":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["THAN_DONG_CO_HOP_TRUC_KHUYU"]}]},"84099934":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["QUY_LAT_VA_NAP"]}]},"84099936":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bạc piston","chốt piston"]}]},"84099937":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]},{"fact":"duongKinhTrong","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinhTrong","op":"<=","value":155,"donVi":"mm"}],[{"fact":"tenLoai","op":"TEN_LOAI","value":"piston"},{"fact":"duongKinh","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinh","op":"<=","value":155,"donVi":"mm"}]]}]},"84099938":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]}],[{"fact":"tenLoai","op":"TEN_LOAI","value":"piston"}]]}],"phanConLai":["84099937"]},"84099941":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chế hòa khí"}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"Chế hòa khí"}]]}]},"84099942":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["THAN_DONG_CO_HOP_TRUC_KHUYU"]}]},"84099943":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]},{"fact":"duongKinhTrong","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinhTrong","op":"<=","value":155,"donVi":"mm"}]},"84099944":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]}],"phanConLai":["84099943"]},"84099945":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["QUY_LAT_VA_NAP"]}]},"84099946":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"},{"fact":"duongKinh","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinh","op":"<=","value":155,"donVi":"mm"}]},"84099947":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"}],"phanConLai":["84099946"]},"84099948":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bạc piston","chốt piston"]}]},"84099951":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["THAN_DONG_CO_HOP_TRUC_KHUYU"]}]},"84099952":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]},{"fact":"duongKinhTrong","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinhTrong","op":"<=","value":155,"donVi":"mm"}]},"84099953":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]}],"phanConLai":["84099952"]},"84099954":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"},{"fact":"duongKinh","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinh","op":"<=","value":155,"donVi":"mm"}]},"84099955":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"}],"phanConLai":["84099954"]},"84099961":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["THAN_DONG_CO_HOP_TRUC_KHUYU"]}]},"84099962":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]},{"fact":"duongKinhTrong","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinhTrong","op":"<=","value":155,"donVi":"mm"}]},"84099963":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]}],"phanConLai":["84099962"]},"84099964":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"},{"fact":"duongKinh","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinh","op":"<=","value":155,"donVi":"mm"}]},"84099965":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"}],"phanConLai":["84099964"]},"84099971":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chế hòa khí"}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"Chế hòa khí"}]]}]},"84099972":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["THAN_DONG_CO_HOP_TRUC_KHUYU"]}]},"84099973":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]},{"fact":"duongKinhTrong","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinhTrong","op":"<=","value":155,"donVi":"mm"}]},"84099974":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["ONG_XI_LANH"]}],"phanConLai":["84099973"]},"84099975":{"dieuKienSo":[{"fact":"loaiBoPhanDongCoPiston","op":"TRONG","value":["QUY_LAT_VA_NAP"]}]},"84099976":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"},{"fact":"duongKinh","op":">=","value":50,"donVi":"mm"},{"fact":"duongKinh","op":"<=","value":155,"donVi":"mm"}]},"84099977":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Piston"}],"phanConLai":["84099976"]},"84099978":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bạc piston","chốt piston"]}]}},"dieuKienNut":{"8409991":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["84.29","84.30"]}]},"8409992":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"8409993":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.11"}]},"8409994":{"dieuKienSo":[{"fact":"dungChoXeCoDongCo","op":"CO"}],"phanConLai":["8409992","8409993"]},"840999~r13043":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"Chương 89"}]},"8409995":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":22.38,"donVi":"kW"}]},"8409996":{"dieuKienSo":[{"fact":"congSuat","op":">","value":22.38,"donVi":"kW"}]},"8409997":{"dieuKienSo":[],"phanConLai":true}},"ghiChuSoan":[{"ma":"8409991","loai":"QUYET_DINH","ghiChu":"tieuDe.8409991: \"Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho [\"84.29\",\"84.30\"]"},{"ma":"8409992","loai":"QUYET_DINH","ghiChu":"tieuDe.8409992: \"Dùng cho động cơ của xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"8409993","loai":"QUYET_DINH","ghiChu":"tieuDe.8409993: \"Dùng cho động cơ của xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""},{"ma":"8409994","loai":"QUYET_DINH","ghiChu":"tieuDe.8409994: \"Dùng cho động cơ của xe khác thuộc Chương 87\" ⇒ dungChoXeCoDongCo CO + phanConLai [8409992, 8409993]"},{"ma":"840999~r13043","loai":"QUYET_DINH","ghiChu":"tieuDe.840999~r13043: \"Dùng cho động cơ tàu thuyền thuộc Chương 89\" ⇒ dungCho \"Chương 89\""},{"ma":"8409995","loai":"QUYET_DINH","ghiChu":"tieuDe.8409995: \"Cho động cơ máy thủy công suất không quá 22,38 kW\" ⇒ congSuat <= 22.38 kW"},{"ma":"8409996","loai":"QUYET_DINH","ghiChu":"tieuDe.8409996: \"Cho động cơ máy thủy công suất trên 22,38 kW\" ⇒ congSuat > 22.38 kW"},{"ma":"8409997","loai":"QUYET_DINH","ghiChu":"tieuDe.8409997: \"Dùng cho động cơ khác\" ⇒ phanConLai: true"}]}
+```
+
+=== GÓI PN6 840999 ===
+# 840999 — Loại khác
+
+840999 — Engines; parts for internal combustion piston engines (excluding spark-ignition)
+  [8409991] Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30
+    84099911 Chế hòa khí và bộ phận của chúng
+    84099912 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099913 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099914 Ống xi lanh khác
+    84099915 Quy lát và nắp quy lát
+    84099916 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099917 Piston khác
+    84099918 Bạc piston và chốt piston
+    84099919 Loại khác  [LK]
+  [8409992] Dùng cho động cơ của xe thuộc nhóm 87.01
+    84099921 Chế hòa khí và bộ phận của chúng
+    84099922 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099923 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099924 Ống xi lanh khác
+    84099925 Quy lát và nắp quy lát
+    84099926 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099927 Piston khác
+    84099929 Loại khác  [LK]
+  [8409993] Dùng cho động cơ của xe thuộc nhóm 87.11
+    84099931 Chế hòa khí và bộ phận của chúng
+    84099932 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099934 Quy lát và nắp quy lát
+    84099936 Bạc piston và chốt piston
+    84099937 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm; piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099938 Ống xi lanh và piston khác
+    84099939 Loại khác  [LK]
+  [8409994] Dùng cho động cơ của xe khác thuộc Chương 87
+    84099941 Chế hòa khí và bộ phận của chúng
+    84099942 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099943 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099944 Ống xi lanh khác
+    84099945 Quy lát và nắp quy lát
+    84099946 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099947 Piston khác
+    84099948 Bạc piston và chốt piston
+    84099949 Loại khác  [LK]
+  [840999~r13043] Dùng cho động cơ tàu thuyền thuộc Chương 89  (tầng không mã, biểu thuế r13043, gạch 3)
+    [8409995] Cho động cơ máy thủy công suất không quá 22,38 kW
+      84099951 Thân động cơ (cylinder block); hộp trục khuỷu  (gạch 5)
+      84099952 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099953 Ống xi lanh khác  (gạch 5)
+      84099954 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099955 Piston khác  (gạch 5)
+      84099959 Loại khác  [LK]  (gạch 5)
+    [8409996] Cho động cơ máy thủy công suất trên 22,38 kW
+      84099961 Thân động cơ (cylinder block); hộp trục khuỷu  (gạch 5)
+      84099962 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099963 Ống xi lanh khác  (gạch 5)
+      84099964 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm  (gạch 5)
+      84099965 Piston khác  (gạch 5)
+      84099969 Loại khác  [LK]  (gạch 5)
+  [8409997] Dùng cho động cơ khác
+    84099971 Chế hòa khí và bộ phận của chúng
+    84099972 Thân động cơ (cylinder block); hộp trục khuỷu
+    84099973 Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm
+    84099974 Ống xi lanh khác
+    84099975 Quy lát và nắp quy lát
+    84099976 Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    84099977 Piston khác
+    84099978 Bạc piston và chốt piston
+    84099979 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    840999~r13043 (gạch 3) "Dùng cho động cơ tàu thuyền thuộc Chương 89:" — dòng dưới: 84099951, 84099952, 84099953, 84099954, 84099955, 84099959, 84099961, 84099962, 84099963, 84099964, 84099965, 84099969
+
+- 8409991 TIEU_DE
+    tieuDe.8409991 [60 ký tự]: 8409991 Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của máy thuộc nhóm 84.29 hoặc 84.30"
+- 84099911 DONG8
+    tax.84099911 [49 ký tự]: 84099911 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099912 DONG8
+    tax.84099912 [62 ký tự]: 84099912 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099913 DONG8
+    tax.84099913 [91 ký tự]: 84099913 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099914 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099914 [34 ký tự]: 84099914 - - - - Ống xi lanh khác 
+- 84099915 DONG8
+    tax.84099915 [39 ký tự]: 84099915 - - - - Quy lát và nắp quy lát
+- 84099916 DONG8
+    tax.84099916 [85 ký tự]: 84099916 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099917 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099917 [28 ký tự]: 84099917 - - - - Piston khác
+- 84099918 DONG8
+    tax.84099918 [42 ký tự]: 84099918 - - - - Bạc piston và chốt piston
+- 84099919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099919 [26 ký tự]: 84099919 - - - - Loại khác
+- 8409992 TIEU_DE
+    tieuDe.8409992 [48 ký tự]: 8409992 Dùng cho động cơ của xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của xe thuộc nhóm 87.01"
+- 84099921 DONG8
+    tax.84099921 [49 ký tự]: 84099921 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099922 DONG8
+    tax.84099922 [62 ký tự]: 84099922 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099923 DONG8
+    tax.84099923 [91 ký tự]: 84099923 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099924 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099924 [34 ký tự]: 84099924 - - - - Ống xi lanh khác 
+- 84099925 DONG8
+    tax.84099925 [39 ký tự]: 84099925 - - - - Quy lát và nắp quy lát
+- 84099926 DONG8
+    tax.84099926 [85 ký tự]: 84099926 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099927 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099927 [28 ký tự]: 84099927 - - - - Piston khác
+- 84099929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099929 [26 ký tự]: 84099929 - - - - Loại khác
+- 8409993 TIEU_DE
+    tieuDe.8409993 [48 ký tự]: 8409993 Dùng cho động cơ của xe thuộc nhóm 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của xe thuộc nhóm 87.11"
+- 84099931 DONG8
+    tax.84099931 [49 ký tự]: 84099931 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099932 DONG8
+    tax.84099932 [62 ký tự]: 84099932 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099934 DONG8
+    tax.84099934 [39 ký tự]: 84099934 - - - - Quy lát và nắp quy lát
+- 84099936 DONG8
+    tax.84099936 [42 ký tự]: 84099936 - - - - Bạc piston và chốt piston
+- 84099937 DONG8
+    tax.84099937 [160 ký tự]: 84099937 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm; piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm" · [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099938 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099938 [43 ký tự]: 84099938 - - - - Ống xi lanh và piston khác
+- 84099939 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099939 [26 ký tự]: 84099939 - - - - Loại khác
+- 8409994 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8409994 [52 ký tự]: 8409994 Dùng cho động cơ của xe khác thuộc Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ của xe khác thuộc Chương 87"
+- 84099941 DONG8
+    tax.84099941 [49 ký tự]: 84099941 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099942 DONG8
+    tax.84099942 [62 ký tự]: 84099942 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099943 DONG8
+    tax.84099943 [91 ký tự]: 84099943 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099944 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099944 [34 ký tự]: 84099944 - - - - Ống xi lanh khác 
+- 84099945 DONG8
+    tax.84099945 [39 ký tự]: 84099945 - - - - Quy lát và nắp quy lát
+- 84099946 DONG8
+    tax.84099946 [85 ký tự]: 84099946 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099947 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099947 [28 ký tự]: 84099947 - - - - Piston khác
+- 84099948 DONG8
+    tax.84099948 [42 ký tự]: 84099948 - - - - Bạc piston và chốt piston
+- 84099949 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099949 [26 ký tự]: 84099949 - - - - Loại khác
+- 840999~r13043 TIEU_DE
+    tieuDe.840999~r13043 [57 ký tự]: 840999~r13043 Dùng cho động cơ tàu thuyền thuộc Chương 89
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ tàu thuyền thuộc Chương 89"
+- 8409995 TIEU_DE
+    tieuDe.8409995 [57 ký tự]: 8409995 Cho động cơ máy thủy công suất không quá 22,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Cho động cơ máy thủy" · [GIỚI HẠN] "công suất không quá 22,38 kW"
+- 84099951 DONG8
+    tax.84099951 [64 ký tự]: 84099951 - - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099952 DONG8
+    tax.84099952 [93 ký tự]: 84099952 - - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099953 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099953 [36 ký tự]: 84099953 - - - - - Ống xi lanh khác 
+- 84099954 DONG8
+    tax.84099954 [87 ký tự]: 84099954 - - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099955 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099955 [30 ký tự]: 84099955 - - - - - Piston khác
+- 84099959 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099959 [28 ký tự]: 84099959 - - - - - Loại khác
+- 8409996 TIEU_DE
+    tieuDe.8409996 [52 ký tự]: 8409996 Cho động cơ máy thủy công suất trên 22,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Cho động cơ máy thủy" · [GIỚI HẠN] "công suất trên 22,38 kW"
+- 84099961 DONG8
+    tax.84099961 [64 ký tự]: 84099961 - - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099962 DONG8
+    tax.84099962 [93 ký tự]: 84099962 - - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099963 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099963 [36 ký tự]: 84099963 - - - - - Ống xi lanh khác 
+- 84099964 DONG8
+    tax.84099964 [87 ký tự]: 84099964 - - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099965 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099965 [30 ký tự]: 84099965 - - - - - Piston khác
+- 84099969 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099969 [28 ký tự]: 84099969 - - - - - Loại khác
+- 8409997 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8409997 [29 ký tự]: 8409997 Dùng cho động cơ khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho động cơ khác"
+- 84099971 DONG8
+    tax.84099971 [49 ký tự]: 84099971 - - - - Chế hòa khí và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và bộ phận của chúng"
+- 84099972 DONG8
+    tax.84099972 [62 ký tự]: 84099972 - - - - Thân động cơ (cylinder block); hộp trục khuỷu
+- 84099973 DONG8
+    tax.84099973 [91 ký tự]: 84099973 - - - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099974 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099974 [34 ký tự]: 84099974 - - - - Ống xi lanh khác 
+- 84099975 DONG8
+    tax.84099975 [39 ký tự]: 84099975 - - - - Quy lát và nắp quy lát
+- 84099976 DONG8
+    tax.84099976 [85 ký tự]: 84099976 - - - - Piston, có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính ngoài từ 50 mm trở lên, nhưng không quá 155 mm"
+- 84099977 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84099977 [28 ký tự]: 84099977 - - - - Piston khác
+- 84099978 DONG8
+    tax.84099978 [42 ký tự]: 84099978 - - - - Bạc piston và chốt piston
+- 84099979 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84099979 [26 ký tự]: 84099979 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.840999; chú giải: nhom8409.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 841290 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:84129020:dungCho
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): c�
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"841290","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841290","dong8":{"84129010":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8412.10"}]},"84129020":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"84129010","loai":"QUYET_DINH","ghiChu":"tax.84129010: \"Của động cơ thuộc phân nhóm 8412.10\" ⇒ dungCho \"8412.10\""},{"ma":"84129020","loai":"QUYET_DINH","ghiChu":"tax.84129020: \"Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi\" ⇒ dungCho \"tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi\""},{"ma":"84129020","loai":"BO_VE","ve":"Của động cơ/mô tơ","lyDo":"Của động cơ/mô tơ lặp lại khái niệm bộ phận động cơ của nhóm 8412, phần giới hạn đích đã được phủ bằng dungCho"}]}
+```
+
+=== GÓI PN6 841290 ===
+# 841290 — Bộ phận
+
+841290 — Engines; parts, for engines and motors of heading no. 8412
+  84129010 Của động cơ thuộc phân nhóm 8412.10
+  84129020 Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi
+  84129090 Loại khác  [LK]
+
+- 84129010 DONG8
+    tax.84129010 [48 ký tự]: 84129010 - - Của động cơ thuộc phân nhóm 8412.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của động cơ thuộc phân nhóm 8412.10"
+- 84129020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84129020 [95 ký tự]: 84129020 - - Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của động cơ/mô tơ" · [GIỚI HẠN] "dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi"
+- 84129090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84129090 [22 ký tự]: 84129090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841290; chú giải: nhom8412.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 841581 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:84158112:dieu-kien-so-don-vi-khong-co-trong-trich:m3/min
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+    ✗ cong3-muc:84158195:dieu-kien-so-don-vi-khong-co-trong-trich:m3/min
+    ✗ cong3-muc:84158196:dieu-kien-so-don-vi-khong-co-trong-trich:m3/min
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"841581","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841581","dong8":{"84158111":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":21.1,"donVi":"kW"}]},"84158112":{"dieuKienSo":[{"fact":"congSuat","op":">","value":21.1,"donVi":"kW"},{"fact":"luuLuong","op":">","value":67.96,"donVi":"m3/min"}]},"84158121":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"}]},"84158131":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"}]},"84158195":{"dieuKienSo":[{"fact":"congSuat","op":">","value":21.1,"donVi":"kW"},{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"},{"fact":"luuLuong","op":">","value":67.96,"donVi":"m3/min"}]},"84158196":{"dieuKienSo":[{"fact":"congSuat","op":">","value":26.38,"donVi":"kW"},{"fact":"luuLuong","op":">","value":67.96,"donVi":"m3/min"}]},"84158197":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":21.1,"donVi":"kW"}]},"84158198":{"dieuKienSo":[{"fact":"congSuat","op":">","value":21.1,"donVi":"kW"},{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"}]}},"dieuKienNut":{"8415811":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"phương tiện bay"}]},"8415812":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"phương tiện giao thông đường sắt"}]},"8415813":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"xe có động cơ (trừ loại thuộc phân nhóm 8415.20)"}]}},"ghiChuSoan":[{"ma":"8415811","loai":"QUYET_DINH","ghiChu":"tieuDe.8415811: \"Loại sử dụng cho phương tiện bay\" ⇒ dungCho \"phương tiện bay\""},{"ma":"8415812","loai":"QUYET_DINH","ghiChu":"tieuDe.8415812: \"Sử dụng cho phương tiện giao thông đường sắt\" ⇒ dungCho \"phương tiện giao thông đường sắt\""},{"ma":"8415813","loai":"QUYET_DINH","ghiChu":"tieuDe.8415813: \"Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\" ⇒ dungCho \"xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\""},{"ma":"84158111","loai":"QUYET_DINH","ghiChu":"tax.84158111: \"Công suất làm mát không quá 21,10 kW\" ⇒ congSuat <= 21.1 kW"},{"ma":"84158112","loai":"QUYET_DINH","ghiChu":"tax.84158112: \"Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 21.1 kW, luuLuong > 67.96 m3/min"},{"ma":"84158121","loai":"QUYET_DINH","ghiChu":"tax.84158121: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"},{"ma":"84158131","loai":"QUYET_DINH","ghiChu":"tax.84158131: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"},{"ma":"84158195","loai":"QUYET_DINH","ghiChu":"tax.84158195: \"Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 21.1 kW, <= 26.38 kW, luuLuong > 67.96 m3/min"},{"ma":"84158196","loai":"QUYET_DINH","ghiChu":"tax.84158196: \"Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 26.38 kW, luuLuong > 67.96 m3/min"},{"ma":"84158197","loai":"QUYET_DINH","ghiChu":"tax.84158197: \"Công suất làm mát không quá 21,10 kW\" ⇒ congSuat <= 21.1 kW"},{"ma":"84158198","loai":"QUYET_DINH","ghiChu":"tax.84158198: \"Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW\" ⇒ congSuat > 21.1 kW, <= 26.38 kW"}]}
+```
+
+=== GÓI PN6 841581 ===
+# 841581 — Kèm theo một bộ phận làm lạnh và một van đảo chiều chu trình nóng/lạnh (bơm nhiệt có đảo chiều)
+
+841581 — Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit and a valve for reversal of the cooling/heat cycle (reversible heat pumps)
+  [8415811] Loại sử dụng cho phương tiện bay
+    84158111 Công suất làm mát không quá 21,10 kW
+    84158112 Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    84158119 Loại khác  [LK]
+  [8415812] Sử dụng cho phương tiện giao thông đường sắt
+    84158121 Công suất làm mát không quá 26,38 kW
+    84158129 Loại khác  [LK]
+  [8415813] Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    84158131 Công suất làm mát không quá 26,38 kW
+    84158139 Loại khác  [LK]
+  [8415819] Loại khác
+    84158195 Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    84158196 Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    [841581~r13262] Loại khác  (tầng không mã, biểu thuế r13262, gạch 4)
+      84158197 Công suất làm mát không quá 21,10 kW  (gạch 5)
+      84158198 Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW  (gạch 5)
+      84158199 Loại khác  [LK]  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    841581~r13262 (gạch 4) "Loại khác:" — dòng dưới: 84158197, 84158198, 84158199
+
+- 8415811 TIEU_DE
+    tieuDe.8415811 [40 ký tự]: 8415811 Loại sử dụng cho phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho phương tiện bay"
+- 84158111 DONG8
+    tax.84158111 [53 ký tự]: 84158111 - - - - Công suất làm mát không quá 21,10 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 21,10 kW"
+- 84158112 DONG8
+    tax.84158112 [117 ký tự]: 84158112 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW" · [GIỚI HẠN] "có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 84158119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158119 [26 ký tự]: 84158119 - - - - Loại khác
+- 8415812 TIEU_DE
+    tieuDe.8415812 [52 ký tự]: 8415812 Sử dụng cho phương tiện giao thông đường sắt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho phương tiện giao thông đường sắt"
+- 84158121 DONG8
+    tax.84158121 [53 ký tự]: 84158121 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158129 [26 ký tự]: 84158129 - - - - Loại khác
+- 8415813 TIEU_DE
+    tieuDe.8415813 [68 ký tự]: 8415813 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)" · [GIỚI HẠN] "(trừ loại thuộc phân nhóm 8415.20)"
+- 84158131 DONG8
+    tax.84158131 [53 ký tự]: 84158131 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158139 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158139 [26 ký tự]: 84158139 - - - - Loại khác
+- 8415819 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8415819 [17 ký tự]: 8415819 Loại khác
+- 84158195 DONG8
+    tax.84158195 [136 ký tự]: 84158195 - - - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW" · [GIỚI HẠN] "có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 84158196 DONG8
+    tax.84158196 [111 ký tự]: 84158196 - - - - Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 26,38 kW" · [GIỚI HẠN] "có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 841581~r13262 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.841581~r13262 [23 ký tự]: 841581~r13262 Loại khác
+- 84158197 DONG8
+    tax.84158197 [55 ký tự]: 84158197 - - - - - Công suất làm mát không quá 21,10 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 21,10 kW"
+- 84158198 DONG8
+    tax.84158198 [75 ký tự]: 84158198 - - - - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW"
+- 84158199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158199 [28 ký tự]: 84158199 - - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841581; chú giải: nhom8415.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 841582 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:84158211:dieu-kien-so-don-vi-khong-co-trong-trich:m3/min
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"841582","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841582","dong8":{"84158211":{"dieuKienSo":[{"fact":"congSuat","op":">","value":21.1,"donVi":"kW"},{"fact":"luuLuong","op":">","value":67.96,"donVi":"m3/min"}]},"84158221":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"}]},"84158231":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"}]},"84158291":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"}]}},"dieuKienNut":{"8415821":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"phương tiện bay"}]},"8415822":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"phương tiện giao thông đường sắt"}]},"8415823":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"xe có động cơ (trừ loại thuộc phân nhóm 8415.20)"}]}},"ghiChuSoan":[{"ma":"8415821","loai":"QUYET_DINH","ghiChu":"tieuDe.8415821: \"Loại sử dụng cho phương tiện bay\" ⇒ dungCho \"phương tiện bay\""},{"ma":"8415822","loai":"QUYET_DINH","ghiChu":"tieuDe.8415822: \"Sử dụng cho phương tiện giao thông đường sắt\" ⇒ dungCho \"phương tiện giao thông đường sắt\""},{"ma":"8415823","loai":"QUYET_DINH","ghiChu":"tieuDe.8415823: \"Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\" ⇒ dungCho \"xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\""},{"ma":"84158211","loai":"QUYET_DINH","ghiChu":"tax.84158211: \"Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 21.1 kW, luuLuong > 67.96 m3/min"},{"ma":"84158221","loai":"QUYET_DINH","ghiChu":"tax.84158221: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"},{"ma":"84158231","loai":"QUYET_DINH","ghiChu":"tax.84158231: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"},{"ma":"84158291","loai":"QUYET_DINH","ghiChu":"tax.84158291: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"}]}
+```
+
+=== GÓI PN6 841582 ===
+# 841582 — Loại khác, có kèm theo bộ phận làm lạnh
+
+841582 — Air conditioning machines; containing a motor driven fan, other than window or wall types, incorporating a refrigerating unit
+  [8415821] Loại sử dụng cho phương tiện bay
+    84158211 Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    84158219 Loại khác  [LK]
+  [8415822] Sử dụng cho phương tiện giao thông đường sắt
+    84158221 Công suất làm mát không quá 26,38 kW
+    84158229 Loại khác  [LK]
+  [8415823] Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    84158231 Công suất làm mát không quá 26,38 kW
+    84158239 Loại khác  [LK]
+  [8415829] Loại khác
+    84158291 Công suất làm mát không quá 26,38 kW
+    84158299 Loại khác  [LK]
+
+- 8415821 TIEU_DE
+    tieuDe.8415821 [40 ký tự]: 8415821 Loại sử dụng cho phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho phương tiện bay"
+- 84158211 DONG8
+    tax.84158211 [117 ký tự]: 84158211 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW" · [GIỚI HẠN] "có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 84158219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158219 [26 ký tự]: 84158219 - - - - Loại khác
+- 8415822 TIEU_DE
+    tieuDe.8415822 [52 ký tự]: 8415822 Sử dụng cho phương tiện giao thông đường sắt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho phương tiện giao thông đường sắt"
+- 84158221 DONG8
+    tax.84158221 [53 ký tự]: 84158221 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158229 [26 ký tự]: 84158229 - - - - Loại khác
+- 8415823 TIEU_DE
+    tieuDe.8415823 [68 ký tự]: 8415823 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)" · [GIỚI HẠN] "(trừ loại thuộc phân nhóm 8415.20)"
+- 84158231 DONG8
+    tax.84158231 [53 ký tự]: 84158231 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158239 [26 ký tự]: 84158239 - - - - Loại khác
+- 8415829 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8415829 [17 ký tự]: 8415829 Loại khác
+- 84158291 DONG8
+    tax.84158291 [53 ký tự]: 84158291 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158299 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158299 [26 ký tự]: 84158299 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841582; chú giải: nhom8415.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 841583 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:84158311:dieu-kien-so-don-vi-khong-co-trong-trich:m3/min
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"841583","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841583","dong8":{"84158311":{"dieuKienSo":[{"fact":"congSuat","op":">","value":21.1,"donVi":"kW"},{"fact":"luuLuong","op":">","value":67.96,"donVi":"m3/min"}]},"84158321":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"}]},"84158331":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"}]},"84158391":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":26.38,"donVi":"kW"}]}},"dieuKienNut":{"8415831":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"phương tiện bay"}]},"8415832":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"phương tiện giao thông đường sắt"}]},"8415833":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"xe có động cơ (trừ loại thuộc phân nhóm 8415.20)"}]}},"ghiChuSoan":[{"ma":"8415831","loai":"QUYET_DINH","ghiChu":"tieuDe.8415831: \"Loại sử dụng cho phương tiện bay\" ⇒ dungCho \"phương tiện bay\""},{"ma":"8415832","loai":"QUYET_DINH","ghiChu":"tieuDe.8415832: \"Sử dụng cho phương tiện giao thông đường sắt\" ⇒ dungCho \"phương tiện giao thông đường sắt\""},{"ma":"8415833","loai":"QUYET_DINH","ghiChu":"tieuDe.8415833: \"Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\" ⇒ dungCho \"xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\""},{"ma":"84158311","loai":"QUYET_DINH","ghiChu":"tax.84158311: \"Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 21.1 kW, luuLuong > 67.96 m3/min"},{"ma":"84158321","loai":"QUYET_DINH","ghiChu":"tax.84158321: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"},{"ma":"84158331","loai":"QUYET_DINH","ghiChu":"tax.84158331: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"},{"ma":"84158391","loai":"QUYET_DINH","ghiChu":"tax.84158391: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"}]}
+```
+
+=== GÓI PN6 841583 ===
+# 841583 — Không gắn kèm bộ phận làm lạnh
+
+841583 — Air conditioning machines; containing a motor driven fan, other than window or wall types, not incorporating a refrigerating unit
+  [8415831] Loại sử dụng cho phương tiện bay
+    84158311 Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    84158319 Loại khác  [LK]
+  [8415832] Sử dụng cho phương tiện giao thông đường sắt
+    84158321 Công suất làm mát không quá 26,38 kW
+    84158329 Loại khác  [LK]
+  [8415833] Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    84158331 Công suất làm mát không quá 26,38 kW
+    84158339 Loại khác  [LK]
+  [8415839] Loại khác
+    84158391 Công suất làm mát không quá 26,38 kW
+    84158399 Loại khác  [LK]
+
+- 8415831 TIEU_DE
+    tieuDe.8415831 [40 ký tự]: 8415831 Loại sử dụng cho phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho phương tiện bay"
+- 84158311 DONG8
+    tax.84158311 [117 ký tự]: 84158311 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát trên 21,10 kW" · [GIỚI HẠN] "có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)"
+- 84158319 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158319 [26 ký tự]: 84158319 - - - - Loại khác
+- 8415832 TIEU_DE
+    tieuDe.8415832 [52 ký tự]: 8415832 Sử dụng cho phương tiện giao thông đường sắt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho phương tiện giao thông đường sắt"
+- 84158321 DONG8
+    tax.84158321 [53 ký tự]: 84158321 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158329 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158329 [26 ký tự]: 84158329 - - - - Loại khác
+- 8415833 TIEU_DE
+    tieuDe.8415833 [68 ký tự]: 8415833 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)" · [GIỚI HẠN] "(trừ loại thuộc phân nhóm 8415.20)"
+- 84158331 DONG8
+    tax.84158331 [53 ký tự]: 84158331 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158339 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158339 [26 ký tự]: 84158339 - - - - Loại khác
+- 8415839 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8415839 [17 ký tự]: 8415839 Loại khác
+- 84158391 DONG8
+    tax.84158391 [53 ký tự]: 84158391 - - - - Công suất làm mát không quá 26,38 kW
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất làm mát không quá 26,38 kW"
+- 84158399 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84158399 [26 ký tự]: 84158399 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.841583; chú giải: nhom8415.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 842199 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-dong-khong-toi-duoc:84219991
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm 
+    ✗ cong2-dong-khong-toi-duoc:84219994
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"842199","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-842199","dong8":{"84219921":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["8421.23.11","8421.23.21"]}]},"84219930":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8421.31"}]},"84219940":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8421.29.50"}]},"84219950":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8421.29.60"}]},"84219960":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8421.39.30"}]},"84219970":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8421.39.90"}]},"84219991":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8421.29.20"}]},"84219994":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8421.21.11"}]},"84219996":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["8421.23.11","8421.23.91"]}]},"84219997":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["8421.23.19","8421.23.99"]}]}},"dieuKienNut":{"8421992":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Lõi lọc"},{"fact":"dungCho","op":"CONG_DUNG","value":"8421.23"}]}},"ghiChuSoan":[{"ma":"8421992","loai":"QUYET_DINH","ghiChu":"tieuDe.8421992: \"Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23\" ⇒ tenLoai \"Lõi lọc\" + dungCho \"8421.23\""},{"ma":"84219921","loai":"QUYET_DINH","ghiChu":"tax.84219921: \"Của phân nhóm 8421.23.11 hoặc 8421.23.21\" ⇒ dungCho [\"8421.23.11\",\"8421.23.21\"]"},{"ma":"84219930","loai":"QUYET_DINH","ghiChu":"tax.84219930: \"Của hàng hóa thuộc phân nhóm 8421.31\" ⇒ dungCho \"8421.31\""},{"ma":"84219940","loai":"QUYET_DINH","ghiChu":"tax.84219940: \"Của hàng hóa thuộc phân nhóm 8421.29.50\" ⇒ dungCho \"8421.29.50\""},{"ma":"84219950","loai":"QUYET_DINH","ghiChu":"tax.84219950: \"Của hàng hóa thuộc phân nhóm 8421.29.60\" ⇒ dungCho \"8421.29.60\""},{"ma":"84219960","loai":"QUYET_DINH","ghiChu":"tax.84219960: \"Của hàng hóa thuộc phân nhóm 8421.39.30\" ⇒ dungCho \"8421.39.30\""},{"ma":"84219970","loai":"QUYET_DINH","ghiChu":"tax.84219970: \"Của hàng hóa thuộc phân nhóm 8421.39.90\" ⇒ dungCho \"8421.39.90\""},{"ma":"84219991","loai":"QUYET_DINH","ghiChu":"tax.84219991: \"Của hàng hóa thuộc phân nhóm 8421.29.20\" ⇒ dungCho \"8421.29.20\""},{"ma":"84219994","loai":"QUYET_DINH","ghiChu":"tax.84219994: \"Của hàng hóa thuộc phân nhóm 8421.21.11\" ⇒ dungCho \"8421.21.11\""},{"ma":"84219996","loai":"QUYET_DINH","ghiChu":"tax.84219996: \"Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91\" ⇒ dungCho [\"8421.23.11\",\"8421.23.91\"]"},{"ma":"84219997","loai":"QUYET_DINH","ghiChu":"tax.84219997: \"Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99\" ⇒ dungCho [\"8421.23.19\",\"8421.23.99\"]"}]}
+```
+
+=== GÓI PN6 842199 ===
+# 842199 — Loại khác
+
+842199 — Machinery; parts for filtering or purifying liquids or gases
+  [8421992] Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23
+    84219921 Của phân nhóm 8421.23.11 hoặc 8421.23.21 (SEN)
+    84219929 Loại khác (SEN)  [LK]
+  84219930 Của hàng hóa thuộc phân nhóm 8421.31
+  84219940 Của hàng hóa thuộc phân nhóm 8421.29.50
+  84219950 Của hàng hóa thuộc phân nhóm 8421.29.60
+  84219960 Của hàng hóa thuộc phân nhóm 8421.39.30
+  84219970 Của hàng hóa thuộc phân nhóm 8421.39.90
+  [8421999] Loại khác
+    84219991 Của hàng hóa thuộc phân nhóm 8421.29.20
+    84219994 Của hàng hóa thuộc phân nhóm 8421.21.11
+    84219996 Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91
+    84219997 Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99
+    84219999 Loại khác  [LK]
+
+- 8421992 TIEU_DE
+    tieuDe.8421992 [56 ký tự]: 8421992 Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của thiết bị lọc thuộc phân nhóm 8421.23"
+- 84219921 DONG8
+    tax.84219921 [63 ký tự]: 84219921 - - - - Của phân nhóm 8421.23.11 hoặc 8421.23.21 (SEN)
+    sen.84219921 [790 ký tự]: LÕI LỌC CỦA THIẾT BỊ LỌC THUỘC PHÂN NHÓM 8421.23 Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23 là các bộ phận thiết yếu của các thiết bị lọc dầu hoặc xăng dùng trong động cơ đốt trong. Chúng được sản xuất và bán như một thiết bị ban đầu và bộ phận thay thế để sử dụng trong bộ lọc dầu hoặc xăng của ô tô. Các bộ phận thiết yếu của các linh kiện này là các vật liệu lọc có nhiều loại và hình dạng khác nhau, có thể được gắn trên các khung, lõi hoặc những thứ tương tự. Khi dầu hoặc xăng lọt qua bộ phận (phần tử) lọc, các hạt có kích thước lớn hơn bị giữ lại trên bề mặt của vật liệu lọc, vì thế chỉ có xăng và dầu sạch thấm qua bộ phận (phần tử) lọc. Bộ phận (phần tử) lọc hoạt động để loại bỏ các tạp chất trong xăng hoặc dầu, làm sạch xăng dầu để chúng được sử dụng tối ưu cho động cơ.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của phân nhóm 8421.23.11 hoặc 8421.23.21"
+- 84219929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84219929 [32 ký tự]: 84219929 - - - - Loại khác (SEN)
+    sen.84219929 [790 ký tự]: LÕI LỌC CỦA THIẾT BỊ LỌC THUỘC PHÂN NHÓM 8421.23 Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23 là các bộ phận thiết yếu của các thiết bị lọc dầu hoặc xăng dùng trong động cơ đốt trong. Chúng được sản xuất và bán như một thiết bị ban đầu và bộ phận thay thế để sử dụng trong bộ lọc dầu hoặc xăng của ô tô. Các bộ phận thiết yếu của các linh kiện này là các vật liệu lọc có nhiều loại và hình dạng khác nhau, có thể được gắn trên các khung, lõi hoặc những thứ tương tự. Khi dầu hoặc xăng lọt qua bộ phận (phần tử) lọc, các hạt có kích thước lớn hơn bị giữ lại trên bề mặt của vật liệu lọc, vì thế chỉ có xăng và dầu sạch thấm qua bộ phận (phần tử) lọc. Bộ phận (phần tử) lọc hoạt động để loại bỏ các tạp chất trong xăng hoặc dầu, làm sạch xăng dầu để chúng được sử dụng tối ưu cho động cơ.
+- 84219930 DONG8
+    tax.84219930 [51 ký tự]: 84219930 - - - Của hàng hóa thuộc phân nhóm 8421.31
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.31"
+- 84219940 DONG8
+    tax.84219940 [54 ký tự]: 84219940 - - - Của hàng hóa thuộc phân nhóm 8421.29.50
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.29.50"
+- 84219950 DONG8
+    tax.84219950 [54 ký tự]: 84219950 - - - Của hàng hóa thuộc phân nhóm 8421.29.60
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.29.60"
+- 84219960 DONG8
+    tax.84219960 [54 ký tự]: 84219960 - - - Của hàng hóa thuộc phân nhóm 8421.39.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.39.30"
+- 84219970 DONG8
+    tax.84219970 [54 ký tự]: 84219970 - - - Của hàng hóa thuộc phân nhóm 8421.39.90
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.39.90"
+- 8421999 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8421999 [17 ký tự]: 8421999 Loại khác
+- 84219991 DONG8
+    tax.84219991 [56 ký tự]: 84219991 - - - - Của hàng hóa thuộc phân nhóm 8421.29.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.29.20"
+- 84219994 DONG8
+    tax.84219994 [56 ký tự]: 84219994 - - - - Của hàng hóa thuộc phân nhóm 8421.21.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.21.11"
+- 84219996 DONG8
+    tax.84219996 [72 ký tự]: 84219996 - - - - Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.23.11 hoặc 8421.23.91"
+- 84219997 DONG8
+    tax.84219997 [72 ký tự]: 84219997 - - - - Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8421.23.19 hoặc 8421.23.99"
+- 84219999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84219999 [26 ký tự]: 84219999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842199; chú giải: nhom8421.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 842490 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:84249030:dungCho
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): c�
+    ✗ cong5-gia-tri-tuong-tu:84249030:dungCho
+      → Một giá trị chữ tự do (TEN_LOAI/CONG_DUNG, hoặc tên nêu của TUONG_TU) chứa "tương tự"/"similar" — vd 950300 .10 tenLoai "đồ chơi tương tự có bánh". Mô tả hàng thật không bao giờ viết chữ "tương tự", nên giá trị này là giá trị CHẾT (không hàng nào khớp): vế mở bị liệt kê đóng một cách trá hình — xe chòi c
+    ✗ cong5-gia-tri-tuong-tu:8424902:dungCho
+    ✗ cong5-ve-gioi-han-bi-bo:8424909:Của thiết bị khác
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có kh
+    ✗ cong2-dong-khong-toi-duoc:84249093
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm 
+    ✗ cong2-dong-khong-toi-duoc:84249094
+    ✗ cong2-dong-khong-toi-duoc:84249095
+    ✗ cong2-dong-khong-toi-duoc:84249096
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"842490","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-842490","dong8":{"84249010":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"bình dập lửa"}]},"84249021":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8424.20.11"}]},"84249024":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8424.20.21"}]},"84249030":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự"}]},"84249093":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8424.82.10"}]},"84249094":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["8424.41.10","8424.41.20","8424.49.20","8424.82.30"]}]},"84249095":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["8424.41.90","8424.49.10","8424.82.20"]}]},"84249096":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8424.89.40"}]}},"dieuKienNut":{"8424902":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"súng phun và các thiết bị tương tự"}]},"842490~r13578":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"CO"}]},"842490~r13581":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"KHONG"}]},"8424909":{"dieuKienSo":[],"phanConLai":true}},"ghiChuSoan":[{"ma":"84249010","loai":"QUYET_DINH","ghiChu":"tax.84249010: \"Của bình dập lửa\" ⇒ dungCho \"bình dập lửa\""},{"ma":"8424902","loai":"QUYET_DINH","ghiChu":"tieuDe.8424902: \"Của súng phun và các thiết bị tương tự\" ⇒ dungCho \"súng phun và các thiết bị tương tự\""},{"ma":"842490~r13578","loai":"QUYET_DINH","ghiChu":"tieuDe.842490~r13578: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"},{"ma":"842490~r13581","loai":"QUYET_DINH","ghiChu":"tieuDe.842490~r13581: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"},{"ma":"84249021","loai":"QUYET_DINH","ghiChu":"tax.84249021: \"Của hàng hóa thuộc phân nhóm 8424.20.11\" ⇒ dungCho \"8424.20.11\""},{"ma":"84249024","loai":"QUYET_DINH","ghiChu":"tax.84249024: \"Của hàng hóa thuộc phân nhóm 8424.20.21\" ⇒ dungCho \"8424.20.21\""},{"ma":"84249030","loai":"QUYET_DINH","ghiChu":"tax.84249030: \"Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự\" ⇒ dungCho \"máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự\""},{"ma":"8424909","loai":"QUYET_DINH","ghiChu":"tieuDe.8424909: \"Của thiết bị khác\" ⇒ phanConLai: true"},{"ma":"84249093","loai":"QUYET_DINH","ghiChu":"tax.84249093: \"Của hàng hóa thuộc phân nhóm 8424.82.10\" ⇒ dungCho \"8424.82.10\""},{"ma":"84249094","loai":"QUYET_DINH","ghiChu":"tax.84249094: \"Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30\" ⇒ dungCho [\"8424.41.10\",\"8424.41.20\",\"8424.49.20\",\"8424.82.30\"]"},{"ma":"84249095","loai":"QUYET_DINH","ghiChu":"tax.84249095: \"Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20\" ⇒ dungCho [\"8424.41.90\",\"8424.49.10\",\"8424.82.20\"]"},{"ma":"84249096","loai":"QUYET_DINH","ghiChu":"tax.84249096: \"Của hàng hóa thuộc phân nhóm 8424.89.40\" ⇒ dungCho \"8424.89.40\""}]}
+```
+
+=== GÓI PN6 842490 ===
+# 842490 — Bộ phận
+
+842490 — Mechanical appliances; parts of machines projecting, dispersing or spraying liquids or powders, whether or not hand-operated
+  84249010 Của bình dập lửa
+  [8424902] Của súng phun và các thiết bị tương tự
+    [842490~r13578] Hoạt động bằng điện  (tầng không mã, biểu thuế r13578, gạch 3)
+      84249021 Của hàng hóa thuộc phân nhóm 8424.20.11  (gạch 4)
+      84249023 Loại khác  [LK]  (gạch 4)
+    [842490~r13581] Không hoạt động bằng điện  (tầng không mã, biểu thuế r13581, gạch 3)
+      84249024 Của hàng hóa thuộc phân nhóm 8424.20.21  (gạch 4)
+      84249029 Loại khác  [LK]  (gạch 4)
+  84249030 Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự
+  [8424909] Của thiết bị khác
+    84249093 Của hàng hóa thuộc phân nhóm 8424.82.10
+    84249094 Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30
+    84249095 Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20
+    84249096 Của hàng hóa thuộc phân nhóm 8424.89.40
+    84249099 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    842490~r13578 (gạch 3) "Hoạt động bằng điện:" — dòng dưới: 84249021, 84249023
+    842490~r13581 (gạch 3) "Không hoạt động bằng điện:" — dòng dưới: 84249024, 84249029
+
+- 84249010 DONG8
+    tax.84249010 [29 ký tự]: 84249010 - - Của bình dập lửa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của bình dập lửa"
+- 8424902 TIEU_DE
+    tieuDe.8424902 [46 ký tự]: 8424902 Của súng phun và các thiết bị tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của súng phun" · [MỞ] "và các thiết bị tương tự"
+- 842490~r13578 TIEU_DE
+    tieuDe.842490~r13578 [33 ký tự]: 842490~r13578 Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84249021 DONG8
+    tax.84249021 [56 ký tự]: 84249021 - - - - Của hàng hóa thuộc phân nhóm 8424.20.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.20.11"
+- 84249023 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84249023 [26 ký tự]: 84249023 - - - - Loại khác
+- 842490~r13581 TIEU_DE
+    tieuDe.842490~r13581 [39 ký tự]: 842490~r13581 Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84249024 DONG8
+    tax.84249024 [56 ký tự]: 84249024 - - - - Của hàng hóa thuộc phân nhóm 8424.20.21
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.20.21"
+- 84249029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84249029 [26 ký tự]: 84249029 - - - - Loại khác
+- 84249030 DONG8
+    tax.84249030 [85 ký tự]: 84249030 - - Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự"
+- 8424909 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8424909 [25 ký tự]: 8424909 Của thiết bị khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị khác"
+- 84249093 DONG8
+    tax.84249093 [54 ký tự]: 84249093 - - - Của hàng hóa thuộc phân nhóm 8424.82.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.82.10"
+- 84249094 DONG8
+    tax.84249094 [94 ký tự]: 84249094 - - - Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.41.10, 8424.41.20, 8424.49.20 hoặc 8424.82.30"
+- 84249095 DONG8
+    tax.84249095 [82 ký tự]: 84249095 - - - Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.41.90, 8424.49.10 hoặc 8424.82.20"
+- 84249096 DONG8
+    tax.84249096 [54 ký tự]: 84249096 - - - Của hàng hóa thuộc phân nhóm 8424.89.40
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8424.89.40"
+- 84249099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84249099 [24 ký tự]: 84249099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842490; chú giải: nhom8424.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 842890 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:84289020:congDung
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): c�
+    ✗ cong3-liet-ke-trong-mot-chuoi:84289030:tenLoai
+    ✗ cong5-gia-tri-tuong-tu:84289030:tenLoai
+      → Một giá trị chữ tự do (TEN_LOAI/CONG_DUNG, hoặc tên nêu của TUONG_TU) chứa "tương tự"/"similar" — vd 950300 .10 tenLoai "đồ chơi tương tự có bánh". Mô tả hàng thật không bao giờ viết chữ "tương tự", nên giá trị này là giá trị CHẾT (không hàng nào khớp): vế mở bị liệt kê đóng một cách trá hình — xe chòi c
+    ✗ cong2-chong-lan:84289020+84289030:congDung=dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp,tenLoai=Thiết bị đẩy xe goòng trong hầm mỏ:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của ch
+    ✗ cong2-chong-lan-truc:84289020:84289030
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4)
+    ✗ cong2-chong-lan-truc:84289030:84289020
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"842890","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-842890","dong8":{"84289020":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp"}]},"84289030":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Thiết bị đẩy xe goòng trong hầm mỏ","thanh ngang xe goòng hoặc đầu máy","thiết bị lật toa xe","các thiết bị giữ xe goòng chạy đường sắt tương tự"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"84289020","loai":"QUYET_DINH","ghiChu":"tax.84289020: \"Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\" ⇒ congDung \"dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\""},{"ma":"84289030","loai":"QUYET_DINH","ghiChu":"tax.84289030: \"Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự\" ⇒ tenLoai danh sách 4 thiết bị"}]}
+```
+
+=== GÓI PN6 842890 ===
+# 842890 — Máy khác
+
+842890 — Lifting, handling, loading or unloading machinery; n.e.c. in heading no. 8425, 8426, 8427 or 8428
+  84289020 Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+  84289030 Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự
+  84289090 Loại khác  [LK]
+
+- 84289020 DONG8
+    tax.84289020 [105 ký tự]: 84289020 - - Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp"
+- 84289030 DONG8
+    tax.84289030 [156 ký tự]: 84289030 - - Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự
+- 84289090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84289090 [22 ký tự]: 84289090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.842890; chú giải: nhom8428.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 843710 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:84371030
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong0-phan-con-lai-thua:84371040
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"843710","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-843710","dong8":{"84371010":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"các loại hạt"},{"fact":"hoatDongBangDien","op":"CO"}]},"84371020":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"các loại hạt"},{"fact":"hoatDongBangDien","op":"KHONG"}]},"84371030":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"CO"}],"phanConLai":["84371010","84371020"]},"84371040":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"KHONG"}],"phanConLai":["84371010","84371020"]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"84371010","loai":"QUYET_DINH","ghiChu":"tax.84371010: \"Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện\" ⇒ dungCho \"các loại hạt\", hoatDongBangDien CO"},{"ma":"84371020","loai":"QUYET_DINH","ghiChu":"tax.84371020: \"Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện\" ⇒ dungCho \"các loại hạt\", hoatDongBangDien KHONG"},{"ma":"84371030","loai":"QUYET_DINH","ghiChu":"tax.84371030: \"Loại khác, hoạt động bằng điện\" ⇒ hoatDongBangDien CO + phanConLai [\"84371010\",\"84371020\"]"},{"ma":"84371040","loai":"QUYET_DINH","ghiChu":"tax.84371040: \"Loại khác, không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG + phanConLai [\"84371010\",\"84371020\"]"}]}
+```
+
+=== GÓI PN6 843710 ===
+# 843710 — Máy làm sạch, tuyển chọn hoặc phân loại hạt giống, hạt hoặc các loại rau đậu đã được làm khô
+
+843710 — Machines; for cleaning, sorting or grading seed, grain or dried leguminous vegetables
+  84371010 Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện
+  84371020 Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện
+  84371030 Loại khác, hoạt động bằng điện  [LK có điều kiện]
+  84371040 Loại khác, không hoạt động bằng điện  [LK có điều kiện]
+
+- 84371010 DONG8
+    tax.84371010 [128 ký tự]: 84371010 - - Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho các loại hạt, hoạt động" · [GIỚI HẠN] "bằng điện" · [GIỚI HẠN] "bằng điện"
+- 84371020 DONG8
+    tax.84371020 [140 ký tự]: 84371020 - - Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho các loại hạt" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84371030 DONG8
+    tax.84371030 [43 ký tự]: 84371030 - - Loại khác, hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84371040 DONG8
+    tax.84371040 [49 ký tự]: 84371040 - - Loại khác, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.843710; chú giải: nhom8437.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 843880 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:84388011+84388021:congDung=chế biến cá,hoatDongBangDien=true,tenLoai=Máy xát vỏ cà phê:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của ch
+    ✗ cong2-chong-lan:84388012+84388022:congDung=chế biến cá,hoatDongBangDien=false,tenLoai=Máy xát vỏ cà phê:khong-tat-dinh
+    ✗ cong2-chong-lan-truc:8438801:8438802
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4)
+    ✗ cong2-chong-lan-truc:8438802:8438801
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"843880","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-843880","dong8":{"84388011":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"CO"}]},"84388012":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"KHONG"}]},"84388021":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"CO"}]},"84388022":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"KHONG"}]},"84388091":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"CO"}]},"84388092":{"dieuKienSo":[{"fact":"hoatDongBangDien","op":"KHONG"}]}},"dieuKienNut":{"8438801":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Máy xát vỏ cà phê"}]},"8438802":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":["chế biến cá","động vật giáp xác","động vật thân mềm"]}]}},"ghiChuSoan":[{"ma":"8438801","loai":"QUYET_DINH","ghiChu":"tieuDe.8438801: \"Máy xát vỏ cà phê\" ⇒ tenLoai \"Máy xát vỏ cà phê\""},{"ma":"8438802","loai":"QUYET_DINH","ghiChu":"tieuDe.8438802: \"Máy chế biến cá, động vật giáp xác hoặc động vật thân mềm\" ⇒ congDung [\"chế biến cá\",\"động vật giáp xác\",\"động vật thân mềm\"]"},{"ma":"84388011","loai":"QUYET_DINH","ghiChu":"tax.84388011: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"},{"ma":"84388012","loai":"QUYET_DINH","ghiChu":"tax.84388012: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"},{"ma":"84388021","loai":"QUYET_DINH","ghiChu":"tax.84388021: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"},{"ma":"84388022","loai":"QUYET_DINH","ghiChu":"tax.84388022: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"},{"ma":"84388091","loai":"QUYET_DINH","ghiChu":"tax.84388091: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"},{"ma":"84388092","loai":"QUYET_DINH","ghiChu":"tax.84388092: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"}]}
+```
+
+=== GÓI PN6 843880 ===
+# 843880 — Máy khác
+
+843880 — Machinery; used in the industrial preparation or manufacture of food or drink, n.e.c. in heading no. 8438
+  [8438801] Máy xát vỏ cà phê
+    84388011 Hoạt động bằng điện
+    84388012 Không hoạt động bằng điện
+  [8438802] Máy chế biến cá, động vật giáp xác hoặc động vật thân mềm
+    84388021 Hoạt động bằng điện
+    84388022 Không hoạt động bằng điện
+  [8438809] Loại khác
+    84388091 Hoạt động bằng điện
+    84388092 Không hoạt động bằng điện
+
+- 8438801 TIEU_DE
+    tieuDe.8438801 [25 ký tự]: 8438801 Máy xát vỏ cà phê
+- 84388011 DONG8
+    tax.84388011 [34 ký tự]: 84388011 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84388012 DONG8
+    tax.84388012 [40 ký tự]: 84388012 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 8438802 TIEU_DE
+    tieuDe.8438802 [65 ký tự]: 8438802 Máy chế biến cá, động vật giáp xác hoặc động vật thân mềm
+- 84388021 DONG8
+    tax.84388021 [34 ký tự]: 84388021 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84388022 DONG8
+    tax.84388022 [40 ký tự]: 84388022 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 8438809 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8438809 [17 ký tự]: 8438809 Loại khác
+- 84388091 DONG8
+    tax.84388091 [34 ký tự]: 84388091 - - - Hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 84388092 DONG8
+    tax.84388092 [40 ký tự]: 84388092 - - - Không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.843880; chú giải: nhom8438.nhom, ch84.chuong, phan84.phan
+
