@@ -48,7 +48,15 @@ const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNap
   // + 1 khoá 03/11: quét toàn biểu thuế (#999) — nhóm lốp 4011 chỉ cần chieuRong (đã có) + duongKinhVanh (lô 6)
   tocDo: 'SO',
   // + laPhanDoan (03/11, tách từ mucDoTinhCheDau.PHAN_DOAN khi sửa đọc, #1001)
-  laPhanDoan: 'CO_KHONG' };
+  laPhanDoan: 'CO_KHONG',
+  // + 3 khoá lô 10 — gói ✗ máy ch.86–89 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 353 dòng máy chưa đọc + dòng ✓ cùng PN6 (quét sót máy #1001); trích 12/12 đúng biểu thật
+  bonBanhChuDong: 'CO_KHONG', xeBaBanh: 'CO_KHONG', khoiLuongToanBo: 'SO',
+  // + 3 khoá lô 10b — gói ✗ máy ch.86–89, vòng 2 (03/11, Studio quét biểu thuế, máy kiểm): Studio xét lại dòng ✗ lặp ≥5 PN6 bị bỏ ở vòng 1: kiểu xe chở người/chở hàng là tập giá trị, không phải tên hàng; trích 20/20 đúng biểu thật
+  kieuXeChoNguoi: 'LIET_KE', kieuXeChoHang: 'LIET_KE', mayKeoNongNghiep: 'CO_KHONG',
+  // + 6 khoá lô 11 — gói ✗ máy ch.84 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 177 dòng máy chưa đọc ch.84; trích 25/25 đúng; dieuKhienSo tách từ đề xuất boSung vào cachDieuKhien (@1)
+  loaiBoPhanDongCoPiston: 'LIET_KE', dungTrongNongNghiep: 'CO_KHONG', canDienTu: 'CO_KHONG', mayRenKhuonHoacDapKhuon: 'CO_KHONG', dungTrongYTeHoacThiNghiem: 'CO_KHONG', dieuKhienSo: 'CO_KHONG',
+  // + 6 khoá lô 12 — gói ✗ máy ch.85 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 141 dòng máy chưa đọc ch.85; trích 28/28 đúng
+  dungChoXeCoDongCo: 'CO_KHONG', bienApThichUng: 'CO_KHONG', loaiXachTay: 'CO_KHONG', laMayPhatDien: 'CO_KHONG', loaiBienDoiTinhDien: 'LIET_KE', loaiThietBiBaoDong: 'LIET_KE' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
