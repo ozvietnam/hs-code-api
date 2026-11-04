@@ -1,0 +1,124 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "890110",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-890110",
+  "dong8": {
+    "89011010": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89011020": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 500,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89011060": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 500,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89011070": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 1000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 4000,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89011080": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 4000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 5000,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89011090": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 5000,
+          "donVi": "GT"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "89011010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89011010: \"Tổng dung tích (gross tonnage) không quá 26\" ⇒ tongDungTichTau <= 26 GT"
+    },
+    {
+      "ma": "89011020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89011020: \"Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500\" ⇒ tongDungTichTau > 26 GT, <= 500 GT"
+    },
+    {
+      "ma": "89011060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89011060: \"Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000\" ⇒ tongDungTichTau > 500 GT, <= 1000 GT"
+    },
+    {
+      "ma": "89011070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89011070: \"Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000\" ⇒ tongDungTichTau > 1000 GT, <= 4000 GT"
+    },
+    {
+      "ma": "89011080",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89011080: \"Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000\" ⇒ tongDungTichTau > 4000 GT, <= 5000 GT"
+    },
+    {
+      "ma": "89011090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89011090: \"Tổng dung tích (gross tonnage) trên 5.000\" ⇒ tongDungTichTau > 5000 GT"
+    }
+  ]
+}

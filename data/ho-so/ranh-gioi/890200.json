@@ -1,0 +1,364 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "890200",
+  "nhom": "8902",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-890200",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8902003",
+      "nguon": "tieuDe.8902003",
+      "trich": "8902003 Tàu thuyền đánh bắt thủy sản",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tàu thuyền đánh bắt thủy sản"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "89020031",
+      "nguon": "tax.89020031",
+      "trich": "89020031 - - Tổng dung tích (gross tonnage) không quá 26 ",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020032",
+      "nguon": "tax.89020032",
+      "trich": "89020032 - - Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40 ",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<",
+          "value": 40,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020033",
+      "nguon": "tax.89020033",
+      "trich": "89020033 - - Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">=",
+          "value": 40,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 101,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020034",
+      "nguon": "tax.89020034",
+      "trich": "89020034 - - Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250 ",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 101,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 250,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020035",
+      "nguon": "tax.89020035",
+      "trich": "89020035 - - Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 250,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020036",
+      "nguon": "tax.89020036",
+      "trich": "89020036 - - Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000 ",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 1000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 4000,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020037",
+      "nguon": "tax.89020037",
+      "trich": "89020037 - - Tổng dung tích (gross tonnage) trên 4.000",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 4000,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020041",
+      "nguon": "tax.89020041",
+      "trich": "89020041 - - Tổng dung tích (gross tonnage) không quá 26 ",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020042",
+      "nguon": "tax.89020042",
+      "trich": "89020042 - - Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40 ",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<",
+          "value": 40,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020043",
+      "nguon": "tax.89020043",
+      "trich": "89020043 - - Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">=",
+          "value": 40,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 101,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020044",
+      "nguon": "tax.89020044",
+      "trich": "89020044 - - Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250 ",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 101,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 250,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020045",
+      "nguon": "tax.89020045",
+      "trich": "89020045 - - Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 250,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020046",
+      "nguon": "tax.89020046",
+      "trich": "89020046 - - Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000 ",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 1000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 4000,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89020047",
+      "nguon": "tax.89020047",
+      "trich": "89020047 - - Tổng dung tích (gross tonnage) trên 4.000",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 4000,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8902003",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8902003: \"Tàu thuyền đánh bắt thủy sản\" ⇒ tenLoai \"Tàu thuyền đánh bắt thủy sản\""
+    },
+    {
+      "ma": "89020031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020031: \"Tổng dung tích (gross tonnage) không quá 26\" ⇒ tongDungTichTau <= 26 GT"
+    },
+    {
+      "ma": "89020032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020032: \"Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40\" ⇒ tongDungTichTau > 26 GT, < 40 GT"
+    },
+    {
+      "ma": "89020033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020033: \"Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101\" ⇒ tongDungTichTau >= 40 GT, <= 101 GT"
+    },
+    {
+      "ma": "89020034",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020034: \"Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250\" ⇒ tongDungTichTau > 101 GT, <= 250 GT"
+    },
+    {
+      "ma": "89020035",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020035: \"Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000\" ⇒ tongDungTichTau > 250 GT, <= 1000 GT"
+    },
+    {
+      "ma": "89020036",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020036: \"Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000\" ⇒ tongDungTichTau > 1000 GT, <= 4000 GT"
+    },
+    {
+      "ma": "89020037",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020037: \"Tổng dung tích (gross tonnage) trên 4.000\" ⇒ tongDungTichTau > 4000 GT"
+    },
+    {
+      "ma": "89020041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020041: \"Tổng dung tích (gross tonnage) không quá 26\" ⇒ tongDungTichTau <= 26 GT"
+    },
+    {
+      "ma": "89020042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020042: \"Tổng dung tích (gross tonnage) trên 26 nhưng dưới 40\" ⇒ tongDungTichTau > 26 GT, < 40 GT"
+    },
+    {
+      "ma": "89020043",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020043: \"Tổng dung tích (gross tonnage) từ 40 trở lên nhưng không quá 101\" ⇒ tongDungTichTau >= 40 GT, <= 101 GT"
+    },
+    {
+      "ma": "89020044",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020044: \"Tổng dung tích (gross tonnage) trên 101 nhưng không quá 250\" ⇒ tongDungTichTau > 101 GT, <= 250 GT"
+    },
+    {
+      "ma": "89020045",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020045: \"Tổng dung tích (gross tonnage) trên 250 nhưng không quá 1.000\" ⇒ tongDungTichTau > 250 GT, <= 1000 GT"
+    },
+    {
+      "ma": "89020046",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020046: \"Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000\" ⇒ tongDungTichTau > 1000 GT, <= 4000 GT"
+    },
+    {
+      "ma": "89020047",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89020047: \"Tổng dung tích (gross tonnage) trên 4.000\" ⇒ tongDungTichTau > 4000 GT"
+    }
+  ]
+}
