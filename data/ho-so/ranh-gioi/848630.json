@@ -1,0 +1,135 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "848630",
+  "nhom": "8486",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848630",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84863010",
+      "nguon": "tax.84863010",
+      "trich": "84863010 - - Thiết bị khắc axit bằng phương pháp khô lên tấm nền của màn hình dẹt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị khắc axit"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "khô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84863020",
+      "nguon": "tax.84863020",
+      "trich": "84863020 - - Thiết bị khắc axit bằng phương pháp ướt, hiện ảnh, tẩy rửa hoặc làm sạch màn hình dẹt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị khắc axit"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "ướt",
+            "hiện ảnh",
+            "tẩy rửa",
+            "làm sạch màn hình dẹt"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84863030",
+      "nguon": "tax.84863030",
+      "trich": "84863030 - - Thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt; thiết bị để tạo phủ lớp nhũ tương cảm quang lên các nền của màn hình dẹt bằng phương pháp quay; thiết bị tạo kết tủa vật lý lên các lớp nền của màn hình dẹt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thiết bị kết tủa và bay hơi",
+            "thiết bị để tạo phủ lớp nhũ tương cảm quang",
+            "thiết bị tạo kết tủa vật lý"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84863090",
+      "nguon": "tax.84863090",
+      "trich": "84863090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84863010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84863010: \"Thiết bị khắc axit bằng phương pháp khô lên tấm nền của màn hình dẹt\" ⇒ tenLoai \"Thiết bị khắc axit\" + congDung \"khô\""
+    },
+    {
+      "ma": "84863010",
+      "loai": "BO_VE",
+      "ve": "bằng phương pháp khô lên tấm nền của màn hình dẹt",
+      "lyDo": "Đã phủ phương pháp khô trong congDung, đối tượng màn hình dẹt là phạm vi của phân nhóm 8486.30"
+    },
+    {
+      "ma": "84863020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84863020: \"Thiết bị khắc axit bằng phương pháp ướt, hiện ảnh, tẩy rửa hoặc làm sạch màn hình dẹt\" ⇒ tenLoai \"Thiết bị khắc axit\" + congDung mảng ướt/hiện ảnh/tẩy rửa/làm sạch"
+    },
+    {
+      "ma": "84863020",
+      "loai": "BO_VE",
+      "ve": "bằng phương pháp ướt, hiện ảnh, tẩy rửa hoặc làm sạch màn hình dẹt",
+      "lyDo": "Đã phủ các quy trình ướt, hiện ảnh, tẩy rửa, làm sạch trong congDung"
+    },
+    {
+      "ma": "84863030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84863030: \"Thiết bị kết tủa và bay hơi... thiết bị để tạo phủ lớp nhũ tương... thiết bị tạo kết tủa vật lý...\" ⇒ tenLoai mảng 3 loại thiết bị"
+    },
+    {
+      "ma": "84863030",
+      "loai": "BO_VE",
+      "ve": "dùng để sản xuất màn hình dẹt",
+      "lyDo": "Lặp lại phạm vi chung của phân nhóm 8486.30"
+    },
+    {
+      "ma": "84863030",
+      "loai": "BO_VE",
+      "ve": "để tạo phủ lớp nhũ tương cảm quang lên các nền của màn hình dẹt",
+      "lyDo": "Tên thiết bị tạo phủ lớp nhũ tương cảm quang đã được đưa vào tenLoai"
+    },
+    {
+      "ma": "84863030",
+      "loai": "BO_VE",
+      "ve": "bằng phương pháp quay",
+      "lyDo": "Phương pháp quay của thiết bị phủ nhũ tương, không có khoá tương ứng"
+    },
+    {
+      "ma": "84863030",
+      "loai": "BO_VE",
+      "ve": "của màn hình dẹt",
+      "lyDo": "Phạm vi chung của phân nhóm 8486.30"
+    }
+  ]
+}

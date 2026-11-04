@@ -1,0 +1,100 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "847780",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-847780",
+  "dong8": {
+    "84778010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cao su"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84778020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cao su"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "84778031": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất tấm mạch in",
+            "tấm dây in"
+          ]
+        }
+      ]
+    },
+    "84778040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "plastic"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8477803": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "plastic"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84778010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84778010: \"Để gia công cao su hoặc sản xuất các sản phẩm từ cao su, hoạt động bằng điện\" ⇒ dungCho \"cao su\", hoatDongBangDien CO"
+    },
+    {
+      "ma": "84778020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84778020: \"Để gia công cao su hoặc sản xuất các sản phẩm từ cao su, không hoạt động bằng điện\" ⇒ dungCho \"cao su\", hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "8477803",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8477803: \"Để gia công plastic hoặc sản xuất các sản phẩm từ plastic, hoạt động bằng điện\" ⇒ dungCho \"plastic\", hoatDongBangDien CO"
+    },
+    {
+      "ma": "84778031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84778031: \"Máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in\" ⇒ congDung [\"sản xuất tấm mạch in\",\"tấm dây in\"]"
+    },
+    {
+      "ma": "84778040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84778040: \"Để gia công plastic hoặc sản xuất các sản phẩm từ plastic, không hoạt động bằng điện\" ⇒ dungCho \"plastic\", hoatDongBangDien KHONG"
+    }
+  ]
+}
