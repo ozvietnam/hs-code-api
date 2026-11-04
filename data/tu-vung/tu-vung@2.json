@@ -5305,10 +5305,10 @@
           "cachDoc": {
             "vi": [
               "dạng\\s+hạt",
-              "viên",
+              "(?:dạng\\s+viên|viên\\s+nhựa|viên\\s+nén\\s+nhựa)",
               "hạt\\s+cườm",
-              "vẩy",
-              "mảnh",
+              "(?:dạng\\s+)?vẩy",
+              "(?:dạng\\s+mảnh|mảnh\\s+vụn)",
               "dạng\\s+bột",
               "dạng\\s+khối\\s+không\\s+đều"
             ],
@@ -6594,12 +6594,19 @@
             "vi": [
               "dạng\\s+uống",
               "thuốc\\s+uống",
-              "viên\\s+uống"
+              "viên\\s+uống",
+              "viên\\s+nén",
+              "viên\\s+nang",
+              "siro\\s+uống",
+              "dung\\s+dịch\\s+uống"
             ],
             "en": [
               "oral\\s+form",
               "in\\s+oral\\s+form",
-              "for\\s+oral\\s+administration"
+              "for\\s+oral\\s+administration",
+              "tablets?",
+              "capsules?",
+              "oral\\s+solution"
             ],
             "zh": [
               "口服",
@@ -6944,9 +6951,9 @@
       "nhanZh": "已烘焙/已炒",
       "cachDoc": {
         "vi": [
-          "đã\\s+rang(?:\\s+chín|\\s+sấy)?",
-          "rang\\s+(?:muối|bơ|chín)",
-          "hạt\\s+rang"
+          "(?:đã\\s+)?rang(?:\\s+chín|\\s+sấy)?",
+          "(?:cà\\s+phê|đậu\\s+phộng|lạc|hạt\\s+điều|hạt|mè|vừng)\\s+rang(?:\\s+chín|\\s+xay|\\s+mộc)?",
+          "rang\\s+(?:muối|bơ|chín|xay|mộc)"
         ],
         "en": [
           "roasted",
@@ -7595,6 +7602,8 @@
           "ép\\s+lớp"
         ],
         "en": [
+          "(?:impregnated|coated|covered|laminated)",
+          "(?:pu|pvc|plastic|rubber)[- ](?:coated|laminated)",
           "impregnated,\\s*coated,\\s*covered\\s+or\\s+laminated",
           "coated,\\s*covered\\s+or\\s+laminated",
           "impregnated,\\s*coated\\s+or\\s+covered"
@@ -8308,10 +8317,12 @@
         "vi": [
           "pha\\s+thêm\\s+đường",
           "thêm\\s+đường",
+          "(?<!không\\s)có\\s+đường",
+          "ngâm\\s+(?:nước\\s+)?đường",
+          "ngâm\\s+si[- ]?rô",
           "chất\\s+tạo\\s+ngọt",
           "pha\\s+thêm\\s+rượu",
-          "ngâm\\s+rượu",
-          "ngâm\\s+đường"
+          "ngâm\\s+rượu"
         ],
         "en": [
           "added\\s+sugar",
@@ -8347,6 +8358,7 @@
       "cachDocKhong": {
         "vi": [
           "không\\s+pha\\s+đường",
+          "không\\s+đường",
           "chưa\\s+thêm\\s+đường",
           "không\\s+chứa\\s+cồn",
           "không\\s+pha\\s+rượu"
@@ -8587,10 +8599,9 @@
           "chất\\s+lỏng"
         ],
         "en": [
-          "liquid\\s+form",
-          "in\\s+liquid",
-          "liquid",
-          "liquids"
+          "(?:in\\s+)?liquid\\s+form",
+          "in\\s+liquid\\s+state",
+          "(?<!crystal\\s)(?<!level\\s)\\bliquids?\\b(?!\\s+crystal)(?!\\s+level)"
         ],
         "zh": [
           "液体",
