@@ -1,0 +1,81 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730429",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-730429",
+  "dong8": {
+    "73042910": {
+      "dieuKienSo": [
+        {
+          "fact": "gioiHanChay",
+          "op": "<",
+          "value": 80000,
+          "donVi": "psi"
+        },
+        {
+          "fact": "coRen",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "73042920": {
+      "dieuKienSo": [
+        {
+          "fact": "gioiHanChay",
+          "op": "<",
+          "value": 80000,
+          "donVi": "psi"
+        },
+        {
+          "fact": "coRen",
+          "op": "CO"
+        }
+      ]
+    },
+    "73042930": {
+      "dieuKienSo": [
+        {
+          "fact": "gioiHanChay",
+          "op": ">=",
+          "value": 80000,
+          "donVi": "psi"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "73042910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73042910: \"Ống chống và ống có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống\" ⇒ gioiHanChay < 80000 psi, coRen KHONG"
+    },
+    {
+      "ma": "73042910",
+      "loai": "BO_VE",
+      "ve": "có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống",
+      "lyDo": "Đã lượng hóa qua gioiHanChay và coRen"
+    },
+    {
+      "ma": "73042920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73042920: \"Ống chống và ống có giới hạn chảy(1) dưới 80.000 psi và có ren ở đầu ống\" ⇒ gioiHanChay < 80000 psi, coRen CO"
+    },
+    {
+      "ma": "73042920",
+      "loai": "BO_VE",
+      "ve": "có giới hạn chảy(1) dưới 80.000 psi và có ren ở đầu ống",
+      "lyDo": "Đã lượng hóa qua gioiHanChay và coRen"
+    },
+    {
+      "ma": "73042930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73042930: \"Ống chống và ống có giới hạn chảy(1) từ 80.000 psi trở lên, có hoặc không có ren ở đầu ống\" ⇒ gioiHanChay >= 80000 psi"
+    },
+    {
+      "ma": "73042930",
+      "loai": "BO_VE",
+      "ve": "có giới hạn chảy(1) từ 80.000 psi trở lên, có hoặc không có ren ở đầu ống",
+      "lyDo": "Đã lượng hóa qua gioiHanChay >= 80000 psi"
+    }
+  ]
+}

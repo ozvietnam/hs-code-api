@@ -1,0 +1,62 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730300",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-730300",
+  "dong8": {
+    "73030011": {
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "73030091": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 100,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7303001": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "ống",
+            "ống dẫn"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7303001",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7303001: \"Các loại ống và ống dẫn\" ⇒ tenLoai [\"ống\",\"ống dẫn\"]"
+    },
+    {
+      "ma": "73030011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73030011: \"Ống và ống dẫn không có đầu nối (SEN)\" ⇒ daGanDauNoi KHONG"
+    },
+    {
+      "ma": "73030091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73030091: \"Với đường kính ngoài không quá 100 mm\" ⇒ duongKinh <= 100 mm"
+    },
+    {
+      "ma": "73030091",
+      "loai": "BO_VE",
+      "ve": "Với đường kính ngoài không quá 100 mm",
+      "lyDo": "Đã được lượng hóa qua duongKinh <= 100 mm"
+    }
+  ]
+}
