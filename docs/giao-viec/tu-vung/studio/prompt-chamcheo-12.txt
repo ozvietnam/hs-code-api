@@ -1,0 +1,799 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+LƯU Ý rút từ 6 gói trước: (1) mọi mục SUA PHẢI kèm "sua" với giá trị đầy đủ thay thế; (2) regex sửa để tránh bắt nhầm phải thử lại trong đầu với cụm gây nhầm (tiền tố tuỳ chọn "(?:dạng\s+)?viên" VẪN bắt "thành viên"); (3) không bỏ cách viết có gạch nối ("radio-telephony"); (4) JSON hợp lệ, có dấu phẩy giữa các trường, không dấu phẩy thừa.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG), bonBanhChuDong(CO_KHONG), xeBaBanh(CO_KHONG), khoiLuongToanBo(SO), kieuXeChoNguoi(LIET_KE), kieuXeChoHang(LIET_KE), mayKeoNongNghiep(CO_KHONG), loaiBoPhanDongCoPiston(LIET_KE), dungTrongNongNghiep(CO_KHONG), canDienTu(CO_KHONG), mayRenKhuonHoacDapKhuon(CO_KHONG), dungTrongYTeHoacThiNghiem(CO_KHONG), dieuKhienSo(CO_KHONG), dungChoXeCoDongCo(CO_KHONG), bienApThichUng(CO_KHONG), loaiXachTay(CO_KHONG), laMayPhatDien(CO_KHONG), loaiBienDoiTinhDien(LIET_KE), loaiThietBiBaoDong(LIET_KE), dangTamPhienMang(LIET_KE), tamPhuSan(CO_KHONG), dangChePhamDietMuoi(LIET_KE), loaiHangDanLat(LIET_KE), ongHutXaBunKhaiThacMo(CO_KHONG), dungChoDienAnh(CO_KHONG), sonChongHaHoacChongAnMonVoTau(CO_KHONG), tamMiengGhepLatNenOpTuong(CO_KHONG), dungTrongNhaKhoa(CO_KHONG), dayTetBen(CO_KHONG), loaiCung(CO_KHONG), boPhanThitGiaCam(LIET_KE), thichHopDungChoNguoi(CO_KHONG), caBot(CO_KHONG), laChe(CO_KHONG), daXay(CO_KHONG), soCheTom(LIET_KE), loaiThuocLaNguyenLieu(LIET_KE), phaCheVoiEthanol(CO_KHONG), daPhaHuongLieuHoacChatMau(CO_KHONG), sanPhamDinhDuongYTe(CO_KHONG), dangKhoiHoacTamDa(LIET_KE), loaiMiBunMien(LIET_KE), chuaCaCao(CO_KHONG), thamCauNguyen(CO_KHONG), quanAoDauKiemDauVat(CO_KHONG), loaiSanPhamXiMangSoi(LIET_KE), tamLatGachLat(CO_KHONG), donNgucSauPhauThuat(CO_KHONG), boPhanGiayDep(LIET_KE), dungSanXuatOngChanKhong(CO_KHONG), aoBarongTagalog(CO_KHONG), sarongHinhOng(CO_KHONG), aoChoangHanhHuongIhram(CO_KHONG), giayDauVatCuTa(CO_KHONG), dangDaiDaiTamPhoDung(LIET_KE), dangLuonSong(CO_KHONG), loaiDoDungGiaDinhSatThep(LIET_KE), xichXeDapMoTo(CO_KHONG), phuongPhapHanOngThep(LIET_KE), hopDungThuocLaDieu(CO_KHONG), banLeMocKhoaHasps(CO_KHONG), chuaGiaCongQuaMucCanNong(CO_KHONG), hamLuongCrom(SO), phoiDetDangPhien(CO_KHONG), ongVaPhuKienKimLoaiMau(CO_KHONG), loaiDoChoi(LIET_KE), kieuChieuSangDen(LIET_KE), tuHutHoiDoc(CO_KHONG), denChoPhongMo(CO_KHONG), hopDungThuocLaTrangTri(CO_KHONG), loaiNoiThatYTe(LIET_KE)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ chuaGiaCongQuaMucCanNong ===
+{
+ "khoa": "chuaGiaCongQuaMucCanNong",
+ "kieu": "CO_KHONG",
+ "nhanVi": "chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn qua khuôn",
+ "nhanEn": "not further worked than hot-rolled, hot-drawn or extruded",
+ "nhanZh": "除热轧、热拉拔或挤压外未经进一步加工",
+ "cachDoc": {
+  "vi": [
+   "chưa\\s+được\\s+gia\\s+công\\s+quá\\s+mức\\s+cán\\s+nóng,\\s*kéo\\s+nóng\\s+hoặc\\s+ép\\s+đùn\\s+qua\\s+khuôn"
+  ],
+  "en": [
+   "not\\s+further\\s+worked\\s+than\\s+hot-?rolled,?\\s*hot-?drawn\\s+or\\s+extruded"
+  ],
+  "zh": [
+   "除热轧、热拉拔或挤压外未经进一步加工"
+  ],
+  "phuDinh": [
+   "đã gia công quá mức",
+   "không phải",
+   "further worked",
+   "经进一步加工"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "đã\\s+gia\\s+công\\s+quá\\s+mức\\s+cán\\s+nóng"
+  ],
+  "en": [
+   "further\\s+worked\\s+than\\s+hot-?rolled"
+  ],
+  "zh": [
+   "经进一步加工"
+  ]
+ },
+ "cachViet": {
+  "vi": "chưa gia công quá mức cán nóng, kéo nóng hoặc ép đùn",
+  "viPhuDinh": "đã gia công quá mức cán nóng, kéo nóng hoặc ép đùn"
+ },
+ "cauHoi": {
+  "vi": "Thép thanh, que, dạng hình có phải chỉ mới qua cán nóng, kéo nóng hoặc ép đùn mà chưa gia công thêm không?",
+  "zh": "该钢铁条杆或异型材是否除热轧、热拉拔或挤压外未经进一步加工？"
+ },
+ "ghiChu": "Chữ biểu 7222.40.10, 7228.20.11, 7228.20.91, 7228.70.10 'Chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn qua khuôn'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+72224010 Chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn qua khuôn
+72224090 Loại khác
+72282011 Chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn qua khuôn
+72282019 Loại khác
+72282091 Chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn qua khuôn
+72282099 Loại khác
+72287010 Chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn qua khuôn
+72287090 Loại khác
+
+=== KHOÁ hamLuongCrom ===
+{
+ "khoa": "hamLuongCrom",
+ "kieu": "SO",
+ "nhanVi": "hàm lượng crom",
+ "nhanEn": "chromium content",
+ "nhanZh": "铬含量",
+ "heDonVi": "phanTram",
+ "donViChuan": "%",
+ "canNguCanh": true,
+ "cachDoc": {
+  "vi": [
+   "(?:có\\s+)?hàm\\s+lượng\\s+crôm",
+   "(?:có\\s+)?hàm\\s+lượng\\s+crom"
+  ],
+  "en": [
+   "chromium\\s+content"
+  ],
+  "zh": [
+   "铬含量"
+  ]
+ },
+ "cachViet": {
+  "vi": "hàm lượng crom {giaTri}%"
+ },
+ "cauHoi": {
+  "vi": "Hàm lượng crom trong hợp kim thép là bao nhiêu phần trăm (%)?",
+  "zh": "该钢材中的铬含量是多少百分比（%）？"
+ },
+ "ghiChu": "Tiêu chí hàm lượng hợp kim tại nhóm 7227 và 7229: 7227.90.10, 7229.90.21, 7229.90.91 'Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "docMoRong": true
+}
+--- dòng biểu liên quan ---
+72279010 Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng
+72279090 Loại khác
+72299021 Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng
+72299029 Loại khác
+72299030 Loại khác, bằng thép gió
+72299091 Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng
+72299099 Loại khác
+
+=== KHOÁ phoiDetDangPhien ===
+{
+ "khoa": "phoiDetDangPhien",
+ "kieu": "CO_KHONG",
+ "nhanVi": "phôi dẹt dạng phiến (slabs)",
+ "nhanEn": "slabs",
+ "nhanZh": "扁坯（扁钢坯）",
+ "cachDoc": {
+  "vi": [
+   "phôi\\s+dẹt(?:\\s*\\(dạng\\s+phiến\\))?(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "slabs?"
+  ],
+  "zh": [
+   "扁坯",
+   "扁钢坯",
+   "板坯"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+phôi\\s+dẹt"
+  ],
+  "en": [
+   "not\\s+slabs?"
+  ],
+  "zh": [
+   "非扁坯"
+  ]
+ },
+ "cachViet": {
+  "vi": "phôi dẹt dạng phiến",
+  "viPhuDinh": "không phải phôi dẹt dạng phiến"
+ },
+ "cauHoi": {
+  "vi": "Bán thành phẩm thép có phải là phôi dẹt dạng phiến (slabs) không?",
+  "zh": "该半制成钢铁产品是否为扁坯（板坯）？"
+ },
+ "ghiChu": "Chữ biểu 7207.12.10, 7207.20.10, 7207.20.91 'Phôi dẹt (dạng phiến) (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+72071210 Phôi dẹt (dạng phiến) (SEN)
+72071290 Loại khác
+72072010 Phôi dẹt (dạng phiến) (SEN)
+72072021 Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm
+72072029 Loại khác
+72072091 Phôi dẹt (dạng phiến) (SEN)
+72072092 Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm
+72072099 Loại khác
+
+=== KHOÁ ongVaPhuKienKimLoaiMau ===
+{
+ "khoa": "ongVaPhuKienKimLoaiMau",
+ "kieu": "CO_KHONG",
+ "nhanVi": "ống, ống dẫn và phụ kiện ghép nối ống bằng kim loại màu",
+ "nhanEn": "tubes, pipes and tube or pipe fittings of non-ferrous base metals",
+ "nhanZh": "有色金属管、导管及管子附件",
+ "cachDoc": {
+  "vi": [
+   "(?:các\\s+loại\\s+)?ống,\\s*ống\\s+dẫn\\s+và\\s+phụ\\s+kiện\\s+để\\s+ghép\\s+nối\\s+của\\s+ống\\s+hoặc\\s+ống\\s+dẫn(?:\\s*\\([^)]*\\))?"
+  ],
+  "en": [
+   "tubes?,?\\s*pipes?\\s+and\\s+tube\\s+or\\s+pipe\\s+fittings?"
+  ],
+  "zh": [
+   "管、导管及管子附件"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+ống\\s+và\\s+phụ\\s+kiện\\s+ống"
+  ],
+  "en": [
+   "not\\s+tubes\\s+or\\s+pipes"
+  ],
+  "zh": [
+   "非管及管子附件"
+  ]
+ },
+ "cachViet": {
+  "vi": "ống và phụ kiện ghép nối ống kim loại màu",
+  "viPhuDinh": "không phải ống và phụ kiện ghép nối ống kim loại màu"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm có phải là các loại ống, ống dẫn hoặc phụ kiện ghép nối ống bằng kim loại màu không?",
+  "zh": "该产品是否为有色金属制管、导管及管子附件？"
+ },
+ "ghiChu": "Chữ biểu 7806.00.30, 7907.00.40, 8007.00.40 'Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+78060020 Thanh, que, dạng hình và dây
+78060030 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+78060040 Len chì; vòng đệm; tấm điện a-nốt
+78060090 Loại khác
+79070030 Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác
+79070040 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+79070091 Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+79070092 Các sản phẩm gia dụng khác
+79070093 Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin(SEN)
+79070099 Loại khác
+80070020 Dạng tấm, lá và dải, có chiều dày trên 0,2 mm
+80070030 Lá mỏng (đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự), có chiều dày (trừ phần bồi) không quá 0,2 mm; dạng bột và vảy
+80070040 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+80070091 Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+80070092 Các sản phẩm gia dụng khác
+80070093 Ống có thể gấp lại được (collapsible tubes)
+80070099 Loại khác
+
+=== KHOÁ loaiDoChoi ===
+{
+ "khoa": "loaiDoChoi",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại đồ chơi thuộc nhóm 9503",
+ "nhanEn": "type of toy of heading 9503",
+ "nhanZh": "品目9503所列玩具类型",
+ "giaTriHopLe": [
+  "BUP_BE",
+  "PHU_KIEN_BUP_BE",
+  "XE_DIEN_DUONG_RAY",
+  "MO_HINH_THU_NHO",
+  "HINH_CON_VAT",
+  "DO_CHOI_DO_TRI",
+  "XEP_KHOI_TAP_NOI",
+  "DAY_NHAY",
+  "HON_BI"
+ ],
+ "moTaGiaTri": {
+  "BUP_BE": {
+   "nhanVi": "búp bê có hoặc không có trang phục",
+   "nhanEn": "dolls, whether or not dressed",
+   "nhanZh": "玩偶（洋娃娃），不论是否着装",
+   "cachDoc": {
+    "vi": [
+     "búp\\s+bê,\\s*có\\s+hoặc\\s+không\\s+có\\s+trang\\s+phục"
+    ],
+    "en": [
+     "dolls?,?\\s*whether\\s+or\\s+not\\s+dressed"
+    ],
+    "zh": [
+     "玩偶，不论是否着装",
+     "洋娃娃"
+    ]
+   },
+   "cachViet": "búp bê"
+  },
+  "PHU_KIEN_BUP_BE": {
+   "nhanVi": "quần áo và phụ kiện quần áo, giầy và mũ của búp bê",
+   "nhanEn": "garments and accessories, footwear and headgear for dolls",
+   "nhanZh": "玩偶衣服及其附件、鞋靴及帽子",
+   "cachDoc": {
+    "vi": [
+     "quần\\s+áo\\s+và\\s+phụ\\s+kiện\\s+quần\\s+áo;\\s*giầy\\s+và\\s+mũ"
+    ],
+    "en": [
+     "garments\\s+and\\s+accessories\\s+therefor;?\\s*footwear\\s+and\\s+headgear"
+    ],
+    "zh": [
+     "衣服及其附件；鞋靴及帽子"
+    ]
+   },
+   "cachViet": "quần áo và phụ kiện của búp bê"
+  },
+  "XE_DIEN_DUONG_RAY": {
+   "nhanVi": "xe điện kể cả đường ray, đèn hiệu và phụ kiện",
+   "nhanEn": "electric trains including tracks, signals and accessories",
+   "nhanZh": "电动火车，包括铁轨、信号灯及其他附件",
+   "cachDoc": {
+    "vi": [
+     "xe\\s+điện,\\s*kể\\s+cả\\s+đường\\s+ray,\\s*đèn\\s+hiệu\\s+và\\s+các\\s+phụ\\s+kiện\\s+khác\\s+của\\s+chúng"
+    ],
+    "en": [
+     "electric\\s+trains?,?\\s*including\\s+tracks?,?\\s*signals?\\s+and\\s+other\\s+accessories?"
+    ],
+    "zh": [
+     "电动火车，包括铁轨、信号灯及其他附件"
+    ]
+   },
+   "cachViet": "xe điện đồ chơi và đường ray"
+  },
+  "MO_HINH_THU_NHO": {
+   "nhanVi": "mô hình thu nhỏ theo tỷ lệ và mô hình giải trí tương tự",
+   "nhanEn": "reduced-size scale models and similar recreational models",
+   "nhanZh": "按比例缩小的模型及类似娱乐模型",
+   "cachDoc": {
+    "vi": [
+     "các\\s+mô\\s+hình\\s+thu\\s+nhỏ\\s+theo\\s+tỷ\\s+lệ\\s*\\(\"scale\"\\)\\s+và\\s+các\\s+mô\\s+hình\\s+giải\\s+trí\\s+tương\\s+tự(?:,\\s*có\\s+hoặc\\s+không\\s+vận\\s+hành)?"
+    ],
+    "en": [
+     "reduced-?size\\s*\\(\"scale\"\\)\\s*models?\\s+and\\s+similar\\s+recreational\\s+models?"
+    ],
+    "zh": [
+     "按比例缩小的模型及类似娱乐模型"
+    ]
+   },
+   "cachViet": "mô hình thu nhỏ theo tỷ lệ"
+  },
+  "HINH_CON_VAT": {
+   "nhanVi": "đồ chơi hình con vật hoặc sinh vật không phải hình người",
+   "nhanEn": "toys representing animals or non-human creatures",
+   "nhanZh": "动物或非人类生物形状的玩具",
+   "cachDoc": {
+    "vi": [
+     "đồ\\s+chơi\\s+hình\\s+con\\s+vật\\s+hoặc\\s+sinh\\s+vật\\s+không\\s+phải\\s+hình\\s+người"
+    ],
+    "en": [
+     "toys\\s+representing\\s+animals?\\s+or\\s+non-?human\\s+creatures?"
+    ],
+    "zh": [
+     "动物或非人类生物形状的玩具"
+    ]
+   },
+   "cachViet": "đồ chơi hình con vật"
+  },
+  "DO_CHOI_DO_TRI": {
+   "nhanVi": "đồ chơi đố trí (puzzles)",
+   "nhanEn": "puzzles",
+   "nhanZh": "益智智力玩具（拼图等）",
+   "cachDoc": {
+    "vi": [
+     "(?:các\\s+loại\\s+)?đồ\\s+chơi\\s+đố\\s+trí(?:\\s*\\(puzzles\\))?"
+    ],
+    "en": [
+     "puzzles?"
+    ],
+    "zh": [
+     "益智玩具",
+     "智力拼图"
+    ]
+   },
+   "cachViet": "đồ chơi đố trí"
+  },
+  "XEP_KHOI_TAP_NOI": {
+   "nhanVi": "đồ chơi xếp khối, học chữ, số hoặc đếm",
+   "nhanEn": "educational building blocks, alphabet, counting toys",
+   "nhanZh": "积木、拼字、发音及算盘类识字教育玩具",
+   "cachDoc": {
+    "vi": [
+     "đồ\\s+chơi,\\s*xếp\\s+khối\\s+hoặc\\s+cắt\\s+rời\\s+hình\\s+chữ\\s+số,\\s*chữ\\s+cái\\s+hoặc\\s+hình\\s+con\\s+vật;\\s*bộ\\s+xếp\\s+chữ;\\s*bộ\\s+đồ\\s+chơi\\s+tạo\\s+chữ\\s+và\\s+tập\\s+nói;\\s*bộ\\s+đồ\\s+chơi\\s+in\\s+hình;\\s*bộ\\s+đồ\\s+chơi\\s+đếm(?:\\s*\\(abaci\\))?;\\s*máy\\s+may\\s+đồ\\s+chơi;\\s*máy\\s+chữ\\s+đồ\\s+chơi"
+    ],
+    "en": [
+     "toy\\s+blocks?\\s+or\\s+cut-?out\\s+numerals?,?\\s*letters?\\s+or\\s+animals;?\\s*word\\s+building\\s+sets?"
+    ],
+    "zh": [
+     "数字、字母或动物积木及拼字、发音教具"
+    ]
+   },
+   "cachViet": "đồ chơi xếp khối chữ số hoặc tập nói"
+  },
+  "DAY_NHAY": {
+   "nhanVi": "dây nhảy",
+   "nhanEn": "skipping ropes",
+   "nhanZh": "跳绳",
+   "cachDoc": {
+    "vi": [
+     "dây\\s+nhảy"
+    ],
+    "en": [
+     "skipping\\s+ropes?",
+     "jump\\s+ropes?"
+    ],
+    "zh": [
+     "跳绳"
+    ]
+   },
+   "cachViet": "dây nhảy"
+  },
+  "HON_BI": {
+   "nhanVi": "hòn bi",
+   "nhanEn": "marbles",
+   "nhanZh": "弹珠/玻璃球",
+   "cachDoc": {
+    "vi": [
+     "hòn\\s+bi"
+    ],
+    "en": [
+     "marbles?"
+    ],
+    "zh": [
+     "弹珠",
+     "玻璃弹珠"
+    ]
+   },
+   "cachViet": "hòn bi"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Đồ chơi thuộc chủng loại nào (búp bê, xe điện, mô hình, đồ chơi hình con vật, đố trí, xếp khối...)?",
+  "zh": "该玩具属于哪种类型（玩偶、电动火车、模型、动物玩具、拼图、积木等）？"
+ },
+ "ghiChu": "Chữ biểu 9503.00.21 \"Búp bê, có hoặc không có trang phục\", 9503.00.40 \"Mô hình thu nhỏ theo tỷ lệ và các mô hình giải trí tương tự, có hoặc không vận hành\" (xem dòng biểu nhóm 9503). Trục phân loại mặt hàng đồ chơi tại nhóm 9503: 9503.00.21, 9503.00.22, 9503.00.30, 9503.00.40, 9503.00.60, 9503.00.70, 9503.00.91, 9503.00.92, 9503.00.93.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+95030010 Xe đạp ba bánh, xe đẩy, xe có bàn đạp và đồ chơi tương tự có bánh; xe của búp bê
+95030021 Búp bê, có hoặc không có trang phục
+95030022 Quần áo và phụ kiện quần áo; giầy và mũ
+95030029 Loại khác
+95030030 Xe điện, kể cả đường ray, đèn hiệu và các phụ kiện khác của chúng
+95030040 Các mô hình thu nhỏ theo tỷ lệ ("scale") và các mô hình giải trí tương tự, có hoặc không vận hành
+95030050 Đồ chơi và bộ đồ chơi xây dựng khác, bằng mọi loại vật liệu trừ plastic
+95030060 Đồ chơi hình con vật hoặc sinh vật không phải hình người
+95030070 Các loại đồ chơi đố trí (puzzles)
+95030080 Thiết bị giáo dục điện tử tương tác cầm tay được thiết kế chủ yếu cho trẻ em (SEN)
+95030091 Đồ chơi, xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật; bộ xếp chữ; bộ đồ chơi tạo chữ và tập nói; bộ đồ chơi in hình; bộ đồ chơi đếm (abaci); máy may đồ chơi; máy chữ đồ chơi
+95030092 Dây nhảy
+
+=== KHOÁ kieuChieuSangDen ===
+{
+ "khoa": "kieuChieuSangDen",
+ "kieu": "LIET_KE",
+ "nhanVi": "kiểu chiếu sáng của đèn điện (đèn pha hoặc đèn rọi)",
+ "nhanEn": "lighting type of electric lamps (floodlight or spotlight)",
+ "nhanZh": "照明灯具类型（泛光灯或聚光灯）",
+ "giaTriHopLe": [
+  "DEN_PHA",
+  "DEN_ROI"
+ ],
+ "moTaGiaTri": {
+  "DEN_PHA": {
+   "nhanVi": "đèn pha (floodlights)",
+   "nhanEn": "floodlights",
+   "nhanZh": "泛光灯/泛光投光灯",
+   "cachDoc": {
+    "vi": [
+     "(?:loại\\s+khác,\\s*)?đèn\\s+pha"
+    ],
+    "en": [
+     "floodlights?"
+    ],
+    "zh": [
+     "泛光灯",
+     "探照灯"
+    ]
+   },
+   "cachViet": "đèn pha"
+  },
+  "DEN_ROI": {
+   "nhanVi": "đèn rọi (spotlights)",
+   "nhanEn": "spotlights",
+   "nhanZh": "聚光灯/射灯",
+   "cachDoc": {
+    "vi": [
+     "(?:loại\\s+khác,\\s*)?đèn\\s+rọi(?:\\s+khác)?"
+    ],
+    "en": [
+     "(?:other\\s+)?spotlights?"
+    ],
+    "zh": [
+     "聚光灯",
+     "射灯",
+     "其他聚光灯"
+    ]
+   },
+   "cachViet": "đèn rọi"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Đèn là loại đèn pha hay đèn rọi?",
+  "zh": "该灯具是泛光灯还是聚光灯？"
+ },
+ "ghiChu": "Chữ biểu 9405.41.10 \"Đèn pha\", 9405.41.20 \"Đèn rọi\" (và các dòng cùng mẫu 9405.11/19/42/49). Trục phân loại đèn pha và đèn rọi tại nhóm 9405: 9405.11.91, 9405.19.91, 9405.41.10, 9405.41.20, 9405.42.10, 9405.42.20, 9405.49.10, 9405.49.20.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+94054110 Đèn pha
+94054120 Đèn rọi khác
+94054130 Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản
+94054140 Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn; loại chiếu sáng bên ngoài khác
+94054190 Loại khác
+94051110 Đèn cho phòng mổ
+94051191 Đèn rọi
+94051199 Loại khác
+94051910 Đèn cho phòng mổ
+94051991 Đèn rọi
+94051992 Đèn gắn bóng đèn huỳnh quang
+94051999 Loại khác
+
+=== KHOÁ tuHutHoiDoc ===
+{
+ "khoa": "tuHutHoiDoc",
+ "kieu": "CO_KHONG",
+ "nhanVi": "tủ hút hơi độc (fume cupboard)",
+ "nhanEn": "fume cupboard",
+ "nhanZh": "通风柜/排毒柜",
+ "cachDoc": {
+  "vi": [
+   "tủ\\s+hút\\s+hơi\\s+độc(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "fume\\s+cupboards?"
+  ],
+  "zh": [
+   "通风柜",
+   "排毒柜"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+tủ\\s+hút\\s+hơi\\s+độc"
+  ],
+  "en": [
+   "not\\s+fume\\s+cupboards?"
+  ],
+  "zh": [
+   "非通风柜"
+  ]
+ },
+ "cachViet": {
+  "vi": "tủ hút hơi độc",
+  "viPhuDinh": "không phải tủ hút hơi độc"
+ },
+ "cauHoi": {
+  "vi": "Đồ nội thất có phải là tủ hút hơi độc dùng trong phòng thí nghiệm không?",
+  "zh": "该家具是否为实验室用通风柜/排毒柜？"
+ },
+ "ghiChu": "Chữ biểu 9403.20.10, 9403.60.10, 9403.70.20, 9403.89.10 'Tủ hút hơi độc (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+94032010 Tủ hút hơi độc (SEN)
+94032090 Loại khác
+94036010 Tủ hút hơi độc (SEN)
+94036090 Loại khác
+94037010 Xe tập đi cho trẻ em
+94037020 Tủ hút hơi độc (SEN)
+94037090 Loại khác
+
+=== KHOÁ denChoPhongMo ===
+{
+ "khoa": "denChoPhongMo",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đèn cho phòng mổ (operating lamp)",
+ "nhanEn": "operating lamp",
+ "nhanZh": "手术室用灯（无影灯）",
+ "cachDoc": {
+  "vi": [
+   "đèn\\s+(?:cho\\s+)?phòng\\s+mổ"
+  ],
+  "en": [
+   "operating\\s+lamps?"
+  ],
+  "zh": [
+   "手术室用灯",
+   "手术无影灯"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+đèn\\s+phòng\\s+mổ"
+  ],
+  "en": [
+   "not\\s+operating\\s+lamps?"
+  ],
+  "zh": [
+   "非手术室用灯"
+  ]
+ },
+ "cachViet": {
+  "vi": "đèn cho phòng mổ",
+  "viPhuDinh": "không phải đèn cho phòng mổ"
+ },
+ "cauHoi": {
+  "vi": "Thiết bị chiếu sáng có phải là đèn chuyên dùng cho phòng mổ không?",
+  "zh": "该灯具是否为手术室专用灯（无影灯）？"
+ },
+ "ghiChu": "Chữ biểu 9405.11.10, 9405.19.10, 9405.21.10, 9405.29.10 'Đèn cho phòng mổ'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+94051110 Đèn cho phòng mổ
+94051191 Đèn rọi
+94051199 Loại khác
+94051910 Đèn cho phòng mổ
+94051991 Đèn rọi
+94051992 Đèn gắn bóng đèn huỳnh quang
+94051999 Loại khác
+94052110 Đèn cho phòng mổ
+94052190 Loại khác
+
+=== KHOÁ hopDungThuocLaTrangTri ===
+{
+ "khoa": "hopDungThuocLaTrangTri",
+ "kieu": "CO_KHONG",
+ "nhanVi": "hộp đựng xì gà, thuốc lá điếu hoặc đồ trang trí",
+ "nhanEn": "cigar or cigarette cases, tobacco jars; ornamental articles",
+ "nhanZh": "雪茄烟盒、香烟盒、烟草罐；装饰品",
+ "cachDoc": {
+  "vi": [
+   "hộp\\s+đựng\\s+xì\\s+gà\\s+hoặc\\s+thuốc\\s+lá\\s+điếu,\\s*bình\\s+đựng\\s+thuốc\\s+lá;\\s*đồ\\s+trang\\s+trí"
+  ],
+  "en": [
+   "cigar\\s+or\\s+cigarette\\s+cases?,?\\s*tobacco\\s+jars?;?\\s*ornamental\\s+articles?"
+  ],
+  "zh": [
+   "雪茄烟盒、香烟盒、烟草罐；装饰品"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+hộp\\s+đựng\\s+thuốc\\s+lá\\s+hoặc\\s+đồ\\s+trang\\s+trí"
+  ],
+  "en": [
+   "not\\s+cigar\\s+or\\s+cigarette\\s+cases"
+  ],
+  "zh": [
+   "非烟盒或装饰品"
+  ]
+ },
+ "cachViet": {
+  "vi": "hộp đựng xì gà thuốc lá hoặc đồ trang trí",
+  "viPhuDinh": "không phải hộp đựng xì gà thuốc lá hoặc đồ trang trí"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm điêu khắc/tạo hình có phải là hộp đựng xì gà, thuốc lá hoặc đồ trang trí không?",
+  "zh": "该雕刻制品是否为雪茄盒、香烟盒、烟草罐或装饰品？"
+ },
+ "ghiChu": "Chữ biểu 9601.10.10, 9601.90.11, 9601.90.91, 9602.00.20 'Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+96011010 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96011090 Loại khác
+96019011 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96019012 Nhân nuôi cấy ngọc trai (SEN)
+96019019 Loại khác
+96019021 Đồ trang trí
+96019029 Loại khác
+96019091 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96019099 Loại khác
+96020010 Vỏ viên nhộng bằng gelatin dùng cho dược phẩm
+96020020 Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí
+96020090 Loại khác
+
+=== KHOÁ loaiNoiThatYTe ===
+{
+ "khoa": "loaiNoiThatYTe",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại đồ nội thất y tế chuyên dùng",
+ "nhanEn": "type of medical furniture",
+ "nhanZh": "医用家具类型",
+ "giaTriHopLe": [
+  "GHE_VE_SINH_NGUOI_BENH",
+  "BAN_KHAM",
+  "GIUONG_BENH"
+ ],
+ "moTaGiaTri": {
+  "GHE_VE_SINH_NGUOI_BENH": {
+   "nhanVi": "ghế vệ sinh dành cho người bệnh (commodes)",
+   "nhanEn": "commodes",
+   "nhanZh": "病患便桶椅",
+   "cachDoc": {
+    "vi": [
+     "ghế\\s+vệ\\s+sinh\\s+dành\\s+cho\\s+người\\s+bệnh(?:\\s*\\(Commodes\\))?(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "commodes?"
+    ],
+    "zh": [
+     "便桶椅",
+     "病患用便桶椅"
+    ]
+   },
+   "cachViet": "ghế vệ sinh dành cho người bệnh"
+  },
+  "BAN_KHAM": {
+   "nhanVi": "bàn khám bệnh",
+   "nhanEn": "examination tables",
+   "nhanZh": "诊查台/检查床",
+   "cachDoc": {
+    "vi": [
+     "bàn\\s+khám(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "examination\\s+tables?"
+    ],
+    "zh": [
+     "诊查台",
+     "检查床"
+    ]
+   },
+   "cachViet": "bàn khám"
+  },
+  "GIUONG_BENH": {
+   "nhanVi": "giường bệnh",
+   "nhanEn": "hospital beds",
+   "nhanZh": "病床",
+   "cachDoc": {
+    "vi": [
+     "giường\\s+bệnh(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "hospital\\s+beds?"
+    ],
+    "zh": [
+     "病床"
+    ]
+   },
+   "cachViet": "giường bệnh"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Đồ nội thất y tế là ghế vệ sinh, bàn khám hay giường bệnh?",
+  "zh": "该医用家具是便桶椅、诊查台还是病床？"
+ },
+ "ghiChu": "Trục phân loại nội thất y tế tại phân nhóm 9402.90: 9402.90.11 'Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)', 9402.90.14 'Bàn khám (SEN)', 9402.90.15 'Giường bệnh (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+94029011 Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)
+94029012 Bàn mổ, hoạt động bằng điện (SEN)
+94029013 Bàn mổ, không hoạt động bằng điện (SEN)
+94029014 Bàn khám (SEN)
+94029015 Giường bệnh (SEN)
+94029019 Loại khác
+94029090 Loại khác
+

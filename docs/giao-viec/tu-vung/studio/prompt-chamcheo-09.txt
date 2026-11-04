@@ -1,0 +1,923 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+LƯU Ý rút từ 6 gói trước: (1) mọi mục SUA PHẢI kèm "sua" với giá trị đầy đủ thay thế; (2) regex sửa để tránh bắt nhầm phải thử lại trong đầu với cụm gây nhầm (tiền tố tuỳ chọn "(?:dạng\s+)?viên" VẪN bắt "thành viên"); (3) không bỏ cách viết có gạch nối ("radio-telephony"); (4) JSON hợp lệ, có dấu phẩy giữa các trường, không dấu phẩy thừa.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG), bonBanhChuDong(CO_KHONG), xeBaBanh(CO_KHONG), khoiLuongToanBo(SO), kieuXeChoNguoi(LIET_KE), kieuXeChoHang(LIET_KE), mayKeoNongNghiep(CO_KHONG), loaiBoPhanDongCoPiston(LIET_KE), dungTrongNongNghiep(CO_KHONG), canDienTu(CO_KHONG), mayRenKhuonHoacDapKhuon(CO_KHONG), dungTrongYTeHoacThiNghiem(CO_KHONG), dieuKhienSo(CO_KHONG), dungChoXeCoDongCo(CO_KHONG), bienApThichUng(CO_KHONG), loaiXachTay(CO_KHONG), laMayPhatDien(CO_KHONG), loaiBienDoiTinhDien(LIET_KE), loaiThietBiBaoDong(LIET_KE), dangTamPhienMang(LIET_KE), tamPhuSan(CO_KHONG), dangChePhamDietMuoi(LIET_KE), loaiHangDanLat(LIET_KE), ongHutXaBunKhaiThacMo(CO_KHONG), dungChoDienAnh(CO_KHONG), sonChongHaHoacChongAnMonVoTau(CO_KHONG), tamMiengGhepLatNenOpTuong(CO_KHONG), dungTrongNhaKhoa(CO_KHONG), dayTetBen(CO_KHONG), loaiCung(CO_KHONG), boPhanThitGiaCam(LIET_KE), thichHopDungChoNguoi(CO_KHONG), caBot(CO_KHONG), laChe(CO_KHONG), daXay(CO_KHONG), soCheTom(LIET_KE), loaiThuocLaNguyenLieu(LIET_KE), phaCheVoiEthanol(CO_KHONG), daPhaHuongLieuHoacChatMau(CO_KHONG), sanPhamDinhDuongYTe(CO_KHONG), dangKhoiHoacTamDa(LIET_KE), loaiMiBunMien(LIET_KE), chuaCaCao(CO_KHONG), thamCauNguyen(CO_KHONG), quanAoDauKiemDauVat(CO_KHONG), loaiSanPhamXiMangSoi(LIET_KE), tamLatGachLat(CO_KHONG), donNgucSauPhauThuat(CO_KHONG), boPhanGiayDep(LIET_KE), dungSanXuatOngChanKhong(CO_KHONG), aoBarongTagalog(CO_KHONG), sarongHinhOng(CO_KHONG), aoChoangHanhHuongIhram(CO_KHONG), giayDauVatCuTa(CO_KHONG), dangDaiDaiTamPhoDung(LIET_KE), dangLuonSong(CO_KHONG), loaiDoDungGiaDinhSatThep(LIET_KE), xichXeDapMoTo(CO_KHONG), phuongPhapHanOngThep(LIET_KE), hopDungThuocLaDieu(CO_KHONG), banLeMocKhoaHasps(CO_KHONG), chuaGiaCongQuaMucCanNong(CO_KHONG), hamLuongCrom(SO), phoiDetDangPhien(CO_KHONG), ongVaPhuKienKimLoaiMau(CO_KHONG), loaiDoChoi(LIET_KE), kieuChieuSangDen(LIET_KE), tuHutHoiDoc(CO_KHONG), denChoPhongMo(CO_KHONG), hopDungThuocLaTrangTri(CO_KHONG), loaiNoiThatYTe(LIET_KE)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ sonChongHaHoacChongAnMonVoTau ===
+{
+ "khoa": "sonChongHaHoacChongAnMonVoTau",
+ "kieu": "CO_KHONG",
+ "nhanVi": "sơn chống hà hoặc chống ăn mòn dùng sơn vỏ tàu thủy",
+ "nhanEn": "anti-fouling or anti-corrosion paint for ships' hulls",
+ "nhanZh": "船壳用防污漆及/或防腐漆",
+ "cachDoc": {
+  "vi": [
+   "sơn\\s+chống\\s+hà\\s+và/hoặc\\s+chống\\s+ăn\\s+mòn\\s+dùng\\s+để\\s+sơn\\s+vỏ\\s+tàu\\s+thủy(?:\\s*\\(SEN\\))?",
+   "sơn\\s+vỏ\\s+tàu\\s+thủy"
+  ],
+  "en": [
+   "anti-?fouling\\s+and/or\\s+anti-?corrosive\\s+paints?\\s+for\\s+ships'?\\s+hulls?"
+  ],
+  "zh": [
+   "船壳用防污漆及/或防腐漆"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+sơn\\s+chống\\s+hà"
+  ],
+  "en": [
+   "not\\s+anti-?fouling\\s+paint"
+  ],
+  "zh": [
+   "非船用防污漆"
+  ]
+ },
+ "cachViet": {
+  "vi": "sơn chống hà hoặc chống ăn mòn sơn vỏ tàu thủy",
+  "viPhuDinh": "không phải sơn chống hà chống ăn mòn sơn vỏ tàu thủy"
+ },
+ "cauHoi": {
+  "vi": "Sơn có phải loại sơn chống hà và/hoặc chống ăn mòn dùng sơn vỏ tàu thủy không?",
+  "zh": "该油漆是否为船用防污漆及/或防腐漆？"
+ },
+ "ghiChu": "Chữ biểu 3208.10.20, 3208.20.40, 3208.90.30, 3209.10.50, 3210.00.91 'Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+32081011 Dùng trong nha khoa (SEN)
+32081019 Loại khác
+32081020 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32081090 Loại khác
+32082040 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32082070 Vecni (kể cả dầu bóng), loại dùng trong nha khoa (SEN)
+32082090 Loại khác
+32089011 Dùng trong nha khoa (SEN)
+32089019 Loại khác
+32089021 Dùng trong nha khoa (SEN)
+32089029 Loại khác
+32089030 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32089090 Loại khác
+
+=== KHOÁ tamMiengGhepLatNenOpTuong ===
+{
+ "khoa": "tamMiengGhepLatNenOpTuong",
+ "kieu": "CO_KHONG",
+ "nhanVi": "tấm hoặc miếng ghép để lát nền hoặc ốp tường",
+ "nhanEn": "tiles or pieces for flooring or wall covering",
+ "nhanZh": "用于铺地或贴墙的拼接块或片",
+ "cachDoc": {
+  "vi": [
+   "(?:loại\\s+khác,\\s*)?(?:miếng,\\s*tấm|tấm,\\s*miếng)(?:\\s+rời)?\\s+ghép\\s+với\\s+nhau\\s+để\\s+(?:lát\\s+nền\\s+và\\s+ốp\\s+tường|ốp\\s+tường)"
+  ],
+  "en": [
+   "tiles?,?\\s*pieces?\\s+for\\s+(?:flooring\\s+and\\s+wall\\s+covering|wall\\s+covering)"
+  ],
+  "zh": [
+   "用于铺地和贴墙的拼接块或片",
+   "用于贴墙的拼接块或片"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+tấm\\s+miếng\\s+ghép\\s+lát\\s+nền\\s+ốp\\s+tường"
+  ],
+  "en": [
+   "not\\s+for\\s+flooring\\s+or\\s+wall\\s+covering"
+  ],
+  "zh": [
+   "非铺地贴墙拼接块片"
+  ]
+ },
+ "cachViet": {
+  "vi": "tấm miếng ghép để lát nền hoặc ốp tường",
+  "viPhuDinh": "không phải tấm miếng ghép để lát nền hoặc ốp tường"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm cao su có phải loại tấm, miếng ghép với nhau để lát nền hoặc ốp tường không?",
+  "zh": "该橡胶制品是否为用于铺地或贴墙的拼接块或片？"
+ },
+ "ghiChu": "Chữ biểu 4008.11.20, 4008.21.20 'Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường', 4016.10.20, 4017.00.10 'Tấm, miếng ghép với nhau để lát nền và ốp tường', 4016.99.40 'Tấm, miếng rời ghép với nhau để ốp tường'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+40081110 Chiều dày trên 5 mm, có một mặt được lót vải dệt
+40081120 Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường
+40081190 Loại khác
+40082110 Chiều dày trên 5 mm, có một mặt được lót vải dệt
+40082120 Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường
+40082130 Băng chắn nước (SEN)
+40082140 Tờ cao su dùng làm đế giày
+40082190 Loại khác
+40161010 Lót, đệm cho các sản phẩm may mặc hoặc cho các đồ phụ trợ của quần áo
+40161020 Tấm, miếng ghép với nhau để lát nền và ốp tường
+40161090 Loại khác
+
+=== KHOÁ dungTrongNhaKhoa ===
+{
+ "khoa": "dungTrongNhaKhoa",
+ "kieu": "CO_KHONG",
+ "nhanVi": "dùng trong nha khoa",
+ "nhanEn": "used in dentistry",
+ "nhanZh": "牙科用",
+ "cachDoc": {
+  "vi": [
+   "(?:vecni\\s*\\(kể\\s+cả\\s+dầu\\s+bóng\\),\\s*loại\\s*)?(?:dùng|sử\\s+dụng)\\s+trong\\s+nha\\s+khoa(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "(?:used\\s+)?in\\s+dentistry"
+  ],
+  "zh": [
+   "牙科用"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+dùng\\s+trong\\s+nha\\s+khoa"
+  ],
+  "en": [
+   "not\\s+for\\s+dentistry"
+  ],
+  "zh": [
+   "非牙科用"
+  ]
+ },
+ "cachViet": {
+  "vi": "dùng trong nha khoa",
+  "viPhuDinh": "không dùng trong nha khoa"
+ },
+ "cauHoi": {
+  "vi": "Sơn, vecni hoặc chế phẩm có phải loại dùng trong nha khoa không?",
+  "zh": "该油漆、清漆或制剂是否为牙科用？"
+ },
+ "ghiChu": "Chữ biểu 3208.10.11, 3208.90.11, 3208.90.21 'Dùng trong nha khoa (SEN)', 3208.20.70 'Vecni (kể cả dầu bóng), loại dùng trong nha khoa (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+32081011 Dùng trong nha khoa (SEN)
+32081019 Loại khác
+32081020 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32081090 Loại khác
+32089011 Dùng trong nha khoa (SEN)
+32089019 Loại khác
+32089021 Dùng trong nha khoa (SEN)
+32089029 Loại khác
+32089030 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32089090 Loại khác
+32082040 Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)
+32082070 Vecni (kể cả dầu bóng), loại dùng trong nha khoa (SEN)
+32082090 Loại khác
+
+=== KHOÁ dayTetBen ===
+{
+ "khoa": "dayTetBen",
+ "kieu": "CO_KHONG",
+ "nhanVi": "dây tết bện hoặc sản phẩm tương tự",
+ "nhanEn": "plaits and similar products of plaiting materials",
+ "nhanZh": "编条及类似编结材料制品",
+ "cachDoc": {
+  "vi": [
+   "dây\\s+tết\\s+bện\\s+và\\s+các\\s+sản\\s+phẩm\\s+tương\\s+tự\\s+làm\\s+bằng\\s+vật\\s+liệu\\s+tết\\s+bện(?:,\\s*đã\\s+hoặc\\s+chưa\\s+ghép\\s+thành\\s+dải)?"
+  ],
+  "en": [
+   "plaits\\s+and\\s+similar\\s+products\\s+of\\s+plaiting\\s+materials?"
+  ],
+  "zh": [
+   "编条及类似编结材料制品"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+dây\\s+tết\\s+bện"
+  ],
+  "en": [
+   "not\\s+plaits"
+  ],
+  "zh": [
+   "非编条制品"
+  ]
+ },
+ "cachViet": {
+  "vi": "dây tết bện và sản phẩm tương tự",
+  "viPhuDinh": "không phải dây tết bện và sản phẩm tương tự"
+ },
+ "cauHoi": {
+  "vi": "Hàng có phải là dây tết bện và các sản phẩm tương tự bằng vật liệu tết bện không?",
+  "zh": "该产品是否为编条及类似编结材料制品？"
+ },
+ "ghiChu": "Chữ biểu 4601.92.10, 4601.93.10, 4601.94.10, 4601.99.20 'Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+46019210 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+46019220 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+46019290 Loại khác
+46019310 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+46019320 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+46019390 Loại khác
+46019410 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+46019420 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+46019490 Loại khác
+
+=== KHOÁ loaiCung ===
+{
+ "khoa": "loaiCung",
+ "kieu": "CO_KHONG",
+ "nhanVi": "loại cứng (rigid)",
+ "nhanEn": "rigid type",
+ "nhanZh": "硬质",
+ "cachDoc": {
+  "vi": [
+   "(?:loại\\s+)?cứng(?:\\s*\\(SEN\\))?",
+   "dạng\\s+tấm\\s+và\\s+phiến,\\s+loại\\s+cứng(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "rigid(?:\\s+type)?"
+  ],
+  "zh": [
+   "硬质",
+   "硬质型"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+cứng",
+   "loại\\s+mềm",
+   "dẻo"
+  ],
+  "en": [
+   "non-?rigid",
+   "flexible"
+  ],
+  "zh": [
+   "非硬质",
+   "软质"
+  ]
+ },
+ "cachViet": {
+  "vi": "loại cứng",
+  "viPhuDinh": "không phải loại cứng"
+ },
+ "cauHoi": {
+  "vi": "Tấm/phiến plastic có phải là loại cứng không?",
+  "zh": "该塑料板/片是否为硬质？"
+ },
+ "ghiChu": "Chữ biểu 3920.10.11, 3920.30.91, 3920.51.11, 3920.59.11 'Loại cứng (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+39201011 Loại cứng (SEN)
+39201019 Loại khác
+39201090 Loại khác
+39203020 Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh
+39203091 Dạng tấm và phiến, loại cứng(SEN)
+39203092 Loại khác, dạng tấm và phiến (SEN)
+39203099 Loại khác
+39205111 Loại cứng(SEN)
+39205119 Loại khác
+39205190 Loại khác
+
+=== KHOÁ boPhanThitGiaCam ===
+{
+ "khoa": "boPhanThitGiaCam",
+ "kieu": "LIET_KE",
+ "nhanVi": "bộ phận thịt gia cầm",
+ "nhanEn": "cuts of poultry meat",
+ "nhanZh": "禽肉分割部位",
+ "giaTriHopLe": [
+  "CANH",
+  "DUI",
+  "GAN",
+  "GAN_BEO"
+ ],
+ "moTaGiaTri": {
+  "CANH": {
+   "nhanVi": "cánh gia cầm",
+   "nhanEn": "wings",
+   "nhanZh": "禽翼（翅膀）",
+   "cachDoc": {
+    "vi": [
+     "(?:thịt\\s+)?cánh(?:\\s+gia\\s+cầm)?"
+    ],
+    "en": [
+     "wings?"
+    ],
+    "zh": [
+     "翼",
+     "翅膀"
+    ]
+   },
+   "cachViet": "cánh"
+  },
+  "DUI": {
+   "nhanVi": "đùi gia cầm",
+   "nhanEn": "legs / drumsticks / thighs",
+   "nhanZh": "禽腿",
+   "cachDoc": {
+    "vi": [
+     "(?:thịt\\s+)?đùi(?:\\s+gia\\s+cầm)?"
+    ],
+    "en": [
+     "legs?",
+     "thighs?",
+     "drumsticks?"
+    ],
+    "zh": [
+     "腿",
+     "大腿",
+     "小腿"
+    ]
+   },
+   "cachViet": "đùi"
+  },
+  "GAN": {
+   "nhanVi": "gan gia cầm",
+   "nhanEn": "livers",
+   "nhanZh": "禽肝",
+   "cachDoc": {
+    "vi": [
+     "gan(?:\\s+gia\\s+cầm)?"
+    ],
+    "en": [
+     "livers?"
+    ],
+    "zh": [
+     "肝"
+    ]
+   },
+   "cachViet": "gan"
+  },
+  "GAN_BEO": {
+   "nhanVi": "gan béo gia cầm",
+   "nhanEn": "fatty livers",
+   "nhanZh": "肥肝",
+   "cachDoc": {
+    "vi": [
+     "gan\\s+béo(?:\\s+gia\\s+cầm)?"
+    ],
+    "en": [
+     "fatty\\s+livers?"
+    ],
+    "zh": [
+     "肥肝"
+    ]
+   },
+   "cachViet": "gan béo"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Thịt gia cầm thuộc bộ phận nào (cánh, đùi, gan hay gan béo)?",
+  "zh": "该禽肉属于哪个分割部位（翼、腿、肝还是肥肝）？"
+ },
+ "ghiChu": "Trục phân loại các phần cắt thịt gia cầm tại nhóm 0207: 0207.14.10 'Cánh', 0207.14.20 'Đùi', 0207.14.30 'Gan', 0207.27.10 'Gan', 0207.45.10 'Gan béo', 0207.55.10 'Gan béo'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+02071410 Cánh
+02071420 Đùi
+02071430 Gan
+02071491 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+02071499 Loại khác
+02072710 Gan
+02072791 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+02072799 Loại khác
+02074510 Gan béo
+02074590 Loại khác
+
+=== KHOÁ thichHopDungChoNguoi ===
+{
+ "khoa": "thichHopDungChoNguoi",
+ "kieu": "CO_KHONG",
+ "nhanVi": "thích hợp dùng cho người (hoặc loại ăn được)",
+ "nhanEn": "fit for human consumption / edible",
+ "nhanZh": "适于供人食用/食用级",
+ "cachDoc": {
+  "vi": [
+   "thích\\s+hợp\\s+sử\\s+dụng\\s+cho\\s+người(?:\\s*\\(SEN\\))?",
+   "(?:loại\\s+)?ăn\\s+được"
+  ],
+  "en": [
+   "fit\\s+for\\s+human\\s+consumption",
+   "edible"
+  ],
+  "zh": [
+   "适于供人食用",
+   "食用"
+  ],
+  "phuDinh": [
+   "không",
+   "không phải",
+   "không ăn được",
+   "non-?",
+   "inedible",
+   "unfit",
+   "非",
+   "不",
+   "不适于"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+ăn\\s+được",
+   "không\\s+thích\\s+hợp\\s+(?:sử\\s+dụng\\s+)?cho\\s+người"
+  ],
+  "en": [
+   "inedible",
+   "unfit\\s+for\\s+human\\s+consumption"
+  ],
+  "zh": [
+   "非食用",
+   "不适于供人食用"
+  ]
+ },
+ "cachViet": {
+  "vi": "thích hợp dùng cho người",
+  "viPhuDinh": "không thích hợp dùng cho người"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm có thích hợp dùng cho người (hoặc loại ăn được) không?",
+  "zh": "该产品是否适于供人食用（食用级）？"
+ },
+ "ghiChu": "Chữ biểu 0404.10.11, 0404.10.91 'Whey, thích hợp sử dụng cho người (SEN)', 1005.90.91 'Thích hợp sử dụng cho người (SEN)', 1207.40.10 'Loại ăn được', 1502.90.10 'Loại ăn được'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+04041011 Whey, thích hợp sử dụng cho người (SEN)
+04041019 Loại khác
+04041091 Whey, thích hợp sử dụng cho người (SEN)
+04041099 Loại khác
+10059010 Loại dùng để rang nổ (popcorn) (SEN)
+10059091 Thích hợp sử dụng cho người (SEN)
+10059099 Loại khác
+12074010 Loại ăn được
+12074090 Loại khác
+
+=== KHOÁ caBot ===
+{
+ "khoa": "caBot",
+ "kieu": "CO_KHONG",
+ "nhanVi": "cá bột (fish fry)",
+ "nhanEn": "fish fry",
+ "nhanZh": "鱼苗",
+ "cachDoc": {
+  "vi": [
+   "cá\\s+bột"
+  ],
+  "en": [
+   "(?:fish\\s+)?fry"
+  ],
+  "zh": [
+   "鱼苗"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "trừ cá bột",
+   "non-?",
+   "not",
+   "except fry",
+   "非",
+   "不",
+   "除鱼苗外"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "trừ\\s+cá\\s+bột",
+   "không\\s+phải\\s+cá\\s+bột"
+  ],
+  "en": [
+   "(?:excluding|except)\\s+(?:fish\\s+)?fry"
+  ],
+  "zh": [
+   "除鱼苗外",
+   "非鱼苗"
+  ]
+ },
+ "cachViet": {
+  "vi": "cá bột",
+  "viPhuDinh": "không phải cá bột"
+ },
+ "cauHoi": {
+  "vi": "Cá sống có phải là cá bột (fish fry) không?",
+  "zh": "该活鱼是否为鱼苗？"
+ },
+ "ghiChu": "Chữ biểu 0301.11.10 'Cá bột', 0301.19.10 'Cá bột', 0301.93.22 'Cá bột', 0301.93.32 'Cá bột' (đối xứng với 0301.93.21 'Để nhân giống, trừ cá bột (SEN)').",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+03011110 Cá bột
+03011191 Cá chép Koi (Cyprinus carpio)
+03011192 Cá vàng (Carassius auratus)
+03011193 Cá chọi Thái Lan (Beta splendens)
+03011195 Cá rồng (Scleropages formosus)
+03011199 Loại khác
+03011910 Cá bột
+03011990 Loại khác
+03019321 Để nhân giống, trừ cá bột (SEN)
+03019322 Cá bột
+03019329 Loại khác
+03019331 Để nhân giống, trừ cá bột (SEN)
+03019332 Cá bột
+03019339 Loại khác
+
+=== KHOÁ laChe ===
+{
+ "khoa": "laChe",
+ "kieu": "CO_KHONG",
+ "nhanVi": "lá chè (chè dạng lá)",
+ "nhanEn": "tea leaves",
+ "nhanZh": "茶叶",
+ "cachDoc": {
+  "vi": [
+   "lá\\s+chè"
+  ],
+  "en": [
+   "tea\\s+leaves"
+  ],
+  "zh": [
+   "茶叶"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+lá\\s+chè"
+  ],
+  "en": [
+   "not\\s+tea\\s+leaves"
+  ],
+  "zh": [
+   "非茶叶"
+  ]
+ },
+ "cachViet": {
+  "vi": "lá chè",
+  "viPhuDinh": "không phải lá chè"
+ },
+ "cauHoi": {
+  "vi": "Chè có ở dạng lá chè không?",
+  "zh": "该茶是否为茶叶（整叶状）？"
+ },
+ "ghiChu": "Chữ biểu 0902.10.10, 0902.20.10, 0902.30.10, 0902.40.10 'Lá chè'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+09021010 Lá chè
+09021090 Loại khác
+09022010 Lá chè
+09022090 Loại khác
+09023010 Lá chè
+09023090 Loại khác
+
+=== KHOÁ daXay ===
+{
+ "khoa": "daXay",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã xay",
+ "nhanEn": "ground",
+ "nhanZh": "已研磨",
+ "cachDoc": {
+  "vi": [
+   "(?:đã\\s+)?xay"
+  ],
+  "en": [
+   "ground"
+  ],
+  "zh": [
+   "已磨",
+   "已研磨"
+  ],
+  "phuDinh": [
+   "chưa",
+   "không",
+   "chưa xay",
+   "not ground",
+   "unground",
+   "未",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+xay"
+  ],
+  "en": [
+   "not\\s+ground",
+   "unground"
+  ],
+  "zh": [
+   "未磨",
+   "未研磨"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã xay",
+  "viPhuDinh": "chưa xay"
+ },
+ "cauHoi": {
+  "vi": "Cà phê đã xay hay chưa xay?",
+  "zh": "该咖啡是否已研磨？"
+ },
+ "ghiChu": "Chữ biểu 0901.21.20 'Đã xay', 0901.22.10 'Chưa xay', 0901.22.20 'Đã xay'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+09012111 Arabica (SEN)
+09012112 Robusta (SEN)
+09012119 Loại khác
+09012120 Đã xay
+09012210 Chưa xay
+09012220 Đã xay
+
+=== KHOÁ soCheTom ===
+{
+ "khoa": "soCheTom",
+ "kieu": "LIET_KE",
+ "nhanVi": "mức độ sơ chế tôm",
+ "nhanEn": "shrimp processing cut / form",
+ "nhanZh": "虾类初加工形态",
+ "giaTriHopLe": [
+  "DA_BO_DAU",
+  "DA_BO_DAU_CON_DUOI",
+  "DA_BO_DAU_BO_DUOI"
+ ],
+ "moTaGiaTri": {
+  "DA_BO_DAU": {
+   "nhanVi": "đã bỏ đầu",
+   "nhanEn": "headless",
+   "nhanZh": "去头",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+bỏ\\s+đầu"
+    ],
+    "en": [
+     "headless"
+    ],
+    "zh": [
+     "去头"
+    ]
+   },
+   "cachViet": "đã bỏ đầu"
+  },
+  "DA_BO_DAU_CON_DUOI": {
+   "nhanVi": "đã bỏ đầu, còn đuôi",
+   "nhanEn": "headless, tail-on",
+   "nhanZh": "去头留尾",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+bỏ\\s+đầu,\\s*còn\\s+đuôi"
+    ],
+    "en": [
+     "headless,?\\s*tail-?on"
+    ],
+    "zh": [
+     "去头留尾"
+    ]
+   },
+   "cachViet": "đã bỏ đầu còn đuôi"
+  },
+  "DA_BO_DAU_BO_DUOI": {
+   "nhanVi": "đã bỏ đầu, bỏ đuôi",
+   "nhanEn": "headless, tail-off",
+   "nhanZh": "去头去尾",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+bỏ\\s+đầu,\\s*bỏ\\s+đuôi"
+    ],
+    "en": [
+     "headless,?\\s*tail-?off"
+    ],
+    "zh": [
+     "去头去尾"
+    ]
+   },
+   "cachViet": "đã bỏ đầu bỏ đuôi"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Tôm đã qua mức độ sơ chế bỏ đầu/đuôi nào?",
+  "zh": "该虾类经过哪种去头/留尾/去尾初加工？"
+ },
+ "ghiChu": "Trục sơ chế tôm đông lạnh tại 0306.17: 0306.17.11 'Đã bỏ đầu', 0306.17.21 'Đã bỏ đầu, còn đuôi', 0306.17.22 'Đã bỏ đầu, bỏ đuôi'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+03061711 Đã bỏ đầu
+03061719 Loại khác
+03061721 Đã bỏ đầu, còn đuôi
+03061722 Đã bỏ đầu, bỏ đuôi
+03061729 Loại khác
+03061730 Tôm càng xanh (Macrobrachium rosenbergii)
+03061790 Loại khác
+
+=== KHOÁ loaiThuocLaNguyenLieu ===
+{
+ "khoa": "loaiThuocLaNguyenLieu",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại lá thuốc lá và phương pháp sấy",
+ "nhanEn": "variety and curing method of unmanufactured tobacco",
+ "nhanZh": "未加工烟草品种及调制方法",
+ "giaTriHopLe": [
+  "VIRGINIA_SAY_NONG",
+  "VIRGINIA_KHAC",
+  "BURLEY",
+  "ORIENTAL",
+  "SAY_NONG_KHAC"
+ ],
+ "moTaGiaTri": {
+  "VIRGINIA_SAY_NONG": {
+   "nhanVi": "loại Virginia sấy bằng không khí nóng (flue-cured)",
+   "nhanEn": "Virginia type, flue-cured",
+   "nhanZh": "烤烟型弗吉尼亚烟草",
+   "cachDoc": {
+    "vi": [
+     "(?:loại\\s+)?virginia,\\s*đã\\s+sấy\\s+bằng\\s+không\\s+khí\\s+nóng(?:\\s*\\(flue-?cured\\))?"
+    ],
+    "en": [
+     "virginia\\s+type,?\\s*flue-?cured"
+    ],
+    "zh": [
+     "弗吉尼亚烤烟",
+     "烤烟型弗吉尼亚"
+    ]
+   },
+   "cachViet": "loại Virginia sấy bằng không khí nóng"
+  },
+  "VIRGINIA_KHAC": {
+   "nhanVi": "loại Virginia trừ loại sấy bằng không khí nóng",
+   "nhanEn": "Virginia type, other than flue-cured",
+   "nhanZh": "其他弗吉尼亚烟草（非烤烟）",
+   "cachDoc": {
+    "vi": [
+     "(?:loại\\s+)?virginia,\\s*trừ\\s+loại\\s+sấy\\s+bằng\\s+không\\s+khí\\s+nóng"
+    ],
+    "en": [
+     "virginia\\s+type,?\\s*other\\s+than\\s+flue-?cured"
+    ],
+    "zh": [
+     "非烤烟弗吉尼亚烟草"
+    ]
+   },
+   "cachViet": "loại Virginia không sấy bằng không khí nóng"
+  },
+  "BURLEY": {
+   "nhanVi": "loại Burley",
+   "nhanEn": "Burley type",
+   "nhanZh": "白肋烟（Burley）",
+   "cachDoc": {
+    "vi": [
+     "(?:loại\\s+)?burley"
+    ],
+    "en": [
+     "burley\\s+type",
+     "burley"
+    ],
+    "zh": [
+     "白肋烟",
+     "伯利烟"
+    ]
+   },
+   "cachViet": "loại Burley"
+  },
+  "ORIENTAL": {
+   "nhanVi": "loại Oriental",
+   "nhanEn": "Oriental type",
+   "nhanZh": "香料烟（Oriental）",
+   "cachDoc": {
+    "vi": [
+     "(?:loại\\s+)?oriental"
+    ],
+    "en": [
+     "oriental\\s+type",
+     "oriental"
+    ],
+    "zh": [
+     "香料烟",
+     "东方烟"
+    ]
+   },
+   "cachViet": "loại Oriental"
+  },
+  "SAY_NONG_KHAC": {
+   "nhanVi": "loại khác được sấy bằng không khí nóng",
+   "nhanEn": "other flue-cured tobacco",
+   "nhanZh": "其他烤烟",
+   "cachDoc": {
+    "vi": [
+     "loại\\s+khác,\\s*được\\s+sấy\\s+bằng\\s+không\\s+khí\\s+nóng(?:\\s*\\(flue-?cured\\))?"
+    ],
+    "en": [
+     "other,?\\s*flue-?cured"
+    ],
+    "zh": [
+     "其他烤烟"
+    ]
+   },
+   "cachViet": "loại khác sấy bằng không khí nóng"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Lá thuốc lá thuộc giống nào và áp dụng phương pháp sấy nào?",
+  "zh": "该烟草属于哪种品种及调制加工方法？"
+ },
+ "ghiChu": "Trục phân loại giống thuốc lá và phương pháp sấy tại nhóm 2401: 2401.10.10, 2401.20.10 'Loại Virginia, đã sấy bằng không khí nóng (flue-cured)', 2401.10.20, 2401.20.20 'Loại Virginia, trừ loại sấy bằng không khí nóng', 2401.10.40, 2401.20.40 'Loại Burley', 2401.20.30 'Loại Oriental', 2401.10.50, 2401.20.50 'Loại khác, được sấy bằng không khí nóng (flue-cured)'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+24011010 Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+24011020 Loại Virginia, trừ loại sấy bằng không khí nóng
+24011040 Loại Burley
+24011050 Loại khác, được sấy bằng không khí nóng
+24011090 Loại khác
+24012010 Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+24012020 Loại Virginia, trừ loại sấy bằng không khí nóng
+24012030 Loại Oriental
+24012040 Loại Burley
+24012050 Loại khác, được sấy bằng không khí nóng (flue-cured)
+24012090 Loại khác
+

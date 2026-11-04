@@ -1,0 +1,841 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+LƯU Ý rút từ 6 gói trước: (1) mọi mục SUA PHẢI kèm "sua" với giá trị đầy đủ thay thế; (2) regex sửa để tránh bắt nhầm phải thử lại trong đầu với cụm gây nhầm (tiền tố tuỳ chọn "(?:dạng\s+)?viên" VẪN bắt "thành viên"); (3) không bỏ cách viết có gạch nối ("radio-telephony"); (4) JSON hợp lệ, có dấu phẩy giữa các trường, không dấu phẩy thừa.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG), bonBanhChuDong(CO_KHONG), xeBaBanh(CO_KHONG), khoiLuongToanBo(SO), kieuXeChoNguoi(LIET_KE), kieuXeChoHang(LIET_KE), mayKeoNongNghiep(CO_KHONG), loaiBoPhanDongCoPiston(LIET_KE), dungTrongNongNghiep(CO_KHONG), canDienTu(CO_KHONG), mayRenKhuonHoacDapKhuon(CO_KHONG), dungTrongYTeHoacThiNghiem(CO_KHONG), dieuKhienSo(CO_KHONG), dungChoXeCoDongCo(CO_KHONG), bienApThichUng(CO_KHONG), loaiXachTay(CO_KHONG), laMayPhatDien(CO_KHONG), loaiBienDoiTinhDien(LIET_KE), loaiThietBiBaoDong(LIET_KE), dangTamPhienMang(LIET_KE), tamPhuSan(CO_KHONG), dangChePhamDietMuoi(LIET_KE), loaiHangDanLat(LIET_KE), ongHutXaBunKhaiThacMo(CO_KHONG), dungChoDienAnh(CO_KHONG), sonChongHaHoacChongAnMonVoTau(CO_KHONG), tamMiengGhepLatNenOpTuong(CO_KHONG), dungTrongNhaKhoa(CO_KHONG), dayTetBen(CO_KHONG), loaiCung(CO_KHONG), boPhanThitGiaCam(LIET_KE), thichHopDungChoNguoi(CO_KHONG), caBot(CO_KHONG), laChe(CO_KHONG), daXay(CO_KHONG), soCheTom(LIET_KE), loaiThuocLaNguyenLieu(LIET_KE), phaCheVoiEthanol(CO_KHONG), daPhaHuongLieuHoacChatMau(CO_KHONG), sanPhamDinhDuongYTe(CO_KHONG), dangKhoiHoacTamDa(LIET_KE), loaiMiBunMien(LIET_KE), chuaCaCao(CO_KHONG), thamCauNguyen(CO_KHONG), quanAoDauKiemDauVat(CO_KHONG), loaiSanPhamXiMangSoi(LIET_KE), tamLatGachLat(CO_KHONG), donNgucSauPhauThuat(CO_KHONG), boPhanGiayDep(LIET_KE), dungSanXuatOngChanKhong(CO_KHONG), aoBarongTagalog(CO_KHONG), sarongHinhOng(CO_KHONG), aoChoangHanhHuongIhram(CO_KHONG), giayDauVatCuTa(CO_KHONG), dangDaiDaiTamPhoDung(LIET_KE), dangLuonSong(CO_KHONG), loaiDoDungGiaDinhSatThep(LIET_KE), xichXeDapMoTo(CO_KHONG), phuongPhapHanOngThep(LIET_KE), hopDungThuocLaDieu(CO_KHONG), banLeMocKhoaHasps(CO_KHONG), chuaGiaCongQuaMucCanNong(CO_KHONG), hamLuongCrom(SO), phoiDetDangPhien(CO_KHONG), ongVaPhuKienKimLoaiMau(CO_KHONG), loaiDoChoi(LIET_KE), kieuChieuSangDen(LIET_KE), tuHutHoiDoc(CO_KHONG), denChoPhongMo(CO_KHONG), hopDungThuocLaTrangTri(CO_KHONG), loaiNoiThatYTe(LIET_KE)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ dungSanXuatOngChanKhong ===
+{
+ "khoa": "dungSanXuatOngChanKhong",
+ "kieu": "CO_KHONG",
+ "nhanVi": "sử dụng để sản xuất ống chân không",
+ "nhanEn": "used for manufacture of vacuum tubes",
+ "nhanZh": "用于制造真空管",
+ "cachDoc": {
+  "vi": [
+   "(?:loại\\s+)?sử\\s+dụng\\s+để\\s+sản\\s+xuất\\s+ống\\s+chân\\s+không(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "used\\s+for\\s+(?:the\\s+)?manufacture\\s+of\\s+vacuum\\s+tubes?"
+  ],
+  "zh": [
+   "用于制造真空管"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+dùng\\s+để\\s+sản\\s+xuất\\s+ống\\s+chân\\s+không"
+  ],
+  "en": [
+   "not\\s+for\\s+vacuum\\s+tubes"
+  ],
+  "zh": [
+   "非用于制造真空管"
+  ]
+ },
+ "cachViet": {
+  "vi": "sử dụng để sản xuất ống chân không",
+  "viPhuDinh": "không dùng để sản xuất ống chân không"
+ },
+ "cauHoi": {
+  "vi": "Ống thủy tinh có phải loại dùng để sản xuất ống chân không không?",
+  "zh": "该玻璃管是否用于制造真空管？"
+ },
+ "ghiChu": "Chữ biểu 7002.31.10, 7002.32.10, 7002.39.10 'Loại sử dụng để sản xuất ống chân không(SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+70023110 Loại sử dụng để sản xuất ống chân không(SEN)
+70023190 Loại khác
+70023210 Loại sử dụng để sản xuất ống chân không(SEN)
+70023230 Ống thủy tinh borosilicate của loại sử dụng để sản xuất ống dạng phial/ampoule
+70023240 Loại khác, của loại thủy tinh borosilicate trung tính trong suốt, có đường kính từ 3 mm đến 22 mm
+70023290 Loại khác
+70023910 Loại sử dụng để sản xuất ống chân không(SEN)
+70023920 Loại khác, của loại thủy tinh borosilicate trung tính trong suốt, có đường kính từ 3 mm đến 22 mm
+70023990 Loại khác
+
+=== KHOÁ aoBarongTagalog ===
+{
+ "khoa": "aoBarongTagalog",
+ "kieu": "CO_KHONG",
+ "nhanVi": "áo Barong Tagalog",
+ "nhanEn": "Barong Tagalog shirt",
+ "nhanZh": "巴隆他加禄衫（Barong Tagalog）",
+ "cachDoc": {
+  "vi": [
+   "áo\\s+barong\\s+tagalog(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "barong\\s+tagalog"
+  ],
+  "zh": [
+   "巴隆他加禄",
+   "巴隆他加禄服"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+áo\\s+barong\\s+tagalog"
+  ],
+  "en": [
+   "not\\s+barong\\s+tagalog"
+  ],
+  "zh": [
+   "非巴隆他加禄"
+  ]
+ },
+ "cachViet": {
+  "vi": "áo Barong Tagalog",
+  "viPhuDinh": "không phải áo Barong Tagalog"
+ },
+ "cauHoi": {
+  "vi": "Áo sơ mi có phải là loại áo truyền thống Barong Tagalog không?",
+  "zh": "该衬衫是否为巴隆他加禄传统服装？"
+ },
+ "ghiChu": "Chữ biểu 6205.20.20, 6205.30.10, 6205.90.92 'Áo Barong Tagalog (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+62052010 Được in bằng phương pháp batik truyền thống (SEN)
+62052020 Áo Barong Tagalog (SEN)
+62052090 Loại khác
+62053010 Áo Barong Tagalog (SEN)
+62053090 Loại khác
+62059010 Từ lông cừu hoặc lông động vật loại mịn
+62059091 Được in bằng phương pháp batik truyền thống (SEN)
+62059092 Áo Barong Tagalog (SEN)
+62059099 Loại khác
+
+=== KHOÁ sarongHinhOng ===
+{
+ "khoa": "sarongHinhOng",
+ "kieu": "CO_KHONG",
+ "nhanVi": "sarong loại hình ống",
+ "nhanEn": "tubular sarong",
+ "nhanZh": "筒状纱笼",
+ "cachDoc": {
+  "vi": [
+   "sarong\\s+loại\\s+hình\\s+ống(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "tubular\\s+sarongs?"
+  ],
+  "zh": [
+   "筒状纱笼"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+sarong\\s+loại\\s+hình\\s+ống"
+  ],
+  "en": [
+   "not\\s+tubular\\s+sarongs?"
+  ],
+  "zh": [
+   "非筒状纱笼"
+  ]
+ },
+ "cachViet": {
+  "vi": "sarong loại hình ống",
+  "viPhuDinh": "không phải sarong loại hình ống"
+ },
+ "cauHoi": {
+  "vi": "Trang phục có phải là loại sarong hình ống không?",
+  "zh": "该服饰是否为筒状纱笼？"
+ },
+ "ghiChu": "Chữ biểu 6211.42.30, 6211.43.70, 6211.49.50 'Sarong loại hình ống (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+62114210 Quần áo đấu kiếm hoặc đấu vật
+62114220 Áo choàng không tay dùng để cầu nguyện (SEN)
+62114230 Sarong loại hình ống (SEN)
+62114290 Loại khác
+62114310 Áo phẫu thuật
+62114320 Áo choàng không tay dùng để cầu nguyện (SEN)
+62114330 Bộ quần áo bảo hộ chống nổ
+62114340 Quần áo đấu kiếm hoặc đấu vật
+62114350 Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)
+62114360 Bộ quần áo nhảy dù liền thân
+62114370 Sarong loại hình ống (SEN)
+62114390 Loại khác
+62114910 Quần áo đấu kiếm hoặc đấu vật
+62114920 Quần áo chống các chất hóa học, phóng xạ hoặc chống cháy (SEN)
+62114931 Từ lông cừu hoặc lông động vật mịn(SEN)
+62114939 Loại khác (SEN)
+62114950 Sarong loại hình ống (SEN)
+62114960 Loại khác, từ lông cừu hoặc lông động vật loại mịn
+62114990 Loại khác
+
+=== KHOÁ aoChoangHanhHuongIhram ===
+{
+ "khoa": "aoChoangHanhHuongIhram",
+ "kieu": "CO_KHONG",
+ "nhanVi": "áo choàng hành hương (Ihram)",
+ "nhanEn": "pilgrim garments (Ihram)",
+ "nhanZh": "朝觐服（Ihram）",
+ "cachDoc": {
+  "vi": [
+   "áo\\s+choàng\\s+hành\\s+hương(?:\\s*\\(ihram\\))?(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "ihram(?:\\s+garments?)?",
+   "pilgrim(?:age)?\\s+garments?"
+  ],
+  "zh": [
+   "朝觐服",
+   "戒衣",
+   "ihram"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+áo\\s+choàng\\s+hành\\s+hương"
+  ],
+  "en": [
+   "not\\s+ihram"
+  ],
+  "zh": [
+   "非朝觐服"
+  ]
+ },
+ "cachViet": {
+  "vi": "áo choàng hành hương Ihram",
+  "viPhuDinh": "không phải áo choàng hành hương Ihram"
+ },
+ "cauHoi": {
+  "vi": "Trang phục có phải là áo choàng hành hương (Ihram) không?",
+  "zh": "该服饰是否为朝觐服（Ihram）？"
+ },
+ "ghiChu": "Chữ biểu 6211.32.20, 6211.33.40, 6211.39.40 'Áo choàng hành hương (Ihram)(SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+62113210 Quần áo đấu kiếm hoặc đấu vật
+62113220 Áo choàng hành hương (Ihram)(SEN)
+62113290 Loại khác
+62113310 Quần áo đấu kiếm hoặc đấu vật
+62113320 Quần áo chống cháy(SEN)
+62113330 Quần áo chống các chất hóa học hoặc phóng xạ
+62113340 Áo choàng hành hương (Ihram)(SEN)
+62113390 Loại khác
+62113910 Quần áo đấu kiếm hoặc đấu vật
+62113920 Quần áo chống cháy(SEN)
+62113930 Quần áo chống các chất hóa học hoặc phóng xạ
+62113940 Áo choàng hành hương (Ihram)(SEN)
+62113990 Loại khác
+
+=== KHOÁ giayDauVatCuTa ===
+{
+ "khoa": "giayDauVatCuTa",
+ "kieu": "CO_KHONG",
+ "nhanVi": "giày dùng trong đấu vật, cử tạ hoặc thể hình",
+ "nhanEn": "footwear for wrestling, weightlifting or gymnastics",
+ "nhanZh": "摔跤、举重或健美用鞋",
+ "cachDoc": {
+  "vi": [
+   "giày(?:,\\s*dép)?\\s+(?:dùng\\s+trong|cho)\\s+đấu\\s+vật(?:,\\s*cử\\s+tạ\\s+hoặc\\s+thể\\s+dục\\s+thể\\s+hình)?"
+  ],
+  "en": [
+   "footwear\\s+for\\s+wrestling(?:,?\\s*weightlifting\\s+or\\s+gymnastics)?"
+  ],
+  "zh": [
+   "摔跤、举重或健美用鞋",
+   "摔跤鞋"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+giày\\s+đấu\\s+vật"
+  ],
+  "en": [
+   "not\\s+for\\s+wrestling"
+  ],
+  "zh": [
+   "非摔跤鞋"
+  ]
+ },
+ "cachViet": {
+  "vi": "giày đấu vật hoặc cử tạ",
+  "viPhuDinh": "không phải giày đấu vật hoặc cử tạ"
+ },
+ "cauHoi": {
+  "vi": "Giày dép có phải loại dùng trong đấu vật, cử tạ hoặc thể dục thể hình không?",
+  "zh": "该鞋靴是否为摔跤、举重或健美用鞋？"
+ },
+ "ghiChu": "Chữ biểu 6402.19.10 'Giày, dép cho đấu vật', 6403.19.30, 6404.11.20 'Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+64021910 Giày, dép cho đấu vật
+64021990 Loại khác
+64031910 Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự
+64031920 Ủng để cưỡi ngựa; giày chơi bowling
+64031930 Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình
+64031990 Loại khác
+64041110 Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự
+64041120 Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình
+64041190 Loại khác
+
+=== KHOÁ dangDaiDaiTamPhoDung ===
+{
+ "khoa": "dangDaiDaiTamPhoDung",
+ "kieu": "LIET_KE",
+ "nhanVi": "dạng đai, dải hoặc tấm phổ dụng",
+ "nhanEn": "form of hoop, strip or universal plates",
+ "nhanZh": "带材、窄条或通用中厚板形态",
+ "giaTriHopLe": [
+  "DAI_VA_DAI",
+  "TAM_PHO_DUNG",
+  "DAI_DAI_HOAC_PHO_DUNG"
+ ],
+ "moTaGiaTri": {
+  "DAI_VA_DAI": {
+   "nhanVi": "dạng đai và dải",
+   "nhanEn": "hoop and strip",
+   "nhanZh": "带材及窄条",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+đai\\s+và\\s+dải(?:\\s+khác)?(?:\\s*\\(SEN\\))?(?!;)"
+    ],
+    "en": [
+     "(?:other\\s+)?hoop\\s+and\\s+strip"
+    ],
+    "zh": [
+     "(?:其他)?带材及窄条",
+     "钢带"
+    ]
+   },
+   "cachViet": "dạng đai và dải"
+  },
+  "TAM_PHO_DUNG": {
+   "nhanVi": "tấm phổ dụng",
+   "nhanEn": "universal plates",
+   "nhanZh": "通用中厚板",
+   "cachDoc": {
+    "vi": [
+     "(?<!;\\s*)tấm\\s+phổ\\s+dụng(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "universal\\s+plates?"
+    ],
+    "zh": [
+     "通用中厚板",
+     "万能中厚板"
+    ]
+   },
+   "cachViet": "tấm phổ dụng"
+  },
+  "DAI_DAI_HOAC_PHO_DUNG": {
+   "nhanVi": "dạng đai và dải hoặc tấm phổ dụng",
+   "nhanEn": "hoop, strip or universal plates",
+   "nhanZh": "带材、窄条或通用中厚板",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+đai\\s+và\\s+dải(?:\\s+khác)?;\\s*tấm\\s+phổ\\s+dụng(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "(?:other\\s+)?hoop\\s+and\\s+strip;?\\s*universal\\s+plates?"
+    ],
+    "zh": [
+     "带材、窄条；通用中厚板",
+     "带材及窄条；通用中厚板"
+    ]
+   },
+   "cachViet": "dạng đai và dải hoặc tấm phổ dụng"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm thép cán phẳng ở dạng đai và dải hay dạng tấm phổ dụng?",
+  "zh": "该扁轧钢铁产品属于带材窄条还是通用中厚板？"
+ },
+ "ghiChu": "Trục phân loại hình dạng sản phẩm cán phẳng hẹp tại nhóm 7211 và 7212: 7211.13.13 'Dạng đai và dải(SEN)', 7211.13.14 'Tấm phổ dụng (SEN)', 7211.19.13 'Dạng đai và dải; tấm phổ dụng(SEN)', 7212.40.12 'Dạng đai và dải khác(SEN)', 7212.50.24 'Dạng đai và dải khác; tấm phổ dụng(SEN)', 7212.60.11 'Dạng đai và dải(SEN)'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+72111312 Dạng lượn sóng
+72111313 Dạng đai và dải(SEN)
+72111314 Tấm phổ dụng (SEN)
+72111319 Loại khác
+72111392 Dạng đai và dải(SEN)
+72111393 Tấm phổ dụng (SEN)
+72111399 Loại khác
+72111913 Dạng đai và dải; tấm phổ dụng(SEN)
+72111914 Dạng lượn sóng
+72111919 Loại khác
+72111991 Dạng đai và dải; tấm phổ dụng(SEN)
+72111999 Loại khác
+72124011 Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+72124012 Dạng đai và dải khác(SEN)
+72124013 Loại khác, được sơn sau khi phủ, mạ kẽm
+72124014 Loại khác, được sơn sau khi phủ, mạ hợp kim nhôm - kẽm
+72124019 Loại khác
+72124091 Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+72124099 Loại khác
+
+=== KHOÁ dangLuonSong ===
+{
+ "khoa": "dangLuonSong",
+ "kieu": "CO_KHONG",
+ "nhanVi": "dạng lượn sóng",
+ "nhanEn": "corrugated",
+ "nhanZh": "波形（瓦楞形）",
+ "cachDoc": {
+  "vi": [
+   "(?:loại\\s+khác,\\s*)?dạng\\s+lượn\\s+sóng"
+  ],
+  "en": [
+   "corrugated"
+  ],
+  "zh": [
+   "波形",
+   "瓦楞形"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+lượn\\s+sóng",
+   "dạng\\s+phẳng"
+  ],
+  "en": [
+   "non-?corrugated",
+   "flat"
+  ],
+  "zh": [
+   "非波形",
+   "平板状"
+  ]
+ },
+ "cachViet": {
+  "vi": "dạng lượn sóng",
+  "viPhuDinh": "không phải dạng lượn sóng"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm thép có ở dạng lượn sóng không?",
+  "zh": "该钢铁制品是否呈波形（瓦楞形）？"
+ },
+ "ghiChu": "Chữ biểu 7208.90.10, 7209.90.10, 7210.61.92, 7211.13.12, 7211.14.14, 7211.19.14, 7211.23.10, 7211.29.10, 7211.90.13 'Dạng lượn sóng'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+72089010 Dạng lượn sóng
+72089020 Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm
+72089090 Loại khác
+72099010 Dạng lượn sóng
+72099090 Loại khác
+72106111 Chiều dày không quá 1,2 mm
+72106112 Chiều dày trên 1,2 mm nhưng không quá 1,5 mm
+72106119 Loại khác
+72106191 Chiều dày không quá 1,2 mm
+72106192 Loại khác, dạng lượn sóng
+72106199 Loại khác
+
+=== KHOÁ loaiDoDungGiaDinhSatThep ===
+{
+ "khoa": "loaiDoDungGiaDinhSatThep",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại đồ dùng gia đình bằng sắt thép",
+ "nhanEn": "type of household iron or steel articles",
+ "nhanZh": "钢铁制家庭用器具类型",
+ "giaTriHopLe": [
+  "DO_DUNG_NHA_BEP",
+  "GAT_TAN_THUOC_LA"
+ ],
+ "moTaGiaTri": {
+  "DO_DUNG_NHA_BEP": {
+   "nhanVi": "đồ dùng nhà bếp",
+   "nhanEn": "kitchenware",
+   "nhanZh": "厨房器具",
+   "cachDoc": {
+    "vi": [
+     "đồ\\s+dùng\\s+nhà\\s+bếp"
+    ],
+    "en": [
+     "kitchenware",
+     "kitchen\\s+articles?"
+    ],
+    "zh": [
+     "厨房器具",
+     "厨房用品"
+    ]
+   },
+   "cachViet": "đồ dùng nhà bếp"
+  },
+  "GAT_TAN_THUOC_LA": {
+   "nhanVi": "gạt tàn thuốc lá",
+   "nhanEn": "ashtrays",
+   "nhanZh": "烟灰缸",
+   "cachDoc": {
+    "vi": [
+     "gạt\\s+tàn\\s+thuốc\\s+lá"
+    ],
+    "en": [
+     "ashtrays?"
+    ],
+    "zh": [
+     "烟灰缸"
+    ]
+   },
+   "cachViet": "gạt tàn thuốc lá"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm là đồ dùng nhà bếp hay gạt tàn thuốc lá?",
+  "zh": "该产品属于厨房器具还是烟灰缸？"
+ },
+ "ghiChu": "Trục phân loại mặt hàng gia dụng tại nhóm 7323: 7323.91.10, 7323.93.10, 7323.99.10 'Đồ dùng nhà bếp', 7323.91.20, 7323.93.20, 7323.99.20 'Gạt tàn thuốc lá'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+73239110 Đồ dùng nhà bếp
+73239120 Gạt tàn thuốc lá
+73239190 Loại khác
+73239310 Đồ dùng nhà bếp
+73239320 Gạt tàn thuốc lá
+73239390 Loại khác
+73239910 Đồ dùng nhà bếp
+73239920 Gạt tàn thuốc lá
+73239990 Loại khác
+
+=== KHOÁ xichXeDapMoTo ===
+{
+ "khoa": "xichXeDapMoTo",
+ "kieu": "CO_KHONG",
+ "nhanVi": "xích xe đạp hoặc xích xe mô tô",
+ "nhanEn": "bicycle or motorcycle chain",
+ "nhanZh": "自行车或摩托车链条",
+ "cachDoc": {
+  "vi": [
+   "xích\\s+xe\\s+đạp\\s+hoặc\\s+xích\\s+xe\\s+mô\\s+tô"
+  ],
+  "en": [
+   "bicycle\\s+or\\s+motorcycle\\s+chains?"
+  ],
+  "zh": [
+   "自行车或摩托车链条",
+   "自行车链条或摩托车链条"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+xích\\s+xe\\s+đạp\\s+hoặc\\s+mô\\s+tô"
+  ],
+  "en": [
+   "not\\s+bicycle\\s+or\\s+motorcycle\\s+chains?"
+  ],
+  "zh": [
+   "非自行车或摩托车链条"
+  ]
+ },
+ "cachViet": {
+  "vi": "xích xe đạp hoặc xích xe mô tô",
+  "viPhuDinh": "không phải xích xe đạp hoặc xích xe mô tô"
+ },
+ "cauHoi": {
+  "vi": "Xích có phải loại dùng cho xe đạp hoặc xe mô tô không?",
+  "zh": "该链条是否用于自行车或摩托车？"
+ },
+ "ghiChu": "Chữ biểu 7315.11.10, 7315.12.10, 7315.19.10, 7315.89.10, 7315.90.20 'Xích xe đạp hoặc xích xe mô tô'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+73151110 Xích xe đạp hoặc xích xe mô tô
+73151191 Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm
+73151199 Loại khác
+73151210 Xích xe đạp hoặc xích xe mô tô
+73151290 Loại khác
+73151910 Xích xe đạp hoặc xích xe mô tô
+73151990 Loại khác
+
+=== KHOÁ phuongPhapHanOngThep ===
+{
+ "khoa": "phuongPhapHanOngThep",
+ "kieu": "LIET_KE",
+ "nhanVi": "phương pháp hàn ống thép",
+ "nhanEn": "welding method for steel pipes",
+ "nhanZh": "钢管焊接方法",
+ "giaTriHopLe": [
+  "HAN_DIEN_TRO_ERW",
+  "HAN_HO_QUANG_CHIM_XOAN"
+ ],
+ "moTaGiaTri": {
+  "HAN_DIEN_TRO_ERW": {
+   "nhanVi": "hàn điện trở (ERW)",
+   "nhanEn": "electric resistance welded (ERW)",
+   "nhanZh": "电阻焊（ERW）",
+   "cachDoc": {
+    "vi": [
+     "hàn\\s+điện\\s+trở(?:\\s+theo\\s+chiều\\s+dọc)?(?:\\s*\\(ERW\\))?"
+    ],
+    "en": [
+     "(?:longitudinally\\s+)?electric\\s+resistance\\s+welded(?:\\s*\\(ERW\\))?"
+    ],
+    "zh": [
+     "电阻焊",
+     "直缝电阻焊",
+     "ERW"
+    ]
+   },
+   "cachViet": "hàn điện trở"
+  },
+  "HAN_HO_QUANG_CHIM_XOAN": {
+   "nhanVi": "hàn chìm xoắn hoặc xoắn ốc bằng hồ quang",
+   "nhanEn": "spirally submerged arc welded",
+   "nhanZh": "螺旋埋弧焊",
+   "cachDoc": {
+    "vi": [
+     "hàn\\s+chìm\\s+xoắn\\s+hoặc\\s+xoắn\\s+ốc\\s+bằng\\s+hồ\\s+quang"
+    ],
+    "en": [
+     "spirally\\s+submerged\\s+arc\\s+welded"
+    ],
+    "zh": [
+     "螺旋埋弧焊"
+    ]
+   },
+   "cachViet": "hàn chìm xoắn bằng hồ quang"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Ống thép được hàn bằng phương pháp hàn điện trở (ERW) hay hàn chìm xoắn hồ quang?",
+  "zh": "该钢管采用电阻焊（ERW）还是螺旋埋弧焊制造？"
+ },
+ "ghiChu": "Trục công nghệ chế tạo ống thép nhóm 7305 và 7306: 7305.12.10 'Hàn điện trở (ERW)', 7305.19.10 'Hàn chìm xoắn hoặc xoắn ốc bằng hồ quang', 7306.11.10, 7306.19.10 'Hàn điện trở theo chiều dọc (ERW)', 7306.19.20 'Hàn chìm xoắn hoặc xoắn ốc bằng hồ quang'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+73051210 Hàn điện trở (ERW)
+73051290 Loại khác
+73051910 Hàn chìm xoắn hoặc xoắn ốc bằng hồ quang
+73051990 Loại khác
+73061110 Hàn điện trở theo chiều dọc (ERW)
+73061190 Loại khác
+
+=== KHOÁ hopDungThuocLaDieu ===
+{
+ "khoa": "hopDungThuocLaDieu",
+ "kieu": "CO_KHONG",
+ "nhanVi": "hộp đựng thuốc lá điếu (kể cả có kèm gạt tàn)",
+ "nhanEn": "cigarette cases (including with ashtrays)",
+ "nhanZh": "香烟盒（包括带烟灰缸）",
+ "cachDoc": {
+  "vi": [
+   "hộp\\s+đựng\\s+thuốc\\s+lá\\s+điếu(?:\\s*;\\s*gạt\\s+tàn\\s+thuốc\\s+lá)?"
+  ],
+  "en": [
+   "cigarette\\s+cases?(?:\\s*;?\\s*ashtrays?)?"
+  ],
+  "zh": [
+   "香烟盒(?:[;；]\\s*烟灰缸)?"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+hộp\\s+đựng\\s+thuốc\\s+lá\\s+điếu"
+  ],
+  "en": [
+   "not\\s+cigarette\\s+cases?"
+  ],
+  "zh": [
+   "非香烟盒"
+  ]
+ },
+ "cachViet": {
+  "vi": "hộp đựng thuốc lá điếu",
+  "viPhuDinh": "không phải hộp đựng thuốc lá điếu"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm kim loại có phải là hộp đựng thuốc lá điếu (hoặc kèm gạt tàn) không?",
+  "zh": "该金属制品是否为香烟盒（或带烟灰缸）？"
+ },
+ "ghiChu": "Chữ biểu 7326.90.91, 7419.80.40, 7616.99.70 'Hộp đựng thuốc lá điếu', 7907.00.91, 8007.00.91 'Hộp đựng thuốc lá điếu; gạt tàn thuốc lá'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+73269010 Bánh lái tàu thủy
+73269020 Máng và chén để thu mủ cao su
+73269030 Bộ kẹp bằng thép không gỉ đã lắp với măng sông cao su dùng cho các ống không có đầu nối và phụ kiện ghép nối bằng gang đúc(SEN)
+73269060 Đèn Bunsen
+73269070 Móng ngựa; mấu, gai, đinh móc lắp trên giày để thúc ngựa
+73269091 Hộp đựng thuốc lá điếu
+73269099 Loại khác
+74198010 Xích và các bộ phận của xích
+74198021 Đai liền cho máy móc
+74198029 Loại khác
+74198030 Lò xo
+74198040 Hộp đựng thuốc lá điếu
+74198050 Thiết bị nấu hoặc đun nóng, trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này
+74198060 Các vật dụng được thiết kế riêng sử dụng trong nghi lễ tôn giáo (SEN)
+74198070 A-nốt mạ điện; dụng cụ đo dung tích (trừ loại gia dụng)
+74198080 Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt
+74198090 Loại khác
+76169920 Nhôm bịt đầu ống loại phù hợp dùng để sản xuất bút chì (SEN)
+76169930 Đồng xèng, hình tròn, kích thước chiều dày trên 1/10 đường kính (SEN)
+76169940 Ống chỉ, lõi suốt, guồng quay tơ và sản phẩm tương tự dùng cho sợi dệt
+76169951 Rèm chớp lật(SEN)
+76169959 Loại khác
+76169960 Máng và chén để hứng mủ cao su
+76169970 Hộp đựng thuốc lá điếu
+76169980 Sản phẩm dạng lưới được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới
+76169990 Loại khác
+
+=== KHOÁ banLeMocKhoaHasps ===
+{
+ "khoa": "banLeMocKhoaHasps",
+ "kieu": "CO_KHONG",
+ "nhanVi": "bản lề để móc khóa (hasps)",
+ "nhanEn": "hasps",
+ "nhanZh": "搭扣/锁扣铰链（hasps）",
+ "cachDoc": {
+  "vi": [
+   "bản\\s+lề\\s+để\\s+móc\\s+khóa(?:\\s*\\(Hasps\\))?(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "hasps?"
+  ],
+  "zh": [
+   "搭扣",
+   "挂锁搭扣",
+   "hasps"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+bản\\s+lề\\s+để\\s+móc\\s+khóa"
+  ],
+  "en": [
+   "not\\s+hasps?"
+  ],
+  "zh": [
+   "非搭扣"
+  ]
+ },
+ "cachViet": {
+  "vi": "bản lề để móc khóa",
+  "viPhuDinh": "không phải bản lề để móc khóa"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm có phải là bản lề để móc khóa (hasps) không?",
+  "zh": "该五金配件是否为搭扣/挂锁搭扣（hasps）？"
+ },
+ "ghiChu": "Chữ biểu 8302.30.10, 8302.41.31, 8302.42.20, 8302.49.91 'Bản lề để móc khóa (Hasps)(SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+83023010 Bản lề để móc khóa (Hasps)(SEN)
+83023090 Loại khác
+83024131 Bản lề để móc khóa (Hasps)(SEN)
+83024139 Loại khác
+83024190 Loại khác
+83024220 Bản lề để móc khóa (Hasps)(SEN)
+83024290 Loại khác
+

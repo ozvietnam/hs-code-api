@@ -1,0 +1,947 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+LƯU Ý rút từ 6 gói trước: (1) mọi mục SUA PHẢI kèm "sua" với giá trị đầy đủ thay thế; (2) regex sửa để tránh bắt nhầm phải thử lại trong đầu với cụm gây nhầm (tiền tố tuỳ chọn "(?:dạng\s+)?viên" VẪN bắt "thành viên"); (3) không bỏ cách viết có gạch nối ("radio-telephony"); (4) JSON hợp lệ, có dấu phẩy giữa các trường, không dấu phẩy thừa.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG), bonBanhChuDong(CO_KHONG), xeBaBanh(CO_KHONG), khoiLuongToanBo(SO), kieuXeChoNguoi(LIET_KE), kieuXeChoHang(LIET_KE), mayKeoNongNghiep(CO_KHONG), loaiBoPhanDongCoPiston(LIET_KE), dungTrongNongNghiep(CO_KHONG), canDienTu(CO_KHONG), mayRenKhuonHoacDapKhuon(CO_KHONG), dungTrongYTeHoacThiNghiem(CO_KHONG), dieuKhienSo(CO_KHONG), dungChoXeCoDongCo(CO_KHONG), bienApThichUng(CO_KHONG), loaiXachTay(CO_KHONG), laMayPhatDien(CO_KHONG), loaiBienDoiTinhDien(LIET_KE), loaiThietBiBaoDong(LIET_KE), dangTamPhienMang(LIET_KE), tamPhuSan(CO_KHONG), dangChePhamDietMuoi(LIET_KE), loaiHangDanLat(LIET_KE), ongHutXaBunKhaiThacMo(CO_KHONG), dungChoDienAnh(CO_KHONG), sonChongHaHoacChongAnMonVoTau(CO_KHONG), tamMiengGhepLatNenOpTuong(CO_KHONG), dungTrongNhaKhoa(CO_KHONG), dayTetBen(CO_KHONG), loaiCung(CO_KHONG), boPhanThitGiaCam(LIET_KE), thichHopDungChoNguoi(CO_KHONG), caBot(CO_KHONG), laChe(CO_KHONG), daXay(CO_KHONG), soCheTom(LIET_KE), loaiThuocLaNguyenLieu(LIET_KE), phaCheVoiEthanol(CO_KHONG), daPhaHuongLieuHoacChatMau(CO_KHONG), sanPhamDinhDuongYTe(CO_KHONG), dangKhoiHoacTamDa(LIET_KE), loaiMiBunMien(LIET_KE), chuaCaCao(CO_KHONG), thamCauNguyen(CO_KHONG), quanAoDauKiemDauVat(CO_KHONG), loaiSanPhamXiMangSoi(LIET_KE), tamLatGachLat(CO_KHONG), donNgucSauPhauThuat(CO_KHONG), boPhanGiayDep(LIET_KE), dungSanXuatOngChanKhong(CO_KHONG), aoBarongTagalog(CO_KHONG), sarongHinhOng(CO_KHONG), aoChoangHanhHuongIhram(CO_KHONG), giayDauVatCuTa(CO_KHONG), dangDaiDaiTamPhoDung(LIET_KE), dangLuonSong(CO_KHONG), loaiDoDungGiaDinhSatThep(LIET_KE), xichXeDapMoTo(CO_KHONG), phuongPhapHanOngThep(LIET_KE), hopDungThuocLaDieu(CO_KHONG), banLeMocKhoaHasps(CO_KHONG), chuaGiaCongQuaMucCanNong(CO_KHONG), hamLuongCrom(SO), phoiDetDangPhien(CO_KHONG), ongVaPhuKienKimLoaiMau(CO_KHONG), loaiDoChoi(LIET_KE), kieuChieuSangDen(LIET_KE), tuHutHoiDoc(CO_KHONG), denChoPhongMo(CO_KHONG), hopDungThuocLaTrangTri(CO_KHONG), loaiNoiThatYTe(LIET_KE)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ dungChoXeCoDongCo ===
+{
+ "khoa": "dungChoXeCoDongCo",
+ "kieu": "CO_KHONG",
+ "nhanVi": "dùng cho xe có động cơ (ô tô hoặc xe thuộc Chương 87)",
+ "nhanEn": "used for motor vehicles (Chapter 87)",
+ "nhanZh": "用于机动车辆（第87章）",
+ "cachDoc": {
+  "vi": [
+   "(?:sử\\s+dụng|dùng)\\s+cho\\s+động\\s+cơ\\s+ô\\s+tô",
+   "(?:sử\\s+dụng|dùng)\\s+cho\\s+động\\s+cơ\\s+của\\s+xe\\s+thuộc\\s+nhóm\\s+87\\.\\d+",
+   "(?:động\\s+cơ\\s+)?dùng\\s+cho\\s+xe\\s+của\\s+chương\\s+87",
+   "cho\\s+xe\\s+thuộc\\s+nhóm\\s+87\\.\\d+",
+   "(?:dùng|sử\\s+dụng)\\s+cho\\s+xe\\s+có\\s+động\\s+cơ",
+   "cho\\s+xe\\s+có\\s+động\\s+cơ",
+   "dùng\\s+cho\\s+xe\\s+có\\s+động\\s+cơ",
+   "sử\\s+dụng\\s+cho\\s+xe\\s+có\\s+động\\s+cơ",
+   "dùng\\s+cho\\s+xe\\s+thuộc\\s+nhóm\\s+87\\.\\d+",
+   "sử\\s+dụng\\s+cho\\s+động\\s+cơ\\s+của\\s+(?:các\\s+)?nhóm\\s+87\\.\\d+"
+  ],
+  "en": [
+   "(?:used\\s+)?for\\s+engines?\\s+of\\s+motor\\s+vehicles?",
+   "(?:used\\s+)?for\\s+vehicles?\\s+of\\s+chapter\\s+87",
+   "(?:used\\s+)?for\\s+vehicles?\\s+of\\s+heading\\s+87\\.\\d+",
+   "(?:used\\s+)?for\\s+motor\\s+vehicles?",
+   "for\\s+vehicles?\\s+of\\s+heading\\s+87\\.\\d+"
+  ],
+  "zh": [
+   "用于机动车辆发动机",
+   "用于第87章车辆",
+   "用于品目87\\.\\d+所列车辆",
+   "机动车辆用",
+   "用于机动车辆"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+dùng\\s+cho\\s+xe\\s+có\\s+động\\s+cơ"
+  ],
+  "en": [
+   "not\\s+for\\s+motor\\s+vehicles"
+  ],
+  "zh": [
+   "非机动车用"
+  ]
+ },
+ "cachViet": {
+  "vi": "dùng cho xe có động cơ",
+  "viPhuDinh": "không dùng cho xe có động cơ"
+ },
+ "cauHoi": {
+  "vi": "Hàng hóa có phải loại dùng cho xe có động cơ hoặc xe thuộc Chương 87 không?",
+  "zh": "该货物是否用于机动车辆或第87章所列车辆？"
+ },
+ "ghiChu": "Trục công dụng lắp ráp/vận hành trên xe cơ giới lặp ở nhiều nhóm: 8501.31.60 'Động cơ dùng cho xe của Chương 87', 8501.32.24 'Động cơ dùng cho xe của Chương 87', 8511.10.20 'Sử dụng cho động cơ ô tô', 8511.40.21 'Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05', 8511.40.31 'Sử dụng cho động cơ của xe thuộc nhóm 87.01', 8544.42.32 'Cho xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+85013130 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+85013160 Động cơ dùng cho xe của Chương 87
+85013170 Động cơ khác
+85013180 Máy phát điện
+85013221 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+85013224 Động cơ dùng cho xe của Chương 87
+85013225 Động cơ khác
+85013226 Máy phát điện
+85013231 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+85013232 Động cơ khác
+85013233 Máy phát điện
+85111010 Loại dùng cho động cơ của phương tiện bay
+85111020 Sử dụng cho động cơ ô tô
+85111090 Loại khác
+
+=== KHOÁ bienApThichUng ===
+{
+ "khoa": "bienApThichUng",
+ "kieu": "CO_KHONG",
+ "nhanVi": "biến áp thích ứng (matching transformer)",
+ "nhanEn": "matching transformer",
+ "nhanZh": "匹配变压器",
+ "cachDoc": {
+  "vi": [
+   "biến\\s+áp\\s+thích\\s+ứng(?:\\s+khác)?(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "(?:other\\s+)?matching\\s+transformers?"
+  ],
+  "zh": [
+   "(?:其他)?匹配变压器"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+biến\\s+áp\\s+thích\\s+ứng"
+  ],
+  "en": [
+   "not\\s+matching\\s+transformers?"
+  ],
+  "zh": [
+   "非匹配变压器"
+  ]
+ },
+ "cachViet": {
+  "vi": "biến áp thích ứng",
+  "viPhuDinh": "không phải biến áp thích ứng"
+ },
+ "cauHoi": {
+  "vi": "Máy biến áp có phải là loại biến áp thích ứng không?",
+  "zh": "该变压器是否为匹配变压器？"
+ },
+ "ghiChu": "Chữ biểu 8504.31.92 'Biến áp thích ứng khác (SEN)', 8504.32.11, 8504.32.41, 8504.32.51, 8504.33.11, 8504.33.91, 8504.34.11, 8504.34.14, 8504.34.22, 8504.34.25 'Biến áp thích ứng (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+85043111 Điện áp từ 110 kV trở lên
+85043112 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+85043113 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+85043119 Loại khác
+85043121 Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)
+85043122 Loại khác
+85043123 Điện áp từ 66 kV trở lên, nhưng dưới 110 kV
+85043124 Điện áp từ 1 kV trở lên, nhưng dưới 66 kV
+85043129 Loại khác
+85043130 Máy biến áp quét về (biến áp tần số quét ngược) (SEN)
+85043140 Máy biến điện trung tần
+85043191 Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+85043211 Biến áp thích ứng (SEN)
+85043219 Loại khác
+85043220 Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+85043230 Loại khác, tần số tối thiểu 3 MHz
+85043241 Biến áp thích ứng (SEN)
+85043249 Loại khác
+85043251 Biến áp thích ứng (SEN)
+85043259 Loại khác
+85043311 Biến áp thích ứng (SEN)
+85043319 Loại khác (SEN)
+85043391 Biến áp thích ứng (SEN)
+85043399 Loại khác
+
+=== KHOÁ loaiXachTay ===
+{
+ "khoa": "loaiXachTay",
+ "kieu": "CO_KHONG",
+ "nhanVi": "loại xách tay",
+ "nhanEn": "portable type",
+ "nhanZh": "便携式",
+ "cachDoc": {
+  "vi": [
+   "(?:loại\\s+)?xách\\s+tay"
+  ],
+  "en": [
+   "portable(?:\\s+type)?"
+  ],
+  "zh": [
+   "便携式",
+   "便携型"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+loại\\s+xách\\s+tay",
+   "cố\\s+định"
+  ],
+  "en": [
+   "non-?portable",
+   "fixed"
+  ],
+  "zh": [
+   "非便携式",
+   "固定式"
+  ]
+ },
+ "cachViet": {
+  "vi": "loại xách tay",
+  "viPhuDinh": "không phải loại xách tay"
+ },
+ "cauHoi": {
+  "vi": "Thiết bị có phải loại xách tay không?",
+  "zh": "该设备是否为便携式？"
+ },
+ "ghiChu": "Chữ biểu 8527.13.10 'Loại xách tay', 8527.19.20 'Loại xách tay', 8527.91.10 'Loại xách tay'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+85271310 Loại xách tay
+85271390 Loại khác
+85271920 Loại xách tay
+85271990 Loại khác
+85279110 Loại xách tay
+85279190 Loại khác
+
+=== KHOÁ laMayPhatDien ===
+{
+ "khoa": "laMayPhatDien",
+ "kieu": "CO_KHONG",
+ "nhanVi": "máy phát điện",
+ "nhanEn": "electric generator",
+ "nhanZh": "发电机",
+ "cachDoc": {
+  "vi": [
+   "máy\\s+phát\\s+điện"
+  ],
+  "en": [
+   "generators?",
+   "electric\\s+generators?"
+  ],
+  "zh": [
+   "发电机"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "động\\s+cơ\\s+điện"
+  ],
+  "en": [
+   "electric\\s+motors?"
+  ],
+  "zh": [
+   "电动机"
+  ]
+ },
+ "cachViet": {
+  "vi": "máy phát điện",
+  "viPhuDinh": "không phải máy phát điện"
+ },
+ "cauHoi": {
+  "vi": "Thiết bị có phải là máy phát điện không?",
+  "zh": "该设备是否为发电机？"
+ },
+ "ghiChu": "Chữ biểu 8501.31.80 'Máy phát điện', 8501.32.26 'Máy phát điện', 8501.32.33 'Máy phát điện'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+85013130 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+85013160 Động cơ dùng cho xe của Chương 87
+85013170 Động cơ khác
+85013180 Máy phát điện
+85013221 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16
+85013224 Động cơ dùng cho xe của Chương 87
+85013225 Động cơ khác
+85013226 Máy phát điện
+85013231 Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50
+85013232 Động cơ khác
+85013233 Máy phát điện
+
+=== KHOÁ loaiBienDoiTinhDien ===
+{
+ "khoa": "loaiBienDoiTinhDien",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại bộ biến đổi tĩnh điện",
+ "nhanEn": "type of static converter",
+ "nhanZh": "静止式变流器类型",
+ "giaTriHopLe": [
+  "UPS",
+  "CHINH_LUU",
+  "NGHICH_LUU"
+ ],
+ "moTaGiaTri": {
+  "UPS": {
+   "nhanVi": "bộ nguồn cấp điện liên tục (UPS)",
+   "nhanEn": "uninterruptible power supply (UPS)",
+   "nhanZh": "不间断供电电源（UPS）",
+   "cachDoc": {
+    "vi": [
+     "bộ\\s+nguồn\\s+cấp\\s+điện\\s+liên\\s+tục(?:\\s*\\(UPS\\))?(?:\\s*\\(SEN\\))?",
+     "ups"
+    ],
+    "en": [
+     "uninterruptible\\s+power\\s+suppl(?:y|ies)(?:\\s*\\(ups\\))?",
+     "ups"
+    ],
+    "zh": [
+     "不间断供电电源",
+     "ups"
+    ]
+   },
+   "cachViet": "bộ nguồn cấp điện liên tục UPS"
+  },
+  "CHINH_LUU": {
+   "nhanVi": "bộ chỉnh lưu",
+   "nhanEn": "rectifier",
+   "nhanZh": "整流器",
+   "cachDoc": {
+    "vi": [
+     "(?:bộ\\s+)?chỉnh\\s+lưu(?:\\s+khác)?"
+    ],
+    "en": [
+     "(?:other\\s+)?rectifiers?"
+    ],
+    "zh": [
+     "整流器",
+     "其他整流器"
+    ]
+   },
+   "cachViet": "bộ chỉnh lưu"
+  },
+  "NGHICH_LUU": {
+   "nhanVi": "bộ nghịch lưu",
+   "nhanEn": "inverter",
+   "nhanZh": "逆变器",
+   "cachDoc": {
+    "vi": [
+     "(?:bộ\\s+)?nghịch\\s+lưu"
+    ],
+    "en": [
+     "inverters?"
+    ],
+    "zh": [
+     "逆变器"
+    ]
+   },
+   "cachViet": "bộ nghịch lưu"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Bộ biến đổi tĩnh điện thuộc loại nào?",
+  "zh": "该静止式变流器属于哪种类型？"
+ },
+ "ghiChu": "Trục phân loại bộ biến đổi tĩnh điện tại 8504.40: 8504.40.11 'Bộ nguồn cấp điện liên tục (UPS) (SEN)', 8504.40.30 'Bộ chỉnh lưu khác', 8504.40.40 'Bộ nghịch lưu'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+85044011 Bộ nguồn cấp điện liên tục (UPS) (SEN)
+85044019 Loại khác
+85044020 Máy nạp ắc qui, pin có công suất danh định trên 100 kVA
+85044030 Bộ chỉnh lưu khác
+85044040 Bộ nghịch lưu
+85044090 Loại khác
+
+=== KHOÁ loaiThietBiBaoDong ===
+{
+ "khoa": "loaiThietBiBaoDong",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại thiết bị báo động",
+ "nhanEn": "type of alarm apparatus",
+ "nhanZh": "报警设备类型",
+ "giaTriHopLe": [
+  "BAO_TROM",
+  "BAO_CHAY",
+  "BAO_KHOI"
+ ],
+ "moTaGiaTri": {
+  "BAO_TROM": {
+   "nhanVi": "báo trộm",
+   "nhanEn": "burglar alarm",
+   "nhanZh": "防盗报警器",
+   "cachDoc": {
+    "vi": [
+     "(?:thiết\\s+bị\\s+)?báo\\s+trộm"
+    ],
+    "en": [
+     "burglar\\s+alarms?"
+    ],
+    "zh": [
+     "防盗报警器",
+     "防盗报警"
+    ]
+   },
+   "cachViet": "báo trộm"
+  },
+  "BAO_CHAY": {
+   "nhanVi": "báo cháy",
+   "nhanEn": "fire alarm",
+   "nhanZh": "火警报警器",
+   "cachDoc": {
+    "vi": [
+     "(?:thiết\\s+bị\\s+)?báo\\s+cháy"
+    ],
+    "en": [
+     "fire\\s+alarms?"
+    ],
+    "zh": [
+     "火警报警器",
+     "火警报警"
+    ]
+   },
+   "cachViet": "báo cháy"
+  },
+  "BAO_KHOI": {
+   "nhanVi": "báo khói hoặc còi rú báo động cá nhân",
+   "nhanEn": "smoke alarm or personal panic alarm",
+   "nhanZh": "感烟报警器或个人警报器",
+   "cachDoc": {
+    "vi": [
+     "báo\\s+khói(?:\\s*;\\s*chuông\\s+báo\\s+động\\s+cá\\s+nhân\\s+bỏ\\s+túi(?:\\s*\\(còi\\s+rú\\))?)?"
+    ],
+    "en": [
+     "smoke\\s+alarms?",
+     "personal\\s+alarms?"
+    ],
+    "zh": [
+     "感烟报警器",
+     "烟雾报警器"
+    ]
+   },
+   "cachViet": "báo khói hoặc còi rú báo động cá nhân"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Thiết bị báo động thuộc chức năng báo động nào?",
+  "zh": "该报警设备属于哪种警报类型？"
+ },
+ "ghiChu": "Trục phân loại thiết bị báo động tại 8531.10: 8531.10.10 'Báo trộm', 8531.10.20 'Báo cháy', 8531.10.30 'Báo khói; chuông báo động cá nhân bỏ túi (còi rú)'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+85311010 Báo trộm
+85311020 Báo cháy
+85311030 Báo khói; chuông báo động cá nhân bỏ túi (còi rú)
+85311090 Loại khác
+
+=== KHOÁ dangTamPhienMang ===
+{
+ "khoa": "dangTamPhienMang",
+ "kieu": "LIET_KE",
+ "nhanVi": "dạng hình học bán thành phẩm plastic",
+ "nhanEn": "geometric form of plastic semi-manufactures",
+ "nhanZh": "塑料半制品的几何形状",
+ "giaTriHopLe": [
+  "TAM_VA_PHIEN",
+  "MANG",
+  "MONOFILAMENT",
+  "THANH_QUE_HINH"
+ ],
+ "moTaGiaTri": {
+  "TAM_VA_PHIEN": {
+   "nhanVi": "dạng tấm và phiến",
+   "nhanEn": "plates and sheets",
+   "nhanZh": "板及片",
+   "cachDoc": {
+    "vi": [
+     "(?:dạng\\s+)?tấm\\s+và\\s+phiến(?:\\s*\\(SEN\\))?",
+     "dạng\\s+tấm\\s+và\\s+phiến,\\s+loại\\s+cứng(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "plates?\\s+and\\s+sheets?"
+    ],
+    "zh": [
+     "板及片",
+     "板、片"
+    ]
+   },
+   "cachViet": "dạng tấm và phiến"
+  },
+  "MANG": {
+   "nhanVi": "dạng màng",
+   "nhanEn": "film",
+   "nhanZh": "膜",
+   "cachDoc": {
+    "vi": [
+     "(?:dạng\\s+)?màng(?:\\s*\\(SEN\\))?",
+     "màng\\s+xenlophan",
+     "màng\\s+bảo\\s+vệ\\s+chắn\\s+ánh\\s+sáng\\s+mặt\\s+trời(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "films?"
+    ],
+    "zh": [
+     "膜",
+     "薄膜"
+    ]
+   },
+   "cachViet": "dạng màng"
+  },
+  "MONOFILAMENT": {
+   "nhanVi": "sợi monofilament",
+   "nhanEn": "monofilament",
+   "nhanZh": "单丝",
+   "cachDoc": {
+    "vi": [
+     "sợi\\s+monofilament",
+     "đơn\\s+sợi"
+    ],
+    "en": [
+     "monofilaments?"
+    ],
+    "zh": [
+     "单丝"
+    ]
+   },
+   "cachViet": "sợi monofilament"
+  },
+  "THANH_QUE_HINH": {
+   "nhanVi": "dạng thanh, que và các dạng hình",
+   "nhanEn": "rods, sticks and profile shapes",
+   "nhanZh": "条、杆及异型材",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+thanh,\\s*que\\s+và\\s+các\\s+dạng\\s+hình"
+    ],
+    "en": [
+     "rods?,?\\s*sticks?\\s+and\\s+profile\\s+shapes?"
+    ],
+    "zh": [
+     "条、杆及异型材"
+    ]
+   },
+   "cachViet": "dạng thanh, que và các dạng hình"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Bán thành phẩm plastic ở dạng hình học nào?",
+  "zh": "该塑料半制品属于哪种几何形状？"
+ },
+ "ghiChu": "Trục phân loại hình dạng bán thành phẩm plastic tại nhóm 3916, 3920 và 3921: 3916.10.10 'Sợi monofilament', 3916.10.20 'Dạng thanh, que và các dạng hình', 3920.20.91 'Dạng tấm và phiến (SEN)', 3920.62.91 'Màng bảo vệ chắn ánh sáng mặt trời (SEN)', 3920.71.10 'Màng xenlophan', 3921.11.91 'Dạng tấm và phiến (SEN)', 3921.11.92 'Dạng màng (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+39161010 Sợi monofilament
+39161020 Dạng thanh, que và các dạng hình
+39202010 Màng polypropylen định hướng hai chiều (BOPP) (SEN)
+39202091 Dạng tấm và phiến (SEN)
+39202099 Loại khác
+39206210 Dạng tấm và phiến (SEN)
+39206291 Màng bảo vệ chắn ánh sáng mặt trời (SEN)
+39206299 Loại khác
+
+=== KHOÁ tamPhuSan ===
+{
+ "khoa": "tamPhuSan",
+ "kieu": "CO_KHONG",
+ "nhanVi": "tấm phủ sàn",
+ "nhanEn": "floor covering",
+ "nhanZh": "地板覆盖物",
+ "cachDoc": {
+  "vi": [
+   "tấm\\s+phủ\\s+sàn"
+  ],
+  "en": [
+   "floor\\s+coverings?"
+  ],
+  "zh": [
+   "地板覆盖物",
+   "铺地制品"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+tấm\\s+phủ\\s+sàn"
+  ],
+  "en": [
+   "not\\s+floor\\s+coverings?"
+  ],
+  "zh": [
+   "非地板覆盖物"
+  ]
+ },
+ "cachViet": {
+  "vi": "tấm phủ sàn",
+  "viPhuDinh": "không phải tấm phủ sàn"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm giấy/bìa có phải là tấm phủ sàn không?",
+  "zh": "该纸或纸板制品是否为地板覆盖物？"
+ },
+ "ghiChu": "Chữ biểu 4811.51.31, 4811.51.91, 4811.59.41, 4811.59.91, 4811.60.91, 4811.90.41, 4811.90.91, 4823.90.95 'Tấm phủ sàn'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+48115131 Tấm phủ sàn
+48115139 Loại khác
+48115191 Tấm phủ sàn
+48115199 Loại khác
+48115920 Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng
+48115941 Tấm phủ sàn
+48115949 Loại khác
+48115991 Tấm phủ sàn
+48115999 Loại khác
+48116020 Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+48116091 Tấm phủ sàn
+48116099 Loại khác
+
+=== KHOÁ dangChePhamDietMuoi ===
+{
+ "khoa": "dangChePhamDietMuoi",
+ "kieu": "LIET_KE",
+ "nhanVi": "dạng chế phẩm diệt muỗi",
+ "nhanEn": "form of mosquito repellent preparations",
+ "nhanZh": "驱蚊/灭蚊制剂形态",
+ "giaTriHopLe": [
+  "HUONG_VONG",
+  "TAM_DIET_MUOI",
+  "BOT_LAM_HUONG_VONG"
+ ],
+ "moTaGiaTri": {
+  "HUONG_VONG": {
+   "nhanVi": "hương vòng chống muỗi",
+   "nhanEn": "mosquito coils",
+   "nhanZh": "蚊香",
+   "cachDoc": {
+    "vi": [
+     "hương\\s+vòng\\s+chống\\s+muỗi",
+     "nhang\\s+muỗi"
+    ],
+    "en": [
+     "mosquito\\s+coils?"
+    ],
+    "zh": [
+     "蚊香",
+     "盘式蚊香"
+    ]
+   },
+   "cachViet": "hương vòng chống muỗi"
+  },
+  "TAM_DIET_MUOI": {
+   "nhanVi": "tấm thuốc diệt muỗi",
+   "nhanEn": "mosquito mats",
+   "nhanZh": "电热蚊香片",
+   "cachDoc": {
+    "vi": [
+     "tấm\\s+thuốc\\s+diệt\\s+muỗi(?:\\s*\\(SEN\\))?",
+     "miếng\\s+diệt\\s+muỗi"
+    ],
+    "en": [
+     "mosquito\\s+mats?"
+    ],
+    "zh": [
+     "电热蚊香片",
+     "蚊香片"
+    ]
+   },
+   "cachViet": "tấm thuốc diệt muỗi"
+  },
+  "BOT_LAM_HUONG_VONG": {
+   "nhanVi": "bột dùng làm hương vòng chống muỗi",
+   "nhanEn": "mosquito coil powder",
+   "nhanZh": "制蚊香用粉",
+   "cachDoc": {
+    "vi": [
+     "(?:dạng\\s+)?bột\\s+dùng\\s+làm\\s+hương\\s+vòng\\s+chống\\s+muỗi"
+    ],
+    "en": [
+     "(?:in\\s+the\\s+form\\s+of\\s+)?mosquito\\s+coil\\s+powder"
+    ],
+    "zh": [
+     "制蚊香用粉",
+     "蚊香粉"
+    ]
+   },
+   "cachViet": "bột dùng làm hương vòng chống muỗi"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Chế phẩm diệt muỗi ở dạng hương vòng, tấm thuốc hay bột làm hương vòng?",
+  "zh": "该灭蚊制剂属于蚊香、蚊香片还是制蚊香用粉？"
+ },
+ "ghiChu": "Trục phân loại dạng chế phẩm trừ muỗi tại nhóm 3808: 3808.61.10 'Hương vòng chống muỗi', 3808.61.20 'Tấm thuốc diệt muỗi (SEN)', 3808.62.10 'Bột dùng làm hương vòng chống muỗi', 3808.62.20 'Hương vòng chống muỗi', 3808.62.30 'Tấm thuốc diệt muỗi (SEN)', 3808.69.10 'Bột dùng làm hương vòng chống muỗi', 3808.91.40 'Hương vòng chống muỗi', 3808.91.50 'Tấm thuốc diệt muỗi (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+38086110 Hương vòng chống muỗi
+38086120 Tấm thuốc diệt muỗi (SEN)
+38086130 Dạng bình xịt
+38086140 Loại khác, dạng lỏng
+38086150 Loại khác, có chức năng khử mùi
+38086190 Loại khác
+38086210 Bột dùng làm hương vòng chống muỗi
+38086220 Hương vòng chống muỗi
+38086230 Tấm thuốc diệt muỗi (SEN)
+38086240 Dạng bình xịt
+38086250 Loại khác, dạng lỏng
+38086290 Loại khác
+38086910 Bột dùng làm hương vòng chống muỗi
+38086990 Loại khác
+
+=== KHOÁ loaiHangDanLat ===
+{
+ "khoa": "loaiHangDanLat",
+ "kieu": "LIET_KE",
+ "nhanVi": "chủng loại hàng đan lát chuyên dùng",
+ "nhanEn": "type of specialized basketwork",
+ "nhanZh": "编结制品专用类型",
+ "giaTriHopLe": [
+  "TUI_VALI_DU_LICH",
+  "GIO_DUNG_CHAI"
+ ],
+ "moTaGiaTri": {
+  "TUI_VALI_DU_LICH": {
+   "nhanVi": "túi và vali du lịch",
+   "nhanEn": "travelling bags and suitcases",
+   "nhanZh": "旅行袋及手提箱",
+   "cachDoc": {
+    "vi": [
+     "túi\\s+và\\s+vali\\s+du\\s+lịch"
+    ],
+    "en": [
+     "travelling\\s+bags\\s+and\\s+suitcases?"
+    ],
+    "zh": [
+     "旅行袋及手提箱"
+    ]
+   },
+   "cachViet": "túi và vali du lịch"
+  },
+  "GIO_DUNG_CHAI": {
+   "nhanVi": "giỏ đựng chai",
+   "nhanEn": "bottle baskets",
+   "nhanZh": "装瓶篮",
+   "cachDoc": {
+    "vi": [
+     "giỏ\\s+đựng\\s+chai"
+    ],
+    "en": [
+     "bottle\\s+baskets?"
+    ],
+    "zh": [
+     "装瓶篮",
+     "提瓶篮"
+    ]
+   },
+   "cachViet": "giỏ đựng chai"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm đan lát là túi vali du lịch hay giỏ đựng chai?",
+  "zh": "该编结制品是旅行袋手提箱还是装瓶篮？"
+ },
+ "ghiChu": "Trục phân loại mặt hàng đan lát tại nhóm 4602: 4602.11.10 'Túi và vali du lịch', 4602.11.20 'Giỏ đựng chai', 4602.12.10 'Túi và vali du lịch', 4602.12.20 'Giỏ đựng chai', 4602.19.10 'Túi và vali du lịch', 4602.19.20 'Giỏ đựng chai', 4602.90.10 'Túi và vali du lịch', 4602.90.20 'Giỏ đựng chai'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+46021110 Túi và vali du lịch
+46021120 Giỏ đựng chai
+46021190 Loại khác
+46021210 Túi và vali du lịch
+46021220 Giỏ đựng chai
+46021290 Loại khác
+46021910 Túi và vali du lịch
+46021920 Giỏ đựng chai
+46021990 Loại khác
+
+=== KHOÁ ongHutXaBunKhaiThacMo ===
+{
+ "khoa": "ongHutXaBunKhaiThacMo",
+ "kieu": "CO_KHONG",
+ "nhanVi": "ống hút và xả bùn dùng trong khai thác mỏ",
+ "nhanEn": "slurry suction and discharge hose used in mining",
+ "nhanZh": "采矿用吸排泥浆软管",
+ "cachDoc": {
+  "vi": [
+   "ống\\s+hút\\s+và\\s+xả\\s+bùn\\s+dùng\\s+trong\\s+khai\\s+thác\\s+mỏ(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "(?:mining\\s+)?slurry\\s+suction\\s+and\\s+discharge\\s+hoses?"
+  ],
+  "zh": [
+   "采矿用吸排泥浆软管"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+ống\\s+hút\\s+và\\s+xả\\s+bùn\\s+dùng\\s+trong\\s+khai\\s+thác\\s+mỏ"
+  ],
+  "en": [
+   "not\\s+for\\s+mining\\s+slurry"
+  ],
+  "zh": [
+   "非采矿用吸排泥浆软管"
+  ]
+ },
+ "cachViet": {
+  "vi": "ống hút và xả bùn dùng trong khai thác mỏ",
+  "viPhuDinh": "không phải ống hút và xả bùn dùng trong khai thác mỏ"
+ },
+ "cauHoi": {
+  "vi": "Ống cao su có phải loại chuyên dùng để hút và xả bùn trong khai thác mỏ không?",
+  "zh": "该橡胶软管是否为采矿用吸排泥浆软管？"
+ },
+ "ghiChu": "Chữ biểu 4009.12.10, 4009.21.10, 4009.22.10, 4009.31.10, 4009.32.10, 4009.42.10 'Ống hút và xả bùn dùng trong khai thác mỏ(SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+40091210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+40091290 Loại khác
+40092110 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+40092190 Loại khác
+40092210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+40092290 Loại khác
+
+=== KHOÁ dungChoDienAnh ===
+{
+ "khoa": "dungChoDienAnh",
+ "kieu": "CO_KHONG",
+ "nhanVi": "phù hợp dùng cho điện ảnh",
+ "nhanEn": "suitable for cinematography",
+ "nhanZh": "适于电影用",
+ "cachDoc": {
+  "vi": [
+   "(?:loại\\s+)?phù\\s+hợp\\s+dùng\\s+cho\\s+điện\\s+ảnh",
+   "dùng\\s+cho\\s+điện\\s+ảnh"
+  ],
+  "en": [
+   "suitable\\s+for\\s+cinematograph(?:y|ic)",
+   "cinematograph(?:y|ic)"
+  ],
+  "zh": [
+   "适于电影用",
+   "电影用"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+dùng\\s+cho\\s+điện\\s+ảnh"
+  ],
+  "en": [
+   "not\\s+for\\s+cinematography"
+  ],
+  "zh": [
+   "非电影用"
+  ]
+ },
+ "cachViet": {
+  "vi": "phù hợp dùng cho điện ảnh",
+  "viPhuDinh": "không dùng cho điện ảnh"
+ },
+ "cauHoi": {
+  "vi": "Phim quang học có phải loại phù hợp dùng cho điện ảnh không?",
+  "zh": "该胶卷是否适于电影用？"
+ },
+ "ghiChu": "Chữ biểu 3702.52.20, 3702.55.20, 3702.56.20, 3702.96.10, 3702.97.10, 3702.98.10 'Loại phù hợp dùng cho điện ảnh'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+37025220 Loại phù hợp dùng cho điện ảnh
+37025290 Loại khác
+37025520 Loại phù hợp dùng cho điện ảnh
+37025550 Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+37025590 Loại khác
+37025620 Loại phù hợp dùng cho điện ảnh
+37025690 Loại khác
+

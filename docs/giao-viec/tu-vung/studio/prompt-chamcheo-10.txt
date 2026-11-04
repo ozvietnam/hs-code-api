@@ -1,0 +1,845 @@
+CHẤM DUYỆT ĐỘC LẬP KHOÁ TỪ VỰNG tu-vung@2 (bộ khoá để máy số hoá ranh giới giữa các dòng 8 số cùng PN6 của Biểu thuế XNK Việt Nam). Các khoá dưới đây do AI soạn, máy kiểm lược đồ đã xanh, máy đọc thử đã xanh — bạn là NGƯỜI CHẤM ĐỘC LẬP về NGỮ NGHĨA, không tin người soạn.
+
+Với MỖI khoá, trả lời: (1) khoa đúng là một TIÊU CHÍ phân biệt dòng (đại lượng / có-không / tập giá trị) chứ không phải tên hàng? (2) tên khoá, nhãn Vi/En/Zh, câu hỏi có đúng nghĩa thương mại-hải quan không? (3) cachDoc: mẫu regex có bắt NHẦM (quá rộng: bắt cả cụm khác nghĩa) hoặc bỏ sót cách viết phổ biến trong mô tả hàng/tờ khai (Vi, En, Zh) không? Chú ý mẫu quá ngắn như "seed", "muối", "khô", "colour", "冷" dễ bắt nhầm. (4) Với LIET_KE: các giá trị có loại trừ nhau không, một dòng có thể khớp hai giá trị không? (5) Với SO: đơn vị chuẩn và quy đổi đúng không? (6) ghiChu trích chữ biểu có đúng không (so với các dòng biểu kèm theo)?
+KẾT LUẬN mỗi khoá: "DUYET" (dùng được), "SUA" (dùng được sau khi sửa — ghi rõ sửa gì, kèm giá trị mới cho trường cần sửa), hoặc "BO" (không nên có khoá này / nên gộp vào khoá khác — ghi khoá nào).
+
+ĐẦU RA: MỘT khối ```json [{"khoa":"…","ketLuan":"DUYET|SUA|BO","lyDo":"≤2 câu","sua":{"<truong>":<giá trị mới>} (chỉ khi SUA; truong là đường dẫn như "cachDoc.vi", "moTaGiaTri.X.cachDoc.en", "nhanEn"),"gopVao":"<khoá>" (chỉ khi BO)}] duy nhất, không giải thích ngoài JSON.
+
+LƯU Ý rút từ 6 gói trước: (1) mọi mục SUA PHẢI kèm "sua" với giá trị đầy đủ thay thế; (2) regex sửa để tránh bắt nhầm phải thử lại trong đầu với cụm gây nhầm (tiền tố tuỳ chọn "(?:dạng\s+)?viên" VẪN bắt "thành viên"); (3) không bỏ cách viết có gạch nối ("radio-telephony"); (4) JSON hợp lệ, có dấu phẩy giữa các trường, không dấu phẩy thừa.
+
+=== DANH SÁCH KHOÁ ĐÃ CÓ (để biết gộp vào đâu) ===
+dienAp(SO), dongDien(SO), congSuat(SO), tanSo(SO), luuLuong(SO), dungTichXiLanh(SO), khoiLuong(SO), duongKinh(SO), duongKinhTrong(SO), duongKinhLoi(SO), chieuCao(SO), kichThuoc(SO), chieuDaiCuon(SO), daGanDauNoi(CO_KHONG), coCachDien(CO_KHONG), coBoXuLyLapTrinh(CO_KHONG), coKhungChupQuaDau(CO_KHONG), hieuChinhThiLuc(CO_KHONG), chongNang(CO_KHONG), coChucNangGhi(CO_KHONG), daGhi(CO_KHONG), coLuoiBaoVe(CO_KHONG), coManHinh(CO_KHONG), coCamera(CO_KHONG), coBanh(CO_KHONG), hoatDongBangDien(CO_KHONG), coKetHopThietBiThu(CO_KHONG), coGiaNhiet(CO_KHONG), laBoPhan(CO_KHONG), datChim(CO_KHONG), coKhoangPhaTron(CO_KHONG), loaiDongDien(LIET_KE), soPha(LIET_KE), kieuDotChay(LIET_KE), nguonSang(LIET_KE), nguonNangLuong(LIET_KE), cachDieuKhien(LIET_KE), kieuBom(LIET_KE), loaiRoLe(LIET_KE), loaiCongTac(LIET_KE), loaiPhichOCam(LIET_KE), phamViSuDung(LIET_KE), mauHienThi(LIET_KE), kieuDongCoDien(LIET_KE), tinhTrang(LIET_KE), chatLieu(CHAT_LIEU_THEO_VI_TRI), dungCho(CONG_DUNG), congDung(CONG_DUNG), tenLoai(TEN_LOAI), nhanHieu(TEN_LOAI), model(TEN_LOAI), kyMaHieu(TEN_LOAI), nhaSanXuat(TEN_LOAI), chiHoacChuYeu(CO_KHONG), thietKeChoTreEm(CO_KHONG), daNapChuongTrinh(CO_KHONG), soLoi(SO), soSoi(SO), tiLe(SO), phuongPhapCheTao(LIET_KE), phuongThucTruyenDan(LIET_KE), daXuLyBeMat(CO_KHONG), nhienLieu(LIET_KE), phuongPhapIn(LIET_KE), tinhDanHoi(CO_KHONG), loaiSoiDet(LIET_KE), doDay(SO), congSuatBieuKien(SO), dangNguyenSinh(LIET_KE), daLapRap(CO_KHONG), dungTich(SO), sanLuongHoi(SO), theTich(SO), heDienHoa(LIET_KE), dungLuong(SO), daHoaDeo(CO_KHONG), coBoLoc(CO_KHONG), hamLuongCarbon(SO), gioiHanChay(SO), chieuRong(SO), khaNangChiuApLuc(SO), duongCheoNgoai(SO), coRen(CO_KHONG), doBenKeo(SO), hamLuongNiken(SO), lopMaPhu(LIET_KE), dungLamGiong(CO_KHONG), dongBaoBiKinKhiDeBanLe(CO_KHONG), nongDoCon(SO), phuongPhapBaoQuan(LIET_KE), dangBaoCheThuoc(LIET_KE), mucDoTinhCheDau(LIET_KE), chiSoIot(SO), triSoOctan(SO), daRang(CO_KHONG), tachXuongCoHoc(CO_KHONG), dinhLuong(SO), mucDoGiaCongGo(LIET_KE), dangBinhXit(CO_KHONG), nhieuLop(CO_KHONG), daIn(CO_KHONG), duongKinhVanh(SO), daTrangMen(CO_KHONG), tinhNangBaoHo(LIET_KE), daTrangPhuEpLop(CO_KHONG), loaiMuiBaoVe(LIET_KE), thuyTinhQuangHoc(CO_KHONG), tongDungTichTau(SO), dangCuon(CO_KHONG), coNong(SO), ngamQuaThauKinhSLR(CO_KHONG), dungMotLan(CO_KHONG), tinhTrangTayTrang(LIET_KE), hinhDangCatGocKinh(CO_KHONG), kieuDet(LIET_KE), daPhaThemDuongHoacRuou(CO_KHONG), soiDun(CO_KHONG), coMauTruTrang(CO_KHONG), dongGoiBanLe(CO_KHONG), dangLong(CO_KHONG), tocDo(SO), laPhanDoan(CO_KHONG), bonBanhChuDong(CO_KHONG), xeBaBanh(CO_KHONG), khoiLuongToanBo(SO), kieuXeChoNguoi(LIET_KE), kieuXeChoHang(LIET_KE), mayKeoNongNghiep(CO_KHONG), loaiBoPhanDongCoPiston(LIET_KE), dungTrongNongNghiep(CO_KHONG), canDienTu(CO_KHONG), mayRenKhuonHoacDapKhuon(CO_KHONG), dungTrongYTeHoacThiNghiem(CO_KHONG), dieuKhienSo(CO_KHONG), dungChoXeCoDongCo(CO_KHONG), bienApThichUng(CO_KHONG), loaiXachTay(CO_KHONG), laMayPhatDien(CO_KHONG), loaiBienDoiTinhDien(LIET_KE), loaiThietBiBaoDong(LIET_KE), dangTamPhienMang(LIET_KE), tamPhuSan(CO_KHONG), dangChePhamDietMuoi(LIET_KE), loaiHangDanLat(LIET_KE), ongHutXaBunKhaiThacMo(CO_KHONG), dungChoDienAnh(CO_KHONG), sonChongHaHoacChongAnMonVoTau(CO_KHONG), tamMiengGhepLatNenOpTuong(CO_KHONG), dungTrongNhaKhoa(CO_KHONG), dayTetBen(CO_KHONG), loaiCung(CO_KHONG), boPhanThitGiaCam(LIET_KE), thichHopDungChoNguoi(CO_KHONG), caBot(CO_KHONG), laChe(CO_KHONG), daXay(CO_KHONG), soCheTom(LIET_KE), loaiThuocLaNguyenLieu(LIET_KE), phaCheVoiEthanol(CO_KHONG), daPhaHuongLieuHoacChatMau(CO_KHONG), sanPhamDinhDuongYTe(CO_KHONG), dangKhoiHoacTamDa(LIET_KE), loaiMiBunMien(LIET_KE), chuaCaCao(CO_KHONG), thamCauNguyen(CO_KHONG), quanAoDauKiemDauVat(CO_KHONG), loaiSanPhamXiMangSoi(LIET_KE), tamLatGachLat(CO_KHONG), donNgucSauPhauThuat(CO_KHONG), boPhanGiayDep(LIET_KE), dungSanXuatOngChanKhong(CO_KHONG), aoBarongTagalog(CO_KHONG), sarongHinhOng(CO_KHONG), aoChoangHanhHuongIhram(CO_KHONG), giayDauVatCuTa(CO_KHONG), dangDaiDaiTamPhoDung(LIET_KE), dangLuonSong(CO_KHONG), loaiDoDungGiaDinhSatThep(LIET_KE), xichXeDapMoTo(CO_KHONG), phuongPhapHanOngThep(LIET_KE), hopDungThuocLaDieu(CO_KHONG), banLeMocKhoaHasps(CO_KHONG), chuaGiaCongQuaMucCanNong(CO_KHONG), hamLuongCrom(SO), phoiDetDangPhien(CO_KHONG), ongVaPhuKienKimLoaiMau(CO_KHONG), loaiDoChoi(LIET_KE), kieuChieuSangDen(LIET_KE), tuHutHoiDoc(CO_KHONG), denChoPhongMo(CO_KHONG), hopDungThuocLaTrangTri(CO_KHONG), loaiNoiThatYTe(LIET_KE)
+
+=== HỆ ĐƠN VỊ ===
+{"dai": {"mm": 1, "cm": 10, "m": 1000, "inch": 25.4}, "dienAp": {"V": 1, "mV": 0.001, "kV": 1000}, "dongDien": {"A": 1, "mA": 0.001}, "congSuat": {"W": 1, "mW": 0.001, "kW": 1000, "HP": 745.7}, "tanSo": {"Hz": 1, "kHz": 1000, "MHz": 1000000, "GHz": 1000000000}, "luuLuong": {"m3/h": 1, "l/h": 0.001, "l/min": 0.06, "m3/min": 60}, "theTichXiLanh": {"cc": 1, "cm3": 1}, "khoiLuong": {"kg": 1, "g": 0.001, "tấn": 1000}, "loi": {"lõi": 1}, "soi": {"sợi": 1}, "tiLe": {"lần": 1, "%": 0.01}, "bieuKien": {"kVA": 1, "MVA": 1000}, "theTich": {"cm3": 1, "ml": 1, "lít": 1000, "m3": 1000000, "cc": 1}, "luuLuongKhoiLuong": {"tấn/giờ": 1, "kg/giờ": 0.001}, "dungLuongDien": {"Ah": 1, "mAh": 0.001}, "phanTram": {"%": 1}, "apSuat": {"psi": 1, "MPa": 145.04}, "chiSoIot": {"IV": 1}, "triSoOctan": {"RON": 1, "octane": 1}, "dinhLuong": {"g/m2": 1, "gsm": 1}, "tongDungTich": {"GT": 1}, "tocDo": {"v/ph": 1, "vòng/phút": 1, "vong/phut": 1, "rpm": 1, "RPM": 1, "r/min": 1, "v/s": 60, "vòng/giây": 60}}
+
+=== KHOÁ phaCheVoiEthanol ===
+{
+ "khoa": "phaCheVoiEthanol",
+ "kieu": "CO_KHONG",
+ "nhanVi": "pha chế với ethanol (xăng sinh học)",
+ "nhanEn": "blended with ethanol",
+ "nhanZh": "与乙醇混合（乙醇汽油）",
+ "cachDoc": {
+  "vi": [
+   "pha\\s+chế\\s+với\\s+ethanol",
+   "pha\\s+ethanol"
+  ],
+  "en": [
+   "blended\\s+with\\s+ethanol"
+  ],
+  "zh": [
+   "与乙醇混合",
+   "乙醇汽油"
+  ],
+  "phuDinh": [
+   "chưa",
+   "không",
+   "unblended",
+   "未",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+pha\\s+chế"
+  ],
+  "en": [
+   "unblended"
+  ],
+  "zh": [
+   "未混合",
+   "未配制"
+  ]
+ },
+ "cachViet": {
+  "vi": "pha chế với ethanol",
+  "viPhuDinh": "chưa pha chế"
+ },
+ "cauHoi": {
+  "vi": "Xăng động cơ đã pha chế với ethanol (xăng sinh học) hay chưa pha chế?",
+  "zh": "该车用汽油是未配制还是已与乙醇混合？"
+ },
+ "ghiChu": "Trục phân loại xăng khoáng chưa pha chế vs xăng pha ethanol (E5/E10) tại nhóm 2710.12: 2710.12.21, 2710.12.24, 2710.12.27 'Chưa pha chế' đối ứng với 2710.12.22, 2710.12.25, 2710.12.28 'Pha chế với ethanol'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+27101211 RON 97 và cao hơn
+27101212 RON 90 và cao hơn nhưng dưới RON 97
+27101213 RON khác
+27101221 Chưa pha chế
+27101222 Pha chế với ethanol
+27101223 Loại khác
+27101224 Chưa pha chế
+27101225 Pha chế với ethanol
+27101226 Loại khác
+27101227 Chưa pha chế
+27101228 Pha chế với ethanol
+27101229 Loại khác
+
+=== KHOÁ daPhaHuongLieuHoacChatMau ===
+{
+ "khoa": "daPhaHuongLieuHoacChatMau",
+ "kieu": "CO_KHONG",
+ "nhanVi": "đã pha thêm hương liệu hoặc chất màu",
+ "nhanEn": "containing added flavouring or colouring matter",
+ "nhanZh": "加香料或加着色剂",
+ "cachDoc": {
+  "vi": [
+   "đã\\s+pha\\s+thêm\\s+hương\\s+liệu\\s+hoặc\\s+chất\\s+màu",
+   "đã\\s+pha\\s+hương\\s+liệu\\s+hoặc\\s+chất\\s+màu(?:\\s*\\(trừ\\s+mantoza\\))?",
+   "(?:xirô\\s+)?đã\\s+pha\\s+màu\\s+hoặc\\s+hương\\s+liệu"
+  ],
+  "en": [
+   "containing\\s+added\\s+flavouring\\s+or\\s+colouring\\s+matter",
+   "flavoured\\s+or\\s+coloured"
+  ],
+  "zh": [
+   "加香料或加着色剂",
+   "加香或加色的"
+  ],
+  "phuDinh": [
+   "không",
+   "chưa",
+   "không pha",
+   "non-?",
+   "without",
+   "not",
+   "无",
+   "未",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "chưa\\s+pha\\s+thêm\\s+hương\\s+liệu\\s+hoặc\\s+chất\\s+màu",
+   "không\\s+pha\\s+hương\\s+liệu"
+  ],
+  "en": [
+   "not\\s+containing\\s+added\\s+flavouring\\s+or\\s+colouring\\s+matter"
+  ],
+  "zh": [
+   "未加香料或着色剂"
+  ]
+ },
+ "cachViet": {
+  "vi": "đã pha thêm hương liệu hoặc chất màu",
+  "viPhuDinh": "chưa pha thêm hương liệu hoặc chất màu"
+ },
+ "cauHoi": {
+  "vi": "Đường, rỉ đường hoặc xi-rô có pha thêm hương liệu hoặc chất màu không?",
+  "zh": "该糖、糖蜜或糖浆是否加有香料或着色剂？"
+ },
+ "ghiChu": "Chữ biểu 1702.90.30 'Đường đã pha hương liệu hoặc chất màu (trừ mantoza)', 1703.10.10, 1703.90.10 'Đã pha thêm hương liệu hoặc chất màu', 2106.90.92 'Xirô đã pha màu hoặc hương liệu'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+17029011 Mantoza tinh khiết về mặt hóa học
+17029019 Loại khác
+17029020 Mật ong nhân tạo, đã hoặc chưa pha trộn với mật ong tự nhiên
+17029030 Đường đã pha hương liệu hoặc chất màu (trừ mantoza)
+17029040 Đường caramen
+17029051 Đường sáp dừa (Coconut sap sugar) (SEN)
+17029059 Loại khác (SEN)
+17029091 Xi rô đường
+17029099 Loại khác
+17031010 Đã pha thêm hương liệu hoặc chất màu
+17031090 Loại khác
+17039010 Đã pha thêm hương liệu hoặc chất màu
+17039090 Loại khác
+
+=== KHOÁ sanPhamDinhDuongYTe ===
+{
+ "khoa": "sanPhamDinhDuongYTe",
+ "kieu": "CO_KHONG",
+ "nhanVi": "sản phẩm dinh dưỡng y tế",
+ "nhanEn": "medical nutritional product",
+ "nhanZh": "医用营养品",
+ "cachDoc": {
+  "vi": [
+   "sản\\s+phẩm\\s+dinh\\s+dưỡng\\s+y\\s+tế(?:\\s+khác)?(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "(?:other\\s+)?medical\\s+nutritional\\s+products?",
+   "medical\\s+foods?"
+  ],
+  "zh": [
+   "(?:其他)?医用营养品"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+sản\\s+phẩm\\s+dinh\\s+dưỡng\\s+y\\s+tế"
+  ],
+  "en": [
+   "not\\s+medical\\s+nutritional\\s+products?"
+  ],
+  "zh": [
+   "非医用营养品"
+  ]
+ },
+ "cachViet": {
+  "vi": "sản phẩm dinh dưỡng y tế",
+  "viPhuDinh": "không phải sản phẩm dinh dưỡng y tế"
+ },
+ "cauHoi": {
+  "vi": "Chế phẩm thực phẩm có phải là sản phẩm dinh dưỡng y tế không?",
+  "zh": "该食品制剂是否为医用营养品？"
+ },
+ "ghiChu": "Chữ biểu 1901.10.91 'Sản phẩm dinh dưỡng y tế(SEN)', 1901.90.11 'Sản phẩm dinh dưỡng y tế (SEN)', 1901.90.91 'Sản phẩm dinh dưỡng y tế (SEN)', 2106.90.96 'Sản phẩm dinh dưỡng y tế khác (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+19011010 Từ chiết xuất malt
+19011020 Từ sản phẩm thuộc các nhóm từ 04.01 đến 04.04
+19011030 Từ bột đỗ tương
+19011091 Sản phẩm dinh dưỡng y tế(SEN)
+19011092 Loại khác, dùng cho trẻ trên một tuổi nhưng không quá ba tuổi
+19011099 Loại khác
+19019011 Sản phẩm dinh dưỡng y tế (SEN)
+19019019 Loại khác
+19019020 Chiết xuất malt
+19019031 Chứa sữa (SEN)
+19019032 Loại khác, chứa bột ca cao
+19019039 Loại khác
+19019041 Dạng bột
+19019049 Dạng khác
+19019091 Sản phẩm dinh dưỡng y tế (SEN)
+19019099 Loại khác
+21069011 Váng đậu khô và váng đậu khô dạng thanh
+21069012 Đậu phụ tươi (tofu)
+21069019 Loại khác
+21069020 Cồn dạng bột
+21069030 Kem không sữa
+21069041 Dạng bột
+21069049 Loại khác
+21069053 Sản phẩm từ sâm
+21069054 Các chế phẩm khác được sử dụng làm nguyên liệu thô để sản xuất chất cô đặc tổng hợp
+21069055 Loại khác, chất cô đặc tổng hợp để pha đơn giản với nước làm đồ uống
+21069059 Loại khác
+21069061 Loại sử dụng để sản xuất đồ uống có cồn, dạng lỏng
+
+=== KHOÁ dangKhoiHoacTamDa ===
+{
+ "khoa": "dangKhoiHoacTamDa",
+ "kieu": "LIET_KE",
+ "nhanVi": "dạng khối hoặc dạng tấm đá",
+ "nhanEn": "stone in blocks or slabs",
+ "nhanZh": "石材呈块状或板状",
+ "giaTriHopLe": [
+  "DANG_KHOI",
+  "DANG_TAM"
+ ],
+ "moTaGiaTri": {
+  "DANG_KHOI": {
+   "nhanVi": "dạng khối",
+   "nhanEn": "in blocks",
+   "nhanZh": "块状",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+khối(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "in\\s+blocks?"
+    ],
+    "zh": [
+     "块状",
+     "成块"
+    ]
+   },
+   "cachViet": "dạng khối"
+  },
+  "DANG_TAM": {
+   "nhanVi": "dạng tấm",
+   "nhanEn": "in slabs",
+   "nhanZh": "板状",
+   "cachDoc": {
+    "vi": [
+     "dạng\\s+tấm(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "in\\s+slabs?"
+    ],
+    "zh": [
+     "板状",
+     "成板"
+    ]
+   },
+   "cachViet": "dạng tấm"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Đá hoa cẩm thạch hoặc đá granit ở dạng khối hay dạng tấm?",
+  "zh": "该大理石或花岗岩呈块状还是板状？"
+ },
+ "ghiChu": "Trục phân loại hình dạng đá xẻ/cắt tại nhóm 2515 và 2516: 2515.12.10 'Dạng khối (SEN)', 2515.12.20 'Dạng tấm (SEN)', 2516.12.10 'Dạng khối (SEN)', 2516.12.20 'Dạng tấm (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+25151210 Dạng khối (SEN)
+25151220 Dạng tấm (SEN)
+25161210 Dạng khối (SEN)
+25161220 Dạng tấm (SEN)
+
+=== KHOÁ loaiMiBunMien ===
+{
+ "khoa": "loaiMiBunMien",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại sản phẩm dạng mì, bún, miến",
+ "nhanEn": "type of noodles, rice vermicelli or transparent noodles",
+ "nhanZh": "面条、米粉及粉丝类型",
+ "giaTriHopLe": [
+  "BUN_MI_GAO",
+  "MIEN"
+ ],
+ "moTaGiaTri": {
+  "BUN_MI_GAO": {
+   "nhanVi": "mì, bún làm từ gạo",
+   "nhanEn": "rice noodles or rice vermicelli (including bee hoon)",
+   "nhanZh": "米粉（包括米粉条）",
+   "cachDoc": {
+    "vi": [
+     "mì,\\s*bún\\s+làm\\s+từ\\s+gạo(?:\\s*\\(kể\\s+cả\\s+bee\\s+hoon\\))?"
+    ],
+    "en": [
+     "rice\\s+vermicelli(?:\\s*\\(including\\s+bee\\s+hoon\\))?",
+     "rice\\s+noodles?"
+    ],
+    "zh": [
+     "米粉(?:（包括米粉条）)?",
+     "米线"
+    ]
+   },
+   "cachViet": "mì bún làm từ gạo"
+  },
+  "MIEN": {
+   "nhanVi": "miến",
+   "nhanEn": "transparent noodles",
+   "nhanZh": "粉丝",
+   "cachDoc": {
+    "vi": [
+     "miến"
+    ],
+    "en": [
+     "transparent\\s+noodles?"
+    ],
+    "zh": [
+     "粉丝"
+    ]
+   },
+   "cachViet": "miến"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm là mì/bún gạo hay miến?",
+  "zh": "该产品属于米粉还是粉丝？"
+ },
+ "ghiChu": "Trục phân loại sản phẩm tinh bột khô và ăn liền tại nhóm 1902: 1902.19.20, 1902.30.20 'Mì, bún làm từ gạo (kể cả bee hoon)', 1902.19.30, 1902.30.30 'Miến'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+19021920 Mì, bún làm từ gạo (kể cả bee hoon)
+19021930 Miến
+19021940 Mì khác
+19021990 Loại khác
+19023020 Mì, bún làm từ gạo (kể cả bee hoon)
+19023030 Miến
+19023040 Mì ăn liền khác
+19023090 Loại khác
+
+=== KHOÁ chuaCaCao ===
+{
+ "khoa": "chuaCaCao",
+ "kieu": "CO_KHONG",
+ "nhanVi": "chứa ca cao",
+ "nhanEn": "containing cocoa",
+ "nhanZh": "含有可可",
+ "cachDoc": {
+  "vi": [
+   "(?:loại\\s+khác,\\s*)?chứa\\s+(?:bột\\s+)?ca\\s+cao"
+  ],
+  "en": [
+   "(?:other,?\\s*)?containing\\s+cocoa"
+  ],
+  "zh": [
+   "(?:其他)?含有可可",
+   "(?:其他)?含可可"
+  ],
+  "phuDinh": [
+   "không",
+   "không chứa",
+   "non-?",
+   "not containing",
+   "无",
+   "不含"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "(?:loại\\s+khác,\\s*)?không\\s+chứa\\s+ca\\s+cao"
+  ],
+  "en": [
+   "(?:other,?\\s*)?not\\s+containing\\s+cocoa"
+  ],
+  "zh": [
+   "(?:其他)?不含可可"
+  ]
+ },
+ "cachViet": {
+  "vi": "chứa ca cao",
+  "viPhuDinh": "không chứa ca cao"
+ },
+ "cauHoi": {
+  "vi": "Bột làm bánh hoặc bánh ngọt có chứa ca cao không?",
+  "zh": "该面团制剂或糕点是否含有可可？"
+ },
+ "ghiChu": "Chữ biểu 1901.20.30 'Loại khác, không chứa ca cao', 1901.20.40 'Loại khác, chứa ca cao', 1905.31.10 'Không chứa ca cao' (đối xứng với 1905.31.20 'Chứa ca cao').",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+19012010 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao
+19012020 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao
+19012030 Loại khác, không chứa ca cao
+19012040 Loại khác, chứa ca cao
+19053110 Không chứa ca cao
+19053120 Chứa ca cao
+
+=== KHOÁ thamCauNguyen ===
+{
+ "khoa": "thamCauNguyen",
+ "kieu": "CO_KHONG",
+ "nhanVi": "thảm cầu nguyện",
+ "nhanEn": "prayer rug / prayer mat",
+ "nhanZh": "祈祷毯/礼拜毯",
+ "cachDoc": {
+  "vi": [
+   "thảm\\s+cầu\\s+nguyện(?:\\s*\\(SEN\\))?"
+  ],
+  "en": [
+   "prayer\\s+(?:rugs?|carpets?|mats?)"
+  ],
+  "zh": [
+   "祈祷毯",
+   "礼拜毯"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+thảm\\s+cầu\\s+nguyện"
+  ],
+  "en": [
+   "not\\s+prayer\\s+rugs?"
+  ],
+  "zh": [
+   "非祈祷毯"
+  ]
+ },
+ "cachViet": {
+  "vi": "thảm cầu nguyện",
+  "viPhuDinh": "không phải thảm cầu nguyện"
+ },
+ "cauHoi": {
+  "vi": "Thảm dệt có phải là loại thảm cầu nguyện không?",
+  "zh": "该地毯是否为祈祷毯/礼拜毯？"
+ },
+ "ghiChu": "Chữ biểu 5701.10.10, 5701.90.11, 5702.41.10, 5702.42.10, 5703.10.20, 5705.00.11 'Thảm cầu nguyện (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+57011010 Thảm cầu nguyện (SEN)
+57011090 Loại khác
+57019011 Thảm cầu nguyện (SEN)
+57019019 Loại khác
+57019020 Từ xơ đay
+57019091 Thảm cầu nguyện (SEN)
+57019099 Loại khác
+57024110 Thảm cầu nguyện (SEN)
+57024190 Loại khác
+
+=== KHOÁ quanAoDauKiemDauVat ===
+{
+ "khoa": "quanAoDauKiemDauVat",
+ "kieu": "CO_KHONG",
+ "nhanVi": "quần áo đấu kiếm hoặc đấu vật",
+ "nhanEn": "fencing or wrestling garments",
+ "nhanZh": "击剑服或摔跤服",
+ "cachDoc": {
+  "vi": [
+   "quần\\s+áo\\s+đấu\\s+kiếm\\s+hoặc\\s+đấu\\s+vật"
+  ],
+  "en": [
+   "fencing\\s+or\\s+wrestling\\s+garments?"
+  ],
+  "zh": [
+   "击剑服或摔跤服",
+   "击剑或摔跤服"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+quần\\s+áo\\s+đấu\\s+kiếm\\s+hoặc\\s+đấu\\s+vật"
+  ],
+  "en": [
+   "not\\s+fencing\\s+or\\s+wrestling\\s+garments?"
+  ],
+  "zh": [
+   "非击剑或摔跤服"
+  ]
+ },
+ "cachViet": {
+  "vi": "quần áo đấu kiếm hoặc đấu vật",
+  "viPhuDinh": "không phải quần áo đấu kiếm hoặc đấu vật"
+ },
+ "cauHoi": {
+  "vi": "Hàng may mặc có phải là quần áo chuyên dùng cho đấu kiếm hoặc đấu vật không?",
+  "zh": "该服装是否为击剑或摔跤专用服装？"
+ },
+ "ghiChu": "Chữ biểu 6211.32.10, 6211.33.10, 6211.39.10, 6211.42.10, 6211.43.40, 6211.49.10 'Quần áo đấu kiếm hoặc đấu vật'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+62113210 Quần áo đấu kiếm hoặc đấu vật
+62113220 Áo choàng hành hương (Ihram)(SEN)
+62113290 Loại khác
+62113310 Quần áo đấu kiếm hoặc đấu vật
+62113320 Quần áo chống cháy(SEN)
+62113330 Quần áo chống các chất hóa học hoặc phóng xạ
+62113340 Áo choàng hành hương (Ihram)(SEN)
+62113390 Loại khác
+62113910 Quần áo đấu kiếm hoặc đấu vật
+62113920 Quần áo chống cháy(SEN)
+62113930 Quần áo chống các chất hóa học hoặc phóng xạ
+62113940 Áo choàng hành hương (Ihram)(SEN)
+62113990 Loại khác
+
+=== KHOÁ loaiSanPhamXiMangSoi ===
+{
+ "khoa": "loaiSanPhamXiMangSoi",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại sản phẩm xi măng sợi",
+ "nhanEn": "type of fibre-cement product",
+ "nhanZh": "纤维水泥制品类型",
+ "giaTriHopLe": [
+  "ONG_HOAC_ONG_DAN",
+  "PHU_KIEN_GHEP_NOI",
+  "SAN_PHAM_XAY_DUNG_KHAC"
+ ],
+ "moTaGiaTri": {
+  "ONG_HOAC_ONG_DAN": {
+   "nhanVi": "ống hoặc ống dẫn",
+   "nhanEn": "tubes or pipes",
+   "nhanZh": "管或导管",
+   "cachDoc": {
+    "vi": [
+     "ống\\s+hoặc\\s+ống\\s+dẫn"
+    ],
+    "en": [
+     "tubes?,?\\s*pipes?\\s+or\\s+conduits?"
+    ],
+    "zh": [
+     "管或导管",
+     "管及导管"
+    ]
+   },
+   "cachViet": "ống hoặc ống dẫn"
+  },
+  "PHU_KIEN_GHEP_NOI": {
+   "nhanVi": "phụ kiện ghép nối ống hoặc ống dẫn",
+   "nhanEn": "tube or pipe fittings",
+   "nhanZh": "管子附件",
+   "cachDoc": {
+    "vi": [
+     "(?:các\\s+)?phụ\\s+kiện\\s+để\\s+ghép\\s+nối\\s+ống\\s+hoặc\\s+ống\\s+dẫn"
+    ],
+    "en": [
+     "tube\\s+or\\s+pipe\\s+fittings?"
+    ],
+    "zh": [
+     "管子附件",
+     "管道连接附件"
+    ]
+   },
+   "cachViet": "phụ kiện ghép nối ống hoặc ống dẫn"
+  },
+  "SAN_PHAM_XAY_DUNG_KHAC": {
+   "nhanVi": "sản phẩm khác dùng cho xây dựng",
+   "nhanEn": "other building products",
+   "nhanZh": "其他建筑用制品",
+   "cachDoc": {
+    "vi": [
+     "(?:các\\s+)?sản\\s+phẩm\\s+khác,\\s*của\\s+loại\\s+sử\\s+dụng\\s+cho\\s+xây\\s+dựng"
+    ],
+    "en": [
+     "other\\s+products?,?\\s*of\\s+a\\s+kind\\s+used\\s+for\\s+building"
+    ],
+    "zh": [
+     "其他建筑用制品"
+    ]
+   },
+   "cachViet": "sản phẩm khác dùng cho xây dựng"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm xi măng sợi thuộc chủng loại nào (ống dẫn, phụ kiện ghép nối hay sản phẩm xây dựng)?",
+  "zh": "该纤维水泥制品属于哪种类型（管道、管件还是建筑用制品）？"
+ },
+ "ghiChu": "Trục phân loại mặt hàng xi măng sợi tại nhóm 6811: 6811.40.30, 6811.89.10 'Ống hoặc ống dẫn', 6811.40.40, 6811.89.20 'Các phụ kiện để ghép nối ống hoặc ống dẫn', 6811.40.50, 6811.89.30 'Các sản phẩm khác, của loại sử dụng cho xây dựng'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+68114010 Tấm làn sóng
+68114021 Gạch lát nền hoặc ốp tường chứa plastic
+68114022 Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn
+68114029 Loại khác
+68114030 Ống hoặc ống dẫn
+68114040 Các phụ kiện để ghép nối ống hoặc ống dẫn
+68114050 Các sản phẩm khác, của loại sử dụng cho xây dựng
+68114090 Loại khác
+68118910 Ống hoặc ống dẫn
+68118920 Các phụ kiện để ghép nối ống hoặc ống dẫn
+68118930 Các sản phẩm khác, của loại sử dụng cho xây dựng
+68118990 Loại khác
+
+=== KHOÁ tamLatGachLat ===
+{
+ "khoa": "tamLatGachLat",
+ "kieu": "CO_KHONG",
+ "nhanVi": "tấm lát (tiles)",
+ "nhanEn": "tiles",
+ "nhanZh": "瓦片/砖片（tiles）",
+ "cachDoc": {
+  "vi": [
+   "(?:loại\\s+khác,\\s*)?tấm\\s+lát(?:\\s*\\(tiles\\))?(?:\\s+khác)?"
+  ],
+  "en": [
+   "(?:other\\s+)?tiles?"
+  ],
+  "zh": [
+   "瓦",
+   "砖片",
+   "饰面片"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [
+   "không\\s+phải\\s+tấm\\s+lát"
+  ],
+  "en": [
+   "not\\s+tiles"
+  ],
+  "zh": [
+   "非砖片"
+  ]
+ },
+ "cachViet": {
+  "vi": "tấm lát",
+  "viPhuDinh": "không phải tấm lát"
+ },
+ "cauHoi": {
+  "vi": "Sản phẩm có phải là dạng tấm lát (tiles) không?",
+  "zh": "该矿物/石膏/混凝土制品是否为板瓦或饰面板（tiles）？"
+ },
+ "ghiChu": "Chữ biểu 6807.90.10, 6808.00.40, 6809.19.10, 6810.19.10 'Tấm lát (tiles)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+68079010 Tấm lát (tiles)
+68079090 Loại khác
+68080020 Ngói lợp mái
+68080040 Tấm lát (tiles) khác
+68080091 Từ xơ thực vật
+68080099 Loại khác
+68091910 Tấm lát (tiles)
+68091990 Loại khác
+
+=== KHOÁ donNgucSauPhauThuat ===
+{
+ "khoa": "donNgucSauPhauThuat",
+ "kieu": "CO_KHONG",
+ "nhanVi": "độn ngực dùng cho người sau phẫu thuật ngực",
+ "nhanEn": "padded for post-mastectomy use",
+ "nhanZh": "乳房切除术后专用（衬垫型）",
+ "cachDoc": {
+  "vi": [
+   "(?:đồ\\s+bơi|xu\\s+chiêng)?\\s*độn\\s+ngực\\s*\\(dùng\\s+cho\\s+người\\s+sau\\s+phẫu\\s+thuật\\s+ngực\\)"
+  ],
+  "en": [
+   "(?:swimwear|brassieres?)\\s+padded\\s+for\\s+post-?mastectomy\\s+use"
+  ],
+  "zh": [
+   "乳房切除术后用衬垫文胸",
+   "乳房切除术后用衬垫泳衣"
+  ],
+  "phuDinh": [
+   "không phải",
+   "không",
+   "non-?",
+   "not",
+   "非",
+   "不"
+  ]
+ },
+ "cachDocKhong": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "độn ngực cho người sau phẫu thuật ngực",
+  "viPhuDinh": "không phải loại độn ngực sau phẫu thuật ngực"
+ },
+ "cauHoi": {
+  "vi": "Đồ bơi hoặc xu chiêng có phải loại độn ngực dùng cho người sau phẫu thuật ngực không?",
+  "zh": "该泳衣或文胸是否为乳房切除术后专用衬垫型？"
+ },
+ "ghiChu": "Chữ biểu 6112.41.10, 6112.49.10 'Đồ bơi độn ngực (dùng cho người sau phẫu thuật ngực)', 6212.10.11, 6212.10.91 'Xu chiêng độn ngực (dùng cho người sau phẫu thuật ngực)'.",
+ "nguonLoai": "AI_DA_KIEM"
+}
+--- dòng biểu liên quan ---
+61124110 Đồ bơi độn ngực (dùng cho người sau phẫu thuật ngực)
+61124190 Loại khác
+61124910 Đồ bơi độn ngực (dùng cho người sau phẫu thuật ngực)
+61124990 Loại khác
+62121011 Xu chiêng độn ngực (dùng cho người sau phẫu thuật ngực)
+62121019 Loại khác
+62121091 Xu chiêng độn ngực (dùng cho người sau phẫu thuật ngực)
+62121099 Loại khác
+
+=== KHOÁ boPhanGiayDep ===
+{
+ "khoa": "boPhanGiayDep",
+ "kieu": "LIET_KE",
+ "nhanVi": "loại bộ phận giày dép (lót giày hoặc đế hoàn thiện)",
+ "nhanEn": "type of footwear parts (in-soles or complete soles)",
+ "nhanZh": "鞋靴零件类型（内鞋垫或成品鞋底）",
+ "giaTriHopLe": [
+  "TAM_LOT_GIAY",
+  "DE_HOAN_THIEN"
+ ],
+ "moTaGiaTri": {
+  "TAM_LOT_GIAY": {
+   "nhanVi": "tấm lót giày",
+   "nhanEn": "in-soles",
+   "nhanZh": "内鞋垫",
+   "cachDoc": {
+    "vi": [
+     "tấm\\s+lót\\s+giày"
+    ],
+    "en": [
+     "in-?soles?"
+    ],
+    "zh": [
+     "鞋垫",
+     "内鞋垫"
+    ]
+   },
+   "cachViet": "tấm lót giày"
+  },
+  "DE_HOAN_THIEN": {
+   "nhanVi": "đế giày đã hoàn thiện",
+   "nhanEn": "complete soles",
+   "nhanZh": "成品鞋底",
+   "cachDoc": {
+    "vi": [
+     "đế\\s+giày\\s+đã\\s+hoàn\\s+thiện(?:\\s*\\(SEN\\))?"
+    ],
+    "en": [
+     "complete\\s+soles?"
+    ],
+    "zh": [
+     "成品鞋底",
+     "外底成品"
+    ]
+   },
+   "cachViet": "đế giày đã hoàn thiện"
+  }
+ },
+ "cachDoc": {
+  "vi": [],
+  "en": [],
+  "zh": []
+ },
+ "cachViet": {
+  "vi": "{giaTri}"
+ },
+ "cauHoi": {
+  "vi": "Bộ phận giày dép là tấm lót giày hay đế giày đã hoàn thiện?",
+  "zh": "该鞋靴零件是鞋垫还是成品鞋底？"
+ },
+ "ghiChu": "Trục phân loại bộ phận giày dép nhóm 6406: 6406.90.41, 6406.90.51 'Tấm lót giày', 6406.90.42, 6406.90.52 'Đế giày đã hoàn thiện (SEN)'.",
+ "nguonLoai": "AI_DA_KIEM",
+ "cumDaiThang": true
+}
+--- dòng biểu liên quan ---
+64069010 Bằng gỗ
+64069021 Bằng sắt hoặc thép
+64069022 Bằng đồng
+64069023 Bằng nhôm
+64069029 Loại khác
+64069041 Tấm lót giày
+64069042 Đế giày đã hoàn thiện (SEN)
+64069049 Loại khác
+64069051 Tấm lót giày
+64069052 Đế giày đã hoàn thiện (SEN)
+64069059 Loại khác
+64069091 Ghệt, ống ôm sát chân (leggings) và các loại tương tự và bộ phận của chúng
+
