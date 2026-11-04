@@ -196,6 +196,97 @@
       "lyDo": "Tiêu chí số đo độ bền kéo tối đa (MPa) của thép cán phẳng nhóm 72.08 hoàn toàn chính xác. Mẫu nhận diện thuật ngữ kỹ thuật ba thứ tiếng chuẩn mực, không có nguy cơ bắt nhầm.",
       "goi": "02",
       "ngay": "2026-11-04"
+    },
+    "doDay": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí số đo độ dày (mm) chuẩn xác theo Biểu thuế. Tuy nhiên từ 'gauge' trong tiếng Anh bắt nhầm đường kính mặt đồng hồ áp suất ('pressure gauge 50mm' nhóm 90.26) thành độ dày.",
+      "goi": "03",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.en"
+      ]
+    },
+    "dongBaoBiKinKhiDeBanLe": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí CO_KHONG phân định bao bì kín khí bán lẻ bám sát dòng biểu các Chương 16 và 20. Tập regex ba thứ tiếng tường minh, đối sánh khẳng định và phủ định chặt chẽ.",
+      "goi": "03",
+      "ngay": "2026-11-04"
+    },
+    "dongGoiBanLe": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí đóng gói bán lẻ (Chương 24, 54) đúng thực tế Biểu thuế. Tuy nhiên mẫu từ đơn 'bán\\s+lẻ' tiếng Việt sẽ bắt nhầm tên doanh nghiệp ('Công ty Bán lẻ...'), giấy phép kinh doanh hoặc mô tả giá bán lẻ.",
+      "goi": "03",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi"
+      ]
+    },
+    "dungLamGiong": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí dùng làm giống/nhân giống (Chương 1, 7, 12) chuẩn xác. Nhưng mẫu 'seed' đơn lẻ trong tiếng Anh bắt nhầm toàn bộ hạt thương phẩm và dầu hạt ('chia seed', 'sunflower seed', 'seed oil').",
+      "goi": "03",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.en"
+      ]
+    },
+    "dungLuong": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí dung lượng phóng điện của ắc quy nhóm 85.07 chính xác. Đơn vị chuẩn Ah và quy đổi mAh chuẩn mực, các mẫu regex ba thứ tiếng bám sát ngữ cảnh thiết bị lưu trữ điện.",
+      "goi": "03",
+      "ngay": "2026-11-04"
+    },
+    "dungMotLan": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí CO_KHONG dùng một lần cho vật tư, dụng cụ y tế (bơm tiêm 9018.31.10) hoàn toàn chuẩn xác. Tập mẫu regex tiếng Việt, Anh, Trung chặt chẽ và không có rủi ro bắt nhầm.",
+      "goi": "03",
+      "ngay": "2026-11-04"
+    },
+    "dungTich": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí số đo dung tích chứa (lít) cho thiết bị lạnh nhóm 84.18 chính xác. Đơn vị chuẩn lít bám sát dòng biểu, phân định rõ ràng với dung tích xi lanh của động cơ.",
+      "goi": "03",
+      "ngay": "2026-11-04"
+    },
+    "duongCheoNgoai": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí kỹ thuật đặc thù cho ống thép mặt cắt không tròn nhóm 7306.61.10 chuẩn xác. Mẫu nhận diện thuật ngữ hình học ba thứ tiếng đầy đủ, trích dẫn dòng biểu đúng.",
+      "goi": "03",
+      "ngay": "2026-11-04"
+    },
+    "duongKinhVanh": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí đường kính vành mâm xe lắp lốp nhóm 40.11 chuẩn xác. Quy đổi hệ inch sang mm chuẩn chiều dài và các mẫu nhận diện bao quát tốt tập quán khai báo phụ tùng ô tô.",
+      "goi": "03",
+      "ngay": "2026-11-04"
+    },
+    "gioiHanChay": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí giới hạn chảy (psi) của ống thép nhóm 73.04 chính xác. Regex xử lý khéo léo số chú giải chân trang '(1)' xuất hiện trực tiếp trong văn bản Biểu thuế.",
+      "goi": "03",
+      "ngay": "2026-11-04"
+    },
+    "hamLuongCarbon": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí hàm lượng carbon (%) của thép đúng biểu thuế. Tuy nhiên các từ đơn 'carbon', 'cacbon', '碳' bắt nhầm thuật ngữ 'thép carbon' (carbon steel, 碳钢), khiến tỷ lệ phần trăm khác (mới 100%, dung sai) bị đọc nhầm thành hàm lượng carbon.",
+      "goi": "03",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "hamLuongNiken": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí hàm lượng niken (%) trong thép nhóm 73.06 chính xác. Tuy nhiên các từ đơn 'niken', 'nickel', '镍' bắt nhầm chi tiết 'mạ niken' hoặc 'hợp kim niken', kéo theo việc nhận diện sai các tỷ lệ phần trăm khác trên tờ khai.",
+      "goi": "03",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
     }
   }
 }

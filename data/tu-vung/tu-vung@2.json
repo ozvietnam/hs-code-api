@@ -5178,7 +5178,7 @@
         "en": [
           "thickness",
           "thick",
-          "gauge"
+          "sheet\\s+gauge"
         ],
         "zh": [
           "厚度",
@@ -5758,17 +5758,18 @@
           "hàm\\s+lượng\\s+carbon",
           "hàm\\s+lượng\\s+cacbon",
           "hàm\\s+lượng\\s+c\\b",
-          "carbon",
-          "cacbon"
+          "thành\\s+phần\\s+c(?:arbon|acbon)?\\b",
+          "\\bc\\s*[:=]"
         ],
         "en": [
           "carbon\\s+content",
-          "carbon"
+          "\\bcarbon\\s*[:=]",
+          "\\bc\\s*[:=]"
         ],
         "zh": [
           "含碳量",
           "碳含量",
-          "碳"
+          "\\bc含量\\b"
         ]
       },
       "cachViet": {
@@ -6061,18 +6062,18 @@
           "hàm\\s+lượng\\s+niken",
           "hàm\\s+lượng\\s+nicken",
           "hàm\\s+lượng\\s+ni\\b",
-          "niken",
-          "nicken",
-          "nickel"
+          "thành\\s+phần\\s+ni(?:ken)?\\b",
+          "\\bni\\s*[:=]"
         ],
         "en": [
           "nickel\\s+content",
-          "nickel"
+          "\\bnickel\\s*[:=]",
+          "\\bni\\s*[:=]"
         ],
         "zh": [
           "含镍量",
           "镍含量",
-          "镍"
+          "\\bni含量\\b"
         ]
       },
       "cachViet": {
@@ -6262,7 +6263,7 @@
           "for\\s+propagation",
           "suitable\\s+for\\s+sowing",
           "seed\\s+potatoes",
-          "seed"
+          "seeds?\\s+for\\s+sowing"
         ],
         "zh": [
           "改良种用",
@@ -8528,9 +8529,9 @@
       "cachDoc": {
         "vi": [
           "đóng\\s+gói\\s+để\\s+bán\\s+lẻ",
-          "bán\\s+lẻ",
           "đóng\\s+gói\\s+bán\\s+lẻ",
-          "bao\\s+bì\\s+bán\\s+lẻ"
+          "bao\\s+bì\\s+bán\\s+lẻ",
+          "(?:dùng\\s+|cho\\s+|để\\s+)bán\\s+lẻ"
         ],
         "en": [
           "put\\s+up\\s+for\\s+retail\\s+sale",
