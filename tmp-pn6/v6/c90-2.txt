@@ -1,0 +1,154 @@
+Số hoá ranh giới cho 8 phân nhóm 6 số (902920 902990 903084 903089 903090 903149 903190 903290). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 902920 ===
+# 902920 — Đồng hồ chỉ tốc độ và máy đo tốc độ góc; máy hoạt nghiệm
+
+902920 — Meters; speed indicators and tachometers; stroboscopes
+  90292010 Đồng hồ tốc độ dùng cho xe có động cơ
+  90292020 Máy đo tốc độ góc cho xe có động cơ
+  90292090 Loại khác  [LK]
+
+- 90292010 DONG8
+    tax.90292010 [50 ký tự]: 90292010 - - Đồng hồ tốc độ dùng cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe có động cơ"
+- 90292020 DONG8
+    tax.90292020 [48 ký tự]: 90292020 - - Máy đo tốc độ góc cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho xe có động cơ"
+- 90292090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90292090 [22 ký tự]: 90292090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.902920; chú giải: nhom9029.nhom, ch90.chuong
+
+=== GÓI PN6 902990 ===
+# 902990 — Bộ phận và phụ kiện
+
+902990 — Meters and counters; parts and accessories for revolution and production counters, taximeters, mileometers, pedometers and the like; speed indicators, tachometers (excluding heading no. 9015), stroboscopes
+  90299010 Của hàng hóa thuộc phân nhóm 9029.10; của máy hoạt nghiệm thuộc phân nhóm 9029.20
+  90299020 Của đồng hồ chỉ tốc độ và máy đo tốc độ góc của phân nhóm 9029.20
+
+- 90299010 DONG8
+    tax.90299010 [94 ký tự]: 90299010 - - Của hàng hóa thuộc phân nhóm 9029.10; của máy hoạt nghiệm thuộc phân nhóm 9029.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 9029.10" · [GIỚI HẠN] "của máy hoạt nghiệm thuộc phân nhóm 9029.20"
+- 90299020 DONG8
+    tax.90299020 [78 ký tự]: 90299020 - - Của đồng hồ chỉ tốc độ và máy đo tốc độ góc của phân nhóm 9029.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đồng hồ chỉ tốc độ và máy đo tốc độ góc của phân nhóm 9029.20"
+
+Nguồn cấp phân nhóm: wco.902990; chú giải: nhom9029.nhom, ch90.chuong
+
+=== GÓI PN6 903084 ===
+# 903084 — Loại khác, có kèm thiết bị ghi
+
+903084 — Instruments and apparatus; n.e.c. in heading no. 9030, with a recording device
+  90308410 Dụng cụ và thiết bị để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90308490 Loại khác  [LK]
+
+- 90308410 DONG8
+    tax.90308410 [118 ký tự]: 90308410 - - - Dụng cụ và thiết bị để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90308490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90308490 [24 ký tự]: 90308490 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903084; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903089 ===
+# 903089 — Loại khác
+
+903089 — Instruments and apparatus; n.e.c. in heading no. 9030, without a recording device
+  90308910 Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90308990 Loại khác  [LK]
+
+- 90308910 DONG8
+    tax.90308910 [148 ký tự]: 90308910 - - - Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không kèm thiết bị ghi" · [GIỚI HẠN] "dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90308990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90308990 [24 ký tự]: 90308990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903089; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903090 ===
+# 903090 — Bộ phận và phụ kiện
+
+903090 — Instruments, apparatus for measuring, checking electrical quantities, not meters of heading no. 9028; parts and accessories, for measuring or detecting alpha, beta, gamma, x-ray, cosmic and other radiations
+  90309010 Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+  90309030 Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309040 Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309090 Loại khác  [LK]
+
+- 90309010 DONG8
+    tax.90309010 [113 ký tự]: 90309010 - - Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82"
+- 90309030 DONG8
+    tax.90309030 [132 ký tự]: 90309030 - - Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị quang học" · [GIỚI HẠN] "để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309040 DONG8
+    tax.90309040 [145 ký tự]: 90309040 - - Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị" · [GIỚI HẠN] "dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90309090 [22 ký tự]: 90309090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903090; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903149 ===
+# 903149 — Loại khác
+
+903149 — Optical instruments and appliances; for measuring or checking, n.e.c. in chapter 90
+  90314910 Dụng cụ và thiết bị quang học để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn
+  90314920 Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90314930 Dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90314990 Loại khác  [LK]
+
+- 90314910 DONG8
+    tax.90314910 [94 ký tự]: 90314910 - - - Dụng cụ và thiết bị quang học để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn"
+- 90314920 DONG8
+    tax.90314920 [106 ký tự]: 90314920 - - - Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90314930 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.90314930 [114 ký tự]: 90314930 - - - Dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90314990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90314990 [24 ký tự]: 90314990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903149; chú giải: nhom9031.nhom, ch90.chuong
+
+=== GÓI PN6 903190 ===
+# 903190 — Bộ phận và phụ kiện
+
+903190 — Instruments, appliances and machines; parts and accessories for those measuring or checking devices of heading no. 9031
+  90319030 Bộ phận và phụ kiện kể cả mạch in đã lắp ráp dùng cho các dụng cụ và thiết bị quang học để kiểm tra các vi mạch hoặc linh kiện bán dẫn hoặc kiểm tra mặt nạ, mặt nạ quang hoặc lưới ca rô sử dụng trong sản xuất các linh kiện bán dẫn; bộ phận và phụ kiện của các thiết bị đo độ nhiễm bẩn bề mặt của vi mạch bán dẫn
+  90319040 Của thiết bị quang học xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90319050 Của dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90319090 Loại khác  [LK]
+
+- 90319030 DONG8
+    tax.90319030 [324 ký tự]: 90319030 - - Bộ phận và phụ kiện kể cả mạch in đã lắp ráp dùng cho các dụng cụ và thiết bị quang học để kiểm tra các vi mạch hoặc linh kiện bán dẫn hoặc kiểm tra mặt nạ, mặt nạ quang hoặc lưới ca rô sử dụng trong sản xuất các linh kiện bán dẫn; bộ phận và phụ kiện của các thiết bị đo độ nhiễm bẩn bề mặt của vi mạch bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho các dụng cụ và thiết bị quang học để kiểm tra các vi mạch hoặc linh kiện bán dẫn hoặc kiểm tra mặt nạ, mặt nạ quang hoặc lưới ca rô" · [GIỚI HẠN] "sử dụng trong sản xuất các linh kiện bán dẫn" · [GIỚI HẠN] "của các thiết bị đo độ nhiễm bẩn bề mặt của vi mạch bán dẫn"
+- 90319040 DONG8
+    tax.90319040 [105 ký tự]: 90319040 - - Của thiết bị quang học xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị quang học xác định và sửa lỗi" · [GIỚI HẠN] "cho tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90319050 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.90319050 [116 ký tự]: 90319050 - - Của dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của dụng cụ và thiết bị quang học khác" · [GIỚI HẠN] "để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90319090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90319090 [22 ký tự]: 90319090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903190; chú giải: nhom9031.nhom, ch90.chuong
+
+=== GÓI PN6 903290 ===
+# 903290 — Bộ phận và phụ kiện
+
+903290 — Regulating or controlling instruments and apparatus; automatic, parts and accessories
+  90329010 Của hàng hóa thuộc phân nhóm 9032.89.10
+  90329020 Của hàng hóa thuộc phân nhóm 9032.89.20
+  90329090 Loại khác  [LK]
+
+- 90329010 DONG8
+    tax.90329010 [52 ký tự]: 90329010 - - Của hàng hóa thuộc phân nhóm 9032.89.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 9032.89.10"
+- 90329020 DONG8
+    tax.90329020 [52 ký tự]: 90329020 - - Của hàng hóa thuộc phân nhóm 9032.89.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 9032.89.20"
+- 90329090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90329090 [22 ký tự]: 90329090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903290; chú giải: nhom9032.nhom, ch90.chuong

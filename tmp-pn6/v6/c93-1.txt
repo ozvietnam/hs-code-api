@@ -1,0 +1,78 @@
+Số hoá ranh giới cho 4 phân nhóm 6 số (930390 930591 930599 930690). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 930390 ===
+# 930390 — Loại khác
+
+930390 — Firearms; n.e.c. in heading no. 9303
+  93039010 Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm
+  93039090 Loại khác  [LK]
+
+- 93039010 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.93039010 [147 ký tự]: 93039010 - - Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm
+    vế phải phủ (cổng 5): [MỞ] "và các loại khác" · [GIỚI HẠN] "được thiết kế chỉ" · [GIỚI HẠN] "để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên" · [GIỚI HẠN] "trừ cỡ 23 mm và 26,5 mm"
+- 93039090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93039090 [22 ký tự]: 93039090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.930390; chú giải: nhom9303.nhom, ch93.chuong, phan93.phan
+
+=== GÓI PN6 930591 ===
+# 930591 — Của vũ khí quân sự thuộc nhóm 93.01
+
+930591 — Firearms; parts and accessories, of military weapons of heading 9301
+  93059110 Bằng da thuộc hoặc vật liệu dệt (SEN)
+  93059190 Loại khác  [LK]
+
+- 93059110 DONG8
+    tax.93059110 [52 ký tự]: 93059110 - - - Bằng da thuộc hoặc vật liệu dệt (SEN)
+    sen.93059110 [174 ký tự]: BỘ PHẬN VÀ PHỤ KIỆN, BẰNG DA THUỘC HOẶC VẬT LIỆU DỆT Dây đeo làm từ các vật liệu dệt hoặc da thuộc là phụ kiện cho súng trường hay súng lục được đề cập đến trong chú giải HS.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng da thuộc hoặc vật liệu dệt"
+- 93059190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93059190 [24 ký tự]: 93059190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.930591; chú giải: nhom9305.nhom, ch93.chuong, phan93.phan
+
+=== GÓI PN6 930599 ===
+# 930599 — Loại khác
+
+930599 — Firearms; parts and accessories, of firearms other than the military weapons of heading 9301
+  [9305991] Của hàng hóa thuộc phân nhóm 9304.00.90
+    93059911 Bằng da thuộc hoặc vật liệu dệt (SEN)
+    93059919 Loại khác  [LK]
+  [9305999] Loại khác
+    93059991 Bằng da thuộc hoặc vật liệu dệt (SEN)
+    93059999 Loại khác  [LK]
+
+- 9305991 TIEU_DE
+    tieuDe.9305991 [47 ký tự]: 9305991 Của hàng hóa thuộc phân nhóm 9304.00.90
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 9304.00.90"
+- 93059911 DONG8
+    tax.93059911 [54 ký tự]: 93059911 - - - - Bằng da thuộc hoặc vật liệu dệt (SEN)
+    sen.93059911 [174 ký tự]: BỘ PHẬN VÀ PHỤ KIỆN, BẰNG DA THUỘC HOẶC VẬT LIỆU DỆT Dây đeo làm từ các vật liệu dệt hoặc da thuộc là phụ kiện cho súng trường hay súng lục được đề cập đến trong chú giải HS.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng da thuộc hoặc vật liệu dệt"
+- 93059919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93059919 [26 ký tự]: 93059919 - - - - Loại khác
+- 9305999 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.9305999 [17 ký tự]: 9305999 Loại khác
+- 93059991 DONG8
+    tax.93059991 [54 ký tự]: 93059991 - - - - Bằng da thuộc hoặc vật liệu dệt (SEN)
+    sen.93059991 [174 ký tự]: BỘ PHẬN VÀ PHỤ KIỆN, BẰNG DA THUỘC HOẶC VẬT LIỆU DỆT Dây đeo làm từ các vật liệu dệt hoặc da thuộc là phụ kiện cho súng trường hay súng lục được đề cập đến trong chú giải HS.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng da thuộc hoặc vật liệu dệt"
+- 93059999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93059999 [26 ký tự]: 93059999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.930599; chú giải: nhom9305.nhom, ch93.chuong, phan93.phan
+
+=== GÓI PN6 930690 ===
+# 930690 — Loại khác
+
+930690 — Ammunition; n.e.c. in chapter 93
+  93069010 Bom, lựu đạn, ngư lôi, mìn, tên lửa và các loại đạn dược tương tự và bộ phận của chúng
+  93069090 Loại khác  [LK]
+
+- 93069010 DONG8
+    tax.93069010 [99 ký tự]: 93069010 - - Bom, lựu đạn, ngư lôi, mìn, tên lửa và các loại đạn dược tương tự và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và các loại đạn dược tương tự" · [MỞ] "và bộ phận của chúng"
+- 93069090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93069090 [22 ký tự]: 93069090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.930690; chú giải: nhom9306.nhom, ch93.chuong, phan93.phan
