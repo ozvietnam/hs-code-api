@@ -1,0 +1,48 @@
+Số hoá ranh giới cho 3 phân nhóm 6 số (854919 854991 860900). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 854919 ===
+# 854919 — Loại khác
+
+854919 — Waste and scrap; of primary cells, primary batteries and electric accumulators, n.e.c. in item no 8549.1
+  85491910 Của pin và bộ pin
+  85491920 Của ắc qui điện loại dùng cho máy bay
+  85491990 Loại khác  [LK]
+
+- 85491910 DONG8
+    tax.85491910 [32 ký tự]: 85491910 - - - Của pin và bộ pin
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của pin và bộ pin"
+- 85491920 DONG8
+    tax.85491920 [52 ký tự]: 85491920 - - - Của ắc qui điện loại dùng cho máy bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ắc qui điện" · [GIỚI HẠN] "loại dùng cho máy bay"
+- 85491990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85491990 [24 ký tự]: 85491990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.854919; chú giải: nhom8549.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 854991 ===
+# 854991 — Chứa pin, bộ pin, ắc qui điện, công tắc thủy ngân, thủy tinh từ ống tia ca-tốt hoặc thủy tinh hoạt hóa khác, hoặc các thành phần điện hoặc điện tử có chứa cadmium, thủy ngân, chì hoặc polychlorinated biphenyls (PCB)
+
+854991 — Waste and scrap; n.e.c. in heading no 8549
+  85499110 Thủy tinh từ ống tia ca-tốt hoặc thủy tinh hoạt hóa khác
+  85499190 Loại khác  [LK]
+
+- 85499110 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.85499110 [71 ký tự]: 85499110 - - - Thủy tinh từ ống tia ca-tốt hoặc thủy tinh hoạt hóa khác
+- 85499190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85499190 [24 ký tự]: 85499190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.854991; chú giải: nhom8549.nhom, ch85.chuong, phan85.phan
+=== GÓI PN6 860900 ===
+# 860900 — Công-ten-nơ (kể cả công-ten-nơ dùng vận chuyển chất lỏng) được thiết kế và trang bị đặc biệt để vận chuyển theo một hoặc nhiều phương thức.
+
+NHÓM 8609 — Công-ten-nơ (kể cả công-ten-nơ dùng vận chuyển chất lỏng) được thiết kế và trang bị đặc biệt để vận chuyển theo một hoặc nhiều phương thức.
+  86090010 Bằng kim loại cơ bản
+  86090090 Loại khác  [LK]
+
+- 86090010 DONG8
+    tax.86090010 [31 ký tự]: 86090010 - Bằng kim loại cơ bản
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng kim loại cơ bản"
+- 86090090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.86090090 [20 ký tự]: 86090090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.860900; chú giải: nhom8609.nhom, ch86.chuong, phan86.phan

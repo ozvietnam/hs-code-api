@@ -1,0 +1,568 @@
+Số hoá ranh giới cho 28 phân nhóm 6 số (210111 210120 210220 210410 210420 220300 220421 220422 220429 220430 220510 220590 220870 230120 230240 230310 230641 230649 230660 230690 230910 240110 240120 240220 240311 240391 240412 240491). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 210111 ===
+# 210111 — Chất chiết xuất, tinh chất và các chất cô đặc
+
+210111 — Extracts, essences and concentrates; of coffee, and preparations with a basis of these extracts, essences or concentrates or with a basis of coffee
+  [2101111] Cà phê hòa tan (1)
+    21011111 Được đóng gói với khối lượng tịnh không dưới 20kg
+    21011119 Loại khác  [LK]
+  21011190 Loại khác  [LK]
+
+- 2101111 TIEU_DE
+    tieuDe.2101111 [26 ký tự]: 2101111 Cà phê hòa tan (1)
+- 21011111 DONG8
+    tax.21011111 [66 ký tự]: 21011111 - - - - Được đóng gói với khối lượng tịnh không dưới 20kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được đóng gói" · [GIỚI HẠN] "với khối lượng tịnh không dưới 20kg"
+- 21011119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21011119 [26 ký tự]: 21011119 - - - - Loại khác
+- 21011190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21011190 [24 ký tự]: 21011190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210111; chú giải: nhom2101.nhom, ch21.chuong, phan21.phan
+
+=== GÓI PN6 210120 ===
+# 210120 — Chất chiết xuất, tinh chất và các chất cô đặc, từ chè hoặc chè Paragoay, và các chế phẩm có thành phần cơ bản là các chất chiết xuất, tinh chất hoặc các chất cô đặc này hoặc có thành phần cơ bản là chè hoặc chè Paragoay
+
+210120 — Extracts, essences and concentrates; of tea or mate, and preparations with a basis of these extracts, essences or concentrates or with a basis of tea or mate
+  21012020 Chiết xuất từ chè để sản xuất các chế phẩm chè, dạng bột
+  21012030 Các chế phẩm chè gồm hỗn hợp của chè, sữa bột và đường
+  21012090 Loại khác  [LK]
+
+- 21012020 DONG8
+    tax.21012020 [69 ký tự]: 21012020 - - Chiết xuất từ chè để sản xuất các chế phẩm chè, dạng bột
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để sản xuất các chế phẩm chè, dạng bột"
+- 21012030 DONG8
+    tax.21012030 [67 ký tự]: 21012030 - - Các chế phẩm chè gồm hỗn hợp của chè, sữa bột và đường
+    vế phải phủ (cổng 5): [GIỚI HẠN] "gồm hỗn hợp của chè, sữa bột và đường"
+- 21012090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21012090 [22 ký tự]: 21012090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210120; chú giải: nhom2101.nhom, ch21.chuong, phan21.phan
+
+=== GÓI PN6 210220 ===
+# 210220 — Men ỳ; các vi sinh đơn bào khác, chết
+
+210220 — Yeasts; inactive, other single-cell micro-organisms, dead
+  21022010 Loại dùng trong chăn nuôi động vật
+  21022090 Loại khác  [LK]
+
+- 21022010 DONG8
+    tax.21022010 [47 ký tự]: 21022010 - - Loại dùng trong chăn nuôi động vật
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong chăn nuôi động vật"
+- 21022090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21022090 [22 ký tự]: 21022090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210220; chú giải: nhom2102.nhom, ch21.chuong, phan21.phan
+
+=== GÓI PN6 210410 ===
+# 210410 — Súp và nước xuýt (broths) và chế phẩm để làm súp và nước xuýt
+
+210410 — Soups and broths and preparations therefor
+  [2104101] Chứa thịt
+    21041011 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    21041019 Loại khác  [LK]
+  [2104109] Loại khác
+    21041091 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    21041099 Loại khác  [LK]
+
+- 2104101 TIEU_DE
+    tieuDe.2104101 [17 ký tự]: 2104101 Chứa thịt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa thịt"
+- 21041011 DONG8
+    tax.21041011 [62 ký tự]: 21041011 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    sen.21041011 [1200 ký tự]: SÚP VÀ NƯỚC XUÝT (BROTHS) VÀ CHẾ PHẦM ĐỂ LÀM SÚP VÀ NƯỚC XUÝT PHÙ HỢP DÙNG CHO TRẺ SƠ SINH HOẶC TRẺ NHỎ Súp là thực phẩm dạng lỏng gồm thịt, cá, rau, ngũ cốc hoặc hỗn hợp bất kỳ của các nguyên liệu trên và có thể chứa muối hoặc bất kỳ thực phẩm nào khác. Súp có thể chứa các chất được phép sử dụng gồm: chất tạo màu, chất tạo hương, chất điều vị và chất bảo quản thực phẩm. Nước xuýt là chế phẩm dạng lỏng (súp), thường là nước xương, thịt, cá, các loại hạt ngũ cốc, hoặc rau đã được ninh nhỏ lửa (ninh nhỏ lửa là kỹ thuật chế biến thực phẩm, trong đó thực phẩm được nấu chín trong chất lỏng được giữ nóng dưới điểm sôi của nước (khoảng 94°C). NƯỚC XUÝT DÀNH CHO TRẺ EM Nước xuýt xương, thực phẩm bổ sung Các chuyên gia dinh dưỡng cho trẻ sơ sinh và Trung tâm sáng tạo thực phẩm đã hợp tác để xây dựng công thức nước xuýt xương, thực phẩm bổ sung nhằm đưa ra một lựa chọn về thực phẩm dinh dưỡng đậm đặc và an toàn cho trẻ nhỏ. Công thức này không chứa bất kỳ thành phần tổng hợp hoặc biến đổi gen. Nó cung cấp các chất dinh dưỡng tương tự có trong sữa mẹ cần thiết cho sự phát triển của cơ thể, não và hệ thống miễn dịch của trẻ. Nhiều gia đình rất thích trộn nó với sữa dê hoặc sữa bò. Thực phẩ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 21041019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21041019 [24 ký tự]: 21041019 - - - Loại khác
+- 2104109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.2104109 [17 ký tự]: 2104109 Loại khác
+- 21041091 DONG8
+    tax.21041091 [62 ký tự]: 21041091 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    sen.21041091 [1200 ký tự]: SÚP VÀ NƯỚC XUÝT (BROTHS) VÀ CHẾ PHẦM ĐỂ LÀM SÚP VÀ NƯỚC XUÝT PHÙ HỢP DÙNG CHO TRẺ SƠ SINH HOẶC TRẺ NHỎ Súp là thực phẩm dạng lỏng gồm thịt, cá, rau, ngũ cốc hoặc hỗn hợp bất kỳ của các nguyên liệu trên và có thể chứa muối hoặc bất kỳ thực phẩm nào khác. Súp có thể chứa các chất được phép sử dụng gồm: chất tạo màu, chất tạo hương, chất điều vị và chất bảo quản thực phẩm. Nước xuýt là chế phẩm dạng lỏng (súp), thường là nước xương, thịt, cá, các loại hạt ngũ cốc, hoặc rau đã được ninh nhỏ lửa (ninh nhỏ lửa là kỹ thuật chế biến thực phẩm, trong đó thực phẩm được nấu chín trong chất lỏng được giữ nóng dưới điểm sôi của nước (khoảng 94°C). NƯỚC XUÝT DÀNH CHO TRẺ EM Nước xuýt xương, thực phẩm bổ sung Các chuyên gia dinh dưỡng cho trẻ sơ sinh và Trung tâm sáng tạo thực phẩm đã hợp tác để xây dựng công thức nước xuýt xương, thực phẩm bổ sung nhằm đưa ra một lựa chọn về thực phẩm dinh dưỡng đậm đặc và an toàn cho trẻ nhỏ. Công thức này không chứa bất kỳ thành phần tổng hợp hoặc biến đổi gen. Nó cung cấp các chất dinh dưỡng tương tự có trong sữa mẹ cần thiết cho sự phát triển của cơ thể, não và hệ thống miễn dịch của trẻ. Nhiều gia đình rất thích trộn nó với sữa dê hoặc sữa bò. Thực phẩ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 21041099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21041099 [24 ký tự]: 21041099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210410; chú giải: nhom2104.nhom, ch21.chuong, phan21.phan
+
+=== GÓI PN6 210420 ===
+# 210420 — Chế phẩm thực phẩm tổng hợp đồng nhất
+
+210420 — Homogenised composite food preparations
+  [2104201] Chứa thịt
+    21042011 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+    21042019 Loại khác  [LK]
+  [2104209] Loại khác
+    21042091 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    21042099 Loại khác  [LK]
+
+- 2104201 TIEU_DE
+    tieuDe.2104201 [17 ký tự]: 2104201 Chứa thịt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa thịt"
+- 21042011 DONG8
+    tax.21042011 [56 ký tự]: 21042011 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 21042019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21042019 [24 ký tự]: 21042019 - - - Loại khác
+- 2104209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.2104209 [17 ký tự]: 2104209 Loại khác
+- 21042091 DONG8
+    tax.21042091 [62 ký tự]: 21042091 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 21042099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21042099 [24 ký tự]: 21042099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210420; chú giải: nhom2104.nhom, ch21.chuong, phan21.phan
+=== GÓI PN6 220300 ===
+# 220300 — Bia sản xuất từ malt.
+
+NHÓM 2203 — Bia sản xuất từ malt.
+  [2203001] Bia đen hoặc bia nâu
+    22030011 Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)
+    22030019 Loại khác (SEN)  [LK]
+  [2203009] Loại khác, kể cả bia ale
+    22030091 Có nồng độ cồn không quá 5,8% tính theo thể tích
+    22030099 Loại khác  [LK]
+
+- 2203001 TIEU_DE
+    tieuDe.2203001 [28 ký tự]: 2203001 Bia đen hoặc bia nâu
+- 22030011 DONG8
+    tax.22030011 [67 ký tự]: 22030011 - - Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)
+    sen.22030011 [186 ký tự]: BIA ĐEN HOẶC BIA NÂU Bia đen (Stout) là bia đen đậm ủ từ mạch nha (malt) rang hoặc lúa mạch rang. Bia nâu (Porter) là loại bia đắng màu nâu sẫm ủ từ mạch nha nâu hoặc mạch nha rang cháy.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn" · [GIỚI HẠN] "không quá 5,8% tính theo thể tích"
+- 22030019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.22030019 [28 ký tự]: 22030019 - - Loại khác (SEN)
+    sen.22030019 [186 ký tự]: BIA ĐEN HOẶC BIA NÂU Bia đen (Stout) là bia đen đậm ủ từ mạch nha (malt) rang hoặc lúa mạch rang. Bia nâu (Porter) là loại bia đắng màu nâu sẫm ủ từ mạch nha nâu hoặc mạch nha rang cháy.
+- 2203009 TIEU_DE
+    tieuDe.2203009 [32 ký tự]: 2203009 Loại khác, kể cả bia ale
+- 22030091 DONG8
+    tax.22030091 [61 ký tự]: 22030091 - - Có nồng độ cồn không quá 5,8% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn" · [GIỚI HẠN] "không quá 5,8% tính theo thể tích"
+- 22030099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.22030099 [22 ký tự]: 22030099 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.220300; chú giải: nhom2203.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220421 ===
+# 220421 — Loại trong đồ đựng không quá 2 lít
+
+220421 — Wine; still, in containers holding 2 litres or less
+  [2204211] Rượu vang
+    22042111 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042113 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    22042114 Có nồng độ cồn trên 23% tính theo thể tích
+  [2204212] Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    22042121 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042122 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 2204211 TIEU_DE
+    tieuDe.2204211 [17 ký tự]: 2204211 Rượu vang
+- 22042111 DONG8
+    tax.22042111 [65 ký tự]: 22042111 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042113 DONG8
+    tax.22042113 [79 ký tự]: 22042113 - - - - Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích"
+- 22042114 DONG8
+    tax.22042114 [59 ký tự]: 22042114 - - - - Có nồng độ cồn trên 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 23% tính theo thể tích"
+- 2204212 TIEU_DE
+    tieuDe.2204212 [59 ký tự]: 2204212 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ngăn ngừa hoặc cản sự lên men"
+- 22042121 DONG8
+    tax.22042121 [65 ký tự]: 22042121 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042122 DONG8
+    tax.22042122 [59 ký tự]: 22042122 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220421; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220422 ===
+# 220422 — Loại trong đồ đựng trên 2 lít nhưng không quá 10 lít
+
+220422 — Wine; still, in containers holding more than 2 litres but not more than 10 litres
+  [2204221] Rượu vang
+    22042211 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042212 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    22042213 Có nồng độ cồn trên 23% tính theo thể tích
+  [2204222] Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    22042221 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042222 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 2204221 TIEU_DE
+    tieuDe.2204221 [17 ký tự]: 2204221 Rượu vang
+- 22042211 DONG8
+    tax.22042211 [65 ký tự]: 22042211 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042212 DONG8
+    tax.22042212 [79 ký tự]: 22042212 - - - - Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích"
+- 22042213 DONG8
+    tax.22042213 [59 ký tự]: 22042213 - - - - Có nồng độ cồn trên 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 23% tính theo thể tích"
+- 2204222 TIEU_DE
+    tieuDe.2204222 [59 ký tự]: 2204222 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ngăn ngừa hoặc cản sự lên men"
+- 22042221 DONG8
+    tax.22042221 [65 ký tự]: 22042221 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042222 DONG8
+    tax.22042222 [59 ký tự]: 22042222 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220422; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220429 ===
+# 220429 — Loại khác
+
+220429 — Wine; still, in containers holding more than 10 litres
+  [2204291] Rượu vang
+    22042911 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042912 Có nồng độ cồn trên 15% tính theo thể tích
+  [2204292] Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    22042921 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042922 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 2204291 TIEU_DE
+    tieuDe.2204291 [17 ký tự]: 2204291 Rượu vang
+- 22042911 DONG8
+    tax.22042911 [65 ký tự]: 22042911 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042912 DONG8
+    tax.22042912 [59 ký tự]: 22042912 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+- 2204292 TIEU_DE
+    tieuDe.2204292 [59 ký tự]: 2204292 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ngăn ngừa hoặc cản sự lên men"
+- 22042921 DONG8
+    tax.22042921 [65 ký tự]: 22042921 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042922 DONG8
+    tax.22042922 [59 ký tự]: 22042922 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220429; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220430 ===
+# 220430 — Hèm nho khác
+
+220430 — Grape must; n.e.c. in heading no. 2009, n.e.c. in item no. 2204.2
+  22043010 Có nồng độ cồn không quá 15% tính theo thể tích
+  22043020 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 22043010 DONG8
+    tax.22043010 [61 ký tự]: 22043010 - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22043020 DONG8
+    tax.22043020 [55 ký tự]: 22043020 - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220430; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220510 ===
+# 220510 — Loại trong đồ đựng không quá 2 lít
+
+220510 — Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances, in containers holding 2 litres or less
+  22051010 Có nồng độ cồn không quá 15% tính theo thể tích
+  22051020 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 22051010 DONG8
+    tax.22051010 [61 ký tự]: 22051010 - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22051020 DONG8
+    tax.22051020 [55 ký tự]: 22051020 - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220510; chú giải: nhom2205.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220590 ===
+# 220590 — Loại khác
+
+220590 — Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances, in containers holding more than 2 litres
+  22059010 Có nồng độ cồn không quá 15% tính theo thể tích
+  22059020 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 22059010 DONG8
+    tax.22059010 [61 ký tự]: 22059010 - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22059020 DONG8
+    tax.22059020 [55 ký tự]: 22059020 - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220590; chú giải: nhom2205.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220870 ===
+# 220870 — Rượu mùi
+
+220870 — Liqueurs and cordials
+  22087010 Có nồng độ cồn không quá 57% tính theo thể tích
+  22087090 Loại khác  [LK]
+
+- 22087010 DONG8
+    tax.22087010 [61 ký tự]: 22087010 - - Có nồng độ cồn không quá 57% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 57% tính theo thể tích"
+- 22087090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.22087090 [22 ký tự]: 22087090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.220870; chú giải: nhom2208.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 230120 ===
+# 230120 — Bột mịn, bột thô và viên, từ cá hoặc từ động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác
+
+230120 — Flours, meals and pellets; of fish or of crustaceans, molluscs or other aquatic invertebrates
+  23012010 Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng
+  23012020 Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng
+  23012090 Loại khác  [LK]
+
+- 23012010 DONG8
+    tax.23012010 [70 ký tự]: 23012010 - - Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng protein dưới 60% tính theo khối lượng"
+- 23012020 DONG8
+    tax.23012020 [76 ký tự]: 23012020 - - Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng protein từ 60% trở lên tính theo khối lượng"
+- 23012090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23012090 [22 ký tự]: 23012090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230120; chú giải: nhom2301.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230240 ===
+# 230240 — Từ ngũ cốc khác
+
+230240 — Bran, sharps and other residues; of other cereals, whether or not in the form of pellets, derived from the sifting, milling or other workings thereof
+  23024010 Từ thóc gạo
+  23024090 Loại khác  [LK]
+
+- 23024010 DONG8
+    tax.23024010 [24 ký tự]: 23024010 - - Từ thóc gạo
+- 23024090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23024090 [22 ký tự]: 23024090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230240; chú giải: nhom2302.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230310 ===
+# 230310 — Phế liệu từ quá trình sản xuất tinh bột và phế liệu tương tự
+
+230310 — Residues of starch manufacture and similar residues; whether or not in the form of pellets
+  23031010 Từ sắn hoặc cọ sago
+  23031090 Loại khác  [LK]
+
+- 23031010 DONG8
+    tax.23031010 [32 ký tự]: 23031010 - - Từ sắn hoặc cọ sago
+- 23031090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23031090 [22 ký tự]: 23031090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230310; chú giải: nhom2303.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230641 ===
+# 230641 — Từ hạt cải dầu (rape seeds hoặc colza seeds) có hàm lượng axit eruxic thấp
+
+230641 — Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of low erucic acid rape or colza seed oils
+  23064110 Từ hạt cải dầu rape có hàm lượng axit eruxic thấp
+  23064120 Từ hạt cải dầu colza có hàm lượng axit eruxic thấp
+
+- 23064110 DONG8
+    tax.23064110 [64 ký tự]: 23064110 - - - Từ hạt cải dầu rape có hàm lượng axit eruxic thấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng axit eruxic thấp"
+- 23064120 DONG8
+    tax.23064120 [65 ký tự]: 23064120 - - - Từ hạt cải dầu colza có hàm lượng axit eruxic thấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng axit eruxic thấp"
+
+Nguồn cấp phân nhóm: wco.230641; chú giải: nhom2306.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230649 ===
+# 230649 — Loại khác
+
+230649 — Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of rape seed oils (other than low erucic acid rape or colza)
+  23064910 Từ hạt cải dầu rape khác
+  23064920 Từ hạt cải dầu colza khác
+
+- 23064910 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.23064910 [39 ký tự]: 23064910 - - - Từ hạt cải dầu rape khác
+- 23064920 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.23064920 [40 ký tự]: 23064920 - - - Từ hạt cải dầu colza khác
+
+Nguồn cấp phân nhóm: wco.230649; chú giải: nhom2306.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230660 ===
+# 230660 — Từ hạt hoặc nhân hạt cọ
+
+230660 — Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of palm nuts or kernels oils
+  23066010 Dạng xay hoặc dạng viên
+  23066090 Loại khác  [LK]
+
+- 23066010 DONG8
+    tax.23066010 [36 ký tự]: 23066010 - - Dạng xay hoặc dạng viên
+- 23066090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23066090 [22 ký tự]: 23066090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230660; chú giải: nhom2306.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230690 ===
+# 230690 — Loại khác
+
+230690 — Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of oils, n.e.c. in heading no. 2306
+  23069010 Từ mầm ngô
+  23069090 Loại khác  [LK]
+
+- 23069010 DONG8
+    tax.23069010 [23 ký tự]: 23069010 - - Từ mầm ngô
+- 23069090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23069090 [22 ký tự]: 23069090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230690; chú giải: nhom2306.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230910 ===
+# 230910 — Thức ăn cho chó hoặc mèo, đã đóng gói để bán lẻ
+
+230910 — Dog or cat food; put up for retail sale, used in animal feeding
+  23091010 Chứa thịt
+  23091090 Loại khác  [LK]
+
+- 23091010 DONG8
+    tax.23091010 [22 ký tự]: 23091010 - - Chứa thịt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa thịt"
+- 23091090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23091090 [22 ký tự]: 23091090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230910; chú giải: nhom2309.nhom, ch23.chuong, phan23.phan
+=== GÓI PN6 240110 ===
+# 240110 — Lá thuốc lá chưa tước cọng
+
+240110 — Tobacco, (not stemmed or stripped)
+  24011010 Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+  24011020 Loại Virginia, trừ loại sấy bằng không khí nóng
+  24011040 Loại Burley
+  24011050 Loại khác, được sấy bằng không khí nóng  [LK có điều kiện]
+  24011090 Loại khác  [LK]
+
+- 24011010 DONG8
+    tax.24011010 [67 ký tự]: 24011010 - - Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Virginia, đã sấy" · [GIỚI HẠN] "bằng không khí nóng (flue-cured)"
+- 24011020 DONG8
+    tax.24011020 [61 ký tự]: 24011020 - - Loại Virginia, trừ loại sấy bằng không khí nóng 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Virginia" · [GIỚI HẠN] "trừ loại sấy" · [GIỚI HẠN] "bằng không khí nóng"
+- 24011040 DONG8
+    tax.24011040 [24 ký tự]: 24011040 - - Loại Burley
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Burley"
+- 24011050 DONG8
+    tax.24011050 [52 ký tự]: 24011050 - - Loại khác, được sấy bằng không khí nóng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được sấy" · [GIỚI HẠN] "bằng không khí nóng"
+- 24011090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.24011090 [22 ký tự]: 24011090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.240110; chú giải: nhom2401.nhom, ch24.chuong, phan24.phan
+
+=== GÓI PN6 240120 ===
+# 240120 — Lá thuốc lá, đã tước cọng một phần hoặc toàn bộ
+
+240120 — Tobacco; partly or wholly stemmed or stripped
+  24012010 Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+  24012020 Loại Virginia, trừ loại sấy bằng không khí nóng
+  24012030 Loại Oriental
+  24012040 Loại Burley
+  24012050 Loại khác, được sấy bằng không khí nóng (flue-cured)  [LK có điều kiện]
+  24012090 Loại khác  [LK]
+
+- 24012010 DONG8
+    tax.24012010 [67 ký tự]: 24012010 - - Loại Virginia, đã sấy bằng không khí nóng (flue-cured)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Virginia, đã sấy" · [GIỚI HẠN] "bằng không khí nóng (flue-cured)"
+- 24012020 DONG8
+    tax.24012020 [61 ký tự]: 24012020 - - Loại Virginia, trừ loại sấy bằng không khí nóng 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Virginia" · [GIỚI HẠN] "trừ loại sấy" · [GIỚI HẠN] "bằng không khí nóng"
+- 24012030 DONG8
+    tax.24012030 [26 ký tự]: 24012030 - - Loại Oriental
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Oriental"
+- 24012040 DONG8
+    tax.24012040 [24 ký tự]: 24012040 - - Loại Burley
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Burley"
+- 24012050 DONG8
+    tax.24012050 [65 ký tự]: 24012050 - - Loại khác, được sấy bằng không khí nóng (flue-cured)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được sấy" · [GIỚI HẠN] "bằng không khí nóng (flue-cured)"
+- 24012090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.24012090 [22 ký tự]: 24012090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.240120; chú giải: nhom2401.nhom, ch24.chuong, phan24.phan
+
+=== GÓI PN6 240220 ===
+# 240220 — Thuốc lá điếu có chứa lá thuốc lá
+
+240220 — Cigarettes; containing tobacco
+  24022010 Thuốc lá Bi-đi (Beedies) (SEN)
+  24022020 Thuốc lá điếu, có chứa thành phần từ đinh hương (SEN)
+  24022090 Loại khác  [LK]
+
+- 24022010 DONG8
+    tax.24022010 [43 ký tự]: 24022010 - - Thuốc lá Bi-đi (Beedies) (SEN)
+    sen.24022010 [164 ký tự]: THUỐC LÁ BI-ĐI (BEEDIES) Thuốc lá Bi-đi gồm thuốc lá khô cuộn thành điếu, được bọc trong lá tendu dại và buộc bằng dây. Thường được bán trong các gói có 20-25 điếu.
+- 24022020 DONG8
+    tax.24022020 [66 ký tự]: 24022020 - - Thuốc lá điếu, có chứa thành phần từ đinh hương (SEN)
+    sen.24022020 [364 ký tự]: THUỐC LÁ ĐIẾU, CÓ CHỨA THÀNH PHẦN TỪ ĐINH HƯƠNG Thuốc lá điếu có chứa thành phần từ đinh hương (thường được gọi là “Kretek”) là loại thuốc lá được làm bằng sự pha trộn lá thuốc lá với đinh hương và hương liệu. Thành phần đặc biệt trong loại thuốc lá này là nụ đinh hương phơi khô thái nhỏ được thêm vào lá thuốc lá trộn và sau đó được xử lý bằng máy hoặc bằng tay.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chứa thành phần từ đinh hương"
+- 24022090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.24022090 [22 ký tự]: 24022090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.240220; chú giải: nhom2402.nhom, ch24.chuong, phan24.phan
+
+=== GÓI PN6 240311 ===
+# 240311 — Thuốc lá sử dụng tẩu nước đã được chi tiết ở Chú giải phân nhóm 1 Chương này
+
+240311 — Tobacco; smoking, water pipe tobacco as specified in Subheading Note 1 to this Chapter, whether or not containing tobacco substitutes in any proportion
+  24031110 Đã được đóng gói để bán lẻ
+  24031190 Loại khác  [LK]
+
+- 24031110 DONG8
+    tax.24031110 [41 ký tự]: 24031110 - - - Đã được đóng gói để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được đóng gói" · [GIỚI HẠN] "để bán lẻ"
+- 24031190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.24031190 [24 ký tự]: 24031190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.240311; chú giải: nhom2403.nhom, ch24.chuong, phan24.phan
+
+=== GÓI PN6 240391 ===
+# 240391 — Thuốc lá "thuần nhất" hoặc "hoàn nguyên"
+
+240391 — Tobacco; homogenised or reconstituted
+  24039110 Đã được đóng gói để bán lẻ
+  24039190 Loại khác  [LK]
+
+- 24039110 DONG8
+    tax.24039110 [41 ký tự]: 24039110 - - - Đã được đóng gói để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được đóng gói" · [GIỚI HẠN] "để bán lẻ"
+- 24039190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.24039190 [24 ký tự]: 24039190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.240391; chú giải: nhom2403.nhom, ch24.chuong, phan24.phan
+
+=== GÓI PN6 240412 ===
+# 240412 — Loại khác, chứa nicotin
+
+240412 — Products containing nicotine, other than tobacco or reconstituted tobacco, intended for inhalation without combustion
+  24041210 Dạng lỏng hoặc gel dùng cho thuốc lá điện tử (SEN)
+  24041290 Loại khác  [LK]
+
+- 24041210 DONG8
+    tax.24041210 [70 ký tự]: 24041210 - - - Dạng lỏng hoặc gel dùng cho thuốc lá điện tử (SEN)
+    sen.24041210 [1200 ký tự]: DẠNG LỎNG HOẶC GEL DÙNG CHO THUỐC LÁ ĐIỆN TỬ Dạng lỏng hoặc gel dùng cho thuốc lá điện tử là chất lỏng hoặc gel có hương vị được sử dụng trong thuốc lá điện tử. Nó thường được tạo thành từ các thành phần khác nhau như nicotine, propylene glycol và nước. Đôi khi được gọi là e-juice hoặc vape juice, chất lỏng hoặc gel dùng cho thuốc lá điện tử thường có sẵn với các nồng độ nicotine khác nhau. Có rất nhiều sự thay đổi trong các công thức chất lỏng hoặc gel dùng cho thuốc lá điện tử do tốc độ phát triển nhanh và những thay đổi trong thiết kế sản xuất thuốc lá điện tử. Thành phần của chất lỏng hoặc gel dùng cho thuốc lá điện tử cho các chất phụ gia như nicotine và các hương liệu có sự khác nhau giữa các nhãn hiệu và trong mỗi nhãn hiệu. Chất lỏng hoặc gel dùng cho thuốc lá điện tử có nhiều dạng, bao gồm các nồng độ nicotine khác nhau và nhiều hương vị khác nhau. Các thành phần chính là propylene glycol, glycerin, và hương liệu; và thông thường là nicotine ở dạng lỏng. Chất lỏng thường bao gồm tổng cộng 95% là propylene glycol và glycerin, và 5% còn lại là hương liệu, nicotine và các chất phụ gia khác. Chất mang hóa học được sử dụng thường xuyên nhất là propylene glycol, có hoặc không 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho thuốc lá điện tử"
+- 24041290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.24041290 [24 ký tự]: 24041290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.240412; chú giải: nhom2404.nhom, ch24.chuong, phan24.phan
+
+=== GÓI PN6 240491 ===
+# 240491 — Loại dùng qua đường miệng
+
+240491 — Products n.e.c. in heading 2404, intended for the intake of nicotine into the human body, for oral application
+  24049110 Kẹo cao su có nicotin (SEN)
+  24049190 Loại khác  [LK]
+
+- 24049110 DONG8
+    tax.24049110 [44 ký tự]: 24049110 - - - Kẹo cao su có nicotin (SEN)
+    sen.24049110 [714 ký tự]: KẸO CAO SU CÓ NICOTIN Kẹo cao su có nicotin là một loại kẹo cao su cung cấp nicotin cho cơ thể. Nó được sử dụng như một chất hỗ trợ trong liệu pháp thay thế nicotin (NRT), một quy trình để cai thuốc lá và bỏ thuốc lá không khói. Nicotin được đưa vào máu thông qua sự hấp thụ của các mô trong miệng. Các miếng thường có sẵn trong các gói giấy bạc riêng lẻ và có nhiều hương vị khác nhau. Hàm lượng nicotin thường là 2 hoặc 4 mg nicotin, gần bằng hàm lượng nicotin trong 1/6 đến 1/3 điếu thuốc, với hàm lượng và liều lượng phù hợp tùy theo thói quen hút thuốc của người dùng. Các sản phẩm thay thế nicotin khác bao gồm miếng dán nicotin, viên ngậm nicotin và ống hít nicotin. Ảnh 1. Ví dụ của kẹo cao su có nicotin
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có nicotin"
+- 24049190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.24049190 [24 ký tự]: 24049190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.240491; chú giải: nhom2404.nhom, ch24.chuong, phan24.phan

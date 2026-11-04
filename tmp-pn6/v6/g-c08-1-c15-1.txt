@@ -1,0 +1,956 @@
+Số hoá ranh giới cho 43 phân nhóm 6 số (080310 080510 081350 090122 090210 090220 090230 090240 090961 090962 100590 100610 100640 110290 110319 110419 110429 110620 110819 120740 121293 130190 130211 130239 150290 150300 150410 150420 150790 150920 150990 151090 151190 151219 151229 151319 151419 151499 151529 151530 151550 151620 151710). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 080310 ===
+# 080310 — Chuối lá
+
+080310 — Fruit, edible; plantains, fresh or dried
+  08031010 Tươi
+  08031020 Khô
+
+- 08031010 DONG8
+    tax.08031010 [17 ký tự]: 08031010 - - Tươi
+- 08031020 DONG8
+    tax.08031020 [16 ký tự]: 08031020 - - Khô
+
+Nguồn cấp phân nhóm: wco.080310; chú giải: nhom0803.nhom, ch08.chuong, phan08.phan
+
+=== GÓI PN6 080510 ===
+# 080510 — Quả cam
+
+080510 — Fruit, edible; oranges, fresh or dried
+  08051010 Tươi
+  08051020 Khô
+
+- 08051010 DONG8
+    tax.08051010 [17 ký tự]: 08051010 - - Tươi
+- 08051020 DONG8
+    tax.08051020 [16 ký tự]: 08051020 - - Khô
+
+Nguồn cấp phân nhóm: wco.080510; chú giải: nhom0805.nhom, ch08.chuong, phan08.phan
+
+=== GÓI PN6 081350 ===
+# 081350 — Hỗn hợp các loại quả hạch (nuts) hoặc quả khô thuộc Chương này
+
+081350 — Nuts, edible; mixtures of nuts or dried fruits of chapter 08
+  08135010 Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+  08135020 Quả hạch (nuts) khác chiếm đa số về khối lượng
+  08135030 Quả chà là chiếm đa số về khối lượng
+  08135040 Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+  08135090 Loại khác  [LK]
+
+- 08135010 DONG8
+    tax.08135010 [82 ký tự]: 08135010 - - Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+- 08135020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.08135020 [59 ký tự]: 08135020 - - Quả hạch (nuts) khác chiếm đa số về khối lượng
+- 08135030 DONG8
+    tax.08135030 [49 ký tự]: 08135030 - - Quả chà là chiếm đa số về khối lượng
+- 08135040 DONG8
+    tax.08135040 [94 ký tự]: 08135040 - - Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+- 08135090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.08135090 [22 ký tự]: 08135090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.081350; chú giải: nhom0813.nhom, ch08.chuong, phan08.phan
+=== GÓI PN6 090122 ===
+# 090122 — Đã khử chất caffeine
+
+090122 — Coffee; roasted, decaffeinated
+  09012210 Chưa xay
+  09012220 Đã xay
+
+- 09012210 DONG8
+    tax.09012210 [23 ký tự]: 09012210 - - - Chưa xay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa xay"
+- 09012220 DONG8
+    tax.09012220 [21 ký tự]: 09012220 - - - Đã xay
+
+Nguồn cấp phân nhóm: wco.090122; chú giải: nhom0901.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090210 ===
+# 090210 — Chè xanh (chưa ủ men) đóng gói sẵn trọng lượng không quá 3 kg
+
+090210 — Tea, green; (not fermented), in immediate packings of a content not exceeding 3kg
+  09021010 Lá chè
+  09021090 Loại khác  [LK]
+
+- 09021010 DONG8
+    tax.09021010 [19 ký tự]: 09021010 - - Lá chè
+- 09021090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09021090 [22 ký tự]: 09021090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090210; chú giải: nhom0902.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090220 ===
+# 090220 — Chè xanh khác (chưa ủ men)
+
+090220 — Tea, green; (not fermented), in immediate packings of a content exceeding 3kg
+  09022010 Lá chè
+  09022090 Loại khác  [LK]
+
+- 09022010 DONG8
+    tax.09022010 [19 ký tự]: 09022010 - - Lá chè
+- 09022090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09022090 [22 ký tự]: 09022090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090220; chú giải: nhom0902.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090230 ===
+# 090230 — Chè đen (đã ủ men) và chè đã ủ men một phần, đóng gói sẵn trọng lượng không quá 3kg
+
+090230 — Tea, black; (fermented) and partly fermented tea, in immediate packings of a content not exceeding 3kg
+  09023010 Lá chè
+  09023090 Loại khác  [LK]
+
+- 09023010 DONG8
+    tax.09023010 [19 ký tự]: 09023010 - - Lá chè
+- 09023090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09023090 [22 ký tự]: 09023090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090230; chú giải: nhom0902.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090240 ===
+# 090240 — Chè đen khác (đã ủ men) và chè khác đã ủ men một phần
+
+090240 — Tea, black; (fermented) and partly fermented tea, in immediate packings of a content exceeding 3kg
+  09024010 Lá chè
+  09024090 Loại khác  [LK]
+
+- 09024010 DONG8
+    tax.09024010 [19 ký tự]: 09024010 - - Lá chè
+- 09024090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09024090 [22 ký tự]: 09024090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090240; chú giải: nhom0902.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090961 ===
+# 090961 — Chưa xay hoặc chưa nghiền
+
+090961 — Spices; seeds of anise, badian, caraway or fennel; juniper berries, neither crushed nor ground
+  09096110 Của hoa hồi anise (tiểu hồi)
+  09096120 Của hoa hồi badian (đại hồi)
+  09096130 Của cây ca-rum (caraway)
+  09096190 Loại khác  [LK]
+
+- 09096110 DONG8
+    tax.09096110 [43 ký tự]: 09096110 - - - Của hoa hồi anise (tiểu hồi)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hoa hồi anise (tiểu hồi)"
+- 09096120 DONG8
+    tax.09096120 [43 ký tự]: 09096120 - - - Của hoa hồi badian (đại hồi)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hoa hồi badian (đại hồi)"
+- 09096130 DONG8
+    tax.09096130 [39 ký tự]: 09096130 - - - Của cây ca-rum (caraway)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cây ca-rum (caraway)"
+- 09096190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09096190 [24 ký tự]: 09096190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090961; chú giải: nhom0909.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090962 ===
+# 090962 — Đã xay hoặc nghiền
+
+090962 — Spices; seeds of anise, badian, caraway or fennel; juniper berries, crushed or ground
+  09096210 Của hoa hồi anise (tiểu hồi)
+  09096220 Của hoa hồi badian (đại hồi)
+  09096230 Của cây ca-rum (caraway)
+  09096290 Loại khác  [LK]
+
+- 09096210 DONG8
+    tax.09096210 [43 ký tự]: 09096210 - - - Của hoa hồi anise (tiểu hồi)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hoa hồi anise (tiểu hồi)"
+- 09096220 DONG8
+    tax.09096220 [43 ký tự]: 09096220 - - - Của hoa hồi badian (đại hồi)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hoa hồi badian (đại hồi)"
+- 09096230 DONG8
+    tax.09096230 [39 ký tự]: 09096230 - - - Của cây ca-rum (caraway)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cây ca-rum (caraway)"
+- 09096290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09096290 [24 ký tự]: 09096290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090962; chú giải: nhom0909.nhom, ch09.chuong, phan09.phan
+=== GÓI PN6 100590 ===
+# 100590 — Loại khác
+
+100590 — Cereals; maize (corn), other than seed
+  10059010 Loại dùng để rang nổ (popcorn) (SEN)
+  [1005909] Loại khác
+    10059091 Thích hợp sử dụng cho người (SEN)
+    10059099 Loại khác  [LK]
+
+- 10059010 DONG8
+    tax.10059010 [49 ký tự]: 10059010 - - Loại dùng để rang nổ (popcorn) (SEN)
+    sen.10059010 [483 ký tự]: NGÔ LOẠI DÙNG ĐỂ RANG NỔ (POPCORN) Ngô loại dùng để rang nổ (popcorn) còn được gọi là ngô rang nổ, là loại ngô (ngô, Zea mays var. Everta) nở ra từ nhân và phồng lên khi bị làm nóng. Popcorn có khả năng nổ bởi vì, giống như hạt dền, lúa miến, hạt diệm mạch (quinoa) và hạt kê, nhân hạt ngô có một lớp vỏ kín, ẩm, cứng và đầy tinh bột. Áp lực tạo ra bên trong hạt ngô làm nên một tiếng nổ nhỏ (hoặc "pop"). Một số loại ngô đang được canh tác chỉ sử dụng làm ngô rang nổ. Ngô loại (P
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để rang nổ (popcorn)"
+- 1005909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.1005909 [17 ký tự]: 1005909 Loại khác
+- 10059091 DONG8
+    tax.10059091 [48 ký tự]: 10059091 - - - Thích hợp sử dụng cho người (SEN)
+    sen.10059091 [246 ký tự]: NGÔ, THÍCH HỢP SỬ DỤNG CHO NGƯỜI Ngô thích hợp sử dụng cho con người là loại ngô sạch, tốt cho sức khỏe và được các cơ quan có thẩm quyền của quốc gia chứng nhận. Loại ngô này thường có hàm lượng aflatoxin tối đa là 20 ppb và độ ẩm không quá 14%.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Thích hợp sử dụng cho người"
+- 10059099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.10059099 [24 ký tự]: 10059099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.100590; chú giải: nhom1005.nhom, ch10.chuong, phan10.phan
+
+=== GÓI PN6 100610 ===
+# 100610 — Thóc
+
+100610 — Cereals; rice in the husk (paddy or rough)
+  10061010 Phù hợp để gieo trồng
+  10061090 Loại khác  [LK]
+
+- 10061010 DONG8
+    tax.10061010 [34 ký tự]: 10061010 - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 10061090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.10061090 [22 ký tự]: 10061090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.100610; chú giải: nhom1006.nhom, ch10.chuong, phan10.phan
+
+=== GÓI PN6 100640 ===
+# 100640 — Tấm
+
+100640 — Cereals; rice, broken
+  10064010 Loại dùng làm thức ăn chăn nuôi (SEN)
+  10064090 Loại khác (SEN)  [LK]
+
+- 10064010 DONG8
+    tax.10064010 [50 ký tự]: 10064010 - - Loại dùng làm thức ăn chăn nuôi (SEN)
+    sen.10064010 [1012 ký tự]: TẤM Tấm là một sản phẩm phụ của ngành công nghiệp xay xát gạo. Về giá trị dinh dưỡng, tấm tốt như gạo nguyên hạt. Tuy nhiên, gạo tấm có giá trị kinh tế thấp hơn gạo nguyên hạt. Tấm, dùng làm thức ăn chăn nuôi Nhìn chung, tấm có chất lượng thấp vì trong đó có vỏ trấu, cám, đá mạt, đá và các hạt đất sét. Tấm có thể được bán để làm thức chăn nuôi. Về hình thức, tấm làm thức ăn chăn nuôi dễ dàng được nhận biết nhờ hình dạng của nó, dựa trên hàm lượng hỗn hợp của gạo tấm đã đánh bóng (màu trắng), cám, trấu (màu nâu) và đá mạt, đá và các hạt đất sét (màu đen). Theo mục đích phân loại của AHTN, sản phẩm này được phân loại là tấm sử dụng làm thức ăn chăn nuôi thuộc phân nhóm 1006.40.10. Chất lượng của tấm có thể được cải thiện bằng cách xay xát lại để tách tấm đã được đánh bóng khỏi trấu, cám và các tạp chất khác. Sau đó có thể được bán để sử dụng cho người. Tấm phù hợp sử dụng cho con người Theo mục đích phân loại của AHTN, sản phẩm này được phân loại thành tấm loại khác thuộc phân nhóm 1006.40.90.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng làm thức ăn chăn nuôi"
+- 10064090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.10064090 [28 ký tự]: 10064090 - - Loại khác (SEN)
+    sen.10064090 [1012 ký tự]: TẤM Tấm là một sản phẩm phụ của ngành công nghiệp xay xát gạo. Về giá trị dinh dưỡng, tấm tốt như gạo nguyên hạt. Tuy nhiên, gạo tấm có giá trị kinh tế thấp hơn gạo nguyên hạt. Tấm, dùng làm thức ăn chăn nuôi Nhìn chung, tấm có chất lượng thấp vì trong đó có vỏ trấu, cám, đá mạt, đá và các hạt đất sét. Tấm có thể được bán để làm thức chăn nuôi. Về hình thức, tấm làm thức ăn chăn nuôi dễ dàng được nhận biết nhờ hình dạng của nó, dựa trên hàm lượng hỗn hợp của gạo tấm đã đánh bóng (màu trắng), cám, trấu (màu nâu) và đá mạt, đá và các hạt đất sét (màu đen). Theo mục đích phân loại của AHTN, sản phẩm này được phân loại là tấm sử dụng làm thức ăn chăn nuôi thuộc phân nhóm 1006.40.10. Chất lượng của tấm có thể được cải thiện bằng cách xay xát lại để tách tấm đã được đánh bóng khỏi trấu, cám và các tạp chất khác. Sau đó có thể được bán để sử dụng cho người. Tấm phù hợp sử dụng cho con người Theo mục đích phân loại của AHTN, sản phẩm này được phân loại thành tấm loại khác thuộc phân nhóm 1006.40.90.
+
+Nguồn cấp phân nhóm: wco.100640; chú giải: nhom1006.nhom, ch10.chuong, phan10.phan
+=== GÓI PN6 110290 ===
+# 110290 — Loại khác
+
+110290 — Cereal flours; other than wheat, meslin, and maize (corn)
+  11029010 Bột gạo
+  11029020 Bột lúa mạch đen
+  11029090 Loại khác  [LK]
+
+- 11029010 DONG8
+    tax.11029010 [20 ký tự]: 11029010 - - Bột gạo
+- 11029020 DONG8
+    tax.11029020 [29 ký tự]: 11029020 - - Bột lúa mạch đen
+- 11029090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11029090 [22 ký tự]: 11029090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110290; chú giải: nhom1102.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110319 ===
+# 110319 — Của ngũ cốc khác
+
+110319 — Cereal groats and meal; n.e.c. in heading no. 1103
+  11031910 Của meslin
+  11031920 Của gạo
+  11031990 Loại khác  [LK]
+
+- 11031910 DONG8
+    tax.11031910 [25 ký tự]: 11031910 - - - Của meslin
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của meslin"
+- 11031920 DONG8
+    tax.11031920 [22 ký tự]: 11031920 - - - Của gạo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của gạo"
+- 11031990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11031990 [24 ký tự]: 11031990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110319; chú giải: nhom1103.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110419 ===
+# 110419 — Của ngũ cốc khác
+
+110419 — Cereal grains; rolled or flaked, other than oats
+  11041910 Của ngô
+  11041990 Loại khác  [LK]
+
+- 11041910 DONG8
+    tax.11041910 [22 ký tự]: 11041910 - - - Của ngô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ngô"
+- 11041990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11041990 [24 ký tự]: 11041990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110419; chú giải: nhom1104.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110429 ===
+# 110429 — Của ngũ cốc khác
+
+110429 — Cereal grains; worked, other than rolled or flaked (e.g. Hulled, pearled, sliced or kibbled) of cereals, excluding oats and maize, and rice of heading no.1006
+  11042920 Của lúa mạch
+  11042990 Loại khác  [LK]
+
+- 11042920 DONG8
+    tax.11042920 [27 ký tự]: 11042920 - - - Của lúa mạch
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lúa mạch"
+- 11042990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11042990 [24 ký tự]: 11042990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110429; chú giải: nhom1104.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110620 ===
+# 110620 — Từ cọ sago hoặc từ rễ hoặc thân củ thuộc nhóm 07.14
+
+110620 — Flour, meal and powder; of sago or of roots or tubers of heading no. 0714
+  11062010 Từ sắn
+  11062020 Từ cọ sago
+  11062090 Loại khác  [LK]
+
+- 11062010 DONG8
+    tax.11062010 [19 ký tự]: 11062010 - - Từ sắn
+- 11062020 DONG8
+    tax.11062020 [23 ký tự]: 11062020 - - Từ cọ sago
+- 11062090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11062090 [22 ký tự]: 11062090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110620; chú giải: nhom1106.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110819 ===
+# 110819 — Tinh bột khác
+
+110819 — Starch; n.e.c. in item no. 1108.11 to 1108.14
+  11081910 Tinh bột cọ sago
+  11081990 Loại khác  [LK]
+
+- 11081910 DONG8
+    tax.11081910 [31 ký tự]: 11081910 - - - Tinh bột cọ sago
+- 11081990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11081990 [24 ký tự]: 11081990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110819; chú giải: nhom1108.nhom, ch11.chuong, phan11.phan
+=== GÓI PN6 120740 ===
+# 120740 — Hạt vừng
+
+120740 — Oil seeds; sesamum seeds, whether or not broken
+  12074010 Loại ăn được
+  12074090 Loại khác  [LK]
+
+- 12074010 DONG8
+    tax.12074010 [25 ký tự]: 12074010 - - Loại ăn được
+    vế phải phủ (cổng 5): [GIỚI HẠN] "ăn được"
+- 12074090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.12074090 [22 ký tự]: 12074090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.120740; chú giải: nhom1207.nhom, ch12.chuong, phan12.phan
+
+=== GÓI PN6 121293 ===
+# 121293 — Mía đường
+
+121293 — Sugar cane; fit for human consumption, fresh, chilled, frozen or dried, whether or not ground
+  12129310 Phù hợp để làm giống
+  12129390 Loại khác  [LK]
+
+- 12129310 DONG8
+    tax.12129310 [35 ký tự]: 12129310 - - - Phù hợp để làm giống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để làm giống"
+- 12129390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.12129390 [24 ký tự]: 12129390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.121293; chú giải: nhom1212.nhom, ch12.chuong, phan12.phan
+=== GÓI PN6 130190 ===
+# 130190 — Loại khác
+
+130190 — Natural gums, resins, gum-resins and oleoresins, n.e.c. in heading no. 1301
+  13019030 Nhựa cây gai dầu
+  13019040 Nhựa cánh kiến đỏ
+  13019090 Loại khác  [LK]
+
+- 13019030 DONG8
+    tax.13019030 [29 ký tự]: 13019030 - - Nhựa cây gai dầu
+- 13019040 DONG8
+    tax.13019040 [30 ký tự]: 13019040 - - Nhựa cánh kiến đỏ
+- 13019090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.13019090 [22 ký tự]: 13019090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.130190; chú giải: nhom1301.nhom, ch13.chuong, phan13.phan
+
+=== GÓI PN6 130211 ===
+# 130211 — Thuốc phiện
+
+130211 — Vegetable saps and extracts; opium
+  13021110 Bột thuốc phiện (Pulvis opii)
+  13021190 Loại khác  [LK]
+
+- 13021110 DONG8
+    tax.13021110 [44 ký tự]: 13021110 - - - Bột thuốc phiện (Pulvis opii)
+- 13021190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.13021190 [24 ký tự]: 13021190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.130211; chú giải: nhom1302.nhom, ch13.chuong, phan13.phan
+
+=== GÓI PN6 130239 ===
+# 130239 — Loại khác
+
+130239 — Mucilages and thickeners; whether or not modified, derived from vegetable products, n.e.c. in item no. 1302.3
+  [1302391] Làm từ tảo carrageen (carrageenan)
+    13023911 Dạng bột, tinh chế một phần (SEN)
+    13023912 Dạng bột, đã tinh chế (SEN)
+    13023913 Carrageen dạng mảnh đã xử lý kiềm (ATCC) (SEN)
+    13023919 Loại khác  [LK]
+  13023990 Loại khác  [LK]
+
+- 1302391 TIEU_DE
+    tieuDe.1302391 [42 ký tự]: 1302391 Làm từ tảo carrageen (carrageenan)
+- 13023911 DONG8
+    tax.13023911 [50 ký tự]: 13023911 - - - - Dạng bột, tinh chế một phần (SEN)
+    sen.13023911 [401 ký tự]: CARRAGEENAN DẠNG BỘT ĐÃ TINH CHẾ VÀ TINH CHÊ MỘT PHẦN Ảnh 1. Carrageenan dạng bột đã tinh chế (RC) và Carrageenan dạng bột tinh chế một phần (SRC) Ở dạng bột, RC màu trắng hơn SRC Ảnh 2: Carrageenan đã tinh chế (RC) và Carrageenan tinh chế một phần (SRC) Khi hòa tan với nước, RC trong hơn SRC Ảnh 3. Quy trình sản xuất Carrageenan tinh chế một phần Ảnh 4. Quá trình sản xuất Carrageenan đã tinh chế
+- 13023912 DONG8
+    tax.13023912 [44 ký tự]: 13023912 - - - - Dạng bột, đã tinh chế (SEN)
+    sen.13023912 [401 ký tự]: CARRAGEENAN DẠNG BỘT ĐÃ TINH CHẾ VÀ TINH CHÊ MỘT PHẦN Ảnh 1. Carrageenan dạng bột đã tinh chế (RC) và Carrageenan dạng bột tinh chế một phần (SRC) Ở dạng bột, RC màu trắng hơn SRC Ảnh 2: Carrageenan đã tinh chế (RC) và Carrageenan tinh chế một phần (SRC) Khi hòa tan với nước, RC trong hơn SRC Ảnh 3. Quy trình sản xuất Carrageenan tinh chế một phần Ảnh 4. Quá trình sản xuất Carrageenan đã tinh chế
+- 13023913 DONG8
+    tax.13023913 [63 ký tự]: 13023913 - - - - Carrageen dạng mảnh đã xử lý kiềm (ATCC) (SEN)
+    sen.13023913 [369 ký tự]: CARRAGEENAN DẠNG MẢNH ĐÃ XỬ LÝ KIỀM (ATCC) Carrageenan dạng mảnh đã xử lý kiềm là sản phẩm được làm từ rong biển, chủ yếu từ các loài Euchema cottoni, đã được xử lý kiềm để thay đổi cấu trúc của rong biển, và chiết xuất carrageenan, sau đó cắt nhỏ trước khi làm khô. Chips of alkali Ảnh 1. Các mảnh Carra Manufacturing Process of A Ảnh 2. Quá trình sản xuất carrage
+- 13023919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.13023919 [26 ký tự]: 13023919 - - - - Loại khác
+- 13023990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.13023990 [24 ký tự]: 13023990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.130239; chú giải: nhom1302.nhom, ch13.chuong, phan13.phan
+=== GÓI PN6 150290 ===
+# 150290 — Loại khác
+
+150290 — Fats of bovine animals, sheep or goats; excluding tallow, and other than those of heading 1503
+  15029010 Loại ăn được
+  15029090 Loại khác  [LK]
+
+- 15029010 DONG8
+    tax.15029010 [25 ký tự]: 15029010 - - Loại ăn được
+    vế phải phủ (cổng 5): [GIỚI HẠN] "ăn được"
+- 15029090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15029090 [22 ký tự]: 15029090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.150290; chú giải: nhom1502.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 150300 ===
+# 150300 — Stearin mỡ lợn, dầu mỡ lợn, oleostearin, dầu oleo và dầu tallow, chưa nhũ hoá hoặc chưa pha trộn hoặc chưa chế biến cách khác.
+
+NHÓM 1503 — Stearin mỡ lợn, dầu mỡ lợn, oleostearin, dầu oleo và dầu tallow, chưa nhũ hoá hoặc chưa pha trộn hoặc chưa chế biến cách khác.
+  15030010 Stearin mỡ lợn hoặc oleostearin
+  15030090 Loại khác  [LK]
+
+- 15030010 DONG8
+    tax.15030010 [42 ký tự]: 15030010 - Stearin mỡ lợn hoặc oleostearin
+- 15030090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15030090 [20 ký tự]: 15030090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.150300; chú giải: nhom1503.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 150410 ===
+# 150410 — Dầu gan cá và các phần phân đoạn của chúng
+
+150410 — Oils of fish; fish-liver oils and their fractions, whether or not refined, but not chemically modified
+  15041020 Các phần phân đoạn thể rắn
+  15041090 Loại khác  [LK]
+
+- 15041020 DONG8
+    tax.15041020 [39 ký tự]: 15041020 - - Các phần phân đoạn thể rắn
+- 15041090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15041090 [22 ký tự]: 15041090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.150410; chú giải: nhom1504.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 150420 ===
+# 150420 — Mỡ và dầu và các phần phân đoạn của chúng, từ cá, trừ dầu gan cá
+
+150420 — Fats and oils and their fractions; of fish, (excluding liver-oils)
+  15042010 Các phần phân đoạn thể rắn
+  15042090 Loại khác  [LK]
+
+- 15042010 DONG8
+    tax.15042010 [39 ký tự]: 15042010 - - Các phần phân đoạn thể rắn
+- 15042090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15042090 [22 ký tự]: 15042090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.150420; chú giải: nhom1504.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 150790 ===
+# 150790 — Loại khác
+
+150790 — Vegetable oils; soya-bean oil and its fractions, other than crude, whether or not refined, but not chemically modified
+  15079010 Các phần phân đoạn của dầu đậu tương chưa tinh chế
+  15079020 Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)
+  15079090 Loại khác  [LK]
+
+- 15079010 DONG8
+    tax.15079010 [63 ký tự]: 15079010 - - Các phần phân đoạn của dầu đậu tương chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu đậu tương chưa tinh chế"
+- 15079020 DONG8
+    tax.15079020 [60 ký tự]: 15079020 - - Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)
+- 15079090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15079090 [22 ký tự]: 15079090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.150790; chú giải: nhom1507.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 150920 ===
+# 150920 — Dầu ô liu nguyên chất đặc biệt (Extra virgin olive oil) (1)
+
+150920 — Vegetable oils; olive oil and its fractions, extra virgin olive oil, whether or not refined, but not chemically modified
+  15092010 Đóng gói với khối lượng tịnh không quá 30 kg
+  15092090 Loại khác  [LK]
+
+- 15092010 DONG8
+    tax.15092010 [57 ký tự]: 15092010 - - Đóng gói với khối lượng tịnh không quá 30 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh không quá 30 kg"
+- 15092090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15092090 [22 ký tự]: 15092090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.150920; chú giải: nhom1509.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 150990 ===
+# 150990 — Loại khác
+
+150990 — Vegetable oils; olive oil and its fractions, other than virgin, whether or not refined, but not chemically modified
+  [1509901] Các phần phân đoạn của dầu chưa tinh chế
+    15099011 Đóng gói với khối lượng tịnh không quá 30 kg
+    15099019 Loại khác  [LK]
+  [1509909] Loại khác
+    15099091 Đóng gói với khối lượng tịnh không quá 30 kg
+    15099099 Loại khác  [LK]
+
+- 1509901 TIEU_DE
+    tieuDe.1509901 [48 ký tự]: 1509901 Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15099011 DONG8
+    tax.15099011 [59 ký tự]: 15099011 - - - Đóng gói với khối lượng tịnh không quá 30 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh không quá 30 kg"
+- 15099019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15099019 [24 ký tự]: 15099019 - - - Loại khác
+- 1509909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.1509909 [17 ký tự]: 1509909 Loại khác
+- 15099091 DONG8
+    tax.15099091 [59 ký tự]: 15099091 - - - Đóng gói với khối lượng tịnh không quá 30 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh không quá 30 kg"
+- 15099099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15099099 [24 ký tự]: 15099099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.150990; chú giải: nhom1509.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151090 ===
+# 151090 — Loại khác
+
+151090 — Vegetable oils; oils and their fractions n.e.c. in heading 1510, obtained solely from olives, whether or not refined, but not chemically modified, including blends of these oils or fractions with oils or fractions of heading no. 1509
+  15109010 Dầu thô
+  15109020 Các phần phân đoạn của dầu chưa tinh chế
+  15109090 Loại khác  [LK]
+
+- 15109010 DONG8
+    tax.15109010 [20 ký tự]: 15109010 - - Dầu thô
+- 15109020 DONG8
+    tax.15109020 [53 ký tự]: 15109020 - - Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15109090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15109090 [22 ký tự]: 15109090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151090; chú giải: nhom1510.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151190 ===
+# 151190 — Loại khác
+
+151190 — Vegetable oils; palm oil and its fractions, other than crude, whether or not refined, but not chemically modified
+  15119020 Dầu tinh chế
+  [1511903] Các phần phân đoạn của dầu tinh chế
+    [151190~r1922] Các phần phân đoạn thể rắn  (tầng không mã, biểu thuế r1922, gạch 3)
+      15119031 Có chỉ số iốt từ 30 trở lên, nhưng dưới 40  (gạch 4)
+      15119032 Loại khác  [LK]  (gạch 4)
+    [151190~r1925] Các phần phân đoạn thể lỏng  (tầng không mã, biểu thuế r1925, gạch 3)
+      15119036 Đóng gói với khối lượng tịnh không quá 25kg  (gạch 4)
+      15119037 Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60  [LK có điều kiện]  (gạch 4)
+      15119039 Loại khác  [LK]  (gạch 4)
+  [1511904] Các phần phân đoạn của dầu chưa tinh chế
+    15119041 Các phần phân đoạn thể rắn (SEN)
+    15119042 Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)  [LK có điều kiện]
+    15119049 Loại khác (SEN)  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    151190~r1922 (gạch 3) "Các phần phân đoạn thể rắn:" — dòng dưới: 15119031, 15119032
+    151190~r1925 (gạch 3) "Các phần phân đoạn thể lỏng:" — dòng dưới: 15119036, 15119037, 15119039
+
+- 15119020 DONG8
+    tax.15119020 [25 ký tự]: 15119020 - - Dầu tinh chế
+- 1511903 TIEU_DE
+    tieuDe.1511903 [43 ký tự]: 1511903 Các phần phân đoạn của dầu tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu tinh chế"
+- 151190~r1922 TIEU_DE
+    tieuDe.151190~r1922 [39 ký tự]: 151190~r1922 Các phần phân đoạn thể rắn
+- 15119031 DONG8
+    tax.15119031 [59 ký tự]: 15119031 - - - - Có chỉ số iốt từ 30 trở lên, nhưng dưới 40
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chỉ số iốt từ 30 trở lên, nhưng dưới 40"
+- 15119032 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15119032 [26 ký tự]: 15119032 - - - - Loại khác
+- 151190~r1925 TIEU_DE
+    tieuDe.151190~r1925 [40 ký tự]: 151190~r1925 Các phần phân đoạn thể lỏng
+- 15119036 DONG8
+    tax.15119036 [60 ký tự]: 15119036 - - - - Đóng gói với khối lượng tịnh không quá 25kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh không quá 25kg"
+- 15119037 DONG8
+    tax.15119037 [70 ký tự]: 15119037 - - - - Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chỉ số iốt từ 55 trở lên, nhưng dưới 60"
+- 15119039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15119039 [26 ký tự]: 15119039 - - - - Loại khác
+- 1511904 TIEU_DE
+    tieuDe.1511904 [48 ký tự]: 1511904 Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15119041 DONG8
+    tax.15119041 [47 ký tự]: 15119041 - - - Các phần phân đoạn thể rắn (SEN)
+    sen.15119041 [287 ký tự]: CÁC PHẦN PHÂN ĐOẠN CỦA DẦU CỌ CHƯA TINH CHẾ Đây là các phần phân đoạn rắn hoặc lỏng thu được bằng cách phân đoạn dầu cọ thô bằng một số phương pháp công nghiệp, ví dụ kết tinh ở nhiệt độ được kiểm soát. Các phần phân đoạn này chưa qua chế biến để cải thiện các đặc tính vật lý của chúng.
+- 15119042 DONG8
+    tax.15119042 [75 ký tự]: 15119042 - - - Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)
+    sen.15119042 [287 ký tự]: CÁC PHẦN PHÂN ĐOẠN CỦA DẦU CỌ CHƯA TINH CHẾ Đây là các phần phân đoạn rắn hoặc lỏng thu được bằng cách phân đoạn dầu cọ thô bằng một số phương pháp công nghiệp, ví dụ kết tinh ở nhiệt độ được kiểm soát. Các phần phân đoạn này chưa qua chế biến để cải thiện các đặc tính vật lý của chúng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh không quá 25kg"
+- 15119049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15119049 [30 ký tự]: 15119049 - - - Loại khác (SEN)
+    sen.15119049 [287 ký tự]: CÁC PHẦN PHÂN ĐOẠN CỦA DẦU CỌ CHƯA TINH CHẾ Đây là các phần phân đoạn rắn hoặc lỏng thu được bằng cách phân đoạn dầu cọ thô bằng một số phương pháp công nghiệp, ví dụ kết tinh ở nhiệt độ được kiểm soát. Các phần phân đoạn này chưa qua chế biến để cải thiện các đặc tính vật lý của chúng.
+
+Nguồn cấp phân nhóm: sen.1511, wco.151190; chú giải: nhom1511.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151219 ===
+# 151219 — Loại khác
+
+151219 — Vegetable oils; sunflower seed or safflower oil and their fractions, other than crude, whether or not refined, but not chemically modified
+  15121910 Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế
+  15121920 Đã tinh chế
+  15121990 Loại khác  [LK]
+
+- 15121910 DONG8
+    tax.15121910 [85 ký tự]: 15121910 - - - Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu hướng dương hoặc dầu cây rum chưa tinh chế"
+- 15121920 DONG8
+    tax.15121920 [26 ký tự]: 15121920 - - - Đã tinh chế
+- 15121990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15121990 [24 ký tự]: 15121990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151219; chú giải: nhom1512.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151229 ===
+# 151229 — Loại khác
+
+151229 — Vegetable oils; cotton-seed oil and its fractions, other than crude, whether or not refined, but not chemically modified
+  15122910 Các phần phân đoạn của dầu hạt bông chưa tinh chế
+  15122990 Loại khác  [LK]
+
+- 15122910 DONG8
+    tax.15122910 [64 ký tự]: 15122910 - - - Các phần phân đoạn của dầu hạt bông chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu hạt bông chưa tinh chế"
+- 15122990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15122990 [24 ký tự]: 15122990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151229; chú giải: nhom1512.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151319 ===
+# 151319 — Loại khác
+
+151319 — Vegetable oils; coconut (copra) oil and its fractions, other than crude, whether or not refined, but not chemically modified
+  15131910 Các phần phân đoạn của dầu dừa chưa tinh chế
+  15131990 Loại khác  [LK]
+
+- 15131910 DONG8
+    tax.15131910 [59 ký tự]: 15131910 - - - Các phần phân đoạn của dầu dừa chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu dừa chưa tinh chế"
+- 15131990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15131990 [24 ký tự]: 15131990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151319; chú giải: nhom1513.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151419 ===
+# 151419 — Loại khác
+
+151419 — Vegetable oils; low erucic acid rape or colza oil and its fractions, other than crude, but not chemically modified
+  15141910 Các phần phân đoạn của dầu chưa tinh chế
+  15141920 Đã tinh chế
+  15141990 Loại khác  [LK]
+
+- 15141910 DONG8
+    tax.15141910 [55 ký tự]: 15141910 - - - Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15141920 DONG8
+    tax.15141920 [26 ký tự]: 15141920 - - - Đã tinh chế
+- 15141990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15141990 [24 ký tự]: 15141990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151419; chú giải: nhom1514.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151499 ===
+# 151499 — Loại khác
+
+151499 — Vegetable oils; excluding low erucic acid rape or colza oil and its fractions, other than crude, but not chemically modified
+  15149910 Các phần phân đoạn của dầu chưa tinh chế
+  15149990 Loại khác  [LK]
+
+- 15149910 DONG8
+    tax.15149910 [55 ký tự]: 15149910 - - - Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15149990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15149990 [24 ký tự]: 15149990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151499; chú giải: nhom1514.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151529 ===
+# 151529 — Loại khác
+
+151529 — Vegetable oils; maize (corn) oil and its fractions, other than crude, whether or not refined, but not chemically modified
+  [1515291] Các phần phân đoạn của dầu chưa tinh chế
+    15152911 Các phần phân đoạn thể rắn
+    15152919 Loại khác  [LK]
+  [1515299] Loại khác
+    15152991 Các phần phân đoạn thể rắn
+    15152999 Loại khác  [LK]
+
+- 1515291 TIEU_DE
+    tieuDe.1515291 [48 ký tự]: 1515291 Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15152911 DONG8
+    tax.15152911 [43 ký tự]: 15152911 - - - - Các phần phân đoạn thể rắn
+- 15152919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15152919 [26 ký tự]: 15152919 - - - - Loại khác
+- 1515299 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.1515299 [17 ký tự]: 1515299 Loại khác
+- 15152991 DONG8
+    tax.15152991 [43 ký tự]: 15152991 - - - - Các phần phân đoạn thể rắn
+- 15152999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15152999 [26 ký tự]: 15152999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151529; chú giải: nhom1515.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151530 ===
+# 151530 — Dầu thầu dầu và các phần phân đoạn của dầu thầu dầu
+
+151530 — Vegetable oils; castor oil and its fractions, whether or not refined, but not chemically modified
+  15153010 Dầu thô
+  15153090 Loại khác  [LK]
+
+- 15153010 DONG8
+    tax.15153010 [20 ký tự]: 15153010 - - Dầu thô
+- 15153090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15153090 [22 ký tự]: 15153090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151530; chú giải: nhom1515.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151550 ===
+# 151550 — Dầu hạt vừng và các phần phân đoạn của dầu hạt vừng
+
+151550 — Vegetable oils; sesame oil and its fractions, whether or not refined, but not chemically modified
+  15155010 Dầu thô
+  15155020 Các phần phân đoạn của dầu chưa tinh chế
+  15155090 Loại khác  [LK]
+
+- 15155010 DONG8
+    tax.15155010 [20 ký tự]: 15155010 - - Dầu thô
+- 15155020 DONG8
+    tax.15155020 [53 ký tự]: 15155020 - - Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15155090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15155090 [22 ký tự]: 15155090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151550; chú giải: nhom1515.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151620 ===
+# 151620 — Chất béo và dầu thực vật và các phần phân đoạn của chúng
+
+151620 — Vegetable fats and oils and their fractions; partly or wholly hydrogenated, inter-esterified, re-esterified or elaidinised, whether or not refined, but not further prepared
+  [1516201] Đã tái este hóa, trừ của cọ dầu
+    15162011 Của đậu tương
+    15162012 Của ngô (maize)
+    15162014 Của dừa
+    15162017 Của lạc
+    15162018 Của hạt lanh
+    15162019 Loại khác  [LK]
+  [1516202] Đã tái este hóa, của cọ dầu
+    15162021 Của quả cọ dầu, dạng thô
+    15162022 Của quả cọ dầu, trừ dạng thô
+    15162023 Của hạt cọ, dạng thô
+    15162024 Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+    15162025 Của olein hạt cọ, dạng thô
+    15162026 Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+    15162029 Loại khác  [LK]
+  [1516203] Đã qua hydro hóa, dạng vảy, mảnh
+    15162031 Của lạc; của dừa; của đậu tương
+    15162032 Của hạt lanh
+    15162033 Của ô liu
+    15162034 Của quả cọ dầu (SEN)
+    15162035 Của hạt cọ (SEN)
+    15162039 Loại khác  [LK]
+  [1516204] Đã qua hydro hóa, dạng khác
+    15162041 Của hạt thầu dầu (sáp opal)
+    15162042 Của dừa
+    15162043 Của lạc
+    15162044 Của hạt lanh
+    15162045 Của ô liu
+    15162046 Của quả cọ dầu (SEN)
+    15162047 Của hạt cọ (SEN)
+    15162048 Của đậu tương
+    15162049 Loại khác  [LK]
+  [1516205] Đã este hóa liên hợp
+    15162051 Của hạt lanh
+    15162052 Của ô liu
+    15162053 Của đậu tương
+    15162054 Của lạc, cọ dầu hoặc dừa
+    15162059 Loại khác  [LK]
+  [1516206] Elaiđin hóa, stearin cọ, có chỉ số iốt không quá 48
+    15162061 Dạng thô
+    15162062 Đã tinh chế, tẩy và khử mùi (RBD)
+    15162069 Loại khác  [LK]
+  [1516209] Elaiđin hóa, loại khác
+    15162091 Stearin cọ, có chỉ số iốt trên 48
+    15162092 Của hạt lanh
+    15162093 Của ô liu
+    15162094 Của đậu tương
+    15162096 Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)
+    15162098 Của lạc, của cọ dầu hoặc của dừa
+    15162099 Loại khác  [LK]
+
+- 1516201 TIEU_DE
+    tieuDe.1516201 [39 ký tự]: 1516201 Đã tái este hóa, trừ của cọ dầu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "trừ của cọ dầu"
+- 15162011 DONG8
+    tax.15162011 [28 ký tự]: 15162011 - - - Của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đậu tương"
+- 15162012 DONG8
+    tax.15162012 [30 ký tự]: 15162012 - - - Của ngô (maize)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ngô (maize)"
+- 15162014 DONG8
+    tax.15162014 [22 ký tự]: 15162014 - - - Của dừa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của dừa"
+- 15162017 DONG8
+    tax.15162017 [22 ký tự]: 15162017 - - - Của lạc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc"
+- 15162018 DONG8
+    tax.15162018 [27 ký tự]: 15162018 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162019 [24 ký tự]: 15162019 - - - Loại khác
+- 1516202 TIEU_DE
+    tieuDe.1516202 [35 ký tự]: 1516202 Đã tái este hóa, của cọ dầu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cọ dầu"
+- 15162021 DONG8
+    tax.15162021 [39 ký tự]: 15162021 - - - Của quả cọ dầu, dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của quả cọ dầu, dạng thô"
+- 15162022 DONG8
+    tax.15162022 [43 ký tự]: 15162022 - - - Của quả cọ dầu, trừ dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của quả cọ dầu" · [GIỚI HẠN] "trừ dạng thô"
+- 15162023 DONG8
+    tax.15162023 [35 ký tự]: 15162023 - - - Của hạt cọ, dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt cọ, dạng thô"
+- 15162024 DONG8
+    tax.15162024 [60 ký tự]: 15162024 - - - Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)"
+- 15162025 DONG8
+    tax.15162025 [41 ký tự]: 15162025 - - - Của olein hạt cọ, dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của olein hạt cọ, dạng thô"
+- 15162026 DONG8
+    tax.15162026 [67 ký tự]: 15162026 - - - Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)"
+- 15162029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162029 [24 ký tự]: 15162029 - - - Loại khác
+- 1516203 TIEU_DE
+    tieuDe.1516203 [40 ký tự]: 1516203 Đã qua hydro hóa, dạng vảy, mảnh
+- 15162031 DONG8
+    tax.15162031 [46 ký tự]: 15162031 - - - Của lạc; của dừa; của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc" · [GIỚI HẠN] "của dừa" · [GIỚI HẠN] "của đậu tương"
+- 15162032 DONG8
+    tax.15162032 [27 ký tự]: 15162032 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162033 DONG8
+    tax.15162033 [24 ký tự]: 15162033 - - - Của ô liu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ô liu"
+- 15162034 DONG8
+    tax.15162034 [35 ký tự]: 15162034 - - - Của quả cọ dầu (SEN)
+    sen.15162034 [404 ký tự]: CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU Chất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau: Sản phẩm Chỉ số iốt (IV), Wijs Dầu cọ đã hydro hóa Tối đa 46 Olein cọ đã hydro hóa Tối đa 50 Stearin cọ đã hydro hóa Tối đa 25 Dầu hạt cọ đã hydro hóa Tối đa 15 Olein hạt cọ đã hydro hóa Tối đa 15 Stearin hạt cọ đã hydro Tối đa 3 hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của quả cọ dầu"
+- 15162035 DONG8
+    tax.15162035 [31 ký tự]: 15162035 - - - Của hạt cọ (SEN)
+    sen.15162035 [404 ký tự]: CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU Chất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau: Sản phẩm Chỉ số iốt (IV), Wijs Dầu cọ đã hydro hóa Tối đa 46 Olein cọ đã hydro hóa Tối đa 50 Stearin cọ đã hydro hóa Tối đa 25 Dầu hạt cọ đã hydro hóa Tối đa 15 Olein hạt cọ đã hydro hóa Tối đa 15 Stearin hạt cọ đã hydro Tối đa 3 hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt cọ"
+- 15162039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162039 [24 ký tự]: 15162039 - - - Loại khác
+- 1516204 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.1516204 [35 ký tự]: 1516204 Đã qua hydro hóa, dạng khác
+- 15162041 DONG8
+    tax.15162041 [42 ký tự]: 15162041 - - - Của hạt thầu dầu (sáp opal)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt thầu dầu (sáp opal)"
+- 15162042 DONG8
+    tax.15162042 [22 ký tự]: 15162042 - - - Của dừa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của dừa"
+- 15162043 DONG8
+    tax.15162043 [22 ký tự]: 15162043 - - - Của lạc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc"
+- 15162044 DONG8
+    tax.15162044 [27 ký tự]: 15162044 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162045 DONG8
+    tax.15162045 [24 ký tự]: 15162045 - - - Của ô liu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ô liu"
+- 15162046 DONG8
+    tax.15162046 [35 ký tự]: 15162046 - - - Của quả cọ dầu (SEN)
+    sen.15162046 [404 ký tự]: CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU Chất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau: Sản phẩm Chỉ số iốt (IV), Wijs Dầu cọ đã hydro hóa Tối đa 46 Olein cọ đã hydro hóa Tối đa 50 Stearin cọ đã hydro hóa Tối đa 25 Dầu hạt cọ đã hydro hóa Tối đa 15 Olein hạt cọ đã hydro hóa Tối đa 15 Stearin hạt cọ đã hydro Tối đa 3 hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của quả cọ dầu"
+- 15162047 DONG8
+    tax.15162047 [31 ký tự]: 15162047 - - - Của hạt cọ (SEN)
+    sen.15162047 [404 ký tự]: CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU Chất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau: Sản phẩm Chỉ số iốt (IV), Wijs Dầu cọ đã hydro hóa Tối đa 46 Olein cọ đã hydro hóa Tối đa 50 Stearin cọ đã hydro hóa Tối đa 25 Dầu hạt cọ đã hydro hóa Tối đa 15 Olein hạt cọ đã hydro hóa Tối đa 15 Stearin hạt cọ đã hydro Tối đa 3 hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt cọ"
+- 15162048 DONG8
+    tax.15162048 [28 ký tự]: 15162048 - - - Của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đậu tương"
+- 15162049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162049 [24 ký tự]: 15162049 - - - Loại khác
+- 1516205 TIEU_DE
+    tieuDe.1516205 [28 ký tự]: 1516205 Đã este hóa liên hợp
+- 15162051 DONG8
+    tax.15162051 [27 ký tự]: 15162051 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162052 DONG8
+    tax.15162052 [24 ký tự]: 15162052 - - - Của ô liu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ô liu"
+- 15162053 DONG8
+    tax.15162053 [28 ký tự]: 15162053 - - - Của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đậu tương"
+- 15162054 DONG8
+    tax.15162054 [39 ký tự]: 15162054 - - - Của lạc, cọ dầu hoặc dừa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc, cọ dầu hoặc dừa"
+- 15162059 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162059 [24 ký tự]: 15162059 - - - Loại khác
+- 1516206 TIEU_DE
+    tieuDe.1516206 [59 ký tự]: 1516206 Elaiđin hóa, stearin cọ, có chỉ số iốt không quá 48
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chỉ số iốt không quá 48"
+- 15162061 DONG8
+    tax.15162061 [23 ký tự]: 15162061 - - - Dạng thô
+- 15162062 DONG8
+    tax.15162062 [48 ký tự]: 15162062 - - - Đã tinh chế, tẩy và khử mùi (RBD)
+- 15162069 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162069 [24 ký tự]: 15162069 - - - Loại khác
+- 1516209 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.1516209 [30 ký tự]: 1516209 Elaiđin hóa, loại khác
+- 15162091 DONG8
+    tax.15162091 [48 ký tự]: 15162091 - - - Stearin cọ, có chỉ số iốt trên 48
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chỉ số iốt trên 48"
+- 15162092 DONG8
+    tax.15162092 [27 ký tự]: 15162092 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162093 DONG8
+    tax.15162093 [24 ký tự]: 15162093 - - - Của ô liu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ô liu"
+- 15162094 DONG8
+    tax.15162094 [28 ký tự]: 15162094 - - - Của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đậu tương"
+- 15162096 DONG8
+    tax.15162096 [63 ký tự]: 15162096 - - - Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)
+- 15162098 DONG8
+    tax.15162098 [47 ký tự]: 15162098 - - - Của lạc, của cọ dầu hoặc của dừa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc, của cọ dầu hoặc của dừa"
+- 15162099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162099 [24 ký tự]: 15162099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151620; chú giải: nhom1516.nhom, ch15.chuong, phan15.phan
+
+=== GÓI PN6 151710 ===
+# 151710 — Margarin, trừ loại margarin lỏng
+
+151710 — Margarine; excluding liquid margarine
+  15171010 Đóng bao bì kín khí để bán lẻ
+  15171090 Loại khác  [LK]
+
+- 15171010 DONG8
+    tax.15171010 [42 ký tự]: 15171010 - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 15171090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15171090 [22 ký tự]: 15171090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151710; chú giải: nhom1517.nhom, ch15.chuong, phan15.phan

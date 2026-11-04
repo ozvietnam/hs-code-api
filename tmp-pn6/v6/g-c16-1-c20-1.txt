@@ -1,0 +1,630 @@
+Số hoá ranh giới cho 38 phân nhóm 6 số (160100 160210 160231 160232 160241 160242 160249 160250 160300 160411 160412 160413 160415 160416 160417 160419 160529 160554 160557 170310 170390 180620 190120 190410 190420 190540 200290 200490 200520 200559 200599 200820 200830 200860 200870 200893 200897 200981). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 160100 ===
+# 160100 — Xúc xích và các sản phẩm tương tự làm từ thịt, từ phụ phẩm dạng thịt sau giết mổ hoặc tiết; các chế phẩm thực phẩm từ các sản phẩm đó.
+
+NHÓM 1601 — Xúc xích và các sản phẩm tương tự làm từ thịt, từ phụ phẩm dạng thịt sau giết mổ hoặc tiết; các chế phẩm thực phẩm từ các sản phẩm đó.
+  16010010 Đóng bao bì kín khí để bán lẻ
+  16010090 Loại khác  [LK]
+
+- 16010010 DONG8
+    tax.16010010 [40 ký tự]: 16010010 - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16010090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16010090 [20 ký tự]: 16010090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.160100; chú giải: nhom1601.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160210 ===
+# 160210 — Chế phẩm đồng nhất
+
+160210 — Meat preparations; homogenised preparations of meat, meat offal blood or insects
+  16021010 Chứa thịt lợn, đóng bao bì kín khí để bán lẻ
+  16021090 Loại khác  [LK]
+
+- 16021010 DONG8
+    tax.16021010 [57 ký tự]: 16021010 - - Chứa thịt lợn, đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa thịt lợn, đóng bao bì kín khí" · [GIỚI HẠN] "để bán lẻ"
+- 16021090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16021090 [22 ký tự]: 16021090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160210; chú giải: nhom1602.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160231 ===
+# 160231 — Từ gà tây
+
+160231 — Meat preparations; of turkeys, prepared or preserved meat or meat offal (excluding livers and homogenised preparations)
+  16023110 Đóng bao bì kín khí để bán lẻ
+  [1602319] Loại khác
+    16023191 Từ thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+    16023199 Loại khác  [LK]
+
+- 16023110 DONG8
+    tax.16023110 [44 ký tự]: 16023110 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 1602319 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.1602319 [17 ký tự]: 1602319 Loại khác
+- 16023191 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.16023191 [87 ký tự]: 16023191 - - - - Từ thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+    sen.16023191 [118 ký tự]: THỊT ĐÃ ĐƯỢC LỌC HOẶC TÁCH KHỎI XƯƠNG BẰNG PHƯƠNG PHÁP CƠ HỌC Xem chú giải SEN của phân nhóm 0207.14.91 và 0207.27.91.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lọc hoặc tách khỏi xương" · [GIỚI HẠN] "bằng phương pháp cơ học"
+- 16023199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16023199 [26 ký tự]: 16023199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160231; chú giải: nhom1602.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160232 ===
+# 160232 — Từ gà thuộc loài Gallus domesticus
+
+160232 — Meat preparations; of the poultry of heading no. 0105, (i.e. of fowls of the species Gallus domesticus)
+  16023210 Ca-ri gà, đóng bao bì kín khí để bán lẻ
+  16023290 Loại khác  [LK]
+
+- 16023210 DONG8
+    tax.16023210 [55 ký tự]: 16023210 - - - Ca-ri gà, đóng bao bì kín khí để bán lẻ 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16023290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16023290 [24 ký tự]: 16023290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160232; chú giải: nhom1602.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160241 ===
+# 160241 — Thịt mông đùi (ham) và các mảnh của chúng
+
+160241 — Meat preparations; of swine, hams and cuts thereof, prepared or preserved (excluding homogenised preparations)
+  16024110 Đóng bao bì kín khí để bán lẻ
+  16024190 Loại khác  [LK]
+
+- 16024110 DONG8
+    tax.16024110 [44 ký tự]: 16024110 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16024190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16024190 [24 ký tự]: 16024190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160241; chú giải: nhom1602.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160242 ===
+# 160242 — Thịt vai nguyên miếng và các mảnh của chúng
+
+160242 — Meat preparations; of swine, shoulders and cuts thereof, prepared or preserved (excluding homogenised preparations)
+  16024210 Đóng bao bì kín khí để bán lẻ
+  16024290 Loại khác  [LK]
+
+- 16024210 DONG8
+    tax.16024210 [44 ký tự]: 16024210 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16024290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16024290 [24 ký tự]: 16024290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160242; chú giải: nhom1602.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160249 ===
+# 160249 — Loại khác, kể cả các hỗn hợp
+
+160249 — Meat preparations; of swine, meat or meat offal (including mixtures), prepared or preserved, n.e.c. in heading no. 1602
+  [1602491] Thịt nguội
+    16024911 Đóng bao bì kín khí để bán lẻ
+    16024919 Loại khác  [LK]
+  [1602499] Loại khác
+    16024991 Đóng bao bì kín khí để bán lẻ
+    16024999 Loại khác  [LK]
+
+- 1602491 TIEU_DE
+    tieuDe.1602491 [18 ký tự]: 1602491 Thịt nguội
+- 16024911 DONG8
+    tax.16024911 [46 ký tự]: 16024911 - - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16024919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16024919 [26 ký tự]: 16024919 - - - - Loại khác
+- 1602499 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.1602499 [17 ký tự]: 1602499 Loại khác
+- 16024991 DONG8
+    tax.16024991 [46 ký tự]: 16024991 - - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16024999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16024999 [26 ký tự]: 16024999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160249; chú giải: nhom1602.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160250 ===
+# 160250 — Từ động vật họ trâu bò
+
+160250 — Meat preparations; of bovine animals, meat or meat offal, prepared or preserved (excluding livers and homogenised preparations)
+  16025010 Đóng bao bì kín khí để bán lẻ
+  16025090 Loại khác  [LK]
+
+- 16025010 DONG8
+    tax.16025010 [42 ký tự]: 16025010 - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16025090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16025090 [22 ký tự]: 16025090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160250; chú giải: nhom1602.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160300 ===
+# 160300 — Sản phẩm chiết xuất và nước ép từ thịt, cá hoặc từ động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác.
+
+NHÓM 1603 — Sản phẩm chiết xuất và nước ép từ thịt, cá hoặc từ động vật giáp xác, động vật thân mềm hoặc động vật thuỷ sinh không xương sống khác.
+  16030010 Từ thịt
+  16030090 Loại khác  [LK]
+
+- 16030010 DONG8
+    tax.16030010 [18 ký tự]: 16030010 - Từ thịt
+- 16030090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16030090 [20 ký tự]: 16030090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.160300; chú giải: nhom1603.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160411 ===
+# 160411 — Từ cá hồi
+
+160411 — Fish preparations; salmon, prepared or preserved, whole or in pieces (but not minced)
+  16041110 Đóng bao bì kín khí để bán lẻ
+  16041190 Loại khác  [LK]
+
+- 16041110 DONG8
+    tax.16041110 [44 ký tự]: 16041110 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16041190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16041190 [24 ký tự]: 16041190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160411; chú giải: nhom1604.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160412 ===
+# 160412 — Từ cá trích nước lạnh
+
+160412 — Fish preparations; herrings, prepared or preserved, whole or in pieces (but not minced)
+  16041210 Đóng bao bì kín khí để bán lẻ
+  16041290 Loại khác  [LK]
+
+- 16041210 DONG8
+    tax.16041210 [44 ký tự]: 16041210 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16041290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16041290 [24 ký tự]: 16041290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160412; chú giải: nhom1604.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160413 ===
+# 160413 — Từ cá trích dầu, cá trích xương và cá trích kê hoặc cá trích cơm
+
+160413 — Fish preparations; sardines, sardinella and brisling or sprats, prepared or preserved, whole or in pieces (but not minced)
+  [1604131] Từ cá trích dầu
+    16041311 Đóng bao bì kín khí để bán lẻ
+    16041319 Loại khác  [LK]
+  [1604139] Loại khác
+    16041391 Đóng bao bì kín khí để bán lẻ
+    16041399 Loại khác  [LK]
+
+- 1604131 TIEU_DE
+    tieuDe.1604131 [23 ký tự]: 1604131 Từ cá trích dầu
+- 16041311 DONG8
+    tax.16041311 [46 ký tự]: 16041311 - - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16041319 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16041319 [26 ký tự]: 16041319 - - - - Loại khác
+- 1604139 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.1604139 [17 ký tự]: 1604139 Loại khác
+- 16041391 DONG8
+    tax.16041391 [46 ký tự]: 16041391 - - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16041399 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16041399 [26 ký tự]: 16041399 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160413; chú giải: nhom1604.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160415 ===
+# 160415 — Từ cá nục hoa
+
+160415 — Fish preparations; mackerel, prepared or preserved, whole or in pieces (but not minced)
+  16041510 Đóng bao bì kín khí để bán lẻ
+  16041590 Loại khác  [LK]
+
+- 16041510 DONG8
+    tax.16041510 [44 ký tự]: 16041510 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16041590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16041590 [24 ký tự]: 16041590 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160415; chú giải: nhom1604.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160416 ===
+# 160416 — Từ cá cơm (cá trỏng)
+
+160416 — Fish preparations; anchovies, prepared or preserved, whole or in pieces (but not minced)
+  16041610 Đóng bao bì kín khí để bán lẻ
+  16041690 Loại khác  [LK]
+
+- 16041610 DONG8
+    tax.16041610 [44 ký tự]: 16041610 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16041690 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16041690 [24 ký tự]: 16041690 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160416; chú giải: nhom1604.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160417 ===
+# 160417 — Cá chình
+
+160417 — Fish preparations; eels, prepared or preserved, whole or in pieces (but not minced)
+  16041710 Đóng bao bì kín khí để bán lẻ
+  16041790 Loại khác  [LK]
+
+- 16041710 DONG8
+    tax.16041710 [44 ký tự]: 16041710 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16041790 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16041790 [24 ký tự]: 16041790 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160417; chú giải: nhom1604.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160419 ===
+# 160419 — Loại khác
+
+160419 — Fish preparations; fish prepared or preserved, whole or in pieces (but not minced), n.e.c. in heading no. 1604
+  16041920 Cá sòng (horse mackerel), đóng bao bì kín khí để bán lẻ
+  16041930 Loại khác, đóng bao bì kín khí để bán lẻ  [LK có điều kiện]
+  16041990 Loại khác  [LK]
+
+- 16041920 DONG8
+    tax.16041920 [70 ký tự]: 16041920 - - - Cá sòng (horse mackerel), đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16041930 DONG8
+    tax.16041930 [55 ký tự]: 16041930 - - - Loại khác, đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16041990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16041990 [24 ký tự]: 16041990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160419; chú giải: nhom1604.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160529 ===
+# 160529 — Loại khác
+
+160529 — Crustacean preparations; shrimps and prawns, prepared or preserved, in airtight containers
+  16052920 Tôm dạng viên
+  16052930 Tôm tẩm bột
+  16052990 Loại khác  [LK]
+
+- 16052920 DONG8
+    tax.16052920 [28 ký tự]: 16052920 - - - Tôm dạng viên
+- 16052930 DONG8
+    tax.16052930 [26 ký tự]: 16052930 - - - Tôm tẩm bột
+- 16052990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16052990 [24 ký tự]: 16052990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160529; chú giải: nhom1605.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160554 ===
+# 160554 — Mực nang và mực ống
+
+160554 — Mollusc preparations; cuttle fish and squid, prepared or preserved
+  16055410 Đóng bao bì kín khí để bán lẻ
+  16055490 Loại khác  [LK]
+
+- 16055410 DONG8
+    tax.16055410 [44 ký tự]: 16055410 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16055490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16055490 [24 ký tự]: 16055490 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160554; chú giải: nhom1605.nhom, ch16.chuong, phan16.phan
+
+=== GÓI PN6 160557 ===
+# 160557 — Bào ngư
+
+160557 — Mollusc preparations; abalone, prepared or preserved
+  16055710 Đóng bao bì kín khí để bán lẻ
+  16055790 Loại khác  [LK]
+
+- 16055710 DONG8
+    tax.16055710 [44 ký tự]: 16055710 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 16055790 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.16055790 [24 ký tự]: 16055790 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.160557; chú giải: nhom1605.nhom, ch16.chuong, phan16.phan
+=== GÓI PN6 170310 ===
+# 170310 — Mật mía
+
+170310 — Sugars; molasses, from sugar cane, resulting from the extraction or refining of sugar
+  17031010 Đã pha thêm hương liệu hoặc chất màu
+  17031090 Loại khác  [LK]
+
+- 17031010 DONG8
+    tax.17031010 [49 ký tự]: 17031010 - - Đã pha thêm hương liệu hoặc chất màu
+- 17031090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.17031090 [22 ký tự]: 17031090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.170310; chú giải: nhom1703.nhom, ch17.chuong, phan17.phan
+
+=== GÓI PN6 170390 ===
+# 170390 — Loại khác
+
+170390 — Sugars; molasses, from sugar beet, resulting from the extraction or refining of sugar
+  17039010 Đã pha thêm hương liệu hoặc chất màu
+  17039090 Loại khác  [LK]
+
+- 17039010 DONG8
+    tax.17039010 [49 ký tự]: 17039010 - - Đã pha thêm hương liệu hoặc chất màu
+- 17039090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.17039090 [22 ký tự]: 17039090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.170390; chú giải: nhom1703.nhom, ch17.chuong, phan17.phan
+=== GÓI PN6 180620 ===
+# 180620 — Chế phẩm khác ở dạng khối, miếng hoặc thanh có khối lượng trên 2 kg hoặc ở dạng lỏng, dạng nhão, bột mịn, dạng hạt hoặc dạng rời khác đóng trong bao bì hoặc gói sẵn, khối lượng trên 2 kg
+
+180620 — Chocolate & other food preparations containing cocoa; in blocks, slabs or bars weighing more than 2kg or in liquid, paste, powder, granular or other bulk form in containers or immediate packings, content exceeding 2kg
+  18062010 Kẹo sô cô la ở dạng khối, miếng hoặc thanh
+  18062090 Loại khác  [LK]
+
+- 18062010 DONG8
+    tax.18062010 [55 ký tự]: 18062010 - - Kẹo sô cô la ở dạng khối, miếng hoặc thanh
+- 18062090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.18062090 [22 ký tự]: 18062090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.180620; chú giải: nhom1806.nhom, ch18.chuong, phan18.phan
+
+=== GÓI PN6 190120 ===
+# 190120 — Bột trộn và bột nhào để chế biến thành các loại bánh thuộc nhóm 19.05
+
+190120 — Food preparations; mixes and doughs for the preparation of bread, pastry, cakes, biscuits and other bakers' wares
+  19012010 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao
+  19012020 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao
+  19012030 Loại khác, không chứa ca cao  [LK có điều kiện]
+  19012040 Loại khác, chứa ca cao  [LK có điều kiện]
+
+- 19012010 DONG8
+    tax.19012010 [83 ký tự]: 19012010 - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không chứa ca cao"
+- 19012020 DONG8
+    tax.19012020 [77 ký tự]: 19012020 - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa ca cao"
+- 19012030 DONG8
+    tax.19012030 [41 ký tự]: 19012030 - - Loại khác, không chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không chứa ca cao"
+- 19012040 DONG8
+    tax.19012040 [35 ký tự]: 19012040 - - Loại khác, chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa ca cao"
+
+Nguồn cấp phân nhóm: wco.190120; chú giải: nhom1901.nhom, ch19.chuong, phan19.phan
+
+=== GÓI PN6 190410 ===
+# 190410 — Thực phẩm chế biến thu được từ quá trình rang hoặc nổ ngũ cốc hoặc các sản phẩm ngũ cốc
+
+190410 — Food preparations; obtained by the swelling or roasting of cereals or cereal products
+  19041010 Chứa ca cao
+  19041090 Loại khác  [LK]
+
+- 19041010 DONG8
+    tax.19041010 [24 ký tự]: 19041010 - - Chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa ca cao"
+- 19041090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.19041090 [22 ký tự]: 19041090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.190410; chú giải: nhom1904.nhom, ch19.chuong, phan19.phan
+
+=== GÓI PN6 190420 ===
+# 190420 — Thực phẩm chế biến từ mảnh ngũ cốc chưa rang hoặc từ hỗn hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ
+
+190420 — Food preparations; obtained from unroasted cereal flakes or from mixtures of unroasted cereal flakes and roasted cereal flakes or swelled cereals
+  19042010 Thực phẩm chế biến từ mảnh ngũ cốc chưa rang
+  19042090 Loại khác  [LK]
+
+- 19042010 DONG8
+    tax.19042010 [57 ký tự]: 19042010 - - Thực phẩm chế biến từ mảnh ngũ cốc chưa rang
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa rang"
+- 19042090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.19042090 [22 ký tự]: 19042090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.190420; chú giải: nhom1904.nhom, ch19.chuong, phan19.phan
+
+=== GÓI PN6 190540 ===
+# 190540 — Bánh bít cốt (rusks), bánh mì nướng và các loại bánh nướng tương tự
+
+190540 — Food preparations; rusks, toasted bread and similar toasted products, whether or not containing cocoa
+  19054010 Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây
+  19054090 Loại khác  [LK]
+
+- 19054010 DONG8
+    tax.19054010 [77 ký tự]: 19054010 - - Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây"
+- 19054090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.19054090 [22 ký tự]: 19054090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.190540; chú giải: nhom1905.nhom, ch19.chuong, phan19.phan
+=== GÓI PN6 200290 ===
+# 200290 — Loại khác
+
+200290 — Vegetable preparations; tomatoes, (other than whole or in pieces), prepared or preserved otherwise than by vinegar or acetic acid
+  20029010 Bột cà chua dạng sệt (SEN)
+  20029020 Bột cà chua
+  20029090 Loại khác  [LK]
+
+- 20029010 DONG8
+    tax.20029010 [39 ký tự]: 20029010 - - Bột cà chua dạng sệt (SEN)
+    sen.20029010 [661 ký tự]: BỘT CÀ CHUA DẠNG SỆT Bột cà chua dạng sệt là cà chua nguyên chất cô đặc, có từ 25% đến 40% hàm lượng là chất rắn không chứa muối. Nó thu được từ quá trình nghiền nóng. Chất nhão được cô đặc trong thiết bị làm khô chân không một, hai hoặc ba lần để đạt được độ cô đặc như mong muốn. Sản phẩm cô đặc sau đó được thanh trùng ở nhiệt độ 90°C trong 2-3 phút. Bột cà chua dạng sệt được chế biến bằng việc nấu cà chua trong vài giờ để giảm nước, cho qua rây để loại bỏ hạt và vỏ, và nấu lại cho cô đặc. Tùy thuộc vào điều kiện sản xuất, bột cà chua dạng sệt có thể sử dụng để chế biến nước sốt cà chua hoặc nước ép cà chua hoàn nguyên. Picutre 1. To Hình 1. Bột cà
+- 20029020 DONG8
+    tax.20029020 [24 ký tự]: 20029020 - - Bột cà chua
+- 20029090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20029090 [22 ký tự]: 20029090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200290; chú giải: nhom2002.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200490 ===
+# 200490 — Rau khác và hỗn hợp các loại rau
+
+200490 — Vegetable preparations; vegetables and mixtures of vegetables (excluding potatoes), prepared or preserved otherwise than by vinegar or acetic acid, frozen
+  20049010 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+  20049090 Loại khác  [LK]
+
+- 20049010 DONG8
+    tax.20049010 [54 ký tự]: 20049010 - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 20049090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20049090 [22 ký tự]: 20049090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200490; chú giải: nhom2004.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200520 ===
+# 200520 — Khoai tây
+
+200520 — Vegetable preparations; potatoes, prepared or preserved otherwise than by vinegar or acetic acid, not frozen
+  [2005201] Dạng thanh và que
+    20052011 Đóng bao bì kín khí để bán lẻ (SEN)
+    20052019 Loại khác (SEN)  [LK]
+  [2005209] Loại khác
+    20052091 Đóng bao bì kín khí để bán lẻ
+    20052099 Loại khác  [LK]
+
+- 2005201 TIEU_DE
+    tieuDe.2005201 [25 ký tự]: 2005201 Dạng thanh và que
+- 20052011 DONG8
+    tax.20052011 [50 ký tự]: 20052011 - - - Đóng bao bì kín khí để bán lẻ (SEN)
+    sen.20052011 [275 ký tự]: KHOAI TÂY DẠNG THANH VÀ DẠNG QUE Khoai tây dạng thanh và dạng que (còn gọi là “chips” theo tiếng Anh Anh) là các thanh khoai tây đã được chế biến thêm và mục đích dùng như khoai tây chiên kiểu Pháp khi nấu (khác với người Mỹ dùng từ chips để chỉ khoai tây lát mỏng rán giòn).
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 20052019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20052019 [30 ký tự]: 20052019 - - - Loại khác (SEN)
+    sen.20052019 [275 ký tự]: KHOAI TÂY DẠNG THANH VÀ DẠNG QUE Khoai tây dạng thanh và dạng que (còn gọi là “chips” theo tiếng Anh Anh) là các thanh khoai tây đã được chế biến thêm và mục đích dùng như khoai tây chiên kiểu Pháp khi nấu (khác với người Mỹ dùng từ chips để chỉ khoai tây lát mỏng rán giòn).
+- 2005209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.2005209 [17 ký tự]: 2005209 Loại khác
+- 20052091 DONG8
+    tax.20052091 [44 ký tự]: 20052091 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 20052099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20052099 [24 ký tự]: 20052099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200520; chú giải: nhom2005.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200559 ===
+# 200559 — Loại khác
+
+200559 — Vegetable preparations; beans, (not shelled), prepared or preserved otherwise than by vinegar or acetic acid, not frozen
+  20055910 Đóng bao bì kín khí để bán lẻ
+  20055990 Loại khác  [LK]
+
+- 20055910 DONG8
+    tax.20055910 [44 ký tự]: 20055910 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 20055990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20055990 [24 ký tự]: 20055990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200559; chú giải: nhom2005.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200599 ===
+# 200599 — Loại khác
+
+200599 — Vegetable preparations; vegetables and mixtures of vegetables n.e.c. in heading no. 2005, prepared or preserved otherwise than by vinegar or acetic acid, not frozen
+  20059910 Đóng bao bì kín khí để bán lẻ
+  20059990 Loại khác  [LK]
+
+- 20059910 DONG8
+    tax.20059910 [44 ký tự]: 20059910 - - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 20059990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20059990 [24 ký tự]: 20059990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200599; chú giải: nhom2005.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200820 ===
+# 200820 — Dứa
+
+200820 — Fruit; pineapples, prepared or preserved in ways n.e.c. in heading no. 2007, whether or not containing added sugar, other sweetening matter or spirit
+  20082010 Đóng bao bì kín khí để bán lẻ
+  20082090 Loại khác  [LK]
+
+- 20082010 DONG8
+    tax.20082010 [42 ký tự]: 20082010 - - Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 20082090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20082090 [22 ký tự]: 20082090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200820; chú giải: nhom2008.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200830 ===
+# 200830 — Quả thuộc chi cam quýt
+
+200830 — Fruit; citrus, prepared or preserved in ways n.e.c. in heading no. 2007, whether or not containing added sugar, other sweetening matter or spirit
+  20083010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+  20083090 Loại khác  [LK]
+
+- 20083010 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.20083010 [64 ký tự]: 20083010 - - Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+- 20083090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20083090 [22 ký tự]: 20083090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200830; chú giải: nhom2008.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200860 ===
+# 200860 — Anh đào (Cherries)
+
+200860 — Fruit; cherries, prepared or preserved in ways n.e.c. in heading no. 2007, whether or not containing added sugar, other sweetening matter or spirit
+  20086010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+  20086090 Loại khác  [LK]
+
+- 20086010 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.20086010 [64 ký tự]: 20086010 - - Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+- 20086090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20086090 [22 ký tự]: 20086090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200860; chú giải: nhom2008.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200870 ===
+# 200870 — Đào, kể cả quả xuân đào
+
+200870 — Fruit; peaches, including nectarines, prepared or preserved in ways n.e.c. in heading no. 2007 and 2008, whether or not containing added sugar, other sweetening matter or spirit
+  20087010 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+  20087090 Loại khác  [LK]
+
+- 20087010 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.20087010 [64 ký tự]: 20087010 - - Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+- 20087090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20087090 [22 ký tự]: 20087090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200870; chú giải: nhom2008.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200893 ===
+# 200893 — Quả nam việt quất (Vaccinium macrocarpon, Vaccinium oxycoccos); quả lingonberries (Vaccinium Vitis-idaea)
+
+200893 — Fruit; cranberries (Vaccinium macrocarpon, Vaccinium oxycoccos); Iingonberries (Vaccinium vitis-idaea), prepared or preserved, whether or not containing added sugar, other sweetening matter or spirit
+  20089310 Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+  20089390 Loại khác  [LK]
+
+- 20089310 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.20089310 [66 ký tự]: 20089310 - - - Đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+- 20089390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20089390 [24 ký tự]: 20089390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200893; chú giải: nhom2008.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200897 ===
+# 200897 — Dạng hỗn hợp
+
+200897 — Fruit, nuts and other edible parts of plants; mixtures (other than those of subheading no 2008.19); prepared or preserved in ways n.e.c. in headings 2007 and 2008, whether or not containing added sugar, or other sweetening matter or spirit, n.e.c.
+  20089710 Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+  20089720 Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu  [LK có điều kiện]
+  20089790 Loại khác  [LK]
+
+- 20089710 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.20089710 [169 ký tự]: 20089710 - - - Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được khác của cây" · [GIỚI HẠN] "không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu"
+- 20089720 DONG8
+    tax.20089720 [77 ký tự]: 20089720 - - - Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu
+- 20089790 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20089790 [24 ký tự]: 20089790 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200897; chú giải: nhom2008.nhom, ch20.chuong, phan20.phan
+
+=== GÓI PN6 200981 ===
+# 200981 — Nước quả nam việt quất ép (Vaccinium macrocarpon, Vaccinium oxycoccos); nước quả lingonberry ép (Vaccinium Vitis-idaea)
+
+200981 — Juice; cranberry (Vaccinium macrocarpon, Vaccinium oxycoccos); Iingonberry (Vaccinium vitis-idaea), unfermented, not containing added spirit, whether or not containing added sugar or other sweetening matter
+  20098110 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+  20098190 Loại khác  [LK]
+
+- 20098110 DONG8
+    tax.20098110 [56 ký tự]: 20098110 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 20098190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.20098190 [24 ký tự]: 20098190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.200981; chú giải: nhom2009.nhom, ch20.chuong, phan20.phan

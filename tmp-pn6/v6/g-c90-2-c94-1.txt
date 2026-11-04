@@ -1,0 +1,531 @@
+Số hoá ranh giới cho 29 phân nhóm 6 số (902920 902990 903084 903089 903090 903149 903190 903290 910400 920590 920991 930390 930591 930599 930690 940120 940210 940290 940360 940389 940399 940421 940511 940519 940521 940529 940561 940569 940592). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 902920 ===
+# 902920 — Đồng hồ chỉ tốc độ và máy đo tốc độ góc; máy hoạt nghiệm
+
+902920 — Meters; speed indicators and tachometers; stroboscopes
+  90292010 Đồng hồ tốc độ dùng cho xe có động cơ
+  90292020 Máy đo tốc độ góc cho xe có động cơ
+  90292090 Loại khác  [LK]
+
+- 90292010 DONG8
+    tax.90292010 [50 ký tự]: 90292010 - - Đồng hồ tốc độ dùng cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe có động cơ"
+- 90292020 DONG8
+    tax.90292020 [48 ký tự]: 90292020 - - Máy đo tốc độ góc cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho xe có động cơ"
+- 90292090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90292090 [22 ký tự]: 90292090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.902920; chú giải: nhom9029.nhom, ch90.chuong
+
+=== GÓI PN6 902990 ===
+# 902990 — Bộ phận và phụ kiện
+
+902990 — Meters and counters; parts and accessories for revolution and production counters, taximeters, mileometers, pedometers and the like; speed indicators, tachometers (excluding heading no. 9015), stroboscopes
+  90299010 Của hàng hóa thuộc phân nhóm 9029.10; của máy hoạt nghiệm thuộc phân nhóm 9029.20
+  90299020 Của đồng hồ chỉ tốc độ và máy đo tốc độ góc của phân nhóm 9029.20
+
+- 90299010 DONG8
+    tax.90299010 [94 ký tự]: 90299010 - - Của hàng hóa thuộc phân nhóm 9029.10; của máy hoạt nghiệm thuộc phân nhóm 9029.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 9029.10" · [GIỚI HẠN] "của máy hoạt nghiệm thuộc phân nhóm 9029.20"
+- 90299020 DONG8
+    tax.90299020 [78 ký tự]: 90299020 - - Của đồng hồ chỉ tốc độ và máy đo tốc độ góc của phân nhóm 9029.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đồng hồ chỉ tốc độ và máy đo tốc độ góc của phân nhóm 9029.20"
+
+Nguồn cấp phân nhóm: wco.902990; chú giải: nhom9029.nhom, ch90.chuong
+
+=== GÓI PN6 903084 ===
+# 903084 — Loại khác, có kèm thiết bị ghi
+
+903084 — Instruments and apparatus; n.e.c. in heading no. 9030, with a recording device
+  90308410 Dụng cụ và thiết bị để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90308490 Loại khác  [LK]
+
+- 90308410 DONG8
+    tax.90308410 [118 ký tự]: 90308410 - - - Dụng cụ và thiết bị để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90308490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90308490 [24 ký tự]: 90308490 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903084; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903089 ===
+# 903089 — Loại khác
+
+903089 — Instruments and apparatus; n.e.c. in heading no. 9030, without a recording device
+  90308910 Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90308990 Loại khác  [LK]
+
+- 90308910 DONG8
+    tax.90308910 [148 ký tự]: 90308910 - - - Dụng cụ và thiết bị, không kèm thiết bị ghi, dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không kèm thiết bị ghi" · [GIỚI HẠN] "dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90308990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90308990 [24 ký tự]: 90308990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903089; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903090 ===
+# 903090 — Bộ phận và phụ kiện
+
+903090 — Instruments, apparatus for measuring, checking electrical quantities, not meters of heading no. 9028; parts and accessories, for measuring or detecting alpha, beta, gamma, x-ray, cosmic and other radiations
+  90309010 Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+  90309030 Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309040 Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90309090 Loại khác  [LK]
+
+- 90309010 DONG8
+    tax.90309010 [113 ký tự]: 90309010 - - Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82"
+- 90309030 DONG8
+    tax.90309030 [132 ký tự]: 90309030 - - Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị quang học" · [GIỚI HẠN] "để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309040 DONG8
+    tax.90309040 [145 ký tự]: 90309040 - - Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dụng cụ và thiết bị" · [GIỚI HẠN] "dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90309090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90309090 [22 ký tự]: 90309090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903090; chú giải: nhom9030.nhom, ch90.chuong
+
+=== GÓI PN6 903149 ===
+# 903149 — Loại khác
+
+903149 — Optical instruments and appliances; for measuring or checking, n.e.c. in chapter 90
+  90314910 Dụng cụ và thiết bị quang học để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn
+  90314920 Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90314930 Dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90314990 Loại khác  [LK]
+
+- 90314910 DONG8
+    tax.90314910 [94 ký tự]: 90314910 - - - Dụng cụ và thiết bị quang học để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn"
+- 90314920 DONG8
+    tax.90314920 [106 ký tự]: 90314920 - - - Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90314930 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.90314930 [114 ký tự]: 90314930 - - - Dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90314990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90314990 [24 ký tự]: 90314990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903149; chú giải: nhom9031.nhom, ch90.chuong
+
+=== GÓI PN6 903190 ===
+# 903190 — Bộ phận và phụ kiện
+
+903190 — Instruments, appliances and machines; parts and accessories for those measuring or checking devices of heading no. 9031
+  90319030 Bộ phận và phụ kiện kể cả mạch in đã lắp ráp dùng cho các dụng cụ và thiết bị quang học để kiểm tra các vi mạch hoặc linh kiện bán dẫn hoặc kiểm tra mặt nạ, mặt nạ quang hoặc lưới ca rô sử dụng trong sản xuất các linh kiện bán dẫn; bộ phận và phụ kiện của các thiết bị đo độ nhiễm bẩn bề mặt của vi mạch bán dẫn
+  90319040 Của thiết bị quang học xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90319050 Của dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+  90319090 Loại khác  [LK]
+
+- 90319030 DONG8
+    tax.90319030 [324 ký tự]: 90319030 - - Bộ phận và phụ kiện kể cả mạch in đã lắp ráp dùng cho các dụng cụ và thiết bị quang học để kiểm tra các vi mạch hoặc linh kiện bán dẫn hoặc kiểm tra mặt nạ, mặt nạ quang hoặc lưới ca rô sử dụng trong sản xuất các linh kiện bán dẫn; bộ phận và phụ kiện của các thiết bị đo độ nhiễm bẩn bề mặt của vi mạch bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho các dụng cụ và thiết bị quang học để kiểm tra các vi mạch hoặc linh kiện bán dẫn hoặc kiểm tra mặt nạ, mặt nạ quang hoặc lưới ca rô" · [GIỚI HẠN] "sử dụng trong sản xuất các linh kiện bán dẫn" · [GIỚI HẠN] "của các thiết bị đo độ nhiễm bẩn bề mặt của vi mạch bán dẫn"
+- 90319040 DONG8
+    tax.90319040 [105 ký tự]: 90319040 - - Của thiết bị quang học xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị quang học xác định và sửa lỗi" · [GIỚI HẠN] "cho tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90319050 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.90319050 [116 ký tự]: 90319050 - - Của dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của dụng cụ và thiết bị quang học khác" · [GIỚI HẠN] "để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp"
+- 90319090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90319090 [22 ký tự]: 90319090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903190; chú giải: nhom9031.nhom, ch90.chuong
+
+=== GÓI PN6 903290 ===
+# 903290 — Bộ phận và phụ kiện
+
+903290 — Regulating or controlling instruments and apparatus; automatic, parts and accessories
+  90329010 Của hàng hóa thuộc phân nhóm 9032.89.10
+  90329020 Của hàng hóa thuộc phân nhóm 9032.89.20
+  90329090 Loại khác  [LK]
+
+- 90329010 DONG8
+    tax.90329010 [52 ký tự]: 90329010 - - Của hàng hóa thuộc phân nhóm 9032.89.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 9032.89.10"
+- 90329020 DONG8
+    tax.90329020 [52 ký tự]: 90329020 - - Của hàng hóa thuộc phân nhóm 9032.89.20
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 9032.89.20"
+- 90329090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.90329090 [22 ký tự]: 90329090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.903290; chú giải: nhom9032.nhom, ch90.chuong
+=== GÓI PN6 910400 ===
+# 910400 — Đồng hồ thời gian lắp trên bàn điều khiển phương tiện và các loại đồng hồ thời gian tương tự dùng cho xe cộ, phương tiện bay, tàu vũ trụ hoặc tàu thủy.
+
+NHÓM 9104 — Đồng hồ thời gian lắp trên bàn điều khiển phương tiện và các loại đồng hồ thời gian tương tự dùng cho xe cộ, phương tiện bay, tàu vũ trụ hoặc tàu thủy.
+  91040010 Dùng cho xe cộ
+  91040090 Loại khác  [LK]
+
+- 91040010 DONG8
+    tax.91040010 [25 ký tự]: 91040010 - Dùng cho xe cộ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe cộ"
+- 91040090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.91040090 [20 ký tự]: 91040090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.910400; chú giải: nhom9104.nhom, ch91.chuong, phan91.phan
+=== GÓI PN6 920590 ===
+# 920590 — Loại khác
+
+920590 — Musical instruments; wind, other than brass, (eg. clarinet, bagpipes, pipe organs), other than fairground organs and mechanical street organs
+  92059010 Các loại đàn organ ống có phím; đàn đạp hơi (harmonium) và loại nhạc cụ có phím tương tự có bộ phận lưỡi gà không bằng kim loại
+  92059090 Loại khác  [LK]
+
+- 92059010 DONG8
+    tax.92059010 [140 ký tự]: 92059010 - - Các loại đàn organ ống có phím; đàn đạp hơi (harmonium) và loại nhạc cụ có phím tương tự có bộ phận lưỡi gà không bằng kim loại
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có phím" · [GIỚI HẠN] "có phím tương tự có bộ phận lưỡi gà" · [GIỚI HẠN] "không bằng kim loại"
+- 92059090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.92059090 [22 ký tự]: 92059090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.920590; chú giải: nhom9205.nhom, ch92.chuong, phan92.phan
+
+=== GÓI PN6 920991 ===
+# 920991 — Bộ phận và phụ kiện của đàn piano
+
+920991 — Musical instruments; parts and accessories for pianos
+  92099110 Tấm đỡ đàn dây, đàn phím và khung kim loại của đàn piano loại đứng
+  92099190 Loại khác  [LK]
+
+- 92099110 DONG8
+    tax.92099110 [81 ký tự]: 92099110 - - - Tấm đỡ đàn dây, đàn phím và khung kim loại của đàn piano loại đứng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của đàn piano loại đứng"
+- 92099190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.92099190 [24 ký tự]: 92099190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.920991; chú giải: nhom9209.nhom, ch92.chuong, phan92.phan
+=== GÓI PN6 930390 ===
+# 930390 — Loại khác
+
+930390 — Firearms; n.e.c. in heading no. 9303
+  93039010 Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm
+  93039090 Loại khác  [LK]
+
+- 93039010 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.93039010 [147 ký tự]: 93039010 - - Súng lục bắn pháo hiệu và các loại khác được thiết kế chỉ để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên nhưng trừ cỡ 23 mm và 26,5 mm
+    vế phải phủ (cổng 5): [MỞ] "và các loại khác" · [GIỚI HẠN] "được thiết kế chỉ" · [GIỚI HẠN] "để phóng pháo hiệu có cỡ nòng từ 20 mm trở lên" · [GIỚI HẠN] "trừ cỡ 23 mm và 26,5 mm"
+- 93039090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93039090 [22 ký tự]: 93039090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.930390; chú giải: nhom9303.nhom, ch93.chuong, phan93.phan
+
+=== GÓI PN6 930591 ===
+# 930591 — Của vũ khí quân sự thuộc nhóm 93.01
+
+930591 — Firearms; parts and accessories, of military weapons of heading 9301
+  93059110 Bằng da thuộc hoặc vật liệu dệt (SEN)
+  93059190 Loại khác  [LK]
+
+- 93059110 DONG8
+    tax.93059110 [52 ký tự]: 93059110 - - - Bằng da thuộc hoặc vật liệu dệt (SEN)
+    sen.93059110 [174 ký tự]: BỘ PHẬN VÀ PHỤ KIỆN, BẰNG DA THUỘC HOẶC VẬT LIỆU DỆT Dây đeo làm từ các vật liệu dệt hoặc da thuộc là phụ kiện cho súng trường hay súng lục được đề cập đến trong chú giải HS.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng da thuộc hoặc vật liệu dệt"
+- 93059190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93059190 [24 ký tự]: 93059190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.930591; chú giải: nhom9305.nhom, ch93.chuong, phan93.phan
+
+=== GÓI PN6 930599 ===
+# 930599 — Loại khác
+
+930599 — Firearms; parts and accessories, of firearms other than the military weapons of heading 9301
+  [9305991] Của hàng hóa thuộc phân nhóm 9304.00.90
+    93059911 Bằng da thuộc hoặc vật liệu dệt (SEN)
+    93059919 Loại khác  [LK]
+  [9305999] Loại khác
+    93059991 Bằng da thuộc hoặc vật liệu dệt (SEN)
+    93059999 Loại khác  [LK]
+
+- 9305991 TIEU_DE
+    tieuDe.9305991 [47 ký tự]: 9305991 Của hàng hóa thuộc phân nhóm 9304.00.90
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 9304.00.90"
+- 93059911 DONG8
+    tax.93059911 [54 ký tự]: 93059911 - - - - Bằng da thuộc hoặc vật liệu dệt (SEN)
+    sen.93059911 [174 ký tự]: BỘ PHẬN VÀ PHỤ KIỆN, BẰNG DA THUỘC HOẶC VẬT LIỆU DỆT Dây đeo làm từ các vật liệu dệt hoặc da thuộc là phụ kiện cho súng trường hay súng lục được đề cập đến trong chú giải HS.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng da thuộc hoặc vật liệu dệt"
+- 93059919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93059919 [26 ký tự]: 93059919 - - - - Loại khác
+- 9305999 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.9305999 [17 ký tự]: 9305999 Loại khác
+- 93059991 DONG8
+    tax.93059991 [54 ký tự]: 93059991 - - - - Bằng da thuộc hoặc vật liệu dệt (SEN)
+    sen.93059991 [174 ký tự]: BỘ PHẬN VÀ PHỤ KIỆN, BẰNG DA THUỘC HOẶC VẬT LIỆU DỆT Dây đeo làm từ các vật liệu dệt hoặc da thuộc là phụ kiện cho súng trường hay súng lục được đề cập đến trong chú giải HS.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng da thuộc hoặc vật liệu dệt"
+- 93059999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93059999 [26 ký tự]: 93059999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.930599; chú giải: nhom9305.nhom, ch93.chuong, phan93.phan
+
+=== GÓI PN6 930690 ===
+# 930690 — Loại khác
+
+930690 — Ammunition; n.e.c. in chapter 93
+  93069010 Bom, lựu đạn, ngư lôi, mìn, tên lửa và các loại đạn dược tương tự và bộ phận của chúng
+  93069090 Loại khác  [LK]
+
+- 93069010 DONG8
+    tax.93069010 [99 ký tự]: 93069010 - - Bom, lựu đạn, ngư lôi, mìn, tên lửa và các loại đạn dược tương tự và bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và các loại đạn dược tương tự" · [MỞ] "và bộ phận của chúng"
+- 93069090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.93069090 [22 ký tự]: 93069090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.930690; chú giải: nhom9306.nhom, ch93.chuong, phan93.phan
+=== GÓI PN6 940120 ===
+# 940120 — Ghế dùng cho xe có động cơ
+
+940120 — Seats; of a kind used for motor vehicles
+  94012010 Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+  94012090 Loại khác  [LK]
+
+- 94012010 DONG8
+    tax.94012010 [54 ký tự]: 94012010 - - Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+- 94012090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94012090 [22 ký tự]: 94012090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940120; chú giải: nhom9401.nhom, ch94.chuong
+
+=== GÓI PN6 940210 ===
+# 940210 — Ghế nha khoa, ghế cắt tóc hoặc các loại ghế tương tự và các bộ phận của chúng
+
+940210 — Chairs; dentists', barbers' or similar chairs having rotating as well as both reclining and elevating movements, and parts thereof
+  94021010 Ghế nha khoa và các bộ phận của chúng
+  94021030 Ghế cắt tóc hoặc các loại ghế tương tự và các bộ phận của chúng
+
+- 94021010 DONG8
+    tax.94021010 [50 ký tự]: 94021010 - - Ghế nha khoa và các bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "và các bộ phận của chúng"
+- 94021030 DONG8
+    tax.94021030 [76 ký tự]: 94021030 - - Ghế cắt tóc hoặc các loại ghế tương tự và các bộ phận của chúng
+    vế phải phủ (cổng 5): [MỞ] "hoặc các loại ghế tương tự" · [MỞ] "và các bộ phận của chúng"
+
+Nguồn cấp phân nhóm: wco.940210; chú giải: nhom9402.nhom, ch94.chuong
+
+=== GÓI PN6 940290 ===
+# 940290 — Loại khác
+
+940290 — Furniture; for medical, surgical, veterinary use (e.g. operating tables, examination tables, hospital beds with mechanical fittings) and parts thereof
+  [9402901] Đồ nội thất được thiết kế đặc biệt để dùng trong ngành y, giải phẫu hoặc thú y và các bộ phận của chúng
+    94029011 Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)
+    94029012 Bàn mổ, hoạt động bằng điện (SEN)
+    94029013 Bàn mổ, không hoạt động bằng điện (SEN)
+    94029014 Bàn khám (SEN)
+    94029015 Giường bệnh (SEN)
+    94029019 Loại khác  [LK]
+  94029090 Loại khác  [LK]
+
+- 9402901 TIEU_DE
+    tieuDe.9402901 [111 ký tự]: 9402901 Đồ nội thất được thiết kế đặc biệt để dùng trong ngành y, giải phẫu hoặc thú y và các bộ phận của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được thiết kế đặc biệt" · [GIỚI HẠN] "để dùng trong ngành y, giải phẫu hoặc thú y" · [MỞ] "và các bộ phận của chúng"
+- 94029011 DONG8
+    tax.94029011 [63 ký tự]: 94029011 - - - Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)
+    sen.94029011 [211 ký tự]: GHẾ VỆ SINH DÀNH CHO NGƯỜI BỆNH (COMMODES) Ghế vệ sinh dành cho người bệnh (Commode) là loại đồ nội thất có hình dáng tương tự ghế nhưng có một hộc ngồi cho người ốm hoặc già để sử dụng như một thiết bị vệ sinh.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho người bệnh (Commodes)"
+- 94029012 DONG8
+    tax.94029012 [48 ký tự]: 94029012 - - - Bàn mổ, hoạt động bằng điện (SEN)
+    sen.94029012 [770 ký tự]: BÀN MỔ, HOẠT ĐỘNG BẰNG ĐIỆN Bàn mổ là bàn mà bệnh nhân nằm trong quá trình phẫu thuật. Đôi khi được gọi là bàn phẫu thuật hoặc bàn mổ. Bàn mổ thường được sử dụng trong phòng mổ hoặc phòng phẫu thuật của bệnh viện, trung tâm phẫu thuật cấp cứu hoặc các cơ sở chăm sóc sức khỏe khác nơi phẫu thuật được thực hiện. Bàn mổ có thể cố định hoặc di động để di chuyển từ phòng này sang phòng khác. Bàn mổ được sử dụng trong nhiều loại thủ thuật khác nhau như phẫu thuật: tim mạch, chỉnh hình, giảm cân, rô bốt, tiết niệu, v.v. Bàn mổ chạy bằng điện được điều khiển bằng hệ thống điện tử (sử dụng điều khiển từ xa để thay đổi vị trí của bệnh nhân đang phẫu thuật). Bàn mổ được điều khiển bằng điện, điện thủy lực hoặc cơ điện, với bất kỳ phụ kiện nào cho các mục đích vận hành.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng điện"
+- 94029013 DONG8
+    tax.94029013 [54 ký tự]: 94029013 - - - Bàn mổ, không hoạt động bằng điện (SEN)
+    sen.94029013 [825 ký tự]: BÀN MỔ, KHÔNG HOẠT ĐỘNG BẰNG ĐIỆN Bàn mổ là bàn mà bệnh nhân nằm trong quá trình phẫu thuật. Đôi khi được gọi là bàn phẫu thuật hoặc bàn mổ, bàn mổ thường được sử dụng trong phòng mổ hoặc phòng phẫu thuật của bệnh viện, trung tâm phẫu thuật cấp cứu hoặc các cơ sở chăm sóc sức khỏe khác nơi phẫu thuật được thực hiện. Bàn mổ có thể cố định hoặc di động để di chuyển phòng này sang phòng khác. Bàn mổ được sử dụng trong nhiều loại thủ thuật khác nhau như phẫu thuật tim mạch, chỉnh hình, giảm cân, rô bốt, tiết niệu, v.v. Bàn mổ không hoạt động bằng điện không có bất kỳ chức năng điện nào và phụ thuộc vào thiết bị vận hành bằng tay hoặc bằng thủy lực (thường là đòn bẩy) để điều chỉnh vị trí của bàn về vị trí cần thiết. Bàn mổ được điều khiển bằng tay hoặc bằng thủy lực, với bất kỳ phụ kiện nào cho các mục đích vận hành.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 94029014 DONG8
+    tax.94029014 [29 ký tự]: 94029014 - - - Bàn khám (SEN)
+    sen.94029014 [156 ký tự]: BÀN KHÁM Bàn khám được sử dụng ở nơi chăm sóc y tế, khám bệnh cho bệnh nhân. Nói chung, những loại bàn này có thể có chiều cao cố định hoặc điều chỉnh được.
+- 94029015 DONG8
+    tax.94029015 [32 ký tự]: 94029015 - - - Giường bệnh (SEN)
+    sen.94029015 [775 ký tự]: GIƯỜNG BỆNH Giường bệnh là loại giường được thiết kế đặc biệt dành cho những bệnh nhân nằm viện hoặc các trường hợp khác cần được chăm sóc sức khỏe . Những chiếc giường này có những tính năng đặc biệt mang lại sự dễ chịu và thoải mái cho bệnh nhân, tạo thuận tiện cho nhân viên y tế chăm sóc bệnh nhân. Giường có các thanh ray bên hông để nâng hoặc hạ nhằm bảo vệ người bệnh. WHO định nghĩa giường bệnh là giường được duy trì thường xuyên và cung cấp chỗ ở, chăm sóc y tế toàn thời gian cho bệnh nhân nội trú, được đặt tại các khu vực hoặc một phần của bệnh viện. - Giường bệnh, chiều cao cố định, với bất kỳ loại thanh ray bên nào, không có nệm. - Giường bệnh, chiều cao có thể thay đổi, điều khiển bằng tay hoặc bằng điện với bất kỳ loại thanh ray bên nào, không có nệm.
+- 94029019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94029019 [24 ký tự]: 94029019 - - - Loại khác
+- 94029090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94029090 [22 ký tự]: 94029090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940290; chú giải: nhom9402.nhom, ch94.chuong
+
+=== GÓI PN6 940360 ===
+# 940360 — Đồ nội thất bằng gỗ khác
+
+940360 — Furniture; wooden, other than for office, kitchen or bedroom use
+  94036010 Tủ hút hơi độc (SEN)
+  94036090 Loại khác  [LK]
+
+- 94036010 DONG8
+    tax.94036010 [33 ký tự]: 94036010 - - Tủ hút hơi độc (SEN)
+    sen.94036010 [1200 ký tự]: TỦ HÚT HƠI ĐỘC Tủ hút hơi độc là một thiết bị thông gió cục bộ, được thiết kế để hạn chế khí, hơi, bụi độc hoặc nguy hiểm. Một tủ hút hơi độc điển hình là thiết bị lớn mà khu vực làm việc của nó có 5 mặt, có đáy thường được đặt ở độ cao khi đứng làm việc. Có hai loại chính là loại được gắn ống dẫn và loại tái tuần hoàn. Nguyên lý hoạt động của hai loại là như nhau: không khí được hút vào từ mặt trước (mặt mở) của cabin, và được đưa ra ngoài tòa nhà hoặc khử độc bằng cách lọc khí và đưa khí đã lọc trở lại phòng. Chức năng thứ hai của thiết bị này còn có thể là chống cháy nổ, ngăn chặn tràn khí, và các chức năng khác cần thiết liên quan tới các công việc được thực hiện bên trong thiết bị này. Tủ hút hơi độc không chỉ để bảo vệ người sử dụng mà còn được dùng trong phòng thí nghiệm nơi mà các hóa chất độc và nguy hại được thải ra trong quá trình kiểm tra, nghiên cứu, phát triển hay giảng dạy. Chúng cũng được sử dụng trong các ứng dụng công nghiệp hay các hoạt động khác nơi mà các chất khí, hơi và bụi độc hoặc nguy hiểm được tạo ra hoặc giải phóng ra ngoài. Bởi vì một mặt (mặt trước) của tủ hút hơi độc được mở về phía phòng bởi người sử dụng và khí bên trong tủ này có khả năng bị nh
+- 94036090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94036090 [22 ký tự]: 94036090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940360; chú giải: nhom9403.nhom, ch94.chuong
+
+=== GÓI PN6 940389 ===
+# 940389 — Loại khác
+
+940389 — Furniture; of cane, osier, or similar materials (other than bamboo or rattan)
+  94038910 Tủ hút hơi độc (SEN)
+  94038990 Loại khác  [LK]
+
+- 94038910 DONG8
+    tax.94038910 [35 ký tự]: 94038910 - - - Tủ hút hơi độc (SEN)
+    sen.94038910 [1200 ký tự]: TỦ HÚT HƠI ĐỘC Tủ hút hơi độc là một thiết bị thông gió cục bộ, được thiết kế để hạn chế khí, hơi, bụi độc hoặc nguy hiểm. Một tủ hút hơi độc điển hình là thiết bị lớn mà khu vực làm việc của nó có 5 mặt, có đáy thường được đặt ở độ cao khi đứng làm việc. Có hai loại chính là loại được gắn ống dẫn và loại tái tuần hoàn. Nguyên lý hoạt động của hai loại là như nhau: không khí được hút vào từ mặt trước (mặt mở) của cabin, và được đưa ra ngoài tòa nhà hoặc khử độc bằng cách lọc khí và đưa khí đã lọc trở lại phòng. Chức năng thứ hai của thiết bị này còn có thể là chống cháy nổ, ngăn chặn tràn khí, và các chức năng khác cần thiết liên quan tới các công việc được thực hiện bên trong thiết bị này. Tủ hút hơi độc không chỉ để bảo vệ người sử dụng mà còn được dùng trong phòng thí nghiệm nơi mà các hóa chất độc và nguy hại được thải ra trong quá trình kiểm tra, nghiên cứu, phát triển hay giảng dạy. Chúng cũng được sử dụng trong các ứng dụng công nghiệp hay các hoạt động khác nơi mà các chất khí, hơi và bụi độc hoặc nguy hiểm được tạo ra hoặc giải phóng ra ngoài. Bởi vì một mặt (mặt trước) của tủ hút hơi độc được mở về phía phòng bởi người sử dụng và khí bên trong tủ này có khả năng bị nh
+- 94038990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94038990 [24 ký tự]: 94038990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940389; chú giải: nhom9403.nhom, ch94.chuong
+
+=== GÓI PN6 940399 ===
+# 940399 — Loại khác
+
+940399 — Furniture; parts, of other than wood
+  94039910 Của phân nhóm 9403.70.10
+  94039990 Loại khác  [LK]
+
+- 94039910 DONG8
+    tax.94039910 [39 ký tự]: 94039910 - - - Của phân nhóm 9403.70.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của phân nhóm 9403.70.10"
+- 94039990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94039990 [24 ký tự]: 94039990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940399; chú giải: nhom9403.nhom, ch94.chuong
+
+=== GÓI PN6 940421 ===
+# 940421 — Bằng cao su xốp hoặc bằng plastic xốp, đã hoặc chưa bọc
+
+940421 — Mattresses; of cellular rubber or plastics, whether or not covered
+  94042110 Bằng cao su xốp, đã hoặc chưa bọc
+  94042120 Bằng plastic xốp, đã hoặc chưa bọc
+
+- 94042110 DONG8
+    tax.94042110 [48 ký tự]: 94042110 - - - Bằng cao su xốp, đã hoặc chưa bọc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su xốp, đã hoặc chưa bọc"
+- 94042120 DONG8
+    tax.94042120 [49 ký tự]: 94042120 - - - Bằng plastic xốp, đã hoặc chưa bọc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng plastic xốp, đã hoặc chưa bọc"
+
+Nguồn cấp phân nhóm: wco.940421; chú giải: nhom9404.nhom, ch94.chuong
+
+=== GÓI PN6 940511 ===
+# 940511 — Được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED)
+
+940511 — Luminaires and light fittings; chandeliers and electric ceiling or wall light fittings; (excluding those used for lighting public open spaces or thoroughfares), for use solely with light-emitting diode (LED) light sources
+  94051110 Đèn cho phòng mổ
+  [9405119] Loại khác
+    94051191 Đèn rọi
+    94051199 Loại khác  [LK]
+
+- 94051110 DONG8
+    tax.94051110 [31 ký tự]: 94051110 - - - Đèn cho phòng mổ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho phòng mổ"
+- 9405119 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.9405119 [17 ký tự]: 9405119 Loại khác
+- 94051191 DONG8
+    tax.94051191 [24 ký tự]: 94051191 - - - - Đèn rọi
+- 94051199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94051199 [26 ký tự]: 94051199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940511; chú giải: nhom9405.nhom, ch94.chuong
+
+=== GÓI PN6 940519 ===
+# 940519 — Loại khác
+
+940519 — Chandeliers and electric ceiling or wall light fittings; (excluding those used for lighting public open spaces or thoroughfares), for use other than with light-emitting diode (LED) light sources
+  94051910 Đèn cho phòng mổ
+  [9405199] Loại khác
+    94051991 Đèn rọi
+    94051992 Đèn gắn bóng đèn huỳnh quang
+    94051999 Loại khác  [LK]
+
+- 94051910 DONG8
+    tax.94051910 [31 ký tự]: 94051910 - - - Đèn cho phòng mổ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho phòng mổ"
+- 9405199 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.9405199 [17 ký tự]: 9405199 Loại khác
+- 94051991 DONG8
+    tax.94051991 [24 ký tự]: 94051991 - - - - Đèn rọi
+- 94051992 DONG8
+    tax.94051992 [45 ký tự]: 94051992 - - - - Đèn gắn bóng đèn huỳnh quang
+- 94051999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94051999 [26 ký tự]: 94051999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940519; chú giải: nhom9405.nhom, ch94.chuong
+
+=== GÓI PN6 940521 ===
+# 940521 — Được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED)
+
+940521 — Luminaires and light fittings; electric, table, desk, bedside or floor-standing, for use solely with light-emitting diode (LED) light sources
+  94052110 Đèn cho phòng mổ
+  94052190 Loại khác  [LK]
+
+- 94052110 DONG8
+    tax.94052110 [31 ký tự]: 94052110 - - - Đèn cho phòng mổ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho phòng mổ"
+- 94052190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94052190 [24 ký tự]: 94052190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940521; chú giải: nhom9405.nhom, ch94.chuong
+
+=== GÓI PN6 940529 ===
+# 940529 — Loại khác
+
+940529 — Luminaires and light fittings; electric, table, desk, bedside or floor-standing, for other than use solely with light-emitting diode (LED) light sources
+  94052910 Đèn cho phòng mổ
+  94052990 Loại khác  [LK]
+
+- 94052910 DONG8
+    tax.94052910 [31 ký tự]: 94052910 - - - Đèn cho phòng mổ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho phòng mổ"
+- 94052990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94052990 [24 ký tự]: 94052990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940529; chú giải: nhom9405.nhom, ch94.chuong
+
+=== GÓI PN6 940561 ===
+# 940561 — Được thiết kế chỉ để sử dụng với các nguồn sáng đi-ốt phát quang (LED)
+
+940561 — Luminaires; illuminated signs, illuminated name-plates and the like, designed for use solely with light-emitting diode (LED) light sources
+  94056110 Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+  94056190 Loại khác  [LK]
+
+- 94056110 DONG8
+    tax.94056110 [81 ký tự]: 94056110 - - - Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+- 94056190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94056190 [24 ký tự]: 94056190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940561; chú giải: nhom9405.nhom, ch94.chuong
+
+=== GÓI PN6 940569 ===
+# 940569 — Loại khác
+
+940569 — Luminaires; illuminated signs, illuminated name-plates and the like, designed for other than use solely with light-emitting diode (LED) light sources
+  94056910 Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+  94056990 Loại khác  [LK]
+
+- 94056910 DONG8
+    tax.94056910 [81 ký tự]: 94056910 - - - Biển cảnh báo, biển tên đường phố, biển báo giao thông và đường bộ
+- 94056990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94056990 [24 ký tự]: 94056990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940569; chú giải: nhom9405.nhom, ch94.chuong
+
+=== GÓI PN6 940592 ===
+# 940592 — Bằng plastic
+
+940592 — Lamps and light fittings; parts thereof, of plastics
+  94059210 Dùng cho đèn phòng mổ
+  94059220 Dùng cho đèn rọi
+  94059230 Dùng cho đèn pha
+  94059290 Loại khác  [LK]
+
+- 94059210 DONG8
+    tax.94059210 [36 ký tự]: 94059210 - - - Dùng cho đèn phòng mổ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho đèn phòng mổ"
+- 94059220 DONG8
+    tax.94059220 [31 ký tự]: 94059220 - - - Dùng cho đèn rọi
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho đèn rọi"
+- 94059230 DONG8
+    tax.94059230 [31 ký tự]: 94059230 - - - Dùng cho đèn pha
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho đèn pha"
+- 94059290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.94059290 [24 ký tự]: 94059290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.940592; chú giải: nhom9405.nhom, ch94.chuong
