@@ -56,7 +56,9 @@ const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNap
   // + 6 khoá lô 11 — gói ✗ máy ch.84 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 177 dòng máy chưa đọc ch.84; trích 25/25 đúng; dieuKhienSo tách từ đề xuất boSung vào cachDieuKhien (@1)
   loaiBoPhanDongCoPiston: 'LIET_KE', dungTrongNongNghiep: 'CO_KHONG', canDienTu: 'CO_KHONG', mayRenKhuonHoacDapKhuon: 'CO_KHONG', dungTrongYTeHoacThiNghiem: 'CO_KHONG', dieuKhienSo: 'CO_KHONG',
   // + 6 khoá lô 12 — gói ✗ máy ch.85 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 141 dòng máy chưa đọc ch.85; trích 28/28 đúng
-  dungChoXeCoDongCo: 'CO_KHONG', bienApThichUng: 'CO_KHONG', loaiXachTay: 'CO_KHONG', laMayPhatDien: 'CO_KHONG', loaiBienDoiTinhDien: 'LIET_KE', loaiThietBiBaoDong: 'LIET_KE' };
+  dungChoXeCoDongCo: 'CO_KHONG', bienApThichUng: 'CO_KHONG', loaiXachTay: 'CO_KHONG', laMayPhatDien: 'CO_KHONG', loaiBienDoiTinhDien: 'LIET_KE', loaiThietBiBaoDong: 'LIET_KE',
+  // + 11 khoá lô 13 — gói ✗ máy ch.31–49 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 308 dòng máy chưa đọc ch.31–49; trích 38/39 đúng (1 lệch khoảng trắng)
+  dangTamPhienMang: 'LIET_KE', tamPhuSan: 'CO_KHONG', dangChePhamDietMuoi: 'LIET_KE', loaiHangDanLat: 'LIET_KE', ongHutXaBunKhaiThacMo: 'CO_KHONG', dungChoDienAnh: 'CO_KHONG', sonChongHaHoacChongAnMonVoTau: 'CO_KHONG', tamMiengGhepLatNenOpTuong: 'CO_KHONG', dungTrongNhaKhoa: 'CO_KHONG', dayTetBen: 'CO_KHONG', loaiCung: 'CO_KHONG' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
