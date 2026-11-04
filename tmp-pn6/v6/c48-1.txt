@@ -1,0 +1,646 @@
+Số hoá ranh giới cho 28 phân nhóm 6 số (480100 480220 480240 480254 480258 480261 480262 480269 480300 480421 480429 480431 480439 480441 480442 480449 480451 480452 480459 480519 480525 480530 480591 480592 480593 480990 481013 481019). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 480100 ===
+# 480100 — Giấy in báo, dạng cuộn hoặc tờ.
+
+NHÓM 4801 — Giấy in báo, dạng cuộn hoặc tờ.
+  [4801001] Có định lượng không quá 55 g/m2
+    48010011 Ở dạng cuộn, có chiều rộng trên 28 cm nhưng không quá 36 cm
+    48010012 Ở dạng cuộn, loại khác
+    48010013 Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+    48010014 Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+  [4801002] Có định lượng trên 55 g/m2
+    48010021 Ở dạng cuộn, có chiều rộng trên 28 cm nhưng không quá 36 cm
+    48010022 Ở dạng cuộn, loại khác
+    48010023 Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+    48010024 Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+
+- 4801001 TIEU_DE
+    tieuDe.4801001 [39 ký tự]: 4801001 Có định lượng không quá 55 g/m2
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có định lượng không quá 55 g/m2"
+- 48010011 DONG8
+    tax.48010011 [72 ký tự]: 48010011 - - Ở dạng cuộn, có chiều rộng trên 28 cm nhưng không quá 36 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng trên 28 cm nhưng không quá 36 cm"
+- 48010012 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.48010012 [35 ký tự]: 48010012 - - Ở dạng cuộn, loại khác
+- 48010013 DONG8
+    tax.48010013 [142 ký tự]: 48010013 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng" · [GIỚI HẠN] "không gấp"
+- 48010014 DONG8
+    tax.48010014 [120 ký tự]: 48010014 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng" · [GIỚI HẠN] "không gấp"
+- 4801002 TIEU_DE
+    tieuDe.4801002 [34 ký tự]: 4801002 Có định lượng trên 55 g/m2
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có định lượng trên 55 g/m2"
+- 48010021 DONG8
+    tax.48010021 [72 ký tự]: 48010021 - - Ở dạng cuộn, có chiều rộng trên 28 cm nhưng không quá 36 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng trên 28 cm nhưng không quá 36 cm"
+- 48010022 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.48010022 [35 ký tự]: 48010022 - - Ở dạng cuộn, loại khác
+- 48010023 DONG8
+    tax.48010023 [142 ký tự]: 48010023 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng" · [GIỚI HẠN] "không gấp"
+- 48010024 DONG8
+    tax.48010024 [120 ký tự]: 48010024 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng" · [GIỚI HẠN] "không gấp"
+
+Nguồn cấp phân nhóm: wco.480100; chú giải: nhom4801.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480220 ===
+# 480220 — Giấy và bìa sử dụng làm nền cho sản xuất giấy và bìa nhạy sáng, nhạy nhiệt hoặc nhạy điện
+
+480220 — Uncoated paper and paperboard (not 4801 or 4803); of a kind used as a base for photo-sensitive, heat-sensitive or electro-sensitive paper or paperboard, in rolls or sheets
+  48022010 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+  48022090 Loại khác  [LK]
+
+- 48022010 DONG8
+    tax.48022010 [148 ký tự]: 48022010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"
+- 48022090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48022090 [22 ký tự]: 48022090 - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4802, wco.480220; chú giải: nhom4802.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480240 ===
+# 480240 — Giấy làm nền sản xuất giấy dán tường
+
+480240 — Uncoated paper and paperboard (not 4801 or 4803); wallpaper base, in rolls or sheets
+  48024010 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+  48024090 Loại khác  [LK]
+
+- 48024010 DONG8
+    tax.48024010 [148 ký tự]: 48024010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"
+- 48024090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48024090 [22 ký tự]: 48024090 - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4802, wco.480240; chú giải: nhom4802.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480254 ===
+# 480254 — Có định lượng dưới 40 g/m2
+
+480254 — Uncoated paper and paperboard (not 4801 or 4803); printing, writing or graphic, 10% or less by weight of mechanical or chemi-mechanical processed fibre, weighing less than 40g/m2, in rolls or sheets
+  [4802541] Giấy làm nền sản xuất giấy carbon, có định lượng dưới 20g/m2
+    48025411 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)
+    48025419 Loại khác (SEN)  [LK]
+  [4802542] Giấy làm nền sản xuất giấy carbon khác
+    48025421 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)
+    48025429 Loại khác (SEN)  [LK]
+  48025430 Giấy làm nền sản xuất giấy tráng nhôm(SEN)
+  48025440 Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp
+  48025450 Giấy và bìa nhiều lớp(SEN)
+  48025490 Loại khác  [LK]
+
+- 4802541 TIEU_DE
+    tieuDe.4802541 [68 ký tự]: 4802541 Giấy làm nền sản xuất giấy carbon, có định lượng dưới 20g/m2
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có định lượng dưới 20g/m2"
+- 48025411 DONG8
+    tax.48025411 [158 ký tự]: 48025411 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)
+    sen.48025411 [1200 ký tự]: GIẤY LÀM NỀN SẢN XUẤT GIẤY CARBON Giấy làm nền sản xuất giấy carbon là loại vật liệu nền có định lượng thấp được sản xuất đặc biệt để chuyển thành giấy carbon dùng một lần, được tạo ra từ bột giấy hóa học được tẩy trắng hoặc chưa tẩy trắng hoặc hỗn hợp bột giấy cơ học và hóa học chưa được tẩy trắng. Đây là vật liệu thô được tráng một hoặc hai mặt với phụ gia carbon (dựa trên dung môi hoặc sáp). Các đặc tính quan trọng bao gồm tính đồng nhất của bề mặt và độ dày, không có lỗ nhỏ, kết cấu chặt chẽ, độ bền cao, không xốp và có khả năng lấy mực carbon mà không cần thấm sâu và sau đó dưới áp lực và tác động có khả năng nhả mực carbon. Giấy carbon dùng một lần là loại giấy carbon được chèn vào giữa các tờ giấy và chỉ có thể dùng một lần, sau đó bị loại bỏ. OTC (One Time Carbon) không còn phổ biến so với giấy có phủ lớp chất nhạy (giấy tự carbon hóa (self carbonized paper) trở thành vật liệu sao chép được ưa thích hơn. Giấy làm nền sản xuất giấy carbon dùng một lần khác với giấy làm nền sản xuất giấy carbon về đặc tính (hạng, định lượng danh nghĩa, chỉ số độ bền kéo, độ xốp, hàm lượng tro,…) Yêu cầu đối với giấy làm nền sản xuất giấy carbon dùng một lần như sau: Định lượng danh nghĩa:
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"
+- 48025419 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48025419 [32 ký tự]: 48025419 - - - - Loại khác (SEN)
+    sen.48025419 [1200 ký tự]: GIẤY LÀM NỀN SẢN XUẤT GIẤY CARBON Giấy làm nền sản xuất giấy carbon là loại vật liệu nền có định lượng thấp được sản xuất đặc biệt để chuyển thành giấy carbon dùng một lần, được tạo ra từ bột giấy hóa học được tẩy trắng hoặc chưa tẩy trắng hoặc hỗn hợp bột giấy cơ học và hóa học chưa được tẩy trắng. Đây là vật liệu thô được tráng một hoặc hai mặt với phụ gia carbon (dựa trên dung môi hoặc sáp). Các đặc tính quan trọng bao gồm tính đồng nhất của bề mặt và độ dày, không có lỗ nhỏ, kết cấu chặt chẽ, độ bền cao, không xốp và có khả năng lấy mực carbon mà không cần thấm sâu và sau đó dưới áp lực và tác động có khả năng nhả mực carbon. Giấy carbon dùng một lần là loại giấy carbon được chèn vào giữa các tờ giấy và chỉ có thể dùng một lần, sau đó bị loại bỏ. OTC (One Time Carbon) không còn phổ biến so với giấy có phủ lớp chất nhạy (giấy tự carbon hóa (self carbonized paper) trở thành vật liệu sao chép được ưa thích hơn. Giấy làm nền sản xuất giấy carbon dùng một lần khác với giấy làm nền sản xuất giấy carbon về đặc tính (hạng, định lượng danh nghĩa, chỉ số độ bền kéo, độ xốp, hàm lượng tro,…) Yêu cầu đối với giấy làm nền sản xuất giấy carbon dùng một lần như sau: Định lượng danh nghĩa:
+- 4802542 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.4802542 [46 ký tự]: 4802542 Giấy làm nền sản xuất giấy carbon khác
+- 48025421 DONG8
+    tax.48025421 [158 ký tự]: 48025421 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)
+    sen.48025421 [1200 ký tự]: GIẤY LÀM NỀN SẢN XUẤT GIẤY CARBON Giấy làm nền sản xuất giấy carbon là loại vật liệu nền có định lượng thấp được sản xuất đặc biệt để chuyển thành giấy carbon dùng một lần, được tạo ra từ bột giấy hóa học được tẩy trắng hoặc chưa tẩy trắng hoặc hỗn hợp bột giấy cơ học và hóa học chưa được tẩy trắng. Đây là vật liệu thô được tráng một hoặc hai mặt với phụ gia carbon (dựa trên dung môi hoặc sáp). Các đặc tính quan trọng bao gồm tính đồng nhất của bề mặt và độ dày, không có lỗ nhỏ, kết cấu chặt chẽ, độ bền cao, không xốp và có khả năng lấy mực carbon mà không cần thấm sâu và sau đó dưới áp lực và tác động có khả năng nhả mực carbon. Giấy carbon dùng một lần là loại giấy carbon được chèn vào giữa các tờ giấy và chỉ có thể dùng một lần, sau đó bị loại bỏ. OTC (One Time Carbon) không còn phổ biến so với giấy có phủ lớp chất nhạy (giấy tự carbon hóa (self carbonized paper) trở thành vật liệu sao chép được ưa thích hơn. Giấy làm nền sản xuất giấy carbon dùng một lần khác với giấy làm nền sản xuất giấy carbon về đặc tính (hạng, định lượng danh nghĩa, chỉ số độ bền kéo, độ xốp, hàm lượng tro,…) Yêu cầu đối với giấy làm nền sản xuất giấy carbon dùng một lần như sau: Định lượng danh nghĩa:
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"
+- 48025429 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48025429 [32 ký tự]: 48025429 - - - - Loại khác (SEN)
+    sen.48025429 [1200 ký tự]: GIẤY LÀM NỀN SẢN XUẤT GIẤY CARBON Giấy làm nền sản xuất giấy carbon là loại vật liệu nền có định lượng thấp được sản xuất đặc biệt để chuyển thành giấy carbon dùng một lần, được tạo ra từ bột giấy hóa học được tẩy trắng hoặc chưa tẩy trắng hoặc hỗn hợp bột giấy cơ học và hóa học chưa được tẩy trắng. Đây là vật liệu thô được tráng một hoặc hai mặt với phụ gia carbon (dựa trên dung môi hoặc sáp). Các đặc tính quan trọng bao gồm tính đồng nhất của bề mặt và độ dày, không có lỗ nhỏ, kết cấu chặt chẽ, độ bền cao, không xốp và có khả năng lấy mực carbon mà không cần thấm sâu và sau đó dưới áp lực và tác động có khả năng nhả mực carbon. Giấy carbon dùng một lần là loại giấy carbon được chèn vào giữa các tờ giấy và chỉ có thể dùng một lần, sau đó bị loại bỏ. OTC (One Time Carbon) không còn phổ biến so với giấy có phủ lớp chất nhạy (giấy tự carbon hóa (self carbonized paper) trở thành vật liệu sao chép được ưa thích hơn. Giấy làm nền sản xuất giấy carbon dùng một lần khác với giấy làm nền sản xuất giấy carbon về đặc tính (hạng, định lượng danh nghĩa, chỉ số độ bền kéo, độ xốp, hàm lượng tro,…) Yêu cầu đối với giấy làm nền sản xuất giấy carbon dùng một lần như sau: Định lượng danh nghĩa:
+- 48025430 DONG8
+    tax.48025430 [57 ký tự]: 48025430 - - - Giấy làm nền sản xuất giấy tráng nhôm(SEN)
+    sen.48025430 [450 ký tự]: GIẤY LÀM NỀN SẢN XUẤT GIẤY TRÁNG NHÔM Đáp ứng chú giải 5, bóng một mặt, tỷ trọng biểu kiến không nhỏ hơn 750kg/m3, độ nhẵn không quá 125ml/phút, độ hút nước theo phương pháp Cobb nhỏ hơn 25g/m2, độ trắng không dưới 82% theo ISO, độ mờ đục không nhỏ hơn 60%, độ bền xé không nhỏ hơn 5,6mN.m2/g theo chiều dọc và 5mN.m2/g theo chiều ngang, độ chịu bục không nhỏ hơn 2,3 KPa.m2/g, độ dài đứt không nhỏ hơn 4000m theo chiều dọc và 3500m theo chiều ngang.
+- 48025440 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.48025440 [197 ký tự]: 48025440 - - - Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để viết, in và các mục đích đồ bản khác, dạng cuộn" · [GIỚI HẠN] "có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp"
+- 48025450 DONG8
+    tax.48025450 [41 ký tự]: 48025450 - - - Giấy và bìa nhiều lớp(SEN)
+- 48025490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48025490 [24 ký tự]: 48025490 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4802, wco.480254; chú giải: nhom4802.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480258 ===
+# 480258 — Định lượng trên 150 g/m2
+
+480258 — Uncoated paper and paperboard (not 4801 or 4803); printing, writing or graphic, 10% or less by weight of mechanical or chemi-mechanical processed fibre, weighing more than 150g/m2
+  [4802582] Giấy và bìa trang trí
+    48025821 Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)
+    48025829 Loại khác (SEN)  [LK]
+  [4802583] Loại dùng để viết, in và các mục đích đồ bản khác
+    48025831 Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    48025839 Loại khác  [LK]
+  [4802589] Loại khác
+    48025891 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+    48025899 Loại khác  [LK]
+
+- 4802582 TIEU_DE
+    tieuDe.4802582 [29 ký tự]: 4802582 Giấy và bìa trang trí
+- 48025821 DONG8
+    tax.48025821 [196 ký tự]: 48025821 - - - - Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)
+    sen.48025821 [634 ký tự]: GIẤY VÀ BÌA TRANG TRÍ Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ: • Loại có hình bóng nước • Làm giả vân đá granit - một quá trình hoàn thiện mà hình ảnh làm giả vân đá được tiến hành ở công đoạn ép ướt trong công nghệ sản xuất giấy bằng cách sử dụng nỉ tổng hợp hoặc len dệt thoi với các mẫu đặc biệt để tạo ra sản phẩm hoàn thiện mà bề mặt có hoa văn tương tự; • Hoa văn xơ sợi - có các hình xơ sợi; • Hoa văn da giả cổ - có đặc trưng là các dấu vết nỉ trên bề mặt được sắp xếp, làm lộ ra bề mặt tương tự như vỏ trứng hoặc mặt giấy thời xưa; • Hoa văn đốm màu - có các đốm màu.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp"
+- 48025829 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48025829 [32 ký tự]: 48025829 - - - - Loại khác (SEN)
+    sen.48025829 [634 ký tự]: GIẤY VÀ BÌA TRANG TRÍ Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ: • Loại có hình bóng nước • Làm giả vân đá granit - một quá trình hoàn thiện mà hình ảnh làm giả vân đá được tiến hành ở công đoạn ép ướt trong công nghệ sản xuất giấy bằng cách sử dụng nỉ tổng hợp hoặc len dệt thoi với các mẫu đặc biệt để tạo ra sản phẩm hoàn thiện mà bề mặt có hoa văn tương tự; • Hoa văn xơ sợi - có các hình xơ sợi; • Hoa văn da giả cổ - có đặc trưng là các dấu vết nỉ trên bề mặt được sắp xếp, làm lộ ra bề mặt tương tự như vỏ trứng hoặc mặt giấy thời xưa; • Hoa văn đốm màu - có các đốm màu.
+- 4802583 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.4802583 [57 ký tự]: 4802583 Loại dùng để viết, in và các mục đích đồ bản khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để viết, in và các mục đích đồ bản khác"
+- 48025831 DONG8
+    tax.48025831 [152 ký tự]: 48025831 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"
+- 48025839 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48025839 [26 ký tự]: 48025839 - - - - Loại khác
+- 4802589 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4802589 [17 ký tự]: 4802589 Loại khác
+- 48025891 DONG8
+    tax.48025891 [61 ký tự]: 48025891 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+- 48025899 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48025899 [26 ký tự]: 48025899 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4802, wco.480258; chú giải: nhom4802.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480261 ===
+# 480261 — Dạng cuộn
+
+480261 — Uncoated paper and paperboard (not 4801 or 4803); over 10% by weight of mechanical or chemi-mechanical processed fibre, in rolls
+  [4802613] Giấy và bìa trang trí
+    48026131 Có chiều rộng không quá 15 cm (SEN)
+    48026139 Loại khác (SEN)  [LK]
+  [4802614] Giấy làm nền sản xuất giấy tráng nhôm
+    48026141 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)
+    48026149 Loại khác (SEN)  [LK]
+  [4802615] Loại dùng để viết, in và các mục đích đồ bản khác
+    48026151 Có chiều rộng không quá 15 cm
+    48026159 Loại khác  [LK]
+  48026160 Giấy nhiều lớp(SEN)
+  [4802619] Loại khác
+    48026191 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+    48026199 Loại khác  [LK]
+
+- 4802613 TIEU_DE
+    tieuDe.4802613 [29 ký tự]: 4802613 Giấy và bìa trang trí
+- 48026131 DONG8
+    tax.48026131 [52 ký tự]: 48026131 - - - - Có chiều rộng không quá 15 cm (SEN)
+    sen.48026131 [634 ký tự]: GIẤY VÀ BÌA TRANG TRÍ Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ: • Loại có hình bóng nước • Làm giả vân đá granit - một quá trình hoàn thiện mà hình ảnh làm giả vân đá được tiến hành ở công đoạn ép ướt trong công nghệ sản xuất giấy bằng cách sử dụng nỉ tổng hợp hoặc len dệt thoi với các mẫu đặc biệt để tạo ra sản phẩm hoàn thiện mà bề mặt có hoa văn tương tự; • Hoa văn xơ sợi - có các hình xơ sợi; • Hoa văn da giả cổ - có đặc trưng là các dấu vết nỉ trên bề mặt được sắp xếp, làm lộ ra bề mặt tương tự như vỏ trứng hoặc mặt giấy thời xưa; • Hoa văn đốm màu - có các đốm màu.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chiều rộng không quá 15 cm"
+- 48026139 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026139 [32 ký tự]: 48026139 - - - - Loại khác (SEN)
+    sen.48026139 [634 ký tự]: GIẤY VÀ BÌA TRANG TRÍ Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ: • Loại có hình bóng nước • Làm giả vân đá granit - một quá trình hoàn thiện mà hình ảnh làm giả vân đá được tiến hành ở công đoạn ép ướt trong công nghệ sản xuất giấy bằng cách sử dụng nỉ tổng hợp hoặc len dệt thoi với các mẫu đặc biệt để tạo ra sản phẩm hoàn thiện mà bề mặt có hoa văn tương tự; • Hoa văn xơ sợi - có các hình xơ sợi; • Hoa văn da giả cổ - có đặc trưng là các dấu vết nỉ trên bề mặt được sắp xếp, làm lộ ra bề mặt tương tự như vỏ trứng hoặc mặt giấy thời xưa; • Hoa văn đốm màu - có các đốm màu.
+- 4802614 TIEU_DE
+    tieuDe.4802614 [45 ký tự]: 4802614 Giấy làm nền sản xuất giấy tráng nhôm
+- 48026141 DONG8
+    tax.48026141 [66 ký tự]: 48026141 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)
+    sen.48026141 [450 ký tự]: GIẤY LÀM NỀN SẢN XUẤT GIẤY TRÁNG NHÔM Đáp ứng chú giải 5, bóng một mặt, tỷ trọng biểu kiến không nhỏ hơn 750kg/m3, độ nhẵn không quá 125ml/phút, độ hút nước theo phương pháp Cobb nhỏ hơn 25g/m2, độ trắng không dưới 82% theo ISO, độ mờ đục không nhỏ hơn 60%, độ bền xé không nhỏ hơn 5,6mN.m2/g theo chiều dọc và 5mN.m2/g theo chiều ngang, độ chịu bục không nhỏ hơn 2,3 KPa.m2/g, độ dài đứt không nhỏ hơn 4000m theo chiều dọc và 3500m theo chiều ngang.
+- 48026149 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026149 [32 ký tự]: 48026149 - - - - Loại khác (SEN)
+    sen.48026149 [450 ký tự]: GIẤY LÀM NỀN SẢN XUẤT GIẤY TRÁNG NHÔM Đáp ứng chú giải 5, bóng một mặt, tỷ trọng biểu kiến không nhỏ hơn 750kg/m3, độ nhẵn không quá 125ml/phút, độ hút nước theo phương pháp Cobb nhỏ hơn 25g/m2, độ trắng không dưới 82% theo ISO, độ mờ đục không nhỏ hơn 60%, độ bền xé không nhỏ hơn 5,6mN.m2/g theo chiều dọc và 5mN.m2/g theo chiều ngang, độ chịu bục không nhỏ hơn 2,3 KPa.m2/g, độ dài đứt không nhỏ hơn 4000m theo chiều dọc và 3500m theo chiều ngang.
+- 4802615 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.4802615 [57 ký tự]: 4802615 Loại dùng để viết, in và các mục đích đồ bản khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để viết, in và các mục đích đồ bản khác"
+- 48026151 DONG8
+    tax.48026151 [46 ký tự]: 48026151 - - - - Có chiều rộng không quá 15 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chiều rộng không quá 15 cm"
+- 48026159 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026159 [26 ký tự]: 48026159 - - - - Loại khác
+- 48026160 DONG8
+    tax.48026160 [34 ký tự]: 48026160 - - - Giấy nhiều lớp(SEN)
+- 4802619 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4802619 [17 ký tự]: 4802619 Loại khác
+- 48026191 DONG8
+    tax.48026191 [61 ký tự]: 48026191 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+- 48026199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026199 [26 ký tự]: 48026199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4802, wco.480261; chú giải: nhom4802.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480262 ===
+# 480262 — Dạng tờ với một chiều không quá 435 mm và chiều kia không quá 297 mm ở dạng không gấp
+
+480262 — Uncoated paper and paperboard (not 4801 or 4803); over 10% by weight of mechanical or chemi-mechanical processed fibre, in sheets 435mm or less by 297mm or less (unfolded)
+  [4802621] Giấy và bìa trang trí, dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp
+    48026211 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)
+    48026219 Loại khác (SEN)  [LK]
+  [4802622] Giấy và bìa trang trí khác
+    48026221 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)
+    48026229 Loại khác (SEN)  [LK]
+  [4802623] Loại dùng để viết, in và các mục đích đồ bản khác
+    48026231 Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    48026239 Loại khác  [LK]
+  [4802629] Loại khác
+    48026291 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+    48026299 Loại khác  [LK]
+
+- 4802621 TIEU_DE
+    tieuDe.4802621 [153 ký tự]: 4802621 Giấy và bìa trang trí, dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không gấp"
+- 48026211 DONG8
+    tax.48026211 [66 ký tự]: 48026211 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)
+    sen.48026211 [634 ký tự]: GIẤY VÀ BÌA TRANG TRÍ Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ: • Loại có hình bóng nước • Làm giả vân đá granit - một quá trình hoàn thiện mà hình ảnh làm giả vân đá được tiến hành ở công đoạn ép ướt trong công nghệ sản xuất giấy bằng cách sử dụng nỉ tổng hợp hoặc len dệt thoi với các mẫu đặc biệt để tạo ra sản phẩm hoàn thiện mà bề mặt có hoa văn tương tự; • Hoa văn xơ sợi - có các hình xơ sợi; • Hoa văn da giả cổ - có đặc trưng là các dấu vết nỉ trên bề mặt được sắp xếp, làm lộ ra bề mặt tương tự như vỏ trứng hoặc mặt giấy thời xưa; • Hoa văn đốm màu - có các đốm màu.
+- 48026219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026219 [32 ký tự]: 48026219 - - - - Loại khác (SEN)
+    sen.48026219 [634 ký tự]: GIẤY VÀ BÌA TRANG TRÍ Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ: • Loại có hình bóng nước • Làm giả vân đá granit - một quá trình hoàn thiện mà hình ảnh làm giả vân đá được tiến hành ở công đoạn ép ướt trong công nghệ sản xuất giấy bằng cách sử dụng nỉ tổng hợp hoặc len dệt thoi với các mẫu đặc biệt để tạo ra sản phẩm hoàn thiện mà bề mặt có hoa văn tương tự; • Hoa văn xơ sợi - có các hình xơ sợi; • Hoa văn da giả cổ - có đặc trưng là các dấu vết nỉ trên bề mặt được sắp xếp, làm lộ ra bề mặt tương tự như vỏ trứng hoặc mặt giấy thời xưa; • Hoa văn đốm màu - có các đốm màu.
+- 4802622 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.4802622 [34 ký tự]: 4802622 Giấy và bìa trang trí khác
+- 48026221 DONG8
+    tax.48026221 [66 ký tự]: 48026221 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)
+    sen.48026221 [634 ký tự]: GIẤY VÀ BÌA TRANG TRÍ Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ: • Loại có hình bóng nước • Làm giả vân đá granit - một quá trình hoàn thiện mà hình ảnh làm giả vân đá được tiến hành ở công đoạn ép ướt trong công nghệ sản xuất giấy bằng cách sử dụng nỉ tổng hợp hoặc len dệt thoi với các mẫu đặc biệt để tạo ra sản phẩm hoàn thiện mà bề mặt có hoa văn tương tự; • Hoa văn xơ sợi - có các hình xơ sợi; • Hoa văn da giả cổ - có đặc trưng là các dấu vết nỉ trên bề mặt được sắp xếp, làm lộ ra bề mặt tương tự như vỏ trứng hoặc mặt giấy thời xưa; • Hoa văn đốm màu - có các đốm màu.
+- 48026229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026229 [32 ký tự]: 48026229 - - - - Loại khác (SEN)
+    sen.48026229 [634 ký tự]: GIẤY VÀ BÌA TRANG TRÍ Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ: • Loại có hình bóng nước • Làm giả vân đá granit - một quá trình hoàn thiện mà hình ảnh làm giả vân đá được tiến hành ở công đoạn ép ướt trong công nghệ sản xuất giấy bằng cách sử dụng nỉ tổng hợp hoặc len dệt thoi với các mẫu đặc biệt để tạo ra sản phẩm hoàn thiện mà bề mặt có hoa văn tương tự; • Hoa văn xơ sợi - có các hình xơ sợi; • Hoa văn da giả cổ - có đặc trưng là các dấu vết nỉ trên bề mặt được sắp xếp, làm lộ ra bề mặt tương tự như vỏ trứng hoặc mặt giấy thời xưa; • Hoa văn đốm màu - có các đốm màu.
+- 4802623 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.4802623 [57 ký tự]: 4802623 Loại dùng để viết, in và các mục đích đồ bản khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để viết, in và các mục đích đồ bản khác"
+- 48026231 DONG8
+    tax.48026231 [106 ký tự]: 48026231 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không gấp"
+- 48026239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026239 [26 ký tự]: 48026239 - - - - Loại khác
+- 4802629 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4802629 [17 ký tự]: 4802629 Loại khác
+- 48026291 DONG8
+    tax.48026291 [61 ký tự]: 48026291 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+- 48026299 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026299 [26 ký tự]: 48026299 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4802, wco.480262; chú giải: nhom4802.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480269 ===
+# 480269 — Loại khác
+
+480269 — Uncoated paper and paperboard (not 4801 or 4803); over 10% by weight of mechanical or chemi-mechanical processed fibre, other than rolls, other than sheets 435mm or less by 297mm or less (unfolded)
+  [4802691] Loại dùng để viết, in và các mục đích đồ bản khác
+    48026911 Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    48026919 Loại khác  [LK]
+  [4802699] Loại khác
+    48026991 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+    48026999 Loại khác  [LK]
+
+- 4802691 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.4802691 [57 ký tự]: 4802691 Loại dùng để viết, in và các mục đích đồ bản khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để viết, in và các mục đích đồ bản khác"
+- 48026911 DONG8
+    tax.48026911 [106 ký tự]: 48026911 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không gấp"
+- 48026919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026919 [26 ký tự]: 48026919 - - - - Loại khác
+- 4802699 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4802699 [17 ký tự]: 4802699 Loại khác
+- 48026991 DONG8
+    tax.48026991 [61 ký tự]: 48026991 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+- 48026999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48026999 [26 ký tự]: 48026999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4802, wco.480269; chú giải: nhom4802.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480300 ===
+# 480300 — Giấy để làm giấy vệ sinh hoặc lau mặt, khăn giấy, khăn ăn và các loại giấy tương tự dùng trong gia đình hoặc vệ sinh, tấm xenlulo và màng xơ sợi xenlulo, đã hoặc chưa làm chun, làm nhăn, rập nổi, đục lỗ, nhuộm màu bề mặt, trang trí hoặc in bề mặt, ở dạng cuộn hoặc tờ.
+
+NHÓM 4803 — Giấy để làm giấy vệ sinh hoặc lau mặt, khăn giấy, khăn ăn và các loại giấy tương tự dùng trong gia đình hoặc vệ sinh, tấm xenlulo và màng xơ sợi xenlulo, đã hoặc chưa làm chun, làm nhăn, rập nổi, đục lỗ, nhuộm màu bề mặt, trang trí hoặc in bề mặt, ở dạng cuộn hoặc tờ.
+  48030030 Tấm xenlulo hoặc màng xơ sợi xenlulo
+  48030090 Loại khác  [LK]
+
+- 48030030 DONG8
+    tax.48030030 [47 ký tự]: 48030030 - Tấm xenlulo hoặc màng xơ sợi xenlulo
+- 48030090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48030090 [20 ký tự]: 48030090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.480300; chú giải: nhom4803.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480421 ===
+# 480421 — Chưa tẩy trắng
+
+480421 — Kraft paper and paperboard; sack kraft paper, uncoated, unbleached, in rolls or sheets, other than that of heading no. 4802 or 4803
+  48042110 Loại dùng làm bao xi măng (SEN)
+  48042190 Loại khác  [LK]
+
+- 48042110 DONG8
+    tax.48042110 [46 ký tự]: 48042110 - - - Loại dùng làm bao xi măng (SEN)
+    sen.48042110 [234 ký tự]: GIẤY KRAFT LOẠI DÙNG LÀM BAO XI MĂNG Giấy kraft, loại dùng để sản xuất bao có độ thấu khí không lớn hơn 30 giây/100ml (được xác định bằng phương pháp Bendtsen) và độ hút nước không lớn hơn 35g/m2 (được xác định bằng phương pháp Cobb).
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng làm bao xi măng"
+- 48042190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48042190 [24 ký tự]: 48042190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480421; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480429 ===
+# 480429 — Loại khác
+
+480429 — Kraft paper and paperboard; sack kraft paper, uncoated, bleached, in rolls or sheets, other than that of heading no. 4802 or 4803
+  48042910 Loại dùng làm bao xi măng (SEN)
+  48042990 Loại khác  [LK]
+
+- 48042910 DONG8
+    tax.48042910 [46 ký tự]: 48042910 - - - Loại dùng làm bao xi măng (SEN)
+    sen.48042910 [234 ký tự]: GIẤY KRAFT LOẠI DÙNG LÀM BAO XI MĂNG Giấy kraft, loại dùng để sản xuất bao có độ thấu khí không lớn hơn 30 giây/100ml (được xác định bằng phương pháp Bendtsen) và độ hút nước không lớn hơn 35g/m2 (được xác định bằng phương pháp Cobb).
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng làm bao xi măng"
+- 48042990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48042990 [24 ký tự]: 48042990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480429; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480431 ===
+# 480431 — Chưa tẩy trắng
+
+480431 — Kraft paper and paperboard; uncoated, unbleached, weight 150g/m2 or less, in rolls or sheets, other than that of heading no. 4802 or 4803
+  48043110 Giấy kraft cách điện (SEN)
+  48043130 Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+  48043140 Giấy làm nền sản xuất giấy ráp (SEN)
+  48043150 Loại dùng làm bao xi măng (SEN)
+  48043190 Loại khác  [LK]
+
+- 48043110 DONG8
+    tax.48043110 [41 ký tự]: 48043110 - - - Giấy kraft cách điện (SEN)
+    sen.48043110 [372 ký tự]: GIẤY KRAFT CÁCH ĐIỆN Giấy kraft cách điện là một loại giấy Kraft được hoàn thiện bằng nước, thỏa mãn tiêu chuẩn IEC554-3-1, loại được sử dụng là giấy bọc cách điện trong các máy biến áp ngâm dầu. Cụm từ “được hoàn thiện bằng nước” đề cập đến loại giấy được sản xuất bằng cách làm ẩm giấy bằng nước (giá trị pH từ 7-9) hoặc bằng cách xông hơi nước trong quá trình cán láng.
+- 48043130 DONG8
+    tax.48043130 [84 ký tự]: 48043130 - - - Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+    sen.48043130 [534 ký tự]: GIẤY KRAFT, LOẠI DÙNG ĐỂ SẢN XUẤT BĂNG DÁN GỖ DÁN Loại giấy kraft này được sử dụng như là lớp bồi của băng dán gỗ dán. Nó có độ bền kéo cao. Đây là loại giấy kraft dai, mỏng ngăn việc hình thành vùng bóng/ vết hằn khi được sử dụng trên lớp gỗ mỏng và mờ. Chúng được sản xuất để đáp ứng các tiêu chuẩn kỹ thuật thí nghiệm khắt khe: ● Có độ bền ẩm (độ bền ướt) từ 40g đến 60g. ● Loại giấy mỏng đặc biệt này tránh được việc phân rã sợi và các dấu vết khi chịu sức ép. ● Giấy kraft có độ bền cao đảm bảo được các panel lõi trong xây dựng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có độ bền ướt từ 40 g đến 60 g" · [GIỚI HẠN] "dùng để sản xuất băng dán gỗ dán"
+- 48043140 DONG8
+    tax.48043140 [51 ký tự]: 48043140 - - - Giấy làm nền sản xuất giấy ráp (SEN)
+    sen.48043140 [407 ký tự]: GIẤY LÀM NỀN SẢN XUẤT GIẤY RÁP Giấy kraft được sản xuất từ bột giấy chưa tẩy trắng, định lượng 100 và 110 g/m2 tương ứng; độ hút nước không lớn hơn 18g/m2 (được xác định theo phương pháp Cobb); tỷ trọng biểu kiến không nhỏ hơn 0.7g/cm3; độ bền kéo ở trạng thái ướt/ khô (ngâm trong 1 giờ) theo cả hai hướng không nhỏ hơn 40%; độ bền kéo căng khô không nhỏ hơn 9300m theo chiều dọc và 4000m theo chiều ngang.
+- 48043150 DONG8
+    tax.48043150 [46 ký tự]: 48043150 - - - Loại dùng làm bao xi măng (SEN)
+    sen.48043150 [503 ký tự]: GIẤY KRAFT LOẠI KHÁC DÙNG ĐỂ LÀM BAO XI MĂNG Giấy Kraft được sản xuất từ bột giấy chưa tẩy trắng, định lượng 70- 90% ± 4g/m2; độ thấu khí theo phương pháp Bendtsen không quá 30 giây / 100 ml; độ hút nước Cobb không quá 35g/m2; độ bền kéo không nhỏ hơn 3.0kN/m theo chiều dọc và 1.7 kN/m theo chiều ngang; độ bền xé không nhỏ hơn 540 mN theo chiều dọc và 640 mN theo chiều ngang; chỉ số kéo giãn không nhỏ hơn 1.5% chiều dọc và 3.0% theo chiều ngang; và không thỏa mãn chú giải phân nhóm 2 của chương 48.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng làm bao xi măng"
+- 48043190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48043190 [24 ký tự]: 48043190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480431; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480439 ===
+# 480439 — Loại khác
+
+480439 — Kraft paper and paperboard; uncoated, bleached, weight 150g/m2 or less, in rolls or sheets, other than that of heading no. 4802 or 4803
+  48043910 Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+  48043920 Giấy và bìa dùng để làm bao bì thực phẩm (SEN)
+  48043990 Loại khác  [LK]
+
+- 48043910 DONG8
+    tax.48043910 [84 ký tự]: 48043910 - - - Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+    sen.48043910 [534 ký tự]: GIẤY KRAFT, LOẠI DÙNG ĐỂ SẢN XUẤT BĂNG DÁN GỖ DÁN Loại giấy kraft này được sử dụng như là lớp bồi của băng dán gỗ dán. Nó có độ bền kéo cao. Đây là loại giấy kraft dai, mỏng ngăn việc hình thành vùng bóng/ vết hằn khi được sử dụng trên lớp gỗ mỏng và mờ. Chúng được sản xuất để đáp ứng các tiêu chuẩn kỹ thuật thí nghiệm khắt khe: ● Có độ bền ẩm (độ bền ướt) từ 40g đến 60g. ● Loại giấy mỏng đặc biệt này tránh được việc phân rã sợi và các dấu vết khi chịu sức ép. ● Giấy kraft có độ bền cao đảm bảo được các panel lõi trong xây dựng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có độ bền ướt từ 40 g đến 60 g" · [GIỚI HẠN] "dùng để sản xuất băng dán gỗ dán"
+- 48043920 DONG8
+    tax.48043920 [61 ký tự]: 48043920 - - - Giấy và bìa dùng để làm bao bì thực phẩm (SEN)
+    sen.48043920 [609 ký tự]: GIẤY VÀ BÌA LOẠI DÙNG ĐỂ LÀM BAO BÌ THỰC PHẨM Giấy và bìa gói thực phẩm được sản xuất chủ yếu để gói thực phẩm ẩm hoặc có dầu. Sản phẩm này thường được làm chủ yếu từ bột giấy thu được từ phương pháp hóa học đã được tẩy trắng và được gia keo nhiều để tăng tính chống thấm nước. Giấy và bìa gói thực phẩm dùng để bao gói thực phẩm đông lạnh được chế tạo từ giấy hoặc bìa chống thấm nước được gia keo nhiều. Chúng chống nứt ở nhiệt độ thấp để sử dụng trong làm đông nhanh và bảo quản thực phẩm. Túi giấy được làm bằng giấy kraft không tráng định lượng thấp Paper bags made of light weight uncoated kraft paper
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để làm bao bì thực phẩm"
+- 48043990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48043990 [24 ký tự]: 48043990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480439; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480441 ===
+# 480441 — Chưa tẩy trắng
+
+480441 — Kraft paper and paperboard; uncoated, unbleached, weight more than 150g/m2 but less than 225g/m2, in rolls or sheets, other than that of heading no. 4802 or 4803
+  48044110 Giấy kraft cách điện (SEN)
+  48044190 Loại khác  [LK]
+
+- 48044110 DONG8
+    tax.48044110 [41 ký tự]: 48044110 - - - Giấy kraft cách điện (SEN)
+    sen.48044110 [372 ký tự]: GIẤY KRAFT CÁCH ĐIỆN Giấy kraft cách điện là một loại giấy Kraft được hoàn thiện bằng nước, thỏa mãn tiêu chuẩn IEC554-3-1, loại được sử dụng là giấy bọc cách điện trong các máy biến áp ngâm dầu. Cụm từ “được hoàn thiện bằng nước” đề cập đến loại giấy được sản xuất bằng cách làm ẩm giấy bằng nước (giá trị pH từ 7-9) hoặc bằng cách xông hơi nước trong quá trình cán láng.
+- 48044190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48044190 [24 ký tự]: 48044190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480441; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480442 ===
+# 480442 — Loại đã được tẩy trắng toàn bộ và có hàm lượng bột gỗ thu được từ quá trình hóa học trên 95% so với tổng lượng bột giấy tính theo khối lượng
+
+480442 — Kraft paper and paperboard; uncoated, weight between 150 and 225g/m2, bleached uniformly throughout, more than 95% of total fibre content consists of chemically processed wood fibres, in rolls or sheets
+  48044210 Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+  48044290 Loại khác  [LK]
+
+- 48044210 DONG8
+    tax.48044210 [60 ký tự]: 48044210 - - - Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+    sen.48044210 [609 ký tự]: GIẤY VÀ BÌA LOẠI DÙNG ĐỂ LÀM BAO BÌ THỰC PHẨM Giấy và bìa gói thực phẩm được sản xuất chủ yếu để gói thực phẩm ẩm hoặc có dầu. Sản phẩm này thường được làm chủ yếu từ bột giấy thu được từ phương pháp hóa học đã được tẩy trắng và được gia keo nhiều để tăng tính chống thấm nước. Giấy và bìa gói thực phẩm dùng để bao gói thực phẩm đông lạnh được chế tạo từ giấy hoặc bìa chống thấm nước được gia keo nhiều. Chúng chống nứt ở nhiệt độ thấp để sử dụng trong làm đông nhanh và bảo quản thực phẩm. Túi giấy được làm bằng giấy kraft không tráng định lượng thấp Paper bags made of light weight uncoated kraft paper
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để làm bao bì thực phẩm"
+- 48044290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48044290 [24 ký tự]: 48044290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480442; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480449 ===
+# 480449 — Loại khác
+
+480449 — Kraft paper and paperboard; uncoated, weight more than 150g/m2 but less than 225g/m2, in rolls or sheets, n.e.c. in item no. 4804.4, other than that of heading no. 4802 or 4803
+  48044910 Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+  48044990 Loại khác  [LK]
+
+- 48044910 DONG8
+    tax.48044910 [60 ký tự]: 48044910 - - - Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+    sen.48044910 [609 ký tự]: GIẤY VÀ BÌA LOẠI DÙNG ĐỂ LÀM BAO BÌ THỰC PHẨM Giấy và bìa gói thực phẩm được sản xuất chủ yếu để gói thực phẩm ẩm hoặc có dầu. Sản phẩm này thường được làm chủ yếu từ bột giấy thu được từ phương pháp hóa học đã được tẩy trắng và được gia keo nhiều để tăng tính chống thấm nước. Giấy và bìa gói thực phẩm dùng để bao gói thực phẩm đông lạnh được chế tạo từ giấy hoặc bìa chống thấm nước được gia keo nhiều. Chúng chống nứt ở nhiệt độ thấp để sử dụng trong làm đông nhanh và bảo quản thực phẩm. Túi giấy được làm bằng giấy kraft không tráng định lượng thấp Paper bags made of light weight uncoated kraft paper
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để làm bao bì thực phẩm"
+- 48044990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48044990 [24 ký tự]: 48044990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480449; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480451 ===
+# 480451 — Chưa tẩy trắng
+
+480451 — Kraft paper and paperboard; uncoated, unbleached, weight 225g/m2 or more, in rolls or sheets, other than that of heading no. 4802 or 4803
+  48045110 Giấy kraft cách điện (SEN)
+  48045120 Bìa ép có định lượng từ 600g/m2 trở lên
+  48045130 Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+  48045190 Loại khác  [LK]
+
+- 48045110 DONG8
+    tax.48045110 [41 ký tự]: 48045110 - - - Giấy kraft cách điện (SEN)
+    sen.48045110 [372 ký tự]: GIẤY KRAFT CÁCH ĐIỆN Giấy kraft cách điện là một loại giấy Kraft được hoàn thiện bằng nước, thỏa mãn tiêu chuẩn IEC554-3-1, loại được sử dụng là giấy bọc cách điện trong các máy biến áp ngâm dầu. Cụm từ “được hoàn thiện bằng nước” đề cập đến loại giấy được sản xuất bằng cách làm ẩm giấy bằng nước (giá trị pH từ 7-9) hoặc bằng cách xông hơi nước trong quá trình cán láng.
+- 48045120 DONG8
+    tax.48045120 [54 ký tự]: 48045120 - - - Bìa ép có định lượng từ 600g/m2 trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có định lượng từ 600g/m2 trở lên"
+- 48045130 DONG8
+    tax.48045130 [84 ký tự]: 48045130 - - - Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)
+    sen.48045130 [534 ký tự]: GIẤY KRAFT, LOẠI DÙNG ĐỂ SẢN XUẤT BĂNG DÁN GỖ DÁN Loại giấy kraft này được sử dụng như là lớp bồi của băng dán gỗ dán. Nó có độ bền kéo cao. Đây là loại giấy kraft dai, mỏng ngăn việc hình thành vùng bóng/ vết hằn khi được sử dụng trên lớp gỗ mỏng và mờ. Chúng được sản xuất để đáp ứng các tiêu chuẩn kỹ thuật thí nghiệm khắt khe: ● Có độ bền ẩm (độ bền ướt) từ 40g đến 60g. ● Loại giấy mỏng đặc biệt này tránh được việc phân rã sợi và các dấu vết khi chịu sức ép. ● Giấy kraft có độ bền cao đảm bảo được các panel lõi trong xây dựng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có độ bền ướt từ 40 g đến 60 g" · [GIỚI HẠN] "dùng để sản xuất băng dán gỗ dán"
+- 48045190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48045190 [24 ký tự]: 48045190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480451; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480452 ===
+# 480452 — Loại đã được tẩy trắng toàn bộ và có hàm lượng bột gỗ thu được từ quá trình hóa học trên 95% so với tổng lượng bột giấy tính theo khối lượng
+
+480452 — Kraft paper and paperboard; uncoated, weight 225g/m2 or more, bleached uniformly throughout, more than 95% of total fibre content consists of chemically processed wood fibres, in rolls or sheets
+  48045210 Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+  48045290 Loại khác  [LK]
+
+- 48045210 DONG8
+    tax.48045210 [60 ký tự]: 48045210 - - - Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+    sen.48045210 [609 ký tự]: GIẤY VÀ BÌA LOẠI DÙNG ĐỂ LÀM BAO BÌ THỰC PHẨM Giấy và bìa gói thực phẩm được sản xuất chủ yếu để gói thực phẩm ẩm hoặc có dầu. Sản phẩm này thường được làm chủ yếu từ bột giấy thu được từ phương pháp hóa học đã được tẩy trắng và được gia keo nhiều để tăng tính chống thấm nước. Giấy và bìa gói thực phẩm dùng để bao gói thực phẩm đông lạnh được chế tạo từ giấy hoặc bìa chống thấm nước được gia keo nhiều. Chúng chống nứt ở nhiệt độ thấp để sử dụng trong làm đông nhanh và bảo quản thực phẩm. Túi giấy được làm bằng giấy kraft không tráng định lượng thấp Paper bags made of light weight uncoated kraft paper
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để làm bao bì thực phẩm"
+- 48045290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48045290 [24 ký tự]: 48045290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480452; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480459 ===
+# 480459 — Loại khác
+
+480459 — Kraft paper and paperboard; uncoated, weight 225g/m2 or more, in rolls or sheets, n.e.c. in item no. 4804.5, other than that of heading no. 4802 or 4803
+  48045910 Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+  48045990 Loại khác  [LK]
+
+- 48045910 DONG8
+    tax.48045910 [60 ký tự]: 48045910 - - - Giấy và bìa dùng để làm bao bì thực phẩm(SEN)
+    sen.48045910 [609 ký tự]: GIẤY VÀ BÌA LOẠI DÙNG ĐỂ LÀM BAO BÌ THỰC PHẨM Giấy và bìa gói thực phẩm được sản xuất chủ yếu để gói thực phẩm ẩm hoặc có dầu. Sản phẩm này thường được làm chủ yếu từ bột giấy thu được từ phương pháp hóa học đã được tẩy trắng và được gia keo nhiều để tăng tính chống thấm nước. Giấy và bìa gói thực phẩm dùng để bao gói thực phẩm đông lạnh được chế tạo từ giấy hoặc bìa chống thấm nước được gia keo nhiều. Chúng chống nứt ở nhiệt độ thấp để sử dụng trong làm đông nhanh và bảo quản thực phẩm. Túi giấy được làm bằng giấy kraft không tráng định lượng thấp Paper bags made of light weight uncoated kraft paper
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để làm bao bì thực phẩm"
+- 48045990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48045990 [24 ký tự]: 48045990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480459; chú giải: nhom4804.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480519 ===
+# 480519 — Loại khác
+
+480519 — Paper and paperboard; uncoated, fluting paper other than semi-chemical or straw, rolls or sheets
+  48051910 Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+  48051990 Loại khác  [LK]
+
+- 48051910 DONG8
+    tax.48051910 [59 ký tự]: 48051910 - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+- 48051990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48051990 [24 ký tự]: 48051990 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4805, wco.480519; chú giải: nhom4805.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480525 ===
+# 480525 — Định lượng trên 150 g/m2
+
+480525 — Paper & paperboard; uncoated, testliner (recycled linerboard), weight over 150g/m2, in rolls or sheets
+  48052510 Có định lượng dưới 225 g/m2
+  48052590 Loại khác  [LK]
+
+- 48052510 DONG8
+    tax.48052510 [42 ký tự]: 48052510 - - - Có định lượng dưới 225 g/m2
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có định lượng dưới 225 g/m2"
+- 48052590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48052590 [24 ký tự]: 48052590 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4805, wco.480525; chú giải: nhom4805.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480530 ===
+# 480530 — Giấy bao gói làm từ bột giấy sulphit
+
+480530 — Paper and paperboard; sulphite wrapping paper, uncoated, in rolls or sheets
+  48053010 Giấy đã nhuộm màu dùng để bao quanh hộp diêm bằng gỗ(SEN)
+  48053090 Loại khác  [LK]
+
+- 48053010 DONG8
+    tax.48053010 [70 ký tự]: 48053010 - - Giấy đã nhuộm màu dùng để bao quanh hộp diêm bằng gỗ(SEN)
+    sen.48053010 [287 ký tự]: GIẤY ĐÃ NHUỘM MÀU LOẠI DÙNG ĐỂ BAO QUANH HỘP DIÊM BẰNG GỖ Giấy này là loại giấy bao gói sulphit sử dụng đã nhuộm màu để bao quanh hộp gỗ chứa que diêm. Một mẫu giấy kể trên có thể thấy ở bức tranh bên trái phía dưới. Giấy này được kết hợp với hộp diêm như ảnh minh họa bên phải dưới đây.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để bao quanh hộp diêm" · [GIỚI HẠN] "bằng gỗ"
+- 48053090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48053090 [22 ký tự]: 48053090 - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4805, wco.480530; chú giải: nhom4805.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480591 ===
+# 480591 — Có định lượng từ 150 g/m2 trở xuống
+
+480591 — Paper and paperboard; uncoated, weight 150g/m2 or less, in rolls or sheets, n.e.c. in heading no.4805
+  48059110 Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng
+  48059120 Loại dùng để sản xuất giấy vàng mã(SEN)
+  48059190 Loại khác  [LK]
+
+- 48059110 DONG8
+    tax.48059110 [137 ký tự]: 48059110 - - - Giấy dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa không quá 0,6% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để lót vào giữa các sản phẩm thủy tinh phẳng khi đóng gói, có hàm lượng nhựa" · [GIỚI HẠN] "không quá 0,6% tính theo khối lượng"
+- 48059120 DONG8
+    tax.48059120 [54 ký tự]: 48059120 - - - Loại dùng để sản xuất giấy vàng mã(SEN)
+    sen.48059120 [148 ký tự]: LOẠI DÙNG ĐỂ SẢN XUẤT GIẤY VÀNG MÃ Giấy, loại dùng để sản xuất giấy đốt vàng mã trong các nghi lễ tôn giáo; có định lượng bằng hoặc nhỏ hơn 150g/m2.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để sản xuất giấy vàng mã"
+- 48059190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48059190 [24 ký tự]: 48059190 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4805, wco.480591; chú giải: nhom4805.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480592 ===
+# 480592 — Có định lượng trên 150 g/m2 nhưng dưới 225 g/m2
+
+480592 — Paper and paperboard; uncoated, weight more than 150g/m2 but less than 225 g/m2, in rolls or sheets, n.e.c. in heading no. 4805
+  48059210 Giấy và bìa nhiều lớp(SEN)
+  48059290 Loại khác  [LK]
+
+- 48059210 DONG8
+    tax.48059210 [41 ký tự]: 48059210 - - - Giấy và bìa nhiều lớp(SEN)
+- 48059290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48059290 [24 ký tự]: 48059290 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4805, wco.480592; chú giải: nhom4805.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480593 ===
+# 480593 — Có định lượng từ 225 g/m2 trở lên
+
+480593 — Paper and paperboard; uncoated, weight 225/m2 or more, in rolls or sheets, n.e.c. in heading no. 4805
+  48059310 Giấy và bìa nhiều lớp(SEN)
+  48059320 Giấy thấm (SEN)
+  48059390 Loại khác  [LK]
+
+- 48059310 DONG8
+    tax.48059310 [41 ký tự]: 48059310 - - - Giấy và bìa nhiều lớp(SEN)
+- 48059320 DONG8
+    tax.48059320 [30 ký tự]: 48059320 - - - Giấy thấm (SEN)
+    sen.48059320 [597 ký tự]: GIẤY THẤM Giấy thấm là một loại giấy có khả năng thấm hút cao được sử dụng để thấm nhiều loại chất khác nhau để loại bỏ các loại chất lỏng dư thừa. Thông thường nhất, loại giấy này được dùng để loại bỏ mực hoặc dầu, nhưng chúng cũng có thể được dùng để tách các loại chất lỏng khác. Giấy thấm được làm từ nhiều vật liệu khác nhau, có độ dày, độ mềm… khác nhau tùy thuộc ứng dụng của nó. Nó thường được làm từ xơ sợi xenlulô có nguồn gốc từ bông và được sản xuất trên các máy xeo giấy đặc biệt. Các tiêu chuẩn kỹ thuật cho giấy thấm mực là có thể hút được nhiều hơn 1ml mực trong thời gian 50 giây.
+- 48059390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48059390 [24 ký tự]: 48059390 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4805, wco.480593; chú giải: nhom4805.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 480990 ===
+# 480990 — Loại khác
+
+480990 — Paper; carbon paper and other copying or transfer papers (including coated or impregnated paper for duplicator stencils or offset plates), whether or not printed, in rolls or sheets
+  48099010 Giấy than và các loại giấy sao chép tương tự
+  48099090 Loại khác  [LK]
+
+- 48099010 DONG8
+    tax.48099010 [57 ký tự]: 48099010 - - Giấy than và các loại giấy sao chép tương tự
+- 48099090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48099090 [22 ký tự]: 48099090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.480990; chú giải: nhom4809.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 481013 ===
+# 481013 — Dạng cuộn
+
+481013 — Paper and paperboard; coated with kaolin or other inorganic substances, for printing & writing, graphics, containing no, or not more than 10% by weight of total fibres obtained by mechanical or chemi-mechanical process, in rolls
+  48101310 Đã in, loại dùng cho máy ghi tự động, có chiều rộng từ 150 mm trở xuống(SEN)
+  [4810139] Loại khác
+    48101391 Có chiều rộng từ 150 mm trở xuống
+    48101399 Loại khác  [LK]
+
+- 48101310 DONG8
+    tax.48101310 [91 ký tự]: 48101310 - - - Đã in, loại dùng cho máy ghi tự động, có chiều rộng từ 150 mm trở xuống(SEN)
+    sen.48101310 [456 ký tự]: GIẤY ĐÃ IN, DÙNG CHO MÁY GHI TỰ ĐỘNG Giấy đã in, dùng cho máy ghi tự động, ở dạng cuộn hoặc tờ hình chữ nhật (kể cả hình vuông), và đã được in các biểu đồ hoặc được kẻ dòng với các thang đo cụ thể dùng cho các thiết bị khoa học hoặc y tế. Ví dụ như giấy điện tâm đồ sử dụng trong y tế, giấy ghi nhiệt độ thời tiết hàng ngày, giấy ghi động đất theo thang đo độ Richte.... Loại này không bao gồm giấy nhạy nhiệt. Giấy ghi dạng cuộn Recording paper in rolls
+    vế phải phủ (cổng 5): [GIỚI HẠN] "loại dùng cho máy ghi tự động" · [GIỚI HẠN] "có chiều rộng từ 150 mm trở xuống"
+- 4810139 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4810139 [17 ký tự]: 4810139 Loại khác
+- 48101391 DONG8
+    tax.48101391 [50 ký tự]: 48101391 - - - - Có chiều rộng từ 150 mm trở xuống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chiều rộng từ 150 mm trở xuống"
+- 48101399 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48101399 [26 ký tự]: 48101399 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4810, wco.481013; chú giải: nhom4810.nhom, ch48.chuong, phan48.phan
+
+=== GÓI PN6 481019 ===
+# 481019 — Loại khác
+
+481019 — Paper and paperboard; coated with kaolin or other inorganic substances, for printing/writing/graphics, having 10% or less by weight of total fibres got by mechanical/chemi-mechanical process, sides exceeding 435mm and 297mm, unfolded, sheets
+  48101910 Đã in, loại dùng cho máy ghi tự động, không có chiều nào trên 360 mm ở dạng không gấp(SEN)
+  48101990 Loại khác  [LK]
+
+- 48101910 DONG8
+    tax.48101910 [105 ký tự]: 48101910 - - - Đã in, loại dùng cho máy ghi tự động, không có chiều nào trên 360 mm ở dạng không gấp(SEN)
+    sen.48101910 [456 ký tự]: GIẤY ĐÃ IN, DÙNG CHO MÁY GHI TỰ ĐỘNG Giấy đã in, dùng cho máy ghi tự động, ở dạng cuộn hoặc tờ hình chữ nhật (kể cả hình vuông), và đã được in các biểu đồ hoặc được kẻ dòng với các thang đo cụ thể dùng cho các thiết bị khoa học hoặc y tế. Ví dụ như giấy điện tâm đồ sử dụng trong y tế, giấy ghi nhiệt độ thời tiết hàng ngày, giấy ghi động đất theo thang đo độ Richte.... Loại này không bao gồm giấy nhạy nhiệt. Giấy ghi dạng cuộn Recording paper in rolls
+    vế phải phủ (cổng 5): [GIỚI HẠN] "loại dùng cho máy ghi tự động, không có chiều nào trên 360 mm ở dạng không gấp"
+- 48101990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48101990 [24 ký tự]: 48101990 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4810, wco.481019; chú giải: nhom4810.nhom, ch48.chuong, phan48.phan

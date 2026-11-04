@@ -1,0 +1,196 @@
+Số hoá ranh giới cho 8 phân nhóm 6 số (220300 220421 220422 220429 220430 220510 220590 220870). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 220300 ===
+# 220300 — Bia sản xuất từ malt.
+
+NHÓM 2203 — Bia sản xuất từ malt.
+  [2203001] Bia đen hoặc bia nâu
+    22030011 Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)
+    22030019 Loại khác (SEN)  [LK]
+  [2203009] Loại khác, kể cả bia ale
+    22030091 Có nồng độ cồn không quá 5,8% tính theo thể tích
+    22030099 Loại khác  [LK]
+
+- 2203001 TIEU_DE
+    tieuDe.2203001 [28 ký tự]: 2203001 Bia đen hoặc bia nâu
+- 22030011 DONG8
+    tax.22030011 [67 ký tự]: 22030011 - - Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)
+    sen.22030011 [186 ký tự]: BIA ĐEN HOẶC BIA NÂU Bia đen (Stout) là bia đen đậm ủ từ mạch nha (malt) rang hoặc lúa mạch rang. Bia nâu (Porter) là loại bia đắng màu nâu sẫm ủ từ mạch nha nâu hoặc mạch nha rang cháy.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn" · [GIỚI HẠN] "không quá 5,8% tính theo thể tích"
+- 22030019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.22030019 [28 ký tự]: 22030019 - - Loại khác (SEN)
+    sen.22030019 [186 ký tự]: BIA ĐEN HOẶC BIA NÂU Bia đen (Stout) là bia đen đậm ủ từ mạch nha (malt) rang hoặc lúa mạch rang. Bia nâu (Porter) là loại bia đắng màu nâu sẫm ủ từ mạch nha nâu hoặc mạch nha rang cháy.
+- 2203009 TIEU_DE
+    tieuDe.2203009 [32 ký tự]: 2203009 Loại khác, kể cả bia ale
+- 22030091 DONG8
+    tax.22030091 [61 ký tự]: 22030091 - - Có nồng độ cồn không quá 5,8% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn" · [GIỚI HẠN] "không quá 5,8% tính theo thể tích"
+- 22030099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.22030099 [22 ký tự]: 22030099 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.220300; chú giải: nhom2203.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220421 ===
+# 220421 — Loại trong đồ đựng không quá 2 lít
+
+220421 — Wine; still, in containers holding 2 litres or less
+  [2204211] Rượu vang
+    22042111 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042113 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    22042114 Có nồng độ cồn trên 23% tính theo thể tích
+  [2204212] Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    22042121 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042122 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 2204211 TIEU_DE
+    tieuDe.2204211 [17 ký tự]: 2204211 Rượu vang
+- 22042111 DONG8
+    tax.22042111 [65 ký tự]: 22042111 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042113 DONG8
+    tax.22042113 [79 ký tự]: 22042113 - - - - Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích"
+- 22042114 DONG8
+    tax.22042114 [59 ký tự]: 22042114 - - - - Có nồng độ cồn trên 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 23% tính theo thể tích"
+- 2204212 TIEU_DE
+    tieuDe.2204212 [59 ký tự]: 2204212 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ngăn ngừa hoặc cản sự lên men"
+- 22042121 DONG8
+    tax.22042121 [65 ký tự]: 22042121 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042122 DONG8
+    tax.22042122 [59 ký tự]: 22042122 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220421; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220422 ===
+# 220422 — Loại trong đồ đựng trên 2 lít nhưng không quá 10 lít
+
+220422 — Wine; still, in containers holding more than 2 litres but not more than 10 litres
+  [2204221] Rượu vang
+    22042211 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042212 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    22042213 Có nồng độ cồn trên 23% tính theo thể tích
+  [2204222] Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    22042221 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042222 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 2204221 TIEU_DE
+    tieuDe.2204221 [17 ký tự]: 2204221 Rượu vang
+- 22042211 DONG8
+    tax.22042211 [65 ký tự]: 22042211 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042212 DONG8
+    tax.22042212 [79 ký tự]: 22042212 - - - - Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích"
+- 22042213 DONG8
+    tax.22042213 [59 ký tự]: 22042213 - - - - Có nồng độ cồn trên 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 23% tính theo thể tích"
+- 2204222 TIEU_DE
+    tieuDe.2204222 [59 ký tự]: 2204222 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ngăn ngừa hoặc cản sự lên men"
+- 22042221 DONG8
+    tax.22042221 [65 ký tự]: 22042221 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042222 DONG8
+    tax.22042222 [59 ký tự]: 22042222 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220422; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220429 ===
+# 220429 — Loại khác
+
+220429 — Wine; still, in containers holding more than 10 litres
+  [2204291] Rượu vang
+    22042911 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042912 Có nồng độ cồn trên 15% tính theo thể tích
+  [2204292] Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    22042921 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042922 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 2204291 TIEU_DE
+    tieuDe.2204291 [17 ký tự]: 2204291 Rượu vang
+- 22042911 DONG8
+    tax.22042911 [65 ký tự]: 22042911 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042912 DONG8
+    tax.22042912 [59 ký tự]: 22042912 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+- 2204292 TIEU_DE
+    tieuDe.2204292 [59 ký tự]: 2204292 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ngăn ngừa hoặc cản sự lên men"
+- 22042921 DONG8
+    tax.22042921 [65 ký tự]: 22042921 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042922 DONG8
+    tax.22042922 [59 ký tự]: 22042922 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220429; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220430 ===
+# 220430 — Hèm nho khác
+
+220430 — Grape must; n.e.c. in heading no. 2009, n.e.c. in item no. 2204.2
+  22043010 Có nồng độ cồn không quá 15% tính theo thể tích
+  22043020 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 22043010 DONG8
+    tax.22043010 [61 ký tự]: 22043010 - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22043020 DONG8
+    tax.22043020 [55 ký tự]: 22043020 - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220430; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220510 ===
+# 220510 — Loại trong đồ đựng không quá 2 lít
+
+220510 — Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances, in containers holding 2 litres or less
+  22051010 Có nồng độ cồn không quá 15% tính theo thể tích
+  22051020 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 22051010 DONG8
+    tax.22051010 [61 ký tự]: 22051010 - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22051020 DONG8
+    tax.22051020 [55 ký tự]: 22051020 - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220510; chú giải: nhom2205.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220590 ===
+# 220590 — Loại khác
+
+220590 — Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances, in containers holding more than 2 litres
+  22059010 Có nồng độ cồn không quá 15% tính theo thể tích
+  22059020 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 22059010 DONG8
+    tax.22059010 [61 ký tự]: 22059010 - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22059020 DONG8
+    tax.22059020 [55 ký tự]: 22059020 - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220590; chú giải: nhom2205.nhom, ch22.chuong, phan22.phan
+
+=== GÓI PN6 220870 ===
+# 220870 — Rượu mùi
+
+220870 — Liqueurs and cordials
+  22087010 Có nồng độ cồn không quá 57% tính theo thể tích
+  22087090 Loại khác  [LK]
+
+- 22087010 DONG8
+    tax.22087010 [61 ký tự]: 22087010 - - Có nồng độ cồn không quá 57% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 57% tính theo thể tích"
+- 22087090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.22087090 [22 ký tự]: 22087090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.220870; chú giải: nhom2208.nhom, ch22.chuong, phan22.phan
+

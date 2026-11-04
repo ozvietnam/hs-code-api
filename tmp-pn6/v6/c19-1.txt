@@ -1,0 +1,70 @@
+Số hoá ranh giới cho 4 phân nhóm 6 số (190120 190410 190420 190540). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 190120 ===
+# 190120 — Bột trộn và bột nhào để chế biến thành các loại bánh thuộc nhóm 19.05
+
+190120 — Food preparations; mixes and doughs for the preparation of bread, pastry, cakes, biscuits and other bakers' wares
+  19012010 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao
+  19012020 Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao
+  19012030 Loại khác, không chứa ca cao  [LK có điều kiện]
+  19012040 Loại khác, chứa ca cao  [LK có điều kiện]
+
+- 19012010 DONG8
+    tax.19012010 [83 ký tự]: 19012010 - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không chứa ca cao"
+- 19012020 DONG8
+    tax.19012020 [77 ký tự]: 19012020 - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa ca cao"
+- 19012030 DONG8
+    tax.19012030 [41 ký tự]: 19012030 - - Loại khác, không chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không chứa ca cao"
+- 19012040 DONG8
+    tax.19012040 [35 ký tự]: 19012040 - - Loại khác, chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa ca cao"
+
+Nguồn cấp phân nhóm: wco.190120; chú giải: nhom1901.nhom, ch19.chuong, phan19.phan
+
+=== GÓI PN6 190410 ===
+# 190410 — Thực phẩm chế biến thu được từ quá trình rang hoặc nổ ngũ cốc hoặc các sản phẩm ngũ cốc
+
+190410 — Food preparations; obtained by the swelling or roasting of cereals or cereal products
+  19041010 Chứa ca cao
+  19041090 Loại khác  [LK]
+
+- 19041010 DONG8
+    tax.19041010 [24 ký tự]: 19041010 - - Chứa ca cao
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa ca cao"
+- 19041090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.19041090 [22 ký tự]: 19041090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.190410; chú giải: nhom1904.nhom, ch19.chuong, phan19.phan
+
+=== GÓI PN6 190420 ===
+# 190420 — Thực phẩm chế biến từ mảnh ngũ cốc chưa rang hoặc từ hỗn hợp của mảnh ngũ cốc chưa rang và mảnh ngũ cốc đã rang hoặc ngũ cốc đã nổ
+
+190420 — Food preparations; obtained from unroasted cereal flakes or from mixtures of unroasted cereal flakes and roasted cereal flakes or swelled cereals
+  19042010 Thực phẩm chế biến từ mảnh ngũ cốc chưa rang
+  19042090 Loại khác  [LK]
+
+- 19042010 DONG8
+    tax.19042010 [57 ký tự]: 19042010 - - Thực phẩm chế biến từ mảnh ngũ cốc chưa rang
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa rang"
+- 19042090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.19042090 [22 ký tự]: 19042090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.190420; chú giải: nhom1904.nhom, ch19.chuong, phan19.phan
+
+=== GÓI PN6 190540 ===
+# 190540 — Bánh bít cốt (rusks), bánh mì nướng và các loại bánh nướng tương tự
+
+190540 — Food preparations; rusks, toasted bread and similar toasted products, whether or not containing cocoa
+  19054010 Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây
+  19054090 Loại khác  [LK]
+
+- 19054010 DONG8
+    tax.19054010 [77 ký tự]: 19054010 - - Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa thêm đường, mật ong, trứng, chất béo, pho mát hoặc trái cây"
+- 19054090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.19054090 [22 ký tự]: 19054090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.190540; chú giải: nhom1905.nhom, ch19.chuong, phan19.phan

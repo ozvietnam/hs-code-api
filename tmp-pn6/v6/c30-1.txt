@@ -1,0 +1,218 @@
+Số hoá ranh giới cho 10 phân nhóm 6 số (300212 300310 300410 300432 300449 300450 300460 300510 300610 300692). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 300212 ===
+# 300212 — Kháng huyết thanh và các phần phân đoạn khác của máu
+
+300212 — Blood, human or animal, antisera, other blood fractions and immunological products; antisera and other blood fractions
+  30021210 Kháng huyết thanh; dung dịch đạm huyết thanh; bột hemoglobin
+  30021290 Loại khác  [LK]
+
+- 30021210 DONG8
+    tax.30021210 [75 ký tự]: 30021210 - - - Kháng huyết thanh; dung dịch đạm huyết thanh; bột hemoglobin
+- 30021290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30021290 [24 ký tự]: 30021290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300212; chú giải: nhom3002.nhom, ch30.chuong, phan30.phan
+
+=== GÓI PN6 300310 ===
+# 300310 — Chứa penicillins hoặc dẫn xuất của chúng, có cấu trúc axit penicillanic, hoặc streptomycins hoặc các dẫn xuất của chúng
+
+300310 — Medicaments; containing penicillins, streptomycins or their derivatives, for therapeutic or prophylactic uses, (not in measured doses, not packaged for retail sale)
+  30031010 Chứa amoxicillin (INN) hoặc muối của nó
+  30031020 Chứa ampicillin (INN) hoặc muối của nó
+  30031090 Loại khác  [LK]
+
+- 30031010 DONG8
+    tax.30031010 [52 ký tự]: 30031010 - - Chứa amoxicillin (INN) hoặc muối của nó
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa amoxicillin (INN) hoặc muối của nó"
+- 30031020 DONG8
+    tax.30031020 [51 ký tự]: 30031020 - - Chứa ampicillin (INN) hoặc muối của nó
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa ampicillin (INN) hoặc muối của nó"
+- 30031090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30031090 [22 ký tự]: 30031090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300310; chú giải: nhom3003.nhom, ch30.chuong, phan30.phan
+
+=== GÓI PN6 300410 ===
+# 300410 — Chứa penicillins hoặc dẫn xuất của chúng, có cấu trúc axit penicillanic, hoặc streptomycins hoặc các dẫn xuất của chúng
+
+300410 — Medicaments; containing penicillins, streptomycins or their derivatives, for therapeutic or prophylactic uses, packaged for retail sale
+  [3004101] Chứa penicillins hoặc các dẫn xuất của chúng
+    30041015 Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng
+    30041016 Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)
+    30041019 Loại khác  [LK]
+  30041020 Chứa các streptomycin hoặc các dẫn xuất của chúng
+
+- 3004101 TIEU_DE
+    tieuDe.3004101 [52 ký tự]: 3004101 Chứa penicillins hoặc các dẫn xuất của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa penicillins hoặc các dẫn xuất của chúng"
+- 30041015 DONG8
+    tax.30041015 [107 ký tự]: 30041015 - - - Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng" · [GIỚI HẠN] "(trừ penicillin G benzathin)"
+- 30041016 DONG8
+    tax.30041016 [78 ký tự]: 30041016 - - - Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)"
+- 30041019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30041019 [24 ký tự]: 30041019 - - - Loại khác
+- 30041020 DONG8
+    tax.30041020 [62 ký tự]: 30041020 - - Chứa các streptomycin hoặc các dẫn xuất của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa các streptomycin hoặc các dẫn xuất của chúng"
+
+Nguồn cấp phân nhóm: wco.300410; chú giải: nhom3004.nhom, ch30.chuong, phan30.phan
+
+=== GÓI PN6 300432 ===
+# 300432 — Chứa hormon tuyến thượng thận, các dẫn xuất hoặc cấu trúc tương tự của chúng
+
+300432 — Medicaments; containing corticosteroid hormones, their derivatives or structural analogues (but not containing antibiotics), for therapeutic or prophylactic uses, packaged for retail sale
+  30043210 Chứa dexamethasone hoặc các dẫn xuất của chúng
+  30043240 Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide
+  30043290 Loại khác  [LK]
+
+- 30043210 DONG8
+    tax.30043210 [61 ký tự]: 30043210 - - - Chứa dexamethasone hoặc các dẫn xuất của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa dexamethasone hoặc các dẫn xuất của chúng"
+- 30043240 DONG8
+    tax.30043240 [78 ký tự]: 30043240 - - - Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide"
+- 30043290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30043290 [24 ký tự]: 30043290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300432; chú giải: nhom3004.nhom, ch30.chuong, phan30.phan
+
+=== GÓI PN6 300449 ===
+# 300449 — Loại khác
+
+300449 — Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale
+  [3004491] Chứa morphine hoặc các dẫn xuất của nó
+    30044911 Dạng uống (*) hoặc tiêm
+    30044919 Loại khác  [LK]
+  [3004495] Chứa papaverine hoặc berberine
+    30044951 Dạng uống (*)
+    30044959 Loại khác  [LK]
+  30044960 Chứa theophylline, dạng uống (*)
+  30044970 Chứa atropine sulphate
+  30044980 Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)
+  30044990 Loại khác  [LK]
+
+- 3004491 TIEU_DE
+    tieuDe.3004491 [46 ký tự]: 3004491 Chứa morphine hoặc các dẫn xuất của nó
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa morphine hoặc các dẫn xuất của nó"
+- 30044911 DONG8
+    tax.30044911 [40 ký tự]: 30044911 - - - - Dạng uống (*) hoặc tiêm
+- 30044919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30044919 [26 ký tự]: 30044919 - - - - Loại khác
+- 3004495 TIEU_DE
+    tieuDe.3004495 [38 ký tự]: 3004495 Chứa papaverine hoặc berberine
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa papaverine hoặc berberine"
+- 30044951 DONG8
+    tax.30044951 [30 ký tự]: 30044951 - - - - Dạng uống (*)
+- 30044959 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30044959 [26 ký tự]: 30044959 - - - - Loại khác
+- 30044960 DONG8
+    tax.30044960 [47 ký tự]: 30044960 - - - Chứa theophylline, dạng uống (*)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa theophylline, dạng uống (*)"
+- 30044970 DONG8
+    tax.30044970 [37 ký tự]: 30044970 - - - Chứa atropine sulphate
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa atropine sulphate"
+- 30044980 DONG8
+    tax.30044980 [138 ký tự]: 30044980 - - - Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa quinine hydrochloride hoặc dihydroquinine chloride" · [GIỚI HẠN] "dùng để tiêm" · [GIỚI HẠN] "Chứa quinine sulphate hoặc bisulphate, dạng uống (*)"
+- 30044990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30044990 [24 ký tự]: 30044990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300449; chú giải: nhom3004.nhom, ch30.chuong, phan30.phan
+
+=== GÓI PN6 300450 ===
+# 300450 — Loại khác, chứa các vitamin hoặc các sản phẩm khác của nhóm 29.36
+
+300450 — Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale
+  30045010 Loại phù hợp cho trẻ em, dạng xirô
+  [3004502] Loại khác, chứa nhiều hơn một loại vitamin
+    30045021 Dạng uống (*)
+    30045029 Loại khác  [LK]
+  [3004509] Loại khác
+    30045091 Chứa vitamin A, B hoặc C
+    30045099 Loại khác  [LK]
+
+- 30045010 DONG8
+    tax.30045010 [47 ký tự]: 30045010 - - Loại phù hợp cho trẻ em, dạng xirô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "phù hợp cho trẻ em, dạng xirô"
+- 3004502 TIEU_DE
+    tieuDe.3004502 [50 ký tự]: 3004502 Loại khác, chứa nhiều hơn một loại vitamin
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa nhiều hơn một loại vitamin"
+- 30045021 DONG8
+    tax.30045021 [28 ký tự]: 30045021 - - - Dạng uống (*)
+- 30045029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30045029 [24 ký tự]: 30045029 - - - Loại khác
+- 3004509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3004509 [17 ký tự]: 3004509 Loại khác
+- 30045091 DONG8
+    tax.30045091 [39 ký tự]: 30045091 - - - Chứa vitamin A, B hoặc C
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa vitamin A, B hoặc C"
+- 30045099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30045099 [24 ký tự]: 30045099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300450; chú giải: nhom3004.nhom, ch30.chuong, phan30.phan
+
+=== GÓI PN6 300460 ===
+# 300460 — Loại khác, chứa hoạt chất chống sốt rét được mô tả ở Chú giải Phân nhóm 2 của Chương này
+
+300460 — Medicaments; containing antimalarial active principles described in Subheading Note 2 to this Chapter, for therapeutic or prophylactic uses, packaged for retail sale
+  30046010 Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác
+  30046020 Chứa artesunate hoặc chloroquine
+  30046090 Loại khác  [LK]
+
+- 30046010 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.30046010 [79 ký tự]: 30046010 - - Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác"
+- 30046020 DONG8
+    tax.30046020 [45 ký tự]: 30046020 - - Chứa artesunate hoặc chloroquine
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa artesunate hoặc chloroquine"
+- 30046090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30046090 [22 ký tự]: 30046090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300460; chú giải: nhom3004.nhom, ch30.chuong, phan30.phan
+
+=== GÓI PN6 300510 ===
+# 300510 — Băng dán và các sản phẩm khác có một lớp dính
+
+300510 — Dressings, adhesive; and other articles having an adhesive layer, packed for retail sale for medical, surgical, dental or veterinary purposes
+  30051010 Đã tráng phủ hoặc thấm tẩm dược chất
+  30051090 Loại khác  [LK]
+
+- 30051010 DONG8
+    tax.30051010 [49 ký tự]: 30051010 - - Đã tráng phủ hoặc thấm tẩm dược chất
+- 30051090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30051090 [22 ký tự]: 30051090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300510; chú giải: nhom3005.nhom, ch30.chuong, phan30.phan
+
+=== GÓI PN6 300610 ===
+# 300610 — Chỉ catgut phẫu thuật vô trùng, các vật liệu khâu (suture) vô trùng tương tự (kể cả chỉ tự tiêu vô trùng dùng cho nha khoa hoặc phẫu thuật) và keo tạo màng vô trùng dùng để khép miệng vết thương trong phẫu thuật; tảo nong vô trùng và nút tảo nong vô trùng; sản phẩm cầm máu tự tiêu vô trùng trong phẫu thuật hoặc nha khoa; miếng chắn dính vô trùng dùng trong nha khoa hoặc phẫu thuật, có hoặc không tự tiêu
+
+300610 — Pharmaceutical goods; sterile surgical catgut, suture materials, tissue adhesives, laminaria, laminaria tents, absorbable surgical or dental haemostatics, and surgical or dental adhesion barriers
+  30061010 Chỉ tự tiêu vô trùng dùng cho nha khoa hoặc phẫu thuật; miếng chắn dính vô trùng dùng trong nha khoa hoặc phẫu thuật, có hoặc không tự tiêu
+  30061090 Loại khác  [LK]
+
+- 30061010 DONG8
+    tax.30061010 [152 ký tự]: 30061010 - - Chỉ tự tiêu vô trùng dùng cho nha khoa hoặc phẫu thuật; miếng chắn dính vô trùng dùng trong nha khoa hoặc phẫu thuật, có hoặc không tự tiêu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho nha khoa hoặc phẫu thuật" · [GIỚI HẠN] "dùng trong nha khoa hoặc phẫu thuật" · [GIỚI HẠN] "có" · [GIỚI HẠN] "không tự tiêu"
+- 30061090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30061090 [22 ký tự]: 30061090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300610; chú giải: nhom3006.nhom, ch30.chuong, phan30.phan
+
+=== GÓI PN6 300692 ===
+# 300692 — Phế thải dược phẩm
+
+300692 — Pharmaceutical goods; waste pharmaceuticals
+  30069210 Của thuốc điều trị ung thư, HIV/AIDS hoặc các bệnh khó chữa khác
+  30069290 Loại khác  [LK]
+
+- 30069210 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.30069210 [79 ký tự]: 30069210 - - - Của thuốc điều trị ung thư, HIV/AIDS hoặc các bệnh khó chữa khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thuốc điều trị ung thư, HIV/AIDS hoặc các bệnh khó chữa khác"
+- 30069290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30069290 [24 ký tự]: 30069290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300692; chú giải: nhom3006.nhom, ch30.chuong, phan30.phan

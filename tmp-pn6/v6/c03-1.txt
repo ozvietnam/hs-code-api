@@ -1,0 +1,567 @@
+Số hoá ranh giới cho 29 phân nhóm 6 số (030119 030193 030520 030572 030579 030611 030612 030631 030632 030633 030635 030639 030691 030692 030693 030694 030699 030711 030719 030721 030729 030731 030739 030742 030749 030751 030759 030760 030771). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 030119 ===
+# 030119 — Loại khác
+
+030119 — Fish; live, ornamental, other than freshwater
+  03011910 Cá bột
+  03011990 Loại khác  [LK]
+
+- 03011910 DONG8
+    tax.03011910 [21 ký tự]: 03011910 - - - Cá bột
+- 03011990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03011990 [24 ký tự]: 03011990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030119; chú giải: nhom0301.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030193 ===
+# 030193 — Cá chép (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.)
+
+030193 — Fish; live, carp (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus, Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.)
+  [0301932] Cá chép (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus)
+    03019321 Để nhân giống, trừ cá bột (SEN)
+    03019322 Cá bột
+    03019329 Loại khác  [LK]
+  [0301933] Cá chép (Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.)
+    03019331 Để nhân giống, trừ cá bột (SEN)
+    03019332 Cá bột
+    03019339 Loại khác  [LK]
+
+- 0301932 TIEU_DE
+    tieuDe.0301932 [138 ký tự]: 0301932 Cá chép (Cyprinus spp., Carassius spp., Ctenopharyngodon idellus, Hypophthalmichthys spp., Cirrhinus spp., Mylopharyngodon piceus)
+- 03019321 DONG8
+    tax.03019321 [48 ký tự]: 03019321 - - - - Để nhân giống, trừ cá bột (SEN)
+    sen.03019321 [704 ký tự]: CÁ CHÉP ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT; CÁ BỘT CỦA CÁ MĂNG BIỂN VÀ CỦA CÁ MÚ, ĐỂ NHÂN GIỐNG; CÁ BỘT KHÁC ĐỂ NHÂN GIỐNG; CÁ CHÉP KHÁC ĐỂ NHÂN GIỐNG; CÁ MĂNG BIỂN ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT Cá để nhân giống được kèm theo chứng nhận của các cơ quan có thẩm quyền theo quy định của luật quốc gia Yêu cầu chung về bề ngoài: • Thân cân đối, không dị tật, vây đầy đủ và bình thường, không có vết trầy xước, không bị mất lớp nhờn, cá có kích thước đồng đều, không có dấu hiệu của bệnh và có chứng nhận của các cơ quan có thẩm quyền là phù hợp để nhân giống Tính nhanh nhẹn: • Cá phải nhanh nhẹn, hoạt bát, bơi thành từng đàn trong nước. Trọng lượng và kích thước: • Phụ thuộc vào từng loài cá và thời gian ấp nở.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để nhân giống" · [GIỚI HẠN] "trừ cá bột"
+- 03019322 DONG8
+    tax.03019322 [23 ký tự]: 03019322 - - - - Cá bột
+- 03019329 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03019329 [26 ký tự]: 03019329 - - - - Loại khác
+- 0301933 TIEU_DE
+    tieuDe.0301933 [102 ký tự]: 0301933 Cá chép (Catla catla, Labeo spp., Osteochilus hasselti, Leptobarbus hoeveni, Megalobrama spp.)
+- 03019331 DONG8
+    tax.03019331 [48 ký tự]: 03019331 - - - - Để nhân giống, trừ cá bột (SEN)
+    sen.03019331 [704 ký tự]: CÁ CHÉP ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT; CÁ BỘT CỦA CÁ MĂNG BIỂN VÀ CỦA CÁ MÚ, ĐỂ NHÂN GIỐNG; CÁ BỘT KHÁC ĐỂ NHÂN GIỐNG; CÁ CHÉP KHÁC ĐỂ NHÂN GIỐNG; CÁ MĂNG BIỂN ĐỂ NHÂN GIỐNG, TRỪ CÁ BỘT Cá để nhân giống được kèm theo chứng nhận của các cơ quan có thẩm quyền theo quy định của luật quốc gia Yêu cầu chung về bề ngoài: • Thân cân đối, không dị tật, vây đầy đủ và bình thường, không có vết trầy xước, không bị mất lớp nhờn, cá có kích thước đồng đều, không có dấu hiệu của bệnh và có chứng nhận của các cơ quan có thẩm quyền là phù hợp để nhân giống Tính nhanh nhẹn: • Cá phải nhanh nhẹn, hoạt bát, bơi thành từng đàn trong nước. Trọng lượng và kích thước: • Phụ thuộc vào từng loài cá và thời gian ấp nở.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để nhân giống" · [GIỚI HẠN] "trừ cá bột"
+- 03019332 DONG8
+    tax.03019332 [23 ký tự]: 03019332 - - - - Cá bột
+- 03019339 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03019339 [26 ký tự]: 03019339 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030193; chú giải: nhom0301.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030520 ===
+# 030520 — Gan, sẹ và bọc trứng cá, làm khô, hun khói, muối hoặc ngâm nước muối
+
+030520 — Fish; livers, roes and milt of fish, dried, smoked, salted or in brine
+  03052010 Của cá nước ngọt, làm khô, muối hoặc ngâm nước muối
+  03052090 Loại khác  [LK]
+
+- 03052010 DONG8
+    tax.03052010 [64 ký tự]: 03052010 - - Của cá nước ngọt, làm khô, muối hoặc ngâm nước muối
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cá nước ngọt, làm khô, muối hoặc ngâm nước muối"
+- 03052090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03052090 [22 ký tự]: 03052090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030520; chú giải: nhom0305.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030572 ===
+# 030572 — Đầu cá, đuôi và bong bóng
+
+030572 — Fish; edible offal, fish heads, tails and maws
+  [0305721] Bong bóng cá
+    03057211 Của cá tuyết (SEN)
+    03057219 Loại khác (SEN)  [LK]
+  [0305729] Loại khác
+    03057291 Của cá tuyết
+    03057299 Loại khác  [LK]
+
+- 0305721 TIEU_DE
+    tieuDe.0305721 [20 ký tự]: 0305721 Bong bóng cá
+- 03057211 DONG8
+    tax.03057211 [35 ký tự]: 03057211 - - - - Của cá tuyết (SEN)
+    sen.03057211 [1151 ký tự]: BONG BÓNG CÁ Bong bóng cá hoặc bong bóng bơi, bàng quang khí hoặc bàng quang không khí là một cơ quan nội tạng chứa khí giúp cá có thể nổi, và do đó có thể ở nguyên vị trí dòng nước sâu mà không cần tốn năng lượng để bơi. Do bong bong bơi ở vị trí phía lưng nên đóng vai trò như một cơ quan duy trì trạng thái cân bằng vì ở vị trí thẳng đứng, phần nặng hơn ở bên dưới trọng tâm của cơ thể. Trong ngành công nghiệp đánh bắt, cá tươi nguyên con kể cả từng phần của cá (ví dụ phi-lê, thịt, gan, bong bóng, bọc trứng cá, đuôi…) được phân biệt theo loại cá. Việc phân loại hoặc phân biệt theo loại cá rất quan trọng về mặt giá cả, nhận dạng, để chế biến thành các sản phẩm khác như cá xay nhỏ, sản phẩm cá khô, sản phẩm hun khói, sản phẩm cá muối hoặc sản phẩm khác được chế biến từ cá. Bong bóng cá chất lượng cần có màu hổ phách và sáng, trơn, mịn. Màu của bong bóng cá càng sẫm (vàng đậm), ít mờ (màu nâu sẫm), mô trắng ít hơn và nhiều nếp nhăn, có nghĩa là bong bóng của con cá càng già, do đó, có giá trị y học cao hơn. Giá trị y học của bong bóng cá tốt nhất là sau khi bảo quản ở nơi khô từ 1-3 năm, khi mùi tanh của cá và độ dính của gluten giảm.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cá tuyết"
+- 03057219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03057219 [32 ký tự]: 03057219 - - - - Loại khác (SEN)
+    sen.03057219 [1151 ký tự]: BONG BÓNG CÁ Bong bóng cá hoặc bong bóng bơi, bàng quang khí hoặc bàng quang không khí là một cơ quan nội tạng chứa khí giúp cá có thể nổi, và do đó có thể ở nguyên vị trí dòng nước sâu mà không cần tốn năng lượng để bơi. Do bong bong bơi ở vị trí phía lưng nên đóng vai trò như một cơ quan duy trì trạng thái cân bằng vì ở vị trí thẳng đứng, phần nặng hơn ở bên dưới trọng tâm của cơ thể. Trong ngành công nghiệp đánh bắt, cá tươi nguyên con kể cả từng phần của cá (ví dụ phi-lê, thịt, gan, bong bóng, bọc trứng cá, đuôi…) được phân biệt theo loại cá. Việc phân loại hoặc phân biệt theo loại cá rất quan trọng về mặt giá cả, nhận dạng, để chế biến thành các sản phẩm khác như cá xay nhỏ, sản phẩm cá khô, sản phẩm hun khói, sản phẩm cá muối hoặc sản phẩm khác được chế biến từ cá. Bong bóng cá chất lượng cần có màu hổ phách và sáng, trơn, mịn. Màu của bong bóng cá càng sẫm (vàng đậm), ít mờ (màu nâu sẫm), mô trắng ít hơn và nhiều nếp nhăn, có nghĩa là bong bóng của con cá càng già, do đó, có giá trị y học cao hơn. Giá trị y học của bong bóng cá tốt nhất là sau khi bảo quản ở nơi khô từ 1-3 năm, khi mùi tanh của cá và độ dính của gluten giảm.
+- 0305729 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0305729 [17 ký tự]: 0305729 Loại khác
+- 03057291 DONG8
+    tax.03057291 [29 ký tự]: 03057291 - - - - Của cá tuyết
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cá tuyết"
+- 03057299 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03057299 [26 ký tự]: 03057299 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030572; chú giải: nhom0305.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030579 ===
+# 030579 — Loại khác
+
+030579 — Fish; edible offal, other than shark fins, fish heads, tails and maws
+  03057910 Của cá tuyết
+  03057990 Loại khác  [LK]
+
+- 03057910 DONG8
+    tax.03057910 [27 ký tự]: 03057910 - - - Của cá tuyết
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cá tuyết"
+- 03057990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03057990 [24 ký tự]: 03057990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030579; chú giải: nhom0305.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030611 ===
+# 030611 — Tôm hùm đá và các loại tôm biển khác (Palinurus spp., Panulirus spp., Jasus spp.)
+
+030611 — Crustaceans; frozen, rock lobsters and other sea crawfish (Palinurus spp., Panulirus spp., Jasus spp.), in shell or not, smoked, cooked or not before or during smoking; in shell, cooked by steaming or by boiling in water
+  03061110 Hun khói
+  03061190 Loại khác  [LK]
+
+- 03061110 DONG8
+    tax.03061110 [23 ký tự]: 03061110 - - - Hun khói
+- 03061190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03061190 [24 ký tự]: 03061190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030611; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030612 ===
+# 030612 — Tôm hùm (Homarus spp.)
+
+030612 — Crustaceans; frozen, lobsters (Homarus spp.), in shell or not, smoked, cooked or not before or during smoking; in shell, cooked by steaming or by boiling in water
+  03061210 Hun khói
+  03061290 Loại khác  [LK]
+
+- 03061210 DONG8
+    tax.03061210 [23 ký tự]: 03061210 - - - Hun khói
+- 03061290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03061290 [24 ký tự]: 03061290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030612; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030631 ===
+# 030631 — Tôm hùm đá và các loại tôm biển khác (Palinurus spp., Panulirus spp., Jasus spp.)
+
+030631 — Crustaceans; live, fresh or chilled, rock lobsters and other sea crawfish (Palinurus spp., Panulirus spp., Jasus spp.), in shell or not
+  03063110 Để nhân giống
+  03063120 Loại khác, sống  [LK có điều kiện]
+  03063130 Tươi hoặc ướp lạnh
+
+- 03063110 DONG8
+    tax.03063110 [28 ký tự]: 03063110 - - - Để nhân giống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để nhân giống"
+- 03063120 DONG8
+    tax.03063120 [30 ký tự]: 03063120 - - - Loại khác, sống
+- 03063130 DONG8
+    tax.03063130 [33 ký tự]: 03063130 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030631; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030632 ===
+# 030632 — Tôm hùm (Homarus spp.)
+
+030632 — Crustaceans; live, fresh or chilled, lobsters (Homarus spp.), whether in shell or not
+  03063210 Để nhân giống
+  03063220 Loại khác, sống  [LK có điều kiện]
+  03063230 Tươi hoặc ướp lạnh
+
+- 03063210 DONG8
+    tax.03063210 [28 ký tự]: 03063210 - - - Để nhân giống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để nhân giống"
+- 03063220 DONG8
+    tax.03063220 [30 ký tự]: 03063220 - - - Loại khác, sống
+- 03063230 DONG8
+    tax.03063230 [33 ký tự]: 03063230 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030632; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030633 ===
+# 030633 — Cua, ghẹ
+
+030633 — Crustaceans; live, fresh or chilled, crabs, whether in shell or not
+  [0306331] Ghẹ xanh/ghẹ xanh Đại Tây Dương (Callinectes spp.) và cua tuyết (thuộc họ Oregoniidae)
+    03063311 Sống
+    03063312 Tươi hoặc ướp lạnh
+  [0306339] Loại khác
+    03063391 Sống
+    03063392 Tươi hoặc ướp lạnh
+
+- 0306331 TIEU_DE
+    tieuDe.0306331 [94 ký tự]: 0306331 Ghẹ xanh/ghẹ xanh Đại Tây Dương (Callinectes spp.) và cua tuyết (thuộc họ Oregoniidae)
+- 03063311 DONG8
+    tax.03063311 [21 ký tự]: 03063311 - - - - Sống
+- 03063312 DONG8
+    tax.03063312 [35 ký tự]: 03063312 - - - - Tươi hoặc ướp lạnh
+- 0306339 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0306339 [17 ký tự]: 0306339 Loại khác
+- 03063391 DONG8
+    tax.03063391 [21 ký tự]: 03063391 - - - - Sống
+- 03063392 DONG8
+    tax.03063392 [35 ký tự]: 03063392 - - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030633; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030635 ===
+# 030635 — Tôm shrimps và tôm prawn nước lạnh (Pandalus spp., Crangon crangon)
+
+030635 — Crustaceans; live, fresh or chilled, cold-water shrimps and prawns (Pandalus spp., Crangon crangon), in shell or not
+  03063510 Để nhân giống (SEN)
+  03063520 Loại khác, sống  [LK có điều kiện]
+  03063530 Tươi hoặc ướp lạnh
+
+- 03063510 DONG8
+    tax.03063510 [34 ký tự]: 03063510 - - - Để nhân giống (SEN)
+    sen.03063510 [280 ký tự]: TÔM SHIRMPS VÀ TÔM PRAWN, ĐỂ NHÂN GIỐNG Tôm shrimps và prawn để nhân giống là loại có kèm theo chứng nhận của các cơ quan có thẩm quyền theo quy định của luật quốc gia. Yêu cầu chung về ngoại hình: thân cân đối, không dị tật, không có vết trầy xước và không có dấu hiệu của bệnh.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để nhân giống"
+- 03063520 DONG8
+    tax.03063520 [30 ký tự]: 03063520 - - - Loại khác, sống
+- 03063530 DONG8
+    tax.03063530 [33 ký tự]: 03063530 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030635; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030639 ===
+# 030639 — Loại khác
+
+030639 — Crustaceans; live, fresh or chilled, n.e.c. in item no. 0306.3, in shell or not
+  03063910 Sống
+  03063920 Tươi hoặc ướp lạnh
+
+- 03063910 DONG8
+    tax.03063910 [19 ký tự]: 03063910 - - - Sống
+- 03063920 DONG8
+    tax.03063920 [33 ký tự]: 03063920 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030639; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030691 ===
+# 030691 — Tôm hùm đá và các loại tôm biển khác (Palinurus spp., Panulirus spp., Jasus spp.)
+
+030691 — Crustaceans; rock lobsters and other sea crawfish (Palinurus spp., Panulirus spp., Jasus spp.), smoked, cooked or not, whether in shell or not, whether or not cooked before or during smoking
+  [0306912] Đóng bao bì kín khí để bán lẻ
+    03069121 Hun khói
+    03069129 Loại khác  [LK]
+  [0306913] Loại khác
+    03069131 Hun khói
+    03069139 Loại khác  [LK]
+
+- 0306912 TIEU_DE
+    tieuDe.0306912 [37 ký tự]: 0306912 Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 03069121 DONG8
+    tax.03069121 [25 ký tự]: 03069121 - - - - Hun khói
+- 03069129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069129 [26 ký tự]: 03069129 - - - - Loại khác
+- 0306913 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0306913 [17 ký tự]: 0306913 Loại khác
+- 03069131 DONG8
+    tax.03069131 [25 ký tự]: 03069131 - - - - Hun khói
+- 03069139 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069139 [26 ký tự]: 03069139 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030691; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030692 ===
+# 030692 — Tôm hùm (Homarus spp.)
+
+030692 — Crustaceans; lobsters (Homarus spp.), smoked, cooked or not, whether in shell or not, whether or not cooked before or during smoking
+  [0306922] Đóng bao bì kín khí để bán lẻ
+    03069221 Hun khói
+    03069229 Loại khác  [LK]
+  [0306923] Loại khác
+    03069231 Hun khói
+    03069239 Loại khác  [LK]
+
+- 0306922 TIEU_DE
+    tieuDe.0306922 [37 ký tự]: 0306922 Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 03069221 DONG8
+    tax.03069221 [25 ký tự]: 03069221 - - - - Hun khói
+- 03069229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069229 [26 ký tự]: 03069229 - - - - Loại khác
+- 0306923 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0306923 [17 ký tự]: 0306923 Loại khác
+- 03069231 DONG8
+    tax.03069231 [25 ký tự]: 03069231 - - - - Hun khói
+- 03069239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069239 [26 ký tự]: 03069239 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030692; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030693 ===
+# 030693 — Cua, ghẹ
+
+030693 — Crustaceans; crabs, smoked, cooked or not, whether in shell or not, whether or not cooked before or during smoking
+  [0306932] Đóng bao bì kín khí để bán lẻ
+    03069321 Hun khói
+    03069329 Loại khác  [LK]
+  [0306933] Loại khác
+    03069331 Hun khói
+    03069339 Loại khác  [LK]
+
+- 0306932 TIEU_DE
+    tieuDe.0306932 [37 ký tự]: 0306932 Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 03069321 DONG8
+    tax.03069321 [25 ký tự]: 03069321 - - - - Hun khói
+- 03069329 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069329 [26 ký tự]: 03069329 - - - - Loại khác
+- 0306933 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0306933 [17 ký tự]: 0306933 Loại khác
+- 03069331 DONG8
+    tax.03069331 [25 ký tự]: 03069331 - - - - Hun khói
+- 03069339 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069339 [26 ký tự]: 03069339 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030693; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030694 ===
+# 030694 — Tôm hùm Na Uy (Nephrops norvegicus)
+
+030694 — Crustaceans; Norway lobsters (Nephrops norvegicus), smoked, cooked or not, whether in shell or not, whether or not cooked before or during smoking
+  [0306942] Đóng bao bì kín khí để bán lẻ
+    03069421 Hun khói
+    03069429 Loại khác  [LK]
+  [0306943] Loại khác
+    03069431 Hun khói
+    03069439 Loại khác  [LK]
+
+- 0306942 TIEU_DE
+    tieuDe.0306942 [37 ký tự]: 0306942 Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 03069421 DONG8
+    tax.03069421 [25 ký tự]: 03069421 - - - - Hun khói
+- 03069429 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069429 [26 ký tự]: 03069429 - - - - Loại khác
+- 0306943 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0306943 [17 ký tự]: 0306943 Loại khác
+- 03069431 DONG8
+    tax.03069431 [25 ký tự]: 03069431 - - - - Hun khói
+- 03069439 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069439 [26 ký tự]: 03069439 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030694; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030699 ===
+# 030699 — Loại khác
+
+030699 — Crustaceans; smoked, whole, cooked or not, n.e.c. in item no. 0306.9, in shell or not
+  [0306992] Đóng bao bì kín khí để bán lẻ
+    03069921 Hun khói
+    03069929 Loại khác  [LK]
+  [0306993] Loại khác
+    03069931 Hun khói
+    03069939 Loại khác  [LK]
+
+- 0306992 TIEU_DE
+    tieuDe.0306992 [37 ký tự]: 0306992 Đóng bao bì kín khí để bán lẻ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để bán lẻ"
+- 03069921 DONG8
+    tax.03069921 [25 ký tự]: 03069921 - - - - Hun khói
+- 03069929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069929 [26 ký tự]: 03069929 - - - - Loại khác
+- 0306993 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0306993 [17 ký tự]: 0306993 Loại khác
+- 03069931 DONG8
+    tax.03069931 [25 ký tự]: 03069931 - - - - Hun khói
+- 03069939 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03069939 [26 ký tự]: 03069939 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030699; chú giải: nhom0306.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030711 ===
+# 030711 — Sống, tươi hoặc ướp lạnh
+
+030711 — Molluscs; oysters, whether in shell or not, live, fresh or chilled
+  03071110 Sống
+  03071120 Tươi hoặc ướp lạnh
+
+- 03071110 DONG8
+    tax.03071110 [19 ký tự]: 03071110 - - - Sống
+- 03071120 DONG8
+    tax.03071120 [33 ký tự]: 03071120 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030711; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030719 ===
+# 030719 — Loại khác
+
+030719 — Molluscs; oysters, whether in shell or not, dried, salted or in brine, smoked, cooked or not before or during the smoking process
+  03071920 Khô, muối hoặc ngâm nước muối
+  03071930 Hun khói
+
+- 03071920 DONG8
+    tax.03071920 [44 ký tự]: 03071920 - - - Khô, muối hoặc ngâm nước muối
+- 03071930 DONG8
+    tax.03071930 [23 ký tự]: 03071930 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030719; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030721 ===
+# 030721 — Sống, tươi hoặc ướp lạnh
+
+030721 — Molluscs; scallops and other molluscs of the family Pectinidae, whether in shell or not, live, fresh or chilled
+  03072110 Sống
+  03072120 Tươi hoặc ướp lạnh
+
+- 03072110 DONG8
+    tax.03072110 [19 ký tự]: 03072110 - - - Sống
+- 03072120 DONG8
+    tax.03072120 [33 ký tự]: 03072120 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030721; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030729 ===
+# 030729 — Loại khác
+
+030729 — Molluscs; scallops and other molluscs of the family Pectinidae, whether in shell or not, dried, salted, in brine, or smoked, cooked or not before or during the smoking process
+  03072930 Khô, muối hoặc ngâm nước muối
+  03072940 Hun khói
+
+- 03072930 DONG8
+    tax.03072930 [44 ký tự]: 03072930 - - - Khô, muối hoặc ngâm nước muối
+- 03072940 DONG8
+    tax.03072940 [23 ký tự]: 03072940 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030729; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030731 ===
+# 030731 — Sống, tươi hoặc ướp lạnh
+
+030731 — Molluscs; mussels (Mytilus spp., Perna spp.), whether in shell or not, live, fresh or chilled
+  03073110 Sống
+  03073120 Tươi hoặc ướp lạnh
+
+- 03073110 DONG8
+    tax.03073110 [19 ký tự]: 03073110 - - - Sống
+- 03073120 DONG8
+    tax.03073120 [33 ký tự]: 03073120 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030731; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030739 ===
+# 030739 — Loại khác
+
+030739 — Molluscs; mussels (Mytilus spp., Perna spp.), whether in shell or not, dried, salted, in brine, or smoked, cooked or not before or during the smoking process
+  03073930 Khô, muối hoặc ngâm nước muối
+  03073940 Hun khói
+
+- 03073930 DONG8
+    tax.03073930 [44 ký tự]: 03073930 - - - Khô, muối hoặc ngâm nước muối
+- 03073940 DONG8
+    tax.03073940 [23 ký tự]: 03073940 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030739; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030742 ===
+# 030742 — Sống, tươi hoặc ướp lạnh
+
+030742 — Molluscs; cuttle fish and squid, whether in shell or not, live, fresh or chilled
+  [0307421] Sống
+    03074211 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+    03074219 Loại khác  [LK]
+  [0307422] Tươi hoặc ướp lạnh
+    03074221 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+    03074229 Loại khác  [LK]
+
+- 0307421 TIEU_DE
+    tieuDe.0307421 [12 ký tự]: 0307421 Sống
+- 03074211 DONG8
+    tax.03074211 [158 ký tự]: 03074211 - - - - Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+- 03074219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03074219 [26 ký tự]: 03074219 - - - - Loại khác
+- 0307422 TIEU_DE
+    tieuDe.0307422 [26 ký tự]: 0307422 Tươi hoặc ướp lạnh
+- 03074221 DONG8
+    tax.03074221 [158 ký tự]: 03074221 - - - - Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+- 03074229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03074229 [26 ký tự]: 03074229 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030742; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030749 ===
+# 030749 — Loại khác
+
+030749 — Molluscs; cuttle fish and squid, whether in shell or not, dried, salted, in brine, or smoked, cooked or not before or during the smoking process
+  [0307492] Khô, muối hoặc ngâm nước muối
+    03074921 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+    03074929 Loại khác  [LK]
+  [0307493] Hun khói
+    03074931 Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+    03074939 Loại khác  [LK]
+
+- 0307492 TIEU_DE
+    tieuDe.0307492 [37 ký tự]: 0307492 Khô, muối hoặc ngâm nước muối
+- 03074921 DONG8
+    tax.03074921 [158 ký tự]: 03074921 - - - - Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+- 03074929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03074929 [26 ký tự]: 03074929 - - - - Loại khác
+- 0307493 TIEU_DE
+    tieuDe.0307493 [16 ký tự]: 0307493 Hun khói
+- 03074931 DONG8
+    tax.03074931 [158 ký tự]: 03074931 - - - - Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)
+- 03074939 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.03074939 [26 ký tự]: 03074939 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.030749; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030751 ===
+# 030751 — Sống, tươi hoặc ướp lạnh
+
+030751 — Molluscs; octopus (Octopus spp.), live, fresh or chilled
+  03075110 Sống
+  03075120 Tươi hoặc ướp lạnh
+
+- 03075110 DONG8
+    tax.03075110 [19 ký tự]: 03075110 - - - Sống
+- 03075120 DONG8
+    tax.03075120 [33 ký tự]: 03075120 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030751; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030759 ===
+# 030759 — Loại khác
+
+030759 — Molluscs; octopus (Octopus spp.), dried, salted, in brine, or smoked, cooked or not before or during the smoking process
+  03075920 Khô, muối hoặc ngâm nước muối
+  03075930 Hun khói
+
+- 03075920 DONG8
+    tax.03075920 [44 ký tự]: 03075920 - - - Khô, muối hoặc ngâm nước muối
+- 03075930 DONG8
+    tax.03075930 [23 ký tự]: 03075930 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030759; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030760 ===
+# 030760 — Ốc, trừ ốc biển
+
+030760 — Molluscs; snails, other than sea snails, whether in shell or not, live, fresh, chilled, frozen, dried, salted, in brine, or smoked, cooked or not before or during the smoking process
+  03076010 Sống
+  03076020 Tươi, ướp lạnh hoặc đông lạnh
+  03076040 Khô, muối hoặc ngâm nước muối
+  03076050 Hun khói
+
+- 03076010 DONG8
+    tax.03076010 [17 ký tự]: 03076010 - - Sống
+- 03076020 DONG8
+    tax.03076020 [42 ký tự]: 03076020 - - Tươi, ướp lạnh hoặc đông lạnh
+- 03076040 DONG8
+    tax.03076040 [42 ký tự]: 03076040 - - Khô, muối hoặc ngâm nước muối
+- 03076050 DONG8
+    tax.03076050 [21 ký tự]: 03076050 - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030760; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+=== GÓI PN6 030771 ===
+# 030771 — Sống, tươi hoặc ướp lạnh
+
+030771 — Molluscs; clams, cockles and ark shells (families Arcidae, Arcticidae, Cardiidae, Donacidae, Hiatellidae, Mactridae, Mesodesmatidae, Myidae, Semelidae, Solecurtidae, Solenidae, Tridacnidae and Veneridae), whether in shell or not, live, fresh or chilled
+  03077110 Sống
+  03077120 Tươi hoặc ướp lạnh
+
+- 03077110 DONG8
+    tax.03077110 [19 ký tự]: 03077110 - - - Sống
+- 03077120 DONG8
+    tax.03077120 [33 ký tự]: 03077120 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030771; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan

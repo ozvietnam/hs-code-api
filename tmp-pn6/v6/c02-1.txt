@@ -1,0 +1,179 @@
+Số hoá ranh giới cho 10 phân nhóm 6 số (020714 020727 020745 020755 020760 020840 020890 021019 021092 021099). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 020714 ===
+# 020714 — Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh
+
+020714 — Meat and edible offal; of fowls of the species Gallus domesticus, cuts and offal, frozen
+  02071410 Cánh
+  02071420 Đùi
+  02071430 Gan
+  [0207149] Loại khác
+    02071491 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+    02071499 Loại khác  [LK]
+
+- 02071410 DONG8
+    tax.02071410 [19 ký tự]: 02071410 - - - Cánh
+- 02071420 DONG8
+    tax.02071420 [18 ký tự]: 02071420 - - - Đùi
+- 02071430 DONG8
+    tax.02071430 [18 ký tự]: 02071430 - - - Gan
+- 0207149 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0207149 [17 ký tự]: 0207149 Loại khác
+- 02071491 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.02071491 [84 ký tự]: 02071491 - - - - Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+    sen.02071491 [507 ký tự]: THỊT ĐÃ ĐƯỢC LỌC HOẶC TÁCH KHỎI XƯƠNG BẰNG PHƯƠNG PHÁP CƠ HỌC Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (thịt được tách khỏi xương bằng máy) là sản phẩm thịt ở dạng bột nhão, thu được bằng phương pháp ép phần xương gà hoặc gà tây, còn dính thịt ăn được, dưới áp suất cao qua một dụng cụ dạng mắt sàng hoặc dạng tương tự để tách riêng xương khỏi mô thịt ăn được. Bắp và mô thịt không còn nhìn thấy được một cách rõ ràng. Nó được sử dụng để sản xuất xúc xích, chả và các sản phẩm tương tự.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lọc hoặc tách khỏi xương" · [GIỚI HẠN] "bằng phương pháp cơ học"
+- 02071499 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02071499 [26 ký tự]: 02071499 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.020714; chú giải: nhom0207.nhom, ch02.chuong, phan02.phan
+
+=== GÓI PN6 020727 ===
+# 020727 — Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh
+
+020727 — Meat and edible offal; of turkeys, cuts and offal, frozen
+  02072710 Gan
+  [0207279] Loại khác
+    02072791 Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+    02072799 Loại khác  [LK]
+
+- 02072710 DONG8
+    tax.02072710 [18 ký tự]: 02072710 - - - Gan
+- 0207279 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0207279 [17 ký tự]: 0207279 Loại khác
+- 02072791 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.02072791 [84 ký tự]: 02072791 - - - - Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (SEN)
+    sen.02072791 [507 ký tự]: THỊT ĐÃ ĐƯỢC LỌC HOẶC TÁCH KHỎI XƯƠNG BẰNG PHƯƠNG PHÁP CƠ HỌC Thịt đã được lọc hoặc tách khỏi xương bằng phương pháp cơ học (thịt được tách khỏi xương bằng máy) là sản phẩm thịt ở dạng bột nhão, thu được bằng phương pháp ép phần xương gà hoặc gà tây, còn dính thịt ăn được, dưới áp suất cao qua một dụng cụ dạng mắt sàng hoặc dạng tương tự để tách riêng xương khỏi mô thịt ăn được. Bắp và mô thịt không còn nhìn thấy được một cách rõ ràng. Nó được sử dụng để sản xuất xúc xích, chả và các sản phẩm tương tự.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lọc hoặc tách khỏi xương" · [GIỚI HẠN] "bằng phương pháp cơ học"
+- 02072799 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02072799 [26 ký tự]: 02072799 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.020727; chú giải: nhom0207.nhom, ch02.chuong, phan02.phan
+
+=== GÓI PN6 020745 ===
+# 020745 — Loại khác, đông lạnh
+
+020745 — Meat and edible offal; of ducks, cuts and offal, excluding fatty livers, frozen
+  02074510 Gan béo
+  02074590 Loại khác  [LK]
+
+- 02074510 DONG8
+    tax.02074510 [22 ký tự]: 02074510 - - - Gan béo
+- 02074590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02074590 [24 ký tự]: 02074590 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.020745; chú giải: nhom0207.nhom, ch02.chuong, phan02.phan
+
+=== GÓI PN6 020755 ===
+# 020755 — Loại khác, đông lạnh
+
+020755 — Meat and edible offal; of geese, cuts and offal, excluding fatty livers, frozen
+  02075510 Gan béo
+  02075590 Loại khác  [LK]
+
+- 02075510 DONG8
+    tax.02075510 [22 ký tự]: 02075510 - - - Gan béo
+- 02075590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02075590 [24 ký tự]: 02075590 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.020755; chú giải: nhom0207.nhom, ch02.chuong, phan02.phan
+
+=== GÓI PN6 020760 ===
+# 020760 — Của gà lôi
+
+020760 — Meat and edible offal; of guinea fowls, fresh, chilled or frozen
+  02076010 Chưa chặt mảnh, tươi hoặc ướp lạnh
+  02076020 Chưa chặt mảnh, đông lạnh
+  02076030 Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh
+  02076040 Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh
+
+- 02076010 DONG8
+    tax.02076010 [47 ký tự]: 02076010 - - Chưa chặt mảnh, tươi hoặc ướp lạnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa chặt mảnh, tươi hoặc ướp lạnh"
+- 02076020 DONG8
+    tax.02076020 [38 ký tự]: 02076020 - - Chưa chặt mảnh, đông lạnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa chặt mảnh, đông lạnh"
+- 02076030 DONG8
+    tax.02076030 [69 ký tự]: 02076030 - - Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh
+- 02076040 DONG8
+    tax.02076040 [60 ký tự]: 02076040 - - Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh
+
+Nguồn cấp phân nhóm: wco.020760; chú giải: nhom0207.nhom, ch02.chuong, phan02.phan
+
+=== GÓI PN6 020840 ===
+# 020840 — Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia); của hải cẩu, sư tử biển và con moóc (hải mã) (động vật có vú thuộc phân bộ Pinnipedia)
+
+020840 — Meat and edible meat offal; of whales, dolphins and porpoises (mammals of the order Cetacea); of manatees and dugongs (mammals of the order Sirenia); of seals, sea lions and walruses (mammals of the suborder Pinnipedia), fresh, chilled or frozen
+  02084010 Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+  02084090 Loại khác  [LK]
+
+- 02084010 DONG8
+    tax.02084010 [140 ký tự]: 02084010 - - Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea)" · [GIỚI HẠN] "của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)"
+- 02084090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02084090 [22 ký tự]: 02084090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.020840; chú giải: nhom0208.nhom, ch02.chuong, phan02.phan
+
+=== GÓI PN6 020890 ===
+# 020890 — Loại khác
+
+020890 — Meat and edible meat offal; n.e.c. in chapter 2, fresh, chilled or frozen
+  02089010 Đùi ếch
+  02089090 Loại khác  [LK]
+
+- 02089010 DONG8
+    tax.02089010 [20 ký tự]: 02089010 - - Đùi ếch
+- 02089090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02089090 [22 ký tự]: 02089090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.020890; chú giải: nhom0208.nhom, ch02.chuong, phan02.phan
+
+=== GÓI PN6 021019 ===
+# 021019 — Loại khác
+
+021019 — Meat; salted in brine, dried or smoked, of swine, n.e.c. in item no. 0210.1
+  02101930 Thịt lợn muối xông khói (bacon); thịt mông đùi (hams) không xương
+  02101990 Loại khác  [LK]
+
+- 02101930 DONG8
+    tax.02101930 [80 ký tự]: 02101930 - - - Thịt lợn muối xông khói (bacon); thịt mông đùi (hams) không xương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không xương"
+- 02101990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02101990 [24 ký tự]: 02101990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.021019; chú giải: nhom0210.nhom, ch02.chuong, phan02.phan
+
+=== GÓI PN6 021092 ===
+# 021092 — Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia); của hải cẩu, sư tử biển và con moóc (hải mã) (động vật có vú thuộc phân bộ Pinnipedia)
+
+021092 — Meat and edible meat offal; salted, in brine, dried or smoked; edible flours, meals of meat or meat offal, of whales, dolphins, porpoises (of order Cetacea); manatees, dugongs (of order Sirenia); seals, sea lions, and walruses (of suborder Pinnipedia)
+  02109210 Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+  02109290 Loại khác  [LK]
+
+- 02109210 DONG8
+    tax.02109210 [142 ký tự]: 02109210 - - - Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea); của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cá voi, cá heo chuột và cá heo (động vật có vú thuộc bộ Cetacea)" · [GIỚI HẠN] "của lợn biển và cá nược (động vật có vú thuộc bộ Sirenia)"
+- 02109290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02109290 [24 ký tự]: 02109290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.021092; chú giải: nhom0210.nhom, ch02.chuong, phan02.phan
+
+=== GÓI PN6 021099 ===
+# 021099 — Loại khác
+
+021099 — Meat and edible meat offal; salted, in brine, dried or smoked, and edible flours and meals of meat or meat offal, other than of primates, whales, dolphins, porpoises, manatees, dugongs, seals, sea lions, walruses, reptiles (including snakes and turtles)
+  02109910 Thịt gà thái miếng đã được làm khô đông lạnh (SEN)
+  02109920 Da lợn khô
+  02109990 Loại khác  [LK]
+
+- 02109910 DONG8
+    tax.02109910 [65 ký tự]: 02109910 - - - Thịt gà thái miếng đã được làm khô đông lạnh (SEN)
+    sen.02109910 [292 ký tự]: THỊT GÀ THÁI MIẾNG ĐÃ ĐƯỢC LÀM KHÔ ĐÔNG LẠNH Thịt gà thái miếng đã được làm khô đông lạnh là thịt gà ở dạng khối vuông được bảo quản đông lạnh, sau đó đưa chúng vào môi trường áp suất thấp (chân không) và gia nhiệt đủ để cho phần nước đã đóng băng ở trong thịt chuyển từ thể rắn sang thể hơi.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được làm khô đông lạnh"
+- 02109920 DONG8
+    tax.02109920 [26 ký tự]: 02109920 - - - Da lợn khô 
+- 02109990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02109990 [24 ký tự]: 02109990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.021099; chú giải: nhom0210.nhom, ch02.chuong, phan02.phan

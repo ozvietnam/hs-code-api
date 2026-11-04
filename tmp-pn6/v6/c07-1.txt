@@ -1,0 +1,404 @@
+Số hoá ranh giới cho 25 phân nhóm 6 số (070310 070320 070390 071120 071140 071151 071159 071310 071320 071331 071332 071333 071334 071335 071339 071340 071350 071360 071390 071410 071420 071430 071440 071450 071490). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 070310 ===
+# 070310 — Hành tây và hành, hẹ
+
+070310 — Vegetables, alliaceous; onions and shallots, fresh or chilled
+  [0703101] Hành tây
+    07031011 Củ giống
+    07031019 Loại khác  [LK]
+  [0703102] Hành, hẹ
+    07031021 Củ giống
+    07031029 Loại khác  [LK]
+
+- 0703101 TIEU_DE
+    tieuDe.0703101 [16 ký tự]: 0703101 Hành tây
+- 07031011 DONG8
+    tax.07031011 [23 ký tự]: 07031011 - - - Củ giống
+- 07031019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07031019 [24 ký tự]: 07031019 - - - Loại khác
+- 0703102 TIEU_DE
+    tieuDe.0703102 [16 ký tự]: 0703102 Hành, hẹ
+- 07031021 DONG8
+    tax.07031021 [23 ký tự]: 07031021 - - - Củ giống
+- 07031029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07031029 [24 ký tự]: 07031029 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.070310; chú giải: nhom0703.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 070320 ===
+# 070320 — Tỏi
+
+070320 — Vegetables, alliaceous; garlic, fresh or chilled
+  07032010 Củ giống
+  07032090 Loại khác  [LK]
+
+- 07032010 DONG8
+    tax.07032010 [21 ký tự]: 07032010 - - Củ giống
+- 07032090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07032090 [22 ký tự]: 07032090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.070320; chú giải: nhom0703.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 070390 ===
+# 070390 — Tỏi tây và các loại rau họ hành, tỏi khác
+
+070390 — Vegetables, alliaceous; leeks and other kinds n.e.c. in heading no. 0703, fresh or chilled
+  07039010 Củ giống
+  07039090 Loại khác  [LK]
+
+- 07039010 DONG8
+    tax.07039010 [21 ký tự]: 07039010 - - Củ giống
+- 07039090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07039090 [22 ký tự]: 07039090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.070390; chú giải: nhom0703.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071120 ===
+# 071120 — Ôliu
+
+071120 — Vegetables; olives, provisionally preserved but unsuitable in that state for immediate consumption
+  07112010 Đã bảo quản bằng khí sunphurơ
+  07112090 Loại khác  [LK]
+
+- 07112010 DONG8
+    tax.07112010 [42 ký tự]: 07112010 - - Đã bảo quản bằng khí sunphurơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng khí sunphurơ"
+- 07112090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07112090 [22 ký tự]: 07112090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071120; chú giải: nhom0711.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071140 ===
+# 071140 — Dưa chuột và dưa chuột ri
+
+071140 — Vegetables; cucumbers and gherkins, provisionally preserved but unsuitable in that state for immediate consumption
+  07114010 Đã bảo quản bằng khí sunphurơ
+  07114090 Loại khác  [LK]
+
+- 07114010 DONG8
+    tax.07114010 [42 ký tự]: 07114010 - - Đã bảo quản bằng khí sunphurơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng khí sunphurơ"
+- 07114090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07114090 [22 ký tự]: 07114090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071140; chú giải: nhom0711.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071151 ===
+# 071151 — Nấm thuộc chi Agaricus
+
+071151 — Vegetables; mushrooms of the genus Agaricus, provisionally preserved but unsuitable in that state for immediate consumption
+  07115110 Đã bảo quản bằng khí sunphurơ
+  07115190 Loại khác  [LK]
+
+- 07115110 DONG8
+    tax.07115110 [44 ký tự]: 07115110 - - - Đã bảo quản bằng khí sunphurơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng khí sunphurơ"
+- 07115190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07115190 [24 ký tự]: 07115190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071151; chú giải: nhom0711.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071159 ===
+# 071159 — Loại khác
+
+071159 — Vegetables; mushrooms other than of the genus Agaricus, provisionally preserved but unsuitable in that state for immediate consumption
+  07115910 Đã bảo quản bằng khí sunphurơ
+  07115990 Loại khác  [LK]
+
+- 07115910 DONG8
+    tax.07115910 [44 ký tự]: 07115910 - - - Đã bảo quản bằng khí sunphurơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng khí sunphurơ"
+- 07115990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07115990 [24 ký tự]: 07115990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071159; chú giải: nhom0711.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071310 ===
+# 071310 — Đậu Hà Lan (Pisum sativum)
+
+071310 — Vegetables, leguminous; peas (pisum sativum), shelled, whether or not skinned or split, dried
+  07131010 Phù hợp để gieo trồng
+  07131090 Loại khác  [LK]
+
+- 07131010 DONG8
+    tax.07131010 [34 ký tự]: 07131010 - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07131090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07131090 [22 ký tự]: 07131090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071310; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071320 ===
+# 071320 — Đậu gà (chickpeas) (garbanzos)
+
+071320 — Vegetables, leguminous; chickpeas (garbanzos), shelled, whether or not skinned or split, dried
+  07132010 Phù hợp để gieo trồng
+  07132090 Loại khác  [LK]
+
+- 07132010 DONG8
+    tax.07132010 [34 ký tự]: 07132010 - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07132090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07132090 [22 ký tự]: 07132090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071320; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071331 ===
+# 071331 — Đậu thuộc loài Vigna mungo (L.) Hepper hoặc Vigna radiata (L.) Wilczek
+
+071331 — Vegetables, leguminous; beans of the species vigna mungo (l.) hepper or vigna radiata (l.) wilczek, shelled, whether or not skinned or split, dried
+  07133110 Phù hợp để gieo trồng
+  07133190 Loại khác  [LK]
+
+- 07133110 DONG8
+    tax.07133110 [36 ký tự]: 07133110 - - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07133190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07133190 [24 ký tự]: 07133190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071331; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071332 ===
+# 071332 — Đậu hạt đỏ nhỏ (Adzuki) (Phaseolus hoặc Vigna angularis)
+
+071332 — Vegetables, leguminous; small red (adzuki) beans (phaseolus or vigna angularis), shelled, whether or not skinned or split, dried
+  07133210 Phù hợp để gieo trồng
+  07133290 Loại khác  [LK]
+
+- 07133210 DONG8
+    tax.07133210 [36 ký tự]: 07133210 - - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07133290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07133290 [24 ký tự]: 07133290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071332; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071333 ===
+# 071333 — Đậu tây, kể cả đậu trắng (Phaseolus vulgaris)
+
+071333 — Vegetables, leguminous; kidney beans, including white pea beans (phaseolus vulgaris), shelled, whether or not skinned or split, dried
+  07133310 Phù hợp để gieo trồng
+  07133390 Loại khác  [LK]
+
+- 07133310 DONG8
+    tax.07133310 [36 ký tự]: 07133310 - - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07133390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07133390 [24 ký tự]: 07133390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071333; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071334 ===
+# 071334 — Đậu bambara (Vigna subterranea hoặc Voandzeia subterranea)
+
+071334 — Vegetables, leguminous; bambara beans (Vigna subterranea or Voandzeia subterranea), shelled, whether or not skinned or split, dried
+  07133410 Phù hợp để gieo trồng
+  07133490 Loại khác  [LK]
+
+- 07133410 DONG8
+    tax.07133410 [36 ký tự]: 07133410 - - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07133490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07133490 [24 ký tự]: 07133490 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071334; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071335 ===
+# 071335 — Đậu đũa (Vigna unguiculata)
+
+071335 — Vegetables, leguminous; cow peas (Vigna unguiculata), shelled, whether or not skinned or split, dried
+  07133510 Phù hợp để gieo trồng
+  07133590 Loại khác  [LK]
+
+- 07133510 DONG8
+    tax.07133510 [36 ký tự]: 07133510 - - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07133590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07133590 [24 ký tự]: 07133590 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071335; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071339 ===
+# 071339 — Loại khác
+
+071339 — Vegetables, leguminous; n.e.c. in item no. 0713.3, shelled, whether or not skinned or split, dried
+  07133910 Phù hợp để gieo trồng
+  07133990 Loại khác  [LK]
+
+- 07133910 DONG8
+    tax.07133910 [36 ký tự]: 07133910 - - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07133990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07133990 [24 ký tự]: 07133990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071339; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071340 ===
+# 071340 — Đậu lăng
+
+071340 — Vegetables, leguminous; lentils, shelled, whether or not skinned or split, dried
+  07134010 Phù hợp để gieo trồng
+  07134090 Loại khác  [LK]
+
+- 07134010 DONG8
+    tax.07134010 [34 ký tự]: 07134010 - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07134090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07134090 [22 ký tự]: 07134090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071340; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071350 ===
+# 071350 — Đậu tằm (Vicia faba var. major) và đậu ngựa (Vicia faba var. equina, Vicia faba var. minor)
+
+071350 — Vegetables, leguminous; broad beans (vicia faba var. major) and horse beans (vicia faba var. equina, vicia faba var. minor), shelled, whether or not skinned or split, dried
+  07135010 Phù hợp để gieo trồng
+  07135090 Loại khác  [LK]
+
+- 07135010 DONG8
+    tax.07135010 [34 ký tự]: 07135010 - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07135090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07135090 [22 ký tự]: 07135090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071350; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071360 ===
+# 071360 — Đậu triều, đậu săng (Cajanus cajan)
+
+071360 — Vegetables, leguminous; pigeon peas (Cajanus cajan), shelled, whether or not skinned or split, dried
+  07136010 Phù hợp để gieo trồng
+  07136090 Loại khác  [LK]
+
+- 07136010 DONG8
+    tax.07136010 [34 ký tự]: 07136010 - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07136090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07136090 [22 ký tự]: 07136090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071360; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071390 ===
+# 071390 — Loại khác
+
+071390 — Vegetables, leguminous; n.e.c. in heading no. 0713, shelled, whether or not skinned or split, dried
+  07139010 Phù hợp để gieo trồng
+  07139090 Loại khác  [LK]
+
+- 07139010 DONG8
+    tax.07139010 [34 ký tự]: 07139010 - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 07139090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07139090 [22 ký tự]: 07139090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071390; chú giải: nhom0713.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071410 ===
+# 071410 — Sắn
+
+071410 — Vegetable roots and tubers; manioc (cassava), with high starch or inulin content, fresh, chilled, frozen or dried, whether or not sliced or in the form of pellets
+  [0714101] Thái lát hoặc đã làm thành dạng viên
+    07141011 Lát đã được làm khô
+    07141019 Loại khác  [LK]
+  [0714109] Loại khác
+    07141091 Đông lạnh
+    07141099 Loại khác  [LK]
+
+- 0714101 TIEU_DE
+    tieuDe.0714101 [44 ký tự]: 0714101 Thái lát hoặc đã làm thành dạng viên
+- 07141011 DONG8
+    tax.07141011 [34 ký tự]: 07141011 - - - Lát đã được làm khô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được làm khô"
+- 07141019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07141019 [24 ký tự]: 07141019 - - - Loại khác
+- 0714109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0714109 [17 ký tự]: 0714109 Loại khác
+- 07141091 DONG8
+    tax.07141091 [24 ký tự]: 07141091 - - - Đông lạnh
+- 07141099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07141099 [24 ký tự]: 07141099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071410; chú giải: nhom0714.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071420 ===
+# 071420 — Khoai lang
+
+071420 — Vegetable roots and tubers; sweet potatoes, with high starch or inulin content, fresh, chilled, frozen or dried, whether or not sliced or in the form of pellets
+  07142010 Đông lạnh
+  07142090 Loại khác  [LK]
+
+- 07142010 DONG8
+    tax.07142010 [22 ký tự]: 07142010 - - Đông lạnh
+- 07142090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07142090 [22 ký tự]: 07142090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071420; chú giải: nhom0714.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071430 ===
+# 071430 — Củ từ, khoai mỡ, khoai tím (Dioscorea spp.)
+
+071430 — Vegetable roots and tubers; yams (Dioscorea spp.) with high starch or inulin content, fresh, chilled, frozen or dried, whether or not sliced or in the form of pellets
+  07143010 Đông lạnh
+  07143090 Loại khác  [LK]
+
+- 07143010 DONG8
+    tax.07143010 [22 ký tự]: 07143010 - - Đông lạnh
+- 07143090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07143090 [22 ký tự]: 07143090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071430; chú giải: nhom0714.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071440 ===
+# 071440 — Khoai sọ, khoai môn (Colacasia spp.)
+
+071440 — Vegetable roots and tubers; taro (Colocasia spp.) with high starch or inulin content, fresh, chilled, frozen or dried, whether or not sliced or in the form of pellets
+  07144010 Đông lạnh
+  07144090 Loại khác  [LK]
+
+- 07144010 DONG8
+    tax.07144010 [22 ký tự]: 07144010 - - Đông lạnh
+- 07144090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07144090 [22 ký tự]: 07144090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071440; chú giải: nhom0714.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071450 ===
+# 071450 — Khoai sáp, khoai mùng (Xanthosoma spp.)
+
+071450 — Vegetable roots and tubers; yautia (Xanthosoma spp.) with high starch or inulin content, fresh, chilled, frozen or dried, whether or not sliced or in the form of pellets
+  07145010 Đông lạnh
+  07145090 Loại khác  [LK]
+
+- 07145010 DONG8
+    tax.07145010 [22 ký tự]: 07145010 - - Đông lạnh
+- 07145090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07145090 [22 ký tự]: 07145090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071450; chú giải: nhom0714.nhom, ch07.chuong, phan07.phan
+
+=== GÓI PN6 071490 ===
+# 071490 — Loại khác
+
+071490 — Vegetable roots and tubers; arrowroot, salep, Jerusalem artichokes and similar roots and tubers (not manioc, sweet potatoes, yams, taro or yautia), high starch or inulin content, fresh, chilled, frozen, dried, sliced or not, or in pellet form; sago pith
+  [0714901] Lõi cây cọ sago
+    07149011 Đông lạnh
+    07149019 Loại khác  [LK]
+  [0714909] Loại khác
+    07149091 Đông lạnh
+    07149099 Loại khác  [LK]
+
+- 0714901 TIEU_DE
+    tieuDe.0714901 [23 ký tự]: 0714901 Lõi cây cọ sago
+- 07149011 DONG8
+    tax.07149011 [24 ký tự]: 07149011 - - - Đông lạnh
+- 07149019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07149019 [24 ký tự]: 07149019 - - - Loại khác
+- 0714909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0714909 [17 ký tự]: 0714909 Loại khác
+- 07149091 DONG8
+    tax.07149091 [24 ký tự]: 07149091 - - - Đông lạnh
+- 07149099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.07149099 [24 ký tự]: 07149099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.071490; chú giải: nhom0714.nhom, ch07.chuong, phan07.phan

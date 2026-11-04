@@ -1,0 +1,110 @@
+Số hoá ranh giới cho 6 phân nhóm 6 số (340119 340311 340391 340490 340590 340700). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 340119 ===
+# 340119 — Loại khác
+
+340119 — Soap and organic surface-active products; in the form of bars, cakes, moulded shapes, and paper, wadding, felt and nonwovens, impregnated, coated or covered with soap or detergent, not for toilet use
+  34011910 Bằng nỉ hoặc sản phẩm không dệt, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy
+  34011920 Bằng giấy, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy
+  34011990 Loại khác  [LK]
+
+- 34011910 DONG8
+    tax.34011910 [103 ký tự]: 34011910 - - - Bằng nỉ hoặc sản phẩm không dệt, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng nỉ hoặc sản phẩm" · [GIỚI HẠN] "không dệt, đã" · [GIỚI HẠN] "được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy"
+- 34011920 DONG8
+    tax.34011920 [82 ký tự]: 34011920 - - - Bằng giấy, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng giấy, đã" · [GIỚI HẠN] "được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy"
+- 34011990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.34011990 [24 ký tự]: 34011990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.340119; chú giải: nhom3401.nhom, ch34.chuong, phan34.phan
+
+=== GÓI PN6 340311 ===
+# 340311 — Chế phẩm dùng để xử lý các vật liệu dệt, da thuộc, da lông hoặc các vật liệu khác
+
+340311 — Lubricating preparations; for the treatment of textile and similar materials (leather, furskins etc), containing less than 70% (by weight) of petroleum oils or oils obtained from bituminous minerals
+  [3403111] Dạng lỏng
+    34031111 Chế phẩm dầu bôi trơn
+    34031119 Loại khác  [LK]
+  34031190 Loại khác  [LK]
+
+- 3403111 TIEU_DE
+    tieuDe.3403111 [17 ký tự]: 3403111 Dạng lỏng
+- 34031111 DONG8
+    tax.34031111 [38 ký tự]: 34031111 - - - - Chế phẩm dầu bôi trơn
+- 34031119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.34031119 [26 ký tự]: 34031119 - - - - Loại khác
+- 34031190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.34031190 [24 ký tự]: 34031190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.340311; chú giải: nhom3403.nhom, ch34.chuong, phan34.phan
+
+=== GÓI PN6 340391 ===
+# 340391 — Chế phẩm dùng để xử lý các vật liệu dệt, da thuộc, da lông hoặc các vật liệu khác
+
+340391 — Lubricating preparations; for the treatment of textile and similar materials (leather, furskins etc), (not containing petroleum oils or oils obtained from bituminous minerals)
+  [3403911] Dạng lỏng
+    34039111 Chế phẩm chứa dầu silicon
+    34039119 Loại khác  [LK]
+  34039190 Loại khác  [LK]
+
+- 3403911 TIEU_DE
+    tieuDe.3403911 [17 ký tự]: 3403911 Dạng lỏng
+- 34039111 DONG8
+    tax.34039111 [42 ký tự]: 34039111 - - - - Chế phẩm chứa dầu silicon
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa dầu silicon"
+- 34039119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.34039119 [26 ký tự]: 34039119 - - - - Loại khác
+- 34039190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.34039190 [24 ký tự]: 34039190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.340391; chú giải: nhom3403.nhom, ch34.chuong, phan34.phan
+
+=== GÓI PN6 340490 ===
+# 340490 — Loại khác
+
+340490 — Waxes; artificial and prepared, other than of polyethylene glycol
+  34049010 Của than non đã biến đổi hóa học
+  34049090 Loại khác  [LK]
+
+- 34049010 DONG8
+    tax.34049010 [45 ký tự]: 34049010 - - Của than non đã biến đổi hóa học
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của than non đã biến đổi hóa học"
+- 34049090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.34049090 [22 ký tự]: 34049090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.340490; chú giải: nhom3404.nhom, ch34.chuong, phan34.phan
+
+=== GÓI PN6 340590 ===
+# 340590 — Loại khác
+
+340590 — Polishes, creams and similar preparations; n.e.c. in heading no. 3405, excluding waxes of heading no. 3404
+  34059010 Chất đánh bóng kim loại
+  34059090 Loại khác  [LK]
+
+- 34059010 DONG8
+    tax.34059010 [36 ký tự]: 34059010 - - Chất đánh bóng kim loại
+- 34059090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.34059090 [22 ký tự]: 34059090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.340590; chú giải: nhom3405.nhom, ch34.chuong, phan34.phan
+
+=== GÓI PN6 340700 ===
+# 340700 — Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em; các chế phẩm được coi như "sáp dùng trong nha khoa" hay như "các hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự; các chế phẩm khác dùng trong nha khoa, với thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung).
+
+NHÓM 3407 — Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em; các chế phẩm được coi như "sáp dùng trong nha khoa" hay như "các hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự; các chế phẩm khác dùng trong nha khoa, với thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung).
+  34070010 Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em
+  34070020 Các chế phẩm được coi như "sáp dùng trong nha khoa" hoặc như "hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự
+  34070030 Chế phẩm khác dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)
+
+- 34070010 DONG8
+    tax.34070010 [71 ký tự]: 34070010 - Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để làm hình mẫu" · [GIỚI HẠN] "dùng cho trẻ em"
+- 34070020 DONG8
+    tax.34070020 [199 ký tự]: 34070020 - Các chế phẩm được coi như "sáp dùng trong nha khoa" hoặc như "hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được coi như "sáp" · [GIỚI HẠN] "dùng trong nha khoa" hoặc như "hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh" · [MỞ] "hoặc các dạng tương tự"
+- 34070030 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.34070030 [127 ký tự]: 34070030 - Chế phẩm khác dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)"
+
+Nguồn cấp phân nhóm: wco.340700; chú giải: nhom3407.nhom, ch34.chuong, phan34.phan

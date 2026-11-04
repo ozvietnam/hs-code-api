@@ -1,0 +1,181 @@
+Số hoá ranh giới cho 12 phân nhóm 6 số (520411 520911 520951 520952 520959 521051 521059 521151 521152 521159 521215 521225). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 520411 ===
+# 520411 — Có hàm lượng bông chiếm từ 85% trở lên tính theo khối lượng
+
+520411 — Cotton; sewing thread, containing 85% or more by weight of cotton, not put up for retail sale
+  52041110 Chưa tẩy trắng
+  52041190 Loại khác  [LK]
+
+- 52041110 DONG8
+    tax.52041110 [29 ký tự]: 52041110 - - - Chưa tẩy trắng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa tẩy trắng"
+- 52041190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52041190 [24 ký tự]: 52041190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.520411; chú giải: nhom5204.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 520911 ===
+# 520911 — Vải vân điểm
+
+520911 — Fabrics, woven; containing 85% or more by weight of cotton, unbleached, plain weave, weighing more than 200g/m2
+  52091110 Vải duck và vải canvas(SEN)
+  52091190 Loại khác  [LK]
+
+- 52091110 DONG8
+    tax.52091110 [42 ký tự]: 52091110 - - - Vải duck và vải canvas(SEN)
+    sen.52091110 [1200 ký tự]: VẢI DUCK VÀ VẢI CANVAS Vải “Duck” và vải “Canvas” là cùng một loại vải. Vải Duck là một thuật ngữ công nghiệp và vải Canvas phổ biến hơn trong thuật ngữ tiêu dùng. Loại vải này thường được làm từ sợi bông, sợi lanh, sợi gai dầu hoặc sợi đay theo trọng lượng thông thường từ 200 đến 2000g/m2. Kiểu dệt vân điểm hoặc vân điểm kết thúc 2 đầu. Vải Duck đơn sợi khác với loại vải Duck đa sợi ở chỗ chỉ có 1 sợi ngang. Loại vải Duck đa sợi sẽ có 2 sợi làm cho vải cứng hơn và chắc hơn. Ở Mỹ, vải Canvas được phân loại theo 2 cách: theo trọng lượng (ounce trên mỗi yard vuông) và theo hệ thống đánh số theo cấp độ. Các số cấp độ này tỷ lệ nghịch với trọng lượng nên vải Canvas cấp 10 sẽ nhẹ hơn vải Canvas cấp 4. Số theo cấp độ vải Duck được hiểu là lấy 19 trừ đi số ounce cho mỗi miếng vải kích thước 36x22-inch. Ví dụ, một miếng vải Duck cấp 8 với kích thước 36x22-inch sẽ nặng 11 ounce (do 19 - 8 = 11). Vải Duck đơn sợi Vải Duck đơn sợi rất phổ biến, được sử dụng để làm vải bọc, hàng thủ công, túi xách, khăn lót, khăn trải bàn, áo khoác có lớp lót lông và nhiều mục đích khác. Vải Duck đa sợi “Vải duck đa sợi” hoặc “sợi duck xếp” là một loại cấu trúc dệt nặng được biết như là vải Duck đánh số. 
+- 52091190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52091190 [24 ký tự]: 52091190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.520911; chú giải: nhom5209.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 520951 ===
+# 520951 — Vải vân điểm
+
+520951 — Fabrics, woven; containing 85% or more by weight of cotton, printed, plain weave, weighing more than 200g/m2
+  52095110 Được in bằng phương pháp batik truyền thống (SEN)
+  52095190 Loại khác  [LK]
+
+- 52095110 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52095110 [64 ký tự]: 52095110 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52095190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52095190 [24 ký tự]: 52095190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.520951; chú giải: nhom5209.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 520952 ===
+# 520952 — Vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân
+
+520952 — Fabrics, woven; containing 85% or more by weight of cotton, printed, 3-thread or 4-thread twill, including cross twill, weighing more than 200g/m2
+  52095210 Được in bằng phương pháp batik truyền thống (SEN)
+  52095290 Loại khác  [LK]
+
+- 52095210 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52095210 [64 ký tự]: 52095210 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52095290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52095290 [24 ký tự]: 52095290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.520952; chú giải: nhom5209.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 520959 ===
+# 520959 — Vải dệt khác
+
+520959 — Fabrics, woven; containing 85% or more by weight of cotton, printed, of weaves n.e.c. in item no. 5209.5, weighing more than 200g/m2
+  52095910 Được in bằng phương pháp batik truyền thống (SEN)
+  52095990 Loại khác  [LK]
+
+- 52095910 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52095910 [64 ký tự]: 52095910 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52095990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52095990 [24 ký tự]: 52095990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.520959; chú giải: nhom5209.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 521051 ===
+# 521051 — Vải vân điểm
+
+521051 — Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, plain weave
+  52105110 Được in bằng phương pháp batik truyền thống (SEN)
+  52105190 Loại khác  [LK]
+
+- 52105110 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52105110 [64 ký tự]: 52105110 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52105190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52105190 [24 ký tự]: 52105190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521051; chú giải: nhom5210.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 521059 ===
+# 521059 — Vải dệt khác
+
+521059 — Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing 200g/m2 or less, printed, of weaves n.e.c. in item no. 5210.5
+  52105910 Được in bằng phương pháp batik truyền thống (SEN)
+  52105990 Loại khác  [LK]
+
+- 52105910 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52105910 [64 ký tự]: 52105910 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52105990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52105990 [24 ký tự]: 52105990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521059; chú giải: nhom5210.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 521151 ===
+# 521151 — Vải vân điểm
+
+521151 — Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing more than 200g/m2, printed, plain weave
+  52115110 Được in bằng phương pháp batik truyền thống (SEN)
+  52115190 Loại khác  [LK]
+
+- 52115110 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52115110 [64 ký tự]: 52115110 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52115190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52115190 [24 ký tự]: 52115190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521151; chú giải: nhom5211.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 521152 ===
+# 521152 — Vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân
+
+521152 — Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing more than 200g/m2, printed, 3-thread or 4-thread twill, including cross twill
+  52115210 Được in bằng phương pháp batik truyền thống (SEN)
+  52115290 Loại khác  [LK]
+
+- 52115210 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52115210 [64 ký tự]: 52115210 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52115290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52115290 [24 ký tự]: 52115290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521152; chú giải: nhom5211.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 521159 ===
+# 521159 — Vải dệt khác
+
+521159 — Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing more than 200g/m2, printed, of weaves n.e.c. in item no. 5211.5
+  52115910 Được in bằng phương pháp batik truyền thống (SEN)
+  52115990 Loại khác  [LK]
+
+- 52115910 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52115910 [64 ký tự]: 52115910 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52115990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52115990 [24 ký tự]: 52115990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521159; chú giải: nhom5211.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 521215 ===
+# 521215 — Đã in
+
+521215 — Fabrics, woven; of cotton, printed, weighing not more than 200g/m2, n.e.c. in chapter 52
+  52121510 Được in bằng phương pháp batik truyền thống (SEN)
+  52121590 Loại khác  [LK]
+
+- 52121510 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52121510 [64 ký tự]: 52121510 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52121590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52121590 [24 ký tự]: 52121590 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521215; chú giải: nhom5212.nhom, ch52.chuong, phan52.phan
+
+=== GÓI PN6 521225 ===
+# 521225 — Đã in
+
+521225 — Fabrics, woven; of cotton, printed, weighing more than 200g/m2, n.e.c. in chapter 52
+  52122510 Được in bằng phương pháp batik truyền thống (SEN)
+  52122590 Loại khác  [LK]
+
+- 52122510 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52122510 [64 ký tự]: 52122510 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52122590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52122590 [24 ký tự]: 52122590 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521225; chú giải: nhom5212.nhom, ch52.chuong, phan52.phan

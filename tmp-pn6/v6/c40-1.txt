@@ -1,0 +1,553 @@
+Số hoá ranh giới cho 28 phân nhóm 6 số (400110 400219 400231 400239 400280 400299 400510 400591 400599 400811 400912 400921 400922 400931 400932 400941 400942 401120 401180 401190 401212 401219 401310 401512 401519 401691 401693 401700). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 400110 ===
+# 400110 — Mủ cao su tự nhiên, đã hoặc chưa tiền lưu hóa
+
+400110 — Rubber; natural rubber latex, whether or not pre-vulcanised, in primary forms or in plates, sheets or strip
+  [4001101] Chứa trên 0,5% hàm lượng amoniac tính theo thể tích
+    40011011 Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+    40011019 Loại khác  [LK]
+  [4001102] Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích
+    40011021 Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+    40011029 Loại khác  [LK]
+
+- 4001101 TIEU_DE
+    tieuDe.4001101 [59 ký tự]: 4001101 Chứa trên 0,5% hàm lượng amoniac tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa trên 0,5% hàm lượng amoniac tính theo thể tích"
+- 40011011 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.40011011 [60 ký tự]: 40011011 - - - Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+    sen.40011011 [1200 ký tự]: MỦ CAO SU CÔ ĐẶC BẰNG PHƯƠNG PHÁP LY TÂM Ly tâm là quá trình cô đặc mủ cao su bằng cách sử dụng máy ly tâm với các cánh quạt quay bên trong có tốc độ cao để tách cao su khỏi nước và serum. Theo tiêu chuẩn ngành, phương pháp ly tâm sẽ làm cô đặc không dưới 60% cao su khô và còn lại là nước, nhũ tương và một số loại tạp chất khác (tính theo trọng lượng). Ly tâm là phương pháp được sử dụng nhiều nhất để sơ chế mủ cao su trên toàn thế giới. Ngoài phương pháp ly tâm, còn có những phương pháp khác dùng để cô đặc mủ cao su, như bay hơi, kem hóa và gạn bằng điện. “Bay hơi” là một phương pháp được sử dụng lâu đời nhất, và nó chỉ tách nước, hoặc cô đặc chất lỏng dưới dạng dung dịch, huyền phù và nhũ tương. “Kem hóa” là một quá trình mà trong đó mủ cao su được cô đặc thành dạng kem bằng phương pháp trộn mủ cao su với tác nhân tạo kem (như ammonium alginate hay bột hạt me được nấu chín) và cho phép hỗn hợp này tách thành hai lớp; lớp trên là mủ cao su cô đặc và lớp dưới là serum chứa rất ít cao su. Lớp dưới sẽ được bỏ đi, giữ lại mủ cao su có hàm lượng DRC là 50%-55% (hàm lượng cao su khô) sẽ được thử nghiệm, đóng gói và đưa ra thị trường. “Gạn bằng điện” là một quá trình chuyển điện có sử 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng phương pháp ly tâm"
+- 40011019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40011019 [24 ký tự]: 40011019 - - - Loại khác
+- 4001102 TIEU_DE
+    tieuDe.4001102 [64 ký tự]: 4001102 Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích"
+- 40011021 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.40011021 [60 ký tự]: 40011021 - - - Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+    sen.40011021 [1200 ký tự]: MỦ CAO SU CÔ ĐẶC BẰNG PHƯƠNG PHÁP LY TÂM Ly tâm là quá trình cô đặc mủ cao su bằng cách sử dụng máy ly tâm với các cánh quạt quay bên trong có tốc độ cao để tách cao su khỏi nước và serum. Theo tiêu chuẩn ngành, phương pháp ly tâm sẽ làm cô đặc không dưới 60% cao su khô và còn lại là nước, nhũ tương và một số loại tạp chất khác (tính theo trọng lượng). Ly tâm là phương pháp được sử dụng nhiều nhất để sơ chế mủ cao su trên toàn thế giới. Ngoài phương pháp ly tâm, còn có những phương pháp khác dùng để cô đặc mủ cao su, như bay hơi, kem hóa và gạn bằng điện. “Bay hơi” là một phương pháp được sử dụng lâu đời nhất, và nó chỉ tách nước, hoặc cô đặc chất lỏng dưới dạng dung dịch, huyền phù và nhũ tương. “Kem hóa” là một quá trình mà trong đó mủ cao su được cô đặc thành dạng kem bằng phương pháp trộn mủ cao su với tác nhân tạo kem (như ammonium alginate hay bột hạt me được nấu chín) và cho phép hỗn hợp này tách thành hai lớp; lớp trên là mủ cao su cô đặc và lớp dưới là serum chứa rất ít cao su. Lớp dưới sẽ được bỏ đi, giữ lại mủ cao su có hàm lượng DRC là 50%-55% (hàm lượng cao su khô) sẽ được thử nghiệm, đóng gói và đưa ra thị trường. “Gạn bằng điện” là một quá trình chuyển điện có sử 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng phương pháp ly tâm"
+- 40011029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40011029 [24 ký tự]: 40011029 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400110; chú giải: nhom4001.nhom, ch40.chuong
+
+=== GÓI PN6 400219 ===
+# 400219 — Loại khác
+
+400219 — Rubber; synthetic, styrene-butadiene rubber (SBR) and carboxylated styrene-butadiene rubber (XSBR), (other than latex), in primary forms or in plates, sheets or strip
+  40021910 Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+  40021990 Loại khác  [LK]
+
+- 40021910 DONG8
+    tax.40021910 [86 ký tự]: 40021910 - - - Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lưu hóa" · [GIỚI HẠN] "chưa pha trộn"
+- 40021990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40021990 [24 ký tự]: 40021990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400219; chú giải: nhom4002.nhom, ch40.chuong
+
+=== GÓI PN6 400231 ===
+# 400231 — Cao su isobuten-isopren (butyl) (IIR)
+
+400231 — Rubber; synthetic, isobutene-isoprene (butyl) rubber (IIR), in primary forms or in plates, sheets or strip
+  40023110 Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+  40023190 Loại khác  [LK]
+
+- 40023110 DONG8
+    tax.40023110 [64 ký tự]: 40023110 - - - Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lưu hóa" · [GIỚI HẠN] "chưa pha trộn"
+- 40023190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40023190 [24 ký tự]: 40023190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400231; chú giải: nhom4002.nhom, ch40.chuong
+
+=== GÓI PN6 400239 ===
+# 400239 — Loại khác
+
+400239 — Rubber; synthetic, halo-isobutene-isoprene rubber (CIIR or BIIR), in primary forms or in plates, sheets or strip
+  40023910 Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+  40023990 Loại khác  [LK]
+
+- 40023910 DONG8
+    tax.40023910 [64 ký tự]: 40023910 - - - Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lưu hóa" · [GIỚI HẠN] "chưa pha trộn"
+- 40023990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40023990 [24 ký tự]: 40023990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400239; chú giải: nhom4002.nhom, ch40.chuong
+
+=== GÓI PN6 400280 ===
+# 400280 — Hỗn hợp của sản phẩm bất kỳ thuộc nhóm 40.01 với sản phẩm bất kỳ của nhóm này
+
+400280 — Rubber; mixtures of natural and synthetic rubbers of heading no. 4001 and 4002, in primary forms or in plates, sheets or strip
+  40028010 Hỗn hợp mủ cao su tự nhiên với mủ cao su tổng hợp
+  40028090 Loại khác  [LK]
+
+- 40028010 DONG8
+    tax.40028010 [62 ký tự]: 40028010 - - Hỗn hợp mủ cao su tự nhiên với mủ cao su tổng hợp
+- 40028090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40028090 [22 ký tự]: 40028090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400280; chú giải: nhom4002.nhom, ch40.chuong
+
+=== GÓI PN6 400299 ===
+# 400299 — Loại khác
+
+400299 — Rubber; synthetic, n.e.c. in heading 4002, (other than latex), in primary forms or in plates, sheets or strip
+  40029930 Cao su tự nhiên đã epoxy hóa (ENR)
+  40029940 Loại khác, dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn  [LK có điều kiện]
+  40029990 Loại khác  [LK]
+
+- 40029930 DONG8
+    tax.40029930 [49 ký tự]: 40029930 - - - Cao su tự nhiên đã epoxy hóa (ENR)
+- 40029940 DONG8
+    tax.40029940 [97 ký tự]: 40029940 - - - Loại khác, dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lưu hóa" · [GIỚI HẠN] "chưa pha trộn"
+- 40029990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40029990 [24 ký tự]: 40029990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400299; chú giải: nhom4002.nhom, ch40.chuong
+
+=== GÓI PN6 400510 ===
+# 400510 — Hỗn hợp với muội carbon hoặc silica
+
+400510 — Rubber; unvulcanised, compounded with carbon black or silica, in primary forms or in plates, sheets or strip
+  40051010 Của nhựa tự nhiên
+  40051090 Loại khác  [LK]
+
+- 40051010 DONG8
+    tax.40051010 [30 ký tự]: 40051010 - - Của nhựa tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của nhựa tự nhiên"
+- 40051090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40051090 [22 ký tự]: 40051090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400510; chú giải: nhom4005.nhom, ch40.chuong
+
+=== GÓI PN6 400591 ===
+# 400591 — Dạng tấm, tờ và dải
+
+400591 — Rubber; unvulcanised, (compounded other than with carbon black or silica), in plates, sheets and strip
+  40059110 Của nhựa tự nhiên
+  40059190 Loại khác  [LK]
+
+- 40059110 DONG8
+    tax.40059110 [32 ký tự]: 40059110 - - - Của nhựa tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của nhựa tự nhiên"
+- 40059190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40059190 [24 ký tự]: 40059190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400591; chú giải: nhom4005.nhom, ch40.chuong
+
+=== GÓI PN6 400599 ===
+# 400599 — Loại khác
+
+400599 — Rubber; unvulcanised, (compounded other than with carbon black or silica), in primary forms, (other than plates, sheets, strip, solutions or dispersions)
+  40059910 Dạng latex (dạng mủ cao su)
+  40059920 Cao su tự nhiên được pha trộn với các chất trừ carbon hoặc silica
+  40059990 Loại khác  [LK]
+
+- 40059910 DONG8
+    tax.40059910 [42 ký tự]: 40059910 - - - Dạng latex (dạng mủ cao su)
+- 40059920 DONG8
+    tax.40059920 [80 ký tự]: 40059920 - - - Cao su tự nhiên được pha trộn với các chất trừ carbon hoặc silica
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được pha trộn với các chất" · [GIỚI HẠN] "trừ carbon hoặc silica"
+- 40059990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40059990 [24 ký tự]: 40059990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400599; chú giải: nhom4005.nhom, ch40.chuong
+
+=== GÓI PN6 400811 ===
+# 400811 — Dạng tấm, tờ và dải
+
+400811 — Rubber; vulcanised (other than hard rubber), in plates, sheets and strip of cellular rubber
+  40081110 Chiều dày trên 5 mm, có một mặt được lót vải dệt
+  40081120 Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường  [LK có điều kiện]
+  40081190 Loại khác  [LK]
+
+- 40081110 DONG8
+    tax.40081110 [63 ký tự]: 40081110 - - - Chiều dày trên 5 mm, có một mặt được lót vải dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều dày trên 5 mm, có một mặt" · [GIỚI HẠN] "được lót vải dệt"
+- 40081120 DONG8
+    tax.40081120 [73 ký tự]: 40081120 - - - Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để lát nền và ốp tường"
+- 40081190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40081190 [24 ký tự]: 40081190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400811; chú giải: nhom4008.nhom, ch40.chuong
+
+=== GÓI PN6 400912 ===
+# 400912 — Có kèm phụ kiện ghép nối
+
+400912 — Rubber; vulcanised (other than hard rubber), tubing, piping and hoses, not reinforced or otherwise combined with other materials, with fittings
+  40091210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+  40091290 Loại khác  [LK]
+
+- 40091210 DONG8
+    tax.40091210 [61 ký tự]: 40091210 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+    sen.40091210 [313 ký tự]: ỐNG HÚT VÀ XẢ BÙN DÙNG TRONG KHAI THÁC MỎ Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa. Chúng thường có các mặt bích được lưu hóa ở 2 đầu ống.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong khai thác mỏ"
+- 40091290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40091290 [24 ký tự]: 40091290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400912; chú giải: nhom4009.nhom, ch40.chuong
+
+=== GÓI PN6 400921 ===
+# 400921 — Không kèm phụ kiện ghép nối
+
+400921 — Rubber; vulcanised (other than hard rubber), tubing, piping and hoses, reinforced or otherwise combined only with metal, without fittings
+  40092110 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+  40092190 Loại khác  [LK]
+
+- 40092110 DONG8
+    tax.40092110 [61 ký tự]: 40092110 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+    sen.40092110 [313 ký tự]: ỐNG HÚT VÀ XẢ BÙN DÙNG TRONG KHAI THÁC MỎ Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa. Chúng thường có các mặt bích được lưu hóa ở 2 đầu ống.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong khai thác mỏ"
+- 40092190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40092190 [24 ký tự]: 40092190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400921; chú giải: nhom4009.nhom, ch40.chuong
+
+=== GÓI PN6 400922 ===
+# 400922 — Có kèm phụ kiện ghép nối
+
+400922 — Rubber; vulcanised (other than hard rubber), tubing, piping and hoses, reinforced or otherwise combined only with metal, with fittings
+  40092210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+  40092290 Loại khác  [LK]
+
+- 40092210 DONG8
+    tax.40092210 [61 ký tự]: 40092210 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+    sen.40092210 [313 ký tự]: ỐNG HÚT VÀ XẢ BÙN DÙNG TRONG KHAI THÁC MỎ Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa. Chúng thường có các mặt bích được lưu hóa ở 2 đầu ống.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong khai thác mỏ"
+- 40092290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40092290 [24 ký tự]: 40092290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400922; chú giải: nhom4009.nhom, ch40.chuong
+
+=== GÓI PN6 400931 ===
+# 400931 — Không kèm phụ kiện ghép nối
+
+400931 — Rubber; vulcanised (other than hard rubber), tubing, piping and hoses, reinforced or otherwise combined only with textile materials, without fittings
+  40093110 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+  [4009319] Loại khác
+    40093191 Ống dẫn nhiên liệu, ống dẫn nhiệt và ống dẫn nước, dùng cho xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+    40093199 Loại khác  [LK]
+
+- 40093110 DONG8
+    tax.40093110 [61 ký tự]: 40093110 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+    sen.40093110 [313 ký tự]: ỐNG HÚT VÀ XẢ BÙN DÙNG TRONG KHAI THÁC MỎ Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa. Chúng thường có các mặt bích được lưu hóa ở 2 đầu ống.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong khai thác mỏ"
+- 4009319 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4009319 [17 ký tự]: 4009319 Loại khác
+- 40093191 DONG8
+    tax.40093191 [133 ký tự]: 40093191 - - - - Ống dẫn nhiên liệu, ống dẫn nhiệt và ống dẫn nước, dùng cho xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
+- 40093199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40093199 [26 ký tự]: 40093199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400931; chú giải: nhom4009.nhom, ch40.chuong
+
+=== GÓI PN6 400932 ===
+# 400932 — Có kèm phụ kiện ghép nối
+
+400932 — Rubber; vulcanised (other than hard rubber), tubing, piping and hoses, reinforced or otherwise combined only with textile materials, with fittings
+  40093210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+  40093290 Loại khác  [LK]
+
+- 40093210 DONG8
+    tax.40093210 [61 ký tự]: 40093210 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+    sen.40093210 [313 ký tự]: ỐNG HÚT VÀ XẢ BÙN DÙNG TRONG KHAI THÁC MỎ Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa. Chúng thường có các mặt bích được lưu hóa ở 2 đầu ống.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong khai thác mỏ"
+- 40093290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40093290 [24 ký tự]: 40093290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400932; chú giải: nhom4009.nhom, ch40.chuong
+
+=== GÓI PN6 400941 ===
+# 400941 — Không kèm phụ kiện ghép nối
+
+400941 — Rubber; vulcanised (other than hard rubber), tubing, piping and hoses, reinforced or otherwise combined with materials other than metal or textiles, without fittings
+  40094110 Ống vòi cao su dùng cho bếp ga (SEN)
+  40094190 Loại khác  [LK]
+
+- 40094110 DONG8
+    tax.40094110 [51 ký tự]: 40094110 - - - Ống vòi cao su dùng cho bếp ga (SEN)
+    sen.40094110 [355 ký tự]: ỐNG VÒI CAO SU DÙNG CHO BẾP GA STT Thông số Đơn vị Chỉ số nhiệt dẻo 1 Kích thước - Đường kính trong mm 10 ± 0,75 - Chiều dài mm Tối thiểu 1800 2 Độ bền kết dính giữa lớp kN/m Tối thiểu 2,4 trong và lớp ngoài 3 Lực giữ thử nghiệm - Độ rò rỉ, độ rạn nứt tại mức 1,5 MPa 4 Áp suất bục MPa Tối thiểu 3,0 5 Thử nghiệm cháy (trong 2 - Không bị cháy phút)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho bếp ga"
+- 40094190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40094190 [24 ký tự]: 40094190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400941; chú giải: nhom4009.nhom, ch40.chuong
+
+=== GÓI PN6 400942 ===
+# 400942 — Có kèm phụ kiện ghép nối
+
+400942 — Rubber; vulcanised (other than hard rubber), tubing, piping and hoses, reinforced or otherwise combined with materials other than metal or textiles, with fittings
+  40094210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+  40094220 Ống vòi cao su dùng cho bếp ga (SEN)
+  40094290 Loại khác  [LK]
+
+- 40094210 DONG8
+    tax.40094210 [61 ký tự]: 40094210 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+    sen.40094210 [313 ký tự]: ỐNG HÚT VÀ XẢ BÙN DÙNG TRONG KHAI THÁC MỎ Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa. Chúng thường có các mặt bích được lưu hóa ở 2 đầu ống.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong khai thác mỏ"
+- 40094220 DONG8
+    tax.40094220 [51 ký tự]: 40094220 - - - Ống vòi cao su dùng cho bếp ga (SEN)
+    sen.40094220 [355 ký tự]: ỐNG VÒI CAO SU DÙNG CHO BẾP GA STT Thông số Đơn vị Chỉ số nhiệt dẻo 1 Kích thước - Đường kính trong mm 10 ± 0,75 - Chiều dài mm Tối thiểu 1800 2 Độ bền kết dính giữa lớp kN/m Tối thiểu 2,4 trong và lớp ngoài 3 Lực giữ thử nghiệm - Độ rò rỉ, độ rạn nứt tại mức 1,5 MPa 4 Áp suất bục MPa Tối thiểu 3,0 5 Thử nghiệm cháy (trong 2 - Không bị cháy phút)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho bếp ga"
+- 40094290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40094290 [24 ký tự]: 40094290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400942; chú giải: nhom4009.nhom, ch40.chuong
+
+=== GÓI PN6 401120 ===
+# 401120 — Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)
+
+401120 — Rubber; new pneumatic tyres, of a kind used on buses or lorries
+  [4011201] Chiều rộng không quá 450 mm
+    40112011 Có chiều rộng không quá 230 mm và lắp vành có đường kính không quá 16 inch (SEN)
+    40112012 Có chiều rộng không quá 230 mm và lắp vành có đường kính trên 16 inch (SEN)
+    40112013 Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)
+    40112019 Loại khác  [LK]
+  40112090 Loại khác  [LK]
+
+- 4011201 TIEU_DE
+    tieuDe.4011201 [35 ký tự]: 4011201 Chiều rộng không quá 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều rộng không quá 450 mm"
+- 40112011 DONG8
+    tax.40112011 [95 ký tự]: 40112011 - - - Có chiều rộng không quá 230 mm và lắp vành có đường kính không quá 16 inch (SEN)
+    sen.40112011 [166 ký tự]: LỐP VỚI LẮP VÀNH CÓ ĐƯỜNG KÍNH Theo mục đích của các phân nhóm ASEAN tại phân nhóm 4011.20, thuật ngữ "chiều rộng" và "đường kính lắp vành" của lốp được hiểu như sau:
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chiều rộng không quá 230 mm và lắp vành" · [GIỚI HẠN] "có đường kính không quá 16 inch"
+- 40112012 DONG8
+    tax.40112012 [90 ký tự]: 40112012 - - - Có chiều rộng không quá 230 mm và lắp vành có đường kính trên 16 inch (SEN)
+    sen.40112012 [166 ký tự]: LỐP VỚI LẮP VÀNH CÓ ĐƯỜNG KÍNH Theo mục đích của các phân nhóm ASEAN tại phân nhóm 4011.20, thuật ngữ "chiều rộng" và "đường kính lắp vành" của lốp được hiểu như sau:
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chiều rộng không quá 230 mm và lắp vành" · [GIỚI HẠN] "có đường kính trên 16 inch"
+- 40112013 DONG8
+    tax.40112013 [69 ký tự]: 40112013 - - - Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)
+    sen.40112013 [166 ký tự]: LỐP VỚI LẮP VÀNH CÓ ĐƯỜNG KÍNH Theo mục đích của các phân nhóm ASEAN tại phân nhóm 4011.20, thuật ngữ "chiều rộng" và "đường kính lắp vành" của lốp được hiểu như sau:
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chiều rộng trên 230 mm nhưng không quá 385 mm"
+- 40112019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40112019 [24 ký tự]: 40112019 - - - Loại khác
+- 40112090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40112090 [22 ký tự]: 40112090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.401120; chú giải: nhom4011.nhom, ch40.chuong
+
+=== GÓI PN6 401180 ===
+# 401180 — Loại dùng cho xe và máy xây dựng, khai thác mỏ hoặc xếp dỡ công nghiệp
+
+401180 — Rubber; new pneumatic tyres, of a kind used on construction, mining or industrial handling vehicles and machines
+  [4011801] Lắp vành có đường kính không quá 24 inch
+    40118011 Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác
+    40118019 Loại khác  [LK]
+  [4011803] Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác
+    40118031 Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+    40118039 Loại khác  [LK]
+  40118040 Lắp vành có đường kính trên 24 inch, loại khác
+
+- 4011801 TIEU_DE
+    tieuDe.4011801 [48 ký tự]: 4011801 Lắp vành có đường kính không quá 24 inch
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính không quá 24 inch"
+- 40118011 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.40118011 [133 ký tự]: 40118011 - - - Loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng, xe cút kít hoặc xe và máy xếp dỡ công nghiệp khác"
+- 40118019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40118019 [24 ký tự]: 40118019 - - - Loại khác
+- 4011803 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.4011803 [151 ký tự]: 4011803 Lắp vành có đường kính trên 24 inch, loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trên 24 inch" · [GIỚI HẠN] "loại dùng cho xe kéo, máy thuộc nhóm 84.29 hoặc 84.30, xe nâng hàng hoặc xe và máy xếp dỡ công nghiệp khác"
+- 40118031 DONG8
+    tax.40118031 [60 ký tự]: 40118031 - - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy thuộc nhóm 84.29 hoặc 84.30"
+- 40118039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40118039 [24 ký tự]: 40118039 - - - Loại khác
+- 40118040 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.40118040 [59 ký tự]: 40118040 - - Lắp vành có đường kính trên 24 inch, loại khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có đường kính trên 24 inch, loại khác"
+
+Nguồn cấp phân nhóm: wco.401180; chú giải: nhom4011.nhom, ch40.chuong
+
+=== GÓI PN6 401190 ===
+# 401190 — Loại khác
+
+401190 — Rubber; new pneumatic tyres, of a kind used on light commercial vehicles
+  40119010 Loại dùng cho xe thuộc Chương 87
+  40119020 Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+  40119090 Loại khác  [LK]
+
+- 40119010 DONG8
+    tax.40119010 [45 ký tự]: 40119010 - - Loại dùng cho xe thuộc Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe thuộc Chương 87"
+- 40119020 DONG8
+    tax.40119020 [58 ký tự]: 40119020 - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy thuộc nhóm 84.29 hoặc 84.30"
+- 40119090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40119090 [22 ký tự]: 40119090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.401190; chú giải: nhom4011.nhom, ch40.chuong
+
+=== GÓI PN6 401212 ===
+# 401212 — Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)
+
+401212 — Retreaded tyres; of a kind used on motor buses or lorries
+  40121210 Chiều rộng không quá 450 mm
+  40121290 Loại khác  [LK]
+
+- 40121210 DONG8
+    tax.40121210 [42 ký tự]: 40121210 - - - Chiều rộng không quá 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều rộng không quá 450 mm"
+- 40121290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40121290 [24 ký tự]: 40121290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.401212; chú giải: nhom4012.nhom, ch40.chuong
+
+=== GÓI PN6 401219 ===
+# 401219 — Loại khác
+
+401219 — Retreaded tyres; other than of a kind used on motor cars (including station wagons and racing cars), buses and lorries and aircraft
+  40121920 Loại dùng cho máy thuộc nhóm 84.27
+  40121930 Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+  [4012194] Loại dùng cho xe thuộc Chương 87
+    40121941 Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp
+    40121949 Loại khác  [LK]
+  40121990 Loại khác  [LK]
+
+- 40121920 DONG8
+    tax.40121920 [49 ký tự]: 40121920 - - - Loại dùng cho máy thuộc nhóm 84.27
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy thuộc nhóm 84.27"
+- 40121930 DONG8
+    tax.40121930 [60 ký tự]: 40121930 - - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy thuộc nhóm 84.29 hoặc 84.30"
+- 4012194 TIEU_DE
+    tieuDe.4012194 [40 ký tự]: 4012194 Loại dùng cho xe thuộc Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe thuộc Chương 87"
+- 40121941 DONG8
+    tax.40121941 [66 ký tự]: 40121941 - - - - Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy kéo nông nghiệp hoặc lâm nghiệp"
+- 40121949 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40121949 [26 ký tự]: 40121949 - - - - Loại khác
+- 40121990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40121990 [24 ký tự]: 40121990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.401219; chú giải: nhom4012.nhom, ch40.chuong
+
+=== GÓI PN6 401310 ===
+# 401310 — Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua), ô tô khách (1) hoặc ô tô chở hàng
+
+401310 — Rubber; inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries
+  [4013101] Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)
+    40131011 Dùng cho loại lốp có chiều rộng không quá 450 mm
+    40131019 Dùng cho loại lốp có chiều rộng trên 450 mm
+  [4013102] Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)
+    40131021 Dùng cho loại lốp có chiều rộng không quá 450 mm
+    40131029 Dùng cho loại lốp có chiều rộng trên 450 mm
+
+- 4013101 TIEU_DE
+    tieuDe.4013101 [122 ký tự]: 4013101 Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)"
+- 40131011 DONG8
+    tax.40131011 [63 ký tự]: 40131011 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho loại lốp" · [GIỚI HẠN] "có chiều rộng không quá 450 mm"
+- 40131019 DONG8
+    tax.40131019 [58 ký tự]: 40131019 - - - Dùng cho loại lốp có chiều rộng trên 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho loại lốp" · [GIỚI HẠN] "có chiều rộng trên 450 mm"
+- 4013102 TIEU_DE
+    tieuDe.4013102 [73 ký tự]: 4013102 Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)"
+- 40131021 DONG8
+    tax.40131021 [63 ký tự]: 40131021 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho loại lốp" · [GIỚI HẠN] "có chiều rộng không quá 450 mm"
+- 40131029 DONG8
+    tax.40131029 [58 ký tự]: 40131029 - - - Dùng cho loại lốp có chiều rộng trên 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho loại lốp" · [GIỚI HẠN] "có chiều rộng trên 450 mm"
+
+Nguồn cấp phân nhóm: wco.401310; chú giải: nhom4013.nhom, ch40.chuong
+
+=== GÓI PN6 401512 ===
+# 401512 — Loại dùng cho các mục đích y tế, phẫu thuật, nha khoa hoặc thú y
+
+401512 — Rubber; vulcanised (other than hard rubber), gloves, of a kind used for medical, surgical, dental or veterinary purposes
+  40151210 Bằng cao su tự nhiên lưu hóa
+  40151290 Bằng cao su lưu hóa khác
+
+- 40151210 DONG8
+    tax.40151210 [43 ký tự]: 40151210 - - - Bằng cao su tự nhiên lưu hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su tự nhiên lưu hóa"
+- 40151290 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.40151290 [39 ký tự]: 40151290 - - - Bằng cao su lưu hóa khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su lưu hóa khác"
+
+Nguồn cấp phân nhóm: wco.401512; chú giải: nhom4015.nhom, ch40.chuong
+
+=== GÓI PN6 401519 ===
+# 401519 — Loại khác
+
+401519 — Rubber; vulcanised (other than hard rubber), gloves, mittens and mitts other than surgical gloves
+  40151910 Bằng cao su tự nhiên lưu hóa
+  40151990 Bằng cao su lưu hóa khác
+
+- 40151910 DONG8
+    tax.40151910 [43 ký tự]: 40151910 - - - Bằng cao su tự nhiên lưu hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su tự nhiên lưu hóa"
+- 40151990 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.40151990 [39 ký tự]: 40151990 - - - Bằng cao su lưu hóa khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su lưu hóa khác"
+
+Nguồn cấp phân nhóm: wco.401519; chú giải: nhom4015.nhom, ch40.chuong
+
+=== GÓI PN6 401691 ===
+# 401691 — Tấm phủ sàn và tấm, đệm trải sàn (mat)
+
+401691 — Rubber; vulcanised (other than hard rubber), floor coverings and mats, of non-cellular rubber
+  40169110 Tấm, đệm (mat)
+  40169120 Dạng tấm rời để ghép
+  40169190 Loại khác  [LK]
+
+- 40169110 DONG8
+    tax.40169110 [29 ký tự]: 40169110 - - - Tấm, đệm (mat)
+- 40169120 DONG8
+    tax.40169120 [35 ký tự]: 40169120 - - - Dạng tấm rời để ghép
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ghép"
+- 40169190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40169190 [24 ký tự]: 40169190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.401691; chú giải: nhom4016.nhom, ch40.chuong
+
+=== GÓI PN6 401693 ===
+# 401693 — Miếng đệm, vòng đệm và các miếng chèn khác
+
+401693 — Rubber; vulcanised (other than hard rubber), gaskets, washers and other seals, of non-cellular rubber
+  40169310 Loại dùng để cách điện cho các chân tụ điện (SEN)
+  40169320 Miếng đệm và vành khung tròn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+  40169390 Loại khác  [LK]
+
+- 40169310 DONG8
+    tax.40169310 [64 ký tự]: 40169310 - - - Loại dùng để cách điện cho các chân tụ điện (SEN)
+    sen.40169310 [182 ký tự]: MIẾNG ĐỆM, VÒNG ĐỆM VÀ CÁC MIẾNG CHÈN KHÁC, LOẠI DÙNG ĐỂ CÁCH ĐIỆN CHO CÁC CHÂN TỤ ĐIỆN Chúng là các vòng cao su nhỏ dùng để cách điện cho các chân tụ điện được lắp trên tấm mạch in.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để cách điện cho các chân tụ điện"
+- 40169320 DONG8
+    tax.40169320 [114 ký tự]: 40169320 - - - Miếng đệm và vành khung tròn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11
+    vế phải phủ (cổng 5): [GIỚI HẠN] "loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
+- 40169390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40169390 [24 ký tự]: 40169390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.401693; chú giải: nhom4016.nhom, ch40.chuong
+
+=== GÓI PN6 401700 ===
+# 401700 — Cao su cứng (ví dụ, ebonit) ở các dạng, kể cả phế liệu và phế thải; các sản phẩm bằng cao su cứng.
+
+NHÓM 4017 — Cao su cứng (ví dụ, ebonit) ở các dạng, kể cả phế liệu và phế thải; các sản phẩm bằng cao su cứng.
+  40170010 Tấm, miếng ghép với nhau để lát nền và ốp tường
+  40170020 Các sản phẩm bằng cao su cứng khác
+  40170090 Loại khác  [LK]
+
+- 40170010 DONG8
+    tax.40170010 [58 ký tự]: 40170010 - Tấm, miếng ghép với nhau để lát nền và ốp tường
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để lát nền và ốp tường"
+- 40170020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.40170020 [45 ký tự]: 40170020 - Các sản phẩm bằng cao su cứng khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng cao su cứng khác"
+- 40170090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40170090 [20 ký tự]: 40170090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.401700; chú giải: nhom4017.nhom, ch40.chuong

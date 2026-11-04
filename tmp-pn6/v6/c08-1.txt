@@ -1,0 +1,52 @@
+Số hoá ranh giới cho 3 phân nhóm 6 số (080310 080510 081350). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 080310 ===
+# 080310 — Chuối lá
+
+080310 — Fruit, edible; plantains, fresh or dried
+  08031010 Tươi
+  08031020 Khô
+
+- 08031010 DONG8
+    tax.08031010 [17 ký tự]: 08031010 - - Tươi
+- 08031020 DONG8
+    tax.08031020 [16 ký tự]: 08031020 - - Khô
+
+Nguồn cấp phân nhóm: wco.080310; chú giải: nhom0803.nhom, ch08.chuong, phan08.phan
+
+=== GÓI PN6 080510 ===
+# 080510 — Quả cam
+
+080510 — Fruit, edible; oranges, fresh or dried
+  08051010 Tươi
+  08051020 Khô
+
+- 08051010 DONG8
+    tax.08051010 [17 ký tự]: 08051010 - - Tươi
+- 08051020 DONG8
+    tax.08051020 [16 ký tự]: 08051020 - - Khô
+
+Nguồn cấp phân nhóm: wco.080510; chú giải: nhom0805.nhom, ch08.chuong, phan08.phan
+
+=== GÓI PN6 081350 ===
+# 081350 — Hỗn hợp các loại quả hạch (nuts) hoặc quả khô thuộc Chương này
+
+081350 — Nuts, edible; mixtures of nuts or dried fruits of chapter 08
+  08135010 Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+  08135020 Quả hạch (nuts) khác chiếm đa số về khối lượng
+  08135030 Quả chà là chiếm đa số về khối lượng
+  08135040 Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+  08135090 Loại khác  [LK]
+
+- 08135010 DONG8
+    tax.08135010 [82 ký tự]: 08135010 - - Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+- 08135020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.08135020 [59 ký tự]: 08135020 - - Quả hạch (nuts) khác chiếm đa số về khối lượng
+- 08135030 DONG8
+    tax.08135030 [49 ký tự]: 08135030 - - Quả chà là chiếm đa số về khối lượng
+- 08135040 DONG8
+    tax.08135040 [94 ký tự]: 08135040 - - Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+- 08135090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.08135090 [22 ký tự]: 08135090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.081350; chú giải: nhom0813.nhom, ch08.chuong, phan08.phan

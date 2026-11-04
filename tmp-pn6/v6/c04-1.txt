@@ -1,0 +1,258 @@
+Số hoá ranh giới cho 13 phân nhóm 6 số (040110 040120 040140 040150 040210 040221 040229 040410 040620 040711 040719 040729 040790). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 040110 ===
+# 040110 — Có hàm lượng chất béo không quá 1% tính theo khối lượng
+
+040110 — Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, not exceeding 1%
+  04011010 Dạng lỏng
+  04011090 Loại khác  [LK]
+
+- 04011010 DONG8
+    tax.04011010 [22 ký tự]: 04011010 - - Dạng lỏng
+- 04011090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04011090 [22 ký tự]: 04011090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040110; chú giải: nhom0401.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040120 ===
+# 040120 — Có hàm lượng chất béo trên 1% nhưng không quá 6% tính theo khối lượng
+
+040120 — Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 1% but not exceeding 6%
+  04012010 Dạng lỏng
+  04012090 Loại khác  [LK]
+
+- 04012010 DONG8
+    tax.04012010 [22 ký tự]: 04012010 - - Dạng lỏng
+- 04012090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04012090 [22 ký tự]: 04012090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040120; chú giải: nhom0401.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040140 ===
+# 040140 — Có hàm lượng chất béo trên 6% nhưng không quá 10% tính theo khối lượng
+
+040140 — Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 6% but not exceeding 10%
+  04014010 Sữa dạng lỏng
+  04014020 Sữa dạng đông lạnh
+  04014090 Loại khác  [LK]
+
+- 04014010 DONG8
+    tax.04014010 [26 ký tự]: 04014010 - - Sữa dạng lỏng
+- 04014020 DONG8
+    tax.04014020 [31 ký tự]: 04014020 - - Sữa dạng đông lạnh
+- 04014090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04014090 [22 ký tự]: 04014090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040140; chú giải: nhom0401.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040150 ===
+# 040150 — Có hàm lượng chất béo trên 10% tính theo khối lượng
+
+040150 — Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 10%
+  04015010 Dạng lỏng
+  04015090 Loại khác  [LK]
+
+- 04015010 DONG8
+    tax.04015010 [22 ký tự]: 04015010 - - Dạng lỏng
+- 04015090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04015090 [22 ký tự]: 04015090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040150; chú giải: nhom0401.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040210 ===
+# 040210 — Dạng bột, hạt hoặc các thể rắn khác, có hàm lượng chất béo không quá 1,5% tính theo khối lượng
+
+040210 — Dairy produce; milk and cream, concentrated or containing added sugar or other sweetening matter, in powder, granules or other solid forms, of a fat content not exceeding 1.5% (by weight)
+  [0402104] Chưa pha thêm đường hoặc chất tạo ngọt khác
+    04021041 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    04021042 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    04021049 Loại khác  [LK]
+  [0402109] Loại khác
+    04021091 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    04021092 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    04021099 Loại khác  [LK]
+
+- 0402104 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.0402104 [51 ký tự]: 0402104 Chưa pha thêm đường hoặc chất tạo ngọt khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa pha thêm đường hoặc chất tạo ngọt khác"
+- 04021041 DONG8
+    tax.04021041 [60 ký tự]: 04021041 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 20 kg trở lên"
+- 04021042 DONG8
+    tax.04021042 [61 ký tự]: 04021042 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 2 kg trở xuống"
+- 04021049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04021049 [24 ký tự]: 04021049 - - - Loại khác
+- 0402109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0402109 [17 ký tự]: 0402109 Loại khác
+- 04021091 DONG8
+    tax.04021091 [60 ký tự]: 04021091 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 20 kg trở lên"
+- 04021092 DONG8
+    tax.04021092 [61 ký tự]: 04021092 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 2 kg trở xuống"
+- 04021099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04021099 [24 ký tự]: 04021099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040210; chú giải: nhom0402.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040221 ===
+# 040221 — Chưa pha thêm đường hoặc chất tạo ngọt khác
+
+040221 — Dairy produce; milk and cream, concentrated, not containing added sugar or other sweetening matter, in powder, granules or other solid forms, of a fat content exceeding 1.5% (by weight)
+  04022120 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+  04022130 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+  04022190 Loại khác  [LK]
+
+- 04022120 DONG8
+    tax.04022120 [60 ký tự]: 04022120 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 20 kg trở lên"
+- 04022130 DONG8
+    tax.04022130 [61 ký tự]: 04022130 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 2 kg trở xuống"
+- 04022190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04022190 [24 ký tự]: 04022190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040221; chú giải: nhom0402.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040229 ===
+# 040229 — Loại khác
+
+040229 — Dairy produce; milk and cream, containing added sugar or other sweetening matter, in powder, granules or other solid forms, of a fat content exceeding 1.5% (by weight)
+  04022920 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+  04022930 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+  04022990 Loại khác  [LK]
+
+- 04022920 DONG8
+    tax.04022920 [60 ký tự]: 04022920 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 20 kg trở lên"
+- 04022930 DONG8
+    tax.04022930 [61 ký tự]: 04022930 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 2 kg trở xuống"
+- 04022990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04022990 [24 ký tự]: 04022990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040229; chú giải: nhom0402.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040410 ===
+# 040410 — Whey và whey đã cải biến, đã hoặc chưa cô đặc hoặc pha thêm đường hoặc chất tạo ngọt khác
+
+040410 — Dairy produce; whey, whether or not concentrated or containing added sugar or other sweetening matter
+  [0404101] Dạng bột
+    04041011 Whey, thích hợp sử dụng cho người (SEN)
+    04041019 Loại khác  [LK]
+  [0404109] Loại khác
+    04041091 Whey, thích hợp sử dụng cho người (SEN)
+    04041099 Loại khác  [LK]
+
+- 0404101 TIEU_DE
+    tieuDe.0404101 [16 ký tự]: 0404101 Dạng bột
+- 04041011 DONG8
+    tax.04041011 [54 ký tự]: 04041011 - - - Whey, thích hợp sử dụng cho người (SEN)
+    sen.04041011 [470 ký tự]: WHEY, THÍCH HỢP SỬ DỤNG CHO NGƯỜI Whey, thích hợp sử dụng cho người, là loại sạch (tức là, được chế biến và xử lý theo tiêu chuẩn vệ sinh về chế biến và xử lý thực phẩm) và được chấp nhận bởi các cơ quan có thẩm quyền là thích hợp sử dụng cho người. Nó có thể ở dạng lỏng, nhão hoặc rắn (kể cả đông lạnh), và có thể được cô đặc (ví dụ, ở dạng bột) hoặc được bảo quản. Nó thường được sử dụng như một thành phần, hoặc nguồn protein, trong các chế phẩm thực phẩm khác nhau.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "thích hợp sử dụng cho người"
+- 04041019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04041019 [24 ký tự]: 04041019 - - - Loại khác
+- 0404109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0404109 [17 ký tự]: 0404109 Loại khác
+- 04041091 DONG8
+    tax.04041091 [54 ký tự]: 04041091 - - - Whey, thích hợp sử dụng cho người (SEN)
+    sen.04041091 [470 ký tự]: WHEY, THÍCH HỢP SỬ DỤNG CHO NGƯỜI Whey, thích hợp sử dụng cho người, là loại sạch (tức là, được chế biến và xử lý theo tiêu chuẩn vệ sinh về chế biến và xử lý thực phẩm) và được chấp nhận bởi các cơ quan có thẩm quyền là thích hợp sử dụng cho người. Nó có thể ở dạng lỏng, nhão hoặc rắn (kể cả đông lạnh), và có thể được cô đặc (ví dụ, ở dạng bột) hoặc được bảo quản. Nó thường được sử dụng như một thành phần, hoặc nguồn protein, trong các chế phẩm thực phẩm khác nhau.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "thích hợp sử dụng cho người"
+- 04041099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04041099 [24 ký tự]: 04041099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040410; chú giải: nhom0404.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040620 ===
+# 040620 — Pho mát đã xát nhỏ hoặc đã làm thành bột, của tất cả các loại
+
+040620 — Dairy produce; cheese of all kinds, grated or powdered
+  04062010 Đóng gói với trọng lượng cả bì trên 20 kg
+  04062090 Loại khác  [LK]
+
+- 04062010 DONG8
+    tax.04062010 [54 ký tự]: 04062010 - - Đóng gói với trọng lượng cả bì trên 20 kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với trọng lượng cả bì trên 20 kg"
+- 04062090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04062090 [22 ký tự]: 04062090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040620; chú giải: nhom0406.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040711 ===
+# 040711 — Của gà thuộc loài Gallus domesticus
+
+040711 — Birds' eggs, in shell; fresh, fertilised eggs for incubation, of fowls of the species Gallus domesticus (domestic hens)
+  04071110 Để nhân giống
+  04071190 Loại khác  [LK]
+
+- 04071110 DONG8
+    tax.04071110 [28 ký tự]: 04071110 - - - Để nhân giống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để nhân giống"
+- 04071190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04071190 [24 ký tự]: 04071190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040711; chú giải: nhom0407.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040719 ===
+# 040719 — Loại khác
+
+040719 — Birds' eggs, in shell; fresh, fertilised eggs for incubation, other than fowls of the species Gallus domesticus (domestic hens)
+  [0407191] Của vịt, ngan
+    04071911 Để nhân giống
+    04071919 Loại khác  [LK]
+  [0407199] Loại khác
+    04071991 Để nhân giống
+    04071999 Loại khác  [LK]
+
+- 0407191 TIEU_DE
+    tieuDe.0407191 [21 ký tự]: 0407191 Của vịt, ngan
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của vịt, ngan"
+- 04071911 DONG8
+    tax.04071911 [30 ký tự]: 04071911 - - - - Để nhân giống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để nhân giống"
+- 04071919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04071919 [26 ký tự]: 04071919 - - - - Loại khác
+- 0407199 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0407199 [17 ký tự]: 0407199 Loại khác
+- 04071991 DONG8
+    tax.04071991 [30 ký tự]: 04071991 - - - - Để nhân giống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để nhân giống"
+- 04071999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04071999 [26 ký tự]: 04071999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040719; chú giải: nhom0407.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040729 ===
+# 040729 — Loại khác
+
+040729 — Birds' eggs, in shell; fresh, not for incubation, other than fowls of the species Gallus domesticus (domestic hens)
+  04072910 Của vịt, ngan
+  04072990 Loại khác  [LK]
+
+- 04072910 DONG8
+    tax.04072910 [28 ký tự]: 04072910 - - - Của vịt, ngan
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của vịt, ngan"
+- 04072990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04072990 [24 ký tự]: 04072990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040729; chú giải: nhom0407.nhom, ch04.chuong, phan04.phan
+
+=== GÓI PN6 040790 ===
+# 040790 — Loại khác
+
+040790 — Birds' eggs, in shell; preserved or cooked
+  04079010 Của gà thuộc loài Gallus domesticus
+  04079020 Của vịt, ngan
+  04079090 Loại khác  [LK]
+
+- 04079010 DONG8
+    tax.04079010 [48 ký tự]: 04079010 - - Của gà thuộc loài Gallus domesticus
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của gà thuộc loài Gallus domesticus"
+- 04079020 DONG8
+    tax.04079020 [26 ký tự]: 04079020 - - Của vịt, ngan
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của vịt, ngan"
+- 04079090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04079090 [22 ký tự]: 04079090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040790; chú giải: nhom0407.nhom, ch04.chuong, phan04.phan

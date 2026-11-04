@@ -1,0 +1,121 @@
+Số hoá ranh giới cho 8 phân nhóm 6 số (230120 230240 230310 230641 230649 230660 230690 230910). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 230120 ===
+# 230120 — Bột mịn, bột thô và viên, từ cá hoặc từ động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác
+
+230120 — Flours, meals and pellets; of fish or of crustaceans, molluscs or other aquatic invertebrates
+  23012010 Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng
+  23012020 Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng
+  23012090 Loại khác  [LK]
+
+- 23012010 DONG8
+    tax.23012010 [70 ký tự]: 23012010 - - Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng protein dưới 60% tính theo khối lượng"
+- 23012020 DONG8
+    tax.23012020 [76 ký tự]: 23012020 - - Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng protein từ 60% trở lên tính theo khối lượng"
+- 23012090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23012090 [22 ký tự]: 23012090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230120; chú giải: nhom2301.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230240 ===
+# 230240 — Từ ngũ cốc khác
+
+230240 — Bran, sharps and other residues; of other cereals, whether or not in the form of pellets, derived from the sifting, milling or other workings thereof
+  23024010 Từ thóc gạo
+  23024090 Loại khác  [LK]
+
+- 23024010 DONG8
+    tax.23024010 [24 ký tự]: 23024010 - - Từ thóc gạo
+- 23024090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23024090 [22 ký tự]: 23024090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230240; chú giải: nhom2302.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230310 ===
+# 230310 — Phế liệu từ quá trình sản xuất tinh bột và phế liệu tương tự
+
+230310 — Residues of starch manufacture and similar residues; whether or not in the form of pellets
+  23031010 Từ sắn hoặc cọ sago
+  23031090 Loại khác  [LK]
+
+- 23031010 DONG8
+    tax.23031010 [32 ký tự]: 23031010 - - Từ sắn hoặc cọ sago
+- 23031090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23031090 [22 ký tự]: 23031090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230310; chú giải: nhom2303.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230641 ===
+# 230641 — Từ hạt cải dầu (rape seeds hoặc colza seeds) có hàm lượng axit eruxic thấp
+
+230641 — Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of low erucic acid rape or colza seed oils
+  23064110 Từ hạt cải dầu rape có hàm lượng axit eruxic thấp
+  23064120 Từ hạt cải dầu colza có hàm lượng axit eruxic thấp
+
+- 23064110 DONG8
+    tax.23064110 [64 ký tự]: 23064110 - - - Từ hạt cải dầu rape có hàm lượng axit eruxic thấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng axit eruxic thấp"
+- 23064120 DONG8
+    tax.23064120 [65 ký tự]: 23064120 - - - Từ hạt cải dầu colza có hàm lượng axit eruxic thấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng axit eruxic thấp"
+
+Nguồn cấp phân nhóm: wco.230641; chú giải: nhom2306.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230649 ===
+# 230649 — Loại khác
+
+230649 — Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of rape seed oils (other than low erucic acid rape or colza)
+  23064910 Từ hạt cải dầu rape khác
+  23064920 Từ hạt cải dầu colza khác
+
+- 23064910 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.23064910 [39 ký tự]: 23064910 - - - Từ hạt cải dầu rape khác
+- 23064920 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.23064920 [40 ký tự]: 23064920 - - - Từ hạt cải dầu colza khác
+
+Nguồn cấp phân nhóm: wco.230649; chú giải: nhom2306.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230660 ===
+# 230660 — Từ hạt hoặc nhân hạt cọ
+
+230660 — Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of palm nuts or kernels oils
+  23066010 Dạng xay hoặc dạng viên
+  23066090 Loại khác  [LK]
+
+- 23066010 DONG8
+    tax.23066010 [36 ký tự]: 23066010 - - Dạng xay hoặc dạng viên
+- 23066090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23066090 [22 ký tự]: 23066090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230660; chú giải: nhom2306.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230690 ===
+# 230690 — Loại khác
+
+230690 — Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of oils, n.e.c. in heading no. 2306
+  23069010 Từ mầm ngô
+  23069090 Loại khác  [LK]
+
+- 23069010 DONG8
+    tax.23069010 [23 ký tự]: 23069010 - - Từ mầm ngô
+- 23069090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23069090 [22 ký tự]: 23069090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230690; chú giải: nhom2306.nhom, ch23.chuong, phan23.phan
+
+=== GÓI PN6 230910 ===
+# 230910 — Thức ăn cho chó hoặc mèo, đã đóng gói để bán lẻ
+
+230910 — Dog or cat food; put up for retail sale, used in animal feeding
+  23091010 Chứa thịt
+  23091090 Loại khác  [LK]
+
+- 23091010 DONG8
+    tax.23091010 [22 ký tự]: 23091010 - - Chứa thịt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa thịt"
+- 23091090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23091090 [22 ký tự]: 23091090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230910; chú giải: nhom2309.nhom, ch23.chuong, phan23.phan

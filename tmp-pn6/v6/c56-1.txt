@@ -1,0 +1,51 @@
+Số hoá ranh giới cho 2 phân nhóm 6 số (560490 560790). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 560490 ===
+# 560490 — Loại khác
+
+560490 — Yarn; textile yarn, strip, and the like of heading no. 5404 or 5405, impregnated, coated, covered, or sheathed with rubber or plastics, n.e.c. in heading no. 5604
+  56049010 Chỉ giả catgut, bằng sợi tơ tằm
+  56049020 Sợi dệt được ngâm tẩm cao su
+  56049030 Sợi có độ bền cao từ polyeste, ni lông hoặc polyamit khác hoặc từ viscose rayon
+  56049090 Loại khác  [LK]
+
+- 56049010 DONG8
+    tax.56049010 [44 ký tự]: 56049010 - - Chỉ giả catgut, bằng sợi tơ tằm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng sợi tơ tằm"
+- 56049020 DONG8
+    tax.56049020 [41 ký tự]: 56049020 - - Sợi dệt được ngâm tẩm cao su
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được ngâm tẩm cao su"
+- 56049030 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.56049030 [92 ký tự]: 56049030 - - Sợi có độ bền cao từ polyeste, ni lông hoặc polyamit khác hoặc từ viscose rayon
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có độ bền cao từ polyeste, ni lông hoặc polyamit khác hoặc từ viscose rayon"
+- 56049090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.56049090 [22 ký tự]: 56049090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.560490; chú giải: nhom5604.nhom, ch56.chuong, phan56.phan
+
+=== GÓI PN6 560790 ===
+# 560790 — Loại khác
+
+560790 — Twine, cordage, ropes, cables; of materials n.e.c. in heading no. 5607, whether or not plaited, braided or impregnated, coated, covered, or sheathed with rubber or plastics
+  56079010 Từ các xơ tái tạo
+  [5607902] Từ xơ chuối abaca (Manila hemp hoặc Musa textilis Nee) hoặc các xơ (lá thực vật) cứng khác
+    56079021 Từ xơ chuối abaca (Manila hemp hoặc Musa textilis Nee)
+    56079022 Từ các xơ (lá thực vật) cứng khác
+  56079030 Từ đay hoặc các loại xơ libe dệt khác thuộc nhóm 53.03
+  56079090 Loại khác  [LK]
+
+- 56079010 DONG8
+    tax.56079010 [30 ký tự]: 56079010 - - Từ các xơ tái tạo
+- 5607902 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.5607902 [98 ký tự]: 5607902 Từ xơ chuối abaca (Manila hemp hoặc Musa textilis Nee) hoặc các xơ (lá thực vật) cứng khác
+- 56079021 DONG8
+    tax.56079021 [69 ký tự]: 56079021 - - - Từ xơ chuối abaca (Manila hemp hoặc Musa textilis Nee)
+- 56079022 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.56079022 [48 ký tự]: 56079022 - - - Từ các xơ (lá thực vật) cứng khác
+- 56079030 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.56079030 [67 ký tự]: 56079030 - - Từ đay hoặc các loại xơ libe dệt khác thuộc nhóm 53.03
+    vế phải phủ (cổng 5): [MỞ] "hoặc các loại xơ libe dệt khác" · [GIỚI HẠN] "thuộc nhóm 53.03"
+- 56079090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.56079090 [22 ký tự]: 56079090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.560790; chú giải: nhom5607.nhom, ch56.chuong, phan56.phan

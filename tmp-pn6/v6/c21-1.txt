@@ -1,0 +1,116 @@
+Số hoá ranh giới cho 5 phân nhóm 6 số (210111 210120 210220 210410 210420). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 210111 ===
+# 210111 — Chất chiết xuất, tinh chất và các chất cô đặc
+
+210111 — Extracts, essences and concentrates; of coffee, and preparations with a basis of these extracts, essences or concentrates or with a basis of coffee
+  [2101111] Cà phê hòa tan (1)
+    21011111 Được đóng gói với khối lượng tịnh không dưới 20kg
+    21011119 Loại khác  [LK]
+  21011190 Loại khác  [LK]
+
+- 2101111 TIEU_DE
+    tieuDe.2101111 [26 ký tự]: 2101111 Cà phê hòa tan (1)
+- 21011111 DONG8
+    tax.21011111 [66 ký tự]: 21011111 - - - - Được đóng gói với khối lượng tịnh không dưới 20kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được đóng gói" · [GIỚI HẠN] "với khối lượng tịnh không dưới 20kg"
+- 21011119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21011119 [26 ký tự]: 21011119 - - - - Loại khác
+- 21011190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21011190 [24 ký tự]: 21011190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210111; chú giải: nhom2101.nhom, ch21.chuong, phan21.phan
+
+=== GÓI PN6 210120 ===
+# 210120 — Chất chiết xuất, tinh chất và các chất cô đặc, từ chè hoặc chè Paragoay, và các chế phẩm có thành phần cơ bản là các chất chiết xuất, tinh chất hoặc các chất cô đặc này hoặc có thành phần cơ bản là chè hoặc chè Paragoay
+
+210120 — Extracts, essences and concentrates; of tea or mate, and preparations with a basis of these extracts, essences or concentrates or with a basis of tea or mate
+  21012020 Chiết xuất từ chè để sản xuất các chế phẩm chè, dạng bột
+  21012030 Các chế phẩm chè gồm hỗn hợp của chè, sữa bột và đường
+  21012090 Loại khác  [LK]
+
+- 21012020 DONG8
+    tax.21012020 [69 ký tự]: 21012020 - - Chiết xuất từ chè để sản xuất các chế phẩm chè, dạng bột
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để sản xuất các chế phẩm chè, dạng bột"
+- 21012030 DONG8
+    tax.21012030 [67 ký tự]: 21012030 - - Các chế phẩm chè gồm hỗn hợp của chè, sữa bột và đường
+    vế phải phủ (cổng 5): [GIỚI HẠN] "gồm hỗn hợp của chè, sữa bột và đường"
+- 21012090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21012090 [22 ký tự]: 21012090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210120; chú giải: nhom2101.nhom, ch21.chuong, phan21.phan
+
+=== GÓI PN6 210220 ===
+# 210220 — Men ỳ; các vi sinh đơn bào khác, chết
+
+210220 — Yeasts; inactive, other single-cell micro-organisms, dead
+  21022010 Loại dùng trong chăn nuôi động vật
+  21022090 Loại khác  [LK]
+
+- 21022010 DONG8
+    tax.21022010 [47 ký tự]: 21022010 - - Loại dùng trong chăn nuôi động vật
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong chăn nuôi động vật"
+- 21022090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21022090 [22 ký tự]: 21022090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210220; chú giải: nhom2102.nhom, ch21.chuong, phan21.phan
+
+=== GÓI PN6 210410 ===
+# 210410 — Súp và nước xuýt (broths) và chế phẩm để làm súp và nước xuýt
+
+210410 — Soups and broths and preparations therefor
+  [2104101] Chứa thịt
+    21041011 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    21041019 Loại khác  [LK]
+  [2104109] Loại khác
+    21041091 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    21041099 Loại khác  [LK]
+
+- 2104101 TIEU_DE
+    tieuDe.2104101 [17 ký tự]: 2104101 Chứa thịt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa thịt"
+- 21041011 DONG8
+    tax.21041011 [62 ký tự]: 21041011 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    sen.21041011 [1200 ký tự]: SÚP VÀ NƯỚC XUÝT (BROTHS) VÀ CHẾ PHẦM ĐỂ LÀM SÚP VÀ NƯỚC XUÝT PHÙ HỢP DÙNG CHO TRẺ SƠ SINH HOẶC TRẺ NHỎ Súp là thực phẩm dạng lỏng gồm thịt, cá, rau, ngũ cốc hoặc hỗn hợp bất kỳ của các nguyên liệu trên và có thể chứa muối hoặc bất kỳ thực phẩm nào khác. Súp có thể chứa các chất được phép sử dụng gồm: chất tạo màu, chất tạo hương, chất điều vị và chất bảo quản thực phẩm. Nước xuýt là chế phẩm dạng lỏng (súp), thường là nước xương, thịt, cá, các loại hạt ngũ cốc, hoặc rau đã được ninh nhỏ lửa (ninh nhỏ lửa là kỹ thuật chế biến thực phẩm, trong đó thực phẩm được nấu chín trong chất lỏng được giữ nóng dưới điểm sôi của nước (khoảng 94°C). NƯỚC XUÝT DÀNH CHO TRẺ EM Nước xuýt xương, thực phẩm bổ sung Các chuyên gia dinh dưỡng cho trẻ sơ sinh và Trung tâm sáng tạo thực phẩm đã hợp tác để xây dựng công thức nước xuýt xương, thực phẩm bổ sung nhằm đưa ra một lựa chọn về thực phẩm dinh dưỡng đậm đặc và an toàn cho trẻ nhỏ. Công thức này không chứa bất kỳ thành phần tổng hợp hoặc biến đổi gen. Nó cung cấp các chất dinh dưỡng tương tự có trong sữa mẹ cần thiết cho sự phát triển của cơ thể, não và hệ thống miễn dịch của trẻ. Nhiều gia đình rất thích trộn nó với sữa dê hoặc sữa bò. Thực phẩ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 21041019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21041019 [24 ký tự]: 21041019 - - - Loại khác
+- 2104109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.2104109 [17 ký tự]: 2104109 Loại khác
+- 21041091 DONG8
+    tax.21041091 [62 ký tự]: 21041091 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    sen.21041091 [1200 ký tự]: SÚP VÀ NƯỚC XUÝT (BROTHS) VÀ CHẾ PHẦM ĐỂ LÀM SÚP VÀ NƯỚC XUÝT PHÙ HỢP DÙNG CHO TRẺ SƠ SINH HOẶC TRẺ NHỎ Súp là thực phẩm dạng lỏng gồm thịt, cá, rau, ngũ cốc hoặc hỗn hợp bất kỳ của các nguyên liệu trên và có thể chứa muối hoặc bất kỳ thực phẩm nào khác. Súp có thể chứa các chất được phép sử dụng gồm: chất tạo màu, chất tạo hương, chất điều vị và chất bảo quản thực phẩm. Nước xuýt là chế phẩm dạng lỏng (súp), thường là nước xương, thịt, cá, các loại hạt ngũ cốc, hoặc rau đã được ninh nhỏ lửa (ninh nhỏ lửa là kỹ thuật chế biến thực phẩm, trong đó thực phẩm được nấu chín trong chất lỏng được giữ nóng dưới điểm sôi của nước (khoảng 94°C). NƯỚC XUÝT DÀNH CHO TRẺ EM Nước xuýt xương, thực phẩm bổ sung Các chuyên gia dinh dưỡng cho trẻ sơ sinh và Trung tâm sáng tạo thực phẩm đã hợp tác để xây dựng công thức nước xuýt xương, thực phẩm bổ sung nhằm đưa ra một lựa chọn về thực phẩm dinh dưỡng đậm đặc và an toàn cho trẻ nhỏ. Công thức này không chứa bất kỳ thành phần tổng hợp hoặc biến đổi gen. Nó cung cấp các chất dinh dưỡng tương tự có trong sữa mẹ cần thiết cho sự phát triển của cơ thể, não và hệ thống miễn dịch của trẻ. Nhiều gia đình rất thích trộn nó với sữa dê hoặc sữa bò. Thực phẩ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 21041099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21041099 [24 ký tự]: 21041099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210410; chú giải: nhom2104.nhom, ch21.chuong, phan21.phan
+
+=== GÓI PN6 210420 ===
+# 210420 — Chế phẩm thực phẩm tổng hợp đồng nhất
+
+210420 — Homogenised composite food preparations
+  [2104201] Chứa thịt
+    21042011 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+    21042019 Loại khác  [LK]
+  [2104209] Loại khác
+    21042091 Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    21042099 Loại khác  [LK]
+
+- 2104201 TIEU_DE
+    tieuDe.2104201 [17 ký tự]: 2104201 Chứa thịt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa thịt"
+- 21042011 DONG8
+    tax.21042011 [56 ký tự]: 21042011 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 21042019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21042019 [24 ký tự]: 21042019 - - - Loại khác
+- 2104209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.2104209 [17 ký tự]: 2104209 Loại khác
+- 21042091 DONG8
+    tax.21042091 [62 ký tự]: 21042091 - - - Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ"
+- 21042099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.21042099 [24 ký tự]: 21042099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.210420; chú giải: nhom2104.nhom, ch21.chuong, phan21.phan

@@ -1,0 +1,57 @@
+Số hoá ranh giới cho 3 phân nhóm 6 số (100590 100610 100640). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 100590 ===
+# 100590 — Loại khác
+
+100590 — Cereals; maize (corn), other than seed
+  10059010 Loại dùng để rang nổ (popcorn) (SEN)
+  [1005909] Loại khác
+    10059091 Thích hợp sử dụng cho người (SEN)
+    10059099 Loại khác  [LK]
+
+- 10059010 DONG8
+    tax.10059010 [49 ký tự]: 10059010 - - Loại dùng để rang nổ (popcorn) (SEN)
+    sen.10059010 [483 ký tự]: NGÔ LOẠI DÙNG ĐỂ RANG NỔ (POPCORN) Ngô loại dùng để rang nổ (popcorn) còn được gọi là ngô rang nổ, là loại ngô (ngô, Zea mays var. Everta) nở ra từ nhân và phồng lên khi bị làm nóng. Popcorn có khả năng nổ bởi vì, giống như hạt dền, lúa miến, hạt diệm mạch (quinoa) và hạt kê, nhân hạt ngô có một lớp vỏ kín, ẩm, cứng và đầy tinh bột. Áp lực tạo ra bên trong hạt ngô làm nên một tiếng nổ nhỏ (hoặc "pop"). Một số loại ngô đang được canh tác chỉ sử dụng làm ngô rang nổ. Ngô loại (P
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để rang nổ (popcorn)"
+- 1005909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.1005909 [17 ký tự]: 1005909 Loại khác
+- 10059091 DONG8
+    tax.10059091 [48 ký tự]: 10059091 - - - Thích hợp sử dụng cho người (SEN)
+    sen.10059091 [246 ký tự]: NGÔ, THÍCH HỢP SỬ DỤNG CHO NGƯỜI Ngô thích hợp sử dụng cho con người là loại ngô sạch, tốt cho sức khỏe và được các cơ quan có thẩm quyền của quốc gia chứng nhận. Loại ngô này thường có hàm lượng aflatoxin tối đa là 20 ppb và độ ẩm không quá 14%.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Thích hợp sử dụng cho người"
+- 10059099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.10059099 [24 ký tự]: 10059099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.100590; chú giải: nhom1005.nhom, ch10.chuong, phan10.phan
+
+=== GÓI PN6 100610 ===
+# 100610 — Thóc
+
+100610 — Cereals; rice in the husk (paddy or rough)
+  10061010 Phù hợp để gieo trồng
+  10061090 Loại khác  [LK]
+
+- 10061010 DONG8
+    tax.10061010 [34 ký tự]: 10061010 - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 10061090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.10061090 [22 ký tự]: 10061090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.100610; chú giải: nhom1006.nhom, ch10.chuong, phan10.phan
+
+=== GÓI PN6 100640 ===
+# 100640 — Tấm
+
+100640 — Cereals; rice, broken
+  10064010 Loại dùng làm thức ăn chăn nuôi (SEN)
+  10064090 Loại khác (SEN)  [LK]
+
+- 10064010 DONG8
+    tax.10064010 [50 ký tự]: 10064010 - - Loại dùng làm thức ăn chăn nuôi (SEN)
+    sen.10064010 [1012 ký tự]: TẤM Tấm là một sản phẩm phụ của ngành công nghiệp xay xát gạo. Về giá trị dinh dưỡng, tấm tốt như gạo nguyên hạt. Tuy nhiên, gạo tấm có giá trị kinh tế thấp hơn gạo nguyên hạt. Tấm, dùng làm thức ăn chăn nuôi Nhìn chung, tấm có chất lượng thấp vì trong đó có vỏ trấu, cám, đá mạt, đá và các hạt đất sét. Tấm có thể được bán để làm thức chăn nuôi. Về hình thức, tấm làm thức ăn chăn nuôi dễ dàng được nhận biết nhờ hình dạng của nó, dựa trên hàm lượng hỗn hợp của gạo tấm đã đánh bóng (màu trắng), cám, trấu (màu nâu) và đá mạt, đá và các hạt đất sét (màu đen). Theo mục đích phân loại của AHTN, sản phẩm này được phân loại là tấm sử dụng làm thức ăn chăn nuôi thuộc phân nhóm 1006.40.10. Chất lượng của tấm có thể được cải thiện bằng cách xay xát lại để tách tấm đã được đánh bóng khỏi trấu, cám và các tạp chất khác. Sau đó có thể được bán để sử dụng cho người. Tấm phù hợp sử dụng cho con người Theo mục đích phân loại của AHTN, sản phẩm này được phân loại thành tấm loại khác thuộc phân nhóm 1006.40.90.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng làm thức ăn chăn nuôi"
+- 10064090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.10064090 [28 ký tự]: 10064090 - - Loại khác (SEN)
+    sen.10064090 [1012 ký tự]: TẤM Tấm là một sản phẩm phụ của ngành công nghiệp xay xát gạo. Về giá trị dinh dưỡng, tấm tốt như gạo nguyên hạt. Tuy nhiên, gạo tấm có giá trị kinh tế thấp hơn gạo nguyên hạt. Tấm, dùng làm thức ăn chăn nuôi Nhìn chung, tấm có chất lượng thấp vì trong đó có vỏ trấu, cám, đá mạt, đá và các hạt đất sét. Tấm có thể được bán để làm thức chăn nuôi. Về hình thức, tấm làm thức ăn chăn nuôi dễ dàng được nhận biết nhờ hình dạng của nó, dựa trên hàm lượng hỗn hợp của gạo tấm đã đánh bóng (màu trắng), cám, trấu (màu nâu) và đá mạt, đá và các hạt đất sét (màu đen). Theo mục đích phân loại của AHTN, sản phẩm này được phân loại là tấm sử dụng làm thức ăn chăn nuôi thuộc phân nhóm 1006.40.10. Chất lượng của tấm có thể được cải thiện bằng cách xay xát lại để tách tấm đã được đánh bóng khỏi trấu, cám và các tạp chất khác. Sau đó có thể được bán để sử dụng cho người. Tấm phù hợp sử dụng cho con người Theo mục đích phân loại của AHTN, sản phẩm này được phân loại thành tấm loại khác thuộc phân nhóm 1006.40.90.
+
+Nguồn cấp phân nhóm: wco.100640; chú giải: nhom1006.nhom, ch10.chuong, phan10.phan
