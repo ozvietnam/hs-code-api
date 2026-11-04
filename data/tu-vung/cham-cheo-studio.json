@@ -912,6 +912,134 @@
         "moTaGiaTri.SAY_NONG_KHAC.cachDoc.vi",
         "moTaGiaTri.SAY_NONG_KHAC.cachDoc.en"
       ]
+    },
+    "phaCheVoiEthanol": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí xăng pha ethanol nhóm 2710.12 chuẩn. Tuy nhiên mẫu tiếng Việt và Anh bỏ sót các tên gọi thương mại phổ biến nhất của xăng sinh học là 'xăng E5', 'xăng E10', 'E5 RON 92' và 'gasohol'.",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDocKhong.vi",
+        "cachDocKhong.en"
+      ]
+    },
+    "daPhaHuongLieuHoacChatMau": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí đường/xi-rô pha hương liệu hoặc màu nhóm 17.02, 17.03, 21.06 chuẩn. Nhưng mẫu regex bắt buộc phải có cả hai thành phần liên kết 'hoặc', khiến các sản phẩm chỉ pha riêng hương liệu ('flavoured syrup') hoặc riêng chất màu bị trượt.",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
+    },
+    "sanPhamDinhDuongYTe": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí sản phẩm dinh dưỡng y tế nhóm 19.01, 21.06 chuẩn. Tuy nhiên regex thiếu thuật ngữ pháp lý chính thức của Bộ Y tế là 'thực phẩm dinh dưỡng y học' và thuật ngữ thương mại quốc tế 'FSMP' (Food for Special Medical Purposes).",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
+    },
+    "dangKhoiHoacTamDa": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí hình dạng đá hoa cương/cẩm thạch xẻ nhóm 25.15, 25.16 chuẩn. Tuy nhiên mẫu tiếng Anh bắt buộc phải có giới từ 'in' ('in blocks', 'in slabs'), khiến các khai báo thông dụng như 'marble blocks', 'granite slabs', 'đá block', 'đá slab' bị trượt.",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.DANG_KHOI.cachDoc.vi",
+        "moTaGiaTri.DANG_KHOI.cachDoc.en",
+        "moTaGiaTri.DANG_TAM.cachDoc.vi",
+        "moTaGiaTri.DANG_TAM.cachDoc.en"
+      ]
+    },
+    "loaiMiBunMien": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí mì, bún gạo và miến nhóm 19.02 chuẩn. Tuy nhiên nhánh BUN_MI_GAO bắt buộc cả cụm 'mì, bún', từ đơn 'miến' bắt nhầm xuất xứ quốc gia 'Miến Điện' (Myanmar), và tiếng Anh thiếu các thuật ngữ thương mại phổ biến 'glass noodles' hay 'bean vermicelli'.",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.BUN_MI_GAO.cachDoc.vi",
+        "moTaGiaTri.MIEN.cachDoc.vi",
+        "moTaGiaTri.MIEN.cachDoc.en",
+        "moTaGiaTri.MIEN.cachDoc.zh"
+      ]
+    },
+    "chuaCaCao": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí sản phẩm chứa ca cao nhóm 19.01, 19.05 chuẩn. Nhưng mẫu hiện tại bỏ sót thuật ngữ 'chocolate' / 'sô-cô-la' vốn là cách khai báo của phần lớn bánh ngọt, bánh quy thực tế ('bánh quy sô cô la', 'chocolate cookies').",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
+    },
+    "thamCauNguyen": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí CO_KHONG thảm cầu nguyện (prayer rug) nhóm 57.01-57.05 hoàn toàn chính xác. Thuật ngữ tôn giáo đặc thù, bao quát đầy đủ cả rug, carpet và mat, không có nguy cơ bắt nhầm.",
+      "goi": "10",
+      "ngay": "2026-11-04"
+    },
+    "quanAoDauKiemDauVat": {
+      "ketLuan": "SUA",
+      "lyDo": "Đúng tiêu chí quần áo thể thao chuyên dụng nhóm 62.11. Tuy nhiên regex bắt buộc cả cụm liên kết 'hoặc', khiến các tờ khai nhập khẩu riêng trang phục đấu kiếm ('fencing suit') hay riêng trang phục đấu vật ('wrestling singlet') đều bị trượt.",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "loaiSanPhamXiMangSoi": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí chủng loại sản phẩm xi măng sợi nhóm 68.11 chuẩn. Tuy nhiên các nhánh đều bắt buộc cả cụm từ dài của biểu thuế ('ống hoặc ống dẫn', 'phụ kiện để ghép nối...'), làm trượt các khai báo ngắn gọn thông thường như 'ống xi măng sợi' hay 'pipe fittings'.",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.ONG_HOAC_ONG_DAN.cachDoc.vi",
+        "moTaGiaTri.ONG_HOAC_ONG_DAN.cachDoc.en",
+        "moTaGiaTri.PHU_KIEN_GHEP_NOI.cachDoc.vi",
+        "moTaGiaTri.PHU_KIEN_GHEP_NOI.cachDoc.en"
+      ]
+    },
+    "tamLatGachLat": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí tấm lát/gạch lát khoáng chất nhóm 68.07-68.10 chuẩn. Tuy nhiên tiếng Việt thiếu từ 'gạch lát', 'tấm ốp lát' chiếm đa số ở gạch bê tông lát vỉa hè (68.10), và từ đơn '瓦' tiếng Trung bắt nhầm đơn vị công suất Watt (100瓦).",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.zh"
+      ]
+    },
+    "donNgucSauPhauThuat": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí áo ngực/đồ bơi sau phẫu thuật ngực nhóm 61.12, 62.12 rất chuẩn. Tuy nhiên regex đòi hỏi nguyên văn dấu ngoặc đơn của biểu thuế, khiến trượt 100% các sản phẩm y tế thương mại quốc tế khai là 'mastectomy bra' hay 'post-mastectomy bra'.",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "boPhanGiayDep": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí tấm lót giày và đế hoàn thiện nhóm 64.06 chuẩn. Tuy nhiên nhánh TAM_LOT_GIAY bắt buộc phải có từ 'tấm' khiến trượt các khai báo thông dụng 'lót giày', 'miếng lót giày', và nhánh DE_HOAN_THIEN thiếu thuật ngữ 'finished soles'.",
+      "goi": "10",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.TAM_LOT_GIAY.cachDoc.vi",
+        "moTaGiaTri.TAM_LOT_GIAY.cachDoc.en",
+        "moTaGiaTri.DE_HOAN_THIEN.cachDoc.vi",
+        "moTaGiaTri.DE_HOAN_THIEN.cachDoc.en"
+      ]
     }
   }
 }

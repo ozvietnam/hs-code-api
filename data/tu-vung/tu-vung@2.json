@@ -11299,10 +11299,18 @@
       "cachDoc": {
         "vi": [
           "pha\\s+chế\\s+với\\s+ethanol",
-          "pha\\s+ethanol"
+          "pha\\s+ethanol",
+          "(?:xăng\\s+)?(?:sinh\\s+học\\s+)?e[5-9]\\b",
+          "(?:xăng\\s+)?e10\\b",
+          "xăng\\s+sinh\\s+học",
+          "pha\\s+(?:chế\\s+với\\s+)?cồn"
         ],
         "en": [
-          "blended\\s+with\\s+ethanol"
+          "blended\\s+with\\s+ethanol",
+          "ethanol[- ]blended",
+          "\\be[5-9]\\b",
+          "\\be10\\b",
+          "gasohol"
         ],
         "zh": [
           "与乙醇混合",
@@ -11318,10 +11326,13 @@
       },
       "cachDocKhong": {
         "vi": [
-          "chưa\\s+pha\\s+chế"
+          "chưa\\s+pha\\s+chế",
+          "xăng\\s+khoáng",
+          "không\\s+pha\\s+(?:ethanol|cồn)"
         ],
         "en": [
-          "unblended"
+          "unblended",
+          "unblended\\s+gasoline"
         ],
         "zh": [
           "未混合",
@@ -11349,11 +11360,16 @@
         "vi": [
           "đã\\s+pha\\s+thêm\\s+hương\\s+liệu\\s+hoặc\\s+chất\\s+màu",
           "đã\\s+pha\\s+hương\\s+liệu\\s+hoặc\\s+chất\\s+màu(?:\\s*\\(trừ\\s+mantoza\\))?",
-          "(?:xirô\\s+)?đã\\s+pha\\s+màu\\s+hoặc\\s+hương\\s+liệu"
+          "(?:xirô\\s+)?đã\\s+pha\\s+màu\\s+hoặc\\s+hương\\s+liệu",
+          "(?:đã\\s+)?pha\\s+(?:thêm\\s+)?(?:hương\\s+liệu|chất\\s+màu|màu|mùi)",
+          "có\\s+(?:chứa\\s+)?(?:hương\\s+liệu|chất\\s+màu)"
         ],
         "en": [
           "containing\\s+added\\s+flavouring\\s+or\\s+colouring\\s+matter",
-          "flavoured\\s+or\\s+coloured"
+          "flavoured\\s+or\\s+coloured",
+          "flavo?ured",
+          "colou?red",
+          "containing\\s+added\\s+(?:flavo?uring|colou?ring)(?:\\s+matter)?"
         ],
         "zh": [
           "加香料或加着色剂",
@@ -11402,11 +11418,17 @@
       "nhanZh": "医用营养品",
       "cachDoc": {
         "vi": [
-          "sản\\s+phẩm\\s+dinh\\s+dưỡng\\s+y\\s+tế(?:\\s+khác)?(?:\\s*\\(SEN\\))?"
+          "sản\\s+phẩm\\s+dinh\\s+dưỡng\\s+y\\s+tế(?:\\s+khác)?(?:\\s*\\(SEN\\))?",
+          "thực\\s+phẩm\\s+dinh\\s+dưỡng\\s+y\\s+học",
+          "dinh\\s+dưỡng\\s+y\\s+học",
+          "thực\\s+phẩm\\s+(?:dùng\\s+cho\\s+)?mục\\s+đích\\s+y\\s+tế\\s+đặc\\s+biệt"
         ],
         "en": [
           "(?:other\\s+)?medical\\s+nutritional\\s+products?",
-          "medical\\s+foods?"
+          "medical\\s+foods?",
+          "food\\s+for\\s+special\\s+medical\\s+purposes?",
+          "\\bfsmp\\b",
+          "clinical\\s+nutrition(?:\\s+products?)?"
         ],
         "zh": [
           "(?:其他)?医用营养品"
@@ -11459,10 +11481,12 @@
           "nhanZh": "块状",
           "cachDoc": {
             "vi": [
-              "dạng\\s+khối(?:\\s*\\(SEN\\))?"
+              "dạng\\s+khối(?:\\s*\\(SEN\\))?",
+              "(?:đá\\s+)?(?:dạng\\s+)?(?:khối|block)"
             ],
             "en": [
-              "in\\s+blocks?"
+              "in\\s+blocks?",
+              "(?:marble|granite|stone\\s+)?blocks?"
             ],
             "zh": [
               "块状",
@@ -11477,10 +11501,12 @@
           "nhanZh": "板状",
           "cachDoc": {
             "vi": [
-              "dạng\\s+tấm(?:\\s*\\(SEN\\))?"
+              "dạng\\s+tấm(?:\\s*\\(SEN\\))?",
+              "(?:đá\\s+)?(?:dạng\\s+)?(?:tấm|slab)"
             ],
             "en": [
-              "in\\s+slabs?"
+              "in\\s+slabs?",
+              "(?:marble|granite|stone\\s+)?slabs?"
             ],
             "zh": [
               "板状",
@@ -11523,7 +11549,12 @@
           "nhanZh": "米粉（包括米粉条）",
           "cachDoc": {
             "vi": [
-              "mì,\\s*bún\\s+làm\\s+từ\\s+gạo(?:\\s*\\(kể\\s+cả\\s+bee\\s+hoon\\))?"
+              "mì,\\s*bún\\s+làm\\s+từ\\s+gạo(?:\\s*\\(kể\\s+cả\\s+bee\\s+hoon\\))?",
+              "bún\\s+gạo",
+              "mì\\s+gạo",
+              "(?:mì|bún)\\s+(?:làm\\s+từ\\s+)?gạo",
+              "bee\\s+hoon",
+              "bánh\\s+phở"
             ],
             "en": [
               "rice\\s+vermicelli(?:\\s*\\(including\\s+bee\\s+hoon\\))?",
@@ -11542,13 +11573,19 @@
           "nhanZh": "粉丝",
           "cachDoc": {
             "vi": [
-              "miến"
+              "(?<!miến\\s)\\bmiến\\b(?!\\s+điện)",
+              "miến\\s+dong",
+              "miến\\s+đậu\\s+xanh"
             ],
             "en": [
-              "transparent\\s+noodles?"
+              "transparent\\s+noodles?",
+              "glass\\s+noodles?",
+              "cellophane\\s+noodles?",
+              "bean\\s+vermicelli"
             ],
             "zh": [
-              "粉丝"
+              "粉丝",
+              "冬粉"
             ]
           },
           "cachViet": "miến"
@@ -11578,10 +11615,15 @@
       "nhanZh": "含有可可",
       "cachDoc": {
         "vi": [
-          "(?:loại\\s+khác,\\s*)?chứa\\s+(?:bột\\s+)?ca\\s+cao"
+          "(?:loại\\s+khác,\\s*)?chứa\\s+(?:bột\\s+)?ca\\s+cao",
+          "(?:có\\s+)?chứa\\s+(?:bột\\s+)?(?:ca\\s+cao|chocolate|sô[- ]?cô[- ]?la)",
+          "(?:vị|hương)\\s+(?:ca\\s+cao|sô[- ]?cô[- ]?la)"
         ],
         "en": [
-          "(?:other,?\\s*)?containing\\s+cocoa"
+          "(?:other,?\\s*)?containing\\s+cocoa",
+          "containing\\s+(?:cocoa|chocolate)",
+          "with\\s+(?:cocoa|chocolate)",
+          "chocolate[- ]flavou?red"
         ],
         "zh": [
           "(?:其他)?含有可可",
@@ -11674,14 +11716,20 @@
       "nhanZh": "击剑服或摔跤服",
       "cachDoc": {
         "vi": [
-          "quần\\s+áo\\s+đấu\\s+kiếm\\s+hoặc\\s+đấu\\s+vật"
+          "quần\\s+áo\\s+đấu\\s+kiếm\\s+hoặc\\s+đấu\\s+vật",
+          "(?:quần\\s+áo|trang\\s+phục)\\s+(?:đấu\\s+kiếm|đấu\\s+vật)",
+          "quần\\s+áo\\s+đấu\\s+kiếm",
+          "quần\\s+áo\\s+đấu\\s+vật"
         ],
         "en": [
-          "fencing\\s+or\\s+wrestling\\s+garments?"
+          "fencing\\s+or\\s+wrestling\\s+garments?",
+          "(?:fencing|wrestling)\\s+(?:garments?|uniforms?|suits?|singlets?)"
         ],
         "zh": [
           "击剑服或摔跤服",
-          "击剑或摔跤服"
+          "击剑或摔跤服",
+          "击剑服",
+          "摔跤服"
         ],
         "phuDinh": [
           "không phải",
@@ -11732,10 +11780,12 @@
           "nhanZh": "管或导管",
           "cachDoc": {
             "vi": [
-              "ống\\s+hoặc\\s+ống\\s+dẫn"
+              "ống\\s+hoặc\\s+ống\\s+dẫn",
+              "(?:ống|ống\\s+dẫn)(?:\\s+xi\\s+măng(?:\\s+sợi)?)?"
             ],
             "en": [
-              "tubes?,?\\s*pipes?\\s+or\\s+conduits?"
+              "tubes?,?\\s*pipes?\\s+or\\s+conduits?",
+              "(?:fibre[- ]cement\\s+)?(?:tubes?|pipes?|conduits?)"
             ],
             "zh": [
               "管或导管",
@@ -11750,10 +11800,14 @@
           "nhanZh": "管子附件",
           "cachDoc": {
             "vi": [
-              "(?:các\\s+)?phụ\\s+kiện\\s+để\\s+ghép\\s+nối\\s+ống\\s+hoặc\\s+ống\\s+dẫn"
+              "(?:các\\s+)?phụ\\s+kiện\\s+để\\s+ghép\\s+nối\\s+ống\\s+hoặc\\s+ống\\s+dẫn",
+              "phụ\\s+kiện\\s+(?:ghép\\s+nối\\s+)?(?:ống|đường\\s+ống)",
+              "khớp\\s+nối\\s+ống"
             ],
             "en": [
-              "tube\\s+or\\s+pipe\\s+fittings?"
+              "tube\\s+or\\s+pipe\\s+fittings?",
+              "(?:tube|pipe)\\s+fittings?",
+              "couplings?"
             ],
             "zh": [
               "管子附件",
@@ -11804,15 +11858,18 @@
       "nhanZh": "瓦片/砖片（tiles）",
       "cachDoc": {
         "vi": [
-          "(?:loại\\s+khác,\\s*)?tấm\\s+lát(?:\\s*\\(tiles\\))?(?:\\s+khác)?"
+          "(?:loại\\s+khác,\\s*)?tấm\\s+lát(?:\\s*\\(tiles\\))?(?:\\s+khác)?",
+          "(?:gạch|phiến|tấm)\\s+(?:ốp\\s+)?lát",
+          "gạch\\s+lát"
         ],
         "en": [
           "(?:other\\s+)?tiles?"
         ],
         "zh": [
-          "瓦",
+          "瓦片",
           "砖片",
-          "饰面片"
+          "饰面片",
+          "铺地砖"
         ],
         "phuDinh": [
           "không phải",
@@ -11853,14 +11910,20 @@
       "nhanZh": "乳房切除术后专用（衬垫型）",
       "cachDoc": {
         "vi": [
-          "(?:đồ\\s+bơi|xu\\s+chiêng)?\\s*độn\\s+ngực\\s*\\(dùng\\s+cho\\s+người\\s+sau\\s+phẫu\\s+thuật\\s+ngực\\)"
+          "(?:đồ\\s+bơi|xu\\s+chiêng)?\\s*độn\\s+ngực\\s*\\(dùng\\s+cho\\s+người\\s+sau\\s+phẫu\\s+thuật\\s+ngực\\)",
+          "(?:đồ\\s+bơi|xu\\s+chiêng|áo\\s+ngực|áo\\s+lót)(?:\\s+độn\\s+ngực)?(?:\\s+dùng)?\\s+cho\\s+người\\s+sau\\s+phẫu\\s+thuật(?:\\s+ngực)?",
+          "(?:áo\\s+ngực|áo\\s+lót|đồ\\s+bơi)\\s+(?:sau\\s+phẫu\\s+thuật|mastectomy)"
         ],
         "en": [
-          "(?:swimwear|brassieres?)\\s+padded\\s+for\\s+post-?mastectomy\\s+use"
+          "(?:swimwear|brassieres?)\\s+padded\\s+for\\s+post-?mastectomy\\s+use",
+          "(?:post-?)?mastectomy\\s+(?:bras?|brassieres?|swimwear|swimsuits?)",
+          "padded\\s+for\\s+post-?mastectomy\\s+use"
         ],
         "zh": [
           "乳房切除术后用衬垫文胸",
-          "乳房切除术后用衬垫泳衣"
+          "乳房切除术后用衬垫泳衣",
+          "(?:乳房切除)?术后用(?:衬垫)?(?:文胸|泳衣)",
+          "义乳文胸"
         ],
         "phuDinh": [
           "không phải",
@@ -11904,10 +11967,14 @@
           "nhanZh": "内鞋垫",
           "cachDoc": {
             "vi": [
-              "tấm\\s+lót\\s+giày"
+              "tấm\\s+lót\\s+giày",
+              "(?:miếng\\s+|tấm\\s+)?lót\\s+giày",
+              "đệm\\s+lót\\s+giày"
             ],
             "en": [
-              "in-?soles?"
+              "in-?soles?",
+              "footbeds?",
+              "shoe\\s+inserts?"
             ],
             "zh": [
               "鞋垫",
@@ -11922,10 +11989,14 @@
           "nhanZh": "成品鞋底",
           "cachDoc": {
             "vi": [
-              "đế\\s+giày\\s+đã\\s+hoàn\\s+thiện(?:\\s*\\(SEN\\))?"
+              "đế\\s+giày\\s+đã\\s+hoàn\\s+thiện(?:\\s*\\(SEN\\))?",
+              "đế\\s+giày\\s+(?:đã\\s+)?hoàn\\s+thiện",
+              "đế\\s+ngoài(?:\\s+đã\\s+hoàn\\s+thiện)?"
             ],
             "en": [
-              "complete\\s+soles?"
+              "complete\\s+soles?",
+              "(?:complete|finished)\\s+soles?",
+              "outsoles?"
             ],
             "zh": [
               "成品鞋底",
