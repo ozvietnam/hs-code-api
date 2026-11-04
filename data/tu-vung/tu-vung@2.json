@@ -33,11 +33,13 @@
     "tu-vung@2 (03/11, lô 7): 5 khoá — daTrangMen, tinhNangBaoHo, daTrangPhuEpLop, loaiMuiBaoVe, thuyTinhQuangHoc — ch.50–71 (dệt may, giày dép, gốm, thuỷ tinh). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, doManhSoi.",
     "tu-vung@2 (03/11, lô 8): 5 khoá — tongDungTichTau, dangCuon, coNong, ngamQuaThauKinhSLR, dungMotLan — ch.74–83, 86, 88–97 (kim loại màu, tàu thuyền, quang học, vũ khí, y tế). nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: luongGianNuoc, apSuatHoatDong, hinhDangMatCatNgang, cauTrucLopBotKimLoai, troChoiMayRuiCoThuong.",
     "tu-vung@2 (03/11, lô 9 — vòng quét sót): 8 khoá — tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, daPhaThemDuongHoacRuou, soiDun, coMauTruTrang, dongGoiBanLe, dangLong — chat mới, Gemini đọc lại toàn bộ 4.165 dòng các chương đã quét; xử lý 13 tiêu chí khongChac lô 6–8 (4 GHÉP: dangHinhHocGiay→dangCuon, coChucNangKhuMui→congDung, luongGianNuoc→khoiLuong, troChoiMayRuiCoThuong→congDung; 6 BỎ: tiLeDauKhoang, doTruongNoBloom, doManhSoi, apSuatHoatDong, hinhDangMatCatNgang, cauTrucLopBotKimLoai; 3 SOẠN) + 5 khoá từ pn6Sot ≥3 PN6. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: cauTrucSoiDon, daLenMen, daThien, daTietTrung, daXay, gioiTinhNguoiMac.",
-    "tu-vung@2 (03/11, sửa đọc): khoá mới phải ĐỌC ĐƯỢC chữ biểu nó trích (test \"khoá mới đọc được ghiChu\"). Cờ docMoRong (chỉ khoá @2 số, không đụng vân tay @1): cửa sổ ngữ cảnh 50 ký tự, so sánh đứng sau theo soSanhSauMoRong (\"trở lên\", \"và cao hơn\", \"or more\"), docThem mang op. docThem cho chiSoIot (IV), triSoOctan (RON/octane), tongDungTichTau (GT); laPhanDoan tách từ mucDoTinhCheDau; lopMaPhu + TRANG_THIEC; sửa cachDoc daIn, thietKeChoTreEm, hinhDangCatGocKinh."
+    "tu-vung@2 (03/11, sửa đọc): khoá mới phải ĐỌC ĐƯỢC chữ biểu nó trích (test \"khoá mới đọc được ghiChu\"). Cờ docMoRong (chỉ khoá @2 số, không đụng vân tay @1): cửa sổ ngữ cảnh 50 ký tự, so sánh đứng sau theo soSanhSauMoRong (\"trở lên\", \"và cao hơn\", \"or more\"), docThem mang op. docThem cho chiSoIot (IV), triSoOctan (RON/octane), tongDungTichTau (GT); laPhanDoan tách từ mucDoTinhCheDau; lopMaPhu + TRANG_THIEC; sửa cachDoc daIn, thietKeChoTreEm, hinhDangCatGocKinh.",
+    "tu-vung@2 (03/11, lô 10 — gói ✗ máy ch.86–89): 3 khoá — bonBanhChuDong, xeBaBanh, khoiLuongToanBo — Studio đọc 353 dòng máy chưa đọc + dòng ✓ cùng PN6 (quét sót máy #1001); trích 12/12 đúng biểu thật. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: laCabinLai (1 PN6 8707.90 — phụ tùng, bỏ).",
+    "tu-vung@2 (03/11, lô 10b — gói ✗ máy ch.86–89, vòng 2): 3 khoá — kieuXeChoNguoi, kieuXeChoHang, mayKeoNongNghiep — Studio xét lại dòng ✗ lặp ≥5 PN6 bị bỏ ở vòng 1: kiểu xe chở người/chở hàng là tập giá trị, không phải tên hàng; trích 20/20 đúng biểu thật. nguonLoai AI_DA_KIEM, vào chamDuyetDocLap.khoaChuaCham. Khoá @1 không đổi. Studio khongChac: laMayBay (tên hàng 8802, tenLoai đọc được — bỏ), thietBiCoDien (1 dòng — bỏ)."
   ],
   "chamDuyetDocLap": {
     "trangThai": "CHUA_CHAM",
-    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập. +10 khoá 02/11 (lô 2: congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc) chưa chấm độc lập. +9 khoá 03/11 (lô 3 thép ch.72/73: hamLuongCarbon, gioiHanChay, chieuRong, khaNangChiuApLuc, duongCheoNgoai, coRen, doBenKeo, hamLuongNiken, lopMaPhu) chưa chấm độc lập. +5 khoá 03/11 (lô 4 nông sản/thực phẩm/dược ch.01–30: dungLamGiong, dongBaoBiKinKhiDeBanLe, nongDoCon, phuongPhapBaoQuan, dangBaoCheThuoc) chưa chấm độc lập. +5 khoá 03/11 (lô 5, vòng 2 cùng phiên Studio: mucDoTinhCheDau, chiSoIot, triSoOctan, daRang, tachXuongCoHoc) chưa chấm độc lập. +6 khoá 03/11 (lô 6: dinhLuong, mucDoGiaCongGo, dangBinhXit, nhieuLop, daIn, duongKinhVanh) chưa chấm độc lập. +5 khoá 03/11 (lô 7: daTrangMen, tinhNangBaoHo, daTrangPhuEpLop, loaiMuiBaoVe, thuyTinhQuangHoc) chưa chấm độc lập. +5 khoá 03/11 (lô 8: tongDungTichTau, dangCuon, coNong, ngamQuaThauKinhSLR, dungMotLan) chưa chấm độc lập. +8 khoá 03/11 (lô 9 — vòng quét sót: tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, daPhaThemDuongHoacRuou, soiDun, coMauTruTrang, dongGoiBanLe, dangLong) chưa chấm độc lập. + 1 khoá cuối 03/11 (tocDo — quét toàn biểu thuế #999; duongKinhLapVanh rút lại vì trùng duongKinhVanh lô 6): chưa chấm độc lập.",
+    "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập. +10 khoá 02/11 (lô 2: congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc) chưa chấm độc lập. +9 khoá 03/11 (lô 3 thép ch.72/73: hamLuongCarbon, gioiHanChay, chieuRong, khaNangChiuApLuc, duongCheoNgoai, coRen, doBenKeo, hamLuongNiken, lopMaPhu) chưa chấm độc lập. +5 khoá 03/11 (lô 4 nông sản/thực phẩm/dược ch.01–30: dungLamGiong, dongBaoBiKinKhiDeBanLe, nongDoCon, phuongPhapBaoQuan, dangBaoCheThuoc) chưa chấm độc lập. +5 khoá 03/11 (lô 5, vòng 2 cùng phiên Studio: mucDoTinhCheDau, chiSoIot, triSoOctan, daRang, tachXuongCoHoc) chưa chấm độc lập. +6 khoá 03/11 (lô 6: dinhLuong, mucDoGiaCongGo, dangBinhXit, nhieuLop, daIn, duongKinhVanh) chưa chấm độc lập. +5 khoá 03/11 (lô 7: daTrangMen, tinhNangBaoHo, daTrangPhuEpLop, loaiMuiBaoVe, thuyTinhQuangHoc) chưa chấm độc lập. +5 khoá 03/11 (lô 8: tongDungTichTau, dangCuon, coNong, ngamQuaThauKinhSLR, dungMotLan) chưa chấm độc lập. +8 khoá 03/11 (lô 9 — vòng quét sót: tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, daPhaThemDuongHoacRuou, soiDun, coMauTruTrang, dongGoiBanLe, dangLong) chưa chấm độc lập. + 1 khoá cuối 03/11 (tocDo — quét toàn biểu thuế #999; duongKinhLapVanh rút lại vì trùng duongKinhVanh lô 6): chưa chấm độc lập. +3 khoá 03/11 (lô 10 — gói ✗ máy ch.86–89: bonBanhChuDong, xeBaBanh, khoiLuongToanBo) chưa chấm độc lập. +3 khoá 03/11 (lô 10b — gói ✗ máy ch.86–89, vòng 2: kieuXeChoNguoi, kieuXeChoHang, mayKeoNongNghiep) chưa chấm độc lập.",
     "khoaChuaCham": [
       "chiHoacChuYeu",
       "chiSoIot",
@@ -107,7 +109,13 @@
       "tocDo",
       "tongDungTichTau",
       "triSoOctan",
-      "laPhanDoan"
+      "laPhanDoan",
+      "bonBanhChuDong",
+      "xeBaBanh",
+      "khoiLuongToanBo",
+      "kieuXeChoNguoi",
+      "kieuXeChoHang",
+      "mayKeoNongNghiep"
     ],
     "tuVung1": {
       "trangThai": "DA_CHAM",
@@ -8553,6 +8561,568 @@
         "zh": "该油脂是否为分馏馏分（油精、硬脂、固体馏分）？"
       },
       "ghiChu": "Chữ biểu 1507.90.10 \"Các phần phân đoạn của dầu đậu tương chưa tinh chế\", 1504.10.20 \"Các phần phân đoạn thể rắn\". Tách từ mucDoTinhCheDau.PHAN_DOAN (03/11).",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "bonBanhChuDong",
+      "kieu": "CO_KHONG",
+      "nhanVi": "bốn bánh chủ động (dẫn động 4 bánh / 4WD / AWD)",
+      "nhanEn": "four-wheel drive (4WD / AWD)",
+      "nhanZh": "四轮驱动（4WD / AWD）",
+      "cachDoc": {
+        "vi": [
+          "(?:loại\\s+)?bốn\\s+bánh\\s+chủ\\s+động",
+          "(?:dẫn\\s+động\\s+)?(?:4|bốn)\\s+bánh",
+          "4wd",
+          "awd",
+          "4x4"
+        ],
+        "en": [
+          "four-?wheel\\s+drive",
+          "4-?wheel\\s+drive",
+          "all-?wheel\\s+drive",
+          "4wd",
+          "awd",
+          "4x4"
+        ],
+        "zh": [
+          "四轮驱动",
+          "四驱",
+          "4wd",
+          "awd",
+          "4x4"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "chưa",
+          "ko",
+          "non-?",
+          "without",
+          "not",
+          "非",
+          "不",
+          "无"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+phải\\s+loại\\s+bốn\\s+bánh\\s+chủ\\s+động",
+          "hai\\s+bánh\\s+chủ\\s+động",
+          "2wd"
+        ],
+        "en": [
+          "not\\s+four-?wheel\\s+drive",
+          "two-?wheel\\s+drive",
+          "2wd"
+        ],
+        "zh": [
+          "非四轮驱动",
+          "两轮驱动",
+          "两驱",
+          "2wd"
+        ]
+      },
+      "cachViet": {
+        "vi": "bốn bánh chủ động",
+        "viPhuDinh": "không phải loại bốn bánh chủ động"
+      },
+      "cauHoi": {
+        "vi": "Xe có phải loại bốn bánh chủ động (4WD / AWD) không?",
+        "zh": "车辆是否为四轮驱动（4WD / AWD）？"
+      },
+      "ghiChu": "Chữ biểu 8703.21.21 'Loại bốn bánh chủ động', 8703.24.45 'Loại bốn bánh chủ động', 8703.33.80 'Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động', 8703.40.67 'Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động' và 8703.40.68 'Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động'.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "xeBaBanh",
+      "kieu": "CO_KHONG",
+      "nhanVi": "xe ba bánh",
+      "nhanEn": "three-wheeled vehicle",
+      "nhanZh": "三轮车辆",
+      "cachDoc": {
+        "vi": [
+          "xe\\s+(?:3|ba)\\s+bánh(?:\\s*\\(SEN\\))?"
+        ],
+        "en": [
+          "three-?wheeled\\s+(?:vehicles?|motorcycles?|cars?)",
+          "3-?wheeled\\s+(?:vehicles?|motorcycles?|cars?)",
+          "trikes?"
+        ],
+        "zh": [
+          "三轮车(?:辆)?",
+          "三轮机动车"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "ko",
+          "non-?",
+          "without",
+          "not",
+          "非",
+          "不",
+          "无"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+phải\\s+xe\\s+(?:3|ba)\\s+bánh"
+        ],
+        "en": [
+          "not\\s+three-?wheeled"
+        ],
+        "zh": [
+          "非三轮车"
+        ]
+      },
+      "cachViet": {
+        "vi": "xe ba bánh",
+        "viPhuDinh": "không phải xe ba bánh"
+      },
+      "cauHoi": {
+        "vi": "Phương tiện có phải là xe ba bánh (3 bánh) không?",
+        "zh": "该车辆是否为三轮车辆？"
+      },
+      "ghiChu": "Chữ biểu 8703.21.31 'Xe 3 bánh (SEN)', 8703.31.31 'Xe ba bánh (SEN)', 8704.21.13 'Xe ba bánh (SEN)', 8704.31.13 'Xe ba bánh (SEN)', 8704.60.12 'Xe ba bánh (SEN)'.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "khoiLuongToanBo",
+      "kieu": "SO",
+      "nhanVi": "khối lượng toàn bộ theo thiết kế (GVW) / khối lượng hàng chuyên chở / lượng giãn nước",
+      "nhanEn": "gross vehicle weight (GVW) / payload / displacement",
+      "nhanZh": "设计总质量（GVW）/载重量/排水量",
+      "heDonVi": "khoiLuong",
+      "donViChuan": "kg",
+      "canNguCanh": true,
+      "docMoRong": true,
+      "cachDoc": {
+        "vi": [
+          "khối\\s+lượng\\s+toàn\\s+bộ(?:\\s+theo\\s+thiết\\s+kế)?(?:\\s*\\(SEN\\))?",
+          "khối\\s+lượng\\s+hàng\\s+chuyên\\s+chở(?:\\s+theo\\s+thiết\\s+kế)?(?:\\s*\\(payload\\))?",
+          "(?:có\\s+)?lượng\\s+giãn\\s+nước"
+        ],
+        "en": [
+          "gross\\s+vehicle\\s+weight",
+          "payload",
+          "displacement",
+          "gross\\s+weight",
+          "gvw"
+        ],
+        "zh": [
+          "设计总质量",
+          "总质量",
+          "载重量",
+          "排水量"
+        ]
+      },
+      "cachViet": {
+        "vi": "khối lượng toàn bộ {giaTri} kg"
+      },
+      "cauHoi": {
+        "vi": "Khối lượng toàn bộ theo thiết kế (GVW) của xe, hoặc khối lượng hàng chuyên chở / lượng giãn nước, là bao nhiêu kg (tấn)?",
+        "zh": "车辆的设计总质量（GVW）、载重量或排水量是多少千克（吨）？"
+      },
+      "ghiChu": "Chữ biểu 8702.10.41 \"Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn\", 8704.10.21 \"Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn\", 8702.10.42 \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\". Studio đề xuất boSung.mauThem vào khoiLuong (@1, đóng băng) ⇒ tách khoá riêng; GVW khác khối lượng tịnh.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "khoa": "kieuXeChoNguoi",
+      "kieu": "LIET_KE",
+      "nhanVi": "kiểu ô tô chở người",
+      "nhanEn": "type of passenger motor vehicle",
+      "nhanZh": "乘用车车型",
+      "giaTriHopLe": [
+        "SEDAN",
+        "CUU_THUONG",
+        "TANG_LE",
+        "CHO_PHAM_NHAN",
+        "NHA_O_LUU_DONG",
+        "XE_DUA_CO_NHO",
+        "ATV",
+        "LIMOUSINE_KEO_DAI"
+      ],
+      "moTaGiaTri": {
+        "SEDAN": {
+          "nhanVi": "ô tô kiểu Sedan",
+          "nhanEn": "sedan car",
+          "nhanZh": "轿车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?kiểu\\s+sedan(?:\\s*\\(SEN\\))?(?:\\s*\\(1\\))?"
+            ],
+            "en": [
+              "sedans?",
+              "saloon\\s+cars?"
+            ],
+            "zh": [
+              "轿车",
+              "小轿车",
+              "三厢车"
+            ]
+          },
+          "cachViet": "kiểu Sedan"
+        },
+        "CUU_THUONG": {
+          "nhanVi": "ô tô cứu thương",
+          "nhanEn": "ambulance",
+          "nhanZh": "救护车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?cứu\\s+thương"
+            ],
+            "en": [
+              "ambulances?"
+            ],
+            "zh": [
+              "救护车"
+            ]
+          },
+          "cachViet": "ô tô cứu thương"
+        },
+        "TANG_LE": {
+          "nhanVi": "ô tô tang lễ",
+          "nhanEn": "hearse",
+          "nhanZh": "灵车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?tang\\s+lễ"
+            ],
+            "en": [
+              "hearses?"
+            ],
+            "zh": [
+              "灵车",
+              "殡仪车"
+            ]
+          },
+          "cachViet": "ô tô tang lễ"
+        },
+        "CHO_PHAM_NHAN": {
+          "nhanVi": "ô tô chở phạm nhân",
+          "nhanEn": "prison van",
+          "nhanZh": "囚车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?chở\\s+phạm\\s+nhân"
+            ],
+            "en": [
+              "prison\\s+(?:vans?|vehicles?)",
+              "prisoner\\s+transport\\s+vehicles?"
+            ],
+            "zh": [
+              "囚车",
+              "押解车"
+            ]
+          },
+          "cachViet": "ô tô chở phạm nhân"
+        },
+        "NHA_O_LUU_DONG": {
+          "nhanVi": "ô tô nhà ở lưu động (motor-homes)",
+          "nhanEn": "motor-home",
+          "nhanZh": "旅居房车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?nhà\\s+ở\\s+lưu\\s+động(?:\\s*\\(có\\s+nội\\s+thất\\s+được\\s+thiết\\s+kế\\s+như\\s+căn\\s+hộ\\))?(?:\\s*\\(motor-?homes\\))?"
+            ],
+            "en": [
+              "motor-?homes?",
+              "campers?",
+              "campervans?"
+            ],
+            "zh": [
+              "旅居房车",
+              "房车"
+            ]
+          },
+          "cachViet": "ô tô nhà ở lưu động"
+        },
+        "XE_DUA_CO_NHO": {
+          "nhanVi": "xe đua cỡ nhỏ (go-kart)",
+          "nhanEn": "go-kart",
+          "nhanZh": "小型卡丁赛车",
+          "cachDoc": {
+            "vi": [
+              "xe\\s+đua\\s+cỡ\\s+nhỏ(?:\\s*\\(SEN\\))?"
+            ],
+            "en": [
+              "go-?karts?",
+              "karts?"
+            ],
+            "zh": [
+              "小型赛车",
+              "卡丁车"
+            ]
+          },
+          "cachViet": "xe đua cỡ nhỏ"
+        },
+        "ATV": {
+          "nhanVi": "xe địa hình ATV",
+          "nhanEn": "all-terrain vehicle (ATV)",
+          "nhanZh": "全地形车（ATV）",
+          "cachDoc": {
+            "vi": [
+              "xe\\s+địa\\s+hình\\s+atv(?:\\s*\\(all-?terrain\\s+vehicles\\))?"
+            ],
+            "en": [
+              "all-?terrain\\s+vehicles?",
+              "atvs?"
+            ],
+            "zh": [
+              "全地形车",
+              "atv"
+            ]
+          },
+          "cachViet": "xe địa hình ATV"
+        },
+        "LIMOUSINE_KEO_DAI": {
+          "nhanVi": "ô tô bao gồm cả ô tô limousine kéo dài",
+          "nhanEn": "motor car including stretch limousine",
+          "nhanZh": "轿车（包括加长礼宾车）",
+          "cachDoc": {
+            "vi": [
+              "ô\\s+tô\\s+\\(bao\\s+gồm\\s+cả\\s+ô\\s+tô\\s+limousine\\s+kéo\\s+dài(?:\\s+nhưng\\s+không\\s+bao\\s+gồm\\s+ô\\s+tô\\s+khách(?:\\s*\\(1\\))?\\s*\\(coaches,\\s+buses,\\s+minibuses\\)\\s+hoặc\\s+ô\\s+tô\\s+van\\))?"
+            ],
+            "en": [
+              "motor\\s+cars?\\s+\\(including\\s+stretch\\s+limousines?\\)?"
+            ],
+            "zh": [
+              "加长轿车",
+              "加长礼宾车"
+            ]
+          },
+          "cachViet": "ô tô limousine kéo dài"
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Ô tô chở người thuộc kiểu dáng hoặc mục đích chuyên dùng nào?",
+        "zh": "该乘用车属于哪种车型或专用用途？"
+      },
+      "ghiChu": "Trục phân loại kiểu xe chuyên dùng và kết cấu thân xe chở người tại 8702 và 8703: 8703.21.11 'Xe đua cỡ nhỏ (SEN)', 8703.21.12 'Xe địa hình ATV (All-Terrain Vehicles)', 8703.21.13 'Ô tô cứu thương', 8703.22.14 'Ô tô tang lễ', 8703.22.15 'Ô tô chở phạm nhân', 8703.21.14 'Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)', 8703.21.15 'Ô tô kiểu Sedan (SEN)(1)', 8702.10.10 'Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)'.",
+      "nguonLoai": "AI_DA_KIEM",
+      "cumDaiThang": true
+    },
+    {
+      "khoa": "kieuXeChoHang",
+      "kieu": "LIET_KE",
+      "nhanVi": "kiểu ô tô chở hàng (xe tải)",
+      "nhanEn": "type of goods motor vehicle (truck)",
+      "nhanZh": "货运车辆类型（货车）",
+      "giaTriHopLe": [
+        "DONG_LANH",
+        "THU_GOM_PHE_THAI",
+        "BOC_THEP",
+        "XI_TEC",
+        "CHO_BUN_THUNG_ROI",
+        "TU_DO",
+        "PICK_UP"
+      ],
+      "moTaGiaTri": {
+        "DONG_LANH": {
+          "nhanVi": "ô tô tải đông lạnh",
+          "nhanEn": "refrigerated truck",
+          "nhanZh": "冷藏货车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+tải\\s+)?đông\\s+lạnh(?:\\s*\\(1\\))?"
+            ],
+            "en": [
+              "refrigerated\\s+(?:motor\\s+vehicles?|trucks?|lorries?)"
+            ],
+            "zh": [
+              "冷藏车",
+              "冷藏货车"
+            ]
+          },
+          "cachViet": "ô tô tải đông lạnh"
+        },
+        "THU_GOM_PHE_THAI": {
+          "nhanVi": "ô tô thu gom phế thải có bộ phận nén phế thải",
+          "nhanEn": "refuse collector with compressing device",
+          "nhanZh": "压缩式垃圾收集车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?thu\\s+gom\\s+phế\\s+thải\\s+có\\s+bộ\\s+phận\\s+nén\\s+phế\\s+thải"
+            ],
+            "en": [
+              "refuse\\s+collectors?\\s+having\\s+a\\s+compressing\\s+device",
+              "garbage\\s+trucks?"
+            ],
+            "zh": [
+              "压缩式垃圾车",
+              "带有压缩垃圾装置的垃圾收集车"
+            ]
+          },
+          "cachViet": "ô tô thu gom phế thải có bộ phận nén phế thải"
+        },
+        "BOC_THEP": {
+          "nhanVi": "ô tô bọc thép để chở hàng hóa có giá trị",
+          "nhanEn": "armoured truck for transporting valuable goods",
+          "nhanZh": "运钞装甲车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?bọc\\s+thép\\s+để\\s+chở\\s+hàng\\s+hóa\\s+có\\s+giá\\s+trị"
+            ],
+            "en": [
+              "armou?red\\s+(?:motor\\s+vehicles?|trucks?)\\s+for\\s+the\\s+transport\\s+of\\s+valuable\\s+goods"
+            ],
+            "zh": [
+              "装甲运钞车",
+              "运送贵重物品的装甲车"
+            ]
+          },
+          "cachViet": "ô tô bọc thép chở hàng có giá trị"
+        },
+        "XI_TEC": {
+          "nhanVi": "ô tô xi téc hoặc chở xi măng kiểu bồn",
+          "nhanEn": "tanker truck or cement bulk truck",
+          "nhanZh": "罐式货车或散装水泥车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?xi\\s+téc(?:\\s*;\\s*ô\\s+tô\\s+chở\\s+xi\\s+măng\\s+kiểu\\s+bồn)?"
+            ],
+            "en": [
+              "tanker\\s+(?:vehicles?|trucks?|lorries?)",
+              "bulk\\s+cement\\s+(?:trucks?|tankers?)"
+            ],
+            "zh": [
+              "罐式车",
+              "罐式货车",
+              "散装水泥车"
+            ]
+          },
+          "cachViet": "ô tô xi téc hoặc chở xi măng kiểu bồn"
+        },
+        "CHO_BUN_THUNG_ROI": {
+          "nhanVi": "ô tô chở bùn có thùng rời nâng hạ được",
+          "nhanEn": "hooklift sludge truck with demountable container",
+          "nhanZh": "车厢可卸式污泥运输车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?chở\\s+bùn\\s+có\\s+thùng\\s+rời\\s+nâng\\s+hạ\\s+được(?:\\s*\\(SEN\\))?"
+            ],
+            "en": [
+              "sludge\\s+(?:lorries|trucks)\\s+fitted\\s+with\\s+demountable\\s+containers?"
+            ],
+            "zh": [
+              "带有可卸式车厢的污泥运输车",
+              "污泥车"
+            ]
+          },
+          "cachViet": "ô tô chở bùn có thùng rời nâng hạ được"
+        },
+        "TU_DO": {
+          "nhanVi": "ô tô tự đổ (xe ben)",
+          "nhanEn": "dump truck / tipper",
+          "nhanZh": "自卸货车（翻斗车）",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?tự\\s+đổ"
+            ],
+            "en": [
+              "dumpers?",
+              "dump\\s+trucks?",
+              "tippers?"
+            ],
+            "zh": [
+              "自卸车",
+              "自卸货车",
+              "翻斗车"
+            ]
+          },
+          "cachViet": "ô tô tự đổ"
+        },
+        "PICK_UP": {
+          "nhanVi": "ô tô pick-up (xe bán tải)",
+          "nhanEn": "pick-up truck",
+          "nhanZh": "皮卡车",
+          "cachDoc": {
+            "vi": [
+              "(?:ô\\s+tô\\s+)?pick-?up(?:\\s*\\(1\\))?"
+            ],
+            "en": [
+              "pick-?ups?",
+              "pick-?up\\s+trucks?"
+            ],
+            "zh": [
+              "皮卡",
+              "皮卡车"
+            ]
+          },
+          "cachViet": "ô tô pick-up"
+        }
+      },
+      "cachDoc": {
+        "vi": [],
+        "en": [],
+        "zh": []
+      },
+      "cachViet": {
+        "vi": "{giaTri}"
+      },
+      "cauHoi": {
+        "vi": "Ô tô chở hàng thuộc kiểu dáng hoặc chức năng chuyên dùng nào?",
+        "zh": "该载货汽车属于哪种车型或专用功能？"
+      },
+      "ghiChu": "Trục phân loại kiểu dáng và công dụng chuyên dùng của ô tô chở hàng trong nhóm 8704: 8704.21.11 'Ô tô tải đông lạnh (1)', 8704.21.12 'Ô tô pick-up (1)', 8704.21.22 'Ô tô thu gom phế thải có bộ phận nén phế thải', 8704.21.23 'Ô tô xi téc; ô tô chở xi măng kiểu bồn', 8704.21.24 'Ô tô bọc thép để chở hàng hóa có giá trị', 8704.21.25 'Ô tô chở bùn có thùng rời nâng hạ được(SEN)', 8704.23.66 'Ô tô tự đổ'.",
+      "nguonLoai": "AI_DA_KIEM",
+      "cumDaiThang": true
+    },
+    {
+      "khoa": "mayKeoNongNghiep",
+      "kieu": "CO_KHONG",
+      "nhanVi": "máy kéo nông nghiệp",
+      "nhanEn": "agricultural tractor",
+      "nhanZh": "农业拖拉机",
+      "cachDoc": {
+        "vi": [
+          "máy\\s+kéo\\s+nông\\s+nghiệp"
+        ],
+        "en": [
+          "agricultural\\s+tractors?"
+        ],
+        "zh": [
+          "农业拖拉机",
+          "农用拖拉机"
+        ],
+        "phuDinh": [
+          "không phải",
+          "không",
+          "non-?",
+          "not",
+          "非",
+          "不"
+        ]
+      },
+      "cachDocKhong": {
+        "vi": [
+          "không\\s+phải\\s+máy\\s+kéo\\s+nông\\s+nghiệp"
+        ],
+        "en": [
+          "not\\s+agricultural\\s+tractors?"
+        ],
+        "zh": [
+          "非农业拖拉机"
+        ]
+      },
+      "cachViet": {
+        "vi": "máy kéo nông nghiệp",
+        "viPhuDinh": "không phải máy kéo nông nghiệp"
+      },
+      "cauHoi": {
+        "vi": "Hàng có phải là máy kéo nông nghiệp không?",
+        "zh": "该拖拉机是否为农业拖拉机？"
+      },
+      "ghiChu": "Chữ biểu 8701.91.10, 8701.92.10, 8701.93.10, 8701.94.10, 8701.95.10 'Máy kéo nông nghiệp'.",
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
