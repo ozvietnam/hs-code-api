@@ -7507,8 +7507,8 @@
               "chống\\s+bắt\\s+lửa"
             ],
             "en": [
-              "fire-?resistant",
-              "flame-?retardant",
+              "(?:fire|flame)[- ]resistant",
+              "(?:fire|flame)[- ]retardant",
               "fire\\s+protection"
             ],
             "zh": [
@@ -7530,6 +7530,7 @@
               "chống\\s+phóng\\s+xạ"
             ],
             "en": [
+              "chemical[- ]resistant",
               "chemical\\s+(?:or\\s+radiation\\s+)?protection",
               "anti-?chemical",
               "radiation-?proof"
@@ -8077,15 +8078,13 @@
             "vi": [
               "chưa\\s+tẩy\\s+trắng",
               "chưa\\s+tẩy",
-              "vải\\s+mộc",
-              "sợi\\s+mộc",
-              "mộc"
+              "(?:vải|sợi|hàng)\\s+mộc"
             ],
             "en": [
               "unbleached",
               "in\\s+the\\s+grey",
               "greige",
-              "raw"
+              "raw\\s+(?:fabric|yarn|cotton|silk)"
             ],
             "zh": [
               "未漂白",
@@ -8716,6 +8715,7 @@
         ],
         "en": [
           "fractions?",
+          "fractionated(?:\\s+oil)?",
           "solid\\s+fractions?",
           "olein",
           "stearin"
