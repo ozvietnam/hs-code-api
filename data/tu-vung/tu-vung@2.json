@@ -10487,14 +10487,22 @@
       "nhanZh": "船壳用防污漆及/或防腐漆",
       "cachDoc": {
         "vi": [
-          "sơn\\s+chống\\s+hà\\s+và/hoặc\\s+chống\\s+ăn\\s+mòn\\s+dùng\\s+để\\s+sơn\\s+vỏ\\s+tàu\\s+thủy(?:\\s*\\(SEN\\))?",
-          "sơn\\s+vỏ\\s+tàu\\s+thủy"
+          "sơn\\s+(?:chống\\s+hà(?:\\s+và/hoặc\\s+chống\\s+ăn\\s+mòn)?|chống\\s+ăn\\s+mòn)(?:\\s+dùng\\s+(?:để\\s+)?sơn)?\\s+vỏ\\s+tàu(?:\\s+thủy)?(?:\\s*\\(SEN\\))?",
+          "sơn\\s+chống\\s+hà(?:\\s+tàu\\s+thủy)?",
+          "sơn\\s+vỏ\\s+tàu(?:\\s+thủy)?",
+          "sơn\\s+đáy\\s+tàu"
         ],
         "en": [
-          "anti-?fouling\\s+and/or\\s+anti-?corrosive\\s+paints?\\s+for\\s+ships'?\\s+hulls?"
+          "anti-?fouling\\s+and/or\\s+anti-?corrosive\\s+paints?\\s+for\\s+ships'?\\s+hulls?",
+          "anti-?fouling\\s+(?:marine\\s+)?paints?",
+          "marine\\s+anti-?fouling",
+          "(?:ship\\s+hull|marine)\\s+paints?"
         ],
         "zh": [
-          "船壳用防污漆及/或防腐漆"
+          "船壳用防污漆及/或防腐漆",
+          "船用防污漆",
+          "防污漆",
+          "船底漆"
         ],
         "phuDinh": [
           "không phải",
@@ -10535,14 +10543,20 @@
       "nhanZh": "用于铺地或贴墙的拼接块或片",
       "cachDoc": {
         "vi": [
-          "(?:loại\\s+khác,\\s*)?(?:miếng,\\s*tấm|tấm,\\s*miếng)(?:\\s+rời)?\\s+ghép\\s+với\\s+nhau\\s+để\\s+(?:lát\\s+nền\\s+và\\s+ốp\\s+tường|ốp\\s+tường)"
+          "(?:loại\\s+khác,\\s*)?(?:miếng,\\s*tấm|tấm,\\s*miếng)(?:\\s+rời)?\\s+ghép\\s+với\\s+nhau\\s+để\\s+(?:lát\\s+nền\\s+và\\s+ốp\\s+tường|ốp\\s+tường)",
+          "(?:tấm|miếng)(?:\\s+rời)?\\s+ghép(?:\\s+với\\s+nhau)?\\s+để\\s+(?:lát\\s+(?:nền|sàn)|ốp\\s+tường)",
+          "(?:tấm|gạch)\\s+cao\\s+su\\s+lát\\s+(?:nền|sàn)"
         ],
         "en": [
-          "tiles?,?\\s*pieces?\\s+for\\s+(?:flooring\\s+and\\s+wall\\s+covering|wall\\s+covering)"
+          "tiles?,?\\s*pieces?\\s+for\\s+(?:flooring\\s+and\\s+wall\\s+covering|wall\\s+covering)",
+          "(?:rubber\\s+)?(?:tiles?|pieces?)\\s+(?:for\\s+)?(?:flooring|wall\\s+covering)",
+          "interlocking\\s+(?:rubber\\s+)?tiles?"
         ],
         "zh": [
           "用于铺地和贴墙的拼接块或片",
-          "用于贴墙的拼接块或片"
+          "用于贴墙的拼接块或片",
+          "(?:用于)?(?:铺地|贴墙)(?:的)?拼接(?:块|片)",
+          "橡胶地板砖"
         ],
         "phuDinh": [
           "không phải",
@@ -10583,13 +10597,17 @@
       "nhanZh": "牙科用",
       "cachDoc": {
         "vi": [
-          "(?:vecni\\s*\\(kể\\s+cả\\s+dầu\\s+bóng\\),\\s*loại\\s*)?(?:dùng|sử\\s+dụng)\\s+trong\\s+nha\\s+khoa(?:\\s*\\(SEN\\))?"
+          "(?:vecni\\s*\\(kể\\s+cả\\s+dầu\\s+bóng\\),\\s*loại\\s*)?(?:dùng|sử\\s+dụng)?(?:\\s+(?:trong|cho))?\\s+nha\\s+khoa(?:\\s*\\(SEN\\))?",
+          "(?:sơn|vecni)\\s+nha\\s+khoa"
         ],
         "en": [
-          "(?:used\\s+)?in\\s+dentistry"
+          "(?:used\\s+)?in\\s+dentistry",
+          "(?:for\\s+)?dental\\s+use",
+          "dental\\s+varnish(?:es)?"
         ],
         "zh": [
-          "牙科用"
+          "牙科用",
+          "牙科清漆"
         ],
         "phuDinh": [
           "không phải",
@@ -10630,13 +10648,19 @@
       "nhanZh": "编条及类似编结材料制品",
       "cachDoc": {
         "vi": [
-          "dây\\s+tết\\s+bện\\s+và\\s+các\\s+sản\\s+phẩm\\s+tương\\s+tự\\s+làm\\s+bằng\\s+vật\\s+liệu\\s+tết\\s+bện(?:,\\s*đã\\s+hoặc\\s+chưa\\s+ghép\\s+thành\\s+dải)?"
+          "dây\\s+tết\\s+bện\\s+và\\s+các\\s+sản\\s+phẩm\\s+tương\\s+tự\\s+làm\\s+bằng\\s+vật\\s+liệu\\s+tết\\s+bện(?:,\\s*đã\\s+hoặc\\s+chưa\\s+ghép\\s+thành\\s+dải)?",
+          "dây\\s+tết\\s+bện(?:\\s+và\\s+các\\s+sản\\s+phẩm\\s+tương\\s+tự)?",
+          "(?:dây|dải)\\s+tết\\s+bện"
         ],
         "en": [
-          "plaits\\s+and\\s+similar\\s+products\\s+of\\s+plaiting\\s+materials?"
+          "plaits\\s+and\\s+similar\\s+products\\s+of\\s+plaiting\\s+materials?",
+          "plaits?(?:\\s+of\\s+plaiting\\s+materials?)?",
+          "braids?\\s+of\\s+plaiting\\s+materials?"
         ],
         "zh": [
-          "编条及类似编结材料制品"
+          "编条及类似编结材料制品",
+          "编条",
+          "编带"
         ],
         "phuDinh": [
           "không phải",
@@ -10677,8 +10701,9 @@
       "nhanZh": "硬质",
       "cachDoc": {
         "vi": [
-          "(?:loại\\s+)?cứng(?:\\s*\\(SEN\\))?",
-          "dạng\\s+tấm\\s+và\\s+phiến,\\s+loại\\s+cứng(?:\\s*\\(SEN\\))?"
+          "(?<!đĩa\\s)(?<!độ\\s)(?<!làm\\s)loại\\s+cứng(?:\\s*\\(SEN\\))?",
+          "dạng\\s+tấm\\s+và\\s+phiến,\\s+loại\\s+cứng(?:\\s*\\(SEN\\))?",
+          "(?:tấm|màng|phiến|nhựa)\\s+cứng(?:\\s*\\(SEN\\))?"
         ],
         "en": [
           "rigid(?:\\s+type)?"
@@ -10741,7 +10766,8 @@
           "nhanZh": "禽翼（翅膀）",
           "cachDoc": {
             "vi": [
-              "(?:thịt\\s+)?cánh(?:\\s+gia\\s+cầm)?"
+              "(?:thịt\\s+)?cánh\\s+(?:gà|vịt|ngan|ngỗng|gia\\s+cầm)",
+              "(?<!cửa\\s)(?<!quạt\\s)(?<!tay\\s)(?<!buồm\\s)(?:thịt\\s+)?cánh"
             ],
             "en": [
               "wings?"
@@ -10759,7 +10785,8 @@
           "nhanZh": "禽腿",
           "cachDoc": {
             "vi": [
-              "(?:thịt\\s+)?đùi(?:\\s+gia\\s+cầm)?"
+              "(?:thịt\\s+)?đùi\\s+(?:gà|vịt|ngan|ngỗng|gia\\s+cầm)",
+              "(?<!xe\\s)(?<!đĩa\\s)(?<!heo\\s)(?<!lợn\\s)(?<!bò\\s)(?<!cừu\\s)(?:thịt\\s+)?đùi"
             ],
             "en": [
               "legs?",
@@ -10797,10 +10824,13 @@
           "nhanZh": "肥肝",
           "cachDoc": {
             "vi": [
-              "gan\\s+béo(?:\\s+gia\\s+cầm)?"
+              "gan\\s+béo(?:\\s+gia\\s+cầm)?",
+              "gan\\s+ngỗng(?:\\s+béo)?",
+              "foie\\s+gras"
             ],
             "en": [
-              "fatty\\s+livers?"
+              "fatty\\s+livers?",
+              "foie\\s+gras"
             ],
             "zh": [
               "肥肝"
@@ -10834,11 +10864,14 @@
       "cachDoc": {
         "vi": [
           "thích\\s+hợp\\s+sử\\s+dụng\\s+cho\\s+người(?:\\s*\\(SEN\\))?",
-          "(?:loại\\s+)?ăn\\s+được"
+          "(?:loại\\s+)?ăn\\s+được",
+          "cấp\\s+thực\\s+phẩm",
+          "dùng\\s+(?:làm|cho)\\s+thực\\s+phẩm"
         ],
         "en": [
           "fit\\s+for\\s+human\\s+consumption",
-          "edible"
+          "edible",
+          "food[- ]grade"
         ],
         "zh": [
           "适于供人食用",
@@ -10863,7 +10896,8 @@
         ],
         "en": [
           "inedible",
-          "unfit\\s+for\\s+human\\s+consumption"
+          "unfit\\s+for\\s+human\\s+consumption",
+          "feed[- ]grade"
         ],
         "zh": [
           "非食用",
@@ -10892,7 +10926,9 @@
           "cá\\s+bột"
         ],
         "en": [
-          "(?:fish\\s+)?fry"
+          "fish\\s+fry",
+          "fingerlings?",
+          "fish\\s+larvae"
         ],
         "zh": [
           "鱼苗"
@@ -10941,13 +10977,17 @@
       "nhanZh": "茶叶",
       "cachDoc": {
         "vi": [
-          "lá\\s+chè"
+          "lá\\s+(?:chè|trà)",
+          "(?:chè|trà)\\s+(?:dạng\\s+)?lá"
         ],
         "en": [
-          "tea\\s+leaves"
+          "tea\\s+leaves?",
+          "(?:loose\\s+)?leaf\\s+tea"
         ],
         "zh": [
-          "茶叶"
+          "茶叶",
+          "散装茶叶",
+          "条形茶"
         ],
         "phuDinh": [
           "không phải",
@@ -10988,10 +11028,15 @@
       "nhanZh": "已研磨",
       "cachDoc": {
         "vi": [
-          "(?:đã\\s+)?xay"
+          "(?<!máy\\s)(?<!cối\\s)đã\\s+xay",
+          "(?:cà\\s+phê\\s+)?rang\\s+xay",
+          "cà\\s+phê\\s+xay",
+          "(?:cà\\s+phê\\s+)?bột"
         ],
         "en": [
-          "ground"
+          "(?:roasted\\s+and\\s+)?ground\\s+coffee",
+          "roasted\\s+ground",
+          "(?<!nut)(?<!wire)(?<!station)(?<!floor)\\bground\\b(?!nut)(?!\\s+wire)(?!\\s+station)"
         ],
         "zh": [
           "已磨",
@@ -11009,11 +11054,15 @@
       },
       "cachDocKhong": {
         "vi": [
-          "chưa\\s+xay"
+          "chưa\\s+xay",
+          "(?:cà\\s+phê\\s+)?dạng\\s+hạt",
+          "cà\\s+phê\\s+hạt",
+          "nguyên\\s+hạt"
         ],
         "en": [
           "not\\s+ground",
-          "unground"
+          "unground",
+          "whole\\s+beans?"
         ],
         "zh": [
           "未磨",
@@ -11049,10 +11098,12 @@
           "nhanZh": "去头",
           "cachDoc": {
             "vi": [
-              "đã\\s+bỏ\\s+đầu"
+              "(?:đã\\s+)?bỏ\\s+đầu",
+              "tôm\\s+không\\s+đầu"
             ],
             "en": [
-              "headless"
+              "headless",
+              "\\bhlso\\b"
             ],
             "zh": [
               "去头"
@@ -11066,10 +11117,12 @@
           "nhanZh": "去头留尾",
           "cachDoc": {
             "vi": [
-              "đã\\s+bỏ\\s+đầu,\\s*còn\\s+đuôi"
+              "(?:đã\\s+)?bỏ\\s+đầu,?\\s*còn\\s+đuôi"
             ],
             "en": [
-              "headless,?\\s*tail-?on"
+              "headless,?\\s*tail-?on",
+              "tail-?on",
+              "\\bpto\\b"
             ],
             "zh": [
               "去头留尾"
@@ -11083,10 +11136,12 @@
           "nhanZh": "去头去尾",
           "cachDoc": {
             "vi": [
-              "đã\\s+bỏ\\s+đầu,\\s*bỏ\\s+đuôi"
+              "(?:đã\\s+)?bỏ\\s+đầu,?\\s*bỏ\\s+đuôi"
             ],
             "en": [
-              "headless,?\\s*tail-?off"
+              "headless,?\\s*tail-?off",
+              "tail-?off",
+              "\\bpd\\b"
             ],
             "zh": [
               "去头去尾"
@@ -11131,10 +11186,11 @@
           "nhanZh": "烤烟型弗吉尼亚烟草",
           "cachDoc": {
             "vi": [
-              "(?:loại\\s+)?virginia,\\s*đã\\s+sấy\\s+bằng\\s+không\\s+khí\\s+nóng(?:\\s*\\(flue-?cured\\))?"
+              "(?:loại\\s+)?virginia(?:,\\s*đã)?\\s+sấy\\s+(?:bằng\\s+không\\s+khí\\s+nóng|nóng|lò|khí\\s+nóng)(?:\\s*\\(flue-?cured\\))?",
+              "virginia\\s+flue-?cured"
             ],
             "en": [
-              "virginia\\s+type,?\\s*flue-?cured"
+              "virginia\\s+(?:type,?\\s*)?flue-?cured"
             ],
             "zh": [
               "弗吉尼亚烤烟",
@@ -11204,10 +11260,12 @@
           "nhanZh": "其他烤烟",
           "cachDoc": {
             "vi": [
-              "loại\\s+khác,\\s*được\\s+sấy\\s+bằng\\s+không\\s+khí\\s+nóng(?:\\s*\\(flue-?cured\\))?"
+              "(?:loại\\s+khác,\\s*)?(?:được\\s+)?sấy\\s+bằng\\s+không\\s+khí\\s+nóng(?:\\s*\\(flue-?cured\\))?",
+              "thuốc\\s+lá\\s+sấy\\s+nóng"
             ],
             "en": [
-              "other,?\\s*flue-?cured"
+              "other,?\\s*flue-?cured",
+              "flue-?cured\\s+tobacco"
             ],
             "zh": [
               "其他烤烟"

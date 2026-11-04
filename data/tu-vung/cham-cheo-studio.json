@@ -778,6 +778,140 @@
         "cachDoc.vi",
         "cachDoc.en"
       ]
+    },
+    "sonChongHaHoacChongAnMonVoTau": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí sơn chống hà/chống ăn mòn vỏ tàu nhóm 32.08, 32.09 chuẩn. Tuy nhiên regex bắt buộc cả cụm 12 từ của biểu thuế kèm liên từ 'và/hoặc', làm trượt các khai báo thương mại thông dụng như 'sơn chống hà', 'sơn đáy tàu' hay 'marine antifouling paint'.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "tamMiengGhepLatNenOpTuong": {
+      "ketLuan": "SUA",
+      "lyDo": "Đúng tiêu chí tấm miếng cao su ghép lát nền ốp tường nhóm 40.08, 40.16. Nhưng mẫu regex yêu cầu cứng nhắc chuỗi từ 'miếng, tấm ghép với nhau để lát nền và ốp tường', khiến không bắt được 'tấm cao su lát sàn' hay 'interlocking rubber tiles'.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "dungTrongNhaKhoa": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí vecni/sơn dùng trong nha khoa nhóm 32.08 chuẩn xác. Tuy nhiên mẫu tiếng Anh chỉ có 'in dentistry' sẽ trượt các sản phẩm khai báo phổ biến theo chuẩn quốc tế là 'dental varnish' hoặc 'for dental use'.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "dayTetBen": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí dây tết bện từ vật liệu đan lát nhóm 46.01 chuẩn. Tuy nhiên regex sao chép nguyên văn 15 từ của biểu thuế khiến trượt mọi tờ khai thực tế viết ngắn gọn như 'dây tết bện', 'dải tết bện' hay 'braids of plaiting materials'.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "loaiCung": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí tấm/phiến plastic loại cứng nhóm 39.20 chuẩn. Nhưng tiền tố tuỳ chọn '(?:loại\\s+)?' khiến từ đơn 'cứng' bắt nhầm diện rộng sang 'ổ đĩa cứng' (HDD), 'độ cứng' (HRC) và 'chất làm cứng' đóng rắn sơn.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi"
+      ]
+    },
+    "boPhanThitGiaCam": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phân loại phần cắt thịt gia cầm nhóm 02.07 chuẩn. Tuy nhiên các từ đơn 'cánh', 'đùi' bắt nhầm 'cánh cửa', 'cánh quạt', 'đùi heo', đồng thời nhánh GAN_BEO bỏ sót thuật ngữ thương phẩm cao cấp phổ biến nhất là 'foie gras'.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.CANH.cachDoc.vi",
+        "moTaGiaTri.DUI.cachDoc.vi",
+        "moTaGiaTri.GAN_BEO.cachDoc.vi",
+        "moTaGiaTri.GAN_BEO.cachDoc.en"
+      ]
+    },
+    "thichHopDungChoNguoi": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí thích hợp dùng cho người (ăn được) nhóm 04.04, 10.05, 12.07, 15.02 chuẩn. Nhưng mẫu tiếng Anh thiếu 'food grade' và nhánh phủ định thiếu 'feed grade', vốn là cách phân biệt thương mại số một của bột whey và ngô.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDocKhong.en"
+      ]
+    },
+    "caBot": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí cá bột nhóm 03.01 chuẩn. Tuy nhiên tiền tố tuỳ chọn '(?:fish\\s+)?' khiến từ đơn 'fry' trong tiếng Anh bắt nhầm nồi chiên không dầu ('air fryer'), khoai tây chiên ('french fries') và món chiên xào ('stir-fry').",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.en"
+      ]
+    },
+    "laChe": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí dạng lá chè nhóm 09.02 chuẩn xác. Nhưng mẫu tiếng Việt chỉ nhận 'lá chè' sẽ bỏ sót cách gọi Nam Bộ 'lá trà' hay 'trà lá', và tiếng Anh thiếu thuật ngữ thương mại quốc tế 'loose leaf tea' / 'leaf tea'.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "daXay": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí cà phê đã xay nhóm 09.01 chuẩn. Nhưng từ đơn 'ground' tiếng Anh bắt nhầm dây tiếp địa ('ground wire') và củ lạc ('groundnut'), từ đơn 'xay' bắt nhầm 'máy xay', đồng thời bỏ sót cách khai phổ biến 'cà phê rang xay' và 'cà phê hạt'.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDocKhong.vi",
+        "cachDocKhong.en"
+      ]
+    },
+    "soCheTom": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí mức độ sơ chế tôm nhóm 03.06 rất chuẩn. Tuy nhiên mẫu tiếng Việt bắt buộc có chữ 'đã', và tiếng Anh thiếu các mã thương phẩm quốc tế chiếm đa số tuyệt đối trong ngành thuỷ sản như 'HLSO', 'PTO', 'tail-on', 'tail-off'.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.DA_BO_DAU.cachDoc.vi",
+        "moTaGiaTri.DA_BO_DAU.cachDoc.en",
+        "moTaGiaTri.DA_BO_DAU_CON_DUOI.cachDoc.vi",
+        "moTaGiaTri.DA_BO_DAU_CON_DUOI.cachDoc.en",
+        "moTaGiaTri.DA_BO_DAU_BO_DUOI.cachDoc.vi",
+        "moTaGiaTri.DA_BO_DAU_BO_DUOI.cachDoc.en"
+      ]
+    },
+    "loaiThuocLaNguyenLieu": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí giống thuốc lá và phương pháp sấy nhóm 24.01 chuẩn. Tuy nhiên regex đòi hỏi nguyên cụm biểu thuế 'đã sấy bằng không khí nóng', làm trượt các khai báo thương mại thực tế như 'Virginia sấy nóng', 'Virginia sấy lò' hay 'Virginia flue-cured'.",
+      "goi": "09",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.VIRGINIA_SAY_NONG.cachDoc.vi",
+        "moTaGiaTri.VIRGINIA_SAY_NONG.cachDoc.en",
+        "moTaGiaTri.SAY_NONG_KHAC.cachDoc.vi",
+        "moTaGiaTri.SAY_NONG_KHAC.cachDoc.en"
+      ]
     }
   }
 }
