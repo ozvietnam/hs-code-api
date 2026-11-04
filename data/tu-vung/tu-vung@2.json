@@ -3968,7 +3968,7 @@
         "en": [
           "solely\\s+or\\s+principally",
           "(?:solely|exclusively|principally|mainly|primarily)\\s+(?:used|designed)",
-          "dedicated",
+          "dedicated\\s+(?:for|to|use)",
           "designed\\s+(?:primarily|mainly|principally|exclusively|specifically)\\s+for",
           "designed\\s+only\\s+for",
           "specially\\s+designed"
@@ -4111,7 +4111,8 @@
           "pre-?programmed",
           "programmed",
           "firmware\\s+(?:installed|loaded|flashed)",
-          "flashed",
+          "(?:rom|firmware|chip)\\s+flashed",
+          "flashed\\s+with\\s+firmware",
           "loaded\\s+with\\s+(?:firmware|software)"
         ],
         "zh": [
@@ -5342,8 +5343,7 @@
       "nhanZh": "已组装",
       "cachDoc": {
         "vi": [
-          "(?:đã\\s+)?(?:được\\s+)?lắp\\s+ráp",
-          "hoàn\\s+chỉnh",
+          "(?:đã\\s+)?(?:được\\s+)?lắp\\s+ráp(?:\\s+hoàn\\s+chỉnh)?",
           "nguyên\\s+chiếc"
         ],
         "en": [
@@ -5837,10 +5837,8 @@
           "chiều\\s+ngang"
         ],
         "en": [
-          "width",
-          "wide",
-          "maximum\\s+horizontal\\s+dimension",
-          "horizontal\\s+dimension"
+          "\\bwidth\\b",
+          "(?<=\\d\\s*(?:mm|cm|m|in|inch)?\\s*)wide"
         ],
         "zh": [
           "宽度",
@@ -5854,8 +5852,8 @@
         "vi": "chiều rộng {giaTri} mm"
       },
       "cauHoi": {
-        "vi": "Chiều rộng của sản phẩm cán phẳng là bao nhiêu mm?",
-        "zh": "平板轧材的宽度是多少毫米（mm）？"
+        "vi": "Chiều rộng của hàng hóa/sản phẩm là bao nhiêu mm?",
+        "zh": "货物/产品的宽度是多少毫米（mm）？"
       },
       "ghiChu": "Trích chữ biểu 7209.16.10, 7209.27.10 \"Chiều rộng không quá 1.250 mm\" và 7211.23.20 \"chiều rộng không quá 400 mm\". + mẫu \"kích thước chiều ngang\" (8428, Studio lô 11).",
       "nguonLoai": "AI_DA_KIEM",
@@ -5954,7 +5952,7 @@
           "bước\\s+ren"
         ],
         "en": [
-          "thread(?:ed)?",
+          "threaded",
           "threading",
           "screwed",
           "with\\s+threads?"
@@ -6859,7 +6857,7 @@
           "iodine\\s+value",
           "iodine\\s+number",
           "iodine\\s+index",
-          "\\biv\\b"
+          "\\biv\\s*[:=]"
         ],
         "zh": [
           "碘值",
@@ -7318,7 +7316,7 @@
           "in\\s+sẵn"
         ],
         "en": [
-          "printed",
+          "printed(?!\\s+circuit)",
           "pre-?printed"
         ],
         "zh": [
@@ -7895,15 +7893,13 @@
       "canNguCanh": true,
       "cachDoc": {
         "vi": [
-          "cỡ\\s+nòng",
-          "cỡ\\s+đạn",
-          "khẩu\\s+độ",
-          "cỡ"
+          "cỡ\\s+nòng(?:\\s+súng)?",
+          "cỡ\\s+đạn"
         ],
         "en": [
           "calib(?:re|er)",
           "bore(?:\\s+size)?",
-          "gauge"
+          "(?:shotgun|bore)\\s+gauge"
         ],
         "zh": [
           "口径",
@@ -8449,13 +8445,14 @@
       "cachDoc": {
         "vi": [
           "có\\s+màu\\s+trừ\\s+màu\\s+trắng",
-          "có\\s+màu",
-          "nhuộm\\s+màu",
+          "có\\s+màu(?!\\s+trắng)",
+          "(?<!trắng\\s)nhuộm\\s+màu",
           "sợi\\s+màu",
           "xơ\\s+màu"
         ],
         "en": [
-          "colou?red(?:,\\s+other\\s+than\\s+white)?",
+          "colou?red,\\s+other\\s+than\\s+white",
+          "(?<!white\\s)colou?red(?!\\s+white)",
           "dyed",
           "dope\\s+dyed"
         ],
