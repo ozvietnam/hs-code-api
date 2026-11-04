@@ -1,0 +1,164 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721250",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721250",
+  "dong8": {
+    "72125014": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72125023": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72125024": {
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_DAI_HOAC_PHO_DUNG"
+          ]
+        }
+      ],
+      "phanConLai": [
+        "72125023"
+      ]
+    },
+    "72125093": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72125094": {
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_DAI_HOAC_PHO_DUNG"
+          ]
+        }
+      ],
+      "phanConLai": [
+        "72125093"
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7212501": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "oxit crôm"
+        }
+      ]
+    },
+    "7212502": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nhôm - kẽm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7212501",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7212501: \"Được phủ, mạ hoặc tráng bằng oxit crôm hoặc bằng crôm và oxit crôm\" ⇒ tenLoai \"oxit crôm\""
+    },
+    {
+      "ma": "7212501",
+      "loai": "BO_VE",
+      "ve": "Được phủ, mạ hoặc tráng",
+      "lyDo": "Lặp lại tiêu chí phân nhóm 7212.50"
+    },
+    {
+      "ma": "7212501",
+      "loai": "BO_VE",
+      "ve": "bằng oxit crôm",
+      "lyDo": "Đã đưa vào tenLoai oxit crôm"
+    },
+    {
+      "ma": "7212501",
+      "loai": "BO_VE",
+      "ve": "bằng crôm và oxit crôm",
+      "lyDo": "Đã bao hàm trong tenLoai oxit crôm"
+    },
+    {
+      "ma": "72125014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72125014: \"Dạng đai và dải(SEN), chiều rộng trên 25 mm; tấm phổ dụng (SEN)\" ⇒ chieuRong > 25 mm"
+    },
+    {
+      "ma": "72125014",
+      "loai": "BO_VE",
+      "ve": "chiều rộng trên 25 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong > 25 mm"
+    },
+    {
+      "ma": "7212502",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7212502: \"Được phủ, mạ hoặc tráng hợp kim nhôm - kẽm\" ⇒ tenLoai \"nhôm - kẽm\""
+    },
+    {
+      "ma": "7212502",
+      "loai": "BO_VE",
+      "ve": "Được phủ, mạ hoặc tráng hợp kim nhôm - kẽm",
+      "lyDo": "Đã đưa vào tenLoai nhôm - kẽm"
+    },
+    {
+      "ma": "72125023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72125023: \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" ⇒ chieuRong <= 25 mm"
+    },
+    {
+      "ma": "72125023",
+      "loai": "BO_VE",
+      "ve": "có chiều rộng không quá 25 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong <= 25 mm"
+    },
+    {
+      "ma": "72125024",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72125024: \"Dạng đai và dải khác; tấm phổ dụng(SEN)\" ⇒ dangDaiDaiTamPhoDung DAI_DAI_HOAC_PHO_DUNG + phanConLai [72125023]"
+    },
+    {
+      "ma": "72125093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72125093: \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" ⇒ chieuRong <= 25 mm"
+    },
+    {
+      "ma": "72125093",
+      "loai": "BO_VE",
+      "ve": "có chiều rộng không quá 25 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong <= 25 mm"
+    },
+    {
+      "ma": "72125094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72125094: \"Dạng đai và dải khác; tấm phổ dụng(SEN)\" ⇒ dangDaiDaiTamPhoDung DAI_DAI_HOAC_PHO_DUNG + phanConLai [72125093]"
+    }
+  ]
+}

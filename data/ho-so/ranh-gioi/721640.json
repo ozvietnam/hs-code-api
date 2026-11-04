@@ -1,0 +1,57 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "721640",
+  "nhom": "7216",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721640",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "72164010",
+      "nguon": "tax.72164010",
+      "trich": "72164010 - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72164090",
+      "nguon": "tax.72164090",
+      "trich": "72164090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "72164010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72164010: \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72164010",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "72164010",
+      "loai": "BO_VE",
+      "ve": "từ 0,6% trở lên tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon >= 0.6 %"
+    }
+  ]
+}

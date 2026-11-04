@@ -1,0 +1,121 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "721650",
+  "nhom": "7216",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721650",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7216501",
+      "nguon": "tieuDe.7216501",
+      "trich": "7216501 Có chiều cao dưới 80 mm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": "<",
+          "value": 80,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "72165011",
+      "nguon": "tax.72165011",
+      "trich": "72165011 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72165019",
+      "nguon": "tax.72165019",
+      "trich": "72165019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72165091",
+      "nguon": "tax.72165091",
+      "trich": "72165091 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72165099",
+      "nguon": "tax.72165099",
+      "trich": "72165099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7216501",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7216501: \"Có chiều cao dưới 80 mm\" ⇒ chieuCao < 80 mm"
+    },
+    {
+      "ma": "7216501",
+      "loai": "BO_VE",
+      "ve": "Có chiều cao dưới 80 mm",
+      "lyDo": "Đã lượng hóa qua chieuCao < 80 mm"
+    },
+    {
+      "ma": "72165011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72165011: \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72165011",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "72165011",
+      "loai": "BO_VE",
+      "ve": "từ 0,6% trở lên tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72165091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72165091: \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72165091",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "72165091",
+      "loai": "BO_VE",
+      "ve": "từ 0,6% trở lên tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon >= 0.6 %"
+    }
+  ]
+}

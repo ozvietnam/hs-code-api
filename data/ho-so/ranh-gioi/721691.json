@@ -1,0 +1,57 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "721691",
+  "nhom": "7216",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721691",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "72169110",
+      "nguon": "tax.72169110",
+      "trich": "72169110 - - - Dạng góc, trừ góc đục lỗ, rãnh, có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72169190",
+      "nguon": "tax.72169190",
+      "trich": "72169190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "72169110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72169110: \"Dạng góc, trừ góc đục lỗ, rãnh, có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72169110",
+      "loai": "BO_VE",
+      "ve": "trừ góc đục lỗ, rãnh, có hàm lượng carbon",
+      "lyDo": "Vế loại trừ hình thức gia công đục lỗ/rãnh và cụm danh từ chỉ thuộc tính carbon"
+    },
+    {
+      "ma": "72169110",
+      "loai": "BO_VE",
+      "ve": "từ 0,6% trở lên tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon >= 0.6 %"
+    }
+  ]
+}
