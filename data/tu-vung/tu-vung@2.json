@@ -9698,23 +9698,17 @@
       "nhanZh": "用于机动车辆（第87章）",
       "cachDoc": {
         "vi": [
-          "(?:sử\\s+dụng|dùng)\\s+cho\\s+động\\s+cơ\\s+ô\\s+tô",
-          "(?:sử\\s+dụng|dùng)\\s+cho\\s+động\\s+cơ\\s+của\\s+xe\\s+thuộc\\s+nhóm\\s+87\\.\\d+",
-          "(?:động\\s+cơ\\s+)?dùng\\s+cho\\s+xe\\s+của\\s+chương\\s+87",
+          "(?:(?:dùng|sử\\s+dụng|lắp|dành)\\s+)?cho\\s+(?:động\\s+cơ\\s+)?(?:xe\\s+)?(?:ô\\s+tô|mô\\s+tô|xe\\s+máy|xe\\s+cơ\\s+giới|xe\\s+có\\s+động\\s+cơ)",
+          "(?:sử\\s+dụng|dùng|cho)\\s+(?:xe|động\\s+cơ)\\s+thuộc\\s+(?:chương\\s+87|nhóm\\s+87\\.\\d+)",
           "cho\\s+xe\\s+thuộc\\s+nhóm\\s+87\\.\\d+",
-          "(?:dùng|sử\\s+dụng)\\s+cho\\s+xe\\s+có\\s+động\\s+cơ",
-          "cho\\s+xe\\s+có\\s+động\\s+cơ",
-          "dùng\\s+cho\\s+xe\\s+có\\s+động\\s+cơ",
-          "sử\\s+dụng\\s+cho\\s+xe\\s+có\\s+động\\s+cơ",
-          "dùng\\s+cho\\s+xe\\s+thuộc\\s+nhóm\\s+87\\.\\d+",
-          "sử\\s+dụng\\s+cho\\s+động\\s+cơ\\s+của\\s+(?:các\\s+)?nhóm\\s+87\\.\\d+"
+          "(?:dùng|sử\\s+dụng)\\s+cho\\s+xe\\s+(?:của|thuộc)\\s+chương\\s+87",
+          "(?:dùng|sử\\s+dụng)\\s+cho\\s+động\\s+cơ\\s+của\\s+xe\\s+thuộc\\s+nhóm\\s+87\\.\\d+",
+          "cho\\s+xe\\s+(?:của|thuộc)\\s+chương\\s+87"
         ],
         "en": [
-          "(?:used\\s+)?for\\s+engines?\\s+of\\s+motor\\s+vehicles?",
-          "(?:used\\s+)?for\\s+vehicles?\\s+of\\s+chapter\\s+87",
-          "(?:used\\s+)?for\\s+vehicles?\\s+of\\s+heading\\s+87\\.\\d+",
-          "(?:used\\s+)?for\\s+motor\\s+vehicles?",
-          "for\\s+vehicles?\\s+of\\s+heading\\s+87\\.\\d+"
+          "(?:used\\s+)?for\\s+(?:engines?\\s+of\\s+)?(?:motor\\s+vehicles?|automotive|automobiles?|cars?|trucks?|motorcycles?)",
+          "(?:used\\s+)?for\\s+vehicles?\\s+of\\s+(?:chapter\\s+87|heading\\s+87\\.\\d+)",
+          "automotive\\s+(?:use|applications?|parts?)"
         ],
         "zh": [
           "用于机动车辆发动机",
@@ -9863,8 +9857,9 @@
           "máy\\s+phát\\s+điện"
         ],
         "en": [
-          "generators?",
-          "electric\\s+generators?"
+          "(?<!signal\\s)(?<!pulse\\s)(?<!function\\s)(?<!steam\\s)(?<!gas\\s)(?<!ozone\\s)\\b(?:electric(?:al)?|dc|ac)?\\s*generators?",
+          "alternators?",
+          "dynamos?"
         ],
         "zh": [
           "发电机"
@@ -9919,15 +9914,15 @@
           "cachDoc": {
             "vi": [
               "bộ\\s+nguồn\\s+cấp\\s+điện\\s+liên\\s+tục(?:\\s*\\(UPS\\))?(?:\\s*\\(SEN\\))?",
-              "ups"
+              "\\bups\\b"
             ],
             "en": [
               "uninterruptible\\s+power\\s+suppl(?:y|ies)(?:\\s*\\(ups\\))?",
-              "ups"
+              "\\bups\\b"
             ],
             "zh": [
               "不间断供电电源",
-              "ups"
+              "\\bups\\b"
             ]
           },
           "cachViet": "bộ nguồn cấp điện liên tục UPS"
@@ -9956,7 +9951,8 @@
           "nhanZh": "逆变器",
           "cachDoc": {
             "vi": [
-              "(?:bộ\\s+)?nghịch\\s+lưu"
+              "(?:bộ\\s+)?nghịch\\s+lưu",
+              "(?:bộ\\s+)?biến\\s+tần"
             ],
             "en": [
               "inverters?"
@@ -10002,10 +9998,10 @@
           "nhanZh": "防盗报警器",
           "cachDoc": {
             "vi": [
-              "(?:thiết\\s+bị\\s+)?báo\\s+trộm"
+              "(?:thiết\\s+bị\\s+|hệ\\s+thống\\s+)?(?:báo\\s+trộm|chống\\s+trộm|báo\\s+động\\s+chống\\s+trộm)"
             ],
             "en": [
-              "burglar\\s+alarms?"
+              "(?:burglar|anti-?theft|intrud(?:er|ion))\\s+alarms?"
             ],
             "zh": [
               "防盗报警器",
@@ -10038,11 +10034,13 @@
           "nhanZh": "感烟报警器或个人警报器",
           "cachDoc": {
             "vi": [
-              "báo\\s+khói(?:\\s*;\\s*chuông\\s+báo\\s+động\\s+cá\\s+nhân\\s+bỏ\\s+túi(?:\\s*\\(còi\\s+rú\\))?)?"
+              "(?:thiết\\s+bị\\s+|đầu\\s+)?báo\\s+khói",
+              "cảm\\s+biến\\s+khói",
+              "chuông\\s+báo\\s+động\\s+cá\\s+nhân(?:\\s*\\(còi\\s+rú\\))?"
             ],
             "en": [
-              "smoke\\s+alarms?",
-              "personal\\s+alarms?"
+              "smoke\\s+(?:alarms?|detectors?)",
+              "personal\\s+(?:panic\\s+)?alarms?"
             ],
             "zh": [
               "感烟报警器",
@@ -10087,11 +10085,16 @@
           "nhanZh": "板及片",
           "cachDoc": {
             "vi": [
-              "(?:dạng\\s+)?tấm\\s+và\\s+phiến(?:\\s*\\(SEN\\))?",
-              "dạng\\s+tấm\\s+và\\s+phiến,\\s+loại\\s+cứng(?:\\s*\\(SEN\\))?"
+              "(?:dạng\\s+)?tấm(?:\\s+và\\s+phiến)?(?:\\s*\\(SEN\\))?",
+              "(?:dạng\\s+)?phiến",
+              "tấm\\s+nhựa",
+              "phiến\\s+nhựa"
             ],
             "en": [
-              "plates?\\s+and\\s+sheets?"
+              "plates?\\s+(?:and|or)\\s+sheets?",
+              "plastic\\s+(?:plates?|sheets?)",
+              "plates?",
+              "sheets?"
             ],
             "zh": [
               "板及片",
@@ -10144,10 +10147,13 @@
           "nhanZh": "条、杆及异型材",
           "cachDoc": {
             "vi": [
-              "dạng\\s+thanh,\\s*que\\s+và\\s+các\\s+dạng\\s+hình"
+              "(?:dạng\\s+)?thanh,\\s*que\\s+và\\s+các\\s+dạng\\s+hình",
+              "(?:dạng\\s+)?(?:thanh|que)\\s+nhựa",
+              "nhựa\\s+dạng\\s+hình"
             ],
             "en": [
-              "rods?,?\\s*sticks?\\s+and\\s+profile\\s+shapes?"
+              "rods?,?\\s*sticks?\\s+and\\s+profile\\s+shapes?",
+              "(?:plastic\\s+)?(?:rods?|sticks?|profile\\s+shapes?)"
             ],
             "zh": [
               "条、杆及异型材"
@@ -10180,7 +10186,7 @@
       "nhanZh": "地板覆盖物",
       "cachDoc": {
         "vi": [
-          "tấm\\s+phủ\\s+sàn"
+          "tấm\\s+(?:phủ|trải)\\s+sàn"
         ],
         "en": [
           "floor\\s+coverings?"
@@ -10276,7 +10282,7 @@
           "nhanZh": "制蚊香用粉",
           "cachDoc": {
             "vi": [
-              "(?:dạng\\s+)?bột\\s+dùng\\s+làm\\s+hương\\s+vòng\\s+chống\\s+muỗi"
+              "(?:dạng\\s+)?bột\\s+(?:dùng\\s+)?làm\\s+(?:hương\\s+vòng|nhang)\\s+(?:chống\\s+)?muỗi"
             ],
             "en": [
               "(?:in\\s+the\\s+form\\s+of\\s+)?mosquito\\s+coil\\s+powder"
@@ -10322,13 +10328,18 @@
           "nhanZh": "旅行袋及手提箱",
           "cachDoc": {
             "vi": [
-              "túi\\s+và\\s+vali\\s+du\\s+lịch"
+              "túi\\s+và\\s+vali\\s+du\\s+lịch",
+              "(?:túi|vali)(?:\\s+xách)?\\s+du\\s+lịch"
             ],
             "en": [
-              "travelling\\s+bags\\s+and\\s+suitcases?"
+              "travelling\\s+bags?\\s+(?:and|or)\\s+suitcases?",
+              "travelling\\s+bags?",
+              "suitcases?"
             ],
             "zh": [
-              "旅行袋及手提箱"
+              "旅行袋及手提箱",
+              "旅行袋",
+              "手提箱"
             ]
           },
           "cachViet": "túi và vali du lịch"
@@ -10376,10 +10387,12 @@
       "nhanZh": "采矿用吸排泥浆软管",
       "cachDoc": {
         "vi": [
-          "ống\\s+hút\\s+và\\s+xả\\s+bùn\\s+dùng\\s+trong\\s+khai\\s+thác\\s+mỏ(?:\\s*\\(SEN\\))?"
+          "ống\\s+(?:cao\\s+su\\s+)?(?:hút|xả|hút\\s+(?:và|hoặc)?\\s*xả)\\s+bùn(?:\\s+dùng\\s+trong|\\s+cho)?\\s+khai\\s+thác\\s+mỏ(?:\\s*\\(SEN\\))?",
+          "ống\\s+hút\\s+và\\s+xả\\s+bùn\\s+dùng\\s+trong\\s+khai\\s+thác\\s+mỏ"
         ],
         "en": [
-          "(?:mining\\s+)?slurry\\s+suction\\s+and\\s+discharge\\s+hoses?"
+          "(?:mining\\s+)?slurry\\s+(?:suction|discharge|suction\\s+and\\s+discharge)\\s+hoses?",
+          "slurry\\s+hoses?\\s+for\\s+mining"
         ],
         "zh": [
           "采矿用吸排泥浆软管"
@@ -10424,11 +10437,12 @@
       "cachDoc": {
         "vi": [
           "(?:loại\\s+)?phù\\s+hợp\\s+dùng\\s+cho\\s+điện\\s+ảnh",
-          "dùng\\s+cho\\s+điện\\s+ảnh"
+          "(?:dùng\\s+cho\\s+|phim\\s+)điện\\s+ảnh"
         ],
         "en": [
           "suitable\\s+for\\s+cinematograph(?:y|ic)",
-          "cinematograph(?:y|ic)"
+          "cinematograph(?:y|ic)(?:\\s+films?)?",
+          "motion\\s+picture(?:\\s+films?)?"
         ],
         "zh": [
           "适于电影用",

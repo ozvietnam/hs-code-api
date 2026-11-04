@@ -661,6 +661,123 @@
         "cachDoc.vi",
         "cachDoc.en"
       ]
+    },
+    "dungChoXeCoDongCo": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí công dụng lắp ráp/vận hành trên xe cơ giới Chương 87 đúng. Tuy nhiên mẫu regex chỉ nhận cụm pháp lý 'xe có động cơ' hoặc bắt buộc có từ 'động cơ', bỏ sót hoàn toàn cách khai báo thực tế phổ biến nhất là 'dùng cho ô tô', 'dùng cho xe máy' hay 'for automotive use'.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ],
+      "ghiChuMay": "SUA của Studio bỏ mất \"xe của Chương 87\"/\"động cơ của xe thuộc nhóm 87.xx\" ⇒ cổng đọc ghiChu đỏ 4 dòng; máy bổ sung lại mẫu."
+    },
+    "bienApThichUng": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí máy biến áp thích ứng (matching transformer) nhóm 85.04 hoàn toàn chính xác. Thuật ngữ chuyên ngành hẹp, đối sánh ba thứ tiếng chuẩn mực và không có nguy cơ bắt nhầm.",
+      "goi": "08",
+      "ngay": "2026-11-04"
+    },
+    "loaiXachTay": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí dạng xách tay (portable) của máy thu thanh nhóm 85.27 chuẩn xác theo Biểu thuế. Các mẫu khẳng định và phủ định phân định rõ giữa thiết bị xách tay và thiết bị cố định.",
+      "goi": "08",
+      "ngay": "2026-11-04"
+    },
+    "laMayPhatDien": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phân biệt máy phát điện với động cơ điện nhóm 85.01 chuẩn. Tuy nhiên từ đơn 'generators' trong tiếng Anh sẽ bắt nhầm máy phát tín hiệu (signal generator - 90.30) và lò sinh hơi (steam generator - 84.02), đồng thời bỏ sót thuật ngữ 'alternator' hay 'dynamo'.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.en"
+      ]
+    },
+    "loaiBienDoiTinhDien": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí các bộ biến đổi tĩnh điện nhóm 85.04 chuẩn. Tuy nhiên mẫu 'ups' không có biên từ '\\b' sẽ bắt nhầm các từ tiếng Anh chứa 'ups' (như 'groups', 'cups'), đồng thời giá trị NGHICH_LUU bỏ sót tên gọi thương mại chiếm 95% thực tế là 'biến tần'.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.UPS.cachDoc.vi",
+        "moTaGiaTri.UPS.cachDoc.en",
+        "moTaGiaTri.UPS.cachDoc.zh",
+        "moTaGiaTri.NGHICH_LUU.cachDoc.vi"
+      ]
+    },
+    "loaiThietBiBaoDong": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phân loại thiết bị báo động nhóm 85.31 chuẩn. Tuy nhiên giá trị BAO_KHOI bỏ sót 'smoke detector' (đầu báo khói - thuật ngữ chiếm 99% thực tế) và BAO_TROM bỏ sót 'chống trộm' / 'anti-theft alarm'.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.BAO_TROM.cachDoc.vi",
+        "moTaGiaTri.BAO_TROM.cachDoc.en",
+        "moTaGiaTri.BAO_KHOI.cachDoc.vi",
+        "moTaGiaTri.BAO_KHOI.cachDoc.en"
+      ]
+    },
+    "dangTamPhienMang": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí hình dạng bán thành phẩm plastic nhóm 39.16, 39.20 chuẩn. Tuy nhiên mẫu bắt buộc cả cụm liên kết 'tấm và phiến' / 'plates and sheets', khiến hệ thống trượt 100% các tờ khai thực tế chỉ khai riêng 'tấm nhựa' hoặc 'phiến nhựa'.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.TAM_VA_PHIEN.cachDoc.vi",
+        "moTaGiaTri.TAM_VA_PHIEN.cachDoc.en",
+        "moTaGiaTri.THANH_QUE_HINH.cachDoc.vi",
+        "moTaGiaTri.THANH_QUE_HINH.cachDoc.en"
+      ]
+    },
+    "tamPhuSan": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí tấm phủ sàn trên nền giấy/bìa nhóm 48.11, 48.23 chuẩn xác. Tuy nhiên mẫu tiếng Việt chỉ nhận 'tấm phủ sàn' sẽ bỏ sót cách khai báo thương mại phổ biến không kém là 'tấm trải sàn'.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi"
+      ]
+    },
+    "dangChePhamDietMuoi": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí dạng chế phẩm diệt muỗi nhóm 38.08 rất chuẩn. Tuy nhiên nhánh BOT_LAM_HUONG_VONG trong tiếng Việt cần bổ sung cách gọi thương mại Nam Bộ 'bột làm nhang muỗi' để tránh bỏ sót.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.BOT_LAM_HUONG_VONG.cachDoc.vi"
+      ]
+    },
+    "loaiHangDanLat": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phân loại hàng đan lát nhóm 46.02 chuẩn. Nhưng mẫu TUI_VALI_DU_LICH bắt buộc phải có đồng thời cả 'túi VÀ vali' ('travelling bags AND suitcases'), làm trượt mọi lô hàng nhập khẩu riêng túi du lịch hoặc riêng vali du lịch.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.TUI_VALI_DU_LICH.cachDoc.vi",
+        "moTaGiaTri.TUI_VALI_DU_LICH.cachDoc.en",
+        "moTaGiaTri.TUI_VALI_DU_LICH.cachDoc.zh"
+      ]
+    },
+    "ongHutXaBunKhaiThacMo": {
+      "ketLuan": "SUA",
+      "lyDo": "Đúng tiêu chí ống cao su khai thác mỏ nhóm 40.09. Tuy nhiên mẫu tiếng Việt bắt buộc nguyên chuỗi 12 từ của biểu thuế khiến trượt các khai báo thực tế thông dụng như 'ống hút bùn khai thác mỏ' hoặc 'ống xả bùn mỏ'.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
+    },
+    "dungChoDienAnh": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phim phù hợp dùng cho điện ảnh nhóm 37.02 chuẩn. Nhưng mẫu tiếng Anh thiếu thuật ngữ quốc tế chuẩn xác nhất là 'motion picture film' và tiếng Việt thiếu cụm từ phổ thông 'phim điện ảnh'.",
+      "goi": "08",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
     }
   }
 }
