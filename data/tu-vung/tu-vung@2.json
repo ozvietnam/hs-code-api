@@ -12030,10 +12030,13 @@
       "nhanZh": "用于制造真空管",
       "cachDoc": {
         "vi": [
-          "(?:loại\\s+)?sử\\s+dụng\\s+để\\s+sản\\s+xuất\\s+ống\\s+chân\\s+không(?:\\s*\\(SEN\\))?"
+          "(?:loại\\s+)?sử\\s+dụng\\s+để\\s+sản\\s+xuất\\s+ống\\s+chân\\s+không(?:\\s*\\(SEN\\))?",
+          "(?:dùng|sử\\s+dụng)\\s+(?:để\\s+)?sản\\s+xuất\\s+ống\\s+chân\\s+không",
+          "sản\\s+xuất\\s+ống\\s+chân\\s+không"
         ],
         "en": [
-          "used\\s+for\\s+(?:the\\s+)?manufacture\\s+of\\s+vacuum\\s+tubes?"
+          "used\\s+for\\s+(?:the\\s+)?manufacture\\s+of\\s+vacuum\\s+tubes?",
+          "for\\s+vacuum\\s+tube(?:s)?\\s+(?:manufacture|production|manufacturing)"
         ],
         "zh": [
           "用于制造真空管"
@@ -12077,10 +12080,12 @@
       "nhanZh": "巴隆他加禄衫（Barong Tagalog）",
       "cachDoc": {
         "vi": [
-          "áo\\s+barong\\s+tagalog(?:\\s*\\(SEN\\))?"
+          "áo\\s+barong\\s+tagalog(?:\\s*\\(SEN\\))?",
+          "(?:áo(?:\\s+sơ\\s+mi)?\\s+)?barong\\s+tagalog"
         ],
         "en": [
-          "barong\\s+tagalog"
+          "barong\\s+tagalog",
+          "barong\\s+shirts?"
         ],
         "zh": [
           "巴隆他加禄",
@@ -12125,10 +12130,12 @@
       "nhanZh": "筒状纱笼",
       "cachDoc": {
         "vi": [
-          "sarong\\s+loại\\s+hình\\s+ống(?:\\s*\\(SEN\\))?"
+          "sarong\\s+loại\\s+hình\\s+ống(?:\\s*\\(SEN\\))?",
+          "(?:váy\\s+)?sarong(?:\\s+loại)?\\s+(?:hình|dạng)\\s+ống"
         ],
         "en": [
-          "tubular\\s+sarongs?"
+          "tubular\\s+sarongs?",
+          "sarongs?,?\\s*tubular"
         ],
         "zh": [
           "筒状纱笼"
@@ -12222,14 +12229,21 @@
       "nhanZh": "摔跤、举重或健美用鞋",
       "cachDoc": {
         "vi": [
-          "giày(?:,\\s*dép)?\\s+(?:dùng\\s+trong|cho)\\s+đấu\\s+vật(?:,\\s*cử\\s+tạ\\s+hoặc\\s+thể\\s+dục\\s+thể\\s+hình)?"
+          "giày(?:,\\s*dép)?\\s+(?:dùng\\s+trong|cho)\\s+đấu\\s+vật(?:,\\s*cử\\s+tạ\\s+hoặc\\s+thể\\s+dục\\s+thể\\s+hình)?",
+          "giày(?:,\\s*dép)?\\s+(?:dùng\\s+(?:trong|cho)|cho)?\\s*(?:đấu\\s+vật|cử\\s+tạ|thể\\s+(?:dục\\s+)?thể\\s+hình)",
+          "giày\\s+(?:đấu\\s+vật|cử\\s+tạ|thể\\s+hình)"
         ],
         "en": [
-          "footwear\\s+for\\s+wrestling(?:,?\\s*weightlifting\\s+or\\s+gymnastics)?"
+          "footwear\\s+for\\s+wrestling(?:,?\\s*weightlifting\\s+or\\s+gymnastics)?",
+          "(?:footwear|shoes?)\\s+(?:for\\s+)?(?:wrestling|weightlifting|gymnastics|bodybuilding)",
+          "weightlifting\\s+shoes?",
+          "wrestling\\s+shoes?"
         ],
         "zh": [
           "摔跤、举重或健美用鞋",
-          "摔跤鞋"
+          "摔跤鞋",
+          "举重鞋",
+          "健美鞋"
         ],
         "phuDinh": [
           "không phải",
@@ -12280,10 +12294,16 @@
           "nhanZh": "带材及窄条",
           "cachDoc": {
             "vi": [
-              "dạng\\s+đai\\s+và\\s+dải(?:\\s+khác)?(?:\\s*\\(SEN\\))?(?!;)"
+              "dạng\\s+đai\\s+và\\s+dải(?:\\s+khác)?(?:\\s*\\(SEN\\))?(?!;)",
+              "(?:dạng\\s+)?(?:đai|dải|đai\\s+và\\s+dải)",
+              "thép\\s+dải",
+              "thép\\s+đai"
             ],
             "en": [
-              "(?:other\\s+)?hoop\\s+and\\s+strip"
+              "(?:other\\s+)?hoop\\s+and\\s+strip",
+              "(?:steel\\s+)?strip",
+              "(?:steel\\s+)?hoop",
+              "hoop\\s+or\\s+strip"
             ],
             "zh": [
               "(?:其他)?带材及窄条",
@@ -12316,7 +12336,8 @@
           "nhanZh": "带材、窄条或通用中厚板",
           "cachDoc": {
             "vi": [
-              "dạng\\s+đai\\s+và\\s+dải(?:\\s+khác)?;\\s*tấm\\s+phổ\\s+dụng(?:\\s*\\(SEN\\))?"
+              "dạng\\s+đai\\s+và\\s+dải(?:\\s+khác)?;\\s*tấm\\s+phổ\\s+dụng(?:\\s*\\(SEN\\))?",
+              "(?:dạng\\s+)?đai(?:\\s+và|\\s+hoặc)?\\s*dải(?:\\s*;?\\s*tấm\\s+phổ\\s+dụng)?"
             ],
             "en": [
               "(?:other\\s+)?hoop\\s+and\\s+strip;?\\s*universal\\s+plates?"
@@ -12353,7 +12374,10 @@
       "nhanZh": "波形（瓦楞形）",
       "cachDoc": {
         "vi": [
-          "(?:loại\\s+khác,\\s*)?dạng\\s+lượn\\s+sóng"
+          "(?:loại\\s+khác,\\s*)?dạng\\s+lượn\\s+sóng",
+          "(?:dạng\\s+)?(?:lượn\\s+)?sóng",
+          "(?:tôn|thép)\\s+cán\\s+sóng",
+          "tôn\\s+sóng"
         ],
         "en": [
           "corrugated"
@@ -12413,11 +12437,15 @@
           "nhanZh": "厨房器具",
           "cachDoc": {
             "vi": [
-              "đồ\\s+dùng\\s+nhà\\s+bếp"
+              "đồ\\s+dùng\\s+nhà\\s+bếp",
+              "(?:đồ\\s+dùng|dụng\\s+cụ)\\s+(?:nhà\\s+)?bếp",
+              "dụng\\s+cụ\\s+làm\\s+bếp"
             ],
             "en": [
               "kitchenware",
-              "kitchen\\s+articles?"
+              "kitchen\\s+articles?",
+              "kitchen\\s+utensils?",
+              "cookware"
             ],
             "zh": [
               "厨房器具",
@@ -12432,7 +12460,8 @@
           "nhanZh": "烟灰缸",
           "cachDoc": {
             "vi": [
-              "gạt\\s+tàn\\s+thuốc\\s+lá"
+              "gạt\\s+tàn\\s+thuốc\\s+lá",
+              "gạt\\s+tàn(?:\\s+thuốc(?:\\s+lá)?)?"
             ],
             "en": [
               "ashtrays?"
@@ -12468,14 +12497,21 @@
       "nhanZh": "自行车或摩托车链条",
       "cachDoc": {
         "vi": [
-          "xích\\s+xe\\s+đạp\\s+hoặc\\s+xích\\s+xe\\s+mô\\s+tô"
+          "xích\\s+xe\\s+đạp\\s+hoặc\\s+xích\\s+xe\\s+mô\\s+tô",
+          "(?:xích|sên)\\s+(?:xe\\s+)?(?:đạp|mô\\s+tô|máy)",
+          "xích\\s+xe\\s+đạp",
+          "xích\\s+xe\\s+mô\\s+tô",
+          "sên\\s+xe\\s+máy"
         ],
         "en": [
-          "bicycle\\s+or\\s+motorcycle\\s+chains?"
+          "bicycle\\s+or\\s+motorcycle\\s+chains?",
+          "(?:bicycle|motorcycle|bike)\\s+chains?"
         ],
         "zh": [
           "自行车或摩托车链条",
-          "自行车链条或摩托车链条"
+          "自行车链条或摩托车链条",
+          "自行车链条",
+          "摩托车链条"
         ],
         "phuDinh": [
           "không phải",
@@ -12525,10 +12561,13 @@
           "nhanZh": "电阻焊（ERW）",
           "cachDoc": {
             "vi": [
-              "hàn\\s+điện\\s+trở(?:\\s+theo\\s+chiều\\s+dọc)?(?:\\s*\\(ERW\\))?"
+              "hàn\\s+điện\\s+trở(?:\\s+theo\\s+chiều\\s+dọc)?(?:\\s*\\(ERW\\))?",
+              "(?:ống\\s+thép\\s+)?hàn\\s+điện\\s+trở",
+              "(?:ống\\s+)?\\berw\\b"
             ],
             "en": [
-              "(?:longitudinally\\s+)?electric\\s+resistance\\s+welded(?:\\s*\\(ERW\\))?"
+              "(?:longitudinally\\s+)?electric\\s+resistance\\s+welded(?:\\s*\\(ERW\\))?",
+              "\\berw(?:\\s+steel\\s+pipes?)?\\b"
             ],
             "zh": [
               "电阻焊",
@@ -12544,10 +12583,16 @@
           "nhanZh": "螺旋埋弧焊",
           "cachDoc": {
             "vi": [
-              "hàn\\s+chìm\\s+xoắn\\s+hoặc\\s+xoắn\\s+ốc\\s+bằng\\s+hồ\\s+quang"
+              "hàn\\s+chìm\\s+xoắn\\s+hoặc\\s+xoắn\\s+ốc\\s+bằng\\s+hồ\\s+quang",
+              "hàn\\s+(?:hồ\\s+quang\\s+)?chìm\\s+xoắn(?:\\s+ốc)?",
+              "(?:ống\\s+thép\\s+)?hàn\\s+xoắn(?:\\s+ốc)?",
+              "\\bssaw\\b"
             ],
             "en": [
-              "spirally\\s+submerged\\s+arc\\s+welded"
+              "spirally\\s+submerged\\s+arc\\s+welded",
+              "spiral(?:ly)?\\s+submerged\\s+arc\\s+weld(?:ed|ing)",
+              "spiral\\s+welded",
+              "\\bssaw\\b"
             ],
             "zh": [
               "螺旋埋弧焊"
@@ -12580,10 +12625,13 @@
       "nhanZh": "香烟盒（包括带烟灰缸）",
       "cachDoc": {
         "vi": [
-          "hộp\\s+đựng\\s+thuốc\\s+lá\\s+điếu(?:\\s*;\\s*gạt\\s+tàn\\s+thuốc\\s+lá)?"
+          "hộp\\s+đựng\\s+thuốc\\s+lá\\s+điếu(?:\\s*;\\s*gạt\\s+tàn\\s+thuốc\\s+lá)?",
+          "hộp\\s+đựng\\s+thuốc\\s+lá(?:\\s+điếu)?",
+          "hộp\\s+thuốc\\s+lá(?:\\s+kim\\s+loại)?"
         ],
         "en": [
-          "cigarette\\s+cases?(?:\\s*;?\\s*ashtrays?)?"
+          "cigarette\\s+cases?(?:\\s*;?\\s*ashtrays?)?",
+          "cigarette\\s+boxes?"
         ],
         "zh": [
           "香烟盒(?:[;；]\\s*烟灰缸)?"
@@ -12627,10 +12675,14 @@
       "nhanZh": "搭扣/锁扣铰链（hasps）",
       "cachDoc": {
         "vi": [
-          "bản\\s+lề\\s+để\\s+móc\\s+khóa(?:\\s*\\(Hasps\\))?(?:\\s*\\(SEN\\))?"
+          "bản\\s+lề\\s+để\\s+móc\\s+khóa(?:\\s*\\(Hasps\\))?(?:\\s*\\(SEN\\))?",
+          "bản\\s+lề\\s+(?:để\\s+)?móc\\s+khóa",
+          "tai\\s+móc\\s+khóa",
+          "\\bhasps?\\b"
         ],
         "en": [
-          "hasps?"
+          "hasps?",
+          "hasp\\s+and\\s+staple"
         ],
         "zh": [
           "搭扣",

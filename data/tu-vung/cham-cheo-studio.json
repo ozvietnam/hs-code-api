@@ -1040,6 +1040,127 @@
         "moTaGiaTri.DE_HOAN_THIEN.cachDoc.vi",
         "moTaGiaTri.DE_HOAN_THIEN.cachDoc.en"
       ]
+    },
+    "dungSanXuatOngChanKhong": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí ống thủy tinh sản xuất ống chân không nhóm 70.02 chuẩn. Tuy nhiên regex tiếng Việt chỉ nhận 'sử dụng để sản xuất' sẽ bỏ sót cách khai báo phổ biến 'dùng để sản xuất' hoặc 'sản xuất ống chân không'.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
+    },
+    "aoBarongTagalog": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí áo Barong Tagalog nhóm 62.05 chuẩn. Tuy nhiên mẫu tiếng Việt bắt buộc phải là 'áo barong tagalog', làm trượt các tờ khai khai báo đầy đủ danh từ nhóm là 'áo sơ mi Barong Tagalog'.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
+    },
+    "sarongHinhOng": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí sarong loại hình ống nhóm 62.11 đúng Biểu thuế. Nhưng mẫu tiếng Việt bắt buộc phải có từ đệm 'loại', khiến không bắt được cách khai tự nhiên 'sarong hình ống' hoặc 'sarong dạng ống'.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
+    },
+    "aoChoangHanhHuongIhram": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí áo choàng hành hương Ihram nhóm 62.11 chuẩn xác. Thuật ngữ tôn giáo đặc thù, bao quát tốt cả tên mô tả pháp lý lẫn danh từ riêng Ihram ba thứ tiếng.",
+      "goi": "11",
+      "ngay": "2026-11-04"
+    },
+    "giayDauVatCuTa": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí giày dùng cho đấu vật, cử tạ, thể hình nhóm 64.02-64.04 chuẩn. Tuy nhiên regex bắt buộc phải có từ 'đấu vật', khiến toàn bộ giày cử tạ ('giày cử tạ', 'weightlifting shoes') và giày thể hình nhập khẩu bị trượt 100%.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "dangDaiDaiTamPhoDung": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí hình dạng thép cán phẳng hẹp nhóm 72.11, 72.12 chuẩn. Tuy nhiên nhánh DAI_VA_DAI bắt buộc cụm 'đai và dải' / 'hoop and strip', bỏ sót cách khai báo đơn lẻ phổ biến nhất trong ngành thép là 'thép dải' hay 'steel strip'.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.DAI_VA_DAI.cachDoc.vi",
+        "moTaGiaTri.DAI_VA_DAI.cachDoc.en",
+        "moTaGiaTri.DAI_DAI_HOAC_PHO_DUNG.cachDoc.vi"
+      ]
+    },
+    "dangLuonSong": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí thép dạng lượn sóng nhóm 72.08-72.11 chuẩn xác. Nhưng mẫu tiếng Việt chỉ nhận 'dạng lượn sóng' sẽ bỏ sót các thuật ngữ thương mại phổ biến của tôn lợp mái như 'tôn sóng', 'thép cán sóng' hay 'dạng sóng'.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi"
+      ]
+    },
+    "loaiDoDungGiaDinhSatThep": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí đồ gia dụng sắt thép nhóm 73.23 đúng Biểu thuế. Tuy nhiên DO_DUNG_NHA_BEP bỏ sót cụm 'dụng cụ nhà bếp' / 'kitchen utensils', và GAT_TAN_THUOC_LA bắt buộc phải có từ 'thuốc lá' làm trượt 'gạt tàn inox'.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.DO_DUNG_NHA_BEP.cachDoc.vi",
+        "moTaGiaTri.DO_DUNG_NHA_BEP.cachDoc.en",
+        "moTaGiaTri.GAT_TAN_THUOC_LA.cachDoc.vi"
+      ]
+    },
+    "xichXeDapMoTo": {
+      "ketLuan": "SUA",
+      "lyDo": "Đúng tiêu chí xích xe hai bánh nhóm 73.15. Tuy nhiên regex đòi hỏi cả cụm 'xích xe đạp hoặc xích xe mô tô', làm trượt mọi lô hàng nhập khẩu riêng xích xe đạp ('bicycle chains') hoặc xích xe máy ('sên xe máy').",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "phuongPhapHanOngThep": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí công nghệ hàn ống thép nhóm 73.05, 73.06 rất chuẩn. Tuy nhiên nhánh HAN_DIEN_TRO_ERW thiếu từ viết tắt độc lập 'ERW' trong tiếng Anh/Việt, và nhánh HAN_HO_QUANG_CHIM_XOAN bắt buộc cả chuỗi 9 từ khiến trượt 'ống hàn xoắn SSAW'.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.HAN_DIEN_TRO_ERW.cachDoc.vi",
+        "moTaGiaTri.HAN_DIEN_TRO_ERW.cachDoc.en",
+        "moTaGiaTri.HAN_HO_QUANG_CHIM_XOAN.cachDoc.vi",
+        "moTaGiaTri.HAN_HO_QUANG_CHIM_XOAN.cachDoc.en"
+      ]
+    },
+    "hopDungThuocLaDieu": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí hộp đựng thuốc lá kim loại nhóm 73.26, 74.19, 76.16 chuẩn. Nhưng mẫu tiếng Việt bắt buộc phải có chữ 'điếu', khiến trượt các khai báo thương mại thông thường như 'hộp đựng thuốc lá' hay 'hộp thuốc lá inox'.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
+    },
+    "banLeMocKhoaHasps": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí bản lề móc khóa (hasps) nhóm 83.02 chuẩn. Nhưng mẫu tiếng Việt bắt buộc phải có từ 'để' làm trượt 'bản lề móc khóa', và mẫu tiếng Anh cần bổ sung thuật ngữ kim khí chuẩn 'hasp and staple'.",
+      "goi": "11",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
     }
   }
 }
