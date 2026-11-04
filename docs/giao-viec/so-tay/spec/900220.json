@@ -1,0 +1,48 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "900220",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-900220",
+  "dong8": {
+    "90022010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy chiếu phim"
+        }
+      ]
+    },
+    "90022020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy quay phim",
+            "máy ảnh",
+            "máy chiếu"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "90022010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90022010: \"Dùng cho máy chiếu phim\" ⇒ dungCho \"máy chiếu phim\""
+    },
+    {
+      "ma": "90022020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90022020: \"Dùng cho máy quay phim, máy ảnh và máy chiếu khác\" ⇒ dungCho [\"máy quay phim\",\"máy ảnh\",\"máy chiếu\"]"
+    },
+    {
+      "ma": "90022020",
+      "loai": "BO_VE",
+      "ve": "Dùng cho máy quay phim, máy ảnh và máy chiếu khác",
+      "lyDo": "Đã phủ máy quay phim, máy ảnh, máy chiếu qua mảng dungCho, chữ khác được bỏ theo quy ước tránh giá trị chết"
+    }
+  ]
+}
