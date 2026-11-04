@@ -2413,6 +2413,49 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 8526.10.10 'Ra đa, loại dùng trên mặt đất, hoặc trang bị trên máy bay dân dụng...'. Phán quyết CBP HQ H266052 (GPR → 8526.10). Ca thật 04/11/2026: khách hỏi GPR ăng-ten phân cực kép."
+  },
+  {
+   "id": "quat-huong-truc",
+   "titleVi": "Quạt hướng trục (axial fan) — quạt thông gió công nghiệp",
+   "terms": [
+    "quạt hướng trục",
+    "quạt trục",
+    "axial fan",
+    "quạt hút hướng trục",
+    "quạt thổi hướng trục"
+   ],
+   "excludeIfAny": [
+    "động cơ hướng trục"
+   ],
+   "excludeReasonVi": "Động cơ hướng trục là ĐỘNG CƠ điện rời (8501), không phải quạt nguyên máy.",
+   "candidates": [
+    {
+     "hs": "8414599",
+     "whenVi": "Quạt hướng trục công nghiệp > 125 W — có lưới bảo vệ → 8414.59.91, không lưới → 8414.59.99 (vd SUNFAN 4G-2 0,9 kW Ø460 có lưới)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "8414594",
+     "whenVi": "Quạt kiểu gia dụng (bàn/đứng/trần/tường) vượt 125 W — CV 3220/TCHQ-TXNK 2021 chấn chỉnh khu vực này",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8501",
+     "whyVi": "Động cơ điện rời — hàng là quạt nguyên máy có động cơ tự chứa."
+    },
+    {
+     "prefix": "8414510",
+     "whyVi": "8414.51 chỉ dành quạt bàn/đứng/trần/tường tự chứa động cơ ≤ 125 W."
+    }
+   ],
+   "askVi": [
+    "Công suất ≤ 125 W và là quạt gia dụng (→ 8414.51), hay quạt thông gió công nghiệp > 125 W (→ 8414.59.91/.99, có lưới bảo vệ không?)?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 8414.51 (≤125 W) vs 8414.59.91 'Có lưới bảo vệ'; CV 3220/TCHQ-TXNK 2021 chấn chỉnh khai sai quạt. Ca thật 04/11/2026: SUNFAN 4G-2 0,9 kW Ø460."
   }
  ],
  "updatedAt": "2026-11-04"
