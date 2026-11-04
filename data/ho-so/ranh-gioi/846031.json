@@ -1,0 +1,68 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "846031",
+  "nhom": "8460",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-846031",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84603110",
+      "nguon": "tax.84603110",
+      "trich": "84603110 - - - Máy công cụ, điều khiển số, có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định và có công suất không quá 0,74 kW, để mài sắc các mũi khoan bằng vật liệu carbua với đường kính chuôi không quá 3,175 mm",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 0.74,
+          "donVi": "kW"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 3.175,
+          "donVi": "mm"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "để mài sắc các mũi khoan"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84603190",
+      "nguon": "tax.84603190",
+      "trich": "84603190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84603110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84603110: \"Máy công cụ, điều khiển số, có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định và có công suất không quá 0,74 kW, để mài sắc các mũi khoan bằng vật liệu carbua với đường kính chuôi không quá 3,175 mm\" ⇒ congSuat <= 0.74 kW + duongKinh <= 3.175 mm + congDung \"để mài sắc các mũi khoan\""
+    },
+    {
+      "ma": "84603110",
+      "loai": "BO_VE",
+      "ve": "có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định",
+      "lyDo": "Chi tiết cấu tạo đặc thù của đồ gá kẹp, không có khoá tương ứng trong tu-vung@2, đã phân biệt bằng công suất và đường kính chuôi"
+    },
+    {
+      "ma": "84603110",
+      "loai": "BO_VE",
+      "ve": "bằng vật liệu carbua",
+      "lyDo": "Vật liệu của mũi khoan (đối tượng gia công), không phải chất liệu của máy"
+    }
+  ]
+}
