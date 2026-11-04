@@ -1,0 +1,42 @@
+Số hoá ranh giới cho 2 phân nhóm 6 số (821193 821194). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 821193 ===
+# 821193 — Dao khác, trừ loại có lưỡi cố định
+
+821193 — Knives; with cutting blades, (having other than fixed blades), serrated or not, excluding knives and blades of heading no. 8208
+  [8211932] Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+    82119321 Có cán bằng kim loại cơ bản
+    82119329 Loại khác  [LK]
+  82119330 Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên
+  82119390 Loại khác  [LK]
+
+- 8211932 TIEU_DE
+    tieuDe.8211932 [64 ký tự]: 8211932 Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp"
+- 82119321 DONG8
+    tax.82119321 [44 ký tự]: 82119321 - - - - Có cán bằng kim loại cơ bản
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có cán" · [GIỚI HẠN] "bằng kim loại cơ bản"
+- 82119329 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.82119329 [26 ký tự]: 82119329 - - - - Loại khác
+- 82119330 DONG8
+    tax.82119330 [84 ký tự]: 82119330 - - - Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có lưỡi dao dài 15 cm trở lên"
+- 82119390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.82119390 [24 ký tự]: 82119390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.821193; chú giải: nhom8211.nhom, ch82.chuong, phan82.phan
+
+=== GÓI PN6 821194 ===
+# 821194 — Lưỡi dao
+
+821194 — Blades; cutting, serrated or not, excluding those of heading no. 8208
+  82119410 Loại phù hợp dùng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+  82119490 Loại khác  [LK]
+
+- 82119410 DONG8
+    tax.82119410 [76 ký tự]: 82119410 - - - Loại phù hợp dùng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "phù hợp dùng trong nông nghiệp, làm vườn hoặc lâm nghiệp"
+- 82119490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.82119490 [24 ký tự]: 82119490 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.821194; chú giải: nhom8211.nhom, ch82.chuong, phan82.phan

@@ -1,0 +1,102 @@
+Số hoá ranh giới cho 6 phân nhóm 6 số (740100 740200 740829 741011 741220 741920). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 740100 ===
+# 740100 — Sten đồng, đồng xi măng hóa (đồng kết tủa).
+
+NHÓM 7401 — Sten đồng, đồng xi măng hóa (đồng kết tủa).
+  74010010 Sten đồng
+  74010020 Đồng xi măng hóa (đồng kết tủa)
+
+- 74010010 DONG8
+    tax.74010010 [20 ký tự]: 74010010 - Sten đồng
+- 74010020 DONG8
+    tax.74010020 [42 ký tự]: 74010020 - Đồng xi măng hóa (đồng kết tủa)
+
+Nguồn cấp phân nhóm: wco.740100; chú giải: nhom7401.nhom, ch74.chuong, phan74.phan
+
+=== GÓI PN6 740200 ===
+# 740200 — Đồng chưa tinh luyện; cực dương đồng dùng cho điện phân tinh luyện.
+
+NHÓM 7402 — Đồng chưa tinh luyện; cực dương đồng dùng cho điện phân tinh luyện.
+  74020010 Đồng xốp (blister copper)
+  74020090 Loại khác  [LK]
+
+- 74020010 DONG8
+    tax.74020010 [36 ký tự]: 74020010 - Đồng xốp (blister copper)
+- 74020090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.74020090 [20 ký tự]: 74020090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.740200; chú giải: nhom7402.nhom, ch74.chuong, phan74.phan
+
+=== GÓI PN6 740829 ===
+# 740829 — Loại khác
+
+740829 — Copper; wire, of copper alloys (other than copper-zinc base alloys, copper-nickel base alloys or copper-nickel-zinc base alloys)
+  74082910 Hợp kim đồng-thiếc (đồng thanh)(SEN)
+  74082990 Loại khác  [LK]
+
+- 74082910 DONG8
+    tax.74082910 [51 ký tự]: 74082910 - - - Hợp kim đồng-thiếc (đồng thanh)(SEN)
+    sen.74082910 [588 ký tự]: DÂY ĐỒNG BẰNG HỢP KIM ĐỒNG-THIẾC (ĐỒNG THANH) Hỗn hợp thiếc và đồng tạo ra đồng thanh, một hợp kim ít giòn hơn thiếc và sắt, nhưng cứng và bền hơn đồng nguyên chất. Hàm lượng đồng chính xác trong đồng thanh dao động lớn từ 60% đến gần 90% đối với một số loại cấp độ thương mại. Nguyên tố phổ biến thứ hai trong đồng thanh là thiếc, thành phần nguyên tố này trong hợp kim cũng thường dao động từ 12% đến 40%. Đồng thanh được sử dụng cho nhiều ngành công nghiệp khác nhau và là vật liệu quan trọng cho các ngành như công nghệ hàng hải, linh kiện điện tử, ô tô và các ngành công nghiệp khác.
+- 74082990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.74082990 [24 ký tự]: 74082990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.740829; chú giải: nhom7408.nhom, ch74.chuong, phan74.phan
+
+=== GÓI PN6 741011 ===
+# 741011 — Bằng đồng tinh luyện
+
+741011 — Copper; foil, not backed, of a thickness not exceeding 0.15mm, of refined copper
+  74101110 Tấm ép lớp được dát phủ đồng dùng làm tấm mạch in (SEN)
+  74101190 Loại khác  [LK]
+
+- 74101110 DONG8
+    tax.74101110 [70 ký tự]: 74101110 - - - Tấm ép lớp được dát phủ đồng dùng làm tấm mạch in (SEN)
+    sen.74101110 [226 ký tự]: TẤM ÉP LỚP ĐƯỢC DÁT PHỦ ĐỒNG DÙNG LÀM TẤM MẠCH IN Tấm ép lớp được dát phủ đồng (CCL) thường có đế bằng sợi thủy tinh được dát phủ trên cả hai mặt bằng đồng lá mỏng với tổng độ dày không vượt quá 0,15 mm. Hình minh họa các lớp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được dát phủ đồng" · [GIỚI HẠN] "dùng làm tấm mạch in"
+- 74101190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.74101190 [24 ký tự]: 74101190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.741011; chú giải: nhom7410.nhom, ch74.chuong, phan74.phan
+
+=== GÓI PN6 741220 ===
+# 741220 — Bằng hợp kim đồng
+
+741220 — Copper; tube or pipe fittings (e.g. couplings, elbows, sleeves) of copper alloys
+  74122020 Phụ kiện ghép nối cho ống vòi(SEN)
+  [7412209] Loại khác
+    74122091 Bằng hợp kim đồng - kẽm (đồng thau)
+    74122099 Loại khác  [LK]
+
+- 74122020 DONG8
+    tax.74122020 [47 ký tự]: 74122020 - - Phụ kiện ghép nối cho ống vòi(SEN)
+    sen.74122020 [272 ký tự]: PHỤ KIỆN GHÉP NỐI CHO ỐNG VÒI Phụ kiện ghép nối cho ống vòi dùng cho vòi mềm hoặc các loại ống mềm tương tự khác là phụ kiện được làm bằng hợp kim đồng mà đặc điểm chính là chúng không có ren để phù hợp với đặc tính mềm dẻo của vòi mềm hoặc các loại ống mềm tương tự khác.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "cho ống vòi"
+- 7412209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7412209 [17 ký tự]: 7412209 Loại khác
+- 74122091 DONG8
+    tax.74122091 [50 ký tự]: 74122091 - - - Bằng hợp kim đồng - kẽm (đồng thau)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng hợp kim đồng - kẽm (đồng thau)"
+- 74122099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.74122099 [24 ký tự]: 74122099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.741220; chú giải: nhom7412.nhom, ch74.chuong, phan74.phan
+
+=== GÓI PN6 741920 ===
+# 741920 — Đã được đúc, đúc khuôn, rập hoặc rèn nhưng chưa được gia công thêm
+
+741920 — Copper; cast, moulded, stamped or forged, but not further worked
+  74192010 Xích và các bộ phận của xích
+  74192020 Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt
+  74192090 Loại khác  [LK]
+
+- 74192010 DONG8
+    tax.74192010 [41 ký tự]: 74192010 - - Xích và các bộ phận của xích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xích"
+- 74192020 DONG8
+    tax.74192020 [120 ký tự]: 74192020 - - Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa và các loại đồ" · [GIỚI HẠN] "chứa đựng tương tự" · [GIỚI HẠN] "không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt"
+- 74192090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.74192090 [22 ký tự]: 74192090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.741920; chú giải: nhom7419.nhom, ch74.chuong, phan74.phan

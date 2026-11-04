@@ -1,0 +1,516 @@
+Số hoá ranh giới cho 27 phân nhóm 6 số (730799 730810 730820 730830 730840 731010 731021 731029 731419 731511 731512 731519 731589 731590 731816 731823 732010 732020 732090 732119 732190 732391 732393 732399 732421 732429 732490). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 730799 ===
+# 730799 — Loại khác
+
+730799 — Iron or steel; tube or pipe fittings, n.e.c. in item no. 7307.9, other than stainless steel
+  73079910 Có đường kính trong dưới 15 cm
+  73079990 Loại khác  [LK]
+
+- 73079910 DONG8
+    tax.73079910 [45 ký tự]: 73079910 - - - Có đường kính trong dưới 15 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đường kính trong dưới 15 cm"
+- 73079990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73079990 [24 ký tự]: 73079990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.730799; chú giải: nhom7307.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 730810 ===
+# 730810 — Cầu và nhịp cầu
+
+730810 — Iron or steel; structures and parts thereof, bridges and bridge-sections
+  73081010 Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)
+  73081090 Loại khác  [LK]
+
+- 73081010 DONG8
+    tax.73081010 [72 ký tự]: 73081010 - - Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)
+    sen.73081010 [388 ký tự]: CẦU VÀ NHỊP CẦU, DẠNG CẤU KIỆN TIỀN CHẾ ĐƯỢC LẮP RÁP BẰNG CÁC KHỚP NỐI Phương pháp xây dựng này dựa trên một thanh xà bằng thép được cán, có hình dạng đặc biệt được cắt theo chiều dọc thành 2 phần chữ T được đổ bê tông ở trên đỉnh. Hình dạng của vết cắt này cho phép trượt vào và ăn khớp với nhau. Bằng phương pháp này, các thành phần của cầu tiền chế được sản xuất và hoàn thành tại chỗ.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lắp ráp" · [GIỚI HẠN] "bằng các khớp nối"
+- 73081090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73081090 [22 ký tự]: 73081090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.730810; chú giải: nhom7308.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 730820 ===
+# 730820 — Tháp và cột lưới (kết cấu giàn)
+
+730820 — Iron or steel; structures and parts thereof, towers and lattice masts
+  [7308201] Tháp
+    73082011 Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)
+    73082019 Loại khác  [LK]
+  [7308202] Cột lưới (kết cấu giàn)
+    73082021 Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)
+    73082029 Loại khác  [LK]
+
+- 7308201 TIEU_DE
+    tieuDe.7308201 [12 ký tự]: 7308201 Tháp
+- 73082011 DONG8
+    tax.73082011 [74 ký tự]: 73082011 - - - Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)
+    sen.73082011 [96 ký tự]: THÁP, DẠNG CẤU KIỆN TIỀN CHẾ ĐƯỢC LÁP RÁP BẰNG CÁC KHỚP NỐI Các khớp nối bên trong một phần tháp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lắp ráp" · [GIỚI HẠN] "bằng các khớp nối"
+- 73082019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73082019 [24 ký tự]: 73082019 - - - Loại khác
+- 7308202 TIEU_DE
+    tieuDe.7308202 [31 ký tự]: 7308202 Cột lưới (kết cấu giàn)
+- 73082021 DONG8
+    tax.73082021 [74 ký tự]: 73082021 - - - Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)
+    sen.73082021 [610 ký tự]: DẠNG CẤU KIỆN TIỀN CHẾ ĐƯỢC LẮP RÁP BẰNG CÁC KHỚP NỐI Các loại khớp nối khác nhau được sử dụng trong các kết cấu thép tiền chế ở các phân nhóm 7308.10, 7308.20, 7308.40 và 7308.90 như hình dưới đây. Khớp nối hai mặt (Double Sided Shear Connection) Khớp nối tấm (End Plate Shear Connection) Khớp nối chốt đỉnh và mặt đế (Bolted Top and Seat Shear Connection) Khớp nối lệch (Skewed Shear Connection) Khớp nối chốt sàn và rầm kép (Double Web Angles Shop and Field Bolted Shear Connection) Khớp nối rầm compoxit (Shear Connectors for Composite Beam) Khớp nối rầm compoxit (Single Angle Shear Connection)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lắp ráp" · [GIỚI HẠN] "bằng các khớp nối"
+- 73082029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73082029 [24 ký tự]: 73082029 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.730820; chú giải: nhom7308.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 730830 ===
+# 730830 — Cửa ra vào, cửa sổ và các loại khung cửa và ngưỡng cửa ra vào
+
+730830 — Iron or steel; structures and parts thereof, doors, windows and their frames and thresholds for doors
+  73083010 Cửa ra vào, có độ dày từ 6 mm đến 8 mm
+  73083090 Loại khác  [LK]
+
+- 73083010 DONG8
+    tax.73083010 [51 ký tự]: 73083010 - - Cửa ra vào, có độ dày từ 6 mm đến 8 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có độ dày từ 6 mm đến 8 mm"
+- 73083090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73083090 [22 ký tự]: 73083090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.730830; chú giải: nhom7308.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 730840 ===
+# 730840 — Thiết bị dùng cho giàn giáo, ván khuôn, vật chống hoặc cột trụ chống hầm lò
+
+730840 — Iron or steel; structures and parts thereof, props and similar equipment for scaffolding, shuttering or pit-propping
+  73084010 Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)
+  73084090 Loại khác  [LK]
+
+- 73084010 DONG8
+    tax.73084010 [72 ký tự]: 73084010 - - Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)
+    sen.73084010 [610 ký tự]: DẠNG CẤU KIỆN TIỀN CHẾ ĐƯỢC LẮP RÁP BẰNG CÁC KHỚP NỐI Các loại khớp nối khác nhau được sử dụng trong các kết cấu thép tiền chế ở các phân nhóm 7308.10, 7308.20, 7308.40 và 7308.90 như hình dưới đây. Khớp nối hai mặt (Double Sided Shear Connection) Khớp nối tấm (End Plate Shear Connection) Khớp nối chốt đỉnh và mặt đế (Bolted Top and Seat Shear Connection) Khớp nối lệch (Skewed Shear Connection) Khớp nối chốt sàn và rầm kép (Double Web Angles Shop and Field Bolted Shear Connection) Khớp nối rầm compoxit (Shear Connectors for Composite Beam) Khớp nối rầm compoxit (Single Angle Shear Connection)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lắp ráp" · [GIỚI HẠN] "bằng các khớp nối"
+- 73084090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73084090 [22 ký tự]: 73084090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.730840; chú giải: nhom7308.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731010 ===
+# 731010 — Có dung tích từ 50 lít trở lên
+
+731010 — Tanks, casks, drums, cans, boxes and similar containers, for any material (excluding compressed or liquefied gas), 50l or more capacity but not exceeding 300l
+  73101010 Được tráng thiếc
+  [7310109] Loại khác
+    73101091 Được đúc, rèn hoặc dập, ở dạng thô
+    73101099 Loại khác  [LK]
+
+- 73101010 DONG8
+    tax.73101010 [29 ký tự]: 73101010 - - Được tráng thiếc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được tráng thiếc"
+- 7310109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7310109 [17 ký tự]: 7310109 Loại khác
+- 73101091 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.73101091 [49 ký tự]: 73101091 - - - Được đúc, rèn hoặc dập, ở dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được đúc, rèn hoặc dập, ở dạng thô"
+- 73101099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73101099 [24 ký tự]: 73101099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731010; chú giải: nhom7310.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731021 ===
+# 731021 — Lon, hộp được đóng kín bằng cách hàn hoặc gấp nếp (vê mép)
+
+731021 — Cans; which are to be closed by soldering or crimping, for any material (excluding compressed or liquefied gas), less than 50l capacity, of iron or steel
+  [7310211] Có dung tích dưới 1 lít
+    73102111 Được tráng thiếc
+    73102119 Loại khác  [LK]
+  [7310219] Loại khác
+    73102191 Được tráng thiếc
+    73102199 Loại khác  [LK]
+
+- 7310211 TIEU_DE
+    tieuDe.7310211 [31 ký tự]: 7310211 Có dung tích dưới 1 lít
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có dung tích dưới 1 lít"
+- 73102111 DONG8
+    tax.73102111 [33 ký tự]: 73102111 - - - - Được tráng thiếc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được tráng thiếc"
+- 73102119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73102119 [26 ký tự]: 73102119 - - - - Loại khác
+- 7310219 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7310219 [17 ký tự]: 7310219 Loại khác
+- 73102191 DONG8
+    tax.73102191 [33 ký tự]: 73102191 - - - - Được tráng thiếc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được tráng thiếc"
+- 73102199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73102199 [26 ký tự]: 73102199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731021; chú giải: nhom7310.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731029 ===
+# 731029 — Loại khác
+
+731029 — Tanks, casks, drums, boxes and similar containers for any material (excluding compressed or liquefied gas) less than 50l capacity, n.e.c. in item no. 7310.2, of iron or steel
+  [7310291] Có dung tích dưới 1 lít
+    73102911 Được tráng thiếc
+    73102919 Loại khác  [LK]
+  [7310299] Loại khác
+    73102991 Được tráng thiếc
+    73102992 Được đúc, rèn hoặc dập khác, ở dạng thô
+    73102999 Loại khác  [LK]
+
+- 7310291 TIEU_DE
+    tieuDe.7310291 [31 ký tự]: 7310291 Có dung tích dưới 1 lít
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có dung tích dưới 1 lít"
+- 73102911 DONG8
+    tax.73102911 [33 ký tự]: 73102911 - - - - Được tráng thiếc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được tráng thiếc"
+- 73102919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73102919 [26 ký tự]: 73102919 - - - - Loại khác
+- 7310299 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7310299 [17 ký tự]: 7310299 Loại khác
+- 73102991 DONG8
+    tax.73102991 [33 ký tự]: 73102991 - - - - Được tráng thiếc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được tráng thiếc"
+- 73102992 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true; gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.73102992 [56 ký tự]: 73102992 - - - - Được đúc, rèn hoặc dập khác, ở dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được đúc, rèn hoặc dập khác, ở dạng thô"
+- 73102999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73102999 [26 ký tự]: 73102999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731029; chú giải: nhom7310.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731419 ===
+# 731419 — Loại khác
+
+731419 — Iron or steel; woven cloth, other than of stainless steel
+  73141910 Đai liền dùng cho máy móc, trừ loại bằng thép không gỉ
+  73141990 Loại khác  [LK]
+
+- 73141910 DONG8
+    tax.73141910 [69 ký tự]: 73141910 - - - Đai liền dùng cho máy móc, trừ loại bằng thép không gỉ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy móc" · [GIỚI HẠN] "trừ loại" · [GIỚI HẠN] "bằng thép không gỉ"
+- 73141990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73141990 [24 ký tự]: 73141990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731419; chú giải: nhom7314.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731511 ===
+# 731511 — Xích con lăn
+
+731511 — Chain; articulated link, roller, of iron or steel
+  73151110 Xích xe đạp hoặc xích xe mô tô
+  [7315119] Loại khác
+    73151191 Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm
+    73151199 Loại khác  [LK]
+
+- 73151110 DONG8
+    tax.73151110 [45 ký tự]: 73151110 - - - Xích xe đạp hoặc xích xe mô tô
+- 7315119 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7315119 [17 ký tự]: 7315119 Loại khác
+- 73151191 DONG8
+    tax.73151191 [66 ký tự]: 73151191 - - - - Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có độ dài mắt xích" · [GIỚI HẠN] "từ 6 mm đến 32 mm"
+- 73151199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73151199 [26 ký tự]: 73151199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731511; chú giải: nhom7315.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731512 ===
+# 731512 — Xích khác
+
+731512 — Chain; articulated link, (other than roller), of iron or steel
+  73151210 Xích xe đạp hoặc xích xe mô tô
+  73151290 Loại khác  [LK]
+
+- 73151210 DONG8
+    tax.73151210 [45 ký tự]: 73151210 - - - Xích xe đạp hoặc xích xe mô tô
+- 73151290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73151290 [24 ký tự]: 73151290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731512; chú giải: nhom7315.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731519 ===
+# 731519 — Các bộ phận
+
+731519 — Chain; articulated link parts, of iron or steel
+  73151910 Xích xe đạp hoặc xích xe mô tô
+  73151990 Loại khác  [LK]
+
+- 73151910 DONG8
+    tax.73151910 [45 ký tự]: 73151910 - - - Xích xe đạp hoặc xích xe mô tô
+- 73151990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73151990 [24 ký tự]: 73151990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731519; chú giải: nhom7315.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731589 ===
+# 731589 — Loại khác
+
+731589 — Chain; n.e.c. in heading no. 7315, of iron or steel
+  73158910 Xích xe đạp hoặc xích xe mô tô
+  73158990 Loại khác  [LK]
+
+- 73158910 DONG8
+    tax.73158910 [45 ký tự]: 73158910 - - - Xích xe đạp hoặc xích xe mô tô
+- 73158990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73158990 [24 ký tự]: 73158990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731589; chú giải: nhom7315.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731590 ===
+# 731590 — Các bộ phận khác
+
+731590 — Chain; parts n.e.c. in heading no. 7315, of iron or steel
+  73159020 Xích xe đạp hoặc xích xe mô tô
+  73159090 Loại khác  [LK]
+
+- 73159020 DONG8
+    tax.73159020 [43 ký tự]: 73159020 - - Xích xe đạp hoặc xích xe mô tô
+- 73159090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73159090 [22 ký tự]: 73159090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731590; chú giải: nhom7315.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731816 ===
+# 731816 — Đai ốc
+
+731816 — Iron or steel; threaded nuts
+  73181610 Cho bu lông có đường kính ngoài của thân không quá 16 mm
+  73181690 Loại khác  [LK]
+
+- 73181610 DONG8
+    tax.73181610 [71 ký tự]: 73181610 - - - Cho bu lông có đường kính ngoài của thân không quá 16 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Cho bu lông" · [GIỚI HẠN] "có đường kính ngoài của thân không quá 16 mm"
+- 73181690 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73181690 [24 ký tự]: 73181690 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731816; chú giải: nhom7318.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 731823 ===
+# 731823 — Đinh tán
+
+731823 — Iron or steel; non-threaded rivets
+  73182310 Đường kính ngoài không quá 16 mm
+  73182390 Loại khác  [LK]
+
+- 73182310 DONG8
+    tax.73182310 [47 ký tự]: 73182310 - - - Đường kính ngoài không quá 16 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Đường kính ngoài không quá 16 mm"
+- 73182390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73182390 [24 ký tự]: 73182390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.731823; chú giải: nhom7318.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732010 ===
+# 732010 — Lò xo lá và các lá lò xo
+
+732010 — Iron or steel; leaf-springs and leaves therefor
+  [7320101] Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30
+    73201011 Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+    73201012 Dùng cho xe có động cơ khác
+    73201019 Loại khác  [LK]
+  73201090 Loại khác  [LK]
+
+- 7320101 TIEU_DE
+    tieuDe.7320101 [76 ký tự]: 7320101 Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30"
+- 73201011 DONG8
+    tax.73201011 [72 ký tự]: 73201011 - - - Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+- 73201012 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.73201012 [42 ký tự]: 73201012 - - - Dùng cho xe có động cơ khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ khác"
+- 73201019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73201019 [24 ký tự]: 73201019 - - - Loại khác
+- 73201090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73201090 [22 ký tự]: 73201090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732010; chú giải: nhom7320.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732020 ===
+# 732020 — Lò xo cuộn
+
+732020 — Iron or steel; helical springs and leaves for springs
+  [7320201] Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30
+    73202011 Dùng cho xe có động cơ
+    73202012 Dùng cho máy làm đất
+    73202019 Loại khác  [LK]
+  73202090 Loại khác  [LK]
+
+- 7320201 TIEU_DE
+    tieuDe.7320201 [76 ký tự]: 7320201 Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30"
+- 73202011 DONG8
+    tax.73202011 [38 ký tự]: 73202011 - - - Dùng cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ"
+- 73202012 DONG8
+    tax.73202012 [36 ký tự]: 73202012 - - - Dùng cho máy làm đất
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy làm đất"
+- 73202019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73202019 [24 ký tự]: 73202019 - - - Loại khác
+- 73202090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73202090 [22 ký tự]: 73202090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732020; chú giải: nhom7320.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732090 ===
+# 732090 — Loại khác
+
+732090 — Iron or steel; springs n.e.c. in heading no. 7320
+  73209010 Dùng cho xe có động cơ
+  73209090 Loại khác  [LK]
+
+- 73209010 DONG8
+    tax.73209010 [35 ký tự]: 73209010 - - Dùng cho xe có động cơ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe có động cơ"
+- 73209090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73209090 [22 ký tự]: 73209090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732090; chú giải: nhom7320.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732119 ===
+# 732119 — Loại khác, kể cả dụng cụ dùng nhiên liệu rắn
+
+732119 — Cooking appliances and plate warmers; for solid fuel and fuels other than gas or liquid, of iron or steel
+  73211910 Loại dùng nhiên liệu rắn
+  73211990 Loại khác  [LK]
+
+- 73211910 DONG8
+    tax.73211910 [39 ký tự]: 73211910 - - - Loại dùng nhiên liệu rắn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng nhiên liệu rắn"
+- 73211990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73211990 [24 ký tự]: 73211990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732119; chú giải: nhom7321.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732190 ===
+# 732190 — Bộ phận
+
+732190 — Domestic appliances; non-electric, parts thereof, of iron or steel
+  73219010 Của bếp dầu hỏa (SEN)
+  [7321902] Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí (SEN)
+    73219021 Đầu đốt (burner); các bộ phận được sản xuất bằng quá trình dập hoặc ép(SEN)
+    73219029 Loại khác  [LK]
+  73219090 Loại khác  [LK]
+
+- 73219010 DONG8
+    tax.73219010 [34 ký tự]: 73219010 - - Của bếp dầu hỏa (SEN)
+    sen.73219010 [71 ký tự]: BỘ PHẬN CỦA BẾP DẦU HỎA Ví dụ điển hình về các bộ phận của bếp dầu hỏa:
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của bếp dầu hỏa"
+- 7321902 TIEU_DE
+    tieuDe.7321902 [78 ký tự]: 7321902 Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí"
+- 73219021 DONG8
+    tax.73219021 [90 ký tự]: 73219021 - - - Đầu đốt (burner); các bộ phận được sản xuất bằng quá trình dập hoặc ép(SEN)
+    sen.73219021 [955 ký tự]: ĐẦU ĐỐT (BURNER); CÁC BỘ PHẬN ĐƯỢC SẢN XUẤT BẰNG QUÁ TRÌNH DẬP HOẶC ÉP Đối với phân nhóm này, tấm sắt cán nguội được cắt theo chiều dài và chiều rộng mong muốn trên máy cắt. Sau đó, nó phải được đưa vào máy ép sâu tác động kép để tạo hình dạng của thân và các bộ phận khác của bếp LPG. Các lỗ có thể bị khoét trên máy ép điện ở thân và phải loại bỏ phần gờ. Sau đó, các lỗ nhỏ có thể được thực hiện trên máy khoan. Tiếp theo, nó có thể được mạ niken crome hoặc lớp phủ tráng men từ bên ngoài. Các bộ phận như đầu đốt, chảo đỡ đúc, cụm ống dẫn gas, núm vặn bếp gas, cuộn cao su và bảng tên,… phải được lắp trên thân máy. Hình 1. Họng lửa Picture 1. Cas Các bộ phận được sản xuất bằng quá trình dập hoặc ép như vỏ thép không gỉ, vách ngăn bằng thép không gỉ, khung thép không gỉ và bộ chảo bằng thép không gỉ. Hình 1: Ví dụ về một số bộ phận được tạo ra bằng cách dập và ép. Lưu ý: một số bộ phận trong sơ đồ không được tạo ra bằng quá trình dập hoặc ép
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được sản xuất" · [GIỚI HẠN] "bằng quá trình dập hoặc ép"
+- 73219029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73219029 [24 ký tự]: 73219029 - - - Loại khác
+- 73219090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73219090 [22 ký tự]: 73219090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732190; chú giải: nhom7321.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732391 ===
+# 732391 — Bằng gang đúc, chưa tráng men
+
+732391 — Cast iron; table, kitchen and other household articles and parts thereof, of cast iron, not enamelled
+  73239110 Đồ dùng nhà bếp
+  73239120 Gạt tàn thuốc lá
+  73239190 Loại khác  [LK]
+
+- 73239110 DONG8
+    tax.73239110 [30 ký tự]: 73239110 - - - Đồ dùng nhà bếp
+- 73239120 DONG8
+    tax.73239120 [32 ký tự]: 73239120 - - - Gạt tàn thuốc lá 
+- 73239190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73239190 [24 ký tự]: 73239190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732391; chú giải: nhom7323.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732393 ===
+# 732393 — Bằng thép không gỉ
+
+732393 — Steel, stainless; table, kitchen and other household articles and parts thereof
+  73239310 Đồ dùng nhà bếp
+  73239320 Gạt tàn thuốc lá
+  73239390 Loại khác  [LK]
+
+- 73239310 DONG8
+    tax.73239310 [30 ký tự]: 73239310 - - - Đồ dùng nhà bếp
+- 73239320 DONG8
+    tax.73239320 [32 ký tự]: 73239320 - - - Gạt tàn thuốc lá 
+- 73239390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73239390 [24 ký tự]: 73239390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732393; chú giải: nhom7323.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732399 ===
+# 732399 — Loại khác
+
+732399 — Iron or steel; table, kitchen and other household articles and parts thereof, of iron or steel n.e.c. in heading no. 7323
+  73239910 Đồ dùng nhà bếp
+  73239920 Gạt tàn thuốc lá
+  73239990 Loại khác  [LK]
+
+- 73239910 DONG8
+    tax.73239910 [30 ký tự]: 73239910 - - - Đồ dùng nhà bếp
+- 73239920 DONG8
+    tax.73239920 [32 ký tự]: 73239920 - - - Gạt tàn thuốc lá 
+- 73239990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73239990 [24 ký tự]: 73239990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732399; chú giải: nhom7323.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732421 ===
+# 732421 — Bằng gang đúc, đã hoặc chưa được tráng men
+
+732421 — Cast iron, baths, whether or not enamelled
+  73242110 Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)
+  73242190 Loại khác  [LK]
+
+- 73242110 DONG8
+    tax.73242110 [87 ký tự]: 73242110 - - - Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)"
+- 73242190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73242190 [24 ký tự]: 73242190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732421; chú giải: nhom7324.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732429 ===
+# 732429 — Loại khác
+
+732429 — Iron (other than cast) or steel; baths
+  73242910 Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)
+  73242990 Loại khác  [LK]
+
+- 73242910 DONG8
+    tax.73242910 [87 ký tự]: 73242910 - - - Bồn tắm có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hình dạng bên trong là hình chữ nhật hoặc hình thuôn (oblong)"
+- 73242990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73242990 [24 ký tự]: 73242990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732429; chú giải: nhom7324.nhom, ch73.chuong, phan73.phan
+
+=== GÓI PN6 732490 ===
+# 732490 — Loại khác, kể cả các bộ phận
+
+732490 — Iron or steel; sanitary ware and parts thereof, excluding sinks, wash basins and baths
+  73249010 Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)
+  [7324909] Loại khác
+    73249091 Bộ phận của bồn rửa nhà bếp hoặc bồn tắm
+    73249093 Bộ phận của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)
+    73249099 Loại khác  [LK]
+
+- 73249010 DONG8
+    tax.73249010 [68 ký tự]: 73249010 - - Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)"
+- 7324909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7324909 [17 ký tự]: 7324909 Loại khác
+- 73249091 DONG8
+    tax.73249091 [55 ký tự]: 73249091 - - - Bộ phận của bồn rửa nhà bếp hoặc bồn tắm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của bồn rửa nhà bếp hoặc bồn tắm"
+- 73249093 DONG8
+    tax.73249093 [73 ký tự]: 73249093 - - - Bộ phận của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)"
+- 73249099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73249099 [24 ký tự]: 73249099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732490; chú giải: nhom7324.nhom, ch73.chuong, phan73.phan

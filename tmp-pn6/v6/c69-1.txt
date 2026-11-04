@@ -1,0 +1,177 @@
+Số hoá ranh giới cho 6 phân nhóm 6 số (690722 690723 690730 690740 691310 691390). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 690722 ===
+# 690722 — Của loại có độ hút nước trên 0,5% nhưng không quá 10% tính theo trọng lượng
+
+690722 — Ceramic tiles; flags and paving, hearth or wall tiles other than those of subheadings 6907.30 and 6907.40, of a water absorption coefficient by weight over 0.5% but not over 10%
+  [6907221] Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+    69072211 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+    69072212 Loại khác, không tráng men  [LK có điều kiện]
+    69072213 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+    69072214 Loại khác, đã tráng men  [LK có điều kiện]
+  [6907229] Loại khác
+    69072291 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+    69072292 Loại khác, không tráng men  [LK có điều kiện]
+    69072293 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+    69072294 Loại khác, đã tráng men  [LK có điều kiện]
+
+- 6907221 TIEU_DE
+    tieuDe.6907221 [77 ký tự]: 6907221 Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt lớn nhất" · [GIỚI HẠN] "có thể nằm gọn trong một hình vuông có cạnh" · [GIỚI HẠN] "dưới 7 cm"
+- 69072211 DONG8
+    tax.69072211 [87 ký tự]: 69072211 - - - - Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tráng men"
+- 69072212 DONG8
+    tax.69072212 [43 ký tự]: 69072212 - - - - Loại khác, không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tráng men"
+- 69072213 DONG8
+    tax.69072213 [84 ký tự]: 69072213 - - - - Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+- 69072214 DONG8
+    tax.69072214 [40 ký tự]: 69072214 - - - - Loại khác, đã tráng men
+- 6907229 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.6907229 [17 ký tự]: 6907229 Loại khác
+- 69072291 DONG8
+    tax.69072291 [87 ký tự]: 69072291 - - - - Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tráng men"
+- 69072292 DONG8
+    tax.69072292 [43 ký tự]: 69072292 - - - - Loại khác, không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tráng men"
+- 69072293 DONG8
+    tax.69072293 [84 ký tự]: 69072293 - - - - Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+- 69072294 DONG8
+    tax.69072294 [40 ký tự]: 69072294 - - - - Loại khác, đã tráng men
+
+Nguồn cấp phân nhóm: wco.690722; chú giải: nhom6907.nhom, ch69.chuong, phan69.phan
+
+=== GÓI PN6 690723 ===
+# 690723 — Của loại có độ hút nước trên 10% tính theo trọng lượng
+
+690723 — Ceramic tiles; flags and paving, hearth or wall tiles other than those of subheadings 6907.30 and 6907.40, of a water absorption coefficient by weight over 10%
+  [6907231] Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+    69072311 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+    69072312 Loại khác, không tráng men  [LK có điều kiện]
+    69072313 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+    69072314 Loại khác, đã tráng men  [LK có điều kiện]
+  [6907239] Loại khác
+    69072391 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+    69072392 Loại khác, không tráng men  [LK có điều kiện]
+    69072393 Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+    69072394 Loại khác, đã tráng men  [LK có điều kiện]
+
+- 6907231 TIEU_DE
+    tieuDe.6907231 [77 ký tự]: 6907231 Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt lớn nhất" · [GIỚI HẠN] "có thể nằm gọn trong một hình vuông có cạnh" · [GIỚI HẠN] "dưới 7 cm"
+- 69072311 DONG8
+    tax.69072311 [87 ký tự]: 69072311 - - - - Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tráng men"
+- 69072312 DONG8
+    tax.69072312 [43 ký tự]: 69072312 - - - - Loại khác, không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tráng men"
+- 69072313 DONG8
+    tax.69072313 [84 ký tự]: 69072313 - - - - Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+- 69072314 DONG8
+    tax.69072314 [40 ký tự]: 69072314 - - - - Loại khác, đã tráng men
+- 6907239 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.6907239 [17 ký tự]: 6907239 Loại khác
+- 69072391 DONG8
+    tax.69072391 [87 ký tự]: 69072391 - - - - Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tráng men"
+- 69072392 DONG8
+    tax.69072392 [43 ký tự]: 69072392 - - - - Loại khác, không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tráng men"
+- 69072393 DONG8
+    tax.69072393 [84 ký tự]: 69072393 - - - - Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, đã tráng men
+- 69072394 DONG8
+    tax.69072394 [40 ký tự]: 69072394 - - - - Loại khác, đã tráng men
+
+Nguồn cấp phân nhóm: wco.690723; chú giải: nhom6907.nhom, ch69.chuong, phan69.phan
+
+=== GÓI PN6 690730 ===
+# 690730 — Khối khảm và các sản phẩm tương tự, trừ loại thuộc phân nhóm 6907.40
+
+690730 — Mosaic cubes and the like, other than those of subheading 6907.40
+  [6907301] Không tráng men
+    69073011 Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+    69073019 Loại khác  [LK]
+  [6907309] Loại khác
+    69073091 Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+    69073099 Loại khác  [LK]
+
+- 6907301 TIEU_DE
+    tieuDe.6907301 [23 ký tự]: 6907301 Không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không tráng men"
+- 69073011 DONG8
+    tax.69073011 [84 ký tự]: 69073011 - - - Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt lớn nhất" · [GIỚI HẠN] "có thể nằm gọn trong một hình vuông có cạnh" · [GIỚI HẠN] "dưới 7 cm"
+- 69073019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.69073019 [24 ký tự]: 69073019 - - - Loại khác
+- 6907309 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.6907309 [17 ký tự]: 6907309 Loại khác
+- 69073091 DONG8
+    tax.69073091 [84 ký tự]: 69073091 - - - Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt lớn nhất" · [GIỚI HẠN] "có thể nằm gọn trong một hình vuông có cạnh" · [GIỚI HẠN] "dưới 7 cm"
+- 69073099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.69073099 [24 ký tự]: 69073099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.690730; chú giải: nhom6907.nhom, ch69.chuong, phan69.phan
+
+=== GÓI PN6 690740 ===
+# 690740 — Các sản phẩm gốm, sứ để hoàn thiện
+
+690740 — Finishing ceramics
+  69074010 Của loại sử dụng để lót máy nghiền, không tráng men
+  [6907402] Các sản phẩm khác, có mặt lớn nhất có thể nhìn thấy sau khi ghép không quá 49 cm2
+    69074021 Không tráng men
+    69074022 Đã tráng men
+  [6907409] Loại khác
+    69074091 Không tráng men
+    69074092 Đã tráng men
+
+- 69074010 DONG8
+    tax.69074010 [64 ký tự]: 69074010 - - Của loại sử dụng để lót máy nghiền, không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng để lót máy nghiền" · [GIỚI HẠN] "không tráng men"
+- 6907402 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.6907402 [89 ký tự]: 6907402 Các sản phẩm khác, có mặt lớn nhất có thể nhìn thấy sau khi ghép không quá 49 cm2
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có mặt lớn nhất" · [GIỚI HẠN] "có thể nhìn thấy sau khi ghép không quá 49 cm2"
+- 69074021 DONG8
+    tax.69074021 [30 ký tự]: 69074021 - - - Không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không tráng men"
+- 69074022 DONG8
+    tax.69074022 [27 ký tự]: 69074022 - - - Đã tráng men
+- 6907409 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.6907409 [17 ký tự]: 6907409 Loại khác
+- 69074091 DONG8
+    tax.69074091 [30 ký tự]: 69074091 - - - Không tráng men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Không tráng men"
+- 69074092 DONG8
+    tax.69074092 [27 ký tự]: 69074092 - - - Đã tráng men
+
+Nguồn cấp phân nhóm: wco.690740; chú giải: nhom6907.nhom, ch69.chuong, phan69.phan
+
+=== GÓI PN6 691310 ===
+# 691310 — Bằng sứ
+
+691310 — Ceramic statuettes and other ornamental ceramic articles, of porcelain or china
+  69131010 Hộp đựng thuốc lá và gạt tàn trang trí
+  69131090 Loại khác  [LK]
+
+- 69131010 DONG8
+    tax.69131010 [51 ký tự]: 69131010 - - Hộp đựng thuốc lá và gạt tàn trang trí
+- 69131090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.69131090 [22 ký tự]: 69131090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.691310; chú giải: nhom6913.nhom, ch69.chuong, phan69.phan
+
+=== GÓI PN6 691390 ===
+# 691390 — Loại khác
+
+691390 — Ceramic statuettes and other ornamental ceramic articles; other than of porcelain or china
+  69139010 Hộp đựng thuốc lá và gạt tàn trang trí
+  69139090 Loại khác  [LK]
+
+- 69139010 DONG8
+    tax.69139010 [51 ký tự]: 69139010 - - Hộp đựng thuốc lá và gạt tàn trang trí
+- 69139090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.69139090 [22 ký tự]: 69139090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.691390; chú giải: nhom6913.nhom, ch69.chuong, phan69.phan

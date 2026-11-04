@@ -1,0 +1,688 @@
+Số hoá ranh giới cho 27 phân nhóm 6 số (850162 850212 850432 850434 850450 850490 850780 851140 851150 851690 851850 851890 852110 852190 852321 852341 852581 852582 852583 852610 852691 852713 852719 852721 852791 852792 852799). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 850162 ===
+# 850162 — Công suất trên 75 kVA nhưng không quá 375 kVA
+
+850162 — Electric generators; AC generators, (alternators), other than photovoltaic generators, of an output exceeding 75kVA but not exceeding 375kVA
+  85016210 Công suất trên 75 kVA nhưng không quá 150 kVA
+  85016220 Công suất trên 150 kVA nhưng không quá 375 kVA
+
+- 85016210 DONG8
+    tax.85016210 [60 ký tự]: 85016210 - - - Công suất trên 75 kVA nhưng không quá 150 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 75 kVA nhưng không quá 150 kVA"
+- 85016220 DONG8
+    tax.85016220 [61 ký tự]: 85016220 - - - Công suất trên 150 kVA nhưng không quá 375 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 150 kVA nhưng không quá 375 kVA"
+
+Nguồn cấp phân nhóm: wco.850162; chú giải: nhom8501.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850212 ===
+# 850212 — Công suất trên 75 kVA nhưng không quá 375 kVA
+
+850212 — Electric generating sets; with compression-ignition internal combustion piston engines (diesel or semi-diesel engines), of an output exceeding 75kVA but not exceeding 375kVA
+  85021210 Công suất trên 75 kVA nhưng không quá 125 kVA
+  85021220 Công suất trên 125 kVA nhưng không quá 375 kVA
+
+- 85021210 DONG8
+    tax.85021210 [60 ký tự]: 85021210 - - - Công suất trên 75 kVA nhưng không quá 125 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 75 kVA nhưng không quá 125 kVA"
+- 85021220 DONG8
+    tax.85021220 [61 ký tự]: 85021220 - - - Công suất trên 125 kVA nhưng không quá 375 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất trên 125 kVA nhưng không quá 375 kVA"
+
+Nguồn cấp phân nhóm: wco.850212; chú giải: nhom8502.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850432 ===
+# 850432 — Công suất danh định trên 1 kVA nhưng không quá 16 kVA
+
+850432 — Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 1kVA but not exceeding 16kVA
+  [8504321] Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA
+    85043211 Biến áp thích ứng (SEN)
+    85043219 Loại khác  [LK]
+  85043220 Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự  [LK có điều kiện]
+  85043230 Loại khác, tần số tối thiểu 3 MHz  [LK có điều kiện]
+  [8504324] Loại khác, có công suất danh định không quá 10 kVA
+    85043241 Biến áp thích ứng (SEN)
+    85043249 Loại khác  [LK]
+  [8504325] Loại khác, có công suất danh định trên 10 kVA
+    85043251 Biến áp thích ứng (SEN)
+    85043259 Loại khác  [LK]
+
+- 8504321 TIEU_DE
+    tieuDe.8504321 [96 ký tự]: 8504321 Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "công suất danh định không quá 5 kVA"
+- 85043211 DONG8
+    tax.85043211 [40 ký tự]: 85043211 - - - - Biến áp thích ứng (SEN)
+    sen.85043211 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043219 [26 ký tự]: 85043219 - - - - Loại khác
+- 85043220 DONG8
+    tax.85043220 [97 ký tự]: 85043220 - - - Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự"
+- 85043230 DONG8
+    tax.85043230 [48 ký tự]: 85043230 - - - Loại khác, tần số tối thiểu 3 MHz
+    vế phải phủ (cổng 5): [GIỚI HẠN] "tần số tối thiểu 3 MHz"
+- 8504324 TIEU_DE
+    tieuDe.8504324 [58 ký tự]: 8504324 Loại khác, có công suất danh định không quá 10 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất danh định không quá 10 kVA"
+- 85043241 DONG8
+    tax.85043241 [40 ký tự]: 85043241 - - - - Biến áp thích ứng (SEN)
+    sen.85043241 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043249 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043249 [26 ký tự]: 85043249 - - - - Loại khác
+- 8504325 TIEU_DE
+    tieuDe.8504325 [53 ký tự]: 8504325 Loại khác, có công suất danh định trên 10 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có công suất danh định trên 10 kVA"
+- 85043251 DONG8
+    tax.85043251 [40 ký tự]: 85043251 - - - - Biến áp thích ứng (SEN)
+    sen.85043251 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043259 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043259 [26 ký tự]: 85043259 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850432; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850434 ===
+# 850434 — Có công suất danh định trên 500 kVA
+
+850434 — Transformers; n.e.c. in item no. 8504.2, having a power handling capacity exceeding 500kVA
+  [8504341] Có công suất danh định không quá 15.000 kVA
+    [850434~r15019] Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên  (tầng không mã, biểu thuế r15019, gạch 4)
+      85043411 Biến áp thích ứng (SEN)  (gạch 5)
+      85043412 Máy biến áp loại khô phòng nổ (SEN)  (gạch 5)
+      85043413 Loại khác (SEN)  [LK]  (gạch 5)
+    [850434~r15023] Loại khác  (tầng không mã, biểu thuế r15023, gạch 4)
+      85043414 Biến áp thích ứng (SEN)  (gạch 5)
+      85043415 Máy biến áp loại khô phòng nổ  (gạch 5)
+      85043419 Loại khác  [LK]  (gạch 5)
+  [8504342] Có công suất danh định trên 15.000 kVA
+    [850434~r15028] Có đầu điện áp cao từ 66 kV trở lên  (tầng không mã, biểu thuế r15028, gạch 4)
+      85043422 Biến áp thích ứng (SEN)  (gạch 5)
+      85043423 Máy biến áp loại khô phòng nổ (SEN)  (gạch 5)
+      85043424 Loại khác (SEN)  [LK]  (gạch 5)
+    [850434~r15032] Loại khác  (tầng không mã, biểu thuế r15032, gạch 4)
+      85043425 Biến áp thích ứng (SEN)  (gạch 5)
+      85043426 Máy biến áp loại khô phòng nổ  (gạch 5)
+      85043429 Loại khác  [LK]  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    850434~r15019 (gạch 4) "Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên:" — dòng dưới: 85043411, 85043412, 85043413
+    850434~r15023 (gạch 4) "Loại khác:" — dòng dưới: 85043414, 85043415, 85043419
+    850434~r15028 (gạch 4) "Có đầu điện áp cao từ 66 kV trở lên:" — dòng dưới: 85043422, 85043423, 85043424
+    850434~r15032 (gạch 4) "Loại khác:" — dòng dưới: 85043425, 85043426, 85043429
+
+- 8504341 TIEU_DE
+    tieuDe.8504341 [51 ký tự]: 8504341 Có công suất danh định không quá 15.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định không quá 15.000 kVA"
+- 850434~r15019 TIEU_DE
+    tieuDe.850434~r15019 [88 ký tự]: 850434~r15019 Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 10.000 kVA và đầu" · [GIỚI HẠN] "điện áp cao từ 66 kV trở lên"
+- 85043411 DONG8
+    tax.85043411 [42 ký tự]: 85043411 - - - - - Biến áp thích ứng (SEN)
+    sen.85043411 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043412 DONG8
+    tax.85043412 [54 ký tự]: 85043412 - - - - - Máy biến áp loại khô phòng nổ (SEN)
+    sen.85043412 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 85043413 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043413 [34 ký tự]: 85043413 - - - - - Loại khác (SEN)
+    sen.85043413 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 850434~r15023 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.850434~r15023 [23 ký tự]: 850434~r15023 Loại khác
+- 85043414 DONG8
+    tax.85043414 [42 ký tự]: 85043414 - - - - - Biến áp thích ứng (SEN)
+    sen.85043414 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043415 DONG8
+    tax.85043415 [49 ký tự]: 85043415 - - - - - Máy biến áp loại khô phòng nổ 
+- 85043419 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043419 [28 ký tự]: 85043419 - - - - - Loại khác
+- 8504342 TIEU_DE
+    tieuDe.8504342 [46 ký tự]: 8504342 Có công suất danh định trên 15.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 15.000 kVA"
+- 850434~r15028 TIEU_DE
+    tieuDe.850434~r15028 [49 ký tự]: 850434~r15028 Có đầu điện áp cao từ 66 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đầu" · [GIỚI HẠN] "điện áp cao từ 66 kV trở lên"
+- 85043422 DONG8
+    tax.85043422 [42 ký tự]: 85043422 - - - - - Biến áp thích ứng (SEN)
+    sen.85043422 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043423 DONG8
+    tax.85043423 [54 ký tự]: 85043423 - - - - - Máy biến áp loại khô phòng nổ (SEN)
+    sen.85043423 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 85043424 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043424 [34 ký tự]: 85043424 - - - - - Loại khác (SEN)
+    sen.85043424 [533 ký tự]: ĐẦU ĐIỆN ÁP CAO Biến thế là thiết bị thay đổi điện áp. Phần lớn biến thế được thiết kế để tăng hoặc giảm điện áp theo bước. Trong biến thế giảm áp, điện áp vào cao hơn điện áp ra, do vậy điện áp vào là đầu điện áp cao, còn điện áp ra là đầu điện áp thấp. Với biến thế tăng áp, điện áp vào là đầu điện áp thấp và điện áp ra là đầu điện áp cao. Vì các phân nhóm này không chia ra biến thế tăng áp hay giảm áp nên đầu nào có điện áp cao luôn luôn được xem là “đầu điện áp cao” của máy biến thế, bất kể đó là điện áp đầu vào hay đầu ra.
+- 850434~r15032 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.850434~r15032 [23 ký tự]: 850434~r15032 Loại khác
+- 85043425 DONG8
+    tax.85043425 [42 ký tự]: 85043425 - - - - - Biến áp thích ứng (SEN)
+    sen.85043425 [1054 ký tự]: MÁY BIẾN ÁP THÍCH ỨNG Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng. Công suất vào và công suất ra của máy biến áp là như nhau (trừ các tổn hao chuyển đổi). Đầu điện áp thấp có trở kháng thấp (vì có số vòng dây ít hơn), và đầu điện áp cao hơn có trở kháng cao hơn (vì có nhiều vòng trong cuộn dây hơn). Một ví dụ về phương pháp này là máy biến áp cân bằng trong ti vi. Máy biến áp này biến đổi tín hiệu đã cân bằng từ ăn ten (qua dây đôi 300 Ω) thành tín hiệu không cân bằng (cáp đồng trục 75 Ω như RG-6). Để phối hợp các trở kháng của cả hai thiết bị, cả hai cáp phải được nối với máy biến áp thích ứng có tỷ số vòng dây là 2 (ví dụ máy biến áp 2:1). Trong ví dụ này, cáp 75 Ω được nối với phía biến áp có ít vòng dây hơn; dây 300 Ω được nối với phía máy biến áp có nhiều vòng dây hơn. High voltage power transformer 110 kV impedance matching Máy biến áp cao thế 110 kV phối hợp trở kháng 220 kV impedance matchi Máy biến áp phối hợp
+- 85043426 DONG8
+    tax.85043426 [48 ký tự]: 85043426 - - - - - Máy biến áp loại khô phòng nổ
+- 85043429 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85043429 [28 ký tự]: 85043429 - - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850434; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850450 ===
+# 850450 — Cuộn cảm khác
+
+850450 — Electrical inductors; n.e.c. in heading no. 8504
+  85045010 Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông
+  85045020 Cuộn cảm cố định kiểu con chip (SEN)
+  [8504509] Loại khác
+    85045093 Có công suất danh định không quá 2.500 kVA
+    85045094 Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA
+    85045095 Có công suất danh định trên 10.000 kVA
+
+- 85045010 DONG8
+    tax.85045010 [143 ký tự]: 85045010 - - Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông"
+- 85045020 DONG8
+    tax.85045020 [49 ký tự]: 85045020 - - Cuộn cảm cố định kiểu con chip (SEN)
+    sen.85045020 [298 ký tự]: CUỘN CẢM CỐ ĐỊNH KIỂU CON CHIP Các cuộn cảm cố định kiểu con chíp có dạng những con chip nhỏ sử dụng cho đầu ghi băng video (VTRs), tivi, điện thoại di động... dùng cho các mức điện thế và cường độ dòng điện thấp. Chúng được sử dụng trong mạch điện để hạn chế dòng điện khi có hiện tượng đoản mạch.
+- 8504509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8504509 [17 ký tự]: 8504509 Loại khác
+- 85045093 DONG8
+    tax.85045093 [57 ký tự]: 85045093 - - - Có công suất danh định không quá 2.500 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định không quá 2.500 kVA"
+- 85045094 DONG8
+    tax.85045094 [79 ký tự]: 85045094 - - - Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 2.500 kVA nhưng không quá 10.000 kVA"
+- 85045095 DONG8
+    tax.85045095 [53 ký tự]: 85045095 - - - Có công suất danh định trên 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có công suất danh định trên 10.000 kVA"
+
+Nguồn cấp phân nhóm: wco.850450; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850490 ===
+# 850490 — Bộ phận
+
+850490 — Electrical transformers, static converters and inductors; parts thereof
+  85049010 Của hàng hóa thuộc phân nhóm 8504.10
+  85049020 Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10
+  [8504903] Dùng cho máy biến điện có công suất không quá 10.000 kVA
+    85049031 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    85049039 Loại khác  [LK]
+  [8504904] Dùng cho máy biến điện có công suất trên 10.000 kVA
+    85049041 Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    85049049 Loại khác  [LK]
+  85049090 Loại khác  [LK]
+
+- 85049010 DONG8
+    tax.85049010 [49 ký tự]: 85049010 - - Của hàng hóa thuộc phân nhóm 8504.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8504.10"
+- 85049020 DONG8
+    tax.85049020 [104 ký tự]: 85049020 - - Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10"
+- 8504903 TIEU_DE
+    tieuDe.8504903 [64 ký tự]: 8504903 Dùng cho máy biến điện có công suất không quá 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy biến điện" · [GIỚI HẠN] "có công suất không quá 10.000 kVA"
+- 85049031 DONG8
+    tax.85049031 [137 ký tự]: 85049031 - - - Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho biến áp phân phối và biến áp nguồn"
+- 85049039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049039 [24 ký tự]: 85049039 - - - Loại khác
+- 8504904 TIEU_DE
+    tieuDe.8504904 [59 ký tự]: 8504904 Dùng cho máy biến điện có công suất trên 10.000 kVA
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy biến điện" · [GIỚI HẠN] "có công suất trên 10.000 kVA"
+- 85049041 DONG8
+    tax.85049041 [137 ký tự]: 85049041 - - - Tấm, cụm tấm tản nhiệt; ống tản nhiệt đã lắp ráp thành dạng tấm phẳng, cụm tấm dùng cho biến áp phân phối và biến áp nguồn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho biến áp phân phối và biến áp nguồn"
+- 85049049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049049 [24 ký tự]: 85049049 - - - Loại khác
+- 85049090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85049090 [22 ký tự]: 85049090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850490; chú giải: nhom8504.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 850780 ===
+# 850780 — Ắc qui khác
+
+850780 — Electric accumulators; other than lead-acid, nickel-cadmium, nickel-metal hydride and lithium-ion, including separators, whether or not rectangular (including square)
+  [8507801] Dùng cho máy bay
+    85078011 Bằng sắt-niken
+    85078019 Loại khác  [LK]
+  85078020 Loại dùng cho máy tính xách tay kể cả loại notebook và subnotebook
+  [8507809] Loại khác
+    85078091 Bằng sắt-niken
+    85078099 Loại khác  [LK]
+
+- 8507801 TIEU_DE
+    tieuDe.8507801 [24 ký tự]: 8507801 Dùng cho máy bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy bay"
+- 85078011 DONG8
+    tax.85078011 [30 ký tự]: 85078011 - - - Bằng sắt-niken 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng sắt-niken"
+- 85078019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85078019 [24 ký tự]: 85078019 - - - Loại khác
+- 85078020 DONG8
+    tax.85078020 [79 ký tự]: 85078020 - - Loại dùng cho máy tính xách tay kể cả loại notebook và subnotebook
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy tính xách tay"
+- 8507809 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8507809 [17 ký tự]: 8507809 Loại khác
+- 85078091 DONG8
+    tax.85078091 [30 ký tự]: 85078091 - - - Bằng sắt-niken 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng sắt-niken"
+- 85078099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85078099 [24 ký tự]: 85078099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.850780; chú giải: nhom8507.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 851140 ===
+# 851140 — Động cơ khởi động và máy tổ hợp hai tính năng khởi động và phát điện
+
+851140 — Ignition or starting equipment; starter motors and dual purpose starter-generators, of a kind used for spark or compression-ignition internal combustion engines
+  85114010 Loại dùng cho động cơ của phương tiện bay
+  [8511402] Động cơ khởi động khác chưa lắp ráp
+    85114021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85114029 Loại khác  [LK]
+  [8511403] Động cơ khởi động đã lắp ráp sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    85114031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+    85114032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    85114033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+  [8511409] Loại khác
+    85114091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85114099 Loại khác  [LK]
+
+- 85114010 DONG8
+    tax.85114010 [54 ký tự]: 85114010 - - Loại dùng cho động cơ của phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của phương tiện bay"
+- 8511402 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8511402 [43 ký tự]: 8511402 Động cơ khởi động khác chưa lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lắp ráp"
+- 85114021 DONG8
+    tax.85114021 [83 ký tự]: 85114021 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85114029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85114029 [24 ký tự]: 85114029 - - - Loại khác
+- 8511403 TIEU_DE
+    tieuDe.8511403 [97 ký tự]: 8511403 Động cơ khởi động đã lắp ráp sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05"
+- 85114031 DONG8
+    tax.85114031 [59 ký tự]: 85114031 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.01 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.01"
+- 85114032 DONG8
+    tax.85114032 [76 ký tự]: 85114032 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+- 85114033 DONG8
+    tax.85114033 [58 ký tự]: 85114033 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.05"
+- 8511409 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8511409 [17 ký tự]: 8511409 Loại khác
+- 85114091 DONG8
+    tax.85114091 [83 ký tự]: 85114091 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85114099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85114099 [24 ký tự]: 85114099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851140; chú giải: nhom8511.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 851150 ===
+# 851150 — Máy phát điện khác
+
+851150 — Ignition or starting equipment; generators n.e.c. in heading no. 8511, of a kind used for spark or compression-ignition internal combustion engines
+  85115010 Loại dùng cho động cơ của phương tiện bay
+  [8511502] Máy phát điện xoay chiều khác chưa lắp ráp
+    85115021 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85115029 Loại khác  [LK]
+  [8511503] Máy phát điện xoay chiều đã lắp ráp dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    85115031 Sử dụng cho động cơ của xe thuộc nhóm 87.01
+    85115032 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    85115033 Sử dụng cho động cơ của xe thuộc nhóm 87.05
+  [8511509] Loại khác
+    85115091 Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    85115099 Loại khác  [LK]
+
+- 85115010 DONG8
+    tax.85115010 [54 ký tự]: 85115010 - - Loại dùng cho động cơ của phương tiện bay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của phương tiện bay"
+- 8511502 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8511502 [50 ký tự]: 8511502 Máy phát điện xoay chiều khác chưa lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lắp ráp"
+- 85115021 DONG8
+    tax.85115021 [83 ký tự]: 85115021 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85115029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85115029 [24 ký tự]: 85115029 - - - Loại khác
+- 8511503 TIEU_DE
+    tieuDe.8511503 [101 ký tự]: 8511503 Máy phát điện xoay chiều đã lắp ráp dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05"
+- 85115031 DONG8
+    tax.85115031 [59 ký tự]: 85115031 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.01 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.01"
+- 85115032 DONG8
+    tax.85115032 [76 ký tự]: 85115032 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03 hoặc 87.04"
+- 85115033 DONG8
+    tax.85115033 [58 ký tự]: 85115033 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.05"
+- 8511509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8511509 [17 ký tự]: 8511509 Loại khác
+- 85115091 DONG8
+    tax.85115091 [83 ký tự]: 85115091 - - - Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05"
+- 85115099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85115099 [24 ký tự]: 85115099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851150; chú giải: nhom8511.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 851690 ===
+# 851690 — Bộ phận
+
+851690 — Electro-thermic appliances; parts, of heating resistors, of water, space and soil heaters, hair-dressing apparatus, hand dryers, smoothing irons and other domestic appliances of heading no. 8516
+  [8516902] Của hàng hóa thuộc phân nhóm 8516.33, 8516.50, 8516.60, 8516.71 hoặc 8516.79.10
+    85169021 Các tấm toả nhiệt (sealed hotplates) dùng cho thiết bị gia dụng
+    85169029 Loại khác  [LK]
+  85169030 Của hàng hóa thuộc phân nhóm 8516.10
+  85169040 Của điện trở đốt nóng bằng điện dùng cho máy đúc chữ hoặc máy sắp chữ
+  85169090 Loại khác  [LK]
+
+- 8516902 TIEU_DE
+    tieuDe.8516902 [87 ký tự]: 8516902 Của hàng hóa thuộc phân nhóm 8516.33, 8516.50, 8516.60, 8516.71 hoặc 8516.79.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8516.33, 8516.50, 8516.60, 8516.71 hoặc 8516.79.10"
+- 85169021 DONG8
+    tax.85169021 [78 ký tự]: 85169021 - - - Các tấm toả nhiệt (sealed hotplates) dùng cho thiết bị gia dụng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho thiết bị gia dụng"
+- 85169029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85169029 [24 ký tự]: 85169029 - - - Loại khác
+- 85169030 DONG8
+    tax.85169030 [49 ký tự]: 85169030 - - Của hàng hóa thuộc phân nhóm 8516.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8516.10"
+- 85169040 DONG8
+    tax.85169040 [82 ký tự]: 85169040 - - Của điện trở đốt nóng bằng điện dùng cho máy đúc chữ hoặc máy sắp chữ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của điện trở đốt nóng" · [GIỚI HẠN] "bằng điện" · [GIỚI HẠN] "dùng cho máy đúc chữ hoặc máy sắp chữ"
+- 85169090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85169090 [22 ký tự]: 85169090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851690; chú giải: nhom8516.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 851850 ===
+# 851850 — Bộ tăng âm điện
+
+851850 — Amplifier sets; electric sound
+  85185010 Có dải công suất từ 240 W trở lên
+  85185020 Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V  [LK có điều kiện]
+  85185090 Loại khác  [LK]
+
+- 85185010 DONG8
+    tax.85185010 [46 ký tự]: 85185010 - - Có dải công suất từ 240 W trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có dải công suất từ 240 W trở lên"
+- 85185020 DONG8
+    tax.85185020 [115 ký tự]: 85185020 - - Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có loa, loại" · [GIỚI HẠN] "thích hợp cho phát sóng, có giải" · [GIỚI HẠN] "điện áp từ 50 V trở lên nhưng không quá 100 V"
+- 85185090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85185090 [22 ký tự]: 85185090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851850; chú giải: nhom8518.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 851890 ===
+# 851890 — Bộ phận
+
+851890 — Microphones, headphones, earphones, amplifier equipment; parts of the equipment of heading no. 8518
+  85189010 Của hàng hóa thuộc phân nhóm 8518.10.11, 8518.29.20, 8518.30.40 hoặc 8518.40.20, kể cả mạch in đã lắp ráp
+  85189020 Của hàng hóa thuộc phân nhóm 8518.40.40
+  85189030 Của hàng hóa thuộc phân nhóm 8518.21 hoặc 8518.22
+  85189040 Của hàng hóa thuộc phân nhóm 8518.29.90
+  85189090 Loại khác  [LK]
+
+- 85189010 DONG8
+    tax.85189010 [119 ký tự]: 85189010 - - Của hàng hóa thuộc phân nhóm 8518.10.11, 8518.29.20, 8518.30.40 hoặc 8518.40.20, kể cả mạch in đã lắp ráp 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8518.10.11, 8518.29.20, 8518.30.40 hoặc 8518.40.20"
+- 85189020 DONG8
+    tax.85189020 [53 ký tự]: 85189020 - - Của hàng hóa thuộc phân nhóm 8518.40.40 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8518.40.40"
+- 85189030 DONG8
+    tax.85189030 [62 ký tự]: 85189030 - - Của hàng hóa thuộc phân nhóm 8518.21 hoặc 8518.22
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8518.21 hoặc 8518.22"
+- 85189040 DONG8
+    tax.85189040 [52 ký tự]: 85189040 - - Của hàng hóa thuộc phân nhóm 8518.29.90
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hàng hóa thuộc phân nhóm 8518.29.90"
+- 85189090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85189090 [22 ký tự]: 85189090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.851890; chú giải: nhom8518.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852110 ===
+# 852110 — Loại dùng băng từ
+
+852110 — Video recording or reproducing apparatus; magnetic tape-type
+  85211010 Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN)
+  85211090 Loại khác  [LK]
+
+- 85211010 DONG8
+    tax.85211010 [69 ký tự]: 85211010 - - Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN)
+    sen.85211010 [644 ký tự]: THIẾT BỊ GHI HOẶC TÁI TẠO VIDEO, LOẠI DÙNG CHO ĐIỆN ẢNH HOẶC PHÁT THANH TRUYỀN HÌNH Các sản phẩm này được thiết kế chuyên dụng cho công nghệ phát thanh truyền hình hoặc điện ảnh, không dùng cho gia dụng. Các sản phẩm này có: ● Bộ xử lý kỹ thuật số chất lượng cao ● Giao diện vào và ra như là giao diện trực quan kỹ thuật số (DVI), giao diện kỹ thuật số nối tiếp - độ nét tiêu chuẩn (SDI-SD) và giao diện kỹ thuật số nối tiếp-độ nét cao(SDI-HD) ● Giao diện tín hiệu mã thời gian hoặc giao diện tín hiện tham chiếu với mục đích đồng bộ hoá, và ● Khả năng tạo hiệu ứng video Ví dụ về thiết bị ghi hoặc thiết bị tái tạo hình ảnh, dạng băng từ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho điện ảnh hoặc phát thanh truyền hình"
+- 85211090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85211090 [22 ký tự]: 85211090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852110; chú giải: nhom8521.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852190 ===
+# 852190 — Loại khác
+
+852190 — Video recording or reproducing apparatus; other than magnetic tape-type
+  [8521901] Đầu đĩa laser
+    85219011 Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN)
+    85219019 Loại khác  [LK]
+  [8521909] Loại khác
+    85219091 Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN)
+    85219099 Loại khác  [LK]
+
+- 8521901 TIEU_DE
+    tieuDe.8521901 [21 ký tự]: 8521901 Đầu đĩa laser
+- 85219011 DONG8
+    tax.85219011 [71 ký tự]: 85219011 - - - Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN)
+    sen.85219011 [644 ký tự]: THIẾT BỊ GHI HOẶC TÁI TẠO VIDEO, LOẠI DÙNG CHO ĐIỆN ẢNH HOẶC PHÁT THANH TRUYỀN HÌNH Các sản phẩm này được thiết kế chuyên dụng cho công nghệ phát thanh truyền hình hoặc điện ảnh, không dùng cho gia dụng. Các sản phẩm này có: ● Bộ xử lý kỹ thuật số chất lượng cao ● Giao diện vào và ra như là giao diện trực quan kỹ thuật số (DVI), giao diện kỹ thuật số nối tiếp - độ nét tiêu chuẩn (SDI-SD) và giao diện kỹ thuật số nối tiếp-độ nét cao(SDI-HD) ● Giao diện tín hiệu mã thời gian hoặc giao diện tín hiện tham chiếu với mục đích đồng bộ hoá, và ● Khả năng tạo hiệu ứng video Ví dụ về thiết bị ghi hoặc thiết bị tái tạo hình ảnh, dạng băng từ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho điện ảnh hoặc phát thanh truyền hình"
+- 85219019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85219019 [24 ký tự]: 85219019 - - - Loại khác
+- 8521909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8521909 [17 ký tự]: 8521909 Loại khác
+- 85219091 DONG8
+    tax.85219091 [71 ký tự]: 85219091 - - - Loại dùng cho điện ảnh hoặc phát thanh truyền hình (SEN)
+    sen.85219091 [644 ký tự]: THIẾT BỊ GHI HOẶC TÁI TẠO VIDEO, LOẠI DÙNG CHO ĐIỆN ẢNH HOẶC PHÁT THANH TRUYỀN HÌNH Các sản phẩm này được thiết kế chuyên dụng cho công nghệ phát thanh truyền hình hoặc điện ảnh, không dùng cho gia dụng. Các sản phẩm này có: ● Bộ xử lý kỹ thuật số chất lượng cao ● Giao diện vào và ra như là giao diện trực quan kỹ thuật số (DVI), giao diện kỹ thuật số nối tiếp - độ nét tiêu chuẩn (SDI-SD) và giao diện kỹ thuật số nối tiếp-độ nét cao(SDI-HD) ● Giao diện tín hiệu mã thời gian hoặc giao diện tín hiện tham chiếu với mục đích đồng bộ hoá, và ● Khả năng tạo hiệu ứng video Ví dụ về thiết bị ghi hoặc thiết bị tái tạo hình ảnh, dạng băng từ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho điện ảnh hoặc phát thanh truyền hình"
+- 85219099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85219099 [24 ký tự]: 85219099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852190; chú giải: nhom8521.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852321 ===
+# 852321 — Thẻ có dải từ
+
+852321 — Magnetic media; cards incorporating a magnetic stripe, whether or not recorded, excluding products of Chapter 37
+  85232110 Chưa ghi
+  85232190 Loại khác  [LK]
+
+- 85232110 DONG8
+    tax.85232110 [23 ký tự]: 85232110 - - - Chưa ghi
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa ghi"
+- 85232190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85232190 [24 ký tự]: 85232190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852321; chú giải: nhom8523.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852341 ===
+# 852341 — Loại chưa ghi
+
+852341 — Optical media; unrecorded, excluding products of Chapter 37
+  85234110 Loại dùng cho máy vi tính
+  85234190 Loại khác  [LK]
+
+- 85234110 DONG8
+    tax.85234110 [40 ký tự]: 85234110 - - - Loại dùng cho máy vi tính
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy vi tính"
+- 85234190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85234190 [24 ký tự]: 85234190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852341; chú giải: nhom8523.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852581 ===
+# 852581 — Loại tốc độ cao nêu tại Chú giải Phân nhóm 1 của Chương này
+
+852581 — Television cameras, digital cameras and video camera recorders; high-speed goods as specified in subheading note 1 to this chapter
+  85258110 Camera ghi hình ảnh
+  85258120 Camera truyền hình
+  85258190 Loại khác  [LK]
+
+- 85258110 DONG8
+    tax.85258110 [34 ký tự]: 85258110 - - - Camera ghi hình ảnh
+- 85258120 DONG8
+    tax.85258120 [33 ký tự]: 85258120 - - - Camera truyền hình
+- 85258190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85258190 [24 ký tự]: 85258190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852581; chú giải: nhom8525.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852582 ===
+# 852582 — Loại khác, được làm cứng bức xạ hoặc chịu bức xạ nêu tại Chú giải Phân nhóm 2 của Chương này
+
+852582 — Television cameras, digital cameras and video camera recorders; radiation-hardened or radiation-tolerant goods as specified in subheading note 2 to this chapter
+  85258210 Camera ghi hình ảnh
+  85258220 Camera truyền hình
+  85258290 Loại khác  [LK]
+
+- 85258210 DONG8
+    tax.85258210 [34 ký tự]: 85258210 - - - Camera ghi hình ảnh
+- 85258220 DONG8
+    tax.85258220 [33 ký tự]: 85258220 - - - Camera truyền hình
+- 85258290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85258290 [24 ký tự]: 85258290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852582; chú giải: nhom8525.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852583 ===
+# 852583 — Loại khác, loại nhìn ban đêm nêu tại Chú giải Phân nhóm 3 của Chương này
+
+852583 — Television cameras, digital cameras and video camera recorders; night vision goods as specified in subheading note 3 to this chapter
+  85258310 Camera ghi hình ảnh
+  85258320 Camera truyền hình
+  85258390 Loại khác  [LK]
+
+- 85258310 DONG8
+    tax.85258310 [34 ký tự]: 85258310 - - - Camera ghi hình ảnh
+- 85258320 DONG8
+    tax.85258320 [33 ký tự]: 85258320 - - - Camera truyền hình
+- 85258390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85258390 [24 ký tự]: 85258390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852583; chú giải: nhom8525.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852610 ===
+# 852610 — Ra đa
+
+852610 — Radar apparatus
+  85261010 Ra đa, loại dùng trên mặt đất, hoặc trang bị trên máy bay dân dụng, hoặc chỉ dùng cho tàu thuyền đi biển
+  85261090 Loại khác  [LK]
+
+- 85261010 DONG8
+    tax.85261010 [117 ký tự]: 85261010 - - Ra đa, loại dùng trên mặt đất, hoặc trang bị trên máy bay dân dụng, hoặc chỉ dùng cho tàu thuyền đi biển
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho tàu thuyền đi biển"
+- 85261090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85261090 [22 ký tự]: 85261090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852610; chú giải: nhom8526.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852691 ===
+# 852691 — Thiết bị dẫn đường bằng sóng vô tuyến
+
+852691 — Radio navigational aid apparatus
+  85269110 Thiết bị dẫn đường bằng sóng vô tuyến, loại dùng trên máy bay dân dụng, hoặc chỉ dùng cho tàu thuyền đi biển
+  85269190 Loại khác  [LK]
+
+- 85269110 DONG8
+    tax.85269110 [123 ký tự]: 85269110 - - - Thiết bị dẫn đường bằng sóng vô tuyến, loại dùng trên máy bay dân dụng, hoặc chỉ dùng cho tàu thuyền đi biển
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng sóng vô tuyến, loại dùng trên máy bay dân dụng, hoặc chỉ" · [GIỚI HẠN] "dùng cho tàu thuyền đi biển"
+- 85269190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85269190 [24 ký tự]: 85269190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852691; chú giải: nhom8526.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852713 ===
+# 852713 — Thiết bị khác kết hợp với thiết bị ghi hoặc tái tạo âm thanh
+
+852713 — Radio broadcast receivers capable of operating without an external power source; apparatus (other than pocket-size radio cassette-players), combined with sound recording or reproducing apparatus
+  85271310 Loại xách tay
+  85271390 Loại khác  [LK]
+
+- 85271310 DONG8
+    tax.85271310 [28 ký tự]: 85271310 - - - Loại xách tay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "xách tay"
+- 85271390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85271390 [24 ký tự]: 85271390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852713; chú giải: nhom8527.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852719 ===
+# 852719 — Loại khác
+
+852719 — Radio broadcast receivers capable of operating without an external power source; n.e.c. in item no. 8527.1
+  85271920 Loại xách tay
+  85271990 Loại khác  [LK]
+
+- 85271920 DONG8
+    tax.85271920 [28 ký tự]: 85271920 - - - Loại xách tay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "xách tay"
+- 85271990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85271990 [24 ký tự]: 85271990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852719; chú giải: nhom8527.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852721 ===
+# 852721 — Kết hợp với thiết bị ghi hoặc tái tạo âm thanh
+
+852721 — Radio-broadcast receivers not capable of operating without an external source of power, of a kind used in motor vehicles; combined with sound recording or reproducing apparatus
+  85272110 Có khả năng nhận và giải mã tín hiệu hệ thống dữ liệu vô tuyến kỹ thuật số
+  85272190 Loại khác  [LK]
+
+- 85272110 DONG8
+    tax.85272110 [90 ký tự]: 85272110 - - - Có khả năng nhận và giải mã tín hiệu hệ thống dữ liệu vô tuyến kỹ thuật số 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có khả năng nhận và giải mã tín hiệu hệ thống dữ liệu vô tuyến kỹ thuật số"
+- 85272190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85272190 [24 ký tự]: 85272190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852721; chú giải: nhom8527.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852791 ===
+# 852791 — Kết hợp với thiết bị ghi hoặc tái tạo âm thanh
+
+852791 — Radio-broadcast receivers n.e.c. in heading no. 8527; combined with sound recording or reproducing apparatus
+  85279110 Loại xách tay
+  85279190 Loại khác  [LK]
+
+- 85279110 DONG8
+    tax.85279110 [28 ký tự]: 85279110 - - - Loại xách tay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "xách tay"
+- 85279190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85279190 [24 ký tự]: 85279190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852791; chú giải: nhom8527.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852792 ===
+# 852792 — Không kết hợp với thiết bị ghi hoặc tái tạo âm thanh nhưng gắn với đồng hồ
+
+852792 — Radio-broadcast receivers n.e.c. in heading no. 8527; not combined with sound recording or reproducing apparatus but combined with a clock
+  85279220 Hoạt động bằng nguồn điện lưới
+  85279290 Loại khác  [LK]
+
+- 85279220 DONG8
+    tax.85279220 [45 ký tự]: 85279220 - - - Hoạt động bằng nguồn điện lưới
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng nguồn điện lưới"
+- 85279290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85279290 [24 ký tự]: 85279290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852792; chú giải: nhom8527.nhom, ch85.chuong, phan85.phan
+
+=== GÓI PN6 852799 ===
+# 852799 — Loại khác
+
+852799 — Radio-broadcast receivers n.e.c. in heading no. 8527; not combined with sound recording or reproducing apparatus and not combined with a clock
+  85279920 Hoạt động bằng nguồn điện lưới
+  85279990 Loại khác  [LK]
+
+- 85279920 DONG8
+    tax.85279920 [45 ký tự]: 85279920 - - - Hoạt động bằng nguồn điện lưới
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng nguồn điện lưới"
+- 85279990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85279990 [24 ký tự]: 85279990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.852799; chú giải: nhom8527.nhom, ch85.chuong, phan85.phan

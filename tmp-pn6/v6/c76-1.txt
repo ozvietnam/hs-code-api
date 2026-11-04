@@ -1,0 +1,161 @@
+Số hoá ranh giới cho 9 phân nhóm 6 số (760320 760429 760519 760529 760611 761290 761410 761490 761520). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 760320 ===
+# 760320 — Bột có cấu trúc lớp; vảy nhôm
+
+760320 — Aluminium; powders of lamellar structure, flakes
+  76032010 Vảy nhôm
+  76032020 Bột có cấu trúc lớp
+
+- 76032010 DONG8
+    tax.76032010 [21 ký tự]: 76032010 - - Vảy nhôm
+- 76032020 DONG8
+    tax.76032020 [32 ký tự]: 76032020 - - Bột có cấu trúc lớp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có cấu trúc lớp"
+
+Nguồn cấp phân nhóm: wco.760320; chú giải: nhom7603.nhom, ch76.chuong, phan76.phan
+
+=== GÓI PN6 760429 ===
+# 760429 — Loại khác
+
+760429 — Aluminium; alloys, bars, rods and profiles, other than hollow
+  76042910 Dạng thanh và que được ép đùn
+  76042930 Dạng hình chữ Y dùng cho dây khóa kéo, ở dạng cuộn
+  76042990 Loại khác  [LK]
+
+- 76042910 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.76042910 [44 ký tự]: 76042910 - - - Dạng thanh và que được ép đùn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được ép đùn"
+- 76042930 DONG8
+    tax.76042930 [65 ký tự]: 76042930 - - - Dạng hình chữ Y dùng cho dây khóa kéo, ở dạng cuộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho dây khóa kéo, ở dạng cuộn"
+- 76042990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76042990 [24 ký tự]: 76042990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.760429; chú giải: nhom7604.nhom, ch76.chuong, phan76.phan
+
+=== GÓI PN6 760519 ===
+# 760519 — Loại khác
+
+760519 — Aluminium; (not alloyed), wire, maximum cross-sectional dimension is 7mm or less
+  76051910 Đường kính không quá 0,0508 mm
+  76051990 Loại khác  [LK]
+
+- 76051910 DONG8
+    tax.76051910 [45 ký tự]: 76051910 - - - Đường kính không quá 0,0508 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Đường kính không quá 0,0508 mm"
+- 76051990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76051990 [24 ký tự]: 76051990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.760519; chú giải: nhom7605.nhom, ch76.chuong, phan76.phan
+
+=== GÓI PN6 760529 ===
+# 760529 — Loại khác
+
+760529 — Aluminium; alloys, wire, maximum cross-sectional dimension is 7mm or less
+  76052910 Có đường kính không quá 0,254 mm
+  76052990 Loại khác  [LK]
+
+- 76052910 DONG8
+    tax.76052910 [47 ký tự]: 76052910 - - - Có đường kính không quá 0,254 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đường kính không quá 0,254 mm"
+- 76052990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76052990 [24 ký tự]: 76052990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.760529; chú giải: nhom7605.nhom, ch76.chuong, phan76.phan
+
+=== GÓI PN6 760611 ===
+# 760611 — Bằng nhôm, không hợp kim
+
+760611 — Aluminium; plates, sheets and strip, thickness exceeding 0.2mm, (not alloyed), rectangular (including square)
+  76061110 Được dát phẳng hoặc tạo hình bằng phương pháp cán hoặc ép, nhưng chưa xử lý bề mặt
+  76061190 Loại khác  [LK]
+
+- 76061110 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.76061110 [97 ký tự]: 76061110 - - - Được dát phẳng hoặc tạo hình bằng phương pháp cán hoặc ép, nhưng chưa xử lý bề mặt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được dát phẳng hoặc tạo hình" · [GIỚI HẠN] "bằng phương pháp cán hoặc ép" · [GIỚI HẠN] "chưa xử lý bề mặt"
+- 76061190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76061190 [24 ký tự]: 76061190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.760611; chú giải: nhom7606.nhom, ch76.chuong, phan76.phan
+
+=== GÓI PN6 761290 ===
+# 761290 — Loại khác
+
+761290 — Aluminium; casks, drums, cans, boxes and the like for any material (not compressed or liquefied gas), 300l capacity or less, whether or not lined or heat-insulated, no mechanical or thermal equipment
+  76129010 Đồ chứa được đúc liền phù hợp dùng để đựng sữa tươi (SEN)
+  76129090 Loại khác  [LK]
+
+- 76129010 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.76129010 [70 ký tự]: 76129010 - - Đồ chứa được đúc liền phù hợp dùng để đựng sữa tươi (SEN)
+    sen.76129010 [576 ký tự]: ĐỒ CHỨA ĐƯỢC ĐÚC LIỀN PHÙ HỢP DÙNG ĐỂ ĐỰNG SỮA TƯƠI Các đồ chứa phải được đúc liền và làm bằng nhôm. Đồ chứa này dễ làm sạch. Các vết nối bên trong của đồ chứa có thể dẫn đến tích tụ bụi, vi khuẩn, mùi hôi và làm cho sữa dễ bị hỏng. Đồ chứa có độ cứng và chiều dày thân phù hợp để có thể chịu được va đập khi vận chuyển. Thân của nó được thiết kế nguyên khối với nhiều kích thước tiêu chuẩn khác nhau: 5L, 10L, 20L, 25L, 30L, 40L, 50L… Các đồ chứa hầu hết được bán kèm nắp được thiết kế phù hợp với thân của nó. Nắp này được khóa để đảm bảo sự sạch sẽ và vệ sinh của sữa tươi.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa được đúc liền" · [GIỚI HẠN] "phù hợp dùng để đựng sữa tươi"
+- 76129090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76129090 [22 ký tự]: 76129090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.761290; chú giải: nhom7612.nhom, ch76.chuong, phan76.phan
+
+=== GÓI PN6 761410 ===
+# 761410 — Có lõi thép
+
+761410 — Aluminium; stranded wire, cables, plaited bands and the like, (not electrically insulated), with steel core
+  [7614101] Cáp
+    76141011 Có đường kính không quá 25,3 mm
+    76141012 Có đường kính trên 25,3 mm nhưng không quá 28,28 mm
+    76141019 Loại khác  [LK]
+  76141090 Loại khác  [LK]
+
+- 7614101 TIEU_DE
+    tieuDe.7614101 [11 ký tự]: 7614101 Cáp
+- 76141011 DONG8
+    tax.76141011 [46 ký tự]: 76141011 - - - Có đường kính không quá 25,3 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đường kính không quá 25,3 mm"
+- 76141012 DONG8
+    tax.76141012 [66 ký tự]: 76141012 - - - Có đường kính trên 25,3 mm nhưng không quá 28,28 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đường kính trên 25,3 mm nhưng không quá 28,28 mm"
+- 76141019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76141019 [24 ký tự]: 76141019 - - - Loại khác
+- 76141090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76141090 [22 ký tự]: 76141090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.761410; chú giải: nhom7614.nhom, ch76.chuong, phan76.phan
+
+=== GÓI PN6 761490 ===
+# 761490 — Loại khác
+
+761490 — Aluminium; stranded wire, cables, plaited bands and the like, (not electrically insulated), other than steel core
+  [7614901] Cáp
+    76149011 Có đường kính không quá 25,3 mm
+    76149012 Có đường kính trên 25,3 mm nhưng không quá 28,28 mm
+    76149019 Loại khác  [LK]
+  76149090 Loại khác  [LK]
+
+- 7614901 TIEU_DE
+    tieuDe.7614901 [11 ký tự]: 7614901 Cáp
+- 76149011 DONG8
+    tax.76149011 [46 ký tự]: 76149011 - - - Có đường kính không quá 25,3 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đường kính không quá 25,3 mm"
+- 76149012 DONG8
+    tax.76149012 [66 ký tự]: 76149012 - - - Có đường kính trên 25,3 mm nhưng không quá 28,28 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đường kính trên 25,3 mm nhưng không quá 28,28 mm"
+- 76149019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76149019 [24 ký tự]: 76149019 - - - Loại khác
+- 76149090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76149090 [22 ký tự]: 76149090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.761490; chú giải: nhom7614.nhom, ch76.chuong, phan76.phan
+
+=== GÓI PN6 761520 ===
+# 761520 — Đồ trang bị trong nhà vệ sinh và bộ phận của chúng
+
+761520 — Aluminium; sanitary ware and parts thereof
+  76152020 Bô để giường bệnh, bô đi tiểu hoặc bô để phòng ngủ
+  76152090 Loại khác  [LK]
+
+- 76152020 DONG8
+    tax.76152020 [64 ký tự]: 76152020 - - Bô để giường bệnh, bô đi tiểu hoặc bô để phòng ngủ 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để giường bệnh, bô đi tiểu hoặc bô để phòng ngủ"
+- 76152090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76152090 [22 ký tự]: 76152090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.761520; chú giải: nhom7615.nhom, ch76.chuong, phan76.phan

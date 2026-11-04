@@ -1,0 +1,483 @@
+Số hoá ranh giới cho 23 phân nhóm 6 số (721220 721250 721260 721310 721399 721410 721420 721430 721510 721550 721590 721621 721631 721632 721640 721650 721691 721790 722011 722012 722020 722090 722220). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 721220 ===
+# 721220 — Được phủ, mạ hoặc tráng kẽm bằng phương pháp điện phân
+
+721220 — Iron or non-alloy steel; flat-rolled, of a width less than 600mm, electrolytically plated or coated with zinc
+  72122010 Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+  72122020 Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm  [LK có điều kiện]
+  72122090 Loại khác  [LK]
+
+- 72122010 DONG8
+    tax.72122010 [62 ký tự]: 72122010 - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chiều rộng không quá 400 mm"
+- 72122020 DONG8
+    tax.72122020 [104 ký tự]: 72122020 - - Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng carbon" · [GIỚI HẠN] "dưới 0,6% tính theo" · [GIỚI HẠN] "khối lượng" · [GIỚI HẠN] "chiều dày không quá 1,5 mm"
+- 72122090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72122090 [22 ký tự]: 72122090 - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7212, wco.721220; chú giải: nhom7212.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721250 ===
+# 721250 — Được phủ, mạ hoặc tráng bằng phương pháp khác
+
+721250 — Iron or non-alloy steel; flat-rolled, width less than 600mm, plated or coated, (excluding tin, zinc or plastic)
+  [7212501] Được phủ, mạ hoặc tráng bằng oxit crôm hoặc bằng crôm và oxit crôm
+    72125014 Dạng đai và dải(SEN), chiều rộng trên 25 mm; tấm phổ dụng (SEN)
+    72125019 Loại khác  [LK]
+  [7212502] Được phủ, mạ hoặc tráng hợp kim nhôm - kẽm
+    72125023 Dạng đai và dải(SEN), có chiều rộng không quá 25 mm
+    72125024 Dạng đai và dải khác; tấm phổ dụng(SEN)
+    72125029 Loại khác  [LK]
+  [7212509] Loại khác
+    72125093 Dạng đai và dải(SEN), có chiều rộng không quá 25 mm
+    72125094 Dạng đai và dải khác; tấm phổ dụng(SEN)
+    72125099 Loại khác  [LK]
+
+- 7212501 TIEU_DE
+    tieuDe.7212501 [74 ký tự]: 7212501 Được phủ, mạ hoặc tráng bằng oxit crôm hoặc bằng crôm và oxit crôm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được phủ, mạ hoặc tráng" · [GIỚI HẠN] "bằng oxit crôm" · [GIỚI HẠN] "bằng crôm và oxit crôm"
+- 72125014 DONG8
+    tax.72125014 [78 ký tự]: 72125014 - - - Dạng đai và dải(SEN), chiều rộng trên 25 mm; tấm phổ dụng (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chiều rộng trên 25 mm"
+- 72125019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72125019 [24 ký tự]: 72125019 - - - Loại khác
+- 7212502 TIEU_DE
+    tieuDe.7212502 [50 ký tự]: 7212502 Được phủ, mạ hoặc tráng hợp kim nhôm - kẽm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được phủ, mạ hoặc tráng hợp kim nhôm - kẽm"
+- 72125023 DONG8
+    tax.72125023 [66 ký tự]: 72125023 - - - Dạng đai và dải(SEN), có chiều rộng không quá 25 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 25 mm"
+- 72125024 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.72125024 [54 ký tự]: 72125024 - - - Dạng đai và dải khác; tấm phổ dụng(SEN)
+- 72125029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72125029 [24 ký tự]: 72125029 - - - Loại khác
+- 7212509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7212509 [17 ký tự]: 7212509 Loại khác
+- 72125093 DONG8
+    tax.72125093 [66 ký tự]: 72125093 - - - Dạng đai và dải(SEN), có chiều rộng không quá 25 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 25 mm"
+- 72125094 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.72125094 [54 ký tự]: 72125094 - - - Dạng đai và dải khác; tấm phổ dụng(SEN)
+- 72125099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72125099 [24 ký tự]: 72125099 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7212, wco.721250; chú giải: nhom7212.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721260 ===
+# 721260 — Được dát phủ
+
+721260 — Iron or non-alloy steel; flat-rolled, width less than 600mm, clad
+  [7212601] Có hàm lượng carbon dưới 0,6% tính theo khối lượng
+    72126011 Dạng đai và dải(SEN)
+    72126012 Loại khác, chiều dày không quá 1,5 mm  [LK có điều kiện]
+    72126019 Loại khác  [LK]
+  [7212609] Loại khác
+    72126091 Dạng đai và dải(SEN)
+    72126099 Loại khác  [LK]
+
+- 7212601 TIEU_DE
+    tieuDe.7212601 [58 ký tự]: 7212601 Có hàm lượng carbon dưới 0,6% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "dưới 0,6% tính theo khối lượng"
+- 72126011 DONG8
+    tax.72126011 [35 ký tự]: 72126011 - - - Dạng đai và dải(SEN)
+- 72126012 DONG8
+    tax.72126012 [52 ký tự]: 72126012 - - - Loại khác, chiều dày không quá 1,5 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chiều dày không quá 1,5 mm"
+- 72126019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72126019 [24 ký tự]: 72126019 - - - Loại khác
+- 7212609 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7212609 [17 ký tự]: 7212609 Loại khác
+- 72126091 DONG8
+    tax.72126091 [35 ký tự]: 72126091 - - - Dạng đai và dải(SEN)
+- 72126099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72126099 [24 ký tự]: 72126099 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7212, wco.721260; chú giải: nhom7212.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721310 ===
+# 721310 — Có răng khía, rãnh, gân hoặc các dạng khác được tạo thành trong quá trình cán
+
+721310 — Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils, containing indentations, ribs, grooves or other deformations produced during the rolling process
+  72131010 Có đường kính mặt cắt ngang hình tròn không quá 50 mm
+  72131090 Loại khác  [LK]
+
+- 72131010 DONG8
+    tax.72131010 [66 ký tự]: 72131010 - - Có đường kính mặt cắt ngang hình tròn không quá 50 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có đường kính mặt cắt ngang hình tròn không quá 50 mm"
+- 72131090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72131090 [22 ký tự]: 72131090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721310; chú giải: nhom7213.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721399 ===
+# 721399 — Loại khác
+
+721399 — Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils, n.e.c. in heading no. 7213, of circular cross-section measuring 14mm or more in diameter
+  72139910 Loại dùng để sản xuất que hàn (SEN)
+  72139920 Thép cốt bê tông
+  72139990 Loại khác  [LK]
+
+- 72139910 DONG8
+    tax.72139910 [50 ký tự]: 72139910 - - - Loại dùng để sản xuất que hàn (SEN)
+    sen.72139910 [258 ký tự]: DẠNG QUE, LOẠI DÙNG ĐỂ SẢN XUẤT QUE HÀN Đây là các loại que kim loại có thành phần chung được nêu dưới đây và được sử dụng để sản xuất que hàn bằng việc phủ các chất trợ dung. C ≤ 0,1%; Mn: 0,35 - 0,45%; Si: 0,3 - 0,35%; P: tối đa 0,03%; S: tối đa 0,03%
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để sản xuất que hàn"
+- 72139920 DONG8
+    tax.72139920 [31 ký tự]: 72139920 - - - Thép cốt bê tông
+- 72139990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72139990 [24 ký tự]: 72139990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721399; chú giải: nhom7213.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721410 ===
+# 721410 — Đã qua rèn
+
+721410 — Iron or non-alloy steel; bars and rods, forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling
+  [7214101] Có hàm lượng carbon dưới 0,6% tính theo khối lượng
+    72141011 Có mặt cắt ngang hình tròn
+    72141019 Loại khác  [LK]
+  [7214102] Loại khác
+    72141021 Có mặt cắt ngang hình tròn
+    72141029 Loại khác  [LK]
+
+- 7214101 TIEU_DE
+    tieuDe.7214101 [58 ký tự]: 7214101 Có hàm lượng carbon dưới 0,6% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "dưới 0,6% tính theo khối lượng"
+- 72141011 DONG8
+    tax.72141011 [41 ký tự]: 72141011 - - - Có mặt cắt ngang hình tròn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt cắt ngang hình tròn"
+- 72141019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72141019 [24 ký tự]: 72141019 - - - Loại khác
+- 7214102 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7214102 [17 ký tự]: 7214102 Loại khác
+- 72141021 DONG8
+    tax.72141021 [41 ký tự]: 72141021 - - - Có mặt cắt ngang hình tròn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt cắt ngang hình tròn"
+- 72141029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72141029 [24 ký tự]: 72141029 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721410; chú giải: nhom7214.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721420 ===
+# 721420 — Có răng khía, rãnh, gân hoặc các dạng khác được tạo thành trong quá trình cán hoặc xoắn sau khi cán
+
+721420 — Iron or non-alloy steel; bars and rods, hot-rolled, hot-drawn or hot-extruded, containing indentations, ribs, grooves or other deformations produced during the rolling process or twisted after rolling
+  [721420~r11268] Có hàm lượng carbon dưới 0,6% tính theo khối lượng  (tầng không mã, biểu thuế r11268, gạch 2)
+    [7214203] Có mặt cắt ngang hình tròn
+      72142031 Thép cốt bê tông  (gạch 4)
+      72142039 Loại khác  [LK]  (gạch 4)
+    [7214204] Loại khác
+      72142041 Thép cốt bê tông  (gạch 4)
+      72142049 Loại khác  [LK]  (gạch 4)
+  [721420~r11275] Loại khác  (tầng không mã, biểu thuế r11275, gạch 2)
+    [7214205] Có mặt cắt ngang hình tròn
+      72142051 Thép cốt bê tông  (gạch 4)
+      72142059 Loại khác  [LK]  (gạch 4)
+    [7214206] Loại khác
+      72142061 Thép cốt bê tông  (gạch 4)
+      72142069 Loại khác  [LK]  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    721420~r11268 (gạch 2) "Có hàm lượng carbon dưới 0,6% tính theo khối lượng:" — dòng dưới: 72142031, 72142039, 72142041, 72142049
+    721420~r11275 (gạch 2) "Loại khác:" — dòng dưới: 72142051, 72142059, 72142061, 72142069
+
+- 721420~r11268 TIEU_DE
+    tieuDe.721420~r11268 [64 ký tự]: 721420~r11268 Có hàm lượng carbon dưới 0,6% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "dưới 0,6% tính theo khối lượng"
+- 7214203 TIEU_DE
+    tieuDe.7214203 [34 ký tự]: 7214203 Có mặt cắt ngang hình tròn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt cắt ngang hình tròn"
+- 72142031 DONG8
+    tax.72142031 [33 ký tự]: 72142031 - - - - Thép cốt bê tông
+- 72142039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72142039 [26 ký tự]: 72142039 - - - - Loại khác
+- 7214204 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7214204 [17 ký tự]: 7214204 Loại khác
+- 72142041 DONG8
+    tax.72142041 [33 ký tự]: 72142041 - - - - Thép cốt bê tông
+- 72142049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72142049 [26 ký tự]: 72142049 - - - - Loại khác
+- 721420~r11275 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.721420~r11275 [23 ký tự]: 721420~r11275 Loại khác
+- 7214205 TIEU_DE
+    tieuDe.7214205 [34 ký tự]: 7214205 Có mặt cắt ngang hình tròn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt cắt ngang hình tròn"
+- 72142051 DONG8
+    tax.72142051 [33 ký tự]: 72142051 - - - - Thép cốt bê tông
+- 72142059 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72142059 [26 ký tự]: 72142059 - - - - Loại khác
+- 7214206 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7214206 [17 ký tự]: 7214206 Loại khác
+- 72142061 DONG8
+    tax.72142061 [33 ký tự]: 72142061 - - - - Thép cốt bê tông
+- 72142069 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72142069 [26 ký tự]: 72142069 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721420; chú giải: nhom7214.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721430 ===
+# 721430 — Loại khác, bằng thép dễ cắt gọt
+
+721430 — Iron or non-alloy steel; bars and rods, hot-rolled, hot-drawn or hot-extruded, including those twisted after rolling, of free-cutting steel
+  72143010 Có mặt cắt ngang hình tròn
+  72143090 Loại khác  [LK]
+
+- 72143010 DONG8
+    tax.72143010 [39 ký tự]: 72143010 - - Có mặt cắt ngang hình tròn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt cắt ngang hình tròn"
+- 72143090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72143090 [22 ký tự]: 72143090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721430; chú giải: nhom7214.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721510 ===
+# 721510 — Bằng thép dễ cắt gọt, chưa được gia công quá mức tạo hình nguội hoặc gia công kết thúc nguội
+
+721510 — Iron or non-alloy steel; bars and rods, of free-cutting steel, cold-formed or cold-finished, n.e.c. in chapter 72
+  72151010 Có mặt cắt ngang hình tròn
+  72151090 Loại khác  [LK]
+
+- 72151010 DONG8
+    tax.72151010 [39 ký tự]: 72151010 - - Có mặt cắt ngang hình tròn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt cắt ngang hình tròn"
+- 72151090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72151090 [22 ký tự]: 72151090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721510; chú giải: nhom7215.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721550 ===
+# 721550 — Loại khác, chưa được gia công quá mức tạo hình nguội hoặc gia công kết thúc nguội
+
+721550 — Iron or non-alloy steel; bars and rods, n.e.c. in chapter 72, cold-formed or cold-finished, (not free-cutting)
+  72155010 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn
+  [7215509] Loại khác
+    72155091 Thép cốt bê tông
+    72155099 Loại khác  [LK]
+
+- 72155010 DONG8
+    tax.72155010 [104 ký tự]: 72155010 - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "từ 0,6% trở lên tính theo khối lượng" · [GIỚI HẠN] "trừ dạng mặt cắt ngang hình tròn"
+- 7215509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7215509 [17 ký tự]: 7215509 Loại khác
+- 72155091 DONG8
+    tax.72155091 [31 ký tự]: 72155091 - - - Thép cốt bê tông
+- 72155099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72155099 [24 ký tự]: 72155099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721550; chú giải: nhom7215.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721590 ===
+# 721590 — Loại khác
+
+721590 — Iron or non-alloy steel; bars and rods, n.e.c. in chapter 72, n.e.c. in heading no. 7215
+  72159010 Thép cốt bê tông
+  [7215909] Loại khác
+    72159091 Có mặt cắt ngang hình tròn
+    72159099 Loại khác  [LK]
+
+- 72159010 DONG8
+    tax.72159010 [29 ký tự]: 72159010 - - Thép cốt bê tông
+- 7215909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7215909 [17 ký tự]: 7215909 Loại khác
+- 72159091 DONG8
+    tax.72159091 [41 ký tự]: 72159091 - - - Có mặt cắt ngang hình tròn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt cắt ngang hình tròn"
+- 72159099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72159099 [24 ký tự]: 72159099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721590; chú giải: nhom7215.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721621 ===
+# 721621 — Hình chữ L
+
+721621 — Iron or non-alloy steel; L sections, hot-rolled, hot-drawn or extruded, of a height of less than 80mm
+  72162110 Có hàm lượng carbon dưới 0,6% tính theo khối lượng
+  72162190 Loại khác  [LK]
+
+- 72162110 DONG8
+    tax.72162110 [65 ký tự]: 72162110 - - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "dưới 0,6% tính theo khối lượng"
+- 72162190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72162190 [24 ký tự]: 72162190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721621; chú giải: nhom7216.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721631 ===
+# 721631 — Hình chữ U
+
+721631 — Iron or non-alloy steel; U sections, hot-rolled, hot-drawn or extruded, of a height of 80mm or more
+  72163110 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+  72163190 Loại khác  [LK]
+
+- 72163110 DONG8
+    tax.72163110 [71 ký tự]: 72163110 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "từ 0,6% trở lên tính theo khối lượng"
+- 72163190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72163190 [24 ký tự]: 72163190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721631; chú giải: nhom7216.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721632 ===
+# 721632 — Hình chữ I
+
+721632 — Iron or non-alloy steel; I sections, hot-rolled, hot-drawn or extruded, of a height of 80mm or more
+  72163210 Chiều dày từ 5 mm trở xuống
+  72163290 Loại khác  [LK]
+
+- 72163210 DONG8
+    tax.72163210 [42 ký tự]: 72163210 - - - Chiều dày từ 5 mm trở xuống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều dày từ 5 mm trở xuống"
+- 72163290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72163290 [24 ký tự]: 72163290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721632; chú giải: nhom7216.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721640 ===
+# 721640 — Hình chữ L hoặc chữ T, chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn, có chiều cao từ 80 mm trở lên
+
+721640 — Iron or non-alloy steel; L or T sections, hot-rolled, hot-drawn or extruded, of a height of 80mm or more
+  72164010 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+  72164090 Loại khác  [LK]
+
+- 72164010 DONG8
+    tax.72164010 [69 ký tự]: 72164010 - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "từ 0,6% trở lên tính theo khối lượng"
+- 72164090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72164090 [22 ký tự]: 72164090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721640; chú giải: nhom7216.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721650 ===
+# 721650 — Góc, khuôn và hình khác, chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn qua khuôn
+
+721650 — Iron or non-alloy steel; angles, shapes and sections, n.e.c. in heading no. 7216, hot-rolled, hot-drawn or extruded
+  [7216501] Có chiều cao dưới 80 mm
+    72165011 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+    72165019 Loại khác  [LK]
+  [7216509] Loại khác
+    72165091 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+    72165099 Loại khác  [LK]
+
+- 7216501 TIEU_DE
+    tieuDe.7216501 [31 ký tự]: 7216501 Có chiều cao dưới 80 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chiều cao dưới 80 mm"
+- 72165011 DONG8
+    tax.72165011 [71 ký tự]: 72165011 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "từ 0,6% trở lên tính theo khối lượng"
+- 72165019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72165019 [24 ký tự]: 72165019 - - - Loại khác
+- 7216509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7216509 [17 ký tự]: 7216509 Loại khác
+- 72165091 DONG8
+    tax.72165091 [71 ký tự]: 72165091 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "từ 0,6% trở lên tính theo khối lượng"
+- 72165099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72165099 [24 ký tự]: 72165099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721650; chú giải: nhom7216.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721691 ===
+# 721691 — Được tạo hình nguội hoặc gia công kết thúc nguội từ các sản phẩm cán phẳng
+
+721691 — Iron or non-alloy steel; angles, shapes and sections, n.e.c. in heading no. 7216, cold-formed or cold-finished, from flat-rolled products
+  72169110 Dạng góc, trừ góc đục lỗ, rãnh, có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+  72169190 Loại khác  [LK]
+
+- 72169110 DONG8
+    tax.72169110 [103 ký tự]: 72169110 - - - Dạng góc, trừ góc đục lỗ, rãnh, có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "trừ góc đục lỗ, rãnh, có hàm lượng carbon" · [GIỚI HẠN] "từ 0,6% trở lên tính theo khối lượng"
+- 72169190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72169190 [24 ký tự]: 72169190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721691; chú giải: nhom7216.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 721790 ===
+# 721790 — Loại khác
+
+721790 — Iron or non-alloy steel; wire, n.e.c. in heading no. 7217
+  72179010 Có hàm lượng carbon dưới 0,25% tính theo khối lượng
+  72179090 Loại khác  [LK]
+
+- 72179010 DONG8
+    tax.72179010 [64 ký tự]: 72179010 - - Có hàm lượng carbon dưới 0,25% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "dưới 0,25% tính theo khối lượng"
+- 72179090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72179090 [22 ký tự]: 72179090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721790; chú giải: nhom7217.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 722011 ===
+# 722011 — Chiều dày từ 4,75 mm trở lên
+
+722011 — Steel, stainless; flat-rolled, width less than 600mm, hot-rolled, of a thickness of 4.75mm or more
+  72201110 Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+  72201190 Loại khác  [LK]
+
+- 72201110 DONG8
+    tax.72201110 [64 ký tự]: 72201110 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chiều rộng không quá 400 mm"
+- 72201190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72201190 [24 ký tự]: 72201190 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7220, wco.722011; chú giải: nhom7220.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 722012 ===
+# 722012 — Chiều dày dưới 4,75 mm
+
+722012 — Steel, stainless; flat-rolled, width less than 600mm, hot-rolled, of a thickness of less than 4.75mm
+  72201210 Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+  72201290 Loại khác  [LK]
+
+- 72201210 DONG8
+    tax.72201210 [64 ký tự]: 72201210 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chiều rộng không quá 400 mm"
+- 72201290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72201290 [24 ký tự]: 72201290 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7220, wco.722012; chú giải: nhom7220.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 722020 ===
+# 722020 — Chưa được gia công quá mức cán nguội (ép nguội)
+
+722020 — Steel, stainless; flat-rolled, width less than 600mm, cold-rolled
+  72202010 Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+  72202090 Loại khác  [LK]
+
+- 72202010 DONG8
+    tax.72202010 [62 ký tự]: 72202010 - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chiều rộng không quá 400 mm"
+- 72202090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72202090 [22 ký tự]: 72202090 - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7220, wco.722020; chú giải: nhom7220.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 722090 ===
+# 722090 — Loại khác
+
+722090 — Steel, stainless; flat-rolled, width less than 600mm, n.e.c. in heading no 7220
+  72209010 Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+  72209090 Loại khác  [LK]
+
+- 72209010 DONG8
+    tax.72209010 [62 ký tự]: 72209010 - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chiều rộng không quá 400 mm"
+- 72209090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72209090 [22 ký tự]: 72209090 - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7220, wco.722090; chú giải: nhom7220.nhom, ch72.chuong, phan72.phan
+
+=== GÓI PN6 722220 ===
+# 722220 — Dạng thanh và que, chưa được gia công quá mức tạo hình nguội hoặc gia công kết thúc nguội
+
+722220 — Steel, stainless; bars and rods, cold-formed or cold-finished
+  72222010 Có mặt cắt ngang hình tròn
+  72222090 Loại khác  [LK]
+
+- 72222010 DONG8
+    tax.72222010 [39 ký tự]: 72222010 - - Có mặt cắt ngang hình tròn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có mặt cắt ngang hình tròn"
+- 72222090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72222090 [22 ký tự]: 72222090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.722220; chú giải: nhom7222.nhom, ch72.chuong, phan72.phan
