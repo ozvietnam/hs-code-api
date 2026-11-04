@@ -1161,6 +1161,121 @@
         "cachDoc.vi",
         "cachDoc.en"
       ]
+    },
+    "chuaGiaCongQuaMucCanNong": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí mức độ gia công thép thanh que nhóm 72.22, 72.28 chuẩn. Tuy nhiên regex đòi hỏi đồng thời cả ba phương pháp 'cán nóng, kéo nóng hoặc ép đùn qua khuôn', khiến trượt các lô hàng chỉ khai báo riêng phương pháp cán nóng ('not further worked than hot-rolled').",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "hamLuongCrom": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí hàm lượng crom (%) nhóm 72.27, 72.29 chuẩn. Tuy nhiên mẫu regex chỉ nhận từ đầy đủ 'crom/crôm/chromium', bỏ sót hoàn toàn ký hiệu hóa học 'Cr' vốn được dùng trên hầu hết chứng thư giám định MTC và tờ khai ('thành phần Cr: 0.8%', 'Cr: 1.2%').",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "phoiDetDangPhien": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phôi dẹt dạng phiến (slabs) nhóm 72.07 chuẩn. Tuy nhiên regex tiếng Việt chỉ nhận 'phôi dẹt' sẽ bỏ sót cách khai báo phổ biến của các nhà máy thép là 'phôi thép dẹt', 'phôi phiến' hay 'phôi slab'.",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi"
+      ]
+    },
+    "ongVaPhuKienKimLoaiMau": {
+      "ketLuan": "SUA",
+      "lyDo": "Đúng tiêu chí phân loại nhóm 78.06, 79.07, 80.07. Nhưng regex sao chép nguyên văn cụm liên kết 'ống, ống dẫn VÀ phụ kiện', khiến trượt 100% các lô hàng chỉ nhập riêng ống ('ống chì', 'lead pipes') hoặc riêng phụ kiện ghép nối ('zinc pipe fittings').",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "loaiDoChoi": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phân loại đồ chơi nhóm 95.03 rất chuẩn. Tuy nhiên các nhánh giá trị chứa nguyên văn câu dài của biểu thuế với dấu chấm phẩy và ngoặc kép, làm trượt các tên thương mại thông dụng như 'búp bê Barbie', 'mô hình tĩnh', 'thú bông' hay 'Lego'.",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.BUP_BE.cachDoc.vi",
+        "moTaGiaTri.BUP_BE.cachDoc.en",
+        "moTaGiaTri.PHU_KIEN_BUP_BE.cachDoc.vi",
+        "moTaGiaTri.XE_DIEN_DUONG_RAY.cachDoc.vi",
+        "moTaGiaTri.MO_HINH_THU_NHO.cachDoc.vi",
+        "moTaGiaTri.HINH_CON_VAT.cachDoc.vi",
+        "moTaGiaTri.HINH_CON_VAT.cachDoc.en"
+      ]
+    },
+    "kieuChieuSangDen": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí đèn pha và đèn rọi nhóm 94.05 rất chuẩn. Tuy nhiên mẫu tiếng Anh thiếu cách viết có dấu cách ('flood light', 'spot light') vốn là cách ghi chiếm phần lớn trên các catalog và hóa đơn thương mại.",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.DEN_PHA.cachDoc.vi",
+        "moTaGiaTri.DEN_PHA.cachDoc.en",
+        "moTaGiaTri.DEN_ROI.cachDoc.vi",
+        "moTaGiaTri.DEN_ROI.cachDoc.en"
+      ]
+    },
+    "tuHutHoiDoc": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí tủ hút hơi độc phòng thí nghiệm nhóm 94.03 chuẩn. Nhưng mẫu tiếng Anh chỉ có thuật ngữ Anh-Anh 'fume cupboard', bỏ sót hoàn toàn thuật ngữ quốc tế phổ biến nhất là 'fume hood' (chiếm 90% thực tế).",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "denChoPhongMo": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí đèn phòng mổ nhóm 94.05 chuẩn. Tuy nhiên tiếng Việt thiếu từ 'đèn mổ', 'đèn phẫu thuật' và tiếng Anh thiếu thuật ngữ quốc tế 'surgical lights / lamps', làm trượt phần lớn các khai báo thiết bị y tế thực tế.",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "hopDungThuocLaTrangTri": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí nhóm 96.01, 96.02 chuẩn. Nhưng regex gộp cả chuỗi 4 mặt hàng với dấu chấm phẩy ('hộp xì gà...; đồ trang trí'), khiến trượt 100% các tờ khai thực tế chỉ nhập khẩu riêng đồ trang trí điêu khắc ('ornamental articles') hoặc riêng hộp xì gà.",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "loaiNoiThatYTe": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí nội thất y tế nhóm 94.02 chuẩn. Tuy nhiên GHE_VE_SINH_NGUOI_BENH bắt buộc cả cụm dài làm trượt tên thương mại phổ biến 'ghế bô vệ sinh', và GIUONG_BENH thiếu từ 'giường y tế' / 'medical beds'.",
+      "goi": "12",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.GHE_VE_SINH_NGUOI_BENH.cachDoc.vi",
+        "moTaGiaTri.GHE_VE_SINH_NGUOI_BENH.cachDoc.en",
+        "moTaGiaTri.BAN_KHAM.cachDoc.en",
+        "moTaGiaTri.GIUONG_BENH.cachDoc.vi",
+        "moTaGiaTri.GIUONG_BENH.cachDoc.en"
+      ]
     }
   }
 }

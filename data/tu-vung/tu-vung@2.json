@@ -12728,13 +12728,19 @@
       "nhanZh": "除热轧、热拉拔或挤压外未经进一步加工",
       "cachDoc": {
         "vi": [
-          "chưa\\s+được\\s+gia\\s+công\\s+quá\\s+mức\\s+cán\\s+nóng,\\s*kéo\\s+nóng\\s+hoặc\\s+ép\\s+đùn\\s+qua\\s+khuôn"
+          "chưa\\s+được\\s+gia\\s+công\\s+quá\\s+mức\\s+cán\\s+nóng,\\s*kéo\\s+nóng\\s+hoặc\\s+ép\\s+đùn\\s+qua\\s+khuôn",
+          "chưa\\s+(?:được\\s+)?gia\\s+công\\s+quá\\s+mức\\s+(?:cán\\s+nóng|kéo\\s+nóng|ép\\s+đùn)",
+          "(?:cán\\s+nóng|kéo\\s+nóng|ép\\s+đùn)(?:,\\s*chưa\\s+gia\\s+công\\s+thêm)?"
         ],
         "en": [
-          "not\\s+further\\s+worked\\s+than\\s+hot-?rolled,?\\s*hot-?drawn\\s+or\\s+extruded"
+          "not\\s+further\\s+worked\\s+than\\s+hot-?rolled,?\\s*hot-?drawn\\s+or\\s+extruded",
+          "not\\s+further\\s+worked\\s+than\\s+(?:hot-?rolled|hot-?drawn|extruded)",
+          "hot-?rolled(?:,\\s*not\\s+further\\s+worked)?"
         ],
         "zh": [
-          "除热轧、热拉拔或挤压外未经进一步加工"
+          "除热轧、热拉拔或挤压外未经进一步加工",
+          "除(?:热轧|热拉拔|挤压)外未经进一步加工",
+          "热轧未进一步加工"
         ],
         "phuDinh": [
           "đã gia công quá mức",
@@ -12777,13 +12783,21 @@
       "cachDoc": {
         "vi": [
           "(?:có\\s+)?hàm\\s+lượng\\s+crôm",
-          "(?:có\\s+)?hàm\\s+lượng\\s+crom"
+          "(?:có\\s+)?hàm\\s+lượng\\s+crom",
+          "hàm\\s+lượng\\s+cr\\b",
+          "thành\\s+phần\\s+cr(?:ôm|om)?\\b",
+          "\\bcr\\s*[:=]"
         ],
         "en": [
-          "chromium\\s+content"
+          "chromium\\s+content",
+          "\\bcr\\s+content\\b",
+          "\\bchromium\\s*[:=]",
+          "\\bcr\\s*[:=]"
         ],
         "zh": [
-          "铬含量"
+          "铬含量",
+          "含铬量",
+          "\\bcr含量\\b"
         ]
       },
       "cachViet": {
@@ -12805,7 +12819,10 @@
       "nhanZh": "扁坯（扁钢坯）",
       "cachDoc": {
         "vi": [
-          "phôi\\s+dẹt(?:\\s*\\(dạng\\s+phiến\\))?(?:\\s*\\(SEN\\))?"
+          "phôi\\s+dẹt(?:\\s*\\(dạng\\s+phiến\\))?(?:\\s*\\(SEN\\))?",
+          "phôi(?:\\s+thép)?\\s+dẹt",
+          "phôi\\s+(?:dạng\\s+)?phiến",
+          "phôi\\s+slab"
         ],
         "en": [
           "slabs?"
@@ -12854,13 +12871,20 @@
       "nhanZh": "有色金属管、导管及管子附件",
       "cachDoc": {
         "vi": [
-          "(?:các\\s+loại\\s+)?ống,\\s*ống\\s+dẫn\\s+và\\s+phụ\\s+kiện\\s+để\\s+ghép\\s+nối\\s+của\\s+ống\\s+hoặc\\s+ống\\s+dẫn(?:\\s*\\([^)]*\\))?"
+          "(?:các\\s+loại\\s+)?ống,\\s*ống\\s+dẫn\\s+và\\s+phụ\\s+kiện\\s+để\\s+ghép\\s+nối\\s+của\\s+ống\\s+hoặc\\s+ống\\s+dẫn(?:\\s*\\([^)]*\\))?",
+          "(?:ống|ống\\s+dẫn)(?:\\s+bằng)?\\s+(?:chì|kẽm|thiếc)",
+          "phụ\\s+kiện\\s+(?:để\\s+)?ghép\\s+nối\\s+(?:của\\s+)?(?:ống|ống\\s+dẫn)(?:\\s+bằng)?(?:\\s+(?:chì|kẽm|thiếc))?",
+          "(?:khớp\\s+nối\\s+đôi|nối\\s+khuỷu|măng\\s+sông)(?:\\s+bằng)?(?:\\s+(?:chì|kẽm|thiếc))?"
         ],
         "en": [
-          "tubes?,?\\s*pipes?\\s+and\\s+tube\\s+or\\s+pipe\\s+fittings?"
+          "tubes?,?\\s*pipes?\\s+and\\s+tube\\s+or\\s+pipe\\s+fittings?",
+          "(?:lead|zinc|tin)\\s+(?:tubes?|pipes?|conduits?)",
+          "(?:tube\\s+or\\s+pipe\\s+fittings?|pipe\\s+fittings?)(?:\\s+of\\s+(?:lead|zinc|tin))?"
         ],
         "zh": [
-          "管、导管及管子附件"
+          "管、导管及管子附件",
+          "(?:铅|锌|锡)制?(?:管|导管|管子附件)",
+          "管子附件"
         ],
         "phuDinh": [
           "không phải",
@@ -12917,10 +12941,12 @@
           "nhanZh": "玩偶（洋娃娃），不论是否着装",
           "cachDoc": {
             "vi": [
-              "búp\\s+bê,\\s*có\\s+hoặc\\s+không\\s+có\\s+trang\\s+phục"
+              "búp\\s+bê,\\s*có\\s+hoặc\\s+không\\s+có\\s+trang\\s+phục",
+              "(?:đồ\\s+chơi\\s+)?búp\\s+bê(?:\\s+em\\s+bé)?"
             ],
             "en": [
-              "dolls?,?\\s*whether\\s+or\\s+not\\s+dressed"
+              "dolls?,?\\s*whether\\s+or\\s+not\\s+dressed",
+              "(?:baby\\s+)?dolls?"
             ],
             "zh": [
               "玩偶，不论是否着装",
@@ -12935,7 +12961,8 @@
           "nhanZh": "玩偶衣服及其附件、鞋靴及帽子",
           "cachDoc": {
             "vi": [
-              "quần\\s+áo\\s+và\\s+phụ\\s+kiện\\s+quần\\s+áo;\\s*giầy\\s+và\\s+mũ"
+              "quần\\s+áo\\s+và\\s+phụ\\s+kiện\\s+quần\\s+áo;\\s*giầy\\s+và\\s+mũ",
+              "(?:quần\\s+áo|trang\\s+phục|phụ\\s+kiện|giày|mũ)\\s+(?:cho\\s+|của\\s+)?búp\\s+bê"
             ],
             "en": [
               "garments\\s+and\\s+accessories\\s+therefor;?\\s*footwear\\s+and\\s+headgear"
@@ -12952,7 +12979,9 @@
           "nhanZh": "电动火车，包括铁轨、信号灯及其他附件",
           "cachDoc": {
             "vi": [
-              "xe\\s+điện,\\s*kể\\s+cả\\s+đường\\s+ray,\\s*đèn\\s+hiệu\\s+và\\s+các\\s+phụ\\s+kiện\\s+khác\\s+của\\s+chúng"
+              "xe\\s+điện,\\s*kể\\s+cả\\s+đường\\s+ray,\\s*đèn\\s+hiệu\\s+và\\s+các\\s+phụ\\s+kiện\\s+khác\\s+của\\s+chúng",
+              "(?:đồ\\s+chơi\\s+)?(?:xe\\s+lửa|tàu\\s+hỏa)(?:\\s+chạy\\s+điện)?",
+              "đường\\s+ray\\s+(?:tàu\\s+hỏa|xe\\s+lửa)\\s+đồ\\s+chơi"
             ],
             "en": [
               "electric\\s+trains?,?\\s*including\\s+tracks?,?\\s*signals?\\s+and\\s+other\\s+accessories?"
@@ -12969,7 +12998,8 @@
           "nhanZh": "按比例缩小的模型及类似娱乐模型",
           "cachDoc": {
             "vi": [
-              "các\\s+mô\\s+hình\\s+thu\\s+nhỏ\\s+theo\\s+tỷ\\s+lệ\\s*\\(\"scale\"\\)\\s+và\\s+các\\s+mô\\s+hình\\s+giải\\s+trí\\s+tương\\s+tự(?:,\\s*có\\s+hoặc\\s+không\\s+vận\\s+hành)?"
+              "các\\s+mô\\s+hình\\s+thu\\s+nhỏ\\s+theo\\s+tỷ\\s+lệ\\s*\\(\"scale\"\\)\\s+và\\s+các\\s+mô\\s+hình\\s+giải\\s+trí\\s+tương\\s+tự(?:,\\s*có\\s+hoặc\\s+không\\s+vận\\s+hành)?",
+              "mô\\s+hình\\s+(?:thu\\s+nhỏ|tĩnh|theo\\s+tỷ\\s+lệ|giải\\s+trí)"
             ],
             "en": [
               "reduced-?size\\s*\\(\"scale\"\\)\\s*models?\\s+and\\s+similar\\s+recreational\\s+models?"
@@ -12986,10 +13016,15 @@
           "nhanZh": "动物或非人类生物形状的玩具",
           "cachDoc": {
             "vi": [
-              "đồ\\s+chơi\\s+hình\\s+con\\s+vật\\s+hoặc\\s+sinh\\s+vật\\s+không\\s+phải\\s+hình\\s+người"
+              "đồ\\s+chơi\\s+hình\\s+con\\s+vật\\s+hoặc\\s+sinh\\s+vật\\s+không\\s+phải\\s+hình\\s+người",
+              "(?:đồ\\s+chơi\\s+)?(?:hình\\s+)?(?:thú|con\\s+vật|sinh\\s+vật)",
+              "(?:thú|gấu)\\s+nhồi\\s+bông",
+              "thú\\s+bông"
             ],
             "en": [
-              "toys\\s+representing\\s+animals?\\s+or\\s+non-?human\\s+creatures?"
+              "toys\\s+representing\\s+animals?\\s+or\\s+non-?human\\s+creatures?",
+              "(?:stuffed|plush)\\s+animals?",
+              "animal\\s+toys?"
             ],
             "zh": [
               "动物或非人类生物形状的玩具"
@@ -13102,10 +13137,11 @@
           "nhanZh": "泛光灯/泛光投光灯",
           "cachDoc": {
             "vi": [
-              "(?:loại\\s+khác,\\s*)?đèn\\s+pha"
+              "(?:loại\\s+khác,\\s*)?đèn\\s+pha",
+              "đèn\\s+chiếu\\s+pha"
             ],
             "en": [
-              "floodlights?"
+              "flood[- ]?lights?"
             ],
             "zh": [
               "泛光灯",
@@ -13120,10 +13156,11 @@
           "nhanZh": "聚光灯/射灯",
           "cachDoc": {
             "vi": [
-              "(?:loại\\s+khác,\\s*)?đèn\\s+rọi(?:\\s+khác)?"
+              "(?:loại\\s+khác,\\s*)?đèn\\s+rọi(?:\\s+khác)?",
+              "đèn\\s+(?:chiếu\\s+)?rọi(?:\\s+ray)?"
             ],
             "en": [
-              "(?:other\\s+)?spotlights?"
+              "(?:other\\s+)?spot[- ]?lights?"
             ],
             "zh": [
               "聚光灯",
@@ -13158,14 +13195,18 @@
       "nhanZh": "通风柜/排毒柜",
       "cachDoc": {
         "vi": [
-          "tủ\\s+hút\\s+hơi\\s+độc(?:\\s*\\(SEN\\))?"
+          "tủ\\s+hút\\s+hơi\\s+độc(?:\\s*\\(SEN\\))?",
+          "tủ\\s+hút\\s+(?:khí|hơi)?\\s*độc",
+          "tủ\\s+hút\\s+phòng\\s+thí\\s+nghiệm"
         ],
         "en": [
-          "fume\\s+cupboards?"
+          "fume\\s+cupboards?",
+          "(?:chemical\\s+|laboratory\\s+)?fume\\s+hoods?"
         ],
         "zh": [
           "通风柜",
-          "排毒柜"
+          "排毒柜",
+          "通风橱"
         ],
         "phuDinh": [
           "không phải",
@@ -13206,14 +13247,20 @@
       "nhanZh": "手术室用灯（无影灯）",
       "cachDoc": {
         "vi": [
-          "đèn\\s+(?:cho\\s+)?phòng\\s+mổ"
+          "đèn\\s+(?:cho\\s+)?phòng\\s+mổ",
+          "đèn\\s+mổ(?:\\s+phẫu\\s+thuật|\\s+vô\\s+ảnh)?",
+          "đèn\\s+phẫu\\s+thuật"
         ],
         "en": [
-          "operating\\s+lamps?"
+          "operating\\s+lamps?",
+          "(?:operating|surgical)\\s+(?:lamps?|lights?)",
+          "shadowless\\s+(?:operating|surgical)\\s+(?:lamps?|lights?)"
         ],
         "zh": [
           "手术室用灯",
-          "手术无影灯"
+          "手术无影灯",
+          "无影灯",
+          "手术灯"
         ],
         "phuDinh": [
           "không phải",
@@ -13254,13 +13301,24 @@
       "nhanZh": "雪茄烟盒、香烟盒、烟草罐；装饰品",
       "cachDoc": {
         "vi": [
-          "hộp\\s+đựng\\s+xì\\s+gà\\s+hoặc\\s+thuốc\\s+lá\\s+điếu,\\s*bình\\s+đựng\\s+thuốc\\s+lá;\\s*đồ\\s+trang\\s+trí"
+          "hộp\\s+đựng\\s+xì\\s+gà\\s+hoặc\\s+thuốc\\s+lá\\s+điếu,\\s*bình\\s+đựng\\s+thuốc\\s+lá;\\s*đồ\\s+trang\\s+trí",
+          "hộp\\s+đựng\\s+(?:xì\\s+gà|thuốc\\s+lá(?:\\s+điếu)?)",
+          "bình\\s+đựng\\s+thuốc\\s+lá",
+          "(?:đồ|vật\\s+phẩm)\\s+trang\\s+trí"
         ],
         "en": [
-          "cigar\\s+or\\s+cigarette\\s+cases?,?\\s*tobacco\\s+jars?;?\\s*ornamental\\s+articles?"
+          "cigar\\s+or\\s+cigarette\\s+cases?,?\\s*tobacco\\s+jars?;?\\s*ornamental\\s+articles?",
+          "(?:cigar|cigarette)\\s+cases?",
+          "tobacco\\s+jars?",
+          "ornamental\\s+articles?",
+          "ornaments?"
         ],
         "zh": [
-          "雪茄烟盒、香烟盒、烟草罐；装饰品"
+          "雪茄烟盒、香烟盒、烟草罐；装饰品",
+          "雪茄烟盒",
+          "香烟盒",
+          "烟草罐",
+          "装饰品"
         ],
         "phuDinh": [
           "không phải",
@@ -13311,10 +13369,13 @@
           "nhanZh": "病患便桶椅",
           "cachDoc": {
             "vi": [
-              "ghế\\s+vệ\\s+sinh\\s+dành\\s+cho\\s+người\\s+bệnh(?:\\s*\\(Commodes\\))?(?:\\s*\\(SEN\\))?"
+              "ghế\\s+vệ\\s+sinh\\s+dành\\s+cho\\s+người\\s+bệnh(?:\\s*\\(Commodes\\))?(?:\\s*\\(SEN\\))?",
+              "ghế\\s+(?:bô\\s+)?vệ\\s+sinh(?:\\s+(?:cho|dành\\s+cho)\\s+(?:người\\s+bệnh|bệnh\\s+nhân|người\\s+già))?",
+              "\\bcommodes?\\b"
             ],
             "en": [
-              "commodes?"
+              "commodes?",
+              "commode\\s+chairs?"
             ],
             "zh": [
               "便桶椅",
@@ -13332,7 +13393,8 @@
               "bàn\\s+khám(?:\\s*\\(SEN\\))?"
             ],
             "en": [
-              "examination\\s+tables?"
+              "examination\\s+tables?",
+              "examination\\s+(?:couches?|beds?)"
             ],
             "zh": [
               "诊查台",
@@ -13347,10 +13409,13 @@
           "nhanZh": "病床",
           "cachDoc": {
             "vi": [
-              "giường\\s+bệnh(?:\\s*\\(SEN\\))?"
+              "giường\\s+bệnh(?:\\s*\\(SEN\\))?",
+              "giường\\s+y\\s+tế",
+              "giường\\s+bệnh\\s+nhân"
             ],
             "en": [
-              "hospital\\s+beds?"
+              "hospital\\s+beds?",
+              "(?:medical|patient)\\s+beds?"
             ],
             "zh": [
               "病床"
