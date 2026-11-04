@@ -4675,12 +4675,12 @@
           "nhanZh": "燃气",
           "cachDoc": {
             "vi": [
-              "bằng\\s+ga",
-              "dùng\\s+ga",
-              "chạy\\s+ga",
-              "đốt\\s+ga",
-              "bếp\\s+ga",
-              "lò\\s+(?:nướng\\s+)?ga",
+              "bằng\\s+ga[s]?",
+              "dùng\\s+ga[s]?",
+              "chạy\\s+ga[s]?",
+              "đốt\\s+ga[s]?",
+              "bếp\\s+ga[s]?",
+              "lò\\s+(?:nướng\\s+)?ga[s]?",
               "khí\\s+đốt"
             ],
             "en": [
@@ -6786,8 +6786,7 @@
             "vi": [
               "dầu\\s+thô",
               "dạng\\s+thô",
-              "chưa\\s+tinh\\s+chế",
-              "nguyên\\s+chất"
+              "chưa\\s+tinh\\s+chế"
             ],
             "en": [
               "crude(?:\\s+oil)?",
@@ -7137,11 +7136,13 @@
           "cachDoc": {
             "vi": [
               "đã\\s+xẻ\\s+dọc(?:,\\s*chưa\\s+gia\\s+công\\s+thêm)?",
-              "xẻ\\s+dọc\\s+chưa\\s+gia\\s+công"
+              "xẻ\\s+dọc\\s+chưa\\s+gia\\s+công",
+              "(?:gỗ\\s+)?xẻ\\s+thô(?:\\s+chưa\\s+bào)?"
             ],
             "en": [
               "sawn\\s+lengthwise(?:,\\s*not\\s+further\\s+worked)?",
-              "not\\s+further\\s+worked"
+              "not\\s+further\\s+worked",
+              "rough\\s+sawn"
             ],
             "zh": [
               "经纵锯",
@@ -7157,8 +7158,9 @@
           "nhanZh": "经刨光、砂光或指榫接合",
           "cachDoc": {
             "vi": [
-              "đã\\s+bào(?:,\\s*đã\\s+chà\\s+nhám\\s+hoặc\\s+nối\\s+đầu)?",
-              "đã\\s+chà\\s+nhám",
+              "(?:đã\\s+)?bào(?:,\\s*đã\\s+chà\\s+nhám\\s+hoặc\\s+nối\\s+đầu)?",
+              "bào\\s+(?:\\d\\s+mặt|nhẵn|mịn|s[24]s)",
+              "(?:đã\\s+)?chà\\s+nhám",
               "nối\\s+đầu",
               "ghép\\s+đầu",
               "finger-?joint(?:ed)?"
@@ -7167,7 +7169,9 @@
               "planed(?:,\\s*sanded\\s+or\\s+end-?jointed)?",
               "sanded",
               "end-?jointed",
-              "finger-?jointed"
+              "finger-?jointed",
+              "\\bs[24]s\\b",
+              "surfaced\\s+(?:2|4)\\s+sides"
             ],
             "zh": [
               "经刨光",
@@ -7273,7 +7277,7 @@
         "en": [
           "multi-?ply",
           "multi-?layer(?:ed)?",
-          "laminated"
+          "multi-?laminate(?:d)?"
         ],
         "zh": [
           "多层",
@@ -7681,9 +7685,9 @@
               "mũi\\s+thép"
             ],
             "en": [
-              "protective\\s+metal\\s+toe-?caps?",
-              "metal\\s+toe-?caps?",
-              "steel\\s+toe-?caps?"
+              "protective\\s+metal\\s+toe(?:[- ]?caps?)?",
+              "metal\\s+toe(?:[- ]?caps?)?",
+              "steel\\s+toe(?:[- ]?caps?)?"
             ],
             "zh": [
               "金属保护包头",
@@ -7704,9 +7708,9 @@
               "mũi\\s+composite"
             ],
             "en": [
-              "protective\\s+toe-?caps?\\s+other\\s+than\\s+metal",
-              "non-?metal\\s+toe-?caps?",
-              "composite\\s+toe-?caps?"
+              "protective\\s+toe(?:[- ]?caps?)?\\s+other\\s+than\\s+metal",
+              "non-?metal\\s+toe(?:[- ]?caps?)?",
+              "composite\\s+toe(?:[- ]?caps?)?"
             ],
             "zh": [
               "非金属保护包头",
@@ -8139,7 +8143,8 @@
           "hình\\s+chữ\\s+nhật"
         ],
         "en": [
-          "square",
+          "square(?!\\s*(?:meter|metre|feet|foot|yard|inch|m2|cm2|mm2|m\\b))",
+          "square\\s+(?:shape|sheet)",
           "rectangular",
           "rectangle"
         ],
