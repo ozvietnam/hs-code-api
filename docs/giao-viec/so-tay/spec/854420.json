@@ -1,0 +1,159 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "854420",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854420",
+  "dong8": {
+    "85442011": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ]
+    },
+    "85442021": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ]
+    },
+    "85442031": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ]
+    },
+    "85442041": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8544201": {
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "CO"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "8544202": {
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "KHONG"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "8544203": {
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "CO"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "8544204": {
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "KHONG"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8544201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544201: \"Cáp cách điện đã gắn với đầu nối, dùng cho điện áp không quá 66 kV\" ⇒ daGanDauNoi CO, dienAp <= 66 kV"
+    },
+    {
+      "ma": "85442011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85442011: \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu [\"cao su\",\"plastic\"] viTri CACH_DIEN"
+    },
+    {
+      "ma": "8544202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544202: \"Cáp cách điện chưa gắn với đầu nối, dùng cho điện áp không quá 66 kV\" ⇒ daGanDauNoi KHONG, dienAp <= 66 kV"
+    },
+    {
+      "ma": "85442021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85442021: \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu [\"cao su\",\"plastic\"] viTri CACH_DIEN"
+    },
+    {
+      "ma": "8544203",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544203: \"Cáp cách điện đã gắn với đầu nối, dùng cho điện áp trên 66 kV\" ⇒ daGanDauNoi CO, dienAp > 66 kV"
+    },
+    {
+      "ma": "85442031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85442031: \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu [\"cao su\",\"plastic\"] viTri CACH_DIEN"
+    },
+    {
+      "ma": "8544204",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544204: \"Cáp cách điện chưa gắn với đầu nối, dùng cho điện áp trên 66 kV\" ⇒ daGanDauNoi KHONG, dienAp > 66 kV"
+    },
+    {
+      "ma": "85442041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85442041: \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu [\"cao su\",\"plastic\"] viTri CACH_DIEN"
+    }
+  ]
+}

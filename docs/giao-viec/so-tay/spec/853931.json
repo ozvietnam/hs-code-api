@@ -1,0 +1,73 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853931",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853931",
+  "dong8": {
+    "85393110": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống huỳnh quang"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đèn huỳnh quang com-pắc"
+        }
+      ]
+    },
+    "85393120": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dạng ống thẳng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đèn huỳnh quang"
+        }
+      ]
+    },
+    "85393130": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bóng đèn huỳnh quang com-pắc"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "có chấn lưu lắp liền"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "85393110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85393110: \"Ống huỳnh quang dùng cho đèn huỳnh quang com-pắc\" ⇒ tenLoai \"Ống huỳnh quang\" + dungCho \"đèn huỳnh quang com-pắc\""
+    },
+    {
+      "ma": "85393120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85393120: \"Loại khác, dạng ống thẳng dùng cho đèn huỳnh quang khác\" ⇒ tenLoai \"dạng ống thẳng\" + dungCho \"đèn huỳnh quang\" (bỏ chữ \"khác\")"
+    },
+    {
+      "ma": "85393120",
+      "loai": "BO_VE",
+      "ve": "dùng cho đèn huỳnh quang khác",
+      "lyDo": "Đã phủ đích đèn huỳnh quang bằng dungCho và quy ước bỏ chữ khác"
+    },
+    {
+      "ma": "85393130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85393130: \"Bóng đèn huỳnh quang com-pắc đã có chấn lưu lắp liền (SEN)\" ⇒ tenLoai \"Bóng đèn huỳnh quang com-pắc\" + congDung \"có chấn lưu lắp liền\""
+    }
+  ]
+}
