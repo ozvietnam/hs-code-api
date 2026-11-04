@@ -66,7 +66,9 @@ const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNap
   // + 11 khoá lô 16 — gói ✗ máy ch.50–71 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 163 dòng máy chưa đọc ch.50–71; trích 19/19 đúng; + giá trị gộp tinhNangBaoHo
   thamCauNguyen: 'CO_KHONG', quanAoDauKiemDauVat: 'CO_KHONG', loaiSanPhamXiMangSoi: 'LIET_KE', tamLatGachLat: 'CO_KHONG', donNgucSauPhauThuat: 'CO_KHONG', boPhanGiayDep: 'LIET_KE', dungSanXuatOngChanKhong: 'CO_KHONG', aoBarongTagalog: 'CO_KHONG', sarongHinhOng: 'CO_KHONG', aoChoangHanhHuongIhram: 'CO_KHONG', giayDauVatCuTa: 'CO_KHONG',
   // + 11 khoá lô 17 — gói ✗ máy ch.72–83 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 157 dòng máy chưa đọc ch.72–83; trích 23/23 đúng; + lopMaPhu.SON_SAU_MA_KEM
-  dangDaiDaiTamPhoDung: 'LIET_KE', dangLuonSong: 'CO_KHONG', loaiDoDungGiaDinhSatThep: 'LIET_KE', xichXeDapMoTo: 'CO_KHONG', phuongPhapHanOngThep: 'LIET_KE', hopDungThuocLaDieu: 'CO_KHONG', banLeMocKhoaHasps: 'CO_KHONG', chuaGiaCongQuaMucCanNong: 'CO_KHONG', hamLuongCrom: 'SO', phoiDetDangPhien: 'CO_KHONG', ongVaPhuKienKimLoaiMau: 'CO_KHONG' };
+  dangDaiDaiTamPhoDung: 'LIET_KE', dangLuonSong: 'CO_KHONG', loaiDoDungGiaDinhSatThep: 'LIET_KE', xichXeDapMoTo: 'CO_KHONG', phuongPhapHanOngThep: 'LIET_KE', hopDungThuocLaDieu: 'CO_KHONG', banLeMocKhoaHasps: 'CO_KHONG', chuaGiaCongQuaMucCanNong: 'CO_KHONG', hamLuongCrom: 'SO', phoiDetDangPhien: 'CO_KHONG', ongVaPhuKienKimLoaiMau: 'CO_KHONG',
+  // + 6 khoá lô 18 — gói ✗ máy ch.90–98 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 266 dòng máy chưa đọc ch.90–98; trích 7/7 đúng; + mẫu dungChoXeCoDongCo (ch.98)
+  loaiDoChoi: 'LIET_KE', kieuChieuSangDen: 'LIET_KE', tuHutHoiDoc: 'CO_KHONG', denChoPhongMo: 'CO_KHONG', hopDungThuocLaTrangTri: 'CO_KHONG', loaiNoiThatYTe: 'LIET_KE' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
