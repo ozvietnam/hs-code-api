@@ -545,6 +545,122 @@
       "truongDaSua": [
         "cachDoc.en"
       ]
+    },
+    "bonBanhChuDong": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí xe bốn bánh chủ động (4WD/AWD) nhóm 87.03 rất chuẩn. Tuy nhiên tiền tố tuỳ chọn '(?:dẫn\\s+động\\s+)?' khiến mẫu bắt nhầm mọi xe ô tô thông thường khai là 'xe 4 bánh' hoặc 'bốn bánh'.",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi"
+      ]
+    },
+    "xeBaBanh": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí xe ba bánh (SEN) nhóm 87.03 và 87.04 chuẩn xác theo Biểu thuế. Các mẫu regex tiếng Việt, Anh, Trung chặt chẽ, không có nguy cơ bắt nhầm.",
+      "goi": "07",
+      "ngay": "2026-11-04"
+    },
+    "khoiLuongToanBo": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí khối lượng toàn bộ theo thiết kế (GVW) của ô tô nhóm 87.02, 87.04 đúng. Tuy nhiên mẫu tiếng Anh chứa từ 'gross weight' bắt nhầm trọng lượng cả bì của lô hàng trên mọi tờ khai và vận đơn.",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.en"
+      ]
+    },
+    "kieuXeChoNguoi": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phân loại kiểu xe chở người nhóm 87.02, 87.03 chuẩn. Tuy nhiên giá trị LIMOUSINE_KEO_DAI chứa nguyên văn chuỗi biểu thuế kèm dấu ngoặc đơn mở, khiến không thể nhận diện được các khai báo thực tế ('xe limousine kéo dài', 'stretch limousine').",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.LIMOUSINE_KEO_DAI.cachDoc.vi",
+        "moTaGiaTri.LIMOUSINE_KEO_DAI.cachDoc.en",
+        "moTaGiaTri.SEDAN.cachDoc.vi",
+        "moTaGiaTri.ATV.cachDoc.vi"
+      ]
+    },
+    "kieuXeChoHang": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí kiểu xe chở hàng nhóm 87.04 chuẩn xác. Tuy nhiên nhánh DONG_LANH có tiền tố tuỳ chọn bắt nhầm mọi mặt hàng đông lạnh ('tôm đông lạnh'), đồng thời bỏ sót hàng loạt thuật ngữ thương mại phổ biến như 'xe bán tải', 'xe ben', 'xe bồn', 'xe ép rác'.",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.DONG_LANH.cachDoc.vi",
+        "moTaGiaTri.THU_GOM_PHE_THAI.cachDoc.vi",
+        "moTaGiaTri.BOC_THEP.cachDoc.vi",
+        "moTaGiaTri.XI_TEC.cachDoc.vi",
+        "moTaGiaTri.TU_DO.cachDoc.vi",
+        "moTaGiaTri.PICK_UP.cachDoc.vi"
+      ]
+    },
+    "mayKeoNongNghiep": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí CO_KHONG máy kéo nông nghiệp nhóm 87.01 chuẩn xác theo biểu thuế. Mẫu regex tường minh, không có nguy cơ bắt nhầm.",
+      "goi": "07",
+      "ngay": "2026-11-04"
+    },
+    "loaiBoPhanDongCoPiston": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí các bộ phận chính động cơ piston nhóm 84.09 chuẩn. Tuy nhiên mẫu tiếng Việt bỏ sót các tên gọi thương mại kỹ thuật phổ biến nhất như 'lốc máy', 'block máy' (thân động cơ) và 'sơ mi xi lanh', 'cylinder sleeve' (ống xi lanh).",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.THAN_DONG_CO_HOP_TRUC_KHUYU.cachDoc.vi",
+        "moTaGiaTri.ONG_XI_LANH.cachDoc.vi",
+        "moTaGiaTri.ONG_XI_LANH.cachDoc.en"
+      ]
+    },
+    "dungTrongNongNghiep": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí công dụng nông nghiệp Chương 84 đúng thực tế Biểu thuế. Tuy nhiên mẫu tiếng Việt chỉ nhận 'trong nông nghiệp' sẽ bỏ sót cách diễn đạt rất phổ biến trên tờ khai là 'dùng cho nông nghiệp' hoặc 'phục vụ nông nghiệp'.",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi"
+      ]
+    },
+    "canDienTu": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phân biệt cân điện tử với cân cơ học nhóm 84.23 chuẩn. Nhưng mẫu tiếng Anh chỉ có 'electronic scale', bỏ sót hoàn toàn thuật ngữ thương mại 'digital scale' hay 'digital balance' chiếm đa số trên tờ khai quốc tế.",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.en"
+      ]
+    },
+    "mayRenKhuonHoacDapKhuon": {
+      "ketLuan": "SUA",
+      "lyDo": "Đúng tiêu chí máy gia công kim loại nhóm 84.62. Tuy nhiên mẫu regex bắt buộc phải có cả cụm liên kết 'hoặc' khiến hệ thống trượt 100% các tờ khai khai báo đơn lẻ từng loại máy ('máy rèn khuôn' hoặc 'máy dập khuôn').",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "dungTrongYTeHoacThiNghiem": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí ứng dụng y tế, phòng thí nghiệm nhóm 84.14, 84.18 chuẩn. Tuy nhiên mẫu tiếng Anh và Trung bắt buộc cả chuỗi dài kèm dấu phẩy, làm trượt các khai báo thông dụng như 'for medical use' hay 'suitable for medical use'.",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "dieuKhienSo": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí điều khiển số (CNC) nhóm 84.56, 84.58 chuẩn xác. Tuy nhiên từ 'cnc' thiếu biên từ '\\b' có thể gây bắt nhầm trong mã linh kiện, đồng thời mẫu tiếng Anh cần bổ sung thuật ngữ đầy đủ 'computer numerically controlled'.",
+      "goi": "07",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
     }
   }
 }

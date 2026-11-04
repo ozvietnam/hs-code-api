@@ -8771,10 +8771,11 @@
       "cachDoc": {
         "vi": [
           "(?:loại\\s+)?bốn\\s+bánh\\s+chủ\\s+động",
-          "(?:dẫn\\s+động\\s+)?(?:4|bốn)\\s+bánh",
-          "4wd",
-          "awd",
-          "4x4"
+          "dẫn\\s+động\\s+(?:4|bốn)\\s+bánh",
+          "dẫn\\s+động\\s+toàn\\s+phần",
+          "\\b4wd\\b",
+          "\\bawd\\b",
+          "\\b4x4\\b"
         ],
         "en": [
           "four-?wheel\\s+drive",
@@ -8905,9 +8906,9 @@
         "en": [
           "gross\\s+vehicle\\s+weight",
           "payload",
-          "displacement",
-          "gross\\s+weight",
-          "gvw"
+          "(?:vessel\\s+)?displacement",
+          "maximum\\s+gross\\s+weight",
+          "\\bgvw\\b"
         ],
         "zh": [
           "设计总质量",
@@ -8949,7 +8950,7 @@
           "nhanZh": "轿车",
           "cachDoc": {
             "vi": [
-              "(?:ô\\s+tô\\s+)?kiểu\\s+sedan(?:\\s*\\(SEN\\))?(?:\\s*\\(1\\))?"
+              "(?:ô\\s+tô\\s+|xe\\s+)?(?:kiểu\\s+)?sedan(?:\\s*\\(SEN\\))?(?:\\s*\\(1\\))?"
             ],
             "en": [
               "sedans?",
@@ -9062,7 +9063,8 @@
           "nhanZh": "全地形车（ATV）",
           "cachDoc": {
             "vi": [
-              "xe\\s+địa\\s+hình\\s+atv(?:\\s*\\(all-?terrain\\s+vehicles\\))?"
+              "(?:xe\\s+)?(?:địa\\s+hình\\s+)?\\batv\\b(?:\\s*\\(all-?terrain\\s+vehicles?\\))?",
+              "xe\\s+địa\\s+hình\\s+(?:4|bốn)\\s+bánh"
             ],
             "en": [
               "all-?terrain\\s+vehicles?",
@@ -9081,10 +9083,12 @@
           "nhanZh": "轿车（包括加长礼宾车）",
           "cachDoc": {
             "vi": [
-              "ô\\s+tô\\s+\\(bao\\s+gồm\\s+cả\\s+ô\\s+tô\\s+limousine\\s+kéo\\s+dài(?:\\s+nhưng\\s+không\\s+bao\\s+gồm\\s+ô\\s+tô\\s+khách(?:\\s*\\(1\\))?\\s*\\(coaches,\\s+buses,\\s+minibuses\\)\\s+hoặc\\s+ô\\s+tô\\s+van\\))?"
+              "(?:ô\\s+tô\\s+)?limousine(?:\\s+kéo\\s+dài)?",
+              "xe\\s+limousine"
             ],
             "en": [
-              "motor\\s+cars?\\s+\\(including\\s+stretch\\s+limousines?\\)?"
+              "(?:stretch\\s+)?limousines?",
+              "motor\\s+cars?\\s+including\\s+stretch\\s+limousines?"
             ],
             "zh": [
               "加长轿车",
@@ -9132,7 +9136,7 @@
           "nhanZh": "冷藏货车",
           "cachDoc": {
             "vi": [
-              "(?:ô\\s+tô\\s+tải\\s+)?đông\\s+lạnh(?:\\s*\\(1\\))?"
+              "(?:ô\\s+tô|xe)(?:\\s+tải)?\\s+đông\\s+lạnh(?:\\s*\\(1\\))?"
             ],
             "en": [
               "refrigerated\\s+(?:motor\\s+vehicles?|trucks?|lorries?)"
@@ -9150,7 +9154,9 @@
           "nhanZh": "压缩式垃圾收集车",
           "cachDoc": {
             "vi": [
-              "(?:ô\\s+tô\\s+)?thu\\s+gom\\s+phế\\s+thải\\s+có\\s+bộ\\s+phận\\s+nén\\s+phế\\s+thải"
+              "(?:ô\\s+tô\\s+|xe\\s+)?thu\\s+gom\\s+phế\\s+thải(?:\\s+có\\s+bộ\\s+phận\\s+nén\\s+phế\\s+thải)?",
+              "xe\\s+(?:cuốn\\s+)?ép\\s+rác",
+              "xe\\s+chở\\s+rác"
             ],
             "en": [
               "refuse\\s+collectors?\\s+having\\s+a\\s+compressing\\s+device",
@@ -9169,7 +9175,7 @@
           "nhanZh": "运钞装甲车",
           "cachDoc": {
             "vi": [
-              "(?:ô\\s+tô\\s+)?bọc\\s+thép\\s+để\\s+chở\\s+hàng\\s+hóa\\s+có\\s+giá\\s+trị"
+              "(?:ô\\s+tô\\s+|xe\\s+)?bọc\\s+thép(?:\\s+để\\s+chở\\s+hàng\\s+hóa\\s+có\\s+giá\\s+trị|\\s+chở\\s+tiền)?"
             ],
             "en": [
               "armou?red\\s+(?:motor\\s+vehicles?|trucks?)\\s+for\\s+the\\s+transport\\s+of\\s+valuable\\s+goods"
@@ -9187,7 +9193,9 @@
           "nhanZh": "罐式货车或散装水泥车",
           "cachDoc": {
             "vi": [
-              "(?:ô\\s+tô\\s+)?xi\\s+téc(?:\\s*;\\s*ô\\s+tô\\s+chở\\s+xi\\s+măng\\s+kiểu\\s+bồn)?"
+              "(?:ô\\s+tô\\s+|xe\\s+)?xi\\s+téc",
+              "xe\\s+bồn(?:\\s+chở\\s+(?:xi\\s+măng|xăng\\s+dầu|hóa\\s+chất))?",
+              "ô\\s+tô\\s+chở\\s+xi\\s+măng\\s+kiểu\\s+bồn"
             ],
             "en": [
               "tanker\\s+(?:vehicles?|trucks?|lorries?)",
@@ -9225,7 +9233,8 @@
           "nhanZh": "自卸货车（翻斗车）",
           "cachDoc": {
             "vi": [
-              "(?:ô\\s+tô\\s+)?tự\\s+đổ"
+              "(?:ô\\s+tô\\s+|xe\\s+)?tự\\s+đổ",
+              "xe\\s+(?:tải\\s+)?ben"
             ],
             "en": [
               "dumpers?",
@@ -9246,7 +9255,9 @@
           "nhanZh": "皮卡车",
           "cachDoc": {
             "vi": [
-              "(?:ô\\s+tô\\s+)?pick-?up(?:\\s*\\(1\\))?"
+              "(?:ô\\s+tô\\s+|xe\\s+)?pick-?up(?:\\s*\\(1\\))?",
+              "xe\\s+bán\\s+tải",
+              "ô\\s+tô\\s+bán\\s+tải"
             ],
             "en": [
               "pick-?ups?",
@@ -9342,7 +9353,9 @@
           "nhanZh": "气缸体或曲轴箱",
           "cachDoc": {
             "vi": [
-              "thân\\s+động\\s+cơ(?:\\s*\\(cylinder\\s+block\\))?(?:\\s*;\\s*hộp\\s+trục\\s+khuỷu)?",
+              "thân\\s+động\\s+cơ(?:\\s*\\(cylinder\\s+block\\))?",
+              "thân\\s+máy",
+              "(?:lốc|block)\\s+máy",
               "hộp\\s+trục\\s+khuỷu"
             ],
             "en": [
@@ -9382,10 +9395,13 @@
           "nhanZh": "气缸套",
           "cachDoc": {
             "vi": [
-              "(?:loại\\s+)?ống\\s+xi\\s+lanh(?:\\s+khác)?"
+              "(?:loại\\s+)?ống\\s+xi\\s+lanh(?:\\s+khác)?",
+              "sơ\\s+mi\\s+(?:lòng\\s+)?xi\\s+lanh",
+              "nòng\\s+xi\\s+lanh"
             ],
             "en": [
               "cylinder\\s+liners?",
+              "cylinder\\s+sleeves?",
               "other\\s+cylinder\\s+liners?"
             ],
             "zh": [
@@ -9420,7 +9436,7 @@
       "nhanZh": "用于农业或园艺",
       "cachDoc": {
         "vi": [
-          "(?:dùng|sử\\s+dụng)\\s+trong\\s+nông\\s+nghiệp(?:\\s+hoặc\\s+làm\\s+vườn)?",
+          "(?:dùng|sử\\s+dụng|phục\\s+vụ)\\s+(?:trong|cho)\\s+nông\\s+nghiệp(?:\\s+hoặc\\s+làm\\s+vườn)?",
           "loại\\s+sử\\s+dụng\\s+trong\\s+nông\\s+nghiệp"
         ],
         "en": [
@@ -9474,7 +9490,7 @@
           "cân\\s+điện\\s+tử(?:\\s+khác)?"
         ],
         "en": [
-          "electronic\\s+(?:scales?|weighing\\s+machin(?:es?|ery))"
+          "(?:electronic|digital)\\s+(?:scales?|balances?|weighing\\s+machin(?:es?|ery))"
         ],
         "zh": [
           "电子秤",
@@ -9521,13 +9537,19 @@
       "nhanZh": "模锻或闭模模压机",
       "cachDoc": {
         "vi": [
-          "máy\\s+rèn\\s+khuôn\\s+hoặc\\s+máy\\s+dập\\s+khuôn"
+          "máy\\s+rèn\\s+khuôn\\s+hoặc\\s+máy\\s+dập\\s+khuôn",
+          "máy\\s+rèn\\s+khuôn",
+          "máy\\s+dập\\s+khuôn"
         ],
         "en": [
-          "die\\s+forging\\s+or\\s+closed\\s+die\\s+stamping\\s+machines?"
+          "die\\s+forging\\s+or\\s+closed\\s+die\\s+stamping\\s+machines?",
+          "die\\s+forging\\s+machines?",
+          "closed\\s+die\\s+stamping\\s+machines?"
         ],
         "zh": [
-          "模锻或闭模模压机"
+          "模锻或闭模模压机",
+          "模锻机",
+          "闭模模压机"
         ],
         "phuDinh": [
           "không phải",
@@ -9572,12 +9594,13 @@
           "(?:sử\\s+dụng|dùng)\\s+trong\\s+phòng\\s+thí\\s+nghiệm"
         ],
         "en": [
-          "(?:suitable\\s+for\\s+)?medical,\\s+surgical\\s+or\\s+laboratory\\s+use",
-          "(?:used\\s+in|for)\\s+laborator(?:y|ies)"
+          "(?:suitable\\s+for\\s+|used\\s+in\\s+|for\\s+)?(?:medical|surgical|laboratory)(?:\\s+use)?",
+          "medical,\\s+surgical\\s+or\\s+laboratory\\s+use",
+          "(?:medical|surgical|laboratory)\\s+(?:equipment|devices?|refrigerators?|freezers?)"
         ],
         "zh": [
-          "(?:适于)?医疗[、, ]外科或实验室使用",
-          "用于实验室",
+          "(?:适于)?(?:医疗|外科|实验室)(?:使用|用)?",
+          "医疗[、 ]外科或实验室使用",
           "实验室用"
         ],
         "phuDinh": [
@@ -9620,11 +9643,12 @@
       "cachDoc": {
         "vi": [
           "(?:loại\\s+)?điều\\s+khiển\\s+số",
-          "cnc"
+          "\\bcnc\\b"
         ],
         "en": [
           "numerically\\s+controlled",
-          "cnc"
+          "computer\\s+numerically\\s+controlled",
+          "\\bcnc\\b"
         ],
         "zh": [
           "数控",
