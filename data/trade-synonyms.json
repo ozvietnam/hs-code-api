@@ -1,2333 +1,2419 @@
 {
-  "version": "2026-09",
-  "noteVi": "Từ điển TÊN THƯƠNG MẠI → mã HS, do người soạn và kiểm chứng từng dòng. Khác hoàn toàn data/hs-aliases.json (đào tự động từ tờ khai Oz): bảng này phủ những ngành Oz KHÔNG có tờ khai nào — điển hình là sắt thép chương 72–81 — nên không thể đào ra được. Mỗi mục bắt buộc có sourceVi dẫn chứng; mục nào dữ liệu không khẳng định nổi một mã thì để nhiều ứng viên kèm askVi, KHÔNG chốt bừa.",
-  "numericTermContext": [
-    "thep",
-    "khuon",
-    "steel",
-    "mold",
-    "mac",
-    "tam",
-    "inox"
-  ],
-  "entries": [
+ "version": "2026-09",
+ "noteVi": "Từ điển TÊN THƯƠNG MẠI → mã HS, do người soạn và kiểm chứng từng dòng. Khác hoàn toàn data/hs-aliases.json (đào tự động từ tờ khai Oz): bảng này phủ những ngành Oz KHÔNG có tờ khai nào — điển hình là sắt thép chương 72–81 — nên không thể đào ra được. Mỗi mục bắt buộc có sourceVi dẫn chứng; mục nào dữ liệu không khẳng định nổi một mã thì để nhiều ứng viên kèm askVi, KHÔNG chốt bừa.",
+ "numericTermContext": [
+  "thep",
+  "khuon",
+  "steel",
+  "mold",
+  "mac",
+  "tam",
+  "inox"
+ ],
+ "entries": [
+  {
+   "id": "thep-lam-khuon",
+   "titleVi": "Thép làm khuôn (mác P20 / 2311 / NAK80 / 718H / S136)",
+   "terms": [
+    "thép làm khuôn",
+    "thép khuôn mẫu",
+    "thép làm khuôn nhựa",
+    "tấm thép làm khuôn",
+    "thép tấm làm khuôn",
+    "thép chế tạo khuôn",
+    "mold steel",
+    "thép khuôn",
+    "p20",
+    "2311",
+    "2738",
+    "718h",
+    "nak80",
+    "s136",
+    "skd11",
+    "skd61"
+   ],
+   "excludeIfAny": [
+    "bộ khuôn",
+    "mold base",
+    "khuôn đúc",
+    "khuôn hoàn chỉnh",
+    "mold assembly"
+   ],
+   "excludeReasonVi": "Câu hỏi nói tới BỘ KHUÔN đã thành hình, không phải thép tấm nguyên liệu. Bộ khuôn thuộc nhóm 8480 — chính là mã mà mục này vốn dùng để chặn, nên ở đây phải tắt mục đi chứ không chặn 8480.",
+   "candidates": [
     {
-      "id": "thep-lam-khuon",
-      "titleVi": "Thép làm khuôn (mác P20 / 2311 / NAK80 / 718H / S136)",
-      "terms": [
-        "thép làm khuôn",
-        "thép khuôn mẫu",
-        "thép làm khuôn nhựa",
-        "tấm thép làm khuôn",
-        "thép tấm làm khuôn",
-        "thép chế tạo khuôn",
-        "mold steel",
-        "thép khuôn",
-        "p20",
-        "2311",
-        "2738",
-        "718h",
-        "nak80",
-        "s136",
-        "skd11",
-        "skd61"
-      ],
-      "excludeIfAny": [
-        "bộ khuôn",
-        "mold base",
-        "khuôn đúc",
-        "khuôn hoàn chỉnh",
-        "mold assembly"
-      ],
-      "excludeReasonVi": "Câu hỏi nói tới BỘ KHUÔN đã thành hình, không phải thép tấm nguyên liệu. Bộ khuôn thuộc nhóm 8480 — chính là mã mà mục này vốn dùng để chặn, nên ở đây phải tắt mục đi chứ không chặn 8480.",
-      "candidates": [
-        {
-          "hs": "72254090",
-          "whenVi": "Dạng tấm / cán phẳng, chiều rộng ≥ 600 mm, chưa gia công quá mức cán nóng, không ở dạng cuộn",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72269190",
-          "whenVi": "Dạng tấm / cán phẳng, chiều rộng < 600 mm, chưa gia công quá mức cán nóng",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72285090",
-          "whenVi": "Dạng thanh / que đặc, không phải mặt cắt tròn, chưa gia công quá mức cán nguội",
-          "confidence": "low"
-        },
-        {
-          "hs": "72285010",
-          "whenVi": "Dạng thanh / que đặc, mặt cắt ngang hình tròn",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8480",
-          "whyVi": "Nhóm 8480 là BỘ KHUÔN đã thành hình (khuôn đúc, khuôn ép nhựa) — thành phẩm. Thép tấm mới chỉ là NGUYÊN LIỆU để gia công ra khuôn, chưa có đặc trưng của khuôn nên GIR 2(a) không áp dụng."
-        },
-        {
-          "prefix": "8207",
-          "whyVi": "Nhóm 8207 là dụng cụ thay thế lắp cho máy. Thép tấm chưa gia công không phải dụng cụ."
-        }
-      ],
-      "askVi": [
-        "Chiều rộng tấm: từ 600 mm trở lên hay dưới 600 mm? (ranh giới 7225 / 7226)",
-        "Dạng hàng: tấm cán phẳng hay thanh/que đặc? (7225–7226 so với 7228)",
-        "Đã gia công quá mức cán nóng chưa (cán nguội, phay, tôi, mài)?",
-        "Mác thép và thành phần hợp kim (để loại trừ thép không gỉ nhóm 7219/7220)"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế 2026 nhóm 7225/7226/7228; phạm vi phân nhóm lấy từ data/hs-context.json (72254090: \"chiều rộng ≥ 600mm\", 72269190: \"chiều rộng < 600mm\"). Chú giải Chương 72 phân biệt sản phẩm cán phẳng với thanh que."
+     "hs": "72254090",
+     "whenVi": "Dạng tấm / cán phẳng, chiều rộng ≥ 600 mm, chưa gia công quá mức cán nóng, không ở dạng cuộn",
+     "confidence": "medium"
     },
     {
-      "id": "may-lam-mat-bay-hoi",
-      "titleVi": "Quạt điều hòa / máy làm mát không khí bằng hơi nước",
-      "terms": [
-        "quạt điều hòa",
-        "quạt hơi nước",
-        "quạt làm mát hơi nước",
-        "máy làm mát không khí",
-        "máy làm mát bằng hơi nước",
-        "quạt điều hoà hơi nước",
-        "air cooler",
-        "evaporative cooler",
-        "quạt điều hòa không khí"
-      ],
-      "candidates": [
-        {
-          "hs": "84796000",
-          "whenVi": "Làm mát bằng bay hơi nước (tấm làm mát + bơm nước), KHÔNG có chu trình lạnh máy nén",
-          "confidence": "high"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8415",
-          "whyVi": "Nhóm 8415 đòi hỏi máy điều hòa có quạt VÀ bộ phận thay đổi nhiệt độ ĐỒNG THỜI độ ẩm, gồm cả loại không điều chỉnh độ ẩm riêng biệt — cốt lõi là có chu trình lạnh. Máy làm mát bay hơi không có máy nén nên không thuộc 8415."
-        },
-        {
-          "prefix": "8414",
-          "whyVi": "Nhóm 8414 là quạt đơn thuần. Máy làm mát bay hơi có thêm hệ bơm nước và tấm trao đổi nhiệt, đã được biểu thuế gọi tên riêng ở 8479.60 nên GIR 3(a) ưu tiên mô tả cụ thể hơn."
-        }
-      ],
-      "askVi": [
-        "Máy có block/máy nén và gas lạnh không? (có → xem nhóm 8415)",
-        "Có bình chứa nước và tấm làm mát (cooling pad) không?"
-      ],
-      "gir": "3a",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế 2026: mã 84796000 ghi đúng chữ \"Máy làm mát không khí bằng bay hơi\". Biểu thuế đã gọi tên mặt hàng này nên không cần suy luận."
+     "hs": "72269190",
+     "whenVi": "Dạng tấm / cán phẳng, chiều rộng < 600 mm, chưa gia công quá mức cán nóng",
+     "confidence": "medium"
     },
     {
-      "id": "binh-giu-nhiet-chan-khong",
-      "titleVi": "Bình giữ nhiệt / phích nước chân không",
-      "terms": [
-        "bình giữ nhiệt",
-        "phích nước",
-        "phích giữ nhiệt",
-        "bình giữ nhiệt inox",
-        "bình giữ nhiệt chân không",
-        "ly giữ nhiệt",
-        "cốc giữ nhiệt",
-        "bình thủy",
-        "thermos",
-        "vacuum flask"
-      ],
-      "candidates": [
-        {
-          "hs": "96170010",
-          "whenVi": "Bình/phích có lớp CHÂN KHÔNG giữa hai vách, còn nguyên vỏ, hoàn chỉnh",
-          "confidence": "high"
-        },
-        {
-          "hs": "96170020",
-          "whenVi": "Bộ phận rời của bình chân không, trừ ruột thủy tinh",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "7323",
-          "whyVi": "Nhóm 7323 là đồ dùng nhà bếp/bàn ăn bằng sắt thép nói chung. Nhóm 9617 gọi đích danh \"Phích chân không và các loại bình chân không khác, hoàn chỉnh\" nên theo GIR 3(a) mô tả cụ thể hơn được ưu tiên. CHỈ đúng khi hàng thật sự có lớp chân không — bình hai lớp inox KHÔNG hút chân không thì quay lại 7323."
-        }
-      ],
-      "askVi": [
-        "Giữa hai lớp vỏ có hút chân không không? (không chân không → nhóm 7323)",
-        "Hàng nguyên chiếc hay bộ phận rời?"
-      ],
-      "gir": "3a",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế 2026 mã 96170010: \"Phích chân không và các loại bình chân không khác, hoàn chỉnh\"; nhóm 7323 giới hạn ở đồ dùng nhà bếp/bàn ăn bằng sắt thép."
+     "hs": "72285090",
+     "whenVi": "Dạng thanh / que đặc, không phải mặt cắt tròn, chưa gia công quá mức cán nguội",
+     "confidence": "low"
     },
     {
-      "id": "bien-tan-vfd",
-      "titleVi": "Biến tần công nghiệp (VFD / inverter điều khiển động cơ)",
-      "terms": [
-        "biến tần",
-        "bien tan",
-        "inverter",
-        "vfd",
-        "variable frequency drive",
-        "bộ biến tần",
-        "biến tần 3 pha"
-      ],
-      "excludeIfAny": [
-        "điều hòa",
-        "điều hoà",
-        "máy lạnh",
-        "tủ lạnh",
-        "máy giặt",
-        "điều hòa inverter",
-        "air conditioner",
-        "tủ đông"
-      ],
-      "excludeReasonVi": "Với điều hòa / tủ lạnh / máy giặt thì \"inverter\" chỉ là TÍNH NĂNG của máy, không phải mặt hàng riêng. Hàng vẫn thuộc 8415 / 8418 / 8450 theo bản chất máy.",
-      "candidates": [
-        {
-          "hs": "85044090",
-          "whenVi": "Bộ biến đổi tĩnh điện điều khiển tốc độ động cơ, không thuộc các phân nhóm đã kể tên",
-          "confidence": "medium"
-        },
-        {
-          "hs": "85044040",
-          "whenVi": "Hàng đúng là bộ nghịch lưu thuần (DC → AC) theo tài liệu kỹ thuật — KHÔNG mặc định cho biến tần điều khiển động cơ",
-          "confidence": "low"
-        },
-        {
-          "hs": "85044030",
-          "whenVi": "Hàng đúng là bộ chỉnh lưu (AC → DC)",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8537",
-          "whyVi": "8537 là bảng/tủ điện lắp nhiều thiết bị đóng ngắt. Một con biến tần rời chưa lắp vào tủ thì không thuộc 8537."
-        }
-      ],
-      "askVi": [
-        "Đầu vào / đầu ra là AC hay DC? (quyết định giữa 8504.40.30, .40 và .90)",
-        "Công suất danh định (kVA)?",
-        "Biến tần rời hay đã lắp trong tủ điện hoàn chỉnh?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế 2026 phân nhóm 8504.40: 85044030 \"Bộ chỉnh lưu khác\", 85044040 \"Bộ nghịch lưu\", 85044090 \"Loại khác\". Biến tần công nghiệp biến đổi AC → DC → AC nên không trùng khít mô tả nào trong ba mã; thực tế khai báo còn chưa thống nhất. Vì vậy mục này KHÔNG mã nào được \"high\", và mã dư 85044090 xếp trên — chọn mã trung tính thay vì khẳng định .40. Phải đọc tài liệu kỹ thuật để chốt."
-    },
-    {
-      "id": "masterbatch",
-      "titleVi": "Masterbatch (hạt nhựa màu / phụ gia đậm đặc)",
-      "terms": [
-        "masterbatch",
-        "master batch",
-        "hạt nhựa màu",
-        "hạt màu",
-        "hat mau nhua",
-        "phụ gia màu nhựa",
-        "màu chủ",
-        "color masterbatch"
-      ],
-      "candidates": [
-        {
-          "hs": "32061990",
-          "whenVi": "Chất màu vô cơ gốc titan dioxit phân tán trong nền nhựa",
-          "confidence": "low"
-        },
-        {
-          "hs": "32064990",
-          "whenVi": "Chất màu vô cơ khác phân tán trong nền nhựa",
-          "confidence": "low"
-        },
-        {
-          "hs": "32041790",
-          "whenVi": "Chất màu hữu cơ tổng hợp (pigment hữu cơ) phân tán trong nền nhựa",
-          "confidence": "low"
-        },
-        {
-          "hs": "38249999",
-          "whenVi": "Masterbatch phụ gia (không màu): chống UV, chống dính, độn — chế phẩm hóa học chưa được chi tiết ở nhóm khác",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "39",
-          "whyVi": "Chương 39 nhóm 3901–3914 là polymer NGUYÊN SINH. Masterbatch là chế phẩm màu/phụ gia đậm đặc, nhựa chỉ đóng vai trò chất mang, nên bản chất là chế phẩm Chương 32/38 chứ không phải nhựa nguyên sinh."
-        }
-      ],
-      "askVi": [
-        "Chất màu là vô cơ (TiO2, oxit sắt, carbon black) hay hữu cơ tổng hợp?",
-        "Tỷ lệ chất màu / phụ gia so với nhựa nền (%)?",
-        "Có phiếu phân tích thành phần (CA/COA) không?",
-        "Là masterbatch MÀU hay masterbatch PHỤ GIA (UV, chống dính, filler)?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế 2026 nhóm 3204/3206 (chất màu đã phân tán trong môi chất) và 3824 (chế phẩm hóa học chưa chi tiết). Bốn ứng viên đều để confidence thấp: mã đúng phụ thuộc bản chất hóa học của chất màu, không suy ra được từ tên hàng."
-    },
-    {
-      "id": "bo-khuon-ep-nhua",
-      "titleVi": "Bộ khuôn ép / đúc nhựa (thành phẩm)",
-      "terms": [
-        "bộ khuôn",
-        "bộ khuôn ép nhựa",
-        "khuôn ép nhựa",
-        "khuôn đúc nhựa",
-        "khuôn thổi nhựa",
-        "mold base",
-        "đế khuôn",
-        "hộp khuôn",
-        "khuôn ép phun",
-        "khuôn nhựa hoàn chỉnh"
-      ],
-      "candidates": [
-        {
-          "hs": "84807110",
-          "whenVi": "Khuôn ép phun / nén dùng cho cao su hoặc plastic, dùng làm đế giày dép",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84807190",
-          "whenVi": "Khuôn ép phun / nén (injection, compression) dùng cho cao su hoặc plastic, loại khác",
-          "confidence": "high"
-        },
-        {
-          "hs": "84807990",
-          "whenVi": "Khuôn cao su/plastic KHÔNG phải loại ép phun hoặc nén (vd khuôn thổi, khuôn đúc quay)",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84802000",
-          "whenVi": "Chỉ nhập riêng ĐẾ KHUÔN (mold base), chưa có lòng khuôn",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "7225",
-          "whyVi": "7225 là thép tấm NGUYÊN LIỆU. Bộ khuôn đã gia công thành hình, có lòng khuôn và hệ thống dẫn — là thành phẩm nhóm 8480, không quay lại chương 72."
-        },
-        {
-          "prefix": "7226",
-          "whyVi": "Như 7225: thép cán phẳng nguyên liệu, không phải khuôn đã thành hình."
-        }
-      ],
-      "askVi": [
-        "Khuôn dùng cho vật liệu gì: nhựa/cao su (8480.71–.79), kim loại (8480.41–.49) hay thủy tinh (8480.50)?",
-        "Nguyên lý tạo hình: ép phun / ép nén (8480.71) hay thổi, đúc quay (8480.79)?",
-        "Nhập nguyên bộ khuôn hay chỉ đế khuôn rời (8480.20)?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế 2026 nhóm 8480: 84802000 \"Đế khuôn\", 84807110/84807190 \"Loại phun hoặc nén\", 84807910/84807990 loại khác — dùng cho cao su hoặc plastic."
-    },
-    {
-      "id": "van-giam-ap",
-      "titleVi": "Van giảm áp (8481.10)",
-      "terms": [
-        "van giảm áp",
-        "van giam ap",
-        "pressure reducing valve",
-        "pressure reducer",
-        "prv valve",
-        "van PRV"
-      ],
-      "excludeIfAny": [
-        "khí nén",
-        "pneumatic",
-        "thủy lực truyền động",
-        "van an toàn",
-        "relief valve",
-        "van một chiều",
-        "check valve"
-      ],
-      "excludeReasonVi": "Van khí nén/thủy lực truyền động = 8481.20; van an toàn = 8481.40; van một chiều = 8481.30.",
-      "candidates": [
-        {
-          "hs": "84811011",
-          "whenVi": "Van cổng điều khiển bằng tay, Ø trong cửa nạp/thoát >5 cm và ≤40 cm (nhánh giảm áp)",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84811019",
-          "whenVi": "Cùng nhánh van cổng giảm áp — loại khác (không khớp .11)",
-          "confidence": "low"
-        },
-        {
-          "hs": "84811021",
-          "whenVi": "Ø trong ≤ 2,5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84811022",
-          "whenVi": "Ø trong > 2,5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84811091",
-          "whenVi": "Thân plastic, Ø trong 1–2,5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84811099",
-          "whenVi": "Loại khác trong 8481.10 — không khớp các phân nhóm kể trên",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "848120",
-          "whyVi": "8481.20 là van truyền động oleohydraulic/pneumatic, không phải van giảm áp đường ống."
-        },
-        {
-          "prefix": "848140",
-          "whyVi": "8481.40 là van an toàn/xả — chức năng bảo vệ quá áp, khác van giảm áp làm việc liên tục."
-        },
-        {
-          "prefix": "8413",
-          "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
-        },
-        {
-          "prefix": "9032",
-          "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
-        },
-        {
-          "prefix": "98",
-          "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
-        }
-      ],
-      "askVi": [
-        "Ø trong cửa nạp/thoát?",
-        "Vật liệu thân (kim loại / plastic)?",
-        "Có phải van cổng tay cỡ lớn (5–40 cm) không?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN — en 848110*: \"Valves; pressure reducing…\". Các mã lá theo tax.json 84811011–84811099."
-    },
-    {
-      "id": "van-khi-nen-thuy-luc",
-      "titleVi": "Van khí nén / van thủy lực truyền động (8481.20)",
-      "terms": [
-        "van khí nén",
-        "van thuỷ lực",
-        "van thủy lực",
-        "van điện từ khí nén",
-        "van điều áp khí nén",
-        "van phân phối khí nén",
-        "solenoid valve",
-        "pneumatic valve",
-        "hydraulic valve",
-        "directional valve",
-        "van solenoid",
-        "air solenoid valve"
-      ],
-      "excludeIfAny": [
-        "van bếp",
-        "bếp ga",
-        "bếp nấu",
-        "van ngắt nhiên liệu",
-        "nhiên liệu xe",
-        "dầu thủy lực",
-        "dầu thuỷ lực",
-        "hydraulic oil",
-        "van giảm áp",
-        "pressure reducing",
-        "van an toàn",
-        "relief valve"
-      ],
-      "excludeReasonVi": "Van bếp/nhiên liệu xe thuộc 8481.80; dầu thủy lực là chất lỏng 2710; van giảm áp 8481.10; van an toàn 8481.40.",
-      "candidates": [
-        {
-          "hs": "84812011",
-          "whenVi": "Thân bằng sắt hoặc thép",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84812019",
-          "whenVi": "Cùng nhánh sắt/thép — loại khác",
-          "confidence": "low"
-        },
-        {
-          "hs": "84812020",
-          "whenVi": "Đồng/hợp kim đồng Ø ≤2,5 cm, hoặc plastic Ø 1–2,5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84812090",
-          "whenVi": "Loại khác trong 8481.20 — không khớp .11/.19/.20",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8481803",
-          "whyVi": "8481.80.30 van bếp — chữ điện từ trùng nhưng công dụng khác."
-        },
-        {
-          "prefix": "8481808",
-          "whyVi": "8481.80.83/84/93 van ngắt nhiên liệu xe."
-        },
-        {
-          "prefix": "3923",
-          "whyVi": "Bình/đồ chứa plastic, không phải van."
-        },
-        {
-          "prefix": "7613",
-          "whyVi": "Thùng chứa khí nén nhôm — bình chứa, không phải van."
-        },
-        {
-          "prefix": "8413",
-          "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
-        },
-        {
-          "prefix": "9032",
-          "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
-        },
-        {
-          "prefix": "98",
-          "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
-        }
-      ],
-      "askVi": [
-        "Vật liệu thân và Ø trong cửa nạp?",
-        "Đúng mạch truyền động khí nén/thủy lực chứ không phải van giảm áp / an toàn / bếp / nhiên liệu xe?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN — en 848120*: \"Valves; for oleohydraulic or pneumatic transmissions\". Đủ 4 mã lá 84812011/19/20/90."
-    },
-    {
-      "id": "van-mot-chieu",
-      "titleVi": "Van một chiều / van cản (8481.30)",
-      "terms": [
-        "van một chiều",
-        "van mot chieu",
-        "van 1 chiều",
-        "van cản",
-        "van can",
-        "check valve",
-        "non-return valve",
-        "nonreturn valve",
-        "one way valve"
-      ],
-      "excludeIfAny": [
-        "khí nén truyền động",
-        "van giảm áp",
-        "van an toàn",
-        "relief"
-      ],
-      "excludeReasonVi": "Phân biệt với 8481.10/20/40 theo chức năng (GIR 1).",
-      "candidates": [
-        {
-          "hs": "84813010",
-          "whenVi": "Van cản bằng gang đúc, Ø trong cửa nạp 4–60 cm",
-          "confidence": "high"
-        },
-        {
-          "hs": "84813020",
-          "whenVi": "Đồng/hợp kim đồng, Ø trong ≤ 2,5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84813040",
-          "whenVi": "Plastic, Ø trong 1–2,5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84813090",
-          "whenVi": "Loại khác trong 8481.30",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "848120",
-          "whyVi": "8481.20 van truyền động — không phải van một chiều đường ống."
-        },
-        {
-          "prefix": "848140",
-          "whyVi": "8481.40 van an toàn/xả."
-        },
-        {
-          "prefix": "8413",
-          "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
-        },
-        {
-          "prefix": "9032",
-          "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
-        },
-        {
-          "prefix": "98",
-          "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
-        }
-      ],
-      "askVi": [
-        "Vật liệu (gang / đồng / plastic / khác)?",
-        "Ø trong cửa nạp?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN — en 848130*: \"Valves; check (nonreturn) valves…\". 84813010 gọi đích danh van cản gang → high."
-    },
-    {
-      "id": "van-an-toan",
-      "titleVi": "Van an toàn / van xả áp (8481.40)",
-      "terms": [
-        "van an toàn",
-        "van xả áp",
-        "van xa ap",
-        "safety valve",
-        "relief valve",
-        "pressure relief valve",
-        "PRV safety",
-        "van safety"
-      ],
-      "excludeIfAny": [
-        "van giảm áp làm việc",
-        "pressure reducing",
-        "khí nén truyền động"
-      ],
-      "excludeReasonVi": "Van giảm áp làm việc liên tục = 8481.10; van truyền động = 8481.20.",
-      "candidates": [
-        {
-          "hs": "84814010",
-          "whenVi": "Đồng/hợp kim đồng, Ø trong ≤ 2,5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84814030",
-          "whenVi": "Plastic, Ø trong 1–2,5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84814090",
-          "whenVi": "Loại khác trong 8481.40",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "848110",
-          "whyVi": "8481.10 van giảm áp — khác van an toàn/xả."
-        },
-        {
-          "prefix": "848120",
-          "whyVi": "8481.20 van truyền động khí nén/thủy lực."
-        },
-        {
-          "prefix": "8413",
-          "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
-        },
-        {
-          "prefix": "9032",
-          "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
-        },
-        {
-          "prefix": "98",
-          "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
-        }
-      ],
-      "askVi": [
-        "Vật liệu thân và Ø trong?",
-        "Van mở khi quá áp (an toàn) hay van giảm áp làm việc liên tục?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN — en 848140*: \"Valves; safety or relief valves…\". Đủ 3 mã lá."
-    },
-    {
-      "id": "van-sam",
-      "titleVi": "Van săm / van ruột xe (8481.80 — nhánh săm)",
-      "terms": [
-        "van săm",
-        "van sam",
-        "van ruột xe",
-        "van xe đạp",
-        "valve core",
-        "tyre valve",
-        "tire valve",
-        "schrader",
-        "presta valve"
-      ],
-      "excludeIfAny": [
-        "van bi",
-        "van cổng",
-        "van bướm",
-        "solenoid",
-        "khí nén công nghiệp"
-      ],
-      "excludeReasonVi": "Van công nghiệp đường ống / khí nén thiết bị không phải van săm.",
-      "candidates": [
-        {
-          "hs": "84818011",
-          "whenVi": "Van dùng cho săm, bằng đồng hoặc hợp kim đồng",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84818012",
-          "whenVi": "Van dùng cho săm, vật liệu khác",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84818013",
-          "whenVi": "Cùng nhánh săm — biến thể đồng/hợp kim đồng (theo cấu trúc biểu thuế 8481.80)",
-          "confidence": "low"
-        },
-        {
-          "hs": "84818014",
-          "whenVi": "Cùng nhánh săm — biến thể vật liệu khác",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "848120",
-          "whyVi": "Không phải van truyền động khí nén thiết bị."
-        },
-        {
-          "prefix": "4011",
-          "whyVi": "4011 là săm/lốp — nguyên chiếc; câu hỏi chỉ van thì ở 8481.80."
-        },
-        {
-          "prefix": "8714",
-          "whyVi": "8714 bộ phận xe đạp — van săm được biểu thuế đặt ở 8481.80."
-        }
-      ],
-      "askVi": [
-        "Vật liệu (đồng / khác)?",
-        "Van rời hay gắn sẵn trên săm/lốp?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Cấu trúc biểu thuế VN 8481.80 nhánh \"Van dùng cho săm\" (caselaw/hscode.pro) — mã lá 84818011–14 trong tax.json."
-    },
-    {
-      "id": "van-bep-ga",
-      "titleVi": "Van bếp nấu / bếp có lò nướng ga (8481.80.30)",
-      "terms": [
-        "van bếp",
-        "van bếp ga",
-        "van bếp nấu",
-        "van lò nướng ga",
-        "van bếp gas",
-        "gas stove valve",
-        "oven gas valve"
-      ],
-      "excludeIfAny": [
-        "khí nén",
-        "pneumatic",
-        "thủy lực",
-        "thuỷ lực",
-        "solenoid valve"
-      ],
-      "excludeReasonVi": "Van khí nén/thủy lực truyền động thuộc 8481.20.",
-      "candidates": [
-        {
-          "hs": "84818030",
-          "whenVi": "Van dùng cho bếp nấu hoặc bếp có lò nướng bằng ga, đã hoặc chưa lắp bộ đánh lửa điện từ",
-          "confidence": "high"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "7321",
-          "whyVi": "7321 là bếp/lò nguyên chiếc."
-        },
-        {
-          "prefix": "4009",
-          "whyVi": "Ống vòi cao su bếp ga — không phải van."
-        },
-        {
-          "prefix": "3917",
-          "whyVi": "Ống nhựa bếp ga — không phải van."
-        },
-        {
-          "prefix": "848120",
-          "whyVi": "8481.20 van truyền động, không phải van bếp."
-        }
-      ],
-      "askVi": [
-        "Là van riêng hay nguyên chiếc bếp/lò (7321)?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 84818030 gọi đích danh mặt hàng → confidence high."
-    },
-    {
-      "id": "van-cong-buom-gang",
-      "titleVi": "Van cổng / van bướm gang — đường ống nước (8481.80.61–.63)",
-      "terms": [
-        "van cổng gang",
-        "van cong gang",
-        "van bướm gang",
-        "van buom gang",
-        "gate valve cast iron",
-        "butterfly valve cast iron",
-        "van cổng đường ống nước"
-      ],
-      "excludeIfAny": [
-        "van bi",
-        "ball valve",
-        "sắt hoặc thép không gang",
-        "plastic"
-      ],
-      "excludeReasonVi": "Van bi = 8481.80.71–.72; van cổng sắt/thép tay = 8481.80.73–.77.",
-      "candidates": [
-        {
-          "hs": "84818061",
-          "whenVi": "Van cổng điều khiển bằng tay, Ø trong >5 cm và ≤40 cm (nhánh gang đường ống nước)",
-          "confidence": "high"
-        },
-        {
-          "hs": "84818062",
-          "whenVi": "Cùng nhánh van cổng/bướm gang đường ống nước — loại khác",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84818063",
-          "whenVi": "Van đường ống nước — loại khác (không khớp .61/.62)",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8481807",
-          "whyVi": "8481.80.71–.72 là van bi."
-        },
-        {
-          "prefix": "84818073",
-          "whyVi": "8481.80.73+ là van cổng sắt/thép (không phải gang đường ống nước .61)."
-        },
-        {
-          "prefix": "848110",
-          "whyVi": "8481.10 van giảm áp — khác van đường ống nước 8481.80."
-        }
-      ],
-      "askVi": [
-        "Van cổng hay van bướm?",
-        "Ø trong? Điều khiển tay hay khác?",
-        "Thân gang đúc đúng không?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8481.80 nhánh \"Van đường ống nước — van cổng gang ≥4cm; van bướm gang ≥8cm\" (caselaw). 84818061 gọi đích danh van cổng tay → high."
-    },
-    {
-      "id": "van-bi",
-      "titleVi": "Van bi (8481.80.71–.72)",
-      "terms": [
-        "van bi",
-        "ball valve",
-        "van bi đồng",
-        "van bi inox",
-        "van bi nhựa"
-      ],
-      "excludeIfAny": [
-        "van cổng",
-        "gate valve",
-        "van bướm",
-        "butterfly",
-        "van săm"
-      ],
-      "excludeReasonVi": "Van cổng/bướm có nhánh riêng; van săm khác hoàn toàn.",
-      "candidates": [
-        {
-          "hs": "84818071",
-          "whenVi": "Van bi bằng plastic, Ø trong 1–2,5 cm",
-          "confidence": "high"
-        },
-        {
-          "hs": "84818072",
-          "whenVi": "Van bi — loại khác (không phải plastic Ø 1–2,5 cm)",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "84818061",
-          "whyVi": "8481.80.61–.63 van cổng/bướm gang đường ống nước."
-        },
-        {
-          "prefix": "84818073",
-          "whyVi": "8481.80.73+ van cổng sắt/thép tay."
-        },
-        {
-          "prefix": "848120",
-          "whyVi": "Không mặc định van bi công nghiệp là 8481.20 — chỉ khi đúng truyền động oleohydraulic/pneumatic."
-        }
-      ],
-      "askVi": [
-        "Thân plastic Ø 1–2,5 cm hay vật liệu/cỡ khác?",
-        "Có phải van khí nén truyền động (8481.20) không?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8481.80 nhánh \"Van bi\" — 84818071 plastic Ø 1–2,5 cm; 84818072 loại khác (thuvienphapluat / hscode.pro)."
-    },
-    {
-      "id": "van-cong-sat-thep",
-      "titleVi": "Van cổng tay bằng sắt hoặc thép (8481.80.73–.77)",
-      "terms": [
-        "van cổng sắt",
-        "van cổng thép",
-        "van cong sat",
-        "van cong thep",
-        "gate valve steel",
-        "gate valve iron",
-        "van cổng tay"
-      ],
-      "excludeIfAny": [
-        "gang đúc đường ống nước",
-        "van bướm gang",
-        "van bi",
-        "plastic"
-      ],
-      "excludeReasonVi": "Van cổng/bướm gang đường ống nước = .61–.63; van bi = .71–.72.",
-      "candidates": [
-        {
-          "hs": "84818073",
-          "whenVi": "Ø trong cửa nạp và cửa thoát >5 cm và ≤40 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84818074",
-          "whenVi": "Ø trong cửa nạp và cửa thoát >40 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84818077",
-          "whenVi": "Ø trong cửa nạp và cửa thoát ≤5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84818078",
-          "whenVi": "Cùng khu vực phân nhóm — biến thể plastic Ø 1–2,5 cm (theo lá tax.json)",
-          "confidence": "low"
-        },
-        {
-          "hs": "84818079",
-          "whenVi": "Cùng khu vực — loại khác",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "84818061",
-          "whyVi": "Nhánh gang đường ống nước (.61–.63), không phải sắt/thép tay .73+."
-        },
-        {
-          "prefix": "84818071",
-          "whyVi": "Van bi."
-        }
-      ],
-      "askVi": [
-        "Ø trong cửa nạp/thoát: ≤5 / 5–40 / >40 cm?",
-        "Thân sắt hoặc thép (không phải gang đường ống nước .61)?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8481.80 \"Van cổng, điều khiển bằng tay, bằng sắt hoặc thép\" — 84818073/74/77 (thuvienphapluat). .78/.79 kèm theo khu vực lá."
-    },
-    {
-      "id": "van-ngat-nhien-lieu-xe",
-      "titleVi": "Van ngắt nhiên liệu cho xe 87.02 / 87.03 / 87.04",
-      "terms": [
-        "van ngắt nhiên liệu",
-        "van cắt nhiên liệu",
-        "fuel cut off valve",
-        "fuel shut off valve",
-        "fuel cut-off valve",
-        "van xăng xe"
-      ],
-      "excludeIfAny": [
-        "khí nén",
-        "pneumatic",
-        "bếp ga",
-        "van bếp"
-      ],
-      "excludeReasonVi": "Van khí nén / van bếp không phải van ngắt nhiên liệu xe.",
-      "candidates": [
-        {
-          "hs": "84818083",
-          "whenVi": "Plastic, xe 87.02–87.04, Ø trong cửa nạp <1 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84818084",
-          "whenVi": "Plastic, xe 87.02–87.04, Ø trong cửa nạp 1–2,5 cm",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84818093",
-          "whenVi": "Vật liệu khác, xe 87.02–87.04",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "848120",
-          "whyVi": "8481.20 van truyền động — không phải van nhiên liệu xe."
-        },
-        {
-          "prefix": "9849",
-          "whyVi": "Chương 98 ưu đãi riêng."
-        },
-        {
-          "prefix": "87",
-          "whyVi": "Xe nguyên chiếc / bộ phận xe kể tên ở Ch.87 — van này đặt ở 8481.80.83–.93."
-        }
-      ],
-      "askVi": [
-        "Plastic hay vật liệu khác?",
-        "Ø trong cửa nạp?",
-        "Xe đúng nhóm 87.02/03/04?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 84818083/84/93 — van ngắt nhiên liệu xe 87.02–87.04."
-    },
-    {
-      "id": "voi-nuoc",
-      "titleVi": "Vòi nước bằng đồng (8481.80.98)",
-      "terms": [
-        "vòi nước",
-        "voi nuoc",
-        "vòi đồng",
-        "faucet",
-        "water tap",
-        "basin tap",
-        "vòi lavabo",
-        "vòi bếp nước"
-      ],
-      "excludeIfAny": [
-        "van bi",
-        "van cổng",
-        "hose bib plastic"
-      ],
-      "excludeReasonVi": "Vòi nước đồng Ø ≤2,5 cm có mã riêng; van công nghiệp khác nhánh.",
-      "candidates": [
-        {
-          "hs": "84818098",
-          "whenVi": "Vòi nước bằng đồng hoặc hợp kim đồng, Ø trong ≤ 2,5 cm",
-          "confidence": "high"
-        },
-        {
-          "hs": "84818099",
-          "whenVi": "Vòi/van loại khác trong cùng nhánh dư (không khớp .98)",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "84819021",
-          "whyVi": "8481.90.21 là THÂN dùng cho vòi nước — bộ phận, không phải vòi hoàn chỉnh."
-        },
-        {
-          "prefix": "7324",
-          "whyVi": "7324 đồ vệ sinh bằng kim loại — phân biệt với vòi/van 8481."
-        }
-      ],
-      "askVi": [
-        "Vòi hoàn chỉnh hay chỉ thân/vỏ (8481.90)?",
-        "Đồng Ø ≤2,5 cm đúng không?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 84818098: \"Vòi nước bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống\" → high."
-    },
-    {
-      "id": "van-tay-nhe-inox",
-      "titleVi": "Van tay nhẹ <3 kg, xử lý bề mặt / inox / niken (8481.80.97)",
-      "terms": [
-        "van tay nhỏ",
-        "van inox nhỏ",
-        "van niken",
-        "compact hand valve",
-        "van điều khiển bằng tay nhẹ"
-      ],
-      "excludeIfAny": [
-        "van cổng lớn",
-        "van bi",
-        "trên 3 kg"
-      ],
-      "excludeReasonVi": "Mã .97 giới hạn khối lượng <3 kg và vật liệu/xử lý bề mặt cụ thể.",
-      "candidates": [
-        {
-          "hs": "84818097",
-          "whenVi": "Điều khiển bằng tay, khối lượng <3 kg, đã xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken",
-          "confidence": "high"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "84818073",
-          "whyVi": "Van cổng sắt/thép tay cỡ đường ống — nhánh .73+."
-        }
-      ],
-      "askVi": [
-        "Khối lượng dưới 3 kg?",
-        "Inox / niken / đã xử lý bề mặt?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 84818097 gọi đích danh điều kiện khối lượng và vật liệu → high."
-    },
-    {
-      "id": "van-848180-phu",
-      "titleVi": "Van/vòi 8481.80 — nhánh còn lại (cần Ø / vật liệu / SEN)",
-      "terms": [
-        "van công nghiệp",
-        "industrial valve",
-        "van đường ống",
-        "pipeline valve"
-      ],
-      "excludeIfAny": [
-        "van bi",
-        "ball valve",
-        "van cổng",
-        "gate valve",
-        "van bướm",
-        "butterfly",
-        "van bếp",
-        "van săm",
-        "van ngắt nhiên liệu",
-        "vòi nước",
-        "khí nén",
-        "solenoid",
-        "van giảm áp",
-        "van một chiều",
-        "van an toàn",
-        "van thủy lực"
-      ],
-      "excludeReasonVi": "Các loại đã có mục riêng phải đi mục đó — mục này chỉ hứng phần còn lại của 8481.80.",
-      "candidates": [
-        {
-          "hs": "848180",
-          "whenVi": "Van/vòi công nghiệp không thuộc các mục riêng (bi, cổng, bướm, giảm áp, một chiều, an toàn, bếp, săm, nhiên liệu xe). Lá 8 số tách theo Ø cửa nạp / vật liệu plastic / SEN — bảng quyết định 8481 sẽ chốt; chưa có bảng thì hỏi Ø và vật liệu.",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "848120",
-          "whyVi": "Ưu tiên hỏi/loại 8481.20 nếu là van truyền động."
-        },
-        {
-          "prefix": "848110",
-          "whyVi": "Van giảm áp có mục riêng."
-        }
-      ],
-      "askVi": [
-        "Có phải van bi / cổng / bướm / bếp / săm / nhiên liệu xe không? (có → dùng mục riêng)",
-        "Vật liệu và Ø trong cửa nạp?",
-        "Hàng SEN hay không?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Các mã lá còn lại của 8481.80 trong tax.json — dòng cha bị lược; confidence thấp, bắt buộc hỏi. Không high."
-    },
-    {
-      "id": "phu-tung-van",
-      "titleVi": "Bộ phận / thân / vỏ van (8481.90)",
-      "terms": [
-        "thân van",
-        "vỏ van",
-        "phụ tùng van",
-        "valve body",
-        "valve housing",
-        "valve parts",
-        "valve spare",
-        "linh kiện van"
-      ],
-      "excludeIfAny": [
-        "van hoàn chỉnh",
-        "complete valve",
-        "van nguyên chiếc"
-      ],
-      "excludeReasonVi": "Van hoàn chỉnh thuộc 8481.10–.80; đây chỉ bộ phận 8481.90.",
-      "candidates": [
-        {
-          "hs": "84819010",
-          "whenVi": "Vỏ van cổng hoặc van cống, Ø trong cửa nạp/thoát >50 mm và ≤400 mm",
-          "confidence": "high"
-        },
-        {
-          "hs": "84819021",
-          "whenVi": "Thân dùng cho vòi nước",
-          "confidence": "high"
-        },
-        {
-          "hs": "84819022",
-          "whenVi": "Thân dùng cho van xi lanh LPG",
-          "confidence": "high"
-        },
-        {
-          "hs": "84819023",
-          "whenVi": "Thân — loại khác",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84819029",
-          "whenVi": "Loại khác trong nhánh thân",
-          "confidence": "low"
-        },
-        {
-          "hs": "84819031",
-          "whenVi": "Bộ phận bằng đồng/hợp kim đồng",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84819039",
-          "whenVi": "Bộ phận — loại khác (cùng nhánh .31)",
-          "confidence": "low"
-        },
-        {
-          "hs": "84819041",
-          "whenVi": "Bộ phận bằng đồng/hợp kim đồng (nhánh khác)",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84819049",
-          "whenVi": "Bộ phận — loại khác (cùng nhánh .41)",
-          "confidence": "low"
-        },
-        {
-          "hs": "84819090",
-          "whenVi": "Bộ phận van — loại khác",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "848180",
-          "whyVi": "8481.80 là thiết bị hoàn chỉnh (van/vòi), không phải bộ phận."
-        },
-        {
-          "prefix": "848120",
-          "whyVi": "Van truyền động hoàn chỉnh — không phải parts."
-        }
-      ],
-      "askVi": [
-        "Thân vòi nước, thân van LPG, vỏ van cổng/cống, hay bộ phận khác?",
-        "Vật liệu (đồng / khác)?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 848190* — parts; .10/.21/.22 gọi đích danh → high."
-    },
-    {
-      "id": "thep-cuon-can-nong",
-      "titleVi": "Thép cuộn cán nóng (HRC / Hot Rolled Coil)",
-      "terms": [
-        "thép cuộn cán nóng",
-        "thép cán nóng cuộn",
-        "thép tấm cuộn cán nóng",
-        "hrc",
-        "hot rolled coil",
-        "hot rolled steel coil",
-        "sphc",
-        "tôn cuộn cán nóng",
-        "thép cán nóng dạng cuộn"
-      ],
-      "excludeIfAny": [
-        "thép không gỉ",
-        "stainless",
-        "inox",
-        "thép cuộn cán nguội",
-        "crc"
-      ],
-      "excludeReasonVi": "Từ khoá 'không gỉ/inox/stainless' chuyển mục sang nhóm thép không gỉ 7218-7220; 'cán nguội/CRC' là nhóm 7209 — cơ chế và mã khác hẳn.",
-      "candidates": [
-        {
-          "hs": "7208",
-          "whenVi": "Thép cuộn cán nóng, khổ ≥ 600 mm, chưa phủ mạ. Lá 8 số tách theo chiều dày, tẩy gỉ, dập nổi, carbon — bảng quyết định 7208 sẽ chốt.",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "7221",
-          "whyVi": "7221.00 là thanh và que thép không gỉ được cán nóng dạng cuộn. Mục này về thép đen/cacbon thường; từ khoá 'thép không gỉ/inox' đã được exclude để tránh lẫn."
-        },
-        {
-          "prefix": "7209",
-          "whyVi": "Nhóm 7209 là cán NGUỘI (cold rolled), không phải cán nóng. Lẫn nhóm này là phân loại sai hoàn toàn về bản chất gia công."
-        },
-        {
-          "prefix": "7211",
-          "whyVi": "7211 là cán phẳng rộng < 600 mm. HRC rộng ≥600 mm thuộc 7208 — chỉ sang 7211 khi khổ hẹp."
-        }
-      ],
-      "askVi": [
-        "Dạng cuộn hay dạng tấm không cuộn? (cùng nhóm 7208 nếu rộng ≥600 mm; hẹp <600 mm → 7211)",
-        "Chiều rộng ≥ 600 mm hay < 600 mm?",
-        "Chiều dày: ≥10 mm / 4,75–10 / 3–<4,75 / <3 mm?",
-        "Có hình dập nổi / đã tẩy gỉ (pickled) / carbon ≥0,6% không?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN nhóm 7208 — sản phẩm cán phẳng bằng sắt hoặc thép không hợp kim, cán nóng, dạng cuộn. Phạm vi phân nhóm: 7208.36/37/38/39 theo chiều dày, 7208.39.10–30 theo carbon. Chú giải Ch.72 mục 1(k) định nghĩa 'cán phẳng'; 1(l) định nghĩa 'dạng cuộn'."
-    },
-    {
-      "id": "thep-cuon-can-nguoi",
-      "titleVi": "Thép cuộn cán nguội (CRC / Cold Rolled Coil)",
-      "terms": [
-        "thép cuộn cán nguội",
-        "thép cán nguội cuộn",
-        "crc",
-        "cold rolled coil",
-        "cold rolled steel coil",
-        "tôn cuộn cán nguội",
-        "thép cán nguội dạng cuộn",
-        "spcc",
-        "thép tấm cuộn cán nguội"
-      ],
-      "excludeIfAny": [
-        "thép không gỉ",
-        "stainless",
-        "inox",
-        "thép cuộn cán nóng",
-        "hrc",
-        "mạ kẽm",
-        "galvanized",
-        "tôn mạ"
-      ],
-      "excludeReasonVi": "Từ khoá 'không gỉ/inox' chuyển sang nhóm thép không gỉ; 'cán nóng/HRC' là nhóm 7208; 'mạ kẽm/galvanized/tôn mạ' là nhóm 7210 — khi đã phủ lớp bề mặt là chuyển nhóm hoàn toàn.",
-      "candidates": [
-        {
-          "hs": "72091500",
-          "whenVi": "- - Có chiều dày từ 3 mm trở lên — mã 7209.15.00 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72091610",
-          "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.16.10 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72091690",
-          "whenVi": "- - - Loại khác — mã 7209.16.90 trong biểu thuế hiện hành",
-          "confidence": "low"
-        },
-        {
-          "hs": "72091710",
-          "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.17.10 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72091790",
-          "whenVi": "Cán nguội, cuộn, chiều rộng ≥ 600 mm, chiều dày 1 mm đến < 3 mm (chưa rõ chính xác)",
-          "confidence": "low"
-        },
-        {
-          "hs": "72091810",
-          "whenVi": "- - - Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP) — mã 7209.18.10 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72091891",
-          "whenVi": "- - - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7209.18.91 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72091899",
-          "whenVi": "- - - - Loại khác — mã 7209.18.99 trong biểu thuế hiện hành",
-          "confidence": "low"
-        },
-        {
-          "hs": "72099090",
-          "whenVi": "Cán nguội, dạng cuộn, chiều rộng ≥ 600 mm — mã dư cuối cùng khi các ngưỡng chiều dày/carbon cụ thể ở 7209.15–7209.28 không khớp",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "7208",
-          "whyVi": "7208 là cán NÓNG (hot rolled). Cùng dạng cuộn nhưng cơ chế gia công khác — bề mặt, dung sai, ứng dụng đều khác."
-        },
-        {
-          "prefix": "7210",
-          "whyVi": "7210 là sản phẩm đã được mạ/phủ/tráng (mạ kẽm, sơn...). Từ khoá 'mạ kẽm/tôn mạ' đã exclude, nhưng kể cả khi không nói, CRC thuần (SPCC đen) không thuộc nhóm này."
-        },
-        {
-          "prefix": "7212",
-          "whyVi": "7212 dành cho dạng TẤM cán nguội, không phải cuộn."
-        },
-        {
-          "prefix": "7221",
-          "whyVi": "7221.00 là thép không gỉ dạng cuộn. Đã loại trừ bằng từ khoá 'inox/không gỉ'."
-        }
-      ],
-      "askVi": [
-        "Đã mạ/phủ bề mặt chưa (mạ kẽm, sơn, thiếc) hay tấm đen cán nguội thuần?",
-        "Dạng cuộn hay tấm không cuộn? (cùng 7209 nếu rộng ≥600 mm; hẹp → 7212)",
-        "Chiều dày: ≥3 mm / 1–<3 / 0,5–<1 / <0,5 mm?",
-        "Có phải TMBP (tin-mill blackplate) không?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN nhóm 7209 — sản phẩm cán phẳng bằng sắt hoặc thép không hợp kim, cán nguội, dạng cuộn. Phạm vi phân nhóm: 7209.15/16/17/18/25/26/27/28 theo chiều rộng + chiều dày, 7209.18.10 cho TMBP (tin-mill blackplate). Chú giải Ch.72: 'cán nguội' là gia công giảm tiết diện ở nhiệt độ thường, bề mặt hoàn thiện hơn 7208."
-    },
-    {
-      "id": "thep-hinh-u-i-h",
-      "titleVi": "Thép hình chữ U / I / H (kết cấu xây dựng)",
-      "terms": [
-        "thép hình",
-        "thép hình h",
-        "thép hình i",
-        "thép hình u",
-        "thép i",
-        "thép h",
-        "thép u",
-        "thép i100",
-        "thép i120",
-        "thép i150",
-        "thép i200",
-        "thép h100",
-        "thép h200",
-        "thép h300",
-        "thép u50",
-        "thép u80",
-        "thép u100",
-        "dầm thép",
-        "beam steel",
-        "h beam",
-        "i beam",
-        "u channel",
-        "thép chữ h",
-        "thép chữ i",
-        "thép chữ u",
-        "thép hình cán nóng"
-      ],
-      "excludeIfAny": [
-        "thép không gỉ",
-        "inox",
-        "stainless",
-        "nhôm định hình",
-        "aluminium profile",
-        "thép hộp",
-        "thép ống",
-        "thép tấm"
-      ],
-      "excludeReasonVi": "Từ khoá 'inox/không gỉ' chuyển sang nhóm thép không gỉ 7218-7220; 'nhôm định hình' là chương 76; 'thép hộp/thép ống' là nhóm 7306/7307; 'thép tấm' là nhóm 7208-7212 (cán phẳng, không phải kết cấu cán dạng hình).",
-      "candidates": [
-        {
-          "hs": "7216",
-          "whenVi": "Thép hình U / I / H / L / T không hợp kim. Lá 8 số tách theo mặt cắt, chiều cao ≥/< 80 mm, carbon ≥/< 0,6 %, cách gia công — bảng quyết định 7216 sẽ chốt.",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "7306",
-          "whyVi": "7306 là ỐNG (rỗng ruột), hình tròn/oval/DLCN. 'Thép hình' là profile kết cấu ĐẶC ruột — khác hẳn."
-        },
-        {
-          "prefix": "7308",
-          "whyVi": "7308 là KẾT CẤU ĐÃ LẮP RÁP (cột, dầm, khung nhà xưởng hoàn chỉnh), không phải thép hình nguyên liệu. Người gõ 'thép hình I100' mua thanh nguyên liệu, không phải kết cấu đã gia công."
-        },
-        {
-          "prefix": "7210",
-          "whyVi": "7210 dành cho sản phẩm cán PHẲNG (tấm/cuộn) đã mạ/tráng. Thép hình không phải cán phẳng."
-        },
-        {
-          "prefix": "7214",
-          "whyVi": "7214 là thanh que CÁN NÓNG thường (tròn, vuông, lục giác) — không có mặt cắt chữ H/I/U."
-        }
-      ],
-      "askVi": [
-        "Mặt cắt nào? U, I, H, L, T, hay hình đặc biệt (V, Z, Omega)?",
-        "Chiều cao mặt cắt: ≥ 80 mm hay < 80 mm?",
-        "Đã gia công thêm (cắt, hàn, khoan, lắp ráp) hay còn nguyên thanh cán nóng?",
-        "Hàm lượng carbon ≥ 0,6% hay < 0,6%?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN nhóm 7216 — góc, khuôn và hình bằng sắt hoặc thép không hợp kim. Phân nhóm theo mặt cắt: 7216.10 (H/I/U, cao ≥ 80mm), 7216.21 (L, < 80mm), 7216.22 (T), 7216.31 (U/I/H, cao ≥ 80mm), 7216.32 (U/I/H, cao < 80mm), 7216.40 (L/T, cao ≥ 80mm), 7216.50 (khác, cao < 80mm), 7216.61 (từ sản phẩm cán phẳng), 7216.69/99 (loại khác). Chú giải Ch.72 mục 1(n) định nghĩa 'góc, khuôn và hình'."
-    },
-    {
-      "id": "thep-tam-can-nong",
-      "titleVi": "Thép tấm cán nóng (không cuộn / hot rolled plate)",
-      "terms": [
-        "thép tấm cán nóng",
-        "tấm thép cán nóng",
-        "hot rolled plate",
-        "hrp",
-        "thép tấm hrc",
-        "thép tấm cán nóng cắt",
-        "steel plate hot rolled",
-        "thép tấm dập nổi cán nóng"
-      ],
-      "excludeIfAny": [
-        "thép không gỉ",
-        "stainless",
-        "inox",
-        "thép cuộn",
-        "hrc coil",
-        "crc",
-        "thép cuộn cán nóng"
-      ],
-      "excludeReasonVi": "Tách khỏi dạng cuộn cùng nhóm gia công; inox/stainless → nhóm thép không gỉ; mạ/phủ → 7210/7212.",
-      "candidates": [
-        {
-          "hs": "72084000",
-          "whenVi": "- Không ở dạng cuộn, chưa được gia công quá mức cán nóng, có hình dập nổi trên bề mặt — mã 7208.40.00 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72085100",
-          "whenVi": "- - Chiều dày trên 10 mm — mã 7208.51.00 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72085200",
-          "whenVi": "- - Chiều dày từ 4,75 mm đến 10 mm — mã 7208.52.00 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72085300",
-          "whenVi": "- - Chiều dày từ 3 mm đến dưới 4,75 mm — mã 7208.53.00 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72085410",
-          "whenVi": "- - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7208.54.10 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72085490",
-          "whenVi": "- - - Loại khác — mã 7208.54.90 trong biểu thuế hiện hành",
-          "confidence": "low"
-        },
-        {
-          "hs": "72089010",
-          "whenVi": "- - Dạng lượn sóng — mã 7208.90.10 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "7209",
-          "whyVi": "7209 là cán nguội — khác cơ chế gia công."
-        },
-        {
-          "prefix": "7210",
-          "whyVi": "7210 đã mạ/phủ/tráng; tấm đen cán nóng thuộc 7208."
-        },
-        {
-          "prefix": "7225",
-          "whyVi": "7225 là thép hợp kim khác (vd làm khuôn) — không mặc định từ “tấm cán nóng” thường."
-        }
-      ],
-      "askVi": [
-        "Dạng tấm (không cuộn) hay còn dạng cuộn?",
-        "Chiều rộng ≥ 600 mm hay < 600 mm?",
-        "Chiều dày và hàm lượng carbon nếu biết?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN nhóm 7208 — sản phẩm cán phẳng, không ở dạng cuộn (và mã dư liên quan). Mỗi mã lá gắn whenVi theo nguyên văn mô tả dòng thuế."
-    },
-    {
-      "id": "thep-tam-can-nguoi",
-      "titleVi": "Thép tấm cán nguội (không cuộn / cold rolled sheet)",
-      "terms": [
-        "thép tấm cán nguội",
-        "tấm thép cán nguội",
-        "cold rolled sheet",
-        "cold rolled plate",
-        "tôn tấm cán nguội",
-        "thép tấm crc",
-        "crs sheet"
-      ],
-      "excludeIfAny": [
-        "thép không gỉ",
-        "stainless",
-        "inox",
-        "thép cuộn",
-        "hrc",
-        "mạ kẽm",
-        "galvanized",
-        "tôn mạ",
-        "thép cuộn cán nguội",
-        "crc coil"
-      ],
-      "excludeReasonVi": "Tách khỏi dạng cuộn cùng nhóm gia công; inox/stainless → nhóm thép không gỉ; mạ/phủ → 7210/7212.",
-      "candidates": [
-        {
-          "hs": "72092500",
-          "whenVi": "- - Có chiều dày từ 3 mm trở lên — mã 7209.25.00 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72092610",
-          "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.26.10 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72092690",
-          "whenVi": "- - - Loại khác — mã 7209.26.90 trong biểu thuế hiện hành",
-          "confidence": "low"
-        },
-        {
-          "hs": "72092710",
-          "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.27.10 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72092790",
-          "whenVi": "- - - Loại khác — mã 7209.27.90 trong biểu thuế hiện hành",
-          "confidence": "low"
-        },
-        {
-          "hs": "72092810",
-          "whenVi": "- - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7209.28.10 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        },
-        {
-          "hs": "72092890",
-          "whenVi": "- - - Loại khác — mã 7209.28.90 trong biểu thuế hiện hành",
-          "confidence": "low"
-        },
-        {
-          "hs": "72099010",
-          "whenVi": "- - Dạng lượn sóng — mã 7209.90.10 trong biểu thuế hiện hành",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "7208",
-          "whyVi": "7208 là cán nóng."
-        },
-        {
-          "prefix": "7210",
-          "whyVi": "7210 đã mạ/phủ — CRC/CRS đen thuần không thuộc đây."
-        },
-        {
-          "prefix": "7212",
-          "whyVi": "7212 rộng <600 mm hoặc đã phủ theo nhánh hẹp — chỉ khi khổ hẹp."
-        }
-      ],
-      "askVi": [
-        "Dạng tấm (không cuộn) hay còn dạng cuộn?",
-        "Chiều rộng ≥ 600 mm hay < 600 mm?",
-        "Chiều dày và hàm lượng carbon nếu biết?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN nhóm 7209 — sản phẩm cán phẳng, không ở dạng cuộn (và mã dư liên quan). Mỗi mã lá gắn whenVi theo nguyên văn mô tả dòng thuế."
-    },
-    {
-      "id": "bang-dieu-khien-plc",
-      "titleVi": "Bảng / tủ PLC — bộ điều khiển logic lập trình (≤1000V)",
-      "terms": [
-        "bảng plc",
-        "tủ plc",
-        "plc",
-        "programmable logic controller",
-        "bộ điều khiển logic lập trình",
-        "bảng điều khiển plc",
-        "tủ điều khiển plc",
-        "plc panel",
-        "plc cabinet",
-        "bộ xử lý lập trình",
-        "sen plc"
-      ],
-      "excludeIfAny": [
-        "điện áp cao",
-        "trung thế",
-        "cao thế",
-        ">1000",
-        "kv",
-        "soft starter riêng"
-      ],
-      "excludeReasonVi": "Điện áp >1000V thuộc 8537.20; thiết bị điều khiển tự động đơn lẻ thuộc 9032.",
-      "candidates": [
-        {
-          "hs": "85371012",
-          "whenVi": "- - - Bảng điều khiển có trang bị bộ xử lý lập trình (SEN) — mã 8537.10.12",
-          "confidence": "low"
-        },
-        {
-          "hs": "85371030",
-          "whenVi": "- - Bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn — mã 8537.10.30",
-          "confidence": "low"
-        },
-        {
-          "hs": "85371019",
-          "whenVi": "- - - Loại khác — mã 8537.10.19",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "9032",
-          "whyVi": "9032 là thiết bị điều khiển tự động / dụng cụ đo-điều khiển — không phải bảng/tủ điện hoàn chỉnh 8537."
-        },
-        {
-          "prefix": "8538",
-          "whyVi": "8538 là bộ phận của bảng (relay, busbar…) — không phải bảng hoàn chỉnh."
-        },
-        {
-          "prefix": "8504",
-          "whyVi": "8504 là biến áp / bộ biến đổi tĩnh — khác bảng điều khiển."
-        }
-      ],
-      "askVi": [
-        "Điện áp làm việc ≤1000V hay >1000V?",
-        "Biểu thuế gọi đích danh “bộ xử lý lập trình (SEN)” (.12) hay chỉ “loại khác” (.19)?",
-        "Có phải PLC cho máy ép phun / khuôn ép nhựa không? (→ 8537.10.30)",
-        "Là bảng hoàn chỉnh hay chỉ module PLC rời?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8537.10 — bảng điều khiển ≤1000V; 8537.10.12 bảng có bộ xử lý lập trình (SEN); 8537.10.30 PLC cho máy tự động dịch chuyển/kẹp khuôn. Chú giải nhóm 8537: gồm bảng chuyển mạch và bộ điều khiển lập trình; không gồm 90.32."
-    },
-    {
-      "id": "bang-dieu-khien-dcs",
-      "titleVi": "Bảng điều khiển DCS / hệ thống điều khiển phân tán (≤1000V)",
-      "terms": [
-        "dcs",
-        "distributed control system",
-        "hệ thống điều khiển phân tán",
-        "bảng điều khiển dcs",
-        "tủ dcs",
-        "dcs panel",
-        "bảng dcs"
-      ],
-      "excludeIfAny": [
-        ">1000",
-        "trung thế",
-        "cao thế"
-      ],
-      "excludeReasonVi": "DCS gắn tủ cao thế → 8537.20; PLC thường → mục bang-dieu-khien-plc.",
-      "candidates": [
-        {
-          "hs": "85371011",
-          "whenVi": "- - - Bảng điều khiển của loại thích hợp sử dụng cho hệ thống điều khiển phân tán — mã 8537.10.11",
-          "confidence": "medium"
-        },
-        {
-          "hs": "85371092",
-          "whenVi": "- - - Loại phù hợp sử dụng cho hệ thống điều khiển phân tán — mã 8537.10.92",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "9032",
-          "whyVi": "9032 không phải bảng/tủ DCS hoàn chỉnh."
-        },
-        {
-          "prefix": "8538",
-          "whyVi": "8538 bộ phận, không phải bảng DCS nguyên chiếc."
-        }
-      ],
-      "askVi": [
-        "Đây là tủ/bảng DCS hoàn chỉnh hay card/module I/O rời?",
-        "Điện áp làm việc ≤1000V?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8537.10.11 và 8537.10.92 — bảng điều khiển loại thích hợp cho hệ thống điều khiển phân tán (DCS)."
-    },
-    {
-      "id": "bang-phan-phoi-dien",
-      "titleVi": "Bảng phân phối / tủ điện / MCC / switchboard (≤1000V)",
-      "terms": [
-        "bảng phân phối",
-        "tủ phân phối",
-        "switchboard",
-        "mcc",
-        "motor control center",
-        "distribution board",
-        "distribution panel",
-        "tủ mcc",
-        "tủ điều khiển động cơ",
-        "electrical panel",
-        "tủ điện công nghiệp",
-        "tủ điện phân phối",
-        "bảng điện phân phối",
-        "electrical distribution panel",
-        "tủ điều khiển điện"
-      ],
-      "excludeIfAny": [
-        "plc",
-        "dcs",
-        ">1000",
-        "trung thế",
-        "cao thế",
-        "biến tần",
-        "tụ điện",
-        "capacitor",
-        "bộ cấp nguồn",
-        "nguồn liên tục",
-        "ups",
-        "smps"
-      ],
-      "excludeReasonVi": "PLC/DCS có mục riêng; biến tần là 8504; cao thế >1000V là 8537.20. Không kích hoạt trên tụ điện/PSU (tụ điện ↔ tủ điện mất dấu).",
-      "candidates": [
-        {
-          "hs": "85371020",
-          "whenVi": "- - Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25 — mã 8537.10.20",
-          "confidence": "medium"
-        },
-        {
-          "hs": "85371013",
-          "whenVi": "- - - Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN) — mã 8537.10.13",
-          "confidence": "medium"
-        },
-        {
-          "hs": "85371099",
-          "whenVi": "- - - Loại khác — mã 8537.10.99",
-          "confidence": "low"
-        },
-        {
-          "hs": "85371019",
-          "whenVi": "- - - Loại khác — mã 8537.10.19",
-          "confidence": "low"
-        },
-        {
-          "hs": "85371091",
-          "whenVi": "- - - Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện — mã 8537.10.91",
-          "confidence": "medium"
-        },
-        {
-          "hs": "85371040",
-          "whenVi": "- - Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A — mã 8537.10.40",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8536",
-          "whyVi": "8536 là thiết bị đóng cắt/bảo vệ rời (aptomat, contactor…) — chưa lắp thành bảng."
-        },
-        {
-          "prefix": "8538",
-          "whyVi": "8538 bộ phận bảng, không phải bảng hoàn chỉnh."
-        },
-        {
-          "prefix": "8504",
-          "whyVi": "Biến tần / VFD thuộc 8504, không phải bảng phân phối."
-        },
-        {
-          "prefix": "9032",
-          "whyVi": "9032 thiết bị điều khiển tự động đơn lẻ."
-        }
-      ],
-      "askVi": [
-        "Đã lắp thành bảng/tủ hoàn chỉnh hay chỉ thiết bị đóng cắt rời (8536)?",
-        "Dùng cho điều hòa/tủ lạnh/máy giặt/đồ gia dụng điện không? (→ 8537.10.13/.20)",
-        "Điện áp ≤1000V hay >1000V?",
-        "Có phải bộ điều khiển động cơ 24–120VDC / 300–500A không? (→ 8537.10.40)"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8537.10 — bảng phân phối và bảng điều khiển ≤1000V (8537.10.13/.20/.40/.91/.99 và mã dư .19). Chú giải 8537: từ bảng nhỏ vài cầu chì đến tủ phức tạp nhà máy."
-    },
-    {
-      "id": "tu-dien-cao-ap-8537",
-      "titleVi": "Bảng / tủ điều khiển hoặc phân phối điện áp >1000V",
-      "terms": [
-        "tủ trung thế",
-        "tủ cao thế",
-        "bảng trung thế",
-        "switchgear",
-        "tủ điện >1000v",
-        "tủ điện trên 1000v",
-        "high voltage switchboard",
-        "mv switchgear",
-        "tủ 22kv",
-        "tủ 35kv",
-        "tủ 66kv"
-      ],
-      "excludeIfAny": [
-        "plc gia dụng",
-        "điện áp thấp",
-        "220v",
-        "380v tủ mcc thường"
-      ],
-      "excludeReasonVi": "≤1000V thuộc 8537.10; thiết bị đóng cắt rời cao thế có thể 8535.",
-      "candidates": [
-        {
-          "hs": "85372011",
-          "whenVi": "- - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên — mã 8537.20.11",
-          "confidence": "medium"
-        },
-        {
-          "hs": "85372019",
-          "whenVi": "- - - Loại khác — mã 8537.20.19",
-          "confidence": "low"
-        },
-        {
-          "hs": "85372021",
-          "whenVi": "- - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên — mã 8537.20.21",
-          "confidence": "medium"
-        },
-        {
-          "hs": "85372029",
-          "whenVi": "- - - Loại khác — mã 8537.20.29",
-          "confidence": "low"
-        },
-        {
-          "hs": "85372090",
-          "whenVi": "- - Loại khác — mã 8537.20.90",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8535",
-          "whyVi": "8535 là thiết bị đóng cắt/bảo vệ dùng riêng cho >1000V (chưa lắp thành bảng)."
-        },
-        {
-          "prefix": "8536",
-          "whyVi": "8536 chỉ cho ≤1000V — thiết bị rời."
-        },
-        {
-          "prefix": "8504",
-          "whyVi": "Máy biến áp thuộc 8504, không phải bảng phân phối."
-        }
-      ],
-      "askVi": [
-        "Điện áp định mức >1000V xác nhận?",
-        "Đã lắp thành bảng/tủ hoàn chỉnh hay thiết bị đóng cắt rời (8535)?",
-        "Có gắn thiết bị ngắt/nối/bảo vệ mạch ≥66 kV không?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8537.20 — bảng điều khiển/phân phối cho điện áp trên 1000V, gồm các nhánh gắn thiết bị ≥66 kV và mã dư."
-    },
-    {
-      "id": "thang-may-thang-cuon",
-      "titleVi": "Thang máy / thang cuốn / băng tải người đi bộ",
-      "terms": [
-        "thang máy",
-        "thang cuon",
-        "thang cuốn",
-        "elevator",
-        "lift passenger",
-        "escalator",
-        "moving walk",
-        "băng tải người",
-        "passenger lift",
-        "thang máy chở người",
-        "thang máy hàng"
-      ],
-      "excludeIfAny": [
-        "xe nâng",
-        "forklift",
-        "bàn nâng",
-        "scissor"
-      ],
-      "excludeReasonVi": "Xe nâng càng 8427; bàn nâng/thiết bị nâng khác 8428.90; không lẫn thang máy cố định.",
-      "candidates": [
-        {
-          "hs": "84281031",
-          "whenVi": "- - - Để chở người — mã 8428.10.31",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84281039",
-          "whenVi": "- - - Loại khác — mã 8428.10.39",
-          "confidence": "low"
-        },
-        {
-          "hs": "84281040",
-          "whenVi": "- - Tời nâng kiểu gầu nâng (trục tải thùng kíp) — mã 8428.10.40",
-          "confidence": "high"
-        },
-        {
-          "hs": "84284000",
-          "whenVi": "- Thang cuốn và băng tải tự động dùng cho người đi bộ — mã 8428.40.00",
-          "confidence": "high"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8427",
-          "whyVi": "8427 là xe nâng tự hành (forklift), không phải thang máy/thang cuốn cố định."
-        },
-        {
-          "prefix": "8431",
-          "whyVi": "8431 bộ phận của máy nâng — không phải nguyên chiếc."
-        }
-      ],
-      "askVi": [
-        "Chở người hay hàng/khác?",
-        "Thang máy cabin, thang cuốn, hay tời gầu nâng?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8428.10 (thang máy/tời nâng) và 8428.40 (thang cuốn và băng tải người)."
-    },
-    {
-      "id": "bang-tai-cong-nghiep",
-      "titleVi": "Băng tải / conveyor công nghiệp (không phải băng tải người)",
-      "terms": [
-        "conveyor",
-        "belt conveyor",
-        "screw conveyor",
-        "roller conveyor",
-        "băng chuyền",
-        "máy băng tải",
-        "pneumatic conveyor",
-        "băng tải khí nén",
-        "hệ thống băng tải",
-        "băng tải công nghiệp",
-        "conveyor system",
-        "conveyor belt system"
-      ],
-      "excludeIfAny": [
-        "người đi bộ",
-        "escalator",
-        "thang cuốn",
-        "xe nâng",
-        "dây đai",
-        "đai băng",
-        "belt only",
-        "phụ tùng băng tải",
-        "cao su băng tải",
-        "nhựa pvc xốp"
-      ],
-      "excludeReasonVi": "Dây đai/đai PVC là bộ phận (thường ch.39/40), không phải máy băng tải 8428. Băng tải người/thang cuốn = 8428.40; xe nâng = 8427.",
-      "candidates": [
-        {
-          "hs": "84282010",
-          "whenVi": "- - Loại sử dụng trong nông nghiệp — mã 8428.20.10",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84282090",
-          "whenVi": "- - Loại khác — mã 8428.20.90",
-          "confidence": "low"
-        },
-        {
-          "hs": "84283100",
-          "whenVi": "- - Thiết kế chuyên sử dụng dưới lòng đất — mã 8428.31.00",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84283210",
-          "whenVi": "- - - Loại sử dụng trong nông nghiệp — mã 8428.32.10",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84283290",
-          "whenVi": "- - - Loại khác — mã 8428.32.90",
-          "confidence": "low"
-        },
-        {
-          "hs": "84283310",
-          "whenVi": "- - - Loại sử dụng trong nông nghiệp — mã 8428.33.10",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84283390",
-          "whenVi": "- - - Loại khác — mã 8428.33.90",
-          "confidence": "low"
-        },
-        {
-          "hs": "84283910",
-          "whenVi": "- - - Loại sử dụng trong nông nghiệp — mã 8428.39.10",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84283990",
-          "whenVi": "- - - Loại khác — mã 8428.39.90",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8427",
-          "whyVi": "8427 xe nâng càng — khác băng tải cố định/continuous."
-        },
-        {
-          "prefix": "8431",
-          "whyVi": "8431 bộ phận băng tải, không phải máy nguyên chiếc."
-        }
-      ],
-      "askVi": [
-        "Dùng nông nghiệp?",
-        "Kiểu gầu/xích/đai/trục vít?",
-        "Thiết kế chuyên dưới lòng đất?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8428.20–8428.39 — máy nâng liên tục / băng tải cho hàng (không phải người)."
-    },
-    {
-      "id": "xe-nang-forklift",
-      "titleVi": "Xe nâng càng / forklift / stacker tự hành",
-      "terms": [
-        "xe nâng",
-        "xe nâng hàng",
-        "forklift",
-        "xe nâng càng",
-        "xe nâng điện",
-        "reach truck",
-        "stacker",
-        "pallet stacker",
-        "xe nâng pallet"
-      ],
-      "excludeIfAny": [
-        "bàn nâng",
-        "scissor",
-        "thang máy",
-        "băng tải",
-        "crane"
-      ],
-      "excludeReasonVi": "Bàn nâng/scissor không tự hành kiểu càng → 8428; cầu trục khác nhóm.",
-      "candidates": [
-        {
-          "hs": "84271000",
-          "whenVi": "- Xe tự hành chạy bằng mô tơ điện — mã 8427.10.00",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84272000",
-          "whenVi": "- Xe tự hành khác — mã 8427.20.00",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84279000",
-          "whenVi": "- Các loại xe khác — mã 8427.90.00",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8428",
-          "whyVi": "8428 là máy nâng/bốc xếp khác (băng tải, thang máy, bàn nâng…) — không phải xe nâng càng tự hành."
-        },
-        {
-          "prefix": "8709",
-          "whyVi": "8709 xe công tác ngắn không có thiết bị nâng kiểu forklift."
-        },
-        {
-          "prefix": "8431",
-          "whyVi": "8431 bộ phận xe nâng."
-        }
-      ],
-      "askVi": [
-        "Tự hành có càng nâng pallet?",
-        "Điện / diesel / gas?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN nhóm 8427 — xe nâng tự hành có thiết bị nâng kiểu càng và xe nâng khác."
-    },
-    {
-      "id": "ban-nang-thuy-luc",
-      "titleVi": "Bàn nâng / scissor lift / lift table",
-      "terms": [
-        "bàn nâng",
-        "xe bàn nâng",
-        "lift table",
-        "scissor lift",
-        "bàn nâng thủy lực",
-        "bàn nâng cắt kéo",
-        "xe nâng bàn",
-        "xe nâng tay cao"
-      ],
-      "excludeIfAny": [
-        "băng tải",
-        "escalator",
-        "forklift",
-        "robot",
-        "thang máy",
-        "xe nâng càng",
-        "xe nâng hàng",
-        "xe nâng điện ngồi lái"
-      ],
-      "excludeReasonVi": "Forklift 8427; thang máy/băng tải/robot có mục riêng.",
-      "candidates": [
-        {
-          "hs": "84289090",
-          "whenVi": "- - Loại khác — mã 8428.90.90 — bàn nâng/thiết bị nâng không thuộc phân nhóm kể tên",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84289030",
-          "whenVi": "- - Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự — mã 8428.90.30",
-          "confidence": "low"
-        },
-        {
-          "hs": "84289020",
-          "whenVi": "- - Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp — mã 8428.90.20",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8427",
-          "whyVi": "Xe nâng tự hành có càng = 8427."
-        },
-        {
-          "prefix": "2522",
-          "whyVi": "'Vôi thủy lực' chỉ trùng chữ."
-        },
-        {
-          "prefix": "8431",
-          "whyVi": "8431 bộ phận."
-        },
-        {
-          "prefix": "2523",
-          "whyVi": "'Xi măng thủy lực' — trùng chữ, khác hẳn hàng."
-        },
-        {
-          "prefix": "2710",
-          "whyVi": "'Dầu phanh thủy lực' — trùng chữ, là dầu bôi trơn."
-        },
-        {
-          "prefix": "7304",
-          "whyVi": "Ống thép chịu áp lực — chỉ dính vì 'áp lực'/'thủy lực', không phải máy nâng."
-        }
-      ],
-      "askVi": [
-        "Có tự hành kiểu xe nâng càng không? (có → 8427)",
-        "Tải trọng và chiều cao nâng?",
-        "Nâng bằng thủy lực, cắt kéo hay tời?",
-        "Tải trọng và chiều cao nâng tối đa?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8428.90 — máy nâng/bốc xếp khác; mã dư 8428.90.90 khi không thuộc .20/.30."
-    },
-    {
-      "id": "robot-cong-nghiep-8428",
-      "titleVi": "Rô bốt công nghiệp (nhóm 8428.70)",
-      "terms": [
-        "robot công nghiệp",
-        "rô bốt công nghiệp",
-        "industrial robot",
-        "robot arm",
-        "cánh tay robot"
-      ],
-      "excludeIfAny": [
-        "đồ chơi",
-        "toy robot",
-        "robot hút bụi",
-        "vacuum"
-      ],
-      "excludeReasonVi": "Robot đồ chơi/gia dụng không thuộc 8428.70.",
-      "candidates": [
-        {
-          "hs": "84287000",
-          "whenVi": "- Rô bốt công nghiệp — mã 8428.70.00",
-          "confidence": "high"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8508",
-          "whyVi": "Máy hút bụi điện gia dụng — không phải robot công nghiệp 8428."
-        },
-        {
-          "prefix": "9503",
-          "whyVi": "Đồ chơi."
-        }
-      ],
-      "askVi": [
-        "Robot công nghiệp sản xuất hay đồ chơi/gia dụng?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8428.70.00 — Rô bốt công nghiệp (gọi đích danh)."
-    },
-    {
-      "id": "cap-treo-thiet-bi-mo",
-      "titleVi": "Cáp treo / thiết bị mỏ / máy xử lý mạch in (8428.60–.90)",
-      "terms": [
-        "cáp treo",
-        "ghế treo",
-        "teleferic",
-        "ski lift",
-        "thiết bị đẩy goòng",
-        "máy lật toa",
-        "máy kẹp mạch in",
-        "pcb handling"
-      ],
-      "excludeIfAny": [
-        "bàn nâng",
-        "forklift",
-        "thang máy"
-      ],
-      "excludeReasonVi": "Các mặt hàng 8428.60/.90 đặc thù — không lẫn bàn nâng/xe nâng.",
-      "candidates": [
-        {
-          "hs": "84286000",
-          "whenVi": "- Thùng cáp treo, ghế treo, cơ cấu kéo người trượt tuyết lên cao dùng trong môn trượt tuyết; cơ cấu kéo dùng cho đường sắt leo núi — mã 8428.60.00",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84289030",
-          "whenVi": "- - Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự — mã 8428.90.30",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84289020",
-          "whenVi": "- - Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp — mã 8428.90.20",
-          "confidence": "medium"
-        },
-        {
-          "hs": "84289090",
-          "whenVi": "- - Loại khác — mã 8428.90.90",
-          "confidence": "low"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8427",
-          "whyVi": "Không phải xe nâng càng."
-        }
-      ],
-      "askVi": [
-        "Cáp treo/trượt tuyết, thiết bị goòng mỏ, hay máy mạch in?"
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế VN 8428.60, 8428.90.20, 8428.90.30."
-    },
-    {
-      "id": "phich-o-cam-dong-truc-8536",
-      "titleVi": "Phích cắm / ổ cắm đồng trục (anten TV, RF) — 8536.69.3x",
-      "terms": [
-        "phích cắm đồng trục",
-        "ổ cắm đồng trục",
-        "jack đồng trục",
-        "giắc đồng trục",
-        "coaxial plug",
-        "coaxial socket"
-      ],
-      "candidates": [
-        {
-          "hs": "853669",
-          "whenVi": "Phích cắm / ổ cắm cho cáp đồng trục (≤1000 V). Bảng quyết định 8536 chốt lá: 8536.69.32 dưới 16 A / .39 loại khác.",
-          "confidence": "medium"
-        }
-      ],
-      "avoid": [
-        {
-          "prefix": "8528",
-          "whyVi": "Tivi / màn hình là 8528; phích/ổ cắm đồng trục rời là thiết bị đấu nối 85.36."
-        },
-        {
-          "prefix": "854420",
-          "whyVi": "Cáp đồng trục (dây dẫn) là 8544.20; đầu cắm rời của cáp thuộc 85.36."
-        }
-      ],
-      "gir": "1",
-      "basis": "RULE_TABLE",
-      "sourceVi": "Biểu thuế 2026 phân nhóm 8536.69 — dòng cha \"Ổ cắm và phích cắm cho cáp đồng trục và mạch in\" (8536.69.32 / .39); TB 4786/TB-TCHQ (đầu nối mạch in → 8536.69.32)."
+     "hs": "72285010",
+     "whenVi": "Dạng thanh / que đặc, mặt cắt ngang hình tròn",
+     "confidence": "low"
     }
-  ],
-  "updatedAt": "2026-09-16"
+   ],
+   "avoid": [
+    {
+     "prefix": "8480",
+     "whyVi": "Nhóm 8480 là BỘ KHUÔN đã thành hình (khuôn đúc, khuôn ép nhựa) — thành phẩm. Thép tấm mới chỉ là NGUYÊN LIỆU để gia công ra khuôn, chưa có đặc trưng của khuôn nên GIR 2(a) không áp dụng."
+    },
+    {
+     "prefix": "8207",
+     "whyVi": "Nhóm 8207 là dụng cụ thay thế lắp cho máy. Thép tấm chưa gia công không phải dụng cụ."
+    }
+   ],
+   "askVi": [
+    "Chiều rộng tấm: từ 600 mm trở lên hay dưới 600 mm? (ranh giới 7225 / 7226)",
+    "Dạng hàng: tấm cán phẳng hay thanh/que đặc? (7225–7226 so với 7228)",
+    "Đã gia công quá mức cán nóng chưa (cán nguội, phay, tôi, mài)?",
+    "Mác thép và thành phần hợp kim (để loại trừ thép không gỉ nhóm 7219/7220)"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 nhóm 7225/7226/7228; phạm vi phân nhóm lấy từ data/hs-context.json (72254090: \"chiều rộng ≥ 600mm\", 72269190: \"chiều rộng < 600mm\"). Chú giải Chương 72 phân biệt sản phẩm cán phẳng với thanh que."
+  },
+  {
+   "id": "may-lam-mat-bay-hoi",
+   "titleVi": "Quạt điều hòa / máy làm mát không khí bằng hơi nước",
+   "terms": [
+    "quạt điều hòa",
+    "quạt hơi nước",
+    "quạt làm mát hơi nước",
+    "máy làm mát không khí",
+    "máy làm mát bằng hơi nước",
+    "quạt điều hoà hơi nước",
+    "air cooler",
+    "evaporative cooler",
+    "quạt điều hòa không khí"
+   ],
+   "candidates": [
+    {
+     "hs": "84796000",
+     "whenVi": "Làm mát bằng bay hơi nước (tấm làm mát + bơm nước), KHÔNG có chu trình lạnh máy nén",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8415",
+     "whyVi": "Nhóm 8415 đòi hỏi máy điều hòa có quạt VÀ bộ phận thay đổi nhiệt độ ĐỒNG THỜI độ ẩm, gồm cả loại không điều chỉnh độ ẩm riêng biệt — cốt lõi là có chu trình lạnh. Máy làm mát bay hơi không có máy nén nên không thuộc 8415."
+    },
+    {
+     "prefix": "8414",
+     "whyVi": "Nhóm 8414 là quạt đơn thuần. Máy làm mát bay hơi có thêm hệ bơm nước và tấm trao đổi nhiệt, đã được biểu thuế gọi tên riêng ở 8479.60 nên GIR 3(a) ưu tiên mô tả cụ thể hơn."
+    }
+   ],
+   "askVi": [
+    "Máy có block/máy nén và gas lạnh không? (có → xem nhóm 8415)",
+    "Có bình chứa nước và tấm làm mát (cooling pad) không?"
+   ],
+   "gir": "3a",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026: mã 84796000 ghi đúng chữ \"Máy làm mát không khí bằng bay hơi\". Biểu thuế đã gọi tên mặt hàng này nên không cần suy luận."
+  },
+  {
+   "id": "binh-giu-nhiet-chan-khong",
+   "titleVi": "Bình giữ nhiệt / phích nước chân không",
+   "terms": [
+    "bình giữ nhiệt",
+    "phích nước",
+    "phích giữ nhiệt",
+    "bình giữ nhiệt inox",
+    "bình giữ nhiệt chân không",
+    "ly giữ nhiệt",
+    "cốc giữ nhiệt",
+    "bình thủy",
+    "thermos",
+    "vacuum flask"
+   ],
+   "candidates": [
+    {
+     "hs": "96170010",
+     "whenVi": "Bình/phích có lớp CHÂN KHÔNG giữa hai vách, còn nguyên vỏ, hoàn chỉnh",
+     "confidence": "high"
+    },
+    {
+     "hs": "96170020",
+     "whenVi": "Bộ phận rời của bình chân không, trừ ruột thủy tinh",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7323",
+     "whyVi": "Nhóm 7323 là đồ dùng nhà bếp/bàn ăn bằng sắt thép nói chung. Nhóm 9617 gọi đích danh \"Phích chân không và các loại bình chân không khác, hoàn chỉnh\" nên theo GIR 3(a) mô tả cụ thể hơn được ưu tiên. CHỈ đúng khi hàng thật sự có lớp chân không — bình hai lớp inox KHÔNG hút chân không thì quay lại 7323."
+    }
+   ],
+   "askVi": [
+    "Giữa hai lớp vỏ có hút chân không không? (không chân không → nhóm 7323)",
+    "Hàng nguyên chiếc hay bộ phận rời?"
+   ],
+   "gir": "3a",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 mã 96170010: \"Phích chân không và các loại bình chân không khác, hoàn chỉnh\"; nhóm 7323 giới hạn ở đồ dùng nhà bếp/bàn ăn bằng sắt thép."
+  },
+  {
+   "id": "bien-tan-vfd",
+   "titleVi": "Biến tần công nghiệp (VFD / inverter điều khiển động cơ)",
+   "terms": [
+    "biến tần",
+    "bien tan",
+    "inverter",
+    "vfd",
+    "variable frequency drive",
+    "bộ biến tần",
+    "biến tần 3 pha"
+   ],
+   "excludeIfAny": [
+    "điều hòa",
+    "điều hoà",
+    "máy lạnh",
+    "tủ lạnh",
+    "máy giặt",
+    "điều hòa inverter",
+    "air conditioner",
+    "tủ đông"
+   ],
+   "excludeReasonVi": "Với điều hòa / tủ lạnh / máy giặt thì \"inverter\" chỉ là TÍNH NĂNG của máy, không phải mặt hàng riêng. Hàng vẫn thuộc 8415 / 8418 / 8450 theo bản chất máy.",
+   "candidates": [
+    {
+     "hs": "85044090",
+     "whenVi": "Bộ biến đổi tĩnh điện điều khiển tốc độ động cơ, không thuộc các phân nhóm đã kể tên",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85044040",
+     "whenVi": "Hàng đúng là bộ nghịch lưu thuần (DC → AC) theo tài liệu kỹ thuật — KHÔNG mặc định cho biến tần điều khiển động cơ",
+     "confidence": "low"
+    },
+    {
+     "hs": "85044030",
+     "whenVi": "Hàng đúng là bộ chỉnh lưu (AC → DC)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8537",
+     "whyVi": "8537 là bảng/tủ điện lắp nhiều thiết bị đóng ngắt. Một con biến tần rời chưa lắp vào tủ thì không thuộc 8537."
+    }
+   ],
+   "askVi": [
+    "Đầu vào / đầu ra là AC hay DC? (quyết định giữa 8504.40.30, .40 và .90)",
+    "Công suất danh định (kVA)?",
+    "Biến tần rời hay đã lắp trong tủ điện hoàn chỉnh?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 phân nhóm 8504.40: 85044030 \"Bộ chỉnh lưu khác\", 85044040 \"Bộ nghịch lưu\", 85044090 \"Loại khác\". Biến tần công nghiệp biến đổi AC → DC → AC nên không trùng khít mô tả nào trong ba mã; thực tế khai báo còn chưa thống nhất. Vì vậy mục này KHÔNG mã nào được \"high\", và mã dư 85044090 xếp trên — chọn mã trung tính thay vì khẳng định .40. Phải đọc tài liệu kỹ thuật để chốt."
+  },
+  {
+   "id": "masterbatch",
+   "titleVi": "Masterbatch (hạt nhựa màu / phụ gia đậm đặc)",
+   "terms": [
+    "masterbatch",
+    "master batch",
+    "hạt nhựa màu",
+    "hạt màu",
+    "hat mau nhua",
+    "phụ gia màu nhựa",
+    "màu chủ",
+    "color masterbatch"
+   ],
+   "candidates": [
+    {
+     "hs": "32061990",
+     "whenVi": "Chất màu vô cơ gốc titan dioxit phân tán trong nền nhựa",
+     "confidence": "low"
+    },
+    {
+     "hs": "32064990",
+     "whenVi": "Chất màu vô cơ khác phân tán trong nền nhựa",
+     "confidence": "low"
+    },
+    {
+     "hs": "32041790",
+     "whenVi": "Chất màu hữu cơ tổng hợp (pigment hữu cơ) phân tán trong nền nhựa",
+     "confidence": "low"
+    },
+    {
+     "hs": "38249999",
+     "whenVi": "Masterbatch phụ gia (không màu): chống UV, chống dính, độn — chế phẩm hóa học chưa được chi tiết ở nhóm khác",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "39",
+     "whyVi": "Chương 39 nhóm 3901–3914 là polymer NGUYÊN SINH. Masterbatch là chế phẩm màu/phụ gia đậm đặc, nhựa chỉ đóng vai trò chất mang, nên bản chất là chế phẩm Chương 32/38 chứ không phải nhựa nguyên sinh."
+    }
+   ],
+   "askVi": [
+    "Chất màu là vô cơ (TiO2, oxit sắt, carbon black) hay hữu cơ tổng hợp?",
+    "Tỷ lệ chất màu / phụ gia so với nhựa nền (%)?",
+    "Có phiếu phân tích thành phần (CA/COA) không?",
+    "Là masterbatch MÀU hay masterbatch PHỤ GIA (UV, chống dính, filler)?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 nhóm 3204/3206 (chất màu đã phân tán trong môi chất) và 3824 (chế phẩm hóa học chưa chi tiết). Bốn ứng viên đều để confidence thấp: mã đúng phụ thuộc bản chất hóa học của chất màu, không suy ra được từ tên hàng."
+  },
+  {
+   "id": "bo-khuon-ep-nhua",
+   "titleVi": "Bộ khuôn ép / đúc nhựa (thành phẩm)",
+   "terms": [
+    "bộ khuôn",
+    "bộ khuôn ép nhựa",
+    "khuôn ép nhựa",
+    "khuôn đúc nhựa",
+    "khuôn thổi nhựa",
+    "mold base",
+    "đế khuôn",
+    "hộp khuôn",
+    "khuôn ép phun",
+    "khuôn nhựa hoàn chỉnh"
+   ],
+   "candidates": [
+    {
+     "hs": "84807110",
+     "whenVi": "Khuôn ép phun / nén dùng cho cao su hoặc plastic, dùng làm đế giày dép",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84807190",
+     "whenVi": "Khuôn ép phun / nén (injection, compression) dùng cho cao su hoặc plastic, loại khác",
+     "confidence": "high"
+    },
+    {
+     "hs": "84807990",
+     "whenVi": "Khuôn cao su/plastic KHÔNG phải loại ép phun hoặc nén (vd khuôn thổi, khuôn đúc quay)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84802000",
+     "whenVi": "Chỉ nhập riêng ĐẾ KHUÔN (mold base), chưa có lòng khuôn",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7225",
+     "whyVi": "7225 là thép tấm NGUYÊN LIỆU. Bộ khuôn đã gia công thành hình, có lòng khuôn và hệ thống dẫn — là thành phẩm nhóm 8480, không quay lại chương 72."
+    },
+    {
+     "prefix": "7226",
+     "whyVi": "Như 7225: thép cán phẳng nguyên liệu, không phải khuôn đã thành hình."
+    }
+   ],
+   "askVi": [
+    "Khuôn dùng cho vật liệu gì: nhựa/cao su (8480.71–.79), kim loại (8480.41–.49) hay thủy tinh (8480.50)?",
+    "Nguyên lý tạo hình: ép phun / ép nén (8480.71) hay thổi, đúc quay (8480.79)?",
+    "Nhập nguyên bộ khuôn hay chỉ đế khuôn rời (8480.20)?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 nhóm 8480: 84802000 \"Đế khuôn\", 84807110/84807190 \"Loại phun hoặc nén\", 84807910/84807990 loại khác — dùng cho cao su hoặc plastic."
+  },
+  {
+   "id": "van-giam-ap",
+   "titleVi": "Van giảm áp (8481.10)",
+   "terms": [
+    "van giảm áp",
+    "van giam ap",
+    "pressure reducing valve",
+    "pressure reducer",
+    "prv valve",
+    "van PRV"
+   ],
+   "excludeIfAny": [
+    "khí nén",
+    "pneumatic",
+    "thủy lực truyền động",
+    "van an toàn",
+    "relief valve",
+    "van một chiều",
+    "check valve"
+   ],
+   "excludeReasonVi": "Van khí nén/thủy lực truyền động = 8481.20; van an toàn = 8481.40; van một chiều = 8481.30.",
+   "candidates": [
+    {
+     "hs": "84811011",
+     "whenVi": "Van cổng điều khiển bằng tay, Ø trong cửa nạp/thoát >5 cm và ≤40 cm (nhánh giảm áp)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84811019",
+     "whenVi": "Cùng nhánh van cổng giảm áp — loại khác (không khớp .11)",
+     "confidence": "low"
+    },
+    {
+     "hs": "84811021",
+     "whenVi": "Ø trong ≤ 2,5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84811022",
+     "whenVi": "Ø trong > 2,5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84811091",
+     "whenVi": "Thân plastic, Ø trong 1–2,5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84811099",
+     "whenVi": "Loại khác trong 8481.10 — không khớp các phân nhóm kể trên",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "848120",
+     "whyVi": "8481.20 là van truyền động oleohydraulic/pneumatic, không phải van giảm áp đường ống."
+    },
+    {
+     "prefix": "848140",
+     "whyVi": "8481.40 là van an toàn/xả — chức năng bảo vệ quá áp, khác van giảm áp làm việc liên tục."
+    },
+    {
+     "prefix": "8413",
+     "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
+    },
+    {
+     "prefix": "9032",
+     "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
+    },
+    {
+     "prefix": "98",
+     "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
+    }
+   ],
+   "askVi": [
+    "Ø trong cửa nạp/thoát?",
+    "Vật liệu thân (kim loại / plastic)?",
+    "Có phải van cổng tay cỡ lớn (5–40 cm) không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN — en 848110*: \"Valves; pressure reducing…\". Các mã lá theo tax.json 84811011–84811099."
+  },
+  {
+   "id": "van-khi-nen-thuy-luc",
+   "titleVi": "Van khí nén / van thủy lực truyền động (8481.20)",
+   "terms": [
+    "van khí nén",
+    "van thuỷ lực",
+    "van thủy lực",
+    "van điện từ khí nén",
+    "van điều áp khí nén",
+    "van phân phối khí nén",
+    "solenoid valve",
+    "pneumatic valve",
+    "hydraulic valve",
+    "directional valve",
+    "van solenoid",
+    "air solenoid valve"
+   ],
+   "excludeIfAny": [
+    "van bếp",
+    "bếp ga",
+    "bếp nấu",
+    "van ngắt nhiên liệu",
+    "nhiên liệu xe",
+    "dầu thủy lực",
+    "dầu thuỷ lực",
+    "hydraulic oil",
+    "van giảm áp",
+    "pressure reducing",
+    "van an toàn",
+    "relief valve"
+   ],
+   "excludeReasonVi": "Van bếp/nhiên liệu xe thuộc 8481.80; dầu thủy lực là chất lỏng 2710; van giảm áp 8481.10; van an toàn 8481.40.",
+   "candidates": [
+    {
+     "hs": "84812011",
+     "whenVi": "Thân bằng sắt hoặc thép",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84812019",
+     "whenVi": "Cùng nhánh sắt/thép — loại khác",
+     "confidence": "low"
+    },
+    {
+     "hs": "84812020",
+     "whenVi": "Đồng/hợp kim đồng Ø ≤2,5 cm, hoặc plastic Ø 1–2,5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84812090",
+     "whenVi": "Loại khác trong 8481.20 — không khớp .11/.19/.20",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8481803",
+     "whyVi": "8481.80.30 van bếp — chữ điện từ trùng nhưng công dụng khác."
+    },
+    {
+     "prefix": "8481808",
+     "whyVi": "8481.80.83/84/93 van ngắt nhiên liệu xe."
+    },
+    {
+     "prefix": "3923",
+     "whyVi": "Bình/đồ chứa plastic, không phải van."
+    },
+    {
+     "prefix": "7613",
+     "whyVi": "Thùng chứa khí nén nhôm — bình chứa, không phải van."
+    },
+    {
+     "prefix": "8413",
+     "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
+    },
+    {
+     "prefix": "9032",
+     "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
+    },
+    {
+     "prefix": "98",
+     "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
+    }
+   ],
+   "askVi": [
+    "Vật liệu thân và Ø trong cửa nạp?",
+    "Đúng mạch truyền động khí nén/thủy lực chứ không phải van giảm áp / an toàn / bếp / nhiên liệu xe?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN — en 848120*: \"Valves; for oleohydraulic or pneumatic transmissions\". Đủ 4 mã lá 84812011/19/20/90."
+  },
+  {
+   "id": "van-mot-chieu",
+   "titleVi": "Van một chiều / van cản (8481.30)",
+   "terms": [
+    "van một chiều",
+    "van mot chieu",
+    "van 1 chiều",
+    "van cản",
+    "van can",
+    "check valve",
+    "non-return valve",
+    "nonreturn valve",
+    "one way valve"
+   ],
+   "excludeIfAny": [
+    "khí nén truyền động",
+    "van giảm áp",
+    "van an toàn",
+    "relief"
+   ],
+   "excludeReasonVi": "Phân biệt với 8481.10/20/40 theo chức năng (GIR 1).",
+   "candidates": [
+    {
+     "hs": "84813010",
+     "whenVi": "Van cản bằng gang đúc, Ø trong cửa nạp 4–60 cm",
+     "confidence": "high"
+    },
+    {
+     "hs": "84813020",
+     "whenVi": "Đồng/hợp kim đồng, Ø trong ≤ 2,5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84813040",
+     "whenVi": "Plastic, Ø trong 1–2,5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84813090",
+     "whenVi": "Loại khác trong 8481.30",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "848120",
+     "whyVi": "8481.20 van truyền động — không phải van một chiều đường ống."
+    },
+    {
+     "prefix": "848140",
+     "whyVi": "8481.40 van an toàn/xả."
+    },
+    {
+     "prefix": "8413",
+     "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
+    },
+    {
+     "prefix": "9032",
+     "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
+    },
+    {
+     "prefix": "98",
+     "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
+    }
+   ],
+   "askVi": [
+    "Vật liệu (gang / đồng / plastic / khác)?",
+    "Ø trong cửa nạp?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN — en 848130*: \"Valves; check (nonreturn) valves…\". 84813010 gọi đích danh van cản gang → high."
+  },
+  {
+   "id": "van-an-toan",
+   "titleVi": "Van an toàn / van xả áp (8481.40)",
+   "terms": [
+    "van an toàn",
+    "van xả áp",
+    "van xa ap",
+    "safety valve",
+    "relief valve",
+    "pressure relief valve",
+    "PRV safety",
+    "van safety"
+   ],
+   "excludeIfAny": [
+    "van giảm áp làm việc",
+    "pressure reducing",
+    "khí nén truyền động"
+   ],
+   "excludeReasonVi": "Van giảm áp làm việc liên tục = 8481.10; van truyền động = 8481.20.",
+   "candidates": [
+    {
+     "hs": "84814010",
+     "whenVi": "Đồng/hợp kim đồng, Ø trong ≤ 2,5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84814030",
+     "whenVi": "Plastic, Ø trong 1–2,5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84814090",
+     "whenVi": "Loại khác trong 8481.40",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "848110",
+     "whyVi": "8481.10 van giảm áp — khác van an toàn/xả."
+    },
+    {
+     "prefix": "848120",
+     "whyVi": "8481.20 van truyền động khí nén/thủy lực."
+    },
+    {
+     "prefix": "8413",
+     "whyVi": "8413 là bơm — tạo dòng; van chỉ điều khiển dòng."
+    },
+    {
+     "prefix": "9032",
+     "whyVi": "9032 là dụng cụ/thiết bị đo-điều khiển tự động, không phải van cơ khí 8481."
+    },
+    {
+     "prefix": "98",
+     "whyVi": "Chương 98 là mã ưu đãi riêng, không dùng làm đáp án phân loại thông thường."
+    }
+   ],
+   "askVi": [
+    "Vật liệu thân và Ø trong?",
+    "Van mở khi quá áp (an toàn) hay van giảm áp làm việc liên tục?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN — en 848140*: \"Valves; safety or relief valves…\". Đủ 3 mã lá."
+  },
+  {
+   "id": "van-sam",
+   "titleVi": "Van săm / van ruột xe (8481.80 — nhánh săm)",
+   "terms": [
+    "van săm",
+    "van sam",
+    "van ruột xe",
+    "van xe đạp",
+    "valve core",
+    "tyre valve",
+    "tire valve",
+    "schrader",
+    "presta valve"
+   ],
+   "excludeIfAny": [
+    "van bi",
+    "van cổng",
+    "van bướm",
+    "solenoid",
+    "khí nén công nghiệp"
+   ],
+   "excludeReasonVi": "Van công nghiệp đường ống / khí nén thiết bị không phải van săm.",
+   "candidates": [
+    {
+     "hs": "84818011",
+     "whenVi": "Van dùng cho săm, bằng đồng hoặc hợp kim đồng",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84818012",
+     "whenVi": "Van dùng cho săm, vật liệu khác",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84818013",
+     "whenVi": "Cùng nhánh săm — biến thể đồng/hợp kim đồng (theo cấu trúc biểu thuế 8481.80)",
+     "confidence": "low"
+    },
+    {
+     "hs": "84818014",
+     "whenVi": "Cùng nhánh săm — biến thể vật liệu khác",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "848120",
+     "whyVi": "Không phải van truyền động khí nén thiết bị."
+    },
+    {
+     "prefix": "4011",
+     "whyVi": "4011 là săm/lốp — nguyên chiếc; câu hỏi chỉ van thì ở 8481.80."
+    },
+    {
+     "prefix": "8714",
+     "whyVi": "8714 bộ phận xe đạp — van săm được biểu thuế đặt ở 8481.80."
+    }
+   ],
+   "askVi": [
+    "Vật liệu (đồng / khác)?",
+    "Van rời hay gắn sẵn trên săm/lốp?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Cấu trúc biểu thuế VN 8481.80 nhánh \"Van dùng cho săm\" (caselaw/hscode.pro) — mã lá 84818011–14 trong tax.json."
+  },
+  {
+   "id": "van-bep-ga",
+   "titleVi": "Van bếp nấu / bếp có lò nướng ga (8481.80.30)",
+   "terms": [
+    "van bếp",
+    "van bếp ga",
+    "van bếp nấu",
+    "van lò nướng ga",
+    "van bếp gas",
+    "gas stove valve",
+    "oven gas valve"
+   ],
+   "excludeIfAny": [
+    "khí nén",
+    "pneumatic",
+    "thủy lực",
+    "thuỷ lực",
+    "solenoid valve"
+   ],
+   "excludeReasonVi": "Van khí nén/thủy lực truyền động thuộc 8481.20.",
+   "candidates": [
+    {
+     "hs": "84818030",
+     "whenVi": "Van dùng cho bếp nấu hoặc bếp có lò nướng bằng ga, đã hoặc chưa lắp bộ đánh lửa điện từ",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7321",
+     "whyVi": "7321 là bếp/lò nguyên chiếc."
+    },
+    {
+     "prefix": "4009",
+     "whyVi": "Ống vòi cao su bếp ga — không phải van."
+    },
+    {
+     "prefix": "3917",
+     "whyVi": "Ống nhựa bếp ga — không phải van."
+    },
+    {
+     "prefix": "848120",
+     "whyVi": "8481.20 van truyền động, không phải van bếp."
+    }
+   ],
+   "askVi": [
+    "Là van riêng hay nguyên chiếc bếp/lò (7321)?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 84818030 gọi đích danh mặt hàng → confidence high."
+  },
+  {
+   "id": "van-cong-buom-gang",
+   "titleVi": "Van cổng / van bướm gang — đường ống nước (8481.80.61–.63)",
+   "terms": [
+    "van cổng gang",
+    "van cong gang",
+    "van bướm gang",
+    "van buom gang",
+    "gate valve cast iron",
+    "butterfly valve cast iron",
+    "van cổng đường ống nước"
+   ],
+   "excludeIfAny": [
+    "van bi",
+    "ball valve",
+    "sắt hoặc thép không gang",
+    "plastic"
+   ],
+   "excludeReasonVi": "Van bi = 8481.80.71–.72; van cổng sắt/thép tay = 8481.80.73–.77.",
+   "candidates": [
+    {
+     "hs": "84818061",
+     "whenVi": "Van cổng điều khiển bằng tay, Ø trong >5 cm và ≤40 cm (nhánh gang đường ống nước)",
+     "confidence": "high"
+    },
+    {
+     "hs": "84818062",
+     "whenVi": "Cùng nhánh van cổng/bướm gang đường ống nước — loại khác",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84818063",
+     "whenVi": "Van đường ống nước — loại khác (không khớp .61/.62)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8481807",
+     "whyVi": "8481.80.71–.72 là van bi."
+    },
+    {
+     "prefix": "84818073",
+     "whyVi": "8481.80.73+ là van cổng sắt/thép (không phải gang đường ống nước .61)."
+    },
+    {
+     "prefix": "848110",
+     "whyVi": "8481.10 van giảm áp — khác van đường ống nước 8481.80."
+    }
+   ],
+   "askVi": [
+    "Van cổng hay van bướm?",
+    "Ø trong? Điều khiển tay hay khác?",
+    "Thân gang đúc đúng không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8481.80 nhánh \"Van đường ống nước — van cổng gang ≥4cm; van bướm gang ≥8cm\" (caselaw). 84818061 gọi đích danh van cổng tay → high."
+  },
+  {
+   "id": "van-bi",
+   "titleVi": "Van bi (8481.80.71–.72)",
+   "terms": [
+    "van bi",
+    "ball valve",
+    "van bi đồng",
+    "van bi inox",
+    "van bi nhựa"
+   ],
+   "excludeIfAny": [
+    "van cổng",
+    "gate valve",
+    "van bướm",
+    "butterfly",
+    "van săm"
+   ],
+   "excludeReasonVi": "Van cổng/bướm có nhánh riêng; van săm khác hoàn toàn.",
+   "candidates": [
+    {
+     "hs": "84818071",
+     "whenVi": "Van bi bằng plastic, Ø trong 1–2,5 cm",
+     "confidence": "high"
+    },
+    {
+     "hs": "84818072",
+     "whenVi": "Van bi — loại khác (không phải plastic Ø 1–2,5 cm)",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "84818061",
+     "whyVi": "8481.80.61–.63 van cổng/bướm gang đường ống nước."
+    },
+    {
+     "prefix": "84818073",
+     "whyVi": "8481.80.73+ van cổng sắt/thép tay."
+    },
+    {
+     "prefix": "848120",
+     "whyVi": "Không mặc định van bi công nghiệp là 8481.20 — chỉ khi đúng truyền động oleohydraulic/pneumatic."
+    }
+   ],
+   "askVi": [
+    "Thân plastic Ø 1–2,5 cm hay vật liệu/cỡ khác?",
+    "Có phải van khí nén truyền động (8481.20) không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8481.80 nhánh \"Van bi\" — 84818071 plastic Ø 1–2,5 cm; 84818072 loại khác (thuvienphapluat / hscode.pro)."
+  },
+  {
+   "id": "van-cong-sat-thep",
+   "titleVi": "Van cổng tay bằng sắt hoặc thép (8481.80.73–.77)",
+   "terms": [
+    "van cổng sắt",
+    "van cổng thép",
+    "van cong sat",
+    "van cong thep",
+    "gate valve steel",
+    "gate valve iron",
+    "van cổng tay"
+   ],
+   "excludeIfAny": [
+    "gang đúc đường ống nước",
+    "van bướm gang",
+    "van bi",
+    "plastic"
+   ],
+   "excludeReasonVi": "Van cổng/bướm gang đường ống nước = .61–.63; van bi = .71–.72.",
+   "candidates": [
+    {
+     "hs": "84818073",
+     "whenVi": "Ø trong cửa nạp và cửa thoát >5 cm và ≤40 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84818074",
+     "whenVi": "Ø trong cửa nạp và cửa thoát >40 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84818077",
+     "whenVi": "Ø trong cửa nạp và cửa thoát ≤5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84818078",
+     "whenVi": "Cùng khu vực phân nhóm — biến thể plastic Ø 1–2,5 cm (theo lá tax.json)",
+     "confidence": "low"
+    },
+    {
+     "hs": "84818079",
+     "whenVi": "Cùng khu vực — loại khác",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "84818061",
+     "whyVi": "Nhánh gang đường ống nước (.61–.63), không phải sắt/thép tay .73+."
+    },
+    {
+     "prefix": "84818071",
+     "whyVi": "Van bi."
+    }
+   ],
+   "askVi": [
+    "Ø trong cửa nạp/thoát: ≤5 / 5–40 / >40 cm?",
+    "Thân sắt hoặc thép (không phải gang đường ống nước .61)?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8481.80 \"Van cổng, điều khiển bằng tay, bằng sắt hoặc thép\" — 84818073/74/77 (thuvienphapluat). .78/.79 kèm theo khu vực lá."
+  },
+  {
+   "id": "van-ngat-nhien-lieu-xe",
+   "titleVi": "Van ngắt nhiên liệu cho xe 87.02 / 87.03 / 87.04",
+   "terms": [
+    "van ngắt nhiên liệu",
+    "van cắt nhiên liệu",
+    "fuel cut off valve",
+    "fuel shut off valve",
+    "fuel cut-off valve",
+    "van xăng xe"
+   ],
+   "excludeIfAny": [
+    "khí nén",
+    "pneumatic",
+    "bếp ga",
+    "van bếp"
+   ],
+   "excludeReasonVi": "Van khí nén / van bếp không phải van ngắt nhiên liệu xe.",
+   "candidates": [
+    {
+     "hs": "84818083",
+     "whenVi": "Plastic, xe 87.02–87.04, Ø trong cửa nạp <1 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84818084",
+     "whenVi": "Plastic, xe 87.02–87.04, Ø trong cửa nạp 1–2,5 cm",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84818093",
+     "whenVi": "Vật liệu khác, xe 87.02–87.04",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "848120",
+     "whyVi": "8481.20 van truyền động — không phải van nhiên liệu xe."
+    },
+    {
+     "prefix": "9849",
+     "whyVi": "Chương 98 ưu đãi riêng."
+    },
+    {
+     "prefix": "87",
+     "whyVi": "Xe nguyên chiếc / bộ phận xe kể tên ở Ch.87 — van này đặt ở 8481.80.83–.93."
+    }
+   ],
+   "askVi": [
+    "Plastic hay vật liệu khác?",
+    "Ø trong cửa nạp?",
+    "Xe đúng nhóm 87.02/03/04?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 84818083/84/93 — van ngắt nhiên liệu xe 87.02–87.04."
+  },
+  {
+   "id": "voi-nuoc",
+   "titleVi": "Vòi nước bằng đồng (8481.80.98)",
+   "terms": [
+    "vòi nước",
+    "voi nuoc",
+    "vòi đồng",
+    "faucet",
+    "water tap",
+    "basin tap",
+    "vòi lavabo",
+    "vòi bếp nước"
+   ],
+   "excludeIfAny": [
+    "van bi",
+    "van cổng",
+    "hose bib plastic"
+   ],
+   "excludeReasonVi": "Vòi nước đồng Ø ≤2,5 cm có mã riêng; van công nghiệp khác nhánh.",
+   "candidates": [
+    {
+     "hs": "84818098",
+     "whenVi": "Vòi nước bằng đồng hoặc hợp kim đồng, Ø trong ≤ 2,5 cm",
+     "confidence": "high"
+    },
+    {
+     "hs": "84818099",
+     "whenVi": "Vòi/van loại khác trong cùng nhánh dư (không khớp .98)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "84819021",
+     "whyVi": "8481.90.21 là THÂN dùng cho vòi nước — bộ phận, không phải vòi hoàn chỉnh."
+    },
+    {
+     "prefix": "7324",
+     "whyVi": "7324 đồ vệ sinh bằng kim loại — phân biệt với vòi/van 8481."
+    }
+   ],
+   "askVi": [
+    "Vòi hoàn chỉnh hay chỉ thân/vỏ (8481.90)?",
+    "Đồng Ø ≤2,5 cm đúng không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 84818098: \"Vòi nước bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống\" → high."
+  },
+  {
+   "id": "van-tay-nhe-inox",
+   "titleVi": "Van tay nhẹ <3 kg, xử lý bề mặt / inox / niken (8481.80.97)",
+   "terms": [
+    "van tay nhỏ",
+    "van inox nhỏ",
+    "van niken",
+    "compact hand valve",
+    "van điều khiển bằng tay nhẹ"
+   ],
+   "excludeIfAny": [
+    "van cổng lớn",
+    "van bi",
+    "trên 3 kg"
+   ],
+   "excludeReasonVi": "Mã .97 giới hạn khối lượng <3 kg và vật liệu/xử lý bề mặt cụ thể.",
+   "candidates": [
+    {
+     "hs": "84818097",
+     "whenVi": "Điều khiển bằng tay, khối lượng <3 kg, đã xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "84818073",
+     "whyVi": "Van cổng sắt/thép tay cỡ đường ống — nhánh .73+."
+    }
+   ],
+   "askVi": [
+    "Khối lượng dưới 3 kg?",
+    "Inox / niken / đã xử lý bề mặt?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 84818097 gọi đích danh điều kiện khối lượng và vật liệu → high."
+  },
+  {
+   "id": "van-848180-phu",
+   "titleVi": "Van/vòi 8481.80 — nhánh còn lại (cần Ø / vật liệu / SEN)",
+   "terms": [
+    "van công nghiệp",
+    "industrial valve",
+    "van đường ống",
+    "pipeline valve"
+   ],
+   "excludeIfAny": [
+    "van bi",
+    "ball valve",
+    "van cổng",
+    "gate valve",
+    "van bướm",
+    "butterfly",
+    "van bếp",
+    "van săm",
+    "van ngắt nhiên liệu",
+    "vòi nước",
+    "khí nén",
+    "solenoid",
+    "van giảm áp",
+    "van một chiều",
+    "van an toàn",
+    "van thủy lực"
+   ],
+   "excludeReasonVi": "Các loại đã có mục riêng phải đi mục đó — mục này chỉ hứng phần còn lại của 8481.80.",
+   "candidates": [
+    {
+     "hs": "848180",
+     "whenVi": "Van/vòi công nghiệp không thuộc các mục riêng (bi, cổng, bướm, giảm áp, một chiều, an toàn, bếp, săm, nhiên liệu xe). Lá 8 số tách theo Ø cửa nạp / vật liệu plastic / SEN — bảng quyết định 8481 sẽ chốt; chưa có bảng thì hỏi Ø và vật liệu.",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "848120",
+     "whyVi": "Ưu tiên hỏi/loại 8481.20 nếu là van truyền động."
+    },
+    {
+     "prefix": "848110",
+     "whyVi": "Van giảm áp có mục riêng."
+    }
+   ],
+   "askVi": [
+    "Có phải van bi / cổng / bướm / bếp / săm / nhiên liệu xe không? (có → dùng mục riêng)",
+    "Vật liệu và Ø trong cửa nạp?",
+    "Hàng SEN hay không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Các mã lá còn lại của 8481.80 trong tax.json — dòng cha bị lược; confidence thấp, bắt buộc hỏi. Không high."
+  },
+  {
+   "id": "phu-tung-van",
+   "titleVi": "Bộ phận / thân / vỏ van (8481.90)",
+   "terms": [
+    "thân van",
+    "vỏ van",
+    "phụ tùng van",
+    "valve body",
+    "valve housing",
+    "valve parts",
+    "valve spare",
+    "linh kiện van"
+   ],
+   "excludeIfAny": [
+    "van hoàn chỉnh",
+    "complete valve",
+    "van nguyên chiếc"
+   ],
+   "excludeReasonVi": "Van hoàn chỉnh thuộc 8481.10–.80; đây chỉ bộ phận 8481.90.",
+   "candidates": [
+    {
+     "hs": "84819010",
+     "whenVi": "Vỏ van cổng hoặc van cống, Ø trong cửa nạp/thoát >50 mm và ≤400 mm",
+     "confidence": "high"
+    },
+    {
+     "hs": "84819021",
+     "whenVi": "Thân dùng cho vòi nước",
+     "confidence": "high"
+    },
+    {
+     "hs": "84819022",
+     "whenVi": "Thân dùng cho van xi lanh LPG",
+     "confidence": "high"
+    },
+    {
+     "hs": "84819023",
+     "whenVi": "Thân — loại khác",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84819029",
+     "whenVi": "Loại khác trong nhánh thân",
+     "confidence": "low"
+    },
+    {
+     "hs": "84819031",
+     "whenVi": "Bộ phận bằng đồng/hợp kim đồng",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84819039",
+     "whenVi": "Bộ phận — loại khác (cùng nhánh .31)",
+     "confidence": "low"
+    },
+    {
+     "hs": "84819041",
+     "whenVi": "Bộ phận bằng đồng/hợp kim đồng (nhánh khác)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84819049",
+     "whenVi": "Bộ phận — loại khác (cùng nhánh .41)",
+     "confidence": "low"
+    },
+    {
+     "hs": "84819090",
+     "whenVi": "Bộ phận van — loại khác",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "848180",
+     "whyVi": "8481.80 là thiết bị hoàn chỉnh (van/vòi), không phải bộ phận."
+    },
+    {
+     "prefix": "848120",
+     "whyVi": "Van truyền động hoàn chỉnh — không phải parts."
+    }
+   ],
+   "askVi": [
+    "Thân vòi nước, thân van LPG, vỏ van cổng/cống, hay bộ phận khác?",
+    "Vật liệu (đồng / khác)?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 848190* — parts; .10/.21/.22 gọi đích danh → high."
+  },
+  {
+   "id": "thep-cuon-can-nong",
+   "titleVi": "Thép cuộn cán nóng (HRC / Hot Rolled Coil)",
+   "terms": [
+    "thép cuộn cán nóng",
+    "thép cán nóng cuộn",
+    "thép tấm cuộn cán nóng",
+    "hrc",
+    "hot rolled coil",
+    "hot rolled steel coil",
+    "sphc",
+    "tôn cuộn cán nóng",
+    "thép cán nóng dạng cuộn"
+   ],
+   "excludeIfAny": [
+    "thép không gỉ",
+    "stainless",
+    "inox",
+    "thép cuộn cán nguội",
+    "crc"
+   ],
+   "excludeReasonVi": "Từ khoá 'không gỉ/inox/stainless' chuyển mục sang nhóm thép không gỉ 7218-7220; 'cán nguội/CRC' là nhóm 7209 — cơ chế và mã khác hẳn.",
+   "candidates": [
+    {
+     "hs": "7208",
+     "whenVi": "Thép cuộn cán nóng, khổ ≥ 600 mm, chưa phủ mạ. Lá 8 số tách theo chiều dày, tẩy gỉ, dập nổi, carbon — bảng quyết định 7208 sẽ chốt.",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7221",
+     "whyVi": "7221.00 là thanh và que thép không gỉ được cán nóng dạng cuộn. Mục này về thép đen/cacbon thường; từ khoá 'thép không gỉ/inox' đã được exclude để tránh lẫn."
+    },
+    {
+     "prefix": "7209",
+     "whyVi": "Nhóm 7209 là cán NGUỘI (cold rolled), không phải cán nóng. Lẫn nhóm này là phân loại sai hoàn toàn về bản chất gia công."
+    },
+    {
+     "prefix": "7211",
+     "whyVi": "7211 là cán phẳng rộng < 600 mm. HRC rộng ≥600 mm thuộc 7208 — chỉ sang 7211 khi khổ hẹp."
+    }
+   ],
+   "askVi": [
+    "Dạng cuộn hay dạng tấm không cuộn? (cùng nhóm 7208 nếu rộng ≥600 mm; hẹp <600 mm → 7211)",
+    "Chiều rộng ≥ 600 mm hay < 600 mm?",
+    "Chiều dày: ≥10 mm / 4,75–10 / 3–<4,75 / <3 mm?",
+    "Có hình dập nổi / đã tẩy gỉ (pickled) / carbon ≥0,6% không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN nhóm 7208 — sản phẩm cán phẳng bằng sắt hoặc thép không hợp kim, cán nóng, dạng cuộn. Phạm vi phân nhóm: 7208.36/37/38/39 theo chiều dày, 7208.39.10–30 theo carbon. Chú giải Ch.72 mục 1(k) định nghĩa 'cán phẳng'; 1(l) định nghĩa 'dạng cuộn'."
+  },
+  {
+   "id": "thep-cuon-can-nguoi",
+   "titleVi": "Thép cuộn cán nguội (CRC / Cold Rolled Coil)",
+   "terms": [
+    "thép cuộn cán nguội",
+    "thép cán nguội cuộn",
+    "crc",
+    "cold rolled coil",
+    "cold rolled steel coil",
+    "tôn cuộn cán nguội",
+    "thép cán nguội dạng cuộn",
+    "spcc",
+    "thép tấm cuộn cán nguội"
+   ],
+   "excludeIfAny": [
+    "thép không gỉ",
+    "stainless",
+    "inox",
+    "thép cuộn cán nóng",
+    "hrc",
+    "mạ kẽm",
+    "galvanized",
+    "tôn mạ"
+   ],
+   "excludeReasonVi": "Từ khoá 'không gỉ/inox' chuyển sang nhóm thép không gỉ; 'cán nóng/HRC' là nhóm 7208; 'mạ kẽm/galvanized/tôn mạ' là nhóm 7210 — khi đã phủ lớp bề mặt là chuyển nhóm hoàn toàn.",
+   "candidates": [
+    {
+     "hs": "72091500",
+     "whenVi": "- - Có chiều dày từ 3 mm trở lên — mã 7209.15.00 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72091610",
+     "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.16.10 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72091690",
+     "whenVi": "- - - Loại khác — mã 7209.16.90 trong biểu thuế hiện hành",
+     "confidence": "low"
+    },
+    {
+     "hs": "72091710",
+     "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.17.10 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72091790",
+     "whenVi": "Cán nguội, cuộn, chiều rộng ≥ 600 mm, chiều dày 1 mm đến < 3 mm (chưa rõ chính xác)",
+     "confidence": "low"
+    },
+    {
+     "hs": "72091810",
+     "whenVi": "- - - Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP) — mã 7209.18.10 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72091891",
+     "whenVi": "- - - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7209.18.91 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72091899",
+     "whenVi": "- - - - Loại khác — mã 7209.18.99 trong biểu thuế hiện hành",
+     "confidence": "low"
+    },
+    {
+     "hs": "72099090",
+     "whenVi": "Cán nguội, dạng cuộn, chiều rộng ≥ 600 mm — mã dư cuối cùng khi các ngưỡng chiều dày/carbon cụ thể ở 7209.15–7209.28 không khớp",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7208",
+     "whyVi": "7208 là cán NÓNG (hot rolled). Cùng dạng cuộn nhưng cơ chế gia công khác — bề mặt, dung sai, ứng dụng đều khác."
+    },
+    {
+     "prefix": "7210",
+     "whyVi": "7210 là sản phẩm đã được mạ/phủ/tráng (mạ kẽm, sơn...). Từ khoá 'mạ kẽm/tôn mạ' đã exclude, nhưng kể cả khi không nói, CRC thuần (SPCC đen) không thuộc nhóm này."
+    },
+    {
+     "prefix": "7212",
+     "whyVi": "7212 dành cho dạng TẤM cán nguội, không phải cuộn."
+    },
+    {
+     "prefix": "7221",
+     "whyVi": "7221.00 là thép không gỉ dạng cuộn. Đã loại trừ bằng từ khoá 'inox/không gỉ'."
+    }
+   ],
+   "askVi": [
+    "Đã mạ/phủ bề mặt chưa (mạ kẽm, sơn, thiếc) hay tấm đen cán nguội thuần?",
+    "Dạng cuộn hay tấm không cuộn? (cùng 7209 nếu rộng ≥600 mm; hẹp → 7212)",
+    "Chiều dày: ≥3 mm / 1–<3 / 0,5–<1 / <0,5 mm?",
+    "Có phải TMBP (tin-mill blackplate) không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN nhóm 7209 — sản phẩm cán phẳng bằng sắt hoặc thép không hợp kim, cán nguội, dạng cuộn. Phạm vi phân nhóm: 7209.15/16/17/18/25/26/27/28 theo chiều rộng + chiều dày, 7209.18.10 cho TMBP (tin-mill blackplate). Chú giải Ch.72: 'cán nguội' là gia công giảm tiết diện ở nhiệt độ thường, bề mặt hoàn thiện hơn 7208."
+  },
+  {
+   "id": "thep-hinh-u-i-h",
+   "titleVi": "Thép hình chữ U / I / H (kết cấu xây dựng)",
+   "terms": [
+    "thép hình",
+    "thép hình h",
+    "thép hình i",
+    "thép hình u",
+    "thép i",
+    "thép h",
+    "thép u",
+    "thép i100",
+    "thép i120",
+    "thép i150",
+    "thép i200",
+    "thép h100",
+    "thép h200",
+    "thép h300",
+    "thép u50",
+    "thép u80",
+    "thép u100",
+    "dầm thép",
+    "beam steel",
+    "h beam",
+    "i beam",
+    "u channel",
+    "thép chữ h",
+    "thép chữ i",
+    "thép chữ u",
+    "thép hình cán nóng"
+   ],
+   "excludeIfAny": [
+    "thép không gỉ",
+    "inox",
+    "stainless",
+    "nhôm định hình",
+    "aluminium profile",
+    "thép hộp",
+    "thép ống",
+    "thép tấm"
+   ],
+   "excludeReasonVi": "Từ khoá 'inox/không gỉ' chuyển sang nhóm thép không gỉ 7218-7220; 'nhôm định hình' là chương 76; 'thép hộp/thép ống' là nhóm 7306/7307; 'thép tấm' là nhóm 7208-7212 (cán phẳng, không phải kết cấu cán dạng hình).",
+   "candidates": [
+    {
+     "hs": "7216",
+     "whenVi": "Thép hình U / I / H / L / T không hợp kim. Lá 8 số tách theo mặt cắt, chiều cao ≥/< 80 mm, carbon ≥/< 0,6 %, cách gia công — bảng quyết định 7216 sẽ chốt.",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7306",
+     "whyVi": "7306 là ỐNG (rỗng ruột), hình tròn/oval/DLCN. 'Thép hình' là profile kết cấu ĐẶC ruột — khác hẳn."
+    },
+    {
+     "prefix": "7308",
+     "whyVi": "7308 là KẾT CẤU ĐÃ LẮP RÁP (cột, dầm, khung nhà xưởng hoàn chỉnh), không phải thép hình nguyên liệu. Người gõ 'thép hình I100' mua thanh nguyên liệu, không phải kết cấu đã gia công."
+    },
+    {
+     "prefix": "7210",
+     "whyVi": "7210 dành cho sản phẩm cán PHẲNG (tấm/cuộn) đã mạ/tráng. Thép hình không phải cán phẳng."
+    },
+    {
+     "prefix": "7214",
+     "whyVi": "7214 là thanh que CÁN NÓNG thường (tròn, vuông, lục giác) — không có mặt cắt chữ H/I/U."
+    }
+   ],
+   "askVi": [
+    "Mặt cắt nào? U, I, H, L, T, hay hình đặc biệt (V, Z, Omega)?",
+    "Chiều cao mặt cắt: ≥ 80 mm hay < 80 mm?",
+    "Đã gia công thêm (cắt, hàn, khoan, lắp ráp) hay còn nguyên thanh cán nóng?",
+    "Hàm lượng carbon ≥ 0,6% hay < 0,6%?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN nhóm 7216 — góc, khuôn và hình bằng sắt hoặc thép không hợp kim. Phân nhóm theo mặt cắt: 7216.10 (H/I/U, cao ≥ 80mm), 7216.21 (L, < 80mm), 7216.22 (T), 7216.31 (U/I/H, cao ≥ 80mm), 7216.32 (U/I/H, cao < 80mm), 7216.40 (L/T, cao ≥ 80mm), 7216.50 (khác, cao < 80mm), 7216.61 (từ sản phẩm cán phẳng), 7216.69/99 (loại khác). Chú giải Ch.72 mục 1(n) định nghĩa 'góc, khuôn và hình'."
+  },
+  {
+   "id": "thep-tam-can-nong",
+   "titleVi": "Thép tấm cán nóng (không cuộn / hot rolled plate)",
+   "terms": [
+    "thép tấm cán nóng",
+    "tấm thép cán nóng",
+    "hot rolled plate",
+    "hrp",
+    "thép tấm hrc",
+    "thép tấm cán nóng cắt",
+    "steel plate hot rolled",
+    "thép tấm dập nổi cán nóng"
+   ],
+   "excludeIfAny": [
+    "thép không gỉ",
+    "stainless",
+    "inox",
+    "thép cuộn",
+    "hrc coil",
+    "crc",
+    "thép cuộn cán nóng"
+   ],
+   "excludeReasonVi": "Tách khỏi dạng cuộn cùng nhóm gia công; inox/stainless → nhóm thép không gỉ; mạ/phủ → 7210/7212.",
+   "candidates": [
+    {
+     "hs": "72084000",
+     "whenVi": "- Không ở dạng cuộn, chưa được gia công quá mức cán nóng, có hình dập nổi trên bề mặt — mã 7208.40.00 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72085100",
+     "whenVi": "- - Chiều dày trên 10 mm — mã 7208.51.00 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72085200",
+     "whenVi": "- - Chiều dày từ 4,75 mm đến 10 mm — mã 7208.52.00 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72085300",
+     "whenVi": "- - Chiều dày từ 3 mm đến dưới 4,75 mm — mã 7208.53.00 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72085410",
+     "whenVi": "- - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7208.54.10 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72085490",
+     "whenVi": "- - - Loại khác — mã 7208.54.90 trong biểu thuế hiện hành",
+     "confidence": "low"
+    },
+    {
+     "hs": "72089010",
+     "whenVi": "- - Dạng lượn sóng — mã 7208.90.10 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7209",
+     "whyVi": "7209 là cán nguội — khác cơ chế gia công."
+    },
+    {
+     "prefix": "7210",
+     "whyVi": "7210 đã mạ/phủ/tráng; tấm đen cán nóng thuộc 7208."
+    },
+    {
+     "prefix": "7225",
+     "whyVi": "7225 là thép hợp kim khác (vd làm khuôn) — không mặc định từ “tấm cán nóng” thường."
+    }
+   ],
+   "askVi": [
+    "Dạng tấm (không cuộn) hay còn dạng cuộn?",
+    "Chiều rộng ≥ 600 mm hay < 600 mm?",
+    "Chiều dày và hàm lượng carbon nếu biết?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN nhóm 7208 — sản phẩm cán phẳng, không ở dạng cuộn (và mã dư liên quan). Mỗi mã lá gắn whenVi theo nguyên văn mô tả dòng thuế."
+  },
+  {
+   "id": "thep-tam-can-nguoi",
+   "titleVi": "Thép tấm cán nguội (không cuộn / cold rolled sheet)",
+   "terms": [
+    "thép tấm cán nguội",
+    "tấm thép cán nguội",
+    "cold rolled sheet",
+    "cold rolled plate",
+    "tôn tấm cán nguội",
+    "thép tấm crc",
+    "crs sheet"
+   ],
+   "excludeIfAny": [
+    "thép không gỉ",
+    "stainless",
+    "inox",
+    "thép cuộn",
+    "hrc",
+    "mạ kẽm",
+    "galvanized",
+    "tôn mạ",
+    "thép cuộn cán nguội",
+    "crc coil"
+   ],
+   "excludeReasonVi": "Tách khỏi dạng cuộn cùng nhóm gia công; inox/stainless → nhóm thép không gỉ; mạ/phủ → 7210/7212.",
+   "candidates": [
+    {
+     "hs": "72092500",
+     "whenVi": "- - Có chiều dày từ 3 mm trở lên — mã 7209.25.00 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72092610",
+     "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.26.10 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72092690",
+     "whenVi": "- - - Loại khác — mã 7209.26.90 trong biểu thuế hiện hành",
+     "confidence": "low"
+    },
+    {
+     "hs": "72092710",
+     "whenVi": "- - - Chiều rộng không quá 1.250 mm — mã 7209.27.10 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72092790",
+     "whenVi": "- - - Loại khác — mã 7209.27.90 trong biểu thuế hiện hành",
+     "confidence": "low"
+    },
+    {
+     "hs": "72092810",
+     "whenVi": "- - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm — mã 7209.28.10 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    },
+    {
+     "hs": "72092890",
+     "whenVi": "- - - Loại khác — mã 7209.28.90 trong biểu thuế hiện hành",
+     "confidence": "low"
+    },
+    {
+     "hs": "72099010",
+     "whenVi": "- - Dạng lượn sóng — mã 7209.90.10 trong biểu thuế hiện hành",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7208",
+     "whyVi": "7208 là cán nóng."
+    },
+    {
+     "prefix": "7210",
+     "whyVi": "7210 đã mạ/phủ — CRC/CRS đen thuần không thuộc đây."
+    },
+    {
+     "prefix": "7212",
+     "whyVi": "7212 rộng <600 mm hoặc đã phủ theo nhánh hẹp — chỉ khi khổ hẹp."
+    }
+   ],
+   "askVi": [
+    "Dạng tấm (không cuộn) hay còn dạng cuộn?",
+    "Chiều rộng ≥ 600 mm hay < 600 mm?",
+    "Chiều dày và hàm lượng carbon nếu biết?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN nhóm 7209 — sản phẩm cán phẳng, không ở dạng cuộn (và mã dư liên quan). Mỗi mã lá gắn whenVi theo nguyên văn mô tả dòng thuế."
+  },
+  {
+   "id": "bang-dieu-khien-plc",
+   "titleVi": "Bảng / tủ PLC — bộ điều khiển logic lập trình (≤1000V)",
+   "terms": [
+    "bảng plc",
+    "tủ plc",
+    "plc",
+    "programmable logic controller",
+    "bộ điều khiển logic lập trình",
+    "bảng điều khiển plc",
+    "tủ điều khiển plc",
+    "plc panel",
+    "plc cabinet",
+    "bộ xử lý lập trình",
+    "sen plc"
+   ],
+   "excludeIfAny": [
+    "điện áp cao",
+    "trung thế",
+    "cao thế",
+    ">1000",
+    "kv",
+    "soft starter riêng"
+   ],
+   "excludeReasonVi": "Điện áp >1000V thuộc 8537.20; thiết bị điều khiển tự động đơn lẻ thuộc 9032.",
+   "candidates": [
+    {
+     "hs": "85371012",
+     "whenVi": "- - - Bảng điều khiển có trang bị bộ xử lý lập trình (SEN) — mã 8537.10.12",
+     "confidence": "low"
+    },
+    {
+     "hs": "85371030",
+     "whenVi": "- - Bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn — mã 8537.10.30",
+     "confidence": "low"
+    },
+    {
+     "hs": "85371019",
+     "whenVi": "- - - Loại khác — mã 8537.10.19",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "9032",
+     "whyVi": "9032 là thiết bị điều khiển tự động / dụng cụ đo-điều khiển — không phải bảng/tủ điện hoàn chỉnh 8537."
+    },
+    {
+     "prefix": "8538",
+     "whyVi": "8538 là bộ phận của bảng (relay, busbar…) — không phải bảng hoàn chỉnh."
+    },
+    {
+     "prefix": "8504",
+     "whyVi": "8504 là biến áp / bộ biến đổi tĩnh — khác bảng điều khiển."
+    }
+   ],
+   "askVi": [
+    "Điện áp làm việc ≤1000V hay >1000V?",
+    "Biểu thuế gọi đích danh “bộ xử lý lập trình (SEN)” (.12) hay chỉ “loại khác” (.19)?",
+    "Có phải PLC cho máy ép phun / khuôn ép nhựa không? (→ 8537.10.30)",
+    "Là bảng hoàn chỉnh hay chỉ module PLC rời?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8537.10 — bảng điều khiển ≤1000V; 8537.10.12 bảng có bộ xử lý lập trình (SEN); 8537.10.30 PLC cho máy tự động dịch chuyển/kẹp khuôn. Chú giải nhóm 8537: gồm bảng chuyển mạch và bộ điều khiển lập trình; không gồm 90.32."
+  },
+  {
+   "id": "bang-dieu-khien-dcs",
+   "titleVi": "Bảng điều khiển DCS / hệ thống điều khiển phân tán (≤1000V)",
+   "terms": [
+    "dcs",
+    "distributed control system",
+    "hệ thống điều khiển phân tán",
+    "bảng điều khiển dcs",
+    "tủ dcs",
+    "dcs panel",
+    "bảng dcs"
+   ],
+   "excludeIfAny": [
+    ">1000",
+    "trung thế",
+    "cao thế"
+   ],
+   "excludeReasonVi": "DCS gắn tủ cao thế → 8537.20; PLC thường → mục bang-dieu-khien-plc.",
+   "candidates": [
+    {
+     "hs": "85371011",
+     "whenVi": "- - - Bảng điều khiển của loại thích hợp sử dụng cho hệ thống điều khiển phân tán — mã 8537.10.11",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85371092",
+     "whenVi": "- - - Loại phù hợp sử dụng cho hệ thống điều khiển phân tán — mã 8537.10.92",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "9032",
+     "whyVi": "9032 không phải bảng/tủ DCS hoàn chỉnh."
+    },
+    {
+     "prefix": "8538",
+     "whyVi": "8538 bộ phận, không phải bảng DCS nguyên chiếc."
+    }
+   ],
+   "askVi": [
+    "Đây là tủ/bảng DCS hoàn chỉnh hay card/module I/O rời?",
+    "Điện áp làm việc ≤1000V?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8537.10.11 và 8537.10.92 — bảng điều khiển loại thích hợp cho hệ thống điều khiển phân tán (DCS)."
+  },
+  {
+   "id": "bang-phan-phoi-dien",
+   "titleVi": "Bảng phân phối / tủ điện / MCC / switchboard (≤1000V)",
+   "terms": [
+    "bảng phân phối",
+    "tủ phân phối",
+    "switchboard",
+    "mcc",
+    "motor control center",
+    "distribution board",
+    "distribution panel",
+    "tủ mcc",
+    "tủ điều khiển động cơ",
+    "electrical panel",
+    "tủ điện công nghiệp",
+    "tủ điện phân phối",
+    "bảng điện phân phối",
+    "electrical distribution panel",
+    "tủ điều khiển điện"
+   ],
+   "excludeIfAny": [
+    "plc",
+    "dcs",
+    ">1000",
+    "trung thế",
+    "cao thế",
+    "biến tần",
+    "tụ điện",
+    "capacitor",
+    "bộ cấp nguồn",
+    "nguồn liên tục",
+    "ups",
+    "smps"
+   ],
+   "excludeReasonVi": "PLC/DCS có mục riêng; biến tần là 8504; cao thế >1000V là 8537.20. Không kích hoạt trên tụ điện/PSU (tụ điện ↔ tủ điện mất dấu).",
+   "candidates": [
+    {
+     "hs": "85371020",
+     "whenVi": "- - Bảng phân phối (gồm cả panel đỡ và tấm đỡ phẳng) chỉ dùng hoặc chủ yếu dùng với các hàng hóa thuộc nhóm 84.71, 85.17 hoặc 85.25 — mã 8537.10.20",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85371013",
+     "whenVi": "- - - Bảng điều khiển khác của loại thích hợp dùng cho hàng hóa của nhóm 84.15, 84.18, 84.50, 85.08, 85.09 hoặc 85.16 (SEN) — mã 8537.10.13",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85371099",
+     "whenVi": "- - - Loại khác — mã 8537.10.99",
+     "confidence": "low"
+    },
+    {
+     "hs": "85371019",
+     "whenVi": "- - - Loại khác — mã 8537.10.19",
+     "confidence": "low"
+    },
+    {
+     "hs": "85371091",
+     "whenVi": "- - - Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện — mã 8537.10.91",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85371040",
+     "whenVi": "- - Bộ điều khiển động cơ có điện áp đầu ra từ 24V đến 120VDC và có cường độ dòng điện từ 300A đến 500A — mã 8537.10.40",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8536",
+     "whyVi": "8536 là thiết bị đóng cắt/bảo vệ rời (aptomat, contactor…) — chưa lắp thành bảng."
+    },
+    {
+     "prefix": "8538",
+     "whyVi": "8538 bộ phận bảng, không phải bảng hoàn chỉnh."
+    },
+    {
+     "prefix": "8504",
+     "whyVi": "Biến tần / VFD thuộc 8504, không phải bảng phân phối."
+    },
+    {
+     "prefix": "9032",
+     "whyVi": "9032 thiết bị điều khiển tự động đơn lẻ."
+    }
+   ],
+   "askVi": [
+    "Đã lắp thành bảng/tủ hoàn chỉnh hay chỉ thiết bị đóng cắt rời (8536)?",
+    "Dùng cho điều hòa/tủ lạnh/máy giặt/đồ gia dụng điện không? (→ 8537.10.13/.20)",
+    "Điện áp ≤1000V hay >1000V?",
+    "Có phải bộ điều khiển động cơ 24–120VDC / 300–500A không? (→ 8537.10.40)"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8537.10 — bảng phân phối và bảng điều khiển ≤1000V (8537.10.13/.20/.40/.91/.99 và mã dư .19). Chú giải 8537: từ bảng nhỏ vài cầu chì đến tủ phức tạp nhà máy."
+  },
+  {
+   "id": "tu-dien-cao-ap-8537",
+   "titleVi": "Bảng / tủ điều khiển hoặc phân phối điện áp >1000V",
+   "terms": [
+    "tủ trung thế",
+    "tủ cao thế",
+    "bảng trung thế",
+    "switchgear",
+    "tủ điện >1000v",
+    "tủ điện trên 1000v",
+    "high voltage switchboard",
+    "mv switchgear",
+    "tủ 22kv",
+    "tủ 35kv",
+    "tủ 66kv"
+   ],
+   "excludeIfAny": [
+    "plc gia dụng",
+    "điện áp thấp",
+    "220v",
+    "380v tủ mcc thường"
+   ],
+   "excludeReasonVi": "≤1000V thuộc 8537.10; thiết bị đóng cắt rời cao thế có thể 8535.",
+   "candidates": [
+    {
+     "hs": "85372011",
+     "whenVi": "- - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên — mã 8537.20.11",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85372019",
+     "whenVi": "- - - Loại khác — mã 8537.20.19",
+     "confidence": "low"
+    },
+    {
+     "hs": "85372021",
+     "whenVi": "- - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên — mã 8537.20.21",
+     "confidence": "medium"
+    },
+    {
+     "hs": "85372029",
+     "whenVi": "- - - Loại khác — mã 8537.20.29",
+     "confidence": "low"
+    },
+    {
+     "hs": "85372090",
+     "whenVi": "- - Loại khác — mã 8537.20.90",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8535",
+     "whyVi": "8535 là thiết bị đóng cắt/bảo vệ dùng riêng cho >1000V (chưa lắp thành bảng)."
+    },
+    {
+     "prefix": "8536",
+     "whyVi": "8536 chỉ cho ≤1000V — thiết bị rời."
+    },
+    {
+     "prefix": "8504",
+     "whyVi": "Máy biến áp thuộc 8504, không phải bảng phân phối."
+    }
+   ],
+   "askVi": [
+    "Điện áp định mức >1000V xác nhận?",
+    "Đã lắp thành bảng/tủ hoàn chỉnh hay thiết bị đóng cắt rời (8535)?",
+    "Có gắn thiết bị ngắt/nối/bảo vệ mạch ≥66 kV không?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8537.20 — bảng điều khiển/phân phối cho điện áp trên 1000V, gồm các nhánh gắn thiết bị ≥66 kV và mã dư."
+  },
+  {
+   "id": "thang-may-thang-cuon",
+   "titleVi": "Thang máy / thang cuốn / băng tải người đi bộ",
+   "terms": [
+    "thang máy",
+    "thang cuon",
+    "thang cuốn",
+    "elevator",
+    "lift passenger",
+    "escalator",
+    "moving walk",
+    "băng tải người",
+    "passenger lift",
+    "thang máy chở người",
+    "thang máy hàng"
+   ],
+   "excludeIfAny": [
+    "xe nâng",
+    "forklift",
+    "bàn nâng",
+    "scissor"
+   ],
+   "excludeReasonVi": "Xe nâng càng 8427; bàn nâng/thiết bị nâng khác 8428.90; không lẫn thang máy cố định.",
+   "candidates": [
+    {
+     "hs": "84281031",
+     "whenVi": "- - - Để chở người — mã 8428.10.31",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84281039",
+     "whenVi": "- - - Loại khác — mã 8428.10.39",
+     "confidence": "low"
+    },
+    {
+     "hs": "84281040",
+     "whenVi": "- - Tời nâng kiểu gầu nâng (trục tải thùng kíp) — mã 8428.10.40",
+     "confidence": "high"
+    },
+    {
+     "hs": "84284000",
+     "whenVi": "- Thang cuốn và băng tải tự động dùng cho người đi bộ — mã 8428.40.00",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8427",
+     "whyVi": "8427 là xe nâng tự hành (forklift), không phải thang máy/thang cuốn cố định."
+    },
+    {
+     "prefix": "8431",
+     "whyVi": "8431 bộ phận của máy nâng — không phải nguyên chiếc."
+    }
+   ],
+   "askVi": [
+    "Chở người hay hàng/khác?",
+    "Thang máy cabin, thang cuốn, hay tời gầu nâng?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8428.10 (thang máy/tời nâng) và 8428.40 (thang cuốn và băng tải người)."
+  },
+  {
+   "id": "bang-tai-cong-nghiep",
+   "titleVi": "Băng tải / conveyor công nghiệp (không phải băng tải người)",
+   "terms": [
+    "conveyor",
+    "belt conveyor",
+    "screw conveyor",
+    "roller conveyor",
+    "băng chuyền",
+    "máy băng tải",
+    "pneumatic conveyor",
+    "băng tải khí nén",
+    "hệ thống băng tải",
+    "băng tải công nghiệp",
+    "conveyor system",
+    "conveyor belt system"
+   ],
+   "excludeIfAny": [
+    "người đi bộ",
+    "escalator",
+    "thang cuốn",
+    "xe nâng",
+    "dây đai",
+    "đai băng",
+    "belt only",
+    "phụ tùng băng tải",
+    "cao su băng tải",
+    "nhựa pvc xốp"
+   ],
+   "excludeReasonVi": "Dây đai/đai PVC là bộ phận (thường ch.39/40), không phải máy băng tải 8428. Băng tải người/thang cuốn = 8428.40; xe nâng = 8427.",
+   "candidates": [
+    {
+     "hs": "84282010",
+     "whenVi": "- - Loại sử dụng trong nông nghiệp — mã 8428.20.10",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84282090",
+     "whenVi": "- - Loại khác — mã 8428.20.90",
+     "confidence": "low"
+    },
+    {
+     "hs": "84283100",
+     "whenVi": "- - Thiết kế chuyên sử dụng dưới lòng đất — mã 8428.31.00",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84283210",
+     "whenVi": "- - - Loại sử dụng trong nông nghiệp — mã 8428.32.10",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84283290",
+     "whenVi": "- - - Loại khác — mã 8428.32.90",
+     "confidence": "low"
+    },
+    {
+     "hs": "84283310",
+     "whenVi": "- - - Loại sử dụng trong nông nghiệp — mã 8428.33.10",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84283390",
+     "whenVi": "- - - Loại khác — mã 8428.33.90",
+     "confidence": "low"
+    },
+    {
+     "hs": "84283910",
+     "whenVi": "- - - Loại sử dụng trong nông nghiệp — mã 8428.39.10",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84283990",
+     "whenVi": "- - - Loại khác — mã 8428.39.90",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8427",
+     "whyVi": "8427 xe nâng càng — khác băng tải cố định/continuous."
+    },
+    {
+     "prefix": "8431",
+     "whyVi": "8431 bộ phận băng tải, không phải máy nguyên chiếc."
+    }
+   ],
+   "askVi": [
+    "Dùng nông nghiệp?",
+    "Kiểu gầu/xích/đai/trục vít?",
+    "Thiết kế chuyên dưới lòng đất?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8428.20–8428.39 — máy nâng liên tục / băng tải cho hàng (không phải người)."
+  },
+  {
+   "id": "xe-nang-forklift",
+   "titleVi": "Xe nâng càng / forklift / stacker tự hành",
+   "terms": [
+    "xe nâng",
+    "xe nâng hàng",
+    "forklift",
+    "xe nâng càng",
+    "xe nâng điện",
+    "reach truck",
+    "stacker",
+    "pallet stacker",
+    "xe nâng pallet"
+   ],
+   "excludeIfAny": [
+    "bàn nâng",
+    "scissor",
+    "thang máy",
+    "băng tải",
+    "crane"
+   ],
+   "excludeReasonVi": "Bàn nâng/scissor không tự hành kiểu càng → 8428; cầu trục khác nhóm.",
+   "candidates": [
+    {
+     "hs": "84271000",
+     "whenVi": "- Xe tự hành chạy bằng mô tơ điện — mã 8427.10.00",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84272000",
+     "whenVi": "- Xe tự hành khác — mã 8427.20.00",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84279000",
+     "whenVi": "- Các loại xe khác — mã 8427.90.00",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8428",
+     "whyVi": "8428 là máy nâng/bốc xếp khác (băng tải, thang máy, bàn nâng…) — không phải xe nâng càng tự hành."
+    },
+    {
+     "prefix": "8709",
+     "whyVi": "8709 xe công tác ngắn không có thiết bị nâng kiểu forklift."
+    },
+    {
+     "prefix": "8431",
+     "whyVi": "8431 bộ phận xe nâng."
+    }
+   ],
+   "askVi": [
+    "Tự hành có càng nâng pallet?",
+    "Điện / diesel / gas?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN nhóm 8427 — xe nâng tự hành có thiết bị nâng kiểu càng và xe nâng khác."
+  },
+  {
+   "id": "ban-nang-thuy-luc",
+   "titleVi": "Bàn nâng / scissor lift / lift table",
+   "terms": [
+    "bàn nâng",
+    "xe bàn nâng",
+    "lift table",
+    "scissor lift",
+    "bàn nâng thủy lực",
+    "bàn nâng cắt kéo",
+    "xe nâng bàn",
+    "xe nâng tay cao"
+   ],
+   "excludeIfAny": [
+    "băng tải",
+    "escalator",
+    "forklift",
+    "robot",
+    "thang máy",
+    "xe nâng càng",
+    "xe nâng hàng",
+    "xe nâng điện ngồi lái"
+   ],
+   "excludeReasonVi": "Forklift 8427; thang máy/băng tải/robot có mục riêng.",
+   "candidates": [
+    {
+     "hs": "84289090",
+     "whenVi": "- - Loại khác — mã 8428.90.90 — bàn nâng/thiết bị nâng không thuộc phân nhóm kể tên",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84289030",
+     "whenVi": "- - Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự — mã 8428.90.30",
+     "confidence": "low"
+    },
+    {
+     "hs": "84289020",
+     "whenVi": "- - Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp — mã 8428.90.20",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8427",
+     "whyVi": "Xe nâng tự hành có càng = 8427."
+    },
+    {
+     "prefix": "2522",
+     "whyVi": "'Vôi thủy lực' chỉ trùng chữ."
+    },
+    {
+     "prefix": "8431",
+     "whyVi": "8431 bộ phận."
+    },
+    {
+     "prefix": "2523",
+     "whyVi": "'Xi măng thủy lực' — trùng chữ, khác hẳn hàng."
+    },
+    {
+     "prefix": "2710",
+     "whyVi": "'Dầu phanh thủy lực' — trùng chữ, là dầu bôi trơn."
+    },
+    {
+     "prefix": "7304",
+     "whyVi": "Ống thép chịu áp lực — chỉ dính vì 'áp lực'/'thủy lực', không phải máy nâng."
+    }
+   ],
+   "askVi": [
+    "Có tự hành kiểu xe nâng càng không? (có → 8427)",
+    "Tải trọng và chiều cao nâng?",
+    "Nâng bằng thủy lực, cắt kéo hay tời?",
+    "Tải trọng và chiều cao nâng tối đa?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8428.90 — máy nâng/bốc xếp khác; mã dư 8428.90.90 khi không thuộc .20/.30."
+  },
+  {
+   "id": "robot-cong-nghiep-8428",
+   "titleVi": "Rô bốt công nghiệp (nhóm 8428.70)",
+   "terms": [
+    "robot công nghiệp",
+    "rô bốt công nghiệp",
+    "industrial robot",
+    "robot arm",
+    "cánh tay robot"
+   ],
+   "excludeIfAny": [
+    "đồ chơi",
+    "toy robot",
+    "robot hút bụi",
+    "vacuum"
+   ],
+   "excludeReasonVi": "Robot đồ chơi/gia dụng không thuộc 8428.70.",
+   "candidates": [
+    {
+     "hs": "84287000",
+     "whenVi": "- Rô bốt công nghiệp — mã 8428.70.00",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8508",
+     "whyVi": "Máy hút bụi điện gia dụng — không phải robot công nghiệp 8428."
+    },
+    {
+     "prefix": "9503",
+     "whyVi": "Đồ chơi."
+    }
+   ],
+   "askVi": [
+    "Robot công nghiệp sản xuất hay đồ chơi/gia dụng?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8428.70.00 — Rô bốt công nghiệp (gọi đích danh)."
+  },
+  {
+   "id": "cap-treo-thiet-bi-mo",
+   "titleVi": "Cáp treo / thiết bị mỏ / máy xử lý mạch in (8428.60–.90)",
+   "terms": [
+    "cáp treo",
+    "ghế treo",
+    "teleferic",
+    "ski lift",
+    "thiết bị đẩy goòng",
+    "máy lật toa",
+    "máy kẹp mạch in",
+    "pcb handling"
+   ],
+   "excludeIfAny": [
+    "bàn nâng",
+    "forklift",
+    "thang máy"
+   ],
+   "excludeReasonVi": "Các mặt hàng 8428.60/.90 đặc thù — không lẫn bàn nâng/xe nâng.",
+   "candidates": [
+    {
+     "hs": "84286000",
+     "whenVi": "- Thùng cáp treo, ghế treo, cơ cấu kéo người trượt tuyết lên cao dùng trong môn trượt tuyết; cơ cấu kéo dùng cho đường sắt leo núi — mã 8428.60.00",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84289030",
+     "whenVi": "- - Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự — mã 8428.90.30",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84289020",
+     "whenVi": "- - Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp — mã 8428.90.20",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84289090",
+     "whenVi": "- - Loại khác — mã 8428.90.90",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8427",
+     "whyVi": "Không phải xe nâng càng."
+    }
+   ],
+   "askVi": [
+    "Cáp treo/trượt tuyết, thiết bị goòng mỏ, hay máy mạch in?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 8428.60, 8428.90.20, 8428.90.30."
+  },
+  {
+   "id": "phich-o-cam-dong-truc-8536",
+   "titleVi": "Phích cắm / ổ cắm đồng trục (anten TV, RF) — 8536.69.3x",
+   "terms": [
+    "phích cắm đồng trục",
+    "ổ cắm đồng trục",
+    "jack đồng trục",
+    "giắc đồng trục",
+    "coaxial plug",
+    "coaxial socket"
+   ],
+   "candidates": [
+    {
+     "hs": "853669",
+     "whenVi": "Phích cắm / ổ cắm cho cáp đồng trục (≤1000 V). Bảng quyết định 8536 chốt lá: 8536.69.32 dưới 16 A / .39 loại khác.",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8528",
+     "whyVi": "Tivi / màn hình là 8528; phích/ổ cắm đồng trục rời là thiết bị đấu nối 85.36."
+    },
+    {
+     "prefix": "854420",
+     "whyVi": "Cáp đồng trục (dây dẫn) là 8544.20; đầu cắm rời của cáp thuộc 85.36."
+    }
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 phân nhóm 8536.69 — dòng cha \"Ổ cắm và phích cắm cho cáp đồng trục và mạch in\" (8536.69.32 / .39); TB 4786/TB-TCHQ (đầu nối mạch in → 8536.69.32)."
+  },
+  {
+   "id": "tai-gia-rf",
+   "titleVi": "Tải giả / tải đồng trục RF (dummy load, coaxial termination)",
+   "terms": [
+    "tải giả",
+    "tải đồng trục",
+    "coaxial load",
+    "dummy load",
+    "tải kết cuối",
+    "coaxial termination",
+    "tải 50 ohm",
+    "prl"
+   ],
+   "excludeIfAny": [
+    "tải điện tử",
+    "electronic load",
+    "dc load",
+    "mô phỏng tải"
+   ],
+   "excludeReasonVi": "Tải ĐIỆN TỬ (DC electronic load) là thiết bị ĐO dùng mô phỏng tải khi thử pin/nguồn — nhóm 9030, không phải điện trở 50Ω thụ động.",
+   "candidates": [
+    {
+     "hs": "853321",
+     "whenVi": "Công suất danh định không quá 20 W (vd PRL 1 W / 3 W / 15 W)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "853329",
+     "whenVi": "Công suất danh định trên 20 W (vd PRL 30 W)",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8543",
+     "whyVi": "Máy có chức năng riêng — điện trở cố định đã có nhóm 8533 nhận cụ thể (GIR 1)."
+    },
+    {
+     "prefix": "8529",
+     "whyVi": "Linh kiện anten/vô tuyến — tải giả là điện trở kết cuối, không phải linh kiện anten."
+    }
+   ],
+   "askVi": [
+    "Công suất danh định bao nhiêu W? Ngưỡng 20 W chia 8533.21 và 8533.29 — lô trộn nhiều W thì tách dòng khai."
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 8533.21 'không quá 20 W' / 8533.29 'Loại khác'. Ca thật 04/11/2026: catalog tải đồng trục PRL 1W–30W — 4 model tách 2 mã. Bản chất: passive resistive device 50Ω hấp thụ công suất RF."
+  },
+  {
+   "id": "ra-do",
+   "titleVi": "Ra đa / radar (kể cả radar xuyên đất GPR)",
+   "terms": [
+    "radar",
+    "ra đa",
+    "gpr",
+    "ground penetrating radar",
+    "radar xuyên đất",
+    "ra đa xuyên đất",
+    "máy radar"
+   ],
+   "excludeIfAny": [
+    "radar cảnh báo",
+    "phát hiện tốc độ"
+   ],
+   "excludeReasonVi": "Thiết bị radar cảnh báo tốc độ gắn ô tô là thiết bị phát hiện/báo động, không phải apparatus ra đa của nhóm 8526.",
+   "candidates": [
+    {
+     "hs": "852610",
+     "whenVi": "Ra đa dùng trên mặt đất (vd GPR — radar xuyên đất), máy bay dân dụng hoặc tàu thuyền đi biển",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "9015",
+     "whyVi": "GPR là ra đa: đã vào được 8526 thì bị Chú giải 2 Chương 90 loại khỏi thiết bị trắc địa 9015 — phán quyết CBP HQ H266052 (GPR IDS → 8526.10)."
+    }
+   ],
+   "askVi": [
+    "Ra đa dùng trên mặt đất / máy bay dân dụng / tàu biển (→ 8526.10.10) hay loại khác (→ 8526.10.90)?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 8526.10.10 'Ra đa, loại dùng trên mặt đất, hoặc trang bị trên máy bay dân dụng...'. Phán quyết CBP HQ H266052 (GPR → 8526.10). Ca thật 04/11/2026: khách hỏi GPR ăng-ten phân cực kép."
+  }
+ ],
+ "updatedAt": "2026-11-04"
 }
