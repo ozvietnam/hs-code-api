@@ -1,0 +1,120 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721061",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721061",
+  "dong8": {
+    "72106111": {
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72106112": {
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 1.2,
+          "donVi": "mm"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72106191": {
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72106192": {
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7210611": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7210611",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7210611: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "7210611",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "7210611",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72106111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72106111: \"Chiều dày không quá 1,2 mm\" ⇒ doDay <= 1.2 mm"
+    },
+    {
+      "ma": "72106111",
+      "loai": "BO_VE",
+      "ve": "Chiều dày không quá 1,2 mm",
+      "lyDo": "Đã lượng hóa qua doDay <= 1.2 mm"
+    },
+    {
+      "ma": "72106112",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72106112: \"Chiều dày trên 1,2 mm nhưng không quá 1,5 mm\" ⇒ doDay > 1.2 mm, <= 1.5 mm"
+    },
+    {
+      "ma": "72106112",
+      "loai": "BO_VE",
+      "ve": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+      "lyDo": "Đã lượng hóa qua doDay"
+    },
+    {
+      "ma": "72106191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72106191: \"Chiều dày không quá 1,2 mm\" ⇒ doDay <= 1.2 mm"
+    },
+    {
+      "ma": "72106191",
+      "loai": "BO_VE",
+      "ve": "Chiều dày không quá 1,2 mm",
+      "lyDo": "Đã lượng hóa qua doDay <= 1.2 mm"
+    },
+    {
+      "ma": "72106192",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72106192: \"Loại khác, dạng lượn sóng\" ⇒ dangLuonSong CO"
+    }
+  ]
+}
