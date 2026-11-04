@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841510",
+  "nhom": "8415",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841510",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84151020",
+      "nguon": "tax.84151020",
+      "trich": "84151020 - - Công suất làm mát không quá 21,10 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 21.1,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84151030",
+      "nguon": "tax.84151030",
+      "trich": "84151030 - - Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 21.1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84151090",
+      "nguon": "tax.84151090",
+      "trich": "84151090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84151020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84151020: \"Công suất làm mát không quá 21,10 kW\" ⇒ congSuat <= 21.1 kW"
+    },
+    {
+      "ma": "84151030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84151030: \"Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW\" ⇒ congSuat > 21.1 kW, <= 26.38 kW"
+    }
+  ]
+}
