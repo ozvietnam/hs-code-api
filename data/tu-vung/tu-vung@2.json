@@ -4548,13 +4548,13 @@
           "nhanZh": "无线",
           "cachDoc": {
             "vi": [
-              "sóng vô tuyến",
-              "vô tuyến",
-              "không dây",
-              "radio"
+              "sóng\\s+vô\\s+tuyến",
+              "vô\\s+tuyến",
+              "không\\s+dây",
+              "truyền\\s+dẫn\\s+radio"
             ],
             "en": [
-              "radio",
+              "radio[\\s-]+(?:transmission|frequency|waves?|transceiver|telephony|telegraphy|system)",
               "wireless"
             ],
             "zh": [
@@ -4569,8 +4569,8 @@
           "nhanZh": "有线",
           "cachDoc": {
             "vi": [
-              "hữu tuyến",
-              "có dây(?!\\s+(?:đeo|da|kéo|buộc|treo|rút|xích|thép|đai|curoa|cu-roa))"
+              "hữu\\s+tuyến",
+              "có\\s+dây(?!\\s+(?:đeo|da|kéo|buộc|treo|rút|xích|thép|đai|curoa|cu-roa|nguồn|điện|sạc|cắm|nối\\s+đất))"
             ],
             "en": [
               "wired",
@@ -5496,12 +5496,12 @@
         "en": [
           "external\\s+volume",
           "outer\\s+volume",
-          "volume"
+          "(?:battery\\s+|cell\\s+)?outer\\s+volume"
         ],
         "zh": [
           "外部体积",
           "外体积",
-          "体积"
+          "外形体积"
         ]
       },
       "cachViet": {
@@ -6397,8 +6397,10 @@
         "en": [
           "alcoholic?\\s+strength(?:\\s+by\\s+volume)?",
           "alcohol(?:ic)?\\s+content",
-          "abv",
-          "vol(?:ume)?\\s+alcohol"
+          "\\babv\\b",
+          "\\bvol\\b",
+          "\\balc(?:ohol)?\\b",
+          "volume\\s+alcohol"
         ],
         "zh": [
           "酒精度",
@@ -6467,7 +6469,8 @@
             ],
             "zh": [
               "鲜",
-              "冷",
+              "冷藏",
+              "鲜或冷藏",
               "鲜或冷"
             ]
           },
@@ -6486,8 +6489,9 @@
               "frozen"
             ],
             "zh": [
-              "冻",
-              "冷冻"
+              "冷冻",
+              "冻结",
+              "速冻"
             ]
           },
           "cachViet": "đông lạnh"
@@ -6500,8 +6504,9 @@
             "vi": [
               "khô(?:,\\s*muối\\s+hoặc\\s+ngâm\\s+nước\\s+muối)?",
               "làm\\s+khô",
-              "muối",
-              "ngâm\\s+nước\\s+muối"
+              "ngâm\\s+nước\\s+muối",
+              "(?:đã\\s+)?(?:ướp|ngâm)\\s+muối",
+              "(?:cá|tôm|mực|thịt|nấm|thủy\\s+sản)\\s+khô"
             ],
             "en": [
               "dried(?:,\\s*salted\\s+or\\s+in\\s+brine)?",
@@ -6509,10 +6514,12 @@
               "in\\s+brine"
             ],
             "zh": [
-              "干",
+              "干制",
               "盐腌",
               "盐渍",
-              "干、盐腌或盐渍"
+              "干、盐腌或盐渍",
+              "脱水",
+              "晒干"
             ]
           },
           "cachViet": "khô, muối hoặc ngâm nước muối"
@@ -7018,14 +7025,14 @@
           "(?:thịt\\s+)?(?:đã\\s+được\\s+)?(?:lọc|tách)(?:\\s+hoặc\\s+tách)?\\s+khỏi\\s+xương\\s+bằng\\s+phương\\s+pháp\\s+cơ\\s+học",
           "tách\\s+xương\\s+cơ\\s+học",
           "thịt\\s+tách\\s+xương\\s+cơ\\s+học",
-          "\\bmsm\\b",
-          "\\bmdm\\b"
+          "(?:thịt|gà|heo|lợn)\\s+m[sd]m",
+          "m[sd]m\\s+(?:thịt|gà|heo|lợn)"
         ],
         "en": [
           "mechanically\\s+deboned(?:\\s+meat)?",
           "mechanically\\s+separated(?:\\s+meat)?",
-          "\\bmdm\\b",
-          "\\bmsm\\b"
+          "(?:chicken|pork|poultry|meat)\\s+m[sd]m",
+          "m[sd]m\\s+(?:chicken|pork|poultry|meat)"
         ],
         "zh": [
           "机械去骨",
@@ -8397,8 +8404,8 @@
       "cachDoc": {
         "vi": [
           "sợi\\s+dún",
-          "dún",
-          "sợi\\s+co\\s+dún"
+          "sợi\\s+(?:co\\s+)?dún",
+          "(?:filament|polyester|nylon)\\s+dún"
         ],
         "en": [
           "textured\\s+yarns?",

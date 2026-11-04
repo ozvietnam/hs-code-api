@@ -365,6 +365,105 @@
       "goi": "04",
       "ngay": "2026-11-04",
       "ghiChuMay": "Studio kết luận SUA nhưng thiếu trường sua — chờ lượt bổ sung."
+    },
+    "nongDoCon": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí nồng độ cồn (% thể tích) cho đồ uống có cồn (Chương 22) chuẩn xác. Tuy nhiên mẫu tiếng Anh thiếu 'vol' và 'alc' khiến hệ thống không đọc được định dạng phổ biến nhất trên nhãn rượu bia quốc tế ('13.5% vol', 'alc. 40% vol').",
+      "goi": "05",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.en"
+      ],
+      "ghiChuMay": "\"40% vol\" (đơn vị đứng sau số) vẫn chưa đọc — giới hạn docSo canNguCanh (ngữ cảnh phải đứng trước số), không phải do SUA."
+    },
+    "phuongPhapBaoQuan": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí trạng thái bảo quản thủy hải sản (Chương 3) đúng Biểu thuế. Tuy nhiên các mẫu từ đơn 'muối', 'khô', '冷', '干', '冻' gây bắt nhầm nghiêm trọng sang muối ăn/hóa chất, khô dầu đậu tương và nhầm lẫn giữa hàng đông lạnh với tươi ướp lạnh.",
+      "goi": "05",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.TUOI_UOP_LANH.cachDoc.zh",
+        "moTaGiaTri.DONG_LANH.cachDoc.zh",
+        "moTaGiaTri.KHO_MUOI.cachDoc.vi",
+        "moTaGiaTri.KHO_MUOI.cachDoc.zh"
+      ]
+    },
+    "phuongPhapCheTao": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí phương pháp chế tạo kim loại và nhựa bao quát chuẩn 10 phương pháp công nghiệp phổ biến. Regex được thiết kế cẩn trọng với các lookbehind loại trừ vật liệu ('gang đúc', 'cast iron') và thiết bị hàn cắt.",
+      "goi": "05",
+      "ngay": "2026-11-04"
+    },
+    "phuongPhapIn": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí phương pháp in trên hàng dệt phân định chính xác dòng in batik truyền thống (5208.59, 62.04). Các mẫu nhận diện in kỹ thuật số, in chuyển nhiệt và in lưới chặt chẽ, không có nguy cơ bắt nhầm.",
+      "goi": "05",
+      "ngay": "2026-11-04"
+    },
+    "phuongThucTruyenDan": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí phương thức truyền dẫn cho thiết bị viễn thông (85.17) đúng bản chất kỹ thuật. Tuy nhiên từ đơn 'radio' bắt nhầm máy thu thanh (85.27) và 'có dây' bắt nhầm dây nguồn/dây điện của thiết bị gia dụng.",
+      "goi": "05",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "moTaGiaTri.VO_TUYEN.cachDoc.vi",
+        "moTaGiaTri.VO_TUYEN.cachDoc.en",
+        "moTaGiaTri.HUU_TUYEN.cachDoc.vi"
+      ],
+      "ghiChuMay": "SUA của Studio bỏ \"radio-telephony\" (gạch nối) ⇒ test cũ đỏ; máy vá radio[\\s-]+ và thêm telegraphy."
+    },
+    "sanLuongHoi": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí số đo công suất sinh hơi (tấn/giờ) của nồi hơi nhóm 84.02 hoàn toàn chính xác. Hệ đơn vị lưu lượng khối lượng và quy đổi chuẩn mực, trích dẫn dòng biểu đúng.",
+      "goi": "05",
+      "ngay": "2026-11-04"
+    },
+    "soLoi": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí đếm số lõi dẫn của cáp điện nhóm 85.44 chuẩn xác. Cơ chế demSo với đơn vị đếm độc lập giúp phân biệt an toàn với thông số đường kính lõi (mm).",
+      "goi": "05",
+      "ngay": "2026-11-04"
+    },
+    "soSoi": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí đếm số sợi dẫn/sợi quang bám sát dòng cáp dữ liệu dẹt 8544.42.91. Thiết lập đơn vị đếm riêng biệt và regex ba thứ tiếng hoạt động chính xác.",
+      "goi": "05",
+      "ngay": "2026-11-04"
+    },
+    "soiDun": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí sợi dún (textured yarn) nhóm 54.03 đúng biểu thuế. Tuy nhiên từ đơn 'dún' trong tiếng Việt sẽ bắt nhầm hàng loạt trang phục may mặc có chi tiết xếp nhún ('đầm dún eo', 'áo dún ngực').",
+      "goi": "05",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi"
+      ]
+    },
+    "tachXuongCoHoc": {
+      "ketLuan": "SUA",
+      "lyDo": "Đúng tiêu chí thịt tách xương cơ học (02.07, 16.02). Nhưng từ viết tắt đơn lẻ 'msm' và 'mdm' bắt nhầm thực phẩm chức năng khớp (Methylsulfonylmethane - Glucosamine MSM) và vi xử lý điện tử Qualcomm MSM.",
+      "goi": "05",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.vi",
+        "cachDoc.en"
+      ]
+    },
+    "theTich": {
+      "ketLuan": "SUA",
+      "lyDo": "Tiêu chí thể tích ngoài (cm3) của pin nguyên tố nhóm 85.06 chính xác. Nhưng từ đơn 'volume' tiếng Anh và '体积' tiếng Trung bắt nhầm nút chỉnh âm lượng (volume control) trên các thiết bị âm thanh.",
+      "goi": "05",
+      "ngay": "2026-11-04",
+      "truongDaSua": [
+        "cachDoc.en",
+        "cachDoc.zh"
+      ]
+    },
+    "thietKeChoTreEm": {
+      "ketLuan": "DUYET",
+      "lyDo": "Tiêu chí thiết kế cho trẻ em nhóm 95.03 chuẩn xác. Regex sử dụng lookahead phủ định thông minh giúp loại bỏ hoàn toàn các cảnh báo an toàn thông thường ('không dành cho trẻ dưới 3 tuổi').",
+      "goi": "05",
+      "ngay": "2026-11-04"
     }
   }
 }
