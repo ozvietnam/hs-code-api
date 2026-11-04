@@ -1,0 +1,87 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "851850",
+  "nhom": "8518",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-851850",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85185010",
+      "nguon": "tax.85185010",
+      "trich": "85185010 - - Có dải công suất từ 240 W trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">=",
+          "value": 240,
+          "donVi": "W"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85185020",
+      "nguon": "tax.85185020",
+      "trich": "85185020 - - Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 50,
+          "donVi": "V"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 100,
+          "donVi": "V"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "phát sóng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85185090",
+      "nguon": "tax.85185090",
+      "trich": "85185090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85185010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85185010: \"Có dải công suất từ 240 W trở lên\" ⇒ congSuat >= 240 W"
+    },
+    {
+      "ma": "85185020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85185020: \"Loại khác, có loa, loại thích hợp cho phát sóng, có giải điện áp từ 50 V trở lên nhưng không quá 100 V\" ⇒ dienAp >= 50 V, <= 100 V, congDung \"phát sóng\""
+    },
+    {
+      "ma": "85185020",
+      "loai": "BO_VE",
+      "ve": "có loa, loại",
+      "lyDo": "Bộ tăng âm kết hợp loa, không có khoá riêng trong tu-vung@2"
+    },
+    {
+      "ma": "85185020",
+      "loai": "BO_VE",
+      "ve": "thích hợp cho phát sóng, có giải",
+      "lyDo": "Đã phủ công dụng phát sóng trong congDung"
+    }
+  ]
+}
