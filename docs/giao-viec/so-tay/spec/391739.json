@@ -1,0 +1,136 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "391739",
+  "phien": "mm:minimax-m3:20261105T1705#soan-391739",
+  "dong8": {
+    "39173911": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "các polyme trùng hợp",
+            "sợi lưu hóa"
+          ]
+        }
+      ]
+    },
+    "39173912": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "nhựa phenolic",
+            "nhựa amino",
+            "các dẫn xuất hóa học của cao su tự nhiên"
+          ]
+        }
+      ]
+    },
+    "39173991": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "các polyme trùng hợp",
+            "sợi lưu hóa"
+          ]
+        }
+      ]
+    },
+    "39173992": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "nhựa phenolic",
+            "nhựa amino",
+            "các dẫn xuất hóa học của cao su tự nhiên"
+          ]
+        }
+      ]
+    },
+    "39173993": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "các polyme trùng ngưng",
+            "tái sắp xếp khác"
+          ]
+        }
+      ],
+      "phanConLai": false
+    },
+    "39173994": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "từ nitrat xenlulo",
+            "các acetat xenlulo",
+            "các dẫn xuất hóa học khác của xenlulo"
+          ]
+        },
+        {
+          "fact": "daHoaDeo",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": false
+    }
+  },
+  "dieuKienNut": {
+    "3917391": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "Được gia công hơn mức gia công bề mặt đơn thuần"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "3917391",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3917391 \"Được gia công hơn mức gia công bề mặt đơn thuần\" ⇒ tầng 3917391 là nhánh \"gia công hơn\", 3917399 \"Loại khác\" là nhánh còn lại (máy phủ định anh em). Không có khoá tu-vung nào mô tả \"gia công hơn mức gia công bề mặt đơn thuần\" ⇒ dùng congDung (khoá tầng) với chính chữ của tiêu đề, khác khoá tenLoai của các dòng con (cùng cách chia như 3917311, 391732~r5954)."
+    },
+    {
+      "ma": "39173911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173911 \"Từ các polyme trùng hợp; từ sợi lưu hóa\" ⇒ mảng 2 giá trị con nguyên văn (\";\" là dấu phân cách liệt kê)."
+    },
+    {
+      "ma": "39173912",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173912 \"Từ nhựa phenolic hoặc nhựa amino; từ các dẫn xuất hóa học của cao su tự nhiên\" ⇒ mảng 3 giá trị con nguyên văn; giá trị \"các dẫn xuất hóa học của cao su tự nhiên\" phủ vế [GIỚI HẠN] \"của cao su tự nhiên\"."
+    },
+    {
+      "ma": "39173993",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173993 \"Từ các polyme trùng ngưng hoặc tái sắp xếp khác\" ⇒ tách theo \"hoặc\" thành mảng 2 chuỗi con nguyên văn. Chữ \"khác\" nằm trong cụm \"tái sắp xếp khác\" (nói vật liệu), KHÔNG phải dấu hiệu phần còn lại ⇒ phanConLai: false. Phần còn lại của 3917399 là 39173999 \"Loại khác\" trần."
+    },
+    {
+      "ma": "39173994",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173994 \"Từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ tenLoai tách theo dấu liệt kê phẩy + \"và\" của chữ biểu, daHoaDeo CO cho vế \"đã hóa dẻo\". Chữ \"khác\" nằm trong cụm \"các dẫn xuất hóa học khác của xenlulo\" (nói vật liệu) ⇒ phanConLai: false."
+    },
+    {
+      "ma": "39173919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173919 \"Loại khác (SEN)\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "39173999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}
