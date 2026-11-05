@@ -1,0 +1,101 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "392030",
+  "nhom": "3920",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1705#soan-392030",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "39203020",
+      "nguon": "tax.39203020",
+      "trich": "39203020 - - Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tấm Acrylonitril butadien styren (ABS)"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất tủ lạnh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39203091",
+      "nguon": "tax.39203091",
+      "trich": "39203091 - - - Dạng tấm và phiến, loại cứng(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cứng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39203092",
+      "nguon": "tax.39203092",
+      "trich": "39203092 - - - Loại khác, dạng tấm và phiến (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39203099",
+      "nguon": "tax.39203099",
+      "trich": "39203099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "39203020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39203020 \"Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh\" ⇒ tenLoai (tên hàng) + dungCho \"sản xuất tủ lạnh\" phủ vế [GIỚI HẠN] \"sử dụng trong sản xuất tủ lạnh\"."
+    },
+    {
+      "ma": "39203091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39203091 \"Dạng tấm và phiến, loại cứng(SEN)\" ↔ EN \"Plates and sheets, rigid\" ⇒ định ngữ chung \"loại cứng\" gắn cho MỌI danh từ đầu (\"tấm\" và \"phiến\") nên tách thành hai điều kiện cùng khoá tenLoai: tenLoai [\"tấm\",\"phiến\"] + tenLoai \"cứng\"."
+    },
+    {
+      "ma": "39203092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39203092 \"Loại khác, dạng tấm và phiến (SEN)\" ⇒ \"Loại khác, <vế>\" chỉ ghi điều kiện của vế: tenLoai [\"tấm\",\"phiến\"] (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "39203099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39203099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}
