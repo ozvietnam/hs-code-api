@@ -1,0 +1,114 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850421",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850421",
+  "dong8": {
+    "85042111": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 1,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85042192": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85042193": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8504211": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy ổn áp từng nấc (biến áp tự ngẫu)"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "máy biến đổi đo lường"
+              },
+              {
+                "fact": "congSuatBieuKien",
+                "op": "<=",
+                "value": 5,
+                "donVi": "kVA"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8504211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504211: \"Máy ổn áp từng nấc (biến áp tự ngẫu); máy biến đổi đo lường (1) có công suất danh định không quá 5 kVA\" ⇒ HOAC [tenLoai Máy ổn áp từng nấc] hoặc [tenLoai máy biến đổi đo lường + congSuatBieuKien <= 5 kVA]"
+    },
+    {
+      "ma": "85042111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85042111: \"Máy biến đổi đo lường (1) loại công suất danh định không quá 1 kVA và đầu điện áp cao từ 110 kV trở lên\" ⇒ congSuatBieuKien <= 1 kVA + dienAp >= 110 kV"
+    },
+    {
+      "ma": "85042192",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85042192: \"Có công suất danh định trên 10 kVA và đầu điện áp cao từ 110 kV trở lên\" ⇒ congSuatBieuKien > 10 kVA + dienAp >= 110 kV"
+    },
+    {
+      "ma": "85042193",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85042193: \"Có công suất danh định trên 10 kVA và đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV\" ⇒ congSuatBieuKien > 10 kVA + dienAp >= 66 kV, < 110 kV"
+    }
+  ]
+}

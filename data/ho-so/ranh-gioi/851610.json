@@ -1,0 +1,91 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "851610",
+  "nhom": "8516",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-851610",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8516101",
+      "nguon": "tieuDe.8516101",
+      "trich": "8516101 Loại đun nước nóng tức thời hoặc đun nước nóng có dự trữ",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tức thời",
+            "có dự trữ"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85161011",
+      "nguon": "tax.85161011",
+      "trich": "85161011 - - - Bình thủy điện (water dispenser) đun nước nóng, loại gia dụng (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bình thủy điện"
+        },
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85161019",
+      "nguon": "tax.85161019",
+      "trich": "85161019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85161030",
+      "nguon": "tax.85161030",
+      "trich": "85161030 - - Loại đun nước nóng kiểu nhúng",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "kiểu nhúng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8516101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8516101: \"Loại đun nước nóng tức thời hoặc đun nước nóng có dự trữ\" ⇒ congDung CONG_DUNG [\"tức thời\", \"có dự trữ\"] cùng khoá congDung với 85161030 tránh xung đột khoá tenLoai với 85161011"
+    },
+    {
+      "ma": "85161011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85161011: \"Bình thủy điện ... loại gia dụng\" ⇒ tenLoai TEN_LOAI \"Bình thủy điện\" + phamViSuDung TRONG [\"GIA_DINH\"]"
+    },
+    {
+      "ma": "85161030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85161030: \"Loại đun nước nóng kiểu nhúng\" ⇒ congDung CONG_DUNG \"kiểu nhúng\" cùng khoá congDung với tiêu đề 8516101"
+    }
+  ]
+}
