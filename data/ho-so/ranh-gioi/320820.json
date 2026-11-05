@@ -1,0 +1,75 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "320820",
+  "nhom": "3208",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1547#soan-320820",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "32082040",
+      "nguon": "tax.32082040",
+      "trich": "32082040 - - Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "vỏ tàu thủy"
+        },
+        {
+          "fact": "sonChongHaHoacChongAnMonVoTau",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "32082070",
+      "nguon": "tax.32082070",
+      "trich": "32082070 - - Vecni (kể cả dầu bóng), loại dùng trong nha khoa (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vecni (kể cả dầu bóng)"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nha khoa"
+        },
+        {
+          "fact": "dungTrongNhaKhoa",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "32082090",
+      "nguon": "tax.32082090",
+      "trich": "32082090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "32082040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32082040 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") ⇒ dungCho CONG_DUNG \"vỏ tàu thủy\" + sonChongHaHoacChongAnMonVoTau CO."
+    },
+    {
+      "ma": "32082070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32082070 \"Vecni (kể cả dầu bóng), loại dùng trong nha khoa (SEN)\" (EN \"Varnishes (including lacquers), of a kind used in dentistry\") ⇒ tenLoai TEN_LOAI \"Vecni (kể cả dầu bóng)\" + dungCho CONG_DUNG \"nha khoa\" + dungTrongNhaKhoa CO."
+    }
+  ]
+}

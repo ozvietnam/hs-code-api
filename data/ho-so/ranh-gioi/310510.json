@@ -1,0 +1,60 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "310510",
+  "nhom": "3105",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1547#soan-310510",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "31051010",
+      "nguon": "tax.31051010",
+      "trich": "31051010 - -  Supephosphat và phân phosphat đã nung",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Supephosphat",
+            "phân phosphat đã nung"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "31051020",
+      "nguon": "tax.31051020",
+      "trich": "31051020 - - Phân khoáng hoặc phân hóa học có chứa hai hoặc ba trong số các nguyên tố cấu thành phân bón là nitơ, phospho và kali",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "31051090",
+      "nguon": "tax.31051090",
+      "trich": "31051090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "31051010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.31051010 \"Supephosphat và phân phosphat đã nung\" (EN \"Superphosphates and calcined phosphatic fertilisers\") ⇒ tenLoai TEN_LOAI [\"Supephosphat\",\"phân phosphat đã nung\"]: chữ Anh nối hai danh từ đầu bằng \"and\" và vế trước là danh từ số nhiều (\"Superphosphates\") ⇒ tách thành mảng (hai loại phân thay thế nhau)."
+    },
+    {
+      "ma": "31051020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "soNguyenToCauThanhPhanBon",
+      "ghiChu": "tax.31051020 \"Phân khoáng hoặc phân hóa học có chứa hai hoặc ba trong số các nguyên tố cấu thành phân bón là nitơ, phospho và kali\" — vế GIỚI HẠN \"có chứa hai hoặc ba trong số các nguyên tố cấu thành phân bón là nitơ, phospho và kali\" cần khoá số nguyên tố cấu thành phân bón (2 hoặc 3) và tập nguyên tố nitơ/phospho/kali; tu-vung@2 chưa có khoá này ⇒ để trống dieuKienSo, không mượn khoá gần nghĩa."
+    }
+  ]
+}

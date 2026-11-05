@@ -1,0 +1,113 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "321290",
+  "phien": "mm:minimax-m3:20261105T1547#soan-321290",
+  "dong8": {
+    "32129011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột nhão"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "nhôm"
+        }
+      ]
+    },
+    "32129013": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chì trắng"
+        }
+      ]
+    },
+    "32129014": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất sơn cho da thuộc"
+        }
+      ]
+    },
+    "32129021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "công nghiệp thực phẩm",
+            "đồ uống"
+          ]
+        }
+      ]
+    },
+    "32129022": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc nhuộm khác"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {
+    "3212901": {
+      "dieuKienSo": []
+    },
+    "3212902": {
+      "dieuKienSo": [
+        {
+          "fact": "dongGoiBanLe",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": false
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "3212901",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "moiTruongVaDangPhanTan",
+      "ghiChu": "tieuDe.3212901 \"Thuốc màu (kể cả bột và vẩy kim loại) được phân tán trong môi trường không có nước, dạng lỏng hoặc dạng nhão, dùng để sản xuất sơn (kể cả men tráng)\" (EN \"Pigments (including metallic powders and flakes) dispersed in non-aqueous media, in liquid or paste form, of a kind used in the manufacture of paints (including enamels):\") — vế GIỚI HẠN \"được phân tán trong môi trường không có nước, dạng lỏng hoặc dạng nhão\" cần khoá môi trường phân tán (không có nước) và dạng (lỏng/nhão); tu-vung@2 chưa có khoá này ⇒ để trống dieuKienSo. Vế \"dùng để sản xuất sơn (kể cả men tráng)\" lẽ ra ghi congDung \"sản xuất sơn\" nhưng mục này đã để trống theo luật thiếu khoá."
+    },
+    {
+      "ma": "3212902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3212902 \"Thuốc nhuộm và chất màu khác đã làm thành dạng nhất định hoặc đóng gói để bán lẻ\" (EN \"Dyes and other colouring matter put up in forms or packings for retail sale:\") ⇒ dongGoiBanLe CO: chữ Anh gắn \"for retail sale\" cho CẢ hai vế (\"in forms or packings for retail sale\") nên đóng gói bán lẻ là điều kiện của cả tầng. KHÔNG khai phanConLai: chữ \"khác\" trong \"chất màu khác\" (EN \"other colouring matter\") là bổ nghĩa của \"chất màu\", KHÔNG phải \"phần còn lại\" của phân nhóm — 3212901 và 3212902 chia theo TIÊU CHÍ khác nhau (công dụng: thuốc màu để sản xuất sơn ↔ đóng gói bán lẻ), không phải phần trước/sau."
+    },
+    {
+      "ma": "32129011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32129011 \"Bột nhão nhôm\" (EN \"Aluminium paste\") ⇒ tenLoai TEN_LOAI \"Bột nhão\" + chatLieu LA \"nhôm\" (vật liệu của bột nhão)."
+    },
+    {
+      "ma": "32129013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32129013 \"Loại chì trắng phân tán trong dầu\" (EN \"White lead dispersed in oil\") ⇒ tenLoai TEN_LOAI \"chì trắng\": vế GIỚI HẠN \"chì trắng phân tán trong dầu\" được phủ bởi tên \"chì trắng\"; \"phân tán trong dầu\" là dạng của sản phẩm, chatLieu không có \"dầu\" (không mượn khoá gần nghĩa)."
+    },
+    {
+      "ma": "32129014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32129014 \"Loại khác, để sản xuất sơn cho da thuộc\" (EN \"Other, for the manufacture of leather paint\") ⇒ congDung CONG_DUNG \"sản xuất sơn cho da thuộc\"; dòng \"Loại khác, <vế>\" chỉ ghi điều kiện của vế, KHÔNG khai phanConLai (vì .19 \"Loại khác\" trần đứng sau)."
+    },
+    {
+      "ma": "32129021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32129021 \"Loại sử dụng trong công nghiệp thực phẩm hoặc đồ uống\" (EN \"Of a kind used in the food or drink industries\") ⇒ dungCho CONG_DUNG [\"công nghiệp thực phẩm\",\"đồ uống\"] (hai ngành thay thế nhau nối bằng \"hoặc\" ⇒ mảng)."
+    },
+    {
+      "ma": "32129022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32129022 \"Thuốc nhuộm khác\" (EN \"Other dyes\") ⇒ tenLoai TEN_LOAI \"Thuốc nhuộm khác\" + phanConLai true (phần còn lại có tên — phủ định anh em đứng trước, .21)."
+    }
+  ]
+}
