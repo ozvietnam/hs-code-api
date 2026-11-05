@@ -1,0 +1,61 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "150990",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-150990",
+  "dong8": {
+    "15099011": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 30,
+          "donVi": "kg"
+        }
+      ]
+    },
+    "15099091": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 30,
+          "donVi": "kg"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1509901": {
+      "dieuKienSo": [
+        {
+          "fact": "laPhanDoan",
+          "op": "CO"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "1509901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1509901 \"Các phần phân đoạn của dầu chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"
+    },
+    {
+      "ma": "15099011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15099011 \"Đóng gói với khối lượng tịnh không quá 30 kg\" ⇒ khoiLuong <= 30 kg"
+    },
+    {
+      "ma": "15099091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15099091 \"Đóng gói với khối lượng tịnh không quá 30 kg\" ⇒ khoiLuong <= 30 kg"
+    }
+  ]
+}

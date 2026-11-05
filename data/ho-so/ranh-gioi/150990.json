@@ -1,0 +1,96 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "150990",
+  "nhom": "1509",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-150990",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "1509901",
+      "nguon": "tieuDe.1509901",
+      "trich": "1509901 Các phần phân đoạn của dầu chưa tinh chế",
+      "dieuKienSo": [
+        {
+          "fact": "laPhanDoan",
+          "op": "CO"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "15099011",
+      "nguon": "tax.15099011",
+      "trich": "15099011 - - - Đóng gói với khối lượng tịnh không quá 30 kg",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 30,
+          "donVi": "kg"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15099019",
+      "nguon": "tax.15099019",
+      "trich": "15099019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15099091",
+      "nguon": "tax.15099091",
+      "trich": "15099091 - - - Đóng gói với khối lượng tịnh không quá 30 kg",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 30,
+          "donVi": "kg"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15099099",
+      "nguon": "tax.15099099",
+      "trich": "15099099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "1509901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1509901 \"Các phần phân đoạn của dầu chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"
+    },
+    {
+      "ma": "15099011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15099011 \"Đóng gói với khối lượng tịnh không quá 30 kg\" ⇒ khoiLuong <= 30 kg"
+    },
+    {
+      "ma": "15099091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15099091 \"Đóng gói với khối lượng tịnh không quá 30 kg\" ⇒ khoiLuong <= 30 kg"
+    }
+  ]
+}
