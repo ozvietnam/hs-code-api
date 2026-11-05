@@ -1,0 +1,75 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "330190",
+  "nhom": "3301",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1545#soan-330190",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "33019010",
+      "nguon": "tax.33019010",
+      "trich": "33019010 - - Nước cất và dung dịch nước của các loại tinh dầu phù hợp dùng để làm thuốc ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Nước cất",
+            "dung dịch nước"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "các loại tinh dầu"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm thuốc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "33019020",
+      "nguon": "tax.33019020",
+      "trich": "33019020 - - Nhựa dầu đã chiết",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhựa dầu đã chiết"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "33019090",
+      "nguon": "tax.33019090",
+      "trich": "33019090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "33019010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33019010 \"Nước cất và dung dịch nước của các loại tinh dầu phù hợp dùng để làm thuốc\" (EN \"Aqueous distillates and aqueous solutions of essential oils suitable for medicinal use\"): HAI danh từ đầu liên hợp nối \"và\" (\"Nước cất\" + \"dung dịch nước\") chung định ngữ \"của các loại tinh dầu\" ⇒ tenLoai [\"Nước cất\",\"dung dịch nước\"] (mảng = hoặc, chuỗi con nguyên văn) + MỘT điều kiện tenLoai RIÊNG \"các loại tinh dầu\" áp cho cả hai — đúng mẫu 392620 .20 (\"Miếng đệm và miếng bảo vệ vai\" ⇒ tenLoai [\"Miếng đệm\",\"miếng bảo vệ\"] + tenLoai \"vai\"); không gói một chuỗi có \"và\" (cổng 3 báo cong3-liet-ke-trong-mot-chuoi: chữ Anh nối hai danh từ đầu bằng \"and\", vế trước số nhiều \"Aqueous distillates\"). Vế giới hạn \"phù hợp dùng để làm thuốc\" ⇒ congDung \"làm thuốc\" (công dụng/mục đích; KHÔNG dùng dungCho — lúc chạy dungCho đọc chữ sau \"dùng cho\", mà dòng này nói \"dùng để\")."
+    },
+    {
+      "ma": "33019020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33019020 \"Nhựa dầu đã chiết\" — chữ biểu chỉ có danh từ đầu, không có vế giới hạn nào ⇒ tenLoai \"Nhựa dầu đã chiết\" (chuỗi con nguyên văn). Dòng 33019090 \"Loại khác\" trần ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    }
+  ]
+}

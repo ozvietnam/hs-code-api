@@ -1,0 +1,67 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "040140",
+  "nhom": "0401",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1605#soan-040140",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "04014010",
+      "nguon": "tax.04014010",
+      "trich": "04014010 - - Sữa dạng lỏng",
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "04014020",
+      "nguon": "tax.04014020",
+      "trich": "04014020 - - Sữa dạng đông lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "KHONG"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "04014090",
+      "nguon": "tax.04014090",
+      "trich": "04014090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "04014010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04014010 \"Sữa dạng lỏng\" ⇒ dangLong CO (cách đọc của giá trị CO gồm \"dạng lỏng\")"
+    },
+    {
+      "ma": "04014020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04014020 \"Sữa dạng đông lạnh\" ⇒ dangLong KHONG (cách đọc giá trị KHONG gồm \"đông lạnh\") VÀ phuongPhapBaoQuan TRONG [DONG_LANH] (đọc \"đông lạnh\") — giữ dangLong cùng khoá anh em .10, thêm khoá định danh \"đông lạnh\" để dòng 04014090 \"Loại khác\" còn tới được (chỉ CO/KHONG phủ kín hết tầng)"
+    }
+  ]
+}

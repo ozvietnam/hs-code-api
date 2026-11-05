@@ -1,0 +1,46 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "300460",
+  "phien": "mm:minimax-m3:20261105T0845#soan-300460",
+  "dong8": {
+    "30046010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "artemisinin"
+        }
+      ],
+      "phanConLai": false
+    },
+    "30046020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "artesunate",
+            "chloroquine"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "30046010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30046010 \"Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác\" — đặt tên hoạt chất \"artemisinin\" (vế \"kết hợp với các thành phần có hoạt tính dược khác\" không có khoá tu-vung@2) ⇒ điều kiện hẹp hơn chữ một bước. Chữ \"khác\" ở đây nằm trong \"các thành phần ... khác\" (thành phần khác), KHÔNG phải phần còn lại của dòng ⇒ không khai phanConLai. Khai \"phanConLai\": false — chữ \"khác\" ở đây thuộc vế \"các thành phần ... khác\" (thành phần dược khác), không trỏ anh em đứng trước, nên dòng không phải phần còn lại."
+    },
+    {
+      "ma": "30046020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30046020 \"Chứa artesunate hoặc chloroquine\" — 2 hoạt chất nối \"hoặc\" ⇒ tenLoai MẢNG 2 giá trị nguyên văn."
+    },
+    {
+      "ma": "30046090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30046090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

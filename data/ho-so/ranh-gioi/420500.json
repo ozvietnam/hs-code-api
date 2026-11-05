@@ -1,0 +1,151 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "420500",
+  "nhom": "4205",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1024#soan-420500",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "42050010",
+      "nguon": "tax.42050010",
+      "trich": "42050010 - Dây buộc giày; tấm lót (mats)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dây buộc giày",
+            "tấm lót (mats)"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "42050020",
+      "nguon": "tax.42050020",
+      "trich": "42050020 - Dây đai an toàn và dây bảo vệ dùng trong công nghiệp",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Dây đai an toàn"
+              },
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "CONG_NGHIEP"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dây bảo vệ"
+              },
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "CONG_NGHIEP"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "42050030",
+      "nguon": "tax.42050030",
+      "trich": "42050030 - Dây hoặc dây tết bằng da thuộc dùng cho đồ trang sức hoặc sản phẩm trang điểm cá nhân",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dây tết bằng da thuộc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đồ trang sức",
+            "sản phẩm trang điểm cá nhân"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "42050040",
+      "nguon": "tax.42050040",
+      "trich": "42050040 - Sản phẩm khác dùng cho máy móc hoặc thiết bị cơ khí hoặc mục đích kỹ thuật khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sản phẩm khác"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy móc",
+            "thiết bị cơ khí"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "mục đích kỹ thuật khác"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "42050090",
+      "nguon": "tax.42050090",
+      "trich": "42050090 - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "42050020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.42050020 \"Dây đai an toàn và dây bảo vệ dùng trong công nghiệp\" ⇒ tenLoai mảng [\"Dây đai an toàn\", \"dây bảo vệ\"] + phamViSuDung CONG_NGHIEP (vế giới hạn \"dùng trong công nghiệp\" — khoá liệt kê có sẵn, đúng nghĩa)."
+    },
+    {
+      "ma": "42050030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.42050030 \"Dây hoặc dây tết bằng da thuộc dùng cho đồ trang sức hoặc sản phẩm trang điểm cá nhân\" ⇒ vế giới hạn \"bằng da thuộc\" + \"dùng cho đồ trang sức hoặc sản phẩm trang điểm cá nhân\". Từ vựng KHÔNG có khoá vật liệu \"da thuộc\" (chatLieu không có) ⇒ neo vế \"bằng da thuộc\" bằng tenLoai đúng chữ \"dây tết bằng da thuộc\"; dungCho mảng [\"đồ trang sức\", \"sản phẩm trang điểm cá nhân\"] (hai đích nối \"hoặc\" tách thành mảng). Chữ biểu có nhánh \"Dây\" (dây thường bằng da thuộc) đứng trước \"hoặc\": không có cụm chuyên biệt riêng để neo, nên điều kiện neo theo nhánh \"dây tết bằng da thuộc\" — phạm vi hẹp hơn nhánh \"Dây\"."
+    },
+    {
+      "ma": "42050040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.42050040 \"Sản phẩm khác dùng cho máy móc hoặc thiết bị cơ khí hoặc mục đích kỹ thuật khác\" ⇒ tenLoai \"Sản phẩm khác\" + dungCho mảng [\"máy móc\", \"thiết bị cơ khí\"] + congDung \"mục đích kỹ thuật khác\". Đặt phanConLai: false — .90 mới là \"Loại khác\" trần (phần còn lại không tên); \"Sản phẩm khác\" ở .40 là tên dòng CÓ điều kiện (dùng cho máy móc/thiết bị cơ khí/mục đích kỹ thuật khác), không phải phần còn lại."
+    },
+    {
+      "ma": "42050010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.42050010 \"Dây buộc giày; tấm lót (mats)\" ⇒ tenLoai mảng [\"Dây buộc giày\", \"tấm lót (mats)\"] (dấu \";\" trong chữ biểu — cổng 3 chặn giá trị chứa \";\" nên tách thành mảng). .90 \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}

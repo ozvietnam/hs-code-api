@@ -1,0 +1,42 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "030199",
+  "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030199",
+  "dong8": {
+    "03019911": { "dieuKienSo": [ { "fact": "dungLamGiong", "op": "CO" } ] },
+    "03019922": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá chép" }, { "fact": "dungLamGiong", "op": "CO" } ], "phanConLai": false },
+    "03019923": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá chép" } ], "phanConLai": ["03019922"] },
+    "03019924": { "dieuKienSo": [ { "fact": "dungLamGiong", "op": "CO" } ] },
+    "03019931": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "cá măng biển" }, { "fact": "dungLamGiong", "op": "CO" } ] },
+    "03019932": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "cá măng biển" } ], "phanConLai": ["03019931"] },
+    "03019933": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá mú chấm nhỏ" } ] },
+    "03019934": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Cá mú hoa nâu", "cá mú cọp"] } ] },
+    "03019935": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá mú dẹt" } ] },
+    "03019936": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá mú" } ], "phanConLai": false },
+    "03019941": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá rô phi" } ] },
+    "03019942": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá chép" }, { "fact": "dungLamGiong", "op": "CO" } ], "phanConLai": false },
+    "03019950": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá biển" } ], "phanConLai": false }
+  },
+  "dieuKienNut": {
+    "0301991": { "dieuKienSo": [ { "fact": "caBot", "op": "CO" }, { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["cá măng biển", "cá mú"] } ] },
+    "0301992": { "dieuKienSo": [ { "fact": "caBot", "op": "CO" } ], "phanConLai": ["0301991"] },
+    "0301993": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["cá măng biển", "cá mú"] }, { "fact": "caBot", "op": "KHONG" } ] },
+    "0301994": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá nước ngọt" } ], "phanConLai": true }
+  },
+  "ghiChuSoan": [
+    { "ma": "0301991", "loai": "QUYET_DINH", "ghiChu": "tieuDe.0301991 \"Cá bột của cá măng biển và của cá mú\" ⇒ caBot CO + tenLoai [\"cá măng biển\",\"cá mú\"] — vế \"của cá măng biển và của cá mú\" phủ bằng tên loài (cùng khoá với tầng 0301993)." },
+    { "ma": "0301992", "loai": "QUYET_DINH", "ghiChu": "tieuDe.0301992 \"Cá bột loại khác\" ⇒ caBot CO + phanConLai [\"0301991\"] — \"loại khác\" chỉ phủ tầng cá bột của cá măng biển/cá mú." },
+    { "ma": "0301993", "loai": "QUYET_DINH", "ghiChu": "tieuDe.0301993 \"Cá măng biển và cá mú, trừ cá bột\" ⇒ tenLoai [\"cá măng biển\",\"cá mú\"] + caBot KHONG (đọc KHÔNG của caBot gồm \"trừ cá bột\")." },
+    { "ma": "0301994", "loai": "QUYET_DINH", "ghiChu": "tieuDe.0301994 \"Cá nước ngọt khác\" ⇒ tenLoai \"Cá nước ngọt\" + phanConLai: true — phủ các tầng anh em đứng trước (cá bột 2 tầng, cá măng biển/cá mú)." },
+    { "ma": "03019911", "loai": "QUYET_DINH", "ghiChu": "tax.03019911 \"Để nhân giống (SEN)\" ⇒ dungLamGiong CO; tên loài do tầng 0301991 đảm nhiệm." },
+    { "ma": "03019922", "loai": "QUYET_DINH", "ghiChu": "tax.03019922 \"Cá chép khác, để nhân giống (SEN)\" ⇒ tenLoai \"Cá chép\" + dungLamGiong CO; \"khác\" = cá chép không chi tiết tại 0301.93 (sen.03019922), không phải phần còn lại trong tầng ⇒ phanConLai: false." },
+    { "ma": "03019923", "loai": "QUYET_DINH", "ghiChu": "tax.03019923 \"Cá chép loại khác (SEN)\" ⇒ tenLoai \"Cá chép\" + phanConLai [\"03019922\"] — phần còn lại có tên của cặp cá chép." },
+    { "ma": "03019924", "loai": "QUYET_DINH", "ghiChu": "tax.03019924 \"Loại khác, để nhân giống\" ⇒ chỉ điều kiện của vế: dungLamGiong CO (máy tự phủ định anh em có tên)." },
+    { "ma": "03019931", "loai": "QUYET_DINH", "ghiChu": "tax.03019931 \"Cá măng biển để nhân giống (SEN)\" ⇒ tenLoai \"cá măng biển\" + dungLamGiong CO." },
+    { "ma": "03019932", "loai": "QUYET_DINH", "ghiChu": "tax.03019932 \"Cá măng biển, loại khác (SEN)\" ⇒ tenLoai \"cá măng biển\" + phanConLai [\"03019931\"]." },
+    { "ma": "03019934", "loai": "QUYET_DINH", "ghiChu": "tax.03019934 \"Cá mú hoa nâu/cá mú cọp (Epinephelus fuscoguttatus) (SEN)\" ⇒ tenLoai [\"Cá mú hoa nâu\",\"cá mú cọp\"] — dấu \"/\" là hai tên của cùng loài ⇒ mảng (hoặc)." },
+    { "ma": "03019936", "loai": "QUYET_DINH", "ghiChu": "tax.03019936 \"Cá mú loại khác\" ⇒ tenLoai \"Cá mú\", phanConLai: false — tên \"Cá mú\" bị chứa trong tên loài cụ thể của ba anh em (\"Cá mú chấm nhỏ\"…), máy xử bằng luật tên cụ thể hơn thắng (cong2-ten-cu-the-hon, như 845290 \"bàn đạp\" ⊃ \"Bàn\"); khai phanConLai làm dòng không tới được (cong2-dong-khong-toi-duoc)." },
+    { "ma": "03019942", "loai": "QUYET_DINH", "ghiChu": "tax.03019942 \"Cá chép khác, để nhân giống (SEN)\" ⇒ tenLoai \"Cá chép\" + dungLamGiong CO; \"khác\" như 03019922 ⇒ phanConLai: false." },
+    { "ma": "03019950", "loai": "QUYET_DINH", "ghiChu": "tax.03019950 \"Cá biển khác\" ⇒ tenLoai \"Cá biển\", phanConLai: false — \"khác\" phủ các tầng anh em (cá bột, cá măng biển/cá mú, cá nước ngọt) nhưng âm tiết \"biển\" nằm trong \"cá măng biển\" nên khai phanConLai làm dòng không tới được; chồng với cá măng biển do bộ so chữ máy xử bằng tên cụ thể hơn thắng (cá măng biển cụ thể hơn cá biển)." }
+  ]
+}

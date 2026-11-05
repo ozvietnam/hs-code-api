@@ -1,0 +1,117 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "140120",
+  "nhom": "1401",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1529#soan-140120",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "1401202",
+      "nguon": "tieuDe.1401202",
+      "trich": "1401202 Lõi cây đã tách",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lõi cây đã tách"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "14012010",
+      "nguon": "tax.14012010",
+      "trich": "14012010 - - Nguyên cây",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nguyên cây"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "14012021",
+      "nguon": "tax.14012021",
+      "trich": "14012021 - - - Đường kính không quá 12 mm (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 12,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "14012029",
+      "nguon": "tax.14012029",
+      "trich": "14012029 - - - Loại khác (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "14012030",
+      "nguon": "tax.14012030",
+      "trich": "14012030 - - Vỏ (cật) đã tách (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vỏ (cật) đã tách"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "14012090",
+      "nguon": "tax.14012090",
+      "trich": "14012090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "14012010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012010 \"Nguyên cây\" ⇒ tenLoai \"Nguyên cây\" (tên hàng nguyên văn)."
+    },
+    {
+      "ma": "1401202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1401202 \"Lõi cây đã tách\" (EN \"Split-core\") ⇒ tenLoai \"Lõi cây đã tách\" (tên hàng nguyên văn, gộp cả trạng thái \"đã tách\" — dòng con .21 chia theo đường kính, .29 là \"Loại khác\", nên không cần tách thêm điều kiện cùng khoá)."
+    },
+    {
+      "ma": "14012021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012021 \"Đường kính không quá 12 mm (SEN)\" (EN \"Not exceeding 12 mm in diameter\") ⇒ duongKinh <= 12 mm (\"không quá\" = <=; chữ biểu ghi \"Đường kính\" chung nên dùng khoá duongKinh, không suy diễn thành đường kính trong/lõi)."
+    },
+    {
+      "ma": "14012029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012029 \"Loại khác (SEN)\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    },
+    {
+      "ma": "14012030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012030 \"Vỏ (cật) đã tách (SEN)\" (EN \"Split-skin\") ⇒ tenLoai \"Vỏ (cật) đã tách\" (tên hàng nguyên văn; ngoặc \"(cật)\" là tên gọi khác của \"vỏ\" nên giữ trong chuỗi, không tách thành điều kiện riêng)."
+    },
+    {
+      "ma": "14012090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    }
+  ]
+}

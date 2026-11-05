@@ -1,0 +1,45 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "401212",
+  "nhom": "4012",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1705#soan-401212",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "40121210",
+      "nguon": "tax.40121210",
+      "trich": "40121210 - - - Chiều rộng không quá 450 mm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40121290",
+      "nguon": "tax.40121290",
+      "trich": "40121290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "40121210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40121210 \"Chiều rộng không quá 450 mm\" ⇒ chieuRong <= 450 mm (\"không quá\" = <=). Dòng .90 \"Loại khác\" trần ⇒ không điều kiện."
+    }
+  ]
+}

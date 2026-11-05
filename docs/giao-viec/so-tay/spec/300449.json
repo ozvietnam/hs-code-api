@@ -1,0 +1,147 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "300449",
+  "phien": "mm:minimax-m3:20261105T0845#soan-300449",
+  "dong8": {
+    "30044911": {
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ]
+    },
+    "30044951": {
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ]
+    },
+    "30044960": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "theophylline"
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ]
+    },
+    "30044970": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "atropine sulphate"
+        }
+      ]
+    },
+    "30044980": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "quinine hydrochloride",
+                  "dihydroquinine chloride"
+                ]
+              },
+              {
+                "fact": "dangBaoCheThuoc",
+                "op": "TRONG",
+                "value": [
+                  "DANG_TIEM"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "quinine sulphate",
+                  "bisulphate"
+                ]
+              },
+              {
+                "fact": "dangBaoCheThuoc",
+                "op": "TRONG",
+                "value": [
+                  "DANG_UONG"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "3004491": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "morphine"
+        }
+      ]
+    },
+    "3004495": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "papaverine",
+            "berberine"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "3004491",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3004491 \"Chứa morphine hoặc các dẫn xuất của nó\" — đặt tên hoạt chất \"morphine\"; vế dẫn xuất không có khoá."
+    },
+    {
+      "ma": "30044911",
+      "loai": "DUNG",
+      "ghiChu": "tax.30044911 \"Dạng uống (*) hoặc tiêm\" (EN \"Of a kind taken orally or for injection\") — DÙNG: vế thứ hai \"hoặc tiêm\" là đường dùng DANG_TIEM, nhưng cachDoc của DANG_TIEM chỉ đọc \"dạng tiêm|dùng để tiêm|thuốc tiêm\" (chữ biểu chỉ có \"tiêm\") ⇒ cổng 3 chặn giá trị DANG_TIEM (cong3-muc … dieu-kien-so-trong-khong-co-trong-trich). Chỉ ghi DANG_UONG ⇒ điều kiện HẸP hơn chữ (morphine dạng tiêm sẽ rơi sang 30044919 \"Loại khác\"). Cần nới cachDoc DANG_TIEM (tu-vung@2 — việc của Claude) rồi bổ sung DANG_TIEM."
+    },
+    {
+      "ma": "3004495",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3004495 \"Chứa papaverine hoặc berberine\" — 2 hoạt chất nối \"hoặc\" ⇒ tenLoai MẢNG 2 giá trị."
+    },
+    {
+      "ma": "30044980",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30044980 \"Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)\" — hai nhánh nối dấu chấm phẩy, mỗi nhánh có hoạt chất riêng + đường dùng riêng ⇒ HOAC 2 phương án (không gộp ngưỡng của một nhánh cho cả dòng). Vế \"bisulphate\" chép nguyên văn (chữ biểu ghi tắt)."
+    },
+    {
+      "ma": "30044990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30044990 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

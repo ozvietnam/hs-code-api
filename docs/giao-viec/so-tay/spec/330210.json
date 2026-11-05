@@ -1,0 +1,72 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "330210",
+  "phien": "mm:minimax-m3:20261105T1545#soan-330210",
+  "dong8": {
+    "33021010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm rượu thơm"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất đồ uống có cồn"
+        },
+        {
+          "fact": "dangLong",
+          "op": "CO",
+          "value": true
+        }
+      ]
+    },
+    "33021020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm rượu thơm"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất đồ uống có cồn"
+        }
+      ],
+      "phanConLai": true
+    },
+    "33021030": {
+      "dieuKienSo": [
+        {
+          "fact": "daPhaThemDuongHoacRuou",
+          "op": "KHONG",
+          "value": true
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "33021010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33021010 \"Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng lỏng\" (EN \"Odoriferous alcoholic preparations of a kind used in the manufacture of alcoholic beverages, in liquid form\"): tên hàng ⇒ tenLoai \"Chế phẩm rượu thơm\"; công dụng ⇒ congDung \"sản xuất đồ uống có cồn\" (KHÔNG dùng dungCho — lúc chạy congDung đọc chữ sau \"dùng để\", còn dungCho đọc sau \"dùng cho\", mà dòng này nói \"loại dùng để sản xuất\"); dạng ⇒ dangLong CO (\"ở dạng lỏng\", cachDoc.vi có \"dạng lỏng\")."
+    },
+    {
+      "ma": "33021020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33021020 \"Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng khác\" (EN \"…, in other forms\"): cùng tên + cùng công dụng với anh em .10 (CÙNG khoá tenLoai/congDung — không đổi khoá để né cảnh báo). Vế \"ở dạng khác\" = phần còn lại của anh em .10 trong cặp {.10 ở dạng lỏng, .20 ở dạng khác} ⇒ \"phanConLai\": true (phủ định điều kiện anh em đứng trước .10). KHÔNG dùng dangLong op KHONG: chữ biểu ghi \"ở dạng khác\" chứ không ghi \"dạng bột/dạng rắn/đông lạnh/dạng hạt/solid/powder/frozen/granules\" — cachDocKhong của dangLong không đọc được từ chữ này (cổng 3 chặn dieu-kien-so-khong-khong-co-trong-trich). \"ở dạng khác\" ở đây KHÔNG phải \"các loại khác\" của cả phân nhóm (đó là .30 và .90, vốn là dòng \"Loại khác\" do máy tự phủ định anh em), nên phanConLai chỉ chạm .10."
+    },
+    {
+      "ma": "33021030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33021030 \"Loại khác, không chứa cồn\" (EN \"Other, not containing alcohol\"): dòng \"Loại khác, <vế>\" ⇒ chỉ ghi điều kiện của vế \"không chứa cồn\" (máy tự phủ định anh em .10/.20/.90; KHÔNG ghi phanConLai — dòng \"Loại khác\" vốn đã phủ định anh em). Khoá dùng: daPhaThemDuongHoacRuou op KHONG — đây là khoá DUY NHẤT trong tu-vung@2 có mẫu đọc \"không chứa cồn\" (cachDocKhong.vi), nên đọc đúng chữ biểu; không bịa khoá mới."
+    },
+    {
+      "ma": "33021090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33021090 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định mọi anh em)."
+    }
+  ]
+}

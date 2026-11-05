@@ -1,0 +1,143 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "401220",
+  "phien": "mm:minimax-m3:20261105T1705#soan-401220",
+  "dong8": {
+    "40122010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô con (motor car)"
+        }
+      ]
+    },
+    "40122021": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40122030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện bay"
+        }
+      ]
+    },
+    "40122040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe môtô"
+        }
+      ]
+    },
+    "40122050": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe đạp"
+        }
+      ]
+    },
+    "40122060": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.29 hoặc 84.30"
+        }
+      ]
+    },
+    "40122071": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy kéo"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "nông nghiệp",
+            "lâm nghiệp"
+          ]
+        }
+      ]
+    },
+    "40122080": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.27"
+        }
+      ]
+    },
+    "40122091": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp trơn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4012202": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ô tô khách (buses)",
+            "ô tô chở hàng (lorries)"
+          ]
+        }
+      ]
+    },
+    "4012207": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các xe khác thuộc Chương 87"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "40122010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40122010 \"Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" ⇒ dungCho \"ô tô con (motor car)\" phủ vế [GIỚI HẠN] \"sử dụng cho ô tô con (motor car) …\". Vế \"kể cả …\" là ngoặc chú thích mở rộng, không thành điều kiện."
+    },
+    {
+      "ma": "4012202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4012202 \"Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)\" ⇒ dungCho [\"ô tô khách (buses)\",\"ô tô chở hàng (lorries)\"] (mảng = hoặc); dấu \"(1)\" là chú thích chân trang, không thành điều kiện."
+    },
+    {
+      "ma": "4012207",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4012207 \"Loại dùng cho các xe khác thuộc Chương 87\" ⇒ dungCho \"các xe khác thuộc Chương 87\" + phanConLai: true (chữ \"các xe khác\" = phần còn lại của các xe Chương 87, phủ định các anh em .10, .2, .30, .40, .50, .60 đứng trước; .79 \"Loại khác\" trần phủ định .71)."
+    },
+    {
+      "ma": "40122091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40122091 \"Lốp trơn (SEN)\" ⇒ tenLoai \"Lốp trơn\"; cụm \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật, không phải điều kiện."
+    }
+  ]
+}

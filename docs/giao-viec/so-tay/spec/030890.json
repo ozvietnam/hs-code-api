@@ -1,0 +1,20 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "030890",
+  "phien": "zcode-sub:glm-5.3:20261105T1605#soan-030890",
+  "dong8": {
+    "03089010": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Sống" } ] },
+    "03089020": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Tươi", "ướp lạnh"] } ] },
+    "03089030": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đông lạnh" } ] },
+    "03089040": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Khô", "muối", "ngâm nước muối"] } ] },
+    "03089050": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Hun khói" } ] }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "03089010", "loai": "QUYET_DINH", "ghiChu": "tax.03089010 \"Sống\" ⇒ tenLoai \"Sống\" nguyên văn (không dùng phuongPhapBaoQuan, lý do như 030711)" },
+    { "ma": "03089020", "loai": "QUYET_DINH", "ghiChu": "tax.03089020 \"Tươi hoặc ướp lạnh\" ⇒ tenLoai [\"Tươi\",\"ướp lạnh\"] — mảng = hoặc (LUAT-CHUNG bảng 1)" },
+    { "ma": "03089030", "loai": "QUYET_DINH", "ghiChu": "tax.03089030 \"Đông lạnh\" ⇒ tenLoai \"Đông lạnh\" nguyên văn" },
+    { "ma": "03089040", "loai": "QUYET_DINH", "ghiChu": "tax.03089040 \"Khô, muối hoặc ngâm nước muối\" ⇒ tenLoai [\"Khô\",\"muối\",\"ngâm nước muối\"] như 030719" },
+    { "ma": "03089050", "loai": "QUYET_DINH", "ghiChu": "tax.03089050 \"Hun khói\" ⇒ tenLoai \"Hun khói\" nguyên văn" }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "040210",
+  "nhom": "0402",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1534#soan-040210",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "0402104",
+      "nguon": "tieuDe.0402104",
+      "trich": "0402104 Chưa pha thêm đường hoặc chất tạo ngọt khác",
+      "dieuKienSo": [
+        {
+          "fact": "daPhaThemDuongHoacRuou",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "04021041",
+      "nguon": "tax.04021041",
+      "trich": "04021041 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 20,
+          "donVi": "kg"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "04021042",
+      "nguon": "tax.04021042",
+      "trich": "04021042 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 2,
+          "donVi": "kg"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "04021049",
+      "nguon": "tax.04021049",
+      "trich": "04021049 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "04021091",
+      "nguon": "tax.04021091",
+      "trich": "04021091 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 20,
+          "donVi": "kg"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "04021092",
+      "nguon": "tax.04021092",
+      "trich": "04021092 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 2,
+          "donVi": "kg"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "04021099",
+      "nguon": "tax.04021099",
+      "trich": "04021099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "0402104",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0402104 \"Chưa pha thêm đường hoặc chất tạo ngọt khác\" — chữ \"khác\" thuộc cụm \"chất tạo ngọt khác\" (chất tạo ngọt khác = other sweetening matter), không phải phần còn lại ⇒ phanConLai: false"
+    },
+    {
+      "ma": "04021049",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04021049 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "04021099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04021099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "04021041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay (cong3-bien-khong-doc-duoc): tax.04021041 \"với khối lượng tịnh từ 20 kg trở lên\" ⇒ khoiLuong >= 20 kg — \"từ … trở lên\" = >=, đúng chữ"
+    },
+    {
+      "ma": "04021042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay (cong3-bien-khong-doc-duoc): tax.04021042 \"với khối lượng tịnh từ 2 kg trở xuống\" ⇒ khoiLuong <= 2 kg — \"từ … trở xuống\" = <=, đúng chữ"
+    },
+    {
+      "ma": "04021091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay (cong3-bien-khong-doc-duoc): tax.04021091 \"với khối lượng tịnh từ 20 kg trở lên\" ⇒ khoiLuong >= 20 kg — \"từ … trở lên\" = >=, đúng chữ"
+    },
+    {
+      "ma": "04021092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay (cong3-bien-khong-doc-duoc): tax.04021092 \"với khối lượng tịnh từ 2 kg trở xuống\" ⇒ khoiLuong <= 2 kg — \"từ … trở xuống\" = <=, đúng chữ"
+    }
+  ]
+}

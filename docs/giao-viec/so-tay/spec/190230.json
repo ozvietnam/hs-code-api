@@ -1,0 +1,27 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "190230",
+  "phien": "zcode-sub:glm-5.3:20261105T0942#soan-190230",
+  "dong8": {
+    "19023020": {
+      "dieuKienSo": [
+        { "fact": "loaiMiBunMien", "op": "TRONG", "value": ["BUN_MI_GAO"] }
+      ]
+    },
+    "19023030": {
+      "dieuKienSo": [
+        { "fact": "loaiMiBunMien", "op": "TRONG", "value": ["MIEN"] }
+      ]
+    },
+    "19023040": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Mì ăn liền" }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "19023020", "loai": "QUYET_DINH", "ghiChu": "tax.19023020 \"Mì, bún làm từ gạo (kể cả bee hoon)\": giá trị BUN_MI_GAO của loaiMiBunMien đọc đúng nguyên văn; \"(kể cả bee hoon)\" là kể cả ⇒ PHU" },
+    { "ma": "19023040", "loai": "QUYET_DINH", "ghiChu": "tax.19023040 \"Mì ăn liền khác\": phần còn lại có tên — mì ăn liền không thuộc .20 (làm từ gạo) và .30 (miến) ⇒ tenLoai \"Mì ăn liền\" + phanConLai true" }
+  ]
+}

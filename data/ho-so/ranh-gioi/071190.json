@@ -1,0 +1,154 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "071190",
+  "nhom": "0711",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1529#soan-071190",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "07119010",
+      "nguon": "tax.07119010",
+      "trich": "07119010 - - Ngô ngọt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ngô ngọt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "07119020",
+      "nguon": "tax.07119020",
+      "trich": "07119020 - - Quả ớt (chillies) (quả thuộc chi Capsicum)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả ớt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "07119030",
+      "nguon": "tax.07119030",
+      "trich": "07119030 - - Nụ bạch hoa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nụ bạch hoa"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "07119040",
+      "nguon": "tax.07119040",
+      "trich": "07119040 - - Hành tây, đã được bảo quản bằng khí sunphurơ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hành tây"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "BAO_QUAN_BANG_KHI_SUNPHURO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "07119050",
+      "nguon": "tax.07119050",
+      "trich": "07119050 - - Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hành tây"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "07119060",
+      "nguon": "tax.07119060",
+      "trich": "07119060 - - Loại khác, đã được bảo quản bằng khí sunphurơ",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "BAO_QUAN_BANG_KHI_SUNPHURO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "07119090",
+      "nguon": "tax.07119090",
+      "trich": "07119090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "07119010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07119010 \"Ngô ngọt\" ⇒ tenLoai \"Ngô ngọt\"."
+    },
+    {
+      "ma": "07119020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07119020 \"Quả ớt (chillies) (quả thuộc chi Capsicum)\" ⇒ tenLoai \"Quả ớt\"; ngoặc là tên tiếng Anh/chi khoa học, không thành điều kiện."
+    },
+    {
+      "ma": "07119030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07119030 \"Nụ bạch hoa\" ⇒ tenLoai \"Nụ bạch hoa\"."
+    },
+    {
+      "ma": "07119040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07119040 \"Hành tây, đã được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" + phuongPhapBaoQuan TRONG [BAO_QUAN_BANG_KHI_SUNPHURO] (mẫu cachDoc khớp nguyên cụm \"bảo quản bằng khí sunphurơ\")."
+    },
+    {
+      "ma": "07119050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07119050 \"Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" (phần dương); vế loại trừ không biểu diễn được — xem THIEU_KHOA_TU_VUNG."
+    },
+    {
+      "ma": "07119050",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "phuongPhapBaoQuan (thiếu op phủ định cho LIET_KE, vd KHONG_TRONG [BAO_QUAN_BANG_KHI_SUNPHURO])",
+      "ghiChu": "tax.07119050 \"… trừ loại được bảo quản bằng khí sunphurơ\": tu-vung@2 chỉ có op TRONG cho LIET_KE, không ghi được \"phương pháp bảo quản KHÔNG PHẢI khí sunphurơ\"; phanConLai bị chặn (cong3-phan-con-lai-khong-co-chu-khac — chữ không có \"khác\"); bỏ vế (BO_VE) làm .40 và .50 cùng CO với hành tây bảo quản khí sunphurơ (cong2-chong-lan) ⇒ đổi mã ⇒ DỪNG."
+    },
+    {
+      "ma": "07119060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07119060 \"Loại khác, đã được bảo quản bằng khí sunphurơ\" ⇒ chỉ điều kiện của vế: phuongPhapBaoQuan TRONG [BAO_QUAN_BANG_KHI_SUNPHURO] (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "07119090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07119090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}
