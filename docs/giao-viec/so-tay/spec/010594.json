@@ -1,0 +1,74 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "010594",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-010594",
+  "dong8": {
+    "01059410": {
+      "dieuKienSo": [
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "gà chọi",
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    },
+    "01059441": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 2,
+          "donVi": "kg"
+        }
+      ]
+    },
+    "01059491": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 2,
+          "donVi": "kg"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "0105944": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gà chọi"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "01059410",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.01059410 \"Để nhân giống (SEN), trừ gà chọi\" ⇒ dungLamGiong CO, tenLoai gà chọi chieu PHAI_KHONG"
+    },
+    {
+      "ma": "0105944",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0105944 \"Gà chọi\" ⇒ tenLoai Gà chọi"
+    },
+    {
+      "ma": "01059441",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.01059441 \"Khối lượng không quá 2 kg\" ⇒ khoiLuong <= 2 kg"
+    },
+    {
+      "ma": "01059491",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.01059491 \"Khối lượng không quá 2 kg\" ⇒ khoiLuong <= 2 kg"
+    }
+  ]
+}
