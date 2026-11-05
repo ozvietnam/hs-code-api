@@ -30,9 +30,9 @@ check('runner: 3 lệnh mo/nop/bo', /mo\)/.test(sh) && /nop\)/.test(sh) && /bo\)
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'quet-khoa-'));
 const out1 = run('node', ['scripts/quet-khoa-lat-2.mjs', '--pn6=401120', `--out=${path.join(tmp, 'a.md')}`]);
 const md1 = fs.readFileSync(path.join(tmp, 'a.md'), 'utf8');
-check('quét 401120: báo chieuRong', md1.includes('`chieuRong`'));
+check('quét 401120: chieuRong đã có trong tu-vung@2 (lô 3) ⇒ không còn báo thiếu', !md1.includes('`chieuRong`'));
 check('quét 401120: báo duongKinhLapVanh', md1.includes('`duongKinhLapVanh`'));
-check('quét 401120: trích nguyên văn kèm theo', md1.includes('Chiều rộng không quá 450 mm'));
+check('quét 401120: trích nguyên văn kèm theo', md1.includes('lắp vành có đường kính không quá 16 inch'));
 
 // ── 3. Quét khoá: --min lọc, --out không đụng file đã commit ──
 const committed = path.join(ROOT, 'docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md');

@@ -1,0 +1,104 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "960990",
+  "nhom": "9609",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "DUYET",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-960990",
+    "ngay": "2026-11-02"
+  },
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-960990",
+    "ngay": "2026-11-02",
+    "ghiChu": "soát L1-4c (studio): .10 tenLoai+congDung nguyên văn; .30 mảng [\"Bút chì\",\"bút màu\"] + phanConLai phủ định .10; BO_VE \"trừ loại thuộc 9609.10\" hợp lệ (loại trừ đã nằm ở cấp 6 số, không đổi mã 8); .91 mảng nguyên văn",
+    "bam": "1cde8aadc1954e63834b3e4392398d403963bc16ca8a0ce5e3945d8302583f17"
+  },
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "96099010",
+      "nguon": "tax.96099010",
+      "trich": "96099010 - - Bút chì bằng đá phiến (slate) dùng trong trường học",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bút chì bằng đá phiến (slate)"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng trong trường học"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "96099030",
+      "nguon": "tax.96099030",
+      "trich": "96099030 - - Bút chì và bút màu khác trừ loại thuộc phân nhóm 9609.10",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bút chì",
+            "bút màu"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": true
+    },
+    {
+      "hs": "96099091",
+      "nguon": "tax.96099091",
+      "trich": "96099091 - - - Phấn vẽ hoặc phấn viết",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Phấn vẽ",
+            "phấn viết"
+          ]
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "96099099",
+      "nguon": "tax.96099099",
+      "trich": "96099099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "96099010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96099010: \"Bút chì bằng đá phiến (slate) dùng trong trường học\" ⇒ tenLoai TEN_LOAI \"Bút chì bằng đá phiến (slate)\" và congDung CONG_DUNG \"dùng trong trường học\""
+    },
+    {
+      "ma": "96099030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96099030: \"Bút chì và bút màu khác trừ loại thuộc phân nhóm 9609.10\" ⇒ tenLoai TEN_LOAI [\"Bút chì\", \"bút màu\"], phanConLai: true phủ định 96099010"
+    },
+    {
+      "ma": "96099030",
+      "loai": "BO_VE",
+      "ve": "trừ loại thuộc phân nhóm 9609.10",
+      "lyDo": "Đã loại trừ ở cấp phân nhóm 6 số 9609.10 theo cấu trúc phân nhóm (9609.10 đối lập 9609.90)"
+    },
+    {
+      "ma": "96099091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96099091: \"Phấn vẽ hoặc phấn viết\" ⇒ tenLoai TEN_LOAI [\"Phấn vẽ\", \"phấn viết\"]"
+    }
+  ]
+}
