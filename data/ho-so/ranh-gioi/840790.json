@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "840790",
+  "nhom": "8407",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840790",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84079010",
+      "nguon": "tax.84079010",
+      "trich": "84079010 - - Công suất không quá 18,65 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 18.65,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84079020",
+      "nguon": "tax.84079020",
+      "trich": "84079020 - - Công suất trên 18,65 kW nhưng không quá 22,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 18.65,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 22.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84079090",
+      "nguon": "tax.84079090",
+      "trich": "84079090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84079010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84079010: \"Công suất không quá 18,65 kW\" ⇒ congSuat <= 18.65 kW"
+    },
+    {
+      "ma": "84079020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84079020: \"Công suất trên 18,65 kW nhưng không quá 22,38 kW\" ⇒ congSuat > 18.65 kW và <= 22.38 kW"
+    }
+  ]
+}

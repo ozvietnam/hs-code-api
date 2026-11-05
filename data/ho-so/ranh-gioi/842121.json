@@ -1,0 +1,119 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "842121",
+  "nhom": "8421",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842121",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8421211",
+      "nguon": "tieuDe.8421211",
+      "trich": "8421211 Công suất lọc không quá 500 lít/giờ",
+      "dieuKienSo": [
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 500,
+          "donVi": "lít/giờ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8421212",
+      "nguon": "tieuDe.8421212",
+      "trich": "8421212 Công suất lọc trên 500 lít/giờ",
+      "dieuKienSo": [
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 500,
+          "donVi": "lít/giờ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84212111",
+      "nguon": "tax.84212111",
+      "trich": "84212111 - - - - Máy và thiết bị lọc sử dụng trong gia đình",
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84212119",
+      "nguon": "tax.84212119",
+      "trich": "84212119 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84212122",
+      "nguon": "tax.84212122",
+      "trich": "84212122 - - - - Hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84212123",
+      "nguon": "tax.84212123",
+      "trich": "84212123 - - - - Không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8421211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8421211: \"Công suất lọc không quá 500 lít/giờ\" ⇒ luuLuong <= 500 lít/giờ"
+    },
+    {
+      "ma": "84212111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212111: \"sử dụng trong gia đình\" ⇒ phamViSuDung TRONG [\"GIA_DINH\"]"
+    },
+    {
+      "ma": "8421212",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8421212: \"Công suất lọc trên 500 lít/giờ\" ⇒ luuLuong > 500 lít/giờ"
+    },
+    {
+      "ma": "84212122",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212122: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84212123",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212123: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    }
+  ]
+}

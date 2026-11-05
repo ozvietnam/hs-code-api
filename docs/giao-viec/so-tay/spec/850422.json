@@ -1,0 +1,79 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850422",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850422",
+  "dong8": {
+    "85042211": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85042292": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85042293": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8504221": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy ổn áp từng nấc",
+            "biến áp tự ngẫu"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8504221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504221: \"Máy ổn áp từng nấc (biến áp tự ngẫu)\" ⇒ tenLoai mảng 2 giá trị"
+    },
+    {
+      "ma": "85042211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85042211: \"Đầu điện áp cao từ 66 kV trở lên (SEN)\" ⇒ dienAp >= 66 kV"
+    },
+    {
+      "ma": "85042292",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85042292: \"Đầu điện áp cao từ 110 kV trở lên (SEN)\" ⇒ dienAp >= 110 kV"
+    },
+    {
+      "ma": "85042293",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85042293: \"Đầu điện áp cao từ 66 kV trở lên, nhưng dưới 110 kV (SEN)\" ⇒ dienAp >= 66 kV, dienAp < 110 kV"
+    }
+  ]
+}

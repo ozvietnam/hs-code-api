@@ -1,0 +1,83 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842121",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842121",
+  "dong8": {
+    "84212111": {
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        }
+      ]
+    },
+    "84212122": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84212123": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8421211": {
+      "dieuKienSo": [
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 500,
+          "donVi": "lít/giờ"
+        }
+      ]
+    },
+    "8421212": {
+      "dieuKienSo": [
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 500,
+          "donVi": "lít/giờ"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8421211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8421211: \"Công suất lọc không quá 500 lít/giờ\" ⇒ luuLuong <= 500 lít/giờ"
+    },
+    {
+      "ma": "84212111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212111: \"sử dụng trong gia đình\" ⇒ phamViSuDung TRONG [\"GIA_DINH\"]"
+    },
+    {
+      "ma": "8421212",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8421212: \"Công suất lọc trên 500 lít/giờ\" ⇒ luuLuong > 500 lít/giờ"
+    },
+    {
+      "ma": "84212122",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212122: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84212123",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212123: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    }
+  ]
+}

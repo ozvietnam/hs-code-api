@@ -1,0 +1,57 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "843280",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843280",
+  "dong8": {
+    "84328010": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "nông nghiệp",
+            "làm vườn"
+          ]
+        }
+      ]
+    },
+    "84328020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy cán"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bãi cỏ",
+            "sân chơi thể thao"
+          ]
+        }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "84328010",
+        "84328020"
+      ],
+      "lyDo": "Chữ biểu tự chồng lấn giữa \"Dùng trong nông nghiệp hoặc làm vườn\" và \"Máy cán cho bãi cỏ hoặc cho sân chơi thể thao\" khi máy cán bãi cỏ dùng cho mục đích làm vườn"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84328010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84328010: \"Dùng trong nông nghiệp hoặc làm vườn\" ⇒ congDung [\"nông nghiệp\", \"làm vườn\"]"
+    },
+    {
+      "ma": "84328020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84328020: \"Máy cán cho bãi cỏ hoặc cho sân chơi thể thao\" ⇒ tenLoai \"Máy cán\" + dungCho [\"bãi cỏ\", \"sân chơi thể thao\"]"
+    }
+  ]
+}

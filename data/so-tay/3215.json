@@ -58,16 +58,6 @@
   ],
   "tieuChi6": [
     {
-      "hs6": "321511",
-      "fact": "muc_in_den",
-      "op": "=",
-      "value": true,
-      "donVi": null,
-      "nguon": "wco.321511",
-      "trich": "321511 Ink; for printing, black, whether or not concentrated or solid",
-      "nguonLoai": "NGUOI_DUYET"
-    },
-    {
       "hs6": "321519",
       "fact": "muc_in_khac_muc_den",
       "op": "=",
@@ -75,6 +65,16 @@
       "donVi": null,
       "nguon": "wco.321519",
       "trich": "321519 Ink; for printing, other than black, whether or not concentrated or solid",
+      "nguonLoai": "NGUOI_DUYET"
+    },
+    {
+      "hs6": "321511",
+      "fact": "muc_in_den",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "nguon": "wco.321511",
+      "trich": "321511 Ink; for printing, black, whether or not concentrated or solid",
       "nguonLoai": "NGUOI_DUYET"
     },
     {
@@ -174,27 +174,85 @@
     },
     {
       "hs": "32159010",
-      "dieuKien": "Khối carbon loại dùng để sản xuất giấy than; thuộc phân nhóm 3215.90 (tên WCO 321590: ink, writing, drawing and other inks)",
+      "dieuKien": "tên loại hàng: Khối carbon; công dụng / mục đích: sản xuất giấy than",
       "nguon": "tax.32159010",
       "trich": "32159010 - - Khối carbon loại dùng để sản xuất giấy than",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khối carbon"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất giấy than"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-321590",
+          "ngay": "2026-11-02",
+          "bam": "2bae0540e8b6a1d8c3de50dcb8973e3b3ca5e642a28440c0a4730c09434e3b3c"
+        }
+      }
     },
     {
       "hs": "32159060",
-      "dieuKien": "Mực vẽ hoặc mực viết; thuộc phân nhóm 3215.90 (tên WCO 321590: ink, writing, drawing and other inks)",
+      "dieuKien": "tên loại hàng: Mực vẽ hoặc mực viết",
       "nguon": "tax.32159060",
-      "trich": "32159060 - Mực vẽ hoặc mực viết",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "trich": "32159060 - - Mực vẽ hoặc mực viết",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Mực vẽ",
+            "mực viết"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-321590",
+          "ngay": "2026-11-02",
+          "bam": "2bae0540e8b6a1d8c3de50dcb8973e3b3ca5e642a28440c0a4730c09434e3b3c"
+        }
+      }
     },
     {
       "hs": "32159070",
-      "dieuKien": "Mực dùng cho máy nhân bản thuộc nhóm 84.72 — mực nhân bản sử dụng giấy sáp ở dạng bột nhão hoặc dạng bán lỏng; thuộc phân nhóm 3215.90",
-      "nguon": "sen.32159070",
-      "trich": "MỰC DÙNG CHO MÁY NHÂN BẢN THUỘC NHÓM 84.72 … Máy nhân bản sử dụng mực in keo gelatin hoặc cồn đã được cải tiến để dùng mực nhân bản sử dụng giấy sáp ở dạng bột nhão hoặc dạng bán lỏng.",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "dieuKien": "tên loại hàng: Mực dùng cho máy nhân bản; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): máy nhân bản thuộc nhóm 84.72",
+      "nguon": "tax.32159070",
+      "trich": "32159070 - - Mực dùng cho máy nhân bản thuộc nhóm 84.72 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mực dùng cho máy nhân bản"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy nhân bản thuộc nhóm 84.72"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-321590",
+          "ngay": "2026-11-02",
+          "bam": "2bae0540e8b6a1d8c3de50dcb8973e3b3ca5e642a28440c0a4730c09434e3b3c"
+        }
+      }
     },
     {
       "hs": "32159090",

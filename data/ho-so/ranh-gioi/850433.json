@@ -1,0 +1,95 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "850433",
+  "nhom": "8504",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850433",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8504331",
+      "nguon": "tieuDe.8504331",
+      "trich": "8504331 Có đầu điện áp cao từ 66 kV trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85043311",
+      "nguon": "tax.85043311",
+      "trich": "85043311 - - - - Biến áp thích ứng (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043319",
+      "nguon": "tax.85043319",
+      "trich": "85043319 - - - - Loại khác (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043391",
+      "nguon": "tax.85043391",
+      "trich": "85043391 - - - - Biến áp thích ứng (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043399",
+      "nguon": "tax.85043399",
+      "trich": "85043399 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8504331",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504331: \"Có đầu điện áp cao từ 66 kV trở lên\" ⇒ dienAp >= 66 kV"
+    },
+    {
+      "ma": "8504331",
+      "loai": "BO_VE",
+      "ve": "Có đầu",
+      "lyDo": "Cụm 'Có đầu điện áp cao từ 66 kV trở lên' là một vế liên tục chỉ đầu nối điện áp của máy biến thế, bộ tách vế tách nhầm 'Có đầu'"
+    },
+    {
+      "ma": "85043311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043311: \"Biến áp thích ứng (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\""
+    },
+    {
+      "ma": "85043391",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043391: \"Biến áp thích ứng (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\""
+    }
+  ]
+}
