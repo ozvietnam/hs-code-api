@@ -1,0 +1,81 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850120",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850120",
+  "dong8": {
+    "85012012": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ]
+    },
+    "85012021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8501201": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 1,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8501202": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8501201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501201: \"Công suất không quá 1 kW\" ⇒ congSuat <= 1 kW"
+    },
+    {
+      "ma": "85012012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85012012: \"Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ dungCho nở mã HS"
+    },
+    {
+      "ma": "8501202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501202: \"Công suất trên 1 kW\" ⇒ congSuat > 1 kW"
+    },
+    {
+      "ma": "85012021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85012021: \"Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ dungCho nở mã HS"
+    }
+  ]
+}
