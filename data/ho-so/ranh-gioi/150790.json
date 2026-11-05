@@ -1,0 +1,79 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "150790",
+  "nhom": "1507",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1529#soan-150790",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "15079010",
+      "nguon": "tax.15079010",
+      "trich": "15079010 - - Các phần phân đoạn của dầu đậu tương chưa tinh chế",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dầu đậu tương chưa tinh chế"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15079020",
+      "nguon": "tax.15079020",
+      "trich": "15079020 - - Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu đậu tương"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DA_TINH_CHE"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15079090",
+      "nguon": "tax.15079090",
+      "trich": "15079090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "15079010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15079010 \"Các phần phân đoạn của dầu đậu tương chưa tinh chế\" (EN \"Fractions of unrefined soya-bean oil\") ⇒ tenLoai \"Các phần phân đoạn\" (tên hàng) + dungCho \"dầu đậu tương chưa tinh chế\" (vế GIỚI HẠN \"của dầu đậu tương chưa tinh chế\"; chữ Anh \"unrefined\" bổ nghĩa cho DẦU (đích) chứ không phải cho các phần phân đoạn, nên \"chưa tinh chế\" nằm trong chuỗi của đích — khuôn \"dùng cho ống bằng gang đúc\")."
+    },
+    {
+      "ma": "15079020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15079020 \"Dầu đậu tương đã tinh chế, tẩy và khử mùi (RBD)\" (EN \"Refined, bleached and deodorised (RBD) soya-bean oil\") ⇒ tenLoai \"Dầu đậu tương\" (tên hàng) + mucDoTinhCheDau TRONG [DA_TINH_CHE] (khoá đọc được cụm \"tinh chế, tẩy và khử mùi\" và \"RBD\")."
+    },
+    {
+      "ma": "15079090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15079090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    }
+  ]
+}
