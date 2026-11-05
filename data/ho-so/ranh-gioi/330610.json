@@ -1,0 +1,57 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "330610",
+  "nhom": "3306",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1545#soan-330610",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "33061010",
+      "nguon": "tax.33061010",
+      "trich": "33061010 - - Bột và bột nhão dùng ngừa bệnh cho răng (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bột",
+            "bột nhão"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "ngừa bệnh cho răng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "33061090",
+      "nguon": "tax.33061090",
+      "trich": "33061090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "33061010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33061010 \"Bột và bột nhão dùng ngừa bệnh cho răng (SEN)\" (EN \"Powders and pastes for dental prophylaxis\"): hai danh từ đầu liên hợp nối \"và\" (\"Bột\" + \"bột nhão\") ⇒ tenLoai [\"Bột\",\"bột nhão\"] (mảng = hoặc; chữ Anh nối hai danh từ đầu bằng \"and\", vế trước số nhiều \"Powders\" ⇒ không gói một chuỗi có \"và\"). Vế GIỚI HẠN \"cho răng\" (thuộc vế \"dùng ngừa bệnh cho răng\") ⇒ congDung \"ngừa bệnh cho răng\" (chuỗi con nguyên văn; đây là công dụng — dùng để ngừa bệnh răng; KHÔNG dùng dungCho vì lúc chạy dungCho đọc chữ sau \"dùng cho\", mà chữ biểu ghi \"dùng ngừa bệnh cho răng\")."
+    },
+    {
+      "ma": "33061090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33061090 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    }
+  ]
+}

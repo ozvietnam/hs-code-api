@@ -1,0 +1,84 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "330499",
+  "nhom": "3304",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1545#soan-330499",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "33049920",
+      "nguon": "tax.33049920",
+      "trich": "33049920 - - - Chế phẩm ngăn ngừa mụn trứng cá ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm ngăn ngừa mụn trứng cá"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "33049930",
+      "nguon": "tax.33049930",
+      "trich": "33049930 - - - Kem và dung dịch (lotion) bôi mặt hoặc bôi da khác ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Kem",
+            "dung dịch (lotion)"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "bôi mặt",
+            "bôi da khác"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "33049990",
+      "nguon": "tax.33049990",
+      "trich": "33049990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "33049920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33049920 \"Chế phẩm ngăn ngừa mụn trứng cá\" (EN \"Anti-acne preparations\") — chữ biểu chỉ có danh từ đầu, không có vế giới hạn nào ⇒ tenLoai \"Chế phẩm ngăn ngừa mụn trứng cá\" (nguyên văn). Không có khoá tu-vung nào đọc được chữ \"mụn trứng cá\" nên không thêm điều kiện riêng."
+    },
+    {
+      "ma": "33049930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33049930 \"Kem và dung dịch (lotion) bôi mặt hoặc bôi da khác\" (EN \"Other face or skin creams and lotions\"): hai danh từ đầu liên hợp nối \"và\" (\"Kem\" + \"dung dịch (lotion)\") ⇒ tenLoai [\"Kem\",\"dung dịch (lotion)\"] (mảng = hoặc; KHÔNG gói một chuỗi có \"và\" — chữ Anh nối hai danh từ đầu bằng \"and\" nên cổng 3 báo cong3-liet-ke-trong-mot-chuoi); ngoặc \"(lotion)\" là chú thích trong danh từ nên giữ nguyên trong chuỗi con nguyên văn. Vế công dụng \"bôi mặt hoặc bôi da khác\" (dùng để bôi lên mặt hoặc lên da khác) ⇒ congDung [\"bôi mặt\",\"bôi da khác\"] (mảng = hoặc; KHÔNG gói \"hoặc\" trong một chuỗi). \"phanConLai\": false — chữ \"khác\" ở đây sửa \"da\" (bôi da khác = bôi lên da khác), KHÔNG phải dấu hiệu \"phần còn lại\"; dòng \"Loại khác\" trần 33049990 mới là phần còn lại và máy tự phủ định anh em. Ghi rõ để tắt cảnh báo nghi-phan-con-lai."
+    },
+    {
+      "ma": "33049990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33049990 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định mọi anh em)."
+    },
+    {
+      "ma": "330499",
+      "loai": "DUNG",
+      "ghiChu": "can-bang-hieu-chinh-tien-le:330499:chua-co — phân nhóm có cờ hiệu chỉnh tiền lệ (data/ho-so/lat-1.json) mà bảng data/ho-so/hieu-chinh-tien-le.json (L1-4b) chưa có mục cho PN6 này. Bản nháp đã soạn theo CHỮ BIỂU (tax.33049920/33049930) nhưng KHÔNG duyệt/áp được cho tới khi Claude soạn mục bảng L1-4b — việc của Claude, thợ không tự xử lý."
+    }
+  ]
+}
