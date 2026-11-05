@@ -1,0 +1,112 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841381",
+  "nhom": "8413",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841381",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84138113",
+      "nguon": "tax.84138113",
+      "trich": "84138113 - - - Bơm nước, với lưu lượng không quá 8.000 m³/h, hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m³/h"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84138114",
+      "nguon": "tax.84138114",
+      "trich": "84138114 - - - Bơm nước, với lưu lượng không quá 8.000 m³/h, không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m³/h"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84138115",
+      "nguon": "tax.84138115",
+      "trich": "84138115 - - - Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 8000,
+          "donVi": "m³/h"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 13000,
+          "donVi": "m³/h"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84138119",
+      "nguon": "tax.84138119",
+      "trich": "84138119 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84138113",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84138113: \"Bơm nước, với lưu lượng không quá 8.000 m³/h, hoạt động bằng điện\" ⇒ tenLoai Bơm nước + luuLuong <= 8000 m³/h + hoatDongBangDien CO"
+    },
+    {
+      "ma": "84138114",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84138114: \"Bơm nước, với lưu lượng không quá 8.000 m³/h, không hoạt động bằng điện\" ⇒ tenLoai Bơm nước + luuLuong <= 8000 m³/h + hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84138115",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84138115: \"Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h\" ⇒ tenLoai Bơm nước + luuLuong > 8000 m³/h và <= 13000 m³/h"
+    }
+  ]
+}

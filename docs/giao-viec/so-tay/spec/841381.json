@@ -1,0 +1,83 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841381",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841381",
+  "dong8": {
+    "84138113": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m³/h"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84138114": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m³/h"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "84138115": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 8000,
+          "donVi": "m³/h"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 13000,
+          "donVi": "m³/h"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84138113",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84138113: \"Bơm nước, với lưu lượng không quá 8.000 m³/h, hoạt động bằng điện\" ⇒ tenLoai Bơm nước + luuLuong <= 8000 m³/h + hoatDongBangDien CO"
+    },
+    {
+      "ma": "84138114",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84138114: \"Bơm nước, với lưu lượng không quá 8.000 m³/h, không hoạt động bằng điện\" ⇒ tenLoai Bơm nước + luuLuong <= 8000 m³/h + hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84138115",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84138115: \"Bơm nước, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h\" ⇒ tenLoai Bơm nước + luuLuong > 8000 m³/h và <= 13000 m³/h"
+    }
+  ]
+}
