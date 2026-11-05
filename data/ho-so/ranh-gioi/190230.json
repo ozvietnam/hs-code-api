@@ -1,0 +1,80 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "190230",
+  "nhom": "1902",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T0942#soan-190230",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "19023020",
+      "nguon": "tax.19023020",
+      "trich": "19023020 - - Mì, bún làm từ gạo (kể cả bee hoon)",
+      "dieuKienSo": [
+        {
+          "fact": "loaiMiBunMien",
+          "op": "TRONG",
+          "value": [
+            "BUN_MI_GAO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19023030",
+      "nguon": "tax.19023030",
+      "trich": "19023030 - - Miến ",
+      "dieuKienSo": [
+        {
+          "fact": "loaiMiBunMien",
+          "op": "TRONG",
+          "value": [
+            "MIEN"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19023040",
+      "nguon": "tax.19023040",
+      "trich": "19023040 - - Mì ăn liền khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mì ăn liền"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "19023090",
+      "nguon": "tax.19023090",
+      "trich": "19023090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "19023020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19023020 \"Mì, bún làm từ gạo (kể cả bee hoon)\": giá trị BUN_MI_GAO của loaiMiBunMien đọc đúng nguyên văn; \"(kể cả bee hoon)\" là kể cả ⇒ PHU"
+    },
+    {
+      "ma": "19023040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19023040 \"Mì ăn liền khác\": phần còn lại có tên — mì ăn liền không thuộc .20 (làm từ gạo) và .30 (miến) ⇒ tenLoai \"Mì ăn liền\" + phanConLai true"
+    }
+  ]
+}

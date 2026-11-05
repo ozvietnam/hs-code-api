@@ -1,0 +1,63 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "370255",
+  "nhom": "3702",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:202611051900#soan-370255",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "37025520",
+      "nguon": "tax.37025520",
+      "trich": "37025520 - - - Loại phù hợp dùng cho điện ảnh",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "điện ảnh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "37025550",
+      "nguon": "tax.37025550",
+      "trich": "37025550 - - - Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "dùng trong y tế",
+            "phẫu thuật",
+            "nha khoa",
+            "thú y",
+            "công nghiệp in"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "37025590",
+      "nguon": "tax.37025590",
+      "trich": "37025590 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "37025550",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37025520 \"Loại phù hợp dùng cho điện ảnh\" ⇒ congDung \"điện ảnh\". Dùng CÙNG khoá congDung với .50 (máy đòi anh em khác trục để không chồng lấn trên vector: nếu .20 dùng khoá CO dungChoDienAnh còn .50 dùng congDung thì một vector mang cả hai đều thoả ⇒ cong2-chong-lan). tax.37025550 \"Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in\" ⇒ congDung mảng 5 phương án nguyên văn (không dùng khoá CO dungTrongYTeHoacThiNghiem vì thu hẹp dòng — xem 37024210). Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}

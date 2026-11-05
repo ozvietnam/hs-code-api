@@ -1,0 +1,98 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "220421",
+  "phien": "zcode-sub:glm-5.3:20261105T1616#soan-220421",
+  "dong8": {
+    "22042111": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 15,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22042113": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 15,
+          "donVi": "%"
+        },
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 23,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22042114": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 23,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22042121": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 15,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22042122": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 15,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "2204211": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu vang"
+        }
+      ]
+    },
+    "2204212": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hèm nho đã pha cồn"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "ngăn ngừa",
+            "cản sự lên men"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "2204212",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2204212 \"Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men\" — tên đầu ⇒ tenLoai \"Hèm nho đã pha cồn\"; vế mục đích \"để ngăn ngừa hoặc cản sự lên men\" ⇒ congDung mảng hai vế nguyên văn [\"ngăn ngừa\", \"cản sự lên men\"] (máy báo liệt-ke-trong-mot-chuoi nên tách)"
+    }
+  ]
+}

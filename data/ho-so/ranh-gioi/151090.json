@@ -1,0 +1,69 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "151090",
+  "nhom": "1510",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1530#soan-151090",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "15109010",
+      "nguon": "tax.15109010",
+      "trich": "15109010 - - Dầu thô",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu thô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15109020",
+      "nguon": "tax.15109020",
+      "trich": "15109020 - - Các phần phân đoạn của dầu chưa tinh chế",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15109090",
+      "nguon": "tax.15109090",
+      "trich": "15109090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "15109010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15109010 \"15109010 - - Dầu thô\" ⇒ tenLoai \"Dầu thô\" (tên hàng; anh em 15109020 dùng CÙNG khoá tenLoai)."
+    },
+    {
+      "ma": "15109020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15109020 \"15109020 - - Các phần phân đoạn của dầu chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\"). Dòng 15109090 \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}

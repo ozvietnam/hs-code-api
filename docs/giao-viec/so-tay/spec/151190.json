@@ -1,0 +1,157 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "151190",
+  "phien": "mm:minimax-m3:20261105T1530#soan-151190",
+  "dong8": {
+    "15119020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu tinh chế"
+        }
+      ]
+    },
+    "15119031": {
+      "dieuKienSo": []
+    },
+    "15119036": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "kg"
+        }
+      ]
+    },
+    "15119037": {
+      "dieuKienSo": []
+    },
+    "15119041": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn thể rắn"
+        }
+      ]
+    },
+    "15119042": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "kg"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1511903": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DA_TINH_CHE"
+          ]
+        }
+      ]
+    },
+    "1511904": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ]
+    },
+    "151190~r1922": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn thể rắn"
+        }
+      ]
+    },
+    "151190~r1925": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn thể lỏng"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "15119020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15119020 \"15119020 - - Dầu tinh chế\" ⇒ tenLoai \"Dầu tinh chế\" (tên hàng; anh em 1511903/1511904 dùng CÙNG khoá tenLoai)."
+    },
+    {
+      "ma": "1511903",
+      "loai": "DUNG",
+      "ghiChu": "tieuDe.1511903 \"1511903 Các phần phân đoạn của dầu tinh chế\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DA_TINH_CHE (\"dầu tinh chế\"). CỔNG 1 CHƯA XANH: hai tầng không mã r1922 \"thể rắn\" và r1925 \"thể lỏng\" là hai con CÓ TÊN của tầng này, mà chữ tiêu đề không nêu thể rắn/thể lỏng ⇒ vector chỉ \"Các phần phân đoạn\" không rơi vào con nào. Không sửa được bằng khoá hiện có (từ vựng chưa có khoá cho \"thể rắn\"/\"thể lỏng\") — cần người soát quyết."
+    },
+    {
+      "ma": "1511904",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1511904 \"1511904 Các phần phân đoạn của dầu chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\")."
+    },
+    {
+      "ma": "151190~r1922",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.151190~r1922 \"Các phần phân đoạn thể rắn\" (tầng không mã) ⇒ tenLoai \"Các phần phân đoạn thể rắn\"; tầng r1925 dùng CÙNG khoá tenLoai. Từ vựng chưa có khoá riêng cho \"thể rắn\" ⇒ dùng tên hàng nguyên văn của tầng."
+    },
+    {
+      "ma": "151190~r1925",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.151190~r1925 \"Các phần phân đoạn thể lỏng\" (tầng không mã) ⇒ tenLoai \"Các phần phân đoạn thể lỏng\" (cùng cách chia dùng tầng r1922)."
+    },
+    {
+      "ma": "15119031",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "ghiChu": "tax.15119031 \"15119031 - - - - Có chỉ số iốt từ 30 trở lên, nhưng dưới 40\" — chưa giao được điều kiện: khoá chiSoIot cần đơn vị \"IV\" mà chữ biểu KHÔNG viết (chỉ ghi \"chỉ số iốt\") nên cổng 3 chặn (dieu-kien-so-don-vi-khong-co-trong-trich:IV); tách vế theo dấu phẩy cũng không được vì hai vế rơi chung khoá tenLoai với tầng cha (vector không tới được dòng). Cần người duyệt quyết: ghi ngưỡng số 30–40 IV sau khi cổng 3 chấp nhận khoá đọc được đơn vị không có trong chữ.",
+      "khoaDeXuat": "chiSoIot"
+    },
+    {
+      "ma": "15119036",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15119036 \"15119036 - - - - Đóng gói với khối lượng tịnh không quá 25kg\" ⇒ khoiLuong <= 25 kg (\"không quá\" = <=)."
+    },
+    {
+      "ma": "15119037",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "ghiChu": "tax.15119037 \"15119037 - - - - Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60\" — chưa giao được điều kiện, xem ghi chú 15119031 (đơn vị \"IV\" không có trong chữ biểu ⇒ cổng 3 chặn).",
+      "khoaDeXuat": "chiSoIot"
+    },
+    {
+      "ma": "15119041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15119041 \"15119041 - - - Các phần phân đoạn thể rắn (SEN)\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" (cùng cách chia dùng tầng r1922)."
+    },
+    {
+      "ma": "15119042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15119042 \"15119042 - - - Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)\" ⇒ dòng \"Loại khác, <vế>\" ⇒ chỉ ghi điều kiện của vế: khoiLuong <= 25 kg; máy tự phủ định anh em 15119041."
+    }
+  ]
+}

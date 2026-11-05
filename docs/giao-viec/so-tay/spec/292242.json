@@ -1,0 +1,30 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "292242",
+  "phien": "zcode-sub:glm-5.3:20261105T0948#soan-292242",
+  "dong8": {
+    "29224210": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Axit glutamic" }
+      ]
+    },
+    "29224220": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Muối natri" },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "axit glutamic" }
+      ]
+    },
+    "29224290": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Muối" }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "29224210", "loai": "QUYET_DINH", "ghiChu": "tax.29224210: \"Axit glutamic\" ⇒ tenLoai TEN_LOAI \"Axit glutamic\"" },
+    { "ma": "29224220", "loai": "QUYET_DINH", "ghiChu": "tax.29224220: \"Muối natri của axit glutamic (MSG)\" ⇒ tenLoai \"Muối natri\" + điều kiện riêng \"axit glutamic\" cho vế \"của axit glutamic (MSG)\"; \"(MSG)\" là tên gọi khác (PHU), không thành điều kiện" },
+    { "ma": "29224290", "loai": "QUYET_DINH", "ghiChu": "tax.29224290: \"Muối khác\" ⇒ phần còn lại có tên: phanConLai true + tenLoai \"Muối\"" }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "292320",
+  "phien": "zcode-sub:glm-5.3:20261105T0952#soan-292320",
+  "dong8": {
+    "29232011": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "thực vật" }
+      ]
+    },
+    "29232019": {
+      "dieuKienSo": []
+    },
+    "29232090": {
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "2923201": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Lecithins" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "2923201", "loai": "QUYET_DINH", "ghiChu": "tieuDe.2923201: \"Lecithins\" ⇒ dieuKienNut tenLoai TEN_LOAI \"Lecithins\"" },
+    { "ma": "29232011", "loai": "QUYET_DINH", "ghiChu": "tax.29232011: \"Từ thực vật\" ⇒ tenLoai TEN_LOAI \"thực vật\" (nguồn gốc thực vật của lecithin, không có khoá nguồn gốc trong tu-vung@2 nên dùng tên nguyên văn)" },
+    { "ma": "29232019", "loai": "QUYET_DINH", "ghiChu": "tax.29232019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em 29232011)" },
+    { "ma": "29232090", "loai": "QUYET_DINH", "ghiChu": "tax.29232090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định tầng 2923201 Lecithins)" }
+  ]
+}

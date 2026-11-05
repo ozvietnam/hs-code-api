@@ -1,0 +1,115 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "220429",
+  "nhom": "2204",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1616#soan-220429",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "2204291",
+      "nguon": "tieuDe.2204291",
+      "trich": "2204291 Rượu vang",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu vang"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "2204292",
+      "nguon": "tieuDe.2204292",
+      "trich": "2204292 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hèm nho đã pha cồn"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "ngăn ngừa",
+            "cản sự lên men"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "22042911",
+      "nguon": "tax.22042911",
+      "trich": "22042911 - - - - Có nồng độ cồn không quá 15% tính theo thể tích ",
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 15,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22042912",
+      "nguon": "tax.22042912",
+      "trich": "22042912 - - - - Có nồng độ cồn trên 15% tính theo thể tích",
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 15,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22042921",
+      "nguon": "tax.22042921",
+      "trich": "22042921 - - - - Có nồng độ cồn không quá 15% tính theo thể tích ",
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 15,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22042922",
+      "nguon": "tax.22042922",
+      "trich": "22042922 - - - - Có nồng độ cồn trên 15% tính theo thể tích",
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 15,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "2204292",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2204292 \"Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men\" — tên đầu ⇒ tenLoai \"Hèm nho đã pha cồn\"; vế mục đích \"để ngăn ngừa hoặc cản sự lên men\" ⇒ congDung mảng hai vế nguyên văn [\"ngăn ngừa\", \"cản sự lên men\"] (máy báo liệt-ke-trong-mot-chuoi nên tách)"
+    }
+  ]
+}

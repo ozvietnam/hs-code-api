@@ -1,0 +1,131 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "294110",
+  "nhom": "2941",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1102#soan-294110",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "2941101",
+      "nguon": "tieuDe.2941101",
+      "trich": "2941101 Amoxicillin và muối của nó",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Amoxicillin"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "muối"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Amoxicillin"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "29411011",
+      "nguon": "tax.29411011",
+      "trich": "29411011 - - - Không tiệt trùng (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "29411019",
+      "nguon": "tax.29411019",
+      "trich": "29411019 - - - Loại khác (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "29411020",
+      "nguon": "tax.29411020",
+      "trich": "29411020 - - Ampicillin và muối của nó",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Ampicillin"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "muối"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Ampicillin"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "29411090",
+      "nguon": "tax.29411090",
+      "trich": "29411090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "2941101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2941101: \"Amoxicillin và muối của nó\" ⇒ dieuKienNut: HOAC [[tenLoai \"Amoxicillin\"],[tenLoai \"muối\" + dungCho \"Amoxicillin\"]]"
+    },
+    {
+      "ma": "29411011",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "tietTrung",
+      "ghiChu": "tax.29411011: \"Không tiệt trùng (SEN)\" — tu-vung@2 không có khoá tiệt trùng/không tiệt trùng (CO_KHONG) để biểu diễn vế GIỚI HẠN \"Không tiệt trùng\"; SEN phân biệt theo cách đóng gói, không mượn khoá gần nghĩa"
+    },
+    {
+      "ma": "29411019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29411019 \"Loại khác (SEN)\" trần ⇒ không điều kiện (máy phủ định anh em 29411011)"
+    },
+    {
+      "ma": "29411020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29411020: \"Ampicillin và muối của nó\" ⇒ HOAC [[tenLoai \"Ampicillin\"],[tenLoai \"muối\" + dungCho \"Ampicillin\"]]"
+    },
+    {
+      "ma": "29411090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29411090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

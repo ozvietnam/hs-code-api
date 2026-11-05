@@ -1,0 +1,46 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "401691",
+  "phien": "mm:minimax-m3:20261105T1705#soan-401691",
+  "dong8": {
+    "40169110": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tấm",
+            "đệm"
+          ]
+        }
+      ]
+    },
+    "40169120": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng tấm rời"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "ghép"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "40169110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40169110 \"Tấm, đệm (mat)\" ⇒ tenLoai [\"Tấm\",\"đệm\"]; cụm \"(mat)\" là ngoặc chú thích chữ Anh, không thành điều kiện. Dòng .90 \"Loại khác\" trần ⇒ không điều kiện."
+    },
+    {
+      "ma": "40169120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40169120 \"Dạng tấm rời để ghép\" ⇒ tenLoai \"Dạng tấm rời\" + congDung \"ghép\" phủ vế [GIỚI HẠN] \"để ghép\" (mẫu 40169940: \"để ốp tường\" ⇒ congDung \"ốp tường\")."
+    }
+  ]
+}

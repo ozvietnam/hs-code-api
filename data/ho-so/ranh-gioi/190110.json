@@ -1,0 +1,100 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "190110",
+  "nhom": "1901",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T0934#soan-190110",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "19011010",
+      "nguon": "tax.19011010",
+      "trich": "19011010 - - Từ chiết xuất malt",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "chiết xuất malt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19011020",
+      "nguon": "tax.19011020",
+      "trich": "19011020 - - Từ sản phẩm thuộc các nhóm từ 04.01 đến 04.04",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản phẩm thuộc các nhóm từ 04.01 đến 04.04"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19011030",
+      "nguon": "tax.19011030",
+      "trich": "19011030 - - Từ bột đỗ tương",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bột đỗ tương"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19011091",
+      "nguon": "tax.19011091",
+      "trich": "19011091 - - - Sản phẩm dinh dưỡng y tế(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "sanPhamDinhDuongYTe",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19011092",
+      "nguon": "tax.19011092",
+      "trich": "19011092 - - - Loại khác, dùng cho trẻ trên một tuổi nhưng không quá ba tuổi",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "trẻ trên một tuổi nhưng không quá ba tuổi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19011099",
+      "nguon": "tax.19011099",
+      "trich": "19011099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "19011010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19011010 \"Từ chiết xuất malt\": ba anh em .10/.20/.30 cùng cách chia \"Từ <nguồn>\" ⇒ cùng khoá dungCho; .20 có dẫn mã \"thuộc các nhóm từ 04.01 đến 04.04\" ⇒ giữ nguyên chuỗi mã trong dungCho"
+    },
+    {
+      "ma": "19011092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19011092 \"Loại khác, dùng cho trẻ trên một tuổi nhưng không quá ba tuổi\": dòng LK có điều kiện ⇒ chỉ ghi điều kiện của vế \"dùng cho trẻ trên một tuổi nhưng không quá ba tuổi\"; máy tự phủ định anh em .91"
+    }
+  ]
+}

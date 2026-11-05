@@ -1,0 +1,290 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "151790",
+  "phien": "mm:minimax-m3:20261105T1530#soan-151790",
+  "dong8": {
+    "15179010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm giả ghee"
+        }
+      ]
+    },
+    "15179020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Margarin lỏng"
+        }
+      ]
+    },
+    "15179030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của loại sử dụng như chế phẩm tách khuôn"
+        }
+      ]
+    },
+    "15179043": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Shortening"
+        }
+      ]
+    },
+    "15179044": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm giả mỡ lợn"
+        }
+      ]
+    },
+    "15179050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "chế phẩm ở dạng rắn khác",
+            "chất béo",
+            "dầu thực vật",
+            "các phần phân đoạn của chúng"
+          ]
+        }
+      ],
+      "phanConLai": false
+    },
+    "15179061": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thành phần chủ yếu là dầu lạc"
+        }
+      ]
+    },
+    "15179062": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thành phần chủ yếu là dầu cọ thô"
+        }
+      ]
+    },
+    "15179063": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thành phần chủ yếu là dầu cọ khác"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "kg"
+        }
+      ],
+      "phanConLai": [
+        "15179062"
+      ]
+    },
+    "15179064": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thành phần chủ yếu là dầu cọ khác"
+        },
+        {
+          "fact": "khoiLuong",
+          "op": ">",
+          "value": 25,
+          "donVi": "kg"
+        }
+      ],
+      "phanConLai": [
+        "15179062",
+        "15179063"
+      ]
+    },
+    "15179065": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thành phần chủ yếu là dầu hạt cọ"
+        }
+      ]
+    },
+    "15179066": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thành phần chủ yếu là olein hạt cọ"
+        }
+      ]
+    },
+    "15179067": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thành phần chủ yếu là dầu đậu tương",
+            "dầu dừa"
+          ]
+        }
+      ]
+    },
+    "15179068": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thành phần chủ yếu là dầu hạt illipe"
+        }
+      ]
+    },
+    "15179080": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "chế phẩm từ mỡ",
+            "dầu động vật",
+            "các phần phân đoạn của chúng"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1517904": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Chế phẩm giả mỡ lợn",
+            "shortening"
+          ]
+        }
+      ]
+    },
+    "1517906": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "chế phẩm ở dạng lỏng khác",
+            "chất béo",
+            "dầu thực vật",
+            "các phần phân đoạn của chúng"
+          ]
+        }
+      ],
+      "phanConLai": false
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "1517904",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1517904 \"1517904 Chế phẩm giả mỡ lợn; shortening\" ⇒ tenLoai [\"Chế phẩm giả mỡ lợn\",\"shortening\"] (chữ biểu có dấu \";\" nên phải tách mảng, mỗi phần tử lấy nguyên văn)."
+    },
+    {
+      "ma": "15179043",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179043 \"15179043 - - - Shortening\" ⇒ tenLoai \"Shortening\" (anh em 15179044 dùng CÙNG khoá tenLoai)."
+    },
+    {
+      "ma": "15179044",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179044 \"15179044 - - - Chế phẩm giả mỡ lợn\" ⇒ tenLoai \"Chế phẩm giả mỡ lợn\"."
+    },
+    {
+      "ma": "15179050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179050 \"15179050 - - Hỗn hợp hoặc chế phẩm ở dạng rắn khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng\" ⇒ tenLoai [\"Hỗn hợp\",\"chế phẩm ở dạng rắn khác\",\"chất béo\",\"dầu thực vật\",\"các phần phân đoạn của chúng\"] (chữ biểu có nhiều \"hoặc\" ⇒ tách mảng). phanConLai: false — đây là MỘT LOẠI HÀNG (hỗn hợp ở dạng RẮN), song song với tiêu đề 1517906 (dạng LỎNG), không phải phần còn lại của anh em; chữ \"khác\" nằm trong cụm \"ở dạng rắn khác\"."
+    },
+    {
+      "ma": "1517906",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1517906 \"1517906 Hỗn hợp hoặc chế phẩm ở dạng lỏng khác của chất béo hoặc dầu thực vật hoặc của các phần phân đoạn của chúng\" ⇒ tenLoai [\"Hỗn hợp\",\"chế phẩm ở dạng lỏng khác\",\"chất béo\",\"dầu thực vật\",\"các phần phân đoạn của chúng\"] (nhiều \"hoặc\" ⇒ tách mảng). phanConLai: false — song song với dòng 15179050 (dạng rắn), không phải phần còn lại."
+    },
+    {
+      "ma": "15179063",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179063 \"15179063 - - - Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh không quá 25kg\" ⇒ tenLoai \"Thành phần chủ yếu là dầu cọ khác\" + khoiLuong <= 25 kg; phanConLai [\"15179062\"] — \"dầu cọ khác\" loại riêng anh em 15179062 (dầu cọ THÔ), không loại cả nhóm."
+    },
+    {
+      "ma": "15179064",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179064 \"15179064 - - - Thành phần chủ yếu là dầu cọ khác, đóng gói với khối lượng tịnh trên 25kg\" ⇒ tenLoai \"Thành phần chủ yếu là dầu cọ khác\" + khoiLuong > 25 kg (\"trên\" = >); phanConLai [\"15179062\",\"15179063\"]."
+    },
+    {
+      "ma": "15179067",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179067 \"15179067 - - - Thành phần chủ yếu là dầu đậu tương hoặc dầu dừa\" ⇒ tenLoai [\"Thành phần chủ yếu là dầu đậu tương\",\"dầu dừa\"] (chữ biểu có \"hoặc\" ⇒ tách mảng)."
+    },
+    {
+      "ma": "15179080",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179080 \"15179080 - - Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng\" ⇒ tenLoai [\"hỗn hợp\",\"chế phẩm từ mỡ\",\"dầu động vật\",\"các phần phân đoạn của chúng\"] (nhiều \"hoặc\" ⇒ tách mảng)."
+    },
+    {
+      "ma": "15179010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179010 \"15179010 - - Chế phẩm giả ghee\" ⇒ tenLoai \"Chế phẩm giả ghee\" (tên hàng)."
+    },
+    {
+      "ma": "15179020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179020 \"15179020 - - Margarin lỏng\" ⇒ tenLoai \"Margarin lỏng\" (tên hàng)."
+    },
+    {
+      "ma": "15179030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179030 \"15179030 - - Của loại sử dụng như chế phẩm tách khuôn\" ⇒ tenLoai \"Của loại sử dụng như chế phẩm tách khuôn\" (vế \"sử dụng như chế phẩm tách khuôn\" được phủ bởi chính giá trị này; từ vựng chưa có khoá riêng cho công dụng này)."
+    },
+    {
+      "ma": "15179061",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179061 \"15179061 - - - Thành phần chủ yếu là dầu lạc\" ⇒ tenLoai \"Thành phần chủ yếu là dầu lạc\" (tên hàng; anh em .62–.68 dùng CÙNG khoá tenLoai)."
+    },
+    {
+      "ma": "15179062",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179062 \"15179062 - - - Thành phần chủ yếu là dầu cọ thô\" ⇒ tenLoai \"Thành phần chủ yếu là dầu cọ thô\" (chữ biểu không có mức tinh chế riêng cho dòng này nên không ghi mucDoTinhCheDau)."
+    },
+    {
+      "ma": "15179065",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179065 \"15179065 - - - Thành phần chủ yếu là dầu hạt cọ\" ⇒ tenLoai \"Thành phần chủ yếu là dầu hạt cọ\"."
+    },
+    {
+      "ma": "15179066",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179066 \"15179066 - - - Thành phần chủ yếu là olein hạt cọ\" ⇒ tenLoai \"Thành phần chủ yếu là olein hạt cọ\"."
+    },
+    {
+      "ma": "15179068",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15179068 \"15179068 - - - Thành phần chủ yếu là dầu hạt illipe\" ⇒ tenLoai \"Thành phần chủ yếu là dầu hạt illipe\"."
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "240399",
+  "nhom": "2403",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-240399",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "24039910",
+      "nguon": "tax.24039910",
+      "trich": "24039910 - - - Chiết xuất và tinh chất lá thuốc lá ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Chiết xuất",
+            "tinh chất"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "lá thuốc lá"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "24039930",
+      "nguon": "tax.24039930",
+      "trich": "24039930 - - - Các nguyên liệu thay thế lá thuốc lá đã chế biến",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nguyên liệu thay thế lá thuốc lá đã chế biến"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "24039940",
+      "nguon": "tax.24039940",
+      "trich": "24039940 - - - Thuốc lá bột để hít, ngậm, khô hoặc không khô (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc lá bột"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "hít",
+            "ngậm",
+            "khô",
+            "không khô"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "24039950",
+      "nguon": "tax.24039950",
+      "trich": "24039950 - - - Thuốc lá dạng nhai và dạng ngậm (sucking)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "dạng nhai",
+            "dạng ngậm"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc lá"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "24039990",
+      "nguon": "tax.24039990",
+      "trich": "24039990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "24039910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.24039910 \"Chiết xuất và tinh chất lá thuốc lá\" — hai danh từ đầu (chiết xuất, tinh chất) nối \"và\", \"lá thuốc lá\" là định ngữ chung ⇒ mảng + điều kiện riêng cùng khoá"
+    },
+    {
+      "ma": "24039940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.24039940 \"Thuốc lá bột để hít, ngậm, khô hoặc không khô (SEN)\" — vế \"để hít, ngậm, khô hoặc không khô\" là liệt kê ⇒ mảng chuỗi con nguyên văn; \"(SEN)\" là ngoặc chú thích"
+    },
+    {
+      "ma": "24039950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.24039950 \"Thuốc lá dạng nhai và dạng ngậm (sucking)\" — \"dạng nhai\" và \"dạng ngậm\" là hai dạng ⇒ mảng, \"Thuốc lá\" định ngữ chung điều kiện riêng; \"(sucking)\" chú thích cho \"ngậm\", không điều kiện"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "090121",
+  "nhom": "0901",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1555#soan-090121",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "0901211",
+      "nguon": "tieuDe.0901211",
+      "trich": "0901211 Chưa nghiền",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "09012111",
+      "nguon": "tax.09012111",
+      "trich": "09012111 - - - - Arabica (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Arabica"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "09012112",
+      "nguon": "tax.09012112",
+      "trich": "09012112 - - - - Robusta (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Robusta"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "09012119",
+      "nguon": "tax.09012119",
+      "trich": "09012119 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "09012120",
+      "nguon": "tax.09012120",
+      "trich": "09012120 - - - Đã xay",
+      "dieuKienSo": [
+        {
+          "fact": "daXay",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "0901211",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daNghien",
+      "ghiChu": "tieuDe.0901211 \"0901211 Chưa nghiền\" — vế GIỚI HẠN \"Chưa nghiền\" không có khoá đọc được: daXay chỉ đọc \"chưa xay\" (vòng 1 báo cong3 dieu-kien-so-khong-khong-co-trong-trich + cong5-ve-gioi-han-bi-bo); đề xuất khoá riêng hoặc mở rộng cách đọc daXay thêm \"nghiền\""
+    },
+    {
+      "ma": "09012111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.09012111 \"Arabica (SEN)\" ⇒ tenLoai TEN_LOAI \"Arabica\""
+    },
+    {
+      "ma": "09012112",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.09012112 \"Robusta (SEN)\" ⇒ tenLoai TEN_LOAI \"Robusta\""
+    },
+    {
+      "ma": "09012120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.09012120 \"Đã xay\" ⇒ daXay CO (đọc CÓ \"đã xay\")"
+    }
+  ]
+}

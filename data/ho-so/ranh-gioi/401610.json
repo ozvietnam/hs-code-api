@@ -1,0 +1,87 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "401610",
+  "nhom": "4016",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1705#soan-401610",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "40161010",
+      "nguon": "tax.40161010",
+      "trich": "40161010 - - Lót, đệm cho các sản phẩm may mặc hoặc cho các đồ phụ trợ của quần áo",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Lót",
+            "đệm"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "các sản phẩm may mặc",
+            "các đồ phụ trợ của quần áo"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40161020",
+      "nguon": "tax.40161020",
+      "trich": "40161020 - - Tấm, miếng ghép với nhau để lát nền và ốp tường",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tấm",
+            "miếng"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "lát nền"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "ốp tường"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40161090",
+      "nguon": "tax.40161090",
+      "trich": "40161090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "40161010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40161010 \"Lót, đệm cho các sản phẩm may mặc hoặc cho các đồ phụ trợ của quần áo\" ⇒ tenLoai [\"Lót\",\"đệm\"] (hai tên thay thế nhau, dấu phẩy) + dungCho [\"các sản phẩm may mặc\",\"các đồ phụ trợ của quần áo\"] (vế \"hoặc\" = mảng; chữ Anh: \"Padding for articles of apparel or clothing accessories\")."
+    },
+    {
+      "ma": "40161020",
+      "loai": "BO_VE",
+      "ve": "để lát nền và ốp tường",
+      "lyDo": "Máy đọc sai cấu trúc: chữ Anh cùng dòng \"Floor tiles and wall tiles\" không có định ngữ đuôi nên cổng 5 coi \"để lát nền và ốp tường\" là định ngữ CHỈ của danh từ cuối; nhưng ở chữ Việt định ngữ này ứng với \"Floor\"/\"wall\" của chữ Anh và áp cho CẢ hai danh từ đầu \"Tấm\" và \"miếng\" (cùng một loại tấm lát nền và ốp tường). Điều kiện vẫn ghi đủ: tenLoai [\"Tấm\",\"miếng\"] + congDung \"lát nền\" + congDung \"ốp tường\" (hai công dụng nối \"và\" ⇒ VÀ). Mẫu cùng cấu trúc đã duyệt: 40169940."
+    }
+  ]
+}

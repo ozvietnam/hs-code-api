@@ -1,0 +1,107 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "321000",
+  "nhom": "3210",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1547#soan-321000",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "32100010",
+      "nguon": "tax.32100010",
+      "trich": "32100010 - Vecni (kể cả dầu bóng)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vecni (kể cả dầu bóng)"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "32100020",
+      "nguon": "tax.32100020",
+      "trich": "32100020 -  Màu keo",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Màu keo"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "32100030",
+      "nguon": "tax.32100030",
+      "trich": "32100030 - Thuốc màu nước đã pha chế dùng để hoàn thiện da",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc màu nước đã pha chế"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "hoàn thiện da"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "32100091",
+      "nguon": "tax.32100091",
+      "trich": "32100091 - - Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "vỏ tàu thủy"
+        },
+        {
+          "fact": "sonChongHaHoacChongAnMonVoTau",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "32100099",
+      "nguon": "tax.32100099",
+      "trich": "32100099 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "32100010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32100010 \"Vecni (kể cả dầu bóng)\" (EN \"Varnishes (including lacquers)\") ⇒ tenLoai TEN_LOAI \"Vecni (kể cả dầu bóng)\"."
+    },
+    {
+      "ma": "32100020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32100020 \"Màu keo\" (EN \"Distempers\") ⇒ tenLoai TEN_LOAI \"Màu keo\"."
+    },
+    {
+      "ma": "32100030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32100030 \"Thuốc màu nước đã pha chế dùng để hoàn thiện da\" (EN \"Prepared water pigments of a kind used for finishing leather\") ⇒ tenLoai TEN_LOAI \"Thuốc màu nước đã pha chế\" + congDung CONG_DUNG \"hoàn thiện da\" (vế \"dùng để …\" = công dụng)."
+    },
+    {
+      "ma": "32100091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32100091 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") ⇒ dungCho CONG_DUNG \"vỏ tàu thủy\" + sonChongHaHoacChongAnMonVoTau CO. Tiêu đề tầng 3210009 \"Loại khác\" trần nên không khai điều kiện."
+    }
+  ]
+}

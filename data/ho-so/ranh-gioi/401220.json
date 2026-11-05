@@ -1,0 +1,217 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "401220",
+  "nhom": "4012",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1705#soan-401220",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4012202",
+      "nguon": "tieuDe.4012202",
+      "trich": "4012202 Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ô tô khách (buses)",
+            "ô tô chở hàng (lorries)"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "4012207",
+      "nguon": "tieuDe.4012207",
+      "trich": "4012207 Loại dùng cho các xe khác thuộc Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các xe khác thuộc Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "40122010",
+      "nguon": "tax.40122010",
+      "trich": "40122010 - - Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô con (motor car)"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122021",
+      "nguon": "tax.40122021",
+      "trich": "40122021 - - - Chiều rộng không quá 450 mm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122029",
+      "nguon": "tax.40122029",
+      "trich": "40122029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122030",
+      "nguon": "tax.40122030",
+      "trich": "40122030 - - Loại sử dụng cho phương tiện bay",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện bay"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122040",
+      "nguon": "tax.40122040",
+      "trich": "40122040 - - Loại dùng cho xe môtô",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe môtô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122050",
+      "nguon": "tax.40122050",
+      "trich": "40122050 - - Loại dùng cho xe đạp",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe đạp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122060",
+      "nguon": "tax.40122060",
+      "trich": "40122060 - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.29 hoặc 84.30"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122071",
+      "nguon": "tax.40122071",
+      "trich": "40122071 - - - Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy kéo"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "nông nghiệp",
+            "lâm nghiệp"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122079",
+      "nguon": "tax.40122079",
+      "trich": "40122079 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122080",
+      "nguon": "tax.40122080",
+      "trich": "40122080 - - Loại dùng cho máy thuộc nhóm 84.27",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.27"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122091",
+      "nguon": "tax.40122091",
+      "trich": "40122091 - - - Lốp trơn (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp trơn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40122099",
+      "nguon": "tax.40122099",
+      "trich": "40122099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "40122010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40122010 \"Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" ⇒ dungCho \"ô tô con (motor car)\" phủ vế [GIỚI HẠN] \"sử dụng cho ô tô con (motor car) …\". Vế \"kể cả …\" là ngoặc chú thích mở rộng, không thành điều kiện."
+    },
+    {
+      "ma": "4012202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4012202 \"Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)\" ⇒ dungCho [\"ô tô khách (buses)\",\"ô tô chở hàng (lorries)\"] (mảng = hoặc); dấu \"(1)\" là chú thích chân trang, không thành điều kiện."
+    },
+    {
+      "ma": "4012207",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4012207 \"Loại dùng cho các xe khác thuộc Chương 87\" ⇒ dungCho \"các xe khác thuộc Chương 87\" + phanConLai: true (chữ \"các xe khác\" = phần còn lại của các xe Chương 87, phủ định các anh em .10, .2, .30, .40, .50, .60 đứng trước; .79 \"Loại khác\" trần phủ định .71)."
+    },
+    {
+      "ma": "40122091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40122091 \"Lốp trơn (SEN)\" ⇒ tenLoai \"Lốp trơn\"; cụm \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật, không phải điều kiện."
+    }
+  ]
+}
