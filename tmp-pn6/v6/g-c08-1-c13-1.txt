@@ -1,0 +1,407 @@
+Số hoá ranh giới cho 24 phân nhóm 6 số (080310 080510 081350 090122 090210 090220 090230 090240 090961 090962 100590 100610 100640 110290 110319 110419 110429 110620 110819 120740 121293 130190 130211 130239). Với MỖI PN6 trả về MỘT khối ```json riêng là spec ranh-gioi-spec@1 (khung ở mục CÁCH VIẾT SPEC), "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-<pn6>". Dòng/tiêu đề "Loại khác" trần: KHÔNG đưa vào spec, không ghi DE_TRONG. Mỗi vế GIỚI HẠN/MỞ in trong gói phải có điều kiện phủ tới, hoặc BO_VE có lý do thật, hoặc THIEU_KHOA_TU_VUNG (+khoaDeXuat). Anh em cùng tầng dùng cùng khoá. Mỗi quyết định một ghiChuSoan QUYET_DINH trích chữ. Bộ TỪ VỰNG trong system instructions là bản 192 khoá mới nhất: tra kỹ trước khi kết luận thiếu khoá. Không bỏ sót PN6 nào; nếu sắp hết chỗ đầu ra thì ghi cuối cùng một dòng "CHUA_SOAN: <các pn6>" để được yêu cầu "tiếp". Không giải thích ngoài các khối json.
+
+=== GÓI PN6 080310 ===
+# 080310 — Chuối lá
+
+080310 — Fruit, edible; plantains, fresh or dried
+  08031010 Tươi
+  08031020 Khô
+
+- 08031010 DONG8
+    tax.08031010 [17 ký tự]: 08031010 - - Tươi
+- 08031020 DONG8
+    tax.08031020 [16 ký tự]: 08031020 - - Khô
+
+Nguồn cấp phân nhóm: wco.080310; chú giải: nhom0803.nhom, ch08.chuong, phan08.phan
+
+=== GÓI PN6 080510 ===
+# 080510 — Quả cam
+
+080510 — Fruit, edible; oranges, fresh or dried
+  08051010 Tươi
+  08051020 Khô
+
+- 08051010 DONG8
+    tax.08051010 [17 ký tự]: 08051010 - - Tươi
+- 08051020 DONG8
+    tax.08051020 [16 ký tự]: 08051020 - - Khô
+
+Nguồn cấp phân nhóm: wco.080510; chú giải: nhom0805.nhom, ch08.chuong, phan08.phan
+
+=== GÓI PN6 081350 ===
+# 081350 — Hỗn hợp các loại quả hạch (nuts) hoặc quả khô thuộc Chương này
+
+081350 — Nuts, edible; mixtures of nuts or dried fruits of chapter 08
+  08135010 Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+  08135020 Quả hạch (nuts) khác chiếm đa số về khối lượng
+  08135030 Quả chà là chiếm đa số về khối lượng
+  08135040 Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+  08135090 Loại khác  [LK]
+
+- 08135010 DONG8
+    tax.08135010 [82 ký tự]: 08135010 - - Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+- 08135020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.08135020 [59 ký tự]: 08135020 - - Quả hạch (nuts) khác chiếm đa số về khối lượng
+- 08135030 DONG8
+    tax.08135030 [49 ký tự]: 08135030 - - Quả chà là chiếm đa số về khối lượng
+- 08135040 DONG8
+    tax.08135040 [94 ký tự]: 08135040 - - Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+- 08135090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.08135090 [22 ký tự]: 08135090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.081350; chú giải: nhom0813.nhom, ch08.chuong, phan08.phan
+=== GÓI PN6 090122 ===
+# 090122 — Đã khử chất caffeine
+
+090122 — Coffee; roasted, decaffeinated
+  09012210 Chưa xay
+  09012220 Đã xay
+
+- 09012210 DONG8
+    tax.09012210 [23 ký tự]: 09012210 - - - Chưa xay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa xay"
+- 09012220 DONG8
+    tax.09012220 [21 ký tự]: 09012220 - - - Đã xay
+
+Nguồn cấp phân nhóm: wco.090122; chú giải: nhom0901.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090210 ===
+# 090210 — Chè xanh (chưa ủ men) đóng gói sẵn trọng lượng không quá 3 kg
+
+090210 — Tea, green; (not fermented), in immediate packings of a content not exceeding 3kg
+  09021010 Lá chè
+  09021090 Loại khác  [LK]
+
+- 09021010 DONG8
+    tax.09021010 [19 ký tự]: 09021010 - - Lá chè
+- 09021090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09021090 [22 ký tự]: 09021090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090210; chú giải: nhom0902.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090220 ===
+# 090220 — Chè xanh khác (chưa ủ men)
+
+090220 — Tea, green; (not fermented), in immediate packings of a content exceeding 3kg
+  09022010 Lá chè
+  09022090 Loại khác  [LK]
+
+- 09022010 DONG8
+    tax.09022010 [19 ký tự]: 09022010 - - Lá chè
+- 09022090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09022090 [22 ký tự]: 09022090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090220; chú giải: nhom0902.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090230 ===
+# 090230 — Chè đen (đã ủ men) và chè đã ủ men một phần, đóng gói sẵn trọng lượng không quá 3kg
+
+090230 — Tea, black; (fermented) and partly fermented tea, in immediate packings of a content not exceeding 3kg
+  09023010 Lá chè
+  09023090 Loại khác  [LK]
+
+- 09023010 DONG8
+    tax.09023010 [19 ký tự]: 09023010 - - Lá chè
+- 09023090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09023090 [22 ký tự]: 09023090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090230; chú giải: nhom0902.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090240 ===
+# 090240 — Chè đen khác (đã ủ men) và chè khác đã ủ men một phần
+
+090240 — Tea, black; (fermented) and partly fermented tea, in immediate packings of a content exceeding 3kg
+  09024010 Lá chè
+  09024090 Loại khác  [LK]
+
+- 09024010 DONG8
+    tax.09024010 [19 ký tự]: 09024010 - - Lá chè
+- 09024090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09024090 [22 ký tự]: 09024090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090240; chú giải: nhom0902.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090961 ===
+# 090961 — Chưa xay hoặc chưa nghiền
+
+090961 — Spices; seeds of anise, badian, caraway or fennel; juniper berries, neither crushed nor ground
+  09096110 Của hoa hồi anise (tiểu hồi)
+  09096120 Của hoa hồi badian (đại hồi)
+  09096130 Của cây ca-rum (caraway)
+  09096190 Loại khác  [LK]
+
+- 09096110 DONG8
+    tax.09096110 [43 ký tự]: 09096110 - - - Của hoa hồi anise (tiểu hồi)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hoa hồi anise (tiểu hồi)"
+- 09096120 DONG8
+    tax.09096120 [43 ký tự]: 09096120 - - - Của hoa hồi badian (đại hồi)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hoa hồi badian (đại hồi)"
+- 09096130 DONG8
+    tax.09096130 [39 ký tự]: 09096130 - - - Của cây ca-rum (caraway)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cây ca-rum (caraway)"
+- 09096190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09096190 [24 ký tự]: 09096190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090961; chú giải: nhom0909.nhom, ch09.chuong, phan09.phan
+
+=== GÓI PN6 090962 ===
+# 090962 — Đã xay hoặc nghiền
+
+090962 — Spices; seeds of anise, badian, caraway or fennel; juniper berries, crushed or ground
+  09096210 Của hoa hồi anise (tiểu hồi)
+  09096220 Của hoa hồi badian (đại hồi)
+  09096230 Của cây ca-rum (caraway)
+  09096290 Loại khác  [LK]
+
+- 09096210 DONG8
+    tax.09096210 [43 ký tự]: 09096210 - - - Của hoa hồi anise (tiểu hồi)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hoa hồi anise (tiểu hồi)"
+- 09096220 DONG8
+    tax.09096220 [43 ký tự]: 09096220 - - - Của hoa hồi badian (đại hồi)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hoa hồi badian (đại hồi)"
+- 09096230 DONG8
+    tax.09096230 [39 ký tự]: 09096230 - - - Của cây ca-rum (caraway)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của cây ca-rum (caraway)"
+- 09096290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.09096290 [24 ký tự]: 09096290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.090962; chú giải: nhom0909.nhom, ch09.chuong, phan09.phan
+=== GÓI PN6 100590 ===
+# 100590 — Loại khác
+
+100590 — Cereals; maize (corn), other than seed
+  10059010 Loại dùng để rang nổ (popcorn) (SEN)
+  [1005909] Loại khác
+    10059091 Thích hợp sử dụng cho người (SEN)
+    10059099 Loại khác  [LK]
+
+- 10059010 DONG8
+    tax.10059010 [49 ký tự]: 10059010 - - Loại dùng để rang nổ (popcorn) (SEN)
+    sen.10059010 [483 ký tự]: NGÔ LOẠI DÙNG ĐỂ RANG NỔ (POPCORN) Ngô loại dùng để rang nổ (popcorn) còn được gọi là ngô rang nổ, là loại ngô (ngô, Zea mays var. Everta) nở ra từ nhân và phồng lên khi bị làm nóng. Popcorn có khả năng nổ bởi vì, giống như hạt dền, lúa miến, hạt diệm mạch (quinoa) và hạt kê, nhân hạt ngô có một lớp vỏ kín, ẩm, cứng và đầy tinh bột. Áp lực tạo ra bên trong hạt ngô làm nên một tiếng nổ nhỏ (hoặc "pop"). Một số loại ngô đang được canh tác chỉ sử dụng làm ngô rang nổ. Ngô loại (P
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để rang nổ (popcorn)"
+- 1005909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.1005909 [17 ký tự]: 1005909 Loại khác
+- 10059091 DONG8
+    tax.10059091 [48 ký tự]: 10059091 - - - Thích hợp sử dụng cho người (SEN)
+    sen.10059091 [246 ký tự]: NGÔ, THÍCH HỢP SỬ DỤNG CHO NGƯỜI Ngô thích hợp sử dụng cho con người là loại ngô sạch, tốt cho sức khỏe và được các cơ quan có thẩm quyền của quốc gia chứng nhận. Loại ngô này thường có hàm lượng aflatoxin tối đa là 20 ppb và độ ẩm không quá 14%.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Thích hợp sử dụng cho người"
+- 10059099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.10059099 [24 ký tự]: 10059099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.100590; chú giải: nhom1005.nhom, ch10.chuong, phan10.phan
+
+=== GÓI PN6 100610 ===
+# 100610 — Thóc
+
+100610 — Cereals; rice in the husk (paddy or rough)
+  10061010 Phù hợp để gieo trồng
+  10061090 Loại khác  [LK]
+
+- 10061010 DONG8
+    tax.10061010 [34 ký tự]: 10061010 - - Phù hợp để gieo trồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để gieo trồng"
+- 10061090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.10061090 [22 ký tự]: 10061090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.100610; chú giải: nhom1006.nhom, ch10.chuong, phan10.phan
+
+=== GÓI PN6 100640 ===
+# 100640 — Tấm
+
+100640 — Cereals; rice, broken
+  10064010 Loại dùng làm thức ăn chăn nuôi (SEN)
+  10064090 Loại khác (SEN)  [LK]
+
+- 10064010 DONG8
+    tax.10064010 [50 ký tự]: 10064010 - - Loại dùng làm thức ăn chăn nuôi (SEN)
+    sen.10064010 [1012 ký tự]: TẤM Tấm là một sản phẩm phụ của ngành công nghiệp xay xát gạo. Về giá trị dinh dưỡng, tấm tốt như gạo nguyên hạt. Tuy nhiên, gạo tấm có giá trị kinh tế thấp hơn gạo nguyên hạt. Tấm, dùng làm thức ăn chăn nuôi Nhìn chung, tấm có chất lượng thấp vì trong đó có vỏ trấu, cám, đá mạt, đá và các hạt đất sét. Tấm có thể được bán để làm thức chăn nuôi. Về hình thức, tấm làm thức ăn chăn nuôi dễ dàng được nhận biết nhờ hình dạng của nó, dựa trên hàm lượng hỗn hợp của gạo tấm đã đánh bóng (màu trắng), cám, trấu (màu nâu) và đá mạt, đá và các hạt đất sét (màu đen). Theo mục đích phân loại của AHTN, sản phẩm này được phân loại là tấm sử dụng làm thức ăn chăn nuôi thuộc phân nhóm 1006.40.10. Chất lượng của tấm có thể được cải thiện bằng cách xay xát lại để tách tấm đã được đánh bóng khỏi trấu, cám và các tạp chất khác. Sau đó có thể được bán để sử dụng cho người. Tấm phù hợp sử dụng cho con người Theo mục đích phân loại của AHTN, sản phẩm này được phân loại thành tấm loại khác thuộc phân nhóm 1006.40.90.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng làm thức ăn chăn nuôi"
+- 10064090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.10064090 [28 ký tự]: 10064090 - - Loại khác (SEN)
+    sen.10064090 [1012 ký tự]: TẤM Tấm là một sản phẩm phụ của ngành công nghiệp xay xát gạo. Về giá trị dinh dưỡng, tấm tốt như gạo nguyên hạt. Tuy nhiên, gạo tấm có giá trị kinh tế thấp hơn gạo nguyên hạt. Tấm, dùng làm thức ăn chăn nuôi Nhìn chung, tấm có chất lượng thấp vì trong đó có vỏ trấu, cám, đá mạt, đá và các hạt đất sét. Tấm có thể được bán để làm thức chăn nuôi. Về hình thức, tấm làm thức ăn chăn nuôi dễ dàng được nhận biết nhờ hình dạng của nó, dựa trên hàm lượng hỗn hợp của gạo tấm đã đánh bóng (màu trắng), cám, trấu (màu nâu) và đá mạt, đá và các hạt đất sét (màu đen). Theo mục đích phân loại của AHTN, sản phẩm này được phân loại là tấm sử dụng làm thức ăn chăn nuôi thuộc phân nhóm 1006.40.10. Chất lượng của tấm có thể được cải thiện bằng cách xay xát lại để tách tấm đã được đánh bóng khỏi trấu, cám và các tạp chất khác. Sau đó có thể được bán để sử dụng cho người. Tấm phù hợp sử dụng cho con người Theo mục đích phân loại của AHTN, sản phẩm này được phân loại thành tấm loại khác thuộc phân nhóm 1006.40.90.
+
+Nguồn cấp phân nhóm: wco.100640; chú giải: nhom1006.nhom, ch10.chuong, phan10.phan
+=== GÓI PN6 110290 ===
+# 110290 — Loại khác
+
+110290 — Cereal flours; other than wheat, meslin, and maize (corn)
+  11029010 Bột gạo
+  11029020 Bột lúa mạch đen
+  11029090 Loại khác  [LK]
+
+- 11029010 DONG8
+    tax.11029010 [20 ký tự]: 11029010 - - Bột gạo
+- 11029020 DONG8
+    tax.11029020 [29 ký tự]: 11029020 - - Bột lúa mạch đen
+- 11029090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11029090 [22 ký tự]: 11029090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110290; chú giải: nhom1102.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110319 ===
+# 110319 — Của ngũ cốc khác
+
+110319 — Cereal groats and meal; n.e.c. in heading no. 1103
+  11031910 Của meslin
+  11031920 Của gạo
+  11031990 Loại khác  [LK]
+
+- 11031910 DONG8
+    tax.11031910 [25 ký tự]: 11031910 - - - Của meslin
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của meslin"
+- 11031920 DONG8
+    tax.11031920 [22 ký tự]: 11031920 - - - Của gạo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của gạo"
+- 11031990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11031990 [24 ký tự]: 11031990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110319; chú giải: nhom1103.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110419 ===
+# 110419 — Của ngũ cốc khác
+
+110419 — Cereal grains; rolled or flaked, other than oats
+  11041910 Của ngô
+  11041990 Loại khác  [LK]
+
+- 11041910 DONG8
+    tax.11041910 [22 ký tự]: 11041910 - - - Của ngô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ngô"
+- 11041990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11041990 [24 ký tự]: 11041990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110419; chú giải: nhom1104.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110429 ===
+# 110429 — Của ngũ cốc khác
+
+110429 — Cereal grains; worked, other than rolled or flaked (e.g. Hulled, pearled, sliced or kibbled) of cereals, excluding oats and maize, and rice of heading no.1006
+  11042920 Của lúa mạch
+  11042990 Loại khác  [LK]
+
+- 11042920 DONG8
+    tax.11042920 [27 ký tự]: 11042920 - - - Của lúa mạch
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lúa mạch"
+- 11042990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11042990 [24 ký tự]: 11042990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110429; chú giải: nhom1104.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110620 ===
+# 110620 — Từ cọ sago hoặc từ rễ hoặc thân củ thuộc nhóm 07.14
+
+110620 — Flour, meal and powder; of sago or of roots or tubers of heading no. 0714
+  11062010 Từ sắn
+  11062020 Từ cọ sago
+  11062090 Loại khác  [LK]
+
+- 11062010 DONG8
+    tax.11062010 [19 ký tự]: 11062010 - - Từ sắn
+- 11062020 DONG8
+    tax.11062020 [23 ký tự]: 11062020 - - Từ cọ sago
+- 11062090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11062090 [22 ký tự]: 11062090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110620; chú giải: nhom1106.nhom, ch11.chuong, phan11.phan
+
+=== GÓI PN6 110819 ===
+# 110819 — Tinh bột khác
+
+110819 — Starch; n.e.c. in item no. 1108.11 to 1108.14
+  11081910 Tinh bột cọ sago
+  11081990 Loại khác  [LK]
+
+- 11081910 DONG8
+    tax.11081910 [31 ký tự]: 11081910 - - - Tinh bột cọ sago
+- 11081990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.11081990 [24 ký tự]: 11081990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.110819; chú giải: nhom1108.nhom, ch11.chuong, phan11.phan
+=== GÓI PN6 120740 ===
+# 120740 — Hạt vừng
+
+120740 — Oil seeds; sesamum seeds, whether or not broken
+  12074010 Loại ăn được
+  12074090 Loại khác  [LK]
+
+- 12074010 DONG8
+    tax.12074010 [25 ký tự]: 12074010 - - Loại ăn được
+    vế phải phủ (cổng 5): [GIỚI HẠN] "ăn được"
+- 12074090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.12074090 [22 ký tự]: 12074090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.120740; chú giải: nhom1207.nhom, ch12.chuong, phan12.phan
+
+=== GÓI PN6 121293 ===
+# 121293 — Mía đường
+
+121293 — Sugar cane; fit for human consumption, fresh, chilled, frozen or dried, whether or not ground
+  12129310 Phù hợp để làm giống
+  12129390 Loại khác  [LK]
+
+- 12129310 DONG8
+    tax.12129310 [35 ký tự]: 12129310 - - - Phù hợp để làm giống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Phù hợp để làm giống"
+- 12129390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.12129390 [24 ký tự]: 12129390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.121293; chú giải: nhom1212.nhom, ch12.chuong, phan12.phan
+=== GÓI PN6 130190 ===
+# 130190 — Loại khác
+
+130190 — Natural gums, resins, gum-resins and oleoresins, n.e.c. in heading no. 1301
+  13019030 Nhựa cây gai dầu
+  13019040 Nhựa cánh kiến đỏ
+  13019090 Loại khác  [LK]
+
+- 13019030 DONG8
+    tax.13019030 [29 ký tự]: 13019030 - - Nhựa cây gai dầu
+- 13019040 DONG8
+    tax.13019040 [30 ký tự]: 13019040 - - Nhựa cánh kiến đỏ
+- 13019090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.13019090 [22 ký tự]: 13019090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.130190; chú giải: nhom1301.nhom, ch13.chuong, phan13.phan
+
+=== GÓI PN6 130211 ===
+# 130211 — Thuốc phiện
+
+130211 — Vegetable saps and extracts; opium
+  13021110 Bột thuốc phiện (Pulvis opii)
+  13021190 Loại khác  [LK]
+
+- 13021110 DONG8
+    tax.13021110 [44 ký tự]: 13021110 - - - Bột thuốc phiện (Pulvis opii)
+- 13021190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.13021190 [24 ký tự]: 13021190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.130211; chú giải: nhom1302.nhom, ch13.chuong, phan13.phan
+
+=== GÓI PN6 130239 ===
+# 130239 — Loại khác
+
+130239 — Mucilages and thickeners; whether or not modified, derived from vegetable products, n.e.c. in item no. 1302.3
+  [1302391] Làm từ tảo carrageen (carrageenan)
+    13023911 Dạng bột, tinh chế một phần (SEN)
+    13023912 Dạng bột, đã tinh chế (SEN)
+    13023913 Carrageen dạng mảnh đã xử lý kiềm (ATCC) (SEN)
+    13023919 Loại khác  [LK]
+  13023990 Loại khác  [LK]
+
+- 1302391 TIEU_DE
+    tieuDe.1302391 [42 ký tự]: 1302391 Làm từ tảo carrageen (carrageenan)
+- 13023911 DONG8
+    tax.13023911 [50 ký tự]: 13023911 - - - - Dạng bột, tinh chế một phần (SEN)
+    sen.13023911 [401 ký tự]: CARRAGEENAN DẠNG BỘT ĐÃ TINH CHẾ VÀ TINH CHÊ MỘT PHẦN Ảnh 1. Carrageenan dạng bột đã tinh chế (RC) và Carrageenan dạng bột tinh chế một phần (SRC) Ở dạng bột, RC màu trắng hơn SRC Ảnh 2: Carrageenan đã tinh chế (RC) và Carrageenan tinh chế một phần (SRC) Khi hòa tan với nước, RC trong hơn SRC Ảnh 3. Quy trình sản xuất Carrageenan tinh chế một phần Ảnh 4. Quá trình sản xuất Carrageenan đã tinh chế
+- 13023912 DONG8
+    tax.13023912 [44 ký tự]: 13023912 - - - - Dạng bột, đã tinh chế (SEN)
+    sen.13023912 [401 ký tự]: CARRAGEENAN DẠNG BỘT ĐÃ TINH CHẾ VÀ TINH CHÊ MỘT PHẦN Ảnh 1. Carrageenan dạng bột đã tinh chế (RC) và Carrageenan dạng bột tinh chế một phần (SRC) Ở dạng bột, RC màu trắng hơn SRC Ảnh 2: Carrageenan đã tinh chế (RC) và Carrageenan tinh chế một phần (SRC) Khi hòa tan với nước, RC trong hơn SRC Ảnh 3. Quy trình sản xuất Carrageenan tinh chế một phần Ảnh 4. Quá trình sản xuất Carrageenan đã tinh chế
+- 13023913 DONG8
+    tax.13023913 [63 ký tự]: 13023913 - - - - Carrageen dạng mảnh đã xử lý kiềm (ATCC) (SEN)
+    sen.13023913 [369 ký tự]: CARRAGEENAN DẠNG MẢNH ĐÃ XỬ LÝ KIỀM (ATCC) Carrageenan dạng mảnh đã xử lý kiềm là sản phẩm được làm từ rong biển, chủ yếu từ các loài Euchema cottoni, đã được xử lý kiềm để thay đổi cấu trúc của rong biển, và chiết xuất carrageenan, sau đó cắt nhỏ trước khi làm khô. Chips of alkali Ảnh 1. Các mảnh Carra Manufacturing Process of A Ảnh 2. Quá trình sản xuất carrage
+- 13023919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.13023919 [26 ký tự]: 13023919 - - - - Loại khác
+- 13023990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.13023990 [24 ký tự]: 13023990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.130239; chú giải: nhom1302.nhom, ch13.chuong, phan13.phan
