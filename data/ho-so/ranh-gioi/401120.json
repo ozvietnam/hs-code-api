@@ -1,0 +1,118 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "401120",
+  "nhom": "4011",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-401120",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4011201",
+      "nguon": "tieuDe.4011201",
+      "trich": "4011201 Chiều rộng không quá 450 mm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "40112011",
+      "nguon": "tax.40112011",
+      "trich": "40112011 - - - Có chiều rộng không quá 230 mm và lắp vành có đường kính không quá 16 inch (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 230,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhVanh",
+          "op": "<=",
+          "value": 16,
+          "donVi": "inch"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40112012",
+      "nguon": "tax.40112012",
+      "trich": "40112012 - - - Có chiều rộng không quá 230 mm và lắp vành có đường kính trên 16 inch (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 230,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhVanh",
+          "op": ">",
+          "value": 16,
+          "donVi": "inch"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40112013",
+      "nguon": "tax.40112013",
+      "trich": "40112013 - - - Có chiều rộng trên 230 mm nhưng không quá 385 mm (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 230,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 385,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40112019",
+      "nguon": "tax.40112019",
+      "trich": "40112019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40112090",
+      "nguon": "tax.40112090",
+      "trich": "40112090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "4011201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4011201 'Chiều rộng không quá 450 mm' ⇒ chieuRong <= 450 mm"
+    },
+    {
+      "ma": "40112011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40112011 'Có chiều rộng không quá 230 mm và lắp vành có đường kính không quá 16 inch' ⇒ chieuRong <= 230 mm, duongKinhVanh <= 16 inch"
+    }
+  ]
+}
