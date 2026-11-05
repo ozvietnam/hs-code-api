@@ -143,46 +143,6 @@
   ],
   "tieuChi6": [
     {
-      "hs6": "853921",
-      "fact": "den_day_toc_halogen_vonfram",
-      "op": "=",
-      "value": true,
-      "donVi": null,
-      "nguon": "wco.853921",
-      "trich": "853921 Lamps; filament, (excluding ultra-violet or infra-red), tungsten halogen",
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "hs6": "853921",
-      "fact": "la_den_tia_cuc_tim_hoac_tia_hong_ngoai",
-      "op": "=",
-      "value": false,
-      "donVi": null,
-      "nguon": "wco.853921",
-      "trich": "Lamps; filament, (excluding ultra-violet or infra-red), tungsten halogen",
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "hs6": "853910",
-      "fact": "la_den_pha_gan_kin",
-      "op": "=",
-      "value": true,
-      "donVi": null,
-      "nguon": "wco.853910",
-      "trich": "853910 Lamps; sealed beam units",
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "hs6": "853910",
-      "fact": "thau_kinh_phan_xa_va_soi_dot_nam_kin_trong_den",
-      "op": "=",
-      "value": true,
-      "donVi": null,
-      "nguon": "nhom8539.nhom",
-      "trich": "Bộ Đèn pha gắn kín đôi khi được thiết kế để gắn vào thân xe ôtô; chúng gồm một thấu kính và phản xạ và sợi đốt nằm kín bên trong đèn nạp khí hoặc đèn kiểu chân không.",
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
       "hs6": "853922",
       "fact": "cong_suat",
       "op": "<=",
@@ -210,6 +170,46 @@
       "donVi": null,
       "nguon": "wco.853922",
       "trich": "of a power not exceeding 200W and for a voltage exceeding 100 volts, other than tungsten halogen",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853910",
+      "fact": "la_den_pha_gan_kin",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "nguon": "wco.853910",
+      "trich": "853910 Lamps; sealed beam units",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853910",
+      "fact": "thau_kinh_phan_xa_va_soi_dot_nam_kin_trong_den",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "nguon": "nhom8539.nhom",
+      "trich": "Bộ Đèn pha gắn kín đôi khi được thiết kế để gắn vào thân xe ôtô; chúng gồm một thấu kính và phản xạ và sợi đốt nằm kín bên trong đèn nạp khí hoặc đèn kiểu chân không.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853921",
+      "fact": "den_day_toc_halogen_vonfram",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "nguon": "wco.853921",
+      "trich": "853921 Lamps; filament, (excluding ultra-violet or infra-red), tungsten halogen",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853921",
+      "fact": "la_den_tia_cuc_tim_hoac_tia_hong_ngoai",
+      "op": "=",
+      "value": false,
+      "donVi": null,
+      "nguon": "wco.853921",
+      "trich": "Lamps; filament, (excluding ultra-violet or infra-red), tungsten halogen",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -470,58 +470,109 @@
     },
     {
       "hs": "85392220",
-      "dieuKien": "Bóng đèn dây tóc phân nhóm 8539.22 (công suất không quá 200 W, điện áp trên 100 V, không phải halogen vonfram) dùng cho thiết bị y tế",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị y tế",
+      "nguon": "tax.85392220",
+      "trich": "85392220 - - - Dùng cho thiết bị y tế",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị y tế"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853922",
+          "ngay": "2026-11-02",
+          "bam": "673a485eb5fcdc4bb5b6d29bf309974f07b4ad71b7324fffde686c54067be63f"
+        }
+      },
       "tieuChi": {
         "fact": "dung_cho_thiet_bi_y_te",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85392220",
-      "trich": "85392220 - - - Dùng cho thiết bị y tế",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85392231",
-      "dieuKien": "Thuộc tiêu đề quốc gia 8539.22.3x (tên bị lược, dòng cha không có trong nguồn — đối chiếu biểu thuế); loại dùng trong chiếu sáng trang trí, công suất không quá 60 W",
+      "dieuKien": "công dụng / mục đích: chiếu sáng trang trí; công suất <= 60 W",
+      "nguon": "tax.85392231",
+      "trich": "85392231 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng trang trí"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 60,
+          "donVi": "W"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853922",
+          "ngay": "2026-11-02",
+          "bam": "673a485eb5fcdc4bb5b6d29bf309974f07b4ad71b7324fffde686c54067be63f"
+        }
+      },
       "tieuChi": {
         "fact": "cong_suat",
         "op": "<=",
         "value": 60,
         "donVi": "W"
-      },
-      "nguon": "tax.85392231",
-      "trich": "85392231 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85392232",
-      "dieuKien": "Thuộc tiêu đề quốc gia 8539.22.3x (tên bị lược, dòng cha không có trong nguồn — đối chiếu biểu thuế); loại dùng trong chiếu sáng trang trí, công suất trên 60 W",
+      "dieuKien": "công dụng / mục đích: chiếu sáng trang trí; công suất > 60 W",
+      "nguon": "tax.85392232",
+      "trich": "85392232 - - - - Loại dùng trong chiếu sáng trang trí, công suất trên 60 W",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng trang trí"
+        },
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 60,
+          "donVi": "W"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853922",
+          "ngay": "2026-11-02",
+          "bam": "673a485eb5fcdc4bb5b6d29bf309974f07b4ad71b7324fffde686c54067be63f"
+        }
+      },
       "tieuChi": {
         "fact": "cong_suat",
         "op": ">",
         "value": 60,
         "donVi": "W"
-      },
-      "nguon": "tax.85392232",
-      "trich": "85392232 - - - - Loại dùng trong chiếu sáng trang trí, công suất trên 60 W",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85392233",
-      "dieuKien": "Thuộc tiêu đề quốc gia 8539.22.3x (tên bị lược, dòng cha không có trong nguồn — đối chiếu biểu thuế); loại khác ngoài chiếu sáng trang trí (85392231, 85392232) và dùng cho chiếu sáng gia dụng",
-      "tieuChi": {
-        "fact": "dung_cho_chieu_sang_gia_dung",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
+      "dieuKien": "công dụng / mục đích: chiếu sáng gia dụng",
       "nguon": "tax.85392233",
       "trich": "85392233 - - - - Loại khác, dùng cho chiếu sáng gia dụng",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -532,6 +583,27 @@
         ],
         "toTienCoTen": "853922",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng gia dụng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853922",
+          "ngay": "2026-11-02",
+          "bam": "673a485eb5fcdc4bb5b6d29bf309974f07b4ad71b7324fffde686c54067be63f"
+        }
+      },
+      "tieuChi": {
+        "fact": "dung_cho_chieu_sang_gia_dung",
+        "op": "=",
+        "value": true,
+        "donVi": null
       }
     },
     {
@@ -556,30 +628,45 @@
     },
     {
       "hs": "85392291",
-      "dieuKien": "Thuộc tiêu đề quốc gia 8539.22.9x (tên bị lược, dòng cha không có trong nguồn — đối chiếu biểu thuế; không phân biệt được với 8539.22.3x từ nguồn); loại dùng trong chiếu sáng trang trí, công suất không quá 60 W",
+      "dieuKien": "công dụng / mục đích: chiếu sáng trang trí; công suất <= 60 W",
+      "nguon": "tax.85392291",
+      "trich": "85392291 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng trang trí"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 60,
+          "donVi": "W"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853922",
+          "ngay": "2026-11-02",
+          "bam": "673a485eb5fcdc4bb5b6d29bf309974f07b4ad71b7324fffde686c54067be63f"
+        }
+      },
       "tieuChi": {
         "fact": "cong_suat",
         "op": "<=",
         "value": 60,
         "donVi": "W"
-      },
-      "nguon": "tax.85392291",
-      "trich": "85392291 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85392293",
-      "dieuKien": "Thuộc tiêu đề quốc gia 8539.22.9x (tên bị lược, dòng cha không có trong nguồn — đối chiếu biểu thuế); loại khác ngoài chiếu sáng trang trí (85392291) và dùng cho chiếu sáng gia dụng",
-      "tieuChi": {
-        "fact": "dung_cho_chieu_sang_gia_dung",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
+      "dieuKien": "công dụng / mục đích: chiếu sáng gia dụng",
       "nguon": "tax.85392293",
       "trich": "85392293 - - - - Loại khác, dùng cho chiếu sáng gia dụng",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -589,6 +676,27 @@
         ],
         "toTienCoTen": "853922",
         "dinhNghiaDuoc": true
+      },
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng gia dụng"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853922",
+          "ngay": "2026-11-02",
+          "bam": "673a485eb5fcdc4bb5b6d29bf309974f07b4ad71b7324fffde686c54067be63f"
+        }
+      },
+      "tieuChi": {
+        "fact": "dung_cho_chieu_sang_gia_dung",
+        "op": "=",
+        "value": true,
+        "donVi": null
       }
     },
     {
@@ -957,32 +1065,17 @@
     },
     {
       "hs": "85395210",
-      "dieuKien": "tên loại hàng: đầu đèn ren xoáy",
-      "nguon": "tax.85395210",
-      "trich": "85395210 - - - Loại đầu đèn ren xoáy",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "đầu đèn ren xoáy"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853952",
-          "ngay": "2026-11-02",
-          "bam": "b2bb0c1b892cd4305f3f2c3db3ef19e0ce4320ea4322ac9d866d405f52a3baed"
-        }
-      },
+      "dieuKien": "Đèn đi-ốt phát quang (LED) (phân nhóm 8539.52) loại đầu đèn ren xoáy",
       "tieuChi": {
         "fact": "dau_den_ren_xoay",
         "op": "=",
         "value": true,
         "donVi": null
-      }
+      },
+      "nguon": "tax.85395210",
+      "trich": "85395210 - - - Loại đầu đèn ren xoáy",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
     },
     {
       "hs": "85395290",
@@ -1000,205 +1093,6 @@
         ],
         "toTienCoTen": "853952",
         "dinhNghiaDuoc": true
-      }
-    },
-    {
-      "hs": "85399010",
-      "dieuKien": "Bộ phận (phân nhóm 8539.90): nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc",
-      "tieuChi": {
-        "fact": "nap_bit_nhom_hoac_dui_xoay_nhom",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
-      "nguon": "tax.85399010",
-      "trich": "85399010 - - Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
-    },
-    {
-      "hs": "85399020",
-      "dieuKien": "Bộ phận loại khác (ngoài 85399010), dùng cho đèn của xe có động cơ",
-      "tieuChi": {
-        "fact": "dung_cho_den_cua_xe_co_dong_co",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
-      "nguon": "tax.85399020",
-      "trich": "85399020 - - Loại khác, dùng cho đèn của xe có động cơ",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": true,
-      "phamViLoaiKhac": {
-        "nguonLoai": "MAY_SUY",
-        "cha": "853990",
-        "truAnhEm": [
-          "85399010",
-          "85399030"
-        ],
-        "toTienCoTen": "853990",
-        "dinhNghiaDuoc": false
-      }
-    },
-    {
-      "hs": "85399030",
-      "dieuKien": "Bộ phận loại khác (ngoài 85399010, 85399020), của phân nhóm 8539.51.00 (mô-đun đi-ốt phát quang LED)",
-      "tieuChi": {
-        "fact": "bo_phan_cua_phan_nhom_85395100",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
-      "nguon": "tax.85399030",
-      "trich": "85399030 - - Loại khác, của phân nhóm 8539.51.00",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": true,
-      "phamViLoaiKhac": {
-        "nguonLoai": "MAY_SUY",
-        "cha": "853990",
-        "truAnhEm": [
-          "85399010",
-          "85399020"
-        ],
-        "toTienCoTen": "853990",
-        "dinhNghiaDuoc": false
-      }
-    },
-    {
-      "hs": "85399090",
-      "dieuKien": "Phần còn lại của phân nhóm 8539.90 (bộ phận) trừ 85399010 (nắp bịt nhôm, đui xoáy nhôm), 85399020 (dùng cho đèn xe có động cơ), 85399030 (của mô-đun LED 8539.51.00)",
-      "tieuChi": null,
-      "nguon": "tax.85399090",
-      "trich": "85399090 - - Loại khác",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": true,
-      "phamViLoaiKhac": {
-        "nguonLoai": "MAY_SUY",
-        "cha": "853990",
-        "truAnhEm": [
-          "85399010",
-          "85399020",
-          "85399030"
-        ],
-        "toTienCoTen": "853990",
-        "dinhNghiaDuoc": false
-      }
-    },
-    {
-      "hs": "85391010",
-      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ thuộc Chương 87",
-      "nguon": "tax.85391010",
-      "trich": "85391010 - - Dùng cho xe có động cơ thuộc Chương 87",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "xe có động cơ thuộc Chương 87"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853910",
-          "ngay": "2026-11-02",
-          "bam": "a535b4dc92260a365a6292f9e093a92fa7a92927ff7a21df40de8e6275f24451"
-        }
-      },
-      "tieuChi": {
-        "fact": "dung_cho_xe_co_dong_co_chuong_87",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      }
-    },
-    {
-      "hs": "85392120",
-      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị y tế",
-      "nguon": "tax.85392120",
-      "trich": "85392120 - - - Dùng cho thiết bị y tế",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "thiết bị y tế"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853921",
-          "ngay": "2026-11-02",
-          "bam": "89f3448e90eed92df69d5a20561f0dec31a9b3099a2966f4783cef7efe2a9ac7"
-        }
-      },
-      "tieuChi": {
-        "fact": "dung_cho_thiet_bi_y_te",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      }
-    },
-    {
-      "hs": "85392130",
-      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ",
-      "nguon": "tax.85392130",
-      "trich": "85392130 - - - Dùng cho xe có động cơ",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "xe có động cơ"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853921",
-          "ngay": "2026-11-02",
-          "bam": "89f3448e90eed92df69d5a20561f0dec31a9b3099a2966f4783cef7efe2a9ac7"
-        }
-      },
-      "tieuChi": {
-        "fact": "dung_cho_xe_co_dong_co",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      }
-    },
-    {
-      "hs": "85392140",
-      "dieuKien": "tên loại hàng: Bóng đèn phản xạ",
-      "nguon": "tax.85392140",
-      "trich": "85392140 - - - Bóng đèn phản xạ khác",
-      "nguonLoai": "CLAUDE_DUYET",
-      "loaiKhac": false,
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bóng đèn phản xạ"
-        }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853921",
-          "ngay": "2026-11-02",
-          "bam": "89f3448e90eed92df69d5a20561f0dec31a9b3099a2966f4783cef7efe2a9ac7"
-        }
-      },
-      "phanConLai": true,
-      "tieuChi": {
-        "fact": "la_bong_den_phan_xa",
-        "op": "=",
-        "value": true,
-        "donVi": null
       }
     },
     {
@@ -1342,6 +1236,234 @@
         "op": "=",
         "value": true,
         "donVi": null
+      }
+    },
+    {
+      "hs": "85399090",
+      "dieuKien": "Phần còn lại của phân nhóm 8539.90 (bộ phận) trừ 85399010 (nắp bịt nhôm, đui xoáy nhôm), 85399020 (dùng cho đèn xe có động cơ), 85399030 (của mô-đun LED 8539.51.00)",
+      "tieuChi": null,
+      "nguon": "tax.85399090",
+      "trich": "85399090 - - Loại khác",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": true,
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "853990",
+        "truAnhEm": [
+          "85399010",
+          "85399020",
+          "85399030"
+        ],
+        "toTienCoTen": "853990",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "85391010",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ thuộc Chương 87",
+      "nguon": "tax.85391010",
+      "trich": "85391010 - - Dùng cho xe có động cơ thuộc Chương 87",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ thuộc Chương 87"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853910",
+          "ngay": "2026-11-02",
+          "bam": "a535b4dc92260a365a6292f9e093a92fa7a92927ff7a21df40de8e6275f24451"
+        }
+      },
+      "tieuChi": {
+        "fact": "dung_cho_xe_co_dong_co_chuong_87",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      }
+    },
+    {
+      "hs": "85392120",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị y tế",
+      "nguon": "tax.85392120",
+      "trich": "85392120 - - - Dùng cho thiết bị y tế",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị y tế"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853921",
+          "ngay": "2026-11-02",
+          "bam": "89f3448e90eed92df69d5a20561f0dec31a9b3099a2966f4783cef7efe2a9ac7"
+        }
+      },
+      "tieuChi": {
+        "fact": "dung_cho_thiet_bi_y_te",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      }
+    },
+    {
+      "hs": "85392130",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ",
+      "nguon": "tax.85392130",
+      "trich": "85392130 - - - Dùng cho xe có động cơ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853921",
+          "ngay": "2026-11-02",
+          "bam": "89f3448e90eed92df69d5a20561f0dec31a9b3099a2966f4783cef7efe2a9ac7"
+        }
+      },
+      "tieuChi": {
+        "fact": "dung_cho_xe_co_dong_co",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      }
+    },
+    {
+      "hs": "85392140",
+      "dieuKien": "tên loại hàng: Bóng đèn phản xạ",
+      "nguon": "tax.85392140",
+      "trich": "85392140 - - - Bóng đèn phản xạ khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bóng đèn phản xạ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853921",
+          "ngay": "2026-11-02",
+          "bam": "89f3448e90eed92df69d5a20561f0dec31a9b3099a2966f4783cef7efe2a9ac7"
+        }
+      },
+      "phanConLai": true,
+      "tieuChi": {
+        "fact": "la_bong_den_phan_xa",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      }
+    },
+    {
+      "hs": "85395210",
+      "dieuKien": "tên loại hàng: đầu đèn ren xoáy",
+      "nguon": "tax.85395210",
+      "trich": "85395210 - - - Loại đầu đèn ren xoáy",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đầu đèn ren xoáy"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853952",
+          "ngay": "2026-11-02",
+          "bam": "b2bb0c1b892cd4305f3f2c3db3ef19e0ce4320ea4322ac9d866d405f52a3baed"
+        }
+      },
+      "tieuChi": {
+        "fact": "dau_den_ren_xoay",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      }
+    },
+    {
+      "hs": "85399010",
+      "dieuKien": "Bộ phận (phân nhóm 8539.90): nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc",
+      "tieuChi": {
+        "fact": "nap_bit_nhom_hoac_dui_xoay_nhom",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      },
+      "nguon": "tax.85399010",
+      "trich": "85399010 - - Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
+    },
+    {
+      "hs": "85399020",
+      "dieuKien": "Bộ phận loại khác (ngoài 85399010), dùng cho đèn của xe có động cơ",
+      "tieuChi": {
+        "fact": "dung_cho_den_cua_xe_co_dong_co",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      },
+      "nguon": "tax.85399020",
+      "trich": "85399020 - - Loại khác, dùng cho đèn của xe có động cơ",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": true,
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "853990",
+        "truAnhEm": [
+          "85399010",
+          "85399030"
+        ],
+        "toTienCoTen": "853990",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "85399030",
+      "dieuKien": "Bộ phận loại khác (ngoài 85399010, 85399020), của phân nhóm 8539.51.00 (mô-đun đi-ốt phát quang LED)",
+      "tieuChi": {
+        "fact": "bo_phan_cua_phan_nhom_85395100",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      },
+      "nguon": "tax.85399030",
+      "trich": "85399030 - - Loại khác, của phân nhóm 8539.51.00",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": true,
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "853990",
+        "truAnhEm": [
+          "85399010",
+          "85399020"
+        ],
+        "toTienCoTen": "853990",
+        "dinhNghiaDuoc": false
       }
     }
   ],

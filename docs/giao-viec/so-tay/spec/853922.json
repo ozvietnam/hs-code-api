@@ -1,0 +1,128 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853922",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-853922",
+  "dong8": {
+    "85392220": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị y tế"
+        }
+      ]
+    },
+    "85392231": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng trang trí"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 60,
+          "donVi": "W"
+        }
+      ]
+    },
+    "85392232": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng trang trí"
+        },
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 60,
+          "donVi": "W"
+        }
+      ]
+    },
+    "85392233": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng gia dụng"
+        }
+      ]
+    },
+    "85392291": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng trang trí"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 60,
+          "donVi": "W"
+        }
+      ]
+    },
+    "85392293": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng gia dụng"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8539223": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bóng đèn phản xạ"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85392220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392220: \"Dùng cho thiết bị y tế\" ⇒ dungCho thiết bị y tế"
+    },
+    {
+      "ma": "8539223",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8539223: \"Bóng đèn phản xạ khác\" ⇒ tenLoai Bóng đèn phản xạ, phanConLai true"
+    },
+    {
+      "ma": "85392231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392231: \"chiếu sáng trang trí, công suất không quá 60 W\" ⇒ congDung chiếu sáng trang trí, congSuat <= 60 W"
+    },
+    {
+      "ma": "85392232",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392232: \"chiếu sáng trang trí, công suất trên 60 W\" ⇒ congDung chiếu sáng trang trí, congSuat > 60 W"
+    },
+    {
+      "ma": "85392233",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392233: \"chiếu sáng gia dụng\" ⇒ congDung chiếu sáng gia dụng"
+    },
+    {
+      "ma": "85392291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392291: \"chiếu sáng trang trí, công suất không quá 60 W\" ⇒ congDung chiếu sáng trang trí, congSuat <= 60 W"
+    },
+    {
+      "ma": "85392293",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392293: \"chiếu sáng gia dụng\" ⇒ congDung chiếu sáng gia dụng"
+    }
+  ]
+}
