@@ -1,0 +1,103 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "020760",
+  "nhom": "0207",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1529#soan-020760",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "02076010",
+      "nguon": "tax.02076010",
+      "trich": "02076010 - - Chưa chặt mảnh, tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "02076020",
+      "nguon": "tax.02076020",
+      "trich": "02076020 - - Chưa chặt mảnh, đông lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "02076030",
+      "nguon": "tax.02076030",
+      "trich": "02076030 - - Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "02076040",
+      "nguon": "tax.02076040",
+      "trich": "02076040 - - Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "02076010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daChatManh",
+      "ghiChu": "tax.02076010 \"Chưa chặt mảnh, tươi hoặc ướp lạnh\" — vế \"Chưa chặt mảnh\" không có khoá tu-vung@2 (trục chưa/đã chặt mảnh phân biệt 02076010/20 với 02076030/40); phuongPhapBaoQuan TUOI_UOP_LANH chỉ phủ vế \"tươi hoặc ướp lạnh\"."
+    },
+    {
+      "ma": "02076020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daChatManh",
+      "ghiChu": "tax.02076020 \"Chưa chặt mảnh, đông lạnh\" — vế \"Chưa chặt mảnh\" không có khoá tu-vung@2; phuongPhapBaoQuan DONG_LANH chỉ phủ vế \"đông lạnh\"."
+    },
+    {
+      "ma": "02076030",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daChatManh",
+      "ghiChu": "tax.02076030 \"Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh\" — vế \"Đã chặt mảnh và phụ phẩm sau giết mổ\" không có khoá tu-vung@2; phuongPhapBaoQuan TUOI_UOP_LANH chỉ phủ vế \"tươi hoặc ướp lạnh\"."
+    },
+    {
+      "ma": "02076040",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daChatManh",
+      "ghiChu": "tax.02076040 \"Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh\" — vế \"Đã chặt mảnh và phụ phẩm sau giết mổ\" không có khoá tu-vung@2; phuongPhapBaoQuan DONG_LANH chỉ phủ vế \"đông lạnh\"."
+    }
+  ]
+}

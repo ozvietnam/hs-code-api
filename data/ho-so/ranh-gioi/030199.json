@@ -1,0 +1,379 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "030199",
+  "nhom": "0301",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030199",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "0301991",
+      "nguon": "tieuDe.0301991",
+      "trich": "0301991 Cá bột của cá măng biển và của cá mú",
+      "dieuKienSo": [
+        {
+          "fact": "caBot",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "cá măng biển",
+            "cá mú"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "0301992",
+      "nguon": "tieuDe.0301992",
+      "trich": "0301992 Cá bột loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "caBot",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "0301991"
+      ]
+    },
+    {
+      "id": "0301993",
+      "nguon": "tieuDe.0301993",
+      "trich": "0301993 Cá măng biển và cá mú, trừ cá bột",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "cá măng biển",
+            "cá mú"
+          ]
+        },
+        {
+          "fact": "caBot",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "0301994",
+      "nguon": "tieuDe.0301994",
+      "trich": "0301994 Cá nước ngọt khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cá nước ngọt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "03019911",
+      "nguon": "tax.03019911",
+      "trich": "03019911 - - - - Để nhân giống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019919",
+      "nguon": "tax.03019919",
+      "trich": "03019919 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019922",
+      "nguon": "tax.03019922",
+      "trich": "03019922 - - - - Cá chép khác, để nhân giống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cá chép"
+        },
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "03019923",
+      "nguon": "tax.03019923",
+      "trich": "03019923 - - - - Cá chép loại khác (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cá chép"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "03019922"
+      ]
+    },
+    {
+      "hs": "03019924",
+      "nguon": "tax.03019924",
+      "trich": "03019924 - - - - Loại khác, để nhân giống",
+      "dieuKienSo": [
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019929",
+      "nguon": "tax.03019929",
+      "trich": "03019929 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019931",
+      "nguon": "tax.03019931",
+      "trich": "03019931 - - - - Cá măng biển để nhân giống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cá măng biển"
+        },
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019932",
+      "nguon": "tax.03019932",
+      "trich": "03019932 - - - - Cá măng biển, loại khác (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cá măng biển"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "03019931"
+      ]
+    },
+    {
+      "hs": "03019933",
+      "nguon": "tax.03019933",
+      "trich": "03019933 - - - - Cá mú chấm nhỏ (Plectropomus leopardus)(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cá mú chấm nhỏ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019934",
+      "nguon": "tax.03019934",
+      "trich": "03019934 - - - - Cá mú hoa nâu/cá mú cọp (Epinephelus fuscoguttatus) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cá mú hoa nâu",
+            "cá mú cọp"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019935",
+      "nguon": "tax.03019935",
+      "trich": "03019935 - - - - Cá mú dẹt (Cromileptes altivelis) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cá mú dẹt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019936",
+      "nguon": "tax.03019936",
+      "trich": "03019936 - - - - Cá mú loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cá mú"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "03019941",
+      "nguon": "tax.03019941",
+      "trich": "03019941 - - - - Cá rô phi (Oreochromis spp.)(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cá rô phi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019942",
+      "nguon": "tax.03019942",
+      "trich": "03019942 - - - - Cá chép khác, để nhân giống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cá chép"
+        },
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "03019949",
+      "nguon": "tax.03019949",
+      "trich": "03019949 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03019950",
+      "nguon": "tax.03019950",
+      "trich": "03019950 - - - Cá biển khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cá biển"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "03019990",
+      "nguon": "tax.03019990",
+      "trich": "03019990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "0301991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0301991 \"Cá bột của cá măng biển và của cá mú\" ⇒ caBot CO + tenLoai [\"cá măng biển\",\"cá mú\"] — vế \"của cá măng biển và của cá mú\" phủ bằng tên loài (cùng khoá với tầng 0301993)."
+    },
+    {
+      "ma": "0301992",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0301992 \"Cá bột loại khác\" ⇒ caBot CO + phanConLai [\"0301991\"] — \"loại khác\" chỉ phủ tầng cá bột của cá măng biển/cá mú."
+    },
+    {
+      "ma": "0301993",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0301993 \"Cá măng biển và cá mú, trừ cá bột\" ⇒ tenLoai [\"cá măng biển\",\"cá mú\"] + caBot KHONG (đọc KHÔNG của caBot gồm \"trừ cá bột\")."
+    },
+    {
+      "ma": "0301994",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0301994 \"Cá nước ngọt khác\" ⇒ tenLoai \"Cá nước ngọt\" + phanConLai: true — phủ các tầng anh em đứng trước (cá bột 2 tầng, cá măng biển/cá mú)."
+    },
+    {
+      "ma": "03019911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019911 \"Để nhân giống (SEN)\" ⇒ dungLamGiong CO; tên loài do tầng 0301991 đảm nhiệm."
+    },
+    {
+      "ma": "03019922",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019922 \"Cá chép khác, để nhân giống (SEN)\" ⇒ tenLoai \"Cá chép\" + dungLamGiong CO; \"khác\" = cá chép không chi tiết tại 0301.93 (sen.03019922), không phải phần còn lại trong tầng ⇒ phanConLai: false."
+    },
+    {
+      "ma": "03019923",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019923 \"Cá chép loại khác (SEN)\" ⇒ tenLoai \"Cá chép\" + phanConLai [\"03019922\"] — phần còn lại có tên của cặp cá chép."
+    },
+    {
+      "ma": "03019924",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019924 \"Loại khác, để nhân giống\" ⇒ chỉ điều kiện của vế: dungLamGiong CO (máy tự phủ định anh em có tên)."
+    },
+    {
+      "ma": "03019931",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019931 \"Cá măng biển để nhân giống (SEN)\" ⇒ tenLoai \"cá măng biển\" + dungLamGiong CO."
+    },
+    {
+      "ma": "03019932",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019932 \"Cá măng biển, loại khác (SEN)\" ⇒ tenLoai \"cá măng biển\" + phanConLai [\"03019931\"]."
+    },
+    {
+      "ma": "03019934",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019934 \"Cá mú hoa nâu/cá mú cọp (Epinephelus fuscoguttatus) (SEN)\" ⇒ tenLoai [\"Cá mú hoa nâu\",\"cá mú cọp\"] — dấu \"/\" là hai tên của cùng loài ⇒ mảng (hoặc)."
+    },
+    {
+      "ma": "03019936",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019936 \"Cá mú loại khác\" ⇒ tenLoai \"Cá mú\", phanConLai: false — tên \"Cá mú\" bị chứa trong tên loài cụ thể của ba anh em (\"Cá mú chấm nhỏ\"…), máy xử bằng luật tên cụ thể hơn thắng (cong2-ten-cu-the-hon, như 845290 \"bàn đạp\" ⊃ \"Bàn\"); khai phanConLai làm dòng không tới được (cong2-dong-khong-toi-duoc)."
+    },
+    {
+      "ma": "03019942",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019942 \"Cá chép khác, để nhân giống (SEN)\" ⇒ tenLoai \"Cá chép\" + dungLamGiong CO; \"khác\" như 03019922 ⇒ phanConLai: false."
+    },
+    {
+      "ma": "03019950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03019950 \"Cá biển khác\" ⇒ tenLoai \"Cá biển\", phanConLai: false — \"khác\" phủ các tầng anh em (cá bột, cá măng biển/cá mú, cá nước ngọt) nhưng âm tiết \"biển\" nằm trong \"cá măng biển\" nên khai phanConLai làm dòng không tới được; chồng với cá măng biển do bộ so chữ máy xử bằng tên cụ thể hơn thắng (cá măng biển cụ thể hơn cá biển)."
+    }
+  ]
+}
