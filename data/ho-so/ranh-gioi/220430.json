@@ -1,0 +1,57 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "220430",
+  "nhom": "2204",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-220430",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "22043010",
+      "nguon": "tax.22043010",
+      "trich": "22043010 - - Có nồng độ cồn không quá 15% tính theo thể tích ",
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 15,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22043020",
+      "nguon": "tax.22043020",
+      "trich": "22043020 - - Có nồng độ cồn trên 15% tính theo thể tích",
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 15,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "22043010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22043010: \"không quá 15% tính theo thể tích\" ⇒ nongDoCon <= 15 %"
+    },
+    {
+      "ma": "22043020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22043020: \"trên 15% tính theo thể tích\" ⇒ nongDoCon > 15 %"
+    }
+  ]
+}

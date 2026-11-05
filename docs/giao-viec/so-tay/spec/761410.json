@@ -1,0 +1,61 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "761410",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-761410",
+  "dong8": {
+    "76141011": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 25.3,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "76141012": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 25.3,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 28.28,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7614101": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7614101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7614101 \"Cáp\" ⇒ tenLoai Cáp"
+    },
+    {
+      "ma": "76141011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76141011 \"Có đường kính không quá 25,3 mm\" ⇒ duongKinh <= 25.3 mm"
+    },
+    {
+      "ma": "76141012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76141012 \"Có đường kính trên 25,3 mm nhưng không quá 28,28 mm\" ⇒ duongKinh > 25.3 mm và <= 28.28 mm"
+    }
+  ]
+}

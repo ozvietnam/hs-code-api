@@ -1,0 +1,203 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841581",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841581",
+  "dong8": {
+    "84158111": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 21.1,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "84158112": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 21.1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ]
+    },
+    "84158121": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "84158131": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "84158195": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 21.1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ]
+    },
+    "84158196": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 26.38,
+          "donVi": "kW"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ]
+    },
+    "84158197": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 21.1,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "84158198": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 21.1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8415811": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện bay"
+        }
+      ]
+    },
+    "8415812": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện giao thông đường sắt"
+        }
+      ]
+    },
+    "8415813": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ (trừ loại thuộc phân nhóm 8415.20)"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8415811",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415811: \"Loại sử dụng cho phương tiện bay\" ⇒ dungCho \"phương tiện bay\""
+    },
+    {
+      "ma": "8415812",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415812: \"Sử dụng cho phương tiện giao thông đường sắt\" ⇒ dungCho \"phương tiện giao thông đường sắt\""
+    },
+    {
+      "ma": "8415813",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415813: \"Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\" ⇒ dungCho \"xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\""
+    },
+    {
+      "ma": "84158111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158111: \"Công suất làm mát không quá 21,10 kW\" ⇒ congSuat <= 21.1 kW"
+    },
+    {
+      "ma": "84158112",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158112: \"Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 21.1 kW, luuLuong > 67.96 m3/phút"
+    },
+    {
+      "ma": "84158121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158121: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"
+    },
+    {
+      "ma": "84158131",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158131: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"
+    },
+    {
+      "ma": "84158195",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158195: \"Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 21.1 kW, <= 26.38 kW, luuLuong > 67.96 m3/phút"
+    },
+    {
+      "ma": "84158196",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158196: \"Công suất làm mát trên 26,38 kW và có lưu lượng khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 26.38 kW, luuLuong > 67.96 m3/phút"
+    },
+    {
+      "ma": "84158197",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158197: \"Công suất làm mát không quá 21,10 kW\" ⇒ congSuat <= 21.1 kW"
+    },
+    {
+      "ma": "84158198",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158198: \"Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW\" ⇒ congSuat > 21.1 kW, <= 26.38 kW"
+    }
+  ]
+}

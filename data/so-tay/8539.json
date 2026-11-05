@@ -1374,6 +1374,97 @@
         "value": true,
         "donVi": null
       }
+    },
+    {
+      "hs": "85395210",
+      "dieuKien": "tên loại hàng: đầu đèn ren xoáy",
+      "nguon": "tax.85395210",
+      "trich": "85395210 - - - Loại đầu đèn ren xoáy",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đầu đèn ren xoáy"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853952",
+          "ngay": "2026-11-02",
+          "bam": "b2bb0c1b892cd4305f3f2c3db3ef19e0ce4320ea4322ac9d866d405f52a3baed"
+        }
+      },
+      "tieuChi": {
+        "fact": "dau_den_ren_xoay",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      }
+    },
+    {
+      "hs": "85399010",
+      "dieuKien": "Bộ phận (phân nhóm 8539.90): nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc",
+      "tieuChi": {
+        "fact": "nap_bit_nhom_hoac_dui_xoay_nhom",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      },
+      "nguon": "tax.85399010",
+      "trich": "85399010 - - Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": false
+    },
+    {
+      "hs": "85399020",
+      "dieuKien": "Bộ phận loại khác (ngoài 85399010), dùng cho đèn của xe có động cơ",
+      "tieuChi": {
+        "fact": "dung_cho_den_cua_xe_co_dong_co",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      },
+      "nguon": "tax.85399020",
+      "trich": "85399020 - - Loại khác, dùng cho đèn của xe có động cơ",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": true,
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "853990",
+        "truAnhEm": [
+          "85399010",
+          "85399030"
+        ],
+        "toTienCoTen": "853990",
+        "dinhNghiaDuoc": false
+      }
+    },
+    {
+      "hs": "85399030",
+      "dieuKien": "Bộ phận loại khác (ngoài 85399010, 85399020), của phân nhóm 8539.51.00 (mô-đun đi-ốt phát quang LED)",
+      "tieuChi": {
+        "fact": "bo_phan_cua_phan_nhom_85395100",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      },
+      "nguon": "tax.85399030",
+      "trich": "85399030 - - Loại khác, của phân nhóm 8539.51.00",
+      "nguonLoai": "AI_DA_KIEM",
+      "loaiKhac": true,
+      "phamViLoaiKhac": {
+        "nguonLoai": "MAY_SUY",
+        "cha": "853990",
+        "truAnhEm": [
+          "85399010",
+          "85399020"
+        ],
+        "toTienCoTen": "853990",
+        "dinhNghiaDuoc": false
+      }
     }
   ],
   "boPhan": {

@@ -1,0 +1,127 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "853720",
+  "nhom": "8537",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853720",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8537201",
+      "nguon": "tieuDe.8537201",
+      "trich": "8537201 Bảng chuyển mạch",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng chuyển mạch"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8537202",
+      "nguon": "tieuDe.8537202",
+      "trich": "8537202 Bảng điều khiển",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng điều khiển"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85372011",
+      "nguon": "tax.85372011",
+      "trich": "85372011 - - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85372019",
+      "nguon": "tax.85372019",
+      "trich": "85372019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85372021",
+      "nguon": "tax.85372021",
+      "trich": "85372021 - - - Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85372029",
+      "nguon": "tax.85372029",
+      "trich": "85372029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85372090",
+      "nguon": "tax.85372090",
+      "trich": "85372090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8537201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8537201: \"Bảng chuyển mạch\" ⇒ tenLoai \"Bảng chuyển mạch\""
+    },
+    {
+      "ma": "85372011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85372011: \"Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên\" ⇒ dienAp >= 66 kV"
+    },
+    {
+      "ma": "85372011",
+      "loai": "BO_VE",
+      "ve": "để ngắt, nối hoặc bảo vệ mạch điện",
+      "lyDo": "Chức năng ngắt nối bảo vệ lặp lại tính chất phân phối/điều khiển điện của nhóm 8537"
+    },
+    {
+      "ma": "8537202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8537202: \"Bảng điều khiển\" ⇒ tenLoai \"Bảng điều khiển\""
+    },
+    {
+      "ma": "85372021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85372021: \"Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên\" ⇒ dienAp >= 66 kV"
+    },
+    {
+      "ma": "85372021",
+      "loai": "BO_VE",
+      "ve": "để ngắt, nối hoặc bảo vệ mạch điện",
+      "lyDo": "Chức năng ngắt nối bảo vệ lặp lại tính chất phân phối/điều khiển điện của nhóm 8537"
+    }
+  ]
+}

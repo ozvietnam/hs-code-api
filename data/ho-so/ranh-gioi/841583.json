@@ -1,0 +1,184 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841583",
+  "nhom": "8415",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841583",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8415831",
+      "nguon": "tieuDe.8415831",
+      "trich": "8415831 Loại sử dụng cho phương tiện bay",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện bay"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8415832",
+      "nguon": "tieuDe.8415832",
+      "trich": "8415832 Sử dụng cho phương tiện giao thông đường sắt",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện giao thông đường sắt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8415833",
+      "nguon": "tieuDe.8415833",
+      "trich": "8415833 Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ (trừ loại thuộc phân nhóm 8415.20)"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84158311",
+      "nguon": "tax.84158311",
+      "trich": "84158311 - - - - Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 21.1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84158319",
+      "nguon": "tax.84158319",
+      "trich": "84158319 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84158321",
+      "nguon": "tax.84158321",
+      "trich": "84158321 - - - - Công suất làm mát không quá 26,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84158329",
+      "nguon": "tax.84158329",
+      "trich": "84158329 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84158331",
+      "nguon": "tax.84158331",
+      "trich": "84158331 - - - - Công suất làm mát không quá 26,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84158339",
+      "nguon": "tax.84158339",
+      "trich": "84158339 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84158391",
+      "nguon": "tax.84158391",
+      "trich": "84158391 - - - - Công suất làm mát không quá 26,38 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84158399",
+      "nguon": "tax.84158399",
+      "trich": "84158399 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8415831",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415831: \"Loại sử dụng cho phương tiện bay\" ⇒ dungCho \"phương tiện bay\""
+    },
+    {
+      "ma": "8415832",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415832: \"Sử dụng cho phương tiện giao thông đường sắt\" ⇒ dungCho \"phương tiện giao thông đường sắt\""
+    },
+    {
+      "ma": "8415833",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415833: \"Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\" ⇒ dungCho \"xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\""
+    },
+    {
+      "ma": "84158311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158311: \"Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 21.1 kW, luuLuong > 67.96 m3/phút"
+    },
+    {
+      "ma": "84158321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158321: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"
+    },
+    {
+      "ma": "84158331",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158331: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"
+    },
+    {
+      "ma": "84158391",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158391: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"
+    }
+  ]
+}

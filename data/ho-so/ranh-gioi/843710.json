@@ -1,0 +1,97 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "843710",
+  "nhom": "8437",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-843710",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84371010",
+      "nguon": "tax.84371010",
+      "trich": "84371010 - - Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các loại hạt"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84371020",
+      "nguon": "tax.84371020",
+      "trich": "84371020 - - Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các loại hạt"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84371030",
+      "nguon": "tax.84371030",
+      "trich": "84371030 - - Loại khác, hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84371040",
+      "nguon": "tax.84371040",
+      "trich": "84371040 - - Loại khác, không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84371010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84371010: \"Dùng cho các loại hạt, hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, hoạt động bằng điện\" ⇒ dungCho \"các loại hạt\", hoatDongBangDien CO"
+    },
+    {
+      "ma": "84371020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84371020: \"Dùng cho các loại hạt, không hoạt động bằng điện; máy sàng sảy hạt và các loại máy làm sạch tương tự, không hoạt động bằng điện\" ⇒ dungCho \"các loại hạt\", hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84371030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84371030: \"Loại khác, hoạt động bằng điện\" ⇒ hoatDongBangDien CO (máy tự phủ định anh em)"
+    },
+    {
+      "ma": "84371040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84371040: \"Loại khác, không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG (máy tự phủ định anh em)"
+    }
+  ]
+}

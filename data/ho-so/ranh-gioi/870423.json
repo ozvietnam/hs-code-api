@@ -1,0 +1,556 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "870423",
+  "nhom": "8704",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870423",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "870423~r17098",
+      "nguon": "tieuDe.870423~r17098",
+      "trich": "870423~r17098 Khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "870423~r17109",
+      "nguon": "tieuDe.870423~r17109",
+      "trich": "870423~r17109 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 45,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "870423~r17121",
+      "nguon": "tieuDe.870423~r17121",
+      "trich": "870423~r17121 Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 45,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8704231",
+      "nguon": "tieuDe.8704231",
+      "trich": "8704231 Dạng CKD (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8704235",
+      "nguon": "tieuDe.8704235",
+      "trich": "8704235 Dạng CKD (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8704237",
+      "nguon": "tieuDe.8704237",
+      "trich": "8704237 Dạng CKD (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87042311",
+      "nguon": "tax.87042311",
+      "trich": "87042311 - - - - - Ô tô tải đông lạnh (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042319",
+      "nguon": "tax.87042319",
+      "trich": "87042319 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042321",
+      "nguon": "tax.87042321",
+      "trich": "87042321 - - - - - Ô tô tải đông lạnh (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042322",
+      "nguon": "tax.87042322",
+      "trich": "87042322 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "THU_GOM_PHE_THAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042323",
+      "nguon": "tax.87042323",
+      "trich": "87042323 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "XI_TEC"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042324",
+      "nguon": "tax.87042324",
+      "trich": "87042324 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "BOC_THEP"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042325",
+      "nguon": "tax.87042325",
+      "trich": "87042325 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "CHO_BUN_THUNG_ROI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042329",
+      "nguon": "tax.87042329",
+      "trich": "87042329 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042351",
+      "nguon": "tax.87042351",
+      "trich": "87042351 - - - - - Ô tô tải đông lạnh (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042359",
+      "nguon": "tax.87042359",
+      "trich": "87042359 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042361",
+      "nguon": "tax.87042361",
+      "trich": "87042361 - - - - - Ô tô tải đông lạnh (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042362",
+      "nguon": "tax.87042362",
+      "trich": "87042362 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "THU_GOM_PHE_THAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042363",
+      "nguon": "tax.87042363",
+      "trich": "87042363 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "XI_TEC"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042364",
+      "nguon": "tax.87042364",
+      "trich": "87042364 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "BOC_THEP"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042365",
+      "nguon": "tax.87042365",
+      "trich": "87042365 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "CHO_BUN_THUNG_ROI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042366",
+      "nguon": "tax.87042366",
+      "trich": "87042366 - - - - - Ô tô tự đổ",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "TU_DO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042369",
+      "nguon": "tax.87042369",
+      "trich": "87042369 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042371",
+      "nguon": "tax.87042371",
+      "trich": "87042371 - - - - - Ô tô tải đông lạnh (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042379",
+      "nguon": "tax.87042379",
+      "trich": "87042379 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042381",
+      "nguon": "tax.87042381",
+      "trich": "87042381 - - - - - Ô tô tải đông lạnh (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042382",
+      "nguon": "tax.87042382",
+      "trich": "87042382 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "THU_GOM_PHE_THAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042384",
+      "nguon": "tax.87042384",
+      "trich": "87042384 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "BOC_THEP"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042385",
+      "nguon": "tax.87042385",
+      "trich": "87042385 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "CHO_BUN_THUNG_ROI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042386",
+      "nguon": "tax.87042386",
+      "trich": "87042386 - - - - - Ô tô tự đổ",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "TU_DO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87042389",
+      "nguon": "tax.87042389",
+      "trich": "87042389 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "870423~r17098",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870423~r17098: \"Khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn\" ⇒ khoiLuongToanBo <= 24 tấn"
+    },
+    {
+      "ma": "8704231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8704231: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87042311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042311: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"
+    },
+    {
+      "ma": "87042321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042321: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"
+    },
+    {
+      "ma": "87042322",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042322: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"
+    },
+    {
+      "ma": "87042323",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042323: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"
+    },
+    {
+      "ma": "87042324",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042324: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"
+    },
+    {
+      "ma": "87042325",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042325: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"
+    },
+    {
+      "ma": "870423~r17109",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870423~r17109: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn\" ⇒ khoiLuongToanBo > 24 tấn, <= 45 tấn"
+    },
+    {
+      "ma": "8704235",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8704235: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87042351",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042351: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"
+    },
+    {
+      "ma": "87042361",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042361: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"
+    },
+    {
+      "ma": "87042362",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042362: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"
+    },
+    {
+      "ma": "87042363",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042363: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"
+    },
+    {
+      "ma": "87042364",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042364: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"
+    },
+    {
+      "ma": "87042365",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042365: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"
+    },
+    {
+      "ma": "87042366",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042366: \"Ô tô tự đổ\" ⇒ kieuXeChoHang TU_DO"
+    },
+    {
+      "ma": "870423~r17121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870423~r17121: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn\" ⇒ khoiLuongToanBo > 45 tấn"
+    },
+    {
+      "ma": "8704237",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8704237: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87042371",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042371: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"
+    },
+    {
+      "ma": "87042381",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042381: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"
+    },
+    {
+      "ma": "87042382",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042382: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"
+    },
+    {
+      "ma": "87042384",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042384: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"
+    },
+    {
+      "ma": "87042385",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042385: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"
+    },
+    {
+      "ma": "87042386",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87042386: \"Ô tô tự đổ\" ⇒ kieuXeChoHang TU_DO"
+    }
+  ]
+}

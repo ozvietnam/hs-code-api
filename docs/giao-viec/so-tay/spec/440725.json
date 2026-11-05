@@ -1,0 +1,90 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "440725",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-440725",
+  "dong8": {
+    "44072512": {
+      "dieuKienSo": [
+        {
+          "fact": "mucDoGiaCongGo",
+          "op": "TRONG",
+          "value": [
+            "XE_DOC_CHUA_GIA_CONG"
+          ]
+        }
+      ]
+    },
+    "44072513": {
+      "dieuKienSo": [
+        {
+          "fact": "mucDoGiaCongGo",
+          "op": "TRONG",
+          "value": [
+            "BAO_CHA_NHAM_NOI_DAU"
+          ]
+        }
+      ]
+    },
+    "44072521": {
+      "dieuKienSo": [
+        {
+          "fact": "mucDoGiaCongGo",
+          "op": "TRONG",
+          "value": [
+            "BAO_CHA_NHAM_NOI_DAU"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4407251": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Gỗ Meranti đỏ sẫm",
+            "gỗ Meranti đỏ nhạt"
+          ]
+        }
+      ]
+    },
+    "4407252": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gỗ Meranti Bakau"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "4407251",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4407251: \"Gỗ Meranti đỏ sẫm hoặc gỗ Meranti đỏ nhạt\" ⇒ tenLoai TEN_LOAI [\"Gỗ Meranti đỏ sẫm\", \"gỗ Meranti đỏ nhạt\"]"
+    },
+    {
+      "ma": "44072512",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.44072512: \"Đã xẻ dọc, chưa gia công thêm\" ⇒ mucDoGiaCongGo TRONG [XE_DOC_CHUA_GIA_CONG]"
+    },
+    {
+      "ma": "44072513",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.44072513: \"Đã bào, đã chà nhám hoặc nối đầu\" ⇒ mucDoGiaCongGo TRONG [BAO_CHA_NHAM_NOI_DAU]"
+    },
+    {
+      "ma": "4407252",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4407252: \"Gỗ Meranti Bakau\" ⇒ tenLoai TEN_LOAI \"Gỗ Meranti Bakau\""
+    },
+    {
+      "ma": "44072521",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.44072521: \"Đã bào, đã chà nhám hoặc nối đầu\" ⇒ mucDoGiaCongGo TRONG [BAO_CHA_NHAM_NOI_DAU]"
+    }
+  ]
+}

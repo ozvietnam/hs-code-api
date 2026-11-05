@@ -1,0 +1,107 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721030",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721030",
+  "dong8": {
+    "72103011": {
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72103012": {
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 1.2,
+          "donVi": "mm"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72103091": {
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.2,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7210301": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7210301",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7210301: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "7210301",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "7210301",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72103011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72103011: \"Chiều dày không quá 1,2 mm\" ⇒ doDay <= 1.2 mm"
+    },
+    {
+      "ma": "72103011",
+      "loai": "BO_VE",
+      "ve": "Chiều dày không quá 1,2 mm",
+      "lyDo": "Đã lượng hóa qua doDay <= 1.2 mm"
+    },
+    {
+      "ma": "72103012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72103012: \"Chiều dày trên 1,2 mm nhưng không quá 1,5 mm\" ⇒ doDay > 1.2 mm, <= 1.5 mm"
+    },
+    {
+      "ma": "72103012",
+      "loai": "BO_VE",
+      "ve": "Chiều dày trên 1,2 mm nhưng không quá 1,5 mm",
+      "lyDo": "Đã lượng hóa qua doDay"
+    },
+    {
+      "ma": "72103091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72103091: \"Chiều dày không quá 1,2 mm\" ⇒ doDay <= 1.2 mm"
+    },
+    {
+      "ma": "72103091",
+      "loai": "BO_VE",
+      "ve": "Chiều dày không quá 1,2 mm",
+      "lyDo": "Đã lượng hóa qua doDay <= 1.2 mm"
+    }
+  ]
+}

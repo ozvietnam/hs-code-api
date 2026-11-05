@@ -1,0 +1,228 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "854420",
+  "nhom": "8544",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854420",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8544201",
+      "nguon": "tieuDe.8544201",
+      "trich": "8544201 Cáp cách điện đã gắn với đầu nối, dùng cho điện áp không quá 66 kV",
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "CO"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8544202",
+      "nguon": "tieuDe.8544202",
+      "trich": "8544202 Cáp cách điện chưa gắn với đầu nối, dùng cho điện áp không quá 66 kV",
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "KHONG"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8544203",
+      "nguon": "tieuDe.8544203",
+      "trich": "8544203 Cáp cách điện đã gắn với đầu nối, dùng cho điện áp trên 66 kV",
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "CO"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8544204",
+      "nguon": "tieuDe.8544204",
+      "trich": "8544204 Cáp cách điện chưa gắn với đầu nối, dùng cho điện áp trên 66 kV",
+      "dieuKienSo": [
+        {
+          "fact": "daGanDauNoi",
+          "op": "KHONG"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85442011",
+      "nguon": "tax.85442011",
+      "trich": "85442011 - - - Cách điện bằng cao su hoặc plastic",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85442019",
+      "nguon": "tax.85442019",
+      "trich": "85442019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85442021",
+      "nguon": "tax.85442021",
+      "trich": "85442021 - - - Cách điện bằng cao su hoặc plastic",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85442029",
+      "nguon": "tax.85442029",
+      "trich": "85442029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85442031",
+      "nguon": "tax.85442031",
+      "trich": "85442031 - - - Cách điện bằng cao su hoặc plastic",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85442039",
+      "nguon": "tax.85442039",
+      "trich": "85442039 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85442041",
+      "nguon": "tax.85442041",
+      "trich": "85442041 - - - Cách điện bằng cao su hoặc plastic",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85442049",
+      "nguon": "tax.85442049",
+      "trich": "85442049 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8544201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544201: \"Cáp cách điện đã gắn với đầu nối, dùng cho điện áp không quá 66 kV\" ⇒ daGanDauNoi CO, dienAp <= 66 kV"
+    },
+    {
+      "ma": "85442011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85442011: \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu [\"cao su\",\"plastic\"] viTri CACH_DIEN"
+    },
+    {
+      "ma": "8544202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544202: \"Cáp cách điện chưa gắn với đầu nối, dùng cho điện áp không quá 66 kV\" ⇒ daGanDauNoi KHONG, dienAp <= 66 kV"
+    },
+    {
+      "ma": "85442021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85442021: \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu [\"cao su\",\"plastic\"] viTri CACH_DIEN"
+    },
+    {
+      "ma": "8544203",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544203: \"Cáp cách điện đã gắn với đầu nối, dùng cho điện áp trên 66 kV\" ⇒ daGanDauNoi CO, dienAp > 66 kV"
+    },
+    {
+      "ma": "85442031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85442031: \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu [\"cao su\",\"plastic\"] viTri CACH_DIEN"
+    },
+    {
+      "ma": "8544204",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544204: \"Cáp cách điện chưa gắn với đầu nối, dùng cho điện áp trên 66 kV\" ⇒ daGanDauNoi KHONG, dienAp > 66 kV"
+    },
+    {
+      "ma": "85442041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85442041: \"Cách điện bằng cao su hoặc plastic\" ⇒ chatLieu [\"cao su\",\"plastic\"] viTri CACH_DIEN"
+    }
+  ]
+}

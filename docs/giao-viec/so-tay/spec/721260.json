@@ -1,0 +1,91 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721260",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721260",
+  "dong8": {
+    "72126011": {
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ]
+    },
+    "72126012": {
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72126091": {
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7212601": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7212601",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7212601: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "7212601",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "7212601",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72126011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72126011: \"Dạng đai và dải(SEN)\" ⇒ dangDaiDaiTamPhoDung DAI_VA_DAI"
+    },
+    {
+      "ma": "72126012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72126012: \"Loại khác, chiều dày không quá 1,5 mm\" ⇒ doDay <= 1.5 mm"
+    },
+    {
+      "ma": "72126012",
+      "loai": "BO_VE",
+      "ve": "chiều dày không quá 1,5 mm",
+      "lyDo": "Đã lượng hóa qua doDay <= 1.5 mm"
+    },
+    {
+      "ma": "72126091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72126091: \"Dạng đai và dải(SEN)\" ⇒ dangDaiDaiTamPhoDung DAI_VA_DAI"
+    }
+  ]
+}

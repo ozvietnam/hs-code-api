@@ -1,0 +1,55 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721090",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721090",
+  "dong8": {
+    "72109010": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "72109010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72109010: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm\" ⇒ hamLuongCarbon < 0.6 %, doDay <= 1.5 mm"
+    },
+    {
+      "ma": "72109010",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "72109010",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72109010",
+      "loai": "BO_VE",
+      "ve": "khối lượng",
+      "lyDo": "Cách tính tỷ lệ theo khối lượng"
+    },
+    {
+      "ma": "72109010",
+      "loai": "BO_VE",
+      "ve": "chiều dày không quá 1,5 mm",
+      "lyDo": "Đã lượng hóa qua doDay <= 1.5 mm"
+    }
+  ]
+}

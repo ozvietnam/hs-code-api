@@ -1,0 +1,108 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "720720",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-720720",
+  "dong8": {
+    "72072010": {
+      "dieuKienSo": [
+        {
+          "fact": "phoiDetDangPhien",
+          "op": "CO"
+        }
+      ]
+    },
+    "72072021": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "REN"
+          ]
+        }
+      ]
+    },
+    "72072091": {
+      "dieuKienSo": [
+        {
+          "fact": "phoiDetDangPhien",
+          "op": "CO"
+        }
+      ]
+    },
+    "72072092": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "REN"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "720720~r10997": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "720720~r10997",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.720720~r10997: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "720720~r10997",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ đầu chỉ thuộc tính hàm lượng carbon"
+    },
+    {
+      "ma": "720720~r10997",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo khối lượng",
+      "lyDo": "Đã được lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72072010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72072010: \"Phôi dẹt (dạng phiến) (SEN)\" ⇒ phoiDetDangPhien CO"
+    },
+    {
+      "ma": "72072021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72072021: \"Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm\" ⇒ phuongPhapCheTao REN"
+    },
+    {
+      "ma": "72072021",
+      "loai": "BO_VE",
+      "ve": "được tạo hình thô bằng cách rèn",
+      "lyDo": "Đã được lượng hóa qua phuongPhapCheTao REN"
+    },
+    {
+      "ma": "72072091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72072091: \"Phôi dẹt (dạng phiến) (SEN)\" ⇒ phoiDetDangPhien CO"
+    },
+    {
+      "ma": "72072092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72072092: \"Dạng khối được tạo hình thô bằng cách rèn; phôi dạng tấm\" ⇒ phuongPhapCheTao REN"
+    },
+    {
+      "ma": "72072092",
+      "loai": "BO_VE",
+      "ve": "được tạo hình thô bằng cách rèn",
+      "lyDo": "Đã được lượng hóa qua phuongPhapCheTao REN"
+    }
+  ]
+}

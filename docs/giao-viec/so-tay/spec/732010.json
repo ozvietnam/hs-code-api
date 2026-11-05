@@ -1,0 +1,63 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "732010",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-732010",
+  "dong8": {
+    "73201011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
+        }
+      ]
+    },
+    "73201012": {
+      "dieuKienSo": [
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": [
+        "73201011"
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7320101": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe có động cơ",
+            "84.29",
+            "84.30"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7320101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7320101: \"Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho mảng [\"xe có động cơ\",\"84.29\",\"84.30\"]"
+    },
+    {
+      "ma": "73201011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73201011: \"Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04\" ⇒ dungCho mảng 3 nhóm"
+    },
+    {
+      "ma": "73201012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73201012: \"Dùng cho xe có động cơ khác\" ⇒ dungChoXeCoDongCo CO + phanConLai [73201011]"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841510",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841510",
+  "dong8": {
+    "84151020": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 21.1,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "84151030": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 21.1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84151020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84151020: \"Công suất làm mát không quá 21,10 kW\" ⇒ congSuat <= 21.1 kW"
+    },
+    {
+      "ma": "84151030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84151030: \"Công suất làm mát trên 21,10 kW nhưng không quá 26,38 kW\" ⇒ congSuat > 21.1 kW, <= 26.38 kW"
+    }
+  ]
+}

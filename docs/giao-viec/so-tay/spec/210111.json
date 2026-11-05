@@ -1,0 +1,46 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "210111",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-210111",
+  "dong8": {
+    "21011111": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 20,
+          "donVi": "kg"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "2101111": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cà phê hòa tan"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "2101111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2101111: \"Cà phê hòa tan\" ⇒ tenLoai TEN_LOAI \"Cà phê hòa tan\""
+    },
+    {
+      "ma": "21011111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.21011111: \"không dưới 20kg\" ⇒ khoiLuong >= 20 kg"
+    },
+    {
+      "ma": "21011111",
+      "loai": "BO_VE",
+      "ve": "Được đóng gói",
+      "lyDo": "Vế trạng thái đóng gói đi kèm chỉ số khối lượng tịnh không dưới 20kg"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870822",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870822",
+  "dong8": {
+    "87082210": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ]
+    },
+    "87082220": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.03"
+        }
+      ]
+    },
+    "87082230": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.04",
+            "87.05"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "87082210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87082210: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""
+    },
+    {
+      "ma": "87082220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87082220: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""
+    },
+    {
+      "ma": "87082230",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87082230: \"Dùng cho xe thuộc nhóm 87.02, 87.04 hoặc 87.05\" ⇒ dungCho mảng [\"87.02\",\"87.04\",\"87.05\"]"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853720",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853720",
+  "dong8": {
+    "85372011": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "85372021": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8537201": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng chuyển mạch"
+        }
+      ]
+    },
+    "8537202": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bảng điều khiển"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8537201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8537201: \"Bảng chuyển mạch\" ⇒ tenLoai \"Bảng chuyển mạch\""
+    },
+    {
+      "ma": "85372011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85372011: \"Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên\" ⇒ dienAp >= 66 kV"
+    },
+    {
+      "ma": "85372011",
+      "loai": "BO_VE",
+      "ve": "để ngắt, nối hoặc bảo vệ mạch điện",
+      "lyDo": "Chức năng ngắt nối bảo vệ lặp lại tính chất phân phối/điều khiển điện của nhóm 8537"
+    },
+    {
+      "ma": "8537202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8537202: \"Bảng điều khiển\" ⇒ tenLoai \"Bảng điều khiển\""
+    },
+    {
+      "ma": "85372021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85372021: \"Gắn với thiết bị điện để ngắt, nối hoặc bảo vệ mạch điện có điện áp từ 66 kV trở lên\" ⇒ dienAp >= 66 kV"
+    },
+    {
+      "ma": "85372021",
+      "loai": "BO_VE",
+      "ve": "để ngắt, nối hoặc bảo vệ mạch điện",
+      "lyDo": "Chức năng ngắt nối bảo vệ lặp lại tính chất phân phối/điều khiển điện của nhóm 8537"
+    }
+  ]
+}

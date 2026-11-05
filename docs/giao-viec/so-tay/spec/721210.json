@@ -1,0 +1,101 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721210",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721210",
+  "dong8": {
+    "72121011": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72121014": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72121094": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7212101": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7212101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7212101: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "7212101",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "7212101",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72121011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72121011: \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" ⇒ chieuRong <= 25 mm"
+    },
+    {
+      "ma": "72121011",
+      "loai": "BO_VE",
+      "ve": "có chiều rộng không quá 25 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong <= 25 mm"
+    },
+    {
+      "ma": "72121014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72121014: \"Dạng đai và dải(SEN), có chiều rộng trên 400 mm\" ⇒ chieuRong > 400 mm"
+    },
+    {
+      "ma": "72121014",
+      "loai": "BO_VE",
+      "ve": "có chiều rộng trên 400 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong > 400 mm"
+    },
+    {
+      "ma": "72121094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72121094: \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ chieuRong <= 400 mm"
+    },
+    {
+      "ma": "72121094",
+      "loai": "BO_VE",
+      "ve": "chiều rộng không quá 400 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong <= 400 mm"
+    }
+  ]
+}
