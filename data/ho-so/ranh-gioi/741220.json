@@ -4,11 +4,11 @@
   "nhom": "7412",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-741220",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-741220",
+    "ngay": "2026-11-02"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -32,9 +32,10 @@
       "trich": "74122091 - - - Bằng hợp kim đồng - kẽm (đồng thau)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "hợp kim đồng - kẽm"
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng",
+          "viTri": "CHINH"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -51,12 +52,19 @@
     {
       "ma": "74122020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.74122020 \"Phụ kiện ghép nối cho ống vòi(SEN)\" ⇒ dungCho ống vòi"
+      "ghiChu": "tax.74122020: \"Phụ kiện ghép nối cho ống vòi\" ⇒ dungCho ống vòi"
     },
     {
       "ma": "74122091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.74122091 \"Bằng hợp kim đồng - kẽm (đồng thau)\" ⇒ tenLoai hợp kim đồng - kẽm (chatLieu không có đồng-kẽm riêng)"
+      "ghiChu": "tax.74122091: \"Bằng hợp kim đồng - kẽm (đồng thau)\" ⇒ chatLieu đồng (đồng thau là hợp kim đồng kẽm theo từ vựng)"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-741220",
+      "ngay": "2026-11-02",
+      "lyDo": "(A) 74122091 SUY RỘNG: \"Bằng hợp kim đồng - kẽm (đồng thau)\" (EN \"Of copper-zinc base alloys (brass)\") ⇒ chatLieu LA \"đồng\" — giá trị \"đồng\" của tu-vung = đồng hoặc MỌI hợp kim đồng (cách đọc gồm cả bronze, hợp kim đồng); cả phân nhóm 7412.20 đã là hợp kim đồng nên phụ kiện bằng đồng thanh (bronze), đồng-niken cũng rơi .91 thay vì .99 \"Loại khác\" — .99 không bao giờ tới được với hàng thật. Không có khoá phân biệt đồng thau ⇒ phải THIEU_KHOA_TU_VUNG (khoaDeXuat: loaiHopKimDong) / DỪNG, không ép chatLieu đồng."
     }
   ]
 }

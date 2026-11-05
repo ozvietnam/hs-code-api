@@ -4,11 +4,11 @@
   "nhom": "8423",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-842382",
-    "ngay": "2026-11-04"
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842382",
+    "ngay": "2026-11-02"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -48,13 +48,14 @@
       "trich": "84238231 - - - - Cân điện tử, dùng để cân xe có động cơ",
       "dieuKienSo": [
         {
-          "fact": "canDienTu",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
         },
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "cân xe có động cơ"
+          "value": "xe có động cơ"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -65,14 +66,13 @@
       "trich": "84238232 - - - - Cân điện tử khác",
       "dieuKienSo": [
         {
-          "fact": "canDienTu",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
         }
       ],
       "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": [
-        "84238231"
-      ]
+      "phanConLai": true
     },
     {
       "hs": "84238239",
@@ -87,13 +87,14 @@
       "trich": "84238241 - - - - Cân điện tử, dùng để cân xe có động cơ",
       "dieuKienSo": [
         {
-          "fact": "canDienTu",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
         },
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "cân xe có động cơ"
+          "value": "xe có động cơ"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -104,14 +105,13 @@
       "trich": "84238242 - - - - Cân điện tử khác",
       "dieuKienSo": [
         {
-          "fact": "canDienTu",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
         }
       ],
       "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": [
-        "84238241"
-      ]
+      "phanConLai": true
     },
     {
       "hs": "84238249",
@@ -125,32 +125,39 @@
     {
       "ma": "8423823",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8423823: \"Có khả năng cân tối đa không quá 1.000 kg\" ⇒ khoiLuong <= 1000 kg"
-    },
-    {
-      "ma": "8423824",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8423824: \"Có khả năng cân tối đa trên 1.000 kg\" ⇒ khoiLuong > 1000 kg"
+      "ghiChu": "tieuDe.8423823: \"không quá 1.000 kg\" ⇒ khoiLuong <= 1000 kg"
     },
     {
       "ma": "84238231",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84238231: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ canDienTu CO, congDung \"cân xe có động cơ\""
+      "ghiChu": "tax.84238231: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ tenLoai \"Cân điện tử\", dungCho \"xe có động cơ\""
     },
     {
       "ma": "84238232",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84238232: \"Cân điện tử khác\" ⇒ canDienTu CO + phanConLai [\"84238231\"]"
+      "ghiChu": "tax.84238232: \"Cân điện tử khác\" ⇒ tenLoai \"Cân điện tử\", phanConLai true"
+    },
+    {
+      "ma": "8423824",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8423824: \"trên 1.000 kg\" ⇒ khoiLuong > 1000 kg"
     },
     {
       "ma": "84238241",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84238241: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ canDienTu CO, congDung \"cân xe có động cơ\""
+      "ghiChu": "tax.84238241: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ tenLoai \"Cân điện tử\", dungCho \"xe có động cơ\""
     },
     {
       "ma": "84238242",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84238242: \"Cân điện tử khác\" ⇒ canDienTu CO + phanConLai [\"84238241\"]"
+      "ghiChu": "tax.84238242: \"Cân điện tử khác\" ⇒ tenLoai \"Cân điện tử\", phanConLai true"
+    }
+  ],
+  "traVe": [
+    {
+      "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-842382",
+      "ngay": "2026-11-02",
+      "lyDo": "(A) 8423823/8423824 SAI TRỤC: \"Có khả năng cân tối đa không quá/trên 1.000 kg\" (EN \"Having a maximum weighing capacity …\") ⇒ khoiLuong <=/> 1000 kg — khoá khoiLuong (tu-vung@2) là KHỐI LƯỢNG TỊNH của chính hàng (\"Khối lượng tịnh của một chiếc là bao nhiêu kg?\"), không phải mức cân tối đa; cân sàn nặng 60 kg mức cân 2.000 kg bị xếp 8423823x thay vì 8423824x. Cảnh báo cong3-bien-khong-doc-duoc ×2 chính là dấu hiệu khoá không có cách đọc \"khả năng cân tối đa\", người soạn cũng không ghi QUYET_DINH đối chiếu tay. Thiếu khoá ⇒ THIEU_KHOA_TU_VUNG (khoaDeXuat mucCanToiDa)/DỪNG. Các dòng .31/.32/.41/.42 (tenLoai + dungCho, phanConLai) đạt."
     }
   ]
 }

@@ -1,55 +1,55 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "842382",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-842382",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842382",
   "dong8": {
     "84238231": {
       "dieuKienSo": [
         {
-          "fact": "canDienTu",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
         },
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "cân xe có động cơ"
+          "value": "xe có động cơ"
         }
       ]
     },
     "84238232": {
       "dieuKienSo": [
         {
-          "fact": "canDienTu",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
         }
       ],
-      "phanConLai": [
-        "84238231"
-      ]
+      "phanConLai": true
     },
     "84238241": {
       "dieuKienSo": [
         {
-          "fact": "canDienTu",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
         },
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "cân xe có động cơ"
+          "value": "xe có động cơ"
         }
       ]
     },
     "84238242": {
       "dieuKienSo": [
         {
-          "fact": "canDienTu",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
         }
       ],
-      "phanConLai": [
-        "84238241"
-      ]
+      "phanConLai": true
     }
   },
   "dieuKienNut": {
@@ -78,32 +78,32 @@
     {
       "ma": "8423823",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8423823: \"Có khả năng cân tối đa không quá 1.000 kg\" ⇒ khoiLuong <= 1000 kg"
-    },
-    {
-      "ma": "8423824",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8423824: \"Có khả năng cân tối đa trên 1.000 kg\" ⇒ khoiLuong > 1000 kg"
+      "ghiChu": "tieuDe.8423823: \"không quá 1.000 kg\" ⇒ khoiLuong <= 1000 kg"
     },
     {
       "ma": "84238231",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84238231: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ canDienTu CO, congDung \"cân xe có động cơ\""
+      "ghiChu": "tax.84238231: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ tenLoai \"Cân điện tử\", dungCho \"xe có động cơ\""
     },
     {
       "ma": "84238232",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84238232: \"Cân điện tử khác\" ⇒ canDienTu CO + phanConLai [\"84238231\"]"
+      "ghiChu": "tax.84238232: \"Cân điện tử khác\" ⇒ tenLoai \"Cân điện tử\", phanConLai true"
+    },
+    {
+      "ma": "8423824",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8423824: \"trên 1.000 kg\" ⇒ khoiLuong > 1000 kg"
     },
     {
       "ma": "84238241",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84238241: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ canDienTu CO, congDung \"cân xe có động cơ\""
+      "ghiChu": "tax.84238241: \"Cân điện tử, dùng để cân xe có động cơ\" ⇒ tenLoai \"Cân điện tử\", dungCho \"xe có động cơ\""
     },
     {
       "ma": "84238242",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84238242: \"Cân điện tử khác\" ⇒ canDienTu CO + phanConLai [\"84238241\"]"
+      "ghiChu": "tax.84238242: \"Cân điện tử khác\" ⇒ tenLoai \"Cân điện tử\", phanConLai true"
     }
   ]
 }

@@ -4,11 +4,11 @@
   "nhom": "9002",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "TRA_VE",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-900220",
-    "ngay": "2026-11-04"
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-900220",
+    "ngay": "2026-11-02"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -37,11 +37,12 @@
           "value": [
             "máy quay phim",
             "máy ảnh",
-            "máy chiếu"
+            "máy chiếu khác"
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "90022090",
@@ -55,18 +56,19 @@
     {
       "ma": "90022010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90022010: \"Dùng cho máy chiếu phim\" ⇒ dungCho \"máy chiếu phim\""
+      "ghiChu": "tax.90022010 \"Dùng cho máy chiếu phim\" ⇒ dungCho \"máy chiếu phim\""
     },
     {
       "ma": "90022020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.90022020: \"Dùng cho máy quay phim, máy ảnh và máy chiếu khác\" ⇒ dungCho [\"máy quay phim\",\"máy ảnh\",\"máy chiếu\"]"
-    },
+      "ghiChu": "tax.90022020 \"Dùng cho máy quay phim, máy ảnh và máy chiếu khác\" ⇒ dungCho mảng 3 thiết bị đích, phanConLai: true phủ định .10"
+    }
+  ],
+  "traVe": [
     {
-      "ma": "90022020",
-      "loai": "BO_VE",
-      "ve": "Dùng cho máy quay phim, máy ảnh và máy chiếu khác",
-      "lyDo": "Đã phủ máy quay phim, máy ảnh, máy chiếu qua mảng dungCho, chữ khác được bỏ theo quy ước tránh giá trị chết"
+      "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-900220",
+      "ngay": "2026-11-02",
+      "lyDo": "(A) 90022020 THU HẸP (giá trị chết): \"Dùng cho máy quay phim, máy ảnh và máy chiếu khác\" (EN \"… and other projectors\") ⇒ dungCho có giá trị \"máy chiếu khác\" — mô tả hàng thật (kính lọc/lăng kính cho máy chiếu slide, máy chiếu overhead) không có chữ \"khác\" nên không bao giờ THOẢ ⇒ rơi 90022090 thay vì 90022020. Sửa: giá trị \"máy chiếu\" (giữ phanConLai: true đã phủ định 90022010 \"máy chiếu phim\"). Còn lại đạt."
     }
   ]
 }
