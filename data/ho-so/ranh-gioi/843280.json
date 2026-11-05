@@ -1,0 +1,82 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "843280",
+  "nhom": "8432",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-843280",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84328010",
+      "nguon": "tax.84328010",
+      "trich": "84328010 - - Dùng trong nông nghiệp hoặc làm vườn",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "nông nghiệp",
+            "làm vườn"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84328020",
+      "nguon": "tax.84328020",
+      "trich": "84328020 - - Máy cán cho bãi cỏ hoặc cho sân chơi thể thao",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy cán"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bãi cỏ",
+            "sân chơi thể thao"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84328090",
+      "nguon": "tax.84328090",
+      "trich": "84328090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "84328010",
+        "84328020"
+      ],
+      "lyDo": "Chữ biểu tự chồng lấn giữa \"Dùng trong nông nghiệp hoặc làm vườn\" và \"Máy cán cho bãi cỏ hoặc cho sân chơi thể thao\" khi máy cán bãi cỏ dùng cho mục đích làm vườn"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84328010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84328010: \"Dùng trong nông nghiệp hoặc làm vườn\" ⇒ congDung [\"nông nghiệp\", \"làm vườn\"]"
+    },
+    {
+      "ma": "84328020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84328020: \"Máy cán cho bãi cỏ hoặc cho sân chơi thể thao\" ⇒ tenLoai \"Máy cán\" + dungCho [\"bãi cỏ\", \"sân chơi thể thao\"]"
+    }
+  ]
+}
