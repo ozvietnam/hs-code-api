@@ -1,0 +1,383 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "151800",
+  "nhom": "1518",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1530#soan-151800",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "1518001",
+      "nguon": "tieuDe.1518001",
+      "trich": "1518001 Chất béo và dầu động vật, thực vật hoặc vi sinh vật và các phần phân đoạn của chúng, đã đun sôi, oxy hóa, khử nước, sulphua hóa, thổi khô, polyme hóa bằng cách đun nóng trong chân không hoặc trong khí trơ hoặc bằng biện pháp thay đổi về mặt hóa học khác trừ loại thuộc nhóm 15.16",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "15.16",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "id": "1518003",
+      "nguon": "tieuDe.1518003",
+      "trich": "1518003 Các hỗn hợp hoặc các chế phẩm không ăn được từ chất béo hoặc dầu thực vật hoặc từ các phần phân đoạn của các loại chất béo hoặc dầu thực vật khác nhau",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "chất béo",
+            "dầu thực vật",
+            "dầu thực vật khác nhau"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "15180012",
+      "nguon": "tax.15180012",
+      "trich": "15180012 - - Mỡ và dầu động vật",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Mỡ",
+            "dầu động vật"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180014",
+      "nguon": "tax.15180014",
+      "trich": "15180014 - - Dầu lạc, dầu đậu tương, dầu cọ hoặc dầu dừa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dầu lạc",
+            "dầu đậu tương",
+            "dầu cọ",
+            "dầu dừa"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180015",
+      "nguon": "tax.15180015",
+      "trich": "15180015 - - Dầu hạt lanh và các phần phân đoạn của dầu hạt lanh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu hạt lanh và các phần phân đoạn của dầu hạt lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180016",
+      "nguon": "tax.15180016",
+      "trich": "15180016 - - Dầu ô liu và các phần phân đoạn của dầu ô liu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu ô liu và các phần phân đoạn của dầu ô liu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180019",
+      "nguon": "tax.15180019",
+      "trich": "15180019 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180020",
+      "nguon": "tax.15180020",
+      "trich": "15180020 - Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật khác nhau",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "mỡ",
+            "dầu động vật",
+            "các phần phân đoạn của các loại mỡ",
+            "dầu động vật khác nhau"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180032",
+      "nguon": "tax.15180032",
+      "trich": "15180032 - - Của dầu cọ hoặc olein hạt cọ, đã trung hòa hóa, tẩy và khử mùi (NBD) hoặc đã tinh chế, tẩy và khử mùi (RBD) ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "dầu cọ",
+            "olein hạt cọ"
+          ]
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DA_TINH_CHE"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180033",
+      "nguon": "tax.15180033",
+      "trich": "15180033 - - Của hạt lanh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180034",
+      "nguon": "tax.15180034",
+      "trich": "15180034 - - Của ô liu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của ô liu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180035",
+      "nguon": "tax.15180035",
+      "trich": "15180035 - - Của lạc",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của lạc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180036",
+      "nguon": "tax.15180036",
+      "trich": "15180036 - - Của đậu tương hoặc dừa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Của đậu tương",
+            "dừa"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180037",
+      "nguon": "tax.15180037",
+      "trich": "15180037 - - Của hạt bông",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt bông"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180038",
+      "nguon": "tax.15180038",
+      "trich": "15180038 - - Của quả cọ dầu hoặc của hạt cọ, loại khác ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Của quả cọ dầu",
+            "của hạt cọ"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "15180039",
+      "nguon": "tax.15180039",
+      "trich": "15180039 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180060",
+      "nguon": "tax.15180060",
+      "trich": "15180060 - Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng và chất béo hoặc dầu thực vật hoặc các phần phân đoạn của chúng ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "mỡ",
+            "dầu động vật",
+            "các phần phân đoạn của chúng",
+            "chất béo",
+            "dầu thực vật"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15180090",
+      "nguon": "tax.15180090",
+      "trich": "15180090 - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "1518001",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1518001 \"1518001 Chất béo và dầu động vật, thực vật hoặc vi sinh vật và các phần phân đoạn của chúng, đã đun sôi, oxy hóa, khử nước, sulphua hóa, thổi khô, polyme hóa bằng cách đun nóng trong chân không hoặc trong khí trơ hoặc bằng biện pháp thay đổi về mặt hóa học khác trừ loại thuộc nhóm 15.16\" ⇒ dungCho \"15.16\" PHAI_KHONG (vế \"trừ loại thuộc nhóm 15.16\"). phanConLai: false — tiêu đề này là MỘT LOẠI HÀNG (dầu/mỡ đã biến đổi về mặt hoá học), không phải phần còn lại của anh em (anh em 15180020/1518003/15180060 là hỗn hợp/chế phẩm, 15180090 là \"Loại khác\" trần); chữ \"khác\" trong tiêu đề nằm ở vế \"biện pháp thay đổi về mặt hóa học khác\"."
+    },
+    {
+      "ma": "1518001",
+      "loai": "BO_VE",
+      "ve": "bằng biện pháp thay đổi về mặt hóa học khác",
+      "lyDo": "Đặc tính đã có ở cấp nhóm 1518 (mọi hàng trong nhóm đều là chất béo/dầu đã biến đổi về mặt hoá học); không phải điều kiện phân biệt các dòng 8 số trong nhóm, và từ vựng chưa có khoá riêng cho các phép biến đổi này."
+    },
+    {
+      "ma": "15180012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180012 \"15180012 - - Mỡ và dầu động vật\" ⇒ tenLoai \"Mỡ và dầu động vật\" (tên hàng; anh em 15180014/15180015/15180016 dùng CÙNG khoá tenLoai)."
+    },
+    {
+      "ma": "15180014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180014 \"15180014 - - Dầu lạc, dầu đậu tương, dầu cọ hoặc dầu dừa\" ⇒ tenLoai [\"Dầu lạc\",\"dầu đậu tương\",\"dầu cọ\",\"dầu dừa\"] (liệt kê nhiều mục ⇒ mảng, không gói một chuỗi)."
+    },
+    {
+      "ma": "15180015",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180015 \"15180015 - - Dầu hạt lanh và các phần phân đoạn của dầu hạt lanh\" ⇒ tenLoai \"Dầu hạt lanh và các phần phân đoạn của dầu hạt lanh\" (tên hàng nguyên văn)."
+    },
+    {
+      "ma": "15180016",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180016 \"15180016 - - Dầu ô liu và các phần phân đoạn của dầu ô liu\" ⇒ tenLoai \"Dầu ô liu và các phần phân đoạn của dầu ô liu\" (tên hàng nguyên văn)."
+    },
+    {
+      "ma": "15180020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180020 \"15180020 - Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật khác nhau\" ⇒ tenLoai \"mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của các loại mỡ hoặc dầu động vật khác nhau\" (vế giới hạn của dòng). phanConLai: false — đây là MỘT LOẠI HÀNG (hỗn hợp từ mỡ/dầu động vật), không phải phần còn lại của anh em."
+    },
+    {
+      "ma": "15180020",
+      "loai": "BO_VE",
+      "ve": "không ăn",
+      "lyDo": "\"không ăn được\" là đặc tính chung của cả nhóm 1518 (chế phẩm không ăn được) — có ở cấp nhóm, không phải điều kiện phân biệt dòng; từ vựng chưa có khoá cho \"ăn được/không ăn được\"."
+    },
+    {
+      "ma": "1518003",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1518003 \"1518003 Các hỗn hợp hoặc các chế phẩm không ăn được từ chất béo hoặc dầu thực vật hoặc từ các phần phân đoạn của chất béo hoặc dầu thực vật khác nhau\" ⇒ tenLoai [\"chất béo\",\"dầu thực vật\",\"dầu thực vật khác nhau\"] (nền của hỗn hợp; chữ biểu có nhiều \"hoặc\" nên phải tách mảng, mỗi phần tử lấy nguyên văn). phanConLai: false — đây là MỘT LOẠI HÀNG (hỗn hợp từ chất béo/dầu thực vật), anh em 15180020 là hỗn hợp từ mỡ/dầu động vật (khác nền, không phải phần còn lại)."
+    },
+    {
+      "ma": "1518003",
+      "loai": "BO_VE",
+      "ve": "không ăn",
+      "lyDo": "\"không ăn được\" là đặc tính chung của cả nhóm 1518 (chế phẩm không ăn được) — có ở cấp nhóm, không phải điều kiện phân biệt dòng; từ vựng chưa có khoá cho \"ăn được/không ăn được\"."
+    },
+    {
+      "ma": "15180032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180032 \"15180032 - - - Của dầu cọ hoặc olein hạt cọ, đã trung hòa hóa, tẩy và khử mùi (NBD) hoặc đã tinh chế, tẩy và khử mùi (RBD) \" ⇒ tenLoai [\"dầu cọ\",\"olein hạt cọ\"] (liệt kê có \"hoặc\" ⇒ mảng) + mucDoTinhCheDau DA_TINH_CHE (đọc được cả \"trung hòa hóa, tẩy và khử mùi\" lẫn \"tinh chế, tẩy và khử mùi\")."
+    },
+    {
+      "ma": "15180033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180033 \"15180033 - - - Của hạt lanh\" ⇒ tenLoai \"Của hạt lanh\" (anh em 15180034/15180035/15180036/15180037 dùng CÙNG khoá tenLoai)."
+    },
+    {
+      "ma": "15180034",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180034 \"15180034 - - - Của ô liu\" ⇒ tenLoai \"Của ô liu\"."
+    },
+    {
+      "ma": "15180035",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180035 \"15180035 - - - Của lạc\" ⇒ tenLoai \"Của lạc\"."
+    },
+    {
+      "ma": "15180036",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180036 \"15180036 - - - Của đậu tương hoặc dừa\" ⇒ tenLoai [\"Của đậu tương\",\"dừa\"] — chữ biểu có \"hoặc\" nên phải tách mảng; giá trị \"dừa\" lấy nguyên văn từ chữ (chữ biểu chỉ có \"dừa\", không có \"Của dừa\")."
+    },
+    {
+      "ma": "15180037",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180037 \"15180037 - - - Của hạt bông\" ⇒ tenLoai \"Của hạt bông\"."
+    },
+    {
+      "ma": "15180038",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180038 \"15180038 - - - Của quả cọ dầu hoặc của hạt cọ, loại khác \" ⇒ tenLoai [\"Của quả cọ dầu\",\"của hạt cọ\"] + phanConLai: true — \"loại khác\" = phần còn lại CÓ TÊN trong tiêu đề 1518003 (phủ định các anh em .32/.33/.34/.35/.36/.37 đứng trước)."
+    },
+    {
+      "ma": "15180060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15180060 \"15180060 - Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng và chất béo hoặc dầu thực vật hoặc từ các phần phân đoạn của chúng \" ⇒ tenLoai \"mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng và chất béo hoặc dầu thực vật hoặc từ các phần phân đoạn của chúng\" (vế giới hạn: hỗn hợp gồm CẢ động vật lẫn thực vật)."
+    },
+    {
+      "ma": "15180060",
+      "loai": "BO_VE",
+      "ve": "không ăn",
+      "lyDo": "\"không ăn được\" là đặc tính chung của cả nhóm 1518 (chế phẩm không ăn được) — có ở cấp nhóm, không phải điều kiện phân biệt dòng; từ vựng chưa có khoá cho \"ăn được/không ăn được\"."
+    },
+    {
+      "ma": "1518001",
+      "loai": "DUNG",
+      "ghiChu": "CỔNG 2 CHƯA XANH: dòng \"Loại khác\" trần 15180019 (dưới tiêu đề 1518001) phủ định anh em nhưng PHẠM VI rộng — nó thỏa cả các nhánh 1518003 (.32–.38) vì điều kiện tiêu đề 1518001 (chỉ \"trừ loại thuộc nhóm 15.16\") quá yếu: chữ tiêu đề không có cụm danh từ đầu nào gom được (nhiều \"hoặc\", không có khoá tu-vựng cho \"chất béo/dầu đã biến đổi\"), và cặp tiêu đề 1518001 ↔ 1518003 bị máy báo chồng lấn theo TRỤC. Cần người duyệt quyết (khoá từ vựng cho loại chất béo/dầu đã biến đổi hoá học, hoặc khai chongLanTruc + hàng thật cho từng cặp)."
+    }
+  ]
+}

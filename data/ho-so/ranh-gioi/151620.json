@@ -1,0 +1,808 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "151620",
+  "nhom": "1516",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1530#soan-151620",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "1516201",
+      "nguon": "tieuDe.1516201",
+      "trich": "1516201 Đã tái este hóa, trừ của cọ dầu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đã tái este hóa, trừ của cọ dầu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cọ dầu",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "1516202",
+      "nguon": "tieuDe.1516202",
+      "trich": "1516202 Đã tái este hóa, của cọ dầu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đã tái este hóa, của cọ dầu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cọ dầu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "1516203",
+      "nguon": "tieuDe.1516203",
+      "trich": "1516203 Đã qua hydro hóa, dạng vảy, mảnh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đã qua hydro hóa, dạng vảy"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "1516204",
+      "nguon": "tieuDe.1516204",
+      "trich": "1516204 Đã qua hydro hóa, dạng khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đã qua hydro hóa, dạng khác"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "id": "1516205",
+      "nguon": "tieuDe.1516205",
+      "trich": "1516205 Đã este hóa liên hợp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đã este hóa liên hợp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "1516206",
+      "nguon": "tieuDe.1516206",
+      "trich": "1516206 Elaiđin hóa, stearin cọ, có chỉ số iốt không quá 48",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Elaiđin hóa, stearin cọ"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "có chỉ số iốt không quá 48"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "1516209",
+      "nguon": "tieuDe.1516209",
+      "trich": "1516209 Elaiđin hóa, loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Elaiđin hóa, loại khác"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "1516206"
+      ]
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "15162011",
+      "nguon": "tax.15162011",
+      "trich": "15162011 - - - Của đậu tương",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của đậu tương"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162012",
+      "nguon": "tax.15162012",
+      "trich": "15162012 - - - Của ngô (maize)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của ngô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162014",
+      "nguon": "tax.15162014",
+      "trich": "15162014 - - - Của dừa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của dừa"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162017",
+      "nguon": "tax.15162017",
+      "trich": "15162017 - - - Của lạc",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của lạc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162018",
+      "nguon": "tax.15162018",
+      "trich": "15162018 - - - Của hạt lanh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162019",
+      "nguon": "tax.15162019",
+      "trich": "15162019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162021",
+      "nguon": "tax.15162021",
+      "trich": "15162021 - - - Của quả cọ dầu, dạng thô",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của quả cọ dầu"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162022",
+      "nguon": "tax.15162022",
+      "trich": "15162022 - - - Của quả cọ dầu, trừ dạng thô",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của quả cọ dầu"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DA_TINH_CHE"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162023",
+      "nguon": "tax.15162023",
+      "trich": "15162023 - - - Của hạt cọ, dạng thô",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt cọ"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162024",
+      "nguon": "tax.15162024",
+      "trich": "15162024 - - - Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt cọ"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DA_TINH_CHE"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162025",
+      "nguon": "tax.15162025",
+      "trich": "15162025 - - - Của olein hạt cọ, dạng thô",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của olein hạt cọ"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162026",
+      "nguon": "tax.15162026",
+      "trich": "15162026 - - - Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của olein hạt cọ"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DA_TINH_CHE"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162029",
+      "nguon": "tax.15162029",
+      "trich": "15162029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162031",
+      "nguon": "tax.15162031",
+      "trich": "15162031 - - - Của lạc; của dừa; của đậu tương",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Của lạc",
+            "của dừa",
+            "của đậu tương"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162032",
+      "nguon": "tax.15162032",
+      "trich": "15162032 - - - Của hạt lanh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162033",
+      "nguon": "tax.15162033",
+      "trich": "15162033 - - - Của ô liu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của ô liu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162034",
+      "nguon": "tax.15162034",
+      "trich": "15162034 - - - Của quả cọ dầu (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của quả cọ dầu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162035",
+      "nguon": "tax.15162035",
+      "trich": "15162035 - - - Của hạt cọ (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt cọ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162039",
+      "nguon": "tax.15162039",
+      "trich": "15162039 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162041",
+      "nguon": "tax.15162041",
+      "trich": "15162041 - - - Của hạt thầu dầu (sáp opal)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt thầu dầu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162042",
+      "nguon": "tax.15162042",
+      "trich": "15162042 - - - Của dừa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của dừa"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162043",
+      "nguon": "tax.15162043",
+      "trich": "15162043 - - - Của lạc",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của lạc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162044",
+      "nguon": "tax.15162044",
+      "trich": "15162044 - - - Của hạt lanh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162045",
+      "nguon": "tax.15162045",
+      "trich": "15162045 - - - Của ô liu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của ô liu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162046",
+      "nguon": "tax.15162046",
+      "trich": "15162046 - - - Của quả cọ dầu (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của quả cọ dầu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162047",
+      "nguon": "tax.15162047",
+      "trich": "15162047 - - - Của hạt cọ (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt cọ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162048",
+      "nguon": "tax.15162048",
+      "trich": "15162048 - - - Của đậu tương",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của đậu tương"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162049",
+      "nguon": "tax.15162049",
+      "trich": "15162049 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162051",
+      "nguon": "tax.15162051",
+      "trich": "15162051 - - - Của hạt lanh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162052",
+      "nguon": "tax.15162052",
+      "trich": "15162052 - - - Của ô liu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của ô liu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162053",
+      "nguon": "tax.15162053",
+      "trich": "15162053 - - - Của đậu tương",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của đậu tương"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162054",
+      "nguon": "tax.15162054",
+      "trich": "15162054 - - - Của lạc, cọ dầu hoặc dừa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Của lạc",
+            "cọ dầu",
+            "dừa"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162059",
+      "nguon": "tax.15162059",
+      "trich": "15162059 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162061",
+      "nguon": "tax.15162061",
+      "trich": "15162061 - - - Dạng thô",
+      "dieuKienSo": [
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162062",
+      "nguon": "tax.15162062",
+      "trich": "15162062 - - - Đã tinh chế, tẩy và khử mùi (RBD)",
+      "dieuKienSo": [
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DA_TINH_CHE"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162069",
+      "nguon": "tax.15162069",
+      "trich": "15162069 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162091",
+      "nguon": "tax.15162091",
+      "trich": "15162091 - - - Stearin cọ, có chỉ số iốt trên 48",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Stearin cọ, có chỉ số iốt trên 48"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162092",
+      "nguon": "tax.15162092",
+      "trich": "15162092 - - - Của hạt lanh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của hạt lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162093",
+      "nguon": "tax.15162093",
+      "trich": "15162093 - - - Của ô liu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của ô liu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162094",
+      "nguon": "tax.15162094",
+      "trich": "15162094 - - - Của đậu tương",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Của đậu tương"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162096",
+      "nguon": "tax.15162096",
+      "trich": "15162096 - - - Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Stearin hạt cọ"
+        },
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DA_TINH_CHE"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162098",
+      "nguon": "tax.15162098",
+      "trich": "15162098 - - - Của lạc, của cọ dầu hoặc của dừa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Của lạc",
+            "của cọ dầu",
+            "của dừa"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15162099",
+      "nguon": "tax.15162099",
+      "trich": "15162099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "1516201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1516201 \"1516201 Đã tái este hóa, trừ của cọ dầu\" ⇒ tenLoai \"Đã tái este hóa\" (chữ biểu có dấu phẩy nên không gói một chuỗi) + dungCho \"cọ dầu\" PHAI_KHONG (vế \"trừ của cọ dầu\")."
+    },
+    {
+      "ma": "1516202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1516202 \"1516202 Đã tái este hóa, của cọ dầu\" ⇒ tenLoai \"Đã tái este hóa\" + dungCho \"cọ dầu\" (vế \"của cọ dầu\"); đối chiếu 1516201 (PHAI_KHONG cùng khoá)."
+    },
+    {
+      "ma": "1516203",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1516203 \"1516203 Đã qua hydro hóa, dạng vảy, mảnh\" ⇒ tenLoai \"Đã qua hydro hóa\" + tenLoai [\"dạng vảy\",\"mảnh\"] (liệt kê phẩy ⇒ tách mảng)."
+    },
+    {
+      "ma": "1516204",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1516204 \"1516204 Đã qua hydro hóa, dạng khác\" ⇒ tenLoai \"Đã qua hydro hóa\" + tenLoai \"dạng khác\"; phanConLai: false — tiêu đề này là MỘT LOẠI HÀNG (hydro hóa ở dạng khác), song song với 1516203 (dạng vảy, mảnh) và với các phép xử lý khác (tái este hóa / este hóa liên hợp / elaiđin hóa), không phải phần còn lại của anh em."
+    },
+    {
+      "ma": "1516205",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1516205 \"1516205 Đã este hóa liên hợp\" ⇒ tenLoai \"Đã este hóa liên hợp\" (phép xử lý của nhánh; dòng con chỉ nêu nguồn gốc dầu)."
+    },
+    {
+      "ma": "1516206",
+      "loai": "DUNG",
+      "ghiChu": "tieuDe.1516206 \"1516206 Elaiđin hóa, stearin cọ, có chỉ số iốt không quá 48\" ⇒ hai điều kiện chữ tự do lấy nguyên văn: \"Elaiđin hóa, stearin cọ\" + \"có chỉ số iốt không quá 48\" (tách theo dấu phẩy). CHƯA SỐ HOÁ DẠNG SỐ: khoá chiSoIot cần đơn vị \"IV\" mà chữ biểu KHÔNG viết ⇒ cổng 3 chặn (dieu-kien-so-don-vi-khong-co-trong-trich:IV) — cần người duyệt xử lý. Dòng 15162091 (\"Stearin cọ, có chỉ số iốt trên 48\") là phần còn lại của nhánh này (máy phủ định qua phanConLai của tiêu đề 1516209)."
+    },
+    {
+      "ma": "1516209",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1516209 \"1516209 Elaiđin hóa, loại khác\" ⇒ tenLoai \"Elaiđin hóa\" + phanConLai [\"1516206\"] — \"loại khác\" loại riêng nhánh stearin cọ (1516206), không loại cả các phép xử lý khác."
+    },
+    {
+      "ma": "15162091",
+      "loai": "DUNG",
+      "ghiChu": "tax.15162091 \"15162091 - - Stearin cọ, có chỉ số iốt trên 48\" ⇒ tenLoai \"Stearin cọ, có chỉ số iốt trên 48\" (chép nguyên văn cả vế giới hạn). CHƯA SỐ HOÁ DẠNG SỐ: xem ghi chú 1516206 (đơn vị \"IV\" không có trong chữ biểu)."
+    },
+    {
+      "ma": "15162021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162021 \"15162021 - - - Của quả cọ dầu, dạng thô\" ⇒ tenLoai \"Của quả cọ dầu\" + mucDoTinhCheDau DANG_THO (\"dạng thô\")."
+    },
+    {
+      "ma": "15162022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162022 \"15162022 - - - Của quả cọ dầu, trừ dạng thô\" ⇒ tenLoai \"Của quả cọ dầu\" + mucDoTinhCheDau DA_TINH_CHE (bộ đọc của khoá đọc được cụm \"trừ dạng thô\"); anh em 15162021 dùng CÙNG khoá mucDoTinhCheDau (hai giá trị DANG_THO/DA_TINH_CHE loại trừ nhau)."
+    },
+    {
+      "ma": "15162024",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162024 \"15162024 - - - Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" ⇒ tenLoai \"Của hạt cọ\" + mucDoTinhCheDau DA_TINH_CHE (\"tinh chế, tẩy và khử mùi (RBD)\")."
+    },
+    {
+      "ma": "15162026",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162026 \"15162026 - - - Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) \" ⇒ tenLoai \"Của olein hạt cọ\" + mucDoTinhCheDau DA_TINH_CHE."
+    },
+    {
+      "ma": "15162031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162031 \"15162031 - - - Của lạc; của dừa; của đậu tương\" ⇒ tenLoai [\"Của lạc\",\"của dừa\",\"của đậu tương\"] (chữ biểu tách bằng \";\" ⇒ tách mảng)."
+    },
+    {
+      "ma": "15162054",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162054 \"15162054 - - - Của lạc, cọ dầu hoặc dừa\" ⇒ tenLoai [\"Của lạc\",\"cọ dầu\",\"dừa\"] (chữ biểu có \"hoặc\" ⇒ tách mảng)."
+    },
+    {
+      "ma": "15162061",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162061 \"15162061 - - - Dạng thô\" ⇒ mucDoTinhCheDau DANG_THO (\"dạng thô\"); anh em 15162062 dùng CÙNG khoá."
+    },
+    {
+      "ma": "15162062",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162062 \"15162062 - - - Đã tinh chế, tẩy và khử mùi (RBD)\" ⇒ mucDoTinhCheDau DA_TINH_CHE (\"tinh chế, tẩy và khử mùi (RBD)\")."
+    },
+    {
+      "ma": "15162096",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162096 \"15162096 - - - Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)\" ⇒ tenLoai \"Stearin hạt cọ\" + mucDoTinhCheDau DA_TINH_CHE."
+    },
+    {
+      "ma": "15162098",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15162098 \"15162098 - - - Của lạc, của cọ dầu hoặc của dừa\" ⇒ tenLoai [\"Của lạc\",\"của cọ dầu\",\"của dừa\"] (chữ biểu có \"hoặc\" ⇒ tách mảng)."
+    },
+    {
+      "ma": "151620",
+      "loai": "DUNG",
+      "ghiChu": "CỔNG 1/2 CHƯA XANH: tiêu đề 1516201/2/3/4/6/9 chia theo PHÉP XỬ LÝ (\"Đã tái este hóa\", \"Đã qua hydro hóa\", \"Đã este hóa liên hợp\", \"Elaiđin hóa\") còn dòng 8 số chia theo NGUỒN GỐC dầu (\"Của đậu tương\", \"Của dừa\" …) — cả hai trục nằm trên CÙNG khoá tenLoai nên bộ so chữ không tách được (vector \"Của đậu tương\" không thoả tiêu đề, và ngược lại). Từ vựng chưa có khoá cho phép xử lý dầu (tái este hóa / hydro hóa / este hóa liên hợp / elaiđin hóa) nên chưa tách được hai trục. Cần người duyệt quyết (thêm khoá tu-vựng cho các phép xử lý này)."
+    }
+  ]
+}

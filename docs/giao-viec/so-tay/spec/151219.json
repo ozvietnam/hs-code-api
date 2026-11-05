@@ -1,0 +1,30 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "151219",
+  "phien": "mm:minimax-m3:20261105T1530#soan-151219",
+  "dong8": {
+    "15121910": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Các phần phân đoạn" },
+        { "fact": "mucDoTinhCheDau", "op": "TRONG", "value": ["DANG_THO"] }
+      ]
+    },
+    "15121920": {
+      "dieuKienSo": [
+        { "fact": "mucDoTinhCheDau", "op": "TRONG", "value": ["DA_TINH_CHE"] }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "15121910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15121910 \"15121910 - - - Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế \" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\"); loại dầu (hướng dương/cây rum) là điều kiện của phân nhóm 151219."
+    },
+    {
+      "ma": "15121920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15121920 \"15121920 - - - Đã tinh chế\" ⇒ mucDoTinhCheDau DA_TINH_CHE (\"đã tinh chế\"); cùng khoá mucDoTinhCheDau với 15121910 (hai giá trị DANG_THO/DA_TINH_CHE loại trừ nhau)."
+    }
+  ]
+}
