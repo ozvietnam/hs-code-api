@@ -1,0 +1,96 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "761490",
+  "nhom": "7614",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-761490",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7614901",
+      "nguon": "tieuDe.7614901",
+      "trich": "7614901 Cáp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "76149011",
+      "nguon": "tax.76149011",
+      "trich": "76149011 - - - Có đường kính không quá 25,3 mm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 25.3,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "76149012",
+      "nguon": "tax.76149012",
+      "trich": "76149012 - - - Có đường kính trên 25,3 mm nhưng không quá 28,28 mm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 25.3,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 28.28,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "76149019",
+      "nguon": "tax.76149019",
+      "trich": "76149019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "76149090",
+      "nguon": "tax.76149090",
+      "trich": "76149090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7614901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7614901 \"Cáp\" ⇒ tenLoai Cáp"
+    },
+    {
+      "ma": "76149011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76149011 \"Có đường kính không quá 25,3 mm\" ⇒ duongKinh <= 25.3 mm"
+    },
+    {
+      "ma": "76149012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76149012 \"Có đường kính trên 25,3 mm nhưng không quá 28,28 mm\" ⇒ duongKinh > 25.3 mm và <= 28.28 mm"
+    }
+  ]
+}

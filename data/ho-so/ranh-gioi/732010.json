@@ -1,0 +1,98 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "732010",
+  "nhom": "7320",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-732010",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7320101",
+      "nguon": "tieuDe.7320101",
+      "trich": "7320101 Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe có động cơ",
+            "84.29",
+            "84.30"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "73201011",
+      "nguon": "tax.73201011",
+      "trich": "73201011 - - - Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73201012",
+      "nguon": "tax.73201012",
+      "trich": "73201012 - - - Dùng cho xe có động cơ khác",
+      "dieuKienSo": [
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "73201011"
+      ]
+    },
+    {
+      "hs": "73201019",
+      "nguon": "tax.73201019",
+      "trich": "73201019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73201090",
+      "nguon": "tax.73201090",
+      "trich": "73201090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7320101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7320101: \"Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho mảng [\"xe có động cơ\",\"84.29\",\"84.30\"]"
+    },
+    {
+      "ma": "73201011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73201011: \"Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04\" ⇒ dungCho mảng 3 nhóm"
+    },
+    {
+      "ma": "73201012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73201012: \"Dùng cho xe có động cơ khác\" ⇒ dungChoXeCoDongCo CO + phanConLai [73201011]"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "720918",
+  "nhom": "7209",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-720918",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "72091810",
+      "nguon": "tax.72091810",
+      "trich": "72091810 - - - Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP)",
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "TRANG_THIEC"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72091891",
+      "nguon": "tax.72091891",
+      "trich": "72091891 - - - - Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 0.17,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72091899",
+      "nguon": "tax.72091899",
+      "trich": "72091899 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "72091810",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72091810: \"Tấm thép đen (tôn đen) cán để tráng thiếc (Tin - mill blackplate - TMBP)\" ⇒ lopMaPhu TRANG_THIEC"
+    },
+    {
+      "ma": "72091810",
+      "loai": "BO_VE",
+      "ve": "để tráng thiếc (Tin - mill blackplate - TMBP)",
+      "lyDo": "Đã lượng hóa qua mục đích tráng thiếc lopMaPhu TRANG_THIEC"
+    },
+    {
+      "ma": "72091891",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72091891: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 0,17 mm\" ⇒ hamLuongCarbon < 0.6 %, doDay <= 0.17 mm"
+    },
+    {
+      "ma": "72091891",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "72091891",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72091891",
+      "loai": "BO_VE",
+      "ve": "khối lượng",
+      "lyDo": "Cách tính tỷ lệ theo khối lượng"
+    },
+    {
+      "ma": "72091891",
+      "loai": "BO_VE",
+      "ve": "chiều dày không quá 0,17 mm",
+      "lyDo": "Đã lượng hóa qua doDay <= 0.17 mm"
+    }
+  ]
+}

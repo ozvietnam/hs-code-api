@@ -1,0 +1,56 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "848140",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848140",
+  "dong8": {
+    "84814010": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "84814030": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 1,
+          "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84814010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84814010: \"Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống\" ⇒ chatLieu \"đồng\", duongKinhTrong <= 2.5 cm"
+    },
+    {
+      "ma": "84814030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84814030: \"Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm\" ⇒ chatLieu \"plastic\", duongKinhTrong >= 1 cm, <= 2.5 cm"
+    }
+  ]
+}

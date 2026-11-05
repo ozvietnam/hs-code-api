@@ -1,0 +1,175 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "848110",
+  "nhom": "8481",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848110",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8481101",
+      "nguon": "tieuDe.8481101",
+      "trich": "8481101 Bằng sắt hoặc thép",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8481102",
+      "nguon": "tieuDe.8481102",
+      "trich": "8481102 Bằng đồng hoặc hợp kim đồng",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84811011",
+      "nguon": "tax.84811011",
+      "trich": "84811011 - - - Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van cổng"
+        },
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "BANG_TAY"
+          ]
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">",
+          "value": 5,
+          "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 40,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84811019",
+      "nguon": "tax.84811019",
+      "trich": "84811019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84811021",
+      "nguon": "tax.84811021",
+      "trich": "84811021 - - - Có đường kính trong không quá 2,5 cm ",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84811022",
+      "nguon": "tax.84811022",
+      "trich": "84811022 - - - Có đường kính trong trên 2,5 cm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": ">",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84811091",
+      "nguon": "tax.84811091",
+      "trich": "84811091 - - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 1,
+          "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84811099",
+      "nguon": "tax.84811099",
+      "trich": "84811099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8481101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8481101: \"Bằng sắt hoặc thép\" ⇒ chatLieu \"sắt thép\""
+    },
+    {
+      "ma": "84811011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84811011: \"Van cổng điều khiển bằng tay có đường kính trong cửa nạp hoặc cửa thoát trên 5 cm nhưng không quá 40 cm\" ⇒ tenLoai \"Van cổng\", cachDieuKhien BANG_TAY, duongKinhTrong > 5 cm, <= 40 cm"
+    },
+    {
+      "ma": "8481102",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8481102: \"Bằng đồng hoặc hợp kim đồng\" ⇒ chatLieu \"đồng\""
+    },
+    {
+      "ma": "84811021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84811021: \"Có đường kính trong không quá 2,5 cm\" ⇒ duongKinhTrong <= 2.5 cm"
+    },
+    {
+      "ma": "84811022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84811022: \"Có đường kính trong trên 2,5 cm\" ⇒ duongKinhTrong > 2.5 cm"
+    },
+    {
+      "ma": "84811091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84811091: \"Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm\" ⇒ chatLieu \"plastic\", duongKinhTrong >= 1 cm, <= 2.5 cm"
+    }
+  ]
+}

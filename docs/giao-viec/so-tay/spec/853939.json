@@ -1,0 +1,65 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853939",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853939",
+  "dong8": {
+    "85393910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống huỳnh quang"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đèn huỳnh quang com-pắc"
+        }
+      ]
+    },
+    "85393920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bóng đèn huỳnh quang ca-tốt lạnh (CCFLs)"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chiếu sáng từ phía sau của màn hình dẹt"
+        }
+      ]
+    },
+    "85393940": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bóng đèn huỳnh quang ca-tốt lạnh"
+        }
+      ],
+      "phanConLai": [
+        "85393920"
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "85393910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85393910: \"Ống huỳnh quang dùng cho đèn huỳnh quang com-pắc\" ⇒ tenLoai \"Ống huỳnh quang\" + dungCho \"đèn huỳnh quang com-pắc\""
+    },
+    {
+      "ma": "85393920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85393920: \"Bóng đèn huỳnh quang ca-tốt lạnh (CCFLs) để chiếu sáng từ phía sau của màn hình dẹt\" ⇒ tenLoai \"Bóng đèn huỳnh quang ca-tốt lạnh (CCFLs)\" + congDung \"chiếu sáng từ phía sau của màn hình dẹt\""
+    },
+    {
+      "ma": "85393940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85393940: \"Bóng đèn huỳnh quang ca-tốt lạnh khác\" ⇒ tenLoai \"Bóng đèn huỳnh quang ca-tốt lạnh\" + phanConLai [\"85393920\"]"
+    }
+  ]
+}

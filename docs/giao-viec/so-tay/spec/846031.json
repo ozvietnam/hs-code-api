@@ -1,0 +1,48 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "846031",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-846031",
+  "dong8": {
+    "84603110": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 0.74,
+          "donVi": "kW"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 3.175,
+          "donVi": "mm"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "để mài sắc các mũi khoan"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "84603110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84603110: \"Máy công cụ, điều khiển số, có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định và có công suất không quá 0,74 kW, để mài sắc các mũi khoan bằng vật liệu carbua với đường kính chuôi không quá 3,175 mm\" ⇒ congSuat <= 0.74 kW + duongKinh <= 3.175 mm + congDung \"để mài sắc các mũi khoan\""
+    },
+    {
+      "ma": "84603110",
+      "loai": "BO_VE",
+      "ve": "có bộ phận đồ gá kẹp mẫu gia công hình ống lắp cố định",
+      "lyDo": "Chi tiết cấu tạo đặc thù của đồ gá kẹp, không có khoá tương ứng trong tu-vung@2, đã phân biệt bằng công suất và đường kính chuôi"
+    },
+    {
+      "ma": "84603110",
+      "loai": "BO_VE",
+      "ve": "bằng vật liệu carbua",
+      "lyDo": "Vật liệu của mũi khoan (đối tượng gia công), không phải chất liệu của máy"
+    }
+  ]
+}

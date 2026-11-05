@@ -1,0 +1,130 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "721260",
+  "nhom": "7212",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721260",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7212601",
+      "nguon": "tieuDe.7212601",
+      "trich": "7212601 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "72126011",
+      "nguon": "tax.72126011",
+      "trich": "72126011 - - - Dạng đai và dải(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72126012",
+      "nguon": "tax.72126012",
+      "trich": "72126012 - - - Loại khác, chiều dày không quá 1,5 mm",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72126019",
+      "nguon": "tax.72126019",
+      "trich": "72126019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72126091",
+      "nguon": "tax.72126091",
+      "trich": "72126091 - - - Dạng đai và dải(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72126099",
+      "nguon": "tax.72126099",
+      "trich": "72126099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7212601",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7212601: \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "7212601",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "7212601",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72126011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72126011: \"Dạng đai và dải(SEN)\" ⇒ dangDaiDaiTamPhoDung DAI_VA_DAI"
+    },
+    {
+      "ma": "72126012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72126012: \"Loại khác, chiều dày không quá 1,5 mm\" ⇒ doDay <= 1.5 mm"
+    },
+    {
+      "ma": "72126012",
+      "loai": "BO_VE",
+      "ve": "chiều dày không quá 1,5 mm",
+      "lyDo": "Đã lượng hóa qua doDay <= 1.5 mm"
+    },
+    {
+      "ma": "72126091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72126091: \"Dạng đai và dải(SEN)\" ⇒ dangDaiDaiTamPhoDung DAI_VA_DAI"
+    }
+  ]
+}

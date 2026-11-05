@@ -1,0 +1,119 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841583",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841583",
+  "dong8": {
+    "84158311": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 21.1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ]
+    },
+    "84158321": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "84158331": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "84158391": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8415831": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện bay"
+        }
+      ]
+    },
+    "8415832": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện giao thông đường sắt"
+        }
+      ]
+    },
+    "8415833": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ (trừ loại thuộc phân nhóm 8415.20)"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8415831",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415831: \"Loại sử dụng cho phương tiện bay\" ⇒ dungCho \"phương tiện bay\""
+    },
+    {
+      "ma": "8415832",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415832: \"Sử dụng cho phương tiện giao thông đường sắt\" ⇒ dungCho \"phương tiện giao thông đường sắt\""
+    },
+    {
+      "ma": "8415833",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415833: \"Sử dụng cho xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\" ⇒ dungCho \"xe có động cơ (trừ loại thuộc phân nhóm 8415.20)\""
+    },
+    {
+      "ma": "84158311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158311: \"Công suất làm mát trên 21,10 kW và có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút\" ⇒ congSuat > 21.1 kW, luuLuong > 67.96 m3/phút"
+    },
+    {
+      "ma": "84158321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158321: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"
+    },
+    {
+      "ma": "84158331",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158331: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"
+    },
+    {
+      "ma": "84158391",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84158391: \"Công suất làm mát không quá 26,38 kW\" ⇒ congSuat <= 26.38 kW"
+    }
+  ]
+}

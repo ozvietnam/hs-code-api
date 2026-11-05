@@ -1,0 +1,60 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841430",
+  "nhom": "8414",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-841430",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84143040",
+      "nguon": "tax.84143040",
+      "trich": "84143040 - - Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "congSuat",
+                "op": ">",
+                "value": 21.1,
+                "donVi": "kW"
+              }
+            ],
+            [
+              {
+                "fact": "theTich",
+                "op": ">=",
+                "value": 220,
+                "donVi": "cc"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84143090",
+      "nguon": "tax.84143090",
+      "trich": "84143090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84143040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84143040: \"Có công suất làm lạnh trên 21,10 kW, hoặc có dung tích làm việc trên một chu kỳ từ 220 cc trở lên\" ⇒ HOAC [congSuat > 21.1 kW, theTich >= 220 cc]"
+    }
+  ]
+}

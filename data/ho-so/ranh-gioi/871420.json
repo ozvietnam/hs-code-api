@@ -1,0 +1,138 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "871420",
+  "nhom": "8714",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-871420",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8714201",
+      "nguon": "tieuDe.8714201",
+      "trich": "8714201 Bánh xe đẩy (castor)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh xe đẩy (castor)"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87142011",
+      "nguon": "tax.87142011",
+      "trich": "87142011 - - - Có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 75,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 100,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">=",
+          "value": 30,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87142012",
+      "nguon": "tax.87142012",
+      "trich": "87142012 - - - Có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 100,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">=",
+          "value": 30,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87142019",
+      "nguon": "tax.87142019",
+      "trich": "87142019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87142090",
+      "nguon": "tax.87142090",
+      "trich": "87142090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8714201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8714201: \"Bánh xe đẩy (castor)\" ⇒ tenLoai \"Bánh xe đẩy (castor)\""
+    },
+    {
+      "ma": "87142011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87142011: \"Có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm... chiều rộng... không dưới 30 mm\" ⇒ duongKinh > 75 mm, <= 100 mm, chieuRong >= 30 mm"
+    },
+    {
+      "ma": "87142011",
+      "loai": "BO_VE",
+      "ve": "Có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, với điều kiện là",
+      "lyDo": "Đã được lượng hóa qua duongKinh"
+    },
+    {
+      "ma": "87142011",
+      "loai": "BO_VE",
+      "ve": "chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
+      "lyDo": "Đã được lượng hóa qua chieuRong >= 30 mm"
+    },
+    {
+      "ma": "87142012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87142012: \"Có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm... chiều rộng... không dưới 30 mm\" ⇒ duongKinh > 100 mm, <= 250 mm, chieuRong >= 30 mm"
+    },
+    {
+      "ma": "87142012",
+      "loai": "BO_VE",
+      "ve": "Có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là",
+      "lyDo": "Đã được lượng hóa qua duongKinh"
+    },
+    {
+      "ma": "87142012",
+      "loai": "BO_VE",
+      "ve": "chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
+      "lyDo": "Đã được lượng hóa qua chieuRong >= 30 mm"
+    }
+  ]
+}

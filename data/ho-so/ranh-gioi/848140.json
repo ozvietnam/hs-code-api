@@ -1,0 +1,80 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "848140",
+  "nhom": "8481",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848140",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84814010",
+      "nguon": "tax.84814010",
+      "trich": "84814010 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84814030",
+      "nguon": "tax.84814030",
+      "trich": "84814030 - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 1,
+          "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84814090",
+      "nguon": "tax.84814090",
+      "trich": "84814090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84814010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84814010: \"Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống\" ⇒ chatLieu \"đồng\", duongKinhTrong <= 2.5 cm"
+    },
+    {
+      "ma": "84814030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84814030: \"Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm\" ⇒ chatLieu \"plastic\", duongKinhTrong >= 1 cm, <= 2.5 cm"
+    }
+  ]
+}

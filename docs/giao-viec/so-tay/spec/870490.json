@@ -1,0 +1,116 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870490",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870490",
+  "dong8": {
+    "87049010": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "87049091": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 5,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87049092": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 5,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 10,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87049093": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 10,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 20,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87049094": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 20,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 45,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87049095": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 45,
+          "donVi": "tấn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "87049010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87049010: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87049091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87049091: \"Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn\" ⇒ khoiLuongToanBo <= 5 tấn"
+    },
+    {
+      "ma": "87049092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87049092: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn\" ⇒ khoiLuongToanBo > 5 tấn, <= 10 tấn"
+    },
+    {
+      "ma": "87049093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87049093: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn\" ⇒ khoiLuongToanBo > 10 tấn, <= 20 tấn"
+    },
+    {
+      "ma": "87049094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87049094: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 45 tấn\" ⇒ khoiLuongToanBo > 20 tấn, <= 45 tấn"
+    },
+    {
+      "ma": "87049095",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87049095: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn\" ⇒ khoiLuongToanBo > 45 tấn"
+    }
+  ]
+}

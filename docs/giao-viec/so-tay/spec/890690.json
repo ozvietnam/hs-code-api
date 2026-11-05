@@ -1,0 +1,46 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "890690",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-890690",
+  "dong8": {
+    "89069010": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 30,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "89069020": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 30,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 300,
+          "donVi": "tấn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "89069010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89069010: \"Có lượng giãn nước không quá 30 tấn\" ⇒ khoiLuongToanBo <= 30 tấn"
+    },
+    {
+      "ma": "89069020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89069020: \"Có lượng giãn nước trên 30 tấn nhưng không quá 300 tấn\" ⇒ khoiLuongToanBo > 30 tấn, <= 300 tấn"
+    }
+  ]
+}

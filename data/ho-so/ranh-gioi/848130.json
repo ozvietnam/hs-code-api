@@ -1,0 +1,115 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "848130",
+  "nhom": "8481",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848130",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84813010",
+      "nguon": "tax.84813010",
+      "trich": "84813010 - - Van cản, bằng gang đúc, có đường kính trong cửa nạp từ 4 cm đến 60 cm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Van cản"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "gang"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 4,
+          "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 60,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84813020",
+      "nguon": "tax.84813020",
+      "trich": "84813020 - - Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84813040",
+      "nguon": "tax.84813040",
+      "trich": "84813040 - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 1,
+          "donVi": "cm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 2.5,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84813090",
+      "nguon": "tax.84813090",
+      "trich": "84813090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84813010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84813010: \"Van cản, bằng gang đúc, có đường kính trong cửa nạp từ 4 cm đến 60 cm\" ⇒ tenLoai \"Van cản\", chatLieu \"gang\", duongKinhTrong >= 4 cm, <= 60 cm"
+    },
+    {
+      "ma": "84813020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84813020: \"Bằng đồng hoặc hợp kim đồng, có đường kính trong từ 2,5 cm trở xuống\" ⇒ chatLieu \"đồng\", duongKinhTrong <= 2.5 cm"
+    },
+    {
+      "ma": "84813040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84813040: \"Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm\" ⇒ chatLieu \"plastic\", duongKinhTrong >= 1 cm, <= 2.5 cm"
+    }
+  ]
+}

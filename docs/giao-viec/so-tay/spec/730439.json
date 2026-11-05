@@ -1,0 +1,64 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730439",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-730439",
+  "dong8": {
+    "73043920": {
+      "dieuKienSo": [
+        {
+          "fact": "khaNangChiuApLuc",
+          "op": ">=",
+          "value": 42000,
+          "donVi": "psi"
+        }
+      ]
+    },
+    "73043940": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<",
+          "value": 140,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.45,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "73043920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73043920: \"Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi\" ⇒ khaNangChiuApLuc >= 42000 psi"
+    },
+    {
+      "ma": "73043920",
+      "loai": "BO_VE",
+      "ve": "có khả năng chịu áp lực",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "73043920",
+      "loai": "BO_VE",
+      "ve": "không nhỏ hơn 42.000 psi",
+      "lyDo": "Đã lượng hóa qua khaNangChiuApLuc >= 42000 psi"
+    },
+    {
+      "ma": "73043940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73043940: \"Loại khác, có đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng\" ⇒ duongKinh < 140 mm, hamLuongCarbon < 0.45 %"
+    },
+    {
+      "ma": "73043940",
+      "loai": "BO_VE",
+      "ve": "có đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua duongKinh và hamLuongCarbon"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "040221",
+  "nhom": "0402",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-040221",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "04022120",
+      "nguon": "tax.04022120",
+      "trich": "04022120 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": ">=",
+          "value": 20,
+          "donVi": "kg"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "04022130",
+      "nguon": "tax.04022130",
+      "trich": "04022130 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuong",
+          "op": "<=",
+          "value": 2,
+          "donVi": "kg"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "04022190",
+      "nguon": "tax.04022190",
+      "trich": "04022190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "04022120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04022120 \"Đóng gói với khối lượng tịnh từ 20 kg trở lên\" ⇒ khoiLuong >= 20 kg"
+    },
+    {
+      "ma": "04022130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04022130 \"Đóng gói với khối lượng tịnh từ 2 kg trở xuống\" ⇒ khoiLuong <= 2 kg"
+    }
+  ]
+}

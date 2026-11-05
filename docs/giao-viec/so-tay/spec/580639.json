@@ -1,0 +1,100 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "580639",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-580639",
+  "dong8": {
+    "58063910": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "TO_TAM"
+          ]
+        }
+      ]
+    },
+    "58063991": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "Làm nền"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giấy cách điện"
+        }
+      ]
+    },
+    "58063992": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vải dệt thoi khổ hẹp"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất băng mực"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy chữ"
+        }
+      ]
+    },
+    "58063993": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ruy băng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm khóa kéo"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 12,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "58063910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58063910: \"Từ tơ tằm\" ⇒ loaiSoiDet TO_TAM"
+    },
+    {
+      "ma": "58063991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58063991: \"Làm nền cho giấy cách điện\" ⇒ congDung, dungCho"
+    },
+    {
+      "ma": "58063992",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58063992: \"Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự\" ⇒ tenLoai, congDung, dungCho"
+    },
+    {
+      "ma": "58063992",
+      "loai": "BO_VE",
+      "ve": "hoặc các loại máy tương tự",
+      "lyDo": "khoá dungCho không có op TUONG_TU"
+    },
+    {
+      "ma": "58063993",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58063993: \"Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm\" ⇒ tenLoai, congDung, chieuRong"
+    }
+  ]
+}

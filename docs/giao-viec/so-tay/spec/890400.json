@@ -1,0 +1,113 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "890400",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-890400",
+  "dong8": {
+    "89040010": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89040032": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 1200,
+          "donVi": "hp"
+        }
+      ]
+    },
+    "89040033": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1200,
+          "donVi": "hp"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 3200,
+          "donVi": "hp"
+        }
+      ]
+    },
+    "89040034": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 3200,
+          "donVi": "hp"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 4000,
+          "donVi": "hp"
+        }
+      ]
+    },
+    "89040035": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 4000,
+          "donVi": "hp"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8904003": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "89040010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040010: \"Tổng dung tích (gross tonnage) không quá 26\" ⇒ tongDungTichTau <= 26 GT"
+    },
+    {
+      "ma": "8904003",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8904003: \"Tổng dung tích (gross tonnage) trên 26\" ⇒ tongDungTichTau > 26 GT"
+    },
+    {
+      "ma": "89040032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040032: \"Công suất không quá 1.200 hp\" ⇒ congSuat <= 1200 hp"
+    },
+    {
+      "ma": "89040033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040033: \"Công suất trên 1.200 hp nhưng không quá 3.200 hp\" ⇒ congSuat > 1200 hp, <= 3200 hp"
+    },
+    {
+      "ma": "89040034",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040034: \"Công suất trên 3.200 hp nhưng không quá 4.000 hp\" ⇒ congSuat > 3200 hp, <= 4000 hp"
+    },
+    {
+      "ma": "89040035",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040035: \"Công suất trên 4.000 hp\" ⇒ congSuat > 4000 hp"
+    }
+  ]
+}

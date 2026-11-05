@@ -1,0 +1,103 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "871420",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-871420",
+  "dong8": {
+    "87142011": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 75,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 100,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">=",
+          "value": 30,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "87142012": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 100,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">=",
+          "value": 30,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8714201": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh xe đẩy (castor)"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8714201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8714201: \"Bánh xe đẩy (castor)\" ⇒ tenLoai \"Bánh xe đẩy (castor)\""
+    },
+    {
+      "ma": "87142011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87142011: \"Có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm... chiều rộng... không dưới 30 mm\" ⇒ duongKinh > 75 mm, <= 100 mm, chieuRong >= 30 mm"
+    },
+    {
+      "ma": "87142011",
+      "loai": "BO_VE",
+      "ve": "Có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, với điều kiện là",
+      "lyDo": "Đã được lượng hóa qua duongKinh"
+    },
+    {
+      "ma": "87142011",
+      "loai": "BO_VE",
+      "ve": "chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
+      "lyDo": "Đã được lượng hóa qua chieuRong >= 30 mm"
+    },
+    {
+      "ma": "87142012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87142012: \"Có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm... chiều rộng... không dưới 30 mm\" ⇒ duongKinh > 100 mm, <= 250 mm, chieuRong >= 30 mm"
+    },
+    {
+      "ma": "87142012",
+      "loai": "BO_VE",
+      "ve": "Có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là",
+      "lyDo": "Đã được lượng hóa qua duongKinh"
+    },
+    {
+      "ma": "87142012",
+      "loai": "BO_VE",
+      "ve": "chiều rộng của bánh xe hoặc lốp lắp vào không dưới 30 mm",
+      "lyDo": "Đã được lượng hóa qua chieuRong >= 30 mm"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "731511",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-731511",
+  "dong8": {
+    "73151110": {
+      "dieuKienSo": [
+        {
+          "fact": "xichXeDapMoTo",
+          "op": "CO"
+        }
+      ]
+    },
+    "73151191": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuDaiCuon",
+          "op": ">=",
+          "value": 6,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuDaiCuon",
+          "op": "<=",
+          "value": 32,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "73151110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73151110: \"Xích xe đạp hoặc xích xe mô tô\" ⇒ xichXeDapMoTo CO"
+    },
+    {
+      "ma": "73151191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73151191: \"Xích truyền, có độ dài mắt xích từ 6 mm đến 32 mm\" ⇒ chieuDaiCuon >= 6 mm, <= 32 mm"
+    },
+    {
+      "ma": "73151191",
+      "loai": "BO_VE",
+      "ve": "có độ dài mắt xích",
+      "lyDo": "Cụm danh từ chỉ thuộc tính độ dài"
+    },
+    {
+      "ma": "73151191",
+      "loai": "BO_VE",
+      "ve": "từ 6 mm đến 32 mm",
+      "lyDo": "Đã lượng hóa qua chieuDaiCuon"
+    }
+  ]
+}

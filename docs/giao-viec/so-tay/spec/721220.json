@@ -1,0 +1,76 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721220",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721220",
+  "dong8": {
+    "72122010": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "72122020": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "72122010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72122010: \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ chieuRong <= 400 mm"
+    },
+    {
+      "ma": "72122010",
+      "loai": "BO_VE",
+      "ve": "chiều rộng không quá 400 mm",
+      "lyDo": "Đã lượng hóa qua chieuRong <= 400 mm"
+    },
+    {
+      "ma": "72122020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72122020: \"Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm\" ⇒ hamLuongCarbon < 0.6 %, doDay <= 1.5 mm"
+    },
+    {
+      "ma": "72122020",
+      "loai": "BO_VE",
+      "ve": "có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "72122020",
+      "loai": "BO_VE",
+      "ve": "dưới 0,6% tính theo",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72122020",
+      "loai": "BO_VE",
+      "ve": "khối lượng",
+      "lyDo": "Cách tính tỷ lệ theo khối lượng"
+    },
+    {
+      "ma": "72122020",
+      "loai": "BO_VE",
+      "ve": "chiều dày không quá 1,5 mm",
+      "lyDo": "Đã lượng hóa qua doDay <= 1.5 mm"
+    }
+  ]
+}

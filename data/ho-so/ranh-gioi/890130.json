@@ -1,0 +1,82 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "890130",
+  "nhom": "8901",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-890130",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "89013050",
+      "nguon": "tax.89013050",
+      "trich": "89013050 - - Tổng dung tích (gross tonnage) không quá 5.000",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 5000,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89013070",
+      "nguon": "tax.89013070",
+      "trich": "89013070 - - Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 5000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 50000,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89013080",
+      "nguon": "tax.89013080",
+      "trich": "89013080 - - Tổng dung tích (gross tonnage) trên 50.000",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 50000,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "89013050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89013050: \"Tổng dung tích (gross tonnage) không quá 5.000\" ⇒ tongDungTichTau <= 5000 GT"
+    },
+    {
+      "ma": "89013070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89013070: \"Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000\" ⇒ tongDungTichTau > 5000 GT, <= 50000 GT"
+    },
+    {
+      "ma": "89013080",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89013080: \"Tổng dung tích (gross tonnage) trên 50.000\" ⇒ tongDungTichTau > 50000 GT"
+    }
+  ]
+}

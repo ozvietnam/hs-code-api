@@ -1,0 +1,146 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "890400",
+  "nhom": "8904",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-890400",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8904003",
+      "nguon": "tieuDe.8904003",
+      "trich": "8904003 Tổng dung tích (gross tonnage) trên 26",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "89040010",
+      "nguon": "tax.89040010",
+      "trich": "89040010 - Tổng dung tích (gross tonnage) không quá 26 ",
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89040032",
+      "nguon": "tax.89040032",
+      "trich": "89040032 - - Công suất không quá 1.200 hp",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 1200,
+          "donVi": "hp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89040033",
+      "nguon": "tax.89040033",
+      "trich": "89040033 - - Công suất trên 1.200 hp nhưng không quá 3.200 hp",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1200,
+          "donVi": "hp"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 3200,
+          "donVi": "hp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89040034",
+      "nguon": "tax.89040034",
+      "trich": "89040034 - - Công suất trên 3.200 hp nhưng không quá 4.000 hp",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 3200,
+          "donVi": "hp"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 4000,
+          "donVi": "hp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "89040035",
+      "nguon": "tax.89040035",
+      "trich": "89040035 - - Công suất trên 4.000 hp",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 4000,
+          "donVi": "hp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "89040010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040010: \"Tổng dung tích (gross tonnage) không quá 26\" ⇒ tongDungTichTau <= 26 GT"
+    },
+    {
+      "ma": "8904003",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8904003: \"Tổng dung tích (gross tonnage) trên 26\" ⇒ tongDungTichTau > 26 GT"
+    },
+    {
+      "ma": "89040032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040032: \"Công suất không quá 1.200 hp\" ⇒ congSuat <= 1200 hp"
+    },
+    {
+      "ma": "89040033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040033: \"Công suất trên 1.200 hp nhưng không quá 3.200 hp\" ⇒ congSuat > 1200 hp, <= 3200 hp"
+    },
+    {
+      "ma": "89040034",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040034: \"Công suất trên 3.200 hp nhưng không quá 4.000 hp\" ⇒ congSuat > 3200 hp, <= 4000 hp"
+    },
+    {
+      "ma": "89040035",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89040035: \"Công suất trên 4.000 hp\" ⇒ congSuat > 4000 hp"
+    }
+  ]
+}

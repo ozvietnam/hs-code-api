@@ -1,0 +1,86 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721650",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721650",
+  "dong8": {
+    "72165011": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    },
+    "72165091": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7216501": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": "<",
+          "value": 80,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7216501",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7216501: \"Có chiều cao dưới 80 mm\" ⇒ chieuCao < 80 mm"
+    },
+    {
+      "ma": "7216501",
+      "loai": "BO_VE",
+      "ve": "Có chiều cao dưới 80 mm",
+      "lyDo": "Đã lượng hóa qua chieuCao < 80 mm"
+    },
+    {
+      "ma": "72165011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72165011: \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72165011",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "72165011",
+      "loai": "BO_VE",
+      "ve": "từ 0,6% trở lên tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72165091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72165091: \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72165091",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính"
+    },
+    {
+      "ma": "72165091",
+      "loai": "BO_VE",
+      "ve": "từ 0,6% trở lên tính theo khối lượng",
+      "lyDo": "Đã lượng hóa qua hamLuongCarbon >= 0.6 %"
+    }
+  ]
+}

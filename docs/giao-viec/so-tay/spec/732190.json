@@ -1,0 +1,87 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "732190",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-732190",
+  "dong8": {
+    "73219010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bếp dầu hỏa"
+        }
+      ]
+    },
+    "73219021": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Đầu đốt (burner)"
+              }
+            ],
+            [
+              {
+                "fact": "phuongPhapCheTao",
+                "op": "TRONG",
+                "value": [
+                  "DAP"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7321902": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nhiên liệu khí"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73219010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73219010: \"Của bếp dầu hỏa (SEN)\" ⇒ dungCho \"bếp dầu hỏa\""
+    },
+    {
+      "ma": "7321902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7321902: \"Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí (SEN)\" ⇒ dungCho \"nhiên liệu khí\""
+    },
+    {
+      "ma": "7321902",
+      "loai": "BO_VE",
+      "ve": "Của dụng cụ nấu và dụng cụ hâm nóng dạng tấm dùng nhiên liệu khí",
+      "lyDo": "Đã đưa nhiên liệu khí vào dungCho"
+    },
+    {
+      "ma": "73219021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73219021: \"Đầu đốt (burner); các bộ phận được sản xuất bằng quá trình dập hoặc ép(SEN)\" ⇒ HOAC [tenLoai Đầu đốt, phuongPhapCheTao DAP]"
+    },
+    {
+      "ma": "73219021",
+      "loai": "BO_VE",
+      "ve": "được sản xuất",
+      "lyDo": "Vế nối phương pháp chế tạo"
+    },
+    {
+      "ma": "73219021",
+      "loai": "BO_VE",
+      "ve": "bằng quá trình dập hoặc ép",
+      "lyDo": "Đã lượng hóa qua phuongPhapCheTao DAP"
+    }
+  ]
+}

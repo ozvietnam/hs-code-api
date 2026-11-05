@@ -1,0 +1,102 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "730429",
+  "nhom": "7304",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-730429",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "73042910",
+      "nguon": "tax.73042910",
+      "trich": "73042910 - - - Ống chống và ống có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống",
+      "dieuKienSo": [
+        {
+          "fact": "gioiHanChay",
+          "op": "<",
+          "value": 80000,
+          "donVi": "psi"
+        },
+        {
+          "fact": "coRen",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73042920",
+      "nguon": "tax.73042920",
+      "trich": "73042920 - - - Ống chống và ống có giới hạn chảy(1) dưới 80.000 psi và có ren ở đầu ống",
+      "dieuKienSo": [
+        {
+          "fact": "gioiHanChay",
+          "op": "<",
+          "value": 80000,
+          "donVi": "psi"
+        },
+        {
+          "fact": "coRen",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73042930",
+      "nguon": "tax.73042930",
+      "trich": "73042930 - - - Ống chống và ống có giới hạn chảy(1) từ 80.000 psi trở lên, có hoặc không có ren ở đầu ống",
+      "dieuKienSo": [
+        {
+          "fact": "gioiHanChay",
+          "op": ">=",
+          "value": 80000,
+          "donVi": "psi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "73042910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73042910: \"Ống chống và ống có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống\" ⇒ gioiHanChay < 80000 psi, coRen KHONG"
+    },
+    {
+      "ma": "73042910",
+      "loai": "BO_VE",
+      "ve": "có giới hạn chảy(1) dưới 80.000 psi và không có ren ở đầu ống",
+      "lyDo": "Đã lượng hóa qua gioiHanChay và coRen"
+    },
+    {
+      "ma": "73042920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73042920: \"Ống chống và ống có giới hạn chảy(1) dưới 80.000 psi và có ren ở đầu ống\" ⇒ gioiHanChay < 80000 psi, coRen CO"
+    },
+    {
+      "ma": "73042920",
+      "loai": "BO_VE",
+      "ve": "có giới hạn chảy(1) dưới 80.000 psi và có ren ở đầu ống",
+      "lyDo": "Đã lượng hóa qua gioiHanChay và coRen"
+    },
+    {
+      "ma": "73042930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73042930: \"Ống chống và ống có giới hạn chảy(1) từ 80.000 psi trở lên, có hoặc không có ren ở đầu ống\" ⇒ gioiHanChay >= 80000 psi"
+    },
+    {
+      "ma": "73042930",
+      "loai": "BO_VE",
+      "ve": "có giới hạn chảy(1) từ 80.000 psi trở lên, có hoặc không có ren ở đầu ống",
+      "lyDo": "Đã lượng hóa qua gioiHanChay >= 80000 psi"
+    }
+  ]
+}

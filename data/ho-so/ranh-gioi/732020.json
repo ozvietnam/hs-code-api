@@ -1,0 +1,91 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "732020",
+  "nhom": "7320",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-732020",
+    "ngay": "2026-11-04"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7320201",
+      "nguon": "tieuDe.7320201",
+      "trich": "7320201 Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe có động cơ",
+            "84.29",
+            "84.30"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "73202011",
+      "nguon": "tax.73202011",
+      "trich": "73202011  - - - Dùng cho xe có động cơ",
+      "dieuKienSo": [
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73202012",
+      "nguon": "tax.73202012",
+      "trich": "73202012  - - - Dùng cho máy làm đất",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy làm đất"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73202019",
+      "nguon": "tax.73202019",
+      "trich": "73202019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73202090",
+      "nguon": "tax.73202090",
+      "trich": "73202090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7320201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7320201: \"Dùng cho xe có động cơ hoặc các loại máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho mảng"
+    },
+    {
+      "ma": "73202011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73202011: \"Dùng cho xe có động cơ\" ⇒ dungChoXeCoDongCo CO"
+    },
+    {
+      "ma": "73202012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73202012: \"Dùng cho máy làm đất\" ⇒ dungCho \"máy làm đất\""
+    }
+  ]
+}

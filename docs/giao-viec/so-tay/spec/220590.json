@@ -1,0 +1,40 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "220590",
+  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-220590",
+  "dong8": {
+    "22059010": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 15,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22059020": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 15,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "22059010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22059010: \"không quá 15% tính theo thể tích\" ⇒ nongDoCon <= 15 %"
+    },
+    {
+      "ma": "22059020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22059020: \"trên 15% tính theo thể tích\" ⇒ nongDoCon > 15 %"
+    }
+  ]
+}
