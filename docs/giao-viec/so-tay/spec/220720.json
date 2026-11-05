@@ -1,0 +1,50 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "220720",
+  "phien": "zcode-sub:glm-5.3:20261105T1628#soan-220720",
+  "dong8": {
+    "22072011": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 99,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "2207201": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cồn etylic đã biến tính"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "22072011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22072011 \"Cồn etylic có nồng độ trên 99% tính theo thể tích\" ⇒ nongDoCon > 99 (đơn vị %) — đã đối chiếu tay: 'trên 99%' = op > giá trị 99, đúng chữ; cảnh báo cong3-bien-khong-doc-duoc chỉ là máy không đọc lại được biên từ chữ nguồn"
+    },
+    {
+      "ma": "2207201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2207201 \"Cồn etylic đã biến tính, kể cả rượu mạnh đã methyl hoá\" — \"kể cả rượu mạnh đã methyl hoá\" là vế PHU (bao gồm) ⇒ chỉ giữ tên đầu tenLoai \"Cồn etylic đã biến tính\""
+    },
+    {
+      "ma": "22072019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22072019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "22072090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22072090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "430400",
+  "nhom": "4304",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1024#soan-430400",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "43040010",
+      "nguon": "tax.43040010",
+      "trich": "43040010 - Da lông nhân tạo",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Da lông nhân tạo"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "43040020",
+      "nguon": "tax.43040020",
+      "trich": "43040020 - Sản phẩm dùng cho mục đích công nghiệp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sản phẩm"
+        },
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "CONG_NGHIEP"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "43040091",
+      "nguon": "tax.43040091",
+      "trich": "43040091 - - Túi thể thao",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Túi thể thao"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "43040099",
+      "nguon": "tax.43040099",
+      "trich": "43040099 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "43040020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.43040020 \"Sản phẩm dùng cho mục đích công nghiệp\" ⇒ tenLoai \"Sản phẩm\" + phamViSuDung CONG_NGHIEP (vế giới hạn \"dùng cho mục đích công nghiệp\"). .10 \"Da lông nhân tạo\" ⇒ tenLoai \"Da lông nhân tạo\". .91 \"Túi thể thao\" ⇒ tenLoai \"Túi thể thao\". Tiêu đề 4304009 là \"Loại khác\" TRẦN ⇒ không ghi điều kiện; .99 \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}

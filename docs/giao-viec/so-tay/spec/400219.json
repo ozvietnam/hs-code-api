@@ -1,0 +1,27 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "400219",
+  "phien": "mm:minimax-m3:20261105T1700#soan-400219",
+  "dong8": {
+    "40021910": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dạng nguyên sinh" } ],
+            [
+              { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["tấm", "tờ", "dải"] },
+              { "fact": "congDung", "op": "CONG_DUNG", "value": "chưa lưu hóa" },
+              { "fact": "dungCho", "op": "CONG_DUNG", "value": "chưa pha trộn" }
+            ]
+          ]
+        }
+      ]
+    },
+    "40021990": { "dieuKienSo": [] }
+  },
+  "ghiChuSoan": [
+    { "ma": "40021910", "loai": "QUYET_DINH", "ghiChu": "tax.40021910 \"Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn\" (EN \"In primary forms or in unvulcanised, uncompounded plates, sheets or strip\") ⇒ HOAC hai phương án: (1) tenLoai \"Dạng nguyên sinh\"; (2) tenLoai [\"tấm\",\"tờ\",\"dải\"] (mảng = hoặc) + tenLoai \"chưa lưu hóa, chưa pha trộn\" (vế GIỚI HẠN, chép nguyên văn gồm dấu phẩy). Từ vựng không có khoá \"chưa lưu hóa\"/\"chưa pha trộn\" (CO_KHONG) ⇒ dùng khoá chữ tự do; KHÔNG dùng dangNguyenSinh (không có giá trị cho dạng nguyên sinh)." },
+    { "ma": "40021990", "loai": "QUYET_DINH", "ghiChu": "tax.40021990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}

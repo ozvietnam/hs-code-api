@@ -1,0 +1,99 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "030760",
+  "nhom": "0307",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1605#soan-030760",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "03076010",
+      "nguon": "tax.03076010",
+      "trich": "03076010 - - Sống",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sống"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03076020",
+      "nguon": "tax.03076020",
+      "trich": "03076020 - - Tươi, ướp lạnh hoặc đông lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tươi",
+            "ướp lạnh",
+            "đông lạnh"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03076040",
+      "nguon": "tax.03076040",
+      "trich": "03076040 - - Khô, muối hoặc ngâm nước muối",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Khô",
+            "muối",
+            "ngâm nước muối"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03076050",
+      "nguon": "tax.03076050",
+      "trich": "03076050 - - Hun khói",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hun khói"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "03076010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03076010 \"Sống\" ⇒ tenLoai \"Sống\" nguyên văn (không dùng phuongPhapBaoQuan, lý do như 030711)"
+    },
+    {
+      "ma": "03076020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03076020 \"Tươi, ướp lạnh hoặc đông lạnh\" ⇒ tenLoai [\"Tươi\",\"ướp lạnh\",\"đông lạnh\"] — chữ Anh \"fresh, chilled or frozen\" là ba hàng thay thế, mảng = hoặc (LUAT-CHUNG bảng 1)"
+    },
+    {
+      "ma": "03076040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03076040 \"Khô, muối hoặc ngâm nước muối\" ⇒ tenLoai [\"Khô\",\"muối\",\"ngâm nước muối\"] như 030719"
+    },
+    {
+      "ma": "03076050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03076050 \"Hun khói\" ⇒ tenLoai \"Hun khói\" nguyên văn"
+    }
+  ]
+}

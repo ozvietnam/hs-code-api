@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-251512",
+    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-251512",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -19,11 +19,9 @@
       "trich": "25151210 - - - Dạng khối (SEN)",
       "dieuKienSo": [
         {
-          "fact": "dangKhoiHoacTamDa",
-          "op": "TRONG",
-          "value": [
-            "DANG_KHOI"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng khối"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -34,11 +32,9 @@
       "trich": "25151220 - - - Dạng tấm (SEN)",
       "dieuKienSo": [
         {
-          "fact": "dangKhoiHoacTamDa",
-          "op": "TRONG",
-          "value": [
-            "DANG_TAM"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng tấm"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -46,9 +42,14 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "251512",
+      "ma": "25151210",
       "loai": "QUYET_DINH",
-      "ghiChu": "Các phân nhóm phân chia theo hình dạng khối hoặc tấm của đá."
+      "ghiChu": "tax.25151210 \"Dạng khối (SEN)\" — tên dạng nguyên văn ⇒ tenLoai \"Dạng khối\"; \"(SEN)\" là ngoặc chú thích"
+    },
+    {
+      "ma": "25151220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.25151220 \"Dạng tấm (SEN)\" — tên dạng nguyên văn ⇒ tenLoai \"Dạng tấm\"; \"(SEN)\" là ngoặc chú thích"
     }
   ]
 }

@@ -1,0 +1,124 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "380891",
+  "phien": "mm:minimax-m3:20261105T1704#soan-380891",
+  "dong8": {
+    "38089110": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chứa 2-(methylpropyl-phenol methylcarbamate)"
+        }
+      ]
+    },
+    "38089120": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dạng bột dùng làm hương vòng chống muỗi"
+        },
+        {
+          "fact": "dangChePhamDietMuoi",
+          "op": "TRONG",
+          "value": [
+            "BOT_LAM_HUONG_VONG"
+          ]
+        }
+      ]
+    },
+    "38089130": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng bình xịt"
+        },
+        {
+          "fact": "dangBinhXit",
+          "op": "CO"
+        }
+      ]
+    },
+    "38089140": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hương vòng chống muỗi"
+        },
+        {
+          "fact": "dangChePhamDietMuoi",
+          "op": "TRONG",
+          "value": [
+            "HUONG_VONG"
+          ]
+        }
+      ]
+    },
+    "38089150": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tấm thuốc diệt muỗi"
+        },
+        {
+          "fact": "dangChePhamDietMuoi",
+          "op": "TRONG",
+          "value": [
+            "TAM_DIET_MUOI"
+          ]
+        }
+      ]
+    },
+    "38089191": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "có chức năng khử mùi"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "38089110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38089110 \"Các chế phẩm trung gian chứa 2-(methylpropyl-phenol methylcarbamate)\" (EN \"Intermediate preparations containing 2-(methylpropyl-phenol methylcarbamate)\") ⇒ tenLoai \"chứa 2-(methylpropyl-phenol methylcarbamate)\" (đoạn nguyên văn phân biệt dòng; tu-vung chưa có khoá riêng cho tiêu chí thành phần hoạt tính)."
+    },
+    {
+      "ma": "38089120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38089120 \"Loại khác, dạng bột dùng làm hương vòng chống muỗi\" (EN \"Other, powder for moulding into mosquito coils\") ⇒ tenLoai \"dạng bột dùng làm hương vòng chống muỗi\" + dangChePhamDietMuoi TRONG [BOT_LAM_HUONG_VONG]. Ghi thêm tenLoai (đoạn nguyên văn của chính dòng) bên cạnh khoá tất định: các anh em trong cụm thuốc diệt muỗi chia theo hai tiêu chí khác nhau (dạng chế phẩm diệt muỗi ↔ dạng đóng gói); nếu mỗi dòng chỉ mang một khoá riêng thì cổng 2 ghép được mô tả \"hương vòng chống muỗi\" + \"dạng bình xịt\" thành MỘT hàng và báo chồng lấn giả. Cùng khoá tenLoai trên các anh em thì hai tên rời nhau nên không còn chồng lấn giả (luật anh em cùng khoá, QUY-TRINH 3.3)."
+    },
+    {
+      "ma": "38089130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38089130 \"Dạng bình xịt\" (EN \"In aerosol containers\") ⇒ tenLoai \"Dạng bình xịt\" + dangBinhXit CO."
+    },
+    {
+      "ma": "38089140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38089140 \"Hương vòng chống muỗi\" (EN \"Mosquito repellent coils\") ⇒ tenLoai \"Hương vòng chống muỗi\" + dangChePhamDietMuoi TRONG [HUONG_VONG]. Ghi thêm tenLoai (đoạn nguyên văn của chính dòng) bên cạnh khoá tất định: các anh em trong cụm thuốc diệt muỗi chia theo hai tiêu chí khác nhau (dạng chế phẩm diệt muỗi ↔ dạng đóng gói); nếu mỗi dòng chỉ mang một khoá riêng thì cổng 2 ghép được mô tả \"hương vòng chống muỗi\" + \"dạng bình xịt\" thành MỘT hàng và báo chồng lấn giả. Cùng khoá tenLoai trên các anh em thì hai tên rời nhau nên không còn chồng lấn giả (luật anh em cùng khoá, QUY-TRINH 3.3)."
+    },
+    {
+      "ma": "38089150",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38089150 \"Tấm thuốc diệt muỗi (SEN)\" ⇒ tenLoai \"Tấm thuốc diệt muỗi\" + dangChePhamDietMuoi TRONG [TAM_DIET_MUOI]; nguồn sen.38089150 mô tả tấm làm từ sợi cellulo có bột gỗ mềm và bột giấy, ngâm tẩm thuốc trừ sâu (allethrin, d-transprallethrin), chất nhuộm màu, chất kiểm soát bay hơi, chất ổn định và dung môi hữu cơ."
+    },
+    {
+      "ma": "38089191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38089191 \"Có chức năng khử mùi (SEN)\" (EN \"Having deodorising function\") ⇒ congDung \"có chức năng khử mùi\"; nguồn sen.38089191 nói đây là chế phẩm trừ côn trùng chứa các chất và tác nhân khử mùi ở dạng lỏng, dạng hạt và dạng khác."
+    },
+    {
+      "ma": "38089199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38089199 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "392410",
+  "nhom": "3924",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1700#soan-392410",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "39241010",
+      "nguon": "tax.39241010",
+      "trich": "39241010 - - Từ melamin",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "melamin"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39241091",
+      "nguon": "tax.39241091",
+      "trich": "39241091 - - - Bình cho trẻ em ăn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bình"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "cho trẻ em ăn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39241099",
+      "nguon": "tax.39241099",
+      "trich": "39241099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "39241010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39241010 \"Từ melamin\" (EN \"Of melamine\") ⇒ tenLoai \"melamin\" (vật liệu của hàng; chatLieu không có giá trị \"melamin\")."
+    },
+    {
+      "ma": "39241091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39241091 \"Bình cho trẻ em ăn\" (EN \"Baby feeding bottles\") ⇒ tenLoai \"Bình\" (tên hàng) + congDung CONG_DUNG \"cho trẻ em ăn\" (phủ vế GIỚI HẠN \"cho trẻ em ăn\"). Dòng nằm dưới tiêu đề \"Loại khác\" (3924109) nên máy phủ định anh em — tức không phải từ melamin (39241010)."
+    },
+    {
+      "ma": "39241099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39241099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

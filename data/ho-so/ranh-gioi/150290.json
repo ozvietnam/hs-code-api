@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-150290",
+    "phien": "mm:minimax-m3:20261105T1529#soan-150290",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -19,8 +19,9 @@
       "trich": "15029010 - - Loại ăn được",
       "dieuKienSo": [
         {
-          "fact": "thichHopDungChoNguoi",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "ăn được"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -37,7 +38,12 @@
     {
       "ma": "15029010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15029010 \"Loại ăn được\" ⇒ thichHopDungChoNguoi CO"
+      "ghiChu": "tax.15029010 \"Loại ăn được\" (EN \"Edible\") ⇒ tenLoai \"ăn được\" (vế GIỚI HẠN duy nhất của dòng). Từ vựng chưa có khoá riêng cho \"ăn được/edible\" (khoá sanPhamDinhDuongYTe đọc \"sản phẩm dinh dưỡng y tế\", không đọc \"ăn được\") — dùng tenLoai như mẫu 851220 \"chưa lắp ráp\"; ghi chú cho người soát nếu muốn đề xuất khoá mới."
+    },
+    {
+      "ma": "15029090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15029090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
     }
   ]
 }

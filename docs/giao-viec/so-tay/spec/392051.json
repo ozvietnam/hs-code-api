@@ -1,13 +1,14 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "392051",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-392051",
+  "phien": "mm:minimax-m3:20261105T1705#soan-392051",
   "dong8": {
     "39205111": {
       "dieuKienSo": [
         {
-          "fact": "loaiCung",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cứng"
         }
       ]
     }
@@ -16,14 +17,36 @@
     "3920511": {
       "dieuKienSo": [
         {
-          "fact": "dangTamPhienMang",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "TAM_VA_PHIEN"
+            "tấm",
+            "phiến"
           ]
         }
       ]
     }
   },
-  "ghiChuSoan": []
+  "ghiChuSoan": [
+    {
+      "ma": "3920511",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3920511 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"] (cùng cách chia như 3920101)."
+    },
+    {
+      "ma": "39205111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39205111 \"Loại cứng(SEN)\" ⇒ tenLoai \"cứng\" phủ vế [GIỚI HẠN] \"cứng\" (cùng cách chia như 39201011). SEN.39205111 định nghĩa \"cứng\" bằng modul đàn hồi uốn lớn hơn 100,000 psi — không có khoá số cho modul đàn hồi nên không số hoá thông số này."
+    },
+    {
+      "ma": "39205119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39205119 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "39205190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39205190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
 }

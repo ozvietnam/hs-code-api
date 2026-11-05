@@ -1,0 +1,38 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "370255",
+  "phien": "mm:minimax-m3:202611051900#soan-370255",
+  "dong8": {
+    "37025520": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "điện ảnh"
+        }
+      ]
+    },
+    "37025550": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "dùng trong y tế",
+            "phẫu thuật",
+            "nha khoa",
+            "thú y",
+            "công nghiệp in"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "37025550",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37025520 \"Loại phù hợp dùng cho điện ảnh\" ⇒ congDung \"điện ảnh\". Dùng CÙNG khoá congDung với .50 (máy đòi anh em khác trục để không chồng lấn trên vector: nếu .20 dùng khoá CO dungChoDienAnh còn .50 dùng congDung thì một vector mang cả hai đều thoả ⇒ cong2-chong-lan). tax.37025550 \"Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in\" ⇒ congDung mảng 5 phương án nguyên văn (không dùng khoá CO dungTrongYTeHoacThiNghiem vì thu hẹp dòng — xem 37024210). Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}

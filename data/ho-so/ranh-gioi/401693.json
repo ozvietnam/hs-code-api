@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-401693",
+    "phien": "mm:minimax-m3:20261105T1705#soan-401693",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -19,14 +19,13 @@
       "trich": "40169310 - - - Loại dùng để cách điện cho các chân tụ điện (SEN)",
       "dieuKienSo": [
         {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "cách điện"
+          "fact": "coCachDien",
+          "op": "CO"
         },
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "chân tụ điện"
+          "value": "các chân tụ điện"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -47,7 +46,12 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.11"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -64,12 +68,12 @@
     {
       "ma": "40169310",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40169310 'Loại dùng để cách điện cho các chân tụ điện' ⇒ congDung 'cách điện', dungCho 'chân tụ điện'"
+      "ghiChu": "tax.40169310 \"Loại dùng để cách điện cho các chân tụ điện (SEN)\" ⇒ coCachDien CO (chữ \"cách điện\") + dungCho \"các chân tụ điện\" phủ vế [GIỚI HẠN] \"dùng để cách điện cho các chân tụ điện\". Cụm \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật, không phải điều kiện."
     },
     {
       "ma": "40169320",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.40169320 'Miếng đệm và vành khung tròn, loại dùng cho xe có động cơ thuộc...' ⇒ tenLoai + dungCho"
+      "ghiChu": "tax.40169320 \"Miếng đệm và vành khung tròn, loại dùng cho xe có động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11\" ⇒ tenLoai [\"Miếng đệm\",\"vành khung tròn\"] (chữ Anh \"Gaskets and o-rings\" — hai danh từ đầu số nhiều nối \"and\") + dungCho [\"87.02\",\"87.03\",\"87.04\",\"87.11\"] (mẫu 40169911). Dòng .90 \"Loại khác\" trần ⇒ không điều kiện."
     }
   ]
 }

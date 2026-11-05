@@ -1,0 +1,49 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "360490",
+  "phien": "mm:minimax-m3:202611051900#soan-360490",
+  "dong8": {
+    "36049020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Pháo hoa nhỏ",
+            "kíp nổ"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm đồ chơi"
+        }
+      ]
+    },
+    "36049040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Pháo hiệu"
+        }
+      ]
+    },
+    "36049050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Pháo thăng thiên"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "36049020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.36049020 \"Pháo hoa nhỏ và kíp nổ dùng làm đồ chơi\" ⇒ tenLoai hai tên nêu trong chính dòng (\"Pháo hoa nhỏ\" | \"kíp nổ\" — nối bằng \"và\" nên tách thành mảng) + congDung \"làm đồ chơi\" (vế \"dùng làm đồ chơi\"). .40 \"Pháo hiệu\" và .50 \"Pháo thăng thiên\" chỉ có tên trong chữ biểu ⇒ tenLoai nguyên văn; KHÔNG thêm điều kiện từ sen.36049040/sen.35069150 (mô tả kỹ thuật) vì chữ biểu của dòng không nói. Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}

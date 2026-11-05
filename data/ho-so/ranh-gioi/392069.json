@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-392069",
+    "phien": "mm:minimax-m3:20261105T1705#soan-392069",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -19,10 +19,11 @@
       "trich": "39206910 - - - Dạng tấm và phiến (SEN)",
       "dieuKienSo": [
         {
-          "fact": "dangTamPhienMang",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "TAM_VA_PHIEN"
+            "tấm",
+            "phiến"
           ]
         }
       ],
@@ -36,5 +37,16 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "ghiChuSoan": []
+  "ghiChuSoan": [
+    {
+      "ma": "39206910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39206910 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"] (cùng cách chia như 3920101, 39204310, 39206210)."
+    },
+    {
+      "ma": "39206990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39206990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
 }

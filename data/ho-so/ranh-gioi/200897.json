@@ -1,0 +1,77 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "200897",
+  "nhom": "2008",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1555#soan-200897",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "20089710",
+      "nguon": "tax.20089710",
+      "trich": "20089710 - - - Từ thân cây, rễ cây và các phần ăn được khác của cây, không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "thân cây",
+            "rễ cây",
+            "các phần ăn được khác của cây"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "20089720",
+      "nguon": "tax.20089720",
+      "trich": "20089720 - - - Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
+      "dieuKienSo": [
+        {
+          "fact": "daPhaThemDuongHoacRuou",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "20089790",
+      "nguon": "tax.20089790",
+      "trich": "20089790 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "20089710",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20089710 \"Từ thân cây, rễ cây và các phần ăn được khác của cây…\" — chữ có \"khác\" trong \"các phần ăn được khác của cây\" nhưng là ý khẳng định nêu tên hàng, không phải phần còn lại ⇒ phanConLai: false"
+    },
+    {
+      "ma": "20089710",
+      "loai": "BO_VE",
+      "ve": "không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu",
+      "lyDo": "Vế loại trừ nêu hàng KHÔNG thuộc dòng (quả, quả hạch — nằm ở 20089720/20089790); điều kiện tên của chính dòng đã giới hạn hàng là thân cây, rễ cây, các phần ăn được khác của cây — không phải quả hay quả hạch — nên bỏ vế không đổi mã 8 số; tu-vung@2 không có khoá đọc \"không bao gồm quả hoặc quả hạch\""
+    },
+    {
+      "ma": "20089720",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20089720 \"Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu\" ⇒ chỉ ghi điều kiện của vế: daPhaThemDuongHoacRuou CO (máy tự phủ định anh em)"
+    },
+    {
+      "ma": "20089790",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20089790 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

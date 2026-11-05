@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-151219",
+    "phien": "mm:minimax-m3:20261105T1530#soan-151219",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -19,8 +19,9 @@
       "trich": "15121910 - - - Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế ",
       "dieuKienSo": [
         {
-          "fact": "laPhanDoan",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn"
         },
         {
           "fact": "mucDoTinhCheDau",
@@ -59,12 +60,12 @@
     {
       "ma": "15121910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15121910 \"Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"
+      "ghiChu": "tax.15121910 \"15121910 - - - Các phần phân đoạn của dầu hướng dương hoặc dầu cây rum chưa tinh chế \" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\"); loại dầu (hướng dương/cây rum) là điều kiện của phân nhóm 151219."
     },
     {
       "ma": "15121920",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15121920 \"Đã tinh chế\" ⇒ mucDoTinhCheDau DA_TINH_CHE"
+      "ghiChu": "tax.15121920 \"15121920 - - - Đã tinh chế\" ⇒ mucDoTinhCheDau DA_TINH_CHE (\"đã tinh chế\"); cùng khoá mucDoTinhCheDau với 15121910 (hai giá trị DANG_THO/DA_TINH_CHE loại trừ nhau)."
     }
   ]
 }

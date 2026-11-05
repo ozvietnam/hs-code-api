@@ -1,0 +1,67 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "090412",
+  "nhom": "0904",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1555#soan-090412",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "09041210",
+      "nguon": "tax.09041210",
+      "trich": "09041210 - - - Trắng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Trắng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "09041220",
+      "nguon": "tax.09041220",
+      "trich": "09041220 - - - Đen",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đen"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "09041290",
+      "nguon": "tax.09041290",
+      "trich": "09041290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "09041210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.09041210 \"Trắng\" — chữ dòng chỉ có từ màu, không có khoá màu hàng ⇒ tenLoai giá trị nguyên văn"
+    },
+    {
+      "ma": "09041220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.09041220 \"Đen\" ⇒ tenLoai TEN_LOAI \"Đen\", đối chiếu tay với 09041210 cùng khoá"
+    },
+    {
+      "ma": "09041290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.09041290 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

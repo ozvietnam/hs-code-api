@@ -1,0 +1,121 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "030749",
+  "nhom": "0307",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1608#soan-030749",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "0307492",
+      "nguon": "tieuDe.0307492",
+      "trich": "0307492 Khô, muối hoặc ngâm nước muối",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Khô",
+            "muối",
+            "ngâm nước muối"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "0307493",
+      "nguon": "tieuDe.0307493",
+      "trich": "0307493 Hun khói",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hun khói"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "03074921",
+      "nguon": "tax.03074921",
+      "trich": "03074921 - - - - Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Mực nang",
+            "mực ống"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03074929",
+      "nguon": "tax.03074929",
+      "trich": "03074929 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03074931",
+      "nguon": "tax.03074931",
+      "trich": "03074931 - - - - Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Mực nang",
+            "mực ống"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03074939",
+      "nguon": "tax.03074939",
+      "trich": "03074939 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "0307492",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0307492 \"Khô, muối hoặc ngâm nước muối\" ⇒ tenLoai [\"Khô\",\"muối\",\"ngâm nước muối\"] — chữ Anh \"dried, salted or in brine\" là ba hàng thay thế, mảng = hoặc (LUAT-CHUNG bảng 1)"
+    },
+    {
+      "ma": "0307493",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0307493 \"Hun khói\" ⇒ tenLoai \"Hun khói\" nguyên văn"
+    },
+    {
+      "ma": "03074921",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03074921 \"Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)\" ⇒ tenLoai [\"Mực nang\",\"mực ống\"] — chữ Anh \"Cuttle fish (…) and squid (…)\" nối hai hàng bằng and; tên khoa học trong ngoặc là PHU"
+    },
+    {
+      "ma": "03074931",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03074931 \"Mực nang (…) và mực ống (…)\" ⇒ tenLoai [\"Mực nang\",\"mực ống\"] như 03074921"
+    },
+    {
+      "ma": "030749",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong1-khong-phu-kin:030749:tenLoai=Mực nang: gốc 030749 chia theo trạng thái bằng tiêu đề có tên (0307492 \"Khô, muối hoặc ngâm nước muối\" / 0307493 \"Hun khói\") còn dòng cháu chia theo tên loài (03074921 \"Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)\"); hai tầng buộc cùng khoá tenLoai nên vector biên mang tên loại không kèm trạng thái không rơi vào con nào của gốc. Khoá liệt kê phuongPhapBaoQuan cũng không phủ kín (từ vựng có 6 giá trị, hai tiêu đề chỉ nói KHO_MUOI và HUN_KHOI). Không thêm điều kiện chữ tiêu đề không nói — để Claude xử (cùng dạng 030742)."
+    }
+  ]
+}

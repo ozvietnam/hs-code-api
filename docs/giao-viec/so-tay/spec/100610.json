@@ -1,13 +1,14 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "100610",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-100610",
+  "phien": "mm:minimax-m3:20261105T1530#soan-100610",
   "dong8": {
     "10061010": {
       "dieuKienSo": [
         {
-          "fact": "dungLamGiong",
-          "op": "CO"
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "gieo trồng"
         }
       ]
     }
@@ -16,7 +17,12 @@
     {
       "ma": "10061010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.10061010 \"Phù hợp để gieo trồng\" ⇒ dungLamGiong CO"
+      "ghiChu": "tax.10061010 \"Phù hợp để gieo trồng\" ⇒ congDung \"gieo trồng\" — vế giới hạn \"Phù hợp để gieo trồng\" là một mệnh đề công dụng/mục đích (dùng làm giống để gieo trồng), giá trị lấy đúng chữ con \"gieo trồng\" trong câu trích. Không có khoá riêng cho \"phù hợp\"/\"gieo trồng\" trong tu-vung@2."
+    },
+    {
+      "ma": "10061090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10061090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
     }
   ]
 }

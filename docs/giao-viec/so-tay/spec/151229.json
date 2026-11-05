@@ -1,21 +1,12 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "151229",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-151229",
+  "phien": "mm:minimax-m3:20261105T1530#soan-151229",
   "dong8": {
     "15122910": {
       "dieuKienSo": [
-        {
-          "fact": "laPhanDoan",
-          "op": "CO"
-        },
-        {
-          "fact": "mucDoTinhCheDau",
-          "op": "TRONG",
-          "value": [
-            "DANG_THO"
-          ]
-        }
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Các phần phân đoạn" },
+        { "fact": "mucDoTinhCheDau", "op": "TRONG", "value": ["DANG_THO"] }
       ]
     }
   },
@@ -23,7 +14,7 @@
     {
       "ma": "15122910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15122910 \"Các phần phân đoạn của dầu hạt bông chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"
+      "ghiChu": "tax.15122910 \"15122910 - - - Các phần phân đoạn của dầu hạt bông chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\"); loại dầu (hạt bông) là điều kiện của phân nhóm 151229. Dòng 15122990 \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ]
 }

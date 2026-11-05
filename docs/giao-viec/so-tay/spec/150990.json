@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "150990",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-150990",
+  "phien": "mm:minimax-m3:20261105T1529#soan-150990",
   "dong8": {
     "15099011": {
       "dieuKienSo": [
@@ -28,15 +28,14 @@
     "1509901": {
       "dieuKienSo": [
         {
-          "fact": "laPhanDoan",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn"
         },
         {
-          "fact": "mucDoTinhCheDau",
-          "op": "TRONG",
-          "value": [
-            "DANG_THO"
-          ]
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dầu chưa tinh chế"
         }
       ]
     }
@@ -45,17 +44,27 @@
     {
       "ma": "1509901",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.1509901 \"Các phần phân đoạn của dầu chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"
+      "ghiChu": "tieuDe.1509901 \"Các phần phân đoạn của dầu chưa tinh chế\" (EN \"Fractions of unrefined oil\") ⇒ tenLoai \"Các phần phân đoạn\" (tên hàng) + dungCho \"dầu chưa tinh chế\" (vế GIỚI HẠN \"của dầu chưa tinh chế\"; \"chưa tinh chế\" bổ nghĩa cho DẦU (đích) — chữ Anh \"unrefined\" — nên nằm trong chuỗi của đích)."
     },
     {
       "ma": "15099011",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15099011 \"Đóng gói với khối lượng tịnh không quá 30 kg\" ⇒ khoiLuong <= 30 kg"
+      "ghiChu": "tax.15099011 \"Đóng gói với khối lượng tịnh không quá 30 kg\" ⇒ khoiLuong <= 30 kg (\"không quá\" = <=); chữ \"Đóng gói\" là danh từ đầu, không có khoá đọc được (xem ghi chú của 15092010)."
+    },
+    {
+      "ma": "15099019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15099019 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
     },
     {
       "ma": "15099091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15099091 \"Đóng gói với khối lượng tịnh không quá 30 kg\" ⇒ khoiLuong <= 30 kg"
+      "ghiChu": "tax.15099091 \"Đóng gói với khối lượng tịnh không quá 30 kg\" ⇒ khoiLuong <= 30 kg (\"không quá\" = <=); chữ \"Đóng gói\" là danh từ đầu, không có khoá đọc được (xem ghi chú của 15092010)."
+    },
+    {
+      "ma": "15099099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15099099 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
     }
   ]
 }

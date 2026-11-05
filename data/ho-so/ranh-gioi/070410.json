@@ -1,0 +1,74 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "070410",
+  "nhom": "0704",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1529#soan-070410",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "07041010",
+      "nguon": "tax.07041010",
+      "trich": "07041010 - - Súp lơ (1) (Caulifower)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Súp lơ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "07041020",
+      "nguon": "tax.07041020",
+      "trich": "07041020 - - Đầu súp lơ xanh (headed broccoli)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đầu súp lơ xanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "07041090",
+      "nguon": "tax.07041090",
+      "trich": "07041090 - - Súp lơ xanh khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Súp lơ xanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "07041010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07041010 \"Súp lơ (1) (Caulifower)\" ⇒ tenLoai \"Súp lơ\"; \"(1)\" là chân chú thích nhóm, \"(Caulifower)\" là tên tiếng Anh — không thành điều kiện."
+    },
+    {
+      "ma": "07041020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07041020 \"Đầu súp lơ xanh (headed broccoli)\" ⇒ tenLoai \"Đầu súp lơ xanh\"."
+    },
+    {
+      "ma": "07041090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07041090 \"Súp lơ xanh khác\" ⇒ tenLoai \"Súp lơ xanh\". Không dùng phanConLai: phủ .10 (\"Súp lơ\") vô nghĩa vì \"Súp lơ xanh\" chứa chuỗi \"Súp lơ\" (cong2-dong-khong-toi-duoc), phủ .20 (\"Đầu súp lơ xanh\") cho THIEU trên mọi vector biên (vector con chuỗi của giá trị bị phủ — không TRÁI được). Tách với .20/.10 nhờ tên cụ thể hơn thắng (cong2-ten-cu-the-hon): \"Đầu súp lơ xanh\" cụ thể hơn \"Súp lơ xanh\" thắng khi hàng là đầu súp lơ xanh; \"Súp lơ xanh\" cụ thể hơn \"Súp lơ\" thắng với súp lơ xanh không đầu."
+    }
+  ]
+}

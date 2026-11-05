@@ -1,0 +1,43 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "040140",
+  "phien": "zcode-sub:glm-5.3:20261105T1605#soan-040140",
+  "dong8": {
+    "04014010": {
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "CO"
+        }
+      ]
+    },
+    "04014020": {
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "KHONG"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "04014010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04014010 \"Sữa dạng lỏng\" ⇒ dangLong CO (cách đọc của giá trị CO gồm \"dạng lỏng\")"
+    },
+    {
+      "ma": "04014020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04014020 \"Sữa dạng đông lạnh\" ⇒ dangLong KHONG (cách đọc giá trị KHONG gồm \"đông lạnh\") VÀ phuongPhapBaoQuan TRONG [DONG_LANH] (đọc \"đông lạnh\") — giữ dangLong cùng khoá anh em .10, thêm khoá định danh \"đông lạnh\" để dòng 04014090 \"Loại khác\" còn tới được (chỉ CO/KHONG phủ kín hết tầng)"
+    }
+  ]
+}

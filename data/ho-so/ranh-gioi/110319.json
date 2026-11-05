@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-110319",
+    "phien": "mm:minimax-m3:20261105T1530#soan-110319",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -19,8 +19,8 @@
       "trich": "11031910 - - - Của meslin",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "meslin"
         }
       ],
@@ -32,8 +32,8 @@
       "trich": "11031920 - - - Của gạo",
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "gạo"
         }
       ],
@@ -51,12 +51,17 @@
     {
       "ma": "11031910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.11031910 \"Của meslin\" ⇒ dungCho meslin"
+      "ghiChu": "tax.11031910 \"Của meslin\" ⇒ tenLoai \"meslin\" — cả dòng là một vế giới hạn \"Của meslin\" (chữ biểu chỉ nói hàng là của ngũ cốc nào, không có danh từ đầu riêng); lấy đúng chữ con \"meslin\" để phủ vế. \"của\" là hư từ nên bộ đọc bỏ khi so chữ tự do. tu-vung@2 không có khoá riêng cho nguyên liệu hoặc nguồn gốc nên dùng khoá tên."
     },
     {
       "ma": "11031920",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.11031920 \"Của gạo\" ⇒ dungCho gạo"
+      "ghiChu": "tax.11031920 \"Của gạo\" ⇒ tenLoai \"gạo\" — cùng cách với dòng 11031910: lấy đúng chữ con \"gạo\" để phủ vế giới hạn \"Của gạo\". Cùng khoá tenLoai với dòng 11031910."
+    },
+    {
+      "ma": "11031990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.11031990 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
     }
   ]
 }

@@ -1,13 +1,27 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "401700",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-401700",
+  "phien": "mm:minimax-m3:20261105T1705#soan-401700",
   "dong8": {
     "40170010": {
       "dieuKienSo": [
         {
-          "fact": "tamMiengGhepLatNenOpTuong",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tấm",
+            "miếng"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "lát nền"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "ốp tường"
         }
       ]
     },
@@ -17,24 +31,28 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Các sản phẩm"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "cao su"
         }
       ],
-      "phanConLai": [
-        "40170010"
-      ]
+      "phanConLai": true
     }
   },
+  "dieuKienNut": {},
   "ghiChuSoan": [
     {
       "ma": "40170010",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.40170010 'Tấm, miếng ghép với nhau để lát nền và ốp tường' ⇒ tamMiengGhepLatNenOpTuong CO"
+      "loai": "BO_VE",
+      "ve": "để lát nền và ốp tường",
+      "lyDo": "Máy đọc sai cấu trúc: chữ Anh cùng dòng \"Floor tiles and wall tiles\" không có định ngữ đuôi nên cổng 5 coi \"để lát nền và ốp tường\" là định ngữ CHỈ của danh từ cuối; nhưng ở chữ Việt định ngữ này ứng với \"Floor\"/\"wall\" của chữ Anh và áp cho CẢ hai danh từ đầu \"Tấm\" và \"miếng\". Điều kiện vẫn ghi đủ: tenLoai [\"Tấm\",\"miếng\"] + congDung \"lát nền\" + congDung \"ốp tường\". Mẫu cùng cấu trúc: 40161020."
     },
     {
       "ma": "40170020",
-      "loai": "BO_VE",
-      "ve": "bằng cao su cứng khác",
-      "lyDo": "Được bao hàm bởi đặc điểm của nhóm 'bằng cao su cứng'"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40170020 \"Các sản phẩm bằng cao su cứng khác\" (EN \"Other articles of hard rubber\") ⇒ tenLoai \"Các sản phẩm\" + chatLieu \"cao su\" + phanConLai: true (chữ \"khác\" = phần còn lại có tên, phủ định anh em .10 đứng trước)."
     }
   ]
 }

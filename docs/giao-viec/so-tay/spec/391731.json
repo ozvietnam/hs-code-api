@@ -1,0 +1,129 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "391731",
+  "phien": "mm:minimax-m3:20261105T1705#soan-391731",
+  "dong8": {
+    "39173111": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "các polyme trùng hợp"
+        }
+      ]
+    },
+    "39173112": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "nhựa amino",
+            "nhựa phenolic",
+            "sợi lưu hóa",
+            "các dẫn xuất hóa học của cao su tự nhiên"
+          ]
+        }
+      ]
+    },
+    "39173121": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "các polyme trùng hợp"
+        }
+      ]
+    },
+    "39173123": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "nhựa amino",
+            "nhựa phenolic",
+            "các dẫn xuất hóa học của cao su tự nhiên"
+          ]
+        }
+      ]
+    },
+    "39173124": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sợi lưu hóa"
+        }
+      ]
+    },
+    "39173125": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "các polyme trùng ngưng",
+            "tái sắp xếp khác",
+            "từ nitrat xenlulo",
+            "các acetat xenlulo",
+            "các dẫn xuất hóa học khác của xenlulo"
+          ]
+        },
+        {
+          "fact": "daHoaDeo",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": false
+    }
+  },
+  "dieuKienNut": {
+    "3917311": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "Được gia công hơn mức gia công bề mặt đơn thuần"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "3917311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3917311 \"Được gia công hơn mức gia công bề mặt đơn thuần\" ⇒ tầng 3917311 là nhánh \"gia công hơn\", 3917312 \"Loại khác\" là nhánh còn lại (máy phủ định anh em). Không có khoá tu-vung nào mô tả \"gia công hơn mức gia công bề mặt đơn thuần\" ⇒ dùng congDung (khoá tầng) với chính chữ của tiêu đề, khác khoá tenLoai của các dòng con để hai tầng không cùng khoá."
+    },
+    {
+      "ma": "39173111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173111 \"Từ các polyme trùng hợp\" ⇒ tenLoai \"các polyme trùng hợp\" (vật liệu; không dùng chatLieu vì chatLieu \"plastic\" không phân biệt polyme trùng hợp với polyme trùng ngưng)."
+    },
+    {
+      "ma": "39173112",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173112 \"Từ nhựa amino; từ nhựa phenolic; từ sợi lưu hóa; từ các dẫn xuất hóa học của cao su tự nhiên\" ⇒ mảng 4 giá trị con nguyên văn (dấu \";\" trong chữ biểu là dấu phân cách liệt kê, không đưa vào một chuỗi)."
+    },
+    {
+      "ma": "39173125",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173125 \"Từ các polyme trùng ngưng hoặc tái sắp xếp khác; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ tenLoai tách theo dấu liệt kê của chữ biểu (\"hoặc\" + \";\") + daHoaDeo CO cho vế \"đã hóa dẻo\"."
+    },
+    {
+      "ma": "39173125",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ \"khác\" trong tax.39173125 nằm trong cụm \"các polyme trùng ngưng hoặc tái sắp xếp khác\" / \"các dẫn xuất hóa học khác của xenlulo\" (nói vật liệu), KHÔNG phải dấu hiệu phần còn lại ⇒ phanConLai: false. Phần còn lại của 3917312 là 39173129 \"Loại khác\" trần."
+    },
+    {
+      "ma": "39173119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173119 \"Loại khác (SEN)\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "39173129",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39173129 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

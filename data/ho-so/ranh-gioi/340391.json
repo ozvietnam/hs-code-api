@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-340391",
+    "phien": "mm:minimax-m3:20261105T1545#soan-340391",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -19,7 +19,8 @@
       "dieuKienSo": [
         {
           "fact": "dangLong",
-          "op": "CO"
+          "op": "CO",
+          "value": true
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -34,12 +35,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Chế phẩm"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "dầu silicon"
+          "value": "Chế phẩm chứa dầu silicon"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -61,10 +57,24 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "3403911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3403911 \"Dạng lỏng\" (EN \"In liquid form\") — tiêu đề có tên ⇒ khai dieuKienNut; dạng ⇒ dangLong CO (cachDoc.vi đọc đúng \"dạng lỏng\")."
+    },
+    {
       "ma": "34039111",
-      "loai": "BO_VE",
-      "ve": "chứa dầu silicon",
-      "lyDo": "Ghi nhận vào thành phần bằng tenLoai."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34039111 \"Chế phẩm chứa dầu silicon\" (EN \"Preparations containing silicone oil\") — danh từ đầu \"Chế phẩm\" + vế GIỚI HẠN \"chứa dầu silicon\". Không có khoá tu-vung nào cho \"dầu silicon\" (chatLieu không có giá trị này) nên vế giới hạn đi trong tên hàng: tenLoai \"Chế phẩm chứa dầu silicon\" (chuỗi con nguyên văn, phủ vế GIỚI HẠN của máy) — không bịa khoá mới."
+    },
+    {
+      "ma": "34039119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34039119 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "34039190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34039190 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
     }
   ]
 }

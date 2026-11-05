@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-380869",
+    "phien": "mm:minimax-m3:20261105T1704#soan-380869",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -18,6 +18,11 @@
       "nguon": "tax.38086910",
       "trich": "38086910 - - - Bột dùng làm hương vòng chống muỗi",
       "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột dùng làm hương vòng chống muỗi"
+        },
         {
           "fact": "dangChePhamDietMuoi",
           "op": "TRONG",
@@ -40,7 +45,12 @@
     {
       "ma": "38086910",
       "loai": "QUYET_DINH",
-      "ghiChu": "Bột dùng làm hương vòng chống muỗi."
+      "ghiChu": "tax.38086910 \"Bột dùng làm hương vòng chống muỗi\" (EN \"Powder for moulding into mosquito coils\") ⇒ tenLoai \"Bột dùng làm hương vòng chống muỗi\" + dangChePhamDietMuoi TRONG [BOT_LAM_HUONG_VONG]."
+    },
+    {
+      "ma": "38086990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38086990 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
     }
   ]
 }

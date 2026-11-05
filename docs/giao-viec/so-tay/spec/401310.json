@@ -1,0 +1,111 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "401310",
+  "phien": "mm:minimax-m3:20261105T1705#soan-401310",
+  "dong8": {
+    "40131011": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40131019": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40131021": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40131029": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4013101": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô con (motor car)"
+        }
+      ]
+    },
+    "4013102": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ô tô khách (buses)",
+            "ô tô chở hàng (lorries)"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "4013101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4013101 \"Loại dùng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" ⇒ dungCho \"ô tô con (motor car)\"; vế \"kể cả …\" là ngoặc chú thích mở rộng, không thành điều kiện."
+    },
+    {
+      "ma": "4013102",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4013102 \"Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)\" ⇒ dungCho [\"ô tô khách (buses)\",\"ô tô chở hàng (lorries)\"] (mảng = hoặc); dấu \"(1)\" là chú thích chân trang."
+    },
+    {
+      "ma": "40131011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40131011 \"Dùng cho loại lốp có chiều rộng không quá 450 mm\" ⇒ chieuRong <= 450 mm (\"không quá\" = <=); .19 \"Dùng cho loại lốp có chiều rộng trên 450 mm\" ⇒ chieuRong > 450 mm. Tương tự cho .21/.29 dưới tiêu đề 4013102."
+    },
+    {
+      "ma": "40131011",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    },
+    {
+      "ma": "40131019",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    },
+    {
+      "ma": "40131021",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    },
+    {
+      "ma": "40131029",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    }
+  ]
+}

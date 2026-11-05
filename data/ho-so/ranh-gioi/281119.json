@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-281119",
+    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-281119",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -34,10 +34,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": [
-            "Axit aminosulphonic",
-            "axit sulphamic"
-          ]
+          "value": "Axit aminosulphonic (axit sulphamic)"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -54,7 +51,12 @@
     {
       "ma": "28111910",
       "loai": "QUYET_DINH",
-      "ghiChu": "Phân loại theo tên axit."
+      "ghiChu": "tax.28111910: \"Axit arsenic\" ⇒ tenLoai TEN_LOAI \"Axit arsenic\""
+    },
+    {
+      "ma": "28111920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.28111920: \"Axit aminosulphonic (axit sulphamic)\" — ngoặc là tên đồng nghĩa của chính hàng ⇒ giữ trọn nguyên văn một giá trị tenLoai"
     }
   ]
 }

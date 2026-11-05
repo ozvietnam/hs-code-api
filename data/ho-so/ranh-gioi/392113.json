@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-392113",
+    "phien": "mm:minimax-m3:20261105T1700#soan-392113",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -32,10 +32,11 @@
       "trich": "39211311 - - - - Dạng tấm và phiến (SEN)",
       "dieuKienSo": [
         {
-          "fact": "dangTamPhienMang",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "TAM_VA_PHIEN"
+            "tấm",
+            "phiến"
           ]
         }
       ],
@@ -54,10 +55,11 @@
       "trich": "39211391 - - - - Dạng tấm và phiến (SEN)",
       "dieuKienSo": [
         {
-          "fact": "dangTamPhienMang",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "TAM_VA_PHIEN"
+            "tấm",
+            "phiến"
           ]
         }
       ],
@@ -69,11 +71,9 @@
       "trich": "39211392 - - - - Dạng màng (SEN)",
       "dieuKienSo": [
         {
-          "fact": "dangTamPhienMang",
-          "op": "TRONG",
-          "value": [
-            "MANG"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "màng"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -86,5 +86,36 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "ghiChuSoan": []
+  "ghiChuSoan": [
+    {
+      "ma": "3921131",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3921131 \"Cứng\" (EN \"Rigid\") ⇒ loaiCung CO."
+    },
+    {
+      "ma": "39211311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39211311 \"Dạng tấm và phiến (SEN)\" (EN \"Plates and sheets\") ⇒ tenLoai [\"tấm\",\"phiến\"] (vòng 5/7). Điều kiện \"cứng\" để ở tiêu đề 3921131."
+    },
+    {
+      "ma": "39211391",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39211391 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"]; dưới tiêu đề \"Loại khác\" (3921139) nên máy phủ định anh em."
+    },
+    {
+      "ma": "39211392",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39211392 \"Dạng màng (SEN)\" (EN \"Film\") ⇒ tenLoai \"màng\"."
+    },
+    {
+      "ma": "39211319",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39211319 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "39211399",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39211399 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
 }

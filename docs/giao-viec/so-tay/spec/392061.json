@@ -1,20 +1,39 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "392061",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-392061",
+  "phien": "mm:minimax-m3:20261105T1705#soan-392061",
   "dong8": {
     "39206110": {
       "dieuKienSo": [
         {
-          "fact": "dangTamPhienMang",
-          "op": "TRONG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": [
-            "TAM_VA_PHIEN"
+            "tấm",
+            "phiến"
           ]
+        },
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 0.25,
+          "donVi": "mm"
         }
-      ]
+      ],
+      "trich": "POLYCARBONAT DẠNG TẤM VÀ PHIẾN\nTấm và phiến thuộc phân nhóm này đáp ứng đủ các yêu cầu của Chú giải 10 Chương 39, có mặt cắt ngang là hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25mm.",
+      "nguon": "sen.39206110"
     }
   },
-  "dieuKienNut": {},
-  "ghiChuSoan": []
+  "ghiChuSoan": [
+    {
+      "ma": "39206110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39206110 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"] cho dạng hàng. SEN.39206110 (nguồn của chính dòng này) định nghĩa tấm và phiến thuộc phân nhóm: \"có mặt cắt ngang là hình chữ nhật (kể cả hình vuông) và có độ dày trên 0,25mm\" ⇒ doDay > 0.25 mm (biên \"trên\" = >; số + đơn vị đọc được từ chính câu trích của SEN). Điều kiện mặt cắt ngang hình chữ nhật không có khoá từ vựng tương ứng nên không điều kiện hoá."
+    },
+    {
+      "ma": "39206190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39206190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
 }

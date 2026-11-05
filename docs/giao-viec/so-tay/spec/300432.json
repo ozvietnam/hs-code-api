@@ -1,17 +1,14 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "300432",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-300432",
+  "phien": "mm:minimax-m3:20261105T0845#soan-300432",
   "dong8": {
     "30043210": {
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": [
-            "dexamethasone",
-            "dẫn xuất"
-          ]
+          "value": "dexamethasone"
         }
       ]
     },
@@ -31,15 +28,18 @@
   "ghiChuSoan": [
     {
       "ma": "30043210",
-      "loai": "BO_VE",
-      "ve": "Chứa dexamethasone hoặc các dẫn xuất của chúng",
-      "lyDo": "Đã dùng tenLoai mô tả hoạt chất."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30043210 \"Chứa dexamethasone hoặc các dẫn xuất của chúng\" (EN \"Containing dexamethasone or their derivatives\") — đặt tên hoạt chất \"dexamethasone\"; vế \"hoặc các dẫn xuất của chúng\" không có khoá tu-vung@2 ⇒ điều kiện hẹp hơn chữ một bước."
     },
     {
       "ma": "30043240",
-      "loai": "BO_VE",
-      "ve": "Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide",
-      "lyDo": "Đã dùng tenLoai mô tả hoạt chất."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30043240 \"Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide\" — hai hoạt chất nối \"hoặc\" ⇒ tenLoai ghi MẢNG 2 giá trị nguyên văn (không gói một chuỗi)."
+    },
+    {
+      "ma": "30043290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30043290 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
     }
   ]
 }

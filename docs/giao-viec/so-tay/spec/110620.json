@@ -1,13 +1,13 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "110620",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-110620",
+  "phien": "mm:minimax-m3:20261105T1530#soan-110620",
   "dong8": {
     "11062010": {
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "sắn"
         }
       ]
@@ -15,8 +15,8 @@
     "11062020": {
       "dieuKienSo": [
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
           "value": "cọ sago"
         }
       ]
@@ -26,12 +26,17 @@
     {
       "ma": "11062010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.11062010 \"Từ sắn\" ⇒ dungCho sắn"
+      "ghiChu": "tax.11062010 \"Từ sắn\" ⇒ tenLoai \"sắn\" — cả dòng là một vế giới hạn \"Từ sắn\" (chữ biểu chỉ nói bột là từ nguyên liệu nào, không có danh từ đầu riêng); lấy đúng chữ con \"sắn\" để phủ vế. \"từ\" là hư từ nên bộ đọc bỏ khi so chữ tự do. tu-vung@2 không có khoá riêng cho nguyên liệu hoặc nguồn gốc nên dùng khoá tên — cùng cách với 11031910 \"Của meslin\"."
     },
     {
       "ma": "11062020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.11062020 \"Từ cọ sago\" ⇒ dungCho cọ sago"
+      "ghiChu": "tax.11062020 \"Từ cọ sago\" ⇒ tenLoai \"cọ sago\" — cùng cách với dòng 11062010; lấy đúng chữ con \"cọ sago\" (chữ Anh cùng dòng là \"Of sago\") để phủ vế giới hạn \"Từ cọ sago\". Cùng khoá tenLoai với dòng 11062010."
+    },
+    {
+      "ma": "11062090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.11062090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
     }
   ]
 }

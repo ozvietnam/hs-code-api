@@ -1,0 +1,61 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "140120",
+  "phien": "mm:minimax-m3:20261105T1529#soan-140120",
+  "dong8": {
+    "14012010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nguyên cây" }
+      ]
+    },
+    "14012021": {
+      "dieuKienSo": [
+        { "fact": "duongKinh", "op": "<=", "value": 12, "donVi": "mm" }
+      ]
+    },
+    "14012030": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vỏ (cật) đã tách" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1401202": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Lõi cây đã tách" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "14012010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012010 \"Nguyên cây\" ⇒ tenLoai \"Nguyên cây\" (tên hàng nguyên văn)."
+    },
+    {
+      "ma": "1401202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1401202 \"Lõi cây đã tách\" (EN \"Split-core\") ⇒ tenLoai \"Lõi cây đã tách\" (tên hàng nguyên văn, gộp cả trạng thái \"đã tách\" — dòng con .21 chia theo đường kính, .29 là \"Loại khác\", nên không cần tách thêm điều kiện cùng khoá)."
+    },
+    {
+      "ma": "14012021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012021 \"Đường kính không quá 12 mm (SEN)\" (EN \"Not exceeding 12 mm in diameter\") ⇒ duongKinh <= 12 mm (\"không quá\" = <=; chữ biểu ghi \"Đường kính\" chung nên dùng khoá duongKinh, không suy diễn thành đường kính trong/lõi)."
+    },
+    {
+      "ma": "14012029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012029 \"Loại khác (SEN)\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    },
+    {
+      "ma": "14012030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012030 \"Vỏ (cật) đã tách (SEN)\" (EN \"Split-skin\") ⇒ tenLoai \"Vỏ (cật) đã tách\" (tên hàng nguyên văn; ngoặc \"(cật)\" là tên gọi khác của \"vỏ\" nên giữ trong chuỗi, không tách thành điều kiện riêng)."
+    },
+    {
+      "ma": "14012090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.14012090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    }
+  ]
+}

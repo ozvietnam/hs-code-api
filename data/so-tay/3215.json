@@ -58,16 +58,6 @@
   ],
   "tieuChi6": [
     {
-      "hs6": "321511",
-      "fact": "muc_in_den",
-      "op": "=",
-      "value": true,
-      "donVi": null,
-      "nguon": "wco.321511",
-      "trich": "321511 Ink; for printing, black, whether or not concentrated or solid",
-      "nguonLoai": "NGUOI_DUYET"
-    },
-    {
       "hs6": "321519",
       "fact": "muc_in_khac_muc_den",
       "op": "=",
@@ -75,6 +65,16 @@
       "donVi": null,
       "nguon": "wco.321519",
       "trich": "321519 Ink; for printing, other than black, whether or not concentrated or solid",
+      "nguonLoai": "NGUOI_DUYET"
+    },
+    {
+      "hs6": "321511",
+      "fact": "muc_in_den",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "nguon": "wco.321511",
+      "trich": "321511 Ink; for printing, black, whether or not concentrated or solid",
       "nguonLoai": "NGUOI_DUYET"
     },
     {
@@ -164,11 +164,35 @@
     },
     {
       "hs": "32151910",
-      "dieuKien": "Mực thể rắn ở dạng thanh, dùng thay cho mực lỏng hoặc mực bột trong máy in; dạng được thiết kế để đưa vào các thiết bị thuộc phân nhóm 8443.31, 8443.32 hoặc 8443.39; thuộc phân nhóm 3215.19 (mực in khác mực đen)",
-      "nguon": "sen.32151910",
-      "trich": "MỰC THỂ RẮN Ở CÁC HÌNH DẠNG ĐƯỢC THIẾT KẾ ĐỂ ĐƯA VÀO CÁC THIẾT BỊ THUỘC PHÂN NHÓM 8443.31, 8443.32 HOẶC 8443.39 … Công nghệ của mực thể rắn là sử dụng các thanh mực ở dạng thể rắn thay vì mực ở dạng lỏng hoặc dạng bột thường được sử dụng trong máy in.",
-      "nguonLoai": "NGUOI_DUYET",
-      "loaiKhac": false
+      "dieuKien": "tên loại hàng: Mực thể rắn; dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): 8443.31 hoặc 8443.32 hoặc 8443.39",
+      "nguon": "tax.32151910",
+      "trich": "32151910 - - - Mực thể rắn ở các hình dạng được thiết kế để đưa vào các thiết bị thuộc phân nhóm 8443.31, 8443.32 hoặc 8443.39 (SEN)",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mực thể rắn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8443.31",
+            "8443.32",
+            "8443.39"
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-321519",
+          "ngay": "2026-11-02",
+          "bam": "ecdb6bd3a3d9bab9bf05b1699bbf6d0bc378da11e057e3b65faeb3b31029388e"
+        }
+      }
     },
     {
       "hs": "32151990",

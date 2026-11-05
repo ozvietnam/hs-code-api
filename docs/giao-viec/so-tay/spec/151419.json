@@ -1,32 +1,17 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "151419",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-151419",
+  "phien": "mm:minimax-m3:20261105T1530#soan-151419",
   "dong8": {
     "15141910": {
       "dieuKienSo": [
-        {
-          "fact": "laPhanDoan",
-          "op": "CO"
-        },
-        {
-          "fact": "mucDoTinhCheDau",
-          "op": "TRONG",
-          "value": [
-            "DANG_THO"
-          ]
-        }
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Các phần phân đoạn" },
+        { "fact": "mucDoTinhCheDau", "op": "TRONG", "value": ["DANG_THO"] }
       ]
     },
     "15141920": {
       "dieuKienSo": [
-        {
-          "fact": "mucDoTinhCheDau",
-          "op": "TRONG",
-          "value": [
-            "DA_TINH_CHE"
-          ]
-        }
+        { "fact": "mucDoTinhCheDau", "op": "TRONG", "value": ["DA_TINH_CHE"] }
       ]
     }
   },
@@ -34,12 +19,12 @@
     {
       "ma": "15141910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15141910 \"Các phần phân đoạn của dầu chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"
+      "ghiChu": "tax.15141910 \"15141910 - - - Các phần phân đoạn của dầu chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\"); loại dầu (cải dầu) là điều kiện của phân nhóm 151419."
     },
     {
       "ma": "15141920",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15141920 \"Đã tinh chế\" ⇒ mucDoTinhCheDau DA_TINH_CHE"
+      "ghiChu": "tax.15141920 \"15141920 - - - Đã tinh chế\" ⇒ mucDoTinhCheDau DA_TINH_CHE (\"đã tinh chế\"); cùng khoá mucDoTinhCheDau với 15141910 (hai giá trị DANG_THO/DA_TINH_CHE loại trừ nhau)."
     }
   ]
 }

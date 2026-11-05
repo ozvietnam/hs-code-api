@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-151499",
+    "phien": "mm:minimax-m3:20261105T1530#soan-151499",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -19,8 +19,9 @@
       "trich": "15149910 - - - Các phần phân đoạn của dầu chưa tinh chế",
       "dieuKienSo": [
         {
-          "fact": "laPhanDoan",
-          "op": "CO"
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn"
         },
         {
           "fact": "mucDoTinhCheDau",
@@ -44,7 +45,7 @@
     {
       "ma": "15149910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.15149910 \"Các phần phân đoạn của dầu chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"
+      "ghiChu": "tax.15149910 \"15149910 - - - Các phần phân đoạn của dầu chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\"); loại dầu là điều kiện của phân nhóm 151499. Dòng 15149990 \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ]
 }

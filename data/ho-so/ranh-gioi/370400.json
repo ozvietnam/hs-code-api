@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-370400",
+    "phien": "mm:minimax-m3:20261105T1704#soan-370400",
     "ngay": "2026-11-05"
   },
   "duyet": null,
@@ -19,15 +19,7 @@
       "trich": "37040010 - Tấm hoặc phim dùng cho chụp X quang",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Tấm",
-            "phim"
-          ]
-        },
-        {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "chụp X quang"
         }
@@ -45,9 +37,8 @@
   "ghiChuSoan": [
     {
       "ma": "37040010",
-      "loai": "BO_VE",
-      "ve": "dùng cho chụp X quang",
-      "lyDo": "Sử dụng công dụng để ghi nhận."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37040010 \"Tấm hoặc phim dùng cho chụp X quang\" ⇒ dungCho \"chụp X quang\" (chữ \"dùng cho\" ⇒ khoá dungCho). Danh từ đầu \"Tấm hoặc phim\" lặp tên tầng cha nên không ghi tenLoai. Dòng 37040090 \"Loại khác\" trần ⇒ không ghi điều kiện."
     }
   ]
 }

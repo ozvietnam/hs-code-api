@@ -1,0 +1,89 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "340700",
+  "nhom": "3407",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:202611051735#soan-340700",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "34070010",
+      "nguon": "tax.34070010",
+      "trich": "34070010 - Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột nhão"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm hình mẫu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "34070020",
+      "nguon": "tax.34070020",
+      "trich": "34070020 - Các chế phẩm được coi như \"sáp dùng trong nha khoa\" hoặc như \"hợp chất tạo khuôn răng\", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "sáp dùng trong nha khoa",
+            "hợp chất tạo khuôn răng"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "34070030",
+      "nguon": "tax.34070030",
+      "trich": "34070030 - Chế phẩm khác dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thạch cao plaster"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "34070010",
+      "loai": "BO_VE",
+      "ve": "dùng cho trẻ em",
+      "lyDo": "Vế thuộc nhánh \"kể cả đất nặn dùng cho trẻ em\" (ví dụ nằm trong chính dòng .10), KHÔNG phải tiêu chí tách .10 khỏi .20/.30 — mọi bột nhão làm hình mẫu đều thuộc .10. Khoá thietKeChoTreEm chỉ đọc được khi chữ có \"dành/phù hợp cho trẻ em\"; chữ biểu chỉ có \"dùng cho trẻ em\" nên không diễn đạt được, không bịa khoá khác."
+    },
+    {
+      "ma": "34070020",
+      "loai": "BO_VE",
+      "ve": "hoặc các dạng tương tự",
+      "lyDo": "Vế mở ở cuối dòng biểu. Không có khoá \"dạng\" trong tu-vung@2 để diễn đạt (phiến/móng ngựa/thanh là dạng đóng gói, không phải tiêu chí phân loại độc lập), và giá trị chữ tự do chứa \"tương tự\" là giá trị chết (vòng 7) nên không khai được. Miễn vế mở theo quy ước 392690."
+    },
+    {
+      "ma": "34070030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34070030 \"Chế phẩm khác dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)\" ⇒ tenLoai \"thạch cao plaster\" + phanConLai true (\"Chế phẩm khác\" = phần còn lại của nhóm sau .10 và .20). Khoá chatLieu không có giá trị cho thạch cao (danh sách giá trị: plastic, cao su, giấy, gỗ, kim loại, sắt thép, thép không gỉ, gang, đồng, nhôm, kẽm, niken, thủy tinh, gốm sứ, vải dệt) ⇒ dùng tenLoai để neo đúng chữ \"thạch cao plaster\". Ngoặc \"(thạch cao nung hoặc canxi sulphat nung)\" là cách gọi khác của thạch cao plaster (canxi sulfat nung = thạch cao nung), không phải vế tách riêng."
+    },
+    {
+      "ma": "34070020+34070030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nhóm 34.07 KHÔNG có dòng \"Loại khác\" trần ⇒ cổng 1 đòi ba dòng con phủ kín và rời nhau trên mọi vector, nên mỗi dòng chỉ dùng MỘT khoá (tenLoai) với giá trị rời nhau — đúng mẫu nhà (711719, 841391). Vì vậy không khai thêm khoá có-không (dongGoiBanLe cho .20, dungTrongNhaKhoa cho .20/.30): các khoá đó làm lộ vector lọt (cong1-khong-phu-kin). Phần \"đã đóng gói thành bộ để bán lẻ\" và \"dạng phiến, dạng móng ngựa, dạng thanh\" của .20 không có khoá \"dạng\" trong tu-vung@2; \"dùng trong nha khoa\" của .30 đã nằm trong chính tên nhóm (chế phẩm nha khoa) và .30 là phần còn lại có tên. Người soát đọc lại xem có cần bổ sung."
+    }
+  ]
+}
