@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "600632",
+  "nhom": "6006",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "gd:claude-opus-5-5:20261105T1700#soan-600632",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "60063210",
+      "nguon": "tax.60063210",
+      "trich": "60063210 - - - Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "vật liệu bồi cho các tấm ghép khảm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "60063220",
+      "nguon": "tax.60063220",
+      "trich": "60063220 - - - Đàn hồi (kết hợp với sợi cao su)",
+      "dieuKienSo": [
+        {
+          "fact": "tinhDanHoi",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "60063290",
+      "nguon": "tax.60063290",
+      "trich": "60063290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "60063210",
+        "60063220"
+      ],
+      "lyDo": "Chữ biểu thật là các dòng 8 số rời nhau: 60063210 là carve-out theo công dụng \"Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm\" — tấm lưới ni lông, không chứa sợi đàn hồi/cao su; 60063220 là \"Đàn hồi (kết hợp với sợi cao su)\" ⇒ tinhDanHoi CO. Hai nhánh loại trừ nhau theo vật liệu sợi, không thể cùng thoả trên hàng thật."
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "60063210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.60063210: \"Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm\" ⇒ congDung = vật liệu bồi cho các tấm ghép khảm (carve-out theo công dụng)"
+    },
+    {
+      "ma": "60063220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.60063220: \"Đàn hồi (kết hợp với sợi cao su)\" ⇒ tinhDanHoi CO (cùng mẫu đã gộp: 600633/600641)"
+    }
+  ]
+}
