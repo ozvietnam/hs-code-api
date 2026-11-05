@@ -1,0 +1,106 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "081350",
+  "nhom": "0813",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1546#soan-081350",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "08135010",
+      "nguon": "tax.08135010",
+      "trich": "08135010 - - Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Hạt điều",
+            "quả hạch Brazil"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "08135020",
+      "nguon": "tax.08135020",
+      "trich": "08135020 - - Quả hạch (nuts) khác chiếm đa số về khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả hạch"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "08135030",
+      "nguon": "tax.08135030",
+      "trich": "08135030 - - Quả chà là chiếm đa số về khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả chà là"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "08135040",
+      "nguon": "tax.08135040",
+      "trich": "08135040 - - Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quả bơ",
+            "quả cam",
+            "quả quýt"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "08135090",
+      "nguon": "tax.08135090",
+      "trich": "08135090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "08135010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.08135010 \"Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng\" ⇒ tenLoai mảng (\"hoặc\"); \"(Brazil nuts)\" chú giải"
+    },
+    {
+      "ma": "08135020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.08135020 \"Quả hạch (nuts) khác chiếm đa số về khối lượng\" — nghĩa là phần còn lại của 08135010, nhưng phanConLai true làm dòng không tới được: bộ so chữ đọc hàng \"Quả hạch\" là THOA với \"quả hạch Brazil\" (08135010) nên PHAI_KHONG anh em luôn sai (cong2-dong-khong-toi-duoc, vòng 1). Khai phanConLai false + tenLoai \"Quả hạch\"; chồng lấn .10⊃.20 do tên chứa tên ⇒ tên cụ thể hơn thắng (quyết định GĐ #600, như 845290 \"bàn đạp\"/\"Bàn\"), máy cảnh báo cong2-ten-cu-the-hon cho người soát"
+    },
+    {
+      "ma": "08135040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.08135040 \"Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất)…\" ⇒ tenLoai mảng; \"(kể cả quất)\" là vế PHU"
+    },
+    {
+      "ma": "08135090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.08135090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}
