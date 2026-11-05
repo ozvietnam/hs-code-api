@@ -1,0 +1,32 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "370298",
+  "phien": "mm:minimax-m3:202611051900#soan-370298",
+  "dong8": {
+    "37029810": {
+      "dieuKienSo": [
+        {
+          "fact": "dungChoDienAnh",
+          "op": "CO"
+        }
+      ]
+    },
+    "37029830": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuDaiCuon",
+          "op": ">=",
+          "value": 120,
+          "donVi": "m"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "37029830",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37029810 \"Loại phù hợp dùng cho điện ảnh\" ⇒ dungChoDienAnh CO. tax.37029830 \"Loại khác, chiều dài từ 120 m trở lên\" ⇒ chieuDaiCuon >= 120 m (\"từ … trở lên\" = >=; dòng \"Loại khác,\" có vế nên ghi điều kiện của vế, khác dòng \"Loại khác\" trần .90 ⇒ không ghi điều kiện). Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}
