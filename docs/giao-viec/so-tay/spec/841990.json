@@ -1,0 +1,100 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841990",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841990",
+  "dong8": {
+    "84199012": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy xử lý vật liệu bằng quá trình gia nhiệt"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    },
+    "84199013": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vỏ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tháp làm mát"
+        }
+      ]
+    },
+    "84199022": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị đun nước nóng nhanh bằng ga"
+        },
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8419901": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "8419902": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8419901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8419901: \"Của thiết bị hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84199012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84199012: \"Của máy xử lý vật liệu bằng quá trình gia nhiệt, để sản xuất tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\" ⇒ dungCho \"máy xử lý vật liệu bằng quá trình gia nhiệt\", congDung [\"sản xuất tấm mạch in\", \"tấm dây in\", \"mạch in đã lắp ráp\"]"
+    },
+    {
+      "ma": "84199013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84199013: \"Vỏ của tháp làm mát\" ⇒ tenLoai TEN_LOAI \"Vỏ\", dungCho CONG_DUNG \"tháp làm mát\""
+    },
+    {
+      "ma": "8419902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8419902: \"Của thiết bị không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84199022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84199022: \"Của thiết bị đun nước nóng nhanh bằng ga, loại sử dụng trong gia đình\" ⇒ dungCho CONG_DUNG \"thiết bị đun nước nóng nhanh bằng ga\", phamViSuDung TRONG [\"GIA_DINH\"]"
+    }
+  ]
+}
