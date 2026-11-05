@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "380290",
+  "nhom": "3802",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1704#soan-380290",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "38029010",
+      "nguon": "tax.38029010",
+      "trich": "38029010 - - Bauxit hoạt tính",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bauxit hoạt tính"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "38029020",
+      "nguon": "tax.38029020",
+      "trich": "38029020 - - Đất sét hoạt tính hoặc đất hoạt tính",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Đất sét hoạt tính",
+            "đất hoạt tính"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "38029090",
+      "nguon": "tax.38029090",
+      "trich": "38029090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "38029010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38029010 \"Bauxit hoạt tính\" ⇒ tenLoai \"Bauxit hoạt tính\" (tên khoáng sản được hoạt tính)."
+    },
+    {
+      "ma": "38029020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38029020 \"Đất sét hoạt tính hoặc đất hoạt tính\" ⇒ tenLoai [\"Đất sét hoạt tính\",\"đất hoạt tính\"] (mảng = hoặc; tách hai tên theo chữ \"hoặc\", không gói một chuỗi)."
+    },
+    {
+      "ma": "38029090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38029090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

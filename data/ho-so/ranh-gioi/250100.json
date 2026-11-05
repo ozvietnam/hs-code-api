@@ -1,0 +1,101 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "250100",
+  "nhom": "2501",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-250100",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "25010010",
+      "nguon": "tax.25010010",
+      "trich": "25010010 - Muối thực phẩm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Muối thực phẩm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "25010020",
+      "nguon": "tax.25010020",
+      "trich": "25010020 - Muối mỏ chưa chế biến",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Muối mỏ chưa chế biến"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "25010050",
+      "nguon": "tax.25010050",
+      "trich": "25010050 - Nước biển",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nước biển"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "25010091",
+      "nguon": "tax.25010091",
+      "trich": "25010091 - - Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "25010093",
+      "nguon": "tax.25010093",
+      "trich": "25010093 - - Có hàm lượng natri clorua từ 97% trở lên, tính theo hàm lượng khô (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "25010099",
+      "nguon": "tax.25010099",
+      "trich": "25010099 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "25010020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.25010020 \"Muối mỏ chưa chế biến\" — vế \"chưa chế biến\" nằm trong tên đầu nguyên văn của chính dòng ⇒ tenLoai giữ nguyên cả tên"
+    },
+    {
+      "ma": "25010091",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongNatriClorua",
+      "ghiChu": "tax.25010091 \"Có hàm lượng natri clorua trên 60% nhưng dưới 97%, tính theo hàm lượng khô, đã bổ sung thêm i ốt\" — cần khoá hàm lượng natri clorua (% khô, trên 60% dưới 97%) và khoá \"đã bổ sung i ốt\"; tu-vung@2 chưa có"
+    },
+    {
+      "ma": "25010093",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongNatriClorua",
+      "ghiChu": "tax.25010093 \"Có hàm lượng natri clorua từ 97% trở lên, tính theo hàm lượng khô\" — cần khoá hàm lượng natri clorua (% khô, >= 97%); tu-vung@2 chưa có"
+    },
+    {
+      "ma": "250100",
+      "loai": "DUNG",
+      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:250100:chua-co"
+    }
+  ]
+}

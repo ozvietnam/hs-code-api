@@ -1,0 +1,62 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "121229",
+  "phien": "mm:minimax-m3:20261105T1529#soan-121229",
+  "dong8": {
+    "12122911": {
+      "dieuKienSo": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "làm dược phẩm" }
+      ]
+    },
+    "12122920": {
+      "dieuKienSo": [
+        { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["TUOI_UOP_LANH", "KHO_MUOI"] }
+      ]
+    },
+    "12122930": {
+      "dieuKienSo": [
+        { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["DONG_LANH"] }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1212291": {
+      "dieuKienSo": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": ["công nghệ nhuộm", "thuộc da", "làm nước hoa", "làm dược phẩm", "làm thuốc trừ sâu", "thuốc diệt nấm"] }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "1212291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1212291 \"Tươi, ướp lạnh hoặc khô, dùng cho công nghệ nhuộm, thuộc da, làm nước hoa, làm dược phẩm, hoặc làm thuốc trừ sâu, thuốc diệt nấm hoặc các mục đích tương tự\" (EN \"Fresh, chilled or dried, of a kind used in dyeing, tanning, perfumery, pharmacy, or for insecticidal, fungicidal or similar purposes\") ⇒ congDung [\"công nghệ nhuộm\",\"thuộc da\",\"làm nước hoa\",\"làm dược phẩm\",\"làm thuốc trừ sâu\",\"thuốc diệt nấm\"] (danh sách mục đích, mảng = HOẶC; tách từng mục nguyên văn vì cổng 3 chặn liệt kê gói trong một chuỗi). KHÔNG ghi trạng thái \"Tươi, ướp lạnh hoặc khô\" ở tiêu đề: 1212.29 chia theo trạng thái (1212.29.20 tươi/ướp lạnh/khô, 1212.29.30 đông lạnh) và máy (cổng 1) đòi các con phủ HẾT các giá trị của khoá phuongPhapBaoQuan — khoá có thêm các trạng thái 1212.29 không có dòng (sống, hun khói, bảo quản bằng khí sunphurơ); giữ trạng thái ở tiêu đề thì phát sinh lỗ hổng phủ kín (cong1-khong-phu-kin). Trạng thái của tiêu đề được suy ra: 1212.29.20 = tươi/ướp lạnh/khô VÀ không thuộc các mục đích của tiêu đề ⇒ phần mục đích ứng với trạng thái tươi/ướp lạnh/khô rơi vào tiêu đề."
+    },
+    {
+      "ma": "1212291",
+      "loai": "BO_VE",
+      "ve": "hoặc các mục đích tương tự",
+      "lyDo": "Vế MỞ của danh sách mục đích: op TUONG_TU chỉ áp cho khoá tên (tenLoai/nhanHieu/model), không có cho khoá công dụng (tu-vung@2) nên không diễn đạt được vế mở này. Theo quy ước 392690 (và mẫu 630790) miễn vế mở bằng BO_VE thay vì liệt kê đóng. Hệ quả đã biết: hàng dùng cho mục đích tương tự (ví dụ thuốc trừ sâu khác) không khớp điều kiện công dụng nêu ở trên — hướng sai còn lại là RỘNG hơn chữ ở phần mục đích."
+    },
+    {
+      "ma": "12122911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12122911 \"Loại dùng làm dược phẩm\" (EN \"Of a kind used in pharmacy\") ⇒ congDung \"làm dược phẩm\" (vế \"dùng làm dược phẩm\"; dùng đúng cụm của tiêu đề để hai điều kiện cùng khoá trùng giá trị — nếu dùng \"dược phẩm\" thì giá trị không khớp mảng của tiêu đề và cổng 2 không thử tới được nhánh con)."
+    },
+    {
+      "ma": "12122919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12122919 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    },
+    {
+      "ma": "12122920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12122920 \"Loại khác, tươi, ướp lạnh hoặc khô\" (EN \"Other, fresh, chilled or dried\") — dòng \"Loại khác, <vế>\": chỉ ghi điều kiện của vế ⇒ phuongPhapBaoQuan TRONG [\"TUOI_UOP_LANH\",\"KHO_MUOI\"] (\"tươi\" và \"ướp lạnh\" đọc được ở TUOI_UOP_LANH, \"khô\" đọc được ở KHO_MUOI); máy tự phủ định anh em đứng trước (gồm tiêu đề 1212291)."
+    },
+    {
+      "ma": "12122930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12122930 \"Loại khác, đông lạnh\" (EN \"Other, frozen\") ⇒ phuongPhapBaoQuan TRONG [\"DONG_LANH\"] (\"đông lạnh\" đọc được ở DONG_LANH); máy tự phủ định anh em đứng trước (gồm tiêu đề 1212291)."
+    }
+  ]
+}

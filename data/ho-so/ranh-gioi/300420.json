@@ -1,0 +1,184 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "300420",
+  "nhom": "3004",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T0845#soan-300420",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "3004203",
+      "nguon": "tieuDe.3004203",
+      "trich": "3004203 Chứa erythromycin hoặc các dẫn xuất của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "erythromycin"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "3004207",
+      "nguon": "tieuDe.3004207",
+      "trich": "3004207 Chứa tetracylin hoặc chloramphenicol hoặc các dẫn xuất của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tetracylin",
+            "chloramphenicol"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "30042010",
+      "nguon": "tax.30042010",
+      "trich": "30042010 - - Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "gentamycin",
+            "lincomycin",
+            "sulphamethoxazole"
+          ]
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "UONG_HOAC_MO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30042031",
+      "nguon": "tax.30042031",
+      "trich": "30042031 - - - Dạng uống (*)",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30042032",
+      "nguon": "tax.30042032",
+      "trich": "30042032 - - - Dạng mỡ",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_MO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30042039",
+      "nguon": "tax.30042039",
+      "trich": "30042039 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30042071",
+      "nguon": "tax.30042071",
+      "trich": "30042071 - - - Dạng uống (*) hoặc dạng mỡ",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "UONG_HOAC_MO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30042079",
+      "nguon": "tax.30042079",
+      "trich": "30042079 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30042091",
+      "nguon": "tax.30042091",
+      "trich": "30042091 - - - Dạng uống (*) hoặc dạng mỡ",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "UONG_HOAC_MO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30042099",
+      "nguon": "tax.30042099",
+      "trich": "30042099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "300420",
+      "loai": "DUNG",
+      "ghiChu": "Phân nhóm 3004.20 có cờ canHieuChinhTienLe (data/ho-so/lat-1.json) mà bảng data/ho-so/hieu-chinh-tien-le.json CHƯA có mục cho PN6 này (--goi in \"CHUA CO bang hieu chinh\") ⇒ không duyệt/áp được. Theo QUY-TRINH mục 2: DỪNG, báo Claude (L1-4b, scripts/check-hieu-chinh.mjs). Mọi điều kiện dưới đây soạn theo CHỮ BIỂU."
+    },
+    {
+      "ma": "30042010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30042010 \"Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ\" — 3 hoạt chất nối phẩy ⇒ tenLoai MẢNG; vế \"hoặc các dẫn xuất của chúng\" không có khoá ⇒ điều kiện hẹp hơn chữ một bước. Dạng: \"dạng uống (*) hoặc dạng mỡ\" khớp đúng giá trị UONG_HOAC_MO của khoá dangBaoCheThuoc."
+    },
+    {
+      "ma": "3004203",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3004203 \"Chứa erythromycin hoặc các dẫn xuất của chúng\" — đặt tên hoạt chất \"erythromycin\"; vế dẫn xuất không có khoá."
+    },
+    {
+      "ma": "3004207",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3004207 \"Chứa tetracylin hoặc chloramphenicol hoặc các dẫn xuất của chúng\" — 2 hoạt chất nối \"hoặc\" ⇒ tenLoai MẢNG 2 giá trị; vế dẫn xuất không có khoá."
+    },
+    {
+      "ma": "3004209",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3004209 \"Loại khác\" trần ⇒ không ghi điều kiện cho tiêu đề này (máy phủ định anh em)."
+    },
+    {
+      "ma": "30042091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30042091 \"Dạng uống (*) hoặc dạng mỡ\" — chữ khớp đúng UONG_HOAC_MO; dòng nằm dưới tiêu đề 3004209 \"Loại khác\" trần nên không mang điều kiện hoạt chất."
+    }
+  ]
+}

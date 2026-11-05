@@ -1,0 +1,62 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "121221",
+  "phien": "mm:minimax-m3:20261105T1529#soan-121221",
+  "dong8": {
+    "12122111": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Eucheuma spinosum" }
+      ]
+    },
+    "12122112": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Eucheuma cottonii" }
+      ]
+    },
+    "12122113": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Gracilaria spp." }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1212211": {
+      "dieuKienSo": [
+        { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["KHO_MUOI"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "chưa nghiền" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "1212211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1212211 \"Đã sấy khô nhưng chưa nghiền\" (EN \"Dried but not ground\") ⇒ phuongPhapBaoQuan TRONG [\"KHO_MUOI\"] (vế \"Đã sấy khô\": chữ \"khô\" đọc được ở KHO_MUOI) + tenLoai \"chưa nghiền\" (vế GIỚI HẠN \"chưa nghiền\"; từ vựng chưa có khoá riêng cho dạng nghiền/xay xay — dùng tenLoai như mẫu 851220 \"chưa lắp ráp\", cần người soát kiểm lại nếu muốn đề xuất khoá mới)."
+    },
+    {
+      "ma": "12122111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12122111 \"Eucheuma spinosum(SEN)\" ⇒ tenLoai \"Eucheuma spinosum\" (tên loài nguyên văn)."
+    },
+    {
+      "ma": "12122112",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12122112 \"Eucheuma cottonii (SEN)\" ⇒ tenLoai \"Eucheuma cottonii\" (tên loài nguyên văn)."
+    },
+    {
+      "ma": "12122113",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12122113 \"Gracilaria spp.\" ⇒ tenLoai \"Gracilaria spp.\" (nguyên văn; \"spp.\" = nhiều loài)."
+    },
+    {
+      "ma": "12122119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12122119 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    },
+    {
+      "ma": "12122190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12122190 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước, gồm tiêu đề 1212211)."
+    }
+  ]
+}

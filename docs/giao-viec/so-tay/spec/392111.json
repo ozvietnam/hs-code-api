@@ -1,0 +1,23 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "392111",
+  "phien": "mm:minimax-m3:20261105T1700#soan-392111",
+  "dong8": {
+    "39211121": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["tấm", "phiến"] } ] },
+    "39211129": { "dieuKienSo": [] },
+    "39211191": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["tấm", "phiến"] } ] },
+    "39211192": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "màng" } ] },
+    "39211199": { "dieuKienSo": [] }
+  },
+  "dieuKienNut": {
+    "3921112": { "dieuKienSo": [ { "fact": "loaiCung", "op": "CO" } ] }
+  },
+  "ghiChuSoan": [
+    { "ma": "3921112", "loai": "QUYET_DINH", "ghiChu": "tieuDe.3921112 \"Cứng\" (EN \"Rigid\") ⇒ loaiCung CO — khoá CO_KHONG \"loại cứng\", cachDoc đọc \"cứng\"." },
+    { "ma": "39211121", "loai": "QUYET_DINH", "ghiChu": "tax.39211121 \"Dạng tấm và phiến (SEN)\" (EN \"Plates and sheets\") ⇒ tenLoai [\"tấm\",\"phiến\"] — hai danh từ đầu nối \"và\", chữ Anh nối hai danh từ số nhiều bằng and ⇒ mảng (vòng 5/7). Điều kiện \"cứng\" để ở tiêu đề 3921112, không chép xuống dòng." },
+    { "ma": "39211191", "loai": "QUYET_DINH", "ghiChu": "tax.39211191 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"]; dòng này ở dưới tiêu đề \"Loại khác\" (3921119) nên máy phủ định anh em — tức không phải loại cứng." },
+    { "ma": "39211192", "loai": "QUYET_DINH", "ghiChu": "tax.39211192 \"Dạng màng (SEN)\" (EN \"Film\") ⇒ tenLoai \"màng\"." },
+    { "ma": "39211129", "loai": "QUYET_DINH", "ghiChu": "tax.39211129 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." },
+    { "ma": "39211199", "loai": "QUYET_DINH", "ghiChu": "tax.39211199 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}

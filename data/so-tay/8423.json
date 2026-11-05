@@ -214,35 +214,69 @@
   "dong8": [
     {
       "hs": "84231010",
-      "dieuKien": "Cân người (kể cả cân trẻ em) và cân gia đình (phân nhóm 8423.10): hoạt động bằng điện",
+      "dieuKien": "hoạt động bằng điện",
+      "loaiKhac": false,
+      "nguon": "tax.84231010",
+      "trich": "84231010 - - Hoạt động bằng điện",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-842310",
+          "ngay": "2026-11-02",
+          "bam": "122f02369782bfaa593e59c000c870836359e31f5244ca4f39e1757592460efb"
+        }
+      },
       "tieuChi": {
         "fact": "hoat_dong_bang_dien",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.84231010",
-      "trich": "84231010 - - Hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "84231020",
-      "dieuKien": "Cân người (kể cả cân trẻ em) và cân gia đình (phân nhóm 8423.10): không hoạt động bằng điện",
+      "dieuKien": "không: hoạt động bằng điện",
+      "loaiKhac": false,
+      "nguon": "tax.84231020",
+      "trich": "84231020 - - Không hoạt động bằng điện",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-842310",
+          "ngay": "2026-11-02",
+          "bam": "122f02369782bfaa593e59c000c870836359e31f5244ca4f39e1757592460efb"
+        }
+      },
       "tieuChi": {
         "fact": "hoat_dong_bang_dien",
         "op": "=",
         "value": false,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.84231020",
-      "trich": "84231020 - - Không hoạt động bằng điện",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "84232010",
       "dieuKien": "tên loại hàng: Cân điện tử",
+      "tieuChi": {
+        "fact": "la_can_dien_tu",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      },
       "loaiKhac": false,
       "nguon": "tax.84232010",
       "trich": "84232010 - - Cân điện tử",
@@ -261,12 +295,6 @@
           "ngay": "2026-11-02",
           "bam": "ddfe424707974658b2fd32ed21a2009dcc247cf9559d75bdce5f8300ad29b13a"
         }
-      },
-      "tieuChi": {
-        "fact": "la_can_dien_tu",
-        "op": "=",
-        "value": true,
-        "donVi": null
       }
     },
     {
@@ -290,6 +318,12 @@
     {
       "hs": "84233010",
       "dieuKien": "tên loại hàng: Cân điện tử",
+      "tieuChi": {
+        "fact": "la_can_dien_tu",
+        "op": "=",
+        "value": true,
+        "donVi": null
+      },
       "loaiKhac": false,
       "nguon": "tax.84233010",
       "trich": "84233010 - - Cân điện tử",
@@ -308,12 +342,6 @@
           "ngay": "2026-11-02",
           "bam": "8aaf41abc6953ebb1283aa6541161c595cd9d1a5b95502dc7d67e6f7d51aef81"
         }
-      },
-      "tieuChi": {
-        "fact": "la_can_dien_tu",
-        "op": "=",
-        "value": true,
-        "donVi": null
       }
     },
     {
@@ -336,17 +364,32 @@
     },
     {
       "hs": "84238110",
-      "dieuKien": "Cân khác (không phải cân người, cân băng tải, cân trọng lượng cố định) có khối lượng cân tối đa không quá 30 kg (phân nhóm 8423.81): cân điện tử",
+      "dieuKien": "tên loại hàng: Cân điện tử",
+      "loaiKhac": false,
+      "nguon": "tax.84238110",
+      "trich": "84238110 - - - Cân điện tử",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-842381",
+          "ngay": "2026-11-02",
+          "bam": "103294c503398969d57df45380f4759b1995511b549433d062ccc355302ef4f1"
+        }
+      },
       "tieuChi": {
         "fact": "la_can_dien_tu",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.84238110",
-      "trich": "84238110 - - - Cân điện tử",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "84238190",
@@ -462,17 +505,32 @@
     },
     {
       "hs": "84238910",
-      "dieuKien": "Cân khác (không phải cân người, cân băng tải, cân trọng lượng cố định) có khối lượng cân tối đa trên 5.000 kg (phân nhóm 8423.89): cân điện tử",
+      "dieuKien": "tên loại hàng: Cân điện tử",
+      "loaiKhac": false,
+      "nguon": "tax.84238910",
+      "trich": "84238910 - - - Cân điện tử",
+      "nguonLoai": "CLAUDE_DUYET",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cân điện tử"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-842389",
+          "ngay": "2026-11-02",
+          "bam": "f265975f4bd7e83ecedfd8a6a8a1bde5bce545b6dd84ce43c45dfbfe92517ab2"
+        }
+      },
       "tieuChi": {
         "fact": "la_can_dien_tu",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "loaiKhac": false,
-      "nguon": "tax.84238910",
-      "trich": "84238910 - - - Cân điện tử",
-      "nguonLoai": "AI_DA_KIEM"
+      }
     },
     {
       "hs": "84238990",
@@ -505,13 +563,6 @@
       "nguon": "tax.84239010",
       "trich": "84239010 - - Quả cân",
       "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Quả cân"
-        }
-      ],
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
@@ -519,7 +570,14 @@
           "ngay": "2026-11-02",
           "bam": "143934dc9812c84dbace9103af0b5e9ea88985ef818273f3093d71413c23cc27"
         }
-      }
+      },
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả cân"
+        }
+      ]
     },
     {
       "hs": "84239030",
@@ -534,6 +592,14 @@
       "nguon": "tax.84239030",
       "trich": "84239030 - - Bộ phận của cân điện tử, trừ loại sử dụng để cân xe có động cơ (SEN)",
       "nguonLoai": "CLAUDE_DUYET",
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-842390",
+          "ngay": "2026-11-02",
+          "bam": "143934dc9812c84dbace9103af0b5e9ea88985ef818273f3093d71413c23cc27"
+        }
+      },
       "dieuKienSo": [
         {
           "fact": "tenLoai",
@@ -551,15 +617,7 @@
           "value": "cân xe có động cơ",
           "chieu": "PHAI_KHONG"
         }
-      ],
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-842390",
-          "ngay": "2026-11-02",
-          "bam": "143934dc9812c84dbace9103af0b5e9ea88985ef818273f3093d71413c23cc27"
-        }
-      }
+      ]
     },
     {
       "hs": "84239040",
@@ -568,14 +626,6 @@
       "nguon": "tax.84239040",
       "trich": "84239040 - - Bộ phận của các loại cân khác",
       "nguonLoai": "CLAUDE_DUYET",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bộ phận"
-        }
-      ],
-      "phanConLai": true,
       "ranhGioi": {
         "phienBan": "ranh-gioi@1",
         "duyet": {
@@ -583,7 +633,15 @@
           "ngay": "2026-11-02",
           "bam": "143934dc9812c84dbace9103af0b5e9ea88985ef818273f3093d71413c23cc27"
         }
-      }
+      },
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        }
+      ],
+      "phanConLai": true
     }
   ],
   "boPhan": {

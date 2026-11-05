@@ -1,0 +1,125 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "010599",
+  "nhom": "0105",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1529#soan-010599",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "01059910",
+      "nguon": "tax.01059910",
+      "trich": "01059910 - - - Vịt, ngan để nhân giống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Vịt",
+            "ngan"
+          ]
+        },
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "01059920",
+      "nguon": "tax.01059920",
+      "trich": "01059920 - - - Vịt, ngan loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Vịt",
+            "ngan"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "01059910"
+      ]
+    },
+    {
+      "hs": "01059930",
+      "nguon": "tax.01059930",
+      "trich": "01059930 - - - Ngỗng, gà tây và gà lôi để nhân giống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ngỗng",
+            "gà tây",
+            "gà lôi"
+          ]
+        },
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "01059940",
+      "nguon": "tax.01059940",
+      "trich": "01059940 - - - Ngỗng, gà tây và gà lôi loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ngỗng",
+            "gà tây",
+            "gà lôi"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "01059930"
+      ]
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "01059910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.01059910 \"Vịt, ngan để nhân giống (SEN)\" ⇒ tenLoai [\"Vịt\",\"ngan\"] (liệt kê hàng thay thế) + dungLamGiong CO (đọc CÓ gồm \"để nhân giống\"); \"(SEN)\" là ngoặc chú thích, không thành điều kiện."
+    },
+    {
+      "ma": "01059920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.01059920 \"Vịt, ngan loại khác\" ⇒ tenLoai [\"Vịt\",\"ngan\"] + phanConLai [\"01059910\"] — \"loại khác\" chỉ phủ định anh em cùng tên Vịt, ngan (01059910), không phủ 01059930/40 (Ngỗng, gà tây, gà lôi)."
+    },
+    {
+      "ma": "01059930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.01059930 \"Ngỗng, gà tây và gà lôi để nhân giống (SEN)\" ⇒ tenLoai [\"Ngỗng\",\"gà tây\",\"gà lôi\"] (liệt kê tên hàng thay thế, chữ Anh \"geese, turkeys and guinea fowls\") + dungLamGiong CO."
+    },
+    {
+      "ma": "01059930",
+      "loai": "BO_VE",
+      "ve": "để nhân giống",
+      "lyDo": "Chữ Anh cùng dòng \"Breeding geese, turkeys and guinea fowls\" đặt \"Breeding\" TRƯỚC liên hợp nên máy đọc định ngữ Việt \"để nhân giống\" là của danh từ cuối; thực chất \"Breeding\" là định ngữ chung của cả ba danh từ (geese, turkeys, guinea fowls) — điều kiện dungLamGiong CO áp cho cả dòng là đúng chữ, không hẹp hơn."
+    },
+    {
+      "ma": "01059940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.01059940 \"Ngỗng, gà tây và gà lôi loại khác\" ⇒ tenLoai [\"Ngỗng\",\"gà tây\",\"gà lôi\"] + phanConLai [\"01059930\"] — \"loại khác\" chỉ phủ định anh em cùng tên Ngỗng, gà tây, gà lôi."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "392290",
+  "phien": "mm:minimax-m3:20261105T1700#soan-392290",
+  "dong8": {
+    "39229011": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bộ phận của bình xả nước" } ] },
+    "39229012": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bình xả nước đã lắp sẵn các bộ phận" } ] },
+    "39229019": { "dieuKienSo": [] },
+    "39229090": { "dieuKienSo": [] }
+  },
+  "dieuKienNut": {
+    "3922901": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Bệ rửa", "bình xả nước", "bệ tiểu"] } ] }
+  },
+  "ghiChuSoan": [
+    { "ma": "3922901", "loai": "QUYET_DINH", "ghiChu": "tieuDe.3922901 \"Bệ rửa, bình xả nước và bệ tiểu\" (EN \"Lavatory pans, flushing cisterns and urinals\") ⇒ tenLoai [\"Bệ rửa\",\"bình xả nước\",\"bệ tiểu\"] — ba hàng thay thế nối bằng dấu phẩy và \"và\" ⇒ mảng (vòng 5/7)." },
+    { "ma": "39229011", "loai": "QUYET_DINH", "ghiChu": "tax.39229011 \"Bộ phận của bình xả nước(SEN)\" (EN \"Parts of flushing cisterns\") ⇒ tenLoai \"Bộ phận của bình xả nước\" (một chuỗi nguyên văn; phủ vế GIỚI HẠN \"của bình xả nước\"). KHÔNG dùng laBoPhan CO: chữ \"bộ phận\" cũng có trong .12 \"Bình xả nước đã lắp sẵn các bộ phận\" ⇒ hai dòng cùng thoả." },
+    { "ma": "39229012", "loai": "QUYET_DINH", "ghiChu": "tax.39229012 \"Bình xả nước đã lắp sẵn các bộ phận(SEN)\" (EN \"Flushing cisterns equipped with their mechanisms\") ⇒ tenLoai \"Bình xả nước đã lắp sẵn các bộ phận\" — hàng hoàn chỉnh có bộ phận lắp sẵn, KHÁC .11 là bộ phận của bình xả nước." },
+    { "ma": "39229019", "loai": "QUYET_DINH", "ghiChu": "tax.39229019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." },
+    { "ma": "39229090", "loai": "QUYET_DINH", "ghiChu": "tax.39229090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "293790",
+  "nhom": "2937",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1052#soan-293790",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "29379010",
+      "nguon": "tax.29379010",
+      "trich": "29379010 - - Hợp chất amino chức oxy",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hợp chất amino chức oxy"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "29379020",
+      "nguon": "tax.29379020",
+      "trich": "29379020 - - Epinephrine; các dẫn xuất của amino - axit",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Epinephrine"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dẫn xuất"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "amino - axit"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "29379090",
+      "nguon": "tax.29379090",
+      "trich": "29379090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "29379010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29379010: \"Hợp chất amino chức oxy\" ⇒ tenLoai TEN_LOAI \"Hợp chất amino chức oxy\" nguyên văn"
+    },
+    {
+      "ma": "29379020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29379020: \"Epinephrine; các dẫn xuất của amino - axit\" ⇒ liệt kê \";\" hai ý thay thế: HOAC [[tenLoai \"Epinephrine\"],[tenLoai \"dẫn xuất\" + điều kiện riêng \"amino - axit\" cho vế \"của amino - axit\"]]"
+    },
+    {
+      "ma": "29379090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29379090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

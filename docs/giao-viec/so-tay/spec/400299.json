@@ -1,0 +1,77 @@
+{
+  "dong8": {
+    "40029930": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "cao su"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cao su tự nhiên đã epoxy hóa"
+        }
+      ]
+    },
+    "40029940": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dạng nguyên sinh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "dạng tấm",
+                  "tờ",
+                  "dải"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "lưu hóa",
+                "chieu": "PHAI_KHONG"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "pha trộn",
+                "chieu": "PHAI_KHONG"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "40029930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40029930 \"Cao su tự nhiên đã epoxy hóa (ENR)\" (EN \"Epoxidised Natural Rubber (ENR)\") => chatLieu LA \"cao su\" (đọc được từ chữ \"cao su\") + tenLoai \"Cao su tự nhiên đã epoxy hóa\" cho phần còn lại của danh từ đầu. Chữ biểu không có khoá tu-vung riêng cho vế \"đã epoxy hóa\" (EN \"Epoxidised\") nên ghi bằng chữ tự do; so chữ tự do, không tất định."
+    },
+    {
+      "ma": "40029940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40029940 \"Loại khác, dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn\" (EN \"Other, in primary forms or in unvulcanised, uncompounded plates, sheets or strip\") là dòng \"Loại khác, <vế>\" nên chỉ ghi điều kiện của vế \"dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn\" (máy tự phủ định anh em 40029930). Vế là phép HOAC giữa hai dạng: \"dạng nguyên sinh\" và \"dạng tấm, tờ hoặc dải lưu hóa, pha trộn\" — mỗi phương án ghi tenLoai (mảng cho danh sách tấm/tờ/dải) và hai tenLoai chieu PHAI_KHONG cho vế GIỚI_HẠN \"chưa lưu hóa, chưa pha trộn\" (chỉ áp cho phương án dạng tấm/tờ/dải, đúng vị trí vế trong chữ biểu). Không có khoá tu-vung cho \"lưu hóa\" lẫn \"pha trộn\" nên ghi bằng chữ tự do; so chữ tự do, không tất định."
+    },
+    {
+      "ma": "40029990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40029990 \"Loại khác\" trần => không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    }
+  ],
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "400299",
+  "phien": "mm:minimax-m3:20261105T1707#soan-400299"
+}

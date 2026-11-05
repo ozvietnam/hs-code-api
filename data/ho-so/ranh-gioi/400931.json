@@ -1,0 +1,75 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "400931",
+  "nhom": "4009",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1707#soan-400931",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "40093110",
+      "nguon": "tax.40093110",
+      "trich": "40093110 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "ongHutXaBunKhaiThacMo",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40093191",
+      "nguon": "tax.40093191",
+      "trich": "40093191 - - - - Ống dẫn nhiên liệu, ống dẫn nhiệt và ống dẫn nước, dùng cho xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ống dẫn nhiên liệu",
+            "ống dẫn nhiệt",
+            "ống dẫn nước"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40093199",
+      "nguon": "tax.40093199",
+      "trich": "40093199 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "40093110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40093110 \"Ống hút và xả bùn dùng trong khai thác mỏ(SEN)\" (EN \"Mining slurry suction and discharge hoses\") => ongHutXaBunKhaiThacMo CO; khoá đọc đúng cụm \"ống hút và xả bùn dùng trong khai thác mỏ\". Ngoặc \"(SEN)\" là ngoặc chú thích."
+    },
+    {
+      "ma": "40093191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40093191 \"Ống dẫn nhiên liệu, ống dẫn nhiệt và ống dẫn nước, dùng cho xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11\" (EN \"Fuel hoses, heater hoses and water hoses, of a kind used on motor vehicles of heading 87.02, 87.03, 87.04 or 87.11\") => tenLoai [\"Ống dẫn nhiên liệu\", \"ống dẫn nhiệt\", \"ống dẫn nước\"] cho danh từ đầu (tách danh sách \"ống dẫn nhiên liệu, ống dẫn nhiệt và ống dẫn nước\" thành mảng theo luật liệt kê vòng 5) + dungCho \"xe gắn động cơ thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.11\" cho vế GIỚI_HẠN \"dùng cho …\"."
+    },
+    {
+      "ma": "40093199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40093199 \"Loại khác\" trần => không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    }
+  ]
+}
