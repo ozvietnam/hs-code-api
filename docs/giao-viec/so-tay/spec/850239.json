@@ -1,0 +1,77 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850239",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850239",
+  "dong8": {
+    "85023910": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 10,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "85023920": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "85023932": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">=",
+          "value": 12500,
+          "donVi": "kVA"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8502393": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85023910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85023910: \"Công suất không quá 10 kVA\" ⇒ congSuatBieuKien <= 10 kVA"
+    },
+    {
+      "ma": "85023920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85023920: \"Công suất trên 10 kVA nhưng không quá 10.000 kVA\" ⇒ congSuatBieuKien > 10 kVA, <= 10000 kVA"
+    },
+    {
+      "ma": "8502393",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8502393: \"Công suất trên 10.000 kVA\" ⇒ congSuatBieuKien > 10000 kVA"
+    },
+    {
+      "ma": "85023932",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85023932: \"Công suất từ 12.500 kVA trở lên\" ⇒ congSuatBieuKien >= 12500 kVA"
+    }
+  ]
+}

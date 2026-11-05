@@ -1,0 +1,156 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "840890",
+  "nhom": "8408",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840890",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8408905",
+      "nguon": "tieuDe.8408905",
+      "trich": "8408905 Công suất trên 100 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 100,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84089010",
+      "nguon": "tax.84089010",
+      "trich": "84089010 - - Công suất không quá 18,65 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 18.65,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84089051",
+      "nguon": "tax.84089051",
+      "trich": "84089051 - - - Của loại sử dụng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.29",
+            "84.30"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84089052",
+      "nguon": "tax.84089052",
+      "trich": "84089052 - - - Của loại sử dụng cho đầu máy di chuyển trên đường sắt hoặc tàu điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đầu máy di chuyển trên đường sắt",
+            "tàu điện"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84089059",
+      "nguon": "tax.84089059",
+      "trich": "84089059 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84089091",
+      "nguon": "tax.84089091",
+      "trich": "84089091 - - - Dùng cho máy thuộc nhóm 84.29 hoặc 84.30",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.29",
+            "84.30"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84089092",
+      "nguon": "tax.84089092",
+      "trich": "84089092 - - - Của loại sử dụng cho đầu máy di chuyển trên đường sắt hoặc tàu điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đầu máy di chuyển trên đường sắt",
+            "tàu điện"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84089099",
+      "nguon": "tax.84089099",
+      "trich": "84089099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84089010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84089010: \"Công suất không quá 18,65 kW\" ⇒ congSuat <= 18.65 kW"
+    },
+    {
+      "ma": "8408905",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8408905: \"Công suất trên 100 kW\" ⇒ congSuat > 100 kW"
+    },
+    {
+      "ma": "84089051",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84089051: \"Của loại sử dụng cho máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho [\"84.29\",\"84.30\"]"
+    },
+    {
+      "ma": "84089052",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84089052: \"Của loại sử dụng cho đầu máy di chuyển trên đường sắt hoặc tàu điện\" ⇒ dungCho [\"đầu máy di chuyển trên đường sắt\",\"tàu điện\"]"
+    },
+    {
+      "ma": "84089091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84089091: \"Dùng cho máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho [\"84.29\",\"84.30\"]"
+    },
+    {
+      "ma": "84089092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84089092: \"Của loại sử dụng cho đầu máy di chuyển trên đường sắt hoặc tàu điện\" ⇒ dungCho [\"đầu máy di chuyển trên đường sắt\",\"tàu điện\"]"
+    }
+  ]
+}

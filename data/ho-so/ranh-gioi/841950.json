@@ -1,0 +1,101 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841950",
+  "nhom": "8419",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841950",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84195010",
+      "nguon": "tax.84195010",
+      "trich": "84195010 - - Tháp làm mát",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tháp làm mát"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84195020",
+      "nguon": "tax.84195020",
+      "trich": "84195020 - - Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ trao đổi nhiệt"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 3,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84195091",
+      "nguon": "tax.84195091",
+      "trich": "84195091 - - - Hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84195092",
+      "nguon": "tax.84195092",
+      "trich": "84195092 - - - Không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84195010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84195010: \"Tháp làm mát\" ⇒ tenLoai \"Tháp làm mát\""
+    },
+    {
+      "ma": "84195020",
+      "loai": "BO_VE",
+      "ve": "bằng các ống fluoropolyme, với ống đầu vào và ống ra",
+      "lyDo": "tu-vung@2 chưa có chất liệu fluoropolyme, đặc tính kết cấu ống được đại diện qua tên loại và đường kính trong"
+    },
+    {
+      "ma": "84195020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84195020: \"Bộ trao đổi nhiệt làm bằng các ống fluoropolyme, với ống đầu vào và ống ra có đường kính trong từ 3 cm trở xuống\" ⇒ tenLoai \"Bộ trao đổi nhiệt\" + duongKinhTrong <= 3 cm"
+    },
+    {
+      "ma": "84195091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84195091: \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84195092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84195092: \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    }
+  ]
+}
