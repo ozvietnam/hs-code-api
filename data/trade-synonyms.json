@@ -2429,27 +2429,27 @@
    ],
    "excludeReasonVi": "Động cơ hướng trục là ĐỘNG CƠ điện rời (8501), không phải quạt nguyên máy.",
    "candidates": [
-      {
-        "hs": "84145991",
-        "whenVi": "Quạt hướng trục công nghiệp > 125 W, có lưới bảo vệ (vd SUNFAN 4G-2 0,9 kW Ø460 có lưới)",
-        "confidence": "medium"
-      },
-      {
-        "hs": "84145999",
-        "whenVi": "Quạt hướng trục công nghiệp > 125 W, không có lưới bảo vệ",
-        "confidence": "medium"
-      },
-      {
-        "hs": "84145941",
-        "whenVi": "Quạt kiểu gia dụng (bàn/đứng/trần/tường) vượt 125 W, có lưới bảo vệ — CV 3220/TCHQ-TXNK 2021 chấn chỉnh khu vực này",
-        "confidence": "low"
-      },
-      {
-        "hs": "84145949",
-        "whenVi": "Quạt kiểu gia dụng (bàn/đứng/trần/tường) vượt 125 W, không có lưới bảo vệ — CV 3220/TCHQ-TXNK 2021 chấn chỉnh khu vực này",
-        "confidence": "low"
-      }
-    ],
+    {
+     "hs": "84145991",
+     "whenVi": "Quạt hướng trục công nghiệp > 125 W, có lưới bảo vệ (vd SUNFAN 4G-2 0,9 kW Ø460 có lưới)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84145999",
+     "whenVi": "Quạt hướng trục công nghiệp > 125 W, không có lưới bảo vệ",
+     "confidence": "medium"
+    },
+    {
+     "hs": "84145941",
+     "whenVi": "Quạt kiểu gia dụng (bàn/đứng/trần/tường) vượt 125 W, có lưới bảo vệ — CV 3220/TCHQ-TXNK 2021 chấn chỉnh khu vực này",
+     "confidence": "low"
+    },
+    {
+     "hs": "84145949",
+     "whenVi": "Quạt kiểu gia dụng (bàn/đứng/trần/tường) vượt 125 W, không có lưới bảo vệ — CV 3220/TCHQ-TXNK 2021 chấn chỉnh khu vực này",
+     "confidence": "low"
+    }
+   ],
    "avoid": [
     {
      "prefix": "8501",
@@ -2466,6 +2466,158 @@
    "gir": "GIR 1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 8414.51 (≤125 W) vs 8414.59.91 'Có lưới bảo vệ'; CV 3220/TCHQ-TXNK 2021 chấn chỉnh khai sai quạt. Ca thật 04/11/2026: SUNFAN 4G-2 0,9 kW Ø460."
+  },
+  {
+   "id": "ly-thuy-tinh",
+   "titleVi": "Ly / cốc thủy tinh dùng trên bàn ăn (nhóm 7013)",
+   "terms": [
+    "ly thủy tinh",
+    "cốc thủy tinh",
+    "ly uống nước",
+    "cốc uống nước",
+    "ly nước",
+    "ly pha lê",
+    "cốc pha lê",
+    "drinking glass",
+    "drinking glasses"
+   ],
+   "excludeIfAny": [
+    "ống nghiệm",
+    "thí nghiệm",
+    "phòng khám",
+    "dùng trong phòng xét nghiệm"
+   ],
+   "excludeReasonVi": "Ly/dụng cụ thủy tinh cho phòng thí nghiệm thuộc nhóm 7017, không phải đồ thủy tinh bàn ăn nhóm 7013.",
+   "candidates": [
+    {
+     "hs": "70133700",
+     "whenVi": "Ly/cốc thủy tinh loại khác (không phải gốm thủy tinh, không phải pha lê chì)",
+     "confidence": "medium"
+    },
+    {
+     "hs": "70133300",
+     "whenVi": "Bằng pha lê chì",
+     "confidence": "medium"
+    },
+    {
+     "hs": "70132800",
+     "whenVi": "Bằng gốm thủy tinh (glass-ceramics)",
+     "confidence": "low"
+    },
+    {
+     "hs": "70134900",
+     "whenVi": "Đồ thủy tinh bàn ăn/nhà bếp/vệ sinh loại khác (không phải ly uống nước)",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8549",
+     "whyVi": "8549 là rác thải/chất thải chứa thủy tinh từ ống tia catốt — 'thủy tinh' ở đây là thành phần rác thải điện tử, không phải đồ thủy tinh bàn ăn."
+    },
+    {
+     "prefix": "3923",
+     "whyVi": "3923 là bình/chuyển chứa bằng NHỰA (kể cả gia cố sợi thủy tinh) — 'thủy tinh' chỉ là vật liệu gia cố, không phải đồ thủy tinh nhóm 7013."
+    }
+   ],
+   "askVi": [
+    "Ly bằng pha lê chì (→ 7013.33) hay loại khác (→ 7013.37)?",
+    "Có phải gốm thủy tinh (glass-ceramics) không (→ 7013.28)?",
+    "Dùng trên bàn ăn (7013) hay cho phòng thí nghiệm (7017)"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 nhóm 7013: 7013.33/7013.37 'Ly, cốc… để uống nước' (70133700 '- - Loại khác'; 70133300 '- - Bằng pha lê chì'); 7013.28 '- - Loại khác' (gốm thủy tinh 70131000?). Ca thật #1006 (10–11/2026): 'ly thủy tinh' trước đây trúng rác điện tử 8549.21/31 và bình sợi thủy tinh 3923.33, không thấy 7013."
+  },
+  {
+   "id": "may-pha-ca-phe",
+   "titleVi": "Máy pha cà phê / pha chè (8516.71)",
+   "terms": [
+    "máy pha cà phê",
+    "máy pha cafe",
+    "máy pha cà phê cầm tay",
+    "máy pha chè",
+    "dụng cụ pha cà phê",
+    "máy espresso",
+    "máy pha cà phê gia dụng",
+    "coffee maker",
+    "coffee machine"
+   ],
+   "excludeIfAny": [
+    "máy rang",
+    "nghiền cà phê",
+    "máy xay cà phê",
+    "máy nghiền cà phê",
+    "rang cà phê"
+   ],
+   "excludeReasonVi": "Máy RANG hoặc NGHIỀN/XAY cà phê là máy chế biến nguyên liệu (8437.80 máy nghiền cà phê dạng công nghiệp), không phải dụng cụ pha nước uống 8516.71.",
+   "candidates": [
+    {
+     "hs": "85167100",
+     "whenVi": "Dụng cụ pha chè hoặc cà phê (kể cả pha áp suất kiểu espresso) — điệnthermal, dùng trong hộ gia đình hoặc tương tự",
+     "confidence": "high"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8437",
+     "whyVi": "8437.80.30 là máy NGHIỀN cà phê và ngô dạng công nghiệp — chế biến hạt, không pha nước uống."
+    },
+    {
+     "prefix": "8438",
+     "whyVi": "8438 là máy chế biến thực phẩm/bánh công nghiệp (kể cả rang, chế biến cà phê), không phải dụng cụ pha."
+    }
+   ],
+   "askVi": [
+    "Máy dùng để PHA nước uống (→ 8516.71) hay RANG/NGHIỀN hạt (→ 8437/8438)?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 dòng 85167100 'Dụng cụ pha chè hoặc cà phê'; 84378030 'Máy nghiền cà phê và ngô dạng công nghiệp, hoạt động bằng điện'. Ca thật #1006 (10–11/2026): 'máy pha cà phê' trước đây trúng 8437.80.30 (máy nghiền), không thấy 8516.71."
+  },
+  {
+   "id": "may-tham-do-dia-chat",
+   "titleVi": "Máy/thiết bị thăm dò, trắc đạc địa chất (nhóm 9015)",
+   "terms": [
+    "máy thăm dò địa chất",
+    "thiết bị thăm dò địa chất",
+    "máy thăm dò",
+    "máy đo địa chất",
+    "thiết bị trắc địa",
+    "máy trắc địa",
+    "máy quan trắc",
+    "thăm dò địa chất"
+   ],
+   "excludeIfAny": [
+    "ra đa",
+    "radar",
+    "gpr",
+    "máy khoan"
+   ],
+   "excludeReasonVi": "Ra đa (kể cả GPR xuyên đất) đã vào 8526 theo Chú giải 2 Chương 90 và phán quyết CBP H266052; máy KHOAN là thiết bị khai thác 8430, không phải dụng cụ đo 9015.",
+   "candidates": [
+    {
+     "hs": "9015",
+     "whenVi": "Máy và dụng cụ trắc địa, thăm dò địa chất/thủy văn/khí tượng (kinh vĩ, toàn đạc, mức đo, quan trắc…)",
+     "confidence": "medium"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "8401",
+     "whyVi": "8401 là lò hạt nhân, lò điện phân và máy TÁCH ĐỒNG VỊ — 'đồng vị' dễ dính với câu hỏi địa chất khảo sát quặng nhưng là thiết bị công nghiệp, không phải dụng cụ trắc đạc 9015."
+    },
+    {
+     "prefix": "8456",
+     "whyVi": "8456 là máy công dụng bằng laser/plasma gia công vật liệu, không phải thiết bị đo địa chất."
+    }
+   ],
+   "askVi": [
+    "Thiết bị ĐO/TRẮC ĐẠC (→ 9015) hay ra đa/GPR (→ 8526) hay máy KHOAN khai thác (→ 8430)?"
+   ],
+   "gir": "1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế 2026 nhóm 9015 'Máy và dụng cụ trắc địa, thăm dò…' (90152000 máy kinh vĩ/toàn đạc; 90151010 chụp ảnh/quay phim; 90158010 quan trắc sóng vô tuyến). Ca thật #1006 (10–11/2026): 'máy thăm dò địa chất' trước đây trúng 8401.20 (máy tách đồng vị) và 8456.40 (plasma)."
   }
  ],
  "updatedAt": "2026-11-04"
