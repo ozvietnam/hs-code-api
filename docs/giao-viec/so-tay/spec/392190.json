@@ -1,0 +1,47 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "392190",
+  "phien": "mm:minimax-m3:20261105T1700#soan-392190",
+  "dong8": {
+    "39219010": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "sợi lưu hóa" } ] },
+    "39219020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "protein" },
+        { "fact": "loaiCung", "op": "CO" }
+      ]
+    },
+    "39219030": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "dẫn xuất hóa học của cao su tự nhiên" } ] },
+    "39219041": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["tấm", "phiến"] } ] },
+    "39219042": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "màng" } ] },
+    "39219043": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "dải có ép vật liệu dệt" }
+      ]
+    },
+    "39219049": { "dieuKienSo": [] },
+    "39219050": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "xenlulo tái sinh" } ] },
+    "39219060": {
+      "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["xenlulo khác", "dẫn xuất hóa học của nó"] } ],
+      "phanConLai": false
+    },
+    "39219070": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "polyme trùng hợp" } ] },
+    "39219090": { "dieuKienSo": [] }
+  },
+  "dieuKienNut": {
+    "3921904": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "polyme trùng ngưng" } ] }
+  },
+  "ghiChuSoan": [
+    { "ma": "39219010", "loai": "QUYET_DINH", "ghiChu": "tax.39219010 \"Từ sợi lưu hóa\" (EN \"Of vulcanised fibre\") ⇒ tenLoai \"sợi lưu hóa\"." },
+    { "ma": "39219020", "loai": "QUYET_DINH", "ghiChu": "tax.39219020 \"Từ các protein đã được làm cứng\" ⇒ tenLoai \"protein\" + loaiCung CO (phủ vế GIỚI HẠN \"được làm cứng\")." },
+    { "ma": "39219030", "loai": "QUYET_DINH", "ghiChu": "tax.39219030 \"Từ các dẫn xuất hóa học của cao su tự nhiên\" ⇒ tenLoai \"dẫn xuất hóa học của cao su tự nhiên\" (phủ vế GIỚI HẠN \"của cao su tự nhiên\")." },
+    { "ma": "3921904", "loai": "QUYET_DINH", "ghiChu": "tieuDe.3921904 \"Từ các polyme trùng ngưng hoặc tái sắp xếp\" ⇒ tenLoai \"polyme trùng ngưng\"." },
+    { "ma": "39219041", "loai": "QUYET_DINH", "ghiChu": "tax.39219041 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"] (vòng 5/7)." },
+    { "ma": "39219042", "loai": "QUYET_DINH", "ghiChu": "tax.39219042 \"Dạng màng (SEN)\" ⇒ tenLoai \"màng\"." },
+    { "ma": "39219043", "loai": "QUYET_DINH", "ghiChu": "tax.39219043 \"Dạng dải có ép vật liệu dệt\" (EN \"Textile laminated strip\") ⇒ tenLoai \"dải có ép vật liệu dệt\" (một chuỗi: dạng + vế GIỚI HẠN \"có ép vật liệu dệt\"). KHÔNG tách thành hai điều kiện tenLoai: đường đi đã có tiêu đề 3921904 (tenLoai \"polyme trùng ngưng\") nên ba điều kiện cùng khoá trên một đường đi mà máy chỉ ghép được giá trị hai vế ⇒ dòng không tới được. KHÔNG dùng chatLieu \"vải dệt\": mẫu vật liệu đọc \"vải|dệt|textile|fabric\" không neo được vào vế \"có ép vật liệu dệt\" (máy báo cong5-ve-gioi-han-bi-bo) — hàng là dải NHỰA ép vật liệu dệt." },
+    { "ma": "39219050", "loai": "QUYET_DINH", "ghiChu": "tax.39219050 \"Từ xenlulo tái sinh\" ⇒ tenLoai \"xenlulo tái sinh\"." },
+    { "ma": "39219060", "loai": "QUYET_DINH", "ghiChu": "tax.39219060 \"Từ xenlulo khác hoặc các dẫn xuất hóa học của nó\" ⇒ tenLoai [\"xenlulo khác\",\"dẫn xuất hóa học của nó\"] (mảng = hoặc). phanConLai: false — chữ \"khác\" sửa \"xenlulo\" (xenlulo khác = khác xenlulo tái sinh ở 39219050), KHÔNG phải phần còn lại của danh sách anh em; ghi rõ để tắt cảnh báo nghi-phan-con-lai." },
+    { "ma": "39219070", "loai": "QUYET_DINH", "ghiChu": "tax.39219070 \"Từ các polyme trùng hợp\" ⇒ tenLoai \"polyme trùng hợp\"." },
+    { "ma": "39219049", "loai": "QUYET_DINH", "ghiChu": "tax.39219049 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." },
+    { "ma": "39219090", "loai": "QUYET_DINH", "ghiChu": "tax.39219090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "401390",
+  "phien": "mm:minimax-m3:20261105T1705#soan-401390",
+  "dong8": {
+    "40139011": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40139019": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40139020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe môtô"
+        }
+      ]
+    },
+    "40139031": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40139039": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40139040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phương tiện bay"
+        }
+      ]
+    },
+    "40139091": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40139099": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4013901": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.29 hoặc 84.30"
+        }
+      ]
+    },
+    "4013903": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các xe khác thuộc Chương 87"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "4013901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4013901 \"Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho \"máy thuộc nhóm 84.29 hoặc 84.30\" (có mã HS nên máy đọc HOẶC; mẫu 40119020)."
+    },
+    {
+      "ma": "4013903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4013903 \"Loại dùng cho các xe khác thuộc Chương 87\" ⇒ dungCho \"các xe khác thuộc Chương 87\" + phanConLai: true (chữ \"các xe khác\" = phần còn lại của các xe Chương 87, phủ định các anh em .1, .20, .40, .9 đứng trước; mẫu 4012207)."
+    },
+    {
+      "ma": "40139011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40139011 \"Dùng cho loại lốp có chiều rộng không quá 450 mm\" ⇒ chieuRong <= 450 mm; .19 \"Dùng cho loại lốp có chiều rộng trên 450 mm\" ⇒ chieuRong > 450 mm. Tương tự cho .31/.39 (dưới tiêu đề 4013903) và .91/.99 (dưới tiêu đề 4013909 \"Loại khác\", trần — không ghi điều kiện)."
+    },
+    {
+      "ma": "40139020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40139020 \"Loại dùng cho xe môtô\" ⇒ dungCho \"xe môtô\"; tax.40139040 \"Loại sử dụng cho phương tiện bay\" ⇒ dungCho \"phương tiện bay\"."
+    },
+    {
+      "ma": "40139011",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    },
+    {
+      "ma": "40139019",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    },
+    {
+      "ma": "40139031",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    },
+    {
+      "ma": "40139039",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    },
+    {
+      "ma": "40139091",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    },
+    {
+      "ma": "40139099",
+      "loai": "BO_VE",
+      "ve": "Dùng cho loại lốp",
+      "lyDo": "Vế \"Dùng cho loại lốp\" là đích CHUNG của mọi dòng 8 số dưới tiêu đề này (vòng ruột đều dùng cho loại lốp), không phân biệt dòng nào: điều kiện phân biệt là đích phương tiện nêu ở tiêu đề và biên chiều rộng ở dòng con. Ghi dungCho \"loại lốp\" ở dòng con sẽ làm cổng 1 không phủ kín (vector mang giá trị của tiêu đề không rơi vào dòng con nào), nên miễn vế này — bỏ vế không làm đổi mã 8 số."
+    }
+  ]
+}

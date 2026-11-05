@@ -1,0 +1,88 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "284290",
+  "nhom": "2842",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1543#soan-284290",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "28429010",
+      "nguon": "tax.28429010",
+      "trich": "28429010 - - Natri arsenit ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Natri arsenit"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "28429020",
+      "nguon": "tax.28429020",
+      "trich": "28429020 - - Muối của đồng hoặc crom",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Muối"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đồng",
+            "crom"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "28429030",
+      "nguon": "tax.28429030",
+      "trich": "28429030 - - Fulminat, xyanat và thioxyanat khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Fulminat",
+            "xyanat",
+            "thioxyanat"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "28429090",
+      "nguon": "tax.28429090",
+      "trich": "28429090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "28429030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.28429030 \"Fulminat, xyanat và thioxyanat khác\" — phần còn lại CÓ TÊN (chữ \"khác\" cuối dòng, phủ định anh em .10/.20) ⇒ phanConLai: true + điều kiện tên"
+    },
+    {
+      "ma": "28429090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.28429090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

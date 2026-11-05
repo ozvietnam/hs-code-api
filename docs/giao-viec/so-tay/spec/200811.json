@@ -1,0 +1,34 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "200811",
+  "phien": "zcode-sub:glm-5.3:20261105T1548#soan-200811",
+  "dong8": {
+    "20081110": {
+      "dieuKienSo": [
+        { "fact": "daRang", "op": "CO" }
+      ]
+    },
+    "20081120": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bơ lạc" }
+      ]
+    }
+  },
+  "chongLanTruc": [
+    {
+      "nhanh": ["20081110", "20081120"],
+      "truc": { "20081110": "DAC_DIEM", "20081120": "TEN_LOAI" },
+      "cauHoiPhanBiet": "Lạc đang phân loại là bơ lạc (20081120) hay là lạc đã rang, không phải bơ lạc (20081110)?",
+      "trich": { "20081110": "Đã rang", "20081120": "Bơ lạc" },
+      "viDuHang": [
+        { "cap": ["20081110", "20081120"], "hang": "Bơ lạc đậu phộng đã rang, đóng hộp 200 g" }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    { "ma": "20081190", "loai": "QUYET_DINH", "ghiChu": "tax.20081190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
+    { "ma": "20081120", "loai": "QUYET_DINH", "ghiChu": "tax.20081120 \"Bơ lạc\" chỉ là tên hàng ⇒ tenLoai TEN_LOAI; cảnh báo so-chu-tu-do là thông tin (máy: ưu tiên khoá liệt kê/số/có-không khi chữ cho phép — chữ không cho)" },
+    { "ma": "200811", "loai": "CHONG_LAN", "ghiChu": "cong2-chong-lan-truc-da-khai — cặp 20081110 \"Đã rang\" (DAC_DIEM daRang) ↔ 20081120 \"Bơ lạc\" (TEN_LOAI): bơ lạc đã rang thoả cả hai, đã khai chongLanTruc + viDuHang, giữ cho người soát" }
+  ]
+}

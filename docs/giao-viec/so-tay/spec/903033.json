@@ -1,0 +1,121 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "903033",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-903033",
+  "dong8": {
+    "90303310": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    },
+    "90303320": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Dụng cụ",
+                  "thiết bị"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "đo trở kháng"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "phóng tĩnh điện"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "thiết bị điều khiển tĩnh điện",
+                  "thiết bị tĩnh điện nối đất/cố định"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "90303330": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ampe kế",
+            "vôn kế"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ]
+    },
+    "90303340": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dụng cụ đo điện trở"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "90303310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90303310: đo kiểm tra của tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp ⇒ dungCho [tấm mạch in, tấm dây in, mạch in đã lắp ráp]"
+    },
+    {
+      "ma": "90303320",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90303320: Dụng cụ thiết bị đo trở kháng cảnh báo phóng tĩnh điện; dụng cụ kiểm tra thiết bị tĩnh điện ⇒ HOAC"
+    },
+    {
+      "ma": "90303320",
+      "loai": "BO_VE",
+      "ve": "được thiết kế",
+      "lyDo": "vế mô tả thiết kế cảnh báo của thiết bị, đã phản ánh qua congDung phóng tĩnh điện"
+    },
+    {
+      "ma": "90303320",
+      "loai": "BO_VE",
+      "ve": "có thể làm hỏng mạch điện tử",
+      "lyDo": "mệnh đề quan hệ bổ nghĩa cho môi trường phóng tĩnh điện, đã phản ánh qua congDung phóng tĩnh điện"
+    },
+    {
+      "ma": "90303330",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90303330: \"Ampe kế và vôn kế dùng cho xe có động cơ\" ⇒ tenLoai [Ampe kế, vôn kế], dungCho xe có động cơ"
+    },
+    {
+      "ma": "90303340",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90303340: \"Dụng cụ đo điện trở khác\" ⇒ tenLoai Dụng cụ đo điện trở, phanConLai true"
+    }
+  ]
+}

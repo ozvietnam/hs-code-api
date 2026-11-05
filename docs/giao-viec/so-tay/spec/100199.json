@@ -1,0 +1,76 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "100199",
+  "phien": "mm:minimax-m3:20261105T1530#soan-100199",
+  "dong8": {
+    "10019911": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Meslin"
+        }
+      ]
+    },
+    "10019912": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hạt lúa mì đã bỏ lớp vỏ ngoài cùng"
+        }
+      ]
+    },
+    "10019991": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Meslin"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1001991": {
+      "dieuKienSo": [
+        {
+          "fact": "thichHopDungChoNguoi",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "1001991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1001991 \"Thích hợp sử dụng cho người\" ⇒ thichHopDungChoNguoi CO (cách đọc CÓ của khoá đọc đúng chữ \"Thích hợp sử dụng cho người\"). Điều kiện của tiêu đề khai ở dieuKienNut, không chép xuống dòng con."
+    },
+    {
+      "ma": "10019911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10019911 \"Meslin\" ⇒ tenLoai \"Meslin\" (chuỗi con nguyên văn; \"(SEN)\" là dấu hiệu có chú giải SEN, không thuộc tên hàng). Dòng con của tiêu đề 1001991 nên không chép lại điều kiện của tiêu đề."
+    },
+    {
+      "ma": "10019912",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10019912 \"Hạt lúa mì đã bỏ lớp vỏ ngoài cùng\" ⇒ tenLoai \"Hạt lúa mì đã bỏ lớp vỏ ngoài cùng\" (chuỗi con nguyên văn). Dòng con của tiêu đề 1001991 nên không chép lại điều kiện của tiêu đề."
+    },
+    {
+      "ma": "10019919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10019919 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    },
+    {
+      "ma": "10019991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10019991 \"Meslin\" ⇒ tenLoai \"Meslin\" (chuỗi con nguyên văn). Dòng con của tiêu đề 1001999 \"Loại khác\" trần nên không có điều kiện riêng ở tiêu đề."
+    },
+    {
+      "ma": "10019999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10019999 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    }
+  ]
+}

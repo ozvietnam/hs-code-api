@@ -1,0 +1,119 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841810",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841810",
+  "dong8": {
+    "84181031": {
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        },
+        {
+          "fact": "dungTich",
+          "op": "<=",
+          "value": 230,
+          "donVi": "lít"
+        }
+      ]
+    },
+    "84181032": {
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        },
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 230,
+          "donVi": "lít"
+        }
+      ],
+      "phanConLai": [
+        "84181031"
+      ]
+    },
+    "84181040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "y tế",
+            "phẫu thuật",
+            "phòng thí nghiệm"
+          ]
+        }
+      ]
+    },
+    "84181091": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Quầy hàng",
+            "tủ bày hàng"
+          ]
+        },
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 200,
+          "donVi": "lít"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8418103": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cửa mở riêng biệt"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8418103",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8418103: \"Chỉ có các cửa mở riêng biệt\" ⇒ tenLoai \"cửa mở riêng biệt\""
+    },
+    {
+      "ma": "84181031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84181031: \"Loại gia dụng, có dung tích không quá 230 lít\" ⇒ phamViSuDung GIA_DINH + dungTich <= 230 lít"
+    },
+    {
+      "ma": "84181032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84181032: \"Loại gia dụng khác, có dung tích trên 230 lít\" ⇒ phamViSuDung GIA_DINH + dungTich > 230 lít, phanConLai .31"
+    },
+    {
+      "ma": "84181040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84181040: \"Loại khác, phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm\" ⇒ dungCho [y tế, phẫu thuật, phòng thí nghiệm]"
+    },
+    {
+      "ma": "84181091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84181091: \"Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít\" ⇒ tenLoai TUONG_TU [Quầy hàng, tủ bày hàng] + dungTich > 200 lít; vế có lắp thiết bị làm lạnh là bản chất của 841810"
+    },
+    {
+      "ma": "84181091",
+      "loai": "BO_VE",
+      "ve": "có lắp thiết bị làm lạnh",
+      "lyDo": "Cả phân nhóm 8418.10 đều là thiết bị làm lạnh kết hợp, đặc tính đã có ở cấp nhóm/phân nhóm"
+    }
+  ]
+}

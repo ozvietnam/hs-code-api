@@ -1,0 +1,121 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "340111",
+  "phien": "mm:minimax-m3:20261105T1545#soan-340111",
+  "dong8": {
+    "34011140": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xà phòng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "đã tẩm thuốc"
+        }
+      ]
+    },
+    "34011150": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xà phòng"
+        }
+      ],
+      "phanConLai": true
+    },
+    "34011161": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sản phẩm không dệt"
+        },
+        {
+          "fact": "dongGoiBanLe",
+          "op": "CO",
+          "value": true
+        }
+      ]
+    },
+    "34011170": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "giấy"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xà phòng",
+            "chất tẩy"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "3401116": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "nỉ",
+            "sản phẩm không dệt"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xà phòng",
+            "chất tẩy"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "34011140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34011140 \"Xà phòng đã tẩm thuốc kể cả xà phòng sát khuẩn\" (EN \"Medicated soap including disinfectant soap\") — chữ biểu chỉ có danh từ đầu, không có vế giới hạn nào. Tên hàng là \"Xà phòng\" (CÙNG khoá tenLoai với anh em .50) và đặc điểm phân biệt là \"đã tẩm thuốc\" ⇒ congDung \"đã tẩm thuốc\" (chuỗi con nguyên văn; không có khoá tu-vung nào cho \"đã tẩm thuốc\"/\"sát khuẩn\" nên dùng khoá chữ tự do thay vì đặt tên khoá mới). Vế \"kể cả xà phòng sát khuẩn\" là vế KỂ CẢ (PHU, quy trình 3.8) ⇒ không thành điều kiện riêng. Ghi chú về cách chia tên: nếu để tenLoai .40 = \"Xà phòng đã tẩm thuốc\" thì tenLoai .50 = \"Xà phòng\" là chuỗi con của nó, máy áp luật \"tên cụ thể hơn thắng\" (#600) ⇒ dòng .50 không còn vector nào tới được (cong2-dong-khong-toi-duoc). Không có khoá tu-vung nào cho \"đã tẩm thuốc\" nên không thể tách bằng điều kiện riêng có kiểu."
+    },
+    {
+      "ma": "34011150",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34011150 \"Xà phòng khác kể cả xà phòng tắm\" (EN \"Other soap including bath soap\"): \"khác\" = phần còn lại CÓ TÊN (xà phòng khác đứng sau và loại trừ anh em .40 \"Xà phòng đã tẩm thuốc\") ⇒ tenLoai \"Xà phòng\" (bỏ chữ \"khác\" khỏi tên, mẫu 850131 .70 \"Động cơ khác\" ⇒ tenLoai \"Động cơ\" + phanConLai: true) + \"phanConLai\": true. Vế \"kể cả xà phòng tắm\" là vế KỂ CẢ (PHU) ⇒ không thành điều kiện riêng."
+    },
+    {
+      "ma": "3401116",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3401116 \"Loại khác, bằng nỉ hoặc sản phẩm không dệt, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy\" (EN \"Other, of felt or nonwovens, impregnated, coated or covered with soap or detergent\"): tiêu đề có tên ⇒ khai dieuKienNut. Vật liệu gốc: nỉ hoặc sản phẩm không dệt ⇒ tenLoai [\"nỉ\",\"sản phẩm không dệt\"] (hai hàng thay thế nối \"hoặc\"; KHÔNG dùng chatLieu \"vải dệt\" — mẫu đọc của khoá đó là \"vải|dệt|textile\" nên \"không dệt\" cũng khớp, tức đảo ngược nghĩa; không có vật liệu nào trong danh sách chatLie cho \"nỉ\"/\"sản phẩm không dệt\"). Vế \"đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy\" ⇒ dungCho [\"xà phòng\",\"chất tẩy\"] (hàng hóa mà hàng đi cùng — nỉ/sản phẩm không dệt đã thấm hoặc phủ bằng xà phòng hoặc chất tẩy; không dùng daTrangPhuEpLop vì cachDoc của khoá đó không đọc được chữ \"đã được thấm tẩm, tráng hoặc phủ\"). KHÔNG ghi phanConLai — tiêu đề này là \"Loại khác, <vế>\" nên máy đã tự phủ định anh em."
+    },
+    {
+      "ma": "34011161",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34011161 \"Bằng sản phẩm không dệt được đóng gói để bán lẻ\" (EN \"Of nonwovens in packings for retail sale\"): vật liệu gốc (thu hẹp tiêu đề 3401116) ⇒ tenLoai \"sản phẩm không dệt\" (CÙNG khoá với tiêu đề cha); vế GIỚI HẠN \"được đóng gói để bán lẻ\" ⇒ dongGoiBanLe CO (cachDoc.vi đọc đúng \"đóng gói để bán lẻ\")."
+    },
+    {
+      "ma": "34011170",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34011170 \"Loại khác, bằng giấy, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy\" (EN \"Other, of paper, impregnated, coated or covered with soap or detergent\"): dòng \"Loại khác, <vế>\" ⇒ chỉ ghi điều kiện của vế. Vật liệu gốc ⇒ tenLoai \"giấy\" (CÙNG khoá với tiêu đề 3401116 và với dòng 34011920 — quy trình 3.3: anh em cùng tầng dùng CÙNG khoá; dùng chatLieu \"giấy\" ở đây và tenLoai ở 3401116/34011910 thì máy ghép vector \"chatLieu=giấy + tenLoai=nỉ\" làm hai dòng cùng thoả ⇒ cong2-chong-lan giả); vế \"đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy\" ⇒ dungCho [\"xà phòng\",\"chất tẩy\"] (CÙNG cách với tiêu đề 3401116 và với dòng 34011920). KHÔNG ghi phanConLai — dòng \"Loại khác\" vốn đã phủ định anh em."
+    },
+    {
+      "ma": "34011169",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34011169 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "34011190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34011190 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    }
+  ]
+}

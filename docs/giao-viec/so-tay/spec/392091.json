@@ -1,0 +1,68 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "392091",
+  "phien": "mm:minimax-m3:20261105T1705#soan-392091",
+  "dong8": {
+    "39209110": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Màng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "kính an toàn"
+        },
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 0.38,
+          "donVi": "mm"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 0.76,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 2,
+          "donVi": "m"
+        }
+      ]
+    },
+    "39209191": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "39209110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39209110 \"Màng dùng làm kính an toàn, độ dày trên 0,38 mm nhưng không quá 0,76 mm, và chiều rộng không quá 2 m\" ⇒ tenLoai \"Màng\" (tên hàng) + dungCho \"kính an toàn\" (phủ vế [GIỚI HẠN] \"dùng làm kính an toàn\") + doDay > 0.38 mm (\"trên\") và doDay <= 0.76 mm (\"không quá\") + chieuRong <= 2 m (\"không quá\"). Biên ghi đúng như chữ trích, đơn vị viết như chữ (\"mm\", \"m\"). tenLoai \"Màng\" tách dòng này khỏi 39209191 (\"Dạng tấm và phiến\")."
+    },
+    {
+      "ma": "39209191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39209191 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"] (cùng cách chia như 3920101, 39206210)."
+    },
+    {
+      "ma": "39209199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39209199 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

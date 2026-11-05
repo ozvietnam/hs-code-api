@@ -1,0 +1,104 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "340250",
+  "phien": "mm:minimax-m3:20261105T1545#soan-340250",
+  "dong8": {
+    "34025011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm hoạt động bề mặt"
+        }
+      ]
+    },
+    "34025012": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Chế phẩm giặt",
+            "rửa",
+            "chế phẩm làm sạch dạng anion"
+          ]
+        }
+      ]
+    },
+    "34025091": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm hoạt động bề mặt"
+        }
+      ]
+    },
+    "34025092": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Chế phẩm giặt",
+            "rửa",
+            "chế phẩm làm sạch dạng anion"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "3402501": {
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "CO",
+          "value": true
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "3402501",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3402501 \"Dạng lỏng\" (EN \"In liquid form\") — tiêu đề có tên ⇒ khai dieuKienNut; dạng ⇒ dangLong CO (cachDoc.vi đọc đúng \"dạng lỏng\"). Tiêu đề 3402509 \"Loại khác\" TRẦN ⇒ không ghi điều kiện."
+    },
+    {
+      "ma": "34025011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34025011 \"Chế phẩm hoạt động bề mặt\" (EN \"Surface-active preparations\") — chữ biểu chỉ có danh từ đầu ⇒ tenLoai \"Chế phẩm hoạt động bề mặt\". Dạng lỏng/khác lấy từ tiêu đề cha (3402501 dangLong CO; 3402509 \"Loại khác\" trần → máy tự phủ định anh em)."
+    },
+    {
+      "ma": "34025012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34025012 \"Chế phẩm giặt, rửa hoặc chế phẩm làm sạch dạng anion, kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn\" (EN \"Anionic washing preparations or cleaning preparations, including bleaching, cleansing or degreasing preparations\"): danh từ đầu là LIỆT KÊ nối \",\" và \"hoặc\" ⇒ tenLoai [\"Chế phẩm giặt\",\"rửa\",\"chế phẩm làm sạch dạng anion\"] (mảng = hoặc; tách theo đúng các danh từ đầu liên hợp mà máy in ra; KHÔNG gói một chuỗi có \",\" hay \"hoặc\" — cổng 3 chặn). Vế \"kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn\" là vế KỂ CẢ (PHU, quy trình 3.8) ⇒ không thành điều kiện riêng. Ghi chú: chữ Anh đặt \"Anionic\" trước CẢ hai vế (\"Anionic washing preparations or cleaning preparations\") còn chữ Việt chỉ ghi \"dạng anion\" ở vế cuối — không có khoá tu-vung nào cho \"dạng anion\" nên giữ đúng chữ Việt, không bịa khoá."
+    },
+    {
+      "ma": "34025091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34025091 \"Chế phẩm hoạt động bề mặt\" — giống .11 (CÙNG chữ biểu); khác .11 ở tiêu đề cha (3402509 \"Loại khác\" trần ⇒ không phải dạng lỏng)."
+    },
+    {
+      "ma": "34025092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34025092 \"Chế phẩm giặt, rửa hoặc chế phẩm làm sạch dạng anion, kể cả các chế phẩm tẩy trắng, làm sạch hoặc tẩy nhờn\" — giống .12 (CÙNG chữ biểu và CÙNG cách chia); khác .12 ở tiêu đề cha."
+    },
+    {
+      "ma": "34025019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34025019 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "34025099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34025099 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "340250",
+      "loai": "DUNG",
+      "ghiChu": "can-bang-hieu-chinh-tien-le:340250:chua-co — phân nhóm có cờ hiệu chỉnh tiền lệ (data/ho-so/lat-1.json) mà bảng data/ho-so/hieu-chinh-tien-le.json (L1-4b) chưa có mục cho PN6 này. Bản nháp đã soạn theo CHỮ BIỂU nhưng KHÔNG duyệt/áp được cho tới khi Claude soạn mục bảng L1-4b — việc của Claude, thợ không tự xử lý."
+    }
+  ]
+}

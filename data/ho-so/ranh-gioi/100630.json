@@ -1,0 +1,140 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "100630",
+  "nhom": "1006",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1530#soan-100630",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "10063030",
+      "nguon": "tax.10063030",
+      "trich": "10063030 - - Gạo nếp (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gạo nếp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "10063040",
+      "nguon": "tax.10063040",
+      "trich": "10063040 - - Gạo Hom Mali (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gạo Hom Mali"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "10063050",
+      "nguon": "tax.10063050",
+      "trich": "10063050 - - Gạo Basmati (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gạo Basmati"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "10063060",
+      "nguon": "tax.10063060",
+      "trich": "10063060 - - Gạo Malys (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gạo Malys"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "10063070",
+      "nguon": "tax.10063070",
+      "trich": "10063070 - - Gạo thơm khác (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gạo thơm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "10063091",
+      "nguon": "tax.10063091",
+      "trich": "10063091 - - - Gạo đồ (1)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gạo đồ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "10063099",
+      "nguon": "tax.10063099",
+      "trich": "10063099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "10063030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10063030 \"Gạo nếp\" ⇒ tenLoai \"Gạo nếp\" (chuỗi con nguyên văn; \"(SEN)\" là dấu hiệu có chú giải SEN, không thuộc tên hàng). So chữ tự do — không tất định."
+    },
+    {
+      "ma": "10063040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10063040 \"Gạo Hom Mali\" ⇒ tenLoai \"Gạo Hom Mali\" (chuỗi con nguyên văn). Cùng khoá tenLoai với các dòng anh em cùng tầng."
+    },
+    {
+      "ma": "10063050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10063050 \"Gạo Basmati\" ⇒ tenLoai \"Gạo Basmati\" (chuỗi con nguyên văn). Cùng khoá tenLoai với các dòng anh em cùng tầng."
+    },
+    {
+      "ma": "10063060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10063060 \"Gạo Malys\" ⇒ tenLoai \"Gạo Malys\" (chuỗi con nguyên văn). Cùng khoá tenLoai với các dòng anh em cùng tầng."
+    },
+    {
+      "ma": "10063070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10063070 \"Gạo thơm khác\" ⇒ tenLoai \"Gạo thơm\" + phanConLai: true — phần còn lại CÓ TÊN: chữ \"khác\" trỏ về anh em đứng trước (Gạo nếp, Gạo Hom Mali, Gạo Basmati, Gạo Malys), nên phủ định điều kiện của các anh em đó. Tên lấy đúng chữ con nguyên văn, bỏ chữ \"khác\" vì phần còn lại do phanConLai phủ (theo mẫu 850131 \"Động cơ khác\" ⇒ tenLoai \"Động cơ\" + phanConLai)."
+    },
+    {
+      "ma": "10063091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10063091 \"Gạo đồ (1)\" ⇒ tenLoai \"Gạo đồ\" (chuỗi con nguyên văn; \"(1)\" là dấu hiệu chú thích chân bảng biểu thuế, không thuộc tên hàng — chữ Anh cùng dòng là \"Parboiled rice\")."
+    },
+    {
+      "ma": "10063099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.10063099 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    }
+  ]
+}

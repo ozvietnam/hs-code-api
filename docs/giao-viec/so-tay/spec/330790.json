@@ -1,0 +1,98 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "330790",
+  "phien": "mm:minimax-m3:20261105T1545#soan-330790",
+  "dong8": {
+    "33079010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm vệ sinh động vật"
+        }
+      ]
+    },
+    "33079030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Khăn",
+            "giấy"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "nước hoa",
+            "mỹ phẩm"
+          ]
+        }
+      ]
+    },
+    "33079040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Nước hoa",
+            "mỹ phẩm"
+          ]
+        }
+      ],
+      "phanConLai": true
+    },
+    "33079050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dung dịch"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "kính áp tròng",
+            "mắt nhân tạo"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "33079010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33079010 \"Chế phẩm vệ sinh động vật\" (EN \"Animal toilet preparations\") — chữ biểu chỉ có danh từ đầu, không có vế giới hạn nào ⇒ tenLoai \"Chế phẩm vệ sinh động vật\" (nguyên văn)."
+    },
+    {
+      "ma": "33079030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33079030 \"Khăn và giấy, đã được thấm hoặc phủ nước hoa hoặc mỹ phẩm\" (EN \"Papers and tissues, impregnated or coated with perfume or cosmetics\"): hai danh từ đầu liên hợp nối \"và\" (\"Khăn\" + \"giấy\") ⇒ tenLoai [\"Khăn\",\"giấy\"] (mảng = hoặc; chữ Anh nối hai danh từ đầu bằng \"and\", vế trước số nhiều \"Papers\" ⇒ không gói một chuỗi có \"và\"). Vế GIỚI HẠN \"đã được thấm hoặc phủ nước hoa hoặc mỹ phẩm\" là định ngữ CHUNG cho cả khăn lẫn giấy ⇒ một điều kiện RIÊNG: dungCho [\"nước hoa\",\"mỹ phẩm\"] (hàng hóa mà hàng \"đi cùng\" — giấy đã thấm/phủ bằng nước hoa hoặc mỹ phẩm; KHÔNG gói \"hoặc\" trong một chuỗi, KHÔNG dùng tenLoai vì \"nước hoa\"/\"mỹ phẩm\" không phải tên của sản phẩm này)."
+    },
+    {
+      "ma": "33079040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33079040 \"Nước hoa hoặc mỹ phẩm khác, kể cả chế phẩm làm rụng lông\" (EN \"Other perfumery or cosmetics, including depilatories\"): danh từ đầu nối \"hoặc\" ⇒ tenLoai [\"Nước hoa\",\"mỹ phẩm\"] (mảng = hoặc; KHÔNG gói \"hoặc\" trong một chuỗi). Vế \"kể cả chế phẩm làm rụng lông\" là vế KỂ CẢ (PHU, quy trình 3.8) ⇒ KHÔNG thành điều kiện riêng (và không có khoá tu-vung nào cho \"chế phẩm làm rụng lông\"). Chữ \"khác\" ở đây = \"phần còn lại CÓ TÊN\" (nước hoa hoặc mỹ phẩm ngoài các dòng .10/.30/.50 đứng trước) ⇒ \"phanConLai\": true."
+    },
+    {
+      "ma": "33079050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33079050 \"Dung dịch dùng cho kính áp tròng hoặc mắt nhân tạo (SEN)\" (EN \"Contact lens or artificial eye solutions\"): tên hàng ⇒ tenLoai \"Dung dịch\"; vế GIỚI HẠN \"dùng cho kính áp tròng hoặc mắt nhân tạo\" ⇒ dungCho [\"kính áp tròng\",\"mắt nhân tạo\"] (dùng cho; lúc chạy dungCho đọc chữ sau \"dùng cho\" — đúng chữ biểu; KHÔNG gói \"hoặc\" trong một chuỗi)."
+    },
+    {
+      "ma": "33079090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33079090 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định mọi anh em)."
+    },
+    {
+      "ma": "330790",
+      "loai": "DUNG",
+      "ghiChu": "can-bang-hieu-chinh-tien-le:330790:chua-co — phân nhóm có cờ hiệu chỉnh tiền lệ (data/ho-so/lat-1.json) mà bảng data/ho-so/hieu-chinh-tien-le.json (L1-4b) chưa có mục cho PN6 này. Bản nháp đã soạn theo CHỮ BIỂU (tax.33079010/.30/.40/.50) nhưng KHÔNG duyệt/áp được cho tới khi Claude soạn mục bảng L1-4b — việc của Claude, thợ không tự xử lý."
+    }
+  ]
+}

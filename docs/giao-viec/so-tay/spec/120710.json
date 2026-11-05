@@ -1,0 +1,42 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "120710",
+  "phien": "mm:minimax-m3:20261105T1530#soan-120710",
+  "dong8": {
+    "12071010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hạt cọ phù hợp để gieo/trồng"
+        }
+      ]
+    },
+    "12071030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhân hạt cọ"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "12071010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12071010 \"Hạt cọ phù hợp để gieo/trồng\" ⇒ tenLoai \"Hạt cọ phù hợp để gieo/trồng\" — cả dòng là tên loại hàng (chữ Anh cùng dòng là \"Palm nuts suitable for sowing/planting\"), vế giới hạn \"phù hợp để gieo/trồng\" nằm trong chính tên nên được phủ. KHÔNG tách tenLoai \"Hạt cọ\" + congDung \"gieo/trồng\": tên \"Hạt cọ\" là chuỗi con của tên anh em 12071030 \"Nhân hạt cọ\" nên vector \"Nhân hạt cọ\" + \"gieo/trồng\" thoả cả hai dòng ⇒ cổng 2 báo chồng lấn (cong2-chong-lan:…:khong-tat-dinh). LƯU Ý CHO NGƯỜI SOÁT: chữ \"phù hợp\" (hạt cọ phải được chứng nhận chất lượng phù hợp để gieo/trồng — theo sen.12071010) không có khoá riêng trong tu-vung@2 nên không ghi riêng được."
+    },
+    {
+      "ma": "12071030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12071030 \"Nhân hạt cọ\" ⇒ tenLoai \"Nhân hạt cọ\" (chuỗi con nguyên văn). Cùng khoá tenLoai với dòng 12071010."
+    },
+    {
+      "ma": "12071090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12071090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    }
+  ]
+}

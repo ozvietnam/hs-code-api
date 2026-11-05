@@ -1,0 +1,59 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "401490",
+  "phien": "mm:minimax-m3:20261105T1705#soan-401490",
+  "dong8": {
+    "40149010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Núm vú"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bình cho trẻ em ăn"
+        }
+      ]
+    },
+    "40149040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nút đậy"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dược phẩm"
+        }
+      ]
+    },
+    "40149050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bao ngón tay"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "40149010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40149010 \"Núm vú của bình cho trẻ em ăn và các loại tương tự\" ⇒ tenLoai TUONG_TU [\"Núm vú\"] (vế MỞ \"và các loại tương tự\" — hàng nêu tên là \"Núm vú\", không chứa chữ \"tương tự\") + dungCho \"bình cho trẻ em ăn\" (đích gồm cả \"của bình\" và \"cho trẻ em ăn\"). Mẫu 761699 .40: tenLoai TUONG_TU + dungCho riêng."
+    },
+    {
+      "ma": "40149040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40149040 \"Nút đậy dùng cho dược phẩm\" ⇒ tenLoai \"Nút đậy\" + dungCho \"dược phẩm\"; tax.40149050 \"Bao ngón tay\" ⇒ tenLoai \"Bao ngón tay\". Dòng .90 \"Loại khác\" trần ⇒ không điều kiện."
+    }
+  ]
+}

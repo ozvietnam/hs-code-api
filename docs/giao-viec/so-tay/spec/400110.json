@@ -1,0 +1,51 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "400110",
+  "phien": "mm:minimax-m3:20261105T1700#soan-400110",
+  "dong8": {
+    "40011011": { "dieuKienSo": [] },
+    "40011019": { "dieuKienSo": [] },
+    "40011021": { "dieuKienSo": [] },
+    "40011029": { "dieuKienSo": [] }
+  },
+  "dieuKienNut": {
+    "4001101": { "dieuKienSo": [] },
+    "4001102": { "dieuKienSo": [] }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "4001101",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongAmoniacTheTich",
+      "ghiChu": "tieuDe.4001101 \"Chứa trên 0,5% hàm lượng amoniac tính theo thể tích\" — tu-vung@2 không có khoá hàm lượng theo % cho vật liệu này: các khoá % sẵn có (hamLuongCarbon, hamLuongNiken, hamLuongCrom) đều gắn với một vật liệu cụ thể khác; tiLe là tỉ số tử/mẫu và bộ đọc không đọc được câu này (đã thử: docGiaTri('tiLe', …) = CHUA_BIET). Cần khoá mới cho hàm lượng amoniac tính theo thể tích (%)."
+    },
+    {
+      "ma": "4001102",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongAmoniacTheTich",
+      "ghiChu": "tieuDe.4001102 \"Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích\" — cùng thiếu khoá như 4001101 (đề xuất thêm một khoá cho \"hàm lượng amoniac tính theo thể tích\", chung cho cả trên/không quá)."
+    },
+    {
+      "ma": "40011011",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "phuongPhapCheTao",
+      "ghiChu": "tax.40011011 \"Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)\" — vế GIỚI HẠN \"bằng phương pháp ly tâm\" không diễn đạt được: phuongPhapCheTao có các giá trị DUC/REN/CAN_NONG/CAN_NGUOI/KEO/DAP/HAN/EP_PHUN/THOI/DOT_DAP_KEO_GIAN nhưng KHÔNG có giá trị cho ly tâm ⇒ cần thêm giá trị (LY_TAM) cho phương pháp ly tâm. Vế \"cô đặc\" (mủ cao su cô đặc) cũng chưa có khoá (chưa có khoá nồng độ/% của mủ); chưa ghi điều kiện để không bịa."
+    },
+    {
+      "ma": "40011021",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "phuongPhapCheTao",
+      "ghiChu": "tax.40011021 \"Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)\" — cùng thiếu khoá như 40011011 (phương pháp ly tâm + \"cô đặc\")."
+    },
+    {
+      "ma": "40011019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40011019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em). DÙNG PHẢI DỪNG cả nhóm vì tiêu đề 4001101/4001102 chưa số hoá được."
+    },
+    {
+      "ma": "40011029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40011029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

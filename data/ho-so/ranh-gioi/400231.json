@@ -1,0 +1,60 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "400231",
+  "nhom": "4002",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1707#soan-400231",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "40023110",
+      "nguon": "tax.40023110",
+      "trich": "40023110 - - - Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dạng tấm",
+            "tờ",
+            "dải"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "lưu hóa",
+          "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "pha trộn",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40023190",
+      "nguon": "tax.40023190",
+      "trich": "40023190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "40023110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40023110 \"Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn\" (EN \"Unvulcanised, uncompounded plates, sheets or strip\") => tenLoai [\"Dạng tấm\", \"tờ\", \"dải\"] cho danh từ đầu \"Dạng tấm, tờ hoặc dải\" (tách danh sách \"tấm, tờ hoặc dải\" thành mảng theo luật liệt kê vòng 5), cộng tenLoai chieu PHAI_KHONG \"lưu hóa\" và \"pha trộn\" phủ hai vế GIỚI_HẠN. Chữ biểu không có khoá tu-vung cho \"lưu hóa\" lẫn \"pha trộn\" nên mới ghi bằng chữ tự do; so chữ tự do, không tất định. Dòng 40023190 \"Loại khác\" trần => không ghi điều kiện."
+    }
+  ]
+}

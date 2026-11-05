@@ -293,6 +293,48 @@ hãy mở GitHub Issue tại `github.com/ozvietnam/hs-code-api/issues`. Xem
 
 ---
 
+## 10. Quy luật từ các vòng test khách thật (10–11/2026)
+
+Những quy luật dưới đây đóng gói từ các ca khách thật; mỗi điều đều có ca cụ thể
+chứng minh. Agent trả lời khách xong **phải tự chạy tiếp** các việc đóng gói này,
+không để lại ở dạng ghi chú hội thoại.
+
+### Q1 — Tiền lệ: chạy đủ 3 đường, tra ngược bằng mã 8 số
+Mọi câu "có tiền lệ/TB nào không" phải đi đủ: (1) lời khách nguyên văn; (2) tên
+gốc EN + theo cấu tạo; (3) tra ngược theo mã. Đường (3) hiện tại **luôn dùng mã
+8 số** — tiền tố 4/6 số bị `normalizeHs` pad thành mã không tồn tại (#538).
+Chưa có tiền lệ trong kho ≠ chưa có tiền lệ trên đời: đối chiếu thêm phán quyết
+quốc tế (CROSS/WCO) trước khi kết luận "không có".
+
+### Q2 — Từ vựng trượt: trả lời khách xong là mở 1 trong 2 việc
+Khi một câu khách thật trả về (a) 0 kết quả đúng hoặc (b) nhiễu nguy hiểm (vd
+"ly thủy tinh" → 8549 rác điện tử, "tải đồng trục" → ô tô tải đông lạnh), sau khi
+trả lời khách phải: thêm mục từ điển cấp nhóm theo mục 5 tài liệu mở rộng từ điển
+(vd `tai-gia-rf`, `ra-do` 04/11/2026), hoặc nếu lỗi nằm ở xếp hạng tìm kiếm thì
+file issue kèm bảng repro. Không được kết thúc lượt chỉ bằng câu trả lời.
+
+### Q3 — Mã đỏ ≠ có nghĩa vụ, mã sạch ≠ hết trách nhiệm
+Dòng chính sách theo mã phải đọc kèm `dieu_kien`: 84433940 (máy in phun) chỉ
+phải xin GP NK khi đa màu >60 tờ/phút A4 — máy đánh dấu đơn sắc công nghiệp
+không dính. Ngược lại nghĩa vụ có thể gắn BẢN CHẤT hàng theo Luật liệt kê chứ
+không đỏ theo mã (đọc `canhBao` của response). Khung KTCL đổi căn bản từ
+01/7/2026 (NĐ 37/2026): đừng trả theo luật nhóm 1/2 cũ.
+
+### Q4 — Chế tài & hiệu lực: registry trước, nguyên văn sau
+Mọi câu "bị phạt bao nhiêu / còn hiệu lực không" → gọi `tra_hieu_luc_van_ban`
+TRƯỚC khi viết câu trả lời (NĐ 128/2020 đã bị thay bởi 169/2026 từ 01/7/2026 —
+phạt khai sai giờ theo % số thuế thiếu). Khi trích điều khoản: nguyên văn từ PDF
+ký / hợp nhất / wikisource; tóm tắt web và AI search đã bịa chuỗi sửa đổi ≥3 lần
+(luật sửa SHTT "45/2024" không tồn tại; "46/2020 sửa 99/2013" sai; NĐ 17/2023
+KHÔNG bãi NĐ 131/2013).
+
+### Q5 — Nạp danh mục rủi ro: nội suy chuỗi dẫn chiếu + ghi phủ định
+Từ 01/7/2026 các bộ ban hành danh mục rủi ro theo NĐ 37/2026; nhiều Phụ lục
+KHÔNG in mã HS mà dẫn chiếu (TT cũ của bộ + danh mục XNK 31/2022/TT-BTC). Khi
+nạp: lần theo dẫn chiếu rồi mới điền `ma_hs`; các nhóm KHÔNG thuộc danh mục phải
+ghi đích danh vào `ghi_chu` bản ghi (phủ định pháp lý — vd thủy tinh QCVN 12-4
+không thuộc rủi ro trung bình BYT) để không ai "bổ sung cho đủ" về sau.
+
 ## 🏢 Văn phòng OZ — bắt buộc đọc (ADR-0001, 30/10/2026)
 
 Repo này là **một thành viên** của văn phòng chung OZ Việt Nam. Tri thức công ty, **sổ nhân sự**, bảng việc nằm ở Gitea `ozvietnam/oz-infra-codex` (thư mục `brain/`; sổ tay: `brain/so-tay-thanh-vien.md`).
