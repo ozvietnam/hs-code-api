@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "320810",
+  "phien": "mm:minimax-m3:20261105T1547#soan-320810",
+  "dong8": {
+    "32081011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nha khoa"
+        },
+        {
+          "fact": "dungTrongNhaKhoa",
+          "op": "CO"
+        }
+      ]
+    },
+    "32081020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "vỏ tàu thủy"
+        },
+        {
+          "fact": "sonChongHaHoacChongAnMonVoTau",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "3208101": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vecni (kể cả dầu bóng)"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "3208101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3208101 \"Vecni (kể cả dầu bóng)\" (EN \"Varnishes (including lacquers):\") ⇒ tenLoai TEN_LOAI \"Vecni (kể cả dầu bóng)\" — tầng cha của .11/.19; vế \"kể cả dầu bóng\" là kể cả (không đòi phủ riêng)."
+    },
+    {
+      "ma": "32081011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32081011 \"Dùng trong nha khoa (SEN)\" (EN \"Of a kind used in dentistry\") ⇒ dungCho CONG_DUNG \"nha khoa\" + dungTrongNhaKhoa CO (mẫu đọc \"dùng trong nha khoa\"). Hai anh em .11 (dùng trong nha khoa) và .20 (dùng để sơn vỏ tàu thủy) đều là ý \"dùng cho <đích>\" nên dùng CÙNG khoá dungCho để máy so được (luật \"anh em cùng loại ý dùng cùng khoá\")."
+    },
+    {
+      "ma": "32081020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32081020 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") ⇒ dungCho CONG_DUNG \"vỏ tàu thủy\" + sonChongHaHoacChongAnMonVoTau CO."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "32081019",
+        "32081020"
+      ],
+      "lyDo": "Chữ biểu chồng lấn THẬT: .19 \"Loại khác\" (dòng trong tầng 3208101 \"Vecni (kể cả dầu bóng)\") chỉ loại trừ anh em .11 (\"Dùng trong nha khoa\"), KHÔNG loại trừ .20 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\"; một sơn chống hà dạng vecni thỏa cả hai dòng. 3208.10 không có SEN; chú giải nhóm 32.08 không nói thứ tự ⇒ không có căn cứ ưu tiên, lúc chạy hỏi người khai."
+    }
+  ]
+}
