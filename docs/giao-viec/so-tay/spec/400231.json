@@ -1,0 +1,39 @@
+{
+  "dong8": {
+    "40023110": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dạng tấm",
+            "tờ",
+            "dải"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "lưu hóa",
+          "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "pha trộn",
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "40023110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40023110 \"Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn\" (EN \"Unvulcanised, uncompounded plates, sheets or strip\") => tenLoai [\"Dạng tấm\", \"tờ\", \"dải\"] cho danh từ đầu \"Dạng tấm, tờ hoặc dải\" (tách danh sách \"tấm, tờ hoặc dải\" thành mảng theo luật liệt kê vòng 5), cộng tenLoai chieu PHAI_KHONG \"lưu hóa\" và \"pha trộn\" phủ hai vế GIỚI_HẠN. Chữ biểu không có khoá tu-vung cho \"lưu hóa\" lẫn \"pha trộn\" nên mới ghi bằng chữ tự do; so chữ tự do, không tất định. Dòng 40023190 \"Loại khác\" trần => không ghi điều kiện."
+    }
+  ],
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "400231",
+  "phien": "mm:minimax-m3:20261105T1707#soan-400231"
+}
