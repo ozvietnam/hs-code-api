@@ -292,7 +292,7 @@ if (process.env.HS_TEST_DATABASE_URL) {
   const gi = fs.readFileSync(path.join(root, '.gitignore'), 'utf8');
   check('.gitignore vẫn chặn data/private/ (dữ liệu riêng khác)', /^data\/private\/?$/m.test(gi));
   const r = spawnSync('git', ['ls-files'], { cwd: root, encoding: 'utf8' });
-  const lo = (r.stdout || '').split('\n').filter((f) => /2079/.test(f) && !/\.(m?js|md|sql)$/.test(f) && f !== 'data/rui-ro-phan-loai/qd-2079.json');
+  const lo = (r.stdout || '').split('\n').filter((f) => /(^|[^0-9])2079(?![0-9]).test(f) && !/\.(m?js|md|sql)$/.test(f) && f !== 'data/rui-ro-phan-loai/qd-2079.json');
   check('tệp dữ liệu QĐ 2079 trong git chỉ được ở data/rui-ro-phan-loai/qd-2079.json', lo.length === 0, lo.join(','));
   const N = require('../lib/nguon-loai.js');
   check('nguon-loai khai nhãn cho data/rui-ro-phan-loai/qd-2079.json', N.nhanCuaTep('data/rui-ro-phan-loai/qd-2079.json') === 'NGUYEN_VAN');
