@@ -1,0 +1,42 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "120799",
+  "phien": "mm:minimax-m3:20261105T1530#soan-120799",
+  "dong8": {
+    "12079940": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": ["Hạt illipe", "quả hạch illipe"]
+        }
+      ]
+    },
+    "12079950": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chùm quả tươi của cây cọ dầu"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "12079940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12079940 \"Hạt illipe (quả hạch illipe)\" ⇒ tenLoai [\"Hạt illipe\", \"quả hạch illipe\"] — ngoặc là tên gọi thay thế (chữ Anh cùng dòng: \"Illipe seeds (Illipe nuts)\"), tách thành mảng chuỗi con nguyên văn theo mẫu 84041011 \"Thiết bị loại bỏ muội (máy thổi muội)\" ⇒ [\"Thiết bị loại bỏ muội\", \"máy thổi muội\"]. Mảng = HOẶC, nên khai báo hàng bằng tên nào cũng khớp."
+    },
+    {
+      "ma": "12079950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12079950 \"Chùm quả tươi của cây cọ dầu\" ⇒ tenLoai \"Chùm quả tươi của cây cọ dầu\" — cả dòng là tên loại hàng (chữ Anh cùng dòng là \"Fresh fruit bunch of oil palm\"), vế giới hạn \"của cây cọ dầu\" nằm trong chính tên nên được phủ. Cùng khoá tenLoai với dòng 12079940."
+    },
+    {
+      "ma": "12079990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.12079990 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    }
+  ]
+}

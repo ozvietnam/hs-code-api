@@ -1,0 +1,86 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "110100",
+  "nhom": "1101",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1530#soan-110100",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "1101001",
+      "nguon": "tieuDe.1101001",
+      "trich": "1101001 Bột mì",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột mì"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "11010011",
+      "nguon": "tax.11010011",
+      "trich": "11010011 - - Tăng cường vi chất dinh dưỡng (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "Tăng cường vi chất dinh dưỡng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "11010019",
+      "nguon": "tax.11010019",
+      "trich": "11010019 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "11010020",
+      "nguon": "tax.11010020",
+      "trich": "11010020 - Bột meslin",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột meslin"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "1101001",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1101001 \"Bột mì\" ⇒ tenLoai \"Bột mì\" — tiêu đề có tên nên khai điều kiện ở dieuKienNut; điều kiện này phân biệt nhánh bột mì với dòng anh em cùng cấp 11010020 \"Bột meslin\". Chữ tiêu đề không có vế giới hạn nào khác."
+    },
+    {
+      "ma": "11010011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.11010011 \"Tăng cường vi chất dinh dưỡng\" ⇒ congDung \"Tăng cường vi chất dinh dưỡng\". VẾ CẦN SOÁT: đây là một THUỘC TÍNH của bột (đã bổ sung vi chất), không phải tên hàng, và tu-vung@2 không có khoá riêng cho việc bổ sung vi chất dinh dưỡng. Dùng tenLoai cho dòng này sẽ trùng khoá với tiêu đề 1101001 (\"Bột mì\") — hai giá trị khác nhau trên cùng một khoá chữ tự do ở hai tầng liên tiếp ⇒ cổng 1 báo cong1-khong-phu-kin ở nhóm 1101 (tầng này KHÔNG có con \"Loại khác\" trần nên không được miễn như 392010/640690/761699). Vì vậy dòng đi trên khoá khác với tiêu đề, theo đúng mẫu 6307906 (\"Các loại đai an toàn\" ⇒ tenLoai) / 63079061 (\"Phù hợp dùng trong công nghiệp\" ⇒ phamViSuDung). LƯU Ý CHO NGƯỜI SOÁT: xem lại có cần khoá riêng cho \"tăng cường vi chất dinh dưỡng\" hay không."
+    },
+    {
+      "ma": "11010019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.11010019 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+    },
+    {
+      "ma": "11010020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.11010020 \"Bột meslin\" ⇒ tenLoai \"Bột meslin\" (chuỗi con nguyên văn). Cùng khoá tenLoai với tiêu đề 1101001 (nhánh bột mì) để hai nhánh cùng cấp so được trên cùng trục tên."
+    }
+  ]
+}
