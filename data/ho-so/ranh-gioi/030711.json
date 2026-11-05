@@ -1,0 +1,58 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "030711",
+  "nhom": "0307",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1530#soan-030711",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "03071110",
+      "nguon": "tax.03071110",
+      "trich": "03071110 - - - Sống",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sống"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03071120",
+      "nguon": "tax.03071120",
+      "trich": "03071120 - - - Tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tươi",
+            "ướp lạnh"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "03071110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03071110 \"Sống\" ⇒ tenLoai \"Sống\" nguyên văn (không dùng phuongPhapBaoQuan TRONG [SONG]: tầng không có con \"Loại khác\", khoá liệt kê vét mọi giá trị từ vựng — vector đông lạnh/khô… không thuộc phân nhóm 030711 (chỉ sống, tươi hoặc ướp lạnh) nhưng bị coi là lỗ hổng, cùng xử lý như 640620)"
+    },
+    {
+      "ma": "03071120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03071120 \"Tươi hoặc ướp lạnh\" ⇒ tenLoai [\"Tươi\",\"ướp lạnh\"] — chữ Anh \"fresh or chilled\" là hai hàng, mảng = hoặc (LUAT-CHUNG bảng 1)"
+    }
+  ]
+}
