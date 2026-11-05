@@ -1,0 +1,109 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "340319",
+  "nhom": "3403",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1545#soan-340319",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "3403191",
+      "nguon": "tieuDe.3403191",
+      "trich": "3403191 Dạng lỏng",
+      "dieuKienSo": [
+        {
+          "fact": "dangLong",
+          "op": "CO",
+          "value": true
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "34031911",
+      "nguon": "tax.34031911",
+      "trich": "34031911 - - - - Chế phẩm dùng cho động cơ của phương tiện bay",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ của phương tiện bay"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "34031912",
+      "nguon": "tax.34031912",
+      "trich": "34031912 - - - - Chế phẩm khác chứa dầu silicon",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chế phẩm khác chứa dầu silicon"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "34031919",
+      "nguon": "tax.34031919",
+      "trich": "34031919 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "34031990",
+      "nguon": "tax.34031990",
+      "trich": "34031990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "3403191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3403191 \"Dạng lỏng\" (EN \"In liquid form\") — tiêu đề có tên ⇒ khai dieuKienNut; dạng ⇒ dangLong CO (cachDoc.vi đọc đúng \"dạng lỏng\")."
+    },
+    {
+      "ma": "34031911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34031911 \"Chế phẩm dùng cho động cơ của phương tiện bay\" (EN \"Preparations for aircraft engines\"): danh từ đầu \"Chế phẩm\" + vế GIỚI HẠN \"dùng cho động cơ của phương tiện bay\" ⇒ tenLoai \"Chế phẩm\" + dungCho \"động cơ của phương tiện bay\" (chữ \"dùng cho\" ⇒ khoá dungCho; KHÔNG dùng dungChoXeCoDongCo — khoá đó là \"dùng cho xe có động cơ (ô tô hoặc xe thuộc Chương 87)\", không phải máy bay)."
+    },
+    {
+      "ma": "34031912",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34031912 \"Chế phẩm khác chứa dầu silicon\" (EN \"Other preparations containing silicone oil\"): chữ \"khác\" = phần còn lại CÓ TÊN (loại khác với anh em .11) ⇒ \"phanConLai\": true. Vế GIỚI HẠN \"chứa dầu silicon\" không có khoá tu-vung (chatLieu không có giá trị này) nên đi trong tên hàng: tenLoai \"Chế phẩm khác chứa dầu silicon\" (chuỗi con nguyên văn; giữ chữ \"khác\" trong tên vì bỏ đi thì chuỗi còn lại không còn liên tục trong chữ biểu — khác với mẫu 850131 .70 bỏ \"khác\" ở CUỐI)."
+    },
+    {
+      "ma": "34031919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34031919 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "34031990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34031990 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "340319",
+      "loai": "DUNG",
+      "ghiChu": "can-bang-hieu-chinh-tien-le:340319:chua-co — phân nhóm có cờ hiệu chỉnh tiền lệ (data/ho-so/lat-1.json) mà bảng data/ho-so/hieu-chinh-tien-le.json (L1-4b) chưa có mục cho PN6 này. Bản nháp đã soạn theo CHỮ BIỂU nhưng KHÔNG duyệt/áp được cho tới khi Claude soạn mục bảng L1-4b — việc của Claude, thợ không tự xử lý."
+    }
+  ]
+}

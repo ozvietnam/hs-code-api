@@ -1,0 +1,90 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "370500",
+  "nhom": "3705",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1704#soan-370500",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "37050010",
+      "nguon": "tax.37050010",
+      "trich": "37050010 - Dùng cho chụp X quang",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chụp X quang"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "37050020",
+      "nguon": "tax.37050020",
+      "trich": "37050020 - Vi phim (microfilm)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vi phim"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "37050030",
+      "nguon": "tax.37050030",
+      "trich": "37050030 - Dùng để tái tạo bản in offset",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tái tạo bản in offset"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "37050090",
+      "nguon": "tax.37050090",
+      "trich": "37050090 - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "37050010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37050010 \"Dùng cho chụp X quang\" ⇒ congDung \"chụp X quang\" (mục đích sử dụng ⇒ khoá congDung; cùng trục công dụng với 37050030 để máy không báo chồng lấn giả)."
+    },
+    {
+      "ma": "37050020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37050020 \"Vi phim (microfilm)\" ⇒ tenLoai \"Vi phim\" (tên hàng); ngoặc chú thích \"(microfilm)\" không thành điều kiện."
+    },
+    {
+      "ma": "37050030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37050030 \"Dùng để tái tạo bản in offset\" ⇒ congDung \"tái tạo bản in offset\" (mục đích sử dụng ⇒ khoá congDung; cùng trục công dụng với 37050010)."
+    },
+    {
+      "ma": "37050090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37050090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "37050010+37050020",
+      "loai": "DUNG",
+      "ghiChu": "Chồng lấn theo TRỤC chưa giải được (cổng 2: cong2-chong-lan-truc). 37050010 chia theo CÔNG DỤNG (\"Dùng cho chụp X quang\"), 37050020 chia theo TÊN (\"Vi phim (microfilm)\"), 37050030 lại theo CÔNG DỤNG (\"Dùng để tái tạo bản in offset\") ⇒ cụm {37050010, 37050020, 37050030}. Cặp KHÁC trục của cụm: (37050010, 37050020) và (37050020, 37050030). Khai chongLanTruc được thì phải có hàng THẬT thoả cả hai nhánh cho TỪNG cặp (vòng 8, GĐ 01/11/2026): (37050020, 37050030) có hàng thật (phim vi phim làm khuôn in offset), nhưng (37050010, 37050020) thì KHÔNG có hàng thật — vi phim là phim ảnh thu nhỏ, X quang không thu nhỏ; chú giải nhom3705 \"Nhóm này cũng bao gồm các vi phim trên nền trong suốt (micro phim)\" tách vi phim khỏi phim X quang. Vòng 8b: cặp không có hàng thật ⇒ không khai trục, chồng lấn còn lại là của cách biểu diễn ⇒ DỪNG, báo Claude. Cũng lưu ý: biểu thuệ VN 37050010 ghi \"Dùng cho chụp X quang\" (EN: X-ray), trong khi HS 2022 dùng For use in printing — cần GĐ xem lại chữ biểu trước khi chốt. Không tự dùng chongLanVanBan (cặp khác trục ⇒ cong2-chong-lan-van-ban-truc) và không đổi khoá để né cổng (luật vòng 4)."
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "391910",
+  "nhom": "3919",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1705#soan-391910",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "39191010",
+      "nguon": "tax.39191010",
+      "trich": "39191010 - - Từ các polyme từ vinyl clorua",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "các polyme từ vinyl clorua"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39191020",
+      "nguon": "tax.39191020",
+      "trich": "39191020 - - Từ polyetylen",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyetylen"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39191091",
+      "nguon": "tax.39191091",
+      "trich": "39191091 - - - Từ các protein đã làm cứng hoặc các dẫn xuất hóa học của cao su tự nhiên",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "các protein đã làm cứng",
+            "các dẫn xuất hóa học của cao su tự nhiên"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39191092",
+      "nguon": "tax.39191092",
+      "trich": "39191092 - - - Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "các polyme trùng hợp",
+            "các polyme trùng ngưng",
+            "tái sắp xếp",
+            "từ nitrat xenlulo",
+            "các acetat xenlulo",
+            "các dẫn xuất hóa học khác của xenlulo"
+          ]
+        },
+        {
+          "fact": "daHoaDeo",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "39191099",
+      "nguon": "tax.39191099",
+      "trich": "39191099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "39191010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39191010 \"Từ các polyme từ vinyl clorua\" ⇒ tenLoai \"các polyme từ vinyl clorua\" (vật liệu; không dùng chatLieu vì chatLieu \"plastic\" không phân biệt các loại polyme với nhau)."
+    },
+    {
+      "ma": "39191020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39191020 \"Từ polyetylen\" ⇒ tenLoai \"polyetylen\"."
+    },
+    {
+      "ma": "39191091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39191091 \"Từ các protein đã làm cứng hoặc các dẫn xuất hóa học của cao su tự nhiên\" ⇒ mảng 2 giá trị con nguyên văn (\"hoặc\" = hoặc); giá trị \"các dẫn xuất hóa học của cao su tự nhiên\" phủ vế [GIỚI HẠN] \"của cao su tự nhiên\"."
+    },
+    {
+      "ma": "39191092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39191092 \"Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo\" ⇒ tenLoai tách theo dấu liệt kê của chữ biểu (\";\" + \"hoặc\" + phẩy + \"và\") + daHoaDeo CO cho vế \"đã hóa dẻo\"."
+    },
+    {
+      "ma": "39191092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ \"khác\" trong tax.39191092 nằm trong cụm \"các dẫn xuất hóa học khác của xenlulo\" (nói vật liệu), KHÔNG phải dấu hiệu phần còn lại ⇒ phanConLai: false. Phần còn lại của 3919109 là 39191099 \"Loại khác\" trần."
+    },
+    {
+      "ma": "39191099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39191099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

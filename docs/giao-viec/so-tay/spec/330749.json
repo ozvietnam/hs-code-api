@@ -1,0 +1,33 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "330749",
+  "phien": "mm:minimax-m3:20261105T1545#soan-330749",
+  "dong8": {
+    "33074910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các chế phẩm làm thơm phòng"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "33074910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33074910 \"Các chế phẩm làm thơm phòng, có hoặc không có đặc tính khử trùng\" (EN \"Room perfuming preparations, whether or not having disinfectant properties\"): tên hàng ⇒ tenLoai \"Các chế phẩm làm thơm phòng\". Vế \"có hoặc không có đặc tính khử trùng\" là câu \"có hoặc không …\" — bao HAI trường hợp (có và không có đặc tính khử trùng) nên KHÔNG phải điều kiện giới hạn, chỉ là thuộc tính kèm; cổng 5 cũng không tách vế này (mệnh đề \"có hoặc không có\" bị che, xem lib/ho-so/tach-ve.js#giaDauHieu). Dòng 33074910 vì vậy là toàn bộ nhóm \"chế phẩm làm thơm phòng\", không tách theo đặc tính khử trùng."
+    },
+    {
+      "ma": "33074990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.33074990 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    },
+    {
+      "ma": "330749",
+      "loai": "DUNG",
+      "ghiChu": "can-bang-hieu-chinh-tien-le:330749:chua-co — phân nhóm có cờ hiệu chỉnh tiền lệ (data/ho-so/lat-1.json) mà bảng data/ho-so/hieu-chinh-tien-le.json (L1-4b) chưa có mục cho PN6 này. Bản nháp đã soạn theo CHỮ BIỂU (tax.33074910) nhưng KHÔNG duyệt/áp được cho tới khi Claude soạn mục bảng L1-4b — việc của Claude, thợ không tự xử lý."
+    }
+  ]
+}

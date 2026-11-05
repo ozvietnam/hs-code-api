@@ -1,0 +1,106 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "030633",
+  "nhom": "0306",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030633",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "0306331",
+      "nguon": "tieuDe.0306331",
+      "trich": "0306331 Ghẹ xanh/ghẹ xanh Đại Tây Dương (Callinectes spp.) và cua tuyết (thuộc họ Oregoniidae)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ghẹ xanh/ghẹ xanh Đại Tây Dương (Callinectes spp.)",
+            "cua tuyết (thuộc họ Oregoniidae)"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "03063311",
+      "nguon": "tax.03063311",
+      "trich": "03063311 - - - - Sống",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03063312",
+      "nguon": "tax.03063312",
+      "trich": "03063312 - - - - Tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03063391",
+      "nguon": "tax.03063391",
+      "trich": "03063391 - - - - Sống",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03063392",
+      "nguon": "tax.03063392",
+      "trich": "03063392 - - - - Tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "0306331",
+      "loai": "DUNG",
+      "ghiChu": "tầng 0306331 chỉ có 2 con \"Sống\"/\"Tươi hoặc ướp lạnh\" — phạm vi trạng thái \"sống, tươi hoặc ướp lạnh\" nằm ở heading 0306.3 (ngoài cây PN6) nên vector trạng thái khác (đông lạnh…) không rơi vào con nào: cong1-khong-phu-kin:0306331:phuongPhapBaoQuan=DONG_LANH; không thêm được điều kiện chữ tầng không nói"
+    },
+    {
+      "ma": "0306339",
+      "loai": "DUNG",
+      "ghiChu": "tầng 0306339 (\"Loại khác\" trần) chỉ có 2 con \"Sống\"/\"Tươi hoặc ướp lạnh\" — tương tự 0306331, vector trạng thái ngoài sống/tươi/ướp lạnh không rơi vào con nào: cong1-khong-phu-kin:0306339:phuongPhapBaoQuan=DONG_LANH"
+    }
+  ]
+}

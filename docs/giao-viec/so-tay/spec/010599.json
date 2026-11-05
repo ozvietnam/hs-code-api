@@ -1,0 +1,19 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "010599",
+  "phien": "zcode-sub:glm-5.3:20261105T1529#soan-010599",
+  "dong8": {
+    "01059910": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Vịt", "ngan"] }, { "fact": "dungLamGiong", "op": "CO" } ] },
+    "01059920": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Vịt", "ngan"] } ], "phanConLai": ["01059910"] },
+    "01059930": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Ngỗng", "gà tây", "gà lôi"] }, { "fact": "dungLamGiong", "op": "CO" } ] },
+    "01059940": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Ngỗng", "gà tây", "gà lôi"] } ], "phanConLai": ["01059930"] }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "01059910", "loai": "QUYET_DINH", "ghiChu": "tax.01059910 \"Vịt, ngan để nhân giống (SEN)\" ⇒ tenLoai [\"Vịt\",\"ngan\"] (liệt kê hàng thay thế) + dungLamGiong CO (đọc CÓ gồm \"để nhân giống\"); \"(SEN)\" là ngoặc chú thích, không thành điều kiện." },
+    { "ma": "01059920", "loai": "QUYET_DINH", "ghiChu": "tax.01059920 \"Vịt, ngan loại khác\" ⇒ tenLoai [\"Vịt\",\"ngan\"] + phanConLai [\"01059910\"] — \"loại khác\" chỉ phủ định anh em cùng tên Vịt, ngan (01059910), không phủ 01059930/40 (Ngỗng, gà tây, gà lôi)." },
+    { "ma": "01059930", "loai": "QUYET_DINH", "ghiChu": "tax.01059930 \"Ngỗng, gà tây và gà lôi để nhân giống (SEN)\" ⇒ tenLoai [\"Ngỗng\",\"gà tây\",\"gà lôi\"] (liệt kê tên hàng thay thế, chữ Anh \"geese, turkeys and guinea fowls\") + dungLamGiong CO." },
+    { "ma": "01059930", "loai": "BO_VE", "ve": "để nhân giống", "lyDo": "Chữ Anh cùng dòng \"Breeding geese, turkeys and guinea fowls\" đặt \"Breeding\" TRƯỚC liên hợp nên máy đọc định ngữ Việt \"để nhân giống\" là của danh từ cuối; thực chất \"Breeding\" là định ngữ chung của cả ba danh từ (geese, turkeys, guinea fowls) — điều kiện dungLamGiong CO áp cho cả dòng là đúng chữ, không hẹp hơn." },
+    { "ma": "01059940", "loai": "QUYET_DINH", "ghiChu": "tax.01059940 \"Ngỗng, gà tây và gà lôi loại khác\" ⇒ tenLoai [\"Ngỗng\",\"gà tây\",\"gà lôi\"] + phanConLai [\"01059930\"] — \"loại khác\" chỉ phủ định anh em cùng tên Ngỗng, gà tây, gà lôi." }
+  ]
+}

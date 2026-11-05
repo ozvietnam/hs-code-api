@@ -1,0 +1,103 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "300450",
+  "nhom": "3004",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T0845#soan-300450",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "3004502",
+      "nguon": "tieuDe.3004502",
+      "trich": "3004502 Loại khác, chứa nhiều hơn một loại vitamin",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "30045010",
+      "nguon": "tax.30045010",
+      "trich": "30045010 - - Loại phù hợp cho trẻ em, dạng xirô",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30045021",
+      "nguon": "tax.30045021",
+      "trich": "30045021 - - - Dạng uống (*)",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30045029",
+      "nguon": "tax.30045029",
+      "trich": "30045029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30045091",
+      "nguon": "tax.30045091",
+      "trich": "30045091 - - - Chứa vitamin A, B hoặc C",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vitamin"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30045099",
+      "nguon": "tax.30045099",
+      "trich": "30045099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "30045010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "dangBaoCheThuoc (thêm giá trị XIRO cho chữ 'dạng xirô')",
+      "ghiChu": "tax.30045010 \"Loại phù hợp cho trẻ em, dạng xirô\" — vế \"phù hợp cho trẻ em\" đọc được bằng khoá thietKeChoTreEm, nhưng vế \"dạng xirô\" KHÔNG có khoá nào trong tu-vung@2 (dangBaoCheThuoc chưa có giá trị xirô) ⇒ để trống dieuKienSo của mục theo luật THIEU_KHOA_TU_VUNG (không tự đặt khoá, không mượn khoá gần nghĩa)."
+    },
+    {
+      "ma": "3004502",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "soLoaiThuoc (SO, đơn vị 'loại')",
+      "ghiChu": "tieuDe.3004502 \"Loại khác, chứa nhiều hơn một loại vitamin\" — vế \"chứa nhiều hơn một loại vitamin\" cần ĐẾM số loại (> 1) mà tu-vung@2 chưa có khoá số cho 'loại' (soLoi là 'số lõi dẫn', không dùng để mượn) ⇒ để trống dieuKienSo của mục theo luật THIEU_KHOA_TU_VUNG."
+    },
+    {
+      "ma": "30045091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30045091 \"Chứa vitamin A, B hoặc C\" — chữ biểu viết tắt \"A, B hoặc C\"; mỗi giá trị phải là chuỗi con ≥ 2 ký tự của câu trích nên không tách được \"B\" hay \"C\" riêng, và một chuỗi gộp có dấu phẩy/\" hoặc \" thì cổng 3 chặn (cong3-liet-ke-trong-mot-chuoi) ⇒ ghi \"vitamin\" (chất vitamin, không phân biệt A/B/C). Điều kiện RỘNG hơn chữ (bao cả vitamin D, E) — ghi ra đây để người duyệt cân nhắc."
+    },
+    {
+      "ma": "30045029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30045029 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "30045099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30045099 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "151529",
+  "phien": "mm:minimax-m3:20261105T1530#soan-151529",
+  "dong8": {
+    "15152911": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn thể rắn"
+        }
+      ]
+    },
+    "15152991": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn thể rắn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1515291": {
+      "dieuKienSo": [
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "1515291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1515291 \"1515291 Các phần phân đoạn của dầu chưa tinh chế\" ⇒ mucDoTinhCheDau DANG_THO (\"chưa tinh chế\"). KHÔNG ghi tenLoai ở tiêu đề: dòng con 15152911 đã ghi tenLoai \"Các phần phân đoạn thể rắn\", nếu tiêu đề cũng ghi \"Các phần phân đoạn\" thì vector \"Các phần phân đoạn\" không phủ được con nào (dòng 15152919 \"Loại khác\" trần không tới được). Tiêu đề 1515299 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định nhánh 1515291 cho các dòng con)."
+    },
+    {
+      "ma": "15152911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15152911 \"15152911 - - - - Các phần phân đoạn thể rắn\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" (anh em 15152991 dùng CÙNG khoá tenLoai); mức tinh chế \"chưa tinh chế\" là điều kiện của tiêu đề 1515291."
+    },
+    {
+      "ma": "15152991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15152991 \"15152991 - - - - Các phần phân đoạn thể rắn\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\"; dòng nằm dưới tiêu đề \"Loại khác\" (1515299) nên không có mức tinh chế trong chữ dòng — phân biệt với 15152911 (chưa tinh chế) do máy phủ định tiêu đề 1515291."
+    }
+  ]
+}

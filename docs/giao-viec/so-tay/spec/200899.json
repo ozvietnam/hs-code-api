@@ -1,0 +1,34 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "200899",
+  "phien": "zcode-sub:glm-5.3:20261105T1558#soan-200899",
+  "dong8": {
+    "20089910": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Quả vải" }
+      ]
+    },
+    "20089920": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Quả nhãn" }
+      ]
+    },
+    "20089930": {
+      "phanConLai": false,
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["thân cây", "rễ cây", "các phần ăn được khác của cây"] }
+      ]
+    },
+    "20089940": {
+      "dieuKienSo": [
+        { "fact": "daPhaThemDuongHoacRuou", "op": "CO" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "20089930", "loai": "QUYET_DINH", "ghiChu": "tax.20089930 \"Từ thân cây, rễ cây và các phần ăn được khác của cây…\" — chữ có \"khác\" trong \"các phần ăn được khác của cây\" nhưng là ý khẳng định nêu tên hàng, không phải phần còn lại ⇒ phanConLai: false" },
+    { "ma": "20089930", "loai": "BO_VE", "ve": "không bao gồm quả hoặc quả hạch (nuts) đã hoặc chưa pha thêm đường hoặc chất tạo ngọt khác hoặc rượu", "lyDo": "Vế loại trừ nêu hàng KHÔNG thuộc dòng (quả, quả hạch — đã có dòng riêng 20089910 Quả vải, 20089920 Quả nhãn, phần còn lại ở 20089940/20089990); điều kiện tên của chính dòng đã giới hạn hàng là thân cây, rễ cây, các phần ăn được khác của cây — không phải quả hay quả hạch — nên bỏ vế không đổi mã 8 số; tu-vung@2 không có khoá đọc \"không bao gồm quả hoặc quả hạch\"" },
+    { "ma": "20089940", "loai": "QUYET_DINH", "ghiChu": "tax.20089940 \"Loại khác, đã pha thêm đường hoặc chất tạo ngọt khác hoặc rượu\" ⇒ chỉ ghi điều kiện của vế: daPhaThemDuongHoacRuou CO (máy tự phủ định anh em)" },
+    { "ma": "20089990", "loai": "QUYET_DINH", "ghiChu": "tax.20089990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

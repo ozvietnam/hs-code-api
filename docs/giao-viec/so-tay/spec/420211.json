@@ -1,0 +1,34 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "420211",
+  "phien": "mm:minimax-m3:20261105T1705#soan-420211",
+  "dong8": {
+    "42021110": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Vali",
+            "túi",
+            "cặp"
+          ]
+        },
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 56,
+          "donVi": "cm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "42021110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.42021110 \"Vali hoặc túi, cặp có kích thước tối đa 56cm x 45cm x 25cm\" (EN \"Suit-case or brief-case with maximum dimensions of 56 cm x 45 cm x 25 cm\") ⇒ tenLoai [\"Vali\",\"túi\",\"cặp\"] (chữ Anh \"Suit-case or brief-case\"; tách \"túi, cặp\" thành hai tên vì dấu phẩy gói liệt kê trong MỘT chuỗi) + kichThuoc <= 56 cm (\"tối đa\" = <=). Cổng 3 báo cong3-bien-khong-doc-duoc: đã đối chiếu tay — chữ biểu ghi \"tối đa\" nên op là <=, đơn vị cm. LƯU Ý cho người soát: chữ biểu nêu BA chiều (56cm x 45cm x 25cm) nhưng khung điều kiện SO chỉ chứa MỘT số; đã ghi chiều lớn nhất 56 cm, hai chiều còn lại (45 cm, 25 cm) không có chỗ trong khung — lúc chạy, hàng khai kích thước nhiều chiều sẽ ra CHUA_BIET (hỏi), không chốt sai."
+    }
+  ]
+}

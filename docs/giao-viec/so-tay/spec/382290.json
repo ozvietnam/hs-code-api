@@ -1,0 +1,27 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "382290",
+  "phien": "mm:minimax-m3:20261105T1709#soan-382290",
+  "dong8": {
+    "38229010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Dải", "băng chỉ thị màu"] },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "nồi hấp khử trùng" }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "38229010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38229010 \"Dải và băng chỉ thị màu dùng cho nồi hấp khử trùng (SEN)\" ⇒ tenLoai [\"Dải\",\"băng chỉ thị màu\"] (hai danh từ đầu nối \"và\", máy bắt phải tách mảng) + dungCho \"nồi hấp khử trùng\" (vế GIỚI HẠN \"dùng cho …\"); \"(SEN)\" là ngoặc chú thích."
+    },
+    {
+      "ma": "38229010",
+      "loai": "BO_VE",
+      "ve": "dùng cho nồi hấp khử trùng",
+      "lyDo": "Chữ Anh cùng dòng (Sterilisation indicator strips and tapes) đặt định ngữ ở TRƯỚC cụm danh từ nên máy đọc nhầm định ngữ Việt là của danh từ CUỐI (bắt cong5-dinh-ngu-tach kiểu B). Thực tế định ngữ này áp cho CẢ hai danh từ đầu (Dải và băng chỉ thị màu) nên một điều kiện dungCho chung cho cả dòng là đúng; không tách thành HOAC vì nhánh Dải không ràng buộc sẽ rộng hơn chữ."
+    }
+  ]
+}

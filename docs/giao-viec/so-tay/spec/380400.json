@@ -1,0 +1,48 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "380400",
+  "phien": "mm:minimax-m3:20261105T1704#soan-380400",
+  "dong8": {
+    "38040010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dung dịch kiềm sulphit cô đặc"
+        }
+      ]
+    },
+    "38040020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chất kết dính calcium lignin sulphonates"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất gạch chịu lửa"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "38040010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38040010 \"Dung dịch kiềm sulphit cô đặc\" ⇒ tenLoai \"Dung dịch kiềm sulphit cô đặc\" (tên hàng gồm cả trạng thái cô đặc; không có khoá riêng cho \"cô đặc\")."
+    },
+    {
+      "ma": "38040020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38040020 \"Chất kết dính calcium lignin sulphonates (Ca2LS) được dùng trong sản xuất gạch chịu lửa\" ⇒ tenLoai \"Chất kết dính calcium lignin sulphonates\" (ngoặc chú thích không thành điều kiện) + dungCho \"sản xuất gạch chịu lửa\" (chữ \"được dùng trong sản xuất gạch chịu lửa\" ⇒ khoá dungCho, như các dòng 84181040/84185011 của nhà)."
+    },
+    {
+      "ma": "38040090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38040090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841470",
+  "nhom": "8414",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841470",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8414701",
+      "nguon": "tieuDe.8414701",
+      "trich": "8414701 Đã lắp bộ phận lọc",
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8414702",
+      "nguon": "tieuDe.8414702",
+      "trich": "8414702 Chưa lắp bộ phận lọc",
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84147011",
+      "nguon": "tax.84147011",
+      "trich": "84147011 - - - Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nắp chụp hút"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 120,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84147019",
+      "nguon": "tax.84147019",
+      "trich": "84147019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84147021",
+      "nguon": "tax.84147021",
+      "trich": "84147021 - - - Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nắp chụp hút"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 120,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84147029",
+      "nguon": "tax.84147029",
+      "trich": "84147029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8414701",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8414701: \"Đã lắp bộ phận lọc\" ⇒ coBoLoc CO"
+    },
+    {
+      "ma": "84147011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84147011: \"Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm\" ⇒ tenLoai \"nắp chụp hút\" + kichThuoc <= 120 cm"
+    },
+    {
+      "ma": "8414702",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8414702: \"Chưa lắp bộ phận lọc\" ⇒ coBoLoc KHONG"
+    },
+    {
+      "ma": "84147021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84147021: \"Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm\" ⇒ tenLoai \"nắp chụp hút\" + kichThuoc <= 120 cm"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "300449",
+  "nhom": "3004",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T0845#soan-300449",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "3004491",
+      "nguon": "tieuDe.3004491",
+      "trich": "3004491 Chứa morphine hoặc các dẫn xuất của nó",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "morphine"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "3004495",
+      "nguon": "tieuDe.3004495",
+      "trich": "3004495 Chứa papaverine hoặc berberine",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "papaverine",
+            "berberine"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "30044911",
+      "nguon": "tax.30044911",
+      "trich": "30044911 - - - - Dạng uống (*) hoặc tiêm",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30044919",
+      "nguon": "tax.30044919",
+      "trich": "30044919 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30044951",
+      "nguon": "tax.30044951",
+      "trich": "30044951 - - - - Dạng uống (*)",
+      "dieuKienSo": [
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30044959",
+      "nguon": "tax.30044959",
+      "trich": "30044959 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30044960",
+      "nguon": "tax.30044960",
+      "trich": "30044960 - - - Chứa theophylline, dạng uống (*)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "theophylline"
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30044970",
+      "nguon": "tax.30044970",
+      "trich": "30044970 - - - Chứa atropine sulphate",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "atropine sulphate"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30044980",
+      "nguon": "tax.30044980",
+      "trich": "30044980 - - - Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "quinine hydrochloride",
+                  "dihydroquinine chloride"
+                ]
+              },
+              {
+                "fact": "dangBaoCheThuoc",
+                "op": "TRONG",
+                "value": [
+                  "DANG_TIEM"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "quinine sulphate",
+                  "bisulphate"
+                ]
+              },
+              {
+                "fact": "dangBaoCheThuoc",
+                "op": "TRONG",
+                "value": [
+                  "DANG_UONG"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30044990",
+      "nguon": "tax.30044990",
+      "trich": "30044990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "3004491",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3004491 \"Chứa morphine hoặc các dẫn xuất của nó\" — đặt tên hoạt chất \"morphine\"; vế dẫn xuất không có khoá."
+    },
+    {
+      "ma": "30044911",
+      "loai": "DUNG",
+      "ghiChu": "tax.30044911 \"Dạng uống (*) hoặc tiêm\" (EN \"Of a kind taken orally or for injection\") — DÙNG: vế thứ hai \"hoặc tiêm\" là đường dùng DANG_TIEM, nhưng cachDoc của DANG_TIEM chỉ đọc \"dạng tiêm|dùng để tiêm|thuốc tiêm\" (chữ biểu chỉ có \"tiêm\") ⇒ cổng 3 chặn giá trị DANG_TIEM (cong3-muc … dieu-kien-so-trong-khong-co-trong-trich). Chỉ ghi DANG_UONG ⇒ điều kiện HẸP hơn chữ (morphine dạng tiêm sẽ rơi sang 30044919 \"Loại khác\"). Cần nới cachDoc DANG_TIEM (tu-vung@2 — việc của Claude) rồi bổ sung DANG_TIEM."
+    },
+    {
+      "ma": "3004495",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3004495 \"Chứa papaverine hoặc berberine\" — 2 hoạt chất nối \"hoặc\" ⇒ tenLoai MẢNG 2 giá trị."
+    },
+    {
+      "ma": "30044980",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30044980 \"Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)\" — hai nhánh nối dấu chấm phẩy, mỗi nhánh có hoạt chất riêng + đường dùng riêng ⇒ HOAC 2 phương án (không gộp ngưỡng của một nhánh cho cả dòng). Vế \"bisulphate\" chép nguyên văn (chữ biểu ghi tắt)."
+    },
+    {
+      "ma": "30044990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30044990 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

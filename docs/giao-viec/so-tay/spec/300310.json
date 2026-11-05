@@ -1,0 +1,42 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "300310",
+  "phien": "mm:minimax-m3:20261105T0845#soan-300310",
+  "dong8": {
+    "30031010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "amoxicillin"
+        }
+      ]
+    },
+    "30031020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "ampicillin"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "30031010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30031010 \"Chứa amoxicillin (INN) hoặc muối của nó\" (EN \"Containing amoxicillin (INN) or its salts\") — tu-vung@2 chưa có khoá 'chứa hoạt chất'; điều kiện đặt tên hoạt chất \"amoxicillin\". Vế \"hoặc muối của nó\" (or its salts) không diễn đạt được bằng khoá nào ⇒ điều kiện HẸP hơn chữ một bước; ghi ra đây để người duyệt cân nhắc."
+    },
+    {
+      "ma": "30031020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30031020 \"Chứa ampicillin (INN) hoặc muối của nó\" — cùng lý do 30031010: đặt tên hoạt chất \"ampicillin\", vế \"hoặc muối của nó\" không có khoá."
+    },
+    {
+      "ma": "30031090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30031090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

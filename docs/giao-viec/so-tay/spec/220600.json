@@ -1,0 +1,159 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "220600",
+  "phien": "zcode-sub:glm-5.3:20261105T1630#soan-220600",
+  "dong8": {
+    "22060010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Vang táo",
+            "vang lê"
+          ]
+        }
+      ]
+    },
+    "22060020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu sa kê"
+        }
+      ]
+    },
+    "22060031": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": "<=",
+          "value": 2,
+          "donVi": "lít"
+        }
+      ]
+    },
+    "22060041": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 1.14,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22060050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vang mật ong"
+        }
+      ]
+    },
+    "22060060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu thu"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "nước ép rau",
+            "nước ép quả"
+          ]
+        }
+      ]
+    },
+    "22060091": {
+      "phanConLai": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu gạo"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "2206003": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Toddy cọ dừa"
+        }
+      ]
+    },
+    "2206004": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Shandy"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "22060010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22060010 \"Vang táo hoặc vang lê\" — hai hàng nối \"hoặc\" ⇒ mảng nguyên văn"
+    },
+    {
+      "ma": "22060031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22060031 \"Loại trong đồ đựng không quá 2 lít (SEN)\" ⇒ dungTich <= 2 lít — đã đối chiếu tay: 'không quá 2 lít' = <= 2, đơn vị nguyên văn 'lít'; cảnh báo cong3-bien-khong-doc-duoc là máy không đọc lại được biên từ chữ nguồn"
+    },
+    {
+      "ma": "22060031",
+      "loai": "BO_VE",
+      "ve": "trong đồ đựng",
+      "lyDo": "Vế là nửa đầu của cụm \"trong đồ đựng không quá 2 lít\"; ý chứa trong đồ đựng là chính định nghĩa của khoá dungTich (dung tích chứa) — vế đo đã phủ bằng dungTich <= 2 lít, bỏ nửa dẫn không đổi mã 8 số"
+    },
+    {
+      "ma": "22060041",
+      "loai": "BO_VE",
+      "ve": "Có nồng độ cồn",
+      "lyDo": "Vế là nửa đầu của một mệnh đề đo duy nhất (EN cùng dòng: \"Of an alcoholic strength by volume not exceeding 1.14% vol.\"); nội dung giới hạn nằm ở vế \"không quá 1,14% tính theo thể tích\" đã phủ bằng nongDoCon <= 1,14; mọi đồ uống đã lên men đều có nồng độ cồn nên bỏ nửa dẫn này không đổi mã 8 số"
+    },
+    {
+      "ma": "22060060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22060060 \"Rượu thu được từ việc lên men nước ép rau hoặc nước ép quả, trừ nước ép nho tươi (SEN)\" — danh từ đầu \"Rượu thu\" + hai hàng nối \"hoặc\" trong vế ⇒ tenLoai \"Rượu thu\" VÀ tenLoai [\"nước ép rau\",\"nước ép quả\"] (định ngữ chung, điều kiện riêng cùng khoá, mẫu 392620 .20)"
+    },
+    {
+      "ma": "22060060",
+      "loai": "BO_VE",
+      "ve": "trừ nước ép nho tươi",
+      "lyDo": "Rượu thu được từ lên men nước ép nho tươi là rượu vang thuộc nhóm 2204 (định nghĩa nhóm 2204), không thể là ứng viên của phân nhóm 220600 khi đã phân đúng 4/6 số — vế này giữ ranh giới với nhóm 2204 chứ không phân biệt dòng 8 số nào trong 220600; bỏ vế không đổi mã 8 số"
+    },
+    {
+      "ma": "22060091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22060091 \"Rượu gạo khác (kể cả rượu gạo bổ)(SEN)\" — \"khác\" nói khác rượu sa kê (22060020), không phải phần còn lại trong tầng 2206009 ⇒ phanConLai: false; \"kể cả rượu gạo bổ\" là vế PHU (bao gồm) ⇒ chỉ giữ tenLoai \"Rượu gạo\""
+    },
+    {
+      "ma": "22060039",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22060039 \"Loại khác (SEN)\" ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "22060049",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22060049 \"Loại khác (SEN)\" ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "22060099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22060099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "401700",
+  "phien": "mm:minimax-m3:20261105T1705#soan-401700",
+  "dong8": {
+    "40170010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tấm",
+            "miếng"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "lát nền"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "ốp tường"
+        }
+      ]
+    },
+    "40170020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các sản phẩm"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "cao su"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "40170010",
+      "loai": "BO_VE",
+      "ve": "để lát nền và ốp tường",
+      "lyDo": "Máy đọc sai cấu trúc: chữ Anh cùng dòng \"Floor tiles and wall tiles\" không có định ngữ đuôi nên cổng 5 coi \"để lát nền và ốp tường\" là định ngữ CHỈ của danh từ cuối; nhưng ở chữ Việt định ngữ này ứng với \"Floor\"/\"wall\" của chữ Anh và áp cho CẢ hai danh từ đầu \"Tấm\" và \"miếng\". Điều kiện vẫn ghi đủ: tenLoai [\"Tấm\",\"miếng\"] + congDung \"lát nền\" + congDung \"ốp tường\". Mẫu cùng cấu trúc: 40161020."
+    },
+    {
+      "ma": "40170020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40170020 \"Các sản phẩm bằng cao su cứng khác\" (EN \"Other articles of hard rubber\") ⇒ tenLoai \"Các sản phẩm\" + chatLieu \"cao su\" + phanConLai: true (chữ \"khác\" = phần còn lại có tên, phủ định anh em .10 đứng trước)."
+    }
+  ]
+}

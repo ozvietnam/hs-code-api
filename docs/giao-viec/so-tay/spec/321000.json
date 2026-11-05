@@ -1,0 +1,75 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "321000",
+  "phien": "mm:minimax-m3:20261105T1547#soan-321000",
+  "dong8": {
+    "32100010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vecni (kể cả dầu bóng)"
+        }
+      ]
+    },
+    "32100020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Màu keo"
+        }
+      ]
+    },
+    "32100030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc màu nước đã pha chế"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "hoàn thiện da"
+        }
+      ]
+    },
+    "32100091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "vỏ tàu thủy"
+        },
+        {
+          "fact": "sonChongHaHoacChongAnMonVoTau",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "32100010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32100010 \"Vecni (kể cả dầu bóng)\" (EN \"Varnishes (including lacquers)\") ⇒ tenLoai TEN_LOAI \"Vecni (kể cả dầu bóng)\"."
+    },
+    {
+      "ma": "32100020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32100020 \"Màu keo\" (EN \"Distempers\") ⇒ tenLoai TEN_LOAI \"Màu keo\"."
+    },
+    {
+      "ma": "32100030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32100030 \"Thuốc màu nước đã pha chế dùng để hoàn thiện da\" (EN \"Prepared water pigments of a kind used for finishing leather\") ⇒ tenLoai TEN_LOAI \"Thuốc màu nước đã pha chế\" + congDung CONG_DUNG \"hoàn thiện da\" (vế \"dùng để …\" = công dụng)."
+    },
+    {
+      "ma": "32100091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32100091 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") ⇒ dungCho CONG_DUNG \"vỏ tàu thủy\" + sonChongHaHoacChongAnMonVoTau CO. Tiêu đề tầng 3210009 \"Loại khác\" trần nên không khai điều kiện."
+    }
+  ]
+}

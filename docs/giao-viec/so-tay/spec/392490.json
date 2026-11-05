@@ -1,0 +1,25 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "392490",
+  "phien": "mm:minimax-m3:20261105T1700#soan-392490",
+  "dong8": {
+    "39249010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Bô để giường bệnh", "Bô đi tiểu (loại xách tay được)", "Bô để phòng ngủ"] }
+      ]
+    },
+    "39249020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Miếng tạo dáng núm vú", "miếng bảo vệ đầu ngực", "núm trợ ti", "phễu vắt sữa bằng tay"] }
+      ]
+    },
+    "39249030": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bộ câu sữa" } ] },
+    "39249090": { "dieuKienSo": [] }
+  },
+  "ghiChuSoan": [
+    { "ma": "39249010", "loai": "QUYET_DINH", "ghiChu": "tax.39249010 \"Bô để giường bệnh, bô đi tiểu (loại xách tay được) hoặc bô để phòng ngủ(SEN)\" (EN \"Bed pans, urinals (portable type) or chamber-pots\") ⇒ tenLoai [\"Bô để giường bệnh\",\"Bô đi tiểu (loại xách tay được)\",\"Bô để phòng ngủ\"] — ba hàng thay thế (mảng = hoặc); ngoặc \"(loại xách tay được)\" nằm trong một giá trị vì nó thu hẹp riêng bô đi tiểu (EN \"urinals (portable type)\")." },
+    { "ma": "39249020", "loai": "QUYET_DINH", "ghiChu": "tax.39249020 \"Miếng tạo dáng núm vú, miếng bảo vệ đầu ngực, núm trợ ti, phễu vắt sữa bằng tay(SEN)\" (EN \"Nipple former, breastshells, nipple shields, hand expression funnel\") ⇒ tenLoai [\"Miếng tạo dáng núm vú\",\"miếng bảo vệ đầu ngực\",\"núm trợ ti\",\"phễu vắt sữa bằng tay\"] — bốn hàng thay thế (mảng = hoặc). Vế GIỚI HẠN \"bằng tay\" nằm trong giá trị \"phễu vắt sữa bằng tay\" (EN \"hand expression funnel\" — chỉ hàng này vắt tay)." },
+    { "ma": "39249030", "loai": "QUYET_DINH", "ghiChu": "tax.39249030 \"Bộ câu sữa\" (EN \"Supplementary feeding system for babies\") ⇒ tenLoai \"Bộ câu sữa\"." },
+    { "ma": "39249090", "loai": "QUYET_DINH", "ghiChu": "tax.39249090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}
