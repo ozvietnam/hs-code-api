@@ -1,0 +1,71 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "580610",
+  "nhom": "5806",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261105T1816#soan-580610",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "58061010",
+      "nguon": "tax.58061010",
+      "trich": "58061010 - - Từ tơ tằm",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "TO_TAM"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58061020",
+      "nguon": "tax.58061020",
+      "trich": "58061020 - - Từ bông",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "BONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58061090",
+      "nguon": "tax.58061090",
+      "trich": "58061090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "58061010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58061010 \"58061010 - - Từ tơ tằm\" ⇒ loaiSoiDet TRONG [\"TO_TAM\"] (tu-vung@2: \"loại xơ/sợi dệt (vật liệu dệt chủ yếu)\", TO_TAM = tơ tằm). Chữ biểu nêu vật liệu dệt chủ yếu: \"Từ tơ tằm\" = làm bằng tơ tằm; dòng không có vế giới hạn (không \"trừ\", không biên số, không \"có thể\"). Vế \"Vải dệt thoi nổi vòng … và vải dệt từ sợi sơnin (chenille)\" (tiêu đề 580610) và \"(excluding goods of heading 5807)\" (wco.580610) nằm ở cấp phân nhóm (spec cha), không chép lặp ở cấp 8 số."
+    },
+    {
+      "ma": "58061020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58061020 \"58061020 - - Từ bông\" ⇒ loaiSoiDet TRONG [\"BONG\"] (tu-vung@2: \"loại xơ/sợi dệt (vật liệu dệt chủ yếu)\", BONG = bông). Chữ biểu nêu vật liệu dệt chủ yếu: \"Từ bông\" = làm bằng bông; dòng không có vế giới hạn (không \"trừ\", không biên số, không \"có thể\"). Vế \"Vải dệt thoi nổi vòng … và vải dệt từ sợi sơnin (chenille)\" (tiêu đề 580610) và \"(excluding goods of heading 5807)\" (wco.580610) nằm ở cấp phân nhóm (spec cha), không chép lặp ở cấp 8 số."
+    },
+    {
+      "ma": "58061090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "58061090 \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em ⇒ loaiSoiDet KHÔNG TO_TAM và KHÔNG BONG cho .90). Ranh giới .10/.20/.90 là các vật liệu dệt cạnh nhau, chữ biểu không chồng lấn ⇒ không khai chongLanVanBan/chongLanTruc."
+    }
+  ]
+}
