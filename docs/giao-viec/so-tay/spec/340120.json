@@ -1,0 +1,50 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "340120",
+  "phien": "mm:minimax-m3:20261105T1545#soan-340120",
+  "dong8": {
+    "34012020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Phôi xà phòng"
+        }
+      ]
+    },
+    "34012091": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tẩy mực",
+            "khử mực giấy tái chế"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "34012020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34012020 \"Phôi xà phòng\" (EN \"Soap chips\") — chữ biểu chỉ có danh từ đầu, không có vế giới hạn nào ⇒ tenLoai \"Phôi xà phòng\" (nguyên văn). KHÔNG dùng phoiDetDangPhien — khoá đó là \"phôi dẹt dạng phiến (slabs)\" của thép, không phải phôi xà phòng."
+    },
+    {
+      "ma": "3401209",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3401209 \"Loại khác\" — tiêu đề \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em; cổng 1 chặn nếu khai)."
+    },
+    {
+      "ma": "34012091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34012091 \"Dùng để tẩy mực, khử mực giấy tái chế\" (EN \"Of a kind used for flotation de-inking of recycled paper\"): vế GIỚI HẠN duy nhất ⇒ congDung [\"tẩy mực\",\"khử mực giấy tái chế\"] (KHÔNG gói \"tẩy mực, khử mực giấy tái chế\" vào MỘT chuỗi — có dấu phẩy nên cổng 3 báo cong3-liet-ke-trong-mot-chuoi). Theo chữ Anh, hai cụm này là CÙNG một công dụng (flotation de-inking of recycled paper), viết dạng mảng vì bộ so chữ không đọc được hai nghĩa đồng nghĩa như một điều kiện."
+    },
+    {
+      "ma": "34012099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34012099 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    }
+  ]
+}
