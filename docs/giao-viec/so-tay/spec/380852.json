@@ -1,0 +1,62 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "380852",
+  "phien": "mm:minimax-m3:20261105T1704#soan-380852",
+  "dong8": {
+    "38085210": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc bảo quản gỗ"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chất phủ bề mặt",
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    },
+    "38085220": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thuốc trừ nấm",
+            "thuốc trừ côn trùng"
+          ]
+        },
+        {
+          "fact": "dangBinhXit",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "38085210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38085210 \"Thuốc bảo quản gỗ, là chế phẩm chứa chất trừ côn trùng hoặc trừ nấm, trừ chất phủ bề mặt\" (EN \"Wood preservatives, being preparations other than surface coatings, containing insecticides or fungicides\") ⇒ tenLoai \"Thuốc bảo quản gỗ\" (tên hàng) + tenLoai \"chất phủ bề mặt\" chieu PHAI_KHONG (chữ \"trừ chất phủ bề mặt\" = loại trừ chất phủ bề mặt)."
+    },
+    {
+      "ma": "38085210",
+      "loai": "BO_VE",
+      "ve": "chứa chất",
+      "lyDo": "Bộ tách vế cắt nhầm danh từ \"chất trừ côn trùng\" (chất trừ sâu) thành hai vế \"chứa chất\" + \"trừ côn trùng\". Vế thật là \"chứa chất trừ côn trùng hoặc trừ nấm\" — định nghĩa của chính nhóm thuốc bảo quản gỗ (EN \"Wood preservatives … containing insecticides or fungicides\"), nên đã phủ bởi tên hàng \"Thuốc bảo quản gỗ\"; bỏ vế này không làm sai mã 8 số."
+    },
+    {
+      "ma": "38085220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38085220 \"Thuốc trừ nấm và thuốc trừ côn trùng dạng bình xịt\" (EN \"Fungicides and insecticides in aerosol containers\") ⇒ tenLoai [\"Thuốc trừ nấm\",\"thuốc trừ côn trùng\"] + dangBinhXit CO (chữ \"dạng bình xịt\" ⇒ khoá dangBinhXit của tu-vung@2). Ghi thêm tenLoai (đoạn nguyên văn của chính dòng) bên cạnh khoá tất định: các anh em trong cụm thuốc diệt muỗi chia theo hai tiêu chí khác nhau (dạng chế phẩm diệt muỗi ↔ dạng đóng gói); nếu mỗi dòng chỉ mang một khoá riêng thì cổng 2 ghép được hai tiêu chí của hai dòng anh em thành MỘT mô tả hàng và báo chồng lấn giả. Cùng khoá tenLoai trên các anh em thì hai tên rời nhau nên không còn chồng lấn giả (luật anh em cùng khoá, QUY-TRINH 3.3)."
+    },
+    {
+      "ma": "38085290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38085290 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}
