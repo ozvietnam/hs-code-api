@@ -1,0 +1,76 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841850",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841850",
+  "dong8": {
+    "84185011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "y tế",
+            "phẫu thuật",
+            "phòng thí nghiệm"
+          ]
+        }
+      ]
+    },
+    "84185091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "y tế",
+            "phẫu thuật",
+            "phòng thí nghiệm"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8418501": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Quầy hàng",
+            "tủ bày hàng"
+          ]
+        },
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 200,
+          "donVi": "lít"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8418501",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8418501: \"Quầy hàng, tủ bày hàng và các loại tương tự, có lắp thiết bị làm lạnh, dung tích trên 200 lít\" ⇒ tenLoai TUONG_TU [Quầy hàng, tủ bày hàng] + dungTich > 200 lít"
+    },
+    {
+      "ma": "8418501",
+      "loai": "BO_VE",
+      "ve": "có lắp thiết bị làm lạnh",
+      "lyDo": "Cả nhóm 841850 đã nêu rõ 'có lắp thiết bị làm lạnh hoặc kết đông', vế này lặp lại thuộc tính nhóm"
+    },
+    {
+      "ma": "84185011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84185011: \"Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm\" ⇒ dungCho [y tế, phẫu thuật, phòng thí nghiệm]"
+    },
+    {
+      "ma": "84185091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84185091: \"Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm\" ⇒ dungCho [y tế, phẫu thuật, phòng thí nghiệm]"
+    }
+  ]
+}

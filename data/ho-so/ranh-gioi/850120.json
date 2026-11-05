@@ -1,0 +1,120 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "850120",
+  "nhom": "8501",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850120",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8501201",
+      "nguon": "tieuDe.8501201",
+      "trich": "8501201 Công suất không quá 1 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 1,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8501202",
+      "nguon": "tieuDe.8501202",
+      "trich": "8501202 Công suất trên 1 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85012012",
+      "nguon": "tax.85012012",
+      "trich": "85012012 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85012019",
+      "nguon": "tax.85012019",
+      "trich": "85012019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85012021",
+      "nguon": "tax.85012021",
+      "trich": "85012021 - - - Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85012029",
+      "nguon": "tax.85012029",
+      "trich": "85012029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8501201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501201: \"Công suất không quá 1 kW\" ⇒ congSuat <= 1 kW"
+    },
+    {
+      "ma": "85012012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85012012: \"Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ dungCho nở mã HS"
+    },
+    {
+      "ma": "8501202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501202: \"Công suất trên 1 kW\" ⇒ congSuat > 1 kW"
+    },
+    {
+      "ma": "85012021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85012021: \"Loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ dungCho nở mã HS"
+    }
+  ]
+}

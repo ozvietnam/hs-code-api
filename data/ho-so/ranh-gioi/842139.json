@@ -1,0 +1,69 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "842139",
+  "nhom": "8421",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-842139",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84213920",
+      "nguon": "tax.84213920",
+      "trich": "84213920 - - - Máy lọc không khí",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy lọc không khí"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84213930",
+      "nguon": "tax.84213930",
+      "trich": "84213930 - - - Loại khác, có vỏ bằng thép không gỉ và có lỗ ống đầu vào và đầu ra có đường kính trong không quá 1,3 cm",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "thép không gỉ",
+          "viTri": "VO"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 1.3,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84213990",
+      "nguon": "tax.84213990",
+      "trich": "84213990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84213920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84213920: \"Máy lọc không khí\" ⇒ tenLoai TEN_LOAI \"Máy lọc không khí\""
+    },
+    {
+      "ma": "84213930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84213930: \"có vỏ bằng thép không gỉ và có lỗ ống đầu vào và đầu ra có đường kính trong không quá 1,3 cm\" ⇒ chatLieu thép không gỉ vị trí VO, duongKinhTrong <= 1.3 cm; dòng Loại khác tự phủ định anh em"
+    }
+  ]
+}

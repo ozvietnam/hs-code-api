@@ -1,0 +1,77 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841470",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841470",
+  "dong8": {
+    "84147011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nắp chụp hút"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 120,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "84147021": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "nắp chụp hút"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 120,
+          "donVi": "cm"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8414701": {
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "CO"
+        }
+      ]
+    },
+    "8414702": {
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8414701",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8414701: \"Đã lắp bộ phận lọc\" ⇒ coBoLoc CO"
+    },
+    {
+      "ma": "84147011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84147011: \"Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm\" ⇒ tenLoai \"nắp chụp hút\" + kichThuoc <= 120 cm"
+    },
+    {
+      "ma": "8414702",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8414702: \"Chưa lắp bộ phận lọc\" ⇒ coBoLoc KHONG"
+    },
+    {
+      "ma": "84147021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84147021: \"Có nắp chụp hút với kích thước chiều ngang tối đa không quá 120 cm\" ⇒ tenLoai \"nắp chụp hút\" + kichThuoc <= 120 cm"
+    }
+  ]
+}
