@@ -1,0 +1,30 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "430400",
+  "phien": "mm:minimax-m3:20261105T1024#soan-430400",
+  "dong8": {
+    "43040010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Da lông nhân tạo" }
+      ]
+    },
+    "43040020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Sản phẩm" },
+        { "fact": "phamViSuDung", "op": "TRONG", "value": ["CONG_NGHIEP"] }
+      ]
+    },
+    "43040091": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Túi thể thao" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "43040020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.43040020 \"Sản phẩm dùng cho mục đích công nghiệp\" ⇒ tenLoai \"Sản phẩm\" + phamViSuDung CONG_NGHIEP (vế giới hạn \"dùng cho mục đích công nghiệp\"). .10 \"Da lông nhân tạo\" ⇒ tenLoai \"Da lông nhân tạo\". .91 \"Túi thể thao\" ⇒ tenLoai \"Túi thể thao\". Tiêu đề 4304009 là \"Loại khác\" TRẦN ⇒ không ghi điều kiện; .99 \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}
