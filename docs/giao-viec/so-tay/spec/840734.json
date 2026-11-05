@@ -1,0 +1,228 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "840734",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840734",
+  "dong8": {
+    "84073440": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy kéo cầm tay"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1100,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84073450": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ],
+      "phanConLai": [
+        "84073440"
+      ]
+    },
+    "84073460": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.11"
+        }
+      ]
+    },
+    "84073471": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84073472": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84073473": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84073491": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy kéo cầm tay"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1100,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84073492": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ],
+      "phanConLai": [
+        "84073491"
+      ]
+    },
+    "84073493": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.11"
+        }
+      ]
+    },
+    "84073494": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84073495": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84073499": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "840734~r12893": {
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "840734~r12893",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.840734~r12893: \"Đã lắp ráp hoàn chỉnh\" ⇒ laBoPhan KHONG (hoàn chỉnh)"
+    },
+    {
+      "ma": "84073440",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073440: \"Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc\" ⇒ dungCho \"máy kéo cầm tay\" + dungTichXiLanh <= 1100 cc"
+    },
+    {
+      "ma": "84073450",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073450: \"Dùng cho xe khác thuộc nhóm 87.01\" ⇒ dungCho \"87.01\", phanConLai [\"84073440\"]"
+    },
+    {
+      "ma": "84073460",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073460: \"Dùng cho xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""
+    },
+    {
+      "ma": "84073471",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073471: \"Dung tích xi lanh không quá 2.000 cc\" ⇒ dungTichXiLanh <= 2000 cc"
+    },
+    {
+      "ma": "84073472",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073472: \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 3000 cc"
+    },
+    {
+      "ma": "84073473",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073473: \"Dung tích xi lanh trên 3.000 cc\" ⇒ dungTichXiLanh > 3000 cc"
+    },
+    {
+      "ma": "84073491",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073491: \"Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc\" ⇒ dungCho \"máy kéo cầm tay\" + dungTichXiLanh <= 1100 cc"
+    },
+    {
+      "ma": "84073492",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073492: \"Dùng cho xe khác thuộc nhóm 87.01\" ⇒ dungCho \"87.01\", phanConLai [\"84073491\"]"
+    },
+    {
+      "ma": "84073493",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073493: \"Dùng cho xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""
+    },
+    {
+      "ma": "84073494",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073494: \"Dung tích xi lanh không quá 2.000 cc\" ⇒ dungTichXiLanh <= 2000 cc"
+    },
+    {
+      "ma": "84073495",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073495: \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 3000 cc"
+    },
+    {
+      "ma": "84073499",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073499: \"Dung tích xi lanh trên 3.000 cc\" ⇒ dungTichXiLanh > 3000 cc"
+    }
+  ]
+}

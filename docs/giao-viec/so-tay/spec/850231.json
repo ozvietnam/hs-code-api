@@ -1,0 +1,39 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850231",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850231",
+  "dong8": {
+    "85023110": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "85023120": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85023110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85023110: \"Công suất không quá 10.000 kVA\" ⇒ congSuatBieuKien <= 10000 kVA"
+    },
+    {
+      "ma": "85023120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85023120: \"Công suất trên 10.000 kVA\" ⇒ congSuatBieuKien > 10000 kVA"
+    }
+  ]
+}

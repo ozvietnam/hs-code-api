@@ -143,6 +143,36 @@
   ],
   "tieuChi6": [
     {
+      "hs6": "853922",
+      "fact": "cong_suat",
+      "op": "<=",
+      "value": 200,
+      "donVi": "W",
+      "nguon": "wco.853922",
+      "trich": "853922 Lamps; filament, (excluding ultra-violet or infra-red), of a power not exceeding 200W and for a voltage exceeding 100 volts, other than tungsten halogen",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853922",
+      "fact": "dien_ap",
+      "op": ">",
+      "value": 100,
+      "donVi": "V",
+      "nguon": "wco.853922",
+      "trich": "of a power not exceeding 200W and for a voltage exceeding 100 volts, other than tungsten halogen",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853922",
+      "fact": "den_day_toc_halogen_vonfram",
+      "op": "=",
+      "value": false,
+      "donVi": null,
+      "nguon": "wco.853922",
+      "trich": "of a power not exceeding 200W and for a voltage exceeding 100 volts, other than tungsten halogen",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "hs6": "853910",
       "fact": "la_den_pha_gan_kin",
       "op": "=",
@@ -180,36 +210,6 @@
       "donVi": null,
       "nguon": "wco.853921",
       "trich": "Lamps; filament, (excluding ultra-violet or infra-red), tungsten halogen",
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "hs6": "853922",
-      "fact": "cong_suat",
-      "op": "<=",
-      "value": 200,
-      "donVi": "W",
-      "nguon": "wco.853922",
-      "trich": "853922 Lamps; filament, (excluding ultra-violet or infra-red), of a power not exceeding 200W and for a voltage exceeding 100 volts, other than tungsten halogen",
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "hs6": "853922",
-      "fact": "dien_ap",
-      "op": ">",
-      "value": 100,
-      "donVi": "V",
-      "nguon": "wco.853922",
-      "trich": "of a power not exceeding 200W and for a voltage exceeding 100 volts, other than tungsten halogen",
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "hs6": "853922",
-      "fact": "den_day_toc_halogen_vonfram",
-      "op": "=",
-      "value": false,
-      "donVi": null,
-      "nguon": "wco.853922",
-      "trich": "of a power not exceeding 200W and for a voltage exceeding 100 volts, other than tungsten halogen",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -1097,30 +1097,75 @@
     },
     {
       "hs": "85399010",
-      "dieuKien": "Bộ phận (phân nhóm 8539.90): nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc",
+      "dieuKien": "(tên loại hàng: Nắp bịt và chất liệu (theo vị trí): nhôm và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): bóng đèn huỳnh quang) hoặc (tên loại hàng: đui xoáy và chất liệu (theo vị trí): nhôm và dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): bóng đèn dây tóc)",
+      "nguon": "tax.85399010",
+      "trich": "85399010 - - Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Nắp bịt"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "nhôm",
+                "viTri": "CHINH"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "bóng đèn huỳnh quang"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đui xoáy"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "nhôm",
+                "viTri": "CHINH"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "bóng đèn dây tóc"
+              }
+            ]
+          ]
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853990",
+          "ngay": "2026-11-02",
+          "bam": "44c62e437099c63f00c0433891d192dbc9c9ee5e526697f37f27cbb1f205a9b2"
+        }
+      },
       "tieuChi": {
         "fact": "nap_bit_nhom_hoac_dui_xoay_nhom",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85399010",
-      "trich": "85399010 - - Nắp bịt nhôm dùng cho bóng đèn huỳnh quang; đui xoáy nhôm dùng cho bóng đèn dây tóc",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85399020",
-      "dieuKien": "Bộ phận loại khác (ngoài 85399010), dùng cho đèn của xe có động cơ",
-      "tieuChi": {
-        "fact": "dung_cho_den_cua_xe_co_dong_co",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): đèn của xe có động cơ",
       "nguon": "tax.85399020",
       "trich": "85399020 - - Loại khác, dùng cho đèn của xe có động cơ",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -1131,20 +1176,35 @@
         ],
         "toTienCoTen": "853990",
         "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đèn của xe có động cơ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853990",
+          "ngay": "2026-11-02",
+          "bam": "44c62e437099c63f00c0433891d192dbc9c9ee5e526697f37f27cbb1f205a9b2"
+        }
+      },
+      "tieuChi": {
+        "fact": "dung_cho_den_cua_xe_co_dong_co",
+        "op": "=",
+        "value": true,
+        "donVi": null
       }
     },
     {
       "hs": "85399030",
-      "dieuKien": "Bộ phận loại khác (ngoài 85399010, 85399020), của phân nhóm 8539.51.00 (mô-đun đi-ốt phát quang LED)",
-      "tieuChi": {
-        "fact": "bo_phan_cua_phan_nhom_85395100",
-        "op": "=",
-        "value": true,
-        "donVi": null
-      },
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): phân nhóm 8539.51.00",
       "nguon": "tax.85399030",
       "trich": "85399030 - - Loại khác, của phân nhóm 8539.51.00",
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "loaiKhac": true,
       "phamViLoaiKhac": {
         "nguonLoai": "MAY_SUY",
@@ -1155,6 +1215,27 @@
         ],
         "toTienCoTen": "853990",
         "dinhNghiaDuoc": false
+      },
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phân nhóm 8539.51.00"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853990",
+          "ngay": "2026-11-02",
+          "bam": "44c62e437099c63f00c0433891d192dbc9c9ee5e526697f37f27cbb1f205a9b2"
+        }
+      },
+      "tieuChi": {
+        "fact": "bo_phan_cua_phan_nhom_85395100",
+        "op": "=",
+        "value": true,
+        "donVi": null
       }
     },
     {
@@ -1770,29 +1851,5 @@
     "dat": 88,
     "loai": 0,
     "nguonBiCat": []
-  },
-  "dieuKienNut": [
-    {
-      "id": "8539223",
-      "nguon": "tieuDe.8539223",
-      "trich": "8539223 Bóng đèn phản xạ khác",
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bóng đèn phản xạ"
-        }
-      ],
-      "nguonLoai": "CLAUDE_DUYET",
-      "ranhGioi": {
-        "phienBan": "ranh-gioi@1",
-        "duyet": {
-          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853922",
-          "ngay": "2026-11-02",
-          "bam": "673a485eb5fcdc4bb5b6d29bf309974f07b4ad71b7324fffde686c54067be63f"
-        }
-      },
-      "phanConLai": true
-    }
-  ]
+  }
 }
