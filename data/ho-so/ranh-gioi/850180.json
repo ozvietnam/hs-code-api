@@ -1,0 +1,107 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "850180",
+  "nhom": "8501",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850180",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85018010",
+      "nguon": "tax.85018010",
+      "trich": "85018010 - - Công suất không quá 75 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 75,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85018020",
+      "nguon": "tax.85018020",
+      "trich": "85018020 - - Công suất trên 75 kVA nhưng không quá 375 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 75,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 375,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85018030",
+      "nguon": "tax.85018030",
+      "trich": "85018030 - - Công suất trên 375 kVA nhưng không quá 750 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 375,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 750,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85018040",
+      "nguon": "tax.85018040",
+      "trich": "85018040 - - Công suất trên 750 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 750,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85018010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85018010: \"Công suất không quá 75 kVA\" ⇒ congSuatBieuKien <= 75 kVA"
+    },
+    {
+      "ma": "85018020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85018020: \"Công suất trên 75 kVA nhưng không quá 375 kVA\" ⇒ congSuatBieuKien > 75 kVA, <= 375 kVA"
+    },
+    {
+      "ma": "85018030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85018030: \"Công suất trên 375 kVA nhưng không quá 750 kVA\" ⇒ congSuatBieuKien > 375 kVA, <= 750 kVA"
+    },
+    {
+      "ma": "85018040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85018040: \"Công suất trên 750 kVA\" ⇒ congSuatBieuKien > 750 kVA"
+    }
+  ]
+}

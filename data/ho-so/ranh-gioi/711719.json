@@ -1,0 +1,80 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "711719",
+  "nhom": "7117",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "DUYET",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261102T1638#soan-711719",
+    "ngay": "2026-11-02"
+  },
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat#soat-711719",
+    "ngay": "2026-11-02",
+    "ghiChu": "soát L1-4c: 3 dòng nêu tên, cùng khoá tenLoai nguyên văn (Vòng / đồ trang sức + phanConLai phủ .10 / Bộ phận); không rộng/hẹp hơn chữ, không bịa, không BO_VE/DE_TRONG; 3 dòng cùng MFN 25%. Ghi nhận: .90 \"Bộ phận\" dùng tenLoai thay laBoPhan CO (711711/961700 dùng laBoPhan) — chữ tự do không tất định nên không đổi mã; cần quy ước chung cho dòng \"Bộ phận\" trần.",
+    "bam": "8b04e50458334afaf36eef40f4b408a07cae6346e57825cb378c94e6fb4d9d87"
+  },
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "71171910",
+      "nguon": "tax.71171910",
+      "trich": "71171910 - - - Vòng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vòng"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "71171920",
+      "nguon": "tax.71171920",
+      "trich": "71171920 - - - Các đồ trang sức khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đồ trang sức"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": true
+    },
+    {
+      "hs": "71171990",
+      "nguon": "tax.71171990",
+      "trich": "71171990 - - - Bộ phận",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "71171910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71171910 \"71171910 - - - Vòng\" ⇒ tenLoai \"Vòng\" (chuỗi con nguyên văn). So chữ tự do — không tất định."
+    },
+    {
+      "ma": "71171920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71171920 \"71171920 - - - Các đồ trang sức khác\": phần còn lại có tên — vế khẳng định \"đồ trang sức\" ⇒ tenLoai \"đồ trang sức\" (nguyên văn), chữ \"khác\" ⇒ phanConLai: true phủ định anh em đứng trước 71171910 \"Vòng\" (tiền lệ 85013170 \"Động cơ khác\", 84819023 \"Thân, loại khác\"). Không phủ 71171990 \"Bộ phận\" (đứng sau)."
+    },
+    {
+      "ma": "71171990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71171990 \"71171990 - - - Bộ phận\" ⇒ tenLoai \"Bộ phận\" (chuỗi con nguyên văn, danh từ trần như \"Vòng\" của 71171910 — BANG-LUAT dòng 10: ba anh em cùng nêu tên ⇒ cùng khoá tenLoai; không dùng laBoPhan CO vì tạo chồng lấn giả tên ↔ đặc điểm). Tiền lệ 40169917 dùng tenLoai \"Bộ phận\"."
+    }
+  ]
+}

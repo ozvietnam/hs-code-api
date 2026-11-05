@@ -1,0 +1,191 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841480",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-841480",
+  "dong8": {
+    "84148011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phòng thí nghiệm"
+        }
+      ]
+    },
+    "84148021": {
+      "dieuKienSo": [
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "CONG_NGHIEP"
+          ]
+        }
+      ]
+    },
+    "84148030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị tạo gió có cơ cấu piston dịch chuyển tự do"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tua bin khí"
+        }
+      ]
+    },
+    "84148041": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khoan dầu mỏ"
+        }
+      ]
+    },
+    "84148042": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy điều hòa không khí của ô tô"
+        }
+      ]
+    },
+    "84148043": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng kín"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy điều hòa không khí"
+        }
+      ]
+    },
+    "84148050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy bơm không khí"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "841480~r13208": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nắp chụp hút"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": ">",
+          "value": 120,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "8414801": {
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "CO"
+        }
+      ]
+    },
+    "8414802": {
+      "dieuKienSo": [
+        {
+          "fact": "coBoLoc",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8414804": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy nén"
+        }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "84148042",
+        "84148043"
+      ],
+      "lyDo": "tax.84148042 \"Dùng cho máy điều hòa không khí của ô tô\" và tax.84148043 \"Dạng kín dùng cho máy điều hòa không khí\" chồng lấn văn bản khi máy nén dạng kín dùng cho máy điều hòa không khí của ô tô"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "841480~r13208",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.841480~r13208: \"Nắp chụp hút có kích thước chiều ngang tối đa trên 120 cm\" ⇒ tenLoai \"Nắp chụp hút\" + kichThuoc > 120 cm"
+    },
+    {
+      "ma": "8414801",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8414801: \"Đã lắp bộ phận lọc\" ⇒ coBoLoc CO"
+    },
+    {
+      "ma": "84148011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84148011: \"sử dụng trong phòng thí nghiệm\" ⇒ dungCho \"phòng thí nghiệm\""
+    },
+    {
+      "ma": "8414802",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8414802: \"Chưa lắp bộ phận lọc\" ⇒ coBoLoc KHONG"
+    },
+    {
+      "ma": "84148021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84148021: \"Phù hợp dùng trong công nghiệp\" ⇒ phamViSuDung CONG_NGHIEP"
+    },
+    {
+      "ma": "84148030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84148030: \"Thiết bị tạo gió có cơ cấu piston dịch chuyển tự do dùng cho tua bin khí\" ⇒ tenLoai + dungCho tua bin khí"
+    },
+    {
+      "ma": "8414804",
+      "loai": "BO_VE",
+      "ve": "trừ loại thuộc phân nhóm 8414.30 hoặc 8414.40",
+      "lyDo": "vế loại trừ phân nhóm 8414.30 và 8414.40 đã được phân loại ở cấp phân nhóm 6 số tương ứng theo quy tắc 1 và 6"
+    },
+    {
+      "ma": "84148041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84148041: \"sử dụng trong khoan dầu mỏ\" ⇒ dungCho \"khoan dầu mỏ\""
+    },
+    {
+      "ma": "84148042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84148042: \"Dùng cho máy điều hòa không khí của ô tô\" ⇒ dungCho \"máy điều hòa không khí của ô tô\""
+    },
+    {
+      "ma": "84148043",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84148043: \"Dạng kín dùng cho máy điều hòa không khí\" ⇒ tenLoai \"Dạng kín\" + dungCho \"máy điều hòa không khí\""
+    },
+    {
+      "ma": "84148050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84148050: \"Máy bơm không khí\" ⇒ tenLoai \"Máy bơm không khí\""
+    }
+  ]
+}
