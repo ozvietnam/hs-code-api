@@ -143,26 +143,6 @@
   ],
   "tieuChi6": [
     {
-      "hs6": "853910",
-      "fact": "la_den_pha_gan_kin",
-      "op": "=",
-      "value": true,
-      "donVi": null,
-      "nguon": "wco.853910",
-      "trich": "853910 Lamps; sealed beam units",
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "hs6": "853910",
-      "fact": "thau_kinh_phan_xa_va_soi_dot_nam_kin_trong_den",
-      "op": "=",
-      "value": true,
-      "donVi": null,
-      "nguon": "nhom8539.nhom",
-      "trich": "Bộ Đèn pha gắn kín đôi khi được thiết kế để gắn vào thân xe ôtô; chúng gồm một thấu kính và phản xạ và sợi đốt nằm kín bên trong đèn nạp khí hoặc đèn kiểu chân không.",
-      "nguonLoai": "AI_DA_KIEM"
-    },
-    {
       "hs6": "853921",
       "fact": "den_day_toc_halogen_vonfram",
       "op": "=",
@@ -180,6 +160,26 @@
       "donVi": null,
       "nguon": "wco.853921",
       "trich": "Lamps; filament, (excluding ultra-violet or infra-red), tungsten halogen",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853910",
+      "fact": "la_den_pha_gan_kin",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "nguon": "wco.853910",
+      "trich": "853910 Lamps; sealed beam units",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs6": "853910",
+      "fact": "thau_kinh_phan_xa_va_soi_dot_nam_kin_trong_den",
+      "op": "=",
+      "value": true,
+      "donVi": null,
+      "nguon": "nhom8539.nhom",
+      "trich": "Bộ Đèn pha gắn kín đôi khi được thiết kế để gắn vào thân xe ôtô; chúng gồm một thấu kính và phản xạ và sợi đốt nằm kín bên trong đèn nạp khí hoặc đèn kiểu chân không.",
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -408,45 +408,91 @@
     },
     {
       "hs": "85392120",
-      "dieuKien": "Bóng đèn dây tóc halogen vonfram (phân nhóm 8539.21) dùng cho thiết bị y tế",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): thiết bị y tế",
+      "nguon": "tax.85392120",
+      "trich": "85392120 - - - Dùng cho thiết bị y tế",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị y tế"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853921",
+          "ngay": "2026-11-02",
+          "bam": "89f3448e90eed92df69d5a20561f0dec31a9b3099a2966f4783cef7efe2a9ac7"
+        }
+      },
       "tieuChi": {
         "fact": "dung_cho_thiet_bi_y_te",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85392120",
-      "trich": "85392120 - - - Dùng cho thiết bị y tế",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85392130",
-      "dieuKien": "Bóng đèn dây tóc halogen vonfram (phân nhóm 8539.21) dùng cho xe có động cơ",
+      "dieuKien": "dùng cho (máy, xe, hàng hóa mà hàng lắp vào / đi cùng): xe có động cơ",
+      "nguon": "tax.85392130",
+      "trich": "85392130 - - - Dùng cho xe có động cơ",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853921",
+          "ngay": "2026-11-02",
+          "bam": "89f3448e90eed92df69d5a20561f0dec31a9b3099a2966f4783cef7efe2a9ac7"
+        }
+      },
       "tieuChi": {
         "fact": "dung_cho_xe_co_dong_co",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85392130",
-      "trich": "85392130 - - - Dùng cho xe có động cơ",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85392140",
-      "dieuKien": "Bóng đèn dây tóc halogen vonfram (phân nhóm 8539.21) là bóng đèn phản xạ, ngoài loại dùng cho thiết bị y tế (85392120) và xe có động cơ (85392130)",
+      "dieuKien": "tên loại hàng: Bóng đèn phản xạ",
+      "nguon": "tax.85392140",
+      "trich": "85392140 - - - Bóng đèn phản xạ khác",
+      "nguonLoai": "CLAUDE_DUYET",
+      "loaiKhac": false,
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bóng đèn phản xạ"
+        }
+      ],
+      "ranhGioi": {
+        "phienBan": "ranh-gioi@1",
+        "duyet": {
+          "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat3#soat-853921",
+          "ngay": "2026-11-02",
+          "bam": "89f3448e90eed92df69d5a20561f0dec31a9b3099a2966f4783cef7efe2a9ac7"
+        }
+      },
+      "phanConLai": true,
       "tieuChi": {
         "fact": "la_bong_den_phan_xa",
         "op": "=",
         "value": true,
         "donVi": null
-      },
-      "nguon": "tax.85392140",
-      "trich": "85392140 - - - Bóng đèn phản xạ khác",
-      "nguonLoai": "AI_DA_KIEM",
-      "loaiKhac": false
+      }
     },
     {
       "hs": "85392190",
