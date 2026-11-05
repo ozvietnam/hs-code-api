@@ -1,0 +1,212 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "401290",
+  "nhom": "4012",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1705#soan-401290",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4012901",
+      "nguon": "tieuDe.4012901",
+      "trich": "4012901 Lốp đặc",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp đặc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "4012902",
+      "nguon": "tieuDe.4012902",
+      "trich": "4012902 Lốp nửa đặc",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp nửa đặc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "4012907",
+      "nguon": "tieuDe.4012907",
+      "trich": "4012907 Hoa lốp đắp lại",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hoa lốp đắp lại"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "40129014",
+      "nguon": "tax.40129014",
+      "trich": "40129014 - - - Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng không quá 450 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp đặc"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 250,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40129017",
+      "nguon": "tax.40129017",
+      "trich": "40129017 - - - Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng trên 450 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp đặc"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 250,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40129019",
+      "nguon": "tax.40129019",
+      "trich": "40129019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40129021",
+      "nguon": "tax.40129021",
+      "trich": "40129021 - - - Chiều rộng không quá 450 mm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40129022",
+      "nguon": "tax.40129022",
+      "trich": "40129022 - - - Có chiều rộng trên 450 mm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40129071",
+      "nguon": "tax.40129071",
+      "trich": "40129071 - - - Chiều rộng không quá 450 mm (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40129072",
+      "nguon": "tax.40129072",
+      "trich": "40129072 - - - Có chiều rộng trên 450 mm (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40129080",
+      "nguon": "tax.40129080",
+      "trich": "40129080 - - Lót vành",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lót vành"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40129090",
+      "nguon": "tax.40129090",
+      "trich": "40129090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "40129014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40129014 \"Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng không quá 450 mm\" ⇒ tenLoai \"Lốp đặc\" + duongKinh > 250 mm (\"trên\" = >) + chieuRong <= 450 mm (\"không quá\" = <=)."
+    },
+    {
+      "ma": "40129017",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40129017 \"Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng trên 450 mm\" ⇒ tenLoai \"Lốp đặc\" + duongKinh > 250 mm + chieuRong > 450 mm (\"trên\" = >)."
+    },
+    {
+      "ma": "40129022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40129022 \"Có chiều rộng trên 450 mm\" ⇒ chieuRong > 450 mm. Các tiêu đề tầng: tieuDe.4012901 \"Lốp đặc\" ⇒ tenLoai \"Lốp đặc\"; tieuDe.4012902 \"Lốp nửa đặc\" ⇒ tenLoai \"Lốp nửa đặc\"; tieuDe.4012907 \"Hoa lốp đắp lại\" ⇒ tenLoai \"Hoa lốp đắp lại\"."
+    },
+    {
+      "ma": "40129071",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40129071 \"Chiều rộng không quá 450 mm (SEN)\" ⇒ chieuRong <= 450 mm; tax.40129072 \"Có chiều rộng trên 450 mm (SEN)\" ⇒ chieuRong > 450 mm. Cụm \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật, không phải điều kiện."
+    }
+  ]
+}

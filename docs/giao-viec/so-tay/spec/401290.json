@@ -1,0 +1,149 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "401290",
+  "phien": "mm:minimax-m3:20261105T1705#soan-401290",
+  "dong8": {
+    "40129014": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp đặc"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 250,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40129017": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp đặc"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 250,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40129021": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40129022": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40129071": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40129072": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "40129080": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lót vành"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4012901": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp đặc"
+        }
+      ]
+    },
+    "4012902": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lốp nửa đặc"
+        }
+      ]
+    },
+    "4012907": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hoa lốp đắp lại"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "40129014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40129014 \"Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng không quá 450 mm\" ⇒ tenLoai \"Lốp đặc\" + duongKinh > 250 mm (\"trên\" = >) + chieuRong <= 450 mm (\"không quá\" = <=)."
+    },
+    {
+      "ma": "40129017",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40129017 \"Lốp đặc có đường kính ngoài trên 250 mm, chiều rộng trên 450 mm\" ⇒ tenLoai \"Lốp đặc\" + duongKinh > 250 mm + chieuRong > 450 mm (\"trên\" = >)."
+    },
+    {
+      "ma": "40129022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40129022 \"Có chiều rộng trên 450 mm\" ⇒ chieuRong > 450 mm. Các tiêu đề tầng: tieuDe.4012901 \"Lốp đặc\" ⇒ tenLoai \"Lốp đặc\"; tieuDe.4012902 \"Lốp nửa đặc\" ⇒ tenLoai \"Lốp nửa đặc\"; tieuDe.4012907 \"Hoa lốp đắp lại\" ⇒ tenLoai \"Hoa lốp đắp lại\"."
+    },
+    {
+      "ma": "40129071",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40129071 \"Chiều rộng không quá 450 mm (SEN)\" ⇒ chieuRong <= 450 mm; tax.40129072 \"Có chiều rộng trên 450 mm (SEN)\" ⇒ chieuRong > 450 mm. Cụm \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật, không phải điều kiện."
+    }
+  ]
+}
