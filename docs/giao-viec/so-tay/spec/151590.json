@@ -1,0 +1,105 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "151590",
+  "phien": "mm:minimax-m3:20261105T1530#soan-151590",
+  "dong8": {
+    "15159011": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dầu thô" }
+      ]
+    },
+    "15159012": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Các phần phân đoạn" },
+        { "fact": "mucDoTinhCheDau", "op": "TRONG", "value": ["DANG_THO"] }
+      ]
+    },
+    "15159021": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dầu thô" }
+      ]
+    },
+    "15159022": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Các phần phân đoạn" },
+        { "fact": "mucDoTinhCheDau", "op": "TRONG", "value": ["DANG_THO"] }
+      ]
+    },
+    "15159031": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dầu thô" }
+      ]
+    },
+    "15159032": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Các phần phân đoạn" },
+        { "fact": "mucDoTinhCheDau", "op": "TRONG", "value": ["DANG_THO"] }
+      ]
+    },
+    "15159091": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dầu thô" }
+      ]
+    },
+    "15159092": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Các phần phân đoạn" },
+        { "fact": "mucDoTinhCheDau", "op": "TRONG", "value": ["DANG_THO"] }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1515901": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dầu hạt illipe" }
+      ]
+    },
+    "1515902": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dầu Tung" }
+      ]
+    },
+    "1515903": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dầu Jojoba" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "1515901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1515901 \"1515901 Dầu hạt illipe\" ⇒ tenLoai \"Dầu hạt illipe\" (loại dầu là điều kiện của tiêu đề; anh em 1515902/1515903 dùng CÙNG khoá tenLoai)."
+    },
+    {
+      "ma": "15159011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15159011 \"15159011 - - - Dầu thô (SEN)\" ⇒ tenLoai \"Dầu thô\" (tên hàng; anh em 15159012 dùng CÙNG khoá tenLoai)."
+    },
+    {
+      "ma": "15159012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15159012 \"15159012 - - - Các phần phân đoạn của dầu chưa tinh chế (SEN)\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\")."
+    },
+    {
+      "ma": "1515902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1515902 \"1515902 Dầu Tung\" ⇒ tenLoai \"Dầu Tung\" (cùng cách chia dùng tiêu đề 1515901/1515903)."
+    },
+    {
+      "ma": "1515903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1515903 \"1515903 Dầu Jojoba\" ⇒ tenLoai \"Dầu Jojoba\" (cùng cách chia dùng tiêu đề 1515901/1515902)."
+    },
+    {
+      "ma": "15159091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15159091 \"15159091 - - - Dầu thô\" ⇒ tenLoai \"Dầu thô\"; dòng nằm dưới tiêu đề \"Loại khác\" (1515909, trần) nên không có mức tinh chế trong chữ dòng."
+    },
+    {
+      "ma": "15159092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15159092 \"15159092 - - - Các phần phân đoạn của dầu chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\")."
+    }
+  ]
+}
