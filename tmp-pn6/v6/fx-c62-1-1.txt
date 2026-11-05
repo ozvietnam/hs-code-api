@@ -1,0 +1,273 @@
+VÒNG SỬA — 9 PN6 bị cổng máy chặn (620120 620130 620140 620190 620220 620230 620240 620520 620590). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 620120 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:62012010:302
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"620120","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620120","dong8":{"62012010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Áo khoác ngoài","áo mưa","áo choàng mặc khi đi xe","áo choàng không tay","áo khoác không tay","áo choàng ponchos","áo khoác dạ trùm qua hông","áo khoác dạ dáng dài","áo khoác có mũ trùm đầu","áo khoác kiểu duffel","áo khoác mỏng (trench coats)","áo khoác bằng vải gabardines","áo khoác ghi lê có đệm"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"62012010","loai":"QUYET_DINH","ghiChu":"tax.62012010: liệt kê tên hàng ⇒ tenLoai mảng"}]}
+```
+
+=== GÓI PN6 620120 ===
+# 620120 — Từ lông cừu hoặc lông động vật loại mịn
+
+620120 — Coats; men's or boys', overcoats, raincoats, car-coats, capes, cloaks, anoraks (including ski-jackets) and similar articles, of wool or fine animal hair, other than those of heading no. 6203 (not knitted or crocheted)
+  62012010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+  62012090 Loại khác  [LK]
+
+- 62012010 DONG8
+    tax.62012010 [302 ký tự]: 62012010 - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62012090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62012090 [22 ký tự]: 62012090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620120; chú giải: nhom6201.nhom, ch62.chuong, phan62.phan
+
+
+=== SỬA PN6 620130 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:62013010:302
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"620130","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620130","dong8":{"62013010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Áo khoác ngoài","áo mưa","áo choàng mặc khi đi xe","áo choàng không tay","áo khoác không tay","áo choàng ponchos","áo khoác dạ trùm qua hông","áo khoác dạ dáng dài","áo khoác có mũ trùm đầu","áo khoác kiểu duffel","áo khoác mỏng (trench coats)","áo khoác bằng vải gabardines","áo khoác ghi lê có đệm"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"62013010","loai":"QUYET_DINH","ghiChu":"tax.62013010: liệt kê tên hàng ⇒ tenLoai mảng"}]}
+```
+
+=== GÓI PN6 620130 ===
+# 620130 — Từ bông
+
+620130 — Coats; men's or boys', overcoats, raincoats, car-coats, capes, cloaks, anoraks (including ski-jackets) and similar articles, of cotton, other than those of heading no. 6203 (not knitted or crocheted)
+  62013010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+  62013090 Loại khác  [LK]
+
+- 62013010 DONG8
+    tax.62013010 [302 ký tự]: 62013010 - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62013090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62013090 [22 ký tự]: 62013090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620130; chú giải: nhom6201.nhom, ch62.chuong, phan62.phan
+
+
+=== SỬA PN6 620140 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:62014010:302
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"620140","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620140","dong8":{"62014010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Áo khoác ngoài","áo mưa","áo choàng mặc khi đi xe","áo choàng không tay","áo khoác không tay","áo choàng ponchos","áo khoác dạ trùm qua hông","áo khoác dạ dáng dài","áo khoác có mũ trùm đầu","áo khoác kiểu duffel","áo khoác mỏng (trench coats)","áo khoác bằng vải gabardines","áo khoác ghi lê có đệm"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"62014010","loai":"QUYET_DINH","ghiChu":"tax.62014010: liệt kê tên hàng ⇒ tenLoai mảng"}]}
+```
+
+=== GÓI PN6 620140 ===
+# 620140 — Từ sợi nhân tạo
+
+620140 — Coats; men's or boys', overcoats, raincoats, car-coats, capes, cloaks, anoraks (including ski-jackets) and similar articles, of man-made fibres, other than those of heading no. 6203 (not knitted or crocheted)
+  62014010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+  62014090 Loại khác  [LK]
+
+- 62014010 DONG8
+    tax.62014010 [302 ký tự]: 62014010 - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62014090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62014090 [22 ký tự]: 62014090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620140; chú giải: nhom6201.nhom, ch62.chuong, phan62.phan
+
+
+=== SỬA PN6 620190 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:62019011:304
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+    ✗ cong3-trich-qua-dai:62019021:304
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"620190","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620190","dong8":{"62019011":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Áo khoác ngoài","áo mưa","áo choàng mặc khi đi xe","áo choàng không tay","áo khoác không tay","áo choàng ponchos","áo khoác dạ trùm qua hông","áo khoác dạ dáng dài","áo khoác có mũ trùm đầu","áo khoác kiểu duffel","áo khoác mỏng (trench coats)","áo khoác bằng vải gabardines","áo khoác ghi lê có đệm"]}]},"62019021":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Áo khoác ngoài","áo mưa","áo choàng mặc khi đi xe","áo choàng không tay","áo khoác không tay","áo choàng ponchos","áo khoác dạ trùm qua hông","áo khoác dạ dáng dài","áo khoác có mũ trùm đầu","áo khoác kiểu duffel","áo khoác mỏng (trench coats)","áo khoác bằng vải gabardines","áo khoác ghi lê có đệm"]}]}},"dieuKienNut":{"6201901":{"dieuKienSo":[{"fact":"loaiSoiDet","op":"TRONG","value":["TO_TAM"]}]},"6201902":{"dieuKienSo":[{"fact":"loaiSoiDet","op":"TRONG","value":["SOI_THUC_VAT_KHAC"]}]}},"ghiChuSoan":[{"ma":"6201901","loai":"QUYET_DINH","ghiChu":"tieuDe.6201901: \"Từ tơ tằm\" ⇒ loaiSoiDet TO_TAM"},{"ma":"62019011","loai":"QUYET_DINH","ghiChu":"tax.62019011: liệt kê tên hàng ⇒ tenLoai mảng"},{"ma":"6201902","loai":"QUYET_DINH","ghiChu":"tieuDe.6201902: \"Từ ramie\" ⇒ loaiSoiDet SOI_THUC_VAT_KHAC"},{"ma":"62019021","loai":"QUYET_DINH","ghiChu":"tax.62019021: liệt kê tên hàng ⇒ tenLoai mảng"}]}
+```
+
+=== GÓI PN6 620190 ===
+# 620190 — Từ các vật liệu dệt khác
+
+620190 — Coats; men's or boys', overcoats, rain-coats, car-coats, capes, cloaks and similar, of textile materials (other than wool, fine animal hair, cotton or man-made fibres), other than those of heading no. 6203 (not knitted or crocheted)
+  [6201901] Từ tơ tằm
+    62019011 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    62019019 Loại khác  [LK]
+  [6201902] Từ ramie
+    62019021 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    62019029 Loại khác  [LK]
+  62019090 Loại khác  [LK]
+
+- 6201901 TIEU_DE
+    tieuDe.6201901 [17 ký tự]: 6201901 Từ tơ tằm
+- 62019011 DONG8
+    tax.62019011 [304 ký tự]: 62019011 - - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62019019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62019019 [24 ký tự]: 62019019 - - - Loại khác
+- 6201902 TIEU_DE
+    tieuDe.6201902 [16 ký tự]: 6201902 Từ ramie
+- 62019021 DONG8
+    tax.62019021 [304 ký tự]: 62019021 - - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62019029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62019029 [24 ký tự]: 62019029 - - - Loại khác
+- 62019090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62019090 [22 ký tự]: 62019090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620190; chú giải: nhom6201.nhom, ch62.chuong, phan62.phan
+
+
+=== SỬA PN6 620220 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:62022010:302
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"620220","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620220","dong8":{"62022010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Áo khoác ngoài","áo mưa","áo choàng mặc khi đi xe","áo choàng không tay","áo khoác không tay","áo choàng ponchos","áo khoác dạ trùm qua hông","áo khoác dạ dáng dài","áo khoác có mũ trùm đầu","áo khoác kiểu duffel","áo khoác mỏng (trench coats)","áo khoác bằng vải gabardines","áo khoác ghi lê có đệm"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"62022010","loai":"QUYET_DINH","ghiChu":"tax.62022010: liệt kê tên hàng ⇒ tenLoai mảng"}]}
+```
+
+=== GÓI PN6 620220 ===
+# 620220 — Từ lông cừu hoặc lông động vật loại mịn
+
+620220 — Coats; women's or girls', overcoats, raincoats, car-coats, capes, cloaks anoraks (including ski-jackets) and similar articles, of wool or fine animal hair, other than those of heading no. 6204 (not knitted or crocheted)
+  62022010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+  62022090 Loại khác  [LK]
+
+- 62022010 DONG8
+    tax.62022010 [302 ký tự]: 62022010 - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62022090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62022090 [22 ký tự]: 62022090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620220; chú giải: nhom6202.nhom, ch62.chuong, phan62.phan
+
+
+=== SỬA PN6 620230 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:62023010:302
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"620230","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620230","dong8":{"62023010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Áo khoác ngoài","áo mưa","áo choàng mặc khi đi xe","áo choàng không tay","áo khoác không tay","áo choàng ponchos","áo khoác dạ trùm qua hông","áo khoác dạ dáng dài","áo khoác có mũ trùm đầu","áo khoác kiểu duffel","áo khoác mỏng (trench coats)","áo khoác bằng vải gabardines","áo khoác ghi lê có đệm"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"62023010","loai":"QUYET_DINH","ghiChu":"tax.62023010: liệt kê tên hàng ⇒ tenLoai mảng"}]}
+```
+
+=== GÓI PN6 620230 ===
+# 620230 — Từ bông
+
+620230 — Coats; women's or girls', overcoats, raincoats, car-coats, capes, cloaks anoraks (including ski-jackets) and similar articles, of cotton, other than those of heading no. 6204 (not knitted or crocheted)
+  62023010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+  62023090 Loại khác  [LK]
+
+- 62023010 DONG8
+    tax.62023010 [302 ký tự]: 62023010 - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62023090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62023090 [22 ký tự]: 62023090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620230; chú giải: nhom6202.nhom, ch62.chuong, phan62.phan
+
+
+=== SỬA PN6 620240 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:62024010:302
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"620240","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620240","dong8":{"62024010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Áo khoác ngoài","áo mưa","áo choàng mặc khi đi xe","áo choàng không tay","áo khoác không tay","áo choàng ponchos","áo khoác dạ trùm qua hông","áo khoác dạ dáng dài","áo khoác có mũ trùm đầu","áo khoác kiểu duffel","áo khoác mỏng (trench coats)","áo khoác bằng vải gabardines","áo khoác ghi lê có đệm"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"62024010","loai":"QUYET_DINH","ghiChu":"tax.62024010: liệt kê tên hàng ⇒ tenLoai mảng"}]}
+```
+
+=== GÓI PN6 620240 ===
+# 620240 — Từ sợi nhân tạo
+
+620240 — Coats; women's or girls', overcoats, raincoats, car-coats, capes, cloaks anoraks (including ski-jackets) and similar articles, of man-made fibres, other than those of heading no. 6204 (not knitted or crocheted)
+  62024010 Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+  62024090 Loại khác  [LK]
+
+- 62024010 DONG8
+    tax.62024010 [302 ký tự]: 62024010 - - Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines và áo khoác ghi lê có đệm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không tay, áo khoác" · [GIỚI HẠN] "không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác" · [GIỚI HẠN] "bằng vải gabardines và áo khoác ghi lê có đệm"
+- 62024090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62024090 [22 ký tự]: 62024090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620240; chú giải: nhom6202.nhom, ch62.chuong, phan62.phan
+
+
+=== SỬA PN6 620520 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:62052010+62052020:aoBarongTagalog=true,phuongPhapIn=BATIK
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"620520","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620520","dong8":{"62052010":{"dieuKienSo":[{"fact":"phuongPhapIn","op":"TRONG","value":["BATIK"]}]},"62052020":{"dieuKienSo":[{"fact":"aoBarongTagalog","op":"CO"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"62052010","loai":"QUYET_DINH","ghiChu":"tax.62052010: \"Được in bằng phương pháp batik truyền thống\" ⇒ phuongPhapIn BATIK"},{"ma":"62052020","loai":"QUYET_DINH","ghiChu":"tax.62052020: \"Áo Barong Tagalog\" ⇒ aoBarongTagalog CO"}]}
+```
+
+=== GÓI PN6 620520 ===
+# 620520 — Từ bông
+
+620520 — Shirts; men's or boys', of cotton (not knitted or crocheted)
+  62052010 Được in bằng phương pháp batik truyền thống (SEN)
+  62052020 Áo Barong Tagalog (SEN)
+  62052090 Loại khác  [LK]
+
+- 62052010 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.62052010 [62 ký tự]: 62052010 - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 62052020 DONG8
+    tax.62052020 [36 ký tự]: 62052020 - - Áo Barong Tagalog (SEN)
+    sen.62052020 [1200 ký tự]: ÁO BARONG TAGALOG Áo Barong Tagalog là một loại áo ngắn tay hoặc dài tay thường làm từ silk, bông, polyester hoặc hỗn hợp các sợi vải khác nhau. Loại áo này nhẹ, được thêu dọc thân trước và mặc bỏ áo ra ngoài quần (tương tự như áo sơ mi/áo choàng), phía ngoài áo lót. Nó thường được sử dụng trong các dịp trang trọng nhưng cũng có các phiên bản ít trang trọng hơn. Thường được biết đến như là áo Barong Tagalog (nghĩa tiếng Anh là: “áo Tagalog”), được biết đến như là quốc phục cho đàn ông Phi-líp-pin. Từ Barong là một từ tiếng Phi-líp-pin “baro” nghĩa là trang phục. Giống như Baju trong tiếng Ma-lay-xi-a nghĩa là trang phục. Thuật ngữ “Barong Tagalog” nguyên văn là “Trang phục Tagalog” trong tiếng Phi- líp-pin. Các phiên bản: ● Áo Pô lô barong là phiên bản ngắn tay của barong, thông thường được làm từ lanh, xơ gai ramie hoặc bông. Đây là phiên bản ít trang trọng nhất của barong và thường được sử dụng như trang phục văn phòng của nam giới (giống như áo vest và cà vạt ở phương Tây). ● Gusót-Mayaman (“dễ nhàu” trong tiếng Tagalog) và Barong lanh là các loại áo barong không được làm từ vải dứa, vải jusi hoặc các loại vải tinh xảo tương tự. Loại áo này thường được coi như ít trang trọng 
+- 62052090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62052090 [22 ký tự]: 62052090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620520; chú giải: nhom6205.nhom, ch62.chuong, phan62.phan
+
+
+=== SỬA PN6 620590 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:62059091+62059092:aoBarongTagalog=true,loaiSoiDet=BONG,phuongPhapIn=BATIK
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"620590","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-620590","dong8":{"62059010":{"dieuKienSo":[{"fact":"loaiSoiDet","op":"TRONG","value":["LEN_LONG_DONG_VAT_MIN"]}]},"62059091":{"dieuKienSo":[{"fact":"phuongPhapIn","op":"TRONG","value":["BATIK"]}]},"62059092":{"dieuKienSo":[{"fact":"aoBarongTagalog","op":"CO"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"62059010","loai":"QUYET_DINH","ghiChu":"tax.62059010: \"Từ lông cừu hoặc lông động vật loại mịn\" ⇒ loaiSoiDet LEN_LONG_DONG_VAT_MIN"},{"ma":"62059091","loai":"QUYET_DINH","ghiChu":"tax.62059091: \"Được in bằng phương pháp batik truyền thống\" ⇒ phuongPhapIn BATIK"},{"ma":"62059092","loai":"QUYET_DINH","ghiChu":"tax.62059092: \"Áo Barong Tagalog\" ⇒ aoBarongTagalog CO"}]}
+```
+
+=== GÓI PN6 620590 ===
+# 620590 — Từ các vật liệu dệt khác
+
+620590 — Shirts; men's or boys', of textile materials n.e.c. in heading no. 6205 (not knitted or crocheted)
+  62059010 Từ lông cừu hoặc lông động vật loại mịn
+  [6205909] Loại khác
+    62059091 Được in bằng phương pháp batik truyền thống (SEN)
+    62059092 Áo Barong Tagalog (SEN)
+    62059099 Loại khác  [LK]
+
+- 62059010 DONG8
+    tax.62059010 [52 ký tự]: 62059010 - - Từ lông cừu hoặc lông động vật loại mịn
+- 6205909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.6205909 [17 ký tự]: 6205909 Loại khác
+- 62059091 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.62059091 [64 ký tự]: 62059091 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 62059092 DONG8
+    tax.62059092 [38 ký tự]: 62059092 - - - Áo Barong Tagalog (SEN)
+    sen.62059092 [1200 ký tự]: ÁO BARONG TAGALOG Áo Barong Tagalog là một loại áo ngắn tay hoặc dài tay thường làm từ silk, bông, polyester hoặc hỗn hợp các sợi vải khác nhau. Loại áo này nhẹ, được thêu dọc thân trước và mặc bỏ áo ra ngoài quần (tương tự như áo sơ mi/áo choàng), phía ngoài áo lót. Nó thường được sử dụng trong các dịp trang trọng nhưng cũng có các phiên bản ít trang trọng hơn. Thường được biết đến như là áo Barong Tagalog (nghĩa tiếng Anh là: “áo Tagalog”), được biết đến như là quốc phục cho đàn ông Phi-líp-pin. Từ Barong là một từ tiếng Phi-líp-pin “baro” nghĩa là trang phục. Giống như Baju trong tiếng Ma-lay-xi-a nghĩa là trang phục. Thuật ngữ “Barong Tagalog” nguyên văn là “Trang phục Tagalog” trong tiếng Phi- líp-pin. Các phiên bản: ● Áo Pô lô barong là phiên bản ngắn tay của barong, thông thường được làm từ lanh, xơ gai ramie hoặc bông. Đây là phiên bản ít trang trọng nhất của barong và thường được sử dụng như trang phục văn phòng của nam giới (giống như áo vest và cà vạt ở phương Tây). ● Gusót-Mayaman (“dễ nhàu” trong tiếng Tagalog) và Barong lanh là các loại áo barong không được làm từ vải dứa, vải jusi hoặc các loại vải tinh xảo tương tự. Loại áo này thường được coi như ít trang trọng 
+- 62059099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.62059099 [24 ký tự]: 62059099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.620590; chú giải: nhom6205.nhom, ch62.chuong, phan62.phan
+

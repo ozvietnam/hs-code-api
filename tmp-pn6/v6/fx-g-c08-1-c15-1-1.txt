@@ -1,0 +1,85 @@
+VÒNG SỬA — 3 PN6 bị cổng máy chặn (080310 080510 081350). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 080310 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:080310:phuongPhapBaoQuan=SONG
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"080310","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-080310","dong8":{"08031010":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]},"08031020":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]}},"ghiChuSoan":[{"ma":"08031010","loai":"QUYET_DINH","ghiChu":"tax.08031010 \"Tươi\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH"},{"ma":"08031020","loai":"QUYET_DINH","ghiChu":"tax.08031020 \"Khô\" ⇒ phuongPhapBaoQuan KHO_MUOI"}]}
+```
+
+=== GÓI PN6 080310 ===
+# 080310 — Chuối lá
+
+080310 — Fruit, edible; plantains, fresh or dried
+  08031010 Tươi
+  08031020 Khô
+
+- 08031010 DONG8
+    tax.08031010 [17 ký tự]: 08031010 - - Tươi
+- 08031020 DONG8
+    tax.08031020 [16 ký tự]: 08031020 - - Khô
+
+Nguồn cấp phân nhóm: wco.080310; chú giải: nhom0803.nhom, ch08.chuong, phan08.phan
+
+
+=== SỬA PN6 080510 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:080510:phuongPhapBaoQuan=SONG
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"080510","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-080510","dong8":{"08051010":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]},"08051020":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]}},"ghiChuSoan":[{"ma":"08051010","loai":"QUYET_DINH","ghiChu":"tax.08051010 \"Tươi\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH"},{"ma":"08051020","loai":"QUYET_DINH","ghiChu":"tax.08051020 \"Khô\" ⇒ phuongPhapBaoQuan KHO_MUOI"}]}
+```
+
+=== GÓI PN6 080510 ===
+# 080510 — Quả cam
+
+080510 — Fruit, edible; oranges, fresh or dried
+  08051010 Tươi
+  08051020 Khô
+
+- 08051010 DONG8
+    tax.08051010 [17 ký tự]: 08051010 - - Tươi
+- 08051020 DONG8
+    tax.08051020 [16 ký tự]: 08051020 - - Khô
+
+Nguồn cấp phân nhóm: wco.080510; chú giải: nhom0805.nhom, ch08.chuong, phan08.phan
+
+
+=== SỬA PN6 081350 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-dong-khong-toi-duoc:08135020
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn đúng ý chữ. Vẫn không tới được ⇒ DỪNG, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"081350","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-081350","dong8":{"08135010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Hạt điều","quả hạch Brazil"]}]},"08135020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Quả hạch"}],"phanConLai":["08135010"]},"08135030":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Quả chà là"}]},"08135040":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Quả bơ","quả cam","quả quýt"]}]}},"ghiChuSoan":[{"ma":"08135010","loai":"QUYET_DINH","ghiChu":"tax.08135010 \"Hạt điều hoặc quả hạch Brazil (Brazil nuts)...\" ⇒ tenLoai mảng Hạt điều, quả hạch Brazil"},{"ma":"08135020","loai":"QUYET_DINH","ghiChu":"tax.08135020 \"Quả hạch (nuts) khác...\" ⇒ tenLoai Quả hạch, phanConLai phủ 08135010"},{"ma":"08135030","loai":"QUYET_DINH","ghiChu":"tax.08135030 \"Quả chà là...\" ⇒ tenLoai Quả chà là"},{"ma":"08135040","loai":"QUYET_DINH","ghiChu":"tax.08135040 \"Quả bơ hoặc quả cam hoặc quả quýt...\" ⇒ tenLoai mảng Quả bơ, quả cam, quả quýt"}]}
+```
+
+=== GÓI PN6 081350 ===
+# 081350 — Hỗn hợp các loại quả hạch (nuts) hoặc quả khô thuộc Chương này
+
+081350 — Nuts, edible; mixtures of nuts or dried fruits of chapter 08
+  08135010 Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+  08135020 Quả hạch (nuts) khác chiếm đa số về khối lượng
+  08135030 Quả chà là chiếm đa số về khối lượng
+  08135040 Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+  08135090 Loại khác  [LK]
+
+- 08135010 DONG8
+    tax.08135010 [82 ký tự]: 08135010 - - Hạt điều hoặc quả hạch Brazil (Brazil nuts) chiếm đa số về khối lượng
+- 08135020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.08135020 [59 ký tự]: 08135020 - - Quả hạch (nuts) khác chiếm đa số về khối lượng
+- 08135030 DONG8
+    tax.08135030 [49 ký tự]: 08135030 - - Quả chà là chiếm đa số về khối lượng
+- 08135040 DONG8
+    tax.08135040 [94 ký tự]: 08135040 - - Quả bơ hoặc quả cam hoặc quả quýt các loại (kể cả quất) chiếm đa số về khối lượng
+- 08135090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.08135090 [22 ký tự]: 08135090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.081350; chú giải: nhom0813.nhom, ch08.chuong, phan08.phan

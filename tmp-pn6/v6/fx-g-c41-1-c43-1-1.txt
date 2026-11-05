@@ -1,0 +1,54 @@
+VÒNG SỬA — 2 PN6 bị cổng máy chặn (410411 420222). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 410411 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:41041110:41041110
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:41041190:41041110
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"410411","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-410411","dong8":{"41041110":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"41041110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"nguonGocDongVat","ghiChu":"Của động vật họ trâu bò"},{"ma":"41041110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"phuongPhapThuoc","ghiChu":"đã thuộc thực vật"}]}
+```
+
+=== GÓI PN6 410411 ===
+# 410411 — Da cật, chưa xẻ; da váng có mặt cật (da lộn)
+
+410411 — Tanned or crust hides and skins; without hair on, bovine or equine, in the wet state (including wet-blue), full grains, unsplit; grain splits
+  41041110 Của động vật họ trâu bò, đã thuộc thực vật
+  41041190 Loại khác  [LK]
+
+- 41041110 DONG8
+    tax.41041110 [57 ký tự]: 41041110 - - - Của động vật họ trâu bò, đã thuộc thực vật
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của động vật họ trâu bò, đã thuộc thực vật"
+- 41041190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.41041190 [24 ký tự]: 41041190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.410411; chú giải: nhom4104.nhom, ch41.chuong, phan41.phan
+
+=== SỬA PN6 420222 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:42022210:42022210
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:42022220:42022220
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"420222","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-420222","dong8":{"42022210":{"dieuKienSo":[]},"42022220":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"42022210","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatLieuMatNgoai","ghiChu":"Mặt ngoài bằng tấm plastic"},{"ma":"42022220","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatLieuMatNgoai","ghiChu":"Mặt ngoài bằng vật liệu dệt"}]}
+```
+
+=== GÓI PN6 420222 ===
+# 420222 — Mặt ngoài bằng tấm plastic hoặc vật liệu dệt
+
+420222 — Cases and containers; handbags (whether or not with shoulder strap and including those without handle), with outer surface of sheeting of plastics or of textile materials
+  42022210 Mặt ngoài bằng tấm plastic
+  42022220 Mặt ngoài bằng vật liệu dệt
+
+- 42022210 DONG8
+    tax.42022210 [41 ký tự]: 42022210 - - - Mặt ngoài bằng tấm plastic
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng tấm plastic"
+- 42022220 DONG8
+    tax.42022220 [42 ký tự]: 42022220 - - - Mặt ngoài bằng vật liệu dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng vật liệu dệt"
+
+Nguồn cấp phân nhóm: wco.420222; chú giải: nhom4202.nhom, ch42.chuong, phan42.phan

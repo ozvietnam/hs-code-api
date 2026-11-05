@@ -1,0 +1,71 @@
+VÒNG SỬA — 2 PN6 bị cổng máy chặn (721399 721550). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 721399 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:72139910+72139920:congDung=sản xuất que hàn,tenLoai=Thép cốt bê tông:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan-truc:72139910:72139920
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+    ✗ cong2-chong-lan-truc:72139920:72139910
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"721399","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721399","dong8":{"72139910":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"sản xuất que hàn"}]},"72139920":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thép cốt bê tông"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"72139910","loai":"QUYET_DINH","ghiChu":"tax.72139910: \"Loại dùng để sản xuất que hàn (SEN)\" ⇒ congDung \"sản xuất que hàn\""},{"ma":"72139910","loai":"BO_VE","ve":"dùng để sản xuất que hàn","lyDo":"Đã được đưa vào congDung"},{"ma":"72139920","loai":"QUYET_DINH","ghiChu":"tax.72139920: \"Thép cốt bê tông\" ⇒ tenLoai \"Thép cốt bê tông\""}]}
+```
+
+=== GÓI PN6 721399 ===
+# 721399 — Loại khác
+
+721399 — Iron or non-alloy steel; bars and rods, hot-rolled, in irregularly wound coils, n.e.c. in heading no. 7213, of circular cross-section measuring 14mm or more in diameter
+  72139910 Loại dùng để sản xuất que hàn (SEN)
+  72139920 Thép cốt bê tông
+  72139990 Loại khác  [LK]
+
+- 72139910 DONG8
+    tax.72139910 [50 ký tự]: 72139910 - - - Loại dùng để sản xuất que hàn (SEN)
+    sen.72139910 [258 ký tự]: DẠNG QUE, LOẠI DÙNG ĐỂ SẢN XUẤT QUE HÀN Đây là các loại que kim loại có thành phần chung được nêu dưới đây và được sử dụng để sản xuất que hàn bằng việc phủ các chất trợ dung. C ≤ 0,1%; Mn: 0,35 - 0,45%; Si: 0,3 - 0,35%; P: tối đa 0,03%; S: tối đa 0,03%
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để sản xuất que hàn"
+- 72139920 DONG8
+    tax.72139920 [31 ký tự]: 72139920 - - - Thép cốt bê tông
+- 72139990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72139990 [24 ký tự]: 72139990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721399; chú giải: nhom7213.nhom, ch72.chuong, phan72.phan
+
+
+=== SỬA PN6 721550 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-cuc-tinh-nguoc:72155010:hinhDangCatGocKinh
+      → Điều kiện CO/KHONG ngược cực so với chữ trích ("Không …" ⇒ op KHONG). Sửa: Đổi op cho đúng chữ.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"721550","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-721550","dong8":{"72155010":{"dieuKienSo":[{"fact":"hamLuongCarbon","op":">=","value":0.6,"donVi":"%"},{"fact":"hinhDangCatGocKinh","op":"CO"}]},"72155091":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thép cốt bê tông"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"72155010","loai":"QUYET_DINH","ghiChu":"tax.72155010: \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn\" ⇒ hamLuongCarbon >= 0.6 %, hinhDangCatGocKinh CO"},{"ma":"72155010","loai":"BO_VE","ve":"Có hàm lượng carbon","lyDo":"Cụm danh từ chỉ thuộc tính"},{"ma":"72155010","loai":"BO_VE","ve":"từ 0,6% trở lên tính theo khối lượng","lyDo":"Đã lượng hóa qua hamLuongCarbon >= 0.6 %"},{"ma":"72155010","loai":"BO_VE","ve":"trừ dạng mặt cắt ngang hình tròn","lyDo":"Đã phản ánh qua loại trừ hình tròn (hinhDangCatGocKinh CO)"},{"ma":"72155091","loai":"QUYET_DINH","ghiChu":"tax.72155091: \"Thép cốt bê tông\" ⇒ tenLoai \"Thép cốt bê tông\""}]}
+```
+
+=== GÓI PN6 721550 ===
+# 721550 — Loại khác, chưa được gia công quá mức tạo hình nguội hoặc gia công kết thúc nguội
+
+721550 — Iron or non-alloy steel; bars and rods, n.e.c. in chapter 72, cold-formed or cold-finished, (not free-cutting)
+  72155010 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn
+  [7215509] Loại khác
+    72155091 Thép cốt bê tông
+    72155099 Loại khác  [LK]
+
+- 72155010 DONG8
+    tax.72155010 [104 ký tự]: 72155010 - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng carbon" · [GIỚI HẠN] "từ 0,6% trở lên tính theo khối lượng" · [GIỚI HẠN] "trừ dạng mặt cắt ngang hình tròn"
+- 7215509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7215509 [17 ký tự]: 7215509 Loại khác
+- 72155091 DONG8
+    tax.72155091 [31 ký tự]: 72155091 - - - Thép cốt bê tông
+- 72155099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.72155099 [24 ký tự]: 72155099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.721550; chú giải: nhom7215.nhom, ch72.chuong, phan72.phan
+

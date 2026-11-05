@@ -1,0 +1,113 @@
+VÒNG SỬA — 2 PN6 bị cổng máy chặn (890120 890190). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 890120 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-bien-lech-chu:89012071:tongDungTichTau
+      → Biên số lệch chữ: "không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=. Sửa: Sửa op/value đúng chữ của câu trích.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"890120","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-890120","dong8":{"89012050":{"dieuKienSo":[{"fact":"tongDungTichTau","op":"<=","value":5000,"donVi":"GT"}]},"89012071":{"dieuKienSo":[{"fact":"tongDungTichTau","op":"<=","value":20000,"donVi":"GT"}]},"89012072":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":20000,"donVi":"GT"},{"fact":"tongDungTichTau","op":"<=","value":30000,"donVi":"GT"}]},"89012073":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":30000,"donVi":"GT"}]},"89012080":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":50000,"donVi":"GT"}]}},"dieuKienNut":{"8901207":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":5000,"donVi":"GT"},{"fact":"tongDungTichTau","op":"<=","value":50000,"donVi":"GT"}]}},"ghiChuSoan":[{"ma":"89012050","loai":"QUYET_DINH","ghiChu":"tax.89012050: \"Tổng dung tích (gross tonnage) không quá 5.000\" ⇒ tongDungTichTau <= 5000 GT"},{"ma":"8901207","loai":"QUYET_DINH","ghiChu":"tieuDe.8901207: \"Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000\" ⇒ tongDungTichTau > 5000 GT, <= 50000 GT"},{"ma":"89012071","loai":"QUYET_DINH","ghiChu":"tax.89012071: \"Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000\" ⇒ tongDungTichTau <= 20000 GT (ngưỡng 5.000 đã có ở tiêu đề cha)"},{"ma":"89012072","loai":"QUYET_DINH","ghiChu":"tax.89012072: \"Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000\" ⇒ tongDungTichTau > 20000 GT, <= 30000 GT"},{"ma":"89012073","loai":"QUYET_DINH","ghiChu":"tax.89012073: \"Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000\" ⇒ tongDungTichTau > 30000 GT (ngưỡng 50.000 đã có ở tiêu đề cha)"},{"ma":"89012080","loai":"QUYET_DINH","ghiChu":"tax.89012080: \"Tổng dung tích (gross tonnage) trên 50.000\" ⇒ tongDungTichTau > 50000 GT"}]}
+```
+
+=== GÓI PN6 890120 ===
+# 890120 — Tàu chở chất lỏng hoặc khí hóa lỏng
+
+890120 — Tankers
+  89012050 Tổng dung tích (gross tonnage) không quá 5.000
+  [8901207] Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+    89012071 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000
+    89012072 Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000
+    89012073 Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000
+  89012080 Tổng dung tích (gross tonnage) trên 50.000
+
+- 89012050 DONG8
+    tax.89012050 [59 ký tự]: 89012050 - - Tổng dung tích (gross tonnage) không quá 5.000
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) không quá 5.000"
+- 8901207 TIEU_DE
+    tieuDe.8901207 [72 ký tự]: 8901207 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000"
+- 89012071 DONG8
+    tax.89012071 [79 ký tự]: 89012071 - - - Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 5.000 nhưng không quá 20.000"
+- 89012072 DONG8
+    tax.89012072 [80 ký tự]: 89012072 - - - Tổng dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 20.000 nhưng không quá 30.000"
+- 89012073 DONG8
+    tax.89012073 [80 ký tự]: 89012073 - - - Tổng dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 30.000 nhưng không quá 50.000"
+- 89012080 DONG8
+    tax.89012080 [55 ký tự]: 89012080 - - Tổng dung tích (gross tonnage) trên 50.000
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 50.000"
+
+Nguồn cấp phân nhóm: wco.890120; chú giải: nhom8901.nhom, ch89.chuong, phan89.phan
+
+
+=== SỬA PN6 890190 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:8901901:dieu-kien-so-trong-khong-co-trong-trich:DONG_CO
+      → Câu trích không có cách đọc của giá trị liệt kê. Sửa: Mỗi giá trị cần một mẫu cachDoc có trong trich (xem --tu-vung).
+    ✗ cong3-muc:8901903:dieu-kien-so-trong-khong-co-trong-trich:DONG_CO
+    ✗ cong5-ve-gioi-han-bi-bo:8901903:Có động cơ đẩy
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"890190","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-890190","dong8":{"89019011":{"dieuKienSo":[{"fact":"tongDungTichTau","op":"<=","value":26,"donVi":"GT"}]},"89019012":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":26,"donVi":"GT"},{"fact":"tongDungTichTau","op":"<=","value":500,"donVi":"GT"}]},"89019014":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":500,"donVi":"GT"}]},"89019031":{"dieuKienSo":[{"fact":"tongDungTichTau","op":"<=","value":26,"donVi":"GT"}]},"89019032":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":26,"donVi":"GT"},{"fact":"tongDungTichTau","op":"<=","value":500,"donVi":"GT"}]},"89019033":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":500,"donVi":"GT"},{"fact":"tongDungTichTau","op":"<=","value":1000,"donVi":"GT"}]},"89019034":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":1000,"donVi":"GT"},{"fact":"tongDungTichTau","op":"<=","value":4000,"donVi":"GT"}]},"89019035":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":4000,"donVi":"GT"},{"fact":"tongDungTichTau","op":"<=","value":5000,"donVi":"GT"}]},"89019036":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":5000,"donVi":"GT"},{"fact":"tongDungTichTau","op":"<=","value":50000,"donVi":"GT"}]},"89019037":{"dieuKienSo":[{"fact":"tongDungTichTau","op":">","value":50000,"donVi":"GT"}]}},"dieuKienNut":{"8901901":{"dieuKienSo":[{"fact":"cachDieuKhien","op":"TRONG","chieu":"PHAI_KHONG","value":["DONG_CO"]}]},"8901903":{"dieuKienSo":[{"fact":"cachDieuKhien","op":"TRONG","value":["DONG_CO"]}]}},"ghiChuSoan":[{"ma":"8901901","loai":"QUYET_DINH","ghiChu":"tieuDe.8901901: \"Không có động cơ đẩy\" ⇒ cachDieuKhien PHAI_KHONG DONG_CO"},{"ma":"89019011","loai":"QUYET_DINH","ghiChu":"tax.89019011: \"Tổng dung tích (gross tonnage) không quá 26\" ⇒ tongDungTichTau <= 26 GT"},{"ma":"89019012","loai":"QUYET_DINH","ghiChu":"tax.89019012: \"Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500\" ⇒ tongDungTichTau > 26 GT, <= 500 GT"},{"ma":"89019014","loai":"QUYET_DINH","ghiChu":"tax.89019014: \"Tổng dung tích (gross tonnage) trên 500\" ⇒ tongDungTichTau > 500 GT"},{"ma":"8901903","loai":"QUYET_DINH","ghiChu":"tieuDe.8901903: \"Có động cơ đẩy\" ⇒ cachDieuKhien DONG_CO"},{"ma":"89019031","loai":"QUYET_DINH","ghiChu":"tax.89019031: \"Tổng dung tích (gross tonnage) không quá 26\" ⇒ tongDungTichTau <= 26 GT"},{"ma":"89019032","loai":"QUYET_DINH","ghiChu":"tax.89019032: \"Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500\" ⇒ tongDungTichTau > 26 GT, <= 500 GT"},{"ma":"89019033","loai":"QUYET_DINH","ghiChu":"tax.89019033: \"Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000\" ⇒ tongDungTichTau > 500 GT, <= 1000 GT"},{"ma":"89019034","loai":"QUYET_DINH","ghiChu":"tax.89019034: \"Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000\" ⇒ tongDungTichTau > 1000 GT, <= 4000 GT"},{"ma":"89019035","loai":"QUYET_DINH","ghiChu":"tax.89019035: \"Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000\" ⇒ tongDungTichTau > 4000 GT, <= 5000 GT"},{"ma":"89019036","loai":"QUYET_DINH","ghiChu":"tax.89019036: \"Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000\" ⇒ tongDungTichTau > 5000 GT, <= 50000 GT"},{"ma":"89019037","loai":"QUYET_DINH","ghiChu":"tax.89019037: \"Tổng dung tích (gross tonnage) trên 50.000\" ⇒ tongDungTichTau > 50000 GT"}]}
+```
+
+=== GÓI PN6 890190 ===
+# 890190 — Tàu thuyền khác để vận chuyển hàng hóa và tàu thuyền khác để vận chuyển cả người và hàng hóa
+
+890190 — Vessels; n.e.c. in heading no. 8901, for the transport of goods and other vessels for the transport of both persons and goods
+  [8901901] Không có động cơ đẩy
+    89019011 Tổng dung tích (gross tonnage) không quá 26
+    89019012 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+    89019014 Tổng dung tích (gross tonnage) trên 500
+  [8901903] Có động cơ đẩy
+    89019031 Tổng dung tích (gross tonnage) không quá 26
+    89019032 Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500
+    89019033 Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000
+    89019034 Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000
+    89019035 Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000
+    89019036 Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+    89019037 Tổng dung tích (gross tonnage) trên 50.000
+
+- 8901901 TIEU_DE
+    tieuDe.8901901 [28 ký tự]: 8901901 Không có động cơ đẩy
+- 89019011 DONG8
+    tax.89019011 [59 ký tự]: 89019011 - - - Tổng dung tích (gross tonnage) không quá 26 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) không quá 26"
+- 89019012 DONG8
+    tax.89019012 [74 ký tự]: 89019012 - - - Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 26 nhưng không quá 500"
+- 89019014 DONG8
+    tax.89019014 [54 ký tự]: 89019014 - - - Tổng dung tích (gross tonnage) trên 500
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 500"
+- 8901903 TIEU_DE
+    tieuDe.8901903 [22 ký tự]: 8901903 Có động cơ đẩy
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có động cơ đẩy"
+- 89019031 DONG8
+    tax.89019031 [59 ký tự]: 89019031 - - - Tổng dung tích (gross tonnage) không quá 26 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) không quá 26"
+- 89019032 DONG8
+    tax.89019032 [74 ký tự]: 89019032 - - - Tổng dung tích (gross tonnage) trên 26 nhưng không quá 500 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 26 nhưng không quá 500"
+- 89019033 DONG8
+    tax.89019033 [77 ký tự]: 89019033 - - - Tổng dung tích (gross tonnage) trên 500 nhưng không quá 1.000 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 500 nhưng không quá 1.000"
+- 89019034 DONG8
+    tax.89019034 [79 ký tự]: 89019034 - - - Tổng dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 1.000 nhưng không quá 4.000"
+- 89019035 DONG8
+    tax.89019035 [78 ký tự]: 89019035 - - - Tổng dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 4.000 nhưng không quá 5.000"
+- 89019036 DONG8
+    tax.89019036 [79 ký tự]: 89019036 - - - Tổng dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 5.000 nhưng không quá 50.000"
+- 89019037 DONG8
+    tax.89019037 [57 ký tự]: 89019037 - - - Tổng dung tích (gross tonnage) trên 50.000
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dung tích (gross tonnage) trên 50.000"
+
+Nguồn cấp phân nhóm: wco.890190; chú giải: nhom8901.nhom, ch89.chuong, phan89.phan
+

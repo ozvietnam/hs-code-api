@@ -1,0 +1,35 @@
+VÒNG SỬA — 1 PN6 bị cổng máy chặn (844849). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 844849 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:8448491:dungCho=ẑẑẑ,tenLoai=Thoi
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"844849","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-844849","dong8":{"84484911":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy hoạt động bằng điện"}]},"84484912":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy không hoạt động bằng điện"}]}},"dieuKienNut":{"8448491":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thoi"}]}},"ghiChuSoan":[{"ma":"8448491","loai":"QUYET_DINH","ghiChu":"tieuDe.8448491: \"Thoi\" ⇒ tenLoai \"Thoi\""},{"ma":"84484911","loai":"QUYET_DINH","ghiChu":"tax.84484911: \"Dùng cho máy hoạt động bằng điện\" ⇒ dungCho \"máy hoạt động bằng điện\""},{"ma":"84484912","loai":"QUYET_DINH","ghiChu":"tax.84484912: \"Dùng cho máy không hoạt động bằng điện\" ⇒ dungCho \"máy không hoạt động bằng điện\""}]}
+```
+
+=== GÓI PN6 844849 ===
+# 844849 — Loại khác
+
+844849 — Weaving machines (looms); parts including their auxiliary machinery, and accessories thereof n.e.c. in item no. 8448.4
+  [8448491] Thoi
+    84484911 Dùng cho máy hoạt động bằng điện
+    84484912 Dùng cho máy không hoạt động bằng điện
+  84484990 Loại khác  [LK]
+
+- 8448491 TIEU_DE
+    tieuDe.8448491 [12 ký tự]: 8448491 Thoi
+- 84484911 DONG8
+    tax.84484911 [49 ký tự]: 84484911 - - - - Dùng cho máy hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84484912 DONG8
+    tax.84484912 [55 ký tự]: 84484912 - - - - Dùng cho máy không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84484990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84484990 [24 ký tự]: 84484990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.844849; chú giải: nhom8448.nhom, ch84.chuong, phan84.phan
+

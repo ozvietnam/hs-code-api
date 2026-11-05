@@ -1,0 +1,174 @@
+VÒNG SỬA — 6 PN6 bị cổng máy chặn (700319 700420 700490 700529 701710 701980). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 700319 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:70031920
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"700319","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-700319","dong8":{"70031910":{"dieuKienSo":[{"fact":"thuyTinhQuangHoc","op":"CO"}]},"70031920":{"dieuKienSo":[{"fact":"hinhDangCatGocKinh","op":"CO"}],"phanConLai":["70031910"]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"70031910","loai":"QUYET_DINH","ghiChu":"tax.70031910: \"Thủy tinh quang học, chưa được gia công về mặt quang học\" ⇒ thuyTinhQuangHoc CO"},{"ma":"70031920","loai":"QUYET_DINH","ghiChu":"tax.70031920: \"Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)\" ⇒ hinhDangCatGocKinh CO, phanConLai [70031910]"}]}
+```
+
+=== GÓI PN6 700319 ===
+# 700319 — Loại khác
+
+700319 — Glass; cast glass and rolled glass, non-wired sheets, (excluding those coloured throughout the mass (body tinted) opacified, flashed or having an absorbent or reflecting layer)
+  70031910 Thủy tinh quang học, chưa được gia công về mặt quang học
+  70031920 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)  [LK có điều kiện]
+  70031990 Loại khác  [LK]
+
+- 70031910 DONG8
+    tax.70031910 [71 ký tự]: 70031910 - - - Thủy tinh quang học, chưa được gia công về mặt quang học
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa được gia công về mặt quang học"
+- 70031920 DONG8
+    tax.70031920 [98 ký tự]: 70031920 - - - Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+- 70031990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.70031990 [24 ký tự]: 70031990 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7003, wco.700319; chú giải: nhom7003.nhom, ch70.chuong, phan70.phan
+
+
+=== SỬA PN6 700420 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:70042020
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"700420","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-700420","dong8":{"70042010":{"dieuKienSo":[{"fact":"thuyTinhQuangHoc","op":"CO"}]},"70042020":{"dieuKienSo":[{"fact":"hinhDangCatGocKinh","op":"CO"}],"phanConLai":["70042010"]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"70042010","loai":"QUYET_DINH","ghiChu":"tax.70042010: \"Kính quang học, chưa được gia công về mặt quang học\" ⇒ thuyTinhQuangHoc CO"},{"ma":"70042020","loai":"QUYET_DINH","ghiChu":"tax.70042020: \"Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)\" ⇒ hinhDangCatGocKinh CO, phanConLai [70042010]"}]}
+```
+
+=== GÓI PN6 700420 ===
+# 700420 — Kính, được phủ màu toàn bộ, mờ, sáng hoặc có tráng lớp hấp thụ, lớp phản chiếu hoặc không phản chiếu
+
+700420 — Glass; drawn and blown, in sheets, coloured throughout the mass (body tinted), opacified, flashed or having an absorbent, reflecting or non-reflecting layer, but not otherwise worked
+  70042010 Kính quang học, chưa được gia công về mặt quang học
+  70042020 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)  [LK có điều kiện]
+  70042090 Loại khác  [LK]
+
+- 70042010 DONG8
+    tax.70042010 [64 ký tự]: 70042010 - - Kính quang học, chưa được gia công về mặt quang học
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa được gia công về mặt quang học"
+- 70042020 DONG8
+    tax.70042020 [96 ký tự]: 70042020 - - Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+- 70042090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.70042090 [22 ký tự]: 70042090 - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7004, wco.700420; chú giải: nhom7004.nhom, ch70.chuong, phan70.phan
+
+
+=== SỬA PN6 700490 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:70049020
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"700490","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-700490","dong8":{"70049010":{"dieuKienSo":[{"fact":"thuyTinhQuangHoc","op":"CO"}]},"70049020":{"dieuKienSo":[{"fact":"hinhDangCatGocKinh","op":"CO"}],"phanConLai":["70049010"]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"70049010","loai":"QUYET_DINH","ghiChu":"tax.70049010: \"Kính quang học, chưa được gia công về mặt quang học\" ⇒ thuyTinhQuangHoc CO"},{"ma":"70049020","loai":"QUYET_DINH","ghiChu":"tax.70049020: \"Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)\" ⇒ hinhDangCatGocKinh CO, phanConLai [70049010]"}]}
+```
+
+=== GÓI PN6 700490 ===
+# 700490 — Loại kính khác
+
+700490 — Glass; drawn and blown, in sheets, (other than glass coloured throughout the mass (body tinted), opacified, flashed or having an absorbent, reflecting or non-reflecting layer)
+  70049010 Kính quang học, chưa được gia công về mặt quang học
+  70049020 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)  [LK có điều kiện]
+  70049090 Loại khác  [LK]
+
+- 70049010 DONG8
+    tax.70049010 [64 ký tự]: 70049010 - - Kính quang học, chưa được gia công về mặt quang học
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa được gia công về mặt quang học"
+- 70049020 DONG8
+    tax.70049020 [96 ký tự]: 70049020 - - Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+- 70049090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.70049090 [22 ký tự]: 70049090 - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7004, wco.700490; chú giải: nhom7004.nhom, ch70.chuong, phan70.phan
+
+
+=== SỬA PN6 700529 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:70052920
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"700529","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-700529","dong8":{"70052910":{"dieuKienSo":[{"fact":"thuyTinhQuangHoc","op":"CO"}]},"70052920":{"dieuKienSo":[{"fact":"hinhDangCatGocKinh","op":"CO"}],"phanConLai":["70052910"]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"70052910","loai":"QUYET_DINH","ghiChu":"tax.70052910: \"Kính quang học, chưa được gia công về mặt quang học\" ⇒ thuyTinhQuangHoc CO"},{"ma":"70052920","loai":"QUYET_DINH","ghiChu":"tax.70052920: \"Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)\" ⇒ hinhDangCatGocKinh CO, phanConLai [70052910]"}]}
+```
+
+=== GÓI PN6 700529 ===
+# 700529 — Loại khác
+
+700529 — Glass; float glass and surface ground or polished glass, in sheets, non-wired, (other than coloured throughout the mass (body tinted), opacified, flashed or merely surface ground)
+  70052910 Kính quang học, chưa được gia công về mặt quang học
+  70052920 Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)  [LK có điều kiện]
+  70052990 Loại khác  [LK]
+
+- 70052910 DONG8
+    tax.70052910 [66 ký tự]: 70052910 - - - Kính quang học, chưa được gia công về mặt quang học
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa được gia công về mặt quang học"
+- 70052920 DONG8
+    tax.70052920 [98 ký tự]: 70052920 - - - Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc (SEN)
+- 70052990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.70052990 [24 ký tự]: 70052990 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.7005, wco.700529; chú giải: nhom7005.nhom, ch70.chuong, phan70.phan
+
+
+=== SỬA PN6 701710 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:70171010:dieu-kien-so-co-khong-co-trong-trich:chiHoacChuYeu
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong5-ve-gioi-han-bi-bo:70171010:được thiết kế
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"701710","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-701710","dong8":{"70171010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Ống thạch anh","vòng kẹp"]},{"fact":"congDung","op":"CONG_DUNG","value":["lò phản ứng","chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"]},{"fact":"chiHoacChuYeu","op":"CO"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"70171010","loai":"QUYET_DINH","ghiChu":"tax.70171010: \"Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng\" ⇒ tenLoai, congDung, chiHoacChuYeu CO"}]}
+```
+
+=== GÓI PN6 701710 ===
+# 701710 — Bằng thạch anh nung chảy hoặc các dạng dioxit silic nung chảy khác
+
+701710 — Glassware; laboratory, hygienic or pharmaceutical, whether or not graduated or calibrated, of fused quartz or other fused silica
+  70171010 Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng
+  70171090 Loại khác  [LK]
+
+- 70171010 DONG8
+    tax.70171010 [150 ký tự]: 70171010 - - Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong lò phản ứng và vòng kẹp" · [GIỚI HẠN] "được thiết kế" · [GIỚI HẠN] "để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
+- 70171090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.70171090 [22 ký tự]: 70171090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.701710; chú giải: nhom7017.nhom, ch70.chuong, phan70.phan
+
+
+=== SỬA PN6 701980 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:70198010+70198020:dungCho=len thủy tinh,tenLoai=Len thủy tinh:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan-truc:70198010:70198020
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+    ✗ cong2-chong-lan-truc:70198020:70198010
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"701980","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-701980","dong8":{"70198010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Len thủy tinh"}]},"70198020":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"len thủy tinh"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"70198010","loai":"QUYET_DINH","ghiChu":"tax.70198010: \"Len thủy tinh\" ⇒ tenLoai TEN_LOAI \"Len thủy tinh\""},{"ma":"70198020","loai":"QUYET_DINH","ghiChu":"tax.70198020: \"Các sản phẩm từ len thủy tinh\" ⇒ dungCho CONG_DUNG \"len thủy tinh\""}]}
+```
+
+=== GÓI PN6 701980 ===
+# 701980 — Len thủy tinh và các sản phẩm từ len thủy tinh
+
+701980 — Glass fibres; glass wool and articles thereof
+  70198010 Len thủy tinh
+  70198020 Các sản phẩm từ len thủy tinh
+
+- 70198010 DONG8
+    tax.70198010 [26 ký tự]: 70198010 - - Len thủy tinh
+- 70198020 DONG8
+    tax.70198020 [42 ký tự]: 70198020 - - Các sản phẩm từ len thủy tinh
+
+Nguồn cấp phân nhóm: wco.701980; chú giải: nhom7019.nhom, ch70.chuong, phan70.phan

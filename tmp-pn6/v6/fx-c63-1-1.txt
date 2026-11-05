@@ -1,0 +1,342 @@
+VÒNG SỬA — 11 PN6 bị cổng máy chặn (630140 630190 630222 630232 630510 630532 630533 630539 630590 630690 630710). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 630140 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63014010:63014010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63014090:63014010
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630140","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630140","dong8":{"63014010":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63014010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Vải không dệt"}]}
+```
+
+=== GÓI PN6 630140 ===
+# 630140 — Chăn (trừ chăn điện) và chăn du lịch, từ xơ sợi tổng hợp
+
+630140 — Blankets (other than electric blankets) and travelling rugs; of synthetic fibres
+  63014010 Vải không dệt
+  63014090 Loại khác  [LK]
+
+- 63014010 DONG8
+    tax.63014010 [26 ký tự]: 63014010 - - Vải không dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không dệt"
+- 63014090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63014090 [22 ký tự]: 63014090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630140; chú giải: nhom6301.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630190 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63019010:63019010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63019090:63019010
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630190","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630190","dong8":{"63019010":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63019010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Vải không dệt"}]}
+```
+
+=== GÓI PN6 630190 ===
+# 630190 — Chăn và chăn du lịch khác
+
+630190 — Blankets and travelling rugs; n.e.c. in heading no. 6301
+  63019010 Vải không dệt
+  63019090 Loại khác  [LK]
+
+- 63019010 DONG8
+    tax.63019010 [26 ký tự]: 63019010 - - Vải không dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không dệt"
+- 63019090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63019090 [22 ký tự]: 63019090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630190; chú giải: nhom6301.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630222 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63022210:63022210
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63022290:63022210
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630222","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630222","dong8":{"63022210":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63022210","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Vải không dệt"}]}
+```
+
+=== GÓI PN6 630222 ===
+# 630222 — Từ sợi nhân tạo
+
+630222 — Bed linen; of man-made fibres, printed, not knitted or crocheted
+  63022210 Vải không dệt
+  63022290 Loại khác  [LK]
+
+- 63022210 DONG8
+    tax.63022210 [28 ký tự]: 63022210 - - - Vải không dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không dệt"
+- 63022290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63022290 [24 ký tự]: 63022290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630222; chú giải: nhom6302.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630232 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63023210:63023210
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63023290:63023210
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630232","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630232","dong8":{"63023210":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63023210","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Vải không dệt"}]}
+```
+
+=== GÓI PN6 630232 ===
+# 630232 — Từ sợi nhân tạo
+
+630232 — Bed linen; of man-made fibres (not printed, knitted or crocheted)
+  63023210 Vải không dệt
+  63023290 Loại khác  [LK]
+
+- 63023210 DONG8
+    tax.63023210 [28 ký tự]: 63023210 - - - Vải không dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không dệt"
+- 63023290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63023290 [24 ký tự]: 63023290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630232; chú giải: nhom6302.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630510 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63051011:6305101
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63051019:6305101
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630510","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630510","dong8":{"63051011":{"dieuKienSo":[{"fact":"loaiSoiDet","op":"TRONG","value":["SOI_THUC_VAT_KHAC"]}]},"63051021":{"dieuKienSo":[{"fact":"loaiSoiDet","op":"TRONG","value":["SOI_THUC_VAT_KHAC"]}]}},"dieuKienNut":{"6305101":{"dieuKienSo":[]},"6305102":{"dieuKienSo":[{"fact":"tinhTrang","op":"TRONG","value":["DA_QUA_SU_DUNG"]}]}},"ghiChuSoan":[{"ma":"6305101","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"tinhTrang","ghiChu":"Mới"},{"ma":"63051011","loai":"QUYET_DINH","ghiChu":"tax.63051011: \"Từ đay\" ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC]"},{"ma":"6305102","loai":"QUYET_DINH","ghiChu":"tieuDe.6305102: \"Đã qua sử dụng\" ⇒ tinhTrang TRONG [DA_QUA_SU_DUNG]"},{"ma":"63051021","loai":"QUYET_DINH","ghiChu":"tax.63051021: \"Từ đay\" ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC]"}]}
+```
+
+=== GÓI PN6 630510 ===
+# 630510 — Từ đay hoặc các loại xơ libe dệt khác thuộc nhóm 53.03
+
+630510 — Sacks and bags; of a kind used for the packing of goods, of jute or of other textile bast fibres of heading no. 5303
+  [6305101] Mới
+    63051011 Từ đay
+    63051019 Loại khác  [LK]
+  [6305102] Đã qua sử dụng
+    63051021 Từ đay
+    63051029 Loại khác  [LK]
+
+- 6305101 TIEU_DE
+    tieuDe.6305101 [11 ký tự]: 6305101 Mới
+- 63051011 DONG8
+    tax.63051011 [21 ký tự]: 63051011 - - - Từ đay
+- 63051019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63051019 [24 ký tự]: 63051019 - - - Loại khác
+- 6305102 TIEU_DE
+    tieuDe.6305102 [22 ký tự]: 6305102 Đã qua sử dụng
+- 63051021 DONG8
+    tax.63051021 [21 ký tự]: 63051021 - - - Từ đay
+- 63051029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63051029 [24 ký tự]: 63051029 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630510; chú giải: nhom6305.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630532 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63053210:63053210
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63053220:63053220
+    ✗ cong1-chua-so-hoa:63053290:63053210
+    ✗ cong1-chua-so-hoa:63053290:63053220
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630532","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630532","dong8":{"63053210":{"dieuKienSo":[]},"63053220":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63053210","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Từ vải không dệt"},{"ma":"63053220","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Dệt kim hoặc móc"}]}
+```
+
+=== GÓI PN6 630532 ===
+# 630532 — Túi, bao đựng hàng loại lớn có thể gấp, mở linh hoạt
+
+630532 — Sacks and bags; of a kind used for the packing of goods, of man-made textile materials, flexible intermediate bulk containers
+  63053210 Từ vải không dệt
+  63053220 Dệt kim hoặc móc
+  63053290 Loại khác  [LK]
+
+- 63053210 DONG8
+    tax.63053210 [31 ký tự]: 63053210 - - - Từ vải không dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không dệt"
+- 63053220 DONG8
+    tax.63053220 [31 ký tự]: 63053220 - - - Dệt kim hoặc móc
+- 63053290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63053290 [24 ký tự]: 63053290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630532; chú giải: nhom6305.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630533 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63053310:63053310
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63053320:63053320
+    ✗ cong1-chua-so-hoa:63053390:63053310
+    ✗ cong1-chua-so-hoa:63053390:63053320
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630533","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630533","dong8":{"63053310":{"dieuKienSo":[]},"63053320":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63053310","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Dệt kim hoặc móc"},{"ma":"63053320","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Bằng sợi dệt dạng dải hoặc tương tự"}]}
+```
+
+=== GÓI PN6 630533 ===
+# 630533 — Loại khác, từ dải polyetylen hoặc dải polypropylen hoặc dạng tương tự
+
+630533 — Sacks and bags; of a kind used for the packing of goods, of man-made textile materials, of polyethylene or polypropylene strip or the like, not flexible intermediate bulk containers
+  63053310 Dệt kim hoặc móc
+  63053320 Bằng sợi dệt dạng dải hoặc tương tự
+  63053390 Loại khác  [LK]
+
+- 63053310 DONG8
+    tax.63053310 [31 ký tự]: 63053310 - - - Dệt kim hoặc móc
+- 63053320 DONG8
+    tax.63053320 [50 ký tự]: 63053320 - - - Bằng sợi dệt dạng dải hoặc tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng sợi dệt dạng dải" · [MỞ] "hoặc tương tự"
+- 63053390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63053390 [24 ký tự]: 63053390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630533; chú giải: nhom6305.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630539 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63053910:63053910
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63053920:63053920
+    ✗ cong1-chua-so-hoa:63053990:63053910
+    ✗ cong1-chua-so-hoa:63053990:63053920
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630539","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630539","dong8":{"63053910":{"dieuKienSo":[]},"63053920":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63053910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Từ vải không dệt"},{"ma":"63053920","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Dệt kim hoặc móc"}]}
+```
+
+=== GÓI PN6 630539 ===
+# 630539 — Loại khác
+
+630539 — Sacks and bags; of a kind used for the packing of goods, of man-made textile materials, not of polyethylene or polypropylene strip or the like, not flexible intermediate bulk containers
+  63053910 Từ vải không dệt
+  63053920 Dệt kim hoặc móc
+  63053990 Loại khác  [LK]
+
+- 63053910 DONG8
+    tax.63053910 [31 ký tự]: 63053910 - - - Từ vải không dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không dệt"
+- 63053920 DONG8
+    tax.63053920 [31 ký tự]: 63053920 - - - Dệt kim hoặc móc
+- 63053990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63053990 [24 ký tự]: 63053990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630539; chú giải: nhom6305.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630590 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63059010:63059010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63059020:63059020
+    ✗ cong1-chua-so-hoa:63059090:63059010
+    ✗ cong1-chua-so-hoa:63059090:63059020
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630590","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630590","dong8":{"63059010":{"dieuKienSo":[]},"63059020":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63059010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiSoiDet","ghiChu":"Từ gai dầu thuộc nhóm 53.05"},{"ma":"63059020","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiSoiDet","ghiChu":"Từ dừa (xơ dừa) thuộc nhóm 53.05"}]}
+```
+
+=== GÓI PN6 630590 ===
+# 630590 — Từ các vật liệu dệt khác
+
+630590 — Sacks and bags; of a kind used for the packing of goods, of textile materials (other than jute, cotton or man-made textile materials)
+  63059010 Từ gai dầu thuộc nhóm 53.05
+  63059020 Từ dừa (xơ dừa) thuộc nhóm 53.05
+  63059090 Loại khác  [LK]
+
+- 63059010 DONG8
+    tax.63059010 [40 ký tự]: 63059010 - - Từ gai dầu thuộc nhóm 53.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "thuộc nhóm 53.05"
+- 63059020 DONG8
+    tax.63059020 [45 ký tự]: 63059020 - - Từ dừa (xơ dừa) thuộc nhóm 53.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "thuộc nhóm 53.05"
+- 63059090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63059090 [22 ký tự]: 63059090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630590; chú giải: nhom6305.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630690 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63069010:63069010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63069091:63069010
+    ✗ cong1-chua-so-hoa:63069099:63069010
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630690","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630690","dong8":{"63069010":{"dieuKienSo":[]},"63069091":{"dieuKienSo":[{"fact":"loaiSoiDet","op":"TRONG","value":["BONG"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63069010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Từ vải không dệt"},{"ma":"63069091","loai":"QUYET_DINH","ghiChu":"tax.63069091: \"Từ bông\" ⇒ loaiSoiDet TRONG [BONG]"}]}
+```
+
+=== GÓI PN6 630690 ===
+# 630690 — Loại khác
+
+630690 — Camping goods; (of textile materials), n.e.c in heading no. 6306
+  63069010 Từ vải không dệt
+  [6306909] Loại khác
+    63069091 Từ bông
+    63069099 Loại khác  [LK]
+
+- 63069010 DONG8
+    tax.63069010 [29 ký tự]: 63069010 - - Từ vải không dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không dệt"
+- 6306909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.6306909 [17 ký tự]: 6306909 Loại khác
+- 63069091 DONG8
+    tax.63069091 [22 ký tự]: 63069091 - - - Từ bông
+- 63069099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63069099 [24 ký tự]: 63069099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630690; chú giải: nhom6306.nhom, ch63.chuong, phan63.phan
+
+
+=== SỬA PN6 630710 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:63071010:63071010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:63071020:63071020
+    ✗ cong1-chua-so-hoa:63071090:63071010
+    ✗ cong1-chua-so-hoa:63071090:63071020
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"630710","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-630710","dong8":{"63071010":{"dieuKienSo":[]},"63071020":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"63071010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Từ vải không dệt trừ phớt"},{"ma":"63071020","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"cauTrucVai","ghiChu":"Từ phớt"}]}
+```
+
+=== GÓI PN6 630710 ===
+# 630710 — Khăn lau sàn, khăn lau bát đĩa, khăn lau bụi và các loại khăn lau tương tự
+
+630710 — Cloths; floor cloths, dish-cloths, dusters and similar cleaning cloths
+  63071010 Từ vải không dệt trừ phớt
+  63071020 Từ phớt
+  63071090 Loại khác  [LK]
+
+- 63071010 DONG8
+    tax.63071010 [38 ký tự]: 63071010 - - Từ vải không dệt trừ phớt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không dệt" · [GIỚI HẠN] "trừ phớt"
+- 63071020 DONG8
+    tax.63071020 [20 ký tự]: 63071020 - - Từ phớt
+- 63071090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.63071090 [22 ký tự]: 63071090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.630710; chú giải: nhom6307.nhom, ch63.chuong, phan63.phan
+

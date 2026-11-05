@@ -1,0 +1,130 @@
+VÒNG SỬA — 5 PN6 bị cổng máy chặn (521151 521152 521159 521215 521225). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 521151 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:52115110:dieu-kien-so-co-khong-co-trong-trich:daIn
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"521151","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-521151","dong8":{"52115110":{"dieuKienSo":[{"fact":"daIn","op":"CO"},{"fact":"phuongPhapIn","op":"TRONG","value":["BATIK"]}]}},"dieuKienNut":{},"ghiChuSoan":[]}
+```
+
+=== GÓI PN6 521151 ===
+# 521151 — Vải vân điểm
+
+521151 — Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing more than 200g/m2, printed, plain weave
+  52115110 Được in bằng phương pháp batik truyền thống (SEN)
+  52115190 Loại khác  [LK]
+
+- 52115110 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52115110 [64 ký tự]: 52115110 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52115190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52115190 [24 ký tự]: 52115190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521151; chú giải: nhom5211.nhom, ch52.chuong, phan52.phan
+
+
+=== SỬA PN6 521152 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:52115210:dieu-kien-so-co-khong-co-trong-trich:daIn
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"521152","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-521152","dong8":{"52115210":{"dieuKienSo":[{"fact":"daIn","op":"CO"},{"fact":"phuongPhapIn","op":"TRONG","value":["BATIK"]}]}},"dieuKienNut":{},"ghiChuSoan":[]}
+```
+
+=== GÓI PN6 521152 ===
+# 521152 — Vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân
+
+521152 — Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing more than 200g/m2, printed, 3-thread or 4-thread twill, including cross twill
+  52115210 Được in bằng phương pháp batik truyền thống (SEN)
+  52115290 Loại khác  [LK]
+
+- 52115210 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52115210 [64 ký tự]: 52115210 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52115290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52115290 [24 ký tự]: 52115290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521152; chú giải: nhom5211.nhom, ch52.chuong, phan52.phan
+
+
+=== SỬA PN6 521159 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:52115910:dieu-kien-so-co-khong-co-trong-trich:daIn
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"521159","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-521159","dong8":{"52115910":{"dieuKienSo":[{"fact":"daIn","op":"CO"},{"fact":"phuongPhapIn","op":"TRONG","value":["BATIK"]}]}},"dieuKienNut":{},"ghiChuSoan":[]}
+```
+
+=== GÓI PN6 521159 ===
+# 521159 — Vải dệt khác
+
+521159 — Fabrics, woven; containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing more than 200g/m2, printed, of weaves n.e.c. in item no. 5211.5
+  52115910 Được in bằng phương pháp batik truyền thống (SEN)
+  52115990 Loại khác  [LK]
+
+- 52115910 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52115910 [64 ký tự]: 52115910 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52115990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52115990 [24 ký tự]: 52115990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521159; chú giải: nhom5211.nhom, ch52.chuong, phan52.phan
+
+
+=== SỬA PN6 521215 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:52121510:dieu-kien-so-co-khong-co-trong-trich:daIn
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"521215","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-521215","dong8":{"52121510":{"dieuKienSo":[{"fact":"daIn","op":"CO"},{"fact":"phuongPhapIn","op":"TRONG","value":["BATIK"]}]}},"dieuKienNut":{},"ghiChuSoan":[]}
+```
+
+=== GÓI PN6 521215 ===
+# 521215 — Đã in
+
+521215 — Fabrics, woven; of cotton, printed, weighing not more than 200g/m2, n.e.c. in chapter 52
+  52121510 Được in bằng phương pháp batik truyền thống (SEN)
+  52121590 Loại khác  [LK]
+
+- 52121510 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52121510 [64 ký tự]: 52121510 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52121590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52121590 [24 ký tự]: 52121590 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521215; chú giải: nhom5212.nhom, ch52.chuong, phan52.phan
+
+
+=== SỬA PN6 521225 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:52122510:dieu-kien-so-co-khong-co-trong-trich:daIn
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"521225","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-521225","dong8":{"52122510":{"dieuKienSo":[{"fact":"daIn","op":"CO"},{"fact":"phuongPhapIn","op":"TRONG","value":["BATIK"]}]}},"dieuKienNut":{},"ghiChuSoan":[]}
+```
+
+=== GÓI PN6 521225 ===
+# 521225 — Đã in
+
+521225 — Fabrics, woven; of cotton, printed, weighing more than 200g/m2, n.e.c. in chapter 52
+  52122510 Được in bằng phương pháp batik truyền thống (SEN)
+  52122590 Loại khác  [LK]
+
+- 52122510 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.52122510 [64 ký tự]: 52122510 - - - Được in bằng phương pháp batik truyền thống (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được in" · [GIỚI HẠN] "bằng phương pháp batik truyền thống"
+- 52122590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.52122590 [24 ký tự]: 52122590 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.521225; chú giải: nhom5212.nhom, ch52.chuong, phan52.phan

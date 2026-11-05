@@ -1,0 +1,62 @@
+VÒNG SỬA — 2 PN6 bị cổng máy chặn (711299 711590). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 711299 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:71129910:71129910
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:71129990:71129910
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"711299","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-711299","dong8":{"71129910":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"71129910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatLieuKimLoaiQuy","ghiChu":"tax.71129910 \"Từ bạc, kể cả kim loại dát phủ bạc trừ mảnh vụn có chứa các kim loại quý khác\" thiếu khoá/giá trị chất liệu bạc và kim loại quý"}]}
+```
+
+=== GÓI PN6 711299 ===
+# 711299 — Loại khác
+
+711299 — Waste and scrap of precious metals; waste and scrap of precious metals including metal clad with precious metals, other than that of gold and platinum and excluding ash which contains precious metal or precious metal compounds
+  71129910 Từ bạc, kể cả kim loại dát phủ bạc trừ mảnh vụn có chứa các kim loại quý khác
+  71129990 Loại khác  [LK]
+
+- 71129910 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.71129910 [93 ký tự]: 71129910 - - - Từ bạc, kể cả kim loại dát phủ bạc trừ mảnh vụn có chứa các kim loại quý khác 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "trừ mảnh vụn có" · [GIỚI HẠN] "chứa các kim loại quý khác"
+- 71129990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.71129990 [24 ký tự]: 71129990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.711299; chú giải: nhom7112.nhom, ch71.chuong, phan71.phan
+
+
+=== SỬA PN6 711590 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:71159010:71159010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:71159020:71159020
+    ✗ cong1-chua-so-hoa:71159090:71159010
+    ✗ cong1-chua-so-hoa:71159090:71159020
+KIEMDONE
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"711590","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-711590","dong8":{"71159010":{"dieuKienSo":[]},"71159020":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"71159010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatLieuKimLoaiQuy","ghiChu":"tax.71159010 \"Bằng vàng hoặc bạc\" thiếu giá trị vàng, bạc trong chatLieu"},{"ma":"71159020","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatLieuKimLoaiQuy","ghiChu":"tax.71159020 \"Bằng kim loại dát phủ vàng hoặc bạc\" thiếu giá trị dát phủ vàng, bạc trong chatLieu"}]}
+```
+
+=== GÓI PN6 711590 ===
+# 711590 — Loại khác
+
+711590 — Metal; precious or metal clad with precious metal, other than that of item no. 7115.10
+  71159010 Bằng vàng hoặc bạc
+  71159020 Bằng kim loại dát phủ vàng hoặc bạc
+  71159090 Loại khác  [LK]
+
+- 71159010 DONG8
+    tax.71159010 [32 ký tự]: 71159010 - - Bằng vàng hoặc bạc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng vàng hoặc bạc"
+- 71159020 DONG8
+    tax.71159020 [48 ký tự]: 71159020 - - Bằng kim loại dát phủ vàng hoặc bạc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng kim loại dát phủ vàng hoặc bạc"
+- 71159090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.71159090 [22 ký tự]: 71159090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.711590; chú giải: nhom7115.nhom, ch71.chuong, phan71.phan

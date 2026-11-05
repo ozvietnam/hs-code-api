@@ -1,0 +1,31 @@
+VÒNG SỬA — 1 PN6 bị cổng máy chặn (480593). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 480593 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:48059310+48059320:nhieuLop=true,tenLoai=Giấy thấm:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"480593","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-480593","dong8":{"48059310":{"dieuKienSo":[{"fact":"nhieuLop","op":"CO"}]},"48059320":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Giấy thấm"}]}},"dieuKienNut":{},"ghiChuSoan":[]}
+```
+
+=== GÓI PN6 480593 ===
+# 480593 — Có định lượng từ 225 g/m2 trở lên
+
+480593 — Paper and paperboard; uncoated, weight 225/m2 or more, in rolls or sheets, n.e.c. in heading no. 4805
+  48059310 Giấy và bìa nhiều lớp(SEN)
+  48059320 Giấy thấm (SEN)
+  48059390 Loại khác  [LK]
+
+- 48059310 DONG8
+    tax.48059310 [41 ký tự]: 48059310 - - - Giấy và bìa nhiều lớp(SEN)
+- 48059320 DONG8
+    tax.48059320 [30 ký tự]: 48059320 - - - Giấy thấm (SEN)
+    sen.48059320 [597 ký tự]: GIẤY THẤM Giấy thấm là một loại giấy có khả năng thấm hút cao được sử dụng để thấm nhiều loại chất khác nhau để loại bỏ các loại chất lỏng dư thừa. Thông thường nhất, loại giấy này được dùng để loại bỏ mực hoặc dầu, nhưng chúng cũng có thể được dùng để tách các loại chất lỏng khác. Giấy thấm được làm từ nhiều vật liệu khác nhau, có độ dày, độ mềm… khác nhau tùy thuộc ứng dụng của nó. Nó thường được làm từ xơ sợi xenlulô có nguồn gốc từ bông và được sản xuất trên các máy xeo giấy đặc biệt. Các tiêu chuẩn kỹ thuật cho giấy thấm mực là có thể hút được nhiều hơn 1ml mực trong thời gian 50 giây.
+- 48059390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48059390 [24 ký tự]: 48059390 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4805, wco.480593; chú giải: nhom4805.nhom, ch48.chuong, phan48.phan
+

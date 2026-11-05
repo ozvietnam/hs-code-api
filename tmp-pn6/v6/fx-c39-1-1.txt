@@ -1,0 +1,625 @@
+VÒNG SỬA — 12 PN6 bị cổng máy chặn (390110 391690 391729 391731 391739 391810 391890 391910 391990 392030 392071 392079). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 390110 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:39011012:39011012
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:39011019:39011012
+    ✗ cong1-chua-so-hoa:39011092:39011092
+    ✗ cong1-chua-so-hoa:39011099:39011092
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"390110","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-390110","dong8":{"39011012":{"dieuKienSo":[]},"39011092":{"dieuKienSo":[]}},"dieuKienNut":{"3901101":{"dieuKienSo":[{"fact":"dangNguyenSinh","op":"TRONG","value":["LONG_HOAC_NHAO"]}]}},"ghiChuSoan":[{"ma":"39011012","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongAlphaOlefin","ghiChu":"chứa các monomer alpha-olefin từ 5% trở xuống"},{"ma":"39011092","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongAlphaOlefin","ghiChu":"chứa các monomer alpha-olefin từ 5% trở xuống"}]}
+```
+
+=== GÓI PN6 390110 ===
+# 390110 — Polyetylen có trọng lượng riêng dưới 0,94
+
+390110 — Ethylene polymers; in primary forms, polyethylene having a specific gravity of less than 0.94
+  [3901101] Dạng lỏng hoặc dạng nhão
+    39011012 Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)
+    39011019 Loại khác  [LK]
+  [3901109] Loại khác
+    39011092 Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)
+    39011099 Loại khác  [LK]
+
+- 3901101 TIEU_DE
+    tieuDe.3901101 [32 ký tự]: 3901101 Dạng lỏng hoặc dạng nhão
+- 39011012 DONG8
+    tax.39011012 [77 ký tự]: 39011012 - - - Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)
+    sen.39011012 [284 ký tự]: POLYETYLEN CHỨA CÁC MONOMER ALPHA-OLEFIN TỪ 5% TRỞ XUỐNG Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE) với hàm lượng monomer alpha olefin từ 5% trở xuống tính theo khối lượng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa các monomer alpha-olefin" · [GIỚI HẠN] "từ 5% trở xuống"
+- 39011019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39011019 [24 ký tự]: 39011019 - - - Loại khác
+- 3901109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3901109 [17 ký tự]: 3901109 Loại khác
+- 39011092 DONG8
+    tax.39011092 [77 ký tự]: 39011092 - - - Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)
+    sen.39011092 [284 ký tự]: POLYETYLEN CHỨA CÁC MONOMER ALPHA-OLEFIN TỪ 5% TRỞ XUỐNG Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (ít nhất một lượng nhỏ) dùng để chỉ Polyetylen cấu trúc thẳng có nhánh ngắn tỷ trọng thấp (LLDPE) với hàm lượng monomer alpha olefin từ 5% trở xuống tính theo khối lượng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa các monomer alpha-olefin" · [GIỚI HẠN] "từ 5% trở xuống"
+- 39011099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39011099 [24 ký tự]: 39011099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.390110; chú giải: nhom3901.nhom, ch39.chuong
+
+
+=== SỬA PN6 391690 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:39169030:của xenlulo, đã hóa dẻo
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:39169011:39169011
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:39169011:3916901
+    ✗ cong1-chua-so-hoa:39169012:39169012
+    ✗ cong1-chua-so-hoa:39169012:3916901
+    ✗ cong1-chua-so-hoa:39169019:39169011
+    ✗ cong1-chua-so-hoa:39169019:39169012
+    ✗ cong1-khong-phu-kin:3916909:dangTamPhienMang=TAM_VA_PHIEN
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"391690","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-391690","dong8":{"39169011":{"dieuKienSo":[]},"39169012":{"dieuKienSo":[]},"39169021":{"dieuKienSo":[]},"39169022":{"dieuKienSo":[]},"39169030":{"dieuKienSo":[],"phanConLai":true},"39169040":{"dieuKienSo":[]},"39169050":{"dieuKienSo":[]},"39169060":{"dieuKienSo":[]},"39169091":{"dieuKienSo":[{"fact":"dangTamPhienMang","op":"TRONG","value":["MONOFILAMENT"]}]},"39169092":{"dieuKienSo":[{"fact":"dangTamPhienMang","op":"TRONG","value":["THANH_QUE_HINH"]}]}},"dieuKienNut":{"3916901":{"dieuKienSo":[]},"3916902":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"3916901","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp"},{"ma":"39169011","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ polypropylen"},{"ma":"39169012","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ polystyren"},{"ma":"3916902","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng ngưng hoặc tái sắp xếp"},{"ma":"39169021","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các nhựa phenolic; từ các nhựa amino"},{"ma":"39169022","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyamide"},{"ma":"39169030","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ xenlulo tái sinh; từ xenlulo nitrat, xenlulo acetat và các este xenlulo, ete xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo"},{"ma":"39169030","loai":"QUYET_DINH","ghiChu":"Dòng 39169030 là phần còn lại có tên -> phanConLai: true"},{"ma":"39169040","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các protein đã được làm cứng"},{"ma":"39169050","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ sợi lưu hóa"},{"ma":"39169060","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các dẫn xuất hóa học của cao su tự nhiên"}]}
+```
+
+=== GÓI PN6 391690 ===
+# 391690 — Từ plastic khác
+
+391690 — Plastics; monofilament, of plastics n.e.c. in heading no. 3916, cross-sectional dimension exceeds 1mm, rods, sticks and profile shapes, whether or not surface-worked but not otherwise worked
+  [3916901] Từ các polyme trùng hợp
+    39169011 Từ polypropylen
+    39169012 Từ polystyren
+    39169019 Loại khác  [LK]
+  [3916902] Từ các polyme trùng ngưng hoặc tái sắp xếp
+    39169021 Từ các nhựa phenolic; từ các nhựa amino
+    39169022 Từ các polyamide
+    39169029 Loại khác  [LK]
+  39169030 Từ xenlulo tái sinh; từ xenlulo nitrat, xenlulo acetat và các este xenlulo, ete xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+  39169040 Từ các protein đã được làm cứng
+  39169050 Từ sợi lưu hóa
+  39169060 Từ các dẫn xuất hóa học của cao su tự nhiên
+  [3916909] Loại khác
+    39169091 Sợi monofilament
+    39169092 Dạng thanh, que và các dạng hình
+
+- 3916901 TIEU_DE
+    tieuDe.3916901 [31 ký tự]: 3916901 Từ các polyme trùng hợp
+- 39169011 DONG8
+    tax.39169011 [30 ký tự]: 39169011 - - - Từ polypropylen
+- 39169012 DONG8
+    tax.39169012 [28 ký tự]: 39169012 - - - Từ polystyren
+- 39169019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39169019 [24 ký tự]: 39169019 - - - Loại khác
+- 3916902 TIEU_DE
+    tieuDe.3916902 [50 ký tự]: 3916902 Từ các polyme trùng ngưng hoặc tái sắp xếp
+- 39169021 DONG8
+    tax.39169021 [54 ký tự]: 39169021 - - - Từ các nhựa phenolic; từ các nhựa amino
+- 39169022 DONG8
+    tax.39169022 [31 ký tự]: 39169022 - - - Từ các polyamide
+- 39169029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39169029 [24 ký tự]: 39169029 - - - Loại khác
+- 39169030 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39169030 [153 ký tự]: 39169030 - - Từ xenlulo tái sinh; từ xenlulo nitrat, xenlulo acetat và các este xenlulo, ete xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39169040 DONG8
+    tax.39169040 [44 ký tự]: 39169040 - - Từ các protein đã được làm cứng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được làm cứng"
+- 39169050 DONG8
+    tax.39169050 [27 ký tự]: 39169050 - - Từ sợi lưu hóa
+- 39169060 DONG8
+    tax.39169060 [56 ký tự]: 39169060 - - Từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 3916909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3916909 [17 ký tự]: 3916909 Loại khác
+- 39169091 DONG8
+    tax.39169091 [31 ký tự]: 39169091 - - - Sợi monofilament
+- 39169092 DONG8
+    tax.39169092 [47 ký tự]: 39169092 - - - Dạng thanh, que và các dạng hình
+
+Nguồn cấp phân nhóm: wco.391690; chú giải: nhom3916.nhom, ch39.chuong
+
+
+=== SỬA PN6 391729 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-khong-co-anh-em-truoc:39172911
+      → phanConLai: true nhưng mục đứng đầu tầng (không có anh em đứng trước). Sửa: Xoá phanConLai, hoặc liệt kê đúng anh em bằng mảng.
+    ✗ cong0-phan-con-lai-khong-co-anh-em-truoc:39172921
+    ✗ cong5-ve-gioi-han-bi-bo:39172924:của xenlulo, đã hóa dẻo
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:39172911:3917291
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:39172919:39172911
+    ✗ cong1-chua-so-hoa:39172919:3917291
+    ✗ cong1-chua-so-hoa:39172921:3917291
+    ✗ cong1-chua-so-hoa:39172922:39172922
+    ✗ cong1-chua-so-hoa:39172922:3917291
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"391729","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-391729","dong8":{"39172911":{"dieuKienSo":[],"phanConLai":true},"39172921":{"dieuKienSo":[],"phanConLai":true},"39172922":{"dieuKienSo":[]},"39172923":{"dieuKienSo":[]},"39172924":{"dieuKienSo":[],"phanConLai":true},"39172925":{"dieuKienSo":[],"phanConLai":true}},"dieuKienNut":{"3917291":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"3917291","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"mucDoGiaCong","ghiChu":"Được gia công hơn mức gia công bề mặt đơn thuần"},{"ma":"39172911","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp khác"},{"ma":"39172921","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp khác"},{"ma":"39172922","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ nhựa phenolic"},{"ma":"39172923","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ nhựa amino; từ protein đã được làm cứng; từ các dẫn xuất hóa học của cao su tự nhiên"},{"ma":"39172924","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo; từ sợi lưu hóa"},{"ma":"39172925","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng ngưng hoặc tái sắp xếp khác"}]}
+```
+
+=== GÓI PN6 391729 ===
+# 391729 — Bằng plastic khác
+
+391729 — Plastics; tubes, pipes and hoses thereof, rigid, of plastics n.e.c. in heading no. 3917
+  [3917291] Được gia công hơn mức gia công bề mặt đơn thuần
+    39172911 Từ các polyme trùng hợp khác (SEN)
+    39172919 Loại khác (SEN)  [LK]
+  [3917292] Loại khác
+    39172921 Từ các polyme trùng hợp khác
+    39172922 Từ nhựa phenolic
+    39172923 Từ nhựa amino; từ protein đã được làm cứng; từ các dẫn xuất hóa học của cao su tự nhiên
+    39172924 Từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo; từ sợi lưu hóa
+    39172925 Từ các polyme trùng ngưng hoặc tái sắp xếp khác
+    39172929 Loại khác  [LK]
+
+- 3917291 TIEU_DE
+    tieuDe.3917291 [55 ký tự]: 3917291 Được gia công hơn mức gia công bề mặt đơn thuần
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được gia công hơn mức gia công bề mặt đơn thuần"
+- 39172911 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39172911 [51 ký tự]: 39172911 - - - - Từ các polyme trùng hợp khác (SEN)
+    sen.39172911 [879 ký tự]: ĐƯỢC GIA CÔNG HƠN MỨC GIA CÔNG BỀ MẶT ĐƠN THUẦN Theo các mục đích của nhóm 39.17, thuật ngữ “ống và ống dẫn, được gia công hơn mức gia công bề mặt đơn thuần” để chỉ các ống, ống dẫn và ống vòi đã được gia công lần thứ hai, nhưng vẫn được phân loại vào ống và ống dẫn thuộc nhóm 39.17. Ống và ống dẫn được tạo ra từ quá trình ép đùn mà qua đó bề mặt có thể được tạo rãnh, tạo gờ liên tục trong quá trình này. Việc tạo thành bề mặt này không được coi là gia công hơn. Gia công hơn để chỉ các quá trình gia công thêm khác như là: 1. Lắp với các đầu nối, khớp nối, vòng đệm, ốc vít và đai ốc bằng cách dán hoặc nung chảy (làm nóng) hoặc nén, một hoặc cả hai đầu ống. 2. Uốn cong thành hình dạng cố định như mong muốn. 3. Chèn lót bên trong hoặc vỏ bọc bên ngoài bằng vật liệu khác như kim loại hoặc vật liệu dệt. 4. Được phủ bằng kim loại. 5. Được đục lỗ, đánh bóng và cán mỏng.
+- 39172919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39172919 [32 ký tự]: 39172919 - - - - Loại khác (SEN)
+    sen.39172919 [879 ký tự]: ĐƯỢC GIA CÔNG HƠN MỨC GIA CÔNG BỀ MẶT ĐƠN THUẦN Theo các mục đích của nhóm 39.17, thuật ngữ “ống và ống dẫn, được gia công hơn mức gia công bề mặt đơn thuần” để chỉ các ống, ống dẫn và ống vòi đã được gia công lần thứ hai, nhưng vẫn được phân loại vào ống và ống dẫn thuộc nhóm 39.17. Ống và ống dẫn được tạo ra từ quá trình ép đùn mà qua đó bề mặt có thể được tạo rãnh, tạo gờ liên tục trong quá trình này. Việc tạo thành bề mặt này không được coi là gia công hơn. Gia công hơn để chỉ các quá trình gia công thêm khác như là: 1. Lắp với các đầu nối, khớp nối, vòng đệm, ốc vít và đai ốc bằng cách dán hoặc nung chảy (làm nóng) hoặc nén, một hoặc cả hai đầu ống. 2. Uốn cong thành hình dạng cố định như mong muốn. 3. Chèn lót bên trong hoặc vỏ bọc bên ngoài bằng vật liệu khác như kim loại hoặc vật liệu dệt. 4. Được phủ bằng kim loại. 5. Được đục lỗ, đánh bóng và cán mỏng.
+- 3917292 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3917292 [17 ký tự]: 3917292 Loại khác
+- 39172921 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39172921 [45 ký tự]: 39172921 - - - - Từ các polyme trùng hợp khác
+- 39172922 DONG8
+    tax.39172922 [33 ký tự]: 39172922 - - - - Từ nhựa phenolic
+- 39172923 DONG8
+    tax.39172923 [104 ký tự]: 39172923 - - - - Từ nhựa amino; từ protein đã được làm cứng; từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được làm cứng" · [GIỚI HẠN] "của cao su tự nhiên"
+- 39172924 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39172924 [123 ký tự]: 39172924 - - - - Từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo; từ sợi lưu hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39172925 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39172925 [64 ký tự]: 39172925 - - - - Từ các polyme trùng ngưng hoặc tái sắp xếp khác
+- 39172929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39172929 [26 ký tự]: 39172929 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391729; chú giải: nhom3917.nhom, ch39.chuong
+
+
+=== SỬA PN6 391731 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:39173125:của xenlulo, đã hóa dẻo
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:39173111:39173111
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:39173111:3917311
+    ✗ cong1-chua-so-hoa:39173112:39173112
+    ✗ cong1-chua-so-hoa:39173112:3917311
+    ✗ cong1-chua-so-hoa:39173119:39173111
+    ✗ cong1-chua-so-hoa:39173119:39173112
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"391731","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-391731","dong8":{"39173111":{"dieuKienSo":[]},"39173112":{"dieuKienSo":[]},"39173121":{"dieuKienSo":[]},"39173123":{"dieuKienSo":[]},"39173124":{"dieuKienSo":[]},"39173125":{"dieuKienSo":[],"phanConLai":true}},"dieuKienNut":{"3917311":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"3917311","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"mucDoGiaCong","ghiChu":"Được gia công hơn mức gia công bề mặt đơn thuần"},{"ma":"39173111","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp"},{"ma":"39173112","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ nhựa amino; từ nhựa phenolic; từ sợi lưu hóa; từ các dẫn xuất hóa học của cao su tự nhiên"},{"ma":"39173121","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp"},{"ma":"39173123","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ nhựa amino; từ nhựa phenolic; từ các dẫn xuất hóa học của cao su tự nhiên"},{"ma":"39173124","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ sợi lưu hóa"},{"ma":"39173125","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng ngưng hoặc tái sắp xếp khác; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo"}]}
+```
+
+=== GÓI PN6 391731 ===
+# 391731 — Ống, ống dẫn và ống vòi, loại mềm, có áp suất bục tối thiểu là 27,6 MPa
+
+391731 — Plastics; tubes, pipes and hoses thereof, flexible, having a minimum burst pressure of 27.6MPa
+  [3917311] Được gia công hơn mức gia công bề mặt đơn thuần
+    39173111 Từ các polyme trùng hợp(SEN)
+    39173112 Từ nhựa amino; từ nhựa phenolic; từ sợi lưu hóa; từ các dẫn xuất hóa học của cao su tự nhiên (SEN)
+    39173119 Loại khác (SEN)  [LK]
+  [3917312] Loại khác
+    39173121 Từ các polyme trùng hợp
+    39173123 Từ nhựa amino; từ nhựa phenolic; từ các dẫn xuất hóa học của cao su tự nhiên
+    39173124 Từ sợi lưu hóa
+    39173125 Từ các polyme trùng ngưng hoặc tái sắp xếp khác; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39173129 Loại khác  [LK]
+
+- 3917311 TIEU_DE
+    tieuDe.3917311 [55 ký tự]: 3917311 Được gia công hơn mức gia công bề mặt đơn thuần
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được gia công hơn mức gia công bề mặt đơn thuần"
+- 39173111 DONG8
+    tax.39173111 [45 ký tự]: 39173111 - - - - Từ các polyme trùng hợp(SEN)
+    sen.39173111 [879 ký tự]: ĐƯỢC GIA CÔNG HƠN MỨC GIA CÔNG BỀ MẶT ĐƠN THUẦN Theo các mục đích của nhóm 39.17, thuật ngữ “ống và ống dẫn, được gia công hơn mức gia công bề mặt đơn thuần” để chỉ các ống, ống dẫn và ống vòi đã được gia công lần thứ hai, nhưng vẫn được phân loại vào ống và ống dẫn thuộc nhóm 39.17. Ống và ống dẫn được tạo ra từ quá trình ép đùn mà qua đó bề mặt có thể được tạo rãnh, tạo gờ liên tục trong quá trình này. Việc tạo thành bề mặt này không được coi là gia công hơn. Gia công hơn để chỉ các quá trình gia công thêm khác như là: 1. Lắp với các đầu nối, khớp nối, vòng đệm, ốc vít và đai ốc bằng cách dán hoặc nung chảy (làm nóng) hoặc nén, một hoặc cả hai đầu ống. 2. Uốn cong thành hình dạng cố định như mong muốn. 3. Chèn lót bên trong hoặc vỏ bọc bên ngoài bằng vật liệu khác như kim loại hoặc vật liệu dệt. 4. Được phủ bằng kim loại. 5. Được đục lỗ, đánh bóng và cán mỏng.
+- 39173112 DONG8
+    tax.39173112 [115 ký tự]: 39173112 - - - - Từ nhựa amino; từ nhựa phenolic; từ sợi lưu hóa; từ các dẫn xuất hóa học của cao su tự nhiên (SEN)
+    sen.39173112 [879 ký tự]: ĐƯỢC GIA CÔNG HƠN MỨC GIA CÔNG BỀ MẶT ĐƠN THUẦN Theo các mục đích của nhóm 39.17, thuật ngữ “ống và ống dẫn, được gia công hơn mức gia công bề mặt đơn thuần” để chỉ các ống, ống dẫn và ống vòi đã được gia công lần thứ hai, nhưng vẫn được phân loại vào ống và ống dẫn thuộc nhóm 39.17. Ống và ống dẫn được tạo ra từ quá trình ép đùn mà qua đó bề mặt có thể được tạo rãnh, tạo gờ liên tục trong quá trình này. Việc tạo thành bề mặt này không được coi là gia công hơn. Gia công hơn để chỉ các quá trình gia công thêm khác như là: 1. Lắp với các đầu nối, khớp nối, vòng đệm, ốc vít và đai ốc bằng cách dán hoặc nung chảy (làm nóng) hoặc nén, một hoặc cả hai đầu ống. 2. Uốn cong thành hình dạng cố định như mong muốn. 3. Chèn lót bên trong hoặc vỏ bọc bên ngoài bằng vật liệu khác như kim loại hoặc vật liệu dệt. 4. Được phủ bằng kim loại. 5. Được đục lỗ, đánh bóng và cán mỏng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39173119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39173119 [32 ký tự]: 39173119 - - - - Loại khác (SEN)
+    sen.39173119 [879 ký tự]: ĐƯỢC GIA CÔNG HƠN MỨC GIA CÔNG BỀ MẶT ĐƠN THUẦN Theo các mục đích của nhóm 39.17, thuật ngữ “ống và ống dẫn, được gia công hơn mức gia công bề mặt đơn thuần” để chỉ các ống, ống dẫn và ống vòi đã được gia công lần thứ hai, nhưng vẫn được phân loại vào ống và ống dẫn thuộc nhóm 39.17. Ống và ống dẫn được tạo ra từ quá trình ép đùn mà qua đó bề mặt có thể được tạo rãnh, tạo gờ liên tục trong quá trình này. Việc tạo thành bề mặt này không được coi là gia công hơn. Gia công hơn để chỉ các quá trình gia công thêm khác như là: 1. Lắp với các đầu nối, khớp nối, vòng đệm, ốc vít và đai ốc bằng cách dán hoặc nung chảy (làm nóng) hoặc nén, một hoặc cả hai đầu ống. 2. Uốn cong thành hình dạng cố định như mong muốn. 3. Chèn lót bên trong hoặc vỏ bọc bên ngoài bằng vật liệu khác như kim loại hoặc vật liệu dệt. 4. Được phủ bằng kim loại. 5. Được đục lỗ, đánh bóng và cán mỏng.
+- 3917312 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3917312 [17 ký tự]: 3917312 Loại khác
+- 39173121 DONG8
+    tax.39173121 [40 ký tự]: 39173121 - - - - Từ các polyme trùng hợp
+- 39173123 DONG8
+    tax.39173123 [93 ký tự]: 39173123 - - - - Từ nhựa amino; từ nhựa phenolic; từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39173124 DONG8
+    tax.39173124 [31 ký tự]: 39173124 - - - - Từ sợi lưu hóa
+- 39173125 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39173125 [156 ký tự]: 39173125 - - - - Từ các polyme trùng ngưng hoặc tái sắp xếp khác; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39173129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39173129 [26 ký tự]: 39173129 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391731; chú giải: nhom3917.nhom, ch39.chuong
+
+
+=== SỬA PN6 391739 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:39173994:của xenlulo, đã hóa dẻo
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:39173911:39173911
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:39173911:3917391
+    ✗ cong1-chua-so-hoa:39173912:39173912
+    ✗ cong1-chua-so-hoa:39173912:3917391
+    ✗ cong1-chua-so-hoa:39173919:39173911
+    ✗ cong1-chua-so-hoa:39173919:39173912
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"391739","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-391739","dong8":{"39173911":{"dieuKienSo":[]},"39173912":{"dieuKienSo":[]},"39173991":{"dieuKienSo":[]},"39173992":{"dieuKienSo":[]},"39173993":{"dieuKienSo":[],"phanConLai":true},"39173994":{"dieuKienSo":[],"phanConLai":true}},"dieuKienNut":{"3917391":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"3917391","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"mucDoGiaCong","ghiChu":"Được gia công hơn mức gia công bề mặt đơn thuần"},{"ma":"39173911","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp; từ sợi lưu hóa"},{"ma":"39173912","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ nhựa phenolic hoặc nhựa amino; từ các dẫn xuất hóa học của cao su tự nhiên"},{"ma":"39173991","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp; từ sợi lưu hóa"},{"ma":"39173992","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ nhựa phenolic hoặc nhựa amino; từ các dẫn xuất hóa học của cao su tự nhiên"},{"ma":"39173993","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng ngưng hoặc tái sắp xếp khác"},{"ma":"39173994","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo"}]}
+```
+
+=== GÓI PN6 391739 ===
+# 391739 — Loại khác
+
+391739 — Plastics; tubes, pipes and hoses thereof, n.e.c. in item no. 3917.30
+  [3917391] Được gia công hơn mức gia công bề mặt đơn thuần
+    39173911 Từ các polyme trùng hợp; từ sợi lưu hóa (SEN)
+    39173912 Từ nhựa phenolic hoặc nhựa amino; từ các dẫn xuất hóa học của cao su tự nhiên (SEN)
+    39173919 Loại khác (SEN)  [LK]
+  [3917399] Loại khác
+    39173991 Từ các polyme trùng hợp; từ sợi lưu hóa
+    39173992 Từ nhựa phenolic hoặc nhựa amino; từ các dẫn xuất hóa học của cao su tự nhiên
+    39173993 Từ các polyme trùng ngưng hoặc tái sắp xếp khác
+    39173994 Từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39173999 Loại khác  [LK]
+
+- 3917391 TIEU_DE
+    tieuDe.3917391 [55 ký tự]: 3917391 Được gia công hơn mức gia công bề mặt đơn thuần
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được gia công hơn mức gia công bề mặt đơn thuần"
+- 39173911 DONG8
+    tax.39173911 [62 ký tự]: 39173911 - - - - Từ các polyme trùng hợp; từ sợi lưu hóa (SEN)
+    sen.39173911 [879 ký tự]: ĐƯỢC GIA CÔNG HƠN MỨC GIA CÔNG BỀ MẶT ĐƠN THUẦN Theo các mục đích của nhóm 39.17, thuật ngữ “ống và ống dẫn, được gia công hơn mức gia công bề mặt đơn thuần” để chỉ các ống, ống dẫn và ống vòi đã được gia công lần thứ hai, nhưng vẫn được phân loại vào ống và ống dẫn thuộc nhóm 39.17. Ống và ống dẫn được tạo ra từ quá trình ép đùn mà qua đó bề mặt có thể được tạo rãnh, tạo gờ liên tục trong quá trình này. Việc tạo thành bề mặt này không được coi là gia công hơn. Gia công hơn để chỉ các quá trình gia công thêm khác như là: 1. Lắp với các đầu nối, khớp nối, vòng đệm, ốc vít và đai ốc bằng cách dán hoặc nung chảy (làm nóng) hoặc nén, một hoặc cả hai đầu ống. 2. Uốn cong thành hình dạng cố định như mong muốn. 3. Chèn lót bên trong hoặc vỏ bọc bên ngoài bằng vật liệu khác như kim loại hoặc vật liệu dệt. 4. Được phủ bằng kim loại. 5. Được đục lỗ, đánh bóng và cán mỏng.
+- 39173912 DONG8
+    tax.39173912 [100 ký tự]: 39173912 - - - - Từ nhựa phenolic hoặc nhựa amino; từ các dẫn xuất hóa học của cao su tự nhiên (SEN)
+    sen.39173912 [879 ký tự]: ĐƯỢC GIA CÔNG HƠN MỨC GIA CÔNG BỀ MẶT ĐƠN THUẦN Theo các mục đích của nhóm 39.17, thuật ngữ “ống và ống dẫn, được gia công hơn mức gia công bề mặt đơn thuần” để chỉ các ống, ống dẫn và ống vòi đã được gia công lần thứ hai, nhưng vẫn được phân loại vào ống và ống dẫn thuộc nhóm 39.17. Ống và ống dẫn được tạo ra từ quá trình ép đùn mà qua đó bề mặt có thể được tạo rãnh, tạo gờ liên tục trong quá trình này. Việc tạo thành bề mặt này không được coi là gia công hơn. Gia công hơn để chỉ các quá trình gia công thêm khác như là: 1. Lắp với các đầu nối, khớp nối, vòng đệm, ốc vít và đai ốc bằng cách dán hoặc nung chảy (làm nóng) hoặc nén, một hoặc cả hai đầu ống. 2. Uốn cong thành hình dạng cố định như mong muốn. 3. Chèn lót bên trong hoặc vỏ bọc bên ngoài bằng vật liệu khác như kim loại hoặc vật liệu dệt. 4. Được phủ bằng kim loại. 5. Được đục lỗ, đánh bóng và cán mỏng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39173919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39173919 [32 ký tự]: 39173919 - - - - Loại khác (SEN)
+    sen.39173919 [879 ký tự]: ĐƯỢC GIA CÔNG HƠN MỨC GIA CÔNG BỀ MẶT ĐƠN THUẦN Theo các mục đích của nhóm 39.17, thuật ngữ “ống và ống dẫn, được gia công hơn mức gia công bề mặt đơn thuần” để chỉ các ống, ống dẫn và ống vòi đã được gia công lần thứ hai, nhưng vẫn được phân loại vào ống và ống dẫn thuộc nhóm 39.17. Ống và ống dẫn được tạo ra từ quá trình ép đùn mà qua đó bề mặt có thể được tạo rãnh, tạo gờ liên tục trong quá trình này. Việc tạo thành bề mặt này không được coi là gia công hơn. Gia công hơn để chỉ các quá trình gia công thêm khác như là: 1. Lắp với các đầu nối, khớp nối, vòng đệm, ốc vít và đai ốc bằng cách dán hoặc nung chảy (làm nóng) hoặc nén, một hoặc cả hai đầu ống. 2. Uốn cong thành hình dạng cố định như mong muốn. 3. Chèn lót bên trong hoặc vỏ bọc bên ngoài bằng vật liệu khác như kim loại hoặc vật liệu dệt. 4. Được phủ bằng kim loại. 5. Được đục lỗ, đánh bóng và cán mỏng.
+- 3917399 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3917399 [17 ký tự]: 3917399 Loại khác
+- 39173991 DONG8
+    tax.39173991 [57 ký tự]: 39173991 - - - - Từ các polyme trùng hợp; từ sợi lưu hóa 
+- 39173992 DONG8
+    tax.39173992 [95 ký tự]: 39173992 - - - - Từ nhựa phenolic hoặc nhựa amino; từ các dẫn xuất hóa học của cao su tự nhiên 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39173993 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39173993 [64 ký tự]: 39173993 - - - - Từ các polyme trùng ngưng hoặc tái sắp xếp khác
+- 39173994 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39173994 [107 ký tự]: 39173994 - - - - Từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39173999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39173999 [26 ký tự]: 39173999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391739; chú giải: nhom3917.nhom, ch39.chuong
+
+
+=== SỬA PN6 391810 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:3918101:dieu-kien-so-co-khong-co-trong-trich:tamPhuSan
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"391810","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-391810","dong8":{"39181011":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Dạng tấm rời để ghép"}]}},"dieuKienNut":{"3918101":{"dieuKienSo":[{"fact":"tamPhuSan","op":"CO"}]}},"ghiChuSoan":[{"ma":"39181011","loai":"BO_VE","ve":"để ghép","lyDo":"Đã bao gồm trong giá trị của tenLoai là tấm rời để ghép"}]}
+```
+
+=== GÓI PN6 391810 ===
+# 391810 — Từ các polyme từ vinyl clorua
+
+391810 — Floor, wall or ceiling coverings; of polymers of vinyl chloride, whether or not self-adhesive, in rolls or in the form of tiles
+  [3918101] Tấm trải sàn
+    39181011 Dạng tấm rời để ghép
+    39181019 Loại khác  [LK]
+  39181090 Loại khác  [LK]
+
+- 3918101 TIEU_DE
+    tieuDe.3918101 [20 ký tự]: 3918101 Tấm trải sàn
+- 39181011 DONG8
+    tax.39181011 [35 ký tự]: 39181011 - - - Dạng tấm rời để ghép
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ghép"
+- 39181019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39181019 [24 ký tự]: 39181019 - - - Loại khác
+- 39181090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39181090 [22 ký tự]: 39181090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391810; chú giải: nhom3918.nhom, ch39.chuong
+
+
+=== SỬA PN6 391890 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:39189013
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong3-muc:3918901:dieu-kien-so-co-khong-co-trong-trich:tamPhuSan
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong5-ve-gioi-han-bi-bo:39189011:bằng polyetylen
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong5-ve-gioi-han-bi-bo:39189013:bằng polyetylen
+    ✗ cong5-ve-gioi-han-bi-bo:39189015:của xenlulo, đã hóa dẻo
+    ✗ cong5-ve-gioi-han-bi-bo:39189093:của xenlulo, đã hóa dẻo
+    ✗ cong1-chua-so-hoa:39189013:39189013
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:39189013:39189014
+    ✗ cong1-chua-so-hoa:39189013:39189015
+    ✗ cong1-chua-so-hoa:39189013:39189016
+    ✗ cong1-chua-so-hoa:39189014:39189014
+    ✗ cong1-chua-so-hoa:39189015:39189013
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"391890","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-391890","dong8":{"39189011":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Dạng tấm rời để ghép"}]},"39189013":{"dieuKienSo":[],"phanConLai":true},"39189014":{"dieuKienSo":[]},"39189015":{"dieuKienSo":[],"phanConLai":true},"39189016":{"dieuKienSo":[]},"39189091":{"dieuKienSo":[]},"39189092":{"dieuKienSo":[]},"39189093":{"dieuKienSo":[],"phanConLai":true},"39189094":{"dieuKienSo":[]}},"dieuKienNut":{"3918901":{"dieuKienSo":[{"fact":"tamPhuSan","op":"CO"}]}},"ghiChuSoan":[{"ma":"39189011","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"bằng polyetylen"},{"ma":"39189011","loai":"BO_VE","ve":"để ghép","lyDo":"Đã bao gồm trong giá trị của tenLoai là tấm rời để ghép"},{"ma":"39189013","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"bằng polyetylen"},{"ma":"39189014","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các dẫn xuất hóa học của cao su tự nhiên"},{"ma":"39189015","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo"},{"ma":"39189016","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ sợi lưu hóa"},{"ma":"39189091","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ polyetylen"},{"ma":"39189092","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các dẫn xuất hóa học của cao su tự nhiên"},{"ma":"39189093","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo"},{"ma":"39189094","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ sợi lưu hóa"}]}
+```
+
+=== GÓI PN6 391890 ===
+# 391890 — Từ plastic khác
+
+391890 — Floor, wall or ceiling coverings; of plastics (excluding polymers of vinyl chloride), whether or not self-adhesive, in rolls or in the form of tiles
+  [3918901] Tấm trải sàn
+    39189011 Dạng tấm rời để ghép, bằng polyetylen
+    39189013 Loại khác, bằng polyetylen  [LK có điều kiện]
+    39189014 Từ các dẫn xuất hóa học của cao su tự nhiên
+    39189015 Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39189016 Từ sợi lưu hóa
+    39189019 Loại khác  [LK]
+  [3918909] Loại khác
+    39189091 Từ polyetylen
+    39189092 Từ các dẫn xuất hóa học của cao su tự nhiên
+    39189093 Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39189094 Từ sợi lưu hóa
+    39189099 Loại khác  [LK]
+
+- 3918901 TIEU_DE
+    tieuDe.3918901 [20 ký tự]: 3918901 Tấm trải sàn
+- 39189011 DONG8
+    tax.39189011 [52 ký tự]: 39189011 - - - Dạng tấm rời để ghép, bằng polyetylen
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ghép" · [GIỚI HẠN] "bằng polyetylen"
+- 39189013 DONG8
+    tax.39189013 [41 ký tự]: 39189013 - - - Loại khác, bằng polyetylen
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng polyetylen"
+- 39189014 DONG8
+    tax.39189014 [58 ký tự]: 39189014 - - - Từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39189015 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39189015 [177 ký tự]: 39189015 - - - Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39189016 DONG8
+    tax.39189016 [29 ký tự]: 39189016 - - - Từ sợi lưu hóa
+- 39189019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39189019 [24 ký tự]: 39189019 - - - Loại khác
+- 3918909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3918909 [17 ký tự]: 3918909 Loại khác
+- 39189091 DONG8
+    tax.39189091 [28 ký tự]: 39189091 - - - Từ polyetylen
+- 39189092 DONG8
+    tax.39189092 [58 ký tự]: 39189092 - - - Từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39189093 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39189093 [177 ký tự]: 39189093 - - - Từ các polyme trùng hợp khác; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, acetat xenlulo hoặc các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39189094 DONG8
+    tax.39189094 [29 ký tự]: 39189094 - - - Từ sợi lưu hóa
+- 39189099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39189099 [24 ký tự]: 39189099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391890; chú giải: nhom3918.nhom, ch39.chuong
+
+
+=== SỬA PN6 391910 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:39191092:của xenlulo, đã hóa dẻo
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:39191010:39191010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:39191020:39191020
+    ✗ cong1-chua-so-hoa:39191091:39191091
+    ✗ cong1-chua-so-hoa:39191091:39191010
+    ✗ cong1-chua-so-hoa:39191091:39191020
+    ✗ cong1-chua-so-hoa:39191092:39191091
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"391910","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-391910","dong8":{"39191010":{"dieuKienSo":[]},"39191020":{"dieuKienSo":[]},"39191091":{"dieuKienSo":[]},"39191092":{"dieuKienSo":[],"phanConLai":true}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"39191010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme từ vinyl clorua"},{"ma":"39191020","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ polyetylen"},{"ma":"39191091","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các protein đã làm cứng hoặc các dẫn xuất hóa học của cao su tự nhiên"},{"ma":"39191092","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo"}]}
+```
+
+=== GÓI PN6 391910 ===
+# 391910 — Ở dạng cuộn có chiều rộng không quá 20 cm
+
+391910 — Plastics; plates, sheets, film, foil, tape, strip, other flat shapes thereof, self-adhesive, in rolls of a width not exceeding 20cm
+  39191010 Từ các polyme từ vinyl clorua
+  39191020 Từ polyetylen
+  [3919109] Loại khác
+    39191091 Từ các protein đã làm cứng hoặc các dẫn xuất hóa học của cao su tự nhiên
+    39191092 Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39191099 Loại khác  [LK]
+
+- 39191010 DONG8
+    tax.39191010 [42 ký tự]: 39191010 - - Từ các polyme từ vinyl clorua
+- 39191020 DONG8
+    tax.39191020 [26 ký tự]: 39191020 - - Từ polyetylen
+- 3919109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3919109 [17 ký tự]: 3919109 Loại khác
+- 39191091 DONG8
+    tax.39191091 [87 ký tự]: 39191091 - - - Từ các protein đã làm cứng hoặc các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39191092 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39191092 [174 ký tự]: 39191092 - - - Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39191099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39191099 [24 ký tự]: 39191099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391910; chú giải: nhom3919.nhom, ch39.chuong
+
+
+=== SỬA PN6 391990 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:39199092:của xenlulo, đã hóa dẻo
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:39199010:39199010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:39199020:39199020
+    ✗ cong1-chua-so-hoa:39199091:39199091
+    ✗ cong1-chua-so-hoa:39199091:39199010
+    ✗ cong1-chua-so-hoa:39199091:39199020
+    ✗ cong1-chua-so-hoa:39199092:39199091
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"391990","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-391990","dong8":{"39199010":{"dieuKienSo":[]},"39199020":{"dieuKienSo":[]},"39199091":{"dieuKienSo":[]},"39199092":{"dieuKienSo":[],"phanConLai":true}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"39199010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme từ vinyl clorua"},{"ma":"39199020","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ protein đã được làm cứng"},{"ma":"39199091","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các dẫn xuất hóa học của cao su tự nhiên"},{"ma":"39199092","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo"}]}
+```
+
+=== GÓI PN6 391990 ===
+# 391990 — Loại khác
+
+391990 — Plastics; plates, sheets, film, foil, tape, strip, other flat shapes thereof, self-adhesive, other than in rolls of a width not exceeding 20cm
+  39199010 Từ các polyme từ vinyl clorua
+  39199020 Từ protein đã được làm cứng
+  [3919909] Loại khác
+    39199091 Từ các dẫn xuất hóa học của cao su tự nhiên
+    39199092 Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    39199099 Loại khác  [LK]
+
+- 39199010 DONG8
+    tax.39199010 [42 ký tự]: 39199010 - - Từ các polyme từ vinyl clorua
+- 39199020 DONG8
+    tax.39199020 [40 ký tự]: 39199020 - - Từ protein đã được làm cứng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được làm cứng"
+- 3919909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3919909 [17 ký tự]: 3919909 Loại khác
+- 39199091 DONG8
+    tax.39199091 [58 ký tự]: 39199091 - - - Từ các dẫn xuất hóa học của cao su tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cao su tự nhiên"
+- 39199092 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.39199092 [174 ký tự]: 39199092 - - - Từ các polyme trùng hợp; từ các polyme trùng ngưng hoặc tái sắp xếp; từ nitrat xenlulo, các acetat xenlulo và các dẫn xuất hóa học khác của xenlulo, đã hóa dẻo
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xenlulo, đã hóa dẻo"
+- 39199099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39199099 [24 ký tự]: 39199099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.391990; chú giải: nhom3919.nhom, ch39.chuong
+
+
+=== SỬA PN6 392030 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:39203092
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"392030","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-392030","dong8":{"39203020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Tấm Acrylonitril butadien styren"},{"fact":"dungCho","op":"CONG_DUNG","value":"tủ lạnh"}]},"39203091":{"dieuKienSo":[{"fact":"dangTamPhienMang","op":"TRONG","value":["TAM_VA_PHIEN"]},{"fact":"loaiCung","op":"CO"}]},"39203092":{"dieuKienSo":[{"fact":"dangTamPhienMang","op":"TRONG","value":["TAM_VA_PHIEN"]}],"phanConLai":true}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"39203020","loai":"QUYET_DINH","ghiChu":"(ABS) là ngoặc chú thích không ghi thành điều kiện."}]}
+```
+
+=== GÓI PN6 392030 ===
+# 392030 — Từ các polyme từ styren
+
+392030 — Plastics; of polymers of styrene, plates, sheets, film, foil and strip (not self-adhesive), non-cellular and not reinforced, laminated, supported or similarly combined with other materials
+  39203020 Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh
+  [3920309] Loại khác
+    39203091 Dạng tấm và phiến, loại cứng(SEN)
+    39203092 Loại khác, dạng tấm và phiến (SEN)  [LK có điều kiện]
+    39203099 Loại khác  [LK]
+
+- 39203020 DONG8
+    tax.39203020 [82 ký tự]: 39203020 - - Tấm Acrylonitril butadien styren (ABS) sử dụng trong sản xuất tủ lạnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng trong sản xuất tủ lạnh"
+- 3920309 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3920309 [17 ký tự]: 3920309 Loại khác
+- 39203091 DONG8
+    tax.39203091 [48 ký tự]: 39203091 - - - Dạng tấm và phiến, loại cứng(SEN)
+    sen.39203091 [1200 ký tự]: PLASTIC CỨNG DẠNG TẤM VÀ PHIẾN Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790. Modul uốn biểu kiến theo tiêu chuẩn ASTM D747 Được sử dụng cho các vật liệu dễ uốn để thử nghiệm theo tiêu chuẩn ASTM D790 để xác định độ bền uốn tương đối. Các mẫu thử nghiệm được hỗ trợ bởi một giá đỡ và bị lệch qua một góc. Modul bền uốn biểu kiến này được tính toán bằng cách sử dụng góc lệch, mô-men, và dạng mẫu thử nghiệm. Việc tính toán module bền uốn biểu kiến được thực hiện giả định độ lệch nhỏ và mẫu thử nghiệm đàn hồi hoàn toàn. Do tính chất của việc thử nghiệm, các yếu tố ảnh hưởng đến modul uốn biểu kiến (kể cả chiều dài, chiều rộng, và độ sâu của mẫu thử) thay đổi trong quá trình thử nghiệm. Dữ liệu của các mẫu có độ dày khác nhau không thể được so sánh làm kết quả. Tính chất uốn theo tiêu chuẩn ASTM D790 Một mẫu thử nghiệm được giữ trên hai gá đỡ và phải chịu lực uốn tại ba điểm. Mẫu thử nghiệm phù hợp dài 80mm, rộng 10mm và dày 4mm. Các mẫu thử nghiệm khác có thể được sử dụng nếu tỉ lệ chiều dài trên độ dày bằng 20. Mẫu này được uốn đến khi bị gã
+- 39203092 DONG8
+    tax.39203092 [49 ký tự]: 39203092 - - - Loại khác, dạng tấm và phiến (SEN)
+- 39203099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39203099 [24 ký tự]: 39203099 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.3920, wco.392030; chú giải: nhom3920.nhom, ch39.chuong
+
+
+=== SỬA PN6 392071 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:39207191:dieu-kien-so-trong-khong-co-trong-trich:TAM_VA_PHIEN
+      → Câu trích không có cách đọc của giá trị liệt kê. Sửa: Mỗi giá trị cần một mẫu cachDoc có trong trich (xem --tu-vung).
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"392071","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-392071","dong8":{"39207110":{"dieuKienSo":[{"fact":"dangTamPhienMang","op":"TRONG","value":["MANG"]}]},"39207191":{"dieuKienSo":[{"fact":"dangTamPhienMang","op":"TRONG","value":["TAM_VA_PHIEN"]},{"fact":"daIn","op":"CO"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"39207191","loai":"QUYET_DINH","ghiChu":"Dạng phiến là TAM_VA_PHIEN, (sheets) là chú thích."}]}
+```
+
+=== GÓI PN6 392071 ===
+# 392071 — Từ xenlulo tái sinh
+
+392071 — Plastics; plates, sheets, film, foil and strip (not self-adhesive), of regenerated cellulose; non-cellular and not reinforced, laminated, supported or similarly combined with other materials
+  39207110 Màng xenlophan
+  [3920719] Loại khác
+    39207191 Dạng phiến (sheets) đã in
+    39207199 Loại khác  [LK]
+
+- 39207110 DONG8
+    tax.39207110 [29 ký tự]: 39207110 - - - Màng xenlophan
+- 3920719 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3920719 [17 ký tự]: 3920719 Loại khác
+- 39207191 DONG8
+    tax.39207191 [42 ký tự]: 39207191 - - - - Dạng phiến (sheets) đã in
+- 39207199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39207199 [26 ký tự]: 39207199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.3920, wco.392071; chú giải: nhom3920.nhom, ch39.chuong
+
+
+=== SỬA PN6 392079 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:39207910:39207910
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:39207920:39207920
+    ✗ cong1-chua-so-hoa:39207991:39207910
+    ✗ cong1-chua-so-hoa:39207991:39207920
+    ✗ cong1-chua-so-hoa:39207999:39207910
+    ✗ cong1-chua-so-hoa:39207999:39207920
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"392079","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-392079","dong8":{"39207910":{"dieuKienSo":[]},"39207920":{"dieuKienSo":[]},"39207991":{"dieuKienSo":[{"fact":"dangTamPhienMang","op":"TRONG","value":["TAM_VA_PHIEN"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"39207910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ nitrocellulose (thuốc nổ bông)"},{"ma":"39207920","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiPolyme","ghiChu":"Từ sợi lưu hóa"}]}
+```
+
+=== GÓI PN6 392079 ===
+# 392079 — Từ các dẫn xuất xenlulo khác
+
+392079 — Plastics; plates, sheets, film, foil and strip (not self-adhesive), of cellulose derivatives n.e.c. in heading no. 3920, non-cellular and not reinforced, laminated, supported or similarly combined with other materials
+  39207910 Từ nitrocellulose (thuốc nổ bông)
+  39207920 Từ sợi lưu hóa
+  [3920799] Loại khác
+    39207991 Dạng tấm và phiến (SEN)
+    39207999 Loại khác  [LK]
+
+- 39207910 DONG8
+    tax.39207910 [48 ký tự]: 39207910 - - - Từ nitrocellulose (thuốc nổ bông)
+- 39207920 DONG8
+    tax.39207920 [29 ký tự]: 39207920 - - - Từ sợi lưu hóa
+- 3920799 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3920799 [17 ký tự]: 3920799 Loại khác
+- 39207991 DONG8
+    tax.39207991 [40 ký tự]: 39207991 - - - - Dạng tấm và phiến (SEN)
+- 39207999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.39207999 [26 ký tự]: 39207999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.3920, wco.392079; chú giải: nhom3920.nhom, ch39.chuong
+

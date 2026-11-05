@@ -1,0 +1,407 @@
+VÒNG SỬA — 6 PN6 bị cổng máy chặn (847710 847740 847790 848610 848640 848690). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 847710 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:847710:congDung=poly(vinyl chloride) (PVC)
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"847710","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-847710","dong8":{"84771010":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"đúc cao su"}]},"84771031":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"poly(vinyl chloride) (PVC)"}]}},"dieuKienNut":{"8477103":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"đúc plastic"}]}},"ghiChuSoan":[{"ma":"84771010","loai":"QUYET_DINH","ghiChu":"tax.84771010: \"Để đúc cao su\" ⇒ congDung \"đúc cao su\""},{"ma":"8477103","loai":"QUYET_DINH","ghiChu":"tieuDe.8477103: \"Để đúc plastic\" ⇒ congDung \"đúc plastic\""},{"ma":"84771031","loai":"QUYET_DINH","ghiChu":"tax.84771031: \"Máy đúc phun sản phẩm poly(vinyl chloride) (PVC)\" ⇒ congDung \"poly(vinyl chloride) (PVC)\""}]}
+```
+
+=== GÓI PN6 847710 ===
+# 847710 — Máy đúc phun
+
+847710 — Machinery; injection-moulding machines, for working rubber or plastics or for the manufacture of products from these materials
+  84771010 Để đúc cao su
+  [8477103] Để đúc plastic
+    84771031 Máy đúc phun sản phẩm poly(vinyl chloride) (PVC)
+    84771039 Loại khác  [LK]
+
+- 84771010 DONG8
+    tax.84771010 [26 ký tự]: 84771010 - - Để đúc cao su
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để đúc cao su"
+- 8477103 TIEU_DE
+    tieuDe.8477103 [22 ký tự]: 8477103 Để đúc plastic
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để đúc plastic"
+- 84771031 DONG8
+    tax.84771031 [63 ký tự]: 84771031 - - - Máy đúc phun sản phẩm poly(vinyl chloride) (PVC)
+- 84771039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84771039 [24 ký tự]: 84771039 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.847710; chú giải: nhom8477.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 847740 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:84774010:congDung
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+    ✗ cong3-liet-ke-trong-mot-chuoi:84774020:congDung
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"847740","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-847740","dong8":{"84774010":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":["đúc hoặc tạo hình cao su","tạo hình cao su"]}]},"84774020":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":["đúc hoặc tạo hình plastic","tạo hình plastic"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"84774010","loai":"QUYET_DINH","ghiChu":"tax.84774010: \"Để đúc hoặc tạo hình cao su\" ⇒ congDung mảng cho cao su"},{"ma":"84774020","loai":"QUYET_DINH","ghiChu":"tax.84774020: \"Để đúc hoặc tạo hình plastic\" ⇒ congDung mảng cho plastic"}]}
+```
+
+=== GÓI PN6 847740 ===
+# 847740 — Máy đúc chân không và các loại máy đúc nhiệt khác
+
+847740 — Machinery; vacuum moulding machines and other thermoforming machines, for working rubber or plastics or for the manufacture of products from these materials
+  84774010 Để đúc hoặc tạo hình cao su
+  84774020 Để đúc hoặc tạo hình plastic
+
+- 84774010 DONG8
+    tax.84774010 [40 ký tự]: 84774010 - - Để đúc hoặc tạo hình cao su
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để đúc hoặc tạo hình cao su"
+- 84774020 DONG8
+    tax.84774020 [41 ký tự]: 84774020 - - Để đúc hoặc tạo hình plastic
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để đúc hoặc tạo hình plastic"
+
+Nguồn cấp phân nhóm: wco.847740; chú giải: nhom8477.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 847790 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:847790:dungCho=sản xuất tấm mạch in,hoatDongBangDien=true
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"847790","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-847790","dong8":{"84779010":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"cao su"},{"fact":"hoatDongBangDien","op":"CO"}]},"84779020":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"cao su"},{"fact":"hoatDongBangDien","op":"KHONG"}]},"84779032":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["sản xuất tấm mạch in","tấm dây in"]}]},"84779040":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"plastic"},{"fact":"hoatDongBangDien","op":"KHONG"}]}},"dieuKienNut":{"8477903":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"plastic"},{"fact":"hoatDongBangDien","op":"CO"}]}},"ghiChuSoan":[{"ma":"84779010","loai":"QUYET_DINH","ghiChu":"tax.84779010: \"Của máy gia công cao su hoặc sản xuất các sản phẩm từ cao su hoạt động bằng điện\" ⇒ dungCho \"cao su\", hoatDongBangDien CO"},{"ma":"84779020","loai":"QUYET_DINH","ghiChu":"tax.84779020: \"Của máy để gia công cao su hoặc sản xuất các sản phẩm từ cao su không hoạt động bằng điện\" ⇒ dungCho \"cao su\", hoatDongBangDien KHONG"},{"ma":"8477903","loai":"QUYET_DINH","ghiChu":"tieuDe.8477903: \"Của máy gia công plastic hoặc sản xuất các sản phẩm từ plastic hoạt động bằng điện\" ⇒ dungCho \"plastic\", hoatDongBangDien CO"},{"ma":"84779032","loai":"QUYET_DINH","ghiChu":"tax.84779032: \"Bộ phận của máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in\" ⇒ dungCho [\"sản xuất tấm mạch in\",\"tấm dây in\"]"},{"ma":"84779040","loai":"QUYET_DINH","ghiChu":"tax.84779040: \"Của máy để gia công plastic hoặc các sản phẩm từ plastic, không hoạt động bằng điện\" ⇒ dungCho \"plastic\", hoatDongBangDien KHONG"},{"ma":"84779020","loai":"BO_VE","ve":"Của máy","lyDo":"Cụm danh từ đầu chỉ bộ phận của máy, lặp lại bản chất nhóm 8477"},{"ma":"84779032","loai":"BO_VE","ve":"của máy ép lớp mỏng","lyDo":"Tên loại máy con ép lớp mỏng đã được xác định qua công dụng sản xuất tấm mạch in/tấm dây in"},{"ma":"84779040","loai":"BO_VE","ve":"Của máy","lyDo":"Cụm danh từ đầu chỉ bộ phận của máy, lặp lại bản chất nhóm 8477"}]}
+```
+
+=== GÓI PN6 847790 ===
+# 847790 — Bộ phận
+
+847790 — Machinery; parts of the machines of heading no. 8477, n.e.c. in item no. 8477.90
+  84779010 Của máy gia công cao su hoặc sản xuất các sản phẩm từ cao su hoạt động bằng điện
+  84779020 Của máy để gia công cao su hoặc sản xuất các sản phẩm từ cao su không hoạt động bằng điện
+  [8477903] Của máy gia công plastic hoặc sản xuất các sản phẩm từ plastic hoạt động bằng điện
+    84779032 Bộ phận của máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in
+    84779039 Loại khác  [LK]
+  84779040 Của máy để gia công plastic hoặc các sản phẩm từ plastic, không hoạt động bằng điện
+
+- 84779010 DONG8
+    tax.84779010 [93 ký tự]: 84779010 - - Của máy gia công cao su hoặc sản xuất các sản phẩm từ cao su hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy gia công cao su hoặc sản xuất các sản phẩm từ cao su hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84779020 DONG8
+    tax.84779020 [102 ký tự]: 84779020 - - Của máy để gia công cao su hoặc sản xuất các sản phẩm từ cao su không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy" · [GIỚI HẠN] "để gia công cao su hoặc sản xuất các sản phẩm từ cao su không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 8477903 TIEU_DE
+    tieuDe.8477903 [90 ký tự]: 8477903 Của máy gia công plastic hoặc sản xuất các sản phẩm từ plastic hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy gia công plastic hoặc sản xuất các sản phẩm từ plastic hoạt động" · [GIỚI HẠN] "bằng điện"
+- 84779032 DONG8
+    tax.84779032 [87 ký tự]: 84779032 - - - Bộ phận của máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của máy ép lớp mỏng" · [GIỚI HẠN] "dùng để sản xuất tấm mạch in hoặc tấm dây in"
+- 84779039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84779039 [24 ký tự]: 84779039 - - - Loại khác
+- 84779040 DONG8
+    tax.84779040 [96 ký tự]: 84779040 - - Của máy để gia công plastic hoặc các sản phẩm từ plastic, không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy" · [GIỚI HẠN] "để gia công plastic hoặc các sản phẩm từ plastic" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+
+Nguồn cấp phân nhóm: wco.847790; chú giải: nhom8477.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 848610 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:84861060:tenLoai
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+    ✗ cong2-chong-lan:84861010+84861040:congDung=cắt khối bán dẫn đơn tinh thể thành các lớp,tenLoai=Thiết bị làm nóng nhanh tấm bán dẫn mỏng:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:84861040+84861060:congDung=cắt khối bán dẫn đơn tinh thể thành các lớp,tenLoai=Thiết bị làm phát triển hoặc kéo khối bán dẫn đơn tinh thể:khong-tat-dinh
+    ✗ cong2-chong-lan-truc:84861010:84861040
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+    ✗ cong2-chong-lan-truc:84861040:84861010,84861060
+    ✗ cong2-chong-lan-truc:84861060:84861040
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"848610","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848610","dong8":{"84861010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thiết bị làm nóng nhanh tấm bán dẫn mỏng"}]},"84861020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Máy làm khô"},{"fact":"congDung","op":"CONG_DUNG","value":"chế tạo tấm bán dẫn mỏng"}]},"84861030":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Máy công cụ"},{"fact":"congDung","op":"CONG_DUNG","value":["sử dụng tia laser","tia sáng khác","chùm phô-tông"]}]},"84861040":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":["cắt khối bán dẫn đơn tinh thể thành các lớp","cưa miếng mỏng đơn tinh thể thành các chip"]}]},"84861050":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Máy mài","đánh bóng","phủ"]},{"fact":"congDung","op":"CONG_DUNG","value":"chế tạo tấm bán dẫn mỏng"}]},"84861060":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thiết bị làm phát triển hoặc kéo khối bán dẫn đơn tinh thể"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"84861010","loai":"QUYET_DINH","ghiChu":"tax.84861010: \"Thiết bị làm nóng nhanh tấm bán dẫn mỏng\" ⇒ tenLoai"},{"ma":"84861020","loai":"QUYET_DINH","ghiChu":"tax.84861020: \"Máy làm khô bằng phương pháp quay ly tâm để chế tạo tấm bán dẫn mỏng\" ⇒ tenLoai \"Máy làm khô\" + congDung \"chế tạo tấm bán dẫn mỏng\""},{"ma":"84861020","loai":"BO_VE","ve":"bằng phương pháp quay ly tâm","lyDo":"Phương pháp hoạt động ly tâm của máy làm khô, không có khoá tương ứng trong tu-vung@2"},{"ma":"84861030","loai":"QUYET_DINH","ghiChu":"tax.84861030: \"Máy công cụ để gia công mọi vật liệu... bằng quy trình sử dụng tia laser...\" ⇒ tenLoai \"Máy công cụ\" + congDung mảng tia laser/tia sáng"},{"ma":"84861030","loai":"BO_VE","ve":"để gia công mọi vật liệu bằng cách bóc tách vật liệu","lyDo":"Khái niệm máy công cụ bóc tách vật liệu chung của nhóm 8456, đã được xác định qua tenLoai và các quy trình laser"},{"ma":"84861030","loai":"BO_VE","ve":"bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng","lyDo":"Đã phủ các quy trình sử dụng tia laser, tia sáng khác, chùm phô-tông bằng mảng congDung"},{"ma":"84861040","loai":"QUYET_DINH","ghiChu":"tax.84861040: \"Máy và thiết bị để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip\" ⇒ congDung mảng 2 công đoạn"},{"ma":"84861050","loai":"QUYET_DINH","ghiChu":"tax.84861050: \"Máy mài, đánh bóng và phủ dùng trong chế tạo tấm bán dẫn mỏng\" ⇒ tenLoai mảng [\"Máy mài\",\"đánh bóng\",\"phủ\"] + congDung \"chế tạo tấm bán dẫn mỏng\""},{"ma":"84861060","loai":"QUYET_DINH","ghiChu":"tax.84861060: \"Thiết bị làm phát triển hoặc kéo khối bán dẫn đơn tinh thể\" ⇒ tenLoai"}]}
+```
+
+=== GÓI PN6 848610 ===
+# 848610 — Máy và thiết bị để sản xuất khối hoặc tấm bán dẫn mỏng
+
+848610 — Machines and apparatus of a kind used solely or principally for the manufacture of semiconductor boules or wafers
+  84861010 Thiết bị làm nóng nhanh tấm bán dẫn mỏng
+  84861020 Máy làm khô bằng phương pháp quay ly tâm để chế tạo tấm bán dẫn mỏng
+  84861030 Máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng
+  84861040 Máy và thiết bị để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip
+  84861050 Máy mài, đánh bóng và phủ dùng trong chế tạo tấm bán dẫn mỏng
+  84861060 Thiết bị làm phát triển hoặc kéo khối bán dẫn đơn tinh thể
+  84861090 Loại khác  [LK]
+
+- 84861010 DONG8
+    tax.84861010 [53 ký tự]: 84861010 - - Thiết bị làm nóng nhanh tấm bán dẫn mỏng
+- 84861020 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.84861020 [81 ký tự]: 84861020 - - Máy làm khô bằng phương pháp quay ly tâm để chế tạo tấm bán dẫn mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng phương pháp quay ly tâm" · [GIỚI HẠN] "để chế tạo tấm bán dẫn mỏng"
+- 84861030 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84861030 [181 ký tự]: 84861030 - - Máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để gia công mọi vật liệu bằng cách bóc tách vật liệu" · [GIỚI HẠN] "bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng"
+- 84861040 DONG8
+    tax.84861040 [124 ký tự]: 84861040 - - Máy và thiết bị để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip"
+- 84861050 DONG8
+    tax.84861050 [74 ký tự]: 84861050 - - Máy mài, đánh bóng và phủ dùng trong chế tạo tấm bán dẫn mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong chế tạo tấm bán dẫn mỏng"
+- 84861060 DONG8
+    tax.84861060 [71 ký tự]: 84861060 - - Thiết bị làm phát triển hoặc kéo khối bán dẫn đơn tinh thể
+- 84861090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84861090 [22 ký tự]: 84861090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.848610; chú giải: nhom8486.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 848640 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:84864010:congDung
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+    ✗ cong2-chong-lan:84864020+84864030:congDung=sản xuất linh kiện bán dẫn,tenLoai=Thiết bị gắn khuôn:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"848640","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848640","dong8":{"84864010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Máy phay"},{"fact":"congDung","op":"CONG_DUNG","value":["sản xuất hoặc sửa chữa màn","lưới quang của các định dạng trên linh kiện bán dẫn"]}]},"84864020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Thiết bị gắn khuôn","nối băng tự động","nối dây","bọc nhựa","Máy tự động"]}]},"84864030":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Khuôn"},{"fact":"congDung","op":"CONG_DUNG","value":"sản xuất linh kiện bán dẫn"}]},"84864040":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Kính hiển vi quang học soi nổi"}]},"84864050":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Kính hiển vi chụp ảnh"}]},"84864060":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Kính hiển vi điện tử"}]},"84864070":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thiết bị tạo mẫu"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"84864010","loai":"QUYET_DINH","ghiChu":"tax.84864010: \"Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang...\" ⇒ tenLoai \"Máy phay\" + congDung"},{"ma":"84864010","loai":"BO_VE","ve":"bằng chùm tia ion hội tụ","lyDo":"Nguyên lý chùm tia ion của máy phay, đã được định danh qua tenLoai và mục đích công dụng"},{"ma":"84864010","loai":"BO_VE","ve":"để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn","lyDo":"Đã được phủ trong congDung"},{"ma":"84864020","loai":"QUYET_DINH","ghiChu":"tax.84864020: \"Thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa... máy tự động để dịch chuyển...\" ⇒ tenLoai danh sách 5 loại máy"},{"ma":"84864020","loai":"BO_VE","ve":"để lắp ráp các chất bán dẫn","lyDo":"Công dụng lắp ráp bán dẫn của các thiết bị gắn khuôn, nối dây"},{"ma":"84864020","loai":"BO_VE","ve":"để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác","lyDo":"Chức năng thao tác kẹp giữ của máy tự động trong dây chuyền bán dẫn"},{"ma":"84864020","loai":"BO_VE","ve":"dùng cho thiết bị bán dẫn","lyDo":"Phạm vi thiết bị bán dẫn chung"},{"ma":"84864030","loai":"QUYET_DINH","ghiChu":"tax.84864030: \"Khuôn để sản xuất linh kiện bán dẫn\" ⇒ tenLoai \"Khuôn\" + congDung \"sản xuất linh kiện bán dẫn\""},{"ma":"84864040","loai":"QUYET_DINH","ghiChu":"tax.84864040: \"Kính hiển vi quang học soi nổi được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển...\" ⇒ tenLoai \"Kính hiển vi quang học soi nổi\""},{"ma":"84864040","loai":"BO_VE","ve":"được lắp với thiết bị chuyên","lyDo":"Bộ phận kèm theo của kính hiển vi chuyên dụng"},{"ma":"84864040","loai":"BO_VE","ve":"dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn","lyDo":"Mô tả cơ chế đồ gá kẹp kèm theo của kính hiển vi"},{"ma":"84864050","loai":"QUYET_DINH","ghiChu":"tax.84864050: \"Kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển...\" ⇒ tenLoai \"Kính hiển vi chụp ảnh\""},{"ma":"84864050","loai":"BO_VE","ve":"được lắp với thiết bị chuyên","lyDo":"Bộ phận kèm theo của kính hiển vi chuyên dụng"},{"ma":"84864050","loai":"BO_VE","ve":"dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn","lyDo":"Mô tả cơ chế đồ gá kẹp kèm theo của kính hiển vi"},{"ma":"84864060","loai":"QUYET_DINH","ghiChu":"tax.84864060: \"Kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển...\" ⇒ tenLoai \"Kính hiển vi điện tử\""},{"ma":"84864060","loai":"BO_VE","ve":"được lắp với thiết bị chuyên","lyDo":"Bộ phận kèm theo của kính hiển vi chuyên dụng"},{"ma":"84864060","loai":"BO_VE","ve":"dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn","lyDo":"Mô tả cơ chế đồ gá kẹp kèm theo của kính hiển vi"},{"ma":"84864070","loai":"QUYET_DINH","ghiChu":"tax.84864070: \"Thiết bị tạo mẫu dùng cho quá trình tạo màn...\" ⇒ tenLoai \"Thiết bị tạo mẫu\""},{"ma":"84864070","loai":"BO_VE","ve":"dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các tấm nền phủ lớp cản quang trong quá trình khắc","lyDo":"Mục đích tạo màn/lưới quang của thiết bị tạo mẫu"}]}
+```
+
+=== GÓI PN6 848640 ===
+# 848640 — Máy và thiết bị nêu tại Chú giải 11 (C) Chương này
+
+848640 — Machines and apparatus of a kind used solely or principally for the manufacture or repair of masks and reticles, assembling semiconductor devices or electronic integrated circuits, or for lifting, handling, loading or unloading items of heading 8486
+  84864010 Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn
+  84864020 Thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn; máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn
+  84864030 Khuôn để sản xuất linh kiện bán dẫn
+  84864040 Kính hiển vi quang học soi nổi được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+  84864050 Kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+  84864060 Kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+  84864070 Thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các tấm nền phủ lớp cản quang trong quá trình khắc
+  84864090 Loại khác  [LK]
+
+- 84864010 DONG8
+    tax.84864010 [131 ký tự]: 84864010 - - Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng chùm tia ion hội tụ" · [GIỚI HẠN] "để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn"
+- 84864020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84864020 [240 ký tự]: 84864020 - - Thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn; máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để lắp ráp các chất bán dẫn" · [GIỚI HẠN] "để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác" · [GIỚI HẠN] "dùng cho thiết bị bán dẫn"
+- 84864030 DONG8
+    tax.84864030 [48 ký tự]: 84864030 - - Khuôn để sản xuất linh kiện bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để sản xuất linh kiện bán dẫn"
+- 84864040 DONG8
+    tax.84864040 [146 ký tự]: 84864040 - - Kính hiển vi quang học soi nổi được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lắp với thiết bị chuyên" · [GIỚI HẠN] "dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn"
+- 84864050 DONG8
+    tax.84864050 [137 ký tự]: 84864050 - - Kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lắp với thiết bị chuyên" · [GIỚI HẠN] "dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn"
+- 84864060 DONG8
+    tax.84864060 [136 ký tự]: 84864060 - - Kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lắp với thiết bị chuyên" · [GIỚI HẠN] "dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn"
+- 84864070 DONG8
+    tax.84864070 [139 ký tự]: 84864070 - - Thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các tấm nền phủ lớp cản quang trong quá trình khắc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các tấm nền phủ lớp cản quang trong quá trình khắc"
+- 84864090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84864090 [22 ký tự]: 84864090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.848640; chú giải: nhom8486.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 848690 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:84869023:336
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+    ✗ cong3-liet-ke-trong-mot-chuoi:84869014:tenLoai
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+    ✗ cong3-liet-ke-trong-mot-chuoi:84869017:dungCho
+    ✗ cong3-liet-ke-trong-mot-chuoi:84869024:tenLoai
+    ✗ cong3-liet-ke-trong-mot-chuoi:84869026:tenLoai
+    ✗ cong3-liet-ke-trong-mot-chuoi:84869032:tenLoai
+    ✗ cong3-liet-ke-trong-mot-chuoi:848690~r14734:dungCho
+    ✗ cong1-khong-phu-kin:848690:dungCho=thiết bị nung nóng nhanh tấm bán dẫn mỏng
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+    ✗ cong2-chong-lan:84869031+84869032:dungCho=khắc axit sản xuất màn hình dẹt,tenLoai=Bộ phận kẹp dụng cụ và đầu cắt ren tự mở:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:84869031+84869033:dungCho=khắc axit sản xuất màn hình dẹt,tenLoai=ẑẑẑ:khong-tat-dinh
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"848690","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-848690","dong8":{"84869011":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"thiết bị nung nóng nhanh tấm bán dẫn mỏng"}]},"84869012":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"thiết bị làm khô"}]},"84869013":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy công cụ"}]},"84869014":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bộ phận kẹp dụng cụ và đầu cắt ren tự mở","bộ phận kẹp sản phẩm","đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ"]}]},"84869016":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy mài, đánh bóng và mài rà"}]},"84869017":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể"}]},"84869021":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"thiết bị kết tủa và bay hơi"}]},"84869022":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["máy kết tủa epitaxi","thiết bị để tạo lớp phủ nhũ tương cảm quang"]}]},"84869023":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["máy cấy ghép ion","thiết bị tạo kết tủa vật lý","thiết bị ghi trực tiếp lên tấm bán dẫn mỏng"]}]},"84869024":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bộ phận kẹp dụng cụ và đầu cắt ren tự mở","bộ phận kẹp sản phẩm","đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ"]}]},"84869026":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bộ phận kẹp dụng cụ và đầu cắt ren tự mở","bộ phận kẹp sản phẩm","đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ"]}]},"84869028":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["lò sấy và lò luyện dùng điện trở","lò sấy và lò luyện hoạt động"]}]},"84869031":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"khắc axit"}]},"84869032":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bộ phận kẹp dụng cụ và đầu cắt ren tự mở","bộ phận kẹp sản phẩm","đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ"]}]},"84869034":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"thiết bị kết tủa và bay hơi"}]},"84869035":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"tạo lớp phủ nhũ tương cảm quang"}]},"84869036":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"tạo kết tủa vật lý"}]},"84869041":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy phay"}]},"84869042":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"lắp ráp các chất bán dẫn"}]},"84869043":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng"}]},"84869044":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["kính hiển vi quang học soi nổi","kính hiển vi chụp ảnh"]}]},"84869045":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"kính hiển vi điện tử"}]},"84869046":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"thiết bị tạo mẫu"}]}},"dieuKienNut":{"8486901":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"sản xuất khối hoặc tấm bán dẫn mỏng"}]},"848690~r14721":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["cắt khối bán dẫn đơn tinh thể thành các lớp","cưa miếng mỏng đơn tinh thể thành các chip"]}]},"8486902":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["sản xuất linh kiện bán dẫn","mạch điện tử tích hợp"]}]},"848690~r14731":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["khắc axit","tẩy rửa","làm sạch các tấm bán dẫn mỏng"]}]},"848690~r14734":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng","máy cắt laser","máy uốn"]}]},"8486903":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"sản xuất màn hình dẹt"}]},"848690~r14741":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["khắc axit","máy điện ảnh","tẩy rửa hoặc làm sạch màn hình dẹt"]}]},"8486904":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"Chú giải 11 (C) của Chương này"}]}},"ghiChuSoan":[{"ma":"8486901","loai":"QUYET_DINH","ghiChu":"tieuDe.8486901: \"Của máy móc và thiết bị để sản xuất khối hoặc tấm bán dẫn mỏng\" ⇒ dungCho \"sản xuất khối hoặc tấm bán dẫn mỏng\""},{"ma":"8486901","loai":"BO_VE","ve":"Của máy móc và thiết bị","lyDo":"Cụm danh từ đầu chỉ bộ phận của máy, lặp lại bản chất nhóm 8486.90"},{"ma":"84869011","loai":"QUYET_DINH","ghiChu":"tax.84869011: \"Của thiết bị nung nóng nhanh tấm bán dẫn mỏng\" ⇒ dungCho"},{"ma":"84869012","loai":"QUYET_DINH","ghiChu":"tax.84869012: \"Của thiết bị làm khô bằng phương pháp quay...\" ⇒ dungCho \"thiết bị làm khô\""},{"ma":"84869012","loai":"BO_VE","ve":"Của thiết bị làm khô","lyDo":"Đã được đưa vào dungCho"},{"ma":"84869012","loai":"BO_VE","ve":"bằng phương pháp quay","lyDo":"Phương pháp hoạt động quay của thiết bị đích"},{"ma":"84869012","loai":"BO_VE","ve":"dùng cho quá trình gia công tấm bản mỏng","lyDo":"Mục đích gia công tấm bản mỏng của thiết bị làm khô"},{"ma":"84869013","loai":"QUYET_DINH","ghiChu":"tax.84869013: \"Của máy công cụ để gia công mọi vật liệu...\" ⇒ dungCho \"máy công cụ\""},{"ma":"84869013","loai":"BO_VE","ve":"Của máy công cụ","lyDo":"Đã được đưa vào dungCho"},{"ma":"84869013","loai":"BO_VE","ve":"để gia công mọi vật liệu bằng cách bóc tách vật liệu","lyDo":"Đặc tính chung của máy công cụ gia công bóc tách vật liệu"},{"ma":"84869013","loai":"BO_VE","ve":"bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng","lyDo":"Mô tả công nghệ nguồn sáng của máy công cụ đích"},{"ma":"848690~r14721","loai":"QUYET_DINH","ghiChu":"tieuDe.848690~r14721: \"Của máy dùng để cắt khối bán dẫn...\" ⇒ dungCho mảng cắt khối/cưa miếng mỏng"},{"ma":"848690~r14721","loai":"BO_VE","ve":"Của máy","lyDo":"Cụm danh từ đầu chỉ bộ phận"},{"ma":"848690~r14721","loai":"BO_VE","ve":"dùng để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip","lyDo":"Đã được đưa vào dungCho"},{"ma":"84869014","loai":"QUYET_DINH","ghiChu":"tax.84869014: \"Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ...\" ⇒ tenLoai mảng 3 loại bộ phận"},{"ma":"84869014","loai":"BO_VE","ve":"dùng cho máy công cụ","lyDo":"Đích của đầu chia độ và phụ trợ, đã nằm trong chuỗi tenLoai"},{"ma":"84869016","loai":"QUYET_DINH","ghiChu":"tax.84869016: \"Của máy mài, đánh bóng và mài rà dùng cho quá trình sản xuất tấm bán dẫn mỏng\" ⇒ dungCho"},{"ma":"84869016","loai":"BO_VE","ve":"Của máy mài, đánh bóng và mài rà","lyDo":"Đã được đưa vào dungCho"},{"ma":"84869016","loai":"BO_VE","ve":"dùng cho quá trình sản xuất tấm bán dẫn mỏng","lyDo":"Mục đích sản xuất tấm bán dẫn mỏng của máy mài"},{"ma":"84869017","loai":"QUYET_DINH","ghiChu":"tax.84869017: \"Của thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể\" ⇒ dungCho"},{"ma":"84869017","loai":"BO_VE","ve":"Của thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể","lyDo":"Đã được đưa vào dungCho"},{"ma":"8486902","loai":"QUYET_DINH","ghiChu":"tieuDe.8486902: \"Của máy và thiết bị sản xuất linh kiện bán dẫn hoặc mạch điện tử tích hợp\" ⇒ dungCho mảng"},{"ma":"84869021","loai":"QUYET_DINH","ghiChu":"tax.84869021: \"Của thiết bị kết tủa và bay hơi dùng cho sản xuất bán dẫn\" ⇒ dungCho"},{"ma":"84869021","loai":"BO_VE","ve":"Của thiết bị kết tủa và bay hơi","lyDo":"Đã đưa vào dungCho"},{"ma":"84869021","loai":"BO_VE","ve":"dùng cho sản xuất bán dẫn","lyDo":"Mục đích sản xuất bán dẫn của thiết bị kết tủa"},{"ma":"84869022","loai":"QUYET_DINH","ghiChu":"tax.84869022: \"Của máy kết tủa epitaxi... của thiết bị để tạo lớp phủ nhũ tương...\" ⇒ dungCho mảng"},{"ma":"84869022","loai":"BO_VE","ve":"Của máy kết tủa epitaxi","lyDo":"Đã đưa vào dungCho"},{"ma":"84869022","loai":"BO_VE","ve":"dùng cho các tấm bán dẫn mỏng","lyDo":"Đích của máy epitaxi"},{"ma":"84869022","loai":"BO_VE","ve":"của thiết bị","lyDo":"Từ nối liên hợp danh từ"},{"ma":"84869022","loai":"BO_VE","ve":"để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng","lyDo":"Đã đưa vào dungCho"},{"ma":"84869022","loai":"BO_VE","ve":"bằng phương pháp quay","lyDo":"Phương pháp hoạt động quay của thiết bị phủ"},{"ma":"84869023","loai":"QUYET_DINH","ghiChu":"tax.84869023: \"Của máy cấy ghép ion... của thiết bị tạo kết tủa vật lý... của thiết bị ghi trực tiếp...\" ⇒ dungCho mảng"},{"ma":"84869023","loai":"BO_VE","ve":"Của máy cấy ghép ion","lyDo":"Đã đưa vào dungCho"},{"ma":"84869023","loai":"BO_VE","ve":"cho quá trình xử lý vật liệu bán dẫn","lyDo":"Mô tả công dụng của máy cấy ghép ion"},{"ma":"84869023","loai":"BO_VE","ve":"của thiết bị tạo kết tủa vật lý","lyDo":"Đã đưa vào dungCho"},{"ma":"84869023","loai":"BO_VE","ve":"bằng phương pháp phun phủ lên tấm bán dẫn mỏng","lyDo":"Phương pháp phun phủ của thiết bị kết tủa vật lý"},{"ma":"84869023","loai":"BO_VE","ve":"của thiết bị","lyDo":"Từ nối liên hợp"},{"ma":"84869023","loai":"BO_VE","ve":"để lắng đọng vật lý cho sản xuất bán dẫn","lyDo":"Lặp lại ý thiết bị kết tủa vật lý"},{"ma":"84869023","loai":"BO_VE","ve":"của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác","lyDo":"Đã đưa thiết bị ghi trực tiếp vào dungCho"},{"ma":"848690~r14731","loai":"QUYET_DINH","ghiChu":"tieuDe.848690~r14731: \"Của dụng cụ phun dùng để khắc axit...\" ⇒ dungCho mảng khắc axit/tẩy rửa/làm sạch"},{"ma":"848690~r14731","loai":"BO_VE","ve":"Của dụng cụ phun","lyDo":"Tên loại dụng cụ đích"},{"ma":"848690~r14731","loai":"BO_VE","ve":"dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng","lyDo":"Đã đưa vào dungCho"},{"ma":"848690~r14731","loai":"BO_VE","ve":"của thiết bị","lyDo":"Từ nối liên hợp"},{"ma":"848690~r14731","loai":"BO_VE","ve":"để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng","lyDo":"Lặp lại các công đoạn khắc axit, tẩy rửa, làm sạch"},{"ma":"848690~r14731","loai":"BO_VE","ve":"của các bản mẫu khắc khô trên vật liệu bán dẫn","lyDo":"Bản mẫu khắc khô trên vật liệu bán dẫn đi kèm cùng tầng"},{"ma":"84869024","loai":"QUYET_DINH","ghiChu":"tax.84869024: \"Bộ phận kẹp dụng cụ và đầu cắt ren tự mở...\" ⇒ tenLoai mảng 3 loại bộ phận"},{"ma":"84869024","loai":"BO_VE","ve":"dùng cho máy công cụ","lyDo":"Nằm trong chuỗi tenLoai"},{"ma":"848690~r14734","loai":"QUYET_DINH","ghiChu":"tieuDe.848690~r14734: \"Của máy khắc để đánh dấu hoặc khắc vạch...\" ⇒ dungCho mảng máy khắc/cắt laser/uốn"},{"ma":"848690~r14734","loai":"BO_VE","ve":"Của máy khắc","lyDo":"Tên máy đích"},{"ma":"848690~r14734","loai":"BO_VE","ve":"để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng","lyDo":"Đã đưa vào dungCho"},{"ma":"848690~r14734","loai":"BO_VE","ve":"của máy cắt laser","lyDo":"Đã đưa vào dungCho"},{"ma":"848690~r14734","loai":"BO_VE","ve":"để cắt các đường tiếp xúc","lyDo":"Mục đích cắt đường tiếp xúc của máy cắt laser"},{"ma":"848690~r14734","loai":"BO_VE","ve":"bằng các chùm tia laser trong các sản phẩm bán dẫn","lyDo":"Mô tả công nghệ laser của máy cắt"},{"ma":"848690~r14734","loai":"BO_VE","ve":"của máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn","lyDo":"Đã đưa máy uốn vào dungCho"},{"ma":"84869026","loai":"QUYET_DINH","ghiChu":"tax.84869026: \"Bộ phận kẹp dụng cụ và đầu cắt ren tự mở...\" ⇒ tenLoai mảng 3 loại bộ phận"},{"ma":"84869026","loai":"BO_VE","ve":"dùng cho máy công cụ","lyDo":"Nằm trong chuỗi tenLoai"},{"ma":"84869028","loai":"QUYET_DINH","ghiChu":"tax.84869028: \"Của lò sấy và lò luyện dùng điện trở... của lò sấy và lò luyện hoạt động...\" ⇒ dungCho mảng"},{"ma":"84869028","loai":"BO_VE","ve":"Của lò sấy và lò luyện dùng điện trở","lyDo":"Đã đưa vào dungCho"},{"ma":"84869028","loai":"BO_VE","ve":"sử dụng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng","lyDo":"Công dụng chung của lò đích"},{"ma":"84869028","loai":"BO_VE","ve":"của lò sấy và lò luyện hoạt động","lyDo":"Đã đưa vào dungCho"},{"ma":"84869028","loai":"BO_VE","ve":"bằng hiệu ứng cảm ứng điện hoặc điện môi","lyDo":"Nguyên lý nhiệt của lò"},{"ma":"84869028","loai":"BO_VE","ve":"dùng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng","lyDo":"Công dụng chung của lò đích"},{"ma":"8486903","loai":"QUYET_DINH","ghiChu":"tieuDe.8486903: \"Của máy và thiết bị sản xuất màn hình dẹt\" ⇒ dungCho \"sản xuất màn hình dẹt\""},{"ma":"84869031","loai":"QUYET_DINH","ghiChu":"tax.84869031: \"Của thiết bị để khắc axit bằng phương pháp khô...\" ⇒ dungCho \"khắc axit\""},{"ma":"84869031","loai":"BO_VE","ve":"Của thiết bị","lyDo":"Từ nối danh từ"},{"ma":"84869031","loai":"BO_VE","ve":"để khắc axit","lyDo":"Đã đưa vào dungCho"},{"ma":"84869031","loai":"BO_VE","ve":"bằng phương pháp khô lên các tấm nền của màn hình dẹt","lyDo":"Phương pháp và đối tượng đích của thiết bị khắc axit"},{"ma":"848690~r14741","loai":"QUYET_DINH","ghiChu":"tieuDe.848690~r14741: \"Của thiết bị khắc axit bằng phương pháp ướt...\" ⇒ dungCho mảng"},{"ma":"848690~r14741","loai":"BO_VE","ve":"Của thiết bị khắc axit","lyDo":"Đã đưa vào dungCho"},{"ma":"848690~r14741","loai":"BO_VE","ve":"bằng phương pháp ướt, máy điện ảnh, thiết bị tẩy rửa hoặc làm sạch màn hình dẹt","lyDo":"Đã đưa các nội dung chính vào dungCho"},{"ma":"84869032","loai":"QUYET_DINH","ghiChu":"tax.84869032: \"Bộ phận kẹp dụng cụ và đầu cắt ren tự mở...\" ⇒ tenLoai mảng 3 loại bộ phận"},{"ma":"84869032","loai":"BO_VE","ve":"dùng cho máy công cụ","lyDo":"Nằm trong chuỗi tenLoai"},{"ma":"84869034","loai":"QUYET_DINH","ghiChu":"tax.84869034: \"Của thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt\" ⇒ dungCho \"thiết bị kết tủa và bay hơi\""},{"ma":"84869034","loai":"BO_VE","ve":"Của thiết bị kết tủa và bay hơi","lyDo":"Đã đưa vào dungCho"},{"ma":"84869034","loai":"BO_VE","ve":"dùng để sản xuất màn hình dẹt","lyDo":"Lặp lại tiêu đề cha 8486903"},{"ma":"84869035","loai":"QUYET_DINH","ghiChu":"tax.84869035: \"Của thiết bị để tạo lớp phủ nhũ tương cảm quang...\" ⇒ dungCho \"tạo lớp phủ nhũ tương cảm quang\""},{"ma":"84869035","loai":"BO_VE","ve":"Của thiết bị","lyDo":"Từ nối danh từ"},{"ma":"84869035","loai":"BO_VE","ve":"để tạo lớp phủ nhũ tương cảm quang lên tấm nền của màn hình dẹt","lyDo":"Đã đưa vào dungCho"},{"ma":"84869036","loai":"QUYET_DINH","ghiChu":"tax.84869036: \"Của thiết bị để tạo kết tủa vật lý...\" ⇒ dungCho \"tạo kết tủa vật lý\""},{"ma":"84869036","loai":"BO_VE","ve":"Của thiết bị","lyDo":"Từ nối danh từ"},{"ma":"84869036","loai":"BO_VE","ve":"để tạo kết tủa vật lý lên các đế của màn hình dẹt","lyDo":"Đã đưa vào dungCho"},{"ma":"8486904","loai":"QUYET_DINH","ghiChu":"tieuDe.8486904: \"Của máy hoặc thiết bị nêu tại Chú giải 11 (C) của Chương này\" ⇒ dungCho \"Chú giải 11 (C) của Chương này\""},{"ma":"84869041","loai":"QUYET_DINH","ghiChu":"tax.84869041: \"Của máy phay bằng chùm tia ion hội tụ...\" ⇒ dungCho \"máy phay\""},{"ma":"84869041","loai":"BO_VE","ve":"Của máy phay","lyDo":"Đã đưa vào dungCho"},{"ma":"84869041","loai":"BO_VE","ve":"bằng chùm tia ion hội tụ","lyDo":"Công nghệ chùm tia ion của máy phay đích"},{"ma":"84869041","loai":"BO_VE","ve":"để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn","lyDo":"Mô tả công dụng của máy phay đích"},{"ma":"84869042","loai":"QUYET_DINH","ghiChu":"tax.84869042: \"Của thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn\" ⇒ dungCho \"lắp ráp các chất bán dẫn\""},{"ma":"84869042","loai":"BO_VE","ve":"Của thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa","lyDo":"Danh sách các thiết bị lắp ráp bán dẫn"},{"ma":"84869042","loai":"BO_VE","ve":"để lắp ráp các chất bán dẫn","lyDo":"Đã đưa vào dungCho"},{"ma":"84869043","loai":"QUYET_DINH","ghiChu":"tax.84869043: \"Của máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng...\" ⇒ dungCho"},{"ma":"84869043","loai":"BO_VE","ve":"Của máy tự động","lyDo":"Từ nối danh từ đích"},{"ma":"84869043","loai":"BO_VE","ve":"để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác","lyDo":"Đã đưa cụm chính vào dungCho"},{"ma":"84869043","loai":"BO_VE","ve":"dùng cho thiết bị bán dẫn","lyDo":"Phạm vi thiết bị bán dẫn"},{"ma":"84869044","loai":"QUYET_DINH","ghiChu":"tax.84869044: \"Của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh...\" ⇒ dungCho mảng"},{"ma":"84869044","loai":"BO_VE","ve":"Của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh","lyDo":"Đã đưa vào dungCho"},{"ma":"84869044","loai":"BO_VE","ve":"được lắp với thiết bị chuyên","lyDo":"Bộ phận kèm theo của kính hiển vi"},{"ma":"84869044","loai":"BO_VE","ve":"dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn","lyDo":"Cơ cấu kẹp giữ kèm theo của kính hiển vi"},{"ma":"84869045","loai":"QUYET_DINH","ghiChu":"tax.84869045: \"Của kính hiển vi điện tử được lắp với thiết bị chuyên dùng...\" ⇒ dungCho \"kính hiển vi điện tử\""},{"ma":"84869045","loai":"BO_VE","ve":"Của kính hiển vi điện tử","lyDo":"Đã đưa vào dungCho"},{"ma":"84869045","loai":"BO_VE","ve":"được lắp với thiết bị chuyên","lyDo":"Bộ phận kèm theo"},{"ma":"84869045","loai":"BO_VE","ve":"dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn","lyDo":"Cơ cấu kẹp giữ kèm theo"},{"ma":"84869046","loai":"QUYET_DINH","ghiChu":"tax.84869046: \"Của thiết bị tạo mẫu dùng cho quá trình tạo màn...\" ⇒ dungCho \"thiết bị tạo mẫu\""},{"ma":"84869046","loai":"BO_VE","ve":"Của thiết bị tạo mẫu","lyDo":"Đã đưa vào dungCho"},{"ma":"84869046","loai":"BO_VE","ve":"dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các đế phủ lớp cản quang trong quá trình khắc","lyDo":"Mô tả công dụng của thiết bị tạo mẫu đích"}]}
+```
+
+=== GÓI PN6 848690 ===
+# 848690 — Bộ phận và phụ kiện
+
+848690 — Machines and apparatus of heading 8486; parts and accessories
+  [8486901] Của máy móc và thiết bị để sản xuất khối hoặc tấm bán dẫn mỏng
+    84869011 Của thiết bị nung nóng nhanh tấm bán dẫn mỏng
+    84869012 Của thiết bị làm khô bằng phương pháp quay dùng cho quá trình gia công tấm bản mỏng
+    84869013 Của máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng
+    [848690~r14721] Của máy dùng để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip  (tầng không mã, biểu thuế r14721, gạch 3)
+      84869014 Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ  (gạch 4)
+      84869015 Loại khác  [LK]  (gạch 4)
+    84869016 Của máy mài, đánh bóng và mài rà dùng cho quá trình sản xuất tấm bán dẫn mỏng
+    84869017 Của thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể
+    84869019 Loại khác  [LK]
+  [8486902] Của máy và thiết bị sản xuất linh kiện bán dẫn hoặc mạch điện tử tích hợp
+    84869021 Của thiết bị kết tủa và bay hơi dùng cho sản xuất bán dẫn
+    84869022 Của máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; của thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay
+    84869023 Của máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên tấm bán dẫn mỏng; của thiết bị để lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác
+    [848690~r14731] Của dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của các bản mẫu khắc khô trên vật liệu bán dẫn  (tầng không mã, biểu thuế r14731, gạch 3)
+      84869024 Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ  (gạch 4)
+      84869025 Loại khác  [LK]  (gạch 4)
+    [848690~r14734] Của máy khắc để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng; của máy cắt laser để cắt các đường tiếp xúc bằng các chùm tia laser trong các sản phẩm bán dẫn; của máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn  (tầng không mã, biểu thuế r14734, gạch 3)
+      84869026 Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ  (gạch 4)
+      84869027 Loại khác  [LK]  (gạch 4)
+    84869028 Của lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng; của lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng
+    84869029 Loại khác  [LK]
+  [8486903] Của máy và thiết bị sản xuất màn hình dẹt
+    84869031 Của thiết bị để khắc axit bằng phương pháp khô lên các tấm nền của màn hình dẹt
+    [848690~r14741] Của thiết bị khắc axit bằng phương pháp ướt, máy điện ảnh, thiết bị tẩy rửa hoặc làm sạch màn hình dẹt  (tầng không mã, biểu thuế r14741, gạch 3)
+      84869032 Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ  (gạch 4)
+      84869033 Loại khác  [LK]  (gạch 4)
+    84869034 Của thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt
+    84869035 Của thiết bị để tạo lớp phủ nhũ tương cảm quang lên tấm nền của màn hình dẹt
+    84869036 Của thiết bị để tạo kết tủa vật lý lên các đế của màn hình dẹt
+    84869039 Loại khác  [LK]
+  [8486904] Của máy hoặc thiết bị nêu tại Chú giải 11 (C) của Chương này
+    84869041 Của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn
+    84869042 Của thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn
+    84869043 Của máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn
+    84869044 Của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+    84869045 Của kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+    84869046 Của thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các đế phủ lớp cản quang trong quá trình khắc, kể cả mạch in đã lắp ráp
+    84869049 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    848690~r14721 (gạch 3) "Của máy dùng để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip:" — dòng dưới: 84869014, 84869015
+    848690~r14731 (gạch 3) "Của dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của các bản mẫu khắc khô trên vật liệu bán dẫn:" — dòng dưới: 84869024, 84869025
+    848690~r14734 (gạch 3) "Của máy khắc để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng; của máy cắt laser để cắt các đường tiếp xúc bằng các chùm tia laser trong các sản phẩm bán dẫn; của máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn:" — dòng dưới: 84869026, 84869027
+    848690~r14741 (gạch 3) "Của thiết bị khắc axit bằng phương pháp ướt, máy điện ảnh, thiết bị tẩy rửa hoặc làm sạch màn hình dẹt:" — dòng dưới: 84869032, 84869033
+
+- 8486901 TIEU_DE
+    tieuDe.8486901 [70 ký tự]: 8486901 Của máy móc và thiết bị để sản xuất khối hoặc tấm bán dẫn mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy móc và thiết bị" · [GIỚI HẠN] "để sản xuất khối hoặc tấm bán dẫn mỏng"
+- 84869011 DONG8
+    tax.84869011 [60 ký tự]: 84869011 - - - Của thiết bị nung nóng nhanh tấm bán dẫn mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị nung nóng nhanh tấm bán dẫn mỏng"
+- 84869012 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.84869012 [98 ký tự]: 84869012 - - - Của thiết bị làm khô bằng phương pháp quay dùng cho quá trình gia công tấm bản mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị làm khô" · [GIỚI HẠN] "bằng phương pháp quay" · [GIỚI HẠN] "dùng cho quá trình gia công tấm bản mỏng"
+- 84869013 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84869013 [187 ký tự]: 84869013 - - - Của máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy công cụ" · [GIỚI HẠN] "để gia công mọi vật liệu bằng cách bóc tách vật liệu" · [GIỚI HẠN] "bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng"
+- 848690~r14721 TIEU_DE
+    tieuDe.848690~r14721 [122 ký tự]: 848690~r14721 Của máy dùng để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy" · [GIỚI HẠN] "dùng để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip"
+- 84869014 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84869014 [153 ký tự]: 84869014 - - - - Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy công cụ"
+- 84869015 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84869015 [26 ký tự]: 84869015 - - - - Loại khác
+- 84869016 DONG8
+    tax.84869016 [92 ký tự]: 84869016 - - - Của máy mài, đánh bóng và mài rà dùng cho quá trình sản xuất tấm bán dẫn mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy mài, đánh bóng và mài rà" · [GIỚI HẠN] "dùng cho quá trình sản xuất tấm bán dẫn mỏng"
+- 84869017 DONG8
+    tax.84869017 [81 ký tự]: 84869017 - - - Của thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị làm phát triển hoặc kéo dài khối bán dẫn đơn tinh thể"
+- 84869019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84869019 [24 ký tự]: 84869019 - - - Loại khác
+- 8486902 TIEU_DE
+    tieuDe.8486902 [81 ký tự]: 8486902 Của máy và thiết bị sản xuất linh kiện bán dẫn hoặc mạch điện tử tích hợp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy và thiết bị sản xuất linh kiện bán dẫn hoặc mạch điện tử tích hợp"
+- 84869021 DONG8
+    tax.84869021 [72 ký tự]: 84869021 - - - Của thiết bị kết tủa và bay hơi dùng cho sản xuất bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị kết tủa và bay hơi" · [GIỚI HẠN] "dùng cho sản xuất bán dẫn"
+- 84869022 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.84869022 [171 ký tự]: 84869022 - - - Của máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; của thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy kết tủa epitaxi" · [GIỚI HẠN] "dùng cho các tấm bán dẫn mỏng" · [GIỚI HẠN] "của thiết bị" · [GIỚI HẠN] "để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng" · [GIỚI HẠN] "bằng phương pháp quay"
+- 84869023 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true; gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.84869023 [336 ký tự]: 84869023 - - - Của máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên tấm bán dẫn mỏng; của thiết bị để lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy cấy ghép ion" · [GIỚI HẠN] "cho quá trình xử lý vật liệu bán dẫn" · [GIỚI HẠN] "của thiết bị tạo kết tủa vật lý" · [GIỚI HẠN] "bằng phương pháp phun phủ lên tấm bán dẫn mỏng" · [GIỚI HẠN] "của thiết bị" · [GIỚI HẠN] "để lắng đọng vật lý cho sản xuất bán dẫn" · [GIỚI HẠN] "của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác"
+- 848690~r14731 TIEU_DE
+    tieuDe.848690~r14731 [225 ký tự]: 848690~r14731 Của dụng cụ phun dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của thiết bị để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng; của các bản mẫu khắc khô trên vật liệu bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của dụng cụ phun" · [GIỚI HẠN] "dùng để khắc axit, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng" · [GIỚI HẠN] "của thiết bị" · [GIỚI HẠN] "để khắc axit ướt, hiện ảnh, tẩy rửa hoặc làm sạch các tấm bán dẫn mỏng" · [GIỚI HẠN] "của các bản mẫu khắc khô trên vật liệu bán dẫn"
+- 84869024 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84869024 [153 ký tự]: 84869024 - - - - Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy công cụ"
+- 84869025 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84869025 [26 ký tự]: 84869025 - - - - Loại khác
+- 848690~r14734 TIEU_DE
+    tieuDe.848690~r14734 [239 ký tự]: 848690~r14734 Của máy khắc để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng; của máy cắt laser để cắt các đường tiếp xúc bằng các chùm tia laser trong các sản phẩm bán dẫn; của máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy khắc" · [GIỚI HẠN] "để đánh dấu hoặc khắc vạch lên các tấm bán dẫn mỏng" · [GIỚI HẠN] "của máy cắt laser" · [GIỚI HẠN] "để cắt các đường tiếp xúc" · [GIỚI HẠN] "bằng các chùm tia laser trong các sản phẩm bán dẫn" · [GIỚI HẠN] "của máy uốn, gấp và làm thẳng các đầu chân dẫn điện của bán dẫn"
+- 84869026 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84869026 [153 ký tự]: 84869026 - - - - Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy công cụ"
+- 84869027 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84869027 [26 ký tự]: 84869027 - - - - Loại khác
+- 84869028 DONG8
+    tax.84869028 [250 ký tự]: 84869028 - - - Của lò sấy và lò luyện dùng điện trở sử dụng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng; của lò sấy và lò luyện hoạt động bằng hiệu ứng cảm ứng điện hoặc điện môi dùng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lò sấy và lò luyện dùng điện trở" · [GIỚI HẠN] "sử dụng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng" · [GIỚI HẠN] "của lò sấy và lò luyện hoạt động" · [GIỚI HẠN] "bằng hiệu ứng cảm ứng điện hoặc điện môi" · [GIỚI HẠN] "dùng trong sản xuất linh kiện bán dẫn trên tấm bán dẫn mỏng"
+- 84869029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84869029 [24 ký tự]: 84869029 - - - Loại khác
+- 8486903 TIEU_DE
+    tieuDe.8486903 [49 ký tự]: 8486903 Của máy và thiết bị sản xuất màn hình dẹt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy và thiết bị sản xuất màn hình dẹt"
+- 84869031 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.84869031 [94 ký tự]: 84869031 - - - Của thiết bị để khắc axit bằng phương pháp khô lên các tấm nền của màn hình dẹt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị" · [GIỚI HẠN] "để khắc axit" · [GIỚI HẠN] "bằng phương pháp khô lên các tấm nền của màn hình dẹt"
+- 848690~r14741 TIEU_DE (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tieuDe.848690~r14741 [116 ký tự]: 848690~r14741 Của thiết bị khắc axit bằng phương pháp ướt, máy điện ảnh, thiết bị tẩy rửa hoặc làm sạch màn hình dẹt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị khắc axit" · [GIỚI HẠN] "bằng phương pháp ướt, máy điện ảnh, thiết bị tẩy rửa hoặc làm sạch màn hình dẹt"
+- 84869032 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84869032 [153 ký tự]: 84869032 - - - - Bộ phận kẹp dụng cụ và đầu cắt ren tự mở; bộ phận kẹp sản phẩm; đầu chia độ và những bộ phận phụ trợ đặc biệt khác dùng cho máy công cụ 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy công cụ"
+- 84869033 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84869033 [26 ký tự]: 84869033 - - - - Loại khác
+- 84869034 DONG8
+    tax.84869034 [76 ký tự]: 84869034 - - - Của thiết bị kết tủa và bay hơi dùng để sản xuất màn hình dẹt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị kết tủa và bay hơi" · [GIỚI HẠN] "dùng để sản xuất màn hình dẹt"
+- 84869035 DONG8
+    tax.84869035 [91 ký tự]: 84869035 - - - Của thiết bị để tạo lớp phủ nhũ tương cảm quang lên tấm nền của màn hình dẹt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị" · [GIỚI HẠN] "để tạo lớp phủ nhũ tương cảm quang lên tấm nền của màn hình dẹt"
+- 84869036 DONG8
+    tax.84869036 [77 ký tự]: 84869036 - - - Của thiết bị để tạo kết tủa vật lý lên các đế của màn hình dẹt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị" · [GIỚI HẠN] "để tạo kết tủa vật lý lên các đế của màn hình dẹt"
+- 84869039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84869039 [24 ký tự]: 84869039 - - - Loại khác
+- 8486904 TIEU_DE
+    tieuDe.8486904 [68 ký tự]: 8486904 Của máy hoặc thiết bị nêu tại Chú giải 11 (C) của Chương này
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy hoặc thiết bị nêu tại Chú giải 11 (C) của Chương này"
+- 84869041 DONG8
+    tax.84869041 [137 ký tự]: 84869041 - - - Của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy phay" · [GIỚI HẠN] "bằng chùm tia ion hội tụ" · [GIỚI HẠN] "để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn"
+- 84869042 DONG8
+    tax.84869042 [104 ký tự]: 84869042 - - - Của thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa để lắp ráp các chất bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị gắn khuôn, nối băng tự động, nối dây và bọc nhựa" · [GIỚI HẠN] "để lắp ráp các chất bán dẫn"
+- 84869043 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.84869043 [159 ký tự]: 84869043 - - - Của máy tự động để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác dùng cho thiết bị bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của máy tự động" · [GIỚI HẠN] "để dịch chuyển, xử lý và kẹp giữ các tấm bán dẫn mỏng, các khung miếng mỏng, hộp mỏng và vật liệu khác" · [GIỚI HẠN] "dùng cho thiết bị bán dẫn"
+- 84869044 DONG8
+    tax.84869044 [177 ký tự]: 84869044 - - - Của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của kính hiển vi quang học soi nổi và kính hiển vi chụp ảnh" · [GIỚI HẠN] "được lắp với thiết bị chuyên" · [GIỚI HẠN] "dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn"
+- 84869045 DONG8
+    tax.84869045 [142 ký tự]: 84869045 - - - Của kính hiển vi điện tử được lắp với thiết bị chuyên dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của kính hiển vi điện tử" · [GIỚI HẠN] "được lắp với thiết bị chuyên" · [GIỚI HẠN] "dùng để kẹp giữ và dịch chuyển tấm bán dẫn bản mỏng hoặc tấm lưới bán dẫn"
+- 84869046 DONG8
+    tax.84869046 [166 ký tự]: 84869046 - - - Của thiết bị tạo mẫu dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các đế phủ lớp cản quang trong quá trình khắc, kể cả mạch in đã lắp ráp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của thiết bị tạo mẫu" · [GIỚI HẠN] "dùng cho quá trình tạo màn (khuôn in) hoặc lưới quang trên các đế phủ lớp cản quang trong quá trình khắc"
+- 84869049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84869049 [24 ký tự]: 84869049 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.848690; chú giải: nhom8486.nhom, ch84.chuong, phan84.phan

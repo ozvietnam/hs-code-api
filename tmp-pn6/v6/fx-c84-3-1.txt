@@ -1,0 +1,64 @@
+VÒNG SỬA — 2 PN6 bị cổng máy chặn (846592 846693). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 846592 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:84659210:301
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"846592","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-846592","dong8":{"84659210":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":["khắc vạch lên các tấm mạch in","tấm dây in","tấm nền của tấm mạch in","tấm nền của tấm dây in"]},{"fact":"duongKinh","op":"<=","value":3.175,"donVi":"mm"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"84659210","loai":"QUYET_DINH","ghiChu":"tax.84659210: \"Để khắc vạch lên các tấm mạch in hoặc tấm dây in... có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm...\" ⇒ congDung mảng + duongKinh <= 3.175 mm"},{"ma":"84659210","loai":"BO_VE","ve":"có thể lắp vừa","lyDo":"Vế nối mô tả khả năng tương thích của đầu kẹp mũi khắc, đã lượng hóa bằng đường kính chuôi"},{"ma":"84659210","loai":"BO_VE","ve":"được mũi khắc","lyDo":"Tên chi tiết công cụ gắn kèm mũi khắc, đi kèm cùng vế đường kính chuôi mũi khắc"},{"ma":"84659210","loai":"BO_VE","ve":"dùng để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in","lyDo":"Vế lặp lại nguyên văn mục đích công dụng đã được phủ ở đầu dòng"}]}
+```
+
+=== GÓI PN6 846592 ===
+# 846592 — Máy bào, máy phay hoặc máy tạo khuôn (bằng phương pháp cắt)
+
+846592 — Machine-tools; for working wood, cork, bone, hard rubber, hard plastics or similar hard materials; planing, milling or moulding (by cutting) machines
+  84659210 Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in, có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm, dùng để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in
+  84659290 Loại khác  [LK]
+
+- 84659210 DONG8
+    tax.84659210 [301 ký tự]: 84659210 - - - Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in, có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm, dùng để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in" · [GIỚI HẠN] "có thể lắp vừa" · [GIỚI HẠN] "được mũi khắc" · [GIỚI HẠN] "có đường kính chuôi không quá 3,175 mm" · [GIỚI HẠN] "dùng để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in"
+- 84659290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84659290 [24 ký tự]: 84659290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.846592; chú giải: nhom8465.nhom, ch84.chuong, phan84.phan
+
+
+=== SỬA PN6 846693 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-trich-qua-dai:84669330:538
+      → Câu trích của mục có điều kiện dài quá 300 ký tự (LUAT-CHUNG luật 2). Sửa: Lược bằng "…" (giữ phần chứa bằng chứng của từng điều kiện; các đoạn đúng thứ tự).
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"846693","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-846693","dong8":{"84669330":{"dieuKienSo":[{"fact":"chiHoacChuYeu","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":["8456.11.10","8456.12.10","8456.20.00","8456.30.00","8457.10","8458.91.00","8459.21.00","8459.29.10","8459.61.00","8459.69.10","8461.50.00"]}]},"84669340":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8456.50.00"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"84669330","loai":"QUYET_DINH","ghiChu":"tax.84669330: \"Dùng cho máy thuộc các phân nhóm 8456.11.10... loại chỉ sử dụng hoặc chủ yếu...\" ⇒ chiHoacChuYeu CO + dungCho danh sách mã HS"},{"ma":"84669330","loai":"BO_VE","ve":"sử dụng để sản xuất mạch in, mạch in đã lắp ráp, bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71","lyDo":"Mục đích công dụng của máy đích đã gắn liền với các mã phân nhóm cụ thể trong dungCho"},{"ma":"84669330","loai":"BO_VE","ve":"dùng cho máy thuộc các phân nhóm 8457.10, 8458.91.00, 8459.21.00, 8459.29.10, 8459.61.00, 8459.69.10, hoặc 8461.50.00, loại chỉ","lyDo":"Đã đưa toàn bộ các mã phân nhóm vào mảng dungCho chung"},{"ma":"84669330","loai":"BO_VE","ve":"được sử dụng hoặc chủ yếu để sản xuất bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71","lyDo":"Mục đích công dụng của các máy đích đã được đại diện bởi các mã phân nhóm trong dungCho"},{"ma":"84669340","loai":"QUYET_DINH","ghiChu":"tax.84669340: \"Dùng cho máy thuộc phân nhóm 8456.50.00\" ⇒ dungCho \"8456.50.00\""}]}
+```
+
+=== GÓI PN6 846693 ===
+# 846693 — Dùng cho máy thuộc các nhóm từ 84.56 đến 84.61
+
+846693 — Parts & accessories suited for use solely/principally with machines of headings 8456-8465; n.e.c. in heading no. 8466
+  84669330 Dùng cho máy thuộc các phân nhóm 8456.11.10, 8456.12.10, 8456.20.00, hoặc 8456.30.00, loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in, mạch in đã lắp ráp, bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71; dùng cho máy thuộc các phân nhóm 8457.10, 8458.91.00, 8459.21.00, 8459.29.10, 8459.61.00, 8459.69.10, hoặc 8461.50.00, loại chỉ được sử dụng hoặc chủ yếu để sản xuất bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71
+  84669340 Dùng cho máy thuộc phân nhóm 8456.50.00
+  84669390 Loại khác  [LK]
+
+- 84669330 DONG8 (gợi ý khoá tu-vung@2: chiHoacChuYeu — "chỉ hoặc chủ yếu dùng cho" — xem --tu-vung --khoa=<khoá>)
+    tax.84669330 [538 ký tự]: 84669330 - - - Dùng cho máy thuộc các phân nhóm 8456.11.10, 8456.12.10, 8456.20.00, hoặc 8456.30.00, loại chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in, mạch in đã lắp ráp, bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71; dùng cho máy thuộc các phân nhóm 8457.10, 8458.91.00, 8459.21.00, 8459.29.10, 8459.61.00, 8459.69.10, hoặc 8461.50.00, loại chỉ được sử dụng hoặc chủ yếu để sản xuất bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy thuộc các phân nhóm 8456.11.10, 8456.12.10, 8456.20.00, hoặc 8456.30.00, loại chỉ sử dụng hoặc chủ yếu" · [GIỚI HẠN] "sử dụng để sản xuất mạch in, mạch in đã lắp ráp, bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71" · [GIỚI HẠN] "dùng cho máy thuộc các phân nhóm 8457.10, 8458.91.00, 8459.21.00, 8459.29.10, 8459.61.00, 8459.69.10, hoặc 8461.50.00, loại chỉ" · [GIỚI HẠN] "được sử dụng hoặc chủ yếu để sản xuất bộ phận của máy móc thuộc nhóm 85.17, hoặc bộ phận của máy xử lý dữ liệu tự động của nhóm 84.71"
+- 84669340 DONG8
+    tax.84669340 [54 ký tự]: 84669340 - - - Dùng cho máy thuộc phân nhóm 8456.50.00
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy thuộc phân nhóm 8456.50.00"
+- 84669390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.84669390 [24 ký tự]: 84669390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.846693; chú giải: nhom8466.nhom, ch84.chuong, phan84.phan
+

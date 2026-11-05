@@ -1,0 +1,305 @@
+VÒNG SỬA — 7 PN6 bị cổng máy chặn (853521 853530 853590 853670 853810 853922 854460). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 853521 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:85352110+85352120:loaiCongTac=TU_DONG_RO_DIEN_QUA_TAI,tenLoai=hộp đúc:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"853521","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853521","dong8":{"85352110":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"hộp đúc"}]},"85352120":{"dieuKienSo":[{"fact":"loaiCongTac","op":"TRONG","value":["TU_DONG_RO_DIEN_QUA_TAI"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"85352110","loai":"QUYET_DINH","ghiChu":"tax.85352110: \"Loại hộp đúc\" ⇒ tenLoai \"hộp đúc\""},{"ma":"85352120","loai":"QUYET_DINH","ghiChu":"tax.85352120: \"Bộ ngắt mạch chống dòng rò tiếp (chạm) đất ELCB\" ⇒ loaiCongTac TU_DONG_RO_DIEN_QUA_TAI"}]}
+```
+
+=== GÓI PN6 853521 ===
+# 853521 — Có điện áp dưới 72,5 kV
+
+853521 — Electrical apparatus; automatic circuit breakers, for a voltage exceeding 1000 volts but less than 72.5kV
+  85352110 Loại hộp đúc
+  85352120 Bộ ngắt mạch chống dòng rò tiếp (chạm) đất ELCB
+  85352190 Loại khác  [LK]
+
+- 85352110 DONG8
+    tax.85352110 [27 ký tự]: 85352110 - - - Loại hộp đúc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "hộp đúc"
+- 85352120 DONG8
+    tax.85352120 [62 ký tự]: 85352120 - - - Bộ ngắt mạch chống dòng rò tiếp (chạm) đất ELCB
+- 85352190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85352190 [24 ký tự]: 85352190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853521; chú giải: nhom8535.nhom, ch85.chuong, phan85.phan
+
+
+=== SỬA PN6 853530 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-bien-lech-chu:8535301:dienAp
+      → Biên số lệch chữ: "không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=. Sửa: Sửa op/value đúng chữ của câu trích.
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"853530","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853530","dong8":{"85353011":{"dieuKienSo":[{"fact":"dienAp","op":"<","value":36,"donVi":"kV"}]},"85353020":{"dieuKienSo":[{"fact":"dienAp","op":">=","value":66,"donVi":"kV"}]}},"dieuKienNut":{"8535301":{"dieuKienSo":[{"fact":"dienAp","op":"<=","value":40,"donVi":"kV"}]}},"ghiChuSoan":[{"ma":"8535301","loai":"QUYET_DINH","ghiChu":"tieuDe.8535301: \"Dùng cho điện áp trên 1 kV nhưng không quá 40 kV\" ⇒ dienAp <= 40 kV (ngưỡng trên 1 kV là của nhóm 8535)"},{"ma":"85353011","loai":"QUYET_DINH","ghiChu":"tax.85353011: \"Thiết bị ngắt có điện áp dưới 36 kV\" ⇒ dienAp < 36 kV"},{"ma":"85353020","loai":"QUYET_DINH","ghiChu":"tax.85353020: \"Dùng cho điện áp từ 66 kV trở lên\" ⇒ dienAp >= 66 kV"}]}
+```
+
+=== GÓI PN6 853530 ===
+# 853530 — Cầu dao cách ly và thiết bị đóng - ngắt điện
+
+853530 — Electrical apparatus; isolating and make-and-break switches, for a voltage exceeding 1000 volts
+  [8535301] Dùng cho điện áp trên 1 kV nhưng không quá 40 kV
+    85353011 Thiết bị ngắt có điện áp dưới 36 kV
+    85353019 Loại khác  [LK]
+  85353020 Dùng cho điện áp từ 66 kV trở lên
+  85353090 Loại khác  [LK]
+
+- 8535301 TIEU_DE
+    tieuDe.8535301 [56 ký tự]: 8535301 Dùng cho điện áp trên 1 kV nhưng không quá 40 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho điện áp trên 1 kV nhưng không quá 40 kV"
+- 85353011 DONG8
+    tax.85353011 [50 ký tự]: 85353011 - - - Thiết bị ngắt có điện áp dưới 36 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có điện áp dưới 36 kV"
+- 85353019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85353019 [24 ký tự]: 85353019 - - - Loại khác
+- 85353020 DONG8
+    tax.85353020 [46 ký tự]: 85353020 - - Dùng cho điện áp từ 66 kV trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho điện áp từ 66 kV trở lên"
+- 85353090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85353090 [22 ký tự]: 85353090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853530; chú giải: nhom8535.nhom, ch85.chuong, phan85.phan
+
+
+=== SỬA PN6 853590 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:85359010+85359020:dungCho=máy biến áp phân phối,loaiCongTac=DAO_CHIEU_HOAC_CAU_CHI,tenLoai=Đầu nối đã lắp ráp:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"853590","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853590","dong8":{"85359010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Đầu nối đã lắp ráp","bộ chuyển đổi theo nấc"]},{"fact":"dungCho","op":"CONG_DUNG","value":["máy biến áp phân phối","biến áp nguồn"]}]},"85359020":{"dieuKienSo":[{"fact":"loaiCongTac","op":"TRONG","value":["DAO_CHIEU_HOAC_CAU_CHI"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"85359010","loai":"QUYET_DINH","ghiChu":"tax.85359010: \"Đầu nối đã lắp ráp và bộ chuyển đổi theo nấc dùng cho máy biến áp phân phối hoặc biến áp nguồn (SEN)\" ⇒ tenLoai mảng + dungCho mảng [\"máy biến áp phân phối\",\"biến áp nguồn\"]"},{"ma":"85359020","loai":"QUYET_DINH","ghiChu":"tax.85359020: \"Công tắc đảo chiều (change-over switches) loại dùng khởi động động cơ điện\" ⇒ loaiCongTac DAO_CHIEU_HOAC_CAU_CHI"}]}
+```
+
+=== GÓI PN6 853590 ===
+# 853590 — Loại khác
+
+853590 — Electrical apparatus; n.e.c. in heading no. 8535, for switching or protecting electrical circuits, for a voltage exceeding 1000 volts
+  85359010 Đầu nối đã lắp ráp và bộ chuyển đổi theo nấc dùng cho máy biến áp phân phối hoặc biến áp nguồn (SEN)
+  85359020 Công tắc đảo chiều (change-over switches) loại dùng khởi động động cơ điện
+  85359090 Loại khác  [LK]
+
+- 85359010 DONG8
+    tax.85359010 [113 ký tự]: 85359010 - - Đầu nối đã lắp ráp và bộ chuyển đổi theo nấc dùng cho máy biến áp phân phối hoặc biến áp nguồn (SEN)
+    sen.85359010 [310 ký tự]: BỘ CHUYỂN ĐỔI THEO NẤC DÙNG CHO MÁY BIẾN ÁP PHÂN PHỐI HOẶC BIẾN ÁP NGUỒN Bộ chuyển đổi theo nấc cho phép thay thế rất nhanh và thuận tiện các thiết bị nối ghép điện áp cao mà không cần phải tác động đến các phần bên trong của biến thế. Chúng được thiết kế để sử dụng cho các máy biến điện sử dụng dầu biến thế.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy biến áp phân phối hoặc biến áp nguồn"
+- 85359020 DONG8
+    tax.85359020 [87 ký tự]: 85359020 - - Công tắc đảo chiều (change-over switches) loại dùng khởi động động cơ điện
+- 85359090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85359090 [22 ký tự]: 85359090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853590; chú giải: nhom8535.nhom, ch85.chuong, phan85.phan
+
+
+=== SỬA PN6 853670 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:85367010:Bằng gốm
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"853670","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853670","dong8":{"85367010":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":"gốm sứ"}]},"85367020":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":"đồng"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"85367010","loai":"QUYET_DINH","ghiChu":"tax.85367010: \"Bằng gốm\" ⇒ chatLieu \"gốm sứ\""},{"ma":"85367020","loai":"QUYET_DINH","ghiChu":"tax.85367020: \"Bằng đồng\" ⇒ chatLieu \"đồng\""}]}
+```
+
+=== GÓI PN6 853670 ===
+# 853670 — Đầu nối dùng cho sợi quang, bó sợi quang hoặc cáp quang
+
+853670 — Connectors for optical fibres, optical fibre bundles or cables
+  85367010 Bằng gốm
+  85367020 Bằng đồng
+  85367090 Loại khác  [LK]
+
+- 85367010 DONG8
+    tax.85367010 [22 ký tự]: 85367010 - - Bằng gốm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng gốm"
+- 85367020 DONG8
+    tax.85367020 [22 ký tự]: 85367020 - - Bằng đồng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng đồng"
+- 85367090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85367090 [22 ký tự]: 85367090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853670; chú giải: nhom8536.nhom, ch85.chuong, phan85.phan
+
+
+=== SỬA PN6 853810 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:85381011:dieu-kien-so-co-khong-co-trong-trich:coBoXuLyLapTrinh
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong3-muc:85381021:dieu-kien-so-co-khong-co-trong-trich:coBoXuLyLapTrinh
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"853810","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853810","dong8":{"85381011":{"dieuKienSo":[{"fact":"coBoXuLyLapTrinh","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn"}]},"85381012":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"thiết bị sóng vô tuyến"}]},"85381021":{"dieuKienSo":[{"fact":"coBoXuLyLapTrinh","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn"}]},"85381022":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"thiết bị sóng vô tuyến"}]}},"dieuKienNut":{"8538101":{"dieuKienSo":[{"fact":"dienAp","op":"<=","value":1000,"donVi":"V"}]},"8538102":{"dieuKienSo":[{"fact":"dienAp","op":">","value":1000,"donVi":"V"}]}},"ghiChuSoan":[{"ma":"8538101","loai":"QUYET_DINH","ghiChu":"tieuDe.8538101: \"Dùng cho điện áp không quá 1.000 V\" ⇒ dienAp <= 1000 V"},{"ma":"85381011","loai":"QUYET_DINH","ghiChu":"tax.85381011: \"Bộ phận của bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn\" ⇒ coBoXuLyLapTrinh CO + dungCho \"máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn\""},{"ma":"85381011","loai":"BO_VE","ve":"của bộ điều khiển logic có khả năng lập trình","lyDo":"Đã được phủ bằng coBoXuLyLapTrinh CO"},{"ma":"85381012","loai":"QUYET_DINH","ghiChu":"tax.85381012: \"Của loại sử dụng trong các thiết bị sóng vô tuyến\" ⇒ dungCho \"thiết bị sóng vô tuyến\""},{"ma":"8538102","loai":"QUYET_DINH","ghiChu":"tieuDe.8538102: \"Dùng cho điện áp trên 1.000 V\" ⇒ dienAp > 1000 V"},{"ma":"85381021","loai":"QUYET_DINH","ghiChu":"tax.85381021: \"Bộ phận của bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn\" ⇒ coBoXuLyLapTrinh CO + dungCho \"máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn\""},{"ma":"85381021","loai":"BO_VE","ve":"của bộ điều khiển logic có khả năng lập trình","lyDo":"Đã được phủ bằng coBoXuLyLapTrinh CO"},{"ma":"85381022","loai":"QUYET_DINH","ghiChu":"tax.85381022: \"Của loại sử dụng trong các thiết bị sóng vô tuyến\" ⇒ dungCho \"thiết bị sóng vô tuyến\""}]}
+```
+
+=== GÓI PN6 853810 ===
+# 853810 — Bảng, panel, giá đỡ, bàn, tủ và các loại hộp và đế khác dùng cho các mặt hàng thuộc nhóm 85.37, chưa được lắp đặt các thiết bị của chúng
+
+853810 — Electrical apparatus; parts (e.g. boards, panels, consoles, desks, cabinets, other bases), for goods of heading no. 8537, not equipped with their apparatus
+  [8538101] Dùng cho điện áp không quá 1.000 V
+    85381011 Bộ phận của bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn
+    85381012 Của loại sử dụng trong các thiết bị sóng vô tuyến
+    85381019 Loại khác  [LK]
+  [8538102] Dùng cho điện áp trên 1.000 V
+    85381021 Bộ phận của bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn
+    85381022 Của loại sử dụng trong các thiết bị sóng vô tuyến
+    85381029 Loại khác  [LK]
+
+- 8538101 TIEU_DE
+    tieuDe.8538101 [42 ký tự]: 8538101 Dùng cho điện áp không quá 1.000 V
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho điện áp không quá 1.000 V"
+- 85381011 DONG8
+    tax.85381011 [144 ký tự]: 85381011 - - - Bộ phận của bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của bộ điều khiển logic có khả năng lập trình" · [GIỚI HẠN] "cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn"
+- 85381012 DONG8
+    tax.85381012 [64 ký tự]: 85381012 - - - Của loại sử dụng trong các thiết bị sóng vô tuyến
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng trong các thiết bị sóng vô tuyến"
+- 85381019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85381019 [24 ký tự]: 85381019 - - - Loại khác
+- 8538102 TIEU_DE
+    tieuDe.8538102 [37 ký tự]: 8538102 Dùng cho điện áp trên 1.000 V
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho điện áp trên 1.000 V"
+- 85381021 DONG8
+    tax.85381021 [144 ký tự]: 85381021 - - - Bộ phận của bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của bộ điều khiển logic có khả năng lập trình" · [GIỚI HẠN] "cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn"
+- 85381022 DONG8
+    tax.85381022 [64 ký tự]: 85381022 - - - Của loại sử dụng trong các thiết bị sóng vô tuyến
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng trong các thiết bị sóng vô tuyến"
+- 85381029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85381029 [24 ký tự]: 85381029 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853810; chú giải: nhom8538.nhom, ch85.chuong, phan85.phan
+
+
+=== SỬA PN6 853922 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:85392220+85392231:congDung=chiếu sáng trang trí,congSuat=59.99994,dungCho=thiết bị y tế,tenLoai=Bóng đèn phản xạ:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:85392220+85392232:congDung=chiếu sáng trang trí,congSuat=60.00006,dungCho=thiết bị y tế,tenLoai=Bóng đèn phản xạ:khong-tat-dinh
+    ✗ cong2-chong-lan:85392220+85392233:congDung=ẑẑẑ,congSuat=59.99994,dungCho=thiết bị y tế,phamViSuDung=GIA_DINH,tenLoai=Bóng đèn phản xạ:khong-tat-dinh
+    ✗ cong2-chong-lan:85392220+85392239:congDung=ẑẑẑ,congSuat=59.99994,dungCho=thiết bị y tế,phamViSuDung=CONG_NGHIEP,tenLoai=Bóng đèn phản xạ:khong-tat-dinh
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"853922","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-853922","dong8":{"85392220":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"thiết bị y tế"}]},"85392231":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"chiếu sáng trang trí"},{"fact":"congSuat","op":"<=","value":60,"donVi":"W"}]},"85392232":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"chiếu sáng trang trí"},{"fact":"congSuat","op":">","value":60,"donVi":"W"}]},"85392233":{"dieuKienSo":[{"fact":"phamViSuDung","op":"TRONG","value":["GIA_DINH"]}]},"85392291":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"chiếu sáng trang trí"},{"fact":"congSuat","op":"<=","value":60,"donVi":"W"}]},"85392293":{"dieuKienSo":[{"fact":"phamViSuDung","op":"TRONG","value":["GIA_DINH"]}]}},"dieuKienNut":{"8539223":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Bóng đèn phản xạ"}]}},"ghiChuSoan":[{"ma":"85392220","loai":"QUYET_DINH","ghiChu":"tax.85392220: \"Dùng cho thiết bị y tế\" ⇒ dungCho \"thiết bị y tế\""},{"ma":"8539223","loai":"QUYET_DINH","ghiChu":"tieuDe.8539223: \"Bóng đèn phản xạ khác\" ⇒ tenLoai \"Bóng đèn phản xạ\""},{"ma":"85392231","loai":"QUYET_DINH","ghiChu":"tax.85392231: \"Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W\" ⇒ congDung \"chiếu sáng trang trí\", congSuat <= 60 W"},{"ma":"85392232","loai":"QUYET_DINH","ghiChu":"tax.85392232: \"Loại dùng trong chiếu sáng trang trí, công suất trên 60 W\" ⇒ congDung \"chiếu sáng trang trí\", congSuat > 60 W"},{"ma":"85392233","loai":"QUYET_DINH","ghiChu":"tax.85392233: \"Loại khác, dùng cho chiếu sáng gia dụng\" ⇒ phamViSuDung GIA_DINH"},{"ma":"85392291","loai":"QUYET_DINH","ghiChu":"tax.85392291: \"Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W\" ⇒ congDung \"chiếu sáng trang trí\", congSuat <= 60 W"},{"ma":"85392293","loai":"QUYET_DINH","ghiChu":"tax.85392293: \"Loại khác, dùng cho chiếu sáng gia dụng\" ⇒ phamViSuDung GIA_DINH"}]}
+```
+
+=== GÓI PN6 853922 ===
+# 853922 — Loại khác, có công suất không quá 200 W và điện áp trên 100 V
+
+853922 — Lamps; filament, (excluding ultra-violet or infra-red), of a power not exceeding 200W and for a voltage exceeding 100 volts, other than tungsten halogen
+  85392220 Dùng cho thiết bị y tế
+  [8539223] Bóng đèn phản xạ khác
+    85392231 Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+    85392232 Loại dùng trong chiếu sáng trang trí, công suất trên 60 W
+    85392233 Loại khác, dùng cho chiếu sáng gia dụng  [LK có điều kiện]
+    85392239 Loại khác  [LK]
+  [8539229] Loại khác
+    85392291 Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+    85392293 Loại khác, dùng cho chiếu sáng gia dụng  [LK có điều kiện]
+    85392299 Loại khác  [LK]
+
+- 85392220 DONG8
+    tax.85392220 [37 ký tự]: 85392220 - - - Dùng cho thiết bị y tế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho thiết bị y tế"
+- 8539223 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8539223 [29 ký tự]: 8539223 Bóng đèn phản xạ khác
+- 85392231 DONG8
+    tax.85392231 [79 ký tự]: 85392231 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong chiếu sáng trang trí" · [GIỚI HẠN] "công suất không quá 60 W"
+- 85392232 DONG8
+    tax.85392232 [74 ký tự]: 85392232 - - - - Loại dùng trong chiếu sáng trang trí, công suất trên 60 W
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong chiếu sáng trang trí" · [GIỚI HẠN] "công suất trên 60 W"
+- 85392233 DONG8
+    tax.85392233 [56 ký tự]: 85392233 - - - - Loại khác, dùng cho chiếu sáng gia dụng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho chiếu sáng gia dụng"
+- 85392239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85392239 [26 ký tự]: 85392239 - - - - Loại khác
+- 8539229 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8539229 [17 ký tự]: 8539229 Loại khác
+- 85392291 DONG8
+    tax.85392291 [79 ký tự]: 85392291 - - - - Loại dùng trong chiếu sáng trang trí, công suất không quá 60 W
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong chiếu sáng trang trí" · [GIỚI HẠN] "công suất không quá 60 W"
+- 85392293 DONG8
+    tax.85392293 [56 ký tự]: 85392293 - - - - Loại khác, dùng cho chiếu sáng gia dụng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho chiếu sáng gia dụng"
+- 85392299 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85392299 [26 ký tự]: 85392299 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.853922; chú giải: nhom8539.nhom, ch85.chuong, phan85.phan
+
+
+=== SỬA PN6 854460 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:85446012
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong0-phan-con-lai-thua:85446022
+    ✗ cong3-bien-lech-chu:8544601:dienAp
+      → Biên số lệch chữ: "không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=. Sửa: Sửa op/value đúng chữ của câu trích.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"854460","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-854460","dong8":{"85446011":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":"plastic","viTri":"CACH_DIEN"},{"fact":"duongKinhLoi","op":"<","value":22.7,"donVi":"mm"}]},"85446012":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":["cao su","plastic","giấy"],"viTri":"CACH_DIEN"}],"phanConLai":["85446011"]},"85446021":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":"plastic","viTri":"CACH_DIEN"},{"fact":"duongKinhLoi","op":"<","value":22.7,"donVi":"mm"}]},"85446022":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":["cao su","plastic","giấy"],"viTri":"CACH_DIEN"}],"phanConLai":["85446021"]},"85446031":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":["cao su","plastic","giấy"],"viTri":"CACH_DIEN"}]}},"dieuKienNut":{"8544601":{"dieuKienSo":[{"fact":"dienAp","op":"<=","value":36,"donVi":"kV"}]},"8544602":{"dieuKienSo":[{"fact":"dienAp","op":">","value":36,"donVi":"kV"},{"fact":"dienAp","op":"<=","value":66,"donVi":"kV"}]},"8544603":{"dieuKienSo":[{"fact":"dienAp","op":">","value":66,"donVi":"kV"}]}},"ghiChuSoan":[{"ma":"8544601","loai":"QUYET_DINH","ghiChu":"tieuDe.8544601: \"Dùng cho điện áp trên 1 kV nhưng không quá 36 kV\" ⇒ dienAp <= 36 kV (ngưỡng 1000 V là của PN6)"},{"ma":"85446011","loai":"QUYET_DINH","ghiChu":"tax.85446011: \"Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm\" ⇒ chatLieu \"plastic\" viTri CACH_DIEN, duongKinhLoi < 22.7 mm"},{"ma":"85446012","loai":"QUYET_DINH","ghiChu":"tax.85446012: \"Loại khác, cách điện bằng cao su, plastic hoặc giấy\" ⇒ chatLieu mảng [\"cao su\",\"plastic\",\"giấy\"] + phanConLai [\"85446011\"]"},{"ma":"8544602","loai":"QUYET_DINH","ghiChu":"tieuDe.8544602: \"Dùng cho điện áp trên 36 kV nhưng không quá 66 kV\" ⇒ dienAp > 36 kV, <= 66 kV"},{"ma":"85446021","loai":"QUYET_DINH","ghiChu":"tax.85446021: \"Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm\" ⇒ chatLieu \"plastic\" viTri CACH_DIEN, duongKinhLoi < 22.7 mm"},{"ma":"85446022","loai":"QUYET_DINH","ghiChu":"tax.85446022: \"Loại khác, cách điện bằng cao su, plastic hoặc giấy\" ⇒ chatLieu mảng [\"cao su\",\"plastic\",\"giấy\"] + phanConLai [\"85446021\"]"},{"ma":"8544603","loai":"QUYET_DINH","ghiChu":"tieuDe.8544603: \"Dùng cho điện áp trên 66 kV\" ⇒ dienAp > 66 kV"},{"ma":"85446031","loai":"QUYET_DINH","ghiChu":"tax.85446031: \"Cách điện bằng cao su, plastic hoặc giấy\" ⇒ chatLieu [\"cao su\",\"plastic\",\"giấy\"] viTri CACH_DIEN"}]}
+```
+
+=== GÓI PN6 854460 ===
+# 854460 — Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V
+
+854460 — Insulated electric conductors; for a voltage exceeding 1000 volts
+  [8544601] Dùng cho điện áp trên 1 kV nhưng không quá 36 kV
+    85446011 Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm
+    85446012 Loại khác, cách điện bằng cao su, plastic hoặc giấy  [LK có điều kiện]
+    85446019 Loại khác  [LK]
+  [8544602] Dùng cho điện áp trên 36 kV nhưng không quá 66 kV
+    85446021 Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm
+    85446022 Loại khác, cách điện bằng cao su, plastic hoặc giấy  [LK có điều kiện]
+    85446029 Loại khác  [LK]
+  [8544603] Dùng cho điện áp trên 66 kV
+    85446031 Cách điện bằng cao su, plastic hoặc giấy
+    85446039 Loại khác  [LK]
+
+- 8544601 TIEU_DE
+    tieuDe.8544601 [56 ký tự]: 8544601 Dùng cho điện áp trên 1 kV nhưng không quá 36 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho điện áp trên 1 kV nhưng không quá 36 kV"
+- 85446011 DONG8
+    tax.85446011 [91 ký tự]: 85446011 - - - Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng plastic, trong đó mỗi lõi" · [GIỚI HẠN] "có đường kính dưới 22,7 mm"
+- 85446012 DONG8
+    tax.85446012 [66 ký tự]: 85446012 - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng cao su, plastic hoặc giấy"
+- 85446019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85446019 [24 ký tự]: 85446019 - - - Loại khác
+- 8544602 TIEU_DE
+    tieuDe.8544602 [57 ký tự]: 8544602 Dùng cho điện áp trên 36 kV nhưng không quá 66 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho điện áp trên 36 kV nhưng không quá 66 kV"
+- 85446021 DONG8
+    tax.85446021 [91 ký tự]: 85446021 - - - Cáp bọc cách điện bằng plastic, trong đó mỗi lõi có đường kính dưới 22,7 mm 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng plastic, trong đó mỗi lõi" · [GIỚI HẠN] "có đường kính dưới 22,7 mm"
+- 85446022 DONG8
+    tax.85446022 [66 ký tự]: 85446022 - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng cao su, plastic hoặc giấy"
+- 85446029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85446029 [24 ký tự]: 85446029 - - - Loại khác
+- 8544603 TIEU_DE
+    tieuDe.8544603 [35 ký tự]: 8544603 Dùng cho điện áp trên 66 kV
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho điện áp trên 66 kV"
+- 85446031 DONG8
+    tax.85446031 [55 ký tự]: 85446031 - - - Cách điện bằng cao su, plastic hoặc giấy
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng cao su, plastic hoặc giấy"
+- 85446039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.85446039 [24 ký tự]: 85446039 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.854460; chú giải: nhom8544.nhom, ch85.chuong, phan85.phan
+

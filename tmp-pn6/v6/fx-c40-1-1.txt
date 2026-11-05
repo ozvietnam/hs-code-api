@@ -1,0 +1,403 @@
+VÒNG SỬA — 12 PN6 bị cổng máy chặn (400110 400219 400231 400239 400299 400510 400591 400599 400811 400942 401219 401310). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 400110 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:40011011:40011011
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:40011011:4001101
+    ✗ cong1-chua-so-hoa:40011019:40011011
+    ✗ cong1-chua-so-hoa:40011019:4001101
+    ✗ cong1-chua-so-hoa:40011021:40011021
+    ✗ cong1-chua-so-hoa:40011021:4001102
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400110","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400110","dong8":{"40011011":{"dieuKienSo":[]},"40011021":{"dieuKienSo":[]}},"dieuKienNut":{"4001101":{"dieuKienSo":[]},"4001102":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"4001101","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongAmoniac","ghiChu":"Chứa trên 0,5% hàm lượng amoniac tính theo thể tích"},{"ma":"4001102","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongAmoniac","ghiChu":"Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích"},{"ma":"40011011","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"phuongPhapCheTao","ghiChu":"bằng phương pháp ly tâm"},{"ma":"40011021","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"phuongPhapCheTao","ghiChu":"bằng phương pháp ly tâm"}]}
+```
+
+=== GÓI PN6 400110 ===
+# 400110 — Mủ cao su tự nhiên, đã hoặc chưa tiền lưu hóa
+
+400110 — Rubber; natural rubber latex, whether or not pre-vulcanised, in primary forms or in plates, sheets or strip
+  [4001101] Chứa trên 0,5% hàm lượng amoniac tính theo thể tích
+    40011011 Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+    40011019 Loại khác  [LK]
+  [4001102] Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích
+    40011021 Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+    40011029 Loại khác  [LK]
+
+- 4001101 TIEU_DE
+    tieuDe.4001101 [59 ký tự]: 4001101 Chứa trên 0,5% hàm lượng amoniac tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa trên 0,5% hàm lượng amoniac tính theo thể tích"
+- 40011011 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.40011011 [60 ký tự]: 40011011 - - - Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+    sen.40011011 [1200 ký tự]: MỦ CAO SU CÔ ĐẶC BẰNG PHƯƠNG PHÁP LY TÂM Ly tâm là quá trình cô đặc mủ cao su bằng cách sử dụng máy ly tâm với các cánh quạt quay bên trong có tốc độ cao để tách cao su khỏi nước và serum. Theo tiêu chuẩn ngành, phương pháp ly tâm sẽ làm cô đặc không dưới 60% cao su khô và còn lại là nước, nhũ tương và một số loại tạp chất khác (tính theo trọng lượng). Ly tâm là phương pháp được sử dụng nhiều nhất để sơ chế mủ cao su trên toàn thế giới. Ngoài phương pháp ly tâm, còn có những phương pháp khác dùng để cô đặc mủ cao su, như bay hơi, kem hóa và gạn bằng điện. “Bay hơi” là một phương pháp được sử dụng lâu đời nhất, và nó chỉ tách nước, hoặc cô đặc chất lỏng dưới dạng dung dịch, huyền phù và nhũ tương. “Kem hóa” là một quá trình mà trong đó mủ cao su được cô đặc thành dạng kem bằng phương pháp trộn mủ cao su với tác nhân tạo kem (như ammonium alginate hay bột hạt me được nấu chín) và cho phép hỗn hợp này tách thành hai lớp; lớp trên là mủ cao su cô đặc và lớp dưới là serum chứa rất ít cao su. Lớp dưới sẽ được bỏ đi, giữ lại mủ cao su có hàm lượng DRC là 50%-55% (hàm lượng cao su khô) sẽ được thử nghiệm, đóng gói và đưa ra thị trường. “Gạn bằng điện” là một quá trình chuyển điện có sử 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng phương pháp ly tâm"
+- 40011019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40011019 [24 ký tự]: 40011019 - - - Loại khác
+- 4001102 TIEU_DE
+    tieuDe.4001102 [64 ký tự]: 4001102 Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa không quá 0,5% hàm lượng amoniac tính theo thể tích"
+- 40011021 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.40011021 [60 ký tự]: 40011021 - - - Mủ cao su cô đặc bằng phương pháp ly tâm(SEN)
+    sen.40011021 [1200 ký tự]: MỦ CAO SU CÔ ĐẶC BẰNG PHƯƠNG PHÁP LY TÂM Ly tâm là quá trình cô đặc mủ cao su bằng cách sử dụng máy ly tâm với các cánh quạt quay bên trong có tốc độ cao để tách cao su khỏi nước và serum. Theo tiêu chuẩn ngành, phương pháp ly tâm sẽ làm cô đặc không dưới 60% cao su khô và còn lại là nước, nhũ tương và một số loại tạp chất khác (tính theo trọng lượng). Ly tâm là phương pháp được sử dụng nhiều nhất để sơ chế mủ cao su trên toàn thế giới. Ngoài phương pháp ly tâm, còn có những phương pháp khác dùng để cô đặc mủ cao su, như bay hơi, kem hóa và gạn bằng điện. “Bay hơi” là một phương pháp được sử dụng lâu đời nhất, và nó chỉ tách nước, hoặc cô đặc chất lỏng dưới dạng dung dịch, huyền phù và nhũ tương. “Kem hóa” là một quá trình mà trong đó mủ cao su được cô đặc thành dạng kem bằng phương pháp trộn mủ cao su với tác nhân tạo kem (như ammonium alginate hay bột hạt me được nấu chín) và cho phép hỗn hợp này tách thành hai lớp; lớp trên là mủ cao su cô đặc và lớp dưới là serum chứa rất ít cao su. Lớp dưới sẽ được bỏ đi, giữ lại mủ cao su có hàm lượng DRC là 50%-55% (hàm lượng cao su khô) sẽ được thử nghiệm, đóng gói và đưa ra thị trường. “Gạn bằng điện” là một quá trình chuyển điện có sử 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng phương pháp ly tâm"
+- 40011029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40011029 [24 ký tự]: 40011029 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400110; chú giải: nhom4001.nhom, ch40.chuong
+
+
+=== SỬA PN6 400219 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:40021910:chưa lưu hóa, chưa pha trộn
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400219","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400219","dong8":{"40021910":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Dạng nguyên sinh","dạng tấm","tờ","dải"]}]}},"ghiChuSoan":[{"ma":"40021910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daLuuHoa","ghiChu":"chưa lưu hóa"},{"ma":"40021910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daPhaTron","ghiChu":"chưa pha trộn"}]}
+```
+
+=== GÓI PN6 400219 ===
+# 400219 — Loại khác
+
+400219 — Rubber; synthetic, styrene-butadiene rubber (SBR) and carboxylated styrene-butadiene rubber (XSBR), (other than latex), in primary forms or in plates, sheets or strip
+  40021910 Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+  40021990 Loại khác  [LK]
+
+- 40021910 DONG8
+    tax.40021910 [86 ký tự]: 40021910 - - - Dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lưu hóa" · [GIỚI HẠN] "chưa pha trộn"
+- 40021990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40021990 [24 ký tự]: 40021990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400219; chú giải: nhom4002.nhom, ch40.chuong
+
+
+=== SỬA PN6 400231 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:40023110:chưa lưu hóa, chưa pha trộn
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400231","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400231","dong8":{"40023110":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Dạng tấm","tờ","dải"]}]}},"ghiChuSoan":[{"ma":"40023110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daLuuHoa","ghiChu":"chưa lưu hóa"},{"ma":"40023110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daPhaTron","ghiChu":"chưa pha trộn"}]}
+```
+
+=== GÓI PN6 400231 ===
+# 400231 — Cao su isobuten-isopren (butyl) (IIR)
+
+400231 — Rubber; synthetic, isobutene-isoprene (butyl) rubber (IIR), in primary forms or in plates, sheets or strip
+  40023110 Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+  40023190 Loại khác  [LK]
+
+- 40023110 DONG8
+    tax.40023110 [64 ký tự]: 40023110 - - - Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lưu hóa" · [GIỚI HẠN] "chưa pha trộn"
+- 40023190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40023190 [24 ký tự]: 40023190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400231; chú giải: nhom4002.nhom, ch40.chuong
+
+
+=== SỬA PN6 400239 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:40023910:chưa lưu hóa, chưa pha trộn
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400239","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400239","dong8":{"40023910":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Dạng tấm","tờ","dải"]}]}},"ghiChuSoan":[{"ma":"40023910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daLuuHoa","ghiChu":"chưa lưu hóa"},{"ma":"40023910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daPhaTron","ghiChu":"chưa pha trộn"}]}
+```
+
+=== GÓI PN6 400239 ===
+# 400239 — Loại khác
+
+400239 — Rubber; synthetic, halo-isobutene-isoprene rubber (CIIR or BIIR), in primary forms or in plates, sheets or strip
+  40023910 Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+  40023990 Loại khác  [LK]
+
+- 40023910 DONG8
+    tax.40023910 [64 ký tự]: 40023910 - - - Dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lưu hóa" · [GIỚI HẠN] "chưa pha trộn"
+- 40023990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40023990 [24 ký tự]: 40023990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400239; chú giải: nhom4002.nhom, ch40.chuong
+
+
+=== SỬA PN6 400299 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:40029940
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong5-ve-gioi-han-bi-bo:40029940:chưa lưu hóa, chưa pha trộn
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400299","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400299","dong8":{"40029930":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Cao su tự nhiên đã epoxy hóa"}]},"40029940":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["dạng nguyên sinh","dạng tấm","tờ","dải"]}],"phanConLai":["40029930"]}},"ghiChuSoan":[{"ma":"40029940","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daLuuHoa","ghiChu":"chưa lưu hóa"},{"ma":"40029940","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daPhaTron","ghiChu":"chưa pha trộn"}]}
+```
+
+=== GÓI PN6 400299 ===
+# 400299 — Loại khác
+
+400299 — Rubber; synthetic, n.e.c. in heading 4002, (other than latex), in primary forms or in plates, sheets or strip
+  40029930 Cao su tự nhiên đã epoxy hóa (ENR)
+  40029940 Loại khác, dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn  [LK có điều kiện]
+  40029990 Loại khác  [LK]
+
+- 40029930 DONG8
+    tax.40029930 [49 ký tự]: 40029930 - - - Cao su tự nhiên đã epoxy hóa (ENR)
+- 40029940 DONG8
+    tax.40029940 [97 ký tự]: 40029940 - - - Loại khác, dạng nguyên sinh hoặc dạng tấm, tờ hoặc dải chưa lưu hóa, chưa pha trộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lưu hóa" · [GIỚI HẠN] "chưa pha trộn"
+- 40029990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40029990 [24 ký tự]: 40029990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400299; chú giải: nhom4002.nhom, ch40.chuong
+
+
+=== SỬA PN6 400510 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:40051010:40051010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:40051090:40051010
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400510","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400510","dong8":{"40051010":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"40051010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"nguonGocCaoSu","ghiChu":"Của nhựa tự nhiên"}]}
+```
+
+=== GÓI PN6 400510 ===
+# 400510 — Hỗn hợp với muội carbon hoặc silica
+
+400510 — Rubber; unvulcanised, compounded with carbon black or silica, in primary forms or in plates, sheets or strip
+  40051010 Của nhựa tự nhiên
+  40051090 Loại khác  [LK]
+
+- 40051010 DONG8
+    tax.40051010 [30 ký tự]: 40051010 - - Của nhựa tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của nhựa tự nhiên"
+- 40051090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40051090 [22 ký tự]: 40051090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400510; chú giải: nhom4005.nhom, ch40.chuong
+
+
+=== SỬA PN6 400591 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:40059110:40059110
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:40059190:40059110
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400591","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400591","dong8":{"40059110":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"40059110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"nguonGocCaoSu","ghiChu":"Của nhựa tự nhiên"}]}
+```
+
+=== GÓI PN6 400591 ===
+# 400591 — Dạng tấm, tờ và dải
+
+400591 — Rubber; unvulcanised, (compounded other than with carbon black or silica), in plates, sheets and strip
+  40059110 Của nhựa tự nhiên
+  40059190 Loại khác  [LK]
+
+- 40059110 DONG8
+    tax.40059110 [32 ký tự]: 40059110 - - - Của nhựa tự nhiên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của nhựa tự nhiên"
+- 40059190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40059190 [24 ký tự]: 40059190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400591; chú giải: nhom4005.nhom, ch40.chuong
+
+
+=== SỬA PN6 400599 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:40059920:40059920
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:40059990:40059920
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400599","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400599","dong8":{"40059910":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["latex","mủ cao su"]}]},"40059920":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"40059910","loai":"QUYET_DINH","ghiChu":"tax.40059910 'Dạng latex (dạng mủ cao su)' ⇒ tenLoai"},{"ma":"40059920","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"thanhPhanPhaTron","ghiChu":"được pha trộn với các chất trừ carbon hoặc silica"}]}
+```
+
+=== GÓI PN6 400599 ===
+# 400599 — Loại khác
+
+400599 — Rubber; unvulcanised, (compounded other than with carbon black or silica), in primary forms, (other than plates, sheets, strip, solutions or dispersions)
+  40059910 Dạng latex (dạng mủ cao su)
+  40059920 Cao su tự nhiên được pha trộn với các chất trừ carbon hoặc silica
+  40059990 Loại khác  [LK]
+
+- 40059910 DONG8
+    tax.40059910 [42 ký tự]: 40059910 - - - Dạng latex (dạng mủ cao su)
+- 40059920 DONG8
+    tax.40059920 [80 ký tự]: 40059920 - - - Cao su tự nhiên được pha trộn với các chất trừ carbon hoặc silica
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được pha trộn với các chất" · [GIỚI HẠN] "trừ carbon hoặc silica"
+- 40059990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40059990 [24 ký tự]: 40059990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400599; chú giải: nhom4005.nhom, ch40.chuong
+
+
+=== SỬA PN6 400811 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:40081120
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong5-ve-gioi-han-bi-bo:40081110:được lót vải dệt
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400811","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400811","dong8":{"40081110":{"dieuKienSo":[{"fact":"doDay","op":">","value":5,"donVi":"mm"}]},"40081120":{"dieuKienSo":[{"fact":"tamMiengGhepLatNenOpTuong","op":"CO"}],"phanConLai":["40081110"]}},"ghiChuSoan":[{"ma":"40081110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"vatLieuLot","ghiChu":"có một mặt được lót vải dệt"},{"ma":"40081120","loai":"QUYET_DINH","ghiChu":"tax.40081120 'để lát nền và ốp tường' ⇒ tamMiengGhepLatNenOpTuong CO"}]}
+```
+
+=== GÓI PN6 400811 ===
+# 400811 — Dạng tấm, tờ và dải
+
+400811 — Rubber; vulcanised (other than hard rubber), in plates, sheets and strip of cellular rubber
+  40081110 Chiều dày trên 5 mm, có một mặt được lót vải dệt
+  40081120 Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường  [LK có điều kiện]
+  40081190 Loại khác  [LK]
+
+- 40081110 DONG8
+    tax.40081110 [63 ký tự]: 40081110 - - - Chiều dày trên 5 mm, có một mặt được lót vải dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chiều dày trên 5 mm, có một mặt" · [GIỚI HẠN] "được lót vải dệt"
+- 40081120 DONG8
+    tax.40081120 [73 ký tự]: 40081120 - - - Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để lát nền và ốp tường"
+- 40081190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40081190 [24 ký tự]: 40081190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400811; chú giải: nhom4008.nhom, ch40.chuong
+
+
+=== SỬA PN6 400942 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:40094210+40094220:dungCho=bếp ga,ongHutXaBunKhaiThacMo=true,tenLoai=Ống vòi cao su:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"400942","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-400942","dong8":{"40094210":{"dieuKienSo":[{"fact":"ongHutXaBunKhaiThacMo","op":"CO"}]},"40094220":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ống vòi cao su"},{"fact":"dungCho","op":"CONG_DUNG","value":"bếp ga"}]}},"ghiChuSoan":[{"ma":"40094210","loai":"QUYET_DINH","ghiChu":"tax.40094210 'Ống hút và xả bùn dùng trong khai thác mỏ' ⇒ ongHutXaBunKhaiThacMo CO"},{"ma":"40094220","loai":"QUYET_DINH","ghiChu":"tax.40094220 'Ống vòi cao su dùng cho bếp ga' ⇒ tenLoai 'Ống vòi cao su', dungCho 'bếp ga'"}]}
+```
+
+=== GÓI PN6 400942 ===
+# 400942 — Có kèm phụ kiện ghép nối
+
+400942 — Rubber; vulcanised (other than hard rubber), tubing, piping and hoses, reinforced or otherwise combined with materials other than metal or textiles, with fittings
+  40094210 Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+  40094220 Ống vòi cao su dùng cho bếp ga (SEN)
+  40094290 Loại khác  [LK]
+
+- 40094210 DONG8
+    tax.40094210 [61 ký tự]: 40094210 - - - Ống hút và xả bùn dùng trong khai thác mỏ(SEN)
+    sen.40094210 [313 ký tự]: ỐNG HÚT VÀ XẢ BÙN DÙNG TRONG KHAI THÁC MỎ Ống hút và xả bùn dùng trong khai thác mỏ là ống cao su dẻo và không gập được, có mặt cắt ngang hình tròn. Đường kính tối thiểu của ống là 15,24cm, độ dày thành ống tối thiểu 1,27 cm và áp suất bục tối thiểu 517 kPa. Chúng thường có các mặt bích được lưu hóa ở 2 đầu ống.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong khai thác mỏ"
+- 40094220 DONG8
+    tax.40094220 [51 ký tự]: 40094220 - - - Ống vòi cao su dùng cho bếp ga (SEN)
+    sen.40094220 [355 ký tự]: ỐNG VÒI CAO SU DÙNG CHO BẾP GA STT Thông số Đơn vị Chỉ số nhiệt dẻo 1 Kích thước - Đường kính trong mm 10 ± 0,75 - Chiều dài mm Tối thiểu 1800 2 Độ bền kết dính giữa lớp kN/m Tối thiểu 2,4 trong và lớp ngoài 3 Lực giữ thử nghiệm - Độ rò rỉ, độ rạn nứt tại mức 1,5 MPa 4 Áp suất bục MPa Tối thiểu 3,0 5 Thử nghiệm cháy (trong 2 - Không bị cháy phút)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho bếp ga"
+- 40094290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40094290 [24 ký tự]: 40094290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.400942; chú giải: nhom4009.nhom, ch40.chuong
+
+
+=== SỬA PN6 401219 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:40121941:dungCho
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"401219","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-401219","dong8":{"40121920":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy thuộc nhóm 84.27"}]},"40121930":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy thuộc nhóm 84.29 hoặc 84.30"}]},"40121941":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy kéo nông nghiệp hoặc lâm nghiệp"}]}},"dieuKienNut":{"4012194":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"xe thuộc Chương 87"}]}},"ghiChuSoan":[{"ma":"40121920","loai":"QUYET_DINH","ghiChu":"tax.40121920 'Loại dùng cho máy thuộc nhóm 84.27' ⇒ dungCho"}]}
+```
+
+=== GÓI PN6 401219 ===
+# 401219 — Loại khác
+
+401219 — Retreaded tyres; other than of a kind used on motor cars (including station wagons and racing cars), buses and lorries and aircraft
+  40121920 Loại dùng cho máy thuộc nhóm 84.27
+  40121930 Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+  [4012194] Loại dùng cho xe thuộc Chương 87
+    40121941 Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp
+    40121949 Loại khác  [LK]
+  40121990 Loại khác  [LK]
+
+- 40121920 DONG8
+    tax.40121920 [49 ký tự]: 40121920 - - - Loại dùng cho máy thuộc nhóm 84.27
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy thuộc nhóm 84.27"
+- 40121930 DONG8
+    tax.40121930 [60 ký tự]: 40121930 - - - Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy thuộc nhóm 84.29 hoặc 84.30"
+- 4012194 TIEU_DE
+    tieuDe.4012194 [40 ký tự]: 4012194 Loại dùng cho xe thuộc Chương 87
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe thuộc Chương 87"
+- 40121941 DONG8
+    tax.40121941 [66 ký tự]: 40121941 - - - - Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy kéo nông nghiệp hoặc lâm nghiệp"
+- 40121949 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40121949 [26 ký tự]: 40121949 - - - - Loại khác
+- 40121990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.40121990 [24 ký tự]: 40121990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.401219; chú giải: nhom4012.nhom, ch40.chuong
+
+
+=== SỬA PN6 401310 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:4013102:dungCho
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+    ✗ cong1-chua-so-hoa:40131011:40131011
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:40131019:40131019
+    ✗ cong1-chua-so-hoa:40131021:40131021
+    ✗ cong1-chua-so-hoa:40131029:40131029
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"401310","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-401310","dong8":{"40131011":{"dieuKienSo":[]},"40131019":{"dieuKienSo":[]},"40131021":{"dieuKienSo":[]},"40131029":{"dieuKienSo":[]}},"dieuKienNut":{"4013101":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)"}]},"4013102":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)"}]}},"ghiChuSoan":[{"ma":"40131011","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chieuRongLop","ghiChu":"Dùng cho loại lốp có chiều rộng không quá 450 mm"},{"ma":"40131019","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chieuRongLop","ghiChu":"Dùng cho loại lốp có chiều rộng trên 450 mm"},{"ma":"40131021","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chieuRongLop","ghiChu":"Dùng cho loại lốp có chiều rộng không quá 450 mm"},{"ma":"40131029","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chieuRongLop","ghiChu":"Dùng cho loại lốp có chiều rộng trên 450 mm"}]}
+```
+
+=== GÓI PN6 401310 ===
+# 401310 — Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua), ô tô khách (1) hoặc ô tô chở hàng
+
+401310 — Rubber; inner tubes, of a kind used on motorcars (including station wagons and racing cars), buses and lorries
+  [4013101] Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)
+    40131011 Dùng cho loại lốp có chiều rộng không quá 450 mm
+    40131019 Dùng cho loại lốp có chiều rộng trên 450 mm
+  [4013102] Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)
+    40131021 Dùng cho loại lốp có chiều rộng không quá 450 mm
+    40131029 Dùng cho loại lốp có chiều rộng trên 450 mm
+
+- 4013101 TIEU_DE
+    tieuDe.4013101 [122 ký tự]: 4013101 Loại dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho ô tô con (motor car) (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)"
+- 40131011 DONG8
+    tax.40131011 [63 ký tự]: 40131011 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho loại lốp" · [GIỚI HẠN] "có chiều rộng không quá 450 mm"
+- 40131019 DONG8
+    tax.40131019 [58 ký tự]: 40131019 - - - Dùng cho loại lốp có chiều rộng trên 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho loại lốp" · [GIỚI HẠN] "có chiều rộng trên 450 mm"
+- 4013102 TIEU_DE
+    tieuDe.4013102 [73 ký tự]: 4013102 Loại dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho ô tô khách (buses) (1) hoặc ô tô chở hàng (lorries)"
+- 40131021 DONG8
+    tax.40131021 [63 ký tự]: 40131021 - - - Dùng cho loại lốp có chiều rộng không quá 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho loại lốp" · [GIỚI HẠN] "có chiều rộng không quá 450 mm"
+- 40131029 DONG8
+    tax.40131029 [58 ký tự]: 40131029 - - - Dùng cho loại lốp có chiều rộng trên 450 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho loại lốp" · [GIỚI HẠN] "có chiều rộng trên 450 mm"
+
+Nguồn cấp phân nhóm: wco.401310; chú giải: nhom4013.nhom, ch40.chuong
+

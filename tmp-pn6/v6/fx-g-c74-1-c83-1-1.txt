@@ -1,0 +1,401 @@
+VÒNG SỬA — 11 PN6 bị cổng máy chặn (741920 760429 760611 790700 800700 810199 821193 830241 830629 831120 831130). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 741920 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:74192020:congDung
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+    ✗ cong5-dinh-ngu-tach:74192020:chứa và các loại đồ
+      → Định ngữ chung bị tách: theo chữ Anh của cùng dòng, vế bổ nghĩa đi với CẢ các danh từ đầu liên hợp (gắn cho một phần ⇒ rộng hơn chữ) hoặc chỉ với danh từ CUỐI (gắn cho tất cả ⇒ hẹp hơn chữ). Sửa: Định ngữ chung ⇒ một điều kiện riêng phủ định ngữ cho mọi danh từ đầu (vd tenLoai ["A","B"] + dungCho "<định ngữ>"); định ngữ chỉ của danh từ cuối ⇒ HOAC [[tenLoai A], [tenLoai B, <điều kiện định ngữ>]]. Máy đọc sai cấu trúc ⇒ BO_VE với ve = định ngữ + lý do (người soát đọc).
+    ✗ cong2-chong-lan:74192010+74192020:congDung=không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt,dungCho=xích,laBoPhan=true,tenLoai=Thùng:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"741920","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-741920","dong8":{"74192010":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":"Xích"}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"xích"}]]}]},"74192020":{"dieuKienSo":[{"fact":"tenLoai","op":"TUONG_TU","value":["Thùng","két","bể chứa"]},{"fact":"congDung","op":"CONG_DUNG","value":"không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt"}]}},"ghiChuSoan":[{"ma":"74192010","loai":"QUYET_DINH","ghiChu":"tax.74192010 \"Xích và các bộ phận của xích\" ⇒ HOAC tenLoai Xích hoặc laBoPhan CO, dungCho xích"},{"ma":"74192020","loai":"QUYET_DINH","ghiChu":"tax.74192020 \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt\" ⇒ tenLoai TUONG_TU Thùng, két, bể chứa; congDung không gắn..."}]}
+```
+
+=== GÓI PN6 741920 ===
+# 741920 — Đã được đúc, đúc khuôn, rập hoặc rèn nhưng chưa được gia công thêm
+
+741920 — Copper; cast, moulded, stamped or forged, but not further worked
+  74192010 Xích và các bộ phận của xích
+  74192020 Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt
+  74192090 Loại khác  [LK]
+
+- 74192010 DONG8
+    tax.74192010 [41 ký tự]: 74192010 - - Xích và các bộ phận của xích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của xích"
+- 74192020 DONG8
+    tax.74192020 [120 ký tự]: 74192020 - - Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa và các loại đồ" · [GIỚI HẠN] "chứa đựng tương tự" · [GIỚI HẠN] "không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt"
+- 74192090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.74192090 [22 ký tự]: 74192090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.741920; chú giải: nhom7419.nhom, ch74.chuong, phan74.phan
+
+=== SỬA PN6 760429 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-dinh-ngu-tach:76042910:được ép đùn
+      → Định ngữ chung bị tách: theo chữ Anh của cùng dòng, vế bổ nghĩa đi với CẢ các danh từ đầu liên hợp (gắn cho một phần ⇒ rộng hơn chữ) hoặc chỉ với danh từ CUỐI (gắn cho tất cả ⇒ hẹp hơn chữ). Sửa: Định ngữ chung ⇒ một điều kiện riêng phủ định ngữ cho mọi danh từ đầu (vd tenLoai ["A","B"] + dungCho "<định ngữ>"); định ngữ chỉ của danh từ cuối ⇒ HOAC [[tenLoai A], [tenLoai B, <điều kiện định ngữ>]]. Máy đọc sai cấu trúc ⇒ BO_VE với ve = định ngữ + lý do (người soát đọc).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"760429","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-760429","dong8":{"76042910":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["thanh","que"]},{"fact":"congDung","op":"CONG_DUNG","value":"ép đùn"}]},"76042930":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"hình chữ Y"},{"fact":"dungCho","op":"CONG_DUNG","value":"dây khóa kéo"},{"fact":"dangCuon","op":"CO"}]}},"ghiChuSoan":[{"ma":"76042910","loai":"QUYET_DINH","ghiChu":"tax.76042910 \"Dạng thanh và que được ép đùn\" ⇒ tenLoai thanh/que, congDung ép đùn (phuongPhapCheTao không có EP_DUN)"},{"ma":"76042930","loai":"QUYET_DINH","ghiChu":"tax.76042930 \"Dạng hình chữ Y dùng cho dây khóa kéo, ở dạng cuộn\" ⇒ tenLoai hình chữ Y, dungCho dây khóa kéo, dangCuon CO"}]}
+```
+
+=== GÓI PN6 760429 ===
+# 760429 — Loại khác
+
+760429 — Aluminium; alloys, bars, rods and profiles, other than hollow
+  76042910 Dạng thanh và que được ép đùn
+  76042930 Dạng hình chữ Y dùng cho dây khóa kéo, ở dạng cuộn
+  76042990 Loại khác  [LK]
+
+- 76042910 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.76042910 [44 ký tự]: 76042910 - - - Dạng thanh và que được ép đùn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được ép đùn"
+- 76042930 DONG8
+    tax.76042930 [65 ký tự]: 76042930 - - - Dạng hình chữ Y dùng cho dây khóa kéo, ở dạng cuộn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho dây khóa kéo, ở dạng cuộn"
+- 76042990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76042990 [24 ký tự]: 76042990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.760429; chú giải: nhom7604.nhom, ch76.chuong, phan76.phan
+
+
+=== SỬA PN6 760611 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ spec-hinh-dang:dong8.76061110.ghiChuSoan — khoá mục hợp lệ: dieuKienSo, trich, nguon, phanConLai
+      → Spec sai lược đồ ranh-gioi-spec@1. Sửa: Xem mẫu trong --help và docs/giao-viec/so-tay/QUY-TRINH-SO-HOA.md.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"760611","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-760611","dong8":{"76061110":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":["dát phẳng","tạo hình"]},{"fact":"daXuLyBeMat","op":"KHONG"}],"ghiChuSoan":[{"ma":"76061110","loai":"BO_VE","ve":"bằng phương pháp cán hoặc ép","lyDo":"Phương pháp cán hoặc ép đi liền với việc dát phẳng hoặc tạo hình, daXuLyBeMat KHONG đã phủ vế chưa xử lý bề mặt."}]}},"ghiChuSoan":[{"ma":"76061110","loai":"QUYET_DINH","ghiChu":"tax.76061110 \"Được dát phẳng hoặc tạo hình bằng phương pháp cán hoặc ép, nhưng chưa xử lý bề mặt\" ⇒ congDung dát phẳng/tạo hình, daXuLyBeMat KHONG"}]}
+```
+
+=== GÓI PN6 760611 ===
+# 760611 — Bằng nhôm, không hợp kim
+
+760611 — Aluminium; plates, sheets and strip, thickness exceeding 0.2mm, (not alloyed), rectangular (including square)
+  76061110 Được dát phẳng hoặc tạo hình bằng phương pháp cán hoặc ép, nhưng chưa xử lý bề mặt
+  76061190 Loại khác  [LK]
+
+- 76061110 DONG8 (gợi ý khoá tu-vung@2: phuongPhapCheTao — phương pháp chế tạo — xem --tu-vung --khoa=<khoá>)
+    tax.76061110 [97 ký tự]: 76061110 - - - Được dát phẳng hoặc tạo hình bằng phương pháp cán hoặc ép, nhưng chưa xử lý bề mặt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Được dát phẳng hoặc tạo hình" · [GIỚI HẠN] "bằng phương pháp cán hoặc ép" · [GIỚI HẠN] "chưa xử lý bề mặt"
+- 76061190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.76061190 [24 ký tự]: 76061190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.760611; chú giải: nhom7606.nhom, ch76.chuong, phan76.phan
+
+
+=== SỬA PN6 790700 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:79070030:dieu-kien-so-tuong-tu-khong-co-cum-mo
+      → Câu trích không có cụm mở "tương tự" / "similar" / "the like" — chữ biểu không có vế mở nên không dùng TUONG_TU. Sửa: Chữ không có vế mở ⇒ dùng TEN_LOAI (mảng = hoặc). Có vế mở mà trích bị lược mất ⇒ trích đủ đoạn chứa "… tương tự".
+    ✗ cong2-chong-lan:79070030+79070040:congDung=xây dựng,ongVaPhuKienKimLoaiMau=true,tenLoai=Ống máng:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:79070091+79070093:congDung=xây dựng,hopDungThuocLaDieu=true,ongVaPhuKienKimLoaiMau=false,tenLoai=Tấm điện a-nốt[tương tự:không/không]:khong-tat-dinh
+    ✗ cong2-chong-lan:79070092+79070093:congDung=xây dựng,hopDungThuocLaDieu=false,ongVaPhuKienKimLoaiMau=false,phamViSuDung=GIA_DINH,tenLoai=Tấm điện a-nốt[tương tự:không/không]:khong-tat-dinh
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"790700","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-790700","dong8":{"79070030":{"dieuKienSo":[{"fact":"tenLoai","op":"TUONG_TU","value":["Ống máng","mái nhà","khung cửa sổ của mái nhà"]},{"fact":"congDung","op":"CONG_DUNG","value":"xây dựng"}]},"79070040":{"dieuKienSo":[{"fact":"ongVaPhuKienKimLoaiMau","op":"CO"}]},"79070091":{"dieuKienSo":[{"fact":"hopDungThuocLaDieu","op":"CO"}]},"79070092":{"dieuKienSo":[{"fact":"phamViSuDung","op":"TRONG","value":["GIA_DINH"]}],"phanConLai":["79070091"]},"79070093":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":["Tấm điện a-nốt","khuôn tô"]}],[{"fact":"tenLoai","op":"TUONG_TU","value":["đinh","đinh bấm","đai ốc","bu lông","đinh vít","đinh tán"]}],[{"fact":"tenLoai","op":"TEN_LOAI","value":"miếng kẽm hình lục giác"},{"fact":"congDung","op":"CONG_DUNG","value":"sản xuất pin"}]]}]}},"ghiChuSoan":[{"ma":"79070030","loai":"QUYET_DINH","ghiChu":"tax.79070030 \"Ống máng, mái nhà... cấu kiện xây dựng khác\" ⇒ tenLoai TUONG_TU, congDung xây dựng"},{"ma":"79070040","loai":"QUYET_DINH","ghiChu":"tax.79070040 \"Các loại ống, ống dẫn và phụ kiện...\" ⇒ ongVaPhuKienKimLoaiMau CO"},{"ma":"79070091","loai":"QUYET_DINH","ghiChu":"tax.79070091 \"Hộp đựng thuốc lá điếu; gạt tàn thuốc lá\" ⇒ hopDungThuocLaDieu CO"},{"ma":"79070092","loai":"QUYET_DINH","ghiChu":"tax.79070092 \"Các sản phẩm gia dụng khác\" ⇒ phamViSuDung GIA_DINH, phanConLai phủ 79070091"},{"ma":"79070093","loai":"QUYET_DINH","ghiChu":"tax.79070093 chia 3 vế: a-nốt/khuôn tô; chốt tương tự (TUONG_TU); miếng kẽm hình lục giác dùng cho sản xuất pin"}]}
+```
+
+=== GÓI PN6 790700 ===
+# 790700 — Các sản phẩm khác bằng kẽm.
+
+NHÓM 7907 — Các sản phẩm khác bằng kẽm.
+  79070030 Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác
+  79070040 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+  [7907009] Loại khác
+    79070091 Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+    79070092 Các sản phẩm gia dụng khác
+    79070093 Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin(SEN)
+    79070099 Loại khác  [LK]
+
+- 79070030 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.79070030 [84 ký tự]: 79070030 - Ống máng, mái nhà, khung cửa sổ của mái nhà và các cấu kiện xây dựng khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của mái nhà và các cấu kiện xây dựng khác"
+- 79070040 DONG8
+    tax.79070040 [121 ký tự]: 79070040 - Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)"
+- 7907009 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7907009 [17 ký tự]: 7907009 Loại khác
+- 79070091 DONG8
+    tax.79070091 [53 ký tự]: 79070091 - - Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+- 79070092 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.79070092 [39 ký tự]: 79070092 - - Các sản phẩm gia dụng khác
+- 79070093 DONG8
+    tax.79070093 [190 ký tự]: 79070093 - - Tấm điện a-nốt; khuôn tô (stencil plates); đinh, đinh bấm, đai ốc, bu lông, đinh vít, đinh tán và những sản phẩm chốt tương tự; miếng kẽm hình lục giác dùng để sản xuất pin(SEN)
+    sen.79070093 [243 ký tự]: MIẾNG KẼM HÌNH LỤC GIÁC DÙNG ĐỂ SẢN XUẤT PIN Miếng kẽm hình lục giác là một dải hoặc tấm hợp kim kẽm được dập thành các hình dạng nhất định, thích hợp để sản xuất điện cực âm trong pin. General flow of making batteries: Quy trình sản xuất pin
+    vế phải phủ (cổng 5): [MỞ] "và những sản phẩm chốt tương tự" · [GIỚI HẠN] "dùng để sản xuất pin"
+- 79070099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.79070099 [22 ký tự]: 79070099 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.790700; chú giải: nhom7907.nhom, ch79.chuong, phan79.phan
+
+=== SỬA PN6 800700 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:80070030:(trừ phần bồi)
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong2-chong-lan:80070020+80070040:doDay=0.2000002,ongVaPhuKienKimLoaiMau=true,tenLoai=tấm:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:80070030+80070040:doDay=0.1999998,ongVaPhuKienKimLoaiMau=true,tenLoai=Lá mỏng:khong-tat-dinh
+    ✗ cong2-chong-lan:80070091+80070093:doDay=0.1999998,hopDungThuocLaDieu=true,ongVaPhuKienKimLoaiMau=false,tenLoai=Ống có thể gấp lại được:khong-tat-dinh
+    ✗ cong2-chong-lan:80070092+80070093:doDay=0.1999998,hopDungThuocLaDieu=false,ongVaPhuKienKimLoaiMau=false,phamViSuDung=GIA_DINH,tenLoai=Ống có thể gấp lại được:khong-tat-dinh
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"800700","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-800700","dong8":{"80070020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["tấm","lá","dải"]},{"fact":"doDay","op":">","value":0.2,"donVi":"mm"}]},"80070030":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":"Lá mỏng"},{"fact":"doDay","op":"<=","value":0.2,"donVi":"mm"}],[{"fact":"tenLoai","op":"TEN_LOAI","value":["bột","vảy"]}]]}]},"80070040":{"dieuKienSo":[{"fact":"ongVaPhuKienKimLoaiMau","op":"CO"}]},"80070091":{"dieuKienSo":[{"fact":"hopDungThuocLaDieu","op":"CO"}]},"80070092":{"dieuKienSo":[{"fact":"phamViSuDung","op":"TRONG","value":["GIA_DINH"]}],"phanConLai":["80070091"]},"80070093":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ống có thể gấp lại được"}]}},"ghiChuSoan":[{"ma":"80070020","loai":"QUYET_DINH","ghiChu":"tax.80070020 \"Dạng tấm, lá và dải, có chiều dày trên 0,2 mm\" ⇒ tenLoai tấm, lá, dải; doDay > 0.2 mm"},{"ma":"80070030","loai":"QUYET_DINH","ghiChu":"tax.80070030 HOAC giữa lá mỏng có doDay <= 0.2 mm và dạng bột/vảy"},{"ma":"80070040","loai":"QUYET_DINH","ghiChu":"tax.80070040 \"Các loại ống, ống dẫn và phụ kiện...\" ⇒ ongVaPhuKienKimLoaiMau CO"},{"ma":"80070091","loai":"QUYET_DINH","ghiChu":"tax.80070091 \"Hộp đựng thuốc lá điếu; gạt tàn thuốc lá\" ⇒ hopDungThuocLaDieu CO"},{"ma":"80070092","loai":"QUYET_DINH","ghiChu":"tax.80070092 \"Các sản phẩm gia dụng khác\" ⇒ phamViSuDung GIA_DINH, phanConLai phủ 80070091"},{"ma":"80070093","loai":"QUYET_DINH","ghiChu":"tax.80070093 \"Ống có thể gấp lại được (collapsible tubes)\" ⇒ tenLoai Ống có thể gấp lại được"}]}
+```
+
+=== GÓI PN6 800700 ===
+# 800700 — Các sản phẩm khác bằng thiếc.
+
+NHÓM 8007 — Các sản phẩm khác bằng thiếc.
+  80070020 Dạng tấm, lá và dải, có chiều dày trên 0,2 mm
+  80070030 Lá mỏng (đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự), có chiều dày (trừ phần bồi) không quá 0,2 mm; dạng bột và vảy
+  80070040 Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+  [8007009] Loại khác
+    80070091 Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+    80070092 Các sản phẩm gia dụng khác
+    80070093 Ống có thể gấp lại được (collapsible tubes)
+    80070099 Loại khác  [LK]
+
+- 80070020 DONG8
+    tax.80070020 [56 ký tự]: 80070020 - Dạng tấm, lá và dải, có chiều dày trên 0,2 mm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều dày trên 0,2 mm"
+- 80070030 DONG8
+    tax.80070030 [159 ký tự]: 80070030 - Lá mỏng (đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự), có chiều dày (trừ phần bồi) không quá 0,2 mm; dạng bột và vảy
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều dày (trừ phần bồi) không quá 0,2 mm" · [GIỚI HẠN] "(trừ phần bồi)"
+- 80070040 DONG8
+    tax.80070040 [121 ký tự]: 80070040 - Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)"
+- 8007009 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8007009 [17 ký tự]: 8007009 Loại khác
+- 80070091 DONG8
+    tax.80070091 [53 ký tự]: 80070091 - - Hộp đựng thuốc lá điếu; gạt tàn thuốc lá
+- 80070092 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.80070092 [39 ký tự]: 80070092 - - Các sản phẩm gia dụng khác
+- 80070093 DONG8
+    tax.80070093 [56 ký tự]: 80070093 - - Ống có thể gấp lại được (collapsible tubes)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thể gấp lại được (collapsible tubes)"
+- 80070099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.80070099 [22 ký tự]: 80070099 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.800700; chú giải: nhom8007.nhom, ch80.chuong, phan80.phan
+
+=== SỬA PN6 810199 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ spec-hinh-dang:dong8.81019910.ghiChuSoan — khoá mục hợp lệ: dieuKienSo, trich, nguon, phanConLai
+      → Spec sai lược đồ ranh-gioi-spec@1. Sửa: Xem mẫu trong --help và docs/giao-viec/so-tay/QUY-TRINH-SO-HOA.md.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"810199","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-810199","dong8":{"81019910":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Thanh","que","dạng hình","lá","dải","lá mỏng"]}],"ghiChuSoan":[{"ma":"81019910","loai":"BO_VE","ve":"trừ các loại thu được từ quá trình thiêu kết","lyDo":"Loại trừ thanh que thu được từ quá trình thiêu kết (thuộc 8101.94), vế trừ xác định phạm vi của nhóm."}]}},"ghiChuSoan":[{"ma":"81019910","loai":"QUYET_DINH","ghiChu":"tax.81019910 \"Thanh và que...; dạng hình, lá, dải và lá mỏng\" ⇒ tenLoai mảng các dạng hình học"}]}
+```
+
+=== GÓI PN6 810199 ===
+# 810199 — Loại khác
+
+810199 — Tungsten (wolfram); articles n.e.c. in heading no. 8101
+  81019910 Thanh và que, trừ các loại thu được từ quá trình thiêu kết; dạng hình, lá, dải và lá mỏng
+  81019990 Loại khác  [LK]
+
+- 81019910 DONG8
+    tax.81019910 [104 ký tự]: 81019910 - - - Thanh và que, trừ các loại thu được từ quá trình thiêu kết; dạng hình, lá, dải và lá mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "trừ các loại thu" · [GIỚI HẠN] "được từ quá trình thiêu kết"
+- 81019990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.81019990 [24 ký tự]: 81019990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.810199; chú giải: nhom8101.nhom, ch81.chuong, phan81.phan
+
+
+=== SỬA PN6 821193 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:82119321:dieu-kien-so-la-vi-tri-khong-co-trong-trich:THAN
+      → Câu trích không có chữ của vị trí chất liệu. Sửa: Trích đoạn có chữ vị trí (vd "cách điện bằng").
+    ✗ cong5-ve-gioi-han-bi-bo:82119321:Có cán
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong2-chong-lan:82119321+82119330:chatLieu=THAN:kim loại,chieuDaiCuon=0.14999985,dungTrongNongNghiep=true,tenLoai=Dao bấm tự động:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:82119329+82119330:chatLieu=THAN:plastic,chieuDaiCuon=0.14999985,dungTrongNongNghiep=true,tenLoai=Dao bấm tự động:khong-tat-dinh
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"821193","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-821193","dong8":{"82119321":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":"kim loại","viTri":"THAN"}]},"82119330":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":["Dao bấm tự động","dao gấp"]}],[{"fact":"tenLoai","op":"TEN_LOAI","value":"dao nhíp"},{"fact":"chieuDaiCuon","op":">=","value":15,"donVi":"cm"}]]}]}},"dieuKienNut":{"8211932":{"dieuKienSo":[{"fact":"dungTrongNongNghiep","op":"CO"}]}},"ghiChuSoan":[{"ma":"8211932","loai":"QUYET_DINH","ghiChu":"tieuDe.8211932 \"Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp\" ⇒ dungTrongNongNghiep CO"},{"ma":"82119321","loai":"QUYET_DINH","ghiChu":"tax.82119321 \"Có cán bằng kim loại cơ bản\" ⇒ chatLieu kim loại viTri THAN"},{"ma":"82119330","loai":"QUYET_DINH","ghiChu":"tax.82119330 HOAC Dao bấm tự động/dao gấp hoặc dao nhíp chieuDaiCuon >= 15 cm"}]}
+```
+
+=== GÓI PN6 821193 ===
+# 821193 — Dao khác, trừ loại có lưỡi cố định
+
+821193 — Knives; with cutting blades, (having other than fixed blades), serrated or not, excluding knives and blades of heading no. 8208
+  [8211932] Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+    82119321 Có cán bằng kim loại cơ bản
+    82119329 Loại khác  [LK]
+  82119330 Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên
+  82119390 Loại khác  [LK]
+
+- 8211932 TIEU_DE
+    tieuDe.8211932 [64 ký tự]: 8211932 Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp"
+- 82119321 DONG8
+    tax.82119321 [44 ký tự]: 82119321 - - - - Có cán bằng kim loại cơ bản
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có cán" · [GIỚI HẠN] "bằng kim loại cơ bản"
+- 82119329 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.82119329 [26 ký tự]: 82119329 - - - - Loại khác
+- 82119330 DONG8
+    tax.82119330 [84 ký tự]: 82119330 - - - Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có lưỡi dao dài 15 cm trở lên"
+- 82119390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.82119390 [24 ký tự]: 82119390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.821193; chú giải: nhom8211.nhom, ch82.chuong, phan82.phan
+
+
+=== SỬA PN6 830241 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:8302413:tenLoai
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"830241","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-830241","dong8":{"83024131":{"dieuKienSo":[{"fact":"banLeMocKhoaHasps","op":"CO"}]}},"dieuKienNut":{"8302413":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bản lề để móc khóa và đinh kẹp","móc và mắt cài khóa","chốt cửa"]},{"fact":"dungCho","op":"CONG_DUNG","value":"cửa ra vào"}]}},"ghiChuSoan":[{"ma":"8302413","loai":"QUYET_DINH","ghiChu":"tieuDe.8302413 \"Bản lề để móc khóa... dùng cho cửa ra vào...\" ⇒ tenLoai mảng, dungCho cửa ra vào"},{"ma":"83024131","loai":"QUYET_DINH","ghiChu":"tax.83024131 \"Bản lề để móc khóa (Hasps)(SEN)\" ⇒ banLeMocKhoaHasps CO"}]}
+```
+
+=== GÓI PN6 830241 ===
+# 830241 — Phù hợp cho xây dựng
+
+830241 — Mountings, fittings and similar articles; of base metal, suitable for buildings
+  [8302413] Bản lề để móc khóa và đinh kẹp dùng cho cửa ra vào; móc và mắt cài khóa; chốt cửa
+    83024131 Bản lề để móc khóa (Hasps)(SEN)
+    83024139 Loại khác  [LK]
+  83024190 Loại khác  [LK]
+
+- 8302413 TIEU_DE
+    tieuDe.8302413 [89 ký tự]: 8302413 Bản lề để móc khóa và đinh kẹp dùng cho cửa ra vào; móc và mắt cài khóa; chốt cửa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để móc khóa và đinh kẹp" · [GIỚI HẠN] "dùng cho cửa ra vào"
+- 83024131 DONG8
+    tax.83024131 [48 ký tự]: 83024131 - - - - Bản lề để móc khóa (Hasps)(SEN)
+    sen.83024131 [723 ký tự]: BẢN LỀ ĐỂ MÓC KHÓA (HASPS) Bản lề để móc khoá bằng kim loại là móc cài, then cài (fastener) bằng kim loại với một bộ phận có khe/rãnh được gắn tai móc khoá (staple) và được đóng bằng một chốt, hoặc ổ khóa để cố định cửa ra vào, cửa sổ (đối với các tòa nhà hoặc xe), hộp, đồ nội thất, túi xách, cổng, lồng v.v. Bản lề để móc khoá dùng cho xe có động cơ có hình dạng khác nhau và được thiết kế theo dạng bản lề để móc khóa dùng cho đồ nội thất hoặc cửa nhà. Trong trường hợp bản lề để móc khoá được đóng gói cùng với các ổ khóa gọi là khóa chốt, khóa móc được phân loại như ổ khóa. Bản lề để Hasps for furniture Bản lề để móc khóa cho đồ nội Hasps for bags Bản lề để móc khóa cho túi Other hasps Bản lề để móc khóa khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để móc khóa (Hasps)"
+- 83024139 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.83024139 [26 ký tự]: 83024139 - - - - Loại khác
+- 83024190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.83024190 [24 ký tự]: 83024190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.830241; chú giải: nhom8302.nhom, ch83.chuong, phan83.phan
+
+
+=== SỬA PN6 830629 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ spec-hinh-dang:dong8.83062910.ghiChuSoan — khoá mục hợp lệ: dieuKienSo, trich, nguon, phanConLai
+      → Spec sai lược đồ ranh-gioi-spec@1. Sửa: Xem mẫu trong --help và docs/giao-viec/so-tay/QUY-TRINH-SO-HOA.md.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"830629","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-830629","dong8":{"83062910":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":"đồng"}],"ghiChuSoan":[{"ma":"83062910","loai":"BO_VE","ve":"hoặc chì","lyDo":"tu-vung@2 không có chì trong danh sách chatLieu hợp lệ, dòng 83062910 nhận bằng đồng."}]},"83062920":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":"niken"}]},"83062930":{"dieuKienSo":[{"fact":"chatLieu","op":"LA","value":"nhôm"}]}},"ghiChuSoan":[{"ma":"83062910","loai":"QUYET_DINH","ghiChu":"tax.83062910 \"Bằng đồng hoặc chì\" ⇒ chatLieu đồng, miễn vế chì vì tu-vung@2 không có chì"},{"ma":"83062920","loai":"QUYET_DINH","ghiChu":"tax.83062920 \"Bằng niken\" ⇒ chatLieu niken"},{"ma":"83062930","loai":"QUYET_DINH","ghiChu":"tax.83062930 \"Bằng nhôm\" ⇒ chatLieu nhôm"}]}
+```
+
+=== GÓI PN6 830629 ===
+# 830629 — Loại khác
+
+830629 — Statuettes and other ornaments; of base metal other than plated with precious metal
+  83062910 Bằng đồng hoặc chì
+  83062920 Bằng niken
+  83062930 Bằng nhôm
+  83062990 Loại khác  [LK]
+
+- 83062910 DONG8
+    tax.83062910 [33 ký tự]: 83062910 - - - Bằng đồng hoặc chì
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng đồng hoặc chì"
+- 83062920 DONG8
+    tax.83062920 [25 ký tự]: 83062920 - - - Bằng niken
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng niken"
+- 83062930 DONG8
+    tax.83062930 [24 ký tự]: 83062930 - - - Bằng nhôm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng nhôm"
+- 83062990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.83062990 [24 ký tự]: 83062990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.830629; chú giải: nhom8306.nhom, ch83.chuong, phan83.phan
+
+
+=== SỬA PN6 831120 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:8311202:bằng thép hợp kim, có lõi là chất trợ dung chứa hàm lượng carbon
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"831120","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-831120","dong8":{"83112021":{"dieuKienSo":[{"fact":"dangCuon","op":"CO"}]}},"dieuKienNut":{"8311202":{"dieuKienSo":[{"fact":"hamLuongCarbon","op":">=","value":4.5,"donVi":"%"},{"fact":"hamLuongCrom","op":">=","value":20,"donVi":"%"}]}},"ghiChuSoan":[{"ma":"8311202","loai":"QUYET_DINH","ghiChu":"tieuDe.8311202 \"...hàm lượng carbon từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên...\" ⇒ hamLuongCarbon >= 4.5 %, hamLuongCrom >= 20 %"},{"ma":"83112021","loai":"QUYET_DINH","ghiChu":"tax.83112021 \"Dạng cuộn\" ⇒ dangCuon CO"}]}
+```
+
+=== GÓI PN6 831120 ===
+# 831120 — Dây hàn bằng kim loại cơ bản, có lõi là chất trợ dung, dùng để hàn hồ quang điện
+
+831120 — Wire; cored, of base metal, for electric arc-welding
+  [8311202] Dây hàn bằng thép hợp kim, có lõi là chất trợ dung chứa hàm lượng carbon từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên tính theo khối lượng
+    83112021 Dạng cuộn
+    83112029 Loại khác  [LK]
+  83112090 Loại khác  [LK]
+
+- 8311202 TIEU_DE
+    tieuDe.8311202 [150 ký tự]: 8311202 Dây hàn bằng thép hợp kim, có lõi là chất trợ dung chứa hàm lượng carbon từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng thép hợp kim, có lõi là chất trợ dung" · [GIỚI HẠN] "chứa hàm lượng carbon" · [GIỚI HẠN] "từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên tính theo khối lượng"
+- 83112021 DONG8
+    tax.83112021 [24 ký tự]: 83112021 - - - Dạng cuộn
+- 83112029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.83112029 [24 ký tự]: 83112029 - - - Loại khác
+- 83112090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.83112090 [22 ký tự]: 83112090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.831120; chú giải: nhom8311.nhom, ch83.chuong, phan83.phan
+
+
+=== SỬA PN6 831130 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:8311302:bằng thép hợp kim, có lõi là chất trợ dung chứa hàm lượng carbon
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"831130","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-831130","dong8":{"83113021":{"dieuKienSo":[{"fact":"dangCuon","op":"CO"}]},"83113091":{"dieuKienSo":[{"fact":"dangCuon","op":"CO"}]}},"dieuKienNut":{"8311302":{"dieuKienSo":[{"fact":"hamLuongCarbon","op":">=","value":4.5,"donVi":"%"},{"fact":"hamLuongCrom","op":">=","value":20,"donVi":"%"}]}},"ghiChuSoan":[{"ma":"8311302","loai":"QUYET_DINH","ghiChu":"tieuDe.8311302 \"...hàm lượng carbon từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên...\" ⇒ hamLuongCarbon >= 4.5 %, hamLuongCrom >= 20 %"},{"ma":"83113021","loai":"QUYET_DINH","ghiChu":"tax.83113021 \"Dạng cuộn\" ⇒ dangCuon CO"},{"ma":"83113091","loai":"QUYET_DINH","ghiChu":"tax.83113091 \"Dạng cuộn\" ⇒ dangCuon CO"}]}
+```
+
+=== GÓI PN6 831130 ===
+# 831130 — Que hàn được phủ, bọc và dây hàn có lõi, bằng kim loại cơ bản, dùng để hàn chảy, hàn hơi hoặc hàn bằng ngọn lửa
+
+831130 — Rods and wire; coated rods and cored wire, of base metal, for soldering, brazing or welding by flame
+  [8311302] Dây hàn bằng thép hợp kim, có lõi là chất trợ dung chứa hàm lượng carbon từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên tính theo khối lượng
+    83113021 Dạng cuộn
+    83113029 Loại khác  [LK]
+  [8311309] Loại khác
+    83113091 Dạng cuộn
+    83113099 Loại khác  [LK]
+
+- 8311302 TIEU_DE
+    tieuDe.8311302 [150 ký tự]: 8311302 Dây hàn bằng thép hợp kim, có lõi là chất trợ dung chứa hàm lượng carbon từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng thép hợp kim, có lõi là chất trợ dung" · [GIỚI HẠN] "chứa hàm lượng carbon" · [GIỚI HẠN] "từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên tính theo khối lượng"
+- 83113021 DONG8
+    tax.83113021 [24 ký tự]: 83113021 - - - Dạng cuộn
+- 83113029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.83113029 [24 ký tự]: 83113029 - - - Loại khác
+- 8311309 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8311309 [17 ký tự]: 8311309 Loại khác
+- 83113091 DONG8
+    tax.83113091 [24 ký tự]: 83113091 - - - Dạng cuộn
+- 83113099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.83113099 [24 ký tự]: 83113099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.831130; chú giải: nhom8311.nhom, ch83.chuong, phan83.phan

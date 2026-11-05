@@ -1,0 +1,380 @@
+VÒNG SỬA — 9 PN6 bị cổng máy chặn (440729 440810 440839 441241 441291 460192 460193 460194 470200). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 440729 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:44072912:4407291
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:44072913:4407291
+    ✗ cong1-chua-so-hoa:44072919:4407291
+    ✗ cong1-chua-so-hoa:44072922:4407292
+    ✗ cong1-chua-so-hoa:44072923:4407292
+    ✗ cong1-chua-so-hoa:44072929:4407292
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"440729","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-440729","dong8":{"44072912":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["XE_DOC_CHUA_GIA_CONG"]}]},"44072913":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072922":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["XE_DOC_CHUA_GIA_CONG"]}]},"44072923":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072932":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["XE_DOC_CHUA_GIA_CONG"]}]},"44072933":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072942":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["XE_DOC_CHUA_GIA_CONG"]}]},"44072943":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072951":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072972":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["XE_DOC_CHUA_GIA_CONG"]}]},"44072973":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072982":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["XE_DOC_CHUA_GIA_CONG"]}]},"44072983":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072991":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072992":{"dieuKienSo":[],"phanConLai":true},"44072994":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072995":{"dieuKienSo":[],"phanConLai":true},"44072996":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]},"44072997":{"dieuKienSo":[],"phanConLai":true},"44072998":{"dieuKienSo":[{"fact":"mucDoGiaCongGo","op":"TRONG","value":["BAO_CHA_NHAM_NOI_DAU"]}]}},"dieuKienNut":{"4407291":{"dieuKienSo":[]},"4407292":{"dieuKienSo":[]},"4407293":{"dieuKienSo":[]},"4407294":{"dieuKienSo":[]},"4407295":{"dieuKienSo":[]},"4407297":{"dieuKienSo":[]},"4407298":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"4407291","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Jelutong (Dyera spp.)"},{"ma":"4407292","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Kapur (Dryobalanops spp.)"},{"ma":"4407293","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Kempas (Koompassia spp.)"},{"ma":"4407294","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Keruing (Dipterocarpus spp.)"},{"ma":"4407295","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Ramin (Gonystylus spp.)"},{"ma":"4407297","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Balau (Shorea spp.)"},{"ma":"4407298","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Mengkulang (Heritiera spp.)"},{"ma":"44072991","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Jongkong (Dactylocladus spp.) và gỗ Merbau (Intsia spp.)"},{"ma":"44072992","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Jongkong (Dactylocladus spp.) và gỗ Merbau (Intsia spp.)"},{"ma":"44072994","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Albizia (Paraserianthes falcataria)"},{"ma":"44072995","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ Albizia (Paraserianthes falcataria)"},{"ma":"44072996","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ cao su (Hevea Brasiliensis)"},{"ma":"44072997","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Gỗ cao su (Hevea Brasiliensis)"}]}
+```
+
+=== GÓI PN6 440729 ===
+# 440729 — Loại khác
+
+440729 — Wood, tropical, n.e.c. in item no. 4407.2, sawn or chipped lengthwise, sliced or peeled, whether or not planed, sanded or finger-jointed, of a thickness exceeding 6mm
+  [4407291] Gỗ Jelutong (Dyera spp.)
+    44072912 Đã xẻ dọc, chưa gia công thêm
+    44072913 Đã bào, đã chà nhám hoặc nối đầu
+    44072919 Loại khác  [LK]
+  [4407292] Gỗ Kapur (Dryobalanops spp.)
+    44072922 Đã xẻ dọc, chưa gia công thêm
+    44072923 Đã bào, đã chà nhám hoặc nối đầu
+    44072929 Loại khác  [LK]
+  [4407293] Gỗ Kempas (Koompassia spp.)
+    44072932 Đã xẻ dọc, chưa gia công thêm
+    44072933 Đã bào, đã chà nhám hoặc nối đầu
+    44072939 Loại khác  [LK]
+  [4407294] Gỗ Keruing (Dipterocarpus spp.)
+    44072942 Đã xẻ dọc, chưa gia công thêm
+    44072943 Đã bào, đã chà nhám hoặc nối đầu
+    44072949 Loại khác  [LK]
+  [4407295] Gỗ Ramin (Gonystylus spp.)
+    44072951 Đã bào, đã chà nhám hoặc nối đầu
+    44072959 Loại khác  [LK]
+  [4407297] Gỗ Balau (Shorea spp.)
+    44072972 Đã xẻ dọc, chưa gia công thêm
+    44072973 Đã bào, đã chà nhám hoặc nối đầu
+    44072979 Loại khác  [LK]
+  [4407298] Gỗ Mengkulang (Heritiera spp.)
+    44072982 Đã xẻ dọc, chưa gia công thêm
+    44072983 Đã bào, đã chà nhám hoặc nối đầu
+    44072989 Loại khác  [LK]
+  [4407299] Loại khác
+    44072991 Gỗ Jongkong (Dactylocladus spp.) và gỗ Merbau (Intsia spp.), đã bào, đã chà nhám hoặc nối đầu
+    44072992 Gỗ Jongkong (Dactylocladus spp.) và gỗ Merbau (Intsia spp.), loại khác
+    44072994 Gỗ Albizia (Paraserianthes falcataria), đã bào, đã chà nhám hoặc nối đầu
+    44072995 Gỗ Albizia (Paraserianthes falcataria), loại khác
+    44072996 Gỗ cao su (Hevea Brasiliensis), đã bào, đã chà nhám hoặc nối đầu
+    44072997 Gỗ cao su (Hevea Brasiliensis), loại khác
+    44072998 Loại khác, đã bào, đã chà nhám hoặc nối đầu  [LK có điều kiện]
+    44072999 Loại khác  [LK]
+
+- 4407291 TIEU_DE
+    tieuDe.4407291 [32 ký tự]: 4407291 Gỗ Jelutong (Dyera spp.)
+- 44072912 DONG8
+    tax.44072912 [46 ký tự]: 44072912 - - - - Đã xẻ dọc, chưa gia công thêm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa gia công thêm"
+- 44072913 DONG8
+    tax.44072913 [49 ký tự]: 44072913 - - - - Đã bào, đã chà nhám hoặc nối đầu
+- 44072919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44072919 [26 ký tự]: 44072919 - - - - Loại khác
+- 4407292 TIEU_DE
+    tieuDe.4407292 [36 ký tự]: 4407292 Gỗ Kapur (Dryobalanops spp.)
+- 44072922 DONG8
+    tax.44072922 [46 ký tự]: 44072922 - - - - Đã xẻ dọc, chưa gia công thêm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa gia công thêm"
+- 44072923 DONG8
+    tax.44072923 [49 ký tự]: 44072923 - - - - Đã bào, đã chà nhám hoặc nối đầu
+- 44072929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44072929 [26 ký tự]: 44072929 - - - - Loại khác
+- 4407293 TIEU_DE
+    tieuDe.4407293 [35 ký tự]: 4407293 Gỗ Kempas (Koompassia spp.)
+- 44072932 DONG8
+    tax.44072932 [46 ký tự]: 44072932 - - - - Đã xẻ dọc, chưa gia công thêm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa gia công thêm"
+- 44072933 DONG8
+    tax.44072933 [49 ký tự]: 44072933 - - - - Đã bào, đã chà nhám hoặc nối đầu
+- 44072939 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44072939 [26 ký tự]: 44072939 - - - - Loại khác
+- 4407294 TIEU_DE
+    tieuDe.4407294 [39 ký tự]: 4407294 Gỗ Keruing (Dipterocarpus spp.)
+- 44072942 DONG8
+    tax.44072942 [46 ký tự]: 44072942 - - - - Đã xẻ dọc, chưa gia công thêm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa gia công thêm"
+- 44072943 DONG8
+    tax.44072943 [49 ký tự]: 44072943 - - - - Đã bào, đã chà nhám hoặc nối đầu
+- 44072949 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44072949 [26 ký tự]: 44072949 - - - - Loại khác
+- 4407295 TIEU_DE
+    tieuDe.4407295 [34 ký tự]: 4407295 Gỗ Ramin (Gonystylus spp.)
+- 44072951 DONG8
+    tax.44072951 [49 ký tự]: 44072951 - - - - Đã bào, đã chà nhám hoặc nối đầu
+- 44072959 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44072959 [26 ký tự]: 44072959 - - - - Loại khác
+- 4407297 TIEU_DE
+    tieuDe.4407297 [30 ký tự]: 4407297 Gỗ Balau (Shorea spp.)
+- 44072972 DONG8
+    tax.44072972 [46 ký tự]: 44072972 - - - - Đã xẻ dọc, chưa gia công thêm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa gia công thêm"
+- 44072973 DONG8
+    tax.44072973 [49 ký tự]: 44072973 - - - - Đã bào, đã chà nhám hoặc nối đầu
+- 44072979 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44072979 [26 ký tự]: 44072979 - - - - Loại khác
+- 4407298 TIEU_DE
+    tieuDe.4407298 [38 ký tự]: 4407298 Gỗ Mengkulang (Heritiera spp.)
+- 44072982 DONG8
+    tax.44072982 [46 ký tự]: 44072982 - - - - Đã xẻ dọc, chưa gia công thêm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa gia công thêm"
+- 44072983 DONG8
+    tax.44072983 [49 ký tự]: 44072983 - - - - Đã bào, đã chà nhám hoặc nối đầu
+- 44072989 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44072989 [26 ký tự]: 44072989 - - - - Loại khác
+- 4407299 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4407299 [17 ký tự]: 4407299 Loại khác
+- 44072991 DONG8
+    tax.44072991 [110 ký tự]: 44072991 - - - - Gỗ Jongkong (Dactylocladus spp.) và gỗ Merbau (Intsia spp.), đã bào, đã chà nhám hoặc nối đầu
+- 44072992 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.44072992 [87 ký tự]: 44072992 - - - - Gỗ Jongkong (Dactylocladus spp.) và gỗ Merbau (Intsia spp.), loại khác
+- 44072994 DONG8
+    tax.44072994 [89 ký tự]: 44072994 - - - - Gỗ Albizia (Paraserianthes falcataria), đã bào, đã chà nhám hoặc nối đầu
+- 44072995 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.44072995 [66 ký tự]: 44072995 - - - - Gỗ Albizia (Paraserianthes falcataria), loại khác
+- 44072996 DONG8
+    tax.44072996 [81 ký tự]: 44072996 - - - - Gỗ cao su (Hevea Brasiliensis), đã bào, đã chà nhám hoặc nối đầu
+- 44072997 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.44072997 [58 ký tự]: 44072997 - - - - Gỗ cao su (Hevea Brasiliensis), loại khác
+- 44072998 DONG8
+    tax.44072998 [60 ký tự]: 44072998 - - - - Loại khác, đã bào, đã chà nhám hoặc nối đầu
+- 44072999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44072999 [26 ký tự]: 44072999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.440729; chú giải: nhom4407.nhom, ch44.chuong
+
+
+=== SỬA PN6 440810 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:44081010:44081010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:44081090:44081010
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"440810","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-440810","dong8":{"44081010":{"dieuKienSo":[]},"44081030":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"Làm lớp mặt"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"44081010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"bằng gỗ tuyết tùng; gỗ thông Radiata"},{"ma":"44081010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"congDung","ghiChu":"loại sử dụng để sản xuất bút chì; loại sử dụng để sản xuất ván ghép (blockboard)"},{"ma":"44081030","loai":"QUYET_DINH","ghiChu":"face veneer sheets là chú thích tiếng Anh"}]}
+```
+
+=== GÓI PN6 440810 ===
+# 440810 — Từ cây lá kim
+
+440810 — Wood; coniferous, sheets for veneering (including those obtained by slicing laminated wood), for plywood or similar laminated wood and other wood, sawn lengthwise, sliced or peeled, planed or not, sanded, spliced or end-jointed, not over 6 mm thick
+  44081010 Thanh mỏng bằng gỗ tuyết tùng loại sử dụng để sản xuất bút chì (SEN); gỗ thông Radiata loại sử dụng để sản xuất ván ghép (blockboard)(SEN)
+  44081030 Làm lớp mặt (face veneer sheets)
+  44081090 Loại khác  [LK]
+
+- 44081010 DONG8
+    tax.44081010 [151 ký tự]: 44081010 - - Thanh mỏng bằng gỗ tuyết tùng loại sử dụng để sản xuất bút chì (SEN); gỗ thông Radiata loại sử dụng để sản xuất ván ghép (blockboard)(SEN)
+    sen.44081010 [221 ký tự]: GỖ THÔNG RADIATA LOẠI SỬ DỤNG ĐỂ SẢN XUẤT VÁN GHÉP (BLOCKBOARD) Các tấm gỗ thông Radiata mỏng được sử dụng để làm lớp mặt gỗ ván ghép (blockboard) do nó có khả năng giữ ốc vít và đinh tốt, có thể sơn và nhuộm màu dễ dàng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng gỗ tuyết tùng" · [GIỚI HẠN] "loại sử dụng để sản xuất bút chì" · [GIỚI HẠN] "loại sử dụng để sản xuất ván ghép (blockboard)"
+- 44081030 DONG8
+    tax.44081030 [45 ký tự]: 44081030 - - Làm lớp mặt (face veneer sheets)
+- 44081090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44081090 [22 ký tự]: 44081090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.440810; chú giải: nhom4408.nhom, ch44.chuong
+
+
+=== SỬA PN6 440839 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:44083910:44083910
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:44083990:44083910
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"440839","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-440839","dong8":{"44083910":{"dieuKienSo":[]},"44083920":{"dieuKienSo":[{"fact":"congDung","op":"CONG_DUNG","value":"Làm lớp mặt"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"44083910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"bằng gỗ Jelutong"},{"ma":"44083910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"congDung","ghiChu":"loại sử dụng để sản xuất bút chì"},{"ma":"44083920","loai":"QUYET_DINH","ghiChu":"face veneer sheets là chú thích tiếng Anh"}]}
+```
+
+=== GÓI PN6 440839 ===
+# 440839 — Loại khác
+
+440839 — Wood, of tropical wood; as in Subheading note 2 to this Chapter, n.e.c. in heading no. 4408.31, sheets for veneer or plywood, other wood sawn length wise, sliced or peeled, whether or not planed, sanded or end-jointed, not thicker than 6mm
+  44083910 Thanh mỏng bằng gỗ Jelutong loại sử dụng để sản xuất bút chì (SEN)
+  44083920 Làm lớp mặt (face veneer sheets)
+  44083990 Loại khác  [LK]
+
+- 44083910 DONG8
+    tax.44083910 [81 ký tự]: 44083910 - - - Thanh mỏng bằng gỗ Jelutong loại sử dụng để sản xuất bút chì (SEN)
+    sen.44083910 [438 ký tự]: THANH MỎNG BẰNG GỖ TUYẾT TÙNG /JELUTONG LOẠI SỬ DỤNG ĐỂ SẢN XUẤT BÚT CHÌ Các thanh gỗ mỏng làm bút chì được cắt thành tấm mỏng hình chữ nhật theo kích cỡ (thường khoảng 20cm x 10cm x 5mm độ dày tương đương một nửa độ dày của chiếc bút chì được làm) từ các khối gỗ, và được sử dụng để sản xuất bút chì gỗ. Gỗ tuyết tùng và Jelutong là hai loại gỗ chính thường được sử dụng. Sơ đồ dưới đây cho thấy các bước chính trong quá trình sản xuất.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng gỗ Jelutong" · [GIỚI HẠN] "loại sử dụng để sản xuất bút chì"
+- 44083920 DONG8
+    tax.44083920 [47 ký tự]: 44083920 - - - Làm lớp mặt (face veneer sheets)
+- 44083990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44083990 [24 ký tự]: 44083990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.440839; chú giải: nhom4408.nhom, ch44.chuong
+
+
+=== SỬA PN6 441241 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:44124110:44124110
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:44124190:44124110
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"441241","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-441241","dong8":{"44124110":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"44124110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"bằng gỗ tếch"}]}
+```
+
+=== GÓI PN6 441241 ===
+# 441241 — Với ít nhất một lớp ngoài(1) bằng gỗ nhiệt đới
+
+441241 — Plywood, veneered panels and similar laminated wood; laminated veneered lumber (LVL); with at least one outer ply of tropical wood
+  44124110 Với ít nhất một lớp ngoài bằng gỗ tếch
+  44124190 Loại khác  [LK]
+
+- 44124110 DONG8
+    tax.44124110 [54 ký tự]: 44124110 - - - Với ít nhất một lớp ngoài bằng gỗ tếch 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng gỗ tếch"
+- 44124190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44124190 [24 ký tự]: 44124190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.441241; chú giải: nhom4412.nhom, ch44.chuong
+
+
+=== SỬA PN6 441291 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:44129110:44129110
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:44129190:44129110
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"441291","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-441291","dong8":{"44129110":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"44129110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"bằng gỗ tếch"}]}
+```
+
+=== GÓI PN6 441291 ===
+# 441291 — Với ít nhất một lớp ngoài(1) bằng gỗ nhiệt đới
+
+441291 — Plywood; n.e.c. in heading 4412, with at least one outer ply of tropical wood
+  44129110 Với ít nhất một lớp ngoài bằng gỗ tếch
+  44129190 Loại khác  [LK]
+
+- 44129110 DONG8
+    tax.44129110 [54 ký tự]: 44129110 - - - Với ít nhất một lớp ngoài bằng gỗ tếch 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng gỗ tếch"
+- 44129190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.44129190 [24 ký tự]: 44129190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.441291; chú giải: nhom4412.nhom, ch44.chuong
+
+
+=== SỬA PN6 460192 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:46019210+46019220:dayTetBen=true,dungCho=Quạt,laBoPhan=true,tenLoai=Quạt:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"460192","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-460192","dong8":{"46019210":{"dieuKienSo":[{"fact":"dayTetBen","op":"CO"}]},"46019220":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":["Quạt","màn che","khung","tay cầm","quai kèm theo"]}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":["Quạt","màn che kéo bằng tay","khung","tay cầm","quai kèm theo"]}]]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"46019210","loai":"QUYET_DINH","ghiChu":"Khoá dayTetBen CO đã bao hàm toàn bộ nội dung của dòng 46019210 theo định nghĩa từ vựng."},{"ma":"46019220","loai":"BO_VE","ve":"bằng tay, khung và tay cầm, quai kèm theo","lyDo":"Đã được phủ bằng giá trị tenLoai và dungCho"}]}
+```
+
+=== GÓI PN6 460192 ===
+# 460192 — Từ tre
+
+460192 — Plaiting materials, plaits and similar products of plaiting materials; (not mats, matting or screens), of bamboo
+  46019210 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+  46019220 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+  46019290 Loại khác  [LK]
+
+- 46019210 DONG8
+    tax.46019210 [106 ký tự]: 46019210 - - - Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+    vế phải phủ (cổng 5): [MỞ] "và các sản phẩm tương tự" · [GIỚI HẠN] "bằng vật liệu tết bện, đã hoặc chưa ghép thành dải"
+- 46019220 DONG8
+    tax.46019220 [102 ký tự]: 46019220 - - - Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng tay, khung và tay cầm, quai kèm theo" · [MỞ] "và các bộ phận của chúng"
+- 46019290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.46019290 [24 ký tự]: 46019290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.460192; chú giải: nhom4601.nhom, ch46.chuong
+
+
+=== SỬA PN6 460193 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:46019310+46019320:dayTetBen=true,dungCho=Quạt,laBoPhan=true,tenLoai=Quạt:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"460193","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-460193","dong8":{"46019310":{"dieuKienSo":[{"fact":"dayTetBen","op":"CO"}]},"46019320":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":["Quạt","màn che","khung","tay cầm","quai kèm theo"]}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":["Quạt","màn che kéo bằng tay","khung","tay cầm","quai kèm theo"]}]]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"46019310","loai":"QUYET_DINH","ghiChu":"Khoá dayTetBen CO đã bao hàm toàn bộ nội dung của dòng 46019310 theo định nghĩa từ vựng."},{"ma":"46019320","loai":"BO_VE","ve":"bằng tay, khung và tay cầm, quai kèm theo","lyDo":"Đã được phủ bằng giá trị tenLoai và dungCho"}]}
+```
+
+=== GÓI PN6 460193 ===
+# 460193 — Từ song mây
+
+460193 — Plaiting materials, plaits and similar products of plaiting materials; (not mats, matting or screens), of rattan
+  46019310 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+  46019320 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+  46019390 Loại khác  [LK]
+
+- 46019310 DONG8
+    tax.46019310 [106 ký tự]: 46019310 - - - Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+    vế phải phủ (cổng 5): [MỞ] "và các sản phẩm tương tự" · [GIỚI HẠN] "bằng vật liệu tết bện, đã hoặc chưa ghép thành dải"
+- 46019320 DONG8
+    tax.46019320 [102 ký tự]: 46019320 - - - Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng tay, khung và tay cầm, quai kèm theo" · [MỞ] "và các bộ phận của chúng"
+- 46019390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.46019390 [24 ký tự]: 46019390 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.460193; chú giải: nhom4601.nhom, ch46.chuong
+
+
+=== SỬA PN6 460194 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:46019410+46019420:dayTetBen=true,dungCho=Quạt,laBoPhan=true,tenLoai=Quạt:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"460194","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-460194","dong8":{"46019410":{"dieuKienSo":[{"fact":"dayTetBen","op":"CO"}]},"46019420":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":["Quạt","màn che","khung","tay cầm","quai kèm theo"]}],[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":["Quạt","màn che kéo bằng tay","khung","tay cầm","quai kèm theo"]}]]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"46019410","loai":"QUYET_DINH","ghiChu":"Khoá dayTetBen CO đã bao hàm toàn bộ nội dung của dòng 46019410 theo định nghĩa từ vựng."},{"ma":"46019420","loai":"BO_VE","ve":"bằng tay, khung và tay cầm, quai kèm theo","lyDo":"Đã được phủ bằng giá trị tenLoai và dungCho"}]}
+```
+
+=== GÓI PN6 460194 ===
+# 460194 — Từ vật liệu thực vật khác
+
+460194 — Plaiting materials, plaits and similar products of plaiting materials; (not mats, matting or screens), of vegetable materials other than bamboo or rattan
+  46019410 Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+  46019420 Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+  46019490 Loại khác  [LK]
+
+- 46019410 DONG8
+    tax.46019410 [106 ký tự]: 46019410 - - - Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải
+    vế phải phủ (cổng 5): [MỞ] "và các sản phẩm tương tự" · [GIỚI HẠN] "bằng vật liệu tết bện, đã hoặc chưa ghép thành dải"
+- 46019420 DONG8
+    tax.46019420 [102 ký tự]: 46019420 - - - Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bằng tay, khung và tay cầm, quai kèm theo" · [MỞ] "và các bộ phận của chúng"
+- 46019490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.46019490 [24 ký tự]: 46019490 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.460194; chú giải: nhom4601.nhom, ch46.chuong
+
+
+=== SỬA PN6 470200 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:47020010:47020010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:47020020:47020020
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"470200","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-470200","dong8":{"47020010":{"dieuKienSo":[]},"47020020":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"47020010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Từ gỗ cây lá kim"},{"ma":"47020020","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiGo","ghiChu":"Từ gỗ cây không thuộc loài cây lá kim"}]}
+```
+
+=== GÓI PN6 470200 ===
+# 470200 — Bột giấy hóa học từ gỗ, loại hòa tan
+
+NHÓM 4702 — Bột giấy hóa học từ gỗ, loại hòa tan
+  47020010 Từ gỗ cây lá kim
+  47020020 Từ gỗ cây không thuộc loài cây lá kim
+
+- 47020010 DONG8
+    tax.47020010 [28 ký tự]: 47020010 - Từ gỗ cây lá kim 
+- 47020020 DONG8
+    tax.47020020 [49 ký tự]: 47020020 - Từ gỗ cây không thuộc loài cây lá kim 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không thuộc loài cây lá kim"
+
+Nguồn cấp phân nhóm: wco.470200; chú giải: nhom4702.nhom, ch47.chuong, phan47.phan
+

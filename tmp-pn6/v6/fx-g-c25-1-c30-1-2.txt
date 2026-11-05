@@ -1,0 +1,88 @@
+VÒNG SỬA — 3 PN6 bị cổng máy chặn (300460 300510 300610). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 300460 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-phan-con-lai-khong-co-chu-khac:30046020
+      → phanConLai trên mục mà câu trích không có chữ "khác". Sửa: Chỉ đánh phanConLai khi chữ biểu nói "… khác"; nếu không, xoá.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"300460","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-300460","dong8":{"30046010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"artemisinin"}],"phanConLai":["30046090"]},"30046020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["artesunate","chloroquine"]}],"phanConLai":["30046090"]}},"ghiChuSoan":[{"ma":"30046010","loai":"BO_VE","ve":"Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác","lyDo":"Sử dụng tenLoai, giả định các hư từ không tạo thêm điều kiện."},{"ma":"30046020","loai":"BO_VE","ve":"Chứa artesunate hoặc chloroquine","lyDo":"Sử dụng tenLoai."}]}
+```
+
+=== GÓI PN6 300460 ===
+# 300460 — Loại khác, chứa hoạt chất chống sốt rét được mô tả ở Chú giải Phân nhóm 2 của Chương này
+
+300460 — Medicaments; containing antimalarial active principles described in Subheading Note 2 to this Chapter, for therapeutic or prophylactic uses, packaged for retail sale
+  30046010 Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác
+  30046020 Chứa artesunate hoặc chloroquine
+  30046090 Loại khác  [LK]
+
+- 30046010 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.30046010 [79 ký tự]: 30046010 - - Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác"
+- 30046020 DONG8
+    tax.30046020 [45 ký tự]: 30046020 - - Chứa artesunate hoặc chloroquine
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa artesunate hoặc chloroquine"
+- 30046090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30046090 [22 ký tự]: 30046090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300460; chú giải: nhom3004.nhom, ch30.chuong, phan30.phan
+
+
+=== SỬA PN6 300510 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:30051010:30051010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:30051090:30051010
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"300510","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-300510","dong8":{"30051010":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"30051010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"trangPhuDuocChat","ghiChu":"Đã tráng phủ hoặc thấm tẩm dược chất"}]}
+```
+
+=== GÓI PN6 300510 ===
+# 300510 — Băng dán và các sản phẩm khác có một lớp dính
+
+300510 — Dressings, adhesive; and other articles having an adhesive layer, packed for retail sale for medical, surgical, dental or veterinary purposes
+  30051010 Đã tráng phủ hoặc thấm tẩm dược chất
+  30051090 Loại khác  [LK]
+
+- 30051010 DONG8
+    tax.30051010 [49 ký tự]: 30051010 - - Đã tráng phủ hoặc thấm tẩm dược chất
+- 30051090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30051090 [22 ký tự]: 30051090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300510; chú giải: nhom3005.nhom, ch30.chuong, phan30.phan
+
+
+=== SỬA PN6 300610 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-bo-ve-ly-do:30061010:2
+      → Miễn vế BO_VE không có lý do thật (rỗng, dưới 10 ký tự, "người soát xem", "DE_TRONG") — không tính là đã xử lý, vế vẫn đỏ. Sửa: Ghi lyDo nói rõ vì sao bỏ vế mà không sai mã (vd quy ước đã đúc, khoá đang đề xuất + runtime hỏi thêm).
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"300610","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-300610","dong8":{"30061010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Chỉ tự tiêu vô trùng","miếng chắn dính vô trùng"]},{"fact":"dungTrongNhaKhoa","op":"CO"}]}},"ghiChuSoan":[{"ma":"30061010","loai":"BO_VE","ve":"dùng trong nha khoa hoặc phẫu thuật","lyDo":"Đã sử dụng điều kiện dungTrongNhaKhoa. Phần phẫu thuật thuộc cùng khái niệm y tế (nha khoa hoặc phẫu thuật có thể chung chung)."},{"ma":"30061010","loai":"BO_VE","ve":"dùng cho nha khoa hoặc phẫu thuật","lyDo":"Đã sử dụng điều kiện dungTrongNhaKhoa."},{"ma":"30061010","loai":"BO_VE","ve":"có","lyDo":"Từ nối."},{"ma":"30061010","loai":"BO_VE","ve":"không tự tiêu","lyDo":"Thuộc vế có hoặc không tự tiêu."}]}
+```
+
+=== GÓI PN6 300610 ===
+# 300610 — Chỉ catgut phẫu thuật vô trùng, các vật liệu khâu (suture) vô trùng tương tự (kể cả chỉ tự tiêu vô trùng dùng cho nha khoa hoặc phẫu thuật) và keo tạo màng vô trùng dùng để khép miệng vết thương trong phẫu thuật; tảo nong vô trùng và nút tảo nong vô trùng; sản phẩm cầm máu tự tiêu vô trùng trong phẫu thuật hoặc nha khoa; miếng chắn dính vô trùng dùng trong nha khoa hoặc phẫu thuật, có hoặc không tự tiêu
+
+300610 — Pharmaceutical goods; sterile surgical catgut, suture materials, tissue adhesives, laminaria, laminaria tents, absorbable surgical or dental haemostatics, and surgical or dental adhesion barriers
+  30061010 Chỉ tự tiêu vô trùng dùng cho nha khoa hoặc phẫu thuật; miếng chắn dính vô trùng dùng trong nha khoa hoặc phẫu thuật, có hoặc không tự tiêu
+  30061090 Loại khác  [LK]
+
+- 30061010 DONG8
+    tax.30061010 [152 ký tự]: 30061010 - - Chỉ tự tiêu vô trùng dùng cho nha khoa hoặc phẫu thuật; miếng chắn dính vô trùng dùng trong nha khoa hoặc phẫu thuật, có hoặc không tự tiêu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho nha khoa hoặc phẫu thuật" · [GIỚI HẠN] "dùng trong nha khoa hoặc phẫu thuật" · [GIỚI HẠN] "có" · [GIỚI HẠN] "không tự tiêu"
+- 30061090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30061090 [22 ký tự]: 30061090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300610; chú giải: nhom3006.nhom, ch30.chuong, phan30.phan
+

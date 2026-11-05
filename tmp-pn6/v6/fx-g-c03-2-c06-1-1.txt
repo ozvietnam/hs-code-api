@@ -1,0 +1,310 @@
+VÒNG SỬA — 12 PN6 bị cổng máy chặn (030779 030781 030782 030787 030788 030791 030799 030811 030819 030821 030829 030830). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 030779 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030779:phuongPhapBaoQuan=SONG
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030779","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030779","dong8":{"03077930":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]},"03077940":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["HUN_KHOI"]}]}},"ghiChuSoan":[{"ma":"03077930","loai":"QUYET_DINH","ghiChu":"tax.03077930 \"Khô, muối hoặc ngâm nước muối\" ⇒ phuongPhapBaoQuan KHO_MUOI"},{"ma":"03077940","loai":"QUYET_DINH","ghiChu":"tax.03077940 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"}]}
+```
+
+=== GÓI PN6 030779 ===
+# 030779 — Loại khác
+
+030779 — Molluscs; clams, cockle, ark shells (families Arcidae, Arcticidae, Cardiidae, Donacidae, Hiatellidae, Mactridae, Mesodesmatidae, Myidae, Semelidae, Solecurtidae, Solenidae, Tridacnidae, Veneridae), whether in shell or not, dried, salted, in brine, smoked
+  03077930 Khô, muối hoặc ngâm nước muối
+  03077940 Hun khói
+
+- 03077930 DONG8
+    tax.03077930 [44 ký tự]: 03077930 - - - Khô, muối hoặc ngâm nước muối
+- 03077940 DONG8
+    tax.03077940 [23 ký tự]: 03077940 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030779; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030781 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030781:phuongPhapBaoQuan=DONG_LANH
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030781","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030781","dong8":{"03078110":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["SONG"]}]},"03078120":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]}},"ghiChuSoan":[{"ma":"03078110","loai":"QUYET_DINH","ghiChu":"tax.03078110 \"Sống\" ⇒ phuongPhapBaoQuan SONG"},{"ma":"03078120","loai":"QUYET_DINH","ghiChu":"tax.03078120 \"Tươi hoặc ướp lạnh\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH"}]}
+```
+
+=== GÓI PN6 030781 ===
+# 030781 — Bào ngư (Haliotis spp.) sống, tươi hoặc ướp lạnh
+
+030781 — Molluscs; abalone (Haliotis spp.), whether in shell or not, live, fresh or chilled
+  03078110 Sống
+  03078120 Tươi hoặc ướp lạnh
+
+- 03078110 DONG8
+    tax.03078110 [19 ký tự]: 03078110 - - - Sống
+- 03078120 DONG8
+    tax.03078120 [33 ký tự]: 03078120 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030781; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030782 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030782:phuongPhapBaoQuan=DONG_LANH
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030782","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030782","dong8":{"03078210":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["SONG"]}]},"03078220":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]}},"ghiChuSoan":[{"ma":"03078210","loai":"QUYET_DINH","ghiChu":"tax.03078210 \"Sống\" ⇒ phuongPhapBaoQuan SONG"},{"ma":"03078220","loai":"QUYET_DINH","ghiChu":"tax.03078220 \"Tươi hoặc ướp lạnh\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH"}]}
+```
+
+=== GÓI PN6 030782 ===
+# 030782 — Ốc nhảy (Strombus spp.) sống, tươi hoặc ướp lạnh
+
+030782 — Molluscs; stromboid conchs (Strombus spp.), whether in shell or not, live, fresh or chilled
+  03078210 Sống
+  03078220 Tươi hoặc ướp lạnh
+
+- 03078210 DONG8
+    tax.03078210 [19 ký tự]: 03078210 - - - Sống
+- 03078220 DONG8
+    tax.03078220 [33 ký tự]: 03078220 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030782; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030787 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030787:phuongPhapBaoQuan=SONG
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030787","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030787","dong8":{"03078710":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]},"03078720":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["HUN_KHOI"]}]}},"ghiChuSoan":[{"ma":"03078710","loai":"QUYET_DINH","ghiChu":"tax.03078710 \"Khô, muối hoặc ngâm nước muối\" ⇒ phuongPhapBaoQuan KHO_MUOI"},{"ma":"03078720","loai":"QUYET_DINH","ghiChu":"tax.03078720 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"}]}
+```
+
+=== GÓI PN6 030787 ===
+# 030787 — Bào ngư (Haliotis spp.) ở dạng khác
+
+030787 — Molluscs; abalone (Haliotis spp.), whether in shell or not, dried, salted, in brine, or smoked, cooked or not before or during the smoking process
+  03078710 Khô, muối hoặc ngâm nước muối
+  03078720 Hun khói
+
+- 03078710 DONG8
+    tax.03078710 [44 ký tự]: 03078710 - - - Khô, muối hoặc ngâm nước muối
+- 03078720 DONG8
+    tax.03078720 [23 ký tự]: 03078720 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030787; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030788 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030788:phuongPhapBaoQuan=SONG
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030788","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030788","dong8":{"03078810":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]},"03078820":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["HUN_KHOI"]}]}},"ghiChuSoan":[{"ma":"03078810","loai":"QUYET_DINH","ghiChu":"tax.03078810 \"Khô, muối hoặc ngâm nước muối\" ⇒ phuongPhapBaoQuan KHO_MUOI"},{"ma":"03078820","loai":"QUYET_DINH","ghiChu":"tax.03078820 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"}]}
+```
+
+=== GÓI PN6 030788 ===
+# 030788 — Ốc nhảy (Strombus spp.) ở dạng khác
+
+030788 — Molluscs; stromboid conchs (Strombus spp.), whether in shell or not, dried, salted, in brine, or smoked, cooked or not before or during the smoking process
+  03078810 Khô, muối hoặc ngâm nước muối
+  03078820 Hun khói
+
+- 03078810 DONG8
+    tax.03078810 [44 ký tự]: 03078810 - - - Khô, muối hoặc ngâm nước muối
+- 03078820 DONG8
+    tax.03078820 [23 ký tự]: 03078820 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030788; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030791 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030791:phuongPhapBaoQuan=DONG_LANH
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030791","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030791","dong8":{"03079110":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["SONG"]}]},"03079120":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]}},"ghiChuSoan":[{"ma":"03079110","loai":"QUYET_DINH","ghiChu":"tax.03079110 \"Sống\" ⇒ phuongPhapBaoQuan SONG"},{"ma":"03079120","loai":"QUYET_DINH","ghiChu":"tax.03079120 \"Tươi hoặc ướp lạnh\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH"}]}
+```
+
+=== GÓI PN6 030791 ===
+# 030791 — Sống, tươi hoặc ướp lạnh
+
+030791 — Molluscs; n.e.c. in heading 0307, whether in shell or not, live or fresh, chilled
+  03079110 Sống
+  03079120 Tươi hoặc ướp lạnh
+
+- 03079110 DONG8
+    tax.03079110 [19 ký tự]: 03079110 - - - Sống
+- 03079120 DONG8
+    tax.03079120 [33 ký tự]: 03079120 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030791; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030799 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030799:phuongPhapBaoQuan=SONG
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030799","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030799","dong8":{"03079930":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]},"03079940":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["HUN_KHOI"]}]}},"ghiChuSoan":[{"ma":"03079930","loai":"QUYET_DINH","ghiChu":"tax.03079930 \"Khô, muối hoặc ngâm nước muối\" ⇒ phuongPhapBaoQuan KHO_MUOI"},{"ma":"03079940","loai":"QUYET_DINH","ghiChu":"tax.03079940 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"}]}
+```
+
+=== GÓI PN6 030799 ===
+# 030799 — Loại khác
+
+030799 — Molluscs; n.e.c. in heading 0307, whether in shell or not, dried, salted, in brine, or smoked, cooked or not before or during the smoking process
+  03079930 Khô, muối hoặc ngâm nước muối
+  03079940 Hun khói
+
+- 03079930 DONG8
+    tax.03079930 [44 ký tự]: 03079930 - - - Khô, muối hoặc ngâm nước muối
+- 03079940 DONG8
+    tax.03079940 [23 ký tự]: 03079940 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030799; chú giải: nhom0307.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030811 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030811:phuongPhapBaoQuan=DONG_LANH
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030811","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030811","dong8":{"03081110":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["SONG"]}]},"03081120":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]}},"ghiChuSoan":[{"ma":"03081110","loai":"QUYET_DINH","ghiChu":"tax.03081110 \"Sống\" ⇒ phuongPhapBaoQuan SONG"},{"ma":"03081120","loai":"QUYET_DINH","ghiChu":"tax.03081120 \"Tươi hoặc ướp lạnh\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH"}]}
+```
+
+=== GÓI PN6 030811 ===
+# 030811 — Sống, tươi hoặc ướp lạnh
+
+030811 — Aquatic invertebrates; sea cucumbers (Stichopus japonicus, Holothuroidea), live, fresh or chilled
+  03081110 Sống
+  03081120 Tươi hoặc ướp lạnh
+
+- 03081110 DONG8
+    tax.03081110 [19 ký tự]: 03081110 - - - Sống
+- 03081120 DONG8
+    tax.03081120 [33 ký tự]: 03081120 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030811; chú giải: nhom0308.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030819 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030819:phuongPhapBaoQuan=SONG
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030819","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030819","dong8":{"03081920":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]},"03081930":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["HUN_KHOI"]}]}},"ghiChuSoan":[{"ma":"03081920","loai":"QUYET_DINH","ghiChu":"tax.03081920 \"Khô, muối hoặc ngâm nước muối\" ⇒ phuongPhapBaoQuan KHO_MUOI"},{"ma":"03081930","loai":"QUYET_DINH","ghiChu":"tax.03081930 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"}]}
+```
+
+=== GÓI PN6 030819 ===
+# 030819 — Loại khác
+
+030819 — Aquatic invertebrates; sea cucumbers (Stichopus japonicus, Holothuroidea), dried, salted or in brine, smoked, whether or not cooked before or during the smoking process
+  03081920 Khô, muối hoặc ngâm nước muối
+  03081930 Hun khói
+
+- 03081920 DONG8
+    tax.03081920 [44 ký tự]: 03081920 - - - Khô, muối hoặc ngâm nước muối
+- 03081930 DONG8
+    tax.03081930 [23 ký tự]: 03081930 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030819; chú giải: nhom0308.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030821 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030821:phuongPhapBaoQuan=DONG_LANH
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030821","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030821","dong8":{"03082110":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["SONG"]}]},"03082120":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]}},"ghiChuSoan":[{"ma":"03082110","loai":"QUYET_DINH","ghiChu":"tax.03082110 \"Sống\" ⇒ phuongPhapBaoQuan SONG"},{"ma":"03082120","loai":"QUYET_DINH","ghiChu":"tax.03082120 \"Tươi hoặc ướp lạnh\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH"}]}
+```
+
+=== GÓI PN6 030821 ===
+# 030821 — Sống, tươi hoặc ướp lạnh
+
+030821 — Aquatic invertebrates; sea urchins (Strongylocentrotus spp., Paracentrotus lividus, Loxechinus albus, Echinus esculentus), live, fresh or chilled
+  03082110 Sống
+  03082120 Tươi hoặc ướp lạnh
+
+- 03082110 DONG8
+    tax.03082110 [19 ký tự]: 03082110 - - - Sống
+- 03082120 DONG8
+    tax.03082120 [33 ký tự]: 03082120 - - - Tươi hoặc ướp lạnh
+
+Nguồn cấp phân nhóm: wco.030821; chú giải: nhom0308.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030829 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030829:phuongPhapBaoQuan=SONG
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030829","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030829","dong8":{"03082920":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]},"03082930":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["HUN_KHOI"]}]}},"ghiChuSoan":[{"ma":"03082920","loai":"QUYET_DINH","ghiChu":"tax.03082920 \"Khô, muối hoặc ngâm nước muối\" ⇒ phuongPhapBaoQuan KHO_MUOI"},{"ma":"03082930","loai":"QUYET_DINH","ghiChu":"tax.03082930 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"}]}
+```
+
+=== GÓI PN6 030829 ===
+# 030829 — Loại khác
+
+030829 — Aquatic invertebrates; sea urchins (Strongylocentrotus spp., Paracentrotus lividus, Loxechinus albus, Echinus esculentus), dried, salted or in brine, smoked, whether or not cooked before or during smoking process
+  03082920 Khô, muối hoặc ngâm nước muối
+  03082930 Hun khói
+
+- 03082920 DONG8
+    tax.03082920 [44 ký tự]: 03082920 - - - Khô, muối hoặc ngâm nước muối
+- 03082930 DONG8
+    tax.03082930 [23 ký tự]: 03082930 - - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030829; chú giải: nhom0308.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 030830 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030830:phuongPhapBaoQuan=BAO_QUAN_BANG_KHI_SUNPHURO
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030830","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030830","dong8":{"03083010":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["SONG"]}]},"03083020":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]},"03083030":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["DONG_LANH"]}]},"03083040":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]},"03083050":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["HUN_KHOI"]}]}},"ghiChuSoan":[{"ma":"03083010","loai":"QUYET_DINH","ghiChu":"tax.03083010 \"Sống\" ⇒ phuongPhapBaoQuan SONG"},{"ma":"03083020","loai":"QUYET_DINH","ghiChu":"tax.03083020 \"Tươi hoặc ướp lạnh\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH"},{"ma":"03083030","loai":"QUYET_DINH","ghiChu":"tax.03083030 \"Đông lạnh\" ⇒ phuongPhapBaoQuan DONG_LANH"},{"ma":"03083040","loai":"QUYET_DINH","ghiChu":"tax.03083040 \"Khô, muối hoặc ngâm nước muối\" ⇒ phuongPhapBaoQuan KHO_MUOI"},{"ma":"03083050","loai":"QUYET_DINH","ghiChu":"tax.03083050 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"}]}
+```
+
+=== GÓI PN6 030830 ===
+# 030830 — Sứa (Rhopilema spp.)
+
+030830 — Aquatic invertebrates; jellyfish (Rhopilema spp.), live, fresh, chilled, frozen, dried, salted or in brine, smoked, whether or not cooked before or during smoking
+  03083010 Sống
+  03083020 Tươi hoặc ướp lạnh
+  03083030 Đông lạnh
+  03083040 Khô, muối hoặc ngâm nước muối
+  03083050 Hun khói
+
+- 03083010 DONG8
+    tax.03083010 [17 ký tự]: 03083010 - - Sống
+- 03083020 DONG8
+    tax.03083020 [31 ký tự]: 03083020 - - Tươi hoặc ướp lạnh
+- 03083030 DONG8
+    tax.03083030 [22 ký tự]: 03083030 - - Đông lạnh
+- 03083040 DONG8
+    tax.03083040 [42 ký tự]: 03083040 - - Khô, muối hoặc ngâm nước muối
+- 03083050 DONG8
+    tax.03083050 [21 ký tự]: 03083050 - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030830; chú giải: nhom0308.nhom, ch03.chuong, phan03.phan
+

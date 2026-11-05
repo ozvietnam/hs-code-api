@@ -1,0 +1,1235 @@
+VÒNG SỬA — 12 PN6 bị cổng máy chặn (870431 870432 870441 870442 870451 870452 870460 870600 870840 870870 870880 870891). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 870431 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:87043111+87043113:daLapRap=false,kieuXeChoHang=DONG_LANH,xeBaBanh=true
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87043112+87043113:daLapRap=false,kieuXeChoHang=PICK_UP,xeBaBanh=true
+    ✗ cong2-chong-lan:87043121+87043127:daLapRap=true,kieuXeChoHang=DONG_LANH,xeBaBanh=true
+    ✗ cong2-chong-lan:87043122+87043127:daLapRap=true,kieuXeChoHang=THU_GOM_PHE_THAI,xeBaBanh=true
+    ✗ cong2-chong-lan:87043123+87043127:daLapRap=true,kieuXeChoHang=XI_TEC,xeBaBanh=true
+    ✗ cong2-chong-lan:87043124+87043127:daLapRap=true,kieuXeChoHang=BOC_THEP,xeBaBanh=true
+    ✗ cong2-chong-lan-truc:87043127:87043121,87043122,87043123,87043124,87043125,87043126
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870431","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870431","dong8":{"87043111":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043112":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["PICK_UP"]}]},"87043113":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]},"87043121":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043122":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87043123":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87043124":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87043125":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87043126":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["PICK_UP"]}]},"87043127":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]}},"dieuKienNut":{"8704311":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"8704311","loai":"QUYET_DINH","ghiChu":"tieuDe.8704311: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87043111","loai":"QUYET_DINH","ghiChu":"tax.87043111: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043112","loai":"QUYET_DINH","ghiChu":"tax.87043112: \"Ô tô pick-up\" ⇒ kieuXeChoHang PICK_UP"},{"ma":"87043113","loai":"QUYET_DINH","ghiChu":"tax.87043113: \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"},{"ma":"87043121","loai":"QUYET_DINH","ghiChu":"tax.87043121: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043122","loai":"QUYET_DINH","ghiChu":"tax.87043122: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87043123","loai":"QUYET_DINH","ghiChu":"tax.87043123: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87043124","loai":"QUYET_DINH","ghiChu":"tax.87043124: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87043125","loai":"QUYET_DINH","ghiChu":"tax.87043125: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"87043126","loai":"QUYET_DINH","ghiChu":"tax.87043126: \"Ô tô pick-up\" ⇒ kieuXeChoHang PICK_UP"},{"ma":"87043127","loai":"QUYET_DINH","ghiChu":"tax.87043127: \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"}]}
+```
+
+=== GÓI PN6 870431 ===
+# 870431 — Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn
+
+870431 — Vehicles; with only spark-ignition internal combustion piston engine, for transport of goods, (of a g.v.w. not exceeding 5 tonnes), n.e.c. in item no 8704.1
+  [8704311] Dạng CKD (SEN)
+    87043111 Ô tô tải đông lạnh (1)
+    87043112 Ô tô pick-up (1)
+    87043113 Xe ba bánh (SEN)
+    87043119 Loại khác  [LK]
+  [8704312] Loại khác
+    87043121 Ô tô tải đông lạnh (1)
+    87043122 Ô tô thu gom phế thải có bộ phận nén phế thải
+    87043123 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+    87043124 Ô tô bọc thép để chở hàng hóa có giá trị
+    87043125 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    87043126 Ô tô pick-up (1)
+    87043127 Xe ba bánh (SEN)
+    87043129 Loại khác  [LK]
+
+- 8704311 TIEU_DE
+    tieuDe.8704311 [22 ký tự]: 8704311 Dạng CKD (SEN)
+- 87043111 DONG8
+    tax.87043111 [39 ký tự]: 87043111 - - - - Ô tô tải đông lạnh (1)
+- 87043112 DONG8
+    tax.87043112 [33 ký tự]: 87043112 - - - - Ô tô pick-up (1)
+- 87043113 DONG8
+    tax.87043113 [33 ký tự]: 87043113 - - - - Xe ba bánh (SEN)
+- 87043119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043119 [26 ký tự]: 87043119 - - - - Loại khác
+- 8704312 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704312 [17 ký tự]: 8704312 Loại khác
+- 87043121 DONG8
+    tax.87043121 [39 ký tự]: 87043121 - - - - Ô tô tải đông lạnh (1)
+- 87043122 DONG8
+    tax.87043122 [62 ký tự]: 87043122 - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87043123 DONG8
+    tax.87043123 [55 ký tự]: 87043123 - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87043124 DONG8
+    tax.87043124 [57 ký tự]: 87043124 - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87043125 DONG8
+    tax.87043125 [60 ký tự]: 87043125 - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87043126 DONG8
+    tax.87043126 [33 ký tự]: 87043126 - - - - Ô tô pick-up (1)
+- 87043127 DONG8
+    tax.87043127 [33 ký tự]: 87043127 - - - - Xe ba bánh (SEN)
+- 87043129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043129 [26 ký tự]: 87043129 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8704, wco.870431; chú giải: nhom8704.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870432 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-bien-lech-chu:87043248:khoiLuongToanBo
+      → Biên số lệch chữ: "không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=. Sửa: Sửa op/value đúng chữ của câu trích.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870432","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870432","dong8":{"87043211":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043221":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043222":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87043223":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87043224":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87043225":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87043231":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043241":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043242":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87043243":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87043244":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87043245":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87043248":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":10,"donVi":"tấn"}]},"87043251":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043261":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043262":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87043263":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87043264":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87043265":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87043272":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043281":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043282":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87043283":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87043284":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87043285":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87043286":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["TU_DO"]}]},"87043291":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043293":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87043294":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87043295":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87043296":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87043297":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87043298":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["TU_DO"]}]}},"dieuKienNut":{"870432~r17149":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":6,"donVi":"tấn"}]},"8704321":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870432~r17160":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":20,"donVi":"tấn"}]},"8704323":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870432~r17172":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":20,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":24,"donVi":"tấn"}]},"8704325":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870432~r17183":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":45,"donVi":"tấn"}]},"8704327":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8704329":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":45,"donVi":"tấn"}]},"870432~r17196":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870432~r17149","loai":"QUYET_DINH","ghiChu":"tieuDe.870432~r17149: \"Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn\" ⇒ khoiLuongToanBo <= 6 tấn"},{"ma":"8704321","loai":"QUYET_DINH","ghiChu":"tieuDe.8704321: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87043211","loai":"QUYET_DINH","ghiChu":"tax.87043211: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043221","loai":"QUYET_DINH","ghiChu":"tax.87043221: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043222","loai":"QUYET_DINH","ghiChu":"tax.87043222: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87043223","loai":"QUYET_DINH","ghiChu":"tax.87043223: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87043224","loai":"QUYET_DINH","ghiChu":"tax.87043224: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87043225","loai":"QUYET_DINH","ghiChu":"tax.87043225: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"870432~r17160","loai":"QUYET_DINH","ghiChu":"tieuDe.870432~r17160: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn\" ⇒ khoiLuongToanBo > 6 tấn, <= 20 tấn"},{"ma":"8704323","loai":"QUYET_DINH","ghiChu":"tieuDe.8704323: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87043231","loai":"QUYET_DINH","ghiChu":"tax.87043231: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043241","loai":"QUYET_DINH","ghiChu":"tax.87043241: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043242","loai":"QUYET_DINH","ghiChu":"tax.87043242: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87043243","loai":"QUYET_DINH","ghiChu":"tax.87043243: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87043244","loai":"QUYET_DINH","ghiChu":"tax.87043244: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87043245","loai":"QUYET_DINH","ghiChu":"tax.87043245: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"87043248","loai":"QUYET_DINH","ghiChu":"tax.87043248: \"Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn\" ⇒ khoiLuongToanBo <= 10 tấn"},{"ma":"870432~r17172","loai":"QUYET_DINH","ghiChu":"tieuDe.870432~r17172: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn\" ⇒ khoiLuongToanBo > 20 tấn, <= 24 tấn"},{"ma":"8704325","loai":"QUYET_DINH","ghiChu":"tieuDe.8704325: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87043251","loai":"QUYET_DINH","ghiChu":"tax.87043251: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043261","loai":"QUYET_DINH","ghiChu":"tax.87043261: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043262","loai":"QUYET_DINH","ghiChu":"tax.87043262: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87043263","loai":"QUYET_DINH","ghiChu":"tax.87043263: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87043264","loai":"QUYET_DINH","ghiChu":"tax.87043264: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87043265","loai":"QUYET_DINH","ghiChu":"tax.87043265: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"870432~r17183","loai":"QUYET_DINH","ghiChu":"tieuDe.870432~r17183: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn\" ⇒ khoiLuongToanBo > 24 tấn, <= 45 tấn"},{"ma":"8704327","loai":"QUYET_DINH","ghiChu":"tieuDe.8704327: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87043272","loai":"QUYET_DINH","ghiChu":"tax.87043272: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043281","loai":"QUYET_DINH","ghiChu":"tax.87043281: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043282","loai":"QUYET_DINH","ghiChu":"tax.87043282: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87043283","loai":"QUYET_DINH","ghiChu":"tax.87043283: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87043284","loai":"QUYET_DINH","ghiChu":"tax.87043284: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87043285","loai":"QUYET_DINH","ghiChu":"tax.87043285: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"87043286","loai":"QUYET_DINH","ghiChu":"tax.87043286: \"Ô tô tự đổ\" ⇒ kieuXeChoHang TU_DO"},{"ma":"8704329","loai":"QUYET_DINH","ghiChu":"tieuDe.8704329: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn\" ⇒ khoiLuongToanBo > 45 tấn"},{"ma":"870432~r17196","loai":"QUYET_DINH","ghiChu":"tieuDe.870432~r17196: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87043291","loai":"QUYET_DINH","ghiChu":"tax.87043291: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043293","loai":"QUYET_DINH","ghiChu":"tax.87043293: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87043294","loai":"QUYET_DINH","ghiChu":"tax.87043294: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87043295","loai":"QUYET_DINH","ghiChu":"tax.87043295: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87043296","loai":"QUYET_DINH","ghiChu":"tax.87043296: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87043297","loai":"QUYET_DINH","ghiChu":"tax.87043297: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"87043298","loai":"QUYET_DINH","ghiChu":"tax.87043298: \"Ô tô tự đổ\" ⇒ kieuXeChoHang TU_DO"}]}
+```
+
+=== GÓI PN6 870432 ===
+# 870432 — Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn
+
+870432 — Vehicles; with only spark-ignition internal combustion piston engine, for transport of goods, (of a g.v.w. exceeding 5 tonnes), n.e.c. in item no 8704.1
+  [870432~r17149] Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn  (tầng không mã, biểu thuế r17149, gạch 3)
+    [8704321] Dạng CKD (SEN)
+      87043211 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043219 Loại khác  [LK]  (gạch 5)
+    [8704322] Loại khác
+      87043221 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043222 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87043223 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87043224 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87043225 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87043229 Loại khác  [LK]  (gạch 5)
+  [870432~r17160] Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn  (tầng không mã, biểu thuế r17160, gạch 3)
+    [8704323] Dạng CKD (SEN)
+      87043231 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043239 Loại khác  [LK]  (gạch 5)
+    [8704324] Loại khác
+      87043241 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043242 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87043243 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87043244 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87043245 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87043248 Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn  [LK có điều kiện]  (gạch 5)
+      87043249 Loại khác  [LK]  (gạch 5)
+  [870432~r17172] Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn  (tầng không mã, biểu thuế r17172, gạch 3)
+    [8704325] Dạng CKD (SEN)
+      87043251 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043259 Loại khác  [LK]  (gạch 5)
+    [8704326] Loại khác
+      87043261 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043262 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87043263 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87043264 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87043265 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87043269 Loại khác  [LK]  (gạch 5)
+  [870432~r17183] Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn  (tầng không mã, biểu thuế r17183, gạch 3)
+    [8704327] Dạng CKD (SEN)
+      87043272 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043279 Loại khác  [LK]  (gạch 5)
+    [8704328] Loại khác
+      87043281 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043282 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87043283 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87043284 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87043285 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87043286 Ô tô tự đổ  (gạch 5)
+      87043289 Loại khác  [LK]  (gạch 5)
+  [8704329] Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+    [870432~r17196] Dạng CKD (SEN)  (tầng không mã, biểu thuế r17196, gạch 4)
+      87043291 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043292 Loại khác  [LK]  (gạch 5)
+    [870432~r17199] Loại khác  (tầng không mã, biểu thuế r17199, gạch 4)
+      87043293 Ô tô tải đông lạnh (1)  (gạch 5)
+      87043294 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87043295 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87043296 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87043297 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87043298 Ô tô tự đổ  (gạch 5)
+      87043299 Loại khác  [LK]  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870432~r17149 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn:" — dòng dưới: 87043211, 87043219, 87043221, 87043222, 87043223, 87043224, 87043225, 87043229
+    870432~r17160 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn:" — dòng dưới: 87043231, 87043239, 87043241, 87043242, 87043243, 87043244, 87043245, 87043248, 87043249
+    870432~r17172 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn:" — dòng dưới: 87043251, 87043259, 87043261, 87043262, 87043263, 87043264, 87043265, 87043269
+    870432~r17183 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn:" — dòng dưới: 87043272, 87043279, 87043281, 87043282, 87043283, 87043284, 87043285, 87043286, 87043289
+    870432~r17196 (gạch 4) "Dạng CKD (SEN):" — dòng dưới: 87043291, 87043292
+    870432~r17199 (gạch 4) "Loại khác:" — dòng dưới: 87043293, 87043294, 87043295, 87043296, 87043297, 87043298, 87043299
+
+- 870432~r17149 TIEU_DE
+    tieuDe.870432~r17149 [68 ký tự]: 870432~r17149 Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế không quá 6 tấn"
+- 8704321 TIEU_DE
+    tieuDe.8704321 [22 ký tự]: 8704321 Dạng CKD (SEN)
+- 87043211 DONG8
+    tax.87043211 [41 ký tự]: 87043211 - - - - - Ô tô tải đông lạnh (1)
+- 87043219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043219 [28 ký tự]: 87043219 - - - - - Loại khác
+- 8704322 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704322 [17 ký tự]: 8704322 Loại khác
+- 87043221 DONG8
+    tax.87043221 [41 ký tự]: 87043221 - - - - - Ô tô tải đông lạnh (1)
+- 87043222 DONG8
+    tax.87043222 [64 ký tự]: 87043222 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87043223 DONG8
+    tax.87043223 [57 ký tự]: 87043223 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87043224 DONG8
+    tax.87043224 [59 ký tự]: 87043224 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87043225 DONG8
+    tax.87043225 [62 ký tự]: 87043225 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87043229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043229 [28 ký tự]: 87043229 - - - - - Loại khác
+- 870432~r17160 TIEU_DE
+    tieuDe.870432~r17160 [86 ký tự]: 870432~r17160 Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 6 tấn nhưng không quá 20 tấn"
+- 8704323 TIEU_DE
+    tieuDe.8704323 [22 ký tự]: 8704323 Dạng CKD (SEN)
+- 87043231 DONG8
+    tax.87043231 [41 ký tự]: 87043231 - - - - - Ô tô tải đông lạnh (1)
+- 87043239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043239 [28 ký tự]: 87043239 - - - - - Loại khác
+- 8704324 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704324 [17 ký tự]: 8704324 Loại khác
+- 87043241 DONG8
+    tax.87043241 [41 ký tự]: 87043241 - - - - - Ô tô tải đông lạnh (1)
+- 87043242 DONG8
+    tax.87043242 [64 ký tự]: 87043242 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87043243 DONG8
+    tax.87043243 [57 ký tự]: 87043243 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87043244 DONG8
+    tax.87043244 [59 ký tự]: 87043244 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87043245 DONG8
+    tax.87043245 [62 ký tự]: 87043245 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87043248 DONG8
+    tax.87043248 [102 ký tự]: 87043248 - - - - - Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "khối lượng toàn bộ theo thiết kế trên 6 tấn nhưng không quá 10 tấn"
+- 87043249 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043249 [28 ký tự]: 87043249 - - - - - Loại khác
+- 870432~r17172 TIEU_DE
+    tieuDe.870432~r17172 [87 ký tự]: 870432~r17172 Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn"
+- 8704325 TIEU_DE
+    tieuDe.8704325 [22 ký tự]: 8704325 Dạng CKD (SEN)
+- 87043251 DONG8
+    tax.87043251 [41 ký tự]: 87043251 - - - - - Ô tô tải đông lạnh (1)
+- 87043259 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043259 [28 ký tự]: 87043259 - - - - - Loại khác
+- 8704326 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704326 [17 ký tự]: 8704326 Loại khác
+- 87043261 DONG8
+    tax.87043261 [41 ký tự]: 87043261 - - - - - Ô tô tải đông lạnh (1)
+- 87043262 DONG8
+    tax.87043262 [64 ký tự]: 87043262 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87043263 DONG8
+    tax.87043263 [57 ký tự]: 87043263 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87043264 DONG8
+    tax.87043264 [59 ký tự]: 87043264 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87043265 DONG8
+    tax.87043265 [62 ký tự]: 87043265 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87043269 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043269 [28 ký tự]: 87043269 - - - - - Loại khác
+- 870432~r17183 TIEU_DE
+    tieuDe.870432~r17183 [87 ký tự]: 870432~r17183 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn"
+- 8704327 TIEU_DE
+    tieuDe.8704327 [22 ký tự]: 8704327 Dạng CKD (SEN)
+- 87043272 DONG8
+    tax.87043272 [41 ký tự]: 87043272 - - - - - Ô tô tải đông lạnh (1)
+- 87043279 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043279 [28 ký tự]: 87043279 - - - - - Loại khác
+- 8704328 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704328 [17 ký tự]: 8704328 Loại khác
+- 87043281 DONG8
+    tax.87043281 [41 ký tự]: 87043281 - - - - - Ô tô tải đông lạnh (1)
+- 87043282 DONG8
+    tax.87043282 [64 ký tự]: 87043282 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87043283 DONG8
+    tax.87043283 [57 ký tự]: 87043283 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87043284 DONG8
+    tax.87043284 [59 ký tự]: 87043284 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87043285 DONG8
+    tax.87043285 [62 ký tự]: 87043285 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87043286 DONG8
+    tax.87043286 [29 ký tự]: 87043286 - - - - - Ô tô tự đổ
+- 87043289 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043289 [28 ký tự]: 87043289 - - - - - Loại khác
+- 8704329 TIEU_DE
+    tieuDe.8704329 [58 ký tự]: 8704329 Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 45 tấn"
+- 870432~r17196 TIEU_DE
+    tieuDe.870432~r17196 [28 ký tự]: 870432~r17196 Dạng CKD (SEN)
+- 87043291 DONG8
+    tax.87043291 [41 ký tự]: 87043291 - - - - - Ô tô tải đông lạnh (1)
+- 87043292 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043292 [28 ký tự]: 87043292 - - - - - Loại khác
+- 870432~r17199 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870432~r17199 [23 ký tự]: 870432~r17199 Loại khác
+- 87043293 DONG8
+    tax.87043293 [41 ký tự]: 87043293 - - - - - Ô tô tải đông lạnh (1)
+- 87043294 DONG8
+    tax.87043294 [64 ký tự]: 87043294 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87043295 DONG8
+    tax.87043295 [57 ký tự]: 87043295 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87043296 DONG8
+    tax.87043296 [59 ký tự]: 87043296 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87043297 DONG8
+    tax.87043297 [62 ký tự]: 87043297 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87043298 DONG8
+    tax.87043298 [29 ký tự]: 87043298 - - - - - Ô tô tự đổ
+- 87043299 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87043299 [28 ký tự]: 87043299 - - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8704, wco.870432; chú giải: nhom8704.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870441 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:87044121+87044127:daLapRap=true,kieuXeChoHang=DONG_LANH,xeBaBanh=true
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87044122+87044127:daLapRap=true,kieuXeChoHang=THU_GOM_PHE_THAI,xeBaBanh=true
+    ✗ cong2-chong-lan:87044123+87044127:daLapRap=true,kieuXeChoHang=XI_TEC,xeBaBanh=true
+    ✗ cong2-chong-lan:87044124+87044127:daLapRap=true,kieuXeChoHang=BOC_THEP,xeBaBanh=true
+    ✗ cong2-chong-lan:87044125+87044127:daLapRap=true,kieuXeChoHang=CHO_BUN_THUNG_ROI,xeBaBanh=true
+    ✗ cong2-chong-lan:87044126+87044127:daLapRap=true,kieuXeChoHang=PICK_UP,xeBaBanh=true
+    ✗ cong2-chong-lan-truc:87044127:87044121,87044122,87044123,87044124,87044125,87044126
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870441","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870441","dong8":{"87044111":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87044121":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87044122":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87044123":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87044124":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87044125":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87044126":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["PICK_UP"]}]},"87044127":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]}},"dieuKienNut":{"8704411":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"8704411","loai":"QUYET_DINH","ghiChu":"tieuDe.8704411: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87044111","loai":"QUYET_DINH","ghiChu":"tax.87044111: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87044121","loai":"QUYET_DINH","ghiChu":"tax.87044121: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87044122","loai":"QUYET_DINH","ghiChu":"tax.87044122: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87044123","loai":"QUYET_DINH","ghiChu":"tax.87044123: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87044124","loai":"QUYET_DINH","ghiChu":"tax.87044124: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87044125","loai":"QUYET_DINH","ghiChu":"tax.87044125: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"87044126","loai":"QUYET_DINH","ghiChu":"tax.87044126: \"Ô tô pick-up\" ⇒ kieuXeChoHang PICK_UP"},{"ma":"87044127","loai":"QUYET_DINH","ghiChu":"tax.87044127: \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"}]}
+```
+
+=== GÓI PN6 870441 ===
+# 870441 — Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn
+
+870441 — Vehicles; with both compression-ignition internal combustion piston engine (diesel/semi-diesel) and electric motor as motor for propulsion, unassembled as in section 14, (gvw not exceeding 5000kg), for the transport of goods, vans
+  [8704411] Dạng CKD (SEN)
+    87044111 Ô tô tải đông lạnh (1)
+    87044119 Loại khác  [LK]
+  [8704412] Loại khác
+    87044121 Ô tô tải đông lạnh (1)
+    87044122 Ô tô thu gom phế thải có bộ phận nén phế thải
+    87044123 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+    87044124 Ô tô bọc thép để chở hàng hóa có giá trị
+    87044125 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    87044126 Ô tô pick-up (1)
+    87044127 Xe ba bánh (SEN)
+    87044129 Loại khác  [LK]
+
+- 8704411 TIEU_DE
+    tieuDe.8704411 [22 ký tự]: 8704411 Dạng CKD (SEN)
+- 87044111 DONG8
+    tax.87044111 [39 ký tự]: 87044111 - - - - Ô tô tải đông lạnh (1)
+- 87044119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87044119 [26 ký tự]: 87044119 - - - - Loại khác
+- 8704412 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704412 [17 ký tự]: 8704412 Loại khác
+- 87044121 DONG8
+    tax.87044121 [39 ký tự]: 87044121 - - - - Ô tô tải đông lạnh (1)
+- 87044122 DONG8
+    tax.87044122 [62 ký tự]: 87044122 - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87044123 DONG8
+    tax.87044123 [55 ký tự]: 87044123 - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87044124 DONG8
+    tax.87044124 [57 ký tự]: 87044124 - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87044125 DONG8
+    tax.87044125 [60 ký tự]: 87044125 - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87044126 DONG8
+    tax.87044126 [33 ký tự]: 87044126 - - - - Ô tô pick-up (1)
+- 87044127 DONG8
+    tax.87044127 [33 ký tự]: 87044127 - - - - Xe ba bánh (SEN)
+- 87044129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87044129 [26 ký tự]: 87044129 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8704, wco.870441; chú giải: nhom8704.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870442 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-bien-lech-chu:87044246:khoiLuongToanBo
+      → Biên số lệch chữ: "không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=. Sửa: Sửa op/value đúng chữ của câu trích.
+    ✗ cong3-bien-lech-chu:87044251:khoiLuongToanBo
+    ✗ cong1-khong-phu-kin:870442:khoiLuongToanBo=20000.02
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870442","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870442","dong8":{"87044211":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87044221":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87044222":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87044223":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87044224":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87044225":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87044231":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87044241":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87044242":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87044243":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87044245":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87044246":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]},{"fact":"khoiLuongToanBo","op":"<=","value":10,"donVi":"tấn"}]},"87044247":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]},{"fact":"khoiLuongToanBo","op":">","value":10,"donVi":"tấn"}]},"87044251":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":10,"donVi":"tấn"}]}},"dieuKienNut":{"870442~r17222":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":6,"donVi":"tấn"}]},"8704421":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870442~r17233":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":20,"donVi":"tấn"}]},"8704423":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870442~r17222","loai":"QUYET_DINH","ghiChu":"tieuDe.870442~r17222: \"Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn\" ⇒ khoiLuongToanBo <= 6 tấn"},{"ma":"8704421","loai":"QUYET_DINH","ghiChu":"tieuDe.8704421: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87044211","loai":"QUYET_DINH","ghiChu":"tax.87044211: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87044221","loai":"QUYET_DINH","ghiChu":"tax.87044221: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87044222","loai":"QUYET_DINH","ghiChu":"tax.87044222: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87044223","loai":"QUYET_DINH","ghiChu":"tax.87044223: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87044224","loai":"QUYET_DINH","ghiChu":"tax.87044224: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87044225","loai":"QUYET_DINH","ghiChu":"tax.87044225: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"870442~r17233","loai":"QUYET_DINH","ghiChu":"tieuDe.870442~r17233: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn\" ⇒ khoiLuongToanBo > 6 tấn, <= 20 tấn"},{"ma":"8704423","loai":"QUYET_DINH","ghiChu":"tieuDe.8704423: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87044231","loai":"QUYET_DINH","ghiChu":"tax.87044231: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87044241","loai":"QUYET_DINH","ghiChu":"tax.87044241: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87044242","loai":"QUYET_DINH","ghiChu":"tax.87044242: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87044243","loai":"QUYET_DINH","ghiChu":"tax.87044243: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87044245","loai":"QUYET_DINH","ghiChu":"tax.87044245: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"87044246","loai":"QUYET_DINH","ghiChu":"tax.87044246: \"Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn\" ⇒ kieuXeChoHang BOC_THEP, khoiLuongToanBo <= 10 tấn"},{"ma":"87044247","loai":"QUYET_DINH","ghiChu":"tax.87044247: \"Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn\" ⇒ kieuXeChoHang BOC_THEP, khoiLuongToanBo > 10 tấn"},{"ma":"87044251","loai":"QUYET_DINH","ghiChu":"tax.87044251: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn\" ⇒ khoiLuongToanBo <= 10 tấn"}]}
+```
+
+=== GÓI PN6 870442 ===
+# 870442 — Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 20 tấn
+
+870442 — Vehicles; with both compression-ignition internal combustion piston engine (diesel/semi-diesel) and electric motors for propulsion, of a g.v.w. exceeding 5,000kg but not exceeding 20,000kg
+  [870442~r17222] Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn  (tầng không mã, biểu thuế r17222, gạch 3)
+    [8704421] Dạng CKD (SEN)
+      87044211 Ô tô tải đông lạnh (1)  (gạch 5)
+      87044219 Loại khác  [LK]  (gạch 5)
+    [8704422] Loại khác
+      87044221 Ô tô tải đông lạnh (1)  (gạch 5)
+      87044222 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87044223 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87044224 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87044225 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87044229 Loại khác  [LK]  (gạch 5)
+  [870442~r17233] Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn  (tầng không mã, biểu thuế r17233, gạch 3)
+    [8704423] Dạng CKD (SEN)
+      87044231 Ô tô tải đông lạnh (1)  (gạch 5)
+      87044239 Loại khác  [LK]  (gạch 5)
+    [870442~r17237] Loại khác  (tầng không mã, biểu thuế r17237, gạch 4)
+      87044241 Ô tô tải đông lạnh (1)  (gạch 5)
+      87044242 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87044243 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87044245 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87044246 Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn  (gạch 5)
+      87044247 Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn  (gạch 5)
+      [8704425] Loại khác
+        87044251 Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn  (gạch 6)
+        87044259 Loại khác  [LK]  (gạch 6)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870442~r17222 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn:" — dòng dưới: 87044211, 87044219, 87044221, 87044222, 87044223, 87044224, 87044225, 87044229
+    870442~r17233 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn:" — dòng dưới: 87044231, 87044239, 87044241, 87044242, 87044243, 87044245, 87044246, 87044247, 87044251, 87044259
+    870442~r17237 (gạch 4) "Loại khác:" — dòng dưới: 87044241, 87044242, 87044243, 87044245, 87044246, 87044247, 87044251, 87044259
+
+- 870442~r17222 TIEU_DE
+    tieuDe.870442~r17222 [68 ký tự]: 870442~r17222 Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế không quá 6 tấn"
+- 8704421 TIEU_DE
+    tieuDe.8704421 [22 ký tự]: 8704421 Dạng CKD (SEN)
+- 87044211 DONG8
+    tax.87044211 [41 ký tự]: 87044211 - - - - - Ô tô tải đông lạnh (1)
+- 87044219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87044219 [28 ký tự]: 87044219 - - - - - Loại khác
+- 8704422 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704422 [17 ký tự]: 8704422 Loại khác
+- 87044221 DONG8
+    tax.87044221 [41 ký tự]: 87044221 - - - - - Ô tô tải đông lạnh (1)
+- 87044222 DONG8
+    tax.87044222 [64 ký tự]: 87044222 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87044223 DONG8
+    tax.87044223 [57 ký tự]: 87044223 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87044224 DONG8
+    tax.87044224 [59 ký tự]: 87044224 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87044225 DONG8
+    tax.87044225 [62 ký tự]: 87044225 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87044229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87044229 [28 ký tự]: 87044229 - - - - - Loại khác
+- 870442~r17233 TIEU_DE
+    tieuDe.870442~r17233 [86 ký tự]: 870442~r17233 Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 6 tấn nhưng không quá 20 tấn"
+- 8704423 TIEU_DE
+    tieuDe.8704423 [22 ký tự]: 8704423 Dạng CKD (SEN)
+- 87044231 DONG8
+    tax.87044231 [41 ký tự]: 87044231 - - - - - Ô tô tải đông lạnh (1)
+- 87044239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87044239 [28 ký tự]: 87044239 - - - - - Loại khác
+- 870442~r17237 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870442~r17237 [23 ký tự]: 870442~r17237 Loại khác
+- 87044241 DONG8
+    tax.87044241 [41 ký tự]: 87044241 - - - - - Ô tô tải đông lạnh (1)
+- 87044242 DONG8
+    tax.87044242 [64 ký tự]: 87044242 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87044243 DONG8
+    tax.87044243 [57 ký tự]: 87044243 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87044245 DONG8
+    tax.87044245 [62 ký tự]: 87044245 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87044246 DONG8
+    tax.87044246 [133 ký tự]: 87044246 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị" · [GIỚI HẠN] "khối lượng toàn bộ theo thiết kế trên 6 tấn nhưng không quá 10 tấn"
+- 87044247 DONG8
+    tax.87044247 [134 ký tự]: 87044247 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị, khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị" · [GIỚI HẠN] "khối lượng toàn bộ theo thiết kế trên 10 tấn nhưng không quá 20 tấn"
+- 8704425 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704425 [17 ký tự]: 8704425 Loại khác
+- 87044251 DONG8
+    tax.87044251 [93 ký tự]: 87044251 - - - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 6 tấn nhưng không quá 10 tấn"
+- 87044259 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87044259 [30 ký tự]: 87044259 - - - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8704, wco.870442; chú giải: nhom8704.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870451 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:87045121+87045127:daLapRap=true,kieuXeChoHang=DONG_LANH,xeBaBanh=true
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87045122+87045127:daLapRap=true,kieuXeChoHang=THU_GOM_PHE_THAI,xeBaBanh=true
+    ✗ cong2-chong-lan:87045123+87045127:daLapRap=true,kieuXeChoHang=XI_TEC,xeBaBanh=true
+    ✗ cong2-chong-lan:87045124+87045127:daLapRap=true,kieuXeChoHang=BOC_THEP,xeBaBanh=true
+    ✗ cong2-chong-lan:87045125+87045127:daLapRap=true,kieuXeChoHang=CHO_BUN_THUNG_ROI,xeBaBanh=true
+    ✗ cong2-chong-lan:87045126+87045127:daLapRap=true,kieuXeChoHang=PICK_UP,xeBaBanh=true
+    ✗ cong2-chong-lan-truc:87045127:87045121,87045122,87045123,87045124,87045125,87045126
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870451","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870451","dong8":{"87045111":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045121":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045122":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87045123":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87045124":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87045125":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87045126":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["PICK_UP"]}]},"87045127":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]}},"dieuKienNut":{"8704511":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"8704511","loai":"QUYET_DINH","ghiChu":"tieuDe.8704511: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87045111","loai":"QUYET_DINH","ghiChu":"tax.87045111: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045121","loai":"QUYET_DINH","ghiChu":"tax.87045121: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045122","loai":"QUYET_DINH","ghiChu":"tax.87045122: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87045123","loai":"QUYET_DINH","ghiChu":"tax.87045123: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87045124","loai":"QUYET_DINH","ghiChu":"tax.87045124: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87045125","loai":"QUYET_DINH","ghiChu":"tax.87045125: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"87045126","loai":"QUYET_DINH","ghiChu":"tax.87045126: \"Ô tô pick-up\" ⇒ kieuXeChoHang PICK_UP"},{"ma":"87045127","loai":"QUYET_DINH","ghiChu":"tax.87045127: \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"}]}
+```
+
+=== GÓI PN6 870451 ===
+# 870451 — Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn
+
+870451 — Vehicles; with both spark-ignition internal combustion piston engine and electric motors for propulsion, of a g.v.w. not exceeding 5,000kg
+  [8704511] Dạng CKD (SEN)
+    87045111 Ô tô tải đông lạnh (1)
+    87045119 Loại khác  [LK]
+  [8704512] Loại khác
+    87045121 Ô tô tải đông lạnh (1)
+    87045122 Ô tô thu gom phế thải có bộ phận nén phế thải
+    87045123 Ô tô xi téc; ô tô chở xi măng kiểu bồn
+    87045124 Ô tô bọc thép để chở hàng hóa có giá trị
+    87045125 Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    87045126 Ô tô pick-up (1)
+    87045127 Xe ba bánh (SEN)
+    87045129 Loại khác  [LK]
+
+- 8704511 TIEU_DE
+    tieuDe.8704511 [22 ký tự]: 8704511 Dạng CKD (SEN)
+- 87045111 DONG8
+    tax.87045111 [39 ký tự]: 87045111 - - - - Ô tô tải đông lạnh (1)
+- 87045119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045119 [26 ký tự]: 87045119 - - - - Loại khác
+- 8704512 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704512 [17 ký tự]: 8704512 Loại khác
+- 87045121 DONG8
+    tax.87045121 [39 ký tự]: 87045121 - - - - Ô tô tải đông lạnh (1)
+- 87045122 DONG8
+    tax.87045122 [62 ký tự]: 87045122 - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87045123 DONG8
+    tax.87045123 [55 ký tự]: 87045123 - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87045124 DONG8
+    tax.87045124 [57 ký tự]: 87045124 - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87045125 DONG8
+    tax.87045125 [60 ký tự]: 87045125 - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87045126 DONG8
+    tax.87045126 [33 ký tự]: 87045126 - - - - Ô tô pick-up (1)
+- 87045127 DONG8
+    tax.87045127 [33 ký tự]: 87045127 - - - - Xe ba bánh (SEN)
+- 87045129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045129 [26 ký tự]: 87045129 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8704, wco.870451; chú giải: nhom8704.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870452 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-bien-lech-chu:87045248:khoiLuongToanBo
+      → Biên số lệch chữ: "không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=. Sửa: Sửa op/value đúng chữ của câu trích.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870452","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870452","dong8":{"87045211":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045221":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045222":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87045223":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87045224":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87045225":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87045231":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045241":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045242":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87045243":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87045244":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87045245":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87045248":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":10,"donVi":"tấn"}]},"87045251":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045261":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045262":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87045263":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87045264":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87045265":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87045272":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045281":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045282":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["THU_GOM_PHE_THAI"]}]},"87045283":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["XI_TEC"]}]},"87045284":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["BOC_THEP"]}]},"87045285":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["CHO_BUN_THUNG_ROI"]}]},"87045286":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["TU_DO"]}]},"87045291":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045293":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["DONG_LANH"]}]},"87045294":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["TU_DO"]}]}},"dieuKienNut":{"870452~r17293":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":6,"donVi":"tấn"}]},"8704521":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870452~r17304":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":20,"donVi":"tấn"}]},"8704523":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870452~r17316":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":20,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":24,"donVi":"tấn"}]},"8704525":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870452~r17327":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":45,"donVi":"tấn"}]},"8704527":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8704529":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":45,"donVi":"tấn"}]},"870452~r17340":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870452~r17293","loai":"QUYET_DINH","ghiChu":"tieuDe.870452~r17293: \"Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn\" ⇒ khoiLuongToanBo <= 6 tấn"},{"ma":"8704521","loai":"QUYET_DINH","ghiChu":"tieuDe.8704521: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87045211","loai":"QUYET_DINH","ghiChu":"tax.87045211: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045221","loai":"QUYET_DINH","ghiChu":"tax.87045221: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045222","loai":"QUYET_DINH","ghiChu":"tax.87045222: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87045223","loai":"QUYET_DINH","ghiChu":"tax.87045223: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87045224","loai":"QUYET_DINH","ghiChu":"tax.87045224: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87045225","loai":"QUYET_DINH","ghiChu":"tax.87045225: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"870452~r17304","loai":"QUYET_DINH","ghiChu":"tieuDe.870452~r17304: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn\" ⇒ khoiLuongToanBo > 6 tấn, <= 20 tấn"},{"ma":"8704523","loai":"QUYET_DINH","ghiChu":"tieuDe.8704523: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87045231","loai":"QUYET_DINH","ghiChu":"tax.87045231: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045241","loai":"QUYET_DINH","ghiChu":"tax.87045241: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045242","loai":"QUYET_DINH","ghiChu":"tax.87045242: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87045243","loai":"QUYET_DINH","ghiChu":"tax.87045243: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87045244","loai":"QUYET_DINH","ghiChu":"tax.87045244: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87045245","loai":"QUYET_DINH","ghiChu":"tax.87045245: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"87045248","loai":"QUYET_DINH","ghiChu":"tax.87045248: \"Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn\" ⇒ khoiLuongToanBo <= 10 tấn"},{"ma":"870452~r17316","loai":"QUYET_DINH","ghiChu":"tieuDe.870452~r17316: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn\" ⇒ khoiLuongToanBo > 20 tấn, <= 24 tấn"},{"ma":"8704525","loai":"QUYET_DINH","ghiChu":"tieuDe.8704525: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87045251","loai":"QUYET_DINH","ghiChu":"tax.87045251: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045261","loai":"QUYET_DINH","ghiChu":"tax.87045261: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045262","loai":"QUYET_DINH","ghiChu":"tax.87045262: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87045263","loai":"QUYET_DINH","ghiChu":"tax.87045263: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87045264","loai":"QUYET_DINH","ghiChu":"tax.87045264: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87045265","loai":"QUYET_DINH","ghiChu":"tax.87045265: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"870452~r17327","loai":"QUYET_DINH","ghiChu":"tieuDe.870452~r17327: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn\" ⇒ khoiLuongToanBo > 24 tấn, <= 45 tấn"},{"ma":"8704527","loai":"QUYET_DINH","ghiChu":"tieuDe.8704527: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87045272","loai":"QUYET_DINH","ghiChu":"tax.87045272: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045281","loai":"QUYET_DINH","ghiChu":"tax.87045281: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045282","loai":"QUYET_DINH","ghiChu":"tax.87045282: \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang THU_GOM_PHE_THAI"},{"ma":"87045283","loai":"QUYET_DINH","ghiChu":"tax.87045283: \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang XI_TEC"},{"ma":"87045284","loai":"QUYET_DINH","ghiChu":"tax.87045284: \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang BOC_THEP"},{"ma":"87045285","loai":"QUYET_DINH","ghiChu":"tax.87045285: \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang CHO_BUN_THUNG_ROI"},{"ma":"87045286","loai":"QUYET_DINH","ghiChu":"tax.87045286: \"Ô tô tự đổ\" ⇒ kieuXeChoHang TU_DO"},{"ma":"8704529","loai":"QUYET_DINH","ghiChu":"tieuDe.8704529: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn\" ⇒ khoiLuongToanBo > 45 tấn"},{"ma":"870452~r17340","loai":"QUYET_DINH","ghiChu":"tieuDe.870452~r17340: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87045291","loai":"QUYET_DINH","ghiChu":"tax.87045291: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045293","loai":"QUYET_DINH","ghiChu":"tax.87045293: \"Ô tô tải đông lạnh\" ⇒ kieuXeChoHang DONG_LANH"},{"ma":"87045294","loai":"QUYET_DINH","ghiChu":"tax.87045294: \"Ô tô tự đổ\" ⇒ kieuXeChoHang TU_DO"}]}
+```
+
+=== GÓI PN6 870452 ===
+# 870452 — Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn
+
+870452 — Vehicles; with both spark-ignition internal combustion piston engine and electric motors for propulsion, of a g.v.w. exceeding 5,000kg
+  [870452~r17293] Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn  (tầng không mã, biểu thuế r17293, gạch 3)
+    [8704521] Dạng CKD (SEN)
+      87045211 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045219 Loại khác  [LK]  (gạch 5)
+    [8704522] Loại khác
+      87045221 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045222 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87045223 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87045224 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87045225 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87045229 Loại khác  [LK]  (gạch 5)
+  [870452~r17304] Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn  (tầng không mã, biểu thuế r17304, gạch 3)
+    [8704523] Dạng CKD (SEN)
+      87045231 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045239 Loại khác  [LK]  (gạch 5)
+    [8704524] Loại khác
+      87045241 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045242 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87045243 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87045244 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87045245 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87045248 Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn  [LK có điều kiện]  (gạch 5)
+      87045249 Loại khác  [LK]  (gạch 5)
+  [870452~r17316] Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn  (tầng không mã, biểu thuế r17316, gạch 3)
+    [8704525] Dạng CKD (SEN)
+      87045251 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045259 Loại khác  [LK]  (gạch 5)
+    [8704526] Loại khác
+      87045261 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045262 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87045263 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87045264 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87045265 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87045269 Loại khác  [LK]  (gạch 5)
+  [870452~r17327] Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn  (tầng không mã, biểu thuế r17327, gạch 3)
+    [8704527] Dạng CKD (SEN)
+      87045272 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045279 Loại khác  [LK]  (gạch 5)
+    [8704528] Loại khác
+      87045281 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045282 Ô tô thu gom phế thải có bộ phận nén phế thải  (gạch 5)
+      87045283 Ô tô xi téc; ô tô chở xi măng kiểu bồn  (gạch 5)
+      87045284 Ô tô bọc thép để chở hàng hóa có giá trị  (gạch 5)
+      87045285 Ô tô chở bùn có thùng rời nâng hạ được(SEN)  (gạch 5)
+      87045286 Ô tô tự đổ  (gạch 5)
+      87045289 Loại khác  [LK]  (gạch 5)
+  [8704529] Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+    [870452~r17340] Dạng CKD (SEN)  (tầng không mã, biểu thuế r17340, gạch 4)
+      87045291 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045292 Loại khác  [LK]  (gạch 5)
+    [870452~r17343] Loại khác  (tầng không mã, biểu thuế r17343, gạch 4)
+      87045293 Ô tô tải đông lạnh (1)  (gạch 5)
+      87045294 Ô tô tự đổ  (gạch 5)
+      87045299 Loại khác  [LK]  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870452~r17293 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn:" — dòng dưới: 87045211, 87045219, 87045221, 87045222, 87045223, 87045224, 87045225, 87045229
+    870452~r17304 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn:" — dòng dưới: 87045231, 87045239, 87045241, 87045242, 87045243, 87045244, 87045245, 87045248, 87045249
+    870452~r17316 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn:" — dòng dưới: 87045251, 87045259, 87045261, 87045262, 87045263, 87045264, 87045265, 87045269
+    870452~r17327 (gạch 3) "Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn:" — dòng dưới: 87045272, 87045279, 87045281, 87045282, 87045283, 87045284, 87045285, 87045286, 87045289
+    870452~r17340 (gạch 4) "Dạng CKD (SEN):" — dòng dưới: 87045291, 87045292
+    870452~r17343 (gạch 4) "Loại khác:" — dòng dưới: 87045293, 87045294, 87045299
+
+- 870452~r17293 TIEU_DE
+    tieuDe.870452~r17293 [68 ký tự]: 870452~r17293 Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế không quá 6 tấn"
+- 8704521 TIEU_DE
+    tieuDe.8704521 [22 ký tự]: 8704521 Dạng CKD (SEN)
+- 87045211 DONG8
+    tax.87045211 [41 ký tự]: 87045211 - - - - - Ô tô tải đông lạnh (1)
+- 87045219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045219 [28 ký tự]: 87045219 - - - - - Loại khác
+- 8704522 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704522 [17 ký tự]: 8704522 Loại khác
+- 87045221 DONG8
+    tax.87045221 [41 ký tự]: 87045221 - - - - - Ô tô tải đông lạnh (1)
+- 87045222 DONG8
+    tax.87045222 [64 ký tự]: 87045222 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87045223 DONG8
+    tax.87045223 [57 ký tự]: 87045223 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87045224 DONG8
+    tax.87045224 [59 ký tự]: 87045224 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87045225 DONG8
+    tax.87045225 [62 ký tự]: 87045225 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87045229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045229 [28 ký tự]: 87045229 - - - - - Loại khác
+- 870452~r17304 TIEU_DE
+    tieuDe.870452~r17304 [86 ký tự]: 870452~r17304 Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 6 tấn nhưng không quá 20 tấn"
+- 8704523 TIEU_DE
+    tieuDe.8704523 [22 ký tự]: 8704523 Dạng CKD (SEN)
+- 87045231 DONG8
+    tax.87045231 [41 ký tự]: 87045231 - - - - - Ô tô tải đông lạnh (1)
+- 87045239 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045239 [28 ký tự]: 87045239 - - - - - Loại khác
+- 8704524 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704524 [17 ký tự]: 8704524 Loại khác
+- 87045241 DONG8
+    tax.87045241 [41 ký tự]: 87045241 - - - - - Ô tô tải đông lạnh (1)
+- 87045242 DONG8
+    tax.87045242 [64 ký tự]: 87045242 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87045243 DONG8
+    tax.87045243 [57 ký tự]: 87045243 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87045244 DONG8
+    tax.87045244 [59 ký tự]: 87045244 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87045245 DONG8
+    tax.87045245 [62 ký tự]: 87045245 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87045248 DONG8
+    tax.87045248 [102 ký tự]: 87045248 - - - - - Loại khác, khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "khối lượng toàn bộ theo thiết kế trên 6 tấn nhưng không quá 10 tấn"
+- 87045249 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045249 [28 ký tự]: 87045249 - - - - - Loại khác
+- 870452~r17316 TIEU_DE
+    tieuDe.870452~r17316 [87 ký tự]: 870452~r17316 Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 24 tấn"
+- 8704525 TIEU_DE
+    tieuDe.8704525 [22 ký tự]: 8704525 Dạng CKD (SEN)
+- 87045251 DONG8
+    tax.87045251 [41 ký tự]: 87045251 - - - - - Ô tô tải đông lạnh (1)
+- 87045259 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045259 [28 ký tự]: 87045259 - - - - - Loại khác
+- 8704526 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704526 [17 ký tự]: 8704526 Loại khác
+- 87045261 DONG8
+    tax.87045261 [41 ký tự]: 87045261 - - - - - Ô tô tải đông lạnh (1)
+- 87045262 DONG8
+    tax.87045262 [64 ký tự]: 87045262 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87045263 DONG8
+    tax.87045263 [57 ký tự]: 87045263 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87045264 DONG8
+    tax.87045264 [59 ký tự]: 87045264 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87045265 DONG8
+    tax.87045265 [62 ký tự]: 87045265 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87045269 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045269 [28 ký tự]: 87045269 - - - - - Loại khác
+- 870452~r17327 TIEU_DE
+    tieuDe.870452~r17327 [87 ký tự]: 870452~r17327 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn nhưng không quá 45 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn nhưng không quá 45 tấn"
+- 8704527 TIEU_DE
+    tieuDe.8704527 [22 ký tự]: 8704527 Dạng CKD (SEN)
+- 87045272 DONG8
+    tax.87045272 [41 ký tự]: 87045272 - - - - - Ô tô tải đông lạnh (1)
+- 87045279 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045279 [28 ký tự]: 87045279 - - - - - Loại khác
+- 8704528 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704528 [17 ký tự]: 8704528 Loại khác
+- 87045281 DONG8
+    tax.87045281 [41 ký tự]: 87045281 - - - - - Ô tô tải đông lạnh (1)
+- 87045282 DONG8
+    tax.87045282 [64 ký tự]: 87045282 - - - - - Ô tô thu gom phế thải có bộ phận nén phế thải
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có bộ phận nén phế thải"
+- 87045283 DONG8
+    tax.87045283 [57 ký tự]: 87045283 - - - - - Ô tô xi téc; ô tô chở xi măng kiểu bồn
+- 87045284 DONG8
+    tax.87045284 [59 ký tự]: 87045284 - - - - - Ô tô bọc thép để chở hàng hóa có giá trị
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để chở hàng hóa có giá trị"
+- 87045285 DONG8
+    tax.87045285 [62 ký tự]: 87045285 - - - - - Ô tô chở bùn có thùng rời nâng hạ được(SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thùng rời nâng hạ được"
+- 87045286 DONG8
+    tax.87045286 [29 ký tự]: 87045286 - - - - - Ô tô tự đổ
+- 87045289 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045289 [28 ký tự]: 87045289 - - - - - Loại khác
+- 8704529 TIEU_DE
+    tieuDe.8704529 [58 ký tự]: 8704529 Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 45 tấn"
+- 870452~r17340 TIEU_DE
+    tieuDe.870452~r17340 [28 ký tự]: 870452~r17340 Dạng CKD (SEN)
+- 87045291 DONG8
+    tax.87045291 [41 ký tự]: 87045291 - - - - - Ô tô tải đông lạnh (1)
+- 87045292 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045292 [28 ký tự]: 87045292 - - - - - Loại khác
+- 870452~r17343 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870452~r17343 [23 ký tự]: 870452~r17343 Loại khác
+- 87045293 DONG8
+    tax.87045293 [41 ký tự]: 87045293 - - - - - Ô tô tải đông lạnh (1)
+- 87045294 DONG8
+    tax.87045294 [29 ký tự]: 87045294 - - - - - Ô tô tự đổ
+- 87045299 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87045299 [28 ký tự]: 87045299 - - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8704, wco.870452; chú giải: nhom8704.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870460 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:8704609:khoiLuongToanBo=4999.995
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+    ✗ cong2-chong-lan:87046011+87046012:daLapRap=false,kieuXeChoHang=PICK_UP,xeBaBanh=true
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87046021+87046022:daLapRap=true,khoiLuongToanBo=4999.995,kieuXeChoHang=PICK_UP,xeBaBanh=true
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870460","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870460","dong8":{"87046011":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["PICK_UP"]}]},"87046012":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]},"87046021":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["PICK_UP"]}]},"87046022":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]},"87046091":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":5,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":10,"donVi":"tấn"}]},"87046092":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":10,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":20,"donVi":"tấn"}]},"87046093":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":20,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":45,"donVi":"tấn"}]},"87046094":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":45,"donVi":"tấn"}]}},"dieuKienNut":{"8704601":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8704602":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":5,"donVi":"tấn"}]}},"ghiChuSoan":[{"ma":"8704601","loai":"QUYET_DINH","ghiChu":"tieuDe.8704601: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87046011","loai":"QUYET_DINH","ghiChu":"tax.87046011: \"Ô tô pick-up\" ⇒ kieuXeChoHang PICK_UP"},{"ma":"87046012","loai":"QUYET_DINH","ghiChu":"tax.87046012: \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"},{"ma":"8704602","loai":"QUYET_DINH","ghiChu":"tieuDe.8704602: \"Loại khác, khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn\" ⇒ khoiLuongToanBo <= 5 tấn"},{"ma":"87046021","loai":"QUYET_DINH","ghiChu":"tax.87046021: \"Ô tô pick-up\" ⇒ kieuXeChoHang PICK_UP"},{"ma":"87046022","loai":"QUYET_DINH","ghiChu":"tax.87046022: \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"},{"ma":"87046091","loai":"QUYET_DINH","ghiChu":"tax.87046091: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn\" ⇒ khoiLuongToanBo > 5 tấn, <= 10 tấn"},{"ma":"87046092","loai":"QUYET_DINH","ghiChu":"tax.87046092: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn\" ⇒ khoiLuongToanBo > 10 tấn, <= 20 tấn"},{"ma":"87046093","loai":"QUYET_DINH","ghiChu":"tax.87046093: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 45 tấn\" ⇒ khoiLuongToanBo > 20 tấn, <= 45 tấn"},{"ma":"87046094","loai":"QUYET_DINH","ghiChu":"tax.87046094: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn\" ⇒ khoiLuongToanBo > 45 tấn"}]}
+```
+
+=== GÓI PN6 870460 ===
+# 870460 — Loại khác, chỉ sử dụng động cơ điện để tạo động lực
+
+870460 — Vehicles; with only electric motor for propulsion
+  [8704601] Dạng CKD (SEN)
+    87046011 Ô tô pick-up (1)
+    87046012 Xe ba bánh (SEN)
+    87046019 Loại khác  [LK]
+  [8704602] Loại khác, khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn
+    87046021 Ô tô pick-up (1)
+    87046022 Xe ba bánh (SEN)
+    87046029 Loại khác  [LK]
+  [8704609] Loại khác
+    87046091 Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn
+    87046092 Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn
+    87046093 Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 45 tấn
+    87046094 Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+
+- 8704601 TIEU_DE
+    tieuDe.8704601 [22 ký tự]: 8704601 Dạng CKD (SEN)
+- 87046011 DONG8
+    tax.87046011 [31 ký tự]: 87046011 - - - Ô tô pick-up (1)
+- 87046012 DONG8
+    tax.87046012 [31 ký tự]: 87046012 - - - Xe ba bánh (SEN)
+- 87046019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87046019 [24 ký tự]: 87046019 - - - Loại khác
+- 8704602 TIEU_DE
+    tieuDe.8704602 [73 ký tự]: 8704602 Loại khác, khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "khối lượng toàn bộ theo thiết kế không quá 5 tấn"
+- 87046021 DONG8
+    tax.87046021 [31 ký tự]: 87046021 - - - Ô tô pick-up (1)
+- 87046022 DONG8
+    tax.87046022 [31 ký tự]: 87046022 - - - Xe ba bánh (SEN)
+- 87046029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87046029 [24 ký tự]: 87046029 - - - Loại khác
+- 8704609 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8704609 [17 ký tự]: 8704609 Loại khác
+- 87046091 DONG8
+    tax.87046091 [87 ký tự]: 87046091 - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 5 tấn nhưng không quá 10 tấn"
+- 87046092 DONG8
+    tax.87046092 [88 ký tự]: 87046092 - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 10 tấn nhưng không quá 20 tấn"
+- 87046093 DONG8
+    tax.87046093 [88 ký tự]: 87046093 - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 45 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 20 tấn nhưng không quá 45 tấn"
+- 87046094 DONG8
+    tax.87046094 [65 ký tự]: 87046094 - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 45 tấn"
+
+Nguồn cấp phân nhóm: sen.8704, wco.870460; chú giải: nhom8704.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870600 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:8706:dungCho=limousine
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870600","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870600","dong8":{"87060011":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"máy kéo nông nghiệp"}]},"87060021":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"limousine"}]},"87060022":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":24,"donVi":"tấn"}]},"87060023":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87060031":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["xe đua cỡ nhỏ","xe chơi gôn"]}]},"87060032":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"ô tô cứu thương"}]},"87060033":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["station wagons","ô tô thể thao"]}]},"87060034":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"đi trên tuyết"}]},"87060041":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":24,"donVi":"tấn"}]},"87060042":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87060050":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.05"}]}},"dieuKienNut":{"8706001":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"8706002":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.02"}]},"8706003":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"8706004":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.04"}]}},"ghiChuSoan":[{"ma":"8706001","loai":"QUYET_DINH","ghiChu":"tieuDe.8706001: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87060011","loai":"QUYET_DINH","ghiChu":"tax.87060011: \"Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01\" ⇒ dungCho \"máy kéo nông nghiệp\""},{"ma":"8706002","loai":"QUYET_DINH","ghiChu":"tieuDe.8706002: \"Dùng cho xe thuộc nhóm 87.02\" ⇒ dungCho \"87.02\""},{"ma":"87060021","loai":"QUYET_DINH","ghiChu":"tax.87060021: \"Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ dungCho \"limousine\""},{"ma":"87060022","loai":"QUYET_DINH","ghiChu":"tax.87060022: \"Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn\" ⇒ khoiLuongToanBo <= 24 tấn"},{"ma":"87060023","loai":"QUYET_DINH","ghiChu":"tax.87060023: \"Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8706003","loai":"QUYET_DINH","ghiChu":"tieuDe.8706003: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""},{"ma":"87060031","loai":"QUYET_DINH","ghiChu":"tax.87060031: \"Dùng cho xe đua cỡ nhỏ và xe chơi gôn...\" ⇒ dungCho [\"xe đua cỡ nhỏ\",\"xe chơi gôn\"]"},{"ma":"87060031","loai":"BO_VE","ve":"và các loại xe tương tự","lyDo":"Vế mở tương tự được quy ước bảo vệ"},{"ma":"87060032","loai":"QUYET_DINH","ghiChu":"tax.87060032: \"Dùng cho ô tô cứu thương\" ⇒ dungCho \"ô tô cứu thương\""},{"ma":"87060033","loai":"QUYET_DINH","ghiChu":"tax.87060033: \"Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung...)\" ⇒ dungCho [\"station wagons\",\"ô tô thể thao\"]"},{"ma":"87060034","loai":"QUYET_DINH","ghiChu":"tax.87060034: \"Dùng cho xe được thiết kế đặc biệt để đi trên tuyết\" ⇒ dungCho \"đi trên tuyết\""},{"ma":"87060034","loai":"BO_VE","ve":"được thiết kế đặc biệt","lyDo":"Đã được lượng hóa qua dungCho đi trên tuyết"},{"ma":"8706004","loai":"QUYET_DINH","ghiChu":"tieuDe.8706004: \"Dùng cho xe thuộc nhóm 87.04\" ⇒ dungCho \"87.04\""},{"ma":"87060041","loai":"QUYET_DINH","ghiChu":"tax.87060041: \"Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn\" ⇒ khoiLuongToanBo <= 24 tấn"},{"ma":"87060042","loai":"QUYET_DINH","ghiChu":"tax.87060042: \"Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87060050","loai":"QUYET_DINH","ghiChu":"tax.87060050: \"Dùng cho xe thuộc nhóm 87.05\" ⇒ dungCho \"87.05\""}]}
+```
+
+=== GÓI PN6 870600 ===
+# 870600 — 8706 - Khung gầm đã lắp động cơ, dùng cho xe có động cơ thuộc các nhóm từ 87.01 đến 87.05.
+
+NHÓM 8706 — 8706 - Khung gầm đã lắp động cơ, dùng cho xe có động cơ thuộc các nhóm từ 87.01 đến 87.05.
+  [8706001] Dùng cho xe thuộc nhóm 87.01
+    87060011 Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01
+    87060019 Loại khác  [LK]
+  [8706002] Dùng cho xe thuộc nhóm 87.02
+    87060021 Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+    87060022 Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn  [LK có điều kiện]
+    87060023 Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  [LK có điều kiện]
+  [8706003] Dùng cho xe thuộc nhóm 87.03
+    87060031 Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự
+    87060032 Dùng cho ô tô cứu thương
+    87060033 Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+    87060034 Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)
+    87060039 Loại khác  [LK]
+  [8706004] Dùng cho xe thuộc nhóm 87.04
+    87060041 Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn
+    87060042 Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+  87060050 Dùng cho xe thuộc nhóm 87.05
+
+- 8706001 TIEU_DE
+    tieuDe.8706001 [36 ký tự]: 8706001 Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87060011 DONG8
+    tax.87060011 [58 ký tự]: 87060011 - - Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01"
+- 87060019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87060019 [22 ký tự]: 87060019 - - Loại khác
+- 8706002 TIEU_DE
+    tieuDe.8706002 [36 ký tự]: 8706002 Dùng cho xe thuộc nhóm 87.02
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.02"
+- 87060021 DONG8
+    tax.87060021 [140 ký tự]: 87060021 - - Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van) 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)"
+- 87060022 DONG8
+    tax.87060022 [94 ký tự]: 87060022 - - Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe" · [GIỚI HẠN] "có khối lượng toàn bộ theo thiết kế không quá 24 tấn"
+- 87060023 DONG8
+    tax.87060023 [89 ký tự]: 87060023 - - Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe" · [GIỚI HẠN] "có khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 8706003 TIEU_DE
+    tieuDe.8706003 [36 ký tự]: 8706003 Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 87060031 DONG8
+    tax.87060031 [98 ký tự]: 87060031 - - Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies)" · [MỞ] "và các loại xe tương tự"
+- 87060032 DONG8
+    tax.87060032 [37 ký tự]: 87060032 - - Dùng cho ô tô cứu thương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho ô tô cứu thương"
+- 87060033 DONG8
+    tax.87060033 [141 ký tự]: 87060033 - - Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho ô tô (bao gồm cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)"
+- 87060034 DONG8
+    tax.87060034 [70 ký tự]: 87060034 - - Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)
+    sen.87060034 [193 ký tự]: KHUNG GẦM DÙNG CHO XE ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ ĐI TRÊN TUYẾT Ví dụ về khung gầm của xe được thiết kế đặc biệt để đi trên tuyết: Source: https://usiskis.com/tech-help/snowmobile-chassis-setup/
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe" · [GIỚI HẠN] "được thiết kế đặc biệt" · [GIỚI HẠN] "để đi trên tuyết"
+- 87060039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87060039 [22 ký tự]: 87060039 - - Loại khác
+- 8706004 TIEU_DE
+    tieuDe.8706004 [36 ký tự]: 8706004 Dùng cho xe thuộc nhóm 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.04"
+- 87060041 DONG8
+    tax.87060041 [83 ký tự]: 87060041 - - Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe" · [GIỚI HẠN] "có khối lượng toàn bộ theo thiết kế không quá 24 tấn"
+- 87060042 DONG8
+    tax.87060042 [78 ký tự]: 87060042 - - Dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe" · [GIỚI HẠN] "có khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87060050 DONG8
+    tax.87060050 [39 ký tự]: 87060050 - Dùng cho xe thuộc nhóm 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.05"
+
+Nguồn cấp phân nhóm: wco.870600; chú giải: nhom8706.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870840 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:87084011+87084092:daLapRap=false,dungCho=87.03,laBoPhan=true:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87084013+87084099:daLapRap=false,dungCho=87.04,laBoPhan=true:khong-tat-dinh
+    ✗ cong2-chong-lan:87084014+87084091:daLapRap=false,dungCho=87.01,laBoPhan=true:khong-tat-dinh
+    ✗ cong2-chong-lan:87084019+87084099:daLapRap=false,dungCho=nhóm 00.00,laBoPhan=true:khong-tat-dinh
+    ✗ cong2-chong-lan:87084025+87084091:daLapRap=true,dungCho=87.01,laBoPhan=true:khong-tat-dinh
+    ✗ cong2-chong-lan:87084026+87084092:daLapRap=true,dungCho=87.03,laBoPhan=true:khong-tat-dinh
+    ✗ cong2-chong-lan-truc:8708409:8708401,8708402
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870840","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870840","dong8":{"87084011":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"87084013":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["87.04","87.05"]}]},"87084014":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87084025":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87084026":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"87084027":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["87.04","87.05"]}]},"87084091":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87084092":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]}},"dieuKienNut":{"8708401":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8708402":{"dieuKienSo":[{"fact":"daLapRap","op":"CO"}]},"8708409":{"dieuKienSo":[{"fact":"laBoPhan","op":"CO"}]}},"ghiChuSoan":[{"ma":"8708401","loai":"QUYET_DINH","ghiChu":"tieuDe.8708401: \"Hộp số, chưa lắp hoàn chỉnh\" ⇒ daLapRap KHONG"},{"ma":"87084011","loai":"QUYET_DINH","ghiChu":"tax.87084011: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""},{"ma":"87084013","loai":"QUYET_DINH","ghiChu":"tax.87084013: \"Dùng cho xe thuộc nhóm 87.04 hoặc 87.05\" ⇒ dungCho [\"87.04\",\"87.05\"]"},{"ma":"87084014","loai":"QUYET_DINH","ghiChu":"tax.87084014: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"8708402","loai":"QUYET_DINH","ghiChu":"tieuDe.8708402: \"Hộp số, đã lắp ráp hoàn chỉnh\" ⇒ daLapRap CO"},{"ma":"87084025","loai":"QUYET_DINH","ghiChu":"tax.87084025: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87084026","loai":"QUYET_DINH","ghiChu":"tax.87084026: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""},{"ma":"87084027","loai":"QUYET_DINH","ghiChu":"tax.87084027: \"Dùng cho xe thuộc nhóm 87.04 hoặc 87.05\" ⇒ dungCho [\"87.04\",\"87.05\"]"},{"ma":"8708409","loai":"QUYET_DINH","ghiChu":"tieuDe.8708409: \"Bộ phận\" ⇒ laBoPhan CO"},{"ma":"87084091","loai":"QUYET_DINH","ghiChu":"tax.87084091: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87084092","loai":"QUYET_DINH","ghiChu":"tax.87084092: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""}]}
+```
+
+=== GÓI PN6 870840 ===
+# 870840 — Hộp số và bộ phận của chúng
+
+870840 — Vehicle parts; gear boxes and parts thereof
+  [8708401] Hộp số, chưa lắp hoàn chỉnh
+    87084011 Dùng cho xe thuộc nhóm 87.03
+    87084013 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+    87084014 Dùng cho xe thuộc nhóm 87.01
+    87084019 Loại khác  [LK]
+  [8708402] Hộp số, đã lắp ráp hoàn chỉnh
+    87084025 Dùng cho xe thuộc nhóm 87.01
+    87084026 Dùng cho xe thuộc nhóm 87.03
+    87084027 Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+    87084029 Loại khác  [LK]
+  [8708409] Bộ phận
+    87084091 Dùng cho xe thuộc nhóm 87.01
+    87084092 Dùng cho xe thuộc nhóm 87.03
+    87084099 Loại khác  [LK]
+
+- 8708401 TIEU_DE
+    tieuDe.8708401 [35 ký tự]: 8708401 Hộp số, chưa lắp hoàn chỉnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa lắp hoàn chỉnh"
+- 87084011 DONG8
+    tax.87084011 [43 ký tự]: 87084011 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 87084013 DONG8
+    tax.87084013 [54 ký tự]: 87084013 - - - Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.04 hoặc 87.05"
+- 87084014 DONG8
+    tax.87084014 [43 ký tự]: 87084014 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87084019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87084019 [24 ký tự]: 87084019 - - - Loại khác
+- 8708402 TIEU_DE
+    tieuDe.8708402 [37 ký tự]: 8708402 Hộp số, đã lắp ráp hoàn chỉnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "đã lắp ráp hoàn chỉnh"
+- 87084025 DONG8
+    tax.87084025 [43 ký tự]: 87084025 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87084026 DONG8
+    tax.87084026 [43 ký tự]: 87084026 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 87084027 DONG8
+    tax.87084027 [54 ký tự]: 87084027 - - - Dùng cho xe thuộc nhóm 87.04 hoặc 87.05
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.04 hoặc 87.05"
+- 87084029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87084029 [24 ký tự]: 87084029 - - - Loại khác
+- 8708409 TIEU_DE
+    tieuDe.8708409 [15 ký tự]: 8708409 Bộ phận
+- 87084091 DONG8
+    tax.87084091 [43 ký tự]: 87084091 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87084092 DONG8
+    tax.87084092 [43 ký tự]: 87084092 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 87084099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87084099 [24 ký tự]: 87084099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.870840; chú giải: nhom8708.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870870 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:8708702:dieu-kien-so-co-khong-co-trong-trich:daLapRap
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong3-muc:8708703:dieu-kien-so-khong-khong-co-trong-trich:daLapRap
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Như trên.
+    ✗ cong5-ve-gioi-han-bi-bo:8708702:được lắp lốp
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong5-ve-gioi-han-bi-bo:8708703:chưa được lắp lốp
+    ✗ cong2-chong-lan:87087015+87087021:coBanh=true,daLapRap=true,dungCho=87.01,tenLoai=Ốp đầu trục bánh xe:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87087015+87087031:coBanh=true,daLapRap=false,dungCho=87.01,tenLoai=Ốp đầu trục bánh xe:khong-tat-dinh
+    ✗ cong2-chong-lan:87087015+87087033:coBanh=true,daLapRap=false,dungCho=87.01,khoiLuongToanBo=45000.045,kieuXeChoHang=TU_DO,tenLoai=Ốp đầu trục bánh xe:khong-tat-dinh
+    ✗ cong2-chong-lan:87087016+87087022:coBanh=true,daLapRap=true,dungCho=87.03,tenLoai=Ốp đầu trục bánh xe:khong-tat-dinh
+    ✗ cong2-chong-lan:87087016+87087032:coBanh=true,daLapRap=false,dungCho=87.03,tenLoai=Ốp đầu trục bánh xe:khong-tat-dinh
+    ✗ cong2-chong-lan:87087016+87087033:coBanh=true,daLapRap=false,dungCho=87.03,khoiLuongToanBo=45000.045,kieuXeChoHang=TU_DO,tenLoai=Ốp đầu trục bánh xe:khong-tat-dinh
+    ✗ cong2-chong-lan-truc:8708701:8708702,8708703
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870870","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870870","dong8":{"87087015":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87087016":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"87087017":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8704.10"}]},"87087021":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87087022":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"87087023":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["87.02","87.04"]}]},"87087031":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87087032":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"87087033":{"dieuKienSo":[{"fact":"kieuXeChoHang","op":"TRONG","value":["TU_DO"]},{"fact":"khoiLuongToanBo","op":">","value":45,"donVi":"tấn"}]},"87087034":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["87.02","87.04"]}],"phanConLai":["87087033"]},"87087095":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87087096":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["87.02","87.04"]}]},"87087097":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]}},"dieuKienNut":{"8708701":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ốp đầu trục bánh xe"}]},"870870~r17489":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["87.02","87.04"]}]},"8708702":{"dieuKienSo":[{"fact":"coBanh","op":"CO"},{"fact":"daLapRap","op":"CO"}]},"8708703":{"dieuKienSo":[{"fact":"coBanh","op":"CO"},{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"8708701","loai":"QUYET_DINH","ghiChu":"tieuDe.8708701: \"Ốp đầu trục bánh xe\" ⇒ tenLoai \"Ốp đầu trục bánh xe\""},{"ma":"87087015","loai":"QUYET_DINH","ghiChu":"tax.87087015: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87087016","loai":"QUYET_DINH","ghiChu":"tax.87087016: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""},{"ma":"870870~r17489","loai":"QUYET_DINH","ghiChu":"tieuDe.870870~r17489: \"Dùng cho xe thuộc nhóm 87.02 hoặc 87.04\" ⇒ dungCho [\"87.02\",\"87.04\"]"},{"ma":"87087017","loai":"QUYET_DINH","ghiChu":"tax.87087017: \"Dùng cho xe thuộc phân nhóm 8704.10\" ⇒ dungCho \"8704.10\""},{"ma":"8708702","loai":"QUYET_DINH","ghiChu":"tieuDe.8708702: \"Bánh xe đã được lắp lốp\" ⇒ coBanh CO, daLapRap CO"},{"ma":"87087021","loai":"QUYET_DINH","ghiChu":"tax.87087021: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87087022","loai":"QUYET_DINH","ghiChu":"tax.87087022: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""},{"ma":"87087023","loai":"QUYET_DINH","ghiChu":"tax.87087023: \"Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)\" ⇒ dungCho [\"87.02\",\"87.04\"]"},{"ma":"87087023","loai":"BO_VE","ve":"(trừ phân nhóm 8704.10)","lyDo":"Vế loại trừ phân nhóm 8704.10"},{"ma":"8708703","loai":"QUYET_DINH","ghiChu":"tieuDe.8708703: \"Bánh xe chưa được lắp lốp\" ⇒ coBanh CO, daLapRap KHONG"},{"ma":"87087031","loai":"QUYET_DINH","ghiChu":"tax.87087031: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87087032","loai":"QUYET_DINH","ghiChu":"tax.87087032: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""},{"ma":"87087033","loai":"QUYET_DINH","ghiChu":"tax.87087033: \"Dùng cho xe tự đổ... trên 45 tấn\" ⇒ kieuXeChoHang TU_DO, khoiLuongToanBo > 45 tấn"},{"ma":"87087033","loai":"BO_VE","ve":"được thiết kế","lyDo":"Tính chất thiết kế của xe tự đổ"},{"ma":"87087033","loai":"BO_VE","ve":"để sử dụng trên các loại đường không phải đường quốc lộ","lyDo":"Đặc điểm của xe tự đổ thuộc phân nhóm 8704.10"},{"ma":"87087034","loai":"QUYET_DINH","ghiChu":"tax.87087034: \"Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04\" ⇒ dungCho [\"87.02\",\"87.04\"] + phanConLai [\"87087033\"]"},{"ma":"87087095","loai":"QUYET_DINH","ghiChu":"tax.87087095: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87087096","loai":"QUYET_DINH","ghiChu":"tax.87087096: \"Dùng cho thuộc nhóm 87.02 hoặc 87.04\" ⇒ dungCho [\"87.02\",\"87.04\"]"},{"ma":"87087097","loai":"QUYET_DINH","ghiChu":"tax.87087097: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""}]}
+```
+
+=== GÓI PN6 870870 ===
+# 870870 — Cụm bánh xe và bộ phận và phụ kiện của chúng
+
+870870 — Vehicle parts; road wheels and parts and accessories thereof
+  [8708701] Ốp đầu trục bánh xe
+    87087015 Dùng cho xe thuộc nhóm 87.01
+    87087016 Dùng cho xe thuộc nhóm 87.03
+    [870870~r17489] Dùng cho xe thuộc nhóm 87.02 hoặc 87.04  (tầng không mã, biểu thuế r17489, gạch 3)
+      87087017 Dùng cho xe thuộc phân nhóm 8704.10  (gạch 4)
+      87087018 Loại khác  [LK]  (gạch 4)
+    87087019 Loại khác  [LK]
+  [8708702] Bánh xe đã được lắp lốp
+    87087021 Dùng cho xe thuộc nhóm 87.01
+    87087022 Dùng cho xe thuộc nhóm 87.03
+    87087023 Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)
+    87087029 Loại khác  [LK]
+  [8708703] Bánh xe chưa được lắp lốp
+    87087031 Dùng cho xe thuộc nhóm 87.01
+    87087032 Dùng cho xe thuộc nhóm 87.03
+    87087033 Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+    87087034 Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+    87087039 Loại khác  [LK]
+  [8708709] Loại khác
+    87087095 Dùng cho xe thuộc nhóm 87.01
+    87087096 Dùng cho thuộc nhóm 87.02 hoặc 87.04
+    87087097 Dùng cho xe thuộc nhóm 87.03
+    87087099 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870870~r17489 (gạch 3) "Dùng cho xe thuộc nhóm 87.02 hoặc 87.04:" — dòng dưới: 87087017, 87087018
+
+- 8708701 TIEU_DE
+    tieuDe.8708701 [27 ký tự]: 8708701 Ốp đầu trục bánh xe
+- 87087015 DONG8
+    tax.87087015 [43 ký tự]: 87087015 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87087016 DONG8
+    tax.87087016 [43 ký tự]: 87087016 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 870870~r17489 TIEU_DE
+    tieuDe.870870~r17489 [53 ký tự]: 870870~r17489 Dùng cho xe thuộc nhóm 87.02 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.02 hoặc 87.04"
+- 87087017 DONG8
+    tax.87087017 [52 ký tự]: 87087017 - - - - Dùng cho xe thuộc phân nhóm 8704.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc phân nhóm 8704.10"
+- 87087018 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87087018 [26 ký tự]: 87087018 - - - - Loại khác
+- 87087019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87087019 [24 ký tự]: 87087019 - - - Loại khác
+- 8708702 TIEU_DE
+    tieuDe.8708702 [31 ký tự]: 8708702 Bánh xe đã được lắp lốp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được lắp lốp"
+- 87087021 DONG8
+    tax.87087021 [43 ký tự]: 87087021 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87087022 DONG8
+    tax.87087022 [43 ký tự]: 87087022 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 87087023 DONG8
+    tax.87087023 [78 ký tự]: 87087023 - - - Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ phân nhóm 8704.10)" · [GIỚI HẠN] "(trừ phân nhóm 8704.10)"
+- 87087029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87087029 [24 ký tự]: 87087029 - - - Loại khác
+- 8708703 TIEU_DE
+    tieuDe.8708703 [33 ký tự]: 8708703 Bánh xe chưa được lắp lốp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chưa được lắp lốp"
+- 87087031 DONG8
+    tax.87087031 [43 ký tự]: 87087031 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87087032 DONG8
+    tax.87087032 [43 ký tự]: 87087032 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 87087033 DONG8
+    tax.87087033 [156 ký tự]: 87087033 - - - Dùng cho xe tự đổ được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ có khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe tự đổ" · [GIỚI HẠN] "được thiết kế" · [GIỚI HẠN] "để sử dụng trên các loại đường không phải đường quốc lộ" · [GIỚI HẠN] "có khối lượng toàn bộ theo thiết kế trên 45 tấn"
+- 87087034 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.87087034 [73 ký tự]: 87087034 - - - Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04"
+- 87087039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87087039 [24 ký tự]: 87087039 - - - Loại khác
+- 8708709 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8708709 [17 ký tự]: 8708709 Loại khác
+- 87087095 DONG8
+    tax.87087095 [43 ký tự]: 87087095 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87087096 DONG8
+    tax.87087096 [51 ký tự]: 87087096 - - - Dùng cho thuộc nhóm 87.02 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho thuộc nhóm 87.02 hoặc 87.04"
+- 87087097 DONG8
+    tax.87087097 [43 ký tự]: 87087097 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 87087099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87087099 [24 ký tự]: 87087099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.870870; chú giải: nhom8708.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870880 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:87088015+87088091:dungCho=87.01,laBoPhan=true,tenLoai=Hệ thống giảm chấn:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87088016+87088092:dungCho=87.03,laBoPhan=true,tenLoai=Hệ thống giảm chấn:khong-tat-dinh
+    ✗ cong2-chong-lan:87088017+87088099:dungCho=8704.10,laBoPhan=true,tenLoai=Hệ thống giảm chấn:khong-tat-dinh
+    ✗ cong2-chong-lan:87088019+87088099:dungCho=nhóm 00.00,laBoPhan=true,tenLoai=Hệ thống giảm chấn:khong-tat-dinh
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870880","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870880","dong8":{"87088015":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87088016":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"87088017":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["8704.10","87.05"]}]},"87088091":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87088092":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]}},"dieuKienNut":{"8708801":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Hệ thống giảm chấn"}]},"8708809":{"dieuKienSo":[{"fact":"laBoPhan","op":"CO"}]}},"ghiChuSoan":[{"ma":"8708801","loai":"QUYET_DINH","ghiChu":"tieuDe.8708801: \"Hệ thống giảm chấn\" ⇒ tenLoai \"Hệ thống giảm chấn\""},{"ma":"87088015","loai":"QUYET_DINH","ghiChu":"tax.87088015: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87088016","loai":"QUYET_DINH","ghiChu":"tax.87088016: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""},{"ma":"87088017","loai":"QUYET_DINH","ghiChu":"tax.87088017: \"Dùng cho xe thuộc phân nhóm 8704.10 hoặc nhóm 87.05\" ⇒ dungCho [\"8704.10\",\"87.05\"]"},{"ma":"8708809","loai":"QUYET_DINH","ghiChu":"tieuDe.8708809: \"Bộ phận\" ⇒ laBoPhan CO"},{"ma":"87088091","loai":"QUYET_DINH","ghiChu":"tax.87088091: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87088092","loai":"QUYET_DINH","ghiChu":"tax.87088092: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""}]}
+```
+
+=== GÓI PN6 870880 ===
+# 870880 — Hệ thống giảm chấn và bộ phận của nó (kể cả giảm sóc)
+
+870880 — Vehicle parts; suspension systems and parts thereof (including shock-absorbers)
+  [8708801] Hệ thống giảm chấn
+    87088015 Dùng cho xe thuộc nhóm 87.01
+    87088016 Dùng cho xe thuộc nhóm 87.03
+    87088017 Dùng cho xe thuộc phân nhóm 8704.10 hoặc nhóm 87.05
+    87088019 Loại khác  [LK]
+  [8708809] Bộ phận
+    87088091 Dùng cho xe thuộc nhóm 87.01
+    87088092 Dùng cho xe thuộc nhóm 87.03
+    87088099 Loại khác  [LK]
+
+- 8708801 TIEU_DE
+    tieuDe.8708801 [26 ký tự]: 8708801 Hệ thống giảm chấn
+- 87088015 DONG8
+    tax.87088015 [43 ký tự]: 87088015 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87088016 DONG8
+    tax.87088016 [43 ký tự]: 87088016 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 87088017 DONG8
+    tax.87088017 [67 ký tự]: 87088017 - - - Dùng cho xe thuộc phân nhóm 8704.10 hoặc nhóm 87.05 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc phân nhóm 8704.10 hoặc nhóm 87.05"
+- 87088019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87088019 [24 ký tự]: 87088019 - - - Loại khác
+- 8708809 TIEU_DE
+    tieuDe.8708809 [15 ký tự]: 8708809 Bộ phận
+- 87088091 DONG8
+    tax.87088091 [43 ký tự]: 87088091 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87088092 DONG8
+    tax.87088092 [43 ký tự]: 87088092 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 87088099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87088099 [24 ký tự]: 87088099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.870880; chú giải: nhom8708.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870891 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:87089195
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong1-khong-phu-kin:870891:laBoPhan=false,tenLoai=Nút xả
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+    ✗ cong2-chong-lan:87089115+87089191:dungCho=87.01,laBoPhan=true,tenLoai=Két nước làm mát:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87089116+87089195:dungCho=87.03,laBoPhan=true,tenLoai=Két nước làm mát:khong-tat-dinh
+    ✗ cong2-chong-lan:87089117+87089199:dungCho=8704.10,laBoPhan=true,tenLoai=Két nước làm mát:khong-tat-dinh
+    ✗ cong2-chong-lan:87089118+87089199:dungCho=87.02,laBoPhan=true,tenLoai=Két nước làm mát:khong-tat-dinh
+    ✗ cong2-chong-lan:87089119+87089199:dungCho=nhóm 00.00,laBoPhan=true,tenLoai=Két nước làm mát:khong-tat-dinh
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870891","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870891","dong8":{"87089115":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87089116":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"87089117":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8704.10"}]},"87089191":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87089193":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Nút xả"},{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"87089194":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Nút xả"},{"fact":"dungCho","op":"CONG_DUNG","value":["87.02","87.04"]}]},"87089195":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}],"phanConLai":["87089193"]}},"dieuKienNut":{"8708911":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Két nước làm mát"}]},"870891~r17524":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["87.02","87.04"]}]},"8708919":{"dieuKienSo":[{"fact":"laBoPhan","op":"CO"}]}},"ghiChuSoan":[{"ma":"8708911","loai":"QUYET_DINH","ghiChu":"tieuDe.8708911: \"Két nước làm mát\" ⇒ tenLoai \"Két nước làm mát\""},{"ma":"87089115","loai":"QUYET_DINH","ghiChu":"tax.87089115: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87089116","loai":"QUYET_DINH","ghiChu":"tax.87089116: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""},{"ma":"870891~r17524","loai":"QUYET_DINH","ghiChu":"tieuDe.870891~r17524: \"Dùng cho xe thuộc nhóm 87.02 hoặc 87.04\" ⇒ dungCho [\"87.02\",\"87.04\"]"},{"ma":"87089117","loai":"QUYET_DINH","ghiChu":"tax.87089117: \"Dùng cho xe thuộc phân nhóm 8704.10\" ⇒ dungCho \"8704.10\""},{"ma":"8708919","loai":"QUYET_DINH","ghiChu":"tieuDe.8708919: \"Bộ phận\" ⇒ laBoPhan CO"},{"ma":"87089191","loai":"QUYET_DINH","ghiChu":"tax.87089191: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87089193","loai":"QUYET_DINH","ghiChu":"tax.87089193: \"Nút xả(SEN) dùng cho xe thuộc nhóm 87.03\" ⇒ tenLoai \"Nút xả\", dungCho \"87.03\""},{"ma":"87089194","loai":"QUYET_DINH","ghiChu":"tax.87089194: \"Nút xả(SEN) dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)\" ⇒ tenLoai \"Nút xả\", dungCho [\"87.02\",\"87.04\"]"},{"ma":"87089194","loai":"BO_VE","ve":"(trừ loại thuộc phân nhóm 8704.10)","lyDo":"Vế loại trừ phân nhóm 8704.10"},{"ma":"87089195","loai":"QUYET_DINH","ghiChu":"tax.87089195: \"Loại khác, dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\" + phanConLai [\"87089193\"]"}]}
+```
+
+=== GÓI PN6 870891 ===
+# 870891 — Két nước làm mát và bộ phận của chúng
+
+870891 — Vehicle parts; radiators and parts thereof
+  [8708911] Két nước làm mát
+    87089115 Dùng cho xe thuộc nhóm 87.01
+    87089116 Dùng cho xe thuộc nhóm 87.03
+    [870891~r17524] Dùng cho xe thuộc nhóm 87.02 hoặc 87.04  (tầng không mã, biểu thuế r17524, gạch 4)
+      87089117 Dùng cho xe thuộc phân nhóm 8704.10  (gạch 5)
+      87089118 Loại khác  [LK]  (gạch 5)
+    87089119 Loại khác  [LK]
+  [8708919] Bộ phận
+    87089191 Dùng cho xe thuộc nhóm 87.01
+    87089193 Nút xả(SEN) dùng cho xe thuộc nhóm 87.03
+    87089194 Nút xả(SEN) dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)
+    87089195 Loại khác, dùng cho xe thuộc nhóm 87.03  [LK có điều kiện]
+    87089199 Loại khác  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870891~r17524 (gạch 4) "Dùng cho xe thuộc nhóm 87.02 hoặc 87.04:" — dòng dưới: 87089117, 87089118
+
+- 8708911 TIEU_DE
+    tieuDe.8708911 [24 ký tự]: 8708911 Két nước làm mát
+- 87089115 DONG8
+    tax.87089115 [45 ký tự]: 87089115 - - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87089116 DONG8
+    tax.87089116 [45 ký tự]: 87089116 - - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 870891~r17524 TIEU_DE
+    tieuDe.870891~r17524 [53 ký tự]: 870891~r17524 Dùng cho xe thuộc nhóm 87.02 hoặc 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.02 hoặc 87.04"
+- 87089117 DONG8
+    tax.87089117 [54 ký tự]: 87089117 - - - - - Dùng cho xe thuộc phân nhóm 8704.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc phân nhóm 8704.10"
+- 87089118 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87089118 [28 ký tự]: 87089118 - - - - - Loại khác
+- 87089119 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87089119 [26 ký tự]: 87089119 - - - - Loại khác
+- 8708919 TIEU_DE
+    tieuDe.8708919 [15 ký tự]: 8708919 Bộ phận
+- 87089191 DONG8
+    tax.87089191 [45 ký tự]: 87089191 - - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87089193 DONG8
+    tax.87089193 [58 ký tự]: 87089193 - - - - Nút xả(SEN) dùng cho xe thuộc nhóm 87.03 
+    sen.87089193 [163 ký tự]: NÚT XẢ Nút xả nhỏ, thường gắn ở đáy két nước làm mát, sử dụng để xả dung dịch làm mát và nước. Nó có thể thiết kế để vặn hoặc gắn, được làm bằng plastic hoặc thép.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe thuộc nhóm 87.03"
+- 87089194 DONG8
+    tax.87089194 [103 ký tự]: 87089194 - - - - Nút xả(SEN) dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)
+    sen.87089194 [163 ký tự]: NÚT XẢ Nút xả nhỏ, thường gắn ở đáy két nước làm mát, sử dụng để xả dung dịch làm mát và nước. Nó có thể thiết kế để vặn hoặc gắn, được làm bằng plastic hoặc thép.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)" · [GIỚI HẠN] "(trừ loại thuộc phân nhóm 8704.10)"
+- 87089195 DONG8
+    tax.87089195 [56 ký tự]: 87089195 - - - - Loại khác, dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho xe thuộc nhóm 87.03"
+- 87089199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87089199 [26 ký tự]: 87089199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.870891; chú giải: nhom8708.nhom, ch87.chuong, phan87.phan
+

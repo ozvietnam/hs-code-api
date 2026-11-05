@@ -1,0 +1,245 @@
+VÒNG SỬA — 6 PN6 bị cổng máy chặn (220300 220421 220422 220429 230120 240412). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 220300 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:2203009
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong5-ve-gioi-han-bi-bo:22030011:Có nồng độ cồn
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong5-ve-gioi-han-bi-bo:22030091:Có nồng độ cồn
+    ✗ cong1-chua-so-hoa:22030091:2203009
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:22030099:2203009
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"220300","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-220300","dong8":{"22030011":{"dieuKienSo":[{"fact":"nongDoCon","op":"<=","value":5.8,"donVi":"%"}]},"22030091":{"dieuKienSo":[{"fact":"nongDoCon","op":"<=","value":5.8,"donVi":"%"}]}},"dieuKienNut":{"2203001":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bia đen","bia nâu"]}]},"2203009":{"dieuKienSo":[],"phanConLai":true}},"ghiChuSoan":[{"ma":"2203001","loai":"QUYET_DINH","ghiChu":"tieuDe.2203001: \"Bia đen hoặc bia nâu\" ⇒ tenLoai TEN_LOAI [\"Bia đen\", \"bia nâu\"]"},{"ma":"22030011","loai":"QUYET_DINH","ghiChu":"tax.22030011: \"không quá 5,8% tính theo thể tích\" ⇒ nongDoCon <= 5.8 %"},{"ma":"2203009","loai":"QUYET_DINH","ghiChu":"tieuDe.2203009: \"Loại khác, kể cả bia ale\" ⇒ phanConLai true"},{"ma":"22030091","loai":"QUYET_DINH","ghiChu":"tax.22030091: \"không quá 5,8% tính theo thể tích\" ⇒ nongDoCon <= 5.8 %"}]}
+```
+
+=== GÓI PN6 220300 ===
+# 220300 — Bia sản xuất từ malt.
+
+NHÓM 2203 — Bia sản xuất từ malt.
+  [2203001] Bia đen hoặc bia nâu
+    22030011 Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)
+    22030019 Loại khác (SEN)  [LK]
+  [2203009] Loại khác, kể cả bia ale
+    22030091 Có nồng độ cồn không quá 5,8% tính theo thể tích
+    22030099 Loại khác  [LK]
+
+- 2203001 TIEU_DE
+    tieuDe.2203001 [28 ký tự]: 2203001 Bia đen hoặc bia nâu
+- 22030011 DONG8
+    tax.22030011 [67 ký tự]: 22030011 - - Có nồng độ cồn không quá 5,8% tính theo thể tích (SEN)
+    sen.22030011 [186 ký tự]: BIA ĐEN HOẶC BIA NÂU Bia đen (Stout) là bia đen đậm ủ từ mạch nha (malt) rang hoặc lúa mạch rang. Bia nâu (Porter) là loại bia đắng màu nâu sẫm ủ từ mạch nha nâu hoặc mạch nha rang cháy.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn" · [GIỚI HẠN] "không quá 5,8% tính theo thể tích"
+- 22030019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.22030019 [28 ký tự]: 22030019 - - Loại khác (SEN)
+    sen.22030019 [186 ký tự]: BIA ĐEN HOẶC BIA NÂU Bia đen (Stout) là bia đen đậm ủ từ mạch nha (malt) rang hoặc lúa mạch rang. Bia nâu (Porter) là loại bia đắng màu nâu sẫm ủ từ mạch nha nâu hoặc mạch nha rang cháy.
+- 2203009 TIEU_DE
+    tieuDe.2203009 [32 ký tự]: 2203009 Loại khác, kể cả bia ale
+- 22030091 DONG8
+    tax.22030091 [61 ký tự]: 22030091 - - Có nồng độ cồn không quá 5,8% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn" · [GIỚI HẠN] "không quá 5,8% tính theo thể tích"
+- 22030099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.22030099 [22 ký tự]: 22030099 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.220300; chú giải: nhom2203.nhom, ch22.chuong, phan22.phan
+
+
+=== SỬA PN6 220421 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:2204212:congDung
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"220421","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-220421","dong8":{"22042111":{"dieuKienSo":[{"fact":"nongDoCon","op":"<=","value":15,"donVi":"%"}]},"22042113":{"dieuKienSo":[{"fact":"nongDoCon","op":">","value":15,"donVi":"%"},{"fact":"nongDoCon","op":"<=","value":23,"donVi":"%"}]},"22042114":{"dieuKienSo":[{"fact":"nongDoCon","op":">","value":23,"donVi":"%"}]},"22042121":{"dieuKienSo":[{"fact":"nongDoCon","op":"<=","value":15,"donVi":"%"}]},"22042122":{"dieuKienSo":[{"fact":"nongDoCon","op":">","value":15,"donVi":"%"}]}},"dieuKienNut":{"2204211":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Rượu vang"}]},"2204212":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Hèm nho"},{"fact":"congDung","op":"CONG_DUNG","value":"ngăn ngừa hoặc cản sự lên men"}]}},"ghiChuSoan":[{"ma":"2204211","loai":"QUYET_DINH","ghiChu":"tieuDe.2204211: \"Rượu vang\" ⇒ tenLoai TEN_LOAI \"Rượu vang\""},{"ma":"22042111","loai":"QUYET_DINH","ghiChu":"tax.22042111: \"không quá 15% tính theo thể tích\" ⇒ nongDoCon <= 15 %"},{"ma":"22042113","loai":"QUYET_DINH","ghiChu":"tax.22042113: \"trên 15% nhưng không quá 23% tính theo thể tích\" ⇒ nongDoCon > 15 %, <= 23 %"},{"ma":"22042114","loai":"QUYET_DINH","ghiChu":"tax.22042114: \"trên 23% tính theo thể tích\" ⇒ nongDoCon > 23 %"},{"ma":"2204212","loai":"QUYET_DINH","ghiChu":"tieuDe.2204212: \"Hèm nho\" ⇒ tenLoai, \"ngăn ngừa hoặc cản sự lên men\" ⇒ congDung"},{"ma":"22042121","loai":"QUYET_DINH","ghiChu":"tax.22042121: \"không quá 15% tính theo thể tích\" ⇒ nongDoCon <= 15 %"},{"ma":"22042122","loai":"QUYET_DINH","ghiChu":"tax.22042122: \"trên 15% tính theo thể tích\" ⇒ nongDoCon > 15 %"}]}
+```
+
+=== GÓI PN6 220421 ===
+# 220421 — Loại trong đồ đựng không quá 2 lít
+
+220421 — Wine; still, in containers holding 2 litres or less
+  [2204211] Rượu vang
+    22042111 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042113 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    22042114 Có nồng độ cồn trên 23% tính theo thể tích
+  [2204212] Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    22042121 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042122 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 2204211 TIEU_DE
+    tieuDe.2204211 [17 ký tự]: 2204211 Rượu vang
+- 22042111 DONG8
+    tax.22042111 [65 ký tự]: 22042111 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042113 DONG8
+    tax.22042113 [79 ký tự]: 22042113 - - - - Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích"
+- 22042114 DONG8
+    tax.22042114 [59 ký tự]: 22042114 - - - - Có nồng độ cồn trên 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 23% tính theo thể tích"
+- 2204212 TIEU_DE
+    tieuDe.2204212 [59 ký tự]: 2204212 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ngăn ngừa hoặc cản sự lên men"
+- 22042121 DONG8
+    tax.22042121 [65 ký tự]: 22042121 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042122 DONG8
+    tax.22042122 [59 ký tự]: 22042122 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220421; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+
+=== SỬA PN6 220422 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:2204222:congDung
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"220422","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-220422","dong8":{"22042211":{"dieuKienSo":[{"fact":"nongDoCon","op":"<=","value":15,"donVi":"%"}]},"22042212":{"dieuKienSo":[{"fact":"nongDoCon","op":">","value":15,"donVi":"%"},{"fact":"nongDoCon","op":"<=","value":23,"donVi":"%"}]},"22042213":{"dieuKienSo":[{"fact":"nongDoCon","op":">","value":23,"donVi":"%"}]},"22042221":{"dieuKienSo":[{"fact":"nongDoCon","op":"<=","value":15,"donVi":"%"}]},"22042222":{"dieuKienSo":[{"fact":"nongDoCon","op":">","value":15,"donVi":"%"}]}},"dieuKienNut":{"2204221":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Rượu vang"}]},"2204222":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Hèm nho"},{"fact":"congDung","op":"CONG_DUNG","value":"ngăn ngừa hoặc cản sự lên men"}]}},"ghiChuSoan":[{"ma":"2204221","loai":"QUYET_DINH","ghiChu":"tieuDe.2204221: \"Rượu vang\" ⇒ tenLoai TEN_LOAI \"Rượu vang\""},{"ma":"22042211","loai":"QUYET_DINH","ghiChu":"tax.22042211: \"không quá 15% tính theo thể tích\" ⇒ nongDoCon <= 15 %"},{"ma":"22042212","loai":"QUYET_DINH","ghiChu":"tax.22042212: \"trên 15% nhưng không quá 23% tính theo thể tích\" ⇒ nongDoCon > 15 %, <= 23 %"},{"ma":"22042213","loai":"QUYET_DINH","ghiChu":"tax.22042213: \"trên 23% tính theo thể tích\" ⇒ nongDoCon > 23 %"},{"ma":"2204222","loai":"QUYET_DINH","ghiChu":"tieuDe.2204222: \"Hèm nho\" ⇒ tenLoai, \"ngăn ngừa hoặc cản sự lên men\" ⇒ congDung"},{"ma":"22042221","loai":"QUYET_DINH","ghiChu":"tax.22042221: \"không quá 15% tính theo thể tích\" ⇒ nongDoCon <= 15 %"},{"ma":"22042222","loai":"QUYET_DINH","ghiChu":"tax.22042222: \"trên 15% tính theo thể tích\" ⇒ nongDoCon > 15 %"}]}
+```
+
+=== GÓI PN6 220422 ===
+# 220422 — Loại trong đồ đựng trên 2 lít nhưng không quá 10 lít
+
+220422 — Wine; still, in containers holding more than 2 litres but not more than 10 litres
+  [2204221] Rượu vang
+    22042211 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042212 Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    22042213 Có nồng độ cồn trên 23% tính theo thể tích
+  [2204222] Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    22042221 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042222 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 2204221 TIEU_DE
+    tieuDe.2204221 [17 ký tự]: 2204221 Rượu vang
+- 22042211 DONG8
+    tax.22042211 [65 ký tự]: 22042211 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042212 DONG8
+    tax.22042212 [79 ký tự]: 22042212 - - - - Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% nhưng không quá 23% tính theo thể tích"
+- 22042213 DONG8
+    tax.22042213 [59 ký tự]: 22042213 - - - - Có nồng độ cồn trên 23% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 23% tính theo thể tích"
+- 2204222 TIEU_DE
+    tieuDe.2204222 [59 ký tự]: 2204222 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ngăn ngừa hoặc cản sự lên men"
+- 22042221 DONG8
+    tax.22042221 [65 ký tự]: 22042221 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042222 DONG8
+    tax.22042222 [59 ký tự]: 22042222 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220422; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+
+=== SỬA PN6 220429 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:2204292:congDung
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"220429","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-220429","dong8":{"22042911":{"dieuKienSo":[{"fact":"nongDoCon","op":"<=","value":15,"donVi":"%"}]},"22042912":{"dieuKienSo":[{"fact":"nongDoCon","op":">","value":15,"donVi":"%"}]},"22042921":{"dieuKienSo":[{"fact":"nongDoCon","op":"<=","value":15,"donVi":"%"}]},"22042922":{"dieuKienSo":[{"fact":"nongDoCon","op":">","value":15,"donVi":"%"}]}},"dieuKienNut":{"2204291":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Rượu vang"}]},"2204292":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Hèm nho"},{"fact":"congDung","op":"CONG_DUNG","value":"ngăn ngừa hoặc cản sự lên men"}]}},"ghiChuSoan":[{"ma":"2204291","loai":"QUYET_DINH","ghiChu":"tieuDe.2204291: \"Rượu vang\" ⇒ tenLoai TEN_LOAI \"Rượu vang\""},{"ma":"22042911","loai":"QUYET_DINH","ghiChu":"tax.22042911: \"không quá 15% tính theo thể tích\" ⇒ nongDoCon <= 15 %"},{"ma":"22042912","loai":"QUYET_DINH","ghiChu":"tax.22042912: \"trên 15% tính theo thể tích\" ⇒ nongDoCon > 15 %"},{"ma":"2204292","loai":"QUYET_DINH","ghiChu":"tieuDe.2204292: \"Hèm nho\" ⇒ tenLoai, \"ngăn ngừa hoặc cản sự lên men\" ⇒ congDung"},{"ma":"22042921","loai":"QUYET_DINH","ghiChu":"tax.22042921: \"không quá 15% tính theo thể tích\" ⇒ nongDoCon <= 15 %"},{"ma":"22042922","loai":"QUYET_DINH","ghiChu":"tax.22042922: \"trên 15% tính theo thể tích\" ⇒ nongDoCon > 15 %"}]}
+```
+
+=== GÓI PN6 220429 ===
+# 220429 — Loại khác
+
+220429 — Wine; still, in containers holding more than 10 litres
+  [2204291] Rượu vang
+    22042911 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042912 Có nồng độ cồn trên 15% tính theo thể tích
+  [2204292] Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    22042921 Có nồng độ cồn không quá 15% tính theo thể tích
+    22042922 Có nồng độ cồn trên 15% tính theo thể tích
+
+- 2204291 TIEU_DE
+    tieuDe.2204291 [17 ký tự]: 2204291 Rượu vang
+- 22042911 DONG8
+    tax.22042911 [65 ký tự]: 22042911 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042912 DONG8
+    tax.22042912 [59 ký tự]: 22042912 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+- 2204292 TIEU_DE
+    tieuDe.2204292 [59 ký tự]: 2204292 Hèm nho đã pha cồn để ngăn ngừa hoặc cản sự lên men
+    vế phải phủ (cổng 5): [GIỚI HẠN] "để ngăn ngừa hoặc cản sự lên men"
+- 22042921 DONG8
+    tax.22042921 [65 ký tự]: 22042921 - - - - Có nồng độ cồn không quá 15% tính theo thể tích 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn không quá 15% tính theo thể tích"
+- 22042922 DONG8
+    tax.22042922 [59 ký tự]: 22042922 - - - - Có nồng độ cồn trên 15% tính theo thể tích
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có nồng độ cồn trên 15% tính theo thể tích"
+
+Nguồn cấp phân nhóm: wco.220429; chú giải: nhom2204.nhom, ch22.chuong, phan22.phan
+
+
+=== SỬA PN6 230120 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ spec-hinh-dang:dong8.23012010.ghiChuSoan — khoá mục hợp lệ: dieuKienSo, trich, nguon, phanConLai
+      → Spec sai lược đồ ranh-gioi-spec@1. Sửa: Xem mẫu trong --help và docs/giao-viec/so-tay/QUY-TRINH-SO-HOA.md.
+    ✗ spec-hinh-dang:dong8.23012020.ghiChuSoan — khoá mục hợp lệ: dieuKienSo, trich, nguon, phanConLai
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"230120","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-230120","dong8":{"23012010":{"dieuKienSo":[],"ghiChuSoan":[{"ma":"23012010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongProtein","ghiChu":"hàm lượng protein dưới 60% tính theo khối lượng"}]},"23012020":{"dieuKienSo":[],"ghiChuSoan":[{"ma":"23012020","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongProtein","ghiChu":"hàm lượng protein từ 60% trở lên tính theo khối lượng"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"23012010","loai":"DUNG","ghiChu":"Thiếu khoá SO hamLuongProtein để đo hàm lượng protein tính theo % khối lượng"}]}
+```
+
+=== GÓI PN6 230120 ===
+# 230120 — Bột mịn, bột thô và viên, từ cá hoặc từ động vật giáp xác, động vật thân mềm hoặc động vật thủy sinh không xương sống khác
+
+230120 — Flours, meals and pellets; of fish or of crustaceans, molluscs or other aquatic invertebrates
+  23012010 Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng
+  23012020 Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng
+  23012090 Loại khác  [LK]
+
+- 23012010 DONG8
+    tax.23012010 [70 ký tự]: 23012010 - - Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng protein dưới 60% tính theo khối lượng"
+- 23012020 DONG8
+    tax.23012020 [76 ký tự]: 23012020 - - Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có hàm lượng protein từ 60% trở lên tính theo khối lượng"
+- 23012090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.23012090 [22 ký tự]: 23012090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.230120; chú giải: nhom2301.nhom, ch23.chuong, phan23.phan
+
+
+=== SỬA PN6 240412 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-dinh-ngu-tach:24041210:dùng cho thuốc lá điện tử
+      → Định ngữ chung bị tách: theo chữ Anh của cùng dòng, vế bổ nghĩa đi với CẢ các danh từ đầu liên hợp (gắn cho một phần ⇒ rộng hơn chữ) hoặc chỉ với danh từ CUỐI (gắn cho tất cả ⇒ hẹp hơn chữ). Sửa: Định ngữ chung ⇒ một điều kiện riêng phủ định ngữ cho mọi danh từ đầu (vd tenLoai ["A","B"] + dungCho "<định ngữ>"); định ngữ chỉ của danh từ cuối ⇒ HOAC [[tenLoai A], [tenLoai B, <điều kiện định ngữ>]]. Máy đọc sai cấu trúc ⇒ BO_VE với ve = định ngữ + lý do (người soát đọc).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"240412","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-240412","dong8":{"24041210":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Dạng lỏng","gel"]},{"fact":"dungCho","op":"CONG_DUNG","value":"thuốc lá điện tử"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"24041210","loai":"QUYET_DINH","ghiChu":"tax.24041210: \"Dạng lỏng hoặc gel\" ⇒ tenLoai [\"Dạng lỏng\", \"gel\"], \"dùng cho thuốc lá điện tử\" ⇒ dungCho \"thuốc lá điện tử\""}]}
+```
+
+=== GÓI PN6 240412 ===
+# 240412 — Loại khác, chứa nicotin
+
+240412 — Products containing nicotine, other than tobacco or reconstituted tobacco, intended for inhalation without combustion
+  24041210 Dạng lỏng hoặc gel dùng cho thuốc lá điện tử (SEN)
+  24041290 Loại khác  [LK]
+
+- 24041210 DONG8
+    tax.24041210 [70 ký tự]: 24041210 - - - Dạng lỏng hoặc gel dùng cho thuốc lá điện tử (SEN)
+    sen.24041210 [1200 ký tự]: DẠNG LỎNG HOẶC GEL DÙNG CHO THUỐC LÁ ĐIỆN TỬ Dạng lỏng hoặc gel dùng cho thuốc lá điện tử là chất lỏng hoặc gel có hương vị được sử dụng trong thuốc lá điện tử. Nó thường được tạo thành từ các thành phần khác nhau như nicotine, propylene glycol và nước. Đôi khi được gọi là e-juice hoặc vape juice, chất lỏng hoặc gel dùng cho thuốc lá điện tử thường có sẵn với các nồng độ nicotine khác nhau. Có rất nhiều sự thay đổi trong các công thức chất lỏng hoặc gel dùng cho thuốc lá điện tử do tốc độ phát triển nhanh và những thay đổi trong thiết kế sản xuất thuốc lá điện tử. Thành phần của chất lỏng hoặc gel dùng cho thuốc lá điện tử cho các chất phụ gia như nicotine và các hương liệu có sự khác nhau giữa các nhãn hiệu và trong mỗi nhãn hiệu. Chất lỏng hoặc gel dùng cho thuốc lá điện tử có nhiều dạng, bao gồm các nồng độ nicotine khác nhau và nhiều hương vị khác nhau. Các thành phần chính là propylene glycol, glycerin, và hương liệu; và thông thường là nicotine ở dạng lỏng. Chất lỏng thường bao gồm tổng cộng 95% là propylene glycol và glycerin, và 5% còn lại là hương liệu, nicotine và các chất phụ gia khác. Chất mang hóa học được sử dụng thường xuyên nhất là propylene glycol, có hoặc không 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho thuốc lá điện tử"
+- 24041290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.24041290 [24 ký tự]: 24041290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.240412; chú giải: nhom2404.nhom, ch24.chuong, phan24.phan
+

@@ -1,0 +1,824 @@
+VÒNG SỬA — 3 PN6 bị cổng máy chặn (870333 870340 870350). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 870333 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-bien-lech-chu:87033321:dungTichXiLanh
+      → Biên số lệch chữ: "không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=. Sửa: Sửa op/value đúng chữ của câu trích.
+    ✗ cong3-bien-lech-chu:87033331:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87033333:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87033361:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87033371:dungTichXiLanh
+    ✗ cong2-chong-lan:87033311+87033331:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=2999.997,kieuXeChoNguoi=CUU_THUONG
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87033311+87033332:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=3000.003,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87033311+87033333:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=2999.997,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87033311+87033334:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=3000.003,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87033312+87033331:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=2999.997,kieuXeChoNguoi=TANG_LE
+    ✗ cong2-chong-lan:87033312+87033332:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=3000.003,kieuXeChoNguoi=TANG_LE
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870333","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870333","dong8":{"87033311":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87033312":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87033313":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87033314":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87033321":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87033322":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87033331":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87033332":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87033333":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87033334":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87033351":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87033352":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87033353":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87033354":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87033361":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87033362":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87033371":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87033372":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87033380":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]}},"dieuKienNut":{"870333~r16632":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8703332":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"870333~r16640":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"870333~r16643":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]},"8703336":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"8703337":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]}},"ghiChuSoan":[{"ma":"870333~r16632","loai":"QUYET_DINH","ghiChu":"tieuDe.870333~r16632: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87033311","loai":"QUYET_DINH","ghiChu":"tax.87033311: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87033312","loai":"QUYET_DINH","ghiChu":"tax.87033312: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87033313","loai":"QUYET_DINH","ghiChu":"tax.87033313: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87033314","loai":"QUYET_DINH","ghiChu":"tax.87033314: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"8703332","loai":"QUYET_DINH","ghiChu":"tieuDe.8703332: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"870333~r16640","loai":"QUYET_DINH","ghiChu":"tieuDe.870333~r16640: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"870333~r16643","loai":"QUYET_DINH","ghiChu":"tieuDe.870333~r16643: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"},{"ma":"87033351","loai":"QUYET_DINH","ghiChu":"tax.87033351: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87033352","loai":"QUYET_DINH","ghiChu":"tax.87033352: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87033353","loai":"QUYET_DINH","ghiChu":"tax.87033353: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87033354","loai":"QUYET_DINH","ghiChu":"tax.87033354: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"8703336","loai":"QUYET_DINH","ghiChu":"tieuDe.8703336: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"8703337","loai":"QUYET_DINH","ghiChu":"tieuDe.8703337: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"87033380","loai":"QUYET_DINH","ghiChu":"tax.87033380: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"}]}
+```
+
+=== GÓI PN6 870333 ===
+# 870333 — Dung tích xi lanh trên 2.500 cc
+
+870333 — Vehicles; with only compression-ignition internal combustion piston engine (diesel or semi-diesel), cylinder capacity over 2500cc
+  [870333~r16632] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16632, gạch 3)
+    87033311 Ô tô cứu thương
+    87033312 Ô tô tang lễ
+    87033313 Ô tô chở phạm nhân
+    87033314 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    [8703332] Ô tô kiểu Sedan (SEN) (1)
+      87033321 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 5)
+      87033322 Dung tích xi lanh trên 3.000 cc  (gạch 5)
+    [870333~r16640] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động  (tầng không mã, biểu thuế r16640, gạch 4)
+      87033331 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 5)
+      87033332 Dung tích xi lanh trên 3.000 cc  (gạch 5)
+    [870333~r16643] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động  (tầng không mã, biểu thuế r16643, gạch 4)
+      87033333 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 5)
+      87033334 Dung tích xi lanh trên 3.000 cc  (gạch 5)
+    87033340 Loại khác  [LK]  (gạch 4)
+  [870333~r16647] Loại khác  (tầng không mã, biểu thuế r16647, gạch 3)
+    87033351 Ô tô cứu thương
+    87033352 Ô tô tang lễ
+    87033353 Ô tô chở phạm nhân
+    87033354 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    [8703336] Ô tô kiểu Sedan (SEN) (1)
+      87033361 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 5)
+      87033362 Dung tích xi lanh trên 3.000 cc  (gạch 5)
+    [8703337] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+      87033371 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 5)
+      87033372 Dung tích xi lanh trên 3.000 cc  (gạch 5)
+    87033380 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động  (gạch 4)
+    87033390 Loại khác  [LK]  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870333~r16632 (gạch 3) "Dạng CKD (SEN):" — dòng dưới: 87033311, 87033312, 87033313, 87033314, 87033321, 87033322, 87033331, 87033332, 87033333, 87033334, 87033340
+    870333~r16640 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động:" — dòng dưới: 87033331, 87033332
+    870333~r16643 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động:" — dòng dưới: 87033333, 87033334
+    870333~r16647 (gạch 3) "Loại khác:" — dòng dưới: 87033351, 87033352, 87033353, 87033354, 87033361, 87033362, 87033371, 87033372, 87033380, 87033390
+
+- 870333~r16632 TIEU_DE
+    tieuDe.870333~r16632 [28 ký tự]: 870333~r16632 Dạng CKD (SEN)
+- 87033311 DONG8
+    tax.87033311 [32 ký tự]: 87033311 - - - - Ô tô cứu thương
+- 87033312 DONG8
+    tax.87033312 [29 ký tự]: 87033312 - - - - Ô tô tang lễ
+- 87033313 DONG8
+    tax.87033313 [35 ký tự]: 87033313 - - - - Ô tô chở phạm nhân
+- 87033314 DONG8
+    tax.87033314 [89 ký tự]: 87033314 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 8703332 TIEU_DE
+    tieuDe.8703332 [33 ký tự]: 8703332 Ô tô kiểu Sedan (SEN) (1)
+- 87033321 DONG8
+    tax.87033321 [75 ký tự]: 87033321 - - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87033322 DONG8
+    tax.87033322 [50 ký tự]: 87033322 - - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 870333~r16640 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870333~r16640 [157 ký tự]: 870333~r16640 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87033331 DONG8
+    tax.87033331 [75 ký tự]: 87033331 - - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87033332 DONG8
+    tax.87033332 [50 ký tự]: 87033332 - - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 870333~r16643 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870333~r16643 [168 ký tự]: 870333~r16643 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87033333 DONG8
+    tax.87033333 [75 ký tự]: 87033333 - - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87033334 DONG8
+    tax.87033334 [50 ký tự]: 87033334 - - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 87033340 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87033340 [26 ký tự]: 87033340 - - - - Loại khác
+- 870333~r16647 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870333~r16647 [23 ký tự]: 870333~r16647 Loại khác
+- 87033351 DONG8
+    tax.87033351 [32 ký tự]: 87033351 - - - - Ô tô cứu thương
+- 87033352 DONG8
+    tax.87033352 [29 ký tự]: 87033352 - - - - Ô tô tang lễ
+- 87033353 DONG8
+    tax.87033353 [35 ký tự]: 87033353 - - - - Ô tô chở phạm nhân
+- 87033354 DONG8
+    tax.87033354 [89 ký tự]: 87033354 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 8703336 TIEU_DE
+    tieuDe.8703336 [33 ký tự]: 8703336 Ô tô kiểu Sedan (SEN) (1)
+- 87033361 DONG8
+    tax.87033361 [75 ký tự]: 87033361 - - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87033362 DONG8
+    tax.87033362 [50 ký tự]: 87033362 - - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 8703337 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703337 [151 ký tự]: 8703337 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87033371 DONG8
+    tax.87033371 [75 ký tự]: 87033371 - - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87033372 DONG8
+    tax.87033372 [50 ký tự]: 87033372 - - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 87033380 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.87033380 [171 ký tự]: 87033380 - - - - Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87033390 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87033390 [26 ký tự]: 87033390 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8703, wco.870333; chú giải: nhom8703.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870340 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:87034011+87034022:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1499.9985,kieuXeChoNguoi=XE_DUA_CO_NHO
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87034011+87034023:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1999.998,kieuXeChoNguoi=XE_DUA_CO_NHO
+    ✗ cong2-chong-lan:87034011+87034024:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=2000.002,kieuXeChoNguoi=XE_DUA_CO_NHO
+    ✗ cong2-chong-lan:87034011+87034025:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=1999.998,kieuXeChoNguoi=XE_DUA_CO_NHO
+    ✗ cong2-chong-lan:87034011+87034026:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=2000.002,kieuXeChoNguoi=XE_DUA_CO_NHO
+    ✗ cong2-chong-lan:87034012+87034022:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1499.9985,kieuXeChoNguoi=ATV
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870340","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870340","dong8":{"87034011":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87034012":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"87034013":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87034014":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87034015":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87034016":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034017":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87034018":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034019":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034021":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87034022":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034023":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034024":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87034025":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034026":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87034027":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034028":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87034031":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87034032":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87034033":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"}]},"87034034":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034035":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87034041":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87034042":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034043":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87034044":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034045":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87034046":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87034047":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87034051":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87034052":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034053":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87034054":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87034055":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87034056":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034057":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034058":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87034061":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87034062":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034063":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87034064":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034065":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87034066":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87034067":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"},{"fact":"bonBanhChuDong","op":"CO"}]},"87034068":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"},{"fact":"bonBanhChuDong","op":"KHONG"}]},"87034071":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87034072":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034073":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87034074":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034075":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87034076":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87034077":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87034081":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87034082":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034083":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87034084":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034085":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87034086":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87034087":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87034091":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87034092":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87034093":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87034094":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87034095":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87034096":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87034097":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"},{"fact":"bonBanhChuDong","op":"CO"}]},"87034098":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"},{"fact":"bonBanhChuDong","op":"KHONG"}]}},"dieuKienNut":{"870340~r16661":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870340~r16667":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"870340~r16670":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"870340~r16674":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"870340~r16678":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]},"870340~r16686":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"870340~r16689":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"8703404":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"870340~r16701":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"870340~r16707":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"8703406":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"8703407":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"8703408":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870340~r16661","loai":"QUYET_DINH","ghiChu":"tieuDe.870340~r16661: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87034011","loai":"QUYET_DINH","ghiChu":"tax.87034011: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"87034012","loai":"QUYET_DINH","ghiChu":"tax.87034012: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87034013","loai":"QUYET_DINH","ghiChu":"tax.87034013: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87034014","loai":"QUYET_DINH","ghiChu":"tax.87034014: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87034015","loai":"QUYET_DINH","ghiChu":"tax.87034015: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"870340~r16667","loai":"QUYET_DINH","ghiChu":"tieuDe.870340~r16667: \"Ô tô nhà ở lưu động (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"870340~r16670","loai":"QUYET_DINH","ghiChu":"tieuDe.870340~r16670: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"870340~r16674","loai":"QUYET_DINH","ghiChu":"tieuDe.870340~r16674: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"870340~r16678","loai":"QUYET_DINH","ghiChu":"tieuDe.870340~r16678: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"},{"ma":"87034031","loai":"QUYET_DINH","ghiChu":"tax.87034031: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"870340~r16686","loai":"QUYET_DINH","ghiChu":"tieuDe.870340~r16686: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"870340~r16689","loai":"QUYET_DINH","ghiChu":"tieuDe.870340~r16689: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"8703404","loai":"QUYET_DINH","ghiChu":"tieuDe.8703404: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"870340~r16701","loai":"QUYET_DINH","ghiChu":"tieuDe.870340~r16701: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"870340~r16707","loai":"QUYET_DINH","ghiChu":"tieuDe.870340~r16707: \"Ô tô nhà ở lưu động (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"8703406","loai":"QUYET_DINH","ghiChu":"tieuDe.8703406: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"8703407","loai":"QUYET_DINH","ghiChu":"tieuDe.8703407: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"8703408","loai":"QUYET_DINH","ghiChu":"tieuDe.8703408: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"}]}
+```
+
+=== GÓI PN6 870340 ===
+# 870340 — Xe khác, loại kết hợp động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện và động cơ điện để tạo động lực, trừ loại có khả năng nạp điện từ nguồn điện bên ngoài
+
+870340 — Vehicles; with both spark-ignition internal combustion piston engine and electric motor for propulsion, incapable of being charged by plugging to external source of electric power
+  [870340~r16661] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16661, gạch 2)
+    87034011 Xe đua cỡ nhỏ (SEN)
+    87034012 Xe địa hình ATV (All-Terrain Vehicles)
+    87034013 Ô tô cứu thương
+    87034014 Ô tô tang lễ
+    87034015 Ô tô chở phạm nhân
+    [870340~r16667] Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)  (tầng không mã, biểu thuế r16667, gạch 3)
+      87034016 Dung tích xi lanh không quá 2.000 cc  (gạch 4)
+      87034017 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [870340~r16670] Ô tô kiểu Sedan (SEN) (1)  (tầng không mã, biểu thuế r16670, gạch 3)
+      87034018 Dung tích xi lanh không quá 1.500 cc  (gạch 4)
+      87034019 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc  (gạch 4)
+      87034021 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [870340~r16674] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động  (tầng không mã, biểu thuế r16674, gạch 3)
+      87034022 Dung tích xi lanh không quá 1.500 cc  (gạch 4)
+      87034023 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc  (gạch 4)
+      87034024 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [870340~r16678] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động  (tầng không mã, biểu thuế r16678, gạch 3)
+      87034025 Dung tích xi lanh không quá 2.000 cc  (gạch 4)
+      87034026 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [870340~r16681] Loại khác  (tầng không mã, biểu thuế r16681, gạch 3)
+      87034027 Dung tích xi lanh không quá 2.000 cc  (gạch 4)
+      87034028 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+  [870340~r16684] Loại khác  (tầng không mã, biểu thuế r16684, gạch 2)
+    87034031 Xe đua cỡ nhỏ (SEN)
+    [870340~r16686] Xe địa hình ATV (All-Terrain Vehicles)  (tầng không mã, biểu thuế r16686, gạch 3)
+      87034032 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87034033 Dung tích xi lanh trên 1.000 cc  (gạch 4)
+    [870340~r16689] Ô tô cứu thương  (tầng không mã, biểu thuế r16689, gạch 3)
+      87034034 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87034035 Dung tích xi lanh trên 1.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87034036 Loại khác  [LK]  (gạch 4)
+    [8703404] Ô tô tang lễ
+      87034041 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87034042 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87034043 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87034044 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87034045 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87034046 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87034047 Dung tích xi lanh trên 3.000 cc  (gạch 4)
+    [870340~r16701] Ô tô chở phạm nhân  (tầng không mã, biểu thuế r16701, gạch 3)
+      87034051 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87034052 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87034053 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87034054 Dung tích xi lanh trên 1.800 cc nhưng không quá 3.000 cc  (gạch 4)
+      87034055 Dung tích xi lanh trên 3.000 cc  (gạch 4)
+    [870340~r16707] Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)  (tầng không mã, biểu thuế r16707, gạch 3)
+      87034056 Dung tích xi lanh không quá 1.500 cc  (gạch 4)
+      87034057 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc  (gạch 4)
+      87034058 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [8703406] Ô tô kiểu Sedan (SEN) (1)
+      87034061 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87034062 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87034063 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87034064 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87034065 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87034066 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87034067 Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động  (gạch 4)
+      87034068 Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động  (gạch 4)
+    [8703407] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+      87034071 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87034072 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87034073 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87034074 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87034075 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87034076 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87034077 Dung tích xi lanh trên 3.000 cc  (gạch 4)
+    [8703408] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+      87034081 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87034082 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87034083 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87034084 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87034085 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87034086 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87034087 Dung tích xi lanh trên 3.000 cc  (gạch 4)
+    [8703409] Loại khác
+      87034091 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87034092 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87034093 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87034094 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87034095 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87034096 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87034097 Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động  (gạch 4)
+      87034098 Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870340~r16661 (gạch 2) "Dạng CKD (SEN):" — dòng dưới: 87034011, 87034012, 87034013, 87034014, 87034015, 87034016, 87034017, 87034018, 87034019, 87034021, 87034022, 87034023, 87034024, 87034025, 87034026, 87034027, 87034028
+    870340~r16667 (gạch 3) "Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes):" — dòng dưới: 87034016, 87034017
+    870340~r16670 (gạch 3) "Ô tô kiểu Sedan (SEN) (1):" — dòng dưới: 87034018, 87034019, 87034021
+    870340~r16674 (gạch 3) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động:" — dòng dưới: 87034022, 87034023, 87034024
+    870340~r16678 (gạch 3) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động:" — dòng dưới: 87034025, 87034026
+    870340~r16681 (gạch 3) "Loại khác:" — dòng dưới: 87034027, 87034028
+    870340~r16684 (gạch 2) "Loại khác:" — dòng dưới: 87034031, 87034032, 87034033, 87034034, 87034035, 87034036, 87034041, 87034042, 87034043, 87034044, 87034045, 87034046, 87034047, 87034051, 87034052, 87034053, 87034054, 87034055, 87034056, 87034057, 87034058, 87034061, 87034062, 87034063, 87034064, 87034065, 87034066, 87034067, 87034068, 87034071, 87034072, 87034073, 87034074, 87034075, 87034076, 87034077, 87034081, 87034082, 87034083, 87034084, 87034085, 87034086, 87034087, 87034091, 87034092, 87034093, 87034094, 87034095, 87034096, 87034097, 87034098
+    870340~r16686 (gạch 3) "Xe địa hình ATV (All-Terrain Vehicles):" — dòng dưới: 87034032, 87034033
+    870340~r16689 (gạch 3) "Ô tô cứu thương:" — dòng dưới: 87034034, 87034035, 87034036
+    870340~r16701 (gạch 3) "Ô tô chở phạm nhân:" — dòng dưới: 87034051, 87034052, 87034053, 87034054, 87034055
+    870340~r16707 (gạch 3) "Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes):" — dòng dưới: 87034056, 87034057, 87034058
+
+- 870340~r16661 TIEU_DE
+    tieuDe.870340~r16661 [28 ký tự]: 870340~r16661 Dạng CKD (SEN)
+- 87034011 DONG8
+    tax.87034011 [34 ký tự]: 87034011 - - - Xe đua cỡ nhỏ (SEN)
+- 87034012 DONG8
+    tax.87034012 [53 ký tự]: 87034012 - - - Xe địa hình ATV (All-Terrain Vehicles)
+- 87034013 DONG8
+    tax.87034013 [30 ký tự]: 87034013 - - - Ô tô cứu thương
+- 87034014 DONG8
+    tax.87034014 [27 ký tự]: 87034014 - - - Ô tô tang lễ
+- 87034015 DONG8
+    tax.87034015 [33 ký tự]: 87034015 - - - Ô tô chở phạm nhân
+- 870340~r16667 TIEU_DE
+    tieuDe.870340~r16667 [86 ký tự]: 870340~r16667 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87034016 DONG8
+    tax.87034016 [53 ký tự]: 87034016 - - - - Dung tích xi lanh không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 2.000 cc"
+- 87034017 DONG8
+    tax.87034017 [49 ký tự]: 87034017 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870340~r16670 TIEU_DE
+    tieuDe.870340~r16670 [39 ký tự]: 870340~r16670 Ô tô kiểu Sedan (SEN) (1)
+- 87034018 DONG8
+    tax.87034018 [53 ký tự]: 87034018 - - - - Dung tích xi lanh không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.500 cc"
+- 87034019 DONG8
+    tax.87034019 [74 ký tự]: 87034019 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc"
+- 87034021 DONG8
+    tax.87034021 [49 ký tự]: 87034021 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870340~r16674 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870340~r16674 [157 ký tự]: 870340~r16674 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87034022 DONG8
+    tax.87034022 [53 ký tự]: 87034022 - - - - Dung tích xi lanh không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.500 cc"
+- 87034023 DONG8
+    tax.87034023 [74 ký tự]: 87034023 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc"
+- 87034024 DONG8
+    tax.87034024 [49 ký tự]: 87034024 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870340~r16678 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870340~r16678 [168 ký tự]: 870340~r16678 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87034025 DONG8
+    tax.87034025 [53 ký tự]: 87034025 - - - - Dung tích xi lanh không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 2.000 cc"
+- 87034026 DONG8
+    tax.87034026 [49 ký tự]: 87034026 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870340~r16681 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870340~r16681 [23 ký tự]: 870340~r16681 Loại khác
+- 87034027 DONG8
+    tax.87034027 [53 ký tự]: 87034027 - - - - Dung tích xi lanh không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 2.000 cc"
+- 87034028 DONG8
+    tax.87034028 [49 ký tự]: 87034028 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870340~r16684 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870340~r16684 [23 ký tự]: 870340~r16684 Loại khác
+- 87034031 DONG8
+    tax.87034031 [34 ký tự]: 87034031 - - - Xe đua cỡ nhỏ (SEN)
+- 870340~r16686 TIEU_DE
+    tieuDe.870340~r16686 [52 ký tự]: 870340~r16686 Xe địa hình ATV (All-Terrain Vehicles)
+- 87034032 DONG8
+    tax.87034032 [53 ký tự]: 87034032 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87034033 DONG8
+    tax.87034033 [48 ký tự]: 87034033 - - - - Dung tích xi lanh trên 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc"
+- 870340~r16689 TIEU_DE
+    tieuDe.870340~r16689 [29 ký tự]: 870340~r16689 Ô tô cứu thương
+- 87034034 DONG8
+    tax.87034034 [73 ký tự]: 87034034 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87034035 DONG8
+    tax.87034035 [73 ký tự]: 87034035 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 3.000 cc"
+- 87034036 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87034036 [26 ký tự]: 87034036 - - - - Loại khác
+- 8703404 TIEU_DE
+    tieuDe.8703404 [20 ký tự]: 8703404 Ô tô tang lễ
+- 87034041 DONG8
+    tax.87034041 [53 ký tự]: 87034041 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87034042 DONG8
+    tax.87034042 [73 ký tự]: 87034042 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87034043 DONG8
+    tax.87034043 [73 ký tự]: 87034043 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87034044 DONG8
+    tax.87034044 [73 ký tự]: 87034044 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87034045 DONG8
+    tax.87034045 [74 ký tự]: 87034045 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87034046 DONG8
+    tax.87034046 [73 ký tự]: 87034046 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87034047 DONG8
+    tax.87034047 [48 ký tự]: 87034047 - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 870340~r16701 TIEU_DE
+    tieuDe.870340~r16701 [32 ký tự]: 870340~r16701 Ô tô chở phạm nhân
+- 87034051 DONG8
+    tax.87034051 [53 ký tự]: 87034051 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87034052 DONG8
+    tax.87034052 [73 ký tự]: 87034052 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87034053 DONG8
+    tax.87034053 [73 ký tự]: 87034053 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87034054 DONG8
+    tax.87034054 [73 ký tự]: 87034054 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 3.000 cc"
+- 87034055 DONG8
+    tax.87034055 [48 ký tự]: 87034055 - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 870340~r16707 TIEU_DE
+    tieuDe.870340~r16707 [86 ký tự]: 870340~r16707 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87034056 DONG8
+    tax.87034056 [53 ký tự]: 87034056 - - - - Dung tích xi lanh không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.500 cc"
+- 87034057 DONG8
+    tax.87034057 [74 ký tự]: 87034057 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc"
+- 87034058 DONG8
+    tax.87034058 [49 ký tự]: 87034058 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 8703406 TIEU_DE
+    tieuDe.8703406 [33 ký tự]: 8703406 Ô tô kiểu Sedan (SEN) (1)
+- 87034061 DONG8
+    tax.87034061 [53 ký tự]: 87034061 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87034062 DONG8
+    tax.87034062 [73 ký tự]: 87034062 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87034063 DONG8
+    tax.87034063 [73 ký tự]: 87034063 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87034064 DONG8
+    tax.87034064 [73 ký tự]: 87034064 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87034065 DONG8
+    tax.87034065 [74 ký tự]: 87034065 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87034066 DONG8
+    tax.87034066 [73 ký tự]: 87034066 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87034067 DONG8
+    tax.87034067 [73 ký tự]: 87034067 - - - - Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động"
+- 87034068 DONG8
+    tax.87034068 [84 ký tự]: 87034068 - - - - Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động"
+- 8703407 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703407 [151 ký tự]: 8703407 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87034071 DONG8
+    tax.87034071 [53 ký tự]: 87034071 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87034072 DONG8
+    tax.87034072 [73 ký tự]: 87034072 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87034073 DONG8
+    tax.87034073 [73 ký tự]: 87034073 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87034074 DONG8
+    tax.87034074 [73 ký tự]: 87034074 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87034075 DONG8
+    tax.87034075 [74 ký tự]: 87034075 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87034076 DONG8
+    tax.87034076 [73 ký tự]: 87034076 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87034077 DONG8
+    tax.87034077 [48 ký tự]: 87034077 - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 8703408 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703408 [162 ký tự]: 8703408 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87034081 DONG8
+    tax.87034081 [53 ký tự]: 87034081 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87034082 DONG8
+    tax.87034082 [73 ký tự]: 87034082 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87034083 DONG8
+    tax.87034083 [73 ký tự]: 87034083 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87034084 DONG8
+    tax.87034084 [73 ký tự]: 87034084 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87034085 DONG8
+    tax.87034085 [74 ký tự]: 87034085 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87034086 DONG8
+    tax.87034086 [73 ký tự]: 87034086 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87034087 DONG8
+    tax.87034087 [48 ký tự]: 87034087 - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 8703409 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703409 [17 ký tự]: 8703409 Loại khác
+- 87034091 DONG8
+    tax.87034091 [53 ký tự]: 87034091 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87034092 DONG8
+    tax.87034092 [73 ký tự]: 87034092 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87034093 DONG8
+    tax.87034093 [73 ký tự]: 87034093 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87034094 DONG8
+    tax.87034094 [73 ký tự]: 87034094 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87034095 DONG8
+    tax.87034095 [74 ký tự]: 87034095 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87034096 DONG8
+    tax.87034096 [73 ký tự]: 87034096 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87034097 DONG8
+    tax.87034097 [73 ký tự]: 87034097 - - - - Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc, loại bốn bánh chủ động"
+- 87034098 DONG8
+    tax.87034098 [84 ký tự]: 87034098 - - - - Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc, không phải loại bốn bánh chủ động"
+
+Nguồn cấp phân nhóm: sen.8703, wco.870340; chú giải: nhom8703.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870350 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:87035011+87035022:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1499.9985,kieuXeChoNguoi=XE_DUA_CO_NHO
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87035011+87035023:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1999.998,kieuXeChoNguoi=XE_DUA_CO_NHO
+    ✗ cong2-chong-lan:87035011+87035024:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=2000.002,kieuXeChoNguoi=XE_DUA_CO_NHO
+    ✗ cong2-chong-lan:87035011+87035025:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=1999.998,kieuXeChoNguoi=XE_DUA_CO_NHO
+    ✗ cong2-chong-lan:87035011+87035026:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=2000.002,kieuXeChoNguoi=XE_DUA_CO_NHO
+    ✗ cong2-chong-lan:87035012+87035022:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1499.9985,kieuXeChoNguoi=ATV
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870350","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870350","dong8":{"87035011":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87035012":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"87035013":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87035014":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87035015":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87035016":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035017":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87035018":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035019":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035021":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87035022":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035023":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035024":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87035025":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035026":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87035027":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035028":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87035031":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87035032":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87035033":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"}]},"87035034":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035035":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87035036":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"}]},"87035041":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87035042":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035043":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87035044":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035045":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87035046":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87035047":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87035051":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87035052":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035053":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87035054":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87035055":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"}]},"87035056":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035057":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035058":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87035061":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87035062":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035063":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87035064":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035065":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87035066":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87035067":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87035071":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87035072":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035073":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87035074":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035075":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87035076":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87035077":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87035081":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87035082":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035083":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87035084":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035085":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87035086":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87035087":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]},"87035091":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1000,"donVi":"cc"}]},"87035092":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1500,"donVi":"cc"}]},"87035093":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87035094":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87035095":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87035096":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"}]},"87035097":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":3000,"donVi":"cc"}]}},"dieuKienNut":{"870350~r16746":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870350~r16752":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"870350~r16755":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"870350~r16759":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"870350~r16763":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]},"870350~r16771":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"870350~r16774":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"8703504":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"870350~r16786":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"870350~r16792":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"8703506":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"8703507":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"8703508":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870350~r16746","loai":"QUYET_DINH","ghiChu":"tieuDe.870350~r16746: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87035011","loai":"QUYET_DINH","ghiChu":"tax.87035011: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"87035012","loai":"QUYET_DINH","ghiChu":"tax.87035012: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87035013","loai":"QUYET_DINH","ghiChu":"tax.87035013: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87035014","loai":"QUYET_DINH","ghiChu":"tax.87035014: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87035015","loai":"QUYET_DINH","ghiChu":"tax.87035015: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"870350~r16752","loai":"QUYET_DINH","ghiChu":"tieuDe.870350~r16752: \"Ô tô nhà ở lưu động (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"870350~r16755","loai":"QUYET_DINH","ghiChu":"tieuDe.870350~r16755: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"870350~r16759","loai":"QUYET_DINH","ghiChu":"tieuDe.870350~r16759: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"870350~r16763","loai":"QUYET_DINH","ghiChu":"tieuDe.870350~r16763: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"},{"ma":"87035031","loai":"QUYET_DINH","ghiChu":"tax.87035031: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"870350~r16771","loai":"QUYET_DINH","ghiChu":"tieuDe.870350~r16771: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"870350~r16774","loai":"QUYET_DINH","ghiChu":"tieuDe.870350~r16774: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"8703504","loai":"QUYET_DINH","ghiChu":"tieuDe.8703504: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"870350~r16786","loai":"QUYET_DINH","ghiChu":"tieuDe.870350~r16786: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"870350~r16792","loai":"QUYET_DINH","ghiChu":"tieuDe.870350~r16792: \"Ô tô nhà ở lưu động (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"8703506","loai":"QUYET_DINH","ghiChu":"tieuDe.8703506: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"8703507","loai":"QUYET_DINH","ghiChu":"tieuDe.8703507: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"8703508","loai":"QUYET_DINH","ghiChu":"tieuDe.8703508: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"}]}
+```
+
+=== GÓI PN6 870350 ===
+# 870350 — Xe khác, loại kết hợp động cơ đốt trong kiểu piston đốt cháy do nén (diesel hoặc bán diesel) và động cơ điện để tạo động lực, trừ loại có khả năng nạp điện từ nguồn điện bên ngoài
+
+870350 — Vehicles; with both compression-ignition internal combustion piston engine (diesel or semi-diesel) and electric motor for propulsion, incapable of being charged by plugging to external source of electric power
+  [870350~r16746] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16746, gạch 2)
+    87035011 Xe đua cỡ nhỏ (SEN)
+    87035012 Xe địa hình ATV (All-Terrain Vehicles)
+    87035013 Ô tô cứu thương
+    87035014 Ô tô tang lễ
+    87035015 Ô tô chở phạm nhân
+    [870350~r16752] Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)  (tầng không mã, biểu thuế r16752, gạch 3)
+      87035016 Dung tích xi lanh không quá 2.000 cc  (gạch 4)
+      87035017 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [870350~r16755] Ô tô kiểu Sedan (SEN) (1)  (tầng không mã, biểu thuế r16755, gạch 3)
+      87035018 Dung tích xi lanh không quá 1.500 cc  (gạch 4)
+      87035019 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc  (gạch 4)
+      87035021 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [870350~r16759] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động  (tầng không mã, biểu thuế r16759, gạch 3)
+      87035022 Dung tích xi lanh không quá 1.500 cc  (gạch 4)
+      87035023 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc  (gạch 4)
+      87035024 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [870350~r16763] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động  (tầng không mã, biểu thuế r16763, gạch 3)
+      87035025 Dung tích xi lanh không quá 2.000 cc  (gạch 4)
+      87035026 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [870350~r16766] Loại khác  (tầng không mã, biểu thuế r16766, gạch 3)
+      87035027 Dung tích xi lanh không quá 2.000 cc  (gạch 4)
+      87035028 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+  [870350~r16769] Loại khác  (tầng không mã, biểu thuế r16769, gạch 2)
+    87035031 Xe đua cỡ nhỏ (SEN)
+    [870350~r16771] Xe địa hình ATV (All-Terrain Vehicles)  (tầng không mã, biểu thuế r16771, gạch 3)
+      87035032 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87035033 Dung tích xi lanh trên 1.000 cc  (gạch 4)
+    [870350~r16774] Ô tô cứu thương  (tầng không mã, biểu thuế r16774, gạch 3)
+      87035034 Dung tích xi lanh không quá 1.500 cc  (gạch 4)
+      87035035 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.500 cc  (gạch 4)
+      87035036 Dung tích xi lanh trên 2.500 cc  (gạch 4)
+    [8703504] Ô tô tang lễ
+      87035041 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87035042 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87035043 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87035044 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87035045 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87035046 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87035047 Dung tích xi lanh trên 3.000 cc  (gạch 4)
+    [870350~r16786] Ô tô chở phạm nhân  (tầng không mã, biểu thuế r16786, gạch 3)
+      87035051 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87035052 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87035053 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87035054 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.500 cc  (gạch 4)
+      87035055 Dung tích xi lanh trên 2.500 cc  (gạch 4)
+    [870350~r16792] Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)  (tầng không mã, biểu thuế r16792, gạch 3)
+      87035056 Dung tích xi lanh không quá 1.500 cc  (gạch 4)
+      87035057 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc  (gạch 4)
+      87035058 Dung tích xi lanh trên 2.000 cc  (gạch 4)
+    [8703506] Ô tô kiểu Sedan (SEN) (1)
+      87035061 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87035062 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87035063 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87035064 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87035065 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87035066 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87035067 Dung tích xi lanh trên 3.000 cc  (gạch 4)
+    [8703507] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+      87035071 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87035072 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87035073 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87035074 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87035075 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87035076 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87035077 Dung tích xi lanh trên 3.000 cc  (gạch 4)
+    [8703508] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+      87035081 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87035082 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87035083 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87035084 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87035085 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87035086 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87035087 Dung tích xi lanh trên 3.000 cc  (gạch 4)
+    [8703509] Loại khác
+      87035091 Dung tích xi lanh không quá 1.000 cc  (gạch 4)
+      87035092 Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc  (gạch 4)
+      87035093 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 4)
+      87035094 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 4)
+      87035095 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 4)
+      87035096 Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc  (gạch 4)
+      87035097 Dung tích xi lanh trên 3.000 cc  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870350~r16746 (gạch 2) "Dạng CKD (SEN):" — dòng dưới: 87035011, 87035012, 87035013, 87035014, 87035015, 87035016, 87035017, 87035018, 87035019, 87035021, 87035022, 87035023, 87035024, 87035025, 87035026, 87035027, 87035028
+    870350~r16752 (gạch 3) "Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes):" — dòng dưới: 87035016, 87035017
+    870350~r16755 (gạch 3) "Ô tô kiểu Sedan (SEN) (1):" — dòng dưới: 87035018, 87035019, 87035021
+    870350~r16759 (gạch 3) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động:" — dòng dưới: 87035022, 87035023, 87035024
+    870350~r16763 (gạch 3) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động:" — dòng dưới: 87035025, 87035026
+    870350~r16766 (gạch 3) "Loại khác:" — dòng dưới: 87035027, 87035028
+    870350~r16769 (gạch 2) "Loại khác:" — dòng dưới: 87035031, 87035032, 87035033, 87035034, 87035035, 87035036, 87035041, 87035042, 87035043, 87035044, 87035045, 87035046, 87035047, 87035051, 87035052, 87035053, 87035054, 87035055, 87035056, 87035057, 87035058, 87035061, 87035062, 87035063, 87035064, 87035065, 87035066, 87035067, 87035071, 87035072, 87035073, 87035074, 87035075, 87035076, 87035077, 87035081, 87035082, 87035083, 87035084, 87035085, 87035086, 87035087, 87035091, 87035092, 87035093, 87035094, 87035095, 87035096, 87035097
+    870350~r16771 (gạch 3) "Xe địa hình ATV (All-Terrain Vehicles):" — dòng dưới: 87035032, 87035033
+    870350~r16774 (gạch 3) "Ô tô cứu thương:" — dòng dưới: 87035034, 87035035, 87035036
+    870350~r16786 (gạch 3) "Ô tô chở phạm nhân:" — dòng dưới: 87035051, 87035052, 87035053, 87035054, 87035055
+    870350~r16792 (gạch 3) "Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes):" — dòng dưới: 87035056, 87035057, 87035058
+
+- 870350~r16746 TIEU_DE
+    tieuDe.870350~r16746 [28 ký tự]: 870350~r16746 Dạng CKD (SEN)
+- 87035011 DONG8
+    tax.87035011 [34 ký tự]: 87035011 - - - Xe đua cỡ nhỏ (SEN)
+- 87035012 DONG8
+    tax.87035012 [53 ký tự]: 87035012 - - - Xe địa hình ATV (All-Terrain Vehicles)
+- 87035013 DONG8
+    tax.87035013 [30 ký tự]: 87035013 - - - Ô tô cứu thương
+- 87035014 DONG8
+    tax.87035014 [27 ký tự]: 87035014 - - - Ô tô tang lễ
+- 87035015 DONG8
+    tax.87035015 [33 ký tự]: 87035015 - - - Ô tô chở phạm nhân
+- 870350~r16752 TIEU_DE
+    tieuDe.870350~r16752 [86 ký tự]: 870350~r16752 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87035016 DONG8
+    tax.87035016 [53 ký tự]: 87035016 - - - - Dung tích xi lanh không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 2.000 cc"
+- 87035017 DONG8
+    tax.87035017 [49 ký tự]: 87035017 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870350~r16755 TIEU_DE
+    tieuDe.870350~r16755 [39 ký tự]: 870350~r16755 Ô tô kiểu Sedan (SEN) (1)
+- 87035018 DONG8
+    tax.87035018 [53 ký tự]: 87035018 - - - - Dung tích xi lanh không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.500 cc"
+- 87035019 DONG8
+    tax.87035019 [74 ký tự]: 87035019 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc"
+- 87035021 DONG8
+    tax.87035021 [49 ký tự]: 87035021 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870350~r16759 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870350~r16759 [157 ký tự]: 870350~r16759 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87035022 DONG8
+    tax.87035022 [53 ký tự]: 87035022 - - - - Dung tích xi lanh không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.500 cc"
+- 87035023 DONG8
+    tax.87035023 [74 ký tự]: 87035023 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc"
+- 87035024 DONG8
+    tax.87035024 [49 ký tự]: 87035024 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870350~r16763 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870350~r16763 [168 ký tự]: 870350~r16763 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87035025 DONG8
+    tax.87035025 [53 ký tự]: 87035025 - - - - Dung tích xi lanh không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 2.000 cc"
+- 87035026 DONG8
+    tax.87035026 [49 ký tự]: 87035026 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870350~r16766 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870350~r16766 [23 ký tự]: 870350~r16766 Loại khác
+- 87035027 DONG8
+    tax.87035027 [53 ký tự]: 87035027 - - - - Dung tích xi lanh không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 2.000 cc"
+- 87035028 DONG8
+    tax.87035028 [49 ký tự]: 87035028 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870350~r16769 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870350~r16769 [23 ký tự]: 870350~r16769 Loại khác
+- 87035031 DONG8
+    tax.87035031 [34 ký tự]: 87035031 - - - Xe đua cỡ nhỏ (SEN)
+- 870350~r16771 TIEU_DE
+    tieuDe.870350~r16771 [52 ký tự]: 870350~r16771 Xe địa hình ATV (All-Terrain Vehicles)
+- 87035032 DONG8
+    tax.87035032 [53 ký tự]: 87035032 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87035033 DONG8
+    tax.87035033 [48 ký tự]: 87035033 - - - - Dung tích xi lanh trên 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc"
+- 870350~r16774 TIEU_DE
+    tieuDe.870350~r16774 [29 ký tự]: 870350~r16774 Ô tô cứu thương
+- 87035034 DONG8
+    tax.87035034 [53 ký tự]: 87035034 - - - - Dung tích xi lanh không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.500 cc"
+- 87035035 DONG8
+    tax.87035035 [73 ký tự]: 87035035 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 2.500 cc"
+- 87035036 DONG8
+    tax.87035036 [49 ký tự]: 87035036 - - - - Dung tích xi lanh trên 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc"
+- 8703504 TIEU_DE
+    tieuDe.8703504 [20 ký tự]: 8703504 Ô tô tang lễ
+- 87035041 DONG8
+    tax.87035041 [53 ký tự]: 87035041 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87035042 DONG8
+    tax.87035042 [73 ký tự]: 87035042 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87035043 DONG8
+    tax.87035043 [73 ký tự]: 87035043 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87035044 DONG8
+    tax.87035044 [73 ký tự]: 87035044 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87035045 DONG8
+    tax.87035045 [74 ký tự]: 87035045 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87035046 DONG8
+    tax.87035046 [73 ký tự]: 87035046 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87035047 DONG8
+    tax.87035047 [48 ký tự]: 87035047 - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 870350~r16786 TIEU_DE
+    tieuDe.870350~r16786 [32 ký tự]: 870350~r16786 Ô tô chở phạm nhân
+- 87035051 DONG8
+    tax.87035051 [53 ký tự]: 87035051 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87035052 DONG8
+    tax.87035052 [73 ký tự]: 87035052 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87035053 DONG8
+    tax.87035053 [73 ký tự]: 87035053 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87035054 DONG8
+    tax.87035054 [73 ký tự]: 87035054 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.500 cc"
+- 87035055 DONG8
+    tax.87035055 [49 ký tự]: 87035055 - - - - Dung tích xi lanh trên 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc"
+- 870350~r16792 TIEU_DE
+    tieuDe.870350~r16792 [86 ký tự]: 870350~r16792 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87035056 DONG8
+    tax.87035056 [53 ký tự]: 87035056 - - - - Dung tích xi lanh không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.500 cc"
+- 87035057 DONG8
+    tax.87035057 [74 ký tự]: 87035057 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc"
+- 87035058 DONG8
+    tax.87035058 [49 ký tự]: 87035058 - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 8703506 TIEU_DE
+    tieuDe.8703506 [33 ký tự]: 8703506 Ô tô kiểu Sedan (SEN) (1)
+- 87035061 DONG8
+    tax.87035061 [53 ký tự]: 87035061 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87035062 DONG8
+    tax.87035062 [73 ký tự]: 87035062 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87035063 DONG8
+    tax.87035063 [73 ký tự]: 87035063 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87035064 DONG8
+    tax.87035064 [73 ký tự]: 87035064 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87035065 DONG8
+    tax.87035065 [74 ký tự]: 87035065 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87035066 DONG8
+    tax.87035066 [73 ký tự]: 87035066 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87035067 DONG8
+    tax.87035067 [48 ký tự]: 87035067 - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 8703507 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703507 [151 ký tự]: 8703507 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87035071 DONG8
+    tax.87035071 [53 ký tự]: 87035071 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87035072 DONG8
+    tax.87035072 [73 ký tự]: 87035072 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87035073 DONG8
+    tax.87035073 [73 ký tự]: 87035073 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87035074 DONG8
+    tax.87035074 [73 ký tự]: 87035074 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87035075 DONG8
+    tax.87035075 [74 ký tự]: 87035075 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87035076 DONG8
+    tax.87035076 [73 ký tự]: 87035076 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87035077 DONG8
+    tax.87035077 [48 ký tự]: 87035077 - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 8703508 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703508 [162 ký tự]: 8703508 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87035081 DONG8
+    tax.87035081 [53 ký tự]: 87035081 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87035082 DONG8
+    tax.87035082 [73 ký tự]: 87035082 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87035083 DONG8
+    tax.87035083 [73 ký tự]: 87035083 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87035084 DONG8
+    tax.87035084 [73 ký tự]: 87035084 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87035085 DONG8
+    tax.87035085 [74 ký tự]: 87035085 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87035086 DONG8
+    tax.87035086 [73 ký tự]: 87035086 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87035087 DONG8
+    tax.87035087 [48 ký tự]: 87035087 - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+- 8703509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703509 [17 ký tự]: 8703509 Loại khác
+- 87035091 DONG8
+    tax.87035091 [53 ký tự]: 87035091 - - - - Dung tích xi lanh không quá 1.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh không quá 1.000 cc"
+- 87035092 DONG8
+    tax.87035092 [73 ký tự]: 87035092 - - - - Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc"
+- 87035093 DONG8
+    tax.87035093 [73 ký tự]: 87035093 - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87035094 DONG8
+    tax.87035094 [73 ký tự]: 87035094 - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87035095 DONG8
+    tax.87035095 [74 ký tự]: 87035095 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87035096 DONG8
+    tax.87035096 [73 ký tự]: 87035096 - - - - Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc nhưng không quá 3.000 cc"
+- 87035097 DONG8
+    tax.87035097 [48 ký tự]: 87035097 - - - - Dung tích xi lanh trên 3.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 3.000 cc"
+
+Nguồn cấp phân nhóm: sen.8703, wco.870350; chú giải: nhom8703.nhom, ch87.chuong, phan87.phan
+

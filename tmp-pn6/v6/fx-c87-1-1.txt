@@ -1,0 +1,1437 @@
+VÒNG SỬA — 12 PN6 bị cổng máy chặn (870110 870210 870220 870230 870240 870290 870321 870322 870323 870324 870331 870332). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 870110 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:87011011:dieu-kien-so-co-khong-co-trong-trich:dungTrongNongNghiep
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong3-muc:87011091:dieu-kien-so-co-khong-co-trong-trich:dungTrongNongNghiep
+    ✗ cong5-ve-gioi-han-bi-bo:87011011:Dùng cho nông nghiệp
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong5-ve-gioi-han-bi-bo:87011091:Dùng cho nông nghiệp
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870110","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870110","dong8":{"87011011":{"dieuKienSo":[{"fact":"dungTrongNongNghiep","op":"CO"}]},"87011091":{"dieuKienSo":[{"fact":"dungTrongNongNghiep","op":"CO"}]}},"dieuKienNut":{"8701101":{"dieuKienSo":[{"fact":"congSuat","op":"<=","value":22.5,"donVi":"kW"}]}},"ghiChuSoan":[{"ma":"8701101","loai":"QUYET_DINH","ghiChu":"tieuDe.8701101: \"Công suất không quá 22,5 kW, có hoặc không hoạt động bằng điện\" ⇒ congSuat <= 22.5 kW"},{"ma":"8701101","loai":"BO_VE","ve":"có hoặc không hoạt động bằng điện","lyDo":"Cụm 'có hoặc không' không giới hạn phạm vi áp dụng của phân nhóm"},{"ma":"87011011","loai":"QUYET_DINH","ghiChu":"tax.87011011: \"Dùng cho nông nghiệp\" ⇒ dungTrongNongNghiep CO"},{"ma":"87011091","loai":"QUYET_DINH","ghiChu":"tax.87011091: \"Dùng cho nông nghiệp\" ⇒ dungTrongNongNghiep CO"}]}
+```
+
+=== GÓI PN6 870110 ===
+# 870110 — Máy kéo trục đơn
+
+870110 — Tractors; single axle
+  [8701101] Công suất không quá 22,5 kW, có hoặc không hoạt động bằng điện
+    87011011 Dùng cho nông nghiệp
+    87011019 Loại khác  [LK]
+  [8701109] Loại khác
+    87011091 Dùng cho nông nghiệp
+    87011099 Loại khác  [LK]
+
+- 8701101 TIEU_DE
+    tieuDe.8701101 [70 ký tự]: 8701101 Công suất không quá 22,5 kW, có hoặc không hoạt động bằng điện
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Công suất không quá 22,5 kW" · [GIỚI HẠN] "có" · [GIỚI HẠN] "không hoạt động" · [GIỚI HẠN] "bằng điện"
+- 87011011 DONG8
+    tax.87011011 [35 ký tự]: 87011011 - - - Dùng cho nông nghiệp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho nông nghiệp"
+- 87011019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87011019 [24 ký tự]: 87011019 - - - Loại khác
+- 8701109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8701109 [17 ký tự]: 8701109 Loại khác
+- 87011091 DONG8
+    tax.87011091 [35 ký tự]: 87011091 - - - Dùng cho nông nghiệp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho nông nghiệp"
+- 87011099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87011099 [24 ký tự]: 87011099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.870110; chú giải: nhom8701.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870210 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:87021010+87021041:daLapRap=false,khoiLuongToanBo=6000,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87021010+87021042:daLapRap=false,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87021010+87021049:daLapRap=false,khoiLuongToanBo=5999.994,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87021060+87021081:daLapRap=true,khoiLuongToanBo=6000,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87021060+87021082:daLapRap=true,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87021060+87021089:daLapRap=true,khoiLuongToanBo=5999.994,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870210","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870210","dong8":{"87021010":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87021041":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">=","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":18,"donVi":"tấn"}]},"87021042":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87021060":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87021071":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">=","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":18,"donVi":"tấn"}]},"87021072":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87021081":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">=","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":18,"donVi":"tấn"}]},"87021082":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87021091":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]}},"dieuKienNut":{"870210~r16314":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8702104":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]},"8702107":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"sân bay"}]},"8702108":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]}},"ghiChuSoan":[{"ma":"870210~r16314","loai":"QUYET_DINH","ghiChu":"tieuDe.870210~r16314: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87021010","loai":"QUYET_DINH","ghiChu":"tax.87021010: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"8702104","loai":"QUYET_DINH","ghiChu":"tieuDe.8702104: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses)\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87021041","loai":"QUYET_DINH","ghiChu":"tax.87021041: \"Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuongToanBo >= 6 tấn, <= 18 tấn"},{"ma":"87021042","loai":"QUYET_DINH","ghiChu":"tax.87021042: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87021060","loai":"QUYET_DINH","ghiChu":"tax.87021060: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"8702107","loai":"QUYET_DINH","ghiChu":"tieuDe.8702107: \"Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)\" ⇒ dungCho \"sân bay\""},{"ma":"8702107","loai":"BO_VE","ve":"được thiết kế đặc biệt","lyDo":"Tính chất thiết kế riêng cho sân bay, đã được bao quát qua dungCho sân bay"},{"ma":"87021071","loai":"QUYET_DINH","ghiChu":"tax.87021071: \"Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuongToanBo >= 6 tấn, <= 18 tấn"},{"ma":"87021072","loai":"QUYET_DINH","ghiChu":"tax.87021072: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8702108","loai":"QUYET_DINH","ghiChu":"tieuDe.8702108: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87021081","loai":"QUYET_DINH","ghiChu":"tax.87021081: \"Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuongToanBo >= 6 tấn, <= 18 tấn"},{"ma":"87021082","loai":"QUYET_DINH","ghiChu":"tax.87021082: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87021091","loai":"QUYET_DINH","ghiChu":"tax.87021091: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"}]}
+```
+
+=== GÓI PN6 870210 ===
+# 870210 — Loại chỉ sử dụng động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel)
+
+870210 — Vehicles; public transport type (carries 10 or more persons, including driver), with only compression-ignition internal combustion piston engine (diesel or semi-diesel), new or used
+  [870210~r16314] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16314, gạch 2)
+    87021010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702104] Ô tô khách (1) (motor coaches, buses hoặc minibuses)
+      87021041 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn  (gạch 4)
+      87021042 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87021049 Loại khác  [LK]  (gạch 4)
+    87021050 Loại khác  [LK]  (gạch 3)
+  [870210~r16321] Loại khác  (tầng không mã, biểu thuế r16321, gạch 2)
+    87021060 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702107] Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+      87021071 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn  (gạch 4)
+      87021072 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87021079 Loại khác  [LK]  (gạch 4)
+    [8702108] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+      87021081 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn  (gạch 4)
+      87021082 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87021089 Loại khác  [LK]  (gạch 4)
+    [8702109] Loại khác
+      87021091 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87021099 Loại khác  [LK]  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870210~r16314 (gạch 2) "Dạng CKD (SEN):" — dòng dưới: 87021010, 87021041, 87021042, 87021049, 87021050
+    870210~r16321 (gạch 2) "Loại khác:" — dòng dưới: 87021060, 87021071, 87021072, 87021079, 87021081, 87021082, 87021089, 87021091, 87021099
+
+- 870210~r16314 TIEU_DE
+    tieuDe.870210~r16314 [28 ký tự]: 870210~r16314 Dạng CKD (SEN)
+- 87021010 DONG8
+    tax.87021010 [132 ký tự]: 87021010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702104 TIEU_DE
+    tieuDe.8702104 [60 ký tự]: 8702104 Ô tô khách (1) (motor coaches, buses hoặc minibuses)
+- 87021041 DONG8
+    tax.87021041 [95 ký tự]: 87021041 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế từ 6 tấn trở lên nhưng không quá 18 tấn"
+- 87021042 DONG8
+    tax.87021042 [67 ký tự]: 87021042 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87021049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87021049 [26 ký tự]: 87021049 - - - - Loại khác
+- 87021050 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87021050 [24 ký tự]: 87021050 - - - Loại khác
+- 870210~r16321 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870210~r16321 [23 ký tự]: 870210~r16321 Loại khác
+- 87021060 DONG8
+    tax.87021060 [132 ký tự]: 87021060 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702107 TIEU_DE
+    tieuDe.8702107 [99 ký tự]: 8702107 Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được thiết kế đặc biệt" · [GIỚI HẠN] "để sử dụng trong sân bay"
+- 87021071 DONG8
+    tax.87021071 [95 ký tự]: 87021071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+    sen.87021071 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế từ 6 tấn trở lên nhưng không quá 18 tấn"
+- 87021072 DONG8
+    tax.87021072 [67 ký tự]: 87021072 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    sen.87021072 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87021079 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87021079 [26 ký tự]: 87021079 - - - - Loại khác
+    sen.87021079 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+- 8702108 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8702108 [65 ký tự]: 8702108 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+- 87021081 DONG8
+    tax.87021081 [95 ký tự]: 87021081 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế từ 6 tấn trở lên nhưng không quá 18 tấn"
+- 87021082 DONG8
+    tax.87021082 [67 ký tự]: 87021082 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87021089 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87021089 [26 ký tự]: 87021089 - - - - Loại khác
+- 8702109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8702109 [17 ký tự]: 8702109 Loại khác
+- 87021091 DONG8
+    tax.87021091 [67 ký tự]: 87021091 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87021099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87021099 [26 ký tự]: 87021099 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8702, wco.870210; chú giải: nhom8702.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870220 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:87022022:8702202
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87022023:8702202
+    ✗ cong1-chua-so-hoa:87022029:8702202
+    ✗ cong1-chua-so-hoa:87022041:8702202
+    ✗ cong1-chua-so-hoa:87022049:8702202
+    ✗ cong2-chong-lan:87022010+87022031:daLapRap=false,khoiLuongToanBo=6000,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87022010+87022032:daLapRap=false,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87022010+87022039:daLapRap=false,khoiLuongToanBo=5999.994,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87022050+87022071:daLapRap=true,khoiLuongToanBo=6000,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87022050+87022072:daLapRap=true,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87022050+87022079:daLapRap=true,khoiLuongToanBo=5999.994,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870220","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870220","dong8":{"87022010":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87022022":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">=","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":18,"donVi":"tấn"}]},"87022023":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87022031":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">=","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":18,"donVi":"tấn"}]},"87022032":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87022041":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87022050":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87022061":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">=","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":18,"donVi":"tấn"}]},"87022062":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87022071":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">=","value":6,"donVi":"tấn"},{"fact":"khoiLuongToanBo","op":"<=","value":18,"donVi":"tấn"}]},"87022072":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87022091":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]}},"dieuKienNut":{"870220~r16335":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8702203":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]},"8702206":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"sân bay"}]},"8702207":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]}},"ghiChuSoan":[{"ma":"870220~r16335","loai":"QUYET_DINH","ghiChu":"tieuDe.870220~r16335: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87022010","loai":"QUYET_DINH","ghiChu":"tax.87022010: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"87022022","loai":"QUYET_DINH","ghiChu":"tax.87022022: \"Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuongToanBo >= 6 tấn, <= 18 tấn"},{"ma":"87022023","loai":"QUYET_DINH","ghiChu":"tax.87022023: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8702203","loai":"QUYET_DINH","ghiChu":"tieuDe.8702203: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87022031","loai":"QUYET_DINH","ghiChu":"tax.87022031: \"Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuongToanBo >= 6 tấn, <= 18 tấn"},{"ma":"87022032","loai":"QUYET_DINH","ghiChu":"tax.87022032: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87022041","loai":"QUYET_DINH","ghiChu":"tax.87022041: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87022050","loai":"QUYET_DINH","ghiChu":"tax.87022050: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"8702206","loai":"QUYET_DINH","ghiChu":"tieuDe.8702206: \"Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)\" ⇒ dungCho \"sân bay\""},{"ma":"8702206","loai":"BO_VE","ve":"được thiết kế đặc biệt","lyDo":"Đã được phản ánh qua mục đích sử dụng trong sân bay"},{"ma":"87022061","loai":"QUYET_DINH","ghiChu":"tax.87022061: \"Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuongToanBo >= 6 tấn, <= 18 tấn"},{"ma":"87022062","loai":"QUYET_DINH","ghiChu":"tax.87022062: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8702207","loai":"QUYET_DINH","ghiChu":"tieuDe.8702207: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87022071","loai":"QUYET_DINH","ghiChu":"tax.87022071: \"Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn\" ⇒ khoiLuongToanBo >= 6 tấn, <= 18 tấn"},{"ma":"87022072","loai":"QUYET_DINH","ghiChu":"tax.87022072: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87022091","loai":"QUYET_DINH","ghiChu":"tax.87022091: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"}]}
+```
+
+=== GÓI PN6 870220 ===
+# 870220 — Loại kết hợp động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel) và động cơ điện để tạo động lực
+
+870220 — Vehicles; public transport type (carries 10 or more persons, including driver), with both compression-ignition internal combustion piston engine (diesel or semi-diesel) and electric motor for propulsion, new or used
+  [870220~r16335] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16335, gạch 2)
+    87022010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702202] Loại khác, chở từ 30 người trở lên
+      87022022 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn  (gạch 4)
+      87022023 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87022029 Loại khác  [LK]  (gạch 4)
+    [8702203] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+      87022031 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn  (gạch 4)
+      87022032 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87022039 Loại khác  [LK]  (gạch 4)
+    [8702204] Loại khác
+      87022041 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87022049 Loại khác  [LK]  (gạch 4)
+  [870220~r16348] Loại khác  (tầng không mã, biểu thuế r16348, gạch 2)
+    87022050 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702206] Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+      87022061 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn  (gạch 4)
+      87022062 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87022069 Loại khác  [LK]  (gạch 4)
+    [8702207] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+      87022071 Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn  (gạch 4)
+      87022072 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87022079 Loại khác  [LK]  (gạch 4)
+    [8702209] Loại khác
+      87022091 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87022099 Loại khác  [LK]  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870220~r16335 (gạch 2) "Dạng CKD (SEN):" — dòng dưới: 87022010, 87022022, 87022023, 87022029, 87022031, 87022032, 87022039, 87022041, 87022049
+    870220~r16348 (gạch 2) "Loại khác:" — dòng dưới: 87022050, 87022061, 87022062, 87022069, 87022071, 87022072, 87022079, 87022091, 87022099
+
+- 870220~r16335 TIEU_DE
+    tieuDe.870220~r16335 [28 ký tự]: 870220~r16335 Dạng CKD (SEN)
+- 87022010 DONG8
+    tax.87022010 [132 ký tự]: 87022010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702202 TIEU_DE
+    tieuDe.8702202 [42 ký tự]: 8702202 Loại khác, chở từ 30 người trở lên
+- 87022022 DONG8
+    tax.87022022 [95 ký tự]: 87022022 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế từ 6 tấn trở lên nhưng không quá 18 tấn"
+- 87022023 DONG8
+    tax.87022023 [67 ký tự]: 87022023 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87022029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87022029 [26 ký tự]: 87022029 - - - - Loại khác
+- 8702203 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8702203 [65 ký tự]: 8702203 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+- 87022031 DONG8
+    tax.87022031 [95 ký tự]: 87022031 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế từ 6 tấn trở lên nhưng không quá 18 tấn"
+- 87022032 DONG8
+    tax.87022032 [67 ký tự]: 87022032 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87022039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87022039 [26 ký tự]: 87022039 - - - - Loại khác
+- 8702204 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8702204 [17 ký tự]: 8702204 Loại khác
+- 87022041 DONG8
+    tax.87022041 [67 ký tự]: 87022041 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87022049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87022049 [26 ký tự]: 87022049 - - - - Loại khác
+- 870220~r16348 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870220~r16348 [23 ký tự]: 870220~r16348 Loại khác
+- 87022050 DONG8
+    tax.87022050 [132 ký tự]: 87022050 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702206 TIEU_DE
+    tieuDe.8702206 [99 ký tự]: 8702206 Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được thiết kế đặc biệt" · [GIỚI HẠN] "để sử dụng trong sân bay"
+- 87022061 DONG8
+    tax.87022061 [95 ký tự]: 87022061 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+    sen.87022061 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế từ 6 tấn trở lên nhưng không quá 18 tấn"
+- 87022062 DONG8
+    tax.87022062 [67 ký tự]: 87022062 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    sen.87022062 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87022069 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87022069 [26 ký tự]: 87022069 - - - - Loại khác
+    sen.87022069 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+- 8702207 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8702207 [65 ký tự]: 8702207 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+- 87022071 DONG8
+    tax.87022071 [95 ký tự]: 87022071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế từ 6 tấn trở lên nhưng không quá 18 tấn"
+- 87022072 DONG8
+    tax.87022072 [67 ký tự]: 87022072 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87022079 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87022079 [26 ký tự]: 87022079 - - - - Loại khác
+- 8702209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8702209 [17 ký tự]: 8702209 Loại khác
+- 87022091 DONG8
+    tax.87022091 [67 ký tự]: 87022091 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87022099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87022099 [26 ký tự]: 87022099 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8702, wco.870220; chú giải: nhom8702.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870230 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:87023021:8702302
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87023029:8702302
+    ✗ cong1-chua-so-hoa:87023041:8702302
+    ✗ cong1-chua-so-hoa:87023049:8702302
+    ✗ cong2-chong-lan:87023010+87023031:daLapRap=false,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87023010+87023039:daLapRap=false,khoiLuongToanBo=23999.976,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87023050+87023071:daLapRap=true,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87023050+87023079:daLapRap=true,khoiLuongToanBo=23999.976,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870230","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870230","dong8":{"87023010":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87023021":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87023031":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87023041":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87023050":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87023061":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87023071":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87023091":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]}},"dieuKienNut":{"870230~r16362":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8702303":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]},"8702306":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"sân bay"}]},"8702307":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]}},"ghiChuSoan":[{"ma":"870230~r16362","loai":"QUYET_DINH","ghiChu":"tieuDe.870230~r16362: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87023010","loai":"QUYET_DINH","ghiChu":"tax.87023010: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"87023021","loai":"QUYET_DINH","ghiChu":"tax.87023021: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8702303","loai":"QUYET_DINH","ghiChu":"tieuDe.8702303: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87023031","loai":"QUYET_DINH","ghiChu":"tax.87023031: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87023041","loai":"QUYET_DINH","ghiChu":"tax.87023041: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87023050","loai":"QUYET_DINH","ghiChu":"tax.87023050: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"8702306","loai":"QUYET_DINH","ghiChu":"tieuDe.8702306: \"Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)\" ⇒ dungCho \"sân bay\""},{"ma":"8702306","loai":"BO_VE","ve":"được thiết kế đặc biệt","lyDo":"Đã được phản ánh qua mục đích sử dụng trong sân bay"},{"ma":"87023061","loai":"QUYET_DINH","ghiChu":"tax.87023061: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8702307","loai":"QUYET_DINH","ghiChu":"tieuDe.8702307: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87023071","loai":"QUYET_DINH","ghiChu":"tax.87023071: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87023091","loai":"QUYET_DINH","ghiChu":"tax.87023091: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"}]}
+```
+
+=== GÓI PN6 870230 ===
+# 870230 — Loại kết hợp động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện và động cơ điện để tạo động lực
+
+870230 — Vehicles; public transport type (carries 10 or more persons, including driver), with both compression-ignition internal combustion piston engine (diesel or semi-diesel) and electric motor for propulsion, new or used
+  [870230~r16362] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16362, gạch 2)
+    87023010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702302] Loại khác, chở từ 30 người trở lên
+      87023021 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87023029 Loại khác  [LK]  (gạch 4)
+    [8702303] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+      87023031 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87023039 Loại khác  [LK]  (gạch 4)
+    [8702304] Loại khác
+      87023041 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87023049 Loại khác  [LK]  (gạch 4)
+  [870230~r16373] Loại khác  (tầng không mã, biểu thuế r16373, gạch 2)
+    87023050 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702306] Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+      87023061 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87023069 Loại khác  [LK]  (gạch 4)
+    [8702307] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+      87023071 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87023079 Loại khác  [LK]  (gạch 4)
+    [8702309] Loại khác
+      87023091 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87023099 Loại khác  [LK]  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870230~r16362 (gạch 2) "Dạng CKD (SEN):" — dòng dưới: 87023010, 87023021, 87023029, 87023031, 87023039, 87023041, 87023049
+    870230~r16373 (gạch 2) "Loại khác:" — dòng dưới: 87023050, 87023061, 87023069, 87023071, 87023079, 87023091, 87023099
+
+- 870230~r16362 TIEU_DE
+    tieuDe.870230~r16362 [28 ký tự]: 870230~r16362 Dạng CKD (SEN)
+- 87023010 DONG8
+    tax.87023010 [132 ký tự]: 87023010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702302 TIEU_DE
+    tieuDe.8702302 [42 ký tự]: 8702302 Loại khác, chở từ 30 người trở lên
+- 87023021 DONG8
+    tax.87023021 [67 ký tự]: 87023021 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87023029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87023029 [26 ký tự]: 87023029 - - - - Loại khác
+- 8702303 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8702303 [65 ký tự]: 8702303 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+- 87023031 DONG8
+    tax.87023031 [67 ký tự]: 87023031 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87023039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87023039 [26 ký tự]: 87023039 - - - - Loại khác
+- 8702304 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8702304 [17 ký tự]: 8702304 Loại khác
+- 87023041 DONG8
+    tax.87023041 [67 ký tự]: 87023041 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87023049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87023049 [26 ký tự]: 87023049 - - - - Loại khác
+- 870230~r16373 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870230~r16373 [23 ký tự]: 870230~r16373 Loại khác
+- 87023050 DONG8
+    tax.87023050 [132 ký tự]: 87023050 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702306 TIEU_DE
+    tieuDe.8702306 [99 ký tự]: 8702306 Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được thiết kế đặc biệt" · [GIỚI HẠN] "để sử dụng trong sân bay"
+- 87023061 DONG8
+    tax.87023061 [67 ký tự]: 87023061 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    sen.87023061 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87023069 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87023069 [26 ký tự]: 87023069 - - - - Loại khác
+    sen.87023069 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+- 8702307 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8702307 [65 ký tự]: 8702307 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+- 87023071 DONG8
+    tax.87023071 [67 ký tự]: 87023071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87023079 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87023079 [26 ký tự]: 87023079 - - - - Loại khác
+- 8702309 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8702309 [17 ký tự]: 8702309 Loại khác
+- 87023091 DONG8
+    tax.87023091 [67 ký tự]: 87023091 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87023099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87023099 [26 ký tự]: 87023099 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8702, wco.870230; chú giải: nhom8702.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870240 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:87024021:8702402
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87024029:8702402
+    ✗ cong1-chua-so-hoa:87024041:8702402
+    ✗ cong1-chua-so-hoa:87024049:8702402
+    ✗ cong2-chong-lan:87024010+87024031:daLapRap=false,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87024010+87024039:daLapRap=false,khoiLuongToanBo=23999.976,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87024050+87024071:daLapRap=true,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87024050+87024079:daLapRap=true,khoiLuongToanBo=23999.976,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870240","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870240","dong8":{"87024010":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87024021":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87024031":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87024041":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87024050":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87024061":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87024071":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87024091":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]}},"dieuKienNut":{"870240~r16385":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8702403":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]},"8702406":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"sân bay"}]},"8702407":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]}},"ghiChuSoan":[{"ma":"870240~r16385","loai":"QUYET_DINH","ghiChu":"tieuDe.870240~r16385: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87024010","loai":"QUYET_DINH","ghiChu":"tax.87024010: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"87024021","loai":"QUYET_DINH","ghiChu":"tax.87024021: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8702403","loai":"QUYET_DINH","ghiChu":"tieuDe.8702403: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87024031","loai":"QUYET_DINH","ghiChu":"tax.87024031: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87024041","loai":"QUYET_DINH","ghiChu":"tax.87024041: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87024050","loai":"QUYET_DINH","ghiChu":"tax.87024050: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"8702406","loai":"QUYET_DINH","ghiChu":"tieuDe.8702406: \"Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)\" ⇒ dungCho \"sân bay\""},{"ma":"8702406","loai":"BO_VE","ve":"được thiết kế đặc biệt","lyDo":"Đã được phản ánh qua mục đích sử dụng trong sân bay"},{"ma":"87024061","loai":"QUYET_DINH","ghiChu":"tax.87024061: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8702407","loai":"QUYET_DINH","ghiChu":"tieuDe.8702407: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87024071","loai":"QUYET_DINH","ghiChu":"tax.87024071: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87024091","loai":"QUYET_DINH","ghiChu":"tax.87024091: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"}]}
+```
+
+=== GÓI PN6 870240 ===
+# 870240 — Loại chỉ sử dụng động cơ điện để tạo động lực
+
+870240 — Vehicles; public transport type (carries 10 or more persons, including driver), with only electric motor for propulsion, new or used
+  [870240~r16385] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16385, gạch 2)
+    87024010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702402] Loại khác, chở từ 30 người trở lên
+      87024021 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87024029 Loại khác  [LK]  (gạch 4)
+    [8702403] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+      87024031 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87024039 Loại khác  [LK]  (gạch 4)
+    [8702404] Loại khác
+      87024041 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87024049 Loại khác  [LK]  (gạch 4)
+  [870240~r16396] Loại khác  (tầng không mã, biểu thuế r16396, gạch 2)
+    87024050 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702406] Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+      87024061 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87024069 Loại khác  [LK]  (gạch 4)
+    [8702407] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+      87024071 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87024079 Loại khác  [LK]  (gạch 4)
+    [8702409] Loại khác
+      87024091 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87024099 Loại khác  [LK]  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870240~r16385 (gạch 2) "Dạng CKD (SEN):" — dòng dưới: 87024010, 87024021, 87024029, 87024031, 87024039, 87024041, 87024049
+    870240~r16396 (gạch 2) "Loại khác:" — dòng dưới: 87024050, 87024061, 87024069, 87024071, 87024079, 87024091, 87024099
+
+- 870240~r16385 TIEU_DE
+    tieuDe.870240~r16385 [28 ký tự]: 870240~r16385 Dạng CKD (SEN)
+- 87024010 DONG8
+    tax.87024010 [132 ký tự]: 87024010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702402 TIEU_DE
+    tieuDe.8702402 [42 ký tự]: 8702402 Loại khác, chở từ 30 người trở lên
+- 87024021 DONG8
+    tax.87024021 [67 ký tự]: 87024021 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87024029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87024029 [26 ký tự]: 87024029 - - - - Loại khác
+- 8702403 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8702403 [65 ký tự]: 8702403 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+- 87024031 DONG8
+    tax.87024031 [67 ký tự]: 87024031 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87024039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87024039 [26 ký tự]: 87024039 - - - - Loại khác
+- 8702404 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8702404 [17 ký tự]: 8702404 Loại khác
+- 87024041 DONG8
+    tax.87024041 [67 ký tự]: 87024041 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87024049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87024049 [26 ký tự]: 87024049 - - - - Loại khác
+- 870240~r16396 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870240~r16396 [23 ký tự]: 870240~r16396 Loại khác
+- 87024050 DONG8
+    tax.87024050 [132 ký tự]: 87024050 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702406 TIEU_DE
+    tieuDe.8702406 [99 ký tự]: 8702406 Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được thiết kế đặc biệt" · [GIỚI HẠN] "để sử dụng trong sân bay"
+- 87024061 DONG8
+    tax.87024061 [67 ký tự]: 87024061 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    sen.87024061 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87024069 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87024069 [26 ký tự]: 87024069 - - - - Loại khác
+    sen.87024069 [1048 ký tự]: ĐƯỢC THIẾT KẾ ĐẶC BIỆT ĐỂ SỬ DỤNG TRONG SÂN BAY Xe buýt vận chuyển trong phạm vi sân bay có thể theo các dạng sau: Ở những sân bay không sử dụng cầu dẫn lên máy bay vì khoảng cách quá xa hoặc vì lý do an toàn, hành khách có thể được vận chuyển giữa điểm đến hoặc cửa khởi hành của nhà ga sân bay với máy bay bằng xe buýt vận chuyển trong sân bay hoặc xe buýt điểm đỗ. Các xe buýt hoạt động trên điểm đỗ sân bay giao cắt với các đường lăn của máy bay (đường di chuyển ưu tiên của máy bay) và có thể chở 80 đến 100 hành khách cùng hành lý xách tay của họ. Xe buýt sân bay không phải là loại xe dùng cho mục đích chạy trên đường cao tốc công cộng - để có thể chứa số lượng hành khách nhiều nhất có thể nên chúng dài và rộng hơn xe buýt thông thường. Xe buýt sân bay thường được trang bị số lượng ghế ngồi ở mức tối thiểu hoặc không có ghế ngồi, hành khách đứng trong suốt hành trình, có cửa ở cả hai bên sườn và có sàn thấp. Xe buýt sân bay thường được trang bị đèn quay cho hoạt động gần các đường băng. Xe loại này có thể có cabin lái ở cả hai đầu.
+- 8702407 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8702407 [65 ký tự]: 8702407 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+- 87024071 DONG8
+    tax.87024071 [67 ký tự]: 87024071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87024079 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87024079 [26 ký tự]: 87024079 - - - - Loại khác
+- 8702409 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8702409 [17 ký tự]: 8702409 Loại khác
+- 87024091 DONG8
+    tax.87024091 [67 ký tự]: 87024091 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87024099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87024099 [26 ký tự]: 87024099 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8702, wco.870240; chú giải: nhom8702.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870290 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:87029010+87029021:daLapRap=false,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87029010+87029029:daLapRap=false,khoiLuongToanBo=23999.976,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87029010+87029031:daLapRap=false,khoiLuongToanBo=24000.024,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87029010+87029032:daLapRap=false,khoiLuongToanBo=23999.976,kieuXeChoNguoi=LIMOUSINE_KEO_DAI,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87029021+87029031:daLapRap=false,khoiLuongToanBo=24000.024,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan:87029029+87029032:daLapRap=false,khoiLuongToanBo=23999.976,tenLoai=Ô tô khách:khong-tat-dinh
+    ✗ cong2-chong-lan-truc:87029010:8702902,870290~r16413
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+    ✗ cong2-chong-lan-truc:8702902:87029010,870290~r16413
+    ✗ cong2-chong-lan-truc:870290~r16413:87029010,8702902
+    ✗ cong2-chong-lan-truc:87029040:8702905,8702906,8702907
+    ✗ cong2-chong-lan-truc:8702905:87029040,8702906,8702907
+    ✗ cong2-chong-lan-truc:8702906:87029040,8702905,8702907
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870290","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870290","dong8":{"87029010":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87029021":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87029031":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87029033":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87029040":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["LIMOUSINE_KEO_DAI"]}]},"87029051":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87029061":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]},"87029071":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":"<=","value":24,"donVi":"tấn"}]},"87029080":{"dieuKienSo":[{"fact":"khoiLuongToanBo","op":">","value":24,"donVi":"tấn"}]}},"dieuKienNut":{"870290~r16408":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8702902":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]},"870290~r16413":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]},"8702905":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"sân bay"}]},"8702906":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]},"8702907":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Ô tô khách"}]}},"ghiChuSoan":[{"ma":"870290~r16408","loai":"QUYET_DINH","ghiChu":"tieuDe.870290~r16408: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87029010","loai":"QUYET_DINH","ghiChu":"tax.87029010: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"8702902","loai":"QUYET_DINH","ghiChu":"tieuDe.8702902: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses), chở từ 30 người trở lên\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87029021","loai":"QUYET_DINH","ghiChu":"tax.87029021: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"870290~r16413","loai":"QUYET_DINH","ghiChu":"tieuDe.870290~r16413: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87029031","loai":"QUYET_DINH","ghiChu":"tax.87029031: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87029033","loai":"QUYET_DINH","ghiChu":"tax.87029033: \"Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"87029040","loai":"QUYET_DINH","ghiChu":"tax.87029040: \"Ô tô (bao gồm cả ô tô limousine kéo dài...)\" ⇒ kieuXeChoNguoi LIMOUSINE_KEO_DAI"},{"ma":"8702905","loai":"QUYET_DINH","ghiChu":"tieuDe.8702905: \"Ô tô khách, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)\" ⇒ dungCho \"sân bay\""},{"ma":"8702905","loai":"BO_VE","ve":"được thiết kế đặc biệt","lyDo":"Đã được phản ánh qua mục đích sử dụng trong sân bay"},{"ma":"87029051","loai":"QUYET_DINH","ghiChu":"tax.87029051: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8702906","loai":"QUYET_DINH","ghiChu":"tieuDe.8702906: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác, chở từ 30 người trở lên\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87029061","loai":"QUYET_DINH","ghiChu":"tax.87029061: \"Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"},{"ma":"8702907","loai":"QUYET_DINH","ghiChu":"tieuDe.8702907: \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\""},{"ma":"87029071","loai":"QUYET_DINH","ghiChu":"tax.87029071: \"Khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn\" ⇒ khoiLuongToanBo <= 24 tấn"},{"ma":"87029080","loai":"QUYET_DINH","ghiChu":"tax.87029080: \"Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn\" ⇒ khoiLuongToanBo > 24 tấn"}]}
+```
+
+=== GÓI PN6 870290 ===
+# 870290 — Loại khác
+
+870290 — Vehicles; public transport type (carries 10 or more persons, including driver), n.e.c. in heading 8702, new or used
+  [870290~r16408] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16408, gạch 2)
+    87029010 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702902] Ô tô khách (1) (motor coaches, buses hoặc minibuses), chở từ 30 người trở lên
+      87029021 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87029029 Loại khác  [LK]  (gạch 4)
+    [870290~r16413] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác  (tầng không mã, biểu thuế r16413, gạch 3)
+      87029031 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87029032 Loại khác  [LK]  (gạch 4)
+    87029033 Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  [LK có điều kiện]
+    87029039 Loại khác  [LK]
+  [870290~r16418] Loại khác  (tầng không mã, biểu thuế r16418, gạch 2)
+    87029040 Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)  (gạch 3)
+    [8702905] Ô tô khách, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+      87029051 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87029059 Loại khác  [LK]  (gạch 4)
+    [8702906] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác, chở từ 30 người trở lên
+      87029061 Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  (gạch 4)
+      87029069 Loại khác  [LK]  (gạch 4)
+    [8702907] Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+      87029071 Khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn  (gạch 4)
+      87029079 Loại khác  [LK]  (gạch 4)
+    87029080 Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn  [LK có điều kiện]  (gạch 3)
+    87029090 Loại khác  [LK]  (gạch 3)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870290~r16408 (gạch 2) "Dạng CKD (SEN):" — dòng dưới: 87029010, 87029021, 87029029, 87029031, 87029032, 87029033, 87029039
+    870290~r16413 (gạch 3) "Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác:" — dòng dưới: 87029031, 87029032
+    870290~r16418 (gạch 2) "Loại khác:" — dòng dưới: 87029040, 87029051, 87029059, 87029061, 87029069, 87029071, 87029079, 87029080, 87029090
+
+- 870290~r16408 TIEU_DE
+    tieuDe.870290~r16408 [28 ký tự]: 870290~r16408 Dạng CKD (SEN)
+- 87029010 DONG8
+    tax.87029010 [132 ký tự]: 87029010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702902 TIEU_DE
+    tieuDe.8702902 [85 ký tự]: 8702902 Ô tô khách (1) (motor coaches, buses hoặc minibuses), chở từ 30 người trở lên
+- 87029021 DONG8
+    tax.87029021 [67 ký tự]: 87029021 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87029029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87029029 [26 ký tự]: 87029029 - - - - Loại khác
+- 870290~r16413 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870290~r16413 [71 ký tự]: 870290~r16413 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+- 87029031 DONG8
+    tax.87029031 [67 ký tự]: 87029031 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87029032 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87029032 [26 ký tự]: 87029032 - - - - Loại khác
+- 87029033 DONG8
+    tax.87029033 [79 ký tự]: 87029033 - - - Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87029039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87029039 [24 ký tự]: 87029039 - - - Loại khác
+- 870290~r16418 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870290~r16418 [23 ký tự]: 870290~r16418 Loại khác
+- 87029040 DONG8
+    tax.87029040 [132 ký tự]: 87029040 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)
+- 8702905 TIEU_DE
+    tieuDe.8702905 [100 ký tự]: 8702905 Ô tô khách, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được thiết kế đặc biệt" · [GIỚI HẠN] "để sử dụng trong sân bay"
+- 87029051 DONG8
+    tax.87029051 [67 ký tự]: 87029051 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87029059 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87029059 [26 ký tự]: 87029059 - - - - Loại khác
+- 8702906 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8702906 [90 ký tự]: 8702906 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác, chở từ 30 người trở lên
+- 87029061 DONG8
+    tax.87029061 [67 ký tự]: 87029061 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87029069 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87029069 [26 ký tự]: 87029069 - - - - Loại khác
+- 8702907 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8702907 [65 ký tự]: 8702907 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác
+- 87029071 DONG8
+    tax.87029071 [72 ký tự]: 87029071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Khối lượng toàn bộ theo thiết kế không quá 24 tấn"
+- 87029079 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87029079 [26 ký tự]: 87029079 - - - - Loại khác
+- 87029080 DONG8
+    tax.87029080 [79 ký tự]: 87029080 - - - Loại khác, có khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có khối lượng toàn bộ theo thiết kế trên 24 tấn"
+- 87029090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87029090 [24 ký tự]: 87029090 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8702, wco.870290; chú giải: nhom8702.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870321 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:87032121:8703212
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87032129:8703212
+    ✗ cong1-chua-so-hoa:87032131:8703212
+    ✗ cong1-chua-so-hoa:87032139:8703212
+    ✗ cong1-chua-so-hoa:87032151:8703215
+    ✗ cong1-chua-so-hoa:87032159:8703215
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870321","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870321","dong8":{"87032111":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87032112":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"87032113":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87032114":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87032115":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"87032121":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"87032131":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]},"87032141":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87032142":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"87032143":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87032144":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87032145":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"87032151":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"87032191":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]}},"dieuKienNut":{"870321~r16437":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870321~r16437","loai":"QUYET_DINH","ghiChu":"tieuDe.870321~r16437: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87032111","loai":"QUYET_DINH","ghiChu":"tax.87032111: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"87032112","loai":"QUYET_DINH","ghiChu":"tax.87032112: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87032113","loai":"QUYET_DINH","ghiChu":"tax.87032113: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87032114","loai":"QUYET_DINH","ghiChu":"tax.87032114: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"87032115","loai":"QUYET_DINH","ghiChu":"tax.87032115: \"Ô tô kiểu Sedan (SEN)(1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"87032121","loai":"QUYET_DINH","ghiChu":"tax.87032121: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"87032131","loai":"QUYET_DINH","ghiChu":"tax.87032131: \"Xe 3 bánh (SEN)\" ⇒ xeBaBanh CO"},{"ma":"87032141","loai":"QUYET_DINH","ghiChu":"tax.87032141: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"87032142","loai":"QUYET_DINH","ghiChu":"tax.87032142: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87032143","loai":"QUYET_DINH","ghiChu":"tax.87032143: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87032144","loai":"QUYET_DINH","ghiChu":"tax.87032144: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"87032145","loai":"QUYET_DINH","ghiChu":"tax.87032145: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"87032151","loai":"QUYET_DINH","ghiChu":"tax.87032151: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"87032191","loai":"QUYET_DINH","ghiChu":"tax.87032191: \"Xe 3 bánh (SEN)\" ⇒ xeBaBanh CO"}]}
+```
+
+=== GÓI PN6 870321 ===
+# 870321 — Dung tích xi lanh không quá 1.000 cc
+
+870321 — Vehicles; with only spark-ignition internal combustion piston engine, cylinder capacity not over 1000cc
+  [870321~r16437] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16437, gạch 3)
+    87032111 Xe đua cỡ nhỏ (SEN)
+    87032112 Xe địa hình ATV (All-Terrain Vehicles)
+    87032113 Ô tô cứu thương
+    87032114 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    87032115 Ô tô kiểu Sedan (SEN)(1)
+    [8703212] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+      87032121 Loại bốn bánh chủ động  (gạch 5)
+      87032129 Loại khác  [LK]  (gạch 5)
+    [8703213] Loại khác
+      87032131 Xe 3 bánh (SEN)  (gạch 5)
+      87032139 Loại khác  [LK]  (gạch 5)
+  [870321~r16449] Loại khác  (tầng không mã, biểu thuế r16449, gạch 3)
+    87032141 Xe đua cỡ nhỏ (SEN)
+    87032142 Xe địa hình ATV (All-Terrain Vehicles)
+    87032143 Ô tô cứu thương
+    87032144 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    87032145 Ô tô kiểu Sedan (SEN) (1)
+    [8703215] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+      87032151 Loại bốn bánh chủ động  (gạch 5)
+      87032159 Loại khác  [LK]  (gạch 5)
+    [8703219] Loại khác
+      87032191 Xe 3 bánh (SEN)  (gạch 5)
+      87032199 Loại khác  [LK]  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870321~r16437 (gạch 3) "Dạng CKD (SEN):" — dòng dưới: 87032111, 87032112, 87032113, 87032114, 87032115, 87032121, 87032129, 87032131, 87032139
+    870321~r16449 (gạch 3) "Loại khác:" — dòng dưới: 87032141, 87032142, 87032143, 87032144, 87032145, 87032151, 87032159, 87032191, 87032199
+
+- 870321~r16437 TIEU_DE
+    tieuDe.870321~r16437 [28 ký tự]: 870321~r16437 Dạng CKD (SEN)
+- 87032111 DONG8
+    tax.87032111 [36 ký tự]: 87032111 - - - - Xe đua cỡ nhỏ (SEN)
+- 87032112 DONG8
+    tax.87032112 [55 ký tự]: 87032112 - - - - Xe địa hình ATV (All-Terrain Vehicles)
+- 87032113 DONG8
+    tax.87032113 [32 ký tự]: 87032113 - - - - Ô tô cứu thương
+- 87032114 DONG8
+    tax.87032114 [89 ký tự]: 87032114 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87032115 DONG8
+    tax.87032115 [41 ký tự]: 87032115 - - - - Ô tô kiểu Sedan (SEN)(1)
+- 8703212 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703212 [127 ký tự]: 8703212 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+- 87032121 DONG8
+    tax.87032121 [41 ký tự]: 87032121 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87032129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032129 [28 ký tự]: 87032129 - - - - - Loại khác
+- 8703213 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703213 [17 ký tự]: 8703213 Loại khác
+- 87032131 DONG8
+    tax.87032131 [34 ký tự]: 87032131 - - - - - Xe 3 bánh (SEN)
+    sen.87032131 [550 ký tự]: XE BA BÁNH Những loại xe này có các đặc điểm cơ khí tương tự như các loại ô tô có động cơ thông thường, tức là chúng được lắp động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel) hoặc động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện VÀ được lắp với số lùi và một bộ vi sai. Tuy nhiên, chúng không được lắp với bánh lái kiểu ô tô. Chúng thường được trang bị ghế kiểu băng ghế dài ở cuối xe và được sử dụng để chở người. -Khoang hành khách được tách biệt với khoang của người lái xe. Ví dụ về xe ba bánh trong các phân nhóm này:
+- 87032139 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032139 [28 ký tự]: 87032139 - - - - - Loại khác
+- 870321~r16449 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870321~r16449 [23 ký tự]: 870321~r16449 Loại khác
+- 87032141 DONG8
+    tax.87032141 [36 ký tự]: 87032141 - - - - Xe đua cỡ nhỏ (SEN)
+- 87032142 DONG8
+    tax.87032142 [55 ký tự]: 87032142 - - - - Xe địa hình ATV (All-Terrain Vehicles)
+- 87032143 DONG8
+    tax.87032143 [32 ký tự]: 87032143 - - - - Ô tô cứu thương
+- 87032144 DONG8
+    tax.87032144 [89 ký tự]: 87032144 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87032145 DONG8
+    tax.87032145 [42 ký tự]: 87032145 - - - - Ô tô kiểu Sedan (SEN) (1)
+- 8703215 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703215 [127 ký tự]: 8703215 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+- 87032151 DONG8
+    tax.87032151 [41 ký tự]: 87032151 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87032159 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032159 [28 ký tự]: 87032159 - - - - - Loại khác
+- 8703219 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703219 [17 ký tự]: 8703219 Loại khác
+- 87032191 DONG8
+    tax.87032191 [34 ký tự]: 87032191 - - - - - Xe 3 bánh (SEN)
+    sen.87032191 [550 ký tự]: XE BA BÁNH Những loại xe này có các đặc điểm cơ khí tương tự như các loại ô tô có động cơ thông thường, tức là chúng được lắp động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel) hoặc động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện VÀ được lắp với số lùi và một bộ vi sai. Tuy nhiên, chúng không được lắp với bánh lái kiểu ô tô. Chúng thường được trang bị ghế kiểu băng ghế dài ở cuối xe và được sử dụng để chở người. -Khoang hành khách được tách biệt với khoang của người lái xe. Ví dụ về xe ba bánh trong các phân nhóm này:
+- 87032199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032199 [28 ký tự]: 87032199 - - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8703, wco.870321; chú giải: nhom8703.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870322 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:87032221:8703222
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87032229:8703222
+    ✗ cong1-chua-so-hoa:87032230:8703222
+    ✗ cong1-chua-so-hoa:87032251:8703225
+    ✗ cong1-chua-so-hoa:87032259:8703225
+    ✗ cong1-chua-so-hoa:87032290:8703225
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870322","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870322","dong8":{"87032211":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87032212":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"87032213":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87032214":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87032215":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87032216":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87032217":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"87032221":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"87032241":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87032242":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"87032243":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87032244":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87032245":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87032246":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87032247":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"87032251":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]}},"dieuKienNut":{"870322~r16462":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870322~r16462","loai":"QUYET_DINH","ghiChu":"tieuDe.870322~r16462: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87032211","loai":"QUYET_DINH","ghiChu":"tax.87032211: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"87032212","loai":"QUYET_DINH","ghiChu":"tax.87032212: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87032213","loai":"QUYET_DINH","ghiChu":"tax.87032213: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87032214","loai":"QUYET_DINH","ghiChu":"tax.87032214: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87032215","loai":"QUYET_DINH","ghiChu":"tax.87032215: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87032216","loai":"QUYET_DINH","ghiChu":"tax.87032216: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"87032217","loai":"QUYET_DINH","ghiChu":"tax.87032217: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"87032221","loai":"QUYET_DINH","ghiChu":"tax.87032221: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"87032241","loai":"QUYET_DINH","ghiChu":"tax.87032241: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"87032242","loai":"QUYET_DINH","ghiChu":"tax.87032242: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87032243","loai":"QUYET_DINH","ghiChu":"tax.87032243: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87032244","loai":"QUYET_DINH","ghiChu":"tax.87032244: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87032245","loai":"QUYET_DINH","ghiChu":"tax.87032245: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87032246","loai":"QUYET_DINH","ghiChu":"tax.87032246: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"87032247","loai":"QUYET_DINH","ghiChu":"tax.87032247: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"87032251","loai":"QUYET_DINH","ghiChu":"tax.87032251: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"}]}
+```
+
+=== GÓI PN6 870322 ===
+# 870322 — Dung tích xi lanh trên 1.000 cc nhưng không quá 1.500 cc
+
+870322 — Vehicles; with only spark-ignition internal combustion piston engine, cylinder capacity over 1000 but not over 1500cc
+  [870322~r16462] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16462, gạch 3)
+    87032211 Xe đua cỡ nhỏ (SEN)
+    87032212 Xe địa hình ATV (All-Terrain Vehicles)
+    87032213 Ô tô cứu thương
+    87032214 Ô tô tang lễ
+    87032215 Ô tô chở phạm nhân
+    87032216 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    87032217 Ô tô kiểu Sedan (SEN) (1)
+    [8703222] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+      87032221 Loại bốn bánh chủ động  (gạch 5)
+      87032229 Loại khác  [LK]  (gạch 5)
+    87032230 Loại khác  [LK]  (gạch 4)
+  [870322~r16474] Loại khác  (tầng không mã, biểu thuế r16474, gạch 3)
+    87032241 Xe đua cỡ nhỏ (SEN)
+    87032242 Xe địa hình ATV (All-Terrain Vehicles)
+    87032243 Ô tô cứu thương
+    87032244 Ô tô tang lễ
+    87032245 Ô tô chở phạm nhân
+    87032246 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    87032247 Ô tô kiểu Sedan (SEN) (1)
+    [8703225] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+      87032251 Loại bốn bánh chủ động  (gạch 5)
+      87032259 Loại khác  [LK]  (gạch 5)
+    87032290 Loại khác  [LK]  (gạch 4)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870322~r16462 (gạch 3) "Dạng CKD (SEN):" — dòng dưới: 87032211, 87032212, 87032213, 87032214, 87032215, 87032216, 87032217, 87032221, 87032229, 87032230
+    870322~r16474 (gạch 3) "Loại khác:" — dòng dưới: 87032241, 87032242, 87032243, 87032244, 87032245, 87032246, 87032247, 87032251, 87032259, 87032290
+
+- 870322~r16462 TIEU_DE
+    tieuDe.870322~r16462 [28 ký tự]: 870322~r16462 Dạng CKD (SEN)
+- 87032211 DONG8
+    tax.87032211 [36 ký tự]: 87032211 - - - - Xe đua cỡ nhỏ (SEN)
+- 87032212 DONG8
+    tax.87032212 [55 ký tự]: 87032212 - - - - Xe địa hình ATV (All-Terrain Vehicles)
+- 87032213 DONG8
+    tax.87032213 [32 ký tự]: 87032213 - - - - Ô tô cứu thương
+- 87032214 DONG8
+    tax.87032214 [29 ký tự]: 87032214 - - - - Ô tô tang lễ
+- 87032215 DONG8
+    tax.87032215 [35 ký tự]: 87032215 - - - - Ô tô chở phạm nhân
+- 87032216 DONG8
+    tax.87032216 [89 ký tự]: 87032216 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87032217 DONG8
+    tax.87032217 [42 ký tự]: 87032217 - - - - Ô tô kiểu Sedan (SEN) (1)
+- 8703222 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703222 [127 ký tự]: 8703222 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+- 87032221 DONG8
+    tax.87032221 [41 ký tự]: 87032221 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87032229 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032229 [28 ký tự]: 87032229 - - - - - Loại khác
+- 87032230 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032230 [26 ký tự]: 87032230 - - - - Loại khác
+- 870322~r16474 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870322~r16474 [23 ký tự]: 870322~r16474 Loại khác
+- 87032241 DONG8
+    tax.87032241 [36 ký tự]: 87032241 - - - - Xe đua cỡ nhỏ (SEN)
+- 87032242 DONG8
+    tax.87032242 [55 ký tự]: 87032242 - - - - Xe địa hình ATV (All-Terrain Vehicles)
+- 87032243 DONG8
+    tax.87032243 [32 ký tự]: 87032243 - - - - Ô tô cứu thương
+- 87032244 DONG8
+    tax.87032244 [29 ký tự]: 87032244 - - - - Ô tô tang lễ
+- 87032245 DONG8
+    tax.87032245 [35 ký tự]: 87032245 - - - - Ô tô chở phạm nhân
+- 87032246 DONG8
+    tax.87032246 [89 ký tự]: 87032246 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87032247 DONG8
+    tax.87032247 [42 ký tự]: 87032247 - - - - Ô tô kiểu Sedan (SEN) (1)
+- 8703225 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703225 [127 ký tự]: 8703225 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+- 87032251 DONG8
+    tax.87032251 [41 ký tự]: 87032251 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87032259 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032259 [28 ký tự]: 87032259 - - - - - Loại khác
+- 87032290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032290 [26 ký tự]: 87032290 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8703, wco.870322; chú giải: nhom8703.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870323 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-bien-lech-chu:87032321:dungTichXiLanh
+      → Biên số lệch chữ: "không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=. Sửa: Sửa op/value đúng chữ của câu trích.
+    ✗ cong3-bien-lech-chu:87032331:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87032335:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87032341:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87032355:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87032361:dungTichXiLanh
+    ✗ cong2-chong-lan:87032311+87032331:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1799.9982,kieuXeChoNguoi=CUU_THUONG
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87032311+87032332:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1800.0018,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87032311+87032333:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=2000.002,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87032311+87032334:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=2500.0025,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87032311+87032335:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=1799.9982,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87032311+87032336:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=2000.002,kieuXeChoNguoi=CUU_THUONG
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870323","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870323","dong8":{"87032311":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87032312":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87032313":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87032314":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87032321":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87032322":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87032323":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87032324":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"}]},"87032331":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87032332":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87032333":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87032334":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"}]},"87032335":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87032336":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87032341":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87032342":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87032351":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87032352":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87032353":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87032354":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87032355":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87032356":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87032357":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87032358":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"}]},"87032361":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87032362":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87032363":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87032364":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"}]},"87032365":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87032366":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87032367":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87032368":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"}]},"87032371":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87032372":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87032373":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2500,"donVi":"cc"}]},"87032374":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2500,"donVi":"cc"}]}},"dieuKienNut":{"870323~r16487":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8703232":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"870323~r16497":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"870323~r16502":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]},"870323~r16513":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"870323~r16518":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"870323~r16523":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870323~r16487","loai":"QUYET_DINH","ghiChu":"tieuDe.870323~r16487: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87032311","loai":"QUYET_DINH","ghiChu":"tax.87032311: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87032312","loai":"QUYET_DINH","ghiChu":"tax.87032312: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87032313","loai":"QUYET_DINH","ghiChu":"tax.87032313: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87032314","loai":"QUYET_DINH","ghiChu":"tax.87032314: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"8703232","loai":"QUYET_DINH","ghiChu":"tieuDe.8703232: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"870323~r16497","loai":"QUYET_DINH","ghiChu":"tieuDe.870323~r16497: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"870323~r16502","loai":"QUYET_DINH","ghiChu":"tieuDe.870323~r16502: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"},{"ma":"87032351","loai":"QUYET_DINH","ghiChu":"tax.87032351: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87032352","loai":"QUYET_DINH","ghiChu":"tax.87032352: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87032353","loai":"QUYET_DINH","ghiChu":"tax.87032353: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87032354","loai":"QUYET_DINH","ghiChu":"tax.87032354: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"870323~r16513","loai":"QUYET_DINH","ghiChu":"tieuDe.870323~r16513: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"870323~r16518","loai":"QUYET_DINH","ghiChu":"tieuDe.870323~r16518: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"870323~r16523","loai":"QUYET_DINH","ghiChu":"tieuDe.870323~r16523: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"}]}
+```
+
+=== GÓI PN6 870323 ===
+# 870323 — Dung tích xilanh trên 1.500 cc nhưng không quá 3.000 cc
+
+870323 — Vehicles; with only spark-ignition internal combustion reciprocating piston engine, cylinder capacity over 1500 but not over 3000cc
+  [870323~r16487] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16487, gạch 3)
+    87032311 Ô tô cứu thương
+    87032312 Ô tô tang lễ
+    87032313 Ô tô chở phạm nhân
+    87032314 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    [8703232] Ô tô kiểu Sedan (SEN) (1)
+      87032321 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87032322 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87032323 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 5)
+      87032324 Dung tích xi lanh trên 2.500 cc  (gạch 5)
+    [870323~r16497] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động  (tầng không mã, biểu thuế r16497, gạch 4)
+      87032331 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87032332 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87032333 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 5)
+      87032334 Dung tích xi lanh trên 2.500 cc  (gạch 5)
+    [870323~r16502] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động  (tầng không mã, biểu thuế r16502, gạch 4)
+      87032335 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc  (gạch 5)
+      87032336 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+    [8703234] Loại khác
+      87032341 Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc  (gạch 5)
+      87032342 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+  [870323~r16508] Loại khác  (tầng không mã, biểu thuế r16508, gạch 3)
+    87032351 Ô tô cứu thương
+    87032352 Ô tô tang lễ
+    87032353 Ô tô chở phạm nhân
+    87032354 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    [870323~r16513] Ô tô kiểu Sedan (SEN) (1)  (tầng không mã, biểu thuế r16513, gạch 4)
+      87032355 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87032356 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87032357 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 5)
+      87032358 Dung tích xi lanh trên 2.500 cc  (gạch 5)
+    [870323~r16518] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động  (tầng không mã, biểu thuế r16518, gạch 4)
+      87032361 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87032362 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87032363 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 5)
+      87032364 Dung tích xi lanh trên 2.500 cc  (gạch 5)
+    [870323~r16523] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động  (tầng không mã, biểu thuế r16523, gạch 4)
+      87032365 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87032366 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87032367 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 5)
+      87032368 Dung tích xi lanh trên 2.500 cc  (gạch 5)
+    [8703237] Loại khác
+      87032371 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87032372 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87032373 Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc  (gạch 5)
+      87032374 Dung tích xi lanh trên 2.500 cc  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870323~r16487 (gạch 3) "Dạng CKD (SEN):" — dòng dưới: 87032311, 87032312, 87032313, 87032314, 87032321, 87032322, 87032323, 87032324, 87032331, 87032332, 87032333, 87032334, 87032335, 87032336, 87032341, 87032342
+    870323~r16497 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động:" — dòng dưới: 87032331, 87032332, 87032333, 87032334
+    870323~r16502 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động:" — dòng dưới: 87032335, 87032336
+    870323~r16508 (gạch 3) "Loại khác:" — dòng dưới: 87032351, 87032352, 87032353, 87032354, 87032355, 87032356, 87032357, 87032358, 87032361, 87032362, 87032363, 87032364, 87032365, 87032366, 87032367, 87032368, 87032371, 87032372, 87032373, 87032374
+    870323~r16513 (gạch 4) "Ô tô kiểu Sedan (SEN) (1):" — dòng dưới: 87032355, 87032356, 87032357, 87032358
+    870323~r16518 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động:" — dòng dưới: 87032361, 87032362, 87032363, 87032364
+    870323~r16523 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động:" — dòng dưới: 87032365, 87032366, 87032367, 87032368
+
+- 870323~r16487 TIEU_DE
+    tieuDe.870323~r16487 [28 ký tự]: 870323~r16487 Dạng CKD (SEN)
+- 87032311 DONG8
+    tax.87032311 [32 ký tự]: 87032311 - - - - Ô tô cứu thương
+- 87032312 DONG8
+    tax.87032312 [29 ký tự]: 87032312 - - - - Ô tô tang lễ
+- 87032313 DONG8
+    tax.87032313 [35 ký tự]: 87032313 - - - - Ô tô chở phạm nhân
+- 87032314 DONG8
+    tax.87032314 [89 ký tự]: 87032314 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 8703232 TIEU_DE
+    tieuDe.8703232 [33 ký tự]: 8703232 Ô tô kiểu Sedan (SEN) (1)
+- 87032321 DONG8
+    tax.87032321 [75 ký tự]: 87032321 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87032322 DONG8
+    tax.87032322 [75 ký tự]: 87032322 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87032323 DONG8
+    tax.87032323 [76 ký tự]: 87032323 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87032324 DONG8
+    tax.87032324 [51 ký tự]: 87032324 - - - - - Dung tích xi lanh trên 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc"
+- 870323~r16497 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870323~r16497 [157 ký tự]: 870323~r16497 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87032331 DONG8
+    tax.87032331 [75 ký tự]: 87032331 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87032332 DONG8
+    tax.87032332 [75 ký tự]: 87032332 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87032333 DONG8
+    tax.87032333 [76 ký tự]: 87032333 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87032334 DONG8
+    tax.87032334 [51 ký tự]: 87032334 - - - - - Dung tích xi lanh trên 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc"
+- 870323~r16502 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870323~r16502 [168 ký tự]: 870323~r16502 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87032335 DONG8
+    tax.87032335 [76 ký tự]: 87032335 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc"
+- 87032336 DONG8
+    tax.87032336 [51 ký tự]: 87032336 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 8703234 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703234 [17 ký tự]: 8703234 Loại khác
+- 87032341 DONG8
+    tax.87032341 [76 ký tự]: 87032341 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc"
+- 87032342 DONG8
+    tax.87032342 [51 ký tự]: 87032342 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870323~r16508 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870323~r16508 [23 ký tự]: 870323~r16508 Loại khác
+- 87032351 DONG8
+    tax.87032351 [32 ký tự]: 87032351 - - - - Ô tô cứu thương
+- 87032352 DONG8
+    tax.87032352 [29 ký tự]: 87032352 - - - - Ô tô tang lễ
+- 87032353 DONG8
+    tax.87032353 [35 ký tự]: 87032353 - - - - Ô tô chở phạm nhân
+- 87032354 DONG8
+    tax.87032354 [89 ký tự]: 87032354 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 870323~r16513 TIEU_DE
+    tieuDe.870323~r16513 [39 ký tự]: 870323~r16513 Ô tô kiểu Sedan (SEN) (1)
+- 87032355 DONG8
+    tax.87032355 [75 ký tự]: 87032355 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87032356 DONG8
+    tax.87032356 [75 ký tự]: 87032356 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87032357 DONG8
+    tax.87032357 [76 ký tự]: 87032357 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87032358 DONG8
+    tax.87032358 [51 ký tự]: 87032358 - - - - - Dung tích xi lanh trên 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc"
+- 870323~r16518 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870323~r16518 [157 ký tự]: 870323~r16518 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87032361 DONG8
+    tax.87032361 [75 ký tự]: 87032361 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87032362 DONG8
+    tax.87032362 [75 ký tự]: 87032362 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87032363 DONG8
+    tax.87032363 [76 ký tự]: 87032363 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87032364 DONG8
+    tax.87032364 [51 ký tự]: 87032364 - - - - - Dung tích xi lanh trên 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc"
+- 870323~r16523 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870323~r16523 [168 ký tự]: 870323~r16523 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87032365 DONG8
+    tax.87032365 [75 ký tự]: 87032365 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87032366 DONG8
+    tax.87032366 [75 ký tự]: 87032366 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87032367 DONG8
+    tax.87032367 [76 ký tự]: 87032367 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87032368 DONG8
+    tax.87032368 [51 ký tự]: 87032368 - - - - - Dung tích xi lanh trên 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc"
+- 8703237 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703237 [17 ký tự]: 8703237 Loại khác
+- 87032371 DONG8
+    tax.87032371 [75 ký tự]: 87032371 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87032372 DONG8
+    tax.87032372 [75 ký tự]: 87032372 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87032373 DONG8
+    tax.87032373 [76 ký tự]: 87032373 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc"
+- 87032374 DONG8
+    tax.87032374 [51 ký tự]: 87032374 - - - - - Dung tích xi lanh trên 2.500 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.500 cc"
+
+Nguồn cấp phân nhóm: sen.8703, wco.870323; chú giải: nhom8703.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870324 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:87032421:8703242
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87032429:8703242
+    ✗ cong1-chua-so-hoa:87032430:8703242
+    ✗ cong1-chua-so-hoa:87032451:8703245
+    ✗ cong1-chua-so-hoa:87032459:8703245
+    ✗ cong1-chua-so-hoa:87032461:8703245
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870324","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870324","dong8":{"87032411":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87032412":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87032413":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87032414":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87032415":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"87032421":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"87032441":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87032442":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87032443":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87032444":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87032445":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"87032451":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"87032461":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]}},"dieuKienNut":{"870324~r16534":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"870324~r16549":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]}},"ghiChuSoan":[{"ma":"870324~r16534","loai":"QUYET_DINH","ghiChu":"tieuDe.870324~r16534: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87032411","loai":"QUYET_DINH","ghiChu":"tax.87032411: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87032412","loai":"QUYET_DINH","ghiChu":"tax.87032412: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87032413","loai":"QUYET_DINH","ghiChu":"tax.87032413: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87032414","loai":"QUYET_DINH","ghiChu":"tax.87032414: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"87032415","loai":"QUYET_DINH","ghiChu":"tax.87032415: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"87032421","loai":"QUYET_DINH","ghiChu":"tax.87032421: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"87032441","loai":"QUYET_DINH","ghiChu":"tax.87032441: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87032442","loai":"QUYET_DINH","ghiChu":"tax.87032442: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87032443","loai":"QUYET_DINH","ghiChu":"tax.87032443: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87032444","loai":"QUYET_DINH","ghiChu":"tax.87032444: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"870324~r16549","loai":"QUYET_DINH","ghiChu":"tieuDe.870324~r16549: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"87032445","loai":"QUYET_DINH","ghiChu":"tax.87032445: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"87032451","loai":"QUYET_DINH","ghiChu":"tax.87032451: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"87032461","loai":"QUYET_DINH","ghiChu":"tax.87032461: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"}]}
+```
+
+=== GÓI PN6 870324 ===
+# 870324 — Dung tích xi lanh trên 3.000 cc
+
+870324 — Vehicles; with only spark-ignition internal combustion reciprocating piston engine, cylinder capacity over 3000cc
+  [870324~r16534] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16534, gạch 3)
+    87032411 Ô tô cứu thương
+    87032412 Ô tô tang lễ
+    87032413 Ô tô chở phạm nhân
+    87032414 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    87032415 Ô tô kiểu Sedan (SEN) (1)
+    [8703242] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+      87032421 Loại bốn bánh chủ động  (gạch 5)
+      87032429 Loại khác  [LK]  (gạch 5)
+    87032430 Loại khác  [LK]  (gạch 4)
+  [870324~r16544] Loại khác  (tầng không mã, biểu thuế r16544, gạch 3)
+    87032441 Ô tô cứu thương
+    87032442 Ô tô tang lễ
+    87032443 Ô tô chở phạm nhân
+    87032444 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    [870324~r16549] Ô tô kiểu Sedan (SEN) (1)  (tầng không mã, biểu thuế r16549, gạch 4)
+      87032445 Loại bốn bánh chủ động  (gạch 5)
+      87032449 Loại khác  [LK]  (gạch 5)
+    [8703245] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+      87032451 Loại bốn bánh chủ động  (gạch 5)
+      87032459 Loại khác  [LK]  (gạch 5)
+    [8703246] Loại khác
+      87032461 Loại bốn bánh chủ động  (gạch 5)
+      87032469 Loại khác  [LK]  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870324~r16534 (gạch 3) "Dạng CKD (SEN):" — dòng dưới: 87032411, 87032412, 87032413, 87032414, 87032415, 87032421, 87032429, 87032430
+    870324~r16544 (gạch 3) "Loại khác:" — dòng dưới: 87032441, 87032442, 87032443, 87032444, 87032445, 87032449, 87032451, 87032459, 87032461, 87032469
+    870324~r16549 (gạch 4) "Ô tô kiểu Sedan (SEN) (1):" — dòng dưới: 87032445, 87032449
+
+- 870324~r16534 TIEU_DE
+    tieuDe.870324~r16534 [28 ký tự]: 870324~r16534 Dạng CKD (SEN)
+- 87032411 DONG8
+    tax.87032411 [32 ký tự]: 87032411 - - - - Ô tô cứu thương
+- 87032412 DONG8
+    tax.87032412 [29 ký tự]: 87032412 - - - - Ô tô tang lễ
+- 87032413 DONG8
+    tax.87032413 [35 ký tự]: 87032413 - - - - Ô tô chở phạm nhân
+- 87032414 DONG8
+    tax.87032414 [89 ký tự]: 87032414 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87032415 DONG8
+    tax.87032415 [42 ký tự]: 87032415 - - - - Ô tô kiểu Sedan (SEN) (1)
+- 8703242 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703242 [127 ký tự]: 8703242 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+- 87032421 DONG8
+    tax.87032421 [41 ký tự]: 87032421 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87032429 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032429 [28 ký tự]: 87032429 - - - - - Loại khác
+- 87032430 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032430 [26 ký tự]: 87032430 - - - - Loại khác
+- 870324~r16544 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870324~r16544 [23 ký tự]: 870324~r16544 Loại khác
+- 87032441 DONG8
+    tax.87032441 [32 ký tự]: 87032441 - - - - Ô tô cứu thương
+- 87032442 DONG8
+    tax.87032442 [29 ký tự]: 87032442 - - - - Ô tô tang lễ
+- 87032443 DONG8
+    tax.87032443 [35 ký tự]: 87032443 - - - - Ô tô chở phạm nhân
+- 87032444 DONG8
+    tax.87032444 [89 ký tự]: 87032444 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 870324~r16549 TIEU_DE
+    tieuDe.870324~r16549 [39 ký tự]: 870324~r16549 Ô tô kiểu Sedan (SEN) (1)
+- 87032445 DONG8
+    tax.87032445 [41 ký tự]: 87032445 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87032449 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032449 [28 ký tự]: 87032449 - - - - - Loại khác
+- 8703245 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703245 [127 ký tự]: 8703245 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+- 87032451 DONG8
+    tax.87032451 [41 ký tự]: 87032451 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87032459 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032459 [28 ký tự]: 87032459 - - - - - Loại khác
+- 8703246 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703246 [17 ký tự]: 8703246 Loại khác
+- 87032461 DONG8
+    tax.87032461 [41 ký tự]: 87032461 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87032469 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87032469 [28 ký tự]: 87032469 - - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8703, wco.870324; chú giải: nhom8703.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870331 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:87033121:8703312
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:87033129:8703312
+    ✗ cong1-chua-so-hoa:87033131:8703312
+    ✗ cong1-chua-so-hoa:87033139:8703312
+    ✗ cong1-chua-so-hoa:87033151:8703315
+    ✗ cong1-chua-so-hoa:87033159:8703315
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870331","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870331","dong8":{"87033111":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87033112":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"87033113":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87033114":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87033115":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87033116":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87033117":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"87033121":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"87033131":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]},"87033141":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["XE_DUA_CO_NHO"]}]},"87033142":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]},"87033143":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87033144":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87033145":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87033146":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87033147":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"87033151":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"87033191":{"dieuKienSo":[{"fact":"xeBaBanh","op":"CO"}]}},"dieuKienNut":{"870331~r16560":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870331~r16560","loai":"QUYET_DINH","ghiChu":"tieuDe.870331~r16560: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87033111","loai":"QUYET_DINH","ghiChu":"tax.87033111: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"87033112","loai":"QUYET_DINH","ghiChu":"tax.87033112: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87033113","loai":"QUYET_DINH","ghiChu":"tax.87033113: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87033114","loai":"QUYET_DINH","ghiChu":"tax.87033114: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87033115","loai":"QUYET_DINH","ghiChu":"tax.87033115: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87033116","loai":"QUYET_DINH","ghiChu":"tax.87033116: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"87033117","loai":"QUYET_DINH","ghiChu":"tax.87033117: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"87033121","loai":"QUYET_DINH","ghiChu":"tax.87033121: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"87033131","loai":"QUYET_DINH","ghiChu":"tax.87033131: \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"},{"ma":"87033141","loai":"QUYET_DINH","ghiChu":"tax.87033141: \"Xe đua cỡ nhỏ (SEN)\" ⇒ kieuXeChoNguoi XE_DUA_CO_NHO"},{"ma":"87033142","loai":"QUYET_DINH","ghiChu":"tax.87033142: \"Xe địa hình ATV (All-Terrain Vehicles)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87033143","loai":"QUYET_DINH","ghiChu":"tax.87033143: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87033144","loai":"QUYET_DINH","ghiChu":"tax.87033144: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87033145","loai":"QUYET_DINH","ghiChu":"tax.87033145: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87033146","loai":"QUYET_DINH","ghiChu":"tax.87033146: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"87033147","loai":"QUYET_DINH","ghiChu":"tax.87033147: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"87033151","loai":"QUYET_DINH","ghiChu":"tax.87033151: \"Loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"87033191","loai":"QUYET_DINH","ghiChu":"tax.87033191: \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"}]}
+```
+
+=== GÓI PN6 870331 ===
+# 870331 — Dung tích xi lanh không quá 1.500 cc
+
+870331 — Vehicles; with only compression-ignition internal combustion piston engine (diesel or semi-diesel), cylinder capacity not over 1500cc
+  [870331~r16560] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16560, gạch 3)
+    87033111 Xe đua cỡ nhỏ (SEN)
+    87033112 Xe địa hình ATV (All-Terrain Vehicles)
+    87033113 Ô tô cứu thương
+    87033114 Ô tô tang lễ
+    87033115 Ô tô chở phạm nhân
+    87033116 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    87033117 Ô tô kiểu Sedan (SEN) (1)
+    [8703312] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+      87033121 Loại bốn bánh chủ động  (gạch 5)
+      87033129 Loại khác  [LK]  (gạch 5)
+    [8703313] Loại khác
+      87033131 Xe ba bánh (SEN)  (gạch 5)
+      87033139 Loại khác  [LK]  (gạch 5)
+  [870331~r16574] Loại khác  (tầng không mã, biểu thuế r16574, gạch 3)
+    87033141 Xe đua cỡ nhỏ (SEN)
+    87033142 Xe địa hình ATV (All-Terrain Vehicles)
+    87033143 Ô tô cứu thương
+    87033144 Ô tô tang lễ
+    87033145 Ô tô chở phạm nhân
+    87033146 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    87033147 Ô tô kiểu Sedan (SEN) (1)
+    [8703315] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+      87033151 Loại bốn bánh chủ động  (gạch 5)
+      87033159 Loại khác  [LK]  (gạch 5)
+    [8703319] Loại khác
+      87033191 Xe ba bánh (SEN)  (gạch 5)
+      87033199 Loại khác  [LK]  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870331~r16560 (gạch 3) "Dạng CKD (SEN):" — dòng dưới: 87033111, 87033112, 87033113, 87033114, 87033115, 87033116, 87033117, 87033121, 87033129, 87033131, 87033139
+    870331~r16574 (gạch 3) "Loại khác:" — dòng dưới: 87033141, 87033142, 87033143, 87033144, 87033145, 87033146, 87033147, 87033151, 87033159, 87033191, 87033199
+
+- 870331~r16560 TIEU_DE
+    tieuDe.870331~r16560 [28 ký tự]: 870331~r16560 Dạng CKD (SEN)
+- 87033111 DONG8
+    tax.87033111 [36 ký tự]: 87033111 - - - - Xe đua cỡ nhỏ (SEN)
+- 87033112 DONG8
+    tax.87033112 [55 ký tự]: 87033112 - - - - Xe địa hình ATV (All-Terrain Vehicles)
+- 87033113 DONG8
+    tax.87033113 [32 ký tự]: 87033113 - - - - Ô tô cứu thương
+- 87033114 DONG8
+    tax.87033114 [29 ký tự]: 87033114 - - - - Ô tô tang lễ
+- 87033115 DONG8
+    tax.87033115 [35 ký tự]: 87033115 - - - - Ô tô chở phạm nhân
+- 87033116 DONG8
+    tax.87033116 [89 ký tự]: 87033116 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87033117 DONG8
+    tax.87033117 [42 ký tự]: 87033117 - - - - Ô tô kiểu Sedan (SEN) (1)
+- 8703312 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703312 [127 ký tự]: 8703312 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+- 87033121 DONG8
+    tax.87033121 [41 ký tự]: 87033121 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87033129 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87033129 [28 ký tự]: 87033129 - - - - - Loại khác
+- 8703313 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703313 [17 ký tự]: 8703313 Loại khác
+- 87033131 DONG8
+    tax.87033131 [35 ký tự]: 87033131 - - - - - Xe ba bánh (SEN)
+    sen.87033131 [550 ký tự]: XE BA BÁNH Những loại xe này có các đặc điểm cơ khí tương tự như các loại ô tô có động cơ thông thường, tức là chúng được lắp động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel) hoặc động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện VÀ được lắp với số lùi và một bộ vi sai. Tuy nhiên, chúng không được lắp với bánh lái kiểu ô tô. Chúng thường được trang bị ghế kiểu băng ghế dài ở cuối xe và được sử dụng để chở người. -Khoang hành khách được tách biệt với khoang của người lái xe. Ví dụ về xe ba bánh trong các phân nhóm này:
+- 87033139 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87033139 [28 ký tự]: 87033139 - - - - - Loại khác
+- 870331~r16574 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870331~r16574 [23 ký tự]: 870331~r16574 Loại khác
+- 87033141 DONG8
+    tax.87033141 [36 ký tự]: 87033141 - - - - Xe đua cỡ nhỏ (SEN)
+- 87033142 DONG8
+    tax.87033142 [55 ký tự]: 87033142 - - - - Xe địa hình ATV (All-Terrain Vehicles)
+- 87033143 DONG8
+    tax.87033143 [32 ký tự]: 87033143 - - - - Ô tô cứu thương
+- 87033144 DONG8
+    tax.87033144 [29 ký tự]: 87033144 - - - - Ô tô tang lễ
+- 87033145 DONG8
+    tax.87033145 [35 ký tự]: 87033145 - - - - Ô tô chở phạm nhân
+- 87033146 DONG8
+    tax.87033146 [89 ký tự]: 87033146 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 87033147 DONG8
+    tax.87033147 [42 ký tự]: 87033147 - - - - Ô tô kiểu Sedan (SEN) (1)
+- 8703315 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8703315 [127 ký tự]: 8703315 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)
+- 87033151 DONG8
+    tax.87033151 [41 ký tự]: 87033151 - - - - - Loại bốn bánh chủ động
+    vế phải phủ (cổng 5): [GIỚI HẠN] "bốn bánh chủ động"
+- 87033159 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87033159 [28 ký tự]: 87033159 - - - - - Loại khác
+- 8703319 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703319 [17 ký tự]: 8703319 Loại khác
+- 87033191 DONG8
+    tax.87033191 [35 ký tự]: 87033191 - - - - - Xe ba bánh (SEN)
+    sen.87033191 [550 ký tự]: XE BA BÁNH Những loại xe này có các đặc điểm cơ khí tương tự như các loại ô tô có động cơ thông thường, tức là chúng được lắp động cơ đốt trong kiểu piston cháy do nén (diesel hoặc bán diesel) hoặc động cơ đốt trong kiểu piston đốt cháy bằng tia lửa điện VÀ được lắp với số lùi và một bộ vi sai. Tuy nhiên, chúng không được lắp với bánh lái kiểu ô tô. Chúng thường được trang bị ghế kiểu băng ghế dài ở cuối xe và được sử dụng để chở người. -Khoang hành khách được tách biệt với khoang của người lái xe. Ví dụ về xe ba bánh trong các phân nhóm này:
+- 87033199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87033199 [28 ký tự]: 87033199 - - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.8703, wco.870331; chú giải: nhom8703.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 870332 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-bien-lech-chu:87033221:dungTichXiLanh
+      → Biên số lệch chữ: "không quá" = <=, "dưới" = <, "trên" = >, "từ … trở lên" = >=. Sửa: Sửa op/value đúng chữ của câu trích.
+    ✗ cong3-bien-lech-chu:87033231:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87033234:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87033241:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87033261:dungTichXiLanh
+    ✗ cong3-bien-lech-chu:87033271:dungTichXiLanh
+    ✗ cong2-chong-lan:87033211+87033231:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1799.9982,kieuXeChoNguoi=CUU_THUONG
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87033211+87033232:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=1800.0018,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87033211+87033233:bonBanhChuDong=true,daLapRap=false,dungTichXiLanh=2000.002,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87033211+87033234:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=1799.9982,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87033211+87033235:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=1800.0018,kieuXeChoNguoi=CUU_THUONG
+    ✗ cong2-chong-lan:87033211+87033236:bonBanhChuDong=false,daLapRap=false,dungTichXiLanh=2000.002,kieuXeChoNguoi=CUU_THUONG
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870332","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870332","dong8":{"87033211":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87033212":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87033213":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87033214":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87033221":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87033222":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87033223":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87033231":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87033232":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87033233":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87033234":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87033235":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87033236":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87033241":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87033242":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87033243":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87033251":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CUU_THUONG"]}]},"87033252":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["TANG_LE"]}]},"87033253":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["CHO_PHAM_NHAN"]}]},"87033254":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["NHA_O_LUU_DONG"]}]},"87033261":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87033262":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87033263":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87033271":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87033272":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87033273":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87033274":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87033275":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87033276":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]},"87033281":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":"<=","value":1800,"donVi":"cc"}]},"87033282":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":1800,"donVi":"cc"},{"fact":"dungTichXiLanh","op":"<=","value":2000,"donVi":"cc"}]},"87033283":{"dieuKienSo":[{"fact":"dungTichXiLanh","op":">","value":2000,"donVi":"cc"}]}},"dieuKienNut":{"870332~r16589":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"8703322":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"870332~r16598":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"870332~r16602":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]},"8703326":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["SEDAN"]}]},"870332~r16619":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"CO"}]},"870332~r16623":{"dieuKienSo":[{"fact":"bonBanhChuDong","op":"KHONG"}]}},"ghiChuSoan":[{"ma":"870332~r16589","loai":"QUYET_DINH","ghiChu":"tieuDe.870332~r16589: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87033211","loai":"QUYET_DINH","ghiChu":"tax.87033211: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87033212","loai":"QUYET_DINH","ghiChu":"tax.87033212: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87033213","loai":"QUYET_DINH","ghiChu":"tax.87033213: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87033214","loai":"QUYET_DINH","ghiChu":"tax.87033214: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"8703322","loai":"QUYET_DINH","ghiChu":"tieuDe.8703322: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"870332~r16598","loai":"QUYET_DINH","ghiChu":"tieuDe.870332~r16598: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"870332~r16602","loai":"QUYET_DINH","ghiChu":"tieuDe.870332~r16602: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"},{"ma":"87033251","loai":"QUYET_DINH","ghiChu":"tax.87033251: \"Ô tô cứu thương\" ⇒ kieuXeChoNguoi CUU_THUONG"},{"ma":"87033252","loai":"QUYET_DINH","ghiChu":"tax.87033252: \"Ô tô tang lễ\" ⇒ kieuXeChoNguoi TANG_LE"},{"ma":"87033253","loai":"QUYET_DINH","ghiChu":"tax.87033253: \"Ô tô chở phạm nhân\" ⇒ kieuXeChoNguoi CHO_PHAM_NHAN"},{"ma":"87033254","loai":"QUYET_DINH","ghiChu":"tax.87033254: \"Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)\" ⇒ kieuXeChoNguoi NHA_O_LUU_DONG"},{"ma":"8703326","loai":"QUYET_DINH","ghiChu":"tieuDe.8703326: \"Ô tô kiểu Sedan (SEN) (1)\" ⇒ kieuXeChoNguoi SEDAN"},{"ma":"870332~r16619","loai":"QUYET_DINH","ghiChu":"tieuDe.870332~r16619: \"loại bốn bánh chủ động\" ⇒ bonBanhChuDong CO"},{"ma":"870332~r16623","loai":"QUYET_DINH","ghiChu":"tieuDe.870332~r16623: \"không phải loại bốn bánh chủ động\" ⇒ bonBanhChuDong KHONG"}]}
+```
+
+=== GÓI PN6 870332 ===
+# 870332 — Dung tích xi lanh trên 1.500 cc nhưng không quá 2.500 cc
+
+870332 — Vehicles; with only compression-ignition internal combustion piston engine (diesel or semi-diesel), cylinder capacity over 1500 but not over 2500cc
+  [870332~r16589] Dạng CKD (SEN)  (tầng không mã, biểu thuế r16589, gạch 3)
+    87033211 Ô tô cứu thương
+    87033212 Ô tô tang lễ
+    87033213 Ô tô chở phạm nhân
+    87033214 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    [8703322] Ô tô kiểu Sedan (SEN) (1)
+      87033221 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87033222 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87033223 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+    [870332~r16598] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động  (tầng không mã, biểu thuế r16598, gạch 4)
+      87033231 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87033232 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87033233 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+    [870332~r16602] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động  (tầng không mã, biểu thuế r16602, gạch 4)
+      87033234 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87033235 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87033236 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+    [8703324] Loại khác
+      87033241 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87033242 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87033243 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+  [870332~r16610] Loại khác  (tầng không mã, biểu thuế r16610, gạch 3)
+    87033251 Ô tô cứu thương
+    87033252 Ô tô tang lễ
+    87033253 Ô tô chở phạm nhân
+    87033254 Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+    [8703326] Ô tô kiểu Sedan (SEN) (1)
+      87033261 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87033262 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87033263 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+    [870332~r16619] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động  (tầng không mã, biểu thuế r16619, gạch 4)
+      87033271 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87033272 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87033273 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+    [870332~r16623] Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động  (tầng không mã, biểu thuế r16623, gạch 4)
+      87033274 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87033275 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87033276 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+    [8703328] Loại khác
+      87033281 Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc  (gạch 5)
+      87033282 Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc  (gạch 5)
+      87033283 Dung tích xi lanh trên 2.000 cc  (gạch 5)
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    870332~r16589 (gạch 3) "Dạng CKD (SEN):" — dòng dưới: 87033211, 87033212, 87033213, 87033214, 87033221, 87033222, 87033223, 87033231, 87033232, 87033233, 87033234, 87033235, 87033236, 87033241, 87033242, 87033243
+    870332~r16598 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động:" — dòng dưới: 87033231, 87033232, 87033233
+    870332~r16602 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động:" — dòng dưới: 87033234, 87033235, 87033236
+    870332~r16610 (gạch 3) "Loại khác:" — dòng dưới: 87033251, 87033252, 87033253, 87033254, 87033261, 87033262, 87033263, 87033271, 87033272, 87033273, 87033274, 87033275, 87033276, 87033281, 87033282, 87033283
+    870332~r16619 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động:" — dòng dưới: 87033271, 87033272, 87033273
+    870332~r16623 (gạch 4) "Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động:" — dòng dưới: 87033274, 87033275, 87033276
+
+- 870332~r16589 TIEU_DE
+    tieuDe.870332~r16589 [28 ký tự]: 870332~r16589 Dạng CKD (SEN)
+- 87033211 DONG8
+    tax.87033211 [32 ký tự]: 87033211 - - - - Ô tô cứu thương
+- 87033212 DONG8
+    tax.87033212 [29 ký tự]: 87033212 - - - - Ô tô tang lễ
+- 87033213 DONG8
+    tax.87033213 [35 ký tự]: 87033213 - - - - Ô tô chở phạm nhân
+- 87033214 DONG8
+    tax.87033214 [89 ký tự]: 87033214 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 8703322 TIEU_DE
+    tieuDe.8703322 [33 ký tự]: 8703322 Ô tô kiểu Sedan (SEN) (1)
+- 87033221 DONG8
+    tax.87033221 [75 ký tự]: 87033221 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87033222 DONG8
+    tax.87033222 [75 ký tự]: 87033222 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87033223 DONG8
+    tax.87033223 [51 ký tự]: 87033223 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870332~r16598 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870332~r16598 [157 ký tự]: 870332~r16598 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87033231 DONG8
+    tax.87033231 [75 ký tự]: 87033231 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87033232 DONG8
+    tax.87033232 [75 ký tự]: 87033232 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87033233 DONG8
+    tax.87033233 [51 ký tự]: 87033233 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870332~r16602 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870332~r16602 [168 ký tự]: 870332~r16602 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87033234 DONG8
+    tax.87033234 [75 ký tự]: 87033234 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87033235 DONG8
+    tax.87033235 [75 ký tự]: 87033235 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87033236 DONG8
+    tax.87033236 [51 ký tự]: 87033236 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 8703324 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703324 [17 ký tự]: 8703324 Loại khác
+- 87033241 DONG8
+    tax.87033241 [75 ký tự]: 87033241 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87033242 DONG8
+    tax.87033242 [75 ký tự]: 87033242 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87033243 DONG8
+    tax.87033243 [51 ký tự]: 87033243 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870332~r16610 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.870332~r16610 [23 ký tự]: 870332~r16610 Loại khác
+- 87033251 DONG8
+    tax.87033251 [32 ký tự]: 87033251 - - - - Ô tô cứu thương
+- 87033252 DONG8
+    tax.87033252 [29 ký tự]: 87033252 - - - - Ô tô tang lễ
+- 87033253 DONG8
+    tax.87033253 [35 ký tự]: 87033253 - - - - Ô tô chở phạm nhân
+- 87033254 DONG8
+    tax.87033254 [89 ký tự]: 87033254 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)
+- 8703326 TIEU_DE
+    tieuDe.8703326 [33 ký tự]: 8703326 Ô tô kiểu Sedan (SEN) (1)
+- 87033261 DONG8
+    tax.87033261 [75 ký tự]: 87033261 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87033262 DONG8
+    tax.87033262 [75 ký tự]: 87033262 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87033263 DONG8
+    tax.87033263 [51 ký tự]: 87033263 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870332~r16619 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870332~r16619 [157 ký tự]: 870332~r16619 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động
+- 87033271 DONG8
+    tax.87033271 [75 ký tự]: 87033271 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87033272 DONG8
+    tax.87033272 [75 ký tự]: 87033272 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87033273 DONG8
+    tax.87033273 [51 ký tự]: 87033273 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 870332~r16623 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.870332~r16623 [168 ký tự]: 870332~r16623 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động
+- 87033274 DONG8
+    tax.87033274 [75 ký tự]: 87033274 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87033275 DONG8
+    tax.87033275 [75 ký tự]: 87033275 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87033276 DONG8
+    tax.87033276 [51 ký tự]: 87033276 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+- 8703328 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8703328 [17 ký tự]: 8703328 Loại khác
+- 87033281 DONG8
+    tax.87033281 [75 ký tự]: 87033281 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc"
+- 87033282 DONG8
+    tax.87033282 [75 ký tự]: 87033282 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc"
+- 87033283 DONG8
+    tax.87033283 [51 ký tự]: 87033283 - - - - - Dung tích xi lanh trên 2.000 cc 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dung tích xi lanh trên 2.000 cc"
+
+Nguồn cấp phân nhóm: sen.8703, wco.870332; chú giải: nhom8703.nhom, ch87.chuong, phan87.phan
+

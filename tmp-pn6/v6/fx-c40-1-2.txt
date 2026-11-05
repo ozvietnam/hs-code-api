@@ -1,0 +1,61 @@
+VÒNG SỬA — 2 PN6 bị cổng máy chặn (401512 401519). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 401512 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:40151290:Bằng cao su lưu hóa khác
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:40151210:40151210
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:40151290:40151210
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"401512","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-401512","dong8":{"40151210":{"dieuKienSo":[]},"40151290":{"dieuKienSo":[],"phanConLai":true}},"ghiChuSoan":[{"ma":"40151210","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiCaoSuLuuHoa","ghiChu":"Bằng cao su tự nhiên lưu hóa"},{"ma":"40151290","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiCaoSuLuuHoa","ghiChu":"Bằng cao su lưu hóa khác"}]}
+```
+
+=== GÓI PN6 401512 ===
+# 401512 — Loại dùng cho các mục đích y tế, phẫu thuật, nha khoa hoặc thú y
+
+401512 — Rubber; vulcanised (other than hard rubber), gloves, of a kind used for medical, surgical, dental or veterinary purposes
+  40151210 Bằng cao su tự nhiên lưu hóa
+  40151290 Bằng cao su lưu hóa khác
+
+- 40151210 DONG8
+    tax.40151210 [43 ký tự]: 40151210 - - - Bằng cao su tự nhiên lưu hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su tự nhiên lưu hóa"
+- 40151290 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.40151290 [39 ký tự]: 40151290 - - - Bằng cao su lưu hóa khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su lưu hóa khác"
+
+Nguồn cấp phân nhóm: wco.401512; chú giải: nhom4015.nhom, ch40.chuong
+
+
+=== SỬA PN6 401519 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:40151990:Bằng cao su lưu hóa khác
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:40151910:40151910
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:40151990:40151910
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"401519","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-401519","dong8":{"40151910":{"dieuKienSo":[]},"40151990":{"dieuKienSo":[],"phanConLai":true}},"ghiChuSoan":[{"ma":"40151910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiCaoSuLuuHoa","ghiChu":"Bằng cao su tự nhiên lưu hóa"},{"ma":"40151990","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiCaoSuLuuHoa","ghiChu":"Bằng cao su lưu hóa khác"}]}
+```
+
+=== GÓI PN6 401519 ===
+# 401519 — Loại khác
+
+401519 — Rubber; vulcanised (other than hard rubber), gloves, mittens and mitts other than surgical gloves
+  40151910 Bằng cao su tự nhiên lưu hóa
+  40151990 Bằng cao su lưu hóa khác
+
+- 40151910 DONG8
+    tax.40151910 [43 ký tự]: 40151910 - - - Bằng cao su tự nhiên lưu hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su tự nhiên lưu hóa"
+- 40151990 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.40151990 [39 ký tự]: 40151990 - - - Bằng cao su lưu hóa khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Bằng cao su lưu hóa khác"
+
+Nguồn cấp phân nhóm: wco.401519; chú giải: nhom4015.nhom, ch40.chuong
+

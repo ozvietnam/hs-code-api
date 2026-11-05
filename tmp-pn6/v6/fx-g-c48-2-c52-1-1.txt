@@ -1,0 +1,396 @@
+VÒNG SỬA — 12 PN6 bị cổng máy chặn (481022 481029 481031 481032 481039 481092 481099 481110 481141 481151 481160 481320). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 481022 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:48102210:có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481022","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481022","dong8":{"48102210":{"dieuKienSo":[{"fact":"daIn","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"máy ghi tự động"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48102210","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481022 ===
+# 481022 — Giấy tráng nhẹ
+
+481022 — Paper and paperboard; coated with kaolin or other inorganic substances only, having more than 10% of mechanical or chemi-mechanical processed fibres, for writing, printing or other graphic purposes, light-weight coated paper, in rolls or sheets
+  48102210 Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)
+  48102290 Loại khác  [LK]
+
+- 48102210 DONG8
+    tax.48102210 [164 ký tự]: 48102210 - - - Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)
+    sen.48102210 [456 ký tự]: GIẤY ĐÃ IN, DÙNG CHO MÁY GHI TỰ ĐỘNG Giấy đã in, dùng cho máy ghi tự động, ở dạng cuộn hoặc tờ hình chữ nhật (kể cả hình vuông), và đã được in các biểu đồ hoặc được kẻ dòng với các thang đo cụ thể dùng cho các thiết bị khoa học hoặc y tế. Ví dụ như giấy điện tâm đồ sử dụng trong y tế, giấy ghi nhiệt độ thời tiết hàng ngày, giấy ghi động đất theo thang đo độ Richte.... Loại này không bao gồm giấy nhạy nhiệt. Giấy ghi dạng cuộn Recording paper in rolls
+    vế phải phủ (cổng 5): [GIỚI HẠN] "loại dùng cho máy ghi tự động, ở dạng cuộn" · [GIỚI HẠN] "có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"
+- 48102290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48102290 [24 ký tự]: 48102290 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4810, wco.481022; chú giải: nhom4810.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481029 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:48102910:có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:48102991:48102991
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48102999:48102991
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481029","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481029","dong8":{"48102910":{"dieuKienSo":[{"fact":"daIn","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":"máy ghi tự động"}]},"48102991":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48102910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"},{"ma":"48102991","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 150 mm, hoặc dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481029 ===
+# 481029 — Loại khác
+
+481029 — Paper and paperboard; coated with kaolin or other inorganic substances only, having more than 10% of mechanically processed fibres, (excluding light-weight paper), for writing, printing or other graphic purposes, in rolls or sheets
+  48102910 Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)
+  [4810299] Loại khác
+    48102991 Dạng cuộn có chiều rộng không quá 150 mm, hoặc dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+    48102999 Loại khác  [LK]
+
+- 48102910 DONG8
+    tax.48102910 [164 ký tự]: 48102910 - - - Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)
+    sen.48102910 [456 ký tự]: GIẤY ĐÃ IN, DÙNG CHO MÁY GHI TỰ ĐỘNG Giấy đã in, dùng cho máy ghi tự động, ở dạng cuộn hoặc tờ hình chữ nhật (kể cả hình vuông), và đã được in các biểu đồ hoặc được kẻ dòng với các thang đo cụ thể dùng cho các thiết bị khoa học hoặc y tế. Ví dụ như giấy điện tâm đồ sử dụng trong y tế, giấy ghi nhiệt độ thời tiết hàng ngày, giấy ghi động đất theo thang đo độ Richte.... Loại này không bao gồm giấy nhạy nhiệt. Giấy ghi dạng cuộn Recording paper in rolls
+    vế phải phủ (cổng 5): [GIỚI HẠN] "loại dùng cho máy ghi tự động, ở dạng cuộn" · [GIỚI HẠN] "có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"
+- 4810299 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4810299 [17 ký tự]: 4810299 Loại khác
+- 48102991 DONG8
+    tax.48102991 [119 ký tự]: 48102991 - - - - Dạng cuộn có chiều rộng không quá 150 mm, hoặc dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 150 mm, hoặc dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"
+- 48102999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48102999 [26 ký tự]: 48102999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4810, wco.481029; chú giải: nhom4810.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481031 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:48103130:48103130
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48103190:48103130
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481031","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481031","dong8":{"48103130":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48103130","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481031 ===
+# 481031 — Loại đã được tẩy trắng toàn bộ và có hàm lượng bột gỗ thu được từ quá trình hóa học trên 95% so với tổng lượng bột giấy tính theo khối lượng, và có định lượng từ 150g/m2 trở xuống
+
+481031 — Kraft paper and paperboard; uniformly bleached throughout, coated with inorganic substances, more than 95% of chemically processed wood fibres, weight 150g/m2 or less, for non-graphic purposes, in rolls or sheets
+  48103130 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+  48103190 Loại khác  [LK]
+
+- 48103130 DONG8
+    tax.48103130 [118 ký tự]: 48103130 - - - Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"
+- 48103190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48103190 [24 ký tự]: 48103190 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4810, wco.481031; chú giải: nhom4810.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481032 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:48103230:48103230
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48103290:48103230
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481032","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481032","dong8":{"48103230":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48103230","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481032 ===
+# 481032 — Loại đã được tẩy trắng toàn bộ và có hàm lượng bột gỗ thu được từ quá trình hóa học trên 95% so với tổng lượng bột giấy tính theo khối lượng, và có định lượng trên 150 g/m2
+
+481032 — Kraft paper and paperboard; uniformly bleached throughout, coated with inorganic substances, more than 95% of chemically processed wood fibres, weight more than 150g/m2, for non-graphic purposes, in rolls or sheets
+  48103230 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+  48103290 Loại khác  [LK]
+
+- 48103230 DONG8
+    tax.48103230 [118 ký tự]: 48103230 - - - Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"
+- 48103290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48103290 [24 ký tự]: 48103290 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4810, wco.481032; chú giải: nhom4810.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481039 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:48103930:48103930
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48103990:48103930
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481039","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481039","dong8":{"48103930":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48103930","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481039 ===
+# 481039 — Loại khác
+
+481039 — Kraft paper and paperboard; coated with kaolin or other inorganic substances only, for non-graphic purposes, n.e.c. in item no. 4810.31 and 4810.32, in rolls or sheets
+  48103930 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+  48103990 Loại khác  [LK]
+
+- 48103930 DONG8
+    tax.48103930 [118 ký tự]: 48103930 - - - Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"
+- 48103990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48103990 [24 ký tự]: 48103990 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4810, wco.481039; chú giải: nhom4810.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481092 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:48109240:48109240
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48109290:48109240
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481092","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481092","dong8":{"48109240":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48109240","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481092 ===
+# 481092 — Loại nhiều lớp(SEN)
+
+481092 — Paper and paperboard; multi-ply, coated with kaolin or other inorganic substances only, for non-graphic purposes, n.e.c. in heading no. 4810, in rolls or sheets
+  48109240 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+  48109290 Loại khác  [LK]
+
+- 48109240 DONG8
+    tax.48109240 [118 ký tự]: 48109240 - - - Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"
+- 48109290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48109290 [24 ký tự]: 48109290 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4810, wco.481092; chú giải: nhom4810.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481099 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:48109940:48109940
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48109990:48109940
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481099","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481099","dong8":{"48109940":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48109940","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481099 ===
+# 481099 — Loại khác
+
+481099 — Paper and paperboard; coated with inorganic substances only, whether or not surface-coloured, surface-decorated or printed, n.e.c. in heading no. 4810, in rolls or sheets
+  48109940 Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+  48109990 Loại khác  [LK]
+
+- 48109940 DONG8
+    tax.48109940 [118 ký tự]: 48109940 - - - Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp"
+- 48109990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48109990 [24 ký tự]: 48109990 - - - Loại khác
+
+Nguồn cấp phân nhóm: sen.4810, wco.481099; chú giải: nhom4810.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481110 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:48111020:48111020
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48111090:48111020
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481110","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481110","dong8":{"48111020":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48111020","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481110 ===
+# 481110 — Giấy và bìa đã quét hắc ín, chất bi-tum hoặc nhựa đường
+
+481110 — Paper and paperboard; tarred, bituminised or asphalted, in rolls or sheets, other than goods of heading no. 4803, 4809, or 4810
+  48111020 Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+  48111090 Loại khác  [LK]
+
+- 48111020 DONG8
+    tax.48111020 [146 ký tự]: 48111020 - - Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"
+- 48111090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48111090 [22 ký tự]: 48111090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.481110; chú giải: nhom4811.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481141 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:48114120:48114120
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48114190:48114120
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481141","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481141","dong8":{"48114120":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48114120","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481141 ===
+# 481141 — Loại tự dính
+
+481141 — Paper and paperboard; self-adhesive, in rolls or sheets, other than goods of heading no. 4803, 4809, or 4810
+  48114120 Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+  48114190 Loại khác  [LK]
+
+- 48114120 DONG8
+    tax.48114120 [149 ký tự]: 48114120 - - - Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"
+- 48114190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48114190 [24 ký tự]: 48114190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.481141; chú giải: nhom4811.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481151 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:48115131:4811513
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48115139:4811513
+    ✗ cong1-chua-so-hoa:48115191:4811513
+    ✗ cong1-chua-so-hoa:48115199:4811513
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481151","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481151","dong8":{"48115131":{"dieuKienSo":[{"fact":"tamPhuSan","op":"CO"}]},"48115191":{"dieuKienSo":[{"fact":"tamPhuSan","op":"CO"}]}},"dieuKienNut":{"4811513":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"4811513","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481151 ===
+# 481151 — Loại đã tẩy trắng, định lượng trên 150 g/m2
+
+481151 — Paper and paperboard; coated, impregnated or covered with plastics (excluding adhesives), bleached, weighing more than 150g/m2, other than goods of heading no. 4803, 4809, or 4810
+  [4811513] Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    48115131 Tấm phủ sàn
+    48115139 Loại khác  [LK]
+  [4811519] Loại khác
+    48115191 Tấm phủ sàn
+    48115199 Loại khác  [LK]
+
+- 4811513 TIEU_DE
+    tieuDe.4811513 [142 ký tự]: 4811513 Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"
+- 48115131 DONG8
+    tax.48115131 [28 ký tự]: 48115131 - - - - Tấm phủ sàn
+- 48115139 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48115139 [26 ký tự]: 48115139 - - - - Loại khác
+- 4811519 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4811519 [17 ký tự]: 4811519 Loại khác
+- 48115191 DONG8
+    tax.48115191 [28 ký tự]: 48115191 - - - - Tấm phủ sàn
+- 48115199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48115199 [26 ký tự]: 48115199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.481151; chú giải: nhom4811.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481160 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:48116020:48116020
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48116091:48116020
+    ✗ cong1-chua-so-hoa:48116099:48116020
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481160","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481160","dong8":{"48116020":{"dieuKienSo":[]},"48116091":{"dieuKienSo":[{"fact":"tamPhuSan","op":"CO"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"48116020","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"kichThuocToGiay","ghiChu":"Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"}]}
+```
+
+=== GÓI PN6 481160 ===
+# 481160 — Giấy và bìa, đã tráng, thấm, tẩm hoặc phủ bằng sáp, sáp parafin, stearin, dầu hoặc glyxerin
+
+481160 — Paper and paperboard; coated, impregnated or covered with wax, paraffin wax, stearin, oil or glycerol, other than goods of heading no. 4803, 4809, or 4810
+  48116020 Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+  [4811609] Loại khác
+    48116091 Tấm phủ sàn
+    48116099 Loại khác  [LK]
+
+- 48116020 DONG8
+    tax.48116020 [146 ký tự]: 48116020 - - Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp"
+- 4811609 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.4811609 [17 ký tự]: 4811609 Loại khác
+- 48116091 DONG8
+    tax.48116091 [26 ký tự]: 48116091 - - - Tấm phủ sàn
+- 48116099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48116099 [24 ký tự]: 48116099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.481160; chú giải: nhom4811.nhom, ch48.chuong, phan48.phan
+
+
+=== SỬA PN6 481320 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-ve-gioi-han-bi-bo:48132022:có độ xốp hơn 12 cm3 (min-1. cm-2) trong đơn vị thấm khí CORESTA
+      → Một vế GIỚI HẠN của chữ biểu (in sau mã: "không …", "có thể …", "dùng cho/để/cho …", "bằng …", "của …", biên số, "(trừ …)", "…, hoàn chỉnh") không có điều kiện nào đọc tới — điều kiện RỘNG hơn chữ. Sửa: Thêm điều kiện phủ vế đó (khoá tu-vung đọc được chữ của vế: --tu-vung). Không có khoá ⇒ THIEU_KHOA_TU_VUNG (DỪNG), hoặc khai miễn vế trong spec: ghiChuSoan {"ma": "<mã>", "loai": "BO_VE", "ve": "<nguyên văn vế>", "lyDo": "<vì sao bỏ vế mà không sai mã>"} — lý do rỗng / "người soát xem" / "DE_TRONG" không được tính. Không bao giờ bỏ vế giới hạn mà im lặng.
+    ✗ cong1-chua-so-hoa:48132021:4813202
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:48132021:4813203
+    ✗ cong1-chua-so-hoa:48132022:4813202
+    ✗ cong1-chua-so-hoa:48132022:4813203
+    ✗ cong1-chua-so-hoa:48132023:4813202
+    ✗ cong1-chua-so-hoa:48132023:4813203
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"481320","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-481320","dong8":{"48132010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Giấy sáp ghép đầu lọc thuốc lá điếu"}]},"48132021":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Giấy bọc thuốc lá"}]},"48132022":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Giấy cuốn đầu lọc"}]},"48132023":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Giấy cuốn đầu lọc"}],"phanConLai":["48132022"]},"48132031":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Giấy bọc thuốc lá"}]},"48132032":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Giấy cuốn đầu lọc"}]}},"dieuKienNut":{"4813202":{"dieuKienSo":[]},"4813203":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"4813202","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daPhu","ghiChu":"không phủ"},{"ma":"48132022","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"doXop","ghiChu":"có độ xốp hơn 12 cm3 (min-1. cm-2) trong đơn vị thấm khí CORESTA"},{"ma":"4813203","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daPhu","ghiChu":"đã phủ"}]}
+```
+
+=== GÓI PN6 481320 ===
+# 481320 — Dạng cuộn với chiều rộng không quá 5 cm
+
+481320 — Paper, cigarette; in rolls of a width not exceeding 5cm
+  48132010 Giấy sáp ghép đầu lọc thuốc lá điếu (cigarette tipping paper) (SEN)
+  [4813202] Loại khác, không phủ
+    48132021 Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)
+    48132022 Giấy cuốn đầu lọc có độ xốp hơn 12 cm3 (min-1. cm-2) trong đơn vị thấm khí CORESTA (SEN)
+    48132023 Giấy cuốn đầu lọc khác (SEN)
+    48132029 Loại khác  [LK]
+  [4813203] Loại khác, đã phủ
+    48132031 Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)
+    48132032 Giấy cuốn đầu lọc (Plug wrap paper) (SEN)
+    48132039 Loại khác  [LK]
+
+- 48132010 DONG8
+    tax.48132010 [80 ký tự]: 48132010 - - Giấy sáp ghép đầu lọc thuốc lá điếu (cigarette tipping paper) (SEN)
+    sen.48132010 [421 ký tự]: GIẤY BỌC THUỐC LÁ, GIẤY CUỐN ĐẦU LỌC VÀ GIẤY SÁP GHÉP ĐẦU LỌC THUỐC LÁ ĐIẾU - Giấy bọc thuốc lá là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc thuốc lá điếu - Giấy cuốn đầu lọc là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc đầu lọc - Giấy sáp ghép đầu lọc thuốc lá điếu là loại giấy đặc biệt (giấy chuyên dụng) dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu Cấu trúc cơ bản Basic structure
+- 4813202 TIEU_DE
+    tieuDe.4813202 [28 ký tự]: 4813202 Loại khác, không phủ
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không phủ"
+- 48132021 DONG8
+    tax.48132021 [63 ký tự]: 48132021 - - - Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)
+    sen.48132021 [421 ký tự]: GIẤY BỌC THUỐC LÁ, GIẤY CUỐN ĐẦU LỌC VÀ GIẤY SÁP GHÉP ĐẦU LỌC THUỐC LÁ ĐIẾU - Giấy bọc thuốc lá là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc thuốc lá điếu - Giấy cuốn đầu lọc là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc đầu lọc - Giấy sáp ghép đầu lọc thuốc lá điếu là loại giấy đặc biệt (giấy chuyên dụng) dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu Cấu trúc cơ bản Basic structure
+- 48132022 DONG8
+    tax.48132022 [103 ký tự]: 48132022 - - - Giấy cuốn đầu lọc có độ xốp hơn 12 cm3 (min-1. cm-2) trong đơn vị thấm khí CORESTA (SEN)
+    sen.48132022 [421 ký tự]: GIẤY BỌC THUỐC LÁ, GIẤY CUỐN ĐẦU LỌC VÀ GIẤY SÁP GHÉP ĐẦU LỌC THUỐC LÁ ĐIẾU - Giấy bọc thuốc lá là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc thuốc lá điếu - Giấy cuốn đầu lọc là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc đầu lọc - Giấy sáp ghép đầu lọc thuốc lá điếu là loại giấy đặc biệt (giấy chuyên dụng) dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu Cấu trúc cơ bản Basic structure
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có độ xốp hơn 12 cm3 (min-1. cm-2) trong đơn vị thấm khí CORESTA"
+- 48132023 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.48132023 [43 ký tự]: 48132023 - - - Giấy cuốn đầu lọc khác (SEN)
+    sen.48132023 [421 ký tự]: GIẤY BỌC THUỐC LÁ, GIẤY CUỐN ĐẦU LỌC VÀ GIẤY SÁP GHÉP ĐẦU LỌC THUỐC LÁ ĐIẾU - Giấy bọc thuốc lá là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc thuốc lá điếu - Giấy cuốn đầu lọc là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc đầu lọc - Giấy sáp ghép đầu lọc thuốc lá điếu là loại giấy đặc biệt (giấy chuyên dụng) dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu Cấu trúc cơ bản Basic structure
+- 48132029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48132029 [24 ký tự]: 48132029 - - - Loại khác
+- 4813203 TIEU_DE
+    tieuDe.4813203 [25 ký tự]: 4813203 Loại khác, đã phủ
+- 48132031 DONG8
+    tax.48132031 [63 ký tự]: 48132031 - - - Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)
+    sen.48132031 [421 ký tự]: GIẤY BỌC THUỐC LÁ, GIẤY CUỐN ĐẦU LỌC VÀ GIẤY SÁP GHÉP ĐẦU LỌC THUỐC LÁ ĐIẾU - Giấy bọc thuốc lá là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc thuốc lá điếu - Giấy cuốn đầu lọc là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc đầu lọc - Giấy sáp ghép đầu lọc thuốc lá điếu là loại giấy đặc biệt (giấy chuyên dụng) dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu Cấu trúc cơ bản Basic structure
+- 48132032 DONG8
+    tax.48132032 [56 ký tự]: 48132032 - - - Giấy cuốn đầu lọc (Plug wrap paper) (SEN)
+    sen.48132032 [421 ký tự]: GIẤY BỌC THUỐC LÁ, GIẤY CUỐN ĐẦU LỌC VÀ GIẤY SÁP GHÉP ĐẦU LỌC THUỐC LÁ ĐIẾU - Giấy bọc thuốc lá là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc thuốc lá điếu - Giấy cuốn đầu lọc là loại giấy đặc biệt (giấy chuyên dụng) dùng để bọc đầu lọc - Giấy sáp ghép đầu lọc thuốc lá điếu là loại giấy đặc biệt (giấy chuyên dụng) dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu Cấu trúc cơ bản Basic structure
+- 48132039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.48132039 [24 ký tự]: 48132039 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.481320; chú giải: nhom4813.nhom, ch48.chuong, phan48.phan
+

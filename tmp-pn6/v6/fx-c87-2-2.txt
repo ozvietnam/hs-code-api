@@ -1,0 +1,165 @@
+VÒNG SỬA — 4 PN6 bị cổng máy chặn (870892 871130 871140 871491). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 870892 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:8708926:dungCho=8704.10,laBoPhan=false,tenLoai=ẑẑẑ
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+    ✗ cong2-chong-lan:87089251+87089252:dungCho=8704.10,laBoPhan=true,tenLoai=Ống xả:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:87089261+87089262:dungCho=87.02,laBoPhan=true,tenLoai=Ống xả:khong-tat-dinh
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"870892","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-870892","dong8":{"87089210":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.01"}]},"87089220":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"87.03"}]},"87089251":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Ống xả","bộ giảm thanh"]}]},"87089252":{"dieuKienSo":[{"fact":"laBoPhan","op":"CO"}]},"87089261":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Ống xả","bộ giảm thanh"]}]},"87089262":{"dieuKienSo":[{"fact":"laBoPhan","op":"CO"}]}},"dieuKienNut":{"8708925":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8704.10"}]},"8708926":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["87.02","87.04"]}],"phanConLai":["8708925"]}},"ghiChuSoan":[{"ma":"87089210","loai":"QUYET_DINH","ghiChu":"tax.87089210: \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""},{"ma":"87089220","loai":"QUYET_DINH","ghiChu":"tax.87089220: \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""},{"ma":"8708925","loai":"QUYET_DINH","ghiChu":"tieuDe.8708925: \"Dùng cho xe thuộc phân nhóm 8704.10\" ⇒ dungCho \"8704.10\""},{"ma":"87089251","loai":"QUYET_DINH","ghiChu":"tax.87089251: \"Ống xả và bộ giảm thanh\" ⇒ tenLoai mảng [\"Ống xả\",\"bộ giảm thanh\"]"},{"ma":"87089252","loai":"QUYET_DINH","ghiChu":"tax.87089252: \"Bộ phận (SEN)\" ⇒ laBoPhan CO"},{"ma":"8708926","loai":"QUYET_DINH","ghiChu":"tieuDe.8708926: \"Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04\" ⇒ dungCho [\"87.02\",\"87.04\"] + phanConLai [\"8708925\"]"},{"ma":"87089261","loai":"QUYET_DINH","ghiChu":"tax.87089261: \"Ống xả và bộ giảm thanh\" ⇒ tenLoai mảng [\"Ống xả\",\"bộ giảm thanh\"]"},{"ma":"87089262","loai":"QUYET_DINH","ghiChu":"tax.87089262: \"Bộ phận (SEN)\" ⇒ laBoPhan CO"}]}
+```
+
+=== GÓI PN6 870892 ===
+# 870892 — Ống xả và bộ giảm thanh; bộ phận của chúng
+
+870892 — Vehicle parts; silencers (mufflers) and exhaust pipes; parts thereof
+  87089210 Dùng cho xe thuộc nhóm 87.01
+  87089220 Dùng cho xe thuộc nhóm 87.03
+  [8708925] Dùng cho xe thuộc phân nhóm 8704.10
+    87089251 Ống xả và bộ giảm thanh
+    87089252 Bộ phận (SEN)
+  [8708926] Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+    87089261 Ống xả và bộ giảm thanh
+    87089262 Bộ phận (SEN)
+  87089290 Loại khác  [LK]
+
+- 87089210 DONG8
+    tax.87089210 [43 ký tự]: 87089210 - - - Dùng cho xe thuộc nhóm 87.01
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.01"
+- 87089220 DONG8
+    tax.87089220 [43 ký tự]: 87089220 - - - Dùng cho xe thuộc nhóm 87.03
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.03"
+- 8708925 TIEU_DE
+    tieuDe.8708925 [43 ký tự]: 8708925 Dùng cho xe thuộc phân nhóm 8704.10
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc phân nhóm 8704.10"
+- 87089251 DONG8
+    tax.87089251 [41 ký tự]: 87089251 - - - - Ống xả và bộ giảm thanh 
+- 87089252 DONG8
+    tax.87089252 [30 ký tự]: 87089252 - - - - Bộ phận (SEN)
+    sen.87089252 [8 ký tự]: BỘ PHẬN 
+- 8708926 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.8708926 [66 ký tự]: 8708926 Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04"
+- 87089261 DONG8
+    tax.87089261 [41 ký tự]: 87089261 - - - - Ống xả và bộ giảm thanh 
+- 87089262 DONG8
+    tax.87089262 [30 ký tự]: 87089262 - - - - Bộ phận (SEN)
+    sen.87089262 [8 ký tự]: BỘ PHẬN 
+- 87089290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87089290 [24 ký tự]: 87089290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.870892; chú giải: nhom8708.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 871130 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:8711301:dieu-kien-so-trong-khong-co-trong-trich:ATV
+      → Câu trích không có cách đọc của giá trị liệt kê. Sửa: Mỗi giá trị cần một mẫu cachDoc có trong trich (xem --tu-vung).
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"871130","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-871130","dong8":{"87113011":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"87113030":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"dieuKienNut":{"8711301":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]}},"ghiChuSoan":[{"ma":"8711301","loai":"QUYET_DINH","ghiChu":"tieuDe.8711301: \"Xe mô tô địa hình (SEN)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87113011","loai":"QUYET_DINH","ghiChu":"tax.87113011: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87113030","loai":"QUYET_DINH","ghiChu":"tax.87113030: \"Loại khác, dạng CKD (SEN)\" ⇒ daLapRap KHONG"}]}
+```
+
+=== GÓI PN6 871130 ===
+# 871130 — Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 250 cc nhưng không quá 500 cc
+
+871130 — Motorcycles (including mopeds) and cycles; fitted with an auxiliary motor, internal combustion piston engine, of cylinder capacity exceeding 250cc but not exceeding 500cc, with or without side-cars; side-cars
+  [8711301] Xe mô tô địa hình (SEN)
+    87113011 Dạng CKD (SEN)
+    87113019 Loại khác  [LK]
+  87113030 Loại khác, dạng CKD (SEN)  [LK có điều kiện]
+  87113090 Loại khác  [LK]
+
+- 8711301 TIEU_DE
+    tieuDe.8711301 [31 ký tự]: 8711301 Xe mô tô địa hình (SEN)
+- 87113011 DONG8
+    tax.87113011 [29 ký tự]: 87113011 - - - Dạng CKD (SEN)
+    sen.87113011 [1174 ký tự]: XE MÔ TÔ ĐỊA HÌNH Xe mô tô địa hình là một loại hình mô tô thể thao hoặc xe đua mọi địa hình được dùng trong cung đường có địa hình phức tạp. Cái tên “motocross” được bắt nguồn từ chữ “mô tô” và “xuyên quốc gia”. Xe mô tô địa hình có cầu dẫn động sau với tối đa 6 cấp độ. Xe mô tô địa hình sử dụng động cơ đốt trong kiểu piston có dung tích xi - lanh 50- 125 cc đối với loại 2 kỳ hoặc 150 - 250 cc đối với loại 4 kỳ (250 Motocross Class) và 150-250 cc đối với loại 2 kỳ hoặc 251- 450 cc đối với loại 4 kỳ (450 Motocross class). Supermoto bao gồm việc sử dụng một xe mô tô địa hình để đua trên đường đua phức tạp và độ xe để có thể chạy trên các loại địa hình bao gồm cả đường lầy lội và gồ ghề. Các xe được trang bị lốp xe đua đường đặc biệt với hoa lốp để bám cả đường gồ ghề và lầy lội. Supercross là một môn đua xe thể thao bao gồm đua địa hình và trình diễn các kỹ thuật đặc biệt gồm nhảy dốc và vượt chướng ngại vật trên đường đất nhân tạo tạo. Freestyle Motocross (FMX), một biến thể tương đối mới của môn đua xe thể thao supercross, không liên quan đến đua xe và thay vào đó tập trung vào trình diễn các pha nguy hiểm nhào lộn trong khi nhảy của xe mô tô địa hình.
+- 87113019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87113019 [24 ký tự]: 87113019 - - - Loại khác
+    sen.87113019 [1174 ký tự]: XE MÔ TÔ ĐỊA HÌNH Xe mô tô địa hình là một loại hình mô tô thể thao hoặc xe đua mọi địa hình được dùng trong cung đường có địa hình phức tạp. Cái tên “motocross” được bắt nguồn từ chữ “mô tô” và “xuyên quốc gia”. Xe mô tô địa hình có cầu dẫn động sau với tối đa 6 cấp độ. Xe mô tô địa hình sử dụng động cơ đốt trong kiểu piston có dung tích xi - lanh 50- 125 cc đối với loại 2 kỳ hoặc 150 - 250 cc đối với loại 4 kỳ (250 Motocross Class) và 150-250 cc đối với loại 2 kỳ hoặc 251- 450 cc đối với loại 4 kỳ (450 Motocross class). Supermoto bao gồm việc sử dụng một xe mô tô địa hình để đua trên đường đua phức tạp và độ xe để có thể chạy trên các loại địa hình bao gồm cả đường lầy lội và gồ ghề. Các xe được trang bị lốp xe đua đường đặc biệt với hoa lốp để bám cả đường gồ ghề và lầy lội. Supercross là một môn đua xe thể thao bao gồm đua địa hình và trình diễn các kỹ thuật đặc biệt gồm nhảy dốc và vượt chướng ngại vật trên đường đất nhân tạo tạo. Freestyle Motocross (FMX), một biến thể tương đối mới của môn đua xe thể thao supercross, không liên quan đến đua xe và thay vào đó tập trung vào trình diễn các pha nguy hiểm nhào lộn trong khi nhảy của xe mô tô địa hình.
+- 87113030 DONG8
+    tax.87113030 [38 ký tự]: 87113030 - - Loại khác, dạng CKD (SEN)
+- 87113090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87113090 [22 ký tự]: 87113090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.871130; chú giải: nhom8711.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 871140 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:8711401:dieu-kien-so-trong-khong-co-trong-trich:ATV
+      → Câu trích không có cách đọc của giá trị liệt kê. Sửa: Mỗi giá trị cần một mẫu cachDoc có trong trich (xem --tu-vung).
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"871140","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-871140","dong8":{"87114011":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]},"87114020":{"dieuKienSo":[{"fact":"daLapRap","op":"KHONG"}]}},"dieuKienNut":{"8711401":{"dieuKienSo":[{"fact":"kieuXeChoNguoi","op":"TRONG","value":["ATV"]}]}},"ghiChuSoan":[{"ma":"8711401","loai":"QUYET_DINH","ghiChu":"tieuDe.8711401: \"Xe mô tô địa hình (SEN)\" ⇒ kieuXeChoNguoi ATV"},{"ma":"87114011","loai":"QUYET_DINH","ghiChu":"tax.87114011: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"},{"ma":"87114020","loai":"QUYET_DINH","ghiChu":"tax.87114020: \"Loại khác, dạng CKD (SEN)\" ⇒ daLapRap KHONG"}]}
+```
+
+=== GÓI PN6 871140 ===
+# 871140 — Loại sử dụng động cơ đốt trong kiểu piston dung tích xi lanh trên 500 cc nhưng không quá 800 cc
+
+871140 — Motorcycles (including mopeds) and cycles; fitted with auxiliary motor, internal combustion piston engine of cylinder capacity exceeding 500cc but not exceeding 800cc, with or without sidecars; side-cars
+  [8711401] Xe mô tô địa hình (SEN)
+    87114011 Dạng CKD (SEN)
+    87114019 Loại khác (SEN)  [LK]
+  87114020 Loại khác, dạng CKD (SEN)  [LK có điều kiện]
+  87114090 Loại khác  [LK]
+
+- 8711401 TIEU_DE
+    tieuDe.8711401 [31 ký tự]: 8711401 Xe mô tô địa hình (SEN)
+- 87114011 DONG8
+    tax.87114011 [29 ký tự]: 87114011 - - - Dạng CKD (SEN)
+    sen.87114011 [1174 ký tự]: XE MÔ TÔ ĐỊA HÌNH Xe mô tô địa hình là một loại hình mô tô thể thao hoặc xe đua mọi địa hình được dùng trong cung đường có địa hình phức tạp. Cái tên “motocross” được bắt nguồn từ chữ “mô tô” và “xuyên quốc gia”. Xe mô tô địa hình có cầu dẫn động sau với tối đa 6 cấp độ. Xe mô tô địa hình sử dụng động cơ đốt trong kiểu piston có dung tích xi - lanh 50- 125 cc đối với loại 2 kỳ hoặc 150 - 250 cc đối với loại 4 kỳ (250 Motocross Class) và 150-250 cc đối với loại 2 kỳ hoặc 251- 450 cc đối với loại 4 kỳ (450 Motocross class). Supermoto bao gồm việc sử dụng một xe mô tô địa hình để đua trên đường đua phức tạp và độ xe để có thể chạy trên các loại địa hình bao gồm cả đường lầy lội và gồ ghề. Các xe được trang bị lốp xe đua đường đặc biệt với hoa lốp để bám cả đường gồ ghề và lầy lội. Supercross là một môn đua xe thể thao bao gồm đua địa hình và trình diễn các kỹ thuật đặc biệt gồm nhảy dốc và vượt chướng ngại vật trên đường đất nhân tạo tạo. Freestyle Motocross (FMX), một biến thể tương đối mới của môn đua xe thể thao supercross, không liên quan đến đua xe và thay vào đó tập trung vào trình diễn các pha nguy hiểm nhào lộn trong khi nhảy của xe mô tô địa hình.
+- 87114019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87114019 [30 ký tự]: 87114019 - - - Loại khác (SEN)
+    sen.87114019 [1174 ký tự]: XE MÔ TÔ ĐỊA HÌNH Xe mô tô địa hình là một loại hình mô tô thể thao hoặc xe đua mọi địa hình được dùng trong cung đường có địa hình phức tạp. Cái tên “motocross” được bắt nguồn từ chữ “mô tô” và “xuyên quốc gia”. Xe mô tô địa hình có cầu dẫn động sau với tối đa 6 cấp độ. Xe mô tô địa hình sử dụng động cơ đốt trong kiểu piston có dung tích xi - lanh 50- 125 cc đối với loại 2 kỳ hoặc 150 - 250 cc đối với loại 4 kỳ (250 Motocross Class) và 150-250 cc đối với loại 2 kỳ hoặc 251- 450 cc đối với loại 4 kỳ (450 Motocross class). Supermoto bao gồm việc sử dụng một xe mô tô địa hình để đua trên đường đua phức tạp và độ xe để có thể chạy trên các loại địa hình bao gồm cả đường lầy lội và gồ ghề. Các xe được trang bị lốp xe đua đường đặc biệt với hoa lốp để bám cả đường gồ ghề và lầy lội. Supercross là một môn đua xe thể thao bao gồm đua địa hình và trình diễn các kỹ thuật đặc biệt gồm nhảy dốc và vượt chướng ngại vật trên đường đất nhân tạo tạo. Freestyle Motocross (FMX), một biến thể tương đối mới của môn đua xe thể thao supercross, không liên quan đến đua xe và thay vào đó tập trung vào trình diễn các pha nguy hiểm nhào lộn trong khi nhảy của xe mô tô địa hình.
+- 87114020 DONG8
+    tax.87114020 [38 ký tự]: 87114020 - - Loại khác, dạng CKD (SEN)
+- 87114090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87114090 [22 ký tự]: 87114090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.871140; chú giải: nhom8711.nhom, ch87.chuong, phan87.phan
+
+
+=== SỬA PN6 871491 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-dong-khong-toi-duoc:87149191
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn đúng ý chữ. Vẫn không tới được ⇒ DỪNG, báo lại.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"871491","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-871491","dong8":{"87149110":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"8712.00.20"}]},"87149191":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"càng xe đạp"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"87149110","loai":"QUYET_DINH","ghiChu":"tax.87149110: \"Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)\" ⇒ dungCho \"8712.00.20\""},{"ma":"87149191","loai":"QUYET_DINH","ghiChu":"tax.87149191: \"Bộ phận của càng xe đạp\" ⇒ dungCho \"càng xe đạp\""},{"ma":"87149191","loai":"BO_VE","ve":"của càng xe đạp","lyDo":"Đã được lượng hóa qua dungCho càng xe đạp"}]}
+```
+
+=== GÓI PN6 871491 ===
+# 871491 — Khung xe và càng xe, và các bộ phận của chúng
+
+871491 — Cycles; frames and forks, and parts thereof
+  87149110 Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)
+  [8714919] Loại khác
+    87149191 Bộ phận của càng xe đạp
+    87149199 Loại khác  [LK]
+
+- 87149110 DONG8
+    tax.87149110 [63 ký tự]: 87149110 - - - Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)
+    sen.87149110 [553 ký tự]:  Theo mục đích của AHTN 8712.00.20, khái niệm "xe đạp thiết kế dành cho trẻ em" chỉ đề cập đến xe đạp: ● có độ dài tối đa giữa chỗ ngồi (ở vị trí thấp nhất) và bàn đạp ở điểm thấp nhất không quá 43 cm; và ● có đường kính bánh xe không quá 16 inch hoặc 40,64 cm. Các số đo trên và các tiêu chí khác nhận dạng xe đạp dành cho trẻ em có thể thay đổi theo quy định quốc gia. Các bộ phận và phụ kiện có thể được sử dụng cho cả xe đạp dành cho người lớn và xe đạp dành cho trẻ em được phân loại như các bộ phận hoặc phụ kiện cho xe đạp dành cho người lớn.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho xe đạp thuộc phân nhóm 8712.00.20"
+- 8714919 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.8714919 [17 ký tự]: 8714919 Loại khác
+- 87149191 DONG8
+    tax.87149191 [40 ký tự]: 87149191 - - - - Bộ phận của càng xe đạp
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của càng xe đạp"
+- 87149199 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.87149199 [26 ký tự]: 87149199 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.871491; chú giải: nhom8714.nhom, ch87.chuong, phan87.phan
+

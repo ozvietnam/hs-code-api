@@ -1,0 +1,293 @@
+VÒNG SỬA — 8 PN6 bị cổng máy chặn (380859 380862 380892 380893 380894 382290 382711 382739). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 380859 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ spec-ma-ngoai-phan-nhom:dieuKienNut.3808599 — không phải tiêu đề có tên của phân nhóm (tiêu đề "Loại khác" trần không ghi)
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"380859","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-380859","dong8":{"38085911":{"dieuKienSo":[{"fact":"dangBinhXit","op":"CO"}],"phanConLai":["38085919"]},"38085921":{"dieuKienSo":[{"fact":"dangBinhXit","op":"CO"}],"phanConLai":["38085929"]},"38085931":{"dieuKienSo":[{"fact":"dangBinhXit","op":"CO"}],"phanConLai":["38085939"]},"38085940":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc chống nảy mầm"}]},"38085950":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc điều hòa sinh trưởng cây trồng"}]},"38085960":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc khử trùng"}]},"38085991":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc bảo quản gỗ"},{"fact":"tenLoai","op":"TEN_LOAI","value":["chất trừ côn trùng","trừ nấm"]}],"phanConLai":["38085999"]}},"dieuKienNut":{"3808591":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc trừ côn trùng"}],"trich":"3808591 Thuốc trừ côn trùng"},"3808592":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc trừ nấm"}],"trich":"3808592 Thuốc trừ nấm"},"3808593":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc diệt cỏ"}],"trich":"3808593 Thuốc diệt cỏ"},"3808599":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Loại khác"}],"trich":"3808599 Loại khác"}},"ghiChuSoan":[{"ma":"38085991","loai":"BO_VE","ve":"trừ chất phủ bề mặt","lyDo":"Loại trừ chất phủ bề mặt không định nghĩa bằng khoá sẵn có, giữ mặc định."},{"ma":"38085991","loai":"BO_VE","ve":"chứa chất","lyDo":"Đã ghi thành phần bằng điều kiện tenLoai."}]}
+```
+
+=== GÓI PN6 380859 ===
+# 380859 — Loại khác
+
+380859 — Insecticides, rodenticides, fungicides, disinfectants, herbicides and the like; containing goods specified in Subheading Note 1 to this Chapter; not DDT (ISO) (clofenotane (INN)), put up in forms or packings for retail sale or as preparations or articles
+  [3808591] Thuốc trừ côn trùng
+    38085911 Dạng bình xịt
+    38085919 Loại khác  [LK]
+  [3808592] Thuốc trừ nấm
+    38085921 Dạng bình xịt
+    38085929 Loại khác  [LK]
+  [3808593] Thuốc diệt cỏ
+    38085931 Dạng bình xịt
+    38085939 Loại khác  [LK]
+  38085940 Thuốc chống nảy mầm
+  38085950 Thuốc điều hòa sinh trưởng cây trồng
+  38085960 Thuốc khử trùng (Disinfectants)
+  [3808599] Loại khác
+    38085991 Thuốc bảo quản gỗ, là chế phẩm chứa chất trừ côn trùng hoặc trừ nấm, trừ chất phủ bề mặt
+    38085999 Loại khác  [LK]
+
+- 3808591 TIEU_DE
+    tieuDe.3808591 [27 ký tự]: 3808591 Thuốc trừ côn trùng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "trừ côn trùng"
+- 38085911 DONG8
+    tax.38085911 [30 ký tự]: 38085911 - - - - Dạng bình xịt
+- 38085919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38085919 [26 ký tự]: 38085919 - - - - Loại khác
+- 3808592 TIEU_DE
+    tieuDe.3808592 [21 ký tự]: 3808592 Thuốc trừ nấm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "trừ nấm"
+- 38085921 DONG8
+    tax.38085921 [30 ký tự]: 38085921 - - - - Dạng bình xịt
+- 38085929 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38085929 [26 ký tự]: 38085929 - - - - Loại khác
+- 3808593 TIEU_DE
+    tieuDe.3808593 [21 ký tự]: 3808593 Thuốc diệt cỏ
+- 38085931 DONG8
+    tax.38085931 [30 ký tự]: 38085931 - - - - Dạng bình xịt
+- 38085939 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38085939 [26 ký tự]: 38085939 - - - - Loại khác
+- 38085940 DONG8
+    tax.38085940 [34 ký tự]: 38085940 - - - Thuốc chống nảy mầm
+- 38085950 DONG8
+    tax.38085950 [51 ký tự]: 38085950 - - - Thuốc điều hòa sinh trưởng cây trồng
+- 38085960 DONG8
+    tax.38085960 [46 ký tự]: 38085960 - - - Thuốc khử trùng (Disinfectants)
+- 3808599 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3808599 [17 ký tự]: 3808599 Loại khác
+- 38085991 DONG8
+    tax.38085991 [105 ký tự]: 38085991 - - - - Thuốc bảo quản gỗ, là chế phẩm chứa chất trừ côn trùng hoặc trừ nấm, trừ chất phủ bề mặt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa chất" · [GIỚI HẠN] "trừ côn trùng" · [GIỚI HẠN] "trừ nấm" · [GIỚI HẠN] "trừ chất phủ bề mặt"
+- 38085999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38085999 [26 ký tự]: 38085999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.380859; chú giải: nhom3808.nhom, ch38.chuong, phan38.phan
+
+
+=== SỬA PN6 380862 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:38086250
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong2-chong-lan:38086210+38086240:dangBinhXit=true,dangChePhamDietMuoi=BOT_LAM_HUONG_VONG
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:38086220+38086240:dangBinhXit=true,dangChePhamDietMuoi=HUONG_VONG
+    ✗ cong2-chong-lan:38086230+38086240:dangBinhXit=true,dangChePhamDietMuoi=TAM_DIET_MUOI
+    ✗ cong2-chong-lan-truc:38086240:38086210,38086220,38086230
+      → Chồng lấn theo TRỤC (chia theo công dụng cạnh chia theo tên — 392690, 401699, 854442), không phải chữ biểu tự chồng: một nhánh chồng ≥ 3 nhánh anh em; hoặc ≥ 2 nhánh khi cụm có tiêu đề/tầng (cấp tiêu đề — một nhóm dòng); hoặc hai tiêu đề/tầng anh em chia theo hai trục rời nhau (tên ↔ công dụng); hoặc (vòng 4) hai DÒNG anh em chia theo tên thuần ↔ công dụng, không chung khoá — kể cả chỉ 2 anh em, dòng có HOAC xét từng phương án (940541 .10 "Đèn pha" ↔ .30 "đèn dùng cho … tàu thủy"). Khai chongLanVanBan cho cặp KHÁC trục không gỡ được, kể cả khai đủ mọi cặp. Hàng thoả cả hai nhánh thì biểu thuế không nói nhánh nào thắng — máy không tự chọn (#683). Vòng 8 (GĐ 01/11/2026, 392690): cặp CÙNG trục trong cụm (cả hai nhánh CONG_DUNG hoặc cả hai TEN_LOAI — vd 3926904 "an toàn và bảo vệ" ↔ 3926905 "dùng cho công nghiệp") không thuộc chongLanTruc; chồng lấn thật thì khai chongLanVanBan như chữ biểu tự chồng thường, cụm hết báo khi mọi cặp khác trục được chongLanTruc phủ và mọi cặp cùng trục đã khai. Sửa: Trước hết chắc chồng lấn không do khoá/biên sai (cùng khoá cho anh em, biên ≤/< đúng chữ). Nếu chữ biểu THẬT SỰ chia theo hai trục: bỏ chongLanVanBan của cụm, khai trong spec chongLanTruc [{"nhanh": ["<id nhánh>", …] (anh em cùng cha, in sau mã lỗi), "truc": {"<id>": "TEN_LOAI"|"CONG_DUNG"|"DAC_DIEM"} (theo khoá điều kiện riêng của nhánh; DAC_DIEM = khoá đặc điểm có/không hoặc liệt kê, #577 848180), "cauHoiPhanBiet": "<câu hỏi tiếng Việt phân biệt các nhánh, viết từ chữ biểu, kết thúc bằng ?>", "trich": {"<id>": "<chữ biểu nguyên văn của nhánh>"}, "viDuHang": [{"cap": ["<idA>", "<idB>"], "hang": "<một hàng THẬT thoả cả hai nhánh>"}] (MỖI cặp nhánh khác trục mà cụm phủ — vòng 8; cặp không có hàng thật thì không khai trục, DỪNG), "phanXu": null}]. KHÔNG điền phanXu — chỉ Claude/người soát (khi có chú giải, tiền lệ qua bảng hiệu chỉnh hoặc người duyệt). Không tự suy "cụ thể nhất" theo GIR 3(a). Xem QUY-TRINH-SO-HOA.md mục chồng lấn trục.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"380862","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-380862","dong8":{"38086210":{"dieuKienSo":[{"fact":"dangChePhamDietMuoi","op":"TRONG","value":["BOT_LAM_HUONG_VONG"]}]},"38086220":{"dieuKienSo":[{"fact":"dangChePhamDietMuoi","op":"TRONG","value":["HUONG_VONG"]}]},"38086230":{"dieuKienSo":[{"fact":"dangChePhamDietMuoi","op":"TRONG","value":["TAM_DIET_MUOI"]}]},"38086240":{"dieuKienSo":[{"fact":"dangBinhXit","op":"CO"}]},"38086250":{"dieuKienSo":[{"fact":"dangLong","op":"CO"}],"phanConLai":["38086210","38086220","38086230","38086240"]}},"ghiChuSoan":[{"ma":"380862","loai":"QUYET_DINH","ghiChu":"Các phân nhóm chế phẩm trừ côn trùng diệt muỗi."}]}
+```
+
+=== GÓI PN6 380862 ===
+# 380862 — Đóng gói với khối lượng tịnh trên 300 g nhưng không quá 7,5 kg
+
+380862 — Insecticides; containing goods specified in Subheading Note 2 to this Chapter; put up in forms or packings for retail sale or as preparations or articles, in packings of a net weight content exceeding 300g but not exceeding 7.5kg
+  38086210 Bột dùng làm hương vòng chống muỗi
+  38086220 Hương vòng chống muỗi
+  38086230 Tấm thuốc diệt muỗi (SEN)
+  38086240 Dạng bình xịt
+  38086250 Loại khác, dạng lỏng  [LK có điều kiện]
+  38086290 Loại khác  [LK]
+
+- 38086210 DONG8
+    tax.38086210 [49 ký tự]: 38086210 - - - Bột dùng làm hương vòng chống muỗi
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng làm hương vòng chống muỗi"
+- 38086220 DONG8
+    tax.38086220 [36 ký tự]: 38086220 - - - Hương vòng chống muỗi
+- 38086230 DONG8
+    tax.38086230 [40 ký tự]: 38086230 - - - Tấm thuốc diệt muỗi (SEN)
+    sen.38086230 [417 ký tự]: TẤM THUỐC DIỆT MUỖI Tấm thuốc diệt muỗi được làm từ sợi cellulo có chứa bột gỗ mềm và bột giấy trộn vào một lưới ẩm và được làm khô để tạo thành một tấm nền xốp trắng. Sau đó tấm nền được ngâm tẩm với dung dịch có thành phần hoạt tính chứa thuốc trừ sâu, như allethrin hoặc d-transprallethrin, chất nhuộm màu, chất kiểm soát bay hơi, chất ổn định và dung môi hữu cơ. Chúng thường được dùng kèm theo các thiết bị điện.
+- 38086240 DONG8
+    tax.38086240 [28 ký tự]: 38086240 - - - Dạng bình xịt
+- 38086250 DONG8
+    tax.38086250 [35 ký tự]: 38086250 - - - Loại khác, dạng lỏng
+- 38086290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38086290 [24 ký tự]: 38086290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.380862; chú giải: nhom3808.nhom, ch38.chuong, phan38.phan
+
+
+=== SỬA PN6 380892 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:38089211:38089211
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:38089219:38089211
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"380892","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-380892","dong8":{"38089211":{"dieuKienSo":[]}},"dieuKienNut":{"3808921":{"dieuKienSo":[{"fact":"dangBinhXit","op":"CO"}],"trich":"3808921 Dạng bình xịt"}},"ghiChuSoan":[{"ma":"38089211","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongValidamycin","ghiChu":"không quá 3% tính theo khối lượng tịnh"}]}
+```
+
+=== GÓI PN6 380892 ===
+# 380892 — Thuốc trừ nấm
+
+380892 — Fungicides; other than containing goods specified in Subheading Note 1 to this Chapter; put up in forms or packings for retail sale or as preparations or articles
+  [3808921] Dạng bình xịt
+    38089211 Với hàm lượng validamycin không quá 3% tính theo khối lượng tịnh
+    38089219 Loại khác  [LK]
+  38089290 Loại khác  [LK]
+
+- 3808921 TIEU_DE
+    tieuDe.3808921 [21 ký tự]: 3808921 Dạng bình xịt
+- 38089211 DONG8
+    tax.38089211 [81 ký tự]: 38089211 - - - - Với hàm lượng validamycin không quá 3% tính theo khối lượng tịnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không quá 3% tính theo khối lượng tịnh"
+- 38089219 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38089219 [26 ký tự]: 38089219 - - - - Loại khác
+- 38089290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38089290 [24 ký tự]: 38089290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.380892; chú giải: nhom3808.nhom, ch38.chuong, phan38.phan
+
+
+=== SỬA PN6 380893 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-phan-con-lai-khong-co-chu-khac:38089311
+      → phanConLai trên mục mà câu trích không có chữ "khác". Sửa: Chỉ đánh phanConLai khi chữ biểu nói "… khác"; nếu không, xoá.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"380893","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-380893","dong8":{"38089311":{"dieuKienSo":[{"fact":"dangBinhXit","op":"CO"}],"phanConLai":["38089319"]},"38089320":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc chống nảy mầm"}]},"38089330":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc điều hòa sinh trưởng cây trồng"}]}},"dieuKienNut":{"3808931":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Thuốc diệt cỏ"}],"trich":"3808931 Thuốc diệt cỏ"}},"ghiChuSoan":[{"ma":"380893","loai":"QUYET_DINH","ghiChu":"Các dòng phân loại thuốc diệt cỏ, chống nảy mầm và điều hòa sinh trưởng."}]}
+```
+
+=== GÓI PN6 380893 ===
+# 380893 — Thuốc diệt cỏ, thuốc chống nẩy mầm và thuốc điều hòa sinh trưởng cây trồng
+
+380893 — Herbicides, anti-sprouting products and plant-growth regulators; other than containing goods of Subheading Note 1 to this Chapter; put up in forms or packings for retail sale or as preparations or articles
+  [3808931] Thuốc diệt cỏ
+    38089311 Dạng bình xịt
+    38089319 Loại khác  [LK]
+  38089320 Thuốc chống nảy mầm
+  38089330 Thuốc điều hòa sinh trưởng cây trồng
+
+- 3808931 TIEU_DE
+    tieuDe.3808931 [21 ký tự]: 3808931 Thuốc diệt cỏ
+- 38089311 DONG8
+    tax.38089311 [30 ký tự]: 38089311 - - - - Dạng bình xịt
+- 38089319 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38089319 [26 ký tự]: 38089319 - - - - Loại khác
+- 38089320 DONG8
+    tax.38089320 [34 ký tự]: 38089320 - - - Thuốc chống nảy mầm
+- 38089330 DONG8
+    tax.38089330 [51 ký tự]: 38089330 - - - Thuốc điều hòa sinh trưởng cây trồng
+
+Nguồn cấp phân nhóm: wco.380893; chú giải: nhom3808.nhom, ch38.chuong, phan38.phan
+
+
+=== SỬA PN6 380894 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:38089420
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"380894","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-380894","dong8":{"38089410":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"hỗn hợp các axit hắc ín than đá và các chất kiềm"}]},"38089420":{"dieuKienSo":[{"fact":"dangBinhXit","op":"CO"}],"phanConLai":["38089410"]}},"ghiChuSoan":[{"ma":"38089410","loai":"QUYET_DINH","ghiChu":"Sản phẩm chứa hỗn hợp axit hắc ín than đá và kiềm."}]}
+```
+
+=== GÓI PN6 380894 ===
+# 380894 — Thuốc khử trùng
+
+380894 — Disinfectants; other than containing goods specified in Subheading Note 1 in this Chapter; put up in forms or packings for retail sale or as preparations or articles
+  38089410 Có chứa hỗn hợp các axit hắc ín than đá và các chất kiềm
+  38089420 Loại khác, dạng bình xịt  [LK có điều kiện]
+  38089490 Loại khác  [LK]
+
+- 38089410 DONG8
+    tax.38089410 [71 ký tự]: 38089410 - - - Có chứa hỗn hợp các axit hắc ín than đá và các chất kiềm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chứa hỗn hợp các axit hắc ín than đá và các chất kiềm"
+- 38089420 DONG8
+    tax.38089420 [39 ký tự]: 38089420 - - - Loại khác, dạng bình xịt
+- 38089490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38089490 [24 ký tự]: 38089490 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.380894; chú giải: nhom3808.nhom, ch38.chuong, phan38.phan
+
+
+=== SỬA PN6 382290 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong5-dinh-ngu-tach:38229010:dùng cho nồi hấp khử trùng
+      → Định ngữ chung bị tách: theo chữ Anh của cùng dòng, vế bổ nghĩa đi với CẢ các danh từ đầu liên hợp (gắn cho một phần ⇒ rộng hơn chữ) hoặc chỉ với danh từ CUỐI (gắn cho tất cả ⇒ hẹp hơn chữ). Sửa: Định ngữ chung ⇒ một điều kiện riêng phủ định ngữ cho mọi danh từ đầu (vd tenLoai ["A","B"] + dungCho "<định ngữ>"); định ngữ chỉ của danh từ cuối ⇒ HOAC [[tenLoai A], [tenLoai B, <điều kiện định ngữ>]]. Máy đọc sai cấu trúc ⇒ BO_VE với ve = định ngữ + lý do (người soát đọc).
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"382290","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-382290","dong8":{"38229010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Dải","băng chỉ thị màu"]},{"fact":"dungCho","op":"CONG_DUNG","value":"nồi hấp khử trùng"}]}},"ghiChuSoan":[{"ma":"38229010","loai":"QUYET_DINH","ghiChu":"Chỉ thị màu dùng cho nồi hấp."}]}
+```
+
+=== GÓI PN6 382290 ===
+# 382290 — Loại khác
+
+382290 — Reagents; diagnostic or laboratory reagents on a backing, prepared diagnostic or laboratory reagents whether or not on a backing, or put up in the form of kits, other than those of heading 30.06; certified reference materials, n.e.c. in heading 3822
+  38229010 Dải và băng chỉ thị màu dùng cho nồi hấp khử trùng (SEN)
+  38229090 Loại khác  [LK]
+
+- 38229010 DONG8
+    tax.38229010 [69 ký tự]: 38229010 - - Dải và băng chỉ thị màu dùng cho nồi hấp khử trùng (SEN)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho nồi hấp khử trùng"
+- 38229090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38229090 [22 ký tự]: 38229090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.382290; chú giải: nhom3822.nhom, ch38.chuong, phan38.phan
+
+
+=== SỬA PN6 382711 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:38271110:38271110
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:38271190:38271110
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"382711","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-382711","dong8":{"38271110":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"38271110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongDauMoKhoangBiTum","ghiChu":"có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum"}]}
+```
+
+=== GÓI PN6 382711 ===
+# 382711 — Chứa chlorofluorocarbons (CFCs), chứa hoặc không chứa hydrochlorofluorocarbons (HCFCs), perfluorocarbons (PFCs) hoặc hydrofluorocarbons (HFCs)
+
+382711 — Mixtures containing halogenated derivatives of methane, ethane or propane, not elsewhere specified or included; containing chlorofluorocarbons (CFCs), whether or not containing hydrochlorofluorocarbons (HCFCs), perfluorocarbons (PFCs) or hydrofluorocarbon
+  38271110 Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch, có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum (SEN)
+  38271190 Loại khác  [LK]
+
+- 38271110 DONG8
+    tax.38271110 [225 ký tự]: 38271110 - - - Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch, có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum (SEN)
+    sen.38271110 [683 ký tự]: DẦU DÙNG CHO MÁY BIẾN ĐIỆN (MÁY BIẾN ÁP VÀ MÁY BIẾN DÒNG) VÀ BỘ PHẬN NGẮT MẠCH, CÓ HÀM LƯỢNG NHỎ HƠN 70% TÍNH THEO TRỌNG LƯỢNG LÀ DẦU CÓ NGUỒN GỐC TỪ DẦU MỎ HOẶC CÁC LOẠI DẦU THU ĐƯỢC TỪ CÁC KHOÁNG BI- TUM Dầu dùng cho máy biến điện được phân loại vào các phân nhóm này thường từ dầu khoáng và chứa hydrocacbon halogen hóa. Dầu dùng cho máy biến điện và bộ phận ngắt mạch hoặc dầu cách điện là loại dầu ổn định ở nhiệt độ cao và có đặc tính cách điện cao. Trái ngược với dầu bôi trơn, chức năng của dầu dùng cho máy biến điện và bộ phận ngắt mạch là cách điện, ngăn chặn sự phóng điện hào quang và phóng điện hồ quang, và dùng như một chất làm mát nhưng không phải là chất bôi trơn.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch, có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu" · [GIỚI HẠN] "được từ các khoáng bi-tum"
+- 38271190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38271190 [24 ký tự]: 38271190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.382711; chú giải: nhom3827.nhom, ch38.chuong, phan38.phan
+
+
+=== SỬA PN6 382739 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:38273910:38273910
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:38273990:38273910
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"382739","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-382739","dong8":{"38273910":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"38273910","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongDauMoKhoangBiTum","ghiChu":"có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum"}]}
+```
+
+=== GÓI PN6 382739 ===
+# 382739 — Loại khác
+
+382739 — Mixtures containing halogenated methane, ethane, or propane; containing hydrochlorofluorocarbons (HCFCs), perfluorocarbons (PFCs) or hydrofluorocarbons (HFCs) or not, but not chlorofluorocarbons (CFCs); n.e.c. in subheading 3827.3
+  38273910 Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch, có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum (SEN)
+  38273990 Loại khác  [LK]
+
+- 38273910 DONG8
+    tax.38273910 [225 ký tự]: 38273910 - - - Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch, có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum (SEN)
+    sen.38273910 [683 ký tự]: DẦU DÙNG CHO MÁY BIẾN ĐIỆN (MÁY BIẾN ÁP VÀ MÁY BIẾN DÒNG) VÀ BỘ PHẬN NGẮT MẠCH, CÓ HÀM LƯỢNG NHỎ HƠN 70% TÍNH THEO TRỌNG LƯỢNG LÀ DẦU CÓ NGUỒN GỐC TỪ DẦU MỎ HOẶC CÁC LOẠI DẦU THU ĐƯỢC TỪ CÁC KHOÁNG BI- TUM Dầu dùng cho máy biến điện được phân loại vào các phân nhóm này thường từ dầu khoáng và chứa hydrocacbon halogen hóa. Dầu dùng cho máy biến điện và bộ phận ngắt mạch hoặc dầu cách điện là loại dầu ổn định ở nhiệt độ cao và có đặc tính cách điện cao. Trái ngược với dầu bôi trơn, chức năng của dầu dùng cho máy biến điện và bộ phận ngắt mạch là cách điện, ngăn chặn sự phóng điện hào quang và phóng điện hồ quang, và dùng như một chất làm mát nhưng không phải là chất bôi trơn.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch, có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu" · [GIỚI HẠN] "được từ các khoáng bi-tum"
+- 38273990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.38273990 [24 ký tự]: 38273990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.382739; chú giải: nhom3827.nhom, ch38.chuong, phan38.phan
+

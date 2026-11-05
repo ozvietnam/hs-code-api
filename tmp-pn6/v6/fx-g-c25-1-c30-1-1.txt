@@ -1,0 +1,437 @@
+VÒNG SỬA — 12 PN6 bị cổng máy chặn (280700 280920 282720 283531 291570 291639 292242 292320 300310 300410 300449 300450). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 280700 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:28070010:28070010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:28070090:28070010
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"280700","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-280700","dong8":{"28070010":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"28070010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongH2SO4","ghiChu":"chứa H2SO4 trên 80% tính theo trọng lượng"}]}
+```
+
+=== GÓI PN6 280700 ===
+# 280700 — Axit sulphuric; axit sulphuric bốc khói (oleum).
+
+NHÓM 2807 — Axit sulphuric; axit sulphuric bốc khói (oleum).
+  28070010 Axit sulphuric chứa H2SO4 trên 80% tính theo trọng lượng
+  28070090 Loại khác  [LK]
+
+- 28070010 DONG8
+    tax.28070010 [67 ký tự]: 28070010 - Axit sulphuric chứa H2SO4 trên 80% tính theo trọng lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa H2SO4 trên 80% tính theo trọng lượng"
+- 28070090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.28070090 [20 ký tự]: 28070090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.280700; chú giải: nhom2807.nhom, ch28.chuong, phan28.phan
+
+
+=== SỬA PN6 280920 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ spec-ma-ngoai-phan-nhom:dieuKienNut.2809209 — không phải tiêu đề có tên của phân nhóm (tiêu đề "Loại khác" trần không ghi)
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"280920","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-280920","dong8":{"28092031":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Axit hypophosphoric"}],"phanConLai":["28092039"]},"28092032":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Axit phosphoric"}],"phanConLai":["28092039"]},"28092091":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Axit hypophosphoric"}],"phanConLai":["28092099"]},"28092092":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Axit phosphoric"}],"phanConLai":["28092099"]}},"dieuKienNut":{"2809203":{"dieuKienSo":[{"fact":"thichHopDungChoNguoi","op":"CO"}],"trich":"2809203 Loại dùng cho thực phẩm"},"2809209":{"dieuKienSo":[{"fact":"thichHopDungChoNguoi","op":"KHONG"}],"trich":"2809209 Loại khác"}},"ghiChuSoan":[{"ma":"2809203","loai":"BO_VE","ve":"dùng cho thực phẩm","lyDo":"Đã ghi nhận bằng từ vựng thích hợp dùng cho người."}]}
+```
+
+=== GÓI PN6 280920 ===
+# 280920 — Axit phosphoric và axit polyphosphoric
+
+280920 — Phosphoric acid and polyphosphoric acids
+  [2809203] Loại dùng cho thực phẩm
+    28092031 Axit hypophosphoric (SEN)
+    28092032 Axit phosphoric (SEN)
+    28092039 Loại khác (SEN)  [LK]
+  [2809209] Loại khác
+    28092091 Axit hypophosphoric
+    28092092 Axit phosphoric
+    28092099 Loại khác  [LK]
+
+- 2809203 TIEU_DE
+    tieuDe.2809203 [31 ký tự]: 2809203 Loại dùng cho thực phẩm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho thực phẩm"
+- 28092031 DONG8
+    tax.28092031 [40 ký tự]: 28092031 - - - Axit hypophosphoric (SEN)
+    sen.28092031 [633 ký tự]: AXIT PHOSPHORIC VÀ AXIT POLYPHOSPHORIC, LOẠI DÙNG CHO THỰC PHẨM Axit phosphoric loại dùng cho thực phẩm thu được từ việc xử lý axit phosphoric dùng trong công nghiệp bằng các công đoạn chế biến thêm như kết tủa, lọc bỏ arsen và các chất độc hại khác. Hàm lượng giới hạn trong sản phẩm này đối với arsen là nhỏ hơn 1mg/kg, sắt là 20mg/kg, fluorua là 10mg/kg và chì là 3mg/kg. Nó được dùng trong thực phẩm và đồ uống có ga như là một chất điều chỉnh độ chua và chất ổn định. Ngoài ra, nó còn được dùng trong công nghiệp tinh chế đường, trong sản xuất gelatin, thức ăn chăn nuôi, nấm men và sử dụng làm thuốc thử trong phòng thí nghiệm.
+- 28092032 DONG8
+    tax.28092032 [37 ký tự]: 28092032 - - - Axit phosphoric (SEN) 
+    sen.28092032 [633 ký tự]: AXIT PHOSPHORIC VÀ AXIT POLYPHOSPHORIC, LOẠI DÙNG CHO THỰC PHẨM Axit phosphoric loại dùng cho thực phẩm thu được từ việc xử lý axit phosphoric dùng trong công nghiệp bằng các công đoạn chế biến thêm như kết tủa, lọc bỏ arsen và các chất độc hại khác. Hàm lượng giới hạn trong sản phẩm này đối với arsen là nhỏ hơn 1mg/kg, sắt là 20mg/kg, fluorua là 10mg/kg và chì là 3mg/kg. Nó được dùng trong thực phẩm và đồ uống có ga như là một chất điều chỉnh độ chua và chất ổn định. Ngoài ra, nó còn được dùng trong công nghiệp tinh chế đường, trong sản xuất gelatin, thức ăn chăn nuôi, nấm men và sử dụng làm thuốc thử trong phòng thí nghiệm.
+- 28092039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.28092039 [30 ký tự]: 28092039 - - - Loại khác (SEN)
+    sen.28092039 [633 ký tự]: AXIT PHOSPHORIC VÀ AXIT POLYPHOSPHORIC, LOẠI DÙNG CHO THỰC PHẨM Axit phosphoric loại dùng cho thực phẩm thu được từ việc xử lý axit phosphoric dùng trong công nghiệp bằng các công đoạn chế biến thêm như kết tủa, lọc bỏ arsen và các chất độc hại khác. Hàm lượng giới hạn trong sản phẩm này đối với arsen là nhỏ hơn 1mg/kg, sắt là 20mg/kg, fluorua là 10mg/kg và chì là 3mg/kg. Nó được dùng trong thực phẩm và đồ uống có ga như là một chất điều chỉnh độ chua và chất ổn định. Ngoài ra, nó còn được dùng trong công nghiệp tinh chế đường, trong sản xuất gelatin, thức ăn chăn nuôi, nấm men và sử dụng làm thuốc thử trong phòng thí nghiệm.
+- 2809209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.2809209 [17 ký tự]: 2809209 Loại khác
+- 28092091 DONG8
+    tax.28092091 [34 ký tự]: 28092091 - - - Axit hypophosphoric
+- 28092092 DONG8
+    tax.28092092 [30 ký tự]: 28092092 - - - Axit phosphoric
+- 28092099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.28092099 [24 ký tự]: 28092099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.280920; chú giải: nhom2809.nhom, ch28.chuong, phan28.phan
+
+
+=== SỬA PN6 282720 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:28272010:28272010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:28272090:28272010
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"282720","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-282720","dong8":{"28272010":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"28272010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"hamLuongCanxiClorua","ghiChu":"Chứa từ 73% đến 80% tính theo trọng lượng"}]}
+```
+
+=== GÓI PN6 282720 ===
+# 282720 — Canxi clorua
+
+282720 — Chlorides; of calcium
+  28272010 Chứa từ 73% đến 80% tính theo trọng lượng
+  28272090 Loại khác  [LK]
+
+- 28272010 DONG8
+    tax.28272010 [54 ký tự]: 28272010 - - Chứa từ 73% đến 80% tính theo trọng lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa từ 73% đến 80% tính theo trọng lượng"
+- 28272090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.28272090 [22 ký tự]: 28272090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.282720; chú giải: nhom2827.nhom, ch28.chuong, phan28.phan
+
+
+=== SỬA PN6 283531 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:28353110:dieu-kien-so-co-khong-co-trong-trich:thichHopDungChoNguoi
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"283531","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-283531","dong8":{"28353110":{"dieuKienSo":[{"fact":"thichHopDungChoNguoi","op":"CO"}]}},"ghiChuSoan":[{"ma":"28353110","loai":"BO_VE","ve":"dùng cho thực phẩm","lyDo":"Sử dụng biến thichHopDungChoNguoi mô tả hàng thực phẩm."}]}
+```
+
+=== GÓI PN6 283531 ===
+# 283531 — Natri triphosphat (natri tripolyphosphat)
+
+283531 — Polyphosphates; sodium triphosphate (sodium tripolyphosphate), whether or not chemically defined
+  28353110 Loại dùng cho thực phẩm (SEN)
+  28353190 Loại khác  [LK]
+
+- 28353110 DONG8
+    tax.28353110 [44 ký tự]: 28353110 - - - Loại dùng cho thực phẩm (SEN)
+    sen.28353110 [736 ký tự]: NATRI TRIPOLYPHOSPHAT, LOẠI DÙNG CHO THỰC PHẨM Natri Triphosphat/Natri Tripolyphosphat (STPP) là một chất bột vô cơ màu trắng có công thức phân tử Na5P3O10. Natri Tripolyphosphat có thể được tạo ra bằng phản ứng giữa Dinatri phosphate (Na2HPO4) và Mononatri phosphate (NaH2PO4) như sau: 2 Na2HPO4 + NaH2PO4 → Na5P3O10 + 2 H2O ● Natri tripolyphosphat, loại dùng cho thực phẩm có thể được sử dụng như một chất phụ gia trong chế biến thịt, chế biến cá biển và đông lạnh tôm,... ● Các thông số kỹ thuật của Natri Tripolyphosphat, loại dùng cho thực phẩm, chứa Asen tối đa 3 mg / Kg và Chì tối đa 2 mg / Kg. (Tham khảo: Chemical Food Codex (Hóa chất thực phẩm Codex) và Hiệp hội về nước và nước thải công trình Hoa Kỳ Tiêu chuẩn B503-11)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng cho thực phẩm"
+- 28353190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.28353190 [24 ký tự]: 28353190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.283531; chú giải: nhom2835.nhom, ch28.chuong, phan28.phan
+
+
+=== SỬA PN6 291570 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:29157010+29157030:tenLoai=muối:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"291570","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-291570","dong8":{"29157010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Axit palmitic","muối","este"]}]},"29157020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Axit stearic"}]},"29157030":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Muối","este"]}]}},"ghiChuSoan":[{"ma":"29157030","loai":"BO_VE","ve":"của axit stearic","lyDo":"Định ngữ chung của dòng con đã ngầm định phụ thuộc vào cấu trúc."},{"ma":"29157010","loai":"BO_VE","ve":"của nó","lyDo":"Định ngữ thuộc cụm muối và este."}]}
+```
+
+=== GÓI PN6 291570 ===
+# 291570 — Axit palmitic, axit stearic, muối và este của chúng
+
+291570 — Acids; saturated acyclic monocarboxylic acids; palmitic acid, stearic acid, their salts and esters
+  29157010 Axit palmitic, muối và este của nó
+  29157020 Axit stearic
+  29157030 Muối và este của axit stearic
+
+- 29157010 DONG8
+    tax.29157010 [47 ký tự]: 29157010 - - Axit palmitic, muối và este của nó
+- 29157020 DONG8
+    tax.29157020 [25 ký tự]: 29157020 - - Axit stearic
+- 29157030 DONG8
+    tax.29157030 [43 ký tự]: 29157030 - - Muối và este của axit stearic 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của axit stearic"
+
+Nguồn cấp phân nhóm: wco.291570; chú giải: nhom2915.nhom, ch29.chuong, phan29.phan
+
+
+=== SỬA PN6 291639 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:29163910+29163920:tenLoai=este:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"291639","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-291639","dong8":{"29163910":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Axit axetic 2,4- Diclorophenyl","muối","este"]}]},"29163920":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Este"}]}},"ghiChuSoan":[{"ma":"29163910","loai":"BO_VE","ve":"của nó","lyDo":"Định ngữ cấu tạo từ cấu trúc dòng."},{"ma":"29163920","loai":"BO_VE","ve":"của axit phenylaxetic","lyDo":"Định ngữ cấu tạo của Este."}]}
+```
+
+=== GÓI PN6 291639 ===
+# 291639 — Loại khác
+
+291639 — Acids; aromatic monocarboxylic acids, and their anhydrides, halides, peroxides, peroxyacids and their derivatives, other than benzoic acid, its salts and esters, benzoyl peroxide and benzoyl chloride, phenylacetic acid and its salts
+  29163910 Axit axetic 2,4- Diclorophenyl và muối và este của nó
+  29163920 Este của axit phenylaxetic
+  29163990 Loại khác  [LK]
+
+- 29163910 DONG8
+    tax.29163910 [68 ký tự]: 29163910 - - - Axit axetic 2,4- Diclorophenyl và muối và este của nó
+- 29163920 DONG8
+    tax.29163920 [41 ký tự]: 29163920 - - - Este của axit phenylaxetic
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của axit phenylaxetic"
+- 29163990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.29163990 [24 ký tự]: 29163990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.291639; chú giải: nhom2916.nhom, ch29.chuong, phan29.phan
+
+
+=== SỬA PN6 292242 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-phan-con-lai-khong-co-chu-khac:29224220
+      → phanConLai trên mục mà câu trích không có chữ "khác". Sửa: Chỉ đánh phanConLai khi chữ biểu nói "… khác"; nếu không, xoá.
+    ✗ cong2-dong-khong-toi-duoc:29224220
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn đúng ý chữ. Vẫn không tới được ⇒ DỪNG, báo lại.
+    ✗ cong2-dong-khong-toi-duoc:29224290
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"292242","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-292242","dong8":{"29224210":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Axit glutamic"}]},"29224220":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Muối natri"}],"phanConLai":["29224290"]},"29224290":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Muối"}],"phanConLai":["29224210","29224220"]}},"ghiChuSoan":[{"ma":"29224220","loai":"BO_VE","ve":"của axit glutamic (MSG)","lyDo":"Định ngữ cấu thành Muối natri."}]}
+```
+
+=== GÓI PN6 292242 ===
+# 292242 — Axit glutamic và muối của nó
+
+292242 — Amino-acids, other than those containing more than one kind of oxygen function, and their esters; glutamic acid and its esters; salts thereof
+  29224210 Axit glutamic
+  29224220 Muối natri của axit glutamic (MSG)
+  29224290 Muối khác
+
+- 29224210 DONG8
+    tax.29224210 [28 ký tự]: 29224210 - - - Axit glutamic
+- 29224220 DONG8
+    tax.29224220 [49 ký tự]: 29224220 - - - Muối natri của axit glutamic (MSG)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của axit glutamic (MSG)"
+- 29224290 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.29224290 [24 ký tự]: 29224290 - - - Muối khác
+
+Nguồn cấp phân nhóm: wco.292242; chú giải: nhom2922.nhom, ch29.chuong, phan29.phan
+
+
+=== SỬA PN6 292320 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:29232011:29232011
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:29232019:29232011
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"292320","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-292320","dong8":{"29232011":{"dieuKienSo":[]}},"dieuKienNut":{"2923201":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Lecithins"}],"trich":"2923201 Lecithins"}},"ghiChuSoan":[{"ma":"29232011","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"nguonGoc","ghiChu":"Từ thực vật"}]}
+```
+
+=== GÓI PN6 292320 ===
+# 292320 — Lecithins và các phosphoaminolipid khác
+
+292320 — Lecithins and other phosphoaminolipids, whether or not chemically defined
+  [2923201] Lecithins
+    29232011 Từ thực vật
+    29232019 Loại khác  [LK]
+  29232090 Loại khác  [LK]
+
+- 2923201 TIEU_DE
+    tieuDe.2923201 [17 ký tự]: 2923201 Lecithins
+- 29232011 DONG8
+    tax.29232011 [26 ký tự]: 29232011 - - - Từ thực vật
+- 29232019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.29232019 [24 ký tự]: 29232019 - - - Loại khác
+- 29232090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.29232090 [22 ký tự]: 29232090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.292320; chú giải: nhom2923.nhom, ch29.chuong, phan29.phan
+
+=== SỬA PN6 300310 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:30031010+30031020:tenLoai=muối:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"300310","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-300310","dong8":{"30031010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["amoxicillin","muối"]}]},"30031020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["ampicillin","muối"]}]}},"ghiChuSoan":[{"ma":"30031010","loai":"BO_VE","ve":"Chứa amoxicillin (INN) hoặc muối của nó","lyDo":"Đã sử dụng tenLoai liệt kê thành phần amoxicillin và muối, bỏ các hư từ."},{"ma":"30031020","loai":"BO_VE","ve":"Chứa ampicillin (INN) hoặc muối của nó","lyDo":"Đã sử dụng tenLoai cho ampicillin và muối."}]}
+```
+
+=== GÓI PN6 300310 ===
+# 300310 — Chứa penicillins hoặc dẫn xuất của chúng, có cấu trúc axit penicillanic, hoặc streptomycins hoặc các dẫn xuất của chúng
+
+300310 — Medicaments; containing penicillins, streptomycins or their derivatives, for therapeutic or prophylactic uses, (not in measured doses, not packaged for retail sale)
+  30031010 Chứa amoxicillin (INN) hoặc muối của nó
+  30031020 Chứa ampicillin (INN) hoặc muối của nó
+  30031090 Loại khác  [LK]
+
+- 30031010 DONG8
+    tax.30031010 [52 ký tự]: 30031010 - - Chứa amoxicillin (INN) hoặc muối của nó
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa amoxicillin (INN) hoặc muối của nó"
+- 30031020 DONG8
+    tax.30031020 [51 ký tự]: 30031020 - - Chứa ampicillin (INN) hoặc muối của nó
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa ampicillin (INN) hoặc muối của nó"
+- 30031090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30031090 [22 ký tự]: 30031090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300310; chú giải: nhom3003.nhom, ch30.chuong, phan30.phan
+
+
+=== SỬA PN6 300410 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-phan-con-lai-khong-co-chu-khac:30041015
+      → phanConLai trên mục mà câu trích không có chữ "khác". Sửa: Chỉ đánh phanConLai khi chữ biểu nói "… khác"; nếu không, xoá.
+    ✗ cong3-phan-con-lai-khong-co-chu-khac:30041016
+    ✗ cong1-khong-phu-kin:300410:tenLoai=penicillin G
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+    ✗ cong2-chong-lan:30041015+30041016:dangBaoCheThuoc=DANG_UONG,tenLoai=muối penicillins:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:30041019+30041020:dangBaoCheThuoc=DANG_UONG,tenLoai=dẫn xuất:khong-tat-dinh
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"300410","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-300410","dong8":{"30041015":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["penicillin G","phenoxymethyl penicillin","muối"]}],"phanConLai":["30041019"]},"30041016":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["ampicillin","amoxycillin","muối"]},{"fact":"dangBaoCheThuoc","op":"TRONG","value":["DANG_UONG"]}],"phanConLai":["30041019"]},"30041020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["streptomycin","dẫn xuất"]}]}},"dieuKienNut":{"3004101":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["penicillins","dẫn xuất"]}],"trich":"3004101 Chứa penicillins hoặc các dẫn xuất của chúng"}},"ghiChuSoan":[{"ma":"30041015","loai":"BO_VE","ve":"(trừ penicillin G benzathin)","lyDo":"Không dùng định ngữ loại trừ trong tenLoai."},{"ma":"30041015","loai":"BO_VE","ve":"Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng","lyDo":"Đã sử dụng tenLoai liệt kê chất."},{"ma":"30041016","loai":"BO_VE","ve":"Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)","lyDo":"Đã sử dụng tenLoai liệt kê chất và dangBaoCheThuoc."},{"ma":"30041020","loai":"BO_VE","ve":"Chứa các streptomycin hoặc các dẫn xuất của chúng","lyDo":"Sử dụng tenLoai."},{"ma":"3004101","loai":"BO_VE","ve":"Chứa penicillins hoặc các dẫn xuất của chúng","lyDo":"Sử dụng tenLoai cho nút."}]}
+```
+
+=== GÓI PN6 300410 ===
+# 300410 — Chứa penicillins hoặc dẫn xuất của chúng, có cấu trúc axit penicillanic, hoặc streptomycins hoặc các dẫn xuất của chúng
+
+300410 — Medicaments; containing penicillins, streptomycins or their derivatives, for therapeutic or prophylactic uses, packaged for retail sale
+  [3004101] Chứa penicillins hoặc các dẫn xuất của chúng
+    30041015 Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng
+    30041016 Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)
+    30041019 Loại khác  [LK]
+  30041020 Chứa các streptomycin hoặc các dẫn xuất của chúng
+
+- 3004101 TIEU_DE
+    tieuDe.3004101 [52 ký tự]: 3004101 Chứa penicillins hoặc các dẫn xuất của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa penicillins hoặc các dẫn xuất của chúng"
+- 30041015 DONG8
+    tax.30041015 [107 ký tự]: 30041015 - - - Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng" · [GIỚI HẠN] "(trừ penicillin G benzathin)"
+- 30041016 DONG8
+    tax.30041016 [78 ký tự]: 30041016 - - - Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)"
+- 30041019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30041019 [24 ký tự]: 30041019 - - - Loại khác
+- 30041020 DONG8
+    tax.30041020 [62 ký tự]: 30041020 - - Chứa các streptomycin hoặc các dẫn xuất của chúng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa các streptomycin hoặc các dẫn xuất của chúng"
+
+Nguồn cấp phân nhóm: wco.300410; chú giải: nhom3004.nhom, ch30.chuong, phan30.phan
+
+
+=== SỬA PN6 300449 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:30044911:dieu-kien-so-trong-khong-co-trong-trich:DANG_TIEM
+      → Câu trích không có cách đọc của giá trị liệt kê. Sửa: Mỗi giá trị cần một mẫu cachDoc có trong trich (xem --tu-vung).
+    ✗ cong3-phan-con-lai-khong-co-chu-khac:30044951
+      → phanConLai trên mục mà câu trích không có chữ "khác". Sửa: Chỉ đánh phanConLai khi chữ biểu nói "… khác"; nếu không, xoá.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"300449","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-300449","dong8":{"30044911":{"dieuKienSo":[{"fact":"dangBaoCheThuoc","op":"TRONG","value":["DANG_UONG","DANG_TIEM"]}],"phanConLai":["30044919"]},"30044951":{"dieuKienSo":[{"fact":"dangBaoCheThuoc","op":"TRONG","value":["DANG_UONG"]}],"phanConLai":["30044959"]},"30044960":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"theophylline"},{"fact":"dangBaoCheThuoc","op":"TRONG","value":["DANG_UONG"]}]},"30044970":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"atropine sulphate"}]},"30044980":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"tenLoai","op":"TEN_LOAI","value":["quinine hydrochloride","dihydroquinine chloride"]},{"fact":"dangBaoCheThuoc","op":"TRONG","value":["DANG_TIEM"]}],[{"fact":"tenLoai","op":"TEN_LOAI","value":["quinine sulphate","bisulphate"]},{"fact":"dangBaoCheThuoc","op":"TRONG","value":["DANG_UONG"]}]]}]}},"dieuKienNut":{"3004491":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["morphine","dẫn xuất"]}],"trich":"3004491 Chứa morphine hoặc các dẫn xuất của nó"},"3004495":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["papaverine","berberine"]}],"trich":"3004495 Chứa papaverine hoặc berberine"}},"ghiChuSoan":[{"ma":"30044960","loai":"BO_VE","ve":"Chứa theophylline, dạng uống (*)","lyDo":"Đã sử dụng dangBaoCheThuoc và tenLoai."},{"ma":"30044970","loai":"BO_VE","ve":"Chứa atropine sulphate","lyDo":"Đã ghi nhận trong tenLoai."},{"ma":"30044980","loai":"BO_VE","ve":"dùng để tiêm","lyDo":"Thay thế bằng dangBaoCheThuoc DANG_TIEM."},{"ma":"30044980","loai":"BO_VE","ve":"Chứa quinine hydrochloride hoặc dihydroquinine chloride","lyDo":"Đã ghi nhận trong tenLoai."},{"ma":"30044980","loai":"BO_VE","ve":"Chứa quinine sulphate hoặc bisulphate, dạng uống (*)","lyDo":"Đã ghi nhận bằng tenLoai và dangBaoCheThuoc."},{"ma":"3004491","loai":"BO_VE","ve":"Chứa morphine hoặc các dẫn xuất của nó","lyDo":"Ghi nhận bằng tenLoai."},{"ma":"3004495","loai":"BO_VE","ve":"Chứa papaverine hoặc berberine","lyDo":"Ghi nhận bằng tenLoai."}]}
+```
+
+=== GÓI PN6 300449 ===
+# 300449 — Loại khác
+
+300449 — Medicaments; containing alkaloids or their derivatives; other than ephedrine, pseudoephedrine (INN) or norephedrine or their salts; for therapeutic or prophylactic uses, packaged for retail sale
+  [3004491] Chứa morphine hoặc các dẫn xuất của nó
+    30044911 Dạng uống (*) hoặc tiêm
+    30044919 Loại khác  [LK]
+  [3004495] Chứa papaverine hoặc berberine
+    30044951 Dạng uống (*)
+    30044959 Loại khác  [LK]
+  30044960 Chứa theophylline, dạng uống (*)
+  30044970 Chứa atropine sulphate
+  30044980 Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)
+  30044990 Loại khác  [LK]
+
+- 3004491 TIEU_DE
+    tieuDe.3004491 [46 ký tự]: 3004491 Chứa morphine hoặc các dẫn xuất của nó
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa morphine hoặc các dẫn xuất của nó"
+- 30044911 DONG8
+    tax.30044911 [40 ký tự]: 30044911 - - - - Dạng uống (*) hoặc tiêm
+- 30044919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30044919 [26 ký tự]: 30044919 - - - - Loại khác
+- 3004495 TIEU_DE
+    tieuDe.3004495 [38 ký tự]: 3004495 Chứa papaverine hoặc berberine
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa papaverine hoặc berberine"
+- 30044951 DONG8
+    tax.30044951 [30 ký tự]: 30044951 - - - - Dạng uống (*)
+- 30044959 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30044959 [26 ký tự]: 30044959 - - - - Loại khác
+- 30044960 DONG8
+    tax.30044960 [47 ký tự]: 30044960 - - - Chứa theophylline, dạng uống (*)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa theophylline, dạng uống (*)"
+- 30044970 DONG8
+    tax.30044970 [37 ký tự]: 30044970 - - - Chứa atropine sulphate
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa atropine sulphate"
+- 30044980 DONG8
+    tax.30044980 [138 ký tự]: 30044980 - - - Chứa quinine hydrochloride hoặc dihydroquinine chloride, dùng để tiêm; Chứa quinine sulphate hoặc bisulphate, dạng uống (*)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa quinine hydrochloride hoặc dihydroquinine chloride" · [GIỚI HẠN] "dùng để tiêm" · [GIỚI HẠN] "Chứa quinine sulphate hoặc bisulphate, dạng uống (*)"
+- 30044990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30044990 [24 ký tự]: 30044990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300449; chú giải: nhom3004.nhom, ch30.chuong, phan30.phan
+
+
+=== SỬA PN6 300450 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ spec-ma-ngoai-phan-nhom:dieuKienNut.3004509 — không phải tiêu đề có tên của phân nhóm (tiêu đề "Loại khác" trần không ghi)
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"300450","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-300450","dong8":{"30045010":{"dieuKienSo":[{"fact":"thietKeChoTreEm","op":"CO"},{"fact":"dangBaoCheThuoc","op":"TRONG","value":["DANG_UONG"]}]},"30045021":{"dieuKienSo":[{"fact":"dangBaoCheThuoc","op":"TRONG","value":["DANG_UONG"]}],"phanConLai":["30045029"]},"30045091":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["vitamin A","B","C"]}],"phanConLai":["30045099"]}},"dieuKienNut":{"3004502":{"dieuKienSo":[]},"3004509":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Loại khác"}],"trich":"3004509 Loại khác"}},"ghiChuSoan":[{"ma":"30045010","loai":"BO_VE","ve":"phù hợp cho trẻ em, dạng xirô","lyDo":"Đã sử dụng điều kiện thietKeChoTreEm và dangBaoCheThuoc DANG_UONG."},{"ma":"30045091","loai":"BO_VE","ve":"Chứa vitamin A, B hoặc C","lyDo":"Đã sử dụng tenLoai để liệt kê."},{"ma":"3004502","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"soLoaiVitamin","ghiChu":"chứa nhiều hơn một loại vitamin"}]}
+```
+
+=== GÓI PN6 300450 ===
+# 300450 — Loại khác, chứa các vitamin hoặc các sản phẩm khác của nhóm 29.36
+
+300450 — Medicaments; containing vitamins or their derivatives, for therapeutic or prophylactic use, packaged for retail sale
+  30045010 Loại phù hợp cho trẻ em, dạng xirô
+  [3004502] Loại khác, chứa nhiều hơn một loại vitamin
+    30045021 Dạng uống (*)
+    30045029 Loại khác  [LK]
+  [3004509] Loại khác
+    30045091 Chứa vitamin A, B hoặc C
+    30045099 Loại khác  [LK]
+
+- 30045010 DONG8
+    tax.30045010 [47 ký tự]: 30045010 - - Loại phù hợp cho trẻ em, dạng xirô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "phù hợp cho trẻ em, dạng xirô"
+- 3004502 TIEU_DE
+    tieuDe.3004502 [50 ký tự]: 3004502 Loại khác, chứa nhiều hơn một loại vitamin
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chứa nhiều hơn một loại vitamin"
+- 30045021 DONG8
+    tax.30045021 [28 ký tự]: 30045021 - - - Dạng uống (*)
+- 30045029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30045029 [24 ký tự]: 30045029 - - - Loại khác
+- 3004509 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.3004509 [17 ký tự]: 3004509 Loại khác
+- 30045091 DONG8
+    tax.30045091 [39 ký tự]: 30045091 - - - Chứa vitamin A, B hoặc C
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa vitamin A, B hoặc C"
+- 30045099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.30045099 [24 ký tự]: 30045099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.300450; chú giải: nhom3004.nhom, ch30.chuong, phan30.phan
+

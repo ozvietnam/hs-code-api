@@ -1,0 +1,398 @@
+VÒNG SỬA — 5 PN6 bị cổng máy chặn (151090 151190 151529 151550 151620). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 151090 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:15109010+15109020:laPhanDoan=true,mucDoTinhCheDau=DANG_THO
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"151090","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-151090","dong8":{"15109010":{"dieuKienSo":[{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]},"15109020":{"dieuKienSo":[{"fact":"laPhanDoan","op":"CO"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]}},"ghiChuSoan":[{"ma":"15109010","loai":"QUYET_DINH","ghiChu":"tax.15109010 \"Dầu thô\" ⇒ mucDoTinhCheDau DANG_THO"},{"ma":"15109020","loai":"QUYET_DINH","ghiChu":"tax.15109020 \"Các phần phân đoạn của dầu chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"}]}
+```
+
+=== GÓI PN6 151090 ===
+# 151090 — Loại khác
+
+151090 — Vegetable oils; oils and their fractions n.e.c. in heading 1510, obtained solely from olives, whether or not refined, but not chemically modified, including blends of these oils or fractions with oils or fractions of heading no. 1509
+  15109010 Dầu thô
+  15109020 Các phần phân đoạn của dầu chưa tinh chế
+  15109090 Loại khác  [LK]
+
+- 15109010 DONG8
+    tax.15109010 [20 ký tự]: 15109010 - - Dầu thô
+- 15109020 DONG8
+    tax.15109020 [53 ký tự]: 15109020 - - Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15109090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15109090 [22 ký tự]: 15109090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151090; chú giải: nhom1510.nhom, ch15.chuong, phan15.phan
+
+
+=== SỬA PN6 151190 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:15119031:dieu-kien-so-don-vi-khong-co-trong-trich:IV
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+    ✗ cong3-muc:15119037:dieu-kien-so-don-vi-khong-co-trong-trich:IV
+    ✗ cong3-muc:15119041:dieu-kien-so-khong-khong-co-trong-trich:dangLong
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Như trên.
+    ✗ cong3-muc:151190~r1922:dieu-kien-so-khong-khong-co-trong-trich:dangLong
+    ✗ cong1-khong-phu-kin:151190:laPhanDoan=false,mucDoTinhCheDau=DANG_THO
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+    ✗ cong2-chong-lan:15119020+15119031:chiSoIot=30,dangLong=false,laPhanDoan=true,mucDoTinhCheDau=DA_TINH_CHE
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:15119020+15119032:chiSoIot=29.99997,dangLong=false,laPhanDoan=true,mucDoTinhCheDau=DA_TINH_CHE
+    ✗ cong2-chong-lan:15119020+15119036:dangLong=true,khoiLuong=24.999975,laPhanDoan=true,mucDoTinhCheDau=DA_TINH_CHE
+    ✗ cong2-chong-lan:15119020+15119037:chiSoIot=55,dangLong=true,khoiLuong=25.000025,laPhanDoan=true,mucDoTinhCheDau=DA_TINH_CHE
+    ✗ cong2-chong-lan:15119020+15119039:chiSoIot=29.99997,dangLong=true,khoiLuong=25.000025,laPhanDoan=true,mucDoTinhCheDau=DA_TINH_CHE
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"151190","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-151190","dong8":{"15119020":{"dieuKienSo":[{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DA_TINH_CHE"]}]},"15119031":{"dieuKienSo":[{"fact":"chiSoIot","op":">=","value":30,"donVi":"IV"},{"fact":"chiSoIot","op":"<","value":40,"donVi":"IV"}]},"15119036":{"dieuKienSo":[{"fact":"khoiLuong","op":"<=","value":25,"donVi":"kg"}]},"15119037":{"dieuKienSo":[{"fact":"chiSoIot","op":">=","value":55,"donVi":"IV"},{"fact":"chiSoIot","op":"<","value":60,"donVi":"IV"}]},"15119041":{"dieuKienSo":[{"fact":"dangLong","op":"KHONG"}]},"15119042":{"dieuKienSo":[{"fact":"khoiLuong","op":"<=","value":25,"donVi":"kg"}]}},"dieuKienNut":{"1511903":{"dieuKienSo":[{"fact":"laPhanDoan","op":"CO"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DA_TINH_CHE"]}]},"151190~r1922":{"dieuKienSo":[{"fact":"dangLong","op":"KHONG"}]},"151190~r1925":{"dieuKienSo":[{"fact":"dangLong","op":"CO"}]},"1511904":{"dieuKienSo":[{"fact":"laPhanDoan","op":"CO"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]}},"ghiChuSoan":[{"ma":"15119020","loai":"QUYET_DINH","ghiChu":"tax.15119020 \"Dầu tinh chế\" ⇒ mucDoTinhCheDau DA_TINH_CHE"},{"ma":"1511903","loai":"QUYET_DINH","ghiChu":"tieuDe.1511903 \"Các phần phân đoạn của dầu tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DA_TINH_CHE"},{"ma":"151190~r1922","loai":"QUYET_DINH","ghiChu":"tieuDe.151190~r1922 \"Các phần phân đoạn thể rắn\" ⇒ dangLong KHONG"},{"ma":"15119031","loai":"QUYET_DINH","ghiChu":"tax.15119031 \"Có chỉ số iốt từ 30 trở lên, nhưng dưới 40\" ⇒ chiSoIot >= 30 IV và < 40 IV"},{"ma":"151190~r1925","loai":"QUYET_DINH","ghiChu":"tieuDe.151190~r1925 \"Các phần phân đoạn thể lỏng\" ⇒ dangLong CO"},{"ma":"15119036","loai":"QUYET_DINH","ghiChu":"tax.15119036 \"Đóng gói với khối lượng tịnh không quá 25kg\" ⇒ khoiLuong <= 25 kg"},{"ma":"15119037","loai":"QUYET_DINH","ghiChu":"tax.15119037 \"Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60\" ⇒ chiSoIot >= 55 IV và < 60 IV"},{"ma":"1511904","loai":"QUYET_DINH","ghiChu":"tieuDe.1511904 \"Các phần phân đoạn của dầu chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"},{"ma":"15119041","loai":"QUYET_DINH","ghiChu":"tax.15119041 \"Các phần phân đoạn thể rắn (SEN)\" ⇒ dangLong KHONG"},{"ma":"15119042","loai":"QUYET_DINH","ghiChu":"tax.15119042 \"Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)\" ⇒ khoiLuong <= 25 kg"}]}
+```
+
+=== GÓI PN6 151190 ===
+# 151190 — Loại khác
+
+151190 — Vegetable oils; palm oil and its fractions, other than crude, whether or not refined, but not chemically modified
+  15119020 Dầu tinh chế
+  [1511903] Các phần phân đoạn của dầu tinh chế
+    [151190~r1922] Các phần phân đoạn thể rắn  (tầng không mã, biểu thuế r1922, gạch 3)
+      15119031 Có chỉ số iốt từ 30 trở lên, nhưng dưới 40  (gạch 4)
+      15119032 Loại khác  [LK]  (gạch 4)
+    [151190~r1925] Các phần phân đoạn thể lỏng  (tầng không mã, biểu thuế r1925, gạch 3)
+      15119036 Đóng gói với khối lượng tịnh không quá 25kg  (gạch 4)
+      15119037 Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60  [LK có điều kiện]  (gạch 4)
+      15119039 Loại khác  [LK]  (gạch 4)
+  [1511904] Các phần phân đoạn của dầu chưa tinh chế
+    15119041 Các phần phân đoạn thể rắn (SEN)
+    15119042 Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)  [LK có điều kiện]
+    15119049 Loại khác (SEN)  [LK]
+
+Tầng không mã của biểu thuế (tiêu đề không mã mà cây theo chữ số làm mất) — đã có nút trong cây ở trên; tầng có tên: khai dieuKienNut cho id:
+    151190~r1922 (gạch 3) "Các phần phân đoạn thể rắn:" — dòng dưới: 15119031, 15119032
+    151190~r1925 (gạch 3) "Các phần phân đoạn thể lỏng:" — dòng dưới: 15119036, 15119037, 15119039
+
+- 15119020 DONG8
+    tax.15119020 [25 ký tự]: 15119020 - - Dầu tinh chế
+- 1511903 TIEU_DE
+    tieuDe.1511903 [43 ký tự]: 1511903 Các phần phân đoạn của dầu tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu tinh chế"
+- 151190~r1922 TIEU_DE
+    tieuDe.151190~r1922 [39 ký tự]: 151190~r1922 Các phần phân đoạn thể rắn
+- 15119031 DONG8
+    tax.15119031 [59 ký tự]: 15119031 - - - - Có chỉ số iốt từ 30 trở lên, nhưng dưới 40
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có chỉ số iốt từ 30 trở lên, nhưng dưới 40"
+- 15119032 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15119032 [26 ký tự]: 15119032 - - - - Loại khác
+- 151190~r1925 TIEU_DE
+    tieuDe.151190~r1925 [40 ký tự]: 151190~r1925 Các phần phân đoạn thể lỏng
+- 15119036 DONG8
+    tax.15119036 [60 ký tự]: 15119036 - - - - Đóng gói với khối lượng tịnh không quá 25kg
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh không quá 25kg"
+- 15119037 DONG8
+    tax.15119037 [70 ký tự]: 15119037 - - - - Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chỉ số iốt từ 55 trở lên, nhưng dưới 60"
+- 15119039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15119039 [26 ký tự]: 15119039 - - - - Loại khác
+- 1511904 TIEU_DE
+    tieuDe.1511904 [48 ký tự]: 1511904 Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15119041 DONG8
+    tax.15119041 [47 ký tự]: 15119041 - - - Các phần phân đoạn thể rắn (SEN)
+    sen.15119041 [287 ký tự]: CÁC PHẦN PHÂN ĐOẠN CỦA DẦU CỌ CHƯA TINH CHẾ Đây là các phần phân đoạn rắn hoặc lỏng thu được bằng cách phân đoạn dầu cọ thô bằng một số phương pháp công nghiệp, ví dụ kết tinh ở nhiệt độ được kiểm soát. Các phần phân đoạn này chưa qua chế biến để cải thiện các đặc tính vật lý của chúng.
+- 15119042 DONG8
+    tax.15119042 [75 ký tự]: 15119042 - - - Loại khác, đóng gói với khối lượng tịnh không quá 25kg (SEN)
+    sen.15119042 [287 ký tự]: CÁC PHẦN PHÂN ĐOẠN CỦA DẦU CỌ CHƯA TINH CHẾ Đây là các phần phân đoạn rắn hoặc lỏng thu được bằng cách phân đoạn dầu cọ thô bằng một số phương pháp công nghiệp, ví dụ kết tinh ở nhiệt độ được kiểm soát. Các phần phân đoạn này chưa qua chế biến để cải thiện các đặc tính vật lý của chúng.
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh không quá 25kg"
+- 15119049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15119049 [30 ký tự]: 15119049 - - - Loại khác (SEN)
+    sen.15119049 [287 ký tự]: CÁC PHẦN PHÂN ĐOẠN CỦA DẦU CỌ CHƯA TINH CHẾ Đây là các phần phân đoạn rắn hoặc lỏng thu được bằng cách phân đoạn dầu cọ thô bằng một số phương pháp công nghiệp, ví dụ kết tinh ở nhiệt độ được kiểm soát. Các phần phân đoạn này chưa qua chế biến để cải thiện các đặc tính vật lý của chúng.
+
+Nguồn cấp phân nhóm: sen.1511, wco.151190; chú giải: nhom1511.nhom, ch15.chuong, phan15.phan
+
+
+=== SỬA PN6 151529 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:15152911:dieu-kien-so-khong-khong-co-trong-trich:dangLong
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Như trên.
+    ✗ cong3-muc:15152991:dieu-kien-so-khong-khong-co-trong-trich:dangLong
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"151529","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-151529","dong8":{"15152911":{"dieuKienSo":[{"fact":"dangLong","op":"KHONG"}]},"15152991":{"dieuKienSo":[{"fact":"dangLong","op":"KHONG"}]}},"dieuKienNut":{"1515291":{"dieuKienSo":[{"fact":"laPhanDoan","op":"CO"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]}},"ghiChuSoan":[{"ma":"1515291","loai":"QUYET_DINH","ghiChu":"tieuDe.1515291 \"Các phần phân đoạn của dầu chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"},{"ma":"15152911","loai":"QUYET_DINH","ghiChu":"tax.15152911 \"Các phần phân đoạn thể rắn\" ⇒ dangLong KHONG"},{"ma":"15152991","loai":"QUYET_DINH","ghiChu":"tax.15152991 \"Các phần phân đoạn thể rắn\" ⇒ dangLong KHONG"}]}
+```
+
+=== GÓI PN6 151529 ===
+# 151529 — Loại khác
+
+151529 — Vegetable oils; maize (corn) oil and its fractions, other than crude, whether or not refined, but not chemically modified
+  [1515291] Các phần phân đoạn của dầu chưa tinh chế
+    15152911 Các phần phân đoạn thể rắn
+    15152919 Loại khác  [LK]
+  [1515299] Loại khác
+    15152991 Các phần phân đoạn thể rắn
+    15152999 Loại khác  [LK]
+
+- 1515291 TIEU_DE
+    tieuDe.1515291 [48 ký tự]: 1515291 Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15152911 DONG8
+    tax.15152911 [43 ký tự]: 15152911 - - - - Các phần phân đoạn thể rắn
+- 15152919 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15152919 [26 ký tự]: 15152919 - - - - Loại khác
+- 1515299 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.1515299 [17 ký tự]: 1515299 Loại khác
+- 15152991 DONG8
+    tax.15152991 [43 ký tự]: 15152991 - - - - Các phần phân đoạn thể rắn
+- 15152999 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15152999 [26 ký tự]: 15152999 - - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151529; chú giải: nhom1515.nhom, ch15.chuong, phan15.phan
+
+
+=== SỬA PN6 151550 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:15155010+15155020:laPhanDoan=true,mucDoTinhCheDau=DANG_THO
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"151550","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-151550","dong8":{"15155010":{"dieuKienSo":[{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]},"15155020":{"dieuKienSo":[{"fact":"laPhanDoan","op":"CO"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]}},"ghiChuSoan":[{"ma":"15155010","loai":"QUYET_DINH","ghiChu":"tax.15155010 \"Dầu thô\" ⇒ mucDoTinhCheDau DANG_THO"},{"ma":"15155020","loai":"QUYET_DINH","ghiChu":"tax.15155020 \"Các phần phân đoạn của dầu chưa tinh chế\" ⇒ laPhanDoan CO, mucDoTinhCheDau DANG_THO"}]}
+```
+
+=== GÓI PN6 151550 ===
+# 151550 — Dầu hạt vừng và các phần phân đoạn của dầu hạt vừng
+
+151550 — Vegetable oils; sesame oil and its fractions, whether or not refined, but not chemically modified
+  15155010 Dầu thô
+  15155020 Các phần phân đoạn của dầu chưa tinh chế
+  15155090 Loại khác  [LK]
+
+- 15155010 DONG8
+    tax.15155010 [20 ký tự]: 15155010 - - Dầu thô
+- 15155020 DONG8
+    tax.15155020 [53 ký tự]: 15155020 - - Các phần phân đoạn của dầu chưa tinh chế
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của dầu chưa tinh chế"
+- 15155090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15155090 [22 ký tự]: 15155090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151550; chú giải: nhom1515.nhom, ch15.chuong, phan15.phan
+
+
+=== SỬA PN6 151620 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:15162091:dieu-kien-so-don-vi-khong-co-trong-trich:IV
+      → Đơn vị không có trong câu trích. Sửa: Ghi donVi đúng như chữ trích (vd "m³/h", "kW").
+    ✗ cong3-muc:1516206:dieu-kien-so-don-vi-khong-co-trong-trich:IV
+    ✗ cong2-chong-lan:15162011+15162031:dangNguyenSinh=HAT_VIEN_VAY_MANH,dungCho=đậu tương,tenLoai=Đã tái este hóa:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+    ✗ cong2-chong-lan:15162011+15162048:dangNguyenSinh=LONG_HOAC_NHAO,dungCho=đậu tương,tenLoai=Đã tái este hóa:khong-tat-dinh
+    ✗ cong2-chong-lan:15162011+15162094:chiSoIot=47.999952,dungCho=đậu tương,tenLoai=Đã tái este hóa:khong-tat-dinh
+    ✗ cong2-chong-lan:15162012+15162039:dangNguyenSinh=HAT_VIEN_VAY_MANH,dungCho=ngô,tenLoai=Đã tái este hóa:khong-tat-dinh
+    ✗ cong2-chong-lan:15162012+15162049:dangNguyenSinh=LONG_HOAC_NHAO,dungCho=ngô,tenLoai=Đã tái este hóa:khong-tat-dinh
+    ✗ cong2-chong-lan:15162012+15162099:chiSoIot=47.999952,dungCho=ngô,mucDoTinhCheDau=DANG_THO,tenLoai=Đã tái este hóa:khong-tat-dinh
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"151620","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-151620","dong8":{"15162011":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"đậu tương"}]},"15162012":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"ngô"}]},"15162014":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"dừa"}]},"15162017":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"lạc"}]},"15162018":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt lanh"}]},"15162021":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"quả cọ dầu"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]},"15162022":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"quả cọ dầu"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DA_TINH_CHE"]}]},"15162023":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt cọ"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]},"15162024":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt cọ"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DA_TINH_CHE"]}]},"15162025":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"olein hạt cọ"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]},"15162026":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"olein hạt cọ"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DA_TINH_CHE"]}]},"15162031":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["lạc","dừa","đậu tương"]}]},"15162032":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt lanh"}]},"15162033":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"ô liu"}]},"15162034":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"quả cọ dầu"}]},"15162035":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt cọ"}]},"15162041":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt thầu dầu"}]},"15162042":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"dừa"}]},"15162043":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"lạc"}]},"15162044":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt lanh"}]},"15162045":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"ô liu"}]},"15162046":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"quả cọ dầu"}]},"15162047":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt cọ"}]},"15162048":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"đậu tương"}]},"15162051":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt lanh"}]},"15162052":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"ô liu"}]},"15162053":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"đậu tương"}]},"15162054":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["lạc","cọ dầu","dừa"]}]},"15162061":{"dieuKienSo":[{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DANG_THO"]}]},"15162062":{"dieuKienSo":[{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DA_TINH_CHE"]}]},"15162091":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"Stearin cọ"},{"fact":"chiSoIot","op":">","value":48,"donVi":"IV"}]},"15162092":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"hạt lanh"}]},"15162093":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"ô liu"}]},"15162094":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"đậu tương"}]},"15162096":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"Stearin hạt cọ"},{"fact":"mucDoTinhCheDau","op":"TRONG","value":["DA_TINH_CHE"]}]},"15162098":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["lạc","cọ dầu","dừa"]}]}},"dieuKienNut":{"1516201":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Đã tái este hóa"},{"fact":"dungCho","op":"CONG_DUNG","value":"cọ dầu","chieu":"PHAI_KHONG"}]},"1516202":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Đã tái este hóa"},{"fact":"dungCho","op":"CONG_DUNG","value":"cọ dầu"}]},"1516203":{"dieuKienSo":[{"fact":"dangNguyenSinh","op":"TRONG","value":["HAT_VIEN_VAY_MANH"]}]},"1516204":{"dieuKienSo":[],"phanConLai":["1516203"]},"1516205":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Đã este hóa liên hợp"}]},"1516206":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"stearin cọ"},{"fact":"chiSoIot","op":"<=","value":48,"donVi":"IV"}]},"1516209":{"dieuKienSo":[],"phanConLai":["1516206"]}},"ghiChuSoan":[{"ma":"1516201","loai":"QUYET_DINH","ghiChu":"tieuDe.1516201 \"Đã tái este hóa, trừ của cọ dầu\" ⇒ tenLoai Đã tái este hóa, dungCho cọ dầu chieu PHAI_KHONG"},{"ma":"15162011","loai":"QUYET_DINH","ghiChu":"tax.15162011 \"Của đậu tương\" ⇒ dungCho đậu tương"},{"ma":"15162012","loai":"QUYET_DINH","ghiChu":"tax.15162012 \"Của ngô (maize)\" ⇒ dungCho ngô"},{"ma":"15162014","loai":"QUYET_DINH","ghiChu":"tax.15162014 \"Của dừa\" ⇒ dungCho dừa"},{"ma":"15162017","loai":"QUYET_DINH","ghiChu":"tax.15162017 \"Của lạc\" ⇒ dungCho lạc"},{"ma":"15162018","loai":"QUYET_DINH","ghiChu":"tax.15162018 \"Của hạt lanh\" ⇒ dungCho hạt lanh"},{"ma":"1516202","loai":"QUYET_DINH","ghiChu":"tieuDe.1516202 \"Đã tái este hóa, của cọ dầu\" ⇒ tenLoai Đã tái este hóa, dungCho cọ dầu"},{"ma":"15162021","loai":"QUYET_DINH","ghiChu":"tax.15162021 \"Của quả cọ dầu, dạng thô\" ⇒ dungCho quả cọ dầu, mucDoTinhCheDau DANG_THO"},{"ma":"15162022","loai":"QUYET_DINH","ghiChu":"tax.15162022 \"Của quả cọ dầu, trừ dạng thô\" ⇒ dungCho quả cọ dầu, mucDoTinhCheDau DA_TINH_CHE"},{"ma":"15162023","loai":"QUYET_DINH","ghiChu":"tax.15162023 \"Của hạt cọ, dạng thô\" ⇒ dungCho hạt cọ, mucDoTinhCheDau DANG_THO"},{"ma":"15162024","loai":"QUYET_DINH","ghiChu":"tax.15162024 \"Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" ⇒ dungCho hạt cọ, mucDoTinhCheDau DA_TINH_CHE"},{"ma":"15162025","loai":"QUYET_DINH","ghiChu":"tax.15162025 \"Của olein hạt cọ, dạng thô\" ⇒ dungCho olein hạt cọ, mucDoTinhCheDau DANG_THO"},{"ma":"15162026","loai":"QUYET_DINH","ghiChu":"tax.15162026 \"Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)\" ⇒ dungCho olein hạt cọ, mucDoTinhCheDau DA_TINH_CHE"},{"ma":"1516203","loai":"QUYET_DINH","ghiChu":"tieuDe.1516203 \"Đã qua hydro hóa, dạng vảy, mảnh\" ⇒ dangNguyenSinh HAT_VIEN_VAY_MANH"},{"ma":"15162031","loai":"QUYET_DINH","ghiChu":"tax.15162031 \"Của lạc; của dừa; của đậu tương\" ⇒ dungCho mảng lạc, dừa, đậu tương"},{"ma":"15162032","loai":"QUYET_DINH","ghiChu":"tax.15162032 \"Của hạt lanh\" ⇒ dungCho hạt lanh"},{"ma":"15162033","loai":"QUYET_DINH","ghiChu":"tax.15162033 \"Của ô liu\" ⇒ dungCho ô liu"},{"ma":"15162034","loai":"QUYET_DINH","ghiChu":"tax.15162034 \"Của quả cọ dầu (SEN)\" ⇒ dungCho quả cọ dầu"},{"ma":"15162035","loai":"QUYET_DINH","ghiChu":"tax.15162035 \"Của hạt cọ (SEN)\" ⇒ dungCho hạt cọ"},{"ma":"1516204","loai":"QUYET_DINH","ghiChu":"tieuDe.1516204 \"Đã qua hydro hóa, dạng khác\" ⇒ phanConLai phủ 1516203"},{"ma":"15162041","loai":"QUYET_DINH","ghiChu":"tax.15162041 \"Của hạt thầu dầu (sáp opal)\" ⇒ dungCho hạt thầu dầu"},{"ma":"15162042","loai":"QUYET_DINH","ghiChu":"tax.15162042 \"Của dừa\" ⇒ dungCho dừa"},{"ma":"15162043","loai":"QUYET_DINH","ghiChu":"tax.15162043 \"Của lạc\" ⇒ dungCho lạc"},{"ma":"15162044","loai":"QUYET_DINH","ghiChu":"tax.15162044 \"Của hạt lanh\" ⇒ dungCho hạt lanh"},{"ma":"15162045","loai":"QUYET_DINH","ghiChu":"tax.15162045 \"Của ô liu\" ⇒ dungCho ô liu"},{"ma":"15162046","loai":"QUYET_DINH","ghiChu":"tax.15162046 \"Của quả cọ dầu (SEN)\" ⇒ dungCho quả cọ dầu"},{"ma":"15162047","loai":"QUYET_DINH","ghiChu":"tax.15162047 \"Của hạt cọ (SEN)\" ⇒ dungCho hạt cọ"},{"ma":"15162048","loai":"QUYET_DINH","ghiChu":"tax.15162048 \"Của đậu tương\" ⇒ dungCho đậu tương"},{"ma":"1516205","loai":"QUYET_DINH","ghiChu":"tieuDe.1516205 \"Đã este hóa liên hợp\" ⇒ tenLoai Đã este hóa liên hợp"},{"ma":"15162051","loai":"QUYET_DINH","ghiChu":"tax.15162051 \"Của hạt lanh\" ⇒ dungCho hạt lanh"},{"ma":"15162052","loai":"QUYET_DINH","ghiChu":"tax.15162052 \"Của ô liu\" ⇒ dungCho ô liu"},{"ma":"15162053","loai":"QUYET_DINH","ghiChu":"tax.15162053 \"Của đậu tương\" ⇒ dungCho đậu tương"},{"ma":"15162054","loai":"QUYET_DINH","ghiChu":"tax.15162054 \"Của lạc, cọ dầu hoặc dừa\" ⇒ dungCho mảng lạc, cọ dầu, dừa"},{"ma":"1516206","loai":"QUYET_DINH","ghiChu":"tieuDe.1516206 \"Elaiđin hóa, stearin cọ, có chỉ số iốt không quá 48\" ⇒ dungCho stearin cọ, chiSoIot <= 48 IV"},{"ma":"15162061","loai":"QUYET_DINH","ghiChu":"tax.15162061 \"Dạng thô\" ⇒ mucDoTinhCheDau DANG_THO"},{"ma":"15162062","loai":"QUYET_DINH","ghiChu":"tax.15162062 \"Đã tinh chế, tẩy và khử mùi (RBD)\" ⇒ mucDoTinhCheDau DA_TINH_CHE"},{"ma":"1516209","loai":"QUYET_DINH","ghiChu":"tieuDe.1516209 \"Elaiđin hóa, loại khác\" ⇒ phanConLai phủ 1516206"},{"ma":"15162091","loai":"QUYET_DINH","ghiChu":"tax.15162091 \"Stearin cọ, có chỉ số iốt trên 48\" ⇒ dungCho Stearin cọ, chiSoIot > 48 IV"},{"ma":"15162092","loai":"QUYET_DINH","ghiChu":"tax.15162092 \"Của hạt lanh\" ⇒ dungCho hạt lanh"},{"ma":"15162093","loai":"QUYET_DINH","ghiChu":"tax.15162093 \"Của ô liu\" ⇒ dungCho ô liu"},{"ma":"15162094","loai":"QUYET_DINH","ghiChu":"tax.15162094 \"Của đậu tương\" ⇒ dungCho đậu tương"},{"ma":"15162096","loai":"QUYET_DINH","ghiChu":"tax.15162096 \"Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)\" ⇒ dungCho Stearin hạt cọ, mucDoTinhCheDau DA_TINH_CHE"},{"ma":"15162098","loai":"QUYET_DINH","ghiChu":"tax.15162098 \"Của lạc, của cọ dầu hoặc của dừa\" ⇒ dungCho mảng lạc, cọ dầu, dừa"}]}
+```
+
+=== GÓI PN6 151620 ===
+# 151620 — Chất béo và dầu thực vật và các phần phân đoạn của chúng
+
+151620 — Vegetable fats and oils and their fractions; partly or wholly hydrogenated, inter-esterified, re-esterified or elaidinised, whether or not refined, but not further prepared
+  [1516201] Đã tái este hóa, trừ của cọ dầu
+    15162011 Của đậu tương
+    15162012 Của ngô (maize)
+    15162014 Của dừa
+    15162017 Của lạc
+    15162018 Của hạt lanh
+    15162019 Loại khác  [LK]
+  [1516202] Đã tái este hóa, của cọ dầu
+    15162021 Của quả cọ dầu, dạng thô
+    15162022 Của quả cọ dầu, trừ dạng thô
+    15162023 Của hạt cọ, dạng thô
+    15162024 Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+    15162025 Của olein hạt cọ, dạng thô
+    15162026 Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+    15162029 Loại khác  [LK]
+  [1516203] Đã qua hydro hóa, dạng vảy, mảnh
+    15162031 Của lạc; của dừa; của đậu tương
+    15162032 Của hạt lanh
+    15162033 Của ô liu
+    15162034 Của quả cọ dầu (SEN)
+    15162035 Của hạt cọ (SEN)
+    15162039 Loại khác  [LK]
+  [1516204] Đã qua hydro hóa, dạng khác
+    15162041 Của hạt thầu dầu (sáp opal)
+    15162042 Của dừa
+    15162043 Của lạc
+    15162044 Của hạt lanh
+    15162045 Của ô liu
+    15162046 Của quả cọ dầu (SEN)
+    15162047 Của hạt cọ (SEN)
+    15162048 Của đậu tương
+    15162049 Loại khác  [LK]
+  [1516205] Đã este hóa liên hợp
+    15162051 Của hạt lanh
+    15162052 Của ô liu
+    15162053 Của đậu tương
+    15162054 Của lạc, cọ dầu hoặc dừa
+    15162059 Loại khác  [LK]
+  [1516206] Elaiđin hóa, stearin cọ, có chỉ số iốt không quá 48
+    15162061 Dạng thô
+    15162062 Đã tinh chế, tẩy và khử mùi (RBD)
+    15162069 Loại khác  [LK]
+  [1516209] Elaiđin hóa, loại khác
+    15162091 Stearin cọ, có chỉ số iốt trên 48
+    15162092 Của hạt lanh
+    15162093 Của ô liu
+    15162094 Của đậu tương
+    15162096 Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)
+    15162098 Của lạc, của cọ dầu hoặc của dừa
+    15162099 Loại khác  [LK]
+
+- 1516201 TIEU_DE
+    tieuDe.1516201 [39 ký tự]: 1516201 Đã tái este hóa, trừ của cọ dầu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "trừ của cọ dầu"
+- 15162011 DONG8
+    tax.15162011 [28 ký tự]: 15162011 - - - Của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đậu tương"
+- 15162012 DONG8
+    tax.15162012 [30 ký tự]: 15162012 - - - Của ngô (maize)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ngô (maize)"
+- 15162014 DONG8
+    tax.15162014 [22 ký tự]: 15162014 - - - Của dừa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của dừa"
+- 15162017 DONG8
+    tax.15162017 [22 ký tự]: 15162017 - - - Của lạc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc"
+- 15162018 DONG8
+    tax.15162018 [27 ký tự]: 15162018 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162019 [24 ký tự]: 15162019 - - - Loại khác
+- 1516202 TIEU_DE
+    tieuDe.1516202 [35 ký tự]: 1516202 Đã tái este hóa, của cọ dầu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của cọ dầu"
+- 15162021 DONG8
+    tax.15162021 [39 ký tự]: 15162021 - - - Của quả cọ dầu, dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của quả cọ dầu, dạng thô"
+- 15162022 DONG8
+    tax.15162022 [43 ký tự]: 15162022 - - - Của quả cọ dầu, trừ dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của quả cọ dầu" · [GIỚI HẠN] "trừ dạng thô"
+- 15162023 DONG8
+    tax.15162023 [35 ký tự]: 15162023 - - - Của hạt cọ, dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt cọ, dạng thô"
+- 15162024 DONG8
+    tax.15162024 [60 ký tự]: 15162024 - - - Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)"
+- 15162025 DONG8
+    tax.15162025 [41 ký tự]: 15162025 - - - Của olein hạt cọ, dạng thô
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của olein hạt cọ, dạng thô"
+- 15162026 DONG8
+    tax.15162026 [67 ký tự]: 15162026 - - - Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD) 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của olein hạt cọ, đã tinh chế, tẩy và khử mùi (RBD)"
+- 15162029 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162029 [24 ký tự]: 15162029 - - - Loại khác
+- 1516203 TIEU_DE
+    tieuDe.1516203 [40 ký tự]: 1516203 Đã qua hydro hóa, dạng vảy, mảnh
+- 15162031 DONG8
+    tax.15162031 [46 ký tự]: 15162031 - - - Của lạc; của dừa; của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc" · [GIỚI HẠN] "của dừa" · [GIỚI HẠN] "của đậu tương"
+- 15162032 DONG8
+    tax.15162032 [27 ký tự]: 15162032 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162033 DONG8
+    tax.15162033 [24 ký tự]: 15162033 - - - Của ô liu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ô liu"
+- 15162034 DONG8
+    tax.15162034 [35 ký tự]: 15162034 - - - Của quả cọ dầu (SEN)
+    sen.15162034 [404 ký tự]: CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU Chất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau: Sản phẩm Chỉ số iốt (IV), Wijs Dầu cọ đã hydro hóa Tối đa 46 Olein cọ đã hydro hóa Tối đa 50 Stearin cọ đã hydro hóa Tối đa 25 Dầu hạt cọ đã hydro hóa Tối đa 15 Olein hạt cọ đã hydro hóa Tối đa 15 Stearin hạt cọ đã hydro Tối đa 3 hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của quả cọ dầu"
+- 15162035 DONG8
+    tax.15162035 [31 ký tự]: 15162035 - - - Của hạt cọ (SEN)
+    sen.15162035 [404 ký tự]: CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU Chất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau: Sản phẩm Chỉ số iốt (IV), Wijs Dầu cọ đã hydro hóa Tối đa 46 Olein cọ đã hydro hóa Tối đa 50 Stearin cọ đã hydro hóa Tối đa 25 Dầu hạt cọ đã hydro hóa Tối đa 15 Olein hạt cọ đã hydro hóa Tối đa 15 Stearin hạt cọ đã hydro Tối đa 3 hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt cọ"
+- 15162039 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162039 [24 ký tự]: 15162039 - - - Loại khác
+- 1516204 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.1516204 [35 ký tự]: 1516204 Đã qua hydro hóa, dạng khác
+- 15162041 DONG8
+    tax.15162041 [42 ký tự]: 15162041 - - - Của hạt thầu dầu (sáp opal)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt thầu dầu (sáp opal)"
+- 15162042 DONG8
+    tax.15162042 [22 ký tự]: 15162042 - - - Của dừa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của dừa"
+- 15162043 DONG8
+    tax.15162043 [22 ký tự]: 15162043 - - - Của lạc
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc"
+- 15162044 DONG8
+    tax.15162044 [27 ký tự]: 15162044 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162045 DONG8
+    tax.15162045 [24 ký tự]: 15162045 - - - Của ô liu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ô liu"
+- 15162046 DONG8
+    tax.15162046 [35 ký tự]: 15162046 - - - Của quả cọ dầu (SEN)
+    sen.15162046 [404 ký tự]: CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU Chất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau: Sản phẩm Chỉ số iốt (IV), Wijs Dầu cọ đã hydro hóa Tối đa 46 Olein cọ đã hydro hóa Tối đa 50 Stearin cọ đã hydro hóa Tối đa 25 Dầu hạt cọ đã hydro hóa Tối đa 15 Olein hạt cọ đã hydro hóa Tối đa 15 Stearin hạt cọ đã hydro Tối đa 3 hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của quả cọ dầu"
+- 15162047 DONG8
+    tax.15162047 [31 ký tự]: 15162047 - - - Của hạt cọ (SEN)
+    sen.15162047 [404 ký tự]: CHẤT BÉO ĐÃ HYDRO HÓA CỦA CỌ DẦU Chất béo đã hydro hóa của cọ dầu thu được từ quả cọ dầu và hạt cọ sẽ được phân loại trong các nhóm này khi chúng đáp ứng điều kiện sau: Sản phẩm Chỉ số iốt (IV), Wijs Dầu cọ đã hydro hóa Tối đa 46 Olein cọ đã hydro hóa Tối đa 50 Stearin cọ đã hydro hóa Tối đa 25 Dầu hạt cọ đã hydro hóa Tối đa 15 Olein hạt cọ đã hydro hóa Tối đa 15 Stearin hạt cọ đã hydro Tối đa 3 hóa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt cọ"
+- 15162048 DONG8
+    tax.15162048 [28 ký tự]: 15162048 - - - Của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đậu tương"
+- 15162049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162049 [24 ký tự]: 15162049 - - - Loại khác
+- 1516205 TIEU_DE
+    tieuDe.1516205 [28 ký tự]: 1516205 Đã este hóa liên hợp
+- 15162051 DONG8
+    tax.15162051 [27 ký tự]: 15162051 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162052 DONG8
+    tax.15162052 [24 ký tự]: 15162052 - - - Của ô liu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ô liu"
+- 15162053 DONG8
+    tax.15162053 [28 ký tự]: 15162053 - - - Của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đậu tương"
+- 15162054 DONG8
+    tax.15162054 [39 ký tự]: 15162054 - - - Của lạc, cọ dầu hoặc dừa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc, cọ dầu hoặc dừa"
+- 15162059 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162059 [24 ký tự]: 15162059 - - - Loại khác
+- 1516206 TIEU_DE
+    tieuDe.1516206 [59 ký tự]: 1516206 Elaiđin hóa, stearin cọ, có chỉ số iốt không quá 48
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chỉ số iốt không quá 48"
+- 15162061 DONG8
+    tax.15162061 [23 ký tự]: 15162061 - - - Dạng thô
+- 15162062 DONG8
+    tax.15162062 [48 ký tự]: 15162062 - - - Đã tinh chế, tẩy và khử mùi (RBD)
+- 15162069 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162069 [24 ký tự]: 15162069 - - - Loại khác
+- 1516209 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.1516209 [30 ký tự]: 1516209 Elaiđin hóa, loại khác
+- 15162091 DONG8
+    tax.15162091 [48 ký tự]: 15162091 - - - Stearin cọ, có chỉ số iốt trên 48
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chỉ số iốt trên 48"
+- 15162092 DONG8
+    tax.15162092 [27 ký tự]: 15162092 - - - Của hạt lanh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của hạt lanh"
+- 15162093 DONG8
+    tax.15162093 [24 ký tự]: 15162093 - - - Của ô liu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của ô liu"
+- 15162094 DONG8
+    tax.15162094 [28 ký tự]: 15162094 - - - Của đậu tương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của đậu tương"
+- 15162096 DONG8
+    tax.15162096 [63 ký tự]: 15162096 - - - Stearin hạt cọ đã tinh chế, tẩy và khử mùi (RBD)
+- 15162098 DONG8
+    tax.15162098 [47 ký tự]: 15162098 - - - Của lạc, của cọ dầu hoặc của dừa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Của lạc, của cọ dầu hoặc của dừa"
+- 15162099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.15162099 [24 ký tự]: 15162099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.151620; chú giải: nhom1516.nhom, ch15.chuong, phan15.phan
+

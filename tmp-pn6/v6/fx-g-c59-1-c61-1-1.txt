@@ -1,0 +1,358 @@
+VÒNG SỬA — 11 PN6 bị cổng máy chặn (590210 590220 590500 590700 600192 600410 600631 600632 610520 610910 610990). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 590210 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:59021011:59021011
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:59021019:59021011
+    ✗ cong1-chua-so-hoa:59021091:59021091
+    ✗ cong1-chua-so-hoa:59021099:59021091
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"590210","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-590210","dong8":{"59021011":{"dieuKienSo":[]},"59021091":{"dieuKienSo":[]}},"dieuKienNut":{"5902101":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Vải tráng cao su"},{"fact":"congDung","op":"CONG_DUNG","value":"làm mép lốp"}]}},"ghiChuSoan":[{"ma":"5902101","loai":"QUYET_DINH","ghiChu":"tieuDe.5902101: \"Vải tráng cao su làm mép lốp\" ⇒ tenLoai, congDung"},{"ma":"59021011","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiSoiDet","ghiChu":"Từ sợi ni lông 6 (Nylon-6)"},{"ma":"59021091","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiSoiDet","ghiChu":"Từ sợi ni lông 6 (Nylon-6)"}]}
+```
+
+=== GÓI PN6 590210 ===
+# 590210 — Từ ni lông hoặc từ các polyamit khác
+
+590210 — Textile fabrics; tyrecord of high tenacity yarn of nylon or other polyamides
+  [5902101] Vải tráng cao su làm mép lốp
+    59021011 Từ sợi ni lông 6 (Nylon-6)(SEN)
+    59021019 Loại khác(SEN)  [LK]
+  [5902109] Loại khác
+    59021091 Từ sợi ni lông 6 (Nylon-6)
+    59021099 Loại khác  [LK]
+
+- 5902101 TIEU_DE
+    tieuDe.5902101 [36 ký tự]: 5902101 Vải tráng cao su làm mép lốp
+- 59021011 DONG8
+    tax.59021011 [46 ký tự]: 59021011 - - - Từ sợi ni lông 6 (Nylon-6)(SEN)
+    sen.59021011 [557 ký tự]: VẢI TRÁNG CAO SU LÀM MÉP LỐP Vải tráng cao su làm mép lốp là một loại vải được phủ cao su chưa lưu hóa. Nó được dùng để cuốn quanh khu vực mép lốp trước khi thực hiện quá trình lưu hóa lốp, và để duy trì một lớp cao su chống mài mòn tại nơi lốp tiếp xúc với vành bánh xe. Vải làm mép lốp nguyên gốc là vải bông dệt thoi hình chữ thập. Đối với lốp không săm chúng thường là vải lưới sợi nylon multifilament hoặc polyester hoặc tơ nhân tạo (rayon) ngâm tẩm nhựa hoặc lưới sợi nylon monofilament. Những loại vải này tuân theo yêu cầu tại Chú giải 6 Phần XI.
+- 59021019 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.59021019 [29 ký tự]: 59021019 - - - Loại khác(SEN)
+    sen.59021019 [557 ký tự]: VẢI TRÁNG CAO SU LÀM MÉP LỐP Vải tráng cao su làm mép lốp là một loại vải được phủ cao su chưa lưu hóa. Nó được dùng để cuốn quanh khu vực mép lốp trước khi thực hiện quá trình lưu hóa lốp, và để duy trì một lớp cao su chống mài mòn tại nơi lốp tiếp xúc với vành bánh xe. Vải làm mép lốp nguyên gốc là vải bông dệt thoi hình chữ thập. Đối với lốp không săm chúng thường là vải lưới sợi nylon multifilament hoặc polyester hoặc tơ nhân tạo (rayon) ngâm tẩm nhựa hoặc lưới sợi nylon monofilament. Những loại vải này tuân theo yêu cầu tại Chú giải 6 Phần XI.
+- 5902109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.5902109 [17 ký tự]: 5902109 Loại khác
+- 59021091 DONG8
+    tax.59021091 [41 ký tự]: 59021091 - - - Từ sợi ni lông 6 (Nylon-6)
+- 59021099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.59021099 [24 ký tự]: 59021099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.590210; chú giải: nhom5902.nhom, ch59.chuong, phan59.phan
+
+
+=== SỬA PN6 590220 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:59022091:59022091
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:59022099:59022091
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"590220","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-590220","dong8":{"59022020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Vải tráng cao su"},{"fact":"congDung","op":"CONG_DUNG","value":"làm mép lốp"}]},"59022091":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"59022020","loai":"QUYET_DINH","ghiChu":"tax.59022020: \"Vải tráng cao su làm mép lốp\" ⇒ tenLoai, congDung"},{"ma":"59022091","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chuaBong","ghiChu":"Chứa bông"}]}
+```
+
+=== GÓI PN6 590220 ===
+# 590220 — Từ các polyeste
+
+590220 — Textile fabrics; tyrecord of high tenacity yarn of polyester
+  59022020 Vải tráng cao su làm mép lốp(SEN)
+  [5902209] Loại khác
+    59022091 Chứa bông
+    59022099 Loại khác  [LK]
+
+- 59022020 DONG8
+    tax.59022020 [46 ký tự]: 59022020 - - Vải tráng cao su làm mép lốp(SEN)
+    sen.59022020 [557 ký tự]: VẢI TRÁNG CAO SU LÀM MÉP LỐP Vải tráng cao su làm mép lốp là một loại vải được phủ cao su chưa lưu hóa. Nó được dùng để cuốn quanh khu vực mép lốp trước khi thực hiện quá trình lưu hóa lốp, và để duy trì một lớp cao su chống mài mòn tại nơi lốp tiếp xúc với vành bánh xe. Vải làm mép lốp nguyên gốc là vải bông dệt thoi hình chữ thập. Đối với lốp không săm chúng thường là vải lưới sợi nylon multifilament hoặc polyester hoặc tơ nhân tạo (rayon) ngâm tẩm nhựa hoặc lưới sợi nylon monofilament. Những loại vải này tuân theo yêu cầu tại Chú giải 6 Phần XI.
+- 5902209 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.5902209 [17 ký tự]: 5902209 Loại khác
+- 59022091 DONG8
+    tax.59022091 [24 ký tự]: 59022091 - - - Chứa bông
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa bông"
+- 59022099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.59022099 [24 ký tự]: 59022099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.590220; chú giải: nhom5902.nhom, ch59.chuong, phan59.phan
+
+
+=== SỬA PN6 590500 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:59050010:59050010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:59050090:59050010
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"590500","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-590500","dong8":{"59050010":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"59050010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiSoiDet","ghiChu":"hoặc loại thô"}]}
+```
+
+=== GÓI PN6 590500 ===
+# 590500 — Các loại vải dệt phủ tường.
+
+NHÓM 5905 — Các loại vải dệt phủ tường.
+  59050010 Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô
+  59050090 Loại khác  [LK]
+
+- 59050010 DONG8
+    tax.59050010 [64 ký tự]: 59050010 - Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô
+- 59050090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.59050090 [20 ký tự]: 59050090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.590500; chú giải: nhom5905.nhom, ch59.chuong, phan59.phan
+
+
+=== SỬA PN6 590700 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:59070010:59070010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:59070030:59070030
+    ✗ cong1-chua-so-hoa:59070040:59070040
+    ✗ cong1-chua-so-hoa:59070050:59070050
+    ✗ cong1-chua-so-hoa:59070060:59070060
+    ✗ cong1-chua-so-hoa:59070090:59070010
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"590700","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-590700","dong8":{"59070010":{"dieuKienSo":[]},"59070030":{"dieuKienSo":[]},"59070040":{"dieuKienSo":[]},"59070050":{"dieuKienSo":[]},"59070060":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"59070010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatNgamTam","ghiChu":"được ngâm tẩm, tráng hoặc phủ với dầu hoặc các chế phẩm từ dầu"},{"ma":"59070030","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatNgamTam","ghiChu":"được ngâm tẩm, tráng hoặc phủ với hóa chất chịu lửa"},{"ma":"59070040","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatNgamTam","ghiChu":"được ngâm tẩm, tráng hoặc phủ với nhung xơ vụn, toàn bộ bề mặt được phủ với xơ vụn dệt"},{"ma":"59070050","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatNgamTam","ghiChu":"được ngâm tẩm, tráng hoặc phủ lớp sáp, hắc ín, bi-tum hoặc các sản phẩm tương tự"},{"ma":"59070060","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"chatNgamTam","ghiChu":"được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác"}]}
+```
+
+=== GÓI PN6 590700 ===
+# 590700 — Các loại vải dệt được ngâm tẩm, tráng hoặc phủ bằng cách khác; vải canvas được vẽ làm phông cảnh cho rạp hát, phông trường quay hoặc loại tương tự.
+
+NHÓM 5907 — Các loại vải dệt được ngâm tẩm, tráng hoặc phủ bằng cách khác; vải canvas được vẽ làm phông cảnh cho rạp hát, phông trường quay hoặc loại tương tự.
+  59070010 Các loại vải dệt được ngâm tẩm, tráng hoặc phủ với dầu hoặc các chế phẩm từ dầu
+  59070030 Các loại vải dệt được ngâm tẩm, tráng hoặc phủ với hóa chất chịu lửa
+  59070040 Các loại vải được ngâm tẩm, tráng hoặc phủ với nhung xơ vụn, toàn bộ bề mặt được phủ với xơ vụn dệt
+  59070050 Các loại vải được ngâm tẩm, tráng hoặc phủ lớp sáp, hắc ín, bi-tum hoặc các sản phẩm tương tự
+  59070060 Các loại vải được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác
+  59070090 Loại khác  [LK]
+
+- 59070010 DONG8
+    tax.59070010 [90 ký tự]: 59070010 - Các loại vải dệt được ngâm tẩm, tráng hoặc phủ với dầu hoặc các chế phẩm từ dầu
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được ngâm tẩm, tráng hoặc phủ với dầu hoặc các chế phẩm từ dầu"
+- 59070030 DONG8
+    tax.59070030 [79 ký tự]: 59070030 - Các loại vải dệt được ngâm tẩm, tráng hoặc phủ với hóa chất chịu lửa
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được ngâm tẩm, tráng hoặc phủ với hóa chất chịu lửa"
+- 59070040 DONG8
+    tax.59070040 [110 ký tự]: 59070040 - Các loại vải được ngâm tẩm, tráng hoặc phủ với nhung xơ vụn, toàn bộ bề mặt được phủ với xơ vụn dệt
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được ngâm tẩm, tráng hoặc phủ với nhung xơ vụn, toàn bộ bề mặt" · [GIỚI HẠN] "được phủ với xơ vụn dệt"
+- 59070050 DONG8
+    tax.59070050 [104 ký tự]: 59070050 - Các loại vải được ngâm tẩm, tráng hoặc phủ lớp sáp, hắc ín, bi-tum hoặc các sản phẩm tương tự
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được ngâm tẩm, tráng hoặc phủ lớp sáp, hắc ín, bi-tum" · [MỞ] "hoặc các sản phẩm tương tự"
+- 59070060 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.59070060 [76 ký tự]: 59070060 - Các loại vải được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được ngâm tẩm, tráng hoặc phủ" · [GIỚI HẠN] "bằng các vật liệu khác"
+- 59070090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.59070090 [20 ký tự]: 59070090 - Loại khác
+
+Nguồn cấp phân nhóm: wco.590700; chú giải: nhom5907.nhom, ch59.chuong, phan59.phan
+
+=== SỬA PN6 600192 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:60019220+60019230:chieuRong=63.5,congDung=sản xuất con lăn sơn,tenLoai=Vải nổi vòng (pile),tinhDanHoi=true:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"600192","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-600192","dong8":{"60019220":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Vải nổi vòng (pile)"},{"fact":"chieuRong","op":">=","value":63.5,"donVi":"mm"},{"fact":"chieuRong","op":"<=","value":76.2,"donVi":"mm"},{"fact":"congDung","op":"CONG_DUNG","value":"sản xuất con lăn sơn"}]},"60019230":{"dieuKienSo":[{"fact":"tinhDanHoi","op":"CO"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"60019220","loai":"QUYET_DINH","ghiChu":"tax.60019220: \"Vải nổi vòng (pile)... có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn\" ⇒ tenLoai, chieuRong, congDung"},{"ma":"60019220","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiSoiDet","ghiChu":"từ xơ staple 100% polyeste"},{"ma":"60019230","loai":"QUYET_DINH","ghiChu":"tax.60019230: \"Chứa sợi đàn hồi hoặc sợi cao su\" ⇒ tinhDanHoi CO"}]}
+```
+
+=== GÓI PN6 600192 ===
+# 600192 — Từ xơ nhân tạo
+
+600192 — Fabrics; pile fabrics (excluding long pile and loop pile), of man-made fibres, knitted or crocheted
+  60019220 Vải nổi vòng (pile) từ xơ staple 100% polyeste, có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn
+  60019230 Chứa sợi đàn hồi hoặc sợi cao su
+  60019290 Loại khác  [LK]
+
+- 60019220 DONG8
+    tax.60019220 [169 ký tự]: 60019220 - - - Vải nổi vòng (pile) từ xơ staple 100% polyeste, có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm" · [GIỚI HẠN] "phù hợp để sử dụng trong sản xuất con lăn sơn"
+- 60019230 DONG8
+    tax.60019230 [47 ký tự]: 60019230 - - - Chứa sợi đàn hồi hoặc sợi cao su
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chứa sợi đàn hồi hoặc sợi cao su"
+- 60019290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.60019290 [24 ký tự]: 60019290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.600192; chú giải: nhom6001.nhom, ch60.chuong, phan60.phan
+
+
+=== SỬA PN6 600410 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:60041010:60041010
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:60041090:60041010
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"600410","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-600410","dong8":{"60041010":{"dieuKienSo":[]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"60041010","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"tiLeSoiDanHoi","ghiChu":"Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng"}]}
+```
+
+=== GÓI PN6 600410 ===
+# 600410 — Có hàm lượng sợi đàn hồi chiếm từ 5% trở lên tính theo khối lượng nhưng không bao gồm sợi cao su
+
+600410 — Fabrics; knitted or crocheted fabrics of a width exceeding 30 cm, other than those of heading 60.01, containing by weight 5% or more of elastomeric yarn but not containing rubber thread
+  60041010 Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng
+  60041090 Loại khác  [LK]
+
+- 60041010 DONG8
+    tax.60041010 [78 ký tự]: 60041010 - - Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng"
+- 60041090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.60041090 [22 ký tự]: 60041090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.600410; chú giải: nhom6004.nhom, ch60.chuong, phan60.phan
+
+
+=== SỬA PN6 600631 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:60063110+60063120:congDung=làm vật liệu bồi cho các tấm ghép khảm,tenLoai=Tấm lưới,tinhDanHoi=true:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"600631","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-600631","dong8":{"60063110":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Tấm lưới"},{"fact":"congDung","op":"CONG_DUNG","value":"làm vật liệu bồi cho các tấm ghép khảm"}]},"60063120":{"dieuKienSo":[{"fact":"tinhDanHoi","op":"CO"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"60063110","loai":"QUYET_DINH","ghiChu":"tax.60063110: \"Tấm lưới... dùng làm vật liệu bồi cho các tấm ghép khảm\" ⇒ tenLoai, congDung"},{"ma":"60063110","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiSoiDet","ghiChu":"từ sợi ni lông"},{"ma":"60063120","loai":"QUYET_DINH","ghiChu":"tax.60063120: \"Đàn hồi (kết hợp với sợi cao su)\" ⇒ tinhDanHoi CO"}]}
+```
+
+=== GÓI PN6 600631 ===
+# 600631 — Chưa tẩy trắng hoặc đã tẩy trắng
+
+600631 — Fabrics; knitted or crocheted fabrics, other than those of headings 60.01 to 60.04, of synthetic fibres, unbleached or bleached
+  60063110 Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm
+  60063120 Đàn hồi (kết hợp với sợi cao su)
+  60063190 Loại khác  [LK]
+
+- 60063110 DONG8
+    tax.60063110 [82 ký tự]: 60063110 - - - Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng làm vật liệu bồi cho các tấm ghép khảm"
+- 60063120 DONG8
+    tax.60063120 [47 ký tự]: 60063120 - - - Đàn hồi (kết hợp với sợi cao su)
+- 60063190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.60063190 [24 ký tự]: 60063190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.600631; chú giải: nhom6006.nhom, ch60.chuong, phan60.phan
+
+
+=== SỬA PN6 600632 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:60063210+60063220:congDung=làm vật liệu bồi cho các tấm ghép khảm,tenLoai=Tấm lưới,tinhDanHoi=true:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"600632","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-600632","dong8":{"60063210":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Tấm lưới"},{"fact":"congDung","op":"CONG_DUNG","value":"làm vật liệu bồi cho các tấm ghép khảm"}]},"60063220":{"dieuKienSo":[{"fact":"tinhDanHoi","op":"CO"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"60063210","loai":"QUYET_DINH","ghiChu":"tax.60063210: \"Tấm lưới... dùng làm vật liệu bồi cho các tấm ghép khảm\" ⇒ tenLoai, congDung"},{"ma":"60063210","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"loaiSoiDet","ghiChu":"từ sợi ni lông"},{"ma":"60063220","loai":"QUYET_DINH","ghiChu":"tax.60063220: \"Đàn hồi (kết hợp với sợi cao su)\" ⇒ tinhDanHoi CO"}]}
+```
+
+=== GÓI PN6 600632 ===
+# 600632 — Đã nhuộm
+
+600632 — Fabrics; knitted or crocheted fabrics, other than those of headings 60.01 to 60.04, of synthetic fibres, dyed
+  60063210 Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm
+  60063220 Đàn hồi (kết hợp với sợi cao su)
+  60063290 Loại khác  [LK]
+
+- 60063210 DONG8
+    tax.60063210 [82 ký tự]: 60063210 - - - Tấm lưới từ sợi ni lông dùng làm vật liệu bồi cho các tấm ghép khảm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng làm vật liệu bồi cho các tấm ghép khảm"
+- 60063220 DONG8
+    tax.60063220 [47 ký tự]: 60063220 - - - Đàn hồi (kết hợp với sợi cao su)
+- 60063290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.60063290 [24 ký tự]: 60063290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.600632; chú giải: nhom6006.nhom, ch60.chuong, phan60.phan
+
+
+=== SỬA PN6 610520 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:610520:loaiSoiDet=BONG
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"610520","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-610520","dong8":{"61052010":{"dieuKienSo":[{"fact":"loaiSoiDet","op":"TRONG","value":["SOI_TONG_HOP"]}]},"61052020":{"dieuKienSo":[{"fact":"loaiSoiDet","op":"TRONG","value":["SOI_TAI_TAO"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"61052010","loai":"QUYET_DINH","ghiChu":"tax.61052010: \"Từ sợi tổng hợp\" ⇒ loaiSoiDet SOI_TONG_HOP"},{"ma":"61052020","loai":"QUYET_DINH","ghiChu":"tax.61052020: \"Từ sợi tái tạo\" ⇒ loaiSoiDet SOI_TAI_TAO"}]}
+```
+
+=== GÓI PN6 610520 ===
+# 610520 — Từ sợi nhân tạo
+
+610520 — Shirts; men's or boys', of man-made fibres, knitted or crocheted
+  61052010 Từ sợi tổng hợp
+  61052020 Từ sợi tái tạo
+
+- 61052010 DONG8
+    tax.61052010 [28 ký tự]: 61052010 - - Từ sợi tổng hợp
+- 61052020 DONG8
+    tax.61052020 [27 ký tự]: 61052020 - - Từ sợi tái tạo
+
+Nguồn cấp phân nhóm: wco.610520; chú giải: nhom6105.nhom, ch61.chuong, phan61.phan
+
+
+=== SỬA PN6 610910 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:61091010:dungCho
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+    ✗ cong3-liet-ke-trong-mot-chuoi:61091020:dungCho
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"610910","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-610910","dong8":{"61091010":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"nam giới hoặc trẻ em trai"}]},"61091020":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"phụ nữ hoặc trẻ em gái"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"61091010","loai":"QUYET_DINH","ghiChu":"tax.61091010: \"Dùng cho nam giới hoặc trẻ em trai\" ⇒ dungCho"},{"ma":"61091020","loai":"QUYET_DINH","ghiChu":"tax.61091020: \"Dùng cho phụ nữ hoặc trẻ em gái\" ⇒ dungCho"}]}
+```
+
+=== GÓI PN6 610910 ===
+# 610910 — Từ bông
+
+610910 — T-shirts, singlets and other vests; of cotton, knitted or crocheted
+  61091010 Dùng cho nam giới hoặc trẻ em trai
+  61091020 Dùng cho phụ nữ hoặc trẻ em gái
+
+- 61091010 DONG8
+    tax.61091010 [47 ký tự]: 61091010 - - Dùng cho nam giới hoặc trẻ em trai
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho nam giới hoặc trẻ em trai"
+- 61091020 DONG8
+    tax.61091020 [44 ký tự]: 61091020 - - Dùng cho phụ nữ hoặc trẻ em gái
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho phụ nữ hoặc trẻ em gái"
+
+Nguồn cấp phân nhóm: wco.610910; chú giải: nhom6109.nhom, ch61.chuong, phan61.phan
+
+
+=== SỬA PN6 610990 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-liet-ke-trong-mot-chuoi:61099010:dungCho
+      → Một giá trị TEN_LOAI/CONG_DUNG (tenLoai/congDung/dungCho) gói cả một liệt kê — có " hoặc ", ";" hoặc liệt kê bằng dấu phẩy, không có mã HS — trong MỘT chuỗi. Bộ so chữ đòi ĐỦ âm tiết của chuỗi nên đọc thành VÀ: điều kiện HẸP hơn chữ (soát L1-4c đợt 3 #697: 841459 .10, 950300 .91). Vòng 7 (soát đợt 4 #711): cả HAI tên hàng nối "và" trong mệnh đề danh từ đầu khi chữ Anh cùng vế nối hai danh từ đầu bằng and/or và vế trước là danh từ số nhiều — "Miếng đệm và miếng bảo vệ vai" ↔ "Shoulder pads or shields" (392620 .20), "Thân trên và thân dưới máy" ↔ "Arms and beds" (845290 .11/.91), "phát và thu" ↔ "Radio transmitters and radio receivers" (851762 .10). Không báo danh từ ghép MỘT hàng ("Transmission and reception apparatus" — 851762 .52, "word making and talking sets" — 950300 .91), "và" ở vế "dùng cho/kể cả …" (đích, thuộc tính). Không báo khi: liệt kê nối "và" mà chữ Anh cùng dòng có đúng ngần ấy mục liên hợp sau giới từ for/of ("for transport, handling and storage" — 853710 .30); dấu phẩy có cả ở chữ Anh mà chữ Anh không liệt kê and/or ("Slugs, round," — 761699 .30); "có hoặc không …"; giá trị có mã HS. Sửa: Tách thành MẢNG các chuỗi con nguyên văn, mỗi phần tử một phương án ("hoặc"): vd ["bộ vi xử lý", "thiết bị viễn thông", …]. Liệt kê lồng ("xếp khối hoặc cắt rời hình chữ số, chữ cái hoặc hình con vật") ⇒ hai điều kiện, mỗi điều kiện một mảng (950300 .91); định ngữ chung tách thành điều kiện riêng (congDung "làm mát" + dungCho [..] — 841459 .10). Không tách được mà không bịa chữ ⇒ để đỏ, báo Claude.
+    ✗ cong3-liet-ke-trong-mot-chuoi:61099020:dungCho
+    ✗ cong3-liet-ke-trong-mot-chuoi:61099030:dungCho
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"610990","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-610990","dong8":{"61099010":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"nam giới hoặc trẻ em trai"},{"op":"HOAC","phuongAn":[[{"fact":"loaiSoiDet","op":"TRONG","value":["SOI_THUC_VAT_KHAC"]}],[{"fact":"loaiSoiDet","op":"TRONG","value":["TO_TAM"]}]]}]},"61099020":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"nam giới hoặc trẻ em trai"}],"phanConLai":["61099010"]},"61099030":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":"phụ nữ hoặc trẻ em gái"}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"61099010","loai":"QUYET_DINH","ghiChu":"tax.61099010: \"Dùng cho nam giới hoặc trẻ em trai, từ ramie, lanh hoặc tơ tằm\" ⇒ dungCho, HOAC loaiSoiDet"},{"ma":"61099020","loai":"QUYET_DINH","ghiChu":"tax.61099020: \"Dùng cho nam giới hoặc trẻ em trai, từ các vật liệu dệt khác\" ⇒ dungCho, phanConLai phủ định nhánh 10"},{"ma":"61099030","loai":"QUYET_DINH","ghiChu":"tax.61099030: \"Dùng cho phụ nữ hoặc trẻ em gái\" ⇒ dungCho"}]}
+```
+
+=== GÓI PN6 610990 ===
+# 610990 — Từ các vật liệu dệt khác
+
+610990 — T-shirts, singlets and other vests; of textile materials (other than cotton), knitted or crocheted
+  61099010 Dùng cho nam giới hoặc trẻ em trai, từ ramie, lanh hoặc tơ tằm
+  61099020 Dùng cho nam giới hoặc trẻ em trai, từ các vật liệu dệt khác
+  61099030 Dùng cho phụ nữ hoặc trẻ em gái
+
+- 61099010 DONG8
+    tax.61099010 [75 ký tự]: 61099010 - - Dùng cho nam giới hoặc trẻ em trai, từ ramie, lanh hoặc tơ tằm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho nam giới hoặc trẻ em trai, từ ramie, lanh hoặc tơ tằm"
+- 61099020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.61099020 [73 ký tự]: 61099020 - - Dùng cho nam giới hoặc trẻ em trai, từ các vật liệu dệt khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho nam giới hoặc trẻ em trai, từ các vật liệu dệt khác"
+- 61099030 DONG8
+    tax.61099030 [44 ký tự]: 61099030 - - Dùng cho phụ nữ hoặc trẻ em gái
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho phụ nữ hoặc trẻ em gái"
+
+Nguồn cấp phân nhóm: wco.610990; chú giải: nhom6109.nhom, ch61.chuong, phan61.phan
+

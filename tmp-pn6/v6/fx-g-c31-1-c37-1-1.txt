@@ -1,0 +1,230 @@
+VÒNG SỬA — 7 PN6 bị cổng máy chặn (330210 340700 350691 370242 370254 370255 370298). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 330210 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:33021020:dieu-kien-so-khong-khong-co-trong-trich:dangLong
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Như trên.
+    ✗ cong3-muc:33021030:dieu-kien-so-nguong-khong-co-trong-trich:0
+      → Ngưỡng số không có trong câu trích. Sửa: Số phải có nguyên văn trong trich ("1.000" = 1000, "19,5" = 19.5).
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"330210","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-330210","dong8":{"33021010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chế phẩm rượu thơm"},{"fact":"congDung","op":"CONG_DUNG","value":"sản xuất đồ uống có cồn"},{"fact":"dangLong","op":"CO"}]},"33021020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chế phẩm rượu thơm"},{"fact":"congDung","op":"CONG_DUNG","value":"sản xuất đồ uống có cồn"},{"fact":"dangLong","op":"KHONG"}],"phanConLai":["33021010"]},"33021030":{"dieuKienSo":[{"fact":"nongDoCon","op":"<=","value":0,"donVi":"%"}]}},"ghiChuSoan":[{"ma":"33021010","loai":"BO_VE","ve":"dùng để sản xuất đồ uống có cồn, ở dạng lỏng","lyDo":"Đã sử dụng điều kiện congDung và dangLong."},{"ma":"33021020","loai":"BO_VE","ve":"dùng để sản xuất đồ uống có cồn, ở dạng khác","lyDo":"Đã sử dụng điều kiện congDung và phủ định dangLong."},{"ma":"33021030","loai":"BO_VE","ve":"không chứa cồn","lyDo":"Dùng nongDoCon để biểu diễn không chứa cồn."}]}
+```
+
+=== GÓI PN6 330210 ===
+# 330210 — Loại dùng trong công nghiệp thực phẩm hoặc đồ uống
+
+330210 — Odoriferous substances and mixtures; of a kind used in the food or drink industries
+  33021010 Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng lỏng
+  33021020 Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng khác
+  33021030 Loại khác, không chứa cồn  [LK có điều kiện]
+  33021090 Loại khác  [LK]
+
+- 33021010 DONG8
+    tax.33021010 [82 ký tự]: 33021010 - - Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng lỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để sản xuất đồ uống có cồn, ở dạng lỏng"
+- 33021020 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.33021020 [83 ký tự]: 33021020 - - Chế phẩm rượu thơm, loại dùng để sản xuất đồ uống có cồn, ở dạng khác 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để sản xuất đồ uống có cồn, ở dạng khác"
+- 33021030 DONG8
+    tax.33021030 [38 ký tự]: 33021030 - - Loại khác, không chứa cồn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không chứa cồn"
+- 33021090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.33021090 [22 ký tự]: 33021090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.330210; chú giải: nhom3302.nhom, ch33.chuong, phan33.phan
+
+
+=== SỬA PN6 340700 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:34070010:dieu-kien-so-co-khong-co-trong-trich:thietKeChoTreEm
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong1-khong-phu-kin:3407:congDung=làm hình mẫu,dongGoiBanLe=true,dungTrongNhaKhoa=true,tenLoai=Bột nhão[tương tự:không],thietKeChoTreEm=false
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Vế mở TUONG_TU (quyết định GĐ vòng 7): trên một vector có tên hàng của dòng anh em (vd "Búp bê" — .21) dòng mang TUONG_TU (vd 950300 .10 "… và đồ chơi tương tự có bánh") ra CHƯA BIẾT chứ không THOẢ — không có chồng lấn tất định; nếu người khai/chuyên gia trả lời "có tương tự" thì hai dòng mới cùng CO. Lúc chạy hàng không mang tên nêu luôn được HỎI ("có thuộc loại tương tự … không?"), động cơ không tự chọn. Sửa: Không cần sửa, KHÔNG khai chongLanTruc / chongLanVanBan cho cặp này (đó là ép công cụ — 761699 bị trả về vì cụm 7 nhánh). Người soát kiểm value của TUONG_TU đúng là các hàng NÊU TÊN nguyên văn trước cụm "… tương tự", giới hạn đi kèm đã thành điều kiện riêng.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"340700","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-340700","dong8":{"34070010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Bột nhão","đất nặn"]},{"fact":"congDung","op":"CONG_DUNG","value":"làm hình mẫu"},{"fact":"thietKeChoTreEm","op":"CO"}]},"34070020":{"dieuKienSo":[{"fact":"tenLoai","op":"TUONG_TU","value":["sáp dùng trong nha khoa","hợp chất tạo khuôn răng"]},{"fact":"dongGoiBanLe","op":"CO"}]},"34070030":{"dieuKienSo":[{"fact":"dungTrongNhaKhoa","op":"CO"},{"fact":"tenLoai","op":"TEN_LOAI","value":"thạch cao plaster"}]}},"ghiChuSoan":[{"ma":"34070010","loai":"BO_VE","ve":"dùng để làm hình mẫu","lyDo":"Ghi nhận công dụng."},{"ma":"34070010","loai":"BO_VE","ve":"dùng cho trẻ em","lyDo":"Sử dụng thietKeChoTreEm."},{"ma":"34070020","loai":"BO_VE","ve":"được coi như \"sáp","lyDo":"Mở rộng danh sách hàng."},{"ma":"34070020","loai":"BO_VE","ve":"dùng trong nha khoa\" hoặc như \"hợp chất tạo khuôn răng\", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh","lyDo":"Đã dùng TUONG_TU kết hợp với đóng gói bán lẻ (mặc dù dạng móng ngựa, thanh chưa có biến riêng, được xem là các dạng tương đương trong ngữ cảnh này)."},{"ma":"34070030","loai":"BO_VE","ve":"dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)","lyDo":"Sử dụng dungTrongNhaKhoa và tenLoai thành phần."}]}
+```
+
+=== GÓI PN6 340700 ===
+# 340700 — Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em; các chế phẩm được coi như "sáp dùng trong nha khoa" hay như "các hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự; các chế phẩm khác dùng trong nha khoa, với thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung).
+
+NHÓM 3407 — Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em; các chế phẩm được coi như "sáp dùng trong nha khoa" hay như "các hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự; các chế phẩm khác dùng trong nha khoa, với thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung).
+  34070010 Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em
+  34070020 Các chế phẩm được coi như "sáp dùng trong nha khoa" hoặc như "hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự
+  34070030 Chế phẩm khác dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)
+
+- 34070010 DONG8
+    tax.34070010 [71 ký tự]: 34070010 - Bột nhão dùng để làm hình mẫu, kể cả đất nặn dùng cho trẻ em
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng để làm hình mẫu" · [GIỚI HẠN] "dùng cho trẻ em"
+- 34070020 DONG8
+    tax.34070020 [199 ký tự]: 34070020 - Các chế phẩm được coi như "sáp dùng trong nha khoa" hoặc như "hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh hoặc các dạng tương tự 
+    vế phải phủ (cổng 5): [GIỚI HẠN] "được coi như "sáp" · [GIỚI HẠN] "dùng trong nha khoa" hoặc như "hợp chất tạo khuôn răng", đã đóng gói thành bộ để bán lẻ hoặc ở dạng phiến, dạng móng ngựa, dạng thanh" · [MỞ] "hoặc các dạng tương tự"
+- 34070030 DONG8 (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tax.34070030 [127 ký tự]: 34070030 - Chế phẩm khác dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng trong nha khoa có thành phần cơ bản là thạch cao plaster (thạch cao nung hoặc canxi sulphat nung)"
+
+Nguồn cấp phân nhóm: wco.340700; chú giải: nhom3407.nhom, ch34.chuong, phan34.phan
+
+=== SỬA PN6 350691 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:35069110:dieu-kien-so-co-khong-co-trong-trich:chiHoacChuYeu
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"350691","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-350691","dong8":{"35069110":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chất kết dính dạng free-film trong suốt quang học"},{"fact":"tenLoai","op":"TEN_LOAI","value":"chất kết dính dạng lỏng có thể đóng rắn trong suốt quang học"},{"fact":"chiHoacChuYeu","op":"CO"},{"fact":"congDung","op":"CONG_DUNG","value":["sản xuất màn hình dẹt","màn hình cảm ứng"]}]}},"ghiChuSoan":[{"ma":"35069110","loai":"BO_VE","ve":"có thể đóng rắn trong suốt quang học chỉ","lyDo":"Ghi nhận vào tenLoai."},{"ma":"35069110","loai":"BO_VE","ve":"được sử dụng","lyDo":"Cụm từ nối."},{"ma":"35069110","loai":"BO_VE","ve":"được sử dụng chủ yếu để sản xuất màn hình dẹt hoặc màn hình cảm ứng","lyDo":"Sử dụng chiHoacChuYeu và congDung."}]}
+```
+
+=== GÓI PN6 350691 ===
+# 350691 — Chất kết dính làm từ các polyme thuộc các nhóm từ 39.01 đến 39.13 hoặc từ cao su
+
+350691 — Adhesives; prepared, based on polymers of heading 3901 to 3913 or on rubber
+  35069110 Chất kết dính dạng free-film trong suốt quang học và chất kết dính dạng lỏng có thể đóng rắn trong suốt quang học chỉ được sử dụng hoặc được sử dụng chủ yếu để sản xuất màn hình dẹt hoặc màn hình cảm ứng (SEN)
+  35069190 Loại khác  [LK]
+
+- 35069110 DONG8
+    tax.35069110 [224 ký tự]: 35069110 - - - Chất kết dính dạng free-film trong suốt quang học và chất kết dính dạng lỏng có thể đóng rắn trong suốt quang học chỉ được sử dụng hoặc được sử dụng chủ yếu để sản xuất màn hình dẹt hoặc màn hình cảm ứng (SEN)
+    sen.35069110 [1200 ký tự]: CHẤT KẾT DÍNH DẠNG FREE-FILM TRONG SUỐT QUANG HỌC VÀ CHẤT KẾT DÍNH DẠNG LỎNG CÓ THỂ ĐÓNG RẮN TRONG SUỐT QUANG HỌC CHỈ ĐƯỢC SỬ DỤNG HOẶC ĐƯỢC SỬ DỤNG CHỦ YẾU ĐỂ SẢN XUẤT MÀN HÌNH DẸT HOẶC MÀN HÌNH CẢM ỨNG Chất kết dính dạng free-film trong suốt quang học là chất kết dính chuyên dụng cao cung cấp độ rõ nét vượt trội và độ bám dính hoàn toàn cho các loại nền (substrate) trong suốt khác nhau. Chúng được thiết kế đặc biệt để sử dụng trên nền (substrate) plastic có chứa hơi ẩm (ví dụ, PMMA, PC,...) với khả năng ngăn cản sự phồng lên gây ra bởi sự thoát khí của bề mặt dưới tác động của nhiệt độ cao và các điều kiện chống lại độ ẩm. Ví dụ về thông số kỹ thuật của chất kết dính dạng free-film trong suốt quang học Chất kết dính dạng lỏng có thể đóng rắn trong suốt quang học là chất kết dính chuyên dụng cao dạng lỏng được thiết kế để sử dụng trong màn hình dẹt và màn hình cảm ứng, loại mà đặc tính không bị ố vàng và có khả năng gia công lại là quan trọng. Khả năng đóng rắn trong vài giây của chúng cho phép xử lý nhanh hơn, năng suất hơn và chi phí xử lý thấp hơn. Khi được đóng rắn bằng đèn chùm hội tụ, đèn pha và đèn chiếu điểm, chúng mang lại tốc độ và hiệu suất tối ưu cho việc tạo lớp mỏng
+    vế phải phủ (cổng 5): [GIỚI HẠN] "có thể đóng rắn trong suốt quang học chỉ" · [GIỚI HẠN] "được sử dụng" · [GIỚI HẠN] "được sử dụng chủ yếu để sản xuất màn hình dẹt hoặc màn hình cảm ứng"
+- 35069190 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.35069190 [24 ký tự]: 35069190 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.350691; chú giải: nhom3506.nhom, ch35.chuong, phan35.phan
+
+=== SỬA PN6 370242 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:37024210:dieu-kien-so-co-khong-co-trong-trich:dungTrongNhaKhoa
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"370242","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-370242","dong8":{"37024210":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"dungTrongYTeHoacThiNghiem","op":"CO"}],[{"fact":"dungTrongNhaKhoa","op":"CO"}],[{"fact":"congDung","op":"CONG_DUNG","value":"thú y"}],[{"fact":"congDung","op":"CONG_DUNG","value":"công nghiệp in"}]]}]}},"ghiChuSoan":[{"ma":"37024210","loai":"BO_VE","ve":"phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in","lyDo":"Ghi nhận bằng các điều kiện chuyên dùng cho từng lĩnh vực."}]}
+```
+
+=== GÓI PN6 370242 ===
+# 370242 — Loại chiều rộng trên 610 mm và chiều dài trên 200 m, trừ loại dùng cho ảnh màu
+
+370242 — Photographic film; in rolls, (other than for colour photography), sensitised, unexposed, without sprocket holes, of a width exceeding 610mm and of a length exceeding 200m (other than of paper, paperboard or textiles)
+  37024210 Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+  37024290 Loại khác  [LK]
+
+- 37024210 DONG8
+    tax.37024210 [105 ký tự]: 37024210 - - - Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+    vế phải phủ (cổng 5): [GIỚI HẠN] "phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in"
+- 37024290 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.37024290 [24 ký tự]: 37024290 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.370242; chú giải: nhom3702.nhom, ch37.chuong, phan37.phan
+
+
+=== SỬA PN6 370254 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:37025440:dieu-kien-so-co-khong-co-trong-trich:dungTrongNhaKhoa
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"370254","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-370254","dong8":{"37025440":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"dungTrongYTeHoacThiNghiem","op":"CO"}],[{"fact":"dungTrongNhaKhoa","op":"CO"}],[{"fact":"congDung","op":"CONG_DUNG","value":"thú y"}],[{"fact":"congDung","op":"CONG_DUNG","value":"công nghiệp in"}]]}]}},"ghiChuSoan":[{"ma":"37025440","loai":"BO_VE","ve":"phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in","lyDo":"Ghi nhận bằng các điều kiện lĩnh vực."}]}
+```
+
+=== GÓI PN6 370254 ===
+# 370254 — Loại chiều rộng trên 16 mm nhưng không quá 35 mm và chiều dài không quá 30 m, trừ loại dùng làm phim chiếu
+
+370254 — Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, of a width exceeding 16mm but not 35mm and of a length not exceeding 30m, excluding film for slides (other than of paper, paperboard or textiles)
+  37025440 Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+  37025490 Loại khác  [LK]
+
+- 37025440 DONG8
+    tax.37025440 [105 ký tự]: 37025440 - - - Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+    vế phải phủ (cổng 5): [GIỚI HẠN] "phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in"
+- 37025490 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.37025490 [24 ký tự]: 37025490 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.370254; chú giải: nhom3702.nhom, ch37.chuong, phan37.phan
+
+
+=== SỬA PN6 370255 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:37025550:dieu-kien-so-co-khong-co-trong-trich:dungTrongNhaKhoa
+      → Câu trích không có mẫu đọc của khoá có-không. Sửa: Xem cachDoc của khoá ở --tu-vung; chọn khoá đúng hoặc trích đoạn có chữ đó.
+    ✗ cong2-chong-lan:37025520+37025550:congDung=thú y,dungChoDienAnh=true,dungTrongNhaKhoa=true,dungTrongYTeHoacThiNghiem=true
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"370255","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-370255","dong8":{"37025520":{"dieuKienSo":[{"fact":"dungChoDienAnh","op":"CO"}]},"37025550":{"dieuKienSo":[{"op":"HOAC","phuongAn":[[{"fact":"dungTrongYTeHoacThiNghiem","op":"CO"}],[{"fact":"dungTrongNhaKhoa","op":"CO"}],[{"fact":"congDung","op":"CONG_DUNG","value":"thú y"}],[{"fact":"congDung","op":"CONG_DUNG","value":"công nghiệp in"}]]}]}},"ghiChuSoan":[{"ma":"37025520","loai":"BO_VE","ve":"phù hợp dùng cho điện ảnh","lyDo":"Dùng điều kiện có sẵn."},{"ma":"37025550","loai":"BO_VE","ve":"phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in","lyDo":"Ghi nhận bằng các điều kiện tương ứng."}]}
+```
+
+=== GÓI PN6 370255 ===
+# 370255 — Loại chiều rộng trên 16 mm nhưng không quá 35 mm và chiều dài trên 30 m
+
+370255 — Photographic film; for colour photography (polychrome), in rolls, sensitised, unexposed, of a width exceeding 16mm but not 35mm and of a length exceeding 30m (other than of paper, paperboard or textiles)
+  37025520 Loại phù hợp dùng cho điện ảnh
+  37025550 Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+  37025590 Loại khác  [LK]
+
+- 37025520 DONG8
+    tax.37025520 [45 ký tự]: 37025520 - - - Loại phù hợp dùng cho điện ảnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "phù hợp dùng cho điện ảnh"
+- 37025550 DONG8
+    tax.37025550 [105 ký tự]: 37025550 - - - Loại phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in
+    vế phải phủ (cổng 5): [GIỚI HẠN] "phù hợp để dùng trong y tế, phẫu thuật, nha khoa hoặc thú y hoặc trong công nghiệp in"
+- 37025590 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.37025590 [24 ký tự]: 37025590 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.370255; chú giải: nhom3702.nhom, ch37.chuong, phan37.phan
+
+
+=== SỬA PN6 370298 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong0-phan-con-lai-thua:37029830
+      → phanConLai trên dòng/tiêu đề "Loại khác…" — vốn đã phủ định mọi anh em. Sửa: Xoá phanConLai khỏi mục này.
+    ✗ cong3-phan-con-lai-khong-co-chu-khac:37029810
+      → phanConLai trên mục mà câu trích không có chữ "khác". Sửa: Chỉ đánh phanConLai khi chữ biểu nói "… khác"; nếu không, xoá.
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"370298","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-370298","dong8":{"37029810":{"dieuKienSo":[{"fact":"dungChoDienAnh","op":"CO"}],"phanConLai":["37029830","37029890"]},"37029830":{"dieuKienSo":[{"fact":"chieuDaiCuon","op":">=","value":120,"donVi":"m"}],"phanConLai":["37029890"]}},"ghiChuSoan":[{"ma":"37029810","loai":"BO_VE","ve":"phù hợp dùng cho điện ảnh","lyDo":"Sử dụng biến điều kiện."},{"ma":"37029830","loai":"BO_VE","ve":"chiều dài từ 120 m trở lên","lyDo":"Đã sử dụng điều kiện độ dài."}]}
+```
+
+=== GÓI PN6 370298 ===
+# 370298 — Loại chiều rộng trên 35 mm
+
+370298 — Photographic film; other than for colour photography, in rolls, sensitised, unexposed, of a width exceeding 35mm (other than of paper, paperboard or textiles)
+  37029810 Loại phù hợp dùng cho điện ảnh
+  37029830 Loại khác, chiều dài từ 120 m trở lên  [LK có điều kiện]
+  37029890 Loại khác  [LK]
+
+- 37029810 DONG8
+    tax.37029810 [45 ký tự]: 37029810 - - - Loại phù hợp dùng cho điện ảnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "phù hợp dùng cho điện ảnh"
+- 37029830 DONG8
+    tax.37029830 [52 ký tự]: 37029830 - - - Loại khác, chiều dài từ 120 m trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "chiều dài từ 120 m trở lên"
+- 37029890 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.37029890 [24 ký tự]: 37029890 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.370298; chú giải: nhom3702.nhom, ch37.chuong, phan37.phan
+

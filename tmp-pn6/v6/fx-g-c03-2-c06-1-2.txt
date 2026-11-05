@@ -1,0 +1,119 @@
+VÒNG SỬA — 3 PN6 bị cổng máy chặn (030890 040140 040210). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 030890 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:030890:phuongPhapBaoQuan=BAO_QUAN_BANG_KHI_SUNPHURO
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"030890","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-030890","dong8":{"03089010":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["SONG"]}]},"03089020":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]},"03089030":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["DONG_LANH"]}]},"03089040":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["KHO_MUOI"]}]},"03089050":{"dieuKienSo":[{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["HUN_KHOI"]}]}},"ghiChuSoan":[{"ma":"03089010","loai":"QUYET_DINH","ghiChu":"tax.03089010 \"Sống\" ⇒ phuongPhapBaoQuan SONG"},{"ma":"03089020","loai":"QUYET_DINH","ghiChu":"tax.03089020 \"Tươi hoặc ướp lạnh\" ⇒ phuongPhapBaoQuan TUOI_UOP_LANH"},{"ma":"03089030","loai":"QUYET_DINH","ghiChu":"tax.03089030 \"Đông lạnh\" ⇒ phuongPhapBaoQuan DONG_LANH"},{"ma":"03089040","loai":"QUYET_DINH","ghiChu":"tax.03089040 \"Khô, muối hoặc ngâm nước muối\" ⇒ phuongPhapBaoQuan KHO_MUOI"},{"ma":"03089050","loai":"QUYET_DINH","ghiChu":"tax.03089050 \"Hun khói\" ⇒ phuongPhapBaoQuan HUN_KHOI"}]}
+```
+
+=== GÓI PN6 030890 ===
+# 030890 — Loại khác
+
+030890 — Aquatic invertebrates; other than crustaceans, molluscs, sea urchins, sea cucumbers and jellyfish, live, fresh, chilled, frozen, dried, salted or in brine, smoked, cooked or not before or during smoking
+  03089010 Sống
+  03089020 Tươi hoặc ướp lạnh
+  03089030 Đông lạnh
+  03089040 Khô, muối hoặc ngâm nước muối
+  03089050 Hun khói
+
+- 03089010 DONG8
+    tax.03089010 [17 ký tự]: 03089010 - - Sống
+- 03089020 DONG8
+    tax.03089020 [31 ký tự]: 03089020 - - Tươi hoặc ướp lạnh
+- 03089030 DONG8
+    tax.03089030 [22 ký tự]: 03089030 - - Đông lạnh
+- 03089040 DONG8
+    tax.03089040 [42 ký tự]: 03089040 - - Khô, muối hoặc ngâm nước muối
+- 03089050 DONG8
+    tax.03089050 [21 ký tự]: 03089050 - - Hun khói
+
+Nguồn cấp phân nhóm: wco.030890; chú giải: nhom0308.nhom, ch03.chuong, phan03.phan
+
+
+=== SỬA PN6 040140 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-chong-lan:04014010+04014020:dangLong=true,phuongPhapBaoQuan=DONG_LANH,tenLoai=Sữa:khong-tat-dinh
+      → Hai dòng cùng THOẢ trên một vector (in kèm). ":khong-tat-dinh" = có so chữ tự do. Sửa: Kiểm biên ≤/< và giá trị liệt kê; dùng CÙNG MỘT khoá cho các anh em; phần còn lại có tên ("… khác") ⇒ phanConLai. Vế mở "X và (các) bộ phận của chúng" ⇒ HOAC [[tenLoai X], [laBoPhan CO, dungCho X]] với X là tên ĐẦU nguyên văn của chính dòng (QUY-TRINH 3.11) — máy tự coi tên nguyên văn rời nhau của anh em là loại trừ (cảnh báo cong2-ten-anh-em-roi); không viết tắt thành tenLoai, không đổi khoá. Chữ biểu THẬT SỰ tự chồng (hai câu không loại trừ nhau) ⇒ khai chongLanVanBan có lyDo trích cả hai nhánh. Tên chứa nhau ("bàn đạp" ⊃ "Bàn", kể cả trong HOAC / chéo khoá) máy tự xử bằng "tên cụ thể hơn thắng" (cảnh báo cong2-ten-cu-the-hon). Do bộ so chữ / khác trục ⇒ để đỏ, báo lại.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"040140","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-040140","dong8":{"04014010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Sữa"},{"fact":"dangLong","op":"CO"}]},"04014020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Sữa"},{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["DONG_LANH"]}]}},"ghiChuSoan":[{"ma":"04014010","loai":"QUYET_DINH","ghiChu":"tax.04014010 \"Sữa dạng lỏng\" ⇒ tenLoai Sữa, dangLong CO"},{"ma":"04014020","loai":"QUYET_DINH","ghiChu":"tax.04014020 \"Sữa dạng đông lạnh\" ⇒ tenLoai Sữa, phuongPhapBaoQuan DONG_LANH"}]}
+```
+
+=== GÓI PN6 040140 ===
+# 040140 — Có hàm lượng chất béo trên 6% nhưng không quá 10% tính theo khối lượng
+
+040140 — Dairy produce; milk and cream, not concentrated, not containing added sugar or other sweetening matter, of a fat content, by weight, exceeding 6% but not exceeding 10%
+  04014010 Sữa dạng lỏng
+  04014020 Sữa dạng đông lạnh
+  04014090 Loại khác  [LK]
+
+- 04014010 DONG8
+    tax.04014010 [26 ký tự]: 04014010 - - Sữa dạng lỏng
+- 04014020 DONG8
+    tax.04014020 [31 ký tự]: 04014020 - - Sữa dạng đông lạnh
+- 04014090 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04014090 [22 ký tự]: 04014090 - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040140; chú giải: nhom0401.nhom, ch04.chuong, phan04.phan
+
+
+=== SỬA PN6 040210 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-chua-so-hoa:04021041:0402104
+      → Một mục bắt buộc trên đường đi của dòng chưa có điều kiện (mã sau cùng = mục thiếu). Sửa: Thêm dieuKienSo cho mục đó trong spec. Không diễn đạt được bằng khoá có sẵn ⇒ để trống + ghiChuSoan DE_TRONG/THIEU_KHOA_TU_VUNG (bản sẽ đỏ — báo lại, không ép).
+    ✗ cong1-chua-so-hoa:04021042:0402104
+    ✗ cong1-chua-so-hoa:04021049:0402104
+    ✗ cong1-chua-so-hoa:04021091:0402104
+    ✗ cong1-chua-so-hoa:04021092:0402104
+    ✗ cong1-chua-so-hoa:04021099:0402104
+      → (cảnh báo) Bộ đọc không đọc được biên ≤/< từ câu trích — cổng không tự đối chiếu biên. Sửa: Tự kiểm lại op/value; người soát đối chiếu tay.
+      → (cảnh báo) Chữ của mục có "… khác" — có thể là phần còn lại có tên. Sửa: Nếu đúng nghĩa "các loại khác các dòng trên" ⇒ thêm "phanConLai": true (hoặc mảng anh em; được để dieuKienSo rỗng khi nội dung chỉ là "các loại khác"). Không phải ⇒ "phanConLai": false (tắt cảnh báo) + ghi chú lý do.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"040210","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-040210","dong8":{"04021041":{"dieuKienSo":[{"fact":"khoiLuong","op":">=","value":20,"donVi":"kg"}]},"04021042":{"dieuKienSo":[{"fact":"khoiLuong","op":"<=","value":2,"donVi":"kg"}]},"04021091":{"dieuKienSo":[{"fact":"khoiLuong","op":">=","value":20,"donVi":"kg"}]},"04021092":{"dieuKienSo":[{"fact":"khoiLuong","op":"<=","value":2,"donVi":"kg"}]}},"dieuKienNut":{"0402104":{"dieuKienSo":[]}},"ghiChuSoan":[{"ma":"0402104","loai":"THIEU_KHOA_TU_VUNG","khoaDeXuat":"daPhaThemDuongHoacRuou","ghiChu":"tieuDe.0402104 \"Chưa pha thêm đường hoặc chất tạo ngọt khác\": khoá daPhaThemDuongHoacRuou có cachDoc KHONG thiếu cụm 'chưa pha thêm đường'"},{"ma":"04021041","loai":"QUYET_DINH","ghiChu":"tax.04021041 \"Đóng gói với khối lượng tịnh từ 20 kg trở lên\" ⇒ khoiLuong >= 20 kg"},{"ma":"04021042","loai":"QUYET_DINH","ghiChu":"tax.04021042 \"Đóng gói với khối lượng tịnh từ 2 kg trở xuống\" ⇒ khoiLuong <= 2 kg"},{"ma":"04021091","loai":"QUYET_DINH","ghiChu":"tax.04021091 \"Đóng gói với khối lượng tịnh từ 20 kg trở lên\" ⇒ khoiLuong >= 20 kg"},{"ma":"04021092","loai":"QUYET_DINH","ghiChu":"tax.04021092 \"Đóng gói với khối lượng tịnh từ 2 kg trở xuống\" ⇒ khoiLuong <= 2 kg"}]}
+```
+
+=== GÓI PN6 040210 ===
+# 040210 — Dạng bột, hạt hoặc các thể rắn khác, có hàm lượng chất béo không quá 1,5% tính theo khối lượng
+
+040210 — Dairy produce; milk and cream, concentrated or containing added sugar or other sweetening matter, in powder, granules or other solid forms, of a fat content not exceeding 1.5% (by weight)
+  [0402104] Chưa pha thêm đường hoặc chất tạo ngọt khác
+    04021041 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    04021042 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    04021049 Loại khác  [LK]
+  [0402109] Loại khác
+    04021091 Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    04021092 Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    04021099 Loại khác  [LK]
+
+- 0402104 TIEU_DE (nghi phần còn lại có tên — cân nhắc "phanConLai": true)
+    tieuDe.0402104 [51 ký tự]: 0402104 Chưa pha thêm đường hoặc chất tạo ngọt khác
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa pha thêm đường hoặc chất tạo ngọt khác"
+- 04021041 DONG8
+    tax.04021041 [60 ký tự]: 04021041 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 20 kg trở lên"
+- 04021042 DONG8
+    tax.04021042 [61 ký tự]: 04021042 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 2 kg trở xuống"
+- 04021049 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04021049 [24 ký tự]: 04021049 - - - Loại khác
+- 0402109 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.0402109 [17 ký tự]: 0402109 Loại khác
+- 04021091 DONG8
+    tax.04021091 [60 ký tự]: 04021091 - - - Đóng gói với khối lượng tịnh từ 20 kg trở lên
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 20 kg trở lên"
+- 04021092 DONG8
+    tax.04021092 [61 ký tự]: 04021092 - - - Đóng gói với khối lượng tịnh từ 2 kg trở xuống
+    vế phải phủ (cổng 5): [GIỚI HẠN] "với khối lượng tịnh từ 2 kg trở xuống"
+- 04021099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.04021099 [24 ký tự]: 04021099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.040210; chú giải: nhom0402.nhom, ch04.chuong, phan04.phan
+

@@ -1,0 +1,61 @@
+VÒNG SỬA — 2 PN6 bị cổng máy chặn (020760 021019). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 020760 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong1-khong-phu-kin:020760:phuongPhapBaoQuan=SONG,tenLoai=Chưa chặt mảnh
+      → Tầng không có con "Loại khác": có vector (kèm theo lỗi) thoả tầng cha mà không rơi vào con nào. Sửa: Đối chiếu biên ≤/< giữa các con (vd "không quá 16" và "trên 16"); sửa op/biên đúng chữ. Không thêm điều kiện chữ biểu không nói.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"020760","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-020760","dong8":{"02076010":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chưa chặt mảnh"},{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]},"02076020":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":"Chưa chặt mảnh"},{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["DONG_LANH"]}]},"02076030":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Đã chặt mảnh","phụ phẩm sau giết mổ"]},{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["TUOI_UOP_LANH"]}]},"02076040":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Đã chặt mảnh","phụ phẩm sau giết mổ"]},{"fact":"phuongPhapBaoQuan","op":"TRONG","value":["DONG_LANH"]}]}},"ghiChuSoan":[{"ma":"02076010","loai":"QUYET_DINH","ghiChu":"tax.02076010 \"Chưa chặt mảnh, tươi hoặc ướp lạnh\" ⇒ tenLoai Chưa chặt mảnh, phuongPhapBaoQuan TUOI_UOP_LANH"},{"ma":"02076020","loai":"QUYET_DINH","ghiChu":"tax.02076020 \"Chưa chặt mảnh, đông lạnh\" ⇒ tenLoai Chưa chặt mảnh, phuongPhapBaoQuan DONG_LANH"},{"ma":"02076030","loai":"QUYET_DINH","ghiChu":"tax.02076030 \"Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh\" ⇒ tenLoai mảng Đã chặt mảnh/phụ phẩm, phuongPhapBaoQuan TUOI_UOP_LANH"},{"ma":"02076040","loai":"QUYET_DINH","ghiChu":"tax.02076040 \"Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh\" ⇒ tenLoai mảng Đã chặt mảnh/phụ phẩm, phuongPhapBaoQuan DONG_LANH"}]}
+```
+
+=== GÓI PN6 020760 ===
+# 020760 — Của gà lôi
+
+020760 — Meat and edible offal; of guinea fowls, fresh, chilled or frozen
+  02076010 Chưa chặt mảnh, tươi hoặc ướp lạnh
+  02076020 Chưa chặt mảnh, đông lạnh
+  02076030 Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh
+  02076040 Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh
+
+- 02076010 DONG8
+    tax.02076010 [47 ký tự]: 02076010 - - Chưa chặt mảnh, tươi hoặc ướp lạnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa chặt mảnh, tươi hoặc ướp lạnh"
+- 02076020 DONG8
+    tax.02076020 [38 ký tự]: 02076020 - - Chưa chặt mảnh, đông lạnh
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Chưa chặt mảnh, đông lạnh"
+- 02076030 DONG8
+    tax.02076030 [69 ký tự]: 02076030 - - Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh
+- 02076040 DONG8
+    tax.02076040 [60 ký tự]: 02076040 - - Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh
+
+Nguồn cấp phân nhóm: wco.020760; chú giải: nhom0207.nhom, ch02.chuong, phan02.phan
+
+
+=== SỬA PN6 021019 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ spec-hinh-dang:dong8.02101930.ghiChuSoan — khoá mục hợp lệ: dieuKienSo, trich, nguon, phanConLai
+      → Spec sai lược đồ ranh-gioi-spec@1. Sửa: Xem mẫu trong --help và docs/giao-viec/so-tay/QUY-TRINH-SO-HOA.md.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"021019","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-021019","dong8":{"02101930":{"dieuKienSo":[{"fact":"tenLoai","op":"TEN_LOAI","value":["Thịt lợn muối xông khói","thịt mông đùi"]}],"ghiChuSoan":[{"ma":"02101930","loai":"BO_VE","ve":"không xương","lyDo":"Thịt mông đùi có xương đã được phân loại ở phân nhóm 0210.11, nên trong phân nhóm 0210.19 thịt mông đùi mặc nhiên là không xương, bỏ vế không làm thay đổi mã số."}]}},"ghiChuSoan":[{"ma":"02101930","loai":"QUYET_DINH","ghiChu":"tax.02101930 \"Thịt lợn muối xông khói (bacon); thịt mông đùi (hams) không xương\" ⇒ tenLoai mảng 2 mặt hàng; BO_VE vế không xương vì 0210.11 đã lấy loại có xương"}]}
+```
+
+=== GÓI PN6 021019 ===
+# 021019 — Loại khác
+
+021019 — Meat; salted in brine, dried or smoked, of swine, n.e.c. in item no. 0210.1
+  02101930 Thịt lợn muối xông khói (bacon); thịt mông đùi (hams) không xương
+  02101990 Loại khác  [LK]
+
+- 02101930 DONG8
+    tax.02101930 [80 ký tự]: 02101930 - - - Thịt lợn muối xông khói (bacon); thịt mông đùi (hams) không xương
+    vế phải phủ (cổng 5): [GIỚI HẠN] "không xương"
+- 02101990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.02101990 [24 ký tự]: 02101990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.021019; chú giải: nhom0210.nhom, ch02.chuong, phan02.phan
+

@@ -1,0 +1,66 @@
+VÒNG SỬA — 2 PN6 bị cổng máy chặn (732119 732490). Với MỖI PN6 trả lại MỘT khối ```json spec ranh-gioi-spec@1 HOÀN CHỈNH đã sửa (không trả diff). Luật sửa: cong0-phan-con-lai-thua ⇒ bỏ "phanConLai": true ở dòng không phải "Loại khác" thật; cong1-khong-phu-kin ⇒ anh em cùng tầng dùng CÙNG khoá, biên khít (<= X và > X); cong2-chong-lan ⇒ hai dòng cùng thoả: thêm điều kiện phân biệt lấy từ chữ trích (tiêu đề cha có tên ⇒ khai dieuKienNut) hoặc BO_VE có lý do; cong2-chong-lan-truc ⇒ nhánh chia theo tên cạnh nhánh chia theo công dụng: ghi chongLanVanBan với lý do trích chữ hai nhánh; cong2-dong-khong-toi-duoc ⇒ dòng con không thoả được vì điều kiện tầng cha/anh em quá hẹp; cong3-*-khong-co-trong-trich ⇒ chữ trích phải chứa mẫu đọc của khoá/đơn vị (xem TỪ VỰNG), không thì đổi khoá hoặc THIEU_KHOA_TU_VUNG; cong3-liet-ke-trong-mot-chuoi ⇒ chuỗi "A, B hoặc C" không được nhét vào MỘT giá trị tenLoai/congDung/dungCho — tách thành nhiều điều kiện hoặc dùng khoá liệt kê; cong5-ve-gioi-han-bi-bo ⇒ mỗi vế in sau mã phải có điều kiện phủ hoặc BO_VE {ma, loai:"BO_VE", ve, lyDo}. Không giải thích ngoài các khối json.
+
+=== SỬA PN6 732119 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong3-muc:73211910:dieu-kien-so-trong-khong-co-trong-trich:GA
+      → Câu trích không có cách đọc của giá trị liệt kê. Sửa: Mỗi giá trị cần một mẫu cachDoc có trong trich (xem --tu-vung).
+      → (cảnh báo) Vế được miễn bằng BO_VE — người soát đọc lyDo và quyết. Sửa: Không cần sửa nếu lý do đúng.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"732119","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-732119","dong8":{"73211910":{"dieuKienSo":[{"fact":"nhienLieu","op":"TRONG","chieu":"PHAI_KHONG","value":["GA","DIEN"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"73211910","loai":"QUYET_DINH","ghiChu":"tax.73211910: \"Loại dùng nhiên liệu rắn\" ⇒ nhienLieu PHAI_KHONG [GA, DIEN]"},{"ma":"73211910","loai":"BO_VE","ve":"dùng nhiên liệu rắn","lyDo":"Đã phản ánh qua nhienLieu không phải GA/DIEN"}]}
+```
+
+=== GÓI PN6 732119 ===
+# 732119 — Loại khác, kể cả dụng cụ dùng nhiên liệu rắn
+
+732119 — Cooking appliances and plate warmers; for solid fuel and fuels other than gas or liquid, of iron or steel
+  73211910 Loại dùng nhiên liệu rắn
+  73211990 Loại khác  [LK]
+
+- 73211910 DONG8
+    tax.73211910 [39 ký tự]: 73211910 - - - Loại dùng nhiên liệu rắn
+    vế phải phủ (cổng 5): [GIỚI HẠN] "dùng nhiên liệu rắn"
+- 73211990 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73211990 [24 ký tự]: 73211990 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732119; chú giải: nhom7321.nhom, ch73.chuong, phan73.phan
+
+
+=== SỬA PN6 732490 ===
+Lỗi cổng máy (✗) và cách sửa (→):
+    ✗ cong2-dong-khong-toi-duoc:73249093
+      → Không vector biên nào làm dòng này CO — mọi kiểm tra của nó là suông (xanh giả). Thường do cùng khoá chữ tự do ở tiêu đề và dòng con với hai giá trị khác nhau. Sửa: Giữ CÙNG một khoá cho tiêu đề, dòng con và các anh em — KHÔNG đổi sang khoá khác (congDung/tenLoai thay dungCho…) chỉ để né (vòng 4: đổi khoá làm mất phép so cùng trục, che lỗi chứ không sửa). Máy đã tự ghép giá trị "<dưới> <trên>" cho cùng khoá (#653); kiểm giá trị dòng con đúng là chuỗi con nguyên văn đúng ý chữ. Vẫn không tới được ⇒ DỪNG, báo lại.
+      → (cảnh báo) Miễn vế BO_VE không khớp vế nào cần miễn (đã phủ, hoặc mã không có điều kiện). Sửa: Xoá mục BO_VE thừa.
+      → (cảnh báo) Mục dùng so chữ tự do (TEN_LOAI/CONG_DUNG) — không tất định, lúc chạy không tự chốt. Sửa: Không cần sửa; ưu tiên khoá liệt kê/số/có-không khi chữ biểu cho phép.
+
+Spec bạn đã trả (sửa trên bản này):
+```json
+{"phienBan":"ranh-gioi-spec@1","pn6":"732490","phien":"https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-732490","dong8":{"73249010":{"dieuKienSo":[{"fact":"dungCho","op":"CONG_DUNG","value":["bệ xí","bệ đi tiểu giật nước (loại cố định)"]}]},"73249091":{"dieuKienSo":[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":["bồn rửa nhà bếp","bồn tắm"]}]},"73249093":{"dieuKienSo":[{"fact":"laBoPhan","op":"CO"},{"fact":"dungCho","op":"CONG_DUNG","value":["bệ xí","bệ đi tiểu giật nước (loại cố định)"]}]}},"dieuKienNut":{},"ghiChuSoan":[{"ma":"73249010","loai":"QUYET_DINH","ghiChu":"tax.73249010: \"Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)\" ⇒ dungCho mảng 2 loại bệ xí"},{"ma":"73249010","loai":"BO_VE","ve":"Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)","lyDo":"Đã đưa vào dungCho"},{"ma":"73249091","loai":"QUYET_DINH","ghiChu":"tax.73249091: \"Bộ phận của bồn rửa nhà bếp hoặc bồn tắm\" ⇒ laBoPhan CO, dungCho [\"bồn rửa nhà bếp\",\"bồn tắm\"]"},{"ma":"73249091","loai":"BO_VE","ve":"của bồn rửa nhà bếp hoặc bồn tắm","lyDo":"Đã đưa vào dungCho"},{"ma":"73249093","loai":"QUYET_DINH","ghiChu":"tax.73249093: \"Bộ phận của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)\" ⇒ laBoPhan CO, dungCho mảng 2 loại bệ xí"},{"ma":"73249093","loai":"BO_VE","ve":"của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)","lyDo":"Đã đưa vào dungCho"}]}
+```
+
+=== GÓI PN6 732490 ===
+# 732490 — Loại khác, kể cả các bộ phận
+
+732490 — Iron or steel; sanitary ware and parts thereof, excluding sinks, wash basins and baths
+  73249010 Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)
+  [7324909] Loại khác
+    73249091 Bộ phận của bồn rửa nhà bếp hoặc bồn tắm
+    73249093 Bộ phận của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)
+    73249099 Loại khác  [LK]
+
+- 73249010 DONG8
+    tax.73249010 [68 ký tự]: 73249010 - - Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)"
+- 7324909 TIEU_DE (phần còn lại — KHÔNG ghi điều kiện)
+    tieuDe.7324909 [17 ký tự]: 7324909 Loại khác
+- 73249091 DONG8
+    tax.73249091 [55 ký tự]: 73249091 - - - Bộ phận của bồn rửa nhà bếp hoặc bồn tắm
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của bồn rửa nhà bếp hoặc bồn tắm"
+- 73249093 DONG8
+    tax.73249093 [73 ký tự]: 73249093 - - - Bộ phận của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)
+    vế phải phủ (cổng 5): [GIỚI HẠN] "của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)"
+- 73249099 DONG8 (phần còn lại — KHÔNG ghi điều kiện)
+    tax.73249099 [24 ký tự]: 73249099 - - - Loại khác
+
+Nguồn cấp phân nhóm: wco.732490; chú giải: nhom7324.nhom, ch73.chuong, phan73.phan
