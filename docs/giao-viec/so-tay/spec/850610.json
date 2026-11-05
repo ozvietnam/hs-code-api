@@ -1,0 +1,74 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850610",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850610",
+  "dong8": {
+    "85061011": {
+      "dieuKienSo": [
+        {
+          "fact": "heDienHoa",
+          "op": "TRONG",
+          "value": [
+            "KEM_CACBON"
+          ]
+        }
+      ]
+    },
+    "85061012": {
+      "dieuKienSo": [
+        {
+          "fact": "heDienHoa",
+          "op": "TRONG",
+          "value": [
+            "KIEM"
+          ]
+        }
+      ]
+    },
+    "85061091": {
+      "dieuKienSo": [
+        {
+          "fact": "heDienHoa",
+          "op": "TRONG",
+          "value": [
+            "KEM_CACBON"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8506101": {
+      "dieuKienSo": [
+        {
+          "fact": "theTich",
+          "op": "<=",
+          "value": 300,
+          "donVi": "cm3"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8506101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8506101: \"Có thể tích bên ngoài không quá 300 cm3\" ⇒ theTich <= 300 cm3"
+    },
+    {
+      "ma": "85061011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85061011: \"Bằng kẽm-cacbon\" ⇒ heDienHoa KEM_CACBON"
+    },
+    {
+      "ma": "85061012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85061012: \"Bằng kiềm\" ⇒ heDienHoa KIEM"
+    },
+    {
+      "ma": "85061091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85061091: \"Bằng kẽm-cacbon\" ⇒ heDienHoa KEM_CACBON"
+    }
+  ]
+}

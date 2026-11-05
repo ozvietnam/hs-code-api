@@ -1,0 +1,154 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "840820",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840820",
+  "dong8": {
+    "84082010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8701.10"
+        }
+      ]
+    },
+    "84082021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84082022": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84082023": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84082093": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8701.10"
+        }
+      ]
+    },
+    "84082094": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84082095": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "84082096": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "840820~r12920": {
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "840820~r12920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.840820~r12920: \"Đã lắp ráp hoàn chỉnh\" ⇒ laBoPhan KHONG (hoàn chỉnh)"
+    },
+    {
+      "ma": "84082010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082010: \"Dùng cho xe thuộc phân nhóm 8701.10\" ⇒ dungCho \"8701.10\""
+    },
+    {
+      "ma": "84082021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082021: \"Dung tích xi lanh không quá 2.000 cc\" ⇒ dungTichXiLanh <= 2000 cc"
+    },
+    {
+      "ma": "84082022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082022: \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 3500 cc"
+    },
+    {
+      "ma": "84082023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082023: \"Dung tích xi lanh trên 3.500 cc\" ⇒ dungTichXiLanh > 3500 cc"
+    },
+    {
+      "ma": "84082093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082093: \"Dùng cho xe thuộc phân nhóm 8701.10\" ⇒ dungCho \"8701.10\""
+    },
+    {
+      "ma": "84082094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082094: \"Dung tích xi lanh không quá 2.000 cc\" ⇒ dungTichXiLanh <= 2000 cc"
+    },
+    {
+      "ma": "84082095",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082095: \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 3500 cc"
+    },
+    {
+      "ma": "84082096",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84082096: \"Dung tích xi lanh trên 3.500 cc\" ⇒ dungTichXiLanh > 3500 cc"
+    }
+  ]
+}

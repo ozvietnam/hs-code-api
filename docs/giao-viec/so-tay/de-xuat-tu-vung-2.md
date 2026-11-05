@@ -78,3 +78,23 @@ dưới dạng sóng vô tuyến" — định ngữ chung của hai danh từ (E
   Lý do: 8481.80.30 "các bếp nấu hoặc bếp có lò nướng bằng ga" — "bằng ga" là định ngữ CHUNG của hai danh từ (EN "gas stoves or
   ranges"); khoá @1 `nguonNangLuong` (pin / điện lưới / quang điện) giữ nguyên.
 Cả hai mang `nguonLoai` AI_DA_KIEM, nằm trong `chamDuyetDocLap.khoaChuaCham`.
+
+
+## Bổ sung lát 2 (02/11/2026) — `phuongPhapIn`, `tinhDanHoi`, `loaiSoiDet`, `doDay`
+
+Đã thêm vào `tu-vung@2` (`tu-vung@1` không đổi — khoá bench; siêu tập giữ nguyên) theo đề xuất
+`docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md` (bảng quét + mục "Bổ sung từ studio-loop", GĐ duyệt):
+- `phuongPhapIn` LIET_KE `BATIK` ("in bằng phương pháp batik truyền thống", "in batik", "nhuộm sáp"; EN batik, wax-resist; ZH 蜡染)
+  | `IN_LUOI` (in lưới/in lụa; EN screen printed; ZH 丝网印) | `IN_KY_THUAT_SO` (EN digital/inkjet printed; ZH 数码印花)
+  | `IN_CHUYEN_NHIET` (in chuyển nhiệt/thăng hoa; EN heat-transfer, sublimation; ZH 热转印). Không đọc "đã in"/"printed" trần
+  (600634 "Đã in" là trạng thái). Lý do: 5208.59.10, 6204.42.10/.32.10/.19.11/.49.10 "Được in bằng phương pháp batik truyền thống
+  (SEN)". Thay đề xuất `phuongPhapCheTao: IN_BATIK` (in là hoàn tất vải, không phải chế tạo hàng).
+- `tinhDanHoi` CO_KHONG — "đàn hồi", "sợi đàn hồi", "sợi cao su", spandex/elastane/lycra; EN elastic, elastomeric yarn, rubber
+  thread; ZH 弹性, 橡胶线, 氨纶; cachDocKhong non-elastic/无弹性. Lý do: 6006.x.10 "Đàn hồi (kết hợp với sợi cao su)", 6001.92.30
+  "Chứa sợi đàn hồi hoặc sợi cao su" — trục CHỨA, không phải chatLieu BẰNG (thay `loaiXoPha: SOI_DAN_HOI_HOAC_CAO_SU`).
+- `loaiSoiDet` LIET_KE `BONG` | `SOI_THUC_VAT_KHAC` (đay, lanh, gai, xơ dừa… nhóm 53.05) | `LEN_LONG_DONG_VAT_MIN` | `TO_TAM`
+  | `SOI_TONG_HOP` | `SOI_TAI_TAO` — gộp `loaiXoPha` + `loaiSoiDet`. "Từ X" ở chương 50–63 là vật liệu chiếm trội (Chú giải 2
+  Phần XI): hàng pha đọc hai giá trị ⇒ CHUA_BIET + ungVien. Lý do: 6306.29.10/.19.20/.40.10 "Từ bông", 6306.19.10, 5515.99.10.
+- `doDay` SO (hệ dài, mm, cần ngữ cảnh "dày/thickness/厚") — 7308.30.10 "Cửa ra vào, có độ dày từ 6 mm đến 8 mm"; độ dày theo
+  tỉ lệ vẫn là `tiLe`.
+Cả bốn mang `nguonLoai` AI_DA_KIEM, nằm trong `chamDuyetDocLap.khoaChuaCham`. Test: `scripts/test-tu-vung-2.mjs` mục 4–5.
