@@ -1,0 +1,118 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "300410",
+  "nhom": "3004",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T0845#soan-300410",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "3004101",
+      "nguon": "tieuDe.3004101",
+      "trich": "3004101 Chứa penicillins hoặc các dẫn xuất của chúng",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "30041015",
+      "nguon": "tax.30041015",
+      "trich": "30041015 - - - Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "penicillin G",
+            "phenoxymethyl penicillin"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "penicillin G benzathin",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30041016",
+      "nguon": "tax.30041016",
+      "trich": "30041016 - - - Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "ampicillin",
+            "amoxycillin"
+          ]
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30041019",
+      "nguon": "tax.30041019",
+      "trich": "30041019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30041020",
+      "nguon": "tax.30041020",
+      "trich": "30041020 - - Chứa các streptomycin hoặc các dẫn xuất của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "streptomycin"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "3004101",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chuaPenicillin (CO_KHONG: chứa penicillin hoặc dẫn xuất của penicillin)",
+      "ghiChu": "tieuDe.3004101 \"Chứa penicillins hoặc các dẫn xuất của chúng\" — đây là LỚP hoạt chất, không phải tên một hoạt chất: các dòng con nêu tên riêng (\"penicillin G\", \"phenoxymethyl penicillin\" ở .15; \"ampicillin\", \"amoxycillin\" ở .16) mà tên ấy KHÔNG chứa chữ \"penicillin\" (ampicillin/amoxycillin) nên điều kiện tenLoai \"penicillin(s)\" không phủ được dòng con ⇒ cổng 1 báo lỗ hổng. Cần khoá CO_KHONG cho lớp penicillin (đọc được chữ \"Chứa penicillins\") để áp cho cả .15 và .16. Để trống dieuKienSo của mục theo luật THIEU_KHOA_TU_VUNG."
+    },
+    {
+      "ma": "30041015",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30041015 \"Chứa penicillin G (trừ penicillin G benzathin), phenoxymethyl penicillin hoặc muối của chúng\" — 2 hoạt chất nối phẩy ⇒ tenLoai MẢNG; ngoặc \"(trừ penicillin G benzathin)\" là vế LOẠI TRỪ ⇒ ghi tenLoai PHAI_KHONG \"penicillin G benzathin\" (không dùng chatLieu vì không phải vật liệu). Vế \"hoặc muối của chúng\" không có khoá ⇒ điều kiện hẹp hơn chữ một bước."
+    },
+    {
+      "ma": "30041016",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30041016 \"Chứa ampicillin, amoxycillin hoặc muối của chúng, dạng uống (*)\" — 2 hoạt chất nối phẩy ⇒ tenLoai MẢNG; dạng uống ⇒ dangBaoCheThuoc DANG_UONG; vế \"hoặc muối của chúng\" không có khoá."
+    },
+    {
+      "ma": "30041019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30041019 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "30041020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30041020 \"Chứa các streptomycin hoặc các dẫn xuất của chúng\" — đặt tên hoạt chất \"streptomycin\"; vế dẫn xuất không có khoá."
+    }
+  ]
+}

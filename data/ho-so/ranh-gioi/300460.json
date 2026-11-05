@@ -1,0 +1,71 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "300460",
+  "nhom": "3004",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T0845#soan-300460",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "30046010",
+      "nguon": "tax.30046010",
+      "trich": "30046010 - - Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "artemisinin"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "30046020",
+      "nguon": "tax.30046020",
+      "trich": "30046020 - - Chứa artesunate hoặc chloroquine",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "artesunate",
+            "chloroquine"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30046090",
+      "nguon": "tax.30046090",
+      "trich": "30046090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "30046010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30046010 \"Chứa artemisinin kết hợp với các thành phần có hoạt tính dược khác\" — đặt tên hoạt chất \"artemisinin\" (vế \"kết hợp với các thành phần có hoạt tính dược khác\" không có khoá tu-vung@2) ⇒ điều kiện hẹp hơn chữ một bước. Chữ \"khác\" ở đây nằm trong \"các thành phần ... khác\" (thành phần khác), KHÔNG phải phần còn lại của dòng ⇒ không khai phanConLai. Khai \"phanConLai\": false — chữ \"khác\" ở đây thuộc vế \"các thành phần ... khác\" (thành phần dược khác), không trỏ anh em đứng trước, nên dòng không phải phần còn lại."
+    },
+    {
+      "ma": "30046020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30046020 \"Chứa artesunate hoặc chloroquine\" — 2 hoạt chất nối \"hoặc\" ⇒ tenLoai MẢNG 2 giá trị nguyên văn."
+    },
+    {
+      "ma": "30046090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30046090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

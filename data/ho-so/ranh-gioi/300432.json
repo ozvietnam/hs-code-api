@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "300432",
+  "nhom": "3004",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T0845#soan-300432",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "30043210",
+      "nguon": "tax.30043210",
+      "trich": "30043210 - - - Chứa dexamethasone hoặc các dẫn xuất của chúng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dexamethasone"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30043240",
+      "nguon": "tax.30043240",
+      "trich": "30043240 - - - Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "hydrocortisone natri succinate",
+            "fluocinolone acetonide"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30043290",
+      "nguon": "tax.30043290",
+      "trich": "30043290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "30043210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30043210 \"Chứa dexamethasone hoặc các dẫn xuất của chúng\" (EN \"Containing dexamethasone or their derivatives\") — đặt tên hoạt chất \"dexamethasone\"; vế \"hoặc các dẫn xuất của chúng\" không có khoá tu-vung@2 ⇒ điều kiện hẹp hơn chữ một bước."
+    },
+    {
+      "ma": "30043240",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30043240 \"Chứa hydrocortisone natri succinate hoặc fluocinolone acetonide\" — hai hoạt chất nối \"hoặc\" ⇒ tenLoai ghi MẢNG 2 giá trị nguyên văn (không gói một chuỗi)."
+    },
+    {
+      "ma": "30043290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30043290 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}
