@@ -1,0 +1,101 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "851230",
+  "nhom": "8512",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "DUYET",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261102T1652#soan-851230",
+    "ngay": "2026-11-02"
+  },
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx-soat#soat-851230",
+    "ngay": "2026-11-02",
+    "ghiChu": "soát L1-4c: 3 dòng có tên: .10 Còi + \"đã lắp ráp\", .20 Thiết bị tín hiệu âm thanh + \"chưa lắp ráp\" (định ngữ riêng cùng khoá = VÀ, đúng chữ), .91 tenLoai + dungCho \"xe\"; (cảnh báo) là ngoặc chú thích; không bịa, không BO_VE/DE_TRONG. Tiền lệ 701/TB-TCHQ (tinh thể áp điện đã lắp ráp làm bộ phận còi ⇒ 8512.30.99): so chữ tự do .10 có thể THOẢ sai cho bộ phận còi — không tất định nên không tự chốt; ghi để L1-4b xem bảng hiệu chỉnh.",
+    "bam": "2613645c5604d687dab189050e109d90646fc401ba960573df9de89c35e5c399"
+  },
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85123010",
+      "nguon": "tax.85123010",
+      "trich": "85123010 - - Còi, đã lắp ráp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Còi"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đã lắp ráp"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85123020",
+      "nguon": "tax.85123020",
+      "trich": "85123020 - - Thiết bị tín hiệu âm thanh chưa lắp ráp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị tín hiệu âm thanh"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chưa lắp ráp"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85123091",
+      "nguon": "tax.85123091",
+      "trich": "85123091 - - - Thiết bị dò chướng ngại vật (cảnh báo) cho xe",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị dò chướng ngại vật"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe"
+        }
+      ],
+      "nguonLoai": "CLAUDE_DUYET"
+    },
+    {
+      "hs": "85123099",
+      "nguon": "tax.85123099",
+      "trich": "85123099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "CLAUDE_DUYET"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85123010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85123010 \"Còi, đã lắp ráp\" (EN \"Horns and sirens, assembled\") ⇒ tenLoai \"Còi\" (danh từ đầu) + tenLoai \"đã lắp ráp\" (vế giới hạn trạng thái, điều kiện riêng cùng khoá = VÀ; EN \"assembled\" là định ngữ chung của liên hợp, tiếng Việt gộp còn một tên \"Còi\")."
+    },
+    {
+      "ma": "85123020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85123020 \"Thiết bị tín hiệu âm thanh chưa lắp ráp\" (EN \"Unassembled sound signalling equipment\") ⇒ tenLoai \"Thiết bị tín hiệu âm thanh\" + tenLoai \"chưa lắp ráp\" (định ngữ \"Unassembled\" đứng trước, chung cho cả cụm — thiết bị ĐÃ lắp ráp thuộc 8512309)."
+    },
+    {
+      "ma": "85123091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85123091 \"Thiết bị dò chướng ngại vật (cảnh báo) cho xe\" (EN \"Obstacle detection (warning) devices for vehicles\") ⇒ tenLoai \"Thiết bị dò chướng ngại vật\" + dungCho \"xe\" (vế \"cho xe\" = EN \"for vehicles\"). \"(cảnh báo)\" / \"(warning)\" là ngoặc chú thích ⇒ không thành điều kiện (QUY-TRINH 3.8)."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "390330",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-390330",
+  "dong8": {
+    "39033040": {
+      "dieuKienSo": [
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "PHAN_TAN"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "nước"
+        }
+      ]
+    },
+    "39033050": {
+      "dieuKienSo": [
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "PHAN_TAN"
+          ]
+        },
+        {
+          "chieu": "PHAI_KHONG",
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "nước"
+        }
+      ]
+    },
+    "39033060": {
+      "dieuKienSo": [
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "HAT_VIEN_VAY_MANH"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "39033040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39033040 \"Dạng phân tán trong môi trường nước\" ⇒ dangNguyenSinh TRONG [PHAN_TAN], congDung \"nước\""
+    },
+    {
+      "ma": "39033050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39033050 \"Dạng phân tán trong môi trường không chứa nước\" ⇒ dangNguyenSinh TRONG [PHAN_TAN], congDung PHAI_KHONG \"nước\""
+    },
+    {
+      "ma": "39033060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39033060 \"Dạng hạt\" ⇒ dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH]"
+    }
+  ]
+}
