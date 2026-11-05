@@ -1,0 +1,55 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "420222",
+  "nhom": "4202",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1705#soan-420222",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "42022210",
+      "nguon": "tax.42022210",
+      "trich": "42022210 - - - Mặt ngoài bằng tấm plastic",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tấm plastic"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "42022220",
+      "nguon": "tax.42022220",
+      "trich": "42022220 - - - Mặt ngoài bằng vật liệu dệt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vật liệu dệt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "42022210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.42022210 \"Mặt ngoài bằng tấm plastic\" (EN \"With outer surface of sheeting of plastics\") ⇒ tenLoai \"tấm plastic\". Dùng tenLoai chứ không dùng chatLieu \"plastic\": tầng gốc 420222 không có con \"Loại khác\" nên cổng 1 đòi mọi vector vật liệu rơi vào một con — vector \"chatLieu=cao su\" (vật liệu khác) sẽ không rơi vào con nào (lỗi cong1-khong-phu-kin); với tenLoai thì vector \"tên ngoài danh sách\" bị bỏ ở tầng gốc (đúng nghĩa: túi mặt ngoài vật liệu khác không thuộc phân nhóm này). Mẫu 39189013 \"bằng polyetylen\" ⇒ tenLoai \"polyetylen\"."
+    },
+    {
+      "ma": "42022220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.42022220 \"Mặt ngoài bằng vật liệu dệt\" (EN \"With outer surface of textile materials\") ⇒ tenLoai \"vật liệu dệt\" (cùng lý do như .10: không dùng chatLieu \"vải dệt\" vì tầng gốc không có con \"Loại khác\")."
+    }
+  ]
+}

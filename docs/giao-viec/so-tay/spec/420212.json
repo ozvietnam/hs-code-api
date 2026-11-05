@@ -1,0 +1,67 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "420212",
+  "phien": "mm:minimax-m3:20261105T1705#soan-420212",
+  "dong8": {
+    "42021211": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sợi lưu hóa"
+        }
+      ]
+    },
+    "42021291": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sợi lưu hóa"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4202121": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Túi",
+            "cặp đeo vai"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "học sinh"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "4202121",
+      "loai": "BO_VE",
+      "ve": "đeo vai",
+      "lyDo": "Máy đọc sai cấu trúc: chữ Anh cùng dòng \"School satchels\" là MỘT danh từ (không liên hợp), còn chữ Việt \"Túi, cặp đeo vai cho học sinh\" là một tên hàng duy nhất và \"đeo vai\" là định ngữ áp cho CẢ hai danh từ đầu (\"Túi\" và \"cặp\" đều đeo vai). Bộ tách vế đọc \"đeo vai\" là định ngữ CHỈ của danh từ cuối nên báo cong5-dinh-ngu-tach; điều kiện vẫn ghi đủ tên \"Túi, cặp đeo vai\" + dungCho \"học sinh\"."
+    },
+    {
+      "ma": "4202121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4202121 \"Túi, cặp đeo vai cho học sinh\" ⇒ tenLoai [\"Túi\",\"cặp đeo vai\"] + dungCho \"học sinh\" phủ vế [GIỚI HẠN] \"cho học sinh\"."
+    },
+    {
+      "ma": "42021211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.42021211 \"Mặt ngoài bằng sợi lưu hóa(SEN)\" ⇒ tenLoai \"sợi lưu hóa\" (mẫu 39189016 \"Từ sợi lưu hóa\" ⇒ tenLoai \"sợi lưu hóa\"; chatLieu không có giá trị \"sợi lưu hóa\" nên không mượn khoá gần nghĩa). Cụm \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật, không phải điều kiện. Dòng .19 \"Loại khác (SEN)\" trần ⇒ không điều kiện."
+    },
+    {
+      "ma": "42021291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.42021291 \"Mặt ngoài bằng sợi lưu hóa\" ⇒ tenLoai \"sợi lưu hóa\" (cùng cách với .11). Tiêu đề 4202129 \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}
