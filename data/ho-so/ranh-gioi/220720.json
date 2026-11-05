@@ -1,0 +1,81 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "220720",
+  "nhom": "2207",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1628#soan-220720",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "2207201",
+      "nguon": "tieuDe.2207201",
+      "trich": "2207201 Cồn etylic đã biến tính, kể cả rượu mạnh đã methyl hoá",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cồn etylic đã biến tính"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "22072011",
+      "nguon": "tax.22072011",
+      "trich": "22072011 - - - Cồn etylic có nồng độ trên 99% tính theo thể tích",
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 99,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22072019",
+      "nguon": "tax.22072019",
+      "trich": "22072019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22072090",
+      "nguon": "tax.22072090",
+      "trich": "22072090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "22072011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22072011 \"Cồn etylic có nồng độ trên 99% tính theo thể tích\" ⇒ nongDoCon > 99 (đơn vị %) — đã đối chiếu tay: 'trên 99%' = op > giá trị 99, đúng chữ; cảnh báo cong3-bien-khong-doc-duoc chỉ là máy không đọc lại được biên từ chữ nguồn"
+    },
+    {
+      "ma": "2207201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2207201 \"Cồn etylic đã biến tính, kể cả rượu mạnh đã methyl hoá\" — \"kể cả rượu mạnh đã methyl hoá\" là vế PHU (bao gồm) ⇒ chỉ giữ tên đầu tenLoai \"Cồn etylic đã biến tính\""
+    },
+    {
+      "ma": "22072019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22072019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "22072090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22072090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

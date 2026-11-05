@@ -1,0 +1,23 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "220210",
+  "phien": "zcode-sub:glm-5.3:20261105T1610#soan-220210",
+  "dong8": {
+    "22021020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nước tăng lực" }
+      ]
+    },
+    "22021030": {
+      "phanConLai": true,
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Nước khoáng xô đa", "nước có ga"] }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "22021020", "loai": "QUYET_DINH", "ghiChu": "tax.22021020 \"Nước tăng lực có hoặc không có ga(SEN)\" — \"có hoặc không có ga\" là vế 'có hoặc không' (PHU); tên đầu ⇒ tenLoai \"Nước tăng lực\"" },
+    { "ma": "22021030", "loai": "QUYET_DINH", "ghiChu": "tax.22021030 \"Nước khoáng xô đa hoặc nước có ga, loại khác, có hương liệu\" — \"loại khác\" là phần còn lại có tên (khác Nước tăng lực) ⇒ phanConLai: true; tên hai hàng nối \"hoặc\" ⇒ mảng nguyên văn" },
+    { "ma": "22021030", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "coHuongLieu", "ghiChu": "tax.22021030 \"… loại khác, có hương liệu\" — vế \"có hương liệu\" phân biệt với 22021090 \"Loại khác\" (nước đã pha đường nhưng không hương liệu); tu-vung@2 không có khoá đọc \"có hương liệu\" (daPhaHuongLieuHoacChatMau chỉ đọc \"đã pha thêm hương liệu…\", mượn là sai); bỏ vế làm đổi mã 8 số" }
+  ]
+}
