@@ -1,0 +1,109 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "190120",
+  "nhom": "1901",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-190120",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "19012010",
+      "nguon": "tax.19012010",
+      "trich": "19012010 - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bột",
+            "tấm",
+            "bột thô",
+            "tinh bột",
+            "chiết xuất malt"
+          ]
+        },
+        {
+          "fact": "chuaCaCao",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19012020",
+      "nguon": "tax.19012020",
+      "trich": "19012020 - - Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bột",
+            "tấm",
+            "bột thô",
+            "tinh bột",
+            "chiết xuất malt"
+          ]
+        },
+        {
+          "fact": "chuaCaCao",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19012030",
+      "nguon": "tax.19012030",
+      "trich": "19012030 - - Loại khác, không chứa ca cao",
+      "dieuKienSo": [
+        {
+          "fact": "chuaCaCao",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19012040",
+      "nguon": "tax.19012040",
+      "trich": "19012040 - - Loại khác, chứa ca cao",
+      "dieuKienSo": [
+        {
+          "fact": "chuaCaCao",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "19012010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19012010 \"Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, không chứa ca cao\" ⇒ dungCho mảng nguyên liệu, chuaCaCao KHONG"
+    },
+    {
+      "ma": "19012020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19012020 \"Từ bột, tấm, bột thô, tinh bột hoặc chiết xuất malt, chứa ca cao\" ⇒ dungCho mảng nguyên liệu, chuaCaCao CO"
+    },
+    {
+      "ma": "19012030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19012030 \"Loại khác, không chứa ca cao\" ⇒ chuaCaCao KHONG"
+    },
+    {
+      "ma": "19012040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19012040 \"Loại khác, chứa ca cao\" ⇒ chuaCaCao CO"
+    }
+  ]
+}
