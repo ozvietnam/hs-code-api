@@ -1,0 +1,83 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "320890",
+  "phien": "mm:minimax-m3:20261105T1547#soan-320890",
+  "dong8": {
+    "32089011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nha khoa"
+        },
+        {
+          "fact": "dungTrongNhaKhoa",
+          "op": "CO"
+        }
+      ]
+    },
+    "32089021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nha khoa"
+        },
+        {
+          "fact": "dungTrongNhaKhoa",
+          "op": "CO"
+        }
+      ]
+    },
+    "32089030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "vỏ tàu thủy"
+        },
+        {
+          "fact": "sonChongHaHoacChongAnMonVoTau",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "3208901": {
+      "dieuKienSo": []
+    },
+    "3208902": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "3208901",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "nhietDoChiuNhiet",
+      "ghiChu": "tieuDe.3208901 \"Vecni (kể cả dầu bóng), loại chịu được nhiệt trên 100°C\" (EN \"Varnishes (including lacquers), exceeding 100 oC heat resistance:\") — vế GIỚI HẠN \"được nhiệt trên 100°C\" cần khoá nhiệt độ chịu nhiệt (đơn vị °C, biên >); tu-vung@2 chưa có khoá nhiệt độ ⇒ để trống dieuKienSo, không mượn khoá số khác đơn vị."
+    },
+    {
+      "ma": "3208902",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "nhietDoChiuNhiet",
+      "ghiChu": "tieuDe.3208902 \"Vecni (kể cả dầu bóng), loại chịu nhiệt không quá 100°C\" (EN \"Varnishes (including lacquers), not exceeding 100 oC heat resistance:\") — cần khoá nhiệt độ chịu nhiệt (đơn vị °C, biên <=); tu-vung@2 chưa có khoá nhiệt độ ⇒ để trống dieuKienSo. Hai tiêu đề 3208901/3208902 chỉ khác nhau ở ngưỡng nhiệt nên khi thiếu khoá này hai nhánh .11 và .21 không phân biệt được."
+    },
+    {
+      "ma": "32089011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32089011 \"Dùng trong nha khoa (SEN)\" (EN \"Of a kind used in dentistry\") ⇒ dungCho CONG_DUNG \"nha khoa\" + dungTrongNhaKhoa CO."
+    },
+    {
+      "ma": "32089021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32089021 \"Dùng trong nha khoa (SEN)\" (EN \"Of a kind used in dentistry\") ⇒ dungCho CONG_DUNG \"nha khoa\" + dungTrongNhaKhoa CO."
+    },
+    {
+      "ma": "32089030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32089030 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") ⇒ dungCho CONG_DUNG \"vỏ tàu thủy\" + sonChongHaHoacChongAnMonVoTau CO."
+    }
+  ]
+}

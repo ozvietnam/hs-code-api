@@ -25,8 +25,50 @@ const coTrong = (r, text) => typeof r?.bangChung === 'string' && r.bangChung.len
 const CJK = /[㐀-鿿]/u;
 const clone = (x) => JSON.parse(JSON.stringify(x));
 // 7 khoá #570 + phuongThucTruyenDan (#606 — 851762 "truyền dẫn dưới dạng sóng vô tuyến", định ngữ chung của điện báo/điện thoại)
-// + daXuLyBeMat, nhienLieu (#577 — 848180 .97 "đã được xử lý bề mặt", .30 "bếp nấu hoặc bếp có lò nướng bằng ga").
-const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNapChuongTrinh: 'CO_KHONG', soLoi: 'SO', soSoi: 'SO', tiLe: 'SO', phuongPhapCheTao: 'LIET_KE', phuongThucTruyenDan: 'LIET_KE', daXuLyBeMat: 'CO_KHONG', nhienLieu: 'LIET_KE' };
+// + daXuLyBeMat, nhienLieu (#577 — 848180 .97 "đã được xử lý bề mặt", .30 "bếp nấu hoặc bếp có lò nướng bằng ga")
+// + 4 khoá lát 2 (02/11, de-xuat-khoa-lat-2.md quét + studio-loop, GĐ duyệt): phuongPhapIn (5208.59.10/6204 "in batik truyền thống"),
+//   tinhDanHoi (6006.x.10 "Đàn hồi (kết hợp với sợi cao su)", 6001.92.30), loaiSoiDet (6306 "Từ bông", 5515.99.10), doDay (7308.30.10).
+const KHOA_MOI = { chiHoacChuYeu: 'CO_KHONG', thietKeChoTreEm: 'CO_KHONG', daNapChuongTrinh: 'CO_KHONG', soLoi: 'SO', soSoi: 'SO', tiLe: 'SO', phuongPhapCheTao: 'LIET_KE', phuongThucTruyenDan: 'LIET_KE', daXuLyBeMat: 'CO_KHONG', nhienLieu: 'LIET_KE', phuongPhapIn: 'LIET_KE', tinhDanHoi: 'CO_KHONG', loaiSoiDet: 'LIET_KE', doDay: 'SO',
+  // + 10 khoá lô 2 (02/11, Studio soạn, máy kiểm): 848xxx/850xxx/39xx DỪNG THIEU_KHOA_TU_VUNG
+  congSuatBieuKien: 'SO', dungTich: 'SO', theTich: 'SO', sanLuongHoi: 'SO', dungLuong: 'SO', dangNguyenSinh: 'LIET_KE', heDienHoa: 'LIET_KE', daLapRap: 'CO_KHONG', daHoaDeo: 'CO_KHONG', coBoLoc: 'CO_KHONG',
+  // + 9 khoá lô 3 (03/11, Studio soạn, máy kiểm): thép ch.72/73 DỪNG THIEU_KHOA_TU_VUNG
+  hamLuongCarbon: 'SO', gioiHanChay: 'SO', chieuRong: 'SO', khaNangChiuApLuc: 'SO', duongCheoNgoai: 'SO', coRen: 'CO_KHONG', doBenKeo: 'SO', hamLuongNiken: 'SO', lopMaPhu: 'LIET_KE',
+  // + 5 khoá lô 4 (03/11, Studio quét biểu thuế ch.01–30, máy kiểm): nông sản/thực phẩm/đồ uống/dược
+  dungLamGiong: 'CO_KHONG', dongBaoBiKinKhiDeBanLe: 'CO_KHONG', nongDoCon: 'SO', phuongPhapBaoQuan: 'LIET_KE', dangBaoCheThuoc: 'LIET_KE',
+  // + 5 khoá lô 5 (03/11, vòng 2 cùng phiên Studio): dầu mỡ ch.15, xăng 2710, hạt rang, thịt tách xương cơ học
+  mucDoTinhCheDau: 'LIET_KE', chiSoIot: 'SO', triSoOctan: 'SO', daRang: 'CO_KHONG', tachXuongCoHoc: 'CO_KHONG',
+  // + 6 khoá lô 6 (03/11, Studio quét biểu thuế, máy kiểm): ch.31–38, 40–49 (hoá chất, giấy, gỗ, cao su, da)
+  dinhLuong: 'SO', mucDoGiaCongGo: 'LIET_KE', dangBinhXit: 'CO_KHONG', nhieuLop: 'CO_KHONG', daIn: 'CO_KHONG', duongKinhVanh: 'SO',
+  // + 5 khoá lô 7 (03/11, Studio quét biểu thuế, máy kiểm): ch.50–71 (dệt may, giày dép, gốm, thuỷ tinh)
+  daTrangMen: 'CO_KHONG', tinhNangBaoHo: 'LIET_KE', daTrangPhuEpLop: 'CO_KHONG', loaiMuiBaoVe: 'LIET_KE', thuyTinhQuangHoc: 'CO_KHONG',
+  // + 5 khoá lô 8 (03/11, Studio quét biểu thuế, máy kiểm): ch.74–83, 86, 88–97 (kim loại màu, tàu thuyền, quang học, vũ khí, y tế)
+  tongDungTichTau: 'SO', dangCuon: 'CO_KHONG', coNong: 'SO', ngamQuaThauKinhSLR: 'CO_KHONG', dungMotLan: 'CO_KHONG',
+  // + 8 khoá lô 9 — vòng quét sót (03/11, Studio quét biểu thuế, máy kiểm): chat mới, Gemini đọc lại toàn bộ 4.165 dòng các chương đã quét; xử lý 13 tiêu chí khongChac lô 6–8 (4 GHÉP: dangHinhHocGiay→dangCuon, coChucNangKhuMui→congDung, luongGianNuoc→khoiLuong, troChoiMayRuiCoThuong→congDung; 6 BỎ: tiLeDauKhoang, doTruongNoBloom, doManhSoi, apSuatHoatDong, hinhDangMatCatNgang, cauTrucLopBotKimLoai; 3 SOẠN) + 5 khoá từ pn6Sot ≥3 PN6
+  tinhTrangTayTrang: 'LIET_KE', hinhDangCatGocKinh: 'CO_KHONG', kieuDet: 'LIET_KE', daPhaThemDuongHoacRuou: 'CO_KHONG', soiDun: 'CO_KHONG', coMauTruTrang: 'CO_KHONG', dongGoiBanLe: 'CO_KHONG', dangLong: 'CO_KHONG',
+  // + 1 khoá 03/11: quét toàn biểu thuế (#999) — nhóm lốp 4011 chỉ cần chieuRong (đã có) + duongKinhVanh (lô 6)
+  tocDo: 'SO',
+  // + laPhanDoan (03/11, tách từ mucDoTinhCheDau.PHAN_DOAN khi sửa đọc, #1001)
+  laPhanDoan: 'CO_KHONG',
+  // + 3 khoá lô 10 — gói ✗ máy ch.86–89 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 353 dòng máy chưa đọc + dòng ✓ cùng PN6 (quét sót máy #1001); trích 12/12 đúng biểu thật
+  bonBanhChuDong: 'CO_KHONG', xeBaBanh: 'CO_KHONG', khoiLuongToanBo: 'SO',
+  // + 3 khoá lô 10b — gói ✗ máy ch.86–89, vòng 2 (03/11, Studio quét biểu thuế, máy kiểm): Studio xét lại dòng ✗ lặp ≥5 PN6 bị bỏ ở vòng 1: kiểu xe chở người/chở hàng là tập giá trị, không phải tên hàng; trích 20/20 đúng biểu thật
+  kieuXeChoNguoi: 'LIET_KE', kieuXeChoHang: 'LIET_KE', mayKeoNongNghiep: 'CO_KHONG',
+  // + 6 khoá lô 11 — gói ✗ máy ch.84 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 177 dòng máy chưa đọc ch.84; trích 25/25 đúng; dieuKhienSo tách từ đề xuất boSung vào cachDieuKhien (@1)
+  loaiBoPhanDongCoPiston: 'LIET_KE', dungTrongNongNghiep: 'CO_KHONG', canDienTu: 'CO_KHONG', mayRenKhuonHoacDapKhuon: 'CO_KHONG', dungTrongYTeHoacThiNghiem: 'CO_KHONG', dieuKhienSo: 'CO_KHONG',
+  // + 6 khoá lô 12 — gói ✗ máy ch.85 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 141 dòng máy chưa đọc ch.85; trích 28/28 đúng
+  dungChoXeCoDongCo: 'CO_KHONG', bienApThichUng: 'CO_KHONG', loaiXachTay: 'CO_KHONG', laMayPhatDien: 'CO_KHONG', loaiBienDoiTinhDien: 'LIET_KE', loaiThietBiBaoDong: 'LIET_KE',
+  // + 11 khoá lô 13 — gói ✗ máy ch.31–49 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 308 dòng máy chưa đọc ch.31–49; trích 38/39 đúng (1 lệch khoảng trắng)
+  dangTamPhienMang: 'LIET_KE', tamPhuSan: 'CO_KHONG', dangChePhamDietMuoi: 'LIET_KE', loaiHangDanLat: 'LIET_KE', ongHutXaBunKhaiThacMo: 'CO_KHONG', dungChoDienAnh: 'CO_KHONG', sonChongHaHoacChongAnMonVoTau: 'CO_KHONG', tamMiengGhepLatNenOpTuong: 'CO_KHONG', dungTrongNhaKhoa: 'CO_KHONG', dayTetBen: 'CO_KHONG', loaiCung: 'CO_KHONG',
+  // + 6 khoá lô 14 — gói ✗ máy ch.01–15 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 252 dòng máy chưa đọc ch.01–15; trích 25/25 đúng; + giá trị BAO_QUAN_BANG_KHI_SUNPHURO vào phuongPhapBaoQuan
+  boPhanThitGiaCam: 'LIET_KE', thichHopDungChoNguoi: 'CO_KHONG', caBot: 'CO_KHONG', laChe: 'CO_KHONG', daXay: 'CO_KHONG', soCheTom: 'LIET_KE',
+  // + 7 khoá lô 15 — gói ✗ máy ch.16–30 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 273 dòng máy chưa đọc ch.16–30; trích 29/29 đúng; + 2 giá trị dangBaoCheThuoc
+  loaiThuocLaNguyenLieu: 'LIET_KE', phaCheVoiEthanol: 'CO_KHONG', daPhaHuongLieuHoacChatMau: 'CO_KHONG', sanPhamDinhDuongYTe: 'CO_KHONG', dangKhoiHoacTamDa: 'LIET_KE', loaiMiBunMien: 'LIET_KE', chuaCaCao: 'CO_KHONG',
+  // + 11 khoá lô 16 — gói ✗ máy ch.50–71 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 163 dòng máy chưa đọc ch.50–71; trích 19/19 đúng; + giá trị gộp tinhNangBaoHo
+  thamCauNguyen: 'CO_KHONG', quanAoDauKiemDauVat: 'CO_KHONG', loaiSanPhamXiMangSoi: 'LIET_KE', tamLatGachLat: 'CO_KHONG', donNgucSauPhauThuat: 'CO_KHONG', boPhanGiayDep: 'LIET_KE', dungSanXuatOngChanKhong: 'CO_KHONG', aoBarongTagalog: 'CO_KHONG', sarongHinhOng: 'CO_KHONG', aoChoangHanhHuongIhram: 'CO_KHONG', giayDauVatCuTa: 'CO_KHONG',
+  // + 11 khoá lô 17 — gói ✗ máy ch.72–83 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 157 dòng máy chưa đọc ch.72–83; trích 23/23 đúng; + lopMaPhu.SON_SAU_MA_KEM
+  dangDaiDaiTamPhoDung: 'LIET_KE', dangLuonSong: 'CO_KHONG', loaiDoDungGiaDinhSatThep: 'LIET_KE', xichXeDapMoTo: 'CO_KHONG', phuongPhapHanOngThep: 'LIET_KE', hopDungThuocLaDieu: 'CO_KHONG', banLeMocKhoaHasps: 'CO_KHONG', chuaGiaCongQuaMucCanNong: 'CO_KHONG', hamLuongCrom: 'SO', phoiDetDangPhien: 'CO_KHONG', ongVaPhuKienKimLoaiMau: 'CO_KHONG',
+  // + 6 khoá lô 18 — gói ✗ máy ch.90–98 (03/11, Studio quét biểu thuế, máy kiểm): Studio đọc 266 dòng máy chưa đọc ch.90–98; trích 7/7 đúng; + mẫu dungChoXeCoDongCo (ch.98)
+  loaiDoChoi: 'LIET_KE', kieuChieuSangDen: 'LIET_KE', tuHutHoiDoc: 'CO_KHONG', denChoPhongMo: 'CO_KHONG', hopDungThuocLaTrangTri: 'CO_KHONG', loaiNoiThatYTe: 'LIET_KE' };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────
 const tv1 = T.taiTuVung('tu-vung@1');
@@ -90,6 +132,28 @@ for (const [khoa, kieu] of Object.entries(KHOA_MOI)) {
   let vi = null; let zh = null; try { vi = T.cauHoiCho(khoa, 'vi'); zh = T.cauHoiCho(khoa, 'zh'); } catch { /* đỏ ở dưới */ }
   check(`${khoa}: câu hỏi Vi + Zh (cauHoiCho)`, typeof vi === 'string' && vi.endsWith('?') && typeof zh === 'string' && CJK.test(zh) && /？$/.test(zh), { vi, zh });
   check(`${khoa}: nguonLoai AI_DA_KIEM (chưa chấm duyệt độc lập — không tự gắn CLAUDE_DUYET)`, k?.nguonLoai === 'AI_DA_KIEM', k?.nguonLoai);
+}
+// ── Khoá mới phải ĐỌC ĐƯỢC chữ biểu nó trích (03/11): mã 8 số trong ghiChu (ngoài ngoặc đơn) ⇒ docGiaTri trên dòng biểu thật = DA_CO.
+// Lô Studio 4–9 có 20/151 trích không đọc được (cửa sổ ngữ cảnh ngắn, thang không đơn vị IV/RON/GT, cụm phụ chú) — cổng máy mới bắt được.
+{
+  const zlib = require('node:zlib');
+  const tep = 'data/bieu-thue/2026.04.05/bieu-chinh.jsonl.gz';
+  const dong = new Map(zlib.gunzipSync(fs.readFileSync(tep)).toString('utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l))
+    .filter((r) => r.sheet === 'BT2026' && r.soChuSo === 8).map((r) => [r.maChuan, String(r.moTaVi).replace(/^(?:-\s*)+/, '').trim()]));
+  let soTrich = 0; const loi = [];
+  for (const khoa of Object.keys(KHOA_MOI)) {
+    const k = T.layKhoa(khoa);
+    const ngoaiNgoac = String(k.ghiChu || '').replace(/\([^)]*\)/g, ' ');
+    const ma = [...new Set((ngoaiNgoac.match(/\b\d{4}\.\d{2}\.\d{2}\b|\b\d{8}\b/g) || []).map((x) => x.replace(/\./g, '')))].filter((c) => dong.has(c));
+    for (const c of ma) {
+      const text = dong.get(c);
+      if (/^loại khác/i.test(text)) continue;
+      soTrich += 1;
+      const v = T.docGiaTri(khoa, text);
+      if (v.trangThai !== 'DA_CO') loi.push(`${khoa}:${c}:${text.slice(0, 50)}`);
+    }
+  }
+  check(`khoá mới đọc được chữ biểu nó trích trong ghiChu (${soTrich} dòng, 0 không đọc được)`, soTrich > 60 && loi.length === 0, loi);
 }
 check(`chamDuyetDocLap @2: khoá mới CHUA_CHAM, liệt kê đủ ${Object.keys(KHOA_MOI).length} khoá`, tv2.chamDuyetDocLap?.trangThai === 'CHUA_CHAM' && Object.keys(KHOA_MOI).every((k) => (tv2.chamDuyetDocLap?.khoaChuaCham || []).includes(k)), tv2.chamDuyetDocLap);
 
@@ -246,6 +310,84 @@ chuaBiet('"điều khiển bằng điện" là cách điều khiển, không ph�
   check('nhienLieu hai giá trị ⇒ ungVien [DIEN, GA]', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['DIEN', 'GA']), r);
 }
 
+// phuongPhapIn — LIET_KE BATIK | IN_LUOI | IN_KY_THUAT_SO | IN_CHUYEN_NHIET (lát 2, chữ biểu 5208.59.10, 6204.42.10…)
+la('chữ biểu 62044210 "in bằng phương pháp batik truyền thống"', 'phuongPhapIn', 'Được in bằng phương pháp batik truyền thống (SEN)', 'BATIK', { bc: 'in bằng phương pháp batik truyền thống' });
+la('"in batik"', 'phuongPhapIn', 'Vải bông dệt thoi, in batik', 'BATIK');
+la('En "batik printed"', 'phuongPhapIn', 'batik printed cotton fabric', 'BATIK');
+la('Zh "蜡染"', 'phuongPhapIn', '蜡染棉布', 'BATIK');
+la('"in lưới" ⇒ IN_LUOI', 'phuongPhapIn', 'áo thun in lưới', 'IN_LUOI');
+la('En "silk-screen printed" ⇒ IN_LUOI (không phải tơ tằm)', 'phuongPhapIn', 'silk-screen printed fabric', 'IN_LUOI');
+la('En "digital printed"', 'phuongPhapIn', 'digital printed polyester fabric', 'IN_KY_THUAT_SO');
+la('"in chuyển nhiệt"', 'phuongPhapIn', 'vải in chuyển nhiệt', 'IN_CHUYEN_NHIET');
+chuaBiet('"đã in" / "in hoa" là trạng thái in, không phải phương pháp (600634 "Đã in")', 'phuongPhapIn', 'Vải dệt kim đã in hoa');
+chuaBiet('"printed" trần không đọc', 'phuongPhapIn', 'printed fabric');
+{
+  const r = chuaBiet('hai phương pháp in — không đoán', 'phuongPhapIn', 'in batik và in kỹ thuật số');
+  check('phuongPhapIn hai giá trị ⇒ ungVien [BATIK, IN_KY_THUAT_SO]', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['BATIK', 'IN_KY_THUAT_SO']), r);
+}
+
+// tinhDanHoi — CO_KHONG (lát 2, chữ biểu 6006.43.10 "Đàn hồi (kết hợp với sợi cao su)", 6001.92.30 "Chứa sợi đàn hồi hoặc sợi cao su")
+la('chữ biểu 60064310 "Đàn hồi"', 'tinhDanHoi', 'Đàn hồi (kết hợp với sợi cao su)', true, { bc: 'Đàn hồi' });
+la('chữ biểu 60019230 "sợi đàn hồi"', 'tinhDanHoi', 'Chứa sợi đàn hồi hoặc sợi cao su', true, { bc: 'sợi đàn hồi' });
+la('"sợi cao su"', 'tinhDanHoi', 'vải dệt kim kết hợp với sợi cao su', true, { bc: 'sợi cao su' });
+la('En "elastomeric yarn"', 'tinhDanHoi', 'Containing elastomeric yarn or rubber thread', true);
+la('En "Elastic (combined with rubber threads)"', 'tinhDanHoi', 'Elastic (combined with rubber threads)', true);
+la('"spandex" là sợi đàn hồi (Chú giải 13 Phần XI)', 'tinhDanHoi', 'vải dệt kim 95% cotton 5% spandex', true, { bc: 'spandex' });
+la('Zh "弹性"', 'tinhDanHoi', '弹性针织面料 含氨纶', true);
+la('phủ định "không đàn hồi"', 'tinhDanHoi', 'vải dệt kim không đàn hồi', false, { bc: 'không đàn hồi' });
+la('En "non-elastic" (cachDocKhong)', 'tinhDanHoi', 'non-elastic knitted fabric', false);
+chuaBiet('"cao su" trần là chất liệu, không phải sợi cao su', 'tinhDanHoi', 'ống cao su lưu hoá');
+chuaBiet('không có chữ nào', 'tinhDanHoi', 'vải cotton dệt kim 100%');
+
+// loaiSoiDet — LIET_KE BONG | SOI_THUC_VAT_KHAC | LEN_LONG_DONG_VAT_MIN | TO_TAM | SOI_TONG_HOP | SOI_TAI_TAO (lát 2, 6306, 5515.99.10)
+la('chữ biểu 63062910 "Từ bông"', 'loaiSoiDet', 'Từ bông', 'BONG', { bc: 'Từ bông' });
+la('chữ biểu 63061910 "Từ sợi dệt thực vật thuộc nhóm 53.05"', 'loaiSoiDet', 'Từ sợi dệt thực vật thuộc nhóm 53.05', 'SOI_THUC_VAT_KHAC', { bc: 'sợi dệt thực vật' });
+la('chữ biểu 55159910 "lông cừu hoặc lông động vật loại mịn"', 'loaiSoiDet', 'Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn', 'LEN_LONG_DONG_VAT_MIN', { bc: 'lông cừu' });
+la('En "of cotton"', 'loaiSoiDet', 'tent of cotton', 'BONG');
+la('Zh "纯棉"', 'loaiSoiDet', '纯棉帐篷', 'BONG');
+la('"vải lanh" ⇒ sợi thực vật khác', 'loaiSoiDet', 'khăn trải bàn vải lanh', 'SOI_THUC_VAT_KHAC');
+la('"áo len lông cừu"', 'loaiSoiDet', 'áo len lông cừu', 'LEN_LONG_DONG_VAT_MIN');
+la('"tơ tằm"', 'loaiSoiDet', 'khăn lụa tơ tằm', 'TO_TAM');
+la('En "silk"', 'loaiSoiDet', 'silk scarf', 'TO_TAM');
+la('"polyester" ⇒ tổng hợp', 'loaiSoiDet', 'vải polyester 100%', 'SOI_TONG_HOP');
+la('"visco" ⇒ tái tạo', 'loaiSoiDet', 'vải visco', 'SOI_TAI_TAO');
+chuaBiet('"bông thủy tinh" không phải xơ dệt', 'loaiSoiDet', 'từ bông thủy tinh cách nhiệt');
+chuaBiet('Zh "石棉" (amiăng) không phải bông', 'loaiSoiDet', '石棉布');
+chuaBiet('"silk-screen" là in lưới, không phải tơ tằm', 'loaiSoiDet', 'silk-screen printed fabric');
+{
+  const r = chuaBiet('hàng pha hai loại xơ — không đoán (Chú giải 2 Phần XI: theo tỉ trọng)', 'loaiSoiDet', 'cotton 80% polyester 20%');
+  check('loaiSoiDet hàng pha ⇒ ungVien [BONG, SOI_TONG_HOP]', JSON.stringify((r.ungVien || []).slice().sort()) === JSON.stringify(['BONG', 'SOI_TONG_HOP']), r);
+}
+
+// doDay — SO mm, cần ngữ cảnh (lát 2, chữ biểu 7308.30.10 "Cửa ra vào, có độ dày từ 6 mm đến 8 mm")
+la('chữ biểu 73083010 "độ dày từ 6 mm đến 8 mm" ⇒ số đầu 6', 'doDay', 'Cửa ra vào, có độ dày từ 6 mm đến 8 mm', 6, { op: null });
+la('"dày 2mm"', 'doDay', 'tấm thép dày 2mm', 2);
+la('"dày 0,5 cm" quy mm', 'doDay', 'tấm nhựa dày 0,5 cm', 5);
+la('"độ dày không quá 10 mm" ⇒ op <=', 'doDay', 'độ dày không quá 10 mm', 10, { op: '<=', bc: 'không quá 10 mm' });
+la('En "thickness 1.5 mm"', 'doDay', 'steel plate thickness 1.5 mm', 1.5);
+la('Zh "厚度 3mm"', 'doDay', '钢板 厚度 3mm', 3);
+{
+  const r = la('khoảng "dày 6-8 mm" ⇒ 6 + cacGiaTri', 'doDay', 'tấm dày 6-8 mm', 6, { op: null });
+  const rr = doc('doDay', 'tấm dày 6-8 mm');
+  check('doDay khoảng ⇒ cacGiaTri [6, 8]', JSON.stringify(rr.cacGiaTri) === '[6,8]', rr);
+}
+chuaBiet('"8 mm" trần không có chữ dày — không đoán', 'doDay', 'ống thép 8 mm');
+chuaBiet('đường kính không phải độ dày', 'doDay', 'ống thép đường kính 20 mm');
+
+// ── 10 khoá lô 2 (02/11) — đọc thử ─────────────────────────────────────────────────────────────────────────────────
+la('congSuatBieuKien "75 kVA"', 'congSuatBieuKien', 'Máy phát điện xoay chiều công suất 75 kVA', 75);
+la('dungTich "250 lít"', 'dungTich', 'Bình chứa dung tích 250 lít', 250);
+la('theTich "thể tích ngoài 250 cm3"', 'theTich', 'Pin có thể tích ngoài 250 cm3', 250);
+chuaBiet('theTich "thể tích" trần không đọc (tránh lẫn dungTich)', 'theTich', 'thể tích 500 ml');
+la('sanLuongHoi "10 tấn/giờ"', 'sanLuongHoi', 'lò hơi sản lượng hơi 10 tấn/giờ', 10);
+la('dungLuong "100Ah"', 'dungLuong', 'ắc quy dung lượng 100Ah', 100);
+la('daLapRap "đã lắp ráp" ⇒ true', 'daLapRap', 'xe đã lắp ráp hoàn chỉnh', true);
+la('daLapRap "chưa lắp ráp" ⇒ false', 'daLapRap', 'xe chưa lắp ráp', false);
+la('daHoaDeo "đã hóa dẻo" ⇒ true', 'daHoaDeo', 'PVC đã hóa dẻo', true);
+la('coBoLoc "không có bộ lọc" ⇒ false', 'coBoLoc', 'máy bơm không có bộ lọc', false);
+la('dangNguyenSinh "dạng hạt"', 'dangNguyenSinh', 'polyme dạng hạt', 'HAT_VIEN_VAY_MANH');
+la('heDienHoa "hệ kiềm"', 'heDienHoa', 'pin hệ kiềm', 'KIEM');
+
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────
 const viet = (khoa, v) => { try { return T.vietCum(khoa, v); } catch (e) { return `LOI ${e.message}`; } };
 check('vietCum soLoi 2 ⇒ "2 lõi" (đơn vị đếm cách số)', viet('soLoi', 2) === '2 lõi', viet('soLoi', 2));
@@ -253,6 +395,7 @@ check('vietCum soSoi 7 ⇒ "7 sợi"', viet('soSoi', 7) === '7 sợi', viet('soS
 check('vietCum tiLe 0.1 ⇒ "tỉ lệ 0,1 lần"', viet('tiLe', 0.1) === 'tỉ lệ 0,1 lần', viet('tiLe', 0.1));
 check('vietCum phuongPhapCheTao REN ⇒ "được rèn"', viet('phuongPhapCheTao', 'REN') === 'được rèn', viet('phuongPhapCheTao', 'REN'));
 check('vietCum nhienLieu GA/DIEN ⇒ "dùng ga"/"dùng điện"; daXuLyBeMat true/false', viet('nhienLieu', 'GA') === 'dùng ga' && viet('nhienLieu', 'DIEN') === 'dùng điện' && viet('daXuLyBeMat', true) === 'đã xử lý bề mặt' && viet('daXuLyBeMat', false) === 'chưa xử lý bề mặt', [viet('nhienLieu', 'GA'), viet('nhienLieu', 'DIEN'), viet('daXuLyBeMat', true), viet('daXuLyBeMat', false)]);
+check('vietCum 4 khoá lát 2: phuongPhapIn BATIK ⇒ "in batik truyền thống"; tinhDanHoi true/false; loaiSoiDet BONG ⇒ "từ bông"; doDay 6 ⇒ "dày 6mm"', viet('phuongPhapIn', 'BATIK') === 'in batik truyền thống' && viet('tinhDanHoi', true) === 'đàn hồi' && viet('tinhDanHoi', false) === 'không đàn hồi' && viet('loaiSoiDet', 'BONG') === 'từ bông' && viet('loaiSoiDet', 'LEN_LONG_DONG_VAT_MIN') === 'từ len' && viet('doDay', 6) === 'dày 6mm', [viet('phuongPhapIn', 'BATIK'), viet('tinhDanHoi', true), viet('tinhDanHoi', false), viet('loaiSoiDet', 'BONG'), viet('loaiSoiDet', 'LEN_LONG_DONG_VAT_MIN'), viet('doDay', 6)]);
 check('vietCum phuongThucTruyenDan VO_TUYEN ⇒ "truyền dẫn vô tuyến"', viet('phuongThucTruyenDan', 'VO_TUYEN') === 'truyền dẫn vô tuyến' && viet('phuongThucTruyenDan', 'HUU_TUYEN') === 'truyền dẫn hữu tuyến', [viet('phuongThucTruyenDan', 'VO_TUYEN'), viet('phuongThucTruyenDan', 'HUU_TUYEN')]);
 check('vietCum chiHoacChuYeu true/false ⇒ không chép chữ biểu "chỉ hoặc chủ yếu"', viet('chiHoacChuYeu', true) === 'chuyên dùng' && viet('chiHoacChuYeu', false) === 'loại dùng chung', [viet('chiHoacChuYeu', true), viet('chiHoacChuYeu', false)]);
 check('vietCum daNapChuongTrinh true/false', viet('daNapChuongTrinh', true) === 'đã nạp chương trình' && viet('daNapChuongTrinh', false) === 'chưa nạp chương trình', [viet('daNapChuongTrinh', true), viet('daNapChuongTrinh', false)]);

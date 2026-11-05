@@ -1,0 +1,116 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "030830",
+  "nhom": "0308",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1605#soan-030830",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "03083010",
+      "nguon": "tax.03083010",
+      "trich": "03083010 - - Sống",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sống"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03083020",
+      "nguon": "tax.03083020",
+      "trich": "03083020 - - Tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tươi",
+            "ướp lạnh"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03083030",
+      "nguon": "tax.03083030",
+      "trich": "03083030 - - Đông lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đông lạnh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03083040",
+      "nguon": "tax.03083040",
+      "trich": "03083040 - - Khô, muối hoặc ngâm nước muối",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Khô",
+            "muối",
+            "ngâm nước muối"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "03083050",
+      "nguon": "tax.03083050",
+      "trich": "03083050 - - Hun khói",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hun khói"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "03083010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03083010 \"Sống\" ⇒ tenLoai \"Sống\" nguyên văn (không dùng phuongPhapBaoQuan, lý do như 030711)"
+    },
+    {
+      "ma": "03083020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03083020 \"Tươi hoặc ướp lạnh\" ⇒ tenLoai [\"Tươi\",\"ướp lạnh\"] — mảng = hoặc (LUAT-CHUNG bảng 1)"
+    },
+    {
+      "ma": "03083030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03083030 \"Đông lạnh\" ⇒ tenLoai \"Đông lạnh\" nguyên văn"
+    },
+    {
+      "ma": "03083040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03083040 \"Khô, muối hoặc ngâm nước muối\" ⇒ tenLoai [\"Khô\",\"muối\",\"ngâm nước muối\"] như 030719"
+    },
+    {
+      "ma": "03083050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.03083050 \"Hun khói\" ⇒ tenLoai \"Hun khói\" nguyên văn"
+    }
+  ]
+}

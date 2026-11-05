@@ -1,0 +1,289 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "840734",
+  "nhom": "8407",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840734",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "840734~r12893",
+      "nguon": "tieuDe.840734~r12893",
+      "trich": "840734~r12893 Đã lắp ráp hoàn chỉnh",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84073440",
+      "nguon": "tax.84073440",
+      "trich": "84073440 - - - - Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy kéo cầm tay"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1100,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84073450",
+      "nguon": "tax.84073450",
+      "trich": "84073450 - - - - Dùng cho xe khác thuộc nhóm 87.01",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "84073440"
+      ]
+    },
+    {
+      "hs": "84073460",
+      "nguon": "tax.84073460",
+      "trich": "84073460 - - - - Dùng cho xe thuộc nhóm 87.11",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.11"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84073471",
+      "nguon": "tax.84073471",
+      "trich": "84073471 - - - - - Dung tích xi lanh không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84073472",
+      "nguon": "tax.84073472",
+      "trich": "84073472 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84073473",
+      "nguon": "tax.84073473",
+      "trich": "84073473 - - - - - Dung tích xi lanh trên 3.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84073491",
+      "nguon": "tax.84073491",
+      "trich": "84073491 - - - - Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy kéo cầm tay"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1100,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84073492",
+      "nguon": "tax.84073492",
+      "trich": "84073492 - - - - Dùng cho xe khác thuộc nhóm 87.01",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "84073491"
+      ]
+    },
+    {
+      "hs": "84073493",
+      "nguon": "tax.84073493",
+      "trich": "84073493 - - - - Dùng cho xe thuộc nhóm 87.11",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.11"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84073494",
+      "nguon": "tax.84073494",
+      "trich": "84073494 - - - - - Dung tích xi lanh không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84073495",
+      "nguon": "tax.84073495",
+      "trich": "84073495 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84073499",
+      "nguon": "tax.84073499",
+      "trich": "84073499 - - - - - Dung tích xi lanh trên 3.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "840734~r12893",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.840734~r12893: \"Đã lắp ráp hoàn chỉnh\" ⇒ laBoPhan KHONG (hoàn chỉnh)"
+    },
+    {
+      "ma": "84073440",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073440: \"Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc\" ⇒ dungCho \"máy kéo cầm tay\" + dungTichXiLanh <= 1100 cc"
+    },
+    {
+      "ma": "84073450",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073450: \"Dùng cho xe khác thuộc nhóm 87.01\" ⇒ dungCho \"87.01\", phanConLai [\"84073440\"]"
+    },
+    {
+      "ma": "84073460",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073460: \"Dùng cho xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""
+    },
+    {
+      "ma": "84073471",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073471: \"Dung tích xi lanh không quá 2.000 cc\" ⇒ dungTichXiLanh <= 2000 cc"
+    },
+    {
+      "ma": "84073472",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073472: \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 3000 cc"
+    },
+    {
+      "ma": "84073473",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073473: \"Dung tích xi lanh trên 3.000 cc\" ⇒ dungTichXiLanh > 3000 cc"
+    },
+    {
+      "ma": "84073491",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073491: \"Dùng cho máy kéo cầm tay, dung tích xi lanh không quá 1.100 cc\" ⇒ dungCho \"máy kéo cầm tay\" + dungTichXiLanh <= 1100 cc"
+    },
+    {
+      "ma": "84073492",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073492: \"Dùng cho xe khác thuộc nhóm 87.01\" ⇒ dungCho \"87.01\", phanConLai [\"84073491\"]"
+    },
+    {
+      "ma": "84073493",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073493: \"Dùng cho xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\""
+    },
+    {
+      "ma": "84073494",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073494: \"Dung tích xi lanh không quá 2.000 cc\" ⇒ dungTichXiLanh <= 2000 cc"
+    },
+    {
+      "ma": "84073495",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073495: \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc\" ⇒ dungTichXiLanh > 2000 cc và <= 3000 cc"
+    },
+    {
+      "ma": "84073499",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84073499: \"Dung tích xi lanh trên 3.000 cc\" ⇒ dungTichXiLanh > 3000 cc"
+    }
+  ]
+}

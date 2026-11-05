@@ -1,0 +1,159 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "392099",
+  "nhom": "3920",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1700#soan-392099",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "3920992",
+      "nguon": "tieuDe.3920992",
+      "trich": "3920992 Từ các polyme trùng hợp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyme trùng hợp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "3920993",
+      "nguon": "tieuDe.3920993",
+      "trich": "3920993 Từ các polyme trùng ngưng hoặc tái sắp xếp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyme trùng ngưng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "39209910",
+      "nguon": "tax.39209910",
+      "trich": "39209910 - - - Từ protein đã được làm cứng; từ dẫn xuất hóa học của cao su tự nhiên",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "protein",
+            "dẫn xuất hóa học của cao su tự nhiên"
+          ]
+        },
+        {
+          "fact": "loaiCung",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39209921",
+      "nguon": "tax.39209921",
+      "trich": "39209921 - - - - Dạng tấm và phiến (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39209929",
+      "nguon": "tax.39209929",
+      "trich": "39209929 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39209931",
+      "nguon": "tax.39209931",
+      "trich": "39209931 - - - - Dạng tấm và phiến (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm",
+            "phiến"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39209939",
+      "nguon": "tax.39209939",
+      "trich": "39209939 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "39209990",
+      "nguon": "tax.39209990",
+      "trich": "39209990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "39209910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39209910 \"Từ protein đã được làm cứng; từ dẫn xuất hóa học của cao su tự nhiên\" (EN \"Of hardened proteins; of chemical derivatives of natural rubber\") ⇒ tenLoai [\"protein\",\"dẫn xuất hóa học của cao su tự nhiên\"] (mảng = hoặc, hai vật liệu nguyên văn ngăn bởi dấu ;) + loaiCung CO (phủ vế GIỚI HẠN \"được làm cứng\"; cachDoc của khoá đọc \"cứng\"). KHÔNG dùng chatLieu \"cao su\": mọi anh em cùng tầng dùng CÙNG khoá (LUAT-CHUNG 3.3) — dùng chatLieu ở .10 và tenLoai ở .21/.31/tiêu đề thì máy ghép vector \"cao su\" + \"tấm polyme trùng hợp\" và báo chồng lấn giả."
+    },
+    {
+      "ma": "39209921",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39209921 \"Dạng tấm và phiến (SEN)\" (EN \"Plates and sheets\") ⇒ tenLoai [\"tấm\",\"phiến\"] — hai danh từ đầu nối \"và\", chữ Anh nối hai danh từ số nhiều bằng and ⇒ mảng (vòng 5/7)."
+    },
+    {
+      "ma": "39209931",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39209931 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"] (như 39209921)."
+    },
+    {
+      "ma": "39209929",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39209929 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "39209939",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39209939 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "39209990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39209990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "3920992",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3920992 \"Từ các polyme trùng hợp\" ⇒ tenLoai \"polyme trùng hợp\". Không dùng chatLieu \"plastic\": hai tiêu đề anh em 3920992 (\"trùng hợp\") và 3920993 (\"trùng ngưng hoặc tái sắp xếp\") đều là plastic ⇒ chồng lấn; cần vế phân biệt."
+    },
+    {
+      "ma": "3920993",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3920993 \"Từ các polyme trùng ngưng hoặc tái sắp xếp\" ⇒ tenLoai \"polyme trùng ngưng\" (chuỗi con nguyên văn; không dùng \"trùng hợp\" — chồng lấn với 3920992)."
+    }
+  ]
+}

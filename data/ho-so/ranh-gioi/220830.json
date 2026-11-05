@@ -1,0 +1,56 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "220830",
+  "nhom": "2208",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1634#soan-220830",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "22083010",
+      "nguon": "tax.22083010",
+      "trich": "22083010 - - Được đựng trong đồ chứa trên 5 lít",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 5,
+          "donVi": "lít"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "22083090",
+      "nguon": "tax.22083090",
+      "trich": "22083090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "22083010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22083010 \"Được đựng trong đồ chứa trên 5 lít\" ⇒ dungTich > 5 lít — đã đối chiếu tay: 'trên 5 lít' = > 5, đơn vị nguyên văn 'lít'"
+    },
+    {
+      "ma": "22083010",
+      "loai": "BO_VE",
+      "ve": "Được đựng trong đồ",
+      "lyDo": "Vế là nửa đầu của cụm \"đựng trong đồ chứa trên 5 lít\"; ý đựng trong đồ chứa là chính định nghĩa của khoá dungTich (dung tích chứa) — vế đo đã phủ bằng dungTich > 5 lít, bỏ nửa dẫn không đổi mã 8 số"
+    },
+    {
+      "ma": "22083090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22083090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

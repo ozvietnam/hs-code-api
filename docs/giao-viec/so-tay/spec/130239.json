@@ -1,0 +1,64 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "130239",
+  "phien": "mm:minimax-m3:20261105T1529#soan-130239",
+  "dong8": {
+    "13023911": {
+      "dieuKienSo": [
+        { "fact": "dangNguyenSinh", "op": "TRONG", "value": ["HAT_VIEN_VAY_MANH"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "tinh chế một phần" }
+      ]
+    },
+    "13023912": {
+      "dieuKienSo": [
+        { "fact": "dangNguyenSinh", "op": "TRONG", "value": ["HAT_VIEN_VAY_MANH"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "đã tinh chế" }
+      ]
+    },
+    "13023913": {
+      "dieuKienSo": [
+        { "fact": "dangNguyenSinh", "op": "TRONG", "value": ["HAT_VIEN_VAY_MANH"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "đã xử lý kiềm" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "1302391": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "carrageenan" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "1302391",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1302391 \"Làm từ tảo carrageen (carrageenan)\" (EN \"Carrageenan\") ⇒ tenLoai \"carrageenan\" (tên hàng; chữ \"Làm từ tảo carrageen\" là nguồn gốc, máy không tách vế GIỚI HẠN nào ở tiêu đề nên không bắt buộc phủ). Các dòng con .11/.12/.13 đều là dạng của carrageenan nên tiêu đề chỉ cần tên hàng."
+    },
+    {
+      "ma": "13023911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.13023911 \"Dạng bột, tinh chế một phần\" (EN \"Powder, semi-refined\") ⇒ dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH] (dạng bột — khuôn 390410 \"Dạng bột\") + tenLoai \"tinh chế một phần\" (mức tinh chế). Dùng CHUNG khoá tenLoai với 13023912 vì khoá mucDoTinhCheDau đọc được \"đã tinh chế\" nhưng KHÔNG đọc được \"tinh chế một phần\" — dùng khoá khác cho một trong hai anh em sẽ vi phạm luật cùng khoá (quy trình 3.3). Ghi chú cho người soát: nếu sau này có khoá cho \"tinh chế một phần\" thì chuyển cả .11 và .12 sang khoá đó."
+    },
+    {
+      "ma": "13023912",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.13023912 \"Dạng bột, đã tinh chế\" (EN \"Powder, refined\") ⇒ dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH] (dạng bột) + tenLoai \"đã tinh chế\" (mức tinh chế; cùng khoá với 13023911 — xem ghi chú của .11)."
+    },
+    {
+      "ma": "13023913",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.13023913 \"Carrageen dạng mảnh đã xử lý kiềm (ATCC) (SEN)\" (EN \"Alkali treated carrageenan chips (ATCC)\") ⇒ dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH] (dạng mảnh — giá trị HAT_VIEN_VAY_MANH đọc được chữ \"mảnh\") + tenLoai \"đã xử lý kiềm\" (đặc tính đã xử lý kiềm; khoá daXuLyBeMat đọc \"xử lý bề mặt\" chứ không đọc \"xử lý kiềm\"). Ngoặc \"(ATCC)\" là mã hiệu trong ngoặc chú thích, không thành điều kiện."
+    },
+    {
+      "ma": "13023919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.13023919 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    },
+    {
+      "ma": "13023990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.13023990 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước, gồm tiêu đề 1302391)."
+    }
+  ]
+}

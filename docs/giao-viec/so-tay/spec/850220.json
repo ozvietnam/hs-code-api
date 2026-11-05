@@ -1,0 +1,98 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850220",
+  "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850220",
+  "dong8": {
+    "85022010": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 75,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "85022020": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 75,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 100,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "85022030": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 100,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "85022042": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">=",
+          "value": 12500,
+          "donVi": "kVA"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8502204": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85022010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85022010: \"Công suất không quá 75 kVA\" ⇒ congSuatBieuKien <= 75 kVA"
+    },
+    {
+      "ma": "85022020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85022020: \"Công suất trên 75 kVA nhưng không quá 100 kVA\" ⇒ congSuatBieuKien > 75 kVA, <= 100 kVA"
+    },
+    {
+      "ma": "85022030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85022030: \"Công suất trên 100 kVA nhưng không quá 10.000 kVA\" ⇒ congSuatBieuKien > 100 kVA, <= 10000 kVA"
+    },
+    {
+      "ma": "8502204",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8502204: \"Công suất trên 10.000 kVA\" ⇒ congSuatBieuKien > 10000 kVA"
+    },
+    {
+      "ma": "85022042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85022042: \"Công suất từ 12.500 kVA trở lên\" ⇒ congSuatBieuKien >= 12500 kVA"
+    }
+  ]
+}

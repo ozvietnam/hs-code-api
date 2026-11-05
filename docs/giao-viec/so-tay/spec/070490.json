@@ -1,0 +1,60 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "070490",
+  "phien": "zcode-sub:glm-5.3:20261105T1529#soan-070490",
+  "dong8": {
+    "07049010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bắp cải cuộn"
+        }
+      ]
+    },
+    "07049020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cải bẹ xanh"
+        }
+      ]
+    },
+    "07049030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bắp cải"
+        }
+      ],
+      "phanConLai": false
+    },
+    "07049090": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "07049010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07049010 \"Bắp cải cuộn (cuộn tròn) (SEN)\" ⇒ tenLoai \"Bắp cải cuộn\"; \"(cuộn tròn)\" là chú giải trong ngoặc, không thành điều kiện riêng."
+    },
+    {
+      "ma": "07049020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07049020 \"Cải bẹ xanh (Chinese mustard) (SEN)\" ⇒ tenLoai \"Cải bẹ xanh\"; tên tiếng Anh trong ngoặc không thành điều kiện."
+    },
+    {
+      "ma": "07049030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07049030 \"Bắp cải khác\" ⇒ tenLoai \"Bắp cải\" + phanConLai: false. Không dùng phanConLai: phủ .10 (\"Bắp cải cuộn\") cho THIEU trên mọi vector (\"Bắp cải\" là con chuỗi của \"Bắp cải cuộn\" — không TRÁI được, cong2-dong-khong-toi-duoc). Tách với .10 nhờ tên cụ thể hơn thắng (cong2-ten-cu-the-hon): \"Bắp cải cuộn\" cụ thể hơn nên thắng khi hàng là bắp cải cuộn."
+    },
+    {
+      "ma": "07049090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07049090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

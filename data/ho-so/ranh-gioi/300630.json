@@ -1,0 +1,98 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "300630",
+  "nhom": "3006",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T0845#soan-300630",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "30063010",
+      "nguon": "tax.30063010",
+      "trich": "30063010 - - Bari sulphat, dạng uống (*)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bari sulphat"
+        },
+        {
+          "fact": "dangBaoCheThuoc",
+          "op": "TRONG",
+          "value": [
+            "DANG_UONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30063020",
+      "nguon": "tax.30063020",
+      "trich": "30063020 - - Các chất thử nguồn gốc vi sinh, loại phù hợp để chẩn đoán sinh học trong thú y",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chất thử nguồn gốc vi sinh"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chẩn đoán sinh học trong thú y"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "30063030",
+      "nguon": "tax.30063030",
+      "trich": "30063030 - - Các chất thử chẩn đoán vi sinh khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chất thử chẩn đoán vi sinh khác"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "30063090",
+      "nguon": "tax.30063090",
+      "trich": "30063090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "30063010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30063010 \"Bari sulphat, dạng uống (*)\" — tên hàng + dangBaoCheThuoc DANG_UONG (chữ \"dạng uống\" khớp đúng cachDoc)."
+    },
+    {
+      "ma": "30063020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30063020 \"Các chất thử nguồn gốc vi sinh, loại phù hợp để chẩn đoán sinh học trong thú y\" — tên hàng \"chất thử nguồn gốc vi sinh\" + công dụng \"chẩn đoán sinh học trong thú y\" (đọc được bằng khoá congDung)."
+    },
+    {
+      "ma": "30063030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30063030 \"Các chất thử chẩn đoán vi sinh khác\" — chữ \"khác\" ở CUỐI dòng ⇒ phần còn lại của nhánh; điều kiện đặt tên hàng (chuỗi con nguyên văn), chưa khai phanConLai vì dòng vẫn có ý khẳng định riêng (là chất thử chẩn đoán vi sinh). Khai \"phanConLai\": false — dòng vẫn có ý khẳng định riêng (là chất thử chẩn đoán vi sinh) và không cần phủ định anh em đứng trước: .20 đã khác rõ (chất thử nguồn gốc vi sinh dùng để chẩn đoán sinh học trong thú y)."
+    },
+    {
+      "ma": "30063090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.30063090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

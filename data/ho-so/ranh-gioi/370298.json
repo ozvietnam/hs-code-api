@@ -1,0 +1,57 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "370298",
+  "nhom": "3702",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:202611051900#soan-370298",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "37029810",
+      "nguon": "tax.37029810",
+      "trich": "37029810 - - - Loại phù hợp dùng cho điện ảnh",
+      "dieuKienSo": [
+        {
+          "fact": "dungChoDienAnh",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "37029830",
+      "nguon": "tax.37029830",
+      "trich": "37029830 - - - Loại khác, chiều dài từ 120 m trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "chieuDaiCuon",
+          "op": ">=",
+          "value": 120,
+          "donVi": "m"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "37029890",
+      "nguon": "tax.37029890",
+      "trich": "37029890 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "37029830",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37029810 \"Loại phù hợp dùng cho điện ảnh\" ⇒ dungChoDienAnh CO. tax.37029830 \"Loại khác, chiều dài từ 120 m trở lên\" ⇒ chieuDaiCuon >= 120 m (\"từ … trở lên\" = >=; dòng \"Loại khác,\" có vế nên ghi điều kiện của vế, khác dòng \"Loại khác\" trần .90 ⇒ không ghi điều kiện). Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện."
+    }
+  ]
+}

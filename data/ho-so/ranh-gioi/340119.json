@@ -1,0 +1,86 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "340119",
+  "nhom": "3401",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1545#soan-340119",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "34011910",
+      "nguon": "tax.34011910",
+      "trich": "34011910 - - - Bằng nỉ hoặc sản phẩm không dệt, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "nỉ",
+            "sản phẩm không dệt"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xà phòng",
+            "chất tẩy"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "34011920",
+      "nguon": "tax.34011920",
+      "trich": "34011920 - - - Bằng giấy, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "giấy"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xà phòng",
+            "chất tẩy"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "34011990",
+      "nguon": "tax.34011990",
+      "trich": "34011990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "34011910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34011910 \"Bằng nỉ hoặc sản phẩm không dệt, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy\" (EN \"Of felt or nonwovens, impregnated, coated or covered with soap or detergent\"): vật liệu gốc: nỉ hoặc sản phẩm không dệt ⇒ tenLoai [\"nỉ\",\"sản phẩm không dệt\"] (hai hàng thay thế nối \"hoặc\"; KHÔNG dùng chatLieu \"vải dệt\" — mẫu đọc của khoá đó là \"vải|dệt|textile\" nên \"không dệt\" cũng khớp, tức đảo ngược nghĩa; không có vật liệu nào trong danh sách chatLieu cho \"nỉ\"/\"sản phẩm không dệt\"). Vế \"đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy\" ⇒ dungCho [\"xà phòng\",\"chất tẩy\"] (hàng hóa mà hàng đi cùng — nỉ/sản phẩm không dệt đã thấm hoặc phủ bằng xà phòng hoặc chất tẩy; không dùng daTrangPhuEpLop vì cachDoc của khoá đó không đọc được chữ \"đã được thấm tẩm, tráng hoặc phủ\")."
+    },
+    {
+      "ma": "34011920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34011920 \"Bằng giấy, đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy\" (EN \"Of paper, impregnated, coated or covered with soap or detergent\"): vật liệu gốc ⇒ tenLoai \"giấy\" (CÙNG khoá với anh em .10 — quy trình 3.3: anh em cùng tầng dùng CÙNG khoá; dùng chatLieu \"giấy\" ở .20 và tenLoai ở .10 thì máy ghép vector \"chatLieu=giấy + tenLoai=nỉ\" làm hai dòng cùng thoả ⇒ cong2-chong-lan giả); vế \"đã được thấm tẩm, tráng hoặc phủ xà phòng hoặc chất tẩy\" ⇒ dungCho [\"xà phòng\",\"chất tẩy\"] (CÙNG cách với dòng .10 và với tiêu đề 3401116 / dòng 34011170). Anh em .10 dùng tenLoai vì không có vật liệu nào trong danh sách chatLieu cho \"nỉ\"/\"sản phẩm không dệt\" — KHÔNG đổi khoá của .10 sang chatLieu \"vải dệt\" vì mẫu đọc của khoá đó khớp cả \"không dệt\" (đảo nghĩa)."
+    },
+    {
+      "ma": "34011990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34011990 \"Loại khác\" — dòng \"Loại khác\" TRẦN ⇒ không ghi điều kiện, không đưa vào spec (máy tự phủ định anh em)."
+    }
+  ]
+}

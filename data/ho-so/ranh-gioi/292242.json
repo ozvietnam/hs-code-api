@@ -1,0 +1,79 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "292242",
+  "nhom": "2922",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T0948#soan-292242",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "29224210",
+      "nguon": "tax.29224210",
+      "trich": "29224210 - - - Axit glutamic",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Axit glutamic"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "29224220",
+      "nguon": "tax.29224220",
+      "trich": "29224220 - - - Muối natri của axit glutamic (MSG)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Muối natri"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "axit glutamic"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "29224290",
+      "nguon": "tax.29224290",
+      "trich": "29224290 - - - Muối khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Muối"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "29224210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29224210: \"Axit glutamic\" ⇒ tenLoai TEN_LOAI \"Axit glutamic\""
+    },
+    {
+      "ma": "29224220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29224220: \"Muối natri của axit glutamic (MSG)\" ⇒ tenLoai \"Muối natri\" + điều kiện riêng \"axit glutamic\" cho vế \"của axit glutamic (MSG)\"; \"(MSG)\" là tên gọi khác (PHU), không thành điều kiện"
+    },
+    {
+      "ma": "29224290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29224290: \"Muối khác\" ⇒ phần còn lại có tên: phanConLai true + tenLoai \"Muối\""
+    }
+  ]
+}

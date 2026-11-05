@@ -1,0 +1,106 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "840212",
+  "nhom": "8402",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-840212",
+    "ngay": "2026-11-02"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8402121",
+      "nguon": "tieuDe.8402121",
+      "trich": "8402121 Hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8402122",
+      "nguon": "tieuDe.8402122",
+      "trich": "8402122 Không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84021211",
+      "nguon": "tax.84021211",
+      "trich": "84021211 - - - - Nồi hơi với công suất hơi nước trên 15 tấn/giờ",
+      "dieuKienSo": [
+        {
+          "fact": "sanLuongHoi",
+          "op": ">",
+          "value": 15,
+          "donVi": "tấn/giờ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84021219",
+      "nguon": "tax.84021219",
+      "trich": "84021219 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84021221",
+      "nguon": "tax.84021221",
+      "trich": "84021221 - - - - Nồi hơi với công suất hơi nước trên 15 tấn/giờ",
+      "dieuKienSo": [
+        {
+          "fact": "sanLuongHoi",
+          "op": ">",
+          "value": 15,
+          "donVi": "tấn/giờ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84021229",
+      "nguon": "tax.84021229",
+      "trich": "84021229 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8402121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8402121 \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "84021211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84021211 \"với công suất hơi nước trên 15 tấn/giờ\" ⇒ sanLuongHoi > 15 tấn/giờ"
+    },
+    {
+      "ma": "8402122",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8402122 \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "84021221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84021221 \"với công suất hơi nước trên 15 tấn/giờ\" ⇒ sanLuongHoi > 15 tấn/giờ"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "370610",
+  "phien": "mm:minimax-m3:20261105T1704#soan-370610",
+  "dong8": {
+    "37061010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Phim thời sự",
+            "phim du lịch",
+            "phim kỹ thuật",
+            "phim khoa học"
+          ]
+        }
+      ]
+    },
+    "37061030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Phim tài liệu"
+        }
+      ],
+      "phanConLai": true
+    },
+    "37061040": {
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "37061010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37061010 \"Phim thời sự, phim du lịch, phim kỹ thuật và phim khoa học\" ⇒ tenLoai [\"Phim thời sự\",\"phim du lịch\",\"phim kỹ thuật\",\"phim khoa học\"] (mảng = hoặc; tách \"phim kỹ thuật\" và \"phim khoa học\" thành hai tên theo luật liệt kê). Nguồn sen.37061010 giải nghĩa ba nhóm phim này."
+    },
+    {
+      "ma": "37061030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37061030 \"Phim tài liệu khác\" ⇒ tenLoai \"Phim tài liệu\" + phanConLai: true (chữ \"khác\" ⇒ phủ định anh em đứng trước 37061010)."
+    },
+    {
+      "ma": "37061040",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chiCoRanhTie",
+      "ghiChu": "tax.37061040 \"Loại khác, chỉ có duy nhất rãnh tiếng\" — vế GIỚI HẠN \"chỉ có duy nhất rãnh tiếng\" (phim chỉ có rãnh tiếng, không có hình) không có khoá nào trong tu-vung đọc được: không mượn khoá gần nghĩa (chiHoacChuYeu đọc \"chỉ dùng\", không đọc \"chỉ có\") ⇒ để dieuKienSo trống, đề xuất khoá mới chiCoRanhTie (CO_KHONG)."
+    },
+    {
+      "ma": "37061090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.37061090 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

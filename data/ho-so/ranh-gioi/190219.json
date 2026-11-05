@@ -1,0 +1,80 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "190219",
+  "nhom": "1902",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T0936#soan-190219",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "19021920",
+      "nguon": "tax.19021920",
+      "trich": "19021920 - - - Mì, bún làm từ gạo (kể cả bee hoon)",
+      "dieuKienSo": [
+        {
+          "fact": "loaiMiBunMien",
+          "op": "TRONG",
+          "value": [
+            "BUN_MI_GAO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19021930",
+      "nguon": "tax.19021930",
+      "trich": "19021930 - - - Miến ",
+      "dieuKienSo": [
+        {
+          "fact": "loaiMiBunMien",
+          "op": "TRONG",
+          "value": [
+            "MIEN"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "19021940",
+      "nguon": "tax.19021940",
+      "trich": "19021940 - - - Mì khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mì"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "19021990",
+      "nguon": "tax.19021990",
+      "trich": "19021990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "19021920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19021920 \"Mì, bún làm từ gạo (kể cả bee hoon)\": giá trị BUN_MI_GAO của loaiMiBunMien đọc đúng \"mì, bún làm từ gạo (kể cả bee hoon)\"; \"(kể cả bee hoon)\" là kể cả ⇒ PHU"
+    },
+    {
+      "ma": "19021940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19021940 \"Mì khác\": phần còn lại có tên — mì không thuộc .20 (làm từ gạo) và .30 (miến) ⇒ tenLoai \"Mì\" + phanConLai true"
+    }
+  ]
+}

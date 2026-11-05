@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "401219",
+  "phien": "mm:minimax-m3:20261105T1705#soan-401219",
+  "dong8": {
+    "40121920": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.27"
+        }
+      ]
+    },
+    "40121930": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thuộc nhóm 84.29 hoặc 84.30"
+        }
+      ]
+    },
+    "40121941": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy kéo"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "nông nghiệp",
+            "lâm nghiệp"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4012194": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe thuộc Chương 87"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "40121920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40121920 \"Loại dùng cho máy thuộc nhóm 84.27\" ⇒ dungCho \"máy thuộc nhóm 84.27\"; tax.40121930 \"Loại dùng cho máy thuộc nhóm 84.29 hoặc 84.30\" ⇒ dungCho \"máy thuộc nhóm 84.29 hoặc 84.30\" (có mã HS nên máy đọc HOẶC)."
+    },
+    {
+      "ma": "4012194",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4012194 \"Loại dùng cho xe thuộc Chương 87\" ⇒ dungCho \"xe thuộc Chương 87\"."
+    },
+    {
+      "ma": "40121941",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40121941 \"Loại dùng cho máy kéo nông nghiệp hoặc lâm nghiệp\" ⇒ dungCho \"máy kéo\" + congDung [\"nông nghiệp\",\"lâm nghiệp\"]. Vế \"hoặc\" là liệt kê nên tách thành mảng (mẫu 84328010 \"Dùng trong nông nghiệp hoặc làm vườn\" ⇒ congDung [\"nông nghiệp\",\"làm vườn\"]); chữ Anh cùng dòng: \"Of a kind used on agricultural or forestry tractors\"."
+    }
+  ]
+}

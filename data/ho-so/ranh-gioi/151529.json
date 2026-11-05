@@ -1,0 +1,90 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "151529",
+  "nhom": "1515",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "mm:minimax-m3:20261105T1530#soan-151529",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "1515291",
+      "nguon": "tieuDe.1515291",
+      "trich": "1515291 Các phần phân đoạn của dầu chưa tinh chế",
+      "dieuKienSo": [
+        {
+          "fact": "mucDoTinhCheDau",
+          "op": "TRONG",
+          "value": [
+            "DANG_THO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "15152911",
+      "nguon": "tax.15152911",
+      "trich": "15152911 - - - - Các phần phân đoạn thể rắn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn thể rắn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15152919",
+      "nguon": "tax.15152919",
+      "trich": "15152919 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15152991",
+      "nguon": "tax.15152991",
+      "trich": "15152991 - - - - Các phần phân đoạn thể rắn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các phần phân đoạn thể rắn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "15152999",
+      "nguon": "tax.15152999",
+      "trich": "15152999 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "1515291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.1515291 \"1515291 Các phần phân đoạn của dầu chưa tinh chế\" ⇒ tenLoai \"Các phần phân đoạn\" + mucDoTinhCheDau DANG_THO (\"chưa tinh chế\"). Tiêu đề 1515299 \"Loại khác\" trần ⇒ không ghi điều kiện (máy tự phủ định nhánh 1515291 cho các dòng con)."
+    },
+    {
+      "ma": "15152911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15152911 \"15152911 - - - - Các phần phân đoạn thể rắn\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\" (anh em 15152991 dùng CÙNG khoá tenLoai); mức tinh chế \"chưa tinh chế\" là điều kiện của tiêu đề 1515291."
+    },
+    {
+      "ma": "15152991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.15152991 \"15152991 - - - - Các phần phân đoạn thể rắn\" ⇒ tenLoai \"Các phần phân đoạn thể rắn\"; dòng nằm dưới tiêu đề \"Loại khác\" (1515299) nên không có mức tinh chế trong chữ dòng — phân biệt với 15152911 (chưa tinh chế) do máy phủ định tiêu đề 1515291."
+    }
+  ]
+}
