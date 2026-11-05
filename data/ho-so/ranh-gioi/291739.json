@@ -1,0 +1,88 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "291739",
+  "nhom": "2917",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T0930#soan-291739",
+    "ngay": "2026-11-05"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "29173910",
+      "nguon": "tax.29173910",
+      "trich": "29173910 - - - Trioctyltrimellitate ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Trioctyltrimellitate"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "29173920",
+      "nguon": "tax.29173920",
+      "trich": "29173920 - - - Các hợp chất phthalic khác của loại được sử dụng như chất hóa dẻo và este của anhydrit phthalic (SEN)",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "hợp chất phthalic"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "chất hóa dẻo"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "este của anhydrit phthalic"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "29173990",
+      "nguon": "tax.29173990",
+      "trich": "29173990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "29173910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29173910: \"Trioctyltrimellitate\" ⇒ tenLoai TEN_LOAI \"Trioctyltrimellitate\""
+    },
+    {
+      "ma": "29173920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29173920: \"Các hợp chất phthalic khác …\" ⇒ chữ \"khác\" là phần còn lại có tên so với anh em 29173910 nên phanConLai true; hai ý (hợp chất phthalic dùng như chất hóa dẻo; este của anhydrit phthalic) ⇒ HOAC"
+    },
+    {
+      "ma": "29173920",
+      "loai": "BO_VE",
+      "ve": "của loại",
+      "lyDo": "\"của loại\" là liên từ dẫn vào vế \"được sử dụng như chất hóa dẻo…\", điều kiện nằm ở vế sau, không thêm nghĩa riêng"
+    }
+  ]
+}
