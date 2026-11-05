@@ -1,0 +1,52 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "130219",
+  "phien": "mm:minimax-m3:20261105T1529#soan-130219",
+  "dong8": {
+    "13021920": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Chiết xuất", "cồn thuốc"] },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "cây gai dầu" }
+      ]
+    },
+    "13021940": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Nhựa", "các chiết xuất thực vật"] },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["hoa cúc", "rễ cây có chứa rotenone"] }
+      ]
+    },
+    "13021950": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Sơn mài" }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "13021920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.13021920 \"Chiết xuất và cồn thuốc của cây gai dầu\" (EN \"Extracts and tinctures of cannabis\") ⇒ tenLoai [\"Chiết xuất\",\"cồn thuốc\"] (hai tên hàng nối \"và\", chữ Anh nối \"and\" hai danh từ đầu số nhiều ⇒ mảng = hoặc) + dungCho \"cây gai dầu\" (vế GIỚI HẠN \"của cây gai dầu\"; khuôn 848190 \"Vỏ của van cổng hoặc van cống\")."
+    },
+    {
+      "ma": "13021940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.13021940 \"Nhựa và các chiết xuất thực vật từ hoa cúc hoặc rễ cây có chứa rotenone\" (EN \"Vegetable saps and extracts of pyrethrum or of the roots of plants containing rotenone\") ⇒ tenLoai [\"Nhựa\",\"các chiết xuất thực vật\"] (hai danh từ đầu nối \"và\"; chữ Anh nối \"and\" — mảng = hoặc; định ngữ chung \"thực vật\" ở cả hai, chỉ tên thứ hai mang) + dungCho [\"hoa cúc\",\"rễ cây có chứa rotenone\"] (nguồn gốc: \"từ hoa cúc\" hoặc \"từ rễ cây có chứa rotenone\"; giá trị \"rễ cây có chứa rotenone\" phủ luôn vế GIỚI HẠN \"có chứa rotenone\" của máy — chữ Anh cho thấy \"containing rotenone\" bổ nghĩa cho \"plants\", tức rễ cây, không phải cho sản phẩm)."
+    },
+    {
+      "ma": "13021950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.13021950 \"Sơn mài (sơn mài tự nhiên)\" (EN \"Japan (or Chinese) lacquer (natural lacquer)\") ⇒ tenLoai \"Sơn mài\"; ngoặc \"(sơn mài tự nhiên)\" là chú thích (PHU, quy trình 3.8) nên không thành điều kiện riêng."
+    },
+    {
+      "ma": "13021990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.13021990 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
+    },
+    {
+      "ma": "130219",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — phân nhóm có cờ tiền lệ (data/ho-so/lat-1.json) mà bảng hiệu chỉnh tiền lệ L1-4b (data/ho-so/hieu-chinh-tien-le.json) CHƯA có mục cho PN6 này: cổng báo can-bang-hieu-chinh-tien-le:130219:chua-co. Điều kiện đã soạn xong nhưng chưa duyệt/áp được cho tới khi Claude soạn mục bảng hiệu chỉnh (#577, L1-4b, scripts/check-hieu-chinh.mjs)."
+    }
+  ]
+}
