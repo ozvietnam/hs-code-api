@@ -1,0 +1,27 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "981000",
+  "phien": "zcode-sub:glm-5.3:20261106T0950#soan-981000",
+  "dong8": {
+    "98100010": { "dieuKienSo": [
+      {"fact": "chatLieu", "op": "LA", "value": "sắt thép"},
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": ["thanh", "que"]},
+      {"fact": "dangCuon", "op": "CO"},
+      {"fact": "phuongPhapCheTao", "op": "TRONG", "value": ["CAN_NONG"]},
+      {"fact": "duongKinh", "op": "<", "value": 14, "donVi": "mm"},
+      {"fact": "congDung", "op": "CONG_DUNG", "value": "sản xuất tanh lốp xe"}
+    ]},
+    "98100090": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "dây"},
+      {"fact": "chatLieu", "op": "LA", "value": "sắt thép"},
+      {"fact": "congDung", "op": "CONG_DUNG", "value": "sản xuất tanh lốp xe"}
+    ]}
+  },
+  "ghiChuSoan": [
+    {"ma": "98100010", "loai": "QUYET_DINH", "ghiChu": "tax.98100010 \"Sắt hoặc thép không hợp kim, dạng thanh và que, ở dạng cuộn cuốn không đều, được cán nóng, có đường kính mặt cắt ngang hình tròn dưới 14 mm để sản xuất tanh lốp xe\" ⇒ chatLieu LA sắt thép + tenLoai [\"thanh\",\"que\"] + dangCuon CO + phuongPhapCheTao CAN_NONG + duongKinh < 14 mm + congDung \"sản xuất tanh lốp xe\"."},
+    {"ma": "98100010", "loai": "BO_VE", "ve": "không đều", "lyDo": "\"ở dạng cuộn cuốn không đều\" (irregularly wound coils) là cách cuộn cố hữu của thanh/que thép kéo dây để sản xuất tanh lốp — dangCuon CO đã phủ \"ở dạng cuộn\"; tu-vung@2 không có khoá đọc \"cuốn không đều\", bỏ từ ngữ này không đổi mã (98100090 là sản phẩm DÂY, khác dạng hàng)."},
+    {"ma": "98100010", "loai": "QUYET_DINH", "ghiChu": "Biên đối chiếu tay: \"dưới 14 mm\" = duongKinh < 14; \"đường kính mặt cắt ngang hình tròn\" là hình dạng tiết diện của thanh/que tròn — không có khoá riêng cho \"hình tròn\"."},
+    {"ma": "98100090", "loai": "QUYET_DINH", "ghiChu": "tax.98100090 \"Sản phẩm bằng dây sắt hoặc thép để sản xuất tanh lốp xe\" ⇒ tenLoai \"dây\" + chatLieu LA sắt thép + congDung \"sản xuất tanh lốp xe\"."},
+    {"ma": "981000", "loai": "DUNG", "ghiChu": "cong1-khong-phu-kin:9810 không sửa được trung thực: tầng gốc không có con \"Loại khác\", hai dòng chia theo dạng hàng (thanh/que cán nóng <14 mm cuộn vs dây) — vector tenLoai=thanh/que trông điều kiện tên của .10 nhưng sai điều kiện phụ (không cuộn / đường kính ≥14 mm / không cán nóng / không phải sắt thép) không rơi vào dòng nào vì hàng đó nằm NGOÀI nhóm 9810 (biểu thuế chỉ nhận đúng hai dạng hàng nêu); làm máy phủ kín phải bỏ các vế giới hạn (rộng hơn chữ, đổi mã cho hàng ngoài nhóm) ⇒ DỪNG, báo Claude."}
+  ]
+}

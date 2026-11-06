@@ -1,0 +1,15 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "980800",
+  "phien": "zcode-sub:glm-5.3:20261106T0950#soan-980800",
+  "dong8": {
+    "98080010": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Vải canvas"},
+      {"fact": "chatLieu", "op": "LA", "value": "plastic"}
+    ], "phanConLai": false}
+  },
+  "ghiChuSoan": [
+    {"ma": "98080010", "loai": "QUYET_DINH", "ghiChu": "tax.98080010 \"Vải canvas đã được ngâm tẩm, tráng, phủ hoặc ép với nylon hoặc các polyamit khác\" ⇒ tenLoai \"Vải canvas\" + chatLieu LA plastic — nylon/polyamit là vật liệu ngâm tẩm/tráng/phủ/ép theo đúng vế \"với nylon hoặc các polyamit khác\" (vế GIỚI HẠN được phủ bằng cách đọc \"nylon\" của chatLieu, cổng 5 xác nhận); phanConLai false — chữ \"khác\" thuộc \"các polyamit khác\" (danh sách mở polyamit), không phải phần còn lại của anh em."},
+    {"ma": "98080010", "loai": "BO_VE", "ve": "được ngâm tẩm, tráng, phủ hoặc ép với nylon hoặc các polyamit khác", "lyDo": "Phương thức xử lý (ngâm tẩm/tráng/phủ/ép) không có khoá đọc được chữ dòng (daTrangPhuEpLop đọc \"đã tráng, phủ hoặc ép lớp\" — chữ dòng là \"đã được ngâm tẩm, tráng, phủ hoặc ép\", bị cong3 từ chối); vế đã được phủ phần vật liệu bằng chatLieu LA plastic (\"nylon\" nguyên văn trong dòng) — 98080090 Loại khác phủ định anh em, bỏ phần phương thức không đổi mã."}
+  ]
+}

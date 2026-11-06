@@ -1,0 +1,18 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "750890",
+  "phien": "zcode-sub:glm-5.3:20261106T0910#soan-750890",
+  "dong8": {
+    "75089030": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Bu lông", "đai ốc"]}
+    ]},
+    "75089050": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "sản phẩm mạ điện a-nốt"}
+    ]}
+  },
+  "ghiChuSoan": [
+    {"ma": "75089030", "loai": "QUYET_DINH", "ghiChu": "tax.75089030 \"Bu lông và đai ốc\" ⇒ tenLoai [\"Bu lông\",\"đai ốc\"] (hai hàng nêu tên)."},
+    {"ma": "75089050", "loai": "QUYET_DINH", "ghiChu": "tax.75089050 \"Các sản phẩm mạ điện a-nốt, bao gồm cả các sản phẩm sản xuất bằng phương pháp điện phân\" ⇒ tenLoai \"sản phẩm mạ điện a-nốt\"."},
+    {"ma": "75089050", "loai": "BO_VE", "ve": "bằng phương pháp điện phân", "lyDo": "\"bao gồm cả …\" là vế kể-cả (PHU) mở rộng dòng, không thu hẹp: sản phẩm điện phân vẫn là sản phẩm mạ điện a-nốt của chính dòng 75089050, không có dòng 8 số nào khác trong 750890 nhận nó (75089090 Loại khác phủ định anh em); tu-vung@2 không có giá trị ĐIỆN_PHÂN trong phuongPhapCheTao — bỏ vế kể-cả không đổi mã."}
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "981812",
+  "nhom": "9818",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0950#soan-981812",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "9818121",
+      "nguon": "tieuDe.9818121",
+      "trich": "9818121 Hình chữ U",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hình chữ U"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "9818129",
+      "nguon": "tieuDe.9818129",
+      "trich": "9818129 Hình chữ I",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hình chữ I"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "98181211",
+      "nguon": "tax.98181211",
+      "trich": "98181211 - - - Có hàm lượng carbon từ 0,6% trở lên tính theo trọng lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98181219",
+      "nguon": "tax.98181219",
+      "trich": "98181219 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98181291",
+      "nguon": "tax.98181291",
+      "trich": "98181291 - - - Chiều dày từ 5 mm trở xuống",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 5,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98181299",
+      "nguon": "tax.98181299",
+      "trich": "98181299 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "9818121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9818121 \"Hình chữ U\" ⇒ tenLoai \"Hình chữ U\"."
+    },
+    {
+      "ma": "9818129",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9818129 \"Hình chữ I\" ⇒ tenLoai \"Hình chữ I\"."
+    },
+    {
+      "ma": "98181211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98181211 \"Có hàm lượng carbon từ 0,6% trở lên tính theo trọng lượng\" ⇒ hamLuongCarbon >= 0,6 % (\"0,6\" = 0.6; \"tính theo trọng lượng\" là cách tính của khoá)."
+    },
+    {
+      "ma": "98181211",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Máy tách một câu điều kiện duy nhất thành hai vế: \"Có hàm lượng carbon\" là chủ ngữ của cùng điều kiện với vế \"từ 0,6% trở lên tính theo trọng lượng\" đã phủ bằng hamLuongCarbon >= 0,6 % — hai vế là một ý, không tồn tại điều kiện riêng cho vế chủ ngữ."
+    },
+    {
+      "ma": "98181291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98181291 \"Chiều dày từ 5 mm trở xuống\" ⇒ doDay <= 5 mm."
+    }
+  ]
+}
