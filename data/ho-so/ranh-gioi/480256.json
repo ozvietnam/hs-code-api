@@ -1,0 +1,143 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "480256",
+  "nhom": "4802",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1551#soan-480256",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4802562",
+      "nguon": "tieuDe.4802562",
+      "trich": "4802562 Giấy và bìa trang trí",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy và bìa trang trí"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "4802564",
+      "nguon": "tieuDe.4802564",
+      "trich": "4802564 Loại dùng để viết, in và các mục đích đồ bản khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "48025621",
+      "nguon": "tax.48025621",
+      "trich": "48025621 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025629",
+      "nguon": "tax.48025629",
+      "trich": "48025629 - - - - Loại khác (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025641",
+      "nguon": "tax.48025641",
+      "trich": "48025641 - - - - Có chiều rộng không quá 36 cm ở dạng tờ hình chữ nhật (kể cả hình vuông) và ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025649",
+      "nguon": "tax.48025649",
+      "trich": "48025649 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025650",
+      "nguon": "tax.48025650",
+      "trich": "48025650 - - - Giấy nhiều lớp(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "nhieuLop",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025690",
+      "nguon": "tax.48025690",
+      "trich": "48025690 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48025621",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48025621 \"Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)\" ⇒ kichThuoc <= 36 cm cho vế \"không có chiều nào trên 36 cm\"; \"(kể cả hình vuông)\" là câu bao gồm; vế \"ở dạng không gấp\" xem THIEU_KHOA dưới"
+    },
+    {
+      "ma": "48025621",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "dangKhongGep",
+      "ghiChu": "vế GIỚI HẠN \"không gấp\" (EN: unfolded) của tax.48025621 không có khoá tu-vung@2; kichThuoc chỉ phủ vế kích thước"
+    },
+    {
+      "ma": "48025641",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48025641 \"Có chiều rộng không quá 36 cm ở dạng tờ hình chữ nhật (kể cả hình vuông) và ở dạng không gấp\" ⇒ chieuRong <= 36 cm; vế \"không gấp\" xem THIEU_KHOA dưới"
+    },
+    {
+      "ma": "48025641",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "dangKhongGep",
+      "ghiChu": "vế GIỚI HẠN \"không gấp\" của tax.48025641 không có khoá tu-vung@2"
+    },
+    {
+      "ma": "4802564",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802564 \"Loại dùng để viết, in và các mục đích đồ bản khác\" ⇒ congDung [\"viết\",\"in\",\"đồ bản\"]; chữ \"Loại\" ở đây = \"loại dùng để\" (of a kind used for), KHÔNG phải phần còn lại ⇒ không dùng phanConLai"
+    },
+    {
+      "ma": "480256",
+      "loai": "DUNG",
+      "ghiChu": "Gói --goi báo [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:480256:chua-co, Claude giữ; kèm các cặp cong2-chong-lan chéo tầng (trang trí tenLoai ↔ viết/in congDung ↔ nhiều lớp) chưa xử lý vì PN6 đã DỪNG chờ bảng hiệu chỉnh — Claude xử khi mở lại"
+    }
+  ]
+}

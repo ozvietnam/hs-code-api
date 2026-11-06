@@ -1,0 +1,80 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "460194",
+  "phien": "zcode-sub:glm-5.3:20261106T1549#soan-460194",
+  "dong8": {
+    "46019410": {
+      "dieuKienSo": [
+        {
+          "fact": "dayTetBen",
+          "op": "CO"
+        }
+      ]
+    },
+    "46019420": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Quạt"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "màn che"
+              },
+              {
+                "fact": "cachDieuKhien",
+                "op": "TRONG",
+                "value": [
+                  "BANG_TAY"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Quạt",
+                  "màn che"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "46019410",
+        "46019420"
+      ],
+      "lyDo": "46019410 \"Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải\" và 46019420 \"Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng\" — quạt/màn che đan bằng vật liệu tết bện thoả cả hai dòng theo chữ, chữ biểu không loại trừ nhau, không có căn cứ thứ tự"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "46019410",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.46019410 \"Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải\" ⇒ dayTetBen CO — khoá đọc trọn vế mở lẫn vế giới hạn (tu-vung@2)"
+    },
+    {
+      "ma": "46019420",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.46019420 (EN: Fans and handscreens, frames and handles therefor, and parts thereof) ⇒ HOAC [[Quạt],[màn che + cachDieuKhien BANG_TAY],[laBoPhan + dungCho Quạt/màn che]]"
+    }
+  ]
+}

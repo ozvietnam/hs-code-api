@@ -1,0 +1,162 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "480255",
+  "nhom": "4802",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1551#soan-480255",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4802552",
+      "nguon": "tieuDe.4802552",
+      "trich": "4802552 Giấy và bìa trang trí",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy và bìa trang trí"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "4802556",
+      "nguon": "tieuDe.4802556",
+      "trich": "4802556 Loại dùng để viết, in và các mục đích đồ bản khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "48025521",
+      "nguon": "tax.48025521",
+      "trich": "48025521 - - - - Có chiều rộng không quá 15 cm (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 15,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025529",
+      "nguon": "tax.48025529",
+      "trich": "48025529 - - - - Loại khác (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025540",
+      "nguon": "tax.48025540",
+      "trich": "48025540 - - - Giấy làm nền sản xuất giấy tráng nhôm(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy làm nền"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất giấy tráng nhôm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025550",
+      "nguon": "tax.48025550",
+      "trich": "48025550 - - - Giấy làm nền sản xuất giấy chống dính (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy làm nền"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất giấy chống dính"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025561",
+      "nguon": "tax.48025561",
+      "trich": "48025561 - - - - Có chiều rộng không quá 15 cm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 15,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025569",
+      "nguon": "tax.48025569",
+      "trich": "48025569 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025570",
+      "nguon": "tax.48025570",
+      "trich": "48025570 - - - Giấy nhiều lớp(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "nhieuLop",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48025590",
+      "nguon": "tax.48025590",
+      "trich": "48025590 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48025521",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48025521 \"Có chiều rộng không quá 15 cm (SEN)\" ⇒ chieuRong <= 15 cm; dòng con của 4802552 nên không lặp điều kiện tiêu đề; \"(SEN)\" là dấu chú giải"
+    },
+    {
+      "ma": "4802556",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802556 \"Loại dùng để viết, in và các mục đích đồ bản khác\" ⇒ congDung [\"viết\",\"in\",\"đồ bản\"] — ba mục đích thay thế (EN: writing, printing or other graphic purposes)"
+    },
+    {
+      "ma": "480255",
+      "loai": "DUNG",
+      "ghiChu": "Gói --goi báo [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:480255:chua-co, Claude giữ; kèm các cặp cong2-chong-lan chéo tầng (trang trí tenLoai ↔ viết/in congDung ↔ nhiều lớp) chưa xử lý vì PN6 đã DỪNG chờ bảng hiệu chỉnh — Claude xử khi mở lại"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "460193",
+  "nhom": "4601",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1549#soan-460193",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "46019310",
+      "nguon": "tax.46019310",
+      "trich": "46019310 - - - Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải",
+      "dieuKienSo": [
+        {
+          "fact": "dayTetBen",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "46019320",
+      "nguon": "tax.46019320",
+      "trich": "46019320 - - - Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Quạt"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "màn che"
+              },
+              {
+                "fact": "cachDieuKhien",
+                "op": "TRONG",
+                "value": [
+                  "BANG_TAY"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Quạt",
+                  "màn che"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "46019390",
+      "nguon": "tax.46019390",
+      "trich": "46019390 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "46019310",
+        "46019320"
+      ],
+      "lyDo": "46019310 \"Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải\" và 46019320 \"Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng\" — quạt/màn che đan bằng vật liệu tết bện thoả cả hai dòng theo chữ, chữ biểu không loại trừ nhau, không có căn cứ thứ tự"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "46019310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.46019310 \"Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải\" ⇒ dayTetBen CO — khoá đọc trọn vế mở lẫn vế giới hạn (tu-vung@2)"
+    },
+    {
+      "ma": "46019320",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.46019320 (EN: Fans and handscreens, frames and handles therefor, and parts thereof) ⇒ HOAC [[Quạt],[màn che + cachDieuKhien BANG_TAY],[laBoPhan + dungCho Quạt/màn che]]"
+    }
+  ]
+}
