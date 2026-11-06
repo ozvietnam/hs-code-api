@@ -1,11 +1,29 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "600410",
-  "phien": "zcode-sub:glm-5.3:20261106T1610#soan-600410",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-600410",
   "dong8": {
-    "60041010": { "dieuKienSo": [ { "fact": "tinhDanHoi", "op": "CO" } ] }
+    "60041010": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongSoiDanHoi",
+          "op": "<=",
+          "value": 20,
+          "donVi": "%"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "60041010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "hamLuongSoiDanHoi", "ghiChu": "tax.60041010: \"Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng\" — chưa có khoá số cho hàm lượng sợi đàn hồi theo khối lượng; tinhDanHoi CO chỉ nói chứa, không nói ngưỡng 20%" }
+    {
+      "ma": "60041010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.60041010 \"Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng\" ⇒ hamLuongSoiDanHoi <= 20 %. KHÔNG dùng tinhDanHoi CO: chữ biểu nói ngưỡng, không chỉ nói chứa sợi đàn hồi (phân nhóm 600410 vốn đã là hàng chứa từ 5% sợi đàn hồi theo tiêu đề cha)."
+    },
+    {
+      "ma": "60041090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.60041090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
   ]
 }

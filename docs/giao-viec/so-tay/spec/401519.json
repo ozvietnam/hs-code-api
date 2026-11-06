@@ -1,28 +1,14 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "401519",
-  "phien": "zcode-sub:glm-5.3:20261106T1536#soan-401519",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-401519",
   "dong8": {
-    "40151910": {
-      "dieuKienSo": []
-    },
-    "40151990": {
-      "dieuKienSo": [],
-      "phanConLai": true
-    }
+    "40151910": { "dieuKienSo": [ { "fact": "loaiCaoSu", "op": "TRONG", "value": ["TU_NHIEN"] } ] },
+    "40151990": { "dieuKienSo": [], "phanConLai": true }
   },
   "ghiChuSoan": [
-    {
-      "ma": "40151910",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "loaiCaoSu",
-      "ghiChu": "tax.40151910 \"Bằng cao su tự nhiên lưu hóa\" — cần khoá phân biệt cao su TỰ NHIÊN lưu hóa với cao su lưu hóa khác; chatLieu tu-vung@2 chỉ có \"cao su\" chung chung; cách tenLoai nguyên văn (\"cao su tự nhiên lưu hóa\" vs \"cao su lưu hóa\") làm .90 không tới được (cong2-dong-khong-toi-duoc) nên không dùng"
-    },
-    {
-      "ma": "40151990",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "loaiCaoSu",
-      "ghiChu": "tax.40151990 \"Bằng cao su lưu hóa khác\" — vế \"cao su lưu hóa khác\" cần khoá loại cao su, không có trong tu-vung@2; phanConLai true chỉ phủ định anh em .10"
-    }
+    { "ma": "40151910", "loai": "QUYET_DINH", "ghiChu": "tax.40151910 \"Bằng cao su tự nhiên lưu hóa\" ⇒ loaiCaoSu TRONG [TU_NHIEN] (đọc \"cao su tự nhiên\")" },
+    { "ma": "40151990", "loai": "QUYET_DINH", "ghiChu": "tax.40151990 \"Bằng cao su lưu hóa khác\" — \"khác\" trỏ anh em đứng trước .10 (cao su tự nhiên lưu hóa) ⇒ phanConLai true; không ghi loaiCaoSu TONG_HOP vì chữ biểu không nói \"tổng hợp\"" },
+    { "ma": "40151990", "loai": "BO_VE", "ve": "Bằng cao su lưu hóa khác", "lyDo": "\"cao su lưu hóa\" lặp ý nhóm 4015 (EN 401519 \"Rubber; vulcanised (other than hard rubber), gloves…\"): mọi hàng trong phân nhóm đều bằng cao su lưu hóa nên vế không tách dòng nào; phần \"khác\" (loại cao su không phải tự nhiên) do phanConLai phủ định .10 gánh, bỏ vế không đổi mã 8 số" }
   ]
 }

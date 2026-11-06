@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-mm:loop:20261106T1442#soan-480220",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480220",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,41 @@
       "hs": "48022010",
       "nguon": "tax.48022010",
       "trich": "48022010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "daGap",
+                "op": "KHONG"
+              }
+            ]
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -32,13 +66,7 @@
     {
       "ma": "48022010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48022010 \"48022010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — \"hoặc\" nối hai vế thay thế nhau: vế 1 (ở dạng cuộn + chiều rộng không quá 15cm) và vế 2 (ở dạng tờ hình chữ nhật (kể cả hình vuông) + không có chiều nào trên 36 cm + ở dạng không gấp). Vế 1 diễn đạt được (dangCuon CO + chieuRong <= 15 cm); vế 2 có khoá (hinhDangCatGocKinh CO + kichThuoc <= 36 cm — câu phủ MỌI chiều nên dùng kích thước chung, không dùng chieuRong) nhưng vế \"ở dạng không gấp\" không có khoá nào đọc được. Bỏ vế đó làm đổi mã 8 số (tờ đã gấp rơi về 48022090) ⇒ không BO_VE mà DỪNG: để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG, KHÔNG bịa khoá. Đơn vị số giữ đúng chữ biểu thuế (cm)."
-    },
-    {
-      "ma": "48022010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tax.48022010 \"48022010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+      "ghiChu": "tax.48022010 \"Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh: A = dangCuon CO + chieuRong <= 15 cm (\"không quá\" = <=); B = dangToChuNhat CO (\"ở dạng tờ hình chữ nhật (kể cả hình vuông)\") + motChieuTo <= 36 cm (\"không có chiều nào trên 36 cm\", mọi cạnh của tờ) + daGap KHONG (\"ở dạng không gấp\"). Đơn vị giữ cm như chữ biểu; biên đã đối chiếu tay. Các khoá dangToChuNhat/motChieuTo/daGap thay cho ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ."
     },
     {
       "ma": "480220",

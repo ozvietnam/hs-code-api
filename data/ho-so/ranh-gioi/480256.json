@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1551#soan-480256",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480256",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -40,7 +40,8 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
     }
   ],
   "dong8": [
@@ -50,10 +51,18 @@
       "trich": "48025621 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)",
       "dieuKienSo": [
         {
-          "fact": "kichThuoc",
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "motChieuTo",
           "op": "<=",
           "value": 36,
           "donVi": "cm"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -75,6 +84,14 @@
           "op": "<=",
           "value": 36,
           "donVi": "cm"
+        },
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -106,38 +123,80 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "4802562",
+        "4802564",
+        "48025650"
+      ],
+      "truc": {
+        "4802562": "TEN_LOAI",
+        "4802564": "CONG_DUNG",
+        "48025650": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng này là \"Giấy và bìa trang trí\" (4802562), loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802564) hay \"Giấy nhiều lớp\" (48025650)? Nếu hàng thoả từ hai nhánh trở lên (vd giấy trang trí dùng để viết, in; giấy nhiều lớp dùng để viết, in), biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "4802562": "Giấy và bìa trang trí",
+        "4802564": "Loại dùng để viết, in và các mục đích đồ bản khác",
+        "48025650": "Giấy nhiều lớp"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "4802562",
+            "4802564"
+          ],
+          "hang": "Giấy và bìa trang trí dùng để viết, in và các mục đích đồ bản khác"
+        },
+        {
+          "cap": [
+            "4802562",
+            "48025650"
+          ],
+          "hang": "Giấy và bìa trang trí nhiều lớp"
+        },
+        {
+          "cap": [
+            "4802564",
+            "48025650"
+          ],
+          "hang": "Giấy nhiều lớp dùng để viết, in và các mục đích đồ bản khác"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
-    {
-      "ma": "48025621",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.48025621 \"Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)\" ⇒ kichThuoc <= 36 cm cho vế \"không có chiều nào trên 36 cm\"; \"(kể cả hình vuông)\" là câu bao gồm; vế \"ở dạng không gấp\" xem THIEU_KHOA dưới"
-    },
-    {
-      "ma": "48025621",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dangKhongGep",
-      "ghiChu": "vế GIỚI HẠN \"không gấp\" (EN: unfolded) của tax.48025621 không có khoá tu-vung@2; kichThuoc chỉ phủ vế kích thước"
-    },
-    {
-      "ma": "48025641",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.48025641 \"Có chiều rộng không quá 36 cm ở dạng tờ hình chữ nhật (kể cả hình vuông) và ở dạng không gấp\" ⇒ chieuRong <= 36 cm; vế \"không gấp\" xem THIEU_KHOA dưới"
-    },
-    {
-      "ma": "48025641",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dangKhongGep",
-      "ghiChu": "vế GIỚI HẠN \"không gấp\" của tax.48025641 không có khoá tu-vung@2"
-    },
     {
       "ma": "4802564",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.4802564 \"Loại dùng để viết, in và các mục đích đồ bản khác\" ⇒ congDung [\"viết\",\"in\",\"đồ bản\"]; chữ \"Loại\" ở đây = \"loại dùng để\" (of a kind used for), KHÔNG phải phần còn lại ⇒ không dùng phanConLai"
     },
     {
+      "ma": "48025621",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48025621 \"Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)\" ⇒ dangToChuNhat CO + motChieuTo <= 36 cm (\"không có chiều nào trên\" = <=, mọi cạnh của tờ) + daGap KHONG (\"ở dạng không gấp\"). Đơn vị cm như chữ biểu; biên đã đối chiếu tay. Thay ghi chú THIEU_KHOA_TU_VUNG (dangKhongGep) và kichThuoc cũ."
+    },
+    {
+      "ma": "48025641",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48025641 \"Có chiều rộng không quá 36 cm ở dạng tờ hình chữ nhật (kể cả hình vuông) và ở dạng không gấp\" ⇒ chieuRong <= 36 cm (\"không quá\" = <=) + dangToChuNhat CO + daGap KHONG (\"ở dạng không gấp\"). Thay ghi chú THIEU_KHOA_TU_VUNG (dangKhongGep) cũ."
+    },
+    {
+      "ma": "4802564",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802564 \"Loại dùng để viết, in và các mục đích đồ bản khác\": \"khác\" là định ngữ của \"các mục đích đồ bản\", không phải phần còn lại ⇒ phanConLai false."
+    },
+    {
       "ma": "480256",
-      "loai": "DUNG",
-      "ghiChu": "Gói --goi báo [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:480256:chua-co, Claude giữ; kèm các cặp cong2-chong-lan chéo tầng (trang trí tenLoai ↔ viết/in congDung ↔ nhiều lớp) chưa xử lý vì PN6 đã DỪNG chờ bảng hiệu chỉnh — Claude xử khi mở lại"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ data/ho-so/hieu-chinh-tien-le.json đã có mục 480256-01 (48025690 ↔ 48025650 \"Giấy nhiều lớp\", loại KHONG_LECH): soạn theo chữ biểu, không lệch. Thay ghi chú DUNG can-bang-hieu-chinh-tien-le:chua-co cũ."
+    },
+    {
+      "ma": "480256",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chồng lấn theo TRỤC (#683): tiêu đề 4802562 \"Giấy và bìa trang trí\" (tên, tenLoai) ↔ 4802564 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (công dụng, congDung) ↔ dòng 48025650 \"Giấy nhiều lớp\" (đặc điểm, nhieuLop). sen.4802 nêu giấy nhiều lớp dùng để viết, in thuộc Nhóm 48.02 nên hàng nhiều lớp dùng để viết, in thoả cả 4802564 và 48025650; giấy trang trí dùng để viết, in / nhiều lớp là các hàng ví dụ máy đã kiểm; không khai chongLanVanBan (không gỡ được trục), phanXu null (người khai/chuyên gia phân xử)."
     }
   ]
 }

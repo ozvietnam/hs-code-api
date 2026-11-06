@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-mm:loop:20261106T1521#soan-480269",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480269",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -31,7 +31,22 @@
       "hs": "48026911",
       "nguon": "tax.48026911",
       "trich": "48026911 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -98,13 +113,7 @@
     {
       "ma": "48026911",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48026911 \"48026911 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — chữ dòng là MỘT mệnh đề (không có \"hoặc\"), gồm 3 vế nối nhau: vế hình thức \"Ở dạng tờ hình chữ nhật (kể cả hình vuông)\" đọc được bằng hinhDangCatGocKinh CO; vế kích thước \"không có chiều nào trên 36 cm\" đọc được bằng kichThuoc <= 36 cm (câu phủ MỌI chiều nên dùng kích thước chung, không dùng chieuRong; \"trên\" = > nên \"không có chiều nào trên 36 cm\" = mọi chiều <= 36 cm); vế \"ở dạng không gấp\" KHÔNG có khoá nào đọc được. Bỏ vế đó làm đổi mã 8 số (tờ đã gấp rơi về 48026919) ⇒ không bịa khoá mà để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG. Đơn vị số giữ đúng chữ biểu thuế (cm)."
-    },
-    {
-      "ma": "48026911",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tax.48026911 \"48026911 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+      "ghiChu": "tax.48026911 \"Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — MỘT mệnh đề, 3 vế VÀ: \"Ở dạng tờ hình chữ nhật (kể cả hình vuông)\" ⇒ dangToChuNhat CO; \"không có chiều nào trên 36 cm\" ⇒ motChieuTo <= 36 cm (mọi cạnh của tờ, \"trên\" = >; đơn vị giữ cm như chữ biểu); \"ở dạng không gấp\" ⇒ daGap KHONG (khoá daGap, cách đọc KHÔNG \"dạng không gấp\"). Đã đối chiếu tay biên <= với chữ \"không … trên\"."
     },
     {
       "ma": "48026919",

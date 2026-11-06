@@ -1,18 +1,87 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "580230",
-  "phien": "zcode-sub:glm-5.3:20261106T1538#soan-580230",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-580230",
   "dong8": {
-    "58023010": { "dieuKienSo": [ { "fact": "daTrangPhuEpLop", "op": "CO" } ] },
-    "58023020": { "dieuKienSo": [
-      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dệt thoi" },
-      { "fact": "loaiSoiDet", "op": "TRONG", "value": ["BONG"] }
-    ] },
-    "58023030": { "dieuKienSo": [
-      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dệt thoi" }
-    ], "phanConLai": ["58023020"] }
+    "58023010": {
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ]
+    },
+    "58023020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dệt thoi"
+        },
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "BONG",
+            "NHAN_TAO"
+          ]
+        }
+      ]
+    },
+    "58023030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dệt thoi"
+        }
+      ],
+      "phanConLai": [
+        "58023020"
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "58023020", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "loaiSoiDet", "ghiChu": "tax.58023020: \"Dệt thoi, từ bông hoặc sợi nhân tạo\" — chưa có giá trị nào của loaiSoiDet đọc được cụm \"sợi nhân tạo\" (khác \"sợi tổng hợp\" và \"sợi tái tạo\")" }
+    {
+      "ma": "58023010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58023010 \"Đã ngâm tẩm, tráng hoặc phủ\" ⇒ daTrangPhuEpLop CO (giữ từ bản trước, đúng chữ)."
+    },
+    {
+      "ma": "58023020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58023020 \"Dệt thoi, từ bông hoặc sợi nhân tạo\" ⇒ tenLoai \"Dệt thoi\" + loaiSoiDet TRONG [BONG, NHAN_TAO] (mảng = hoặc; \"từ bông\" ⇒ BONG, \"sợi nhân tạo\" ⇒ NHAN_TAO)."
+    },
+    {
+      "ma": "58023030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58023030 \"Dệt thoi, từ vật liệu khác\" ⇒ phần còn lại có tên: tenLoai \"Dệt thoi\" + phanConLai [58023020] (vật liệu khác bông/sợi nhân tạo của .20); .10 \"Đã ngâm tẩm, tráng hoặc phủ\" là trục khác nên không phủ định ở đây (đã đối chiếu tay cảnh báo nghi-phan-con-lai)."
+    },
+    {
+      "ma": "58023090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58023090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "58023010",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Cặp (.10,.20) và (.10,.30): .10 chia theo xử lý ngâm tẩm/tráng/phủ, .20/.30 chia theo kiểu dệt + vật liệu; chữ biểu không loại trừ nhau và không nêu thứ tự ⇒ khai chongLanVanBan (QUY-TRINH 4, bước 4), không bịa điều kiện tách."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "58023010",
+        "58023020"
+      ],
+      "lyDo": "tax.58023010 \"Đã ngâm tẩm, tráng hoặc phủ\" chia theo xử lý bề mặt; tax.58023020 \"Dệt thoi, từ bông hoặc sợi nhân tạo\" chia theo kiểu dệt và vật liệu; vải tạo búi dệt thoi từ bông có tráng phủ thoả cả hai chữ, chữ biểu không nêu thứ tự ưu tiên giữa hai dòng; không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "58023010",
+        "58023030"
+      ],
+      "lyDo": "tax.58023010 \"Đã ngâm tẩm, tráng hoặc phủ\" chia theo xử lý bề mặt; tax.58023030 \"Dệt thoi, từ vật liệu khác\" chia theo kiểu dệt và vật liệu; vải tạo búi dệt thoi từ vật liệu khác có tráng phủ thoả cả hai chữ, chữ biểu không nêu thứ tự ưu tiên giữa hai dòng; không có căn cứ thứ tự"
+    }
   ]
 }

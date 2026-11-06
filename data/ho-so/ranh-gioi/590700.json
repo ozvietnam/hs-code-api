@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1555#soan-590700",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-590700",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,35 +17,72 @@
       "hs": "59070010",
       "nguon": "tax.59070010",
       "trich": "59070010 - Các loại vải dệt được ngâm tẩm, tráng hoặc phủ với dầu hoặc các chế phẩm từ dầu",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chatNgamTamTrangPhu",
+          "op": "TRONG",
+          "value": [
+            "DAU"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "59070030",
       "nguon": "tax.59070030",
       "trich": "59070030 - Các loại vải dệt được ngâm tẩm, tráng hoặc phủ với hóa chất chịu lửa",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chatNgamTamTrangPhu",
+          "op": "TRONG",
+          "value": [
+            "HOA_CHAT_CHIU_LUA"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "59070040",
       "nguon": "tax.59070040",
       "trich": "59070040 - Các loại vải được ngâm tẩm, tráng hoặc phủ với nhung xơ vụn, toàn bộ bề mặt được phủ với xơ vụn dệt",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chatNgamTamTrangPhu",
+          "op": "TRONG",
+          "value": [
+            "NHUNG_XO_VUN"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "59070050",
       "nguon": "tax.59070050",
       "trich": "59070050 - Các loại vải được ngâm tẩm, tráng hoặc phủ lớp sáp, hắc ín, bi-tum hoặc các sản phẩm tương tự",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chatNgamTamTrangPhu",
+          "op": "TRONG",
+          "value": [
+            "SAP_HAC_IN_BITUM"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "59070060",
       "nguon": "tax.59070060",
       "trich": "59070060 - Các loại vải được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM",
       "phanConLai": true
     },
@@ -60,27 +97,50 @@
   "ghiChuSoan": [
     {
       "ma": "59070010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu",
-      "ghiChu": "tax.59070010: \"được ngâm tẩm, tráng hoặc phủ với dầu hoặc các chế phẩm từ dầu\" — chưa có khoá/giá trị cho chất tráng phủ là dầu"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59070010 \"được ngâm tẩm, tráng hoặc phủ với dầu hoặc các chế phẩm từ dầu\" ⇒ chatNgamTamTrangPhu TRONG [DAU] (khoá LIET_KE mới tu-vung@2, giá trị DAU đọc \"với dầu hoặc các chế phẩm từ dầu\")."
     },
     {
       "ma": "59070030",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu",
-      "ghiChu": "tax.59070030: \"được ngâm tẩm, tráng hoặc phủ với hóa chất chịu lửa\" — chưa có khoá/giá trị cho chất tráng phủ chịu lửa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59070030 \"được ngâm tẩm, tráng hoặc phủ với hóa chất chịu lửa\" ⇒ chatNgamTamTrangPhu TRONG [HOA_CHAT_CHIU_LUA]."
     },
     {
       "ma": "59070040",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu",
-      "ghiChu": "tax.59070040: \"được ngâm tẩm, tráng hoặc phủ với nhung xơ vụn, toàn bộ bề mặt được phủ với xơ vụn dệt\" — chưa có khoá/giá trị cho chất tráng phủ là nhung xơ vụn"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59070040 \"được ngâm tẩm, tráng hoặc phủ với nhung xơ vụn, toàn bộ bề mặt được phủ với xơ vụn dệt\" ⇒ chatNgamTamTrangPhu TRONG [NHUNG_XO_VUN] (giá trị đọc cả \"nhung xơ vụn\" lẫn \"xơ vụn dệt\")."
     },
     {
       "ma": "59070050",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu",
-      "ghiChu": "tax.59070050: \"được ngâm tẩm, tráng hoặc phủ lớp sáp, hắc ín, bi-tum hoặc các sản phẩm tương tự\" — chưa có khoá/giá trị cho chất tráng phủ là sáp, hắc ín, bi-tum"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59070050 \"được ngâm tẩm, tráng hoặc phủ lớp sáp, hắc ín, bi-tum hoặc các sản phẩm tương tự\" ⇒ chatNgamTamTrangPhu TRONG [SAP_HAC_IN_BITUM] (nhãn giá trị: \"sáp, hắc ín, bi-tum hoặc sản phẩm tương tự\"; chữ \"hoặc các sản phẩm tương tự\" nằm trong định nghĩa giá trị, không liệt kê đóng thêm)."
+    },
+    {
+      "ma": "59070060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59070060 \"Các loại vải được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác\" là phần còn lại CÓ TÊN của bốn dòng anh em đứng trước (dầu, hóa chất chịu lửa, nhung xơ vụn, sáp/hắc ín/bi-tum) ⇒ phanConLai true, không điều kiện riêng."
+    },
+    {
+      "ma": "59070090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59070090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "59070050",
+      "loai": "BO_VE",
+      "ve": "hoặc các sản phẩm tương tự",
+      "lyDo": "Vế mở nằm trong định nghĩa của chính giá trị SAP_HAC_IN_BITUM của chatNgamTamTrangPhu: nhãn tu-vung@2 là \"sáp, hắc ín, bi-tum hoặc sản phẩm tương tự\", đúng bằng chữ biểu \"lớp sáp, hắc ín, bi-tum hoặc các sản phẩm tương tự\" (EN \"wax, tar, bitumen or similar products\"); giá trị không liệt kê đóng thêm tên nào ngoài chữ biểu. Người soát xác nhận nhãn khớp."
+    },
+    {
+      "ma": "59070060",
+      "loai": "BO_VE",
+      "ve": "bằng các vật liệu khác",
+      "lyDo": "Tu-vung@2 không có khoá \"vật liệu khác\" cho nhóm 59.07; nghĩa của vế (EN \"other substances\") là chất ngâm tẩm, tráng, phủ khác với bốn chất của các dòng anh em (dầu, hóa chất chịu lửa, nhung xơ vụn, sáp/hắc ín/bi-tum) và đã được phanConLai true phủ định đúng bốn điều kiện chatNgamTamTrangPhu đó; bỏ vế không làm đổi mã 8 số."
+    },
+    {
+      "ma": "59070060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59070060 \"Các loại vải được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác\" ⇒ daTrangPhuEpLop CO (khoá đọc thêm \"được ngâm tẩm, tráng hoặc phủ\" từ 06/11) + phanConLai true (phủ định bốn chất của dòng anh em .10/.30/.40/.50). Dòng .90 \"Loại khác\" khi đó phủ định đúng điều kiện này."
     }
   ]
 }

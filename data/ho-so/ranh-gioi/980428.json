@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0950#soan-980428",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-980428",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -30,7 +30,19 @@
       "hs": "98042811",
       "nguon": "tax.98042811",
       "trich": "98042811 - - - - Còn vỏ, đã hấp chín hoặc luộc chín trong nước",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "conVo",
+          "op": "CO"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "HAP_LUOC_CHIN"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -56,9 +68,8 @@
     },
     {
       "ma": "98042811",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "conVo (còn vỏ) / cachCheBien (hấp chín, luộc chín)",
-      "ghiChu": "tax.98042811 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" — không có khoá tu-vung@2 nào đọc được \"còn vỏ\" hay \"hấp chín hoặc luộc chín trong nước\" (phuongPhapBaoQuan không có giá trị hấp/luộc); bỏ các vế này làm đổi mã (tôm bỏ vỏ/đông lạnh rơi về 98042819) ⇒ DỪNG, không bịa."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98042811 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" ⇒ conVo CO (\"Còn vỏ\") + phuongPhapBaoQuan TRONG [HAP_LUOC_CHIN] (\"đã hấp chín hoặc luộc chín trong nước\")."
     }
   ]
 }

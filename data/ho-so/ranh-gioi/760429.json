@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0920#soan-760429",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-760429",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,23 @@
       "hs": "76042910",
       "nguon": "tax.76042910",
       "trich": "76042910 - - - Dạng thanh và que được ép đùn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "thanh",
+            "que"
+          ]
+        },
+        {
+          "fact": "phuongPhapCheTao",
+          "op": "TRONG",
+          "value": [
+            "EP_DUN"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -53,9 +69,14 @@
   "ghiChuSoan": [
     {
       "ma": "76042910",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapCheTao (giá trị EP_DUN — ép đùn/extruded)",
-      "ghiChu": "tax.76042910 \"Dạng thanh và que được ép đùn\": không có khoá/giá trị tu-vung@2 nào đọc được \"được ép đùn\" (EP_PHUN đọc \"ép phun/đúc phun\", chuaGiaCongQuaMucCanNong đọc cả câu dài hơn) — bỏ vế này làm đổi mã (thanh/que không ép đùn rơi về 76042990 Loại khác) ⇒ DỪNG, không bịa."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76042910 \"Dạng thanh và que được ép đùn\" ⇒ tenLoai [\"thanh\",\"que\"] + phuongPhapCheTao TRONG [EP_DUN] (\"được ép đùn\")."
+    },
+    {
+      "ma": "76042910",
+      "loai": "BO_VE",
+      "ve": "được ép đùn",
+      "lyDo": "Máy đọc sai cấu trúc: chữ Anh cùng dòng \"Extruded bars and rods\" đặt \"extruded\" trước cả hai danh từ nên định ngữ \"được ép đùn\" là CHUNG của thanh và que; điều kiện phuongPhapCheTao EP_DUN đã đọc vế này và áp cho cả tenLoai [\"thanh\",\"que\"], không chỉ \"que\"."
     },
     {
       "ma": "76042930",

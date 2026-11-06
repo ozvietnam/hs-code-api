@@ -1,15 +1,40 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "600536",
-  "phien": "zcode-sub:glm-5.3:20261106T1612#soan-600536",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-600536",
   "dong8": {
-    "60053610": { "dieuKienSo": [
-      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vải dệt kim" },
-      { "fact": "loaiSoiDet", "op": "TRONG", "value": ["SOI_TONG_HOP"] },
-      { "fact": "dungCho", "op": "CONG_DUNG", "value": "quần áo bơi" }
-    ] }
+    "60053610": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vải dệt kim"
+        },
+        {
+          "fact": "soiChiemTiLeLonHon",
+          "op": "TRONG",
+          "value": [
+            "POLYESTE"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "quần áo bơi"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "60053610", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "hamLuongSoi", "ghiChu": "tax.60053610: \"trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng\" — chưa có khoá cho so sánh hàm lượng giữa hai loại sợi theo khối lượng (khoá tiLe là tỉ lệ kích thước, đơn vị lần, sai trục)" }
+    {
+      "ma": "60053610",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.60053610 \"Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi\" ⇒ tenLoai \"Vải dệt kim\" + soiChiemTiLeLonHon TRONG [POLYESTE] (đọc \"polyeste chiếm tỷ lệ lớn hơn\") + dungCho \"quần áo bơi\" (vế \"dùng để làm quần áo bơi\"). Đã bỏ loaiSoiDet SOI_TONG_HOP của bản cũ: chữ biểu không nói \"tổng hợp\"; vế polyeste/polybutylen đã do soiChiemTiLeLonHon phủ."
+    },
+    {
+      "ma": "60053690",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.60053690 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
   ]
 }

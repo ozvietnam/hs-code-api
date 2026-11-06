@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-mm:loop:20261106T1500#soan-480258",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480258",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -33,10 +33,15 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": "dùng để viết, in và các mục đích đồ bản khác"
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
     }
   ],
   "dong8": [
@@ -44,7 +49,47 @@
       "hs": "48025821",
       "nguon": "tax.48025821",
       "trich": "48025821 - - - - Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "chieuKiaTo",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              },
+              {
+                "fact": "daGap",
+                "op": "KHONG"
+              }
+            ]
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -58,7 +103,41 @@
       "hs": "48025831",
       "nguon": "tax.48025831",
       "trich": "48025831 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "daGap",
+                "op": "KHONG"
+              }
+            ]
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -142,18 +221,12 @@
     {
       "ma": "4802583",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4802583 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"dùng để viết, in và các mục đích đồ bản khác\" (giữ nguyên cụm chữ biểu). Gói gắn nghiPhanConLai cho tầng này: chữ \"khác\" ở cuối có thể là dấu hiệu phần còn lại (ngoài 4802582) hoặc định ngữ của \"các mục đích đồ bản\" — không tự chốt nên KHÔNG khai phanConLai, cũng không bịa điều kiện loại trừ; tách nhánh bằng chongLanTruc (phanXu null)."
+      "ghiChu": "tieuDe.4802583 \"Loại dùng để viết, in và các mục đích đồ bản khác\" ⇒ congDung [\"viết\",\"in\",\"đồ bản\"] (liệt kê mục đích thay thế nhau ⇒ mảng, cùng cách với 480256/480257); chữ \"khác\" là định ngữ của \"các mục đích đồ bản\", KHÔNG phải \"Loại khác\" trần ⇒ phanConLai false; tách khỏi 4802582 bằng chongLanTruc (phanXu null)."
     },
     {
       "ma": "48025821",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48025821 \"48025821 - - - - Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)\" — \"hoặc\" nối hai vế thay thế nhau: vế 1 (ở dạng cuộn + chiều rộng từ 15 cm trở xuống) và vế 2 (ở dạng tờ hình chữ nhật (kể cả hình vuông) + một chiều từ 36 cm trở xuống + chiều kia từ 15 cm trở xuống + ở dạng không gấp). Vế 1 đọc được bằng dangCuon CO + chieuRong <= 15 cm (\"từ 15 cm trở xuống\" = <=); vế 2 không có khoá đọc được vế \"ở dạng không gấp\". Bỏ vế đó làm đổi mã 8 số (tờ đã gấp rơi về 48025829) ⇒ không BO_VE mà để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG, KHÔNG bịa khoá."
-    },
-    {
-      "ma": "48025821",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tax.48025821 \"48025821 - - - - Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+      "ghiChu": "tax.48025821 \"Ở dạng cuộn có chiều rộng từ 15 cm trở xuống hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp(SEN)\" ⇒ chữ \"hoặc\" tách HAI nhánh: A = dangCuon CO + chieuRong <= 15 cm (\"từ 15 cm trở xuống\" = <=); B = dangToChuNhat CO + motChieuTo <= 36 cm + chieuKiaTo <= 15 cm (\"một chiều … và chiều kia …\") + daGap KHONG (\"ở dạng không gấp\"). Đơn vị cm như chữ biểu. Khoá mới thay ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ."
     },
     {
       "ma": "48025829",
@@ -163,13 +236,7 @@
     {
       "ma": "48025831",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48025831 \"48025831 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — \"hoặc\" nối hai vế thay thế nhau: vế 1 (ở dạng cuộn + chiều rộng không quá 15cm) và vế 2 (ở dạng tờ hình chữ nhật (kể cả hình vuông) + không có chiều nào trên 36 cm + ở dạng không gấp). Vế 1 đọc được bằng dangCuon CO + chieuRong <= 15cm; vế 2 không có khoá đọc được vế \"ở dạng không gấp\". Bỏ vế đó làm đổi mã 8 số (tờ đã gấp rơi về 48025839) ⇒ không BO_VE mà để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG, KHÔNG bịa khoá."
-    },
-    {
-      "ma": "48025831",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tax.48025831 \"48025831 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+      "ghiChu": "tax.48025831 \"Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh: A = dangCuon CO + chieuRong <= 15 cm; B = dangToChuNhat CO + motChieuTo <= 36 cm (\"không có chiều nào trên\" = <=) + daGap KHONG. Đơn vị cm như chữ biểu; biên đã đối chiếu tay. Khoá mới thay ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ."
     },
     {
       "ma": "48025839",

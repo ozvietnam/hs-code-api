@@ -393,6 +393,11 @@ la('daTrangPhuEpLop "vải tráng cao su" ⇒ true (06/11, tiêu đề 5902.10.1
 la('daTrangPhuEpLop "chưa tráng" vẫn ⇒ false', 'daTrangPhuEpLop', 'vải chưa tráng, phủ hoặc ép lớp', false);
 la('daPhu "không phủ" ⇒ false / "đã phủ" ⇒ true (06/11, tiêu đề 4813.20)', 'daPhu', 'Loại khác, không phủ', false);
 la('daPhu "đã phủ" ⇒ true', 'daPhu', 'Loại khác, đã phủ', true);
+la('daTrangPhuEpLop "được ngâm tẩm, tráng hoặc phủ" ⇒ true (06/11, 5907.00.60)', 'daTrangPhuEpLop', 'Các loại vải được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác', true);
+{
+  const r = T.docGiaTri('loaiSoiDet', 'Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô');
+  check('loaiSoiDet "lông … loại mịn hoặc loại thô" ⇒ ungVien [LEN_LONG_DONG_VAT_MIN, LONG_DONG_VAT_THO] (06/11, 5811.00.10)', JSON.stringify([...(r.ungVien || [])].sort()) === JSON.stringify(['LEN_LONG_DONG_VAT_MIN', 'LONG_DONG_VAT_THO']), r);
+}
 
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────
 const viet = (khoa, v) => { try { return T.vietCum(khoa, v); } catch (e) { return `LOI ${e.message}`; } };

@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-mm:loop:20261106T1518#soan-480262",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480262",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -21,6 +21,26 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Giấy và bìa trang trí"
+        },
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuKiaTo",
+          "op": "<=",
+          "value": 15,
+          "donVi": "cm"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -36,7 +56,8 @@
           "value": "Giấy và bìa trang trí"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "id": "4802623",
@@ -46,10 +67,15 @@
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
-          "value": "dùng để viết, in và các mục đích đồ bản khác"
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
     }
   ],
   "dong8": [
@@ -111,7 +137,22 @@
       "hs": "48026231",
       "nguon": "tax.48026231",
       "trich": "48026231 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -173,14 +214,14 @@
             "4802621",
             "4802623"
           ],
-          "hang": "Giấy và bìa trang trí dạng tờ hình chữ nhật 36 cm × 15 cm không gấp, dùng để viết, in và các mục đích đồ bản khác"
+          "hang": "Giấy và bìa trang trí dạng tờ hình chữ nhật với một chiều không quá 30 cm và chiều kia không quá 10 cm, ở dạng không gấp, dùng để viết, in và các mục đích đồ bản khác"
         },
         {
           "cap": [
             "4802622",
             "4802623"
           ],
-          "hang": "Giấy và bìa trang trí loại khác (dạng khác tờ 36 cm × 15 cm không gấp), dùng để viết, in và các mục đích đồ bản khác"
+          "hang": "Giấy và bìa trang trí loại khác (dạng cuộn), dùng để viết, in và các mục đích đồ bản khác"
         }
       ],
       "phanXu": null
@@ -196,33 +237,6 @@
       "ma": "480262",
       "loai": "QUYET_DINH",
       "ghiChu": "Chồng lấn theo TRỤC ở cấp tiêu đề (#683): nhánh 4802621/4802622 \"Giấy và bìa trang trí\" (khoá tên tenLoai) đứng cạnh nhánh 4802623 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (khoá công dụng congDung) — không chung khoá, có hàng thật thoả cả hai nhánh (tờ giấy và bìa trang trí dạng tờ không gấp dùng để viết, in) ⇒ không khai chongLanVanBan (không gỡ được trục), khai chongLanTruc cho cụm các tiêu đề, phanXu null (người khai/chuyên gia phân xử). Cặp (4802621, 4802622) không phải cặp chồng lấn trục — cùng trục tên loại, phân biệt nhau bằng dạng tờ (≤36 cm/≤15 cm không gấp) vs phần còn lại."
-    },
-    {
-      "ma": "4802621",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4802621 \"4802621 Giấy và bìa trang trí, dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) không có khoá nào đọc được; các vế đọc được (tenLoai \"Giấy và bìa trang trí\"; hinhDangCatGocKinh CO cho dạng tờ hình chữ nhật (kể cả hình vuông); một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống) bị giữ lại vì bỏ vế \"không gấp\" làm đổi mã (tờ đã gấp rơi về 4802622 \"khác\") ⇒ để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG, KHÔNG bịa khoá. sen.48026211 \"Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ:\" mô tả CHÍNH tầng này ⇒ không mã hoá thêm điều kiện vào dòng 8 số."
-    },
-    {
-      "ma": "4802621",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tieuDe.4802621 \"4802621 Giấy và bìa trang trí, dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
-    },
-    {
-      "ma": "4802622",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4802622 \"4802622 Giấy và bìa trang trí khác\" (tầng tiêu đề 7 số có tên) ⇒ tenLoai \"Giấy và bìa trang trí\" (cùng khoá/cùng cách với 4802582, 4802613 anh em cùng chương 48). Gói gắn nghiPhanConLai cho tầng này: \"khác\" là phần còn lại của nhánh \"Giấy và bìa trang trí\" sau 4802621 (dạng tờ một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp) — không tự chốt nên KHÔNG khai phanConLai, không bịa điều kiện loại trừ. Vế đối chiếu với 4802621 chính là vế \"ở dạng không gấp\" mà không có khoá ⇒ chưa tách được 4802621 khỏi 4802622 bằng máy (xem ghi chú THIEU_KHOA_TU_VUNG); giá trị tenLoai trùng với 4802621 là do cả hai cùng mang TÊN loại, phần phân biệt nằm ở dạng tờ."
-    },
-    {
-      "ma": "4802622",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tieuDe.4802622 \"4802622 Giấy và bìa trang trí khác\" — để diễn đạt phần còn lại (khác 4802621: không phải dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp) cần khoá có/không cho vế \"không gấp\"; tu-vung@2 chưa có khoá gấp/không gấp."
-    },
-    {
-      "ma": "4802623",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4802623 \"4802623 Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"dùng để viết, in và các mục đích đồ bản khác\" (giữ nguyên cụm chữ biểu, cùng khoá/cùng cách với 4802583, 4802615). Gói gắn nghiPhanConLai cho tầng này: chữ \"khác\" ở cuối là định ngữ của \"các mục đích đồ bản\", không phải \"Loại khác\" trần — không tự chốt nên KHÔNG khai phanConLai, không bịa điều kiện loại trừ; tách nhánh bằng chongLanTruc (phanXu null)."
     },
     {
       "ma": "4802629",
@@ -250,17 +264,6 @@
       "ghiChu": "tax.48026229 \"48026229 - - - - Loại khác (SEN)\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em 48026221)."
     },
     {
-      "ma": "48026231",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.48026231 \"48026231 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — vế \"ở dạng không gấp\" không có khoá nào đọc được; vế đọc được (hinhDangCatGocKinh CO cho dạng tờ hình chữ nhật (kể cả hình vuông); không có chiều nào trên 36 cm ⇒ kichThuoc <= 36 cm — câu phủ MỌI chiều nên dùng kích thước chung, không dùng chieuRong) bị giữ lại vì bỏ vế \"không gấp\" làm đổi mã (tờ đã gấp rơi về 48026239) ⇒ để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG, KHÔNG bịa khoá. Đơn vị số giữ đúng chữ biểu thuế (cm)."
-    },
-    {
-      "ma": "48026231",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tax.48026231 \"48026231 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
-    },
-    {
       "ma": "48026239",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.48026239 \"48026239 - - - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em 48026231)."
@@ -278,7 +281,22 @@
     {
       "ma": "4802621",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4802621 \"Giấy và bìa trang trí, dạng tờ hình chữ nhật…\" ⇒ tenLoai \"Giấy và bìa trang trí\" lấy nguyên văn từ tiêu đề (sửa lỗi cong3-chong-lan-truc-truc-lech: trục TEN_LOAI khai trong chongLanTruc phải có khoá riêng khớp); kích thước 36/15 cm để lô sau số hoá tiếp."
+      "ghiChu": "tieuDe.4802621 \"Giấy và bìa trang trí, dạng tờ hình chữ nhật (kể cả hình vuông) với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống ở dạng không gấp\" ⇒ tenLoai \"Giấy và bìa trang trí\" + dangToChuNhat CO + motChieuTo <= 36 cm + chieuKiaTo <= 15 cm (\"từ … trở xuống\" = <=) + daGap KHONG (\"ở dạng không gấp\"). Đơn vị cm như chữ biểu. Khoá mới thay ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ. sen.48026211 mô tả CHÍNH tầng này ⇒ không mã hoá thêm điều kiện."
+    },
+    {
+      "ma": "4802622",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802622 \"Giấy và bìa trang trí khác\" ⇒ tenLoai \"Giấy và bìa trang trí\" + phanConLai true: \"khác\" là phần CÒN LẠI của nhánh \"Giấy và bìa trang trí\" sau anh em đứng liền trước 4802621 (dạng tờ một chiều từ 36 cm trở xuống, chiều kia từ 15 cm trở xuống, không gấp); máy phủ định điều kiện 4802621 nên tờ đã gấp hoặc lớn hơn rơi vào đây. Thay ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ."
+    },
+    {
+      "ma": "4802623",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802623 \"Loại dùng để viết, in và các mục đích đồ bản khác\" ⇒ congDung [\"viết\",\"in\",\"đồ bản\"] (liệt kê mục đích thay thế nhau ⇒ mảng); chữ \"khác\" là định ngữ của \"các mục đích đồ bản\", KHÔNG phải \"Loại khác\" trần ⇒ phanConLai false; tách khỏi 4802621/4802622 bằng chongLanTruc (phanXu null)."
+    },
+    {
+      "ma": "48026231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026231 \"Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo <= 36 cm (\"không có chiều nào trên\" = <=, mọi cạnh của tờ) + daGap KHONG (\"ở dạng không gấp\"). Đơn vị cm như chữ biểu; biên đã đối chiếu tay. Thay ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ."
     }
   ]
 }

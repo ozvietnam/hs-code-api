@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "481141",
-  "phien": "zcode-mm:loop:20261106T1446#soan-481141",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-481141",
   "dong8": {
     "48114120": {
       "dieuKienSo": [
@@ -22,10 +22,18 @@
             ],
             [
               {
-                "fact": "kichThuoc",
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
                 "op": "<=",
                 "value": 36,
                 "donVi": "cm"
+              },
+              {
+                "fact": "daGap",
+                "op": "KHONG"
               }
             ]
           ]
@@ -38,56 +46,17 @@
     {
       "ma": "48114120",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48114120 \"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh trong cùng một dòng 8 số ⇒ khai op HOAC + phuongAn (quy trình bước 3.5), KHÔNG gộp hai ngưỡng thành VÀ: phương án A = dạng cuộn + chiều rộng <= 15 cm; phương án B = dạng tờ + mọi chiều <= 36 cm + không gấp."
-    },
-    {
-      "ma": "48114120",
-      "loai": "QUYET_DINH",
-      "ghiChu": "\"Dạng cuộn\" (vế đầu của phương án A) ⇒ khoá dangCuon (CO_KHONG, op CO). Đặt TRONG phương án A nên không loại nhầm phương án B (dạng tờ)."
-    },
-    {
-      "ma": "48114120",
-      "loai": "QUYET_DINH",
-      "ghiChu": "\"không có chiều nào trên 36 cm\" ⇒ mọi chiều (dài x rộng x cao) đều không trên 36 cm ⇒ khoá kichThuoc, biên <=, value 36, đơn vị theo chữ biểu."
-    },
-    {
-      "ma": "48114120",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Biên theo chữ: \"không quá\" = <=. Đơn vị giữ nguyên theo chữ biểu (cm), không quy đổi sang mm của donViChuan (việc quy đổi để tầng sinh sổ tay)."
-    },
-    {
-      "ma": "48114120",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Khoá kichThuoc không đọc được trực tiếp từ chữ (chữ ghi \"chiều nào\", không có \"kích thước\") ⇒ máy báo cong3-bien-khong-doc-duoc; người soát đối chiếu tay theo chữ biểu."
-    },
-    {
-      "ma": "48114120",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hinhDangTo",
-      "ghiChu": "ở dạng tờ hình chữ nhật (kể cả hình vuông)",
-      "lyDo": "Chưa có khoá từ vựng cho hình dạng tờ giấy; hinhDangCatGocKinh là \"tấm kính hình vuông hoặc hình chữ nhật\" - không dùng cho hàng giấy. Không bịa khoá."
-    },
-    {
-      "ma": "48114120",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dangKhongGap",
-      "ghiChu": "ở dạng không gấp",
-      "lyDo": "Chưa có khoá từ vựng cho tờ giấy ở dạng không gấp; loaiCung là \"loại cứng (rigid)\" - không gấp khác cứng. Không bịa khoá."
-    },
-    {
-      "ma": "48114120",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Chữ dòng ≤ 300 ký tự ⇒ KHÔNG ghi trich/nguon (máy tự chép nguyên văn kèm mức gạch của dòng biểu)."
+      "ghiChu": "tax.48114120 \"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh: phương án A = \"Dạng cuộn\" (dangCuon CO) + \"có chiều rộng không quá 15 cm\" (chieuRong <= 15 cm); phương án B = \"ở dạng tờ hình chữ nhật (kể cả hình vuông)\" (dangToChuNhat CO) + \"không có chiều nào trên 36 cm\" (motChieuTo <= 36 cm, mọi cạnh của tờ; \"trên\" = > nên \"không … trên\" = <=) + \"ở dạng không gấp\" (daGap KHONG). Cổng 3 đã chép nguyên văn; biên đã đối chiếu tay. Đơn vị giữ cm như chữ biểu. Các khoá dangToChuNhat/motChieuTo/daGap thay cho ghi chú THIEU_KHOA_TU_VUNG (hinhDangTo, khongGap) cũ."
     },
     {
       "ma": "48114190",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48114190 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) => không khai điều kiện, không đưa vào spec."
+      "ghiChu": "tax.48114190 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
     },
     {
       "ma": "481141",
       "loai": "QUYET_DINH",
-      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) => dieuKienNut rỗng. Không có nhánh anh em chia theo tên và nhánh chia theo công dụng => không khai chongLanTruc / chongLanVanBan."
+      "ghiChu": "Không có tầng không mã (tangKhongMa rỗng) ⇒ dieuKienNut rỗng. Không có nhánh anh em chia theo tên ↔ công dụng ⇒ không khai chongLanTruc / chongLanVanBan."
     }
   ]
 }

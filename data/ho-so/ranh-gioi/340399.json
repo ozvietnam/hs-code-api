@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1534#soan-340399",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-340399",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -43,7 +43,12 @@
       "hs": "34039912",
       "nguon": "tax.34039912",
       "trich": "34039912 - - - - Chế phẩm khác chứa dầu silicon",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chuaDauSilicon",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM",
       "phanConLai": true
     },
@@ -65,14 +70,13 @@
   "ghiChuSoan": [
     {
       "ma": "34039912",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chuaDauSilicon",
-      "ghiChu": "tax.34039912 \"Chế phẩm khác chứa dầu silicon\" — vế GIỚI HẠN \"chứa dầu silicon\" không có khoá tu-vung@2; phanConLai true chỉ phủ định anh em .11"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.34039912 \"Chế phẩm khác chứa dầu silicon\" ⇒ chuaDauSilicon CO (vế GIỚI HẠN \"chứa dầu silicon\"); chữ \"khác\" trỏ anh em đứng trước .11 \"Chế phẩm dùng cho động cơ của phương tiện bay\" ⇒ phanConLai true"
     },
     {
       "ma": "340399",
-      "loai": "DUNG",
-      "ghiChu": "Gói --goi báo [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:340399:chua-co, Claude giữ"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ 340399-01 KHONG_LECH (1187/TB-TCHQ, 15745/TB-CHQ, 15747/TB-CHQ → .19 Loại khác; 1337/TB-TCHQ → .11): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

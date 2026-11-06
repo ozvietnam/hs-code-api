@@ -1,11 +1,31 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "590500",
-  "phien": "zcode-sub:glm-5.3:20261106T1553#soan-590500",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-590500",
   "dong8": {
-    "59050010": { "dieuKienSo": [ { "fact": "loaiSoiDet", "op": "TRONG", "value": ["LEN_LONG_DONG_VAT_MIN"] } ] }
+    "59050010": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "LEN_LONG_DONG_VAT_MIN",
+            "LONG_DONG_VAT_THO"
+          ]
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "59050010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "loaiSoiDet", "ghiChu": "tax.59050010: \"Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô\" — chưa có giá trị loaiSoiDet cho \"lông động vật loại thô\" (chỉ có LEN_LONG_DONG_VAT_MIN cho loại mịn)" }
+    {
+      "ma": "59050090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59050090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "59050010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59050010 \"Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô\" ⇒ loaiSoiDet TRONG [LEN_LONG_DONG_VAT_MIN, LONG_DONG_VAT_THO]: hai vế \"lông cừu / lông động vật loại mịn\" và \"loại thô\" của chữ biểu (LONG_DONG_VAT_THO đọc thêm \"hoặc loại thô\" từ 06/11)."
+    }
   ]
 }

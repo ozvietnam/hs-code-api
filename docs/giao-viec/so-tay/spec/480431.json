@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "480431",
-  "phien": "zcode-sub:glm-5.3:20261106T1551#soan-480431",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480431",
   "dong8": {
     "48043110": {
       "dieuKienSo": [
@@ -14,6 +14,18 @@
     },
     "48043130": {
       "dieuKienSo": [
+        {
+          "fact": "doBenUot",
+          "op": ">=",
+          "value": 40,
+          "donVi": "g"
+        },
+        {
+          "fact": "doBenUot",
+          "op": "<=",
+          "value": 60,
+          "donVi": "g"
+        },
         {
           "fact": "congDung",
           "op": "CONG_DUNG",
@@ -53,9 +65,8 @@
     },
     {
       "ma": "48043130",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "doBenUot",
-      "ghiChu": "tax.48043130 \"Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)\" — vế GIỚI HẠN \"Có độ bền ướt từ 40 g đến 60 g\" không có khoá tu-vung@2 (doBenKeo đơn vị MPa, chữ ghi đơn vị g); congDung \"sản xuất băng dán gỗ dán\" chỉ phủ vế công dụng"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48043130 \"Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)\" ⇒ doBenUot >= 40 g và doBenUot <= 60 g (\"từ 40 g đến 60 g\" gồm cả hai đầu; khoá doBenUot thay cho khoá cũ đề xuất) + congDung \"sản xuất băng dán gỗ dán\" (vế \"dùng để …\"). Đơn vị g như chữ biểu."
     },
     {
       "ma": "48043140",
@@ -70,7 +81,7 @@
     {
       "ma": "480431",
       "loai": "DUNG",
-      "ghiChu": "THIEU_KHOA_TU_VUNG vế \"Có độ bền ướt từ 40 g đến 60 g\" (48043130) ⇒ DỪNG; kèm cong2-chong-lan .10↔.30/.40/.50 (tên ↔ công dụng trục): các cặp không có hàng thật (giấy kraft cách điện không dùng làm băng dán/bao xi măng) ⇒ vòng 8 không khai trục, để đỏ báo Claude"
+      "ghiChu": "DUNG: cong2-chong-lan-truc:48043110:48043130,48043150 (kèm cong2-chong-lan:48043110+48043130 và 48043110+48043150 khong-tat-dinh). Khoá doBenUot đã phủ vế \"độ bền ướt từ 40 g đến 60 g\" của 48043130 (hết THIEU_KHOA). Còn lại: 48043110 \"Giấy kraft cách điện\" chia theo TÊN (tenLoai), 48043130 \"… dùng để sản xuất băng dán gỗ dán\" và 48043150 \"Loại dùng làm bao xi măng\" chia theo CÔNG DỤNG (congDung) — hai trục khác nhau, không chung khoá. Không khai chongLanTruc vì vòng 8 đòi viDuHang là hàng THẬT thoả cả hai nhánh: không có giấy kraft cách điện nào đồng thời dùng làm băng dán gỗ dán hoặc bao xi măng, và không đổi khoá (đưa \"cách điện\" sang congDung) để né — QUY-TRINH 3.3. Không khai chongLanVanBan cho cặp khác trục (cong2-chong-lan-van-ban-truc). Để NHAP, báo Claude."
     }
   ]
 }

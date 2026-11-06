@@ -1,33 +1,117 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "570390",
-  "phien": "zcode-sub:glm-5.3:20261106T1533#soan-570390",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-570390",
   "dong8": {
-    "57039011": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thảm cầu nguyện" } ] },
-    "57039021": { "dieuKienSo": [
-      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thảm lót chân" },
-      { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04" }
-    ] },
-    "57039022": { "dieuKienSo": [
-      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thảm trải sàn" },
-      { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04" }
-    ] },
-    "57039091": { "dieuKienSo": [
-      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thảm lót chân" },
-      { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04" }
-    ] },
-    "57039092": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thảm cầu nguyện" } ] },
-    "57039093": { "dieuKienSo": [
-      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thảm trải sàn" },
-      { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04" }
-    ] }
+    "57039011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thảm cầu nguyện"
+        }
+      ]
+    },
+    "57039021": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thảm lót chân"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+        }
+      ]
+    },
+    "57039022": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thảm trải sàn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+        }
+      ]
+    },
+    "57039091": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thảm lót chân"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+        }
+      ]
+    },
+    "57039092": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thảm cầu nguyện"
+        }
+      ]
+    },
+    "57039093": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thảm trải sàn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+        }
+      ]
+    }
   },
   "dieuKienNut": {
-    "5703901": { "dieuKienSo": [] },
-    "5703902": { "dieuKienSo": [] }
+    "5703901": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "BONG"
+          ]
+        }
+      ]
+    },
+    "5703902": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "SOI_THUC_VAT_KHAC"
+          ]
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "5703901", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu", "ghiChu": "tieuDe.5703901: \"Từ bông\" — chất liệu bông chưa có trong giá trị hợp lệ của khoá chatLieu" },
-    { "ma": "5703902", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu", "ghiChu": "tieuDe.5703902: \"Từ xơ đay\" — chất liệu xơ đay chưa có trong giá trị hợp lệ của khoá chatLieu" }
+    {
+      "ma": "5703901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5703901: \"Từ bông\" ⇒ loaiSoiDet TRONG [BONG] (tu-vung@2 đọc \"từ bông\")."
+    },
+    {
+      "ma": "5703902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5703902: \"Từ xơ đay\" ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC] (đọc \"xơ đay\")."
+    }
   ]
 }

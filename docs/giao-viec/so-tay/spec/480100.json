@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "480100",
-  "phien": "zcode-sub:glm-5.3:20261106T1550#soan-480100",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480100",
   "dong8": {
     "48010011": {
       "dieuKienSo": [
@@ -35,10 +35,58 @@
       ]
     },
     "48010013": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": ">",
+          "value": 28,
+          "donVi": "cm"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuKiaTo",
+          "op": ">",
+          "value": 15,
+          "donVi": "cm"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
+        }
+      ]
     },
     "48010014": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": ">",
+          "value": 36,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuKiaTo",
+          "op": ">",
+          "value": 15,
+          "donVi": "cm"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
+        }
+      ]
     },
     "48010021": {
       "dieuKienSo": [
@@ -72,10 +120,58 @@
       ]
     },
     "48010023": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": ">",
+          "value": 28,
+          "donVi": "cm"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuKiaTo",
+          "op": ">",
+          "value": 15,
+          "donVi": "cm"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
+        }
+      ]
     },
     "48010024": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "dangToChuNhat",
+          "op": "CO"
+        },
+        {
+          "fact": "motChieuTo",
+          "op": ">",
+          "value": 36,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuKiaTo",
+          "op": ">",
+          "value": 15,
+          "donVi": "cm"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
+        }
+      ]
     }
   },
   "dieuKienNut": {
@@ -108,27 +204,28 @@
     },
     {
       "ma": "48010013",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "capChieuToGiay",
-      "ghiChu": "tax.48010013 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" — không có khoá cho cặp chiều \"một chiều … chiều kia …\" (hai kích thước độc lập của tờ giấy) và vế \"ở dạng không gấp\"; không mượn kichThuoc/chieuCao làm cặp gần nghĩa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48010013 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 28 cm nhưng không quá 36 cm) + chieuKiaTo > 15 cm + daGap KHONG (\"ở dạng không gấp\"); biên đúng chữ, đơn vị cm như chữ biểu"
     },
     {
       "ma": "48010014",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "capChieuToGiay",
-      "ghiChu": "tax.48010014 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" — không có khoá cho cặp chiều \"một chiều … chiều kia …\" và vế \"ở dạng không gấp\""
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48010014 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 36 cm) + chieuKiaTo > 15 cm + daGap KHONG (\"ở dạng không gấp\"); biên đúng chữ, đơn vị cm như chữ biểu"
     },
     {
       "ma": "48010023",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "capChieuToGiay",
-      "ghiChu": "tax.48010023 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" — không có khoá cho cặp chiều \"một chiều … chiều kia …\" (hai kích thước độc lập của tờ giấy) và vế \"ở dạng không gấp\"; không mượn kichThuoc/chieuCao làm cặp gần nghĩa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48010023 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 28 cm nhưng không quá 36 cm) + chieuKiaTo > 15 cm + daGap KHONG (\"ở dạng không gấp\"); biên đúng chữ, đơn vị cm như chữ biểu"
     },
     {
       "ma": "48010024",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "capChieuToGiay",
-      "ghiChu": "tax.48010024 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" — không có khoá cho cặp chiều \"một chiều … chiều kia …\" và vế \"ở dạng không gấp\""
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48010024 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" ⇒ dangToChuNhat CO + motChieuTo (trên 36 cm) + chieuKiaTo > 15 cm + daGap KHONG (\"ở dạng không gấp\"); biên đúng chữ, đơn vị cm như chữ biểu"
+    },
+    {
+      "ma": "480100",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong1-khong-phu-kin:4801001, cong1-khong-phu-kin:4801002 (+ cong2-chong-lan giữa dòng cuộn ↔ dòng tờ). Khoá mới (dangToChuNhat, motChieuTo, chieuKiaTo, daGap) đã phủ đủ 4 dòng tờ .13/.14/.23/.24. Nhưng hai tầng định lượng 4801001/4801002 không có con \"Loại khác\": tờ đã gấp, hoặc tờ có chiều kia không quá 15 cm, hoặc tờ một chiều không quá 28 cm không rơi vào dòng nào — đúng như chữ biểu, không thêm được điều kiện chữ biểu không nói. Và dangCuon với dangToChuNhat là hai khoá độc lập nên máy thấy vector vừa cuộn vừa tờ thoả cả dòng cuộn lẫn dòng tờ (cong2-chong-lan:48010011+48010013…) — từ vựng không có phép loại trừ cuộn ↔ tờ, chữ biểu chỉ nói \"Ở dạng cuộn\"/\"Ở dạng tờ\"; thêm dangCuon KHONG vào dòng tờ (hay ngược lại) là thêm điều kiện chữ không nói."
     }
   ]
 }

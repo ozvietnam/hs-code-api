@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1541#soan-580300",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-580300",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -32,7 +32,15 @@
       "hs": "58030020",
       "nguon": "tax.58030020",
       "trich": "58030020 - Từ xơ nhân tạo",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "NHAN_TAO"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -60,10 +68,24 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "58030010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58030010 \"Từ bông\" ⇒ loaiSoiDet TRONG [BONG]."
+    },
+    {
       "ma": "58030020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "loaiSoiDet",
-      "ghiChu": "tax.58030020: \"Từ xơ nhân tạo\" — chưa có giá trị nào của loaiSoiDet đọc được cụm \"xơ nhân tạo\" (khác \"xơ tổng hợp\" và \"xơ tái tạo\")"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58030020 \"Từ xơ nhân tạo\" ⇒ loaiSoiDet TRONG [NHAN_TAO] (đọc \"xơ nhân tạo\")."
+    },
+    {
+      "ma": "58030030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58030030 \"Từ lông cừu hoặc lông động vật loại mịn\" ⇒ loaiSoiDet TRONG [LEN_LONG_DONG_VAT_MIN]."
+    },
+    {
+      "ma": "58030090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58030090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
     }
   ]
 }

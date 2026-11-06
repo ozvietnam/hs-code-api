@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1616#soan-600539",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-600539",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -24,10 +24,10 @@
           "value": "Vải dệt kim"
         },
         {
-          "fact": "loaiSoiDet",
+          "fact": "soiChiemTiLeLonHon",
           "op": "TRONG",
           "value": [
-            "SOI_TONG_HOP"
+            "POLYESTE"
           ]
         },
         {
@@ -49,9 +49,18 @@
   "ghiChuSoan": [
     {
       "ma": "60053910",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongSoi",
-      "ghiChu": "tax.60053910: \"trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng\" — chưa có khoá cho so sánh hàm lượng giữa hai loại sợi theo khối lượng (khoá tiLe là tỉ lệ kích thước, đơn vị lần, sai trục)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.60053910 \"Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi\" ⇒ tenLoai \"Vải dệt kim\" + soiChiemTiLeLonHon TRONG [POLYESTE] (đọc \"polyeste chiếm tỷ lệ lớn hơn\") + dungCho \"quần áo bơi\" (vế \"dùng để làm quần áo bơi\"). Đã bỏ loaiSoiDet SOI_TONG_HOP của bản cũ: chữ biểu không nói \"tổng hợp\"; vế polyeste/polybutylen đã do soiChiemTiLeLonHon phủ."
+    },
+    {
+      "ma": "60053990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.60053990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "60053990",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng data/ho-so/hieu-chinh-tien-le.json mục 600539-01 (maHs 60053990, dongChuBieu 60053910, loai KHONG_LECH): spec soạn theo chữ biểu; tiền lệ TB-TCHQ không lệch khỏi chữ biểu."
     }
   ]
 }

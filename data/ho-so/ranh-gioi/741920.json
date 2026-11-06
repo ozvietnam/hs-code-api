@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1528#soan-741920",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-741920",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -57,6 +57,10 @@
             "két",
             "bể chứa"
           ]
+        },
+        {
+          "fact": "ganThietBiCoKhiHoacGiaNhiet",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -77,9 +81,19 @@
     },
     {
       "ma": "74192020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "ganThietBiCoKhiHoacGiaNhiet",
-      "ghiChu": "tax.74192020 \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt\" — vế GIỚI HẠN \"không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt\" không có khoá tu-vung@2 (không có CO_KHONG/LIET_KE nào đọc \"thiết bị cơ khí\"/\"thiết bị gia nhiệt\"); bỏ vế này làm đổi mã (thùng có gắn thiết bị cơ khí phải về 74192090) nên không BO_VE. Phần tên TUONG_TU [\"Thùng\",\"két\",\"bể chứa\"] giữ làm điểm xuất phát."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74192020 \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt\" ⇒ tenLoai TUONG_TU [\"Thùng\",\"két\",\"bể chứa\"] (vế mở \"và các loại đồ chứa đựng tương tự\") + ganThietBiCoKhiHoacGiaNhiet KHONG (giới hạn chung \"không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt\")"
+    },
+    {
+      "ma": "74192020",
+      "loai": "BO_VE",
+      "ve": "chứa và các loại đồ",
+      "lyDo": "Bộ tách vế đọc sai cấu trúc: \"chứa\" là âm tiết cuối của danh từ \"bể chứa\" (EN \"Reservoirs, tanks, vats and similar containers\"), \"và các loại đồ chứa đựng tương tự\" là vế mở đã phủ bằng tenLoai TUONG_TU [Thùng, két, bể chứa]; định ngữ chung thật sự \"không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt\" đã gắn cho mọi danh từ đầu bằng điều kiện riêng ganThietBiCoKhiHoacGiaNhiet KHONG"
+    },
+    {
+      "ma": "741920",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan:74192010+74192020:dungCho=Xích,ganThietBiCoKhiHoacGiaNhiet=false,laBoPhan=true,tenLoai=Thùng:khong-tat-dinh — .10 \"Xích và các bộ phận của xích\" (nhánh HOAC laBoPhan CO + dungCho Xích, quy ước X và bộ phận) ↔ .20 vế mở \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự\" (tenLoai TUONG_TU): luật tên nguyên văn của anh em (QUY-TRINH 4.7) chỉ chứng minh loại trừ cho cặp tenLoai TEN_LOAI ↔ laBoPhan+dungCho, không phủ TUONG_TU; bộ tách vế cũng cắt sai tên đầu \"Thùng, két, bể\" (bỏ \"chứa\" của \"bể chứa\"). Đổi sang TEN_LOAI thì vế mở \"đồ chứa đựng tương tự\" thành cong5-ve-gioi-han-bi-bo (hẹp/rộng sai chữ). Không khai chongLanVanBan/chongLanTruc cho chồng lấn do bộ so chữ ⇒ để NHAP, báo Claude"
     }
   ]
 }
