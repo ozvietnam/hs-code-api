@@ -1,13 +1,81 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "480254",
-  "phien": "zcode-mm:loop:20261106T1451#soan-480254",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480254",
   "dong8": {
     "48025411": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "daGap",
+                "op": "KHONG"
+              }
+            ]
+          ]
+        }
+      ]
     },
     "48025421": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "daGap",
+                "op": "KHONG"
+              }
+            ]
+          ]
+        }
+      ]
     },
     "48025430": {
       "dieuKienSo": [
@@ -19,7 +87,46 @@
       ]
     },
     "48025440": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để viết, in và các mục đích đồ bản khác"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "daGap",
+                "op": "KHONG"
+              }
+            ]
+          ]
+        }
+      ]
     },
     "48025450": {
       "dieuKienSo": [
@@ -53,7 +160,8 @@
           "op": "CONG_DUNG",
           "value": "làm nền sản xuất giấy carbon"
         }
-      ]
+      ],
+      "phanConLai": true
     }
   },
   "ghiChuSoan": [
@@ -70,18 +178,12 @@
     {
       "ma": "4802542",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4802542 \"Giấy làm nền sản xuất giấy carbon khác\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"làm nền sản xuất giấy carbon\" + dinhLuong >= 20 g/m2: \"khác\" là phần CÒN LẠI của nhánh \"Giấy làm nền sản xuất giấy carbon\" sau 4802541 (định lượng dưới 20g/m2) nên ngưỡng 20 KHÔNG khai trên 4802542 (trích tieuDe.4802542 không chứa ngưỡng) — ngưỡng được bao trùm bằng phủ định anh em 4802541 (dinhLuong < 20); không mã hoá trần 40 g/m2 (điều kiện cấp phân nhóm). KHÔNG khai phanConLai: \"khác\" bị giới hạn bởi danh ngữ \"Giấy làm nền sản xuất giấy carbon\", không phải phần còn lại của cả 480254."
+      "ghiChu": "tieuDe.4802542 \"Giấy làm nền sản xuất giấy carbon khác\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"làm nền sản xuất giấy carbon\" + phanConLai true: \"khác\" là phần CÒN LẠI của nhánh \"Giấy làm nền sản xuất giấy carbon\" sau anh em đứng liền trước 4802541 (\"có định lượng dưới 20g/m2\"); ngưỡng 20 KHÔNG khai trên 4802542 (trích tieuDe.4802542 không chứa ngưỡng) — máy phủ định điều kiện 4802541 nên hàng định lượng từ 20 g/m2 trở lên rơi vào đây. phanConLai chỉ phủ định anh em ĐỨNG TRƯỚC (4802541), không phủ định các dòng 48025430 trở đi. Không mã hoá trần 40 g/m2 (điều kiện cấp phân nhóm)."
     },
     {
       "ma": "48025411",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48025411 \"48025411 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)\" — \"hoặc\" nối hai vế thay thế nhau: vế 1 (ở dạng cuộn + chiều rộng không quá 15cm) và vế 2 (ở dạng tờ hình chữ nhật (kể cả hình vuông) + không có chiều nào trên 36 cm + ở dạng không gấp). Vế 1 đọc được bằng dangCuon CO + chieuRong <= 15 cm; vế 2 có khoá hinhDangCatGocKinh CO + kichThuoc <= 36 cm (câu phủ MỌI chiều nên dùng kích thước chung, không dùng chieuRong) nhưng vế \"ở dạng không gấp\" không có khoá nào đọc được. Bỏ vế đó làm đổi mã 8 số (tờ đã gấp rơi về 48025419) ⇒ không bịa khoá mà để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG. Đơn vị số giữ đúng chữ biểu thuế (cm)."
-    },
-    {
-      "ma": "48025411",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tax.48025411 \"48025411 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+      "ghiChu": "tax.48025411 \"Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)\" ⇒ chữ \"hoặc\" tách HAI nhánh: A = dangCuon CO + chieuRong <= 15 cm; B = dangToChuNhat CO + motChieuTo <= 36 cm (\"không có chiều nào trên\" = <=) + daGap KHONG (\"ở dạng không gấp\"). Đơn vị cm như chữ biểu; biên đã đối chiếu tay. Khoá mới thay ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ."
     },
     {
       "ma": "48025419",
@@ -91,13 +193,7 @@
     {
       "ma": "48025421",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48025421 \"48025421 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)\" — chữ biểu giống hệt 48025411 ⇒ cùng cách đọc: \"hoặc\" nối hai vế thay thế, vế \"ở dạng không gấp\" không có khoá nào đọc được, bỏ vế đó làm tờ đã gấp rơi về 48025429 ⇒ để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG, KHÔNG bịa khoá. Đơn vị số giữ đúng chữ biểu thuế (cm)."
-    },
-    {
-      "ma": "48025421",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tax.48025421 \"48025421 - - - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+      "ghiChu": "tax.48025421 \"Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp (SEN)\" ⇒ chữ \"hoặc\" tách HAI nhánh: A = dangCuon CO + chieuRong <= 15 cm; B = dangToChuNhat CO + motChieuTo <= 36 cm (\"không có chiều nào trên\" = <=) + daGap KHONG (\"ở dạng không gấp\"). Đơn vị cm như chữ biểu; biên đã đối chiếu tay. Khoá mới thay ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ."
     },
     {
       "ma": "48025429",
@@ -112,13 +208,7 @@
     {
       "ma": "48025440",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48025440 \"48025440 - - - Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp\" — vế công dụng \"dùng để viết, in và các mục đích đồ bản khác\" ⇒ congDung (cùng khoá với 48025430); \"hoặc\" nối hai vế hình thức (cuộn không quá 15 cm / tờ không có cạnh nào trên 36 cm) nhưng vế \"ở dạng không gấp\" không có khoá nào đọc được, bỏ vế đó làm tờ đã gấp rơi về 48025490 ⇒ để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG, KHÔNG bịa khoá. \"khác\" trong \"các mục đích đồ bản khác\" là định ngữ của \"mục đích đồ bản\", KHÔNG phải \"Loại khác\" trần ⇒ dòng có tên, không phanConLai (nghiPhanConLai của gói bị bác)."
-    },
-    {
-      "ma": "48025440",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongGap",
-      "ghiChu": "tax.48025440 \"48025440 - - - Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+      "ghiChu": "tax.48025440 \"Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp\" ⇒ congDung \"dùng để viết, in và các mục đích đồ bản khác\" (cùng khoá với 48025430) + HOAC hai nhánh: A = dangCuon CO + chieuRong <= 15 cm; B = dangToChuNhat CO + motChieuTo <= 36 cm (\"không có cạnh nào trên\") + daGap KHONG. \"khác\" trong \"các mục đích đồ bản khác\" là định ngữ của \"mục đích đồ bản\", KHÔNG phải \"Loại khác\" trần ⇒ không phanConLai. Khoá mới thay ghi chú THIEU_KHOA_TU_VUNG (khongGap) cũ."
     },
     {
       "ma": "48025450",
@@ -129,6 +219,11 @@
       "ma": "48025490",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.48025490 \"48025490 - - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "480254",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong2-chong-lan-truc:48025450:4802541,4802542,48025430,48025440 (kèm các cặp cong2-chong-lan:…+48025450 cùng nguyên nhân). Khoá mới (dangCuon, dangToChuNhat, motChieuTo, daGap, phanConLai true cho 4802542) đã phủ hết vế \"ở dạng không gấp\" của .11/.21/.40 và tách 4802541 ↔ 4802542; còn lại dòng 48025450 \"Giấy và bìa nhiều lớp(SEN)\" (nhieuLop, đặc điểm) đứng cạnh bốn nhánh chia theo công dụng (làm nền sản xuất giấy carbon ×2, làm nền sản xuất giấy tráng nhôm, dùng để viết, in…). Chỉ cặp (48025440, 48025450) có hàng thật (giấy nhiều lớp dùng để viết, in — sen.4802); không nghĩ ra hàng thật nào là giấy làm nền sản xuất giấy carbon / giấy tráng nhôm mà đồng thời nhiều lớp ⇒ không khai chongLanTruc/viDuHang (bịa hàng để máy xanh là sai), không khai chongLanVanBan (cụm trục không gỡ được bằng cách đó). Cần người quyết."
     }
   ]
 }

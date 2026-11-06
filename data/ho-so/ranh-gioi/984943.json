@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1528#soan-984943",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-984943",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,15 @@
       "hs": "98494310",
       "nguon": "tax.98494310",
       "trich": "98494310 - - Bằng liti",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "loaiPin",
+          "op": "TRONG",
+          "value": [
+            "LITI"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -57,9 +65,8 @@
   "ghiChuSoan": [
     {
       "ma": "98494310",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "loaiPin",
-      "ghiChu": "tax.98494310 \"Bằng liti\" — tu-vung@2 không có khoá nào đọc được \"liti\" (chatLieu chỉ có plastic…vải dệt, không có liti; nguonNangLuong PIN_AC_QUY chỉ đọc \"pin/ắc quy\" không phân biệt loại pin). Đề xuất khoá loaiPin LIET_KE [LITI, …] — không mượn khoá gần nghĩa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494310 \"Bằng liti\" ⇒ loaiPin TRONG [LITI] (\"liti\")."
     },
     {
       "ma": "98494321",
@@ -75,6 +82,11 @@
       "ma": "98494390",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.98494390 \"Bộ phận\" ⇒ laBoPhan CO (đọc CÓ \"bộ phận\")"
+    },
+    {
+      "ma": "984943",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan:98494310+98494321 (loaiPin=LITI,theTich=299.9997), 98494310+98494390 (laBoPhan=true,loaiPin=LITI), 98494321+98494390 (laBoPhan=true,theTich=299.9997). Khoá loaiPin đã đọc \"Bằng liti\" nên hết THIEU_KHOA, nhưng .21 nằm dưới tầng không mã r19889 \"Loại khác (trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60), trừ loại bằng kẽm carbon:\" (cùng mã 984943 với cha nên lớp tầng/cây không dựng nút, không khai được dieuKienNut) — chữ biểu loại .21 khỏi liti qua tầng này, còn chữ riêng của .21 thì không; thêm \"không phải liti\" vào .21 là thêm điều kiện chữ dòng không nói (cổng 3 chặn). .90 \"Bộ phận\" (laBoPhan CO) không có chữ nào loại trừ với .10/.21. Không khai chongLanVanBan vì chồng lấn do tầng bị lược, không phải chữ biểu tự chồng. Cần Claude xử lý tầng không mã trùng mã cha."
     }
   ]
 }

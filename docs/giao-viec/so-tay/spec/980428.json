@@ -1,17 +1,44 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "980428",
-  "phien": "zcode-sub:glm-5.3:20261106T0950#soan-980428",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-980428",
   "dong8": {
-    "98042811": { "dieuKienSo": []}
+    "98042811": {
+      "dieuKienSo": [
+        {
+          "fact": "conVo",
+          "op": "CO"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "HAP_LUOC_CHIN"
+          ]
+        }
+      ]
+    }
   },
   "dieuKienNut": {
-    "9804281": { "dieuKienSo": [
-      {"fact": "dongBaoBiKinKhiDeBanLe", "op": "CO"}
-    ]}
+    "9804281": {
+      "dieuKienSo": [
+        {
+          "fact": "dongBaoBiKinKhiDeBanLe",
+          "op": "CO"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    {"ma": "9804281", "loai": "QUYET_DINH", "ghiChu": "tieuDe.9804281 \"Đóng bao bì kín khí để bán lẻ\" ⇒ dongBaoBiKinKhiDeBanLe CO (khoá đọc đúng nguyên văn tiêu đề)."},
-    {"ma": "98042811", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "conVo (còn vỏ) / cachCheBien (hấp chín, luộc chín)", "ghiChu": "tax.98042811 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" — không có khoá tu-vung@2 nào đọc được \"còn vỏ\" hay \"hấp chín hoặc luộc chín trong nước\" (phuongPhapBaoQuan không có giá trị hấp/luộc); bỏ các vế này làm đổi mã (tôm bỏ vỏ/đông lạnh rơi về 98042819) ⇒ DỪNG, không bịa."}
+    {
+      "ma": "9804281",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9804281 \"Đóng bao bì kín khí để bán lẻ\" ⇒ dongBaoBiKinKhiDeBanLe CO (khoá đọc đúng nguyên văn tiêu đề)."
+    },
+    {
+      "ma": "98042811",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98042811 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" ⇒ conVo CO (\"Còn vỏ\") + phuongPhapBaoQuan TRONG [HAP_LUOC_CHIN] (\"đã hấp chín hoặc luộc chín trong nước\")."
+    }
   ]
 }

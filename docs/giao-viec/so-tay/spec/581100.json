@@ -1,11 +1,22 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "581100",
-  "phien": "zcode-sub:glm-5.3:20261106T1547#soan-581100",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-581100",
   "dong8": {
-    "58110010": { "dieuKienSo": [ { "fact": "loaiSoiDet", "op": "TRONG", "value": ["LEN_LONG_DONG_VAT_MIN"] } ] }
+    "58110010": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    { "ma": "58110010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "loaiSoiDet", "ghiChu": "tax.58110010: \"Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô\" — chưa có giá trị loaiSoiDet cho \"lông động vật loại thô\" (chỉ có LEN_LONG_DONG_VAT_MIN cho loại mịn)" }
+    {
+      "ma": "581100",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong3-muc:58110010:dieu-kien-so-trong-khong-co-trong-trich:LONG_DONG_VAT_THO. tax.58110010 \"Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô\": tu-vung@2 đã có LEN_LONG_DONG_VAT_MIN (đọc \"lông cừu\", \"lông động vật loại mịn\") và LONG_DONG_VAT_THO, nhưng cách đọc của LONG_DONG_VAT_THO là \"lông động vật loại thô\" liền mạch, còn chữ biểu viết \"lông động vật loại mịn hoặc loại thô\" (lược danh từ \"lông động vật\" ở vế sau) nên cổng 3 không thấy cách đọc ⇒ không ghi được vế \"loại thô\". Ghi riêng LEN_LONG_DONG_VAT_MIN sẽ HẸP hơn chữ (bỏ lông thô), nên để dieuKienSo [] và DỪNG; cần Claude chỉnh cachDoc của LONG_DONG_VAT_THO (vd thêm \"loại\\s+mịn\\s+hoặc\\s+loại\\s+thô\" / \"hoặc\\s+loại\\s+thô\") — thợ không được sửa data/tu-vung."
+    },
+    {
+      "ma": "58110090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58110090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
   ]
 }

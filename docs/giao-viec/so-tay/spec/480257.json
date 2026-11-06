@@ -1,15 +1,19 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "480257",
-  "phien": "zcode-sub:glm-5.3:20261106T1551#soan-480257",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480257",
   "dong8": {
     "48025721": {
       "dieuKienSo": [
         {
-          "fact": "kichThuoc",
+          "fact": "motChieuTo",
           "op": "<=",
           "value": 36,
           "donVi": "cm"
+        },
+        {
+          "fact": "daGap",
+          "op": "KHONG"
         }
       ]
     },
@@ -34,30 +38,51 @@
             "đồ bản"
           ]
         }
-      ]
+      ],
+      "phanConLai": false
     }
   },
   "ghiChuSoan": [
-    {
-      "ma": "48025721",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.48025721 \"Không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ kichThuoc <= 36 cm cho vế kích thước; vế \"không gấp\" xem THIEU_KHOA dưới"
-    },
-    {
-      "ma": "48025721",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dangKhongGep",
-      "ghiChu": "vế GIỚI HẠN \"không gấp\" (EN: unfolded) của tax.48025721 không có khoá tu-vung@2"
-    },
     {
       "ma": "4802572",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" ⇒ congDung [\"viết\",\"in\",\"đồ bản\"]; chữ \"Loại\" = \"loại dùng để\" (of a kind used for), KHÔNG phải phần còn lại ⇒ không dùng phanConLai"
     },
     {
+      "ma": "48025721",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48025721 \"Không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ motChieuTo <= 36 cm (\"không có chiều nào trên\" = <=) + daGap KHONG (\"ở dạng không gấp\"); chữ biểu không nói \"tờ hình chữ nhật\" nên không thêm dangToChuNhat. Thay ghi chú THIEU_KHOA_TU_VUNG (dangKhongGep) và kichThuoc cũ."
+    },
+    {
+      "ma": "4802572",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\": \"khác\" là định ngữ của \"các mục đích đồ bản\", không phải phần còn lại ⇒ phanConLai false."
+    },
+    {
       "ma": "480257",
-      "loai": "DUNG",
-      "ghiChu": "Gói --goi báo [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:480257:chua-co, Claude giữ; kèm các cặp cong2-chong-lan chéo tầng (trang trí tenLoai ↔ viết/in congDung ↔ nhiều lớp) chưa xử lý vì PN6 đã DỪNG chờ bảng hiệu chỉnh — Claude xử khi mở lại"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ data/ho-so/hieu-chinh-tien-le.json đã có mục 480257-01 (48025729 ↔ 48025730 \"Giấy nhiều lớp\", loại KHONG_LECH): soạn theo chữ biểu, không lệch. Thay ghi chú DUNG can-bang-hieu-chinh-tien-le:chua-co cũ."
+    },
+    {
+      "ma": "480257",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Chữ biểu tự chồng: tầng 4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (.21, .29) ↔ dòng 48025730 \"Giấy nhiều lớp(SEN)\" — sen.4802 nêu giấy nhiều lớp dùng để viết, in vẫn thuộc Nhóm 48.02 nên hàng nhiều lớp dùng để viết, in thoả cả hai; khai chongLanVanBan cho hai cặp máy báo, không có căn cứ thứ tự (bảng hiệu chỉnh 480257-01 KHONG_LECH)."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "48025721",
+        "48025730"
+      ],
+      "lyDo": "tieuDe.4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng cha của .21; .21 \"Không có chiều nào trên 36 cm ở dạng không gấp\") không loại trừ tax.48025730 \"Giấy nhiều lớp\" — giấy nhiều lớp vẫn có thể là loại dùng để viết, in; sen.4802 nêu giấy nhiều lớp dùng để viết, in; chữ biểu không nêu thứ tự ưu tiên"
+    },
+    {
+      "cap": [
+        "48025729",
+        "48025730"
+      ],
+      "lyDo": "tieuDe.4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng cha của .29) không loại trừ tax.48025730 \"Giấy nhiều lớp\" — giấy nhiều lớp vẫn có thể là loại dùng để viết, in; chữ biểu không nêu thứ tự ưu tiên"
     }
   ]
 }

@@ -1,14 +1,59 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "810199",
-  "phien": "zcode-sub:glm-5.3:20261106T0940#soan-810199",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-810199",
   "dong8": {
-    "81019910": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Thanh", "que", "dạng hình", "lá", "dải", "lá mỏng"]}
-    ]}
+    "81019910": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Thanh",
+                  "que"
+                ]
+              },
+              {
+                "fact": "phuongPhapCheTao",
+                "op": "TRONG",
+                "value": [
+                  "THIEU_KET"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "dạng hình",
+                  "lá",
+                  "dải",
+                  "lá mỏng"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    {"ma": "81019910", "loai": "QUYET_DINH", "ghiChu": "tax.81019910 \"Thanh và que, trừ các loại thu được từ quá trình thiêu kết; dạng hình, lá, dải và lá mỏng\" ⇒ tenLoai [6 dạng nêu tên]."},
-    {"ma": "81019910", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "phuongPhapCheTao (giá trị THIEU_KET — thiêu kết/sintered)", "ghiChu": "tax.81019910 \"trừ các loại thu được từ quá trình thiêu kết\" — không có khoá/giá trị tu-vung@2 nào đọc được \"thiêu kết\"; thanh/que thu được từ thiêu kết rơi về 81019990 Loại khác nên bỏ vế làm đổi mã ⇒ DỪNG, không bịa."}
+    {
+      "ma": "81019910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.81019910 \"Thanh và que, trừ các loại thu được từ quá trình thiêu kết; dạng hình, lá, dải và lá mỏng\" ⇒ HOAC [[tenLoai [Thanh,que] + phuongPhapCheTao THIEU_KET PHAI_KHONG (\"trừ … thiêu kết\" chỉ của thanh và que, dấu chấm phẩy ngăn vế)], [tenLoai [dạng hình, lá, dải, lá mỏng]]]."
+    },
+    {
+      "ma": "81019910",
+      "loai": "BO_VE",
+      "ve": "trừ các loại thu",
+      "lyDo": "Bộ tách vế cắt đôi cụm \"trừ các loại thu được từ quá trình thiêu kết\" ngay giữa \"thu được\" nên nửa đầu không có chữ đọc; cả cụm là MỘT vế và đã được phủ bằng phuongPhapCheTao THIEU_KET chieu PHAI_KHONG (nửa sau \"được từ quá trình thiêu kết\" báo phủ), chữ Anh \"other than those obtained simply by sintering\"."
+    }
   ]
 }

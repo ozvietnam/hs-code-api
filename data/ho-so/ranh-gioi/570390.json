@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1533#soan-570390",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-570390",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,14 +16,30 @@
       "id": "5703901",
       "nguon": "tieuDe.5703901",
       "trich": "5703901 Từ bông",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "BONG"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "5703902",
       "nguon": "tieuDe.5703902",
       "trich": "5703902 Từ xơ đay",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "SOI_THUC_VAT_KHAC"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -151,15 +167,13 @@
   "ghiChuSoan": [
     {
       "ma": "5703901",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu",
-      "ghiChu": "tieuDe.5703901: \"Từ bông\" — chất liệu bông chưa có trong giá trị hợp lệ của khoá chatLieu"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5703901: \"Từ bông\" ⇒ loaiSoiDet TRONG [BONG] (tu-vung@2 đọc \"từ bông\")."
     },
     {
       "ma": "5703902",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu",
-      "ghiChu": "tieuDe.5703902: \"Từ xơ đay\" — chất liệu xơ đay chưa có trong giá trị hợp lệ của khoá chatLieu"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5703902: \"Từ xơ đay\" ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC] (đọc \"xơ đay\")."
     }
   ]
 }

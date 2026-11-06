@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1535#soan-570500",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-570500",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,14 +16,30 @@
       "id": "5705001",
       "nguon": "tieuDe.5705001",
       "trich": "5705001 Từ bông",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "BONG"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "5705002",
       "nguon": "tieuDe.5705002",
       "trich": "5705002 Từ xơ đay",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "SOI_THUC_VAT_KHAC"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -115,15 +131,18 @@
   "ghiChuSoan": [
     {
       "ma": "5705001",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu",
-      "ghiChu": "tieuDe.5705001: \"Từ bông\" — chất liệu bông chưa có trong giá trị hợp lệ của khoá chatLieu"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5705001: \"Từ bông\" ⇒ loaiSoiDet TRONG [BONG] (tu-vung@2 đọc \"từ bông\")."
     },
     {
       "ma": "5705002",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu",
-      "ghiChu": "tieuDe.5705002: \"Từ xơ đay\" — chất liệu xơ đay chưa có trong giá trị hợp lệ của khoá chatLieu"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5705002: \"Từ xơ đay\" ⇒ loaiSoiDet TRONG [SOI_THUC_VAT_KHAC] (đọc \"xơ đay\")."
+    },
+    {
+      "ma": "57050091",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ L1-4b mục 570500-01/-02 KHONG_LECH (1171, 1172, 1173, 2116/TB-TCHQ: thảm chùi chân từ monofilament PVC ⇒ .99, không phải thảm cầu nguyện .11/.91). Soạn theo CHỮ BIỂU, khớp bảng."
     }
   ]
 }

@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1541#soan-560750",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-560750",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -19,14 +19,42 @@
       "trich": "56075010 - - Sợi bện (cord) cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde; sợi polyamit và sợi polytetrafloro-ethylen có độ mảnh lớn hơn 10.000 decitex, dùng để làm kín các loại bơm, van và các sản phẩm tương tự",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Sợi bện"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "dây đai chữ V"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Sợi bện"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "sợi polyamit",
+                  "sợi polytetrafloro-ethylen"
+                ]
+              },
+              {
+                "fact": "doManh",
+                "op": ">",
+                "value": 10000,
+                "donVi": "decitex"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "làm kín"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -41,15 +69,25 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "560750",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:560750:chua-co; giữ spec đến chỗ đã làm."
+      "ma": "56075010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56075010: dấu chấm phẩy tách hai ý thay thế ⇒ HOAC. Ý A \"Sợi bện (cord) cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde\" ⇒ tenLoai \"Sợi bện\" + dungCho \"dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde\" (chuỗi con nguyên văn; chất liệu/xử lý thuộc về đích \"dây đai chữ V\", EN \"V-belt cord of man-made fibres treated with resorcinol formaldehyde\"; tu-vung@2 không có khoá riêng cho xử lý RF nên giữ trong chữ tự do thay vì bỏ vế). Ý B \"sợi polyamit và sợi polytetrafloro-ethylen có độ mảnh lớn hơn 10.000 decitex, dùng để làm kín các loại bơm, van và các sản phẩm tương tự\" ⇒ tenLoai [\"sợi polyamit\",\"sợi polytetrafloro-ethylen\"] (mảng, định ngữ chung thành điều kiện riêng) + doManh > 10000 decitex + congDung \"làm kín\" (đối chiếu tay: \"10.000\" kiểu Việt = mười nghìn)."
     },
     {
       "ma": "56075010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "doManhDecitex",
-      "ghiChu": "tax.56075010 \"Sợi bện (cord) cho dây đai chữ V làm từ xơ nhân tạo đã xử lý bằng resorcinol formaldehyde; sợi polyamit và sợi polytetrafloro-ethylen có độ mảnh lớn hơn 10.000 decitex, dùng để làm kín các loại bơm, van và các sản phẩm tương tự\" — vế \"làm từ xơ nhân tạo đã xử lý\" + \"bằng resorcinol formaldehyde\" (chất liệu xử lý RF) và vế \"có độ mảnh lớn hơn 10.000 decitex\" (khoá số đơn vị decitex) không có khoá trong tu-vung@2; vế MỞ \"và các sản phẩm tương tự\" không phủ được bằng khoá công dụng; chỉ phủ được tenLoai \"Sợi bện\", vế \"cho dây đai chữ V\" và (ý B) tên \"sợi polyamit\", \"sợi polytetrafloro-ethylen\", vế \"dùng để làm kín các loại bơm, van\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế \"(cord)\" là chú thích trong ngoặc (QUY-TRINH 3.8) ⇒ không thành điều kiện. Vế mở \"và các sản phẩm tương tự\" (EN \"and similar articles\") đi sau \"các loại bơm, van\": danh sách \"bơm, van\" KHÔNG liệt kê đóng thành điều kiện (QUY-TRINH 3.11, quy ước 392690) và không dùng giá trị chứa chữ \"tương tự\" ⇒ congDung chỉ nêu \"làm kín\"."
+    },
+    {
+      "ma": "56075010",
+      "loai": "BO_VE",
+      "ve": "và các sản phẩm tương tự",
+      "lyDo": "Vế mở này (EN \"valves and similar articles\") bổ nghĩa cho đối tượng làm kín \"các loại bơm, van\", không cho tên sợi; congDung chỉ nêu \"làm kín\" nên không liệt kê đóng bơm/van, còn tenLoai polyamit/PTFE là hai tên sợi nêu đích danh trong chữ biểu — bỏ vế mở không làm hẹp điều kiện so với chữ."
+    },
+    {
+      "ma": "56075010",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ L1-4b mục 560750-01 KHONG_LECH (2448/TB-TCHQ: dây xe polyeste làm lõi dây cẩu hàng ⇒ .90, không phải sợi bện cho dây đai chữ V hay sợi làm kín bơm/van). Soạn theo CHỮ BIỂU, khớp bảng."
     },
     {
       "ma": "56075090",

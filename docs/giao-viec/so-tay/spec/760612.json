@@ -1,1 +1,44 @@
-{"phienBan":"ranh-gioi-spec@1","pn6":"760612","phien":"zcode-mm:loop:20261106T1443#soan-760612","dong8":{},"dieuKienNut":{},"ghiChuSoan":[{"ma":"","loai":"DUNG","ghiChu":"--goi chặn CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — không soạn"}]}
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "760612",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-760612",
+  "dong8": {
+    "76061220": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Đế bản nhôm"},
+      {"fact": "daLamNhay", "op": "KHONG"},
+      {"fact": "congDung", "op": "CONG_DUNG", "value": "công nghệ in"}
+    ]},
+    "76061232": { "dieuKienSo": [
+      {"fact": "congDung", "op": "CONG_DUNG", "value": "làm lon"},
+      {"fact": "dangCuon", "op": "CO"}
+    ]},
+    "76061233": { "dieuKienSo": [
+      {"fact": "hopKimNhom", "op": "TRONG", "value": ["AA_5082_HOAC_5182"]},
+      {"fact": "chieuRong", "op": ">", "value": 1, "donVi": "m"},
+      {"fact": "dangCuon", "op": "CO"}
+    ]},
+    "76061234": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "tấm litô"},
+      {"fact": "hopKimNhom", "op": "TRONG", "value": ["HA_1052_H19_HOAC_HA_1050_H18"]}
+    ]},
+    "76061235": { "dieuKienSo": [
+      {"fact": "daXuLyBeMat", "op": "CO"}
+    ]}
+  },
+  "dieuKienNut": {
+    "7606123": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Dạng lá"}
+    ]}
+  },
+  "ghiChuSoan": [
+    {"ma": "76061220", "loai": "QUYET_DINH", "ghiChu": "tax.76061220 \"Đế bản nhôm, chưa nhạy, dùng trong công nghệ in\" ⇒ tenLoai \"Đế bản nhôm\" + daLamNhay KHONG (\"chưa nhạy\") + congDung \"công nghệ in\"."},
+    {"ma": "7606123", "loai": "QUYET_DINH", "ghiChu": "tieuDe.7606123 \"Dạng lá\" ⇒ tenLoai \"Dạng lá\"."},
+    {"ma": "76061232", "loai": "QUYET_DINH", "ghiChu": "tax.76061232 \"Để làm lon (kể cả đáy lon và nắp lon), dạng cuộn\" ⇒ congDung \"làm lon\" + dangCuon CO; \"(kể cả đáy lon và nắp lon)\" là vế kể cả (PHU), giá trị lấy từ chữ biểu, không lấy từ SEN."},
+    {"ma": "76061233", "loai": "QUYET_DINH", "ghiChu": "tax.76061233 \"Loại khác, bằng hợp kim nhôm 5082 hoặc 5182, có chiều rộng trên 1m, dạng cuộn\" ⇒ chỉ ghi điều kiện của vế: hopKimNhom AA_5082_HOAC_5182 + chieuRong > 1 m + dangCuon CO."},
+    {"ma": "76061234", "loai": "QUYET_DINH", "ghiChu": "tax.76061234 \"Loại khác, tấm litô hợp kim HA 1052 độ cứng H19 và hợp kim HA 1050 độ cứng H18\" ⇒ chỉ ghi điều kiện của vế: tenLoai \"tấm litô\" + hopKimNhom HA_1052_H19_HOAC_HA_1050_H18."},
+    {"ma": "76061235", "loai": "QUYET_DINH", "ghiChu": "tax.76061235 \"Loại khác, đã gia công bề mặt\" ⇒ chỉ ghi điều kiện của vế: daXuLyBeMat CO (\"gia công bề mặt\" đã đọc được)."},
+    {"ma": "76061239", "loai": "QUYET_DINH", "ghiChu": "tax.76061239 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"},
+    {"ma": "76061290", "loai": "QUYET_DINH", "ghiChu": "tax.76061290 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"},
+    {"ma": "760612", "loai": "LECH_TIEN_LE", "ghiChu": "Bảng hiệu chỉnh tiền lệ đã có mục 760612-01 (maHs 76061239, dòng chữ biểu 76061232); soạn theo CHỮ BIỂU, không theo tiền lệ."}
+  ]
+}

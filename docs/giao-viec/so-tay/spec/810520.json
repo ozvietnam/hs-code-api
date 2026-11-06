@@ -1,14 +1,27 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "810520",
-  "phien": "zcode-sub:glm-5.3:20261106T0940#soan-810520",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-810520",
   "dong8": {
-    "81052010": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Coban"}
-    ]}
+    "81052010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Coban"
+        },
+        {
+          "fact": "daGiaCong",
+          "op": "KHONG"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    {"ma": "81052010", "loai": "QUYET_DINH", "ghiChu": "tax.81052010 \"Coban chưa gia công\" ⇒ tenLoai \"Coban\"."},
-    {"ma": "81052010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chuaGiaCong (chưa gia công/unwrought)", "ghiChu": "tax.81052010 \"chưa gia công\" — không có khoá tu-vung@2 đọc được \"chưa gia công\" trần (chuaGiaCongQuaMucCanNong đọc câu dài hơn về cán nóng/kéo nóng/ép đùn); coban đã gia công rơi về 81052090 Loại khác nên bỏ vế làm đổi mã ⇒ DỪNG, không bịa."}
+    {
+      "ma": "81052010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.81052010 \"Coban chưa gia công\" ⇒ tenLoai \"Coban\" + daGiaCong KHONG (\"chưa gia công\")."
+    }
   ]
 }
