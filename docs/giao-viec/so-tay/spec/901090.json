@@ -1,0 +1,54 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "901090",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-901090",
+  "dong8": {
+    "90109020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "9010.10.00"
+        }
+      ]
+    },
+    "90109030": {
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "chiếu",
+            "vẽ mạch"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "90109020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90109020 \"Của hàng hóa thuộc phân nhóm 9010.10.00\" ⇒ dungCho \"9010.10.00\" (giữ chuỗi mã)"
+    },
+    {
+      "ma": "90109030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90109030 \"Bộ phận và phụ kiện của máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in\" ⇒ laBoPhan CO + dungCho \"máy\" (đích) + congDung [\"chiếu\",\"vẽ mạch\"]: cụm đích chứa \"hoặc\" không giữ một chuỗi được (cong3 chặn), định ngữ công dụng của máy tách thành điều kiện riêng"
+    },
+    {
+      "ma": "90109090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90109090 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

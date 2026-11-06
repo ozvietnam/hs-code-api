@@ -1,0 +1,58 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "901050",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-901050",
+  "dong8": {
+    "90105010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy để chiếu",
+            "vẽ mạch"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in"
+          ]
+        }
+      ]
+    },
+    "90105020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thiết bị biên tập và ghi tựa đề điện ảnh",
+            "Thiết bị đọc X quang",
+            "máy chụp quang sử dụng cho quá trình tách màu ra phim",
+            "máy plate maker tự động"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "90105010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90105010 \"Máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in\" ⇒ tenLoai [\"Máy để chiếu\",\"vẽ mạch\"] (hai loại máy: chiếu mạch, vẽ mạch — tách \"hoặc\") + dungCho [\"tấm mạch in\",\"tấm dây in\"] (đích sản xuất)"
+    },
+    {
+      "ma": "90105020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90105020 ⇒ tenLoai mảng 4 hàng; vế \"sử dụng cho quá trình tách màu ra phim\" nằm trong giá trị \"máy chụp quang sử dụng cho quá trình tách màu ra phim\" (định ngữ riêng của máy chụp quang)"
+    },
+    {
+      "ma": "90105090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90105090 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}
