@@ -1,0 +1,232 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870600",
+  "phien": "zcode-sub:glm-5.3:20261106T1230#soan-870600",
+  "dong8": {
+    "87060011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        },
+        {
+          "fact": "mayKeoNongNghiep",
+          "op": "CO"
+        }
+      ]
+    },
+    "87060021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô"
+        }
+      ]
+    },
+    "87060022": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87060023": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87060031": {
+      "dieuKienSo": []
+    },
+    "87060032": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô cứu thương"
+        }
+      ]
+    },
+    "87060033": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô"
+        }
+      ]
+    },
+    "87060034": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe được thiết kế đặc biệt để đi trên tuyết"
+        }
+      ]
+    },
+    "87060039": {
+      "dieuKienSo": []
+    },
+    "87060041": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87060042": {
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ]
+    },
+    "87060050": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.05"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8706001": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ]
+    },
+    "8706002": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.02"
+        }
+      ]
+    },
+    "8706003": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.03"
+        }
+      ]
+    },
+    "8706004": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.04"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8706001",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8706001 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\" (dẫn mã, máy tự nở dải)"
+    },
+    {
+      "ma": "8706002",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8706002 \"Dùng cho xe thuộc nhóm 87.02\" ⇒ dungCho \"87.02\""
+    },
+    {
+      "ma": "8706003",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8706003 \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""
+    },
+    {
+      "ma": "8706004",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8706004 \"Dùng cho xe thuộc nhóm 87.04\" ⇒ dungCho \"87.04\""
+    },
+    {
+      "ma": "87060011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060011 \"Dùng cho máy kéo nông nghiệp thuộc nhóm 87.01\" ⇒ dungCho \"87.01\" + mayKeoNongNghiep CO"
+    },
+    {
+      "ma": "87060021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060021 \"Dùng cho ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)\" ⇒ dungCho \"ô tô\"; cụm ngoặc kể cả/trừ là PHU (luật 3.8), như đã chốt ở 87079021"
+    },
+    {
+      "ma": "87060022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060022 \"Loại khác, dùng cho xe có khối lượng toàn bộ theo thiết kế (SEN) không quá 24 tấn\" ⇒ \"Loại khác, <vế>\": chỉ điều kiện của vế — khoiLuongToanBo <= 24 tấn (như tiền lệ 840734 tách khối lượng ra khoá SO); vế \"dùng cho xe\" lặp chữ tiêu đề 8706002"
+    },
+    {
+      "ma": "87060023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060023 ⇒ khoiLuongToanBo > 24 tấn"
+    },
+    {
+      "ma": "87060032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060032 \"Dùng cho ô tô cứu thương\" ⇒ dungCho \"ô tô cứu thương\""
+    },
+    {
+      "ma": "87060033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060033 \"Dùng cho ô tô (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)\" ⇒ dungCho \"ô tô\"; cụm ngoặc PHU (luật 3.8)"
+    },
+    {
+      "ma": "87060034",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060034 \"Dùng cho xe được thiết kế đặc biệt để đi trên tuyết (SEN)\" ⇒ dungCho trọn cụm đích nguyên văn"
+    },
+    {
+      "ma": "87060041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060041 ⇒ chỉ khoiLuongToanBo biên đúng chữ; vế \"Dùng cho xe\" lặp chữ tiêu đề 8706004 \"Dùng cho xe thuộc nhóm 87.04\" (LAP tổ tiên), không lập lại dungCho ở dòng con để giữ cùng giá trị trục với tầng"
+    },
+    {
+      "ma": "87060042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060042 ⇒ chỉ khoiLuongToanBo biên đúng chữ; vế \"Dùng cho xe\" lặp chữ tiêu đề 8706004 \"Dùng cho xe thuộc nhóm 87.04\" (LAP tổ tiên), không lập lại dungCho ở dòng con để giữ cùng giá trị trục với tầng"
+    },
+    {
+      "ma": "87060050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060050 \"Dùng cho xe thuộc nhóm 87.05\" ⇒ dungCho \"87.05\""
+    },
+    {
+      "ma": "87060031",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "dungChoTuongTu",
+      "ghiChu": "tax.87060031 \"Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự\" — vế mở \"và các loại xe tương tự\" đứng sau \"Dùng cho\": op TUONG_TU chỉ có ở tenLoai/nhanHieu/model…, không có ở dungCho (CONG_DUNG); dùng tenLoai TUONG_TU là đổi khoá sai trục (hàng là khung gầm, không phải xe), đóng danh sách [\"xe đua cỡ nhỏ\",\"xe chơi gôn\"] bị cong5-ve-mo-bi-bo"
+    },
+    {
+      "ma": "87060050",
+      "loai": "DUNG",
+      "ghiChu": "cổng 1 thăm dò vector dungCho=\"ô tô\" ở gốc: các con gốc đều dẫn mã (87.01–87.05) nên giá trị chữ tự do của dòng cháu (.21/.33 \"ô tô\") không thuộc mã nào — máy chưa nạp ràng buộc \"khung gầm dùng cho xe 87.01–87.05\" của tiêu đề nhóm làm nền ⇒ cong1-khong-phu-kin:8706, giữ nguyên, không bịa điều kiện để ép xanh"
+    }
+  ]
+}

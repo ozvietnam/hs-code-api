@@ -1,0 +1,93 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870830",
+  "phien": "zcode-sub:glm-5.3:20261106T1300#soan-870830",
+  "dong8": {
+    "87083010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ]
+    },
+    "87083021": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Phanh trống",
+            "phanh đĩa",
+            "phanh hơi"
+          ]
+        }
+      ]
+    },
+    "87083030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Phanh trống",
+            "phanh đĩa",
+            "phanh hơi"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.04"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8708302": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.03"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "87083010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083010 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""
+    },
+    {
+      "ma": "8708302",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8708302 \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""
+    },
+    {
+      "ma": "87083021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083021 \"Phanh trống, phanh đĩa hoặc phanh hơi\" ⇒ tenLoai mảng ba tên nguyên văn (hoặc)"
+    },
+    {
+      "ma": "87083030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083030 \"Phanh trống, phanh đĩa hoặc phanh hơi cho xe thuộc nhóm 87.02 hoặc 87.04\" ⇒ tenLoai mảng ba tên + dungCho mảng [\"87.02\",\"87.04\"]"
+    },
+    {
+      "ma": "87083029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083029 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "87083090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083090 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

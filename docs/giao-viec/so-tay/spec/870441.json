@@ -1,0 +1,154 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870441",
+  "phien": "zcode-sub:glm-5.3:20261106T1135#soan-870441",
+  "dong8": {
+    "87044111": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ]
+    },
+    "87044121": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ]
+    },
+    "87044122": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "THU_GOM_PHE_THAI"
+          ]
+        }
+      ]
+    },
+    "87044123": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "XI_TEC"
+          ]
+        }
+      ]
+    },
+    "87044124": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "BOC_THEP"
+          ]
+        }
+      ]
+    },
+    "87044125": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "CHO_BUN_THUNG_ROI"
+          ]
+        }
+      ]
+    },
+    "87044126": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "PICK_UP"
+          ]
+        }
+      ]
+    },
+    "87044127": {
+      "dieuKienSo": [
+        {
+          "fact": "xeBaBanh",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8704411": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8704411",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8704411 \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG (cách đọc KHÔNG của daLapRap có \"CKD\")"
+    },
+    {
+      "ma": "87044111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87044111 \"Ô tô tải đông lạnh (1)\" ⇒ kieuXeChoHang TRONG [DONG_LANH]"
+    },
+    {
+      "ma": "87044121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87044121 \"Ô tô tải đông lạnh (1)\" ⇒ kieuXeChoHang TRONG [DONG_LANH]"
+    },
+    {
+      "ma": "87044122",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87044122 \"Ô tô thu gom phế thải có bộ phận nén phế thải\" ⇒ kieuXeChoHang TRONG [THU_GOM_PHE_THAI]"
+    },
+    {
+      "ma": "87044123",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87044123 \"Ô tô xi téc; ô tô chở xi măng kiểu bồn\" ⇒ kieuXeChoHang TRONG [XI_TEC]"
+    },
+    {
+      "ma": "87044124",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87044124 \"Ô tô bọc thép để chở hàng hóa có giá trị\" ⇒ kieuXeChoHang TRONG [BOC_THEP]"
+    },
+    {
+      "ma": "87044125",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87044125 \"Ô tô chở bùn có thùng rời nâng hạ được(SEN)\" ⇒ kieuXeChoHang TRONG [CHO_BUN_THUNG_ROI]"
+    },
+    {
+      "ma": "87044126",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87044126 \"Ô tô pick-up (1)\" ⇒ kieuXeChoHang TRONG [PICK_UP]"
+    },
+    {
+      "ma": "87044127",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87044127 \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"
+    },
+    {
+      "ma": "87044127",
+      "loai": "DUNG",
+      "ghiChu": "tax.87044127 \"Xe ba bánh (SEN)\" (xeBaBanh CO) chồng lấn trục với anh em kieuXeChoHang LIET_KE (đông lạnh/pick-up/thu gom phế thải…) — hàng thật xe ba bánh chở hàng đông lạnh thoả cả hai dòng; cả hai khoá đều là trục DAC_DIEM nên khai chongLanTruc bị cong0-chong-lan-truc-mot-truc ⇒ DỪNG, không tự xử lý"
+    }
+  ]
+}

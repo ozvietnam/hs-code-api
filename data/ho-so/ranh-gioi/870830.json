@@ -1,0 +1,132 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "870830",
+  "nhom": "8708",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1300#soan-870830",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8708302",
+      "nguon": "tieuDe.8708302",
+      "trich": "8708302 Dùng cho xe thuộc nhóm 87.03",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.03"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87083010",
+      "nguon": "tax.87083010",
+      "trich": "87083010 - - Dùng cho xe thuộc nhóm 87.01",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87083021",
+      "nguon": "tax.87083021",
+      "trich": "87083021 - - - Phanh trống, phanh đĩa hoặc phanh hơi ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Phanh trống",
+            "phanh đĩa",
+            "phanh hơi"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87083029",
+      "nguon": "tax.87083029",
+      "trich": "87083029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87083030",
+      "nguon": "tax.87083030",
+      "trich": "87083030 - - Phanh trống, phanh đĩa hoặc phanh hơi cho xe thuộc nhóm 87.02 hoặc 87.04",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Phanh trống",
+            "phanh đĩa",
+            "phanh hơi"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.04"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87083090",
+      "nguon": "tax.87083090",
+      "trich": "87083090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "87083010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083010 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""
+    },
+    {
+      "ma": "8708302",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8708302 \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""
+    },
+    {
+      "ma": "87083021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083021 \"Phanh trống, phanh đĩa hoặc phanh hơi\" ⇒ tenLoai mảng ba tên nguyên văn (hoặc)"
+    },
+    {
+      "ma": "87083030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083030 \"Phanh trống, phanh đĩa hoặc phanh hơi cho xe thuộc nhóm 87.02 hoặc 87.04\" ⇒ tenLoai mảng ba tên + dungCho mảng [\"87.02\",\"87.04\"]"
+    },
+    {
+      "ma": "87083029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083029 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "87083090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87083090 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}
