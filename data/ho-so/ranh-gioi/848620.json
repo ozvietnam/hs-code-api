@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T0910#soan-848620",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-848620",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -109,14 +109,83 @@
       "hs": "84862012",
       "nguon": "tax.84862012",
       "trich": "84862012 - - - Máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy kết tủa epitaxi"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "QUAY"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84862013",
       "nguon": "tax.84862013",
       "trich": "84862013 - - - Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng; thiết bị lắng đọng vật lý dùng cho sản xuất bán dẫn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị tạo kết tủa vật lý"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "PHUN_PHU"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị lắng đọng vật lý"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "sản xuất bán dẫn"
+              }
+            ]
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -446,15 +515,13 @@
   "ghiChuSoan": [
     {
       "ma": "84862012",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapCheTao",
-      "ghiChu": "tax.84862012 \"…thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay\" — không có khoá/giá trị cho \"bằng phương pháp quay\" trong tu-vung@2 (phuongPhapCheTao không có giá trị quay)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84862012 hai hàng nối \";\" ⇒ HOAC: (A) tenLoai \"Máy kết tủa epitaxi\" + dungCho \"các tấm bán dẫn mỏng\"; (B) tenLoai \"thiết bị\" + congDung \"tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng\" + nguyenLyXuLy QUAY (khoá lô 20, đọc \"phương pháp quay\"). Thay THIEU_KHOA_TU_VUNG phuongPhapCheTao."
     },
     {
       "ma": "84862013",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapCheTao",
-      "ghiChu": "tax.84862013 \"Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ…\" — không có khoá/giá trị cho \"bằng phương pháp phun phủ\" trong tu-vung@2 (EP_PHUN chỉ đọc \"ép phun/đúc phun\")"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84862013 hai hàng nối \";\" ⇒ HOAC: (A) tenLoai \"Thiết bị tạo kết tủa vật lý\" + nguyenLyXuLy PHUN_PHU (khoá lô 20, đọc \"phương pháp phun phủ\") + dungCho \"các tấm bán dẫn mỏng\"; (B) tenLoai \"thiết bị lắng đọng vật lý\" + dungCho \"sản xuất bán dẫn\". Thay THIEU_KHOA_TU_VUNG phuongPhapCheTao."
     },
     {
       "ma": "84862019",
