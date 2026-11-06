@@ -1,0 +1,67 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730640",
+  "phien": "zcode-sub:glm-5.3:20261106T0930#soan-730640",
+  "dong8": {
+    "73064011": {
+      "dieuKienSo": [
+        { "fact": "duongKinh", "op": "<=", "value": 12.5, "donVi": "mm" }
+      ]
+    },
+    "73064020": {
+      "dieuKienSo": [
+        { "fact": "duongKinh", "op": ">", "value": 105, "donVi": "mm" }
+      ]
+    },
+    "73064030": {
+      "dieuKienSo": [
+        { "fact": "hamLuongNiken", "op": ">=", "value": 30, "donVi": "%" },
+        { "fact": "duongKinh", "op": "<=", "value": 10, "donVi": "mm" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7306401": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "nồi hơi" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7306401",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7306401: \"Ống dùng cho nồi hơi\" ⇒ dungCho \"nồi hơi\" (vế \"dùng cho nồi hơi\")"
+    },
+    {
+      "ma": "73064011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064011: \"Với đường kính ngoài không quá 12,5 mm\" ⇒ duongKinh <= 12.5 mm"
+    },
+    {
+      "ma": "73064019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "73064020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064020: \"Ống và ống dẫn bằng thép không gỉ, có đường kính ngoài trên 105 mm\" ⇒ duongKinh > 105 mm; \"bằng thép không gỉ\" lặp chữ tiêu đề PN6 730640 (\"… bằng thép không gỉ\") nên không cần điều kiện riêng"
+    },
+    {
+      "ma": "73064030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064030: \"Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm\" ⇒ hamLuongNiken >= 30 % (ít nhất là = >=) + duongKinh <= 10 mm; \"tính theo khối lượng\" là cách tính tỉ lệ, không phải đặc điểm phân dòng. Bộ đọc không đọc được biên \"ít nhất là 30%\" từ trích (cổng 3 cảnh báo) — đã đối chiếu tay: 30 % đúng số chữ, >= đúng \"ít nhất là\""
+    },
+    {
+      "ma": "73064090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "730640",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan-truc:7306401:73064020,73064030 — tầng 7306401 \"Ống dùng cho nồi hơi\" (chia theo công dụng dungCho) chồng lấn thật ≥ 2 nhánh anh em có tiêu đề (ống nồi hơi D>105 thoả cả .19/.20; ống nồi hơi niken ≥ 30%, D ≤ 10 thoả cả .11/.30) ⇒ cụm trục, nhưng 73064020/73064030 chỉ có khoá SO duongKinh/hamLuongNiken — không có khoá tên/công dụng/đặc điểm CO_KHONG·LIET_KE để khai chongLanTruc (thêm tenLoai \"Ống và ống dẫn\" chung cho mọi nhánh là bịa tên không phân biệt để né); khai chongLanVanBan trong cụm trục thành lỗi cong2-chong-lan-van-ban-truc ⇒ DỪNG, báo Claude"
+    }
+  ]
+}
