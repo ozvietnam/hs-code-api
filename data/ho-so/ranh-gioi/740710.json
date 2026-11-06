@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1528#soan-740710",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-740710",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -47,7 +47,15 @@
       "hs": "74071041",
       "nguon": "tax.74071041",
       "trich": "74071041 - - - Mặt cắt ngang hình vuông hoặc hình chữ nhật",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "VUONG_HOAC_CHU_NHAT"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -61,9 +69,8 @@
   "ghiChuSoan": [
     {
       "ma": "74071041",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hinhDangMatCatNgang",
-      "ghiChu": "tax.74071041 \"Mặt cắt ngang hình vuông hoặc hình chữ nhật\" — ý hình dạng mặt cắt ngang của thanh/que không có khoá tu-vung@2: tenLoai mảng [\"hình vuông\",\"hình chữ nhật\"] bị cong1-khong-phu-kin (vector không thoả tầng cha 7407104 \"Dạng thanh và que\" cùng khoá tenLoai); hinhDangCatGocKinh là khoá của tấm kính (sai trục với thanh đồng). Không bịa, không mượn khoá gần nghĩa."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74071041 \"Mặt cắt ngang hình vuông hoặc hình chữ nhật\" ⇒ hinhDangMatCatNgang TRONG [VUONG_HOAC_CHU_NHAT]"
     },
     {
       "ma": "7407104",

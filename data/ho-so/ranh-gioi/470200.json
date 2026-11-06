@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1550#soan-470200",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-470200",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -19,9 +19,8 @@
       "trich": "47020010 - Từ gỗ cây lá kim ",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "gỗ cây lá kim"
+          "fact": "goLaKim",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -30,7 +29,12 @@
       "hs": "47020020",
       "nguon": "tax.47020020",
       "trich": "47020020 - Từ gỗ cây không thuộc loài cây lá kim ",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "goLaKim",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -38,13 +42,12 @@
     {
       "ma": "47020010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.47020010 \"Từ gỗ cây lá kim \" ⇒ tenLoai \"gỗ cây lá kim\" nguyên văn (cùng cách xử lý vật liệu-loại như 391890 \"polyetylen\")"
+      "ghiChu": "tax.47020010 \"Từ gỗ cây lá kim\" ⇒ goLaKim CO (đọc \"gỗ cây lá kim\")"
     },
     {
       "ma": "47020020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "goLaKim",
-      "ghiChu": "tax.47020020 \"Từ gỗ cây không thuộc loài cây lá kim \" — vế phủ định \"không thuộc loài cây lá kim\" không có khoá tu-vung@2 (tenLoai chỉ khẳng định; phanConLai đòi chữ \"khác\" mà dòng không có — cong3-phan-con-lai-khong-co-chu-khac) ⇒ DỪNG"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.47020020 \"Từ gỗ cây không thuộc loài cây lá kim\" ⇒ goLaKim KHONG (đọc \"không thuộc loài cây lá kim\"); cùng khoá với .10 để hai dòng loại trừ nhau"
     }
   ]
 }
