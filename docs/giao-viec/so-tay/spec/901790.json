@@ -1,0 +1,39 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "901790",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-901790",
+  "dong8": {
+    "90179030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in"
+        }
+      ]
+    },
+    "90179040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy vẽ khác"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "90179030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90179030: \"Bộ phận và phụ kiện của máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in\" ⇒ dungCho trọn cụm đích \"máy vẽ ảnh để sản xuất tấm mạch in/tấm dây in\" (đích lồng, luật 8 bảng chung)"
+    },
+    {
+      "ma": "90179040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90179040: \"Bộ phận và phụ kiện, kể cả mạch in đã lắp ráp, của máy vẽ khác\" ⇒ dungCho \"máy vẽ khác\" + phanConLai true (\"khác\" phủ định 90179030); \"kể cả mạch in đã lắp ráp\" là vế kể cả (PHU), không thành điều kiện"
+    }
+  ]
+}

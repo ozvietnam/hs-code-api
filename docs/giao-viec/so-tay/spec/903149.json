@@ -1,0 +1,47 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "903149",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-903149",
+  "dong8": {
+    "90314910": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Dụng cụ", "thiết bị"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "quang học" },
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn" }
+      ]
+    },
+    "90314920": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thiết bị quang học" },
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp" }
+      ]
+    },
+    "90314930": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Dụng cụ", "thiết bị"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "quang học" },
+        { "fact": "congDung", "op": "CONG_DUNG", "value": ["đo", "kiểm tra"] },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "tấm mạch in/tấm dây in và mạch in đã lắp ráp" }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "90314910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90314910: \"Dụng cụ và thiết bị quang học để đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn\" => tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + định ngữ chung \"quang học\" điều kiện riêng + congDung \"đo độ nhiễm bẩn bề mặt của các vi mạch bán dẫn\" (trọn vế giới hạn)"
+    },
+    {
+      "ma": "90314920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90314920: \"Thiết bị quang học để xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp\" => tenLoai \"Thiết bị quang học\" + congDung trọn vế \"xác định và sửa lỗi cho tấm mạch in/tấm dây in và mạch in đã lắp ráp\""
+    },
+    {
+      "ma": "90314930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90314930: \"Dụng cụ và thiết bị quang học khác để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp\" => tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + \"quang học\" + congDung mảng [\"đo\",\"kiểm tra\"] (\"hoặc\") + dungCho đích \"tấm mạch in/tấm dây in và mạch in đã lắp ráp\"; phanConLai true (\"khác\" phủ định 90314910, 90314920)"
+    }
+  ]
+}

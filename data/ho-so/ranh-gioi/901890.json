@@ -1,0 +1,130 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "901890",
+  "nhom": "9018",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-901890",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "9018903",
+      "nguon": "tieuDe.9018903",
+      "trich": "9018903 Dụng cụ và thiết bị điện tử",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dụng cụ",
+            "thiết bị"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "điện tử"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "90189010",
+      "nguon": "tax.90189010",
+      "trich": "90189010 - - Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn sợi quang"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "được thiết kế dùng trong y học"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90189020",
+      "nguon": "tax.90189020",
+      "trich": "90189020 - - Bộ theo dõi tĩnh mạch ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ theo dõi tĩnh mạch"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90189031",
+      "nguon": "tax.90189031",
+      "trich": "90189031 - - - Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dụng cụ",
+            "thiết bị"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "phẫu thuật điện tử",
+            "y học điện tử"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90189039",
+      "nguon": "tax.90189039",
+      "trich": "90189039 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90189090",
+      "nguon": "tax.90189090",
+      "trich": "90189090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "90189010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90189010: \"Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)\" ⇒ tenLoai \"Đèn sợi quang\" + dungCho \"được thiết kế dùng trong y học\" (trọn vế giới hạn); \"dùng đeo trên đầu\" là định ngữ loại đèn, đã nằm trong tenLoai nguồn"
+    },
+    {
+      "ma": "90189020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90189020: \"Bộ theo dõi tĩnh mạch\" ⇒ tenLoai nguyên văn"
+    },
+    {
+      "ma": "90189031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90189031: \"Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử\" ⇒ tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + mảng [\"phẫu thuật điện tử\",\"y học điện tử\"] (\"hoặc\" = hai hàng)"
+    },
+    {
+      "ma": "9018903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9018903: \"Dụng cụ và thiết bị điện tử\" ⇒ tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + định ngữ chung \"điện tử\" thành điều kiện riêng cùng khoá"
+    }
+  ]
+}

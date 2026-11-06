@@ -1,0 +1,31 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "940370",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-940370",
+  "dong8": {
+    "94037010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xe tập đi" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "trẻ em" }
+      ]
+    },
+    "94037020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Tủ hút hơi độc" }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "94037010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94037010: \"Xe tập đi cho trẻ em\" => tenLoai \"Xe tập đi\" + dungCho \"trẻ em\" (vế \"cho trẻ em\")"
+    },
+    {
+      "ma": "94037020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94037020: \"Tủ hút hơi độc (SEN)\" => tenLoai nguyên văn"
+    }
+  ]
+}
