@@ -1,0 +1,167 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "702000",
+  "nhom": "7020",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0954#soan-702000",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7020001",
+      "nguon": "tieuDe.7020001",
+      "trich": "7020001 Khuôn bằng thủy tinh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khuôn"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "thủy tinh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "70200011",
+      "nguon": "tax.70200011",
+      "trich": "70200011 - - Loại dùng để sản xuất các sản phẩm acrylic(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dùng để sản xuất các sản phẩm acrylic"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "70200019",
+      "nguon": "tax.70200019",
+      "trich": "70200019 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "70200020",
+      "nguon": "tax.70200020",
+      "trich": "70200020 - Ống thạch anh dùng trong lò phản ứng và vòng kẹp được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Ống thạch anh"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "dùng trong lò phản ứng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "vòng kẹp"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "được thiết kế để chèn vào lò luyện khuếch tán và lò ôxi hóa để sản xuất tấm bán dẫn mỏng"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "70200030",
+      "nguon": "tax.70200030",
+      "trich": "70200030 - Ruột phích hoặc ruột bình chân không khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ruột phích",
+            "ruột bình chân không"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "70200040",
+      "nguon": "tax.70200040",
+      "trich": "70200040 - Ống chân không sử dụng trong bình nước nóng năng lượng mặt trời",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống chân không"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sử dụng trong bình nước nóng năng lượng mặt trời"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "70200090",
+      "nguon": "tax.70200090",
+      "trich": "70200090 - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7020001",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7020001 \"Khuôn bằng thủy tinh\" ⇒ tenLoai \"Khuôn\" + chatLieu LA \"thủy tinh\" (vế \"bằng thủy tinh\")"
+    },
+    {
+      "ma": "70200011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70200011 \"Loại dùng để sản xuất các sản phẩm acrylic\" ⇒ dungCho \"dùng để sản xuất các sản phẩm acrylic\" (nguyên văn vế)"
+    },
+    {
+      "ma": "70200019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70200019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "70200020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70200020 gồm hai hàng: \"Ống thạch anh\" dùng trong lò phản ứng, và \"vòng kẹp\" được thiết kế để chèn vào lò luyện khuếch tán/lò ôxi hóa sản xuất tấm bán dẫn mỏng ⇒ HOAC hai phương án; \"lò luyện khuếch tán và lò ôxi hóa\" là cụm đích một khối nên giữ một chuỗi"
+    },
+    {
+      "ma": "70200030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70200030 \"Ruột phích hoặc ruột bình chân không khác\" — chữ \"khác\" thuộc đích \"bình chân không khác\" (bình chân không khác ngoài phích), dòng có tên riêng chứ không phải phần còn lại của anh em ⇒ phanConLai: false; hai loại ruột nối \"hoặc\" ⇒ mảng"
+    },
+    {
+      "ma": "70200090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70200090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}
