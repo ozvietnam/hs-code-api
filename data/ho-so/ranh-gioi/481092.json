@@ -1,0 +1,69 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481092",
+  "nhom": "4810",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1533#soan-481092",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48109240",
+      "nguon": "tax.48109240",
+      "trich": "48109240 - - - Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 150,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 360,
+                "donVi": "mm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48109290",
+      "nguon": "tax.48109290",
+      "trich": "48109290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48109240",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48109240 \"Dạng cuộn có chiều rộng không quá 150 mm hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp\" ⇒ HOAC: (dạng cuộn, chiều rộng <= 150 mm) hoặc (không chiều nào trên 360 mm); \"ở dạng không gấp\" là trạng thái khi đo, không có khoá riêng, điều kiện số đã đọc tới đúng vế."
+    },
+    {
+      "ma": "48109290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48109290 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "560790",
+  "nhom": "5607",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1541#soan-560790",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "5607902",
+      "nguon": "tieuDe.5607902",
+      "trich": "5607902 Từ xơ chuối abaca (Manila hemp hoặc Musa textilis Nee) hoặc các xơ (lá thực vật) cứng khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "xơ chuối abaca",
+            "xơ (lá thực vật) cứng"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "56079010",
+      "nguon": "tax.56079010",
+      "trich": "56079010 - - Từ các xơ tái tạo",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xơ tái tạo"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "56079021",
+      "nguon": "tax.56079021",
+      "trich": "56079021 - - - Từ xơ chuối abaca (Manila hemp hoặc Musa textilis Nee)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xơ chuối abaca"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "56079022",
+      "nguon": "tax.56079022",
+      "trich": "56079022 - - - Từ các xơ (lá thực vật) cứng khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xơ (lá thực vật) cứng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "56079021"
+      ]
+    },
+    {
+      "hs": "56079030",
+      "nguon": "tax.56079030",
+      "trich": "56079030 - - Từ đay hoặc các loại xơ libe dệt khác thuộc nhóm 53.03",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "đay",
+            "xơ libe dệt"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nhóm 53.03"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "56079090",
+      "nguon": "tax.56079090",
+      "trich": "56079090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "56079010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56079010 \"Từ các xơ tái tạo\" ⇒ tenLoai \"xơ tái tạo\"; chatLieu không có giá trị xơ tái tạo nên dùng tenLoai (anh em cùng cách chia \"Từ xơ …\" ⇒ cùng khoá tenLoai). Tầng 5607902 khai dieuKienNut tenLoai [\"xơ chuối abaca\",\"xơ (lá thực vật) cứng\"] theo đúng tên tiêu đề."
+    },
+    {
+      "ma": "56079021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56079021 \"Từ xơ chuối abaca (Manila hemp hoặc Musa textilis Nee)\" ⇒ tenLoai \"xơ chuối abaca\"; ngoặc tên khoa học là phụ chú."
+    },
+    {
+      "ma": "56079022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56079022 \"Từ các xơ (lá thực vật) cứng khác\" — \"khác\" so với abaca trong cùng cụm 5607902 ⇒ tenLoai \"xơ (lá thực vật) cứng\" + phanConLai [\"56079021\"], không phủ .10/.30 (khác trục chất liệu nguồn)."
+    },
+    {
+      "ma": "56079030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56079030 \"Từ đay hoặc các loại xơ libe dệt khác thuộc nhóm 53.03\" ⇒ tenLoai [\"đay\",\"xơ libe dệt\"] (\"hoặc\" ⇒ mảng; cụm \"các loại … khác\" không phải cụm mở \"tương tự\" nên không dùng TUONG_TU — cong3 hướng dẫn dùng TEN_LOAI mảng) + dungCho giữ nguyên chuỗi mã \"nhóm 53.03\" (đay và xơ libe đều thuộc 53.03, giới hạn chung; máy tự nở dải)."
+    },
+    {
+      "ma": "56079090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56079090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "56079030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ \"khác\" trong \"các loại xơ libe dệt khác thuộc nhóm 53.03\" nghĩa là xơ libe khác (ngoài đay), vẫn nằm trong liệt kê mở của chính dòng — không phải phần còn lại của anh em (56079090 đã là \"Loại khác\" trần) ⇒ phanConLai false."
+    },
+    {
+      "ma": "5607902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ \"khác\" trong tiêu đề tầng 5607902 (\"… hoặc các xơ (lá thực vật) cứng khác\") nghĩa là xơ lá thực vật cứng khác (ngoài abaca) — đã xử ở con 56079022 bằng phanConLai [\"56079021\"], tầng không phải phần còn lại ⇒ phanConLai false."
+    }
+  ]
+}

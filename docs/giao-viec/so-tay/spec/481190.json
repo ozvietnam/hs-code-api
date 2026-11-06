@@ -1,0 +1,121 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "481190",
+  "phien": "zcode-sub:glm-5.3:20261106T1534#soan-481190",
+  "dong8": {
+    "48119041": {
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ]
+    },
+    "48119042": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy tạo vân"
+        }
+      ]
+    },
+    "48119091": {
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ]
+    },
+    "48119092": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy tạo vân"
+        }
+      ]
+    },
+    "48119093": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm xenlulo",
+            "màng xơ sợi xenlulo"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4811904": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "481190",
+      "loai": "DUNG",
+      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:481190:chua-co; giữ spec đến chỗ đã làm."
+    },
+    {
+      "ma": "48119041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119041 \"Tấm phủ sàn\" ⇒ tamPhuSan CO."
+    },
+    {
+      "ma": "48119042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119042 \"Giấy tạo vân(SEN)\" ⇒ tenLoai \"Giấy tạo vân\"; \"(SEN)\" là dẫn nguồn chú giải."
+    },
+    {
+      "ma": "48119091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119091 \"Tấm phủ sàn\" ⇒ tamPhuSan CO."
+    },
+    {
+      "ma": "48119092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119092 \"Giấy tạo vân(SEN)\" ⇒ tenLoai \"Giấy tạo vân\"."
+    },
+    {
+      "ma": "48119093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119093 \"Loại khác, tấm xenlulo hoặc màng xơ sợi xenlulo\" ⇒ chỉ điều kiện của vế: tenLoai [\"tấm xenlulo\",\"màng xơ sợi xenlulo\"] (\"hoặc\" ⇒ mảng; \"Loại khác, <vế>\" máy tự phủ định anh em, không khai phanConLai — cong0 báo thừa)."
+    },
+    {
+      "ma": "48119099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

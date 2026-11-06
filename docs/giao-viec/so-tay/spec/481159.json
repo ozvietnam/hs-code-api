@@ -1,0 +1,34 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "481159",
+  "phien": "zcode-sub:glm-5.3:20261106T1534#soan-481159",
+  "dong8": {
+    "48115920": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "đóng gói thực phẩm dạng lỏng" }
+      ]
+    },
+    "48115941": {
+      "dieuKienSo": [ { "fact": "tamPhuSan", "op": "CO" } ]
+    },
+    "48115991": {
+      "dieuKienSo": [ { "fact": "tamPhuSan", "op": "CO" } ]
+    }
+  },
+  "dieuKienNut": {
+    "4811594": {
+      "dieuKienSo": [
+        { "op": "HOAC", "phuongAn": [
+          [ { "fact": "dangCuon", "op": "CO" }, { "fact": "chieuRong", "op": "<=", "value": 15, "donVi": "cm" } ],
+          [ { "fact": "kichThuoc", "op": "<=", "value": 36, "donVi": "cm" } ]
+        ] }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "481159", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:481159:chua-co; giữ spec đến chỗ đã làm." },
+    { "ma": "48115920", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "phuMangPlasticHaiMat", "ghiChu": "tax.48115920 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" — các vế \"đã phủ cả hai mặt bằng màng plastic trong suốt\", \"được lót trong\", \"bằng một lớp nhôm mỏng\" không có khoá trong tu-vung@2; chỉ phủ được vế \"sử dụng để đóng gói thực phẩm dạng lỏng\" bằng dungCho." },
+    { "ma": "48115941", "loai": "QUYET_DINH", "ghiChu": "tax.48115941 \"Tấm phủ sàn\" ⇒ tamPhuSan CO." },
+    { "ma": "48115991", "loai": "QUYET_DINH", "ghiChu": "tax.48115991 \"Tấm phủ sàn\" ⇒ tamPhuSan CO." }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "520859",
+  "phien": "zcode-sub:glm-5.3:20261106T1539#soan-520859",
+  "dong8": {
+    "52085910": {
+      "dieuKienSo": [ { "fact": "phuongPhapIn", "op": "TRONG", "value": ["BATIK"] } ]
+    },
+    "52085920": {
+      "dieuKienSo": [
+        { "fact": "soSoi", "op": ">=", "value": 3, "donVi": "sợi" },
+        { "fact": "soSoi", "op": "<=", "value": 4, "donVi": "sợi" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "52085910", "loai": "QUYET_DINH", "ghiChu": "tax.52085910 \"Được in bằng phương pháp batik truyền thống (SEN)\" ⇒ phuongPhapIn TRONG [BATIK] (cách đọc \"in … batik truyền thống\" khớp chữ, phủ cả vế \"Được in\"); \"(SEN)\" là dẫn nguồn chú giải." },
+    { "ma": "52085920", "loai": "QUYET_DINH", "ghiChu": "tax.52085920 \"Loại khác, vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân\" ⇒ chỉ điều kiện của vế: soSoi >= 3 và <= 4 sợi (\"3 sợi hoặc 4 sợi\"; tu-vung@2 không có op bằng nên viết cặp >=/<=); \"kể cả vải vân chéo dấu nhân\" là phụ chú kể-cả (QUY-TRINH 3.8) ⇒ không thành điều kiện." },
+    { "ma": "52085920", "loai": "LECH_TIEN_LE", "ghiChu": "Bảng hiệu chỉnh tiền lệ L1-4b mục 520859-01 (LECH_CHUA_PHAN_XU, TB-TCHQ 888/TB-TCHQ) gán tiền lệ \"vải dệt thoi kiểu dệt vân chéo 3 sợi\" cho 52085990 trong khi chữ biểu 52085920 là \"vân chéo 3 sợi hoặc vân chéo 4 sợi\" — soạn theo CHỮ BIỂU như trên; lệch chưa phân xử, người soát quyết theo mục bảng." },
+    { "ma": "52085990", "loai": "QUYET_DINH", "ghiChu": "tax.52085990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}

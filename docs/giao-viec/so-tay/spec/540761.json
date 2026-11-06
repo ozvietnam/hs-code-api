@@ -1,1 +1,15 @@
-{"phienBan":"ranh-gioi-spec@1","pn6":"540761","phien":"zcode-mm:loop:20261106T0933#soan-540761","dong8":{},"dieuKienNut":{},"ghiChuSoan":[{"ma":"","loai":"DUNG","ghiChu":"--goi chặn CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — không soạn"}]}
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "540761",
+  "phien": "zcode-sub:glm-5.3:20261106T1540#soan-540761",
+  "dong8": {
+    "54076110": {
+      "dieuKienSo": [ { "fact": "tinhTrangTayTrang", "op": "TRONG", "value": ["CHUA_TAY_TRANG", "DA_TAY_TRANG"] } ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "540761", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:540761hua-co; giữ spec đến chỗ đã làm." },
+    { "ma": "54076110", "loai": "QUYET_DINH", "ghiChu": "tax.54076110 \"Chưa tẩy trắng hoặc đã tẩy trắng\" ⇒ tinhTrangTayTrang TRONG [CHUA_TAY_TRANG, DA_TAY_TRANG] (\"hoặc\" ⇒ cả hai giá trị)." },
+    { "ma": "54076190", "loai": "QUYET_DINH", "ghiChu": "tax.54076190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}

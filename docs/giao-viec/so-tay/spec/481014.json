@@ -1,0 +1,24 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "481014",
+  "phien": "zcode-sub:glm-5.3:20261106T1533#soan-481014",
+  "dong8": {
+    "48101410": {
+      "dieuKienSo": [
+        { "fact": "daIn", "op": "CO" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy ghi tự động" },
+        { "fact": "kichThuoc", "op": "<=", "value": 360, "donVi": "mm" }
+      ]
+    },
+    "48101491": {
+      "dieuKienSo": [
+        { "fact": "kichThuoc", "op": "<=", "value": 360, "donVi": "mm" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "48101410", "loai": "QUYET_DINH", "ghiChu": "tax.48101410 \"Đã in, dùng cho máy ghi tự động, không có chiều nào trên 360 mm (SEN)\" ⇒ daIn CO + dungCho \"máy ghi tự động\" + kichThuoc <= 360 mm (\"không có chiều nào trên 360 mm\" = không chiều nào vượt 360); \"(SEN)\" là dẫn nguồn chú giải." },
+    { "ma": "48101491", "loai": "QUYET_DINH", "ghiChu": "tax.48101491 \"Không có chiều nào trên 360 mm\" ⇒ kichThuoc <= 360 mm." },
+    { "ma": "48101499", "loai": "QUYET_DINH", "ghiChu": "tax.48101499 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}

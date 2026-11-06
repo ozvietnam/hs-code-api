@@ -1,0 +1,59 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481019",
+  "nhom": "4810",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1533#soan-481019",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48101910",
+      "nguon": "tax.48101910",
+      "trich": "48101910 - - - Đã in, loại dùng cho máy ghi tự động, không có chiều nào trên 360 mm ở dạng không gấp(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daIn",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy ghi tự động"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 360,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48101990",
+      "nguon": "tax.48101990",
+      "trich": "48101990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48101910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48101910 \"Đã in, loại dùng cho máy ghi tự động, không có chiều nào trên 360 mm ở dạng không gấp(SEN)\" ⇒ daIn CO + dungCho \"máy ghi tự động\" + kichThuoc <= 360 mm; \"ở dạng không gấp\" là trạng thái của tờ giấy khi đo, không có khoá riêng, điều kiện số đã đọc tới đúng vế."
+    },
+    {
+      "ma": "48101990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48101990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

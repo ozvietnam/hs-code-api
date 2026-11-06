@@ -1,1 +1,19 @@
-{"phienBan":"ranh-gioi-spec@1","pn6":"560130","phien":"zcode-mm:loop:20261106T0942#soan-560130","dong8":{},"dieuKienNut":{},"ghiChuSoan":[{"ma":"","loai":"DUNG","ghiChu":"--goi chặn CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — không soạn"}]}
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "560130",
+  "phien": "zcode-sub:glm-5.3:20261106T1541#soan-560130",
+  "dong8": {
+    "56013010": {
+      "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xơ vụn polyamit" } ]
+    },
+    "56013020": {
+      "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xơ vụn bằng polypropylen" } ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "560130", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:560130:chua-co; giữ spec đến chỗ đã làm." },
+    { "ma": "56013010", "loai": "QUYET_DINH", "ghiChu": "tax.56013010 \"Xơ vụn polyamit\" ⇒ tenLoai \"Xơ vụn polyamit\"; chatLieu không có giá trị polyamit nên dùng tenLoai (anh em cùng khoá tenLoai)." },
+    { "ma": "56013020", "loai": "QUYET_DINH", "ghiChu": "tax.56013020 \"Xơ vụn bằng polypropylen\" ⇒ tenLoai \"Xơ vụn bằng polypropylen\" (giữ trọn cụm, phủ vế \"bằng polypropylen\"); chatLieu không có giá trị polypropylen." },
+    { "ma": "56013090", "loai": "QUYET_DINH", "ghiChu": "tax.56013090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}
