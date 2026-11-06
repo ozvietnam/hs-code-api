@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1035#soan-851840",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-851840",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -24,9 +24,8 @@
           "value": "bộ lặp"
         },
         {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "điện thoại hữu tuyến"
+          "fact": "choDienThoaiHuuTuyen",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -35,14 +34,36 @@
       "hs": "85184030",
       "nguon": "tax.85184030",
       "trich": "85184030 - - Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "bộ lặp"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "điện thoại"
+        },
+        {
+          "fact": "choDienThoaiHuuTuyen",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85184040",
       "nguon": "tax.85184040",
       "trich": "85184040 - - Loại khác, có từ 6 đường tín hiệu đầu vào trở lên, có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "soDuongTinHieuDauVao",
+          "op": ">=",
+          "value": 6,
+          "donVi": "đường tín hiệu đầu vào"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -57,19 +78,17 @@
     {
       "ma": "85184020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.85184020 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại hữu tuyến\" ⇒ congDung \"bộ lặp\" + dungCho \"điện thoại hữu tuyến\"; ngoặc \"(nhắc lại)\" là PHU"
+      "ghiChu": "tax.85184020 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại hữu tuyến\": congDung \"bộ lặp\" + choDienThoaiHuuTuyen CO (cùng khoá với .30 để hai dòng loại trừ nhau; thay dungCho \"điện thoại hữu tuyến\" cũ); ngoặc \"(nhắc lại)\" là PHU"
     },
     {
       "ma": "85184030",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongThucTruyenDan",
-      "ghiChu": "tax.85184030 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến\" — vế loại trừ \"trừ điện thoại hữu tuyến\" không có op phủ định cho LIET_KE (cần KHONG_TRONG [HUU_TUYEN]); tiền lệ 07119050 cùng lỗi"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85184030 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến\": congDung \"bộ lặp\" + dungCho \"điện thoại\" + choDienThoaiHuuTuyen KHONG (khoá lô 20, cách đọc KHÔNG: \"trừ điện thoại hữu tuyến\")"
     },
     {
       "ma": "85184040",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "soDuongTinHieuDauVao",
-      "ghiChu": "tax.85184040 \"… có từ 6 đường tín hiệu đầu vào trở lên …\" — không có khoá đếm \"đường tín hiệu đầu vào\" (soLoi là số lõi dây); vế \"có hoặc không kết hợp…\" là dạng \"có hoặc không\" (cổng không đòi tách)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85184040 \"Loại khác, có từ 6 đường tín hiệu đầu vào trở lên, …\": chỉ điều kiện của vế ⇒ soDuongTinHieuDauVao >= 6 (khoá lô 20; \"từ … trở lên\" = >=). Vế \"có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất\" là \"có hoặc không\" ⇒ BO_VE (không giới hạn hàng)"
     },
     {
       "ma": "85184090",
