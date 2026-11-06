@@ -1,0 +1,114 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "940550",
+  "nhom": "9405",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1012#soan-940550",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "9405501",
+      "nguon": "tieuDe.9405501",
+      "trich": "9405501 Loại đốt bằng dầu",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "94055011",
+      "nguon": "tax.94055011",
+      "trich": "94055011 - - - Bằng đồng sử dụng trong nghi lễ tôn giáo",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "đồng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nghi lễ tôn giáo"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94055019",
+      "nguon": "tax.94055019",
+      "trich": "94055019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94055040",
+      "nguon": "tax.94055040",
+      "trich": "94055040 - - Đèn bão",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đèn bão"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94055050",
+      "nguon": "tax.94055050",
+      "trich": "94055050 - - Đèn thợ mỏ và đèn thợ khai thác đá",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Đèn thợ mỏ",
+            "đèn thợ khai thác đá"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94055090",
+      "nguon": "tax.94055090",
+      "trich": "94055090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "9405501",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "nhienLieu (thêm giá trị DAU)",
+      "ghiChu": "tieuDe.9405501 \"9405501 Loại đốt bằng dầu\" — cần khoá loại nhiên liệu đốt đọc được vế \"đốt\" + \"bằng dầu\"; tu-vung@2 chỉ có nhienLieu [GA, DIEN] (bếp/lò), không có giá trị dầu; không mượn khoá gần nghĩa"
+    },
+    {
+      "ma": "94055011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94055011 \"Bằng đồng sử dụng trong nghi lễ tôn giáo\" ⇒ chatLieu LA \"đồng\" + dungCho \"nghi lễ tôn giáo\" (giá trị là chuỗi con nguyên văn của vế GIỚI HẠN \"sử dụng trong nghi lễ tôn giáo\")"
+    },
+    {
+      "ma": "94055019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94055019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "94055050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94055050 \"Đèn thợ mỏ và đèn thợ khai thác đá\" — hai danh từ \"đèn\" rời nhau ⇒ mảng [\"Đèn thợ mỏ\",\"đèn thợ khai thác đá\"]"
+    },
+    {
+      "ma": "94055090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94055090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

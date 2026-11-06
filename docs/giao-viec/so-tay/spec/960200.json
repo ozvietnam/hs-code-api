@@ -1,0 +1,15 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "960200",
+  "phien": "zcode-sub:glm-5.3:20261106T1027#soan-960200",
+  "dong8": {
+    "96020010": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vỏ viên nhộng" }, { "fact": "dungCho", "op": "CONG_DUNG", "value": "dược phẩm" } ] },
+    "96020020": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Hộp đựng xì gà hoặc thuốc lá điếu", "bình đựng thuốc lá", "đồ trang trí"] } ] },
+    "96020090": { "dieuKienSo": [] }
+  },
+  "ghiChuSoan": [
+    { "ma": "96020010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu (thêm giá trị gelatin)", "ghiChu": "tax.96020010 \"Vỏ viên nhộng bằng gelatin dùng cho dược phẩm\" — vế GIỚI HẠN \"bằng gelatin\" không có giá trị chatLieu trong tu-vung@2 (chỉ lưu tenLoai \"Vỏ viên nhộng\" + dungCho \"dược phẩm\"); bỏ vế bằng BO_VE làm rộng hơn chữ (vỏ viên nhộng vật liệu khác rơi nhầm .10) — không được" },
+    { "ma": "96020020", "loai": "QUYET_DINH", "ghiChu": "tax.96020020 \"Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí\" ⇒ tenLoai mảng ba hàng [\"Hộp đựng xì gà hoặc thuốc lá điếu\",\"bình đựng thuốc lá\",\"đồ trang trí\"]" },
+    { "ma": "96020090", "loai": "QUYET_DINH", "ghiChu": "tax.96020090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

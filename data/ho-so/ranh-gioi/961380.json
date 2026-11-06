@@ -1,0 +1,148 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "961380",
+  "nhom": "9613",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1029#soan-961380",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "96138010",
+      "nguon": "tax.96138010",
+      "trich": "96138010 - - Bật lửa áp điện dùng cho lò và bếp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bật lửa áp điện"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "lò",
+            "bếp"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "96138020",
+      "nguon": "tax.96138020",
+      "trich": "96138020 - - Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Bật lửa châm thuốc lá"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bật lửa"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "để bàn"
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "96138030",
+      "nguon": "tax.96138030",
+      "trich": "96138030 - - Bật lửa châm thuốc lá hoặc bật lửa để bàn, trừ loại bằng plastic",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Bật lửa châm thuốc lá"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bật lửa"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "để bàn"
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "96138090",
+      "nguon": "tax.96138090",
+      "trich": "96138090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "96138010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96138010 \"Bật lửa áp điện dùng cho lò và bếp\" ⇒ tenLoai \"Bật lửa áp điện\" + dungCho [\"lò\",\"bếp\"] (vế \"dùng cho lò và bếp\")"
+    },
+    {
+      "ma": "96138020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96138020 \"Bật lửa châm thuốc lá hoặc bật lửa để bàn, bằng plastic\" ⇒ HOAC [[tenLoai \"Bật lửa châm thuốc lá\"],[tenLoai \"bật lửa\" + tenLoai \"để bàn\"]] (định ngữ \"để bàn\" chỉ của danh từ cuối) + chatLieu LA \"plastic\""
+    },
+    {
+      "ma": "96138030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96138030 \"… trừ loại bằng plastic\" ⇒ cùng HOAC tenLoai .20 + chatLieu LA \"plastic\" chieu PHAI_KHONG (vế \"trừ loại bằng plastic\")"
+    },
+    {
+      "ma": "96138090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96138090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "96138030",
+      "loai": "BO_VE",
+      "ve": "trừ loại",
+      "lyDo": "Mảnh vế do bộ tách cắt từ cụm \"trừ loại bằng plastic\"; ý loại trừ đã được phủ bằng chatLieu LA \"plastic\" chieu PHAI_KHONG (điều kiện đọc được vế \"bằng plastic\" của cùng cụm) nên mảnh rời \"trừ loại\" không thêm điều kiện riêng"
+    }
+  ]
+}

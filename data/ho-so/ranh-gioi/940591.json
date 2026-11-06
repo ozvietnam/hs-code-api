@@ -1,0 +1,138 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "940591",
+  "nhom": "9405",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1012#soan-940591",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "94059110",
+      "nguon": "tax.94059110",
+      "trich": "94059110 - - - Dùng cho đèn phòng mổ",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đèn phòng mổ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94059120",
+      "nguon": "tax.94059120",
+      "trich": "94059120 - - - Dùng cho đèn rọi",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đèn rọi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94059140",
+      "nguon": "tax.94059140",
+      "trich": "94059140 - - - Chao đèn hình cầu hoặc thông phong đèn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Chao đèn hình cầu",
+            "thông phong đèn"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94059150",
+      "nguon": "tax.94059150",
+      "trich": "94059150 - - - Dùng cho đèn pha",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đèn pha"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94059190",
+      "nguon": "tax.94059190",
+      "trich": "94059190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "94059110",
+        "94059120",
+        "94059140",
+        "94059150"
+      ],
+      "truc": {
+        "94059110": "CONG_DUNG",
+        "94059120": "CONG_DUNG",
+        "94059140": "TEN_LOAI",
+        "94059150": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Bộ phận đèn bằng thuỷ tinh này là \"Chao đèn hình cầu hoặc thông phong đèn\" (.40) hay là bộ phận \"Dùng cho đèn phòng mổ\" (.10), \"Dùng cho đèn rọi\" (.20), \"Dùng cho đèn pha\" (.50)?",
+      "trich": {
+        "94059110": "Dùng cho đèn phòng mổ",
+        "94059120": "Dùng cho đèn rọi",
+        "94059140": "Chao đèn hình cầu hoặc thông phong đèn",
+        "94059150": "Dùng cho đèn pha"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "94059110",
+            "94059140"
+          ],
+          "hang": "Chao đèn hình cầu bằng thuỷ tinh dùng cho đèn phòng mổ"
+        },
+        {
+          "cap": [
+            "94059120",
+            "94059140"
+          ],
+          "hang": "Chao đèn hình cầu bằng thuỷ tinh dùng cho đèn rọi"
+        },
+        {
+          "cap": [
+            "94059150",
+            "94059140"
+          ],
+          "hang": "Thông phong đèn bằng thuỷ tinh dùng cho đèn pha"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "94059140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94059140 \"Chao đèn hình cầu hoặc thông phong đèn\" — \"hoặc\" nối hai hàng ⇒ mảng tenLoai [\"Chao đèn hình cầu\",\"thông phong đèn\"]"
+    },
+    {
+      "ma": "94059190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94059190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}
