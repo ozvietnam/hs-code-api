@@ -1,0 +1,81 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "401519",
+  "phien": "zcode-mm:loop:20261106T1508#soan-401519",
+  "dong8": {
+    "40151910": {
+      "ten": "Bằng cao su tự nhiên lưu hóa",
+      "trich": "40151910 - - - Bằng cao su tự nhiên lưu hóa",
+      "nguon": "tax.40151910",
+      "dieuKienSo": []
+    },
+    "40151990": {
+      "ten": "Bằng cao su lưu hóa khác",
+      "trich": "40151990 - - - Bằng cao su lưu hóa khác",
+      "nguon": "tax.40151990",
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "40151910",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chatLieuCaoSuTuNhien",
+      "ghiChu": "cao su tự nhiên lưu hóa"
+    },
+    {
+      "ma": "40151990",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chatLieuCaoSuTuNhien",
+      "ghiChu": "cao su lưu hóa khác"
+    },
+    {
+      "ma": "40151910",
+      "loai": "BO_VE",
+      "ve": "cao su tự nhiên lưu hóa",
+      "lyDo": "Vế giới hạn chưa được điều kiện nào đọc tới: tuVung chỉ có chatLieu = 'cao su' (không phân biệt cao su tự nhiên với cao su khác) — xem ghi chú THIEU_KHOA_TU_VUNG cùng mã."
+    },
+    {
+      "ma": "40151990",
+      "loai": "BO_VE",
+      "ve": "cao su lưu hóa khác",
+      "lyDo": "Vế giới hạn chưa được điều kiện nào đọc tới: thiếu khoá phân biệt cao su tự nhiên với cao su khác — xem ghi chú THIEU_KHOA_TU_VUNG cùng mã."
+    },
+    {
+      "ma": "40151910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Để dieuKienSo rỗng, không bịa khoá: chữ biểu chia theo VẬT LIỆU ('cao su tự nhiên' / 'cao su khác') mà chatLieu chỉ có giá trị 'cao su'; ghi chatLieu = 'cao su' cho cả hai anh em sẽ tạo chồng lấn (hai dòng cùng thoả) nên cổng 1 chặn đúng ý."
+    },
+    {
+      "ma": "40151990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nhánh phần còn lại (nghiPhanConLai): vế 'khác' mang nghĩa NGOẠI TRỪ so với anh em 40151910 (cao su tự nhiên lưu hóa) — nếu sau này thêm khoá chatLieuCaoSuTuNhien thì 40151910 = CO và 40151990 = KHONG (đảo chiều), không ghi cả hai = CO."
+    },
+    {
+      "ma": "401519",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan và không khai chongLanTruc: 40151910 và 40151990 chia theo cùng một trục vật liệu (cao su tự nhiên / cao su khác), không có nhánh anh em chia theo tên cạnh nhánh chia theo công dụng để chồng."
+    },
+    {
+      "ma": "401519",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) và cây không có tầng 7 số có tên → dieuKienNut rỗng, không có nút <pn6>~r<dòng> nào để khai."
+    },
+    {
+      "ma": "401519",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tên tiếng Việt cấp 6 số là 'Loại khác' nhưng KHÔNG phải dòng 'Loại khác' trần (còn hai con 8 số có tên) → không loại bỏ; tầng 6 số không ghi điều kiện."
+    },
+    {
+      "ma": "401519",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề WCO cấp 6 số loại trừ găng phẫu thuật ('other than surgical gloves' — nguồn wco.401519) nhưng câu này không thuộc nguồn của từng dòng 8 số và không phân biệt hai anh em → không mã hoá thành điều kiện cho 40151910/40151990."
+    },
+    {
+      "ma": "401519",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói chỉ kèm độ dài nguồn chú giải (nhom4015.nhom, ch40.chuong) chứ không kèm nguyên văn → không trích được câu nào làm căn cứ; người soát tra chú giải nhóm 4015 / chương 40 nếu cần căn cứ cho tiêu chí 'cao su tự nhiên'."
+    }
+  ]
+}

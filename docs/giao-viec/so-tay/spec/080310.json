@@ -1,0 +1,54 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "080310",
+  "phien": "zcode-mm:loop:20261106T1445#soan-080310",
+  "dong8": {
+    "08031010": {
+      "ten": "Tươi",
+      "trich": "08031010 - - Tươi",
+      "nguon": "tax.08031010",
+      "dieuKienSo": []
+    },
+    "08031020": {
+      "ten": "Khô",
+      "trich": "08031020 - - Khô",
+      "nguon": "tax.08031020",
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "08031010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "trangThai",
+      "ghiChu": "Tươi"
+    },
+    {
+      "ma": "08031020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "trangThai",
+      "ghiChu": "Khô"
+    },
+    {
+      "ma": "08031010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không có khoá tu-vung nào phục vụ 'Tươi': phuongPhapBaoQuan có TUOI_UOP_LANH ('tươi, ướp lạnh') nhưng thêm điều kiện 'ướp lạnh' không có trong chữ biểu, còn tinhTrang (MOI/DA_QUA_SU_DUNG) là 'mới/cũ' chứ không phải 'tươi' → để dieuKienSo rỗng, không bịa khoá; cổng 1 chặn đúng ý."
+    },
+    {
+      "ma": "08031020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Anh em dùng CÙNG khoá: 08031010 ('Tươi') và 08031020 ('Khô') cùng chia theo trạng thái tươi/khô nên cùng chờ một khoá trạng thái (trangThai) được duyệt; tu-vung hiện có không có giá trị nào cho 'khô' (KHO_MUOI = khô muối, là muối) → điều kiện của cả hai dòng để rỗng, không bịa khoá."
+    },
+    {
+      "ma": "080310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng), không có dòng 'Loại khác' trần → dieuKienNut rỗng; mức 6 số 080310 ('Chuối lá') là tầng chia, chỉ tách tại hai dòng 8 số."
+    },
+    {
+      "ma": "080310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan và không khai chongLanTruc: 08031010 và 08031020 chia theo hai chữ trạng thái không chồng lấn ('Tươi' vs 'Khô'), không có nhánh anh em chia theo công dụng để chồng."
+    }
+  ]
+}

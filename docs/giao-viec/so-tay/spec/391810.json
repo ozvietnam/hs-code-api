@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "391810",
+  "phien": "zcode-mm:loop:20261106T1454#soan-391810",
+  "dong8": {
+    "39181011": {
+      "ten": "Dạng tấm rời để ghép",
+      "trich": "39181011 - - - Dạng tấm rời để ghép",
+      "nguon": "tax.39181011",
+      "dieuKienSo": [
+        {
+          "khoa": "tamLatGachLat",
+          "op": "CO",
+          "trich": "Dạng tấm rời để ghép"
+        },
+        {
+          "khoa": "tamMiengGhepLatNenOpTuong",
+          "op": "CO",
+          "trich": "Dạng tấm rời để ghép"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "3918101": {
+      "ten": "Tấm trải sàn",
+      "trich": "3918101 Tấm trải sàn",
+      "nguon": "tieuDe.3918101",
+      "dieuKienSo": [
+        {
+          "khoa": "tamPhuSan",
+          "op": "CO",
+          "trich": "Tấm trải sàn"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "3918101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề có tên 'Tấm trải sàn' → khai điều kiện trong dieuKienNut: tamPhuSan = CO (nguồn tieuDe.3918101). Dùng khoá KHÁC khoá của dòng con 39181011 để con mang trạng thái riêng."
+    },
+    {
+      "ma": "39181011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ biểu 'Dạng tấm rời để ghép' → 2 điều kiện, cả hai khoá đều có trong tuVung: tamLatGachLat = CO (vế 'dạng tấm' — tương ứng 'in rolls or in the form of tiles' của tiêu đề WCO 391810) và tamMiengGhepLatNenOpTuong = CO (vế 'rời để ghép' để lát nền/ốp tường)."
+    },
+    {
+      "ma": "39181019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần (loaiKhac/khongCanDieuKien) → không đưa vào spec, không ghi điều kiện."
+    },
+    {
+      "ma": "39181090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần (loaiKhac/khongCanDieuKien) → không đưa vào spec, không ghi điều kiện."
+    },
+    {
+      "ma": "391810",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan và không khai chongLanTruc: 3918101 chia theo loại sàn phủ (tấm trải sàn / loại khác), 39181011 chia theo dạng tấm rời để ghép; 39181019 và 39181090 là 'Loại khác' trần — không có nhánh anh em chia theo công dụng để chồng."
+    },
+    {
+      "ma": "391810",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) → không có nút <pn6>~r<dòng> nào để khai trong dieuKienNut."
+    }
+  ]
+}

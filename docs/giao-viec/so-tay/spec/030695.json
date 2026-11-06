@@ -1,0 +1,72 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "030695",
+  "phien": "zcode-mm:loop:20261106T1444#soan-030695",
+  "dong8": {
+    "03069521": {
+      "ten": "Còn vỏ, đã hấp chín hoặc luộc chín trong nước",
+      "trich": "03069521 - - - - Còn vỏ, đã hấp chín hoặc luộc chín trong nước",
+      "nguon": "tax.03069521",
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "0306952": {
+      "ten": "Đóng bao bì kín khí để bán lẻ",
+      "trich": "0306952 Đóng bao bì kín khí để bán lẻ",
+      "nguon": "tieuDe.0306952",
+      "dieuKienSo": [
+        {
+          "khoa": "dongBaoBiKinKhiDeBanLe",
+          "op": "CO",
+          "trich": "Đóng bao bì kín khí để bán lẻ"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "0306952",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề có tên → khai điều kiện trong dieuKienNut: dongBaoBiKinKhiDeBanLe = CO (nguồn tieuDe.0306952)."
+    },
+    {
+      "ma": "03069521",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "conVo",
+      "ghiChu": "Còn vỏ"
+    },
+    {
+      "ma": "03069521",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "phuongPhapChinhTruoc",
+      "ghiChu": "đã hấp chín hoặc luộc chín trong nước"
+    },
+    {
+      "ma": "03069521",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không có khoá tu-vung nào phục vụ 'Còn vỏ' và 'đã hấp chín hoặc luộc chín trong nước' (soCheTom = bỏ đầu/đuôi; phuongPhapBaoQuan = HUN_KHOI hun khói) → để dieuKienSo rỗng, không bịa khoá; cổng 1 chặn đúng ý."
+    },
+    {
+      "ma": "03069521",
+      "loai": "BO_VE",
+      "ve": "đã hấp chín hoặc luộc chín trong nước",
+      "lyDo": "Vế giới hạn chưa được điều kiện nào đọc tới vì thiếu khoá tu-vung (xem 2 ghi chú THIEU_KHOA_TU_VUNG cùng mã)."
+    },
+    {
+      "ma": "03069529",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần (loaiKhac/khongCanDieuKien) → không đưa vào spec, không ghi điều kiện."
+    },
+    {
+      "ma": "03069530",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần (loaiKhac/khongCanDieuKien) → không đưa vào spec, không ghi điều kiện."
+    },
+    {
+      "ma": "030695",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan và không khai chongLanTruc: 0306952 chia theo bao bì, 03069521 chia theo trạng thái vỏ/cách chín, 03069529 và 03069530 là 'Loại khác' trần — không có nhánh anh em chia theo công dụng để chồng."
+    }
+  ]
+}

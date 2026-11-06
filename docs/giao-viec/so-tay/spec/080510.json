@@ -1,0 +1,63 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "080510",
+  "phien": "zcode-mm:loop:20261106T1450#soan-080510",
+  "dong8": {
+    "08051010": {
+      "nguon": "tax.08051010",
+      "trich": "08051010 - - Tươi",
+      "dieuKienSo": []
+    },
+    "08051020": {
+      "nguon": "tax.08051020",
+      "trich": "08051020 - - Khô",
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "080510": {
+      "nguon": "tieuDe.080510",
+      "trich": "Quả cam",
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "08051010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "tinhTrangTauoiKho",
+      "ghiChu": "08051010 - - Tươi"
+    },
+    {
+      "ma": "08051020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "tinhTrangTauoiKho",
+      "ghiChu": "08051020 - - Khô"
+    },
+    {
+      "ma": "08051010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không dùng phuongPhapBaoQuan: giá trị TUOI_UOP_LANH gộp cả 'ướp lạnh' (nằm ngoài chữ biểu 'Tươi'), và không có giá trị nào ứng với 'Khô'. Đề xuất khoá mới tinhTrangTauoiKho: giá trị TUOI cho dòng này, KHO cho 08051020."
+    },
+    {
+      "ma": "08051020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không có khoá tu-vựng nào phủ 'Khô' (khô/sấy khô); daXay là 'đã xay' nên không dùng được. Đề xuất tinhTrangTauoiKho với giá trị KHO."
+    },
+    {
+      "ma": "080510",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số 'Quả cam' không có vế giới hạn nào để diễn đạt bằng từ vựng hiện có, nên để dieuKienSo trống; phạm vi do 08051010 (Tươi) và 08051020 (Khô) phủ trọn."
+    },
+    {
+      "ma": "080510",
+      "loai": "QUYET_DINH",
+      "ghiChu": "WCO nút: '080510 Fruit, edible; oranges, fresh or dried'. Vế 'fresh or dried' chính là ranh giới Tươi/Khô; vế 'edible' là thuộc tính chung của Chương 08 nên không khai làm điều kiện của nút."
+    },
+    {
+      "ma": "080510",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan / chongLanTruc: 'Tươi' và 'Khô' loại trừ nhau, không có hàng thật thoả cả hai nhánh."
+    }
+  ]
+}
