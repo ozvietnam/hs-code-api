@@ -4,13 +4,19 @@
   "nhom": "7117",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "zcode-mm:loop:20261106T1449#soan-711790",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "https://claude.ai/code/session_gd-v044-20261106#soat-v044-dot1",
+    "ngay": "2026-11-06",
+    "ghiChu": "Soát GĐ v044-dot1: đã xoá 2 BO_VE thừa (71179020 'Các đồ trang sức khác' — phanConLai gánh; 71179094 'toàn bộ' — DAU không cần miễn), phanConLai=false cho 71179094 ('khác' = other animal carving material, phần còn lại là .99 trần). 2 BO_VE còn lại lý do đúng: vật liệu khắc động vật/thực vật/khoáng không có trong tu-vung → bộ đọc CHUA_BIET không tự chốt; 'hoặc bằng sứ' mã hoá bằng chatLieu 'gốm sứ' (mẫu đọc rỗng đã ghi).",
+    "bam": "fb835e2700c751ad8c0d32d08aae660b8e8e4a2be51c9d29337f2dce7ef2dbb7"
+  },
   "dieuKienNut": [
     {
       "id": "7117909",
@@ -23,7 +29,7 @@
           "value": "Bộ phận"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "dong8": [
@@ -38,14 +44,14 @@
           "value": "Vòng"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "71179020",
       "nguon": "tax.71179020",
       "trich": "71179020 - - Các đồ trang sức khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM",
+      "nguonLoai": "CLAUDE_DUYET",
       "phanConLai": [
         "71179010",
         "7117909"
@@ -67,14 +73,15 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET",
+      "phanConLai": false
     },
     {
       "hs": "71179099",
       "nguon": "tax.71179099",
       "trich": "71179099 - - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -117,15 +124,8 @@
     },
     {
       "ma": "71179094",
-      "loai": "BO_VE",
-      "ve": "toàn bộ",
-      "lyDo": "Không có khoá từ vựng nào đọc được mức độ \"làm toàn bộ\" (khoá chatLieu chỉ theo vị trí, không theo mức độ toàn diện); bộ đọc vẫn chấm được vật liệu của hàng."
-    },
-    {
-      "ma": "71179020",
-      "loai": "BO_VE",
-      "ve": "Các đồ trang sức khác",
-      "lyDo": "Vế \"khác\" là phần còn lại, máy xử lý bằng phanConLai (phủ định 71179010 và 7117909) chứ không bằng điều kiện riêng — không có khoá từ vựng nào đọc được chữ \"khác\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Soát GĐ: chữ \"các loại động vật khác\" trong mục là \"other animal carving material\" (nhánh vật liệu khắc) — KHÔNG phải phần còn lại của phân nhóm (phần còn lại là 71179099 \"Loại khác\" trần, máy phủ định anh em) ⇒ phanConLai false."
     }
   ]
 }
