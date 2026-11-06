@@ -1,0 +1,81 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "500720",
+  "nhom": "5007",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1537#soan-500720",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "50072020",
+      "nguon": "tax.50072020",
+      "trich": "50072020 - - Chưa tẩy trắng hoặc đã tẩy trắng",
+      "dieuKienSo": [
+        {
+          "fact": "tinhTrangTayTrang",
+          "op": "TRONG",
+          "value": [
+            "CHUA_TAY_TRANG",
+            "DA_TAY_TRANG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "50072030",
+      "nguon": "tax.50072030",
+      "trich": "50072030 - - Được in bằng phương pháp batik truyền thống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapIn",
+          "op": "TRONG",
+          "value": [
+            "BATIK"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "50072090",
+      "nguon": "tax.50072090",
+      "trich": "50072090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "50072020",
+        "50072030"
+      ],
+      "lyDo": "Vải in batik vẫn có thể ở trạng thái chưa tẩy trắng hoặc đã tẩy trắng — .20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" và .30 \"Được in bằng phương pháp batik truyền thống (SEN)\" là hai trục mô tả độc lập, câu chữ không loại trừ nhau; không có căn cứ thứ tự."
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "50072020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50072020 \"Chưa tẩy trắng hoặc đã tẩy trắng\" ⇒ tinhTrangTayTrang TRONG [CHUA_TAY_TRANG, DA_TAY_TRANG] (\"hoặc\" ⇒ cả hai giá trị)."
+    },
+    {
+      "ma": "50072030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50072030 \"Được in bằng phương pháp batik truyền thống (SEN)\" ⇒ phuongPhapIn TRONG [BATIK] (cách đọc \"in … batik truyền thống\" khớp chữ, phủ cả vế \"Được in\"); không thêm daIn vì regex cachDoc của daIn không đọc được cụm \"Được in\" (cong3 báo), phuongPhapIn đã phủ vế."
+    },
+    {
+      "ma": "50072090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50072090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

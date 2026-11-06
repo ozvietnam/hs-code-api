@@ -1,0 +1,168 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481190",
+  "nhom": "4811",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1534#soan-481190",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4811904",
+      "nguon": "tieuDe.4811904",
+      "trich": "4811904 Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "48119041",
+      "nguon": "tax.48119041",
+      "trich": "48119041 - - - Tấm phủ sàn",
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48119042",
+      "nguon": "tax.48119042",
+      "trich": "48119042 - - - Giấy tạo vân(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy tạo vân"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48119049",
+      "nguon": "tax.48119049",
+      "trich": "48119049 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48119091",
+      "nguon": "tax.48119091",
+      "trich": "48119091 - - - Tấm phủ sàn",
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48119092",
+      "nguon": "tax.48119092",
+      "trich": "48119092 - - - Giấy tạo vân(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy tạo vân"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48119093",
+      "nguon": "tax.48119093",
+      "trich": "48119093 - - - Loại khác, tấm xenlulo hoặc màng xơ sợi xenlulo",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "tấm xenlulo",
+            "màng xơ sợi xenlulo"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48119099",
+      "nguon": "tax.48119099",
+      "trich": "48119099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "481190",
+      "loai": "DUNG",
+      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:481190:chua-co; giữ spec đến chỗ đã làm."
+    },
+    {
+      "ma": "48119041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119041 \"Tấm phủ sàn\" ⇒ tamPhuSan CO."
+    },
+    {
+      "ma": "48119042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119042 \"Giấy tạo vân(SEN)\" ⇒ tenLoai \"Giấy tạo vân\"; \"(SEN)\" là dẫn nguồn chú giải."
+    },
+    {
+      "ma": "48119091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119091 \"Tấm phủ sàn\" ⇒ tamPhuSan CO."
+    },
+    {
+      "ma": "48119092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119092 \"Giấy tạo vân(SEN)\" ⇒ tenLoai \"Giấy tạo vân\"."
+    },
+    {
+      "ma": "48119093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119093 \"Loại khác, tấm xenlulo hoặc màng xơ sợi xenlulo\" ⇒ chỉ điều kiện của vế: tenLoai [\"tấm xenlulo\",\"màng xơ sợi xenlulo\"] (\"hoặc\" ⇒ mảng; \"Loại khác, <vế>\" máy tự phủ định anh em, không khai phanConLai — cong0 báo thừa)."
+    },
+    {
+      "ma": "48119099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48119099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

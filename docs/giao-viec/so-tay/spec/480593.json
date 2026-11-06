@@ -1,0 +1,73 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "480593",
+  "phien": "zcode-sub:glm-5.3:20261106T1531#soan-480593",
+  "dong8": {
+    "48059310": {
+      "dieuKienSo": [
+        {
+          "fact": "nhieuLop",
+          "op": "CO"
+        }
+      ]
+    },
+    "48059320": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy thấm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "48059310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48059310 \"Giấy và bìa nhiều lớp(SEN)\" ⇒ nhieuLop CO (cách đọc \"nhiều lớp\" khớp chữ); \"(SEN)\" là dẫn nguồn chú giải."
+    },
+    {
+      "ma": "48059320",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48059320 \"Giấy thấm (SEN)\" ⇒ tenLoai \"Giấy thấm\"; không có khoá đặc điểm cho \"thấm\"."
+    },
+    {
+      "ma": "48059390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48059390 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "480593",
+      "loai": "QUYET_DINH",
+      "ghiChu": "48059310 chia theo đặc điểm \"nhiều lớp\" (nhieuLop CO) còn 48059320 chia theo tên \"Giấy thấm\" ⇒ chồng lấn trục DAC_DIEM ↔ TEN_LOAI; khai chongLanTruc với hàng thật \"Giấy thấm nhiều lớp…\" (thuViDuHang thoa cả hai nhánh)."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "48059310",
+        "48059320"
+      ],
+      "truc": {
+        "48059310": "DAC_DIEM",
+        "48059320": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Giấy hoặc bìa này có phải là \"Giấy thấm\" (48059320) không, hay chỉ là giấy/bìa \"nhiều lớp\" nói chung, không phải giấy thấm (48059310)?",
+      "trich": {
+        "48059310": "Giấy và bìa nhiều lớp(SEN)",
+        "48059320": "Giấy thấm (SEN)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "48059310",
+            "48059320"
+          ],
+          "hang": "Giấy thấm nhiều lớp dùng trong phòng thí nghiệm để thấm dung dịch"
+        }
+      ],
+      "phanXu": null
+    }
+  ]
+}

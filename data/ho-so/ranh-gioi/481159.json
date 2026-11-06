@@ -1,0 +1,125 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481159",
+  "nhom": "4811",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1534#soan-481159",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4811594",
+      "nguon": "tieuDe.4811594",
+      "trich": "4811594 Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "48115920",
+      "nguon": "tax.48115920",
+      "trich": "48115920 - - - Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đóng gói thực phẩm dạng lỏng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48115941",
+      "nguon": "tax.48115941",
+      "trich": "48115941 - - - - Tấm phủ sàn",
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48115949",
+      "nguon": "tax.48115949",
+      "trich": "48115949 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48115991",
+      "nguon": "tax.48115991",
+      "trich": "48115991 - - - - Tấm phủ sàn",
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48115999",
+      "nguon": "tax.48115999",
+      "trich": "48115999 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "481159",
+      "loai": "DUNG",
+      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:481159:chua-co; giữ spec đến chỗ đã làm."
+    },
+    {
+      "ma": "48115920",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "phuMangPlasticHaiMat",
+      "ghiChu": "tax.48115920 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" — các vế \"đã phủ cả hai mặt bằng màng plastic trong suốt\", \"được lót trong\", \"bằng một lớp nhôm mỏng\" không có khoá trong tu-vung@2; chỉ phủ được vế \"sử dụng để đóng gói thực phẩm dạng lỏng\" bằng dungCho."
+    },
+    {
+      "ma": "48115941",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115941 \"Tấm phủ sàn\" ⇒ tamPhuSan CO."
+    },
+    {
+      "ma": "48115991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115991 \"Tấm phủ sàn\" ⇒ tamPhuSan CO."
+    }
+  ]
+}

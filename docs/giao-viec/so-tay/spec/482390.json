@@ -1,1 +1,231 @@
-{"phienBan":"ranh-gioi-spec@1","pn6":"482390","phien":"zcode-mm:loop:20261106T0922#soan-482390","dong8":{},"dieuKienNut":{},"ghiChuSoan":[{"ma":"","loai":"DUNG","ghiChu":"--goi chặn CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — không soạn"}]}
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "482390",
+  "phien": "zcode-sub:glm-5.3:20261106T1537#soan-482390",
+  "dong8": {
+    "48239010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khung kén tằm"
+        }
+      ]
+    },
+    "48239020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thẻ trưng bày đồ trang sức"
+        }
+      ]
+    },
+    "48239030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất cốc giấy"
+        }
+      ]
+    },
+    "48239040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất pháo hoa"
+        }
+      ]
+    },
+    "48239051": {
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": "<=",
+          "value": 150,
+          "donVi": "g/m2"
+        }
+      ]
+    },
+    "48239060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thẻ jacquard"
+        }
+      ]
+    },
+    "48239070": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Quạt"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "màn che"
+              },
+              {
+                "fact": "cachDieuKhien",
+                "op": "TRONG",
+                "value": [
+                  "BANG_TAY"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "48239091": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy silicon"
+        }
+      ]
+    },
+    "48239092": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy vàng mã"
+        }
+      ]
+    },
+    "48239094": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tấm xenlulo",
+            "màng xơ sợi xenlulo"
+          ]
+        }
+      ]
+    },
+    "48239095": {
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ]
+    },
+    "48239096": {
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "4823905": {
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">=",
+          "value": 209,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 209,
+          "donVi": "mm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bao gói cho thỏi dynamit"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "482390",
+      "loai": "DUNG",
+      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:482390:chua-co; giữ spec đến chỗ đã làm."
+    },
+    {
+      "ma": "48239020",
+      "loai": "BO_VE",
+      "ve": "cho đồ trang sức cá nhân hoặc các vật dụng cá nhân",
+      "lyDo": "Vế đứng sau \"kể cả loại\" — phụ chú kiểu including (QUY-TRINH 3.8), không thêm điều kiện; điều kiện chính là tenLoai \"Thẻ trưng bày đồ trang sức\" đã phủ tên đầu."
+    },
+    {
+      "ma": "48239020",
+      "loai": "BO_VE",
+      "ve": "được để trong ví, túi xách hoặc mang trên người",
+      "lyDo": "Vế đứng sau \"kể cả loại\" — phụ chú kiểu including (QUY-TRINH 3.8), miêu tả cách đeo đồ trang sức cá nhân, không thêm điều kiện."
+    },
+    {
+      "ma": "48239030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48239030 \"Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy\" ⇒ dungCho \"sản xuất cốc giấy\"; phần tên đầu (tráng PE, cắt dập) không nằm trong vế phải phủ."
+    },
+    {
+      "ma": "48239040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48239040 \"Bộ ống giấy để sản xuất pháo hoa(SEN)\" ⇒ dungCho \"sản xuất pháo hoa\"."
+    },
+    {
+      "ma": "4823905",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4823905 \"Giấy kraft ở dạng cuộn có chiều rộng 209 mm, loại sử dụng làm bao gói cho thỏi dynamit\" ⇒ dangCuon CO + chieuRong = 209 mm (viết thành >= và <= vì tu-vung@2 không có op bằng) + dungCho \"bao gói cho thỏi dynamit\"."
+    },
+    {
+      "ma": "48239051",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48239051 \"Có định lượng từ 150 g/m2 trở xuống\" ⇒ dinhLuong <= 150 g/m2 (\"trở xuống\" = <=)."
+    },
+    {
+      "ma": "48239060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48239060 \"Thẻ jacquard đã đục lỗ\" ⇒ tenLoai \"Thẻ jacquard\"; \"đã đục lỗ\" là đặc điểm của thẻ, không có khoá riêng."
+    },
+    {
+      "ma": "48239070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48239070 \"Quạt và màn che kéo bằng tay\" — đối chiếu công ước QUY-TRINH 3.11 (\"Fans and handscreens\"): \"kéo bằng tay\" chỉ của màn che ⇒ HOAC [[tenLoai \"Quạt\"],[tenLoai \"màn che\", cachDieuKhien BANG_TAY]]."
+    },
+    {
+      "ma": "48239094",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "taoMauHoacTaoVanToanBo",
+      "ghiChu": "tax.48239094 \"Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vân toàn bộ\" — vế \"được tạo màu hoặc tạo vân toàn bộ\" không có khoá trong tu-vung@2 và là vế phân biệt với 48239099."
+    },
+    {
+      "ma": "48239095",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48239095 \"Tấm phủ sàn\" ⇒ tamPhuSan CO."
+    },
+    {
+      "ma": "48239096",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daCatThanhHinh",
+      "ghiChu": "tax.48239096 \"Loại khác, đã cắt thành hình trừ hình chữ nhật hoặc hình vuông\" — vế \"đã cắt thành hình trừ hình chữ nhật hoặc hình vuông\" không có khoá trong tu-vung@2, để dieuKienSo trống (cong0 báo phanConLai thừa khi kèm dieuKienSo trống)."
+    },
+    {
+      "ma": "48239099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48239099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481690",
+  "nhom": "4816",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1537#soan-481690",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48169010",
+      "nguon": "tax.48169010",
+      "trich": "48169010 - - Giấy than",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy than"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48169020",
+      "nguon": "tax.48169020",
+      "trich": "48169020 - - Giấy dùng để sao chụp khác",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sao chụp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "48169010"
+      ]
+    },
+    {
+      "hs": "48169030",
+      "nguon": "tax.48169030",
+      "trich": "48169030 - - Tấm in offset",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tấm in offset"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48169040",
+      "nguon": "tax.48169040",
+      "trich": "48169040 - - Giấy chuyển nhiệt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy chuyển nhiệt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48169050",
+      "nguon": "tax.48169050",
+      "trich": "48169050 - - Loại khác, dạng cuộn có chiều rộng trên 15 cm nhưng không quá 36 cm",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 15,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48169090",
+      "nguon": "tax.48169090",
+      "trich": "48169090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48169010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48169010 \"Giấy than\" ⇒ tenLoai \"Giấy than\"."
+    },
+    {
+      "ma": "48169020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48169020 \"Giấy dùng để sao chụp khác\" — \"khác\" chỉ loại trừ giấy than (.10, cùng trục giấy sao chép), không phủ .30/.40 (không phải giấy sao chụp) ⇒ dungCho \"sao chụp\" + phanConLai [\"48169010\"]."
+    },
+    {
+      "ma": "48169030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48169030 \"Tấm in offset\" ⇒ tenLoai \"Tấm in offset\"."
+    },
+    {
+      "ma": "48169040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48169040 \"Giấy chuyển nhiệt\" ⇒ tenLoai \"Giấy chuyển nhiệt\"."
+    },
+    {
+      "ma": "48169090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48169090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "48169050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48169050 \"Loại khác, dạng cuộn có chiều rộng trên 15 cm nhưng không quá 36 cm\" ⇒ chỉ điều kiện của vế (máy tự phủ định anh em): dangCuon CO + chieuRong > 15 cm và <= 36 cm."
+    },
+    {
+      "ma": "481690",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan-truc: 48169020 (CONG_DUNG \"sao chụp\") ↔ 48169030 (TEN_LOAI \"Tấm in offset\") không có hàng thật thoả cả hai theo chữ biểu (tấm in offset là bản in trung gian in offset, không phải giấy dùng để sao chụp) ⇒ chồng lấn giả do cách viết, không đưa về cùng khoá được (chữ khác loại ý) ⇒ DỪNG theo QUY-TRINH mục 4a; cụm không khai được vì thiếu viDuHang cho cặp này."
+    }
+  ]
+}

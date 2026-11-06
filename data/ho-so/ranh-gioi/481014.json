@@ -1,0 +1,78 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481014",
+  "nhom": "4810",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1533#soan-481014",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48101410",
+      "nguon": "tax.48101410",
+      "trich": "48101410 - - - Đã in, dùng cho máy ghi tự động, không có chiều nào trên 360 mm (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daIn",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy ghi tự động"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 360,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48101491",
+      "nguon": "tax.48101491",
+      "trich": "48101491 - - - - Không có chiều nào trên 360 mm",
+      "dieuKienSo": [
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 360,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48101499",
+      "nguon": "tax.48101499",
+      "trich": "48101499 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48101410",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48101410 \"Đã in, dùng cho máy ghi tự động, không có chiều nào trên 360 mm (SEN)\" ⇒ daIn CO + dungCho \"máy ghi tự động\" + kichThuoc <= 360 mm (\"không có chiều nào trên 360 mm\" = không chiều nào vượt 360); \"(SEN)\" là dẫn nguồn chú giải."
+    },
+    {
+      "ma": "48101491",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48101491 \"Không có chiều nào trên 360 mm\" ⇒ kichThuoc <= 360 mm."
+    },
+    {
+      "ma": "48101499",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48101499 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

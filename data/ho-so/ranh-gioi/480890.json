@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "480890",
+  "nhom": "4808",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1532#soan-480890",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48089020",
+      "nguon": "tax.48089020",
+      "trich": "48089020 - - Đã làm chun hoặc làm nhăn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "làm chun",
+            "làm nhăn"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48089030",
+      "nguon": "tax.48089030",
+      "trich": "48089030 - - Đã rập nổi",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "rập nổi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48089090",
+      "nguon": "tax.48089090",
+      "trich": "48089090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48089020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48089020 \"Đã làm chun hoặc làm nhăn\" ⇒ tenLoai [\"làm chun\",\"làm nhăn\"] (\"hoặc\" ⇒ mảng); tu-vung@2 không có khoá đặc điểm cho làm chun/nhăn nên dùng so chữ tự do."
+    },
+    {
+      "ma": "48089030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48089030 \"Đã rập nổi\" ⇒ tenLoai \"rập nổi\"; không có khoá đặc điểm cho rập nổi (daXuLyBeMat chỉ đọc \"xử lý bề mặt\")."
+    },
+    {
+      "ma": "48089090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48089090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

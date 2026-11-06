@@ -1,0 +1,22 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "480890",
+  "phien": "zcode-sub:glm-5.3:20261106T1532#soan-480890",
+  "dong8": {
+    "48089020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["làm chun", "làm nhăn"] }
+      ]
+    },
+    "48089030": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "rập nổi" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "48089020", "loai": "QUYET_DINH", "ghiChu": "tax.48089020 \"Đã làm chun hoặc làm nhăn\" ⇒ tenLoai [\"làm chun\",\"làm nhăn\"] (\"hoặc\" ⇒ mảng); tu-vung@2 không có khoá đặc điểm cho làm chun/nhăn nên dùng so chữ tự do." },
+    { "ma": "48089030", "loai": "QUYET_DINH", "ghiChu": "tax.48089030 \"Đã rập nổi\" ⇒ tenLoai \"rập nổi\"; không có khoá đặc điểm cho rập nổi (daXuLyBeMat chỉ đọc \"xử lý bề mặt\")." },
+    { "ma": "48089090", "loai": "QUYET_DINH", "ghiChu": "tax.48089090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}

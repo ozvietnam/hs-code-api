@@ -1,0 +1,116 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481029",
+  "nhom": "4810",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1533#soan-481029",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48102910",
+      "nguon": "tax.48102910",
+      "trich": "48102910 - - - Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daIn",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy ghi tự động"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 150,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 360,
+                "donVi": "mm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48102991",
+      "nguon": "tax.48102991",
+      "trich": "48102991 - - - - Dạng cuộn có chiều rộng không quá 150 mm, hoặc dạng tờ không có chiều nào trên 360 mm ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 150,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 360,
+                "donVi": "mm"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48102999",
+      "nguon": "tax.48102999",
+      "trich": "48102999 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48102910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48102910 \"Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)\" ⇒ daIn CO + dungCho \"máy ghi tự động\" + HOAC: (dạng cuộn, chiều rộng <= 150 mm) hoặc (không chiều nào trên 360 mm)."
+    },
+    {
+      "ma": "48102991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48102991 \"Dạng cuộn có chiều rộng không quá 150 mm, hoặc dạng tờ không có chiều nào trên 360 mm ở dạng không gấp\" ⇒ HOAC: (dạng cuộn, chiều rộng <= 150 mm) hoặc (không chiều nào trên 360 mm)."
+    },
+    {
+      "ma": "48102999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48102999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}

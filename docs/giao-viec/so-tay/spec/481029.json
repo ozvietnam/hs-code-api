@@ -1,0 +1,30 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "481029",
+  "phien": "zcode-sub:glm-5.3:20261106T1533#soan-481029",
+  "dong8": {
+    "48102910": {
+      "dieuKienSo": [
+        { "fact": "daIn", "op": "CO" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy ghi tự động" },
+        { "op": "HOAC", "phuongAn": [
+          [ { "fact": "dangCuon", "op": "CO" }, { "fact": "chieuRong", "op": "<=", "value": 150, "donVi": "mm" } ],
+          [ { "fact": "kichThuoc", "op": "<=", "value": 360, "donVi": "mm" } ]
+        ] }
+      ]
+    },
+    "48102991": {
+      "dieuKienSo": [
+        { "op": "HOAC", "phuongAn": [
+          [ { "fact": "dangCuon", "op": "CO" }, { "fact": "chieuRong", "op": "<=", "value": 150, "donVi": "mm" } ],
+          [ { "fact": "kichThuoc", "op": "<=", "value": 360, "donVi": "mm" } ]
+        ] }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "48102910", "loai": "QUYET_DINH", "ghiChu": "tax.48102910 \"Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)\" ⇒ daIn CO + dungCho \"máy ghi tự động\" + HOAC: (dạng cuộn, chiều rộng <= 150 mm) hoặc (không chiều nào trên 360 mm)." },
+    { "ma": "48102991", "loai": "QUYET_DINH", "ghiChu": "tax.48102991 \"Dạng cuộn có chiều rộng không quá 150 mm, hoặc dạng tờ không có chiều nào trên 360 mm ở dạng không gấp\" ⇒ HOAC: (dạng cuộn, chiều rộng <= 150 mm) hoặc (không chiều nào trên 360 mm)." },
+    { "ma": "48102999", "loai": "QUYET_DINH", "ghiChu": "tax.48102999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}

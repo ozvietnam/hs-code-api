@@ -1,0 +1,21 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "481022",
+  "phien": "zcode-sub:glm-5.3:20261106T1533#soan-481022",
+  "dong8": {
+    "48102210": {
+      "dieuKienSo": [
+        { "fact": "daIn", "op": "CO" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy ghi tự động" },
+        { "op": "HOAC", "phuongAn": [
+          [ { "fact": "dangCuon", "op": "CO" }, { "fact": "chieuRong", "op": "<=", "value": 150, "donVi": "mm" } ],
+          [ { "fact": "kichThuoc", "op": "<=", "value": 360, "donVi": "mm" } ]
+        ] }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "48102210", "loai": "QUYET_DINH", "ghiChu": "tax.48102210 \"Đã in, loại dùng cho máy ghi tự động, ở dạng cuộn có chiều rộng không quá 150 mm, hoặc ở dạng tờ không có chiều nào trên 360 mm ở dạng không gấp(SEN)\" ⇒ daIn CO + dungCho \"máy ghi tự động\" + HOAC: (dạng cuộn, chiều rộng <= 150 mm) hoặc (không chiều nào trên 360 mm); \"(SEN)\" là dẫn nguồn chú giải." },
+    { "ma": "48102290", "loai": "QUYET_DINH", "ghiChu": "tax.48102290 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
+  ]
+}
