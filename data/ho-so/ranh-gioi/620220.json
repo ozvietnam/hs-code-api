@@ -1,0 +1,69 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "620220",
+  "nhom": "6202",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1507#soan-620220",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "62022010",
+      "nguon": "tax.62022010",
+      "trich": "Áo khoác ngoài, áo mưa, áo choàng mặc khi đi xe, áo choàng không tay, áo khoác không tay, áo choàng ponchos, áo khoác dạ trùm qua hông, áo khoác dạ dáng dài, áo khoác có mũ trùm đầu, áo khoác kiểu duffel, áo khoác mỏng (trench coats), áo khoác bằng vải gabardines … áo khoác ghi lê có đệm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Áo khoác ngoài",
+            "áo mưa",
+            "áo choàng mặc khi đi xe",
+            "áo choàng không tay",
+            "áo khoác không tay",
+            "áo choàng ponchos",
+            "áo khoác dạ trùm qua hông",
+            "áo khoác dạ dáng dài",
+            "áo khoác có mũ trùm đầu",
+            "áo khoác kiểu duffel",
+            "áo khoác mỏng",
+            "trench coats",
+            "áo khoác bằng vải gabardines",
+            "áo khoác ghi lê có đệm"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "62022090",
+      "nguon": "tax.62022090",
+      "trich": "62022090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "62022090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "62022090 là dòng \"Loại khác\" trần (loaiKhac=true, khongCanDieuKien=true) ⇒ không đưa vào spec (máy tự phủ định anh em). 62022010 là dòng có tên duy nhất còn lại trong nhánh ⇒ ranh giới 6→8 của phân nhóm 620220 là một điều kiện tên loại."
+    },
+    {
+      "ma": "62022010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.62022010: chữ biểu nêu danh sách tên các kiểu áo khoác/áo choàng ⇒ khoá tenLoai (TEN_LOAI) với mảng 14 tên nguyên văn (nhiều phần tử = \"hoặc\"), CÙNG khoá và CÙNG mảng giá trị với anh em 62012010 / 62019011 / 62019021. Vế \"bằng vải gabardines\", \"có mũ trùm đầu\", \"có đệm\" là bộ phận của chính tên loại nên không tách thành điều kiện riêng. Trích lược bằng \"…\" giữa \"áo khoác bằng vải gabardines\" và \"áo khoác ghi lê có đệm\" (bỏ mỗi liên từ \"và\"); hai đoạn đều nguyên văn và đúng thứ tự nguồn."
+    },
+    {
+      "ma": "620220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Điều kiện vật liệu \"Từ lông cừu hoặc lông động vật loại mịn\" (WCO: \"of wool or fine animal hair\") và vế loại trừ \"other than those of heading no. 6204\" nằm ở CHÍNH phân nhóm 620220 (chung cho cả 62022010 và 62022090) ⇒ không thuộc ranh giới 6→8, không khai trong spec này. tangKhongMa rỗng, phân nhóm không có tầng không mã và không có tiêu đề có tên ⇒ dieuKienNut rỗng."
+    }
+  ]
+}

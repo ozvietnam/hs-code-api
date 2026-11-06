@@ -1,0 +1,93 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "611300",
+  "nhom": "6113",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1442#soan-611300",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "61130010",
+      "nguon": "sen.61130010",
+      "trich": "BỘ ĐỒ CỦA THỢ LẶN\nBộ đồ của thợ lặn là bộ áo liền quần chống nước được sử dụng cho hoạt động lặn scuba. Chúng có các bộ phận tay và chân được định hình trước. Chúng được làm từ vải ny lông dệt kim đã ngâm, tẩm cao su neoprene.",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ đồ của thợ lặn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hoạt động lặn scuba"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "61130030",
+      "nguon": "tax.61130030",
+      "trich": "61130030 - Quần áo chống cháy (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quần áo chống cháy"
+        },
+        {
+          "fact": "tinhNangBaoHo",
+          "op": "TRONG",
+          "value": [
+            "CHONG_CHAY"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "61130040",
+      "nguon": "tax.61130040",
+      "trich": "61130040 - Quần áo bảo hộ khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quần áo bảo hộ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "61130090",
+      "nguon": "tax.61130090",
+      "trich": "61130090 - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "61130010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "sen.61130010: \"Bộ đồ của thợ lặn là bộ áo liền quần chống nước được sử dụng cho hoạt động lặn scuba\" ⇒ tenLoai \"Bộ đồ của thợ lặn\" + dungCho \"hoạt động lặn scuba\". \"chống nước\" và \"đã ngâm, tẩm cao su neoprene\" không có khoá tu-vung đọc được (CHONG_NO là \"chống nổ\"; daTrangPhuEpLop đọc \"đã ngâm tẩm, tráng hoặc phủ\") ⇒ mô tả của SEN, không thành điều kiện."
+    },
+    {
+      "ma": "61130030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.61130030: \"Quần áo chống cháy\" ⇒ tenLoai \"Quần áo chống cháy\" + tinhNangBaoHo CHONG_CHAY. sen.61130030: \"thường được làm từ một số loại vải đặc biệt như\" là ví dụ minh hoạ (có cả sợi bông, vải dệt tráng) ⇒ không thành điều kiện; \"không chứa amiăng\" không có khoá tu-vung (chatLieu không có \"amiăng\") và chữ biểu biểu thuế không nói ⇒ không đưa vào điều kiện."
+    },
+    {
+      "ma": "61130040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.61130040: \"Quần áo bảo hộ khác\" ⇒ tenLoai \"Quần áo bảo hộ\" + phanConLai: true (phần còn lại có tên — phủ định 61130010 và 61130030 đứng trước). 61130090 \"Loại khác\" trần ⇒ không đưa vào spec (máy phủ định anh em)."
+    }
+  ]
+}

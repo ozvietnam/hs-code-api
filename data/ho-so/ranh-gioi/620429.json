@@ -1,0 +1,56 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "620429",
+  "nhom": "6204",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1514#soan-620429",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "62042910",
+      "nguon": "tax.62042910",
+      "trich": "Từ tơ tằm",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "TO_TAM"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "62042990",
+      "nguon": "tax.62042990",
+      "trich": "62042990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "62042990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "62042990 là dòng \"Loại khác\" trần (loaiKhac=true, khongCanDieuKien=true) ⇒ không đưa vào spec (máy tự phủ định anh em 62042910)."
+    },
+    {
+      "ma": "62042910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.62042910: \"Từ tơ tằm\" ⇒ khoá loaiSoiDet (LIET_KE) op TRONG, giá trị TO_TAM. CÙNG khoá và CÙNG giá trị với tiêu đề 6201901 (\"Từ tơ tằm\") — anh em chia theo vật liệu dệt chủ yếu."
+    },
+    {
+      "ma": "620429",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Điều kiện vật liệu \"Từ các vật liệu dệt khác\" nằm ở CHÍNH phân nhóm 620429 (wco.620429: \"Ensembles; women's or girls', of textile materials n.e.c. in item no. 6204.2 (not knitted or crocheted)\"), chung cho mọi dòng 8 số ⇒ không thuộc ranh giới 6→8, không khai trong spec này. tangKhongMa rỗng, phân nhóm không có tầng không mã ⇒ dieuKienNut rỗng."
+    }
+  ]
+}

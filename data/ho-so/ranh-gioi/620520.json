@@ -1,0 +1,78 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "620520",
+  "nhom": "6205",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1519#soan-620520",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "62052010",
+      "nguon": "tax.62052010",
+      "trich": "Được in bằng phương pháp batik truyền thống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapIn",
+          "op": "TRONG",
+          "value": [
+            "BATIK"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "62052020",
+      "nguon": "tax.62052020",
+      "trich": "Áo Barong Tagalog (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "aoBarongTagalog",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "62052090",
+      "nguon": "tax.62052090",
+      "trich": "62052090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "62052090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "62052090 là dòng \"Loại khác\" trần (loaiKhac=true, khongCanDieuKien=true) ⇒ không đưa vào spec (máy tự phủ định anh em). Nhánh 620520 còn 2 dòng có tên: 62052010 và 62052020."
+    },
+    {
+      "ma": "62052010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.62052010: \"Được in bằng phương pháp batik truyền thống\" ⇒ khoá phuongPhapIn (LIET_KE) op TRONG, giá trị BATIK — CÙNG khoá và CÙNG giá trị với anh em 62152010 (chữ biểu giống hệt). Gợi ý khoá của gói là phuongPhapCheTao nhưng khoá đó không có giá trị batik (chỉ DUC/REN/CAN_NONG/CAN_NGUOI/KEO/DAP/HAN/EP_PHUN/THOI/DOT_DAP_KEO_GIAN) nên không dùng; phuongPhapIn có BATIK và đọc đúng vế \"in bằng phương pháp batik truyền thống\". Vế \"truyền thống\" do chính BATIK mang (mẫu đọc \"in … batik … truyền thống\")."
+    },
+    {
+      "ma": "62052020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.62052020: \"Áo Barong Tagalog\" ⇒ khoá aoBarongTagalog (CO_KHONG) op CO — CÙNG khoá với anh em 62053010. Nguồn sen.62052020 (áo ngắn tay hoặc dài tay, thường làm từ silk, bông, polyester hoặc hỗn hợp các sợi vải khác nhau, được thêu dọc thân trước) không khai thành điều kiện: vật liệu nằm ở chữ biểu phân nhóm \"Từ bông\" (không thuộc ranh giới 6→8) và vế \"được thêu dọc thân trước\" không có khoá tu-vung đọc được."
+    },
+    {
+      "ma": "62052010+62052020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hai dòng có tên dùng hai khoá khác nhau: 62052010 = phuongPhapIn (LIET_KE), 62052020 = aoBarongTagalog (CO_KHONG). Hai chữ biểu không trùng nhau ⇒ không khai chongLanVanBan; theo phân loại của cổng 2 cả hai khoá đều là DAC_DIEM (không phải cặp tên ↔ công dụng) nên không khai chongLanTruc. Nếu người soát xem 62052020 là nhánh chia theo TÊN hàng thì phải khai chongLanTruc kèm một hàng thật thoả cả hai nhánh."
+    },
+    {
+      "ma": "620520",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Điều kiện vật liệu \"Từ bông\" (WCO: \"of cotton\") và vế \"(not knitted or crocheted)\" nằm ở CHÍNH phân nhóm 620520 (chung cho 62052010/62052020/62052090) ⇒ không thuộc ranh giới 6→8, không khai trong spec này. tangKhongMa rỗng, phân nhóm không có tầng không mã và không có tiêu đề có tên ⇒ dieuKienNut rỗng."
+    }
+  ]
+}
