@@ -1,0 +1,195 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850490",
+  "phien": "zcode-sub:glm-5.3:20261105T1000#soan-850490",
+  "dieuKienNut": {
+    "8504903": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy biến điện"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "8504904": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy biến điện"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    }
+  },
+  "dong8": {
+    "85049010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8504.10"
+        }
+      ]
+    },
+    "85049020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mạch in"
+        },
+        {
+          "fact": "daLapRap",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8504.40.11",
+            "8504.40.19",
+            "8504.50.10"
+          ]
+        }
+      ]
+    },
+    "85049031": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Tấm",
+                  "cụm tấm"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "tản nhiệt"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "ống tản nhiệt",
+                  "cụm tấm"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "biến áp phân phối",
+            "biến áp nguồn"
+          ]
+        }
+      ]
+    },
+    "85049039": {
+      "dieuKienSo": []
+    },
+    "85049041": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Tấm",
+                  "cụm tấm"
+                ]
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "tản nhiệt"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "ống tản nhiệt",
+                  "cụm tấm"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "biến áp phân phối",
+            "biến áp nguồn"
+          ]
+        }
+      ]
+    },
+    "85049049": {
+      "dieuKienSo": []
+    },
+    "85049090": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85049010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85049010 \"Của hàng hóa thuộc phân nhóm 8504.10\" ⇒ dungCho \"8504.10\" (dẫn mã giữ nguyên chuỗi, máy tự nở dải; mẫu 848310)"
+    },
+    {
+      "ma": "85049020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85049020 \"Mạch in đã lắp ráp dùng cho hàng hóa thuộc phân nhóm 8504.40.11, 8504.40.19 hoặc 8504.50.10\" ⇒ tenLoai \"Mạch in\" + daLapRap CO (\"đã lắp ráp\") + dungCho mảng 3 mã (\"hoặc\")"
+    },
+    {
+      "ma": "8504903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504903 \"Dùng cho máy biến điện có công suất không quá 10.000 kVA\" ⇒ dungCho \"máy biến điện\" + congSuatBieuKien <= 10000 kVA (công suất của máy biến điện đích); .4 \"trên 10.000 kVA\" ⇒ > 10000 kVA"
+    },
+    {
+      "ma": "85049031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85049031 hai hàng nối \";\" ⇒ HOAC: (a) Tấm/cụm tấm + định ngữ chung \"tản nhiệt\" (điều kiện riêng), (b) ống tản nhiệt đã lắp ráp thành dạng tấm phẳng/cụm tấm; vế \"dùng cho biến áp phân phối và biến áp nguồn\" ⇒ dungCho mảng (hai đích)"
+    },
+    {
+      "ma": "85049041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85049041 cùng chữ .31, phân biệt theo tầng công suất của máy biến điện đích"
+    },
+    {
+      "ma": "85049090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85049090 \"Loại khác\" trần ⇒ không điều kiện (tương tự .39/.49)"
+    }
+  ]
+}

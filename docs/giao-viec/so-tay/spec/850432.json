@@ -1,0 +1,140 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850432",
+  "phien": "zcode-sub:glm-5.3:20261105T0945#soan-850432",
+  "dieuKienNut": {
+    "8504321": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến đổi đo lường"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 5,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "8504324": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 10,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "8504325": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10,
+          "donVi": "kVA"
+        }
+      ]
+    }
+  },
+  "dong8": {
+    "85043211": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ]
+    },
+    "85043219": {
+      "dieuKienSo": []
+    },
+    "85043220": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đồ chơi",
+            "mô hình thu nhỏ",
+            "mô hình giải trí"
+          ]
+        }
+      ]
+    },
+    "85043230": {
+      "dieuKienSo": [
+        {
+          "fact": "tanSo",
+          "op": ">=",
+          "value": 3,
+          "donVi": "MHz"
+        }
+      ]
+    },
+    "85043241": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ]
+    },
+    "85043249": {
+      "dieuKienSo": []
+    },
+    "85043251": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ]
+    },
+    "85043259": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8504321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504321 \"Máy biến đổi đo lường(1) (biến áp và biến dòng) loại công suất danh định không quá 5 kVA\" ⇒ tenLoai \"Máy biến đổi đo lường\" + congSuatBieuKien <= 5 kVA; ngoặc \"(biến áp và biến dòng)\" là thuyết minh (PHU)"
+    },
+    {
+      "ma": "85043211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043211 \"Biến áp thích ứng (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\" (giống .41/.51, phân biệt theo tầng công suất)"
+    },
+    {
+      "ma": "85043219",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043219 \"Loại khác\" trần ⇒ không điều kiện (tương tự .49/.59)"
+    },
+    {
+      "ma": "85043220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043220 \"Loại khác, sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự\" ⇒ chỉ điều kiện của vế: dungCho mảng [đồ chơi, mô hình thu nhỏ, mô hình giải trí] (\"hoặc\" ⇒ mảng); dòng \"Loại khác…\" máy tự phủ định anh em (không ghi phanConLai)"
+    },
+    {
+      "ma": "85043230",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043230 \"Loại khác, tần số tối thiểu 3 MHz\" ⇒ tanSo >= 3 MHz; máy tự phủ định anh em"
+    },
+    {
+      "ma": "8504324",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504324 \"Loại khác, có công suất danh định không quá 10 kVA\" ⇒ chỉ điều kiện của vế: congSuatBieuKien <= 10 kVA; tieuDe.8504325 \"…trên 10 kVA\" ⇒ > 10 kVA"
+    },
+    {
+      "ma": "85043220",
+      "loai": "DUNG",
+      "ghiChu": "Cấu trúc chặn: .20/.30 là dòng \"Loại khác, <vế>\" ở GỐC, máy phủ định mọi anh em cùng gốc — trong đó tầng 8504324 (≤10 kVA) và 8504325 (>10 kVA) chia kín trục công suất nên không vector nào đồng thời thoả điều kiện vế của .20/.30 VÀ phủ định cả hai tầng ⇒ cong2-dong-khong-toi-duoc:85043220/.30 không sửa được không bịa chữ (biến áp dùng cho đồ chơi 8 kVA về mặt chữ thuộc cả .20 lẫn tầng .4 — biểu tự chồng). Báo Claude"
+    }
+  ]
+}

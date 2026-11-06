@@ -1,0 +1,80 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "851840",
+  "nhom": "8518",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1035#soan-851840",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85184020",
+      "nguon": "tax.85184020",
+      "trich": "85184020 - - Sử dụng như bộ lặp (nhắc lại) trong điện thoại hữu tuyến",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "bộ lặp"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "điện thoại hữu tuyến"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85184030",
+      "nguon": "tax.85184030",
+      "trich": "85184030 - - Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85184040",
+      "nguon": "tax.85184040",
+      "trich": "85184040 - - Loại khác, có từ 6 đường tín hiệu đầu vào trở lên, có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85184090",
+      "nguon": "tax.85184090",
+      "trich": "85184090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85184020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85184020 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại hữu tuyến\" ⇒ congDung \"bộ lặp\" + dungCho \"điện thoại hữu tuyến\"; ngoặc \"(nhắc lại)\" là PHU"
+    },
+    {
+      "ma": "85184030",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "phuongThucTruyenDan",
+      "ghiChu": "tax.85184030 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến\" — vế loại trừ \"trừ điện thoại hữu tuyến\" không có op phủ định cho LIET_KE (cần KHONG_TRONG [HUU_TUYEN]); tiền lệ 07119050 cùng lỗi"
+    },
+    {
+      "ma": "85184040",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "soDuongTinHieuDauVao",
+      "ghiChu": "tax.85184040 \"… có từ 6 đường tín hiệu đầu vào trở lên …\" — không có khoá đếm \"đường tín hiệu đầu vào\" (soLoi là số lõi dây); vế \"có hoặc không kết hợp…\" là dạng \"có hoặc không\" (cổng không đòi tách)"
+    },
+    {
+      "ma": "85184090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85184090 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

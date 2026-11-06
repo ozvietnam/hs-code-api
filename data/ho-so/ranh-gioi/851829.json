@@ -1,0 +1,77 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "851829",
+  "nhom": "8518",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T1030#soan-851829",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85182920",
+      "nguon": "tax.85182920",
+      "trich": "85182920 - - - Loa, không có vỏ, có dải tần số 300 Hz đến 3.400 Hz, với đường kính không quá 50 mm, dùng trong viễn thông",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Loa"
+        },
+        {
+          "fact": "tanSo",
+          "op": ">=",
+          "value": 300,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "tanSo",
+          "op": "<=",
+          "value": 3400,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "viễn thông"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85182990",
+      "nguon": "tax.85182990",
+      "trich": "85182990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "851829",
+      "loai": "DUNG",
+      "ghiChu": "Gói soạn ghi [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:851829:chua-co — chờ Claude lập mục bảng rồi soạn lại theo chữ biểu"
+    },
+    {
+      "ma": "85182920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85182920 \"Loa, không có vỏ, có dải tần số 300 Hz đến 3.400 Hz, với đường kính không quá 50 mm, dùng trong viễn thông\" ⇒ tenLoai \"Loa\" + tanSo >= 300 và <= 3400 Hz (một vế biên số, máy ghép — 85181011) + duongKinh <= 50 mm + dungCho \"viễn thông\"; \"không có vỏ\" là vế phủ định vỏ loa (PN6 851829 đã định nghĩa \"not mounted in their enclosures\"), không ghi riêng"
+    },
+    {
+      "ma": "85182990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85182990 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

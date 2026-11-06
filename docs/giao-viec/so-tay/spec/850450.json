@@ -1,0 +1,95 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850450",
+  "phien": "zcode-sub:glm-5.3:20261105T0955#soan-850450",
+  "dong8": {
+    "85045010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cuộn cảm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bộ nguồn cấp điện",
+            "thiết bị viễn thông"
+          ]
+        }
+      ]
+    },
+    "85045020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cuộn cảm cố định kiểu con chip"
+        }
+      ]
+    },
+    "85045093": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "85045094": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 2500,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "85045095": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10000,
+          "donVi": "kVA"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85045010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85045010 \"Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông\" ⇒ tenLoai \"Cuộn cảm\" + dungCho mảng [bộ nguồn cấp điện, thiết bị viễn thông] (đích \"bộ nguồn cấp điện\" của máy xử lý dữ liệu/khối chức năng, và \"thiết bị viễn thông\")"
+    },
+    {
+      "ma": "85045020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85045020 \"Cuộn cảm cố định kiểu con chip (SEN)\" ⇒ tenLoai \"Cuộn cảm cố định kiểu con chip\"; (SEN) là nguồn chú giải (PHU)"
+    },
+    {
+      "ma": "85045093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85045093 \"Có công suất danh định không quá 2.500 kVA\" ⇒ congSuatBieuKien <= 2500 kVA; .94 \"trên 2.500 nhưng không quá 10.000\" ⇒ > 2500 và <= 10000; .95 \"trên 10.000\" ⇒ > 10000; tầng 8504509 \"Loại khác\" trần nên .93–.95 chỉ áp cho cuộn cảm ngoài .10/.20 (máy tự phủ định)"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "85045010",
+        "85045020"
+      ],
+      "lyDo": "Chữ hai dòng không loại trừ: .10 \"Cuộn cảm dùng cho bộ nguồn cấp điện của các thiết bị xử lý dữ liệu tự động…\" và .20 \"Cuộn cảm cố định kiểu con chip\" — cuộn cảm kiểu con chip dùng cho bộ nguồn cấp điện của thiết bị xử lý dữ liệu thoả cả hai dòng; không có căn cứ thứ tự"
+    }
+  ]
+}

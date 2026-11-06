@@ -1,0 +1,218 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "850132",
+  "nhom": "8501",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T0925#soan-850132",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8501322",
+      "nguon": "tieuDe.8501322",
+      "trich": "8501322 Công suất trên 750 W nhưng không quá 37,5 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 750,
+          "donVi": "W"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 37.5,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8501323",
+      "nguon": "tieuDe.8501323",
+      "trich": "8501323 Công suất trên 37,5 kW nhưng không quá 75 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 37.5,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 75,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85013221",
+      "nguon": "tax.85013221",
+      "trich": "85013221 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50",
+            "85.09",
+            "85.16"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85013224",
+      "nguon": "tax.85013224",
+      "trich": "85013224 - - - - Động cơ dùng cho xe của Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85013225",
+      "nguon": "tax.85013225",
+      "trich": "85013225 - - - - Động cơ khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "85013221",
+        "85013224",
+        "85013226"
+      ]
+    },
+    {
+      "hs": "85013226",
+      "nguon": "tax.85013226",
+      "trich": "85013226 - - - - Máy phát điện",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phát điện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85013231",
+      "nguon": "tax.85013231",
+      "trich": "85013231 - - - - Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "84.15",
+            "84.18",
+            "84.50"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85013232",
+      "nguon": "tax.85013232",
+      "trich": "85013232 - - - - Động cơ khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "85013231",
+        "85013233"
+      ]
+    },
+    {
+      "hs": "85013233",
+      "nguon": "tax.85013233",
+      "trich": "85013233 - - - - Máy phát điện",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phát điện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8501322",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8501322 \"Công suất trên 750 W nhưng không quá 37,5 kW\" ⇒ congSuat > 750 W và <= 37,5 kW; tieuDe.8501323 \"Công suất trên 37,5 kW nhưng không quá 75 kW\" ⇒ > 37,5 kW và <= 75 kW (đơn vị theo từng mốc chữ)"
+    },
+    {
+      "ma": "85013221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013221 \"Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18, 84.50, 85.09 hoặc 85.16\" ⇒ tenLoai \"Động cơ\" + dungCho [5 nhóm] (mẫu 850131 .30)"
+    },
+    {
+      "ma": "85013224",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013224 \"Động cơ dùng cho xe của Chương 87\" ⇒ tenLoai \"Động cơ\" + dungCho \"Chương 87\""
+    },
+    {
+      "ma": "85013225",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013225 \"Động cơ khác\" ⇒ tenLoai \"Động cơ\" + phanConLai: true (phần còn lại có tên, mẫu 850131 .70) — dieuKienSo trống + phanConLai (vòng 8b: hàng thoả tầng mà không vào con nào rơi về phần còn lại)"
+    },
+    {
+      "ma": "85013226",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013226 \"Máy phát điện\" ⇒ tenLoai \"Máy phát điện\""
+    },
+    {
+      "ma": "85013231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013231 \"Động cơ loại dùng cho hàng hóa thuộc nhóm 84.15, 84.18 hoặc 84.50\" ⇒ tenLoai \"Động cơ\" + dungCho [3 nhóm]"
+    },
+    {
+      "ma": "85013232",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013232 \"Động cơ khác\" ⇒ tenLoai \"Động cơ\" + phanConLai: true — dieuKienSo trống + phanConLai (vòng 8b: hàng thoả tầng mà không vào con nào rơi về phần còn lại)"
+    },
+    {
+      "ma": "85013233",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85013233 \"Máy phát điện\" ⇒ tenLoai \"Máy phát điện\""
+    },
+    {
+      "ma": "8501322",
+      "loai": "DUNG",
+      "ghiChu": "Cấu trúc chặn: phân nhóm 850132 bị chặn hai đầu (>750 W… ≤75 kW) chia làm 2 tầng số ĐỀU hai đầu, gốc không có dòng/tầng \"Loại khác\" — cong3-bien-lech-chu đòi đủ hai biên của từng tầng theo chữ, còn cong1 khong-phu-kin ở gốc đòi mọi vector biên (kể cả 749,999 W / 75.000,075 W ngay ngoài cận phân nhóm) phải rơi vào một con: mâu thuẫn, không sửa được không bịa chữ (bỏ cận ⇒ lệch chữ; thêm cận ở dòng khác ⇒ bịa). Đã thử 5 vòng (đủ/chừa cận dưới, phanConLai đủ kiểu). Báo Claude xem lại cách máy xử cận phân nhóm"
+    }
+  ]
+}
