@@ -1,0 +1,80 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "940210",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-940210",
+  "dong8": {
+    "94021010": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Ghế nha khoa"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Ghế nha khoa"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "94021030": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Ghế cắt tóc"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Ghế cắt tóc"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "94021010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94021010: \"Ghế nha khoa và các bộ phận của chúng\" => HOAC [[tenLoai \"Ghế nha khoa\"], [laBoPhan CO, dungCho \"Ghế nha khoa\"]] (QUY-TRINH 3.11, X = tên đầu nguyên văn)"
+    },
+    {
+      "ma": "94021030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94021030: \"Ghế cắt tóc hoặc các loại ghế tương tự và các bộ phận của chúng\" => HOAC [[tenLoai \"Ghế cắt tóc\"], [laBoPhan CO, dungCho \"Ghế cắt tóc\"]]; vế mở \"hoặc các loại ghế tương tự\" miễn BO_VE (tiền lệ 93063020)"
+    },
+    {
+      "ma": "94021030",
+      "loai": "BO_VE",
+      "ve": "hoặc các loại ghế tương tự",
+      "lyDo": "tu-vung@2 chỉ có op TUONG_TU cho tenLoai; dạng TUONG_TU ở dòng này làm vector tên chính hàng thoả cả hai dòng (chồng lấn giả với 94021010); không liệt kê đóng để không hẹp hơn chữ, hàng ghế tương tự lúc chạy được hỏi"
+    }
+  ]
+}

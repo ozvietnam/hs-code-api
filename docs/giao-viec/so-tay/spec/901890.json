@@ -1,0 +1,54 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "901890",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-901890",
+  "dong8": {
+    "90189010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn sợi quang" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "được thiết kế dùng trong y học" }
+      ]
+    },
+    "90189020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bộ theo dõi tĩnh mạch" }
+      ]
+    },
+    "90189031": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Dụng cụ", "thiết bị"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["phẫu thuật điện tử", "y học điện tử"] }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "9018903": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Dụng cụ", "thiết bị"] },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "điện tử" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "90189010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90189010: \"Đèn sợi quang loại dùng đeo trên đầu, được thiết kế dùng trong y học(SEN)\" ⇒ tenLoai \"Đèn sợi quang\" + dungCho \"được thiết kế dùng trong y học\" (trọn vế giới hạn); \"dùng đeo trên đầu\" là định ngữ loại đèn, đã nằm trong tenLoai nguồn"
+    },
+    {
+      "ma": "90189020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90189020: \"Bộ theo dõi tĩnh mạch\" ⇒ tenLoai nguyên văn"
+    },
+    {
+      "ma": "90189031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90189031: \"Dụng cụ và thiết bị phẫu thuật điện tử hoặc y học điện tử\" ⇒ tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + mảng [\"phẫu thuật điện tử\",\"y học điện tử\"] (\"hoặc\" = hai hàng)"
+    },
+    {
+      "ma": "9018903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9018903: \"Dụng cụ và thiết bị điện tử\" ⇒ tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + định ngữ chung \"điện tử\" thành điều kiện riêng cùng khoá"
+    }
+  ]
+}

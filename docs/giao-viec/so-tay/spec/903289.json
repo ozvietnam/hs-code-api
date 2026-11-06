@@ -1,0 +1,120 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "903289",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-903289",
+  "dong8": {
+    "90328910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dụng cụ",
+            "thiết bị"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy xử lý dữ liệu tự động",
+            "hệ thống đẩy",
+            "giữ thăng bằng",
+            "xếp hàng hóa",
+            "tàu thuyền"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "điều chỉnh",
+            "điều khiển tự động"
+          ]
+        }
+      ]
+    },
+    "90328920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dụng cụ",
+            "thiết bị"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tự động"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "điều chỉnh",
+            "điều khiển"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "dung dịch hóa chất",
+            "điện hóa"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in/tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ]
+    },
+    "90328931": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ điều chỉnh điện áp tự động"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "9032893": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "90328910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90328910: \"Dụng cụ và thiết bị đi kèm hoặc hoạt động cùng với máy xử lý dữ liệu tự động, để điều chỉnh hoặc điều khiển tự động hệ thống đẩy, giữ thăng bằng hoặc xếp hàng hóa của tàu thuyền\" => tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + dungCho mảng [\"máy xử lý dữ liệu tự động\",\"hệ thống đẩy\",\"giữ thăng bằng\",\"xếp hàng hóa\",\"tàu thuyền\"] (gộp các đích, tiền lệ 901490) + congDung mảng [\"điều chỉnh\",\"điều khiển tự động\"]"
+    },
+    {
+      "ma": "90328920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90328920: \"Dụng cụ và thiết bị tự động để điều chỉnh hoặc điều khiển dung dịch hóa chất hoặc điện hóa trong sản xuất tấm mạch in/tấm dây in hoặc mạch in đã lắp ráp\" => tenLoai mảng [\"Dụng cụ\",\"thiết bị\"] + định ngữ \"tự động\" điều kiện riêng + congDung mảng [\"điều chỉnh\",\"điều khiển\"] + dungCho mảng [\"dung dịch hóa chất\",\"điện hóa\"] + dungCho mảng [\"tấm mạch in/tấm dây in\",\"mạch in đã lắp ráp\"]"
+    },
+    {
+      "ma": "90328931",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90328931: \"Bộ điều chỉnh điện áp tự động (ổn áp)\" => tenLoai \"Bộ điều chỉnh điện áp tự động\" (\"(ổn áp)\" là tên gọi khác trong ngoặc)"
+    },
+    {
+      "ma": "9032893",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9032893: \"Loại khác, hoạt động bằng điện\" => chỉ vế: hoatDongBangDien CO"
+    }
+  ]
+}

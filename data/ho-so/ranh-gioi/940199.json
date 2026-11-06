@@ -1,0 +1,135 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "940199",
+  "nhom": "9401",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-940199",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "9401992",
+      "nguon": "tieuDe.9401992",
+      "trich": "9401992 Của ghế thuộc phân nhóm 9401.20",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ghế thuộc phân nhóm 9401.20"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "94019910",
+      "nguon": "tax.94019910",
+      "trich": "94019910 - - - Của ghế thuộc phân nhóm 9401.10.00",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ghế thuộc phân nhóm 9401.10.00"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94019921",
+      "nguon": "tax.94019921",
+      "trich": "94019921 - - - - Miếng tựa đầu và tay vịn của ghế thuộc phân nhóm 9401.20.10",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Miếng tựa đầu",
+            "tay vịn"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ghế thuộc phân nhóm 9401.20.10"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94019929",
+      "nguon": "tax.94019929",
+      "trich": "94019929 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94019930",
+      "nguon": "tax.94019930",
+      "trich": "94019930 - - - Của ghế thuộc phân nhóm 9401.31.00 và 9401.39.00",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "9401.31.00",
+            "9401.39.00"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94019991",
+      "nguon": "tax.94019991",
+      "trich": "94019991 - - - - Bằng plastic",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94019999",
+      "nguon": "tax.94019999",
+      "trich": "94019999 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "94019910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94019910: \"Của ghế thuộc phân nhóm 9401.10.00\" => dungCho trọn cụm đích có mã (dẫn mã giữ nguyên chuỗi, máy tự nở)"
+    },
+    {
+      "ma": "9401992",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9401992: \"Của ghế thuộc phân nhóm 9401.20\" => dungCho trọn cụm đích có mã"
+    },
+    {
+      "ma": "94019921",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94019921: \"Miếng tựa đầu và tay vịn của ghế thuộc phân nhóm 9401.20.10\" => tenLoai mảng [\"Miếng tựa đầu\",\"tay vịn\"] (EN hai hàng) + dungCho trọn cụm đích có mã"
+    },
+    {
+      "ma": "94019930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94019930: \"Của ghế thuộc phân nhóm 9401.31.00 và 9401.39.00\" => dungCho mảng hai mã [\"9401.31.00\",\"9401.39.00\"] (tiền lệ 85013130 ghi mã rời trong mảng)"
+    },
+    {
+      "ma": "94019991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94019991: \"Bằng plastic\" => chatLieu LA \"plastic\""
+    }
+  ]
+}

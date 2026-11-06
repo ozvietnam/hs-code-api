@@ -1,0 +1,185 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "930630",
+  "nhom": "9306",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-930630",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "9306301",
+      "nguon": "tieuDe.9306301",
+      "trich": "9306301 Dùng cho súng lục ổ quay và súng lục của nhóm 93.02",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "súng lục ổ quay",
+            "súng lục"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nhóm 93.02"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "93063011",
+      "nguon": "tax.93063011",
+      "trich": "93063011 - - - Đạn cỡ .22",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đạn cỡ .22"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "93063019",
+      "nguon": "tax.93063019",
+      "trich": "93063019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "93063020",
+      "nguon": "tax.93063020",
+      "trich": "93063020 - - Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Đạn"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "súng bắn đinh"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Đạn"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "súng bắn gia súc giết mổ"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Đạn"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "93063030",
+      "nguon": "tax.93063030",
+      "trich": "93063030 - - Dùng cho súng thể thao, súng săn hoặc súng bắn bia, súng trường và súng cacbin, trừ súng shotgun",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "súng thể thao",
+            "súng săn",
+            "súng bắn bia",
+            "súng trường",
+            "súng cacbin"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "súng shotgun",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "93063091",
+      "nguon": "tax.93063091",
+      "trich": "93063091 - - - Đạn cỡ 22",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đạn cỡ 22"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "93063099",
+      "nguon": "tax.93063099",
+      "trich": "93063099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "9306301",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9306301: \"Dùng cho súng lục ổ quay và súng lục của nhóm 93.02\" (EN \"for revolvers and pistols of heading 93.02\" — mã chung cho cả hai) => dungCho mảng [\"súng lục ổ quay\",\"súng lục\"] + dungCho \"nhóm 93.02\" (dẫn mã giữ nguyên chuỗi)"
+    },
+    {
+      "ma": "93063011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.93063011: \"Đạn cỡ .22\" => tenLoai nguyên văn (không có khoá cỡ nòng, giữ tên)"
+    },
+    {
+      "ma": "93063020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.93063020: \"Đạn dùng cho súng bắn đinh hoặc dụng cụ tương tự hoặc cho súng bắn gia súc giết mổ và các bộ phận của chúng\" => HOAC [[tenLoai \"Đạn\" + dungCho \"súng bắn đinh\"], [tenLoai \"Đạn\" + dungCho \"súng bắn gia súc giết mổ\"], [laBoPhan CO + dungCho \"Đạn\" — vế mở \"và các bộ phận của chúng\", X = tên đầu nguyên văn \"Đạn\"]"
+    },
+    {
+      "ma": "93063030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.93063030: \"Dùng cho súng thể thao, súng săn hoặc súng bắn bia, súng trường và súng cacbin, trừ súng shotgun\" => dungCho mảng 5 tên + dungCho \"súng shotgun\" chieu PHAI_KHONG (vế \"trừ\", tiền lệ 01059410 gà chọi)"
+    },
+    {
+      "ma": "93063091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.93063091: \"Đạn cỡ 22\" => tenLoai nguyên văn (khác 93063011 \"cỡ .22\" có dấu chấm)"
+    },
+    {
+      "ma": "93063020",
+      "loai": "BO_VE",
+      "ve": "hoặc dụng cụ tương tự",
+      "lyDo": "Vế mở của ĐÍCH (dụng cụ tương tự với súng bắn đinh); tu-vung@2 chỉ có op TUONG_TU cho tenLoai, không có cho dungCho — không liệt kê đóng danh sách (hẹp hơn chữ); hàng đạn cho dụng cụ tương tự lúc chạy không khớp giá trị nào sẽ được hỏi, không tự chốt"
+    }
+  ]
+}
