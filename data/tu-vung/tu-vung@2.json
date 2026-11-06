@@ -1,6 +1,6 @@
 {
  "phienBan": "tu-vung@2",
- "ngay": "2026-11-02",
+ "ngay": "2026-11-06",
  "nguonLoai": "CLAUDE_DUYET",
  "phamVi": "Lát 1 — các khoá dữ kiện mà 50 phân nhóm data/ho-so/lat-1.json cần (ranh giới 6→8 số, dữ kiện cấp 4/6 của bộ đề lát 1, nhận diện + kiểm hoá cho mô tả). Spec hồ sơ phân loại §8.2; plan L1-3a (#570). tu-vung@2 = tu-vung@1 (53 khoá giữ NGUYÊN) + 7 khoá cho ranh giới 6→8 số mà lát 1 cần (đề xuất docs/giao-viec/so-tay/de-xuat-tu-vung-2.md) + hai luật bộ đọc #667/#675 chuyển từ mã vào dữ liệu + khoá phuongThucTruyenDan (LIET_KE VO_TUYEN | HUU_TUYEN, #606 — 851762 \"truyền dẫn dưới dạng sóng vô tuyến\") + hai khoá daXuLyBeMat (CO_KHONG, \"đã được xử lý bề mặt\") và nhienLieu (LIET_KE GA | DIEN, \"bằng ga\") (#577 — 848180 .97, .30). + 4 khoá lát 2 (02/11, đề xuất docs/giao-viec/so-tay/de-xuat-khoa-lat-2.md — GĐ duyệt): phuongPhapIn (LIET_KE BATIK | IN_LUOI | IN_KY_THUAT_SO | IN_CHUYEN_NHIET — 5208.59.10, 6204.x \"in bằng phương pháp batik truyền thống\"), tinhDanHoi (CO_KHONG — 6006.x.10 \"Đàn hồi (kết hợp với sợi cao su)\", 6001.92.30 \"Chứa sợi đàn hồi hoặc sợi cao su\"), loaiSoiDet (LIET_KE BONG | SOI_THUC_VAT_KHAC | LEN_LONG_DONG_VAT_MIN | TO_TAM | SOI_TONG_HOP | SOI_TAI_TAO — 6306 \"Từ bông\", 5515.99.10 lông cừu), doDay (SO mm — 7308.30.10 \"độ dày từ 6 mm đến 8 mm\").",
  "tienThan": {
@@ -47,7 +47,7 @@
  ],
  "chamDuyetDocLap": {
   "trangThai": "CHUA_CHAM",
-  "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập. +10 khoá 02/11 (lô 2: congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc) chưa chấm độc lập. +9 khoá 03/11 (lô 3 thép ch.72/73: hamLuongCarbon, gioiHanChay, chieuRong, khaNangChiuApLuc, duongCheoNgoai, coRen, doBenKeo, hamLuongNiken, lopMaPhu) chưa chấm độc lập. +5 khoá 03/11 (lô 4 nông sản/thực phẩm/dược ch.01–30: dungLamGiong, dongBaoBiKinKhiDeBanLe, nongDoCon, phuongPhapBaoQuan, dangBaoCheThuoc) chưa chấm độc lập. +5 khoá 03/11 (lô 5, vòng 2 cùng phiên Studio: mucDoTinhCheDau, chiSoIot, triSoOctan, daRang, tachXuongCoHoc) chưa chấm độc lập. +6 khoá 03/11 (lô 6: dinhLuong, mucDoGiaCongGo, dangBinhXit, nhieuLop, daIn, duongKinhVanh) chưa chấm độc lập. +5 khoá 03/11 (lô 7: daTrangMen, tinhNangBaoHo, daTrangPhuEpLop, loaiMuiBaoVe, thuyTinhQuangHoc) chưa chấm độc lập. +5 khoá 03/11 (lô 8: tongDungTichTau, dangCuon, coNong, ngamQuaThauKinhSLR, dungMotLan) chưa chấm độc lập. +8 khoá 03/11 (lô 9 — vòng quét sót: tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, daPhaThemDuongHoacRuou, soiDun, coMauTruTrang, dongGoiBanLe, dangLong) chưa chấm độc lập. + 1 khoá cuối 03/11 (tocDo — quét toàn biểu thuế #999; duongKinhLapVanh rút lại vì trùng duongKinhVanh lô 6): chưa chấm độc lập. +3 khoá 03/11 (lô 10 — gói ✗ máy ch.86–89: bonBanhChuDong, xeBaBanh, khoiLuongToanBo) chưa chấm độc lập. +3 khoá 03/11 (lô 10b — gói ✗ máy ch.86–89, vòng 2: kieuXeChoNguoi, kieuXeChoHang, mayKeoNongNghiep) chưa chấm độc lập. +6 khoá 03/11 (lô 11 — gói ✗ máy ch.84: loaiBoPhanDongCoPiston, dungTrongNongNghiep, canDienTu, mayRenKhuonHoacDapKhuon, dungTrongYTeHoacThiNghiem, dieuKhienSo) chưa chấm độc lập. +6 khoá 03/11 (lô 12 — gói ✗ máy ch.85: dungChoXeCoDongCo, bienApThichUng, loaiXachTay, laMayPhatDien, loaiBienDoiTinhDien, loaiThietBiBaoDong) chưa chấm độc lập. +11 khoá 03/11 (lô 13 — gói ✗ máy ch.31–49: dangTamPhienMang, tamPhuSan, dangChePhamDietMuoi, loaiHangDanLat, ongHutXaBunKhaiThacMo, dungChoDienAnh, sonChongHaHoacChongAnMonVoTau, tamMiengGhepLatNenOpTuong, dungTrongNhaKhoa, dayTetBen, loaiCung) chưa chấm độc lập. +6 khoá 03/11 (lô 14 — gói ✗ máy ch.01–15: boPhanThitGiaCam, thichHopDungChoNguoi, caBot, laChe, daXay, soCheTom) chưa chấm độc lập. +7 khoá 03/11 (lô 15 — gói ✗ máy ch.16–30: loaiThuocLaNguyenLieu, phaCheVoiEthanol, daPhaHuongLieuHoacChatMau, sanPhamDinhDuongYTe, dangKhoiHoacTamDa, loaiMiBunMien, chuaCaCao) chưa chấm độc lập. +11 khoá 03/11 (lô 16 — gói ✗ máy ch.50–71: thamCauNguyen, quanAoDauKiemDauVat, loaiSanPhamXiMangSoi, tamLatGachLat, donNgucSauPhauThuat, boPhanGiayDep, dungSanXuatOngChanKhong, aoBarongTagalog, sarongHinhOng, aoChoangHanhHuongIhram, giayDauVatCuTa) chưa chấm độc lập. +11 khoá 03/11 (lô 17 — gói ✗ máy ch.72–83: dangDaiDaiTamPhoDung, dangLuonSong, loaiDoDungGiaDinhSatThep, xichXeDapMoTo, phuongPhapHanOngThep, hopDungThuocLaDieu, banLeMocKhoaHasps, chuaGiaCongQuaMucCanNong, hamLuongCrom, phoiDetDangPhien, ongVaPhuKienKimLoaiMau) chưa chấm độc lập. +6 khoá 03/11 (lô 18 — gói ✗ máy ch.90–98: loaiDoChoi, kieuChieuSangDen, tuHutHoiDoc, denChoPhongMo, hopDungThuocLaTrangTri, loaiNoiThatYTe) chưa chấm độc lập.",
+  "ghiChu": "53 khoá @1 giữ nguyên bản đã chấm duyệt độc lập 30/10/2026 (xem tu-vung@1.json chamDuyetDocLap). 14 khoá mới (7 khoá #570 + phuongThucTruyenDan #606 + daXuLyBeMat, nhienLieu #577 848180 + 4 khoá lát 2 02/11: phuongPhapIn, tinhDanHoi, loaiSoiDet, doDay) chưa có phiên chấm độc lập. +10 khoá 02/11 (lô 2: congSuatBieuKien, dangNguyenSinh, daLapRap, dungTich, sanLuongHoi, theTich, heDienHoa, dungLuong, daHoaDeo, coBoLoc) chưa chấm độc lập. +9 khoá 03/11 (lô 3 thép ch.72/73: hamLuongCarbon, gioiHanChay, chieuRong, khaNangChiuApLuc, duongCheoNgoai, coRen, doBenKeo, hamLuongNiken, lopMaPhu) chưa chấm độc lập. +5 khoá 03/11 (lô 4 nông sản/thực phẩm/dược ch.01–30: dungLamGiong, dongBaoBiKinKhiDeBanLe, nongDoCon, phuongPhapBaoQuan, dangBaoCheThuoc) chưa chấm độc lập. +5 khoá 03/11 (lô 5, vòng 2 cùng phiên Studio: mucDoTinhCheDau, chiSoIot, triSoOctan, daRang, tachXuongCoHoc) chưa chấm độc lập. +6 khoá 03/11 (lô 6: dinhLuong, mucDoGiaCongGo, dangBinhXit, nhieuLop, daIn, duongKinhVanh) chưa chấm độc lập. +5 khoá 03/11 (lô 7: daTrangMen, tinhNangBaoHo, daTrangPhuEpLop, loaiMuiBaoVe, thuyTinhQuangHoc) chưa chấm độc lập. +5 khoá 03/11 (lô 8: tongDungTichTau, dangCuon, coNong, ngamQuaThauKinhSLR, dungMotLan) chưa chấm độc lập. +8 khoá 03/11 (lô 9 — vòng quét sót: tinhTrangTayTrang, hinhDangCatGocKinh, kieuDet, daPhaThemDuongHoacRuou, soiDun, coMauTruTrang, dongGoiBanLe, dangLong) chưa chấm độc lập. + 1 khoá cuối 03/11 (tocDo — quét toàn biểu thuế #999; duongKinhLapVanh rút lại vì trùng duongKinhVanh lô 6): chưa chấm độc lập. +3 khoá 03/11 (lô 10 — gói ✗ máy ch.86–89: bonBanhChuDong, xeBaBanh, khoiLuongToanBo) chưa chấm độc lập. +3 khoá 03/11 (lô 10b — gói ✗ máy ch.86–89, vòng 2: kieuXeChoNguoi, kieuXeChoHang, mayKeoNongNghiep) chưa chấm độc lập. +6 khoá 03/11 (lô 11 — gói ✗ máy ch.84: loaiBoPhanDongCoPiston, dungTrongNongNghiep, canDienTu, mayRenKhuonHoacDapKhuon, dungTrongYTeHoacThiNghiem, dieuKhienSo) chưa chấm độc lập. +6 khoá 03/11 (lô 12 — gói ✗ máy ch.85: dungChoXeCoDongCo, bienApThichUng, loaiXachTay, laMayPhatDien, loaiBienDoiTinhDien, loaiThietBiBaoDong) chưa chấm độc lập. +11 khoá 03/11 (lô 13 — gói ✗ máy ch.31–49: dangTamPhienMang, tamPhuSan, dangChePhamDietMuoi, loaiHangDanLat, ongHutXaBunKhaiThacMo, dungChoDienAnh, sonChongHaHoacChongAnMonVoTau, tamMiengGhepLatNenOpTuong, dungTrongNhaKhoa, dayTetBen, loaiCung) chưa chấm độc lập. +6 khoá 03/11 (lô 14 — gói ✗ máy ch.01–15: boPhanThitGiaCam, thichHopDungChoNguoi, caBot, laChe, daXay, soCheTom) chưa chấm độc lập. +7 khoá 03/11 (lô 15 — gói ✗ máy ch.16–30: loaiThuocLaNguyenLieu, phaCheVoiEthanol, daPhaHuongLieuHoacChatMau, sanPhamDinhDuongYTe, dangKhoiHoacTamDa, loaiMiBunMien, chuaCaCao) chưa chấm độc lập. +11 khoá 03/11 (lô 16 — gói ✗ máy ch.50–71: thamCauNguyen, quanAoDauKiemDauVat, loaiSanPhamXiMangSoi, tamLatGachLat, donNgucSauPhauThuat, boPhanGiayDep, dungSanXuatOngChanKhong, aoBarongTagalog, sarongHinhOng, aoChoangHanhHuongIhram, giayDauVatCuTa) chưa chấm độc lập. +11 khoá 03/11 (lô 17 — gói ✗ máy ch.72–83: dangDaiDaiTamPhoDung, dangLuonSong, loaiDoDungGiaDinhSatThep, xichXeDapMoTo, phuongPhapHanOngThep, hopDungThuocLaDieu, banLeMocKhoaHasps, chuaGiaCongQuaMucCanNong, hamLuongCrom, phoiDetDangPhien, ongVaPhuKienKimLoaiMau) chưa chấm độc lập. +6 khoá 03/11 (lô 18 — gói ✗ máy ch.90–98: loaiDoChoi, kieuChieuSangDen, tuHutHoiDoc, denChoPhongMo, hopDungThuocLaTrangTri, loaiNoiThatYTe) chưa chấm độc lập. +28 khoá lô 19 (06/11, đề xuất THIEU_KHOA_TU_VUNG của 14 PR lát 3 #1067–#1080 + #999; máy kiểm): daGap, dangToChuNhat, motChieuTo, chieuKiaTo, daPhu, phuCaHaiMat, doXop, coBoPhanLamLanh, coVanDaoChieu, loaiCaoSu, hinhDangMatCatNgang, ganThietBiCoKhiHoacGiaNhiet, taoMauTaoVanToanBo, daCatThanhHinh, daXoan, doManh, daLamNhay, hopKimNhom, daGiaCong, conVo, chuaDauSilicon, mangTheoNguoi, goLaKim, doBenUot, loaiPin, soiChiemTiLeLonHon, hamLuongSoiDanHoi, chatNgamTamTrangPhu; + giá trị phuongPhapCheTao.EP_DUN/THIEU_KET, loaiSoiDet.NHAN_TAO/LONG_DONG_VAT_THO, phuongPhapBaoQuan.HAP_LUOC_CHIN, cách đọc daXuLyBeMat \"gia công bề mặt\".",
   "khoaChuaCham": [
    "aoBarongTagalog",
    "aoChoangHanhHuongIhram",
@@ -187,7 +187,35 @@
    "triSoOctan",
    "tuHutHoiDoc",
    "xeBaBanh",
-   "xichXeDapMoTo"
+   "xichXeDapMoTo",
+   "daGap",
+   "dangToChuNhat",
+   "motChieuTo",
+   "chieuKiaTo",
+   "daPhu",
+   "phuCaHaiMat",
+   "doXop",
+   "coBoPhanLamLanh",
+   "coVanDaoChieu",
+   "loaiCaoSu",
+   "hinhDangMatCatNgang",
+   "ganThietBiCoKhiHoacGiaNhiet",
+   "taoMauTaoVanToanBo",
+   "daCatThanhHinh",
+   "daXoan",
+   "doManh",
+   "daLamNhay",
+   "hopKimNhom",
+   "daGiaCong",
+   "conVo",
+   "chuaDauSilicon",
+   "mangTheoNguoi",
+   "goLaKim",
+   "doBenUot",
+   "loaiPin",
+   "soiChiemTiLeLonHon",
+   "hamLuongSoiDanHoi",
+   "chatNgamTamTrangPhu"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -354,6 +382,14 @@
    "r/min": 1,
    "v/s": 60,
    "vòng/giây": 60
+  },
+  "doThauKhi": {
+   "CORESTA": 1
+  },
+  "doManhSoi": {
+   "decitex": 1,
+   "dtex": 1,
+   "tex": 10
   }
  },
  "bietDanhDonVi": {
@@ -4313,7 +4349,9 @@
     "HAN",
     "EP_PHUN",
     "THOI",
-    "DOT_DAP_KEO_GIAN"
+    "DOT_DAP_KEO_GIAN",
+    "EP_DUN",
+    "THIEU_KET"
    ],
    "moTaGiaTri": {
     "DUC": {
@@ -4514,6 +4552,43 @@
       ]
      },
      "cachViet": "đột dập và kéo giãn thành lưới"
+    },
+    "EP_DUN": {
+     "nhanVi": "ép đùn",
+     "nhanEn": "extruded",
+     "nhanZh": "挤压",
+     "cachDoc": {
+      "vi": [
+       "(?:được\\s+)?ép\\s+đùn"
+      ],
+      "en": [
+       "extruded",
+       "extrusion"
+      ],
+      "zh": [
+       "挤压",
+       "挤出"
+      ]
+     },
+     "cachViet": "ép đùn"
+    },
+    "THIEU_KET": {
+     "nhanVi": "thiêu kết",
+     "nhanEn": "sintered",
+     "nhanZh": "烧结",
+     "cachDoc": {
+      "vi": [
+       "(?:đã\\s+)?thiêu\\s+kết"
+      ],
+      "en": [
+       "sintered",
+       "sintering"
+      ],
+      "zh": [
+       "烧结"
+      ]
+     },
+     "cachViet": "thiêu kết"
     }
    },
    "cumDaiThang": true,
@@ -4529,7 +4604,7 @@
     "vi": "Hàng được chế tạo bằng phương pháp nào (đúc, rèn, cán nóng/cán nguội, kéo, dập, hàn, ép phun, thổi khuôn, đột dập và kéo giãn)?",
     "zh": "产品采用何种加工方法制成（铸造、锻造、热轧/冷轧、拉拔、冲压、焊接、注塑、吹塑、冲剪拉伸）？"
    },
-   "ghiChu": "Phương pháp, không phải vật liệu: \"gang đúc\", \"cast iron\" là vật liệu ⇒ không đọc; \"máy hàn\", \"Hàn Quốc\", \"dao kéo\" ⇒ không đọc; \"cán\" trần (cũng là \"tay cầm\") ⇒ không đọc.",
+   "ghiChu": "Phương pháp, không phải vật liệu: \"gang đúc\", \"cast iron\" là vật liệu ⇒ không đọc; \"máy hàn\", \"Hàn Quốc\", \"dao kéo\" ⇒ không đọc; \"cán\" trần (cũng là \"tay cầm\") ⇒ không đọc. + EP_DUN (06/11): chữ biểu 7604.29.10 \"Dạng thanh và que được ép đùn\" (đề xuất phuongPhapCheTao EP_DUN, 760429). + THIEU_KET (06/11): chữ biểu 8101.94.00 \"Vonfram chưa gia công, kể cả thanh và que thu được từ quá trình thiêu kết\", 2518.20.00 \"Dolomite đã nung hoặc thiêu kết\" (đề xuất THIEU_KET, 810199).",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
@@ -4609,7 +4684,8 @@
    "nhanZh": "表面经过处理",
    "cachDoc": {
     "vi": [
-     "(?:đã\\s+(?:được\\s+)?)?xử\\s+lý\\s+bề\\s+mặt"
+     "(?:đã\\s+(?:được\\s+)?)?xử\\s+lý\\s+bề\\s+mặt",
+     "(?:đã\\s+(?:được\\s+)?)?gia\\s+công\\s+bề\\s+mặt"
     ],
     "en": [
      "surface[- ]treated",
@@ -4656,7 +4732,7 @@
     "vi": "Bề mặt hàng đã được xử lý (surface treated) hay chưa?",
     "zh": "产品表面是否经过处理？"
    },
-   "ghiChu": "Chữ biểu 8481.80.97 \"Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken\" (EN \"surface treated or made of stainless steel or nickel\", #577 848180). Chỉ đọc đúng cụm \"xử lý bề mặt\" / \"surface treated|treatment\" / 表面处理 — không suy từ tên lớp phủ (mạ, sơn, phủ…) vì chữ biểu không liệt kê; \"chưa/không xử lý bề mặt\" là phủ định (phuDinh).",
+   "ghiChu": "Chữ biểu 8481.80.97 \"Loại khác, điều khiển bằng tay, khối lượng dưới 3 kg, đã được xử lý bề mặt hoặc làm bằng thép không gỉ hoặc niken\" (EN \"surface treated or made of stainless steel or nickel\", #577 848180). Chỉ đọc đúng cụm \"xử lý bề mặt\" / \"surface treated|treatment\" / 表面处理 — không suy từ tên lớp phủ (mạ, sơn, phủ…) vì chữ biểu không liệt kê; \"chưa/không xử lý bề mặt\" là phủ định (phuDinh). + cách đọc \"gia công bề mặt\" (06/11): chữ biểu (7606.12.35) \"Loại khác, đã gia công bề mặt\" (đề xuất 760612).",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
@@ -4941,7 +5017,9 @@
     "LEN_LONG_DONG_VAT_MIN",
     "TO_TAM",
     "SOI_TONG_HOP",
-    "SOI_TAI_TAO"
+    "SOI_TAI_TAO",
+    "NHAN_TAO",
+    "LONG_DONG_VAT_THO"
    ],
    "moTaGiaTri": {
     "BONG": {
@@ -5142,6 +5220,43 @@
       ]
      },
      "cachViet": "từ sợi tái tạo"
+    },
+    "NHAN_TAO": {
+     "nhanVi": "từ sợi/xơ nhân tạo (tổng hợp hoặc tái tạo, chương 54–55)",
+     "nhanEn": "of man-made fibres (synthetic or artificial)",
+     "nhanZh": "化学纤维（合成或再生）",
+     "cachDoc": {
+      "vi": [
+       "(?:sợi|xơ|vật\\s+liệu\\s+dệt)\\s+nhân\\s+tạo"
+      ],
+      "en": [
+       "man-made\\s+(?:fib(?:re|er)s?|filaments?|textile\\s+materials?)"
+      ],
+      "zh": [
+       "化学纤维",
+       "化纤"
+      ]
+     },
+     "cachViet": "từ sợi nhân tạo"
+    },
+    "LONG_DONG_VAT_THO": {
+     "nhanVi": "từ lông động vật loại thô",
+     "nhanEn": "of coarse animal hair",
+     "nhanZh": "动物粗毛",
+     "cachDoc": {
+      "vi": [
+       "lông\\s+động\\s+vật\\s+loại\\s+thô",
+       "lông\\s+thô"
+      ],
+      "en": [
+       "coarse\\s+animal\\s+hair"
+      ],
+      "zh": [
+       "动物粗毛",
+       "粗毛"
+      ]
+     },
+     "cachViet": "từ lông động vật loại thô"
     }
    },
    "cumDaiThang": true,
@@ -5157,7 +5272,7 @@
     "vi": "Hàng dệt làm từ loại xơ/sợi nào là chủ yếu (bông; sợi dệt thực vật khác như đay, lanh, gai; len/lông động vật loại mịn; tơ tằm; sợi tổng hợp như polyeste, nylon; sợi tái tạo như visco)?",
     "zh": "纺织品主要由哪种纤维制成（棉；其他植物纤维如黄麻、亚麻、苎麻；羊毛/动物细毛；蚕丝；合成纤维如涤纶、尼龙；人造纤维如粘胶）？"
    },
-   "ghiChu": "Loại xơ/sợi dệt của hàng dệt — chữ biểu \"Từ bông\" (6306.29.10, 6306.19.20, 6306.40.10), \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (6306.19.10), \"Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn\" (5515.99.10) — lát 2, đề xuất de-xuat-khoa-lat-2.md (loaiXoPha + studio-loop loaiSoiDet, gộp một khoá). \"Từ X\" ở chương 50–63 là vật liệu dệt CHIẾM TRỘI theo Chú giải 2 Phần XI: hàng pha (\"cotton 80% polyester 20%\") đọc được hai giá trị ⇒ CHUA_BIET + ungVien, người khai chốt theo tỉ trọng. Vật liệu không phải xơ dệt (bông thủy tinh, bông khoáng, bông gòn/tai/hoa; da lông cừu là da) ⇒ không đọc. Sợi đàn hồi / sợi cao su là trục CHỨA (tinhDanHoi), không nằm ở đây. Khoá @1 chatLieu (\"vải dệt\" chung) giữ nguyên.",
+   "ghiChu": "Loại xơ/sợi dệt của hàng dệt — chữ biểu \"Từ bông\" (6306.29.10, 6306.19.20, 6306.40.10), \"Từ sợi dệt thực vật thuộc nhóm 53.05\" (6306.19.10), \"Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn\" (5515.99.10) — lát 2, đề xuất de-xuat-khoa-lat-2.md (loaiXoPha + studio-loop loaiSoiDet, gộp một khoá). \"Từ X\" ở chương 50–63 là vật liệu dệt CHIẾM TRỘI theo Chú giải 2 Phần XI: hàng pha (\"cotton 80% polyester 20%\") đọc được hai giá trị ⇒ CHUA_BIET + ungVien, người khai chốt theo tỉ trọng. Vật liệu không phải xơ dệt (bông thủy tinh, bông khoáng, bông gòn/tai/hoa; da lông cừu là da) ⇒ không đọc. Sợi đàn hồi / sợi cao su là trục CHỨA (tinhDanHoi), không nằm ở đây. Khoá @1 chatLieu (\"vải dệt\" chung) giữ nguyên. + NHAN_TAO (06/11): chữ biểu 6207.99.10 \"Từ sợi nhân tạo\", 5803.00.20 \"Từ xơ nhân tạo\" — \"nhân tạo\" = tổng hợp + tái tạo (chú giải Phần XI chú 1). + LONG_DONG_VAT_THO (06/11): chữ biểu 5102.20.00 \"Lông động vật loại thô\", 5113.00.00 \"Vải dệt thoi từ sợi lông động vật loại thô …\". Đề xuất loaiSoiDet (5 ghi chú). Đề xuất chatLieu \"bông\"/\"xơ đay\" cho 5703.90/5705.00 đã đọc được bằng loaiSoiDet BONG / SOI_THUC_VAT_KHAC.",
    "nguonLoai": "AI_DA_KIEM"
   },
   {
@@ -6433,7 +6548,8 @@
     "DONG_LANH",
     "KHO_MUOI",
     "HUN_KHOI",
-    "BAO_QUAN_BANG_KHI_SUNPHURO"
+    "BAO_QUAN_BANG_KHI_SUNPHURO",
+    "HAP_LUOC_CHIN"
    ],
    "moTaGiaTri": {
     "SONG": {
@@ -6556,6 +6672,26 @@
       ]
      },
      "cachViet": "đã bảo quản bằng khí sunphurơ"
+    },
+    "HAP_LUOC_CHIN": {
+     "nhanVi": "đã hấp chín hoặc luộc chín trong nước",
+     "nhanEn": "cooked by steaming or by boiling in water",
+     "nhanZh": "经蒸煮或水煮",
+     "cachDoc": {
+      "vi": [
+       "(?:đã\\s+)?hấp\\s+chín\\s+hoặc\\s+luộc\\s+chín(?:\\s+trong\\s+nước)?",
+       "(?:đã\\s+)?(?:hấp|luộc)\\s+chín"
+      ],
+      "en": [
+       "cooked\\s+by\\s+steaming\\s+or\\s+by\\s+boiling\\s+in\\s+water",
+       "steamed\\s+or\\s+boiled"
+      ],
+      "zh": [
+       "经蒸煮或水煮",
+       "蒸煮"
+      ]
+     },
+     "cachViet": "đã hấp chín hoặc luộc chín trong nước"
     }
    },
    "cachDoc": {
@@ -6570,7 +6706,7 @@
     "vi": "Hàng ở trạng thái sống, tươi/ướp lạnh, đông lạnh, hun khói hay khô/muối?",
     "zh": "该产品属于活、鲜/冷、冻、熏制还是干/腌制状态？"
    },
-   "ghiChu": "Chữ biểu 0306.11.10 \"Hun khói\", 0306.31.20 \"Loại khác, sống\", 0306.31.30 \"Tươi hoặc ướp lạnh\", 0307.60.40 \"Khô, muối hoặc ngâm nước muối\". + 0711.20.10, 0711.40.10, 0711.51.10 \"Đã bảo quản bằng khí sunphurơ\" (Studio lô 14).",
+   "ghiChu": "Chữ biểu 0306.11.10 \"Hun khói\", 0306.31.20 \"Loại khác, sống\", 0306.31.30 \"Tươi hoặc ướp lạnh\", 0307.60.40 \"Khô, muối hoặc ngâm nước muối\". + 0711.20.10, 0711.40.10, 0711.51.10 \"Đã bảo quản bằng khí sunphurơ\" (Studio lô 14). + HAP_LUOC_CHIN (06/11): chữ biểu 0306.95.21 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\" (đề xuất cachCheBien, 9804.28.11).",
    "nguonLoai": "AI_DA_KIEM",
    "cumDaiThang": true
   },
@@ -13137,6 +13273,1864 @@
    "ghiChu": "Trục phân loại nội thất y tế tại phân nhóm 9402.90: 9402.90.11 'Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)', 9402.90.14 'Bàn khám (SEN)', 9402.90.15 'Giường bệnh (SEN)'.",
    "nguonLoai": "AI_DA_KIEM",
    "cumDaiThang": true
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "daGap",
+   "nhanVi": "đã gấp (giấy, bìa dạng tờ)",
+   "nhanEn": "folded",
+   "nhanZh": "已折叠",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+(?:được\\s+)?gấp(?:\\s+nếp)?",
+     "gấp\\s+nếp",
+     "ở\\s+dạng\\s+gấp"
+    ],
+    "en": [
+     "folded"
+    ],
+    "zh": [
+     "已折叠",
+     "折叠的"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未",
+     "unfolded",
+     "未折叠"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "(?:ở\\s+)?dạng\\s+không\\s+gấp",
+     "chưa\\s+gấp"
+    ],
+    "en": [
+     "unfolded",
+     "not\\s+folded"
+    ],
+    "zh": [
+     "未折叠",
+     "不折叠"
+    ]
+   },
+   "cachViet": {
+    "vi": "đã gấp",
+    "viPhuDinh": "ở dạng không gấp"
+   },
+   "cauHoi": {
+    "vi": "Giấy/bìa dạng tờ đang ở dạng phẳng không gấp hay đã gấp?",
+    "zh": "该纸张是平张未折叠的，还是已经折叠的？"
+   },
+   "ghiChu": "Chữ biểu 4801.00.13 \"… và chiều kia trên 15 cm ở dạng không gấp\", 4802.20.10, 4811.10.20, 4811.41.20, 4811.60.20, 4802.56.21, 4802.56.41, 4802.62.31 \"… ở dạng không gấp\" (đọc giá trị KHÔNG). Đề xuất khongGap/dangKhongGap/dangKhongGep (18 ghi chú, PR #1067–#1080) gộp về khoá này.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "dangToChuNhat",
+   "nhanVi": "ở dạng tờ hình chữ nhật (kể cả hình vuông)",
+   "nhanEn": "in rectangular (including square) sheets",
+   "nhanZh": "矩形（包括正方形）平张",
+   "cachDoc": {
+    "vi": [
+     "(?:ở\\s+)?dạng\\s+tờ,?\\s+(?:hình\\s+vuông\\s+hoặc\\s+)?hình\\s+chữ\\s+nhật(?:\\s*\\(kể\\s+cả\\s+hình\\s+vuông\\))?",
+     "tờ\\s+hình\\s+chữ\\s+nhật(?:\\s*\\(kể\\s+cả\\s+hình\\s+vuông\\))?"
+    ],
+    "en": [
+     "rectangular\\s+\\(including\\s+square\\)\\s+sheets?",
+     "square\\s+or\\s+rectangular\\s+sheets?",
+     "rectangular\\s+sheets?"
+    ],
+    "zh": [
+     "矩形（包括正方形）的?纸张",
+     "矩形平张",
+     "正方形或矩形"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+ở\\s+dạng\\s+tờ\\s+hình\\s+chữ\\s+nhật"
+    ],
+    "en": [
+     "not\\s+in\\s+rectangular\\s+sheets?"
+    ],
+    "zh": [
+     "非矩形"
+    ]
+   },
+   "cachViet": {
+    "vi": "ở dạng tờ hình chữ nhật (kể cả hình vuông)",
+    "viPhuDinh": "không ở dạng tờ hình chữ nhật"
+   },
+   "cauHoi": {
+    "vi": "Hàng ở dạng tờ hình chữ nhật (kể cả hình vuông) phải không?",
+    "zh": "该货物是否为矩形（包括正方形）平张？"
+   },
+   "ghiChu": "Chữ biểu 4801.00.13 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, …\", 4802.20.10, 4811.10.20, 4802.56.21 \"… ở dạng tờ hình chữ nhật (kể cả hình vuông) …\". Đề xuất hinhDangTo (4 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "SO",
+   "khoa": "motChieuTo",
+   "nhanVi": "một chiều (cạnh) của tờ",
+   "nhanEn": "one side of the sheet",
+   "nhanZh": "纸张一边",
+   "heDonVi": "dai",
+   "donViChuan": "mm",
+   "canNguCanh": true,
+   "cachDoc": {
+    "vi": [
+     "(?:có\\s+|với\\s+)?một\\s+(?:chiều|cạnh)"
+    ],
+    "en": [
+     "one\\s+side"
+    ],
+    "zh": [
+     "一边"
+    ]
+   },
+   "cachViet": {
+    "vi": "một chiều {giaTri} mm"
+   },
+   "cauHoi": {
+    "vi": "Chiều (cạnh) thứ nhất của tờ dài bao nhiêu cm?",
+    "zh": "纸张一边长多少厘米？"
+   },
+   "ghiChu": "Chữ biểu 4801.00.13 \"có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm\", 4801.00.14 \"có một chiều trên 36 cm, và chiều kia trên 15 cm\". Đi cặp với chieuKiaTo (đề xuất capChieuToGiay, 4 ghi chú). Cận trên \"nhưng không quá 36 cm\" ghi bằng điều kiện thứ hai cùng khoá.",
+   "nguonLoai": "AI_DA_KIEM",
+   "docMoRong": true
+  },
+  {
+   "kieu": "SO",
+   "khoa": "chieuKiaTo",
+   "nhanVi": "chiều (cạnh) kia của tờ",
+   "nhanEn": "the other side of the sheet",
+   "nhanZh": "纸张另一边",
+   "heDonVi": "dai",
+   "donViChuan": "mm",
+   "canNguCanh": true,
+   "cachDoc": {
+    "vi": [
+     "(?:và\\s+)?(?:chiều|cạnh)\\s+kia"
+    ],
+    "en": [
+     "the\\s+other\\s+side",
+     "other\\s+side"
+    ],
+    "zh": [
+     "另一边"
+    ]
+   },
+   "cachViet": {
+    "vi": "chiều kia {giaTri} mm"
+   },
+   "cauHoi": {
+    "vi": "Chiều (cạnh) còn lại của tờ dài bao nhiêu cm?",
+    "zh": "纸张另一边长多少厘米？"
+   },
+   "ghiChu": "Chữ biểu 4801.00.14 \"… và chiều kia trên 15 cm ở dạng không gấp\", 4801.00.24, 4802.58.21 \"với một chiều từ 36 cm trở xuống và chiều kia từ 15 cm trở xuống\". Đi cặp với motChieuTo.",
+   "nguonLoai": "AI_DA_KIEM",
+   "docMoRong": true
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "daPhu",
+   "nhanVi": "đã phủ (giấy cuốn, giấy bao gói)",
+   "nhanEn": "coated",
+   "nhanZh": "已涂布",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+(?:được\\s+)?phủ",
+     "có\\s+phủ"
+    ],
+    "en": [
+     "coated"
+    ],
+    "zh": [
+     "已涂布",
+     "经涂布"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未",
+     "uncoated",
+     "未涂布"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+phủ",
+     "chưa\\s+phủ"
+    ],
+    "en": [
+     "uncoated",
+     "not\\s+coated"
+    ],
+    "zh": [
+     "未涂布",
+     "未经涂布"
+    ]
+   },
+   "cachViet": {
+    "vi": "đã phủ",
+    "viPhuDinh": "không phủ"
+   },
+   "cauHoi": {
+    "vi": "Giấy có được phủ (tráng) bề mặt không?",
+    "zh": "该纸是否经过涂布？"
+   },
+   "ghiChu": "Chữ biểu 4811.59.20 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt …\"; tiêu đề (4813.20) \"Loại khác, không phủ:\" / \"Loại khác, đã phủ:\", (4813.90) \"Dạng cuộn với chiều rộng trên 5 cm, đã phủ:\". Đề xuất daPhu (3 ghi chú). Khác daTrangPhuEpLop (vải dệt nhóm 59).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "phuCaHaiMat",
+   "nhanVi": "phủ (tráng) cả hai mặt",
+   "nhanEn": "coated on both sides",
+   "nhanZh": "双面涂布",
+   "cachDoc": {
+    "vi": [
+     "(?:phủ|tráng|ép)\\s+cả\\s+hai\\s+mặt",
+     "cả\\s+hai\\s+mặt"
+    ],
+    "en": [
+     "(?:coated|covered)\\s+on\\s+both\\s+sides",
+     "both\\s+sides"
+    ],
+    "zh": [
+     "双面涂布",
+     "双面"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "(?:phủ|tráng)\\s+một\\s+mặt",
+     "chỉ\\s+một\\s+mặt"
+    ],
+    "en": [
+     "on\\s+one\\s+side\\s+only",
+     "one\\s+side"
+    ],
+    "zh": [
+     "单面"
+    ]
+   },
+   "cachViet": {
+    "vi": "phủ cả hai mặt",
+    "viPhuDinh": "phủ một mặt"
+   },
+   "cauHoi": {
+    "vi": "Lớp phủ nằm trên cả hai mặt hay chỉ một mặt?",
+    "zh": "涂层是双面还是单面？"
+   },
+   "ghiChu": "Chữ biểu 4811.59.20 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\". Đề xuất phuMangPlasticHaiMat (1 ghi chú): vật liệu phủ đọc bằng chatLieu, công dụng bằng dungCho.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "SO",
+   "khoa": "doXop",
+   "nhanVi": "độ xốp (độ thấm khí CORESTA)",
+   "nhanEn": "porosity (CORESTA air permeability)",
+   "nhanZh": "透气度（CORESTA）",
+   "heDonVi": "doThauKhi",
+   "donViChuan": "CORESTA",
+   "canNguCanh": true,
+   "cachDoc": {
+    "vi": [
+     "độ\\s+xốp",
+     "độ\\s+thấm\\s+khí"
+    ],
+    "en": [
+     "porosity",
+     "air\\s+permeability"
+    ],
+    "zh": [
+     "透气度",
+     "孔隙度"
+    ]
+   },
+   "docThem": [
+    {
+     "mau": "(\\d+(?:[.,]\\d+)*)\\s*cm3\\s*\\(\\s*min-1\\.?\\s*cm-2\\s*\\)",
+     "donVi": "CORESTA"
+    }
+   ],
+   "cachViet": {
+    "vi": "độ xốp {giaTri} đơn vị CORESTA"
+   },
+   "cauHoi": {
+    "vi": "Độ xốp (độ thấm khí) của giấy là bao nhiêu đơn vị CORESTA?",
+    "zh": "该纸的透气度是多少CORESTA单位？"
+   },
+   "ghiChu": "Chữ biểu 4813.20.22 \"Giấy cuốn đầu lọc có độ xốp hơn 12 cm3 (min-1. cm-2) trong đơn vị thấm khí CORESTA\" — 1 đơn vị CORESTA = 1 cm3/(min·cm2) ở 1 kPa. Đề xuất doXop (2 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM",
+   "docMoRong": true
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "coBoPhanLamLanh",
+   "nhanVi": "có kèm bộ phận làm lạnh",
+   "nhanEn": "incorporating a refrigerating unit",
+   "nhanZh": "装有制冷装置",
+   "cachDoc": {
+    "vi": [
+     "(?:có\\s+)?(?:kèm\\s+theo|gắn|lắp)\\s+(?:các\\s+)?bộ\\s+phận\\s+làm\\s+lạnh",
+     "có\\s+bộ\\s+phận\\s+làm\\s+lạnh"
+    ],
+    "en": [
+     "incorporating\\s+a\\s+refrigerating\\s+unit",
+     "with\\s+(?:a\\s+)?refrigerating\\s+unit"
+    ],
+    "zh": [
+     "装有制冷装置",
+     "带制冷装置"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:kèm\\s+theo|có|gắn)\\s+(?:các\\s+)?bộ\\s+phận\\s+làm\\s+lạnh"
+    ],
+    "en": [
+     "not\\s+incorporating\\s+a\\s+refrigerating\\s+unit"
+    ],
+    "zh": [
+     "未装有制冷装置",
+     "不带制冷装置"
+    ]
+   },
+   "cachViet": {
+    "vi": "có kèm bộ phận làm lạnh",
+    "viPhuDinh": "không kèm bộ phận làm lạnh"
+   },
+   "cauHoi": {
+    "vi": "Máy điều hoà có kèm bộ phận làm lạnh (máy nén, dàn lạnh) không?",
+    "zh": "该空调是否装有制冷装置？"
+   },
+   "ghiChu": "Chữ biểu 9818.22.20 \"Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray …\"; tiêu đề (9818.22) \"Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh\". Đề xuất coBoPhanLamLanh (2 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "coVanDaoChieu",
+   "nhanVi": "có van đảo chiều chu trình nóng lạnh (bơm nhiệt đảo chiều)",
+   "nhanEn": "with a valve for reversal of the cooling/heat cycle (reversible heat pump)",
+   "nhanZh": "装有冷热循环换向阀（可逆式热泵）",
+   "cachDoc": {
+    "vi": [
+     "van\\s+đảo\\s+chiều(?:\\s+chu\\s+trình\\s+nóng\\s+lạnh)?",
+     "bơm\\s+nhiệt\\s+(?:có\\s+)?đảo\\s+chiều"
+    ],
+    "en": [
+     "valve\\s+for\\s+reversal\\s+of\\s+the\\s+cooling/heat\\s+cycle",
+     "reversible\\s+heat\\s+pumps?"
+    ],
+    "zh": [
+     "换向阀",
+     "可逆式热泵"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+có\\s+van\\s+đảo\\s+chiều"
+    ],
+    "en": [
+     "without\\s+(?:a\\s+)?reversing\\s+valve"
+    ],
+    "zh": [
+     "无换向阀"
+    ]
+   },
+   "cachViet": {
+    "vi": "có van đảo chiều chu trình nóng lạnh",
+    "viPhuDinh": "không có van đảo chiều"
+   },
+   "cauHoi": {
+    "vi": "Máy có van đảo chiều chu trình nóng lạnh (chạy được hai chiều nóng/lạnh) không?",
+    "zh": "该设备是否装有冷热循环换向阀（可冷暖两用）？"
+   },
+   "ghiChu": "Tiêu đề (9818.22) \"Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)\", cùng chữ phân nhóm 8415.81. Đề xuất coVanDaoChieu (1 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "LIET_KE",
+   "khoa": "loaiCaoSu",
+   "nhanVi": "loại cao su (tự nhiên / tổng hợp)",
+   "nhanEn": "type of rubber (natural / synthetic)",
+   "nhanZh": "橡胶种类（天然／合成）",
+   "cumDaiThang": true,
+   "giaTriHopLe": [
+    "TU_NHIEN",
+    "TONG_HOP"
+   ],
+   "moTaGiaTri": {
+    "TU_NHIEN": {
+     "nhanVi": "cao su tự nhiên",
+     "nhanEn": "natural rubber",
+     "nhanZh": "天然橡胶",
+     "cachDoc": {
+      "vi": [
+       "cao\\s+su\\s+tự\\s+nhiên"
+      ],
+      "en": [
+       "natural\\s+rubber"
+      ],
+      "zh": [
+       "天然橡胶"
+      ]
+     },
+     "cachViet": "bằng cao su tự nhiên"
+    },
+    "TONG_HOP": {
+     "nhanVi": "cao su tổng hợp",
+     "nhanEn": "synthetic rubber",
+     "nhanZh": "合成橡胶",
+     "cachDoc": {
+      "vi": [
+       "cao\\s+su\\s+tổng\\s+hợp"
+      ],
+      "en": [
+       "synthetic\\s+rubber"
+      ],
+      "zh": [
+       "合成橡胶"
+      ]
+     },
+     "cachViet": "bằng cao su tổng hợp"
+    }
+   },
+   "cachDoc": {
+    "vi": [
+     "cao\\s+su"
+    ],
+    "en": [
+     "rubber"
+    ],
+    "zh": [
+     "橡胶"
+    ]
+   },
+   "cauHoi": {
+    "vi": "Hàng làm từ cao su tự nhiên hay cao su tổng hợp?",
+    "zh": "该货物由天然橡胶还是合成橡胶制成？"
+   },
+   "ghiChu": "Chữ biểu 4015.19.10, 4015.12.10 \"Bằng cao su tự nhiên lưu hóa\" (TU_NHIEN); (4002.80.10 có cả hai: mủ cao su tự nhiên với mủ cao su tổng hợp ⇒ CHUA_BIET, đúng ý). \"Bằng cao su lưu hóa khác\" (.90) ghi bằng phanConLai. Đề xuất loaiCaoSu (2 ghi chú).",
+   "cachViet": {
+    "vi": "{giaTri}"
+   },
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "LIET_KE",
+   "khoa": "hinhDangMatCatNgang",
+   "nhanVi": "hình dạng mặt cắt ngang",
+   "nhanEn": "cross-section shape",
+   "nhanZh": "横截面形状",
+   "cumDaiThang": true,
+   "giaTriHopLe": [
+    "TRON",
+    "VUONG_HOAC_CHU_NHAT",
+    "HINH_THANG"
+   ],
+   "moTaGiaTri": {
+    "TRON": {
+     "nhanVi": "mặt cắt ngang hình tròn",
+     "nhanEn": "circular cross-section",
+     "nhanZh": "圆形截面",
+     "cachDoc": {
+      "vi": [
+       "mặt\\s+cắt\\s+ngang\\s+hình\\s+tròn"
+      ],
+      "en": [
+       "circular\\s+cross-section"
+      ],
+      "zh": [
+       "圆形截面",
+       "圆形横截面"
+      ]
+     },
+     "cachViet": "mặt cắt ngang hình tròn"
+    },
+    "VUONG_HOAC_CHU_NHAT": {
+     "nhanVi": "mặt cắt ngang hình vuông hoặc hình chữ nhật",
+     "nhanEn": "square or rectangular cross-section",
+     "nhanZh": "方形或矩形截面",
+     "cachDoc": {
+      "vi": [
+       "mặt\\s+cắt\\s+ngang\\s+hình\\s+(?:vuông|chữ\\s+nhật)(?:\\s*(?:hoặc|\\(kể\\s+cả)\\s+hình\\s+(?:vuông|chữ\\s+nhật)\\)?)?"
+      ],
+      "en": [
+       "(?:square|rectangular)\\s+(?:or\\s+rectangular\\s+)?cross-section"
+      ],
+      "zh": [
+       "方形截面",
+       "矩形截面",
+       "方形或矩形截面"
+      ]
+     },
+     "cachViet": "mặt cắt ngang hình vuông hoặc hình chữ nhật"
+    },
+    "HINH_THANG": {
+     "nhanVi": "mặt cắt ngang hình thang",
+     "nhanEn": "trapezoidal cross-section",
+     "nhanZh": "梯形截面",
+     "cachDoc": {
+      "vi": [
+       "mặt\\s+cắt\\s+ngang\\s+hình\\s+thang"
+      ],
+      "en": [
+       "trapezoidal\\s+cross-section"
+      ],
+      "zh": [
+       "梯形截面"
+      ]
+     },
+     "cachViet": "mặt cắt ngang hình thang"
+    }
+   },
+   "cachDoc": {
+    "vi": [
+     "mặt\\s+cắt\\s+ngang"
+    ],
+    "en": [
+     "cross-section"
+    ],
+    "zh": [
+     "截面"
+    ]
+   },
+   "cauHoi": {
+    "vi": "Mặt cắt ngang của thanh/que/băng có hình gì (tròn, vuông/chữ nhật, hình thang)?",
+    "zh": "该棒材／型材的横截面是什么形状（圆形、方形／矩形、梯形）？"
+   },
+   "ghiChu": "Chữ biểu 7407.10.41 \"Mặt cắt ngang hình vuông hoặc hình chữ nhật\", 7207.11.00 \"Mặt cắt ngang hình chữ nhật (kể cả hình vuông), …\", 7214.10.11 \"Có mặt cắt ngang hình tròn\", 4010.31.00 \"Băng truyền liên tục có mặt cắt ngang hình thang (băng chữ V), …\". Đề xuất hinhDangMatCatNgang (1 ghi chú; lô 9 đã BỎ vì chưa có PN6 cần — nay 740710 cần).",
+   "cachViet": {
+    "vi": "{giaTri}"
+   },
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "ganThietBiCoKhiHoacGiaNhiet",
+   "nhanVi": "có gắn thiết bị cơ khí hoặc thiết bị gia nhiệt (đồ chứa)",
+   "nhanEn": "fitted with mechanical or thermal equipment",
+   "nhanZh": "装有机械或加热装置",
+   "cachDoc": {
+    "vi": [
+     "(?:gắn|lắp)\\s+(?:các\\s+)?thiết\\s+bị\\s+cơ\\s+khí\\s+hoặc\\s+thiết\\s+bị\\s+gia\\s+nhiệt",
+     "thiết\\s+bị\\s+cơ\\s+khí\\s+hoặc\\s+thiết\\s+bị\\s+(?:gia|giữ)\\s+nhiệt"
+    ],
+    "en": [
+     "fitted\\s+with\\s+mechanical\\s+or\\s+thermal\\s+equipment",
+     "mechanical\\s+or\\s+thermal\\s+equipment"
+    ],
+    "zh": [
+     "装有机械或加热装置",
+     "机械或加热装置"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:gắn|lắp)\\s+(?:các\\s+)?thiết\\s+bị\\s+cơ\\s+khí\\s+hoặc\\s+thiết\\s+bị\\s+gia\\s+nhiệt"
+    ],
+    "en": [
+     "not\\s+fitted\\s+with\\s+mechanical\\s+or\\s+thermal\\s+equipment"
+    ],
+    "zh": [
+     "未装有机械或加热装置"
+    ]
+   },
+   "cachViet": {
+    "vi": "có gắn thiết bị cơ khí hoặc thiết bị gia nhiệt",
+    "viPhuDinh": "không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt"
+   },
+   "cauHoi": {
+    "vi": "Thùng/bể chứa có gắn thiết bị cơ khí (cánh khuấy, bơm…) hoặc thiết bị gia nhiệt không?",
+    "zh": "该容器是否装有机械装置（搅拌器、泵等）或加热装置？"
+   },
+   "ghiChu": "Chữ biểu 7419.20.20 \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt\", 7419.80.80 \"… có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" (đọc KHÔNG). Cùng chữ nhóm 73.09, 76.11. Đề xuất ganThietBiCoKhiHoacGiaNhiet (1 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "taoMauTaoVanToanBo",
+   "nhanVi": "được tạo màu hoặc tạo vân toàn bộ",
+   "nhanEn": "coloured or ornamented throughout",
+   "nhanZh": "整体着色或饰纹",
+   "cachDoc": {
+    "vi": [
+     "(?:được\\s+)?tạo\\s+màu\\s+hoặc\\s+tạo\\s+vân\\s+toàn\\s+bộ",
+     "(?:nhuộm|tạo)\\s+màu\\s+toàn\\s+bộ"
+    ],
+    "en": [
+     "colou?red\\s+or\\s+ornamented\\s+throughout",
+     "colou?red\\s+throughout"
+    ],
+    "zh": [
+     "整体着色或饰纹",
+     "通体着色"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "chỉ\\s+tạo\\s+màu\\s+bề\\s+mặt"
+    ],
+    "en": [
+     "surface-colou?red\\s+only"
+    ],
+    "zh": [
+     "仅表面着色"
+    ]
+   },
+   "cachViet": {
+    "vi": "được tạo màu hoặc tạo vân toàn bộ",
+    "viPhuDinh": "không tạo màu hoặc tạo vân toàn bộ"
+   },
+   "cauHoi": {
+    "vi": "Tấm xenlulo được tạo màu hoặc tạo vân suốt toàn bộ (cả bề dày) không?",
+    "zh": "该纤维素板是否整体着色或饰纹？"
+   },
+   "ghiChu": "Chữ biểu 4823.90.94 \"Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vân toàn bộ\" (phân biệt với 4823.90.99). Cùng chữ phân nhóm 4802/4803 \"được nhuộm màu toàn bộ\". Đề xuất taoMauHoacTaoVanToanBo (1 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "daCatThanhHinh",
+   "nhanVi": "đã cắt thành hình (trừ hình chữ nhật/vuông)",
+   "nhanEn": "cut to shape (other than rectangular or square)",
+   "nhanZh": "已切成形状（矩形或正方形除外）",
+   "cachDoc": {
+    "vi": [
+     "(?:đã\\s+)?cắt\\s+thành\\s+hình(?!\\s+(?:chữ\\s+nhật|vuông))",
+     "cắt\\s+theo\\s+hình\\s+dạng",
+     "cắt\\s+định\\s+hình"
+    ],
+    "en": [
+     "cut\\s+to\\s+shape"
+    ],
+    "zh": [
+     "切成形状",
+     "已切成型",
+     "模切"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "chưa\\s+cắt\\s+thành\\s+hình"
+    ],
+    "en": [
+     "not\\s+cut\\s+to\\s+shape"
+    ],
+    "zh": [
+     "未切成形状"
+    ]
+   },
+   "cachViet": {
+    "vi": "đã cắt thành hình",
+    "viPhuDinh": "chưa cắt thành hình"
+   },
+   "cauHoi": {
+    "vi": "Hàng đã được cắt thành hình (tròn, ô van, theo khuôn…) khác hình chữ nhật/vuông chưa?",
+    "zh": "该货物是否已切成矩形或正方形以外的形状（圆形、椭圆形、模切等）？"
+   },
+   "ghiChu": "Chữ biểu (4823.90.96) \"Loại khác, đã cắt thành hình trừ hình chữ nhật hoặc hình vuông\" — chú giải chương 48 chú 8, phân nhóm 4823.90 \"cut to shape\". Đề xuất daCatThanhHinh (1 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "daXoan",
+   "nhanVi": "sợi đã xoắn (có độ xoắn)",
+   "nhanEn": "twisted (yarn)",
+   "nhanZh": "加捻",
+   "cachDoc": {
+    "vi": [
+     "(?:sợi|filament)\\s+(?:đã\\s+)?xoắn",
+     "đã\\s+xoắn",
+     "độ\\s+xoắn"
+    ],
+    "en": [
+     "twisted",
+     "twist"
+    ],
+    "zh": [
+     "加捻",
+     "有捻"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未",
+     "untwisted",
+     "无捻"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+xoắn",
+     "chưa\\s+xoắn"
+    ],
+    "en": [
+     "untwisted",
+     "non-twisted"
+    ],
+    "zh": [
+     "无捻",
+     "未加捻"
+    ]
+   },
+   "cachViet": {
+    "vi": "sợi đã xoắn",
+    "viPhuDinh": "sợi không xoắn"
+   },
+   "cauHoi": {
+    "vi": "Sợi filament có xoắn (độ xoắn) hay không xoắn?",
+    "zh": "该长丝纱线是否加捻？"
+   },
+   "ghiChu": "Chữ biểu 5407.41.10 \"Vải lưới ni lông dệt thoi từ sợi filament không xoắn thích hợp để sử dụng như vật liệu gia cố cho vải sơn dầu\" (đọc KHÔNG); cùng chữ nhóm 54.02 \"độ xoắn trên 50 vòng/m\". Đề xuất soiKhongXoan (1 ghi chú). Khác soiDun (sợi dún).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "SO",
+   "khoa": "doManh",
+   "nhanVi": "độ mảnh sợi (decitex)",
+   "nhanEn": "yarn fineness (decitex)",
+   "nhanZh": "纱线细度（分特）",
+   "heDonVi": "doManhSoi",
+   "donViChuan": "decitex",
+   "canNguCanh": true,
+   "cachDoc": {
+    "vi": [
+     "độ\\s+mảnh"
+    ],
+    "en": [
+     "measuring\\s+(?:per\\s+single\\s+yarn\\s+)?",
+     "decitex"
+    ],
+    "zh": [
+     "细度",
+     "线密度"
+    ]
+   },
+   "cachViet": {
+    "vi": "độ mảnh {giaTri} decitex"
+   },
+   "cauHoi": {
+    "vi": "Độ mảnh của sợi là bao nhiêu decitex?",
+    "zh": "纱线细度是多少分特（decitex）？"
+   },
+   "ghiChu": "Chữ biểu 5205.11.00 \"Sợi có độ mảnh từ 714,29 decitex trở lên (chi số mét không quá 14)\", 5205.15.00 \"Sợi có độ mảnh dưới 125 decitex (chi số mét trên 80)\", 5607.50.10 \"… có độ mảnh lớn hơn 10.000 decitex, …\". Đề xuất doManhDecitex (1 ghi chú); lô 9 đã BỎ doManhSoi vì chưa có PN6 cần — nay 560750 cần.",
+   "nguonLoai": "AI_DA_KIEM",
+   "docMoRong": true
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "daLamNhay",
+   "nhanVi": "đã làm nhạy (phủ lớp nhạy sáng)",
+   "nhanEn": "sensitised",
+   "nhanZh": "已感光",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+(?:được\\s+)?(?:làm\\s+)?nhạy(?:\\s+sáng)?",
+     "phủ\\s+lớp\\s+nhạy\\s+sáng"
+    ],
+    "en": [
+     "sensiti[sz]ed",
+     "presensiti[sz]ed"
+    ],
+    "zh": [
+     "已感光",
+     "预涂感光"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未",
+     "unsensiti[sz]ed",
+     "未感光"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "chưa\\s+(?:làm\\s+)?nhạy",
+     "không\\s+nhạy\\s+sáng"
+    ],
+    "en": [
+     "unsensiti[sz]ed",
+     "not\\s+sensiti[sz]ed"
+    ],
+    "zh": [
+     "未感光",
+     "非感光"
+    ]
+   },
+   "cachViet": {
+    "vi": "đã làm nhạy",
+    "viPhuDinh": "chưa nhạy"
+   },
+   "cauHoi": {
+    "vi": "Đế bản in đã được phủ lớp nhạy sáng (đã nhạy) chưa?",
+    "zh": "该印版是否已涂感光层（已感光）？"
+   },
+   "ghiChu": "Chữ biểu 7606.12.20 \"Đế bản nhôm, chưa nhạy, dùng trong công nghệ in\" (đọc KHÔNG; đế bản đã nhạy về 7606.12.90). Đề xuất chuaNhay (1 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "LIET_KE",
+   "khoa": "hopKimNhom",
+   "nhanVi": "ký hiệu hợp kim nhôm (theo chữ biểu)",
+   "nhanEn": "aluminium alloy designation",
+   "nhanZh": "铝合金牌号",
+   "cumDaiThang": true,
+   "giaTriHopLe": [
+    "AA_5082_HOAC_5182",
+    "HA_1052_H19_HOAC_HA_1050_H18"
+   ],
+   "moTaGiaTri": {
+    "AA_5082_HOAC_5182": {
+     "nhanVi": "hợp kim nhôm 5082 hoặc 5182",
+     "nhanEn": "aluminium alloy 5082 or 5182",
+     "nhanZh": "5082或5182铝合金",
+     "cachDoc": {
+      "vi": [
+       "(?:hợp\\s+kim\\s+(?:nhôm\\s+)?)?(?:AA\\s*)?5[01]82"
+      ],
+      "en": [
+       "(?:alloy\\s+)?(?:AA\\s*)?5[01]82"
+      ],
+      "zh": [
+       "5[01]82铝合金",
+       "5[01]82"
+      ]
+     },
+     "cachViet": "bằng hợp kim nhôm 5082 hoặc 5182"
+    },
+    "HA_1052_H19_HOAC_HA_1050_H18": {
+     "nhanVi": "tấm litô hợp kim HA 1052 độ cứng H19 hoặc HA 1050 độ cứng H18",
+     "nhanEn": "litho sheet of alloy HA 1052 temper H19 or HA 1050 temper H18",
+     "nhanZh": "HA1052-H19或HA1050-H18印刷版基",
+     "cachDoc": {
+      "vi": [
+       "(?:hợp\\s+kim\\s+)?HA\\s*1052\\s+(?:độ\\s+cứng\\s+)?H19",
+       "(?:hợp\\s+kim\\s+)?HA\\s*1050\\s+(?:độ\\s+cứng\\s+)?H18"
+      ],
+      "en": [
+       "HA\\s*1052[\\s-]+(?:temper\\s+)?H19",
+       "HA\\s*1050[\\s-]+(?:temper\\s+)?H18"
+      ],
+      "zh": [
+       "HA\\s*1052[\\s-]*H19",
+       "HA\\s*1050[\\s-]*H18"
+      ]
+     },
+     "cachViet": "tấm litô hợp kim HA 1052 độ cứng H19 hoặc HA 1050 độ cứng H18"
+    }
+   },
+   "cachDoc": {
+    "vi": [
+     "hợp\\s+kim"
+    ],
+    "en": [
+     "alloy"
+    ],
+    "zh": [
+     "合金"
+    ]
+   },
+   "cauHoi": {
+    "vi": "Tấm nhôm làm bằng hợp kim ký hiệu gì (vd 5082, 5182, HA 1050 H18, HA 1052 H19)?",
+    "zh": "该铝板的合金牌号是什么（如5082、5182、HA1050-H18、HA1052-H19）？"
+   },
+   "ghiChu": "Chữ biểu (7606.12.33) \"Loại khác, bằng hợp kim nhôm 5082 hoặc 5182, có chiều rộng trên 1m, dạng cuộn\", (7606.12.34) \"Loại khác, tấm litô hợp kim HA 1052 độ cứng H19 và hợp kim HA 1050 độ cứng H18\". Mỗi giá trị là đúng nhóm hợp kim mà một dòng biểu nêu (không suy rộng sang ký hiệu khác). Đề xuất hopKim / hopKim+doCung (2 ghi chú).",
+   "cachViet": {
+    "vi": "{giaTri}"
+   },
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "daGiaCong",
+   "nhanVi": "kim loại đã gia công (khác dạng chưa gia công)",
+   "nhanEn": "wrought (as opposed to unwrought)",
+   "nhanZh": "已加工（锻轧）",
+   "cachDoc": {
+    "vi": [
+     "đã\\s+(?:được\\s+)?gia\\s+công(?!\\s+(?:bề\\s+mặt|thêm))"
+    ],
+    "en": [
+     "wrought"
+    ],
+    "zh": [
+     "锻轧",
+     "已加工"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未",
+     "unwrought",
+     "未锻轧"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "chưa\\s+(?:được\\s+)?gia\\s+công(?!\\s+(?:quá\\s+mức|thêm))"
+    ],
+    "en": [
+     "unwrought"
+    ],
+    "zh": [
+     "未锻轧",
+     "未加工"
+    ]
+   },
+   "cachViet": {
+    "vi": "đã gia công",
+    "viPhuDinh": "chưa gia công"
+   },
+   "cauHoi": {
+    "vi": "Kim loại ở dạng chưa gia công (thỏi, cục, bột) hay đã gia công (thanh, tấm, dây…)?",
+    "zh": "该金属是未锻轧的（锭、块、粉）还是已加工的（棒、板、丝等）？"
+   },
+   "ghiChu": "Chữ biểu 8105.20.10 \"Coban chưa gia công\", 8101.94.00 \"Vonfram chưa gia công, kể cả thanh và que thu được từ quá trình thiêu kết\", 8102.94.00 \"Molypđen chưa gia công, …\" (đọc KHÔNG). Không đọc \"chưa gia công thêm\" (gỗ 44.07) và \"chưa được gia công quá mức cán nóng\" (khoá chuaGiaCongQuaMucCanNong). Đề xuất chuaGiaCong (1 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "conVo",
+   "nhanVi": "còn vỏ (chưa bóc vỏ)",
+   "nhanEn": "in shell",
+   "nhanZh": "带壳",
+   "cachDoc": {
+    "vi": [
+     "còn\\s+vỏ",
+     "nguyên\\s+vỏ",
+     "chưa\\s+(?:bóc|tách|lột)\\s+vỏ"
+    ],
+    "en": [
+     "in\\s+shell",
+     "shell-on",
+     "unshelled"
+    ],
+    "zh": [
+     "带壳",
+     "未去壳"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "(?:đã\\s+)?(?:bóc|tách|lột)\\s+vỏ",
+     "bỏ\\s+vỏ"
+    ],
+    "en": [
+     "shelled",
+     "peeled"
+    ],
+    "zh": [
+     "去壳",
+     "已去壳",
+     "剥壳"
+    ]
+   },
+   "cachViet": {
+    "vi": "còn vỏ",
+    "viPhuDinh": "đã bóc vỏ"
+   },
+   "cauHoi": {
+    "vi": "Hàng còn vỏ hay đã bóc vỏ?",
+    "zh": "该货物是带壳的还是已去壳的？"
+   },
+   "ghiChu": "Chữ biểu 0306.95.21 \"Còn vỏ, đã hấp chín hoặc luộc chín trong nước\", 0801.21.00 \"Chưa bóc vỏ\" (CÓ), 0801.22.00 \"Đã bóc vỏ\" (KHÔNG). Đề xuất conVo (1 ghi chú, 9804.28.11). Cách chế biến \"hấp chín hoặc luộc chín\" là giá trị mới HAP_LUOC_CHIN của phuongPhapBaoQuan.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "chuaDauSilicon",
+   "nhanVi": "chứa dầu silicon",
+   "nhanEn": "containing silicone oil",
+   "nhanZh": "含硅油",
+   "cachDoc": {
+    "vi": [
+     "(?:chứa|có)\\s+dầu\\s+silicon(?:e)?",
+     "dầu\\s+silicon(?:e)?"
+    ],
+    "en": [
+     "containing\\s+silicone\\s+oil",
+     "silicone\\s+oil"
+    ],
+    "zh": [
+     "含硅油",
+     "硅油"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+chứa\\s+dầu\\s+silicon(?:e)?"
+    ],
+    "en": [
+     "not\\s+containing\\s+silicone\\s+oil"
+    ],
+    "zh": [
+     "不含硅油"
+    ]
+   },
+   "cachViet": {
+    "vi": "chứa dầu silicon",
+    "viPhuDinh": "không chứa dầu silicon"
+   },
+   "cauHoi": {
+    "vi": "Chế phẩm bôi trơn có chứa dầu silicon không?",
+    "zh": "该润滑制剂是否含硅油？"
+   },
+   "ghiChu": "Chữ biểu 3403.99.12 \"Chế phẩm khác chứa dầu silicon\", 3403.91.11 \"Chế phẩm chứa dầu silicon\", 3403.19.12. Đề xuất chuaDauSilicon (1 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "mangTheoNguoi",
+   "nhanVi": "thích hợp để mang trong túi hoặc bên người",
+   "nhanEn": "of a kind normally carried in the pocket, in the handbag or on the person",
+   "nhanZh": "适于放在衣袋、手提包内或随身携带",
+   "cachDoc": {
+    "vi": [
+     "(?:thích\\s+hợp|dùng)\\s+(?:và\\s+thích\\s+hợp\\s+)?(?:để\\s+)?mang\\s+(?:trong\\s+túi|theo\\s+người|bên\\s+người)",
+     "mang\\s+(?:trong\\s+túi|theo\\s+người|bên\\s+người)",
+     "(?:loại\\s+)?bỏ\\s+túi"
+    ],
+    "en": [
+     "carried\\s+in\\s+the\\s+pocket",
+     "carried\\s+on\\s+the\\s+person",
+     "pocket-size"
+    ],
+    "zh": [
+     "随身携带",
+     "袖珍",
+     "可放入衣袋"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "không\\s+(?:thích\\s+hợp\\s+)?(?:để\\s+)?mang\\s+theo\\s+người"
+    ],
+    "en": [
+     "not\\s+(?:normally\\s+)?carried\\s+on\\s+the\\s+person"
+    ],
+    "zh": [
+     "不便随身携带"
+    ]
+   },
+   "cachViet": {
+    "vi": "thích hợp để mang trong túi hoặc bên người",
+    "viPhuDinh": "không thích hợp để mang theo người"
+   },
+   "cauHoi": {
+    "vi": "Hộp/vật chứa có nhỏ gọn, thích hợp để mang trong túi áo, túi xách hoặc bên người không?",
+    "zh": "该盒子／容器是否小巧，适于放在衣袋、手提包内或随身携带？"
+   },
+   "ghiChu": "Chữ biểu 4420.90.20 \"Hộp và các vật chứa nhỏ khác dùng và thích hợp để mang trong túi (pocket), trong túi xách hoặc bên người\", 8527.12.00 \"Radio cát sét loại bỏ túi\", 8519.81.10 \"Máy ghi âm cassette bỏ túi, …\". Đề xuất thichHopMangTheoNguoi (1 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "CO_KHONG",
+   "khoa": "goLaKim",
+   "nhanVi": "từ cây lá kim",
+   "nhanEn": "coniferous",
+   "nhanZh": "针叶木",
+   "cachDoc": {
+    "vi": [
+     "(?:gỗ\\s+)?(?:cây\\s+)?lá\\s+kim"
+    ],
+    "en": [
+     "coniferous"
+    ],
+    "zh": [
+     "针叶"
+    ],
+    "phuDinh": [
+     "không phải",
+     "không có",
+     "không",
+     "chưa",
+     "ko",
+     "chẳng",
+     "non-?",
+     "without",
+     "no",
+     "not",
+     "无",
+     "非",
+     "不",
+     "没有",
+     "未"
+    ]
+   },
+   "cachDocKhong": {
+    "vi": [
+     "(?:cây\\s+)?không\\s+thuộc\\s+(?:loài\\s+)?(?:cây\\s+)?lá\\s+kim"
+    ],
+    "en": [
+     "non-coniferous"
+    ],
+    "zh": [
+     "非针叶"
+    ]
+   },
+   "cachViet": {
+    "vi": "từ cây lá kim",
+    "viPhuDinh": "từ cây không thuộc loài lá kim"
+   },
+   "cauHoi": {
+    "vi": "Gỗ/bột gỗ từ cây lá kim (thông, tùng, bách…) hay cây không thuộc loài lá kim?",
+    "zh": "该木材／木浆来自针叶树（松、杉、柏等）还是非针叶树？"
+   },
+   "ghiChu": "Chữ biểu 4401.11.00 \"Từ cây lá kim\", 4401.12.00 \"Từ cây không thuộc loài lá kim\" (KHÔNG), 4702.00.10 \"Từ gỗ cây lá kim\", 4702.00.20 \"Từ gỗ cây không thuộc loài cây lá kim\" (KHÔNG). Đề xuất goLaKim (1 ghi chú).",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "SO",
+   "khoa": "doBenUot",
+   "nhanVi": "độ bền ướt",
+   "nhanEn": "wet strength",
+   "nhanZh": "湿强度",
+   "heDonVi": "khoiLuong",
+   "donViChuan": "g",
+   "canNguCanh": true,
+   "cachDoc": {
+    "vi": [
+     "độ\\s+bền\\s+ướt"
+    ],
+    "en": [
+     "wet\\s+strength"
+    ],
+    "zh": [
+     "湿强度"
+    ]
+   },
+   "cachViet": {
+    "vi": "độ bền ướt {giaTri} g"
+   },
+   "cauHoi": {
+    "vi": "Độ bền ướt của giấy là bao nhiêu gam?",
+    "zh": "该纸的湿强度是多少克？"
+   },
+   "ghiChu": "Chữ biểu 4804.31.30, 4804.39.10, 4804.51.30 \"Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán\". Đề xuất doBenUot (1 ghi chú) — không dùng doBenKeo (MPa).",
+   "nguonLoai": "AI_DA_KIEM",
+   "docMoRong": true
+  },
+  {
+   "kieu": "LIET_KE",
+   "khoa": "loaiPin",
+   "nhanVi": "hệ hoá học của pin / ắc quy",
+   "nhanEn": "cell / accumulator chemistry",
+   "nhanZh": "电池／蓄电池化学体系",
+   "cumDaiThang": true,
+   "giaTriHopLe": [
+    "DIOXIT_MANGAN",
+    "KEM_CACBON",
+    "KIEM",
+    "OXIT_THUY_NGAN",
+    "OXIT_BAC",
+    "LITI",
+    "KEM_KHI",
+    "AXIT_CHI",
+    "NIKEN_CADIMI",
+    "NIKEN_HYDRUA_KIM_LOAI",
+    "ION_LITI",
+    "SAT_NIKEN"
+   ],
+   "moTaGiaTri": {
+    "DIOXIT_MANGAN": {
+     "nhanVi": "dioxit mangan",
+     "nhanEn": "manganese dioxide",
+     "nhanZh": "二氧化锰",
+     "cachDoc": {
+      "vi": [
+       "dioxit\\s+mangan",
+       "mangan\\s+dioxit"
+      ],
+      "en": [
+       "manganese\\s+dioxide"
+      ],
+      "zh": [
+       "二氧化锰"
+      ]
+     },
+     "cachViet": "bằng dioxit mangan"
+    },
+    "KEM_CACBON": {
+     "nhanVi": "kẽm-cacbon",
+     "nhanEn": "zinc-carbon",
+     "nhanZh": "锌碳",
+     "cachDoc": {
+      "vi": [
+       "kẽm[\\s-]+cac?bon"
+      ],
+      "en": [
+       "zinc[\\s-]+carbon"
+      ],
+      "zh": [
+       "锌碳"
+      ]
+     },
+     "cachViet": "bằng kẽm-cacbon"
+    },
+    "KIEM": {
+     "nhanVi": "kiềm",
+     "nhanEn": "alkaline",
+     "nhanZh": "碱性",
+     "cachDoc": {
+      "vi": [
+       "(?:bằng|pin)\\s+kiềm",
+       "kiềm\\s+mangan"
+      ],
+      "en": [
+       "alkaline"
+      ],
+      "zh": [
+       "碱性"
+      ]
+     },
+     "cachViet": "bằng kiềm"
+    },
+    "OXIT_THUY_NGAN": {
+     "nhanVi": "oxit thủy ngân",
+     "nhanEn": "mercuric oxide",
+     "nhanZh": "氧化汞",
+     "cachDoc": {
+      "vi": [
+       "oxit\\s+th(?:ủy|uỷ)\\s+ngân"
+      ],
+      "en": [
+       "mercuric\\s+oxide"
+      ],
+      "zh": [
+       "氧化汞"
+      ]
+     },
+     "cachViet": "bằng oxit thủy ngân"
+    },
+    "OXIT_BAC": {
+     "nhanVi": "oxit bạc",
+     "nhanEn": "silver oxide",
+     "nhanZh": "氧化银",
+     "cachDoc": {
+      "vi": [
+       "oxit\\s+bạc"
+      ],
+      "en": [
+       "silver\\s+oxide"
+      ],
+      "zh": [
+       "氧化银"
+      ]
+     },
+     "cachViet": "bằng oxit bạc"
+    },
+    "LITI": {
+     "nhanVi": "liti (pin sơ cấp)",
+     "nhanEn": "lithium (primary cell)",
+     "nhanZh": "锂（一次电池）",
+     "cachDoc": {
+      "vi": [
+       "(?:bằng\\s+|pin\\s+)?liti(?!\\s*-?\\s*(?:ion|polyme|6))",
+       "lithium(?!\\s*-?\\s*(?:ion|polyme|perfluoro))"
+      ],
+      "en": [
+       "lithium(?![\\s-]*(?:ion|polymer))"
+      ],
+      "zh": [
+       "锂(?!离子)"
+      ]
+     },
+     "cachViet": "bằng liti"
+    },
+    "KEM_KHI": {
+     "nhanVi": "kẽm-khí",
+     "nhanEn": "zinc-air",
+     "nhanZh": "锌空气",
+     "cachDoc": {
+      "vi": [
+       "kẽm[\\s-]+(?:không\\s+)?khí"
+      ],
+      "en": [
+       "zinc[\\s-]+air"
+      ],
+      "zh": [
+       "锌空气"
+      ]
+     },
+     "cachViet": "bằng kẽm-khí"
+    },
+    "AXIT_CHI": {
+     "nhanVi": "axit-chì",
+     "nhanEn": "lead-acid",
+     "nhanZh": "铅酸",
+     "cachDoc": {
+      "vi": [
+       "axit\\s*-\\s*chì",
+       "chì\\s*-\\s*axit"
+      ],
+      "en": [
+       "lead[\\s-]+acid"
+      ],
+      "zh": [
+       "铅酸"
+      ]
+     },
+     "cachViet": "bằng axit-chì"
+    },
+    "NIKEN_CADIMI": {
+     "nhanVi": "niken-cađimi",
+     "nhanEn": "nickel-cadmium",
+     "nhanZh": "镍镉",
+     "cachDoc": {
+      "vi": [
+       "niken\\s*-\\s*ca[đd]imi"
+      ],
+      "en": [
+       "nickel[\\s-]+cadmium",
+       "ni-?cd"
+      ],
+      "zh": [
+       "镍镉"
+      ]
+     },
+     "cachViet": "bằng niken-cađimi"
+    },
+    "NIKEN_HYDRUA_KIM_LOAI": {
+     "nhanVi": "niken-hydrua kim loại",
+     "nhanEn": "nickel-metal hydride",
+     "nhanZh": "镍氢",
+     "cachDoc": {
+      "vi": [
+       "niken\\s*-\\s*hydrua\\s+kim\\s+loại"
+      ],
+      "en": [
+       "nickel[\\s-]+metal\\s+hydride",
+       "ni-?mh"
+      ],
+      "zh": [
+       "镍氢",
+       "镍金属氢化物"
+      ]
+     },
+     "cachViet": "bằng niken-hydrua kim loại"
+    },
+    "ION_LITI": {
+     "nhanVi": "ion liti",
+     "nhanEn": "lithium-ion",
+     "nhanZh": "锂离子",
+     "cachDoc": {
+      "vi": [
+       "ion\\s+liti",
+       "liti\\s*-?\\s*ion",
+       "lithium\\s*-?\\s*ion"
+      ],
+      "en": [
+       "lithium[\\s-]+ion",
+       "li-?ion"
+      ],
+      "zh": [
+       "锂离子"
+      ]
+     },
+     "cachViet": "bằng ion liti"
+    },
+    "SAT_NIKEN": {
+     "nhanVi": "sắt-niken",
+     "nhanEn": "nickel-iron",
+     "nhanZh": "镍铁",
+     "cachDoc": {
+      "vi": [
+       "sắt\\s*-\\s*niken",
+       "niken\\s*-\\s*sắt"
+      ],
+      "en": [
+       "nickel[\\s-]+iron"
+      ],
+      "zh": [
+       "镍铁"
+      ]
+     },
+     "cachViet": "bằng sắt-niken"
+    }
+   },
+   "cachDoc": {
+    "vi": [
+     "pin",
+     "ắc\\s+qu[iy]"
+    ],
+    "en": [
+     "cell",
+     "battery",
+     "accumulator"
+    ],
+    "zh": [
+     "电池",
+     "蓄电池"
+    ]
+   },
+   "cauHoi": {
+    "vi": "Pin/ắc quy thuộc hệ hoá học nào (liti, ion liti, kiềm, kẽm-cacbon, axit-chì, niken-cađimi…)?",
+    "zh": "该电池／蓄电池属于哪种化学体系（锂、锂离子、碱性、锌碳、铅酸、镍镉等）？"
+   },
+   "ghiChu": "Chữ biểu 8506.50.00 \"Bằng liti\", 9849.43.10 \"Bằng liti\", 8506.10.11 \"Bằng kẽm-cacbon\", 8506.10.12 \"Bằng kiềm\", 8506.30.00 \"Bằng oxit thủy ngân\", 8506.40.00 \"Bằng oxit bạc\", 8507.80.11 \"Bằng sắt-niken\"; tiêu đề 8506.10 \"Bằng dioxit mangan\", 8506.60 \"Bằng kẽm-khí\", 8507.10 \"Bằng axit - chì, …\", 8507.30 \"Bằng niken-cađimi\", 8507.50 \"Bằng niken - hydrua kim loại\", 8507.60 \"Bằng ion liti\". Đề xuất loaiPin (1 ghi chú).",
+   "cachViet": {
+    "vi": "{giaTri}"
+   },
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "LIET_KE",
+   "khoa": "soiChiemTiLeLonHon",
+   "nhanVi": "loại sợi chiếm tỷ lệ lớn hơn (theo khối lượng)",
+   "nhanEn": "fibre predominating by weight",
+   "nhanZh": "按重量计占优势的纤维",
+   "cumDaiThang": true,
+   "giaTriHopLe": [
+    "POLYESTE",
+    "POLYBUTYLEN_TEREPHTHALAT"
+   ],
+   "moTaGiaTri": {
+    "POLYESTE": {
+     "nhanVi": "polyeste chiếm tỷ lệ lớn hơn",
+     "nhanEn": "polyester predominating",
+     "nhanZh": "聚酯纤维占优势",
+     "cachDoc": {
+      "vi": [
+       "polyeste(?:r)?\\s+chiếm\\s+tỷ\\s+(?:lệ|trọng)\\s+lớn\\s+hơn"
+      ],
+      "en": [
+       "polyester\\s+predominat(?:es|ing)",
+       "predominantly\\s+polyester"
+      ],
+      "zh": [
+       "聚酯纤维占优势",
+       "以聚酯为主"
+      ]
+     },
+     "cachViet": "polyeste chiếm tỷ lệ lớn hơn"
+    },
+    "POLYBUTYLEN_TEREPHTHALAT": {
+     "nhanVi": "polybutylen terephthalat chiếm tỷ lệ lớn hơn",
+     "nhanEn": "polybutylene terephthalate predominating",
+     "nhanZh": "聚对苯二甲酸丁二酯占优势",
+     "cachDoc": {
+      "vi": [
+       "polybutylen\\s+terephthalat\\s+chiếm\\s+tỷ\\s+(?:lệ|trọng)\\s+lớn\\s+hơn"
+      ],
+      "en": [
+       "polybutylene\\s+terephthalate\\s+predominat(?:es|ing)"
+      ],
+      "zh": [
+       "聚对苯二甲酸丁二酯占优势"
+      ]
+     },
+     "cachViet": "polybutylen terephthalat chiếm tỷ lệ lớn hơn"
+    }
+   },
+   "cachDoc": {
+    "vi": [
+     "chiếm\\s+tỷ\\s+(?:lệ|trọng)\\s+lớn\\s+hơn"
+    ],
+    "en": [
+     "predominat(?:es|ing)"
+    ],
+    "zh": [
+     "占优势"
+    ]
+   },
+   "cauHoi": {
+    "vi": "Trong vải pha, loại sợi nào chiếm tỷ lệ lớn hơn tính theo khối lượng?",
+    "zh": "该混纺织物中，按重量计哪种纤维占优势？"
+   },
+   "ghiChu": "Chữ biểu 6005.36.10, 6005.37.10, 6005.38.10, 6005.39.10 \"Vải dệt kim làm từ polyeste và polybutylen terephthalat trong đó polyeste chiếm tỷ lệ lớn hơn tính theo khối lượng dùng để làm quần áo bơi\". Đề xuất hamLuongSoi (4 ghi chú) — không dùng tiLe (tỉ lệ kích thước).",
+   "cachViet": {
+    "vi": "{giaTri}"
+   },
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "kieu": "SO",
+   "khoa": "hamLuongSoiDanHoi",
+   "nhanVi": "hàm lượng sợi đàn hồi (theo khối lượng)",
+   "nhanEn": "elastomeric yarn content by weight",
+   "nhanZh": "弹性纱线含量（按重量计）",
+   "heDonVi": "phanTram",
+   "donViChuan": "%",
+   "canNguCanh": true,
+   "cachDoc": {
+    "vi": [
+     "(?:hàm\\s+lượng\\s+)?sợi\\s+đàn\\s+hồi(?:\\s+chiếm)?"
+    ],
+    "en": [
+     "elastomeric\\s+yarn"
+    ],
+    "zh": [
+     "弹性纱线",
+     "弹性纱线含量"
+    ]
+   },
+   "cachViet": {
+    "vi": "hàm lượng sợi đàn hồi {giaTri}% tính theo khối lượng"
+   },
+   "cauHoi": {
+    "vi": "Sợi đàn hồi (elastan/spandex) chiếm bao nhiêu % khối lượng vải?",
+    "zh": "弹性纱线（氨纶）占织物重量的百分之几？"
+   },
+   "ghiChu": "Chữ biểu 6004.10.10 \"Có hàm lượng sợi đàn hồi chiếm không quá 20% tính theo khối lượng\", 6002.40.00 \"Có hàm lượng sợi đàn hồi chiếm từ 5% trở lên tính theo khối lượng nhưng không có sợi cao su\". Đề xuất hamLuongSoiDanHoi (1 ghi chú) — tinhDanHoi chỉ nói có/không.",
+   "nguonLoai": "AI_DA_KIEM",
+   "docMoRong": true
+  },
+  {
+   "kieu": "LIET_KE",
+   "khoa": "chatNgamTamTrangPhu",
+   "nhanVi": "chất ngâm tẩm, tráng hoặc phủ vải (nhóm 59.07)",
+   "nhanEn": "impregnating, coating or covering substance (heading 59.07)",
+   "nhanZh": "浸渍、涂布或包覆物质（品目59.07）",
+   "cumDaiThang": true,
+   "giaTriHopLe": [
+    "DAU",
+    "HOA_CHAT_CHIU_LUA",
+    "NHUNG_XO_VUN",
+    "SAP_HAC_IN_BITUM"
+   ],
+   "moTaGiaTri": {
+    "DAU": {
+     "nhanVi": "dầu hoặc chế phẩm từ dầu",
+     "nhanEn": "oil or oil-based preparations",
+     "nhanZh": "油或油基制剂",
+     "cachDoc": {
+      "vi": [
+       "(?:với\\s+)?dầu\\s+hoặc\\s+các\\s+chế\\s+phẩm\\s+từ\\s+dầu",
+       "(?:phủ|tẩm|tráng)\\s+dầu"
+      ],
+      "en": [
+       "oil\\s+or\\s+oil-based\\s+preparations",
+       "oiled"
+      ],
+      "zh": [
+       "油或油基制剂",
+       "浸油"
+      ]
+     },
+     "cachViet": "dầu hoặc chế phẩm từ dầu"
+    },
+    "HOA_CHAT_CHIU_LUA": {
+     "nhanVi": "hóa chất chịu lửa",
+     "nhanEn": "fire-resistant chemicals",
+     "nhanZh": "防火化学品",
+     "cachDoc": {
+      "vi": [
+       "hóa\\s+chất\\s+chịu\\s+lửa",
+       "hoá\\s+chất\\s+chịu\\s+lửa",
+       "chất\\s+chống\\s+cháy"
+      ],
+      "en": [
+       "fire-resistant\\s+chemicals",
+       "flame[\\s-]+retardant"
+      ],
+      "zh": [
+       "防火化学品",
+       "阻燃剂"
+      ]
+     },
+     "cachViet": "hóa chất chịu lửa"
+    },
+    "NHUNG_XO_VUN": {
+     "nhanVi": "nhung xơ vụn (xơ vụn dệt)",
+     "nhanEn": "flock (textile flock)",
+     "nhanZh": "植绒（纺织短绒）",
+     "cachDoc": {
+      "vi": [
+       "nhung\\s+xơ\\s+vụn",
+       "xơ\\s+vụn\\s+dệt"
+      ],
+      "en": [
+       "textile\\s+flock",
+       "flock"
+      ],
+      "zh": [
+       "植绒",
+       "纺织短绒"
+      ]
+     },
+     "cachViet": "nhung xơ vụn"
+    },
+    "SAP_HAC_IN_BITUM": {
+     "nhanVi": "sáp, hắc ín, bi-tum hoặc sản phẩm tương tự",
+     "nhanEn": "wax, tar, bitumen or similar products",
+     "nhanZh": "蜡、焦油、沥青或类似产品",
+     "cachDoc": {
+      "vi": [
+       "sáp,?\\s+hắc\\s+ín",
+       "hắc\\s+ín",
+       "bi-?tum"
+      ],
+      "en": [
+       "wax,?\\s+tar",
+       "bitumen",
+       "tar"
+      ],
+      "zh": [
+       "蜡、焦油",
+       "焦油",
+       "沥青"
+      ]
+     },
+     "cachViet": "sáp, hắc ín, bi-tum hoặc sản phẩm tương tự"
+    }
+   },
+   "cachDoc": {
+    "vi": [
+     "ngâm\\s+tẩm,\\s*tráng\\s+hoặc\\s+phủ"
+    ],
+    "en": [
+     "impregnated,\\s*coated\\s+or\\s+covered"
+    ],
+    "zh": [
+     "浸渍、涂布或包覆"
+    ]
+   },
+   "cauHoi": {
+    "vi": "Vải được ngâm tẩm, tráng hoặc phủ bằng chất gì (dầu, hóa chất chịu lửa, nhung xơ vụn, sáp/hắc ín/bi-tum…)?",
+    "zh": "该织物用什么物质浸渍、涂布或包覆（油、防火化学品、植绒、蜡／焦油／沥青等）？"
+   },
+   "ghiChu": "Chữ biểu 5907.00.10 \"Các loại vải dệt được ngâm tẩm, tráng hoặc phủ với dầu hoặc các chế phẩm từ dầu\", 5907.00.30 \"… với hóa chất chịu lửa\", 5907.00.40 \"… với nhung xơ vụn, toàn bộ bề mặt được phủ với xơ vụn dệt\", 5907.00.50 \"… phủ lớp sáp, hắc ín, bi-tum hoặc các sản phẩm tương tự\". Đề xuất chatLieu cho 590700 (4 ghi chú) — chatLieu là khoá @1 đóng băng nên tách khoá riêng.",
+   "cachViet": {
+    "vi": "{giaTri}"
+   },
+   "nguonLoai": "AI_DA_KIEM"
   }
  ],
  "khongPhaiPhuDinh": [
