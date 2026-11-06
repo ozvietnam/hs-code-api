@@ -1,0 +1,144 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842129",
+  "phien": "zcode-sub:glm-5.3:20261106T1038#soan-842129",
+  "dong8": {
+    "84212910": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTrongYTeHoacThiNghiem",
+          "op": "CO"
+        }
+      ]
+    },
+    "84212920": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất đường"
+        }
+      ]
+    },
+    "84212930": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hoạt động khoan dầu"
+        }
+      ]
+    },
+    "84212940": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bộ lọc xăng"
+        }
+      ]
+    },
+    "84212950": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bộ lọc dầu"
+        }
+      ]
+    },
+    "84212960": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "màng lọc",
+            "màng tinh chế"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84212910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212910 \"Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm\" ⇒ dungTrongYTeHoacThiNghiem CO (nhãn khoá đúng các vế chữ)."
+    },
+    {
+      "ma": "84212920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212920 \"Loại sử dụng trong sản xuất đường\" ⇒ dungCho \"sản xuất đường\"."
+    },
+    {
+      "ma": "84212930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212930 \"Loại sử dụng trong hoạt động khoan dầu\" ⇒ dungCho \"hoạt động khoan dầu\"."
+    },
+    {
+      "ma": "84212940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212940 \"Loại khác, bộ lọc xăng\" ⇒ chỉ vế: tenLoai \"bộ lọc xăng\"."
+    },
+    {
+      "ma": "84212950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212950 \"Loại khác, bộ lọc dầu\" ⇒ chỉ vế: tenLoai \"bộ lọc dầu\"."
+    },
+    {
+      "ma": "84212960",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84212960 \"Loại khác, bằng fluoropolyme và có màng lọc hoặc màng tinh chế với độ dày không quá 140 micron\" ⇒ tenLoai mảng [màng lọc, màng tinh chế]; chất liệu fluoropolyme và biên 140 micron đều thiếu khoá (xem THIEU_KHOA_TU_VUNG + BO_VE)."
+    },
+    {
+      "ma": "84212960",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chatLieu thêm giá trị fluoropolyme (PTFE); doDay thêm đơn vị micron",
+      "ghiChu": "tax.84212960 — chatLieu không đọc được 'fluoropolyme' (mẫu 'polyme' của plastic bị chặn biên từ); doDay không có đơn vị micron (ghi 0,14 mm bị cong3 nguong-khong-co-trong-trich chặn vì '0,14' không có trong trích, ghi 140 mm sai độ lớn). Không mượn gần nghĩa."
+    },
+    {
+      "ma": "84212960",
+      "loai": "BO_VE",
+      "ve": "với độ dày không quá 140 micron",
+      "lyDo": "doDay tu-vung@2 không có đơn vị micron (chỉ mm/cm/m/inch) nên biên 140 micron không biểu diễn được — cùng THIEU_KHOA_TU_VUNG với fluoropolyme; khi bổ sung khoá, biên là <= 140 micron (\"không quá\" = <=)."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "84212910",
+        "84212920",
+        "84212930"
+      ],
+      "truc": {
+        "84212910": "DAC_DIEM",
+        "84212920": "CONG_DUNG",
+        "84212930": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Máy lọc này có phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm (84212910), hay được sử dụng trong sản xuất đường (84212920) hoặc trong hoạt động khoan dầu (84212930)?",
+      "trich": {
+        "84212910": "Loại phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm",
+        "84212920": "Loại sử dụng trong sản xuất đường",
+        "84212930": "Loại sử dụng trong hoạt động khoan dầu"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "84212910",
+            "84212920"
+          ],
+          "hang": "Máy lọc phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm, đồng thời sử dụng trong sản xuất đường"
+        },
+        {
+          "cap": [
+            "84212910",
+            "84212930"
+          ],
+          "hang": "Máy lọc phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm, đồng thời sử dụng trong hoạt động khoan dầu"
+        }
+      ],
+      "phanXu": null
+    }
+  ]
+}

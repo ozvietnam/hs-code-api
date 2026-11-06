@@ -1,0 +1,144 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842199",
+  "phien": "zcode-sub:glm-5.3:20261106T1045#soan-842199",
+  "dong8": {
+    "84219921": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8421.23.11",
+            "8421.23.21"
+          ]
+        }
+      ]
+    },
+    "84219930": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.31"
+        }
+      ]
+    },
+    "84219940": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.29.50"
+        }
+      ]
+    },
+    "84219950": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.29.60"
+        }
+      ]
+    },
+    "84219960": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.39.30"
+        }
+      ]
+    },
+    "84219970": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.39.90"
+        }
+      ]
+    },
+    "84219991": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.29.20"
+        }
+      ]
+    },
+    "84219994": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.21.11"
+        }
+      ]
+    },
+    "84219996": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8421.23.11",
+            "8421.23.91"
+          ]
+        }
+      ]
+    },
+    "84219997": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8421.23.19",
+            "8421.23.99"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8421992": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lõi lọc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8421.23"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8421992",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8421992 \"Lõi lọc của thiết bị lọc thuộc phân nhóm 8421.23\" ⇒ tenLoai \"Lõi lọc\" + dungCho \"8421.23\" (dẫn mã — máy tự nối tên↔mã)."
+    },
+    {
+      "ma": "84219921",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84219921 \"Của phân nhóm 8421.23.11 hoặc 8421.23.21\" ⇒ dungCho mảng 2 mã (hoặc)."
+    },
+    {
+      "ma": "84219930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Của hàng hóa thuộc phân nhóm <mã>\" (.30/.40/.50/.60/.70/.91/.94) ⇒ dungCho giữ nguyên chuỗi mã; .96/.97 mảng 2 mã theo chữ \"hoặc\" — máy tự nở dải, tự nối tên↔mã."
+    },
+    {
+      "ma": "842199",
+      "loai": "DUNG",
+      "ghiChu": "cong2-dong-khong-toi-duoc:84219991/84219994 — hai dòng dưới tầng 8421999 (Loại khác trần) với giá trị đúng chữ (mã nguyên văn), anh em cùng khoá dungCho như .30–.70 (được) nhưng cổng 2 không dựng nổi vector biên tới được (PHAI_KHONG tầng 8421992 đánh THIEU khi thiếu tenLoai; đã thử giá trị chữ đầy đủ \"hàng hóa thuộc phân nhóm …\" vẫn không tới). Không đổi khoá để né — báo Claude."
+    }
+  ]
+}

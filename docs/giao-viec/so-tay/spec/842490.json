@@ -1,0 +1,177 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842490",
+  "phien": "zcode-sub:glm-5.3:20261106T1102#soan-842490",
+  "dong8": {
+    "84249010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bình dập lửa"
+        }
+      ]
+    },
+    "84249021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8424.20.11"
+        }
+      ]
+    },
+    "84249024": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8424.20.21"
+        }
+      ]
+    },
+    "84249030": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy phun bắn hơi nước",
+            "cát"
+          ]
+        }
+      ]
+    },
+    "84249093": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8424.82.10"
+        }
+      ]
+    },
+    "84249094": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8424.41.10",
+            "8424.41.20",
+            "8424.49.20",
+            "8424.82.30"
+          ]
+        }
+      ]
+    },
+    "84249095": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8424.41.90",
+            "8424.49.10",
+            "8424.82.20"
+          ]
+        }
+      ]
+    },
+    "84249096": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8424.89.40"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8424902": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "súng phun"
+        }
+      ]
+    },
+    "842490~r13578": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "842490~r13581": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "8424909": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84249010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249010 \"Của bình dập lửa\" ⇒ dungCho \"bình dập lửa\"."
+    },
+    {
+      "ma": "8424902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8424902 \"Của súng phun và các thiết bị tương tự\" ⇒ dungCho \"súng phun\" (giữ tên cấp ngoài để máy ghép đích lồng với mã dòng con — bỏ điều kiện thì cong1-chua-so-hoa); vế MỞ miễn BO_VE như .30/.42 (quy ước 392690 .42)."
+    },
+    {
+      "ma": "842490~r13578",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.842490~r13578 \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO; r13581 \"Không hoạt động bằng điện\" ⇒ KHONG."
+    },
+    {
+      "ma": "84249021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Của hàng hóa thuộc phân nhóm <mã>\" (.21/.24/.93/.96) ⇒ dungCho giữ nguyên chuỗi mã; .94/.95 mảng mã theo chữ \"hoặc\"."
+    },
+    {
+      "ma": "84249030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84249030 \"Của máy phun bắn hơi nước hoặc cát và các loại máy phun bắn tia tương tự\" ⇒ dungCho mảng [máy phun bắn hơi nước, cát] (CONG_DUNG, mảng = hoặc, tách tại \"hoặc\")."
+    },
+    {
+      "ma": "8424909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8424909 \"Của thiết bị khác\" ⇒ dungCho \"thiết bị\" + phanConLai true (khuôn 841391 .90 \"Của bơm khác\")."
+    },
+    {
+      "ma": "8424902",
+      "loai": "BO_VE",
+      "ve": "và các thiết bị tương tự",
+      "lyDo": "Op TUONG_TU chỉ có cho khoá tên (tenLoai), không áp dụng được đích dungCho (cong3-muc dieu-kien-so-op-sai-kieu) nên vế MỞ không phủ được bằng điều kiện; giữ tên \"súng phun\" đóng vì máy cần ghép đích lồng với dòng con mã 8424.20.11/.21 (bỏ hẳn thì cong1-chua-so-hoa). Hướng sai còn lại (như quy ước 392690 .42): bộ phận của thiết bị tương tự súng phun mà mô tả không chứa chữ \"súng phun\" rơi về 84249099 thay vì .23/.29."
+    },
+    {
+      "ma": "84249030",
+      "loai": "BO_VE",
+      "ve": "và các loại máy phun bắn tia tương tự",
+      "lyDo": "Op TUONG_TU chỉ có cho khoá tên (tenLoai), không áp dụng được đích dungCho; giữ mảng [máy phun bắn hơi nước, cát] nguyên văn, miễn vế MỞ như quy ước 392690 .42. Hướng sai còn lại: bộ phận của máy phun bắn tia tương tự (không chứa chữ mô tả nêu trên) rơi 84249099."
+    },
+    {
+      "ma": "842490",
+      "loai": "DUNG",
+      "ghiChu": "cong1-khong-phu-kin:842490:dungCho=8424.20.11 (vector mã trần không chứa chữ \"súng phun\" của tầng cha, không rơi dòng nào) + cong2-dong-khong-toi-duoc:84249099 — cùng lớp lỗi mã-dưới-tầng-có-tên như 842199; không đổi khoá để né — báo Claude."
+    }
+  ]
+}

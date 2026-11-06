@@ -1,0 +1,46 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841290",
+  "phien": "zcode-sub:glm-5.3:20261106T1005#soan-841290",
+  "dong8": {
+    "84129010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phân nhóm 8412.10"
+        }
+      ]
+    },
+    "84129020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ/mô tơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tổ máy động lực hơi nước",
+            "hơi khác gắn với nồi hơi"
+          ]
+        }
+      ],
+      "phanConLai": false
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84129010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84129010 \"Của động cơ thuộc phân nhóm 8412.10\" ⇒ dungCho \"phân nhóm 8412.10\" (dẫn mã — máy tự nở dải, tự nối tên↔mã; \"Của động cơ\" là đích lồng máy tự ghép)."
+    },
+    {
+      "ma": "84129020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84129020 \"Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi\" ⇒ dungCho \"động cơ/mô tơ\" + dungCho mảng [\"tổ máy động lực hơi nước\", \"hơi khác gắn với nồi hơi\"] (mảng = hoặc, tách tại \"hoặc\", mỗi phần chuỗi con nguyên văn liền mạch). Dòng có tên riêng ⇒ phanConLai false."
+    }
+  ]
+}

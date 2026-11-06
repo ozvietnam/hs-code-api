@@ -1,0 +1,76 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841899",
+  "nhom": "8418",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1033#soan-841899",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84189910",
+      "nguon": "tax.84189910",
+      "trich": "84189910 - - - Thiết bị làm bay hơi hoặc ngưng tụ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thiết bị làm bay hơi",
+            "ngưng tụ"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84189940",
+      "nguon": "tax.84189940",
+      "trich": "84189940 - - - Panel nhôm cán-ghép dùng cho hàng hóa thuộc phân nhóm 8418.10.31, 8418.10.32, 8418.21.10, 8418.21.90 hoặc 8418.29.00 (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Panel nhôm cán-ghép"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8418.10.31",
+            "8418.10.32",
+            "8418.21.10",
+            "8418.21.90",
+            "8418.29.00"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84189990",
+      "nguon": "tax.84189990",
+      "trich": "84189990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84189910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84189910 \"Thiết bị làm bay hơi hoặc ngưng tụ\" ⇒ tenLoai mảng 2 giá trị (\"hoặc\")."
+    },
+    {
+      "ma": "84189940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84189940 \"Panel nhôm cán-ghép dùng cho hàng hóa thuộc phân nhóm 8418.10.31, … hoặc 8418.29.00\" ⇒ tenLoai \"Panel nhôm cán-ghép\" + dungCho mảng 5 mã (giữ nguyên chuỗi mã, máy tự nở dải; mảng = hoặc)."
+    }
+  ]
+}

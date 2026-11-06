@@ -1,0 +1,19 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842890",
+  "phien": "zcode-sub:glm-5.3:20261106T1115#soan-842890",
+  "dong8": {
+    "84289020": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy tự động"},
+      {"fact": "congDung", "op": "CONG_DUNG", "value": "dịch chuyển, xử lý và kẹp giữ"},
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["tấm mạch in", "tấm dây in", "mạch in đã lắp ráp"]}
+    ] },
+    "84289030": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Thiết bị đẩy xe goòng trong hầm mỏ", "thanh ngang xe goòng", "đầu máy", "thiết bị lật toa xe"]}
+    ] }
+  },
+  "ghiChuSoan": [
+    {"ma": "84289020", "loai": "QUYET_DINH", "ghiChu": "tax.84289020 \"Máy tự động để dịch chuyển, xử lý và kẹp giữ tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\" ⇒ tenLoai \"Máy tự động\" + congDung \"dịch chuyển, xử lý và kẹp giữ\" (liệt kê nối và sau \"để\" — một máy làm đủ các việc, máy không báo như 853710 .30) + dungCho mảng 3 đích (hoặc)."},
+    {"ma": "84289030", "loai": "QUYET_DINH", "ghiChu": "tax.84289030 \"Thiết bị đẩy xe goòng trong hầm mỏ, thanh ngang xe goòng hoặc đầu máy, thiết bị lật toa xe và các thiết bị giữ xe goòng chạy đường sắt tương tự\" ⇒ tenLoai mảng 4 tên nguyên văn; cụm \"và các thiết bị giữ xe goòng chạy đường sắt tương tự\" — máy không tách vế MỞ ở dòng này."}
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841590",
+  "phien": "zcode-sub:glm-5.3:20261106T1022#soan-841590",
+  "dong8": {
+    "84159013": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phương tiện bay",
+            "phương tiện giao thông đường sắt"
+          ]
+        }
+      ]
+    },
+    "84159014": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thiết bị làm bay hơi",
+            "ngưng tụ"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy điều hòa không khí lắp trên xe có động cơ"
+        }
+      ]
+    },
+    "84159015": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khung vỏ"
+        }
+      ]
+    },
+    "84159024": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phương tiện bay",
+            "phương tiện giao thông đường sắt"
+          ]
+        }
+      ]
+    },
+    "84159026": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phương tiện bay",
+            "phương tiện giao thông đường sắt"
+          ]
+        }
+      ]
+    },
+    "84159034": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phương tiện bay",
+            "phương tiện giao thông đường sắt"
+          ]
+        }
+      ]
+    },
+    "84159036": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phương tiện bay",
+            "phương tiện giao thông đường sắt"
+          ]
+        }
+      ]
+    },
+    "84159044": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phương tiện bay",
+            "phương tiện giao thông đường sắt"
+          ]
+        }
+      ]
+    },
+    "84159046": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phương tiện bay",
+            "phương tiện giao thông đường sắt"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8415901": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 21.1,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8415902": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 21.1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 26.38,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8415903": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 26.38,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 52.75,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "8415904": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 52.75,
+          "donVi": "kW"
+        }
+      ]
+    },
+    "841590~r13299": {
+      "dieuKienSo": [
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ]
+    },
+    "841590~r13306": {
+      "dieuKienSo": [
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ]
+    },
+    "841590~r13313": {
+      "dieuKienSo": [
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 67.96,
+          "donVi": "m3/phút"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8415901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8415901 \"Của máy có công suất làm mát không quá 21,10 kW\" ⇒ congSuat <= 21,10 kW; vế \"Của máy\" miễn BO_VE (lặp ý PN6 \"Bộ phận\"). Cùng khuôn .2/.3/.4 theo dải chữ."
+    },
+    {
+      "ma": "841590~r13299",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.841590~r13299 \"Có lưu lượng không khí của mỗi dàn bay hơi trên 67,96 m3/phút (1)\" ⇒ luuLuong > 67,96 m3/phút (\"trên\" = >; chú thích (1) không thành điều kiện). Cùng chữ ở r13306/r13313."
+    },
+    {
+      "ma": "84159013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84159013 \"Loại dùng cho phương tiện bay hoặc phương tiện giao thông đường sắt\" (.13/.24/.26/.34/.36/.44/.46) ⇒ dungCho mảng 2 giá trị (hoặc)."
+    },
+    {
+      "ma": "84159014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84159014 \"Thiết bị làm bay hơi hoặc ngưng tụ dùng cho máy điều hòa không khí lắp trên xe có động cơ\" ⇒ tenLoai mảng [Thiết bị làm bay hơi, ngưng tụ] + dungCho trọn cụm đích nguyên văn."
+    },
+    {
+      "ma": "84159015",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84159015 \"Khung vỏ, đã hàn và sơn, trừ loại thuộc phân nhóm 8415.90.13\" ⇒ tenLoai \"Khung vỏ\"; vế trừ miễn BO_VE (chữ không có \"khác\" nên không dùng phanConLai được); \"đã hàn và sơn\" máy không tách vế."
+    },
+    {
+      "ma": "841590",
+      "loai": "DUNG",
+      "ghiChu": "Gói in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:841590:chua-co; chờ Claude soạn mục bảng trước khi duyệt."
+    },
+    {
+      "ma": "8415901",
+      "loai": "BO_VE",
+      "ve": "Của máy",
+      "lyDo": "Vế lặp ý tiêu đề PN6 841590 \"Bộ phận\" của máy điều hòa (heading 84.15) — mọi hàng của phân nhóm đã là bộ phần CỦA MÁY; giữ dungCho \"máy\" như điều kiện VÀ làm mất phủ kín (dòng con dùng cho phương tiện bay không chứa chữ \"máy\"). Bỏ vế không đổi ranh giới 8 số: dải công suất vẫn tách các tầng."
+    },
+    {
+      "ma": "8415902",
+      "loai": "BO_VE",
+      "ve": "Của máy",
+      "lyDo": "Vế lặp ý tiêu đề PN6 841590 \"Bộ phận\" của máy điều hòa (heading 84.15) — mọi hàng của phân nhóm đã là bộ phần CỦA MÁY; giữ dungCho \"máy\" như điều kiện VÀ làm mất phủ kín (dòng con dùng cho phương tiện bay không chứa chữ \"máy\"). Bỏ vế không đổi ranh giới 8 số: dải công suất vẫn tách các tầng."
+    },
+    {
+      "ma": "8415903",
+      "loai": "BO_VE",
+      "ve": "Của máy",
+      "lyDo": "Vế lặp ý tiêu đề PN6 841590 \"Bộ phận\" của máy điều hòa (heading 84.15) — mọi hàng của phân nhóm đã là bộ phần CỦA MÁY; giữ dungCho \"máy\" như điều kiện VÀ làm mất phủ kín (dòng con dùng cho phương tiện bay không chứa chữ \"máy\"). Bỏ vế không đổi ranh giới 8 số: dải công suất vẫn tách các tầng."
+    },
+    {
+      "ma": "8415904",
+      "loai": "BO_VE",
+      "ve": "Của máy",
+      "lyDo": "Vế lặp ý tiêu đề PN6 841590 \"Bộ phận\" của máy điều hòa (heading 84.15) — mọi hàng của phân nhóm đã là bộ phần CỦA MÁY; giữ dungCho \"máy\" như điều kiện VÀ làm mất phủ kín (dòng con dùng cho phương tiện bay không chứa chữ \"máy\"). Bỏ vế không đổi ranh giới 8 số: dải công suất vẫn tách các tầng."
+    },
+    {
+      "ma": "84159015",
+      "loai": "BO_VE",
+      "ve": "trừ loại thuộc phân nhóm 8415.90.13",
+      "lyDo": "Máy không có cách biểu diễn vế \"trừ <dòng>\" ngoài phanConLai, mà phanConLai đòi chữ có \"khác\" (cong3-phan-con-lai-khong-co-chu-khac). Khung vỏ dùng cho phương tiện bay về chữ rơi vào 84159013 (dùng cho phương tiện bay) — vế trừ chỉ tái khẳng định ranh giới đó, không tạo ranh giới mới; để người soát quyết cùng mục bảng hiệu chỉnh."
+    }
+  ]
+}

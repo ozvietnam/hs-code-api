@@ -1,0 +1,43 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "821193",
+  "phien": "zcode-sub:glm-5.3:20261106T0905#soan-821193",
+  "dong8": {
+    "82119321": { "dieuKienSo": [
+      {"fact": "chatLieu", "op": "LA", "value": "kim loại"}
+    ] },
+    "82119330": { "dieuKienSo": [
+      {"op": "HOAC", "phuongAn": [
+        [ {"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Dao bấm tự động", "dao gấp"]} ],
+        [ {"fact": "tenLoai", "op": "TEN_LOAI", "value": "dao nhíp"},
+          {"fact": "kichThuoc", "op": ">=", "value": 15, "donVi": "cm"} ]
+      ] }
+    ] }
+  },
+  "dieuKienNut": {
+    "8211932": { "dieuKienSo": [
+      {"fact": "dungTrongNongNghiep", "op": "CO"}
+    ] }
+  },
+  "chongLanTruc": [
+    {
+      "nhanh": ["8211932", "82119330"],
+      "truc": { "8211932": "DAC_DIEM", "82119330": "TEN_LOAI" },
+      "cauHoiPhanBiet": "Dao này là loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp (8211932) hay là dao bấm tự động, dao gấp hoặc dao nhíp có lưỡi dao dài 15 cm trở lên (82119330)?",
+      "trich": {
+        "8211932": "Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp",
+        "82119330": "Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên"
+      },
+      "viDuHang": [
+        { "cap": ["8211932", "82119330"], "hang": "Dao gấp dùng trong nông nghiệp, làm vườn" }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {"ma": "8211932", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8211932 \"Loại sử dụng trong nông nghiệp, làm vườn hoặc lâm nghiệp\" ⇒ dungTrongNongNghiep CO (cùng khuôn 821194 .10)."},
+    {"ma": "82119321", "loai": "QUYET_DINH", "ghiChu": "tax.82119321 \"Có cán bằng kim loại cơ bản\" ⇒ chatLieu kim loại."},
+    {"ma": "82119321", "loai": "BO_VE", "ve": "Có cán", "lyDo": "chatLieu tu-vung@2 không có vị trí 'cán' (chỉ CHINH/CACH_DIEN/LOI/THAN/VO/GIA_CO); giá trị kim loại đọc trọn cụm 'cán bằng kim loại cơ bản' — dao nông nghiệp có cụm chữ đó ⇒ 82119321, chất liệu cán khác ⇒ 82119329, nên vế vị trí không tách ranh giới 8 số."},
+    {"ma": "82119330", "loai": "QUYET_DINH", "ghiChu": "tax.82119330 \"Dao bấm tự động hoặc dao gấp; dao nhíp có lưỡi dao dài 15 cm trở lên\" ⇒ HOAC 2 phương án: tenLoai mảng 2 giá trị; hoặc tenLoai \"dao nhíp\" + kichThuoc >= 15 cm (\"trở lên\" = >=; đã đối chiếu tay biên vì bộ đọc không đọc được)."}
+  ]
+}

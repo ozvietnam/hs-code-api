@@ -1,0 +1,32 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841869",
+  "phien": "zcode-sub:glm-5.3:20261106T1030#soan-841869",
+  "dong8": {
+    "84186910": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Thiết bị làm lạnh đồ uống"}
+    ] },
+    "84186930": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Thiết bị cấp nước lạnh"}
+    ] },
+    "84186941": { "dieuKienSo": [
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": "máy điều hòa không khí"}
+    ] },
+    "84186950": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Thiết bị sản xuất đá vảy"}
+    ] }
+  },
+  "dieuKienNut": {
+    "8418694": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Thiết bị làm lạnh nước"},
+      {"fact": "congSuat", "op": ">", "value": 21.10, "donVi": "kW"}
+    ] }
+  },
+  "ghiChuSoan": [
+    {"ma": "84186910", "loai": "QUYET_DINH", "ghiChu": "tax.84186910 \"Thiết bị làm lạnh đồ uống\" ⇒ tenLoai nguyên văn."},
+    {"ma": "84186930", "loai": "QUYET_DINH", "ghiChu": "tax.84186930 \"Thiết bị cấp nước lạnh (cold water dispenser)\" ⇒ tenLoai \"Thiết bị cấp nước lạnh\"; \"(cold water dispenser)\" là chú thích ngoại ngữ, không thành điều kiện (LUAT-CHUNG 8)."},
+    {"ma": "8418694", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8418694 \"Thiết bị làm lạnh nước có công suất làm lạnh trên 21,10 kW\" ⇒ tenLoai \"Thiết bị làm lạnh nước\" + congSuat > 21,10 kW (\"trên\" = >)."},
+    {"ma": "84186941", "loai": "QUYET_DINH", "ghiChu": "tax.84186941 \"Dùng cho máy điều hòa không khí\" ⇒ dungCho \"máy điều hòa không khí\"."},
+    {"ma": "84186950", "loai": "QUYET_DINH", "ghiChu": "tax.84186950 \"Thiết bị sản xuất đá vảy\" ⇒ tenLoai nguyên văn."}
+  ]
+}
