@@ -1,0 +1,41 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "732410",
+  "phien": "zcode-mm:loop:20261106T1508#soan-732410",
+  "dong8": {
+    "73241010": {
+      "nguon": "tax.73241010",
+      "trich": "73241010 - - Bồn rửa nhà bếp",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bồn rửa nhà bếp"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "73241010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73241010 \"73241010 - - Bồn rửa nhà bếp\" ⇒ tenLoai TEN_LOAI \"Bồn rửa nhà bếp\": chữ biểu chỉ có tên loại hàng — danh từ đầu \"Bồn rửa\" lặp chữ tổ tiên 732410, vế giới hạn \"nhà bếp\" do chính điều kiện này phủ. Không dùng loaiDoDungGiaDinhSatThep DO_DUNG_NHA_BEP: mẫu đọc là \"đồ dùng nhà bếp\" không có trong chữ biểu của dòng nên cổng 5 không neo được vế \"nhà bếp\" và bộ đọc lúc chạy không ra giá trị; không dùng congDung: \"nhà bếp\" là nơi dùng chứ không phải công dụng."
+    },
+    {
+      "ma": "73241090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần (loaiKhac + khongCanDieuKien) không đưa vào spec: máy tự phủ định anh em 73241010, ghi điều kiện cho nó là vòng tròn."
+    },
+    {
+      "ma": "732410",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số \"Chậu rửa và bồn rửa, bằng thép không gỉ\" là tiêu đề của chính phân nhóm — máy chỉ nhận tiêu đề có tên ở tầng giữa (dieuKienNut), mà 732410 không có tầng giữa và gói không có tầng không mã; vế vật liệu \"thép không gỉ\" đã có ở tiêu chí 6 số (tieuChi6) của nhóm 7324 nên không chép vào điều kiện của dòng."
+    },
+    {
+      "ma": "73241010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chỉ một nhánh có điều kiện, nhánh còn lại là dòng \"Loại khác\" trần ⇒ không có cặp anh em để chia: không khai chongLanVanBan, không khai chongLanTruc; 73241010 không phải phần còn lại có tên nên không khai phanConLai."
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "732490",
+  "phien": "zcode-mm:loop:20261106T1514#soan-732490",
+  "dong8": {
+    "73249010": {
+      "nguon": "tax.73249010",
+      "trich": "73249010 - - Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bệ xí hoặc bệ đi tiểu giật nước (loại cố định)"
+        }
+      ]
+    },
+    "73249091": {
+      "nguon": "tax.73249091",
+      "trich": "73249091 - - - Bộ phận của bồn rửa nhà bếp hoặc bồn tắm",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bồn rửa nhà bếp hoặc bồn tắm"
+        }
+      ]
+    },
+    "73249093": {
+      "nguon": "tax.73249093",
+      "trich": "73249093 - - - Bộ phận của bệ xí hoặc bệ đi tiểu giật nước (loại cố định)",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bệ xí hoặc bệ đi tiểu giật nước (loại cố định)"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "73249010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73249010 \"73249010 - - Dùng cho bệ xí hoặc bệ đi tiểu giật nước (loại cố định)\" ⇒ dungCho CONG_DUNG \"bệ xí hoặc bệ đi tiểu giật nước (loại cố định)\": vế \"Dùng cho …\" là vế công dụng, khoá dungCho có mẫu \"dùng cho\" nên neo được. Dùng CÙNG khoá với 73249091/73249093 (cả ba nhánh đều nêu đích dùng/của) để cổng 2 không thấy chồng lấn giả. Không khai laBoPhan KHONG: chữ biểu dòng này không có mẫu phủ định nên không bịa điều kiện âm."
+    },
+    {
+      "ma": "73249091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73249091 ⇒ laBoPhan CO (chữ biểu có \"Bộ phận\") + dungCho CONG_DUNG \"bồn rửa nhà bếp hoặc bồn tắm\" (vế \"của …\": dungCho giữ nguyên danh từ đầu của cụm \"của\", quyết định #696). Không dùng tenLoai: đích là hàng mà hàng đi cùng, không phải tên của hàng."
+    },
+    {
+      "ma": "73249093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73249093 ⇒ laBoPhan CO + dungCho CONG_DUNG \"bệ xí hoặc bệ đi tiểu giật nước (loại cố định)\" — cùng cặp khoá với 73249091 (cùng cách chia: \"Bộ phận của …\"). Khác 73249010 ở vế \"Bộ phận\"; 73249010 không có mẫu phủ định nên không khai laBoPhan KHONG — ranh giới 10 ↔ 93 do tầng (tiêu đề 7324909 \"Loại khác\" phủ định anh em 73249010)."
+    },
+    {
+      "ma": "73249099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào spec: máy tự phủ định anh em 73249091 và 73249093 trong tầng 7324909."
+    },
+    {
+      "ma": "7324909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 7324909 (tieuDe.7324909 = \"7324909 Loại khác\") là \"Loại khác\" trần ⇒ không ghi điều kiện và không khai trong dieuKienNut (máy chỉ nhận tiêu đề CÓ tên; tiêu đề \"Loại khác\" trần bị phủ định anh em). Vì vậy dieuKienNut rỗng."
+    },
+    {
+      "ma": "732490",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế giới hạn của tiêu đề WCO (wco.732490: \"Iron or steel; sanitary ware and parts thereof, excluding sinks, wash basins and baths\") không chép xuống điều kiện dòng: bồn rửa/bồn tắm không thuộc 732490, trong 732490 chỉ nhận BỘ PHẬN của chúng (laBoPhan CO ở 73249091); vế vật liệu thuộc tầng tiêu đề/nhóm 7324 nên không chép xuống dòng (mẫu 732410)."
+    }
+  ]
+}

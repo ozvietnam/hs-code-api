@@ -1,0 +1,51 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "551599",
+  "phien": "zcode-mm:loop:20261106T1520#soan-551599",
+  "dong8": {
+    "55159910": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "LEN_LONG_DONG_VAT_MIN"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "551599",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) ⇒ không có nút <pn6>~r<dòng> để khai. Cây không có tiêu đề trung gian có tên (55159910 và 55159990 là con trực tiếp của 551599) ⇒ dieuKienNut rỗng. Điều kiện ở tầng 6 số không khai trong khung này: ten.vi của 551599 là \"Loại khác\" (trần) và nguồn gói cho tầng 6 số là wco.551599 \"Fabrics, woven; of synthetic staple fibres n.e.c. in chapter 55, mixed mainly or solely with fibres n.e.c. in heading no. 5515\"; khung spec chỉ có dong8 + dieuKienNut."
+    },
+    {
+      "ma": "551599",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ dòng và chữ tiêu đề đều ≤ 300 ký tự ⇒ KHÔNG ghi trich/nguon (máy tự chép nguyên văn kèm mức gạch của dòng biểu)."
+    },
+    {
+      "ma": "55159910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.55159910 \"55159910 - - - Pha chủ yếu hoặc pha duy nhất với lông cừu hoặc lông động vật loại mịn\" ⇒ khoá loaiSoiDet (LIET_KE, nhanVi \"loại xơ/sợi dệt (vật liệu dệt chủ yếu)\"), op TRONG, value [\"LEN_LONG_DONG_VAT_MIN\"]. Dùng CÙNG khoá + cùng giá trị với 61119010 đã soạn (\"Từ lông cừu hoặc lông động vật loại mịn\" ⇒ loaiSoiDet LEN_LONG_DONG_VAT_MIN) — quy ước nhà cho cụm \"lông cừu hoặc lông động vật loại mịn\". Từ vựng chưa có giá trị riêng cho \"lông cừu\" và KHÔNG dùng SOI_THUC_VAT_KHAC (\"lông động vật khác\") cho vế này — không bịa giá trị."
+    },
+    {
+      "ma": "55159910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế \"pha chủ yếu hoặc pha duy nhất\" là điều kiện tương đối về thành phần xơ, KHÔNG phải hai phương án cạnh tranh ⇒ không dùng op HOAC; nó nằm trong nghĩa khoá loaiSoiDet (\"vật liệu dệt chủ yếu\"; \"duy nhất\" là trường hợp giới hạn của cùng khoá)."
+    },
+    {
+      "ma": "55159990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.55159990 \"55159990 - - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện, không đưa vào spec (là phần bù của 55159910)."
+    },
+    {
+      "ma": "551599",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan: 55159990 là \"Loại khác\" trần (phần bù) chứ không phải nhánh cạnh tranh với 55159910. Không khai chongLanTruc vì viDuHang phải là hàng THẬT thoả cả hai nhánh — không bịa ví dụ."
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "580620",
+  "nhom": "5806",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1451#soan-580620",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "58062010",
+      "nguon": "tax.58062010",
+      "trich": "58062010 - - Băng loại dùng để quấn tay cầm hoặc cán của các dụng cụ thể thao",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "quấn tay cầm hoặc cán của các dụng cụ thể thao"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58062090",
+      "nguon": "tax.58062090",
+      "trich": "58062090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "58062010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58062010 \"58062010 - - Băng loại dùng để quấn tay cầm hoặc cán của các dụng cụ thể thao\" ⇒ congDung CONG_DUNG [quấn tay cầm hoặc cán của các dụng cụ thể thao] (vế giới hạn \"dùng để ...\" nói mục đích dùng nên dùng khoá congDung; không dùng khoá dungCho vì dungCho dành cho \"dùng cho máy/xe/hàng hoá lắp vào hoặc đi cùng\", còn chữ biểu nói việc quấn tay cầm hoặc cán)."
+    },
+    {
+      "ma": "58062010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ \"Băng\" (tên loại băng trong chữ biểu) không có khoá tu-vung tương ứng ⇒ chỉ mã hoá vế công dụng, không bịa khoá (khoá gần nhất dangDaiDaiTamPhoDung \"dạng đai, dải hoặc tấm phổ dụng\" không được nêu trong chữ biểu dòng này)."
+    },
+    {
+      "ma": "58062090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần (loaiKhac/khongCanDieuKien) ⇒ không ghi điều kiện, không đưa vào spec. Không suy ra điều kiện phủ định cho .10 vì chữ biểu dòng .10 không nói."
+    },
+    {
+      "ma": "580620",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề phân nhóm (vi \"Vải dệt thoi khác, có hàm lượng sợi đàn hồi (elastomeric) hoặc sợi cao su chiếm từ 5% trở lên tính theo khối lượng\"; wco.580620 \"580620 Fabrics; narrow (excluding pile fabrics), containing by weight 5% or more of elastomeric yarn or rubber thread\") là đặc trưng CHUNG cho cả hai dòng trong nhóm, không phải điều kiện phân biệt giữa các dòng 8 số ⇒ không mã hoá thành điều kiện (dieuKienNut để trống; gói không có tầng không mã); vế giới hạn \"có hàm lượng sợi đàn hồi (elastomeric) hoặc sợi cao su chiếm từ 5% trở lên tính theo khối lượng\" không diễn đạt trọn vẹn bằng khoá tu-vung nào (phần \"chứa sợi đàn hồi hoặc sợi cao su\" có khoá tinhDanHoi nhưng là đặc trưng chung của cả nhóm; ngưỡng \"từ 5% trở lên tính theo khối lượng\" không có khoá hàm lượng tương ứng) ⇒ ghi chú, không ép điều kiện."
+    },
+    {
+      "ma": "580620",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan/chongLanTruc: ngoài dòng \"Loại khác\" chỉ có một dòng 8 số (58062010) nên không có cặp anh em để khai trục, gói soạn không có hàng thật nào để minh hoạ."
+    },
+    {
+      "ma": "580620",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói soạn chỉ nêu chú giải (nhom5806.nhom 5.427 / ch58.chuong 2.716 / phan58.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ mọi trích trong spec lấy từ chữ biểu của chính dòng (tax.58062010) và tiêu đề phân nhóm (wco.580620 + tiêu đề tiếng Việt)."
+    }
+  ]
+}

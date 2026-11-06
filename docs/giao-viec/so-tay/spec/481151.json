@@ -1,0 +1,128 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "481151",
+  "phien": "zcode-mm:loop:20261106T1452#soan-481151",
+  "dong8": {
+    "48115131": {
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ]
+    },
+    "48115191": {
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4811513": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "kichThuoc",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "4811513",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4811513 \"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh trong cùng một tiêu đề ⇒ khai op HOAC + phuongAn (quy trình bước 3.5), KHÔNG gộp hai ngưỡng thành VÀ: phương án A = dạng cuộn + chiều rộng <= 15 cm; phương án B = dạng tờ + mọi chiều <= 36 cm + không gấp."
+    },
+    {
+      "ma": "4811513",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Dạng cuộn\" (vế đầu của phương án A) ⇒ khoá dangCuon (CO_KHONG, nhanVi \"ở dạng cuộn (dây hàn, que hàn, tấm, dải)\"), op CO. Đặt TRONG phương án A nên không loại nhầm phương án B (dạng tờ)."
+    },
+    {
+      "ma": "4811513",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"không có chiều nào trên 36 cm\" ⇒ mọi chiều (dài x rộng x cao) đều không trên 36 cm ⇒ khoá kichThuoc, biên <=, value 36. Biên theo chữ: \"không quá\" = <=."
+    },
+    {
+      "ma": "4811513",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đơn vị giữ nguyên theo chữ biểu (cm), không quy đổi sang mm của donViChuan (việc quy đổi để tầng sinh sổ tay)."
+    },
+    {
+      "ma": "4811513",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hinhDangTo",
+      "ghiChu": "ở dạng tờ hình chữ nhật (kể cả hình vuông)"
+    },
+    {
+      "ma": "4811513",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "dangKhongGap",
+      "ghiChu": "ở dạng không gấp"
+    },
+    {
+      "ma": "4811513",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hai vế thiếu khoá ở hai ghi chú THIEU_KHOA_TU_VUNG phía trên không có khoá từ vựng nên KHÔNG bịa khoá: hinhDangCatGocKinh là \"tấm kính hình vuông hoặc hình chữ nhật\" (kính) và loaiCung là \"loại cứng (rigid)\" — không dùng cho hàng giấy. Phần đã có khoá (chiều rộng, kích thước) vẫn khai bình thường; hai vế thiếu khoá đã khai để cổng 1 chặn đúng ý."
+    },
+    {
+      "ma": "4811513",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ tiêu đề ≤ 300 ký tự ⇒ KHÔNG ghi trich/nguon (máy tự chép nguyên văn kèm mức gạch của tiêu đề)."
+    },
+    {
+      "ma": "48115131",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115131 \"Tấm phủ sàn\" ⇒ điều kiện là đặc điểm có/không: khoá tamPhuSan (CO_KHONG, nhanVi \"tấm phủ sàn\"), op CO — dùng CÙNG khoá với anh em 48115191 (quy trình bước 3.3). Không dùng tenLoai: chữ trích là loại sản phẩm để tách khỏi \"Loại khác\", không phải tên hàng. Chữ dòng ≤ 300 ký tự ⇒ không ghi trich/nguon."
+    },
+    {
+      "ma": "48115191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115191 \"Tấm phủ sàn\" ⇒ cùng khoá tamPhuSan, op CO, với 48115131. Cha 4811519 là tiêu đề \"Loại khác\" trần ⇒ không khai dieuKienNut cho cha, máy phủ định anh em (nhánh 4811513). Chữ dòng ≤ 300 ký tự ⇒ không ghi trich/nguon."
+    },
+    {
+      "ma": "48115139",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115139 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện, không đưa vào spec."
+    },
+    {
+      "ma": "48115199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115199 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện, không đưa vào spec."
+    },
+    {
+      "ma": "4811519",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4811519 \"Loại khác\" trần ⇒ bỏ qua, không khai dieuKienNut."
+    },
+    {
+      "ma": "481151",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) ⇒ dieuKienNut chỉ có 4811513. Điều kiện ở tầng 6 số (\"Loại đã tẩy trắng, định lượng trên 150 g/m2\") không khai trong khung này: 481151 không phải tiêu đề có id tieuDe, khung spec chỉ có dong8 + dieuKienNut."
+    }
+  ]
+}
