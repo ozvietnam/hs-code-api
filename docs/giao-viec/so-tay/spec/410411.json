@@ -1,19 +1,26 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "410411",
-  "phien": "mm:minimax-m3:20261105T1705#soan-410411",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-410411",
   "dong8": {
     "41041110": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "động vật họ trâu bò" },
+        { "fact": "giaiDoanThuocDa", "op": "TRONG", "value": ["THUOC_THUC_VAT"] }
+      ]
     }
   },
   "dieuKienNut": {},
   "ghiChuSoan": [
     {
       "ma": "41041110",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "thuocThucVat",
-      "ghiChu": "tax.41041110 \"Của động vật họ trâu bò, đã thuộc thực vật\" (EN \"Of bovine, vegetable tanned\") — vế \"đã thuộc thực vật\" (vegetable-tanned) chưa có khoá tu-vung nào đọc được (tu-vung@2 không có khoá \"thuộc\"; không mượn khoá gần nghĩa). Đề xuất khoá CO_KHONG \"thuocThucVat\" (đọc CÓ: \"đã thuộc thực vật\" | \"thuộc thực vật\" | \"vegetable tanned\"). Vế \"Của động vật họ trâu bò\" chưa số hoá vì dòng phải chờ cả hai vế; sau khi có khoá sẽ ghi dungCho \"động vật họ trâu bò\" + khoá mới."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.41041110 \"Của động vật họ trâu bò, đã thuộc thực vật\" ⇒ dungCho \"động vật họ trâu bò\" (vế \"Của …\", đích là loài động vật) + giaiDoanThuocDa TRONG [THUOC_THUC_VAT] (khoá liệt kê mới lô 20, đọc \"đã thuộc thực vật\"; EN \"Of bovine, vegetable tanned\")."
+    },
+    {
+      "ma": "41041190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.41041190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
     }
   ]
 }

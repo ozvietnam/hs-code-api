@@ -35,6 +35,17 @@
       "ma": "90212920",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.90212920 \"Bằng titan\" ⇒ vatLieuKhac TRONG [TITAN] (khoá mới tu-vung@2; chữ biểu chính là \"Bằng <vật liệu>\" nên dùng được khoá, cachDoc đọc \"bằng titan\")."
+    },
+    {
+      "ma": "90212920",
+      "loai": "DUNG",
+      "ghiChu": "DUNG cong2-chong-lan:90212910+90212920:chatLieu=CHINH:sắt thép,vatLieuKhac=TITAN - hai anh em cùng nói về vật liệu nhưng ở HAI khoá độc lập: .10 \"Bằng sắt hoặc thép\" chỉ đọc được bằng chatLieu LA sắt thép (vatLieuKhac không có giá trị sắt thép), .20 \"Bằng titan\" chỉ đọc được bằng vatLieuKhac TITAN (chatLieu @1 đóng băng không có titan) ⇒ vector gán đồng thời sắt thép và titan làm cả hai dòng cùng CO. Không phải chữ biểu tự chồng (sắt/thép và titan loại trừ nhau) nên không khai chongLanVanBan; không đổi khoá được. Cần: thêm giá trị SAT_HOAC_THEP vào vatLieuKhac (rồi cả hai anh em dùng vatLieuKhac) hoặc cổng coi hai khoá vật liệu là loại trừ."
+    },
+    {
+      "ma": "90212920",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "vatLieuKhac (thêm giá trị SAT_HOAC_THEP, đọc \"bằng sắt hoặc thép\")",
+      "ghiChu": "tax.90212910 \"Bằng sắt hoặc thép\" cùng thang đo vật liệu với tax.90212920 \"Bằng titan\" (vatLieuKhac TITAN): anh em phải dùng CÙNG MỘT khoá."
     }
   ]
 }

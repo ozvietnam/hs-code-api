@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1055#soan-842489",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-842489",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -21,7 +21,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Thiết bị phun, xịt"
+          "value": "Thiết bị phun"
         },
         {
           "fact": "cachDieuKhien",
@@ -50,7 +50,17 @@
       "hs": "84248920",
       "nguon": "tax.84248920",
       "trich": "84248920 - - - Đầu bình phun, xịt có gắn vòi",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đầu bình phun"
+        },
+        {
+          "fact": "coGanVoi",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -67,7 +77,8 @@
           "op": "CONG_DUNG",
           "value": [
             "sản xuất tấm nền của tấm mạch in",
-            "tấm dây in"
+            "tấm dây in",
+            "linh kiện của chúng"
           ]
         }
       ],
@@ -102,18 +113,17 @@
     {
       "ma": "84248910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84248910 \"Thiết bị phun, xịt hoạt động bằng tay sử dụng trong gia đình có dung tích không quá 3 lít\" ⇒ tenLoai + cachDieuKhien BANG_TAY + phamViSuDung GIA_DINH + dungTich <= 3 lít."
+      "ghiChu": "tax.84248910 \"Thiết bị phun, xịt hoạt động bằng tay sử dụng trong gia đình có dung tích không quá 3 lít\" ⇒ tenLoai \"Thiết bị phun\" (tên đầu có dấu phẩy \"phun, xịt\" nên lấy chuỗi con nguyên văn không có dấu phẩy, tránh cong3-liet-ke-trong-mot-chuoi) + cachDieuKhien BANG_TAY + phamViSuDung GIA_DINH + dungTich <= 3 lít."
     },
     {
       "ma": "84248920",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "coGanVoi (có gắn vòi)",
-      "ghiChu": "tax.84248920 \"Đầu bình phun, xịt có gắn vòi\" — tu-vung@2 không có khoá cho \"có gắn vòi\"; không mượn khoá gần nghĩa, không đưa \"vòi\" vào tenLoai (vòi không phải tên hàng)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84248920 \"Đầu bình phun, xịt có gắn vòi\" ⇒ tenLoai \"Đầu bình phun\" (chuỗi con nguyên văn của tên đầu; phân biệt với .10 \"Thiết bị phun\") + coGanVoi CO (khoá lô 20, đọc \"có gắn vòi\"). Đã đối chiếu: THIEU_KHOA coGanVoi giải quyết."
     },
     {
       "ma": "84248940",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84248940 \"Loại khác, chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền của tấm mạch in hoặc tấm dây in hoặc linh kiện của chúng\" ⇒ chỉ vế: chiHoacChuYeu CO + dungCho mảng [sản xuất tấm nền của tấm mạch in, tấm dây in]; vế MỞ \"hoặc linh kiện của chúng\" — linh kiện của tấm mạch/dây in là đích kèm theo, bộ so đọc đích lồng; không đóng danh sách."
+      "ghiChu": "tax.84248940 \"Loại khác, chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền của tấm mạch in hoặc tấm dây in hoặc linh kiện của chúng\" ⇒ chỉ vế: chiHoacChuYeu CO + dungCho mảng [sản xuất tấm nền của tấm mạch in, tấm dây in, linh kiện của chúng]; phủ cả vế MỞ \"hoặc linh kiện của chúng\" bằng giá trị nguyên văn \"linh kiện của chúng\" (không đóng danh sách)."
     },
     {
       "ma": "84248950",
@@ -124,6 +134,11 @@
       "ma": "84248990",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84248990 \"Loại khác, không hoạt động bằng điện\" ⇒ chỉ vế: hoatDongBangDien KHONG."
+    },
+    {
+      "ma": "84248940",
+      "loai": "DUNG",
+      "ghiChu": "cong2-dong-khong-toi-duoc:84248940 — dòng \"Loại khác, <vế>\" bị luật đi phủ định MỌI anh em, kể cả hai dòng \"Loại khác, <vế>\" đứng sau là .50 \"Loại khác, hoạt động bằng điện\" và .90 \"Loại khác, không hoạt động bằng điện\" (hai vế bù nhau: hoatDongBangDien CO ∨ KHONG phủ kín mọi hàng) ⇒ không vector nào làm .40 CO. Cách biểu diễn hiện có không diễn đạt được thứ tự \"Loại khác, vế\" → \"Loại khác, vế\" (phanConLai chỉ áp cho dòng KHÔNG phải \"Loại khác\"); không đổi điều kiện để né. DỪNG, báo Claude."
     }
   ]
 }

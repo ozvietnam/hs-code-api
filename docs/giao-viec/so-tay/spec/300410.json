@@ -85,6 +85,11 @@
       "ma": "30041020",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.30041020 \"Chứa các streptomycin hoặc các dẫn xuất của chúng\" — đặt tên hoạt chất \"streptomycin\"; vế dẫn xuất không có khoá."
+    },
+    {
+      "ma": "300410",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong1-khong-phu-kin:300410:chuaPenicillin=false,tenLoai=penicillin G. Khoá mới chuaPenicillin đã giải quyết THIEU_KHOA ở tiêu đề 3004101 (cổng 0/3 xanh, cổng 5 phủ 5/5, chồng lấn penicillin ↔ streptomycin ở 30041019+30041020 đã khai chongLanVanBan có trích hai nhánh). Còn lại một vector tổng hợp: gốc phân nhóm gồm tiêu đề 3004101 (chuaPenicillin CO) và dòng 30041020 (tenLoai streptomycin), không có con \"Loại khác\" trần ở gốc; bộ vét gán chuaPenicillin=false độc lập với tenLoai=penicillin G (hàng tự mâu thuẫn: tên penicillin G mà khai không chứa penicillin) nên không vào con nào. Không có cách khai đúng chữ biểu để gỡ (bỏ chuaPenicillin khỏi tiêu đề làm vế \"Chứa penicillins hoặc các dẫn xuất của chúng\" không được phủ; thêm KHONG cho 30041020 là điều chữ biểu không nói). Cần người soát quyết định coi vector này là giả của bộ vét."
     }
   ],
   "chongLanVanBan": [

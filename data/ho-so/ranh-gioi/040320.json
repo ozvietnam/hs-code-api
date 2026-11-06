@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1546#soan-040320",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-040320",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -30,7 +30,12 @@
       "hs": "04032011",
       "nguon": "tax.04032011",
       "trich": "04032011 - - - Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "daThemHuongLieuHoaQuaHatHoacCaCao",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -44,7 +49,12 @@
       "hs": "04032091",
       "nguon": "tax.04032091",
       "trich": "04032091 - - - Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "daThemHuongLieuHoaQuaHatHoacCaCao",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -57,16 +67,19 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "0403201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0403201 \"Dạng lỏng, đã hoặc chưa cô đặc\" ⇒ dangLong CO; \"đã hoặc chưa cô đặc\" là cách nói bao cả hai trạng thái, không thành điều kiện."
+    },
+    {
       "ma": "04032011",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daThemHuongLieuHoaQuaQuaHatHoacCaCao",
-      "ghiChu": "tax.04032011: \"Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao\" — tu-vung@2 không có khoá đọc được vế này: daPhaHuongLieuHoacChatMau đọc \"đã pha thêm hương liệu hoặc chất màu\" (không khớp \"Đã thêm hương liệu\"); chuaCaCao đọc \"chứa ca cao\" (không khớp \"hoặc ca cao\")"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04032011 \"Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao\" ⇒ daThemHuongLieuHoaQuaHatHoacCaCao CO (khoá lô 20, cachDoc khớp nguyên cụm); thay ghi chú THIEU_KHOA daThemHuongLieuHoaQuaQuaHatHoacCaCao. Điều kiện dạng lỏng do tiêu đề 0403201 mang."
     },
     {
       "ma": "04032091",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daThemHuongLieuHoaQuaQuaHatHoacCaCao",
-      "ghiChu": "tax.04032091: \"Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao\" — tu-vung@2 không có khoá đọc được vế này: daPhaHuongLieuHoacChatMau đọc \"đã pha thêm hương liệu hoặc chất màu\" (không khớp \"Đã thêm hương liệu\"); chuaCaCao đọc \"chứa ca cao\" (không khớp \"hoặc ca cao\")"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.04032091 \"Đã thêm hương liệu hoặc thêm hoa quả (kể cả thịt quả và mứt), quả hạch (nuts) hoặc ca cao\" ⇒ daThemHuongLieuHoaQuaHatHoacCaCao CO; nằm dưới tiêu đề 0403209 \"Loại khác\" trần (máy phủ định 0403201)."
     },
     {
       "ma": "04032019",

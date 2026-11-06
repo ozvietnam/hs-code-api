@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721550",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721550",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -23,6 +23,14 @@
           "op": ">=",
           "value": 0.6,
           "donVi": "%"
+        },
+        {
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ],
+          "chieu": "PHAI_KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -56,12 +64,6 @@
     },
     {
       "ma": "72155010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "matCatNgangHinhTron",
-      "ghiChu": "tax.72155010: \"trừ dạng mặt cắt ngang hình tròn\" — vế GIỚI HẠN dạng (trừ …) cần phủ định \"mặt cắt ngang hình tròn\"; hinhDangCatGocKinh hiện có cực tính ngược (chữ khẳng định \"hình tròn\" ⇒ op KHONG như 721410/721420), biểu diễn \"không hình tròn\" bằng op CO bị cong3-cuc-tinh-nguoc, KHONG lại nói ngược chữ (hàng hình tròn vào .10); bỏ vế làm đổi mã (thanh C>=0,6% mặt cắt tròn phải rơi .99) ⇒ DỪNG"
-    },
-    {
-      "ma": "72155010",
       "loai": "BO_VE",
       "ve": "Có hàm lượng carbon",
       "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon >= 0.6 %"
@@ -75,6 +77,11 @@
       "ma": "72155099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72155099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "72155010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72155010 \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn\" — vế \"trừ dạng mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [TRON] chieu PHAI_KHONG (khoá tu-vung@2 mở rộng, đọc đúng \"mặt cắt ngang hình tròn\"; \"trừ\" = phải KHÔNG, như 721499); thay ghi chú THIEU_KHOA matCatNgangHinhTron cũ."
     }
   ]
 }

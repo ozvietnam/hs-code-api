@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0926#soan-690740",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-690740",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,7 +16,14 @@
       "id": "6907402",
       "nguon": "tieuDe.6907402",
       "trich": "6907402 Các sản phẩm khác, có mặt lớn nhất có thể nhìn thấy sau khi ghép không quá 49 cm2",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dienTichBeMat",
+          "op": "<=",
+          "value": 49,
+          "donVi": "cm2"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM",
       "phanConLai": true
     }
@@ -91,9 +98,14 @@
   "ghiChuSoan": [
     {
       "ma": "6907402",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dienTichBeMat",
-      "ghiChu": "tieuDe.6907402 \"Các sản phẩm khác, có mặt lớn nhất có thể nhìn thấy sau khi ghép không quá 49 cm2\" — biên diện tích 49 cm2 không có khoá diện tích (kichThuoc là SO dài×rộng×cao, đơn vị mm/cm/m/inch, không đọc được cm2) ⇒ không biểu diễn được, không bịa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6907402 \"6907402 Các sản phẩm khác, có mặt lớn nhất có thể nhìn thấy sau khi ghép không quá 49 cm2\" ⇒ dienTichBeMat <= 49 cm2 (khoá tu-vung@2 mới, đơn vị cm2; \"không quá\" = <=); \"Các sản phẩm khác\" là phần còn lại có tên ⇒ giữ phanConLai true. Thay ghi chú THIEU_KHOA dienTichBeMat cũ."
+    },
+    {
+      "ma": "6907402",
+      "loai": "BO_VE",
+      "ve": "có mặt lớn nhất",
+      "lyDo": "Cụm danh từ chỉ đối tượng đo của biên diện tích (\"mặt lớn nhất có thể nhìn thấy sau khi ghép\" là mặt được đo), đã lượng hoá qua dienTichBeMat <= 49 cm2 — khoá đọc cả \"mặt lớn nhất\" và \"nhìn thấy sau khi ghép\"; bỏ chữ giới thiệu này không đổi mã."
     }
   ]
 }

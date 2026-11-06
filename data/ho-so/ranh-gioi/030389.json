@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030389",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-030389",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -16,7 +16,15 @@
       "id": "0303891",
       "nguon": "tieuDe.0303891",
       "trich": "0303891 Cá biển",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "moiTruongSongCuaCa",
+          "op": "TRONG",
+          "value": [
+            "BIEN"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -207,9 +215,8 @@
   "ghiChuSoan": [
     {
       "ma": "0303891",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "caBien",
-      "ghiChu": "tieuDe.0303891 \"Cá biển\" — tiêu đề phân loại theo môi trường sống (sea fish), không có khoá đặc điểm habitat trong tu-vung@2; dùng tenLoai \"Cá biển\" làm dòng 03038923 \"Cá măng biển (Chanos chanos)\" (dưới tầng \"Loại khác\") không tới được vì tên chứa trọn âm tiết \"Cá biển\" (cong2-dong-khong-toi-duoc)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.0303891 \"Cá biển\" ⇒ moiTruongSongCuaCa TRONG [BIEN] (khoá lô 20, cachDoc \"cá biển\" khớp nguyên văn tiêu đề); thay ghi chú THIEU_KHOA caBien. Tên loài chứa chữ \"biển\" (03038923 \"Cá măng biển (Chanos chanos)\") dùng tenLoai nguyên văn, không đọc thành môi trường sống."
     }
   ]
 }

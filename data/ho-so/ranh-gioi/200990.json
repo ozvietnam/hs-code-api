@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1602#soan-200990",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-200990",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -29,7 +29,12 @@
       "hs": "20099091",
       "nguon": "tax.20099091",
       "trich": "20099091 - - - Dùng ngay được",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dungNgayDuoc",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -47,15 +52,14 @@
       "ghiChu": "tax.20099010 \"Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" ⇒ thietKeChoTreEm CO — cách đọc CÓ của khoá có mẫu \"phù hợp (dùng )?cho trẻ sơ sinh|nhỏ\" nằm trọn trong vế"
     },
     {
-      "ma": "20099091",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dungNgayDuoc",
-      "ghiChu": "tax.20099091 \"Dùng ngay được\" — tu-vung@2 không có khoá đọc ý dùng được ngay (ready to drink); không mượn khoá gần nghĩa"
-    },
-    {
       "ma": "20099099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.20099099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "20099091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20099091 \"Dùng ngay được\" ⇒ dungNgayDuoc CO (khoá dungNgayDuoc tu-vung@2 lô 20, đọc CÓ \"dùng ngay được\"); đứng dưới tiêu đề 2009909 \"Loại khác\" trần (máy phủ định anh em .10)"
     }
   ]
 }

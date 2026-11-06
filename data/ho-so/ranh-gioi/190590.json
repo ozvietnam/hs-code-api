@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T0948#soan-190590",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-190590",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -17,15 +17,44 @@
       "hs": "19059010",
       "nguon": "tax.19059010",
       "trich": "19059010 - - Bánh quy không ngọt dùng cho trẻ mọc răng hoặc thay răng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh quy"
+        },
+        {
+          "fact": "viNgot",
+          "op": "KHONG"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "trẻ mọc răng",
+            "thay răng"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "19059020",
       "nguon": "tax.19059020",
       "trich": "19059020 - - Bánh quy không ngọt khác",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh quy"
+        },
+        {
+          "fact": "viNgot",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "19059030",
@@ -57,7 +86,17 @@
       "hs": "19059050",
       "nguon": "tax.19059050",
       "trich": "19059050 - - Các loại bánh không bột",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bánh"
+        },
+        {
+          "fact": "banhCoBot",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -121,18 +160,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "19059010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongNgot",
-      "ghiChu": "tax.19059010 \"Bánh quy không ngọt dùng cho trẻ mọc răng hoặc thay răng\" — vế GIỚI HẠN \"không ngọt\" không có khoá trong tu-vung@2 (không có khoá độ ngọt)"
-    },
-    {
-      "ma": "19059020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongNgot",
-      "ghiChu": "tax.19059020 \"Bánh quy không ngọt khác\" — vế GIỚI HẠN \"không ngọt khác\" không có khoá trong tu-vung@2; dòng là phần còn lại có tên của .10"
-    },
-    {
       "ma": "19059030",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.19059030 \"Bánh ga tô (cakes)\": \"(cakes)\" tên Anh ⇒ PHU"
@@ -141,12 +168,6 @@
       "ma": "19059040",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.19059040 \"Bánh bột nhào (pastry)\": \"(pastry)\" tên Anh ⇒ PHU"
-    },
-    {
-      "ma": "19059050",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "khongBot",
-      "ghiChu": "tax.19059050 \"Các loại bánh không bột\" — vế GIỚI HẠN \"không bột\" không có khoá trong tu-vung@2 (chatLieu chỉ có danh sách vật liệu đóng)"
     },
     {
       "ma": "19059060",
@@ -162,6 +183,26 @@
       "ma": "19059080",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.19059080 \"Các sản phẩm thực phẩm giòn có hương liệu khác\": phần còn lại có tên — \"khác\" đứng cuối, nội dung khẳng định \"thực phẩm giòn có hương liệu\" ⇒ tenLoai + phanConLai true (phủ định các anh em có tên .30/.40/.60/.70)"
+    },
+    {
+      "ma": "19059010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19059010 \"Bánh quy không ngọt dùng cho trẻ mọc răng hoặc thay răng\" ⇒ tenLoai \"Bánh quy\"; viNgot KHONG (khoá viNgot tu-vung@2 lô 20, đọc KHÔNG \"không ngọt\"); dungCho [\"trẻ mọc răng\",\"thay răng\"] (liệt kê \"hoặc\" ⇒ mảng chuỗi con nguyên văn)"
+    },
+    {
+      "ma": "19059020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19059020 \"Bánh quy không ngọt khác\" ⇒ tenLoai \"Bánh quy\" + viNgot KHONG; \"khác\" cuối là phần còn lại có tên của .10 ⇒ phanConLai true"
+    },
+    {
+      "ma": "19059050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19059050 \"Các loại bánh không bột\" ⇒ banhCoBot KHONG (khoá banhCoBot tu-vung@2 lô 20, đọc KHÔNG \"bánh không bột\") + tenLoai \"bánh\" (danh từ đầu nguyên văn của \"Các loại bánh\"). Có tenLoai \"bánh\" vì nếu chỉ có banhCoBot KHONG thì dòng này (khoá đặc điểm) chồng lấn trục với cả sáu anh em theo tên (.10 .20 .30 .40 .60 .70) mà không có hàng thật cho từng cặp; với tenLoai \"bánh\" máy áp quy ước \"tên cụ thể hơn thắng\" (#600): hàng đã có tên riêng của anh em (Bánh quy, Bánh ga tô, Bánh bột nhào, Bánh thánh…) thuộc dòng đó chứ không rơi vào .50. Đây là hệ quả của quy ước máy, KHÔNG phải điều chữ biểu nói — người soát xem lại"
+    },
+    {
+      "ma": "190590",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 190590-01 LECH_CHUA_PHAN_XU (557/TB-TCHQ), 190590-02 LECH_CHUA_PHAN_XU (557/TB-TCHQ, 561/TB-TCHQ), 190590-03 KHONG_LECH (557/TB-TCHQ, 3274/TB-TCHQ, 7285/TB-TCHQ) và 190590-04 KHONG_LECH (3274/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0930#soan-830990",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-830990",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -62,7 +62,20 @@
       "hs": "83099060",
       "nguon": "tax.83099060",
       "trich": "83099060 - - Nắp bình phun xịt, bằng thiếc",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nắp bình phun xịt"
+        },
+        {
+          "fact": "kimLoaiCoBanKhac",
+          "op": "TRONG",
+          "value": [
+            "THIEC"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -162,6 +175,15 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "83099020",
+        "83099060"
+      ],
+      "lyDo": "Chữ biểu .20 \"Nắp của hộp (lon) nhôm\" nêu nắp theo hộp mà nó đậy, .60 \"Nắp bình phun xịt, bằng thiếc\" nêu nắp bình phun xịt theo chất liệu thiếc; một nắp bình phun xịt bằng thiếc đậy lon nhôm thoả cả hai; chữ biểu không nêu thứ tự ưu tiên"
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "83099010",
@@ -174,15 +196,14 @@
       "ghiChu": "tax.83099020 \"Nắp của hộp (lon) nhôm\" ⇒ tenLoai \"Nắp\" + dungCho \"hộp (lon) nhôm\" (chất liệu của hàng đích nằm trong đích)."
     },
     {
-      "ma": "83099060",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu thêm giá trị thiếc",
-      "ghiChu": "tax.83099060 \"Nắp bình phun xịt, bằng thiếc\" — tu-vung@2 chatLieu không có giá trị thiếc; không mượn khoá gần nghĩa."
-    },
-    {
       "ma": "83099070",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.83099070 \"Nắp hộp khác\" ⇒ tenLoai \"Nắp hộp\" + phanConLai true (phần còn lại có tên, phủ định .10/.20/.60)."
+    },
+    {
+      "ma": "83099060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83099060: \"Nắp bình phun xịt, bằng thiếc\" ⇒ tenLoai \"Nắp bình phun xịt\" + kimLoaiCoBanKhac TRONG [THIEC] (khoá lô 20, cachDoc đọc \"bằng thiếc\"; chatLieu không có giá trị thiếc)"
     },
     {
       "ma": "8309908",
@@ -203,6 +224,11 @@
       "ma": "83099092",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.83099092 \"Nắp (bung) cho thùng kim loại; chụp nắp thùng (bung covers); dụng cụ niêm phong; bịt (bảo vệ) các góc hòm\" ⇒ HOAC: nắp (bung) dùng cho thùng kim loại; hoặc mảng 3 tên còn lại."
+    },
+    {
+      "ma": "83099020",
+      "loai": "CHONG_LAN",
+      "ghiChu": "tax.83099020 \"Nắp của hộp (lon) nhôm\" ↔ tax.83099060 \"Nắp bình phun xịt, bằng thiếc\": chữ biểu tự chồng (nắp bình phun xịt bằng thiếc dùng cho lon nhôm), khai chongLanVanBan; không có căn cứ thứ tự nên lúc chạy không tự chốt"
     }
   ]
 }

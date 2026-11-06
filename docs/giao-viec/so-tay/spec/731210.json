@@ -89,6 +89,27 @@
       "ma": "73121030",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.73121030: \"Được phủ, mạ hoặc tráng nhôm\" ⇒ lopMaPhu TRONG [NHOM] (giá trị mới của lô 20, cachDoc đọc \"phủ, mạ hoặc tráng nhôm\")"
+    },
+    {
+      "ma": "73121010",
+      "loai": "CHONG_LAN",
+      "ghiChu": "tax.73121010 \"Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)\" ↔ tax.73121020 \"Loại được phủ, mạ hoặc tráng bằng đồng thau và có đường kính không quá 3 mm\" / tax.73121030 \"Được phủ, mạ hoặc tráng nhôm\": chữ biểu tự chồng (tên loại dây ↔ lớp phủ), khai chongLanVanBan cả hai cặp; không có căn cứ thứ tự nên lúc chạy không tự chốt"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "73121010",
+        "73121020"
+      ],
+      "lyDo": "Chữ biểu .10 \"Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)\" nêu TÊN loại dây, .20 \"Loại được phủ, mạ hoặc tráng bằng đồng thau và có đường kính không quá 3 mm\" nêu lớp phủ + đường kính; một cuộn dây bện tao kiểu bọc được mạ đồng thau, đường kính không quá 3 mm thoả cả hai; chữ biểu không nêu thứ tự ưu tiên giữa hai dòng"
+    },
+    {
+      "cap": [
+        "73121010",
+        "73121030"
+      ],
+      "lyDo": "Chữ biểu .10 \"Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)\" nêu TÊN loại dây, .30 \"Được phủ, mạ hoặc tráng nhôm\" nêu lớp phủ; một cuộn dây bện tao kiểu bọc được tráng nhôm thoả cả hai; chữ biểu không nêu thứ tự ưu tiên giữa hai dòng"
     }
   ]
 }

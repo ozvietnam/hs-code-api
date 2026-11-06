@@ -56,11 +56,6 @@
   },
   "ghiChuSoan": [
     {
-      "ma": "94059920",
-      "loai": "DUNG",
-      "ghiChu": "tax.94059920 \"Chụp đèn bằng vật liệu khác\" — phụ thuộc cùng khoá thiếu với .10 (\"bằng vật liệu khác\" sao với \"bằng vật liệu dệt\" của anh em đứng trước, luật 7 bảng luật cần giá trị chatLieu đọc được từ chữ \"vật liệu dệt\"); chờ bổ sung tu-vung@2"
-    },
-    {
       "ma": "94059930",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.94059930 \"Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19\" ⇒ dungCho giữ nguyên chuỗi mã (luật dẫn mã, máy tự nở dải)"
@@ -84,6 +79,54 @@
       "ma": "94059910",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.94059910 \"Chụp đèn bằng vật liệu dệt\" ⇒ vatLieuKhac TRONG [VAT_LIEU_DET] (khoá mới tu-vung@2; chữ biểu chính là \"bằng <vật liệu>\", cachDoc đọc \"bằng vật liệu dệt\")."
+    },
+    {
+      "ma": "94059920",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "vatLieuKhac chieu PHAI_KHONG theo anh em (mở rộng bằng chứng \"vật liệu khác\" của máy kiểm cho vatLieuKhac, như chatLieu ở 848180)",
+      "ghiChu": "tax.94059920 \"Chụp đèn bằng vật liệu khác\": 'vật liệu khác' = ngoài 'vật liệu dệt' của anh em tax.94059910. Không có điều kiện dương để ghi: vatLieuKhac TRONG [VAT_LIEU_DET] chieu PHAI_KHONG bị cổng 3 từ chối (dieu-kien-so-trong-khong-co-trong-trich: chữ của .20 không nêu 'vật liệu dệt'; luật vatLieuKhacTheoAnhEm chỉ nhận chatLieu); phanConLai một mình thì .50/.90 (\"Loại khác\" phủ định anh em) đỏ cong1-chua-so-hoa vì .20 không có điều kiện để phủ định; chatLieu 'vải dệt' không đọc được 'vật liệu dệt'."
+    },
+    {
+      "ma": "94059920",
+      "loai": "DUNG",
+      "ghiChu": "DUNG cong1-chua-so-hoa:94059950:94059920 và cong1-chua-so-hoa:94059990:94059920 - .20 'bằng vật liệu khác' chưa biểu diễn được; kéo theo .50/.90 (Loại khác phủ định .20). Chờ khoá/luật mới."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "94059910",
+        "94059930",
+        "94059940"
+      ],
+      "truc": {
+        "94059910": "DAC_DIEM",
+        "94059930": "CONG_DUNG",
+        "94059940": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Chụp đèn này là \"Chụp đèn bằng vật liệu dệt\" (.10), hay là \"Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19\" (.30) / \"Dùng cho đèn pha hoặc đèn rọi\" (.40)? Nếu chụp đèn bằng vật liệu dệt lại dùng cho các loại đèn đó, biểu thuế không nêu dòng nào được ưu tiên - cần chuyên gia phân xử?",
+      "trich": {
+        "94059910": "Chụp đèn bằng vật liệu dệt",
+        "94059930": "Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19",
+        "94059940": "Dùng cho đèn pha hoặc đèn rọi"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "94059910",
+            "94059930"
+          ],
+          "hang": "Chụp đèn bằng vật liệu dệt dùng cho đèn thuộc phân nhóm 9405.50.11"
+        },
+        {
+          "cap": [
+            "94059910",
+            "94059940"
+          ],
+          "hang": "Chụp đèn bằng vật liệu dệt dùng cho đèn pha"
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

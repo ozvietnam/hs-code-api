@@ -1,24 +1,55 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "721633",
-  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721633",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721633",
   "dong8": {
     "72163311": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "canhKhongNhoHonThan",
+          "op": "CO"
+        }
+      ]
     }
   },
   "dieuKienNut": {
     "7216331": {
       "dieuKienSo": [
-        { "fact": "hamLuongCarbon", "op": "<", "value": 0.6, "donVi": "%" }
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "7216331", "loai": "QUYET_DINH", "ghiChu": "tieuDe.7216331 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %" },
-    { "ma": "7216331", "loai": "BO_VE", "ve": "Có hàm lượng carbon", "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %" },
-    { "ma": "72163311", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "canhKhongNhoHonThan", "ghiChu": "tax.72163311: \"Chiều dày của cạnh (flange) không nhỏ hơn chiều dày của thân (web)\" — phép so sánh hai bộ phận của cùng thanh thép; tiLe là SO một ngưỡng (báo dieu-kien-so-nguong-khong-co-trong-trich vì chữ không có số), không có khoá CO_KHONG đọc được \"cạnh không mỏng hơn thân\"; bỏ vế làm đổi mã (.11 ↔ .19) ⇒ DỪNG" },
-    { "ma": "72163319", "loai": "QUYET_DINH", "ghiChu": "tax.72163319 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
-    { "ma": "72163390", "loai": "QUYET_DINH", "ghiChu": "tax.72163390 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "7216331",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7216331 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "7216331",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72163319",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72163319 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "72163390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72163390 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "72163311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72163311 \"Chiều dày của cạnh (flange) không nhỏ hơn chiều dày của thân (web)\" ⇒ canhKhongNhoHonThan CO (khoá tu-vung@2 mới, cực \"không nhỏ hơn\" nằm trong mẫu đọc nên không bị chữ \"không\" đảo cực); thay ghi chú THIEU_KHOA cũ."
+    }
   ]
 }

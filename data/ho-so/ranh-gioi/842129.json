@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1038#soan-842129",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-842129",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -83,12 +83,22 @@
       "trich": "84212960 - - - Loại khác, bằng fluoropolyme và có màng lọc hoặc màng tinh chế với độ dày không quá 140 micron (SEN)",
       "dieuKienSo": [
         {
+          "fact": "bangFluoropolyme",
+          "op": "CO"
+        },
+        {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
             "màng lọc",
             "màng tinh chế"
           ]
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 140,
+          "donVi": "micron"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -125,14 +135,14 @@
             "84212910",
             "84212920"
           ],
-          "hang": "Máy lọc phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm, đồng thời sử dụng trong sản xuất đường"
+          "hang": "Máy lọc phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm, dùng cho sản xuất đường"
         },
         {
           "cap": [
             "84212910",
             "84212930"
           ],
-          "hang": "Máy lọc phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm, đồng thời sử dụng trong hoạt động khoan dầu"
+          "hang": "Máy lọc phù hợp dùng trong y tế, phẫu thuật hoặc phòng thí nghiệm, dùng cho hoạt động khoan dầu"
         }
       ],
       "phanXu": null
@@ -167,19 +177,7 @@
     {
       "ma": "84212960",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84212960 \"Loại khác, bằng fluoropolyme và có màng lọc hoặc màng tinh chế với độ dày không quá 140 micron\" ⇒ tenLoai mảng [màng lọc, màng tinh chế]; chất liệu fluoropolyme và biên 140 micron đều thiếu khoá (xem THIEU_KHOA_TU_VUNG + BO_VE)."
-    },
-    {
-      "ma": "84212960",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu thêm giá trị fluoropolyme (PTFE); doDay thêm đơn vị micron",
-      "ghiChu": "tax.84212960 — chatLieu không đọc được 'fluoropolyme' (mẫu 'polyme' của plastic bị chặn biên từ); doDay không có đơn vị micron (ghi 0,14 mm bị cong3 nguong-khong-co-trong-trich chặn vì '0,14' không có trong trích, ghi 140 mm sai độ lớn). Không mượn gần nghĩa."
-    },
-    {
-      "ma": "84212960",
-      "loai": "BO_VE",
-      "ve": "với độ dày không quá 140 micron",
-      "lyDo": "doDay tu-vung@2 không có đơn vị micron (chỉ mm/cm/m/inch) nên biên 140 micron không biểu diễn được — cùng THIEU_KHOA_TU_VUNG với fluoropolyme; khi bổ sung khoá, biên là <= 140 micron (\"không quá\" = <=)."
+      "ghiChu": "tax.84212960 \"Loại khác, bằng fluoropolyme và có màng lọc hoặc màng tinh chế với độ dày không quá 140 micron (SEN)\" ⇒ chỉ vế (Loại khác trần đầu dòng): bangFluoropolyme CO (khoá lô 20, đọc \"bằng fluoropolyme\") + tenLoai [\"màng lọc\",\"màng tinh chế\"] (\"hoặc\" ⇒ mảng) + doDay <= 140 micron (\"không quá\" = <=; đơn vị micron đã có ở doDay)"
     }
   ]
 }

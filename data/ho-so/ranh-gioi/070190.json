@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1639#soan-070190",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-070190",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -17,7 +17,17 @@
       "hs": "07019010",
       "nguon": "tax.07019010",
       "trich": "07019010 - - Loại thường dùng để làm khoai tây chiên (chipping potatoes) (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "thuongDung",
+          "op": "CO"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm khoai tây chiên"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -31,9 +41,8 @@
   "ghiChuSoan": [
     {
       "ma": "07019010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "thuongDung",
-      "ghiChu": "tax.07019010: \"Loại thường dùng để làm khoai tây chiên (chipping potatoes) (SEN)\" — vế GIỚI HẠN \"thường\" không có khoá tu-vung@2 (chiHoacChuYeu chỉ đọc \"chỉ/chủ yếu/chuyên dùng\", không đọc \"thường dùng\"); bỏ vế \"thường\" làm rộng .10 với khoai chỉ thỉnh thoảng dùng chiên ⇒ đổi mã 8 số, không BO_VE được"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07019010 \"Loại thường dùng để làm khoai tây chiên (chipping potatoes) (SEN)\" ⇒ thuongDung CO (khoá lô 20, đọc \"thường dùng\"; mức yếu hơn chiHoacChuYeu) + congDung \"làm khoai tây chiên\" (đối tượng của \"thường dùng để\", theo ghiChu của khoá); ngoặc \"(chipping potatoes)\" và nhãn \"(SEN)\" không thành điều kiện. Thay ghi chú THIEU_KHOA thuongDung."
     },
     {
       "ma": "07019090",
