@@ -1,0 +1,38 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853670",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-853670",
+  "dong8": {
+    "85367010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "gốm"
+        }
+      ]
+    },
+    "85367020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "đồng"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "85367010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85367010 \"Bằng gốm\" ⇒ tenLoai \"gốm\" neo đúng chữ (khoá chatLieu có giá trị \"gốm sứ\" nhưng nhãn đọc cả hai âm tiết gốm+sứ, không phủ được vế \"Bằng gốm\" — tiền lệ 340700: dùng tenLoai neo chữ khi chatLieu không khớp)."
+    },
+    {
+      "ma": "85367020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85367020 \"Bằng đồng\" ⇒ tenLoai \"đồng\" — CÙNG khoá tenLoai với .10 (anh em cùng cách chia \"Bằng X\" đều là chất liệu; chatLieu không dùng được vì .10 \"Bằng gốm\": nhãn \"gốm sứ\" của chatLieu đọc cả hai âm tiết gốm+sứ, máy đánh TRAI với chữ \"gốm\" — một bên chatLieu một bên tenLoai làm mất phép so cùng trục, cong2-chong-lan giả). .90 \"Loại khác\" trần — máy phủ định ⇒ chất liệu khác gốm/đồng."
+    }
+  ]
+}

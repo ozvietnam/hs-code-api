@@ -1,0 +1,357 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "870220",
+  "nhom": "8702",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-870220",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "870220~r16335",
+      "nguon": "tieuDe.870220~r16335",
+      "trich": "870220~r16335 Dạng CKD (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8702202",
+      "nguon": "tieuDe.8702202",
+      "trich": "8702202 Loại khác, chở từ 30 người trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "chở từ 30 người trở lên"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8702203",
+      "nguon": "tieuDe.8702203",
+      "trich": "8702203 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "8702202"
+      ]
+    },
+    {
+      "id": "8702206",
+      "nguon": "tieuDe.8702206",
+      "trich": "8702206 Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "được thiết kế đặc biệt"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sân bay"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8702207",
+      "nguon": "tieuDe.8702207",
+      "trich": "8702207 Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô khách"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "8702206"
+      ]
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87022010",
+      "nguon": "tax.87022010",
+      "trich": "87022010 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022022",
+      "nguon": "tax.87022022",
+      "trich": "87022022 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022023",
+      "nguon": "tax.87022023",
+      "trich": "87022023 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022029",
+      "nguon": "tax.87022029",
+      "trich": "87022029 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022031",
+      "nguon": "tax.87022031",
+      "trich": "87022031 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022032",
+      "nguon": "tax.87022032",
+      "trich": "87022032 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022039",
+      "nguon": "tax.87022039",
+      "trich": "87022039 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022041",
+      "nguon": "tax.87022041",
+      "trich": "87022041 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022049",
+      "nguon": "tax.87022049",
+      "trich": "87022049 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022050",
+      "nguon": "tax.87022050",
+      "trich": "87022050 - - - Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách (1) (coaches, buses, minibuses) hoặc ô tô van)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ô tô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022061",
+      "nguon": "tax.87022061",
+      "trich": "87022061 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022062",
+      "nguon": "tax.87022062",
+      "trich": "87022062 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022069",
+      "nguon": "tax.87022069",
+      "trich": "87022069 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022071",
+      "nguon": "tax.87022071",
+      "trich": "87022071 - - - - Khối lượng toàn bộ theo thiết kế (SEN) từ 6 tấn trở lên nhưng không quá 18 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">=",
+          "value": 6,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 18,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022072",
+      "nguon": "tax.87022072",
+      "trich": "87022072 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022079",
+      "nguon": "tax.87022079",
+      "trich": "87022079 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022091",
+      "nguon": "tax.87022091",
+      "trich": "87022091 - - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 24 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 24,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87022099",
+      "nguon": "tax.87022099",
+      "trich": "87022099 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "870220~r16335",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870220~r16335 \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG — như 870121.10/870210~r16314; tầng r16348 \"Loại khác\" trần — máy phủ định (đã lắp ráp)."
+    },
+    {
+      "ma": "87022010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87022010/.50 \"Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách hoặc ô tô van)\" ⇒ tenLoai \"Ô tô\" — vế \"không bao gồm…\" không ghi PHAI_KHONG (\"Ô tô\" là cha tập âm tiết của \"ô tô khách\" ⇒ CHUA_BIET làm dòng không tới được); máy tự phân bằng tên-cụ-thể-hon #600 với .3/.7; ngoặc tiếng Anh chú thích."
+    },
+    {
+      "ma": "8702202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702202 \"Loại khác, chở từ 30 người trở lên\" ⇒ dungCho \"chở từ 30 người trở lên\" (nguyên văn vế; tu-vung@2 không có khoá số chỗ ngồi) — \"Loại khác\" máy phủ định .10. .22/.23 khoiLuongToanBo >= 6 tấn và <= 18 tấn / > 24 tấn."
+    },
+    {
+      "ma": "8702203",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702203 \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\" + phanConLai [\"8702202\"] (khác .2 chở ≥30); .31/.32 như .22/.23."
+    },
+    {
+      "ma": "8702206",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702206 \"Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)\" ⇒ congDung \"được thiết kế đặc biệt\" + dungCho \"sân bay\" (vế \"để sử dụng trong\"); \"chở từ 30 người\" nằm trong vế sân bay theo SEN (xe buýt sân bay chở 80–100 người) — như 870210.7."
+    },
+    {
+      "ma": "8702207",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8702207 \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\" + phanConLai [\"8702206\"] (khác .6 xe sân bay); .71/.72 như .61/.62; .9 \"Loại khác\" trần, .91 > 24 tấn, .99 LK."
+    }
+  ]
+}

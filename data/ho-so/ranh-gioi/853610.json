@@ -1,0 +1,160 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "853610",
+  "nhom": "8536",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-853610",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8536101",
+      "nguon": "tieuDe.8536101",
+      "trich": "8536101 Cầu chì nhiệt; cầu chì thủy tinh",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cầu chì nhiệt",
+            "cầu chì thủy tinh"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85361011",
+      "nguon": "tax.85361011",
+      "trich": "85361011 - - - Thích hợp dùng cho quạt điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "quạt điện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85361012",
+      "nguon": "tax.85361012",
+      "trich": "85361012 - - - Loại khác, dòng điện dưới 16 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85361013",
+      "nguon": "tax.85361013",
+      "trich": "85361013 - - - Khối cầu chì, loại sử dụng cho xe có động cơ (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khối cầu chì"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85361019",
+      "nguon": "tax.85361019",
+      "trich": "85361019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85361091",
+      "nguon": "tax.85361091",
+      "trich": "85361091 - - - Thích hợp dùng cho quạt điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "quạt điện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85361092",
+      "nguon": "tax.85361092",
+      "trich": "85361092 - - - Loại khác, dòng điện dưới 16 A",
+      "dieuKienSo": [
+        {
+          "fact": "dongDien",
+          "op": "<",
+          "value": 16,
+          "donVi": "A"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85361093",
+      "nguon": "tax.85361093",
+      "trich": "85361093 - - - Khối cầu chì, loại sử dụng cho xe có động cơ (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Khối cầu chì"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85361099",
+      "nguon": "tax.85361099",
+      "trich": "85361099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8536101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8536101 \"Cầu chì nhiệt; cầu chì thủy tinh\" ⇒ tenLoai mảng 2 tên (dấu \";\" tách hai loại); tầng 8536109 \"Loại khác\" trần — không ghi điều kiện (máy phủ định)."
+    },
+    {
+      "ma": "85361011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85361011/.91 \"Thích hợp dùng cho quạt điện\" ⇒ dungCho \"quạt điện\" — như 853641 (dùng cho quạt điện)."
+    },
+    {
+      "ma": "85361012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85361012/.92 \"Loại khác, dòng điện dưới 16 A\" ⇒ chỉ ghi vế: dongDien < 16 A (\"dưới\" = <); \"Loại khác\" máy tự phủ định anh em (.11/.13)."
+    },
+    {
+      "ma": "85361013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85361013/.93 \"Khối cầu chì, loại sử dụng cho xe có động cơ (SEN)\" ⇒ tenLoai \"Khối cầu chì\" + dungCho \"xe có động cơ\" (vế \"loại sử dụng cho …\"); \"(SEN)\" ngoặc chú thích."
+    }
+  ]
+}

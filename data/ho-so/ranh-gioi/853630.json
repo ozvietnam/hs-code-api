@@ -1,0 +1,97 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "853630",
+  "nhom": "8536",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-853630",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85363010",
+      "nguon": "tax.85363010",
+      "trich": "85363010 - - Bộ chống sét",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ chống sét"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85363020",
+      "nguon": "tax.85363020",
+      "trich": "85363020 - - Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "thiết bị sóng vô tuyến",
+            "quạt điện"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85363090",
+      "nguon": "tax.85363090",
+      "trich": "85363090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "85363010",
+        "85363020"
+      ],
+      "truc": {
+        "85363010": "TEN_LOAI",
+        "85363020": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Thiết bị bảo vệ mạch điện này có phải là \"Bộ chống sét\" (85363010) hay là loại \"sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện\" (85363020) không phải bộ chống sét?",
+      "trich": {
+        "85363010": "Bộ chống sét",
+        "85363020": "Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "85363010",
+            "85363020"
+          ],
+          "hang": "Bộ chống sét dùng cho thiết bị sóng vô tuyến"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85363010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85363010 \"Bộ chống sét\" ⇒ tenLoai \"Bộ chống sét\" nguyên văn."
+    },
+    {
+      "ma": "85363020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85363020 \"Loại sử dụng trong các thiết bị sóng vô tuyến hoặc quạt điện\" ⇒ dungCho mảng 2 đích (\"sử dụng trong\" = dùng cho; \"hoặc\" ⇒ mảng) — như 853641 (\"dùng cho quạt điện\")."
+    },
+    {
+      "ma": "853630",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Hai dòng anh em chia khác trục: .10 theo tên (\"Bộ chống sét\"), .20 theo công dụng (\"sử dụng trong …\") ⇒ chongLanTruc (cấp dòng, 2 anh em — như 940541, #683); bộ chống sét lắp trong thiết bị sóng vô tuyến là hàng thật thoả cả hai ⇒ viDuHang."
+    }
+  ]
+}
