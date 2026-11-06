@@ -40,12 +40,6 @@
           "fact": "congDung",
           "op": "CONG_DUNG",
           "value": "làm nền sản xuất giấy carbon"
-        },
-        {
-          "fact": "dinhLuong",
-          "op": ">=",
-          "value": 20,
-          "donVi": "g/m2"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -134,7 +128,7 @@
     {
       "ma": "4802542",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4802542 \"Giấy làm nền sản xuất giấy carbon khác\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"làm nền sản xuất giấy carbon\" + dinhLuong >= 20 g/m2: \"khác\" là phần CÒN LẠI của nhánh \"Giấy làm nền sản xuất giấy carbon\" sau 4802541 (định lượng dưới 20g/m2) nên ngưỡng 20 lấy từ tieuDe.4802541 — không bịa ngưỡng mới, không mã hoá trần 40 g/m2 (điều kiện cấp phân nhóm). KHÔNG khai phanConLai: \"khác\" bị giới hạn bởi danh ngữ \"Giấy làm nền sản xuất giấy carbon\", không phải phần còn lại của cả 480254."
+      "ghiChu": "tieuDe.4802542 \"Giấy làm nền sản xuất giấy carbon khác\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"làm nền sản xuất giấy carbon\" + dinhLuong >= 20 g/m2: \"khác\" là phần CÒN LẠI của nhánh \"Giấy làm nền sản xuất giấy carbon\" sau 4802541 (định lượng dưới 20g/m2) nên ngưỡng 20 KHÔNG khai trên 4802542 (trích tieuDe.4802542 không chứa ngưỡng) — ngưỡng được bao trùm bằng phủ định anh em 4802541 (dinhLuong < 20); không mã hoá trần 40 g/m2 (điều kiện cấp phân nhóm). KHÔNG khai phanConLai: \"khác\" bị giới hạn bởi danh ngữ \"Giấy làm nền sản xuất giấy carbon\", không phải phần còn lại của cả 480254."
     },
     {
       "ma": "48025411",
