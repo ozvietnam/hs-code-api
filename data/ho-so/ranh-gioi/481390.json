@@ -1,0 +1,163 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481390",
+  "nhom": "4813",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1507#soan-481390",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4813901",
+      "nguon": "tieuDe.4813901",
+      "trich": "4813901 Dạng cuộn với chiều rộng trên 5 cm, đã phủ",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 5,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "48139011",
+      "nguon": "tax.48139011",
+      "trich": "48139011 - - - Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để bọc thuốc lá điếu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48139012",
+      "nguon": "tax.48139012",
+      "trich": "48139012 - - - Giấy sáp ghép đầu lọc thuốc lá điếu (cigarette tipping paper) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48139019",
+      "nguon": "tax.48139019",
+      "trich": "48139019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48139091",
+      "nguon": "tax.48139091",
+      "trich": "48139091 - - - Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để bọc thuốc lá điếu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48139099",
+      "nguon": "tax.48139099",
+      "trich": "48139099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "481390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) ⇒ không có nút <pn6>~r<dòng> để khai. Điều kiện ở tầng 6 số không khai trong khung này: nguồn gói cho tầng 6 số là wco.481390 \"Paper, cigarette; (other than in rolls of a width not exceeding 5cm, or in booklets or tubes)\" (ten.vi của nhóm là \"Loại khác\"); 481390 không phải tiêu đề có id tieuDe, khung spec chỉ có dong8 + dieuKienNut."
+    },
+    {
+      "ma": "481390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ dòng và chữ tiêu đề đều ≤ 300 ký tự ⇒ KHÔNG ghi trich/nguon (máy tự chép nguyên văn kèm mức gạch của dòng biểu)."
+    },
+    {
+      "ma": "481390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hai trục của cây không chồng lấn: tiêu đề 4813901/4813909 chia theo đặc điểm (dạng cuộn, chiều rộng trên 5 cm, đã phủ / loại khác), các dòng trong nhánh chia theo công dụng (bọc thuốc lá / ghép đầu lọc) ⇒ KHÔNG khai chongLanVanBan. Không khai chongLanTruc vì viDuHang phải là hàng THẬT thoả cả hai nhánh — không bịa ví dụ."
+    },
+    {
+      "ma": "4813901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4813901 \"Dạng cuộn với chiều rộng trên 5 cm, đã phủ\" ⇒ tiêu đề có tên nên khai dieuKienNut: \"Dạng cuộn\" → dangCuon (CO_KHONG, nhanVi \"ở dạng cuộn (dây hàn, que hàn, tấm, dải)\"), op CO; \"chiều rộng trên 5 cm\" → chieuRong (SO), biên \">\" (\"trên\" = >), value 5, đơn vị giữ theo chữ biểu (cm)."
+    },
+    {
+      "ma": "4813901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế \"đã phủ\" không có khoá từ vựng nên điều kiện đó KHÔNG khai trong dieuKienSo (giữ phần khai được: dạng cuộn + chiều rộng), khai ở ghi chú THIEU_KHOA_TU_VUNG bên dưới — không bịa khoá."
+    },
+    {
+      "ma": "4813901",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daPhu",
+      "ghiChu": "đã phủ",
+      "lyDo": "Vế \"đã phủ\" chưa có khoá từ vựng. lopMaPhu là \"lớp mạ hoặc tráng phủ bề mặt\" nhưng chỉ nhận op TRONG với danh sách giá trị MA_DONG/TRANG_NHUA_FLO/TRANG_KEM_CROMAT/TRANG_THIEC/SON_SAU_MA_KEM (tráng phủ kim loại, không phải giấy phủ); daXuLyBeMat là \"đã được xử lý bề mặt\" — rộng hơn phủ (tính bão hòa, cán, ngâm tẩm) nên không dùng. Cần khoá mới (CO = đã phủ, KHONG = không phủ) — dùng CÙNG tên đề xuất với lô 481320 (4813202/4813203). Không bịa khoá."
+    },
+    {
+      "ma": "4813909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4813909 \"Loại khác\" trần ⇒ bỏ qua, không khai dieuKienNut (máy phủ định anh em)."
+    },
+    {
+      "ma": "48139011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139011 \"Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)\" ⇒ điều kiện lấy từ SEN (sen.48139011): khoá congDung (CONG_DUNG), value \"dùng để bọc thuốc lá điếu\". Dùng CÙNG khoá + cùng giá trị với 48139091 và với 48132021/48132031 đã soạn."
+    },
+    {
+      "ma": "48139011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Điều kiện \"dạng cuộn, chiều rộng trên 5 cm, đã phủ\" do tiêu đề cha 4813901 mang, không chép lại vào dòng."
+    },
+    {
+      "ma": "48139012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139012 \"Giấy sáp ghép đầu lọc thuốc lá điếu (cigarette tipping paper) (SEN)\" ⇒ congDung (CONG_DUNG), value \"dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu\" (sen.48139012) — cùng khoá + cùng giá trị với 48132010 đã soạn."
+    },
+    {
+      "ma": "48139012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tách với 48139011 bằng công dụng (ghép (nối) đầu lọc và thân thuốc lá vs bọc thuốc lá điếu) ⇒ không chồng lấn, không khai chongLanVanBan."
+    },
+    {
+      "ma": "48139019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139019 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện, không đưa vào spec."
+    },
+    {
+      "ma": "48139091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139091 \"Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)\" ⇒ cùng khoá + cùng giá trị với 48139011 (congDung, \"dùng để bọc thuốc lá điếu\", sen.48139091); dòng này khác 48139011 chỉ ở nhánh cha: 4813901 \"Dạng cuộn với chiều rộng trên 5 cm, đã phủ\" vs 4813909 \"Loại khác\"."
+    },
+    {
+      "ma": "48139099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139099 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện, không đưa vào spec."
+    }
+  ]
+}

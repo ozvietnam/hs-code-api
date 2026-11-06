@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "500720",
-  "phien": "zcode-mm:loop:20261106T1029#soan-500720",
+  "phien": "zcode-mm:loop:20261106T1515#soan-500720",
   "dong8": {
     "50072020": {
       "dieuKienSo": [
@@ -23,7 +23,9 @@
     }
   },
   "dieuKienNut": {
-    "500720": { "dieuKienSo": [] }
+    "500720": {
+      "dieuKienSo": []
+    }
   },
   "chongLanVanBan": [
     {
@@ -33,40 +35,68 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "50072020",
+      "ma": "500720",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.50072020 \"50072020 - - Chưa tẩy trắng hoặc đã tẩy trắng\" ⇒ tinhTrangTayTrang TRONG [\"CHUA_TAY_TRANG\", \"DA_TAY_TRANG\"] — mảng 2 giá trị đọc vế \"hoặc\"; khoá tinhTrangTayTrang (tình trạng tẩy trắng của xơ, sợi hoặc vải dệt) đúng nghĩa chữ biểu. Chữ biểu dòng này không nói gì về in batik nên KHÔNG thêm điều kiện không in batik (từ vựng không có khoá nào đọc được vế đó)."
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) ⇒ không có nút <pn6>~r<dòng> để khai."
     },
     {
-      "ma": "50072030",
+      "ma": "500720",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.50072030 \"50072030 - - Được in bằng phương pháp batik truyền thống (SEN)\" ⇒ phuongPhapIn TRONG [\"BATIK\"] — khoá phuongPhapIn (phương pháp in, vải/hàng dệt) đọc đúng vế bằng phương pháp batik. KHÔNG dùng khoá gợi ý phuongPhapCheTao: khoá đó chỉ có giá trị DUC/REN/CAN_NONG/… chứ không có BATIK nên điều kiện sẽ không hợp lệ. Vế \"truyền thống\" không có khoá riêng trong từ vựng ⇒ không tách thành điều kiện riêng; \"(SEN)\" là ngoặc chú thích, không phải điều kiện."
+      "ghiChu": "Chữ dòng và chữ tiêu đề đều ≤ 300 ký tự ⇒ KHÔNG ghi trich/nguon (máy tự chép nguyên văn kèm mức gạch của dòng biểu)."
     },
     {
-      "ma": "50072020+50072030",
+      "ma": "500720",
       "loai": "QUYET_DINH",
-      "ghiChu": "Chồng lấn theo chữ biểu (tình trạng tẩy trắng ↔ phương pháp in) ⇒ khai chongLanVanBan cho cặp này, không bịa điều kiện tách. Gói soạn không có nguồn (sen.*; chú giải chỉ kèm độ dài) chốt thứ tự ưu tiên giữa .20 và .30; nếu soát xác định cặp này là chồng lấn TRỤC thì phải khai chongLanTruc + viDuHang là hàng THẬT thoả cả hai nhánh — gói không có nguồn để dựng ví dụ nên không bịa. Hệ quả phải nói rõ: điều kiện .20 bao trọn cả hai giá trị của khoá tinhTrangTayTrang, nên phép phủ định anh em cho dòng Loại khác 50072090 có thể không còn lối vào (kiểm ở cổng 2, cong2-dong-khong-toi-duoc); ranh giới thật .20 ↔ .30 nằm ở SEN Chương 50, gói không có nguồn đó."
+      "ghiChu": "500720 là tiêu đề có tên trong cây (có 3 dòng 8 số con) ⇒ khai dieuKienNut[\"500720\"]. Nguồn ở tầng 6 số của gói là wco.500720 \"500720 Silk; woven fabrics, containing 85% or more by weight of silk or of silk waste other than noil silk\" và ten.vi \"Các loại vải dệt thoi khác, có hàm lượng tơ hoặc phế liệu tơ tằm ngoại trừ tơ vụn chiếm 85% trở lên tính theo khối lượng\" (gói không kèm id tieuDe cho tầng 6 số)."
     },
     {
-      "ma": "50072090",
+      "ma": "500720",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.50072090 \"50072090 - - Loại khác\" trần (cây đánh dấu [LK], khongCanDieuKien) ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+      "ghiChu": "Vế \"vải dệt thoi\" / \"woven fabrics\" KHÔNG mã hoá thành chatLieu \"vải dệt\": giá trị đó không phân biệt được gì trong Chương 50 (mọi vật phẩm dưới tiêu đề 5007 đều là vải dệt) và từ vựng không có giá trị \"tơ tằm\"/\"lụa\". Điều kiện của tiêu đề không chép lại xuống dòng."
+    },
+    {
+      "ma": "500720",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế \"khác\" trong tiêu đề (\"Các loại vải dệt thoi khác, ...\") là so với nhánh anh em 500710 ở tầng tiêu đề 5007, không phải loại trừ giữa các dòng 8 số của 500720 ⇒ không mã hoá thành điều kiện. Nguồn phân nhóm wco.500720 là nguồn CHUNG cho cả ba dòng nên không mã hoá thành điều kiện của dòng."
     },
     {
       "ma": "500720",
       "loai": "THIEU_KHOA_TU_VUNG",
       "khoaDeXuat": "hamLuongTo",
-      "ghiChu": "tieuDe.500720 \"Các loại vải dệt thoi khác, có hàm lượng tơ hoặc phế liệu tơ tằm ngoại trừ tơ vụn chiếm 85% trở lên tính theo khối lượng\" (wco.500720 \"Silk; woven fabrics, containing 85% or more by weight of silk or of silk waste other than noil silk\") — vế ngưỡng \"85% trở lên tính theo khối lượng\" là điều kiện thật của nút nhưng tu-vung@2 chưa có khoá SO % cho hàm lượng tơ (hamLuongCarbon/hamLuongNiken/hamLuongCrom là chất khác; tiLe là \"lần\") ⇒ để dieuKienSo rỗng, KHÔNG bịa khoá."
+      "ghiChu": "chiếm 85% trở lên tính theo khối lượng",
+      "lyDo": "Vế ngưỡng là điều kiện thật của tiêu đề 500720 (tiêu đề: \"Các loại vải dệt thoi khác, có hàm lượng tơ hoặc phế liệu tơ tằm ngoại trừ tơ vụn chiếm 85% trở lên tính theo khối lượng\"; wco.500720: \"containing 85% or more by weight of silk or of silk waste other than noil silk\") — nhưng tu-vung@2 chưa có khoá SO cho hàm lượng tính theo % : hamLuongCarbon/hamLuongNiken/hamLuongCrom là hàm lượng của chất khác, tiLe là \"lần\" (tỉ lệ tử/mẫu), không đọc được ngưỡng %. Để dieuKienSo rỗng, KHÔNG bịa khoá — cổng 1 chặn đúng ý. Biên \"trở lên\" = >=, đơn vị %."
+    },
+    {
+      "ma": "500720",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "loaiTo",
+      "ghiChu": "ngoại trừ tơ vụn",
+      "lyDo": "Vế loại trừ \"ngoại trừ tơ vụn\" (wco.500720: \"silk or of silk waste other than noil silk\") chưa có khoá từ vựng. chatLieu là \"chất liệu (theo vị trí)\", danh sách giá trị không có tơ tằm/tơ vụn; loaiSoiDet là \"loại xơ/sợi dệt (vật liệu dệt chủ yếu)\" — giá trị TO_TAM là TƠ TÔNG (bông), KHÁC \"tơ tằm\", không dùng. Cần khoá mới (LIET_KE: tơ tằm / tơ vụn / phế liệu tơ) để chặn tơ vụn. Không bịa khoá."
     },
     {
       "ma": "500720",
       "loai": "QUYET_DINH",
-      "ghiChu": "Tiêu đề 6 số 500720: \"Các loại vải dệt thoi khác\" là TÊN hàng (vải dệt thoi của tơ tằm) và \"khác\" = khác 500710 (vải dệt thoi từ tơ vụn) ở tầng phân nhóm, không phải loại trừ giữa các dòng 8 số ⇒ không mã hoá thành điều kiện nút; không dùng chatLieu \"vải dệt\" (từ vựng không có giá trị tơ tằm/lụa, \"vải dệt\" không phân biệt được gì trong Chương 50). Nguồn phân nhóm wco.500720 là nguồn CHUNG cho cả ba dòng nên không mã hoá thành điều kiện của dòng."
+      "ghiChu": "Gói soạn chỉ nêu chú giải (nhom5007.nhom 646 ký tự / ch50.chuong 934 / phan50.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ không trích được vế nào từ chú giải; điều kiện chỉ dựa trên chữ biểu của chính dòng."
     },
     {
       "ma": "50072020",
       "loai": "QUYET_DINH",
-      "ghiChu": "Gói soạn chỉ nêu chú giải (nhom5007.nhom 646 ký tự / ch50.chuong 934 / phan50.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ không trích được vế nào từ chú giải; điều kiện chỉ dựa trên chữ biểu của chính dòng."
+      "ghiChu": "tax.50072020 \"50072020 - - Chưa tẩy trắng hoặc đã tẩy trắng\" ⇒ tinhTrangTayTrang TRONG [\"CHUA_TAY_TRANG\", \"DA_TAY_TRANG\"] — mảng 2 giá trị đọc vế \"hoặc\"; khoá tinhTrangTayTrang (tình trạng tẩy trắng của xơ, sợi hoặc vải dệt) đúng nghĩa chữ biểu. Chữ biểu dòng này không nói gì về in batik nên KHÔNG thêm điều kiện không in batik (từ vựng không có khoá nào đọc được vế đó). Điều kiện ở tầng tiêu đề 500720 không chép lại xuống dòng."
+    },
+    {
+      "ma": "50072030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50072030 \"50072030 - - Được in bằng phương pháp batik truyền thống (SEN)\" ⇒ phuongPhapIn TRONG [\"BATIK\"] — khoá phuongPhapIn (phương pháp in, vải/hàng dệt) đọc đúng vế bằng phương pháp batik. KHÔNG dùng khoá gợi ý phuongPhapCheTao: khoá đó chỉ có giá trị DUC/REN/CAN_NONG/CAN_NGUOI/KEO/DAP/HAN/EP_PHUN/THOI/DOT_DAP_KEO_GIAN chứ không có BATIK nên điều kiện sẽ không hợp lệ. Vế \"truyền thống\" không có khoá riêng trong từ vựng ⇒ không tách thành điều kiện riêng; \"(SEN)\" là ngoặc chú thích, không phải điều kiện. Điều kiện ở tầng tiêu đề 500720 không chép lại xuống dòng."
+    },
+    {
+      "ma": "50072090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50072090 \"50072090 - - Loại khác\" trần (cây đánh dấu [LK], loaiKhac + khongCanDieuKien) ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "50072020+50072030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chồng lấn theo chữ biểu (tình trạng tẩy trắng ↔ phương pháp in) ⇒ khai chongLanVanBan cho cặp này, không bịa điều kiện tách. Gói soạn không có nguồn (sen.*; chú giải chỉ kèm độ dài) chốt thứ tự ưu tiên giữa .20 và .30; nếu soát xác định cặp này là chồng lấn TRỤC thì phải khai chongLanTruc + viDuHang là hàng THẬT thoả cả hai nhánh — gói không có nguồn để dựng ví dụ nên không bịa. Hệ quả phải nói rõ: điều kiện .20 bao trọn cả hai giá trị của khoá tinhTrangTayTrang, nên phép phủ định anh em cho dòng Loại khác 50072090 có thể không còn lối vào (kiểm ở cổng 2, cong2-dong-khong-toi-duoc); ranh giới thật .20 ↔ .30 nằm ở SEN Chương 50, gói không có nguồn đó."
     }
   ]
 }

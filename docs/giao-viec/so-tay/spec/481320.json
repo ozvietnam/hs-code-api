@@ -1,0 +1,179 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "481320",
+  "phien": "zcode-mm:loop:20261106T1503#soan-481320",
+  "dong8": {
+    "48132010": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu"
+        }
+      ]
+    },
+    "48132021": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để bọc thuốc lá điếu"
+        }
+      ]
+    },
+    "48132022": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để bọc đầu lọc"
+        }
+      ]
+    },
+    "48132023": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để bọc đầu lọc"
+        }
+      ]
+    },
+    "48132031": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để bọc thuốc lá điếu"
+        }
+      ]
+    },
+    "48132032": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để bọc đầu lọc"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4813202": {
+      "dieuKienSo": []
+    },
+    "4813203": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "481320",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) ⇒ không có nút <pn6>~r<dòng> để khai. Điều kiện ở tầng 6 số \"Dạng cuộn với chiều rộng không quá 5 cm\" (ten.vi; nguồn gói cho tầng 6 số là wco.481320) không khai trong khung này: 481320 không phải tiêu đề có id tieuDe, khung spec chỉ có dong8 + dieuKienNut."
+    },
+    {
+      "ma": "481320",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ dòng và chữ tiêu đề đều ≤ 300 ký tự ⇒ KHÔNG ghi trich/nguon (máy tự chép nguyên văn kèm mức gạch của dòng biểu)."
+    },
+    {
+      "ma": "481320",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hai trục của cây không chồng lấn: tiêu đề 4813202/4813203 chia theo đặc điểm (đã phủ / không phủ), các dòng trong nhánh chia theo công dụng (bọc thuốc lá / bọc đầu lọc / ghép đầu lọc) ⇒ KHÔNG khai chongLanVanBan. Không khai chongLanTruc vì viDuHang phải là hàng THẬT thoả cả hai nhánh — không bịa ví dụ."
+    },
+    {
+      "ma": "48132010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48132010 \"Giấy sáp ghép đầu lọc thuốc lá điếu (cigarette tipping paper) (SEN)\" ⇒ điều kiện lấy từ SEN (sen.48132010): khoá congDung (CONG_DUNG), value \"dùng để ghép (nối) đầu lọc và thân thuốc lá trong thuốc lá điếu\". Dùng CÙNG khoá với anh em 48132021/22/23/31/32."
+    },
+    {
+      "ma": "48132010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không dùng tenLoai: chữ trích \"Giấy sáp ghép đầu lọc thuốc lá điếu\" trùng tên dòng biểu, hỏi tên loại không tách được nhánh; công dụng theo SEN mới tách được ba nhánh (bọc thuốc lá / bọc đầu lọc / ghép đầu lọc)."
+    },
+    {
+      "ma": "48132010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Cây gói không có tiêu đề 4813201 ⇒ 48132010 là dòng 8 số trực tiếp dưới nhóm 481320; KHÔNG suy diễn \"không phủ\" cho dòng này (nhánh đã phủ / không phủ chỉ có ở \"Loại khác\": 4813202/4813203)."
+    },
+    {
+      "ma": "48132010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tách với 48132032 \"Giấy cuốn đầu lọc (Plug wrap paper)\": cả hai đều nói về đầu lọc nhưng khác công dụng (ghép (nối) đầu lọc và thân thuốc lá vs bọc đầu lọc) ⇒ không chồng lấn, không khai chongLanVanBan."
+    },
+    {
+      "ma": "4813202",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4813202 \"Loại khác, không phủ\" ⇒ theo luật \"Loại khác, <vế>\" chỉ ghi điều kiện của vế (\"không phủ\"); vế \"Loại khác\" không ghi điều kiện."
+    },
+    {
+      "ma": "4813202",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daPhu",
+      "ghiChu": "không phủ",
+      "lyDo": "Vế \"không phủ\" chưa có khoá từ vựng. lopMaPhu là \"lớp mạ hoặc tráng phủ bề mặt\" nhưng chỉ nhận op TRONG với danh sách giá trị MA_DONG/TRANG_NHUA_FLO/TRANG_KEM_CROMAT/TRANG_THIEC/SON_SAU_MA_KEM (tráng phủ kim loại, không phải giấy phủ); daXuLyBeMat là \"đã được xử lý bề mặt\" — rộng hơn phủ (tính bão hòa, cán, ngâm tẩm) nên không dùng; daTrangPhuEpLop ghi rõ \"(vải dệt)\". Cần khoá mới (CO = đã phủ, KHONG = không phủ). Không bịa khoá — điều kiện của tiêu đề để trống, cổng 1 chặn đúng ý."
+    },
+    {
+      "ma": "4813203",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4813203 \"Loại khác, đã phủ\" ⇒ theo luật \"Loại khác, <vế>\" chỉ ghi điều kiện của vế (\"đã phủ\"); vế \"Loại khác\" không ghi điều kiện."
+    },
+    {
+      "ma": "4813203",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daPhu",
+      "ghiChu": "đã phủ",
+      "lyDo": "Vế \"đã phủ\" chưa có khoá từ vựng (cùng lý do như 4813202: lopMaPhu chỉ có danh sách tráng phủ kim loại và op TRONG; daXuLyBeMat là \"đã được xử lý bề mặt\" — rộng hơn phủ). Cần khoá mới (CO = đã phủ, KHONG = không phủ). Không bịa khoá — điều kiện của tiêu đề để trống, cổng 1 chặn đúng ý."
+    },
+    {
+      "ma": "48132021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48132021 \"Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)\" ⇒ congDung (CONG_DUNG), value \"dùng để bọc thuốc lá điếu\" (sen.48132021). Điều kiện \"không phủ\" do tiêu đề cha 4813202 mang, không chép lại vào dòng."
+    },
+    {
+      "ma": "48132022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48132022 \"Giấy cuốn đầu lọc có độ xốp hơn 12 cm3 (min-1. cm-2) trong đơn vị thấm khí CORESTA (SEN)\" ⇒ congDung (CONG_DUNG), value \"dùng để bọc đầu lọc\" (sen.48132022); nhánh này tách khỏi 48132023 bằng ngưỡng độ xốp — ngưỡng không có khoá từ vựng nên khai ở ghi chú THIEU_KHOA_TU_VUNG bên dưới, không bịa khoá trong dieuKienSo."
+    },
+    {
+      "ma": "48132022",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "doXop",
+      "ghiChu": "có độ xốp hơn 12 cm3 (min-1. cm-2) trong đơn vị thấm khí CORESTA",
+      "lyDo": "Điều kiện cần diễn đạt: độ xốp > 12 (biên theo chữ: \"hơn\" = >), đơn vị theo chữ biểu cm3 (min-1. cm-2) = cm3/phút/cm2, đo theo CORESTA. Chưa có khoá từ vựng cho độ xốp: theTich là \"thể tích ngoài / thể tích bên ngoài\" (cm3) — KHÁC độ xốp, không dùng. Không bịa khoá."
+    },
+    {
+      "ma": "48132023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48132023 \"Giấy cuốn đầu lọc khác (SEN)\" ⇒ nghiPhanConLai: nhánh còn lại của anh em 48132022, chữ \"khác\" là phần BÙ của ngưỡng \"độ xốp hơn 12\" (không > 12). Chữ trích không ghi ngưỡng ⇒ không chép ngưỡng vào dieuKienSo; chỉ khai congDung (CONG_DUNG), value \"dùng để bọc đầu lọc\" (sen.48132023)."
+    },
+    {
+      "ma": "48132023",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "doXop",
+      "ghiChu": "Giấy cuốn đầu lọc khác",
+      "lyDo": "Phần bù của ngưỡng độ xốp của 48132022 — cùng khoá độ xốp nhưng ĐẢO CHIỀU (không > 12). Khi khoá được thêm phải đối chiếu đảo chiều với 48132022, không chép nguyên ngưỡng."
+    },
+    {
+      "ma": "48132029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48132029 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện, không đưa vào spec."
+    },
+    {
+      "ma": "48132031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48132031 \"Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)\" ⇒ cùng khoá + cùng giá trị với 48132021 (congDung, \"dùng để bọc thuốc lá điếu\", sen.48132031); dòng này khác 48132021 chỉ ở \"đã phủ\" do tiêu đề cha 4813203 mang."
+    },
+    {
+      "ma": "48132032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48132032 \"Giấy cuốn đầu lọc (Plug wrap paper) (SEN)\" ⇒ congDung (CONG_DUNG), value \"dùng để bọc đầu lọc\" (sen.48132032) — cùng khoá + cùng giá trị với 48132022/48132023; khác ở \"đã phủ\" do tiêu đề cha 4813203 mang."
+    },
+    {
+      "ma": "48132039",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48132039 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện, không đưa vào spec."
+    }
+  ]
+}

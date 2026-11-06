@@ -1,0 +1,114 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "481690",
+  "phien": "zcode-mm:loop:20261106T1512#soan-481690",
+  "dong8": {
+    "48169010": {
+      "ten": "Giấy than",
+      "dieuKienSo": [
+        { "khoa": "tenLoai", "op": "TEN_LOAI", "value": "Giấy than" }
+      ],
+      "trich": "48169010 - - Giấy than",
+      "nguon": "tax.48169010"
+    },
+    "48169020": {
+      "ten": "Giấy dùng để sao chụp khác",
+      "dieuKienSo": [
+        { "khoa": "tenLoai", "op": "TEN_LOAI", "value": "Giấy dùng để sao chụp khác" }
+      ],
+      "trich": "48169020 - - Giấy dùng để sao chụp khác",
+      "nguon": "tax.48169020"
+    },
+    "48169030": {
+      "ten": "Tấm in offset",
+      "dieuKienSo": [
+        { "khoa": "tenLoai", "op": "TEN_LOAI", "value": "Tấm in offset" }
+      ],
+      "trich": "48169030 - - Tấm in offset",
+      "nguon": "tax.48169030"
+    },
+    "48169040": {
+      "ten": "Giấy chuyển nhiệt",
+      "dieuKienSo": [
+        { "khoa": "tenLoai", "op": "TEN_LOAI", "value": "Giấy chuyển nhiệt" }
+      ],
+      "trich": "48169040 - - Giấy chuyển nhiệt",
+      "nguon": "tax.48169040"
+    },
+    "48169050": {
+      "ten": "Loại khác, dạng cuộn có chiều rộng trên 15 cm nhưng không quá 36 cm",
+      "dieuKienSo": [
+        { "khoa": "dangCuon", "op": "CO", "value": true },
+        { "khoa": "chieuRong", "op": ">", "value": 15, "donVi": "cm" },
+        { "khoa": "chieuRong", "op": "<=", "value": 36, "donVi": "cm" }
+      ],
+      "trich": "48169050 - - Loại khác, dạng cuộn có chiều rộng trên 15 cm nhưng không quá 36 cm",
+      "nguon": "tax.48169050"
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "48169010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ biểu chỉ có tên, không có vế giới hạn; ghi điều kiện bằng khoá tenLoai (op TEN_LOAI) với tên nguyên văn từ nguồn tax.48169010."
+    },
+    {
+      "ma": "48169020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Cùng cách chia với các dòng có tên: khoá tenLoai (op TEN_LOAI), tên nguyên văn từ nguồn tax.48169020."
+    },
+    {
+      "ma": "48169020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"khác\" là phần còn lại so với 48169010 (nghiPhanConLai); từ vựng không có khoá \"khác so với\" nên giữ nguyên trong tên loại, vế \"dùng để sao chụp\" đã được đọc tới trong chính giá trị tenLoai."
+    },
+    {
+      "ma": "48169030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Cùng cách chia với các dòng có tên: khoá tenLoai (op TEN_LOAI), tên nguyên văn từ nguồn tax.48169030."
+    },
+    {
+      "ma": "48169040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Cùng cách chia với các dòng có tên: khoá tenLoai (op TEN_LOAI), tên nguyên văn từ nguồn tax.48169040."
+    },
+    {
+      "ma": "48169050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác, <vế>\": chỉ ghi điều kiện của vế — dangCuon = CO (dạng cuộn) và chieuRong > 15 cm, <= 36 cm; không ghi tenLoai."
+    },
+    {
+      "ma": "48169050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hai biên của cùng khoá chieuRong đọc thành khoảng 15 cm < chiều rộng <= 36 cm; đơn vị \"cm\" giữ nguyên theo chữ biểu, không quy đổi sang mm của donViChuan."
+    },
+    {
+      "ma": "48169090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần (loaiKhac + khongCanDieuKien) nên không đưa vào dong8."
+    },
+    {
+      "ma": "481690",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số là \"Loại khác\" trần (ten.vi) nên không khai dieuKienNut; tangKhongMa rỗng nên không có tầng tiêu đề không mã để khai."
+    },
+    {
+      "ma": "481690",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan/chongLanTruc: các nhánh có tên chia theo tên, nhánh 48169050 chia theo dạng/chiều rộng; gói không có dữ liệu hàng thật để lập viDuHang cho cặp nhánh nên không khai trục."
+    },
+    {
+      "ma": "481690",
+      "loai": "BO_VE",
+      "ve": "n.e.c. in item no. 4816.20",
+      "lyDo": "Vế loại trừ theo mã HS khác ở tiêu đề WCO; từ vựng không có khoá cho điều kiện loại trừ theo mã nên không khai được điều kiện, giữ nguyên vế để đối chiếu."
+    },
+    {
+      "ma": "481690",
+      "loai": "BO_VE",
+      "ve": "(other than those of heading no. 4809)",
+      "lyDo": "Vế loại trừ mã 4809 ở tiêu đề WCO; từ vựng không có khoá tương ứng nên không khai được điều kiện."
+    }
+  ]
+}

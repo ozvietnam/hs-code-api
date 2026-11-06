@@ -1,0 +1,97 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481110",
+  "nhom": "4811",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1442#soan-481110",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48111020",
+      "nguon": "tax.48111020",
+      "trich": "Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKienSo": [
+        {
+          "ve": "A",
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 15,
+          "donVi": "cm"
+        },
+        {
+          "ve": "B",
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48111090",
+      "nguon": "tax.48111090",
+      "trich": "48111090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48111020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48111020 \"Dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" => tiêu đề có \"hoặc\", chia HAI NHÁNH trong cùng một dòng 8 số: nhánh A = dạng cuộn (chiều rộng <= 15 cm); nhánh B = dạng tờ hình chữ nhật (kể cả hình vuông) + mọi chiều <= 36 cm + không gấp. Hai ngưỡng trong dieuKienSo thuộc hai nhánh (thẻ \"ve\"), KHÔNG phải hai điều kiện đồng thời - bộ sinh phải hỏi theo nhánh, không gộp thành VÀ."
+    },
+    {
+      "ma": "48111020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"không có chiều nào trên 36 cm\" => mọi chiều (dài x rộng x cao) đều không trên 36 cm => khoá kichThuoc, biên <=, value 36, đơn vị theo chữ biểu."
+    },
+    {
+      "ma": "48111020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đơn vị giữ nguyên theo chữ biểu (cm), không quy đổi sang mm của donViChuan; việc quy đổi để tầng sinh sổ tay. Biên theo chữ: \"không quá\" = <=."
+    },
+    {
+      "ma": "48111020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không đưa khoá dangCuon (\"Dạng cuộn\") vào dieuKienSo: dòng 8 số này chứa CẢ HAI dạng (cuộn | tờ), đặt điều kiện dạng cuộn ở dạng phẳng sẽ loại nhầm dạng tờ. Vế \"Dạng cuộn\" thuộc nhánh A - xem ghi chú phân nhánh."
+    },
+    {
+      "ma": "48111020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hinhDangTo",
+      "ghiChu": "ở dạng tờ hình chữ nhật (kể cả hình vuông)",
+      "lyDo": "Chưa có khoá từ vựng cho hình dạng tờ giấy; hinhDangCatGocKinh là \"tấm kính hình vuông hoặc hình chữ nhật\" - không dùng cho hàng giấy. Không bịa khoá."
+    },
+    {
+      "ma": "48111020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "dangKhongGap",
+      "ghiChu": "ở dạng không gấp",
+      "lyDo": "Chưa có khoá từ vựng cho tờ giấy ở dạng không gấp; loaiCung là \"loại cứng (rigid)\" - không gấp khác cứng. Không bịa khoá."
+    },
+    {
+      "ma": "48111020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "trich chép nguyên văn phần tiêu đề của dòng biểu; mức gạch \"48111020 - -\" thuộc dòng biểu, không chép vào trích. Nguồn: tax.48111020."
+    },
+    {
+      "ma": "48111090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48111090 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) => không khai điều kiện, không đưa vào spec."
+    },
+    {
+      "ma": "481110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) => dieuKienNut rỗng. Không có nhánh anh em chia theo tên và nhánh chia theo công dụng => không khai chongLanTruc / chongLanVanBan."
+    }
+  ]
+}
