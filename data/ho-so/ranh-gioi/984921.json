@@ -1,0 +1,151 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "984921",
+  "nhom": "9849",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984921",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "984921~r19535",
+      "nguon": "tieuDe.984921~r19535",
+      "trich": "984921~r19535 Đã lắp ráp hoàn chỉnh",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "9849211",
+      "nguon": "tieuDe.9849211",
+      "trich": "9849211 Động cơ dùng để tạo động lực cho các loại xe thuộc Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "tạo động lực cho các loại xe thuộc Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "98492111",
+      "nguon": "tax.98492111",
+      "trich": "98492111 - - - - Dung tích xi lanh không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492112",
+      "nguon": "tax.98492112",
+      "trich": "98492112 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492113",
+      "nguon": "tax.98492113",
+      "trich": "98492113 - - - - Dung tích xi lanh trên 3.500 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492114",
+      "nguon": "tax.98492114",
+      "trich": "98492114 - - - - Dung tích xi lanh không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492115",
+      "nguon": "tax.98492115",
+      "trich": "98492115 - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 3.500 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492119",
+      "nguon": "tax.98492119",
+      "trich": "98492119 - - - - Dung tích xi lanh trên 3.500 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "984921~r19539",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984921~r19539 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em r19535 \"Đã lắp ráp hoàn chỉnh\")"
+    },
+    {
+      "ma": "9849211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9849211 \"Động cơ dùng để tạo động lực cho các loại xe thuộc Chương 87\" — \"dùng để tạo động lực\" là công năng của chính động cơ ⇒ congDung, giữ trọn cụm đích nguyên văn kèm mã \"Chương 87\""
+    }
+  ]
+}

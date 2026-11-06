@@ -1,0 +1,122 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "984918",
+  "nhom": "9849",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984918",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "984918~r19504",
+      "nguon": "tieuDe.984918~r19504",
+      "trich": "984918~r19504 Lò xo lá và các lá lò xo",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Lò xo lá",
+            "các lá lò xo"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "984918~r19507",
+      "nguon": "tieuDe.984918~r19507",
+      "trich": "984918~r19507 Lò xo cuộn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lò xo cuộn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "98491810",
+      "nguon": "tax.98491810",
+      "trich": "98491810 - - - Dùng cho xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98491820",
+      "nguon": "tax.98491820",
+      "trich": "98491820 - - - Dùng cho xe có động cơ khác",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ khác"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "98491830",
+      "nguon": "tax.98491830",
+      "trich": "98491830 - - - Dùng cho xe có động cơ",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98491890",
+      "nguon": "tax.98491890",
+      "trich": "98491890 - - - Dùng cho xe có động cơ",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "984918",
+      "loai": "DUNG",
+      "ghiChu": "cong1-khong-phu-kin ở cả 3 tầng r19504/r19507/r19509: mọi dòng 8 số đều đòi \"xe có động cơ\" — lò xo (lá/cuộn/khác) không dùng cho xe có động cơ không có dòng số nào trong biểu; biểu lược nhánh, vòng 8b cấm đẩy chữ con lên tầng hay BO_VE để né — báo Claude xử cấu trúc"
+    },
+    {
+      "ma": "98491820",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98491820 \"Dùng cho xe có động cơ khác\" — \"khác\" là phần còn lại so với anh em 98491810 (nhóm 87.02–87.04) ⇒ phanConLai: true phủ định anh em; vế khẳng định giữ trọn \"xe có động cơ khác\" nguyên văn"
+    },
+    {
+      "ma": "98491810",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98491810 giá trị \"xe có động cơ thuộc nhóm 87.02, 87.03 hoặc 87.04\" giữ nguyên chuỗi mã theo luật dẫn mã (máy tự nở dải, tự đọc HOẶC giữa các mã HS)"
+    },
+    {
+      "ma": "984918~r19509",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984918~r19509 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em r19504, r19507)"
+    }
+  ]
+}

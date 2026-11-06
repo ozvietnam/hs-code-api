@@ -1,0 +1,85 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "984920",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984920",
+  "dong8": {
+    "98492011": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": "<=", "value": 50, "donVi": "cc" }
+      ]
+    },
+    "98492015": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": "<=", "value": 2000, "donVi": "cc" }
+      ]
+    },
+    "98492016": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": ">", "value": 2000, "donVi": "cc" },
+        { "fact": "dungTichXiLanh", "op": "<=", "value": 3000, "donVi": "cc" }
+      ]
+    },
+    "98492017": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": ">", "value": 3000, "donVi": "cc" }
+      ]
+    },
+    "98492018": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": "<=", "value": 2000, "donVi": "cc" }
+      ]
+    },
+    "98492019": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": ">", "value": 2000, "donVi": "cc" },
+        { "fact": "dungTichXiLanh", "op": "<=", "value": 3000, "donVi": "cc" }
+      ]
+    },
+    "98492020": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": ">", "value": 3000, "donVi": "cc" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "984920~r19516": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": ">", "value": 50, "donVi": "cc" },
+        { "fact": "dungTichXiLanh", "op": "<=", "value": 250, "donVi": "cc" }
+      ]
+    },
+    "984920~r19517": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": ">", "value": 50, "donVi": "cc" },
+        { "fact": "dungTichXiLanh", "op": "<=", "value": 110, "donVi": "cc" }
+      ]
+    },
+    "984920~r19519": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": ">", "value": 110, "donVi": "cc" },
+        { "fact": "dungTichXiLanh", "op": "<=", "value": 250, "donVi": "cc" }
+      ]
+    },
+    "984920~r19521": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": ">", "value": 250, "donVi": "cc" },
+        { "fact": "dungTichXiLanh", "op": "<=", "value": 1000, "donVi": "cc" }
+      ]
+    },
+    "984920~r19523": {
+      "dieuKienSo": [
+        { "fact": "dungTichXiLanh", "op": ">", "value": 1000, "donVi": "cc" }
+      ]
+    },
+    "984920~r19524": {
+      "dieuKienSo": [
+        { "fact": "daLapRap", "op": "CO" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "984920~r19525", "loai": "QUYET_DINH", "ghiChu": "tieuDe.984920~r19525 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
+    { "ma": "984920~r19529", "loai": "QUYET_DINH", "ghiChu": "tieuDe.984920~r19529 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em r19524 \"Đã lắp ráp hoàn chỉnh\" ⇒ động cơ >1.000 cc chưa lắp ráp hoàn chỉnh rơi về nhánh này)" },
+    { "ma": "98492016", "loai": "QUYET_DINH", "ghiChu": "tax.98492016 \"Dung tích xi lanh trên 2.000 cc nhưng không quá 3.000 cc\" ⇒ > 2000 và <= 3000, \"2.000\"/\"3.000\" viết lại 2000/3000" }
+  ]
+}

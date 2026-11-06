@@ -1,0 +1,58 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "984932",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984932",
+  "dong8": {
+    "98493210": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ thuộc Chương 87" }
+      ]
+    },
+    "98493220": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ" }
+      ]
+    },
+    "98493230": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ" }
+      ]
+    },
+    "98493290": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "đèn của xe có động cơ" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "984932~r19684": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn pha gắn kín" }
+      ]
+    },
+    "984932~r19686": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "bóng đèn dây tóc" }
+      ],
+      "phanConLai": true
+    },
+    "984932~r19687": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bóng đèn ha-lo-gien vonfram" }
+      ]
+    },
+    "984932~r19691": {
+      "dieuKienSo": [
+        { "fact": "laBoPhan", "op": "CO" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "984932", "loai": "DUNG", "ghiChu": "cong1-khong-phu-kin ở gốc và các tầng r19684/r19687/r19689/r19691: mọi dòng 8 số đều đòi \"dùng cho xe có động cơ\" (hoặc \"đèn của xe có động cơ\") — đèn (pha gắn kín, dây tóc halogen, loại khác) và bộ phận không dùng cho xe có động cơ không có dòng số nào trong biểu; biểu lược nhánh, vòng 8b cấm đẩy chữ con lên tầng — báo Claude xử cấu trúc" },
+    { "ma": "984932~r19686", "loai": "QUYET_DINH", "ghiChu": "tieuDe.984932~r19686 \"Các loại bóng đèn dây tóc khác\" — \"khác\" là phần còn lại so với anh em r19684 \"Đèn pha gắn kín\" ⇒ phanConLai: true + tenLoai \"bóng đèn dây tóc\"" },
+    { "ma": "984932~r19686", "loai": "BO_VE", "ve": "trừ bóng đèn tia cực tím hoặc tia hồng ngoại", "lyDo": "bóng đèn tia cực tím/hồng ngoại bị trừ khỏi 984932 (thuộc nhóm 85.39 khác, không dòng nào của PN6 này nhận); tu-vung@2 không có op phủ định theo loại đèn — ranh giới nằm ở cấp nhóm ngoài PN6, bỏ vế không làm hàng UV/IR rơi nhầm dòng nào của 984932" },
+    { "ma": "984932~r19684", "loai": "QUYET_DINH", "ghiChu": "tieuDe.984932~r19684 \"(sealed beam lamp units)\" là ngoặc tên Anh chú thích ⇒ không thành điều kiện" },
+    { "ma": "984932~r19689", "loai": "QUYET_DINH", "ghiChu": "tieuDe.984932~r19689 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em r19687 trong cụm r19686)" },
+    { "ma": "98493290", "loai": "QUYET_DINH", "ghiChu": "tax.98493290 \"Loại khác, dùng cho đèn của xe có động cơ\" ⇒ chỉ ghi điều kiện của vế (máy tự phủ định anh em)" }
+  ]
+}

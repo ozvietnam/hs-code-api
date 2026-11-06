@@ -1,0 +1,66 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "984931",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984931",
+  "dong8": {
+    "98493110": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ]
+    },
+    "98493190": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe có động cơ"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "984931~r19679": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cầu chì nhiệt",
+            "cầu chì thủy tinh"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "984931",
+      "loai": "DUNG",
+      "ghiChu": "cong1-khong-phu-kin ở cả hai tầng r19679/r19681: hai dòng 8 số đều đòi \"sử dụng cho xe có động cơ\" — cầu chì (nhiệt/thủy tinh/loại khác) không dùng cho xe có động cơ không có dòng số nào trong biểu; biểu lược nhánh, vòng 8b cấm đẩy chữ con lên tầng — báo Claude xử cấu trúc"
+    },
+    {
+      "ma": "984931~r19681",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984931~r19681 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em r19679 \"Cầu chì nhiệt; cầu chì thủy tinh\")"
+    },
+    {
+      "ma": "984931~r19679",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984931~r19679 hai tên nối \";\" ⇒ mảng giá trị nguyên văn"
+    },
+    {
+      "ma": "98493190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98493190 cùng chữ tax.98493110 nhưng khác tầng cha (r19681 \"Loại khác\" phủ định r19679 \"Cầu chì nhiệt; cầu chì thủy tinh\") ⇒ khối cầu chì không phải loại nhiệt/thủy tinh rơi về 98493190"
+    },
+    {
+      "ma": "98493110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98493110 \"Khối cầu chì\" là tên hàng, máy không tách thành vế phải phủ (chỉ có vế GIỚI HẠN \"loại sử dụng cho xe có động cơ\") ⇒ chỉ phủ vế bằng dungCho; ranh giới 10/90 do tầng cha r19679/r19681 quyết định"
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "984928",
+  "nhom": "9849",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984928",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "984928~r19620",
+      "nguon": "tieuDe.984928~r19620",
+      "trich": "984928~r19620 Thân ổ, lắp ổ bi hoặc ổ đũa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thân ổ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "984928~r19622",
+      "nguon": "tieuDe.984928~r19622",
+      "trich": "984928~r19622 Thân ổ, không lắp ổ bi hay ổ đũa; gối đỡ trục dùng ổ trượt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thân ổ, không lắp ổ bi hay ổ đũa",
+            "gối đỡ trục dùng ổ trượt"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "984928~r19624",
+      "nguon": "tieuDe.984928~r19624",
+      "trich": "984928~r19624 Bộ bánh răng và cụm bánh răng ăn khớp, trừ bánh xe có răng, đĩa xích và các bộ phận truyền chuyển động ở dạng riêng biệt; vít bi hoặc vít đũa; hộp số và các cơ cấu điều tốc khác, kể cả bộ biến đổi mô men xoắn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bộ bánh răng và cụm bánh răng ăn khớp",
+            "vít bi",
+            "vít đũa",
+            "hộp số và các cơ cấu điều tốc khác"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "id": "9849289",
+      "nguon": "tieuDe.9849289",
+      "trich": "9849289 Bánh xe có răng, đĩa xích và các bộ phận truyền chuyển động riêng biệt; các bộ phận",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bánh xe có răng",
+            "đĩa xích",
+            "bộ phận truyền chuyển động riêng biệt",
+            "các bộ phận"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "98492811",
+      "nguon": "tax.98492811",
+      "trich": "98492811 - - - - - Cho xe có dung tích xi lanh không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492812",
+      "nguon": "tax.98492812",
+      "trich": "98492812 - - - - - Cho xe có dung tích xi lanh trên 2.000 cc đến 3.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492813",
+      "nguon": "tax.98492813",
+      "trich": "98492813 - - - - - Cho xe có dung tích xi lanh trên 3.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492820",
+      "nguon": "tax.98492820",
+      "trich": "98492820 - - - Dùng cho động cơ xe của Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ xe của Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492830",
+      "nguon": "tax.98492830",
+      "trich": "98492830 - - - Dùng cho động cơ xe của Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ xe của Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492840",
+      "nguon": "tax.98492840",
+      "trich": "98492840 - - - Dùng cho xe thuộc Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe thuộc Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492850",
+      "nguon": "tax.98492850",
+      "trich": "98492850 - - Bánh đà và ròng rọc, kể cả khối pu li",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bánh đà",
+            "ròng rọc"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492860",
+      "nguon": "tax.98492860",
+      "trich": "98492860 - - Ly hợp và khớp nối trục (kể cả khớp nối vạn năng)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ly hợp",
+            "khớp nối trục"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98492891",
+      "nguon": "tax.98492891",
+      "trich": "98492891 - - - Dùng cho hàng hóa khác thuộc Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hàng hóa khác thuộc Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "98492899",
+      "nguon": "tax.98492899",
+      "trich": "98492899 - - - Dùng cho hàng hóa khác thuộc Chương 87",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hàng hóa khác thuộc Chương 87"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "98492891",
+        "98492899"
+      ],
+      "lyDo": "Hai dòng có chữ biểu TRÙNG NHAU từng chữ .91 \"Dùng cho hàng hóa khác thuộc Chương 87\" và .99 \"Dùng cho hàng hóa khác thuộc Chương 87\" — mọi hàng thoả dòng này đều thoả dòng kia, không có căn cứ thứ tự hay đặc điểm nào tách được; lúc chạy máy hỏi, không tự chốt"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "984928",
+      "loai": "DUNG",
+      "ghiChu": "--goi báo \"!!! DỪNG — TẦNG KHÔNG MÃ không biểu diễn được\": r19614 (gạch 2) \"Trục truyền động (kể cả trục cam và trục khuỷu) và tay biên:\" và r19615 (gạch 3) \"Trục cam và trục khuỷu dùng cho động cơ xe của Chương 87:\" nằm trên cụm 9849281; cổng 1 chặn cong1-tang-khong-ma-khong-dat với 98492811–13 — báo Claude xử cấu trúc biểu thuế"
+    },
+    {
+      "ma": "984928~r19624",
+      "loai": "BO_VE",
+      "ve": "trừ bánh xe có răng, đĩa xích và các bộ phận truyền chuyển động ở dạng riêng biệt",
+      "lyDo": "hàng bị trừ được nêu đích danh tại nhánh anh em 9849289 \"Bánh xe có răng, đĩa xích và các bộ phận truyền chuyển động riêng biệt; các bộ phận\" — tu-vung@2 không có op phủ định cho tenLoai; lúc chạy hàng thoả cả hai nhánh máy hỏi, không tự chốt"
+    },
+    {
+      "ma": "984928~r19620",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984928~r19620 \"Thân ổ, lắp ổ bi hoặc ổ đũa\" — máy không tách vế phải phủ cho mục này; từ vựng không có khoá đặc điểm \"lắp ổ\" nên chỉ ghi tenLoai tên đầu \"Thân ổ\"; vế \"không lắp…\" của anh em r19622 phủ bằng tenLoai trọn cụm nguyên văn"
+    },
+    {
+      "ma": "98492850",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98492850 \"Bánh đà và ròng rọc\" hai hàng ⇒ mảng; \"kể cả khối pu li\" là vế kể cả (PHU) ⇒ không thành điều kiện"
+    },
+    {
+      "ma": "98492860",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98492860 \"Ly hợp và khớp nối trục\" hai hàng ⇒ mảng; \"(kể cả khớp nối vạn năng)\" là ngoặc kể cả (PHU) ⇒ không thành điều kiện"
+    },
+    {
+      "ma": "984928~r19624",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984928~r19624 \"…, kể cả bộ biến đổi mô men xoắn\" là vế kể cả (PHU) ⇒ không thành điều kiện; ba nhóm hàng nối \";\" ⇒ mảng; chữ \"khác\" trong \"cơ cấu điều tốc khác\" là cách nói của chính tên hàng, không phải phần còn lại ⇒ phanConLai: false"
+    },
+    {
+      "ma": "98492891",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98492891 \"hàng hóa khác thuộc Chương 87\" — \"khác\" là định ngữ của đích (hàng hóa khác ngoài các loại đã nêu ở nhánh trước), không phải phần còn lại so với anh em 98492899 (trùng chữ) ⇒ phanConLai: false; khai chongLanVanBan"
+    }
+  ]
+}
