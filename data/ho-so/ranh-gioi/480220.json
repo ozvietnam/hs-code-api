@@ -1,0 +1,54 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "480220",
+  "nhom": "4802",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1442#soan-480220",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48022010",
+      "nguon": "tax.48022010",
+      "trich": "48022010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48022090",
+      "nguon": "tax.48022090",
+      "trich": "48022090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48022010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48022010 \"48022010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — \"hoặc\" nối hai vế thay thế nhau: vế 1 (ở dạng cuộn + chiều rộng không quá 15cm) và vế 2 (ở dạng tờ hình chữ nhật (kể cả hình vuông) + không có chiều nào trên 36 cm + ở dạng không gấp). Vế 1 diễn đạt được (dangCuon CO + chieuRong <= 15 cm); vế 2 có khoá (hinhDangCatGocKinh CO + kichThuoc <= 36 cm — câu phủ MỌI chiều nên dùng kích thước chung, không dùng chieuRong) nhưng vế \"ở dạng không gấp\" không có khoá nào đọc được. Bỏ vế đó làm đổi mã 8 số (tờ đã gấp rơi về 48022090) ⇒ không BO_VE mà DỪNG: để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG, KHÔNG bịa khoá. Đơn vị số giữ đúng chữ biểu thuế (cm)."
+    },
+    {
+      "ma": "48022010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "khongGap",
+      "ghiChu": "tax.48022010 \"48022010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+    },
+    {
+      "ma": "480220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.480220 \"Giấy và bìa sử dụng làm nền cho sản xuất giấy và bìa nhạy sáng, nhạy nhiệt hoặc nhạy điện\" là tiêu đề của phân nhóm (tầng cha) ⇒ thuộc điều kiện cấp nhóm, không mã hoá vào dong8 (dong8 chỉ chứa điều kiện phân biệt 48022010 với 48022090); cây 480220 chỉ có 2 dòng 8 số, không có tầng không mã ⇒ dieuKienNut rỗng."
+    },
+    {
+      "ma": "48022090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48022090 \"48022090 - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}
