@@ -1,35 +1,119 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "850790",
-  "phien": "zcode-sub:glm-5.3:20261105T1010#soan-850790",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-850790",
   "dieuKienNut": {
-    "8507901": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "bản cực"}
-    ] }
+    "8507901": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bản cực"
+        }
+      ]
+    }
   },
   "dong8": {
-    "85079011": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["8507.10.92", "8507.10.95", "8507.10.96", "8507.10.97", "8507.10.98", "8507.10.99"]}
-    ] },
-    "85079012": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": "máy bay"}
-    ] },
-    "85079019": { "dieuKienSo": [] },
-    "85079091": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": "máy bay"}
-    ] },
-    "85079092": { "dieuKienSo": [] },
-    "85079093": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["8507.10.92", "8507.10.95", "8507.10.96", "8507.10.97", "8507.10.98", "8507.10.99"]}
-    ] },
-    "85079099": { "dieuKienSo": [] }
+    "85079011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8507.10.92",
+            "8507.10.95",
+            "8507.10.96",
+            "8507.10.97",
+            "8507.10.98",
+            "8507.10.99"
+          ]
+        }
+      ]
+    },
+    "85079012": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy bay"
+        }
+      ]
+    },
+    "85079019": {
+      "dieuKienSo": []
+    },
+    "85079091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy bay"
+        }
+      ]
+    },
+    "85079092": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vách ngăn ắc qui"
+        },
+        {
+          "fact": "lamTuPVC",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "85079093": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8507.10.92",
+            "8507.10.95",
+            "8507.10.96",
+            "8507.10.97",
+            "8507.10.98",
+            "8507.10.99"
+          ]
+        }
+      ]
+    },
+    "85079099": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    {"ma": "8507901", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8507901 \"Các bản cực\" ⇒ tenLoai \"bản cực\""},
-    {"ma": "85079011", "loai": "QUYET_DINH", "ghiChu": "tax.85079011 \"Của hàng hóa thuộc phân nhóm 8507.10.92, … hoặc 8507.10.99\" ⇒ dungCho mảng 6 mã (dẫn mã giữ nguyên chuỗi, \"hoặc\" ⇒ mảng)"},
-    {"ma": "85079012", "loai": "QUYET_DINH", "ghiChu": "tax.85079012 \"Dùng cho máy bay\" ⇒ dungCho \"máy bay\" (giống .91)"},
-    {"ma": "85079019", "loai": "QUYET_DINH", "ghiChu": "tax.85079019 \"Loại khác\" trần ⇒ không điều kiện (tương tự .99)"},
-    {"ma": "85079092", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu", "ghiChu": "tax.85079092 \"Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)\" — không có khoá/giá trị diễn đạt loại trừ chất liệu \"trừ poly(vinyl clorua)\" (chatLieu chỉ có op LA với giá trị plastic/cao su/…, không có PVC, không có phủ định theo vật liệu cụ thể); bỏ vế này làm đổi mã (vách ngăn PVC không thuộc dòng nào khác)"},
-    {"ma": "85079093", "loai": "QUYET_DINH", "ghiChu": "tax.85079093 \"Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, …\" ⇒ chỉ điều kiện của vế: dungCho mảng 6 mã"}
+    {
+      "ma": "85079092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079092 \"Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)\": tên ⇒ tenLoai \"Vách ngăn ắc qui\"; \"làm từ mọi vật liệu trừ poly(vinyl clorua)\" ⇒ lamTuPVC KHONG (khoá lô 20, cách đọc KHÔNG chính là cụm này); khoá chỉ dùng ở dòng có chữ biểu đúng cụm đó"
+    },
+    {
+      "ma": "8507901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8507901 \"Các bản cực\" ⇒ tenLoai \"bản cực\""
+    },
+    {
+      "ma": "85079011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079011 \"Của hàng hóa thuộc phân nhóm 8507.10.92, … hoặc 8507.10.99\" ⇒ dungCho mảng 6 mã (dẫn mã giữ nguyên chuỗi, \"hoặc\" ⇒ mảng)"
+    },
+    {
+      "ma": "85079012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079012 \"Dùng cho máy bay\" ⇒ dungCho \"máy bay\" (giống .91)"
+    },
+    {
+      "ma": "85079019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079019 \"Loại khác\" trần ⇒ không điều kiện (tương tự .99)"
+    },
+    {
+      "ma": "85079093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079093 \"Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, …\" ⇒ chỉ điều kiện của vế: dungCho mảng 6 mã"
+    }
   ]
 }
