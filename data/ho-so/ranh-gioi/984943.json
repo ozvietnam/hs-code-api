@@ -1,0 +1,80 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "984943",
+  "nhom": "9849",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1528#soan-984943",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "98494310",
+      "nguon": "tax.98494310",
+      "trich": "98494310 - - Bằng liti",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98494321",
+      "nguon": "tax.98494321",
+      "trich": "98494321 - - - Có thể tích ngoài không quá 300 cm3",
+      "dieuKienSo": [
+        {
+          "fact": "theTich",
+          "op": "<=",
+          "value": 300,
+          "donVi": "cm3"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98494329",
+      "nguon": "tax.98494329",
+      "trich": "98494329 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98494390",
+      "nguon": "tax.98494390",
+      "trich": "98494390 - - Bộ phận",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "98494310",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "loaiPin",
+      "ghiChu": "tax.98494310 \"Bằng liti\" — tu-vung@2 không có khoá nào đọc được \"liti\" (chatLieu chỉ có plastic…vải dệt, không có liti; nguonNangLuong PIN_AC_QUY chỉ đọc \"pin/ắc quy\" không phân biệt loại pin). Đề xuất khoá loaiPin LIET_KE [LITI, …] — không mượn khoá gần nghĩa"
+    },
+    {
+      "ma": "98494321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494321 \"Có thể tích ngoài không quá 300 cm3\" ⇒ theTich <= 300 cm3 (\"không quá\" = <=, đơn vị nguyên văn)"
+    },
+    {
+      "ma": "98494329",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494329 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "98494390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494390 \"Bộ phận\" ⇒ laBoPhan CO (đọc CÓ \"bộ phận\")"
+    }
+  ]
+}

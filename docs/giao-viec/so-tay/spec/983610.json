@@ -1,0 +1,22 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "983610",
+  "phien": "zcode-sub:glm-5.3:20261106T1528#soan-983610",
+  "dong8": {
+    "98361010": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">", "value": 20, "donVi": "tấn" },
+        { "fact": "khoiLuongToanBo", "op": "<=", "value": 24, "donVi": "tấn" }
+      ]
+    },
+    "98361090": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">", "value": 24, "donVi": "tấn" },
+        { "fact": "khoiLuongToanBo", "op": "<=", "value": 45, "donVi": "tấn" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "983610", "loai": "DUNG", "ghiChu": "DỪNG — cong1-khong-phu-kin:983610 không sửa được: tầng gốc chỉ có hai dòng biên số \"trên 20 tấn nhưng không quá 24 tấn\" (.10) và \"trên 24 tấn nhưng không quá 45 tấn\" (.90), KHÔNG có dòng \"Loại khác\"; cổng 1 thử vector ngoài dải (vd khoiLuongToanBo=19.99998 tấn, 45.000045 tấn) thoả tầng cha mà không rơi vào dòng nào. Khối lượng ngoài dải (20–45 tấn) nằm ngoài phân nhóm 983610 (thuộc phân nhóm khác của 98.36 — 983620…983650 hoặc nhóm 87.04), là hạn chế của tiêu đề 6 số, ngoài phạm vi spec 8 số; không viết được điều kiện loại trừ mà chữ 8 số không nói." }
+  ]
+}
