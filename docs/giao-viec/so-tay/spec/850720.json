@@ -1,0 +1,186 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850720",
+  "phien": "zcode-sub:glm-5.3:20261105T1005#soan-850720",
+  "dieuKienNut": {
+    "850720~r15104": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dienAp",
+                "op": ">=",
+                "value": 6,
+                "donVi": "V"
+              },
+              {
+                "fact": "dienAp",
+                "op": "<=",
+                "value": 6,
+                "donVi": "V"
+              }
+            ],
+            [
+              {
+                "fact": "dienAp",
+                "op": ">=",
+                "value": 12,
+                "donVi": "V"
+              },
+              {
+                "fact": "dienAp",
+                "op": "<=",
+                "value": 12,
+                "donVi": "V"
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "dungLuong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "Ah"
+        }
+      ]
+    }
+  },
+  "dong8": {
+    "85072010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy bay"
+        }
+      ]
+    },
+    "85072094": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 13,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85072095": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": ">",
+          "value": 13,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 23,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85072096": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": ">",
+          "value": 23,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85072097": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 13,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85072098": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": ">",
+          "value": 13,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuCao",
+          "op": "<=",
+          "value": 23,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "85072099": {
+      "dieuKienSo": [
+        {
+          "fact": "chieuCao",
+          "op": ">",
+          "value": 23,
+          "donVi": "cm"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85072010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85072010 \"Dùng cho máy bay\" ⇒ dungCho \"máy bay\""
+    },
+    {
+      "ma": "850720~r15104",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.850720~r15104 \"Điện áp danh định 6 V hoặc 12 V, có dung lượng phóng điện không quá 200 Ah\" ⇒ HOAC hai phương án dienAp = 6 V / dienAp = 12 V (biểu đạt bằng cặp >= <= vì SO không có op =) + dungLuong <= 200 Ah; tầng Loại khác còn lại không điều kiện"
+    },
+    {
+      "ma": "85072094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Chiều cao (không bao gồm đầu cực và tay cầm) không quá 13 cm\" ⇒ chieuCao <= 13 cm; \"> trên 13 cm nhưng không quá 23 cm\" ⇒ > 13 và <= 23; \"trên 23 cm\" ⇒ > 23; ngoặc \"(không bao gồm đầu cực và tay cầm)\" là cách đo (PHU) ⇒ không thành điều kiện"
+    },
+    {
+      "ma": "85072094",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Ngoặc là cách đo chiều cao CHUNG của cả ba dòng anh em (không tính đầu cực và tay cầm khi đo) — không phải yếu tố phân biệt, mã 8 số chỉ đổi theo mốc 13/23 cm; bỏ vế không làm sai mã"
+    },
+    {
+      "ma": "85072095",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Ngoặc là cách đo chiều cao CHUNG của cả ba dòng anh em (không tính đầu cực và tay cầm khi đo) — không phải yếu tố phân biệt, mã 8 số chỉ đổi theo mốc 13/23 cm; bỏ vế không làm sai mã"
+    },
+    {
+      "ma": "85072096",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Ngoặc là cách đo chiều cao CHUNG của cả ba dòng anh em (không tính đầu cực và tay cầm khi đo) — không phải yếu tố phân biệt, mã 8 số chỉ đổi theo mốc 13/23 cm; bỏ vế không làm sai mã"
+    },
+    {
+      "ma": "85072097",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Ngoặc là cách đo chiều cao CHUNG của cả ba dòng anh em (không tính đầu cực và tay cầm khi đo) — không phải yếu tố phân biệt, mã 8 số chỉ đổi theo mốc 13/23 cm; bỏ vế không làm sai mã"
+    },
+    {
+      "ma": "85072098",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Ngoặc là cách đo chiều cao CHUNG của cả ba dòng anh em (không tính đầu cực và tay cầm khi đo) — không phải yếu tố phân biệt, mã 8 số chỉ đổi theo mốc 13/23 cm; bỏ vế không làm sai mã"
+    },
+    {
+      "ma": "85072099",
+      "loai": "BO_VE",
+      "ve": "(không bao gồm đầu cực và tay cầm)",
+      "lyDo": "Ngoặc là cách đo chiều cao CHUNG của cả ba dòng anh em (không tính đầu cực và tay cầm khi đo) — không phải yếu tố phân biệt, mã 8 số chỉ đổi theo mốc 13/23 cm; bỏ vế không làm sai mã"
+    }
+  ]
+}

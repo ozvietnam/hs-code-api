@@ -1,0 +1,74 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "850162",
+  "nhom": "8501",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T0930#soan-850162",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85016210",
+      "nguon": "tax.85016210",
+      "trich": "85016210 - - - Công suất trên 75 kVA nhưng không quá 150 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 75,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 150,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85016220",
+      "nguon": "tax.85016220",
+      "trich": "85016220 - - - Công suất trên 150 kVA nhưng không quá 375 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 150,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 375,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85016210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85016210 \"Công suất trên 75 kVA nhưng không quá 150 kVA\" ⇒ congSuatBieuKien > 75 kVA và <= 150 kVA"
+    },
+    {
+      "ma": "85016220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85016220 \"Công suất trên 150 kVA nhưng không quá 375 kVA\" ⇒ congSuatBieuKien > 150 kVA và <= 375 kVA"
+    },
+    {
+      "ma": "85016210",
+      "loai": "DUNG",
+      "ghiChu": "Cấu trúc chặn: 850162 chỉ có 2 dòng số chia đôi dải (>75…≤150 / >150…≤375 kVA), không có dòng \"Loại khác\" ở gốc — cong1 khong-phu-kin đòi vector biên ngay ngoài cận phân nhóm (74,999 kVA / 375,0004 kVA) phải rơi vào một dòng trong khi cả hai dòng đều đúng cận chữ (cong3-bien-lech-chu không cho bỏ cận). Mâu thuẫn cấu trúc, không bịa chữ được. Báo Claude"
+    }
+  ]
+}

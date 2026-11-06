@@ -1,0 +1,362 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "850431",
+  "nhom": "8504",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T0940#soan-850431",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "850431~r14985",
+      "nguon": "tieuDe.850431~r14985",
+      "trich": "850431~r14985 Dùng cho đường dây có điện áp từ 110 kV trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đường dây"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8504311",
+      "nguon": "tieuDe.8504311",
+      "trich": "8504311 Máy biến áp đo lường",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến áp đo lường"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8504312",
+      "nguon": "tieuDe.8504312",
+      "trich": "8504312 Máy biến dòng đo lường",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến dòng đo lường"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85043111",
+      "nguon": "tax.85043111",
+      "trich": "85043111 - - - - Điện áp từ 110 kV trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043112",
+      "nguon": "tax.85043112",
+      "trich": "85043112 - - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043113",
+      "nguon": "tax.85043113",
+      "trich": "85043113 - - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 1,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043119",
+      "nguon": "tax.85043119",
+      "trich": "85043119 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043121",
+      "nguon": "tax.85043121",
+      "trich": "85043121 - - - - - Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến dòng dạng vòng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đường dây"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 220,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043122",
+      "nguon": "tax.85043122",
+      "trich": "85043122 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043123",
+      "nguon": "tax.85043123",
+      "trich": "85043123 - - - - Điện áp từ 66 kV trở lên, nhưng dưới 110 kV",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 110,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043124",
+      "nguon": "tax.85043124",
+      "trich": "85043124 - - - - Điện áp từ 1 kV trở lên, nhưng dưới 66 kV",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 1,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043129",
+      "nguon": "tax.85043129",
+      "trich": "85043129 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043130",
+      "nguon": "tax.85043130",
+      "trich": "85043130 - - - Máy biến áp quét về (biến áp tần số quét ngược) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến áp quét về"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043140",
+      "nguon": "tax.85043140",
+      "trich": "85043140 - - - Máy biến điện trung tần",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến điện trung tần"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043191",
+      "nguon": "tax.85043191",
+      "trich": "85043191 - - - - Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự ",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đồ chơi",
+            "mô hình thu nhỏ",
+            "mô hình giải trí"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043192",
+      "nguon": "tax.85043192",
+      "trich": "85043192 - - - - Biến áp thích ứng khác (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "85043193",
+      "nguon": "tax.85043193",
+      "trich": "85043193 - - - - Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators) (SEN)",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy biến áp tăng/giảm từng nấc"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "máy điều chỉnh điện áp trượt"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85043199",
+      "nguon": "tax.85043199",
+      "trich": "85043199 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "85043191",
+        "85043193"
+      ],
+      "truc": {
+        "85043191": "CONG_DUNG",
+        "85043193": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Máy biến áp này có tên là \"Máy biến áp tăng/giảm từng nấc\" hoặc \"máy điều chỉnh điện áp trượt\" (85043193) hay chỉ được dùng cho đồ chơi, mô hình thu nhỏ, mô hình giải trí (85043191)?",
+      "trich": {
+        "85043191": "Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự",
+        "85043193": "Máy biến áp tăng/giảm từng nấc (Step up/down transformers); máy điều chỉnh điện áp trượt (slide regulators)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "85043191",
+            "85043193"
+          ],
+          "hang": "Máy biến áp tăng giảm từng nấc dùng cho đồ chơi"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85043111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043111 \"Điện áp từ 110 kV trở lên\" ⇒ dienAp >= 110 kV; .12 \"từ 66 kV trở lên, nhưng dưới 110 kV\" ⇒ >= 66 và < 110 (\"dưới\" = <); .13 ⇒ >= 1 và < 66"
+    },
+    {
+      "ma": "85043119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043119 \"Loại khác\" trần ⇒ không điều kiện (tương tự .22/.29/.99)"
+    },
+    {
+      "ma": "85043121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043121 \"Máy biến dòng dạng vòng dùng cho đường dây có điện áp không quá 220 kV (SEN)\" ⇒ tenLoai + dungCho \"đường dây\" + dienAp <= 220 kV; ngoặc \"(SEN)\" là nguồn chú giải, không thành điều kiện"
+    },
+    {
+      "ma": "85043130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043130 \"Máy biến áp quét về (biến áp tần số quét ngược) (SEN)\" ⇒ tenLoai \"Máy biến áp quét về\"; ngoặc là thuyết minh (PHU)"
+    },
+    {
+      "ma": "85043191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043191 \"Sử dụng cho đồ chơi, mô hình thu nhỏ hoặc các mô hình giải trí tương tự\" ⇒ dungCho mảng [đồ chơi, mô hình thu nhỏ, mô hình giải trí] (\"hoặc\" ⇒ mảng); cổng 5 tách cả cụm là MỘT vế GIỚI HẠN"
+    },
+    {
+      "ma": "85043192",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043192 \"Biến áp thích ứng khác (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\" + phanConLai: true (phần còn lại có tên trong tầng 8504319, phủ định .91/.93)"
+    },
+    {
+      "ma": "85043193",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043193 hai hàng nối \";\" ⇒ HOAC [tenLoai \"Máy biến áp tăng/giảm từng nấc\"] / [tenLoai \"máy điều chỉnh điện áp trượt\"]; tên Anh trong ngoặc là PHU"
+    },
+    {
+      "ma": "85043111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đã đối chiếu tay biên dienAp của .11/.12/.13/.23/.24 và tầng r14985 với chữ biểu: \">= 110 kV\" = \"từ 110 kV trở lên\"; \">= 66 và < 110 kV\" = \"từ 66 kV trở lên, nhưng dưới 110 kV\"; \">= 1 và < 66 kV\" = \"từ 1 kV trở lên, nhưng dưới 66 kV\" (mẫu 850433 cùng kiểu)"
+    }
+  ]
+}
