@@ -1,62 +1,18 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "611780",
-  "phien": "zcode-mm:loop:20261106T1455#soan-611780",
+  "phien": "zcode-sub:glm-5.3:20261106T1629#soan-611780",
   "dong8": {
-    "61178011": {
-      "ma": "61178011",
-      "ten": "Từ lông cừu hoặc lông động vật loại mịn",
-      "trich": "61178011 - - - Từ lông cừu hoặc lông động vật loại mịn",
-      "dieuKienSo": [
-        {
-          "khoa": "loaiSoiDet",
-          "op": "TRONG",
-          "giaTri": ["LEN_LONG_DONG_VAT_MIN"]
-        }
-      ]
-    },
-    "61178020": {
-      "ma": "61178020",
-      "ten": "Băng cổ tay, băng đầu gối, băng mắt cá chân",
-      "trich": "61178020 - - Băng cổ tay, băng đầu gối, băng mắt cá chân",
-      "dieuKienSo": [
-        {
-          "khoa": "tenLoai",
-          "op": "TEN_LOAI",
-          "giaTri": "Băng cổ tay, băng đầu gối, băng mắt cá chân"
-        }
-      ]
-    }
+    "61178011": { "dieuKienSo": [
+      { "fact": "loaiSoiDet", "op": "TRONG", "value": ["LEN_LONG_DONG_VAT_MIN"] }
+    ] },
+    "61178020": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Băng cổ tay", "băng đầu gối", "băng mắt cá chân"] }
+    ] }
   },
   "dieuKienNut": {
-    "6117801": {
-      "ma": "6117801",
-      "ten": "Cà vạt, nơ con bướm và cravat",
-      "trich": "6117801 Cà vạt, nơ con bướm và cravat",
-      "dieuKienSo": [
-        {
-          "khoa": "tenLoai",
-          "op": "TEN_LOAI",
-          "giaTri": "Cà vạt, nơ con bướm và cravat"
-        }
-      ]
-    }
-  },
-  "ghiChuSoan": [
-    {
-      "ma": "6117801",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Tầng tiêu đề 6117801 chia với anh em 61178020/61178090 theo TÊN LOẠI HÀNG (cà vạt/nơ con bướm/cravat) nên dùng khoá tenLoai với op TEN_LOAI."
-    },
-    {
-      "ma": "61178011",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Vật liệu 'lông động vật loại mịn' dùng khoá loaiSoiDet, giá trị LEN_LONG_DONG_VAT_MIN; 'lông cừu' nằm chung dòng biểu thuế 61178011 nên không tách khoá/giá trị riêng."
-    },
-    {
-      "ma": "61178020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Dòng chia bằng TÊN LOẠI HÀNG (băng cổ tay/băng đầu gối/băng mắt cá chân) nên dùng CÙNG khoá tenLoai như tầng 6117801."
-    }
-  ]
+    "6117801": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Cà vạt", "nơ con bướm", "cravat"] }
+    ] }
+  }
 }

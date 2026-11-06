@@ -1,0 +1,18 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "580230",
+  "phien": "zcode-sub:glm-5.3:20261106T1538#soan-580230",
+  "dong8": {
+    "58023010": { "dieuKienSo": [ { "fact": "daTrangPhuEpLop", "op": "CO" } ] },
+    "58023020": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dệt thoi" },
+      { "fact": "loaiSoiDet", "op": "TRONG", "value": ["BONG"] }
+    ] },
+    "58023030": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dệt thoi" }
+    ], "phanConLai": ["58023020"] }
+  },
+  "ghiChuSoan": [
+    { "ma": "58023020", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "loaiSoiDet", "ghiChu": "tax.58023020: \"Dệt thoi, từ bông hoặc sợi nhân tạo\" — chưa có giá trị nào của loaiSoiDet đọc được cụm \"sợi nhân tạo\" (khác \"sợi tổng hợp\" và \"sợi tái tạo\")" }
+  ]
+}

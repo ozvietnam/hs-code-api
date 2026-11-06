@@ -1,0 +1,25 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "580632",
+  "phien": "zcode-sub:glm-5.3:20261106T1545#soan-580632",
+  "dong8": {
+    "58063210": { "dieuKienSo": [ { "op": "HOAC", "phuongAn": [
+      [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vải dệt thoi khổ hẹp" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "sản xuất băng mực" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy chữ" } ],
+      [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "băng vải" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "dây đai an toàn ghế ngồi" } ]
+    ] } ] },
+    "58063240": { "dieuKienSo": [
+      { "fact": "dungCho", "op": "CONG_DUNG", "value": "giấy cách điện" }
+    ] },
+    "58063250": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ruy băng" },
+      { "fact": "dungCho", "op": "CONG_DUNG", "value": "khóa kéo" },
+      { "fact": "chieuRong", "op": "<=", "value": 12, "donVi": "mm" }
+    ] }
+  },
+  "ghiChuSoan": [
+    { "ma": "58063210", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "dungCho", "ghiChu": "tax.58063210: \"… dùng cho máy chữ hoặc các loại máy tương tự …\" — vế mở \"các loại máy tương tự\" chỉ có op TUONG_TU của khoá tenLoai, không diễn đạt được trên đích của dungCho" }
+  ]
+}

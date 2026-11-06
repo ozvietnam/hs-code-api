@@ -1,0 +1,92 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "580631",
+  "nhom": "5806",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1543#soan-580631",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "58063110",
+      "nguon": "tax.58063110",
+      "trich": "58063110 - - - Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vải dệt thoi khổ hẹp"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất băng mực"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy chữ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58063120",
+      "nguon": "tax.58063120",
+      "trich": "58063120 - - - Làm nền cho giấy cách điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giấy cách điện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58063130",
+      "nguon": "tax.58063130",
+      "trich": "58063130 - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ruy băng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khóa kéo"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 12,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58063190",
+      "nguon": "tax.58063190",
+      "trich": "58063190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "58063110",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "dungCho",
+      "ghiChu": "tax.58063110: \"… dùng cho máy chữ hoặc các loại máy tương tự\" — vế mở \"các loại máy tương tự\" chỉ có op TUONG_TU của khoá tenLoai, không diễn đạt được trên đích của dungCho"
+    }
+  ]
+}

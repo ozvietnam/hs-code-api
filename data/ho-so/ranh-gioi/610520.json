@@ -1,0 +1,54 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "610520",
+  "nhom": "6105",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1618#soan-610520",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "61052010",
+      "nguon": "tax.61052010",
+      "trich": "61052010 - - Từ sợi tổng hợp",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "SOI_TONG_HOP"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "61052020",
+      "nguon": "tax.61052020",
+      "trich": "61052020 - - Từ sợi tái tạo",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "SOI_TAI_TAO"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "610520",
+      "loai": "DUNG",
+      "ghiChu": "cong1-khong-phu-kin:610520:loaiSoiDet=BONG — tiêu đề nhóm 6 số là \"Từ sợi nhân tạo\" (= sợi tổng hợp + sợi tái tạo) nhưng máy không cho khai dieuKienNut ở nút gốc (spec-ma-ngoai-phan-nhom); hai dòng .10/.20 đã phủ đúng hai loại sợi nhân tạo, vector loaiSoiDet ngoài hai giá trị (vd BONG) thuộc nhóm 6 số khác (610510) — chỉ hết lỗ nếu bịa thêm điều kiện chữ không nói"
+    }
+  ]
+}

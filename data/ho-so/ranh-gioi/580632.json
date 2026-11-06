@@ -1,0 +1,111 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "580632",
+  "nhom": "5806",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1545#soan-580632",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "58063210",
+      "nguon": "tax.58063210",
+      "trich": "58063210 - - - Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Vải dệt thoi khổ hẹp"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "sản xuất băng mực"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy chữ"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "băng vải"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "dây đai an toàn ghế ngồi"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58063240",
+      "nguon": "tax.58063240",
+      "trich": "58063240 - - - Làm nền cho giấy cách điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giấy cách điện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58063250",
+      "nguon": "tax.58063250",
+      "trich": "58063250 - - - Ruy băng loại dùng làm khóa kéo và có chiều rộng không quá 12 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ruy băng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khóa kéo"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 12,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "58063290",
+      "nguon": "tax.58063290",
+      "trich": "58063290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "58063210",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "dungCho",
+      "ghiChu": "tax.58063210: \"… dùng cho máy chữ hoặc các loại máy tương tự …\" — vế mở \"các loại máy tương tự\" chỉ có op TUONG_TU của khoá tenLoai, không diễn đạt được trên đích của dungCho"
+    }
+  ]
+}

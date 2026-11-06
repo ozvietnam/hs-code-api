@@ -1,0 +1,30 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "600192",
+  "phien": "zcode-sub:glm-5.3:20261106T1604#soan-600192",
+  "dong8": {
+    "60019220": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vải nổi vòng" },
+      { "fact": "loaiSoiDet", "op": "TRONG", "value": ["SOI_TONG_HOP"] },
+      { "fact": "chieuRong", "op": ">=", "value": 63.5, "donVi": "mm" },
+      { "fact": "chieuRong", "op": "<=", "value": 76.2, "donVi": "mm" },
+      { "fact": "dungCho", "op": "CONG_DUNG", "value": "sản xuất con lăn sơn" }
+    ] },
+    "60019230": { "dieuKienSo": [ { "fact": "tinhDanHoi", "op": "CO" } ] }
+  },
+  "chongLanTruc": [
+    {
+      "nhanh": ["60019220", "60019230"],
+      "truc": { "60019220": "TEN_LOAI", "60019230": "DAC_DIEM" },
+      "cauHoiPhanBiet": "Vải nổi vòng này có phải loại từ xơ staple 100% polyeste, chiều rộng 63,5 mm đến 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn (60019220) hay là loại chứa sợi đàn hồi hoặc sợi cao su (60019230)?",
+      "trich": {
+        "60019220": "Vải nổi vòng (pile) từ xơ staple 100% polyeste, có chiều rộng không nhỏ hơn 63,5 mm nhưng không quá 76,2 mm, phù hợp để sử dụng trong sản xuất con lăn sơn",
+        "60019230": "Chứa sợi đàn hồi hoặc sợi cao su"
+      },
+      "viDuHang": [
+        { "cap": ["60019220", "60019230"], "hang": "Vải nổi vòng (pile) từ xơ staple 100% polyeste, có chiều rộng 70 mm, chứa sợi đàn hồi, dùng cho sản xuất con lăn sơn" }
+      ],
+      "phanXu": null
+    }
+  ]
+}
