@@ -1,0 +1,65 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "740811",
+  "nhom": "7408",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1528#soan-740811",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "74081120",
+      "nguon": "tax.74081120",
+      "trich": "74081120 - - - Có kích thước mặt cắt ngang lớn nhất không quá 8 mm",
+      "dieuKienSo": [
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 8,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "74081130",
+      "nguon": "tax.74081130",
+      "trich": "74081130 - - - Có kích thước mặt cắt ngang lớn nhất trên 8 mm nhưng không quá 14 mm",
+      "dieuKienSo": [
+        {
+          "fact": "kichThuoc",
+          "op": ">",
+          "value": 8,
+          "donVi": "mm"
+        },
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 14,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "74081190",
+      "nguon": "tax.74081190",
+      "trich": "74081190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "74081120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74081120 \"Có kích thước mặt cắt ngang lớn nhất không quá 8 mm\" ⇒ kichThuoc <= 8 mm; tax.74081130 \"… trên 8 mm nhưng không quá 14 mm\" ⇒ kichThuoc > 8 và <= 14 (biên đã đối chiếu tay: \"không quá\" = <=, \"trên\" = >)."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "741300",
+  "phien": "zcode-sub:glm-5.3:20261106T1528#soan-741300",
+  "dong8": {
+    "74130011": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cáp" } ] },
+    "74130091": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cáp" } ] }
+  },
+  "dieuKienNut": {
+    "7413001": { "dieuKienSo": [ { "fact": "duongKinh", "op": "<=", "value": 28.28, "donVi": "mm" } ] }
+  },
+  "ghiChuSoan": [
+    { "ma": "7413001", "loai": "QUYET_DINH", "ghiChu": "tieuDe.7413001 \"Có đường kính không quá 28,28 mm\" ⇒ duongKinh <= 28.28 mm (\"28,28\" = 28.28; \"không quá\" = <=, đã đối chiếu tay op/biên)." },
+    { "ma": "74130011", "loai": "QUYET_DINH", "ghiChu": "tax.74130011 \"Cáp\" ⇒ tenLoai \"Cáp\"; tầng 7413009 \"Loại khác:\" trần ⇒ không điều kiện (máy phủ định anh em 7413001)." }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "741920",
+  "nhom": "7419",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1528#soan-741920",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "74192010",
+      "nguon": "tax.74192010",
+      "trich": "74192010 - - Xích và các bộ phận của xích",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Xích"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Xích"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "74192020",
+      "nguon": "tax.74192020",
+      "trich": "74192020 - - Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Thùng",
+            "két",
+            "bể chứa"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "74192090",
+      "nguon": "tax.74192090",
+      "trich": "74192090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "74192010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74192010 \"Xích và các bộ phận của xích\" — quy ước \"X và (các) bộ phận của chúng\" (BANG-LUAT-CHUNG dòng 5): HOAC [[tenLoai \"Xích\"],[laBoPhan CO, dungCho \"Xích\"]] với X = tên đầu nguyên văn của chính dòng; vế GIỚI HẠN \"của xích\" được phủ bởi dungCho \"Xích\"."
+    },
+    {
+      "ma": "74192020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "ganThietBiCoKhiHoacGiaNhiet",
+      "ghiChu": "tax.74192020 \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt\" — vế GIỚI HẠN \"không gắn các thiết bị cơ khí hoặc thiết bị gia nhiệt\" không có khoá tu-vung@2 (không có CO_KHONG/LIET_KE nào đọc \"thiết bị cơ khí\"/\"thiết bị gia nhiệt\"); bỏ vế này làm đổi mã (thùng có gắn thiết bị cơ khí phải về 74192090) nên không BO_VE. Phần tên TUONG_TU [\"Thùng\",\"két\",\"bể chứa\"] giữ làm điểm xuất phát."
+    }
+  ]
+}

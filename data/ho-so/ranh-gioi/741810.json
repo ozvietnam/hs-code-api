@@ -1,0 +1,118 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "741810",
+  "nhom": "7418",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1528#soan-741810",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "74181010",
+      "nguon": "tax.74181010",
+      "trich": "74181010 - - Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Miếng cọ nồi",
+            "cọ rửa",
+            "đánh bóng",
+            "găng tay"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "74181030",
+      "nguon": "tax.74181030",
+      "trich": "74181030 - - Thiết bị nấu hoặc đun nóng dùng trong gia đình, không dùng điện và các bộ phận của các sản phẩm này",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Thiết bị nấu",
+                  "đun nóng"
+                ]
+              },
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "GIA_DINH"
+                ]
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Thiết bị nấu",
+                  "đun nóng"
+                ]
+              },
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "GIA_DINH"
+                ]
+              },
+              {
+                "fact": "hoatDongBangDien",
+                "op": "KHONG"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "74181090",
+      "nguon": "tax.74181090",
+      "trich": "74181090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "74181010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74181010 \"Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự\" — vế MỜ ⇒ TUONG_TU với value là các hàng NÊU TÊN nguyên văn trước \"… tương tự\" (tách mảng cho \"hoặc\")."
+    },
+    {
+      "ma": "74181030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74181030 \"Thiết bị nấu hoặc đun nóng dùng trong gia đình, không dùng điện và các bộ phận của các sản phẩm này\" — vế \"dùng trong gia đình\" ⇒ phamViSuDung GIA_DINH; \"không dùng điện\" ⇒ hoatDongBangDien KHONG; vế \"và các bộ phận của …\" ⇒ HOAC phương án [laBoPhan CO, dungCho tên đầu nguyên văn] theo quy ước \"X và bộ phận của chúng\" (BANG-LUAT-CHUNG dòng 5); định ngữ gia đình/không-điện là của \"các sản phẩm này\" nên áp cho cả phương án bộ phận."
+    },
+    {
+      "ma": "74181030",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan:74181010+74181030:khong-tat-dinh và cong2-chong-lan-truc — vector tenLoai \"Miếng cọ nồi\" + laBoPhan CO + dungCho \"Thiết bị nấu\" thoả cả hai dòng, nhưng luật chéo khoá ten-anh-em (mục 4.7) không áp cho dòng mang TUONG_TU (74181010); không có hàng THẬT nào vừa là miếng cọ/găng tay tương tự (74181010) vừa là bộ phận của thiết bị nấu gia đình không điện (74181030) ⇒ không khai được chongLanTruc viDuHang (vòng 8: cặp không có hàng thật ⇒ DỪNG). DỪNG, báo Claude."
+    }
+  ]
+}
