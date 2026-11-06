@@ -1,0 +1,44 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "520959",
+  "phien": "zcode-mm:loop:20261106T1046#soan-520959",
+  "dong8": {
+    "52095910": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapIn",
+          "op": "TRONG",
+          "value": ["BATIK"]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "52095910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.52095910 \"52095910 - - - Được in bằng phương pháp batik truyền thống (SEN)\" ⇒ phuongPhapIn TRONG [\"BATIK\"] — khoá phuongPhapIn (phương pháp in, vải/hàng dệt) đọc đúng vế \"bằng phương pháp batik\". KHÔNG dùng khoá gợi ý trong gói (goiYKhoa phuongPhapCheTao): khoá đó chỉ có giá trị DUC/REN/CAN_NONG/… chứ không có BATIK nên điều kiện sẽ không hợp lệ. Vế \"truyền thống\" không có khoá riêng trong từ vựng ⇒ không tách thành điều kiện riêng; \"(SEN)\" là ngoặc chú thích, không phải điều kiện (gói soạn không kèm nguồn sen.* cho 52095910 nên không mở rộng được nội dung SEN)."
+    },
+    {
+      "ma": "52095990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.52095990 \"52095990 - - - Loại khác\" trần (cây đánh dấu [LK], khongCanDieuKien) ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "520959",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số 520959 là TÊN NHÓM (cây gói hiện chữ WCO \"Fabrics, woven; containing 85% or more by weight of cotton, printed, of weaves n.e.c. in item no. 5209.5, weighing more than 200g/m2\"; tên tiếng Việt gói đính kèm \"Vải dệt khác\"), không phải điều kiện của nút (mẫu 500790 / 511211) ⇒ dieuKienNut rỗng; goi.tangKhongMa rỗng. Các đặc trưng chung của phân nhóm (chứa ≥85% bông tính theo khối lượng, đã in, dệt loại n.e.c. thuộc mục 5209.5, định lượng trên 200 g/m2) là nguồn CHUNG cho cả hai dòng nên không mã hoá thành điều kiện của dòng: chúng không phân biệt 52095910 với 52095990. Vì vậy KHÔNG ghi khoá daIn (đã in — đúng cho cả nhóm), cũng KHÔNG ghi kieuDet (không có giá trị nào đọc được vế \"weaves n.e.c.\"; các giá trị VAN_DIEM/VAN_CHEO/… chỉ là dệt vân điểm/vân chéo), và KHÔNG ghi điều kiện số cho định lượng (khoá dinhLuong trong từ vựng là \"định lượng giấy hoặc bìa\" g/m2, không phải vải; vế hàm lượng bông cũng không có khoá tương ứng — hamLuongCarbon là hàm lượng carbon, không phải bông). Tên tiếng Việt \"Vải dệt khác\" là tên loại vải của cả nhóm, không phải tiêu đề tầng không mã."
+    },
+    {
+      "ma": "52095910+52095990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chỉ có MỘT dòng 8 số có điều kiện (52095910); 52095990 là \"Loại khác\" trần nên không ghi điều kiện ⇒ không có cặp anh em nào chồng lấn theo chữ biểu ⇒ không khai chongLanVanBan, không khai chongLanTruc. Vế giới hạn \"bằng phương pháp batik\" đã phủ bằng phuongPhapIn BATIK; vế \"truyền thống\" không có khoá riêng trong từ vựng (đã nêu ở ghi chú của 52095910)."
+    },
+    {
+      "ma": "520959",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói soạn chỉ nêu chú giải (nhom5209.nhom 85 ký tự / ch52.chuong 724 / phan52.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ không trích được vế nào từ chú giải; điều kiện chỉ dựa trên chữ biểu của chính dòng."
+    }
+  ]
+}

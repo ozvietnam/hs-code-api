@@ -1,0 +1,40 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "490290",
+  "phien": "zcode-mm:loop:20261106T0927#soan-490290",
+  "dong8": {
+    "49029010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": ["giáo dục", "kỹ thuật", "khoa học", "lịch sử", "văn hóa"]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "49029010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49029010 \"49029010 - - Tạp chí và ấn phẩm định kỳ về giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa (SEN)\" ⇒ tenLoai TEN_LOAI mảng 5 giá trị [\"giáo dục\", \"kỹ thuật\", \"khoa học\", \"lịch sử\", \"văn hóa\"] — danh từ chung \"Tạp chí và ấn phẩm định kỳ\" là chủ thể của danh sách nên không lặp vào từng giá trị; mỗi giá trị đều có mặt trong trích (cổng 3 chặn chuỗi có \"hoặc\"). \"(SEN)\" là nhãn chú thích của dòng biểu thuế, không phải điều kiện. Câu \"Ví dụ như bản tin và tạp chí.\" và câu \"Ví dụ về tạp chí là các tạp chí học thuật được biên tập bởi những người có chuyên môn, và công bố các vấn đề học thuật liên quan tới một ngành học cụ thể.\" trong sen.49029010 mở đầu bằng \"Ví dụ\" nên là VÍ DỤ mô tả loại tạp chí trong dòng, không phải điều kiện ⇒ không mã hoá."
+    },
+    {
+      "ma": "49029010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "soKyXuatBanMotTuan",
+      "ghiChu": "sen.49029010 \"Các ấn phẩm định kỳ này được xuất bản mới thường xuyên theo định kỳ (ít hơn 4 số trong một tuần).\" — vế GIỚI HẠN biên số có trong chính nguồn của dòng; tu-vung@2 không có khoá nào đọc được \"số số xuất bản trong một tuần\" nên không bịa khoá. Đề xuất khoá SO \"soKyXuatBanMotTuan\" (ít hơn 4 số trong một tuần). Vế này là điều kiện chung của cả phân nhóm (đã có ở tiêu đề WCO của 490290) nên không phân biệt 49029010 với 49029090."
+    },
+    {
+      "ma": "49029090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49029090 \"49029090 - - Loại khác\" trần (cây đánh dấu [LK]) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "490290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Phân nhóm 490290 không có tầng không mã (tangKhongMa rỗng) và không có tầng trung gian mang tên ⇒ dieuKienNut rỗng. wco.490290 \"490290 Newspapers, journals and periodicals; whether or not illustrated or containing advertising material, appearing less frequently than four times a week\" là nguồn CHUNG cho cả hai dòng; vế \"whether or not illustrated or containing advertising material\" là đặc tính MỞ (có hoặc không) nên không thành điều kiện, còn vế \"appearing less frequently than four times a week\" là điều kiện chung của phân nhóm (đã ghi ở dòng 49029010 theo nguồn SEN) chứ không phân biệt 49029010 với 49029090 ⇒ không mã hoá thành điều kiện riêng của dòng. Ba nguồn chú giải nhom4902.nhom / ch49.chuong / phan49.phan có trong gói nhưng không kèm văn bản nên không trích được gì từ chúng."
+    }
+  ]
+}

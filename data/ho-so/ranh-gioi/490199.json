@@ -1,0 +1,65 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "490199",
+  "nhom": "4901",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T0922#soan-490199",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "49019910",
+      "nguon": "tax.49019910",
+      "trich": "49019910 - - - Sách giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "giáo dục",
+            "kỹ thuật",
+            "khoa học",
+            "lịch sử",
+            "văn hóa"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "49019990",
+      "nguon": "tax.49019990",
+      "trich": "49019990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "49019910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49019910 \"49019910 - - - Sách giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa\" ⇒ điều kiện phân nhánh của dòng là TÍNH CHẤT SÁCH: tenLoai TEN_LOAI với mảng 5 giá trị (giáo dục / kỹ thuật / khoa học / lịch sử / văn hóa). Danh từ chung \"Sách\" là chủ thể của danh sách nên không lặp vào từng giá trị — và mỗi giá trị phải nằm trong trích (điều kiện chữ tự do so tập âm tiết, mỗi giá trị phải có mặt trong trích) nên tách danh sách thành mảng thay vì gộp chuỗi có \"hoặc\" (cổng 3 chặn)."
+    },
+    {
+      "ma": "49019910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề dòng không có vế giới hạn nào (không có mệnh đề loại trừ, không có mệnh đề giới hạn công dụng) ⇒ không có vế nào cần BO_VE; ba nguồn chú giải nhom4901.nhom / ch49.chuong / phan49.phan có trong gói nhưng không kèm văn bản nên không trích được gì từ chúng."
+    },
+    {
+      "ma": "49019990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49019990 \"49019990 - - - Loại khác\" trần (cây đánh dấu [LK]) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "490199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Phân nhóm 490199 không có tầng không mã (tangKhongMa rỗng) ⇒ dieuKienNut rỗng. wco.490199 \"490199 Printed matter; books, brochures, leaflets and similar printed matter n.e.c. in item no. 4901.10 or 4901.91\" là nguồn CHUNG cho cả hai dòng; vế \"n.e.c. in item no. 4901.10 or 4901.91\" giới hạn chính phân nhóm chứ không phân biệt 49019910 với 49019990 ⇒ không mã hoá thành điều kiện của dòng; ranh giới nằm ở tính chất sách trong tiêu đề biểu thuế."
+    }
+  ]
+}

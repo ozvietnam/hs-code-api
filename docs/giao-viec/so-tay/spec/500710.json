@@ -1,0 +1,64 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "500710",
+  "phien": "zcode-mm:loop:20261106T1019#soan-500710",
+  "dong8": {
+    "50071020": {
+      "dieuKienSo": [
+        {
+          "fact": "tinhTrangTayTrang",
+          "op": "TRONG",
+          "value": ["CHUA_TAY_TRANG", "DA_TAY_TRANG"]
+        }
+      ]
+    },
+    "50071030": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapIn",
+          "op": "TRONG",
+          "value": ["BATIK"]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "chongLanVanBan": [
+    {
+      "cap": ["50071020", "50071030"],
+      "lyDo": "Hai nhánh rẽ theo HAI trục khác nhau, chữ biểu không loại trừ nhau: .20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" (tình trạng tẩy trắng) và .30 \"Được in bằng phương pháp batik truyền thống\" (phương pháp in) — vải đã tẩy trắng mà in batik thoả cả hai nhánh theo chữ biểu. Gói soạn không có nguồn nào (không có sen.*; chú giải chỉ kèm độ dài) chốt thứ tự ưu tiên ⇒ không bịa điều kiện tách; khai chồng lấn để máy thành cảnh báo, runtime không tự chốt."
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "50071020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50071020 \"Chưa tẩy trắng hoặc đã tẩy trắng\" ⇒ tinhTrangTayTrang TRONG [\"CHUA_TAY_TRANG\", \"DA_TAY_TRANG\"] — mảng 2 giá trị đọc vế hoặc; khoá tinhTrangTayTrang (tình trạng tẩy trắng của xơ, sợi hoặc vải dệt) đúng nghĩa chữ biểu. Chữ biểu dòng này không nói gì về in batik nên KHÔNG thêm điều kiện không in batik (từ vựng không có khoá nào đọc được vế đó)."
+    },
+    {
+      "ma": "50071030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50071030 \"Được in bằng phương pháp batik truyền thống\" ⇒ phuongPhapIn TRONG [\"BATIK\"] — khoá phuongPhapIn (phương pháp in, vải/hàng dệt) đọc đúng vế bằng phương pháp batik. KHÔNG dùng khoá gợi ý phuongPhapCheTao: khoá đó chỉ có giá trị DUC/REN/CAN_NONG/… chứ không có BATIK nên điều kiện sẽ không hợp lệ. Vế truyền thống không có khoá riêng trong từ vựng ⇒ không tách thành điều kiện riêng."
+    },
+    {
+      "ma": "50071020+50071030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chồng lấn TRỤC (tình trạng tẩy trắng ↔ phương pháp in) ⇒ khai chongLanVanBan cho cặp này, không bịa điều kiện tách. Hệ quả phải nói rõ: điều kiện .20 bao trọn cả hai giá trị của khoá tinhTrangTayTrang, nên phép phủ định anh em cho dòng Loại khác 50071090 có thể không còn lối vào (kiểm ở cổng 2, cong2-dong-khong-toi-duoc); ranh giới thật .20 ↔ .30 nằm ở SEN Chương 50, gói không có nguồn đó."
+    },
+    {
+      "ma": "50071090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50071090 \"Loại khác\" trần (cây đánh dấu [LK], khongCanDieuKien) ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "500710",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số 500710 là TÊN NHÓM (Vải dệt thoi từ tơ vụn; cây gói hiện chữ WCO \"500710 Silk; woven fabrics of noil silk\"), không phải điều kiện của nút (mẫu 482320) ⇒ dieuKienNut rỗng; goi.tangKhongMa rỗng. Nguồn phân nhóm wco.500710 là nguồn CHUNG cho cả hai dòng nên không mã hoá thành điều kiện."
+    },
+    {
+      "ma": "50071020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói soạn chỉ nêu chú giải (nhom5007.nhom 646 ký tự / ch50.chuong 934 / phan50.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ không trích được vế nào từ chú giải; điều kiện chỉ dựa trên chữ biểu của chính dòng."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "511211",
+  "phien": "zcode-mm:loop:20261106T1039#soan-511211",
+  "dong8": {
+    "51121110": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapIn",
+          "op": "TRONG",
+          "value": ["BATIK"]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "51121110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.51121110 \"51121110 - - - Được in bằng phương pháp batik truyền thống (SEN)\" ⇒ phuongPhapIn TRONG [\"BATIK\"] — khoá phuongPhapIn (phương pháp in, vải/hàng dệt) đọc đúng vế \"bằng phương pháp batik\". KHÔNG dùng khoá gợi ý trong gói (goiYKhoa phuongPhapCheTao): khoá đó chỉ có giá trị DUC/REN/CAN_NONG/… chứ không có BATIK nên điều kiện sẽ không hợp lệ. Vế \"truyền thống\" không có khoá riêng trong từ vựng ⇒ không tách thành điều kiện riêng; \"(SEN)\" là ngoặc chú thích, không phải điều kiện (gói soạn không kèm nguồn sen.* cho 51121110 nên không mở rộng được nội dung SEN)."
+    },
+    {
+      "ma": "51121190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.51121190 \"51121190 - - - Loại khác\" trần (cây đánh dấu [LK], khongCanDieuKien) ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "511211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số 511211 là TÊN NHÓM (cây gói hiện chữ WCO \"Fabrics, woven; of combed wool or combed fine animal hair, containing 85% or more by weight of wool or fine animal hair, of a weight not exceeding 200g/m2\"), không phải điều kiện của nút (mẫu 500790) ⇒ dieuKienNut rỗng; goi.tangKhongMa rỗng. Nguồn phân nhóm wco.511211 là nguồn CHUNG cho cả hai dòng nên không mã hoá thành điều kiện của dòng: các đặc trưng chung của phân nhóm (chứa ≥85% lông chải, định lượng không quá 200 g/m2) không phân biệt 51121110 với 51121190 ⇒ không ghi điều kiện số cho dòng (khoá dinhLuong trong từ vựng cũng là \"định lượng giấy hoặc bìa\", không đúng nghĩa vải len). Tên tiếng Việt gói đính kèm cho 511211 (\"Định lượng không quá 200 g/m2\") là tiêu đề của tầng 5112 (nhom) đứng trên ⇒ ngoài phạm vi ranh giới 6→8 của 511211."
+    },
+    {
+      "ma": "51121110+51121190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chỉ có MỘT dòng 8 số có điều kiện (51121110); 51121190 là \"Loại khác\" trần nên không ghi điều kiện ⇒ không có cặp anh em nào chồng lấn theo chữ biểu ⇒ không khai chongLanVanBan, không khai chongLanTruc. Vế giới hạn \"bằng phương pháp batik\" đã phủ bằng phuongPhapIn BATIK; vế \"truyền thống\" không có khoá riêng trong từ vựng (đã nêu ở ghi chú của 51121110)."
+    },
+    {
+      "ma": "511211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói soạn chỉ nêu chú giải (nhom5112.nhom 495 ký tự / ch51.chuong 1.477 / phan51.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ không trích được vế nào từ chú giải; điều kiện chỉ dựa trên chữ biểu của chính dòng."
+    }
+  ]
+}
