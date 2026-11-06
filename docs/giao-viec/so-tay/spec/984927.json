@@ -1,0 +1,29 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "984927",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984927",
+  "dong8": {
+    "98492710": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Van ngắt nhiên liệu" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe thuộc nhóm 87.02, 87.03 hoặc 87.04" }
+      ]
+    },
+    "98492790": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Van ngắt nhiên liệu" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe thuộc nhóm 87.02, 87.03 hoặc 87.04" }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "chongLanVanBan": [
+    {
+      "cap": ["98492710", "98492790"],
+      "lyDo": "Hai dòng có chữ biểu TRÙNG NHAU từng chữ .10 \"Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" và .90 \"Van ngắt nhiên liệu dùng cho xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" — mọi hàng thoả dòng này đều thoả dòng kia, không có căn cứ thứ tự hay đặc điểm nào tách được; lúc chạy máy hỏi, không tự chốt"
+    }
+  ],
+  "ghiChuSoan": [
+    { "ma": "98492710", "loai": "CHONG_LAN", "ghiChu": "tax.98492710 trùng chữ tax.98492790 ⇒ khai chongLanVanBan, không bịa điều kiện tách" }
+  ]
+}

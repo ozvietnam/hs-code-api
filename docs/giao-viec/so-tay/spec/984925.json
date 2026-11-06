@@ -1,0 +1,74 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "984925",
+  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984925",
+  "dong8": {
+    "98492511": {
+      "dieuKienSo": [
+        { "fact": "congSuat", "op": "<=", "value": 26.38, "donVi": "kW" }
+      ]
+    },
+    "98492521": {
+      "dieuKienSo": [
+        { "fact": "congSuat", "op": "<=", "value": 26.38, "donVi": "kW" }
+      ]
+    },
+    "98492531": {
+      "dieuKienSo": [
+        { "fact": "congSuat", "op": "<=", "value": 26.38, "donVi": "kW" }
+      ]
+    },
+    "98492541": {
+      "dieuKienSo": [
+        { "fact": "congSuat", "op": "<=", "value": 26.38, "donVi": "kW" }
+      ]
+    },
+    "98492590": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Thiết bị làm bay hơi", "ngưng tụ"] },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy điều hoà không khí lắp trên xe có động cơ" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "9849251": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "người, trong xe có động cơ" }
+      ]
+    },
+    "9849252": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ" }
+      ]
+    },
+    "9849253": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ" }
+      ]
+    },
+    "9849254": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe có động cơ" }
+      ]
+    },
+    "984925~r19590": {
+      "dieuKienSo": [
+        { "fact": "laBoPhan", "op": "CO" }
+      ]
+    },
+    "984925~r19591": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy" },
+        { "fact": "congSuat", "op": "<=", "value": 21.1, "donVi": "kW" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "984925", "loai": "DUNG", "ghiChu": "--goi báo \"!!! DỪNG — TẦNG KHÔNG MÃ không biểu diễn được\": r19578 \"Kèm theo một bộ phận làm lạnh và một van đảo chiều chu trình nóng/lạnh (bơm nhiệt có đảo chiều):\", r19582 \"Loại khác, có kèm theo bộ phận làm lạnh:\", r19586 \"Không gắn kèm bộ phận làm lạnh:\" — ba tầng gạch 3 phân biệt 9849252/9849253/9849254 (cùng chữ tiêu đề) không có nút trong cây; cổng 1 chặn cong1-tang-khong-ma-khong-dat — báo Claude xử cấu trúc biểu thuế" },
+    { "ma": "9849252", "loai": "BO_VE", "ve": "(trừ loại thuộc phân nhóm 8415.20)", "lyDo": "vế trừ dẫn mã phân nhóm 8415.20: hàng thuộc 8415.20 được phân loại tại chính phân nhóm đó, không dòng nào của 984925 nhận nó; tu-vung@2 không có op phủ định theo mã cho dungCho — bỏ vế không làm hàng 8415.20 rơi nhầm vì ranh giới đã nằm ở cấp phân nhóm" },
+    { "ma": "9849253", "loai": "BO_VE", "ve": "(trừ loại thuộc phân nhóm 8415.20)", "lyDo": "vế trừ dẫn mã phân nhóm 8415.20: hàng thuộc 8415.20 được phân loại tại chính phân nhóm đó, không dòng nào của 984925 nhận nó; tu-vung@2 không có op phủ định theo mã cho dungCho — bỏ vế không làm hàng 8415.20 rơi nhầm vì ranh giới đã nằm ở cấp phân nhóm" },
+    { "ma": "9849254", "loai": "BO_VE", "ve": "(trừ loại thuộc phân nhóm 8415.20)", "lyDo": "vế trừ dẫn mã phân nhóm 8415.20: hàng thuộc 8415.20 được phân loại tại chính phân nhóm đó, không dòng nào của 984925 nhận nó; tu-vung@2 không có op phủ định theo mã cho dungCho — bỏ vế không làm hàng 8415.20 rơi nhầm vì ranh giới đã nằm ở cấp phân nhóm" },
+    { "ma": "98492590", "loai": "QUYET_DINH", "ghiChu": "tax.98492590 \"Thiết bị làm bay hơi hoặc ngưng tụ\" — \"hoặc\" nối hai loại thiết bị ⇒ mảng [\"Thiết bị làm bay hơi\", \"ngưng tụ\"]" },
+    { "ma": "984925~r19591", "loai": "QUYET_DINH", "ghiChu": "tieuDe.984925~r19591 \"Của máy có công suất làm mát không quá 21,10 kW\" — vế \"Của máy\" phủ bằng dungCho \"máy\", vế biên phủ bằng congSuat <= 21,10 kW" }
+  ]
+}

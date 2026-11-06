@@ -1,0 +1,75 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "984913",
+  "nhom": "9849",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-984913",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "9849131",
+      "nguon": "tieuDe.9849131",
+      "trich": "9849131 Loại dùng cho ô tô khách hoặc ô tô chở hàng",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ô tô khách",
+            "ô tô chở hàng"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "98491310",
+      "nguon": "tax.98491310",
+      "trich": "98491310 - - Loại sử dụng cho ô tô con (motor car) (kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sử dụng cho ô tô con"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98491311",
+      "nguon": "tax.98491311",
+      "trich": "98491311 - - - Chiều rộng không quá 450 mm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98491319",
+      "nguon": "tax.98491319",
+      "trich": "98491319 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "98491310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98491310 \"(kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" là vế kể cả (PHU, cổng 5) ⇒ không thành điều kiện; chỉ phủ vế GIỚI HẠN \"sử dụng cho ô tô con\" bằng dungCho"
+    }
+  ]
+}
