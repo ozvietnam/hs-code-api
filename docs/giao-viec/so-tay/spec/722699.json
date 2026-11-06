@@ -3,24 +3,74 @@
   "pn6": "722699",
   "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-722699",
   "dong8": {
-    "72269911": { "dieuKienSo": [] },
-    "72269991": { "dieuKienSo": [] }
+    "72269911": {
+      "dieuKienSo": []
+    },
+    "72269991": {
+      "dieuKienSo": []
+    }
   },
   "dieuKienNut": {
     "7226991": {
       "dieuKienSo": [
-        { "fact": "dangDaiDaiTamPhoDung", "op": "TRONG", "value": ["DAI_VA_DAI"] },
-        { "fact": "chieuRong", "op": "<=", "value": 400, "donVi": "mm" }
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "7226991", "loai": "QUYET_DINH", "ghiChu": "tieuDe.7226991 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI] (cachDoc đọc \"dạng đai và dải(SEN)\") + chieuRong <= 400 mm (\"không quá\" = <=)." },
-    { "ma": "7226999", "loai": "QUYET_DINH", "ghiChu": "tieuDe.7226999 \"Loại khác\" trần ⇒ không điều kiện." },
-    { "ma": "72269919", "loai": "QUYET_DINH", "ghiChu": "tax.72269919 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." },
-    { "ma": "72269999", "loai": "QUYET_DINH", "ghiChu": "tax.72269999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." },
-    { "ma": "72269911", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "lopMaPhu:MA_HOAC_TRANG_KEM", "ghiChu": "tax.72269911 \"Được phủ, mạ hoặc tráng kẽm\" — không có khoá nào đọc \"phủ/mạ/tráng kẽm\": lopMaPhu chỉ có MA_DONG, TRANG_NHUA_FLO, TRANG_KEM_CROMAT (kẽm-cromat là lớp khác), TRANG_THIEC, SON_SAU_MA_KEM; daPhu là khoá giấy cuốn/bao gói, không nói kẽm; bỏ vế \"kẽm\" làm đổi mã (.11 ↔ .19). Đây là toàn bộ nội dung dòng ⇒ để trống dieuKienSo, DỪNG." },
-    { "ma": "72269991", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "lopMaPhu:MA_HOAC_TRANG_KEM", "ghiChu": "tax.72269991 \"Được phủ, mạ hoặc tráng kẽm\" — cùng lý do với 72269911: thiếu giá trị lopMaPhu cho phủ/mạ/tráng kẽm ⇒ để trống dieuKienSo, DỪNG." },
-    { "ma": "722699", "loai": "LECH_TIEN_LE", "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 722699-01 KHONG_LECH (1756/TB-TCHQ ↔ 977, 1462/TB-TCHQ): soạn theo chữ biểu, khớp bảng." }
+    {
+      "ma": "7226991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7226991 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI] (cachDoc đọc \"dạng đai và dải(SEN)\") + chieuRong <= 400 mm (\"không quá\" = <=)."
+    },
+    {
+      "ma": "7226999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7226999 \"Loại khác\" trần ⇒ không điều kiện."
+    },
+    {
+      "ma": "72269919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72269919 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "72269999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72269999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "72269911",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "lopMaPhu:MA_HOAC_TRANG_KEM",
+      "ghiChu": "tax.72269911 \"Được phủ, mạ hoặc tráng kẽm\" — không có khoá nào đọc \"phủ/mạ/tráng kẽm\": lopMaPhu chỉ có MA_DONG, TRANG_NHUA_FLO, TRANG_KEM_CROMAT (kẽm-cromat là lớp khác), TRANG_THIEC, SON_SAU_MA_KEM; daPhu là khoá giấy cuốn/bao gói, không nói kẽm; bỏ vế \"kẽm\" làm đổi mã (.11 ↔ .19). Đây là toàn bộ nội dung dòng ⇒ để trống dieuKienSo, DỪNG."
+    },
+    {
+      "ma": "72269991",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "lopMaPhu:MA_HOAC_TRANG_KEM",
+      "ghiChu": "tax.72269991 \"Được phủ, mạ hoặc tráng kẽm\" — cùng lý do với 72269911: thiếu giá trị lopMaPhu cho phủ/mạ/tráng kẽm ⇒ để trống dieuKienSo, DỪNG."
+    },
+    {
+      "ma": "722699",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG:72269911 và :72269991 (lopMaPhu không có giá trị phủ/mạ/tráng kẽm) ⇒ cong1-chua-so-hoa ở bốn dòng; tiêu đề 7226991 đã soạn đủ (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong <= 400 mm)."
+    },
+    {
+      "ma": "722699",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 722699-01 KHONG_LECH (1756/TB-TCHQ ↔ 977, 1462/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
   ]
 }

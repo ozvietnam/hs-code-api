@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0915#soan-722592",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-722592",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,13 @@
       "hs": "72259210",
       "nguon": "tax.72259210",
       "trich": "72259210 - - - Thép gió",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thép gió"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -37,9 +43,30 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "72259210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72259210 \"Thép gió\" ⇒ tenLoai TEN_LOAI \"Thép gió\" (tên hàng nguyên văn; không có giá trị chatLieu \"thép gió\" trong tu-vung, chatLieu \"sắt thép\" quá rộng)."
+    },
+    {
+      "ma": "72259220",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "ghiChu": "tax.72259220 \"Loại khác, được phủ, mạ hoặc tráng bằng hợp kim kẽm - nhôm - magiê\": vế GIỚI HẠN \"bằng hợp kim kẽm - nhôm - magiê\" là LỚP PHỦ. Khoá lopMaPhu (lớp mạ hoặc tráng phủ bề mặt) đúng trục nhưng chưa có giá trị hợp kim kẽm-nhôm-magiê (chỉ MA_DONG, TRANG_NHUA_FLO, TRANG_KEM_CROMAT, TRANG_THIEC, SON_SAU_MA_KEM); khoá daXuLyBeMat chỉ đọc \"xử lý bề mặt\" không đọc \"phủ, mạ hoặc tráng\". Không ép bằng tenLoai (lớp phủ không phải tên hàng, sẽ sai trục).",
+      "khoaDeXuat": "lopMaPhu (giá trị mới KEM_NHOM_MAGIE)"
+    },
+    {
+      "ma": "72259290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72259290 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "722592",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 722592-01 KHONG_LECH (4337/TB-TCHQ: thép hợp kim Bo mạ kẽm nhúng nóng không phải thép gió .10, lớp mạ kẽm không phải hợp kim kẽm-nhôm-magiê .20 ⇒ .90 khớp chữ biểu): soạn theo chữ biểu, khớp bảng."
+    },
+    {
       "ma": "722592",
       "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:722592:chua-co, không soạn tiếp"
+      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG:72259220:lopMaPhu (giá trị mới KEM_NHOM_MAGIE: hợp kim kẽm - nhôm - magiê). Dòng .20 để dieuKienSo rỗng; .10 đã soạn. .90 là Loại khác trần nên không soạn thêm."
     }
   ]
 }
