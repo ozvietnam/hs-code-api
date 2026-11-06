@@ -1,0 +1,269 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "480261",
+  "nhom": "4802",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1515#soan-480261",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4802613",
+      "nguon": "tieuDe.4802613",
+      "trich": "4802613 Giấy và bìa trang trí",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy và bìa trang trí"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "4802614",
+      "nguon": "tieuDe.4802614",
+      "trich": "4802614 Giấy làm nền sản xuất giấy tráng nhôm",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm nền sản xuất giấy tráng nhôm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "4802615",
+      "nguon": "tieuDe.4802615",
+      "trich": "4802615 Loại dùng để viết, in và các mục đích đồ bản khác",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng để viết, in và các mục đích đồ bản khác"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "48026131",
+      "nguon": "tax.48026131",
+      "trich": "48026131 - - - - Có chiều rộng không quá 15 cm (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 15,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48026139",
+      "nguon": "tax.48026139",
+      "trich": "48026139 - - - - Loại khác (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48026141",
+      "nguon": "tax.48026141",
+      "trich": "48026141 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 150,
+          "donVi": "g/m2"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 225,
+          "donVi": "g/m2"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48026149",
+      "nguon": "tax.48026149",
+      "trich": "48026149 - - - - Loại khác (SEN)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48026151",
+      "nguon": "tax.48026151",
+      "trich": "48026151 - - - - Có chiều rộng không quá 15 cm",
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 15,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48026159",
+      "nguon": "tax.48026159",
+      "trich": "48026159 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48026160",
+      "nguon": "tax.48026160",
+      "trich": "48026160 - - - Giấy nhiều lớp(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "nhieuLop",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48026191",
+      "nguon": "tax.48026191",
+      "trich": "48026191 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2",
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 150,
+          "donVi": "g/m2"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": "<",
+          "value": 225,
+          "donVi": "g/m2"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48026199",
+      "nguon": "tax.48026199",
+      "trich": "48026199 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "4802613",
+        "4802615"
+      ],
+      "truc": {
+        "4802613": "TEN_LOAI",
+        "4802615": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này là \"Giấy và bìa trang trí\" (4802613) hay loại \"dùng để viết, in và các mục đích đồ bản khác\" (4802615)? Nếu vừa là giấy và bìa trang trí vừa dùng để viết, in và các mục đích đồ bản, biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "4802613": "Giấy và bìa trang trí",
+        "4802615": "Loại dùng để viết, in và các mục đích đồ bản khác"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "4802613",
+            "4802615"
+          ],
+          "hang": "Giấy và bìa trang trí dùng để viết, in và các mục đích đồ bản khác"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "480261",
+      "loai": "QUYET_DINH",
+      "ghiChu": "wco.480261 \"480261 Uncoated paper and paperboard (not 4801 or 4803); over 10% by weight of mechanical or chemi-mechanical processed fibre, in rolls\" (ten.vi \"Dạng cuộn\") là điều kiện CẤP PHÂN NHÓM ⇒ không mã hoá vào dong8 (dong8 chỉ chứa điều kiện phân biệt các dòng 8 số): vế \"hơn 10% xơ sợi xử lý cơ học hoặc hóa học-cơ học\" và vế \"ở dạng cuộn\" đều thuộc tiêu đề phân nhóm, không lặp vào từng dòng. Cây 480261 có 4 tầng tiêu đề 7 số (4802613, 4802614, 4802615, 4802619) và không có tầng không mã (tangKhongMa rỗng); 4802619 là tiêu đề \"Loại khác\" trần ⇒ không khai trong dieuKienNut."
+    },
+    {
+      "ma": "480261",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chồng lấn theo TRỤC ở cấp tiêu đề (#683): 4802613 \"Giấy và bìa trang trí\" (khoá tên tenLoai) đứng cạnh 4802615 \"Loại dùng để viết, in và các mục đích đồ bản khác\" (khoá công dụng congDung) — không chung khoá, có hàng thật thoả cả hai nhánh (giấy và bìa trang trí dùng để viết, in) ⇒ không khai chongLanVanBan (không gỡ được trục), khai chongLanTruc cho cụm hai tiêu đề, phanXu null (người khai/chuyên gia phân xử). Nhánh 4802614 \"Giấy làm nền sản xuất giấy tráng nhôm\" CÙNG trục công dụng với 4802615 (khác nhau ở công dụng: làm nền sản xuất giấy tráng nhôm vs dùng để viết, in) nên không phải cặp chồng lấn trục; không có hàng thật nào vừa là giấy trang trí vừa là giấy làm nền sản xuất giấy tráng nhôm ⇒ cặp (4802613, 4802614) không khai."
+    },
+    {
+      "ma": "4802613",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802613 \"4802613 Giấy và bìa trang trí\" (tầng tiêu đề 7 số có tên) ⇒ tenLoai \"Giấy và bìa trang trí\": chữ biểu thuế chỉ nêu TÊN loại, không nêu công dụng hay định lượng ⇒ không có khoá nào khác đọc được (cùng cách với 4802582). sen.48026131 \"Giấy và bìa trang trí là loại giấy hoặc bìa đặc biệt với các mẫu trang trí hoàn thiện, ví dụ:\" mô tả CHÍNH tầng này ⇒ không mã hoá thêm điều kiện vào dòng 8 số."
+    },
+    {
+      "ma": "4802614",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802614 \"4802614 Giấy làm nền sản xuất giấy tráng nhôm\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"làm nền sản xuất giấy tráng nhôm\" (cùng khoá/cùng cách với 48025430 anh em cùng chương 48). Không mã hoá tiêu chí SEN sen.48026141 \"Đáp ứng chú giải 5, bóng một mặt, tỷ trọng biểu kiến không nhỏ hơn 750kg/m3, độ nhẵn không quá 125ml/phút, độ hút nước theo phương pháp Cobb nhỏ hơn 25g/m2, độ trắng không dưới 82% theo ISO, độ mờ đục không nhỏ hơn 60%, độ bền xé không nhỏ hơn 5,6mN.m2/g theo chiều dọc và 5mN.m2/g theo chiều ngang, độ chịu bục không nhỏ hơn 2,3 KPa.m2/g, độ dài đứt không nhỏ hơn 4000m theo chiều dọc và 3500m theo chiều ngang.\" vì chữ biểu dòng không nói — SEN chỉ mô tả (cùng cách xử lý với 48025430)."
+    },
+    {
+      "ma": "4802615",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802615 \"4802615 Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"dùng để viết, in và các mục đích đồ bản khác\" (giữ nguyên cụm chữ biểu, cùng khoá/cùng cách với 4802583). Gói gắn nghiPhanConLai cho tầng này: chữ \"khác\" ở cuối có thể là dấu hiệu phần còn lại (ngoài 4802613, 4802614) hoặc định ngữ của \"các mục đích đồ bản\" — không tự chốt nên KHÔNG khai phanConLai, cũng không bịa điều kiện loại trừ; tách nhánh bằng chongLanTruc (phanXu null)."
+    },
+    {
+      "ma": "4802619",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802619 \"4802619 Loại khác\" — tiêu đề \"Loại khác\" TRẦN (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện trong dieuKienNut (máy phủ định anh em 4802613, 4802614, 4802615); con 48026191 vẫn khai trong dong8 vì có tên riêng, con 48026199 là \"Loại khác\" trần ⇒ không đưa vào dong8."
+    },
+    {
+      "ma": "48026131",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026131 \"48026131 - - - - Có chiều rộng không quá 15 cm (SEN)\" ⇒ chieuRong <= 15 cm (\"không quá\" = <=; đơn vị giữ đúng chữ biểu thuế cm, tu-vung@2 đặt chieuRong ở mm nên không tự quy đổi). Vế \"ở dạng cuộn\" KHÔNG có trong chữ dòng — thuộc tiêu đề phân nhóm (wco.480261 \"...in rolls\", ten.vi \"Dạng cuộn\") ⇒ không mã hoá vào dong8 (khác 48025821/48025831, ở đó chữ dòng tự nêu \"Ở dạng cuộn\")."
+    },
+    {
+      "ma": "48026139",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026139 \"48026139 - - - - Loại khác (SEN)\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em 48026131)."
+    },
+    {
+      "ma": "48026141",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026141 \"48026141 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2(SEN)\" ⇒ dinhLuong > 150 g/m2 (\"trên\" = >) và dinhLuong < 225 g/m2 (\"dưới\" = <), đơn vị giữ theo chữ biểu thuế (g/m2); cùng cách chia với 48026191. Không mã hoá tiêu chí SEN (bóng một mặt, tỷ trọng biểu kiến ≥750kg/m3, độ nhẵn ≤125ml/phút, độ hút nước Cobb <25g/m2, độ trắng ≥82%…) vì chữ biểu dòng không nói — SEN chỉ mô tả."
+    },
+    {
+      "ma": "48026149",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026149 \"48026149 - - - - Loại khác (SEN)\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em 48026141)."
+    },
+    {
+      "ma": "48026151",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026151 \"48026151 - - - - Có chiều rộng không quá 15 cm\" ⇒ chieuRong <= 15 cm (\"không quá\" = <=; đơn vị giữ đúng chữ biểu thuế cm), cùng khoá/cùng cách chia với anh em 48026131 để máy phủ định đọc được. Vế \"ở dạng cuộn\" thuộc tiêu đề phân nhóm ⇒ không mã hoá vào dòng."
+    },
+    {
+      "ma": "48026159",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026159 \"48026159 - - - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em 48026151)."
+    },
+    {
+      "ma": "48026160",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026160 \"48026160 - - - Giấy nhiều lớp(SEN)\" ⇒ nhieuLop CO (giấy/bìa nhiều lớp), cùng cách chia với 48025450 anh em cùng chương 48. sen.4802 (giấy nhiều lớp: Nhóm 48.02 có thể cũng bao gồm cả giấy nhiều lớp — dùng để viết, in hoặc mục đích đồ bản; kích thước không giới hạn; dạng hình chữ nhật, hình vuông hoặc dạng cuộn) là giải thích CẤP NHÓM 48.02 ⇒ không mã hoá vào dòng 8 số."
+    },
+    {
+      "ma": "48026191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026191 \"48026191 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2\" ⇒ dinhLuong > 150 g/m2 (\"trên\" = >) và dinhLuong < 225 g/m2 (\"dưới\" = <), đơn vị giữ theo chữ biểu thuế (g/m2), cùng khoá/cùng cách chia với 48026141 để máy phủ định đọc được. Không bịa ngưỡng cho 48026199 (\"Loại khác\" trần, không đưa vào dong8)."
+    },
+    {
+      "ma": "48026199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026199 \"48026199 - - - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em 48026191)."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "480269",
+  "phien": "zcode-mm:loop:20261106T1521#soan-480269",
+  "dong8": {
+    "48026911": {
+      "dieuKienSo": []
+    },
+    "48026991": {
+      "dieuKienSo": [
+        { "fact": "dinhLuong", "op": ">", "value": 150, "donVi": "g/m2" },
+        { "fact": "dinhLuong", "op": "<", "value": 225, "donVi": "g/m2" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4802691": {
+      "dieuKienSo": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "dùng để viết, in và các mục đích đồ bản khác" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "480269",
+      "loai": "QUYET_DINH",
+      "ghiChu": "wco.480269 \"480269 Uncoated paper and paperboard (not 4801 or 4803); over 10% by weight of mechanical or chemi-mechanical processed fibre, other than rolls, other than sheets 435mm or less by 297mm or less (unfolded)\" (ten.vi \"Loại khác\") là điều kiện CẤP PHÂN NHÓM ⇒ không mã hoá vào dong8 (dong8 chỉ chứa điều kiện phân biệt các dòng 8 số): các vế \"không phải 4801 hoặc 4803\", \"hơn 10% xơ sợi xử lý cơ học hoặc hóa học-cơ học\", \"khác dạng cuộn\", \"khác dạng tờ 435mm hoặc 297mm trở xuống (chưa gấp)\" đều thuộc tiêu đề phân nhóm, không lặp vào từng dòng. ten.vi \"Loại khác\" (phần còn lại của Nhóm 48.02) cũng là điều kiện cấp nhóm ⇒ không mã hoá vào dong8. Cây 480269 có 2 tầng tiêu đề 7 số (4802691, 4802699) và không có tầng không mã (tangKhongMa rỗng)."
+    },
+    {
+      "ma": "480269",
+      "loai": "QUYET_DINH",
+      "ghiChu": "sen.4802 (giải thích giấy nhiều lớp: Nhóm 48.02 có thể cũng bao gồm cả giấy nhiều lớp — dùng để viết, in hoặc mục đích đồ bản; kích thước không giới hạn; dạng hình chữ nhật, hình vuông hoặc dạng cuộn) là giải thích CẤP NHÓM 48.02 ⇒ không mã hoá vào dòng 8 số (cùng cách xử lý với 48026160, 48025450)."
+    },
+    {
+      "ma": "480269",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chỉ có MỘT tầng tiêu đề có tên (4802691); 4802699 là tiêu đề \"Loại khác\" trần ⇒ không có cặp nhánh đứng cạnh nhau (khác trục lẫn chung khoá) để khai chongLanTruc hay chongLanVanBan."
+    },
+    {
+      "ma": "4802691",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802691 \"4802691 Loại dùng để viết, in và các mục đích đồ bản khác\" (tầng tiêu đề 7 số có tên) ⇒ congDung \"dùng để viết, in và các mục đích đồ bản khác\" (giữ nguyên cụm chữ biểu; cùng khoá/cùng cách chia với 4802583, 4802615). Gói gắn nghiPhanConLai cho tầng này: chữ \"khác\" ở cuối là định ngữ của \"các mục đích đồ bản\", KHÔNG phải \"Loại khác\" trần ⇒ không tự chốt nên KHÔNG khai phanConLai, cũng không bịa điều kiện loại trừ."
+    },
+    {
+      "ma": "4802699",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802699 \"4802699 Loại khác\" — tiêu đề \"Loại khác\" TRẦN (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện trong dieuKienNut (máy phủ định anh em 4802691); con 48026991 vẫn khai trong dong8 vì có tên riêng, con 48026999 là \"Loại khác\" trần ⇒ không đưa vào dong8."
+    },
+    {
+      "ma": "48026911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026911 \"48026911 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — chữ dòng là MỘT mệnh đề (không có \"hoặc\"), gồm 3 vế nối nhau: vế hình thức \"Ở dạng tờ hình chữ nhật (kể cả hình vuông)\" đọc được bằng hinhDangCatGocKinh CO; vế kích thước \"không có chiều nào trên 36 cm\" đọc được bằng kichThuoc <= 36 cm (câu phủ MỌI chiều nên dùng kích thước chung, không dùng chieuRong; \"trên\" = > nên \"không có chiều nào trên 36 cm\" = mọi chiều <= 36 cm); vế \"ở dạng không gấp\" KHÔNG có khoá nào đọc được. Bỏ vế đó làm đổi mã 8 số (tờ đã gấp rơi về 48026919) ⇒ không bịa khoá mà để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG. Đơn vị số giữ đúng chữ biểu thuế (cm)."
+    },
+    {
+      "ma": "48026911",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "khongGap",
+      "ghiChu": "tax.48026911 \"48026911 - - - - Ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+    },
+    {
+      "ma": "48026919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026919 \"48026919 - - - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em 48026911)."
+    },
+    {
+      "ma": "48026991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026991 \"48026991 - - - - Định lượng trên 150 g/m2 nhưng dưới 225 g/m2\" ⇒ dinhLuong > 150 g/m2 (\"trên\" = >) và dinhLuong < 225 g/m2 (\"dưới\" = <), đơn vị giữ theo chữ biểu thuế (g/m2), cùng khoá/cùng cách chia với 48026141, 48026191, 48025891 để máy phủ định đọc được. Không bịa ngưỡng cho 48026999 (\"Loại khác\" trần, không đưa vào dong8)."
+    },
+    {
+      "ma": "48026999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48026999 \"48026999 - - - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em 48026991)."
+    }
+  ]
+}

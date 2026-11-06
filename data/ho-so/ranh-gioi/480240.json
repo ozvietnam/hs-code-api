@@ -1,0 +1,54 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "480240",
+  "nhom": "4802",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1450#soan-480240",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48024010",
+      "nguon": "tax.48024010",
+      "trich": "48024010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48024090",
+      "nguon": "tax.48024090",
+      "trich": "48024090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48024010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48024010 \"48024010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — \"hoặc\" nối hai vế thay thế nhau: vế 1 (ở dạng cuộn + chiều rộng không quá 15cm) và vế 2 (ở dạng tờ hình chữ nhật (kể cả hình vuông) + không có chiều nào trên 36 cm + ở dạng không gấp). Vế 1 diễn đạt được bằng khoá có sẵn (dangCuon CO + chieuRong <= 15cm); vế 2 có khoá cho phần hình dạng và kích thước (hinhDangCatGocKinh CO + kichThuoc <= 36 cm — câu phủ MỌI chiều nên dùng kích thước chung, không dùng chieuRong) nhưng vế \"ở dạng không gấp\" không có khoá nào đọc được. Bỏ vế đó làm đổi mã 8 số (tờ đã gấp rơi về 48024090) ⇒ không BO_VE mà để dieuKienSo rỗng + ghi chú THIEU_KHOA_TU_VUNG, KHÔNG bịa khoá. Đơn vị số giữ đúng chữ biểu thuế (cm; tu-vung@2 đặt chieuRong/kichThuoc ở mm nên không tự quy đổi)."
+    },
+    {
+      "ma": "48024010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "khongGap",
+      "ghiChu": "tax.48024010 \"48024010 - - Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" — vế \"ở dạng không gấp\" (tờ không gấp) cần khoá có/không; tu-vung@2 chưa có khoá gấp/không gấp (dangCuon là dạng cuộn, dangLuonSong là dạng lượn sóng — khác nghĩa)."
+    },
+    {
+      "ma": "480240",
+      "loai": "QUYET_DINH",
+      "ghiChu": "wco.480240 \"480240 Uncoated paper and paperboard (not 4801 or 4803); wallpaper base, in rolls or sheets\" (tiêu đề phân nhóm, bản Việt ten.vi \"Giấy làm nền sản xuất giấy dán tường\") là điều kiện cấp phân nhóm ⇒ không mã hoá vào dong8 (dong8 chỉ chứa điều kiện phân biệt 48024010 với 48024090); sen.4802 (giải thích giấy nhiều lớp, điều kiện dùng để viết/in và kích thước không giới hạn của Nhóm 48.02) cũng là cấp phân nhóm, không mã hoá vào dong8; cây 480240 chỉ có 2 dòng 8 số, không có tầng không mã ⇒ dieuKienNut rỗng."
+    },
+    {
+      "ma": "48024090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48024090 \"48024090 - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}
