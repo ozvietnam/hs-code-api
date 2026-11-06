@@ -17,7 +17,16 @@
       "hs": "59050010",
       "nguon": "tax.59050010",
       "trich": "59050010 - Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "LEN_LONG_DONG_VAT_MIN",
+            "LONG_DONG_VAT_THO"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -30,14 +39,14 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "590500",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — cong3-muc:59050010:dieu-kien-so-trong-khong-co-trong-trich:LONG_DONG_VAT_THO. tax.59050010 \"Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô\": tu-vung@2 đã có LEN_LONG_DONG_VAT_MIN (đọc \"lông cừu\", \"lông động vật loại mịn\") và LONG_DONG_VAT_THO, nhưng cách đọc của LONG_DONG_VAT_THO là \"lông động vật loại thô\" liền mạch, còn chữ biểu viết \"lông động vật loại mịn hoặc loại thô\" (lược danh từ \"lông động vật\" ở vế sau) nên cổng 3 không thấy cách đọc ⇒ không ghi được vế \"loại thô\". Ghi riêng LEN_LONG_DONG_VAT_MIN sẽ HẸP hơn chữ (bỏ lông thô), nên để dieuKienSo [] và DỪNG; cần Claude chỉnh cachDoc của LONG_DONG_VAT_THO (vd thêm \"loại\\s+mịn\\s+hoặc\\s+loại\\s+thô\" / \"hoặc\\s+loại\\s+thô\") — thợ không được sửa data/tu-vung."
-    },
-    {
       "ma": "59050090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.59050090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "59050010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59050010 \"Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô\" ⇒ loaiSoiDet TRONG [LEN_LONG_DONG_VAT_MIN, LONG_DONG_VAT_THO]: hai vế \"lông cừu / lông động vật loại mịn\" và \"loại thô\" của chữ biểu (LONG_DONG_VAT_THO đọc thêm \"hoặc loại thô\" từ 06/11)."
     }
   ]
 }

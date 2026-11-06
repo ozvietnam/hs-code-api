@@ -48,7 +48,12 @@
       ]
     },
     "59070060": {
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ],
       "phanConLai": true
     }
   },
@@ -97,8 +102,8 @@
     },
     {
       "ma": "59070060",
-      "loai": "DUNG",
-      "ghiChu": "cong1-chua-so-hoa:59070090:59070060 — .60 là phần còn lại có tên nhưng còn ý khẳng định \"được ngâm tẩm, tráng hoặc phủ\" (phân biệt với .90 \"Loại khác\" = vải không ngâm tẩm/tráng/phủ), nên dòng .90 phủ định .60 cần điều kiện của .60 mà không có. Khoá gần nhất daTrangPhuEpLop chỉ đọc \"đã ngâm tẩm, tráng hoặc phủ\" (không đọc \"được ngâm tẩm, tráng hoặc phủ\" của chữ biểu) ⇒ cong3-muc:59070060:dieu-kien-so-co-khong-co-trong-trich:daTrangPhuEpLop; tu-vung@2 cũng không có khoá \"vật liệu khác\". Cần mở rộng cachDoc daTrangPhuEpLop (thêm \"được ngâm tẩm, tráng hoặc phủ\"). Không thêm điều kiện chữ biểu không nói."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59070060 \"Các loại vải được ngâm tẩm, tráng hoặc phủ bằng các vật liệu khác\" ⇒ daTrangPhuEpLop CO (khoá đọc thêm \"được ngâm tẩm, tráng hoặc phủ\" từ 06/11) + phanConLai true (phủ định bốn chất của dòng anh em .10/.30/.40/.50). Dòng .90 \"Loại khác\" khi đó phủ định đúng điều kiện này."
     }
   ]
 }
