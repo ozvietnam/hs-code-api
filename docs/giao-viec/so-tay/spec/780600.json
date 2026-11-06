@@ -1,0 +1,148 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "780600",
+  "phien": "zcode-mm:loop:20261106T1456#soan-780600",
+  "dong8": {
+    "78060020": {
+      "ten": "Thanh, que, dạng hình và dây",
+      "nguon": [
+        "tax.78060020"
+      ],
+      "trich": [
+        "78060020 - Thanh, que, dạng hình và dây"
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "tenLoai",
+          "op": "TEN_LOAI",
+          "giaTri": "Thanh, que, dạng hình và dây",
+          "trich": "Thanh, que, dạng hình và dây",
+          "nguon": "tax.78060020"
+        }
+      ]
+    },
+    "78060030": {
+      "ten": "Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)",
+      "nguon": [
+        "tax.78060030"
+      ],
+      "trich": [
+        "78060030 - Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)"
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "tenLoai",
+          "op": "TEN_LOAI",
+          "giaTri": "Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)",
+          "trich": "Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)",
+          "nguon": "tax.78060030"
+        }
+      ]
+    },
+    "78060040": {
+      "ten": "Len chì; vòng đệm; tấm điện a-nốt",
+      "nguon": [
+        "tax.78060040"
+      ],
+      "trich": [
+        "78060040 - Len chì; vòng đệm; tấm điện a-nốt"
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "tenLoai",
+          "op": "TEN_LOAI",
+          "giaTri": "Len chì; vòng đệm; tấm điện a-nốt",
+          "trich": "Len chì; vòng đệm; tấm điện a-nốt",
+          "nguon": "tax.78060040"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "780600": {
+      "ten": "Lead; articles n.e.c. in chapter 78",
+      "nguon": [
+        "wco.780600"
+      ],
+      "trich": [
+        "780600 Lead; articles n.e.c. in chapter 78"
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "chatLieu",
+          "op": "LA",
+          "giaTri": "kim loại",
+          "trich": "Lead",
+          "nguon": "wco.780600"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "78060020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 78060020 khai 1 điều kiện tenLoai ('Thanh, que, dạng hình và dây', nguồn tax.78060020); tiêu đề liệt kê bốn dạng (thanh, que, dạng hình, dây) cùng thuộc một dòng 8 số nên gộp một khoá — tách thành bốn điều kiện cùng khoá sẽ biến thành phải thỏa CẢ HAI; ranh giới 6→8 của nhóm này là theo TÊN loại hàng nên dùng CHUNG khoá tenLoai với 78060030 và 78060040."
+    },
+    {
+      "ma": "78060030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 78060030 khai 1 điều kiện tenLoai với giaTri nguyên văn cả tiêu đề kèm ngoặc ví dụ (nguồn tax.78060030); 'ví dụ' là vế MỞ nên không tách thành danh sách đóng các loại phụ kiện, giữ nguyên trong một giaTrị tên loại."
+    },
+    {
+      "ma": "78060040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 78060040 khai 1 điều kiện tenLoai với giaTri nguyên văn cả tiêu đề 'Len chì; vòng đệm; tấm điện a-nốt' (nguồn tax.78060040); ba loại hàng nằm trong CÙNG dòng 8 số nên gộp một khoá — tách thành ba điều kiện cùng khoá sẽ biến thành phải thỏa CẢ HAI."
+    },
+    {
+      "ma": "78060090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần (tax.78060090) không khai điều kiện và không đưa vào spec theo luật máy phủ định; 78060090 là phần dư của nhóm 780600."
+    },
+    {
+      "ma": "780600",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Khai dieuKienNut ở tầng 6 số 780600 với nguồn wco.780600; cây của gói không có tầng trung gian (các dòng 8 số là con trực tiếp của nhóm 7806) và tiêu đề WCO có cụm 'n.e.c.' nên đây là tiêu đề riêng của phân nhóm 6 số (phần dư của chương 78), không phải tên chung của cả heading 7806."
+    },
+    {
+      "ma": "780600",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế 'Lead;' ở đầu tiêu đề WCO khai bằng khoá chatLieu với giá trị gần nhất trong tu-vung là 'kim loại' (tu-vung chưa có giá trị 'chì' — xem ghiChuSoan THIEU_KHOA_TU_VUNG); đây là đặc trưng chung của cả nhóm nên khai ở tầng 6 số, không chép xuống từng dòng 8 số."
+    },
+    {
+      "ma": "780600",
+      "loai": "BO_VE",
+      "ve": "articles n.e.c. in chapter 78",
+      "lyDo": "Vế giới hạn 'chưa phân loại ở mục khác trong chương 78' (nghĩa là phần dư của chương 78, KHÔNG phải 'trừ chương 78') định nghĩa phạm vi của chính phân nhóm 6 số, không phân biệt 78060020 / 78060030 / 78060040; gói không có khoá tu-vung cho vế này nên không khai điều kiện."
+    },
+    {
+      "ma": "780600",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "khongPhaiMucKhacTrongChuong78",
+      "ghiChu": "articles n.e.c. in chapter 78"
+    },
+    {
+      "ma": "780600",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chatLieuChi",
+      "ghiChu": "Lead"
+    },
+    {
+      "ma": "780600",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không kèm nội dung chữ cho ba nguồn chú giải (nhom7806.nhom, ch78.chuong, phan78.phan) nên chỉ trích được từ tax.78060020, tax.78060030, tax.78060040 và wco.780600."
+    },
+    {
+      "ma": "780600",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tên nhóm tiếng Việt 'Các sản phẩm khác bằng chì.' trong gói không có mã nguồn (tieuDe.780600) nên 'ten' của dieuKienNut lấy theo mẫu các lô trước: tiêu đề WCO (nguồn wco.780600)."
+    },
+    {
+      "ma": "78060020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "78060020 / 78060030 / 78060040 cùng chia theo TÊN loại hàng nên không chồng lấn trục tên/công dụng; gói không kèm tiền lệ hay hàng thật thoả cả hai nhánh nên không khai chongLanTruc, và không có chữ biểu tự chồng lấn giữa các dòng nên không khai chongLanVanBan."
+    }
+  ],
+  "chongLanVanBan": [],
+  "chongLanTruc": []
+}

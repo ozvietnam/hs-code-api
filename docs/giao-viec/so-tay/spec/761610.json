@@ -1,0 +1,119 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "761610",
+  "phien": "zcode-mm:loop:20261106T1453#soan-761610",
+  "dong8": {
+    "76161010": {
+      "ten": "Đinh",
+      "nguon": [
+        "tax.76161010"
+      ],
+      "trich": [
+        "76161010 - - Đinh"
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "tenLoai",
+          "op": "TEN_LOAI",
+          "giaTri": "Đinh",
+          "trich": "Đinh",
+          "nguon": "tax.76161010"
+        }
+      ]
+    },
+    "76161020": {
+      "ten": "Ghim dập và đinh móc; bulông và đai ốc",
+      "nguon": [
+        "tax.76161020"
+      ],
+      "trich": [
+        "76161020 - - Ghim dập và đinh móc; bulông và đai ốc"
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "tenLoai",
+          "op": "TEN_LOAI",
+          "giaTri": "Ghim dập và đinh móc; bulông và đai ốc",
+          "trich": "Ghim dập và đinh móc; bulông và đai ốc",
+          "nguon": "tax.76161020"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "761610": {
+      "ten": "Aluminium; nails, tacks, staples (other than those of heading no. 8305), screws, bolts, nuts, screw hooks, rivets, cotters, cotter-pins, washers and similar articles",
+      "nguon": [
+        "wco.761610"
+      ],
+      "trich": [
+        "761610 Aluminium; nails, tacks, staples (other than those of heading no. 8305), screws, bolts, nuts, screw hooks, rivets, cotters, cotter-pins, washers and similar articles"
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "chatLieu",
+          "op": "LA",
+          "giaTri": "nhôm",
+          "trich": "Aluminium",
+          "nguon": "wco.761610"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "76161010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 76161010 khai 1 điều kiện tenLoai lấy nguyên văn từ tiêu đề biểu thuế (nguồn tax.76161010); ranh giới 6→8 của nhóm này là theo TÊN loại hàng nên dùng CHUNG khoá tenLoai với 76161020."
+    },
+    {
+      "ma": "76161020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 76161020 khai 1 điều kiện tenLoai ('Ghim dập và đinh móc; bulông và đai ốc', nguồn tax.76161020); tiêu đề là phép 'và' giữa hai nhánh cùng loại nên gộp một khoá tenLoai với giaTri nguyên văn cả tiêu đề — tách thành hai điều kiện cùng khoá sẽ biến thành phải thỏa CẢ HAI."
+    },
+    {
+      "ma": "76161090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần (tax.76161090) không khai điều kiện và không đưa vào spec theo luật máy phủ định; 76161090 là phần dư của nhóm 761610."
+    },
+    {
+      "ma": "761610",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Khai dieuKienNut ở tầng 6 số 761610 với nguồn wco.761610; cây của gói chỉ có một nút 6 số (761610), không có 761690, nên tiêu đề WCO này là tiêu đề của chính phân nhóm."
+    },
+    {
+      "ma": "761610",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế 'Aluminium;' ở đầu tiêu đề WCO khai bằng khoá chatLieu (giá trị 'nhôm' có trong tu-vung); đây là đặc trưng chung của cả nhóm nên khai ở tầng 6 số, không chép xuống từng dòng 8 số."
+    },
+    {
+      "ma": "761610",
+      "loai": "BO_VE",
+      "ve": "(other than those of heading no. 8305)",
+      "lyDo": "Loại trừ cấp heading 8305 (dấu ghim) nằm ở tiêu đề nhóm, không phân biệt 76161010 với 76161020; gói không có khoá tu-vung cho vế này nên không khai điều kiện."
+    },
+    {
+      "ma": "761610",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "khongPhaiHang8305",
+      "ghiChu": "(other than those of heading no. 8305)"
+    },
+    {
+      "ma": "761610",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế mở 'và các sản phẩm tương tự' (and similar articles) cuối tiêu đề nhóm không bị cắt bằng danh sách đóng: phần dư rơi vào 76161090 'Loại khác' (không khai điều kiện), còn hai dòng 8 số chỉ mang tên loại của chính dòng."
+    },
+    {
+      "ma": "761610",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không kèm nội dung chữ cho ba nguồn chú giải (nhom7616.nhom, ch76.chuong, phan76.phan) và tên nhóm tiếng Việt không có mã nguồn (tieuDe.761610) nên chỉ trích được từ tax.76161010, tax.76161020 và wco.761610."
+    },
+    {
+      "ma": "76161010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "76161010 và 76161020 chia cùng một trục (tên loại hàng), không chồng lấn trục tên/công dụng; gói không kèm tiền lệ hay hàng thật thoả cả hai nhánh nên không khai chongLanTruc."
+    }
+  ],
+  "chongLanVanBan": [],
+  "chongLanTruc": []
+}

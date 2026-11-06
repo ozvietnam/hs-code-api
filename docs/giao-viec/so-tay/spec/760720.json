@@ -1,0 +1,57 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "760720",
+  "phien": "zcode-mm:loop:20261106T1440#soan-760720",
+  "dong8": {
+    "76072010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhôm lá mỏng cách nhiệt"
+        }
+      ]
+    },
+    "76072091": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Được in hình mẫu",
+            "màu vàng",
+            "màu bạc"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "76072010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76072010 \"76072010 - - Nhôm lá mỏng cách nhiệt(SEN)\" ⇒ tenLoai TEN_LOAI \"Nhôm lá mỏng cách nhiệt\" — chữ biểu của chính dòng là tên hàng (nguồn sen.76072010 \"NHÔM LÁ MỎNG CÁCH NHIỆT\": tấm ngăn bức xạ nhiệt); dùng CHUNG khoá tenLoai với dòng .91 (anh em cùng tầng dùng cùng khoá: chữ biểu .10 là tên hàng, .91 là mô tả hình thức bề mặt) để máy so hai nhánh trên cùng một trục, không ghép công dụng của .10 với đặc điểm của .91."
+    },
+    {
+      "ma": "76072091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76072091 \"76072091 - - - Được in hình mẫu, hoặc màu vàng hoặc màu bạc\" ⇒ tenLoai TEN_LOAI [\"Được in hình mẫu\", \"màu vàng\", \"màu bạc\"] (mảng = hoặc). tu-vung@2 không có khoá đọc được \"Được in hình mẫu\" (daIn đọc \"đã (được) in\"/\"có in\"/\"in sẵn\" — không khớp câu này) và không có khoá màu (lopMaPhu chỉ có mạ đồng/tráng nhựa flo/tráng kẽm-cromat/tráng thiếc/sơn sau mạ kẽm, không phải vàng/bạc) ⇒ giữ nguyên văn trong tenLoai thay vì bỏ (cùng cách 76169930 giữ \"hình tròn\" trong chuỗi tên); bỏ nhánh màu thì hàng màu vàng/màu bạc rơi về 76072099 — sai mã 8 số."
+    },
+    {
+      "ma": "7607209",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7607209 \"7607209 Loại khác\" trần ⇒ không khai điều kiện ở dieuKienNut (máy phủ định anh em 76072010); đây là tầng trung gian dẫn tới 76072091 và 76072099."
+    },
+    {
+      "ma": "76072099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76072099 \"76072099 - - - Loại khác\" trần ⇒ KHÔNG đưa vào spec, không ghi điều kiện (máy phủ định anh em 76072091)."
+    },
+    {
+      "ma": "760720",
+      "loai": "QUYET_DINH",
+      "ghiChu": "wco.760720 \"760720 Aluminium; foil, backed with paper, paperboard, plastics or similar backing materials, of a thickness (excluding any backing) not exceeding 0.2mm\" ⇒ hai điều kiện cấp 6 SỐ này (đã được bồi; độ dày không quá 0,2 mm) thuộc TẦNG 6 — sổ tay 7607 đã có ở tieuChi6 (fact duoc_boi_tren_giay_bia_plastic_hoac_vat_lieu_boi_tuong_tu, nguon wco.760720); ranh-gioi 6→8 chỉ khai dòng 8 số và tiêu đề 7 số CÓ TÊN ⇒ không khai lại ở đây (dieuKienNut không nhận id cấp phân nhóm)."
+    }
+  ]
+}
