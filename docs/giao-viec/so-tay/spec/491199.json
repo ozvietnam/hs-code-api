@@ -1,0 +1,139 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "491199",
+  "phien": "zcode-mm:loop:20261106T0959#soan-491199",
+  "dong8": {
+    "49119910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thẻ in sẵn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đồ trang sức",
+            "các đồ tư trang nhỏ trang điểm cá nhân",
+            "đồ dùng cá nhân"
+          ]
+        }
+      ]
+    },
+    "49119920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhãn"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "báo nguy hiểm dễ nổ"
+        }
+      ]
+    },
+    "49119930": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ thẻ"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "nội dung về giáo dục",
+            "kỹ thuật",
+            "khoa học",
+            "lịch sử",
+            "văn hóa"
+          ]
+        }
+      ]
+    },
+    "49119940": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ấn phẩm in"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "cấp quyền truy cập",
+            "cài đặt",
+            "tái bản",
+            "sử dụng phần mềm",
+            "dữ liệu",
+            "nội dung internet",
+            "các dịch vụ",
+            "dịch vụ viễn thông"
+          ]
+        }
+      ],
+      "phanConLai": false
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "49119910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49119910 \"Thẻ in sẵn cho đồ trang sức hoặc cho các đồ tư trang nhỏ trang điểm cá nhân hoặc đồ dùng cá nhân thường được mang theo trong ví, túi sách tay hoặc mang theo người (SEN)\" ⇒ tenLoai TEN_LOAI \"Thẻ in sẵn\" (tên dòng) + dungCho CONG_DUNG mảng [\"đồ trang sức\", \"các đồ tư trang nhỏ trang điểm cá nhân\", \"đồ dùng cá nhân\"] — mảng = \"hoặc\", phủ vế \"cho đồ trang sức / cho các đồ tư trang nhỏ trang điểm cá nhân / đồ dùng cá nhân\"."
+    },
+    {
+      "ma": "49119910",
+      "loai": "BO_VE",
+      "ve": "thường được mang theo trong ví, túi sách tay hoặc mang theo người",
+      "lyDo": "Vế này chỉ nói nơi mang của đồ dùng cá nhân (trong ví, túi sách tay hoặc mang theo người), không phải công dụng tách riêng; phần vật dụng đã phủ bằng giá trị \"đồ dùng cá nhân\" — không gộp vào một giá trị chữ tự do được vì giá trị chứa \" hoặc \" bị cổng 3 chặn."
+    },
+    {
+      "ma": "49119920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49119920 \"Nhãn đã được in để báo nguy hiểm dễ nổ trừ loại thuộc nhóm 48.21 (SEN)\" ⇒ tenLoai TEN_LOAI \"Nhãn\" (tên dòng) + congDung CONG_DUNG \"báo nguy hiểm dễ nổ\" — phủ vế \"để báo nguy hiểm dễ nổ\"; vế \"đã được in\" (thuộc tính chung của cả nhóm) và vế loại trừ sang nhóm 48.21 (ngoài phân nhóm 491199) đều miễn BO_VE."
+    },
+    {
+      "ma": "49119920",
+      "loai": "BO_VE",
+      "ve": "đã được in",
+      "lyDo": "Thuộc tính chung của mọi dòng 8 số trong phân nhóm 491199 (đều là ấn phẩm đã in) — không tách được các dòng nên không thành điều kiện riêng."
+    },
+    {
+      "ma": "49119920",
+      "loai": "BO_VE",
+      "ve": "trừ loại thuộc nhóm 48.21",
+      "lyDo": "Vế loại trừ trỏ sang nhóm 48.21, ngoài phân nhóm 491199: phạm vi nhóm đã quyết định mã 4911, dòng 49119920 đã tách bằng công dụng \"báo nguy hiểm dễ nổ\" nên bỏ vế này không làm đổi mã 8 số trong nhóm."
+    },
+    {
+      "ma": "49119930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49119930 \"Bộ thẻ đã được in nội dung về giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa (SEN)\" ⇒ tenLoai TEN_LOAI \"Bộ thẻ\" (tên dòng) + congDung CONG_DUNG mảng [\"nội dung về giáo dục\", \"kỹ thuật\", \"khoa học\", \"lịch sử\", \"văn hóa\"] — mảng = \"hoặc\" (năm chủ đề); định ngữ chung \"nội dung về\" áp cho cả năm chủ đề, mỗi giá trị chép nguyên văn; không gói một chuỗi vì cổng 3 chặn liệt kê phẩy trong một giá trị."
+    },
+    {
+      "ma": "49119940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49119940 \"Ấn phẩm in cấp quyền truy cập, cài đặt, tái bản hoặc ấn phẩm in khác sử dụng phần mềm … hoặc dịch vụ viễn thông (bao gồm cả dịch vụ di động) (SEN)\" ⇒ tenLoai TEN_LOAI \"Ấn phẩm in\" (tên dòng) + congDung CONG_DUNG mảng [\"cấp quyền truy cập\", \"cài đặt\", \"tái bản\", \"sử dụng phần mềm\", \"dữ liệu\", \"nội dung internet\", \"các dịch vụ\", \"dịch vụ viễn thông\"] — phủ cả hai vế (cấp quyền truy cập/cài đặt/tái bản và phần mềm/dữ liệu/nội dung internet/các dịch vụ/dịch vụ viễn thông); các ngoặc \"(bao gồm cả …)\" là PHU nên không thành điều kiện."
+    },
+    {
+      "ma": "49119940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "phanConLai false: chữ \"khác\" trong \"ấn phẩm in khác sử dụng phần mềm\" so với chính các loại ấn phẩm in nêu trong danh mục (cấp quyền truy cập, cài đặt, tái bản), không trỏ anh em đứng trước; phần còn lại của phân nhóm do dòng 49119990 \"Loại khác\" trần phủ."
+    },
+    {
+      "ma": "49119940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chỉ dùng nguồn tax.49119940; nguồn sen.49119940 bị lẫn khối \"PHẦN XI ĐƯỢC IN BẰNG PHƯƠNG PHÁP BATIK TRUYỀN THỐNG…\" (thuộc Chương 50, không phải mục này) nên không trích từ đó."
+    },
+    {
+      "ma": "49119990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49119990 \"Loại khác\" trần ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    }
+  ]
+}

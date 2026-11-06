@@ -1,0 +1,44 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "491110",
+  "phien": "zcode-mm:loop:20261106T0947#soan-491110",
+  "dong8": {
+    "49111010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Catalog chỉ liệt kê tên sách và các ấn phẩm"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": ["giáo dục", "kỹ thuật", "khoa học", "lịch sử", "văn hóa"]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "49111010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49111010 \"49111010 - - Catalog chỉ liệt kê tên sách và các ấn phẩm về giáo dục, kỹ thuật, khoa học, lịch sử hoặc văn hóa\" ⇒ HAI điều kiện CÙNG khoá tenLoai trên cùng một nút (VÀ — mẫu #711 392620 .20): (1) TEN_LOAI \"Catalog chỉ liệt kê tên sách và các ấn phẩm\" — tên loại của dòng, đọc tới vế giới hạn \"chỉ liệt kê tên sách và các ấn phẩm\"; (2) TEN_LOAI [\"giáo dục\", \"kỹ thuật\", \"khoa học\", \"lịch sử\", \"văn hóa\"] — danh sách môn chủ đề của vế \"về …\", tách thành mảng 5 giá trị vì mỗi giá trị phải có mặt trong trích (cổng 3 chặn gộp chuỗi có \"hoặc\"); danh từ chung \"Catalog … ấn phẩm\" là chủ thể của danh sách nên không lặp vào từng giá trị. Cần CẢ HAI: chỉ có danh sách môn thì \"sách khoa học\" (4901.99) cũng lọt vào 49111010; chỉ có (1) thì catalog sách luật lọt vào 49111010."
+    },
+    {
+      "ma": "49111090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49111090 \"49111090 - - Loại khác\" trần (cây đánh dấu [LK]) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "49111010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Ba nguồn chú giải nhom4911.nhom (4.320 ký tự) / ch49.chuong (5.470) / phan49.phan (107) có trong gói nhưng không kèm câu chữ ⇒ không trích được vế nào từ chú giải; điều kiện chỉ dựa trên chữ biểu của chính dòng."
+    },
+    {
+      "ma": "491110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số 491110 là TÊN NHÓM (heading 4911) \"Các ấn phẩm quảng cáo thương mại, các catalog thương mại và các ấn phẩm tương tự\" (cây gói hiện chữ WCO \"491110 Printed matter; trade advertising material, commercial catalogues and the like\") ⇒ không phải điều kiện của nút (mẫu 482320) nên dieuKienNut rỗng; goi.tangKhongMa rỗng. Vế MỞ \"tương tự\"/\"and the like\" không liệt kê đóng thành danh sách. wco.491110 là nguồn CHUNG cho cả hai dòng ⇒ ranh giới nằm ở tiêu đề dòng 49111010."
+    }
+  ]
+}

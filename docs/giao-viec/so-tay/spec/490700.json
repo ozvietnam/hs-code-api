@@ -1,0 +1,132 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "490700",
+  "phien": "zcode-mm:loop:20261106T0932#soan-490700",
+  "dong8": {
+    "49070010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy bạc ngân hàng"
+        }
+      ]
+    },
+    "49070021": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tem bưu chính"
+        }
+      ]
+    },
+    "49070050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mẫu séc"
+        }
+      ]
+    },
+    "49070060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Giấy chứng nhận cổ phần",
+            "cổ phiếu",
+            "trái phiếu"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4907002": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Tem bưu chính",
+            "tem thuế"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "490700",
+      "loai": "QUYET_DINH",
+      "ghiChu": "CẤU TRÚC: cây gói = NHÓM 4907 → 49070010 · [4907002] → 49070021, 49070029 · 49070050 · 49070060 · 49070090. Tiêu đề 6 số 490700 mang tên NHÓM (\"Các loại tem bưu chính, tem thuế hoặc tem tương tự chưa qua sử dụng, …; giấy có dấu tem sẵn; các loại giấy bạc ngân hàng (banknotes); mẫu séc; giấy chứng nhận cổ phần, cổ phiếu hoặc trái phiếu và các loại chứng từ sở hữu tương tự.\") — tên nhóm, không phải điều kiện của nút (mẫu 482320) ⇒ không khai dieuKienNut cho 490700. goi.tangKhongMa rỗng ⇒ không có tầng không mã. Dòng \"Loại khác\" trần (49070029, 49070090) không đưa vào dong8."
+    },
+    {
+      "ma": "4907002",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4907002 \"4907002 Tem bưu chính, tem thuế hoặc các loại tem tương tự chưa sử dụng\" ⇒ tenLoai TUONG_TU [\"Tem bưu chính\",\"tem thuế\"] — vế MỞ \"hoặc các loại tem tương tự\" được biểu diễn bằng op TUONG_TU (quyết định GĐ vòng 7: hàng nêu tên THOẢ, hàng chỉ \"tương tự\" thì CHƯA BIẾT, hỏi người khai), KHÔNG liệt kê đóng vế mở — tem tương tự không nêu tên rơi vào 49070029 \"Loại khác\" dưới cùng tiêu đề. Điều kiện này là cản cho các nhánh anh em (49070010 giấy bạc ngân hàng, 49070050 mẫu séc, 49070060 giấy chứng nhận): không có nó thì hàng mới của các nhánh đó cũng lọt vào nhánh tem."
+    },
+    {
+      "ma": "4907002",
+      "loai": "BO_VE",
+      "ve": "chưa sử dụng",
+      "lyDo": "Tu-vung@2 không có khoá nào đọc được cụm \"chưa sử dụng\": tinhTrang chỉ có MOI (mẫu \"mới 100%\", \"hàng mới\", \"mới nguyên\") và DA_QUA_SU_DUNG (mẫu \"đã qua sử dụng\", \"hàng cũ\") — chữ biểu không khớp mẫu nào, nên ghi tinhTrang MOI sẽ đỏ cổng 3 (dieu-kien-so-trong-khong-co-trong-trich:MOI). Vế này CHƯA phủ được nên miễn tạm cho cổng 5; bỏ nó làm RỘNG nhánh 4907002 (tem đã dùng cũng lọt vào 49070021) nên đã ghi kèm THIEU_KHOA_TU_VUNG — DỪNG, chờ người duyệt quyết."
+    },
+    {
+      "ma": "4907002",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chuaSuDung",
+      "ghiChu": "tieuDe.4907002 \"4907002 Tem bưu chính, tem thuế hoặc các loại tem tương tự chưa sử dụng\" — cần điều kiện \"chưa sử dụng\" (tem chưa qua sử dụng). Tu-vung@2 không có khoá đọc được cụm này (tinhTrang chỉ có MOI / DA_QUA_SU_DUNG, mẫu \"mới 100%\" / \"hàng mới\" / \"mới nguyên\" / \"đã qua sử dụng\" / \"hàng cũ\") ⇒ không bịa khoá và không mượn khoá khác. Đề xuất khoá CO_KHONG \"chuaSuDung\" (mẫu \"chưa sử dụng\", \"chưa qua sử dụng\"). Chữ Anh wco.490700 \"Unused postage, revenue or similar stamps of current or new issue…\" — \"current or new issue\" nói về lần phát hành, không phải tình trạng hàng."
+    },
+    {
+      "ma": "49070010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49070010 \"49070010 - Giấy bạc ngân hàng (banknotes), loại pháp định(*)\" ⇒ tenLoai TEN_LOAI \"Giấy bạc ngân hàng\" — tên loại hàng, phân biệt dòng này với Mẫu séc (49070050) và giấy chứng nhận cổ phần (49070060). Ngoặc \"(banknotes)\" là chú thích tiếng Anh ⇒ không thành điều kiện; dấu \"(*)\" là chú thích ghi chú của dòng biểu thuế, nội dung ghi chú không có trong gói ⇒ không thành điều kiện."
+    },
+    {
+      "ma": "49070010",
+      "loai": "BO_VE",
+      "ve": "loại pháp định",
+      "lyDo": "Tu-vung@2 không có khoá nào đọc được \"loại pháp định\" (giấy bạc ngân hàng là tiền pháp hợp pháp lưu hành); không mượn khoá khác và không bịa khoá. Vế này CHƯA phủ được nên miễn tạm cho cổng 5; bỏ nó làm RỘNG dòng (giấy bạc ngân hàng KHÔNG pháp định cũng lọt vào 49070010) nên đã ghi kèm THIEU_KHOA_TU_VUNG — DỪNG, chờ người duyệt quyết."
+    },
+    {
+      "ma": "49070010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "laPhapDinh",
+      "ghiChu": "tax.49070010 \"49070010 - Giấy bạc ngân hàng (banknotes), loại pháp định(*)\" — vế \"loại pháp định\" chưa có khoá đọc được trong tu-vung@2 ⇒ không bịa khoá. Đề xuất khoá CO_KHONG \"laPhapDinh\" (mẫu \"loại pháp định\"). Phần còn lại của dòng (\"Giấy bạc ngân hàng\") đã mã hoá bằng tenLoai."
+    },
+    {
+      "ma": "49070021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49070021 \"49070021 - - Tem bưu chính\" ⇒ tenLoai TEN_LOAI \"Tem bưu chính\" — dòng thu hẹp tiêu đề 4907002 (\"Tem bưu chính, tem thuế hoặc các loại tem tương tự chưa sử dụng\") xuống đúng tem bưu chính; tem thuế và tem tương tự không nêu tên rơi vào 49070029 \"Loại khác\". Cùng khoá tenLoai với các anh em (luật dòng 3.3)."
+    },
+    {
+      "ma": "49070050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49070050 \"49070050 - Mẫu séc\" ⇒ tenLoai TEN_LOAI \"Mẫu séc\" — dòng chỉ có tên, không có vế giới hạn nào (chữ Anh wco.490700 \"cheque forms\"). Cùng khoá tenLoai với các anh em."
+    },
+    {
+      "ma": "49070060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49070060 \"49070060 - Giấy chứng nhận cổ phần, cổ phiếu hoặc trái phiếu và các loại chứng từ sở hữu tương tự\" ⇒ tenLoai TUONG_TU [\"Giấy chứng nhận cổ phần\",\"cổ phiếu\",\"trái phiếu\"] — vế MỞ \"và các loại chứng từ sở hữu tương tự\" (chữ Anh wco.490700 \"and the like of similar title\") được biểu diễn bằng op TUONG_TU chứ không liệt kê đóng (quyết định GĐ vòng 7); danh sách trước vế mở là ba hàng nêu tên, mỗi hàng là chuỗi con nguyên văn. Cùng khoá tenLoai với các anh em."
+    },
+    {
+      "ma": "49070029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49070029 \"49070029 - - Loại khác\" trần (cây đánh dấu [LK]) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "49070090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.49070090 \"49070090 - Loại khác\" trần (cây đánh dấu [LK]) ⇒ không đưa vào dong8, không ghi điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "490700",
+      "loai": "QUYET_DINH",
+      "ghiChu": "wco.490700 \"490700 Unused postage, revenue or similar stamps of current or new issue in the country in which they have, or will have, a recognised face value; stamp-impressed paper; cheque forms; banknotes, stock, share or bond certificates and the like of similar title\" là nguồn CHUNG cho mọi dòng của phân nhóm: vế \"… of current or new issue in the country in which they have, or will have, a recognised face value\" và vế \"stamp-impressed paper\" là điều kiện chung của cả phân nhóm (không phân biệt các dòng 8 số) ⇒ không mã hoá thành điều kiện của dòng; ranh giới giữa các dòng nằm ở TÊN dòng, riêng nhánh tem thì ở vế \"chưa sử dụng\" của tiêu đề 4907002 (xem ghi chú 4907002). Ba nguồn chú giải nhom4907.nhom / ch49.chuong / phan49.phan có trong gói nhưng không kèm câu chữ ⇒ không trích được vế nào từ chú giải; điều kiện chỉ dựa trên chữ biểu của chính mục."
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "500790",
+  "nhom": "5007",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1035#soan-500790",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "50079020",
+      "nguon": "tax.50079020",
+      "trich": "50079020 - - Chưa tẩy trắng hoặc đã tẩy trắng",
+      "dieuKienSo": [
+        {
+          "fact": "tinhTrangTayTrang",
+          "op": "TRONG",
+          "value": [
+            "CHUA_TAY_TRANG",
+            "DA_TAY_TRANG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "50079030",
+      "nguon": "tax.50079030",
+      "trich": "50079030 - - Được in bằng phương pháp batik truyền thống (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapIn",
+          "op": "TRONG",
+          "value": [
+            "BATIK"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "50079090",
+      "nguon": "tax.50079090",
+      "trich": "50079090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "50079020",
+        "50079030"
+      ],
+      "lyDo": "Hai nhánh rẽ theo HAI khoá đặc điểm khác nhau, chữ biểu không loại trừ nhau: .20 \"Chưa tẩy trắng hoặc đã tẩy trắng\" (tình trạng tẩy trắng) và .30 \"Được in bằng phương pháp batik truyền thống (SEN)\" (phương pháp in) — vải đã tẩy trắng mà in batik thoả cả hai nhánh theo chữ biểu. Gói soạn không có nguồn nào (không có sen.*; chú giải chỉ kèm độ dài) chốt thứ tự ưu tiên ⇒ không bịa điều kiện tách; khai chồng lấn để máy thành cảnh báo, runtime không tự chốt."
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "50079020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50079020 \"50079020 - - Chưa tẩy trắng hoặc đã tẩy trắng\" ⇒ tinhTrangTayTrang TRONG [\"CHUA_TAY_TRANG\", \"DA_TAY_TRANG\"] — mảng 2 giá trị đọc vế \"hoặc\"; khoá tinhTrangTayTrang (tình trạng tẩy trắng của xơ, sợi hoặc vải dệt) đúng nghĩa chữ biểu. Chữ biểu dòng này không nói gì về in batik nên KHÔNG thêm điều kiện không in batik (từ vựng không có khoá nào đọc được vế đó)."
+    },
+    {
+      "ma": "50079030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50079030 \"50079030 - - Được in bằng phương pháp batik truyền thống (SEN)\" ⇒ phuongPhapIn TRONG [\"BATIK\"] — khoá phuongPhapIn (phương pháp in, vải/hàng dệt) đọc đúng vế \"bằng phương pháp batik\". KHÔNG dùng khoá gợi ý trong gói (goiYKhoa phuongPhapCheTao): khoá đó chỉ có giá trị DUC/REN/CAN_NONG/… chứ không có BATIK nên điều kiện sẽ không hợp lệ. Vế \"truyền thống\" không có khoá riêng trong từ vựng ⇒ không tách thành điều kiện riêng; \"(SEN)\" là ngoặc chú thích, không phải điều kiện."
+    },
+    {
+      "ma": "50079020+50079030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chồng lấn theo chữ biểu (tình trạng tẩy trắng ↔ phương pháp in) ⇒ khai chongLanVanBan cho cặp này, không bịa điều kiện tách. Gói soạn không có nguồn (sen.*; chú giải chỉ kèm độ dài) chốt thứ tự ưu tiên giữa .20 và .30; nếu soát xác định cặp này là chồng lấn TRỤC thì phải khai chongLanTruc + viDuHang là hàng THẬT thoả cả hai nhánh — gói không có nguồn để dựng ví dụ nên không bịa. Hệ quả phải nói rõ: điều kiện .20 bao trọn cả hai giá trị của khoá tinhTrangTayTrang, nên phép phủ định anh em cho dòng Loại khác 50079090 có thể không còn lối vào (kiểm ở cổng 2, cong2-dong-khong-toi-duoc); ranh giới thật .20 ↔ .30 nằm ở SEN Chương 50, gói không có nguồn đó."
+    },
+    {
+      "ma": "50079090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.50079090 \"50079090 - - Loại khác\" trần (cây đánh dấu [LK], khongCanDieuKien) ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "500790",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số 500790 là TÊN NHÓM (\"Vải dệt khác\"; cây gói hiện chữ WCO \"500790 Silk; woven fabrics n.e.c. in heading no. 5007\"), không phải điều kiện của nút (mẫu 482320) ⇒ dieuKienNut rỗng; goi.tangKhongMa rỗng. Chữ \"khác\" / \"n.e.c. in heading no. 5007\" là loại trừ dư còn lại ở TẦNG PHÂN NHÓM (loại trừ 500710 và 500720 trong nhóm 5007), không phải điều kiện giữa các dòng 8 số. Nguồn phân nhóm wco.500790 là nguồn CHUNG cho cả ba dòng nên không mã hoá thành điều kiện của dòng."
+    },
+    {
+      "ma": "50079020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói soạn chỉ nêu chú giải (nhom5007.nhom 646 ký tự / ch50.chuong 934 / phan50.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ không trích được vế nào từ chú giải; điều kiện chỉ dựa trên chữ biểu của chính dòng."
+    }
+  ]
+}
