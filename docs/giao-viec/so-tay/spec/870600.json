@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "870600",
-  "phien": "zcode-sub:glm-5.3:20261106T1230#soan-870600",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-870600",
   "dong8": {
     "87060011": {
       "dieuKienSo": [
@@ -46,7 +46,12 @@
       ]
     },
     "87060031": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "laXeGolfVaTuongTu",
+          "op": "CO"
+        }
+      ]
     },
     "87060032": {
       "dieuKienSo": [
@@ -148,6 +153,11 @@
   },
   "ghiChuSoan": [
     {
+      "ma": "87060031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87060031 \"Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự\" ⇒ laXeGolfVaTuongTu CO (khoá lô 20: nhãn đúng cụm này gồm vế mở \"và các loại xe tương tự\"); \"dùng cho xe\" lặp chữ tiêu đề 8706003"
+    },
+    {
       "ma": "8706001",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.8706001 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\" (dẫn mã, máy tự nở dải)"
@@ -218,15 +228,14 @@
       "ghiChu": "tax.87060050 \"Dùng cho xe thuộc nhóm 87.05\" ⇒ dungCho \"87.05\""
     },
     {
-      "ma": "87060031",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dungChoTuongTu",
-      "ghiChu": "tax.87060031 \"Dùng cho xe đua cỡ nhỏ và xe chơi gôn (kể cả xe golf buggies) và các loại xe tương tự\" — vế mở \"và các loại xe tương tự\" đứng sau \"Dùng cho\": op TUONG_TU chỉ có ở tenLoai/nhanHieu/model…, không có ở dungCho (CONG_DUNG); dùng tenLoai TUONG_TU là đổi khoá sai trục (hàng là khung gầm, không phải xe), đóng danh sách [\"xe đua cỡ nhỏ\",\"xe chơi gôn\"] bị cong5-ve-mo-bi-bo"
-    },
-    {
       "ma": "87060050",
       "loai": "DUNG",
       "ghiChu": "cổng 1 thăm dò vector dungCho=\"ô tô\" ở gốc: các con gốc đều dẫn mã (87.01–87.05) nên giá trị chữ tự do của dòng cháu (.21/.33 \"ô tô\") không thuộc mã nào — máy chưa nạp ràng buộc \"khung gầm dùng cho xe 87.01–87.05\" của tiêu đề nhóm làm nền ⇒ cong1-khong-phu-kin:8706, giữ nguyên, không bịa điều kiện để ép xanh"
+    },
+    {
+      "ma": "87060031",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan-truc:87060031:87060032,87060033,87060034 — tax.87060031 \"Dùng cho xe đua cỡ nhỏ và xe chơi gôn … và các loại xe tương tự\" (khoá đặc điểm laXeGolfVaTuongTu) ↔ .32 \"Dùng cho ô tô cứu thương\", .33 \"Dùng cho ô tô (…)\", .34 \"Dùng cho xe được thiết kế đặc biệt để đi trên tuyết\" (dungCho) cùng tầng 8706003: chồng lấn trục đặc điểm ↔ công dụng. Không nêu được hàng THẬT thoả đủ ba cặp (xe golf kiêm ô tô chở người / kiêm xe đi trên tuyết) nên không khai chongLanTruc/viDuHang; không bịa. Khoá laXeGolfVaTuongTu (lô 20) đã giải quyết vế mở của .31"
     }
   ]
 }
