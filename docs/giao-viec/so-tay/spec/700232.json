@@ -1,0 +1,22 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "700232",
+  "phien": "zcode-sub:glm-5.3:20261106T0933#soan-700232",
+  "dong8": {
+    "70023210": { "dieuKienSo": [ { "fact": "dungCho", "op": "CONG_DUNG", "value": "sử dụng để sản xuất ống chân không" } ] },
+    "70023230": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ống thủy tinh borosilicate" },
+      { "fact": "dungCho", "op": "CONG_DUNG", "value": "của loại sử dụng để sản xuất ống dạng phial/ampoule" }
+    ] },
+    "70023240": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "thủy tinh borosilicate trung tính trong suốt" },
+      { "fact": "duongKinh", "op": ">=", "value": 3, "donVi": "mm" },
+      { "fact": "duongKinh", "op": "<=", "value": 22, "donVi": "mm" }
+    ] },
+    "70023290": { "dieuKienSo": [] }
+  },
+  "ghiChuSoan": [
+    { "ma": "70023240", "loai": "QUYET_DINH", "ghiChu": "tax.70023240 \"… từ 3 mm đến 22 mm\" ⇒ duongKinh >= 3 mm VÀ <= 22 mm (\"từ … đến\" = giới hạn hai đầu); đã đối chiếu tay biên với chữ" },
+    { "ma": "70023290", "loai": "QUYET_DINH", "ghiChu": "tax.70023290 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

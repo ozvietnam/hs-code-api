@@ -1,0 +1,101 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "690730",
+  "nhom": "6907",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0925#soan-690730",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "6907301",
+      "nguon": "tieuDe.6907301",
+      "trich": "6907301 Không tráng men",
+      "dieuKienSo": [
+        {
+          "fact": "daTrangMen",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "69073011",
+      "nguon": "tax.69073011",
+      "trich": "69073011 - - - Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm",
+      "dieuKienSo": [
+        {
+          "fact": "kichThuoc",
+          "op": "<",
+          "value": 7,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "69073019",
+      "nguon": "tax.69073019",
+      "trich": "69073019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "69073091",
+      "nguon": "tax.69073091",
+      "trich": "69073091 - - - Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm",
+      "dieuKienSo": [
+        {
+          "fact": "kichThuoc",
+          "op": "<",
+          "value": 7,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "69073099",
+      "nguon": "tax.69073099",
+      "trich": "69073099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "69073019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.69073019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "69073099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.69073099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "69073011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.69073011 \"Có mặt lớn nhất … dưới 7 cm\" ⇒ kichThuoc < 7 cm (\"dưới\" = <; đã đối chiếu tay op/biên với chữ: biên 7, đơn vị cm như chữ trích)"
+    },
+    {
+      "ma": "69073011",
+      "loai": "BO_VE",
+      "ve": "có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh",
+      "lyDo": "Vế này và biên \"dưới 7 cm\" là MỘT điều kiện kích thước: mặt lớn nhất nằm gọn trong hình vuông cạnh 7 cm ⟺ mọi chiều của hàng đều dưới 7 cm, đã phủ bằng kichThuoc < 7 cm nên bỏ vế diễn từ không làm đổi mã"
+    },
+    {
+      "ma": "69073091",
+      "loai": "BO_VE",
+      "ve": "có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh",
+      "lyDo": "Vế này và biên \"dưới 7 cm\" là MỘT điều kiện kích thước: mặt lớn nhất nằm gọn trong hình vuông cạnh 7 cm ⟺ mọi chiều của hàng đều dưới 7 cm, đã phủ bằng kichThuoc < 7 cm nên bỏ vế diễn từ không làm đổi mã"
+    }
+  ]
+}

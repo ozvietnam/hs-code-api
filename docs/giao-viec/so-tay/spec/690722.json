@@ -1,0 +1,40 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "690722",
+  "phien": "zcode-sub:glm-5.3:20261106T0920#soan-690722",
+  "dong8": {
+    "69072211": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Gạch lát đường", "lát nền", "lòng lò", "gạch ốp tường"] },
+      { "fact": "daTrangMen", "op": "KHONG" }
+    ] },
+    "69072212": { "dieuKienSo": [ { "fact": "daTrangMen", "op": "KHONG" } ] },
+    "69072213": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Gạch lát đường", "lát nền", "lòng lò", "gạch ốp tường"] },
+      { "fact": "daTrangMen", "op": "CO" }
+    ] },
+    "69072214": { "dieuKienSo": [ { "fact": "daTrangMen", "op": "CO" } ] },
+    "69072291": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Gạch lát đường", "lát nền", "lòng lò", "gạch ốp tường"] },
+      { "fact": "daTrangMen", "op": "KHONG" }
+    ] },
+    "69072292": { "dieuKienSo": [ { "fact": "daTrangMen", "op": "KHONG" } ] },
+    "69072293": { "dieuKienSo": [
+      { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Gạch lát đường", "lát nền", "lòng lò", "gạch ốp tường"] },
+      { "fact": "daTrangMen", "op": "CO" }
+    ] },
+    "69072294": { "dieuKienSo": [ { "fact": "daTrangMen", "op": "CO" } ] }
+  },
+  "dieuKienNut": {
+    "6907221": { "dieuKienSo": [ { "fact": "kichThuoc", "op": "<", "value": 7, "donVi": "cm" } ] }
+  },
+  "ghiChuSoan": [
+    { "ma": "69072211", "loai": "BO_VE", "ve": "không tráng men", "lyDo": "Chữ Anh cùng dòng \"Paving, hearth or wall tiles, unglazed\": \"unglazed\" đứng sau dấu phẩy cuối là định ngữ CHUNG của cả bốn danh từ đầu, không chỉ của \"wall tiles\"; máy đọc nhầm cấu trúc B (định ngữ của danh từ cuối) nên miễn vế — điều kiện daTrangMen KHONG vẫn áp cho CẢ dòng, không bỏ điều kiện nào" },
+    { "ma": "69072291", "loai": "BO_VE", "ve": "không tráng men", "lyDo": "Chữ Anh cùng dòng \"Paving, hearth or wall tiles, unglazed\": \"unglazed\" đứng sau dấu phẩy cuối là định ngữ CHUNG của cả bốn danh từ đầu, không chỉ của \"wall tiles\"; máy đọc nhầm cấu trúc B (định ngữ của danh từ cuối) nên miễn vế — điều kiện daTrangMen KHONG vẫn áp cho CẢ dòng, không bỏ điều kiện nào" },
+    { "ma": "69072212", "loai": "QUYET_DINH", "ghiChu": "tax.69072212 \"Loại khác, không tráng men\" ⇒ chỉ điều kiện của vế \"không tráng men\" (máy tự phủ định anh em)" },
+    { "ma": "69072214", "loai": "QUYET_DINH", "ghiChu": "tax.69072214 \"Loại khác, đã tráng men\" ⇒ chỉ điều kiện của vế \"đã tráng men\" (máy tự phủ định anh em)" },
+    { "ma": "69072292", "loai": "QUYET_DINH", "ghiChu": "tax.69072292 \"Loại khác, không tráng men\" ⇒ chỉ điều kiện của vế \"không tráng men\" (máy tự phủ định anh em)" },
+    { "ma": "69072294", "loai": "QUYET_DINH", "ghiChu": "tax.69072294 \"Loại khác, đã tráng men\" ⇒ chỉ điều kiện của vế \"đã tráng men\" (máy tự phủ định anh em)" },
+    { "ma": "6907221", "loai": "QUYET_DINH", "ghiChu": "tieuDe.6907221 \"Có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh dưới 7 cm\" ⇒ kichThuoc < 7 cm cho biên \"dưới 7 cm\" (\"dưới\" = <; đã đối chiếu tay op/biên với chữ: biên 7, đơn vị cm như chữ trích)" },
+    { "ma": "6907221", "loai": "BO_VE", "ve": "có mặt lớn nhất có thể nằm gọn trong một hình vuông có cạnh", "lyDo": "Vế này và biên \"dưới 7 cm\" là MỘT điều kiện kích thước: mặt lớn nhất nằm gọn trong hình vuông cạnh 7 cm ⟺ mọi chiều của hàng đều dưới 7 cm, đã phủ bằng kichThuoc < 7 cm nên bỏ vế diễn từ không làm đổi mã" }
+  ]
+}

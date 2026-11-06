@@ -1,0 +1,101 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "701090",
+  "phien": "zcode-sub:glm-5.3:20261106T0950#soan-701090",
+  "dong8": {
+    "70109010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bình lớn có vỏ bọc ngoài và bình thót cổ"
+        }
+      ]
+    },
+    "70109040": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Chai",
+                  "lọ",
+                  "ống dạng phial"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "thuốc kháng sinh",
+                  "huyết thanh",
+                  "các chất tiêm truyền khác"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "chai"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "dung dịch tiêm",
+                  "truyền tĩnh mạch"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "phanConLai": true
+    },
+    "70109091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 1,
+          "donVi": "lít"
+        }
+      ]
+    },
+    "70109099": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "70109010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70109010 \"Bình lớn có vỏ bọc ngoài và bình thót cổ\" — tên hàng trọn vẹn một khối (bình lớn có hai đặc điểm: vỏ bọc ngoài, thót cổ), không tách mảng vì \"và\" nối hai đặc điểm của cùng một hàng, không phải hai hàng thay thế"
+    },
+    {
+      "ma": "70109040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70109040 chia \"…\" thành hai nhóm hàng nối \";\": (1) \"Chai, lọ và ống dạng phial\" để đựng thuốc kháng sinh/huyết thanh/chất tiêm truyền, (2) \"chai\" để đựng dung dịch tiêm, truyền tĩnh mạch ⇒ HOAC hai phương án; phanConLai: true (phần còn lại có tên so với anh em 70109010)"
+    },
+    {
+      "ma": "70109091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70109091 \"Có dung tích trên 1 lít\" ⇒ dungTich > 1 lít (\"trên\" = >; đã đối chiếu tay biên với chữ)"
+    },
+    {
+      "ma": "70109099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70109099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "701090",
+      "loai": "DUNG",
+      "ghiChu": "Phân nhóm có cờ canHieuChinhTienLe mà data/ho-so/hieu-chinh-tien-le.json chưa có mục (cảnh báo can-bang-hieu-chinh-tien-le:701090:chua-co) ⇒ DỪNG chờ Claude soạn mục bảng hiệu chỉnh L1-4b; cổng 0–5 đã xanh với spec hiện tại"
+    }
+  ]
+}

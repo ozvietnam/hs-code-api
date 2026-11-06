@@ -1,0 +1,74 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "700239",
+  "nhom": "7002",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0933#soan-700239",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "70023910",
+      "nguon": "tax.70023910",
+      "trich": "70023910 - - - Loại sử dụng để sản xuất ống chân không(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sử dụng để sản xuất ống chân không"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "70023920",
+      "nguon": "tax.70023920",
+      "trich": "70023920 - - - Loại khác, của loại thủy tinh borosilicate trung tính trong suốt, có đường kính từ 3 mm đến 22 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thủy tinh borosilicate trung tính trong suốt"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 3,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 22,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "70023990",
+      "nguon": "tax.70023990",
+      "trich": "70023990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "70023920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70023920 \"… từ 3 mm đến 22 mm\" ⇒ duongKinh >= 3 mm VÀ <= 22 mm (\"từ … đến\" = giới hạn hai đầu); đã đối chiếu tay biên với chữ"
+    },
+    {
+      "ma": "70023990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70023990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

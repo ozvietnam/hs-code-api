@@ -1,0 +1,92 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "700232",
+  "nhom": "7002",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0933#soan-700232",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "70023210",
+      "nguon": "tax.70023210",
+      "trich": "70023210 - - - Loại sử dụng để sản xuất ống chân không(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sử dụng để sản xuất ống chân không"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "70023230",
+      "nguon": "tax.70023230",
+      "trich": "70023230 - - - Ống thủy tinh borosilicate của loại sử dụng để sản xuất ống dạng phial/ampoule",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống thủy tinh borosilicate"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "của loại sử dụng để sản xuất ống dạng phial/ampoule"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "70023240",
+      "nguon": "tax.70023240",
+      "trich": "70023240 - - - Loại khác, của loại thủy tinh borosilicate trung tính trong suốt, có đường kính từ 3 mm đến 22 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thủy tinh borosilicate trung tính trong suốt"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 3,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 22,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "70023290",
+      "nguon": "tax.70023290",
+      "trich": "70023290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "70023240",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70023240 \"… từ 3 mm đến 22 mm\" ⇒ duongKinh >= 3 mm VÀ <= 22 mm (\"từ … đến\" = giới hạn hai đầu); đã đối chiếu tay biên với chữ"
+    },
+    {
+      "ma": "70023290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.70023290 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}
