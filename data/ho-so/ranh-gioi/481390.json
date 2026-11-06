@@ -1,0 +1,145 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "481390",
+  "nhom": "4813",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-481390",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4813901",
+      "nguon": "tieuDe.4813901",
+      "trich": "4813901 Dạng cuộn với chiều rộng trên 5 cm, đã phủ",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 5,
+          "donVi": "cm"
+        },
+        {
+          "fact": "daPhu",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "48139011",
+      "nguon": "tax.48139011",
+      "trich": "48139011 - - - Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "giấy bọc thuốc lá"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48139012",
+      "nguon": "tax.48139012",
+      "trich": "48139012 - - - Giấy sáp ghép đầu lọc thuốc lá điếu (cigarette tipping paper) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "giấy sáp ghép đầu lọc thuốc lá điếu"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48139019",
+      "nguon": "tax.48139019",
+      "trich": "48139019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48139091",
+      "nguon": "tax.48139091",
+      "trich": "48139091 - - - Giấy bọc thuốc lá (Tobacco wrapping paper) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "giấy bọc thuốc lá"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48139099",
+      "nguon": "tax.48139099",
+      "trich": "48139099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "481390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không có tầng không mã (tangKhongMa rỗng) ⇒ không có nút <pn6>~r<dòng> để khai. Điều kiện ở tầng 6 số không khai trong khung này: nguồn gói cho tầng 6 số là wco.481390 \"Paper, cigarette; (other than in rolls of a width not exceeding 5cm, or in booklets or tubes)\" (ten.vi của nhóm là \"Loại khác\"); 481390 không phải tiêu đề có id tieuDe, khung spec chỉ có dong8 + dieuKienNut."
+    },
+    {
+      "ma": "481390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ dòng và chữ tiêu đề đều ≤ 300 ký tự ⇒ KHÔNG ghi trich/nguon (máy tự chép nguyên văn kèm mức gạch của dòng biểu)."
+    },
+    {
+      "ma": "481390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hai trục của cây không chồng lấn: tiêu đề 4813901/4813909 chia theo đặc điểm (dạng cuộn, chiều rộng trên 5 cm, đã phủ / loại khác), các dòng trong nhánh chia theo công dụng (bọc thuốc lá / ghép đầu lọc) ⇒ KHÔNG khai chongLanVanBan. Không khai chongLanTruc vì viDuHang phải là hàng THẬT thoả cả hai nhánh — không bịa ví dụ."
+    },
+    {
+      "ma": "4813901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4813901 \"Dạng cuộn với chiều rộng trên 5 cm, đã phủ\" ⇒ dangCuon CO + chieuRong > 5 cm + daPhu CO (khoá daPhu mới 06/11, chữ \"đã phủ\" nguyên văn). Đủ ba vế GIỚI HẠN của tiêu đề."
+    },
+    {
+      "ma": "4813909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4813909 \"Loại khác\" trần ⇒ bỏ qua, không khai dieuKienNut (máy phủ định anh em)."
+    },
+    {
+      "ma": "48139011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139011 \"Giấy bọc thuốc lá (Tobacco wrapping paper)\" ⇒ tenLoai TEN_LOAI \"giấy bọc thuốc lá\" (tên hàng nguyên văn). Công dụng \"dùng để bọc thuốc lá điếu\" chỉ có trong chú giải SEN, không nằm trong câu trích của dòng nên không dùng congDung (cổng 3)."
+    },
+    {
+      "ma": "48139012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139012 \"Giấy sáp ghép đầu lọc thuốc lá điếu (cigarette tipping paper)\" ⇒ tenLoai TEN_LOAI \"giấy sáp ghép đầu lọc thuốc lá điếu\" (tên hàng nguyên văn; cùng lý do 48139011)."
+    },
+    {
+      "ma": "48139019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139019 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện, không đưa vào spec."
+    },
+    {
+      "ma": "48139091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139091 \"Giấy bọc thuốc lá (Tobacco wrapping paper)\" ⇒ tenLoai TEN_LOAI \"giấy bọc thuốc lá\" (tên hàng nguyên văn). Công dụng \"dùng để bọc thuốc lá điếu\" chỉ có trong chú giải SEN, không nằm trong câu trích của dòng nên không dùng congDung (cổng 3)."
+    },
+    {
+      "ma": "48139099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48139099 \"Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không khai điều kiện, không đưa vào spec."
+    }
+  ]
+}
