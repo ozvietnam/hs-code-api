@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-890190",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-890190",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,14 +16,24 @@
       "id": "8901901",
       "nguon": "tieuDe.8901901",
       "trich": "8901901 Không có động cơ đẩy",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "coDongCoDay",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "8901903",
       "nguon": "tieuDe.8901903",
       "trich": "8901903 Có động cơ đẩy",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "coDongCoDay",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -207,18 +217,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "8901901",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "coDongCoDay",
-      "ghiChu": "tieuDe.8901901 \"Không có động cơ đẩy\" — không có khoá tu-vung@2 cho có/không động cơ đẩy (cachDieuKhien DONG_CO đọc \"động cơ bước/động cơ điện\", không khớp chữ \"động cơ đẩy\")"
-    },
-    {
-      "ma": "8901903",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "coDongCoDay",
-      "ghiChu": "tieuDe.8901903 \"Có động cơ đẩy\" — thiếu khoá như 8901901"
-    },
-    {
       "ma": "89019011",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.89019011 ⇒ tongDungTichTau <= 26 GT"
@@ -267,6 +265,16 @@
       "ma": "89019037",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.89019037 ⇒ tongDungTichTau > 50000 GT"
+    },
+    {
+      "ma": "8901901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8901901 \"Không có động cơ đẩy\" ⇒ coDongCoDay KHONG (khoá mới tu-vung@2, cachDocKhong đọc \"không có động cơ đẩy\"); thang đo có/không đồng nhất với tiêu đề anh em 8901903."
+    },
+    {
+      "ma": "8901903",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8901903 \"Có động cơ đẩy\" ⇒ coDongCoDay CO (đọc \"có động cơ đẩy\"); cùng khoá với tiêu đề anh em 8901901."
     }
   ]
 }

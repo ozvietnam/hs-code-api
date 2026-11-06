@@ -1,22 +1,60 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "270400",
-  "phien": "zcode-sub:glm-5.3:20261105T1542#soan-270400",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-270400",
   "dong8": {
     "27040010": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Than cốc và than nửa cốc"
+        },
+        {
+          "fact": "nguyenLieuLuyen",
+          "op": "TRONG",
+          "value": [
+            "THAN_DA"
+          ]
+        }
+      ]
     },
     "27040020": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Than cốc và than nửa cốc"
+        },
+        {
+          "fact": "nguyenLieuLuyen",
+          "op": "TRONG",
+          "value": [
+            "THAN_NON_HOAC_THAN_BUN"
+          ]
+        }
+      ]
     },
     "27040030": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Muội bình chưng than đá" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Muội bình chưng than đá"
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "27040010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "nguyenLieuLuyen", "ghiChu": "tax.27040010: \"Than cốc và than nửa cốc luyện từ than đá\" — cần khoá nguyên liệu nguồn (than đá) để tách với 27040020 (than non hoặc than bùn); tu-vung@2 chưa có, tenLoai tự do làm vector trần \"Than cốc\" không rơi vào con nào (cong1-khong-phu-kin:2704)" },
-    { "ma": "27040020", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "nguyenLieuLuyen", "ghiChu": "tax.27040020: \"Than cốc và than nửa cốc luyện từ than non hoặc than bùn\" — cùng nguyên nhân: thiếu khoá nguyên liệu nguồn (than non/than bùn)" }
+    {
+      "ma": "27040010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27040010: \"Than cốc và than nửa cốc luyện từ than đá\" ⇒ nguyenLieuLuyen TRONG [THAN_DA] ; tên đầu \"Than cốc và than nửa cốc\" ⇒ tenLoai, để tách tên với 27040030 \"Muội bình chưng than đá\""
+    },
+    {
+      "ma": "27040020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27040020: \"Than cốc và than nửa cốc luyện từ than non hoặc than bùn\" ⇒ nguyenLieuLuyen TRONG [THAN_NON_HOAC_THAN_BUN] ; tên đầu \"Than cốc và than nửa cốc\" ⇒ tenLoai"
+    }
   ]
 }

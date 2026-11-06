@@ -1,25 +1,89 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "580632",
-  "phien": "zcode-sub:glm-5.3:20261106T1545#soan-580632",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-580632",
   "dong8": {
-    "58063210": { "dieuKienSo": [ { "op": "HOAC", "phuongAn": [
-      [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vải dệt thoi khổ hẹp" },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "sản xuất băng mực" },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy chữ" } ],
-      [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "băng vải" },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "dây đai an toàn ghế ngồi" } ]
-    ] } ] },
-    "58063240": { "dieuKienSo": [
-      { "fact": "dungCho", "op": "CONG_DUNG", "value": "giấy cách điện" }
-    ] },
-    "58063250": { "dieuKienSo": [
-      { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ruy băng" },
-      { "fact": "dungCho", "op": "CONG_DUNG", "value": "khóa kéo" },
-      { "fact": "chieuRong", "op": "<=", "value": 12, "donVi": "mm" }
-    ] }
+    "58063210": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Vải dệt thoi khổ hẹp"
+              },
+              {
+                "fact": "thichHopLamBangMucMayChu",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "băng vải"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "dây đai an toàn ghế ngồi"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "58063240": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "giấy cách điện"
+        }
+      ]
+    },
+    "58063250": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ruy băng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khóa kéo"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 12,
+          "donVi": "mm"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "58063210", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "dungCho", "ghiChu": "tax.58063210: \"… dùng cho máy chữ hoặc các loại máy tương tự …\" — vế mở \"các loại máy tương tự\" chỉ có op TUONG_TU của khoá tenLoai, không diễn đạt được trên đích của dungCho" }
+    {
+      "ma": "58063210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58063210 \"Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi\" ⇒ HOAC hai nhánh: (1) tenLoai \"Vải dệt thoi khổ hẹp\" + thichHopLamBangMucMayChu CO (khoá tu-vung@2 mới đọc nguyên cụm đích, gồm vế mở \"các loại máy tương tự\"); (2) tenLoai \"băng vải\" + dungCho \"dây đai an toàn ghế ngồi\"; thay ghi chú THIEU_KHOA dungCho cũ."
+    },
+    {
+      "ma": "580632",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 580632-01 KHONG_LECH (1142/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "58063210",
+        "58063240"
+      ],
+      "lyDo": "tax.58063210 \"Vải dệt thoi khổ hẹp thích hợp cho sản xuất băng mực dùng cho máy chữ hoặc các loại máy tương tự; băng vải dùng làm dây đai an toàn ghế ngồi\" không loại trừ tax.58063240 \"Làm nền cho giấy cách điện\" — vải khổ hẹp thích hợp làm băng mực máy chữ vẫn có thể dùng làm nền cho giấy cách điện; chữ biểu không nói gì tách hai dòng, không có căn cứ thứ tự"
+    }
   ]
 }

@@ -1,23 +1,54 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "392020",
-  "phien": "mm:minimax-m3:20261105T1705#soan-392020",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-392020",
   "dong8": {
     "39202010": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Màng polypropylen định hướng hai chiều"
+        }
+      ]
     },
     "39202091": {
-      "dieuKienSo": []
-    },
-    "39202099": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "dangTamPhienMang",
+          "op": "TRONG",
+          "value": [
+            "TAM_VA_PHIEN"
+          ]
+        }
+      ]
     }
   },
   "ghiChuSoan": [
     {
+      "ma": "39202010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39202010 \"Màng polypropylen định hướng hai chiều (BOPP) (SEN)\" ⇒ tenLoai TEN_LOAI \"Màng polypropylen định hướng hai chiều\" (tên hàng nguyên văn). \"(BOPP)\" là viết tắt trong ngoặc, \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật — không thành điều kiện. Định nghĩa quá trình định hướng chỉ có trong SEN nên không đưa vào."
+    },
+    {
+      "ma": "3920209",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3920209 \"Loại khác\" trần ⇒ không khai dieuKienNut (máy phủ định anh em 39202010)."
+    },
+    {
+      "ma": "39202091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39202091 \"Dạng tấm và phiến (SEN)\" ⇒ dangTamPhienMang TRONG [TAM_VA_PHIEN] (cách đọc của giá trị khớp \"dạng tấm và phiến (SEN)\")."
+    },
+    {
+      "ma": "39202099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39202099 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
       "ma": "392020",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG: --goi in \"[CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ]\". Bảng hiệu chỉnh tiền lệ chưa có mục cho 392020 nên chưa được soạn điều kiện cho các dòng (39202010 Màng polypropylen định hướng hai chiều (BOPP), 39202091 Dạng tấm và phiến, 39202099 Loại khác trần). Chờ bảng hiệu chỉnh tiền lệ có mục cho PN6 này rồi soạn lại."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 392020-01 KHONG_LECH (2645, 134/TB-TCHQ: hàng không phải màng BOPP nên không thoả .10, .99 khớp; 542/TB-TCHQ xếp màng BOPP vào .10): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

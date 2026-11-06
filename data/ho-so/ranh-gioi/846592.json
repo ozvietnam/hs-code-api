@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1000#soan-846592",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-846592",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,8 +16,23 @@
     {
       "hs": "84659210",
       "nguon": "tax.84659210",
-      "trich": "84659210 - - - Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in, có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm, dùng để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in",
-      "dieuKienSo": [],
+      "trich": "84659210 - - - Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in, có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm, dùng để khắc vạch lên …",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "khắc vạch lên các tấm mạch in",
+            "tấm dây in",
+            "tấm nền của tấm mạch in",
+            "tấm nền của tấm dây in"
+          ]
+        },
+        {
+          "fact": "chuoiMuiKhongQua3175",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -31,9 +46,25 @@
   "ghiChuSoan": [
     {
       "ma": "84659210",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "coTheLapVuaMuiKhac",
-      "ghiChu": "tax.84659210: \"…, có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm, …\" — tu-vung@2 không có khoá cho 'có thể lắp vừa được mũi khắc'; bỏ vế làm đổi mã (.10 ⇔ .90)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84659210 (301 ký tự, lược bằng …): \"Để khắc vạch lên các tấm mạch in hoặc tấm dây in hoặc tấm nền của …\" ⇒ congDung mảng 4 đích; \"có thể lắp vừa được mũi khắc có đường kính chuôi không quá 3,175 mm\" ⇒ chuoiMuiKhongQua3175 CO (khoá lô 20, đọc \"đường kính chuôi không quá 3,175 mm\"); thay THIEU_KHOA_TU_VUNG coTheLapVuaMuiKhac."
+    },
+    {
+      "ma": "84659290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84659290 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "84659210",
+      "loai": "BO_VE",
+      "ve": "có thể lắp vừa",
+      "lyDo": "Khoá chuoiMuiKhongQua3175 được thiết kế (nhanVi tu-vung@2 lô 20) đúng bằng cụm \"lắp vừa mũi có đường kính chuôi không quá 3,175 mm\" (nhanEn \"accepts bits with shank diameter not exceeding 3.175 mm\"; chữ Anh của chính dòng: \"accepting router bits with a shank diameter not exceeding 3.175 mm\"), tức gồm cả \"có thể lắp vừa được mũi khắc\"; vế này là phần đầu của cụm đó, đã phủ bằng chuoiMuiKhongQua3175 CO — không bỏ vế làm đổi mã."
+    },
+    {
+      "ma": "84659210",
+      "loai": "BO_VE",
+      "ve": "được mũi khắc",
+      "lyDo": "Khoá chuoiMuiKhongQua3175 được thiết kế (nhanVi tu-vung@2 lô 20) đúng bằng cụm \"lắp vừa mũi có đường kính chuôi không quá 3,175 mm\" (nhanEn \"accepts bits with shank diameter not exceeding 3.175 mm\"; chữ Anh của chính dòng: \"accepting router bits with a shank diameter not exceeding 3.175 mm\"), tức gồm cả \"có thể lắp vừa được mũi khắc\"; vế này là phần đầu của cụm đó, đã phủ bằng chuoiMuiKhongQua3175 CO — không bỏ vế làm đổi mã."
     }
   ]
 }

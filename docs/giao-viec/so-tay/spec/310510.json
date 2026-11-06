@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "310510",
-  "phien": "mm:minimax-m3:20261105T1547#soan-310510",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-310510",
   "dong8": {
     "31051010": {
       "dieuKienSo": [
@@ -16,7 +16,15 @@
       ]
     },
     "31051020": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "soNguyenToCauThanhPhanBon",
+          "op": "TRONG",
+          "value": [
+            "HAI_HOAC_BA"
+          ]
+        }
+      ]
     }
   },
   "dieuKienNut": {},
@@ -28,9 +36,17 @@
     },
     {
       "ma": "31051020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "soNguyenToCauThanhPhanBon",
-      "ghiChu": "tax.31051020 \"Phân khoáng hoặc phân hóa học có chứa hai hoặc ba trong số các nguyên tố cấu thành phân bón là nitơ, phospho và kali\" — vế GIỚI HẠN \"có chứa hai hoặc ba trong số các nguyên tố cấu thành phân bón là nitơ, phospho và kali\" cần khoá số nguyên tố cấu thành phân bón (2 hoặc 3) và tập nguyên tố nitơ/phospho/kali; tu-vung@2 chưa có khoá này ⇒ để trống dieuKienSo, không mượn khoá gần nghĩa."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.31051020 \"Phân khoáng hoặc phân hóa học có chứa hai hoặc ba trong số các nguyên tố cấu thành phân bón là nitơ, phospho và kali\" ⇒ soNguyenToCauThanhPhanBon TRONG [HAI_HOAC_BA] (khoá mới lô 20; giá trị HAI_HOAC_BA là đúng chữ dòng này, không suy thành BA hay HAI riêng). Tên \"Phân khoáng hoặc phân hóa học\" là tên cả chương 31, không ghi tenLoai thêm."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "31051010",
+        "31051020"
+      ],
+      "lyDo": "tax.31051010 \"Supephosphat và phân phosphat đã nung\" gọi tên loại phân, tax.31051020 \"Phân khoáng hoặc phân hóa học có chứa hai hoặc ba trong số các nguyên tố cấu thành phân bón là nitơ, phospho và kali\" chia theo số nguyên tố cấu thành — hai câu không loại trừ nhau (một phân supephosphat có thể chứa thêm nitơ hoặc kali), chữ biểu không nêu thứ tự"
     }
   ]
 }

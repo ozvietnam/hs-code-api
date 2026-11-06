@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "870380",
-  "phien": "zcode-sub:glm-5.3:20261106T1100#soan-870380",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-870380",
   "dong8": {
     "87038011": {
       "dieuKienSo": [
@@ -81,7 +81,12 @@
       ]
     },
     "87038018": {
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
+        }
+      ],
       "phanConLai": true
     },
     "87038091": {
@@ -162,7 +167,12 @@
       ]
     },
     "87038098": {
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
+        }
+      ],
       "phanConLai": true
     }
   },
@@ -264,15 +274,13 @@
     },
     {
       "ma": "87038018",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "laOtoVan",
-      "ghiChu": "tax.87038018 \"Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)…\" — không có khoá tu-vung đọc được \"ô tô van\" (kieuXeChoNguoi không có giá trị VAN); không loại được \"ô tô van\" nên dòng \"Loại khác\" dưới không tới được / không phủ định được tầng này"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87038018 \"…, nhưng không kể ô tô van\" ⇒ laOtoVan KHONG (khoá tu-vung@2 mới, cách đọc KHÔNG có \"không kể ô tô van\"); cụm \"(kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao\" là vế PHU theo luật 3.8"
     },
     {
       "ma": "87038098",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "laOtoVan",
-      "ghiChu": "tax.87038098 \"Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)…\" — không có khoá tu-vung đọc được \"ô tô van\" (kieuXeChoNguoi không có giá trị VAN); không loại được \"ô tô van\" nên dòng \"Loại khác\" dưới không tới được / không phủ định được tầng này"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87038098 \"…, nhưng không kể ô tô van\" ⇒ laOtoVan KHONG (khoá tu-vung@2 mới, cách đọc KHÔNG có \"không kể ô tô van\"); cụm \"(kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao\" là vế PHU theo luật 3.8"
     }
   ]
 }

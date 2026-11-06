@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T0935#soan-190190",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-190190",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -93,7 +93,12 @@
       "hs": "19019031",
       "nguon": "tax.19019031",
       "trich": "19019031 - - - Chứa sữa (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chuaSua",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -119,7 +124,12 @@
       "hs": "19019041",
       "nguon": "tax.19019041",
       "trich": "19019041 - - - Dạng bột",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dangBot",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -150,6 +160,22 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "19019011",
+        "19019020"
+      ],
+      "lyDo": "tieuDe.1901901 \"Các chế phẩm phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, chưa đóng gói để bán lẻ\" (dòng .11 \"Sản phẩm dinh dưỡng y tế\") và tax.19019020 \"Chiết xuất malt\": chữ biểu nhánh trên chia theo đặc điểm dùng cho trẻ sơ sinh/chưa đóng gói bán lẻ, nhánh dưới chia theo tên hàng; chiết xuất malt dùng cho trẻ sơ sinh, chưa đóng gói để bán lẻ, là sản phẩm dinh dưỡng y tế thoả cả hai câu; không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "19019019",
+        "19019020"
+      ],
+      "lyDo": "tieuDe.1901901 \"Các chế phẩm phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ, chưa đóng gói để bán lẻ\" (dòng .19 \"Loại khác\") và tax.19019020 \"Chiết xuất malt\": chiết xuất malt phù hợp dùng cho trẻ sơ sinh, chưa đóng gói để bán lẻ, thoả cả hai câu chữ biểu; không có căn cứ thứ tự"
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "1901901",
@@ -162,18 +188,6 @@
       "ghiChu": "tieuDe.1901903 \"Loại khác, làm từ sản phẩm thuộc nhóm từ 04.01 đến 04.04\": tiêu đề LK có điều kiện ⇒ chỉ ghi vế; dẫn mã giữ nguyên chuỗi \"thuộc nhóm từ 04.01 đến 04.04\" trong dungCho"
     },
     {
-      "ma": "19019031",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chuaSua",
-      "ghiChu": "tax.19019031 \"Chứa sữa (SEN)\" — vế GIỚI HẠN \"Chứa sữa\" không có khoá trong tu-vung@2 (chuaCaCao chỉ dành cho ca cao)"
-    },
-    {
-      "ma": "19019041",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dangBot",
-      "ghiChu": "tax.19019041 \"Dạng bột\" — dạng bột không có khoá trong tu-vung@2 (daXay đọc \"xay\", không phải \"dạng bột\")"
-    },
-    {
       "ma": "1901904",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.1901904 \"Các chế phẩm khác từ đỗ tương\": phần còn lại có tên — \"khác\" đứng sau danh từ, có nội dung khẳng định \"từ đỗ tương\" ⇒ dungCho \"đỗ tương\" + phanConLai true (phủ định anh em .1/.20/.3)"
@@ -182,6 +196,26 @@
       "ma": "19019049",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.19019049 \"Dạng khác\": phần còn lại của .41 \"Dạng bột\", không có ý khẳng định riêng ⇒ dieuKienSo rỗng + phanConLai true"
+    },
+    {
+      "ma": "19019031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19019031 \"Chứa sữa (SEN)\" ⇒ chuaSua CO (khoá chuaSua tu-vung@2 lô 20, đọc CÓ \"chứa sữa\")"
+    },
+    {
+      "ma": "19019041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.19019041 \"Dạng bột\" ⇒ dangBot CO (khoá dangBot tu-vung@2 lô 20, đọc CÓ \"dạng bột\"); anh em .49 \"Dạng khác\" là phần còn lại có tên (phanConLai)"
+    },
+    {
+      "ma": "190190",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 190190-01 KHONG_LECH (1557/TB-TCHQ, 1556/TB-TCHQ) và 190190-02 LECH_CHUA_PHAN_XU (1854/TB-TCHQ, 1855/TB-TCHQ, 1856/TB-TCHQ, 1853/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "19019020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chồng lấn cổng 2 giữa nhánh đặc điểm 1901901 (dòng .11/.19: thietKeChoTreEm CO + dongGoiBanLe KHONG) và tên hàng .20 \"Chiết xuất malt\" (tenLoai): đã kiểm biên/khoá/phanConLai, không do sai khoá; hai câu chữ biểu thật sự không loại trừ nhau ⇒ chongLanVanBan hai cặp (.11↔.20, .19↔.20), không bịa điều kiện tách, không có căn cứ thứ tự trích được"
     }
   ]
 }

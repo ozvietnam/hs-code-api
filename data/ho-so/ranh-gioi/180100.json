@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T0932#soan-180100",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-180100",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -17,7 +17,12 @@
       "hs": "18010010",
       "nguon": "tax.18010010",
       "trich": "18010010 - Đã lên men (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "daLenMen",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -31,9 +36,8 @@
   "ghiChuSoan": [
     {
       "ma": "18010010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daLenMen",
-      "ghiChu": "tax.18010010 \"Đã lên men (SEN)\" — trạng thái lên men của hạt ca cao không có khoá trong tu-vung@2 (không có khoá lên men/fermentation); danh từ hàng \"hạt ca cao\" nằm ở tiêu đề nhóm cha 1801"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.18010010 \"Đã lên men (SEN)\" ⇒ daLenMen CO (khoá daLenMen tu-vung@2 lô 20, đọc CÓ \"đã lên men\"); danh từ hàng \"hạt ca cao\" nằm ở tiêu đề nhóm 1801, không lặp vào điều kiện"
     }
   ]
 }

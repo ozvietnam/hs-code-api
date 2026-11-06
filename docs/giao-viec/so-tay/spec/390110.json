@@ -1,19 +1,39 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "390110",
-  "phien": "mm:minimax-m3:20261105T1709#soan-390110",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-390110",
   "dong8": {
     "39011012": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongMonomerAlphaOlefin",
+          "op": "<=",
+          "value": 5,
+          "donVi": "%"
+        }
+      ]
     },
     "39011092": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongMonomerAlphaOlefin",
+          "op": "<=",
+          "value": 5,
+          "donVi": "%"
+        }
+      ]
     }
   },
   "dieuKienNut": {
     "3901101": {
       "dieuKienSo": [
-        { "fact": "dangNguyenSinh", "op": "TRONG", "value": ["LONG_HOAC_NHAO"] }
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "LONG_HOAC_NHAO"
+          ]
+        }
       ]
     }
   },
@@ -25,15 +45,25 @@
     },
     {
       "ma": "39011012",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongMonomerAlphaOlefin",
-      "ghiChu": "tax.39011012 \"Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)\" — cần khoá hàm lượng monomer alpha-olefin (%, từ 5% trở xuống tính theo khối lượng) và khoá \"chứa các monomer alpha-olefin\"; tu-vung@2 chưa có. Tên hàng: \"Polyetylen\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39011012 \"Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)\" ⇒ hamLuongMonomerAlphaOlefin <= 5 % (\"từ 5% trở xuống\" = <=). Khoá mới (lô 20) mang luôn ý \"chứa các monomer alpha-olefin\" bằng con số nên không cần khoá có/không thứ hai; \"Polyetylen\" là tên của chính phân nhóm 390110, không thêm tenLoai."
     },
     {
       "ma": "39011092",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongMonomerAlphaOlefin",
-      "ghiChu": "tax.39011092 \"Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)\" — cần khoá hàm lượng monomer alpha-olefin (%, từ 5% trở xuống tính theo khối lượng) và khoá \"chứa các monomer alpha-olefin\"; tu-vung@2 chưa có. Tên hàng: \"Polyetylen\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39011092 \"Polyetylen chứa các monomer alpha-olefin từ 5% trở xuống (SEN)\" ⇒ hamLuongMonomerAlphaOlefin <= 5 % (cùng khoá, cùng biên với 39011012)."
+    },
+    {
+      "ma": "39011012",
+      "loai": "BO_VE",
+      "ve": "chứa các monomer alpha-olefin",
+      "lyDo": "Vế \"chứa các monomer alpha-olefin\" được chính khoá hamLuongMonomerAlphaOlefin mang (nhãn tu-vung@2 \"hàm lượng monomer alpha-olefin\", cách viết \"chứa monomer alpha-olefin {giaTri}\"): chữ biểu gắn ngay ngưỡng \"từ 5% trở xuống\" vào chất đó, nên điều kiện <= 5 % trên khoá này đã phủ cả ý \"chứa\" lẫn ngưỡng; không có khoá có/không thứ hai nên bỏ vế riêng không đổi mã 8 số."
+    },
+    {
+      "ma": "39011092",
+      "loai": "BO_VE",
+      "ve": "chứa các monomer alpha-olefin",
+      "lyDo": "Vế \"chứa các monomer alpha-olefin\" được chính khoá hamLuongMonomerAlphaOlefin mang (nhãn tu-vung@2 \"hàm lượng monomer alpha-olefin\", cách viết \"chứa monomer alpha-olefin {giaTri}\"): chữ biểu gắn ngay ngưỡng \"từ 5% trở xuống\" vào chất đó, nên điều kiện <= 5 % trên khoá này đã phủ cả ý \"chứa\" lẫn ngưỡng; không có khoá có/không thứ hai nên bỏ vế riêng không đổi mã 8 số."
     }
   ]
 }

@@ -1,14 +1,19 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "721391",
-  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721391",
-  "dong8": {},
-  "dieuKienNut": {},
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721391",
+  "dong8": {
+    "72139110": { "dieuKienSo": [ { "fact": "congDung", "op": "CONG_DUNG", "value": "sản xuất que hàn" } ] },
+    "72139120": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thép cốt bê tông" } ] },
+    "72139130": { "dieuKienSo": [] }
+  },
   "ghiChuSoan": [
-    {
-      "ma": "721391",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721391hua-co. Không soạn điều kiện cho mã này."
-    }
+    { "ma": "72139110", "loai": "QUYET_DINH", "ghiChu": "tax.72139110 \"Loại dùng để sản xuất que hàn (SEN)\" ⇒ congDung CONG_DUNG \"sản xuất que hàn\" (chữ \"dùng để\" ⇒ công dụng). Thành phần hoá học C ≤ 0,1%, Mn, Si… chỉ có trong SEN, không có trong chữ biểu của dòng nên không mã hoá (cổng 3)." },
+    { "ma": "72139120", "loai": "QUYET_DINH", "ghiChu": "tax.72139120 \"Thép cốt bê tông\" ⇒ tenLoai TEN_LOAI \"Thép cốt bê tông\" (chữ biểu chỉ nêu TÊN hàng)." },
+    { "ma": "72139130", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "hamLuongPhotpho", "ghiChu": "tax.72139130 \"Loại khác, có hàm lượng carbon từ 0,6% trở lên, hàm lượng photpho không quá 0,03% và hàm lượng lưu huỳnh không quá 0,035% tính theo khối lượng\" — hamLuongCarbon >= 0.6 % có khoá, nhưng \"hàm lượng photpho không quá 0,03%\" và \"hàm lượng lưu huỳnh không quá 0,035%\" không có khoá trong tu-vung@2 (chỉ có hamLuongCarbon, hamLuongNiken, hamLuongCrom). Cần khoá SO đơn vị % hamLuongPhotpho và hamLuongLuuHuynh. Bỏ hai vế GIỚI HẠN này làm .30 rộng hơn chữ biểu và đổi mã (thép carbon ≥ 0,6% có P hoặc S vượt ngưỡng phải rơi về .90) nên không ghi điều kiện carbon một mình." },
+    { "ma": "72139130", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "hamLuongLuuHuynh", "ghiChu": "Xem ghi chú hamLuongPhotpho cùng mục 72139130: vế \"hàm lượng lưu huỳnh không quá 0,035%\" cần khoá SO đơn vị %." },
+    { "ma": "72139130", "loai": "DUNG", "ghiChu": "DỪNG thiếu khoá từ vựng (THIEU_KHOA_TU_VUNG hamLuongPhotpho, hamLuongLuuHuynh) — mục .30 để dieuKienSo rỗng, không ép." },
+    { "ma": "72139190", "loai": "QUYET_DINH", "ghiChu": "tax.72139190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." },
+    { "ma": "721391", "loai": "LECH_TIEN_LE", "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721391-01 KHONG_LECH (7442, 7447/TB-TCHQ que cán nóng cuộn cuốn không đều SAE1008, không nêu công dụng thép cốt bê tông ⇒ không thoả .20, xếp .90): soạn theo chữ biểu, khớp bảng." }
   ]
 }

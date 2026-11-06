@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T0910#soan-848620",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-848620",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -109,14 +109,88 @@
       "hs": "84862012",
       "nguon": "tax.84862012",
       "trich": "84862012 - - - Máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy kết tủa epitaxi"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "QUAY"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84862013",
       "nguon": "tax.84862013",
       "trich": "84862013 - - - Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên các tấm bán dẫn mỏng; thiết bị lắng đọng vật lý dùng cho sản xuất bán dẫn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Thiết bị tạo kết tủa vật lý"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "PHUN_PHU"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "các tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị lắng đọng vật lý"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "sản xuất bán dẫn"
+              }
+            ]
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -446,15 +520,13 @@
   "ghiChuSoan": [
     {
       "ma": "84862012",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapCheTao",
-      "ghiChu": "tax.84862012 \"…thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay\" — không có khoá/giá trị cho \"bằng phương pháp quay\" trong tu-vung@2 (phuongPhapCheTao không có giá trị quay)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84862012 hai hàng nối \";\" ⇒ HOAC: (A) tenLoai \"Máy kết tủa epitaxi\" + dungCho \"các tấm bán dẫn mỏng\"; (B) tenLoai \"thiết bị\" + congDung \"tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng\" + nguyenLyXuLy QUAY (khoá lô 20, đọc \"phương pháp quay\"). Thay THIEU_KHOA_TU_VUNG phuongPhapCheTao."
     },
     {
       "ma": "84862013",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapCheTao",
-      "ghiChu": "tax.84862013 \"Thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ…\" — không có khoá/giá trị cho \"bằng phương pháp phun phủ\" trong tu-vung@2 (EP_PHUN chỉ đọc \"ép phun/đúc phun\")"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84862013 hai hàng nối \";\" ⇒ HOAC: (A) tenLoai \"Thiết bị tạo kết tủa vật lý\" + nguyenLyXuLy PHUN_PHU (khoá lô 20, đọc \"phương pháp phun phủ\") + dungCho \"các tấm bán dẫn mỏng\"; (B) tenLoai \"thiết bị lắng đọng vật lý\" + dungCho \"sản xuất bán dẫn\". Thay THIEU_KHOA_TU_VUNG phuongPhapCheTao."
     },
     {
       "ma": "84862019",
@@ -500,6 +572,16 @@
       "ma": "84862095",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84862095 liệt kê lồng \"dịch chuyển hoặc bóc tách\" × \"linh kiện hoặc phần tiếp xúc\" ⇒ hai điều kiện mảng tenLoai + dungCho \"nguyên liệu bán dẫn\" (cổng 5 không tách vế)"
+    },
+    {
+      "ma": "84862013",
+      "loai": "DUNG",
+      "ghiChu": "cong2-dong-khong-toi-duoc:84862013 — dòng gồm hai hàng nối \";\" nên phải là HOAC (mỗi hàng có tenLoai + giới hạn riêng: phương án A thêm nguyenLyXuLy PHUN_PHU, B không có); tầng 8486201 cũng mang tenLoai \"Thiết bị tạo lớp màng mỏng\" và cổng 2 chỉ ghép tên cha–con (\"<tên dưới> <tên trên>\") cho điều kiện tenLoai phẳng, không ghép trong phuongAn của HOAC ⇒ không vector nào thoả cả tầng lẫn phương án (đã thử: vector tay có tên ghép thì dòng CO). Không tách HOAC thành mảng phẳng vì làm RỘNG hơn chữ (nguyenLyXuLy PHUN_PHU chỉ của hàng A). DỪNG, báo Claude."
+    },
+    {
+      "ma": "84862012",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan:84862011+84862012:…:khong-tat-dinh — hàng B của .12 \"thiết bị để tạo lớp phủ nhũ tương in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay\" có danh từ đầu chung \"thiết bị\" (tenLoai \"thiết bị\" nguyên văn); tên ghép với tầng (\"Thiết bị kết tủa khí hóa Thiết bị tạo lớp màng mỏng\") thoả cả tenLoai của .11 lẫn \"thiết bị\" của .12-B. Chồng lấn do bộ so chữ (CVD khác hẳn máy phủ quay), không khai chongLanVanBan; bỏ tenLoai \"thiết bị\" khỏi B không hết lỗi (vẫn chồng với .11 theo trục công dụng, không có hàng thật). DỪNG, báo Claude."
     }
   ]
 }

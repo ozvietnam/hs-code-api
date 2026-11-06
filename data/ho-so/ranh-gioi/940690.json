@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1019#soan-940690",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-940690",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -21,6 +21,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Nhà trồng cây"
+        },
+        {
+          "fact": "ganThietBiCoKhiHoacGiaNhiet",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -93,7 +97,15 @@
       "hs": "94069040",
       "nguon": "tax.94069040",
       "trich": "94069040 - - Loại khác, bằng xi măng, bằng bê tông hoặc đá nhân tạo",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "XI_MANG_BE_TONG_DA_NHAN_TAO"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -107,15 +119,13 @@
   "ghiChuSoan": [
     {
       "ma": "9406901",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "ganThietBiCoKhiHoacNhiet (CO_KHONG)",
-      "ghiChu": "tieuDe.9406901 \"Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt\" — tên ghi được (tenLoai \"Nhà trồng cây\") nhưng vế GIỚI HẠN \"được gắn với thiết bị cơ khí hoặc thiết bị nhiệt\" không có khoá tu-vung@2 (cùng dạng 940610/940620); không bỏ vế bằng BO_VE vì bỏ vế làm đổi mã các dòng dưới tầng"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9406901 \"Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt\" ⇒ tenLoai \"Nhà trồng cây\" + ganThietBiCoKhiHoacGiaNhiet CO (khoá mới tu-vung@2, đọc \"được gắn với thiết bị cơ khí hoặc thiết bị nhiệt\"); vế giới hạn được phủ, không BO_VE."
     },
     {
       "ma": "94069040",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu (thêm giá trị xi măng/bê tông/đá nhân tạo)",
-      "ghiChu": "tax.94069040 \"Loại khác, bằng xi măng, bằng bê tông hoặc đá nhân tạo\" — tu-vung@2 không có giá trị chatLieu cho xi măng/bê tông/đá nhân tạo; không mượn giá trị gần nghĩa (gốm sứ)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94069040 \"Loại khác, bằng xi măng, bằng bê tông hoặc đá nhân tạo\" ⇒ chỉ ghi vế: vatLieuKhac TRONG [XI_MANG_BE_TONG_DA_NHAN_TAO] (dòng chính chữ biểu là \"bằng <vật liệu>\", nên dùng được khoá)."
     },
     {
       "ma": "94069019",

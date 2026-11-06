@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T0845#soan-300410",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-300410",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -16,7 +16,12 @@
       "id": "3004101",
       "nguon": "tieuDe.3004101",
       "trich": "3004101 Chứa penicillins hoặc các dẫn xuất của chúng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chuaPenicillin",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -87,12 +92,20 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "30041019",
+        "30041020"
+      ],
+      "lyDo": "tieuDe.3004101 \"Chứa penicillins hoặc các dẫn xuất của chúng\" (dưới đó là tax.30041019 \"Loại khác\") không loại trừ tax.30041020 \"Chứa các streptomycin hoặc các dẫn xuất của chúng\" — một chế phẩm có thể chứa đồng thời penicillin và streptomycin; chữ biểu không nêu thứ tự, không có căn cứ trích được để chọn"
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "3004101",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chuaPenicillin (CO_KHONG: chứa penicillin hoặc dẫn xuất của penicillin)",
-      "ghiChu": "tieuDe.3004101 \"Chứa penicillins hoặc các dẫn xuất của chúng\" — đây là LỚP hoạt chất, không phải tên một hoạt chất: các dòng con nêu tên riêng (\"penicillin G\", \"phenoxymethyl penicillin\" ở .15; \"ampicillin\", \"amoxycillin\" ở .16) mà tên ấy KHÔNG chứa chữ \"penicillin\" (ampicillin/amoxycillin) nên điều kiện tenLoai \"penicillin(s)\" không phủ được dòng con ⇒ cổng 1 báo lỗ hổng. Cần khoá CO_KHONG cho lớp penicillin (đọc được chữ \"Chứa penicillins\") để áp cho cả .15 và .16. Để trống dieuKienSo của mục theo luật THIEU_KHOA_TU_VUNG."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3004101 \"Chứa penicillins hoặc các dẫn xuất của chúng\" ⇒ chuaPenicillin CO (khoá mới lô 20, CO_KHONG đọc \"penicillins\"/\"ampicillin\"/\"amoxycillin\": lớp hoạt chất penicillin gồm cả ampicillin/amoxycillin mà tên không chứa chữ \"penicillin\"). Hai dòng con giữ tenLoai tên hoạt chất cụ thể."
     },
     {
       "ma": "30041015",
@@ -113,6 +126,11 @@
       "ma": "30041020",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.30041020 \"Chứa các streptomycin hoặc các dẫn xuất của chúng\" — đặt tên hoạt chất \"streptomycin\"; vế dẫn xuất không có khoá."
+    },
+    {
+      "ma": "300410",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong1-khong-phu-kin:300410:chuaPenicillin=false,tenLoai=penicillin G. Khoá mới chuaPenicillin đã giải quyết THIEU_KHOA ở tiêu đề 3004101 (cổng 0/3 xanh, cổng 5 phủ 5/5, chồng lấn penicillin ↔ streptomycin ở 30041019+30041020 đã khai chongLanVanBan có trích hai nhánh). Còn lại một vector tổng hợp: gốc phân nhóm gồm tiêu đề 3004101 (chuaPenicillin CO) và dòng 30041020 (tenLoai streptomycin), không có con \"Loại khác\" trần ở gốc; bộ vét gán chuaPenicillin=false độc lập với tenLoai=penicillin G (hàng tự mâu thuẫn: tên penicillin G mà khai không chứa penicillin) nên không vào con nào. Không có cách khai đúng chữ biểu để gỡ (bỏ chuaPenicillin khỏi tiêu đề làm vế \"Chứa penicillins hoặc các dẫn xuất của chúng\" không được phủ; thêm KHONG cho 30041020 là điều chữ biểu không nói). Cần người soát quyết định coi vector này là giả của bộ vét."
     }
   ]
 }

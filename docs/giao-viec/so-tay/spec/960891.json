@@ -1,13 +1,33 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "960891",
-  "phien": "zcode-sub:glm-5.3:20261106T1028#soan-960891",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-960891",
   "dong8": {
-    "96089110": { "dieuKienSo": [] },
-    "96089190": { "dieuKienSo": [] }
+    "96089110": {
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "VANG_HOAC_MA_VANG"
+          ]
+        }
+      ]
+    },
+    "96089190": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    { "ma": "96089110", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu (thêm giá trị vàng hoặc mạ vàng)", "ghiChu": "tax.96089110 \"Bằng vàng hoặc mạ vàng\" — tu-vung@2 không có giá trị chatLieu \"vàng\"/\"mạ vàng\" (kim loại chung là RỘNG hơn chữ — ngòi thép cũng là kim loại); không mượn giá trị gần nghĩa, không bỏ vế" },
-    { "ma": "96089190", "loai": "QUYET_DINH", "ghiChu": "tax.96089190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "96089110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96089110 \"Bằng vàng hoặc mạ vàng\" ⇒ vatLieuKhac TRONG [VANG_HOAC_MA_VANG] (khoá mới; chữ biểu chính của dòng là \"Bằng <vật liệu>\")."
+    },
+    {
+      "ma": "96089190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96089190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
   ]
 }

@@ -1,19 +1,44 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "382711",
-  "phien": "mm:minimax-m3:20261105T1709#soan-382711",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-382711",
   "dong8": {
     "38271110": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy biến điện",
+            "bộ phận ngắt mạch"
+          ]
+        },
+        {
+          "fact": "hamLuongDauDauMo",
+          "op": "<",
+          "value": 70,
+          "donVi": "%"
+        }
+      ]
     }
   },
   "dieuKienNut": {},
   "ghiChuSoan": [
     {
       "ma": "38271110",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongDauKhoang",
-      "ghiChu": "tax.38271110 \"có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum\" — cần khoá hàm lượng dầu có nguồn gốc từ dầu mỏ (%, nhỏ hơn 70% tính theo trọng lượng); tu-vung@2 chưa có. Tên hàng: \"Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch\"; công dụng: dùng cho máy biến điện và bộ phận ngắt mạch."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38271110 \"Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và bộ phận ngắt mạch, có hàm lượng nhỏ hơn 70% tính theo trọng lượng là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum (SEN)\" ⇒ tenLoai \"Dầu\" + dungCho [\"máy biến điện\",\"bộ phận ngắt mạch\"] (liệt kê nối \"và\" của hai nơi dùng ⇒ mảng, hoặc) + hamLuongDauDauMo < 70 % (khoá lô 20; \"nhỏ hơn\" = <). Ngoặc \"(máy biến áp và máy biến dòng)\" và \"(SEN)\" là chú thích."
+    },
+    {
+      "ma": "38271110",
+      "loai": "BO_VE",
+      "ve": "được từ các khoáng bi-tum",
+      "lyDo": "Máy tách sai cấu trúc câu giữa \"thu được\": đây là đuôi của đối tượng đo tỉ lệ \"là dầu có nguồn gốc từ dầu mỏ hoặc các loại dầu thu được từ các khoáng bi-tum\", nằm trong cùng ngưỡng hamLuongDauDauMo < 70% (khoá đọc vế đầu); không phải giới hạn độc lập. Khoá chưa đọc riêng vế \"dầu thu được từ khoáng bi-tum\" nên người soát cần xác nhận."
     }
   ]
 }

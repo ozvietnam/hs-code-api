@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1012#soan-940550",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-940550",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,7 +16,15 @@
       "id": "9405501",
       "nguon": "tieuDe.9405501",
       "trich": "9405501 Loại đốt bằng dầu",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "nhienLieu",
+          "op": "TRONG",
+          "value": [
+            "DAU"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -83,13 +91,44 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
-  "ghiChuSoan": [
+  "chongLanTruc": [
     {
-      "ma": "9405501",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "nhienLieu (thêm giá trị DAU)",
-      "ghiChu": "tieuDe.9405501 \"9405501 Loại đốt bằng dầu\" — cần khoá loại nhiên liệu đốt đọc được vế \"đốt\" + \"bằng dầu\"; tu-vung@2 chỉ có nhienLieu [GA, DIEN] (bếp/lò), không có giá trị dầu; không mượn khoá gần nghĩa"
-    },
+      "nhanh": [
+        "9405501",
+        "94055040",
+        "94055050"
+      ],
+      "truc": {
+        "9405501": "DAC_DIEM",
+        "94055040": "TEN_LOAI",
+        "94055050": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Đèn không hoạt động bằng điện này là \"Loại đốt bằng dầu\" (tiêu đề 9405501), hay là \"Đèn bão\" (.40) / \"Đèn thợ mỏ và đèn thợ khai thác đá\" (.50)? Nếu đèn bão hoặc đèn thợ mỏ lại là loại đốt bằng dầu, biểu thuế không nêu nhánh nào được ưu tiên - cần chuyên gia phân xử?",
+      "trich": {
+        "9405501": "Loại đốt bằng dầu",
+        "94055040": "Đèn bão",
+        "94055050": "Đèn thợ mỏ và đèn thợ khai thác đá"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "9405501",
+            "94055040"
+          ],
+          "hang": "Đèn bão đốt bằng dầu hỏa"
+        },
+        {
+          "cap": [
+            "9405501",
+            "94055050"
+          ],
+          "hang": "Đèn thợ mỏ đốt bằng dầu hỏa"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
     {
       "ma": "94055011",
       "loai": "QUYET_DINH",
@@ -109,6 +148,16 @@
       "ma": "94055090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.94055090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "9405501",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9405501 \"Loại đốt bằng dầu\" ⇒ nhienLieu TRONG [DAU] (giá trị DAU mới thêm tu-vung@2, cachDoc đọc \"đốt bằng dầu\")."
+    },
+    {
+      "ma": "9405501",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Tầng 9405501 \"Loại đốt bằng dầu\" (nhienLieu, đặc điểm liệt kê) chồng lấn với .40 \"Đèn bão\" / .50 \"Đèn thợ mỏ và đèn thợ khai thác đá\" (tenLoai): đèn bão / đèn thợ mỏ chạy dầu hỏa là hàng thật thoả cả hai nhánh ⇒ chongLanTruc (DAC_DIEM ↔ TEN_LOAI), phanXu null, không chọn nhánh."
     }
   ]
 }

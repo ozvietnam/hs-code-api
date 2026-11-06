@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1050#soan-293499",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-293499",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -92,7 +92,19 @@
       "hs": "29349950",
       "nguon": "tax.29349950",
       "trich": "29349950 - - - Oxadiazon, với độ tinh khiết tối thiểu là 94%",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Oxadiazon"
+        },
+        {
+          "fact": "doTinhKhiet",
+          "op": ">=",
+          "value": 94,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -125,15 +137,14 @@
       "ghiChu": "tax.29349940: \"3-Azido-3-deoxythymidine\" ⇒ tenLoai TEN_LOAI \"3-Azido-3-deoxythymidine\""
     },
     {
-      "ma": "29349950",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "doTinhKhiet",
-      "ghiChu": "tax.29349950: \"Oxadiazon, với độ tinh khiết tối thiểu là 94%\" — tu-vung@2 không có khoá độ tinh khiết (SO %) ⇒ không biểu diễn được vế ngưỡng; không mượn khoá gần nghĩa"
-    },
-    {
       "ma": "29349990",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.29349990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "29349950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29349950 \"Oxadiazon, với độ tinh khiết tối thiểu là 94%\" ⇒ tenLoai \"Oxadiazon\" + doTinhKhiet >= 94 % (khoá mới lô 20; \"tối thiểu là 94%\" = từ 94% trở lên = >=)."
     }
   ]
 }

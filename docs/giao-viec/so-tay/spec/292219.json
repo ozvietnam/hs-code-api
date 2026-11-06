@@ -1,21 +1,48 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "292219",
-  "phien": "zcode-sub:glm-5.3:20261105T0942#soan-292219",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-292219",
   "dong8": {
     "29221910": {
       "dieuKienSo": [
-        { "op": "HOAC", "phuongAn": [
-          [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ethambutol" } ],
-          [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["muối", "este", "dẫn xuất"] },
-            { "fact": "dungCho", "op": "CONG_DUNG", "value": "Ethambutol" } ]
-        ] }
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Ethambutol"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "muối",
+                  "este",
+                  "dẫn xuất"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Ethambutol"
+              }
+            ]
+          ]
+        }
       ],
       "phanConLai": false
     },
     "29221920": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Rượu n-butyl D-2-Amino" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu n-butyl D-2-Amino"
+        }
       ]
     },
     "29221990": {
@@ -24,8 +51,20 @@
   },
   "dieuKienNut": {},
   "ghiChuSoan": [
-    { "ma": "29221910", "loai": "QUYET_DINH", "ghiChu": "tax.29221910: \"Ethambutol và muối của nó, este và các dẫn xuất khác\" ⇒ theo quy ước \"X và bộ phận/các dạng của nó\": HOAC [[tenLoai \"Ethambutol\"],[tenLoai [muối, este, dẫn xuất] + dungCho \"Ethambutol\"]]; chữ \"khác\" thuộc \"các dẫn xuất khác\" (của Ethambutol), không phải phần còn lại của anh em ⇒ phanConLai false" },
-    { "ma": "29221920", "loai": "QUYET_DINH", "ghiChu": "tax.29221920: \"Rượu n-butyl D-2-Amino (D-2-Amino-n-Butyl-alcohol)\" ⇒ tenLoai TEN_LOAI \"Rượu n-butyl D-2-Amino\"; cụm trong ngoặc là tên gọi khác (PHU), không thành điều kiện" },
-    { "ma": "292219", "loai": "DUNG", "ghiChu": "--goi báo [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:292219:chua-co, để Claude xử lý" }
+    {
+      "ma": "29221910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29221910: \"Ethambutol và muối của nó, este và các dẫn xuất khác\" ⇒ theo quy ước \"X và bộ phận/các dạng của nó\": HOAC [[tenLoai \"Ethambutol\"],[tenLoai [muối, este, dẫn xuất] + dungCho \"Ethambutol\"]]; chữ \"khác\" thuộc \"các dẫn xuất khác\" (của Ethambutol), không phải phần còn lại của anh em ⇒ phanConLai false"
+    },
+    {
+      "ma": "29221920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29221920: \"Rượu n-butyl D-2-Amino (D-2-Amino-n-Butyl-alcohol)\" ⇒ tenLoai TEN_LOAI \"Rượu n-butyl D-2-Amino\"; cụm trong ngoặc là tên gọi khác (PHU), không thành điều kiện"
+    },
+    {
+      "ma": "292219",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 292219-01 KHONG_LECH (1954/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
   ]
 }

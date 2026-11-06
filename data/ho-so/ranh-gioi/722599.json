@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0915#soan-722599",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-722599",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,13 @@
       "hs": "72259910",
       "nguon": "tax.72259910",
       "trich": "72259910 - - - Thép gió",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thép gió"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -30,9 +36,19 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "72259910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72259910 \"Thép gió\" ⇒ tenLoai TEN_LOAI \"Thép gió\" (chữ biểu chỉ nêu TÊN hàng; định nghĩa thép gió ở Chú giải 1(d) Chương 72 không nằm trong chữ biểu của dòng nên không mã hoá thành điều kiện số)."
+    },
+    {
+      "ma": "72259990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72259990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em .10)."
+    },
+    {
       "ma": "722599",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:722599:chua-co, không soạn tiếp"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 722599-01 KHONG_LECH (2453/TB-TCHQ thép hợp kim Ti mạ kẽm-niken, 434/TB-TCHQ thép hợp kim Bo phủ sơn không phải thép gió ⇒ .90): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

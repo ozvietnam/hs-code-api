@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-240319",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-240319",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -16,7 +16,12 @@
       "id": "2403191",
       "nguon": "tieuDe.2403191",
       "trich": "2403191 Đã được đóng gói để bán lẻ",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dongGoiBanLe",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -78,12 +83,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "2403191",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daDongGoiBanLe",
-      "ghiChu": "tieuDe.2403191 \"Đã được đóng gói để bán lẻ\" — cần khoá có/không \"đã được đóng gói để bán lẻ\"; tu-vung@2 chưa có khoá đóng gói/bán lẻ, không bịa điều kiện thay"
-    },
-    {
       "ma": "24031920",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.24031920 \"Lá thuốc lá đã chế biến khác để sản xuất thuốc lá điếu\" — \"khác\" là phần còn lại có tên (khác .1 đã đóng gói bán lẻ) ⇒ phanConLai: true; chỉ ghi điều kiện vế \"để sản xuất thuốc lá điếu\" ⇒ congDung \"sản xuất thuốc lá điếu\""
@@ -92,6 +91,11 @@
       "ma": "24031911",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.24031911 \"Ang Hoon (SEN)\" — tên riêng nguyên văn ⇒ tenLoai \"Ang Hoon\"; \"(SEN)\" là ngoặc chú thích, không điều kiện"
+    },
+    {
+      "ma": "2403191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2403191: \"Đã được đóng gói để bán lẻ\" ⇒ dongGoiBanLe CO (khoá lô 20 thay cho THIEU_KHOA daDongGoiBanLe)"
     }
   ]
 }

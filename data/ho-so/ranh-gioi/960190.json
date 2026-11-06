@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1027#soan-960190",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-960190",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,14 +16,30 @@
       "id": "9601901",
       "nguon": "tieuDe.9601901",
       "trich": "9601901 Xà cừ hoặc đồi mồi đã gia công và các sản phẩm làm từ chúng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "XA_CU_HOAC_DOI_MOI"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "9601902",
       "nguon": "tieuDe.9601902",
       "trich": "9601902 Vỏ điệp giấy đã gia công và các sản phẩm làm từ chúng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "VO_DIEP_GIAY"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -34,12 +50,37 @@
       "trich": "96019011 - - - Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Hộp đựng xì gà hoặc thuốc lá điếu",
-            "bình đựng thuốc lá",
-            "đồ trang trí"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Hộp đựng"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "xì gà",
+                  "thuốc lá điếu"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bình đựng thuốc lá"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đồ trang trí"
+              }
+            ]
           ]
         }
       ],
@@ -91,12 +132,37 @@
       "trich": "96019091 - - - Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Hộp đựng xì gà hoặc thuốc lá điếu",
-            "bình đựng thuốc lá",
-            "đồ trang trí"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Hộp đựng"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "xì gà",
+                  "thuốc lá điếu"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bình đựng thuốc lá"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đồ trang trí"
+              }
+            ]
           ]
         }
       ],
@@ -113,15 +179,13 @@
   "ghiChuSoan": [
     {
       "ma": "9601901",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu (thêm giá trị xà cừ, đồi mồi)",
-      "ghiChu": "tieuDe.9601901 \"Xà cừ hoặc đồi mồi đã gia công và các sản phẩm làm từ chúng\" — tầng phân biệt với 9601902 (vỏ điệp giấy) và 9601909 (loại khác) bằng VẬT LIỆU khắc động vật (xà cừ/đồi mồi/vỏ điệp giấy); tu-vung@2 không có giá trị chatLieu tương ứng, tenLoai thì các dòng con (.11 \"Hộp đựng xì gà…\") không qua được tầng ⇒ dòng không tới được; không mượn giá trị gần nghĩa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9601901 \"Xà cừ hoặc đồi mồi đã gia công và các sản phẩm làm từ chúng\" ⇒ vatLieuKhac TRONG [XA_CU_HOAC_DOI_MOI] (giá trị đọc đúng cụm \"xà cừ hoặc đồi mồi\")."
     },
     {
       "ma": "9601902",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu (thêm giá trị vỏ điệp giấy)",
-      "ghiChu": "tieuDe.9601902 \"Vỏ điệp giấy đã gia công và các sản phẩm làm từ chúng\" — cùng lý do 9601901"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9601902 \"Vỏ điệp giấy đã gia công và các sản phẩm làm từ chúng\" ⇒ vatLieuKhac TRONG [VO_DIEP_GIAY]."
     },
     {
       "ma": "96019012",

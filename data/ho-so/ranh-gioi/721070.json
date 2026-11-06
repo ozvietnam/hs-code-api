@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721070",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721070",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,14 +16,34 @@
       "id": "7210701",
       "nguon": "tieuDe.7210701",
       "trich": "7210701 Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "7210702",
       "nguon": "tieuDe.7210702",
       "trich": "7210702 Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -32,7 +52,15 @@
       "hs": "72107012",
       "nguon": "tax.72107012",
       "trich": "72107012 - - - Được sơn sau khi phủ, mạ kẽm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "SON_SAU_MA_KEM"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -80,9 +108,75 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "7210701",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7210701 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng và chiều dày không quá 1,5 mm\" ⇒ hamLuongCarbon < 0.6 % (\"dưới\" = <) VÀ doDay <= 1.5 mm (\"không quá\" = <=; \"chiều dày\" = doDay)."
+    },
+    {
+      "ma": "7210701",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Chữ giới thiệu thuần: chỉ nêu tên đại lượng (hàm lượng carbon); đại lượng này đã được điều kiện hamLuongCarbon phủ cùng với vế biên số đứng sau, nên bỏ vế không đổi mã 8 số."
+    },
+    {
+      "ma": "7210701",
+      "loai": "BO_VE",
+      "ve": "khối lượng",
+      "lyDo": "Cách đo của hàm lượng: \"tính theo khối lượng\" nói phần trăm theo khối lượng, đã nằm trong đơn vị % của hamLuongCarbon < 0.6; không phải điều kiện riêng nên bỏ vế không đổi mã 8 số."
+    },
+    {
+      "ma": "7210702",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7210702 \"Loại khác, có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ chỉ vế sau \"Loại khác,\" mang điều kiện: hamLuongCarbon < 0.6 %. \"Loại khác\" là chữ phần còn lại, máy phủ định anh em 7210701."
+    },
+    {
+      "ma": "7210702",
+      "loai": "BO_VE",
+      "ve": "có hàm lượng carbon",
+      "lyDo": "Chữ giới thiệu thuần: chỉ nêu tên đại lượng (hàm lượng carbon); đại lượng này đã được điều kiện hamLuongCarbon phủ cùng với vế biên số đứng sau, nên bỏ vế không đổi mã 8 số."
+    },
+    {
+      "ma": "7210709",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7210709 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "72107012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72107012 \"Được sơn sau khi phủ, mạ kẽm\" ⇒ lopMaPhu TRONG [SON_SAU_MA_KEM] (khoá đọc đúng \"được sơn sau khi phủ, mạ kẽm\")."
+    },
+    {
+      "ma": "72107013",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "lopMaPhu (thêm giá trị SON_SAU_MA_NHOM_KEM)",
+      "ghiChu": "tax.72107013 \"Được sơn sau khi phủ, mạ bằng hợp kim nhôm - kẽm\" — lopMaPhu chỉ có SON_SAU_MA_KEM (mạ kẽm), không có giá trị \"được sơn sau khi phủ, mạ hợp kim nhôm - kẽm\"; chữ này không phải TÊN hàng nên không ép vào tenLoai. Bỏ vế làm đổi mã .13 ↔ .19 nên không ghi BO_VE."
+    },
+    {
+      "ma": "72107021",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daSon (đã sơn, quét vécni hoặc phủ plastic)",
+      "ghiChu": "tax.72107021 \"Được sơn\" — không có khoá tu-vung@2 đọc \"được sơn\" (lopMaPhu SON_SAU_MA_KEM là sơn SAU mạ kẽm, hẹp hơn chữ). Bỏ vế làm đổi mã .21 ↔ .29 nên không ghi BO_VE."
+    },
+    {
+      "ma": "72107091",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daSon (đã sơn, quét vécni hoặc phủ plastic)",
+      "ghiChu": "tax.72107091 \"Được sơn\" — như .21; bỏ vế làm đổi mã .91 ↔ .99."
+    },
+    {
+      "ma": "72107019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72107019 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec."
+    },
+    {
       "ma": "721070",
       "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721070hua-co. Không soạn điều kiện cho mã này."
+      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG: .13 (sơn sau mạ hợp kim nhôm - kẽm), .21 và .91 (\"Được sơn\") không có khoá tu-vung@2; bỏ vế làm đổi mã. Không ép cho xanh. Đã khai tiêu đề 7210701/7210702 (hamLuongCarbon, doDay) và .12 (lopMaPhu SON_SAU_MA_KEM)."
+    },
+    {
+      "ma": "721070",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721070-01 KHONG_LECH (6735–6739, 6766, 6785/TB-TCHQ ↔ 7436/TB-TCHQ) và 721070-02 LECH_CHUA_PHAN_XU (7436/TB-TCHQ thép C < 0,6%, dày 1,55 mm xếp .91 dưới \"Loại khác\", đọc thuần chữ biểu thoả 7210702 .21; chưa ai phân xử): soạn theo chữ biểu, không chọn bên, khớp bảng."
     }
   ]
 }

@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721114",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721114",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -44,7 +44,12 @@
       "hs": "72111415",
       "nguon": "tax.72111415",
       "trich": "72111415 - - - - Dạng cuộn để cán lại (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "deCanLai",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -136,6 +141,27 @@
         "72111417"
       ],
       "lyDo": "Chồng lấn thật cùng trục đặc điểm: .14 \"Dạng lượn sóng\" (dangLuonSong CO), .17 \"Tấm phổ dụng (SEN)\" (dangDaiDaiTamPhoDung TAM_PHO_DUNG) — tấm phổ dụng thép dạng lượn sóng thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "72111414",
+        "72111415"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: tax.72111414 \"Dạng lượn sóng\" không loại trừ tax.72111415 \"Dạng cuộn để cán lại (SEN)\" — thép cán nóng thoả cả hai theo chữ biểu; không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "72111415",
+        "72111416"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: tax.72111415 \"Dạng cuộn để cán lại (SEN)\" không loại trừ tax.72111416 \"Dạng đai và dải(SEN)\" — thép cán nóng thoả cả hai theo chữ biểu; không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "72111415",
+        "72111417"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: tax.72111415 \"Dạng cuộn để cán lại (SEN)\" không loại trừ tax.72111417 \"Tấm phổ dụng (SEN)\" — thép cán nóng thoả cả hai theo chữ biểu; không có căn cứ thứ tự"
     }
   ],
   "ghiChuSoan": [
@@ -154,12 +180,6 @@
       "ma": "72111414",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72111414 \"Dạng lượn sóng\" ⇒ dangLuonSong CO"
-    },
-    {
-      "ma": "72111415",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dangCuonDeCanLai",
-      "ghiChu": "tax.72111415 \"Dạng cuộn để cán lại (SEN)\": sen.72111415 định nghĩa \"Dạng cuộn để cán lại là các sản phẩm bán thành phẩm cán nóng, ở dạng cuộn, mặt cắt ngang hình chữ nhật, chiều dày không dưới 1,5 mm, chiều rộng lớn hơn 500 mm và trọng lượng không dưới 500 kg một miếng\" — vế mục đích \"để cán lại\" không đọc được qua tenLoai (bộ đọc bỏ mệnh đề mục đích khỏi tên hàng), \"mặt cắt ngang hình chữ nhật\" không có khoá; bỏ vế làm đổi mã (.15 ↔ .19) ⇒ DỪNG"
     },
     {
       "ma": "72111416",
@@ -190,6 +210,16 @@
       "ma": "72111499",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72111499 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "72111415",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111415 \"Dạng cuộn để cán lại (SEN)\" ⇒ deCanLai CO (khoá tu-vung@2 mới, đọc vế mục đích \"để cán lại\" của chính chữ biểu). Định nghĩa SEN (mặt cắt ngang chữ nhật, dày ≥ 1,5 mm, rộng > 500 mm, ≥ 500 kg) KHÔNG nằm trong chữ biểu của dòng nên không mã hoá; thay ghi chú THIEU_KHOA dangCuonDeCanLai cũ."
+    },
+    {
+      "ma": "721114",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong2-chong-lan-truc:72111414 / 72111415 không sửa được mà không bịa. Khoá deCanLai (tu-vung@2 mới) đã đọc được 72111415 \"Dạng cuộn để cán lại (SEN)\" nên THIEU_KHOA đã giải quyết, nhưng nay bốn dòng 72111414 \"Dạng lượn sóng\", 72111415, 72111416 \"Dạng đai và dải(SEN)\", 72111417 \"Tấm phổ dụng (SEN)\" (cùng tiêu đề 7211141) chồng lấn đôi một theo chữ biểu (mỗi dòng chồng ≥ 3 anh em ⇒ máy coi là chồng lấn TRỤC, không gỡ được bằng chongLanVanBan). Gỡ bằng chongLanTruc đòi viDuHang là hàng THẬT thoả cả hai nhánh khác trục (vd thép cuộn cán nóng vừa dạng lượn sóng vừa để cán lại) — không có hàng thật nên không bịa; chữ biểu không nói dòng nào thắng. Cổng 0 và 3 xanh; cổng 2 đỏ đúng lý do, chờ Claude/người soát phân xử."
     }
   ]
 }

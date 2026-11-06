@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0955#soan-730890",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-730890",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -24,7 +24,7 @@
           "value": "cấu kiện tiền chế"
         },
         {
-          "fact": "daLapRap",
+          "fact": "lapRapBangKhopNoi",
           "op": "CO"
         }
       ],
@@ -51,6 +51,14 @@
             "cống ngầm",
             "đường hầm"
           ]
+        },
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        },
+        {
+          "fact": "uonCong",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -82,6 +90,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Máng đỡ cáp điện"
+        },
+        {
+          "fact": "coLoDuc",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -111,24 +123,12 @@
     {
       "ma": "73089020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73089020: \"Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)\" ⇒ tenLoai \"cấu kiện tiền chế\" + daLapRap CO (\"được lắp ráp\"); \"(SEN)\" là dẫn nguồn"
-    },
-    {
-      "ma": "73089020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "lapRapBangKhopNoi",
-      "ghiChu": "tax.73089020 vế GIỚI HẠN: \"bằng các khớp nối\" — không có khoá tu-vung@2 cho cách lắp ráp bằng khớp nối (daGanDauNoi đọc \"đầu nối\"/\"đầu cắm\", khác \"khớp nối\"); bỏ vế làm cấu kiện tiền chế lắp ráp bằng bu-lông/đinh tán rơi nhầm .20 ⇒ không BO_VE được"
+      "ghiChu": "tax.73089020: \"Dạng cấu kiện tiền chế được lắp ráp bằng các khớp nối (SEN)\" ⇒ tenLoai \"cấu kiện tiền chế\" + lapRapBangKhopNoi CO (khoá lô 20, đọc \"được lắp ráp bằng các khớp nối\"; thay daLapRap cũ vì khoá mới phủ cả hai vế \"được lắp ráp\" và \"bằng các khớp nối\"). Giữ tenLoai để .20 cùng trục tên với .40/.50/.60 (tên rời nhau ⇒ không chồng lấn trục); \"(SEN)\" là dẫn nguồn"
     },
     {
       "ma": "73089040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73089040: \"Tấm hoặc lá mạ kẽm được làm lượn sóng và uốn cong dùng trong ống dẫn, cống ngầm hoặc đường hầm (SEN)\" ⇒ tenLoai [\"Tấm\",\"lá\"] (\"hoặc\" ⇒ mảng) + dungCho [\"ống dẫn\",\"cống ngầm\",\"đường hầm\"] (vế \"dùng trong … hoặc …\" ⇒ mảng); \"mạ kẽm\" thuộc cụm danh từ, cổng 5 không đòi; vế \"được làm lượn sóng và uốn cong\" thiếu khoá (xem ghi chú THIEU_KHOA_TU_VUNG dưới)"
-    },
-    {
-      "ma": "73089040",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "uonCong",
-      "ghiChu": "tax.73089040 vế GIỚI HẠN: \"được làm lượn sóng và uốn cong\" — \"uốn cong\" không có khoá tu-vung@2 (hinhDangCatGocKinh là khoá kính, sai trục); dangLuonSong cachDoc chỉ đọc \"dạng lượn sóng\" — không khớp \"làm lượn sóng\" nguyên văn nên không dùng được ⇒ cả vế không phủ được bằng điều kiện đọc tới"
+      "ghiChu": "tax.73089040: \"Tấm hoặc lá mạ kẽm được làm lượn sóng và uốn cong dùng trong ống dẫn, cống ngầm hoặc đường hầm (SEN)\" ⇒ tenLoai [\"Tấm\",\"lá\"] (\"hoặc\" ⇒ mảng) + dangLuonSong CO (\"được làm lượn sóng\") + uonCong CO (\"uốn cong\") + dungCho [\"ống dẫn\",\"cống ngầm\",\"đường hầm\"] (vế \"dùng trong … hoặc …\" ⇒ mảng); \"mạ kẽm\" thuộc cụm danh từ, cổng 5 không đòi"
     },
     {
       "ma": "73089050",
@@ -138,13 +138,7 @@
     {
       "ma": "73089060",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73089060: \"Máng đỡ cáp điện có lỗ (SEN)\" ⇒ tenLoai \"Máng đỡ cáp điện\""
-    },
-    {
-      "ma": "73089060",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "coLo",
-      "ghiChu": "tax.73089060 vế GIỚI HẠN: \"có lỗ\" (SEN: \"có nhiều lỗ đục trên bề mặt\" — máng đỡ có lỗ thay vì kín) — không có khoá tu-vung@2 cho đặc điểm có lỗ đục; bỏ vế làm máng đỡ không lỗ rơi nhầm .60 ⇒ không BO_VE được"
+      "ghiChu": "tax.73089060: \"Máng đỡ cáp điện có lỗ (SEN)\" ⇒ tenLoai \"Máng đỡ cáp điện\" + coLoDuc CO (\"có lỗ\", khoá lô 20)"
     },
     {
       "ma": "73089092",

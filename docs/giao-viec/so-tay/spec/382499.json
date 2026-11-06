@@ -1,14 +1,160 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "382499",
-  "phien": "mm:minimax-m3:20261105T1709#soan-382499",
-  "dong8": {},
-  "dieuKienNut": {},
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-382499",
+  "dong8": {
+    "38249910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "chất tẩy mực",
+            "chất sửa giấy nến",
+            "chất lỏng dùng để xóa",
+            "băng để xóa"
+          ]
+        },
+        {
+          "fact": "dongGoiBanLe",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": false
+    },
+    "38249930": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bột nhão"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sao in với thành phần cơ bản là gelatin"
+        }
+      ]
+    },
+    "38249940": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hỗn hợp dung môi vô cơ"
+        }
+      ]
+    },
+    "38249950": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu acetone"
+        }
+      ]
+    },
+    "38249960": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chế phẩm hóa chất"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "có chứa bột ngọt"
+        }
+      ]
+    },
+    "38249970": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "chế phẩm hóa chất"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chế biến thực phẩm"
+        }
+      ],
+      "phanConLai": [
+        "38249960"
+      ]
+    },
+    "38249991": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Naphthenic axit",
+            "muối không tan trong nước của chúng",
+            "este của chúng"
+          ]
+        }
+      ]
+    }
+  },
   "ghiChuSoan": [
     {
+      "ma": "38249910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38249910 \"Các chất tẩy mực, chất sửa giấy nến (stencil correctors), chất lỏng dùng để xóa và các băng để xóa khác (trừ những hàng hóa thuộc nhóm 96.12), đã đóng gói để bán lẻ\" ⇒ tenLoai [\"chất tẩy mực\", \"chất sửa giấy nến\", \"chất lỏng dùng để xóa\", \"băng để xóa\"] (bốn tên hàng thay thế nhau, tách mảng; \"(stencil correctors)\" là chữ Anh cùng vế) + dongGoiBanLe CO (\"đã đóng gói để bán lẻ\"). \"khác\" trong \"băng để xóa khác\" chỉ là vế mở của danh sách tên, KHÔNG phải phần còn lại ⇒ phanConLai false."
+    },
+    {
+      "ma": "38249910",
+      "loai": "BO_VE",
+      "ve": "(trừ những hàng hóa thuộc nhóm 96.12)",
+      "lyDo": "Vế loại trừ trỏ sang nhóm 96.12 (ngoài nhóm 3824): hàng thuộc nhóm 96.12 đã bị loại ở cấp nhóm 4 số, không bao giờ là ứng viên của phân nhóm 382499 nên bỏ vế không đổi mã 8 số trong phân nhóm."
+    },
+    {
+      "ma": "38249930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38249930 \"Bột nhão để sao in với thành phần cơ bản là gelatin, ở dạng rời hoặc dùng ngay (ví dụ, bồi trên giấy hoặc trên vật liệu dệt)\" ⇒ tenLoai \"Bột nhão\" + congDung \"sao in với thành phần cơ bản là gelatin\" (chuỗi con nguyên văn của vế giới hạn; chưa có khoá thành phần cơ bản nên ghi nguyên văn vào congDung để không bỏ vế, so chữ tự do — người soát đọc). \"(ví dụ, bồi trên giấy hoặc trên vật liệu dệt)\" là ví dụ minh hoạ ⇒ không thành điều kiện; \"ở dạng rời hoặc dùng ngay\" đi liền vế giới hạn trên."
+    },
+    {
+      "ma": "38249940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38249940 \"Hỗn hợp dung môi vô cơ (SEN)\" ⇒ tenLoai \"Hỗn hợp dung môi vô cơ\" (tên hàng nguyên văn; \"(SEN)\" là ngoặc chú thích nguồn, mô tả SEN không đưa vào điều kiện)."
+    },
+    {
+      "ma": "38249950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38249950 \"Dầu acetone (SEN)\" ⇒ tenLoai \"Dầu acetone\" (tên hàng nguyên văn; mô tả SEN không đưa vào điều kiện)."
+    },
+    {
+      "ma": "38249960",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38249960 \"Các chế phẩm hóa chất có chứa bột ngọt (monosodium glutamate)\" ⇒ tenLoai \"chế phẩm hóa chất\" + tenLoai \"có chứa bột ngọt\" (hai điều kiện cùng khoá = VÀ; chưa có khoá thành phần \"chứa bột ngọt\" nên ghi chuỗi con nguyên văn của chữ biểu, so chữ tự do — người soát đọc). \"(monosodium glutamate)\" là chữ Anh cùng vế."
+    },
+    {
+      "ma": "38249970",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38249970 \"Các chế phẩm hóa chất khác, dùng trong chế biến thực phẩm\" ⇒ tenLoai \"chế phẩm hóa chất\" + congDung \"chế biến thực phẩm\" (\"dùng trong\" = công dụng) + phanConLai [38249960]: \"khác\" là phần còn lại của cùng tên hàng \"Các chế phẩm hóa chất\" đứng trước (.60). Không phủ định .10–.50 vì khác tên hàng."
+    },
+    {
+      "ma": "3824999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3824999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "38249991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38249991 \"Naphthenic axit, muối không tan trong nước của chúng và este của chúng\" ⇒ tenLoai [\"Naphthenic axit\", \"muối không tan trong nước của chúng\", \"este của chúng\"] (ba tên hàng thay thế nhau, nối \"và\", tách mảng; \"không tan trong nước\" và \"của chúng\" là định ngữ riêng của danh từ muối/este nên giữ trong chuỗi con nguyên văn, không tách thành điều kiện chung)."
+    },
+    {
+      "ma": "38249999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38249999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
       "ma": "382499",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:382499:chua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 382499-01 KHONG_LECH (phụ gia, chất phân tán dầu, chất xử lý bề mặt kim loại… ⇒ .99, không thoả .10) và 382499-02 KHONG_LECH (3858/TB-TCHQ bột pha loãng men gốm ⇒ .99, không thoả .30): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

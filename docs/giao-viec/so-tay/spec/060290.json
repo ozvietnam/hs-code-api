@@ -1,17 +1,106 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "060290",
-  "phien": "zcode-sub:glm-5.3:20261105T1630#soan-060290",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-060290",
   "dong8": {
-    "06029010": { "dieuKienSo": [] },
-    "06029020": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cây phong lan giống" } ] },
-    "06029040": { "dieuKienSo": [] },
-    "06029050": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cây cao su giống" } ] },
-    "06029060": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Chồi mọc từ gỗ cây cao su" } ] }
+    "06029010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cành giâm",
+            "cành ghép"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "phong lan"
+        },
+        {
+          "fact": "coRe",
+          "op": "CO"
+        }
+      ]
+    },
+    "06029020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cây phong lan giống"
+        }
+      ]
+    },
+    "06029040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Gốc cây cao su"
+        },
+        {
+          "fact": "coChoi",
+          "op": "CO"
+        }
+      ]
+    },
+    "06029050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cây cao su giống"
+        }
+      ]
+    },
+    "06029060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chồi mọc từ gỗ cây cao su"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "06029010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "coRe", "ghiChu": "tax.06029010: \"Cành giâm và cành ghép phong lan có rễ\" — vế GIỚI HẠN \"có rễ\" không có khoá tu-vung@2; bỏ vế làm đổi mã 8 số (cành không rễ ⇒ .90) nên không BO_VE được" },
-    { "ma": "06029040", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "coChoi", "ghiChu": "tax.06029040: \"Gốc cây cao su có chồi (SEN)\" — vế GIỚI HẠN \"có chồi\" không có khoá tu-vung@2; bỏ vế làm đổi mã 8 số nên không BO_VE được" },
-    { "ma": "06029090", "loai": "QUYET_DINH", "ghiChu": "tax.06029090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "06029010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.06029010 \"Cành giâm và cành ghép phong lan có rễ\" ⇒ tenLoai [\"Cành giâm\",\"cành ghép\"] (hai tên hàng thay thế nối \"và\") + tenLoai \"phong lan\" (định ngữ chung) + coRe CO (khoá lô 20); thay ghi chú THIEU_KHOA coRe."
+    },
+    {
+      "ma": "06029020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.06029020 \"Cây phong lan giống\" ⇒ tenLoai \"Cây phong lan giống\"."
+    },
+    {
+      "ma": "06029040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.06029040 \"Gốc cây cao su có chồi (SEN)\" ⇒ tenLoai \"Gốc cây cao su\" + coChoi CO (khoá lô 20); thay ghi chú THIEU_KHOA coChoi; \"(SEN)\" là nhãn nguồn, không thành điều kiện."
+    },
+    {
+      "ma": "06029050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.06029050 \"Cây cao su giống (SEN)\" ⇒ tenLoai \"Cây cao su giống\"."
+    },
+    {
+      "ma": "06029060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.06029060 \"Chồi mọc từ gỗ cây cao su (SEN)\" ⇒ tenLoai \"Chồi mọc từ gỗ cây cao su\"."
+    },
+    {
+      "ma": "06029090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.06029090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "06029010",
+      "loai": "BO_VE",
+      "ve": "có rễ",
+      "lyDo": "Vế \"có rễ\" ĐÃ được phủ bởi coRe CO và là định ngữ CHUNG của cả hai danh từ đầu (EN cùng dòng \"Rooted orchid cuttings and slips\": \"Rooted\" đứng trước, bổ nghĩa cả cuttings lẫn slips); bộ tách định ngữ kiểu B đọc nhầm đây là định ngữ riêng của danh từ cuối vì EN không có hậu ngữ. Miễn chỉ để qua phép kiểm cấu trúc, không bỏ điều kiện."
+    }
   ]
 }

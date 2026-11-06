@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1705#soan-410190",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-410190",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -17,7 +17,15 @@
       "hs": "41019010",
       "nguon": "tax.41019010",
       "trich": "41019010 - - Đã được chuẩn bị để thuộc",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "giaiDoanThuocDa",
+          "op": "TRONG",
+          "value": [
+            "CHUAN_BI_DE_THUOC"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -31,9 +39,13 @@
   "ghiChuSoan": [
     {
       "ma": "41019010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daThuoc",
-      "ghiChu": "tax.41019010 \"Đã được chuẩn bị để thuộc\" (EN \"Pre-tanned\") — chữ biểu nói hàng đã qua thuộc; tu-vung@2 chưa có khoá nào đọc được chữ \"thuộc\"/\"pre-tanned\" (không mượn khoá gần nghĩa). Đề xuất khoá CO_KHONG \"daThuoc\" (đọc CÓ: \"đã được chuẩn bị để thuộc\" | \"đã thuộc\" | \"pre-tanned\" | \"tanned\"). Cả phân nhóm chờ khoá này."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.41019010 \"Đã được chuẩn bị để thuộc\" ⇒ giaiDoanThuocDa TRONG [CHUAN_BI_DE_THUOC] (khoá liệt kê mới lô 20, giá trị đọc đúng chữ \"đã được chuẩn bị để thuộc\"; EN \"Pre-tanned\"). Khác \"đã thuộc\": chữ biểu nói da CHƯA thuộc nhưng đã chuẩn bị."
+    },
+    {
+      "ma": "41019090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.41019090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
     }
   ]
 }

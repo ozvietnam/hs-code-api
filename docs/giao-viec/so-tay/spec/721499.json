@@ -1,14 +1,71 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "721499",
-  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721499",
-  "dong8": {},
-  "dieuKienNut": {},
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721499",
+  "dong8": {
+    "72149911": { "dieuKienSo": [] },
+    "72149991": { "dieuKienSo": [] },
+    "72149992": { "dieuKienSo": [] },
+    "72149993": { "dieuKienSo": [] }
+  },
+  "dieuKienNut": {
+    "7214991": {
+      "dieuKienSo": [
+        { "fact": "hamLuongCarbon", "op": ">=", "value": 0.6, "donVi": "%" },
+        { "fact": "hinhDangMatCatNgang", "op": "TRONG", "value": ["TRON"], "chieu": "PHAI_KHONG" }
+      ]
+    }
+  },
   "ghiChuSoan": [
+    {
+      "ma": "7214991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7214991 \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng, trừ dạng mặt cắt ngang hình tròn\" ⇒ hamLuongCarbon >= 0.6 % (\"từ … trở lên\" = >=) + hinhDangMatCatNgang TRONG [TRON] chieu PHAI_KHONG (vế \"trừ dạng mặt cắt ngang hình tròn\" — khoá đọc đúng \"mặt cắt ngang hình tròn\")."
+    },
+    {
+      "ma": "7214991",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Chữ giới thiệu thuần: chỉ nêu tên đại lượng (hàm lượng carbon); đại lượng này đã được điều kiện hamLuongCarbon phủ cùng với vế biên số đứng sau, nên bỏ vế không đổi mã 8 số."
+    },
+    {
+      "ma": "7214999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7214999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "72149911",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongMangan",
+      "ghiChu": "tax.72149911 \"Có hàm lượng mangan dưới 1,15% tính theo khối lượng\" — toàn bộ điều kiện của dòng là hàm lượng mangan; tu-vung@2 không có khoá hàm lượng mangan (chỉ hamLuongCarbon/Crom/Niken). Bỏ vế làm đổi mã .11 ↔ .19 nên không ghi BO_VE, không ép."
+    },
+    {
+      "ma": "72149991",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongPhotpho, hamLuongLuuHuynh",
+      "ghiChu": "tax.72149991 \"Có hàm lượng carbon dưới 0,38%, hàm lượng phốt pho không quá 0,05% và hàm lượng lưu huỳnh không quá 0,05% tính theo khối lượng\" — hai vế GIỚI HẠN phốt pho và lưu huỳnh không có khoá tu-vung@2; bỏ chúng làm đổi mã .91 ↔ .99 (hàng carbon < 0,38% nhưng P hoặc S vượt 0,05% thuộc .99). Chưa ghi riêng vế carbon để không ghi điều kiện RỘNG hơn chữ."
+    },
+    {
+      "ma": "72149992",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongMangan",
+      "ghiChu": "tax.72149992 \"Có hàm lượng carbon từ 0,38% trở lên và hàm lượng mangan dưới 1,15% tính theo khối lượng\" — vế mangan không có khoá; bỏ vế làm đổi mã .92 ↔ .99 (và .92 ↔ .93: carbon 0,38%–0,46% thuộc cả hai chỉ nhờ mangan)."
+    },
+    {
+      "ma": "72149993",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongMangan",
+      "ghiChu": "tax.72149993 \"Có hàm lượng carbon từ 0,17% đến dưới 0,46% và hàm lượng mangan từ 1,2% đến dưới 1,65% tính theo khối lượng\" — vế mangan không có khoá; bỏ vế làm đổi mã .93 ↔ .92/.99."
+    },
     {
       "ma": "721499",
       "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721499hua-co. Không soạn điều kiện cho mã này."
+      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG hamLuongMangan / hamLuongPhotpho / hamLuongLuuHuynh: bốn dòng .11, .91, .92, .93 phân biệt nhau và với \"Loại khác\" chỉ nhờ hàm lượng mangan, phốt pho, lưu huỳnh (tu-vung@2 không có). Không ép cho xanh. Đã khai tiêu đề 7214991 (hamLuongCarbon + hinhDangMatCatNgang); .19 và .99 \"Loại khác\" trần không ghi."
+    },
+    {
+      "ma": "721499",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721499-01 KHONG_LECH (3146, 3147/TB-TCHQ carbon ≈ 0,109% và 0,081% ⇒ .91; 3161, 5877, 447/TB-TCHQ carbon ≈ 0,50–0,54% ⇒ .92): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

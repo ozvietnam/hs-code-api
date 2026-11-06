@@ -69,6 +69,14 @@
           "op": "CO"
         },
         {
+          "fact": "phuMangPlasticTrongSuot",
+          "op": "CO"
+        },
+        {
+          "fact": "lotLopNhom",
+          "op": "CO"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "đóng gói thực phẩm dạng lỏng"
@@ -115,6 +123,22 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "48115920",
+        "48115941"
+      ],
+      "lyDo": "Chữ biểu chồng lấn THẬT: .20 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" và .41 (trong tiêu đề 4811594 \"Dạng cuộn có chiều rộng không quá 15 cm …\") \"Tấm phủ sàn\" là hai dòng anh em cùng cấp, không câu nào loại trừ câu kia (một tấm phủ sàn bằng giấy phủ nhựa trong suốt hai mặt, lót nhôm, dạng cuộn hẹp, thoả cả hai chữ); không có căn cứ thứ tự trích được, lúc chạy hỏi người khai."
+    },
+    {
+      "cap": [
+        "48115920",
+        "48115949"
+      ],
+      "lyDo": "Chữ biểu chồng lấn THẬT: .49 \"Loại khác\" (dòng trong tiêu đề 4811594 \"Dạng cuộn có chiều rộng không quá 15 cm …\") chỉ loại trừ anh em .41 \"Tấm phủ sàn\", KHÔNG loại trừ .20 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" đứng cùng cấp với tiêu đề 4811594; một cuộn giấy hẹp phủ nhựa trong suốt hai mặt lót nhôm dùng đóng gói thực phẩm lỏng thoả cả hai dòng; không có căn cứ ưu tiên trích được, lúc chạy hỏi người khai."
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "481159",
@@ -129,18 +153,7 @@
     {
       "ma": "48115920",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.48115920 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" ⇒ daPhu CO (\"đã phủ\") + phuCaHaiMat CO (\"cả hai mặt\") + dungCho \"đóng gói thực phẩm dạng lỏng\" (vế \"sử dụng để …\"). Khoá daPhu/phuCaHaiMat thay cho khoá cũ phuMangPlasticHaiMat đã đề xuất."
-    },
-    {
-      "ma": "48115920",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "mangPlasticTrongSuotVaLotNhom",
-      "ghiChu": "tax.48115920 vế \"bằng màng plastic trong suốt\" và \"được lót trong bằng một lớp nhôm mỏng\" — tu-vung@2 không có khoá nào đọc chất liệu/độ trong của MÀNG PHỦ hay LỚP LÓT: chatLieu chỉ có vị trí CHINH/CACH_DIEN/LOI/THAN/VO/GIA_CO (nói vật liệu làm ra hàng, không nói lớp phủ/lót — dùng sẽ sai trục), lopMaPhu chỉ liệt kê mạ đồng/nhựa flo/kẽm-cromat/thiếc/sơn sau mạ kẽm, dangTamPhienMang nói hình dạng bán thành phẩm plastic. Bỏ hai vế làm điều kiện RỘNG hơn chữ (mọi giấy phủ hai mặt dùng đóng gói thực phẩm lỏng, kể cả không lót nhôm, rơi vào dòng này thay vì Loại khác) ⇒ cong5-ve-gioi-han-bi-bo; không miễn BO_VE vì bỏ vế làm đổi mã 8 số ⇒ DỪNG."
-    },
-    {
-      "ma": "48115920",
-      "loai": "DUNG",
-      "ghiChu": "DUNG: cong5-ve-gioi-han-bi-bo:48115920:bằng màng plastic trong suốt và cong5-ve-gioi-han-bi-bo:48115920:được lót trong bằng một lớp nhôm mỏng — không có khoá từ vựng cho màng phủ/lớp lót, không miễn được bằng BO_VE (bỏ vế làm đổi mã 8 số); xem ghi chú THIEU_KHOA_TU_VUNG ngay trên. Các vế khác của dòng đã phủ bằng daPhu/phuCaHaiMat/dungCho. Hệ quả: cong2-chong-lan:48115920+48115941 và 48115920+48115949 (khong-tat-dinh) chỉ do dòng 48115920 chưa mang hai vế đó nên rộng hơn chữ (floor covering phủ hai mặt cũng thoả) — không khai chongLanVanBan vì không phải chữ biểu tự chồng; sẽ hết khi có khoá cho màng phủ plastic trong suốt và lớp lót nhôm."
+      "ghiChu": "tax.48115920 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" ⇒ daPhu CO (\"đã phủ\") + phuCaHaiMat CO (\"cả hai mặt\") + phuMangPlasticTrongSuot CO (\"bằng màng plastic trong suốt\") + lotLopNhom CO (\"được lót trong bằng một lớp nhôm mỏng\") + dungCho \"đóng gói thực phẩm dạng lỏng\" (vế \"sử dụng để …\"). Hai khoá phuMangPlasticTrongSuot/lotLopNhom (lô 20) thay ghi chú THIEU_KHOA_TU_VUNG và DUNG cũ về màng phủ/lớp lót."
     },
     {
       "ma": "48115941",
@@ -166,6 +179,11 @@
       "ma": "4811599",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.4811599 \"Loại khác\" trần ⇒ không khai dieuKienNut (máy phủ định anh em 4811594)."
+    },
+    {
+      "ma": "48115920",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Sau khi hai vế màng plastic trong suốt và lớp lót nhôm đã có khoá, 48115920 vẫn thoả cùng lúc với 48115941 và 48115949 (cong2-chong-lan:khong-tat-dinh) vì chữ biểu không loại trừ: đã khai chongLanVanBan hai cặp, trích nguyên văn cả hai nhánh, đối chiếu theo mẫu 320810 (\"Loại khác\" trong tầng chỉ loại trừ anh em cùng tầng)."
     }
   ]
 }

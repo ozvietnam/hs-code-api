@@ -1,18 +1,80 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "843790",
-  "phien": "zcode-sub:glm-5.3:20261106T1000#soan-843790",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-843790",
   "dong8": {
-    "84379011": { "dieuKienSo": [] },
-    "84379019": { "dieuKienSo": [] },
-    "84379021": { "dieuKienSo": [] },
-    "84379029": { "dieuKienSo": [] }
+    "84379011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8437.10"
+        }
+      ]
+    },
+    "84379021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8437.10"
+        }
+      ]
+    }
   },
   "dieuKienNut": {
-    "8437901": { "dieuKienSo": [] },
-    "8437902": { "dieuKienSo": [] }
+    "8437901": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "8437902": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "843790", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG theo QUY-TRINH-SO-HOA mục 2.2/5; không soạn điều kiện" }
+    {
+      "ma": "8437901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8437901 \"Của máy hoạt động bằng điện\" ⇒ hoatDongBangDien CO (cách đọc \"hoạt động bằng điện\"); \"Của máy\" là danh từ đầu giới thiệu đích (bộ phận của máy)."
+    },
+    {
+      "ma": "8437902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8437902 \"Của máy không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG (chữ \"không … bằng điện\" ⇒ op KHONG)."
+    },
+    {
+      "ma": "84379011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84379011 \"Của máy thuộc phân nhóm 8437.10\" ⇒ dungCho \"8437.10\" (cùng mẫu 843290: đích là mã phân nhóm nêu trong chữ biểu)."
+    },
+    {
+      "ma": "84379021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84379021 \"Của máy thuộc phân nhóm 8437.10\" ⇒ dungCho \"8437.10\"; anh em dưới tiêu đề 8437902 nên phân biệt với .11 bằng điện/không điện của tiêu đề."
+    },
+    {
+      "ma": "84379019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84379019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "84379029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84379029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "843790",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 843790-01 KHONG_LECH (11955/TCHQ-TXNK): soạn theo chữ biểu, khớp bảng."
+    }
   ]
 }

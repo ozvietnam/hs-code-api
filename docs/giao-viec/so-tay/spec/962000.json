@@ -1,17 +1,62 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "962000",
-  "phien": "zcode-sub:glm-5.3:20261106T1034#soan-962000",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-962000",
   "dong8": {
-    "96200010": { "dieuKienSo": [ { "fact": "chatLieu", "op": "LA", "value": "plastic" } ] },
-    "96200020": { "dieuKienSo": [] },
-    "96200030": { "dieuKienSo": [ { "fact": "chatLieu", "op": "LA", "value": "sắt thép" } ] },
-    "96200040": { "dieuKienSo": [ { "fact": "chatLieu", "op": "LA", "value": "nhôm" } ] },
-    "96200050": { "dieuKienSo": [ { "fact": "chatLieu", "op": "LA", "value": "gỗ" } ] },
-    "96200090": { "dieuKienSo": [] }
+    "96200010": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ]
+    },
+    "96200020": {
+      "dieuKienSo": []
+    },
+    "96200030": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
+      ]
+    },
+    "96200040": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "nhôm"
+        }
+      ]
+    },
+    "96200050": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "gỗ"
+        }
+      ]
+    },
+    "96200090": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    { "ma": "96200020", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu (thêm giá trị carbon và graphit)", "ghiChu": "tax.96200020 \"Bằng carbon và graphit\" — tu-vung@2 không có giá trị chatLieu carbon/graphit; không mượn gần nghĩa, không bỏ vế vì bỏ làm đổi mã" },
-    { "ma": "96200090", "loai": "QUYET_DINH", "ghiChu": "tax.96200090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "96200020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chatLieu (thêm giá trị carbon và graphit) — hoặc một khoá vật liệu bao trùm plastic, sắt thép, nhôm, gỗ, carbon/graphit",
+      "ghiChu": "tax.96200020 \"Bằng carbon và graphit\" — vatLieuKhac CARBON_GRAPHIT đọc đúng chữ nhưng anh em .10/.30/.40/.50 \"Bằng plastic/sắt và thép/nhôm/gỗ\" dùng chatLieu (khoá @1 đóng băng, không có carbon/graphit): hai khoá khác thang cho cùng một ý (vật liệu) ⇒ cổng 2 báo cong2-chong-lan .20↔.10/.30/.40/.50 (vector plastic + CARBON_GRAPHIT) và cong2-chong-lan-truc; không có hàng thật vừa bằng plastic vừa bằng carbon để khai chongLanTruc, chongLanVanBan không dùng cho chồng lấn do cách biểu diễn; không bỏ vế vì bỏ làm đổi mã .20/.90. DỪNG: cần một khoá vật liệu chung (thang đồng nhất) cho cả năm dòng."
+    },
+    {
+      "ma": "96200090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96200090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
   ]
 }

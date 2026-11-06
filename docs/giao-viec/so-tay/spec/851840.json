@@ -1,20 +1,85 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "851840",
-  "phien": "zcode-sub:glm-5.3:20261105T1035#soan-851840",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-851840",
   "dong8": {
-    "85184020": { "dieuKienSo": [
-      {"fact": "congDung", "op": "CONG_DUNG", "value": "bộ lặp"},
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": "điện thoại hữu tuyến"}
-    ] },
-    "85184030": { "dieuKienSo": [] },
-    "85184040": { "dieuKienSo": [] },
-    "85184090": { "dieuKienSo": [] }
+    "85184020": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "bộ lặp"
+        },
+        {
+          "fact": "choDienThoaiHuuTuyen",
+          "op": "CO"
+        }
+      ]
+    },
+    "85184030": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "bộ lặp"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "điện thoại"
+        },
+        {
+          "fact": "choDienThoaiHuuTuyen",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "85184040": {
+      "dieuKienSo": [
+        {
+          "fact": "soDuongTinHieuDauVao",
+          "op": ">=",
+          "value": 6,
+          "donVi": "đường tín hiệu đầu vào"
+        }
+      ]
+    },
+    "85184090": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    {"ma": "85184020", "loai": "QUYET_DINH", "ghiChu": "tax.85184020 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại hữu tuyến\" ⇒ congDung \"bộ lặp\" + dungCho \"điện thoại hữu tuyến\"; ngoặc \"(nhắc lại)\" là PHU"},
-    {"ma": "85184030", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "phuongThucTruyenDan", "ghiChu": "tax.85184030 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến\" — vế loại trừ \"trừ điện thoại hữu tuyến\" không có op phủ định cho LIET_KE (cần KHONG_TRONG [HUU_TUYEN]); tiền lệ 07119050 cùng lỗi"},
-    {"ma": "85184040", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "soDuongTinHieuDauVao", "ghiChu": "tax.85184040 \"… có từ 6 đường tín hiệu đầu vào trở lên …\" — không có khoá đếm \"đường tín hiệu đầu vào\" (soLoi là số lõi dây); vế \"có hoặc không kết hợp…\" là dạng \"có hoặc không\" (cổng không đòi tách)"},
-    {"ma": "85184090", "loai": "QUYET_DINH", "ghiChu": "tax.85184090 \"Loại khác\" trần ⇒ không điều kiện"}
+    {
+      "ma": "85184020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85184020 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại hữu tuyến\": congDung \"bộ lặp\" + choDienThoaiHuuTuyen CO (cùng khoá với .30 để hai dòng loại trừ nhau; thay dungCho \"điện thoại hữu tuyến\" cũ); ngoặc \"(nhắc lại)\" là PHU"
+    },
+    {
+      "ma": "85184030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85184030 \"Sử dụng như bộ lặp (nhắc lại) trong điện thoại, trừ điện thoại hữu tuyến\": congDung \"bộ lặp\" + dungCho \"điện thoại\" + choDienThoaiHuuTuyen KHONG (khoá lô 20, cách đọc KHÔNG: \"trừ điện thoại hữu tuyến\")"
+    },
+    {
+      "ma": "85184040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85184040 \"Loại khác, có từ 6 đường tín hiệu đầu vào trở lên, …\": chỉ điều kiện của vế ⇒ soDuongTinHieuDauVao >= 6 (khoá lô 20; \"từ … trở lên\" = >=). Vế \"có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất\" là \"có hoặc không\" ⇒ BO_VE (không giới hạn hàng)"
+    },
+    {
+      "ma": "85184090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85184090 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "85184040",
+      "loai": "BO_VE",
+      "ve": "không kết hợp với phần tử",
+      "lyDo": "Cụm \"có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất\" (EN \"with or without elements for capacity amplifiers\") nói cả hai trường hợp đều thuộc dòng, không giới hạn hàng; bỏ vế không đổi mã 8 số"
+    },
+    {
+      "ma": "85184040",
+      "loai": "BO_VE",
+      "ve": "dùng cho khuếch đại công suất",
+      "lyDo": "Cụm \"có hoặc không kết hợp với phần tử dùng cho khuếch đại công suất\" (EN \"with or without elements for capacity amplifiers\") nói cả hai trường hợp đều thuộc dòng, không giới hạn hàng; bỏ vế không đổi mã 8 số"
+    }
   ]
 }

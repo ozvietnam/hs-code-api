@@ -1,13 +1,33 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "961210",
-  "phien": "zcode-sub:glm-5.3:20261106T1029#soan-961210",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-961210",
   "dong8": {
-    "96121010": { "dieuKienSo": [] },
-    "96121090": { "dieuKienSo": [] }
+    "96121010": {
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "VAT_LIEU_DET"
+          ]
+        }
+      ]
+    },
+    "96121090": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    { "ma": "96121010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu (thêm giá trị đọc được \"vật liệu dệt\")", "ghiChu": "tax.96121010 \"Bằng vật liệu dệt\" — giá trị chatLieu \"vải dệt\" (nhãn \"vải dệt\", đọc rỗng) không phải chuỗi con của chữ \"vật liệu dệt\" ⇒ cong5-ve-gioi-han-bi-bo; không mượn giá trị gần nghĩa (cùng dạng 940599 .10)" },
-    { "ma": "96121090", "loai": "QUYET_DINH", "ghiChu": "tax.96121090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "96121010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96121010 \"Bằng vật liệu dệt\" ⇒ vatLieuKhac TRONG [VAT_LIEU_DET] (khoá mới đọc \"bằng vật liệu dệt\"; chữ biểu chính của dòng là \"Bằng <vật liệu>\")."
+    },
+    {
+      "ma": "96121090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96121090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
   ]
 }

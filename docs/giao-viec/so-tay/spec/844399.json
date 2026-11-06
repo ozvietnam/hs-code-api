@@ -1,27 +1,101 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "844399",
-  "phien": "zcode-sub:glm-5.3:20261106T1000#soan-844399",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-844399",
   "dong8": {
-    "84439910": { "dieuKienSo": [ { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy in kiểu lưới" }, { "fact": "congDung", "op": "CONG_DUNG", "value": ["tấm mạch in", "tấm dây in"] } ] },
-    "84439920": { "dieuKienSo": [] },
-    "84439930": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Bộ phận cung cấp giấy", "bộ phận sắp xếp giấy"] } ] },
-    "84439990": { "dieuKienSo": [] }
+    "84439910": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy in kiểu lưới"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in"
+          ]
+        }
+      ]
+    },
+    "84439920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hộp mực in"
+        },
+        {
+          "fact": "coMucIn",
+          "op": "CO"
+        }
+      ]
+    },
+    "84439930": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bộ phận cung cấp giấy",
+            "bộ phận sắp xếp giấy"
+          ]
+        }
+      ]
+    },
+    "84439990": {
+      "dieuKienSo": []
+    }
   },
   "chongLanTruc": [
     {
-      "nhanh": ["84439910", "84439930"],
-      "truc": { "84439910": "CONG_DUNG", "84439930": "TEN_LOAI" },
-      "cauHoiPhanBiet": "Bộ phận này là bộ phận cấp giấy hoặc sắp xếp giấy của máy in nói chung (84439930) hay là bộ phận CỦA máy in kiểu lưới dùng để sản xuất tấm mạch in hoặc tấm dây in (84439910)?",
-      "trich": { "84439910": "Của máy in kiểu lưới dùng để sản xuất tấm mạch in hoặc tấm dây in", "84439930": "Bộ phận cung cấp giấy; bộ phận sắp xếp giấy" },
+      "nhanh": [
+        "84439910",
+        "84439920",
+        "84439930"
+      ],
+      "truc": {
+        "84439910": "CONG_DUNG",
+        "84439920": "TEN_LOAI",
+        "84439930": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng này là \"Hộp mực in đã có mực in\" (84439920), hay \"Bộ phận cung cấp giấy; bộ phận sắp xếp giấy\" (84439930), hay là bộ phận CỦA máy in kiểu lưới dùng để sản xuất tấm mạch in hoặc tấm dây in (84439910)?",
+      "trich": {
+        "84439910": "Của máy in kiểu lưới dùng để sản xuất tấm mạch in hoặc tấm dây in",
+        "84439920": "Hộp mực in đã có mực in",
+        "84439930": "Bộ phận cung cấp giấy; bộ phận sắp xếp giấy"
+      },
       "viDuHang": [
-        { "cap": ["84439910", "84439930"], "hang": "Bộ phận cung cấp giấy dùng cho máy in kiểu lưới, dùng để sản xuất tấm mạch in" }
+        {
+          "cap": [
+            "84439910",
+            "84439930"
+          ],
+          "hang": "Bộ phận cung cấp giấy dùng cho máy in kiểu lưới, dùng để sản xuất tấm mạch in"
+        },
+        {
+          "cap": [
+            "84439910",
+            "84439920"
+          ],
+          "hang": "Hộp mực in đã có mực in dùng cho máy in kiểu lưới để sản xuất tấm mạch in"
+        }
       ],
       "phanXu": null
     }
   ],
   "ghiChuSoan": [
-    { "ma": "84439920", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "coMucIn", "ghiChu": "tax.84439920: \"Hộp mực in đã có mực in\" — vế \"có mực in\" không có khoá CO_KHONG trong tu-vung@2; bỏ vế làm đổi mã (.20 ⇔ .90) nên không BO_VE được" },
-    { "ma": "84439910", "loai": "QUYET_DINH", "ghiChu": "tax.84439910: \"Của máy in kiểu lưới dùng để sản xuất tấm mạch in hoặc tấm dây in\" — đích lồng: dungCho \"máy in kiểu lưới\" (vế 'Của máy in kiểu lưới') AND congDung [\"sản xuất tấm mạch in\",\"sản xuất tấm dây in\"] (vế công dụng của máy, bộ phận kế thừa qua đích); không dùng laBoPhan CO vì trích không có chữ đọc của khoá" }
+    {
+      "ma": "84439910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84439910: \"Của máy in kiểu lưới dùng để sản xuất tấm mạch in hoặc tấm dây in\" — đích lồng: dungCho \"máy in kiểu lưới\" (vế 'Của máy in kiểu lưới') AND congDung [\"sản xuất tấm mạch in\",\"sản xuất tấm dây in\"] (vế công dụng của máy, bộ phận kế thừa qua đích); không dùng laBoPhan CO vì trích không có chữ đọc của khoá"
+    },
+    {
+      "ma": "84439920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84439920 \"Hộp mực in đã có mực in\" ⇒ tenLoai \"Hộp mực in\" + coMucIn CO (khoá lô 20, đọc \"đã có mực in\"); thay THIEU_KHOA_TU_VUNG coMucIn. tenLoai \"Hộp mực in\" là danh từ đầu nguyên văn, đặt để phân biệt với .30 (cùng khoá tenLoai); cụm chongLanTruc mở rộng sang .20 vì .10 (đích dùng cho máy in kiểu lưới) chồng .20 theo trục công dụng↔tên (hàng ví dụ: hộp mực in đã nạp mực dùng cho máy in kiểu lưới sản xuất tấm mạch in — người soát đọc lại tính thật của hàng)."
+    }
   ]
 }

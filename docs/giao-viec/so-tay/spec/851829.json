@@ -1,20 +1,59 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "851829",
-  "phien": "zcode-sub:glm-5.3:20261105T1030#soan-851829",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-851829",
   "dong8": {
-    "85182920": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Loa"},
-      {"fact": "tanSo", "op": ">=", "value": 300, "donVi": "Hz"},
-      {"fact": "tanSo", "op": "<=", "value": 3400, "donVi": "Hz"},
-      {"fact": "duongKinh", "op": "<=", "value": 50, "donVi": "mm"},
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": "viễn thông"}
-    ] },
-    "85182990": { "dieuKienSo": [] }
+    "85182920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Loa"
+        },
+        {
+          "fact": "tanSo",
+          "op": ">=",
+          "value": 300,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "tanSo",
+          "op": "<=",
+          "value": 3400,
+          "donVi": "Hz"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "viễn thông"
+        }
+      ]
+    },
+    "85182990": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    {"ma": "851829", "loai": "DUNG", "ghiChu": "Gói soạn ghi [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:851829:chua-co — chờ Claude lập mục bảng rồi soạn lại theo chữ biểu"},
-    {"ma": "85182920", "loai": "QUYET_DINH", "ghiChu": "tax.85182920 \"Loa, không có vỏ, có dải tần số 300 Hz đến 3.400 Hz, với đường kính không quá 50 mm, dùng trong viễn thông\" ⇒ tenLoai \"Loa\" + tanSo >= 300 và <= 3400 Hz (một vế biên số, máy ghép — 85181011) + duongKinh <= 50 mm + dungCho \"viễn thông\"; \"không có vỏ\" là vế phủ định vỏ loa (PN6 851829 đã định nghĩa \"not mounted in their enclosures\"), không ghi riêng"},
-    {"ma": "85182990", "loai": "QUYET_DINH", "ghiChu": "tax.85182990 \"Loại khác\" trần ⇒ không điều kiện"}
+    {
+      "ma": "85182920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85182920 \"Loa, không có vỏ, có dải tần số 300 Hz đến 3.400 Hz, với đường kính không quá 50 mm, dùng trong viễn thông\" ⇒ tenLoai \"Loa\" + tanSo >= 300 và <= 3400 Hz (một vế biên số, máy ghép — 85181011) + duongKinh <= 50 mm + dungCho \"viễn thông\"; \"không có vỏ\" là vế phủ định vỏ loa (PN6 851829 đã định nghĩa \"not mounted in their enclosures\"), không ghi riêng"
+    },
+    {
+      "ma": "85182990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85182990 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "851829",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 851829-01 KHONG_LECH, 851829-02 LECH_CHUA_PHAN_XU (7239/TB-TCHQ, 2491/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
   ]
 }

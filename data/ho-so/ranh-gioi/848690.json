@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T0920#soan-848690",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-848690",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -224,15 +224,57 @@
       "hs": "84869012",
       "nguon": "tax.84869012",
       "trich": "84869012 - - - Của thiết bị làm khô bằng phương pháp quay dùng cho quá trình gia công tấm bản mỏng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị làm khô"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "QUAY"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "quá trình gia công tấm bản mỏng"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84869013",
       "nguon": "tax.84869013",
       "trich": "84869013 - - - Của máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy công cụ"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "gia công mọi vật liệu bằng cách bóc tách vật liệu"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "TIA_LASER_HOAC_TIA_SANG_KHAC"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất tấm bán dẫn mỏng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
     },
     {
       "hs": "84869014",
@@ -371,15 +413,123 @@
       "hs": "84869022",
       "nguon": "tax.84869022",
       "trich": "84869022 - - - Của máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; của thiết bị để tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng bằng phương pháp quay",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy kết tủa epitaxi"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "tạo lớp phủ nhũ tương cảm quang in ảnh"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "QUAY"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84869023",
       "nguon": "tax.84869023",
-      "trich": "84869023 - - - Của máy cấy ghép ion cho quá trình xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ lên tấm bán dẫn mỏng; của thiết bị để lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác ",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "trich": "Của máy cấy ghép ion cho … xử lý vật liệu bán dẫn; của thiết bị tạo kết tủa vật lý bằng phương pháp phun phủ …; của thiết bị … lắng đọng vật lý cho sản xuất bán dẫn; của thiết bị ghi trực tiếp lên tấm bán dẫn mỏng, thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại và thiết bị in ly tô khác",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "máy cấy ghép ion"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "xử lý vật liệu bán dẫn"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị tạo kết tủa vật lý"
+              },
+              {
+                "fact": "nguyenLyXuLy",
+                "op": "TRONG",
+                "value": [
+                  "PHUN_PHU"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tấm bán dẫn mỏng"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "thiết bị"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "lắng đọng vật lý"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "sản xuất bán dẫn"
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "thiết bị ghi trực tiếp lên tấm bán dẫn mỏng",
+                  "thiết bị hiệu chỉnh vị trí mẫu theo bước và lặp lại",
+                  "thiết bị in ly tô"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
     },
     {
       "hs": "84869024",
@@ -705,7 +855,33 @@
       "hs": "84869041",
       "nguon": "tax.84869041",
       "trich": "84869041 - - - Của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy phay"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "CHUM_TIA_ION_HOI_TU"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất",
+            "sửa chữa"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "màn và lưới quang của các định dạng trên linh kiện bán dẫn"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -861,33 +1037,28 @@
   "ghiChuSoan": [
     {
       "ma": "84869012",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapCheTao",
-      "ghiChu": "tax.84869012 \"Của thiết bị làm khô bằng phương pháp quay…\" — không có khoá/giá trị cho \"bằng phương pháp quay\" trong tu-vung@2"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84869012 \"bằng phương pháp quay\" ⇒ nguyenLyXuLy TRONG [QUAY] (khoá lô 20); \"dùng cho quá trình gia công tấm bản mỏng\" ⇒ dungCho"
     },
     {
       "ma": "84869013",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapGiaCong",
-      "ghiChu": "tax.84869013 \"…bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông…\" — không có khoá cho quy trình gia công tia laser/tia sáng/phô-tông"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84869013 \"bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông\" ⇒ nguyenLyXuLy TRONG [TIA_LASER_HOAC_TIA_SANG_KHAC] (khoá lô 20, đọc đúng cụm); \"khác\" thuộc cụm \"tia sáng khác\", không phải phần còn lại ⇒ phanConLai false"
     },
     {
       "ma": "84869022",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapCheTao",
-      "ghiChu": "tax.84869022 \"…bằng phương pháp quay\" — không có khoá/giá trị (như 84862012)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84869022 hai hàng nối \";\" ⇒ HOAC: (1) máy kết tủa epitaxi dùng cho các tấm bán dẫn mỏng; (2) thiết bị tạo lớp phủ nhũ tương cảm quang in ảnh lên các tấm bán dẫn mỏng \"bằng phương pháp quay\" ⇒ nguyenLyXuLy QUAY (khoá lô 20)"
     },
     {
       "ma": "84869023",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapCheTao",
-      "ghiChu": "tax.84869023 \"…bằng phương pháp phun phủ…\" — không có khoá/giá trị (như 84862013)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84869023 bốn hàng nối \";\" ⇒ HOAC bốn phương án: (1) máy cấy ghép ion cho xử lý vật liệu bán dẫn; (2) thiết bị tạo kết tủa vật lý \"bằng phương pháp phun phủ\" ⇒ nguyenLyXuLy PHUN_PHU + lên tấm bán dẫn mỏng; (3) thiết bị lắng đọng vật lý cho sản xuất bán dẫn; (4) liệt kê ba tên thiết bị (ghi trực tiếp, hiệu chỉnh vị trí mẫu theo bước và lặp lại, in ly tô khác) ⇒ dungCho mảng. \"in ly tô khác\" nằm trong liệt kê, không phải phần còn lại ⇒ phanConLai false"
     },
     {
       "ma": "84869041",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapGiaCong",
-      "ghiChu": "tax.84869041 \"Của máy phay bằng chùm tia ion hội tụ…\" — không có khoá cho gia công chùm tia ion hội tụ (như 84864010)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84869041 \"Của máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang …\": \"bằng chùm tia ion hội tụ\" ⇒ nguyenLyXuLy TRONG [CHUM_TIA_ION_HOI_TU] (khoá lô 20); \"sản xuất hoặc sửa chữa\" ⇒ congDung mảng (hoặc); đối tượng \"màn và lưới quang …\" ⇒ congDung riêng (định ngữ chung)"
     },
     {
       "ma": "84869014",

@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1547#soan-320890",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-320890",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -16,14 +16,44 @@
       "id": "3208901",
       "nguon": "tieuDe.3208901",
       "trich": "3208901 Vecni (kể cả dầu bóng), loại chịu được nhiệt trên 100°C",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Vecni",
+            "dầu bóng"
+          ]
+        },
+        {
+          "fact": "nhietDoChiuNhiet",
+          "op": ">",
+          "value": 100,
+          "donVi": "°C"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "3208902",
       "nguon": "tieuDe.3208902",
       "trich": "3208902 Vecni (kể cả dầu bóng), loại chịu nhiệt không quá 100°C",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Vecni",
+            "dầu bóng"
+          ]
+        },
+        {
+          "fact": "nhietDoChiuNhiet",
+          "op": "<=",
+          "value": 100,
+          "donVi": "°C"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -103,18 +133,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "3208901",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "nhietDoChiuNhiet",
-      "ghiChu": "tieuDe.3208901 \"Vecni (kể cả dầu bóng), loại chịu được nhiệt trên 100°C\" (EN \"Varnishes (including lacquers), exceeding 100 oC heat resistance:\") — vế GIỚI HẠN \"được nhiệt trên 100°C\" cần khoá nhiệt độ chịu nhiệt (đơn vị °C, biên >); tu-vung@2 chưa có khoá nhiệt độ ⇒ để trống dieuKienSo, không mượn khoá số khác đơn vị."
-    },
-    {
-      "ma": "3208902",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "nhietDoChiuNhiet",
-      "ghiChu": "tieuDe.3208902 \"Vecni (kể cả dầu bóng), loại chịu nhiệt không quá 100°C\" (EN \"Varnishes (including lacquers), not exceeding 100 oC heat resistance:\") — cần khoá nhiệt độ chịu nhiệt (đơn vị °C, biên <=); tu-vung@2 chưa có khoá nhiệt độ ⇒ để trống dieuKienSo. Hai tiêu đề 3208901/3208902 chỉ khác nhau ở ngưỡng nhiệt nên khi thiếu khoá này hai nhánh .11 và .21 không phân biệt được."
-    },
-    {
       "ma": "32089011",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.32089011 \"Dùng trong nha khoa (SEN)\" (EN \"Of a kind used in dentistry\") ⇒ dungCho CONG_DUNG \"nha khoa\" + dungTrongNhaKhoa CO."
@@ -128,6 +146,26 @@
       "ma": "32089030",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.32089030 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)\" (EN \"Anti-fouling and/or anti-corrosive paints for ships' hulls\") ⇒ dungCho CONG_DUNG \"vỏ tàu thủy\" + sonChongHaHoacChongAnMonVoTau CO."
+    },
+    {
+      "ma": "320890",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 320890-01 LECH_CHUA_PHAN_XU (1823/TB-TCHQ) và 320890-02 KHONG_LECH (4942/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "3208901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3208901 \"Vecni (kể cả dầu bóng), loại chịu được nhiệt trên 100°C\" ⇒ tenLoai [\"Vecni\",\"dầu bóng\"] (\"kể cả dầu bóng\" = hoặc) + nhietDoChiuNhiet > 100 °C (khoá mới lô 20; \"trên\" = >). Có tenLoai để dòng \"Loại khác\" gốc 32089090 (không phải vecni) còn tới được: chỉ nhiệt độ thì >100 và <=100 phủ kín mọi giá trị (cong2-dong-khong-toi-duoc)."
+    },
+    {
+      "ma": "3208902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3208902 \"Vecni (kể cả dầu bóng), loại chịu nhiệt không quá 100°C\" ⇒ tenLoai [\"Vecni\",\"dầu bóng\"] + nhietDoChiuNhiet <= 100 °C (khoá mới lô 20; \"không quá\" = <=). Hai tiêu đề 3208901/3208902 cùng khoá nhietDoChiuNhiet, cùng biên 100 (thang đo đồng nhất)."
+    },
+    {
+      "ma": "320890",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong2-chong-lan-truc:32089030:3208901,3208902 (kèm cong2-chong-lan 32089019+32089030, 32089029+32089030). Khoá nhietDoChiuNhiet đã giải quyết THIEU_KHOA ở hai tiêu đề (cổng 0/3 xanh, cổng 5 phủ 4/4, 32089090 nay tới được nhờ tenLoai Vecni). Còn lại chồng lấn TRỤC: hai tiêu đề chia theo TÊN Vecni (+ nhiệt độ) cạnh dòng 32089030 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy\" chia theo CÔNG DỤNG vỏ tàu thủy. Không khai được chongLanTruc vì cần viDuHang là một hàng THẬT thoả cả hai nhánh (vecni chống hà/chống ăn mòn dùng sơn vỏ tàu thủy); precedents.json 32089019/32089090 không có hàng như vậy ⇒ không bịa. Không đổi khoá .30 sang tenLoai để né (đó là đổi khoá chỉ để qua cổng)."
     }
   ]
 }

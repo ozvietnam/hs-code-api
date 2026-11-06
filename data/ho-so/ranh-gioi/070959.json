@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1529#soan-070959",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-070959",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -22,6 +22,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Nấm cục"
+        },
+        {
+          "fact": "thuocChiTuber",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -37,9 +41,8 @@
   "ghiChuSoan": [
     {
       "ma": "07095920",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "laGiongTuber",
-      "ghiChu": "tax.07095920 \"Nấm cục trừ loại Tuber spp.\" — vế GIỚI HẠN \"trừ loại Tuber spp.\" không có khoá trong tu-vung@2 (không có khoá giống/loài sinh vật); bỏ vế làm đổi mã (nấm cục Tuber spp. rơi .90 thay .20) ⇒ DỪNG."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.07095920 \"Nấm cục trừ loại Tuber spp.\" ⇒ tenLoai \"Nấm cục\" + thuocChiTuber KHONG (khoá lô 20, cachDocKhong khớp nguyên cụm \"trừ loại Tuber spp.\"); thay ghi chú THIEU_KHOA laGiongTuber."
     },
     {
       "ma": "07095990",

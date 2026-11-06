@@ -1,18 +1,62 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "240319",
-  "phien": "zcode-sub:glm-5.3:20261105T1542#soan-240319",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-240319",
   "dong8": {
-    "24031911": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ang Hoon" } ] },
-    "24031920": { "dieuKienSo": [ { "fact": "congDung", "op": "CONG_DUNG", "value": "sản xuất thuốc lá điếu" } ], "phanConLai": true },
-    "24031991": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ang Hoon" } ] }
+    "24031911": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ang Hoon"
+        }
+      ]
+    },
+    "24031920": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất thuốc lá điếu"
+        }
+      ],
+      "phanConLai": true
+    },
+    "24031991": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ang Hoon"
+        }
+      ]
+    }
   },
   "dieuKienNut": {
-    "2403191": { "dieuKienSo": [] }
+    "2403191": {
+      "dieuKienSo": [
+        {
+          "fact": "dongGoiBanLe",
+          "op": "CO"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "2403191", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "daDongGoiBanLe", "ghiChu": "tieuDe.2403191 \"Đã được đóng gói để bán lẻ\" — cần khoá có/không \"đã được đóng gói để bán lẻ\"; tu-vung@2 chưa có khoá đóng gói/bán lẻ, không bịa điều kiện thay" },
-    { "ma": "24031920", "loai": "QUYET_DINH", "ghiChu": "tax.24031920 \"Lá thuốc lá đã chế biến khác để sản xuất thuốc lá điếu\" — \"khác\" là phần còn lại có tên (khác .1 đã đóng gói bán lẻ) ⇒ phanConLai: true; chỉ ghi điều kiện vế \"để sản xuất thuốc lá điếu\" ⇒ congDung \"sản xuất thuốc lá điếu\"" },
-    { "ma": "24031911", "loai": "QUYET_DINH", "ghiChu": "tax.24031911 \"Ang Hoon (SEN)\" — tên riêng nguyên văn ⇒ tenLoai \"Ang Hoon\"; \"(SEN)\" là ngoặc chú thích, không điều kiện" }
+    {
+      "ma": "24031920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.24031920 \"Lá thuốc lá đã chế biến khác để sản xuất thuốc lá điếu\" — \"khác\" là phần còn lại có tên (khác .1 đã đóng gói bán lẻ) ⇒ phanConLai: true; chỉ ghi điều kiện vế \"để sản xuất thuốc lá điếu\" ⇒ congDung \"sản xuất thuốc lá điếu\""
+    },
+    {
+      "ma": "24031911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.24031911 \"Ang Hoon (SEN)\" — tên riêng nguyên văn ⇒ tenLoai \"Ang Hoon\"; \"(SEN)\" là ngoặc chú thích, không điều kiện"
+    },
+    {
+      "ma": "2403191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2403191: \"Đã được đóng gói để bán lẻ\" ⇒ dongGoiBanLe CO (khoá lô 20 thay cho THIEU_KHOA daDongGoiBanLe)"
+    }
   ]
 }

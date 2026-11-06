@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-711299",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-711299",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -22,6 +22,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Từ bạc"
+        },
+        {
+          "fact": "chuaKimLoaiQuyKhac",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM",
@@ -43,9 +47,8 @@
     },
     {
       "ma": "71129910",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chuaKimLoaiQuyKhac",
-      "ghiChu": "tax.71129910: \"trừ mảnh vụn có chứa các kim loại quý khác\" — vế GIỚI HẠN dạng (trừ …) cần CO_KHONG KHONG cho \"chứa các kim loại quý khác\"; tu-vung@2 không có khoá chứa-kim-loại-quý, bỏ vế làm đổi mã 8 số (.10 → .90)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71129910 \"Từ bạc, kể cả kim loại dát phủ bạc trừ mảnh vụn có chứa các kim loại quý khác\" — vế GIỚI HẠN \"trừ mảnh vụn có chứa các kim loại quý khác\" ⇒ chuaKimLoaiQuyKhac KHONG (khoá tu-vung@2 mới, đọc \"trừ\" thành giá trị KHÔNG); thay ghi chú THIEU_KHOA cũ."
     }
   ]
 }

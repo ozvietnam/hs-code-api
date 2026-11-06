@@ -1,16 +1,74 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "200989",
-  "phien": "zcode-sub:glm-5.3:20261105T1602#soan-200989",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-200989",
   "dong8": {
-    "20098910": { "dieuKienSo": [] },
-    "20098920": { "dieuKienSo": [] },
-    "20098930": { "dieuKienSo": [] },
-    "20098940": { "dieuKienSo": [] },
-    "20098991": { "dieuKienSo": [] },
-    "20098999": { "dieuKienSo": [] }
+    "20098910": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nước ép từ quả lý chua đen" }
+      ]
+    },
+    "20098920": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nước dừa" }
+      ]
+    },
+    "20098930": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nước dừa cô đặc" }
+      ]
+    },
+    "20098940": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nước xoài ép cô đặc" }
+      ]
+    },
+    "20098991": {
+      "dieuKienSo": [
+        { "fact": "thietKeChoTreEm", "op": "CO" }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "200989", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:200989:chua-co, không soạn tiếp" }
+    {
+      "ma": "20098910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20098910 \"Nước ép từ quả lý chua đen\" ⇒ tenLoai TEN_LOAI \"Nước ép từ quả lý chua đen\" (chữ biểu chỉ nêu TÊN hàng, không nêu công dụng/số)."
+    },
+    {
+      "ma": "20098920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20098920 \"Nước dừa (SEN)\" ⇒ tenLoai TEN_LOAI \"Nước dừa\"; \"(SEN)\" là ngoặc chú thích nguồn. Mô tả SEN (dung dịch trong quả dừa…) không được đưa vào điều kiện (cổng 3: giá trị phải nằm trong chữ biểu của dòng)."
+    },
+    {
+      "ma": "20098930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20098930 \"Nước dừa cô đặc (SEN)\" ⇒ tenLoai TEN_LOAI \"Nước dừa cô đặc\"; tên chứa \"Nước dừa\" của .20 ⇒ tên cụ thể hơn thắng (tenCuTheHon)."
+    },
+    {
+      "ma": "20098940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20098940 \"Nước xoài ép cô đặc\" ⇒ tenLoai TEN_LOAI \"Nước xoài ép cô đặc\" (tên hàng nguyên văn)."
+    },
+    {
+      "ma": "2009899",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2009899 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "20098991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20098991 \"Phù hợp dùng cho trẻ sơ sinh hoặc trẻ nhỏ\" ⇒ thietKeChoTreEm CO (khoá đọc \"phù hợp dùng cho trẻ sơ sinh|trẻ nhỏ\" — đọc đúng chữ biểu, không thêm điều kiện)."
+    },
+    {
+      "ma": "20098999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.20098999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "200989",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 200989-01 KHONG_LECH (1769/TB-TCHQ nước ổi ép, 2412/TB-TCHQ nước lê ép ⇒ .99): soạn theo chữ biểu, khớp bảng."
+    }
   ]
 }

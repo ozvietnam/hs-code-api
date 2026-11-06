@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-930400",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-930400",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,19 @@
       "hs": "93040010",
       "nguon": "tax.93040010",
       "trich": "93040010 - Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Súng hơi"
+        },
+        {
+          "fact": "apSuat",
+          "op": "<",
+          "value": 7,
+          "donVi": "kgf/cm2"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -31,9 +43,13 @@
   "ghiChuSoan": [
     {
       "ma": "93040010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "apSuat (SO, đơn vị kgf/cm2)",
-      "ghiChu": "tax.93040010: \"Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2\" — tu-vung@2 chưa có khoá áp suất; không mượn khoá gần nghĩa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.93040010 \"Súng hơi, hoạt động với áp suất dưới 7 kgf/cm2\" ⇒ tenLoai \"Súng hơi\" + apSuat < 7 kgf/cm2 (khoá mới tu-vung@2; \"dưới\" = <). Đã đối chiếu tay: biên chặt, không bằng."
+    },
+    {
+      "ma": "93040090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.93040090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
     }
   ]
 }

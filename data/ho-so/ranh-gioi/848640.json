@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T0915#soan-848640",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-848640",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,33 @@
       "hs": "84864010",
       "nguon": "tax.84864010",
       "trich": "84864010 - - Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phay"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "CHUM_TIA_ION_HOI_TU"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất",
+            "sửa chữa"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "màn và lưới quang của các định dạng trên linh kiện bán dẫn"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -75,7 +101,8 @@
           ]
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
     },
     {
       "hs": "84864030",
@@ -220,14 +247,13 @@
   "ghiChuSoan": [
     {
       "ma": "84864010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapGiaCong",
-      "ghiChu": "tax.84864010 \"Máy phay bằng chùm tia ion hội tụ…\" — không có khoá cho gia công \"bằng chùm tia ion hội tụ\" trong tu-vung@2"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84864010 \"Máy phay bằng chùm tia ion hội tụ để sản xuất hoặc sửa chữa màn và lưới quang của các định dạng trên linh kiện bán dẫn\": \"bằng chùm tia ion hội tụ\" ⇒ nguyenLyXuLy TRONG [CHUM_TIA_ION_HOI_TU] (khoá lô 20, đọc \"chùm tia ion hội tụ\"); tên \"Máy phay\"; vế \"để sản xuất hoặc sửa chữa …\" ⇒ congDung mảng [\"sản xuất\",\"sửa chữa\"] (hoặc) + congDung đối tượng \"màn và lưới quang …\" (định ngữ chung)"
     },
     {
       "ma": "84864020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.84864020 hai hàng nối \";\" ⇒ HOAC: (a) thiết bị gắn khuôn/nối băng/nối dây/bọc nhựa lắp ráp chất bán dẫn (liệt kê phẩy ⇒ mảng tenLoai), (b) máy tự động dịch chuyển, xử lý và kẹp giữ (một cụm theo kiểu 853710 .30) + dungCho mảng (liệt kê \"hoặc\") + \"thiết bị bán dẫn\" (vế riêng)"
+      "ghiChu": "tax.84864020 hai hàng nối \";\" ⇒ HOAC: (a) thiết bị gắn khuôn/nối băng/nối dây/bọc nhựa lắp ráp chất bán dẫn (liệt kê phẩy ⇒ mảng tenLoai), (b) máy tự động dịch chuyển, xử lý và kẹp giữ (một cụm theo kiểu 853710 .30) + dungCho mảng (liệt kê \"hoặc\") + \"thiết bị bán dẫn\" (vế riêng) ; \"vật liệu khác\" thuộc danh sách đối tượng, không phải phần còn lại ⇒ phanConLai false"
     },
     {
       "ma": "84864040",

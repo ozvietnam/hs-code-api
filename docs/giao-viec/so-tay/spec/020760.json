@@ -1,18 +1,95 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "020760",
-  "phien": "zcode-sub:glm-5.3:20261105T1529#soan-020760",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-020760",
   "dong8": {
-    "02076010": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["TUOI_UOP_LANH"] } ] },
-    "02076020": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["DONG_LANH"] } ] },
-    "02076030": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["TUOI_UOP_LANH"] } ] },
-    "02076040": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["DONG_LANH"] } ] }
+    "02076010": {
+      "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "KHONG"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ]
+    },
+    "02076020": {
+      "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "KHONG"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ]
+    },
+    "02076030": {
+      "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "CO"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ]
+    },
+    "02076040": {
+      "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "CO"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ]
+    }
   },
   "dieuKienNut": {},
   "ghiChuSoan": [
-    { "ma": "02076010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "daChatManh", "ghiChu": "tax.02076010 \"Chưa chặt mảnh, tươi hoặc ướp lạnh\" — vế \"Chưa chặt mảnh\" không có khoá tu-vung@2 (trục chưa/đã chặt mảnh phân biệt 02076010/20 với 02076030/40); phuongPhapBaoQuan TUOI_UOP_LANH chỉ phủ vế \"tươi hoặc ướp lạnh\"." },
-    { "ma": "02076020", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "daChatManh", "ghiChu": "tax.02076020 \"Chưa chặt mảnh, đông lạnh\" — vế \"Chưa chặt mảnh\" không có khoá tu-vung@2; phuongPhapBaoQuan DONG_LANH chỉ phủ vế \"đông lạnh\"." },
-    { "ma": "02076030", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "daChatManh", "ghiChu": "tax.02076030 \"Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh\" — vế \"Đã chặt mảnh và phụ phẩm sau giết mổ\" không có khoá tu-vung@2; phuongPhapBaoQuan TUOI_UOP_LANH chỉ phủ vế \"tươi hoặc ướp lạnh\"." },
-    { "ma": "02076040", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "daChatManh", "ghiChu": "tax.02076040 \"Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh\" — vế \"Đã chặt mảnh và phụ phẩm sau giết mổ\" không có khoá tu-vung@2; phuongPhapBaoQuan DONG_LANH chỉ phủ vế \"đông lạnh\"." }
+    {
+      "ma": "02076010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076010 \"Chưa chặt mảnh, tươi hoặc ướp lạnh\" ⇒ daChatManh KHONG (đọc \"Chưa chặt mảnh\") + phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]."
+    },
+    {
+      "ma": "02076020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076020 \"Chưa chặt mảnh, đông lạnh\" ⇒ daChatManh KHONG + phuongPhapBaoQuan TRONG [DONG_LANH]."
+    },
+    {
+      "ma": "02076030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076030 \"Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh\" ⇒ daChatManh CO (cachDoc khớp nguyên cụm \"Đã chặt mảnh và phụ phẩm sau giết mổ\") + phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]."
+    },
+    {
+      "ma": "02076040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076040 \"Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh\" ⇒ daChatManh CO + phuongPhapBaoQuan TRONG [DONG_LANH]."
+    },
+    {
+      "ma": "020760",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong1-khong-phu-kin:020760:daChatManh=true,phuongPhapBaoQuan=SONG. Khoá daChatManh (lô 20) đã phủ trục \"Chưa/Đã chặt mảnh\", nhưng trục tươi/đông lạnh phải dùng phuongPhapBaoQuan (LIET_KE, 7 giá trị: SONG, TUOI_UOP_LANH, DONG_LANH, KHO_MUOI, HUN_KHOI, BAO_QUAN_BANG_KHI_SUNPHURO, HAP_LUOC_CHIN + giá trị ngoài danh sách). Phân nhóm 0207.60 chỉ có 4 dòng, KHÔNG có dòng \"Loại khác\"; cổng 1 vét cạn giá trị khác của khoá liệt kê (vd SONG) và coi là vector thoả phân nhóm mà không rơi vào dòng nào. Bốn dòng đã viết đúng chữ biểu; thoả khoảng trống chỉ bằng cách thêm điều kiện chữ biểu không nói (vd phuongPhapBaoQuan chieu PHAI_KHONG cho dòng cuối) ⇒ không ép. Cần Claude: hoặc cổng 1 coi giá trị liệt kê ngoài các giá trị mà anh em nêu là ngoài phân nhóm khi phân nhóm không có Loại khác, hoặc có hai khoá CO_KHONG riêng cho \"tươi hoặc ướp lạnh\" / \"đông lạnh\" (đề xuất daTuoiHoacUopLanh, daDongLanh)."
+    }
   ]
 }

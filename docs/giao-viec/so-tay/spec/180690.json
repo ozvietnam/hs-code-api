@@ -1,24 +1,111 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "180690",
-  "phien": "zcode-sub:glm-5.3:20261105T0933#soan-180690",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-180690",
   "dong8": {
     "18069010": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Kẹo sô cô la" },
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["viên (tablets)", "viên ngậm (pastilles)"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Kẹo sô cô la"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "viên (tablets)",
+            "viên ngậm (pastilles)"
+          ]
+        }
       ]
     },
     "18069030": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các chế phẩm thực phẩm"
+        },
+        {
+          "fact": "hamLuongCaCaoKhuBeo",
+          "op": ">=",
+          "value": 40,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCaCaoKhuBeo",
+          "op": "<=",
+          "value": 50,
+          "donVi": "%"
+        }
+      ]
     },
     "18069040": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các chế phẩm thực phẩm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thuộc các nhóm từ 04.01 đến 04.04"
+        },
+        {
+          "fact": "hamLuongCaCaoKhuBeo",
+          "op": ">=",
+          "value": 5,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCaCaoKhuBeo",
+          "op": "<=",
+          "value": 10,
+          "donVi": "%"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "trẻ sơ sinh",
+            "trẻ nhỏ"
+          ]
+        },
+        {
+          "fact": "dongGoiBanLe",
+          "op": "KHONG"
+        }
+      ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "18069010", "loai": "QUYET_DINH", "ghiChu": "tax.18069010 \"Kẹo sô cô la ở dạng viên (tablets) hoặc viên ngậm (pastilles)\": định ngữ chung \"Kẹo sô cô la\" tách thành điều kiện riêng; \"viên (tablets) hoặc viên ngậm (pastilles)\" là liệt kê hàng thay thế ⇒ mảng" },
-    { "ma": "18069030", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "hamLuongCacaoKhauBeo", "ghiChu": "tax.18069030 vế GIỚI HẠN \"có chứa từ 40% trở lên nhưng không quá 50% tính theo khối lượng là ca cao đã khử toàn bộ chất béo\" — không có khoá SO % cho hàm lượng ca cao trong tu-vung@2 (chuaCaCao chỉ là có/không, không nói ngưỡng)" },
-    { "ma": "18069040", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "hamLuongCacaoKhauBeo", "ghiChu": "tax.18069040 vế GIỚI HẠN \"chứa từ 5% trở lên nhưng không quá 10% tính theo khối lượng là ca cao đã khử toàn bộ chất béo\" — không có khoá SO % cho hàm lượng ca cao trong tu-vung@2" }
+    {
+      "ma": "18069010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.18069010 \"Kẹo sô cô la ở dạng viên (tablets) hoặc viên ngậm (pastilles)\": định ngữ chung \"Kẹo sô cô la\" tách thành điều kiện riêng; \"viên (tablets) hoặc viên ngậm (pastilles)\" là liệt kê hàng thay thế ⇒ mảng"
+    },
+    {
+      "ma": "18069030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.18069030 \"…có chứa từ 40% trở lên nhưng không quá 50% tính theo khối lượng là ca cao đã khử toàn bộ chất béo\" ⇒ hai điều kiện cùng khoá hamLuongCaCaoKhuBeo (>= 40 % và <= 50 %); đã đối chiếu tay hai cận (cận đầu \"từ … trở lên\" = >=, cận sau \"không quá\" = <=). Tên đầu \"Các chế phẩm thực phẩm\" ⇒ tenLoai (cùng khoá với anh em .10 \"Kẹo sô cô la\" để máy coi tên rời nhau); cụm \"từ bột, bột thô, tinh bột hoặc chiết xuất malt\" là nguyên liệu nền của chế phẩm, không có khoá và cổng 5 không liệt kê thành vế — không ghi điều kiện"
+    },
+    {
+      "ma": "18069040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.18069040 \"Các chế phẩm thực phẩm làm từ sản phẩm thuộc các nhóm từ 04.01 đến 04.04, có chứa từ 5% trở lên nhưng không quá 10% … ca cao đã khử toàn bộ chất béo, được chế biến đặc biệt cho trẻ sơ sinh hoặc trẻ nhỏ, chưa đóng gói để bán lẻ\" ⇒ tenLoai \"Các chế phẩm thực phẩm\"; dungCho \"thuộc các nhóm từ 04.01 đến 04.04\" (dẫn mã giữ nguyên chuỗi); hamLuongCaCaoKhuBeo >= 5 % và <= 10 % (đã đối chiếu tay hai cận); dungCho [\"trẻ sơ sinh\",\"trẻ nhỏ\"] (liệt kê hoặc ⇒ mảng); dongGoiBanLe KHONG (\"chưa đóng gói để bán lẻ\")"
+    },
+    {
+      "ma": "18069040",
+      "loai": "BO_VE",
+      "ve": "được chế biến đặc biệt",
+      "lyDo": "vế \"được chế biến đặc biệt\" bổ nghĩa chính cụm \"cho trẻ sơ sinh hoặc trẻ nhỏ\" (một ý: chế biến đặc biệt cho trẻ sơ sinh hoặc trẻ nhỏ) đã phủ bằng dungCho [\"trẻ sơ sinh\",\"trẻ nhỏ\"]; tu-vung@2 không có khoá riêng cho \"được chế biến đặc biệt\" và thietKeChoTreEm không đọc cụm này"
+    },
+    {
+      "ma": "180690",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 180690-01 KHONG_LECH (2092/TB-TCHQ, 2090/TB-TCHQ, 2091/TB-TCHQ, 2093/TB-TCHQ, 2094/TB-TCHQ) và 180690-02 LECH_CHUA_PHAN_XU (794/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
   ]
 }

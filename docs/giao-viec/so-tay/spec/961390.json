@@ -1,13 +1,51 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "961390",
-  "phien": "zcode-sub:glm-5.3:20261106T1030#soan-961390",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-961390",
   "dong8": {
-    "96139010": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Ống chứa", "bộ phận chứa"] }, { "fact": "dungCho", "op": "CONG_DUNG", "value": "bật lửa cơ khí" } ] },
-    "96139090": { "dieuKienSo": [] }
+    "96139010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ống chứa",
+            "bộ phận chứa"
+          ]
+        },
+        {
+          "fact": "coTheNapLai",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bật lửa cơ khí"
+        },
+        {
+          "fact": "nhienLieu",
+          "op": "TRONG",
+          "value": [
+            "LONG_HOAC_KHI_HOA_LONG"
+          ]
+        }
+      ],
+      "phanConLai": false
+    },
+    "96139090": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    { "ma": "96139010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "coTheNapLai (CO_KHONG), chuaNhienLieu (LIET_KE LONG/KHI_HOA_LONG)", "ghiChu": "tax.96139010 \"Ống chứa hoặc bộ phận chứa khác có thể nạp lại của bật lửa cơ khí, có chứa nhiên liệu lỏng hoặc khí hóa lỏng\" — ghi được tenLoai [\"Ống chứa\",\"bộ phận chứa\"] + dungCho \"bật lửa cơ khí\"; thiếu khoá cho vế \"có thể nạp lại\" (refillable) và vế \"có chứa nhiên liệu lỏng hoặc khí hóa lỏng\" (nhienLieu tu-vung@2 chỉ có GA/DIEN cho bếp lò); không mượn khoá gần nghĩa, không bỏ vế vì bỏ làm đổi mã .10/.90" },
-    { "ma": "96139090", "loai": "QUYET_DINH", "ghiChu": "tax.96139090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "96139010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96139010 \"Ống chứa hoặc bộ phận chứa khác có thể nạp lại của bật lửa cơ khí, có chứa nhiên liệu lỏng hoặc khí hóa lỏng\" ⇒ tenLoai [\"Ống chứa\",\"bộ phận chứa\"] + coTheNapLai CO (\"có thể nạp lại\") + dungCho \"bật lửa cơ khí\" + nhienLieu TRONG [LONG_HOAC_KHI_HOA_LONG] (\"nhiên liệu lỏng hoặc khí hóa lỏng\"). Chữ \"khác\" trong \"bộ phận chứa khác\" thuộc danh từ đầu, không phải phần còn lại."
+    },
+    {
+      "ma": "96139090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96139090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
   ]
 }

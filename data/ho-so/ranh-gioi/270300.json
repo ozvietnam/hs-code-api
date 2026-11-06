@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-270300",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-270300",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -17,29 +17,37 @@
       "hs": "27030010",
       "nguon": "tax.27030010",
       "trich": "27030010 - Than bùn, đã hoặc chưa ép thành kiện, nhưng chưa đóng bánh",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "daDongBanh",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27030020",
       "nguon": "tax.27030020",
       "trich": "27030020 - Than bùn đã đóng bánh",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "daDongBanh",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
     {
       "ma": "27030010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daDongBanh",
-      "ghiChu": "tax.27030010: \"Than bùn, đã hoặc chưa ép thành kiện, nhưng chưa đóng bánh\" — vế GIỚI HẠN \"chưa đóng bánh\" cần khoá CO_KHONG trạng thái đóng bánh (KHONG), tu-vung@2 chưa có"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27030010: \"Than bùn, đã hoặc chưa ép thành kiện, nhưng chưa đóng bánh\" ⇒ daDongBanh KHONG (vế \"đã hoặc chưa ép thành kiện\" là chữ giới thiệu cả hai trạng thái, không điều kiện)"
     },
     {
       "ma": "27030020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daDongBanh",
-      "ghiChu": "tax.27030020: \"Than bùn đã đóng bánh\" — cần khoá CO_KHONG trạng thái đóng bánh (CO), tu-vung@2 chưa có; tenLoai tự do không phủ kín tầng (cong1-khong-phu-kin:2703)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27030020: \"Than bùn đã đóng bánh\" ⇒ daDongBanh CO"
     }
   ]
 }

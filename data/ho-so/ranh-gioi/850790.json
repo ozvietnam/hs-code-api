@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1010#soan-850790",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-850790",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -84,7 +84,17 @@
       "hs": "85079092",
       "nguon": "tax.85079092",
       "trich": "85079092 - - - Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vách ngăn ắc qui"
+        },
+        {
+          "fact": "lamTuPVC",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -115,7 +125,21 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "85079091",
+        "85079092"
+      ],
+      "lyDo": "tax.85079091 \"Dùng cho máy bay\" ↔ tax.85079092 \"Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)\": vách ngăn ắc qui không phải PVC dùng cho máy bay thoả cả hai nhánh theo chữ biểu; không có căn cứ thứ tự"
+    }
+  ],
   "ghiChuSoan": [
+    {
+      "ma": "85079092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079092 \"Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)\": tên ⇒ tenLoai \"Vách ngăn ắc qui\"; \"làm từ mọi vật liệu trừ poly(vinyl clorua)\" ⇒ lamTuPVC KHONG (khoá lô 20, cách đọc KHÔNG chính là cụm này); khoá chỉ dùng ở dòng có chữ biểu đúng cụm đó"
+    },
     {
       "ma": "8507901",
       "loai": "QUYET_DINH",
@@ -137,15 +161,14 @@
       "ghiChu": "tax.85079019 \"Loại khác\" trần ⇒ không điều kiện (tương tự .99)"
     },
     {
-      "ma": "85079092",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu",
-      "ghiChu": "tax.85079092 \"Vách ngăn ắc qui, sẵn sàng để sử dụng, làm từ mọi vật liệu trừ poly(vinyl clorua)\" — không có khoá/giá trị diễn đạt loại trừ chất liệu \"trừ poly(vinyl clorua)\" (chatLieu chỉ có op LA với giá trị plastic/cao su/…, không có PVC, không có phủ định theo vật liệu cụ thể); bỏ vế này làm đổi mã (vách ngăn PVC không thuộc dòng nào khác)"
-    },
-    {
       "ma": "85079093",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.85079093 \"Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, …\" ⇒ chỉ điều kiện của vế: dungCho mảng 6 mã"
+    },
+    {
+      "ma": "85079093",
+      "loai": "DUNG",
+      "ghiChu": "cong2-dong-khong-toi-duoc:85079093 — tax.85079093 \"Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, …\" (dungCho mảng 6 mã) nằm cùng tầng 8507909 với .91 \"Dùng cho máy bay\" (dungCho chữ): bộ so lúc chạy coi mã ↔ \"máy bay\" là CHƯA BIẾT nên không vector nào làm .93 CÓ mà TRÁI .91 (đã thử một mã duy nhất: vẫn không tới). Điều kiện đúng chữ biểu; không sửa được mà không đổi khoá hay bịa chữ. Khoá lamTuPVC (lô 20) đã giải quyết .92"
     }
   ]
 }

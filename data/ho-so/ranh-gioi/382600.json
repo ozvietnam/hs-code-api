@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1709#soan-382600",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-382600",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -16,7 +16,12 @@
       "id": "382600~r5544",
       "nguon": "tieuDe.382600~r5544",
       "trich": "382600~r5544 Diesel sinh học, không chứa dầu có nguồn gốc từ dầu mỏ",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chuaDauDauMo",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -51,14 +56,34 @@
       "hs": "38260021",
       "nguon": "tax.38260021",
       "trich": "38260021 - - - Có hàm lượng este metyl từ 96,5% trở lên nhưng không quá 98% (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongEsteMetyl",
+          "op": ">=",
+          "value": 96.5,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongEsteMetyl",
+          "op": "<=",
+          "value": 98,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "38260022",
       "nguon": "tax.38260022",
       "trich": "38260022 - - - Có hàm lượng este metyl trên 98% (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongEsteMetyl",
+          "op": ">",
+          "value": 98,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -86,9 +111,18 @@
   "ghiChuSoan": [
     {
       "ma": "382600~r5544",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chuaDauMinh",
-      "ghiChu": "tieuDe.382600~r5544 \"Diesel sinh học, không chứa dầu có nguồn gốc từ dầu mỏ\" — vế GIỚI HẠN nói KHÔNG chứa dầu có nguồn gốc từ dầu mỏ; tu-vung@2 chưa có khoá có/không chứa dầu khoáng, không mượn khoá gần nghĩa."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.382600~r5544 \"Diesel sinh học, không chứa dầu có nguồn gốc từ dầu mỏ\" ⇒ chuaDauDauMo KHONG (khoá lô 20; \"không chứa dầu có nguồn gốc từ dầu mỏ\" là cachDocKhong của khoá); \"Diesel sinh học\" là danh từ đầu lặp tên nhóm."
+    },
+    {
+      "ma": "38260021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38260021 \"Có hàm lượng este metyl từ 96,5% trở lên nhưng không quá 98% (SEN)\" ⇒ hamLuongEsteMetyl >= 96,5 % VÀ hamLuongEsteMetyl <= 98 % (hai cận cùng khoá; bộ đọc chỉ trả cận đầu nên cong3-bien-khong-doc-duoc nếu có là do đối chiếu tay cận \"không quá 98%\" = <=)."
+    },
+    {
+      "ma": "38260022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38260022 \"Có hàm lượng este metyl trên 98% (SEN)\" ⇒ hamLuongEsteMetyl > 98 % (\"trên\" = >); cùng khoá, cùng thang % với anh em 38260021 (biên 98 không chồng: <= 98 so với > 98)."
     },
     {
       "ma": "38260010",
@@ -99,18 +133,6 @@
       "ma": "3826002",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.3826002 \"Este metyl từ cọ (kể cả methyl este từ hạt cọ)\" ⇒ tenLoai \"Este metyl từ cọ\"; vế \"kể cả …\" là phụ, không thành điều kiện."
-    },
-    {
-      "ma": "38260021",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongEsteMetyl",
-      "ghiChu": "tax.38260021 \"Có hàm lượng este metyl từ 96,5% trở lên nhưng không quá 98% (SEN)\" — cần khoá hàm lượng este metyl (% , từ 96,5% trở lên nhưng không quá 98%); tu-vung@2 chưa có khoá hàm lượng este metyl."
-    },
-    {
-      "ma": "38260022",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongEsteMetyl",
-      "ghiChu": "tax.38260022 \"Có hàm lượng este metyl trên 98% (SEN)\" — cần khoá hàm lượng este metyl (%, trên 98%); tu-vung@2 chưa có khoá hàm lượng este metyl."
     }
   ]
 }

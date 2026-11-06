@@ -1,39 +1,102 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "984942",
-  "phien": "zcode-sub:glm-5.3:20261106T1528#soan-984942",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-984942",
   "dong8": {
     "98494210": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Động cơ vạn năng một chiều/xoay chiều" },
-        { "fact": "congSuat", "op": ">", "value": 1, "donVi": "kW" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Động cơ vạn năng một chiều/xoay chiều"
+        },
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1,
+          "donVi": "kW"
+        }
       ]
     },
     "98494221": {
       "dieuKienSo": [
-        { "fact": "congSuat", "op": ">", "value": 750, "donVi": "W" },
-        { "fact": "congSuat", "op": "<=", "value": 37.5, "donVi": "kW" }
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 750,
+          "donVi": "W"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 37.5,
+          "donVi": "kW"
+        }
       ]
     },
     "98494222": {
       "dieuKienSo": [
-        { "fact": "congSuat", "op": ">", "value": 37.5, "donVi": "kW" },
-        { "fact": "congSuat", "op": "<=", "value": 75, "donVi": "kW" }
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 37.5,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 75,
+          "donVi": "kW"
+        }
       ]
     },
     "98494230": {
       "dieuKienSo": [
-        { "fact": "loaiDongDien", "op": "TRONG", "value": ["XOAY_CHIEU"] },
-        { "fact": "soPha", "op": "TRONG", "value": ["MOT_PHA"] },
-        { "fact": "congSuat", "op": ">", "value": 1, "donVi": "kW" }
+        {
+          "fact": "loaiDongDien",
+          "op": "TRONG",
+          "value": [
+            "XOAY_CHIEU"
+          ]
+        },
+        {
+          "fact": "daPha",
+          "op": "KHONG"
+        },
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1,
+          "donVi": "kW"
+        }
       ],
       "phanConLai": true
     },
     "98494240": {
       "dieuKienSo": [
-        { "fact": "loaiDongDien", "op": "TRONG", "value": ["XOAY_CHIEU"] },
-        { "fact": "congSuat", "op": ">", "value": 1, "donVi": "kW" },
-        { "fact": "congSuat", "op": "<=", "value": 37.5, "donVi": "kW" }
+        {
+          "fact": "loaiDongDien",
+          "op": "TRONG",
+          "value": [
+            "XOAY_CHIEU"
+          ]
+        },
+        {
+          "fact": "daPha",
+          "op": "CO"
+        },
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 1,
+          "donVi": "kW"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 37.5,
+          "donVi": "kW"
+        }
       ],
       "phanConLai": true
     }
@@ -41,19 +104,52 @@
   "dieuKienNut": {
     "9849422": {
       "dieuKienSo": [
-        { "fact": "loaiDongDien", "op": "TRONG", "value": ["MOT_CHIEU"] }
+        {
+          "fact": "loaiDongDien",
+          "op": "TRONG",
+          "value": [
+            "MOT_CHIEU"
+          ]
+        }
       ],
       "phanConLai": true
     }
   },
   "ghiChuSoan": [
-    { "ma": "98494210", "loai": "QUYET_DINH", "ghiChu": "tax.98494210 \"Động cơ vạn năng một chiều/xoay chiều có công suất trên 1 kW\": tên đầu \"Động cơ vạn năng một chiều/xoay chiều\" giữ một chuỗi (\"một chiều/xoay chiều\" là tên ghép universal AC/DC); vế \"có công suất trên 1 kW\" ⇒ congSuat > 1 kW" },
-    { "ma": "9849422", "loai": "QUYET_DINH", "ghiChu": "tieuDe.9849422 \"Động cơ một chiều khác\" ⇒ loaiDongDien TRONG [MOT_CHIEU] (đọc \"một chiều\") + phanConLai: true (phần còn lại có tên, phủ định .10)" },
-    { "ma": "98494221", "loai": "QUYET_DINH", "ghiChu": "tax.98494221 \"Công suất trên 750 W nhưng không quá 37,5 kW\" ⇒ congSuat > 750 W và <= 37,5 kW (\"37,5\" = 37.5, đơn vị nguyên văn từng vế)" },
-    { "ma": "98494222", "loai": "QUYET_DINH", "ghiChu": "tax.98494222 \"Công suất trên 37,5 kW nhưng không quá 75 kW\" ⇒ congSuat > 37,5 kW và <= 75 kW" },
-    { "ma": "98494230", "loai": "QUYET_DINH", "ghiChu": "tax.98494230 \"Động cơ xoay chiều khác, một pha, công suất trên 1 kW\" ⇒ loaiDongDien XOAY_CHIEU + soPha MOT_PHA + congSuat > 1 kW; phanConLai: true (\"khác\" — phần còn lại có tên)" },
-    { "ma": "98494240", "loai": "QUYET_DINH", "ghiChu": "tax.98494240 \"Động cơ xoay chiều khác, đa pha, công suất trên 1 kW nhưng không quá 37,5 kW\" ⇒ loaiDongDien XOAY_CHIEU + congSuat > 1 kW và <= 37,5 kW; phanConLai: true (phủ định .10, cụm 9849422, .30). Ý \"đa pha\" không đưa vào điều kiện được — xem ghi chú THIEU_KHOA_TU_VUNG; cụm .30/.40 tách nhau bằng phanConLai và soPha của .30" },
-    { "ma": "98494240", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "soPha", "ghiChu": "tax.98494240 \"đa pha\" — giá trị NHIEU_PHA của khoá soPha chỉ đọc \"ba pha | 3 pha | nhiều pha | three-phase | poly-phase\", KHÔNG có cách đọc \"đa pha\" nên cổng 3 từ chối (cong3-muc:dieu-kien-so-trong-khong-co-trong-trich). Đề xuất thêm cách đọc \"đa pha\" cho NHIEU_PHA ở tu-vung@2; không mượn giá trị gần nghĩa" },
-    { "ma": "984942", "loai": "DUNG", "ghiChu": "DỪNG — cong1-khong-phu-kin không sửa được mà không thêm điều kiện chữ không nói: (1) tầng gốc: động cơ vạn năng công suất dưới 1 kW (vd vector congSuat=999.999 W) không vào dòng nào — .10 đòi trên 1 kW, cụm .2 là một chiều, .30/.40 là xoay chiều trên 1 kW; (2) tầng 9849422: động cơ một chiều công suất không quá 750 W (vd 749,999 W) không vào .21/.22. Các dải công suất thấp hơn thuộc phân nhóm khác ngoài 9849.42 — hạn chế nằm ở tiêu đề 6 số, máy không biểu diễn được; đề không có dòng \"Loại khác\" để hứng." }
+    {
+      "ma": "98494210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494210 \"Động cơ vạn năng một chiều/xoay chiều có công suất trên 1 kW\": tên đầu \"Động cơ vạn năng một chiều/xoay chiều\" giữ một chuỗi (\"một chiều/xoay chiều\" là tên ghép universal AC/DC); vế \"có công suất trên 1 kW\" ⇒ congSuat > 1 kW"
+    },
+    {
+      "ma": "9849422",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9849422 \"Động cơ một chiều khác\" ⇒ loaiDongDien TRONG [MOT_CHIEU] (đọc \"một chiều\") + phanConLai: true (phần còn lại có tên, phủ định .10)"
+    },
+    {
+      "ma": "98494221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494221 \"Công suất trên 750 W nhưng không quá 37,5 kW\" ⇒ congSuat > 750 W và <= 37,5 kW (\"37,5\" = 37.5, đơn vị nguyên văn từng vế)"
+    },
+    {
+      "ma": "98494222",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494222 \"Công suất trên 37,5 kW nhưng không quá 75 kW\" ⇒ congSuat > 37,5 kW và <= 75 kW"
+    },
+    {
+      "ma": "984942",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong1-khong-phu-kin không sửa được mà không thêm điều kiện chữ không nói: (1) tầng gốc: động cơ vạn năng công suất dưới 1 kW (vd vector congSuat=999.999 W) không vào dòng nào — .10 đòi trên 1 kW, cụm .2 là một chiều, .30/.40 là xoay chiều trên 1 kW; (2) tầng 9849422: động cơ một chiều công suất không quá 750 W (vd 749,999 W) không vào .21/.22. Các dải công suất thấp hơn thuộc phân nhóm khác ngoài 9849.42 — hạn chế nằm ở tiêu đề 6 số, máy không biểu diễn được; đề không có dòng \"Loại khác\" để hứng. (Khoá daPha tu-vung@2 đã giải quyết THIEU_KHOA \"đa pha\"; DỪNG còn lại chỉ là cong1-khong-phu-kin cấu trúc.)"
+    },
+    {
+      "ma": "98494230",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494230 \"Động cơ xoay chiều khác, một pha, công suất trên 1 kW\" ⇒ loaiDongDien XOAY_CHIEU + daPha KHONG (khoá mới tu-vung@2, đọc \"một pha\" là phía đối của \"đa pha\") + congSuat > 1 kW; phanConLai true (\"khác\" — phần còn lại có tên, phủ định .10 và cụm 9849422). Dùng daPha cho cả .30 và .40 để cùng một thang (không dùng soPha)."
+    },
+    {
+      "ma": "98494240",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494240 \"Động cơ xoay chiều khác, đa pha, công suất trên 1 kW nhưng không quá 37,5 kW\" ⇒ loaiDongDien XOAY_CHIEU + daPha CO (đọc \"đa pha\") + congSuat > 1 kW và <= 37,5 kW (hai cận cùng khoá, đã đối chiếu tay); phanConLai true (phủ định .10, cụm 9849422, .30)."
+    }
   ]
 }

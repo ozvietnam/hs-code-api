@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "071190",
-  "phien": "zcode-sub:glm-5.3:20261105T1529#soan-071190",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-071190",
   "dong8": {
     "07119010": {
       "dieuKienSo": [
@@ -38,11 +38,8 @@
           "value": "Hành tây"
         },
         {
-          "fact": "phuongPhapBaoQuan",
-          "op": "TRONG",
-          "value": [
-            "BAO_QUAN_BANG_KHI_SUNPHURO"
-          ]
+          "fact": "baoQuanBangKhiSunphuro",
+          "op": "CO"
         }
       ]
     },
@@ -52,17 +49,18 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Hành tây"
+        },
+        {
+          "fact": "baoQuanBangKhiSunphuro",
+          "op": "KHONG"
         }
       ]
     },
     "07119060": {
       "dieuKienSo": [
         {
-          "fact": "phuongPhapBaoQuan",
-          "op": "TRONG",
-          "value": [
-            "BAO_QUAN_BANG_KHI_SUNPHURO"
-          ]
+          "fact": "baoQuanBangKhiSunphuro",
+          "op": "CO"
         }
       ]
     },
@@ -89,23 +87,17 @@
     {
       "ma": "07119040",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.07119040 \"Hành tây, đã được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" + phuongPhapBaoQuan TRONG [BAO_QUAN_BANG_KHI_SUNPHURO] (mẫu cachDoc khớp nguyên cụm \"bảo quản bằng khí sunphurơ\")."
+      "ghiChu": "tax.07119040 \"Hành tây, đã được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" + baoQuanBangKhiSunphuro CO (khoá lô 20, cachDoc khớp \"đã được bảo quản bằng khí sunphurơ\"); thay phuongPhapBaoQuan BAO_QUAN_BANG_KHI_SUNPHURO (khoá đó đọc nhầm \"trừ loại … khí sunphurơ\" của .50)."
     },
     {
       "ma": "07119050",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.07119050 \"Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" (phần dương); vế loại trừ không biểu diễn được — xem THIEU_KHOA_TU_VUNG."
-    },
-    {
-      "ma": "07119050",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapBaoQuan (thiếu op phủ định cho LIET_KE, vd KHONG_TRONG [BAO_QUAN_BANG_KHI_SUNPHURO])",
-      "ghiChu": "tax.07119050 \"… trừ loại được bảo quản bằng khí sunphurơ\": tu-vung@2 chỉ có op TRONG cho LIET_KE, không ghi được \"phương pháp bảo quản KHÔNG PHẢI khí sunphurơ\"; phanConLai bị chặn (cong3-phan-con-lai-khong-co-chu-khac — chữ không có \"khác\"); bỏ vế (BO_VE) làm .40 và .50 cùng CO với hành tây bảo quản khí sunphurơ (cong2-chong-lan) ⇒ đổi mã ⇒ DỪNG."
+      "ghiChu": "tax.07119050 \"Hành tây, đã được bảo quản trừ loại được bảo quản bằng khí sunphurơ\" ⇒ tenLoai \"Hành tây\" + baoQuanBangKhiSunphuro KHONG (cachDocKhong khớp \"trừ loại được bảo quản bằng khí sunphurơ\"); thay ghi chú THIEU_KHOA phuongPhapBaoQuan."
     },
     {
       "ma": "07119060",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.07119060 \"Loại khác, đã được bảo quản bằng khí sunphurơ\" ⇒ chỉ điều kiện của vế: phuongPhapBaoQuan TRONG [BAO_QUAN_BANG_KHI_SUNPHURO] (máy tự phủ định anh em)."
+      "ghiChu": "tax.07119060 \"Loại khác, đã được bảo quản bằng khí sunphurơ\" ⇒ chỉ điều kiện của vế: baoQuanBangKhiSunphuro CO (máy tự phủ định anh em)."
     },
     {
       "ma": "07119090",

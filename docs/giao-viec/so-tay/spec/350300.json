@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "350300",
-  "phien": "mm:minimax-m3:202611051800#soan-350300",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-350300",
   "dieuKienNut": {
     "3503004": {
       "dieuKienSo": [
@@ -19,12 +19,20 @@
           "op": "TEN_LOAI",
           "value": "Các loại keo khác có nguồn gốc động vật"
         }
-      ]
+      ],
+      "phanConLai": true
     }
   },
   "dong8": {
     "35030041": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "doTruongNoBloom",
+          "op": ">=",
+          "value": 250,
+          "donVi": "Bloom-A"
+        }
+      ]
     },
     "35030050": {
       "dieuKienSo": [
@@ -38,24 +46,30 @@
     "35030061": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Các loại keo có nguồn gốc từ cá"
+          "fact": "nguonGocSinhVat",
+          "op": "TRONG",
+          "value": [
+            "TU_CA"
+          ]
         }
       ]
     }
   },
   "ghiChuSoan": [
     {
-      "ma": "35030041",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "doTruongNoTheoThangBloom",
-      "ghiChu": "tax.35030041 \"Dạng bột có độ trương nở từ A-250 hoặc B-230 trở lên theo hệ thống thang đo Bloom (SEN)\" — tiêu chí định lượng theo thang đo Bloom (A-250 hoặc B-230 trở lên). tu-vung@2 không có khoá độ trương nở / thang Bloom (đọc --tu-vung: các khoá số chỉ có điện áp, dòng điện, công suất, tần số, lưu lượng, dung tích xi lanh, khối lượng, đường kính, chiều cao, kích thước, chiều dài cuộn, số lõi, số sợi, tỉ lệ, độ dày, độ bền kéo, hàm lượng, nồng độ cồn, chỉ số iốt, trị số octan…). Không bịa khoá, không mượn khoá gần nghĩa (ví dụ chiSoIot/khoiLuong đều không đúng nghĩa) ⇒ để trống dieuKienSo, chờ người duyệt đặt khoá."
-    },
-    {
       "ma": "3503004",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.3503004 \"Gelatin và các dẫn xuất gelatin\" ⇒ tenLoai nguyên văn cả tiêu đề. tieuDe.3503006 \"Các loại keo khác có nguồn gốc động vật\" ⇒ tenLoai nguyên văn (vế \"có nguồn gốc động vật\"). Dòng .50 \"Loại điều chế từ bong bóng cá (Isinglass)\" ⇒ tenLoai \"Loại điều chế từ bong bóng cá\" (bỏ ngoặc tên Latin theo thông lệ dòng). Dòng .61 \"Các loại keo có nguồn gốc từ cá\" ⇒ tenLoai nguyên văn. Dòng .49 và .69 là \"Loại khác\" trần ⇒ không ghi điều kiện."
+      "ghiChu": "tieuDe.3503004 \"Gelatin và các dẫn xuất gelatin\" ⇒ tenLoai nguyên văn cả tiêu đề. tieuDe.3503006 \"Các loại keo khác có nguồn gốc động vật\" ⇒ tenLoai nguyên văn (vế \"có nguồn gốc động vật\"). Dòng .50 \"Loại điều chế từ bong bóng cá (Isinglass)\" ⇒ tenLoai \"Loại điều chế từ bong bóng cá\" (bỏ ngoặc tên Latin theo thông lệ dòng). Dòng .61 \"Các loại keo có nguồn gốc từ cá\" ⇒ tenLoai nguyên văn. Dòng .49 và .69 là \"Loại khác\" trần ⇒ không ghi điều kiện. Tiêu đề 3503006 \"Các loại keo khác có nguồn gốc động vật\": chữ \"khác\" là phần còn lại có tên (khác gelatin và loại bong bóng cá đứng trước) ⇒ phanConLai true."
+    },
+    {
+      "ma": "35030041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.35030041 \"Dạng bột có độ trương nở từ A-250 hoặc B-230 trở lên theo hệ thống thang đo Bloom (SEN)\" ⇒ doTruongNoBloom >= 250 Bloom-A (khoá mới lô 20; bộ đọc trả ngưỡng thang A, \"từ … trở lên\" = >=). Ngưỡng thang B (B-230) viết kèm trong cùng câu nhưng chữ biểu không nêu hệ số quy đổi sang A nên không ghi thành điều kiện thứ hai (hàng khai theo thang B vẫn CHƯA_BIET). \"Dạng bột\" là chữ giới thiệu cùng vế, không có khoá dạng bột ⇒ không ghi."
+    },
+    {
+      "ma": "35030061",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.35030061 \"Các loại keo có nguồn gốc từ cá\" ⇒ nguonGocSinhVat TRONG [TU_CA] (khoá nguonGocSinhVat mở rộng lô 20, ghiChu khoá nêu đúng dòng này; thay tenLoai nguyên câu của bản cũ — tên \"Các loại keo\" đã do tiêu đề 3503006 mang)."
     }
   ]
 }

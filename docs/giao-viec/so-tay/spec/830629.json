@@ -1,19 +1,72 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "830629",
-  "phien": "zcode-sub:glm-5.3:20261106T0927#soan-830629",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-830629",
   "dong8": {
-    "83062910": { "dieuKienSo": [] },
-    "83062920": { "dieuKienSo": [
-      {"fact": "chatLieu", "op": "LA", "value": "niken"}
-    ] },
-    "83062930": { "dieuKienSo": [
-      {"fact": "chatLieu", "op": "LA", "value": "nhôm"}
-    ] }
+    "83062910": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "đồng"
+              }
+            ],
+            [
+              {
+                "fact": "kimLoaiCoBanKhac",
+                "op": "TRONG",
+                "value": [
+                  "CHI"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "83062920": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "niken"
+        }
+      ]
+    },
+    "83062930": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "nhôm"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    {"ma": "83062910", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu thêm giá trị chì", "ghiChu": "tax.83062910 \"Bằng đồng hoặc chì\" — tu-vung@2 chatLieu không có giá trị chì (đồng có, chì không); không mượn khoá gần nghĩa."},
-    {"ma": "83062920", "loai": "QUYET_DINH", "ghiChu": "tax.83062920 \"Bằng niken\" ⇒ chatLieu niken."},
-    {"ma": "83062930", "loai": "QUYET_DINH", "ghiChu": "tax.83062930 \"Bằng nhôm\" ⇒ chatLieu nhôm."}
+    {
+      "ma": "83062910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83062910: \"Bằng đồng hoặc chì\" ⇒ HOAC [[chatLieu LA đồng], [kimLoaiCoBanKhac TRONG [CHI]]] (khoá lô 20 kimLoaiCoBanKhac đọc \"hoặc chì\"; chatLieu không có giá trị chì nên hai vế \"hoặc\" thuộc hai khoá)"
+    },
+    {
+      "ma": "83062920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83062920 \"Bằng niken\" ⇒ chatLieu niken."
+    },
+    {
+      "ma": "83062930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83062930 \"Bằng nhôm\" ⇒ chatLieu nhôm."
+    },
+    {
+      "ma": "83062910",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG cong2-chong-lan:83062910+83062920 và 83062910+83062930 (vector chatLieu=CHINH:niken/nhôm + kimLoaiCoBanKhac=CHI): vế \"chì\" nằm ở khoá kimLoaiCoBanKhac, khác trục với chatLieu của .20/.30 nên bộ vector gán hai khoá độc lập và làm .10 cùng .20/.30 cùng CO — không có hàng thật vừa bằng chì vừa bằng niken/nhôm, nên đây là chồng lấn do cách biểu diễn, không phải chữ biểu tự chồng ⇒ không khai chongLanVanBan, không bỏ vế \"hoặc chì\" (đổi mã). Cần: chatLieu thêm giá trị chì (hoặc khoá cùng trục đọc cả đồng lẫn chì)."
+    }
   ]
 }

@@ -1,34 +1,81 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "293499",
-  "phien": "zcode-sub:glm-5.3:20261105T1050#soan-293499",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-293499",
   "dong8": {
     "29349910": {
       "dieuKienSo": [
-        { "op": "HOAC", "phuongAn": [
-          [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "axit nucleic" } ],
-          [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "muối" },
-            { "fact": "dungCho", "op": "CONG_DUNG", "value": "axit nucleic" } ]
-        ] }
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "axit nucleic"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "muối"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "axit nucleic"
+              }
+            ]
+          ]
+        }
       ]
     },
     "29349920": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Sultones", "sultams", "diltiazem"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Sultones",
+            "sultams",
+            "diltiazem"
+          ]
+        }
       ]
     },
     "29349930": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Axit 6-Aminopenicillanic" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Axit 6-Aminopenicillanic"
+        }
       ]
     },
     "29349940": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "3-Azido-3-deoxythymidine" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "3-Azido-3-deoxythymidine"
+        }
       ]
     },
     "29349950": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Oxadiazon"
+        },
+        {
+          "fact": "doTinhKhiet",
+          "op": ">=",
+          "value": 94,
+          "donVi": "%"
+        }
+      ]
     },
     "29349990": {
       "dieuKienSo": []
@@ -36,11 +83,35 @@
   },
   "dieuKienNut": {},
   "ghiChuSoan": [
-    { "ma": "29349910", "loai": "QUYET_DINH", "ghiChu": "tax.29349910: \"Các axit nucleic và muối của chúng\" ⇒ quy ước \"X và các dạng của chúng\": HOAC [[tenLoai \"axit nucleic\"],[tenLoai \"muối\" + dungCho \"axit nucleic\"]]" },
-    { "ma": "29349920", "loai": "QUYET_DINH", "ghiChu": "tax.29349920: \"Sultones; sultams; diltiazem\" ⇒ liệt kê \";\" ⇒ mảng ba tên" },
-    { "ma": "29349930", "loai": "QUYET_DINH", "ghiChu": "tax.29349930: \"Axit 6-Aminopenicillanic\" ⇒ tenLoai TEN_LOAI \"Axit 6-Aminopenicillanic\"" },
-    { "ma": "29349940", "loai": "QUYET_DINH", "ghiChu": "tax.29349940: \"3-Azido-3-deoxythymidine\" ⇒ tenLoai TEN_LOAI \"3-Azido-3-deoxythymidine\"" },
-    { "ma": "29349950", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "doTinhKhiet", "ghiChu": "tax.29349950: \"Oxadiazon, với độ tinh khiết tối thiểu là 94%\" — tu-vung@2 không có khoá độ tinh khiết (SO %) ⇒ không biểu diễn được vế ngưỡng; không mượn khoá gần nghĩa" },
-    { "ma": "29349990", "loai": "QUYET_DINH", "ghiChu": "tax.29349990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "29349910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29349910: \"Các axit nucleic và muối của chúng\" ⇒ quy ước \"X và các dạng của chúng\": HOAC [[tenLoai \"axit nucleic\"],[tenLoai \"muối\" + dungCho \"axit nucleic\"]]"
+    },
+    {
+      "ma": "29349920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29349920: \"Sultones; sultams; diltiazem\" ⇒ liệt kê \";\" ⇒ mảng ba tên"
+    },
+    {
+      "ma": "29349930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29349930: \"Axit 6-Aminopenicillanic\" ⇒ tenLoai TEN_LOAI \"Axit 6-Aminopenicillanic\""
+    },
+    {
+      "ma": "29349940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29349940: \"3-Azido-3-deoxythymidine\" ⇒ tenLoai TEN_LOAI \"3-Azido-3-deoxythymidine\""
+    },
+    {
+      "ma": "29349990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29349990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "29349950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29349950 \"Oxadiazon, với độ tinh khiết tối thiểu là 94%\" ⇒ tenLoai \"Oxadiazon\" + doTinhKhiet >= 94 % (khoá mới lô 20; \"tối thiểu là 94%\" = từ 94% trở lên = >=)."
+    }
   ]
 }

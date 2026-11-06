@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1102#soan-294110",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-294110",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -50,7 +50,12 @@
       "hs": "29411011",
       "nguon": "tax.29411011",
       "trich": "29411011 - - - Không tiệt trùng (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "daTietTrung",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -107,12 +112,6 @@
       "ghiChu": "tieuDe.2941101: \"Amoxicillin và muối của nó\" ⇒ dieuKienNut: HOAC [[tenLoai \"Amoxicillin\"],[tenLoai \"muối\" + dungCho \"Amoxicillin\"]]"
     },
     {
-      "ma": "29411011",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "tietTrung",
-      "ghiChu": "tax.29411011: \"Không tiệt trùng (SEN)\" — tu-vung@2 không có khoá tiệt trùng/không tiệt trùng (CO_KHONG) để biểu diễn vế GIỚI HẠN \"Không tiệt trùng\"; SEN phân biệt theo cách đóng gói, không mượn khoá gần nghĩa"
-    },
-    {
       "ma": "29411019",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.29411019 \"Loại khác (SEN)\" trần ⇒ không điều kiện (máy phủ định anh em 29411011)"
@@ -126,6 +125,11 @@
       "ma": "29411090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.29411090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "29411011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.29411011 \"Không tiệt trùng (SEN)\" ⇒ daTietTrung KHONG (khoá mới lô 20; \"Không …\" = op KHONG). Vế \"Amoxicillin và muối của nó\" do dieuKienNut 2941101 phủ. Không lấy cách đóng gói từ chú giải SEN."
     }
   ]
 }

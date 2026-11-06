@@ -1,7 +1,7 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "630510",
-  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-630510",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-630510",
   "dong8": {
     "63051011": {
       "dieuKienSo": [
@@ -24,16 +24,18 @@
   },
   "dieuKienNut": {
     "6305101": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "chuaQuaSuDung",
+          "op": "CO"
+        }
+      ]
     },
     "6305102": {
       "dieuKienSo": [
         {
-          "fact": "tinhTrang",
-          "op": "TRONG",
-          "value": [
-            "DA_QUA_SU_DUNG"
-          ]
+          "fact": "chuaQuaSuDung",
+          "op": "KHONG"
         }
       ]
     }
@@ -60,15 +62,14 @@
       "ghiChu": "tax.63051029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
     },
     {
-      "ma": "6305102",
+      "ma": "6305101",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.6305102 \"Đã qua sử dụng\" ⇒ tinhTrang DA_QUA_SU_DUNG (cách đọc \"đã qua sử dụng\")"
+      "ghiChu": "tieuDe.6305101 \"6305101 Mới\" ⇒ chuaQuaSuDung CO (khoá tu-vung@2 mới đọc chữ trần \"Mới\" khi cả chữ là \"Mới\"); thay ghi chú THIEU_KHOA tinhTrang cũ."
     },
     {
-      "ma": "6305101",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "tinhTrang",
-      "ghiChu": "tieuDe.6305101: \"6305101 Mới\" — chữ trần \"Mới\" không khớp cách đọc nào của giá trị tinhTrang MOI (mẫu \"mới 100%\"/\"hàng mới\"/\"mới nguyên\"/\"new\"); tenLoai tự do thì cong1-khong-phu-kin"
+      "ma": "6305102",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6305102 \"6305102 Đã qua sử dụng\" ⇒ chuaQuaSuDung KHONG (cùng một khoá với anh em 6305101 — thang đo đồng nhất; khoá đọc \"đã qua sử dụng\" thành giá trị KHÔNG); thay tinhTrang DA_QUA_SU_DUNG cũ."
     }
   ]
 }

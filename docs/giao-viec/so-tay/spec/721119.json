@@ -1,14 +1,111 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "721119",
-  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721119",
-  "dong8": {},
-  "dieuKienNut": {},
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721119",
+  "dong8": {
+    "72111913": {
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_DAI_HOAC_PHO_DUNG"
+          ]
+        }
+      ]
+    },
+    "72111914": {
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ]
+    },
+    "72111991": {
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_DAI_HOAC_PHO_DUNG"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7211191": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
   "ghiChuSoan": [
     {
+      "ma": "7211191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7211191 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 % (\"dưới\" = <; \"tính theo khối lượng\" là cách đo)."
+    },
+    {
+      "ma": "7211191",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72111913",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111913 \"Dạng đai và dải; tấm phổ dụng(SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_DAI_HOAC_PHO_DUNG] (một giá trị nguyên cụm có dấu \";\" theo tu-vung@2); \"(SEN)\" là nguồn chú giải ⇒ PHU."
+    },
+    {
+      "ma": "72111914",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111914 \"Dạng lượn sóng\" ⇒ dangLuonSong CO."
+    },
+    {
+      "ma": "72111919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111919 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "7211199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7211199 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định tiêu đề anh em 7211191)."
+    },
+    {
+      "ma": "72111991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111991 \"Dạng đai và dải; tấm phổ dụng(SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_DAI_HOAC_PHO_DUNG] (cùng chữ với .13, ở tiêu đề \"Loại khác\")."
+    },
+    {
+      "ma": "72111999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
       "ma": "721119",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721119hua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721119-01 KHONG_LECH (3176, 6021, 217/TB-TCHQ C dưới 0,6% ⇒ .13; 3746/TB-TCHQ C ≈ 0,82% ⇒ .91): soạn theo chữ biểu, khớp bảng — ranh giới nằm ở tiêu đề carbon, không ở dòng."
+    },
+    {
+      "ma": "72111913",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Khai chongLanVanBan .13 ↔ .14: chữ biểu tự chồng (dạng lượn sóng là hình dạng, không loại trừ dạng đai và dải/tấm phổ dụng), cùng trục đặc điểm; cùng cách khai với 721113 và 721114."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "72111913",
+        "72111914"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: .13 \"Dạng đai và dải; tấm phổ dụng(SEN)\" (dangDaiDaiTamPhoDung DAI_DAI_HOAC_PHO_DUNG), .14 \"Dạng lượn sóng\" (dangLuonSong CO) — đai và dải hoặc tấm phổ dụng thép cán nóng dạng lượn sóng, carbon dưới 0,6%, thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
     }
   ]
 }

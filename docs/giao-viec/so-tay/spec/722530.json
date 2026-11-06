@@ -1,12 +1,34 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "722530",
-  "phien": "zcode-sub:glm-5.3:20261106T0903#soan-722530",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-722530",
   "dong8": {
-    "72253010": { "dieuKienSo": [] },
-    "72253090": { "dieuKienSo": [] }
+    "72253010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thép gió"
+        }
+      ]
+    }
   },
+  "dieuKienNut": {},
   "ghiChuSoan": [
-    { "ma": "722530", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:722530:chua-co, không soạn tiếp" }
+    {
+      "ma": "72253010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72253010 \"Thép gió\" ⇒ chữ biểu chỉ nêu TÊN hàng ⇒ tenLoai TEN_LOAI \"Thép gió\" (tên nguyên văn). Không lấy định nghĩa thép gió từ Chú giải 1(d) Chương 72 (không nằm trong chữ biểu của dòng)."
+    },
+    {
+      "ma": "72253090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72253090 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "722530",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 722530-01 KHONG_LECH (4333, 4334, 12550, 12551/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
   ]
 }

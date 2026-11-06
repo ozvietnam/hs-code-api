@@ -1,13 +1,30 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "282720",
-  "phien": "zcode-sub:glm-5.3:20261105T1542#soan-282720",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-282720",
   "dong8": {
     "28272010": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCaCl2",
+          "op": ">=",
+          "value": 73,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCaCl2",
+          "op": "<=",
+          "value": 80,
+          "donVi": "%"
+        }
+      ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "28272010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "hamLuongCaCl2", "ghiChu": "tax.28272010: \"Chứa từ 73% đến 80% tính theo trọng lượng\" — vế GIỚI HẠN cần khoá SO hàm lượng canxi clorua (%); tu-vung@2 chỉ có nongDoCon (nồng độ cồn) — không mượn khoá gần nghĩa" }
+    {
+      "ma": "28272010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.28272010: \"Chứa từ 73% đến 80% tính theo trọng lượng\" ⇒ hamLuongCaCl2 >= 73 % VÀ <= 80 % (hai cận cùng khoá; bộ đọc chỉ trả cận đầu 73, đã đối chiếu tay)"
+    }
   ]
 }

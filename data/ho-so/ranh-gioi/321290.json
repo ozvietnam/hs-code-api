@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1547#soan-321290",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-321290",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -16,7 +16,24 @@
       "id": "3212901",
       "nguon": "tieuDe.3212901",
       "trich": "3212901 Thuốc màu (kể cả bột và vẩy kim loại) được phân tán trong môi trường không có nước, dạng lỏng hoặc dạng nhão, dùng để sản xuất sơn (kể cả men tráng)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "moiTruongPhanTan",
+          "op": "TRONG",
+          "value": [
+            "KHONG_CHUA_NUOC"
+          ]
+        },
+        {
+          "fact": "dangLongHoacNhao",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất sơn"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -71,7 +88,7 @@
       "trich": "32129014 - - - Loại khác, để sản xuất sơn cho da thuộc",
       "dieuKienSo": [
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "sản xuất sơn cho da thuộc"
         }
@@ -125,12 +142,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "3212901",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "moiTruongVaDangPhanTan",
-      "ghiChu": "tieuDe.3212901 \"Thuốc màu (kể cả bột và vẩy kim loại) được phân tán trong môi trường không có nước, dạng lỏng hoặc dạng nhão, dùng để sản xuất sơn (kể cả men tráng)\" (EN \"Pigments (including metallic powders and flakes) dispersed in non-aqueous media, in liquid or paste form, of a kind used in the manufacture of paints (including enamels):\") — vế GIỚI HẠN \"được phân tán trong môi trường không có nước, dạng lỏng hoặc dạng nhão\" cần khoá môi trường phân tán (không có nước) và dạng (lỏng/nhão); tu-vung@2 chưa có khoá này ⇒ để trống dieuKienSo. Vế \"dùng để sản xuất sơn (kể cả men tráng)\" lẽ ra ghi congDung \"sản xuất sơn\" nhưng mục này đã để trống theo luật thiếu khoá."
-    },
-    {
       "ma": "3212902",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.3212902 \"Thuốc nhuộm và chất màu khác đã làm thành dạng nhất định hoặc đóng gói để bán lẻ\" (EN \"Dyes and other colouring matter put up in forms or packings for retail sale:\") ⇒ dongGoiBanLe CO: chữ Anh gắn \"for retail sale\" cho CẢ hai vế (\"in forms or packings for retail sale\") nên đóng gói bán lẻ là điều kiện của cả tầng. KHÔNG khai phanConLai: chữ \"khác\" trong \"chất màu khác\" (EN \"other colouring matter\") là bổ nghĩa của \"chất màu\", KHÔNG phải \"phần còn lại\" của phân nhóm — 3212901 và 3212902 chia theo TIÊU CHÍ khác nhau (công dụng: thuốc màu để sản xuất sơn ↔ đóng gói bán lẻ), không phải phần trước/sau."
@@ -146,11 +157,6 @@
       "ghiChu": "tax.32129013 \"Loại chì trắng phân tán trong dầu\" (EN \"White lead dispersed in oil\") ⇒ tenLoai TEN_LOAI \"chì trắng\": vế GIỚI HẠN \"chì trắng phân tán trong dầu\" được phủ bởi tên \"chì trắng\"; \"phân tán trong dầu\" là dạng của sản phẩm, chatLieu không có \"dầu\" (không mượn khoá gần nghĩa)."
     },
     {
-      "ma": "32129014",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.32129014 \"Loại khác, để sản xuất sơn cho da thuộc\" (EN \"Other, for the manufacture of leather paint\") ⇒ congDung CONG_DUNG \"sản xuất sơn cho da thuộc\"; dòng \"Loại khác, <vế>\" chỉ ghi điều kiện của vế, KHÔNG khai phanConLai (vì .19 \"Loại khác\" trần đứng sau)."
-    },
-    {
       "ma": "32129021",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.32129021 \"Loại sử dụng trong công nghiệp thực phẩm hoặc đồ uống\" (EN \"Of a kind used in the food or drink industries\") ⇒ dungCho CONG_DUNG [\"công nghiệp thực phẩm\",\"đồ uống\"] (hai ngành thay thế nhau nối bằng \"hoặc\" ⇒ mảng)."
@@ -159,6 +165,26 @@
       "ma": "32129022",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.32129022 \"Thuốc nhuộm khác\" (EN \"Other dyes\") ⇒ tenLoai TEN_LOAI \"Thuốc nhuộm khác\" + phanConLai true (phần còn lại có tên — phủ định anh em đứng trước, .21)."
+    },
+    {
+      "ma": "3212901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3212901 \"Thuốc màu (kể cả bột và vẩy kim loại) được phân tán trong môi trường không có nước, dạng lỏng hoặc dạng nhão, dùng để sản xuất sơn (kể cả men tráng)\" ⇒ moiTruongPhanTan TRONG [KHONG_CHUA_NUOC] (\"được phân tán trong môi trường không có nước\") + dangLongHoacNhao CO (\"dạng lỏng hoặc dạng nhão\") + dungCho CONG_DUNG \"sản xuất sơn\" (\"dùng để sản xuất sơn (kể cả men tráng)\"); khoá mới lô 20. Dùng khoá dungCho (không phải congDung) cho cùng trục công dụng ở cấp tiêu đề."
+    },
+    {
+      "ma": "321290",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 321290-01 KHONG_LECH (9802/TB-TCHQ, 4943/TB-TCHQ, 130/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "32129014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.32129014 \"Loại khác, để sản xuất sơn cho da thuộc\" (EN \"Other, for the manufacture of leather paint\") ⇒ dungCho CONG_DUNG \"sản xuất sơn cho da thuộc\" — CÙNG khoá dungCho với tiêu đề 3212901 (\"dùng để sản xuất sơn\"), đổi từ congDung của bản cũ (cùng trục công dụng phải cùng khoá); dòng \"Loại khác, <vế>\" chỉ ghi điều kiện của vế, KHÔNG khai phanConLai (vì .19 \"Loại khác\" trần đứng sau)."
+    },
+    {
+      "ma": "321290",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG — cong1-khong-phu-kin:321290 và cong2-chong-lan giữa hai tiêu đề gốc (vd 32129011+32129029, 32129013+32129029, 32129014+32129022), cong2-dong-khong-toi-duoc:32129019. Hai khoá mới lô 20 (moiTruongPhanTan, dangLongHoacNhao) đã giải quyết THIEU_KHOA ở tiêu đề 3212901 (cổng 0/3 xanh, cổng 5 phủ 6/6). Nhưng khi tiêu đề 3212901 mang điều kiện thật thì lộ cấu trúc của chữ biểu: hai tiêu đề gốc đều là GIỚI HẠN (\"được phân tán trong môi trường không có nước, dạng lỏng hoặc dạng nhão, dùng để sản xuất sơn\" ↔ \"đã làm thành dạng nhất định hoặc đóng gói để bán lẻ\") chia theo hai tiêu chí độc lập, không có \"Loại khác\" ở gốc, nên (a) hàng thuộc cả hai (thuốc màu phân tán trong dung môi, đóng gói bán lẻ) thoả cả hai tiêu đề — chữ biểu không loại trừ, không nêu thứ tự; (b) hàng thuộc cả hai hoặc không thuộc tiêu đề nào (vd phân tán trong nước, không bán lẻ) không vào dòng nào. Khai chongLanVanBan cho ~12 cặp dòng chéo hai tiêu đề không gỡ được (b) và cong2-dong-khong-toi-duoc:32129019 (đổi congDung→dungCho ở 32129014 cho cùng khoá với tiêu đề làm .19 không tới được). Cần người soát quyết định cách coi hai tiêu đề gốc."
     }
   ]
 }

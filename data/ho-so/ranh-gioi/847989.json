@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1000#soan-847989",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-847989",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,7 +16,12 @@
       "id": "8479896",
       "nguon": "tieuDe.8479896",
       "trich": "8479896 Loại khác, hoạt động bằng điện",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -25,21 +30,111 @@
       "hs": "84798910",
       "nguon": "tax.84798910",
       "trich": "84798910 - - - Thiết bị tự động sắp đặt hoặc loại bỏ các linh kiện hoặc phần tử tiếp xúc chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in đã lắp ráp",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị tự động"
+        },
+        {
+          "fact": "chiHoacChuYeu",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất mạch in đã lắp ráp"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84798950",
       "nguon": "tax.84798950",
-      "trich": "84798950 - - - Máy lắp ráp các bo mạch nhánh của bộ xử lý trung tâm (CPU) vào các vỏ hoặc hộp đựng bằng plastic; thiết bị tái sinh dung dịch hóa học dùng trong sản xuất tấm mạch in hoặc tấm dây in; thiết bị làm sạch cơ học bề mặt của tấm mạch in hoặc tấm dây in trong sản xuất; thiết bị đồng chỉnh tấm mạch in hoặc tấm dây in hoặc mạch in đã lắp ráp trong quá trình sản xuất",
-      "dieuKienSo": [],
+      "trich": "Máy lắp ráp … bộ xử lý trung tâm (CPU) vào các vỏ hoặc hộp đựng bằng plastic; thiết bị tái sinh dung dịch hóa học … tấm mạch in hoặc tấm dây in; thiết bị làm sạch cơ học … tấm mạch in hoặc tấm dây in trong sản xuất; thiết bị đồng chỉnh tấm mạch in … mạch in đã lắp ráp trong quá trình sản xuất",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy lắp ráp"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "bộ xử lý trung tâm (CPU)"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "hộp đựng bằng plastic"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị tái sinh dung dịch hóa học"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị làm sạch cơ học"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "thiết bị đồng chỉnh"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in",
+                  "mạch in đã lắp ráp"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84798961",
       "nguon": "tax.84798961",
       "trich": "84798961 - - - - Máy bán hàng dịch vụ tự động (Automatic service-vending machines)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy bán hàng dịch vụ tự động"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -53,15 +148,50 @@
       "hs": "84798970",
       "nguon": "tax.84798970",
       "trich": "84798970 - - - Loại khác, không hoạt động bằng điện",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
     {
+      "ma": "84798910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84798910 \"Thiết bị tự động sắp đặt hoặc loại bỏ các linh kiện hoặc phần tử tiếp xúc chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất mạch in đã lắp ráp\" ⇒ tenLoai \"Thiết bị tự động\" + chiHoacChuYeu CO (đọc \"chỉ sử dụng hoặc chủ yếu sử dụng\") + dungCho \"sản xuất mạch in đã lắp ráp\" (vế GIỚI HẠN \"sử dụng để sản xuất mạch in đã lắp ráp\"). Phần \"sắp đặt hoặc loại bỏ các linh kiện hoặc phần tử tiếp xúc\" là mệnh đề danh từ đầu mô tả chức năng của thiết bị, không khai thành điều kiện riêng (tên giá trị \"sắp đặt hoặc loại bỏ\" không viết thành một chuỗi được vì chứa \"hoặc\"); điều kiện hẹp hơn chữ ở danh từ đầu là hướng an toàn (hàng chưa nêu chức năng ⇒ lúc chạy hỏi)."
+    },
+    {
+      "ma": "84798950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84798950 (chữ 374 ký tự, bốn ý nối \";\" mỗi ý có giới hạn riêng) ⇒ HOAC bốn phương án (QUY-TRINH 3.5): [tenLoai \"Máy lắp ráp\" + dungCho \"bộ xử lý trung tâm (CPU)\" + dungCho \"hộp đựng bằng plastic\"] | [tenLoai \"thiết bị tái sinh dung dịch hóa học\" + dungCho [\"tấm mạch in\",\"tấm dây in\"]] | [tenLoai \"thiết bị làm sạch cơ học\" + dungCho [\"tấm mạch in\",\"tấm dây in\"]] | [tenLoai \"thiết bị đồng chỉnh\" + dungCho [\"tấm mạch in\",\"tấm dây in\",\"mạch in đã lắp ráp\"]]. Liệt kê \"hoặc\" tách thành mảng chuỗi con nguyên văn. Vế \"vỏ hoặc hộp đựng bằng plastic\" ghi bằng chuỗi con \"hộp đựng bằng plastic\" (chất liệu thuộc đích; không ghi \"vỏ\" riêng vì sẽ bỏ \"bằng plastic\" — hẹp hơn chữ, hàng nêu \"vỏ plastic\" lúc chạy được hỏi). Trích dài 293 ký tự, lược bằng \"…\" các đoạn không chứa giá trị điều kiện."
+    },
+    {
+      "ma": "8479896",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8479896 \"Loại khác, hoạt động bằng điện\" ⇒ chỉ vế điều kiện: hoatDongBangDien CO (cách đọc \"hoạt động bằng điện\" nguyên văn). \"Loại khác\" do máy phủ định anh em 84798910, 84798950."
+    },
+    {
+      "ma": "84798961",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84798961 \"Máy bán hàng dịch vụ tự động (Automatic service-vending machines)\" ⇒ tenLoai TEN_LOAI \"Máy bán hàng dịch vụ tự động\" (tên hàng nguyên văn; phần tiếng Anh trong ngoặc là chữ Anh của cùng vế)."
+    },
+    {
+      "ma": "84798969",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84798969 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em 84798961)."
+    },
+    {
+      "ma": "84798970",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84798970 \"Loại khác, không hoạt động bằng điện\" ⇒ chỉ vế: hoatDongBangDien KHONG (\"không hoạt động bằng điện\" ⇒ op KHONG, cùng khoá và thang với tiêu đề 8479896)."
+    },
+    {
       "ma": "847989",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG theo QUY-TRINH-SO-HOA mục 2.2/5; không soạn điều kiện"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 847989-01 KHONG_LECH (4708/TB-TCHQ: thiết bị điều chỉnh thân nhiệt đeo trên người, bảng mạch in chỉ là linh kiện bên trong; không thoả .50 ⇒ .69 khớp chữ biểu): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

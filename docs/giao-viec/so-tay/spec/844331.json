@@ -1,24 +1,126 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "844331",
-  "phien": "zcode-sub:glm-5.3:20261106T1000#soan-844331",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-844331",
   "dong8": {
-    "84433111": { "dieuKienSo": [ { "fact": "mauHienThi", "op": "TRONG", "value": ["MAU"] } ] },
-    "84433119": { "dieuKienSo": [] },
-    "84433121": { "dieuKienSo": [ { "fact": "mauHienThi", "op": "TRONG", "value": ["MAU"] } ] },
-    "84433129": { "dieuKienSo": [] },
-    "84433131": { "dieuKienSo": [ { "fact": "mauHienThi", "op": "TRONG", "value": ["MAU"] } ] },
-    "84433139": { "dieuKienSo": [] },
-    "84433191": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy in-copy-scan-fax kết hợp" } ] },
-    "84433199": { "dieuKienSo": [] }
+    "84433111": {
+      "dieuKienSo": [
+        {
+          "fact": "mauHienThi",
+          "op": "TRONG",
+          "value": [
+            "MAU"
+          ]
+        }
+      ]
+    },
+    "84433119": {
+      "dieuKienSo": []
+    },
+    "84433121": {
+      "dieuKienSo": [
+        {
+          "fact": "mauHienThi",
+          "op": "TRONG",
+          "value": [
+            "MAU"
+          ]
+        }
+      ]
+    },
+    "84433129": {
+      "dieuKienSo": []
+    },
+    "84433131": {
+      "dieuKienSo": [
+        {
+          "fact": "mauHienThi",
+          "op": "TRONG",
+          "value": [
+            "MAU"
+          ]
+        }
+      ]
+    },
+    "84433139": {
+      "dieuKienSo": []
+    },
+    "84433191": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy in-copy-scan-fax kết hợp"
+        }
+      ]
+    },
+    "84433199": {
+      "dieuKienSo": []
+    }
   },
   "dieuKienNut": {
-    "8443311": { "dieuKienSo": [] },
-    "8443312": { "dieuKienSo": [] },
-    "8443313": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy in-copy-fax kết hợp" } ] }
+    "8443311": {
+      "dieuKienSo": [
+        {
+          "fact": "congNgheIn",
+          "op": "TRONG",
+          "value": [
+            "IN_PHUN"
+          ]
+        }
+      ]
+    },
+    "8443312": {
+      "dieuKienSo": [
+        {
+          "fact": "congNgheIn",
+          "op": "TRONG",
+          "value": [
+            "LASER"
+          ]
+        }
+      ]
+    },
+    "8443313": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy in-copy-fax kết hợp"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "8443311", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "congNgheIn", "ghiChu": "tieuDe.8443311: \"Máy in-copy, in bằng công nghệ in phun\" — tu-vung@2 không có khoá cho công nghệ in (in phun); phuongPhapIn là khoá in trên vải/hàng dệt, giá trị không đọc được chữ này, không mượn" },
-    { "ma": "8443312", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "congNgheIn", "ghiChu": "tieuDe.8443312: \"Máy in-copy, in bằng công nghệ laser\" — tu-vung@2 không có khoá cho công nghệ in laser" }
+    {
+      "ma": "8443311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8443311 \"Máy in-copy, in bằng công nghệ in phun\" ⇒ congNgheIn IN_PHUN (khoá lô 20, đọc \"in phun\"); danh từ đầu \"Máy in-copy\" không thành điều kiện riêng. Thay THIEU_KHOA_TU_VUNG congNgheIn."
+    },
+    {
+      "ma": "8443312",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8443312 \"Máy in-copy, in bằng công nghệ laser\" ⇒ congNgheIn LASER (khoá lô 20, đọc \"in bằng công nghệ laser\"). Thay THIEU_KHOA_TU_VUNG congNgheIn."
+    },
+    {
+      "ma": "8443313",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8443313 \"Máy in-copy-fax kết hợp\" ⇒ tenLoai nguyên văn (chữ biểu chỉ nêu tên hàng)."
+    },
+    {
+      "ma": "84433191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84433191 \"Máy in-copy-scan-fax kết hợp\" ⇒ tenLoai nguyên văn (chữ biểu chỉ nêu tên hàng)."
+    },
+    {
+      "ma": "84433191",
+      "loai": "DUNG",
+      "ghiChu": "cong2-dong-khong-toi-duoc:84433191 — chữ biểu chỉ nêu TÊN: .91 \"Máy in-copy-scan-fax kết hợp\" và tiêu đề 8443313 \"Máy in-copy-fax kết hợp\"; bộ so chữ đòi ĐỦ âm tiết của giá trị nên tên .91 chứa trọn mọi âm tiết của tên 8443313, mà .91 (dưới tầng \"Loại khác\" 8443319) phải KHÔNG thuộc 8443313 ⇒ không vector nào làm .91 CO, và 4 cặp cong2-chong-lan (.11/.31, .19/.39, .21/.31, .29/.39) phát sinh từ chính vector tên này (:khong-tat-dinh). Không sửa bằng khoá khác (chữ biểu chỉ có tên)."
+    },
+    {
+      "ma": "8443313",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan-truc:8443313:8443311,8443312 — tiêu đề 8443313 chia theo TÊN (\"Máy in-copy-fax kết hợp\") cạnh 8443311/8443312 chia theo ĐẶC ĐIỂM (congNgheIn IN_PHUN/LASER); không khai chongLanTruc được vì viDuHang cần hàng đọc ra tenLoai bằng cùng bộ đọc lúc chạy, mà TV.docTenLoaiDayDu không đọc được tên \"Máy in-copy-fax kết hợp\" (CHUA_BIET) ⇒ cong2-chong-lan-truc-vi-du-sai. Không bịa hàng để máy xanh. DỪNG, báo Claude."
+    }
   ]
 }

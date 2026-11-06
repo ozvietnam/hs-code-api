@@ -1,13 +1,16 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "200819",
-  "phien": "zcode-sub:glm-5.3:20261105T1548#soan-200819",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-200819",
   "dong8": {
-    "20081910": { "dieuKienSo": [] },
-    "20081991": { "dieuKienSo": [] },
-    "20081999": { "dieuKienSo": [] }
+    "20081910": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Hạt điều" } ] },
+    "20081991": { "dieuKienSo": [ { "fact": "daRang", "op": "CO" } ] }
   },
   "ghiChuSoan": [
-    { "ma": "200819", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:200819:chua-co, không soạn tiếp" }
+    { "ma": "20081910", "loai": "QUYET_DINH", "ghiChu": "tax.20081910 \"Hạt điều\" ⇒ tenLoai TEN_LOAI \"Hạt điều\" (chữ biểu chỉ nêu TÊN hàng)." },
+    { "ma": "20081991", "loai": "QUYET_DINH", "ghiChu": "tax.20081991 \"Đã rang\" ⇒ daRang CO (chữ \"Đã rang\" nguyên văn, khoá daRang tu-vung@2). Dòng nằm dưới tiêu đề 2008199 \"Loại khác\" trần nên không thêm điều kiện nào khác." },
+    { "ma": "2008199", "loai": "QUYET_DINH", "ghiChu": "tieuDe.2008199 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em .10)." },
+    { "ma": "20081999", "loai": "QUYET_DINH", "ghiChu": "tax.20081999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em .91)." },
+    { "ma": "200819", "loai": "LECH_TIEN_LE", "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 200819-01 KHONG_LECH và 200819-02 LECH_CHUA_PHAN_XU (800/TB-TCHQ hạt dẻ cười xay nhuyễn xếp .99, chữ .91 \"Đã rang\"): soạn theo chữ biểu, khớp bảng — .91 chỉ điều kiện daRang, không tự phân xử hàng đã nướng rồi xay trộn phụ gia." }
   ]
 }

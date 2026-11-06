@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0915#soan-722990",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-722990",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,7 +16,14 @@
       "id": "7229902",
       "nguon": "tieuDe.7229902",
       "trich": "7229902 Mặt cắt ngang không quá 5,5 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 5.5,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -25,7 +32,14 @@
       "hs": "72299021",
       "nguon": "tax.72299021",
       "trich": "72299021 - - - Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCrom",
+          "op": ">=",
+          "value": 0.5,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -39,14 +53,27 @@
       "hs": "72299030",
       "nguon": "tax.72299030",
       "trich": "72299030 - - Loại khác, bằng thép gió",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "thép gió"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72299091",
       "nguon": "tax.72299091",
       "trich": "72299091 - - - Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCrom",
+          "op": ">=",
+          "value": 0.5,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -59,9 +86,56 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "7229902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7229902 \"Mặt cắt ngang không quá 5,5 mm\" ⇒ duongKinh <= 5.5 mm (\"không quá\" = <=; \"5,5\" = 5.5). tu-vung@2 không có khoá \"kích thước mặt cắt ngang\" tổng quát; duongKinh là khoá gần nhất (dây thép), cùng cách đọc 721310 \"đường kính mặt cắt ngang … không quá 50 mm\". Dây mặt cắt không tròn: lúc chạy hỏi đường kính. Tiêu đề anh em 7229909 \"Loại khác\" trần ⇒ không điều kiện. Cảnh báo cong3-bien-khong-doc-duoc: đã đối chiếu tay biên \"không quá 5,5 mm\" ⇒ <= 5.5 mm."
+    },
+    {
+      "ma": "72299021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72299021 \"Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng\" ⇒ hamLuongCrom >= 0.5 % (\"từ … trở lên\" = >=)."
+    },
+    {
+      "ma": "72299021",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng crôm",
+      "lyDo": "Cụm danh từ đầu chỉ thuộc tính hàm lượng crôm, chữ giới thiệu thuần; ngưỡng đã lượng hóa qua hamLuongCrom >= 0.5 %"
+    },
+    {
+      "ma": "72299029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72299029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định .21)."
+    },
+    {
+      "ma": "72299030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72299030 \"Loại khác, bằng thép gió\" ⇒ chỉ điều kiện của vế \"bằng thép gió\": tenLoai TEN_LOAI \"thép gió\" (chữ biểu chỉ nêu TÊN vật liệu; chatLieu của tu-vung@2 không có giá trị thép gió; theo cách làm 722530/722540/722599). Định nghĩa thép gió của Chú giải Chương 72 không đưa vào điều kiện (không nằm trong chữ biểu của dòng)."
+    },
+    {
+      "ma": "72299091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72299091 \"Có hàm lượng crôm từ 0,5% trở lên tính theo khối lượng\" ⇒ hamLuongCrom >= 0.5 %, cùng khoá và cùng thang với .21."
+    },
+    {
+      "ma": "72299091",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng crôm",
+      "lyDo": "Cụm danh từ đầu chỉ thuộc tính hàm lượng crôm, chữ giới thiệu thuần; ngưỡng đã lượng hóa qua hamLuongCrom >= 0.5 %"
+    },
+    {
+      "ma": "72299099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72299099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định .91)."
+    },
+    {
+      "ma": "7229909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7229909 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào dieuKienNut."
+    },
+    {
       "ma": "722990",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:722990:chua-co, không soạn tiếp"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 722990-01 KHONG_LECH (1910/TB-TCHQ Cr 1,48% ⇒ .91; 149/TB-TCHQ Cr ≈ 0,3424% ⇒ .99): soạn theo chữ biểu (crôm >= 0,5% ⇒ .21/.91), khớp bảng."
     }
   ]
 }

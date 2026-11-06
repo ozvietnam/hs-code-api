@@ -1,12 +1,33 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "392329",
-  "phien": "zcode-sub:glm-5.3:20261106T1536#soan-392329",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-392329",
   "dong8": {
-    "39232910": { "dieuKienSo": [ { "fact": "chieuRong", "op": ">=", "value": 315, "donVi": "mm" } ] }
+    "39232910": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Túi vô trùng" },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "túi đáy nở-retort", "chieu": "PHAI_KHONG" },
+        { "fact": "chieuRong", "op": ">=", "value": 315, "donVi": "mm" },
+        { "fact": "chieuDai", "op": ">=", "value": 410, "donVi": "mm" },
+        { "fact": "ganNapDemKin", "op": "CO" }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "39232910", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "voTrungGiaCocLaNhom", "ghiChu": "tax.39232910 \"Túi vô trùng đã hoặc chưa gia cố bằng lá nhôm (trừ túi đáy nở-retort), chiều rộng từ 315 mm trở lên và chiều dài từ 410 mm trở lên, gắn với nắp đệm kín\" — các vế \"Túi vô trùng đã hoặc chưa gia cố bằng lá nhôm\", \"(trừ túi đáy nở-retort)\", \"gắn với nắp đệm kín\" và \"chiều dài từ 410 mm trở lên\" (khoá chieuDaiCuon chỉ dành hàng dài dây/cáp/ống/cuộn, không mượn) đều không có khoá tu-vung@2" },
-    { "ma": "392329", "loai": "DUNG", "ghiChu": "Gói --goi báo [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:392329:chua-co, Claude giữ" }
+    {
+      "ma": "392329",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 392329-01 KHONG_LECH (7374/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "39232910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39232910 \"Túi vô trùng đã hoặc chưa gia cố bằng lá nhôm (trừ túi đáy nở-retort), chiều rộng từ 315 mm trở lên và chiều dài từ 410 mm trở lên, gắn với nắp đệm kín\" ⇒ tenLoai \"Túi vô trùng\" + tenLoai \"túi đáy nở-retort\" PHAI_KHONG (vế \"trừ …\") + chieuRong >= 315 mm + chieuDai >= 410 mm (khoá mới chieuDai, thay chieuDaiCuon @1 không đọc op) + ganNapDemKin CO (khoá mới \"gắn với nắp đệm kín\"). Biên \"từ … trở lên\" = >=, đã đối chiếu tay với chữ."
+    },
+    {
+      "ma": "39232990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39232990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
   ]
 }
