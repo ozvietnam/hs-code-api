@@ -1,0 +1,111 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "560490",
+  "nhom": "5604",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T0942#soan-560490",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "56049010",
+      "nguon": "tax.56049010",
+      "trich": "56049010 - - Chỉ giả catgut, bằng sợi tơ tằm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chỉ giả catgut"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sợi tơ tằm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "56049020",
+      "nguon": "tax.56049020",
+      "trich": "56049020 - - Sợi dệt được ngâm tẩm cao su",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sợi dệt"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "ngâm tẩm cao su"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "56049030",
+      "nguon": "tax.56049030",
+      "trich": "56049030 - - Sợi có độ bền cao từ polyeste, ni lông hoặc polyamit khác hoặc từ viscose rayon",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "độ bền cao"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "polyeste",
+            "ni lông",
+            "polyamit",
+            "viscose rayon"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "56049090",
+      "nguon": "tax.56049090",
+      "trich": "56049090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "56049010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56049010 \"56049010 - - Chỉ giả catgut, bằng sợi tơ tằm\" ⇒ tenLoai TEN_LOAI \"Chỉ giả catgut\" (danh từ đầu = tên hàng) + tenLoai TEN_LOAI \"sợi tơ tằm\" (vật liệu của vế giới hạn \"bằng sợi tơ tằm\"; bỏ giới từ \"bằng\" vì không thuộc tên vật liệu, giống cách bỏ \"Từ các\" ở 540244). Không dùng chatLieu: tu-vung không có \"tơ tằm\" (chỉ có \"vải dệt\"); không dùng dungCho/congDung vì dòng này chia theo tên + vật liệu, không chia theo công dụng."
+    },
+    {
+      "ma": "56049020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56049020 \"56049020 - - Sợi dệt được ngâm tẩm cao su\" ⇒ tenLoai TEN_LOAI \"Sợi dệt\" (danh từ đầu) + tenLoai TEN_LOAI \"ngâm tẩm cao su\" (vế giới hạn — điểm phân biệt với dòng 56049030, chữ biểu 30 không nêu cao su); cả hai giá trị đều là chuỗi con nguyên văn. Không dùng chatLieu \"cao su\": sợi không phải làm từ cao su mà được ngâm tẩm cao su (chatLieu nói vật liệu làm ra hàng); không dùng daTrangPhuEpLop: khoá này chỉ hỏi có/không đã ngâm tẩm-tráng-phủ, không nêu cao su nên không phân biệt được với 56049030."
+    },
+    {
+      "ma": "56049030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56049030 \"56049030 - - Sợi có độ bền cao từ polyeste, ni lông hoặc polyamit khác hoặc từ viscose rayon\" ⇒ tenLoai TEN_LOAI \"độ bền cao\" (đặc tính định danh dòng; bỏ danh từ đầu chung \"Sợi\" và chữ \"có\" như cách bỏ \"Từ các\" ở 540244) + tenLoai TEN_LOAI [\"polyeste\",\"ni lông\",\"polyamit\",\"viscose rayon\"] — 4 vật liệu là 4 lựa chọn \"hoặc\", KHÔNG gộp thành một chuỗi (chuỗi có dấu phẩy hoặc \"hoặc\" bị cổng 3 chặn); không dùng loaiSoiDet (một giá trị không phủ cả sợi tổng hợp lẫn sợi tái tạo) và không dùng chatLieu (tu-vung không có 4 vật liệu này). Bỏ chữ \"khác\" trong \"polyamit khác\" (khác = polyamit khác ni-lông, KHÔNG phải phần còn lại của tầng) ⇒ khai \"phanConLai\": false; phần còn lại của tầng 560490 là dòng 56049090 \"Loại khác\" trần."
+    },
+    {
+      "ma": "56049090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.56049090 \"56049090 - - Loại khác\" trần ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "560490",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tầng 560490 không khai dieuKienNut: ten.vi của tầng là \"Loại khác\" trần (tầng dư trong nhóm 5604) và gói không có nguồn tieuDe.560490; tên WCO (wco.560490) — \"Yarn; textile yarn, strip, and the like of heading no. 5404 or 5405, impregnated, coated, covered, or sheathed with rubber or plastics, n.e.c. in heading no. 5604\" — mô tả CHUNG cả ba dòng 8 số nên không phân biệt được ranh giới 6→8; điều kiện cấp 6 số đã nằm ở sổ tay nhóm 5604. Nguồn chú giải trong gói (nhom5604.nhom, ch56.chuong, phan56.phan) chỉ có doDai, không kèm text, nên không trích được câu chú giải để bổ sung vế."
+    }
+  ]
+}
