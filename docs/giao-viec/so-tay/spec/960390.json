@@ -1,0 +1,17 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "960390",
+  "phien": "zcode-sub:glm-5.3:20261106T1028#soan-960390",
+  "dong8": {
+    "96039010": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Túm", "búi"] }, { "fact": "congDung", "op": "CONG_DUNG", "value": ["làm chổi", "bàn chải"] } ] },
+    "96039020": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dụng cụ cơ học" }, { "fact": "cachDieuKhien", "op": "TRONG", "value": ["BANG_TAY"] }, { "fact": "congDung", "op": "CONG_DUNG", "value": "quét sàn" } ] },
+    "96039040": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bàn chải" } ], "phanConLai": true },
+    "96039090": { "dieuKienSo": [] }
+  },
+  "ghiChuSoan": [
+    { "ma": "96039010", "loai": "QUYET_DINH", "ghiChu": "tax.96039010 \"Túm và búi đã làm sẵn để làm chổi hoặc bàn chải\" ⇒ tenLoai [\"Túm\",\"búi\"] (hai hàng) + congDung [\"làm chổi\",\"bàn chải\"] (mảng = hoặc, giá trị là chuỗi con của vế \"để làm chổi hoặc bàn chải\")" },
+    { "ma": "96039020", "loai": "QUYET_DINH", "ghiChu": "tax.96039020 \"Dụng cụ cơ học vận hành bằng tay để quét sàn, không có động cơ\" ⇒ tenLoai \"Dụng cụ cơ học\" + cachDieuKhien BANG_TAY (vế \"vận hành bằng tay\") + congDung \"quét sàn\"; vế \"không có động cơ\" lặp ý tiêu đề phân nhóm 960390 \"(not motorised)\" — tổ tiên đã giới hạn" },
+    { "ma": "96039040", "loai": "QUYET_DINH", "ghiChu": "tax.96039040 \"Bàn chải khác\" ⇒ tenLoai \"Bàn chải\" + phanConLai true (khác các anh em đứng trước; \"khác\" chủ yếu đối chiếu với 960310.10 bàn chải chất thực vật — ngoài phân nhóm)" },
+    { "ma": "96039090", "loai": "QUYET_DINH", "ghiChu": "tax.96039090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

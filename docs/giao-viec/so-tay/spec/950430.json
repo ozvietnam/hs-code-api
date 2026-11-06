@@ -1,0 +1,93 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "950430",
+  "phien": "zcode-sub:glm-5.3:20261106T1021#soan-950430",
+  "dong8": {
+    "95043030": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Trò chơi may rủi ngẫu nhiên với giải thưởng nhận ngay bằng tiền mặt"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "bộ phận",
+                  "phụ kiện"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Trò chơi may rủi ngẫu nhiên với giải thưởng nhận ngay bằng tiền mặt"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "95043040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy trò chơi bắn bi",
+            "các máy trò chơi tự động"
+          ]
+        }
+      ],
+      "phanConLai": true
+    },
+    "95043050": {
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "gỗ",
+            "giấy",
+            "plastic"
+          ]
+        }
+      ]
+    },
+    "95043090": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "95043030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.95043030 \"Trò chơi may rủi ngẫu nhiên với giải thưởng nhận ngay bằng tiền mặt; các bộ phận và phụ kiện của chúng\" ⇒ dạng vế mở theo 950300 .30: HOAC [[tenLoai X],[tenLoai [\"bộ phận\",\"phụ kiện\"], dungCho X]] với X = tên đầu nguyên văn (gồm vế \"bằng tiền mặt\")"
+    },
+    {
+      "ma": "95043040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.95043040 \"Máy trò chơi bắn bi (pintables) hoặc các máy trò chơi tự động (có khe nhét xèng hoặc xu) khác\" ⇒ tenLoai mảng [\"Máy trò chơi bắn bi\",\"các máy trò chơi tự động\"] (\"hoặc\" hai hàng; \"(pintables)\" và \"(có khe nhét xèng hoặc xu)\" là ngoặc PHU — cổng 5 không đòi phủ); \"khác\" ⇒ phanConLai true (phủ định .30)"
+    },
+    {
+      "ma": "95043050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.95043050 \"Loại khác, bộ phận bằng gỗ, giấy hoặc plastic\" ⇒ chỉ điều kiện của vế: laBoPhan CO (\"bộ phận\") + chatLieu LA [\"gỗ\",\"giấy\",\"plastic\"]"
+    },
+    {
+      "ma": "95043090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.95043090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

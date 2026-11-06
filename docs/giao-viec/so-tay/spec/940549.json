@@ -1,0 +1,34 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "940549",
+  "phien": "zcode-sub:glm-5.3:20261106T1010#soan-940549",
+  "dong8": {
+    "94054910": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn pha" } ] },
+    "94054920": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn rọi" } ], "phanConLai": true },
+    "94054930": { "dieuKienSo": [ { "op": "HOAC", "phuongAn": [ [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn tín hiệu không nhấp nháy" }, { "fact": "dungCho", "op": "CONG_DUNG", "value": "sân bay" } ], [ { "fact": "dungCho", "op": "CONG_DUNG", "value": ["phương tiện giao thông đường sắt", "đầu máy", "tàu thủy", "phương tiện bay", "hải đăng"] }, { "fact": "chatLieu", "op": "LA", "value": "kim loại" } ] ] } ] },
+    "94054940": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đèn báo hiệu" }, { "fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị nhiệt điện gia dụng thuộc nhóm 85.16" } ] },
+    "94054950": { "dieuKienSo": [ { "fact": "phamViSuDung", "op": "TRONG", "value": ["CONG_CONG"] } ] },
+    "94054960": { "dieuKienSo": [ { "fact": "congDung", "op": "CONG_DUNG", "value": "chiếu sáng bên ngoài" } ], "phanConLai": true },
+    "94054990": { "dieuKienSo": [] }
+  },
+  "chongLanTruc": [
+    {
+      "nhanh": ["94054910", "94054920", "94054930"],
+      "truc": { "94054910": "TEN_LOAI", "94054920": "TEN_LOAI", "94054930": "CONG_DUNG" },
+      "cauHoiPhanBiet": "Đèn này là \"Đèn pha\" (.10) / \"Đèn rọi khác\" (.20) hay là \"đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản\" (.30)?",
+      "trich": { "94054910": "Đèn pha", "94054920": "Đèn rọi khác", "94054930": "Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản" },
+      "viDuHang": [
+        { "cap": ["94054910", "94054930"], "hang": "Đèn pha bằng thép dùng cho tàu thủy" },
+        { "cap": ["94054920", "94054930"], "hang": "Đèn rọi bằng nhôm dùng cho đầu máy xe lửa" }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    { "ma": "94054920", "loai": "QUYET_DINH", "ghiChu": "tax.94054920 \"Đèn rọi khác\" ⇒ tenLoai \"Đèn rọi\" + phanConLai true (phần còn lại có tên, phủ định \"Đèn pha\" đứng trước; cùng dạng 940542 đã duyệt)" },
+    { "ma": "94054940", "loai": "QUYET_DINH", "ghiChu": "tax.94054940 \"Đèn báo hiệu dùng cho thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" ⇒ tenLoai \"Đèn báo hiệu\" + dungCho giữ nguyên chuỗi đích kèm mã \"thiết bị nhiệt điện gia dụng thuộc nhóm 85.16\" (luật dẫn mã)" },
+    { "ma": "94054950", "loai": "QUYET_DINH", "ghiChu": "tax.94054950 \"Loại khác, được sử dụng ở nơi công cộng hoặc đường phố lớn\" ⇒ chỉ điều kiện của vế: phamViSuDung TRONG [CONG_CONG] (giá trị đọc \"nơi công cộng\"; cùng dạng 940542 đã duyệt)" },
+    { "ma": "94054960", "loai": "QUYET_DINH", "ghiChu": "tax.94054960 \"Loại chiếu sáng bên ngoài khác\" ⇒ congDung \"chiếu sáng bên ngoài\" + phanConLai true (cùng dạng 940542 đã duyệt)" },
+    { "ma": "94054990", "loai": "QUYET_DINH", "ghiChu": "tax.94054990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

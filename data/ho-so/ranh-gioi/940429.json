@@ -1,0 +1,65 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "940429",
+  "nhom": "9404",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1008#soan-940429",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "94042910",
+      "nguon": "tax.94042910",
+      "trich": "94042910 - - - Đệm lò xo",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đệm lò xo"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94042920",
+      "nguon": "tax.94042920",
+      "trich": "94042920 - - - Loại khác, làm nóng/làm mát (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "làm nóng",
+            "làm mát"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "94042990",
+      "nguon": "tax.94042990",
+      "trich": "94042990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "94042920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94042920 \"Loại khác, làm nóng/làm mát (SEN)\" ⇒ chỉ điều kiện của vế: congDung [\"làm nóng\",\"làm mát\"] (mảng = hoặc); SEN.94042920 xác nhận \"Loại làm mát: đệm được thiết kế đặc biệt để làm mát cho bệnh nhân… Loại làm nóng: đệm thiết kế đặc biệt để làm nóng một bệnh nhân…\""
+    },
+    {
+      "ma": "94042990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94042990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

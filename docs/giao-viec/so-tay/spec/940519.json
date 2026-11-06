@@ -1,0 +1,20 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "940519",
+  "phien": "zcode-sub:glm-5.3:20261106T1009#soan-940519",
+  "dong8": {
+    "94051910": { "dieuKienSo": [ { "fact": "denChoPhongMo", "op": "CO" } ] },
+    "94051991": { "dieuKienSo": [ { "fact": "kieuChieuSangDen", "op": "TRONG", "value": ["DEN_ROI"] } ] },
+    "94051992": { "dieuKienSo": [ { "fact": "nguonSang", "op": "TRONG", "value": ["HUYNH_QUANG"] } ] },
+    "94051999": { "dieuKienSo": [] }
+  },
+  "chongLanVanBan": [
+    { "cap": ["94051991", "94051992"], "lyDo": "Hai câu chữ biểu không loại trừ nhau: .91 \"Đèn rọi\" (tax.94051991 \"94051991 - - - - Đèn rọi\") nói kiểu chiếu sáng, .92 \"Đèn gắn bóng đèn huỳnh quang\" (tax.94051992) nói nguồn sáng; đèn rọi gắn bóng đèn huỳnh quang thoả cả hai dòng; không có căn cứ thứ tự" }
+  ],
+  "ghiChuSoan": [
+    { "ma": "94051910", "loai": "QUYET_DINH", "ghiChu": "tax.94051910 \"Đèn cho phòng mổ\" ⇒ denChoPhongMo CO (nhãn khoá đúng \"đèn cho phòng mổ\", phủ vế GIỚI HẠN \"cho phòng mổ\")" },
+    { "ma": "94051991", "loai": "QUYET_DINH", "ghiChu": "tax.94051991 \"Đèn rọi\" ⇒ kieuChieuSangDen TRONG [DEN_ROI] (giá trị đọc được từ chữ \"đèn rọi\")" },
+    { "ma": "94051992", "loai": "QUYET_DINH", "ghiChu": "tax.94051992 \"Đèn gắn bóng đèn huỳnh quang\" ⇒ nguonSang TRONG [HUYNH_QUANG] (giá trị đọc được từ chữ \"bóng đèn huỳnh quang\")" },
+    { "ma": "94051999", "loai": "QUYET_DINH", "ghiChu": "tax.94051999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}
