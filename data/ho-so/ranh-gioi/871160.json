@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871160",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-871160",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -123,6 +123,12 @@
           "op": "<=",
           "value": 250,
           "donVi": "W"
+        },
+        {
+          "fact": "tocDoDiChuyen",
+          "op": "<=",
+          "value": 25,
+          "donVi": "km/h"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -150,6 +156,11 @@
     }
   ],
   "ghiChuSoan": [
+    {
+      "ma": "87116094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87116094 \"Xe đạp, có động cơ điện phụ trợ không quá 250 W và tốc độ tối đa không quá 25 km/h\": tenLoai \"Xe đạp\" + congSuat <= 250 W (\"không quá\" = <=) + tocDoDiChuyen <= 25 km/h (khoá lô 20, \"tốc độ tối đa\"; \"không quá\" = <=); đã đối chiếu tay hai biên"
+    },
     {
       "ma": "8711601",
       "loai": "QUYET_DINH",
@@ -189,12 +200,6 @@
       "ma": "87116093",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.87116093 \"Xe mô tô khác\" ⇒ tenLoai \"Xe mô tô\" + phanConLai true (phủ định .92)"
-    },
-    {
-      "ma": "87116094",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "tocDoKmH",
-      "ghiChu": "tax.87116094 \"Xe đạp, có động cơ điện phụ trợ không quá 250 W và tốc độ tối đa không quá 25 km/h\" — vế \"tốc độ tối đa không quá 25 km/h\" không có khoá (tocDo chỉ có đơn vị v/ph); đã ghi tenLoai \"Xe đạp\" + congSuat <= 250 W"
     },
     {
       "ma": "87116095",
