@@ -1,0 +1,114 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "480451",
+  "nhom": "4804",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-480451",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "48045110",
+      "nguon": "tax.48045110",
+      "trich": "48045110 - - - Giấy kraft cách điện (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giấy kraft cách điện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48045120",
+      "nguon": "tax.48045120",
+      "trich": "48045120 - - - Bìa ép có định lượng từ 600g/m2 trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bìa ép"
+        },
+        {
+          "fact": "dinhLuong",
+          "op": ">=",
+          "value": 600,
+          "donVi": "g/m2"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48045130",
+      "nguon": "tax.48045130",
+      "trich": "48045130 - - - Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất băng dán gỗ dán"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48045190",
+      "nguon": "tax.48045190",
+      "trich": "48045190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "48045110",
+        "48045120",
+        "48045130"
+      ],
+      "truc": {
+        "48045110": "TEN_LOAI",
+        "48045120": "TEN_LOAI",
+        "48045130": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng hóa là giấy kraft cách điện, bìa ép hay giấy dùng để sản xuất băng dán gỗ dán?",
+      "trich": {
+        "48045110": "Giấy kraft cách điện (SEN)",
+        "48045120": "Bìa ép có định lượng từ 600g/m2 trở lên",
+        "48045130": "dùng để sản xuất băng dán gỗ dán"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "48045110",
+            "48045130"
+          ],
+          "hang": "Giấy kraft cách điện dùng để sản xuất băng dán gỗ dán"
+        },
+        {
+          "cap": [
+            "48045120",
+            "48045130"
+          ],
+          "hang": "Bìa ép có định lượng 650 g/m2 dùng để sản xuất băng dán gỗ dán"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48045130",
+      "loai": "BO_VE",
+      "ve": "Có độ bền ướt từ 40 g đến 60 g",
+      "lyDo": "Chưa có khoá tu-vung cho tiêu chí độ bền ướt (g), định danh phân loại chủ yếu theo công dụng sản xuất băng dán gỗ dán"
+    }
+  ]
+}
