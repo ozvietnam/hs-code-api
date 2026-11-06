@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1028#soan-960891",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-960891",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,15 @@
       "hs": "96089110",
       "nguon": "tax.96089110",
       "trich": "96089110 - - - Bằng vàng hoặc mạ vàng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "VANG_HOAC_MA_VANG"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -31,9 +39,8 @@
   "ghiChuSoan": [
     {
       "ma": "96089110",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu (thêm giá trị vàng hoặc mạ vàng)",
-      "ghiChu": "tax.96089110 \"Bằng vàng hoặc mạ vàng\" — tu-vung@2 không có giá trị chatLieu \"vàng\"/\"mạ vàng\" (kim loại chung là RỘNG hơn chữ — ngòi thép cũng là kim loại); không mượn giá trị gần nghĩa, không bỏ vế"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96089110 \"Bằng vàng hoặc mạ vàng\" ⇒ vatLieuKhac TRONG [VANG_HOAC_MA_VANG] (khoá mới; chữ biểu chính của dòng là \"Bằng <vật liệu>\")."
     },
     {
       "ma": "96089190",

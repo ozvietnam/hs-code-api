@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0940#soan-730690",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-730690",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -54,6 +54,10 @@
       "trich": "73069091 - - - Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi, đường kính trong nhỏ hơn 12,5 mm",
       "dieuKienSo": [
         {
+          "fact": "ongChiuApLucCao",
+          "op": "CO"
+        },
+        {
           "fact": "gioiHanChay",
           "op": ">=",
           "value": 42000,
@@ -74,6 +78,10 @@
       "trich": "73069094 - - - Các loại ống dẫn chịu áp lực cao khác, có đường kính ngoài nhỏ hơn 12,5 mm",
       "dieuKienSo": [
         {
+          "fact": "ongChiuApLucCao",
+          "op": "CO"
+        },
+        {
           "fact": "duongKinh",
           "op": "<",
           "value": 12.5,
@@ -90,6 +98,10 @@
       "nguon": "tax.73069095",
       "trich": "73069095 - - - Các loại ống dẫn chịu áp lực cao khác, có đường kính ngoài từ 12,5 mm trở lên",
       "dieuKienSo": [
+        {
+          "fact": "ongChiuApLucCao",
+          "op": "CO"
+        },
         {
           "fact": "duongKinh",
           "op": ">=",
@@ -169,7 +181,7 @@
     {
       "ma": "73069091",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73069091: \"Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi, đường kính trong nhỏ hơn 12,5 mm\" ⇒ gioiHanChay >= 42000 psi (như 73049010) + duongKinhTrong < 12.5 mm; \"(1)\" là đánh dấu chú thích bảng"
+      "ghiChu": "tax.73069091: \"Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi, đường kính trong nhỏ hơn 12,5 mm\" ⇒ ongChiuApLucCao CO (\"Ống dẫn chịu áp lực cao\") + gioiHanChay >= 42000 psi (như 73049010) + duongKinhTrong < 12.5 mm; \"(1)\" là đánh dấu chú thích bảng"
     },
     {
       "ma": "73069091",
@@ -180,12 +192,12 @@
     {
       "ma": "73069094",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73069094: \"Các loại ống dẫn chịu áp lực cao khác, có đường kính ngoài nhỏ hơn 12,5 mm\" ⇒ phanConLai [73069091] + duongKinh < 12.5 mm; định ngữ họ hàng \"ống dẫn chịu áp lực cao\" không có khoá tu-vung@2 (khaNangChiuApLuc là SO psi, câu không có ngưỡng) nên không điều kiện hoá được"
+      "ghiChu": "tax.73069094: \"Các loại ống dẫn chịu áp lực cao khác, có đường kính ngoài nhỏ hơn 12,5 mm\" ⇒ ongChiuApLucCao CO (khoá lô 20, cachDoc đọc \"các loại ống dẫn chịu áp lực cao\") + duongKinh < 12.5 mm + phanConLai [73069091] (\"khác\" = ngoài .91)"
     },
     {
       "ma": "73069095",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73069095: \"Các loại ống dẫn chịu áp lực cao khác, có đường kính ngoài từ 12,5 mm trở lên\" ⇒ phanConLai [73069091] + duongKinh >= 12.5 mm (trở lên = >=); không phủ .94 vì hai dòng là hai vế size của cùng họ \"khác\" (rời nhau theo đường kính ngoài)"
+      "ghiChu": "tax.73069095: \"Các loại ống dẫn chịu áp lực cao khác, có đường kính ngoài từ 12,5 mm trở lên\" ⇒ ongChiuApLucCao CO + duongKinh >= 12.5 mm (trở lên = >=) + phanConLai [73069091]; không phủ .94 vì hai dòng là hai vế size của cùng họ \"khác\" (rời nhau theo đường kính ngoài); đã đối chiếu tay biên \"từ 12,5 mm trở lên\" = >= 12.5 (cảnh báo cong3-bien-khong-doc-duoc chấp nhận)"
     },
     {
       "ma": "73069096",
@@ -195,18 +207,12 @@
     {
       "ma": "73069097",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73069097: \"Loại khác, có đường kính trong trên 12,5 mm, đường kính ngoài nhỏ hơn 140 mm và chứa dưới 0,45% carbon tính theo khối lượng\" ⇒ chỉ điều kiện của vế: duongKinhTrong > 12.5 mm, duongKinh < 140 mm, hamLuongCarbon < 0.45 % (máy tự phủ định mọi anh em đứng trước vì dòng mở đầu \"Loại khác\")"
+      "ghiChu": "tax.73069097: \"Loại khác, có đường kính trong trên 12,5 mm, đường kính ngoài nhỏ hơn 140 mm và chứa dưới 0,45% carbon tính theo khối lượng\" ⇒ chỉ điều kiện của vế: duongKinhTrong > 12.5 mm, duongKinh < 140 mm, hamLuongCarbon < 0.45 % (máy tự phủ định mọi anh em đứng trước vì dòng mở đầu \"Loại khác\"); đã đối chiếu tay biên: \"trên 12,5 mm\" = >, \"nhỏ hơn 140 mm\" = <, \"dưới 0,45%\" = < 0.45 % (cảnh báo cong3-bien-khong-doc-duoc:hamLuongCarbon chấp nhận)"
     },
     {
       "ma": "73069099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.73069099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
-    },
-    {
-      "ma": "73069094",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chiuApLucCao",
-      "ghiChu": "tax.73069094/.95 \"Các loại ống dẫn chịu áp lực cao khác…\": định ngữ \"chịu áp lực cao\" (không kèm ngưỡng số) không có khoá tu-vung@2 — không thể tách .94/.95 (họ ống chịu áp lực cao) khỏi .96/.97/.99 (Loại khác nói chung); bỏ định ngữ ⇒ .94/.95 phủ kín mọi đường kính ngoài ⇒ cong2-dong-khong-toi-duoc:73069096/97/99. Mượn khaNangChiuApLuc (SO psi) khi câu không có số là bịa ngưỡng"
     }
   ]
 }

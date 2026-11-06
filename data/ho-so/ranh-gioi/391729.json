@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1709#soan-391729",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-391729",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -16,7 +16,12 @@
       "id": "3917291",
       "nguon": "tieuDe.3917291",
       "trich": "3917291 Được gia công hơn mức gia công bề mặt đơn thuần",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "giaCongHonBeMat",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -136,9 +141,8 @@
   "ghiChuSoan": [
     {
       "ma": "3917291",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "giaCongHonMucGiaCongBeMat",
-      "ghiChu": "tieuDe.3917291 \"Được gia công hơn mức gia công bề mặt đơn thuần\" — đây là ranh giới chính của phân nhóm (3917291 gia công hơn vs 3917292 loại khác); tu-vung@2 chưa có khoá cho mức gia công này, không mượn khoá daXuLyBeMat (đọc \"xử lý bề mặt\", khác nghĩa)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.3917291 \"Được gia công hơn mức gia công bề mặt đơn thuần\" ⇒ giaCongHonBeMat CO (khoá mới lô 20 đọc đúng chữ này, tách khỏi daXuLyBeMat \"xử lý bề mặt\"). Tiêu đề anh em 3917292 \"Loại khác\" trần ⇒ không khai (máy phủ định 3917291)."
     },
     {
       "ma": "39172911",

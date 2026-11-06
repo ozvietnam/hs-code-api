@@ -1,15 +1,27 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "902129",
-  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-902129",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-902129",
   "dong8": {
     "90212910": {
       "dieuKienSo": [
-        { "fact": "chatLieu", "op": "LA", "value": "sắt thép" }
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
       ]
     },
     "90212920": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "TITAN"
+          ]
+        }
+      ]
     }
   },
   "dieuKienNut": {},
@@ -21,9 +33,8 @@
     },
     {
       "ma": "90212920",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu (thêm giá trị titan)",
-      "ghiChu": "tax.90212920: \"Bằng titan\" — tu-vung@2 chatLieu chưa có giá trị titan; không mượn giá trị gần nghĩa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90212920 \"Bằng titan\" ⇒ vatLieuKhac TRONG [TITAN] (khoá mới tu-vung@2; chữ biểu chính là \"Bằng <vật liệu>\" nên dùng được khoá, cachDoc đọc \"bằng titan\")."
     }
   ]
 }

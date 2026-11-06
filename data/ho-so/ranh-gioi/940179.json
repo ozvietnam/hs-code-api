@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-940179",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-940179",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,15 @@
       "hs": "94017910",
       "nguon": "tax.94017910",
       "trich": "94017910 - - - Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "SONG_MAY"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -31,9 +39,8 @@
   "ghiChuSoan": [
     {
       "ma": "94017910",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu (thêm giá trị song, mây)",
-      "ghiChu": "tax.94017910: \"Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)\" — tu-vung@2 chatLieu chưa có giá trị song/mây; không mượn giá trị gần nghĩa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94017910 \"Có tựa lưng và/hoặc phần để ngồi làm bằng song, mây (SEN)\" ⇒ vatLieuKhac TRONG [SONG_MAY] (khoá mới tu-vung@2, cachDoc đọc \"bằng song, mây\"); vế \"Có tựa lưng và/hoặc phần để ngồi làm\" chỉ chỉ ra bộ phận làm bằng song, mây."
     }
   ]
 }

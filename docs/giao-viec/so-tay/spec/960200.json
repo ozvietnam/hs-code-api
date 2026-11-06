@@ -1,15 +1,86 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "960200",
-  "phien": "zcode-sub:glm-5.3:20261106T1027#soan-960200",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-960200",
   "dong8": {
-    "96020010": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vỏ viên nhộng" }, { "fact": "dungCho", "op": "CONG_DUNG", "value": "dược phẩm" } ] },
-    "96020020": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Hộp đựng xì gà hoặc thuốc lá điếu", "bình đựng thuốc lá", "đồ trang trí"] } ] },
-    "96020090": { "dieuKienSo": [] }
+    "96020010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vỏ viên nhộng"
+        },
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "GELATIN"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "dược phẩm"
+        }
+      ]
+    },
+    "96020020": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Hộp đựng"
+              },
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "xì gà",
+                  "thuốc lá điếu"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bình đựng thuốc lá"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "đồ trang trí"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "96020090": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    { "ma": "96020010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu (thêm giá trị gelatin)", "ghiChu": "tax.96020010 \"Vỏ viên nhộng bằng gelatin dùng cho dược phẩm\" — vế GIỚI HẠN \"bằng gelatin\" không có giá trị chatLieu trong tu-vung@2 (chỉ lưu tenLoai \"Vỏ viên nhộng\" + dungCho \"dược phẩm\"); bỏ vế bằng BO_VE làm rộng hơn chữ (vỏ viên nhộng vật liệu khác rơi nhầm .10) — không được" },
-    { "ma": "96020020", "loai": "QUYET_DINH", "ghiChu": "tax.96020020 \"Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí\" ⇒ tenLoai mảng ba hàng [\"Hộp đựng xì gà hoặc thuốc lá điếu\",\"bình đựng thuốc lá\",\"đồ trang trí\"]" },
-    { "ma": "96020090", "loai": "QUYET_DINH", "ghiChu": "tax.96020090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "96020090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96020090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "96020010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96020010 \"Vỏ viên nhộng bằng gelatin dùng cho dược phẩm\" ⇒ tenLoai \"Vỏ viên nhộng\" + vatLieuKhac TRONG [GELATIN] (khoá mới, đọc \"bằng gelatin\"; dòng có chữ biểu chính là \"bằng <vật liệu>\") + dungCho \"dược phẩm\"."
+    },
+    {
+      "ma": "96020020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.96020020 \"Hộp đựng xì gà hoặc thuốc lá điếu, bình đựng thuốc lá; đồ trang trí\" (EN \"Cigar or cigarette cases, tobacco jars; ornamental articles\") ⇒ HOAC [[tenLoai \"Hộp đựng\" + tenLoai [\"xì gà\",\"thuốc lá điếu\"]], [tenLoai \"bình đựng thuốc lá\"], [tenLoai \"đồ trang trí\"]]: \"Hộp đựng\" là định ngữ chung (EN \"cases\"), tách riêng để không gói liệt kê \"hoặc\" trong một chuỗi."
+    }
   ]
 }

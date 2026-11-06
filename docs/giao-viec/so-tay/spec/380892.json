@@ -1,10 +1,17 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "380892",
-  "phien": "mm:minimax-m3:20261105T1704#soan-380892",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-380892",
   "dong8": {
     "38089211": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongValidamycin",
+          "op": "<=",
+          "value": 3,
+          "donVi": "%"
+        }
+      ]
     }
   },
   "dieuKienNut": {
@@ -25,9 +32,8 @@
     },
     {
       "ma": "38089211",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hamLuongHoatTinh",
-      "ghiChu": "tax.38089211 \"Với hàm lượng validamycin không quá 3% tính theo khối lượng tịnh\" (EN \"With a validamycin content not exceeding 3% by net weight\") — vế GIỚI HẠN \"không quá 3% tính theo khối lượng tịnh\" cần khoá SO đơn vị % đọc được với cụm \"hàm lượng … %\". Tu-vung không có khoá hàm lượng hoạt tính (nongDoCon chỉ đọc nồng độ cồn; hamLuongCarbon/Niken/Crom là vật liệu cụ thể) ⇒ không mượn khoá gần nghĩa, để dieuKienSo trống, đề xuất khoá mới hamLuongHoatTinh (SO, donVi %)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38089211 \"Với hàm lượng validamycin không quá 3% tính theo khối lượng tịnh\" ⇒ hamLuongValidamycin <= 3 % (khoá lô 20 đọc \"hàm lượng validamycin\"; \"không quá\" = <=; \"tính theo khối lượng tịnh\" là cách tính, không phải điều kiện riêng)."
     },
     {
       "ma": "38089219",

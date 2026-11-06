@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1100#soan-870380",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-870380",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -135,7 +135,12 @@
       "hs": "87038018",
       "nguon": "tax.87038018",
       "trich": "87038018 - - - Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM",
       "phanConLai": true
     },
@@ -255,7 +260,12 @@
       "hs": "87038098",
       "nguon": "tax.87038098",
       "trich": "87038098 - - - Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM",
       "phanConLai": true
     },
@@ -355,15 +365,13 @@
     },
     {
       "ma": "87038018",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "laOtoVan",
-      "ghiChu": "tax.87038018 \"Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)…\" — không có khoá tu-vung đọc được \"ô tô van\" (kieuXeChoNguoi không có giá trị VAN); không loại được \"ô tô van\" nên dòng \"Loại khác\" dưới không tới được / không phủ định được tầng này"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87038018 \"…, nhưng không kể ô tô van\" ⇒ laOtoVan KHONG (khoá tu-vung@2 mới, cách đọc KHÔNG có \"không kể ô tô van\"); cụm \"(kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao\" là vế PHU theo luật 3.8"
     },
     {
       "ma": "87038098",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "laOtoVan",
-      "ghiChu": "tax.87038098 \"Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van)…\" — không có khoá tu-vung đọc được \"ô tô van\" (kieuXeChoNguoi không có giá trị VAN); không loại được \"ô tô van\" nên dòng \"Loại khác\" dưới không tới được / không phủ định được tầng này"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87038098 \"…, nhưng không kể ô tô van\" ⇒ laOtoVan KHONG (khoá tu-vung@2 mới, cách đọc KHÔNG có \"không kể ô tô van\"); cụm \"(kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao\" là vế PHU theo luật 3.8"
     }
   ]
 }

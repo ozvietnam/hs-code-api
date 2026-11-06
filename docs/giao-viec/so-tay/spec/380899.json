@@ -1,11 +1,32 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "380899",
-  "phien": "mm:minimax-m3:20261105T1709#soan-380899",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-380899",
   "dong8": {
     "38089910": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Thuốc bảo quản gỗ" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thuốc bảo quản gỗ"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "chuaChatDietCongTrung",
+                "op": "CO"
+              }
+            ],
+            [
+              {
+                "fact": "chuaChatTruNam",
+                "op": "CO"
+              }
+            ]
+          ]
+        }
       ]
     }
   },
@@ -18,15 +39,8 @@
     },
     {
       "ma": "38089910",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chuaChatDietCongTrung",
-      "ghiChu": "tax.38089910 \"chứa chất diệt côn trùng\" — vế GIỚI HẠN nói thành phần có trong hàng; tu-vung@2 chưa có khoá chứa chất diệt côn trùng, không mượn khoá gần nghĩa."
-    },
-    {
-      "ma": "38089910",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chuaChatTruNam",
-      "ghiChu": "tax.38089910 \"trừ nấm\" — vế GIỚI HẠN thứ hai của câu (chứa chất diệt côn trùng hoặc trừ nấm); tu-vung@2 chưa có khoá chứa chất trừ nấm."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.38089910 \"Thuốc bảo quản gỗ, chứa chất diệt côn trùng hoặc trừ nấm\" ⇒ tenLoai \"Thuốc bảo quản gỗ\" + HOAC [[chuaChatDietCongTrung CO],[chuaChatTruNam CO]] (chữ \"hoặc\" nối hai chất; khoá lô 20, đọc cặp \"chứa chất diệt côn trùng\" / \"trừ nấm\" sau \"côn trùng hoặc\")."
     }
   ]
 }

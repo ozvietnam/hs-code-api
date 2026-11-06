@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-270400",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-270400",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -17,14 +17,40 @@
       "hs": "27040010",
       "nguon": "tax.27040010",
       "trich": "27040010 - Than cốc và than nửa cốc luyện từ than đá",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Than cốc và than nửa cốc"
+        },
+        {
+          "fact": "nguyenLieuLuyen",
+          "op": "TRONG",
+          "value": [
+            "THAN_DA"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27040020",
       "nguon": "tax.27040020",
       "trich": "27040020 - Than cốc và than nửa cốc luyện từ than non hoặc than bùn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Than cốc và than nửa cốc"
+        },
+        {
+          "fact": "nguyenLieuLuyen",
+          "op": "TRONG",
+          "value": [
+            "THAN_NON_HOAC_THAN_BUN"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -44,15 +70,13 @@
   "ghiChuSoan": [
     {
       "ma": "27040010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "nguyenLieuLuyen",
-      "ghiChu": "tax.27040010: \"Than cốc và than nửa cốc luyện từ than đá\" — cần khoá nguyên liệu nguồn (than đá) để tách với 27040020 (than non hoặc than bùn); tu-vung@2 chưa có, tenLoai tự do làm vector trần \"Than cốc\" không rơi vào con nào (cong1-khong-phu-kin:2704)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27040010: \"Than cốc và than nửa cốc luyện từ than đá\" ⇒ nguyenLieuLuyen TRONG [THAN_DA] ; tên đầu \"Than cốc và than nửa cốc\" ⇒ tenLoai, để tách tên với 27040030 \"Muội bình chưng than đá\""
     },
     {
       "ma": "27040020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "nguyenLieuLuyen",
-      "ghiChu": "tax.27040020: \"Than cốc và than nửa cốc luyện từ than non hoặc than bùn\" — cùng nguyên nhân: thiếu khoá nguyên liệu nguồn (than non/than bùn)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27040020: \"Than cốc và than nửa cốc luyện từ than non hoặc than bùn\" ⇒ nguyenLieuLuyen TRONG [THAN_NON_HOAC_THAN_BUN] ; tên đầu \"Than cốc và than nửa cốc\" ⇒ tenLoai"
     }
   ]
 }

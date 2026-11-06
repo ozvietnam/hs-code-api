@@ -1,14 +1,14 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "842489",
-  "phien": "zcode-sub:glm-5.3:20261106T1055#soan-842489",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-842489",
   "dong8": {
     "84248910": {
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Thiết bị phun, xịt"
+          "value": "Thiết bị phun"
         },
         {
           "fact": "cachDieuKhien",
@@ -33,7 +33,17 @@
       ]
     },
     "84248920": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đầu bình phun"
+        },
+        {
+          "fact": "coGanVoi",
+          "op": "CO"
+        }
+      ]
     },
     "84248940": {
       "dieuKienSo": [
@@ -46,7 +56,8 @@
           "op": "CONG_DUNG",
           "value": [
             "sản xuất tấm nền của tấm mạch in",
-            "tấm dây in"
+            "tấm dây in",
+            "linh kiện của chúng"
           ]
         }
       ]
@@ -76,9 +87,8 @@
     },
     {
       "ma": "84248920",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "coGanVoi (có gắn vòi)",
-      "ghiChu": "tax.84248920 \"Đầu bình phun, xịt có gắn vòi\" — tu-vung@2 không có khoá cho \"có gắn vòi\"; không mượn khoá gần nghĩa, không đưa \"vòi\" vào tenLoai (vòi không phải tên hàng)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84248920 \"Đầu bình phun, xịt có gắn vòi\" ⇒ coGanVoi CO (khoá tu-vung@2 lô 20, đọc \"có gắn vòi\"); danh từ đầu \"Đầu bình phun, xịt\" không thành điều kiện riêng."
     },
     {
       "ma": "84248940",

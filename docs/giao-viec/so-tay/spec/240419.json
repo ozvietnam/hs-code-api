@@ -1,14 +1,42 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "240419",
-  "phien": "zcode-sub:glm-5.3:20261105T1542#soan-240419",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-240419",
   "dong8": {
-    "24041910": { "dieuKienSo": [] },
-    "24041920": { "dieuKienSo": [] }
+    "24041910": {
+      "dieuKienSo": [
+        {
+          "fact": "chuaNguyenLieuThayThe",
+          "op": "TRONG",
+          "value": [
+            "LA_THUOC_LA"
+          ]
+        }
+      ]
+    },
+    "24041920": {
+      "dieuKienSo": [
+        {
+          "fact": "chuaNguyenLieuThayThe",
+          "op": "TRONG",
+          "value": [
+            "NICOTIN"
+          ]
+        }
+      ]
+    }
   },
   "dieuKienNut": {},
   "ghiChuSoan": [
-    { "ma": "24041910", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chuaNguyenLieu", "ghiChu": "tax.24041910 \"Chứa các nguyên liệu thay thế lá thuốc lá\" — vế GIỚI HẠN nói thành phần chứa (containing); tu-vung@2 không có khoá thành phần/chứa; bỏ vế làm đổi mã (.10 ↔ .20) nên không BO_VE" },
-    { "ma": "24041920", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chuaNguyenLieu", "ghiChu": "tax.24041920 \"Chứa các nguyên liệu thay thế nicotin\" — vế GIỚI HẠN nói thành phần chứa (containing); tu-vung@2 không có khoá thành phần/chứa; bỏ vế làm đổi mã (.10 ↔ .20) nên không BO_VE" }
+    {
+      "ma": "24041910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.24041910: \"Chứa các nguyên liệu thay thế lá thuốc lá\" ⇒ chuaNguyenLieuThayThe TRONG [LA_THUOC_LA] (khoá lô 20 thay cho THIEU_KHOA chuaNguyenLieu)"
+    },
+    {
+      "ma": "24041920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.24041920: \"Chứa các nguyên liệu thay thế nicotin\" ⇒ chuaNguyenLieuThayThe TRONG [NICOTIN]"
+    }
   ]
 }

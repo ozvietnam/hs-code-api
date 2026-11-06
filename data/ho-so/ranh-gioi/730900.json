@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1002#soan-730900",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-730900",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -34,7 +34,12 @@
       "hs": "73090011",
       "nguon": "tax.73090011",
       "trich": "73090011 - - Được lót hoặc được cách nhiệt",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "duocLotHoacCachNhiet",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -48,7 +53,12 @@
       "hs": "73090091",
       "nguon": "tax.73090091",
       "trich": "73090091 - - Được lót hoặc được cách nhiệt",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "duocLotHoacCachNhiet",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -66,26 +76,24 @@
       "ghiChu": "tieuDe.7309001: \"Loại sử dụng trong vận chuyển hoặc đóng gói hàng hóa\" ⇒ dungCho [\"vận chuyển\",\"đóng gói hàng hóa\"] (vế \"sử dụng trong vận chuyển hoặc đóng gói hàng hóa\" — hai cách dùng nối \"hoặc\" ⇒ mảng, mỗi giá trị chuỗi con nguyên văn)"
     },
     {
-      "ma": "73090011",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "duocLotHoacCachNhiet",
-      "ghiChu": "tax.73090011: \"Được lót hoặc được cách nhiệt\" — hai vế GIỚI HẠN \"Được lót\" · \"được cách nhiệt\" đều không có khoá tu-vung@2 (coGiaNhiet là \"có gia nhiệt\", khác \"cách nhiệt\"); bỏ vế làm bình chứa đã lót rơi nhầm .19 ⇒ không BO_VE được"
-    },
-    {
       "ma": "73090019",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.73090019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
     },
     {
-      "ma": "73090091",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "duocLotHoacCachNhiet",
-      "ghiChu": "tax.73090091: \"Được lót hoặc được cách nhiệt\" — như 73090011: thiếu khoá cho \"Được lót\" và \"được cách nhiệt\""
-    },
-    {
       "ma": "73090099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.73090099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "73090011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73090011: \"Được lót hoặc được cách nhiệt\" ⇒ duocLotHoacCachNhiet CO (khoá lô 20, cachDoc đọc nguyên cụm \"được lót hoặc được cách nhiệt\")"
+    },
+    {
+      "ma": "73090091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73090091: \"Được lót hoặc được cách nhiệt\" ⇒ duocLotHoacCachNhiet CO (như 73090011)"
     }
   ]
 }

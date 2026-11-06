@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-902129",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-902129",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -30,7 +30,15 @@
       "hs": "90212920",
       "nguon": "tax.90212920",
       "trich": "90212920 - - - Bằng titan",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "TITAN"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -49,9 +57,8 @@
     },
     {
       "ma": "90212920",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu (thêm giá trị titan)",
-      "ghiChu": "tax.90212920: \"Bằng titan\" — tu-vung@2 chatLieu chưa có giá trị titan; không mượn giá trị gần nghĩa"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90212920 \"Bằng titan\" ⇒ vatLieuKhac TRONG [TITAN] (khoá mới tu-vung@2; chữ biểu chính là \"Bằng <vật liệu>\" nên dùng được khoá, cachDoc đọc \"bằng titan\")."
     }
   ]
 }

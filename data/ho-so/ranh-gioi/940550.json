@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1012#soan-940550",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-940550",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,7 +16,15 @@
       "id": "9405501",
       "nguon": "tieuDe.9405501",
       "trich": "9405501 Loại đốt bằng dầu",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "nhienLieu",
+          "op": "TRONG",
+          "value": [
+            "DAU"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -85,12 +93,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "9405501",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "nhienLieu (thêm giá trị DAU)",
-      "ghiChu": "tieuDe.9405501 \"9405501 Loại đốt bằng dầu\" — cần khoá loại nhiên liệu đốt đọc được vế \"đốt\" + \"bằng dầu\"; tu-vung@2 chỉ có nhienLieu [GA, DIEN] (bếp/lò), không có giá trị dầu; không mượn khoá gần nghĩa"
-    },
-    {
       "ma": "94055011",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.94055011 \"Bằng đồng sử dụng trong nghi lễ tôn giáo\" ⇒ chatLieu LA \"đồng\" + dungCho \"nghi lễ tôn giáo\" (giá trị là chuỗi con nguyên văn của vế GIỚI HẠN \"sử dụng trong nghi lễ tôn giáo\")"
@@ -109,6 +111,11 @@
       "ma": "94055090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.94055090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "9405501",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9405501 \"Loại đốt bằng dầu\" ⇒ nhienLieu TRONG [DAU] (giá trị DAU mới thêm tu-vung@2, cachDoc đọc \"đốt bằng dầu\")."
     }
   ]
 }

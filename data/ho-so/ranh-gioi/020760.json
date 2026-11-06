@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1529#soan-020760",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-020760",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -18,6 +18,10 @@
       "nguon": "tax.02076010",
       "trich": "02076010 - - Chưa chặt mảnh, tươi hoặc ướp lạnh",
       "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "KHONG"
+        },
         {
           "fact": "phuongPhapBaoQuan",
           "op": "TRONG",
@@ -34,6 +38,10 @@
       "trich": "02076020 - - Chưa chặt mảnh, đông lạnh",
       "dieuKienSo": [
         {
+          "fact": "daChatManh",
+          "op": "KHONG"
+        },
+        {
           "fact": "phuongPhapBaoQuan",
           "op": "TRONG",
           "value": [
@@ -48,6 +56,10 @@
       "nguon": "tax.02076030",
       "trich": "02076030 - - Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh",
       "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "CO"
+        },
         {
           "fact": "phuongPhapBaoQuan",
           "op": "TRONG",
@@ -64,6 +76,10 @@
       "trich": "02076040 - - Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh",
       "dieuKienSo": [
         {
+          "fact": "daChatManh",
+          "op": "CO"
+        },
+        {
           "fact": "phuongPhapBaoQuan",
           "op": "TRONG",
           "value": [
@@ -77,27 +93,23 @@
   "ghiChuSoan": [
     {
       "ma": "02076010",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daChatManh",
-      "ghiChu": "tax.02076010 \"Chưa chặt mảnh, tươi hoặc ướp lạnh\" — vế \"Chưa chặt mảnh\" không có khoá tu-vung@2 (trục chưa/đã chặt mảnh phân biệt 02076010/20 với 02076030/40); phuongPhapBaoQuan TUOI_UOP_LANH chỉ phủ vế \"tươi hoặc ướp lạnh\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076010 \"Chưa chặt mảnh, tươi hoặc ướp lạnh\" ⇒ daChatManh KHONG (đọc \"Chưa chặt mảnh\") + phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]."
     },
     {
       "ma": "02076020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daChatManh",
-      "ghiChu": "tax.02076020 \"Chưa chặt mảnh, đông lạnh\" — vế \"Chưa chặt mảnh\" không có khoá tu-vung@2; phuongPhapBaoQuan DONG_LANH chỉ phủ vế \"đông lạnh\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076020 \"Chưa chặt mảnh, đông lạnh\" ⇒ daChatManh KHONG + phuongPhapBaoQuan TRONG [DONG_LANH]."
     },
     {
       "ma": "02076030",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daChatManh",
-      "ghiChu": "tax.02076030 \"Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh\" — vế \"Đã chặt mảnh và phụ phẩm sau giết mổ\" không có khoá tu-vung@2; phuongPhapBaoQuan TUOI_UOP_LANH chỉ phủ vế \"tươi hoặc ướp lạnh\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076030 \"Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh\" ⇒ daChatManh CO (cachDoc khớp nguyên cụm \"Đã chặt mảnh và phụ phẩm sau giết mổ\") + phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]."
     },
     {
       "ma": "02076040",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daChatManh",
-      "ghiChu": "tax.02076040 \"Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh\" — vế \"Đã chặt mảnh và phụ phẩm sau giết mổ\" không có khoá tu-vung@2; phuongPhapBaoQuan DONG_LANH chỉ phủ vế \"đông lạnh\"."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076040 \"Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh\" ⇒ daChatManh CO + phuongPhapBaoQuan TRONG [DONG_LANH]."
     }
   ]
 }

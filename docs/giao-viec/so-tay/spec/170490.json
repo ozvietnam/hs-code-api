@@ -1,23 +1,48 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "170490",
-  "phien": "zcode-sub:glm-5.3:20261105T0920#soan-170490",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-170490",
   "dong8": {
     "17049010": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Kẹo", "viên ngậm ho"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Kẹo",
+            "viên ngậm ho"
+          ]
+        }
       ]
     },
     "17049020": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Sô cô la trắng" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sô cô la trắng"
+        }
       ]
     },
     "17049091": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "coGelatin",
+          "op": "CO"
+        }
+      ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "17049091", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "coGelatin", "ghiChu": "tax.17049091 \"Dẻo, có chứa gelatin (SEN)\" — vế GIỚI HẠN \"có chứa gelatin\" không có khoá trong tu-vung@2 (không có khoá thành phần chứa gelatin); \"Dẻo\" là tính trạng, không phải tên hàng" }
+    {
+      "ma": "17049091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.17049091 \"Dẻo, có chứa gelatin (SEN)\" ⇒ coGelatin CO (khoá coGelatin tu-vung@2 lô 20, đọc CÓ \"chứa gelatin\"); \"Dẻo\" là tính trạng kết cấu đi kèm, không có khoá và không phải tên hàng — cổng 5 không liệt kê thành vế, không ghi điều kiện"
+    },
+    {
+      "ma": "170490",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 170490-01 KHONG_LECH (181/TB-TCHQ, 183/TB-TCHQ, 184/TB-TCHQ, 185/TB-TCHQ) và 170490-02 KHONG_LECH (2622/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    }
   ]
 }

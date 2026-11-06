@@ -1,13 +1,35 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "940620",
-  "phien": "zcode-sub:glm-5.3:20261106T1019#soan-940620",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-940620",
   "dong8": {
-    "94062010": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nhà trồng cây" } ] },
-    "94062090": { "dieuKienSo": [] }
+    "94062010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhà trồng cây"
+        },
+        {
+          "fact": "ganThietBiCoKhiHoacGiaNhiet",
+          "op": "CO"
+        }
+      ]
+    },
+    "94062090": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    { "ma": "94062010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "ganThietBiCoKhiHoacNhiet (CO_KHONG)", "ghiChu": "tax.94062010 \"Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt\" — tên \"Nhà trồng cây\" ghi được (tenLoai) nhưng vế GIỚI HẠN \"được gắn với thiết bị cơ khí hoặc thiết bị nhiệt\" không có khoá tu-vung@2; không mượn khoá gần nghĩa, không bỏ vế bằng BO_VE vì bỏ vế làm đổi mã .10/.90 (cùng dạng 940610)" },
-    { "ma": "94062090", "loai": "QUYET_DINH", "ghiChu": "tax.94062090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "94062090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94062090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "94062010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94062010 \"Nhà trồng cây được gắn với thiết bị cơ khí hoặc thiết bị nhiệt\" ⇒ tenLoai \"Nhà trồng cây\" + ganThietBiCoKhiHoacGiaNhiet CO (khoá mới tu-vung@2, đọc \"được gắn với thiết bị cơ khí hoặc thiết bị nhiệt\"); cùng dạng 940690."
+    }
   ]
 }

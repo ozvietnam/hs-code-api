@@ -1,24 +1,65 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "731210",
-  "phien": "zcode-sub:glm-5.3:20261106T1015#soan-731210",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-731210",
   "dong8": {
     "73121010": {
       "dieuKienSo": [
-        { "fact": "dangCuon", "op": "CO" },
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["dây bện tao kiểu bọc", "dây tao dẹt", "dây cáp chống xoắn"] }
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "dây bện tao kiểu bọc",
+            "dây tao dẹt",
+            "dây cáp chống xoắn"
+          ]
+        }
       ]
     },
     "73121020": {
       "dieuKienSo": [
-        { "fact": "duongKinh", "op": "<=", "value": 3, "donVi": "mm" }
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "DONG_THAU"
+          ]
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 3,
+          "donVi": "mm"
+        }
       ]
     },
-    "73121030": { "dieuKienSo": [] },
+    "73121030": {
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "NHOM"
+          ]
+        }
+      ]
+    },
     "73121091": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dây thép bện tao" },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "bê tông dự ứng lực" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây thép bện tao"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bê tông dự ứng lực"
+        }
       ]
     }
   },
@@ -32,19 +73,7 @@
     {
       "ma": "73121020",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.73121020: \"Loại được phủ, mạ hoặc tráng bằng đồng thau và có đường kính không quá 3 mm\" ⇒ duongKinh <= 3 mm (không quá = <=)"
-    },
-    {
-      "ma": "73121020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "maDongThau",
-      "ghiChu": "tax.73121020 vế GIỚI HẠN: \"được phủ, mạ hoặc tráng bằng đồng thau\" — lopMaPhu không có giá trị mạ đồng thau (MA_DONG đọc \"mạ đồng\", đồng thau ≠ đồng); bỏ vế làm dây thép bất kỳ ≤ 3 mm rơi nhầm .20 ⇒ không BO_VE được"
-    },
-    {
-      "ma": "73121030",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "trangNhom",
-      "ghiChu": "tax.73121030: \"Được phủ, mạ hoặc tráng nhôm\" — lopMaPhu không có giá trị phủ/mạ/tráng nhôm (chỉ có đồng, nhựa flo, kẽm-cromat, thiếc, sơn sau mạ kẽm); đây là toàn bộ nội dung dòng ⇒ để trống dieuKienSo"
+      "ghiChu": "tax.73121020: \"Loại được phủ, mạ hoặc tráng bằng đồng thau và có đường kính không quá 3 mm\" ⇒ lopMaPhu TRONG [DONG_THAU] (giá trị mới của lô 20, cachDoc đọc \"phủ, mạ hoặc tráng bằng đồng thau\") + duongKinh <= 3 mm (không quá = <=)"
     },
     {
       "ma": "73121091",
@@ -55,6 +84,11 @@
       "ma": "73121099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.73121099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "73121030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73121030: \"Được phủ, mạ hoặc tráng nhôm\" ⇒ lopMaPhu TRONG [NHOM] (giá trị mới của lô 20, cachDoc đọc \"phủ, mạ hoặc tráng nhôm\")"
     }
   ]
 }

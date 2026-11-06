@@ -1,14 +1,24 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "230120",
-  "phien": "zcode-sub:glm-5.3:20261105T1542#soan-230120",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-230120",
   "dong8": {
-    "23012010": { "dieuKienSo": [] },
-    "23012020": { "dieuKienSo": [] }
+    "23012010": {
+      "dieuKienSo": [
+        { "fact": "nguonGocSinhVat", "op": "TRONG", "value": ["TU_CA"] },
+        { "fact": "hamLuongProtein", "op": "<", "value": 60, "donVi": "%" }
+      ]
+    },
+    "23012020": {
+      "dieuKienSo": [
+        { "fact": "nguonGocSinhVat", "op": "TRONG", "value": ["TU_CA"] },
+        { "fact": "hamLuongProtein", "op": ">=", "value": 60, "donVi": "%" }
+      ]
+    }
   },
   "dieuKienNut": {},
   "ghiChuSoan": [
-    { "ma": "23012010", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "hamLuongProtein", "ghiChu": "tax.23012010: \"Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng\" — cần khoá hàm lượng protein (dưới 60% tính theo khối lượng, %); nguồn gốc \"Từ cá\" cũng chưa có khoá (nguonGoc)" },
-    { "ma": "23012020", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "hamLuongProtein", "ghiChu": "tax.23012020: \"Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng\" — cần khoá hàm lượng protein (từ 60% trở lên, %); nguồn gốc \"Từ cá\" cũng chưa có khoá (nguonGoc)" }
+    { "ma": "23012010", "loai": "QUYET_DINH", "ghiChu": "tax.23012010: \"Từ cá, có hàm lượng protein dưới 60% tính theo khối lượng\" ⇒ nguonGocSinhVat TRONG [TU_CA] và hamLuongProtein < 60 %" },
+    { "ma": "23012020", "loai": "QUYET_DINH", "ghiChu": "tax.23012020: \"Từ cá, có hàm lượng protein từ 60% trở lên tính theo khối lượng\" ⇒ nguonGocSinhVat TRONG [TU_CA] và hamLuongProtein >= 60 %" }
   ]
 }
