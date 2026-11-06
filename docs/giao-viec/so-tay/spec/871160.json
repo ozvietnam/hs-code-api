@@ -1,0 +1,66 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "871160",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871160",
+  "dong8": {
+    "87116011": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xe đạp" }
+      ]
+    },
+    "87116012": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Xe \"kick scooter\"", "xe tự cân bằng \"self-balancing cycle\"", "xe \"pocket motorcycle”"] }
+      ]
+    },
+    "87116013": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xe mô tô" }
+      ],
+      "phanConLai": true
+    },
+    "87116092": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Xe \"kick scooter\"", "xe tự cân bằng \"self-balancing cycle\"", "xe \"pocket motorcycle”"] }
+      ]
+    },
+    "87116093": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xe mô tô" }
+      ],
+      "phanConLai": true
+    },
+    "87116094": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xe đạp" },
+        { "fact": "congSuat", "op": "<=", "value": 250, "donVi": "W" }
+      ]
+    },
+    "87116095": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xe đạp" }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {
+    "8711601": {
+      "dieuKienSo": [
+        { "fact": "daLapRap", "op": "KHONG" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "8711601", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8711601 \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG" },
+    { "ma": "87116011", "loai": "QUYET_DINH", "ghiChu": "tax.87116011 \"Xe đạp\" ⇒ tenLoai \"Xe đạp\"" },
+    { "ma": "87116012", "loai": "QUYET_DINH", "ghiChu": "tax.87116012 ⇒ tenLoai ba hàng [\"Xe \\\"kick scooter\\\"\",\"xe tự cân bằng \\\"self-balancing cycle\\\"\",\"xe \\\"pocket motorcycle\\”\"]" },
+    { "ma": "87116013", "loai": "QUYET_DINH", "ghiChu": "tax.87116013 \"Xe mô tô khác\" ⇒ tenLoai \"Xe mô tô\" + phanConLai true (phủ định .11, .12)" },
+    { "ma": "87116019", "loai": "QUYET_DINH", "ghiChu": "tax.87116019 \"Loại khác\" trần ⇒ không điều kiện" },
+    { "ma": "8711609", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8711609 \"Loại khác\" trần ⇒ không điều kiện" },
+    { "ma": "87116092", "loai": "QUYET_DINH", "ghiChu": "tax.87116092 ⇒ tenLoai như 87116012" },
+    { "ma": "87116093", "loai": "QUYET_DINH", "ghiChu": "tax.87116093 \"Xe mô tô khác\" ⇒ tenLoai \"Xe mô tô\" + phanConLai true (phủ định .92)" },
+    { "ma": "87116094", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "tocDoKmH", "ghiChu": "tax.87116094 \"Xe đạp, có động cơ điện phụ trợ không quá 250 W và tốc độ tối đa không quá 25 km/h\" — vế \"tốc độ tối đa không quá 25 km/h\" không có khoá (tocDo chỉ có đơn vị v/ph); đã ghi tenLoai \"Xe đạp\" + congSuat <= 250 W" },
+    { "ma": "87116095", "loai": "QUYET_DINH", "ghiChu": "tax.87116095 \"Xe đạp khác\" ⇒ tenLoai \"Xe đạp\" + phanConLai true (phủ định .92, .93, .94)" },
+    { "ma": "87116099", "loai": "QUYET_DINH", "ghiChu": "tax.87116099 \"Loại khác\" trần ⇒ không điều kiện" }
+  ]
+}

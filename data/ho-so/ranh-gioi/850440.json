@@ -1,0 +1,151 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "850440",
+  "nhom": "8504",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261105T0955#soan-850440",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8504401",
+      "nguon": "tieuDe.8504401",
+      "trich": "8504401 Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy xử lý dữ liệu tự động",
+            "khối chức năng",
+            "thiết bị viễn thông"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85044011",
+      "nguon": "tax.85044011",
+      "trich": "85044011 - - - Bộ nguồn cấp điện liên tục (UPS) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "loaiBienDoiTinhDien",
+          "op": "TRONG",
+          "value": [
+            "UPS"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85044019",
+      "nguon": "tax.85044019",
+      "trich": "85044019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85044020",
+      "nguon": "tax.85044020",
+      "trich": "85044020 - - Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy nạp ắc qui"
+        },
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 100,
+          "donVi": "kVA"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85044030",
+      "nguon": "tax.85044030",
+      "trich": "85044030 - - Bộ chỉnh lưu khác",
+      "dieuKienSo": [
+        {
+          "fact": "loaiBienDoiTinhDien",
+          "op": "TRONG",
+          "value": [
+            "CHINH_LUU"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "85044040",
+      "nguon": "tax.85044040",
+      "trich": "85044040 - - Bộ nghịch lưu",
+      "dieuKienSo": [
+        {
+          "fact": "loaiBienDoiTinhDien",
+          "op": "TRONG",
+          "value": [
+            "NGHICH_LUU"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85044090",
+      "nguon": "tax.85044090",
+      "trich": "85044090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "850440",
+      "loai": "DUNG",
+      "ghiChu": "Gói soạn ghi [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:850440:chua-co — chờ Claude lập mục bảng hiệu chỉnh tiền lệ rồi soạn lại theo chữ biểu (QUY-TRINH mục 5)"
+    },
+    {
+      "ma": "8504401",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504401 \"Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông\" ⇒ dungCho mảng [máy xử lý dữ liệu tự động, khối chức năng, thiết bị viễn thông]"
+    },
+    {
+      "ma": "85044011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85044011 \"Bộ nguồn cấp điện liên tục (UPS) (SEN)\" ⇒ loaiBienDoiTinhDien UPS (khoá liệt kê đúng trục)"
+    },
+    {
+      "ma": "85044020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85044020 \"Máy nạp ắc qui, pin có công suất danh định trên 100 kVA\" ⇒ tenLoai \"Máy nạp ắc qui\" + congSuatBieuKien > 100 kVA"
+    },
+    {
+      "ma": "85044030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85044030 \"Bộ chỉnh lưu khác\" ⇒ loaiBienDoiTinhDien CHINH_LUU + phanConLai: true (chỉnh lưu khác ngoài máy nạp ắc qui .20)"
+    },
+    {
+      "ma": "85044040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85044040 \"Bộ nghịch lưu\" ⇒ loaiBienDoiTinhDien NGHICH_LUU"
+    },
+    {
+      "ma": "85044090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85044090 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

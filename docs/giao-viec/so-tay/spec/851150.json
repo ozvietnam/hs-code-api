@@ -1,0 +1,152 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "851150",
+  "phien": "zcode-sub:glm-5.3:20261105T1015#soan-851150",
+  "dieuKienNut": {
+    "8511502": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phát điện xoay chiều"
+        },
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "phanConLai": true
+    },
+    "8511503": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy phát điện xoay chiều"
+        },
+        {
+          "fact": "daLapRap",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01 đến 87.05"
+        }
+      ]
+    }
+  },
+  "dong8": {
+    "85115010": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ của phương tiện bay"
+        }
+      ]
+    },
+    "85115021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.05"
+          ]
+        }
+      ]
+    },
+    "85115029": {
+      "dieuKienSo": []
+    },
+    "85115031": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
+      ]
+    },
+    "85115032": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
+        }
+      ]
+    },
+    "85115033": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.05"
+        }
+      ]
+    },
+    "85115091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04",
+            "87.05"
+          ]
+        }
+      ]
+    },
+    "85115099": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85115010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115010 \"Loại dùng cho động cơ của phương tiện bay\" ⇒ dungCho \"động cơ của phương tiện bay\" (đích nguyên văn)"
+    },
+    {
+      "ma": "8511502",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8511502 \"Máy phát điện xoay chiều khác chưa lắp ráp\" ⇒ tenLoai + daLapRap KHONG (\"chưa lắp ráp\") + phanConLai: true (\"khác\" — phần còn lại có tên, phủ định .10 dùng cho phương tiện bay)"
+    },
+    {
+      "ma": "8511503",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8511503 \"… đã lắp ráp sử dụng cho động cơ của xe thuộc các nhóm từ 87.01 đến 87.05\" ⇒ tenLoai + daLapRap CO + dungCho \"87.01 đến 87.05\" (dải mã nguyên văn)"
+    },
+    {
+      "ma": "85115021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115021 \"Sử dụng cho động cơ của xe thuộc nhóm 87.02, 87.03, 87.04 hoặc 87.05\" ⇒ dungCho mảng 4 mã (giống .91)"
+    },
+    {
+      "ma": "85115031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115031/.32/.33 ⇒ dungCho \"87.01\" / [87.02, 87.03, 87.04] / \"87.05\""
+    },
+    {
+      "ma": "85115029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85115029 \"Loại khác\" trần ⇒ không điều kiện (giống .99)"
+    },
+    {
+      "ma": "8511503",
+      "loai": "DUNG",
+      "ghiChu": "Cấu trúc chặn: tầng 8511503 mang dải mã \"từ 87.01 đến 87.05\", ba dòng con mang mã đơn (.31 87.01, .32 87.02/87.03/87.04, .33 87.05) — vector biên sinh từ giá trị dải của tầng không bao giờ CO ở dòng con (so mã đơn với chuỗi dải = THIEU) ⇒ cong1-khong-phu-kin:8511503; bỏ dải ở tầng (BO_VE) thì vector \"dùng cho động cơ của phương tiện bay đã lắp ráp\" rơi tẽ vào tầng mà không vào con nào; nở dải thành mảng mã ⇒ cong3-khong-co-trong-trich. Đã thử 4 vòng. Báo Claude"
+    }
+  ]
+}

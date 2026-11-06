@@ -1,0 +1,61 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "871200",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871200",
+  "dong8": {
+    "87120010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đạp đua"
+        }
+      ]
+    },
+    "87120020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đạp"
+        },
+        {
+          "fact": "thietKeChoTreEm",
+          "op": "CO"
+        }
+      ]
+    },
+    "87120030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đạp khác"
+        }
+      ],
+      "phanConLai": true
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "87120010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87120010 \"Xe đạp đua\" ⇒ tenLoai \"Xe đạp đua\""
+    },
+    {
+      "ma": "87120020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87120020 \"Xe đạp được thiết kế dành cho trẻ em (SEN)\" ⇒ tenLoai \"Xe đạp\" + thietKeChoTreEm CO (vế \"được thiết kế dành cho trẻ em\")"
+    },
+    {
+      "ma": "87120030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87120030 \"Xe đạp khác\" ⇒ tenLoai \"Xe đạp khác\" (tên nguyên văn, như 3004908 \"thuốc khác điều trị ung thư\") + phanConLai true (phủ định .10, .20)"
+    },
+    {
+      "ma": "87120090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87120090 \"Loại khác\" trần ⇒ không điều kiện (xe không phải xe đạp, vd xích lô)"
+    }
+  ]
+}

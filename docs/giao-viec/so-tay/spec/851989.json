@@ -1,0 +1,119 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "851989",
+  "phien": "zcode-sub:glm-5.3:20261105T1050#soan-851989",
+  "dong8": {
+    "85198910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy tái tạo âm thanh"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "điện ảnh"
+        }
+      ]
+    },
+    "85198920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy quay đĩa"
+        }
+      ]
+    },
+    "85198930": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "điện ảnh",
+            "phát thanh"
+          ]
+        }
+      ]
+    },
+    "85198940": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị tái tạo âm thanh"
+        }
+      ],
+      "phanConLai": true
+    },
+    "85198990": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "85198910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85198910 \"Máy tái tạo âm thanh dùng trong điện ảnh\" ⇒ tenLoai + dungCho \"điện ảnh\" (vế \"dùng trong điện ảnh\"); cặp .10/.30, .20/.30 khác trục (tên ↔ công dụng) ⇒ khai chongLanTruc"
+    },
+    {
+      "ma": "85198920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85198920 \"Máy quay đĩa (record players) có hoặc không có loa\" ⇒ tenLoai \"Máy quay đĩa\"; ngoặc Anh là PHU; \"có hoặc không có loa\" cổng không đòi tách"
+    },
+    {
+      "ma": "85198930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85198930 \"Loại dùng cho điện ảnh hoặc phát thanh\" ⇒ dungCho mảng [điện ảnh, phát thanh]"
+    },
+    {
+      "ma": "85198940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85198940 \"Thiết bị tái tạo âm thanh khác\" ⇒ tenLoai + phanConLai: true (phần còn lại có tên, phủ định .10/.20/.30)"
+    },
+    {
+      "ma": "85198990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85198990 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "85198910",
+        "85198920",
+        "85198930"
+      ],
+      "truc": {
+        "85198910": "TEN_LOAI",
+        "85198920": "TEN_LOAI",
+        "85198930": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Thiết bị này là \"Máy tái tạo âm thanh dùng trong điện ảnh\" (85198910), \"Máy quay đĩa\" (85198920), hay loại khác chỉ được dùng cho điện ảnh hoặc phát thanh (85198930)?",
+      "trich": {
+        "85198910": "Máy tái tạo âm thanh dùng trong điện ảnh",
+        "85198920": "Máy quay đĩa (record players) có hoặc không có loa",
+        "85198930": "Loại dùng cho điện ảnh hoặc phát thanh"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "85198910",
+            "85198930"
+          ],
+          "hang": "Máy tái tạo âm thanh dùng cho điện ảnh"
+        },
+        {
+          "cap": [
+            "85198920",
+            "85198930"
+          ],
+          "hang": "Máy quay đĩa dùng cho phát thanh"
+        }
+      ],
+      "phanXu": null
+    }
+  ]
+}

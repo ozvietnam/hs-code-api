@@ -1,0 +1,20 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850212",
+  "phien": "zcode-sub:glm-5.3:20261105T0935#soan-850212",
+  "dong8": {
+    "85021210": { "dieuKienSo": [
+      {"fact": "congSuatBieuKien", "op": ">", "value": 75, "donVi": "kVA"},
+      {"fact": "congSuatBieuKien", "op": "<=", "value": 125, "donVi": "kVA"}
+    ] },
+    "85021220": { "dieuKienSo": [
+      {"fact": "congSuatBieuKien", "op": ">", "value": 125, "donVi": "kVA"},
+      {"fact": "congSuatBieuKien", "op": "<=", "value": 375, "donVi": "kVA"}
+    ] }
+  },
+  "ghiChuSoan": [
+    {"ma": "85021210", "loai": "QUYET_DINH", "ghiChu": "tax.85021210 \"Công suất trên 75 kVA nhưng không quá 125 kVA\" ⇒ congSuatBieuKien > 75 kVA và <= 125 kVA"},
+    {"ma": "85021220", "loai": "QUYET_DINH", "ghiChu": "tax.85021220 \"Công suất trên 125 kVA nhưng không quá 375 kVA\" ⇒ congSuatBieuKien > 125 kVA và <= 375 kVA"},
+    {"ma": "85021210", "loai": "DUNG", "ghiChu": "Cấu trúc chặn (như 850162/850132): 850212 chỉ có 2 dòng số chia đôi dải (>75…≤125 / >125…≤375 kVA), gốc không có dòng \"Loại khác\" — cong1 khong-phu-kin đòi vector biên ngay ngoài cận phân nhóm (74,999 kVA / 375,0004 kVA) phải rơi vào một dòng trong khi cả hai dòng đều phải đúng cận chữ (cong3-bien-lech-chu không cho bỏ cận). Mâu thuẫn cấu trúc, không bịa chữ được. Báo Claude"}
+  ]
+}

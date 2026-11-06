@@ -1,0 +1,126 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "871680",
+  "nhom": "8716",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871680",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "87168010",
+      "nguon": "tax.87168010",
+      "trich": "87168010 - - Xe kéo và xe đẩy, xe kéo, xe đẩy bằng tay để chở hàng và các loại xe tương tự được vận hành bằng tay sử dụng trong các nhà máy hoặc phân xưởng, trừ xe cút kít",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Xe kéo",
+                  "xe đẩy"
+                ]
+              },
+              {
+                "fact": "cachDieuKhien",
+                "op": "TRONG",
+                "value": [
+                  "BANG_TAY"
+                ]
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "chở hàng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "Xe kéo",
+                  "xe đẩy"
+                ]
+              },
+              {
+                "fact": "cachDieuKhien",
+                "op": "TRONG",
+                "value": [
+                  "BANG_TAY"
+                ]
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "các nhà máy",
+                  "phân xưởng"
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xe cút kít",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87168020",
+      "nguon": "tax.87168020",
+      "trich": "87168020 - - Xe cút kít",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe cút kít"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87168090",
+      "nguon": "tax.87168090",
+      "trich": "87168090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "87168010",
+      "loai": "BO_VE",
+      "ve": "được vận hành",
+      "lyDo": "vế 'được vận hành' là nửa trước của cụm 'được vận hành bằng tay' của cùng dòng — ý vận hành bằng tay đã được phủ bằng cachDieuKhien BANG_TAY (cách đọc 'bằng tay', 'vận hành tay'); không có khoá riêng cho 'vận hành'"
+    },
+    {
+      "ma": "87168010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87168010 \"Xe kéo và xe đẩy, xe kéo, xe đẩy bằng tay để chở hàng và các loại xe tương tự được vận hành bằng tay sử dụng trong các nhà máy hoặc phân xưởng, trừ xe cút kít\" ⇒ HOAC: [tenLoai [\"Xe kéo\",\"xe đẩy\"] + cachDieuKhien BANG_TAY + congDung \"chở hàng\"] hoặc [tenLoai TUONG_TU [\"Xe kéo\",\"xe đẩy\"] (vế mở \"và các loại xe tương tự\") + cachDieuKhien BANG_TAY + dungCho [\"các nhà máy\",\"phân xưởng\"]]; tenLoai \"xe cút kít\" PHAI_KHONG (vế \"trừ xe cút kít\")"
+    },
+    {
+      "ma": "87168020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87168020 \"Xe cút kít\" ⇒ tenLoai \"Xe cút kít\""
+    },
+    {
+      "ma": "87168090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87168090 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

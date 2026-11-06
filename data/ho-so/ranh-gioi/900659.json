@@ -1,0 +1,156 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "900659",
+  "nhom": "9006",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-900659",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "9006591",
+      "nguon": "tieuDe.9006591",
+      "trich": "9006591 Sử dụng phim cuộn khổ rộng dưới 35 mm",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phim cuộn khổ rộng dưới 35 mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "9006592",
+      "nguon": "tieuDe.9006592",
+      "trich": "9006592 Loại khác, dùng để chuẩn bị khuôn in hoặc ống in",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "khuôn in",
+            "ống in"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "90065911",
+      "nguon": "tax.90065911",
+      "trich": "90065911 - - - - Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR)) ",
+      "dieuKienSo": [
+        {
+          "fact": "ngamQuaThauKinhSLR",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90065919",
+      "nguon": "tax.90065919",
+      "trich": "90065919 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90065921",
+      "nguon": "tax.90065921",
+      "trich": "90065921 - - - - Máy vẽ ảnh laser",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy vẽ ảnh laser"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90065929",
+      "nguon": "tax.90065929",
+      "trich": "90065929 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90065930",
+      "nguon": "tax.90065930",
+      "trich": "90065930 - - - Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Máy vẽ ảnh laser",
+            "máy tạo dựng ảnh với bộ xử lý ảnh mành"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90065990",
+      "nguon": "tax.90065990",
+      "trich": "90065990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "90065921",
+      "loai": "DUNG",
+      "ghiChu": "cong2-dong-khong-toi-duoc:90065921 — dòng .21 \"Máy vẽ ảnh laser\" (dưới tiêu đề 9006592) trùng tên với giá trị thứ nhất của .30 \"Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành\" ở tầng gốc: mọi vector làm .21 CO đều làm nhóm phủ định .30 MÂU THUẪN (chỉ phân biệt qua các phủ định Loại khác mà máy đọc CHƯA BIẾT); ngoài bảng luật chung ⇒ DỪNG theo QUY-TRINH mục 5."
+    },
+    {
+      "ma": "9006591",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9006591 \"Sử dụng phim cuộn khổ rộng dưới 35 mm\" ⇒ dungCho \"phim cuộn khổ rộng dưới 35 mm\" (trọn cụm đích, thuộc tính của hàng đích đi cùng đích — LUAT chung dòng 8)"
+    },
+    {
+      "ma": "90065911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90065911 \"Có bộ ngắm qua thấu kính (kính phản chiếu đơn (SLR))\" ⇒ ngamQuaThauKinhSLR CO (cách đọc \"có bộ ngắm qua thấu kính\")"
+    },
+    {
+      "ma": "90065919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90065919 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "9006592",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9006592 \"Loại khác, dùng để chuẩn bị khuôn in hoặc ống in\" ⇒ chỉ vế: congDung [\"khuôn in\",\"ống in\"]"
+    },
+    {
+      "ma": "90065921",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90065921 \"Máy vẽ ảnh laser\" ⇒ tenLoai \"Máy vẽ ảnh laser\""
+    },
+    {
+      "ma": "90065929",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90065929 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "90065930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90065930 \"Loại khác, máy vẽ ảnh laser hoặc máy tạo dựng ảnh với bộ xử lý ảnh mành\" ⇒ tenLoai [\"Máy vẽ ảnh laser\",\"máy tạo dựng ảnh với bộ xử lý ảnh mành\"] (vế \"với bộ xử lý ảnh mành\" giữ trong giá trị — không có khoá riêng khớp chữ)"
+    },
+    {
+      "ma": "90065990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90065990 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

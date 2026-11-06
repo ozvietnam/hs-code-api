@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-871491",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871491",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -21,7 +21,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "8712.00.20"
+          "value": "xe đạp thuộc phân nhóm 8712.00.20"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -36,8 +36,8 @@
           "op": "CO"
         },
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
           "value": "càng xe đạp"
         }
       ],
@@ -55,12 +55,22 @@
     {
       "ma": "87149110",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.87149110: \"Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)\" ⇒ dungCho \"8712.00.20\""
+      "ghiChu": "tax.87149110 \"Dùng cho xe đạp thuộc phân nhóm 8712.00.20 (SEN)\" ⇒ dungCho \"xe đạp thuộc phân nhóm 8712.00.20\" (chữ mô tả kèm mã — để phủ định anh em của dòng dưới 8714919 so được, #697)"
+    },
+    {
+      "ma": "8714919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8714919 \"Loại khác\" trần ⇒ không điều kiện"
     },
     {
       "ma": "87149191",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.87149191: \"Bộ phận của càng xe đạp\" ⇒ laBoPhan CO, tenLoai \"càng xe đạp\" (phủ vế giới hạn \"của càng xe đạp\" và tránh xung đột với dungCho xe thuộc 87.11-87.13 của nhóm cha)"
+      "ghiChu": "tax.87149191 \"Bộ phận của càng xe đạp\" ⇒ laBoPhan CO + dungCho \"càng xe đạp\" (vế \"của càng xe đạp\")"
+    },
+    {
+      "ma": "87149199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87149199 \"Loại khác\" trần ⇒ không điều kiện"
     }
   ]
 }

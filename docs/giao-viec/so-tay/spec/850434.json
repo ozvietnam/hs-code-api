@@ -1,0 +1,172 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850434",
+  "phien": "zcode-sub:glm-5.3:20261105T0950#soan-850434",
+  "dieuKienNut": {
+    "8504341": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": "<=",
+          "value": 15000,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "850434~r15019": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 10000,
+          "donVi": "kVA"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    },
+    "8504342": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatBieuKien",
+          "op": ">",
+          "value": 15000,
+          "donVi": "kVA"
+        }
+      ]
+    },
+    "850434~r15028": {
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ]
+    }
+  },
+  "dong8": {
+    "85043411": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ]
+    },
+    "85043412": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến áp loại khô phòng nổ"
+        }
+      ]
+    },
+    "85043413": {
+      "dieuKienSo": []
+    },
+    "85043414": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ]
+    },
+    "85043415": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến áp loại khô phòng nổ"
+        }
+      ]
+    },
+    "85043419": {
+      "dieuKienSo": []
+    },
+    "85043422": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ]
+    },
+    "85043423": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến áp loại khô phòng nổ"
+        }
+      ]
+    },
+    "85043424": {
+      "dieuKienSo": []
+    },
+    "85043425": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Biến áp thích ứng"
+        }
+      ]
+    },
+    "85043426": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy biến áp loại khô phòng nổ"
+        }
+      ]
+    },
+    "85043429": {
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8504341",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8504341 \"Có công suất danh định không quá 15.000 kVA\" ⇒ congSuatBieuKien <= 15000 kVA; tieuDe.8504342 \"…trên 15.000 kVA\" ⇒ > 15000 kVA"
+    },
+    {
+      "ma": "850434~r15019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.r15019 \"Có công suất danh định trên 10.000 kVA và đầu điện áp cao từ 66 kV trở lên\" ⇒ congSuatBieuKien > 10000 kVA và dienAp >= 66 kV (mẫu 850433 cùng kiểu); r15028 \"Có đầu điện áp cao từ 66 kV trở lên\" ⇒ dienAp >= 66 kV; r15023/r15032 \"Loại khác:\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "85043411",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043411 \"Biến áp thích ứng (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\" (giống .14/.22/.25, phân biệt theo tầng); \"(SEN)\" là nguồn chú giải (PHU)"
+    },
+    {
+      "ma": "85043412",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043412 \"Máy biến áp loại khô phòng nổ (SEN)\" ⇒ tenLoai \"Máy biến áp loại khô phòng nổ\" (giống .15/.23/.26)"
+    },
+    {
+      "ma": "85043413",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85043413 \"Loại khác (SEN)\" trần ⇒ không điều kiện (tương tự .19/.24/.29)"
+    },
+    {
+      "ma": "850434~r15028",
+      "loai": "BO_VE",
+      "ve": "Có đầu",
+      "lyDo": "Vế là nửa đầu bị máy tách của cụm \"Có đầu điện áp cao từ 66 kV trở lên\" — ý giới hạn nằm trọn ở vế sau, đã phủ bằng dienAp >= 66 kV của chính tầng; nửa \"Có đầu\" không có khoá riêng và bỏ nó không làm sai mã"
+    }
+  ]
+}

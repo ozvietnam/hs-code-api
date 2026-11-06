@@ -1,51 +1,31 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "871140",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-871140",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871140",
   "dong8": {
     "87114011": {
       "dieuKienSo": [
-        {
-          "fact": "daLapRap",
-          "op": "KHONG"
-        }
+        { "fact": "daLapRap", "op": "KHONG" }
       ]
     },
     "87114020": {
       "dieuKienSo": [
-        {
-          "fact": "daLapRap",
-          "op": "KHONG"
-        }
+        { "fact": "daLapRap", "op": "KHONG" }
       ]
     }
   },
   "dieuKienNut": {
     "8711401": {
       "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Xe mô tô địa hình"
-        }
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xe mô tô địa hình" }
       ]
     }
   },
   "ghiChuSoan": [
-    {
-      "ma": "8711401",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.8711401: \"Xe mô tô địa hình (SEN)\" ⇒ tenLoai \"Xe mô tô địa hình\""
-    },
-    {
-      "ma": "87114011",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.87114011: \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"
-    },
-    {
-      "ma": "87114020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.87114020: \"Loại khác, dạng CKD (SEN)\" ⇒ daLapRap KHONG"
-    }
+    { "ma": "8711401", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8711401 \"Xe mô tô địa hình (SEN)\" ⇒ tenLoai \"Xe mô tô địa hình\"" },
+    { "ma": "87114011", "loai": "QUYET_DINH", "ghiChu": "tax.87114011 \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG" },
+    { "ma": "87114019", "loai": "QUYET_DINH", "ghiChu": "tax.87114019 \"Loại khác (SEN)\" trần ⇒ không điều kiện" },
+    { "ma": "87114020", "loai": "QUYET_DINH", "ghiChu": "tax.87114020 \"Loại khác, dạng CKD (SEN)\" ⇒ chỉ vế: daLapRap KHONG" },
+    { "ma": "87114090", "loai": "QUYET_DINH", "ghiChu": "tax.87114090 \"Loại khác\" trần ⇒ không điều kiện" }
   ]
 }

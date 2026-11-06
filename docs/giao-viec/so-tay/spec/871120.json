@@ -1,0 +1,243 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "871120",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871120",
+  "dong8": {
+    "87112011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô địa hình"
+        }
+      ]
+    },
+    "87112012": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe gắn máy có bàn đạp",
+            "xe đạp có động cơ"
+          ]
+        }
+      ]
+    },
+    "87112013": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xe “pocket motorcycle”"
+        }
+      ]
+    },
+    "87112014": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 150,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 200,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87112015": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 200,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87112091": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô địa hình"
+        }
+      ]
+    },
+    "87112092": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xe gắn máy có bàn đạp",
+            "xe đạp có động cơ"
+          ]
+        }
+      ]
+    },
+    "87112093": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "xe “pocket motorcycle”"
+        }
+      ]
+    },
+    "87112094": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 150,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 200,
+          "donVi": "cc"
+        }
+      ]
+    },
+    "87112095": {
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 200,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "cc"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8711201": {
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "871120~r17604": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô"
+        }
+      ],
+      "phanConLai": false
+    },
+    "871120~r17613": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe mô tô"
+        }
+      ],
+      "phanConLai": false
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8711201",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8711201 \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG"
+    },
+    {
+      "ma": "87112011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112011 \"Xe mô tô địa hình (SEN)\" ⇒ tenLoai \"Xe mô tô địa hình\""
+    },
+    {
+      "ma": "87112012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112012 ⇒ tenLoai [\"Xe gắn máy có bàn đạp\",\"xe đạp có động cơ\"]"
+    },
+    {
+      "ma": "87112013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112013 \"Xe “pocket motorcycle” (SEN)\" ⇒ tenLoai \"xe “pocket motorcycle”\""
+    },
+    {
+      "ma": "871120~r17604",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.871120~r17604 \"Xe mô tô khác (có hoặc không có thùng xe bên cạnh), kể cả xe scooter\" ⇒ tenLoai \"Xe mô tô\"; phanConLai false (tắt cảnh báo nghi-phan-con-lai): vế \"khác\" đã do tenLoai cùng trục với .11 (máy loại trừ tên anh em; \"Xe mô tô\" ⊂ \"Xe mô tô địa hình\" ⇒ tên cụ thể hơn .11 thắng); \"(có hoặc không có…)\" tuỳ chọn, \"kể cả xe scooter\" PHU — không thành điều kiện"
+    },
+    {
+      "ma": "871120~r17613",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.871120~r17613 ⇒ tenLoai \"Xe mô tô\" như ~r17604"
+    },
+    {
+      "ma": "87112014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112014 \"Dung tích xi lanh trên 150 cc nhưng không quá 200 cc\" ⇒ dungTichXiLanh > 150 cc và <= 200 cc"
+    },
+    {
+      "ma": "87112015",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112015 \"Dung tích xi lanh trên 200 cc nhưng không quá 250 cc\" ⇒ dungTichXiLanh > 200 cc và <= 250 cc"
+    },
+    {
+      "ma": "87112019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112019 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "8711209",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8711209 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "87112091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112091 ⇒ tenLoai như 87112011"
+    },
+    {
+      "ma": "87112092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112092 ⇒ tenLoai như 87112012"
+    },
+    {
+      "ma": "87112093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112093 ⇒ tenLoai như 87112013"
+    },
+    {
+      "ma": "87112094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112094 ⇒ dungTichXiLanh như 87112014"
+    },
+    {
+      "ma": "87112095",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112095 ⇒ dungTichXiLanh như 87112015"
+    },
+    {
+      "ma": "87112099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87112099 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

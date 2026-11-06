@@ -1,0 +1,37 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "900890",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-900890",
+  "dong8": {
+    "90089020": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy phóng",
+            "máy thu nhỏ ảnh"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "máy chiếu phim",
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "90089020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90089020 \"Của máy phóng và máy thu nhỏ ảnh (trừ máy chiếu phim)\" ⇒ dungCho [\"máy phóng\",\"máy thu nhỏ ảnh\"] (vế \"Của …\") + tenLoai \"máy chiếu phim\" PHAI_KHONG (vế \"(trừ máy chiếu phim)\")"
+    },
+    {
+      "ma": "90089090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90089090 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

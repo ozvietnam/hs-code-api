@@ -1,0 +1,59 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "851981",
+  "phien": "zcode-sub:glm-5.3:20261105T1045#soan-851981",
+  "dieuKienNut": {
+    "8519814": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy sao âm"}
+    ] },
+    "8519816": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy ghi băng từ"},
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "thiết bị tái tạo âm thanh"},
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "âm thanh số"}
+    ] },
+    "8519817": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Thiết bị tái tạo âm thanh"},
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "kiểu cassette"}
+    ], "phanConLai": true }
+  },
+  "dong8": {
+    "85198110": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy ghi âm cassette bỏ túi"},
+      {"fact": "kichThuoc", "op": "<=", "value": 170, "donVi": "mm"}
+    ] },
+    "85198120": { "dieuKienSo": [] },
+    "85198130": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Đầu đĩa compact"}
+    ] },
+    "85198141": { "dieuKienSo": [
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["điện ảnh", "phát thanh"]}
+    ] },
+    "85198149": { "dieuKienSo": [] },
+    "85198150": { "dieuKienSo": [] },
+    "85198161": { "dieuKienSo": [
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["điện ảnh", "phát thanh"]}
+    ] },
+    "85198162": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy trả lời điện thoại"}
+    ] },
+    "85198169": { "dieuKienSo": [] },
+    "85198171": { "dieuKienSo": [
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["điện ảnh", "phát thanh"]}
+    ] },
+    "85198179": { "dieuKienSo": [] },
+    "85198191": { "dieuKienSo": [
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["điện ảnh", "phát thanh"]}
+    ] },
+    "85198199": { "dieuKienSo": [] }
+  },
+  "ghiChuSoan": [
+    {"ma": "85198110", "loai": "QUYET_DINH", "ghiChu": "tax.85198110 \"Máy ghi âm cassette bỏ túi, kích thước không quá 170 mm x 100 mm x 45 mm\" ⇒ tenLoai + kichThuoc <= 170 mm (khoá kích thước chỉ có một giá trị — ghi biên lớn nhất của ba chiều, đã đối chiếu tay)"},
+    {"ma": "85198120", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "nguonNangLuong", "ghiChu": "tax.85198120 \"Máy ghi âm cassette, có bộ phận khuếch đại và một hoặc nhiều loa, hoạt động chỉ bằng nguồn điện ngoài\" — \"nguồn điện ngoài\" không đọc được bằng nguonNangLuong (DIEN_LUOI đọc \"điện lưới/cắm điện/dây nguồn\"), không có giá trị NGUON_DIEN_NGOAI"},
+    {"ma": "85198130", "loai": "QUYET_DINH", "ghiChu": "tax.85198130 \"Đầu đĩa compact\" ⇒ tenLoai \"Đầu đĩa compact\""},
+    {"ma": "8519814", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8519814 \"Máy sao âm\" ⇒ tenLoai; .41 \"Loại dùng cho điện ảnh hoặc phát thanh\" ⇒ dungCho mảng (giống .61/.71/.91); .49/.69/.79/.99 \"Loại khác\" trần ⇒ không điều kiện"},
+    {"ma": "85198150", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "nguonNangLuong", "ghiChu": "tax.85198150 \"Máy ghi điều lọc (dictating machines), loại chỉ hoạt động bằng nguồn điện ngoài\" — như .20: thiếu giá trị \"nguồn điện ngoài\" cho nguonNangLuong"},
+    {"ma": "8519816", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8519816 \"Máy ghi băng từ có gắn với thiết bị tái tạo âm thanh, loại âm thanh số\" ⇒ tenLoai \"Máy ghi băng từ\" + \"thiết bị tái tạo âm thanh\" + \"âm thanh số\" (vế cổng 5 nằm trọn trong các giá trị nguyên văn)"},
+    {"ma": "85198162", "loai": "QUYET_DINH", "ghiChu": "tax.85198162 \"Máy trả lời điện thoại\" ⇒ tenLoai"},
+    {"ma": "8519817", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8519817 \"Thiết bị tái tạo âm thanh khác, kiểu cassette\" ⇒ tenLoai [\"Thiết bị tái tạo âm thanh\",\"kiểu cassette\"] + phanConLai: true (\"khác\" — phần còn lại có tên)"}
+  ]
+}
