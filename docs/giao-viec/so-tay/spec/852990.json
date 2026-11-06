@@ -1,0 +1,69 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "852990",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-852990",
+  "dong8": {
+    "85299020": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "bộ giải mã" }
+      ]
+    },
+    "85299040": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["máy camera số", "camera ghi hình ảnh"] }
+      ]
+    },
+    "85299051": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "hàng hóa thuộc phân nhóm 8525.50 hoặc 8525.60" }
+      ]
+    },
+    "85299052": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "hàng hóa thuộc phân nhóm 8527.13, 8527.19, 8527.21, 8527.29, 8527.91 hoặc 8527.99" }
+      ]
+    },
+    "85299053": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "màn hình dẹt" }
+      ]
+    },
+    "85299054": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy thu truyền hình" }
+      ]
+    },
+    "85299091": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy thu truyền hình" }
+      ]
+    },
+    "85299094": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "màn hình dẹt" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8529905": {
+      "phanConLai": false,
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Tấm mạch in" },
+        { "fact": "daLapRap", "op": "CO" }
+      ]
+    },
+    "852990~r15684": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "hàng hóa thuộc nhóm 85.28" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "85299020", "loai": "QUYET_DINH", "ghiChu": "tax.85299020 \"Dùng cho bộ giải mã\" ⇒ dungCho \"bộ giải mã\"." },
+    { "ma": "85299040", "loai": "QUYET_DINH", "ghiChu": "tax.85299040 \"Dùng cho máy camera số hoặc camera ghi hình ảnh\" ⇒ dungCho mảng 2 đích (\"hoặc\" ⇒ mảng)." },
+    { "ma": "8529905", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8529905 \"Tấm mạch in khác, đã lắp ráp\" ⇒ tenLoai \"Tấm mạch in\" + daLapRap CO (vế \"đã lắp ráp\"). \"khác\" KHÔNG phải phần còn lại của anh em .20/.40 (anh em chia theo đích dùng cho, còn .5 là lớp hàng có tên — con .51/.52 lại DÙNG CHO hàng 8525/8527 nên không phủ được .20/.40) ⇒ phanConLai: false." },
+    { "ma": "85299051", "loai": "QUYET_DINH", "ghiChu": "tax.85299051/.52 \"Dùng cho hàng hóa thuộc phân nhóm …\" ⇒ dungCho giữ nguyên chuỗi mã (máy tự nở dải, \"hoặc\" giữa các mã máy đọc HOẶC — bảng luật dòng 9)." },
+    { "ma": "852990~r15684", "loai": "QUYET_DINH", "ghiChu": "tieuDe.852990~r15684 \"Dùng cho hàng hóa thuộc nhóm 85.28\" (tầng không mã, gạch 3) ⇒ dungCho \"hàng hóa thuộc nhóm 85.28\"." },
+    { "ma": "85299053", "loai": "QUYET_DINH", "ghiChu": "tax.85299053/.94 \"Dùng cho màn hình dẹt\" ⇒ dungCho \"màn hình dẹt\"; tax.85299054/.91 \"Dùng cho máy thu truyền hình\" (cùng khuôn, .54/.91 là \"Loại khác, <vế>\" — máy tự phủ định anh em) ⇒ dungCho \"máy thu truyền hình\"." }
+  ]
+}

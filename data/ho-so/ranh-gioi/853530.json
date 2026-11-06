@@ -1,0 +1,102 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "853530",
+  "nhom": "8535",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-853530",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8535301",
+      "nguon": "tieuDe.8535301",
+      "trich": "8535301 Dùng cho điện áp trên 1 kV nhưng không quá 40 kV",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 1,
+          "donVi": "kV"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 40,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85353011",
+      "nguon": "tax.85353011",
+      "trich": "85353011 - - - Thiết bị ngắt có điện áp dưới 36 kV",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị ngắt"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<",
+          "value": 36,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85353019",
+      "nguon": "tax.85353019",
+      "trich": "85353019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85353020",
+      "nguon": "tax.85353020",
+      "trich": "85353020 - - Dùng cho điện áp từ 66 kV trở lên",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": ">=",
+          "value": 66,
+          "donVi": "kV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85353090",
+      "nguon": "tax.85353090",
+      "trich": "85353090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8535301",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8535301 \"Dùng cho điện áp trên 1 kV nhưng không quá 40 kV\" ⇒ dienAp > 1 kV VÀ <= 40 kV (hai biên, hai điều kiện)."
+    },
+    {
+      "ma": "85353011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85353011 \"Thiết bị ngắt có điện áp dưới 36 kV\" ⇒ tenLoai \"Thiết bị ngắt\" + dienAp < 36 kV (\"dưới\" = <)."
+    },
+    {
+      "ma": "85353020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85353020 \"Dùng cho điện áp từ 66 kV trở lên\" ⇒ dienAp >= 66 kV (\"từ … trở lên\" = >=)."
+    }
+  ]
+}

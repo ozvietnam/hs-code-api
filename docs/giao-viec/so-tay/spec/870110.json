@@ -1,0 +1,67 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870110",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-870110",
+  "dong8": {
+    "87011011": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nông nghiệp"
+        }
+      ]
+    },
+    "87011091": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nông nghiệp"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8701101": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 22.5,
+          "donVi": "kW"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8701101",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8701101 \"Công suất không quá 22,5 kW, có hoặc không hoạt động bằng điện\" ⇒ congSuat <= 22,5 kW. Vế \"có hoặc không hoạt động bằng điện\" (EN \"whether or not electrically operated\") là vế CHO PHÉP CẢ HAI (điện và không điện đều vào tầng) — chọn hoatDongBangDien CO hay KHONG đều sai chữ, HOAC cả hai bị cong3-cuc-tinh-nguoc ⇒ miễn cả ba mảnh vế bằng BO_VE. Tầng 8701109 \"Loại khác\" trần — máy phủ định (công suất > 22,5 kW)."
+    },
+    {
+      "ma": "87011011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87011011/.91 \"Dùng cho nông nghiệp\" ⇒ dungCho \"nông nghiệp\" (khoá dungTrongNongNghiep đọc \"dùng TRONG nông nghiệp\" không khớp chữ \"dùng CHO nông nghiệp\" nên dùng CONG_DUNG nguyên văn); .19/.99 \"Loại khác\" trần — máy phủ định."
+    },
+    {
+      "ma": "8701101",
+      "loai": "BO_VE",
+      "ve": "có",
+      "lyDo": "Mảnh của \"có hoặc không hoạt động bằng điện\" (EN \"whether or not electrically operated\") — vế cho phép cả máy kéo chạy điện lẫn không chạy điện, không chốt hoatDongBangDien được: chọn CO hoặc KHONG đều HẸP hơn chữ, HOAC cả hai là luôn-đúng bị cong3-cuc-tinh-nguoc. Bỏ vế không đổi mã: tầng .1 đã phân bằng công suất <= 22,5 kW."
+    },
+    {
+      "ma": "8701101",
+      "loai": "BO_VE",
+      "ve": "không hoạt động",
+      "lyDo": "Mảnh của \"có hoặc không hoạt động bằng điện\" (EN \"whether or not electrically operated\") — vế cho phép cả máy kéo chạy điện lẫn không chạy điện, không chốt hoatDongBangDien được: chọn CO hoặc KHONG đều HẸP hơn chữ, HOAC cả hai là luôn-đúng bị cong3-cuc-tinh-nguoc. Bỏ vế không đổi mã: tầng .1 đã phân bằng công suất <= 22,5 kW."
+    },
+    {
+      "ma": "8701101",
+      "loai": "BO_VE",
+      "ve": "bằng điện",
+      "lyDo": "Mảnh của \"có hoặc không hoạt động bằng điện\" (EN \"whether or not electrically operated\") — vế cho phép cả máy kéo chạy điện lẫn không chạy điện, không chốt hoatDongBangDien được: chọn CO hoặc KHONG đều HẸP hơn chữ, HOAC cả hai là luôn-đúng bị cong3-cuc-tinh-nguoc. Bỏ vế không đổi mã: tầng .1 đã phân bằng công suất <= 22,5 kW."
+    }
+  ]
+}

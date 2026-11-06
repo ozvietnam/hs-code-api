@@ -1,0 +1,94 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "854411",
+  "nhom": "8544",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-854411",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "85441120",
+      "nguon": "tax.85441120",
+      "trich": "85441120 - - - Có một lớp phủ ngoài hoặc bọc bằng giấy, vật liệu dệt hoặc poly(vinyl clorua)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "lớp phủ ngoài"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "giấy",
+            "vật liệu dệt",
+            "poly(vinyl clorua)"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85441130",
+      "nguon": "tax.85441130",
+      "trich": "85441130 - - - Có lớp phủ ngoài bằng dầu bóng (lacquer)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "lớp phủ ngoài"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dầu bóng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85441140",
+      "nguon": "tax.85441140",
+      "trich": "85441140 - - - Có lớp phủ ngoài bằng men tráng (enamel)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "lớp phủ ngoài"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "men tráng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85441190",
+      "nguon": "tax.85441190",
+      "trich": "85441190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85441120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85441120 \"Có một lớp phủ ngoài hoặc bọc bằng giấy, vật liệu dệt hoặc poly(vinyl clorua)\" ⇒ tenLoai \"lớp phủ ngoài\" (vế 1) + tenLoai mảng 3 vật liệu (vế 2, \"hoặc\" ⇒ mảng). Không dùng chatLieu: nhãn \"plastic\" không đọc \"poly(vinyl clorua)\"/PVC, \"vật liệu dệt\" khác nhãn \"vải dệt\", và dầu bóng/men tráng không có giá trị — cả ba dòng cùng neo tenLoai để giữ phép so cùng trục (bảng luật dòng 10)."
+    },
+    {
+      "ma": "85441130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85441130 \"Có lớp phủ ngoài bằng dầu bóng (lacquer)\" ⇒ tenLoai \"lớp phủ ngoài\" + tenLoai \"dầu bóng\" (ngoặc \"(lacquer)\" chú thích); tax.85441140 \"… bằng men tráng (enamel)\" ⇒ tenLoai \"lớp phủ ngoài\" + tenLoai \"men tráng\". .90 \"Loại khác\" trần — máy phủ định."
+    }
+  ]
+}

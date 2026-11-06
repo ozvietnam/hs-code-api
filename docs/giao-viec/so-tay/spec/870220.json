@@ -1,0 +1,109 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "870220",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-870220",
+  "dong8": {
+    "87022010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ô tô" }
+      ]
+    },
+    "87022022": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">=", "value": 6, "donVi": "tấn" },
+        { "fact": "khoiLuongToanBo", "op": "<=", "value": 18, "donVi": "tấn" }
+      ]
+    },
+    "87022023": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">", "value": 24, "donVi": "tấn" }
+      ]
+    },
+    "87022031": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">=", "value": 6, "donVi": "tấn" },
+        { "fact": "khoiLuongToanBo", "op": "<=", "value": 18, "donVi": "tấn" }
+      ]
+    },
+    "87022032": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">", "value": 24, "donVi": "tấn" }
+      ]
+    },
+    "87022041": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">", "value": 24, "donVi": "tấn" }
+      ]
+    },
+    "87022050": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ô tô" }
+      ]
+    },
+    "87022061": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">=", "value": 6, "donVi": "tấn" },
+        { "fact": "khoiLuongToanBo", "op": "<=", "value": 18, "donVi": "tấn" }
+      ]
+    },
+    "87022062": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">", "value": 24, "donVi": "tấn" }
+      ]
+    },
+    "87022071": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">=", "value": 6, "donVi": "tấn" },
+        { "fact": "khoiLuongToanBo", "op": "<=", "value": 18, "donVi": "tấn" }
+      ]
+    },
+    "87022072": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">", "value": 24, "donVi": "tấn" }
+      ]
+    },
+    "87022091": {
+      "dieuKienSo": [
+        { "fact": "khoiLuongToanBo", "op": ">", "value": 24, "donVi": "tấn" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "870220~r16335": {
+      "dieuKienSo": [
+        { "fact": "daLapRap", "op": "KHONG" }
+      ]
+    },
+    "8702202": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "chở từ 30 người trở lên" }
+      ]
+    },
+    "8702203": {
+      "phanConLai": ["8702202"],
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ô tô khách" }
+      ]
+    },
+    "8702206": {
+      "dieuKienSo": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "được thiết kế đặc biệt" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "sân bay" }
+      ]
+    },
+    "8702207": {
+      "phanConLai": ["8702206"],
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ô tô khách" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "870220~r16335", "loai": "QUYET_DINH", "ghiChu": "tieuDe.870220~r16335 \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG — như 870121.10/870210~r16314; tầng r16348 \"Loại khác\" trần — máy phủ định (đã lắp ráp)." },
+    { "ma": "87022010", "loai": "QUYET_DINH", "ghiChu": "tax.87022010/.50 \"Ô tô (bao gồm cả ô tô limousine kéo dài nhưng không bao gồm ô tô khách hoặc ô tô van)\" ⇒ tenLoai \"Ô tô\" — vế \"không bao gồm…\" không ghi PHAI_KHONG (\"Ô tô\" là cha tập âm tiết của \"ô tô khách\" ⇒ CHUA_BIET làm dòng không tới được); máy tự phân bằng tên-cụ-thể-hon #600 với .3/.7; ngoặc tiếng Anh chú thích." },
+    { "ma": "8702202", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8702202 \"Loại khác, chở từ 30 người trở lên\" ⇒ dungCho \"chở từ 30 người trở lên\" (nguyên văn vế; tu-vung@2 không có khoá số chỗ ngồi) — \"Loại khác\" máy phủ định .10. .22/.23 khoiLuongToanBo >= 6 tấn và <= 18 tấn / > 24 tấn." },
+    { "ma": "8702203", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8702203 \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\" + phanConLai [\"8702202\"] (khác .2 chở ≥30); .31/.32 như .22/.23." },
+    { "ma": "8702206", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8702206 \"Loại khác, chở từ 30 người trở lên và được thiết kế đặc biệt để sử dụng trong sân bay (SEN)\" ⇒ congDung \"được thiết kế đặc biệt\" + dungCho \"sân bay\" (vế \"để sử dụng trong\"); \"chở từ 30 người\" nằm trong vế sân bay theo SEN (xe buýt sân bay chở 80–100 người) — như 870210.7." },
+    { "ma": "8702207", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8702207 \"Ô tô khách (1) (motor coaches, buses hoặc minibuses) khác\" ⇒ tenLoai \"Ô tô khách\" + phanConLai [\"8702206\"] (khác .6 xe sân bay); .71/.72 như .61/.62; .9 \"Loại khác\" trần, .91 > 24 tấn, .99 LK." }
+  ]
+}

@@ -1,0 +1,377 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "854449",
+  "nhom": "8544",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-854449",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8544491",
+      "nguon": "tieuDe.8544491",
+      "trich": "8544491 Dùng cho viễn thông, điện áp không quá 80 V",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "viễn thông"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 80,
+          "donVi": "V"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8544492",
+      "nguon": "tieuDe.8544492",
+      "trich": "8544492 Loại không dùng cho viễn thông, điện áp không quá 80 V",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "viễn thông"
+          ],
+          "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 80,
+          "donVi": "V"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8544493",
+      "nguon": "tieuDe.8544493",
+      "trich": "8544493 Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "viễn thông"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 80,
+          "donVi": "V"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "V"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8544494",
+      "nguon": "tieuDe.8544494",
+      "trich": "8544494 Loại không dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "viễn thông"
+          ],
+          "chieu": "PHAI_KHONG"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 80,
+          "donVi": "V"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "V"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "85444911",
+      "nguon": "tax.85444911",
+      "trich": "85444911 - - - - Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cáp điện thoại ngầm dưới biển",
+            "cáp điện báo ngầm dưới biển",
+            "cáp chuyển tiếp vô tuyến ngầm dưới biển"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444913",
+      "nguon": "tax.85444913",
+      "trich": "85444913 - - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444919",
+      "nguon": "tax.85444919",
+      "trich": "85444919 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444921",
+      "nguon": "tax.85444921",
+      "trich": "85444921 - - - - Dây đơn có vỏ bọc (chống nhiễu) dùng trong sản xuất bó dây dẫn điện của ô tô",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây đơn có vỏ bọc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất bó dây dẫn điện của ô tô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444922",
+      "nguon": "tax.85444922",
+      "trich": "85444922 - - - - - Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 19,5 mm ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp điện"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        },
+        {
+          "fact": "duongKinhLoi",
+          "op": "<=",
+          "value": 19.5,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444923",
+      "nguon": "tax.85444923",
+      "trich": "85444923 - - - - - Cáp điện cách điện bằng plastic khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp điện"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444924",
+      "nguon": "tax.85444924",
+      "trich": "85444924 - - - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444929",
+      "nguon": "tax.85444929",
+      "trich": "85444929 - - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444931",
+      "nguon": "tax.85444931",
+      "trich": "85444931 - - - - Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Cáp điện thoại ngầm dưới biển",
+            "cáp điện báo ngầm dưới biển",
+            "cáp chuyển tiếp vô tuyến ngầm dưới biển"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444932",
+      "nguon": "tax.85444932",
+      "trich": "85444932 - - - - Loại khác, cách điện bằng plastic",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444933",
+      "nguon": "tax.85444933",
+      "trich": "85444933 - - - - Loại khác, cách điện bằng cao su hoặc giấy",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444939",
+      "nguon": "tax.85444939",
+      "trich": "85444939 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444941",
+      "nguon": "tax.85444941",
+      "trich": "85444941 - - - - Cáp bọc cách điện bằng plastic",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Cáp bọc"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic",
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444942",
+      "nguon": "tax.85444942",
+      "trich": "85444942 - - - - Loại khác, cách điện bằng cao su, plastic hoặc giấy",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": [
+            "cao su",
+            "plastic",
+            "giấy"
+          ],
+          "viTri": "CACH_DIEN"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "85444949",
+      "nguon": "tax.85444949",
+      "trich": "85444949 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8544491",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544491 \"Dùng cho viễn thông, điện áp không quá 80 V\" ⇒ congDung \"viễn thông\" + dienAp <= 80 V — như 854442.1; .3 \"… trên 80 V nhưng không quá 1.000 V\" ⇒ congDung \"viễn thông\" + 80 < dienAp <= 1000 V."
+    },
+    {
+      "ma": "8544492",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8544492 \"Loại không dùng cho viễn thông, điện áp không quá 80 V\" ⇒ dungCho PHAI_KHONG [\"viễn thông\"] (vế \"không dùng cho viễn thông\") + dienAp <= 80 V; .4 tương tự (trên 80 V, không quá 1000 V). Tầng r16086 \"Loại khác:\" trần — không ghi điều kiện."
+    },
+    {
+      "ma": "85444911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85444911/.31 \"Cáp điện thoại ngầm dưới biển; cáp điện báo ngầm dưới biển; cáp chuyển tiếp vô tuyến ngầm dưới biển\" ⇒ tenLoai mảng 3 tên (\";\" tách ba loại cáp)."
+    },
+    {
+      "ma": "85444913",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85444913/.24/.42 \"Loại khác, cách điện bằng cao su, plastic hoặc giấy\" ⇒ chỉ ghi vế: chatLieu LA mảng [cao su, plastic, giấy] viTri CACH_DIEN (như 854442 tầng r16065); \"Loại khác\" máy tự phủ định anh em. .32 \"cách điện bằng plastic\" ⇒ [plastic]; .33 \"cách điện bằng cao su hoặc giấy\" ⇒ [cao su, giấy]."
+    },
+    {
+      "ma": "85444921",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85444921 \"Dây đơn có vỏ bọc (chống nhiễu) dùng trong sản xuất bó dây dẫn điện của ô tô\" ⇒ tenLoai \"Dây đơn có vỏ bọc\" (ngoặc \"(chống nhiễu)\" chú thích) + dungCho \"sản xuất bó dây dẫn điện của ô tô\" (\"dùng trong\" = dùng cho)."
+    },
+    {
+      "ma": "85444922",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85444922 \"Cáp điện cách điện bằng plastic, trong đó mỗi lõi có đường kính không quá 19,5 mm\" ⇒ tenLoai \"Cáp điện\" + chatLieu plastic CACH_DIEN + duongKinhLoi <= 19,5 mm; tax.85444923 \"Cáp điện cách điện bằng plastic khác\" ⇒ tenLoai \"Cáp điện\" + chatLieu plastic CACH_DIEN + phanConLai dạng \"khác\" — máy phân qua đường kính (không quá 19,5 ↔ khác); tax.85444941 \"Cáp bọc cách điện bằng plastic\" ⇒ tenLoai \"Cáp bọc\" + chatLieu plastic CACH_DIEN."
+    },
+    {
+      "ma": "854449",
+      "loai": "DUNG",
+      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:854449:chua-co"
+    }
+  ]
+}

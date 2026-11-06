@@ -1,0 +1,48 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853810",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-853810",
+  "dong8": {
+    "85381011": {
+      "dieuKienSo": [
+        { "fact": "laBoPhan", "op": "CO" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "bộ điều khiển logic có khả năng lập trình" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn" }
+      ]
+    },
+    "85381012": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị sóng vô tuyến" }
+      ]
+    },
+    "85381021": {
+      "dieuKienSo": [
+        { "fact": "laBoPhan", "op": "CO" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "bộ điều khiển logic có khả năng lập trình" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn" }
+      ]
+    },
+    "85381022": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị sóng vô tuyến" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8538101": {
+      "dieuKienSo": [
+        { "fact": "dienAp", "op": "<=", "value": 1000, "donVi": "V" }
+      ]
+    },
+    "8538102": {
+      "dieuKienSo": [
+        { "fact": "dienAp", "op": ">", "value": 1000, "donVi": "V" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "8538101", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8538101/.2 \"Dùng cho điện áp không quá 1.000 V\" / \"trên 1.000 V\" ⇒ dienAp <= 1000 V / > 1000 V." },
+    { "ma": "85381011", "loai": "QUYET_DINH", "ghiChu": "tax.85381011/.21 \"Bộ phận của bộ điều khiển logic có khả năng lập trình cho máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn\" ⇒ laBoPhan CO (vế \"Bộ phận của\") + dungCho \"bộ điều khiển logic có khả năng lập trình\" (vế \"của …\") + dungCho \"máy tự động để dịch chuyển, xử lý và kẹp giữ khuôn cho thiết bị bán dẫn\" (vế \"cho …\"). Liệt kê \"dịch chuyển, xử lý và kẹp giữ\" giữ MỘT chuỗi — chữ Anh \"for the movement, processing and clamping\" là liên hợp của một máy (máy KHÔNG báo tách, như 853710 .30)." },
+    { "ma": "85381012", "loai": "QUYET_DINH", "ghiChu": "tax.85381012/.22 \"Của loại sử dụng trong các thiết bị sóng vô tuyến\" ⇒ dungCho \"thiết bị sóng vô tuyến\" (\"sử dụng trong\" = dùng cho); .19/.29 \"Loại khác\" trần — máy phủ định." }
+  ]
+}
