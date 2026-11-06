@@ -1,0 +1,61 @@
+{
+  "phienBan": "ranh-goi-spec@1",
+  "pn6": "611610",
+  "phien": "zcode-mm:loop:20261106T1452#soan-611610",
+  "dong8": {
+    "61161010": {
+      "ten": "Găng tay của thợ lặn",
+      "nguon": "tax.61161010",
+      "trich": "Găng tay của thợ lặn",
+      "dieuKienSo": [
+        {
+          "khoa": "congDung",
+          "op": "CONG_DUNG",
+          "value": "dùng cho thợ lặn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "611610": {
+      "ten": "Được ngâm tẩm, tráng hoặc phủ hoặc ép với plastic hoặc cao su",
+      "nguon": "tieuDe.611610",
+      "trich": "Được ngâm tẩm, tráng hoặc phủ hoặc ép với plastic hoặc cao su",
+      "dieuKienSo": [
+        {
+          "khoa": "daTrangPhuEpLop",
+          "op": "CO",
+          "value": true
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "61161090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề \"Loại khác\" trần (loaiKhac=true, khongCanDieuKien=true) ⇒ không đưa vào spec; 61161010 là dòng có tên duy nhất còn lại trong nhánh."
+    },
+    {
+      "ma": "61161010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề phân biệt theo công dụng (\"của thợ lặn\") ⇒ khoá congDung; tiêu đề không có ngưỡng số nào nên không dùng khoá kiểu SO."
+    },
+    {
+      "ma": "611610",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề phân nhóm mang điều kiện xử lý bề mặt ⇒ khai ở dieuKienNut[\"611610\"] bằng khoá daTrangPhuEpLop (CO), không chép vào từng dòng 8 số."
+    },
+    {
+      "ma": "611610",
+      "loai": "BO_VE",
+      "ve": "với plastic hoặc cao su",
+      "lyDo": "Chất liệu lớp phủ chưa khép được: chatLieu chỉ nhận một giá trị và không HOAC theo luật, nên không diễn đạt nổi vế \"hoặc\". Đề xuất người soát bổ sung khoá vật liệu lớp phủ (nhận được hai giá trị plastic / cao su)."
+    },
+    {
+      "ma": "61161010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nhánh chỉ có một dòng 8 số có tên ⇒ không khai chongLanVanBan, không khai chongLanTruc (không có cặp nhánh khác trục để so); tangKhongMa rỗng nên không có vế tầng không mã."
+    }
+  ]
+}

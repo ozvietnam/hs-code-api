@@ -1,0 +1,54 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "620342",
+  "nhom": "6203",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1512#soan-620342",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "62034210",
+      "nguon": "tax.62034210",
+      "trich": "62034210 - - - Quần yếm có dây đeo",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quần yếm có dây đeo"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "62034290",
+      "nguon": "tax.62034290",
+      "trich": "62034290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "62034290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "62034290 là dòng \"Loại khác\" trần (loaiKhac=true, khongCanDieuKien=true) ⇒ không đưa vào spec (máy tự phủ định anh em 62034210). 62034210 là dòng có tên duy nhất còn lại trong nhánh ⇒ ranh giới 6→8 của phân nhóm 620342 là một điều kiện tên loại."
+    },
+    {
+      "ma": "62034210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.62034210: chữ biểu là tên một kiểu hàng \"Quần yếm có dây đeo\" (WCO: bib and brace overalls) ⇒ khoá tenLoai (TEN_LOAI), giá trị nguyên văn của cả tên. Vế \"có dây đeo\" là bộ phận của chính tên loại nên không tách thành điều kiện riêng (giống 62012010 / 62019011 / 62024010). Chữ biểu ngắn (dưới 300 ký tự) nên không ghi trich/nguon — máy tự chép nguyên văn."
+    },
+    {
+      "ma": "620342",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Phân nhóm không có tầng không mã (tangKhongMa rỗng) và không có tiêu đề có tên ⇒ dieuKienNut rỗng. Điều kiện vật liệu \"Từ bông\" (WCO: \"of cotton\") và vế \"(not knitted or crocheted)\" nằm ở CHÍNH phân nhóm 620342 (chung cho cả 62034210 và 62034290) ⇒ không thuộc ranh giới 6→8, không khai trong spec này."
+    }
+  ]
+}

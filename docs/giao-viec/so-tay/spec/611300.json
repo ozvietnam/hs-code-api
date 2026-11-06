@@ -1,0 +1,50 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "611300",
+  "phien": "zcode-mm:loop:20261106T1439#soan-611300",
+  "dong8": {
+    "61130010": {
+      "nguon": "sen.61130010",
+      "trich": "BỘ ĐỒ CỦA THỢ LẶN\nBộ đồ của thợ lặn là bộ áo liền quần chống nước được sử dụng cho hoạt động lặn scuba. Chúng có các bộ phận tay và chân được định hình trước. Chúng được làm từ vải ny lông dệt kim đã ngâm, tẩm cao su neoprene.",
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Bộ đồ của thợ lặn" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "hoạt động lặn scuba" }
+      ]
+    },
+    "61130030": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Quần áo chống cháy" },
+        { "fact": "tinhNangBaoHo", "op": "TRONG", "value": ["CHONG_CHAY"] }
+      ]
+    },
+    "61130040": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Quần áo bảo hộ" }
+      ],
+      "phanConLai": ["61130010", "61130030"]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "61130010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.61130010 \"61130010 - Bộ đồ của thợ lặn (SEN)\" ⇒ tenLoai \"Bộ đồ của thợ lặn\" (tên hàng nguyên văn; \"(SEN)\" là ngoặc chú thích nguồn, không thành điều kiện). sen.61130010 (nguồn của chính mục, dùng làm trich) ⇒ dungCho \"hoạt động lặn scuba\" theo chữ \"được sử dụng cho …\". Không khai \"chống nước\" (CHONG_NO là \"chống nổ\") và không khai \"đã ngâm, tẩm cao su neoprene\": đây là mô tả vật liệu của SEN, không có trong chữ biểu thuế, và điều kiện kiểu AND sẽ loại mất các bộ lặn không dùng neoprene."
+    },
+    {
+      "ma": "61130030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.61130030 \"61130030 - Quần áo chống cháy (SEN)\" ⇒ tenLoai \"Quần áo chống cháy\" + tinhNangBaoHo CHONG_CHAY (chữ đọc của giá trị là \"chống cháy\", nằm trong chữ của dòng). Cả ba dòng dùng CHUNG khoá tenLoai để máy so cùng trục; ba giá trị rời nhau nên không sinh chồng lấn. sen.61130030: \"thường được làm từ một số loại vải đặc biệt\" (có điều kiện, không bắt buộc) và \"loại vải này không chứa amiăng\" (loại trừ, không có khoá tu-vung đọc được) — hai ý này không tách được 61130030 với 61130040 trong phân nhóm nên không khai thành điều kiện."
+    },
+    {
+      "ma": "61130040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.61130040 \"61130040 - Quần áo bảo hộ khác\" ⇒ tenLoai \"Quần áo bảo hộ\" + phanConLai [\"61130010\",\"61130030\"]: chữ \"khác\" là phần còn lại CÓ TÊN (gói gắn cờ nghi phần còn lại) — phủ định hai anh em đứng trước; giữ điều kiện \"quần áo bảo hộ\" để dòng này không nuốt hàng không phải bảo hộ (61130090)."
+    },
+    {
+      "ma": "61130090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.61130090 \"61130090 - Loại khác\" trần ⇒ không đưa vào spec, không ghi điều kiện (máy phủ định anh em)."
+    }
+  ]
+}
