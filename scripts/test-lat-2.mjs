@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-import './test-isolate-data.mjs';
+import { TEST_DATA_DIR } from './test-isolate-data.mjs';
 /**
  * Lát 2 (#577 tiếp) — danh sách data/ho-so/lat-2.json + cổng tiền lệ cho mã ngoài lát 1.
  * Dữ liệu thật công khai (biểu, TB-TCHQ); không đọc tờ khai Oz, bench, oz-gold; không gọi LLM/mạng.
  */
 import fs from 'fs';
+import path from 'path';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
@@ -36,11 +37,18 @@ check('2b 392690 (lát 1) vẫn có cờ', C.canHieuChinh('392690') === true);
 check('2c PN6 lát 2 có cờ trong tệp → cổng cũng thấy', ds.filter((p) => p.canHieuChinhTienLe).every((p) => C.canHieuChinh(p.pn6)));
 check('2d PN6 lát 2 không cờ → cổng không chặn', ds.filter((p) => !p.canHieuChinhTienLe).every((p) => !C.canHieuChinh(p.pn6)));
 const loi = (f) => { try { f(); return ''; } catch (e) { return e.message; } };
+// 06/11: bảng thật đã có mục cho mọi PN6 mang cờ (kể cả 870829) ⇒ đường CHẶN kiểm trên bản sao cách ly bỏ mục 870829.
+const bangThat = JSON.parse(fs.readFileSync('data/ho-so/hieu-chinh-tien-le.json', 'utf8'));
+check('2d2 bảng thật đã có mục cho 870829 → cổng không còn chặn', C.coHieuChinh('870829') === true && C.goiSoan('870829').coHieuChinhTienLe === true);
+const tepCachLy = path.join(TEST_DATA_DIR, 'ho-so', 'hieu-chinh-tien-le.json');
+fs.mkdirSync(path.dirname(tepCachLy), { recursive: true });
+fs.writeFileSync(tepCachLy, JSON.stringify({ ...bangThat, muc: bangThat.muc.filter((m) => !String(m.maHs).startsWith('870829') && !String(m.dongChuBieu).startsWith('870829')) }));
 const nhap = { phienBan: 'ranh-gioi@1', pn6: '870829', nhom: '8708', trangThai: 'DUYET', soanBoi: { phien: 'a' }, dong8: [], dieuKienNut: [] };
 check('2e duyệt 870829 chưa có bảng hiệu chỉnh → chặn', /can-bang-hieu-chinh-tien-le:870829/.test(loi(() => C.duyet({ ...nhap, trangThai: 'NHAP' }, { phien: 'https://claude.ai/code/session_X#soat-B', ngay: '2026-11-02' }))));
 check('2f áp vào sổ tay 870829 chưa có bảng → chặn', /can-bang-hieu-chinh-tien-le:870829/.test(loi(() => C.apDung(nhap, { nhom: '8708' }))));
 const goi = C.goiSoan('870829');
 check('2g --goi 870829 mang cờ + chưa có bảng (in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ])', goi.canHieuChinhTienLe === true && goi.coHieuChinhTienLe === false, { c: goi.canHieuChinhTienLe, h: goi.coHieuChinhTienLe });
 
+fs.rmSync(tepCachLy, { force: true });
 console.log(`\n${pass} PASS, ${fail} FAIL`);
 process.exit(fail ? 1 : 0);
