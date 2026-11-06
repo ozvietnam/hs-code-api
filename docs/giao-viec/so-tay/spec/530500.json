@@ -1,0 +1,99 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "530500",
+  "phien": "zcode-mm:loop:20261106T0903#soan-530500",
+  "dong8": {
+    "53050010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave)",
+            "tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)"
+          ]
+        }
+      ],
+      "phanConLai": false
+    },
+    "53050021": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xơ dừa"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "loại thô"
+        }
+      ]
+    },
+    "53050022": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xơ dừa"
+        }
+      ],
+      "phanConLai": true
+    },
+    "53050023": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xơ chuối abaca"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "5305002": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Xơ dừa",
+            "xơ chuối abaca"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "5305002",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5305002 \"Xơ dừa và xơ chuối abaca\" ⇒ tenLoai TEN_LOAI [\"Xơ dừa\",\"xơ chuối abaca\"] — tiêu đề có tên, phạm vi là hợp của hai loại xơ (nhiều phần tử = \"hoặc\"); không dùng loaiSoiDet vì khoá đó gộp chung xơ dừa/abaca với xơ cây thùa của 53050010."
+    },
+    {
+      "ma": "53050010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.53050010 \"Xơ xidan (sisal) và xơ dệt khác của các cây thuộc chi cây thùa (Agave); tô (tow) và phế liệu của các loại xơ này (kể cả phế liệu sợi và sợi tái chế)\" ⇒ tenLoai TEN_LOAI 2 giá trị nguyên văn; định ngữ chung \"của các cây thuộc chi cây thùa (Agave)\" (chữ Anh: \"of the genus Agave\") phủ chung hai danh từ đầu nên phải gộp chung một giá trị (tách riêng ⇒ cong5-dinh-ngu-tach); \"khác\" trong \"xơ dệt khác\" là khác XƠ XIDAN trong chi Agave, KHÔNG phải phần còn lại của tầng 5305 ⇒ phanConLai: false (phần còn lại của tầng là dòng 53050090 \"Loại khác\" trần)."
+    },
+    {
+      "ma": "53050021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.53050021 \"Xơ dừa, loại thô\" (EN \"Coconut fibres, raw\") ⇒ tenLoai TEN_LOAI \"Xơ dừa\" + tenLoai TEN_LOAI \"loại thô\" — tách vế định ngữ \"loại thô\" khỏi danh từ \"Xơ dừa\" để phân biệt với 53050022; gộp thành một giá trị \"Xơ dừa, loại thô\" thì phủ định 53050021 của 53050022 không chứng minh được (so chữ tự do: CHUA_BIET) ⇒ 53050022 không tới được (cong2-dong-khong-toi-duoc)."
+    },
+    {
+      "ma": "53050022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.53050022 \"Xơ dừa khác\" (EN \"Other coconut fibres\") ⇒ tenLoai TEN_LOAI \"Xơ dừa\" + phanConLai: true — \"khác\" là phần còn lại có tên: xơ dừa loại khác loại thô (anh em đứng trước 53050021) trong tầng 5305002; 53050023 (xơ chuối abaca) đứng sau nên không bị phủ định; chữ \"khác\" do phanConLai giữ, không nhân bản vào giá trị tên."
+    },
+    {
+      "ma": "53050023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.53050023 \"Xơ chuối abaca\" (EN \"Abaca fibres\") ⇒ tenLoai TEN_LOAI \"Xơ chuối abaca\" (tên hàng nguyên văn)."
+    },
+    {
+      "ma": "53050090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.53050090 \"Loại khác\" trần ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    }
+  ]
+}

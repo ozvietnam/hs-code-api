@@ -1,0 +1,48 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "540244",
+  "phien": "zcode-mm:loop:20261106T0923#soan-540244",
+  "dong8": {
+    "54024410": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyeste"
+        }
+      ]
+    },
+    "54024420": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polypropylen"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "54024410",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.54024410: \"54024410 - - - Từ các polyeste\" ⇒ tenLoai TEN_LOAI \"polyeste\" — lấy tên vật liệu nguyên văn trong chữ biểu của dòng; bỏ chữ giới thiệu \"Từ các\" vì đó là chữ chung với dòng 54024420 (giữ lại thì hai nhánh chung âm tiết \"Từ\" và máy không phân biệt được); không dùng chatLieu vì tu-vung chỉ có giá trị \"plastic\" chung cho cả polyeste lẫn polypropylen, loaiSoiDet (SOI_TAI_TAO) cũng chung cho cả hai."
+    },
+    {
+      "ma": "54024420",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.54024420: \"54024420 - - - Từ polypropylen\" ⇒ tenLoai TEN_LOAI \"polypropylen\" — dùng CHUNG khoá tenLoai với 54024410 để máy ghép cặp giá trị phân biệt hai nhánh theo vật liệu (polypropylen ≠ polyeste); bỏ chữ \"Từ\" cùng lý do như 54024410."
+    },
+    {
+      "ma": "54024490",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.54024490: \"54024490 - - - Loại khác\" trần ⇒ không ghi điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "540244",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tầng 540244 không khai dieuKienNut: tên tầng trong cây lấy từ WCO (nguồn wco.540244, tenVi rỗng) và gói không có nguồn tieuDe.540244; điều kiện \"đàn hồi\" của tầng đã nằm sẵn ở cấp phân nhóm trong sổ tay nên không thuộc ranh giới 6→8 của nhóm này; điều kiện từng dòng chỉ lấy từ nguồn của chính dòng (tax.<8 số>)."
+    }
+  ]
+}
