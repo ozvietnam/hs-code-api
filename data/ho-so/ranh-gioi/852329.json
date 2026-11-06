@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1100#soan-852329",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-852329",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -333,7 +333,12 @@
       "hs": "85232961",
       "nguon": "tax.85232961",
       "trich": "85232961 - - - - - Loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "ghiMaNhiPhanTuongTac",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -422,14 +427,24 @@
       "hs": "85232983",
       "nguon": "tax.85232983",
       "trich": "85232983 - - - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "ghiMaNhiPhanTuongTac",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "85232985",
       "nguon": "tax.85232985",
       "trich": "85232985 - - - - - Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chuaPhimDienAnh",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -496,7 +511,12 @@
       "hs": "85232995",
       "nguon": "tax.85232995",
       "trich": "85232995 - - - - - Loại khác, loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "ghiMaNhiPhanTuongTac",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -508,6 +528,16 @@
     }
   ],
   "ghiChuSoan": [
+    {
+      "ma": "85232961",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85232961 \"Loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác với người sử dụng, thông qua một máy xử lý dữ liệu tự động; …\" ⇒ ghiMaNhiPhanTuongTac CO (khoá lô 20, cách đọc CÓ là đúng cụm \"ghi ở dạng mã nhị phân … tương tác với người sử dụng\"). Cùng khoá cho .83 \"Loại khác, loại sử dụng …\" và .95 (chỉ vế)"
+    },
+    {
+      "ma": "85232985",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85232985 \"Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác\": chỉ điều kiện của vế ⇒ chuaPhimDienAnh CO (khoá lô 20, nhãn gồm cả vế loại trừ \"trừ phim thời sự, du lịch, kỹ thuật, khoa học, tài liệu\")"
+    },
     {
       "ma": "852329~r15471",
       "loai": "QUYET_DINH",
@@ -542,30 +572,6 @@
       "ma": "852329~r15503",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.r15503/r15515 \"Loại để tái tạo các hiện tượng trừ âm thanh hoặc hình ảnh\" ⇒ congDung \"tái tạo các hiện tượng\" (vế loại trừ \"trừ âm thanh hoặc hình ảnh\" không có op phủ định — như 07119050, nhưng đây là tầng phân nhóm chính giữa các dòng đã định nghĩa theo máy vi tính/Loại khác nên ghi phần khẳng định được)"
-    },
-    {
-      "ma": "85232961",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "duLieuMayDocDuoc",
-      "ghiChu": "tax.85232961 \"Loại sử dụng để tái tạo các tập lệnh, dữ liệu… ghi ở dạng mã nhị phân để máy có thể đọc được, và có thể thao tác hoặc có thể tương tác… thông qua một máy xử lý dữ liệu tự động; phương tiện lưu trữ được định dạng riêng (đã ghi)\" — không có khoá cho dữ liệu nhị phân máy đọc được / phương tiện định dạng riêng"
-    },
-    {
-      "ma": "85232983",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "duLieuMayDocDuoc",
-      "ghiChu": "tax.85232983 \"Loại khác, loại sử dụng để tái tạo các tập lệnh… mã nhị phân…\" — như .61, thiếu khoá"
-    },
-    {
-      "ma": "85232985",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "noiDungPhim",
-      "ghiChu": "tax.85232985 \"Loại khác, chứa phim điện ảnh trừ phim thời sự, phim du lịch, phim kỹ thuật, phim khoa học, và phim tài liệu khác\" — vế loại trừ danh sách phim không có op phủ định cho liệt kê (như 07119050)"
-    },
-    {
-      "ma": "85232995",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "duLieuMayDocDuoc",
-      "ghiChu": "tax.85232995 \"Loại khác, loại sử dụng để tái tạo các tập lệnh…\" — như .61"
     },
     {
       "ma": "85232919",
