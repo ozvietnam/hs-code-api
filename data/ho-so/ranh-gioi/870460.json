@@ -1,0 +1,253 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "870460",
+  "nhom": "8704",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1135#soan-870460",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8704601",
+      "nguon": "tieuDe.8704601",
+      "trich": "8704601 Dạng CKD (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8704602",
+      "nguon": "tieuDe.8704602",
+      "trich": "8704602 Loại khác, khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 5,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87046011",
+      "nguon": "tax.87046011",
+      "trich": "87046011 - - - Ô tô pick-up (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "PICK_UP"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87046012",
+      "nguon": "tax.87046012",
+      "trich": "87046012 - - - Xe ba bánh (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "xeBaBanh",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87046019",
+      "nguon": "tax.87046019",
+      "trich": "87046019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87046021",
+      "nguon": "tax.87046021",
+      "trich": "87046021 - - - Ô tô pick-up (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoHang",
+          "op": "TRONG",
+          "value": [
+            "PICK_UP"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87046022",
+      "nguon": "tax.87046022",
+      "trich": "87046022 - - - Xe ba bánh (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "xeBaBanh",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87046029",
+      "nguon": "tax.87046029",
+      "trich": "87046029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87046091",
+      "nguon": "tax.87046091",
+      "trich": "87046091 - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 5,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 10,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87046092",
+      "nguon": "tax.87046092",
+      "trich": "87046092 - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 10,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 20,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87046093",
+      "nguon": "tax.87046093",
+      "trich": "87046093 - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 45 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 20,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 45,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87046094",
+      "nguon": "tax.87046094",
+      "trich": "87046094 - - - Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 45,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8704601",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8704601 \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG (cách đọc KHÔNG của daLapRap có \"CKD\")"
+    },
+    {
+      "ma": "87046011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87046011 \"Ô tô pick-up (1)\" ⇒ kieuXeChoHang TRONG [PICK_UP]"
+    },
+    {
+      "ma": "87046012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87046012 \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"
+    },
+    {
+      "ma": "8704602",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8704602 \"Loại khác, khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn\" ⇒ \"Loại khác, <vế>\": chỉ điều kiện của vế (khoiLuongToanBo), máy tự phủ định anh em"
+    },
+    {
+      "ma": "87046021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87046021 \"Ô tô pick-up (1)\" ⇒ kieuXeChoHang TRONG [PICK_UP]"
+    },
+    {
+      "ma": "87046022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87046022 \"Xe ba bánh (SEN)\" ⇒ xeBaBanh CO"
+    },
+    {
+      "ma": "87046091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87046091 \"Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 10 tấn\" ⇒ khoiLuongToanBo biên đúng chữ (tấn)"
+    },
+    {
+      "ma": "87046092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87046092 \"Khối lượng toàn bộ theo thiết kế (SEN) trên 10 tấn nhưng không quá 20 tấn\" ⇒ khoiLuongToanBo biên đúng chữ (tấn)"
+    },
+    {
+      "ma": "87046093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87046093 \"Khối lượng toàn bộ theo thiết kế (SEN) trên 20 tấn nhưng không quá 45 tấn\" ⇒ khoiLuongToanBo biên đúng chữ (tấn)"
+    },
+    {
+      "ma": "87046094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87046094 \"Khối lượng toàn bộ theo thiết kế (SEN) trên 45 tấn\" ⇒ khoiLuongToanBo biên đúng chữ (tấn)"
+    },
+    {
+      "ma": "87046012",
+      "loai": "DUNG",
+      "ghiChu": "tax.87046012 \"Xe ba bánh (SEN)\" (xeBaBanh CO) chồng lấn trục với anh em kieuXeChoHang LIET_KE (đông lạnh/pick-up/thu gom phế thải…) — hàng thật xe ba bánh chở hàng đông lạnh thoả cả hai dòng; cả hai khoá đều là trục DAC_DIEM nên khai chongLanTruc bị cong0-chong-lan-truc-mot-truc ⇒ DỪNG, không tự xử lý"
+    },
+    {
+      "ma": "87046022",
+      "loai": "DUNG",
+      "ghiChu": "tax.87046022 \"Xe ba bánh (SEN)\" (xeBaBanh CO) chồng lấn trục với anh em kieuXeChoHang LIET_KE (đông lạnh/pick-up/thu gom phế thải…) — hàng thật xe ba bánh chở hàng đông lạnh thoả cả hai dòng; cả hai khoá đều là trục DAC_DIEM nên khai chongLanTruc bị cong0-chong-lan-truc-mot-truc ⇒ DỪNG, không tự xử lý"
+    },
+    {
+      "ma": "8704609",
+      "loai": "DUNG",
+      "ghiChu": "tieuDe.8704609 \"Loại khác\" trần ⇒ không ghi điều kiện; vùng ≤ 5 tấn do anh em 8704602 \"Loại khác, khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn\" nhận nhưng cổng 1 không dùng điều kiện anh em làm nền nên thăm dò vector 4999.995 kg báo cong1-khong-phu-kin:8704609 ⇒ DỪNG, không tự xử lý"
+    }
+  ]
+}
