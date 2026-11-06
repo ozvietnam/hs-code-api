@@ -1,0 +1,58 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "871110",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871110",
+  "dong8": {
+    "87111012": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Xe gắn máy có bàn đạp", "xe đạp có động cơ"] }
+      ]
+    },
+    "87111014": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Xe \"powered kick scooter\"", "xe “pocket motorcycle”"] }
+      ]
+    },
+    "87111015": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Xe mô tô", "xe scooter"] }
+      ],
+      "phanConLai": true
+    },
+    "87111092": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Xe gắn máy có bàn đạp", "xe đạp có động cơ"] }
+      ]
+    },
+    "87111094": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Xe \"powered kick scooter\"", "xe “pocket motorcycle”"] }
+      ]
+    },
+    "87111095": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Xe mô tô", "xe scooter"] }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {
+    "8711101": {
+      "dieuKienSo": [
+        { "fact": "daLapRap", "op": "KHONG" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "8711101", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8711101 \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG (cách đọc KHONG có \"CKD\")" },
+    { "ma": "87111012", "loai": "QUYET_DINH", "ghiChu": "tax.87111012 \"Xe gắn máy có bàn đạp (moped) hoặc xe đạp có động cơ\" ⇒ tenLoai [\"Xe gắn máy có bàn đạp\",\"xe đạp có động cơ\"] (hai hàng; \"(moped)\" là alias trong ngoặc)" },
+    { "ma": "87111014", "loai": "QUYET_DINH", "ghiChu": "tax.87111014 ⇒ tenLoai [\"Xe \\\"powered kick scooter\\\"\",\"xe “pocket motorcycle”\"] — hai hàng" },
+    { "ma": "87111015", "loai": "QUYET_DINH", "ghiChu": "tax.87111015 \"Xe mô tô và xe scooter khác\" ⇒ tenLoai [\"Xe mô tô\",\"xe scooter\"] + phanConLai true (phủ định .12, .14)" },
+    { "ma": "87111019", "loai": "QUYET_DINH", "ghiChu": "tax.87111019 \"Loại khác\" trần ⇒ không điều kiện" },
+    { "ma": "8711109", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8711109 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em 8711101)" },
+    { "ma": "87111092", "loai": "QUYET_DINH", "ghiChu": "tax.87111092 ⇒ tenLoai như 87111012" },
+    { "ma": "87111094", "loai": "QUYET_DINH", "ghiChu": "tax.87111094 ⇒ tenLoai như 87111014" },
+    { "ma": "87111095", "loai": "QUYET_DINH", "ghiChu": "tax.87111095 ⇒ tenLoai như 87111015 + phanConLai true (phủ định .92, .94)" },
+    { "ma": "87111099", "loai": "QUYET_DINH", "ghiChu": "tax.87111099 \"Loại khác\" trần ⇒ không điều kiện" }
+  ]
+}

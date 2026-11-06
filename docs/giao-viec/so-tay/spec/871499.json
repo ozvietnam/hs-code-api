@@ -1,0 +1,117 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "871499",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871499",
+  "dong8": {
+    "87149911": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tay lái",
+            "cọc lái",
+            "chắn bùn",
+            "tấm phản quang",
+            "giá đỡ",
+            "cáp điều khiển",
+            "giá",
+            "vấu bắt đèn",
+            "phụ kiện"
+          ]
+        }
+      ],
+      "phanConLai": false
+    },
+    "87149912": {
+      "dieuKienSo": [],
+      "phanConLai": [
+        "87149911"
+      ]
+    },
+    "87149991": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Tay lái",
+            "cọc lái",
+            "chắn bùn",
+            "tấm phản quang",
+            "giá đỡ",
+            "cáp điều khiển",
+            "giá",
+            "vấu bắt đèn",
+            "phụ kiện"
+          ]
+        }
+      ],
+      "phanConLai": false
+    },
+    "87149993": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ốc bắt đầu nan hoa"
+        }
+      ]
+    },
+    "87149994": {
+      "dieuKienSo": [],
+      "phanConLai": [
+        "87149991",
+        "87149993"
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8714991": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe đạp thuộc phân nhóm 8712.00.20"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8714991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8714991 \"Dùng cho xe đạp thuộc phân nhóm 8712.00.20\" ⇒ dungCho \"xe đạp thuộc phân nhóm 8712.00.20\" (chữ mô tả kèm mã, #697)"
+    },
+    {
+      "ma": "87149911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87149911 \"Tay lái, cọc lái, chắn bùn, tấm phản quang (1), giá đỡ, cáp điều khiển, giá hoặc vấu bắt đèn; phụ kiện khác (SEN)\" ⇒ tenLoai mảng (tách \"giá hoặc vấu bắt đèn\" thành \"giá\",\"vấu bắt đèn\"); phanConLai false: chữ \"khác\" thuộc mục \"phụ kiện khác\" cuối danh sách của chính dòng, không phải phần còn lại của anh em"
+    },
+    {
+      "ma": "87149912",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87149912 \"Bánh xích và trục khuỷu; bộ phận khác (SEN)\" ⇒ phanConLai [87149911] đứng một mình: tập hợp của dòng = mọi hàng dưới 8714991 không thuộc .11 (bánh xích, trục khuỷu và các bộ phận khác đều nằm trong phần còn lại này); đặt tenLoai \"Bánh xích\"/\"trục khuỷu\" gây không-til-được vì phủ định .11 bằng tên CHƯA BIẾT"
+    },
+    {
+      "ma": "8714999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8714999 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "87149991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87149991 ⇒ tenLoai như 87149911, phanConLai false"
+    },
+    {
+      "ma": "87149993",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87149993 \"Ốc bắt đầu nan hoa\" ⇒ tenLoai \"Ốc bắt đầu nan hoa\""
+    },
+    {
+      "ma": "87149994",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87149994 ⇒ phanConLai [87149991, 87149993] đứng một mình như 87149912"
+    }
+  ]
+}

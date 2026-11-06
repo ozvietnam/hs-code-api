@@ -1,0 +1,90 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "871200",
+  "nhom": "8712",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871200",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "87120010",
+      "nguon": "tax.87120010",
+      "trich": "87120010 - Xe đạp đua",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đạp đua"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87120020",
+      "nguon": "tax.87120020",
+      "trich": "87120020 - Xe đạp được thiết kế dành cho trẻ em (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đạp"
+        },
+        {
+          "fact": "thietKeChoTreEm",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87120030",
+      "nguon": "tax.87120030",
+      "trich": "87120030 - Xe đạp khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xe đạp khác"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "87120090",
+      "nguon": "tax.87120090",
+      "trich": "87120090 - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "87120010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87120010 \"Xe đạp đua\" ⇒ tenLoai \"Xe đạp đua\""
+    },
+    {
+      "ma": "87120020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87120020 \"Xe đạp được thiết kế dành cho trẻ em (SEN)\" ⇒ tenLoai \"Xe đạp\" + thietKeChoTreEm CO (vế \"được thiết kế dành cho trẻ em\")"
+    },
+    {
+      "ma": "87120030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87120030 \"Xe đạp khác\" ⇒ tenLoai \"Xe đạp khác\" (tên nguyên văn, như 3004908 \"thuốc khác điều trị ung thư\") + phanConLai true (phủ định .10, .20)"
+    },
+    {
+      "ma": "87120090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87120090 \"Loại khác\" trần ⇒ không điều kiện (xe không phải xe đạp, vd xích lô)"
+    }
+  ]
+}

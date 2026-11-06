@@ -1,0 +1,359 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "871690",
+  "nhom": "8716",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-871690",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8716901",
+      "nguon": "tieuDe.8716901",
+      "trich": "8716901 Dùng cho xe rơ-moóc và sơ mi rơ-moóc",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe rơ-moóc",
+            "sơ mi rơ-moóc"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8716902",
+      "nguon": "tieuDe.8716902",
+      "trich": "8716902 Của xe thuộc phân nhóm 8716.80.10 hoặc 8716.80.20",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8716.80.10",
+            "8716.80.20"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "8716909",
+      "nguon": "tieuDe.8716909",
+      "trich": "8716909 Dùng cho các loại xe khác",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các loại xe"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87169013",
+      "nguon": "tax.87169013",
+      "trich": "87169013 - - - Dùng cho hàng hóa thuộc phân nhóm 8716.20",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8716.20"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87169019",
+      "nguon": "tax.87169019",
+      "trich": "87169019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87169021",
+      "nguon": "tax.87169021",
+      "trich": "87169021 - - - Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh xe đẩy"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 100,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">=",
+          "value": 30,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87169022",
+      "nguon": "tax.87169022",
+      "trich": "87169022 - - - Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, hoặc hơn 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh xe đẩy"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "duongKinh",
+                "op": ">",
+                "value": 75,
+                "donVi": "mm"
+              },
+              {
+                "fact": "duongKinh",
+                "op": "<=",
+                "value": 100,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "duongKinh",
+                "op": ">",
+                "value": 250,
+                "donVi": "mm"
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">=",
+          "value": 30,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87169023",
+      "nguon": "tax.87169023",
+      "trich": "87169023 - - - Loại khác, dùng cho các loại xe thuộc phân nhóm 8716.80.10",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8716.80.10"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87169024",
+      "nguon": "tax.87169024",
+      "trich": "87169024 - - - Loại khác, dùng cho các loại xe thuộc phân nhóm 8716.80.20",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8716.80.20"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87169094",
+      "nguon": "tax.87169094",
+      "trich": "87169094 - - - Nan hoa và ốc bắt đầu nan hoa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Nan hoa",
+            "ốc bắt đầu nan hoa"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87169095",
+      "nguon": "tax.87169095",
+      "trich": "87169095 - - - Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh xe đẩy"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 100,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">=",
+          "value": 30,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87169096",
+      "nguon": "tax.87169096",
+      "trich": "87169096 - - - Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 75 mm nhưng không quá 100 mm, hoặc hơn 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh xe đẩy"
+        },
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "duongKinh",
+                "op": ">",
+                "value": 75,
+                "donVi": "mm"
+              },
+              {
+                "fact": "duongKinh",
+                "op": "<=",
+                "value": 100,
+                "donVi": "mm"
+              }
+            ],
+            [
+              {
+                "fact": "duongKinh",
+                "op": ">",
+                "value": 250,
+                "donVi": "mm"
+              }
+            ]
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">=",
+          "value": 30,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87169099",
+      "nguon": "tax.87169099",
+      "trich": "87169099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "87169013",
+      "loai": "DUNG",
+      "ghiChu": "cong1-khong-phu-kin:871690:dungCho=8716.20 — tiêu đề 8716901 nêu TÊN 'xe rơ-moóc và sơ mi rơ-moóc' trong khi dòng 87169013 dẫn MÃ 8716.20 (tên cây 'Rơ-moóc và sơ mi rơ-moóc loại tự bốc hoặc dỡ hàng dùng trong nông nghiệp'); máy không nối điều kiện-tên ↔ dữ kiện-mã nên vector dungCho=8716.20 không rơi vào nhánh nào ở tầng gốc; không thể thêm mã vào giá trị tiêu đề (không nguyên văn). Theo QUY-TRINH mục 5: DỪNG."
+    },
+    {
+      "ma": "8716901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8716901 \"Dùng cho xe rơ-moóc và sơ mi rơ-moóc\" ⇒ dungCho [\"xe rơ-moóc\",\"sơ mi rơ-moóc\"]"
+    },
+    {
+      "ma": "87169013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169013 \"Dùng cho hàng hóa thuộc phân nhóm 8716.20\" ⇒ dungCho \"8716.20\""
+    },
+    {
+      "ma": "87169019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169019 \"Loại khác\" trần ⇒ không điều kiện"
+    },
+    {
+      "ma": "8716902",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8716902 \"Của xe thuộc phân nhóm 8716.80.10 hoặc 8716.80.20\" ⇒ dungCho [\"8716.80.10\",\"8716.80.20\"]"
+    },
+    {
+      "ma": "87169021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169021 \"Bánh xe đẩy (castor), có đường kính (kể cả lốp) trên 100 mm nhưng không quá 250 mm với điều kiện là chiều rộng của bánh xe hoặc lốp lắp vào không nhỏ hơn 30 mm\" ⇒ tenLoai \"Bánh xe đẩy\" + duongKinh > 100 và <= 250 mm + chieuRong >= 30 mm"
+    },
+    {
+      "ma": "87169022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169022 ⇒ tenLoai \"Bánh xe đẩy\" + HOAC [duongKinh > 75 và <= 100 mm] hoặc [duongKinh > 250 mm]; chieuRong >= 30 mm cho cả hai vế"
+    },
+    {
+      "ma": "87169023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169023 \"Loại khác, dùng cho các loại xe thuộc phân nhóm 8716.80.10\" ⇒ chỉ vế: dungCho \"8716.80.10\""
+    },
+    {
+      "ma": "87169024",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169024 ⇒ chỉ vế: dungCho \"8716.80.20\""
+    },
+    {
+      "ma": "8716909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8716909 \"Dùng cho các loại xe khác\" ⇒ dungCho \"các loại xe\" + phanConLai true (chữ \"khác\": xe khác rơ-moóc và khác 8716.80.x đã nêu ở anh em)"
+    },
+    {
+      "ma": "87169094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169094 \"Nan hoa và ốc bắt đầu nan hoa\" ⇒ tenLoai [\"Nan hoa\",\"ốc bắt đầu nan hoa\"]"
+    },
+    {
+      "ma": "87169095",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169095 ⇒ như 87169021"
+    },
+    {
+      "ma": "87169096",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169096 ⇒ như 87169022"
+    },
+    {
+      "ma": "87169099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87169099 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

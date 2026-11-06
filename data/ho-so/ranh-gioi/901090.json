@@ -1,0 +1,79 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "901090",
+  "nhom": "9010",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1003#soan-901090",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "90109020",
+      "nguon": "tax.90109020",
+      "trich": "90109020 - - Của hàng hóa thuộc phân nhóm 9010.10.00",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "9010.10.00"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90109030",
+      "nguon": "tax.90109030",
+      "trich": "90109030 - - Bộ phận và phụ kiện của máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in ",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "chiếu",
+            "vẽ mạch"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "90109090",
+      "nguon": "tax.90109090",
+      "trich": "90109090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "90109020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90109020 \"Của hàng hóa thuộc phân nhóm 9010.10.00\" ⇒ dungCho \"9010.10.00\" (giữ chuỗi mã)"
+    },
+    {
+      "ma": "90109030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90109030 \"Bộ phận và phụ kiện của máy để chiếu hoặc vẽ mạch lên các chất nền có độ nhạy sáng để sản xuất tấm mạch in/tấm dây in\" ⇒ laBoPhan CO + dungCho \"máy\" (đích) + congDung [\"chiếu\",\"vẽ mạch\"]: cụm đích chứa \"hoặc\" không giữ một chuỗi được (cong3 chặn), định ngữ công dụng của máy tách thành điều kiện riêng"
+    },
+    {
+      "ma": "90109090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.90109090 \"Loại khác\" trần ⇒ không điều kiện"
+    }
+  ]
+}

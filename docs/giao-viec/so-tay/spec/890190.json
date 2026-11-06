@@ -1,0 +1,215 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "890190",
+  "phien": "zcode-sub:glm-5.3:20261106T1003#soan-890190",
+  "dong8": {
+    "89019011": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89019012": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 500,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89019014": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 500,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89019031": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 26,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89019032": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 26,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 500,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89019033": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 500,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89019034": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 1000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 4000,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89019035": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 4000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 5000,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89019036": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 5000,
+          "donVi": "GT"
+        },
+        {
+          "fact": "tongDungTichTau",
+          "op": "<=",
+          "value": 50000,
+          "donVi": "GT"
+        }
+      ]
+    },
+    "89019037": {
+      "dieuKienSo": [
+        {
+          "fact": "tongDungTichTau",
+          "op": ">",
+          "value": 50000,
+          "donVi": "GT"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8901901",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "coDongCoDay",
+      "ghiChu": "tieuDe.8901901 \"Không có động cơ đẩy\" — không có khoá tu-vung@2 cho có/không động cơ đẩy (cachDieuKhien DONG_CO đọc \"động cơ bước/động cơ điện\", không khớp chữ \"động cơ đẩy\")"
+    },
+    {
+      "ma": "8901903",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "coDongCoDay",
+      "ghiChu": "tieuDe.8901903 \"Có động cơ đẩy\" — thiếu khoá như 8901901"
+    },
+    {
+      "ma": "89019011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019011 ⇒ tongDungTichTau <= 26 GT"
+    },
+    {
+      "ma": "89019012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019012 ⇒ tongDungTichTau > 26 GT và <= 500 GT"
+    },
+    {
+      "ma": "89019014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019014 ⇒ tongDungTichTau > 500 GT"
+    },
+    {
+      "ma": "89019031",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019031 ⇒ tongDungTichTau <= 26 GT"
+    },
+    {
+      "ma": "89019032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019032 ⇒ tongDungTichTau > 26 GT và <= 500 GT"
+    },
+    {
+      "ma": "89019033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019033 ⇒ tongDungTichTau > 500 GT và <= 1000 GT"
+    },
+    {
+      "ma": "89019034",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019034 ⇒ tongDungTichTau > 1000 GT và <= 4000 GT"
+    },
+    {
+      "ma": "89019035",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019035 ⇒ tongDungTichTau > 4000 GT và <= 5000 GT"
+    },
+    {
+      "ma": "89019036",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019036 ⇒ tongDungTichTau > 5000 GT và <= 50000 GT"
+    },
+    {
+      "ma": "89019037",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.89019037 ⇒ tongDungTichTau > 50000 GT"
+    }
+  ],
+  "dieuKienNut": {
+    "8901901": {
+      "dieuKienSo": []
+    },
+    "8901903": {
+      "dieuKienSo": []
+    }
+  }
+}
