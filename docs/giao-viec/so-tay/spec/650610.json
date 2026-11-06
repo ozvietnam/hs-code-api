@@ -1,0 +1,111 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "650610",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-650610",
+  "dong8": {
+    "65061010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mũ bảo hiểm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "người đi xe máy"
+        }
+      ]
+    },
+    "65061020": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Mũ bảo hộ công nghiệp"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "mũ bảo hiểm"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "lính cứu hỏa"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "65061030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mũ bảo hộ"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
+      ]
+    },
+    "65061040": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "chơi water-polo"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "65061010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.65061010 \"Mũ bảo hiểm cho người đi xe máy\" ⇒ tenLoai \"Mũ bảo hiểm\" + dungCho \"người đi xe máy\" (vế giới hạn \"cho người đi xe máy\")"
+    },
+    {
+      "ma": "65061020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.65061020 \"Mũ bảo hộ công nghiệp và mũ bảo hiểm cho lính cứu hỏa, trừ mũ bảo hộ bằng thép\" ⇒ HOAC [[tenLoai \"Mũ bảo hộ công nghiệp\"],[tenLoai \"mũ bảo hiểm\" + dungCho \"lính cứu hỏa\"]] — định ngữ \"cho lính cứu hỏa\" chỉ của mũ bảo hiểm (EN: firemen's helmets), thành phương án riêng"
+    },
+    {
+      "ma": "65061020",
+      "loai": "BO_VE",
+      "ve": "trừ mũ bảo hộ bằng thép",
+      "lyDo": "không có op phủ định cho tên/chất liệu trong tu-vung@2; mũ bảo hộ bằng thép đã bị 65061030 chặn bằng tenLoai \"Mũ bảo hộ\" + chatLieu LA \"sắt thép\" — vế loại trừ chỉ tái khẳng định ranh giới .20/.30 đã có, bỏ vế không đổi mã: mũ công nghiệp không thép khớp .20, mũ bảo hộ thép khớp .30"
+    },
+    {
+      "ma": "65061030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.65061030 \"Mũ bảo hộ bằng thép\" ⇒ tenLoai \"Mũ bảo hộ\" + chatLieu LA \"sắt thép\" (đọc \"thép\") — phủ vế \"bằng thép\""
+    },
+    {
+      "ma": "65061040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.65061040 \"Mũ dùng trong chơi water-polo\" ⇒ dungCho CONG_DUNG \"chơi water-polo\" — vế giới hạn \"dùng trong chơi water-polo\" là đặc điểm phân loại chính; không kèm tenLoai \"Mũ\" vì quá rộng (mọi mũ chứa \"Mũ\")"
+    },
+    {
+      "ma": "65061090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.65061090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "65061040",
+      "loai": "DUNG",
+      "ghiChu": "Chồng lấn trục (cong2-chong-lan-truc): 65061020 \"Mũ bảo hộ công nghiệp và mũ bảo hiểm cho lính cứu hỏa…\" và 65061030 \"Mũ bảo hộ bằng thép\" chia theo TÊN, 65061040 \"Mũ dùng trong chơi water-polo\" chia theo CÔNG DỤNG — không có hàng thật nào thoả cả hai nhánh của từng cặp (mũ bảo hộ công nghiệp/mũ bảo hộ thép không dùng trong chơi water-polo; mũ water-polo là loại riêng) ⇒ không khai được chongLanTruc với viDuHang, DỪNG theo vòng 8"
+    }
+  ]
+}

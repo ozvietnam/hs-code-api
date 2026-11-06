@@ -1,0 +1,64 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "640399",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-640399",
+  "dong8": {
+    "64039910": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "gỗ"
+        }
+      ]
+    },
+    "64039920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giày chơi bowling"
+        }
+      ]
+    },
+    "64039930": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiMuiBaoVe",
+          "op": "TRONG",
+          "value": [
+            "PHI_KIM_LOAI"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "64039910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64039910 \"Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ\" ⇒ chatLieu LA \"gỗ\" (phủ vế \"có đế\"+\"bằng gỗ\"); tu-vung@2 không có vị trí \"đế\" cho chatLieu"
+    },
+    {
+      "ma": "64039920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64039920 \"Giày chơi bowling\" ⇒ tenLoai TEN_LOAI \"Giày chơi bowling\" — tên đầu nguyên văn"
+    },
+    {
+      "ma": "64039930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64039930 \"Loại khác, có mũi giày được gắn bảo vệ không phải kim loại (SEN)\" ⇒ loaiMuiBaoVe PHI_KIM_LOAI — chỉ điều kiện của vế"
+    },
+    {
+      "ma": "64039990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64039990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "64039910",
+      "loai": "DUNG",
+      "ghiChu": "Chồng lấn giả do trục (cong2-chong-lan .10+.20): 64039910 \"Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ\" chia theo ĐẶC ĐIỂM chất liệu (chatLieu gỗ), 64039920 \"Giày chơi bowling\" chia theo TÊN (tenLoai) — không có hàng thật nào vừa là giày chơi bowling vừa có đế bằng gỗ (giày bowling đế cao su/da) nên không khai được chongLanTruc với viDuHang ⇒ DỪNG theo vòng 8; tu-vung@2 cũng không có vị trí \"đế\" cho chatLieu"
+    }
+  ]
+}

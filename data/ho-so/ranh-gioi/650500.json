@@ -1,0 +1,99 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "650500",
+  "nhom": "6505",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0856#soan-650500",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "65050010",
+      "nguon": "tax.65050010",
+      "trich": "65050010 - Mũ và các vật đội đầu sử dụng cho mục đích tôn giáo",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "mục đích tôn giáo"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "65050020",
+      "nguon": "tax.65050020",
+      "trich": "65050020 - Lưới bao tóc",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lưới bao tóc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "65050090",
+      "nguon": "tax.65050090",
+      "trich": "65050090 - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "65050010",
+        "65050020"
+      ],
+      "truc": {
+        "65050010": "CONG_DUNG",
+        "65050020": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Vật đội đầu này là \"Lưới bao tóc\" (65050020) hay là mũ/các vật đội đầu khác \"sử dụng cho mục đích tôn giáo\" (65050010)?",
+      "trich": {
+        "65050010": "Mũ và các vật đội đầu sử dụng cho mục đích tôn giáo",
+        "65050020": "Lưới bao tóc"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "65050010",
+            "65050020"
+          ],
+          "hang": "Lưới bao tóc dùng cho mục đích tôn giáo (snood che tóc của phụ nữ theo quy định tôn giáo)"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "65050010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.65050010 \"Mũ và các vật đội đầu sử dụng cho mục đích tôn giáo\" ⇒ dungCho CONG_DUNG \"mục đích tôn giáo\" (vế giới hạn \"sử dụng cho mục đích tôn giáo\")"
+    },
+    {
+      "ma": "65050020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.65050020 \"Lưới bao tóc\" ⇒ tenLoai TEN_LOAI \"Lưới bao tóc\" — tên đầu nguyên văn"
+    },
+    {
+      "ma": "65050090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.65050090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "65050010",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Cặp 65050010/65050020 chồng trục công dụng↔tên (lưới bao tóc dùng cho mục đích tôn giáo là hàng thật) ⇒ khai chongLanTruc, phanXu null"
+    }
+  ]
+}

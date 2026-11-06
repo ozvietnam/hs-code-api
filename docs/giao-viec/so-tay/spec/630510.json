@@ -1,0 +1,74 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "630510",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-630510",
+  "dong8": {
+    "63051011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Từ đay"
+        }
+      ]
+    },
+    "63051021": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Từ đay"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "6305101": {
+      "dieuKienSo": []
+    },
+    "6305102": {
+      "dieuKienSo": [
+        {
+          "fact": "tinhTrang",
+          "op": "TRONG",
+          "value": [
+            "DA_QUA_SU_DUNG"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "63051011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.63051011 \"Từ đay\" ⇒ tenLoai TEN_LOAI \"Từ đay\"; không dùng loaiSoiDet SOI_THUC_VAT_KHAC vì giá trị đó bao cả lanh/gai/xơ dừa (nhóm 53.05) rộng hơn chữ \"Từ đay\""
+    },
+    {
+      "ma": "63051021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.63051021 \"Từ đay\" ⇒ tenLoai TEN_LOAI \"Từ đay\" như 63051011"
+    },
+    {
+      "ma": "63051019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.63051019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "63051029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.63051029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "6305102",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6305102 \"Đã qua sử dụng\" ⇒ tinhTrang DA_QUA_SU_DUNG (cách đọc \"đã qua sử dụng\")"
+    },
+    {
+      "ma": "6305101",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "tinhTrang",
+      "ghiChu": "tieuDe.6305101: \"6305101 Mới\" — chữ trần \"Mới\" không khớp cách đọc nào của giá trị tinhTrang MOI (mẫu \"mới 100%\"/\"hàng mới\"/\"mới nguyên\"/\"new\"); tenLoai tự do thì cong1-khong-phu-kin"
+    }
+  ]
+}

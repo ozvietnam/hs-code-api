@@ -1,0 +1,87 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "681182",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-681182",
+  "dong8": {
+    "68118210": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Gạch lát nền",
+            "ốp tường"
+          ]
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ]
+    },
+    "68118220": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "lợp mái",
+            "ốp bề mặt",
+            "làm vách ngăn"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "68118210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68118210 \"Gạch lát nền hoặc ốp tường chứa plastic\" ⇒ tenLoai [\"Gạch lát nền\",\"ốp tường\"] (mảng vì \"hoặc\") + chatLieu LA \"plastic\" — phủ vế \"chứa plastic\""
+    },
+    {
+      "ma": "68118220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68118220 \"Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn\" ⇒ congDung CONG_DUNG [\"lợp mái\",\"ốp bề mặt\",\"làm vách ngăn\"] — \"Dùng để\" là công dụng của chính hàng; mảng = hoặc"
+    },
+    {
+      "ma": "68118290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.68118290 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "68118210",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Cặp 68118210/68118220 chồng trục tên↔công dụng, tấm ốp tường chứa plastic dùng làm vách ngăn là hàng thật (thuViDuHang thoa:true) ⇒ khai chongLanTruc, phanXu null"
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "68118210",
+        "68118220"
+      ],
+      "truc": {
+        "68118210": "TEN_LOAI",
+        "68118220": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Sản phẩm này là \"Gạch lát nền hoặc ốp tường chứa plastic\" (68118210) hay là loại \"Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn\" (68118220)?",
+      "trich": {
+        "68118210": "Gạch lát nền hoặc ốp tường chứa plastic",
+        "68118220": "Dùng để lợp mái, ốp bề mặt hoặc làm vách ngăn"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "68118210",
+            "68118220"
+          ],
+          "hang": "Tấm ốp tường bằng fibre cement chứa plastic, dùng để làm vách ngăn"
+        }
+      ],
+      "phanXu": null
+    }
+  ]
+}

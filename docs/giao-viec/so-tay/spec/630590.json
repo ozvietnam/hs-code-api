@@ -1,0 +1,25 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "630590",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-630590",
+  "dong8": {
+    "63059010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "gai dầu" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "thuộc nhóm 53.05" }
+      ]
+    },
+    "63059020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "dừa" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": "thuộc nhóm 53.05" }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "63059010", "loai": "QUYET_DINH", "ghiChu": "tax.63059010 \"Từ gai dầu thuộc nhóm 53.05\" ⇒ tenLoai \"gai dầu\" + dungCho \"thuộc nhóm 53.05\" (dẫn mã giữ nguyên chuỗi — bảng luật #9); loaiSoiDet SOI_THUC_VAT_KHAC sẽ rộng hơn chữ vì bao cả đay/lanh/xơ dừa" },
+    { "ma": "63059020", "loai": "QUYET_DINH", "ghiChu": "tax.63059020 \"Từ dừa (xơ dừa) thuộc nhóm 53.05\" ⇒ tenLoai \"dừa\" (ngoặc \"(xơ dừa)\" là chú thích, không thành điều kiện — cổng 5 PHU) + dungCho \"thuộc nhóm 53.05\"" },
+    { "ma": "63059090", "loai": "QUYET_DINH", "ghiChu": "tax.63059090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

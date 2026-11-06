@@ -1,0 +1,24 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "630710",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-630710",
+  "dong8": {
+    "63071010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "vải không dệt" }
+      ]
+    },
+    "63071020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "phớt" }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "63071010", "loai": "QUYET_DINH", "ghiChu": "tax.63071010 \"Từ vải không dệt trừ phớt\" ⇒ tenLoai \"vải không dệt\"" },
+    { "ma": "63071010", "loai": "BO_VE", "ve": "trừ phớt", "lyDo": "tu-vung@2 không có op phủ định cho tên (KHONG chỉ dùng cho CO_KHONG); hàng phớt đã bị 63071020 chặn bằng tenLoai \"phớt\" (tên đầu nguyên văn của chính dòng đó) nên vế loại trừ chỉ tái khẳng định ranh giới .10/.20 đã có — bỏ vế không đổi mã: khăn không dệt (không phải phớt) vẫn chỉ khớp .10, khăn phớt khớp .20; hàng lai chứa cả hai tên sẽ thành CHƯA CHỐT hỏi người khai chứ máy không tự chốt sai" },
+    { "ma": "63071020", "loai": "QUYET_DINH", "ghiChu": "tax.63071020 \"Từ phớt\" ⇒ tenLoai \"phớt\" — tên đầu nguyên văn" },
+    { "ma": "63071090", "loai": "QUYET_DINH", "ghiChu": "tax.63071090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}
