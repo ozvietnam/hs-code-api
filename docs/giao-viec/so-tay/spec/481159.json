@@ -1,34 +1,132 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "481159",
-  "phien": "zcode-sub:glm-5.3:20261106T1534#soan-481159",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-481159",
   "dong8": {
     "48115920": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "đóng gói thực phẩm dạng lỏng" }
+        {
+          "fact": "daPhu",
+          "op": "CO"
+        },
+        {
+          "fact": "phuCaHaiMat",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "đóng gói thực phẩm dạng lỏng"
+        }
       ]
     },
     "48115941": {
-      "dieuKienSo": [ { "fact": "tamPhuSan", "op": "CO" } ]
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ]
     },
     "48115991": {
-      "dieuKienSo": [ { "fact": "tamPhuSan", "op": "CO" } ]
+      "dieuKienSo": [
+        {
+          "fact": "tamPhuSan",
+          "op": "CO"
+        }
+      ]
     }
   },
   "dieuKienNut": {
     "4811594": {
       "dieuKienSo": [
-        { "op": "HOAC", "phuongAn": [
-          [ { "fact": "dangCuon", "op": "CO" }, { "fact": "chieuRong", "op": "<=", "value": 15, "donVi": "cm" } ],
-          [ { "fact": "kichThuoc", "op": "<=", "value": 36, "donVi": "cm" } ]
-        ] }
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dangCuon",
+                "op": "CO"
+              },
+              {
+                "fact": "chieuRong",
+                "op": "<=",
+                "value": 15,
+                "donVi": "cm"
+              }
+            ],
+            [
+              {
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
+                "op": "<=",
+                "value": 36,
+                "donVi": "cm"
+              },
+              {
+                "fact": "daGap",
+                "op": "KHONG"
+              }
+            ]
+          ]
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "481159", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:481159:chua-co; giữ spec đến chỗ đã làm." },
-    { "ma": "48115920", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "phuMangPlasticHaiMat", "ghiChu": "tax.48115920 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" — các vế \"đã phủ cả hai mặt bằng màng plastic trong suốt\", \"được lót trong\", \"bằng một lớp nhôm mỏng\" không có khoá trong tu-vung@2; chỉ phủ được vế \"sử dụng để đóng gói thực phẩm dạng lỏng\" bằng dungCho." },
-    { "ma": "48115941", "loai": "QUYET_DINH", "ghiChu": "tax.48115941 \"Tấm phủ sàn\" ⇒ tamPhuSan CO." },
-    { "ma": "48115991", "loai": "QUYET_DINH", "ghiChu": "tax.48115991 \"Tấm phủ sàn\" ⇒ tamPhuSan CO." }
+    {
+      "ma": "481159",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ L1-4b đã có mục 481159-01 (KHONG_LECH, 1018/TB-TCHQ → 48115999 \"Loại khác\"): hàng trong TB là giấy in vân gỗ thấm tẩm nhựa acrylic MỘT mặt, không lót nhôm, không dùng đóng gói thực phẩm lỏng nên không thoả chữ 48115920; soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "4811594",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4811594 \"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh: phương án A = \"Dạng cuộn\" (dangCuon CO) + \"có chiều rộng không quá 15 cm\" (chieuRong <= 15 cm); phương án B = \"ở dạng tờ hình chữ nhật (kể cả hình vuông)\" (dangToChuNhat CO) + \"không có chiều nào trên 36 cm\" (motChieuTo <= 36 cm, mọi cạnh của tờ; \"trên\" = > nên \"không … trên\" = <=) + \"ở dạng không gấp\" (daGap KHONG). Biên đã đối chiếu tay với chữ. Đơn vị giữ cm như chữ biểu. Các khoá dangToChuNhat/motChieuTo/daGap thay cho ghi chú THIEU_KHOA_TU_VUNG (hinhDangTo, dangKhongGap) cũ."
+    },
+    {
+      "ma": "48115920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115920 \"Giấy và bìa đã phủ cả hai mặt bằng màng plastic trong suốt và được lót trong bằng một lớp nhôm mỏng, sử dụng để đóng gói thực phẩm dạng lỏng\" ⇒ daPhu CO (\"đã phủ\") + phuCaHaiMat CO (\"cả hai mặt\") + dungCho \"đóng gói thực phẩm dạng lỏng\" (vế \"sử dụng để …\"). Khoá daPhu/phuCaHaiMat thay cho khoá cũ phuMangPlasticHaiMat đã đề xuất."
+    },
+    {
+      "ma": "48115920",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "mangPlasticTrongSuotVaLotNhom",
+      "ghiChu": "tax.48115920 vế \"bằng màng plastic trong suốt\" và \"được lót trong bằng một lớp nhôm mỏng\" — tu-vung@2 không có khoá nào đọc chất liệu/độ trong của MÀNG PHỦ hay LỚP LÓT: chatLieu chỉ có vị trí CHINH/CACH_DIEN/LOI/THAN/VO/GIA_CO (nói vật liệu làm ra hàng, không nói lớp phủ/lót — dùng sẽ sai trục), lopMaPhu chỉ liệt kê mạ đồng/nhựa flo/kẽm-cromat/thiếc/sơn sau mạ kẽm, dangTamPhienMang nói hình dạng bán thành phẩm plastic. Bỏ hai vế làm điều kiện RỘNG hơn chữ (mọi giấy phủ hai mặt dùng đóng gói thực phẩm lỏng, kể cả không lót nhôm, rơi vào dòng này thay vì Loại khác) ⇒ cong5-ve-gioi-han-bi-bo; không miễn BO_VE vì bỏ vế làm đổi mã 8 số ⇒ DỪNG."
+    },
+    {
+      "ma": "48115920",
+      "loai": "DUNG",
+      "ghiChu": "DUNG: cong5-ve-gioi-han-bi-bo:48115920:bằng màng plastic trong suốt và cong5-ve-gioi-han-bi-bo:48115920:được lót trong bằng một lớp nhôm mỏng — không có khoá từ vựng cho màng phủ/lớp lót, không miễn được bằng BO_VE (bỏ vế làm đổi mã 8 số); xem ghi chú THIEU_KHOA_TU_VUNG ngay trên. Các vế khác của dòng đã phủ bằng daPhu/phuCaHaiMat/dungCho. Hệ quả: cong2-chong-lan:48115920+48115941 và 48115920+48115949 (khong-tat-dinh) chỉ do dòng 48115920 chưa mang hai vế đó nên rộng hơn chữ (floor covering phủ hai mặt cũng thoả) — không khai chongLanVanBan vì không phải chữ biểu tự chồng; sẽ hết khi có khoá cho màng phủ plastic trong suốt và lớp lót nhôm."
+    },
+    {
+      "ma": "48115941",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115941 \"Tấm phủ sàn\" ⇒ tamPhuSan CO (cùng khoá với 48115991)."
+    },
+    {
+      "ma": "48115991",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115991 \"Tấm phủ sàn\" ⇒ tamPhuSan CO (cùng khoá với 48115941)."
+    },
+    {
+      "ma": "48115949",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115949 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec."
+    },
+    {
+      "ma": "48115999",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48115999 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec."
+    },
+    {
+      "ma": "4811599",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4811599 \"Loại khác\" trần ⇒ không khai dieuKienNut (máy phủ định anh em 4811594)."
+    }
   ]
 }

@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1537#soan-482390",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-482390",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -201,6 +201,10 @@
             "Tấm xenlulo",
             "màng xơ sợi xenlulo"
           ]
+        },
+        {
+          "fact": "taoMauTaoVanToanBo",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -221,7 +225,12 @@
       "hs": "48239096",
       "nguon": "tax.48239096",
       "trich": "48239096 - - - Loại khác, đã cắt thành hình trừ hình chữ nhật hoặc hình vuông",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "daCatThanhHinh",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -235,8 +244,8 @@
   "ghiChuSoan": [
     {
       "ma": "482390",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:482390:chua-co; giữ spec đến chỗ đã làm."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ L1-4b đã có mục 482390-01 (KHONG_LECH: 2499/TB-TCHQ màng xơ xenlulo-polyeste làm trà túi lọc, 1772/TB-TCHQ giấy kraft thấm → 48239099 \"Loại khác\") và 482390-02 (KHONG_LECH, cùng hai TB, so với 48239092 \"Giấy vàng mã\"): hàng trong TB không tráng polyme silicon như \"Giấy silicon\", không phải giấy đốt cúng như \"Giấy vàng mã\" ⇒ soạn theo chữ biểu, khớp bảng."
     },
     {
       "ma": "48239020",
@@ -282,9 +291,8 @@
     },
     {
       "ma": "48239094",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "taoMauHoacTaoVanToanBo",
-      "ghiChu": "tax.48239094 \"Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vân toàn bộ\" — vế \"được tạo màu hoặc tạo vân toàn bộ\" không có khoá trong tu-vung@2 và là vế phân biệt với 48239099."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48239094 \"Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vân toàn bộ\" ⇒ tenLoai [\"Tấm xenlulo\",\"màng xơ sợi xenlulo\"] (hai tên hàng thay thế nối \"và\", nguyên văn) + taoMauTaoVanToanBo CO (vế \"được tạo màu hoặc tạo vân toàn bộ\", EN \"coloured or marbled throughout the mass\"). Khoá taoMauTaoVanToanBo thay cho khoá cũ taoMauHoacTaoVanToanBo đã đề xuất."
     },
     {
       "ma": "48239095",
@@ -293,14 +301,24 @@
     },
     {
       "ma": "48239096",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "daCatThanhHinh",
-      "ghiChu": "tax.48239096 \"Loại khác, đã cắt thành hình trừ hình chữ nhật hoặc hình vuông\" — vế \"đã cắt thành hình trừ hình chữ nhật hoặc hình vuông\" không có khoá trong tu-vung@2, để dieuKienSo trống (cong0 báo phanConLai thừa khi kèm dieuKienSo trống)."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48239096 \"Loại khác, đã cắt thành hình trừ hình chữ nhật hoặc hình vuông\" ⇒ \"Loại khác\" là chữ phần còn lại (máy phủ định anh em), chỉ vế \"đã cắt thành hình trừ hình chữ nhật hoặc hình vuông\" mang điều kiện: daCatThanhHinh CO (khoá daCatThanhHinh, nhãn \"đã cắt thành hình (trừ hình chữ nhật/vuông)\"). Không đặt phanConLai."
+    },
+    {
+      "ma": "48239096",
+      "loai": "BO_VE",
+      "ve": "trừ hình chữ nhật hoặc hình vuông",
+      "lyDo": "Khoá daCatThanhHinh được định nghĩa (nhãn tu-vung@2) đúng là \"đã cắt thành hình (trừ hình chữ nhật/vuông)\", cách đọc CÓ loại rõ \"cắt thành hình\" đi liền \"chữ nhật\"/\"vuông\" — vế \"trừ hình chữ nhật hoặc hình vuông\" nằm trong định nghĩa giá trị CO của khoá nên đã được phủ, chỉ là chữ của vế không trùng cách đọc."
     },
     {
       "ma": "48239099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.48239099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "482390",
+      "loai": "DUNG",
+      "ghiChu": "DUNG: cong2-chong-lan-truc:48239010:48239030,48239040,4823905 (và 48239030/48239040/4823905/48239020/48239060/48239070 đối xứng, cụm tên ↔ công dụng bảy nhánh) cùng cong2-chong-lan:...:khong-tat-dinh của các cặp tên ↔ công dụng đó (vd 48239010+48239030 \"Khung kén tằm\" ↔ \"để sản xuất cốc giấy\"), và cong2-chong-lan-truc:48239095:48239091,48239092,48239094 (+ cong2-chong-lan 48239091/92/94+48239095: \"Giấy silicon\"/\"Giấy vàng mã\"/\"Tấm xenlulo…\" ↔ \"Tấm phủ sàn\" tamPhuSan). Khoá thiếu đã đủ (taoMauTaoVanToanBo, daCatThanhHinh). Còn lại là chồng lấn do cách biểu diễn: tenLoai và dungCho gán độc lập nên vector biên cho hai nhánh cùng thoả; không có hàng THẬT thoả cả hai nhánh (khung kén tằm không dùng làm cốc giấy/pháo hoa; thẻ trưng bày trang sức không là bìa PE làm cốc; giấy silicon/giấy vàng mã không là tấm phủ sàn) ⇒ vòng 8 không cho khai chongLanTruc (không bịa viDuHang), cặp khác trục không khai chongLanVanBan. Không đổi khoá để né. Để NHAP, báo Claude."
     }
   ]
 }

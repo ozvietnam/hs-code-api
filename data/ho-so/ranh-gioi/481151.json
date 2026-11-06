@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-mm:loop:20261106T1452#soan-481151",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-481151",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -34,10 +34,18 @@
             ],
             [
               {
-                "fact": "kichThuoc",
+                "fact": "dangToChuNhat",
+                "op": "CO"
+              },
+              {
+                "fact": "motChieuTo",
                 "op": "<=",
                 "value": 36,
                 "donVi": "cm"
+              },
+              {
+                "fact": "daGap",
+                "op": "KHONG"
               }
             ]
           ]
@@ -90,44 +98,7 @@
     {
       "ma": "4811513",
       "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.4811513 \"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh trong cùng một tiêu đề ⇒ khai op HOAC + phuongAn (quy trình bước 3.5), KHÔNG gộp hai ngưỡng thành VÀ: phương án A = dạng cuộn + chiều rộng <= 15 cm; phương án B = dạng tờ + mọi chiều <= 36 cm + không gấp."
-    },
-    {
-      "ma": "4811513",
-      "loai": "QUYET_DINH",
-      "ghiChu": "\"Dạng cuộn\" (vế đầu của phương án A) ⇒ khoá dangCuon (CO_KHONG, nhanVi \"ở dạng cuộn (dây hàn, que hàn, tấm, dải)\"), op CO. Đặt TRONG phương án A nên không loại nhầm phương án B (dạng tờ)."
-    },
-    {
-      "ma": "4811513",
-      "loai": "QUYET_DINH",
-      "ghiChu": "\"không có chiều nào trên 36 cm\" ⇒ mọi chiều (dài x rộng x cao) đều không trên 36 cm ⇒ khoá kichThuoc, biên <=, value 36. Biên theo chữ: \"không quá\" = <=."
-    },
-    {
-      "ma": "4811513",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Đơn vị giữ nguyên theo chữ biểu (cm), không quy đổi sang mm của donViChuan (việc quy đổi để tầng sinh sổ tay)."
-    },
-    {
-      "ma": "4811513",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "hinhDangTo",
-      "ghiChu": "ở dạng tờ hình chữ nhật (kể cả hình vuông)"
-    },
-    {
-      "ma": "4811513",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dangKhongGap",
-      "ghiChu": "ở dạng không gấp"
-    },
-    {
-      "ma": "4811513",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Hai vế thiếu khoá ở hai ghi chú THIEU_KHOA_TU_VUNG phía trên không có khoá từ vựng nên KHÔNG bịa khoá: hinhDangCatGocKinh là \"tấm kính hình vuông hoặc hình chữ nhật\" (kính) và loaiCung là \"loại cứng (rigid)\" — không dùng cho hàng giấy. Phần đã có khoá (chiều rộng, kích thước) vẫn khai bình thường; hai vế thiếu khoá đã khai để cổng 1 chặn đúng ý."
-    },
-    {
-      "ma": "4811513",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Chữ tiêu đề ≤ 300 ký tự ⇒ KHÔNG ghi trich/nguon (máy tự chép nguyên văn kèm mức gạch của tiêu đề)."
+      "ghiChu": "tieuDe.4811513 \"Dạng cuộn có chiều rộng không quá 15 cm hoặc ở dạng tờ hình chữ nhật (kể cả hình vuông) không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ chữ \"hoặc\" tách HAI nhánh: phương án A = \"Dạng cuộn\" (dangCuon CO) + \"có chiều rộng không quá 15 cm\" (chieuRong <= 15 cm); phương án B = \"ở dạng tờ hình chữ nhật (kể cả hình vuông)\" (dangToChuNhat CO) + \"không có chiều nào trên 36 cm\" (motChieuTo <= 36 cm, mọi cạnh của tờ; \"trên\" = > nên \"không … trên\" = <=) + \"ở dạng không gấp\" (daGap KHONG). Cổng 3 đã chép nguyên văn; biên đã đối chiếu tay. Đơn vị giữ cm như chữ biểu. Các khoá dangToChuNhat/motChieuTo/daGap thay cho ghi chú THIEU_KHOA_TU_VUNG (hinhDangTo, khongGap) cũ."
     },
     {
       "ma": "48115131",
