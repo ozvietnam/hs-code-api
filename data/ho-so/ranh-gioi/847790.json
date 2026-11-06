@@ -1,0 +1,124 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "847790",
+  "nhom": "8477",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1000#soan-847790",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8477903",
+      "nguon": "tieuDe.8477903",
+      "trich": "8477903 Của máy gia công plastic hoặc sản xuất các sản phẩm từ plastic hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy gia công plastic",
+            "sản xuất các sản phẩm từ plastic"
+          ]
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "84779010",
+      "nguon": "tax.84779010",
+      "trich": "84779010 - - Của máy gia công cao su hoặc sản xuất các sản phẩm từ cao su hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy gia công cao su",
+            "sản xuất các sản phẩm từ cao su"
+          ]
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84779020",
+      "nguon": "tax.84779020",
+      "trich": "84779020 - - Của máy để gia công cao su hoặc sản xuất các sản phẩm từ cao su không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy để gia công cao su",
+            "sản xuất các sản phẩm từ cao su"
+          ]
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84779032",
+      "nguon": "tax.84779032",
+      "trich": "84779032 - - - Bộ phận của máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84779039",
+      "nguon": "tax.84779039",
+      "trich": "84779039 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84779040",
+      "nguon": "tax.84779040",
+      "trich": "84779040 - - Của máy để gia công plastic hoặc các sản phẩm từ plastic, không hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy để gia công plastic",
+            "các sản phẩm từ plastic"
+          ]
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84779010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84779010: \"Của máy gia công cao su hoặc sản xuất các sản phẩm từ cao su hoạt động bằng điện\" — hai loại máy đích nối 'hoặc' ⇒ dungCho mảng; vế 'hoạt động bằng điện' ⇒ hoatDongBangDien CO (cách xử đã duyệt của 841490 .41)"
+    },
+    {
+      "ma": "84779032",
+      "loai": "DUNG",
+      "ghiChu": "tax.84779032: \"Bộ phận của máy ép lớp mỏng dùng để sản xuất tấm mạch in hoặc tấm dây in\" — đích lồng HAI tầng dưới đích cha 8477903 ('Của máy gia công plastic hoặc sản xuất các sản phẩm từ plastic'): bộ đọc chỉ đọc MỘT giá trị dungCho nên dữ kiện 'máy ép lớp mỏng' không bao giờ đồng thời thoả đích cha — dòng không tới được (cong1-khong-phu-kin), không sửa được mà không đổi khoá; bỏ vế đích con làm đổi mã (.32 ⇔ .39) nên không BO_VE"
+    }
+  ]
+}

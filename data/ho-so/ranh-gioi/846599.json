@@ -1,0 +1,125 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "846599",
+  "nhom": "8465",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1000#soan-846599",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84659910",
+      "nguon": "tax.84659910",
+      "trich": "84659910 - - - Máy tiện",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy tiện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84659950",
+      "nguon": "tax.84659950",
+      "trich": "84659950 - - - Máy để đẽo bavia bề mặt của tấm mạch in hoặc tấm dây in trong quá trình sản xuất; máy để khắc vạch lên tấm mạch in hoặc tấm dây in hoặc tấm nền của tấm mạch in hoặc tấm nền của tấm dây in; máy ép lớp mỏng để sản xuất tấm mạch in hoặc tấm dây in",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Máy"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "đẽo bavia bề mặt"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "máy"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "khắc vạch"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in",
+                  "tấm nền"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "máy ép lớp mỏng"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "tấm mạch in",
+                  "tấm dây in"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84659960",
+      "nguon": "tax.84659960",
+      "trich": "84659960 - - - Loại khác, hoạt động bằng điện",
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84659990",
+      "nguon": "tax.84659990",
+      "trich": "84659990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84659950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84659950: ba máy nối ';' ⇒ HOAC ba phương án theo ba vế nhóm của máy tách; mỗi phương án tenLoai (danh từ đầu vế) + congDung (động từ) + congDung mảng đối tượng"
+    }
+  ]
+}

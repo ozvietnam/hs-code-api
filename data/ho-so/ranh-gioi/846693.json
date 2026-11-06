@@ -1,0 +1,110 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "846693",
+  "nhom": "8466",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1000#soan-846693",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84669330",
+      "nguon": "tax.84669330",
+      "trich": "8456.11.10, 8456.12.10, 8456.20.00, hoặc 8456.30.00 … chủ yếu sử dụng để sản xuất mạch in, mạch in đã lắp ráp, bộ phận của máy móc thuộc nhóm 85.17 … 8457.10, 8458.91.00, 8459.21.00, 8459.29.10, 8459.61.00, 8459.69.10, hoặc 8461.50.00 … của máy xử lý dữ liệu tự động của nhóm 84.71",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "8456.11.10",
+                  "8456.12.10",
+                  "8456.20.00",
+                  "8456.30.00"
+                ]
+              },
+              {
+                "fact": "chiHoacChuYeu",
+                "op": "CO"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "mạch in",
+                  "mạch in đã lắp ráp",
+                  "nhóm 85.17",
+                  "nhóm 84.71"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "8457.10",
+                  "8458.91.00",
+                  "8459.21.00",
+                  "8459.29.10",
+                  "8459.61.00",
+                  "8459.69.10",
+                  "8461.50.00"
+                ]
+              },
+              {
+                "fact": "chiHoacChuYeu",
+                "op": "CO"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "nhóm 85.17",
+                  "nhóm 84.71"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84669340",
+      "nguon": "tax.84669340",
+      "trich": "84669340 - - - Dùng cho máy thuộc phân nhóm 8456.50.00",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8456.50.00"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84669390",
+      "nguon": "tax.84669390",
+      "trich": "84669390 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84669330",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84669330: hai cụm 'dùng cho máy thuộc các phân nhóm …; dùng cho máy thuộc các phân nhóm …' nối ';' ⇒ HOAC hai phương án; mỗi phương án: dungCho mảng mã (nguyên văn, máy tự nở dải), chiHoacChuYeu CO ('loại chỉ sử dụng hoặc chủ yếu'), congDung mảng đối tượng nguyên văn"
+    }
+  ]
+}
