@@ -1,0 +1,94 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "640291",
+  "nhom": "6402",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0856#soan-640291",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "64029110",
+      "nguon": "tax.64029110",
+      "trich": "64029110 - - - Giày lặn",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Giày lặn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "64029191",
+      "nguon": "tax.64029191",
+      "trich": "64029191 - - - - Loại có mũi giày được gắn kim loại để bảo vệ",
+      "dieuKienSo": [
+        {
+          "fact": "loaiMuiBaoVe",
+          "op": "TRONG",
+          "value": [
+            "KIM_LOAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "64029192",
+      "nguon": "tax.64029192",
+      "trich": "64029192 - - - - Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "loaiMuiBaoVe",
+          "op": "TRONG",
+          "value": [
+            "PHI_KIM_LOAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "64029199",
+      "nguon": "tax.64029199",
+      "trich": "64029199 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "64029110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64029110 \"Giày lặn\" ⇒ tenLoai TEN_LOAI \"Giày lặn\" — tên đầu nguyên văn"
+    },
+    {
+      "ma": "64029191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64029191 \"Loại có mũi giày được gắn kim loại để bảo vệ\" ⇒ loaiMuiBaoVe KIM_LOAI (cách đọc khớp cả ba vế \"có mũi giày\"/\"được gắn kim loại\"/\"để bảo vệ\")"
+    },
+    {
+      "ma": "64029192",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64029192 \"Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)\" ⇒ loaiMuiBaoVe PHI_KIM_LOAI; \"(SEN)\" và chú giải chỉ mô tả, không thêm điều kiện"
+    },
+    {
+      "ma": "64029199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64029199 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "6402919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6402919 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

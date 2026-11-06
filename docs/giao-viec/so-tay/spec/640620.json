@@ -1,0 +1,43 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "640620",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-640620",
+  "dong8": {
+    "64062010": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "cao su"
+        }
+      ]
+    },
+    "64062020": {
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "plastic"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "64062010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64062010 \"Bằng cao su\" ⇒ chatLieu LA \"cao su\" — cùng khoá chất liệu với 64062020"
+    },
+    {
+      "ma": "64062020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64062020 \"Bằng plastic\" ⇒ chatLieu LA \"plastic\" — cùng khoá chất liệu với 64062010"
+    },
+    {
+      "ma": "640620",
+      "loai": "DUNG",
+      "ghiChu": "cong1-khong-phu-kin không sửa được: cụm 640620 chỉ có hai con \"Bằng cao su\" (.10) và \"Bằng plastic\" (.20), không có con \"Loại khác\"; vector chatLieu giá trị khác (giấy, gỗ…) thoả tiêu đề tầng cha \"Đế ngoài và gót giày, bằng cao su hoặc plastic\" mà không rơi vào con nào — không thể thêm điều kiện chữ biểu không nói, không khai được dieuKienNut cho nút PN6 (máy từ chối id), DỪNG"
+    }
+  ]
+}

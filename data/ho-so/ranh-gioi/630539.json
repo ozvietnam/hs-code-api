@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "630539",
+  "nhom": "6305",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0856#soan-630539",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "63053910",
+      "nguon": "tax.63053910",
+      "trich": "63053910 - - - Từ vải không dệt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vải không dệt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "63053920",
+      "nguon": "tax.63053920",
+      "trich": "63053920 - - - Dệt kim hoặc móc",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dệt kim",
+            "móc"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "63053990",
+      "nguon": "tax.63053990",
+      "trich": "63053990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "63053910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.63053910 \"Từ vải không dệt\" ⇒ tenLoai TEN_LOAI \"vải không dệt\" (tên đầu nguyên văn, phủ vế giới hạn \"không dệt\")"
+    },
+    {
+      "ma": "63053920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.63053920 \"Dệt kim hoặc móc\" ⇒ tenLoai TEN_LOAI [\"Dệt kim\",\"móc\"] — mảng vì chữ có \"hoặc\""
+    },
+    {
+      "ma": "63053990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.63053990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

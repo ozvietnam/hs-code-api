@@ -1,0 +1,72 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "640319",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-640319",
+  "dong8": {
+    "64031910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "gắn đinh",
+            "gắn miếng đế chân"
+          ]
+        }
+      ]
+    },
+    "64031920": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ủng để cưỡi ngựa",
+            "giày chơi bowling"
+          ]
+        }
+      ]
+    },
+    "64031930": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "đấu vật",
+            "cử tạ",
+            "thể dục thể hình"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "64031910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64031910 \"Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự\" ⇒ tenLoai TUONG_TU [\"gắn đinh\",\"gắn miếng đế chân\"] — vế mở \"hoặc các loại tương tự\" (quy ước vòng 7), giá trị là các cụm nêu tên nguyên văn trước cụm tương tự"
+    },
+    {
+      "ma": "64031920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64031920 \"Ủng để cưỡi ngựa; giày chơi bowling\" ⇒ tenLoai TEN_LOAI [\"Ủng để cưỡi ngựa\",\"giày chơi bowling\"] — mảng vì \";\" liệt kê hai hàng, mỗi giá trị một hàng nguyên văn (vế \"để cưỡi ngựa\" nằm trong giá trị thứ nhất)"
+    },
+    {
+      "ma": "64031930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64031930 \"Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình\" ⇒ dungCho CONG_DUNG [\"đấu vật\",\"cử tạ\",\"thể dục thể hình\"] — mảng = hoặc theo chữ"
+    },
+    {
+      "ma": "64031990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.64031990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "64031930",
+      "loai": "DUNG",
+      "ghiChu": "Chồng lấn trục (cong2-chong-lan-truc): 64031910 \"Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự\" (tenLoai) và 64031920 \"Ủng để cưỡi ngựa; giày chơi bowling\" (tenLoai) chia theo TÊN, 64031930 \"Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình\" (dungCho) chia theo CÔNG DỤNG — không có hàng thật nào thoả cả hai nhánh của từng cặp (giày bowling/ủng cưỡi ngựa không dùng trong đấu vật, cử tạ, thể dục thể hình; giày các môn đó không gắn đinh/miếng đế chân) ⇒ không khai được chongLanTruc với viDuHang, DỪNG theo vòng 8 (BANG-LUAT-CHUNG dòng 'còn ngoài bảng')"
+    }
+  ]
+}

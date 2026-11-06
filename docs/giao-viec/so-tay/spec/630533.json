@@ -1,0 +1,23 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "630533",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-630533",
+  "dong8": {
+    "63053310": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Dệt kim", "móc"] }
+      ]
+    },
+    "63053320": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TUONG_TU", "value": ["sợi dệt dạng dải"] }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "63053310", "loai": "QUYET_DINH", "ghiChu": "tax.63053310 \"Dệt kim hoặc móc\" ⇒ tenLoai TEN_LOAI [\"Dệt kim\",\"móc\"] — mảng vì chữ có \"hoặc\"; kieuDet không có giá trị dệt kim" },
+    { "ma": "63053320", "loai": "QUYET_DINH", "ghiChu": "tax.63053320 \"Bằng sợi dệt dạng dải hoặc tương tự\" ⇒ tenLoai TUONG_TU [\"sợi dệt dạng dải\"] — vế mở \"hoặc tương tự\" (quy ước vòng 7), giá trị là hàng nêu tên nguyên văn đứng trước cụm tương tự" },
+    { "ma": "63053390", "loai": "QUYET_DINH", "ghiChu": "tax.63053390 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

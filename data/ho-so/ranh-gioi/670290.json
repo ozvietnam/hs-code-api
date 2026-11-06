@@ -1,0 +1,72 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "670290",
+  "nhom": "6702",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0856#soan-670290",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "67029010",
+      "nguon": "tax.67029010",
+      "trich": "67029010 - - Bằng giấy",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "giấy"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "67029020",
+      "nguon": "tax.67029020",
+      "trich": "67029020 - - Bằng vật liệu dệt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vật liệu dệt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "67029090",
+      "nguon": "tax.67029090",
+      "trich": "67029090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "67029010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.67029010 \"Bằng giấy\" ⇒ chatLieu LA \"giấy\""
+    },
+    {
+      "ma": "67029020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.67029020 \"Bằng vật liệu dệt\" ⇒ tenLoai TEN_LOAI \"vật liệu dệt\" (điều kiện của vế); không dùng chatLieu \"vải dệt\" vì giá trị đó không phải chuỗi con của trích \"vật liệu dệt\""
+    },
+    {
+      "ma": "67029090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.67029090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "67029020",
+      "loai": "DUNG",
+      "ghiChu": "Chồng lấn .10↔.20 có hàng thật (hoa nhân tạo lai giấy + vật liệu dệt — thuViDuHang thoa:true) nhưng không khai được chongLanTruc: nhánh 67029010 dùng chatLieu LA (CHAT_LIEU_THEO_VI_TRI) không thuộc DAC_DIEM (máy chỉ nhận CO_KHONG/LIET_KE — cong3-chong-lan-truc-truc-lech), không đưa 67029020 về chatLieu được vì giá trị \"vải dệt\" không khớp trích \"vật liệu dệt\" ⇒ DỪNG theo mục 5 (nhánh không có khoá trục hợp lệ)"
+    }
+  ]
+}

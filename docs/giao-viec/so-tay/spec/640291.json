@@ -1,0 +1,30 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "640291",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-640291",
+  "dong8": {
+    "64029110": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Giày lặn" }
+      ]
+    },
+    "64029191": {
+      "dieuKienSo": [
+        { "fact": "loaiMuiBaoVe", "op": "TRONG", "value": ["KIM_LOAI"] }
+      ]
+    },
+    "64029192": {
+      "dieuKienSo": [
+        { "fact": "loaiMuiBaoVe", "op": "TRONG", "value": ["PHI_KIM_LOAI"] }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "64029110", "loai": "QUYET_DINH", "ghiChu": "tax.64029110 \"Giày lặn\" ⇒ tenLoai TEN_LOAI \"Giày lặn\" — tên đầu nguyên văn" },
+    { "ma": "64029191", "loai": "QUYET_DINH", "ghiChu": "tax.64029191 \"Loại có mũi giày được gắn kim loại để bảo vệ\" ⇒ loaiMuiBaoVe KIM_LOAI (cách đọc khớp cả ba vế \"có mũi giày\"/\"được gắn kim loại\"/\"để bảo vệ\")" },
+    { "ma": "64029192", "loai": "QUYET_DINH", "ghiChu": "tax.64029192 \"Loại có mũi giày được gắn bảo vệ không phải kim loại (SEN)\" ⇒ loaiMuiBaoVe PHI_KIM_LOAI; \"(SEN)\" và chú giải chỉ mô tả, không thêm điều kiện" },
+    { "ma": "64029199", "loai": "QUYET_DINH", "ghiChu": "tax.64029199 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
+    { "ma": "6402919", "loai": "QUYET_DINH", "ghiChu": "tieuDe.6402919 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

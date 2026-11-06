@@ -1,0 +1,31 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "680800",
+  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-680800",
+  "dong8": {
+    "68080020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ngói lợp mái" }
+      ]
+    },
+    "68080040": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Tấm lát" }
+      ],
+      "phanConLai": ["68080020"]
+    },
+    "68080091": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "xơ thực vật" }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "68080020", "loai": "QUYET_DINH", "ghiChu": "tax.68080020 \"Ngói lợp mái\" ⇒ tenLoai TEN_LOAI \"Ngói lợp mái\" — tên đầu nguyên văn" },
+    { "ma": "68080040", "loai": "QUYET_DINH", "ghiChu": "tax.68080040 \"Tấm lát (tiles) khác\" ⇒ tenLoai \"Tấm lát\" + phanConLai [\"68080020\"] — \"khác\" chỉ phủ định anh em Ngói lợp mái; \"(tiles)\" ngoặc chú thích" },
+    { "ma": "68080091", "loai": "QUYET_DINH", "ghiChu": "tax.68080091 \"Từ xơ thực vật\" ⇒ tenLoai TEN_LOAI \"xơ thực vật\" — chuỗi con nguyên văn; không dùng loaiSoiDet SOI_THUC_VAT_KHAC vì đây là xơ thực vật kết khối (không phải vật liệu dệt chủ yếu của hàng dệt)" },
+    { "ma": "6808009", "loai": "QUYET_DINH", "ghiChu": "tieuDe.6808009 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
+    { "ma": "68080099", "loai": "QUYET_DINH", "ghiChu": "tax.68080099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}
