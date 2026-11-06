@@ -1,0 +1,102 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "721123",
+  "nhom": "7211",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721123",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "72112310",
+      "nguon": "tax.72112310",
+      "trich": "72112310 - - - Dạng lượn sóng",
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72112320",
+      "nguon": "tax.72112320",
+      "trich": "72112320 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72112330",
+      "nguon": "tax.72112330",
+      "trich": "72112330 - - - Loại khác, chiều dày không quá 0,17 mm",
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 0.17,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72112390",
+      "nguon": "tax.72112390",
+      "trich": "72112390 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "72112310",
+        "72112320"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: .10 \"Dạng lượn sóng\" (dangLuonSong CO), .20 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong <= 400 mm) — đai và dải thép dạng lượn sóng rộng 350 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "72112310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72112310 \"Dạng lượn sóng\" ⇒ dangLuonSong CO"
+    },
+    {
+      "ma": "72112320",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72112320 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI] + chieuRong <= 400 mm; \"(SEN)\" là nguồn chú giải ⇒ PHU"
+    },
+    {
+      "ma": "72112330",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72112330 \"Loại khác, chiều dày không quá 0,17 mm\" ⇒ chỉ điều kiện của vế: doDay <= 0.17 mm (máy tự phủ định anh em .10/.20)"
+    },
+    {
+      "ma": "72112390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72112390 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

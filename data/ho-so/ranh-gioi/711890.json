@@ -1,0 +1,77 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "711890",
+  "nhom": "7118",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-711890",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "71189010",
+      "nguon": "tax.71189010",
+      "trich": "71189010 - - Tiền bằng vàng, loại pháp định (*) hoặc không phải loại pháp định",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tiền"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bằng vàng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "71189020",
+      "nguon": "tax.71189020",
+      "trich": "71189020 - - Tiền bằng bạc, loại pháp định (*)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tiền bằng bạc"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "loại pháp định"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "71189090",
+      "nguon": "tax.71189090",
+      "trich": "71189090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "71189010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71189010 \"Tiền bằng vàng, loại pháp định (*) hoặc không phải loại pháp định\" ⇒ tenLoai \"Tiền\" + tenLoai \"bằng vàng\"; \"loại pháp định (*) hoặc không phải loại pháp định\" là dạng \"có hoặc không\" ⇒ PHU, không điều kiện; tu-vung@2 không có giá trị chatLieu vàng"
+    },
+    {
+      "ma": "71189020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71189020 \"Tiền bằng bạc, loại pháp định (*)\" ⇒ tenLoai \"Tiền bằng bạc\" + tenLoai \"loại pháp định\" (vế khẳng định, phân biệt với 711810.10 tiền bạc không phải pháp định); \"(*)\" là chân chú ⇒ PHU"
+    },
+    {
+      "ma": "71189090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71189090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

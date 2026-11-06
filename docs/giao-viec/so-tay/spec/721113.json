@@ -1,0 +1,54 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721113",
+  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721113",
+  "dong8": {
+    "72111312": {
+      "dieuKienSo": [
+        { "fact": "dangLuonSong", "op": "CO" }
+      ]
+    },
+    "72111313": {
+      "dieuKienSo": [
+        { "fact": "dangDaiDaiTamPhoDung", "op": "TRONG", "value": ["DAI_VA_DAI"] }
+      ]
+    },
+    "72111314": {
+      "dieuKienSo": [
+        { "fact": "dangDaiDaiTamPhoDung", "op": "TRONG", "value": ["TAM_PHO_DUNG"] }
+      ]
+    },
+    "72111392": {
+      "dieuKienSo": [
+        { "fact": "dangDaiDaiTamPhoDung", "op": "TRONG", "value": ["DAI_VA_DAI"] }
+      ]
+    },
+    "72111393": {
+      "dieuKienSo": [
+        { "fact": "dangDaiDaiTamPhoDung", "op": "TRONG", "value": ["TAM_PHO_DUNG"] }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7211131": {
+      "dieuKienSo": [
+        { "fact": "hamLuongCarbon", "op": "<", "value": 0.6, "donVi": "%" }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    { "cap": ["72111312", "72111313"], "lyDo": "Chồng lấn thật cùng trục đặc điểm: .12 \"Dạng lượn sóng\" (dangLuonSong CO), .13 \"Dạng đai và dải(SEN)\" (dangDaiDaiTamPhoDung DAI_VA_DAI) — thép đai và dải cán bốn mặt dạng lượn sóng thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự" },
+    { "cap": ["72111312", "72111314"], "lyDo": "Chồng lấn thật cùng trục đặc điểm: .12 \"Dạng lượn sóng\" (dangLuonSong CO), .14 \"Tấm phổ dụng (SEN)\" (dangDaiDaiTamPhoDung TAM_PHO_DUNG) — tấm phổ dụng thép cán bốn mặt dạng lượn sóng thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự" }
+  ],
+  "ghiChuSoan": [
+    { "ma": "7211131", "loai": "QUYET_DINH", "ghiChu": "tieuDe.7211131 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %" },
+    { "ma": "7211131", "loai": "BO_VE", "ve": "Có hàm lượng carbon", "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %" },
+    { "ma": "72111312", "loai": "QUYET_DINH", "ghiChu": "tax.72111312 \"Dạng lượn sóng\" ⇒ dangLuonSong CO" },
+    { "ma": "72111313", "loai": "QUYET_DINH", "ghiChu": "tax.72111313 \"Dạng đai và dải(SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI]; \"(SEN)\" là nguồn chú giải ⇒ PHU" },
+    { "ma": "72111314", "loai": "QUYET_DINH", "ghiChu": "tax.72111314 \"Tấm phổ dụng (SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [TAM_PHO_DUNG]; \"(SEN)\" là nguồn chú giải ⇒ PHU" },
+    { "ma": "72111319", "loai": "QUYET_DINH", "ghiChu": "tax.72111319 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
+    { "ma": "72111392", "loai": "QUYET_DINH", "ghiChu": "tax.72111392 \"Dạng đai và dải(SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI]" },
+    { "ma": "72111393", "loai": "QUYET_DINH", "ghiChu": "tax.72111393 \"Tấm phổ dụng (SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [TAM_PHO_DUNG]" },
+    { "ma": "72111399", "loai": "QUYET_DINH", "ghiChu": "tax.72111399 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

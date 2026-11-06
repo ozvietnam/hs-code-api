@@ -1,0 +1,24 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "711590",
+  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-711590",
+  "dong8": {
+    "71159010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["vàng", "bạc"] }
+      ]
+    },
+    "71159020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "kim loại dát phủ" },
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["vàng", "bạc"] }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "71159010", "loai": "QUYET_DINH", "ghiChu": "tax.71159010 \"Bằng vàng hoặc bạc\" ⇒ tenLoai TEN_LOAI [\"vàng\",\"bạc\"] (mảng = hoặc); tu-vung@2 không có giá trị chatLieu vàng/bạc nên dùng tenLoai nguyên văn" },
+    { "ma": "71159020", "loai": "QUYET_DINH", "ghiChu": "tax.71159020 \"Bằng kim loại dát phủ vàng hoặc bạc\" ⇒ tenLoai \"kim loại dát phủ\" + tenLoai [\"vàng\",\"bạc\"] (cùng khoá = VÀ; \"vàng hoặc bạc\" là hai chất phủ nối hoặc ⇒ mảng, không gói một chuỗi)" },
+    { "ma": "71159090", "loai": "QUYET_DINH", "ghiChu": "tax.71159090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

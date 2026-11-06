@@ -1,0 +1,82 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "721633",
+  "nhom": "7216",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721633",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7216331",
+      "nguon": "tieuDe.7216331",
+      "trich": "7216331 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "72163311",
+      "nguon": "tax.72163311",
+      "trich": "72163311 - - - - Chiều dày của cạnh (flange) không nhỏ hơn chiều dày của thân (web)",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72163319",
+      "nguon": "tax.72163319",
+      "trich": "72163319 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72163390",
+      "nguon": "tax.72163390",
+      "trich": "72163390 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7216331",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7216331 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "7216331",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72163311",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "canhKhongNhoHonThan",
+      "ghiChu": "tax.72163311: \"Chiều dày của cạnh (flange) không nhỏ hơn chiều dày của thân (web)\" — phép so sánh hai bộ phận của cùng thanh thép; tiLe là SO một ngưỡng (báo dieu-kien-so-nguong-khong-co-trong-trich vì chữ không có số), không có khoá CO_KHONG đọc được \"cạnh không mỏng hơn thân\"; bỏ vế làm đổi mã (.11 ↔ .19) ⇒ DỪNG"
+    },
+    {
+      "ma": "72163319",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72163319 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "72163390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72163390 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "721399",
+  "nhom": "7213",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721399",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "72139910",
+      "nguon": "tax.72139910",
+      "trich": "72139910 - - - Loại dùng để sản xuất que hàn (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất que hàn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72139920",
+      "nguon": "tax.72139920",
+      "trich": "72139920 - - - Thép cốt bê tông",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thép cốt bê tông"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72139990",
+      "nguon": "tax.72139990",
+      "trich": "72139990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "72139910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72139910 \"Loại dùng để sản xuất que hàn (SEN)\" ⇒ congDung CONG_DUNG \"sản xuất que hàn\" (vế mục đích \"dùng để …\" ⇒ congDung, bộ đọc đọc được; \"(SEN)\" là nguồn chú giải ⇒ PHU)"
+    },
+    {
+      "ma": "72139920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72139920 \"Thép cốt bê tông\" ⇒ tenLoai TEN_LOAI \"Thép cốt bê tông\" nguyên văn"
+    },
+    {
+      "ma": "72139990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72139990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "72139910",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan-truc .10 ↔ .20 (tên ↔ công dụng, cấp dòng 2 anh em, #683): không có hàng THẬT nào thoả cả hai — theo sen.72139910 thanh que hàn có \"C ≤ 0,1%; Mn: 0,35 - 0,45%; Si: 0,3 - 0,35%\" còn thép cốt bê tông là thép xây dựng, không hàng nào vừa là \"Thép cốt bê tông\" (.20) vừa \"dùng để sản xuất que hàn\" (.10); không đưa hai anh em về cùng khoá (\"dùng để …\" ⇒ congDung là đúng chữ) ⇒ không khai được chongLanTruc viDuHang (vòng 8) ⇒ DỪNG"
+    }
+  ]
+}
