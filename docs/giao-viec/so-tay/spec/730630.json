@@ -141,35 +141,90 @@
   },
   "ghiChuSoan": [
     {
+      "ma": "7306301",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7306301 \"Ống dùng cho nồi hơi\" ⇒ dungCho \"nồi hơi\" (chữ \"dùng cho\" ⇒ dungCho; \"Ống\" là danh từ đầu)."
+    },
+    {
+      "ma": "73063011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063011 \"Với đường kính ngoài dưới 12,5 mm\" ⇒ duongKinh < 12.5 mm (\"đường kính ngoài\" = khoá duongKinh; \"dưới\" = <)."
+    },
+    {
+      "ma": "73063019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định .11)."
+    },
+    {
+      "ma": "7306302",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7306302 \"Ống thép được mạ đồng, tráng nhựa flo (fluororesin) hoặc kẽm cromat có đường kính ngoài không quá 15 mm\" ⇒ lopMaPhu TRONG [MA_DONG, TRANG_NHUA_FLO, TRANG_KEM_CROMAT] (ba giá trị = ba lớp mạ/tráng \"hoặc\" của chữ biểu) + duongKinh <= 15 mm (\"không quá\" = <=)."
+    },
+    {
+      "ma": "73063021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063021 \"Với đường kính ngoài dưới 12,5 mm\" ⇒ duongKinh < 12.5 mm, cùng khoá và thang với .11/.41."
+    },
+    {
+      "ma": "73063029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định .21)."
+    },
+    {
+      "ma": "73063030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063030 \"Ống loại được sử dụng làm ống bọc (ống nhiệt) dùng cho các bộ phận phát nhiệt của bàn là điện phẳng hoặc nồi cơm điện, có đường kính ngoài không quá 12 mm\" ⇒ congDung \"làm ống bọc\" (\"(ống nhiệt)\" là chú thích) + dungCho \"các bộ phận phát nhiệt\" (định ngữ CHUNG cho cả hai đích) + dungCho [\"bàn là điện phẳng\",\"nồi cơm điện\"] (\"hoặc\" ⇒ mảng; hai điều kiện dungCho = VÀ) + duongKinh <= 12 mm."
+    },
+    {
+      "ma": "7306304",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7306304 \"Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi\" ⇒ tenLoai \"Ống dẫn chịu áp lực cao\" + gioiHanChay >= 42000 psi (\"không nhỏ hơn\" = >=; \"(1)\" là số chú thích) — cùng cách viết với 730451 .20."
+    },
+    {
       "ma": "7306304",
       "loai": "BO_VE",
       "ve": "có giới hạn chảy (1)",
       "lyDo": "Cụm danh từ đầu chỉ thuộc tính giới hạn chảy, chữ giới thiệu thuần ((1) là số chú thích của biểu); ngưỡng đã lượng hóa qua gioiHanChay >= 42000 psi"
-    }
-  ],
-  "chongLanTruc": [
+    },
     {
-      "nhanh": [
-        "7306301",
-        "7306302",
-        "73063030",
-        "7306304"
-      ],
-      "truc": {
-        "7306301": "CONG_DUNG",
-        "7306302": "DAC_DIEM",
-        "73063030": "CONG_DUNG",
-        "7306304": "TEN_LOAI"
-      },
-      "cauHoiPhanBiet": "Ống này là loại dùng cho nồi hơi (7306301), ống thép mạ đồng/tráng nhựa flo/kẽm cromat đường kính ngoài không quá 15 mm (7306302), ống bọc (ống nhiệt) cho bộ phận phát nhiệt của bàn là điện phẳng hoặc nồi cơm điện (73063030), hay ống dẫn chịu áp lực cao có giới hạn chảy không nhỏ hơn 42.000 psi (7306304)?",
-      "trich": {
-        "7306301": "Ống dùng cho nồi hơi",
-        "7306302": "Ống thép được mạ đồng, tráng nhựa flo (fluororesin) hoặc kẽm cromat có đường kính ngoài không quá 15 mm",
-        "73063030": "Ống loại được sử dụng làm ống bọc (ống nhiệt) dùng cho các bộ phận phát nhiệt của bàn là điện phẳng hoặc nồi cơm điện, có đường kính ngoài không quá 12 mm",
-        "7306304": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi"
-      },
-      "viDuHang": [],
-      "phanXu": null
+      "ma": "73063041",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063041 \"Với đường kính ngoài dưới 12,5 mm\" ⇒ duongKinh < 12.5 mm, cùng khoá và thang với .11/.21."
+    },
+    {
+      "ma": "73063049",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063049 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định .41)."
+    },
+    {
+      "ma": "73063091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063091 \"Với đường kính trong từ 12,5 mm trở lên, đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng\" ⇒ ba điều kiện VÀ: duongKinhTrong >= 12.5 mm (\"từ … trở lên\"), duongKinh < 140 mm (\"dưới\"), hamLuongCarbon < 0.45 % (\"dưới\"). Cảnh báo cong3-bien-khong-doc-duoc đã đối chiếu tay: biên >= 12.5 / < 140 / < 0.45 đúng chữ."
+    },
+    {
+      "ma": "73063092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063092 \"Với đường kính trong dưới 12,5 mm\" ⇒ duongKinhTrong < 12.5 mm (cùng khoá với .91, biên 12,5 mm đối nhau: >= ↔ <)."
+    },
+    {
+      "ma": "73063099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73063099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định .91/.92)."
+    },
+    {
+      "ma": "7306309",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7306309 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào dieuKienNut."
+    },
+    {
+      "ma": "730630",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG cong2-chong-lan-truc: bốn tiêu đề/dòng anh em 7306301 (dungCho nồi hơi, CONG_DUNG), 7306302 (lopMaPhu+duongKinh, DAC_DIEM), 73063030 (congDung/dungCho, CONG_DUNG), 7306304 (tenLoai+gioiHanChay, TEN_LOAI) chia theo trục khác nhau, cổng 2 báo cong2-chong-lan-truc:7306301:7306302,7306304 / :7306302:7306301,73063030,7306304 / :7306304:7306301,7306302,73063030 / :73063030:7306302,7306304 và các cặp cấp dòng .11↔.21, .11↔.41, .19↔.29, .19↔.49, .21↔.30, .21↔.41, .29↔.49, .30↔.41 hệ quả của chúng. Gỡ bằng chongLanTruc cần viDuHang cho 5 cặp khác trục: (7306301,7306302), (7306301,7306304), (7306302,7306304), (7306302,73063030), (73063030,7306304). Cặp (73063030,7306304) — ống bọc nhiệt của bàn là/nồi cơm điện mà đồng thời là ống dẫn chịu áp lực cao giới hạn chảy >= 42.000 psi — không nghĩ ra hàng thật; các cặp còn lại chỉ nghĩ ra hàng gượng (ống nồi hơi mạ kẽm cromat; ống Bundy mạ đồng chịu áp lực cao; ống bọc nhiệt mạ đồng). Không bịa hàng cho máy xanh ⇒ không khai chongLanTruc; các dòng/tiêu đề đã điền điều kiện theo chữ biểu, giữ nguyên để Claude quyết (khai cụm với viDuHang do người soát xác nhận, hoặc giữ DỪNG). Cổng 0 và 3 xanh."
+    },
+    {
+      "ma": "730630",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 730630-01 KHONG_LECH (2130/TB-TCHQ ống đường kính trong ≈ 81 mm ⇒ .91; 2126, 1841/TB-TCHQ đường kính trong 8,7 mm và 8 mm ⇒ .92): soạn theo chữ biểu (duongKinhTrong >= 12,5 mm ⇒ .91; < 12,5 mm ⇒ .92), khớp bảng."
     }
   ]
 }
