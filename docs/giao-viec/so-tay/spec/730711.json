@@ -1,0 +1,27 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730711",
+  "phien": "zcode-sub:glm-5.3:20261106T0948#soan-730711",
+  "dong8": {
+    "73071110": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Phụ kiện" },
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["ống", "ống dẫn"] },
+        { "fact": "daGanDauNoi", "op": "KHONG" }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "73071110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73071110: \"Phụ kiện của ống hoặc ống dẫn không có đầu nối (SEN)\" ⇒ tenLoai \"Phụ kiện\" + dungCho [\"ống\",\"ống dẫn\"] (vế \"của ống hoặc ống dẫn\" — hai đích nối \"hoặc\" ⇒ mảng) + daGanDauNoi KHONG (\"không có đầu nối\"; SEN: \"không có khớp nối ở cả hai đầu\"); \"(SEN)\" là dẫn nguồn"
+    },
+    {
+      "ma": "73071190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73071190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

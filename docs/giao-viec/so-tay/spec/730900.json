@@ -1,0 +1,45 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "730900",
+  "phien": "zcode-sub:glm-5.3:20261106T1002#soan-730900",
+  "dong8": {
+    "73090011": { "dieuKienSo": [] },
+    "73090091": { "dieuKienSo": [] }
+  },
+  "dieuKienNut": {
+    "7309001": {
+      "dieuKienSo": [
+        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["vận chuyển", "đóng gói hàng hóa"] }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "7309001",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7309001: \"Loại sử dụng trong vận chuyển hoặc đóng gói hàng hóa\" ⇒ dungCho [\"vận chuyển\",\"đóng gói hàng hóa\"] (vế \"sử dụng trong vận chuyển hoặc đóng gói hàng hóa\" — hai cách dùng nối \"hoặc\" ⇒ mảng, mỗi giá trị chuỗi con nguyên văn)"
+    },
+    {
+      "ma": "73090011",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "duocLotHoacCachNhiet",
+      "ghiChu": "tax.73090011: \"Được lót hoặc được cách nhiệt\" — hai vế GIỚI HẠN \"Được lót\" · \"được cách nhiệt\" đều không có khoá tu-vung@2 (coGiaNhiet là \"có gia nhiệt\", khác \"cách nhiệt\"); bỏ vế làm bình chứa đã lót rơi nhầm .19 ⇒ không BO_VE được"
+    },
+    {
+      "ma": "73090019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73090019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "73090091",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "duocLotHoacCachNhiet",
+      "ghiChu": "tax.73090091: \"Được lót hoặc được cách nhiệt\" — như 73090011: thiếu khoá cho \"Được lót\" và \"được cách nhiệt\""
+    },
+    {
+      "ma": "73090099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73090099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

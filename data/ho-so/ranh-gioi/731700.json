@@ -1,0 +1,104 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "731700",
+  "nhom": "7317",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1020#soan-731700",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "73170010",
+      "nguon": "tax.73170010",
+      "trich": "73170010 - Đinh dây",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đinh dây"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73170020",
+      "nguon": "tax.73170020",
+      "trich": "73170020 - Ghim dập",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ghim dập"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73170030",
+      "nguon": "tax.73170030",
+      "trich": "73170030 - Đinh giữ ray cho tà vẹt đường ray; bàn chông",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Đinh giữ ray"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "tà vẹt đường ray"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bàn chông"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73170090",
+      "nguon": "tax.73170090",
+      "trich": "73170090 - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "73170010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73170010: \"Đinh dây\" ⇒ tenLoai \"Đinh dây\""
+    },
+    {
+      "ma": "73170020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73170020: \"Ghim dập\" ⇒ tenLoai \"Ghim dập\""
+    },
+    {
+      "ma": "73170030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73170030: \"Đinh giữ ray cho tà vẹt đường ray; bàn chông\" ⇒ HOAC: [tenLoai \"Đinh giữ ray\" + dungCho \"tà vẹt đường ray\"] hoặc [tenLoai \"bàn chông\"] — hai hàng nối dấu \";\", vế \"cho tà vẹt đường ray\" là định ngữ riêng của \"Đinh giữ ray\" nên gắn trong phương án thứ nhất"
+    },
+    {
+      "ma": "73170090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73170090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

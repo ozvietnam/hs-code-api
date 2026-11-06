@@ -1,0 +1,118 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "731210",
+  "nhom": "7312",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1015#soan-731210",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "73121010",
+      "nguon": "tax.73121010",
+      "trich": "73121010 - - Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "dây bện tao kiểu bọc",
+            "dây tao dẹt",
+            "dây cáp chống xoắn"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73121020",
+      "nguon": "tax.73121020",
+      "trich": "73121020 - - Loại được phủ, mạ hoặc tráng bằng đồng thau và có đường kính không quá 3 mm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 3,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73121030",
+      "nguon": "tax.73121030",
+      "trich": "73121030 - - Được phủ, mạ hoặc tráng nhôm",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73121091",
+      "nguon": "tax.73121091",
+      "trich": "73121091 - - - Dây thép bện tao cho bê tông dự ứng lực",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây thép bện tao"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bê tông dự ứng lực"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73121099",
+      "nguon": "tax.73121099",
+      "trich": "73121099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "73121010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73121010: \"Cuộn dây bện tao kiểu bọc, dây tao dẹt và dây cáp chống xoắn(1) (SEN)\" ⇒ dangCuon CO (\"Cuộn\" — cachDoc đọc \"cuộn dây\" nguyên văn đầu câu) + tenLoai [\"dây bện tao kiểu bọc\",\"dây tao dẹt\",\"dây cáp chống xoắn\"] (ba tên hàng nối phẩy và \"và\" ⇒ mảng); \"(1)\" là đánh dấu chú thích, \"(SEN)\" là dẫn nguồn"
+    },
+    {
+      "ma": "73121020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73121020: \"Loại được phủ, mạ hoặc tráng bằng đồng thau và có đường kính không quá 3 mm\" ⇒ duongKinh <= 3 mm (không quá = <=)"
+    },
+    {
+      "ma": "73121020",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "maDongThau",
+      "ghiChu": "tax.73121020 vế GIỚI HẠN: \"được phủ, mạ hoặc tráng bằng đồng thau\" — lopMaPhu không có giá trị mạ đồng thau (MA_DONG đọc \"mạ đồng\", đồng thau ≠ đồng); bỏ vế làm dây thép bất kỳ ≤ 3 mm rơi nhầm .20 ⇒ không BO_VE được"
+    },
+    {
+      "ma": "73121030",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "trangNhom",
+      "ghiChu": "tax.73121030: \"Được phủ, mạ hoặc tráng nhôm\" — lopMaPhu không có giá trị phủ/mạ/tráng nhôm (chỉ có đồng, nhựa flo, kẽm-cromat, thiếc, sơn sau mạ kẽm); đây là toàn bộ nội dung dòng ⇒ để trống dieuKienSo"
+    },
+    {
+      "ma": "73121091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73121091: \"Dây thép bện tao cho bê tông dự ứng lực\" ⇒ tenLoai \"Dây thép bện tao\" + dungCho \"bê tông dự ứng lực\" (vế \"cho bê tông dự ứng lực\")"
+    },
+    {
+      "ma": "73121099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73121099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

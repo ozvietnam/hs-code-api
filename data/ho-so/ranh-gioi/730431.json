@@ -1,0 +1,120 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "730431",
+  "nhom": "7304",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0925#soan-730431",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "73043110",
+      "nguon": "tax.73043110",
+      "trich": "73043110 - - - Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ống chống",
+            "ống nối"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "cần khoan"
+        },
+        {
+          "fact": "coRen",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73043120",
+      "nguon": "tax.73043120",
+      "trich": "73043120 - - - Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi",
+      "dieuKienSo": [
+        {
+          "fact": "khaNangChiuApLuc",
+          "op": ">=",
+          "value": 42000,
+          "donVi": "psi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73043140",
+      "nguon": "tax.73043140",
+      "trich": "73043140 - - - Loại khác, có đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<",
+          "value": 140,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.45,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73043190",
+      "nguon": "tax.73043190",
+      "trich": "73043190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "73043110",
+        "73043120"
+      ],
+      "lyDo": "A là tên hàng, B là ngưỡng số: .10 \"Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)\" (tax.73043110) và .20 \"Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi\" (tax.73043120) — một ống chống của cần khoan có ren, chịu áp lực 42.000 psi trở lên, thoả chữ cả hai dòng; không có căn cứ thứ tự"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "73043110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73043110: \"Ống chống và ống nối của cần khoan có ren trong và ren ngoài (SEN)\" ⇒ tenLoai [\"Ống chống\",\"ống nối\"] (hai tên hàng nối \"và\", chữ Anh \"casing and tubing\" nối and) + dungCho \"cần khoan\" (vế \"của cần khoan\") + coRen CO (SEN: \"có ren ở đầu\" ⇒ \"có ren trong và ren ngoài\" là đặc điểm của chính ống); \"(SEN)\" là dẫn nguồn, không điều kiện"
+    },
+    {
+      "ma": "73043120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73043120: \"Ống dẫn chịu áp lực cao có khả năng chịu áp lực không nhỏ hơn 42.000 psi\" ⇒ khaNangChiuApLuc >= 42000 psi (không nhỏ hơn = >=; như 73043920)"
+    },
+    {
+      "ma": "73043120",
+      "loai": "BO_VE",
+      "ve": "có khả năng chịu áp lực",
+      "lyDo": "Cụm danh từ chỉ thuộc tính chịu áp lực — đã lượng hóa bằng ngưỡng khaNangChiuApLuc >= 42000 psi ở chính dòng"
+    },
+    {
+      "ma": "73043140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73043140: \"Loại khác, có đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng\" ⇒ chỉ điều kiện của vế: duongKinh < 140 mm, hamLuongCarbon < 0.45 % (như 73043940)"
+    },
+    {
+      "ma": "73043190",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73043190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

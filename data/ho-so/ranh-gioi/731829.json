@@ -1,0 +1,55 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "731829",
+  "nhom": "7318",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1030#soan-731829",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "73182910",
+      "nguon": "tax.73182910",
+      "trich": "73182910 - - - Đường kính ngoài của thân không quá 16 mm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 16,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73182990",
+      "nguon": "tax.73182990",
+      "trich": "73182990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "73182910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73182910: \"Đường kính ngoài của thân không quá 16 mm\" ⇒ duongKinh <= 16 mm (không quá = <=)"
+    },
+    {
+      "ma": "73182990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73182990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "73182910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay biên (cổng 3 không đọc được vì cụm \"của thân\" chen giữa): tax.73182910 \"Đường kính ngoài của thân không quá 16 mm\" = duongKinh <= 16 mm — đúng mốc 16, đúng dấu (không quá = <=)"
+    }
+  ]
+}

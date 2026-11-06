@@ -1,0 +1,347 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "731100",
+  "nhom": "7311",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1008#soan-731100",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7311002",
+      "nguon": "tieuDe.7311002",
+      "trich": "7311002 Dạng hình trụ bằng thép đúc liền",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "hình trụ"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "73110021",
+      "nguon": "tax.73110021",
+      "trich": "73110021 - - Có dung tích từ 30 lít trở lên, nhưng dưới 110 lít, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 110,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "khí tự nhiên nén",
+            "khí tự nhiên hóa lỏng"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110022",
+      "nguon": "tax.73110022",
+      "trich": "73110022 - - Có dung tích từ 110 lít trở lên, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 110,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "khí tự nhiên nén",
+            "khí tự nhiên hóa lỏng"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110023",
+      "nguon": "tax.73110023",
+      "trich": "73110023 - - Có dung tích dưới 30 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG)",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khí dầu mỏ hóa lỏng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110024",
+      "nguon": "tax.73110024",
+      "trich": "73110024 - - Có dung tích từ 30 lít trở lên nhưng dưới 110 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG)",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 110,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khí dầu mỏ hóa lỏng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110025",
+      "nguon": "tax.73110025",
+      "trich": "73110025 - - Loại khác, dùng để chứa khí dầu mỏ hóa lỏng (LPG)",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "khí dầu mỏ hóa lỏng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110026",
+      "nguon": "tax.73110026",
+      "trich": "73110026 - - Loại khác, có dung tích dưới 30 lít",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 30,
+          "donVi": "lít"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110027",
+      "nguon": "tax.73110027",
+      "trich": "73110027 - - Loại khác, có dung tích từ 30 lít trở lên nhưng dưới 110 lít",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 110,
+          "donVi": "lít"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110029",
+      "nguon": "tax.73110029",
+      "trich": "73110029 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110091",
+      "nguon": "tax.73110091",
+      "trich": "73110091 - - Có dung tích không quá 7,3 lít",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": "<=",
+          "value": 7.3,
+          "donVi": "lít"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110092",
+      "nguon": "tax.73110092",
+      "trich": "73110092 - - Có dung tích trên 7,3 lít nhưng dưới 30 lít",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">",
+          "value": 7.3,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 30,
+          "donVi": "lít"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110094",
+      "nguon": "tax.73110094",
+      "trich": "73110094 - - Có dung tích từ 30 lít trở lên nhưng dưới 110 lít",
+      "dieuKienSo": [
+        {
+          "fact": "dungTich",
+          "op": ">=",
+          "value": 30,
+          "donVi": "lít"
+        },
+        {
+          "fact": "dungTich",
+          "op": "<",
+          "value": 110,
+          "donVi": "lít"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73110099",
+      "nguon": "tax.73110099",
+      "trich": "73110099 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7311002",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7311002: \"Dạng hình trụ bằng thép đúc liền\" ⇒ tenLoai \"hình trụ\" + chatLieu LA \"sắt thép\" (cachDoc đọc \"thép\" trong \"bằng thép đúc liền\"; \"đúc liền\" là cách nói vật liệu thép đúc, bộ đọc phuongPhapCheTao cố ý không đọc \"thép đúc\" — vế \"bằng thép đúc liền\" đã phủ bằng chất liệu)"
+    },
+    {
+      "ma": "73110021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110021: \"Có dung tích từ 30 lít trở lên, nhưng dưới 110 lít, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô\" ⇒ dungTich >= 30 lít và < 110 lít + dungCho [\"khí tự nhiên nén\",\"khí tự nhiên hóa lỏng\"] (hai khí nối \"hoặc\" ⇒ mảng) + dungCho \"ô tô\" (định ngữ chung \"cho ô tô\" ⇒ điều kiện riêng cùng khoá); \"(CNG)\"/\"(LNG)\" là chú thích tên khí"
+    },
+    {
+      "ma": "73110022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110022: \"Có dung tích từ 110 lít trở lên, dùng để chứa khí tự nhiên nén (CNG) hoặc khí tự nhiên hóa lỏng (LNG) cho ô tô\" ⇒ dungTich >= 110 lít + dungCho như 73110021"
+    },
+    {
+      "ma": "73110023",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110023: \"Có dung tích dưới 30 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG)\" ⇒ dungTich < 30 lít + dungCho \"khí dầu mỏ hóa lỏng\"; \"(LPG)\" là chú thích tên khí"
+    },
+    {
+      "ma": "73110024",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110024: \"Có dung tích từ 30 lít trở lên nhưng dưới 110 lít, dùng để chứa khí dầu mỏ hóa lỏng (LPG)\" ⇒ dungTich >= 30 lít và < 110 lít + dungCho \"khí dầu mỏ hóa lỏng\""
+    },
+    {
+      "ma": "73110025",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110025: \"Loại khác, dùng để chứa khí dầu mỏ hóa lỏng (LPG)\" ⇒ chỉ điều kiện của vế: dungCho \"khí dầu mỏ hóa lỏng\" (máy tự phủ định anh em .21-.24 vì dòng mở đầu \"Loại khác\")"
+    },
+    {
+      "ma": "73110026",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110026: \"Loại khác, có dung tích dưới 30 lít\" ⇒ chỉ điều kiện của vế: dungTich < 30 lít (máy tự phủ định anh em đứng trước)"
+    },
+    {
+      "ma": "73110027",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110027: \"Loại khác, có dung tích từ 30 lít trở lên nhưng dưới 110 lít\" ⇒ chỉ điều kiện của vế: dungTich >= 30 lít và < 110 lít (máy tự phủ định anh em đứng trước)"
+    },
+    {
+      "ma": "73110029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "73110091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110091: \"Có dung tích không quá 7,3 lít\" ⇒ dungTich <= 7.3 lít"
+    },
+    {
+      "ma": "73110092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110092: \"Có dung tích trên 7,3 lít nhưng dưới 30 lít\" ⇒ dungTich > 7.3 lít và < 30 lít"
+    },
+    {
+      "ma": "73110094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110094: \"Có dung tích từ 30 lít trở lên nhưng dưới 110 lít\" ⇒ dungTich >= 30 lít và < 110 lít"
+    },
+    {
+      "ma": "73110099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73110099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "73110021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay biên (cổng 3 không đọc được cụm kép): tax.73110021 \"từ 30 lít trở lên, nhưng dưới 110 lít\" = dungTich >= 30 lít VÀ < 110 lít — đúng mốc, đúng dấu (trở lên = >=, dưới = <)"
+    },
+    {
+      "ma": "73110022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay biên: tax.73110022 \"từ 110 lít trở lên\" = dungTich >= 110 lít — đúng mốc, đúng dấu"
+    },
+    {
+      "ma": "73110024",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay biên: tax.73110024 \"từ 30 lít trở lên nhưng dưới 110 lít\" = dungTich >= 30 lít VÀ < 110 lít — đúng mốc, đúng dấu"
+    },
+    {
+      "ma": "73110027",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay biên: tax.73110027 \"từ 30 lít trở lên nhưng dưới 110 lít\" = dungTich >= 30 lít VÀ < 110 lít — đúng mốc, đúng dấu"
+    },
+    {
+      "ma": "73110094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đối chiếu tay biên: tax.73110094 \"từ 30 lít trở lên nhưng dưới 110 lít\" = dungTich >= 30 lít VÀ < 110 lít — đúng mốc, đúng dấu"
+    }
+  ]
+}

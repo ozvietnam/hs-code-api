@@ -1,0 +1,56 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "731700",
+  "phien": "zcode-sub:glm-5.3:20261106T1020#soan-731700",
+  "dong8": {
+    "73170010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đinh dây" }
+      ]
+    },
+    "73170020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ghim dập" }
+      ]
+    },
+    "73170030": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đinh giữ ray" },
+              { "fact": "dungCho", "op": "CONG_DUNG", "value": "tà vẹt đường ray" }
+            ],
+            [
+              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "bàn chông" }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "73170010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73170010: \"Đinh dây\" ⇒ tenLoai \"Đinh dây\""
+    },
+    {
+      "ma": "73170020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73170020: \"Ghim dập\" ⇒ tenLoai \"Ghim dập\""
+    },
+    {
+      "ma": "73170030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73170030: \"Đinh giữ ray cho tà vẹt đường ray; bàn chông\" ⇒ HOAC: [tenLoai \"Đinh giữ ray\" + dungCho \"tà vẹt đường ray\"] hoặc [tenLoai \"bàn chông\"] — hai hàng nối dấu \";\", vế \"cho tà vẹt đường ray\" là định ngữ riêng của \"Đinh giữ ray\" nên gắn trong phương án thứ nhất"
+    },
+    {
+      "ma": "73170090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73170090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}
