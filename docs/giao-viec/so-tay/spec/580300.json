@@ -1,0 +1,77 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "580300",
+  "phien": "zcode-mm:loop:20261106T1449#soan-580300",
+  "dong8": {
+    "58030010": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": ["BONG"]
+        }
+      ]
+    },
+    "58030020": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": ["SOI_TONG_HOP", "SOI_TAI_TAO"]
+        }
+      ]
+    },
+    "58030030": {
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": ["LEN_LONG_DONG_VAT_MIN"]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "58030010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58030010 \"58030010 - Từ bông\" ⇒ loaiSoiDet TRONG [BONG] (khoá liệt kê \"loại xơ/sợi dệt (vật liệu dệt chủ yếu)\"; \"bông\" = BONG)."
+    },
+    {
+      "ma": "58030020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58030020 \"58030020 - Từ xơ nhân tạo\" ⇒ loaiSoiDet TRONG [SOI_TONG_HOP, SOI_TAI_TAO] (\"xơ nhân tạo\" gồm sợi tổng hợp và sợi tái tạo; cùng cách chia với vế \"sợi nhân tạo\" của 58023020)."
+    },
+    {
+      "ma": "58030030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.58030030 \"58030030 - Từ lông cừu hoặc lông động vật loại mịn\" ⇒ loaiSoiDet TRONG [LEN_LONG_DONG_VAT_MIN] (một giá trị gộp đúng cả hai vế: lông cừu và lông động vật loại mịn)."
+    },
+    {
+      "ma": "58030010+58030020+58030030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Ba dòng anh em chia bằng CÙNG khoá loaiSoiDet với các giá trị loại trừ nhau: [BONG] / [SOI_TONG_HOP, SOI_TAI_TAO] / [LEN_LONG_DONG_VAT_MIN]."
+    },
+    {
+      "ma": "58030090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần (loaiKhac/khongCanDieuKien) ⇒ không ghi điều kiện, không đưa vào spec. Không suy ra điều kiện phủ định cho .10/.20/.30 vì chữ biểu các dòng đó không nói."
+    },
+    {
+      "ma": "580300",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề phân nhóm (vi \"Vải dệt quấn, trừ các loại vải khổ hẹp thuộc nhóm 58.06.\"; wco.580300 \"580300 Gauze; other than narrow fabrics of heading no. 5806\") là đặc trưng CHUNG cho cả bốn dòng, không phải điều kiện phân biệt trong nhóm ⇒ không mã hoá thành điều kiện (dieuKienNut để trống); vế giới hạn \"trừ các loại vải khổ hẹp thuộc nhóm 58.06.\" không diễn đạt được bằng khoá tu-vung nào ⇒ ghi chú, không ép điều kiện."
+    },
+    {
+      "ma": "580300",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan/chongLanTruc: ba dòng con chia bằng cùng khoá loaiSoiDet với các giá trị loại trừ nhau, gói soạn không có hàng thật nào để minh hoạ ⇒ không khai trục."
+    },
+    {
+      "ma": "580300",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói soạn chỉ nêu chú giải (nhom5803.nhom 2.129 / ch58.chuong 2.716 / phan58.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ mọi trích trong spec lấy từ chữ biểu của chính dòng (tax.<8 số>) và tiêu đề phân nhóm (wco.580300)."
+    }
+  ]
+}

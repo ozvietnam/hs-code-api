@@ -1,0 +1,43 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "581100",
+  "phien": "zcode-mm:loop:20261106T1458#soan-581100",
+  "dong8": {
+    "58110010": {
+      "ten": "Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô",
+      "trich": "58110010 - Từ lông cừu hoặc lông động vật loại mịn hoặc loại thô",
+      "dieuKienSo": [
+        {
+          "khoa": "loaiSoiDet",
+          "op": "TRONG",
+          "giaTri": ["LEN_LONG_DONG_VAT_MIN"],
+          "trich": "Từ lông cừu hoặc lông động vật loại mịn"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "58110010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dùng khoá loaiSoiDet (LIET_KE, op TRONG) với giá trị LEN_LONG_DONG_VAT_MIN — vế 'lông cừu hoặc lông động vật loại mịn' khớp đúng giá trị có sẵn trong goi.tuVung."
+    },
+    {
+      "ma": "58110010",
+      "loai": "BO_VE",
+      "ve": "hoặc loại thô",
+      "lyDo": "goi.tuVung không có giá trị nào cho 'lông động vật loại thô' (loaiSoiDet chỉ có LEN_LONG_DONG_VAT_MIN = len, lông động vật mịn) ⇒ vế này chưa có điều kiện đọc tới; không bịa khoá."
+    },
+    {
+      "ma": "58110090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 58110090 'Loại khác' trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào spec."
+    },
+    {
+      "ma": "581100",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế loại trừ chung của nhóm 5811 ('trừ hàng thêu thuộc nhóm 58.10') không chép vào từng dòng 8 số; vẫn giữ trong tên nhóm (ten.vi/ten.wco) của nút 5811."
+    }
+  ]
+}
