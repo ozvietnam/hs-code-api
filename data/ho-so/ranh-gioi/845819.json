@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1000#soan-845819",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-845819",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,14 @@
       "hs": "84581910",
       "nguon": "tax.84581910",
       "trich": "84581910 - - - Có bán kính gia công tiện không quá 300 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "banKinhGiaCongTien",
+          "op": "<=",
+          "value": 300,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -31,9 +38,13 @@
   "ghiChuSoan": [
     {
       "ma": "84581910",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "banKinhGiaCongTien",
-      "ghiChu": "tax.84581910: \"Có bán kính gia công tiện không quá 300 mm\" — tu-vung@2 không có khoá bán kính (duongKinh là đường kính, khác bán kính — không mượn); bỏ vế làm đổi mã (.10 ⇔ .90)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84581910 \"Có bán kính gia công tiện không quá 300 mm\" ⇒ banKinhGiaCongTien <= 300 mm (\"không quá\" = <=). Khoá lô 20 thay THIEU_KHOA_TU_VUNG banKinhGiaCongTien. Bộ đọc trả cận đầu, chữ chỉ có một cận."
+    },
+    {
+      "ma": "84581990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84581990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
     }
   ]
 }

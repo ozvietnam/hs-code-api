@@ -1,19 +1,83 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "847432",
-  "phien": "zcode-sub:glm-5.3:20261106T1000#soan-847432",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-847432",
   "dong8": {
-    "84743211": { "dieuKienSo": [] },
-    "84743219": { "dieuKienSo": [] },
-    "84743221": { "dieuKienSo": [] },
-    "84743229": { "dieuKienSo": [] }
+    "84743211": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatKhoiLuongGio",
+          "op": "<=",
+          "value": 80,
+          "donVi": "tấn/giờ"
+        }
+      ]
+    },
+    "84743219": {
+      "dieuKienSo": []
+    },
+    "84743221": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuatKhoiLuongGio",
+          "op": "<=",
+          "value": 80,
+          "donVi": "tấn/giờ"
+        }
+      ]
+    },
+    "84743229": {
+      "dieuKienSo": []
+    }
   },
   "dieuKienNut": {
-    "8474321": { "dieuKienSo": [] },
-    "8474322": { "dieuKienSo": [] }
+    "8474321": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "8474322": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "84743211", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "congSuatTanGio", "ghiChu": "tax.84743211: \"Có công suất không quá 80 tấn/giờ\" — tu-vung@2 không có khoá công suất theo tấn/giờ (congSuat là W; sanLuongHoi là 'sản lượng hơi/công suất hơi' của nồi hơi — không mượn); bỏ vế làm đổi mã (.11 ⇔ .19)" },
-    { "ma": "84743221", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "congSuatTanGio", "ghiChu": "tax.84743221: \"Có công suất không quá 80 tấn/giờ\" — như 84743211, thiếu khoá công suất tấn/giờ" }
+    {
+      "ma": "8474321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8474321 \"Hoạt động bằng điện\" ⇒ hoatDongBangDien CO."
+    },
+    {
+      "ma": "8474322",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8474322 \"Không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG."
+    },
+    {
+      "ma": "84743211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84743211 \"Có công suất không quá 80 tấn/giờ\" ⇒ congSuatKhoiLuongGio <= 80 tấn/giờ (khoá lô 20 thay THIEU_KHOA_TU_VUNG congSuatTanGio)."
+    },
+    {
+      "ma": "84743221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84743221 \"Có công suất không quá 80 tấn/giờ\" ⇒ congSuatKhoiLuongGio <= 80 tấn/giờ (như 84743211)."
+    },
+    {
+      "ma": "84743219",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84743219 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "84743229",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84743229 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
   ]
 }

@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T0900#soan-848610",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-848610",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -30,15 +30,57 @@
       "hs": "84861020",
       "nguon": "tax.84861020",
       "trich": "84861020 - - Máy làm khô bằng phương pháp quay ly tâm để chế tạo tấm bán dẫn mỏng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy làm khô"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "QUAY"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "chế tạo tấm bán dẫn mỏng"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "84861030",
       "nguon": "tax.84861030",
       "trich": "84861030 - - Máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy công cụ"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "gia công mọi vật liệu bằng cách bóc tách vật liệu"
+        },
+        {
+          "fact": "nguyenLyXuLy",
+          "op": "TRONG",
+          "value": [
+            "TIA_LASER_HOAC_TIA_SANG_KHAC"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất tấm bán dẫn mỏng"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
     },
     {
       "hs": "84861040",
@@ -118,20 +160,23 @@
   "ghiChuSoan": [
     {
       "ma": "84861020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapCheTao",
-      "ghiChu": "tax.84861020 \"Máy làm khô bằng phương pháp quay ly tâm để chế tạo tấm bán dẫn mỏng\" — không có khoá/phương pháp \"quay ly tâm\" trong tu-vung@2 (phuongPhapCheTao chỉ có DUC/REN/CAN_NONG/CAN_NGUOI/KEO/DAP/HAN/EP_PHUN/THOI/DOT_DAP_KEO_GIAN; kieuBom là trục bơm, không phải máy sấy)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84861020 \"Máy làm khô bằng phương pháp quay ly tâm để chế tạo tấm bán dẫn mỏng\" ⇒ tenLoai \"Máy làm khô\" + nguyenLyXuLy QUAY (khoá lô 20, đọc \"phương pháp quay ly tâm\") + congDung \"chế tạo tấm bán dẫn mỏng\". Thay THIEU_KHOA_TU_VUNG phuongPhapCheTao."
     },
     {
       "ma": "84861030",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "phuongPhapGiaCong",
-      "ghiChu": "tax.84861030 \"Máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng\" — không có khoá cho quy trình gia công bằng tia laser/tia sáng/chùm phô-tông"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84861030 \"Máy công cụ để gia công mọi vật liệu bằng cách bóc tách vật liệu, bằng quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông trong sản xuất tấm bán dẫn mỏng\" ⇒ tenLoai \"Máy công cụ\" + congDung \"gia công mọi vật liệu bằng cách bóc tách vật liệu\" + nguyenLyXuLy TIA_LASER_HOAC_TIA_SANG_KHAC (đọc \"quy trình sử dụng tia laser hoặc tia sáng khác hoặc chùm phô-tông\") + congDung \"sản xuất tấm bán dẫn mỏng\". \"tia sáng khác\" không phải phần còn lại ⇒ phanConLai false. Thay THIEU_KHOA_TU_VUNG phuongPhapGiaCong."
     },
     {
       "ma": "84861090",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84861090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "84861040",
+      "loai": "DUNG",
+      "ghiChu": "cong2-chong-lan:84861010+84861040 (:khong-tat-dinh) — .40 \"Máy và thiết bị để cắt …\": danh từ đầu liên hợp phải thành mảng tenLoai [\"Máy\",\"thiết bị\"] (gói \"Máy và thiết bị\" trong một chuỗi bị cong3-liet-ke-trong-mot-chuoi vì chữ Anh \"Machines and apparatus\"), nên tên \"Thiết bị làm nóng nhanh tấm bán dẫn mỏng\" của .10 chứa âm tiết \"thiết bị\" và thoả luôn tenLoai của .40; .40 còn congDung riêng nên không áp luật \"tên cụ thể hơn thắng\". Chồng lấn do bộ so chữ (hai hàng khác hẳn nhau), không khai chongLanVanBan/chongLanTruc (không có hàng thật thoả cả hai). Không bỏ tenLoai khỏi .40 vì làm đổi nghĩa chữ biểu. DỪNG, báo Claude."
     }
   ]
 }
