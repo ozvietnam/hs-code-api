@@ -1,0 +1,70 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721049",
+  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721049",
+  "dong8": {
+    "72104911": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "hợp kim hóa bề mặt" },
+        { "fact": "hamLuongCarbon", "op": "<", "value": 0.04, "donVi": "%" },
+        { "fact": "doDay", "op": "<=", "value": 1.2, "donVi": "mm" }
+      ]
+    },
+    "72104914": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "hợp kim kẽm – nhôm - magiê" },
+        { "fact": "doDay", "op": "<=", "value": 1.2, "donVi": "mm" }
+      ]
+    },
+    "72104915": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "hợp kim kẽm – nhôm - magiê" },
+        { "fact": "doDay", "op": ">", "value": 1.2, "donVi": "mm" },
+        { "fact": "doDay", "op": "<=", "value": 1.5, "donVi": "mm" }
+      ]
+    },
+    "72104916": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "hợp kim kẽm – nhôm - magiê" },
+        { "fact": "doDay", "op": ">", "value": 1.5, "donVi": "mm" }
+      ]
+    },
+    "72104917": {
+      "dieuKienSo": [
+        { "fact": "doDay", "op": "<=", "value": 1.2, "donVi": "mm" }
+      ]
+    },
+    "72104918": {
+      "dieuKienSo": [
+        { "fact": "doDay", "op": ">", "value": 1.2, "donVi": "mm" },
+        { "fact": "doDay", "op": "<=", "value": 1.5, "donVi": "mm" }
+      ]
+    },
+    "72104991": {
+      "dieuKienSo": [
+        { "fact": "doDay", "op": "<=", "value": 1.2, "donVi": "mm" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7210491": {
+      "dieuKienSo": [
+        { "fact": "hamLuongCarbon", "op": "<", "value": 0.6, "donVi": "%" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    { "ma": "7210491", "loai": "QUYET_DINH", "ghiChu": "tieuDe.7210491 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %" },
+    { "ma": "7210491", "loai": "BO_VE", "ve": "Có hàm lượng carbon", "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %" },
+    { "ma": "72104911", "loai": "BO_VE", "ve": "khối lượng", "lyDo": "Cách tính tỷ lệ theo khối lượng, đã lượng hóa qua hamLuongCarbon < 0.04 %" },
+    { "ma": "72104911", "loai": "QUYET_DINH", "ghiChu": "tax.72104911 \"Được phủ, mạ hoặc tráng kẽm bằng phương pháp hợp kim hóa bề mặt, có hàm lượng carbon dưới 0,04% tính theo khối lượng và chiều dày không quá 1,2 mm\" ⇒ tenLoai \"hợp kim hóa bề mặt\" + hamLuongCarbon < 0.04 % + doDay <= 1.2 mm; tu-vung@2 không có giá trị phương pháp hợp kim hóa bề mặt trong phuongPhapCheTao/lopMaPhu nên dùng tenLoai nguyên văn" },
+    { "ma": "72104914", "loai": "QUYET_DINH", "ghiChu": "tax.72104914 \"Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày không quá 1,2 mm\" ⇒ tenLoai \"hợp kim kẽm – nhôm - magiê\" + doDay <= 1.2 mm; lopMaPhu không có giá trị hợp kim kẽm-nhôm-magiê nên dùng tenLoai nguyên văn" },
+    { "ma": "72104915", "loai": "QUYET_DINH", "ghiChu": "tax.72104915 \"Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,2 mm nhưng không quá 1,5 mm\" ⇒ tenLoai \"hợp kim kẽm – nhôm - magiê\" + doDay > 1.2 mm và <= 1.5 mm" },
+    { "ma": "72104916", "loai": "QUYET_DINH", "ghiChu": "tax.72104916 \"Được phủ, mạ hoặc tráng bằng hợp kim kẽm – nhôm - magiê, có chiều dày trên 1,5 mm\" ⇒ tenLoai \"hợp kim kẽm – nhôm - magiê\" + doDay > 1.5 mm" },
+    { "ma": "72104917", "loai": "QUYET_DINH", "ghiChu": "tax.72104917 \"Loại khác, chiều dày không quá 1,2 mm\" ⇒ chỉ điều kiện của vế: doDay <= 1.2 mm (máy tự phủ định anh em .11–.16)" },
+    { "ma": "72104918", "loai": "QUYET_DINH", "ghiChu": "tax.72104918 \"Loại khác, chiều dày trên 1,2 mm nhưng không quá 1,5 mm\" ⇒ chỉ điều kiện của vế: doDay > 1.2 mm và <= 1.5 mm (máy tự phủ định anh em .11–.16)" },
+    { "ma": "72104919", "loai": "QUYET_DINH", "ghiChu": "tax.72104919 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
+    { "ma": "72104991", "loai": "QUYET_DINH", "ghiChu": "tax.72104991 \"Chiều dày không quá 1,2 mm\" ⇒ doDay <= 1.2 mm" },
+    { "ma": "72104999", "loai": "QUYET_DINH", "ghiChu": "tax.72104999 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}

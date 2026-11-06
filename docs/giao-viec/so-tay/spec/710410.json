@@ -1,0 +1,22 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "710410",
+  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-710410",
+  "dong8": {
+    "71041010": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Chưa được gia công" }
+      ]
+    },
+    "71041020": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đã gia công" }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    { "ma": "71041010", "loai": "QUYET_DINH", "ghiChu": "tax.71041010 \"Chưa được gia công\" ⇒ tenLoai TEN_LOAI \"Chưa được gia công\"; tu-vung@2 không có khoá trạng thái gia công của đá quý, dùng chuỗi con nguyên văn, không bịa điều kiện thêm" },
+    { "ma": "71041020", "loai": "QUYET_DINH", "ghiChu": "tax.71041020 \"Đã gia công\" ⇒ tenLoai TEN_LOAI \"Đã gia công\"; hai dòng cùng khoá, chuỗi rời nhau (chưa/đã) nên không chồng lấn" }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "711810",
+  "nhom": "7118",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-711810",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "71181010",
+      "nguon": "tax.71181010",
+      "trich": "71181010 - - Tiền bằng bạc",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tiền"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bằng bạc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "71181090",
+      "nguon": "tax.71181090",
+      "trich": "71181090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "71181010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71181010 \"Tiền bằng bạc\" ⇒ tenLoai \"Tiền\" (tên đầu) + tenLoai \"bằng bạc\" (vế GIỚI HẠN chất liệu, cùng khoá = VÀ); tu-vung@2 không có giá trị chatLieu bạc nên dùng chuỗi con nguyên văn"
+    },
+    {
+      "ma": "71181090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71181090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    }
+  ]
+}

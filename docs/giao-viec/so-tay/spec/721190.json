@@ -1,0 +1,56 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "721190",
+  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721190",
+  "dong8": {
+    "72119011": {
+      "dieuKienSo": [
+        { "fact": "dangDaiDaiTamPhoDung", "op": "TRONG", "value": ["DAI_VA_DAI"] },
+        { "fact": "chieuRong", "op": "<=", "value": 25, "donVi": "mm" }
+      ]
+    },
+    "72119012": {
+      "dieuKienSo": [
+        { "fact": "dangDaiDaiTamPhoDung", "op": "TRONG", "value": ["DAI_VA_DAI"] },
+        { "fact": "chieuRong", "op": ">", "value": 400, "donVi": "mm" }
+      ]
+    },
+    "72119013": {
+      "dieuKienSo": [
+        { "fact": "dangLuonSong", "op": "CO" }
+      ]
+    },
+    "72119014": {
+      "dieuKienSo": [
+        { "fact": "doDay", "op": "<=", "value": 0.17, "donVi": "mm" }
+      ]
+    },
+    "72119091": {
+      "dieuKienSo": [
+        { "fact": "doDay", "op": "<=", "value": 0.17, "donVi": "mm" }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7211901": {
+      "dieuKienSo": [
+        { "fact": "hamLuongCarbon", "op": "<", "value": 0.6, "donVi": "%" }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    { "cap": ["72119013", "72119011"], "lyDo": "Chồng lấn thật cùng trục đặc điểm: .13 \"Dạng lượn sóng\" (dangLuonSong CO), .11 \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong <= 25 mm) — đai và dải thép dạng lượn sóng rộng 20 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự" },
+    { "cap": ["72119013", "72119012"], "lyDo": "Chồng lấn thật cùng trục đặc điểm: .13 \"Dạng lượn sóng\" (dangLuonSong CO), .12 \"Dạng đai và dải(SEN), có chiều rộng trên 400 mm\" (dangDaiDaiTamPhoDung DAI_VA_DAI + chieuRong > 400 mm) — đai và dải thép dạng lượn sóng rộng 450 mm thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự" }
+  ],
+  "ghiChuSoan": [
+    { "ma": "7211901", "loai": "QUYET_DINH", "ghiChu": "tieuDe.7211901 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %" },
+    { "ma": "7211901", "loai": "BO_VE", "ve": "Có hàm lượng carbon", "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %" },
+    { "ma": "72119011", "loai": "QUYET_DINH", "ghiChu": "tax.72119011 \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI] + chieuRong <= 25 mm; \"(SEN)\" là nguồn chú giải ⇒ PHU" },
+    { "ma": "72119012", "loai": "QUYET_DINH", "ghiChu": "tax.72119012 \"Dạng đai và dải(SEN), có chiều rộng trên 400 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI] + chieuRong > 400 mm" },
+    { "ma": "72119013", "loai": "QUYET_DINH", "ghiChu": "tax.72119013 \"Dạng lượn sóng\" ⇒ dangLuonSong CO" },
+    { "ma": "72119014", "loai": "QUYET_DINH", "ghiChu": "tax.72119014 \"Loại khác, chiều dày không quá 0,17 mm\" ⇒ chỉ điều kiện của vế: doDay <= 0.17 mm (máy tự phủ định anh em .11–.13)" },
+    { "ma": "72119019", "loai": "QUYET_DINH", "ghiChu": "tax.72119019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
+    { "ma": "72119091", "loai": "QUYET_DINH", "ghiChu": "tax.72119091 \"Chiều dày không quá 0,17 mm\" ⇒ doDay <= 0.17 mm" },
+    { "ma": "72119099", "loai": "QUYET_DINH", "ghiChu": "tax.72119099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+  ]
+}
