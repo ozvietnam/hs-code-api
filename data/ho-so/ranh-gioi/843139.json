@@ -1,0 +1,94 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "843139",
+  "nhom": "8431",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1121#soan-843139",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84313910",
+      "nguon": "tax.84313910",
+      "trich": "84313910 - - - Của hàng hóa thuộc phân nhóm 8428.20.10, 8428.32.10, 8428.33.10 hoặc 8428.39.10 ",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8428.20.10",
+            "8428.32.10",
+            "8428.33.10",
+            "8428.39.10"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84313940",
+      "nguon": "tax.84313940",
+      "trich": "84313940 - - - Của máy tự động dùng để dịch chuyển, xử lý và kẹp giữ các tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy tự động"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tấm mạch in",
+            "tấm dây in",
+            "mạch in đã lắp ráp"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84313950",
+      "nguon": "tax.84313950",
+      "trich": "84313950 - - - Loại khác, của hàng hóa thuộc phân nhóm 8428.90",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hàng hóa thuộc phân nhóm 8428.90"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84313990",
+      "nguon": "tax.84313990",
+      "trich": "84313990 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84313910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84313910 \"Của hàng hóa thuộc phân nhóm 8428.20.10, … hoặc 8428.39.10\" ⇒ dungCho mảng 4 mã (hoặc; khuôn 841391)."
+    },
+    {
+      "ma": "84313940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84313940 \"Của máy tự động dùng để dịch chuyển, xử lý và kẹp giữ các tấm mạch in, tấm dây in hoặc mạch in đã lắp ráp\" ⇒ đích lồng: dungCho \"máy tự động\" + dungCho mảng 3 đích [tấm mạch in, tấm dây in, mạch in đã lắp ráp] (máy tự ghép \"<trên> dùng cho <dưới>\", khuôn 841290 .20)."
+    },
+    {
+      "ma": "84313950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84313950 \"Loại khác, của hàng hóa thuộc phân nhóm 8428.90\" ⇒ chỉ vế: dungCho \"hàng hóa thuộc phân nhóm 8428.90\" (cụm chữ+kèm mã để bộ so phủ định được anh em .40 — mã trơn bị CHUA_BIET)."
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "841290",
+  "nhom": "8412",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1005#soan-841290",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84129010",
+      "nguon": "tax.84129010",
+      "trich": "84129010 - - Của động cơ thuộc phân nhóm 8412.10",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "phân nhóm 8412.10"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84129020",
+      "nguon": "tax.84129020",
+      "trich": "84129020 - - Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi ",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ/mô tơ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "tổ máy động lực hơi nước",
+            "hơi khác gắn với nồi hơi"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": false
+    },
+    {
+      "hs": "84129090",
+      "nguon": "tax.84129090",
+      "trich": "84129090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84129010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84129010 \"Của động cơ thuộc phân nhóm 8412.10\" ⇒ dungCho \"phân nhóm 8412.10\" (dẫn mã — máy tự nở dải, tự nối tên↔mã; \"Của động cơ\" là đích lồng máy tự ghép)."
+    },
+    {
+      "ma": "84129020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84129020 \"Của động cơ/mô tơ dùng cho tổ máy động lực hơi nước hoặc hơi khác gắn với nồi hơi\" ⇒ dungCho \"động cơ/mô tơ\" + dungCho mảng [\"tổ máy động lực hơi nước\", \"hơi khác gắn với nồi hơi\"] (mảng = hoặc, tách tại \"hoặc\", mỗi phần chuỗi con nguyên văn liền mạch). Dòng có tên riêng ⇒ phanConLai false."
+    }
+  ]
+}

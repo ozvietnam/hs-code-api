@@ -1,0 +1,106 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "843390",
+  "nhom": "8433",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1128#soan-843390",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "84339010",
+      "nguon": "tax.84339010",
+      "trich": "84339010 - - Bánh xe đẩy (castor), có đường kính (gồm cả lốp) trên 100 mm nhưng không quá 250 mm, với điều kiện là bánh xe hoặc lốp lắp vào đó có chiều rộng trên 30 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bánh xe đẩy"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 100,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 30,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84339020",
+      "nguon": "tax.84339020",
+      "trich": "84339020 - - Loại khác, của hàng hóa thuộc phân nhóm 8433.11.00 hoặc 8433.19.90",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hàng hóa thuộc phân nhóm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8433.11.00",
+            "8433.19.90"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84339030",
+      "nguon": "tax.84339030",
+      "trich": "84339030 - - Loại khác, của hàng hóa thuộc phân nhóm 8433.19.10",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "hàng hóa thuộc phân nhóm 8433.19.10"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "84339090",
+      "nguon": "tax.84339090",
+      "trich": "84339090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "84339010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84339010 \"Bánh xe đẩy (castor), có đường kính (gồm cả lốp) trên 100 mm nhưng không quá 250 mm, … có chiều rộng trên 30 mm\" ⇒ tenLoai \"Bánh xe đẩy\" + duongKinh > 100 và <= 250 mm + chieuRong > 30 mm (\"trên\" = >, \"không quá\" = <=); \"(castor)\", \"(gồm cả lốp)\", \"với điều kiện là bánh xe hoặc lốp lắp vào đó\" là chú thích/điều kiện kèm của cách đo, không tách điều kiện riêng."
+    },
+    {
+      "ma": "84339020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84339020 \"Loại khác, của hàng hóa thuộc phân nhóm 8433.11.00 hoặc 8433.19.90\" ⇒ chỉ vế: dungCho \"hàng hóa thuộc phân nhóm\" + dungCho mảng [8433.11.00, 8433.19.90] (VÀ cụm chữ + mã hoặc; tách tại \"hoặc\" vì \"hàng hóa thuộc phân nhóm 8433.19.90\" không liền mạch trong trích — khuôn 841290 .20)."
+    },
+    {
+      "ma": "84339030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84339030 \"Loại khác, của hàng hóa thuộc phân nhóm 8433.19.10\" ⇒ chỉ vế: dungCho cụm mã."
+    }
+  ]
+}

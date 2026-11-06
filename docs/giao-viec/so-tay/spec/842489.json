@@ -1,0 +1,99 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "842489",
+  "phien": "zcode-sub:glm-5.3:20261106T1055#soan-842489",
+  "dong8": {
+    "84248910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thiết bị phun, xịt"
+        },
+        {
+          "fact": "cachDieuKhien",
+          "op": "TRONG",
+          "value": [
+            "BANG_TAY"
+          ]
+        },
+        {
+          "fact": "phamViSuDung",
+          "op": "TRONG",
+          "value": [
+            "GIA_DINH"
+          ]
+        },
+        {
+          "fact": "dungTich",
+          "op": "<=",
+          "value": 3,
+          "donVi": "lít"
+        }
+      ]
+    },
+    "84248920": {
+      "dieuKienSo": []
+    },
+    "84248940": {
+      "dieuKienSo": [
+        {
+          "fact": "chiHoacChuYeu",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "sản xuất tấm nền của tấm mạch in",
+            "tấm dây in"
+          ]
+        }
+      ]
+    },
+    "84248950": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84248990": {
+      "dieuKienSo": [
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "84248910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84248910 \"Thiết bị phun, xịt hoạt động bằng tay sử dụng trong gia đình có dung tích không quá 3 lít\" ⇒ tenLoai + cachDieuKhien BANG_TAY + phamViSuDung GIA_DINH + dungTich <= 3 lít."
+    },
+    {
+      "ma": "84248920",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "coGanVoi (có gắn vòi)",
+      "ghiChu": "tax.84248920 \"Đầu bình phun, xịt có gắn vòi\" — tu-vung@2 không có khoá cho \"có gắn vòi\"; không mượn khoá gần nghĩa, không đưa \"vòi\" vào tenLoai (vòi không phải tên hàng)."
+    },
+    {
+      "ma": "84248940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84248940 \"Loại khác, chỉ sử dụng hoặc chủ yếu sử dụng để sản xuất tấm nền của tấm mạch in hoặc tấm dây in hoặc linh kiện của chúng\" ⇒ chỉ vế: chiHoacChuYeu CO + dungCho mảng [sản xuất tấm nền của tấm mạch in, tấm dây in]; vế MỞ \"hoặc linh kiện của chúng\" — linh kiện của tấm mạch/dây in là đích kèm theo, bộ so đọc đích lồng; không đóng danh sách."
+    },
+    {
+      "ma": "84248950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84248950 \"Loại khác, hoạt động bằng điện\" ⇒ chỉ vế: hoatDongBangDien CO."
+    },
+    {
+      "ma": "84248990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84248990 \"Loại khác, không hoạt động bằng điện\" ⇒ chỉ vế: hoatDongBangDien KHONG."
+    }
+  ]
+}

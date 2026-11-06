@@ -1,0 +1,46 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "830990",
+  "phien": "zcode-sub:glm-5.3:20261106T0930#soan-830990",
+  "dong8": {
+    "83099010": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Bao thiếc bịt nút chai"}
+    ] },
+    "83099020": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Nắp"},
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": "hộp (lon) nhôm"}
+    ] },
+    "83099060": { "dieuKienSo": [] },
+    "83099070": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Nắp hộp"}
+    ], "phanConLai": true },
+    "83099081": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Nút chai", "nút xoáy"]}
+    ] },
+    "83099091": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Nút chai", "nút xoáy"]}
+    ] },
+    "83099092": { "dieuKienSo": [
+      {"op": "HOAC", "phuongAn": [
+        [ {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Nắp (bung)"},
+          {"fact": "dungCho", "op": "CONG_DUNG", "value": "thùng kim loại"} ],
+        [ {"fact": "tenLoai", "op": "TEN_LOAI", "value": ["chụp nắp thùng", "dụng cụ niêm phong", "bịt (bảo vệ) các góc hòm"]} ]
+      ] }
+    ] }
+  },
+  "dieuKienNut": {
+    "8309908": { "dieuKienSo": [
+      {"fact": "chatLieu", "op": "LA", "value": "nhôm"}
+    ] }
+  },
+  "ghiChuSoan": [
+    {"ma": "83099010", "loai": "QUYET_DINH", "ghiChu": "tax.83099010 \"Bao thiếc bịt nút chai\" ⇒ tenLoai nguyên văn (máy không tách vế)."},
+    {"ma": "83099020", "loai": "QUYET_DINH", "ghiChu": "tax.83099020 \"Nắp của hộp (lon) nhôm\" ⇒ tenLoai \"Nắp\" + dungCho \"hộp (lon) nhôm\" (chất liệu của hàng đích nằm trong đích)."},
+    {"ma": "83099060", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "chatLieu thêm giá trị thiếc", "ghiChu": "tax.83099060 \"Nắp bình phun xịt, bằng thiếc\" — tu-vung@2 chatLieu không có giá trị thiếc; không mượn khoá gần nghĩa."},
+    {"ma": "83099070", "loai": "QUYET_DINH", "ghiChu": "tax.83099070 \"Nắp hộp khác\" ⇒ tenLoai \"Nắp hộp\" + phanConLai true (phần còn lại có tên, phủ định .10/.20/.60)."},
+    {"ma": "8309908", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8309908 \"Loại khác, bằng nhôm\" ⇒ chỉ vế chất liệu: chatLieu nhôm."},
+    {"ma": "83099081", "loai": "QUYET_DINH", "ghiChu": "tax.83099081 \"Nút chai; nút xoáy\" ⇒ tenLoai mảng 2 giá trị nguyên văn."},
+    {"ma": "83099091", "loai": "QUYET_DINH", "ghiChu": "tax.83099091 \"Nút chai; nút xoáy\" ⇒ tenLoai mảng 2 giá trị nguyên văn."},
+    {"ma": "83099092", "loai": "QUYET_DINH", "ghiChu": "tax.83099092 \"Nắp (bung) cho thùng kim loại; chụp nắp thùng (bung covers); dụng cụ niêm phong; bịt (bảo vệ) các góc hòm\" ⇒ HOAC: nắp (bung) dùng cho thùng kim loại; hoặc mảng 3 tên còn lại."}
+  ]
+}

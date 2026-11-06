@@ -1,0 +1,109 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "831130",
+  "nhom": "8311",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0938#soan-831130",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "8311302",
+      "nguon": "tieuDe.8311302",
+      "trich": "8311302 Dây hàn bằng thép hợp kim, có lõi là chất trợ dung chứa hàm lượng carbon từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây hàn"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 4.5,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCrom",
+          "op": ">=",
+          "value": 20,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "83113021",
+      "nguon": "tax.83113021",
+      "trich": "83113021 - - - Dạng cuộn",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "83113029",
+      "nguon": "tax.83113029",
+      "trich": "83113029 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "83113091",
+      "nguon": "tax.83113091",
+      "trich": "83113091 - - - Dạng cuộn",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "83113099",
+      "nguon": "tax.83113099",
+      "trich": "83113099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "8311302",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8311302 \"Dây hàn bằng thép hợp kim, có lõi là chất trợ dung chứa hàm lượng carbon từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên tính theo khối lượng\" ⇒ tenLoai \"Dây hàn\" + chatLieu sắt thép (đọc \"thép\" trong \"thép hợp kim\") + hamLuongCarbon >= 4,5% + hamLuongCrom >= 20% (\"trở lên\" = >=). Cùng khuôn 831120."
+    },
+    {
+      "ma": "8311302",
+      "loai": "BO_VE",
+      "ve": "chứa hàm lượng carbon",
+      "lyDo": "Vế là nửa trước của MỘT ý số \"chứa hàm lượng carbon từ 4,5% trở lên\" (EN: containing by weight 4.5% or more of carbon) — máy tách thành 2 vế, số nằm ở vế sau đã phủ bằng hamLuongCarbon >= 4,5%; bỏ riêng nửa trước không đổi mã."
+    },
+    {
+      "ma": "83113021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83113021 \"Dạng cuộn\" ⇒ dangCuon CO."
+    },
+    {
+      "ma": "83113091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.83113091 \"Dạng cuộn\" ⇒ dangCuon CO (dưới tầng 8311309 \"Loại khác\" trần — máy phủ định tầng 8311302)."
+    }
+  ]
+}

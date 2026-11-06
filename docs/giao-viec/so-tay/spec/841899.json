@@ -1,0 +1,18 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "841899",
+  "phien": "zcode-sub:glm-5.3:20261106T1033#soan-841899",
+  "dong8": {
+    "84189910": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Thiết bị làm bay hơi", "ngưng tụ"]}
+    ] },
+    "84189940": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Panel nhôm cán-ghép"},
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["8418.10.31", "8418.10.32", "8418.21.10", "8418.21.90", "8418.29.00"]}
+    ] }
+  },
+  "ghiChuSoan": [
+    {"ma": "84189910", "loai": "QUYET_DINH", "ghiChu": "tax.84189910 \"Thiết bị làm bay hơi hoặc ngưng tụ\" ⇒ tenLoai mảng 2 giá trị (\"hoặc\")."},
+    {"ma": "84189940", "loai": "QUYET_DINH", "ghiChu": "tax.84189940 \"Panel nhôm cán-ghép dùng cho hàng hóa thuộc phân nhóm 8418.10.31, … hoặc 8418.29.00\" ⇒ tenLoai \"Panel nhôm cán-ghép\" + dungCho mảng 5 mã (giữ nguyên chuỗi mã, máy tự nở dải; mảng = hoặc)."}
+  ]
+}

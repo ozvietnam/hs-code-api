@@ -1,0 +1,23 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "831120",
+  "phien": "zcode-sub:glm-5.3:20261106T0934#soan-831120",
+  "dong8": {
+    "83112021": { "dieuKienSo": [
+      {"fact": "dangCuon", "op": "CO"}
+    ] }
+  },
+  "dieuKienNut": {
+    "8311202": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Dây hàn"},
+      {"fact": "chatLieu", "op": "LA", "value": "sắt thép"},
+      {"fact": "hamLuongCarbon", "op": ">=", "value": 4.5, "donVi": "%"},
+      {"fact": "hamLuongCrom", "op": ">=", "value": 20, "donVi": "%"}
+    ] }
+  },
+  "ghiChuSoan": [
+    {"ma": "8311202", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8311202 \"Dây hàn bằng thép hợp kim, có lõi là chất trợ dung chứa hàm lượng carbon từ 4,5% trở lên và hàm lượng crôm từ 20% trở lên tính theo khối lượng\" ⇒ tenLoai \"Dây hàn\" + chatLieu sắt thép (đọc \"thép\" trong \"thép hợp kim\") + hamLuongCarbon >= 4,5% + hamLuongCrom >= 20% (\"trở lên\" = >=). \"có lõi là chất trợ dung\" lặp chữ tiêu đề PN6 (tầng cha) — không cần phủ."},
+    {"ma": "8311202", "loai": "BO_VE", "ve": "chứa hàm lượng carbon", "lyDo": "Vế là nửa trước của MỘT ý số \"chứa hàm lượng carbon từ 4,5% trở lên\" (EN: containing by weight 4.5% or more of carbon) — máy tách thành 2 vế, số nằm ở vế sau đã phủ bằng hamLuongCarbon >= 4,5%; bỏ riêng nửa trước không đổi mã."},
+    {"ma": "83112021", "loai": "QUYET_DINH", "ghiChu": "tax.83112021 \"Dạng cuộn\" ⇒ dangCuon CO (cùng khuôn 831110 .10)."}
+  ]
+}
