@@ -1,14 +1,150 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "721730",
-  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721730",
-  "dong8": {},
-  "dieuKienNut": {},
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721730",
+  "dong8": {
+    "72173011": {
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "TRANG_THIEC"
+          ]
+        }
+      ]
+    },
+    "72173020": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.25,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    },
+    "72173033": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây thép phủ đồng thau"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản xuất lốp cao su loại bơm hơi"
+        }
+      ]
+    },
+    "72173034": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây thép phủ hợp kim đồng"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "làm lốp cao su loại bơm hơi"
+        }
+      ],
+      "phanConLai": [
+        "72173033"
+      ]
+    },
+    "72173035": {
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "TRANG_THIEC"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7217301": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.25,
+          "donVi": "%"
+        }
+      ]
+    },
+    "7217303": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
   "ghiChuSoan": [
     {
+      "ma": "7217301",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7217301 \"Có hàm lượng carbon dưới 0,25% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.25 % (\"dưới\" = <; \"0,25\" = 0.25). \"Có\" là chữ dẫn."
+    },
+    {
+      "ma": "72173011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72173011 \"Phủ, mạ hoặc tráng thiếc\" ⇒ lopMaPhu TRONG [TRANG_THIEC] (cách đọc \"tráng thiếc\" nằm trong chữ biểu; \"phủ, mạ hoặc tráng\" là các động từ thay thế cùng đích thiếc)."
+    },
+    {
+      "ma": "72173019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72173019 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "72173020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72173020 \"Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.25 % VÀ < 0.6 % (\"từ … \" = >=, \"dưới\" = <)."
+    },
+    {
+      "ma": "7217303",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7217303 \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 % (\"từ … trở lên\" = >=)."
+    },
+    {
+      "ma": "72173033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72173033 \"Dây thép phủ đồng thau dùng trong sản xuất lốp cao su loại bơm hơi (dây tanh)\" ⇒ tenLoai \"Dây thép phủ đồng thau\" + dungCho \"sản xuất lốp cao su loại bơm hơi\" (vế GIỚI HẠN \"dùng trong …\"). Không dùng lopMaPhu MA_DONG vì khoá đó nói \"mạ/phủ đồng\", chữ biểu nêu \"đồng thau\" (hợp kim). \"(dây tanh)\" là chú thích trong ngoặc."
+    },
+    {
+      "ma": "72173034",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72173034 \"Dây thép phủ hợp kim đồng loại khác dùng để làm lốp cao su loại bơm hơi (dây tanh)\" ⇒ tenLoai \"Dây thép phủ hợp kim đồng\" + dungCho \"làm lốp cao su loại bơm hơi\" + phanConLai [72173033]: \"loại khác\" nghĩa là hợp kim đồng ngoài đồng thau của anh em 72173033."
+    },
+    {
+      "ma": "72173035",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72173035 \"Loại khác, phủ, mạ hoặc tráng thiếc\" ⇒ chỉ điều kiện của vế: lopMaPhu TRONG [TRANG_THIEC] (\"Loại khác\" do máy phủ định anh em 72173033/72173034)."
+    },
+    {
+      "ma": "72173039",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72173039 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
       "ma": "721730",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721730hua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721730-01 và 721730-02 KHONG_LECH (1027, 1028/TB-TCHQ: dây thép phủ nhôm làm lõi cáp điện, không phải dây phủ đồng thau/hợp kim đồng làm lốp ⇒ không thoả .33/.34, .39 khớp chữ biểu): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

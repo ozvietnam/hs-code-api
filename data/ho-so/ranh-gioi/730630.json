@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0915#soan-730630",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-730630",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,21 +16,55 @@
       "id": "7306301",
       "nguon": "tieuDe.7306301",
       "trich": "7306301 Ống dùng cho nồi hơi",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nồi hơi"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "7306302",
       "nguon": "tieuDe.7306302",
       "trich": "7306302 Ống thép được mạ đồng, tráng nhựa flo (fluororesin) hoặc kẽm cromat có đường kính ngoài không quá 15 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "MA_DONG",
+            "TRANG_NHUA_FLO",
+            "TRANG_KEM_CROMAT"
+          ]
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 15,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "7306304",
       "nguon": "tieuDe.7306304",
       "trich": "7306304 Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống dẫn chịu áp lực cao"
+        },
+        {
+          "fact": "gioiHanChay",
+          "op": ">=",
+          "value": 42000,
+          "donVi": "psi"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -39,7 +73,14 @@
       "hs": "73063011",
       "nguon": "tax.73063011",
       "trich": "73063011 - - - Với đường kính ngoài dưới 12,5 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<",
+          "value": 12.5,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -53,7 +94,14 @@
       "hs": "73063021",
       "nguon": "tax.73063021",
       "trich": "73063021 - - - Với đường kính ngoài dưới 12,5 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<",
+          "value": 12.5,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -67,14 +115,46 @@
       "hs": "73063030",
       "nguon": "tax.73063030",
       "trich": "73063030 - - Ống loại được sử dụng làm ống bọc (ống nhiệt) dùng cho các bộ phận phát nhiệt của bàn là điện phẳng hoặc nồi cơm điện, có đường kính ngoài không quá 12 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm ống bọc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "các bộ phận phát nhiệt"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bàn là điện phẳng",
+            "nồi cơm điện"
+          ]
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 12,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063041",
       "nguon": "tax.73063041",
       "trich": "73063041 - - - Với đường kính ngoài dưới 12,5 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<",
+          "value": 12.5,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -88,14 +168,40 @@
       "hs": "73063091",
       "nguon": "tax.73063091",
       "trich": "73063091 - - - Với đường kính trong từ 12,5 mm trở lên, đường kính ngoài dưới 140 mm và hàm lượng carbon dưới 0,45% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 12.5,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<",
+          "value": 140,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.45,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "73063092",
       "nguon": "tax.73063092",
       "trich": "73063092 - - - Với đường kính trong dưới 12,5 mm ",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<",
+          "value": 12.5,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -106,11 +212,37 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "7306301",
+        "7306302",
+        "73063030",
+        "7306304"
+      ],
+      "truc": {
+        "7306301": "CONG_DUNG",
+        "7306302": "DAC_DIEM",
+        "7306304": "TEN_LOAI",
+        "73063030": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Ống này là loại dùng cho nồi hơi (7306301), ống thép mạ đồng/tráng nhựa flo/kẽm cromat đường kính ngoài không quá 15 mm (7306302), ống bọc (ống nhiệt) cho bộ phận phát nhiệt của bàn là điện phẳng hoặc nồi cơm điện (73063030), hay ống dẫn chịu áp lực cao có giới hạn chảy không nhỏ hơn 42.000 psi (7306304)?",
+      "trich": {
+        "7306301": "Ống dùng cho nồi hơi",
+        "7306302": "Ống thép được mạ đồng, tráng nhựa flo (fluororesin) hoặc kẽm cromat có đường kính ngoài không quá 15 mm",
+        "7306304": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
+        "73063030": "Ống loại được sử dụng làm ống bọc (ống nhiệt) dùng cho các bộ phận phát nhiệt của bàn là điện phẳng hoặc nồi cơm điện, có đường kính ngoài không quá 12 mm"
+      },
+      "viDuHang": [],
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
-      "ma": "730630",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:730630:chua-co, không soạn tiếp"
+      "ma": "7306304",
+      "loai": "BO_VE",
+      "ve": "có giới hạn chảy (1)",
+      "lyDo": "Cụm danh từ đầu chỉ thuộc tính giới hạn chảy, chữ giới thiệu thuần ((1) là số chú thích của biểu); ngưỡng đã lượng hóa qua gioiHanChay >= 42000 psi"
     }
   ]
 }

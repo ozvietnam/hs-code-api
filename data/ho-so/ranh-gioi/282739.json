@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-282739",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-282739",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -17,21 +17,42 @@
       "hs": "28273910",
       "nguon": "tax.28273910",
       "trich": "28273910 - - - Của bari hoặc của coban",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "bari",
+            "coban"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "28273920",
       "nguon": "tax.28273920",
       "trich": "28273920 - - - Của sắt",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sắt"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "28273930",
       "nguon": "tax.28273930",
       "trich": "28273930 - - - Của kẽm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "kẽm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -44,9 +65,29 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "28273910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.28273910 \"Của bari hoặc của coban\" ⇒ tenLoai TEN_LOAI [\"bari\",\"coban\"] (mảng = hoặc; tên kim loại nguyên văn trong chữ biểu). Không có khoá \"clorua của kim loại X\" trong tu-vung (chatLieu nói vật liệu làm ra hàng, không phải kim loại tạo muối), nên chỉ neo tên kim loại. Danh từ đầu \"clorua\" là của phân nhóm, không phải điều kiện riêng. Vế \"của …\" (GIỚI HẠN) được phủ bằng tên kim loại nằm trong vế."
+    },
+    {
+      "ma": "28273920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.28273920 \"Của sắt\" ⇒ tenLoai TEN_LOAI \"sắt\" (tên kim loại nguyên văn)."
+    },
+    {
+      "ma": "28273930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.28273930 \"Của kẽm\" ⇒ tenLoai TEN_LOAI \"kẽm\" (tên kim loại nguyên văn)."
+    },
+    {
+      "ma": "28273990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.28273990 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
       "ma": "282739",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:282739:chua-co (QUY-TRINH-SO-HOA §2.2, §5); không soạn điều kiện, Claude giữ"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 282739-01 KHONG_LECH (clorua của đồng không phải của sắt .20; .90 khớp chữ biểu): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }
