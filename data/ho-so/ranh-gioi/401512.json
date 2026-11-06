@@ -1,0 +1,56 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "401512",
+  "nhom": "4015",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode:glm:20261106T0002#soan-401512",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "40151210",
+      "nguon": "tax.40151210",
+      "trich": "40151210 - - - Bằng cao su tự nhiên lưu hóa",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cao su tự nhiên"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "40151290",
+      "nguon": "tax.40151290",
+      "trich": "40151290 - - - Bằng cao su lưu hóa khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "cao su"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "40151210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40151210 \"40151210 - - - Bằng cao su tự nhiên lưu hóa\": vế [GIỚI HẠN] \"Bằng cao su tự nhiên lưu hóa\" là chất liệu — khoá chatLieu chỉ có giá trị \"cao su\" chung (không có giá trị phân biệt \"tự nhiên\") ⇒ theo tiền lệ 340700/392099 dùng tenLoai \"cao su tự nhiên\" (chuỗi con nguyên văn) để neo đúng chữ, tránh phủ sang dòng anh em. \"lưu hóa\" là chữ tầng cha (40.15 = cao su lưu hóa), không phải điều kiện tách."
+    },
+    {
+      "ma": "40151290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.40151290 \"40151290 - - - Bằng cao su lưu hóa khác\": \"khác\" = phần còn lại của phân nhóm sau 40151210 ⇒ phanConLai true (máy phủ định anh em đứng trước). Vế [GIỚI HẠN] \"Bằng cao su lưu hóa khác\" được phủ bằng tenLoai \"cao su\" (chuỗi con nguyên văn, cùng khoá tenLoai với anh em — tiền lệ 40012950 \"Crếp\" + phanConLai); \"cao su lưu hóa\" là chữ tầng cha (40.15 = cao su lưu hóa)."
+    }
+  ]
+}
