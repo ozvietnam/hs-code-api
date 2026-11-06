@@ -1,0 +1,66 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "630140",
+  "phien": "zcode-mm:loop:20261106T1440#soan-630140",
+  "dong8": {
+    "63014010": {
+      "ten": "Vải không dệt",
+      "nguon": "tax.63014010",
+      "trich": "63014010 - - Vải không dệt",
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "630140": {
+      "ten": "Chăn (trừ chăn điện) và chăn du lịch, từ xơ sợi tổng hợp",
+      "nguon": "tieuDe.630140",
+      "trich": "Chăn (trừ chăn điện) và chăn du lịch, từ xơ sợi tổng hợp",
+      "dieuKienSo": [
+        { "khoa": "loaiSoiDet", "op": "TRONG", "giaTri": "SOI_TONG_HOP" },
+        { "khoa": "coGiaNhiet", "op": "KHONG" },
+        { "khoa": "congDung", "op": "CONG_DUNG", "giaTri": "chăn và chăn du lịch" }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "630140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 630140 có tên → khai điều kiện nút trong dieuKienNut, nguồn tieuDe.630140."
+    },
+    {
+      "ma": "630140",
+      "loai": "QUYET_DINH",
+      "ve": "từ xơ sợi tổng hợp",
+      "ghiChu": "Mã hoá vật liệu bằng khoá loaiSoiDet, giá trị SOI_TONG_HOP."
+    },
+    {
+      "ma": "630140",
+      "loai": "QUYET_DINH",
+      "ve": "(trừ chăn điện)",
+      "ghiChu": "Mã hoá vế loại trừ bằng khoá coGiaNhiet với op KHONG."
+    },
+    {
+      "ma": "630140",
+      "loai": "QUYET_DINH",
+      "ve": "Chăn (trừ chăn điện) và chăn du lịch",
+      "ghiChu": "Mã hoá loại hàng bằng khoá congDung (op CONG_DUNG), giá trị 'chăn và chăn du lịch'."
+    },
+    {
+      "ma": "63014010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ biểu 'Vải không dệt' không có khoá từ vựng nào diễn đạt được (chatLieu 'vải dệt' là vế trái của nguồn) → để trống dieuKienSo, không bịa khoá; chờ cổng 1 chặn để bổ sung khoá boolean."
+    },
+    {
+      "ma": "63014010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "laVaiKhongDet",
+      "ghiChu": "63014010 - - Vải không dệt"
+    },
+    {
+      "ma": "63014090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần → không khai điều kiện và không đưa vào spec (máy phủ định anh em)."
+    }
+  ]
+}

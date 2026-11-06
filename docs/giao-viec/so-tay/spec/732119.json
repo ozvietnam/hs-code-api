@@ -1,0 +1,58 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "732119",
+  "phien": "zcode-mm:loop:20261106T1458#soan-732119",
+  "dong8": {
+    "73211910": {
+      "nguon": "tax.73211910",
+      "trich": "73211910 - - - Loại dùng nhiên liệu rắn",
+      "dieuKienSo": []
+    }
+  },
+  "dieuKienNut": {
+    "732119": {
+      "nguon": "tieuDe.732119",
+      "trich": "Loại khác, kể cả dụng cụ dùng nhiên liệu rắn",
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "73211910",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "nhienLieuRac",
+      "ghiChu": "Loại dùng nhiên liệu rắn"
+    },
+    {
+      "ma": "73211910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng phân biệt bằng nhiên liệu rắn; khoá `nhienLieu` (nguồn nhiệt) chỉ có giá trị GA và DIEN nên không diễn đạt được — để trống dieuKienSo và ghi chú THIEU_KHOA_TU_VUNG, không tự thêm giá trị vào khoá dùng chung."
+    },
+    {
+      "ma": "732119",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "loaiNhienLieu",
+      "ghiChu": "Loại khác, kể cả dụng cụ dùng nhiên liệu rắn"
+    },
+    {
+      "ma": "732119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế của tiêu đề là câu bao hàm ('kể cả …'); ghi điều kiện nhiên liệu rắn cho tiêu đề sẽ loại mất dòng 73211990 vốn cũng thuộc 732119, nên để trống chờ khoá biểu đạt được cả nhiên liệu rắn lẫn nhiên liệu khác không phải khí/lỏng."
+    },
+    {
+      "ma": "732119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 732119 trích nguyên văn từ tiêu đề biểu thuế Tổng cục (tieuDe.732119); wco.732119 là tên tiếng Anh nên không dùng làm nguồn trích."
+    },
+    {
+      "ma": "732119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 73211990 'Loại khác' trần (loaiKhac + khongCanDieuKien) không đưa vào spec: máy tự phủ định anh em, ghi điều kiện cho nó là vòng tròn."
+    },
+    {
+      "ma": "732119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hai dòng 73211910 và 73211990 chia theo một trục duy nhất (loại nhiên liệu), không phải chia theo tên cạnh công dụng nên không khai chongLanTruc; cũng không chồng lấn văn bản nên không khai chongLanVanBan."
+    }
+  ]
+}

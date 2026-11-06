@@ -1,0 +1,61 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "630690",
+  "phien": "zcode-mm:loop:20261106T1447#soan-630690",
+  "dong8": {
+    "63069010": {
+      "ten": "Từ vải không dệt",
+      "nguon": "tax.63069010",
+      "trich": "63069010 - - Từ vải không dệt",
+      "dieuKienSo": []
+    },
+    "63069091": {
+      "ten": "Từ bông",
+      "nguon": "tax.63069091",
+      "trich": "63069091 - - - Từ bông",
+      "dieuKienSo": [
+        {
+          "fact": "loaiSoiDet",
+          "op": "TRONG",
+          "value": [
+            "BONG"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "6306909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.6306909 \"6306909 Loại khác\" trần → không ghi điều kiện, không đưa vào spec (tiêu đề không mã; máy phủ định anh em trong tầng 6306909)."
+    },
+    {
+      "ma": "63069099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần → không khai điều kiện và không đưa vào spec (máy phủ định anh em: loaiSoiDet KHÔNG BONG cho .99)."
+    },
+    {
+      "ma": "63069010",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "khongDet",
+      "ghiChu": "63069010 - - Từ vải không dệt"
+    },
+    {
+      "ma": "63069010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Chữ biểu 'Từ vải không dệt' không có khoá tư vựng nào diễn đạt được (chatLieu 'vải dệt' là vế trái của nguồn) → để trống dieuKienSo, không bịa khoá; chờ cổng 1 chặn để bổ sung khoá boolean."
+    },
+    {
+      "ma": "63069091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.63069091 \"63069091 - - - Từ bông\" ⇒ loaiSoiDet TRONG [\"BONG\"] (tu-vung@2: \"loại xơ/sợi dệt (vật liệu dệt chủ yếu)\", BONG = bông); chữ \"Từ\" là chữ chung với 63069010 nên không nhân bản vào giá trị."
+    },
+    {
+      "ma": "630690",
+      "loai": "QUYET_DINH",
+      "ghiChu": "63069010 (Từ vải không dệt) và 63069091 (Từ bông) đều chia theo VẬT LIỆU ⇒ không phải chồng lấn TRỤC (tên vs công dụng) nên không khai chongLanTruc; cấu trúc tầng đã tách (6306901x vs 6306909x), chữ biểu không chồng lấn ⇒ không khai chongLanVanBan."
+    }
+  ]
+}

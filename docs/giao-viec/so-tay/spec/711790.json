@@ -1,0 +1,99 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "711790",
+  "phien": "zcode-mm:loop:20261106T1449#soan-711790",
+  "dong8": {
+    "71179010": {
+      "nguon": "tax.71179010",
+      "trich": "71179010 - - Vòng",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vòng"
+        }
+      ]
+    },
+    "71179020": {
+      "nguon": "tax.71179020",
+      "trich": "71179020 - - Các đồ trang sức khác",
+      "dieuKienSo": [],
+      "phanConLai": ["71179010", "7117909"]
+    },
+    "71179094": {
+      "nguon": "tax.71179094",
+      "trich": "71179094 - - - Làm toàn bộ bằng plastic, thủy tinh, gỗ, vật liệu khắc từ mai rùa, ngà, xương, sừng, san hô, xà cừ và các loại động vật khác đã gia công, vật liệu khắc từ thực vật đã gia công, vật liệu khắc từ khoáng sản đã gia công, hoặc bằng sứ",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": ["plastic", "thủy tinh", "gỗ", "gốm sứ"]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7117909": {
+      "nguon": "tieuDe.7117909",
+      "trich": "7117909 Bộ phận",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ phận"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "71179010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71179010 \"71179010 - - Vòng\" ⇒ tenLoai TEN_LOAI \"Vòng\": chữ biểu chỉ có tên loại hàng, không có vế giới hạn nào khác. Dùng CÙNG khoá tenLoai với 71179020 và tiêu đề 7117909 để ba nhánh ở tầng 711790 loại trừ nhau (khác khoá thì cổng 2 thấy chồng lấn)."
+    },
+    {
+      "ma": "71179020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Các đồ trang sức khác\" là phần còn lại CÓ TÊN của tầng 711790 ⇒ phanConLai [\"71179010\",\"7117909\"]: phủ định dòng Vòng và tiêu đề Bộ phận (nếu chỉ phủ định Vòng thì nhánh bộ phận chồng lấn với 71179094 ở cổng 2). Không ghi điều kiện riêng: chữ biểu không nêu vế giới hạn nào khác, để trống để máy không loại nhầm một món đồ trang sức có tên riêng (khuyên tai, vòng cổ…) — vế \"khác\" do chính phanConLai lo."
+    },
+    {
+      "ma": "7117909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7117909 \"7117909 Bộ phận\" ⇒ tenLoai TEN_LOAI \"Bộ phận\" (nguồn tiêu đề của chính nút). Không dùng laBoPhan CO: rộng hơn chữ (mọi món có bộ phận đều thoả) và lấn sang nhánh tên — bài học lô 950300 đã đổi laBoPhan sang tên."
+    },
+    {
+      "ma": "71179094",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.71179094 ⇒ chatLieu LA [\"plastic\",\"thủy tinh\",\"gỗ\",\"gốm sứ\"] (mảng = hoặc): đây là 4 vật liệu có giá trị trong tu-vung@2; \"sứ\" trong chữ biểu mã hoá bằng giá trị \"gốm sứ\". Phần vật liệu khắc từ động vật/thực vật/khoáng sản không có giá trị nào trong từ vựng ⇒ xem ghi chú BO_VE."
+    },
+    {
+      "ma": "71179099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần ⇒ không khai điều kiện và không đưa vào spec (luật đi bỏ qua dòng phần còn lại trần; máy phủ định anh em)."
+    },
+    {
+      "ma": "71179094",
+      "loai": "BO_VE",
+      "ve": "vật liệu khắc từ mai rùa, ngà, xương, sừng, san hô, xà cừ và các loại động vật khác đã gia công, vật liệu khắc từ thực vật đã gia công, vật liệu khắc từ khoáng sản đã gia công",
+      "lyDo": "tu-vung@2 không có giá trị vật liệu nào cho nhóm vật liệu khắc từ động vật/thực vật/khoáng sản, và không được bịa khoá. Bộ đọc vật liệu không nhận ra các vật liệu này nên mô tả hàng có chúng cho CHUA_BIET (không phải TRAI) ⇒ không loại nhầm sang 71179099."
+    },
+    {
+      "ma": "71179094",
+      "loai": "BO_VE",
+      "ve": "hoặc bằng sứ",
+      "lyDo": "Giá trị \"gốm sứ\" của khoá chatLieu có mẫu đọc Việt rỗng nên cổng 5 không neo được vế này; vật liệu vẫn được mã hoá (chatLieu \"gốm sứ\") và lúc chạy bộ đọc nhận \"sứ\" theo mẫu so-tay-gates."
+    },
+    {
+      "ma": "71179094",
+      "loai": "BO_VE",
+      "ve": "toàn bộ",
+      "lyDo": "Không có khoá từ vựng nào đọc được mức độ \"làm toàn bộ\" (khoá chatLieu chỉ theo vị trí, không theo mức độ toàn diện); bộ đọc vẫn chấm được vật liệu của hàng."
+    },
+    {
+      "ma": "71179020",
+      "loai": "BO_VE",
+      "ve": "Các đồ trang sức khác",
+      "lyDo": "Vế \"khác\" là phần còn lại, máy xử lý bằng phanConLai (phủ định 71179010 và 7117909) chứ không bằng điều kiện riêng — không có khoá từ vựng nào đọc được chữ \"khác\"."
+    }
+  ]
+}
