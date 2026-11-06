@@ -1,0 +1,199 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "981819",
+  "nhom": "9818",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0955#soan-981819",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "98181910",
+      "nguon": "tax.98181910",
+      "trich": "98181910 - - Chế hòa khí và bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chế hòa khí"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chế hòa khí"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98181920",
+      "nguon": "tax.98181920",
+      "trich": "98181920 - - Thân động cơ (cylinder block)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thân động cơ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98181930",
+      "nguon": "tax.98181930",
+      "trich": "98181930 - - Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98181940",
+      "nguon": "tax.98181940",
+      "trich": "98181940 - - Ống xi lanh khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống xi lanh"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "98181950",
+      "nguon": "tax.98181950",
+      "trich": "98181950 - - Quy lát và nắp quy lát",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Quy lát",
+            "nắp quy lát"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98181960",
+      "nguon": "tax.98181960",
+      "trich": "98181960 - - Piston, có đường kính ngoài từ 50 mm trở lên nhưng không quá 155 mm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        },
+        {
+          "fact": "duongKinh",
+          "op": ">=",
+          "value": 50,
+          "donVi": "mm"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 155,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98181970",
+      "nguon": "tax.98181970",
+      "trich": "98181970 - - Piston khác",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Piston"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "hs": "98181990",
+      "nguon": "tax.98181990",
+      "trich": "98181990 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "98181910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98181910 \"Chế hòa khí và bộ phận của chúng\" ⇒ HOAC [[tenLoai \"Chế hòa khí\"],[laBoPhan CO, dungCho \"Chế hòa khí\"]] (quy ước X và bộ phận của chúng)."
+    },
+    {
+      "ma": "98181920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98181920 \"Thân động cơ (cylinder block)\" ⇒ tenLoai \"Thân động cơ\"; ngoặc Anh là PHU."
+    },
+    {
+      "ma": "98181930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98181930 \"Ống xi lanh, có đường kính trong từ 50 mm trở lên, nhưng không quá 155 mm\" ⇒ tenLoai \"Ống xi lanh\" + duongKinhTrong >= 50 mm VÀ <= 155 mm (hai điều kiện cùng khoá = VÀ)."
+    },
+    {
+      "ma": "98181940",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98181940 \"Ống xi lanh khác\" ⇒ tenLoai \"Ống xi lanh\" + phanConLai true (phần còn lại có tên — phủ định .30 đứng trước)."
+    },
+    {
+      "ma": "98181950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98181950 \"Quy lát và nắp quy lát\" ⇒ tenLoai [\"Quy lát\",\"nắp quy lát\"]."
+    },
+    {
+      "ma": "98181960",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98181960 \"Piston, có đường kính ngoài từ 50 mm trở lên nhưng không quá 155 mm\" ⇒ tenLoai \"Piston\" + duongKinh >= 50 mm VÀ <= 155 mm (đường kính ngoài = duongKinh)."
+    },
+    {
+      "ma": "98181970",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98181970 \"Piston khác\" ⇒ tenLoai \"Piston\" + phanConLai true (phủ định .60 đứng trước)."
+    }
+  ]
+}

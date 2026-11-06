@@ -1,0 +1,174 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "760612",
+  "nhom": "7606",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0925#soan-760612",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7606123",
+      "nguon": "tieuDe.7606123",
+      "trich": "7606123 Dạng lá",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng lá"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "76061220",
+      "nguon": "tax.76061220",
+      "trich": "76061220 - - - Đế bản nhôm, chưa nhạy, dùng trong công nghệ in ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đế bản nhôm"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "công nghệ in"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "76061232",
+      "nguon": "tax.76061232",
+      "trich": "76061232 - - - - Để làm lon (kể cả đáy lon và nắp lon), dạng cuộn(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm lon"
+        },
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "76061233",
+      "nguon": "tax.76061233",
+      "trich": "76061233 - - - - Loại khác, bằng hợp kim nhôm 5082 hoặc 5182, có chiều rộng trên 1m, dạng cuộn (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "nhôm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 1,
+          "donVi": "m"
+        },
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "76061234",
+      "nguon": "tax.76061234",
+      "trich": "76061234 - - - - Loại khác, tấm litô hợp kim HA 1052 độ cứng H19 và hợp kim HA 1050 độ cứng H18",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "tấm litô"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "76061235",
+      "nguon": "tax.76061235",
+      "trich": "76061235 - - - - Loại khác, đã gia công bề mặt",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "76061239",
+      "nguon": "tax.76061239",
+      "trich": "76061239 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "76061290",
+      "nguon": "tax.76061290",
+      "trich": "76061290 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "76061220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76061220 \"Đế bản nhôm, chưa nhạy, dùng trong công nghệ in\" ⇒ tenLoai \"Đế bản nhôm\" + congDung \"công nghệ in\"."
+    },
+    {
+      "ma": "76061220",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "chuaNhay (chưa nhạy/quang nhạy)",
+      "ghiChu": "tax.76061220 \"chưa nhạy\" — không có khoá tu-vung@2 đọc được \"chưa nhạy\" (unsensitized); đế bản ĐÃ nhạy rơi về 76061290 Loại khác nên bỏ vế làm đổi mã ⇒ DỪNG."
+    },
+    {
+      "ma": "76061232",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76061232 \"Để làm lon (kể cả đáy lon và nắp lon), dạng cuộn(SEN)\" ⇒ congDung \"làm lon\" + dangCuon CO; \"kể cả…\" là kể-cả (PHU)."
+    },
+    {
+      "ma": "76061233",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76061233 \"Loại khác, bằng hợp kim nhôm 5082 hoặc 5182, có chiều rộng trên 1m, dạng cuộn\" ⇒ \"Loại khác, <vế>\": chỉ ghi điều kiện của vế (máy tự phủ định anh em; 76061239 Loại khác trần đứng sau) — chatLieu LA nhôm + chieuRong > 1 m + dangCuon CO."
+    },
+    {
+      "ma": "76061233",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hopKim (ký hiệu hợp kim: 5082/5182)",
+      "ghiChu": "tax.76061233 \"bằng hợp kim nhôm 5082 hoặc 5182\" — không có khoá đọc ký hiệu hợp kim; chatLieu LA nhôm chỉ nói được \"nhôm\", không phân được 5082/5182 với hợp kim khác (bỏ làm đổi mã) ⇒ DỪNG."
+    },
+    {
+      "ma": "76061234",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76061234 \"Loại khác, tấm litô hợp kim HA 1052 độ cứng H19 và hợp kim HA 1050 độ cứng H18\" ⇒ \"Loại khác, <vế>\": tenLoai \"tấm litô\"."
+    },
+    {
+      "ma": "76061234",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hopKim/doCung (ký hiệu hợp kim HA 1052/1050, độ cứng H19/H18)",
+      "ghiChu": "tax.76061234 \"hợp kim HA 1052 độ cứng H19 và hợp kim HA 1050 độ cứng H18\" — không có khoá đọc ký hiệu hợp kim/độ cứng; tenLoai \"tấm litô\" không tách được với tấm khác (bỏ làm đổi mã) ⇒ DỪNG."
+    },
+    {
+      "ma": "76061235",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "daXuLyBeMat (cách đọc cần thêm \"gia công bề mặt\")",
+      "ghiChu": "tax.76061235 \"Loại khác, đã gia công bề mặt\" — daXuLyBeMat đọc \"xử lý bề mặt\", không đọc \"gia công bề mặt\" (cong3 từ chối); không có khoá khác đọc được vế này (bỏ làm đổi mã) ⇒ DỪNG."
+    },
+    {
+      "ma": "760612",
+      "loai": "DUNG",
+      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:760612:chua-co, cộng các THIEU_KHOA_TU_VUNG ở trên — Claude giữ."
+    }
+  ]
+}

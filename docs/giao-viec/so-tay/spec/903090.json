@@ -1,0 +1,31 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "903090",
+  "phien": "zcode-sub:glm-5.3:20261106T0940#soan-903090",
+  "dong8": {
+    "90309010": { "dieuKienSo": [
+      {"fact": "laBoPhan", "op": "CO"},
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["9030.40", "9030.82"]}
+    ]},
+    "90309030": { "dieuKienSo": [
+      {"fact": "laBoPhan", "op": "CO"},
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": "dụng cụ và thiết bị quang học"},
+      {"fact": "congDung", "op": "CONG_DUNG", "value": ["tấm mạch in", "tấm dây in", "mạch in đã lắp ráp"]}
+    ]},
+    "90309040": { "dieuKienSo": [
+      {"fact": "laBoPhan", "op": "CO"},
+      {"fact": "dungCho", "op": "CONG_DUNG", "value": "dụng cụ và thiết bị"},
+      {"fact": "congDung", "op": "CONG_DUNG", "value": "đại lượng điện"},
+      {"fact": "congDung", "op": "CONG_DUNG", "value": ["tấm mạch in", "tấm dây in", "mạch in đã lắp ráp"]}
+    ]}
+  },
+  "ghiChuSoan": [
+    {"ma": "90309010", "loai": "QUYET_DINH", "ghiChu": "tax.90309010 \"Bộ phận và phụ kiện (kể cả mạch in đã lắp ráp) của các hàng hóa thuộc phân nhóm 9030.40 hoặc 9030.82\" ⇒ laBoPhan CO + dungCho [\"9030.40\",\"9030.82\"] (dẫn mã, mảng = hoặc, máy tự nở); \"(kể cả …)\" là PHU."},
+    {"ma": "90309030", "loai": "QUYET_DINH", "ghiChu": "tax.90309030 \"… của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp\" ⇒ laBoPhan CO + dungCho \"dụng cụ và thiết bị quang học\" + congDung [\"tấm mạch in\",\"tấm dây in\",\"mạch in đã lắp ráp\"] (liệt kê sau \"đo hoặc kiểm tra\" tách mảng, mẫu 903089)."},
+    {"ma": "90309040", "loai": "QUYET_DINH", "ghiChu": "tax.90309040 \"… của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp\" ⇒ laBoPhan CO + dungCho \"dụng cụ và thiết bị\" + congDung \"đại lượng điện\" + congDung [3 tấm mạch] — \"đại lượng điện\" phân biệt với 90309030 (quang học)."},
+    {"ma": "903090", "loai": "CHONG_LAN", "ghiChu": "Cặp 90309030+90309040 khai chongLanVanBan (dưới): cùng trục công dụng, chữ không loại trừ nhau."}
+  ],
+  "chongLanVanBan": [
+    {"cap": ["90309030", "90309040"], "lyDo": "Hai dòng cùng trục công dụng, câu chữ không loại trừ nhau: .30 \"Bộ phận và phụ kiện của dụng cụ và thiết bị quang học để đo hoặc kiểm tra tấm mạch in/tấm dây in và mạch in đã lắp ráp\" — \"dụng cụ và thiết bị quang học\" vẫn là \"dụng cụ và thiết bị\" của .40 \"Bộ phận và phụ kiện của dụng cụ và thiết bị dùng để đo hoặc kiểm tra đại lượng điện của tấm mạch in/tấm dây in và mạch in đã lắp ráp\" — bộ phận của thiết bị quang học đồng thời đo đại lượng điện của tấm mạch in thoả cả hai dòng; không có căn cứ thứ tự trong chữ biểu."}
+  ]
+}

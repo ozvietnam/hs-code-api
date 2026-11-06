@@ -1,0 +1,28 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "981812",
+  "phien": "zcode-sub:glm-5.3:20261106T0950#soan-981812",
+  "dong8": {
+    "98181211": { "dieuKienSo": [
+      {"fact": "hamLuongCarbon", "op": ">=", "value": 0.6, "donVi": "%"}
+    ]},
+    "98181291": { "dieuKienSo": [
+      {"fact": "doDay", "op": "<=", "value": 5, "donVi": "mm"}
+    ]}
+  },
+  "dieuKienNut": {
+    "9818121": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Hình chữ U"}
+    ]},
+    "9818129": { "dieuKienSo": [
+      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Hình chữ I"}
+    ]}
+  },
+  "ghiChuSoan": [
+    {"ma": "9818121", "loai": "QUYET_DINH", "ghiChu": "tieuDe.9818121 \"Hình chữ U\" ⇒ tenLoai \"Hình chữ U\"."},
+    {"ma": "9818129", "loai": "QUYET_DINH", "ghiChu": "tieuDe.9818129 \"Hình chữ I\" ⇒ tenLoai \"Hình chữ I\"."},
+    {"ma": "98181211", "loai": "QUYET_DINH", "ghiChu": "tax.98181211 \"Có hàm lượng carbon từ 0,6% trở lên tính theo trọng lượng\" ⇒ hamLuongCarbon >= 0,6 % (\"0,6\" = 0.6; \"tính theo trọng lượng\" là cách tính của khoá)."},
+    {"ma": "98181211", "loai": "BO_VE", "ve": "Có hàm lượng carbon", "lyDo": "Máy tách một câu điều kiện duy nhất thành hai vế: \"Có hàm lượng carbon\" là chủ ngữ của cùng điều kiện với vế \"từ 0,6% trở lên tính theo trọng lượng\" đã phủ bằng hamLuongCarbon >= 0,6 % — hai vế là một ý, không tồn tại điều kiện riêng cho vế chủ ngữ."},
+    {"ma": "98181291", "loai": "QUYET_DINH", "ghiChu": "tax.98181291 \"Chiều dày từ 5 mm trở xuống\" ⇒ doDay <= 5 mm."}
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "780600",
+  "nhom": "7806",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0930#soan-780600",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "78060020",
+      "nguon": "tax.78060020",
+      "trich": "78060020 - Thanh, que, dạng hình và dây",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Thanh",
+            "que",
+            "dạng hình",
+            "dây"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "78060030",
+      "nguon": "tax.78060030",
+      "trich": "78060030 - Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "ống",
+                  "ống dẫn"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "phụ kiện"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": [
+                  "ghép nối của ống",
+                  "ống dẫn"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "78060040",
+      "nguon": "tax.78060040",
+      "trich": "78060040 - Len chì; vòng đệm; tấm điện a-nốt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Len chì",
+            "vòng đệm",
+            "tấm điện a-nốt"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "78060090",
+      "nguon": "tax.78060090",
+      "trich": "78060090 - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "78060020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.78060020 \"Thanh, que, dạng hình và dây\" ⇒ tenLoai [\"Thanh\",\"que\",\"dạng hình\",\"dây\"] (bốn dạng nêu tên)."
+    },
+    {
+      "ma": "78060030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.78060030 \"Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)\" ⇒ định ngữ \"để ghép nối của ống hoặc ống dẫn\" chỉ của danh từ cuối \"phụ kiện\" (EN fittings) ⇒ HOAC [[tenLoai [\"ống\",\"ống dẫn\"]],[tenLoai \"phụ kiện\", congDung [\"ghép nối của ống\",\"ống dẫn\"] (liệt kê \"hoặc\" ⇒ mảng)]]; \"(ví dụ, …)\" là ngoặc ví dụ (PHU)."
+    },
+    {
+      "ma": "78060040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.78060040 \"Len chì; vòng đệm; tấm điện a-nốt\" ⇒ tenLoai [\"Len chì\",\"vòng đệm\",\"tấm điện a-nốt\"] (ba hàng nêu tên)."
+    }
+  ]
+}
