@@ -1,0 +1,201 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "442191",
+  "nhom": "4421",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1545#soan-442191",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "44219110",
+      "nguon": "tax.44219110",
+      "trich": "44219110 - - - Lõi cuộn chỉ, ống sợi và suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Lõi cuộn chỉ",
+            "ống sợi",
+            "suốt sợi",
+            "guồng cuốn chỉ may"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "44219120",
+      "nguon": "tax.44219120",
+      "trich": "44219120 - - - Thanh gỗ để làm diêm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thanh gỗ"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm diêm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "44219130",
+      "nguon": "tax.44219130",
+      "trich": "44219130 - - - Que kẹo, que kem và thìa xúc kem",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Que kẹo",
+            "que kem",
+            "thìa xúc kem"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "44219140",
+      "nguon": "tax.44219140",
+      "trich": "44219140 - - - Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Quạt"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "màn che"
+              },
+              {
+                "fact": "cachDieuKhien",
+                "op": "TRONG",
+                "value": [
+                  "BANG_TAY"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Quạt",
+                  "màn che"
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "44219150",
+      "nguon": "tax.44219150",
+      "trich": "44219150 - - - Chuỗi hạt cầu nguyện",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chuỗi hạt cầu nguyện"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "44219160",
+      "nguon": "tax.44219160",
+      "trich": "44219160 - - - Tăm",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tăm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "44219170",
+      "nguon": "tax.44219170",
+      "trich": "44219170 - - - Các loại que dùng để làm nhang (nén hương)(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "que"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm nhang"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "44219190",
+      "nguon": "tax.44219190",
+      "trich": "44219190 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "44219110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.44219110 \"Lõi cuộn chỉ, ống sợi và suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự\" ⇒ tenLoai TUONG_TU [bốn hàng nêu tên] (vòng 7); không chứa chữ \"tương tự\" trong giá trị"
+    },
+    {
+      "ma": "44219120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.44219120 \"Thanh gỗ để làm diêm\" ⇒ tenLoai \"Thanh gỗ\" + congDung \"làm diêm\" (cùng cách viết như 440810 .10 \"sử dụng để sản xuất bút chì\" ⇒ congDung)"
+    },
+    {
+      "ma": "44219130",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.44219130 \"Que kẹo, que kem và thìa xúc kem\" — ba hàng thay thế ⇒ mảng tenLoai"
+    },
+    {
+      "ma": "44219140",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.44219140 \"Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng\" (EN: Fans and handscreens…) ⇒ HOAC [[Quạt],[màn che + cachDieuKhien BANG_TAY],[laBoPhan + dungCho Quạt/màn che]] — \"kéo bằng tay\" là định ngữ riêng của màn che (LUAT-CHUNG \"Fans and handscreens\"); \"và các bộ phận của chúng\" là vế mở (quy ước X và bộ phận của chúng)"
+    },
+    {
+      "ma": "44219170",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.44219170 \"Các loại que dùng để làm nhang (nén hương)(SEN)\" ⇒ tenLoai \"que\" + congDung \"làm nhang\"; \"(nén hương)(SEN)\" là ngoặc PHU"
+    },
+    {
+      "ma": "442191",
+      "loai": "DUNG",
+      "ghiChu": "Chồng lấn trục không khai được chongLanTruc: (a) .10 tenLoai TUONG_TU [lõi cuộn chỉ…] ↔ .40 nhánh bộ phận [laBoPhan + dungCho Quạt/màn che] ⇒ cong2-chong-lan-truc:44219110:44219140; (b) .30 tenLoai [Que kẹo…] ↔ .70 tenLoai que + congDung làm nhang ⇒ cong2-chong-lan:44219130+44219170. Cả hai cặp KHÔNG có hàng thật nào thoả cả hai nhánh theo chữ biểu (lõi cuộn chỉ không phải bộ phận quạt/màn che; que kẹo không dùng làm nhang — SEN .70: que làm nhang tiết diện đều 1,3–2,5 mm) ⇒ vòng 8: không bịa viDuHang, không khai trục ⇒ DỪNG báo Claude."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "080450",
+  "phien": "zcode-sub:glm-5.3:20261106T1542#soan-080450",
+  "dong8": {
+    "08045010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả ổi"
+        }
+      ]
+    },
+    "08045021": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ]
+    },
+    "08045022": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "KHO_MUOI"
+          ]
+        }
+      ]
+    },
+    "08045030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả măng cụt"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "0804502": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả xoài"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "0804502",
+      "loai": "DUNG",
+      "ghiChu": "Tầng 0804502 \"Quả xoài\" chỉ 2 dòng .21 \"Tươi\" / .22 \"Khô\", không có con \"Loại khác\"; chữ biểu nhóm 08.04 chỉ \"tươi hoặc khô\" nên các giá trị còn lại của phuongPhapBaoQuan (SONG, DONG_LANH, HUN_KHOI, BAO_QUAN_BANG_KHI_SUNPHURO) không thuộc dòng nào ⇒ cong1-khong-phu-kin:0804502 (cách tenLoai nguyên văn như 030711 không dùng được ở đây vì gây lỗ hổng chéo tầng: vector tenLoai=Quả xoài không tới con, vector tenLoai=Tươi/Khô không tới tầng cha). Chỉ xanh được nếu bịa ⇒ DỪNG."
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "080450",
+  "nhom": "0804",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1542#soan-080450",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "0804502",
+      "nguon": "tieuDe.0804502",
+      "trich": "0804502 Quả xoài",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả xoài"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "08045010",
+      "nguon": "tax.08045010",
+      "trich": "08045010 - - Quả ổi",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả ổi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "08045021",
+      "nguon": "tax.08045021",
+      "trich": "08045021 - - - Tươi",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "08045022",
+      "nguon": "tax.08045022",
+      "trich": "08045022 - - - Khô",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "KHO_MUOI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "08045030",
+      "nguon": "tax.08045030",
+      "trich": "08045030 - - Quả măng cụt",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Quả măng cụt"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "0804502",
+      "loai": "DUNG",
+      "ghiChu": "Tầng 0804502 \"Quả xoài\" chỉ 2 dòng .21 \"Tươi\" / .22 \"Khô\", không có con \"Loại khác\"; chữ biểu nhóm 08.04 chỉ \"tươi hoặc khô\" nên các giá trị còn lại của phuongPhapBaoQuan (SONG, DONG_LANH, HUN_KHOI, BAO_QUAN_BANG_KHI_SUNPHURO) không thuộc dòng nào ⇒ cong1-khong-phu-kin:0804502 (cách tenLoai nguyên văn như 030711 không dùng được ở đây vì gây lỗ hổng chéo tầng: vector tenLoai=Quả xoài không tới con, vector tenLoai=Tươi/Khô không tới tầng cha). Chỉ xanh được nếu bịa ⇒ DỪNG."
+    }
+  ]
+}

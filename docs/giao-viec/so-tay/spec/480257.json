@@ -1,0 +1,63 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "480257",
+  "phien": "zcode-sub:glm-5.3:20261106T1551#soan-480257",
+  "dong8": {
+    "48025721": {
+      "dieuKienSo": [
+        {
+          "fact": "kichThuoc",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        }
+      ]
+    },
+    "48025730": {
+      "dieuKienSo": [
+        {
+          "fact": "nhieuLop",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "4802572": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "viết",
+            "in",
+            "đồ bản"
+          ]
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "48025721",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48025721 \"Không có chiều nào trên 36 cm ở dạng không gấp\" ⇒ kichThuoc <= 36 cm cho vế kích thước; vế \"không gấp\" xem THIEU_KHOA dưới"
+    },
+    {
+      "ma": "48025721",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "dangKhongGep",
+      "ghiChu": "vế GIỚI HẠN \"không gấp\" (EN: unfolded) của tax.48025721 không có khoá tu-vung@2"
+    },
+    {
+      "ma": "4802572",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.4802572 \"Loại dùng để viết, in và các mục đích đồ bản khác\" ⇒ congDung [\"viết\",\"in\",\"đồ bản\"]; chữ \"Loại\" = \"loại dùng để\" (of a kind used for), KHÔNG phải phần còn lại ⇒ không dùng phanConLai"
+    },
+    {
+      "ma": "480257",
+      "loai": "DUNG",
+      "ghiChu": "Gói --goi báo [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:480257:chua-co, Claude giữ; kèm các cặp cong2-chong-lan chéo tầng (trang trí tenLoai ↔ viết/in congDung ↔ nhiều lớp) chưa xử lý vì PN6 đã DỪNG chờ bảng hiệu chỉnh — Claude xử khi mở lại"
+    }
+  ]
+}

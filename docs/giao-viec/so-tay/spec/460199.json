@@ -1,0 +1,104 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "460199",
+  "phien": "zcode-sub:glm-5.3:20261106T1549#soan-460199",
+  "dong8": {
+    "46019910": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Chiếu",
+            "thảm"
+          ]
+        }
+      ]
+    },
+    "46019920": {
+      "dieuKienSo": [
+        {
+          "fact": "dayTetBen",
+          "op": "CO"
+        }
+      ]
+    },
+    "46019930": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Quạt"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "màn che"
+              },
+              {
+                "fact": "cachDieuKhien",
+                "op": "TRONG",
+                "value": [
+                  "BANG_TAY"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Quạt",
+                  "màn che"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "46019910",
+        "46019920"
+      ],
+      "lyDo": "46019910 \"Chiếu và thảm\" và 46019920 \"Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải\" — chiếu/tấm thảm tết bện từ dải vật liệu thoả cả hai dòng theo chữ, chữ biểu không loại trừ nhau, không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "46019920",
+        "46019930"
+      ],
+      "lyDo": "46019920 \"Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải\" và 46019930 \"Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng\" — quạt/màn che đan bằng vật liệu tết bện thoả cả hai dòng theo chữ, chữ biểu không loại trừ nhau, không có căn cứ thứ tự"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "46019910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.46019910 \"Chiếu và thảm\" ⇒ tenLoai [\"Chiếu\",\"thảm\"] (hai hàng thay thế, EN: Mats and carpets)"
+    },
+    {
+      "ma": "46019920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.46019920 \"Dây tết bện và các sản phẩm tương tự làm bằng vật liệu tết bện, đã hoặc chưa ghép thành dải\" ⇒ dayTetBen CO — khoá đọc trọn vế mở lẫn vế giới hạn (tu-vung@2)"
+    },
+    {
+      "ma": "46019930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.46019930 (EN: Fans and handscreens, frames and handles therefor, and parts thereof) ⇒ HOAC [[Quạt],[màn che + cachDieuKhien BANG_TAY],[laBoPhan + dungCho Quạt/màn che]]"
+    }
+  ]
+}

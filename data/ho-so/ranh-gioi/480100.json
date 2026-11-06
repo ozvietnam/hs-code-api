@@ -1,0 +1,183 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "480100",
+  "nhom": "4801",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1550#soan-480100",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "4801001",
+      "nguon": "tieuDe.4801001",
+      "trich": "4801001 Có định lượng không quá 55 g/m2",
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": "<=",
+          "value": 55,
+          "donVi": "g/m2"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "4801002",
+      "nguon": "tieuDe.4801002",
+      "trich": "4801002 Có định lượng trên 55 g/m2",
+      "dieuKienSo": [
+        {
+          "fact": "dinhLuong",
+          "op": ">",
+          "value": 55,
+          "donVi": "g/m2"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "48010011",
+      "nguon": "tax.48010011",
+      "trich": "48010011 - - Ở dạng cuộn, có chiều rộng trên 28 cm nhưng không quá 36 cm",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 28,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48010012",
+      "nguon": "tax.48010012",
+      "trich": "48010012 - - Ở dạng cuộn, loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "48010011"
+      ]
+    },
+    {
+      "hs": "48010013",
+      "nguon": "tax.48010013",
+      "trich": "48010013 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48010014",
+      "nguon": "tax.48010014",
+      "trich": "48010014 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48010021",
+      "nguon": "tax.48010021",
+      "trich": "48010021 - - Ở dạng cuộn, có chiều rộng trên 28 cm nhưng không quá 36 cm",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 28,
+          "donVi": "cm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 36,
+          "donVi": "cm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48010022",
+      "nguon": "tax.48010022",
+      "trich": "48010022 - - Ở dạng cuộn, loại khác",
+      "dieuKienSo": [
+        {
+          "fact": "dangCuon",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "48010021"
+      ]
+    },
+    {
+      "hs": "48010023",
+      "nguon": "tax.48010023",
+      "trich": "48010023 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "48010024",
+      "nguon": "tax.48010024",
+      "trich": "48010024 - - Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "48010011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.48010011 \"Ở dạng cuộn, có chiều rộng trên 28 cm nhưng không quá 36 cm\" ⇒ dangCuon CO + chieuRong > 28 cm và <= 36 cm (biên đúng chữ)"
+    },
+    {
+      "ma": "48010013",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "capChieuToGiay",
+      "ghiChu": "tax.48010013 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" — không có khoá cho cặp chiều \"một chiều … chiều kia …\" (hai kích thước độc lập của tờ giấy) và vế \"ở dạng không gấp\"; không mượn kichThuoc/chieuCao làm cặp gần nghĩa"
+    },
+    {
+      "ma": "48010014",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "capChieuToGiay",
+      "ghiChu": "tax.48010014 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" — không có khoá cho cặp chiều \"một chiều … chiều kia …\" và vế \"ở dạng không gấp\""
+    },
+    {
+      "ma": "48010023",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "capChieuToGiay",
+      "ghiChu": "tax.48010023 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 28 cm nhưng không quá 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" — không có khoá cho cặp chiều \"một chiều … chiều kia …\" (hai kích thước độc lập của tờ giấy) và vế \"ở dạng không gấp\"; không mượn kichThuoc/chieuCao làm cặp gần nghĩa"
+    },
+    {
+      "ma": "48010024",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "capChieuToGiay",
+      "ghiChu": "tax.48010024 \"Ở dạng tờ, hình vuông hoặc hình chữ nhật, có một chiều trên 36 cm, và chiều kia trên 15 cm ở dạng không gấp\" — không có khoá cho cặp chiều \"một chiều … chiều kia …\" và vế \"ở dạng không gấp\""
+    }
+  ]
+}
