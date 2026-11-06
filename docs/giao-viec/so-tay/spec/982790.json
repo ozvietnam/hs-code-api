@@ -1,0 +1,48 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "982790",
+  "phien": "zcode-mm:loop:20261106T1516#soan-982790",
+  "dong8": {
+    "98279010": {
+      "dieuKienSo": [
+        { "fact": "gioiHanChay", "op": "<", "value": 80000, "donVi": "psi" },
+        { "fact": "coRen", "op": "KHONG" }
+      ],
+      "trich": "98279010 - - - Ống chống và ống có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống"
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "98279010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98279010 \"Ống chống và ống có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống\" ⇒ gioiHanChay < 80000 psi (\"dưới\" = <) VÀ coRen KHONG (\"không …\" = KHONG); đơn vị giữ nguyên theo chữ trích (psi)."
+    },
+    {
+      "ma": "98279010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Ống chống và ống\" là CHỦ THỂ của dòng (phạm vi chung của nhóm), không phải đặc điểm phân biệt dòng này với dòng \"Loại khác\" ⇒ KHÔNG khai tenLoai; ranh giới với 98279090 do hai điều kiện giới hạn chảy và ren quyết định."
+    },
+    {
+      "ma": "98279010",
+      "loai": "BO_VE",
+      "ve": "có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống",
+      "lyDo": "Đã lượng hóa qua gioiHanChay (< 80000 psi) và coRen (KHONG)"
+    },
+    {
+      "ma": "98279090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần (loaiKhac, khongCanDieuKien) — KHÔNG đưa vào spec; phần còn lại của 982790 do máy phủ định anh em đảm nhiệm."
+    },
+    {
+      "ma": "982790",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số (tieuDe.982790) là \"Loại khác\" trần ⇒ không ghi điều kiện, không khai dieuKienNut."
+    },
+    {
+      "ma": "98279010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "KHÔNG khai chongLanVanBan/chongLanTruc: nhóm chỉ có một dòng có điều kiện, dòng còn lại là \"Loại khác\" trần nên phủ định anh em đã đủ."
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "590220",
+  "nhom": "5902",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1517#soan-590220",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "59022020",
+      "nguon": "tax.59022020",
+      "trich": "59022020 - - Vải tráng cao su làm mép lốp(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Vải tráng cao su"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm mép lốp"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "59022091",
+      "nguon": "tax.59022091",
+      "trich": "59022091 - - - Chứa bông",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "bông"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "59022099",
+      "nguon": "tax.59022099",
+      "trich": "59022099 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "59022020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59022020 \"59022020 - - Vải tráng cao su làm mép lốp(SEN)\" ⇒ tenLoai TEN_LOAI \"Vải tráng cao su\" (danh từ đầu nguyên văn của dòng: vế \"Vải\" + vế \"tráng cao su\") + congDung CONG_DUNG \"làm mép lốp\" (vế \"làm mép lốp\"). KHÔNG dùng daTrangPhuEpLop CO: mẫu đọc của khoá cần \"đã tráng, phủ hoặc ép lớp\" / \"tráng phủ\" / \"ép lớp\", chữ biểu chỉ có \"tráng cao su\" ⇒ máy báo dieu-kien-so-co-khong-co-trong-trich. KHÔNG dùng chatLieu \"cao su\": vải được TRÁNG cao su chứ không làm từ cao su (chatLieu nói vật liệu làm ra hàng — cùng lý do dòng 5902101). \"(SEN)\" là ngoặc chú thích nguồn, không thành điều kiện."
+    },
+    {
+      "ma": "59022091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59022091 \"59022091 - - - Chứa bông\" ⇒ tenLoai TEN_LOAI \"bông\" — tiêu chí của dòng là THÀNH PHẦN bông. KHÔNG dùng loaiSoiDet BONG: mẫu đọc của BONG trong tu-vung@2 là \"từ bông\" / \"bằng bông\" / \"sợi bông\" / \"vải bông\" / \"xơ bông\" / \"bông 100%\" / \"cotton\"; chữ biểu chỉ có \"Chứa bông\" (chữ \"bông\" trần) ⇒ không có mẫu đọc ⇒ máy báo dieu-kien-so-trong-khong-co-trong-trich:BONG. Giá trị lấy mảnh vật liệu \"bông\" (chuỗi con nguyên văn của vế \"Chứa bông\"), KHÔNG giữ chữ \"chứa\": dữ kiện lúc chạy là danh từ đầu của mô tả hàng (lib/ho-so/doc-du-kien.js#docKhoa → TV.docTenLoaiDayDu), thường ghi \"vải … 30% bông\" chứ không ghi \"chứa\" — giữ \"chứa bông\" thì so âm tiết ra TRAI ⇒ dòng bị loại sai."
+    },
+    {
+      "ma": "59022020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "sen.59022020 (nguồn kèm của chính dòng này) đọc để hiểu nghĩa chữ biểu: vải \"được phủ cao su chưa lưu hóa\", dùng \"để cuốn quanh khu vực mép lốp trước khi thực hiện quá trình lưu hóa lốp, và để duy trì một lớp cao su chống mài mòn tại nơi lốp tiếp xúc với vành bánh xe\"; \"Vải làm mép lốp nguyên gốc là vải bông dệt thoi hình chữ thập\", còn \"Đối với lốp không săm chúng thường là vải lưới sợi nylon multifilament hoặc polyester hoặc tơ nhân tạo (rayon) ngâm tẩm nhựa hoặc lưới sợi nylon monofilament\". Các câu \"nguyên gốc là\" / \"thường là\" là MÔ TẢ thực tế (để hiểu, không phải tiêu chí của dòng) ⇒ không mã hoá thành điều kiện; ranh giới 8 số trong 590220 do chữ biểu quyết định."
+    },
+    {
+      "ma": "5902209",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5902209 \"5902209 Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không đưa vào spec, không khai dieuKienNut; máy phủ định anh em 59022020 ⇒ 59022091/.99 mang phủ định điều kiện của 59022020 (không phải vải tráng cao su làm mép lốp). Vì tiêu đề này đã tách .20 khỏi nhánh còn lại nên .20 và .91 không chồng lấn thật ⇒ không khai chongLanTruc / chongLanVanBan."
+    },
+    {
+      "ma": "59022099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.59022099 \"59022099 - - - Loại khác\" trần (loaiKhac + khongCanDieuKien) ⇒ không điều kiện, không đưa vào spec; máy phủ định anh em ⇒ 59022099 mang phủ định điều kiện của 59022091 (không chứa bông)."
+    },
+    {
+      "ma": "590220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đặc trưng chung của phân nhóm (wco.590220 \"Textile fabrics; tyrecord of high tenacity yarn of polyester\"; ten.vi \"Từ các polyeste\") chung cho cả ba dòng ⇒ không mã hoá thành điều kiện của dòng; tầng 590220 không khai dieuKienNut. Gói soạn chỉ nêu chú giải (nhom5902.nhom 813 / ch59.chuong 6.093 / phan59.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ mọi điều kiện lấy từ chữ biểu của chính dòng (tax.<8 số>) và tên tiêu đề (tieuDe.<id>)."
+    }
+  ]
+}

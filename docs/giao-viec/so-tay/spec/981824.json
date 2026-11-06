@@ -1,0 +1,37 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "981824",
+  "phien": "zcode-mm:loop:20261106T1447#soan-981824",
+  "dong8": {
+    "98182410": {
+      "dieuKienSo": [
+        { "fact": "hoatDongBangDien", "op": "CO" }
+      ],
+      "trich": "98182410 - - - Hoạt động bằng điện"
+    },
+    "98182490": {
+      "dieuKienSo": [
+        { "fact": "hoatDongBangDien", "op": "KHONG" }
+      ],
+      "trich": "98182490 - - - Không hoạt động bằng điện"
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "98182410",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Ranh giới 6→8 số của 981824 nằm trên TRỤC ĐIỆN: một khoá duy nhất hoatDongBangDien (CO_KHONG) — 98182410 = CO (hoạt động bằng điện), 98182490 = KHONG (không hoạt động bằng điện). Hai dòng là hai cực đối lập của CÙNG một khoá nên không cần HOAC."
+    },
+    {
+      "ma": "98182490",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Không hoạt động bằng điện\" là vế phủ định của chính dòng 98182410 trên cùng trục điện ⇒ khoá hoatDongBangDien với op KHONG; bộ đọc hiểu chữ \"không\" đứng trước cụm \"hoạt động bằng điện\" là phủ định của chính cụm đó."
+    },
+    {
+      "ma": "981824",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề phân nhóm \"Bộ phận trao đổi nhiệt, trừ tháp làm mát\" là TẦNG GỐC của cây (nút 981824), không phải tiêu đề có tên trong cây 981824 (chỉ có gốc + hai lá 98182410/98182490) ⇒ không khai `dieuKienNut`. Vế \"trừ tháp làm mát\" là loại trừ phạm vi CẢ phân nhóm, không tách ranh giới 6→8."
+    }
+  ]
+}

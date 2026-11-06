@@ -1,0 +1,75 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "982710",
+  "nhom": "9827",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-mm:loop:20261106T1510#soan-982710",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "98271010",
+      "nguon": "tax.98271010",
+      "trich": "98271010 - - - Ống chống và ống có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống",
+      "dieuKienSo": [
+        {
+          "fact": "gioiHanChay",
+          "op": "<",
+          "value": 80000,
+          "donVi": "psi"
+        },
+        {
+          "fact": "coRen",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98271090",
+      "nguon": "tax.98271090",
+      "trich": "98271090 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "98271010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98271010 \"Ống chống và ống có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống\" ⇒ gioiHanChay < 80000 psi (\"dưới\" = <) VÀ coRen KHONG (\"không …\" = KHONG); đơn vị giữ nguyên theo chữ trích (psi)."
+    },
+    {
+      "ma": "98271010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Ống chống và ống\" là PHẠM VI CHUNG của nhóm (mã tương ứng 73042410 và 73042430 đều có hai chữ này), không phải đặc điểm phân biệt dòng ⇒ KHÔNG khai tenLoai; cùng cách với nhóm 730424 (chữ biểu giống hệt, chỉ khai hai điều kiện trên)."
+    },
+    {
+      "ma": "98271010",
+      "loai": "BO_VE",
+      "ve": "có giới hạn chảy dưới 80.000 psi và không có ren ở đầu ống",
+      "lyDo": "Đã lượng hóa qua gioiHanChay (< 80000 psi) và coRen (KHONG)"
+    },
+    {
+      "ma": "98271090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần — KHÔNG đưa vào spec; phần còn lại của 982710 do máy phủ định anh em đảm nhiệm (mã tương ứng 73042430: ống chống và ống có giới hạn chảy từ 80.000 psi trở lên, có hoặc không có ren ở đầu ống)."
+    },
+    {
+      "ma": "982710",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 6 số (tieuDe.982710) \"Loại bằng thép không gỉ:\" là chất liệu KẾ THỪA từ nhóm 9827, dùng chung cho mọi dòng ⇒ không khai dieuKienNut (cùng cách với 730422/730424)."
+    },
+    {
+      "ma": "98271010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "KHÔNG khai chongLanVanBan/chongLanTruc: nhóm chỉ có một dòng có điều kiện, dòng còn lại là \"Loại khác\" trần nên phủ định anh em đã đủ."
+    }
+  ]
+}

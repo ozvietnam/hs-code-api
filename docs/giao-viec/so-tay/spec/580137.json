@@ -1,0 +1,85 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "580137",
+  "phien": "zcode-mm:loop:20261106T1442#soan-580137",
+  "dong8": {
+    "58013711": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuDet",
+          "op": "TRONG",
+          "value": ["NOI_VONG_DA_CAT"]
+        }
+      ]
+    },
+    "58013712": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuDet",
+          "op": "TRONG",
+          "value": ["NOI_VONG_CHUA_CAT"]
+        }
+      ]
+    },
+    "58013791": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuDet",
+          "op": "TRONG",
+          "value": ["NOI_VONG_DA_CAT"]
+        }
+      ]
+    },
+    "58013792": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuDet",
+          "op": "TRONG",
+          "value": ["NOI_VONG_CHUA_CAT"]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "5801371": {
+      "dieuKienSo": [
+        {
+          "fact": "daTrangPhuEpLop",
+          "op": "CO"
+        }
+      ]
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "5801371",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.5801371 \"5801371 Đã tráng, phủ hoặc ép lớp\" ⇒ daTrangPhuEpLop CO (khoá CO_KHONG \"đã ngâm tẩm, tráng, phủ hoặc ép lớp (vải dệt)\"). Tiêu đề có tên ⇒ điều kiện đặt ở dieuKienNut, không chép lặp xuống hai dòng con (con mang trạng thái nổi vòng nên dùng khoá khác)."
+    },
+    {
+      "ma": "58013711+58013712",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Cặp con của 5801371 chia bằng CÙNG khoá kieuDet: tax.58013711 \"58013711 - - - - Sợi nổi vòng đã cắt\" ⇒ TRONG [NOI_VONG_DA_CAT]; tax.58013712 \"58013712 - - - - Sợi nổi vòng không cắt\" ⇒ TRONG [NOI_VONG_CHUA_CAT] (vế \"không cắt\" = nổi vòng chưa cắt)."
+    },
+    {
+      "ma": "58013791+58013792",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Cặp con của 5801379 chia bằng CÙNG khoá kieuDet: tax.58013791 \"58013791 - - - - Sợi nổi vòng đã cắt\" ⇒ TRONG [NOI_VONG_DA_CAT]; tax.58013792 \"58013792 - - - - Sợi nổi vòng không cắt\" ⇒ TRONG [NOI_VONG_CHUA_CAT]."
+    },
+    {
+      "ma": "5801379",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề \"Loại khác\" trần (loaiKhac/khongCanDieuKien) ⇒ không ghi điều kiện, không đưa vào spec; máy phủ định anh em ⇒ 58013791/.92 mang điều kiện KHÔNG daTrangPhuEpLop của nhánh 5801371."
+    },
+    {
+      "ma": "580137",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanVanBan/chongLanTruc: 58013711 ↔ 58013791 khác nhau ở điều kiện nhánh (có/không daTrangPhuEpLop) nên không chồng lấn; 58013711 ↔ 58013712 và 58013791 ↔ 58013792 chia bằng cùng khoá kieuDet với hai giá trị loại trừ nhau."
+    },
+    {
+      "ma": "580137",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Đặc trưng chung của phân nhóm (wco.580137 \"Fabrics; woven pile, of man-made fibres, warp pile fabrics, other than fabrics of heading no. 5802 or 5806\") chung cho cả bốn dòng nên không mã hoá thành điều kiện của dòng; gói soạn chỉ nêu chú giải (nhom5801.nhom 4.473 / ch58.chuong 2.716 / phan58.phan 46.130) kèm độ dài, không kèm câu chữ ⇒ điều kiện chỉ dựa trên chữ biểu của chính dòng."
+    }
+  ]
+}
