@@ -1,7 +1,7 @@
 {
   "phienBan": "hieu-chinh-tien-le@1",
   "bieuThue": "2026.04.05",
-  "ngay": "2026-10-30",
+  "ngay": "2026-11-06",
   "soanBoi": {
     "vai": "AI",
     "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4b"
@@ -12,7 +12,8 @@
     "TIEN_LE_THAY_CHU_BIEU chỉ khi ≥ 2 TB-TCHQ (số hiệu khác nhau, đuôi /TB-TCHQ) cùng kết luận maHs hoặc người đã phân xử (duyetBoi NGUOI_DUYET + phanXu). Bảng do AI soạn; NGUOI_DUYET chỉ chép lại quyết định của người, kèm phanXu {nguoi, ngay, quyetDinh, kenh} (máy kiểm đủ bốn trường). CEO Oz phân xử 30/10/2026 (phiên GĐ): 854442-01, 854442-02, 854442-03 theo thông báo phân loại (.99) ⇒ TIEN_LE_THAY_CHU_BIEU + NGUOI_DUYET; ba mục 8537.10 giữ LECH_CHUA_PHAN_XU (ghiChu: hỏi lại người khai). Mọi lệch còn lại là LECH_CHUA_PHAN_XU, chờ CEO/chuyên gia.",
     "ghiChu là chữ tự do của người (không phải phân xử, không đổi loại).",
     "KHONG_LECH là mở rộng của plan: tín hiệu máy nghi của lat-1 (LK_TRUNG_TEN_ANH_EM, LK_TRUNG_VAT_LIEU_ANH_EM, TIEN_LE_HAI_DONG) đã soát và hàng trong TB-TCHQ không thoả chữ của dòng anh em — câu trích hai bên là bằng chứng. Tầng hồ sơ (L1-5b) bỏ qua loại này.",
-    "Đọc cho L1-5b: mục có dieuKien khớp dữ kiện hàng xét trước mục cùng ranh giới không có dieuKien (vd 854442-01 trước 854442-02)."
+    "Đọc cho L1-5b: mục có dieuKien khớp dữ kiện hàng xét trước mục cùng ranh giới không có dieuKien (vd 854442-01 trước 854442-02).",
+    "Mở rộng 06/11/2026: bảng nhận mục của PN6 NGOÀI 50 phân nhóm lát 1 khi tín hiệu máy (lib/ho-so/lat-1.js#canHieuChinhTienLeTuDuLieu) bật cờ — cổng soạn ranh giới DỪNG theo đúng tín hiệu đó cho mọi PN6, không mở bảng thì mã lát 2 có tiền lệ bị DỪNG vĩnh viễn. Ca đầu: 520859 (lát 2)."
   ],
   "muc": [
     {
@@ -664,6 +665,36 @@
       ],
       "ghiChu": "Vế B của .30 (đèn dùng cho tàu thủy, bằng KLCB — precedent có khung nhôm) ôm được mặt hàng về mặt chữ, nhưng TCHQ xếp .60 (20%). Chưa phân xử — người soát L1-4b quyết theo秩 tự SEN/chú giải (đèn dùng CHO tàu ≠ đèn trang bị BÊN tàu). Sinh từ issue #665, phiên soát #659 đợt 2.",
       "lyDo": "Vế B của .30 (đèn dùng cho tàu thủy, bằng kim loại cơ bản — precedent có khung nhôm) ôm được mặt hàng theo chữ, nhưng 6132/TB-TCHQ kết luận 94054260 (chiếu sáng bên ngoài). Chưa phân xử: cần người duyệt cân \"đèn dùng CHO tàu\" (trang bị chạy tàu) với \"đèn dùng đánh bắt trên tàu\". Chưa ai phân xử nên giữ LECH_CHUA_PHAN_XU, không ghi NGUOI_DUYET.",
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "520859-01",
+      "maHs": "52085990",
+      "dongChuBieu": "52085920",
+      "loai": "LECH_CHUA_PHAN_XU",
+      "dieuKien": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vân chéo 3 sợi"
+        }
+      ],
+      "tbTchq": [
+        {
+          "soHieu": "888/TB-TCHQ",
+          "viTri": "precedents.json#52085990[0]",
+          "trich": "Vải dệt kim được làm chủ yếu từ sợi polyeste, khổ ( 1,2-2,8)m, hiệu Chữ Trung Quốc — Vải dệt thoi kiểu dệt vân chéo 3 sợi, thành phần 100% xơ bông, bề mặt chưa tráng phủ hay ngâm tẩm, đã in, trọng lượng 121 g/m2, dạng cuộn … thuộc nhóm 52.08 Vải dệt thoi từ sợi bông, có tỷ trọng bông từ 85% trở lên, trọng lượng không quá 200 g/m2, phân nhóm - Đã in, phân nhóm 5208.59 - - Vải dệt khác, mã số 5208.59.90 - - - Loại khác, "
+        }
+      ],
+      "chuBieu": [
+        {
+          "nguon": "tax.52085920",
+          "trich": "- - - Loại khác, vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân"
+        }
+      ],
+      "lyDo": "Tín hiệu máy LK_TRUNG_TEN_ANH_EM: TB-TCHQ 888 xếp vào .90 \"Loại khác\" trong khi tên kết luận ghi \"vải dệt thoi kiểu dệt vân chéo 3 sợi, 100% xơ bông, đã in\" — chữ biểu .20 đọc thuần chỉ rõ đúng loại vân chéo 3 sợi. Đối chiếu: TB-TCHQ 7049 (precedents.json#52085920[0]) xếp hàng mô tả tương tự (vân chéo 3 sợi, cotton, đã in, ~122 g/m2) vào đúng .20 ⇒ nghiêng về .20, nhưng chỉ một TB-TCHQ lệch và chưa ai phân xử nên không tự chọn bên. Hai dòng cùng MFN 12 %.",
+      "ghiChu": "Chưa chốt: tên khai báo trong bản ghi (\"Vải dệt kim… polyeste\") lệch với tên kết luận của Hải quan (\"vải dệt thoi… xơ bông\") — cần đối chiếu bản gốc 888/TB-TCHQ / hỏi lại người khai.",
+      "duyetBoi": null,
       "nguonLoai": "AI_DA_KIEM"
     }
   ],

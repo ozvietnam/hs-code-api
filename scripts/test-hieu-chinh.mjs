@@ -107,7 +107,10 @@ const kiem = (muc) => H.kiemBang(bang(muc), { phuKin: false });
   const m = mucLech(); m.tbTchq[0].soHieu = '525/TB-TCHQ';
   check('4a số hiệu lệch bản ghi precedents → ĐỎ', coLoi(kiem([m]), 'hc-tb-so-hieu-lech'), kiem([m]).loi);
   const m2 = mucLech(); m2.maHs = '84713020'; m2.dongChuBieu = '84713090';
-  check('4b mã ngoài lát 1 → ĐỎ', coLoi(kiem([m2]), 'hc-ngoai-lat-1'), kiem([m2]).loi);
+  check('4b mã ngoài lát 1, không tín hiệu dữ liệu → ĐỎ', coLoi(kiem([m2]), 'hc-ngoai-lat-1'), kiem([m2]).loi);
+  // 4b2: mã NGOÀI lát 1 nhưng tín hiệu máy (canHieuChinhTienLeTuDuLieu) bật cờ → nhận (lát 2, ca đầu 520859).
+  // Dùng mục thật của bảng commit — đọc ở mục 7l; ở đây chỉ kiểm đường code qua tín hiệu dữ liệu thật.
+  check('4b2 cổng ranh giới thấy bảng cho 520859 (lát 2 có tiền lệ không còn bị DỪNG)', C.coHieuChinh('520859'));
   const m3 = mucLech(); m3.dongChuBieu = '85444299';
   check('4c dongChuBieu trùng maHs → ĐỎ', coLoi(kiem([m3]), 'hc-dong-chu-bieu'), kiem([m3]).loi);
   const m4 = mucLech(); m4.loai = 'TU_CHON';
@@ -172,6 +175,10 @@ const kiem = (muc) => H.kiemBang(bang(muc), { phuKin: false });
   const ngoai = muc.filter((m) => m.duyetBoi === 'NGUOI_DUYET' && !['854442-01', '854442-02', '854442-03'].includes(m.id)).map((m) => m.id);
   check('7j NGUOI_DUYET chỉ ở ba mục CEO đã phân xử', ngoai.length === 0, ngoai);
   for (const id of ['392690-01', '848190-01']) check(`7k ${id} không đổi (LECH, không NGUOI_DUYET)`, theoId[id]?.loai === 'LECH_CHUA_PHAN_XU' && theoId[id]?.duyetBoi == null);
+  check('7l 520859-01 (lát 2, tín hiệu dữ liệu) LECH_CHUA_PHAN_XU qua cổng, trỏ 888/TB-TCHQ .90↔.20',
+    theoId['520859-01']?.loai === 'LECH_CHUA_PHAN_XU' && theoId['520859-01']?.maHs === '52085990'
+    && theoId['520859-01']?.dongChuBieu === '52085920' && theoId['520859-01']?.duyetBoi == null,
+    theoId['520859-01']);
   check('7e mucCua(85444299) trả các mục của mã', H.mucCua('85444299').length >= 1 && H.mucCua('85444299').every((m) => m.maHs === '85444299'));
   let out = ''; let ma = 0;
   try { out = execFileSync('node', ['scripts/check-hieu-chinh.mjs'], { encoding: 'utf8' }); } catch (e) { ma = e.status; out = String(e.stdout || ''); }
