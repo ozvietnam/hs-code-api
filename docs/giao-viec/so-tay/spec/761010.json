@@ -1,0 +1,51 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "761010",
+  "phien": "zcode-mm:loop:20261106T1446#soan-761010",
+  "dong8": {
+    "76101010": {
+      "ten": "Cửa ra vào và các loại khung cửa ra vào và ngưỡng cửa ra vào",
+      "nguon": [
+        "tax.76101010"
+      ],
+      "trich": [
+        "76101010 - - Cửa ra vào và các loại khung cửa ra vào và ngưỡng cửa ra vào"
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "tenLoai",
+          "op": "TEN_LOAI",
+          "giaTri": "Cửa ra vào và các loại khung cửa ra vào và ngưỡng cửa ra vào",
+          "trich": "76101010 - - Cửa ra vào và các loại khung cửa ra vào và ngưỡng cửa ra vào",
+          "nguon": "tax.76101010"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "76101010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 76101010 khai 1 điều kiện tên loại lấy nguyên văn từ tiêu đề biểu thuế (nguồn tax.76101010); gói không kèm SEN/chú giải riêng cho dòng này nên không có nguồn thứ hai để đối chiếu."
+    },
+    {
+      "ma": "76101090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần (tax.76101090) không khai điều kiện và không đưa vào spec theo luật máy phủ định; 76101090 là phần dư của nhóm 761010."
+    },
+    {
+      "ma": "761010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai dieuKienNut cho tầng nhóm: nguồn wco.761010 là tên cấp heading 7610 (có nhắc 'cửa sổ', thuộc nhánh 761020) trong khi 8 số của nhóm này chỉ là nhánh 'cửa ra vào'; ranh giới cửa/cửa sổ là ranh giới giữa hai nhóm, ngoài phạm vi 6→8 của lô này."
+    },
+    {
+      "ma": "761010",
+      "loai": "BO_VE",
+      "ve": "(excluding prefabricated buildings of heading no. 9406)",
+      "lyDo": "Loại trừ cấp heading 7610; gói không có khoá tu-vung cho nhà tiền chế (9406) và vế này không phân biệt 76101010 với 76101090 (nhà tiền chế không phải cửa ra và o) nên không khai điều kiện."
+    }
+  ],
+  "chongLanVanBan": [],
+  "chongLanTruc": []
+}

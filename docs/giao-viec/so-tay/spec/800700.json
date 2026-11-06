@@ -1,0 +1,143 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "800700",
+  "phien": "zcode-mm:loop:20261106T1505#soan-800700",
+  "dong8": {
+    "80070020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dạng tấm, lá và dải, có chiều dày trên 0,2 mm"
+        },
+        {
+          "fact": "doDay",
+          "op": ">",
+          "value": 0.2,
+          "donVi": "mm"
+        }
+      ],
+      "trich": "80070020 - Dạng tấm, lá và dải, có chiều dày trên 0,2 mm",
+      "nguon": "tax.80070020"
+    },
+    "80070030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lá mỏng (đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự), có chiều dày (trừ phần bồi) không quá 0,2 mm; dạng bột và vảy"
+        },
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 0.2,
+          "donVi": "mm"
+        }
+      ],
+      "trich": "80070030 - Lá mỏng (đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự), có chiều dày (trừ phần bồi) không quá 0,2 mm; dạng bột và vảy",
+      "nguon": "tax.80070030"
+    },
+    "80070040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)"
+        }
+      ],
+      "trich": "80070040 - Các loại ống, ống dẫn và phụ kiện để ghép nối của ống hoặc ống dẫn (ví dụ, khớp nối đôi, nối khuỷu, măng sông)",
+      "nguon": "tax.80070040"
+    },
+    "80070091": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hộp đựng thuốc lá điếu; gạt tàn thuốc lá"
+        }
+      ],
+      "trich": "80070091 - - Hộp đựng thuốc lá điếu; gạt tàn thuốc lá",
+      "nguon": "tax.80070091"
+    },
+    "80070092": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Các sản phẩm gia dụng khác"
+        }
+      ],
+      "trich": "80070092 - - Các sản phẩm gia dụng khác",
+      "nguon": "tax.80070092"
+    },
+    "80070093": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ống có thể gấp lại được (collapsible tubes)"
+        }
+      ],
+      "trich": "80070093 - - Ống có thể gấp lại được (collapsible tubes)",
+      "nguon": "tax.80070093"
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "80070020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 80070020 khai 2 điều kiện: tenLoai ('Dạng tấm, lá và dải, có chiều dày trên 0,2 mm', nguồn tax.80070020) và doDay ('>' 0,2 mm) — ranh giới với 80070030 là NGƯỠNG độ dày (chữ 'trên' = >, đơn vị mm như chữ trích); tên loại giữ nguyên văn cả tiêu đề để không cắt vế."
+    },
+    {
+      "ma": "80070030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 80070030 khai tenLoai (nguyên văn cả tiêu đề) + doDay ('<=' 0,2 mm — chữ 'không quá' = <=); vế 'đã hoặc chưa in hoặc bồi trên giấy, bìa, plastic hoặc vật liệu bồi tương tự' và 'dạng bột và vảy' nằm trong tên loại nên không tách thành danh sách đóng."
+    },
+    {
+      "ma": "80070040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 80070040 khai 1 điều kiện tenLoai với giaTri nguyên văn cả tiêu đề kèm ngoặc ví dụ (nguồn tax.80070040); '(ví dụ, khớp nối đôi, nối khuỷu, măng sông)' là vế MỞ nên không tách thành danh sách đóng các loại phụ kiện."
+    },
+    {
+      "ma": "80070091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 80070091 khai 1 điều kiện tenLoai ('Hộp đựng thuốc lá điếu; gạt tàn thuốc lá', nguồn tax.80070091); hộp đựng thuốc lá điếu và gạt tàn thuốc lá là hai loại hàng nằm trong CÙNG dòng 8 số nên gộp một khoá — tách thành hai điều kiện cùng khoá sẽ biến thành phải thỏa CẢ HAI; không khai hopDungThuocLaDieu vì tiêu đề không nói 'có kèm gạt tàn'."
+    },
+    {
+      "ma": "80070092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 80070092 khai 1 điều kiện tenLoai ('Các sản phẩm gia dụng khác', nguồn tax.80070092); chữ 'khác' làm dòng này là phần dư (nghiPhanConLai) của sản phẩm gia dụng bằng thiếc trong nhóm — không tách thành danh sách đóng các loại gia dụng."
+    },
+    {
+      "ma": "80070093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 80070093 khai 1 điều kiện tenLoai ('Ống có thể gấp lại được (collapsible tubes)', nguồn tax.80070093); giữ nguyên cả tên tiếng Anh trong ngoặc theo chữ biểu."
+    },
+    {
+      "ma": "8007009",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 'Loại khác' trần (tieuDe.8007009) không khai dieuKienNut (máy phủ định anh em); 8007009 chỉ là tầng trung gian dẫn tới 80070091 / 80070092 / 80070093 / 80070099."
+    },
+    {
+      "ma": "80070099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần (tax.80070099) không khai điều kiện và không đưa vào spec theo luật máy phủ định; 80070099 là phần dư của 8007009 và của nhóm 800700."
+    },
+    {
+      "ma": "800700",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai dieuKienNut cho tầng 6 số 800700: cây của gói không có nút 800700 (dòng 80070020 / 80070030 / 80070040 treo thẳng dưới nhóm 8007, nhánh còn lại đi qua tầng 8007009) nên chỉ khai dòng 8 số; tiêu đề WCO 'Tin; articles n.e.c. in chapter 80' thuộc TẦNG 6 (đã có ở sổ tay 8007) — ranh giới 6→8 không khai lại, và id cấp phân nhóm không thuộc dieuKienNut."
+    },
+    {
+      "ma": "800700",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Các dòng 8 số trong nhóm chia theo HAI trục khác nhau — 80070020 / 80070030 theo NGƯỠNG độ dày (cùng khoá doDay), 80070040 / 80070091 / 80070092 / 80070093 theo TÊN loại hàng (cùng khoá tenLoai) — nên anh em cùng cách chia dùng CÙNG khoá theo từng cặp; không có chữ biểu tự chồng lấn và gói không kèm tiền lệ hay hàng thật thoả cả hai nhánh nên không khai chongLanVanBan, chongLanTruc."
+    },
+    {
+      "ma": "800700",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Gói không kèm nội dung chữ cho ba nguồn chú giải (nhom8007.nhom, ch80.chuong, phan80.phan) nên chỉ trích được từ tax.80070020, tax.80070030, tax.80070040, tax.80070091, tax.80070092, tax.80070093 và wco.800700."
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "761090",
+  "phien": "zcode-mm:loop:20261106T1449#soan-761090",
+  "dong8": {
+    "76109030": {
+      "ten": "Mái phao trong hoặc mái phao ngoài dùng cho bể chứa xăng dầu(SEN)",
+      "nguon": [
+        "tax.76109030",
+        "sen.76109030"
+      ],
+      "trich": [
+        "76109030 - - Mái phao trong hoặc mái phao ngoài dùng cho bể chứa xăng dầu(SEN)",
+        "MÁI PHAO TRONG HOẶC MÁI PHAO NGOÀI DÙNG CHO BỂ CHỨA XĂNG DẦU",
+        "Mái phao của bể chứa dầu, để tránh thất thoát bởi bay hơi, bao gồm hai kiểu: mái phao trong (sử dụng cho bể chứa xăng dầu hoặc các sản phẩm dầu mỏ), mái phao ngoài (dùng cho bể chứa dầu thô).",
+        "Chúng được làm từ vật liệu siêu bền chống ăn mòn (nhôm hoặc hợp kim nhôm)."
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "tenLoai",
+          "op": "TEN_LOAI",
+          "giaTri": "Mái phao trong hoặc mái phao ngoài",
+          "trich": "Mái phao trong hoặc mái phao ngoài",
+          "nguon": "tax.76109030"
+        },
+        {
+          "khoa": "dungCho",
+          "op": "CONG_DUNG",
+          "giaTri": "bể chứa xăng dầu",
+          "trich": "dùng cho bể chứa xăng dầu",
+          "nguon": "tax.76109030"
+        },
+        {
+          "khoa": "congDung",
+          "op": "CONG_DUNG",
+          "giaTri": "tránh thất thoát bởi bay hơi",
+          "trich": "Mái phao của bể chứa dầu, để tránh thất thoát bởi bay hơi",
+          "nguon": "sen.76109030"
+        }
+      ]
+    },
+    "76109091": {
+      "ten": "Cầu và nhịp cầu; tháp hoặc cột lưới",
+      "nguon": [
+        "tax.76109091"
+      ],
+      "trich": [
+        "76109091 - - - Cầu và nhịp cầu; tháp hoặc cột lưới"
+      ],
+      "dieuKienSo": [
+        {
+          "khoa": "tenLoai",
+          "op": "TEN_LOAI",
+          "giaTri": "Cầu và nhịp cầu; tháp hoặc cột lưới",
+          "trich": "76109091 - - - Cầu và nhịp cầu; tháp hoặc cột lưới",
+          "nguon": "tax.76109091"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "761090": {
+      "ten": "Aluminium; structures (excluding prefabricated buildings of heading no. 9406) and parts of structures, n.e.c. in heading no. 7610, plates, rods, profiles, tubes and the like",
+      "nguon": [
+        "wco.761090"
+      ],
+      "trich": [
+        "761090 Aluminium; structures (excluding prefabricated buildings of heading no. 9406) and parts of structures, n.e.c. in heading no. 7610, plates, rods, profiles, tubes and the like"
+      ],
+      "dieuKienSo": []
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "76109030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 76109030 khai 3 điều kiện: tenLoai ('Mái phao trong hoặc mái phao ngoài', nguồn tax.76109030), dungCho ('dùng cho bể chứa xăng dầu', nguồn tax.76109030) và congDung ('để tránh thất thoát bởi bay hơi', nguồn sen.76109030); gói có cả hai nguồn nên khai đủ và trích nguyên văn từng vế."
+    },
+    {
+      "ma": "76109030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hai kiểu 'mái phao trong' và 'mái phao ngoài' nằm trong CÙNG dòng 8 số 76109030, không tách thành 8 số riêng nên không tách thêm điều kiện cho từng kiểu."
+    },
+    {
+      "ma": "76109030",
+      "loai": "BO_VE",
+      "ve": "dùng cho bể chứa dầu thô",
+      "lyDo": "SEN nói mái phao ngoài dùng cho bể chứa dầu thô; đây là chi tiết kiểu trong cùng dòng 8 số, không phân biệt 76109030 với 76109091/76109099, và tuVung không có khoá phân biệt 'bể chứa dầu thô' với 'bể chứa xăng dầu' nên không khai thêm điều kiện."
+    },
+    {
+      "ma": "76109030",
+      "loai": "BO_VE",
+      "ve": "Chúng được làm từ vật liệu siêu bền chống ăn mòn (nhôm hoặc hợp kim nhôm)",
+      "lyDo": "Vật liệu nhôm là đặc trưng chung của cả heading 7610 (câu này nói về cả hai kiểu mái phao) nên không phân biệt dòng 8 số; tuVung không có giá trị 'hợp kim nhôm' cho khoá chatLieu nên không khai điều kiện vật liệu."
+    },
+    {
+      "ma": "76109091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 76109091 là phép 'hoặc' giữa hai nhánh theo TÊN hàng ('Cầu và nhịp cầu' / 'tháp hoặc cột lưới'); cả hai nhánh cùng loại nên gộp vào một khoá tenLoai với giaTri nguyên văn cả tiêu đề — tách thành hai điều kiện cùng khoá sẽ biến thành phải thỏa CẢ HAI. Gói không kèm SEN/chú giải riêng cho dòng này nên chỉ có một nguồn để trích."
+    },
+    {
+      "ma": "76109099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng 'Loại khác' trần (tax.76109099) không khai điều kiện và không đưa vào spec theo luật máy phủ định; 76109099 là phần dư của 7610909 và của nhóm 761090."
+    },
+    {
+      "ma": "7610909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề 'Loại khác' trần (tieuDe.7610909) không khai dieuKienNut; 7610909 chỉ là tầng trung gian dẫn tới 76109091 và 76109099."
+    },
+    {
+      "ma": "761090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Khai dieuKienNut ở tầng 6 số 761090 với nguồn wco.761090; tiêu đề WCO có cụm 'n.e.c. in heading no. 7610' nên là tiêu đề riêng của phân nhóm 6 số (phần 'n.e.c.' của heading 7610), không phải tên chung của cả heading."
+    },
+    {
+      "ma": "761090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "dieuKienNut của 761090 để dieuKienSo rỗng: tiêu đề WCO không có biên số nào, và vế giới hạn duy nhất (loại trừ 9406) không diễn đạt được bằng khoá tu-vung — để cổng 1 chặn người duyệt xem, không ép."
+    },
+    {
+      "ma": "761090",
+      "loai": "BO_VE",
+      "ve": "(excluding prefabricated buildings of heading no. 9406)",
+      "lyDo": "Loại trừ cấp heading 7610, không phân biệt các dòng 8 số trong nhóm (76109030 / 76109091 / 76109099); gói không có khoá tu-vung cho nhà tiền chế thuộc 9406 nên không khai điều kiện."
+    },
+    {
+      "ma": "761090",
+      "loai": "BO_VE",
+      "ve": "n.e.c. in heading no. 7610",
+      "lyDo": "Vế giới hạn 'chưa phân loại ở mục khác trong heading 7610' định nghĩa phạm vi của chính phân nhóm 6 số, không phân biệt dòng 8 số trong nhóm; gói không có khoá tu-vung cho vế này nên không khai điều kiện."
+    },
+    {
+      "ma": "761090",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "khongPhaiNhaTienChe9406",
+      "ghiChu": "(excluding prefabricated buildings of heading no. 9406)"
+    },
+    {
+      "ma": "76109030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "76109030 và 76109091 đều chia theo TÊN hàng (tenLoai), 76109030 chỉ thêm vế công dụng/dùng cho — không phải chồng lấn trục tên/công dụng. Gói không kèm tiền lệ hay hàng thật thoả cả hai nhánh nên không khai chongLanTruc, để mảng rỗng cho người soát chốt."
+    }
+  ],
+  "chongLanVanBan": [],
+  "chongLanTruc": []
+}
