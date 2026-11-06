@@ -1,0 +1,12 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "740811",
+  "phien": "zcode-sub:glm-5.3:20261106T1528#soan-740811",
+  "dong8": {
+    "74081120": { "dieuKienSo": [ { "fact": "kichThuoc", "op": "<=", "value": 8, "donVi": "mm" } ] },
+    "74081130": { "dieuKienSo": [ { "fact": "kichThuoc", "op": ">", "value": 8, "donVi": "mm" }, { "fact": "kichThuoc", "op": "<=", "value": 14, "donVi": "mm" } ] }
+  },
+  "ghiChuSoan": [
+    { "ma": "74081120", "loai": "QUYET_DINH", "ghiChu": "tax.74081120 \"Có kích thước mặt cắt ngang lớn nhất không quá 8 mm\" ⇒ kichThuoc <= 8 mm; tax.74081130 \"… trên 8 mm nhưng không quá 14 mm\" ⇒ kichThuoc > 8 và <= 14 (biên đã đối chiếu tay: \"không quá\" = <=, \"trên\" = >)." }
+  ]
+}
