@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0915#soan-722870",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-722870",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,12 @@
       "hs": "72287010",
       "nguon": "tax.72287010",
       "trich": "72287010 - - Chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn qua khuôn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chuaGiaCongQuaMucCanNong",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -30,9 +35,19 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "72287010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72287010 \"Chưa được gia công quá mức cán nóng, kéo nóng hoặc ép đùn qua khuôn\" ⇒ chuaGiaCongQuaMucCanNong CO (cách đọc nguyên văn của khoá; \"Chưa …\" đã nằm trong nhãn khoá nên op CO chứ không phải KHONG)."
+    },
+    {
+      "ma": "72287090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72287090 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
       "ma": "722870",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:722870:chua-co, không soạn tiếp"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 722870-01 KHONG_LECH (5768/TB-TCHQ ↔ 1836, 2649/TB-TCHQ: thép hình chữ H cán nóng vào .10; thép góc đã mạ kẽm vào .90): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

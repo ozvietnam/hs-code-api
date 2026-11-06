@@ -1,14 +1,81 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "721491",
-  "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721491",
-  "dong8": {},
-  "dieuKienNut": {},
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721491",
+  "dong8": {
+    "72149111": {
+      "dieuKienSo": []
+    },
+    "72149112": {
+      "dieuKienSo": []
+    },
+    "72149120": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "7214911": {
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
   "ghiChuSoan": [
+    {
+      "ma": "7214911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7214911 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %."
+    },
+    {
+      "ma": "72149120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72149120 \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %."
+    },
+    {
+      "ma": "72149111",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongMangan",
+      "ghiChu": "tax.72149111 \"Có hàm lượng carbon từ 0,38% trở lên và hàm lượng mangan dưới 1,15% tính theo khối lượng\" — vế \"hàm lượng mangan dưới 1,15%\" là vế GIỚI HẠN không có khoá (tu-vung@2 chỉ có hamLuongCarbon/Crom/Niken). Bỏ vế mangan làm đổi mã .11 ↔ .12 (carbon 0,38–0,46% thuộc cả hai) nên không ghi BO_VE."
+    },
+    {
+      "ma": "72149112",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongMangan",
+      "ghiChu": "tax.72149112 \"Có hàm lượng carbon từ 0,17% đến 0,46% và hàm lượng mangan từ 1,2% đến dưới 1,65% tính theo khối lượng\" — vế \"hàm lượng mangan từ 1,2% đến dưới 1,65%\" không có khoá hamLuongMangan; bỏ vế làm đổi mã .11 ↔ .12."
+    },
     {
       "ma": "721491",
       "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721491hua-co. Không soạn điều kiện cho mã này."
+      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG hamLuongMangan: .11 và .12 phân biệt nhau chỉ nhờ điều kiện mangan (carbon 0,38%–0,46% thuộc cả hai). Không ép cho xanh. Dòng .20 và tiêu đề 7214911 đã khai đủ (hamLuongCarbon); .19 \"Loại khác\" trần không ghi."
+    },
+    {
+      "ma": "721491",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721491-02 LECH_CHUA_PHAN_XU (3268/TB-TCHQ thép S50C xếp .20 so với chữ .11; 721491-01 KHONG_LECH 101/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "72149120",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ đầu giới thiệu thuộc tính hàm lượng carbon; giá trị cụ thể của vế sau được phủ bằng hamLuongCarbon cùng mục"
+    },
+    {
+      "ma": "7214911",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ đầu giới thiệu thuộc tính hàm lượng carbon; giá trị cụ thể của vế sau được phủ bằng hamLuongCarbon cùng mục"
     }
   ]
 }

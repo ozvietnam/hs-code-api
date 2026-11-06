@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721240",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721240",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,7 +16,14 @@
       "id": "7212401",
       "nguon": "tieuDe.7212401",
       "trich": "7212401 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -25,28 +32,72 @@
       "hs": "72124011",
       "nguon": "tax.72124011",
       "trich": "72124011 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72124012",
       "nguon": "tax.72124012",
       "trich": "72124012 - - - Dạng đai và dải khác(SEN)",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "72124011"
+      ]
     },
     {
       "hs": "72124013",
       "nguon": "tax.72124013",
       "trich": "72124013 - - - Loại khác, được sơn sau khi phủ, mạ kẽm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "SON_SAU_MA_KEM"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72124014",
       "nguon": "tax.72124014",
       "trich": "72124014 - - - Loại khác, được sơn sau khi phủ, mạ hợp kim nhôm - kẽm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "được sơn sau khi phủ"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "mạ hợp kim nhôm - kẽm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -60,7 +111,21 @@
       "hs": "72124091",
       "nguon": "tax.72124091",
       "trich": "72124091 - - - Dạng đai và dải(SEN), chiều rộng không quá 400 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -73,9 +138,60 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "7212401",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7212401 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 % (\"dưới\" = <). Tiêu đề anh em 7212409 \"Loại khác\" trần ⇒ không điều kiện."
+    },
+    {
+      "ma": "7212401",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ đầu chỉ thuộc tính hàm lượng carbon, chữ giới thiệu thuần; ngưỡng đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72124011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72124011 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI] (cách đọc \"dạng đai và dải(SEN)\") + chieuRong <= 400 mm (\"không quá\" = <=)."
+    },
+    {
+      "ma": "72124012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72124012 \"Dạng đai và dải khác(SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI] (cách đọc cho phép \"khác\") + phanConLai [72124011]: chữ \"khác\" trỏ anh em đứng trước cùng tên là .11 (đai và dải rộng không quá 400 mm). Chỉ phủ định .11, không phủ định .13/.14 vì chúng đứng sau và là \"Loại khác, <vế>\"."
+    },
+    {
+      "ma": "72124013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72124013 \"Loại khác, được sơn sau khi phủ, mạ kẽm\" ⇒ chỉ điều kiện của vế: lopMaPhu TRONG [SON_SAU_MA_KEM] (cách đọc nguyên văn \"được sơn sau khi phủ, mạ kẽm\"); máy tự phủ định .11/.12."
+    },
+    {
+      "ma": "72124014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72124014 \"Loại khác, được sơn sau khi phủ, mạ hợp kim nhôm - kẽm\" ⇒ chỉ điều kiện của vế. Khoá lopMaPhu (tu-vung@2) KHÔNG có giá trị cho lớp mạ hợp kim nhôm - kẽm (chỉ có SON_SAU_MA_KEM cho kẽm) ⇒ dùng tenLoai theo tiền lệ 721250 tiêu đề 7212502 (tenLoai \"nhôm - kẽm\"): hai điều kiện tenLoai là chuỗi con nguyên văn (\"được sơn sau khi phủ\" VÀ \"mạ hợp kim nhôm - kẽm\"; không gói một chuỗi vì có dấu phẩy). Nếu từ vựng sau này thêm giá trị lopMaPhu cho nhôm - kẽm thì đổi sang đó cho cùng thang với .13."
+    },
+    {
+      "ma": "72124019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72124019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "72124091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72124091 \"Dạng đai và dải(SEN), chiều rộng không quá 400 mm\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI] + chieuRong <= 400 mm, cùng khoá và cùng thang với .11."
+    },
+    {
+      "ma": "72124099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72124099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định .91)."
+    },
+    {
+      "ma": "7212409",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7212409 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào dieuKienNut."
+    },
+    {
       "ma": "721240",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721240hua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721240-01 KHONG_LECH (1762, 1763, 1983, 1984 ↔ 1606, 1641/TB-TCHQ: khác chiều rộng) và 721240-02 LECH_CHUA_PHAN_XU (1606, 1641/TB-TCHQ thép EGI PCM rộng 510 mm xếp 7212.40.19 thay vì .13 \"được sơn sau khi phủ, mạ kẽm\"; chưa ai phân xử, không chọn bên): soạn theo chữ biểu, khớp bảng — người soát đọc mục 721240-02."
     }
   ]
 }

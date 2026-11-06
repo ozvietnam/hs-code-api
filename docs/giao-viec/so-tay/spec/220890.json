@@ -1,9 +1,209 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "220890",
-  "phien": "zcode-sub:glm-5.3:20261105T1634#soan-220890",
-  "dong8": {},
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-220890",
+  "dong8": {
+    "22089010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu bổ sam-su"
+        },
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 40,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22089020": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu bổ sam-su"
+        },
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 40,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22089030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu sam-su"
+        },
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 40,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22089040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Rượu sam-su"
+        },
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 40,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22089050": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Rượu arrack",
+            "rượu dứa"
+          ]
+        },
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 40,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22089060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Rượu arrack",
+            "rượu dứa"
+          ]
+        },
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 40,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22089070": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Rượu đắng"
+          ]
+        },
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 57,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22089080": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TUONG_TU",
+          "value": [
+            "Rượu đắng"
+          ]
+        },
+        {
+          "fact": "nongDoCon",
+          "op": ">",
+          "value": 57,
+          "donVi": "%"
+        }
+      ]
+    },
+    "22089091": {
+      "dieuKienSo": [
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 1.14,
+          "donVi": "%"
+        }
+      ]
+    }
+  },
   "ghiChuSoan": [
-    { "ma": "220890", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:220890:chua-co, không soạn tiếp" }
+    {
+      "ma": "22089010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089010 \"Rượu bổ sam-su có nồng độ cồn không quá 40% tính theo thể tích (SEN)\" ⇒ tenLoai TEN_LOAI \"Rượu bổ sam-su\" + nongDoCon <= 40 %. \"không quá\" = <=. \"(SEN)\" là ngoặc chú thích nguồn kỹ thuật. Định nghĩa sam-su/rượu bổ chỉ có trong SEN, không đưa thành điều kiện (cổng 3: chỉ chữ biểu của dòng)."
+    },
+    {
+      "ma": "22089020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089020 \"Rượu bổ sam-su có nồng độ cồn trên 40% tính theo thể tích(SEN)\" ⇒ tenLoai \"Rượu bổ sam-su\" + nongDoCon > 40 %. \"trên\" = >."
+    },
+    {
+      "ma": "22089030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089030 \"Rượu sam-su khác có nồng độ cồn không quá 40% tính theo thể tích (SEN)\" ⇒ tenLoai TEN_LOAI \"Rượu sam-su\" + nongDoCon <= 40 %. Chữ \"khác\" nghĩa là sam-su ngoài \"Rượu bổ sam-su\" (.10) cùng mức cồn. KHÔNG khai phanConLai [22089010]/true: đã thử, cổng 2 báo cong2-dong-khong-toi-duoc vì phủ định một tên chứa trọn tên mình không tới được. Ranh giới do \"tên cụ thể hơn thắng\" (tenCuTheHon): tên \"Rượu bổ sam-su\" chứa \"Rượu sam-su\" nên .10 thắng .30 khi hàng nêu bổ. Cảnh báo nghi-phan-con-lai giữ nguyên, không khai phanConLai:false vì chữ \"khác\" đúng là phần còn lại."
+    },
+    {
+      "ma": "22089040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089040 \"Rượu sam-su khác có nồng độ cồn trên 40% tính theo thể tích (SEN)\" ⇒ tenLoai \"Rượu sam-su\" + nongDoCon > 40 %. Cùng lý do 22089030 (không khai phanConLai; .20 \"Rượu bổ sam-su\" thắng nhờ tên cụ thể hơn)."
+    },
+    {
+      "ma": "22089050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089050 \"Rượu arrack hoặc rượu dứa có nồng độ cồn không quá 40% tính theo thể tích\" ⇒ tenLoai TEN_LOAI [\"Rượu arrack\",\"rượu dứa\"] (mảng = hoặc; hai tên thay thế nhau) + nongDoCon <= 40 %."
+    },
+    {
+      "ma": "22089060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089060 \"Rượu arrack hoặc rượu dứa có nồng độ cồn trên 40% tính theo thể tích\" ⇒ tenLoai [\"Rượu arrack\",\"rượu dứa\"] + nongDoCon > 40 %."
+    },
+    {
+      "ma": "22089070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089070 \"Rượu đắng và các loại đồ uống tương tự có nồng độ cồn không quá 57% tính theo thể tích\" ⇒ vế mở \"và các loại đồ uống tương tự\" ⇒ tenLoai TUONG_TU [\"Rượu đắng\"] (quy ước vòng 7) + nongDoCon <= 57 %. Hàng chỉ \"tương tự\" lúc chạy CHƯA BIẾT, hỏi người khai."
+    },
+    {
+      "ma": "22089080",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089080 \"Rượu đắng và các loại đồ uống tương tự có nồng độ cồn trên 57% tính theo thể tích\" ⇒ tenLoai TUONG_TU [\"Rượu đắng\"] + nongDoCon > 57 %."
+    },
+    {
+      "ma": "2208909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2208909 \"Loại khác\" trần ⇒ không điều kiện, không khai dieuKienNut (máy phủ định anh em .10–.80)."
+    },
+    {
+      "ma": "22089091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089091 \"Có nồng độ cồn không quá 1,14% tính theo thể tích\" ⇒ nongDoCon <= 1.14 % (\"1,14\" = 1.14; \"có\" là chữ dẫn, vế giới hạn là \"không quá 1,14%\")."
+    },
+    {
+      "ma": "22089099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22089099 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "220890",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 220890-01 LECH_CHUA_PHAN_XU (5286/TB-TCHQ: soju chưng cất từ gạo xếp .99, chữ .30 \"Rượu sam-su khác\" có thể bao hàm; chưa ai phân xử) và 220890-02 KHONG_LECH (soju không phải rượu đắng .70): soạn theo chữ biểu, không chọn bên, khớp bảng."
+    }
   ]
 }

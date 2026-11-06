@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-720916",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-720916",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,14 @@
       "hs": "72091610",
       "nguon": "tax.72091610",
       "trich": "72091610 - - - Chiều rộng không quá 1.250 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 1250,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -30,9 +37,19 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "72091610",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72091610 \"Chiều rộng không quá 1.250 mm\" ⇒ chieuRong <= 1250 mm (\"không quá\" = <=; 1.250 = 1250). Khoá chieuRong theo tu-vung@2."
+    },
+    {
+      "ma": "72091690",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72091690 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
       "ma": "720916",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:720916hua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 720916-01 KHONG_LECH (TB-TCHQ 444/537/6786 ↔ 1195/1209/1332): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

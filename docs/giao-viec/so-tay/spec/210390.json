@@ -1,9 +1,110 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "210390",
-  "phien": "zcode-sub:glm-5.3:20261105T1605#soan-210390",
-  "dong8": {},
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-210390",
+  "dong8": {
+    "21039011": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tương ớt"
+        }
+      ]
+    },
+    "21039012": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nước mắm"
+        }
+      ]
+    },
+    "21039013": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nước xốt"
+        }
+      ],
+      "phanConLai": true
+    },
+    "21039021": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Mắm tôm",
+            "mắm ruốc",
+            "belachan"
+          ]
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "2103901": {
+      "dieuKienSo": []
+    },
+    "2103902": {
+      "dieuKienSo": []
+    }
+  },
   "ghiChuSoan": [
-    { "ma": "210390", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:210390hua-co, không soạn tiếp" }
+    {
+      "ma": "2103901",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "loaiHangThuocTieuDe",
+      "ghiChu": "tieuDe.2103901 \"Nước xốt và các chế phẩm làm nước xốt\" (EN \"Sauces and preparations therefor\")"
+    },
+    {
+      "ma": "2103902",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "loaiHangThuocTieuDe",
+      "ghiChu": "tieuDe.2103902 \"Gia vị hỗn hợp và bột canh hỗn hợp\" (EN \"Mixed condiments and mixed seasonings\")"
+    },
+    {
+      "ma": "21039011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.21039011 \"Tương ớt\" ⇒ tenLoai TEN_LOAI \"Tương ớt\" (tên hàng nguyên văn)."
+    },
+    {
+      "ma": "21039012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.21039012 \"Nước mắm\" ⇒ tenLoai TEN_LOAI \"Nước mắm\" (tên hàng nguyên văn)."
+    },
+    {
+      "ma": "21039013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.21039013 \"Nước xốt loại khác\" ⇒ tenLoai TEN_LOAI \"Nước xốt\" (tên hàng nguyên văn) + phanConLai true: phần còn lại có tên của anh em 21039011/21039012 (chữ \"loại khác\")."
+    },
+    {
+      "ma": "21039019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.21039019 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "21039021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.21039021 \"Mắm tôm (mắm ruốc) kể cả belachan (blachan) (SEN)\" ⇒ tenLoai TEN_LOAI [\"Mắm tôm\",\"mắm ruốc\",\"belachan\"]: \"mắm ruốc\" là tên khác trong ngoặc của chính chữ biểu, \"kể cả belachan\" là vế nêu thêm một tên hàng (không phải điều kiện hẹp thêm). \"(blachan)\", \"(SEN)\" là ngoặc chú thích."
+    },
+    {
+      "ma": "21039029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.21039029 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
+      "ma": "210390",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 210390-03 LECH_CHUA_PHAN_XU (3790/TB-TCHQ .11 Tương ớt – 3788/TB-TCHQ .13 Nước xốt loại khác; hai TB chỉ ghi \"theo phụ lục\", chưa phân xử) và 210390-01/-02/-04 KHONG_LECH (1225, 238, 7341/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "210390",
+      "loai": "DUNG",
+      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG:2103901,2103902:loaiHangThuocTieuDe. Hai tiêu đề chỉ nêu TÊN LOẠI thượng danh (\"Nước xốt và các chế phẩm làm nước xốt\"; \"Gia vị hỗn hợp và bột canh hỗn hợp\") còn dòng con nêu hạ danh (\"Tương ớt\", \"Nước mắm\", \"Mắm tôm\"): tên hạ danh không chứa chữ của tên thượng danh nên bộ so chữ tenLoai không nối được. Đã thử: (a) tenLoai mảng ở tiêu đề ⇒ cong1-khong-phu-kin:210390:tenLoai=Tương ớt (tầng gốc hai tiêu đề không có \"Loại khác\") + cong2-dong-khong-toi-duoc:21039019 (\"chế phẩm làm nước xốt\" chứa trọn \"Nước xốt\" của 21039013); (b) HOAC [[tenLoai Nước xốt],[tenLoai chế phẩm + congDung làm nước xốt]] ⇒ dòng 21039011/12 không tới được (ứng viên ghép không nở HOAC). Không đổi sang khoá khác để né. Điều kiện các dòng con đã soạn đủ; tiêu đề để trống chờ khoá."
+    }
   ]
 }

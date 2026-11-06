@@ -1,9 +1,43 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "220299",
-  "phien": "zcode-sub:glm-5.3:20261105T1610#soan-220299",
-  "dong8": {},
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-220299",
+  "dong8": {
+    "22029910": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đồ uống chứa sữa tiệt trùng có hương liệu" }
+      ]
+    },
+    "22029920": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đồ uống sữa đậu nành" }
+      ]
+    },
+    "22029930": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đồ uống từ nước dừa" }
+      ]
+    },
+    "22029940": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Đồ uống có chứa cà phê", "đồ uống có hương liệu cà phê"] }
+      ]
+    },
+    "22029950": {
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đồ uống không có ga khác dùng ngay được không cần pha loãng" }
+      ],
+      "phanConLai": true
+    }
+  },
+  "dieuKienNut": {},
   "ghiChuSoan": [
-    { "ma": "220299", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:220299:chua-co, không soạn tiếp" }
+    { "ma": "22029910", "loai": "QUYET_DINH", "ghiChu": "tax.22029910 \"Đồ uống chứa sữa tiệt trùng có hương liệu\" ⇒ chữ biểu chỉ nêu TÊN hàng (kèm đặc tính sữa tiệt trùng có hương liệu nằm ngay trong tên) ⇒ tenLoai TEN_LOAI nguyên văn cả cụm; không có khoá riêng cho sữa tiệt trùng/hương liệu." },
+    { "ma": "22029920", "loai": "QUYET_DINH", "ghiChu": "tax.22029920 \"Đồ uống sữa đậu nành\" ⇒ chữ biểu chỉ nêu tên ⇒ tenLoai nguyên văn." },
+    { "ma": "22029930", "loai": "QUYET_DINH", "ghiChu": "tax.22029930 \"Đồ uống từ nước dừa (SEN)\" ⇒ tenLoai \"Đồ uống từ nước dừa\" (bỏ chú thích \"(SEN)\" là nhãn nội bộ của biểu, không phải đặc tính hàng). Không lấy 'nguyên liệu chính là nước dừa' từ SEN (cổng 3: chỉ chữ biểu)." },
+    { "ma": "22029940", "loai": "QUYET_DINH", "ghiChu": "tax.22029940 \"Đồ uống có chứa cà phê hoặc đồ uống có hương liệu cà phê\" ⇒ chữ \"hoặc\" nối hai tên hàng thay thế nhau ⇒ tenLoai là MẢNG hai chuỗi con nguyên văn (không gói một chuỗi, QUY-TRINH 3.2)." },
+    { "ma": "22029950", "loai": "QUYET_DINH", "ghiChu": "tax.22029950 \"Đồ uống không có ga khác dùng ngay được không cần pha loãng\" ⇒ có chữ \"khác\" nên là phần còn lại CÓ TÊN ⇒ phanConLai true (phủ định các dòng .10–.40); tenLoai nguyên văn cả tên (gồm \"không có ga\" và \"dùng ngay được không cần pha loãng\" — không có khoá có/không ga hay pha loãng trong tu-vung@2)." },
+    { "ma": "22029990", "loai": "QUYET_DINH", "ghiChu": "tax.22029990 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)." },
+    { "ma": "220299", "loai": "LECH_TIEN_LE", "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 220299-01, 220299-02, 220299-03 loại KHONG_LECH (3074/TB-TCHQ, 70/TB-TCHQ, 71/TB-TCHQ, 281/TB-TCHQ): soạn theo chữ biểu, khớp bảng." }
   ]
 }

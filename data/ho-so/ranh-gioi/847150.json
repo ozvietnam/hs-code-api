@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1000#soan-847150",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-847150",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,18 @@
       "hs": "84715010",
       "nguon": "tax.84715010",
       "trich": "84715010 - - Bộ xử lý dùng cho máy tính cá nhân (kể cả loại máy xách tay)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ xử lý"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy tính cá nhân"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -30,9 +41,19 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "84715010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84715010 \"Bộ xử lý dùng cho máy tính cá nhân (kể cả loại máy xách tay)\" ⇒ tenLoai \"Bộ xử lý\" + dungCho \"máy tính cá nhân\" (chữ \"dùng cho\" ⇒ dungCho). \"(kể cả loại máy xách tay)\" là vế \"kể cả\" bao hàm một loại con của máy tính cá nhân, không thêm điều kiện."
+    },
+    {
+      "ma": "84715090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.84715090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em .10)."
+    },
+    {
       "ma": "847150",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG theo QUY-TRINH-SO-HOA mục 2.2/5; không soạn điều kiện"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 847150-01 LECH_CHUA_PHAN_XU (350/TB-CHQ Dell Precision tower xếp .10 ↔ 351/TB-CHQ Dell Precision rack xếp .90, chưa ai phân xử): soạn theo chữ biểu — điều kiện .10 chỉ là bộ xử lý dùng cho máy tính cá nhân; kiểu vỏ tower/rack KHÔNG phải tiêu chí của chữ biểu nên không mã hoá; lúc chạy, máy trạm là điểm hỏi người khai (máy trạm có là máy tính cá nhân không)."
     }
   ]
 }

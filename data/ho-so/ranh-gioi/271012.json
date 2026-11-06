@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-271012",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-271012",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -16,14 +16,34 @@
       "id": "271012~r3290",
       "nguon": "tieuDe.271012~r3290",
       "trich": "271012~r3290 RON 97 và cao hơn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 97,
+          "donVi": "RON"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "271012~r3294",
       "nguon": "tieuDe.271012~r3294",
       "trich": "271012~r3294 RON 90 và cao hơn nhưng dưới RON 97",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 90,
+          "donVi": "RON"
+        },
+        {
+          "fact": "triSoOctan",
+          "op": "<",
+          "value": 97,
+          "donVi": "RON"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -31,7 +51,8 @@
       "nguon": "tieuDe.271012~r3298",
       "trich": "271012~r3298 RON khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "id": "2710121",
@@ -51,7 +72,18 @@
       "id": "2710123",
       "nguon": "tieuDe.2710123",
       "trich": "2710123 Xăng máy bay, loại sử dụng cho động cơ máy bay kiểu piston",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xăng máy bay"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ máy bay kiểu piston"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -60,14 +92,34 @@
       "hs": "27101211",
       "nguon": "tax.27101211",
       "trich": "27101211 - - - - RON 97 và cao hơn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 97,
+          "donVi": "RON"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101212",
       "nguon": "tax.27101212",
       "trich": "27101212 - - - - RON 90 và cao hơn nhưng dưới RON 97",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 90,
+          "donVi": "RON"
+        },
+        {
+          "fact": "triSoOctan",
+          "op": "<",
+          "value": 97,
+          "donVi": "RON"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -75,20 +127,31 @@
       "nguon": "tax.27101213",
       "trich": "27101213 - - - - RON khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "27101221",
       "nguon": "tax.27101221",
       "trich": "27101221 - - - - - Chưa pha chế",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101222",
       "nguon": "tax.27101222",
       "trich": "27101222 - - - - - Pha chế với ethanol",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -102,14 +165,24 @@
       "hs": "27101224",
       "nguon": "tax.27101224",
       "trich": "27101224 - - - - - Chưa pha chế",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101225",
       "nguon": "tax.27101225",
       "trich": "27101225 - - - - - Pha chế với ethanol",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -123,14 +196,24 @@
       "hs": "27101227",
       "nguon": "tax.27101227",
       "trich": "27101227 - - - - - Chưa pha chế",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101228",
       "nguon": "tax.27101228",
       "trich": "27101228 - - - - - Pha chế với ethanol",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "phaCheVoiEthanol",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -144,7 +227,14 @@
       "hs": "27101231",
       "nguon": "tax.27101231",
       "trich": "27101231 - - - - Octane 100 và cao hơn(SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "triSoOctan",
+          "op": ">=",
+          "value": 100,
+          "donVi": "octane"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -158,14 +248,26 @@
       "hs": "27101240",
       "nguon": "tax.27101240",
       "trich": "27101240 - - - Tetrapropylene",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tetrapropylene"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101250",
       "nguon": "tax.27101250",
       "trich": "27101250 - - - Dung môi trắng (white spirit)(SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dung môi trắng"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -179,21 +281,43 @@
       "hs": "27101270",
       "nguon": "tax.27101270",
       "trich": "27101270 - - - Dung môi nhẹ khác (SEN)",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dung môi nhẹ"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "27101250",
+        "27101260"
+      ]
     },
     {
       "hs": "27101280",
       "nguon": "tax.27101280",
       "trich": "27101280 - - - Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "pha chế xăng động cơ"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101291",
       "nguon": "tax.27101291",
       "trich": "27101291 - - - - Alpha olefins",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Alpha olefins"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -213,9 +337,153 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "2710121",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "coPhaChi",
+      "ghiChu": "tieuDe.2710121 \"Xăng động cơ, có pha chì\" — vế GIỚI HẠN \"có pha chì\" không có khoá CO_KHONG trong tu-vung@2 (không có khoá nào đọc \"pha chì\"). Bỏ vế làm đổi nhánh 2710121 ↔ 2710122 (có chì/không chì) nên không ghi BO_VE và không ghi tenLoai \"Xăng động cơ\" một mình."
+    },
+    {
+      "ma": "2710122",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "coPhaChi",
+      "ghiChu": "tieuDe.2710122 \"Xăng động cơ, không pha chì\" — vế \"không pha chì\" (op KHONG của khoá coPhaChi đề xuất) không có khoá; cùng lý do với 2710121."
+    },
+    {
+      "ma": "27101211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101211 \"RON 97 và cao hơn\" ⇒ triSoOctan >= 97 RON (\"và cao hơn\" = từ 97 trở lên)."
+    },
+    {
+      "ma": "27101212",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101212 \"RON 90 và cao hơn nhưng dưới RON 97\" ⇒ triSoOctan >= 90 RON VÀ < 97 RON (\"dưới\" = <)."
+    },
+    {
+      "ma": "27101213",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101213 \"RON khác\" ⇒ phần còn lại có tên (cùng nhóm RON, trừ .11 và .12) ⇒ phanConLai true, không điều kiện riêng."
+    },
+    {
+      "ma": "271012~r3290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.271012~r3290 \"RON 97 và cao hơn\" (tầng không mã) ⇒ triSoOctan >= 97 RON."
+    },
+    {
+      "ma": "271012~r3294",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.271012~r3294 \"RON 90 và cao hơn nhưng dưới RON 97\" (tầng không mã) ⇒ triSoOctan >= 90 RON VÀ < 97 RON."
+    },
+    {
+      "ma": "271012~r3298",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.271012~r3298 \"RON khác\" (tầng không mã) ⇒ phần còn lại có tên ⇒ phanConLai true."
+    },
+    {
+      "ma": "27101221",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101221 \"Chưa pha chế\" ⇒ phaCheVoiEthanol KHONG (khoá đọc \"chưa pha chế\" là KHÔNG; lặp ở r3290)."
+    },
+    {
+      "ma": "27101222",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101222 \"Pha chế với ethanol\" ⇒ phaCheVoiEthanol CO."
+    },
+    {
+      "ma": "27101224",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101224 \"Chưa pha chế\" ⇒ phaCheVoiEthanol KHONG."
+    },
+    {
+      "ma": "27101225",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101225 \"Pha chế với ethanol\" ⇒ phaCheVoiEthanol CO."
+    },
+    {
+      "ma": "27101227",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101227 \"Chưa pha chế\" ⇒ phaCheVoiEthanol KHONG."
+    },
+    {
+      "ma": "27101228",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101228 \"Pha chế với ethanol\" ⇒ phaCheVoiEthanol CO."
+    },
+    {
+      "ma": "27101223",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101223 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em). Tương tự 27101226, 27101229."
+    },
+    {
+      "ma": "2710123",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710123 \"Xăng máy bay, loại sử dụng cho động cơ máy bay kiểu piston\" ⇒ tenLoai \"Xăng máy bay\" + dungCho \"động cơ máy bay kiểu piston\" (chữ \"loại sử dụng cho …\" ⇒ dungCho)."
+    },
+    {
+      "ma": "27101231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101231 \"Octane 100 và cao hơn(SEN)\" ⇒ triSoOctan >= 100 octane (đơn vị \"octane\" như chữ trích). \"(SEN)\" là ghi chú trỏ chú giải, không thành điều kiện."
+    },
+    {
+      "ma": "27101239",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101239 \"Loại khác (SEN)\" ⇒ coi như \"Loại khác\" trần (phần \"(SEN)\" chỉ là ghi chú trỏ chú giải), không điều kiện."
+    },
+    {
+      "ma": "27101240",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101240 \"Tetrapropylene\" ⇒ chữ biểu chỉ nêu TÊN hàng ⇒ tenLoai \"Tetrapropylene\"."
+    },
+    {
+      "ma": "27101250",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101250 \"Dung môi trắng (white spirit)(SEN)\" ⇒ tenLoai \"Dung môi trắng\"; \"(white spirit)\" là ngoặc chú thích tên Anh, \"(SEN)\" ghi chú, không thành điều kiện. Không lấy dải sôi 130–230 °C từ SEN (không có trong chữ biểu của dòng)."
+    },
+    {
+      "ma": "27101260",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "hamLuongCauTuThom",
+      "ghiChu": "tax.27101260 \"Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng\" — vế GIỚI HẠN \"có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng\" cần khoá SO đơn vị % (hàm lượng cấu tử thơm); tu-vung@2 không có (hamLuongCarbon/Crom/Niken là nguyên tố). Bỏ vế làm đổi mã .60 ↔ .70 (bảng tiền lệ 271012-02/-03 nói đúng ranh giới này) nên không ghi BO_VE."
+    },
+    {
+      "ma": "27101270",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101270 \"Dung môi nhẹ khác (SEN)\" ⇒ tenLoai \"Dung môi nhẹ\" + phần còn lại có tên: \"khác\" trỏ các dòng dung môi đứng trước (.50 white spirit, .60 dung môi cấu tử thơm thấp) ⇒ phanConLai mảng [\"27101250\",\"27101260\"]; .40 Tetrapropylene không phải dung môi nên không đưa vào. Không lấy tiêu chí dải chưng cất ≤ 100 °C từ SEN (chữ biểu của dòng không nêu)."
+    },
+    {
+      "ma": "27101280",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101280 \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" ⇒ congDung \"pha chế xăng động cơ\" (vế GIỚI HẠN \"để pha chế xăng động cơ\" áp cho cả tập Naphtha, reformate và chế phẩm khác — khớp bảng tiền lệ 271012-04). Không liệt kê đóng \"Naphtha, reformate\" thành tenLoai (vế mở \"và các chế phẩm khác\" — quy ước 392690)."
+    },
+    {
+      "ma": "27101291",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101291 \"Alpha olefins\" ⇒ chữ biểu chỉ nêu TÊN hàng ⇒ tenLoai \"Alpha olefins\"."
+    },
+    {
+      "ma": "27101292",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "doChopChay",
+      "ghiChu": "tax.27101292 \"Loại khác, spirit dầu mỏ(1), có độ chớp cháy dưới 23oC\" — \"Loại khác, <vế>\": vế GIỚI HẠN \"có độ chớp cháy dưới 23oC\" cần khoá SO (độ chớp cháy, °C), tu-vung@2 không có. Vế \"spirit dầu mỏ\" là tên hàng (tenLoai) nhưng bỏ vế chớp cháy làm đổi mã .92 ↔ .99 nên để trống, không ép."
+    },
+    {
+      "ma": "27101299",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101299 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "2710129",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710129 \"Loại khác\" trần ⇒ không điều kiện."
+    },
+    {
       "ma": "271012",
       "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:271012:chua-co (QUY-TRINH-SO-HOA §2.2, §5); không soạn điều kiện, Claude giữ"
+      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG coPhaChi (2710121/2710122, có chì ↔ không chì: nền của 15 dòng xăng động cơ), hamLuongCauTuThom (27101260), doChopChay (27101292). Thêm DỪNG cong2-chong-lan-truc:27101280 (nhánh công dụng \"để pha chế xăng động cơ\" chồng trục với nhánh tên 2710123 Xăng máy bay, 27101240 Tetrapropylene, 27101250 Dung môi trắng): không có hàng THẬT nào thoả cả hai nhánh nên không khai chongLanTruc/viDuHang (không bịa). Các mục có khoá (RON, ethanol, tên, công dụng) đã khai đủ; mục thiếu khoá để dieuKienSo trống, không ép."
+    },
+    {
+      "ma": "271012",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 271012-01 LECH_CHUA_PHAN_XU (1420, 3055, 3056, 928/TB-TCHQ naphtha hoá dầu .70 ↔ .99), 271012-02 LECH_CHUA_PHAN_XU (6491/TB-TCHQ dung môi C7–C8 .60/.70 ↔ .99), 271012-03 KHONG_LECH (3054, 3055), 271012-04 KHONG_LECH (.80 ↔ .99): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

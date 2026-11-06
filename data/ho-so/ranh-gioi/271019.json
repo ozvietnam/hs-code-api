@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261105T1542#soan-271019",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-271019",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -16,14 +16,37 @@
       "id": "2710194",
       "nguon": "tieuDe.2710194",
       "trich": "2710194 Dầu và mỡ bôi trơn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dầu",
+            "mỡ"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "bôi trơn"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "2710197",
       "nguon": "tieuDe.2710197",
       "trich": "2710197 Nhiên liệu diesel; các loại dầu nhiên liệu",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Nhiên liệu diesel",
+            "dầu nhiên liệu"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -32,42 +55,98 @@
       "hs": "27101920",
       "nguon": "tax.27101920",
       "trich": "27101920 - - - Dầu thô đã tách phần nhẹ",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu thô đã tách phần nhẹ"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101930",
       "nguon": "tax.27101930",
       "trich": "27101930 - - - Nguyên liệu để sản xuất than đen(SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nguyên liệu"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất than đen"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101941",
       "nguon": "tax.27101941",
       "trich": "27101941 - - - - Dầu khoáng đã tinh chế để sản xuất dầu bôi trơn (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu khoáng đã tinh chế"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất dầu bôi trơn"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101942",
       "nguon": "tax.27101942",
       "trich": "27101942 - - - - Dầu bôi trơn cho động cơ máy bay",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu bôi trơn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ máy bay"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101944",
       "nguon": "tax.27101944",
       "trich": "27101944 - - - - Mỡ bôi trơn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mỡ bôi trơn"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101945",
       "nguon": "tax.27101945",
       "trich": "27101945 - - - - Dầu bôi trơn cho nguyên liệu dệt(SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu bôi trơn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nguyên liệu dệt"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -75,27 +154,64 @@
       "nguon": "tax.27101946",
       "trich": "27101946 - - - - Dầu bôi trơn khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "27101950",
       "nguon": "tax.27101950",
       "trich": "27101950 - - - Dầu dùng trong bộ hãm thủy lực (dầu phanh)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "bộ hãm thủy lực"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101960",
       "nguon": "tax.27101960",
       "trich": "27101960 - - - Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và dầu dùng cho bộ phận ngắt mạch ",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy biến điện",
+            "bộ phận ngắt mạch"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "27101971",
       "nguon": "tax.27101971",
       "trich": "27101971 - - - - Nhiên liệu diesel cho ô tô",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhiên liệu diesel"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "ô tô"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -103,13 +219,22 @@
       "nguon": "tax.27101972",
       "trich": "27101972 - - - - Nhiên liệu diesel khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "27101971"
+      ]
     },
     {
       "hs": "27101979",
       "nguon": "tax.27101979",
       "trich": "27101979 - - - - Dầu nhiên liệu",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu nhiên liệu"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -130,15 +255,29 @@
       "hs": "27101983",
       "nguon": "tax.27101983",
       "trich": "27101983 - - - Các kerosine khác",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "kerosine"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "27101989",
       "nguon": "tax.27101989",
       "trich": "27101989 - - - Dầu trung khác và các chế phẩm (SEN)",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dầu trung"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "27101990",
@@ -150,9 +289,111 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "27101920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101920 \"Dầu thô đã tách phần nhẹ\" ⇒ tenLoai \"Dầu thô đã tách phần nhẹ\" (chữ biểu chỉ nêu TÊN hàng)."
+    },
+    {
+      "ma": "27101930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101930 \"Nguyên liệu để sản xuất than đen(SEN)\" ⇒ tenLoai \"Nguyên liệu\" + congDung \"sản xuất than đen\" (vế GIỚI HẠN \"để sản xuất than đen\"). Thành phần hydrocarbon chỉ có trong SEN, không mã hoá."
+    },
+    {
+      "ma": "2710194",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710194 \"Dầu và mỡ bôi trơn\" ⇒ tenLoai [\"Dầu\",\"mỡ\"] (hai tên hàng nối \"và\", chữ Anh \"oils and greases\") + congDung \"bôi trơn\" (định ngữ chung của cả hai danh từ đầu, điều kiện riêng)."
+    },
+    {
+      "ma": "27101941",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101941 \"Dầu khoáng đã tinh chế để sản xuất dầu bôi trơn (SEN)\" ⇒ tenLoai \"Dầu khoáng đã tinh chế\" + congDung \"sản xuất dầu bôi trơn\"."
+    },
+    {
+      "ma": "27101942",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101942 \"Dầu bôi trơn cho động cơ máy bay\" ⇒ tenLoai \"Dầu bôi trơn\" + dungCho \"động cơ máy bay\" (chữ \"cho\" ⇒ dungCho)."
+    },
+    {
+      "ma": "27101944",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101944 \"Mỡ bôi trơn\" ⇒ tenLoai \"Mỡ bôi trơn\"."
+    },
+    {
+      "ma": "27101945",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101945 \"Dầu bôi trơn cho nguyên liệu dệt(SEN)\" ⇒ tenLoai \"Dầu bôi trơn\" + dungCho \"nguyên liệu dệt\"."
+    },
+    {
+      "ma": "27101946",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101946 \"Dầu bôi trơn khác\" ⇒ phần còn lại có tên: tên \"Dầu bôi trơn\" đã nằm ở tiêu đề cha 2710194 nên chỉ phanConLai true, dieuKienSo rỗng."
+    },
+    {
+      "ma": "27101950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101950 \"Dầu dùng trong bộ hãm thủy lực (dầu phanh)\" ⇒ tenLoai \"Dầu\" + dungCho \"bộ hãm thủy lực\"; \"(dầu phanh)\" là ngoặc chú thích tên gọi khác. Chữ \"dùng trong\" ⇒ dungCho, không đổi sang tenLoai để né chồng lấn trục (QUY-TRINH 3.3)."
+    },
+    {
+      "ma": "27101960",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101960 \"Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và dầu dùng cho bộ phận ngắt mạch\" ⇒ tenLoai \"Dầu\" + dungCho [\"máy biến điện\",\"bộ phận ngắt mạch\"] (hai đích thay thế nhau, mảng = hoặc; ngoặc \"(máy biến áp và máy biến dòng)\" là chú thích)."
+    },
+    {
+      "ma": "2710197",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2710197 \"Nhiên liệu diesel; các loại dầu nhiên liệu\" ⇒ tenLoai [\"Nhiên liệu diesel\",\"dầu nhiên liệu\"]."
+    },
+    {
+      "ma": "27101971",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101971 \"Nhiên liệu diesel cho ô tô\" ⇒ tenLoai \"Nhiên liệu diesel\" + dungCho \"ô tô\"."
+    },
+    {
+      "ma": "27101972",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101972 \"Nhiên liệu diesel khác\" ⇒ phần còn lại có tên; tên đã ở tiêu đề cha 2710197 ⇒ dieuKienSo rỗng + phanConLai [\"27101971\"]."
+    },
+    {
+      "ma": "27101979",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101979 \"Dầu nhiên liệu\" ⇒ tenLoai \"Dầu nhiên liệu\"."
+    },
+    {
+      "ma": "27101983",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101983 \"Các kerosine khác\" ⇒ tenLoai \"kerosine\" + phanConLai true (phần còn lại có tên, chữ \"khác\")."
+    },
+    {
+      "ma": "27101989",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101989 \"Dầu trung khác và các chế phẩm (SEN)\" ⇒ tenLoai \"Dầu trung\" + phanConLai true. Vế \"và các chế phẩm\" chưa mã hoá thêm: chỉ nối tên hàng với chế phẩm của nó."
+    },
+    {
+      "ma": "27101990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.27101990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "27101981",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "doChopChay",
+      "ghiChu": "tax.27101981 \"Nhiên liệu động cơ máy bay (nhiên liệu phản lực) có độ chớp cháy từ 23oC trở lên\" — vế GIỚI HẠN \"có độ chớp cháy từ 23oC trở lên\" cần khoá SO đơn vị °C (độ chớp cháy); tu-vung@2 không có khoá nhiệt độ/độ chớp cháy. Bỏ vế này thì .81 và .82 cùng một điều kiện (chồng lấn) và đổi mã giữa .81 ↔ .82."
+    },
+    {
+      "ma": "27101982",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "doChopChay",
+      "ghiChu": "tax.27101982 \"…có độ chớp cháy dưới 23oC\" — cùng khoá doChopChay (SO, °C) với .81; để dieuKienSo rỗng, không ép."
+    },
+    {
       "ma": "271019",
       "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:271019:chua-co (QUY-TRINH-SO-HOA §2.2, §5); không soạn điều kiện, Claude giữ"
+      "ghiChu": "DỪNG: (1) THIEU_KHOA_TU_VUNG doChopChay (27101981, 27101982) ⇒ cong1-chua-so-hoa kéo theo .83/.89/.90; (2) cong2-chong-lan-truc: nhánh chia theo TÊN (27101920 \"Dầu thô đã tách phần nhẹ\", tiêu đề 2710194, 2710197) cạnh nhánh chia theo CÔNG DỤNG (27101950 \"dùng trong bộ hãm thủy lực\", 27101960 \"dùng cho máy biến điện …\") — không nghĩ ra hàng thật thoả cả \"Dầu thô đã tách phần nhẹ\" lẫn \"dùng trong bộ hãm thủy lực\" ⇒ không khai chongLanTruc (QUY-TRINH 4a), không đổi khoá để né. Khoá nhiệt độ/độ chớp cháy và cách biểu diễn dòng .50/.60 cần Claude quyết."
+    },
+    {
+      "ma": "271019",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 271019-01 KHONG_LECH và 271019-02 LECH_CHUA_PHAN_XU (5691/TB-TCHQ gas oil xếp .90, chữ .79 \"Dầu nhiên liệu\" có thể bao hàng, chưa ai phân xử): soạn theo chữ biểu, khớp bảng — .79 chỉ điều kiện tenLoai \"Dầu nhiên liệu\", không tự phân xử gas oil."
     }
   ]
 }

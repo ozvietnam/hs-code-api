@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0915#soan-722850",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-722850",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,15 @@
       "hs": "72285010",
       "nguon": "tax.72285010",
       "trich": "72285010 - - Có mặt cắt ngang hình tròn",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hinhDangMatCatNgang",
+          "op": "TRONG",
+          "value": [
+            "TRON"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -30,9 +38,19 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "72285010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72285010 \"Có mặt cắt ngang hình tròn\" ⇒ hinhDangMatCatNgang TRONG [TRON] (cách đọc \"mặt cắt ngang hình tròn\"). Danh từ đầu \"Có\" chỉ giới thiệu, vế \"mặt cắt ngang hình tròn\" là chính điều kiện."
+    },
+    {
+      "ma": "72285090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72285090 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
       "ma": "722850",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ] ⇒ DỪNG can-bang-hieu-chinh-tien-le:722850:chua-co, không soạn tiếp"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 722850-01 KHONG_LECH (1329, 653, 654, 1502/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

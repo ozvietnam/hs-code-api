@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721720",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721720",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,7 +16,14 @@
       "id": "7217209",
       "nguon": "tieuDe.7217209",
       "trich": "7217209 Chứa hàm lượng carbon từ 0,45% trở lên tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.45,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -25,21 +32,52 @@
       "hs": "72172010",
       "nguon": "tax.72172010",
       "trich": "72172010 - - Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.25,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72172020",
       "nguon": "tax.72172020",
       "trich": "72172020 - - Có hàm lượng carbon từ 0,25% đến dưới 0,45% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.25,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.45,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72172091",
       "nguon": "tax.72172091",
       "trich": "72172091 - - - Dây thép dùng làm lõi cho cáp dẫn điện bằng nhôm (ACSR) (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây thép"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm lõi cho cáp dẫn điện bằng nhôm (ACSR)"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -52,9 +90,52 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "72172010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72172010 \"Có hàm lượng carbon dưới 0,25% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.25 % (\"dưới\" = <)."
+    },
+    {
+      "ma": "72172020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72172020 \"Có hàm lượng carbon từ 0,25% đến dưới 0,45% tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.25 % VÀ < 0.45 % (\"từ … đến dưới\": đầu đóng, cuối mở). Cảnh báo cong3-bien-khong-doc-duoc: đã đối chiếu tay op/biên với chữ biểu, đúng."
+    },
+    {
+      "ma": "7217209",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7217209 \"Chứa hàm lượng carbon từ 0,45% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.45 % (\"từ … trở lên\" = >=)."
+    },
+    {
+      "ma": "72172091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72172091 \"Dây thép dùng làm lõi cho cáp dẫn điện bằng nhôm (ACSR) (SEN)\" ⇒ tenLoai \"Dây thép\" + congDung \"làm lõi cho cáp dẫn điện bằng nhôm (ACSR)\" (\"dùng làm\" = mục đích; giá trị là chuỗi con nguyên văn chứa cả \"bằng nhôm (ACSR)\" — đích của cáp, không tách khỏi công dụng). Mô tả SEN (carbon 0,5–0,85%, ASTM B498) không đưa vào điều kiện (cổng 3)."
+    },
+    {
+      "ma": "72172099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72172099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
       "ma": "721720",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721720hua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721720-01 KHONG_LECH (484/TB-TCHQ dây mạ kẽm 0,45 mm dùng sản xuất cáp, không nêu làm lõi ACSR ⇒ .99): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "72172010",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Chữ giới thiệu thuần: chỉ nêu tên đại lượng (hàm lượng carbon); đại lượng này đã được điều kiện hamLuongCarbon phủ cùng với vế biên số đứng sau, nên bỏ vế không đổi mã 8 số."
+    },
+    {
+      "ma": "72172020",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Chữ giới thiệu thuần: chỉ nêu tên đại lượng (hàm lượng carbon); đại lượng này đã được điều kiện hamLuongCarbon phủ cùng với vế biên số đứng sau, nên bỏ vế không đổi mã 8 số."
+    },
+    {
+      "ma": "7217209",
+      "loai": "BO_VE",
+      "ve": "Chứa hàm lượng carbon",
+      "lyDo": "Chữ giới thiệu thuần: chỉ nêu tên đại lượng (hàm lượng carbon); đại lượng này đã được điều kiện hamLuongCarbon phủ cùng với vế biên số đứng sau, nên bỏ vế không đổi mã 8 số."
     }
   ]
 }

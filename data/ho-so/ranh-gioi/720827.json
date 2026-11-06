@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-720827",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-720827",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,7 +16,14 @@
       "id": "7208271",
       "nguon": "tieuDe.7208271",
       "trich": "7208271 Chiều dày dưới 2mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<",
+          "value": 2,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -25,7 +32,14 @@
       "hs": "72082711",
       "nguon": "tax.72082711",
       "trich": "72082711 - - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -39,7 +53,14 @@
       "hs": "72082791",
       "nguon": "tax.72082791",
       "trich": "72082791 - - - - Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -52,9 +73,51 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "7208271",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7208271 \"Chiều dày dưới 2mm\" ⇒ doDay < 2 mm (\"dưới\" = <). Tiêu đề anh em 7208279 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định tiêu đề .1): hàng chiều dày từ 2 mm đến dưới 3 mm rơi vào 7208279."
+    },
+    {
+      "ma": "72082711",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72082711 \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 % (\"từ … trở lên\" = >=; \"0,6\" = 0.6)."
+    },
+    {
+      "ma": "72082711",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ đầu chỉ thuộc tính hàm lượng carbon, chữ giới thiệu thuần; ngưỡng đã lượng hóa qua hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72082791",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ đầu chỉ thuộc tính hàm lượng carbon, chữ giới thiệu thuần; ngưỡng đã lượng hóa qua hamLuongCarbon >= 0.6 %"
+    },
+    {
+      "ma": "72082719",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72082719 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định .11)."
+    },
+    {
+      "ma": "72082791",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72082791 \"Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng\" ⇒ hamLuongCarbon >= 0.6 %, cùng khoá và cùng thang với .11 (anh em ở tầng khác, thang đo đồng nhất)."
+    },
+    {
+      "ma": "72082799",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72082799 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định .91)."
+    },
+    {
+      "ma": "7208279",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7208279 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào dieuKienNut."
+    },
+    {
       "ma": "720827",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:720827:chua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 720827-01 KHONG_LECH (6269 ↔ 1333/TB-TCHQ), 720827-02 LECH_CHUA_PHAN_XU (6269/TB-TCHQ độ dày 1.4–5.66 mm xếp 7208.27.19 \"Chiều dày dưới 2mm\" so với 3343, 3744/TB-TCHQ dày ≥ 2 mm xếp .99; chưa ai phân xử, không chọn bên), 720827-03 KHONG_LECH (1333 ↔ 3744/TB-TCHQ): soạn theo chữ biểu (dưới 2 mm ⇒ 7208271; carbon ≥ 0,6% ⇒ .11/.91), khớp bảng."
     }
   ]
 }

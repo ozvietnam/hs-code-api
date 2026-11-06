@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721710",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721710",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,14 +16,34 @@
       "id": "7217102",
       "nguon": "tieuDe.7217102",
       "trich": "7217102 Có hàm lượng carbon từ 0,25% đến dưới 0,6% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.25,
+          "donVi": "%"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "7217103",
       "nguon": "tieuDe.7217103",
       "trich": "7217103 Có hàm lượng carbon từ 0,6% trở lên tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": ">=",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -32,14 +52,31 @@
       "hs": "72171010",
       "nguon": "tax.72171010",
       "trich": "72171010 - - Có hàm lượng carbon dưới 0,25% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.25,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72171022",
       "nguon": "tax.72171022",
       "trich": "72171022 - - - Dây dẹt cuộn tang; dây loại sử dụng để làm dây tao cho bê tông dự ứng lực; dây thép dễ cắt gọt",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dây dẹt cuộn tang",
+            "dây loại sử dụng để làm dây tao cho bê tông dự ứng lực",
+            "dây thép dễ cắt gọt"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -53,14 +90,30 @@
       "hs": "72171032",
       "nguon": "tax.72171032",
       "trich": "72171032 - - - Dây làm nan hoa; dây dẹt cuộn tang; dây thép dễ cắt gọt",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dây làm nan hoa",
+            "dây dẹt cuộn tang",
+            "dây thép dễ cắt gọt"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72171033",
       "nguon": "tax.72171033",
       "trich": "72171033 - - - Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -73,9 +126,67 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "72171010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72171010 \"Có hàm lượng carbon dưới 0,25% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.25 %."
+    },
+    {
+      "ma": "7217102",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7217102 \"Có hàm lượng carbon từ 0,25% đến dưới 0,6% …\" ⇒ hamLuongCarbon >= 0.25 % VÀ < 0.6 % (từ = >=, dưới = <). Đã đối chiếu tay biên với chữ (cảnh báo cong3-bien-khong-doc-duoc): \"từ 0,25%\" ⇒ >= 0.25, \"dưới 0,6%\" ⇒ < 0.6; đồng bộ với 72171010 (< 0.25) và 7217103 (>= 0.6) nên không hở không chồng."
+    },
+    {
+      "ma": "7217103",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7217103 \"Có hàm lượng carbon từ 0,6% trở lên …\" ⇒ hamLuongCarbon >= 0.6 %."
+    },
+    {
+      "ma": "72171022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72171022 \"Dây dẹt cuộn tang; dây loại sử dụng để làm dây tao cho bê tông dự ứng lực; dây thép dễ cắt gọt\" ⇒ ba tên hàng thay thế nhau (dấu \";\") ⇒ tenLoai mảng ba tên nguyên văn (hoặc); vế \"loại sử dụng để làm dây tao …\" nằm trong tên thứ hai nên đã được phủ."
+    },
+    {
+      "ma": "72171032",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72171032 \"Dây làm nan hoa; dây dẹt cuộn tang; dây thép dễ cắt gọt\" ⇒ tenLoai mảng ba tên nguyên văn (hoặc)."
+    },
+    {
+      "ma": "72171033",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72171033 \"Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực\" ⇒ tenLoai một tên nguyên văn (chữ biểu chỉ nêu tên hàng; \"dây tao\" là tên loại dây nên không tách thành dungCho)."
+    },
+    {
+      "ma": "72171029",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72171029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "72171039",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72171039 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
       "ma": "721710",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721710hua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721710-01 LECH_CHUA_PHAN_XU (2128, 3537, 3538, 3539, 3548, 4034/TB-TCHQ; .39 ↔ .33): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "72171010",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ đầu giới thiệu thuộc tính hàm lượng carbon; giá trị cụ thể của vế sau được phủ bằng hamLuongCarbon cùng mục"
+    },
+    {
+      "ma": "7217102",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ đầu giới thiệu thuộc tính hàm lượng carbon; giá trị cụ thể của vế sau được phủ bằng hamLuongCarbon cùng mục"
+    },
+    {
+      "ma": "7217103",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ đầu giới thiệu thuộc tính hàm lượng carbon; giá trị cụ thể của vế sau được phủ bằng hamLuongCarbon cùng mục"
     }
   ]
 }

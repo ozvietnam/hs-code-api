@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "mm:minimax-m3:20261105T1709#soan-390210",
-    "ngay": "2026-11-05"
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-390210",
+    "ngay": "2026-11-06"
   },
   "duyet": null,
   "dieuKienNut": [],
@@ -17,14 +17,30 @@
       "hs": "39021030",
       "nguon": "tax.39021030",
       "trich": "39021030 - - Dạng phân tán(SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "PHAN_TAN"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "39021040",
       "nguon": "tax.39021040",
       "trich": "39021040 - - Dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dangNguyenSinh",
+          "op": "TRONG",
+          "value": [
+            "HAT_VIEN_VAY_MANH"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -37,9 +53,30 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "39021030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39021030 \"Dạng phân tán(SEN)\" ⇒ dangNguyenSinh TRONG [PHAN_TAN] (cách đọc \"dạng phân tán\"); \"(SEN)\" là nhãn nội bộ của biểu, không phải điều kiện hàng."
+    },
+    {
+      "ma": "39021040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39021040 \"Dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự (SEN)\" ⇒ dangNguyenSinh TRONG [HAT_VIEN_VAY_MANH]; nhãn giá trị trong tu-vung@2 chính là cả cụm \"dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự\" nên đã phủ cả vế mở, không liệt kê đóng."
+    },
+    {
+      "ma": "39021040",
+      "loai": "BO_VE",
+      "ve": "và các dạng tương tự",
+      "lyDo": "Giá trị HAT_VIEN_VAY_MANH của dangNguyenSinh theo định nghĩa (tu-vung@2) bao gồm hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự; vế mở đã nằm trong nhãn giá trị, không liệt kê đóng"
+    },
+    {
+      "ma": "39021090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.39021090 \"Loại khác\" trần ⇒ không điều kiện, không đưa vào spec (máy phủ định anh em)."
+    },
+    {
       "ma": "390210",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:390210:chua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 390210-01 LECH_CHUA_PHAN_XU (544/TB-TCHQ ↔ 1124, 4185/TB-TCHQ về polypropylen nguyên sinh dạng hạt): soạn theo chữ biểu .40 \"Dạng hạt …\" ⇒ hạt PP nguyên sinh vào .40; tiền lệ 544 xếp .90 mâu thuẫn chữ biểu, chưa ai phân xử — không chọn bên, người soát đọc mục bảng."
     }
   ]
 }

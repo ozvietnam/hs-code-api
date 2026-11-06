@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0857#soan-721230",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721230",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -16,7 +16,14 @@
       "id": "7212301",
       "nguon": "tieuDe.7212301",
       "trich": "7212301 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -25,28 +32,81 @@
       "hs": "72123011",
       "nguon": "tax.72123011",
       "trich": "72123011 - - - Dạng đai và dải(SEN), có chiều rộng không quá 25 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 25,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72123012",
       "nguon": "tax.72123012",
       "trich": "72123012 - - - Dạng đai và dải(SEN), có chiều rộng trên 25 mm nhưng không quá 400 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        },
+        {
+          "fact": "chieuRong",
+          "op": ">",
+          "value": 25,
+          "donVi": "mm"
+        },
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 400,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72123013",
       "nguon": "tax.72123013",
       "trich": "72123013 - - - Loại khác, chiều dày không quá 1,5 mm",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "doDay",
+          "op": "<=",
+          "value": 1.5,
+          "donVi": "mm"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "72123014",
       "nguon": "tax.72123014",
       "trich": "72123014 - - - Loại khác, được tráng kẽm bằng phương pháp hợp kim hóa bề mặt có hàm lượng carbon dưới 0,04% tính theo khối lượng",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "hợp kim hóa bề mặt"
+        },
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.04,
+          "donVi": "%"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -66,9 +126,56 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "7212301",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7212301 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 % (\"dưới\" = <)."
+    },
+    {
+      "ma": "7212301",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72123011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72123011 \"Dạng đai và dải(SEN), có chiều rộng không quá 25 mm\" ⇒ dangDaiDaiTamPhoDung [DAI_VA_DAI] + chieuRong <= 25 mm (\"không quá\" = <=). \"(SEN)\" là nguồn chú giải ⇒ PHU."
+    },
+    {
+      "ma": "72123012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72123012 \"Dạng đai và dải(SEN), có chiều rộng trên 25 mm nhưng không quá 400 mm\" ⇒ dangDaiDaiTamPhoDung [DAI_VA_DAI] + chieuRong > 25 mm + chieuRong <= 400 mm (\"trên\" = >, \"không quá\" = <=)."
+    },
+    {
+      "ma": "72123013",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72123013 \"Loại khác, chiều dày không quá 1,5 mm\" ⇒ chỉ vế của \"Loại khác\": doDay <= 1.5 mm (1,5 = 1.5); \"Loại khác\" do máy phủ định anh em .11/.12."
+    },
+    {
+      "ma": "72123014",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72123014 \"Loại khác, được tráng kẽm bằng phương pháp hợp kim hóa bề mặt có hàm lượng carbon dưới 0,04% tính theo khối lượng\" ⇒ tenLoai \"hợp kim hóa bề mặt\" + hamLuongCarbon < 0.04 %. tu-vung@2 không có giá trị phương pháp hợp kim hóa bề mặt trong phuongPhapCheTao/lopMaPhu nên dùng tenLoai nguyên văn (cùng cách 721049 .11)."
+    },
+    {
+      "ma": "72123014",
+      "loai": "BO_VE",
+      "ve": "được tráng kẽm",
+      "lyDo": "Lặp tiêu chí của phân nhóm 7212.30 (EN \"plated or coated with zinc\"): mọi dòng của phân nhóm đều là hàng tráng kẽm; vế \"bằng phương pháp hợp kim hóa bề mặt\" mới là vế phân biệt và đã được tenLoai phủ."
+    },
+    {
+      "ma": "72123019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72123019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "72123090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72123090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định tiêu đề 7212301)."
+    },
+    {
       "ma": "721230",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:721230hua-co. Không soạn điều kiện cho mã này."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721230-01, 721230-02, 721230-03 (đều KHONG_LECH; 1911, 1912, 3627, 1196, 2848/TB-TCHQ): soạn theo chữ biểu, khớp bảng — ranh giới theo chiều rộng đai/dải (≤ 25 mm, 25–400 mm) và chiều dày."
     }
   ]
 }

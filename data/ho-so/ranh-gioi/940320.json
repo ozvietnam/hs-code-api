@@ -7,7 +7,7 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T1001#soan-940320",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-940320",
     "ngay": "2026-11-06"
   },
   "duyet": null,
@@ -17,7 +17,12 @@
       "hs": "94032010",
       "nguon": "tax.94032010",
       "trich": "94032010 - - Tủ hút hơi độc (SEN)",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tuHutHoiDoc",
+          "op": "CO"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -30,9 +35,19 @@
   ],
   "ghiChuSoan": [
     {
+      "ma": "94032010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94032010 \"Tủ hút hơi độc (SEN)\" ⇒ tuHutHoiDoc CO (cachDoc của khoá đọc \"tủ hút hơi độc\"; cùng cách với 940389 .10). Không lấy mô tả từ SEN."
+    },
+    {
+      "ma": "94032090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94032090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
       "ma": "940320",
-      "loai": "DUNG",
-      "ghiChu": "--goi in cờ [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6: DỪNG, Claude giữ]; tax.94032010 \"Tủ hút hơi độc (SEN)\" sẽ là tenLoai \"Tủ hút hơi độc\" khi bảng hiệu chỉnh tiền lệ có mục cho 940320"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 940320-01 KHONG_LECH (3739, 3741/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }
