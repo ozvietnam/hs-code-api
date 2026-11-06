@@ -1,0 +1,203 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "853929",
+  "phien": "zcode:glm:20261106T0002#soan-853929",
+  "dong8": {
+    "85392910": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị y tế"
+        }
+      ]
+    },
+    "85392920": {
+      "dieuKienSo": [
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        }
+      ]
+    },
+    "85392930": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bóng đèn phản xạ"
+        }
+      ],
+      "phanConLai": true
+    },
+    "85392941": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị y tế"
+        }
+      ]
+    },
+    "85392950": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 200,
+          "donVi": "W"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 300,
+          "donVi": "W"
+        },
+        {
+          "fact": "dienAp",
+          "op": ">",
+          "value": 100,
+          "donVi": "V"
+        }
+      ]
+    },
+    "85392960": {
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 200,
+          "donVi": "W"
+        },
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 100,
+          "donVi": "V"
+        }
+      ]
+    }
+  },
+  "dieuKienNut": {
+    "8539294": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Bóng đèn flash"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "bóng đèn hiệu"
+              },
+              {
+                "fact": "dienAp",
+                "op": "<=",
+                "value": 2.25,
+                "donVi": "V"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "8539294",
+        "85392910",
+        "85392920"
+      ],
+      "truc": {
+        "8539294": "TEN_LOAI",
+        "85392910": "CONG_DUNG",
+        "85392920": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Bóng đèn này có phải là bóng đèn flash hoặc bóng đèn hiệu cỡ nhỏ danh định đến 2,25 V (nhánh tiêu đề 8539294), hay là bóng đèn khác — nếu khác, nó dùng cho thiết bị y tế (85392910) hay dùng cho xe có động cơ (85392920)? Bóng đèn vừa thuộc loại flash/bóng đèn hiệu vừa dùng cho thiết bị y tế hoặc xe có động cơ thì biểu thuế không nêu nhánh nào được ưu tiên — cần chuyên gia phân xử.",
+      "trich": {
+        "8539294": "Bóng đèn flash; bóng đèn hiệu cỡ nhỏ, danh định đến 2,25 V",
+        "85392910": "Dùng cho thiết bị y tế",
+        "85392920": "Dùng cho xe có động cơ"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "85392910",
+            "85392920"
+          ],
+          "hang": "Bóng đèn flash dùng cho thiết bị y tế, dùng cho xe có động cơ"
+        },
+        {
+          "cap": [
+            "85392910",
+            "8539294"
+          ],
+          "hang": "Bóng đèn hiệu cỡ nhỏ danh định 2,25 V dùng cho thiết bị y tế"
+        },
+        {
+          "cap": [
+            "85392920",
+            "8539294"
+          ],
+          "hang": "Bóng đèn flash dùng cho xe có động cơ, điện áp 12 V"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "85392910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392910 \"Dùng cho thiết bị y tế\" ⇒ dungCho \"thiết bị y tế\" (vế GIỚI HẠN \"Dùng cho thiết bị y tế\" được vế này phủ)."
+    },
+    {
+      "ma": "85392920",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392920 \"Dùng cho xe có động cơ\" ⇒ dungChoXeCoDongCo CO (khoá chuyên dụng CO_KHONG có cachDoc đúng nguyên văn \"dùng cho xe có động cơ\" — đọc tất định; không dùng dungCho vì bộ đọc chữ tự do cắt cụm tại \"có\" nên không chốt được)."
+    },
+    {
+      "ma": "85392930",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392930 \"Bóng đèn phản xạ khác\" ⇒ tenLoai \"Bóng đèn phản xạ\" + phanConLai: true (\"khác\" = ngoài anh em đứng trước 85392910/85392920)."
+    },
+    {
+      "ma": "8539294",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8539294 \"Bóng đèn flash; bóng đèn hiệu cỡ nhỏ, danh định đến 2,25 V\" — dấu \";\" tách hai vế: HOAC [[tenLoai \"Bóng đèn flash\"], [tenLoai \"bóng đèn hiệu\", dienAp <= 2,25 V]] (\"danh định đến 2,25 V\" = \"không quá\" ⇒ <=; giới hạn áp cho bóng đèn hiệu)."
+    },
+    {
+      "ma": "85392941",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392941 \"Loại thích hợp dùng cho thiết bị y tế\" ⇒ dungCho \"thiết bị y tế\" (vế GIỚI HẠN \"thích hợp dùng cho thiết bị y tế\" được phủ; cùng khoá với 85392910)."
+    },
+    {
+      "ma": "85392949",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392949 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "85392950",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392950 \"Loại khác, có công suất trên 200 W nhưng không quá 300 W và điện áp trên 100 V\" ⇒ congSuat > 200 W + congSuat <= 300 W + dienAp > 100 V (\"trên\" = >, \"không quá\" = <=; hai vế GIỚI HẠN số đều được phủ; một ý một ngưỡng, không gộp)."
+    },
+    {
+      "ma": "85392960",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392960 \"Loại khác, có công suất không quá 200 W và điện áp không quá 100 V\" ⇒ congSuat <= 200 W + dienAp <= 100 V (cùng khoá với 85392950; biên <=/> bù nhau)."
+    },
+    {
+      "ma": "85392990",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85392990 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    }
+  ]
+}
