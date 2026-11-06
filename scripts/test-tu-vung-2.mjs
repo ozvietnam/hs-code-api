@@ -389,6 +389,10 @@ la('daHoaDeo "đã hóa dẻo" ⇒ true', 'daHoaDeo', 'PVC đã hóa dẻo', tru
 la('coBoLoc "không có bộ lọc" ⇒ false', 'coBoLoc', 'máy bơm không có bộ lọc', false);
 la('dangNguyenSinh "dạng hạt"', 'dangNguyenSinh', 'polyme dạng hạt', 'HAT_VIEN_VAY_MANH');
 la('heDienHoa "hệ kiềm"', 'heDienHoa', 'pin hệ kiềm', 'KIEM');
+la('daTrangPhuEpLop "vải tráng cao su" ⇒ true (06/11, tiêu đề 5902.10.1)', 'daTrangPhuEpLop', 'Vải tráng cao su làm mép lốp', true);
+la('daTrangPhuEpLop "chưa tráng" vẫn ⇒ false', 'daTrangPhuEpLop', 'vải chưa tráng, phủ hoặc ép lớp', false);
+la('daPhu "không phủ" ⇒ false / "đã phủ" ⇒ true (06/11, tiêu đề 4813.20)', 'daPhu', 'Loại khác, không phủ', false);
+la('daPhu "đã phủ" ⇒ true', 'daPhu', 'Loại khác, đã phủ', true);
 
 // ── 5. Viết + kiểm giá trị ───────────────────────────────────────────────────────────────────────────────────────────
 const viet = (khoa, v) => { try { return T.vietCum(khoa, v); } catch (e) { return `LOI ${e.message}`; } };
