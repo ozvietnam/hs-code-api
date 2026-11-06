@@ -1,0 +1,80 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "983412",
+  "phien": "zcode-mm:loop:20261106T1517#soan-983412",
+  "dong8": {
+    "98341210": {
+      "ten": "Ốc vít bằng thép, INOX 304, ren tiêu chuẩn 1, mạ chống rỉ, đường kính dưới 1.4 mm",
+      "dieuKienSo": [
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ốc vít" },
+        { "fact": "chatLieu", "op": "LA", "value": "thép không gỉ" },
+        { "fact": "coRen", "op": "CO", "value": "CO" },
+        { "fact": "daXuLyBeMat", "op": "CO", "value": "CO" },
+        { "fact": "duongKinh", "op": "<", "value": 1.4, "donVi": "mm" }
+      ],
+      "trich": "98341210 - - Ốc vít bằng thép, INOX 304, ren tiêu chuẩn 1, mạ chống rỉ, đường kính dưới 1.4 mm"
+    },
+    "98341290": {
+      "ten": "Nguyên liệu, vật tư, linh kiện và bộ phận phụ trợ để sản xuất các sản phẩm CNTT trọng điểm",
+      "dieuKienSo": [
+        { "fact": "congDung", "op": "CONG_DUNG", "value": "sản xuất các sản phẩm CNTT trọng điểm" }
+      ],
+      "trich": "98341290 - - Nguyên liệu, vật tư, linh kiện và bộ phận phụ trợ để sản xuất các sản phẩm CNTT trọng điểm"
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "98341210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "chatLieu khai 'thép không gỉ' (từ 'INOX 304'); vế 'bằng thép' là loại chung đã bao hàm nên không khai thêm 'sắt thép' (tránh bắt buộc phải thoả cả hai)."
+    },
+    {
+      "ma": "98341210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tenLoai chỉ lấy 'Ốc vít' (tên hàng); phần 'bằng thép, INOX 304, ren tiêu chuẩn 1, mạ chống rỉ, đường kính dưới 1.4 mm' đã có khoá riêng nên không chép vào tenLoai."
+    },
+    {
+      "ma": "98341210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "'ren tiêu chuẩn 1' khai bằng coRen = CO; không khai phuongPhapCheTao = REN vì câu trích nói quy cách ren chứ không nói phương pháp chế tạo."
+    },
+    {
+      "ma": "98341210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "'mạ chống rỉ' khai bằng daXuLyBeMat = CO; không dùng lopMaPhu vì danh sách giá trị không có loại mạ chống rỉ (MA_DONG là mạ đồng)."
+    },
+    {
+      "ma": "98341210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "'đường kính dưới 1.4 mm' khai op '<' value 1.4 đơn vị 'mm' theo đúng chữ trích; không dùng duongKinhTrong/duongKinhLoi vì câu trích không nói vị trí đường kính."
+    },
+    {
+      "ma": "98341210",
+      "loai": "BO_VE",
+      "ve": "ren tiêu chuẩn 1",
+      "lyDo": "Quy cách ren (tiêu chuẩn 1) không có khoá tu-vung nào diễn đạt được; điều kiện chỉ khai được coRen = CO."
+    },
+    {
+      "ma": "98341290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Vế 'để sản xuất các sản phẩm CNTT trọng điểm' khai bằng congDung (op CONG_DUNG, giá trị tự do); không khai laBoPhan vì tiêu đề còn gồm 'Nguyên liệu, vật tư' — không phải bộ phận."
+    },
+    {
+      "ma": "98341290",
+      "loai": "BO_VE",
+      "ve": "Nguyên liệu, vật tư, linh kiện và bộ phận phụ trợ",
+      "lyDo": "Vế liệt kê loại hàng chưa có điều kiện riêng: tenLoai là giá trị tự do, đưa cả danh sách bốn loại sẽ khớp quá khắt; điều kiện duy nhất khai được là công dụng."
+    },
+    {
+      "ma": "983412",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề gốc 983412 'Các sản phẩm khác bằng sắt hoặc thép' là điều kiện chung cho cả hai dòng 8 số nên không đưa vào dieuKienNut; gói không có tầng không mã nào để khai."
+    },
+    {
+      "ma": "983412",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Không khai chongLanTruc và chongLanVanBan cho cặp 98341210/98341290: một nhánh chia theo tên hàng (ốc vít) còn nhánh kia chia theo công dụng (vật tư, linh kiện, bộ phận phụ trợ để sản xuất sản phẩm CNTT), nhưng gói không có ví dụ hàng thật thoả cả hai nhánh (không chú giải, không tiền lệ) nên theo luật phải DỪNG — chờ người soát quyết định có khai trục hay không."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "850790",
+  "phien": "zcode-mm:loop:20261106T1440#soan-850790",
+  "dong8": {
+    "85079011": { "dieuKienSo": [ { "fact": "dungCho", "op": "CONG_DUNG", "value": ["8507.10.92", "8507.10.95", "8507.10.96", "8507.10.97", "8507.10.98", "8507.10.99"] } ] },
+    "85079012": { "dieuKienSo": [ { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy bay" } ] },
+    "85079091": { "dieuKienSo": [ { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy bay" } ] },
+    "85079092": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vách ngăn ắc qui" }, { "fact": "congDung", "op": "CONG_DUNG", "value": "sẵn sàng để sử dụng" } ] },
+    "85079093": { "dieuKienSo": [ { "fact": "dungCho", "op": "CONG_DUNG", "value": ["8507.10.92", "8507.10.95", "8507.10.96", "8507.10.97", "8507.10.98", "8507.10.99"] } ] }
+  },
+  "dieuKienNut": {
+    "8507901": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "bản cực" } ] }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "8507901",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8507901 \"Các bản cực\" ⇒ tenLoai \"bản cực\" (bỏ mạo từ \"Các\" để bộ so âm tiết lúc chạy khớp lời khai kiểu \"bản cực ắc qui\"). Điều kiện tiêu đề này là thứ CHẶN hai nhánh: tiêu đề 8507909 \"Loại khác\" phủ định 8507901, nên .91/.92/.93/.99 không trùng .11/.12/.19 — không khai chongLanVanBan."
+    },
+    {
+      "ma": "8507909",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề \"Loại khác\" trần (khôngCanDieuKien) — không ghi điều kiện; chính nó là phần phủ định nhánh 8507901, máy tự áp điều kiện của 8507901 theo chiều phủ định cho .91/.92/.93/.99."
+    },
+    {
+      "ma": "85079011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079011 \"Của hàng hóa thuộc phân nhóm 8507.10.92, 8507.10.95, 8507.10.96, 8507.10.97, 8507.10.98 hoặc 8507.10.99\" ⇒ dungCho [6 mã phân nhóm, \"hoặc\" = mảng]; mã giữ nguyên dạng chữ trích."
+    },
+    {
+      "ma": "85079012",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079012 \"Dùng cho máy bay\" ⇒ dungCho \"máy bay\" (đích dùng, nguyên văn chữ trích)."
+    },
+    {
+      "ma": "85079019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần (khôngCanDieuKien) — máy tự phủ định anh em .11/.12, không ghi điều kiện."
+    },
+    {
+      "ma": "85079091",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079091 \"Dùng cho máy bay\" ⇒ dungCho \"máy bay\" — cùng khoá với .12; khác nhánh nên không chồng lấn (8507909 phủ định 8507901)."
+    },
+    {
+      "ma": "85079092",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079092 ⇒ tenLoai \"Vách ngăn ắc qui\" (tên loại hàng, tách .92 khỏi .93/.99) + congDung \"sẵn sàng để sử dụng\" (trạng thái dùng được). Vế chất liệu không diễn đạt được bằng tu-vung — xem ghi chú BO_VE cùng mã."
+    },
+    {
+      "ma": "85079092",
+      "loai": "BO_VE",
+      "ve": "làm từ mọi vật liệu trừ poly(vinyl clorua)",
+      "lyDo": "tu-vung@2 không có cách diễn đạt vế này: chatLieu chỉ có op LA với danh sách vật liệu không có \"poly(vinyl clorua)\" (nhãn \"plastic\" không đọc \"poly(vinyl clorua)\" — xem 85441120), và không có op phủ định cho chất liệu. Vế loại trừ này đưa hàng làm từ poly(vinyl clorua) ra khỏi phân nhóm 850790 (ranh giới 6 số), không tách hai dòng 8 số nào trong 850790; dòng 85079092 đã tách với anh em bằng tên hàng \"Vách ngăn ắc qui\"."
+    },
+    {
+      "ma": "85079093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85079093 \"Loại khác, của hàng hóa thuộc phân nhóm 8507.10.92, ...\" ⇒ chỉ ghi điều kiện của vế sau dấu phẩy (dungCho [6 mã]); phần \"Loại khác\" không ghi điều kiện."
+    },
+    {
+      "ma": "85079099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần (khôngCanDieuKien) — máy tự phủ định anh em .91/.92/.93, không ghi điều kiện."
+    }
+  ]
+}

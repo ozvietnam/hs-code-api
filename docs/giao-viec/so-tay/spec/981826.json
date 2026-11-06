@@ -1,0 +1,55 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "981826",
+  "phien": "zcode-mm:loop:20261106T1452#soan-981826",
+  "dong8": {
+    "98182610": {
+      "dieuKienSo": [
+        { "fact": "chatLieu", "op": "LA", "value": "plastic" },
+        { "fact": "duongKinhTrong", "op": ">=", "value": 1, "donVi": "cm" },
+        { "fact": "duongKinhTrong", "op": "<=", "value": 2.5, "donVi": "cm" }
+      ],
+      "trich": "98182610 - - Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm"
+    },
+    "98182690": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [ { "fact": "chatLieu", "op": "LA", "value": "đồng", "chieu": "PHAI_KHONG" } ],
+            [ { "fact": "duongKinhTrong", "op": ">", "value": 2.5, "donVi": "cm" } ]
+          ]
+        }
+      ],
+      "trich": "98182690 - - Loại khác, trừ loại bằng đồng hoặc hợp kim đồng với đường kính trong từ 2,5 cm trở xuống"
+    }
+  },
+  "dieuKienNut": {},
+  "ghiChuSoan": [
+    {
+      "ma": "98182610",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98182610 \"Bằng plastic, có đường kính trong từ 1cm đến 2,5 cm\" ⇒ chatLieu LA \"plastic\" (chất liệu chính) + duongKinhTrong >= 1 cm VÀ <= 2,5 cm (cùng khoá, hai điều kiện = dải đóng 1–2,5 cm; \"từ …\" = >=, \"đến …\" = <=). Đơn vị giữ nguyên theo chữ trích (cm), KHÔNG quy đổi sang mm (đơn vị chuẩn của khoá)."
+    },
+    {
+      "ma": "98182690",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98182690 \"Loại khác, trừ loại bằng đồng hoặc hợp kim đồng với đường kính trong từ 2,5 cm trở xuống\" — vế sau \"Loại khác,\" là vế LOẠI TRỪ. Không có dấu phẩy nên \"với đường kính trong từ 2,5 cm trở xuống\" thuộc vế loại trừ (loại bằng đồng hoặc hợp kim đồng CÓ đường kính trong ≤ 2,5 cm), KHÔNG phải điều kiện của chính dòng (đọc vậy thì van DN > 2,5 cm, kể cả bằng plastic, rơi khỏi phân nhóm 981826, trái tiêu đề 6 số \"Van an toàn hay van xả\"). ⇒ điều kiện dòng = PHỦ ĐỊNH của một tích: HOAC hai phương án — (1) chatLieu LA \"đồng\" chieu PHAI_KHONG (giá trị \"đồng\" của tu-vung@2 đọc đúng \"đồng hoặc hợp kim đồng\"), (2) duongKinhTrong > 2,5 cm (đảo biên của vế loại trừ \"từ 2,5 cm trở xuống\" = <= 2,5 cm; với khoá SO thì đảo op, không ghi chieu). Phần \"Loại khác\" (phần còn lại sau 98182610) do máy phủ định anh em, không ghi thêm."
+    },
+    {
+      "ma": "98182690",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hệ quả đúng chữ biểu: hàng bằng đồng hoặc hợp kim đồng có đường kính trong ≤ 2,5 cm KHÔNG thuộc phân nhóm 981826 ⇒ cổng 1 có thể báo cong1-khong-phu-kin cho lớp hàng đó; đó là lỗ hổng do CHỮ BIỂU, không phải lỗi soạn — không được sửa bằng cách cho 98182690 phủ thêm lớp đó (sai mã)."
+    },
+    {
+      "ma": "981826",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề phân nhóm \"Van an toàn hay van xả\" là TẦNG GỐC của cây (nút 981826), không phải tiêu đề có tên trong cây 981826 (chỉ có gốc + hai lá 98182610/98182690) ⇒ không khai dieuKienNut."
+    },
+    {
+      "ma": "981826",
+      "loai": "QUYET_DINH",
+      "ghiChu": "cong3-bien-khong-doc-duoc (cả hai dòng) — bộ đọc đọc được biên theo chữ nhưng không gắn op; đã đối chiếu tay: 98182610 \"từ 1cm đến 2,5 cm\" = >= 1 cm VÀ <= 2,5 cm; 98182690 \"từ 2,5 cm trở xuống\" = <= 2,5 cm (vế loại trừ), phủ định của nó là > 2,5 cm (phương án 2 của HOAC)."
+    }
+  ]
+}

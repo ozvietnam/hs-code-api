@@ -1,0 +1,97 @@
+{
+  "phienBan": "ranh-gioi-spec@1",
+  "pn6": "981822",
+  "phien": "zcode-mm:loop:20261106T1443#soan-981822",
+  "dong8": {
+    "98182211": {
+      "dieuKienSo": [
+        { "khoa": "congSuat", "op": "<=", "value": 26.38, "donVi": "kW" }
+      ],
+      "trich": "98182211 - - - Công suất làm mát không quá 26,38 kW"
+    },
+    "98182220": {
+      "dieuKienSo": [
+        { "khoa": "dungCho", "op": "CONG_DUNG", "value": "xe chạy trên đường ray" },
+        { "khoa": "congSuat", "op": ">", "value": 26.38, "donVi": "kW" }
+      ],
+      "trich": "98182220 - - Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh, sử dụng cho xe chạy trên đường ray, có công suất làm mát trên 26,38 kW"
+    },
+    "98182231": {
+      "dieuKienSo": [
+        { "khoa": "congSuat", "op": ">", "value": 26.38, "donVi": "kW" },
+        { "khoa": "congSuat", "op": "<=", "value": 52.75, "donVi": "kW" },
+        { "khoa": "luuLuong", "op": "<=", "value": 67.96, "donVi": "m3/phút" }
+      ],
+      "trich": "98182231 - - - Của máy có công suất làm mát trên 26,38 kW nhưng không quá 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút"
+    },
+    "98182239": {
+      "dieuKienSo": [
+        { "khoa": "congSuat", "op": ">", "value": 52.75, "donVi": "kW" },
+        { "khoa": "luuLuong", "op": "<=", "value": 67.96, "donVi": "m3/phút" }
+      ],
+      "trich": "98182239 - - - Của máy có công suất làm mát trên 52,75 kW, có tốc độ dòng khí đi qua mối dàn bay hơi không quá 67,96 m3/phút"
+    }
+  },
+  "dieuKienNut": {
+    "9818221": {
+      "dieuKienSo": [],
+      "trich": "9818221 Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)"
+    },
+    "9818223": {
+      "dieuKienSo": [
+        { "khoa": "laBoPhan", "op": "CO" }
+      ],
+      "trich": "9818223 Bộ phận"
+    }
+  },
+  "ghiChuSoan": [
+    {
+      "ma": "98182219",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dòng \"Loại khác\" trần — KHÔNG đưa vào spec; phần còn lại của 9818221 do máy phủ định anh em đảm nhiệm."
+    },
+    {
+      "ma": "98182220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"loại khác\" là phần còn lại (nghiPhanConLai) của 981822 sau khi tách 9818221 và 9818223; theo luật chỉ ghi điều kiện của vế sau \"loại khác\", không ghi điều kiện cho \"loại khác\"."
+    },
+    {
+      "ma": "98182220",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"công suất làm mát\" → khoá congSuat; \"sử dụng cho xe chạy trên đường ray\" → khoá dungCho; đơn vị giữ nguyên theo chữ trích (kW, m3/phút), KHÔNG quy đổi sang đơn vị chuẩn của từ vựng."
+    },
+    {
+      "ma": "98182231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Dải \"trên 26,38 kW nhưng không quá 52,75 kW\" tách thành HAI điều kiện cùng khoá congSuat (op > rồi op <=), đọc là VÀ; từ vựng không có phép soạn dải."
+    },
+    {
+      "ma": "98182231",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"tốc độ dòng khí đi qua mối dàn bay hơi\" → khoá luuLuong (lưu lượng khí), đơn vị m3/phút theo chữ trích."
+    },
+    {
+      "ma": "9818223",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Tiêu đề \"Bộ phận\" → khoá laBoPhan = CO (tách với 9818221/98182220 là máy hoàn chỉnh); con dùng khoá congSuat/luuLuong nên không lặp khoá trạng thái của tầng."
+    },
+    {
+      "ma": "9818221",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "coVanDaoChieu",
+      "ghiChu": "9818221 Kèm theo các bộ phận làm lạnh và một van đảo chiều chu trình nóng lạnh (bơm nhiệt có đảo chiều)"
+    },
+    {
+      "ma": "9818221",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "coBoPhanLamLanh",
+      "ghiChu": "Kèm theo các bộ phận làm lạnh"
+    },
+    {
+      "ma": "98182220",
+      "loai": "THIEU_KHOA_TU_VUNG",
+      "khoaDeXuat": "coBoPhanLamLanh",
+      "ghiChu": "có kèm theo bộ phận làm lạnh"
+    }
+  ]
+}
