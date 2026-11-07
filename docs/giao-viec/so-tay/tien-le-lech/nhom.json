@@ -1,0 +1,95 @@
+{
+ "ngay": "2026-11-07",
+ "bieuThue": "2026.04.05",
+ "nguonLoai": "AI_DA_KIEM",
+ "ghiChu": "Phân tích 42 mục LECH_CHUA_PHAN_XU của data/ho-so/hieu-chinh-tien-le.json. Chưa áp vào bảng — chờ CEO quyết.",
+ "nhom": {
+  "A": {
+   "ten": "Hải quan đã tự sửa, dữ liệu mình còn giữ bản cũ",
+   "moTa": "Thông báo cũ đã bị Hải quan sửa đổi, thay thế, hoặc một Thông báo mới hơn cho cùng model đã đổi mã. Dữ liệu tiền lệ đang giữ cả hai như ngang nhau nên trông như mâu thuẫn.",
+   "deXuat": "Đánh dấu Thông báo cũ là đã bị thay thế; chỉ dùng mã của Thông báo mới.",
+   "ca": [
+    "300420-01",
+    "851779-01",
+    "851779-02",
+    "851779-03",
+    "850440-02"
+   ]
+  },
+  "B": {
+   "ten": "Biểu thuế đổi phiên bản",
+   "moTa": "Thông báo áp theo biểu cũ, lúc đó dòng mà chữ biểu hiện nay chỉ tới chưa tồn tại (hoặc chữ khác). Thông báo đúng vào thời điểm ban hành, nhưng hàng nhập hôm nay phải theo biểu hiện hành.",
+   "deXuat": "Đánh dấu Thông báo áp theo biểu cũ; không dùng làm tiền lệ cho biểu hiện hành.",
+   "ca": [
+    "151790-01",
+    "390210-01",
+    "700521-02",
+    "721070-02",
+    "721240-02"
+   ]
+  },
+  "C": {
+   "ten": "Máy đọc nhầm hàng",
+   "moTa": "Thông báo không hề trái chữ biểu. Máy đã lấy tên hàng doanh nghiệp tự khai, hoặc gộp nhiều mặt hàng trong một tờ khai, thay vì đọc mô tả và kết quả phân tích của Hải quan.",
+   "deXuat": "Gỡ cờ lệch: Thông báo khớp chữ biểu khi đọc đúng hàng.",
+   "ca": [
+    "190190-02",
+    "190590-02",
+    "210390-03",
+    "720827-02",
+    "847150-01",
+    "848190-01",
+    "271012-01"
+   ]
+  },
+  "D": {
+   "ten": "Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng",
+   "moTa": "Đây là phần tinh hoa. Dòng biểu nghe như bao hàng, nhưng nghĩa thật hẹp hơn: bản tiếng Anh, SEN, chú giải, quy chuẩn chuyên ngành, hoặc tầng tiêu đề không mã phía trên giới hạn lại. Hải quan đọc theo nghĩa hẹp đó.",
+   "deXuat": "Ghi nhận Thông báo là cách đọc đúng của dòng này; đưa điều kiện ẩn vào bộ máy.",
+   "ca": [
+    "392690-01",
+    "180690-02",
+    "200799-01",
+    "200819-02",
+    "210690-02",
+    "220890-01",
+    "250100-01",
+    "261400-01",
+    "320611-01",
+    "320820-02",
+    "320890-01",
+    "330749-02",
+    "721710-01",
+    "760421-01",
+    "851829-02",
+    "853710-01",
+    "853710-02"
+   ]
+  },
+  "E": {
+   "ten": "Còn mở, cần anh hoặc chuyên gia quyết",
+   "moTa": "Thông báo không nêu lý do, hoặc các Thông báo mâu thuẫn nhau, hoặc chưa đọc được toàn văn. Em chưa đủ căn cứ để chọn bên.",
+   "deXuat": "Giữ cờ lệch chờ quyết.",
+   "ca": [
+    "940542-01",
+    "271019-02",
+    "190590-01",
+    "853710-03",
+    "271012-02",
+    "520859-01",
+    "690721-02",
+    "721491-02"
+   ]
+  }
+ },
+ "canQuyet": {
+  "940542-01": "Đèn LED 1000 W cho tàu cá: Hải quan xếp 20%, chữ biểu \"đèn dùng cho tàu thủy, bằng kim loại cơ bản\" là 5%. Cần hỏi lại người nhập công dụng (đèn dụ cá hay đèn hành trình) và vật liệu vỏ. Em đề xuất: chưa dùng Thông báo này làm luật chung.",
+  "271019-02": "Gas oil chỉ số cetane ≥ 50 (đúng chất dầu diesel) mà Hải quan cho 0% \"Loại khác\" thay vì 7% \"nhiên liệu diesel\", có lẽ vì doanh nghiệp khai dùng làm nguyên liệu hoá dầu. Doanh nghiệp khác tự áp theo có rủi ro bị truy thu. Em đề xuất: gắn cảnh báo, khuyên xin xác định trước riêng.",
+  "190590-01": "Bánh Arletka vỏ mềm xốp có nhân: đúng hình mẫu \"Cakes\" (30%), nhưng Thông báo năm 2016 xếp \"Loại khác\" (20%), không nêu lý do; chưa đọc được biểu cũ. Em đề xuất: giữ, chưa kết luận.",
+  "853710-03": "Hai module điều khiển đèn LED gần như giống nhau: năm 2021 xếp 8537.10.19, năm 2026 xếp 8537.10.99. Cùng 15%, không chênh tiền. Em đề xuất: theo Thông báo mới nhất (.99).",
+  "271012-02": "Dung môi naphtha C7–C8: Thông báo 6491 xếp \"Loại khác\", trong khi 4001 và 6306 cùng năm, hàng gần y hệt, xếp 2710.12.70. Cùng 10%. Em đề xuất: khai .70 kèm số đo chưng cất đầy đủ.",
+  "520859-01": "Vải cotton vân chéo 3 sợi đã in: khớp nguyên văn dòng .20, Thông báo 2018 cũng xếp .20; riêng Thông báo 2016 xếp \"Loại khác\". Cùng 12%. Em đề xuất: theo chữ biểu và Thông báo mới (.20).",
+  "690721-02": "Gạch porcelain không men 300×600, 600×600: dòng .91 là \"gạch lát, ốp tường\" mà Thông báo xếp .92 \"Loại khác\", không nêu lý do. Cùng 35%. Em đề xuất: giữ chờ.",
+  "721491-02": "Thép S50C (mác thường có carbon 0,47–0,53%) mà Thông báo xếp dòng carbon ≥ 0,6%. Cần đọc toàn văn Thông báo 3268/2016 để biết carbon đo thực tế. Cùng 0%. Em đề xuất: tìm toàn văn rồi quyết."
+ }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "853710-01",
+  "hang": "Bản mạch điều khiển PCBA PM-315C-01 có vi điều khiển lập trình MSP430FR, dưới 1.000 V",
+  "maTB": "8537.10.99 (MFN 15%)",
+  "maChuBieu": "8537.10.12 (MFN 5%)",
+  "chenhThue": "+10 điểm % nếu theo TB (15% so với 5%)",
+  "nguyenNhan": "TANG_CHA",
+  "nguyenNhanPhu": ["DINH_NGHIA", "HAI_QUAN_KHONG_NHAT_QUAN"],
+  "giaiThich": "Dòng 8537.10.12 \"Bảng điều khiển có trang bị bộ xử lý lập trình\" nằm dưới tầng không mã 8537101 \"- - Bảng chuyển mạch và bảng điều khiển\" (Switchboards and control panels). 6326/TB-TCHQ không xếp vào tầng này mà vào tầng song song \"- - Loại khác\" (8537109) rồi dòng 8537.10.99 — tức Hải quan coi một PCBA trần chưa phải là \"bảng chuyển mạch/bảng điều khiển\", dù chính TB ghi hàng \"có trang bị bộ xử lý lập trình MSP430FR\". Như vậy điều kiện \"có bộ xử lý lập trình\" chưa đủ: phải qua được tầng cha \"control panel\" trước. SEN 8537.10.12 cũng thu hẹp dòng này về bảng điều khiển cho bộ điều khiển cơ điện tử tự động (dây chuyền nhà máy, hệ thống giải trí, chiếu sáng cố định), nhiều đầu vào/ra, chịu nhiễu, rung, va chạm; các TB xếp .12 đều là bảng có giao diện điều khiển (HMI Siemens 103/TB-TCHQ, bảng nút bấm 488, 489/TB-TCHQ, bo thang máy có LCD + bàn phím đã nạp chương trình 8413/TB-TCHQ). Tuy nhiên Hải quan không nhất quán ở tầng cha: các PCBA/module tương tự năm 2021–2023 (1159, 4040, 4800, 3346, 4978/TB-TCHQ) lại được xếp trong tầng \"Bảng chuyển mạch và bảng điều khiển\" ở 8537.10.19 (cùng 15%), còn từ cuối 2024 (6326/TB-TCHQ, 620/TB-TCHQ PLC, 14061/TB-CHQ) chuyển sang 8537.10.99. Thuế suất .19 và .99 như nhau (15%) nên về tiền thuế TB nhất quán là KHÔNG hưởng 5% của .12; lệch chỉ ở dòng nào trong hai dòng 15%. TB không nêu lý do; mô tả đầy đủ (công dụng của PM-315C-01) chưa xem được.",
+  "bangChung": [
+    "Tầng: \"(không mã 8537101) g2 - - Bảng chuyển mạch và bảng điều khiển: | Switchboards and control panels:\"; \"85371012 g3 - - - Bảng điều khiển có trang bị bộ xử lý lập trình (SEN) | - - - Control panels fitted with a programmable processor | MFN 5\"; \"(không mã 8537109) g2 - - Loại khác: | Other:\"; \"85371099 g3 - - - Loại khác | - - - Other | MFN 15\" — ca/853710-01.md (biểu 2026.04.05)",
+    "6326/TB-TCHQ ngày 2024-12-17: \"Bản mạch điều khiển PCBA PM-315C-01; Bản mạch điều khiển có trang bị bộ xử lý lập trình MSP430FR, dùng cho điện áp không quá 1000V.\" → \"phân nhóm “- - Loại khác”, mã số 8537.10.99 “- - - Loại khác”\" — data/precedents.json[\"85371099\"][0]",
+    "SEN 85371012: \"Các bảng điều khiển này được sử dụng cho các bộ điều khiển cơ điện tử tự động, như bộ điều khiển máy trong các dây chuyền lắp ráp của nhà máy, các hệ thống giải trí, hoặc các hệ thống chiếu sáng cố định. Những bảng điều khiển này được thiết kế để bố trí nhiều đầu vào và đầu ra, dải nhiệt độ mở rộng, chịu được nhiễu về điện, rung động và va chạm.\" — data/sen-2022.json",
+    "103/TB-TCHQ ngày 2024-01-08: \"Màn hình điều khiển cảm ứng Siemens SIMATIC HMI KTP 1200 Basic, là thiết bị điều khiển có trang bị bộ xử lý lập trình, dùng để theo dõi, giám sát và điều khiển hệ thống tự động hóa trong công nghiệp.\" → 8537.10.12 — data/precedents.json[\"85371012\"]",
+    "8413/TB-TCHQ (2017-12-26), toàn văn trên luatvietnam: bo mạch thang máy LISA 10 \"Dạng bảng mạch in kích thước 290x240mm, được tích hợp các linh kiện điện tử; chíp vi xử lý\", có màn hình LCD và bàn phím, quy trình có bước \"nạp chương trình vào chíp vi xử lý\" → 8537.10.12 — https://luatvietnam.vn/xuat-nhap-khau/thong-bao-8413-tb-tchq-tong-cuc-hai-quan-119264-d6.html (qua WebFetch, tóm lược của công cụ)",
+    "4978/TB-TCHQ ngày 2023-09-26: \"Bản mạch điện tử lắp ráp hoàn chỉnh gồm: Mạch in, chip điện tử, ... IC, RAM điện tử ...\" → \"phân nhóm “- - Bảng chuyển mạch và bảng điều khiển”, mã số 8537.10.19 “- - - Loại khác”\" — data/precedents.json[\"85371019\"]",
+    "620/TB-TCHQ ngày 2025-02-11: \"LS Programmable Logic Controller; Thiết bị điều khiển lập trình\" → \"phân nhóm - - Loại khác”, mã số 8537.10.99\" — data/precedents.json[\"85371099\"]"
+  ],
+  "ketLuan": "HAI_QUAN_MAU_THUAN",
+  "doChac": "VUA",
+  "baiHoc": "Ở 8537.10 phải xét tầng \"Bảng chuyển mạch và bảng điều khiển\" trước điều kiện \"có bộ xử lý lập trình\": PCBA/module trần chưa có giao diện điều khiển thì không hưởng dòng .12 (5%), Hải quan chỉ còn dao động giữa .19 và .99 (cùng 15%).",
+  "deXuatBang": "GIU_LECH — TB đúng ở chỗ không cho .12 (tầng cha + SEN, nhất quán với mọi TB về PCBA), nhưng việc chọn .99 thay vì .19 mâu thuẫn với chuỗi TB 2021–2023 nên cần người chốt; không nên để máy tự gợi ý .12 cho PCBA.",
+  "chuaKiemDuoc": [
+    "Toàn văn 6326/TB-TCHQ (https://www.tracuuhs.com/tin-tuc/tchq-6326-2024): trang dựng bằng JS, WebFetch không lấy được nội dung; tìm web không ra bản khác — chưa biết PM-315C-01 dùng cho thiết bị gì, đã nạp chương trình chưa.",
+    "Toàn văn 620/TB-TCHQ (PLC LS) để xem lý do xếp 'Loại khác' — chưa kiểm."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "847150-01",
+  "hang": "Máy trạm (workstation) Dell Precision: bản vỏ đứng 3680 Tower và bản lắp tủ rack 7960 Rack (chỉ thùng CPU)",
+  "maTB": "8471.50.10 (MFN 0%) cho 3680 Tower; 8471.50.90 (MFN 0%) cho 7960 Rack",
+  "maChuBieu": "8471.50.90 (MFN 0%)",
+  "chenhThue": "không chênh (cùng MFN 0%)",
+  "nguyenNhan": "MAY_HIEU_SAI_HANG",
+  "nguyenNhanPhu": [],
+  "giaiThich": "Hai TB không mâu thuẫn và cũng không lệch chữ biểu. Dòng 8471.50.10 chỉ hỏi một điều: đây có phải \"bộ xử lý dùng cho máy tính cá nhân\" (Processing units for personal computers) không — chữ \"máy trạm\" không tự đẩy hàng sang .90. 350/TB-CHQ (21/03/2025) xếp Precision 3680 Tower vào .10 vì hồ sơ mô tả máy đặt và dùng như máy tính để bàn, \"phù hợp sử dụng cho cá nhân và cả các doanh nghiệp\" (vỏ tower ~373×173×420 mm, CPU Intel Core, Windows 11 Home/Pro). Cùng ngày, cùng doanh nghiệp, 351/TB-CHQ xếp Precision 7960 Rack vào .90 và nêu thẳng lý do: \"mặt hàng có thiết kế, kích thước, trọng lượng và thực tế sử dụng không phù hợp là máy trạm cá nhân (personal computer)\" — máy lắp tủ rack rộng 482 mm, sâu 772 mm, nặng 21–30 kg, Xeon tới 64 nhân, RAM tới 8 TB, nguồn dự phòng thay nóng. 17693/TB-CHQ (2026) đi cùng hướng: máy tính công nghiệp rack 4U \"không phục vụ cho mục đích máy tính cá nhân\" → .90. Vậy tiêu chí của Hải quan nhất quán: xét thiết kế, kích thước, trọng lượng và cách dùng thực tế có phải máy cá nhân không; máy ghi lệch vì gom cả hai về nhãn \"máy trạm\". Cả hai dòng 0% nên không ảnh hưởng tiền thuế.",
+  "bangChung": [
+    "\"84715010 g2 - - Bộ xử lý dùng cho máy tính cá nhân (kể cả loại máy xách tay) | - - Processing units for personal (including portable) computers | MFN 0\"; \"84715090 g2 - - Loại khác | - - Other | MFN 0\" — ca/847150-01.md (biểu 2026.04.05)",
+    "350/TB-CHQ ngày 21/03/2025 (Precision 3680 Tower): \"cách thức đặt/để sử dụng như máy tính để bàn (desktop) và phù hợp sử dụng cho cá nhân và cả các doanh nghiệp\" → 8471.50.10 — https://luatvietnam.vn/xuat-nhap-khau/thong-bao-350-tb-chq-2025-ket-qua-xac-dinh-truoc-ma-so-doi-voi-precision-3680-tower-395222-d6.html (đoạn trích qua WebFetch)",
+    "351/TB-CHQ ngày 21/03/2025 (Precision 7960 Rack), mục 3: \"mặt hàng có thiết kế, kích thước, trọng lượng và thực tế sử dụng không phù hợp là máy trạm cá nhân (personal computer).\" → 8471.50.90 — https://luatvietnam.vn/xuat-nhap-khau/thong-bao-351-tb-chq-2025-ket-qua-xac-dinh-truoc-ma-so-doi-voi-precision-7960-rack-395223-d6.html (đoạn trích qua WebFetch)",
+    "351/TB-CHQ: \"Precision 7960 Rack. Kích thước khung: chiều caox chiều rộng x chiều sâu = 86.8mm (3.39 x 482mm (18.98 x 772.13mm (30.40 .\" — data/precedents.json[\"84715090\"]",
+    "17693/TB-CHQ ngày 2026-06-19: \"Cây máy tính công nghiệp ND100U-RX-1532G ... được thiết kế theo tiêu chuẩn công nghiệp rack 4U, đa dụng, có công dụng là trung tâm xử lý dữ liệu trong các hệ thống công nghiệp và công nghệ thông tin, không phục vụ cho mục đích máy tính cá nhân.\" → 8471.50.90 — data/precedents.json[\"84715090\"]"
+  ],
+  "ketLuan": "TB_DUNG",
+  "doChac": "CAO",
+  "baiHoc": "Ở 8471.50, \"máy trạm\" hay \"máy chủ\" chỉ là tên gọi; Hải quan quyết .10 hay .90 theo thiết kế, kích thước, trọng lượng và cách dùng thực tế (để bàn cho một người dùng → .10; lắp tủ rack, quản lý tập trung, công nghiệp → .90).",
+  "deXuatBang": "KHONG_LECH — hai TB cùng ngày theo một tiêu chí rõ ràng (351/TB-CHQ ghi thành chữ), không cái nào trái chữ biểu; chỉ cần ghi điều kiện 'dùng như máy cá nhân/để bàn' để phân hai dòng.",
+  "chuaKiemDuoc": [
+    "Toàn văn 17693/TB-CHQ trên luatvietnam: WebFetch bị HTTP 429, chỉ dùng phần trích trong data/precedents.json.",
+    "Các câu trích từ 350/351/TB-CHQ lấy qua công cụ WebFetch (bản luatvietnam hiển thị công khai), chưa đối chiếu bản PDF gốc."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "853710-02",
+  "hang": "Bảng mạch điều khiển lắp ráp sẵn (máy lọc không khí gắn khẩu trang; bo mạch đồng hồ Apple Watch) — chưa nạp chương trình điều khiển",
+  "maTB": "8537.10.19 (MFN 15%)",
+  "maChuBieu": "8537.10.12 (MFN 5%)",
+  "chenhThue": "+10 điểm % nếu theo TB (15% so với 5%)",
+  "nguyenNhan": "HANG_THIEU_DIEU_KIEN",
+  "nguyenNhanPhu": ["DINH_NGHIA"],
+  "giaiThich": "Cả hai TB đều đặt hàng vào đúng tầng \"- - Bảng chuyển mạch và bảng điều khiển (control panel)\" nhưng dừng ở dòng \"Loại khác\" 8537.10.19 chứ không vào .12 \"Bảng điều khiển có trang bị bộ xử lý lập trình\". Điểm chung của hai hàng là ở thời điểm nhập khẩu bo mạch CHƯA được nạp chương trình: 4040/TB-TCHQ ghi \"bảng mạch chưa trải qua quá trình ghi dữ liệu điều khiển\", 1159/TB-TCHQ ghi \"chưa được ghi phần mềm điều khiển ở công đoạn này\". Ngược lại, các TB xếp .12 đều là bảng đã hoạt động như bảng điều khiển có chương trình: bo thang máy 8413/TB-TCHQ có LCD, bàn phím và đã \"nạp chương trình vào chíp vi xử lý\"; HMI Siemens 103/TB-TCHQ; bảng nút bấm 488, 489/TB-TCHQ. SEN của .12 cũng mô tả loại bảng điều khiển cho bộ điều khiển cơ điện tử tự động, nhiều đầu vào/ra, chịu nhiễu, rung, va chạm, \"chương trình ... thường được lưu trữ trong các bộ nhớ được duy trì bằng ắc qui hoặc bộ nhớ không xóa\" — bo mạch đồng hồ hay bo mạch máy lọc khẩu trang không giống mô tả đó. Vì vậy có \"vi mạch điều khiển\" chưa đủ để vào .12; máy đọc \"vi điều khiển = bộ xử lý lập trình\" là thiếu điều kiện. Hai TB không ghi lý do thành chữ, nên đây là suy ra từ chi tiết hàng hoá và các TB đối chứng, không phải lời Hải quan.",
+  "bangChung": [
+    "4040/TB-TCHQ ngày 2022-09-28: \"Bảng mạch điều khiển của thiết bị lọc không khí (bảng mạch chưa trải qua quá trình ghi dữ liệu điều khiển), sử dụng cho điện áp dưới 1000V\" → \"phân nhóm “- - Bảng chuyển mạch và bảng điều khiển (control panel)”, mã số 8537.10.19\" — data/precedents.json[\"85371019\"]",
+    "1159/TB-TCHQ ngày 2022-04-05: \"Bảng mạch đã được lắp ráp hoàn chỉnh tuy nhiên chưa được ghi phần mềm điều khiển ở công đoạn này.\" → \"mã số 8537.10.19 “- - - Loại khác”\" — data/precedents.json[\"85371019\"]; xác nhận lại trên https://luatvietnam.vn/xuat-nhap-khau/thong-bao-1159-tb-tchq-2022-xac-dinh-ma-so-ban-mach-da-lap-rap-hoan-chinh-294534-d6.html",
+    "8413/TB-TCHQ (2017-12-26): bo mạch điều khiển chính thang máy LISA 10, có chip vi xử lý 32 bit, LCD, bàn phím, quy trình có bước \"nạp chương trình vào chíp vi xử lý\" → 8537.10.12 — https://luatvietnam.vn/xuat-nhap-khau/thong-bao-8413-tb-tchq-tong-cuc-hai-quan-119264-d6.html (qua WebFetch, tóm lược của công cụ)",
+    "SEN 85371012: \"Các chương trình để điều khiển sự vận hành máy móc thường được lưu trữ trong các bộ nhớ được duy trì bằng ắc qui hoặc bộ nhớ không xóa.\" — data/sen-2022.json",
+    "Dòng 85371012: \"- - - Bảng điều khiển có trang bị bộ xử lý lập trình (SEN) | - - - Control panels fitted with a programmable processor | MFN 5\"; 85371019: \"- - - Loại khác | - - - Other | MFN 15\" — ca/853710-02.md"
+  ],
+  "ketLuan": "TB_DUNG",
+  "doChac": "VUA",
+  "baiHoc": "\"Có vi điều khiển\" chưa phải \"bảng điều khiển có trang bị bộ xử lý lập trình\": Hải quan chỉ cho .12 khi bảng đã là bảng điều khiển hoạt động được (đã nạp chương trình, có giao diện/vào-ra điều khiển); bo mạch chưa nạp phần mềm, dùng trong thiết bị tiêu dùng thì về \"Loại khác\".",
+  "deXuatBang": "GIU_LECH — hai TB (4040, 1159) cùng chiều và có căn cứ rõ ở chi tiết 'chưa nạp chương trình', nhưng đó là suy luận từ dữ kiện chứ TB không ghi lý do; nên ghi điều kiện 'chưa nạp chương trình' vào bảng để người khai được hỏi lại đúng câu, rồi người chốt TIEN_LE_THAY_CHU_BIEU.",
+  "chuaKiemDuoc": [
+    "Toàn văn tracuuhs của 4040/1159 (trang JS không đọc được); bản luatvietnam chỉ hiện tóm tắt, không có lập luận phân loại.",
+    "Chưa có TB nào nói thẳng tiêu chí 'đã nạp chương trình' là lý do loại khỏi .12."
+  ]
+}
