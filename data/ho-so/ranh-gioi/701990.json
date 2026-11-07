@@ -4,13 +4,19 @@
   "nhom": "7019",
   "bieuThue": "2026.04.05",
   "tuVung": "tu-vung@2",
-  "trangThai": "NHAP",
+  "trangThai": "DUYET",
   "soanBoi": {
     "vai": "AI",
     "phien": "giamdoc:claude-opus-5-5:20261106T0800#soan-701990",
     "ngay": "2026-11-06"
   },
-  "duyet": null,
+  "duyet": {
+    "boi": "CLAUDE_DUYET",
+    "phien": "claude-code:gd-v044-dot2:20261107T0900#soat-v044-dot2",
+    "ngay": "2026-11-07",
+    "ghiChu": "Soát GĐ v044-dot2: sửa ghiChuSoan LECH_TIEN_LE gắn nhầm ma 70199040→70199050 (nội dung nói dongChuBieu .50 của mục bảng 701990-01). 5 QUYET_DINH đối chiếu tax/sen khớp nguyên văn; mục bảng 701990-01 KHONG_LECH đọc được (5608/TB-TCHQ vải tráng phủ về .90 khớp chữ biểu, không dệt từ sợi thô). 4 cảnh báo so-chu-tu-do chấp nhận: chữ biểu 8 số của .20/.40 là sản phẩm tên gọi, runtime hỏi người khai.",
+    "bam": "ee530cb33da6c4d365848a8af01d203fcc81a4e22cdeea116bfd550cb3eab194"
+  },
   "dieuKienNut": [],
   "dong8": [
     {
@@ -24,7 +30,7 @@
           "value": "Rèm (blinds)"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70199030",
@@ -37,7 +43,7 @@
           "value": "Xơ thủy tinh, trừ len thủy tinh"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70199040",
@@ -50,7 +56,7 @@
           "value": "Vật liệu bọc ngoài đường ống bằng sợi thủy tinh đã được thấm tẩm"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70199050",
@@ -63,14 +69,14 @@
           "value": "Vải dệt thoi từ sợi thô"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     },
     {
       "hs": "70199090",
       "nguon": "tax.70199090",
       "trich": "70199090 - - Loại khác",
       "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "CLAUDE_DUYET"
     }
   ],
   "ghiChuSoan": [
@@ -100,7 +106,7 @@
       "ghiChu": "tax.70199040 + sen.70199040: vật liệu KHÔNG DỆT, sợi thủy tinh đặt ngẫu nhiên rồi thấm tẩm, bọc ngoài đường ống chống ăn mòn, có ở dạng cuộn ⇒ tenLoai trích nguyên văn đến \"đã được thấm tẩm\""
     },
     {
-      "ma": "70199040",
+      "ma": "70199050",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Phân nhóm có cờ canHieuChinhTienLe — bảng data/ho-so/hieu-chinh-tien-le.json mục 701990-01 (KHONG_LECH): tiền lệ 5608/TB-TCHQ (vải tráng phủ 2 mặt + chỉ may + lưới thép) không vào 70199050 vì KHÔNG dệt từ sợi thô ⇒ 70199090 khớp chữ biểu. Soạn theo chữ biểu, người soát đọc mục bảng."
     }
