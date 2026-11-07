@@ -8,9 +8,9 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **68** |
+| DỪNG hiện tại | **63** |
 | Chờ anh: Q2 (văn bản ô tô), Q3 (nguồn Chương 98) | 32 |
-| Q1 còn lại — Claude xác minh / sửa bộ máy | 11 |
+| Q1 còn lại — Claude xác minh / sửa bộ máy | 6 |
 | Thiếu khoá từ vựng (giao thẻ khoá) | 5 |
 | Claude làm tiếp (công cụ / soát lại) | 20 |
 
@@ -24,8 +24,11 @@ lý do viết riêng từng cặp sau khi xét. Mỗi cặp hiện cảnh báo `
 Lúc chạy không đổi: hàng thoả cả hai thì hệ thống hỏi câu phân biệt. Ca có hàng thật (850440: máy nạp nguồn viễn thông, bộ
 nghịch lưu cho máy chủ) thì khai bằng hàng ví dụ thật, KHÔNG dùng Q1.
 
-Kết quả: **25 PN6 hết DỪNG**. Còn 11 PN6 nhóm này chưa gỡ: cần xác minh có hàng thật không (ống nồi hơi giới hạn chảy cao,
-giấy nhiều lớp…) hoặc còn vướng bộ máy khác — chi tiết ở bảng.
+Kết quả: lô 1 (#1150) **25 PN6 hết DỪNG**; lô 2 (#1151) **5 PN6** (480254, 480255, 721114, 730630, 730640) — xác minh từng cặp
+theo SEN: cặp có hàng thật khai kèm hàng (ống nồi hơi thép không gỉ Ø114,3 mm; giấy photo nhiều lớp; dải cán nóng dạng cuộn để cán lại),
+cặp bị định nghĩa SEN loại trừ khai Q1. Lô 2 thêm hai luật bộ kiểm: nhánh chia theo **số đo** (đường kính, % niken) là trục
+`DAC_DIEM`; hai nhánh cùng chỉ có khoá đặc điểm tất định (có/không, liệt kê, số) là **cùng trục** ⇒ khai `chongLanVanBan` từng cặp.
+Còn 6 PN6 nhóm này vướng bộ máy hoặc cần quyết định nghĩa (bảng dưới).
 
 ### Q2 — Ô tô ↔ xe ba bánh (5 PN6: 870421, 870431, 870441, 870451, 870460)
 
@@ -59,11 +62,6 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 |---|---|---|---|
 | **CHỒNG LẤN CHƯA CÓ HÀNG THẬT** | | | |
 | 271012 | Dầu nhẹ và các chế phẩm | Các dòng xăng thành phẩm (RON 97, RON 90–97, chưa pha chế, pha ethanol…), xăng máy bay, dung môi chồng với .80 «Naphtha, reformate và các chế phẩm khác để pha chế xăng động cơ» (tên ↔ công dụng — cần chongLanTruc, mỗi cặp lý do riêng); thêm dòng .23/.26/.29 không tới được (giới hạn bộ máy). | Q1 |
-| 480254 | Có định lượng dưới 40 g/m2 | Các tầng «Giấy làm nền sản xuất giấy carbon», «…giấy tráng nhôm», «…để viết, in…, dạng cuộn» chồng với .50 «Giấy và bìa nhiều lớp (SEN)». Chưa chắc có hàng thật không (giấy nhiều lớp dùng để viết/in có thể có). | Q1 |
-| 480255 | Có định lượng từ 40 g/m2 trở lên nhưng không quá 150g/m2, dạng cuộn | «Có chiều rộng không quá 15 cm (SEN)» (48025521) ↔ «Có chiều rộng không quá 15 cm» (48025561) — vd: chieuRong «149.99985», công dụng «viết», tên «Giấy và bìa trang trí» | Q1 |
-| 721114 | Loại khác, chiều dày từ 4,75 mm trở lên | Các dòng .14 «Dạng lượn sóng», .15 «Dạng cuộn để cán lại», .16 dải/đai, .17 tấm phổ dụng chia theo bốn đặc điểm độc lập (cùng trục đặc điểm), chồng lấn cùng trục không khai được bằng chongLanTruc. | Q1 |
-| 730630 | Loại khác, được hàn, có mặt cắt ngang hình tròn, bằng sắt hoặc thép kh | Các tầng «Ống dùng cho nồi hơi», «Ống mạ đồng, tráng nhựa flo hoặc kẽm», «Ống bọc (ống nhiệt)…», «Ống dẫn chịu áp lực cao giới hạn chảy ≥ 42.000 psi» chia theo các tiêu chí khác nhau; có thể có hàng thật thoả hai tầng (ống nồi hơi có giới hạn chảy cao). | Q1 |
-| 730640 | Loại khác, được hàn, có mặt cắt ngang hình tròn, bằng thép không gỉ | Tầng «Ống dùng cho nồi hơi» chồng với .20 «Ống… đường kính ngoài trên 105 mm» và .30 «Ống… chứa niken ít nhất 30%»: ống nồi hơi bằng thép không gỉ đường kính lớn hoặc nhiều niken là hàng có thể có thật. | Q1 |
 | 844331 | Máy kết hợp hai hoặc nhiều chức năng in, copy hoặc fax, có khả năng kế | Tầng 8443313 «Máy in-copy-fax kết hợp» (tên) chồng với tầng 8443311/8443312 (theo công nghệ in); dòng .91 «Máy in-copy-scan-fax kết hợp» không tới được vì tên tiêu đề là tiền tố tên dòng. | Q1 |
 | 848180 | Thiết bị khác | Tầng 8481805 «có khoang pha trộn» (khoá đặc điểm) chồng với nhiều nhánh tên van: van dùng cho săm, van lốp không săm, van xi lanh LPG, van bếp ga, van chai có ga, núm uống nước cho lợn… Không có van săm nào «có khoang pha trộn», nhưng chưa có hàng thật để làm ví dụ cho từng cặp nên theo luật vòng 8 chưa khai được. | Q1 |
 | 853690 | Thiết bị khác | Cổng xanh nhưng sai NGHĨA: hàng chính danh của .93 «Phiến đầu nối… cáp điện thoại» luôn thoả tầng 8536901 «Đầu nối… cho dây và cáp», mà .93 lại nằm dưới «Loại khác» 8536909 (loại trừ 8536901) ⇒ hiện chỉ tới được .93 bằng chữ «khối đấu nối». Chữ biểu tự xếp «phiến đầu nối cáp điện thoại» ra khỏi 8536901. | Q1 |
@@ -146,8 +144,8 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | #1145 | 850432, 842489, 900659 | «Loại khác, <vế>» chỉ loại anh em đứng trước (thứ tự dòng) |
 | #1146 | 300420, 300490, 854449, 851779, 300449 | Hết chờ bảng tiền lệ; sửa khoá sai trục; vế «trừ»; đọc «hoặc tiêm» |
 | #1148 | 902129, 170290, 320890, 670290, 830629, 841590, 020760, 901310, 300410, 870892, 220300 | Sửa spec sót tên/vế; trục vật liệu qua HOẶC; vế «trừ loại thuộc …»; «Loại khác, kể cả …» là phần còn lại trần |
-
-| (Q1) | 140490, 271019, 370500, 392690, 442191, 480431, 481190, 481690, 482390, 640319, 640391, 640399, 640411, 650610, 721391, 721399, 741810, 741920, 741980, 760421, 848610, 850440, 851981, 852329, 854370 | Khai chồng lấn không có hàng thật (Q1) hoặc chồng thật kèm hàng; sửa trục, sửa spec sót tên/vế (271019 .72, 741980 .80) |
+| #1150 (Q1) | 140490, 271019, 370500, 392690, 442191, 480431, 481190, 481690, 482390, 640319, 640391, 640399, 640411, 650610, 721391, 721399, 741810, 741920, 741980, 760421, 848610, 850440, 851981, 852329, 854370 | Khai chồng lấn không có hàng thật (Q1) hoặc chồng thật kèm hàng; sửa trục, sửa spec sót tên/vế (271019 .72, 741980 .80) |
+| #1151 | 480254, 480255, 721114, 730630, 730640 | Xác minh theo SEN: chồng THẬT kèm hàng, hoặc Q1; trục số DAC_DIEM; cặp DAC_DIEM cùng trục khai chongLanVanBan |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự

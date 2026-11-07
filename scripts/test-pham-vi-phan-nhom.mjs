@@ -110,5 +110,30 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   const b3 = nhapDongCung('140490', THU_MUC_DONG_CUNG_B5BF024); b3.chongLanTruc = [cum({ cap: ['14049020', '14049030'], hang: 'Bông gòn dùng thuộc da', khongCoHangThat: ld })];
   check('11d khai cả hang lẫn khongCoHangThat ⇒ lỗi hình dạng', C.kiemRanhGioi('140490', b3).loi.some((l) => l.startsWith('cong0-chong-lan-truc-vi-du-hinh-dang')));
 }
+{ // 12. Khoá SỐ là trục DAC_DIEM (07/11/2026, 730640): tầng "Ống dùng cho nồi hơi" ↔ .20 đường kính / .30 niken là chồng lấn thật
+  const cum = (truc20) => ({ nhanh: ['7306401', '73064020', '73064030'], truc: { 7306401: 'CONG_DUNG', 73064020: truc20, 73064030: 'DAC_DIEM' },
+    cauHoiPhanBiet: 'Ống này dùng cho nồi hơi, hay là ống đường kính ngoài trên 105 mm, hay là ống chứa niken ít nhất 30%?',
+    trich: { 7306401: 'Ống dùng cho nồi hơi', 73064020: 'Ống và ống dẫn bằng thép không gỉ, có đường kính ngoài trên 105 mm',
+      73064030: 'Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm' },
+    viDuHang: [
+      { cap: ['7306401', '73064020'], hang: 'Ống thép không gỉ hàn, mặt cắt ngang hình tròn, đường kính ngoài 114,3 mm, dùng cho nồi hơi (ống bộ quá nhiệt)' },
+      { cap: ['7306401', '73064030'], hang: 'Ống thép không gỉ hàn (hợp kim sắt-niken-crôm loại 800H), chứa niken 32% tính theo khối lượng, đường kính ngoài 9,53 mm, dùng cho nồi hơi' }],
+    phanXu: null });
+  const b0 = nhapDongCung('730640', THU_MUC_DONG_CUNG_B5BF024);
+  check('12a 730640 chưa khai ⇒ cong2-chong-lan-truc', C.kiemRanhGioi('730640', b0).loi.some((l) => l.startsWith('cong2-chong-lan-truc:7306401:')));
+  const b = nhapDongCung('730640', THU_MUC_DONG_CUNG_B5BF024); b.chongLanTruc = [cum('DAC_DIEM')];
+  const r = C.kiemRanhGioi('730640', b);
+  check('12b nhánh chỉ có khoá số khai DAC_DIEM + hàng thật hai chiều ⇒ xanh', r.hopLe === true, r.loi);
+  const b2 = nhapDongCung('730640', THU_MUC_DONG_CUNG_B5BF024); b2.chongLanTruc = [cum('TEN_LOAI')];
+  check('12c khai TEN_LOAI cho nhánh chỉ có khoá số ⇒ cong3-chong-lan-truc-truc-lech', C.kiemRanhGioi('730640', b2).loi.some((l) => l.startsWith('cong3-chong-lan-truc-truc-lech:0:73064020')));
+}
+{ // 13. Cặp DAC_DIEM ↔ DAC_DIEM trong cụm là cùng trục (07/11/2026, 721114): khai chongLanVanBan được, không phải chongLanTruc
+  const b = nhapDongCung('721114', THU_MUC_DONG_CUNG_B5BF024);
+  const r = C.kiemRanhGioi('721114', b);
+  check('13a 721114: 5 cặp đặc điểm (lượn sóng/cuộn để cán lại/đai dải/tấm phổ dụng) khai chongLanVanBan ⇒ không còn -van-ban-truc', r.hopLe === true && !r.loi.some((l) => l.startsWith('cong2-chong-lan-van-ban-truc') || l.startsWith('cong2-chong-lan-truc')), r.loi);
+  const b2 = nhapDongCung('721114', THU_MUC_DONG_CUNG_B5BF024);
+  const m = (b2.dong8 || []).find((x) => x.hs === '72111415'); m.dieuKienSo = [{ fact: 'tenLoai', op: 'TEN_LOAI', value: 'Dạng cuộn để cán lại' }];
+  check('13b đổi .15 sang khoá tên ⇒ cặp khác trục, chongLanVanBan không gỡ được', C.kiemRanhGioi('721114', b2).loi.some((l) => l.startsWith('cong2-chong-lan-van-ban-truc:72111414+72111415')), C.kiemRanhGioi('721114', b2).loi);
+}
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

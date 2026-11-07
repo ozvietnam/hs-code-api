@@ -222,8 +222,65 @@
     },
     {
       "ma": "480254",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Các tầng «Giấy làm nền sản xuất giấy carbon», «…giấy tráng nhôm», «…để viết, in…, dạng cuộn» chồng với .50 «Giấy và bìa nhiều lớp (SEN)». Chưa chắc có hàng thật không (giấy nhiều lớp dùng để viết/in có thể có). CẦN: Claude xác minh SEN «nhiều lớp» rồi khai chồng THẬT (kèm hàng) hoặc Q1 (không có hàng thật). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): .50 «Giấy và bìa nhiều lớp» chia theo đặc điểm (nhiều lớp), các nhánh khác chia theo công dụng. SEN 4802: giấy nhiều lớp thuộc 48.02 chỉ là loại dùng để viết, in, đồ bản ⇒ không đồng thời là giấy nền (carbon, tráng nhôm) — khai Q1. Cặp .40 (viết, in khổ nhỏ) ↔ .50: về chữ có thể chồng nhưng không thấy hàng thật dưới 40 g/m2 — khai Q1, ghi rõ để người soát xem lại. Lúc chạy hàng thoả hai nhánh ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "4802541",
+        "4802542",
+        "48025430",
+        "48025440",
+        "48025450"
+      ],
+      "truc": {
+        "4802541": "CONG_DUNG",
+        "4802542": "CONG_DUNG",
+        "48025430": "CONG_DUNG",
+        "48025440": "CONG_DUNG",
+        "48025450": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Giấy này là giấy nhiều lớp (hai lớp trở lên ép với nhau khi còn ướt — 48025450), hay là giấy làm nền sản xuất giấy carbon (tầng 4802541/4802542), giấy làm nền sản xuất giấy tráng nhôm (48025430), hoặc giấy viết, in khổ nhỏ (48025440)?",
+      "trich": {
+        "4802541": "Giấy làm nền sản xuất giấy carbon, có định lượng dưới 20g/m2",
+        "4802542": "Giấy làm nền sản xuất giấy carbon khác",
+        "48025430": "Giấy làm nền sản xuất giấy tráng nhôm(SEN)",
+        "48025440": "Loại dùng để viết, in và các mục đích đồ bản khác, dạng cuộn có chiều rộng không quá 15 cm hoặc dạng tờ hình chữ nhật (kể cả hình vuông) không có cạnh nào trên 36 cm ở dạng không gấp",
+        "48025450": "Giấy và bìa nhiều lớp(SEN)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "4802541",
+            "48025450"
+          ],
+          "khongCoHangThat": "SEN 4802: giấy nhiều lớp chỉ thuộc nhóm 48.02 khi dùng để viết, in hoặc đồ bản (loại khác thuộc 48.04, 48.05). Giấy làm nền sản xuất giấy carbon là giấy nền để phủ mực than, không phải giấy viết, in; lại là tờ mỏng một lớp dưới 20 g/m2. Giấy nhiều lớp thuộc 48.02 không đồng thời là giấy nền giấy carbon."
+        },
+        {
+          "cap": [
+            "4802542",
+            "48025450"
+          ],
+          "khongCoHangThat": "SEN 4802: giấy nhiều lớp chỉ thuộc nhóm 48.02 khi dùng để viết, in hoặc đồ bản (loại khác thuộc 48.04, 48.05). Giấy làm nền sản xuất giấy carbon là giấy nền để phủ mực than, không phải giấy viết, in. Giấy nhiều lớp thuộc 48.02 không đồng thời là giấy nền giấy carbon."
+        },
+        {
+          "cap": [
+            "48025430",
+            "48025450"
+          ],
+          "khongCoHangThat": "SEN 4802: giấy nhiều lớp chỉ thuộc nhóm 48.02 khi dùng để viết, in hoặc đồ bản (loại khác thuộc 48.04, 48.05). Giấy làm nền sản xuất giấy tráng nhôm là giấy nền để phủ nhôm, không phải giấy viết, in. Giấy nhiều lớp thuộc 48.02 không đồng thời là giấy nền tráng nhôm."
+        },
+        {
+          "cap": [
+            "48025440",
+            "48025450"
+          ],
+          "khongCoHangThat": "Về chữ có thể chồng: SEN 4802 nói giấy nhiều lớp thuộc 48.02 là loại dùng để viết, in. Nhưng ví dụ giấy nhiều lớp của SEN là giấy photo 20 lb (~75 g/m2); dưới 40 g/m2 mỗi lớp còn dưới 20 g/m2, và không thấy giấy viết, in nhiều lớp dưới 40 g/m2 ở khổ nhỏ (cuộn rộng không quá 15 cm, tờ không quá 36 cm) trên thực tế. Người soát nên xem lại cặp này khi có hàng thật."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }
