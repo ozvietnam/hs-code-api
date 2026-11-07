@@ -24,7 +24,7 @@ lý do viết riêng từng cặp sau khi xét. Mỗi cặp hiện cảnh báo `
 Lúc chạy không đổi: hàng thoả cả hai thì hệ thống hỏi câu phân biệt. Ca có hàng thật (850440: máy nạp nguồn viễn thông, bộ
 nghịch lưu cho máy chủ) thì khai bằng hàng ví dụ thật, KHÔNG dùng Q1.
 
-Kết quả: lô 1 (#1150) **25 PN6 hết DỪNG**; lô 2 (#LO2) **5 PN6** (480254, 480255, 721114, 730630, 730640) — xác minh từng cặp
+Kết quả: lô 1 (#1150) **25 PN6 hết DỪNG**; lô 2 (#1151) **5 PN6** (480254, 480255, 721114, 730630, 730640) — xác minh từng cặp
 theo SEN: cặp có hàng thật khai kèm hàng (ống nồi hơi thép không gỉ Ø114,3 mm; giấy photo nhiều lớp; dải cán nóng dạng cuộn để cán lại),
 cặp bị định nghĩa SEN loại trừ khai Q1. Lô 2 thêm hai luật bộ kiểm: nhánh chia theo **số đo** (đường kính, % niken) là trục
 `DAC_DIEM`; hai nhánh cùng chỉ có khoá đặc điểm tất định (có/không, liệt kê, số) là **cùng trục** ⇒ khai `chongLanVanBan` từng cặp.
@@ -145,7 +145,7 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | #1146 | 300420, 300490, 854449, 851779, 300449 | Hết chờ bảng tiền lệ; sửa khoá sai trục; vế «trừ»; đọc «hoặc tiêm» |
 | #1148 | 902129, 170290, 320890, 670290, 830629, 841590, 020760, 901310, 300410, 870892, 220300 | Sửa spec sót tên/vế; trục vật liệu qua HOẶC; vế «trừ loại thuộc …»; «Loại khác, kể cả …» là phần còn lại trần |
 | #1150 (Q1) | 140490, 271019, 370500, 392690, 442191, 480431, 481190, 481690, 482390, 640319, 640391, 640399, 640411, 650610, 721391, 721399, 741810, 741920, 741980, 760421, 848610, 850440, 851981, 852329, 854370 | Khai chồng lấn không có hàng thật (Q1) hoặc chồng thật kèm hàng; sửa trục, sửa spec sót tên/vế (271019 .72, 741980 .80) |
-| #LO2 | 480254, 480255, 721114, 730630, 730640 | Xác minh theo SEN: chồng THẬT kèm hàng, hoặc Q1; trục số DAC_DIEM; cặp DAC_DIEM cùng trục khai chongLanVanBan |
+| #1151 | 480254, 480255, 721114, 730630, 730640 | Xác minh theo SEN: chồng THẬT kèm hàng, hoặc Q1; trục số DAC_DIEM; cặp DAC_DIEM cùng trục khai chongLanVanBan |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự
