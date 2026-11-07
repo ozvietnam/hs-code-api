@@ -5,65 +5,152 @@
   "dong8": {
     "17029011": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Mantoza tinh khiết về mặt hóa học" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mantoza tinh khiết về mặt hóa học"
+        }
       ]
     },
     "17029020": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Mật ong nhân tạo" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Mật ong nhân tạo"
+        }
       ]
     },
     "17029030": {
       "dieuKienSo": [
-        { "fact": "daPhaHuongLieuHoacChatMau", "op": "CO" }
+        {
+          "fact": "daPhaHuongLieuHoacChatMau",
+          "op": "CO"
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "mantoza",
+          "chieu": "PHAI_KHONG"
+        }
       ]
     },
     "17029040": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đường caramen" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đường caramen"
+        }
       ]
     },
     "17029051": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đường sáp dừa" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Đường sáp dừa"
+        }
       ]
     },
     "17029091": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Xi rô đường" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Xi rô đường"
+        }
       ]
     }
   },
   "dieuKienNut": {
     "1702901": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Mantoza", "xirô mantoza"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Mantoza",
+            "xirô mantoza"
+          ]
+        }
       ]
     },
     "1702905": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đường từ cây họ cọ" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Đường từ cây họ cọ",
+            "Palm sugar"
+          ]
+        }
       ]
     }
   },
   "chongLanTruc": [
     {
-      "nhanh": ["17029020", "17029030"],
-      "truc": { "17029020": "TEN_LOAI", "17029030": "DAC_DIEM" },
-      "cauHoiPhanBiet": "Hàng này là \"Mật ong nhân tạo\" (17029020) hay là đường đã pha hương liệu hoặc chất màu ngoài mật ong nhân tạo (17029030)?",
+      "nhanh": [
+        "17029020",
+        "17029030",
+        "17029040",
+        "1702905"
+      ],
+      "truc": {
+        "1702905": "TEN_LOAI",
+        "17029020": "TEN_LOAI",
+        "17029030": "DAC_DIEM",
+        "17029040": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng này là \"Mật ong nhân tạo\" (17029020), \"Đường caramen\" (17029040), \"Đường từ cây họ cọ\" (tầng 1702905), hay là đường đã pha hương liệu hoặc chất màu thuộc loại khác (17029030)?",
       "trich": {
+        "1702905": "Đường từ cây họ cọ (Palm sugar)",
         "17029020": "Mật ong nhân tạo, đã hoặc chưa pha trộn với mật ong tự nhiên",
-        "17029030": "Đường đã pha hương liệu hoặc chất màu (trừ mantoza)"
+        "17029030": "Đường đã pha hương liệu hoặc chất màu (trừ mantoza)",
+        "17029040": "Đường caramen"
       },
       "viDuHang": [
-        { "cap": ["17029020", "17029030"], "hang": "Mật ong nhân tạo (xirô đường) đã pha hương liệu hoặc chất màu giống mật ong, đóng chai 500 g" }
+        {
+          "cap": [
+            "17029020",
+            "17029030"
+          ],
+          "hang": "Mật ong nhân tạo (xirô đường) đã pha hương liệu hoặc chất màu giống mật ong, đóng chai 500 g"
+        },
+        {
+          "cap": [
+            "17029030",
+            "17029040"
+          ],
+          "hang": "Đường caramen đã pha hương liệu hoặc chất màu (hương vani), dạng hạt, gói 1 kg"
+        },
+        {
+          "cap": [
+            "17029030",
+            "1702905"
+          ],
+          "hang": "Palm sugar (đường từ cây họ cọ) đã pha hương liệu hoặc chất màu (hương vani), gói 500 g"
+        }
       ],
       "phanXu": null
     }
   ],
   "ghiChuSoan": [
-    { "ma": "17029020", "loai": "QUYET_DINH", "ghiChu": "tax.17029020 \"Mật ong nhân tạo, đã hoặc chưa pha trộn với mật ong tự nhiên\": \"đã hoặc chưa pha trộn\" là vế 'có hoặc không' ⇒ PHU, không thành điều kiện" },
-    { "ma": "17029051", "loai": "QUYET_DINH", "ghiChu": "tax.17029051 \"Đường sáp dừa (Coconut sap sugar) (SEN)\": \"(Coconut sap sugar)\" tên Anh và \"(SEN)\" dấu chú giải ⇒ PHU, chỉ dùng tên \"Đường sáp dừa\"" },
-    { "ma": "17029030", "loai": "DUNG", "ghiChu": "Chồng lấn trục còn lại với 17029030 \"Đường đã pha hương liệu hoặc chất màu (trừ mantoza)\" đều là chồng lấn GIẢ, không có hàng thật thoả cả hai nhánh theo chữ biểu: 17029011 \"Mantoza tinh khiết về mặt hóa học\" mâu thuẫn với pha thêm hương liệu/màu; 17029019 thuộc nhóm mantoza bị loại trừ bởi vế \"(trừ mantoza)\" của chính 17029030; 17029051/17029059 đường từ cây họ cọ làm từ 100% nhựa cây (sen.17029051) nên không pha thêm hương liệu/màu; 17029040 \"Đường caramen\" — màu do caramel hoá tự nhiên, không nghĩ ra hàng thật nào đã pha thêm hương liệu hoặc chất màu. Cụm chongLanTruc chỉ khai cặp có hàng thật 17029020+17029030; các cặp còn lại bỏ khỏi cụm ⇒ DỪNG, báo Claude" }
+    {
+      "ma": "17029020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.17029020 \"Mật ong nhân tạo, đã hoặc chưa pha trộn với mật ong tự nhiên\": \"đã hoặc chưa pha trộn\" là vế 'có hoặc không' ⇒ PHU, không thành điều kiện"
+    },
+    {
+      "ma": "17029051",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.17029051 \"Đường sáp dừa (Coconut sap sugar) (SEN)\": \"(Coconut sap sugar)\" tên Anh và \"(SEN)\" dấu chú giải ⇒ PHU, chỉ dùng tên \"Đường sáp dừa\""
+    },
+    {
+      "ma": "17029030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026: vế \"(trừ mantoza)\" ⇒ tenLoai PHAI_KHONG \"mantoza\" (hết chồng với .11/.19). Chồng lấn với .40 \"Đường caramen\" và tầng 1702905 \"Đường từ cây họ cọ\" là chồng THẬT (hàng có thật: đường caramen/đường thốt nốt pha hương liệu) ⇒ chongLanTruc kèm hàng ví dụ; lúc chạy hệ thống hỏi."
+    }
   ]
 }
