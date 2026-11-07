@@ -1,0 +1,41 @@
+# Đề phân loại HS — 37 câu
+
+Với mỗi hàng dưới đây, cho **mã HS 8 số theo Biểu thuế XNK Việt Nam hiện hành (AHTN 2022)**. Trả lời đúng định dạng CSV, mỗi dòng `id,ma` (ví dụ `B01,3926.90.99`), không giải thích.
+
+- **B01**: Khóa hãm bằng nhựa POM (polyacetal), lắp vào hộc mở ở đầu xe và cốp để đồ của xe máy điện; kích thước khoảng 16 × 13 mm.
+- **B02**: Kẹo Ovaltine dạng viên hương sô cô la, kẹo dinh dưỡng từ mạch nha lúa mạch: đường saccharose khoảng 43%, chất béo khoảng 2,6%, ca cao dưới 5%; đóng gói bán lẻ 10 viên/8 g.
+- **B03**: Thạch tráng miệng vị dừa Petitzel, cốc 90 g: chế phẩm không đồng nhất có miếng quả, đường, chất làm đông và phụ gia.
+- **B04**: Bột nhão hạt dẻ cười (pistachio paste): hạt đã bóc vỏ, nướng, xay nhuyễn và trộn phụ gia; lon 5 kg, nguyên liệu sản xuất kem.
+- **B05**: Bột pha uống ageLOC TRME Greenshake, doanh nghiệp công bố là "thực phẩm bổ sung": protein đậu phân lập, maltodextrin, protein gạo, bột tảo spirulina và chlorella, bột cải bó xôi, cải kale, củ dền, hương vani, chất tạo ngọt tự nhiên; pha với nước để uống.
+- **B06**: Rượu soju Hàn Quốc 16,9% vol, chai 360 ml: cồn chưng cất từ gạo rồi pha loãng, thêm mật ong, đường, axit amin.
+- **B07**: Muối ăn kiêng Symbiosal, lọ thủy tinh 125 g: muối biển 97% + chitosan 3%, dùng nấu ăn thay muối thường. Kết quả phân tích: NaCl khoảng 93,7%, không chứa i-ốt.
+- **B08**: Quặng đuôi titan (bã sau tuyển khoáng) xuất khẩu: hỗn hợp ilmenite, zircon, rutile và monazite; TiO2 khoảng 33%, ZrO2 khoảng 4,9%.
+- **B09**: Thuốc màu trắng dioxit titan đã xử lý bề mặt bằng Al2O3 và SiO2, TiO2 trên 80% tính theo trọng lượng khô, dạng hạt, dùng sản xuất mực in.
+- **B10**: Bột nhão màu trắng WB White Paste 996: dioxit titan phân tán cùng chất hoạt động bề mặt không ion, TiO2 trên 80% tính theo trọng lượng khô, dạng nhão.
+- **B11**: Sơn chống ăn mòn KLIN WELD dùng sơn đường hàn: dung dịch copolyme acrylat trong toluene, xylene; nhà nhập khẩu là công ty cơ khí.
+- **B12**: Sơn hai thành phần Polyulac No.200 F-HB Choco Brown, doanh nghiệp khai "sơn chống ăn mòn dùng cho vỏ tàu biển"; kết quả giám định: sơn đi từ nhựa alkyd và chất đóng rắn trong dung môi hữu cơ.
+- **B13**: Dung dịch khử mùi phòng Ecolab OASIS PRO (mùi Relaxing Spa), can 2 lít: thành phần chính là chất hoạt động bề mặt và phụ gia.
+- **B14**: Dây thép dự ứng lực không hợp kim, carbon trên 0,6%, không mạ, đường kính 5 mm, có vết ấn, 1670 MPa, tiêu chuẩn BS 5896; dùng trực tiếp làm cốt cho cọc, cống, dầm sàn bê tông dự ứng lực, không bện thành tao.
+- **B15**: Thanh nhôm hợp kim định hình rỗng, đã sơn, chưa khoan cắt lỗ; về nhà máy cắt theo bản vẽ, lắp thành module rồi lắp tại công trình thành vách nhôm, cửa nhôm kính.
+- **B16**: Loa linh kiện dùng cho điện thoại di động (loa ngoài), loa đơn chưa lắp vào hộp loa, có vỏ loa, đường kính dưới 50 mm, dải tần 100 Hz – 20 kHz.
+- **B17**: Bản mạch điều khiển PCBA PM-315C-01 có vi điều khiển lập trình MSP430FR, dùng cho điện áp không quá 1.000 V.
+- **B18**: Bảng mạch điều khiển của máy lọc không khí gắn khẩu trang: bản mạch đã lắp linh kiện, vi mạch điều khiển tích hợp bluetooth, chưa nạp dữ liệu/chương trình điều khiển, điện áp dưới 1.000 V.
+- **B19**: Cáp sạc và truyền dữ liệu cho điện thoại di động: mỗi lõi bọc cách điện plastic, đường kính lõi dưới 5 mm, hai đầu đã gắn đầu nối.
+- **K01**: Bột whey protein Gold Standard 100% Whey vị dâu, hộp 907 g. Tên khai: "hỗn hợp whey protein 77%, cacao<5%, đã khử Maltodextrin, chất béo, hương dâu". Mô tả của Hải quan sau phân tích: chế phẩm chứa hỗn hợp protein từ sữa dưới 80% trọng lượng chất khô, chất làm ngọt, hương liệu, dạng bột (không nêu ca cao).
+- **K02**: Bột whey protein Gold Standard 100% Whey vị sô cô la sữa, hộp 907 g: hỗn hợp protein từ sữa dưới 80% trọng lượng khô, ca cao dưới 5% trọng lượng đã khử toàn bộ chất béo, chất làm ngọt, hương liệu, dạng bột.
+- **K03**: Thép cán nóng không hợp kim, cán phẳng dạng cuộn, chưa phủ mạ tráng, đã ngâm tẩy gỉ, chiều rộng trên 600 mm, tiêu chuẩn JIS G3101 (SS400, carbon thấp). Tên khai ghi độ dày 1,4–5,66 mm; mẫu phân tích dày 1,4 mm.
+- **K04**: Máy tính trạm Dell Precision 3680 Tower (vỏ đứng): bộ xử lý, đặt dùng như máy tính để bàn, cho chuyên gia thiết kế đồ họa, kỹ thuật, mô phỏng 3D.
+- **K05**: Máy tính trạm Dell Precision 7960 Rack: lắp tủ rack chuẩn 19 inch (khung cao 86,8 mm, rộng 482 mm, sâu 772 mm).
+- **K06**: Doanh nghiệp khai "thân van, bộ phận của van điều khiển khí nạp": thanh thép không gỉ SUS303 đặc dài 235 mm, một đầu tròn Ø6 mm, gắn 4 lá nhựa polyamide định hình (mỗi lá khoảng 35 × 55 mm) — cụm trục và lá van của van chuyển hướng khí nạp động cơ ô tô.
+- **K07**: Paraffinic naphtha, nguyên liệu sản xuất hoá dầu/hạt nhựa (không pha chế xăng): thành phần chính paraffin, naphthene, aromatic khoảng 2%; chưng cất từ điểm sôi đầu 34,5 °C đến điểm khô 133 °C.
+- **K08**: Naphtha từ chưng cất khí quyển, hydrocacbon C4–C11, sôi khoảng 30–180 °C, aromatic 8,71%; nguyên liệu hoá dầu.
+- **T01**: Thuốc thú y Flustop 20 sol: dung dịch florfenicol pha nước uống, chai 1 lít, trị nhiễm trùng đường hô hấp, tiêu hoá cho heo, gia cầm.
+- **T02**: Khung nhôm hợp kim (gia công CNC) của điện thoại di động Samsung A56, giữ cấu trúc tổng thể bên trong và cố định khung ngoài.
+- **T03**: Khối thu phát tín hiệu vô tuyến RRU5502N, bộ phận thiết bị trạm gốc thông tin di động UMTS/LTE FDD.
+- **T04**: Modem RU (Radio Unit): khối thu phát sóng của trạm gốc thông tin di động.
+- **T05**: Cục sạc cho điện thoại di động và máy tính bảng (Samsung EP-TA20EBE): vỏ nhựa, bản mạch, biến điện xoay chiều thành một chiều, cổng USB, hai mức điện áp ra.
+- **V01**: Nhũ tương dầu cá ăn được MEG-3 N-3 Emulsion: dầu cá khoảng 50%, nước khoảng 44%, chất nhũ hoá sodium caseinate, dipotassium orthophosphate; nguyên liệu thực phẩm, thùng 10 lít.
+- **V02**: Polypropylen nguyên sinh dạng hạt, bao 25 kg.
+- **V03**: Kính nổi phủ màu xanh, dạng tấm hình chữ nhật 5 × 2134 × 3048 mm, không cốt thép, không phản chiếu, chưa gia công vát cạnh.
+- **V04**: Tôn thép không hợp kim cán phẳng, carbon dưới 0,6%, mạ hợp kim nhôm-kẽm rồi phủ sơn, rộng trên 600 mm, dày 1,55 mm.
+- **V05**: Thép cuộn không hợp kim cán phẳng, carbon dưới 0,6%, rộng 510 mm, dày 0,8 mm, mạ kẽm điện phân rồi sơn một mặt (EGI PCM), làm khung tivi.
