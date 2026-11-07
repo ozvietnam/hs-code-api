@@ -13,6 +13,26 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "850132",
+      "nguon": "tieuDe.850132",
+      "trich": "Công suất trên 750 W nhưng không quá 75 kW",
+      "dieuKienSo": [
+        {
+          "fact": "congSuat",
+          "op": ">",
+          "value": 750,
+          "donVi": "W"
+        },
+        {
+          "fact": "congSuat",
+          "op": "<=",
+          "value": 75,
+          "donVi": "kW"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "8501322",
       "nguon": "tieuDe.8501322",
       "trich": "8501322 Công suất trên 750 W nhưng không quá 37,5 kW",
@@ -210,9 +230,9 @@
       "ghiChu": "tax.85013233 \"Máy phát điện\" ⇒ tenLoai \"Máy phát điện\""
     },
     {
-      "ma": "8501322",
-      "loai": "DUNG",
-      "ghiChu": "Cấu trúc chặn: phân nhóm 850132 bị chặn hai đầu (>750 W… ≤75 kW) chia làm 2 tầng số ĐỀU hai đầu, gốc không có dòng/tầng \"Loại khác\" — cong3-bien-lech-chu đòi đủ hai biên của từng tầng theo chữ, còn cong1 khong-phu-kin ở gốc đòi mọi vector biên (kể cả 749,999 W / 75.000,075 W ngay ngoài cận phân nhóm) phải rơi vào một con: mâu thuẫn, không sửa được không bịa chữ (bỏ cận ⇒ lệch chữ; thêm cận ở dòng khác ⇒ bịa). Đã thử 5 vòng (đủ/chừa cận dưới, phanConLai đủ kiểu). Báo Claude xem lại cách máy xử cận phân nhóm"
+      "ma": "850132",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[850132] theo tieuDe.850132 \"Công suất trên 750 W nhưng không quá 75 kW\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
     }
   ]
 }

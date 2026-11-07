@@ -13,6 +13,26 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "840732",
+      "nguon": "tieuDe.840732",
+      "trich": "Dung tích xi lanh trên 50 cc nhưng không quá 250 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 50,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 250,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "8407321",
       "nguon": "tieuDe.8407321",
       "trich": "8407321 Dung tích xilanh trên 50 cc nhưng không quá 110 cc",
@@ -110,11 +130,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "840732",
-      "loai": "DUNG",
-      "ghiChu": "Bế tắc cấu trúc: range gốc (50–250 cc) nằm ở tiêu đề PN6, máy không nhận dieuKienNut cho gốc (spec-ma-ngoai-phan-nhom) nên hai tầng (50,110]+(110,250] không phủ kín trục số ở gốc (lỗ 49.99995 cc). Bỏ \"> 50\" để hở cận dưới (khuôn 850152 bỏ mốc trùng giới hạn PN6) thì cong3-bien-lech-chu:8407321 chặn vì \"> 50\" là biên ĐẦU của chữ tầng dưới (máy so với biên đầu tiên đọc được). Không cách nào xanh mà không bỏ/vi phạm biên chữ — báo Claude."
-    },
-    {
       "ma": "8407321",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.8407321 \"Dung tích xilanh trên 50 cc nhưng không quá 110 cc\" ⇒ dungTichXiLanh > 50 cc và <= 110 cc (\"trên\" = >, \"không quá\" = <=)."
@@ -138,6 +153,11 @@
       "ma": "84073222",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.84073222 \"Dùng cho xe thuộc nhóm 87.11\" ⇒ dungCho \"87.11\"."
+    },
+    {
+      "ma": "840732",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[840732] theo tieuDe.840732 \"Dung tích xi lanh trên 50 cc nhưng không quá 250 cc\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
     }
   ]
 }
