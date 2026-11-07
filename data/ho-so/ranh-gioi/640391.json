@@ -62,6 +62,15 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "64039110",
+        "64039120"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ\" ↔ \"Ủng để cưỡi ngựa\" — ủng cưỡi ngựa có đế da hoặc cao su; không có ủng cưỡi ngựa nào đế bằng gỗ không lót đế trong."
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "64039110",
@@ -85,8 +94,8 @@
     },
     {
       "ma": "640391",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ» (64039110) và «Ủng để cưỡi ngựa» (64039120) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: vật liệu «gỗ», tên «Ủng để cưỡi ngựa») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): cặp dòng không có hàng thật thoả cả hai ⇒ chongLanVanBan kèm lý do. Lúc chạy hàng thoả cả hai ⇒ TRANH_CAP + câu hỏi, không tự chọn."
     }
   ]
 }

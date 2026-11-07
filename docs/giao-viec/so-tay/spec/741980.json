@@ -187,6 +187,10 @@
               }
             ]
           ]
+        },
+        {
+          "fact": "ganThietBiCoKhiHoacGiaNhiet",
+          "op": "KHONG"
         }
       ]
     }
@@ -297,9 +301,31 @@
       "ghiChu": "tax.74198080 \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự…\" ⇒ HOAC [[tenLoai [\"Thùng\",\"két\",\"bể chứa\"], dungTich<=300],[tenLoai TUONG_TU cùng 3 tên, dungTich<=300]] (mẫu 950300 .10: hàng nêu tên hoặc tương tự). Biên đối chiếu tay: \"từ 300 lít trở xuống\" = dungTich <= 300 lít. Vế \"không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" nằm trong vế biên số đã phủ theo máy; không có khoá riêng — thùng/két/bể đồng có gắn thiết bị cơ khí hoặc gia nhiệt là tổ hợp máy móc thuộc nhóm khác (84.19, 84.79…), không còn dòng 8 số nào trong 741980 nhận."
     },
     {
+      "ma": "74198080",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026: thêm vế giới hạn \"không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" (spec cũ sót) ⇒ ganThietBiCoKhiHoacGiaNhiet KHONG, như 741920."
+    },
+    {
       "ma": "741980",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Xích và các bộ phận của xích» (74198010) và «Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít tr» (74198080) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «Xích», dungTich «299.9997», là bộ phận «có», tên «Thùng») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): cặp dòng không có hàng thật thoả cả hai ⇒ chongLanVanBan kèm lý do. Lúc chạy hàng thoả cả hai ⇒ TRANH_CAP + câu hỏi, không tự chọn."
+    }
+  ],
+  "chongLanTruc": [],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "74198010",
+        "74198080"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Xích và các bộ phận của xích\" ↔ \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" — xích (và bộ phận của xích) và thùng, két, bể chứa là hai loại hàng khác hẳn nhau."
+    },
+    {
+      "cap": [
+        "74198050",
+        "74198080"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Thiết bị nấu hoặc đun nóng, trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này\" ↔ \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít trở xuống không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" — thiết bị nấu hoặc đun nóng luôn có bộ phận gia nhiệt, còn dòng .80 chỉ gồm đồ chứa KHÔNG gắn thiết bị gia nhiệt; không có hàng thoả cả hai."
     }
   ]
 }

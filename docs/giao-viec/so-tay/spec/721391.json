@@ -78,8 +78,35 @@
     },
     {
       "ma": "721391",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Loại dùng để sản xuất que hàn (SEN)» (72139110) và «Thép cốt bê tông» (72139120) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: công dụng «sản xuất que hàn», tên «Thép cốt bê tông») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "72139110",
+        "72139120"
+      ],
+      "truc": {
+        "72139110": "CONG_DUNG",
+        "72139120": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Loại dùng để sản xuất que hàn (SEN)» (72139110), «Thép cốt bê tông» (72139120)?",
+      "trich": {
+        "72139110": "Loại dùng để sản xuất que hàn (SEN)",
+        "72139120": "Thép cốt bê tông"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "72139110",
+            "72139120"
+          ],
+          "khongCoHangThat": "Thép dây cán nóng dùng để sản xuất que hàn là thép trơn, thành phần hóa học riêng cho que hàn; thép cốt bê tông có gân/vấu và mác thép xây dựng. Không có thép nào vừa là loại dùng làm que hàn vừa là thép cốt bê tông."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

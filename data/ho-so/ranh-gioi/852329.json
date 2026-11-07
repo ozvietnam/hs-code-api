@@ -581,6 +581,33 @@
       "lyDo": "tax.85232961 \"Loại sử dụng để tái tạo các tập lệnh, dữ liệu, âm thanh và hình ảnh, được ghi ở dạng mã nhị phân để máy có thể đọc được\" ↔ tax.85232962 \"Loại dùng cho điện ảnh\": băng từ rộng trên 6,5 mm ghi nhị phân máy đọc được dùng cho điện ảnh thoả cả hai nhánh theo chữ biểu; không có căn cứ thứ tự"
     }
   ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "85232941",
+        "85232942"
+      ],
+      "truc": {
+        "85232941": "TEN_LOAI",
+        "85232942": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Băng máy tính» (85232941), «Loại dùng cho điện ảnh» (85232942)?",
+      "trich": {
+        "85232941": "Băng máy tính",
+        "85232942": "Loại dùng cho điện ảnh"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "85232941",
+            "85232942"
+          ],
+          "khongCoHangThat": "Băng máy tính là băng từ lưu dữ liệu cho máy xử lý dữ liệu; băng dùng cho điện ảnh là băng ghi hình/âm thanh điện ảnh. Một cuộn băng không thể vừa là băng máy tính vừa là loại dùng cho điện ảnh."
+        }
+      ],
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "852329~r15503",
@@ -650,8 +677,8 @@
     },
     {
       "ma": "852329",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Băng máy tính» (85232941) và «Loại dùng cho điện ảnh» (85232942) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: chieuRong «4.000004», daGhi «có», dùng cho «điện ảnh», tên «Băng máy tính Băng từ») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
     }
   ]
 }

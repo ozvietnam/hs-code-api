@@ -80,8 +80,45 @@
     },
     {
       "ma": "480431",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Giấy kraft cách điện (SEN)» (48043110) và «Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)» (48043130) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: công dụng «sản xuất băng dán gỗ dán», doBenUot «40», tên «Giấy kraft cách điện») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "48043110",
+        "48043130",
+        "48043150"
+      ],
+      "truc": {
+        "48043110": "TEN_LOAI",
+        "48043130": "CONG_DUNG",
+        "48043150": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Giấy kraft cách điện (SEN)» (48043110), «Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ» (48043130), «Loại dùng làm bao xi măng (SEN)» (48043150)?",
+      "trich": {
+        "48043110": "Giấy kraft cách điện (SEN)",
+        "48043130": "Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)",
+        "48043150": "Loại dùng làm bao xi măng (SEN)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "48043110",
+            "48043130"
+          ],
+          "khongCoHangThat": "Giấy kraft cách điện dùng làm vật liệu cách điện (máy biến áp, cáp); giấy có độ bền ướt 40–60 g dùng sản xuất băng dán gỗ dán là giấy dán. Không có giấy cách điện nào dùng để sản xuất băng dán gỗ dán."
+        },
+        {
+          "cap": [
+            "48043110",
+            "48043150"
+          ],
+          "khongCoHangThat": "Giấy kraft cách điện không dùng làm bao xi măng (giấy bao xi măng là kraft bền xé, không phải giấy cách điện)."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

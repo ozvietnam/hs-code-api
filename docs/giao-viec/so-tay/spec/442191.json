@@ -149,8 +149,60 @@
     },
     {
       "ma": "442191",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Lõi cuộn chỉ, ống sợi và suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự» (44219110) và «Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận củ» (44219140) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: cachDieuKhien «BANG_TAY», dùng cho «Quạt», là bộ phận «có», tên «Lõi cuộn chỉ») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "44219110",
+        "44219140"
+      ],
+      "truc": {
+        "44219110": "TEN_LOAI",
+        "44219140": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này là lõi cuộn chỉ, ống sợi, suốt sợi, guồng cuốn chỉ may hoặc sản phẩm tương tự (44219110), hay là quạt, màn che kéo bằng tay hoặc bộ phận của chúng (44219140)?",
+      "trich": {
+        "44219110": "Lõi cuộn chỉ, ống sợi và suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự",
+        "44219140": "Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận của chúng"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "44219110",
+            "44219140"
+          ],
+          "khongCoHangThat": "Lõi cuộn chỉ, ống sợi, suốt sợi, guồng cuốn chỉ may là dụng cụ ngành dệt may, không phải quạt, màn che hay bộ phận của quạt/màn che."
+        }
+      ],
+      "phanXu": null
+    },
+    {
+      "nhanh": [
+        "44219130",
+        "44219170"
+      ],
+      "truc": {
+        "44219130": "TEN_LOAI",
+        "44219170": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này là que kẹo, que kem, thìa xúc kem (44219130) hay là que dùng để làm nhang (44219170)?",
+      "trich": {
+        "44219130": "Que kẹo, que kem và thìa xúc kem",
+        "44219170": "Các loại que dùng để làm nhang (nén hương)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "44219130",
+            "44219170"
+          ],
+          "khongCoHangThat": "Que kẹo, que kem là que ăn liền với thực phẩm; que làm nhang là lõi tre để quấn bột hương. Không có que kẹo, que kem nào dùng làm nhang."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

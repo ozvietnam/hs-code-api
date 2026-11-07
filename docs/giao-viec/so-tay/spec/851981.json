@@ -201,8 +201,35 @@
     },
     {
       "ma": "851981",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Loại dùng cho điện ảnh hoặc phát thanh» (85198161) và «Máy trả lời điện thoại» (85198162) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «điện ảnh», tên «Máy trả lời điện thoại Máy ghi băng từ có gắn với thiết bị tái tạo âm thanh, loại âm thanh số») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "85198161",
+        "85198162"
+      ],
+      "truc": {
+        "85198161": "CONG_DUNG",
+        "85198162": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Loại dùng cho điện ảnh hoặc phát thanh» (85198161), «Máy trả lời điện thoại» (85198162)?",
+      "trich": {
+        "85198161": "Loại dùng cho điện ảnh hoặc phát thanh",
+        "85198162": "Máy trả lời điện thoại"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "85198161",
+            "85198162"
+          ],
+          "khongCoHangThat": "Máy trả lời điện thoại là thiết bị điện thoại gia dụng/văn phòng, không phải thiết bị ghi âm dùng cho điện ảnh hoặc phát thanh."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }
