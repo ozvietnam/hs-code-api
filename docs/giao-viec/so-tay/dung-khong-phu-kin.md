@@ -44,7 +44,7 @@ công khai của NĐ 26/2023/NĐ-CP đều chặn hoặc trả sai văn bản �
 trong biểu Tổng cục: mỗi dòng 98 có **cột mã tương ứng ở 97 chương** (vd 9810.00.10 ↔ 7213.91.30, 7213.91.90) ⇒ Chương 98 là
 lớp mã thay thế, không có phần còn lại; hàng không vào dòng 98 nào thì khai mã tương ứng ở 97 chương. Đã làm (lô 5, #1155):
 tên 41 nhóm 98xx nạp vào cây từ chính dòng mã của biểu; cổng 1 hạ «không phủ kín» của Chương 98 thành cảnh báo
-`cong1-chuong98-ngoai-dong`; 11 PN6 hết DỪNG. Lô 6 (#LO6) soát 16 bản nháp còn lại: 14 hết DỪNG. Bộ máy thêm: tiêu đề «Loại khác:» trần / tiêu đề có tên ở gạch
+`cong1-chuong98-ngoai-dong`; 11 PN6 hết DỪNG. Lô 6 (#1158) soát 16 bản nháp còn lại: 14 hết DỪNG. Bộ máy thêm: tiêu đề «Loại khác:» trần / tiêu đề có tên ở gạch
 ngoài cùng tập lá là tầng BỌC NGOÀI (hết mọi tầng KHONG_DAT của biểu); dòng lặp đúng mã phân nhóm ở gạch trong là tiêu đề (984943);
 vế `laBoPhan KHONG` lấy căn cứ từ anh em tên «Bộ phận» (cảnh báo `cong3-khong-bo-phan-tu-anh-em`); dòng 98 CÙNG chữ phân bằng
 khoá `maHsTuongUng` theo cột mã hàng tương ứng (nguồn `tuongUng.<mã 98>`). Còn 984934, 984935 (bộ phận xe 87.08 — vướng bộ tách vế).
@@ -117,7 +117,7 @@ khoá `maHsTuongUng` theo cột mã hàng tương ứng (nguồn `tuongUng.<mã 
 | #1152 | 870850, 870899, 852910, 870829 | Spec sót vế «không phải bộ phận»; Q1 giá đỡ bình ắc quy; bộ kiểm ghép ứng viên trong HOẶC và «chữ đích + mã trơn» |
 | #1153 | 151190, 151329, 151620, 151800, 391690 | Khoá từ vựng mới thePhanDoan, cachBienDoiDau, dangVayManh, nhomPolyme, dangSanPhamNhom1518; chiSoIot đọc số không đơn vị; phạm vi phân nhóm (151329, 391690) |
 | #1155 | 844331; Chương 98: 981000, 983412, 983610, 984912, 984916, 984918, 984923, 984931, 984933, 984937, 984942 | 844331 theo tổ hợp chức năng (GĐ chốt: in-copy-scan không fax ⇒ .99; PC-Fax không tính fax); Chương 98 là lớp mã thay thế (cột mã tương ứng), tên nhóm 98xx từ biểu |
-| #LO6 | Chương 98: 981100, 981820, 981822, 984914, 984915, 984922, 984925, 984926, 984928, 984929, 984930, 984932, 984940, 984943 | Lớp tầng bọc ngoài + dòng lặp mã phân nhóm; laBoPhan KHONG theo anh em «Bộ phận»; maHsTuongUng (cột mã tương ứng); spec 981820 viết mới |
+| #1158 | Chương 98: 981100, 981820, 981822, 984914, 984915, 984922, 984925, 984926, 984928, 984929, 984930, 984932, 984940, 984943 | Lớp tầng bọc ngoài + dòng lặp mã phân nhóm; laBoPhan KHONG theo anh em «Bộ phận»; maHsTuongUng (cột mã tương ứng); spec 981820 viết mới |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự
