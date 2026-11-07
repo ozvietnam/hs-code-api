@@ -47,7 +47,7 @@ tên 41 nhóm 98xx nạp vào cây từ chính dòng mã của biểu; cổng 1 
 `cong1-chuong98-ngoai-dong`; 11 PN6 hết DỪNG. Lô 6 (#1158) soát 16 bản nháp còn lại: 14 hết DỪNG. Bộ máy thêm: tiêu đề «Loại khác:» trần / tiêu đề có tên ở gạch
 ngoài cùng tập lá là tầng BỌC NGOÀI (hết mọi tầng KHONG_DAT của biểu); dòng lặp đúng mã phân nhóm ở gạch trong là tiêu đề (984943);
 vế `laBoPhan KHONG` lấy căn cứ từ anh em tên «Bộ phận» (cảnh báo `cong3-khong-bo-phan-tu-anh-em`); dòng 98 CÙNG chữ phân bằng
-khoá `maHsTuongUng` theo cột mã hàng tương ứng (nguồn `tuongUng.<mã 98>`). Lô 7 (#LO7) xong 984934, 984935: bộ tách vế đọc «có hoặc không …» là vế
+khoá `maHsTuongUng` theo cột mã hàng tương ứng (nguồn `tuongUng.<mã 98>`). Lô 7 (#1162) xong 984934, 984935: bộ tách vế đọc «có hoặc không …» là vế
 tuỳ chọn và «…, và các cầu bị động» là tên đầu liên hợp; ghép giá trị nối tiếp ≥ 3 tầng cùng khoá; hiệu chỉnh số gạch biểu thụt sai
 có căn cứ mã tương ứng (r19765–19767; dải r19818–19848); tiêu đề không mã đứng trước dòng lá đầu của phân nhóm 98 vào cây, tiêu đề
 phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
@@ -118,7 +118,7 @@ phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 | #1153 | 151190, 151329, 151620, 151800, 391690 | Khoá từ vựng mới thePhanDoan, cachBienDoiDau, dangVayManh, nhomPolyme, dangSanPhamNhom1518; chiSoIot đọc số không đơn vị; phạm vi phân nhóm (151329, 391690) |
 | #1155 | 844331; Chương 98: 981000, 983412, 983610, 984912, 984916, 984918, 984923, 984931, 984933, 984937, 984942 | 844331 theo tổ hợp chức năng (GĐ chốt: in-copy-scan không fax ⇒ .99; PC-Fax không tính fax); Chương 98 là lớp mã thay thế (cột mã tương ứng), tên nhóm 98xx từ biểu |
 | #1158 | Chương 98: 981100, 981820, 981822, 984914, 984915, 984922, 984925, 984926, 984928, 984929, 984930, 984932, 984940, 984943 | Lớp tầng bọc ngoài + dòng lặp mã phân nhóm; laBoPhan KHONG theo anh em «Bộ phận»; maHsTuongUng (cột mã tương ứng); spec 981820 viết mới |
-| #LO7 | Chương 98: 984934, 984935 | Vế tuỳ chọn «có hoặc không …» + tên đầu liên hợp; ghép nối tiếp ≥ 3 tầng; hiệu chỉnh gạch biểu có căn cứ mã tương ứng; tiêu đề trước dòng lá đầu |
+| #1162 | Chương 98: 984934, 984935 | Vế tuỳ chọn «có hoặc không …» + tên đầu liên hợp; ghép nối tiếp ≥ 3 tầng; hiệu chỉnh gạch biểu có căn cứ mã tương ứng; tiêu đề trước dòng lá đầu |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự
