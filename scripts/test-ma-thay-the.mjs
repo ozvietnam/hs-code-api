@@ -116,7 +116,14 @@ console.warn = () => {};
     JSON.stringify(thieu.map((s) => [s.hsCode, s.lyDoThayThe])));
   const sai = sg.slice(1).filter((s) => s.lyDoThayThe && !s.lyDoThayThe.includes(s.hsCode));
   assert('/api/suggest: lyDoThayThe nói đúng dòng của chính mã đó (không chép nhầm)', sai.length === 0, JSON.stringify(sai.map((s) => [s.hsCode, s.lyDoThayThe])));
-  const khopTen = sg.slice(1).filter((s) => s.lyDoThayThe && s.lyDoThayThe.split(':').slice(1).join(':').trim() !== String(taxData[s.hsCode]?.vn || '').replace(/^[\s\-–—:|.]+/, '').trim());
+  // Dòng "Loại khác"/residual: lyDoThayThe làm giàu thêm "… (dòng anh em cùng phân nhóm …)" (lib/ma-thay-the.js)
+  // — nên tên đúng là BẰNG taxData.vn, hoặc BẮT ĐẦU bằng nó rồi tới phần làm giàu. Vẫn bắt lỗi chép sai tên.
+  const khopTen = sg.slice(1).filter((s) => {
+    if (!s.lyDoThayThe) return false;
+    const name = s.lyDoThayThe.split(':').slice(1).join(':').trim();
+    const expected = String(taxData[s.hsCode]?.vn || '').replace(/^[\s\-–—:|.]+/, '').trim();
+    return name !== expected && !name.startsWith(`${expected} (dòng anh em cùng phân nhóm `);
+  });
   assert('/api/suggest: nội dung lyDoThayThe bám đúng tên trong data/tax.json', khopTen.length === 0,
     JSON.stringify(khopTen.map((s) => [s.hsCode, s.lyDoThayThe])));
 }

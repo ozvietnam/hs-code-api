@@ -18,10 +18,14 @@ check('… và mọi kết quả đều chứa nguyên từ "gầm" hoặc "ch�
 const rang = await top('Thanh răng', 5);
 check('"Thanh răng" không đưa "Đèn thanh led" lên đầu', !(rang[0] && /đèn/i.test(rang[0].tenHang)), JSON.stringify(rang.map((i) => i.tenHang)));
 
-// 2. Cờ engine-loop (cov ≥ 75) không bật cho món Leapmotor
+// 2. Khớp ≥75% chỉ được do tiền lệ chắn gầm THẬT, không do chữ chung chung.
+//    (11/2026: kho Oz nay CÓ tiền lệ "Ốp bảo vệ gầm xe ô tô 4 chỗ (tấm che gầm)" — cùng loại món
+//     Leapmotor của ca gốc, nên khớp ≥75% là true positive. Guard giữ nguyên: mọi khớp ≥75% phải
+//     chứa nguyên từ "gầm" (tiền lệ chắn gầm thật); nếu "Tấm silicone/kính…" mà ≥75% thì vẫn FAIL.)
 for (const q of ['tấm bảo vệ gầm xe bảo vệ pin', 'tấm bảo vệ gầm', 'tấm chắn gầm xe ô tô', 'tấm bảo vệ pin xe điện']) {
   const items = await top(q, 5);
-  check(`"${q}": không tiền lệ nào ≥75% chỉ nhờ chữ chung chung`, items.every((it) => it.matchCoverage < 75), JSON.stringify(items.map((i) => [i.tenHang, i.matchCoverage])));
+  const gia = items.filter((it) => it.matchCoverage >= 75 && !/gầm/u.test(String(it.tenHang).toLowerCase()));
+  check(`"${q}": khớp ≥75% chỉ khi là tiền lệ chắn gầm thật (không do chữ chung chung)`, gia.length === 0, JSON.stringify(items.map((i) => [i.tenHang, i.matchCoverage])));
 }
 
 // 3. Truy vấn không dấu vẫn tìm được (so nguyên từ trên bản bỏ dấu)
