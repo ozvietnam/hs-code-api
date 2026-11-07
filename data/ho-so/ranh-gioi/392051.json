@@ -32,13 +32,19 @@
   "dong8": [
     {
       "hs": "39205111",
-      "nguon": "tax.39205111",
-      "trich": "39205111 - - - - Loại cứng(SEN)",
+      "nguon": "sen.39205111",
+      "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "cứng"
+        },
+        {
+          "fact": "moDunDanHoi",
+          "op": ">",
+          "value": 100000,
+          "donVi": "psi"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -78,6 +84,11 @@
       "ma": "39205190",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.39205190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+    },
+    {
+      "ma": "39205111",
+      "loai": "QUYET_DINH",
+      "ghiChu": "sen.39205111: định nghĩa \"Loại cứng\" = mô-đun đàn hồi > 100,000 psi (ASTM D747/D790) ⇒ thêm moDunDanHoi > 100000 psi (#1139, khoá lô 24)"
     }
   ]
 }
