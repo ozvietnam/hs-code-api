@@ -29,13 +29,18 @@
   "dong8": [
     {
       "hs": "01022911",
-      "nguon": "tax.01022911",
-      "trich": "01022911 - - - - Bò thiến (SEN)",
+      "nguon": "sen.01022911",
+      "trich": "BÒ THIẾN\nBò thiến là động vật đực họ trâu bò giống Bos loài Bos Taurus trưởng thành, đã bị thiến.\n\nChúng được huấn luyện làm động vật kéo (kéo xe cart, xe kéo bốn bánh (wagons), cày…",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Bò thiến"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "động vật kéo"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -65,6 +70,11 @@
       "ma": "01022911",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.01022911 \"Bò thiến (SEN)\" ⇒ tenLoai \"Bò thiến\"; \"(SEN)\" là ngoặc chú thích, không thành điều kiện (cổng 5 coi là PHU)."
+    },
+    {
+      "ma": "01022911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "sen.01022911 (SEN) ⇒ tenLoai \"Bò thiến\" + congDung \"động vật kéo\" — SEN định nghĩa bò thiến là động vật đực Bos Taurus trưởng thành đã bị thiến, được huấn luyện làm động vật kéo; điều kiện tên-only trước đây khớp mọi hàng ghi \"Bò thiến\" (kể cả bò vỗ béo nuôi thịt, không kéo xe). Tầng 0102291 \"Gia súc đực\" vẫn giữ tenLoai \"đực\" như cũ."
     }
   ]
 }

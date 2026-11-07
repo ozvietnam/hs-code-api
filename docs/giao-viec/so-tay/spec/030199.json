@@ -13,7 +13,7 @@
     "03019934": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Cá mú hoa nâu", "cá mú cọp"] } ] },
     "03019935": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá mú dẹt" } ] },
     "03019936": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá mú" } ], "phanConLai": false },
-    "03019941": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá rô phi" } ] },
+    "03019941": { "nguon": "sen.03019941", "trich": "CÁ RÔ PHI (OREOCHROMIS SPP.)\nLà loài cá nước ngọt làm thực phẩm", "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá rô phi" }, { "fact": "moiTruongSongCuaCa", "op": "TRONG", "value": [ "NUOC_NGOT" ] } ] },
     "03019942": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá chép" }, { "fact": "dungLamGiong", "op": "CO" } ], "phanConLai": false },
     "03019950": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Cá biển" } ], "phanConLai": false }
   },
@@ -37,6 +37,7 @@
     { "ma": "03019934", "loai": "QUYET_DINH", "ghiChu": "tax.03019934 \"Cá mú hoa nâu/cá mú cọp (Epinephelus fuscoguttatus) (SEN)\" ⇒ tenLoai [\"Cá mú hoa nâu\",\"cá mú cọp\"] — dấu \"/\" là hai tên của cùng loài ⇒ mảng (hoặc)." },
     { "ma": "03019936", "loai": "QUYET_DINH", "ghiChu": "tax.03019936 \"Cá mú loại khác\" ⇒ tenLoai \"Cá mú\", phanConLai: false — tên \"Cá mú\" bị chứa trong tên loài cụ thể của ba anh em (\"Cá mú chấm nhỏ\"…), máy xử bằng luật tên cụ thể hơn thắng (cong2-ten-cu-the-hon, như 845290 \"bàn đạp\" ⊃ \"Bàn\"); khai phanConLai làm dòng không tới được (cong2-dong-khong-toi-duoc)." },
     { "ma": "03019942", "loai": "QUYET_DINH", "ghiChu": "tax.03019942 \"Cá chép khác, để nhân giống (SEN)\" ⇒ tenLoai \"Cá chép\" + dungLamGiong CO; \"khác\" như 03019922 ⇒ phanConLai: false." },
-    { "ma": "03019950", "loai": "QUYET_DINH", "ghiChu": "tax.03019950 \"Cá biển khác\" ⇒ tenLoai \"Cá biển\", phanConLai: false — \"khác\" phủ các tầng anh em (cá bột, cá măng biển/cá mú, cá nước ngọt) nhưng âm tiết \"biển\" nằm trong \"cá măng biển\" nên khai phanConLai làm dòng không tới được; chồng với cá măng biển do bộ so chữ máy xử bằng tên cụ thể hơn thắng (cá măng biển cụ thể hơn cá biển)." }
+    { "ma": "03019950", "loai": "QUYET_DINH", "ghiChu": "tax.03019950 \"Cá biển khác\" ⇒ tenLoai \"Cá biển\", phanConLai: false — \"khác\" phủ các tầng anh em (cá bột, cá măng biển/cá mú, cá nước ngọt) nhưng âm tiết \"biển\" nằm trong \"cá măng biển\" nên khai phanConLai làm dòng không tới được; chồng với cá măng biển do bộ so chữ máy xử bằng tên cụ thể hơn thắng (cá măng biển cụ thể hơn cá biển)." },
+    { "ma": "03019941", "loai": "QUYET_DINH", "ghiChu": "sen.03019941 (SEN) ⇒ tenLoai \"Cá rô phi\" + moiTruongSongCuaCa TRONG [\"NUOC_NGOT\"] — SEN định nghĩa cá rô phi là \"loài cá nước ngọt\"; khoá môi trường sống đọc đúng cụm \"cá nước ngọt\" (không đọc nhầm tên loài chứa chữ \"nước ngọt\"), nên hàng chỉ trùng tên \"Cá rô phi\" mà khai là cá biển thì không thoả." }
   ]
 }

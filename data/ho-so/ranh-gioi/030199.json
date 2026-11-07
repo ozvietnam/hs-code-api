@@ -246,13 +246,20 @@
     },
     {
       "hs": "03019941",
-      "nguon": "tax.03019941",
-      "trich": "03019941 - - - - Cá rô phi (Oreochromis spp.)(SEN)",
+      "nguon": "sen.03019941",
+      "trich": "CÁ RÔ PHI (OREOCHROMIS SPP.)\nLà loài cá nước ngọt làm thực phẩm",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Cá rô phi"
+        },
+        {
+          "fact": "moiTruongSongCuaCa",
+          "op": "TRONG",
+          "value": [
+            "NUOC_NGOT"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -374,6 +381,11 @@
       "ma": "03019950",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.03019950 \"Cá biển khác\" ⇒ tenLoai \"Cá biển\", phanConLai: false — \"khác\" phủ các tầng anh em (cá bột, cá măng biển/cá mú, cá nước ngọt) nhưng âm tiết \"biển\" nằm trong \"cá măng biển\" nên khai phanConLai làm dòng không tới được; chồng với cá măng biển do bộ so chữ máy xử bằng tên cụ thể hơn thắng (cá măng biển cụ thể hơn cá biển)."
+    },
+    {
+      "ma": "03019941",
+      "loai": "QUYET_DINH",
+      "ghiChu": "sen.03019941 (SEN) ⇒ tenLoai \"Cá rô phi\" + moiTruongSongCuaCa TRONG [\"NUOC_NGOT\"] — SEN định nghĩa cá rô phi là \"loài cá nước ngọt\"; khoá môi trường sống đọc đúng cụm \"cá nước ngọt\" (không đọc nhầm tên loài chứa chữ \"nước ngọt\"), nên hàng chỉ trùng tên \"Cá rô phi\" mà khai là cá biển thì không thoả."
     }
   ]
 }
