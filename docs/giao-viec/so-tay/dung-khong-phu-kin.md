@@ -8,9 +8,9 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **28** |
+| DỪNG hiện tại | **26** |
 | Chờ oz-wiki: Q2 (văn bản ô tô) | 5 |
-| Chương 98 — Claude đang soát bản nháp | 2 |
+| Chương 98 — Claude đang soát bản nháp | 0 |
 | Q1 còn lại — Claude xác minh / sửa bộ máy | 3 |
 | Claude làm tiếp (công cụ / soát lại) | 18 |
 
@@ -37,7 +37,7 @@ Các dòng «Ô tô tải đông lạnh», «Ô tô pick-up»… bị coi là ch
 trở lên. Cần bản chính thức văn bản định nghĩa «xe ô tô» (Luật 36/2024/QH15 hoặc TCVN 6211) làm nguồn. Anh chốt 07/11: **chờ
 oz-wiki trả lời** (kho oz-wiki-plhq), Claude làm tiếp #1101 khi có.
 
-### Q3 — Chương 98 — ANH CHỐT «LÀM LUÔN» 07/11, ĐANG LÀM (2 PN6 còn lại)
+### Q3 — Chương 98 — ANH CHỐT «LÀM LUÔN» 07/11, XONG (0 PN6 còn lại)
 
 Biểu Excel Tổng cục chỉ chép mục «3. Danh mục hàng hóa…» của Chương 98 (không có mục chú giải, điều kiện áp dụng); bốn nguồn
 công khai của NĐ 26/2023/NĐ-CP đều chặn hoặc trả sai văn bản ⇒ chưa có nguyên văn chú giải để trích. Căn cứ dùng được nằm ngay
@@ -47,7 +47,10 @@ tên 41 nhóm 98xx nạp vào cây từ chính dòng mã của biểu; cổng 1 
 `cong1-chuong98-ngoai-dong`; 11 PN6 hết DỪNG. Lô 6 (#1158) soát 16 bản nháp còn lại: 14 hết DỪNG. Bộ máy thêm: tiêu đề «Loại khác:» trần / tiêu đề có tên ở gạch
 ngoài cùng tập lá là tầng BỌC NGOÀI (hết mọi tầng KHONG_DAT của biểu); dòng lặp đúng mã phân nhóm ở gạch trong là tiêu đề (984943);
 vế `laBoPhan KHONG` lấy căn cứ từ anh em tên «Bộ phận» (cảnh báo `cong3-khong-bo-phan-tu-anh-em`); dòng 98 CÙNG chữ phân bằng
-khoá `maHsTuongUng` theo cột mã hàng tương ứng (nguồn `tuongUng.<mã 98>`). Còn 984934, 984935 (bộ phận xe 87.08 — vướng bộ tách vế).
+khoá `maHsTuongUng` theo cột mã hàng tương ứng (nguồn `tuongUng.<mã 98>`). Lô 7 (#LO7) xong 984934, 984935: bộ tách vế đọc «có hoặc không …» là vế
+tuỳ chọn và «…, và các cầu bị động» là tên đầu liên hợp; ghép giá trị nối tiếp ≥ 3 tầng cùng khoá; hiệu chỉnh số gạch biểu thụt sai
+có căn cứ mã tương ứng (r19765–19767; dải r19818–19848); tiêu đề không mã đứng trước dòng lá đầu của phân nhóm 98 vào cây, tiêu đề
+phủ trọn phân nhóm là tên phân nhóm. Chương 98 hết DỪNG.
 
 ## Việc Claude tự làm tiếp (công cụ)
 
@@ -74,9 +77,6 @@ khoá `maHsTuongUng` theo cột mã hàng tương ứng (nguồn `tuongUng.<mã 
 | 870441 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | 870451 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | 870460 | Loại khác, chỉ sử dụng động cơ điện để tạo động lực | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
-| **CHƯƠNG 98 THIẾU NGUỒN** | | | |
-| 984934 | Bộ phận và phụ kiện của xe có động cơ thuộc các nhóm từ 87.01 đến 87.0 | Đã sửa 07/11 (lô 6): tầng «Cầu chủ động…; các bộ phận của chúng» ghi theo mẫu HOẶC [tên / bộ phận + dùng cho]; tầng «chưa/đã lắp ráp hoàn chỉnh», «Hệ thống giảm chấn» thêm laBoPhan KHONG (anh em «Bộ phận») — chồng lấn 50 → 14. CÒN: (1) bộ tách vế (lib/ho-so/tach-ve.js) đọc «…có hoặc không kèm theo chi tiết khác của cụm hộp số, v | Claude soát spec |
-| 984935 |  | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×56; dòng không tới được ×11; chồng lấn trục (tên ↔ công dụng) ×7; tầng bị lược ×1. Vd: cong1-tang-bi-luoc:98493529:984935~r19831. | Claude soát spec |
 | **GIÁ TRỊ CHUNG** | | | |
 | 610520 | Từ sợi nhân tạo | «Từ sợi nhân tạo» bao gồm «sợi tổng hợp» (.10) và «sợi tái tạo» (.20). Tờ khai ghi chung «sợi nhân tạo» bị coi là TRÁI cả hai dòng, đúng ra phải hỏi lại. | từ vựng khai giá trị chung ⊃ giá trị riêng (NHAN_TAO ⊃ SOI_TONG_HOP, SOI_TAI_TAO) để bộ so trả «chưa biết». Phạm vi phân nhóm đã khai (07/11). |
 | **TỪ VỰNG ĐỌC SAI NGHĨA** | | | |
@@ -118,6 +118,7 @@ khoá `maHsTuongUng` theo cột mã hàng tương ứng (nguồn `tuongUng.<mã 
 | #1153 | 151190, 151329, 151620, 151800, 391690 | Khoá từ vựng mới thePhanDoan, cachBienDoiDau, dangVayManh, nhomPolyme, dangSanPhamNhom1518; chiSoIot đọc số không đơn vị; phạm vi phân nhóm (151329, 391690) |
 | #1155 | 844331; Chương 98: 981000, 983412, 983610, 984912, 984916, 984918, 984923, 984931, 984933, 984937, 984942 | 844331 theo tổ hợp chức năng (GĐ chốt: in-copy-scan không fax ⇒ .99; PC-Fax không tính fax); Chương 98 là lớp mã thay thế (cột mã tương ứng), tên nhóm 98xx từ biểu |
 | #1158 | Chương 98: 981100, 981820, 981822, 984914, 984915, 984922, 984925, 984926, 984928, 984929, 984930, 984932, 984940, 984943 | Lớp tầng bọc ngoài + dòng lặp mã phân nhóm; laBoPhan KHONG theo anh em «Bộ phận»; maHsTuongUng (cột mã tương ứng); spec 981820 viết mới |
+| #LO7 | Chương 98: 984934, 984935 | Vế tuỳ chọn «có hoặc không …» + tên đầu liên hợp; ghép nối tiếp ≥ 3 tầng; hiệu chỉnh gạch biểu có căn cứ mã tương ứng; tiêu đề trước dòng lá đầu |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự

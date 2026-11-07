@@ -313,7 +313,9 @@
           "value": "xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04"
         }
       ],
-      "phanConLai": false
+      "phanConLai": [
+        "98493479"
+      ]
     },
     "98493482": {
       "dieuKienSo": [
@@ -802,9 +804,14 @@
       "lyDo": "vế \"được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ\" là một cụm điều kiện thiết kế off-road của xe tự đổ; tu-vung@2 không có khoá đọc thiết kế đường — ý ràng buộc đã phủ ở dungCho \"xe tự đổ\" + khối lượng > 45 tấn; bỏ vế không đưa hàng sai dòng vì các dòng anh em 98493480/81 phân theo nhóm xe khác"
     },
     {
+      "ma": "98493480",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98493480 \"Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04\" — \"xe khác\" loại anh em 98493479 (xe tự đổ off-highway > 45 tấn, thuộc 8704.10 ⊂ 87.04) ⇒ phanConLai [\"98493479\"]; cùng cách khai với dòng tương ứng 8708.70.34 ↔ 8708.70.33 ở spec 870870"
+    },
+    {
       "ma": "984934",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 — LỖI SPEC] Đã sửa 07/11 (lô 6): tầng «Cầu chủ động…; các bộ phận của chúng» ghi theo mẫu HOẶC [tên | bộ phận + dùng cho]; tầng «chưa/đã lắp ráp hoàn chỉnh», «Hệ thống giảm chấn» thêm laBoPhan KHONG (anh em «Bộ phận») — chồng lấn 50 → 14. CÒN: (1) bộ tách vế (lib/ho-so/tach-ve.js) đọc «…có hoặc không kèm theo chi tiết khác của cụm hộp số, và các cầu bị động» thành vế KHÔNG, nên «Cầu chủ động có vi sai»/«cầu bị động» không là tên đầu ⇒ luật tên anh em rời (bộ phận của X ↔ tên Y) không áp cho nhánh cầu; (2) 6 dòng không tới được (.13–.16 dưới «Các bộ phận của cửa xe»; .59/.60 dưới tầng «Loại khác» của cầu). CẦN: Claude sửa bộ tách vế + ghép đích lồng (lô kế tiếp). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): hết DỪNG (lô 7). Bộ tách vế đọc đúng \"có hoặc không kèm theo … , và các cầu bị động\" (vế tuỳ chọn + tên đầu liên hợp) nên luật chéo khoá nhận \"Cầu chủ động có vi sai\"/\"cầu bị động\" là tên đầu; ghép giá trị 3 tầng cùng khoá (thân xe ⊃ cửa xe ⊃ xe 87.03) cho .13–.16; tầng \"Loại khác\" r19765 (cùng .59/.60) thụt thiếu một gạch trong biểu — hiệu chỉnh có căn cứ mã tương ứng 8708.50.96/.99 (lib/ho-so/tang-khong-ma.js GACH_HIEU_CHINH); .80 \"xe khác thuộc nhóm 87.04\" ⇒ phanConLai [.79] như 8708.70.34."
     }
   ]
 }

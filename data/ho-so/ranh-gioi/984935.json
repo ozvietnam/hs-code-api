@@ -13,6 +13,54 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "984935~r19797",
+      "nguon": "tieuDe.984935~r19797",
+      "trich": "984935~r19797 Két nước làm mát và bộ phận của chúng",
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Két nước làm mát"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Két nước làm mát"
+              }
+            ]
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "984935~r19798",
+      "nguon": "tieuDe.984935~r19798",
+      "trich": "984935~r19798 Két nước làm mát",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Két nước làm mát"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "984935~r19800",
       "nguon": "tieuDe.984935~r19800",
       "trich": "984935~r19800 Dùng cho xe thuộc nhóm 87.02 hoặc 87.04",
@@ -50,7 +98,9 @@
         }
       ],
       "nguonLoai": "AI_DA_KIEM",
-      "phanConLai": false
+      "phanConLai": [
+        "984935~r19811"
+      ]
     },
     {
       "id": "984935~r19823",
@@ -158,11 +208,32 @@
       "trich": "9849354 Ống xả và bộ giảm thanh; bộ phận của nó",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Ống xả",
-            "bộ giảm thanh"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Ống xả",
+                  "bộ giảm thanh"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Ống xả",
+                  "bộ giảm thanh"
+                ]
+              }
+            ]
           ]
         }
       ],
@@ -205,12 +276,34 @@
       "trich": "9849356 Vô lăng, trụ lái và cơ cấu lái; bộ phận của nó",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Vô lăng",
-            "trụ lái",
-            "cơ cấu lái"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Vô lăng",
+                  "trụ lái",
+                  "cơ cấu lái"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Vô lăng",
+                  "trụ lái",
+                  "cơ cấu lái"
+                ]
+              }
+            ]
           ]
         }
       ],
@@ -222,9 +315,27 @@
       "trich": "9849357 Túi khí an toàn lắp với hệ thống bơm phồng; bộ phận của nó",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Túi khí an toàn lắp với hệ thống bơm phồng"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Túi khí an toàn lắp với hệ thống bơm phồng"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Túi khí an toàn lắp với hệ thống bơm phồng"
+              }
+            ]
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -352,6 +463,10 @@
             "Ống xả",
             "bộ giảm thanh"
           ]
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -380,6 +495,10 @@
             "Ống xả",
             "bộ giảm thanh"
           ]
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -472,6 +591,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Túi khí an toàn lắp với hệ thống bơm phồng"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -497,6 +620,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Thùng nhiên liệu"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -690,11 +817,6 @@
       "ghiChu": "tax.98493584 \"hoặc\" nối ba hàng, các ngoặc \"(bàn đạp ga)\"… là chú thích (PHU) ⇒ mảng [\"Chân ga\", \"chân phanh\", \"chân côn\"]"
     },
     {
-      "ma": "984935~r19814",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.984935~r19814 \"xe khác thuộc nhóm 87.04\" — \"khác\" là định ngữ của đích (khác phân nhóm 8704.10 của r19811), không phải phần còn lại anh em ⇒ phanConLai: false"
-    },
-    {
       "ma": "984935~r19823",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.984935~r19823 giữ tenLoai trọn cụm nguyên văn để rời với anh em r19825 \"Loại khác\" (vô lăng không lắp túi khí hoàn chỉnh)"
@@ -715,9 +837,44 @@
       "ghiChu": "tieuDe.984935~r19840 vế MỞ \"hoặc các bộ phận của chúng\" ⇒ HOAC [[tenLoai \"Khung xe\"], [laBoPhan CO, dungCho \"Khung xe\"]]"
     },
     {
+      "ma": "984935~r19797",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984935~r19797 \"Két nước làm mát và bộ phận của chúng\" — vế MỞ \"và bộ phận của chúng\" ⇒ HOAC [[tenLoai \"Két nước làm mát\"], [laBoPhan CO, dungCho \"Két nước làm mát\"]] (tầng đứng trước dòng lá đầu của phân nhóm, nay có trong cây — #1109 lô 7)"
+    },
+    {
+      "ma": "984935~r19798",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984935~r19798 \"Két nước làm mát\" — hàng hoàn chỉnh, anh em của 9849353 \"Bộ phận\" ⇒ tenLoai \"Két nước làm mát\" + laBoPhan KHONG (căn cứ cấu trúc: anh em tên trần \"Bộ phận\")"
+    },
+    {
+      "ma": "9849354",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9849354 \"Ống xả và bộ giảm thanh; bộ phận của nó\" — vế \"bộ phận của nó\" sau \";\" ⇒ HOAC [[tenLoai [\"Ống xả\",\"bộ giảm thanh\"]], [laBoPhan CO, dungCho [\"Ống xả\",\"bộ giảm thanh\"]]]; dòng 98493542/98493544 \"Ống xả và bộ giảm thanh\" cạnh anh em \"Bộ phận\" (98493543/98493545) ⇒ thêm laBoPhan KHONG"
+    },
+    {
+      "ma": "9849356",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9849356 \"Vô lăng, trụ lái và cơ cấu lái; bộ phận của nó\" ⇒ HOAC [[tenLoai [\"Vô lăng\",\"trụ lái\",\"cơ cấu lái\"]], [laBoPhan CO, dungCho cùng mảng]]"
+    },
+    {
+      "ma": "9849357",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9849357 \"Túi khí an toàn lắp với hệ thống bơm phồng; bộ phận của nó\" ⇒ HOAC [tên | bộ phận + dùng cho]; dòng 98493571 (hàng hoàn chỉnh) cạnh anh em 98493579 \"Bộ phận\" ⇒ thêm laBoPhan KHONG"
+    },
+    {
+      "ma": "984935~r19814",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984935~r19814 \"Dùng cho xe thuộc nhóm 87.02 hoặc xe khác thuộc nhóm 87.04\" — \"xe khác\" loại anh em r19811 (xe thuộc phân nhóm 8704.10 ⊂ 87.04) ⇒ phanConLai [\"984935~r19811\"], cùng cách với 98493480 (984934) và 8708.70.34 (870870)"
+    },
+    {
+      "ma": "98493581",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98493581 \"Thùng nhiên liệu\" — hàng hoàn chỉnh, anh em của 98493582 (các bộ phận kể tên) và 98493583 \"Các bộ phận khác\" ⇒ tenLoai \"Thùng nhiên liệu\" + laBoPhan KHONG (nửa dưới, nắp đậy… của thùng là bộ phận, không phải thùng)"
+    },
+    {
       "ma": "984935",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Loại khác»; vd: 984935~r1983 «984935~r19831»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): hết DỪNG (lô 7). Tầng \"Bộ phận khác và các phụ kiện\" (r19796) là tên phân nhóm; \"Két nước làm mát…\" (r19797/r19798) đứng trước dòng lá đầu nay vào cây; dải r19818–r19848 (Bộ ly hợp, Vô lăng, Túi khí, Loại khác) thụt thiếu một gạch — hiệu chỉnh theo mã tương ứng 8708.93–8708.99 là anh em của 8708.91/8708.92 (GACH_DAI). Spec ghi lại theo cây đúng: HOAC tên | bộ phận cho các tầng \"; bộ phận của nó\", laBoPhan KHONG cho hàng hoàn chỉnh cạnh \"Bộ phận\"/\"Các bộ phận khác\", r19814 phanConLai [r19811]."
     }
   ]
 }

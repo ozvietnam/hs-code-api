@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
 const require = createRequire(import.meta.url);
-const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E, THU_MUC_DONG_CUNG_BF788F5, THU_MUC_DONG_CUNG_5174A56 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
+const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E, THU_MUC_DONG_CUNG_BF788F5, THU_MUC_DONG_CUNG_5174A56, THU_MUC_DONG_CUNG_EC27049 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 let pass = 0; let fail = 0;
@@ -203,6 +203,29 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   check('17g 981100: hai dòng cùng chữ phân bằng maHsTuongUng ⇒ xanh', r3.hopLe === true, r3.loi);
   b3.dong8[1].dieuKienSo[0].value = ['72.28'];
   check('17h mã tương ứng sai (72.28 ở cả hai) ⇒ chồng lấn', C.kiemRanhGioi('981100', b3).loi.some((l) => l.startsWith('cong2-chong-lan')) || C.kiemRanhGioi('981100', b3).loi.some((l) => l.startsWith('cong3')), C.kiemRanhGioi('981100', b3).loi);
+}
+// Lô 7 (#1109): 984934, 984935 — vế tuỳ chọn «có hoặc không …», tên đầu liên hợp, ghép nối tiếp ≥ 3 tầng, hiệu chỉnh gạch biểu.
+{
+  const V = require('../lib/ho-so/tach-ve.js'); const T = require('../lib/hs-tree.js'); const TKM = require('../lib/ho-so/tang-khong-ma.js');
+  const md = (s) => V.tachVe(s).ve.flatMap((v) => v.menhDe.filter((m) => !m.ngoac).map((m) => `${m.loai}/${m.kieu}:${m.chu}`));
+  const a = md('Cầu chủ động có vi sai, có hoặc không kèm theo chi tiết khác của cụm hộp số, và các cầu bị động; các bộ phận của chúng');
+  check('18a «có hoặc không kèm theo …» là vế PHỤ; «…, và các cầu bị động» là tên đầu', a.includes('PHU/TUY_CHON:có hoặc không kèm theo chi tiết khác của cụm hộp số') && a.includes('DAU/DAU:các cầu bị động') && !a.some((x) => x.startsWith('GIOI_HAN/KHONG')), a);
+  const b = md('Các dụng cụ dùng cho các dụng cụ cầm tay, có hoặc không hoạt động bằng điện, hoặc dùng cho máy công cụ');
+  check('18b dấu hiệu trong vế tuỳ chọn chưa qua dấu phẩy («bằng điện») không thành vế giới hạn; «hoặc dùng cho …» sau dấu phẩy vẫn là giới hạn', b.includes('PHU/TUY_CHON:có hoặc không hoạt động bằng điện') && !b.some((x) => /BANG:bằng điện/.test(x)) && b.some((x) => x.startsWith('GIOI_HAN/DUNG:dùng cho máy công cụ')) && !b.some((x) => /:hoặc$/.test(x)), b);
+  const c = md('Giấy và bìa, có hoặc không trang trí bề mặt, ở dạng cuộn hoặc tờ');
+  check('18c vế tuỳ chọn chỉ tới dấu phẩy đầu: «ở dạng cuộn hoặc tờ» vẫn là vế giới hạn', c.includes('PHU/TUY_CHON:có hoặc không trang trí bề mặt') && c.some((x) => x.startsWith('GIOI_HAN/') && /ở dạng cuộn/.test(x)), c);
+  const t34 = TKM.tieuDeTrongPhanNhom('984934');
+  const r65 = t34.find((x) => x.r === 19765); const r61 = t34.find((x) => x.r === 19761);
+  check('18d 984934: «Loại khác» r19765 hiệu chỉnh gạch 3 → 4, nằm trong «Bộ phận» r19761 (mã tương ứng 8708.50.96/.99)', r65?.gach === 4 && r65.dongDuoi.join() === '98493459,98493460' && r61?.dongDuoi.includes('98493459') && T.chaTang('984934~r19765') === '984934~r19761', [r65, r61?.dongDuoi]);
+  check('18e 984935: tiêu đề trước dòng lá đầu vào cây (Két nước r19797/r19798); tiêu đề phủ trọn phân nhóm là tên phân nhóm', T.chaTang('984935~r19798') === '984935~r19797' && T.nodeOf('984935')?.tenVi === 'Bộ phận khác và các phụ kiện' && T.chaTang('9849355') === '984935', [T.chaTang('984935~r19798'), T.nodeOf('984935')?.tenVi]);
+  const b34 = nhapDongCung('984934', THU_MUC_DONG_CUNG_EC27049);
+  b34.dong8.find((m) => m.hs === '98493480').phanConLai = ['98493479'];
+  const r34 = C.kiemRanhGioi('984934', b34, { cong: [2] });
+  check('18f 984934 cổng 2 xanh: chéo khoá «Cầu chủ động có vi sai» là tên đầu (cong2-ten-anh-em-roi); .13–.16 tới được nhờ ghép nối tiếp; .59/.60 tới được sau hiệu chỉnh gạch', r34.loi.length === 0 && r34.canhBao.includes('cong2-ten-anh-em-roi:98493411+98493458'), r34.loi.slice(0, 5));
+  const b35 = nhapDongCung('984935', THU_MUC_DONG_CUNG_EC27049);
+  b35.dong8 = b35.dong8.map((m) => (m.hs === '98493581' ? { ...m, dieuKienSo: [...m.dieuKienSo, { fact: 'laBoPhan', op: 'KHONG' }] } : m));
+  const r35 = C.kiemRanhGioi('984935', b35, { cong: [3] });
+  check('18g laBoPhan KHONG cạnh anh em «Các bộ phận khác» lấy căn cứ cấu trúc (984935 .81 «Thùng nhiên liệu»)', !r35.loi.some((l) => l.startsWith('cong3-muc:98493581')) && r35.canhBao.includes('cong3-khong-bo-phan-tu-anh-em:98493581'), r35.loi.filter((l) => l.includes('98493581')));
 }
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

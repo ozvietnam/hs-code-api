@@ -451,12 +451,21 @@ chưa lắp) ⇒ ghi thêm `laBoPhan KHONG` (840820, 870850); thiếu vế này 
 Tổng cục, không có phần còn lại. Hàng trong tên nhóm 98xx mà không vào dòng 98 nào thì khai mã tương ứng ở 97 chương ⇒ cổng 1 chỉ
 cảnh báo `cong1-chuong98-ngoai-dong`, không cần khai phạm vi phân nhóm. Các lỗi khác (chồng lấn, tầng, liệt kê) vẫn chặn như mọi chương.
 
-**Hàng hoàn chỉnh cạnh tầng/dòng anh em tên trần «Bộ phận»** (07/11/2026): ghi `laBoPhan KHONG` cho nút hàng hoàn chỉnh — cổng 3
+**Hàng hoàn chỉnh cạnh tầng/dòng anh em tên trần «Bộ phận» hoặc «Các bộ phận khác»** (07/11/2026): ghi `laBoPhan KHONG` cho nút hàng hoàn chỉnh — cổng 3
 nhận căn cứ từ cấu trúc (cảnh báo `cong3-khong-bo-phan-tu-anh-em`), không đòi chữ trong câu trích của chính nút.
 
 **Chương 98 — dòng CÙNG chữ** (07/11/2026): phân bằng khoá `maHsTuongUng` theo cột mã hàng tương ứng của biểu; nguồn
 `tuongUng.<mã 98>` = mô tả + mã tương ứng nguyên văn (vd 9811.00.10 ↔ 72.24–72.28, .90 ↔ 72.29). Dùng cả khi chữ dòng 98 có vế mà
 khoá không đọc được (ghi BO_VE kèm lý do «giữ tất định bằng mã tương ứng»).
+
+**Chương 98 — biểu thụt sai gạch** (07/11/2026, lô 7): cây tầng dựng theo số gạch của biểu; dòng thụt sai làm tầng nằm sai chỗ
+(984934 «Loại khác» r19765 thành anh em «Bộ phận» — không hàng nào tới được). Hiệu chỉnh CHỈ khi có căn cứ cấu trúc (cột mã
+tương ứng chỉ về đúng nhánh ở 97 chương), ghi từng dòng/dải kèm căn cứ ở `lib/ho-so/tang-khong-ma.js` (`GACH_HIEU_CHINH`,
+`GACH_DAI`); dữ liệu trích `data/bieu-thue` giữ nguyên văn. Thợ gặp tầng vô lý ⇒ DỪNG, báo Claude kèm mã tương ứng.
+
+**Vế tuỳ chọn «có hoặc không …»** (07/11/2026, lô 7): bộ tách vế coi «có hoặc không <động từ> …» (whether or not …) là vế PHỤ tới
+dấu phẩy đầu — không cần điều kiện; «…, và <danh từ>» liền sau là tên đầu liên hợp («Cầu chủ động có vi sai, có hoặc không kèm theo
+…, và các cầu bị động» — hai tên đầu). Tên đầu kèm định ngữ «có …» dính liền (không dấu phẩy) là một tên («Cầu chủ động có vi sai»).
 
 **Máy in kết hợp 8443.31** (GĐ chốt 07/11/2026): biểu chia theo TỔ HỢP chức năng điểm danh đủ (khoá `toHopChucNangMayIn`) —
 «Máy in-copy» = chỉ in + copy; in-copy-scan không fax ⇒ .99 «Loại khác»; PC-Fax không tính là chức năng fax.
