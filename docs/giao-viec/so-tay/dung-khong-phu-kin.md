@@ -136,7 +136,7 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | #1150 (Q1) | 140490, 271019, 370500, 392690, 442191, 480431, 481190, 481690, 482390, 640319, 640391, 640399, 640411, 650610, 721391, 721399, 741810, 741920, 741980, 760421, 848610, 850440, 851981, 852329, 854370 | Khai chồng lấn không có hàng thật (Q1) hoặc chồng thật kèm hàng; sửa trục, sửa spec sót tên/vế (271019 .72, 741980 .80) |
 | #1151 | 480254, 480255, 721114, 730630, 730640 | Xác minh theo SEN: chồng THẬT kèm hàng, hoặc Q1; trục số DAC_DIEM; cặp DAC_DIEM cùng trục khai chongLanVanBan |
 | #1152 | 870850, 870899, 852910, 870829 | Spec sót vế «không phải bộ phận»; Q1 giá đỡ bình ắc quy; bộ kiểm ghép ứng viên trong HOẶC và «chữ đích + mã trơn» |
-| #LO4 | 151190, 151329, 151620, 151800, 391690 | Khoá từ vựng mới thePhanDoan, cachBienDoiDau, dangVayManh, nhomPolyme, dangSanPhamNhom1518; chiSoIot đọc số không đơn vị; phạm vi phân nhóm (151329, 391690) |
+| #1153 | 151190, 151329, 151620, 151800, 391690 | Khoá từ vựng mới thePhanDoan, cachBienDoiDau, dangVayManh, nhomPolyme, dangSanPhamNhom1518; chiSoIot đọc số không đơn vị; phạm vi phân nhóm (151329, 391690) |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự
