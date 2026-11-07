@@ -336,7 +336,8 @@
    "dangVayManh",
    "nhomPolyme",
    "dangSanPhamNhom1518",
-   "toHopChucNangMayIn"
+   "toHopChucNangMayIn",
+   "moDunDanHoi"
   ],
   "tuVung1": {
    "trangThai": "DA_CHAM",
@@ -566,6 +567,18 @@
    "m/s": 3.6,
    "km/小时": 1,
    "公里/小时": 1
+  },
+  "danHoi": {
+   "psi": 1,
+   "ksi": 1000,
+   "kpsi": 1000,
+   "MPa": 145.038,
+   "N/mm²": 145.038,
+   "N/mm2": 145.038,
+   "MPa(abs)": 145.038,
+   "GPa": 145037.7,
+   "kPa": 0.145038,
+   "bar": 14.5038
   }
  },
  "bietDanhDonVi": {
@@ -22923,6 +22936,51 @@
     "zh": "该机具体有哪些功能（经电脑传真 PC-Fax 不算传真）：仅打印和复印、打印复印扫描（无传真）、打印复印传真（无扫描），还是打印复印扫描传真四合一？"
    },
    "ghiChu": "Chữ biểu 8443.31: tầng 8443311 \"Máy in-copy, in bằng công nghệ in phun\", 8443312 \"… laser\", 8443313 \"Máy in-copy-fax kết hợp\", 8443.31.91 \"Máy in-copy-scan-fax kết hợp\", .99 \"Loại khác\". Biểu chia theo TỔ HỢP chức năng điểm danh đủ: «Máy in-copy» = chỉ in + copy; in-copy-fax = có fax, không scan; .91 = đủ bốn. Máy in-copy-scan KHÔNG fax không trúng dòng nào điểm danh ⇒ .99 (GĐ chốt 07/11/2026, #1109). PC-Fax (fax qua máy tính) không phải chức năng fax độc lập — chỉ có mô-đun fax thật mới sang .91. Chưa có tiền lệ nội bộ (hs-aliases, kho TB) cho .91/.99: khuyến nghị theo cấu trúc tên dòng.",
+   "nguonLoai": "AI_DA_KIEM"
+  },
+  {
+   "khoa": "moDunDanHoi",
+   "kieu": "SO",
+   "nhanVi": "mô-đun đàn hồi",
+   "nhanEn": "modulus of elasticity",
+   "nhanZh": "弹性模量",
+   "heDonVi": "danHoi",
+   "donViChuan": "psi",
+   "canNguCanh": true,
+   "docMoRong": true,
+   "nghinAnh": true,
+   "cachDoc": {
+    "vi": [
+     "mô[-\\s]?đun\\s+đàn\\s+hồi",
+     "mô[-\\s]?đun\\s+(?:uốn|kéo)",
+     "modul(?:e)?\\s+đàn\\s+hồi",
+     "modul(?:e)?\\s+(?:uốn|kéo)",
+     "đàn\\s+hồi\\s+(?:uốn|kéo)"
+    ],
+    "en": [
+     "modulus(?:\\s+of\\s+elasticity)?",
+     "flexural\\s+modulus",
+     "tensile\\s+modulus",
+     "young'?s?\\s+modulus",
+     "e-?modulus",
+     "astm\\s+d\\s?(?:747|790)"
+    ],
+    "zh": [
+     "弹性模量",
+     "弯曲模量",
+     "拉伸模量",
+     "模量"
+    ]
+   },
+   "cachViet": {
+    "vi": "mô-đun đàn hồi {giaTri}",
+    "viDat": "modul {giaTri}"
+   },
+   "cauHoi": {
+    "vi": "Mô-đun đàn hồi của vật liệu là bao nhiêu (psi/MPa)?",
+    "zh": "弹性模量是多少（psi/MPa）？"
+   },
+   "ghiChu": "Mô-đun đàn hồi uốn/kéo — chữ biểu 8 số chỉ ghi \"Loại cứng\" (không mang số), số nằm trong câu SEN của nhóm: neo vào (3920.10.11) với định nghĩa \"Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790\" (khoá lô 24, #1139). nghinAnh: \"100,000\" kiểu Anh = 100000 psi; MPa/GPa quy về psi (1 MPa = 145,038 psi).",
    "nguonLoai": "AI_DA_KIEM"
   }
  ],
