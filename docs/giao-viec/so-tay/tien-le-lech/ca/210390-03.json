@@ -1,0 +1,25 @@
+{
+ "id": "210390-03",
+ "hang": "Các mặt hàng nước xốt trên cùng (rất có thể) một tờ khai, mô tả nằm trong phụ lục TB — dòng 5, 8 xếp tương ớt; dòng 3, 4, 6, 7, 9, 12 xếp nước xốt khác",
+ "maTB": "2103.90.11 (MFN 30%)",
+ "maChuBieu": "2103.90.13 (MFN 20%)",
+ "chenhThue": "+10 điểm % nếu theo .11 (tương ớt) so với .13 — nhưng hai TB áp cho các DÒNG HÀNG KHÁC NHAU nên không có chênh trên cùng một mặt hàng",
+ "nguyenNhan": "MAY_HIEU_SAI_HANG",
+ "nguyenNhanPhu": ["CHUA_DU_DU_KIEN"],
+ "giaiThich": "Đây không phải hai kết luận mâu thuẫn trên cùng một hàng. 3790/TB-TCHQ và 3788/TB-TCHQ cùng ngày 10/06/2019, số liền nhau, và theo bản ghi tracuuhs thì 3790 áp cho mặt hàng số 5, 8 của tờ khai còn 3788 áp cho mặt hàng số 3, 4, 6, 7, 9, 12 — hai tập dòng hàng không trùng nhau. Nhiều khả năng Hải quan đã tách một tờ khai nhiều loại nước xốt: mặt hàng nào là tương ớt thì vào dòng chuyên biệt 2103.90.11 'Tương ớt', còn lại vào 2103.90.13 'Nước xốt loại khác'. Cả hai dòng đều nằm dưới cùng tầng không mã '- - Nước xốt và các chế phẩm làm nước xốt', và dòng .13 chỉ là dòng 'còn lại' sau .11 và .12, nên tương ớt phải ưu tiên .11. Máy ghép hai TB thành 'lệch' chỉ vì thấy cùng phân nhóm mà không có mô tả hàng. Chưa đọc được phụ lục nên không khẳng định được từng mặt hàng cụ thể là gì.",
+ "bangChung": [
+  "data/community/tb-tchq/tracuuhs-2026-10-15-goi-999.json (3790/TB-TCHQ, 2019-06-10): \"description\": \", 5, 8 của tờ khai (chi tiết theo phụ lục đính kèm)\" → \"mã số 2103.90.11 “- - - Tương ớt”\"",
+  "data/community/tb-tchq/tracuuhs-2026-10-15-goi-999.json (3788/TB-TCHQ, 2019-06-10): \"description\": \", 3, 4, 6, 7, 9, 12 của tờ khai (chi tiết theo phụ lục đính kèm)\" → \"mã số 2103.90.13 “- - -Nước xốt loại khác”\"",
+  "Biểu 2026 (ca/210390-03.md): \"(không mã 2103901) g2 - - Nước xốt và các chế phẩm làm nước xốt: | Sauces and preparations therefor:\" → \"21039011 g3 - - - Tương ớt | - - - Chili sauce | MFN 30\" … \"21039013 g3 - - - Nước xốt loại khác | - - - Other sauces | MFN 20\"",
+  "Cả hai TB trích cùng chữ biểu 2017 (\"bieuThue\": \"2017\") giống chữ biểu 2026: \"phân nhóm “- - Nước xốt và các chế phẩm làm nước xốt”, mã số 2103.90.11 “- - - Tương ớt”\" / \"mã số 2103.90.13 “- - -Nước xốt loại khác”\" — không có lệch phiên bản biểu."
+ ],
+ "ketLuan": "TB_DUNG",
+ "doChac": "VUA",
+ "baiHoc": "Hai TB cùng ngày, số liền nhau, cùng phân nhóm nhưng ghi các số thứ tự mặt hàng khác nhau của tờ khai thường là MỘT tờ khai bị tách theo loại hàng — không được coi là tiền lệ mâu thuẫn.",
+ "deXuatBang": "KHONG_LECH — hai TB áp cho các dòng hàng khác nhau (5, 8 vs 3, 4, 6, 7, 9, 12), tương ớt vào .11 còn xốt khác vào .13 đúng thứ tự dòng biểu; không nên dùng cặp này làm tín hiệu lệch.",
+ "chuaKiemDuoc": [
+  "Không mở được toàn văn/phụ lục: https://www.tracuuhs.com/tin-tuc/tchq-3790-2019 và .../tchq-3788-2019 chỉ trả khung trang 'HSTC - Công cụ tra cứu HS Code' (trang dựng bằng JS).",
+  "Tìm web '3790/TB-TCHQ', '3788/TB-TCHQ' không ra bản gốc trên customs.gov.vn / thư viện pháp luật.",
+  "Chưa xác nhận được hai TB cùng số tờ khai (chỉ suy từ cùng ngày, số liền, tập số thứ tự mặt hàng không trùng)."
+ ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "848190-01",
+  "hang": "Trục thép không gỉ gắn 4 lá cánh nhựa (cụm trục–lá van) của van chuyển hướng khí nạp động cơ ô tô",
+  "maTB": "8481.90.90 (MFN 0%)",
+  "maChuBieu": "8481.90.23 (MFN 3%)",
+  "chenhThue": "-3 điểm % nếu theo TB (0% so với 3%)",
+  "nguyenNhan": "MAY_HIEU_SAI_HANG",
+  "nguyenNhanPhu": ["TANG_CHA", "DICH_LECH"],
+  "giaiThich": "Máy bắt chữ \"Thân van\" trong tên hàng của 4006/TB-TCHQ rồi ghép vào dòng 8481.90.23 \"Thân, loại khác\". Nhưng \"thân\" ở dòng này là bản Anh \"Bodies\" — tức vỏ/thân đúc chứa dòng chảy của van; còn hàng thực tế là một thanh thép SUS303 đặc dài 235 mm gắn 4 lá nhựa Polyamide — tức trục và cánh đóng/mở (bộ phận chuyển động), không phải vỏ van. Doanh nghiệp gọi nôm là \"thân van\", nên chữ Việt \"Thân\" dễ làm máy hiểu lầm. Thêm nữa, cả nhóm dòng .21–.29 nằm dưới tầng không mã 8481902 \"Dùng cho vòi, van ... có đường kính trong từ 25 mm trở xuống\"; lá van của hàng này rộng khoảng 35×55 mm (3 lá) và 35×65 mm (1 lá) theo bản tóm tắt, tức cửa khí nạp lớn hơn 25 mm, nên hàng không thuộc tầng cha này. Hàng cũng không phải vỏ van cổng (.10) hay bộ phận van săm lốp (.3x, .4x), nên còn lại đúng dòng \"- - Loại khác\" 8481.90.90. Hải quan nhất quán: 5052/TB-TCHQ (cùng trục SUS303, chưa gắn lá) cũng xếp 8481.90.90. TB xếp có lợi hơn cho doanh nghiệp (0% so với 3%).",
+  "bangChung": [
+    "\"(không mã 8481902) g2 - - Dùng cho vòi, van các loại (trừ van dùng cho săm và lốp không săm) và các thiết bị tương tự có đường kính trong từ 25 mm trở xuống: | For taps, cocks, valves (excluding inner tube valves and valves for tubeless tyres) and similar appliances of 25 mm or less in internal diameter:\"; \"84819023 g3 - - - Thân, loại khác | - - - Bodies, other | MFN 3\"; \"84819090 g2 - - Loại khác | - - Other | MFN 0\" — ca/848190-01.md (biểu 2026.04.05)",
+    "4006/TB-TCHQ ngày 2022-09-27: \"mặt hàng được cấu tạo bởi thanh thép không gỉ SUS303 đặc, dài 235mm, 1 đầu tròn đường kính 6mm, 1 đầu được tiện mài giũa dẹt dày 3mm, phần thân sẽ chia ra làm 4 khớp giữ ... 4 khớp này đã được gắn 4 lá nhựa Polyamide được định hình phù hợp như là cửa của bộ tối ưu khí nạp\" → \"mã số 8481.90.90 “- - Loại khác”\" — data/precedents.json[\"84819090\"]",
+    "Bản tóm tắt 4006/TB-TCHQ (nguồn cộng đồng, không phải nguyên văn TB): \"thanh thép không gỉ SUS303 đặc dài 235mm đã gắn 4 lá nhựa Polyamide (3 lá 35x55mm, 1 lá 35x65mm, viền đục lỗ) và vòng lót định vị bằng thép đường kính ngoài 12mm, xoay góc 0-90 độ để đóng mở chuyển hướng luồng khí nạp\" — data/precedents.json[\"84819090\"] (sourceUrl camnangxnk-logistics.net)",
+    "5052/TB-TCHQ ngày 2022-11-24: \"Đũa thép không gỉ SUS303 (đặc, dài 235mm ...) là bộ phận của van điều khiển khí nạp để đóng mở bộ tối ưu khí nạp của động cơ ô tô\" → \"mã số 8481.90.90 “- - Loại khác”\" — data/precedents.json[\"84819090\"]; trang https://thutucxuatnhapkhau.vn/thong-bao-5052-tb-tchq-nam-2022/ (qua WebFetch, tóm lược) ghi van hoàn chỉnh gồm lá Polyamide khoảng 39×60 mm và 39×72 mm, cảm biến vị trí, động cơ servo do ECU điều khiển."
+  ],
+  "ketLuan": "TB_DUNG",
+  "doChac": "CAO",
+  "baiHoc": "\"Thân\" ở 8481.90 là \"Bodies\" (vỏ van) và chỉ cho van có đường kính trong ≤ 25 mm; trục, cánh, lá van, hoặc bộ phận của van cỡ lớn hơn 25 mm đều về 8481.90.90 — đừng ghép mã theo chữ \"thân\" trong tên thương mại.",
+  "deXuatBang": "KHONG_LECH — hàng không phải vỏ van (Bodies) và cửa van > 25 mm nên không thuộc tầng 8481902; TB đúng chữ biểu, máy hiểu sai tên gọi \"thân van\".",
+  "chuaKiemDuoc": [
+    "Toàn văn 4006/TB-TCHQ (tracuuhs dựng bằng JS, camnangxnk chỉ có tiêu đề): kích thước lá 35×55/35×65 mm lấy từ bản tóm tắt cộng đồng, TB không ghi trực tiếp đường kính trong của ống nạp.",
+    "Chưa đối chiếu chữ 8481.90.2x trong Danh mục TT 65/2017 (biểu áp dụng ngày 27/09/2022) — kết luận không phụ thuộc vì cả hai lý do (không phải 'Bodies', cửa > 25 mm) đều độc lập với phiên bản."
+  ]
+}
