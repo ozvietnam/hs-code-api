@@ -2618,7 +2618,50 @@
    "gir": "1",
    "basis": "RULE_TABLE",
    "sourceVi": "Biểu thuế 2026 nhóm 9015 'Máy và dụng cụ trắc địa, thăm dò…' (90152000 máy kinh vĩ/toàn đạc; 90151010 chụp ảnh/quay phim; 90158010 quan trắc sóng vô tuyến). Ca thật #1006 (10–11/2026): 'máy thăm dò địa chất' trước đây trúng 8401.20 (máy tách đồng vị) và 8456.40 (plasma)."
+  },
+  {
+   "id": "lui-loc-inox",
+   "titleVi": "Lưới lọc inox / wire mesh (dệt từ dây) vs tấm giãn (expanded metal)",
+   "terms": [
+    "lưới lọc",
+    "lưới dệt",
+    "lưới inox",
+    "wire mesh",
+    "lưới thép không gỉ",
+    "mesh 80",
+    "lưới sàng"
+   ],
+   "excludeIfAny": [],
+   "candidates": [
+    {
+     "hs": "731449",
+     "whenVi": "DỆT từ DÂY thép không gỉ (khai báo theo số mắt mesh + đường kính dây, vd 80–260 mắt, dây 0,1–0,8 mm), chưa phủ/mạ → 7314.49.00; có phủ → 7314.41/42",
+     "confidence": "medium"
+    },
+    {
+     "hs": "731450",
+     "whenVi": "TẤM GIÃN: đột dập + kéo giãn từ TẤM phẳng (không có dây) → 7314.50.00",
+     "confidence": "medium"
+    },
+    {
+     "hs": "731420",
+     "whenVi": "Lưới HÀN ở mắt nối từ dây → 7314.20",
+     "confidence": "low"
+    }
+   ],
+   "avoid": [
+    {
+     "prefix": "7326",
+     "whyVi": "Sản phẩm ĐÃ LÀM RONG thành phẩm (đồ vật) mới sang 7326; tấm/vải lưới cắt phôi vẫn 7314."
+    }
+   ],
+   "askVi": [
+    "Lưới được DỆT từ dây (mesh + đường kính dây) hay là tấm giãn đột dập–kéo giãn từ tấm phẳng? Có hàn mắt nối / phủ mạ không?"
+   ],
+   "gir": "GIR 1",
+   "basis": "RULE_TABLE",
+   "sourceVi": "Biểu thuế VN 7314.49 'Tấm đan dệt thoi khác, bằng thép không gỉ' (MFN 30%) vs 7314.50 'đột dập và kéo giãn' (MFN 20%). Ca thật 05/11/2026: tờ khai ghi 7314.50.00 cho lưới DỆT 80–260 mắt — sai 10 điểm thuế."
   }
  ],
- "updatedAt": "2026-11-04"
+ "updatedAt": "2026-11-05"
 }
