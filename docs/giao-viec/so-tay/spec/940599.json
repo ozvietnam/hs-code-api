@@ -6,16 +6,32 @@
     "94059910": {
       "dieuKienSo": [
         {
-          "fact": "vatLieuKhac",
-          "op": "TRONG",
-          "value": [
-            "VAT_LIEU_DET"
-          ]
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chụp đèn"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "vải dệt"
         }
       ]
     },
     "94059920": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Chụp đèn"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "vải dệt",
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "phanConLai": false
     },
     "94059930": {
       "dieuKienSo": [
@@ -78,35 +94,38 @@
     {
       "ma": "94059910",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.94059910 \"Chụp đèn bằng vật liệu dệt\" ⇒ vatLieuKhac TRONG [VAT_LIEU_DET] (khoá mới tu-vung@2; chữ biểu chính là \"bằng <vật liệu>\", cachDoc đọc \"bằng vật liệu dệt\")."
+      "ghiChu": "tax.94059910 \"Chụp đèn bằng vật liệu dệt\" ⇒ tenLoai \"Chụp đèn\" + chatLieu LA \"vải dệt\" (mẫu so-tay-gates#vải dệt đọc \"dệt\"). Đổi từ vatLieuKhac VAT_LIEU_DET sang chatLieu để .20 \"bằng vật liệu khác\" viết được chatLieu PHAI_KHONG theo anh em (luật vatLieuKhacTheoAnhEm chỉ nhận chatLieu) — anh em cùng một khoá. tenLoai \"Chụp đèn\" (danh từ đầu nguyên văn) thêm cho cả .10 và .20: thiếu nó thì .20 (mọi vật liệu ngoài dệt) nuốt .50 \"Loại khác, bằng gốm, sứ hoặc kim loại\" (cong2-dong-khong-toi-duoc)."
     },
     {
       "ma": "94059920",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "vatLieuKhac chieu PHAI_KHONG theo anh em (mở rộng bằng chứng \"vật liệu khác\" của máy kiểm cho vatLieuKhac, như chatLieu ở 848180)",
-      "ghiChu": "tax.94059920 \"Chụp đèn bằng vật liệu khác\": 'vật liệu khác' = ngoài 'vật liệu dệt' của anh em tax.94059910. Không có điều kiện dương để ghi: vatLieuKhac TRONG [VAT_LIEU_DET] chieu PHAI_KHONG bị cổng 3 từ chối (dieu-kien-so-trong-khong-co-trong-trich: chữ của .20 không nêu 'vật liệu dệt'; luật vatLieuKhacTheoAnhEm chỉ nhận chatLieu); phanConLai một mình thì .50/.90 (\"Loại khác\" phủ định anh em) đỏ cong1-chua-so-hoa vì .20 không có điều kiện để phủ định; chatLieu 'vải dệt' không đọc được 'vật liệu dệt'."
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.94059920 \"Chụp đèn bằng vật liệu khác\" ⇒ tenLoai \"Chụp đèn\" + chatLieu LA \"vải dệt\" chieu PHAI_KHONG (\"vật liệu khác\" = khác vật liệu của anh em đứng trước tax.94059910 \"Chụp đèn bằng vật liệu dệt\"; lib/so-tay.js#vatLieuKhacTheoAnhEm ⇒ true). phanConLai false: \"khác\" trỏ vật liệu của .10, không phải phần còn lại của mọi anh em (phanConLai sẽ phủ định cả .30/.40)."
     },
     {
-      "ma": "94059920",
-      "loai": "DUNG",
-      "ghiChu": "DUNG cong1-chua-so-hoa:94059950:94059920 và cong1-chua-so-hoa:94059990:94059920 - .20 'bằng vật liệu khác' chưa biểu diễn được; kéo theo .50/.90 (Loại khác phủ định .20). Chờ khoá/luật mới."
+      "ma": "94059910",
+      "loai": "BO_VE",
+      "ve": "bằng vật liệu dệt",
+      "lyDo": "Vế ĐÃ được phủ bởi chính điều kiện chatLieu LA \"vải dệt\" của dòng: cổng 3 đọc chữ \"dệt\" của vế qua mẫu dungMau so-tay-gates#vải dệt (không lỗi cổng 3), nhưng bộ neo cổng 5 (lib/ho-so/tach-ve.js#neoMot) chỉ neo chuỗi giá trị \"vải dệt\" + cachDoc riêng (rỗng), không dùng dungMau, nên không thấy. Không bỏ nghĩa nào của chữ, không đổi mã; .20 cùng khoá (PHAI_KHONG) neo được vế \"bằng vật liệu khác\"."
     }
   ],
   "chongLanTruc": [
     {
       "nhanh": [
         "94059910",
+        "94059920",
         "94059930",
         "94059940"
       ],
       "truc": {
-        "94059910": "DAC_DIEM",
+        "94059910": "TEN_LOAI",
+        "94059920": "TEN_LOAI",
         "94059930": "CONG_DUNG",
         "94059940": "CONG_DUNG"
       },
-      "cauHoiPhanBiet": "Chụp đèn này là \"Chụp đèn bằng vật liệu dệt\" (.10), hay là \"Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19\" (.30) / \"Dùng cho đèn pha hoặc đèn rọi\" (.40)? Nếu chụp đèn bằng vật liệu dệt lại dùng cho các loại đèn đó, biểu thuế không nêu dòng nào được ưu tiên - cần chuyên gia phân xử?",
+      "cauHoiPhanBiet": "Hàng là \"Chụp đèn bằng vật liệu dệt\" (.10) / \"Chụp đèn bằng vật liệu khác\" (.20), hay là bộ phận \"Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19\" (.30) / \"Dùng cho đèn pha hoặc đèn rọi\" (.40)? Nếu là chụp đèn dùng cho các loại đèn đó, biểu thuế không nêu dòng nào được ưu tiên - cần chuyên gia phân xử?",
       "trich": {
         "94059910": "Chụp đèn bằng vật liệu dệt",
+        "94059920": "Chụp đèn bằng vật liệu khác",
         "94059930": "Của đèn thuộc phân nhóm 9405.50.11 hoặc 9405.50.19",
         "94059940": "Dùng cho đèn pha hoặc đèn rọi"
       },
@@ -116,14 +135,28 @@
             "94059910",
             "94059930"
           ],
-          "hang": "Chụp đèn bằng vật liệu dệt dùng cho đèn thuộc phân nhóm 9405.50.11"
+          "hang": "Chụp đèn bằng vải dệt dùng cho đèn thuộc phân nhóm 9405.50.11"
         },
         {
           "cap": [
             "94059910",
             "94059940"
           ],
-          "hang": "Chụp đèn bằng vật liệu dệt dùng cho đèn pha"
+          "hang": "Chụp đèn bằng vải dệt dùng cho đèn rọi"
+        },
+        {
+          "cap": [
+            "94059920",
+            "94059930"
+          ],
+          "hang": "Chụp đèn bằng kim loại dùng cho đèn thuộc phân nhóm 9405.50.11"
+        },
+        {
+          "cap": [
+            "94059920",
+            "94059940"
+          ],
+          "hang": "Chụp đèn bằng kim loại dùng cho đèn rọi"
         }
       ],
       "phanXu": null

@@ -1,50 +1,212 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "841370",
-  "phien": "zcode-sub:glm-5.3:20261106T1015#soan-841370",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-841370",
   "dong8": {
-    "84137011": { "dieuKienSo": [
-      {"fact": "duongKinhTrong", "op": "<=", "value": 200, "donVi": "mm"}
-    ] },
-    "84137031": { "dieuKienSo": [
-      {"fact": "duongKinhTrong", "op": "<=", "value": 200, "donVi": "mm"}
-    ] },
-    "84137042": { "dieuKienSo": [
-      {"fact": "duongKinhTrong", "op": "<=", "value": 200, "donVi": "mm"},
-      {"fact": "hoatDongBangDien", "op": "CO"}
-    ] },
-    "84137043": { "dieuKienSo": [
-      {"fact": "duongKinhTrong", "op": "<=", "value": 200, "donVi": "mm"},
-      {"fact": "hoatDongBangDien", "op": "KHONG"}
-    ] },
-    "84137051": { "dieuKienSo": [
-      {"fact": "duongKinhTrong", "op": "<=", "value": 200, "donVi": "mm"}
-    ] },
-    "84137091": { "dieuKienSo": [
-      {"fact": "duongKinhTrong", "op": "<=", "value": 200, "donVi": "mm"}
-    ] }
+    "84137011": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84137031": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84137042": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
+      ]
+    },
+    "84137043": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "84137051": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    },
+    "84137091": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        }
+      ]
+    }
   },
   "dieuKienNut": {
-    "8413701": { "dieuKienSo": [] },
-    "8413703": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Bơm nước"},
-      {"fact": "datChim", "op": "CO"}
-    ] },
-    "8413704": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Bơm nước"},
-      {"fact": "luuLuong", "op": "<=", "value": 8000, "donVi": "m³/h"}
-    ], "phanConLai": ["8413701", "8413703"] },
-    "8413705": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Bơm nước"},
-      {"fact": "luuLuong", "op": ">", "value": 8000, "donVi": "m³/h"},
-      {"fact": "luuLuong", "op": "<=", "value": 13000, "donVi": "m³/h"}
-    ], "phanConLai": ["8413701", "8413703"] }
+    "8413701": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "kieuTruyenDong",
+          "op": "TRONG",
+          "value": [
+            "DAY_DAI",
+            "KHOP_NOI_TRUC_TIEP"
+          ]
+        },
+        {
+          "fact": "kieuTruyenDong",
+          "op": "TRONG",
+          "value": [
+            "DONG_TRUC_DONG_CO"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    },
+    "8413703": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "datChim",
+          "op": "CO"
+        }
+      ]
+    },
+    "8413704": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 8000,
+          "donVi": "m³/h"
+        }
+      ],
+      "phanConLai": [
+        "8413701",
+        "8413703"
+      ]
+    },
+    "8413705": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "luuLuong",
+          "op": ">",
+          "value": 8000,
+          "donVi": "m³/h"
+        },
+        {
+          "fact": "luuLuong",
+          "op": "<=",
+          "value": 13000,
+          "donVi": "m³/h"
+        }
+      ],
+      "phanConLai": [
+        "8413701",
+        "8413703"
+      ]
+    }
   },
   "ghiChuSoan": [
-    {"ma": "8413701", "loai": "THIEU_KHOA_TU_VUNG", "khoaDeXuat": "cachTruyenDongBom (truyền động bằng dây đai hoặc khớp nối trực tiếp; kèm trừ loại bơm đồng trục với động cơ)", "ghiChu": "tieuDe.8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" — tu-vung@2 không có khoá cho truyền động dây đai/khớp nối, bơm đồng trục; không mượn khoá gần nghĩa."},
-    {"ma": "8413703", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8413703 \"Bơm nước được thiết kế đặt chìm dưới nước\" ⇒ tenLoai \"Bơm nước\" + datChim CO (đọc \"đặt chìm\")."},
-    {"ma": "8413704", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8413704 \"Bơm nước khác, với lưu lượng không quá 8.000 m³/h\" ⇒ tenLoai \"Bơm nước\" + luuLuong <= 8000 m³/h; phanConLai [8413701, 8413703] (\"khác\" = trừ hai tầng đứng trước, không trừ 8413705 — dải lưu lượng đã tách)."},
-    {"ma": "8413705", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8413705 \"Bơm nước khác, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h\" ⇒ tenLoai \"Bơm nước\" + luuLuong > 8000 và <= 13000 m³/h; phanConLai [8413701, 8413703] như .4."},
-    {"ma": "84137011", "loai": "QUYET_DINH", "ghiChu": "\"Với đường kính cửa hút không quá 200 mm\" (.11/.31/.42/.43/.51/.91) ⇒ duongKinhTrong <= 200 mm (khuôn 841330 .51); .42/.43 thêm hoatDongBangDien CO/KHONG theo chữ \"hoạt động bằng điện\"/\"không hoạt động bằng điện\"."}
+    {
+      "ma": "8413701",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" ⇒ tenLoai \"Bơm nước\" (cùng khoá, cùng giá trị với anh em .3/.4/.5) + kieuTruyenDong TRONG [DAY_DAI, KHOP_NOI_TRUC_TIEP] (khoá lô 22: \"truyền động bằng dây đai\" / \"khớp nối trực tiếp\") + kieuTruyenDong TRONG [DONG_TRUC_DONG_CO] chieu PHAI_KHONG (vế \"trừ loại bơm đồng trục với động cơ\"; cùng khoá — liệt kê loại trừ nhau nên điều kiện này thừa về nghĩa nhưng phủ vế). Ghi chú THIEU_KHOA_TU_VUNG cachTruyenDongBom đã giải quyết."
+    },
+    {
+      "ma": "8413701",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Danh từ đầu \"một tầng, một chiều hút, trục ngang\" (EN \"Single stage, single suction horizontal shaft\") KHÔNG thành điều kiện: không có khoá tu-vung; một chuỗi tenLoai \"Bơm nước một tầng, một chiều hút, trục ngang\" bị cổng 3 chặn (cong3-liet-ke-trong-mot-chuoi), ba điều kiện tenLoai riêng làm .11/.19 không tới được (cong2-dong-khong-toi-duoc). Cổng 5 không đòi phủ danh từ đầu; hệ quả: tiêu đề này đang RỘNG hơn chữ ở ba thuộc tính đó (bơm nhiều tầng truyền động dây đai sẽ rơi vào .1 thay vì .4/.5/.9) — đề xuất khoá soTangBom / kieuHutBom / huongTrucBom nếu cần chặt."
+    },
+    {
+      "ma": "8413703",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413703 \"Bơm nước được thiết kế đặt chìm dưới nước\" ⇒ tenLoai \"Bơm nước\" + datChim CO (đọc \"đặt chìm\")."
+    },
+    {
+      "ma": "8413704",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413704 \"Bơm nước khác, với lưu lượng không quá 8.000 m³/h\" ⇒ tenLoai \"Bơm nước\" + luuLuong <= 8000 m³/h; phanConLai [8413701, 8413703] (\"khác\" = trừ hai tầng đứng trước, không trừ 8413705 — dải lưu lượng đã tách)."
+    },
+    {
+      "ma": "8413705",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8413705 \"Bơm nước khác, với lưu lượng trên 8.000 m³/h nhưng không quá 13.000 m³/h\" ⇒ tenLoai \"Bơm nước\" + luuLuong > 8000 và <= 13000 m³/h; phanConLai [8413701, 8413703] như .4."
+    },
+    {
+      "ma": "84137011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "\"Với đường kính cửa hút không quá 200 mm\" (.11/.31/.42/.43/.51/.91) ⇒ duongKinhTrong <= 200 mm (khuôn 841330 .51); .42/.43 thêm hoatDongBangDien CO/KHONG theo chữ \"hoạt động bằng điện\"/\"không hoạt động bằng điện\". Cảnh báo cong3-bien-khong-doc-duoc (.11/.31/.42/.43/.51/.91): đã đối chiếu tay — chữ \"không quá 200 mm\" ⇒ op <= 200 mm, đúng biên."
+    },
+    {
+      "ma": "8413701",
+      "loai": "CHONG_LAN",
+      "ghiChu": "Cổng 2 thấy .11↔.31 và .19↔.39 cùng CO trên vector (datChim CO + kieuTruyenDong DAY_DAI + tenLoai Bơm nước): chữ biểu hai tiêu đề không loại trừ nhau ⇒ khai chongLanVanBan (không bịa điều kiện tách; lúc chạy không tự chốt)."
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "84137011",
+        "84137031"
+      ],
+      "lyDo": "Tiêu đề 8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" chia theo cách truyền động, tiêu đề 8413703 \"Bơm nước được thiết kế đặt chìm dưới nước\" chia theo đặc điểm đặt chìm — hai đặc điểm khác nhau, chữ biểu không loại trừ nhau (bơm đặt chìm truyền động bằng khớp nối trực tiếp thoả cả hai); dòng .11 \"Với đường kính cửa hút không quá 200 mm\" và .31 \"Với đường kính cửa hút không quá 200 mm\" cùng chữ; không có căn cứ thứ tự."
+    },
+    {
+      "cap": [
+        "84137019",
+        "84137039"
+      ],
+      "lyDo": "Cùng cặp tiêu đề: 8413701 \"Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ\" ↔ 8413703 \"Bơm nước được thiết kế đặt chìm dưới nước\" không loại trừ nhau; dòng .19 \"Loại khác (SEN)\" và .39 \"Loại khác\" là phần còn lại (đường kính cửa hút trên 200 mm) của hai tiêu đề đó; không có căn cứ thứ tự."
+    }
   ]
 }

@@ -1,107 +1,42 @@
 {
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "800300",
-  "phien": "zcode-mm:loop:20261106T1503#soan-800300",
+  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-800300",
   "dong8": {
     "80030010": {
-      "ten": "Thanh và que hàn",
-      "nguon": [
-        "tax.80030010"
-      ],
-      "trich": [
-        "80030010 - Thanh và que hàn"
-      ],
       "dieuKienSo": [
         {
-          "khoa": "tenLoai",
+          "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "giaTri": "Thanh và que hàn",
-          "trich": "Thanh và que hàn",
-          "nguon": "tax.80030010"
-        }
-      ]
-    }
-  },
-  "dieuKienNut": {
-    "800300": {
-      "ten": "Tin; bars, rods, profiles and wire",
-      "nguon": [
-        "wco.800300"
-      ],
-      "trich": [
-        "800300 Tin; bars, rods, profiles and wire"
-      ],
-      "dieuKienSo": [
+          "value": [
+            "Thanh",
+            "que"
+          ]
+        },
         {
-          "khoa": "chatLieu",
-          "op": "LA",
-          "giaTri": "kim loại",
-          "trich": "Tin",
-          "nguon": "wco.800300"
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "hàn"
         }
       ]
     }
   },
+  "dieuKienNut": {},
   "ghiChuSoan": [
     {
       "ma": "80030010",
       "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 80030010 khai 1 điều kiện tenLoai ('Thanh và que hàn', nguồn tax.80030010); 'thanh' và 'que hàn' là hai dạng của CÙNG một dòng 8 số nên gộp một khoá — tách thành hai điều kiện cùng khoá sẽ biến thành phải thỏa CẢ HAI; ranh giới 6→8 của nhóm này là theo TÊN loại hàng nên dùng khoá tenLoai."
-    },
-    {
-      "ma": "80030010",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Không dùng khoá phuongPhapCheTao = HAN cho cụm 'que hàn': chữ 'hàn' trong tiêu đề nói ĐỒ HÀNG là que hàn (vật hàn), không nói cách chế tạo là hàn — điều kiện chỉ nói điều câu trích nói."
+      "ghiChu": "tax.80030010 \"Thanh và que hàn\" — \"hàn\" là định ngữ chung của cả \"Thanh\" lẫn \"que\" (thanh hàn và que hàn) ⇒ tenLoai [\"Thanh\",\"que\"] + congDung \"hàn\". Không dùng phuongPhapCheTao HAN: chữ nói công dụng (vật hàn), không nói cách chế tạo."
     },
     {
       "ma": "80030090",
       "loai": "QUYET_DINH",
-      "ghiChu": "Dòng 'Loại khác' trần (tax.80030090) không khai điều kiện và không đưa vào spec theo luật máy phủ định; 80030090 là phần dư của nhóm 8003."
+      "ghiChu": "tax.80030090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
     },
     {
       "ma": "800300",
       "loai": "QUYET_DINH",
-      "ghiChu": "Khai dieuKienNut ở tầng 6 số 800300 với nguồn wco.800300; gói không có tầng không mã (tangKhongMa rỗng, hai dòng 8 số 80030010 / 80030090 treo thẳng dưới nhóm 8003) nên không khai tầng trung gian; 800300 là phân nhóm 6 số DUY NHẤT của nhóm 8003 nên tiêu đề ở tầng này ('Tin; bars, rods, profiles and wire') trùng nội dung tiêu đề heading 8003."
-    },
-    {
-      "ma": "800300",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Vế 'Tin;' ở đầu tiêu đề WCO khai bằng khoá chatLieu với giá trị gần nhất trong tu-vung là 'kim loại' (tu-vung chưa có giá trị 'thiếc' — xem ghiChuSoan THIEU_KHOA_TU_VUNG); đây là đặc trưng chung của cả nhóm nên khai ở tầng 6 số, không chép xuống từng dòng 8 số."
-    },
-    {
-      "ma": "800300",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieuThiec",
-      "ghiChu": "Tin"
-    },
-    {
-      "ma": "800300",
-      "loai": "BO_VE",
-      "ve": "bars, rods, profiles and wire",
-      "lyDo": "Vế giới hạn 'thiếc chỉ ở dạng thanh, que, dạng hình và dây' định nghĩa phạm vi của chính phân nhóm 6 số (trùng tiêu đề heading 8003), không phân biệt 80030010 / 80030090; gói không có khoá tu-vung cho dạng hình của thiếc nên không khai điều kiện."
-    },
-    {
-      "ma": "800300",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "dangThanhQueDangHinhDay",
-      "ghiChu": "bars, rods, profiles and wire"
-    },
-    {
-      "ma": "800300",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Gói không kèm nội dung chữ cho ba nguồn chú giải (nhom8003.nhom, ch80.chuong, phan80.phan) nên chỉ trích được từ tax.80030010 và wco.800300."
-    },
-    {
-      "ma": "800300",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Tên nhóm tiếng Việt 'Thiếc ở dạng thanh, que, dạng hình và dây.' trong gói không có mã nguồn (tieuDe.800300) nên 'ten' của dieuKienNut lấy theo mẫu các lô trước: tiêu đề WCO (nguồn wco.800300)."
-    },
-    {
-      "ma": "80030010",
-      "loai": "QUYET_DINH",
-      "ghiChu": "Nhóm 8003 chỉ còn một dòng 8 số có tên (80030010) và một dòng 'Loại khác' trần (80030090) nên không có chữ biểu tự chồng lấn và không có cặp nhánh chia theo tên/công dụng; gói không kèm tiền lệ hay hàng thật thoả cả hai nhánh nên không khai chongLanTruc và không khai chongLanVanBan."
+      "ghiChu": "kimLoaiCoBanKhac TRONG [THIEC] (lô 22) nay đọc được tiêu đề WCO wco.800300 \"Tin; bars, rods, profiles and wire\" và tên nhóm \"Thiếc ở dạng thanh, que, dạng hình và dây\" — nhưng chất liệu là điều kiện VÀO phân nhóm (cấp nhóm/6 số), không phải ranh giới 6→8: cây của gói không có tiêu đề 7 số/tầng không mã nào mang chữ đó và không dòng 8 số nào nêu chất liệu (cổng 3 chỉ nhận giá trị trong chữ của chính dòng/tiêu đề) ⇒ không đặt điều kiện; ghi chú THIEU_KHOA_TU_VUNG cũ (chatLieuThiec; dangThanhQueDangHinhDay — vế \"bars, rods, profiles and wire\" cũng là phạm vi nhóm 8003, không phân biệt .10/.90) đã giải quyết/không cần. Spec cũ viết sai lược đồ (khoa/giaTri, dieuKienNut cho mã 6 số, nguồn wco) ⇒ soạn lại theo bản nháp xanh."
     }
-  ],
-  "chongLanVanBan": [],
-  "chongLanTruc": []
+  ]
 }
