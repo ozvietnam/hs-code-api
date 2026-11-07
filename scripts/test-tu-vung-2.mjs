@@ -316,6 +316,7 @@ const KHOA_MOI = {
   dangVayManh: 'CO_KHONG',
   nhomPolyme: 'LIET_KE',
   dangSanPhamNhom1518: 'LIET_KE',
+  toHopChucNangMayIn: 'LIET_KE',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────

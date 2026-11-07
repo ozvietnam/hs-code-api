@@ -30,6 +30,8 @@ export const THU_MUC_DONG_CUNG_B5BF024 = path.join(process.cwd(), 'scripts', 'fi
 // ranh-gioi-8baef5e/ = bản sao nguyên văn tại commit 8baef5e (main sau #1151) — 852910, 870829 (đích lồng), 870850 (cầu chủ động)
 // trước khi gỡ DỪNG lô 3.
 export const THU_MUC_DONG_CUNG_8BAEF5E = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-8baef5e');
+// ranh-gioi-bf788f5/ = bản sao nguyên văn tại commit bf788f5 (main sau #1153) — 981000 (Chương 98), 844331 (máy in kết hợp) trước lô 5.
+export const THU_MUC_DONG_CUNG_BF788F5 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-bf788f5');
 export const THU_MUC_DONG_CUNG_PR = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-pr');
 // ranh-gioi-571d7a5/ = bản sao nguyên văn tại commit 571d7a5 (main sau #690) — 871410 dạng HOAC, 845290 (luật tên nguyên văn).
 // ranh-gioi-f457a19/ = bản sao nguyên văn tại commit f457a19 (main sau #697, trước soạn lại #699) — 841459 .10 và 950300 .91
