@@ -3,16 +3,86 @@
   "pn6": "030633",
   "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030633",
   "dong8": {
-    "03063311": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["SONG"] } ] },
-    "03063312": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["TUOI_UOP_LANH"] } ] },
-    "03063391": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["SONG"] } ] },
-    "03063392": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["TUOI_UOP_LANH"] } ] }
+    "03063311": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG"
+          ]
+        }
+      ]
+    },
+    "03063312": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ]
+    },
+    "03063391": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG"
+          ]
+        }
+      ]
+    },
+    "03063392": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ]
+    }
   },
   "dieuKienNut": {
-    "0306331": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Ghẹ xanh/ghẹ xanh Đại Tây Dương (Callinectes spp.)", "cua tuyết (thuộc họ Oregoniidae)"] } ] }
+    "0306331": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ghẹ xanh",
+            "Callinectes",
+            "cua tuyết",
+            "Oregoniidae"
+          ]
+        }
+      ]
+    },
+    "030633": {
+      "nguon": "tieuDe.03063",
+      "trich": "03063 Sống, tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG",
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    { "ma": "0306331", "loai": "DUNG", "ghiChu": "tầng 0306331 chỉ có 2 con \"Sống\"/\"Tươi hoặc ướp lạnh\" — phạm vi trạng thái \"sống, tươi hoặc ướp lạnh\" nằm ở heading 0306.3 (ngoài cây PN6) nên vector trạng thái khác (đông lạnh…) không rơi vào con nào: cong1-khong-phu-kin:0306331:phuongPhapBaoQuan=DONG_LANH; không thêm được điều kiện chữ tầng không nói" },
-    { "ma": "0306339", "loai": "DUNG", "ghiChu": "tầng 0306339 (\"Loại khác\" trần) chỉ có 2 con \"Sống\"/\"Tươi hoặc ướp lạnh\" — tương tự 0306331, vector trạng thái ngoài sống/tươi/ướp lạnh không rơi vào con nào: cong1-khong-phu-kin:0306339:phuongPhapBaoQuan=DONG_LANH" }
+    {
+      "ma": "030633",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[030633] lấy từ tầng một gạch cha 03063 \"Sống, tươi hoặc ướp lạnh\" (cũng là chính chữ phân nhóm) — cua/ghẹ đông lạnh thuộc 0306.14, không phải lỗ hổng."
+    }
   ]
 }

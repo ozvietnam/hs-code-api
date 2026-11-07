@@ -8,7 +8,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Quả ổi"
+          "value": "ổi"
         }
       ]
     },
@@ -39,7 +39,7 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Quả măng cụt"
+          "value": "măng cụt"
         }
       ]
     }
@@ -50,16 +50,35 @@
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Quả xoài"
+          "value": "xoài"
+        }
+      ]
+    },
+    "080450": {
+      "nguon": "wco.080450",
+      "trich": "guavas, mangoes and mangosteens, fresh or dried",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH",
+            "KHO_MUOI"
+          ]
         }
       ]
     }
   },
   "ghiChuSoan": [
     {
-      "ma": "0804502",
-      "loai": "DUNG",
-      "ghiChu": "Tầng 0804502 \"Quả xoài\" chỉ 2 dòng .21 \"Tươi\" / .22 \"Khô\", không có con \"Loại khác\"; chữ biểu nhóm 08.04 chỉ \"tươi hoặc khô\" nên các giá trị còn lại của phuongPhapBaoQuan (SONG, DONG_LANH, HUN_KHOI, BAO_QUAN_BANG_KHI_SUNPHURO) không thuộc dòng nào ⇒ cong1-khong-phu-kin:0804502 (cách tenLoai nguyên văn như 030711 không dùng được ở đây vì gây lỗ hổng chéo tầng: vector tenLoai=Quả xoài không tới con, vector tenLoai=Tươi/Khô không tới tầng cha). Chỉ xanh được nếu bịa ⇒ DỪNG."
+      "ma": "080450",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[080450] theo chữ HS 6 số (wco.080450 \"fresh or dried\"; nhóm 08.04 \"tươi hoặc khô\") — xoài đông lạnh (08.11), bảo quản tạm thời (08.12), chế biến (20.08) ngoài phân nhóm, không phải lỗ hổng của tầng Quả xoài (.21 Tươi / .22 Khô)."
+    },
+    {
+      "ma": "080450",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude: tenLoai bỏ từ chỉ loại \"Quả\" (tờ khai hay viết \"xoài sấy\", \"ổi tươi\") — giữ tên quả nguyên văn."
     }
   ]
 }

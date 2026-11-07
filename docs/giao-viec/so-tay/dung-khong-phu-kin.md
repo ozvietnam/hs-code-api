@@ -85,3 +85,30 @@ Phần lớn "khe hở" KHÔNG phải khe hở của biểu thuế: bộ sinh ve
 | 984937 | Dụng cụ và máy đo hoặc kiểm tra lưu lượng, mức, áp suất hoặc | `congDung=lưu` |
 | 984940 | Ghế ngồi (trừ các loại thuộc nhóm 94.02), có hoặc không chuy | `dungChoXeCoDongCo=true,laBoPhan=false,tenLoai=Miếng` |
 
+
+## Claude xử lý tiếp (07/11/2026)
+
+Hai lỗi của **bộ máy cổng 1** (không phải spec) — sửa ở `lib/ho-so/cong-ranh-gioi.js#kiemPhuKin`, test `scripts/test-pham-vi-phan-nhom.mjs`:
+
+1. **Tầng "Loại khác" trần phủ định anh em**: vector sinh từ biên của con (870460 .91 "trên 5 tấn" ⇒ 4.999,995 kg) thoả anh em có
+   điều kiện của tầng (8704602 "không quá 5 tấn") ⇒ hàng đi vào anh em đó, không tới tầng "Loại khác" — không phải lỗ hổng.
+2. **Dải/liệt kê mã ở tầng cha**: giá trị vector "87.01 đến 87.05" là chữ tiêu đề, không phải một hàng; tách thành từng nhóm, tầng
+   phủ kín khi mỗi nhóm vào một con (851140, 851150).
+
+Phạm vi phân nhóm mở rộng: `dieuKienNut[<pn6>]` được trích **tầng gạch tổ tiên** trong cùng nhóm (`tieuDe.03063` "Sống, tươi hoặc
+ướp lạnh" cho 0306.33/0306.39), và phân nhóm tên "Loại khác" nhận phạm vi từ tổ tiên.
+
+| PN6 | Loại cũ | Kết quả | Cách |
+|---|---|---|---|
+| 851140, 851150 | A | **XANH** | bộ máy (2); bỏ ghi chú DỪNG — ghi chú của thợ tả đúng nguyên nhân |
+| 870460 | A | hết cổng 1; còn `cong2-chong-lan` pick-up ↔ xe ba bánh | bộ máy (1). Cặp còn lại: hai khoá CO_KHONG loại trừ nhau ngoài đời (xe pick-up không là xe ba bánh) — cần cơ chế "khoá loại trừ nhau" |
+| 030742 | ? | **XANH** | spec chọn sai trục: tiêu đề "Sống"/"Tươi hoặc ướp lạnh" ghi `tenLoai` ⇒ `phuongPhapBaoQuan`; + phạm vi phân nhóm |
+| 030633, 030639 | ? | **XANH** | phạm vi từ tầng một gạch 03063; 030633 tách tên loài dài thành tên ngắn ("Ghẹ xanh", "cua tuyết") |
+| 080450 | ? | **XANH** | phạm vi theo chữ HS 6 số (`wco.080450` "fresh or dried"); `tenLoai` bỏ từ chỉ loại "Quả" (tờ khai viết "xoài sấy") |
+| 842490, 871690 | A | DỪNG | **bộ máy: điều kiện chữ ↔ dữ kiện mã** — tầng ghi chữ ("súng phun", "xe rơ-moóc"), vector mang mã con ("8424.20.11", "8716.20"); phía điều kiện chưa giải tên→mã. Sửa ở `lib/dieu-kien-so.js` (đổi so lúc chạy) — làm riêng, có đo |
+| 480100 | A | DỪNG | phạm vi là Chú giải 4 Chương 48 (cuộn > 28 cm; tờ > 28 × 15 cm không gấp) nhưng PN6 xxxx00 có nút cây là nhóm (cap 4) — `dieuKienNut[480100]` chưa nhận; thêm cặp cuộn ↔ tờ (khoá loại trừ nhau) |
+| 983610 | A | DỪNG | phạm vi khối lượng 20–45 tấn ở nhóm 98.36 mà nhóm không có tên trong cây |
+| 870891 | ? | DỪNG | "Bộ phận" của 8708919 = bộ phận *của két nước*, spec ghi `laBoPhan` (bộ phận của xe) ⇒ két nước thoả cả hai. Thêm phạm vi thì lộ chồng lấn — cần soạn lại spec |
+| 030749 | ? | DỪNG | phân nhóm "Loại khác" mà phạm vi là phủ định PN6 anh em (0307.42/0307.43) — chưa biểu diễn được |
+| 391690 | ? | DỪNG → C | trộn trục vật liệu (polypropylen) và hình dạng (monofilament) trên một khoá `tenLoai` — cần khoá vật liệu |
+| 870600 | ? | DỪNG | vector "ô tô" là tên đa nghĩa (ra mã ở 87.02/87.03/87.04) — lúc chạy là CHUA_BIET (hỏi), cổng 1 coi là lỗ. Quy ước chưa chốt |
