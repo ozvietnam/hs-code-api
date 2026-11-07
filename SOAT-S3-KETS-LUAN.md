@@ -1,6 +1,6 @@
 # Soát độc lập lô S3 — 50 bản ranh giới chương 70-97
 
-**Phiên soát**: `claude-code:<timestamp>#soat-s3` (TBD khi bắt đầu soát)
+**Phiên soát**: `claude-code:20261107T1234#soat-s3` (bắt đầu phiên 7/11/2026 14:34)
 
 **Issue**: #1106
 
@@ -13,11 +13,11 @@
 
 | PN6 | Kết luận | Lý do / Cạnh báo |
 |-----|----------|------------------|
-| 721070 | **TBD** | Kiểm trước |
-| 721240 | **TBD** | |
-| 722870 | **TBD** | |
-| 722990 | **TBD** | |
-| 722611 | **TBD** | |
+| 721070 | ✅ DUYỆT | Tiền lệ TB-TCHQ #6736, #7436 hợp lệ; bảng hiệu chỉnh → KHONG_LECH |
+| 721240 | ✅ DUYỆT | Xanh tất cả cổng; cảnh báo TEN_LOAI (chữ tự do) — OK |
+| 722870 | ✅ DUYỆT | Xanh tất cả cổng; canHieuChinhTienLe → bảng có; tiền lệ hợp lệ |
+| 722990 | ✅ DUYỆT | Xanh tất cả cổng; cảnh báo TEN_LOAI — OK |
+| 722611 | ❌ TRẢ VỀ | Cond5 báo `bo-ve-thua:72261110:1` — vế "chiều rộng ≤ 400 mm" đã lượng hóa → không cần BO_VE |
 | 848330 | **TBD** | |
 | 721491 | **TBD** | |
 | 720839 | **TBD** | |
@@ -76,7 +76,9 @@ node scripts/test-cong-ranh-gioi.mjs
 
 ## Tóm tắt
 
-- **Duyệt + áp dụng**: TBD
-- **Trả về**: TBD (tỉ lệ cao là bình thường)
-- **Đỏ không soát**: TBD
-- **Lỗi / Không xác định**: TBD
+- **Duyệt + áp dụng**: 4 PN6 (721070, 721240, 722870, 722990)
+- **Trả về**: 1 PN6 (722611 — BO_VE thừa)
+- **Đỏ không soát**: 0
+- **Còn soát**: 45 PN6
+
+**Soát 5 PN6 đầu xong. Còn 45 PN6.**
