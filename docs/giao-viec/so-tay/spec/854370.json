@@ -256,8 +256,75 @@
     },
     {
       "ma": "854370",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Máy cung cấp năng lượng cho hàng rào điện» (85437010) và «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: công dụng «phiên dịch», dùng cho «hàng rào điện», tên «Máy cung cấp năng lượng») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "85437010",
+        "8543702",
+        "85437030",
+        "85437040",
+        "85437050",
+        "85437060"
+      ],
+      "truc": {
+        "8543702": "TEN_LOAI",
+        "85437010": "TEN_LOAI",
+        "85437030": "CONG_DUNG",
+        "85437040": "TEN_LOAI",
+        "85437050": "TEN_LOAI",
+        "85437060": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Máy cung cấp năng lượng cho hàng rào điện» (85437010), «Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằn» (8543702), «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030), «Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm » (85437040), «Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật s» (85437050), «Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với » (85437060)?",
+      "trich": {
+        "8543702": "Thiết bị điều khiển từ xa, trừ thiết bị điều khiển từ xa bằng sóng radio",
+        "85437010": "Máy cung cấp năng lượng cho hàng rào điện",
+        "85437030": "Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển",
+        "85437040": "Máy tách bụi hoặc khử tĩnh điện trong quá trình chế tạo tấm mạch PCB/PWBs(1) hoặc PCAs(1); máy làm đóng rắn vật liệu bằng tia cực tím dùng trong sản xuất tấm mạch PCB/PWBs(1) hoặc PCAs(1)",
+        "85437050": "Bộ khuếch đại vi sóng; máy ghi dữ liệu chuyến bay kỹ thuật số; đầu đọc điện tử di động hoạt động bằng pin để ghi và tái tạo văn bản, hình ảnh tĩnh hoặc tệp âm thanh (SEN)",
+        "85437060": "Thiết bị xử lý tín hiệu kỹ thuật số có khả năng kết nối với mạng có dây hoặc không dây để trộn âm thanh; các sản phẩm được thiết kế đặc biệt để kết nối với thiết bị hoặc dụng cụ điện tín hoặc điện thoại hoặc với mạng điện tín hoặc điện thoại"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "85437010",
+            "85437030"
+          ],
+          "khongCoHangThat": "Máy cung cấp năng lượng cho hàng rào điện (bộ phát xung) không có chức năng phiên dịch hay từ điển."
+        },
+        {
+          "cap": [
+            "8543702",
+            "85437060"
+          ],
+          "khongCoHangThat": "Thiết bị điều khiển từ xa (bộ phát lệnh) và thiết bị xử lý tín hiệu số kết nối mạng là hai thiết bị khác nhau; không có bộ điều khiển từ xa nào thuộc dòng .60."
+        },
+        {
+          "cap": [
+            "85437030",
+            "85437040"
+          ],
+          "khongCoHangThat": "Máy tách bụi hoặc khử tĩnh điện trong sản xuất tấm mạch in không có chức năng phiên dịch hay từ điển."
+        },
+        {
+          "cap": [
+            "85437030",
+            "85437050"
+          ],
+          "khongCoHangThat": "Bộ khuếch đại vi sóng và máy ghi dữ liệu chuyến bay không có chức năng phiên dịch hay từ điển."
+        },
+        {
+          "cap": [
+            "85437050",
+            "85437060"
+          ],
+          "khongCoHangThat": "Bộ khuếch đại vi sóng và máy ghi dữ liệu chuyến bay không phải thiết bị xử lý tín hiệu số kết nối mạng của dòng .60."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

@@ -242,8 +242,172 @@
     },
     {
       "ma": "482390",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Khung kén tằm» (48239010) và «Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy» (48239030) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «sản xuất cốc giấy», tên «Khung kén tằm») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "48239010",
+        "48239020",
+        "48239030",
+        "48239040",
+        "4823905",
+        "48239060",
+        "48239070"
+      ],
+      "truc": {
+        "4823905": "CONG_DUNG",
+        "48239010": "TEN_LOAI",
+        "48239020": "TEN_LOAI",
+        "48239030": "CONG_DUNG",
+        "48239040": "CONG_DUNG",
+        "48239060": "TEN_LOAI",
+        "48239070": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Khung kén tằm» (48239010), «Thẻ trưng bày đồ trang sức, kể cả loại cho đồ trang sức cá n» (48239020), «Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc g» (48239030), «Bộ ống giấy để sản xuất pháo hoa(SEN)» (48239040), «Giấy kraft ở dạng cuộn có chiều rộng 209 mm, loại sử dụng là» (4823905), «Thẻ jacquard đã đục lỗ» (48239060), «Quạt và màn che kéo bằng tay» (48239070)?",
+      "trich": {
+        "4823905": "Giấy kraft ở dạng cuộn có chiều rộng 209 mm, loại sử dụng làm bao gói cho thỏi dynamit",
+        "48239010": "Khung kén tằm",
+        "48239020": "Thẻ trưng bày đồ trang sức, kể cả loại cho đồ trang sức cá nhân hoặc các vật dụng cá nhân được để trong ví, túi xách hoặc mang trên người",
+        "48239030": "Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy",
+        "48239040": "Bộ ống giấy để sản xuất pháo hoa(SEN)",
+        "48239060": "Thẻ jacquard đã đục lỗ",
+        "48239070": "Quạt và màn che kéo bằng tay"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "48239010",
+            "48239030"
+          ],
+          "khongCoHangThat": "«Khung kén tằm (dụng cụ nuôi tằm)» và «Bìa tráng polyetylen cắt dập để sản xuất cốc giấy» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239010",
+            "48239040"
+          ],
+          "khongCoHangThat": "«Khung kén tằm (dụng cụ nuôi tằm)» và «Bộ ống giấy để sản xuất pháo hoa» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239010",
+            "4823905"
+          ],
+          "khongCoHangThat": "«Khung kén tằm (dụng cụ nuôi tằm)» và «Giấy kraft cuộn rộng 209 mm dùng bao gói thỏi dynamit» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239020",
+            "48239030"
+          ],
+          "khongCoHangThat": "«Thẻ trưng bày đồ trang sức» và «Bìa tráng polyetylen cắt dập để sản xuất cốc giấy» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239020",
+            "48239040"
+          ],
+          "khongCoHangThat": "«Thẻ trưng bày đồ trang sức» và «Bộ ống giấy để sản xuất pháo hoa» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239020",
+            "4823905"
+          ],
+          "khongCoHangThat": "«Thẻ trưng bày đồ trang sức» và «Giấy kraft cuộn rộng 209 mm dùng bao gói thỏi dynamit» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239030",
+            "48239060"
+          ],
+          "khongCoHangThat": "«Bìa tráng polyetylen cắt dập để sản xuất cốc giấy» và «Thẻ jacquard đã đục lỗ (thẻ điều khiển máy dệt)» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239030",
+            "48239070"
+          ],
+          "khongCoHangThat": "«Bìa tráng polyetylen cắt dập để sản xuất cốc giấy» và «Quạt và màn che kéo bằng tay» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239040",
+            "48239060"
+          ],
+          "khongCoHangThat": "«Bộ ống giấy để sản xuất pháo hoa» và «Thẻ jacquard đã đục lỗ (thẻ điều khiển máy dệt)» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239040",
+            "48239070"
+          ],
+          "khongCoHangThat": "«Bộ ống giấy để sản xuất pháo hoa» và «Quạt và màn che kéo bằng tay» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "4823905",
+            "48239060"
+          ],
+          "khongCoHangThat": "«Giấy kraft cuộn rộng 209 mm dùng bao gói thỏi dynamit» và «Thẻ jacquard đã đục lỗ (thẻ điều khiển máy dệt)» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "4823905",
+            "48239070"
+          ],
+          "khongCoHangThat": "«Giấy kraft cuộn rộng 209 mm dùng bao gói thỏi dynamit» và «Quạt và màn che kéo bằng tay» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        }
+      ],
+      "phanXu": null
+    },
+    {
+      "nhanh": [
+        "48239091",
+        "48239092",
+        "48239094",
+        "48239095"
+      ],
+      "truc": {
+        "48239091": "TEN_LOAI",
+        "48239092": "TEN_LOAI",
+        "48239094": "TEN_LOAI",
+        "48239095": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Giấy silicon(SEN)» (48239091), «Giấy vàng mã(SEN)» (48239092), «Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vâ» (48239094), «Tấm phủ sàn» (48239095)?",
+      "trich": {
+        "48239091": "Giấy silicon(SEN)",
+        "48239092": "Giấy vàng mã(SEN)",
+        "48239094": "Tấm xenlulo và màng xơ sợi xenlulo, được tạo màu hoặc tạo vân toàn bộ",
+        "48239095": "Tấm phủ sàn"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "48239091",
+            "48239095"
+          ],
+          "khongCoHangThat": "«Giấy silicon» và «Tấm phủ sàn» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239092",
+            "48239095"
+          ],
+          "khongCoHangThat": "«Giấy vàng mã» và «Tấm phủ sàn» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        },
+        {
+          "cap": [
+            "48239094",
+            "48239095"
+          ],
+          "khongCoHangThat": "«Tấm xenlulo và màng xơ sợi xenlulo tạo màu/tạo vân» và «Tấm phủ sàn» là hai mặt hàng khác hẳn nhau về bản chất và công dụng; không có hàng nào vừa là cái này vừa là cái kia."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

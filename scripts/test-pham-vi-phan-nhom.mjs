@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
 const require = createRequire(import.meta.url);
-const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
+const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 let pass = 0; let fail = 0;
@@ -94,6 +94,21 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
 { // 10. Mục phạm vi phân nhóm không xét vế cổng 5 (020760 phạm vi từ wco.020760 "fresh, chilled or frozen")
   const r = C.kiemRanhGioi('020760', nhapDongCung('020760', THU_MUC_DONG_CUNG_71A17E0));
   check('10a 020760 xanh, không cong5 trên mục phạm vi', r.hopLe === true && !r.loi.some((l) => l.startsWith('cong5') && l.includes(':020760:')), r.loi);
+}
+{ // 11. Q1 (GĐ đồng ý 07/11/2026): cặp khác trục không có hàng thật ⇒ viDuHang {cap, khongCoHangThat} thay hàng ví dụ
+  const cum = (vd) => ({ nhanh: ['14049020', '14049030'], truc: { 14049020: 'CONG_DUNG', 14049030: 'TEN_LOAI' },
+    cauHoiPhanBiet: 'Hàng này là loại dùng chủ yếu trong thuộc da hoặc nhuộm, hay là bông gòn?',
+    trich: { 14049020: 'Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm', 14049030: 'Bông gòn' }, viDuHang: [vd], phanXu: null });
+  const ld = 'Bông gòn dùng làm vật liệu nhồi; không có bông gòn nào dùng chủ yếu để thuộc da hoặc nhuộm.';
+  const b0 = nhapDongCung('140490', THU_MUC_DONG_CUNG_B5BF024);
+  check('11a 140490 chưa khai ⇒ chồng lấn trục (DỪNG cũ)', C.kiemRanhGioi('140490', b0).loi.some((l) => l.startsWith('cong2-chong-lan')));
+  const b = nhapDongCung('140490', THU_MUC_DONG_CUNG_B5BF024); b.chongLanTruc = [cum({ cap: ['14049020', '14049030'], khongCoHangThat: ld })];
+  const r = C.kiemRanhGioi('140490', b);
+  check('11b khai khongCoHangThat ⇒ xanh + cảnh báo cho người soát', r.hopLe === true && r.canhBao.some((c) => c.startsWith('cong2-chong-lan-truc-khong-co-hang-that:0:')), r.loi);
+  const b2 = nhapDongCung('140490', THU_MUC_DONG_CUNG_B5BF024); b2.chongLanTruc = [cum({ cap: ['14049020', '14049030'], khongCoHangThat: 'ngắn' })];
+  check('11c lý do quá ngắn ⇒ lỗi hình dạng', C.kiemRanhGioi('140490', b2).loi.some((l) => l.startsWith('cong0-chong-lan-truc-vi-du-hinh-dang')));
+  const b3 = nhapDongCung('140490', THU_MUC_DONG_CUNG_B5BF024); b3.chongLanTruc = [cum({ cap: ['14049020', '14049030'], hang: 'Bông gòn dùng thuộc da', khongCoHangThat: ld })];
+  check('11d khai cả hang lẫn khongCoHangThat ⇒ lỗi hình dạng', C.kiemRanhGioi('140490', b3).loi.some((l) => l.startsWith('cong0-chong-lan-truc-vi-du-hinh-dang')));
 }
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

@@ -48,8 +48,35 @@
     },
     {
       "ma": "640411",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự» (64041110) và «Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình» (64041120) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «đấu vật», tên «gắn đinh») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "64041110",
+        "64041120"
+      ],
+      "truc": {
+        "64041110": "TEN_LOAI",
+        "64041120": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương» (64041110), «Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình» (64041120)?",
+      "trich": {
+        "64041110": "Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự",
+        "64041120": "Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "64041110",
+            "64041120"
+          ],
+          "khongCoHangThat": "Giày đấu vật, cử tạ, thể dục thể hình có đế phẳng, không gắn đinh hay miếng đế chân. Không có giày dùng trong đấu vật, cử tạ, thể dục thể hình có gắn đinh."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

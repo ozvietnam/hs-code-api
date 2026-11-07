@@ -218,7 +218,13 @@
       "hs": "27101972",
       "nguon": "tax.27101972",
       "trich": "27101972 - - - - Nhiên liệu diesel khác",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nhiên liệu diesel"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM",
       "phanConLai": [
         "27101971"
@@ -309,6 +315,107 @@
       "trich": "27101990 - - - Loại khác",
       "dieuKienSo": [],
       "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "27101941",
+        "27101950"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dầu khoáng đã tinh chế để sản xuất dầu bôi trơn (SEN)\" ↔ \"Dầu dùng trong bộ hãm thủy lực (dầu phanh)\" — dầu khoáng tinh chế để SẢN XUẤT dầu bôi trơn là dầu gốc (nguyên liệu), không phải dầu phanh thành phẩm."
+    },
+    {
+      "cap": [
+        "27101941",
+        "27101960"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dầu khoáng đã tinh chế để sản xuất dầu bôi trơn (SEN)\" ↔ \"Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và dầu dùng cho bộ phận ngắt mạch\" — dầu khoáng tinh chế để sản xuất dầu bôi trơn là dầu gốc, không phải dầu máy biến điện thành phẩm."
+    },
+    {
+      "cap": [
+        "27101946",
+        "27101950"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dầu bôi trơn khác\" ↔ \"Dầu dùng trong bộ hãm thủy lực (dầu phanh)\" — dầu phanh (dầu bộ hãm thủy lực) không phải dầu bôi trơn; biểu tách riêng dòng .50."
+    },
+    {
+      "cap": [
+        "27101946",
+        "27101960"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Dầu bôi trơn khác\" ↔ \"Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và dầu dùng cho bộ phận ngắt mạch\" — dầu máy biến điện, dầu ngắt mạch là dầu cách điện, không phải dầu bôi trơn; biểu tách riêng dòng .60."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "27101920",
+        "2710194",
+        "27101950",
+        "27101960",
+        "2710197"
+      ],
+      "truc": {
+        "2710194": "CONG_DUNG",
+        "2710197": "TEN_LOAI",
+        "27101920": "TEN_LOAI",
+        "27101950": "CONG_DUNG",
+        "27101960": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Dầu thô đã tách phần nhẹ» (27101920), «Dầu và mỡ bôi trơn» (2710194), «Dầu dùng trong bộ hãm thủy lực (dầu phanh)» (27101950), «Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và» (27101960), «Nhiên liệu diesel; các loại dầu nhiên liệu» (2710197)?",
+      "trich": {
+        "2710194": "Dầu và mỡ bôi trơn",
+        "2710197": "Nhiên liệu diesel; các loại dầu nhiên liệu",
+        "27101920": "Dầu thô đã tách phần nhẹ",
+        "27101950": "Dầu dùng trong bộ hãm thủy lực (dầu phanh)",
+        "27101960": "Dầu dùng cho máy biến điện (máy biến áp và máy biến dòng) và dầu dùng cho bộ phận ngắt mạch"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "27101920",
+            "2710194"
+          ],
+          "khongCoHangThat": "Dầu thô đã tách phần nhẹ (topped crude) là nguyên liệu lọc dầu, chưa phải dầu hay mỡ bôi trơn thành phẩm."
+        },
+        {
+          "cap": [
+            "27101920",
+            "27101950"
+          ],
+          "khongCoHangThat": "Dầu thô đã tách phần nhẹ là nguyên liệu lọc dầu, không dùng làm dầu phanh."
+        },
+        {
+          "cap": [
+            "27101920",
+            "27101960"
+          ],
+          "khongCoHangThat": "Dầu thô đã tách phần nhẹ là nguyên liệu lọc dầu, không dùng làm dầu máy biến điện hay dầu ngắt mạch."
+        },
+        {
+          "cap": [
+            "2710194",
+            "2710197"
+          ],
+          "khongCoHangThat": "Nhiên liệu diesel và dầu nhiên liệu dùng để đốt; dầu, mỡ bôi trơn dùng để bôi trơn, không dùng làm nhiên liệu."
+        },
+        {
+          "cap": [
+            "27101950",
+            "2710197"
+          ],
+          "khongCoHangThat": "Dầu phanh (dầu bộ hãm thủy lực) không dùng làm nhiên liệu diesel hay dầu nhiên liệu."
+        },
+        {
+          "cap": [
+            "27101960",
+            "2710197"
+          ],
+          "khongCoHangThat": "Dầu máy biến điện và dầu ngắt mạch là dầu cách điện, không dùng làm nhiên liệu."
+        }
+      ],
+      "phanXu": null
     }
   ],
   "ghiChuSoan": [
@@ -414,8 +521,18 @@
     },
     {
       "ma": "271019",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Dầu thô đã tách phần nhẹ» (27101920) và «Dầu bôi trơn khác» (27101946) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: công dụng «sản xuất dầu bôi trơn», dùng cho «động cơ máy bay», tên «Dầu thô đã tách phần nhẹ») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    },
+    {
+      "ma": "27101972",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026: \"Nhiên liệu diesel khác\" thêm tên \"Nhiên liệu diesel\" (spec cũ chỉ có phanConLai, nên dầu nhiên liệu cũng thoả)."
+    },
+    {
+      "ma": "271019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): cặp dòng không có hàng thật thoả cả hai ⇒ chongLanVanBan kèm lý do. Lúc chạy hàng thoả cả hai ⇒ TRANH_CAP + câu hỏi, không tự chọn."
     }
   ]
 }

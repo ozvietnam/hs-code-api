@@ -86,8 +86,35 @@
     },
     {
       "ma": "741810",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự» (74181010) và «Thiết bị nấu hoặc đun nóng dùng trong gia đình, không dùng điện và các bộ phận c» (74181030) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «Thiết bị nấu», hoatDongBangDien «không», là bộ phận «có», phamViSuDung «GIA_DINH», tên «Miếng cọ nồi») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "74181010",
+        "74181030"
+      ],
+      "truc": {
+        "74181010": "TEN_LOAI",
+        "74181030": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại » (74181010), «Thiết bị nấu hoặc đun nóng dùng trong gia đình, không dùng đ» (74181030)?",
+      "trich": {
+        "74181010": "Miếng cọ nồi và cọ rửa hoặc đánh bóng, găng tay và các loại tương tự",
+        "74181030": "Thiết bị nấu hoặc đun nóng dùng trong gia đình, không dùng điện và các bộ phận của các sản phẩm này"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "74181010",
+            "74181030"
+          ],
+          "khongCoHangThat": "Miếng cọ nồi, cọ rửa, đánh bóng, găng tay là đồ dùng làm sạch; thiết bị nấu hoặc đun nóng (và bộ phận) là dụng cụ nấu. Không có miếng cọ nồi hay găng tay nào là thiết bị nấu hoặc bộ phận của nó."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

@@ -65,8 +65,45 @@
     },
     {
       "ma": "640319",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự» (64031910) và «Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình» (64031930) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «đấu vật», tên «gắn đinh») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "64031910",
+        "64031920",
+        "64031930"
+      ],
+      "truc": {
+        "64031910": "TEN_LOAI",
+        "64031920": "TEN_LOAI",
+        "64031930": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương» (64031910), «Ủng để cưỡi ngựa; giày chơi bowling» (64031920), «Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình» (64031930)?",
+      "trich": {
+        "64031910": "Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự",
+        "64031920": "Ủng để cưỡi ngựa; giày chơi bowling",
+        "64031930": "Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "64031910",
+            "64031930"
+          ],
+          "khongCoHangThat": "Giày đấu vật, cử tạ, thể dục thể hình có đế phẳng, không gắn đinh hay miếng đế chân (đinh dùng cho giày chạy, bóng đá). Không có giày dùng trong đấu vật, cử tạ, thể dục thể hình có gắn đinh."
+        },
+        {
+          "cap": [
+            "64031920",
+            "64031930"
+          ],
+          "khongCoHangThat": "Ủng cưỡi ngựa và giày chơi bowling không phải giày dùng trong đấu vật, cử tạ hoặc thể dục thể hình."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

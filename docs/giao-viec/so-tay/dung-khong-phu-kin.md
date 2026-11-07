@@ -8,24 +8,24 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **93** |
-| Chờ anh quyết (Q1, Q2, Q3) | 69 |
+| DỪNG hiện tại | **68** |
+| Chờ anh: Q2 (văn bản ô tô), Q3 (nguồn Chương 98) | 32 |
+| Q1 còn lại — Claude xác minh / sửa bộ máy | 11 |
 | Thiếu khoá từ vựng (giao thẻ khoá) | 5 |
-| Claude làm tiếp (công cụ / soát lại) | 19 |
+| Claude làm tiếp (công cụ / soát lại) | 20 |
 
-## Ba việc cần anh quyết
+## Việc cần anh quyết
 
-### Q1 — Chồng lấn chưa có hàng thật (38 PN6)
+### Q1 — Chồng lấn chưa có hàng thật — ANH ĐÃ ĐỒNG Ý 07/11, ĐÃ LÀM
 
-**Vấn đề.** Hai dòng anh em chia theo hai tiêu chí khác nhau, thường là tên ↔ công dụng: «Bông gòn» ↔ «Loại dùng chủ yếu
-trong thuộc da»; «Vi phim» ↔ «Dùng cho chụp X quang»; «Ủng cưỡi ngựa» ↔ «Giày đế gỗ». Máy ghép được một hàng thoả cả hai,
-nhưng ngoài đời không có hàng như vậy. Luật vòng 8 (anh chốt 01/11) bắt phải có **hàng thật** làm ví dụ mới cho khai chồng
-lấn, nên các PN6 này đứng yên.
+Cơ chế: trong cụm `chongLanTruc`, cặp nhánh không có hàng thật thoả cả hai được khai `{cap, khongCoHangThat: "<lý do>"}`
+thay hàng ví dụ; cặp dòng cùng trục khai `chongLanVanBan` có lý do «Không có hàng thật thoả cả hai (Q1)…». **Chỉ Claude khai**,
+lý do viết riêng từng cặp sau khi xét. Mỗi cặp hiện cảnh báo `cong2-chong-lan-truc-khong-co-hang-that` để người soát thấy.
+Lúc chạy không đổi: hàng thoả cả hai thì hệ thống hỏi câu phân biệt. Ca có hàng thật (850440: máy nạp nguồn viễn thông, bộ
+nghịch lưu cho máy chủ) thì khai bằng hàng ví dụ thật, KHÔNG dùng Q1.
 
-**Đề xuất.** Cho khai thêm một loại: «cặp này không có hàng thật thoả cả hai», kèm lý do bằng lời và **chỉ Claude được duyệt**.
-Lúc chạy **không đổi gì**: hàng thật mà thoả cả hai thì hệ thống vẫn hỏi người dùng, không tự chọn. Cái được là các PN6 này
-qua cổng và được dùng lúc chạy cho mọi hàng bình thường. Rủi ro: khai sai một cặp chồng THẬT thành «không có hàng thật».
-Khi đó lúc chạy vẫn hỏi, không xếp sai, nên rủi ro thấp.
+Kết quả: **25 PN6 hết DỪNG**. Còn 11 PN6 nhóm này chưa gỡ: cần xác minh có hàng thật không (ống nồi hơi giới hạn chảy cao,
+giấy nhiều lớp…) hoặc còn vướng bộ máy khác — chi tiết ở bảng.
 
 ### Q2 — Ô tô ↔ xe ba bánh (5 PN6: 870421, 870431, 870441, 870451, 870460)
 
@@ -34,7 +34,7 @@ trở lên. Cần **bản chính thức** văn bản định nghĩa «xe ô tô�
 làm nguồn (thẻ #1101, anh đã cho dùng quy chuẩn chuyên ngành). Claude không tải được văn bản (trang chặn hoặc chỉ trả khung trống).
 **Anh gửi PDF**, Claude làm tiếp #1101.
 
-### Q3 — Chương 98 thiếu nguồn phạm vi (26 PN6)
+### Q3 — Chương 98 thiếu nguồn phạm vi (27 PN6)
 
 Nhóm 98.xx là biện pháp riêng của Việt Nam. Phạm vi của chúng («dùng cho xe có động cơ», «để sản xuất sản phẩm CNTT trọng
 điểm», khối lượng 20–45 tấn…) nằm ở quy định Chương 98 (Nghị định 26/2023/NĐ-CP, Mục I), không nằm trong biểu. Hiện cây
@@ -49,7 +49,7 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | Từ vựng khai «giá trị chung ⊃ giá trị riêng» (sợi nhân tạo ⊃ tổng hợp, tái tạo) — đổi cả cách so lúc chạy | 610520 |
 | Cơ chế đính chính khoá @1 đọc sai nghĩa («micro switch») | 853650 |
 | «Bộ phận» trơn = bộ phận của tầng trên; luật «hàng không là bộ phận của chính nó» | 870895, 870891 |
-| Bộ máy: đích lồng, tên ↔ mã, tên đa nghĩa, HOẶC dưới tầng có tên, vế «tương tự» | 842490, 871690, 852910, 870829, 847790, 850790, 842199, 870600, 848620, 681140, 848690 |
+| Bộ máy: đích lồng, tên ↔ mã, tên đa nghĩa, HOẶC dưới tầng có tên, vế «tương tự» | 842490, 871690, 852910, 870829, 847790, 850790, 842199, 870600, 848620, 681140, 848690, 442199 |
 | Phạm vi «phủ định phân nhóm anh em»; phạm vi cho phân nhóm xxxx.00 | 030749, 480100 |
 | Soát lại cả phân nhóm | 210690, 321290 |
 
@@ -58,44 +58,17 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | PN6 | Tên phân nhóm | Vướng | Cần |
 |---|---|---|---|
 | **CHỒNG LẤN CHƯA CÓ HÀNG THẬT** | | | |
-| 140490 | Loại khác | «Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm» (14049020) ↔ «Bông gòn» (14049030) — vd: công dụng «công nghệ thuộc da», tên «Bông gòn» | Q1 |
-| 271012 | Dầu nhẹ và các chế phẩm | «RON 97 ↔ cao hơn» (27101211) và «Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ» (27101280) — vd: coPhaChi «có», công dụng «pha chế xăng động cơ», tên «Xăng động cơ», triSoOctan «97» | Q1 |
-| 271019 | Loại khác | «Dầu thô đã tách phần nhẹ» (27101920) ↔ «Dầu bôi trơn khác» (27101946) — vd: công dụng «sản xuất dầu bôi trơn», dùng cho «động cơ máy bay», tên «Dầu thô đã tách phần nhẹ» | Q1 |
-| 370500 | Tấm và phim để tạo ảnh, đã phơi sáng và đã tráng, trừ phim dùng trong  | «Dùng cho chụp X quang» (37050010) ↔ «Vi phim (microfilm)» (37050020) — vd: công dụng «chụp X quang», tên «Vi phim» | Q1 |
-| 392690 | Loại khác | «Phao cho lưới đánh cá» (39269010) ↔ «Loại khác» (39269039) — vd: công dụng «vệ sinh», dùng cho «lưới đánh cá», tên «Phao (thứ khác | Q1 |
-| 442191 | Từ tre | «Lõi cuộn chỉ, ống sợi ↔ suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự» (44219110) và «Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận củ» (44219140) — vd: cachDieuKhien «BANG_TAY», dùng cho «Quạt», là bộ phận «có», tên «Lõi cuộn chỉ» | Q1 |
-| 442199 | Loại khác | «Lõi cuộn chỉ, ống sợi ↔ suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự» (44219910) và «Quạt và màn che kéo bằng tay, khung và tay cầm, quai kèm theo, và các bộ phận củ» (44219970) — vd: cachDieuKhien «BANG_TAY», dùng cho «Quạt», là bộ phận «có», tên «Lõi cuộn chỉ» | Q1 |
-| 480254 | Có định lượng dưới 40 g/m2 | «Ở dạng cuộn có chiều rộng không quá 15cm hoặc ở dạng tờ hình chữ nhật (kể cả hìn» (48025411) ↔ «Giấy và bìa nhiều lớp(SEN)» (48025450) — vd: chieuRong «149.99985», công dụng «làm nền sản xuất giấy carbon», daGap «có», dangCuon «có», dangToChuNhat «có», dinhLuong «19.99998», motChieuTo «359.99964», nh | Q1 |
+| 271012 | Dầu nhẹ và các chế phẩm | Các dòng xăng thành phẩm (RON 97, RON 90–97, chưa pha chế, pha ethanol…), xăng máy bay, dung môi chồng với .80 «Naphtha, reformate và các chế phẩm khác để pha chế xăng động cơ» (tên ↔ công dụng — cần chongLanTruc, mỗi cặp lý do riêng); thêm dòng .23/.26/.29 không tới được (giới hạn bộ máy). | Q1 |
+| 480254 | Có định lượng dưới 40 g/m2 | Các tầng «Giấy làm nền sản xuất giấy carbon», «…giấy tráng nhôm», «…để viết, in…, dạng cuộn» chồng với .50 «Giấy và bìa nhiều lớp (SEN)». Chưa chắc có hàng thật không (giấy nhiều lớp dùng để viết/in có thể có). | Q1 |
 | 480255 | Có định lượng từ 40 g/m2 trở lên nhưng không quá 150g/m2, dạng cuộn | «Có chiều rộng không quá 15 cm (SEN)» (48025521) ↔ «Có chiều rộng không quá 15 cm» (48025561) — vd: chieuRong «149.99985», công dụng «viết», tên «Giấy và bìa trang trí» | Q1 |
-| 480431 | Chưa tẩy trắng | «Giấy kraft cách điện (SEN)» (48043110) ↔ «Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)» (48043130) — vd: công dụng «sản xuất băng dán gỗ dán», doBenUot «40», tên «Giấy kraft cách điện» | Q1 |
-| 481190 | Giấy, bìa, tấm xenlulo và màng xơ sợi xenlulo khác | «Tấm phủ sàn» (48119041) ↔ «Giấy tạo vân(SEN)» (48119042) — vd: chieuRong «149.99985», dangCuon «có», kichThuoc «359.99964», tamPhuSan «có», tên «Giấy tạo vân» | Q1 |
-| 481690 | Loại khác | «Giấy dùng để sao chụp khác» (48169020) ↔ «Tấm in offset» (48169030) — vd: dùng cho «sao chụp», tên «Tấm in offset» | Q1 |
-| 482390 | Loại khác | «Khung kén tằm» (48239010) ↔ «Bìa tráng polyetylen đã cắt dập thành hình để sản xuất cốc giấy» (48239030) — vd: dùng cho «sản xuất cốc giấy», tên «Khung kén tằm» | Q1 |
-| 640319 | Loại khác | «Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự» (64031910) ↔ «Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình» (64031930) — vd: dùng cho «đấu vật», tên «gắn đinh» | Q1 |
-| 640391 | Loại cổ cao quá mắt cá chân | «Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ» (64039110) ↔ «Ủng để cưỡi ngựa» (64039120) — vd: vật liệu «gỗ», tên «Ủng để cưỡi ngựa» | Q1 |
-| 640399 | Loại khác | «Giày, dép có đế bằng gỗ, không có lót đế bên trong hoặc mũi gắn kim loại bảo vệ» (64039910) ↔ «Giày chơi bowling» (64039920) — vd: vật liệu «gỗ», tên «Giày chơi bowling» | Q1 |
-| 640411 | Giày, dép thể thao, giày tennis, giày bóng rổ, giày thể dục, giày luyệ | «Giày, dép có gắn đinh, gắn miếng đế chân hoặc các loại tương tự» (64041110) ↔ «Giày, dép dùng trong đấu vật, cử tạ hoặc thể dục thể hình» (64041120) — vd: dùng cho «đấu vật», tên «gắn đinh» | Q1 |
-| 650610 | Mũ bảo hộ và các vật đội đầu an toàn khác | «Mũ bảo hộ công nghiệp ↔ mũ bảo hiểm cho lính cứu hỏa, trừ mũ bảo hộ bằng thép» (65061020) và «Mũ dùng trong chơi water-polo» (65061040) — vd: dùng cho «chơi water-polo», tên «Mũ bảo hộ công nghiệp» | Q1 |
-| 721114 | Loại khác, chiều dày từ 4,75 mm trở lên | «Dạng lượn sóng» (72111414) ↔ «Dạng cuộn để cán lại (SEN)» (72111415) | Q1 |
-| 721391 | Có đường kính mặt cắt ngang hình tròn dưới 14 mm | «Loại dùng để sản xuất que hàn (SEN)» (72139110) ↔ «Thép cốt bê tông» (72139120) — vd: công dụng «sản xuất que hàn», tên «Thép cốt bê tông» | Q1 |
-| 721399 | Loại khác | «Loại dùng để sản xuất que hàn (SEN)» (72139910) ↔ «Thép cốt bê tông» (72139920) — vd: công dụng «sản xuất que hàn», tên «Thép cốt bê tông» | Q1 |
-| 730630 | Loại khác, được hàn, có mặt cắt ngang hình tròn, bằng sắt hoặc thép kh | «Với đường kính ngoài dưới 12,5 mm» (73063011) ↔ «Với đường kính ngoài dưới 12,5 mm» (73063021) — vd: dùng cho «nồi hơi», đường kính «12.4999875», lopMaPhu «MA_DONG» | Q1 |
-| 730640 | Loại khác, được hàn, có mặt cắt ngang hình tròn, bằng thép không gỉ | «Với đường kính ngoài không quá 12,5 mm» (73064011) ↔ «Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với » (73064030) — vd: dùng cho «nồi hơi», đường kính «9.99999», hamLuongNiken «30» | Q1 |
-| 741810 | Bộ đồ ăn, đồ nhà bếp hoặc các đồ gia dụng khác và các bộ phận của chún | «Miếng cọ nồi ↔ cọ rửa hoặc đánh bóng, găng tay và các loại tương tự» (74181010) và «Thiết bị nấu hoặc đun nóng dùng trong gia đình, không dùng điện và các bộ phận c» (74181030) — vd: dùng cho «Thiết bị nấu», hoatDongBangDien «không», là bộ phận «có», phamViSuDung «GIA_DINH», tên «Miếng cọ nồi» | Q1 |
-| 741920 | Đã được đúc, đúc khuôn, rập hoặc rèn nhưng chưa được gia công thêm | «Xích ↔ các bộ phận của xích» (74192010) và «Thùng, két, bể chứa và các loại đồ chứa đựng tương tự không gắn các thiết bị cơ » (74192020) — vd: dùng cho «Xích», ganThietBiCoKhiHoacGiaNhiet «không», là bộ phận «có», tên «Thùng» | Q1 |
-| 741980 | Loại khác | «Xích ↔ các bộ phận của xích» (74198010) và «Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít tr» (74198080) — vd: dùng cho «Xích», dungTich «299.9997», là bộ phận «có», tên «Thùng» | Q1 |
-| 760421 | Dạng hình rỗng | «Loại phù hợp để làm dàn lạnh của máy điều hòa không khí cho xe có động cơ (SEN)» (76042110) ↔ «Thanh đệm bằng nhôm cho cửa ra vào và cửa sổ (SEN)» (76042120) — vd: vật liệu «nhôm», công dụng «làm dàn lạnh của máy điều hòa không khí», dùng cho «cửa ra vào», dungChoXeCoDongCo «có», tên «Thanh đệm» | Q1 |
-| 844331 | Máy kết hợp hai hoặc nhiều chức năng in, copy hoặc fax, có khả năng kế | «Loại màu» (84433111) ↔ «Loại màu» (84433131) — vd: congNgheIn «IN_PHUN», mauHienThi «MAU», tên «Máy in-copy-scan-fax kết hợp» | Q1 |
+| 721114 | Loại khác, chiều dày từ 4,75 mm trở lên | Các dòng .14 «Dạng lượn sóng», .15 «Dạng cuộn để cán lại», .16 dải/đai, .17 tấm phổ dụng chia theo bốn đặc điểm độc lập (cùng trục đặc điểm), chồng lấn cùng trục không khai được bằng chongLanTruc. | Q1 |
+| 730630 | Loại khác, được hàn, có mặt cắt ngang hình tròn, bằng sắt hoặc thép kh | Các tầng «Ống dùng cho nồi hơi», «Ống mạ đồng, tráng nhựa flo hoặc kẽm», «Ống bọc (ống nhiệt)…», «Ống dẫn chịu áp lực cao giới hạn chảy ≥ 42.000 psi» chia theo các tiêu chí khác nhau; có thể có hàng thật thoả hai tầng (ống nồi hơi có giới hạn chảy cao). | Q1 |
+| 730640 | Loại khác, được hàn, có mặt cắt ngang hình tròn, bằng thép không gỉ | Tầng «Ống dùng cho nồi hơi» chồng với .20 «Ống… đường kính ngoài trên 105 mm» và .30 «Ống… chứa niken ít nhất 30%»: ống nồi hơi bằng thép không gỉ đường kính lớn hoặc nhiều niken là hàng có thể có thật. | Q1 |
+| 844331 | Máy kết hợp hai hoặc nhiều chức năng in, copy hoặc fax, có khả năng kế | Tầng 8443313 «Máy in-copy-fax kết hợp» (tên) chồng với tầng 8443311/8443312 (theo công nghệ in); dòng .91 «Máy in-copy-scan-fax kết hợp» không tới được vì tên tiêu đề là tiền tố tên dòng. | Q1 |
 | 848180 | Thiết bị khác | Tầng 8481805 «có khoang pha trộn» (khoá đặc điểm) chồng với nhiều nhánh tên van: van dùng cho săm, van lốp không săm, van xi lanh LPG, van bếp ga, van chai có ga, núm uống nước cho lợn… Không có van săm nào «có khoang pha trộn», nhưng chưa có hàng thật để làm ví dụ cho từng cặp nên theo luật vòng 8 chưa khai được. | Q1 |
-| 848610 | Máy và thiết bị để sản xuất khối hoặc tấm bán dẫn mỏng | «Thiết bị làm nóng nhanh tấm bán dẫn mỏng» (84861010) ↔ «Máy và thiết bị để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng m» (84861040) — vd: công dụng «cắt khối bán dẫn đơn tinh thể thành các lớp», tên «Thiết bị làm nóng nhanh tấm bán dẫn mỏng» | Q1 |
-| 850440 | Máy biến đổi tĩnh điện | «Bộ nguồn cấp điện liên tục (UPS) (SEN)» (85044011) ↔ «Máy nạp ắc qui, pin có công suất danh định trên 100 kVA» (85044020) — vd: congSuatBieuKien «100.0001», dùng cho «máy xử lý dữ liệu tự động», loaiBienDoiTinhDien «UPS», tên «Máy nạp ắc qui» | Q1 |
-| 851981 | Thiết bị truyền thông sử dụng công nghệ từ tính, quang học hoặc bán dẫ | «Loại dùng cho điện ảnh hoặc phát thanh» (85198161) ↔ «Máy trả lời điện thoại» (85198162) — vd: dùng cho «điện ảnh», tên «Máy trả lời điện thoại Máy ghi băng từ có gắn với thiết bị tái tạo âm thanh, loại âm thanh số» | Q1 |
-| 852329 | Loại khác | «Băng máy tính» (85232941) ↔ «Loại dùng cho điện ảnh» (85232942) — vd: chieuRong «4.000004», daGhi «có», dùng cho «điện ảnh», tên «Băng máy tính Băng từ» | Q1 |
-| 853690 | Thiết bị khác | (chưa đọc được cặp lỗi — kiểm lại bằng --kiem). | Q1 |
-| 854370 | Máy và thiết bị khác | «Máy cung cấp năng lượng cho hàng rào điện» (85437010) ↔ «Máy, thiết bị điện có chức năng phiên dịch hoặc từ điển» (85437030) — vd: công dụng «phiên dịch», dùng cho «hàng rào điện», tên «Máy cung cấp năng lượng» | Q1 |
-| 870850 | Cầu chủ động có vi sai, có hoặc không kèm theo chi tiết truyền lực khá | «Dùng cho xe thuộc nhóm 87.03» (87085011) ↔ «Loại khác» (87085095) — vd: đã lắp ráp «không», dùng cho «87.03», là bộ phận «có», tên «(thứ khác | Q1 |
-| 870899 | Loại khác | «Giá đỡ hoặc khay đỡ bình ắc quy ↔ khung của nó» (87089940) và «Dùng cho xe thuộc nhóm 87.02» (87089961) — vd: dùng cho «bình ắc quy 87.02», là bộ phận «có», tên «Khung xe» | Q1 |
-| 984943 | Pin và bộ pin | «Bằng liti» (98494310) ↔ «Có thể tích ngoài không quá 300 cm3» (98494321) — vd: loaiPin «LITI», theTich «299.9997» | Q1 |
+| 853690 | Thiết bị khác | Cổng xanh nhưng sai NGHĨA: hàng chính danh của .93 «Phiến đầu nối… cáp điện thoại» luôn thoả tầng 8536901 «Đầu nối… cho dây và cáp», mà .93 lại nằm dưới «Loại khác» 8536909 (loại trừ 8536901) ⇒ hiện chỉ tới được .93 bằng chữ «khối đấu nối». Chữ biểu tự xếp «phiến đầu nối cáp điện thoại» ra khỏi 8536901. | Q1 |
+| 870850 | Cầu chủ động có vi sai, có hoặc không kèm theo chi tiết truyền lực khá | Cầu chủ động: các dòng «Dùng cho xe thuộc nhóm …» ở hai tầng (chưa lắp ráp / loại khác) chồng với các dòng «Loại khác» cuối; cụm trục khai một trục. | Q1 |
+| 870899 | Loại khác | Dòng .40 «Giá đỡ hoặc khay đỡ bình ắc quy và khung của nó» chồng với các dòng «Dùng cho xe thuộc nhóm 87.02/87.03/87.04» và .70 «Khung giá đỡ động cơ»; thêm .25 không tới được (đích lồng «Thùng nhiên liệu và bộ phận» ↔ mã xe). | Q1 |
 | **Ô TÔ ↔ XE BA BÁNH** | | | |
 | 870421 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | 870431 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
@@ -129,6 +102,7 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | 984937 | Dụng cụ và máy đo hoặc kiểm tra lưu lượng, mức, áp suất hoặc biến số k | Khe ở «Để đo hoặc kiểm tra lưu lượng hoặc mức của chất lỏng»; vd: công dụng «lưu lượng», dungChoXeCoDongCo «có», hoatDongBangDien «có», tên «(thứ khác)» | Q3 |
 | 984940 | Ghế ngồi (trừ các loại thuộc nhóm 94.02), có hoặc không chuyển được th | Khe ở «Ghế ngồi (trừ các loại thuộc nhóm 94.02), có hoặc không chuyển được thành giường»; vd: dungChoXeCoDongCo «có», là bộ phận «không», tên «Miếng lót» | Q3 |
 | 984942 | Động cơ điện thuộc nhóm 85.01, trừ loại dùng cho các mặt hàng thuộc nh | Khe ở «Động cơ điện thuộc nhóm 85.01, trừ loại dùng cho các mặt hàng thuộc nhóm 84.15, »; vd: công suất «999.999», daPha «có», loaiDongDien «XOAY_CHIEU», tên «Động cơ vạn năng một chiều/xoay chiều» | Q3 |
+| 984943 | Pin và bộ pin | Cây lược mất một tầng: hai dòng .21 «Có thể tích ngoài không quá 300 cm3» / .29 «Loại khác» đúng ra nằm dưới tầng «pin không phải liti» nhưng biểu không ghi tên tầng, nên máy xếp ngang hàng với .10 «Bằng liti» ⇒ pin liti ≤ 300 cm3 bị coi là chồng. | Q3 |
 | **THIẾU KHOÁ TỪ VỰNG** | | | |
 | 151190 | Loại khác | Tầng «Các phần phân đoạn của dầu tinh chế» chia con (tầng không mã) theo THỂ RẮN / THỂ LỎNG; từ vựng chưa có khoá trạng thái rắn–lỏng. | khoá mới «thể rắn / thể lỏng» (dùng chung với 151329). |
 | 151329 | Loại khác | Tầng «Các phần phân đoạn của dầu… chưa tinh chế» chia con theo THỂ RẮN / THỂ LỎNG; từ vựng chưa có khoá trạng thái rắn–lỏng nên hàng chỉ ghi «phần phân đoạn» không vào con nào. | khoá mới «thể rắn / thể lỏng». |
@@ -143,6 +117,7 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | 870891 | Két nước làm mát và bộ phận của chúng | Tầng 8708919 «Bộ phận» nằm dưới phân nhóm «Két nước làm mát và bộ phận của chúng», tức bộ phận CỦA KÉT NƯỚC, nhưng spec ghi «là bộ phận» (của xe) ⇒ két nước thoả cả tầng 8708911 lẫn 8708919. | như 870895 (Claude làm). |
 | 870895 | Túi khí an toàn lắp với hệ thống bơm phồng; bộ phận của nó | Dòng .90 «Bộ phận» nằm dưới phân nhóm «Túi khí…; bộ phận của nó», tức bộ phận CỦA TÚI KHÍ, nhưng chữ của chính dòng chỉ có «Bộ phận» nên spec chỉ ghi «là bộ phận». Túi khí (cũng là bộ phận của xe) thoả cả .10 lẫn .90. Ngoài ra tên .10 quá dài, bộ đọc cắt ở chữ «lắp». | cho mục «Bộ phận» trơn trích tên tầng tổ tiên + luật «hàng không là bộ phận của chính nó» (Claude làm). |
 | **GIỚI HẠN BỘ MÁY** | | | |
+| 442199 | Loại khác | Phần chồng lấn đã gỡ (Q1, 07/11). Còn dòng .94 «Chuỗi hạt khác» chỉ loại .93 «Chuỗi hạt cầu nguyện»: hàng ghi chung «chuỗi hạt» thì không biết có phải chuỗi hạt cầu nguyện không (kết quả «chưa biết», lúc chạy hệ thống hỏi), nhưng cổng 2 đòi chắc chắn mới coi là tới được. | cổng 2 coi «chưa biết» ở phủ định anh em là tới được (lúc chạy vẫn hỏi) — Claude làm. |
 | 681140 | Chứa amiăng | Tầng 6811402 có vế mở «và các loại tương tự» (TUONG_TU) nên với vector tên «Gạch lát nền» cho kết quả CHƯA BIẾT ⇒ dòng .21 không tới được. | cổng 2 tính «tương tự = có» khi dựng vector tới dòng con (Claude làm). |
 | 842199 | Loại khác | Hai dòng .91/.94 dưới tầng «Loại khác» ghi mã nguyên văn; phủ định anh em ghi bằng tên chữ cho kết quả chưa biết nên cổng 2 không dựng được vector tới hai dòng. | như 842490. |
 | 842490 | Bộ phận | Tầng «Của súng phun và các thiết bị tương tự» ghi bằng CHỮ, dòng con ghi bằng MÃ (8424.20.11, 8424.20.21); máy chưa đổi tên↔mã ở phía điều kiện nên hàng ghi mã không tới được tầng. | bộ so giải tên→mã cho điều kiện (Claude làm, có đo vì đổi so lúc chạy). |
@@ -170,7 +145,9 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | #1144 | 840732, 850132, 850162, 850212 | Phạm vi theo ngưỡng ghi ở tên phân nhóm |
 | #1145 | 850432, 842489, 900659 | «Loại khác, <vế>» chỉ loại anh em đứng trước (thứ tự dòng) |
 | #1146 | 300420, 300490, 854449, 851779, 300449 | Hết chờ bảng tiền lệ; sửa khoá sai trục; vế «trừ»; đọc «hoặc tiêm» |
-| (đợt này) | 902129, 170290, 320890, 670290, 830629, 841590, 020760, 901310, 300410, 870892, 220300 | Sửa spec sót tên/vế; trục vật liệu qua HOẶC; vế «trừ loại thuộc …»; «Loại khác, kể cả …» là phần còn lại trần |
+| #1148 | 902129, 170290, 320890, 670290, 830629, 841590, 020760, 901310, 300410, 870892, 220300 | Sửa spec sót tên/vế; trục vật liệu qua HOẶC; vế «trừ loại thuộc …»; «Loại khác, kể cả …» là phần còn lại trần |
+
+| (Q1) | 140490, 271019, 370500, 392690, 442191, 480431, 481190, 481690, 482390, 640319, 640391, 640399, 640411, 650610, 721391, 721399, 741810, 741920, 741980, 760421, 848610, 850440, 851981, 852329, 854370 | Khai chồng lấn không có hàng thật (Q1) hoặc chồng thật kèm hàng; sửa trục, sửa spec sót tên/vế (271019 .72, 741980 .80) |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự

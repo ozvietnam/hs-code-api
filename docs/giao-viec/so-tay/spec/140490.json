@@ -72,8 +72,35 @@
     },
     {
       "ma": "140490",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm» (14049020) và «Bông gòn» (14049030) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: công dụng «công nghệ thuộc da», tên «Bông gòn») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "14049020",
+        "14049030"
+      ],
+      "truc": {
+        "14049020": "CONG_DUNG",
+        "14049030": "TEN_LOAI"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm» (14049020), «Bông gòn» (14049030)?",
+      "trich": {
+        "14049020": "Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm",
+        "14049030": "Bông gòn"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "14049020",
+            "14049030"
+          ],
+          "khongCoHangThat": "Bông gòn (xơ quả cây gòn, kapok) dùng làm vật liệu nhồi đệm; nguyên liệu thực vật dùng chủ yếu để thuộc da hoặc nhuộm là phần cây chứa tanin hoặc chất màu (vỏ, lá, quả). Không có bông gòn nào là loại dùng chủ yếu để thuộc da hoặc nhuộm."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

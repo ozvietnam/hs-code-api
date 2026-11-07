@@ -157,6 +157,15 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "84861010",
+        "84861040"
+      ],
+      "lyDo": "Không có hàng thật thoả cả hai (Q1, Claude 07/11/2026): \"Thiết bị làm nóng nhanh tấm bán dẫn mỏng\" ↔ \"Máy và thiết bị để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng mỏng đơn tinh thể thành các chip\" — thiết bị làm nóng nhanh tấm bán dẫn (RTP) xử lý nhiệt, còn máy cắt khối bán dẫn đơn tinh thể thành lớp/miếng là máy cắt cơ khí; không có thiết bị nào vừa là cái này vừa là cái kia."
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "84861020",
@@ -175,8 +184,8 @@
     },
     {
       "ma": "848610",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Thiết bị làm nóng nhanh tấm bán dẫn mỏng» (84861010) và «Máy và thiết bị để cắt khối bán dẫn đơn tinh thể thành các lớp, hoặc cưa miếng m» (84861040) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: công dụng «cắt khối bán dẫn đơn tinh thể thành các lớp», tên «Thiết bị làm nóng nhanh tấm bán dẫn mỏng») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): cặp dòng không có hàng thật thoả cả hai ⇒ chongLanVanBan kèm lý do. Lúc chạy hàng thoả cả hai ⇒ TRANH_CAP + câu hỏi, không tự chọn."
     }
   ]
 }

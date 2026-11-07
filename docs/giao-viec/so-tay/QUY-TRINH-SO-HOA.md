@@ -435,6 +435,9 @@ Phạm vi được rộng hơn tên (chỉ để lọc) nên cổng 5 không xé
 | "(trừ X)" trong tên dòng | điều kiện `chieu: "PHAI_KHONG"` với X nguyên văn | 170290 .30 "…(trừ mantoza)" |
 | Vật liệu ghi ở hai khoá khác nhau (chatLieu / kimLoaiCoBanKhac / vatLieuKhac), kể cả trong HOẶC | cứ ghi đúng khoá; máy tự coi là cùng trục vật liệu | 830629 "Bằng đồng hoặc chì" ↔ "Bằng niken" |
 
+Cặp chồng lấn KHÔNG có hàng thật thoả cả hai (Q1, GĐ đồng ý 07/11/2026): **thợ vẫn DỪNG** và ghi rõ cặp; chỉ Claude khai
+`viDuHang: [{cap, khongCoHangThat: "<lý do>"}]` (khác trục) hoặc `chongLanVanBan` lý do «Không có hàng thật thoả cả hai (Q1)…» (cùng trục).
+
 Soát trước khi ghi "chồng lấn giả": nhiều ca là spec **sót tên** (320890 .30 thiếu "Sơn") hoặc **sót vế** (170290 "trừ mantoza"),
 hoặc **sai trục** (670290 "Bằng vật liệu dệt" ghi thành tên hàng; 854449 tầng khẳng định ghi `congDung`, tầng phủ định ghi
 `dungCho`). Danh sách PN6 DỪNG và lý do: `docs/giao-viec/so-tay/dung-khong-phu-kin.md`.

@@ -102,6 +102,43 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "65061020",
+        "65061030",
+        "65061040"
+      ],
+      "truc": {
+        "65061020": "TEN_LOAI",
+        "65061030": "TEN_LOAI",
+        "65061040": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Hàng này thuộc nhánh nào: «Mũ bảo hộ công nghiệp và mũ bảo hiểm cho lính cứu hỏa, trừ m» (65061020), «Mũ bảo hộ bằng thép» (65061030), «Mũ dùng trong chơi water-polo» (65061040)?",
+      "trich": {
+        "65061020": "Mũ bảo hộ công nghiệp và mũ bảo hiểm cho lính cứu hỏa, trừ mũ bảo hộ bằng thép",
+        "65061030": "Mũ bảo hộ bằng thép",
+        "65061040": "Mũ dùng trong chơi water-polo"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "65061020",
+            "65061040"
+          ],
+          "khongCoHangThat": "Mũ chơi water-polo là mũ vải có tai bảo vệ, không phải mũ bảo hộ công nghiệp hay mũ lính cứu hỏa."
+        },
+        {
+          "cap": [
+            "65061030",
+            "65061040"
+          ],
+          "khongCoHangThat": "Mũ chơi water-polo là mũ vải, không phải mũ bảo hộ bằng thép."
+        }
+      ],
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "65061010",
@@ -136,8 +173,8 @@
     },
     {
       "ma": "650610",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Mũ bảo hộ công nghiệp và mũ bảo hiểm cho lính cứu hỏa, trừ mũ bảo hộ bằng thép» (65061020) và «Mũ dùng trong chơi water-polo» (65061040) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «chơi water-polo», tên «Mũ bảo hộ công nghiệp») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (Q1, #1109): các cặp nhánh khác trục không có hàng thật thoả cả hai ⇒ chongLanTruc + khongCoHangThat (lý do từng cặp trong viDuHang). Lúc chạy hàng thoả cả hai ⇒ hỏi câu phân biệt."
     }
   ]
 }

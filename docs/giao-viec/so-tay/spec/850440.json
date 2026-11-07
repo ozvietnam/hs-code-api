@@ -112,8 +112,52 @@
     },
     {
       "ma": "850440",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Bộ nguồn cấp điện liên tục (UPS) (SEN)» (85044011) và «Máy nạp ắc qui, pin có công suất danh định trên 100 kVA» (85044020) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: congSuatBieuKien «100.0001», dùng cho «máy xử lý dữ liệu tự động», loaiBienDoiTinhDien «UPS», tên «Máy nạp ắc qui») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): chồng lấn THẬT giữa tầng «Dùng cho máy xử lý dữ liệu… và thiết bị viễn thông» và .20 (máy nạp > 100 kVA), .40 (bộ nghịch lưu) — có hàng thật (máy nạp nguồn viễn thông, bộ nghịch lưu cho máy chủ, máy nạp kiêm nghịch lưu) ⇒ chongLanTruc kèm hàng ví dụ; lúc chạy hệ thống hỏi."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "8504401",
+        "85044020",
+        "85044040"
+      ],
+      "truc": {
+        "8504401": "CONG_DUNG",
+        "85044020": "TEN_LOAI",
+        "85044040": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Hàng này dùng cho máy xử lý dữ liệu tự động hoặc thiết bị viễn thông (tầng 8504401), hay là máy nạp ắc qui trên 100 kVA (85044020), hay là bộ nghịch lưu (85044040)?",
+      "trich": {
+        "8504401": "Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông",
+        "85044020": "Máy nạp ắc qui, pin có công suất danh định trên 100 kVA",
+        "85044040": "Bộ nghịch lưu"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "8504401",
+            "85044020"
+          ],
+          "hang": "Máy nạp ắc qui, công suất danh định 120 kVA, dùng cho thiết bị viễn thông"
+        },
+        {
+          "cap": [
+            "8504401",
+            "85044040"
+          ],
+          "hang": "Bộ nghịch lưu 5 kVA dùng cho các máy xử lý dữ liệu tự động"
+        },
+        {
+          "cap": [
+            "85044020",
+            "85044040"
+          ],
+          "hang": "Máy nạp ắc qui kiêm bộ nghịch lưu công suất danh định 150 kVA"
+        }
+      ],
+      "phanXu": null
     }
   ]
 }
