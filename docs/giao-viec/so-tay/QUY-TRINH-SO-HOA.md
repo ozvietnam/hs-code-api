@@ -447,6 +447,13 @@ tự loại trừ (tấm phổ dụng phải "thẳng", dạng cuộn để cán
 Tầng «Chưa lắp ráp hoàn chỉnh» / «Đã lắp ráp hoàn chỉnh» đứng cạnh tầng anh em «Bộ phận» là chính hàng hoàn chỉnh (lắp hoặc
 chưa lắp) ⇒ ghi thêm `laBoPhan KHONG` (840820, 870850); thiếu vế này máy coi «cầu chưa lắp ráp» chồng với «bộ phận của cầu».
 
+**Chương 98** (07/11/2026, GĐ chốt Q3): Chương 98 là lớp mã THAY THẾ — mỗi dòng 98 có cột mã tương ứng ở 97 chương trong biểu
+Tổng cục, không có phần còn lại. Hàng trong tên nhóm 98xx mà không vào dòng 98 nào thì khai mã tương ứng ở 97 chương ⇒ cổng 1 chỉ
+cảnh báo `cong1-chuong98-ngoai-dong`, không cần khai phạm vi phân nhóm. Các lỗi khác (chồng lấn, tầng, liệt kê) vẫn chặn như mọi chương.
+
+**Máy in kết hợp 8443.31** (GĐ chốt 07/11/2026): biểu chia theo TỔ HỢP chức năng điểm danh đủ (khoá `toHopChucNangMayIn`) —
+«Máy in-copy» = chỉ in + copy; in-copy-scan không fax ⇒ .99 «Loại khác»; PC-Fax không tính là chức năng fax.
+
 Soát trước khi ghi "chồng lấn giả": nhiều ca là spec **sót tên** (320890 .30 thiếu "Sơn") hoặc **sót vế** (170290 "trừ mantoza"),
 hoặc **sai trục** (670290 "Bằng vật liệu dệt" ghi thành tên hàng; 854449 tầng khẳng định ghi `congDung`, tầng phủ định ghi
 `dungCho`). Danh sách PN6 DỪNG và lý do: `docs/giao-viec/so-tay/dung-khong-phu-kin.md`.

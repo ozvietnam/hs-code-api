@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
 const require = createRequire(import.meta.url);
-const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
+const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E, THU_MUC_DONG_CUNG_BF788F5 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 let pass = 0; let fail = 0;
@@ -158,6 +158,28 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   check('15e cachBienDoiDau: tái este hoá ≠ este hoá liên hợp', doc('cachBienDoiDau', 'Đã tái este hóa, trừ của cọ dầu') === 'TAI_ESTE_HOA' && doc('cachBienDoiDau', 'Đã este hóa liên hợp') === 'ESTE_HOA_LIEN_HOP' && doc('cachBienDoiDau', 'Elaiđin hóa, loại khác') === 'ELAIDIN_HOA');
   check('15f nhomPolyme: polypropylen ⇒ trùng hợp, nylon ⇒ trùng ngưng/tái sắp xếp, xenlulo acetat ⇒ không đọc', doc('nhomPolyme', 'Thanh nhựa polypropylen') === 'TRUNG_HOP' && doc('nhomPolyme', 'Sợi monofilament nylon') === 'TRUNG_NGUNG_HOAC_TAI_SAP_XEP' && doc('nhomPolyme', 'Thanh xenlulo acetat') === undefined);
   check('15g dangSanPhamNhom1518: «thổi khô» / «hỗn hợp … không ăn được»', doc('dangSanPhamNhom1518', 'dầu hạt lanh đã thổi khô') === 'DA_BIEN_DOI_HOA_HOC' && doc('dangSanPhamNhom1518', 'Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ') === 'HON_HOP_KHONG_AN_DUOC');
+}
+{ // 16. Lô 5 (07/11/2026): Chương 98 là lớp mã thay thế; tên nhóm 98xx từ biểu Tổng cục; máy in kết hợp theo bộ chức năng
+  const T = require('../lib/hs-tree.js'); const TV = require('../lib/tu-vung.js');
+  check('16a cây có tên nhóm 9810 nguyên văn biểu Tổng cục', T.nodeOf('9810')?.tenVi === 'Sắt hoặc thép để sản xuất tanh lốp xe' && /^bieu-thue@/.test(T.nodeOf('9810')?.tenNguon || ''), T.nodeOf('9810'));
+  check('16b nhóm ngoài Chương 98 giữ tên chú giải (không bị tên dòng mã đè)', T.nodeOf('8443')?.tenVi && !T.nodeOf('8443')?.tenNguon, T.nodeOf('8443'));
+  const r = C.kiemRanhGioi('981000', nhapDongCung('981000', THU_MUC_DONG_CUNG_BF788F5));
+  check('16c 981000: hàng ngoài hai dòng 98 ⇒ cảnh báo cong1-chuong98-ngoai-dong, không còn cong1-khong-phu-kin', !r.loi.some((l) => l.startsWith('cong1-khong-phu-kin')) && r.canhBao.some((c) => c.startsWith('cong1-chuong98-ngoai-dong:')), r.loi);
+  const doc = (t) => TV.docGiaTri('toHopChucNangMayIn', t).giaTri;
+  check('16d máy in-copy-scan không fax ⇒ IN_COPY_SCAN (GĐ: .99); PC-Fax không tính fax; đủ bốn ⇒ IN_COPY_SCAN_FAX; in-copy-fax ⇒ IN_COPY_FAX', doc('Máy in đa năng in/copy/scan, in phun màu') === 'IN_COPY_SCAN' && doc('Máy in laser in, copy, scan, PC-Fax') === 'IN_COPY_SCAN' && doc('Máy in laser in, copy, scan, fax') === 'IN_COPY_SCAN_FAX' && doc('Máy in-copy-fax kết hợp') === 'IN_COPY_FAX' && doc('Máy in-copy, in bằng công nghệ in phun') === 'IN_COPY');
+  { const DK = require('../lib/dieu-kien-so.js'); const b = nhapDongCung('844331', THU_MUC_DONG_CUNG_BF788F5);
+    const H = (v) => ({ fact: 'toHopChucNangMayIn', op: 'TRONG', value: [v] }); const nutB = (id) => b.dieuKienNut.find((m) => m.id === id);
+    nutB('8443311').dieuKienSo = [H('IN_COPY'), { fact: 'congNgheIn', op: 'TRONG', value: ['IN_PHUN'] }];
+    nutB('8443312').dieuKienSo = [H('IN_COPY'), { fact: 'congNgheIn', op: 'TRONG', value: ['LASER'] }];
+    nutB('8443313').dieuKienSo = [H('IN_COPY_FAX')];
+    b.dong8.find((m) => m.hs === '84433191').dieuKienSo = [H('IN_COPY_SCAN_FAX')];
+    check('16g 844331 ghi theo tổ hợp chức năng ⇒ xanh', C.kiemRanhGioi('844331', b).hopLe === true, C.kiemRanhGioi('844331', b).loi);
+    const soTay = C.soTayTuNhap('844331', b);
+    const r = DK.doiChieuPhanNhom('844331', [{ fact: 'toHopChucNangMayIn', giaTri: 'IN_COPY_SCAN', nguon: 'KHACH', trangThai: 'DA_CO' }, { fact: 'congNgheIn', giaTri: 'IN_PHUN', nguon: 'KHACH', trangThai: 'DA_CO' }], { soTay });
+    const co = r.dong.filter((d) => d.ketQua === 'CO').map((d) => d.hs);
+    check('16f máy in-copy-scan in phun, không fax ⇒ chỉ 84433199', co.length === 1 && co[0] === '84433199', r.dong.filter((d) => d.ketQua !== 'MAU_THUAN')); }
+  const b = nhapDongCung('844331', THU_MUC_DONG_CUNG_BF788F5);
+  check('16e 844331 bản cũ (tầng theo công nghệ in ↔ tầng in-copy-fax theo tên) chồng lấn', C.kiemRanhGioi('844331', b).loi.some((l) => l.startsWith('cong2-chong-lan')));
 }
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

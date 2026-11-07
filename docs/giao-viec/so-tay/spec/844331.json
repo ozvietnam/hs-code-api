@@ -48,9 +48,11 @@
     "84433191": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Máy in-copy-scan-fax kết hợp"
+          "fact": "toHopChucNangMayIn",
+          "op": "TRONG",
+          "value": [
+            "IN_COPY_SCAN_FAX"
+          ]
         }
       ]
     },
@@ -61,6 +63,13 @@
   "dieuKienNut": {
     "8443311": {
       "dieuKienSo": [
+        {
+          "fact": "toHopChucNangMayIn",
+          "op": "TRONG",
+          "value": [
+            "IN_COPY"
+          ]
+        },
         {
           "fact": "congNgheIn",
           "op": "TRONG",
@@ -73,6 +82,13 @@
     "8443312": {
       "dieuKienSo": [
         {
+          "fact": "toHopChucNangMayIn",
+          "op": "TRONG",
+          "value": [
+            "IN_COPY"
+          ]
+        },
+        {
           "fact": "congNgheIn",
           "op": "TRONG",
           "value": [
@@ -84,9 +100,11 @@
     "8443313": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Máy in-copy-fax kết hợp"
+          "fact": "toHopChucNangMayIn",
+          "op": "TRONG",
+          "value": [
+            "IN_COPY_FAX"
+          ]
         }
       ]
     }
@@ -114,8 +132,8 @@
     },
     {
       "ma": "844331",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Tầng 8443313 «Máy in-copy-fax kết hợp» (tên) chồng với tầng 8443311/8443312 (theo công nghệ in); dòng .91 «Máy in-copy-scan-fax kết hợp» không tới được vì tên tiêu đề là tiền tố tên dòng. CẦN: Claude soát lại cách ghi tầng + sửa cổng 2 (tên tiền tố). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "GĐ chốt 07/11/2026 (#1109): biểu chia theo TỔ HỢP chức năng điểm danh đủ — tieuDe.8443311/8443312 \"Máy in-copy…\" = chỉ in + copy (theo công nghệ in), tieuDe.8443313 \"Máy in-copy-fax kết hợp\" = có fax không scan, tax.84433191 \"Máy in-copy-scan-fax kết hợp\" = đủ bốn chức năng. Máy in-copy-scan KHÔNG fax không trúng dòng nào điểm danh ⇒ .99 \"Loại khác\". PC-Fax không tính là chức năng fax (chỉ mô-đun fax thật mới sang .91). Khoá mới toHopChucNangMayIn (IN_COPY / IN_COPY_SCAN / IN_COPY_FAX / IN_COPY_SCAN_FAX). Chưa có tiền lệ nội bộ cho .91/.99 — khuyến nghị theo cấu trúc tên dòng."
     }
   ]
 }

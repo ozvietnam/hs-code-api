@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * BỔ SUNG `tenMa` vào data/bieu-thue/<phien-ban>/ten-nut.json từ bieu-chinh.jsonl.gz ĐÃ TRÍCH (không cần tệp Excel gốc) — #725 lỗi 29.
- * `tenMa` = tên NGUYÊN VĂN của phân nhóm 6 số theo chính dòng có mã 6 số của sheet chính (lib/bieu-thue.js#tenTheoMa).
+ * `tenMa` = tên NGUYÊN VĂN của phân nhóm 6 số (và nhóm 4 số — #1109, Chương 98) theo chính dòng có mã của sheet chính (lib/bieu-thue.js#tenTheoMa).
  * Bản trích mới (scripts/bieu-thue/trich.mjs) đã tự ghi `tenMa`; script này chỉ để nâng bản đã trích trước đó.
  *   node scripts/bieu-thue/bo-sung-ten-ma.mjs --phien-ban=2026.04.05 [--kho]   (--kho: chỉ in số liệu, không ghi)
  */
@@ -18,7 +18,7 @@ const dong = B.docJsonlGz(path.join(dir, 'bieu-chinh.jsonl.gz')).filter((d) => d
 const tenMa = B.tenTheoMa(dong);
 const tepTen = path.join(dir, 'ten-nut.json');
 const tn = JSON.parse(fs.readFileSync(tepTen, 'utf8'));
-console.log(`biểu ${ver} sheet ${tk.sheetChinh}: ${Object.keys(tenMa).length} phân nhóm 6 số có tên theo dòng mã${tn.tenMa ? ` (đang có ${Object.keys(tn.tenMa).length})` : ''}`);
+console.log(`biểu ${ver} sheet ${tk.sheetChinh}: ${Object.keys(tenMa).length} mã 4/6 số có tên theo dòng mã${tn.tenMa ? ` (đang có ${Object.keys(tn.tenMa).length})` : ''}`);
 if (process.argv.includes('--kho')) process.exit(0);
 fs.writeFileSync(tepTen, JSON.stringify({ ...tn, tenMa }, null, 1));
 console.log(`Đã ghi ${tepTen}. Chạy tiếp: node scripts/bieu-thue/kiem.mjs --phien-ban=${ver}`);
