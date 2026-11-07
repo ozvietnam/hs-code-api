@@ -1,7 +1,7 @@
 {
  "phienBan": "hieu-chinh-tien-le@1",
  "bieuThue": "2026.04.05",
- "ngay": "2026-11-06",
+ "ngay": "2026-11-07",
  "soanBoi": {
   "vai": "AI",
   "phien": "https://claude.ai/code/session_01EtSm51cdfav5ye3fb1Nq1q#soan-l1-4b"
@@ -13,14 +13,15 @@
   "ghiChu là chữ tự do của người (không phải phân xử, không đổi loại).",
   "KHONG_LECH là mở rộng của plan: tín hiệu máy nghi của lat-1 (LK_TRUNG_TEN_ANH_EM, LK_TRUNG_VAT_LIEU_ANH_EM, TIEN_LE_HAI_DONG) đã soát và hàng trong TB-TCHQ không thoả chữ của dòng anh em — câu trích hai bên là bằng chứng. Tầng hồ sơ (L1-5b) bỏ qua loại này.",
   "Đọc cho L1-5b: mục có dieuKien khớp dữ kiện hàng xét trước mục cùng ranh giới không có dieuKien (vd 854442-01 trước 854442-02).",
-  "Mở rộng 06/11/2026: bảng nhận mục của PN6 NGOÀI 50 phân nhóm lát 1 khi tín hiệu máy (lib/ho-so/lat-1.js#canHieuChinhTienLeTuDuLieu) bật cờ — cổng soạn ranh giới DỪNG theo đúng tín hiệu đó cho mọi PN6, không mở bảng thì mã lát 2 có tiền lệ bị DỪNG vĩnh viễn. Ca đầu: 520859 (lát 2)."
+  "Mở rộng 06/11/2026: bảng nhận mục của PN6 NGOÀI 50 phân nhóm lát 1 khi tín hiệu máy (lib/ho-so/lat-1.js#canHieuChinhTienLeTuDuLieu) bật cờ — cổng soạn ranh giới DỪNG theo đúng tín hiệu đó cho mọi PN6, không mở bảng thì mã lát 2 có tiền lệ bị DỪNG vĩnh viễn. Ca đầu: 520859 (lát 2).",
+  "07/11/2026 (CEO giao chốt theo phân tích, phiên https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU): 42 mục LECH_CHUA_PHAN_XU được phân tích nguyên nhân từng ca (docs/giao-viec/so-tay/tien-le-lech/). 37 mục chuyển KHONG_LECH; 5 mục chưa đủ căn cứ giữ LECH_CHUA_PHAN_XU (940542-01, 271019-02, 190590-01, 690721-02, 721491-02)."
  ],
  "muc": [
   {
    "id": "392690-01",
    "maHs": "39269099",
    "dongChuBieu": "39269093",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "dieuKien": {
     "fact": "tenLoai",
     "op": "TEN_LOAI",
@@ -43,9 +44,10 @@
      "trich": "Khóa nhựa được thiết kế để buộc chặt hai đầu rời được khóa trong khung và mở khóa. Chúng thường được sử dụng trong dây đai an toàn ghế ngồi và túi."
     }
    ],
-   "lyDo": "Chữ dòng 3926.90.93 \"Khóa, …\" đọc thuần bao cả khóa hãm nhựa (chốt khóa cốp xe máy điện); 99/TB-TCHQ xếp 3926.90.99. SEN 3926.90.93 mô tả \"khóa\" là loại buộc chặt hai đầu rời (dây đai an toàn, túi) — nghiêng về phía TB-TCHQ, nhưng chỉ có một TB-TCHQ và chưa ai phân xử nên không tự chọn bên. Hai dòng cùng MFN 12 %.",
+   "lyDo": "Chữ Việt dòng 3926.90.93 là \"Khóa, khóa điều chỉnh, móc treo và nút chặn dây\", nghe như bao mọi thứ gọi là \"khóa\". Nhưng bản gốc tiếng Anh (AHTN) là \"Buckles, adjusters, hooks and cord stoppers\" — \"buckle\" là khóa cài dây/khóa đai (như khóa dây an toàn, khóa quai túi, ba lô), không phải then cài, chốt hãm hay ổ khóa. SEN 2022 của chính dòng này định nghĩa \"khóa nhựa được thiết kế để buộc chặt hai đầu rời được khóa trong khung và mở khóa ... thường được sử dụng trong dây đai an toàn ghế ngồi và túi\". Hàng trong 99/TB-TCHQ là chốt hãm lắp vào hộc mở và cốp xe máy điện — không nối hai đầu dây/đai rời nên không phải \"buckle\", rơi về dòng \"- - - Loại khác\" 3926.90.99. Hải quan nhất quán: cùng ngày 06/01/2023 các TB 101 (chốt cài nhựa cốp xe) và 102 (vít nhựa làm chốt cốp) cũng xếp 3926.90.99, còn nhóm nút vặn điều chỉnh dây giày (khớp \"adjusters\") được xếp 3926.90.93. TB ban hành sau ngày AHTN 2022 có hiệu lực (30/12/2022) và dòng 3926.90.93 đã có trong SEN 2022, nên không phải vấn đề phiên bản biểu. Hai dòng cùng 12% nên không lệch thuế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/392690-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "392690-02",
@@ -283,7 +285,7 @@
    "id": "853710-01",
    "maHs": "85371099",
    "dongChuBieu": "85371012",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "dieuKien": [
     {
      "fact": "tenLoai",
@@ -317,19 +319,19 @@
      "trich": "Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)"
     }
    ],
-   "lyDo": "6326/TB-TCHQ xếp bản mạch điều khiển có bộ xử lý lập trình MSP430FR vào 8537.10.99 (nhánh \"Loại khác\", MFN 15 %), trong khi chữ 8537.10.12 \"Bảng điều khiển có trang bị bộ xử lý lập trình\" (MFN 5 %) bao đúng đặc điểm đó, và 103/TB-TCHQ (màn hình HMI có bộ xử lý lập trình) cùng 488, 489/TB-TCHQ xếp .12. Có thể điểm phân biệt là \"bản mạch\" (PCBA) không phải \"bảng điều khiển\", nhưng TB-TCHQ không nói ⇒ chưa phân xử. Chênh 10 điểm MFN.",
+   "lyDo": "Dòng 8537.10.12 \"Bảng điều khiển có trang bị bộ xử lý lập trình\" nằm dưới tầng không mã 8537101 \"- - Bảng chuyển mạch và bảng điều khiển\" (Switchboards and control panels). 6326/TB-TCHQ không xếp vào tầng này mà vào tầng song song \"- - Loại khác\" (8537109) rồi dòng 8537.10.99 — tức Hải quan coi một PCBA trần chưa phải là \"bảng chuyển mạch/bảng điều khiển\", dù chính TB ghi hàng \"có trang bị bộ xử lý lập trình MSP430FR\". Như vậy điều kiện \"có bộ xử lý lập trình\" chưa đủ: phải qua được tầng cha \"control panel\" trước. SEN 8537.10.12 cũng thu hẹp dòng này về bảng điều khiển cho bộ điều khiển cơ điện tử tự động (dây chuyền nhà máy, hệ thống giải trí, chiếu sáng cố định), nhiều đầu vào/ra, chịu nhiễu, rung, va chạm; các TB xếp .12 đều là bảng có giao diện điều khiển (HMI Siemens 103/TB-TCHQ, bảng nút bấm 488, 489/TB-TCHQ, bo thang máy có LCD + bàn phím đã nạp chương trình 8413/TB-TCHQ). Tuy nhiên Hải quan không nhất quán ở tầng cha: các PCBA/module tương tự năm 2021–2023 (1159, 4040, 4800, 3346, 4978/TB-TCHQ) lại được xếp trong tầng \"Bảng chuyển mạch và bảng điều khiển\" ở 8537.10.19 (cùng 15%), còn từ cuối 2024 (6326/TB-TCHQ, 620/TB-TCHQ PLC, 14061/TB-CHQ) chuyển sang 8537.10.99. Thuế suất .19 và .99 như nhau (15%) nên về tiền thuế TB nhất quán là KHÔNG hưởng 5% của .12; lệch chỉ ở dòng nào trong hai dòng 15%. TB không nêu lý do; mô tả đầy đủ (công dụng của PM-315C-01) chưa xem được. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/853710-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "ghiChu": "CEO 30/10/2026: chưa chốt, hỏi lại người khai",
    "factPhanBiet": [
     "coBoXuLyLapTrinh"
    ],
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "853710-02",
    "maHs": "85371019",
    "dongChuBieu": "85371012",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "dieuKien": {
     "fact": "tenLoai",
     "op": "TEN_LOAI",
@@ -361,19 +363,19 @@
      "trich": "Bảng điều khiển có trang bị bộ xử lý lập trình (SEN)"
     }
    ],
-   "lyDo": "4040/TB-TCHQ (bảng mạch điều khiển máy lọc không khí, có vi mạch điều khiển tích hợp bluetooth, chưa ghi dữ liệu điều khiển) và 1159/TB-TCHQ (bản mạch đồng hồ thông minh, chưa ghi phần mềm điều khiển) xếp 8537.10.19 \"Loại khác\" (MFN 15 %), không phải .12 \"có trang bị bộ xử lý lập trình\" (MFN 5 %). Lệch hay không tuỳ câu hỏi chữ biểu không trả lời: vi mạch điều khiển chưa nạp chương trình có tính là \"bộ xử lý lập trình\" không (tu-vung@1 đọc \"vi điều khiển\" là có). Hai TB-TCHQ cùng chiều nhưng bản thân điểm lệch chưa chắc ⇒ không nâng TIEN_LE; chưa phân xử.",
+   "lyDo": "Cả hai TB đều đặt hàng vào đúng tầng \"- - Bảng chuyển mạch và bảng điều khiển (control panel)\" nhưng dừng ở dòng \"Loại khác\" 8537.10.19 chứ không vào .12 \"Bảng điều khiển có trang bị bộ xử lý lập trình\". Điểm chung của hai hàng là ở thời điểm nhập khẩu bo mạch CHƯA được nạp chương trình: 4040/TB-TCHQ ghi \"bảng mạch chưa trải qua quá trình ghi dữ liệu điều khiển\", 1159/TB-TCHQ ghi \"chưa được ghi phần mềm điều khiển ở công đoạn này\". Ngược lại, các TB xếp .12 đều là bảng đã hoạt động như bảng điều khiển có chương trình: bo thang máy 8413/TB-TCHQ có LCD, bàn phím và đã \"nạp chương trình vào chíp vi xử lý\"; HMI Siemens 103/TB-TCHQ; bảng nút bấm 488, 489/TB-TCHQ. SEN của .12 cũng mô tả loại bảng điều khiển cho bộ điều khiển cơ điện tử tự động, nhiều đầu vào/ra, chịu nhiễu, rung, va chạm, \"chương trình ... thường được lưu trữ trong các bộ nhớ được duy trì bằng ắc qui hoặc bộ nhớ không xóa\" — bo mạch đồng hồ hay bo mạch máy lọc khẩu trang không giống mô tả đó. Vì vậy có \"vi mạch điều khiển\" chưa đủ để vào .12; máy đọc \"vi điều khiển = bộ xử lý lập trình\" là thiếu điều kiện. Hai TB không ghi lý do thành chữ, nên đây là suy ra từ chi tiết hàng hoá và các TB đối chứng, không phải lời Hải quan. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/853710-02.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "ghiChu": "CEO 30/10/2026: chưa chốt, hỏi lại người khai",
    "factPhanBiet": [
     "daNapChuongTrinh"
    ],
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "853710-03",
    "maHs": "85371099",
    "dongChuBieu": "85371019",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "dieuKien": {
     "fact": "tenLoai",
     "op": "TEN_LOAI",
@@ -397,10 +399,10 @@
      "trich": "Bảng chuyển mạch và bảng điều khiển"
     }
    ],
-   "lyDo": "Hai tiền lệ trái nhau cho cùng loại hàng: 4800/TB-TCHQ (2021) xếp module điều khiển đèn LED vào nhánh \"Bảng chuyển mạch và bảng điều khiển\" 8537.10.19; 14061/TB-CHQ (2026) xếp module cùng tên vào nhánh \"Loại khác\" 8537.10.99. Chữ biểu không nói module điều khiển có là \"bảng điều khiển\" không. Hai dòng cùng MFN 15 % — không chênh thuế, chỉ cần chọn dòng cho nhất quán.",
+   "lyDo": "Hai dòng chỉ khác ở tầng không mã: 8537.10.19 nằm dưới \"- - Bảng chuyển mạch và bảng điều khiển\" (Switchboards and control panels), còn 8537.10.99 nằm dưới \"- - Loại khác\". Năm 2021, 4800/TB-TCHQ xếp module điều khiển chiếu sáng LED (ký hiệu LMU22BWN00_KGN, điều khiển qua wifi/bluetooth, có 01 công tắc) vào tầng \"bảng điều khiển\" 8537.10.19; năm 2026, 14061/TB-CHQ xếp module cùng tên, cùng dòng mã hàng của cùng hãng (Part No LMU11PNN00/KGN, Solum, dạng như USB, MCU nhận PWM từ dimmer rồi gửi lệnh UART cho LED driver) vào tầng \"Loại khác\" 8537.10.99. Chữ biểu không định nghĩa \"control panel\", không có SEN cho .19/.99, và cả hai TB đều không nêu lý do. Khác biệt duy nhất thấy được là module 2021 có công tắc và giao tiếp không dây, module 2026 không ghi có công tắc — chưa đủ để coi là tiêu chí. Thực tế cho thấy từ cuối 2024 Hải quan có xu hướng đưa PCBA/module trần vào \"Loại khác\" (6326/TB-TCHQ, 620/TB-TCHQ, 14061/TB-CHQ), trong khi 2021–2023 đưa vào \"bảng điều khiển\" (.19). Không chênh thuế nên rủi ro chủ yếu là sai mã khai báo, không phải tiền thuế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/853710-03.json (nhóm E: Còn mở, cần anh hoặc chuyên gia quyết).",
    "duyetBoi": null,
-   "ghiChu": "CEO 30/10/2026: chưa chốt, hỏi lại người khai",
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "848120-01",
@@ -555,7 +557,7 @@
    "id": "848190-01",
    "maHs": "84819090",
    "dongChuBieu": "84819023",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "dieuKien": {
     "fact": "dungCho",
     "op": "CONG_DUNG",
@@ -583,9 +585,10 @@
      "trich": "Thân, loại khác"
     }
    ],
-   "lyDo": "4006/TB-TCHQ gọi hàng là \"thân van\" của van điều khiển khí nạp động cơ ô tô và xếp 8481.90.90 \"Loại khác\" (MFN 0 %); chữ .23 \"Thân, loại khác\" (MFN 3 %) bao \"thân van\" NẾU van có đường kính trong ≤ 25 mm (tiêu đề 8481902). TB-TCHQ không ghi đường kính trong của van và chuỗi kết luận bỏ qua tiêu đề 8481902 ⇒ không xác định được là khớp hay lệch chữ biểu. (Bản tóm tắt cộng đồng ghi lá van 35×55 mm, gợi ý > 25 mm, tức khớp — nhưng không phải nguyên văn TB-TCHQ.) Chưa phân xử.",
+   "lyDo": "Máy bắt chữ \"Thân van\" trong tên hàng của 4006/TB-TCHQ rồi ghép vào dòng 8481.90.23 \"Thân, loại khác\". Nhưng \"thân\" ở dòng này là bản Anh \"Bodies\" — tức vỏ/thân đúc chứa dòng chảy của van; còn hàng thực tế là một thanh thép SUS303 đặc dài 235 mm gắn 4 lá nhựa Polyamide — tức trục và cánh đóng/mở (bộ phận chuyển động), không phải vỏ van. Doanh nghiệp gọi nôm là \"thân van\", nên chữ Việt \"Thân\" dễ làm máy hiểu lầm. Thêm nữa, cả nhóm dòng .21–.29 nằm dưới tầng không mã 8481902 \"Dùng cho vòi, van ... có đường kính trong từ 25 mm trở xuống\"; lá van của hàng này rộng khoảng 35×55 mm (3 lá) và 35×65 mm (1 lá) theo bản tóm tắt, tức cửa khí nạp lớn hơn 25 mm, nên hàng không thuộc tầng cha này. Hàng cũng không phải vỏ van cổng (.10) hay bộ phận van săm lốp (.3x, .4x), nên còn lại đúng dòng \"- - Loại khác\" 8481.90.90. Hải quan nhất quán: 5052/TB-TCHQ (cùng trục SUS303, chưa gắn lá) cũng xếp 8481.90.90. TB xếp có lợi hơn cho doanh nghiệp (0% so với 3%). Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/848190-01.json (nhóm C: Máy đọc nhầm hàng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "850110-01",
@@ -663,15 +666,15 @@
      "trich": "Đèn tín hiệu không nhấp nháy dùng cho sân bay; đèn dùng cho phương tiện giao thông đường sắt, đầu máy, tàu thủy, phương tiện bay, hoặc hải đăng, bằng kim loại cơ bản"
     }
    ],
-   "ghiChu": "Vế B của .30 (đèn dùng cho tàu thủy, bằng KLCB — precedent có khung nhôm) ôm được mặt hàng về mặt chữ, nhưng TCHQ xếp .60 (20%). Chưa phân xử — người soát L1-4b quyết theo秩 tự SEN/chú giải (đèn dùng CHO tàu ≠ đèn trang bị BÊN tàu). Sinh từ issue #665, phiên soát #659 đợt 2.",
-   "lyDo": "Vế B của .30 (đèn dùng cho tàu thủy, bằng kim loại cơ bản — precedent có khung nhôm) ôm được mặt hàng theo chữ, nhưng 6132/TB-TCHQ kết luận 94054260 (chiếu sáng bên ngoài). Chưa phân xử: cần người duyệt cân \"đèn dùng CHO tàu\" (trang bị chạy tàu) với \"đèn dùng đánh bắt trên tàu\". Chưa ai phân xử nên giữ LECH_CHUA_PHAN_XU, không ghi NGUOI_DUYET.",
-   "nguonLoai": "AI_DA_KIEM"
+   "lyDo": "Dòng 9405.42.30 có chữ \"đèn dùng cho ... tàu thủy ..., bằng kim loại cơ bản\" (Anh: \"lamps for railway rolling stock, locomotives, aircraft, ships or lighthouses, of base metal\"), nên đọc thuần thì một bộ đèn \"dùng cho tàu đánh bắt xa bờ\" có khung nhôm như có vẻ khớp. 6132/TB-TCHQ lại xếp 9405.42.60 \"Loại chiếu sáng bên ngoài khác\" mà không nêu lý do. Có hai cách giải thích hợp lý nhưng chưa có văn bản nào xác nhận: (1) theo cách hiểu thuật ngữ — cụm \"lamps for ... ships\" đứng cùng đèn hiệu sân bay, đèn tàu hoả, máy bay, hải đăng, tức là đèn phục vụ chính việc vận hành/báo hiệu của phương tiện (đèn hành trình, đèn lồng tàu), còn đèn công suất 1000 W treo trên tàu cá (loại thường gọi là đèn dụ cá/câu mực — đây là suy luận từ công suất, IP68, \"tàu đánh bắt xa bờ\"; đoạn TB đọc được không ghi công dụng này) là đèn phục vụ việc đánh bắt, chiếu sáng ra mặt biển nên Hải quan coi là chiếu sáng bên ngoài; (2) điều kiện \"bằng kim loại cơ bản\" — TB chỉ ghi \"Khung nhôm tản nhiệt; vỏ đèn\" mà không ghi vỏ bằng gì, nếu vỏ/kính chính bằng vật liệu khác thì hàng không đạt vế \"of base metal\". Không có SEN cho 9405.42.30/.60, không có TB nào khác cùng phân nhóm để đối chiếu, và toàn văn TB không mở được. Chênh thuế lớn (15 điểm %), nên chưa nên dùng TB này làm luật chung khi chưa rõ lý do. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/940542-01.json (nhóm E: Còn mở, cần anh hoặc chuyên gia quyết).",
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: ca này chưa đủ căn cứ (TB không nêu lý do / chưa đọc được toàn văn) nên giữ lệch, hồ sơ báo cần chuyên gia."
   },
   {
    "id": "520859-01",
    "maHs": "52085990",
    "dongChuBieu": "52085920",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "dieuKien": [
     {
      "fact": "tenLoai",
@@ -692,10 +695,10 @@
      "trich": "- - - Loại khác, vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân"
     }
    ],
-   "lyDo": "Tín hiệu máy LK_TRUNG_TEN_ANH_EM: TB-TCHQ 888 xếp vào .90 \"Loại khác\" trong khi tên kết luận ghi \"vải dệt thoi kiểu dệt vân chéo 3 sợi, 100% xơ bông, đã in\" — chữ biểu .20 đọc thuần chỉ rõ đúng loại vân chéo 3 sợi. Đối chiếu: TB-TCHQ 7049 (precedents.json#52085920[0]) xếp hàng mô tả tương tự (vân chéo 3 sợi, cotton, đã in, ~122 g/m2) vào đúng .20 ⇒ nghiêng về .20, nhưng chỉ một TB-TCHQ lệch và chưa ai phân xử nên không tự chọn bên. Hai dòng cùng MFN 12 %.",
-   "ghiChu": "Chưa chốt: tên khai báo trong bản ghi (\"Vải dệt kim… polyeste\") lệch với tên kết luận của Hải quan (\"vải dệt thoi… xơ bông\") — cần đối chiếu bản gốc 888/TB-TCHQ / hỏi lại người khai.",
+   "lyDo": "Theo kết quả phân tích ghi trong 888/TB-TCHQ (29/01/2016), hàng là vải dệt thoi vân chéo 3 sợi, 100% bông, đã in, 121 g/m2 — đúng từng chữ của dòng 5208.59.20 'Loại khác, vải vân chéo 3 sợi hoặc vân chéo 4 sợi, kể cả vải vân chéo dấu nhân' (không phải batik nên không vào .10). Không có tầng không mã, SEN hay chữ Anh nào thu hẹp dòng .20 ('Other, 3-thread or 4-thread twill, including cross twill' khớp chữ Việt). Gần 3 năm sau, 7049/TB-TCHQ (29/11/2018, biểu TT 65/2017) xếp một loại vải gần như y hệt (vân chéo 3 sợi, 100% cotton, đã in, 122 g/m2) vào .20 — tức Hải quan hai lần ra hai dòng khác nhau cho cùng loại hàng. Khả năng còn lại chưa loại trừ được: 888 ban hành theo Danh mục TT 103/2015/TT-BTC (AHTN 2012), nếu biểu đó chưa có dòng .20 riêng cho vân chéo 3/4 sợi thì .90 là đúng vào thời điểm ấy; chưa kiểm được biểu cũ. Áp dụng hôm nay thì theo chữ biểu .20 (có 7049 đỡ); không chênh thuế MFN nên rủi ro chủ yếu là sai mã khai báo. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/520859-01.json (nhóm E: Còn mở, cần anh hoặc chuyên gia quyết).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "701990-01",
@@ -1745,7 +1748,7 @@
    "id": "760421-01",
    "maHs": "76042190",
    "dongChuBieu": "76042120",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "295/TB-TCHQ",
@@ -1783,9 +1786,10 @@
      "trich": "Thanh đệm bằng nhôm là dạng hình rỗng thường được sử dụng trong việc xây dựng khung cho cửa kính và cửa sổ. Chúng đảm bảo độ cứng, không gian và cách nhiệt giữa các tấm kính trong cửa ra vào và cửa sổ."
     }
    ],
-   "lyDo": "SEN .20 viết rộng (\"dạng hình rỗng thường được sử dụng trong việc xây dựng khung cho cửa kính và cửa sổ\") trong khi tên dòng là \"thanh đệm\" (giữ khoảng cách giữa các tấm kính). 295/TB-TCHQ xếp thanh nhôm hình rỗng dùng làm vách nhôm, cửa nhôm kính vào .90; 6530–6534/TB-TCHQ không nêu công dụng nên không chứng minh được hàng nằm ngoài .20. Chưa ai phân xử phạm vi .20 nên không tự chọn bên.",
+   "lyDo": "\"Thanh đệm\" (spacer) ở dòng 7604.21.20 là thanh nhôm rỗng nằm GIỮA hai tấm kính của cửa kính hộp, giữ khoảng cách và cách nhiệt — chính SEN cũng nói thanh đệm \"đảm bảo độ cứng, không gian và cách nhiệt giữa các tấm kính\". Cụm \"xây dựng khung cho cửa kính\" trong SEN dễ khiến máy hiểu rộng thành mọi thanh nhôm làm khung cửa, nhưng tên dòng (Việt và Anh \"Aluminium spacers for doors and windows\") vẫn chỉ là thanh đệm. Ở biểu thời TB ra (TT 65/2017, HS/AHTN 2017), dòng này còn hẹp hơn nữa: \"Aluminium spacers (hollow profiles with one side having light perforations along its whole length)\" — tức thanh rỗng có một mặt đục lỗ nhỏ suốt chiều dài (để hút ẩm cho kính hộp). Hàng của 295/TB-TCHQ là thanh profile đã sơn, cắt theo bản vẽ rồi lắp thành vách nhôm, cửa nhôm kính — là thanh khung, không phải thanh đệm; hàng của 6530–6534/TB-TCHQ ghi rõ \"chưa gia công khoan cắt lỗ\", nên không thể là loại có một mặt đục lỗ. Vì vậy cả 5 TB xếp \"Loại khác\" .90 là đúng, và theo chữ biểu hiện hành cũng vẫn .90. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/760421-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "760612-01",
@@ -1917,7 +1921,7 @@
    "id": "151790-01",
    "maHs": "15179090",
    "dongChuBieu": "15179080",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "4153/TB-TCHQ",
@@ -1936,9 +1940,10 @@
      "trich": "Của hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật hoặc từ các phần phân đoạn của chúng"
     }
    ],
-   "lyDo": "Hàng trong 4153/TB-TCHQ là chế phẩm ăn được dạng nhũ tương từ dầu cá (≈ 50 %) — đọc thuần thoả chữ .80 \"chế phẩm từ … dầu động vật\", nhưng TB xếp .90; 4124/TB-TCHQ lại xếp bột dầu cá (60 %) vào .80. TB không nêu vì sao loại .80 (có thể do hàm lượng nước/chất nhũ hoá); chưa ai phân xử nên ghi cả hai, không chọn bên.",
+   "lyDo": "Hàng là chế phẩm ăn được từ một loại dầu động vật (dầu cá) đã nhũ hoá, nên theo chữ biểu hiện hành thì khớp dòng 1517.90.80 'hỗn hợp hoặc chế phẩm từ mỡ hoặc dầu động vật' — chính Tổng cục cũng xếp bột dầu cá MEG-3 DHA vào .80 năm 2021 (4124/TB-TCHQ). Điểm mấu chốt là thời điểm: tờ khai của 4153/TB-TCHQ là số 10154122474/A11 ngày 04/08/2017, tức trước khi Danh mục theo TT 65/2017/TT-BTC (AHTN 2017) có hiệu lực từ 01/01/2018. TB 4153 trích tên nhóm 15.17 theo chữ cũ 'mỡ hoặc dầu' ('trừ mỡ hoặc dầu ăn được'), trong khi các TB theo Danh mục 2017 (4124/2021, 1503/2020) trích chữ mới 'chất béo hoặc dầu' — dấu hiệu TB 4153 áp Danh mục cũ, nơi 1517.90 nhiều khả năng chưa có dòng riêng cho chế phẩm từ mỡ/dầu động vật nên hàng rơi vào '- - Loại khác'. Chưa mở được văn bản biểu cũ (AHTN 2012) để khẳng định dòng .80 khi đó chưa tồn tại, nên mức chắc chỉ VỪA. Các TB khác xếp .90 đều nhất quán với chữ biểu hiện hành: 1503/TB-TCHQ là hỗn hợp dầu cá + dầu hạt lanh + dầu anh thảo (động vật lẫn thực vật), 5192/TB-TCHQ là dầu tảo (vi sinh vật) — không phải 'chỉ từ mỡ/dầu động vật'. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/151790-01.json (nhóm B: Biểu thuế đổi phiên bản).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "151790-02",
@@ -2067,7 +2072,7 @@
    "id": "180690-02",
    "maHs": "18069090",
    "dongChuBieu": "18069010",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "794/TB-TCHQ",
@@ -2081,9 +2086,10 @@
      "trich": "Kẹo sô cô la ở dạng viên (tablets) hoặc viên ngậm (pastilles)"
     }
    ],
-   "lyDo": "Hàng trong 794/TB-TCHQ là kẹo dạng viên (tablet) hương sô cô la, ca cao dưới 5 % — đọc thuần có thể thoả \"kẹo sô cô la ở dạng viên (tablets)\" của .10, nhưng TB xếp .90 và không nêu lý do (có thể vì là kẹo mạch nha ít ca cao, không phải \"kẹo sô cô la\"). Chỉ một TB, chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Dòng 1806.90.10 không phải 'mọi kẹo có ca cao ở dạng viên' mà là 'Chocolate confectionery in tablets or pastilles' — kẹo SÔ CÔ LA, tức sản phẩm làm chủ yếu từ bột nhão/bột ca cao với đường (chú giải nhóm 18.06). Kẹo Ovaltine là kẹo mạch nha – đường (sucrose ≈ 43%) chỉ có ca cao dưới 5% để tạo vị; nó thuộc 18.06 vì Chú giải 2 Chương 18 kéo 'kẹo đường có chứa ca cao' vào nhóm, chứ không phải vì nó là sô cô la. Vì vậy hàng không đạt điều kiện 'kẹo sô cô la' của .10 và rơi vào '- - Loại khác'. Máy còn bị chữ Việt 'dạng viên' dẫn dắt: trong thương mại sô cô la, 'tablet' thường chỉ thanh/phiến sô cô la, không phải viên nén — nên 'dạng viên' không phải tiêu chí đủ. Hải quan nhất quán: các TB 2020 xếp cả kẹo sô cô la Ferrero Rocher (khối cầu có nhân) vào .90, chưa có TB nào trong dữ liệu dùng .10. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/180690-02.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "190190-01",
@@ -2116,7 +2122,7 @@
    "id": "190190-02",
    "maHs": "19019039",
    "dongChuBieu": "19019032",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "1854/TB-TCHQ",
@@ -2145,9 +2151,10 @@
      "trich": "Loại khác, chứa bột ca cao"
     }
    ],
-   "lyDo": "Tên hàng khai trong 1854, 1855, 1856/TB-TCHQ đều ghi \"cacao<5%\" như 1853, nhưng mô tả kết quả của ba TB này không nêu ca cao và xếp .39, còn 1853 nêu \"cacao dưới 5%\" và xếp .32. Nếu hàng 1854–1856 thực có ca cao thì đọc thuần thoả chữ .32 ⇒ lệch; nếu không thì nhất quán. Chưa ai phân xử nên ghi cả hai.",
+   "lyDo": "Bốn TB 1853–1856/TB-TCHQ cùng ngày 23/03/2020 xử lý bốn vị của cùng một dòng whey protein trên CÙNG một tờ khai (10288689590/A11 ngày 25/09/2019) và cùng kết quả phân tích 1790/TB-KĐ3 ngày 23/10/2019. Chữ 'cacao<5%' chỉ nằm trong TÊN HÀNG DO DOANH NGHIỆP KHAI — một câu thành phần chép chung cho cả bốn vị (kể cả vị vani, dâu). Phần mô tả hàng của Hải quan (dựa trên phân tích mẫu) chỉ ghi 'cacao dưới 5%' cho vị Extreme Milk Chocolate (→ 1901.90.32 'chứa bột ca cao'), còn ba vị vani/dâu không có ca cao (→ 1901.90.39 'Loại khác'). Máy đã lấy tên khai làm sự thật về hàng nên tưởng lệch; thực ra cả bốn TB đều đúng chữ biểu và nhất quán với nhau, và nhất quán với cặp 1556 (vị sô cô la hạt phỉ → .32) / 1557 (vị kiwi chuối → .39) năm 2020. Hai dòng cùng thuế 10% nên không ảnh hưởng tiền thuế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/190190-02.json (nhóm C: Máy đọc nhầm hàng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "190531-01",
@@ -2194,15 +2201,16 @@
      "trich": "Bánh ga tô (cakes)"
     }
    ],
-   "lyDo": "Hàng trong 557/TB-TCHQ là bánh ngọt mềm, xốp có nhân trái cây — đọc thuần có thể là \"bánh ga tô (cakes)\" của .30, nhưng TB xếp .90 và không nêu vì sao loại .30 (tên khai là \"bánh quy ngọt\"). Chỉ một TB, chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Doanh nghiệp khai là 'bánh quy ngọt', nhưng kết quả phân tích của Hải quan mô tả hàng là bánh ngọt có vỏ MỀM, XỐP bọc nhân dẻo trái cây — tức không phải bánh quy (biscuit) mà đúng hình mẫu 'cakes' (bánh ngọt từ bột, đường, chất béo, trái cây… theo mục (10) chú giải nhóm 19.05). Dòng 1905.90.30 chữ Anh chỉ ghi 'Cakes', không có tầng không mã hay SEN nào thu hẹp. Vậy mà TB xếp '- - Loại khác' và không nêu lý do loại .30. Một giả thuyết (chưa kiểm được) là chữ Việt: 'bánh ga tô' trong tiếng Việt thường hiểu là bánh kem/gateau cỡ lớn, hẹp hơn chữ 'cakes' của AHTN, nên bánh snack nhỏ dạng thanh bị đẩy sang 'Loại khác'; chính TB còn trích tên nhóm 19.05 với chữ 'bánh nướng' ở chỗ 'cakes' — cho thấy bản dịch lúc đó khác biểu 2026. Tờ khai ngày 20/10/2015 nên áp Danh mục cũ (AHTN 2012); chưa mở được văn bản đó để biết chữ dòng .30 khi ấy. Không có TB nào xếp hàng vào .30 trong dữ liệu để đối chiếu; các TB khác vào .90 (bánh gạo, quẩy, brioche) là hàng khác hẳn. Theo chữ biểu, TB có vẻ lệch và không có căn cứ giải thích. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/190590-01.json (nhóm E: Còn mở, cần anh hoặc chuyên gia quyết).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: ca này chưa đủ căn cứ (TB không nêu lý do / chưa đọc được toàn văn) nên giữ lệch, hồ sơ báo cần chuyên gia."
   },
   {
    "id": "190590-02",
    "maHs": "19059090",
    "dongChuBieu": "19059040",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "557/TB-TCHQ",
@@ -2221,9 +2229,10 @@
      "trich": "Bánh bột nhào (pastry)"
     }
    ],
-   "lyDo": "561/TB-TCHQ xếp bánh có lớp vỏ mềm, xốp bao bọc nhân (bánh bao) vào .40 \"bánh bột nhào (pastry)\"; 557/TB-TCHQ có cấu tạo tương tự (vỏ bánh ngọt mềm, xốp bao bọc nhân trái cây) nhưng xếp .90, không nêu lý do. Chưa ai phân xử nên ghi cả hai, không chọn bên.",
+   "lyDo": "Máy ghép bánh Arletka với bánh bao Samlip chỉ vì cả hai 'có lớp vỏ mềm, xốp bao bọc nhân', rồi suy ra Arletka cũng phải vào 1905.90.40 'Pastries' như 561/TB-TCHQ. Nhưng tiêu chí của dòng 'bánh bột nhào (pastry)' là LÀM TỪ BỘT NHÀO (dough), không phải hình dạng 'vỏ bọc nhân': 561 ghi rõ 'Bánh làm từ bột nhào, đã được tạo hình (dạng bán cầu, thuộc loại bánh bao), được làm chín', còn 557 mô tả Arletka là 'Bánh ngọt' có 'lớp vỏ bánh ngọt, mềm, xốp' đi từ tinh bột, đường, chất béo, bột quả — kiểu bánh xốp/bánh ngọt (cakes), không có dữ kiện là bột nhào. Vậy đối với cặp .40 này, hai TB không mâu thuẫn và TB 557 không lệch chữ 'Pastries'. Câu hỏi thật sự còn bỏ ngỏ là Arletka có nên vào 1905.90.30 'Cakes' hay không — xem ca 190590-01 (để người quyết). Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/190590-02.json (nhóm C: Máy đọc nhầm hàng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "190590-03",
@@ -2283,7 +2292,7 @@
    "id": "200799-01",
    "maHs": "20079990",
    "dongChuBieu": "20079920",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "795/TB-TCHQ",
@@ -2297,9 +2306,10 @@
      "trich": "Mứt và thạch trái cây"
     }
    ],
-   "lyDo": "Hàng trong 795/TB-TCHQ là \"thạch\" có chứa quả, đường, chất làm đông — đọc thuần có thể thoả \"thạch trái cây\" của .20, nhưng TB xếp .90 với mô tả \"chế phẩm thực phẩm không đồng nhất\", không nêu vì sao loại .20. Chỉ một TB, chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Trong HS, 'thạch trái cây' (fruit jellies) không phải mọi món 'thạch' có vị quả mà là sản phẩm làm bằng cách đun sôi NƯỚC ÉP quả với đường cho tới khi tự đông lại khi nguội, trong suốt và KHÔNG có mảnh vụn quả (chú giải nhóm 20.07). Thạch Petitzel được Hải quan mô tả là 'chế phẩm thực phẩm không đồng nhất có chứa quả, đường, chất làm đông và phụ gia' — tức là có miếng quả lẫn trong và đông nhờ chất làm đông thêm vào, không phải nước ép quả đun đông. Nó cũng không phải mứt (jam: đun quả/thịt quả với lượng đường tương đương). Vì vậy hàng không đạt định nghĩa 'mứt và thạch trái cây' của dòng .20 và rơi vào '- - - Loại khác'. Máy đã đọc chữ Việt 'thạch' theo nghĩa đời thường (mọi loại thạch). Hai dòng cùng thuế 40% nên không ảnh hưởng tiền thuế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/200799-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "200819-01",
@@ -2327,7 +2337,7 @@
    "id": "200819-02",
    "maHs": "20081999",
    "dongChuBieu": "20081991",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "800/TB-TCHQ",
@@ -2341,9 +2351,10 @@
      "trich": "Đã rang"
     }
    ],
-   "lyDo": "Hạt dẻ cười trong 800/TB-TCHQ \"đã được bóc vỏ, nướng\" rồi xay nhuyễn trộn phụ gia; chữ .91 \"Đã rang\" (cùng tiêu đề \"Loại khác\" với .99) đọc thuần có thể bao hạt đã nướng, nhưng TB xếp .99 — có thể vì hàng đã thành chế phẩm dạng nhão có phụ gia. Chỉ một TB, chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Hạt dẻ cười trong hàng có được nướng, nhưng hàng nhập khẩu không còn là 'hạt đã rang' mà là một chế phẩm dạng nhão (paste): hạt đã bóc vỏ, nướng, rồi xay nhuyễn và trộn phụ gia. Dòng 2008.19.91 'Đã rang/Roasted' dành cho quả hạch đã rang ở dạng hạt (nguyên hoặc mảnh), như mục (1) chú giải nhóm 20.08; còn bột nhão xay từ hạt rang là một sản phẩm chế biến sâu hơn — chú giải liệt kê riêng ở mục (2) ('Bơ lạc, có dạng bột nhão thu được từ lạc rang nghiền nát'). Chính cấu trúc biểu cũng tách hai thứ này: ở phân nhóm lạc 2008.11 có dòng riêng '2008.11.10 Đã rang' và '2008.11.20 Bơ lạc', tức bột nhão từ hạt rang KHÔNG được coi là 'đã rang'. Với các hạt khác ở 2008.19 không có dòng 'bột nhão' riêng, nên paste rơi vào '- - - - Loại khác' (.99). Hải quan nhất quán: bột nhão hạt phỉ (1995/TB-TCHQ) cũng vào .99. Tờ khai 02/8/2018 theo TT 65/2017; hai dòng cùng thuế 18% nên không ảnh hưởng tiền thuế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/200819-02.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "200989-01",
@@ -2424,7 +2435,7 @@
    "id": "210390-03",
    "maHs": "21039011",
    "dongChuBieu": "21039013",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "3790/TB-TCHQ",
@@ -2443,9 +2454,10 @@
      "trich": "Nước xốt loại khác"
     }
    ],
-   "lyDo": "Tín hiệu TIEN_LE_HAI_DONG 3790/TB-TCHQ (.11 Tương ớt) – 3788/TB-TCHQ (.13 Nước xốt loại khác): cả hai bản ghi chỉ ghi \"chi tiết theo phụ lục đính kèm\", dữ liệu không có mô tả hàng nên không kiểm được hai TB có cùng loại hàng hay không. Ghi lệch chưa phân xử cho tới khi có người đọc phụ lục.",
+   "lyDo": "Đây không phải hai kết luận mâu thuẫn trên cùng một hàng. 3790/TB-TCHQ và 3788/TB-TCHQ cùng ngày 10/06/2019, số liền nhau, và theo bản ghi tracuuhs thì 3790 áp cho mặt hàng số 5, 8 của tờ khai còn 3788 áp cho mặt hàng số 3, 4, 6, 7, 9, 12 — hai tập dòng hàng không trùng nhau. Nhiều khả năng Hải quan đã tách một tờ khai nhiều loại nước xốt: mặt hàng nào là tương ớt thì vào dòng chuyên biệt 2103.90.11 'Tương ớt', còn lại vào 2103.90.13 'Nước xốt loại khác'. Cả hai dòng đều nằm dưới cùng tầng không mã '- - Nước xốt và các chế phẩm làm nước xốt', và dòng .13 chỉ là dòng 'còn lại' sau .11 và .12, nên tương ớt phải ưu tiên .11. Máy ghép hai TB thành 'lệch' chỉ vì thấy cùng phân nhóm mà không có mô tả hàng. Chưa đọc được phụ lục nên không khẳng định được từng mặt hàng cụ thể là gì. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/210390-03.json (nhóm C: Máy đọc nhầm hàng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "210390-04",
@@ -2500,7 +2512,7 @@
    "id": "210690-02",
    "maHs": "21069099",
    "dongChuBieu": "21069072",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "5523/TB-TCHQ",
@@ -2523,9 +2535,10 @@
      "trich": "Thực phẩm bảo vệ sức khỏe (food supplements) khác; hỗn hợp vi chất để bổ sung vào thực phẩm"
     }
    ],
-   "lyDo": "Hàng tự gọi là \"Thực phẩm bổ sung\" (bột protein đậu, tảo, rau pha uống); tiêu đề của .72 ghi \"Thực phẩm bảo vệ sức khỏe (food supplements) khác\" — chữ tiếng Anh có thể bao hàng, trong khi 638 và 5523/TB-TCHQ đều xếp .99. Phân biệt \"thực phẩm bổ sung\" và \"thực phẩm bảo vệ sức khỏe\" theo pháp luật an toàn thực phẩm có thể là lý do, nhưng chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Dòng 2106.90.72 nằm dưới tầng không mã '- - Thực phẩm bảo vệ sức khỏe (food supplements) khác', tức chữ Việt của biểu dùng đúng thuật ngữ pháp lý 'thực phẩm bảo vệ sức khỏe'. Theo Thông tư 43/2014/TT-BYT, 'Thực phẩm bổ sung (Supplemented Food)' là thực phẩm THÔNG THƯỜNG được bổ sung vi chất, còn 'Thực phẩm bảo vệ sức khỏe (Health Supplement, Food Supplement, Dietary Supplement)' là một loại khác. Hàng trong hai TB tự gọi là 'Thực phẩm bổ sung ageLOC TRME' — nghĩa là chữ 'bổ sung' ở đây là 'supplemented food', không phải 'food supplement'; máy đã gộp hai thuật ngữ vì trong tiếng Anh nghe giống nhau. Sản phẩm là bột protein + rau pha với nước uống như một bữa/đồ uống, nên rơi về dòng thừa 2106.90.99. Toàn bộ 59 tiền lệ ở .72 đều là hàng ghi rõ 'Thực phẩm bảo vệ sức khỏe' (viên nang, lợi khuẩn, omega-3, vitamin…), và hai TB 5523/2024 và 638/2025 cho cùng sản phẩm đều ra .99, nên Hải quan nhất quán. Không mở được toàn văn TB để thấy Hải quan tự nêu lý do. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/210690-02.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "210690-03",
@@ -2659,7 +2672,7 @@
    "id": "220890-01",
    "maHs": "22089099",
    "dongChuBieu": "22089030",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "5286/TB-TCHQ",
@@ -2677,9 +2690,10 @@
      "trich": "Sam-su là đồ uống có cồn kiểu Trung Quốc (nguồn gốc sản xuất không nhất thiết là Trung Quốc), được chưng cất từ ngũ cốc như gạo hoặc cao lương."
     }
    ],
-   "lyDo": "Soju 16,9% chưng cất từ gạo; SEN định nghĩa sam-su là rượu chưng cất từ ngũ cốc như gạo, nguồn gốc không nhất thiết Trung Quốc ⇒ chữ .30 \"Rượu sam-su khác … không quá 40%\" có thể bao hàng, nhưng 5286/TB-TCHQ xếp .99 (SEN cũng ghi \"kiểu Trung Quốc\", soju là rượu kiểu Hàn Quốc). Chỉ một TB, chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Dòng 2208.90.30 'Rượu sam-su khác … không quá 40%' có ghi (SEN), và SEN định nghĩa sam-su là 'đồ uống có cồn kiểu Trung Quốc' chưng cất từ ngũ cốc, ví dụ 'ShaoJiu', 'Gao Liang Jiu'. Câu 'nguồn gốc sản xuất không nhất thiết là Trung Quốc' chỉ nói về nơi sản xuất, còn điều kiện cốt lõi vẫn là KIỂU rượu Trung Quốc. Soju Goodday là rượu kiểu Hàn Quốc, và theo chính TB thì mẫu 'được chưng cất xong pha loãng, xử lý đến nồng độ mong muốn' với mật ong, đường — tức là đồ uống pha từ cồn chưng cất, không phải rượu trắng ngũ cốc kiểu Trung Quốc. Vì vậy hàng không thuộc nhóm dòng sam-su (.10–.40), không phải arrack/bitters, nên về tầng không mã '- - Loại khác' và vì trên 1,14% nên vào .99. Hải quan nhất quán: 9789/TB-TCHQ (2016) cũng xếp soju Jinro 24% vào dòng 'Loại khác' 2208.90.90 của biểu cũ. Không có chênh thuế MFN, chỉ là đúng dòng. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/220890-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "220890-02",
@@ -2707,7 +2721,7 @@
    "id": "250100-01",
    "maHs": "25010099",
    "dongChuBieu": "25010010",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "3536/TB-TCHQ",
@@ -2725,9 +2739,10 @@
      "trich": "là sản phẩm kết tinh chứa chủ yếu natri clorua"
     }
    ],
-   "lyDo": "Hàng tự gọi là \"Muối thực phẩm\", NaCl ~93,7%, dùng nấu ăn thay muối thường, đóng gói bán lẻ — đọc thuần thoả chữ .10 và SEN .10 (chứa chủ yếu natri clorua, mục đích làm gia vị), nhưng 3536/TB-TCHQ xếp .99, có thể vì đã bổ sung chitosan. Chỉ một TB, chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Chữ 'Muối thực phẩm' ở dòng 2501.00.10 không phải cứ muối dùng để nấu ăn là vào. SEN của dòng này nói hàm lượng NaCl 'tuân theo quy chuẩn của cơ quan nhà nước có thẩm quyền'; vào thời điểm TB (31/05/2019, biểu TT 65/2017), Thông tư 27/2017/TT-BNNPTNT định nghĩa muối thực phẩm mã 2501.00.10 là muối 'được bổ sung tăng cường vi chất i-ốt' và đạt QCVN 9-1:2011/BYT. Kết quả phân tích của Hải quan cho thấy hàng có NaCl ~93,7% và 'không chứa i-ốt', lại pha 3% chitosan để dành cho người ăn kiêng — nên không đạt điều kiện muối thực phẩm theo quy chuẩn. Hàng cũng không đạt dòng NaCl từ 97% trở lên, cũng không phải loại 60–97% có i-ốt, nên rơi về dòng thừa 2501.00.99. Tên doanh nghiệp tự đặt 'Muối thực phẩm' là cái làm máy hiểu nhầm. Thuế theo TB thấp hơn (15% so với 30%). Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/250100-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "250100-02",
@@ -2755,7 +2770,7 @@
    "id": "261400-01",
    "maHs": "26140090",
    "dongChuBieu": "26140010",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "753/TB-TCHQ",
@@ -2783,15 +2798,16 @@
      "trich": "Quặng inmenit chưa được xử lý có hàm lượng TiO2 từ 10% đến 40%"
     }
    ],
-   "lyDo": "Ba TB 753, 754, 831/TB-TCHQ cùng xếp quặng đuôi titan (hỗn hợp ilmenite, zircon, rutile, monazite; TiO2 ~31–35%) vào .90. Hàng có chứa ilmenite và TiO2 nằm trong khoảng SEN .10 nêu cho quặng inmenit chưa xử lý, nhưng là hỗn hợp nhiều khoáng — chưa rõ chữ .10 có trỏ hàng hay không nên ghi lệch chưa phân xử, không nâng thành tiền lệ thay chữ biểu.",
+   "lyDo": "Dòng 2614.00.10 chỉ dành cho \"Quặng inmenit và tinh quặng inmenit\" (Ilmenite ores and concentrates) — tức quặng/tinh quặng của MỘT khoáng là ilmenit. Hàng trong ba TB không phải thế: kết quả phân tích (vd 832/TB-PTPL ngày 9/12/2015 cho 753/TB-TCHQ) xác định đây là \"quặng đuôi\" — phần còn lại sau khi tuyển — gồm hỗn hợp ilmenit, zircon, rutil và monazit. Trong đó rutil là một quặng titan khác (cũng thuộc nhóm 26.14 nhưng không phải ilmenit), còn zircon, monazit là khoáng của nhóm khác; một hỗn hợp nhiều quặng titan như vậy không còn đặc trưng là \"quặng inmenit\", nên rơi về \"- Loại khác\". Máy bị dẫn bởi con số trong SEN (\"Quặng inmenit chưa được xử lý có hàm lượng TiO2 từ 10% đến 40%\") vì TiO2 của hàng 31,9–35%; nhưng con số đó mô tả quặng ilmenit thô chưa qua xử lý, không phải điều kiện đủ để mọi vật liệu có TiO2 trong khoảng ấy thành quặng ilmenit — quặng đuôi đã qua tuyển, chứa nhiều khoáng. Ba TB (753, 754, 831/TB-TCHQ, cùng đơn vị, tháng 1/2016) nhất quán. Mức chắc VUA vì TB không ghi lý do loại trừ .10 và không nêu tỷ lệ từng khoáng. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/261400-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "271012-01",
    "maHs": "27101299",
    "dongChuBieu": "27101270",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "3056/TB-TCHQ",
@@ -2824,15 +2840,16 @@
      "trich": "Dải chưng cất là tương đối hẹp (sự khác nhau giữa nhiệt độ sôi ban đầu với điểm khô không quá 100°C)."
     }
    ],
-   "lyDo": "Naphtha làm nguyên liệu hoá dầu, không dùng pha xăng: 1420 và 3055/TB-TCHQ xếp .70 \"Dung môi nhẹ khác\", còn 3056 và 928/TB-TCHQ xếp .99. SEN .70 đòi dải chưng cất không quá 100°C — 3056 ghi 45–165°C (không thoả), nhưng 1420/3055 không ghi dải sôi nên không kiểm được tiêu chí đó. Hai dòng cùng nhận một loại hàng, chưa ai phân xử.",
+   "lyDo": "Bốn TB đều cho cùng một doanh nghiệp (Hóa Dầu Long Sơn), cùng công dụng 'nguyên liệu hoá dầu, không pha xăng', nên nhìn bề ngoài tưởng Hải quan xếp lung tung giữa .70 và .99. Nhưng khi mở toàn văn TB thì thấy Hải quan tách đúng theo tiêu chí của SEN 2710.12.70 'Dung môi nhẹ khác': dải chưng cất hẹp, chênh lệch giữa điểm sôi đầu và điểm khô không quá 100°C. Lô 3055 (Paraffinic Naphtha) có điểm sôi đầu 34,5°C, điểm sôi cuối 133°C (chênh 98,5°C, aromatic 1,51%) và lô 1420 (naphtha nhẹ cracking xúc tác) có khoảng sôi 31,7–125,8°C (chênh 94,1°C) → đạt tiêu chí → .70. Lô 3056 (naphtha chưng cất khí quyển) có khoảng sôi 45–165°C, phần thông số kỹ thuật ghi phạm vi chưng cất 30–180°C (chênh 120–150°C) và aromatic 8,71% → không đạt 'dải hẹp' → rơi về .99 'Loại khác'. Lô 928 (C5 tách vòng thơm từ nhà máy olefin) chỉ khai một 'nhiệt độ sôi: 36°C', không có dải chưng cất, và là phần raffinate C5 từ chế biến hydrocarbon chứ không phải phân đoạn thẳng từ dầu thô như SEN mô tả → không chứng minh được tiêu chí .70 → .99. Như vậy Hải quan nhất quán; máy ghi '1420/3055 không ghi dải sôi' là sai — toàn văn có ghi. Cả hai dòng cùng 10% nên không ảnh hưởng tiền thuế, nhưng ảnh hưởng tính nhất quán của mã khai. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/271012-01.json (nhóm C: Máy đọc nhầm hàng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "271012-02",
    "maHs": "27101299",
    "dongChuBieu": "27101260",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "6491/TB-TCHQ",
@@ -2846,9 +2863,10 @@
      "trich": "Dung môi có hàm lượng cấu tử thơm thấp dưới 1% tính theo trọng lượng"
     }
    ],
-   "lyDo": "Hàng là dung môi làm sạch gồm chủ yếu hydrocacbon no mạch hở C7–C8 — có thể có hàm lượng cấu tử thơm dưới 1% (.60) và dải chưng cất 64–127°C cũng nằm trong tiêu chí SEN của \"Dung môi nhẹ khác\" (.70), nhưng 6491/TB-TCHQ xếp .99 và không ghi hàm lượng cấu tử thơm. Chưa đủ dữ kiện, chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Máy cho rằng hàng 'có thể' vào .60 'Dung môi có hàm lượng cấu tử thơm thấp dưới 1%', nhưng 6491/TB-TCHQ không ghi hàm lượng thơm, nên .60 không có căn cứ — máy đã tự gắn điều kiện. Dòng thật sự đáng so là .70 'Dung môi nhẹ khác': SEN đòi dải chưng cất hẹp (điểm sôi đầu → điểm khô ≤ 100°C). Hàng có giọt đầu ở 64°C và trên 95% thể tích cất ở 127°C (chênh ~63°C) nhưng TB không ghi điểm khô, nên về lý thuyết chưa chứng minh trọn tiêu chí. Tuy vậy, cùng năm 2018 Hải quan xếp những hàng gần như y hệt vào .70: 4001/TB-TCHQ (chất tẩy vỏ nón, C6–C10, IBP 62°C, 97% ở 96°C — cũng không ghi điểm khô) và 6306/TB-TCHQ (Humiseal Thinner C7H14/C8H16, không ghi cả dải chưng cất). Ba TB dựa trên ba đơn vị kiểm định khác nhau (KĐ2, KĐ3, Cục Kiểm định), cách xếp khác nhau trên cùng loại dung môi rửa C7–C8 — đây là thiếu nhất quán, không thấy căn cứ chữ biểu nào giải thích riêng cho 6491. Cả ba dòng cùng 10% nên không lệch tiền thuế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/271012-02.json (nhóm E: Còn mở, cần anh hoặc chuyên gia quyết).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "271012-03",
@@ -2947,9 +2965,10 @@
      "trich": "Nhiên liệu diesel; các loại dầu nhiên liệu"
     }
    ],
-   "lyDo": "Gas oil thường dùng làm nhiên liệu (diesel/dầu đốt), nên chữ .79 \"Dầu nhiên liệu\" (tiêu đề \"Nhiên liệu diesel; các loại dầu nhiên liệu\") có thể bao hàng; bản ghi 5691/TB-TCHQ bị cắt, không nêu công dụng hay dải chưng cất, mà TB xếp .90. Chưa đủ dữ kiện, chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Toàn văn TB cho thấy hàng là gas oil đúng nghĩa nhiên liệu diesel: chỉ số cetane tối thiểu 50, điểm chớp cháy tối thiểu 60°C, cất 50% ở 284,5°C và 90% tối đa 357°C, và hồ sơ còn ghi công dụng theo thiết kế là nhiên liệu nồi hơi, cấu tử pha nhiên liệu cho xe đường bộ, nhiên liệu tàu biển. Vì cất 50% đã ở 284,5°C nên chắc chắn dưới 65% cất ở 250°C → không phải 'dầu trung' (.81–.89 theo SEN .89), chỉ còn chọn giữa tầng 'Nhiên liệu diesel; các loại dầu nhiên liệu' (.71/.72/.79) và .90 'Loại khác'. Hải quan chọn .90, điểm khác biệt duy nhất thấy được là doanh nghiệp khai dùng hàng làm nguyên liệu sản xuất hoá dầu/hạt nhựa, không bán nội địa. Nhưng chữ dòng .72/.79 ('Other diesel fuels' / 'Fuel oils') là tên loại hàng, không kèm điều kiện công dụng thực tế; và các TB khác cùng phân nhóm cũng xếp dầu dùng làm nhiên liệu đốt lò (326, 327, 982/TB-TCHQ năm 2023) và dầu đáy cracker để chạy thử nồi hơi (5690/TB-TCHQ cùng ngày) vào .90 — tức Hải quan không áp tiêu chí 'công dụng' một cách nhất quán, mà dường như dành .71/.72/.79 cho một khái niệm hẹp hơn (có thể là nhiên liệu thương phẩm đạt tiêu chuẩn) mà chữ biểu không ghi. Không tìm thấy SEN hay chú giải nào thu hẹp 'Nhiên liệu diesel' / 'Dầu nhiên liệu'. Biểu 2017 (TT 65/2017) áp dụng tới 29/12/2022 cũng đã có cùng cấu trúc, nên không phải do phiên bản biểu. Chủ hàng cần thận trọng: áp 0% theo TB này cho gas oil thông thường có rủi ro bị xác định lại sang 7%. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/271019-02.json (nhóm E: Còn mở, cần anh hoặc chuyên gia quyết).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: ca này chưa đủ căn cứ (TB không nêu lý do / chưa đọc được toàn văn) nên giữ lệch, hồ sơ báo cần chuyên gia."
   },
   {
    "id": "282739-01",
@@ -2999,7 +3018,7 @@
    "id": "300420-01",
    "maHs": "30042091",
    "dongChuBieu": "30042071",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "293/TB-TCHQ",
@@ -3022,9 +3041,10 @@
      "trich": "Chứa tetracylin hoặc chloramphenicol hoặc các dẫn xuất của chúng"
     }
    ],
-   "lyDo": "Cùng một hàng (Flustop 20 sol, florfenicol, dung dịch uống): 2719/TB-TCHQ xếp .71 (tiêu đề \"Chứa … chloramphenicol hoặc các dẫn xuất của chúng\"), 293/TB-TCHQ xếp .91 (kháng sinh loại khác). Điểm tranh chấp là florfenicol có là \"dẫn xuất\" của chloramphenicol theo chữ biểu hay không; chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Hai TB này không phải hai quan điểm song song: cả hai là xác định trước mã số cho cùng một hàng của cùng doanh nghiệp (Công ty TNHH Vật tư thú y Tiến Thành), và 2719/TB-TCHQ ngày 17/05/2018 sửa đổi, thay thế 293/TB-TCHQ ngày 18/01/2018, nêu lý do là 'do sơ xuất trong quá trình tra cứu văn bản'. Mã còn hiệu lực là 3004.20.71, trùng với chữ biểu. Về chuyên môn: florfenicol là dẫn xuất của chloramphenicol (nhóm amphenicol) — Chú giải chi tiết nhóm 29.41 kể rõ 'Chloramphenicol và các dẫn xuất của chúng, ví dụ, thiamphenicol và florfenicol' — nên thuốc chứa florfenicol thuộc tầng không mã '- - Chứa tetracylin hoặc chloramphenicol hoặc các dẫn xuất của chúng', dạng uống → .71. Bản 293 xếp vào '- - Loại khác' là sai và đã được Hải quan tự đính chính; máy không biết 293 bị thay thế nên ghép thành 'lệch'. Doanh nghiệp còn dùng 293 thì sẽ khai thiếu 5% thuế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/300420-01.json (nhóm A: Hải quan đã tự sửa, dữ liệu mình còn giữ bản cũ).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "300420-02",
@@ -3101,7 +3121,7 @@
    "id": "320611-01",
    "maHs": "32061110",
    "dongChuBieu": "32061190",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "7255/TB-TCHQ",
@@ -3130,9 +3150,10 @@
      "trich": "Loại khác"
     }
    ],
-   "lyDo": "Các TB cùng xếp chế phẩm từ TiO2 ≥ 80%: dạng bột/hạt (7255, 3457/TB-TCHQ) vào .10 \"Thuốc màu\", dạng nhão/phân tán (5407, 1145/TB-TCHQ) vào .90 — dù 5407 cũng gọi hàng là \"chế phẩm thuốc màu\". Chữ biểu .10/.90 không nêu tiêu chí dạng vật lý, nên ranh giới do tiền lệ vạch chứ không do chữ; chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Ranh giới .10/.90 không phải do tiền lệ tự vạch mà nằm ngay trong chữ biểu: tầng một gạch phía trên phân nhóm là 'Thuốc màu và các chế phẩm từ dioxit titan' (Pigments and preparations based on titanium dioxide) — tức biểu tách hai thứ: 'thuốc màu' (bản thân pigment) và 'chế phẩm' dựa trên pigment theo Chú giải 3 Chương 32. Chú giải chi tiết nhóm 32.06 nói rõ thuốc màu dựa trên TiO2 gồm 'dioxit titan đã qua xử lý bề mặt hoặc dioxit titan trộn với canxi hoặc bari sulphat' — đó chính là hàng của 7255 (TiO2 xử lý bề mặt, dạng bột, 97,79%) và 3457 (TiO2 xử lý bề mặt bằng Al2O3, SiO2, dạng hạt) → .10 'Thuốc màu'. Còn 5407 (TiO2 + chất hoạt động bề mặt không ion, dạng sệt) và 1145 (TiO2 phân tán trong môi trường chứa nước, dạng bột nhão) là 'chế phẩm dựa trên các chất màu, loại dùng để tạo màu mọi chất liệu' theo Chú giải 3 → không phải 'Thuốc màu' → .90 'Loại khác'. Việc 5407 tự gọi hàng là 'chế phẩm thuốc màu' không làm đổi kết quả: chữ 'chế phẩm' lại chính là dấu hiệu nó thuộc vế 'preparations'. Các TB nhất quán; máy không đọc tầng không mã 3206.1 nên tưởng chữ biểu không có tiêu chí. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/320611-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "320810-01",
@@ -3182,7 +3203,7 @@
    "id": "320820-02",
    "maHs": "32082090",
    "dongChuBieu": "32082040",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "2705/TB-TCHQ",
@@ -3200,15 +3221,16 @@
      "trich": "Loại sơn này chuyên dùng để sơn phủ bề mặt vỏ tàu viễn dương và thuyền"
     }
    ],
-   "lyDo": "Hàng là \"sơn chống ăn mòn\" (thoả một vế chữ .40) \"dùng sơn đường hàn\"; 2705/TB-TCHQ không nói có dùng cho vỏ tàu thủy hay không, nên không loại được .40 cũng không khẳng định được. TB xếp .90; chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Dòng 3208.20.40 không phải 'mọi sơn chống ăn mòn' mà là 'Sơn chống hà và/hoặc chống ăn mòn DÙNG ĐỂ SƠN VỎ TÀU THỦY' (Anti-fouling and/or anti-corrosive paints for ships' hulls): công dụng sơn vỏ tàu là điều kiện bắt buộc, chứ không phải chi tiết tùy chọn. SEN còn thu hẹp thêm: đây là sơn chuyên dùng phủ vỏ tàu viễn dương, thuyền và kết cấu chìm dưới nước, chủ yếu chứa chất diệt sinh vật như ôxit đồng, thiocyanate đồng, thiếc tributyl. Hàng của 2705/TB-TCHQ được khai rõ là 'dùng để sơn đường hàn', nhập bởi một công ty cơ khí ở KCN Mỹ Xuân A2, kết quả phân tích chỉ là dung dịch copolyme acrylat trong dung môi, không nhắc gì tới vỏ tàu hay chất diệt sinh vật. Không có điều kiện 'vỏ tàu' thì hàng không vào được .40 — máy đã đọc ngược: thiếu thông tin vỏ tàu không có nghĩa là 'chưa loại được .40', mà chính là lý do loại .40. Hàng về .90 'Loại khác' là đúng. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/320820-02.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "320890-01",
    "maHs": "32089090",
    "dongChuBieu": "32089030",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "1823/TB-TCHQ",
@@ -3226,9 +3248,10 @@
      "trich": "Loại sơn này chuyên dùng để sơn phủ bề mặt vỏ tàu viễn dương và thuyền"
     }
    ],
-   "lyDo": "Hàng là \"Sơn chống ăn mòn dùng cho sơn vỏ tàu biển\" — đọc thuần thoả đúng chữ .30 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy\", nhưng 1823/TB-TCHQ xếp .90 (SEN .30 nhấn thành phần diệt sinh vật mà TB không nêu). Chỉ một TB, chưa ai phân xử nên không chọn bên.",
+   "lyDo": "Cụm 'Sơn chống ăn mòn dùng cho sơn vỏ tàu biển' chỉ là TÊN HÀNG DOANH NGHIỆP KHAI, không phải kết luận giám định. Phần đặc trưng hàng hoá Hải quan xác định chỉ ghi 'Sơn hai thành phần (đi từ nhựa alkyd và chất đóng rắn) trong dung môi hữu cơ' — không xác nhận tính năng chống hà/chống ăn mòn chuyên dụng. SEN của dòng .30 thu hẹp dòng này vào sơn CHUYÊN DÙNG phủ vỏ tàu viễn dương và các kết cấu chìm dưới nước, 'chủ yếu chứa các thành phần độc (chất diệt sinh vật)' như ôxit đồng, thiocyanate đồng, thiếc tributyl; giám định không thấy thành phần nào như vậy. Cùng ngày, 1822/TB-TCHQ (sơn Fluorex No 500 'Finish', cũng khai 'chống ăn mòn dùng cho vỏ tàu biển', giám định là PVDF + chất đóng rắn, đơn vị nhập Công ty CP Sơn Hải Phòng, kết quả phân tích 3351/TB-KĐ2) cũng xếp .90 — Hải quan nhất quán: tên khai 'dùng cho vỏ tàu' không đủ, phải có đặc trưng sơn chống hà/chống ăn mòn chuyên dụng mới vào .30. Mức chắc chỉ VỪA vì TB không ghi lý do loại .30 bằng lời, và SEN chủ yếu mô tả vế 'chống hà' (chất diệt sinh vật) chứ không nêu tiêu chí riêng cho vế 'chống ăn mòn'. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/320890-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "320890-02",
@@ -3336,7 +3359,7 @@
    "id": "330749-02",
    "maHs": "33074990",
    "dongChuBieu": "33074910",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "1325/TB-TCHQ",
@@ -3364,9 +3387,10 @@
      "trich": "Các chế phẩm dùng để làm thơm hoặc khử mùi phòng, kể cả các chế phẩm có mùi thơm dùng trong nghi lễ tôn giáo"
     }
    ],
-   "lyDo": "1325 và 1326/TB-TCHQ mô tả hàng là \"chế phẩm khử mùi phòng\" (chất hoạt động bề mặt và phụ gia) và xếp .90, nhưng tên thương mại (RELAXING SPA, MORNING BREEZE ROOM RE…) gợi sản phẩm tạo hương cho phòng, mà chữ .10 là \"Các chế phẩm làm thơm phòng\" và 5189/TB-TCHQ xếp chế phẩm làm thơm phòng có hương liệu vào .10. Dữ kiện phân biệt là hàng có chức năng làm thơm (chứa hương liệu) hay chỉ khử mùi; TB không nêu hương liệu nên chưa đủ căn cứ, không tự chọn bên.",
+   "lyDo": "Nhóm 33.07 tách rõ hai loại: chế phẩm LÀM THƠM phòng (room perfuming) và chế phẩm KHỬ MÙI phòng đã pha chế (room deodorisers, 'có hoặc không có mùi thơm'). Dòng 3307.49.10 chỉ ghi 'Các chế phẩm làm thơm phòng' (Room perfuming preparations), còn chất khử mùi phòng rơi về .90. Kết quả phân tích của Hải quan (150/TB-KĐ2) cho thấy hàng OASIS PRO là 'chế phẩm khử mùi phòng có thành phần chính là chất hoạt động bề mặt và phụ gia' — tức chức năng chính là xử lý mùi, không phải tỏa hương; tên thương mại 'Relaxing Spa', 'Morning Breeze' chỉ là tên mùi, không làm hàng thành chế phẩm làm thơm. Ngược lại 5189/TB-TCHQ xếp .10 vì hàng là 'chế phẩm làm thơm phòng, thành phần chính có chứa hương liệu'; 1980/TB-TCHQ cũng xếp khử mùi tủ lạnh (than hoạt tính) vào .90. Hải quan nhất quán: phân theo thành phần/chức năng chính (hương liệu → .10; chất khử mùi → .90). Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/330749-02.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "330790-01",
@@ -3671,7 +3695,7 @@
    "id": "390210-01",
    "maHs": "39021090",
    "dongChuBieu": "39021040",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "544/TB-TCHQ",
@@ -3690,9 +3714,10 @@
      "trich": "Dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự"
     }
    ],
-   "lyDo": "544/TB-TCHQ kết luận \"Polypropylen nguyên sinh, dạng hạt\" vào 3902.10.90 \"Loại khác\", trong khi chữ 3902.10.40 là \"Dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự\" và các TB khác (1124, 4185/TB-TCHQ, kể cả copolyme propylen dạng hạt) xếp hạt PP nguyên sinh vào .40. Hai bên mâu thuẫn trên cùng loại hàng; có thể do phiên bản biểu thuế lúc ban hành 544 — chưa ai phân xử, không tự chọn bên.",
+   "lyDo": "544/TB-TCHQ ra ngày 20/01/2016, áp Danh mục theo Thông tư 103/2015/TT-BTC (AHTN 2012). Ở biểu năm 2016, phân nhóm 3902.10 'Polypropylen' chỉ có hai dòng 8 số: 3902.10.30 'Dạng phân tán' và 3902.10.90 'Loại khác' — chưa có dòng riêng cho dạng hạt. Vì vậy hạt PP nguyên sinh lúc đó buộc phải vào .90, đúng chữ biểu khi ấy. Dòng 3902.10.40 'Dạng hạt, viên, hạt cườm, vẩy, mảnh và các dạng tương tự' chỉ xuất hiện ở biểu sau (theo dữ liệu TB, sớm nhất thấy dùng là 2326/TB-TCHQ tháng 5/2018, tức sau khi TT 65/2017/TT-BTC có hiệu lực 01/01/2018). Mọi TB về hạt PP trước 2018 (543, 544/TB-TCHQ) đều .90, mọi TB từ 2018 (2326, 7628, 1124, 4185, 1340, 879/TB-TCHQ) đều .40 — không có mâu thuẫn, chỉ là đổi biểu. Ngày nay hạt PP nguyên sinh khai 3902.10.40; không được viện dẫn 544/TB-TCHQ để khai .90. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/390210-01.json (nhóm B: Biểu thuế đổi phiên bản).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "392020-01",
@@ -3802,9 +3827,10 @@
      "trich": "Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men"
     }
    ],
-   "lyDo": "7048 và 7050/TB-TCHQ xếp \"gạch ốp lát bằng gốm, không tráng men\" (300×600, 600×600 mm) vào 6907.21.92 \"Loại khác, không tráng men\", trong khi chữ dòng anh em 6907.21.91 là \"Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men\" — đọc thuần thì gạch ốp lát thoả .91. Có thể do chữ dòng thời điểm ban hành TB khác; chưa ai phân xử, không tự chọn bên.",
+   "lyDo": "7048 và 7050/TB-TCHQ (cùng ngày 29/11/2018, phân loại sau thông quan theo tờ khai của Công ty TNHH Ri Ta Võ, căn cứ kết quả phân tích 740/TB-KĐ4) xếp gạch ốp lát không tráng men vào 6907.21.92 'Loại khác, không tráng men', trong khi dòng anh em 6907.21.91 ghi đúng 'Gạch lát đường, lát nền và lòng lò hoặc gạch ốp tường, không tráng men' (Anh: 'Paving, hearth or wall tiles, unglazed') — gạch ốp tường/lát nền đọc thẳng là thoả .91. Hàng thuộc đủ chuỗi tầng: phân nhóm 6907.21 (hút nước ≤ 0,5%: 0,12–0,17%) → tầng không mã '- - - Loại khác' (khổ lớn, không lọt hình vuông cạnh < 7 cm) → chỉ còn chọn .91 hay .92. Không phải do phiên bản biểu: biểu AHTN 2017 (HS 2017, áp dụng tại thời điểm TB) có đúng cấu trúc và chữ 6907.21.91 'Paving, hearth or wall tiles, unglazed' / 6907.21.92 'Other, unglazed'. TB không nêu lý do loại .91. Một giả thuyết có cơ sở cấu trúc: phân nhóm 5 số là 'Flags and paving, hearth or wall tiles', nên 'Loại khác' trong đó chủ yếu là 'flags' (phiến lát); Chú giải HS nói phiến lát lớn hơn tấm lát và thường hình chữ nhật — có thể Hải quan coi tấm khổ 300×600/600×600 là 'phiến' — nhưng TB không nói thế, nên đây chỉ là suy đoán. Cùng lô, 7051/TB-TCHQ cũng xếp gạch lát sàn tráng men 400×800 vào 'Loại khác, đã tráng men' (6907.23.94), cho thấy cùng một cách đọc trong một đợt, không có TB nào khác xếp gạch ốp lát vào .91/.93 để đối chiếu. Hai dòng cùng thuế suất nên thực tế không ảnh hưởng tiền thuế, có lẽ vì vậy không ai khiếu nại. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/690721-02.json (nhóm E: Còn mở, cần anh hoặc chuyên gia quyết).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: ca này chưa đủ căn cứ (TB không nêu lý do / chưa đọc được toàn văn) nên giữ lệch, hồ sơ báo cần chuyên gia."
   },
   {
    "id": "700521-01",
@@ -3832,7 +3858,7 @@
    "id": "700521-02",
    "maHs": "70052190",
    "dongChuBieu": "70052120",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "1555/TB-TCHQ",
@@ -3846,9 +3872,10 @@
      "trich": "Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc"
     }
    ],
-   "lyDo": "1555–1558/TB-TCHQ xếp kính nổi phủ màu dạng tấm kích thước 2134 × 3048 mm vào 7005.21.90 \"Loại khác\"; chữ biểu hiện hành có dòng 7005.21.20 \"Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc\" mà tấm kính kích thước như vậy có vẻ thoả. Có thể dòng .20 chưa có ở biểu thuế lúc ban hành TB — cần đối chiếu phiên bản; chưa ai phân xử, không tự chọn bên.",
+   "lyDo": "Các TB 1555, 1556, 1557, 1558/TB-TCHQ cùng ngày 23/03/2018, tức áp dụng Danh mục theo TT 65/2017/TT-BTC (AHTN 2017, hiệu lực 2018 → 29/12/2022). Trong AHTN 2017, phân nhóm 7005.21 chỉ có hai dòng 8 số: 7005.21.10 'Optical glass, not optically worked' và 7005.21.90 'Other' — chưa có dòng 'hình vuông hoặc hình chữ nhật'. Kính nổi màu thông thường không phải kính quang học nên khi đó chỉ có thể vào 7005.21.90, và TB đúng theo biểu tại ngày ban hành. Dòng 7005.21.20 'Loại khác, hình vuông hoặc hình chữ nhật, đã hoặc chưa cắt một hoặc nhiều góc' chỉ xuất hiện ở biểu sau (AHTN 2022, TT 31/2022/TT-BTC từ 30/12/2022). Nếu nhập cùng hàng hôm nay (tấm chữ nhật 2134×3048 mm), chữ biểu hiện hành đưa vào 7005.21.20, không còn dùng 7005.21.90 theo TB cũ. Hàng thuộc đủ tầng cha: nhóm 70.05 (kính nổi dạng tấm, chưa gia công cách khác) → '- Kính không có cốt thép khác' → 7005.21 'Phủ màu toàn bộ…'. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/700521-02.json (nhóm B: Biểu thuế đổi phiên bản).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "701090-01",
@@ -3908,7 +3935,7 @@
    "id": "720827-02",
    "maHs": "72082719",
    "dongChuBieu": "72082799",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "6269/TB-TCHQ",
@@ -3936,9 +3963,10 @@
      "trich": "Loại khác"
     }
    ],
-   "lyDo": "6269/TB-TCHQ khai độ dày 1.4–5.66 mm nhưng kết luận nhánh \"Chiều dày dưới 2mm\" (7208.27.19); phần cuộn dày từ 2 mm đến dưới 3 mm của cùng loại thép (như 3343/TB-TCHQ ≈ 2,6 mm, 3744/TB-TCHQ 2 mm, C < 0,6%) được xếp 7208.27.99. Chữ TB không cho xác định phần dày ≥ 2 mm của lô 6269 thuộc dòng nào; chưa ai phân xử, không tự chọn bên.",
+   "lyDo": "Tên hàng trên tờ khai ghi một khoảng độ dày 1,4–5,66 mm, nên máy tưởng lô hàng có phần dày từ 2 mm trở lên và gán vào dòng 7208.27.99 (thuộc tầng không mã \"- - - Loại khác\", tức dày từ 2 mm đến dưới 3 mm). Nhưng TB-TCHQ không phân loại theo tên khai mà theo mẫu đã được Chi cục Kiểm định Hải quan 3 phân tích (1209/TB-KĐ3 ngày 27/6/2018): mẫu là thép không hợp kim, C dưới 0,6%, cán nóng, đã tẩy gỉ, dạng cuộn, rộng trên 600 mm, dày 1,4 mm. Dày 1,4 mm thuộc tầng không mã \"- - - Chiều dày dưới 2mm\" (7208271), C dưới 0,6% nên rơi vào \"- - - - Loại khác\" = 7208.27.19, khớp chữ biểu cả bản 2017 lẫn 2026. Dòng 7208.27.99 chỉ dành cho hàng dày từ 2 mm đến dưới 3 mm (như 3343/TB-TCHQ ~2,6 mm, 3744/TB-TCHQ 2 mm) nên không mâu thuẫn. Lưu ý thực tế: một lô khai gộp nhiều độ dày (1,4–5,66 mm) thì phần dày từ 3 mm trở lên còn ra khỏi phân nhóm 7208.27 hẳn; mỗi quy cách phải khai dòng riêng, TB chỉ có giá trị cho đúng mẫu được phân tích. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/720827-02.json (nhóm C: Máy đọc nhầm hàng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "720827-03",
@@ -4070,7 +4098,7 @@
    "id": "721070-02",
    "maHs": "72107091",
    "dongChuBieu": "72107021",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "7436/TB-TCHQ",
@@ -4088,9 +4116,10 @@
      "trich": "Được sơn"
     }
    ],
-   "lyDo": "7436/TB-TCHQ xếp thép C < 0,6%, dày 1,55 mm, mạ nhôm-kẽm rồi sơn vào 7210.70.91 (dưới \"- - Loại khác\"); đọc thuần chữ biểu hiện hành thì hàng thoả tiêu đề \"Loại khác, có hàm lượng carbon dưới 0,6%\" và dòng 7210.70.21 \"Được sơn\". Có thể TB theo danh mục cũ khi chưa tách tiêu đề này; chỉ một TB-TCHQ, chưa ai phân xử nên ghi cả hai, không chọn bên.",
+   "lyDo": "7436/TB-TCHQ ra ngày 18/12/2018, áp dụng Danh mục theo TT 65/2017/TT-BTC (AHTN 2017). Lúc đó phân nhóm 7210.70 chỉ có hai tầng: \"- - C dưới 0,6% và dày không quá 1,5 mm\" (7210.70.11 Được sơn / 7210.70.19 Loại khác) và \"- - Loại khác\" (7210.70.91 Được sơn / 7210.70.99 Loại khác) — chưa có tầng \"Loại khác, có hàm lượng carbon dưới 0,6%\" với dòng 7210.70.21/.29. Hàng dày 1,55 mm (vượt 1,5 mm) nên rơi vào \"- - Loại khác\" → \"Được sơn\" = 7210.70.91: TB đúng với biểu thời đó. Từ 30/12/2022 (TT 31/2022, AHTN 2022) biểu tách thêm tầng không mã 7210702 \"Loại khác, có hàm lượng carbon dưới 0,6%\"; cùng hàng này (C<0,6%, dày >1,5 mm, được sơn) nay phải khai 7210.70.21, còn 7210.70.91 chỉ còn cho thép C từ 0,6% trở lên. Vì vậy không thể dùng mã 7210.70.91 của TB làm tiền lệ nguyên mã cho hàng nhập hôm nay. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/721070-02.json (nhóm B: Biểu thuế đổi phiên bản).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "721119-01",
@@ -4230,7 +4259,7 @@
    "id": "721240-02",
    "maHs": "72124019",
    "dongChuBieu": "72124013",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "1606/TB-TCHQ",
@@ -4249,9 +4278,10 @@
      "trich": "Loại khác, được sơn sau khi phủ, mạ kẽm"
     }
    ],
-   "lyDo": "1606 và 1641/TB-TCHQ xếp thép EGI PCM (mạ kẽm điện phân, một mặt được sơn, rộng 510 mm) vào 7212.40.19 \"Loại khác\"; đọc thuần chữ biểu hiện hành thì hàng mạ kẽm rồi sơn, không phải đai dải ≤ 400 mm, thoả 7212.40.13 \"Loại khác, được sơn sau khi phủ, mạ kẽm\" (nếu coi là đai và dải thì là .12). Có thể hai TB theo danh mục trước khi tách .13/.14; chưa ai phân xử nên ghi cả hai, không chọn bên.",
+   "lyDo": "1606 và 1641/TB-TCHQ ra ngày 16/3/2020, theo Danh mục TT 65/2017 (AHTN 2017). Khi đó tầng \"- - Có hàm lượng carbon dưới 0,6%\" của 7212.40 chỉ có ba dòng: 7212.40.11 (đai và dải rộng không quá 400 mm), 7212.40.12 (đai và dải khác) và 7212.40.19 (Loại khác) — chưa có 7212.40.13 \"Loại khác, được sơn sau khi phủ, mạ kẽm\" và .14. Hàng rộng 510 mm không phải \"đai và dải\" vì SEN chỉ coi là đai và dải khi chiều rộng không quá 500 mm, nên thời đó đúng là 7212.40.19. (Đối chiếu: 2032/2033/TB-TCHQ cùng tháng, rộng 490–500 mm, được xếp .12 đai và dải khác; các lô rộng 170–355 mm xếp .11 — Hải quan áp ngưỡng 400/500 mm nhất quán.) Từ 30/12/2022 biểu AHTN 2022 tách thêm dòng .13 cho thép không phải đai/dải, sơn sau khi mạ kẽm, nên cùng hàng này nay khai 7212.40.13. Máy đọc đúng chữ biểu hiện hành; ghi chú của máy \"nếu coi là đai và dải thì là .12\" là không đúng vì 510 mm > 500 mm. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/721240-02.json (nhóm B: Biểu thuế đổi phiên bản).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "721391-01",
@@ -4329,9 +4359,10 @@
      "trich": "Có hàm lượng carbon từ 0,38% trở lên và hàm lượng mangan dưới 1,15% tính theo khối lượng"
     }
    ],
-   "lyDo": "3268/TB-TCHQ xếp thép S50C vào 7214.91.20 (C từ 0,6% trở lên) nhưng bản ghi không chép kết quả phân tích carbon; theo mác JIS G4051 S50C có C danh nghĩa khoảng 0,47–0,53% và Mn dưới 1,15% — nếu đúng vậy thì chữ 7214.91.11 bao hàng. Chỉ một TB, dữ kiện C thực đo chưa có, chưa ai phân xử ⇒ ghi cả hai, không chọn bên; dùng 3268 làm tiền lệ phải xem toàn văn TB.",
+   "lyDo": "Hai dòng tách nhau chỉ bởi hàm lượng carbon: 7214.91.20 cho C từ 0,6% trở lên, còn 7214.91.11 nằm dưới tầng không mã 7214911 \"Có hàm lượng carbon dưới 0,6%\". TB 3268/TB-TCHQ (20/4/2016) chọn hẳn nhánh \"C từ 0,6% trở lên\", tức là về chữ biểu TB không lệch — nó chỉ lệch nếu ta thay kết quả xác định của Hải quan bằng thành phần danh nghĩa của mác S50C. Máy đã làm đúng việc đó: lấy C 0,47–0,53% của mác JIS S50C để gán cho hàng, trong khi bản ghi TB không chép số C đo được. Nếu mẫu thực đo C dưới 0,6% (đúng mác) thì TB sai và hàng thuộc 7214.91.11; nếu kết quả kiểm định cho C từ 0,6% trở lên thì TB đúng. Không mở được toàn văn TB nên không biết kết quả phân tích; vì vậy chưa đủ dữ kiện kết luận. Phiên bản biểu không phải nguyên nhân: TB ra theo TT 103/2015 (AHTN 2012), nhưng ranh giới C 0,6% thì các bản biểu đều có. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/721491-02.json (nhóm E: Còn mở, cần anh hoặc chuyên gia quyết).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: ca này chưa đủ căn cứ (TB không nêu lý do / chưa đọc được toàn văn) nên giữ lệch, hồ sơ báo cần chuyên gia."
   },
   {
    "id": "721499-01",
@@ -4364,7 +4395,7 @@
    "id": "721710-01",
    "maHs": "72171039",
    "dongChuBieu": "72171033",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "3548/TB-TCHQ",
@@ -4387,9 +4418,10 @@
      "trich": "Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực"
     }
    ],
-   "lyDo": "Nhiều TB-TCHQ (2128, 3537, 3538, 3539, 3548, 4034) cùng xếp dây thép dự ứng lực C > 0,6%, chưa mạ, phù hợp tiêu chuẩn dây cho bê tông dự ứng lực (BS 5896, GB/T 5223) vào 7217.10.39 \"Loại khác\"; đọc thuần chữ biểu hiện hành thì hàng có vẻ thoả 7217.10.33 \"Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực\" (tờ khai 3548 còn ghi đúng câu này). Chỗ vướng: chữ .33 nói dây \"để làm dây tao\" (bện tao) còn hàng dùng trực tiếp làm tà vẹt, cống; có thể các TB theo danh mục cũ. Chữ biểu không rõ trỏ .33 nên không xếp TIEN_LE_THAY_CHU_BIEU; chưa ai phân xử, ghi cả hai.",
+   "lyDo": "Dòng 7217.10.33 không bao mọi \"dây thép dự ứng lực\": chữ Việt \"Dây loại sử dụng để làm dây tao cho bê tông dự ứng lực\" khớp chữ Anh \"Wire of a kind used for making strands for prestressing concrete\" — tức là dây dùng để BỆN thành tao (sản phẩm bện tao là 7312.10.91 \"Dây thép bện tao cho bê tông dự ứng lực\"). Hàng trong các TB là dây dự ứng lực dùng trực tiếp làm cốt trong sản phẩm bê tông: 2128/TB-TCHQ ghi rõ theo công văn của người nhập, hàng dùng cho \"cọc, cống bê tông dự ứng lực, dầm sàn, vách tường...\", và mẫu \"có vết ấn\"; 3548/TB-TCHQ chỉ kết luận mẫu \"phù hợp làm dây thép cho bê tông dự ứng lực\" chứ không phải dây để làm tao. Khi doanh nghiệp khiếu nại 3537/TB-TCHQ và đề nghị mã 7217.10.33, Tổng cục trả lời bằng CV 6173/TCHQ-TXNK (26/9/2019) không chấp nhận vì hàng dùng thành từng sợi (12 sợi cho mỗi tà vẹt) chứ không bện tao. Lịch sử biểu cũng khớp: biểu 2013 từng có dòng rộng \"thép dây dự ứng lực\" (7217.10.31, 0%), còn biểu từ AHTN 2017 đã thu hẹp thành \"dây để làm dây tao\" — dây dự ứng lực dùng trực tiếp rơi về \"Loại khác\". Máy đọc lệch vì coi \"dây dự ứng lực\" (và câu chép trong tên hàng khai báo của 3548) là đủ điều kiện .33. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/721710-01.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "721710-02",
@@ -4930,7 +4962,7 @@
    "id": "847150-01",
    "maHs": "84715010",
    "dongChuBieu": "84715090",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "350/TB-CHQ",
@@ -4954,9 +4986,10 @@
      "trich": "Loại khác"
     }
    ],
-   "lyDo": "350/TB-CHQ xếp máy trạm Dell Precision 3680 Tower vào .10 \"Bộ xử lý dùng cho máy tính cá nhân\", còn 351/TB-CHQ (số liền kề) xếp máy trạm cùng dòng Dell Precision 7960 Rack vào .90 \"Loại khác\" mà không nêu lý do. Khác biệt có thể là dạng vỏ tower ↔ rack (17693/TB-CHQ xếp máy rack 4U công nghiệp vào .90 vì \"không phục vụ cho mục đích máy tính cá nhân\"), nhưng chữ biểu không lấy kiểu vỏ làm tiêu chí và hai TB không nêu máy dùng cho ai. Cùng loại hàng (máy trạm) hai dòng, chưa ai phân xử ⇒ ghi cả hai, không chọn bên.",
+   "lyDo": "Hai TB không mâu thuẫn và cũng không lệch chữ biểu. Dòng 8471.50.10 chỉ hỏi một điều: đây có phải \"bộ xử lý dùng cho máy tính cá nhân\" (Processing units for personal computers) không — chữ \"máy trạm\" không tự đẩy hàng sang .90. 350/TB-CHQ (21/03/2025) xếp Precision 3680 Tower vào .10 vì hồ sơ mô tả máy đặt và dùng như máy tính để bàn, \"phù hợp sử dụng cho cá nhân và cả các doanh nghiệp\" (vỏ tower ~373×173×420 mm, CPU Intel Core, Windows 11 Home/Pro). Cùng ngày, cùng doanh nghiệp, 351/TB-CHQ xếp Precision 7960 Rack vào .90 và nêu thẳng lý do: \"mặt hàng có thiết kế, kích thước, trọng lượng và thực tế sử dụng không phù hợp là máy trạm cá nhân (personal computer)\" — máy lắp tủ rack rộng 482 mm, sâu 772 mm, nặng 21–30 kg, Xeon tới 64 nhân, RAM tới 8 TB, nguồn dự phòng thay nóng. 17693/TB-CHQ (2026) đi cùng hướng: máy tính công nghiệp rack 4U \"không phục vụ cho mục đích máy tính cá nhân\" → .90. Vậy tiêu chí của Hải quan nhất quán: xét thiết kế, kích thước, trọng lượng và cách dùng thực tế có phải máy cá nhân không; máy ghi lệch vì gom cả hai về nhãn \"máy trạm\". Cả hai dòng 0% nên không ảnh hưởng tiền thuế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/847150-01.json (nhóm C: Máy đọc nhầm hàng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "847989-01",
@@ -5015,7 +5048,7 @@
    "id": "850440-02",
    "maHs": "85044019",
    "dongChuBieu": "85044090",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "2307/TB-TCHQ",
@@ -5049,15 +5082,16 @@
      "trich": "Loại khác"
     }
    ],
-   "lyDo": "2307/TB-TCHQ (cùng chiều 2765, 1112/TB-TCHQ) xếp sạc pin điện thoại di động/máy tính bảng vào .19 (dưới tiêu đề \"Dùng cho các máy xử lý dữ liệu tự động ... và thiết bị viễn thông\"), còn 556/TB-TCHQ xếp sạc pin điện thoại di động và máy tính bảng gần như cùng thông số (vào 100–240 VAC, ra 5V/2A và 9V/1,67A, 50 x 33 x 20 mm, hai chế độ) vào .90 \"Loại khác\". Cùng loại hàng hai dòng, chưa ai phân xử ⇒ ghi cả hai, không chọn bên. (1908/TB-TCHQ trong cặp tín hiệu là bộ nguồn màn hình tivi — không phải máy xử lý dữ liệu/thiết bị viễn thông, .90 khớp chữ biểu, không lệch.)",
+   "lyDo": "Đây thực chất là CÙNG MỘT MODEL sạc EP-TA20EBE (vào 100–240 VAC, ra 5V/2A và 9V/1,67A, 50×33×20 mm) được Tổng cục xác định trước mã hai lần với hai kết quả: 556/TB-TCHQ ngày 29/01/2018 (Công ty TNHH Solum Vina) xếp 8504.40.90 'Loại khác', còn 2307/TB-TCHQ ngày 24/05/2024 xếp 8504.40.19. Đọc đúng chuỗi tầng thì sạc điện thoại/máy tính bảng nằm dưới tầng không mã '- - Dùng cho các máy xử lý dữ liệu tự động và các khối chức năng của chúng, và thiết bị viễn thông' (bản Anh '...and telecommunications apparatus'): điện thoại di động là thiết bị viễn thông, máy tính bảng là máy xử lý dữ liệu tự động, nên hàng thuộc tầng này và không phải UPS ⇒ 8504.40.19 'Loại khác' của tầng đó. Dòng 8504.40.90 chỉ là 'Loại khác' cuối cùng của phân nhóm, dành cho máy biến đổi tĩnh KHÔNG dùng cho máy xử lý dữ liệu/viễn thông (vd bộ nguồn đèn LED, nguồn tivi). Tầng 'Dùng cho... thiết bị viễn thông' / mã 8504.40.19 đã có trong biểu áp dụng giai đoạn 2018–2022 (3822/TB-TCHQ ngày 15/09/2022, ban hành trước 30/12/2022, trích nguyên chữ tầng này), nên không thể giải thích 556 bằng phiên bản biểu. Như vậy 556/TB-TCHQ là TB lệch, TB mới hơn (2307, cùng chiều 2765 và 1112/TB-TCHQ năm 2024) khớp chữ biểu; máy gắn 8504.40.90 là 'dòng chữ biểu bao' là hiểu sai — chữ biểu bao .19. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/850440-02.json (nhóm A: Hải quan đã tự sửa, dữ liệu mình còn giữ bản cũ).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "851779-01",
    "maHs": "85177921",
    "dongChuBieu": "85177999",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "19758/TB-CHQ",
@@ -5076,15 +5110,16 @@
      "trich": "Loại khác"
     }
    ],
-   "lyDo": "Hai thông báo cho cùng một hàng, mô tả giống hệt (khung nhôm hợp kim của điện thoại di động Samsung A56): 19758/TB-CHQ xếp .21 \"Của điện thoại di động\" (nhánh \"Của thiết bị truyền dẫn …\"), 18172/TB-CHQ xếp .99 \"Loại khác\". Dữ liệu không cho biết thông báo nào thay thế thông báo nào; chưa ai phân xử ⇒ ghi cả hai, không chọn bên.",
+   "lyDo": "Hai thông báo không phải hai kết quả song song mà là bản gốc và bản sửa: 18172/TB-CHQ ngày 07/08/2025 xếp khung điện thoại vào 8517.79.99, sau đó 8 ngày chính Cục Hải quan ban hành 19758/TB-CHQ ngày 15/08/2025 'Về sửa đổi, thay thế thông báo kết quả xác định trước mã số' cho cùng doanh nghiệp (LUXCASE), ghi rõ thay thế 18172 và xếp lại 8517.79.21. Kết quả sau khớp chữ biểu: khung là bộ phận chuyên dùng cho điện thoại di động, mà điện thoại di động thuộc tầng không mã '- - - Của thiết bị truyền dẫn, trừ loại dùng cho phát thanh sóng vô tuyến hoặc thiết bị phát truyền hình…' (bản Anh 'Of transmission apparatus, other than radio-broadcasting or television transmission apparatus…'), dưới đó có dòng riêng 8517.79.21 'Của điện thoại di động (cellular telephones)'. Dòng 8517.79.99 nằm ở tầng '- - - Loại khác' chỉ nhận bộ phận không rơi vào các tầng trước. Các TB cùng loại (1309, 4475, 4707, 5876/TB-TCHQ — khung đỡ phím, tấm chắn RF, tấm chắn màn hình OLED, băng dính của điện thoại) cũng đều xếp .21, nên Hải quan nhất quán; dòng .99 trong cặp tín hiệu chỉ là TB đã bị thay thế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/851779-01.json (nhóm A: Hải quan đã tự sửa, dữ liệu mình còn giữ bản cũ).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "851779-02",
    "maHs": "85177992",
    "dongChuBieu": "85177999",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "6449/TB-TCHQ",
@@ -5103,15 +5138,16 @@
      "trich": "Loại khác"
     }
    ],
-   "lyDo": "Cùng hàng khối thu phát vô tuyến RRU5502N (bộ phận trạm gốc UMTS/LTE), mô tả giống hệt: 6449/TB-TCHQ xếp .92 \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\", 3246/TB-TCHQ xếp .99 \"Loại khác\". Số hiệu sau có thể là thông báo thay thế nhưng dữ liệu không ghi; chưa ai phân xử ⇒ ghi cả hai, không chọn bên.",
+   "lyDo": "Hai thông báo không song song: 6449/TB-TCHQ (13/12/2023) xếp RRU5502N vào 8517.79.92, rồi Tổng cục ban hành 3246/TB-TCHQ (05/07/2024) 'sửa đổi, thay thế' 6449 và xếp lại 8517.79.99 'Loại khác'. Lý do được nêu trong Công văn 3247/TCHQ-TXNK cùng ngày 05/07/2024: chữ Việt dòng .92 'Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến' đọc thì rộng (mọi điện thoại qua sóng vô tuyến, kể cả mạng di động), nhưng bản Anh là 'Of goods for radio-telephony or radio-telegraphy' — hai thuật ngữ chuyên ngành. Theo ý kiến Bộ TT&TT (CV 1748/BTTTT-KHCN ngày 07/5/2024 và 2383/BTTTT-KHCN ngày 19/6/2024), 'radiotelephony'/'radiotelegraphy' là phương thức liên lạc của nghiệp vụ hàng hải, hàng không; trạm gốc thông tin di động mặt đất không dùng cho chúng ⇒ bộ phận trạm gốc không vào .92. Chênh thuế thật: .92 chịu MFN 5%, .99 là 0%. Cùng công văn còn tuyên bố 6 TB cũ về bộ phận trạm gốc đã hết hiệu lực và yêu cầu không tra cứu, sử dụng. Vì vậy dòng 'chữ biểu' .99 là đúng, TB .92 trong mục là TB đã bị thay thế. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/851779-02.json (nhóm A: Hải quan đã tự sửa, dữ liệu mình còn giữ bản cũ).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "851779-03",
    "maHs": "85177992",
    "dongChuBieu": "85177999",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "6448/TB-TCHQ",
@@ -5130,9 +5166,10 @@
      "trich": "Loại khác"
     }
    ],
-   "lyDo": "Cùng hàng Modem RU (Radio Unit) — thiết bị thu phát sóng viễn thông, mô tả giống hệt: 6448/TB-TCHQ xếp .92 \"Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến\", 3245/TB-TCHQ xếp .99 \"Loại khác\" (cặp song song với 6449/3246 ở mục 851779-02). Chưa ai phân xử ⇒ ghi cả hai, không chọn bên.",
+   "lyDo": "Cặp song song với 851779-02. 6448/TB-TCHQ (13/12/2023) xếp Modem RU vào 8517.79.92; Tổng cục ban hành 3245/TB-TCHQ (05/07/2024) 'sửa đổi, thay thế' 6448 và xếp lại 8517.79.99. Công văn 3247/TCHQ-TXNK ngày 05/07/2024 giải thích: dòng .92 bản Anh là 'Of goods for radio-telephony or radio-telegraphy'; theo Bộ TT&TT, 'radiotelephony'/'radiotelegraphy' là phương thức liên lạc của nghiệp vụ hàng hải, hàng không, còn trạm gốc thông tin di động mặt đất không dùng cho chúng ⇒ bộ phận trạm gốc không vào .92. Chữ Việt 'Dùng cho điện báo hoặc điện thoại truyền dẫn dưới dạng sóng vô tuyến' dễ đọc thành 'mọi thiết bị vô tuyến', đó là chỗ máy (và chính TB cũ) đọc lệch. Chênh thuế 5 điểm %: .92 MFN 5%, .99 MFN 0%. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/851779-03.json (nhóm A: Hải quan đã tự sửa, dữ liệu mình còn giữ bản cũ).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "851829-01",
@@ -5160,7 +5197,7 @@
    "id": "851829-02",
    "maHs": "85182990",
    "dongChuBieu": "85182920",
-   "loai": "LECH_CHUA_PHAN_XU",
+   "loai": "KHONG_LECH",
    "tbTchq": [
     {
      "soHieu": "2491/TB-TCHQ",
@@ -5179,9 +5216,10 @@
      "trich": "Loa, không có vỏ, có dải tần số 300 Hz đến 3.400 Hz, với đường kính không quá 50 mm, dùng trong viễn thông"
     }
    ],
-   "lyDo": "2491/TB-TCHQ xếp loa đơn dùng cho điện thoại di động vào .90, trong khi loa linh kiện điện thoại có vẻ thoả chữ .20 \"Loa, không có vỏ, … dùng trong viễn thông\". TB không nêu dải tần, đường kính, và phần thành phần có \"Vỏ loa điện thoại\" — chưa rõ có phải \"vỏ\" theo nghĩa .20 không; TB không giải thích vì sao loại .20. Thiếu dữ kiện, chưa ai phân xử ⇒ ghi cả hai, không chọn bên.",
+   "lyDo": "Dòng 8518.29.20 không phải 'mọi loa dùng trong viễn thông' mà là dòng hẹp có BỐN điều kiện cộng dồn: loa không có vỏ, dải tần 300 Hz đến 3.400 Hz, đường kính không quá 50 mm, dùng trong viễn thông (bản Anh: 'without enclosure, having a frequency range of 300 Hz to 3,400 Hz, with a diameter not exceeding 50 mm, for telecommunication use'). Dải 300–3.400 Hz là băng thoại điện thoại truyền thống; loa điện thoại thông minh hiện nay phát nhạc, chuông, video nên dải rộng hơn nhiều. Theo phần tóm lược trên Thư viện Pháp luật, hàng của 2491/TB-TCHQ (24/06/2022, AAC Technologies Việt Nam) có dải tần 100 Hz – 20 kHz — vượt cả hai đầu của 300–3.400 Hz, nên không thoả .20 dù là loa đơn dùng cho điện thoại. Thêm nữa, phần cấu tạo do doanh nghiệp khai có 'Vỏ loa điện thoại', trái điều kiện 'không có vỏ'. Hàng vẫn là loa chưa lắp vào hộp loa theo nghĩa phân nhóm 8518.29, nên rơi về 'Loại khác' 8518.29.90. Các TB khác cùng phân nhóm (7239/TB-TCHQ loa chống nổ 300 Hz–5,5 kHz; 24779, 24780/TB-CHQ loa siêu trầm) đều xếp .90 khi lệch dải tần/kích thước — Hải quan nhất quán đọc .20 theo nghĩa hẹp. Phân tích đầy đủ, căn cứ nguyên văn: docs/giao-viec/so-tay/tien-le-lech/ca/851829-02.json (nhóm D: Chữ biểu hẹp hơn cách đọc thuần, Hải quan đúng).",
    "duyetBoi": null,
-   "nguonLoai": "AI_DA_KIEM"
+   "nguonLoai": "AI_DA_KIEM",
+   "ghiChu": "CEO 07/11/2026 giao chốt theo phân tích: hàng trong TB không thoả nghĩa thật của dòng chữ biểu (hoặc TB đã bị thay thế / theo biểu cũ / máy đọc nhầm hàng) — không có lệch với chữ biểu hiện hành."
   },
   {
    "id": "852910-01",
