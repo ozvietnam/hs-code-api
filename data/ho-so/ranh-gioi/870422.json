@@ -13,6 +13,26 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "870422",
+      "nguon": "tieuDe.870422",
+      "trich": "Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 20 tấn",
+      "dieuKienSo": [
+        {
+          "fact": "khoiLuongToanBo",
+          "op": ">",
+          "value": 5,
+          "donVi": "tấn"
+        },
+        {
+          "fact": "khoiLuongToanBo",
+          "op": "<=",
+          "value": 20,
+          "donVi": "tấn"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "870422~r17072",
       "nguon": "tieuDe.870422~r17072",
       "trich": "870422~r17072 Khối lượng toàn bộ theo thiết kế (SEN) không quá 6 tấn",
@@ -432,9 +452,9 @@
       "ghiChu": "tax.87042251 \"Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 10 tấn\" ⇒ khoiLuongToanBo biên đúng chữ (tấn)"
     },
     {
-      "ma": "870422~r17083",
-      "loai": "DUNG",
-      "ghiChu": "tieuDe.870422~r17083 \"Khối lượng toàn bộ theo thiết kế (SEN) trên 6 tấn nhưng không quá 20 tấn\" — biên trên 20 tấn là biên của chính tiêu đề PN6 870422 (GVW quá 5 nhưng không quá 20 tấn) nhưng máy chưa nạp biên tiêu đề PN6 làm điều kiện nền nên cổng 1 thăm dọ vector trên 20 tấn (20000.02) báo cong1-khong-phu-kin ở gốc; giữ nguyên văn theo cổng 3, không bỏ biên để ép xanh"
+      "ma": "870422",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870422 \"Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng không quá 20 tấn\" ⇒ phạm vi phân nhóm (dieuKienNut[870422]) — chỉ để cổng 1 bỏ vector ngoài phân nhóm, không vào sổ tay lúc chạy (#1109)."
     }
   ]
 }

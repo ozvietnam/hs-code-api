@@ -13,6 +13,20 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "870333",
+      "nguon": "tieuDe.870333",
+      "trich": "Dung tích xi lanh trên 2.500 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "870333~r16632",
       "nguon": "tieuDe.870333~r16632",
       "trich": "870333~r16632 Dạng CKD (SEN)",
@@ -577,8 +591,8 @@
     },
     {
       "ma": "870333",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — cong1-khong-phu-kin (các tầng 8 số chia theo dung tích xi lanh không có con \"Loại khác\": hàng thoả tầng cha mà dưới 2.500 cc, vd dungTichXiLanh=biên dưới trừ epsilon, không rơi vào con nào). Mọi điều kiện của các mục đã đủ bằng khoá lô 20 (laOtoVan KHONG đã gỡ THIEU_KHOA; cong2-dong-khong-toi-duoc đã hết); chỉ còn hở ở biên dưới \"trên 2.500 cc\" vốn là chữ của CHÍNH tiêu đề phân nhóm 870333. Không khai được: dieuKienNut không nhận id phân nhóm 6 số (spec-ma-ngoai-phan-nhom), và thêm dungTichXiLanh > 2.500 vào tiêu đề tầng (Sedan/bốn bánh chủ động/…, \"Loại khác\") là điều kiện chữ tiêu đề đó không nói (cổng 3). Không bỏ biên ở các dòng cc để ép xanh. Cần máy nạp biên tiêu đề PN6 làm điều kiện nền cho cổng 1 (không phải khoá từ vựng)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870333 \"Dung tích xi lanh trên 2.500 cc\" ⇒ phạm vi phân nhóm (dieuKienNut[870333]) — chỉ để cổng 1 bỏ vector ngoài phân nhóm, không vào sổ tay lúc chạy (#1109)."
     }
   ]
 }

@@ -402,3 +402,17 @@ Người soát: Claude
 | ĐỎ đúng (không ép) | [`950300`](../../../data/ho-so/ranh-gioi/950300.json), [`850110`](../../../data/ho-so/ranh-gioi/850110.json) (dòng không tới được do giới hạn bộ so chữ), [`392690`](../../../data/ho-so/ranh-gioi/392690.json), [`401699`](../../../data/ho-so/ranh-gioi/401699.json) (chồng lấn theo trục, chưa khai `chongLanTruc`) | khi nào để đỏ và DỪNG |
 
 Các bản trên là JSON nháp do máy sinh; spec tương ứng của bạn chỉ chứa phần `dieuKienSo` / `ghiChuSoan` / `chongLanVanBan` / `chongLanTruc`.
+
+## Phụ lục — Phạm vi phân nhóm `dieuKienNut[<pn6>]` (#1109, Claude chốt 07/11/2026)
+
+Cổng 1 báo `cong1-khong-phu-kin` với vector **trái chính tên phân nhóm 6 số** (8703.23 "trên 1.500 cc" ↔ vector 1.499 cc;
+6406.20 "bằng cao su hoặc plastic" ↔ vector giấy) ⇒ đó KHÔNG phải khe hở. Khai điều kiện của chính phân nhóm:
+
+```json
+"dieuKienNut": { "870323": { "nguon": "tieuDe.870323", "trich": "Dung tích xilanh trên 1.500 cc nhưng không quá 3.000 cc",
+  "dieuKienSo": [ {"fact":"dungTichXiLanh","op":">","value":1500,"donVi":"cc"}, {"fact":"dungTichXiLanh","op":"<=","value":3000,"donVi":"cc"} ] } }
+```
+
+`trich` = tên phân nhóm NGUYÊN VĂN (`--goi` dòng `# <pn6> — …`); điều kiện đọc từ chính tên đó. Mục này chỉ để cổng 1 bỏ vector
+ngoài phạm vi, KHÔNG vào sổ tay lúc chạy. Vector số ±ε nằm TRONG phạm vi mà không vào nhánh nào là biên spec sai — sửa op, không
+làm tròn. Phân loại 46 ca: `docs/giao-viec/so-tay/dung-khong-phu-kin.md`.

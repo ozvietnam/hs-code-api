@@ -1,81 +1,87 @@
-# Phân tích 46 PN6 DỪNG "không phủ kín" — issue #1109
+# 46 PN6 DỪNG "không phủ kín" (cong1-khong-phu-kin) — phân tích lại (#1109)
 
-## Phân loại tổng quát
+Thay bản #1131 (đã gộp nhầm dù bị trả về: đề xuất làm tròn biên ε, thêm giá trị vào khoá @1 `chatLieu` và ví dụ hàng không có thật đều bị bác). Máy phân loại theo vector hở mà `--kiem` báo (`scripts` tạm: so vector với chính tên phân nhóm 6 số), Claude soát và sửa.
 
-| Loại | Số | Mô tả | Xử lý |
-|---|---|---|---|
-| **B — Khoảng trống thật** | 18 | Biểu thuế không có "Loại khác" hoặc khoảng hở do tầng không mã | Ghi vùng hở, không sửa |
-| **C — Biên số thực (epsilon)** | 14 | Vector sinh biên ±1e-6 (149.99985, 4999.995...) rơi ngoài mọi nhánh | Cần công cụ: bỏ epsilon khi biên đẹp |
-| **A — Lỗi soạn spec** | 8 | Điều kiện chưa đủ hoặc khoá sai | Sửa spec được |
-| **A2 — Chương 98 đặc biệt** | 6 | Chương 98 (984xxx) — cấu trúc phépgregation khác thường | Xử lý riêng #1111 |
+## Phát hiện chính
 
-## Chi tiết từng PN6
+Phần lớn "khe hở" KHÔNG phải khe hở của biểu thuế: bộ sinh vector của cổng 1 tạo cả hàng **trái chính tên phân nhóm** (8703.23 "trên 1.500 cc" ↔ 1.499 cc; 6406.20 "bằng cao su hoặc plastic" ↔ giấy). Spec trước đây không khai được điều kiện cho nút phân nhóm. Nay có `dieuKienNut[<pn6>]` (nguồn `tieuDe.<pn6>` = tên nguyên văn phân nhóm): cổng 1 bỏ vector ngoài phạm vi; mục này KHÔNG vào sổ tay lúc chạy.
 
-### Loại B — Khoảng trống thật của biểu (18 PN6)
-| PN6 | Vùng hở | Ví dụ hàng rơi vào hở |
+## Quy ước (Claude chốt 07/11/2026)
+
+1. **E** — vector trái chính tên phân nhóm ⇒ khai `dieuKienNut[<pn6>]` với điều kiện đọc từ tên phân nhóm (`trich` = nguyên văn tên).
+2. **A** — biên số ±ε nằm TRONG phạm vi mà không vào nhánh nào ⇒ spec ghi biên sai so với chữ (≤/<, hai nhánh không nối liền) ⇒ sửa spec. KHÔNG đề xuất làm tròn biên.
+3. **B** — tên/công dụng ngoài mọi nhánh ở tầng không có "Loại khác" ⇒ khoảng trống thật của chữ biểu ⇒ giữ DỪNG, ghi chú nêu tầng và chữ các nhánh.
+4. **C** — giá trị liệt kê chung không vào nhánh chi tiết ⇒ THIEU_KHOA_TU_VUNG (phân cấp giá trị khoá), không ép.
+
+## E — Vector trái chính tên phân nhóm — ĐÃ SỬA bằng dieuKienNut[<pn6>] (9)
+
+| PN6 | Tên phân nhóm | Vector hở (mẫu) |
 |---|---|---|
-| 020760 | daChatManh=true + phuongPhapBaoQuan=SONG không có nhánh nhận | Thịt da mực sống tươi (không đông lạnh, không đã nấu) |
-| 030633 | Ghẹ xanh sống (không DONG_LANH, không tenLoai cụ thể) | Ghẹ xanh tươi chưa phân loại |
-| 030639 | Mực các loại sống, không DONG_LANH | Mục tươi không phân loai |
-| 030742 | Mực nang — không có nhánh "loại khác" cho mực nang | Mực nang chế biến khác |
-| 030749 | Mực nang — tương tự 030742 | |
-| 080450 | Xoài sống chưa đóng gói (dongGoiBanLe=false) | Xoài tươi rời |
-| 300410 | Penicillin G KHÔNG chứa penicillin (chuaPenicillin=false) — biểu không có dòng cho | Penicillin G thô chưa tinh chế |
-| 321290 | Ván sợi dày, không phải sản phẩm (dungCho=sản xuất) | Ván sợi thô bán thành phẩm |
-| 610520 | Loại sợi det BONG — không có nhánh "loại khác" cho BONG | Sợi bông thuộc 6105 khác |
-| 842490 | Bộ phận cho 8424.20.11 — biểu không nói gì khác | Chi tiết khác của máy in 8424 |
-| 870600 | Xe ô tô — khoảng hở giữa các nhánh động cơ | Ô tô lai không phân loại |
-| 870891 | Nút xả (laBoPhan=false) — không có nhánh "loại khác" nút xả | Nút xả rời không lắp |
-| 871690 | Dùng cho 8716.20 — không có "loại khác" | Trailer khác |
-| 901310 | Kính viễn vọng vũ khí — không có "loại khác" | Kính ngắm khác |
-| 984932 | Bóng đèn ha-lo-gien không laBoPhan | Bóng đèn bán rời |
-| 984937 | Đồng hồ lưu lượng — không có "loại khác" | Đồng hồ khác |
-| 984940 | Miếng lót — không có "loại khác" | Miếng lót khác |
-| 984912 | Chỉ dùng cho ô tô con — khoảng hở giữa con/xe tải | Phụ tùng xe con khác |
+| 640620 | Đế ngoài và gót giày, bằng cao su hoặc plastic | `chatLieu=CHINH:giấy` |
+| 854460 | Các vật dẫn điện khác(*), dùng cho điện áp trên 1000 V | `dienAp=999.999` |
+| 870323 | Dung tích xilanh trên 1.500 cc nhưng không quá 3.000 cc | `daLapRap=false,dungTichXiLanh=1499.9985,kieuXeChoNguoi=SEDAN` |
+| 870332 | Dung tích xi lanh trên 1.500 cc nhưng không quá 2.500 cc | `daLapRap=false,dungTichXiLanh=1499.9985,kieuXeChoNguoi=SEDAN` |
+| 870333 | Dung tích xi lanh trên 2.500 cc | `daLapRap=false,dungTichXiLanh=2499.9975,kieuXeChoNguoi=SEDAN` |
+| 870422 | Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng khôn | `khoiLuongToanBo=20000.02` |
+| 870442 | Khối lượng toàn bộ theo thiết kế (SEN) trên 5 tấn nhưng khôn | `khoiLuongToanBo=20000.02` |
+| 940421 | Bằng cao su xốp hoặc bằng plastic xốp, đã hoặc chưa bọc | `chatLieu=CHINH:giấy` |
+| 961511 | Bằng cao su cứng hoặc plastic | `chatLieu=CHINH:giấy` |
 
-### Loại C — Biên số thực / epsilon (14 PN6)
-| PN6 | Biên gặp lỗi | Giá trị vector | Biến |
-|---|---|---|---|
-| 480100 | chieuKiaTo 149.99985, chieuRong 279.99972 | 150±ε, 280±ε | chieuKiaTo, chieuRong |
-| 854460 | dienAp 999.999 | 1000±ε | dienAp |
-| 870323 | dungTichXiLanh 1499.9985 | 1500±ε | dungTichXiLanh |
-| 870332 | dungTichXiLanh 1499.9985 | 1500±ε | dungTichXiLanh |
-| 870333 | dungTichXiLanh 2499.9975 | 2500±ε | dungTichXiLanh |
-| 870422 | khoiLuongToanBo 20000.02 | 20000±ε | khoiLuongToanBo |
-| 870442 | khoiLuongToanBo 20000.02 | 20000±ε | khoiLuongToanBo |
-| 870460 | khoiLuongToanBo 4999.995 | 5000±ε | khoiLuongToanBo |
-| 983610 | khoiLuongToanBo 19999.98 | 20000±ε | khoiLuongToanBo |
-| 981822 | congSuat 263.0 | 263 | congSuat |
-| 984933 | dienAp 999.999 | 1000±ε | dienAp |
-| 984942 | congSuat 999.999 | 1000±ε | congSuat |
-| 391690 | tenLoai polypropylen | — | Loại C: cần khoá tenLoai polypropylen |
-| 640620 | chatLieu giấy | — | Loại C: giấy cần trong khoá chatLieu |
+## A — Biên số ±ε trong phạm vi mà không vào nhánh nào — spec ghi biên sai, sửa op/biên (10)
 
-### Loại A — Lỗi soạn spec, sửa được (8 PN6)
-| PN6 | Lỗi | Cách sửa |
+| PN6 | Tên phân nhóm | Vector hở (mẫu) |
 |---|---|---|
-| 847790 | cong1-chua-so-hoa 84779032 | Thêm điều kiện dòng 84779032 |
-| 851140 | daLapRap + dungCho 87.01-87.05 | Tách theo dungCho cụ thể từng nhóm |
-| 851150 | Tương tự 851140 | Tách theo dungCho |
-| 870892 | dungCho 8704.10 + tenLoai "ẑẑẑ" | Sửa tenLoai rác → đúng tên |
-| 984916 | dungCho "ẑẑẑ" | Sửa giá trị rác |
-| 984918 | dungCho "ẑẑẑ" | Sửa giá trị rác |
-| 984931 | dungCho "ẑẑẑ" | Sửa giá trị rác |
-| 940421 | chatLieu giấy — thiếu điều kiện khác | Thêm điều kiện dạng giấy |
+| 480100 | Giấy in báo, dạng cuộn hoặc tờ. | `chieuKiaTo=149.99985,chieuRong=279.99972,daGap=true,dangCuon=false,dangToChuNhat=true,dinh` |
+| 842490 | Bộ phận | `dungCho=8424.20.11` |
+| 851140 | Động cơ khởi động và máy tổ hợp hai tính năng khởi động và p | `daLapRap=true,dungCho=87.01` |
+| 851150 | Máy phát điện khác | `daLapRap=true,dungCho=87.01` |
+| 870460 | Loại khác, chỉ sử dụng động cơ điện để tạo động lực | `khoiLuongToanBo=4999.995` |
+| 871690 | Bộ phận | `dungCho=8716.20` |
+| 981822 | Máy điều hoà không khí, sử dụng cho xe chạy trên đường ray | `coBoPhanLamLanh=true,coVanDaoChieu=false,congSuat=26379.97362,dungCho=xe` |
+| 983610 | Của xe tự đổ được thiết kế để sử dụng trên các loại đường kh | `khoiLuongToanBo=19999.98` |
+| 984933 | Dây điện, cáp điện (kể cả cáp đồng trục) có cách điện (kể cả | `dienAp=999.999,dungCho=xe` |
+| 984942 | Động cơ điện thuộc nhóm 85.01, trừ loại dùng cho các mặt hàn | `congSuat=999.999,daPha=true,loaiDongDien=XOAY_CHIEU,tenLoai=Động` |
 
-### Loại A2 — Chương 98 đặc biệt (6 PN6)
-| PN6 | Ghi chú |
-|---|---|
-| 981000 | Cấu trúc chương 98: cấp 2→4 số khác thường |
-| 983412 | Tương tự |
-| 984923 | dungCho động cơ 87.02-87.05 — cần tách |
-| 984930 | daLapRap + tenLoai — cần tách |
-| 984934 | dungCho 87.03 + laBoPhan — cần tách |
+## B — Tên/công dụng ngoài mọi nhánh ở tầng không có "Loại khác" — khoảng trống chữ biểu, giữ DỪNG (4)
 
-## Đề xuất quy ước cho Claude chốt
+| PN6 | Tên phân nhóm | Vector hở (mẫu) |
+|---|---|---|
+| 870892 | Ống xả và bộ giảm thanh; bộ phận của chúng | `dungCho=8704.10,laBoPhan=false,tenLoai=ẑẑẑ` |
+| 984916 | Kính an toàn, bao gồm kính tôi hoặc kính dán nhiều lớp (lami | `dungCho=ẑẑẑ,tenLoai=Kính` |
+| 984918 | Lò xo và lá lò xo, bằng sắt hoặc thép | `dungCho=ẑẑẑ,tenLoai=Lò` |
+| 984931 | Thiết bị điện để đóng ngắt mạch hay bảo vệ mạch điện, hoặc d | `dungCho=ẑẑẑ,tenLoai=Cầu` |
 
-1. **Loại B**: không sửa — ghi nhận khoảng trống thật là hành vi đúng (biểu không mô tả)
-2. **Loại C biên epsilon**: công cụ cần bỏ epsilon khi biên là số "đẹp" (300, 150, 5000, 1000, 20000). Đề xuất: nếu `abs(bien - round(bien)) < 1e-3` → dùng `round(bien)` thay vì `bien ± epsilon`
-3. **Loại C khoá thiếu giá trị**: thêm giá trị vào khoá LIET_KE hiện có (vd chatLieu thêm "giấy", tenLoai thêm "polypropylen")
-4. **Loại A**: sửa spec theo hướng dẫn từng dòng
-5. **Loại A2 chương 98**: xử lý riêng trong #1111
+## C — Giá trị liệt kê chung (vd NHAN_TAO) không vào nhánh chi tiết — vấn đề phân cấp khoá (3)
+
+| PN6 | Tên phân nhóm | Vector hở (mẫu) |
+|---|---|---|
+| 610520 | Từ sợi nhân tạo | `loaiSoiDet=BONG` |
+| 981000 |  | `chatLieu=CHINH:plastic,congDung=sản` |
+| 983412 | Các sản phẩm khác bằng sắt hoặc thép | `chatLieu=CHINH:plastic,congDung=sản` |
+
+## ? — Cần soát tay (21)
+
+| PN6 | Tên phân nhóm | Vector hở (mẫu) |
+|---|---|---|
+| 020760 | Của gà lôi | `daChatManh=true,phuongPhapBaoQuan=SONG` |
+| 030633 | Cua, ghẹ | `phuongPhapBaoQuan=DONG_LANH,tenLoai=Ghẹ` |
+| 030639 | Loại khác | `phuongPhapBaoQuan=DONG_LANH` |
+| 030742 | Sống, tươi hoặc ướp lạnh | `tenLoai=Mực` |
+| 030749 | Loại khác | `tenLoai=Mực` |
+| 080450 | Quả ổi, xoài và măng cụt | `phuongPhapBaoQuan=SONG,tenLoai=Quả` |
+| 210690 | Loại khác  [CÓ CỜ HIỆU CHỈNH TIỀN LỆ — bảng L1-4b đã có mục: | `chuaCon=true,congDung=làm` |
+| 300410 | Chứa penicillins hoặc dẫn xuất của chúng, có cấu trúc axit p | `chuaPenicillin=false,tenLoai=penicillin` |
+| 321290 | Loại khác  [CÓ CỜ HIỆU CHỈNH TIỀN LỆ — bảng L1-4b đã có mục: | `dangLongHoacNhao=true,dongGoiBanLe=false,dungCho=sản` |
+| 391690 | Từ plastic khác | `tenLoai=polypropylen` |
+| 847790 | Bộ phận | `dungCho=các` |
+| 870600 | 8706 - Khung gầm đã lắp động cơ, dùng cho xe có động cơ thuộ | `dungCho=ô` |
+| 870891 | Két nước làm mát và bộ phận của chúng | `laBoPhan=false,tenLoai=Nút` |
+| 901310 | Kính ngắm để lắp vào vũ khí; kính tiềm vọng; kính viễn vọng  | `dungCho=vũ` |
+| 984912 | Lốp loại bơm hơi bằng cao su, chưa qua sử dụng | `dungCho=sử` |
+| 984923 | Bơm chất lỏng, có hoặc không lắp thiết bị đo; máy đẩy chất l | `dungCho=động` |
+| 984930 | Thiết bị chiếu sáng hoặc thiết bị tín hiệu hoạt động bằng đi | `daLapRap=true,tenLoai=Thiết` |
+| 984932 | Bóng đèn dây tóc hoặc bóng đèn phóng điện, kể cả đèn pha gắn | `laBoPhan=false,tenLoai=Bóng` |
+| 984934 | Bộ phận và phụ kiện của xe có động cơ thuộc các nhóm từ 87.0 | `dungCho=xe` |
+| 984937 | Dụng cụ và máy đo hoặc kiểm tra lưu lượng, mức, áp suất hoặc | `congDung=lưu` |
+| 984940 | Ghế ngồi (trừ các loại thuộc nhóm 94.02), có hoặc không chuy | `dungChoXeCoDongCo=true,laBoPhan=false,tenLoai=Miếng` |
+
