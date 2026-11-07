@@ -1,0 +1,832 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "870323",
+  "nhom": "8703",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-870323",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "870323",
+      "nguon": "tieuDe.870323",
+      "trich": "Dung tích xilanh trên 1.500 cc nhưng không quá 3.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 3000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "870323~r16487",
+      "nguon": "tieuDe.870323~r16487",
+      "trich": "870323~r16487 Dạng CKD (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "daLapRap",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "870323~r16497",
+      "nguon": "tieuDe.870323~r16497",
+      "trich": "870323~r16497 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động",
+      "dieuKienSo": [
+        {
+          "fact": "bonBanhChuDong",
+          "op": "CO"
+        },
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "id": "870323~r16502",
+      "nguon": "tieuDe.870323~r16502",
+      "trich": "870323~r16502 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động",
+      "dieuKienSo": [
+        {
+          "fact": "bonBanhChuDong",
+          "op": "KHONG"
+        },
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "id": "870323~r16513",
+      "nguon": "tieuDe.870323~r16513",
+      "trich": "870323~r16513 Ô tô kiểu Sedan (SEN) (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "SEDAN"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "870323~r16518",
+      "nguon": "tieuDe.870323~r16518",
+      "trich": "870323~r16518 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động",
+      "dieuKienSo": [
+        {
+          "fact": "bonBanhChuDong",
+          "op": "CO"
+        },
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "id": "870323~r16523",
+      "nguon": "tieuDe.870323~r16523",
+      "trich": "870323~r16523 Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), không phải loại bốn bánh chủ động",
+      "dieuKienSo": [
+        {
+          "fact": "bonBanhChuDong",
+          "op": "KHONG"
+        },
+        {
+          "fact": "laOtoVan",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "id": "8703232",
+      "nguon": "tieuDe.8703232",
+      "trich": "8703232 Ô tô kiểu Sedan (SEN) (1)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "SEDAN"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "87032311",
+      "nguon": "tax.87032311",
+      "trich": "87032311 - - - - Ô tô cứu thương",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "CUU_THUONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032312",
+      "nguon": "tax.87032312",
+      "trich": "87032312 - - - - Ô tô tang lễ",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "TANG_LE"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032313",
+      "nguon": "tax.87032313",
+      "trich": "87032313 - - - - Ô tô chở phạm nhân",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "CHO_PHAM_NHAN"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032314",
+      "nguon": "tax.87032314",
+      "trich": "87032314 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "NHA_O_LUU_DONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032321",
+      "nguon": "tax.87032321",
+      "trich": "87032321 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032322",
+      "nguon": "tax.87032322",
+      "trich": "87032322 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032323",
+      "nguon": "tax.87032323",
+      "trich": "87032323 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032324",
+      "nguon": "tax.87032324",
+      "trich": "87032324 - - - - - Dung tích xi lanh trên 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032331",
+      "nguon": "tax.87032331",
+      "trich": "87032331 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032332",
+      "nguon": "tax.87032332",
+      "trich": "87032332 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032333",
+      "nguon": "tax.87032333",
+      "trich": "87032333 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032334",
+      "nguon": "tax.87032334",
+      "trich": "87032334 - - - - - Dung tích xi lanh trên 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032335",
+      "nguon": "tax.87032335",
+      "trich": "87032335 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032336",
+      "nguon": "tax.87032336",
+      "trich": "87032336 - - - - - Dung tích xi lanh trên 2.000 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032341",
+      "nguon": "tax.87032341",
+      "trich": "87032341 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 2.000 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032342",
+      "nguon": "tax.87032342",
+      "trich": "87032342 - - - - - Dung tích xi lanh trên 2.000 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032351",
+      "nguon": "tax.87032351",
+      "trich": "87032351 - - - - Ô tô cứu thương",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "CUU_THUONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032352",
+      "nguon": "tax.87032352",
+      "trich": "87032352 - - - - Ô tô tang lễ",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "TANG_LE"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032353",
+      "nguon": "tax.87032353",
+      "trich": "87032353 - - - - Ô tô chở phạm nhân",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "CHO_PHAM_NHAN"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032354",
+      "nguon": "tax.87032354",
+      "trich": "87032354 - - - - Ô tô nhà ở lưu động (có nội thất được thiết kế như căn hộ) (Motor-homes)",
+      "dieuKienSo": [
+        {
+          "fact": "kieuXeChoNguoi",
+          "op": "TRONG",
+          "value": [
+            "NHA_O_LUU_DONG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032355",
+      "nguon": "tax.87032355",
+      "trich": "87032355 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032356",
+      "nguon": "tax.87032356",
+      "trich": "87032356 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032357",
+      "nguon": "tax.87032357",
+      "trich": "87032357 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032358",
+      "nguon": "tax.87032358",
+      "trich": "87032358 - - - - - Dung tích xi lanh trên 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032361",
+      "nguon": "tax.87032361",
+      "trich": "87032361 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032362",
+      "nguon": "tax.87032362",
+      "trich": "87032362 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032363",
+      "nguon": "tax.87032363",
+      "trich": "87032363 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032364",
+      "nguon": "tax.87032364",
+      "trich": "87032364 - - - - - Dung tích xi lanh trên 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032365",
+      "nguon": "tax.87032365",
+      "trich": "87032365 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032366",
+      "nguon": "tax.87032366",
+      "trich": "87032366 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032367",
+      "nguon": "tax.87032367",
+      "trich": "87032367 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032368",
+      "nguon": "tax.87032368",
+      "trich": "87032368 - - - - - Dung tích xi lanh trên 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032371",
+      "nguon": "tax.87032371",
+      "trich": "87032371 - - - - - Dung tích xi lanh trên 1.500 cc nhưng không quá 1.800 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1500,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 1800,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032372",
+      "nguon": "tax.87032372",
+      "trich": "87032372 - - - - - Dung tích xi lanh trên 1.800 cc nhưng không quá 2.000 cc",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 1800,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2000,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032373",
+      "nguon": "tax.87032373",
+      "trich": "87032373 - - - - - Dung tích xi lanh trên 2.000 cc nhưng không quá 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2000,
+          "donVi": "cc"
+        },
+        {
+          "fact": "dungTichXiLanh",
+          "op": "<=",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "87032374",
+      "nguon": "tax.87032374",
+      "trich": "87032374 - - - - - Dung tích xi lanh trên 2.500 cc ",
+      "dieuKienSo": [
+        {
+          "fact": "dungTichXiLanh",
+          "op": ">",
+          "value": 2500,
+          "donVi": "cc"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "870323~r16487",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16487 \"Dạng CKD (SEN)\" ⇒ daLapRap KHONG (cách đọc KHÔNG của daLapRap có \"CKD\"); cụm \"(SEN)\" là tên nguồn, không là điều kiện"
+    },
+    {
+      "ma": "870323~r16497",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16497 \"Ô tô khác (kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao, nhưng không kể ô tô van), loại bốn bánh chủ động\" ⇒ phanConLai true (phần còn lại có tên sau cứu thương/tang lễ/chở phạm nhân/nhà ở lưu động/Sedan) + bonBanhChuDong CO; \"kể cả…\" là vế PHU theo luật 3.8"
+    },
+    {
+      "ma": "870323~r16502",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16502 \"…, không phải loại bốn bánh chủ động\" ⇒ phanConLai true + bonBanhChuDong KHONG"
+    },
+    {
+      "ma": "870323~r16518",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16518 như r16497: phanConLai true + bonBanhChuDong CO"
+    },
+    {
+      "ma": "870323~r16523",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16523 như r16502: phanConLai true + bonBanhChuDong KHONG"
+    },
+    {
+      "ma": "870323~r16497",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16497 \"…, nhưng không kể ô tô van\" ⇒ laOtoVan KHONG (khoá tu-vung@2 mới, cách đọc KHÔNG có \"không kể ô tô van\"); cụm \"(kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao\" là vế PHU theo luật 3.8"
+    },
+    {
+      "ma": "870323~r16502",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16502 \"…, nhưng không kể ô tô van\" ⇒ laOtoVan KHONG (khoá tu-vung@2 mới, cách đọc KHÔNG có \"không kể ô tô van\"); cụm \"(kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao\" là vế PHU theo luật 3.8"
+    },
+    {
+      "ma": "870323~r16518",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16518 \"…, nhưng không kể ô tô van\" ⇒ laOtoVan KHONG (khoá tu-vung@2 mới, cách đọc KHÔNG có \"không kể ô tô van\"); cụm \"(kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao\" là vế PHU theo luật 3.8"
+    },
+    {
+      "ma": "870323~r16523",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323~r16523 \"…, nhưng không kể ô tô van\" ⇒ laOtoVan KHONG (khoá tu-vung@2 mới, cách đọc KHÔNG có \"không kể ô tô van\"); cụm \"(kể cả ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô thể thao\" là vế PHU theo luật 3.8"
+    },
+    {
+      "ma": "870323",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870323 \"Dung tích xilanh trên 1.500 cc nhưng không quá 3.000 cc\" ⇒ phạm vi phân nhóm dungTichXiLanh > 1500 và <= 3000 cc (chỉ để cổng 1 bỏ vector ngoài phân nhóm, #1109)."
+    }
+  ]
+}
