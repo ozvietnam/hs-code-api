@@ -18,9 +18,11 @@
       "trich": "151190~r1922 Các phần phân đoạn thể rắn",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Các phần phân đoạn thể rắn"
+          "fact": "thePhanDoan",
+          "op": "TRONG",
+          "value": [
+            "THE_RAN"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -31,9 +33,11 @@
       "trich": "151190~r1925 Các phần phân đoạn thể lỏng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Các phần phân đoạn thể lỏng"
+          "fact": "thePhanDoan",
+          "op": "TRONG",
+          "value": [
+            "THE_LONG"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -97,7 +101,20 @@
       "hs": "15119031",
       "nguon": "tax.15119031",
       "trich": "15119031 - - - - Có chỉ số iốt từ 30 trở lên, nhưng dưới 40",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "chiSoIot",
+          "op": ">=",
+          "value": 30,
+          "donVi": "IV"
+        },
+        {
+          "fact": "chiSoIot",
+          "op": "<",
+          "value": 40,
+          "donVi": "IV"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -125,8 +142,22 @@
       "hs": "15119037",
       "nguon": "tax.15119037",
       "trich": "15119037 - - - - Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
+      "dieuKienSo": [
+        {
+          "fact": "chiSoIot",
+          "op": ">=",
+          "value": 55,
+          "donVi": "IV"
+        },
+        {
+          "fact": "chiSoIot",
+          "op": "<",
+          "value": 60,
+          "donVi": "IV"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "15119039",
@@ -141,9 +172,11 @@
       "trich": "15119041 - - - Các phần phân đoạn thể rắn (SEN)",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Các phần phân đoạn thể rắn"
+          "fact": "thePhanDoan",
+          "op": "TRONG",
+          "value": [
+            "THE_RAN"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -220,8 +253,8 @@
     },
     {
       "ma": "151190",
-      "loai": "DUNG",
-      "ghiChu": "[THIẾU KHOÁ TỪ VỰNG] Tầng «Các phần phân đoạn của dầu tinh chế» chia con (tầng không mã) theo THỂ RẮN / THỂ LỎNG; từ vựng chưa có khoá trạng thái rắn–lỏng. CẦN: khoá mới «thể rắn / thể lỏng» (dùng chung với 151329). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): tieuDe.151190~r1922 \"Các phần phân đoạn thể rắn\" / r1925 \"Các phần phân đoạn thể lỏng\" và tax.15119041 ⇒ khoá mới thePhanDoan (THE_RAN/THE_LONG). tax.15119031 \"Có chỉ số iốt từ 30 trở lên, nhưng dưới 40\" ⇒ chiSoIot ≥ 30, < 40 (IV); tax.15119037 \"Loại khác, có chỉ số iốt từ 55 trở lên, nhưng dưới 60\" ⇒ chiSoIot ≥ 55, < 60 + phanConLai (phần còn lại sau .36)."
     }
   ]
 }

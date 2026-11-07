@@ -8,10 +8,9 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **59** |
+| DỪNG hiện tại | **54** |
 | Chờ anh: Q2 (văn bản ô tô), Q3 (nguồn Chương 98) | 32 |
 | Q1 còn lại — Claude xác minh / sửa bộ máy | 4 |
-| Thiếu khoá từ vựng (giao thẻ khoá) | 5 |
 | Claude làm tiếp (công cụ / soát lại) | 18 |
 
 ## Việc cần anh quyết
@@ -49,7 +48,6 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 
 | Việc | PN6 |
 |---|---|
-| Khoá mới: «đã biến đổi hoá học» (mỡ/dầu), «thể rắn / thể lỏng», chỉ số iốt không đơn vị, vật liệu polyme | 151800, 151329, 151190, 151620, 391690 |
 | Từ vựng khai «giá trị chung ⊃ giá trị riêng» (sợi nhân tạo ⊃ tổng hợp, tái tạo) — đổi cả cách so lúc chạy | 610520 |
 | Cơ chế đính chính khoá @1 đọc sai nghĩa («micro switch») | 853650 |
 | «Bộ phận» trơn = bộ phận của tầng trên; luật «hàng không là bộ phận của chính nó» | 870895, 870891 |
@@ -100,12 +98,6 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | 984940 | Ghế ngồi (trừ các loại thuộc nhóm 94.02), có hoặc không chuyển được th | Khe ở «Ghế ngồi (trừ các loại thuộc nhóm 94.02), có hoặc không chuyển được thành giường»; vd: dungChoXeCoDongCo «có», là bộ phận «không», tên «Miếng lót» | Q3 |
 | 984942 | Động cơ điện thuộc nhóm 85.01, trừ loại dùng cho các mặt hàng thuộc nh | Khe ở «Động cơ điện thuộc nhóm 85.01, trừ loại dùng cho các mặt hàng thuộc nhóm 84.15, »; vd: công suất «999.999», daPha «có», loaiDongDien «XOAY_CHIEU», tên «Động cơ vạn năng một chiều/xoay chiều» | Q3 |
 | 984943 | Pin và bộ pin | Cây lược mất một tầng: hai dòng .21 «Có thể tích ngoài không quá 300 cm3» / .29 «Loại khác» đúng ra nằm dưới tầng «pin không phải liti» nhưng biểu không ghi tên tầng, nên máy xếp ngang hàng với .10 «Bằng liti» ⇒ pin liti ≤ 300 cm3 bị coi là chồng. | Q3 |
-| **THIẾU KHOÁ TỪ VỰNG** | | | |
-| 151190 | Loại khác | Tầng «Các phần phân đoạn của dầu tinh chế» chia con (tầng không mã) theo THỂ RẮN / THỂ LỎNG; từ vựng chưa có khoá trạng thái rắn–lỏng. | khoá mới «thể rắn / thể lỏng» (dùng chung với 151329). |
-| 151329 | Loại khác | Tầng «Các phần phân đoạn của dầu… chưa tinh chế» chia con theo THỂ RẮN / THỂ LỎNG; từ vựng chưa có khoá trạng thái rắn–lỏng nên hàng chỉ ghi «phần phân đoạn» không vào con nào. | khoá mới «thể rắn / thể lỏng». |
-| 151620 | Chất béo và dầu thực vật và các phần phân đoạn của chúng | Dòng «Stearin cọ, có chỉ số iốt không quá 48»: khoá chiSoIot đòi đơn vị «IV» nhưng chữ biểu ghi số trần, nên không ghi được điều kiện số. | cho khoá chiSoIot nhận số không đơn vị (chỉ số iốt là số thuần). |
-| 151800 | Chất béo và dầu động vật hoặc thực vật và các phần phân đoạn của chúng | Biểu chia 15.18 theo hai tiêu chí: tầng 1518001 là mỡ/dầu ĐÃ BIẾN ĐỔI HOÁ HỌC (đun sôi, oxy hoá, khử nước, sulphat hoá, thổi khô, polyme hoá…), còn .20, tầng 1518003, .60 là HỖN HỢP/CHẾ PHẨM KHÔNG ĂN ĐƯỢC. Spec chỉ ghi tên loại dầu nên hai bên chồng nhau. | khoá mới «đã biến đổi hoá học» (đọc các chữ đun sôi, oxy hoá, khử nước…); vế «không ăn được» dùng khoá có sẵn thichHopDungChoNguoi KHONG. |
-| 391690 | Từ plastic khác | Biểu chia theo VẬT LIỆU (polypropylen, polystyren, nhựa phenolic…) rồi tầng «Loại khác» chia theo HÌNH DẠNG (monofilament; thanh, que, dạng hình), nhưng spec ghi cả hai trục bằng tenLoai ⇒ hàng «polypropylen» (không nêu hình dạng) bị coi là hở. | khoá vật liệu polyme riêng để tách hai trục. |
 | **GIÁ TRỊ CHUNG** | | | |
 | 610520 | Từ sợi nhân tạo | «Từ sợi nhân tạo» bao gồm «sợi tổng hợp» (.10) và «sợi tái tạo» (.20). Tờ khai ghi chung «sợi nhân tạo» bị coi là TRÁI cả hai dòng, đúng ra phải hỏi lại. | từ vựng khai giá trị chung ⊃ giá trị riêng (NHAN_TAO ⊃ SOI_TONG_HOP, SOI_TAI_TAO) để bộ so trả «chưa biết». Phạm vi phân nhóm đã khai (07/11). |
 | **TỪ VỰNG ĐỌC SAI NGHĨA** | | | |
@@ -144,6 +136,7 @@ nguồn không. Nếu nạp, cần bản chính thức; Claude làm phần nạp
 | #1150 (Q1) | 140490, 271019, 370500, 392690, 442191, 480431, 481190, 481690, 482390, 640319, 640391, 640399, 640411, 650610, 721391, 721399, 741810, 741920, 741980, 760421, 848610, 850440, 851981, 852329, 854370 | Khai chồng lấn không có hàng thật (Q1) hoặc chồng thật kèm hàng; sửa trục, sửa spec sót tên/vế (271019 .72, 741980 .80) |
 | #1151 | 480254, 480255, 721114, 730630, 730640 | Xác minh theo SEN: chồng THẬT kèm hàng, hoặc Q1; trục số DAC_DIEM; cặp DAC_DIEM cùng trục khai chongLanVanBan |
 | #1152 | 870850, 870899, 852910, 870829 | Spec sót vế «không phải bộ phận»; Q1 giá đỡ bình ắc quy; bộ kiểm ghép ứng viên trong HOẶC và «chữ đích + mã trơn» |
+| #1153 | 151190, 151329, 151620, 151800, 391690 | Khoá từ vựng mới thePhanDoan, cachBienDoiDau, dangVayManh, nhomPolyme, dangSanPhamNhom1518; chiSoIot đọc số không đơn vị; phạm vi phân nhóm (151329, 391690) |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự

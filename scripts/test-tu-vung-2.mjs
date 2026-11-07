@@ -310,6 +310,12 @@ const KHOA_MOI = {
   viNgot: 'CO_KHONG',
   xeBaBanh: 'CO_KHONG',
   xichXeDapMoTo: 'CO_KHONG',
+  // 07/11/2026 (#1109, Claude): khoá cho PN6 DỪNG nhóm dầu mỡ 15.11–15.18 và 39.16
+  thePhanDoan: 'LIET_KE',
+  cachBienDoiDau: 'LIET_KE',
+  dangVayManh: 'CO_KHONG',
+  nhomPolyme: 'LIET_KE',
+  dangSanPhamNhom1518: 'LIET_KE',
 };
 
 // ── 1. Nạp theo phiên bản ─────────────────────────────────────────────────────────────────────────────────────────

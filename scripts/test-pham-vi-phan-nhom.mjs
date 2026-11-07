@@ -147,5 +147,17 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   const r = C.kiemRanhGioi('870850', b);
   check('14c 870850 thêm laBoPhan KHONG ⇒ xanh, .96 «Bánh răng vành khăn» dưới tầng «Loại khác» tới được', r.hopLe === true, r.loi);
 }
+{ // 15. Lô 4 (07/11/2026): khoá từ vựng mới + chỉ số iốt không viết đơn vị
+  const DK = require('../lib/dieu-kien-so.js'); const TV = require('../lib/tu-vung.js');
+  const tr = '15119031 - - - - Có chỉ số iốt từ 30 trở lên, nhưng dưới 40';
+  check('15a chiSoIot ≥ 30 (IV) đọc từ câu không viết đơn vị', DK.kiemDieuKien({ fact: 'chiSoIot', op: '>=', value: 30, donVi: 'IV' }, tr) === null);
+  check('15b biên sau «, nhưng dưới 40» (có dấu phẩy) đọc được', DK.kiemDieuKien({ fact: 'chiSoIot', op: '<', value: 40, donVi: 'IV' }, tr) === null, DK.kiemDieuKien({ fact: 'chiSoIot', op: '<', value: 40, donVi: 'IV' }, tr));
+  check('15c biên sai (< 45) vẫn bị bắt', DK.kiemDieuKien({ fact: 'chiSoIot', op: '<', value: 45, donVi: 'IV' }, tr) !== null);
+  const doc = (k, t) => TV.docGiaTri(k, t).giaTri;
+  check('15d thePhanDoan: «thể rắn» / «olein»', doc('thePhanDoan', 'Các phần phân đoạn thể rắn') === 'THE_RAN' && doc('thePhanDoan', 'olein hạt cọ') === 'THE_LONG');
+  check('15e cachBienDoiDau: tái este hoá ≠ este hoá liên hợp', doc('cachBienDoiDau', 'Đã tái este hóa, trừ của cọ dầu') === 'TAI_ESTE_HOA' && doc('cachBienDoiDau', 'Đã este hóa liên hợp') === 'ESTE_HOA_LIEN_HOP' && doc('cachBienDoiDau', 'Elaiđin hóa, loại khác') === 'ELAIDIN_HOA');
+  check('15f nhomPolyme: polypropylen ⇒ trùng hợp, nylon ⇒ trùng ngưng/tái sắp xếp, xenlulo acetat ⇒ không đọc', doc('nhomPolyme', 'Thanh nhựa polypropylen') === 'TRUNG_HOP' && doc('nhomPolyme', 'Sợi monofilament nylon') === 'TRUNG_NGUNG_HOAC_TAI_SAP_XEP' && doc('nhomPolyme', 'Thanh xenlulo acetat') === undefined);
+  check('15g dangSanPhamNhom1518: «thổi khô» / «hỗn hợp … không ăn được»', doc('dangSanPhamNhom1518', 'dầu hạt lanh đã thổi khô') === 'DA_BIEN_DOI_HOA_HOC' && doc('dangSanPhamNhom1518', 'Các hỗn hợp hoặc các chế phẩm không ăn được từ mỡ') === 'HON_HOP_KHONG_AN_DUOC');
+}
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);
