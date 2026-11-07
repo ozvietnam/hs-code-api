@@ -90,6 +90,43 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "7306401",
+        "73064020",
+        "73064030"
+      ],
+      "truc": {
+        "7306401": "CONG_DUNG",
+        "73064020": "DAC_DIEM",
+        "73064030": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Ống này dùng cho nồi hơi (tầng 7306401), hay là ống có đường kính ngoài trên 105 mm (73064020), hay là ống chứa niken ít nhất 30% và đường kính ngoài không quá 10 mm (73064030)?",
+      "trich": {
+        "7306401": "Ống dùng cho nồi hơi",
+        "73064020": "Ống và ống dẫn bằng thép không gỉ, có đường kính ngoài trên 105 mm",
+        "73064030": "Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "7306401",
+            "73064020"
+          ],
+          "hang": "Ống thép không gỉ hàn, mặt cắt ngang hình tròn, đường kính ngoài 114,3 mm, dùng cho nồi hơi (ống bộ quá nhiệt)"
+        },
+        {
+          "cap": [
+            "7306401",
+            "73064030"
+          ],
+          "hang": "Ống thép không gỉ hàn (hợp kim sắt-niken-crôm loại 800H), chứa niken 32% tính theo khối lượng, đường kính ngoài 9,53 mm, dùng cho nồi hơi"
+        }
+      ],
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "7306401",
@@ -123,8 +160,8 @@
     },
     {
       "ma": "730640",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Tầng «Ống dùng cho nồi hơi» chồng với .20 «Ống… đường kính ngoài trên 105 mm» và .30 «Ống… chứa niken ít nhất 30%»: ống nồi hơi bằng thép không gỉ đường kính lớn hoặc nhiều niken là hàng có thể có thật. CẦN: Claude xác minh rồi khai chồng THẬT (kèm hàng) hoặc Q1. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): tầng «Ống dùng cho nồi hơi» (công dụng) chồng THẬT với .20 «đường kính ngoài trên 105 mm» và .30 «niken ít nhất 30%… không quá 10 mm» (số đo — trục DAC_DIEM, khoá SO). Hàng thật: ống nồi hơi thép không gỉ hàn Ø114,3 mm (ống bộ quá nhiệt); ống hợp kim 800H (Ni 30–35%, thép không gỉ vì sắt trội) Ø9,53 mm. Biểu thuế không nói nhánh nào thắng ⇒ chongLanTruc, lúc chạy hỏi câu phân biệt."
     }
   ]
 }

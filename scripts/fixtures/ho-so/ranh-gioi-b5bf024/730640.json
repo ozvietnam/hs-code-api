@@ -1,0 +1,130 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "730640",
+  "nhom": "7306",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T0930#soan-730640",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7306401",
+      "nguon": "tieuDe.7306401",
+      "trich": "7306401 Ống dùng cho nồi hơi",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "nồi hơi"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "73064011",
+      "nguon": "tax.73064011",
+      "trich": "73064011 - - - Với đường kính ngoài không quá 12,5 mm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 12.5,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73064019",
+      "nguon": "tax.73064019",
+      "trich": "73064019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73064020",
+      "nguon": "tax.73064020",
+      "trich": "73064020 - - Ống và ống dẫn bằng thép không gỉ, có đường kính ngoài trên 105 mm",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinh",
+          "op": ">",
+          "value": 105,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73064030",
+      "nguon": "tax.73064030",
+      "trich": "73064030 - - Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongNiken",
+          "op": ">=",
+          "value": 30,
+          "donVi": "%"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<=",
+          "value": 10,
+          "donVi": "mm"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "73064090",
+      "nguon": "tax.73064090",
+      "trich": "73064090 - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7306401",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7306401: \"Ống dùng cho nồi hơi\" ⇒ dungCho \"nồi hơi\" (vế \"dùng cho nồi hơi\")"
+    },
+    {
+      "ma": "73064011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064011: \"Với đường kính ngoài không quá 12,5 mm\" ⇒ duongKinh <= 12.5 mm"
+    },
+    {
+      "ma": "73064019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "73064020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064020: \"Ống và ống dẫn bằng thép không gỉ, có đường kính ngoài trên 105 mm\" ⇒ duongKinh > 105 mm; \"bằng thép không gỉ\" lặp chữ tiêu đề PN6 730640 (\"… bằng thép không gỉ\") nên không cần điều kiện riêng"
+    },
+    {
+      "ma": "73064030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064030: \"Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với đường kính ngoài không quá 10 mm\" ⇒ hamLuongNiken >= 30 % (ít nhất là = >=) + duongKinh <= 10 mm; \"tính theo khối lượng\" là cách tính tỉ lệ, không phải đặc điểm phân dòng. Bộ đọc không đọc được biên \"ít nhất là 30%\" từ trích (cổng 3 cảnh báo) — đã đối chiếu tay: 30 % đúng số chữ, >= đúng \"ít nhất là\""
+    },
+    {
+      "ma": "73064090",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.73064090 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "730640",
+      "loai": "DUNG",
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Với đường kính ngoài không quá 12,5 mm» (73064011) và «Ống và ống dẫn có chứa hàm lượng niken ít nhất là 30% tính theo khối lượng, với » (73064030) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «nồi hơi», đường kính «9.99999», hamLuongNiken «30») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+    }
+  ]
+}

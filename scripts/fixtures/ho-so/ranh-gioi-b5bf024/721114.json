@@ -1,0 +1,225 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "721114",
+  "nhom": "7211",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-721114",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "7211141",
+      "nguon": "tieuDe.7211141",
+      "trich": "7211141 Có hàm lượng carbon dưới 0,6% tính theo khối lượng",
+      "dieuKienSo": [
+        {
+          "fact": "hamLuongCarbon",
+          "op": "<",
+          "value": 0.6,
+          "donVi": "%"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "72111414",
+      "nguon": "tax.72111414",
+      "trich": "72111414 - - - - Dạng lượn sóng",
+      "dieuKienSo": [
+        {
+          "fact": "dangLuonSong",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72111415",
+      "nguon": "tax.72111415",
+      "trich": "72111415 - - - - Dạng cuộn để cán lại (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "deCanLai",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72111416",
+      "nguon": "tax.72111416",
+      "trich": "72111416 - - - - Dạng đai và dải(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72111417",
+      "nguon": "tax.72111417",
+      "trich": "72111417 - - - - Tấm phổ dụng (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "TAM_PHO_DUNG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72111419",
+      "nguon": "tax.72111419",
+      "trich": "72111419 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72111494",
+      "nguon": "tax.72111494",
+      "trich": "72111494 - - - - Dạng đai và dải(SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "DAI_VA_DAI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72111495",
+      "nguon": "tax.72111495",
+      "trich": "72111495 - - - - Tấm phổ dụng (SEN)",
+      "dieuKienSo": [
+        {
+          "fact": "dangDaiDaiTamPhoDung",
+          "op": "TRONG",
+          "value": [
+            "TAM_PHO_DUNG"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "72111499",
+      "nguon": "tax.72111499",
+      "trich": "72111499 - - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "chongLanVanBan": [
+    {
+      "cap": [
+        "72111414",
+        "72111416"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: .14 \"Dạng lượn sóng\" (dangLuonSong CO), .16 \"Dạng đai và dải(SEN)\" (dangDaiDaiTamPhoDung DAI_VA_DAI) — đai và dải thép dạng lượn sóng thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "72111414",
+        "72111417"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: .14 \"Dạng lượn sóng\" (dangLuonSong CO), .17 \"Tấm phổ dụng (SEN)\" (dangDaiDaiTamPhoDung TAM_PHO_DUNG) — tấm phổ dụng thép dạng lượn sóng thoả cả hai dòng theo chữ biểu; không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "72111414",
+        "72111415"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: tax.72111414 \"Dạng lượn sóng\" không loại trừ tax.72111415 \"Dạng cuộn để cán lại (SEN)\" — thép cán nóng thoả cả hai theo chữ biểu; không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "72111415",
+        "72111416"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: tax.72111415 \"Dạng cuộn để cán lại (SEN)\" không loại trừ tax.72111416 \"Dạng đai và dải(SEN)\" — thép cán nóng thoả cả hai theo chữ biểu; không có căn cứ thứ tự"
+    },
+    {
+      "cap": [
+        "72111415",
+        "72111417"
+      ],
+      "lyDo": "Chồng lấn thật cùng trục đặc điểm: tax.72111415 \"Dạng cuộn để cán lại (SEN)\" không loại trừ tax.72111417 \"Tấm phổ dụng (SEN)\" — thép cán nóng thoả cả hai theo chữ biểu; không có căn cứ thứ tự"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "7211141",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7211141 \"Có hàm lượng carbon dưới 0,6% tính theo khối lượng\" ⇒ hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "7211141",
+      "loai": "BO_VE",
+      "ve": "Có hàm lượng carbon",
+      "lyDo": "Cụm danh từ chỉ thuộc tính, đã lượng hóa qua hamLuongCarbon < 0.6 %"
+    },
+    {
+      "ma": "72111414",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111414 \"Dạng lượn sóng\" ⇒ dangLuonSong CO"
+    },
+    {
+      "ma": "72111416",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111416 \"Dạng đai và dải(SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI]"
+    },
+    {
+      "ma": "72111417",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111417 \"Tấm phổ dụng (SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [TAM_PHO_DUNG]"
+    },
+    {
+      "ma": "72111419",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111419 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "72111494",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111494 \"Dạng đai và dải(SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [DAI_VA_DAI]"
+    },
+    {
+      "ma": "72111495",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111495 \"Tấm phổ dụng (SEN)\" ⇒ dangDaiDaiTamPhoDung TRONG [TAM_PHO_DUNG]"
+    },
+    {
+      "ma": "72111499",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111499 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "72111415",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72111415 \"Dạng cuộn để cán lại (SEN)\" ⇒ deCanLai CO (khoá tu-vung@2 mới, đọc vế mục đích \"để cán lại\" của chính chữ biểu). Định nghĩa SEN (mặt cắt ngang chữ nhật, dày ≥ 1,5 mm, rộng > 500 mm, ≥ 500 kg) KHÔNG nằm trong chữ biểu của dòng nên không mã hoá; thay ghi chú THIEU_KHOA dangCuonDeCanLai cũ."
+    },
+    {
+      "ma": "721114",
+      "loai": "DUNG",
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Dạng lượn sóng» (72111414) và «Dạng cuộn để cán lại (SEN)» (72111415) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+    }
+  ]
+}

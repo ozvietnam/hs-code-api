@@ -102,8 +102,72 @@
     },
     {
       "ma": "480255",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Có chiều rộng không quá 15 cm (SEN)» (48025521) và «Có chiều rộng không quá 15 cm» (48025561) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: chieuRong «149.99985», công dụng «viết», tên «Giấy và bìa trang trí») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): cụm 5 nhánh chia theo tên (trang trí, giấy nền), công dụng (viết, in) và đặc điểm (nhiều lớp). Chồng THẬT, kèm hàng: viết/in ↔ nhiều lớp (SEN 4802 lấy ví dụ giấy photo nhiều lớp); trang trí ↔ viết/in (giấy mỹ thuật vân nổi dùng in thiệp); trang trí ↔ nhiều lớp (giấy hai lớp hai màu ép ướt — SEN 4802 nêu các lớp có thể khác nhau về gia công, vd tẩy trắng và nhuộm màu). Giấy nền tráng nhôm/chống dính ↔ nhiều lớp: SEN 4802 chỉ nhận giấy nhiều lớp dùng để viết, in ⇒ khai Q1. Lúc chạy hàng thoả hai nhánh ⇒ hỏi câu phân biệt."
+    }
+  ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "4802552",
+        "48025540",
+        "48025550",
+        "4802556",
+        "48025570"
+      ],
+      "truc": {
+        "4802552": "TEN_LOAI",
+        "4802556": "CONG_DUNG",
+        "48025540": "TEN_LOAI",
+        "48025550": "TEN_LOAI",
+        "48025570": "DAC_DIEM"
+      },
+      "cauHoiPhanBiet": "Giấy này là giấy nhiều lớp (hai lớp trở lên ép với nhau khi còn ướt — 48025570), giấy và bìa trang trí (tầng 4802552), giấy làm nền sản xuất giấy tráng nhôm (48025540) hoặc giấy chống dính (48025550), hay là giấy dùng để viết, in, đồ bản (tầng 4802556)?",
+      "trich": {
+        "4802552": "Giấy và bìa trang trí",
+        "4802556": "Loại dùng để viết, in và các mục đích đồ bản khác",
+        "48025540": "Giấy làm nền sản xuất giấy tráng nhôm(SEN)",
+        "48025550": "Giấy làm nền sản xuất giấy chống dính (SEN)",
+        "48025570": "Giấy nhiều lớp(SEN)"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "4802556",
+            "48025570"
+          ],
+          "hang": "Giấy nhiều lớp (hai lớp ép với nhau khi còn ướt), loại dùng để in, photo, định lượng 75 g/m2, dạng cuộn rộng 88 cm"
+        },
+        {
+          "cap": [
+            "4802552",
+            "4802556"
+          ],
+          "hang": "Giấy và bìa trang trí có vân nổi màu kem, loại dùng để in thiệp, định lượng 120 g/m2, dạng cuộn rộng 70 cm"
+        },
+        {
+          "cap": [
+            "4802552",
+            "48025570"
+          ],
+          "hang": "Giấy và bìa trang trí, giấy nhiều lớp gồm hai lớp màu khác nhau ép với nhau khi còn ướt, loại dùng để in, định lượng 140 g/m2, dạng cuộn rộng 70 cm"
+        },
+        {
+          "cap": [
+            "48025540",
+            "48025570"
+          ],
+          "khongCoHangThat": "SEN 4802: giấy nhiều lớp chỉ thuộc nhóm 48.02 khi dùng để viết, in hoặc đồ bản (loại khác thuộc 48.04, 48.05). Giấy làm nền sản xuất giấy tráng nhôm là giấy nền để phủ nhôm, không phải giấy viết, in; nên giấy nhiều lớp thuộc 48.02 không đồng thời là giấy nền tráng nhôm."
+        },
+        {
+          "cap": [
+            "48025550",
+            "48025570"
+          ],
+          "khongCoHangThat": "SEN 4802: giấy nhiều lớp chỉ thuộc nhóm 48.02 khi dùng để viết, in hoặc đồ bản (loại khác thuộc 48.04, 48.05). Giấy làm nền sản xuất giấy chống dính là giấy nền để phủ lớp chống dính, không phải giấy viết, in; nên giấy nhiều lớp thuộc 48.02 không đồng thời là giấy nền chống dính."
+        }
+      ],
+      "phanXu": null
     }
   ]
 }

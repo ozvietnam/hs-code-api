@@ -212,6 +212,67 @@
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
+  "chongLanTruc": [
+    {
+      "nhanh": [
+        "7306301",
+        "7306302",
+        "73063030",
+        "7306304"
+      ],
+      "truc": {
+        "7306301": "CONG_DUNG",
+        "7306302": "DAC_DIEM",
+        "7306304": "TEN_LOAI",
+        "73063030": "CONG_DUNG"
+      },
+      "cauHoiPhanBiet": "Ống này dùng cho nồi hơi (tầng 7306301), là ống mạ đồng, tráng nhựa flo hoặc kẽm cromat đường kính ngoài không quá 15 mm (tầng 7306302), là ống bọc phần tử nhiệt của bàn là điện phẳng hoặc nồi cơm điện (73063030), hay là ống dẫn chịu áp lực cao có giới hạn chảy từ 42.000 psi (tầng 7306304)?",
+      "trich": {
+        "7306301": "Ống dùng cho nồi hơi",
+        "7306302": "Ống thép được mạ đồng, tráng nhựa flo (fluororesin) hoặc kẽm cromat có đường kính ngoài không quá 15 mm",
+        "7306304": "Ống dẫn chịu áp lực cao có giới hạn chảy (1) không nhỏ hơn 42.000 psi",
+        "73063030": "Ống loại được sử dụng làm ống bọc (ống nhiệt) dùng cho các bộ phận phát nhiệt của bàn là điện phẳng hoặc nồi cơm điện, có đường kính ngoài không quá 12 mm"
+      },
+      "viDuHang": [
+        {
+          "cap": [
+            "7306301",
+            "7306304"
+          ],
+          "hang": "Ống dẫn chịu áp lực cao bằng thép không hợp kim hàn, mặt cắt ngang hình tròn, mác P355NH, giới hạn chảy 51.500 psi, đường kính ngoài 60,3 mm, dùng cho nồi hơi"
+        },
+        {
+          "cap": [
+            "7306301",
+            "7306302"
+          ],
+          "khongCoHangThat": "Ống nồi hơi làm việc ở nhiệt độ và áp suất cao, là ống thép trần theo tiêu chuẩn ống nồi hơi. Lớp mạ đồng, tráng nhựa flo hoặc kẽm cromat của tầng 7306302 là lớp phủ của ống nhỏ (không quá 15 mm) dùng làm ống phanh, ống nhiên liệu, ống dẫn môi chất lạnh; nhựa flo phân huỷ trên khoảng 260 °C. Không thấy ống nồi hơi thực tế nào mang các lớp phủ này."
+        },
+        {
+          "cap": [
+            "7306302",
+            "73063030"
+          ],
+          "khongCoHangThat": "Ống bọc phần tử nhiệt của bàn là, nồi cơm điện làm việc ở vài trăm độ C; ở nhiệt độ đó nhựa flo phân huỷ, lớp mạ đồng bị ôxy hoá và lớp kẽm cromat hỏng, nên ống bọc gia nhiệt không dùng các lớp phủ của tầng 7306302. Không thấy hàng thật thoả cả hai."
+        },
+        {
+          "cap": [
+            "7306302",
+            "7306304"
+          ],
+          "khongCoHangThat": "Ống mạ đồng, tráng nhựa flo hoặc kẽm cromat không quá 15 mm là ống thép hàn mềm làm ống phanh, ống nhiên liệu, ống lạnh, giới hạn chảy thường khoảng 180–250 MPa (26.000–36.000 psi), dưới 42.000 psi; ống dẫn chịu áp lực cao giới hạn chảy từ 42.000 psi là ống dẫn đường ống cỡ lớn, không mạ đồng hay tráng nhựa flo. Không thấy hàng thật thoả cả hai."
+        },
+        {
+          "cap": [
+            "73063030",
+            "7306304"
+          ],
+          "khongCoHangThat": "Ống bọc phần tử nhiệt của bàn là, nồi cơm điện (đường kính ngoài không quá 12 mm) không phải ống dẫn chịu áp lực và không có yêu cầu giới hạn chảy; ống dẫn chịu áp lực cao từ 42.000 psi là ống dẫn đường ống. Hai loại hàng khác hẳn nhau."
+        }
+      ],
+      "phanXu": null
+    }
+  ],
   "ghiChuSoan": [
     {
       "ma": "7306301",
@@ -296,8 +357,8 @@
     },
     {
       "ma": "730630",
-      "loai": "DUNG",
-      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Các tầng «Ống dùng cho nồi hơi», «Ống mạ đồng, tráng nhựa flo hoặc kẽm», «Ống bọc (ống nhiệt)…», «Ống dẫn chịu áp lực cao giới hạn chảy ≥ 42.000 psi» chia theo các tiêu chí khác nhau; có thể có hàng thật thoả hai tầng (ống nồi hơi có giới hạn chảy cao). CẦN: Claude xác minh từng cặp rồi khai chồng THẬT (kèm hàng) hoặc Q1. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): cụm 4 nhánh chia theo công dụng (nồi hơi; ống bọc gia nhiệt), lớp phủ + đường kính (DAC_DIEM) và tên «Ống dẫn chịu áp lực cao». Cặp nồi hơi ↔ áp lực cao là chồng THẬT (ống P355NH hàn dùng cho nồi hơi, giới hạn chảy ~51.500 psi). Bốn cặp còn lại khai Q1 (khongCoHangThat, lý do từng cặp trong viDuHang). Lúc chạy hàng thoả hai nhánh ⇒ hỏi câu phân biệt, không tự chọn."
     }
   ]
 }

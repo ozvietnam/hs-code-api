@@ -299,6 +299,7 @@ Khi `--kiem` báo `cong2-chong-lan-truc:<nút>:<các nhánh>` và bạn đã ch�
      `DAC_DIEM` (vòng 6, quyết định GĐ 31/10 — 848180) khi nhánh chia theo khoá ĐẶC ĐIỂM tất định CO_KHONG/LIET_KE: 8481805 "Van và
      vòi có khoang pha trộn lưu chất" (`coKhoangPhaTron`), r14573 "Van điều khiển bằng khí nén" (`cachDieuKhien`). Cùng nghĩa: chồng
      lấn giữa nhánh khác trục ⇒ chưa chốt, hỏi `cauHoiPhanBiet`; chỉ `phanXu` kiểm được mới chọn; `lib/gir.js` không trích.
+     Từ 07/11/2026 (#1109, 730640) khoá SỐ cũng là `DAC_DIEM`: tầng "Ống dùng cho nồi hơi" ↔ .20 "đường kính ngoài trên 105 mm".
    - `trich`: chữ biểu NGUYÊN VĂN của chính từng nhánh (như `trich` của mục) — máy kiểm bằng cùng bộ kiểm của cổng 3.
    - `cauHoiPhanBiet`: một câu hỏi tiếng Việt, viết TỪ chữ biểu, giúp người khai/chuyên gia nói hàng thuộc nhánh nào; kết thúc
      bằng `?`. Không trả lời hộ, không nêu nhánh nào "ưu tiên".
@@ -437,6 +438,11 @@ Phạm vi được rộng hơn tên (chỉ để lọc) nên cổng 5 không xé
 
 Cặp chồng lấn KHÔNG có hàng thật thoả cả hai (Q1, GĐ đồng ý 07/11/2026): **thợ vẫn DỪNG** và ghi rõ cặp; chỉ Claude khai
 `viDuHang: [{cap, khongCoHangThat: "<lý do>"}]` (khác trục) hoặc `chongLanVanBan` lý do «Không có hàng thật thoả cả hai (Q1)…» (cùng trục).
+
+Hai nhánh cùng chỉ có khoá đặc điểm tất định (có/không, liệt kê, số) là **cùng trục** `DAC_DIEM` (07/11/2026, 721114 .14
+"Dạng lượn sóng" ↔ .15 "Dạng cuộn để cán lại"): không có câu hỏi phân biệt, hàng có cả hai đặc điểm thì thoả cả hai ⇒ khai
+`chongLanVanBan` từng cặp như chữ biểu tự chồng thường (kể cả khi nhánh nằm trong cụm trục). Xét định nghĩa SEN trước: SEN thường
+tự loại trừ (tấm phổ dụng phải "thẳng", dạng cuộn để cán lại phải "dạng cuộn" ⇒ không hàng nào thoả cả hai).
 
 Soát trước khi ghi "chồng lấn giả": nhiều ca là spec **sót tên** (320890 .30 thiếu "Sơn") hoặc **sót vế** (170290 "trừ mantoza"),
 hoặc **sai trục** (670290 "Bằng vật liệu dệt" ghi thành tên hàng; 854449 tầng khẳng định ghi `congDung`, tầng phủ định ghi
