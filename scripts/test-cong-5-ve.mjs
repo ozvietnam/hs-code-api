@@ -7,11 +7,13 @@ import fs from 'fs';
 import path from 'path';
 import { execFileSync } from 'child_process';
 import { createRequire } from 'module';
-import { nhapDongCung, gieoNhap } from './fixtures/ho-so/nhap-dong-cung.mjs';
+import { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_B305912 } from './fixtures/ho-so/nhap-dong-cung.mjs';
 const require = createRequire(import.meta.url);
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const V = require('../lib/ho-so/tach-ve.js');
 const ML = require('../lib/ho-so/ma-loi.js');
+const DK = require('../lib/dieu-kien-so.js');
+const TV = require('../lib/tu-vung.js');
 
 let pass = 0; let fail = 0;
 const check = (n, c, x = '') => { if (c) { pass += 1; console.log(`PASS ${n}`); } else { fail += 1; console.log(`FAIL ${n} ${typeof x === 'string' ? x : JSON.stringify(x)}`); } };
@@ -204,6 +206,37 @@ const menhDe = (kq, loai) => kq.ve.flatMap((v) => v.menhDe).filter((m) => m.loai
   check('7a CLI --ve sau #665: .30 không còn vế CHƯA PHỦ (mã thoát 0)', code === 0 && !out.includes('CHƯA PHỦ'), out.slice(0, 600));
   let txt = ''; try { execFileSync(process.execPath, ['scripts/so-hoa-ranh-gioi.mjs', '--kiem', '--pn6=940542'], { encoding: 'utf8', env: process.env, stdio: 'pipe' }); } catch (e) { txt = String(e.stdout); }
   check('7b CLI --kiem sau #665: hết cong5-ve-gioi-han-bi-bo:94054230', !/cong5-ve-gioi-han-bi-bo:94054230/.test(txt), txt.slice(0, 800));
+}
+
+// ── 8. Cổng 5 đọc chất liệu qua mẫu dùng chung dungMau như cổng 3 (940599 .10 "Chụp đèn bằng vật liệu dệt") ────────
+// chatLieu "vải dệt" có dungMau "so-tay-gates#vải dệt" (đọc "dệt"): cổng 3 (dieu-kien-so#coChatLieu) nhận câu trích, cổng 5 từng
+// không neo vế "bằng vật liệu dệt" ⇒ cong5-ve-gioi-han-bi-bo oan, người soạn phải khai BO_VE để né. Một nguồn: DK.reDungMau.
+{
+  const CL = { fact: 'chatLieu', op: 'LA', value: 'vải dệt' };
+  check('8a neoMot chatLieu "vải dệt" neo được "vật liệu dệt" (dungMau)', V.neoMot(CL, 'Chụp đèn bằng vật liệu dệt').length > 0, V.neoMot(CL, 'Chụp đèn bằng vật liệu dệt'));
+  check('8b neoMot chatLieu "gỗ" không neo "vật liệu dệt" (dungMau không neo bừa)', V.neoMot({ ...CL, value: 'gỗ' }, 'Chụp đèn bằng vật liệu dệt').length === 0);
+  // Hai cổng đọc như nhau: mọi giá trị chatLieu, mọi câu mẫu — cổng 3 nhận ⇔ cổng 5 neo.
+  const k = TV.layKhoa('chatLieu');
+  const cau = ['Chụp đèn bằng vật liệu dệt', 'Bằng sắt hoặc thép', 'Loại khác, bằng gốm, sứ hoặc kim loại', 'Bằng plastic', 'Bằng cao su lưu hoá', 'Hộp bằng giấy', 'Khung bằng gỗ', 'Bằng thủy tinh'];
+  const lech = [];
+  for (const v of k.giaTriHopLe || []) {
+    if (!k.moTaGiaTri?.[v]?.dungMau) continue;
+    for (const t of cau) {
+      const c3 = !String(DK.kiemDieuKien({ ...CL, value: v }, t) || '').startsWith('dieu-kien-so-la-khong-co-trong-trich');
+      const c5 = V.neoMot({ ...CL, value: v }, V.chuan(t)).length > 0;
+      if (c3 !== c5) lech.push(`${v}|${t}|c3=${c3}|c5=${c5}`);
+    }
+  }
+  check('8c cổng 3 nhận ⇔ cổng 5 neo, cho mọi chatLieu có dungMau', lech.length === 0, lech);
+  const b = nhapDongCung('940599', THU_MUC_DONG_CUNG_B305912);
+  b.dong8.find((m) => m.hs === '94059910').dieuKienSo = [CL];
+  const r = C.kiemRanhGioi('940599', b, { cong: [3, 5] });
+  check('8d 940599 .10 chatLieu "vải dệt": hết cong5-ve-gioi-han-bi-bo, không cần BO_VE', !r.loi.some((l) => l.startsWith('cong5-ve-gioi-han-bi-bo:94059910')), r.loi);
+  check('8e 940599 .10 chatLieu "vải dệt": cổng 3 nhận câu trích', !r.loi.some((l) => l.includes('dieu-kien-so-la-khong-co-trong-trich')), r.loi);
+  const g = nhapDongCung('940599', THU_MUC_DONG_CUNG_B305912);
+  g.dong8.find((m) => m.hs === '94059910').dieuKienSo = [{ ...CL, value: 'gỗ' }];
+  const rg = C.kiemRanhGioi('940599', g, { cong: [5] });
+  check('8f 940599 .10 chatLieu "gỗ" (chữ không nói gỗ): vế "bằng vật liệu dệt" vẫn đỏ', rg.loi.some((l) => l.startsWith('cong5-ve-gioi-han-bi-bo:94059910')), rg.loi);
 }
 
 console.log(`\n${pass} pass, ${fail} fail`);
