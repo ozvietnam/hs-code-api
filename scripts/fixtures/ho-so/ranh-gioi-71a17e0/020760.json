@@ -1,0 +1,137 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "020760",
+  "nhom": "0207",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-020760",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "020760",
+      "nguon": "wco.020760",
+      "trich": "fresh, chilled or frozen",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH",
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "02076010",
+      "nguon": "tax.02076010",
+      "trich": "02076010 - - Chưa chặt mảnh, tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "KHONG"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "02076020",
+      "nguon": "tax.02076020",
+      "trich": "02076020 - - Chưa chặt mảnh, đông lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "KHONG"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "02076030",
+      "nguon": "tax.02076030",
+      "trich": "02076030 - - Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "CO"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "02076040",
+      "nguon": "tax.02076040",
+      "trich": "02076040 - - Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "daChatManh",
+          "op": "CO"
+        },
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "DONG_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "02076010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076010 \"Chưa chặt mảnh, tươi hoặc ướp lạnh\" ⇒ daChatManh KHONG (đọc \"Chưa chặt mảnh\") + phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]."
+    },
+    {
+      "ma": "02076020",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076020 \"Chưa chặt mảnh, đông lạnh\" ⇒ daChatManh KHONG + phuongPhapBaoQuan TRONG [DONG_LANH]."
+    },
+    {
+      "ma": "02076030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076030 \"Đã chặt mảnh và phụ phẩm sau giết mổ, tươi hoặc ướp lạnh\" ⇒ daChatManh CO (cachDoc khớp nguyên cụm \"Đã chặt mảnh và phụ phẩm sau giết mổ\") + phuongPhapBaoQuan TRONG [TUOI_UOP_LANH]."
+    },
+    {
+      "ma": "02076040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.02076040 \"Đã chặt mảnh và phụ phẩm sau giết mổ, đông lạnh\" ⇒ daChatManh CO + phuongPhapBaoQuan TRONG [DONG_LANH]."
+    },
+    {
+      "ma": "020760",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[020760] theo wco.020760 \"fresh, chilled or frozen\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
+    }
+  ]
+}

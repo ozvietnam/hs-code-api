@@ -103,9 +103,9 @@
       "ghiChu": "tax.14049099 \"Loại khác\" trần ⇒ không ghi điều kiện (máy phủ định anh em đứng trước)."
     },
     {
-      "ma": "14049020",
+      "ma": "140490",
       "loai": "DUNG",
-      "ghiChu": "DỪNG — chồng lấn theo TRỤC tên ↔ công dụng giữa 14049020 (loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm, khoá congDung) và 14049030 (Bông gòn, khoá tenLoai): máy gán hai khoá chữ tự do ĐỘC LẬP nên vector {congDung=công nghệ thuộc da, tenLoai=Bông gòn} thoả cả hai dòng (cong2-chong-lan + cong2-chong-lan-truc). Không khai được chongLanTruc vì luật vòng 8 đòi một hàng THẬT thoả cả hai nhánh, mà bộ đọc lúc chạy (lib/ho-so/doc-du-kien.js#docKhoa) KHÔNG đọc được khoá congDung từ chuỗi mô tả (luôn CHUA_BIET) nên không hàng mô tả nào làm nhánh 14049020 thành CO (thuViDuHang trả 14049020:THIEU); không khai chongLanVanBan được vì cặp này khác trục (cong2-chong-lan-van-ban-truc). Cùng tình huống với 392690 (mẫu đã DỪNG). Không đổi khoá để né (14049020 là công dụng, 14049030 là tên hàng). Cần quyết định của người soát: có nên coi chồng lấn này là GIẢ (vector tổng hợp) và bỏ qua, hay cần một luật chứng minh mới cho cổng 2."
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Loại dùng chủ yếu trong công nghệ thuộc da hoặc nhuộm» (14049020) và «Bông gòn» (14049030) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: công dụng «công nghệ thuộc da», tên «Bông gòn») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
     }
   ]
 }

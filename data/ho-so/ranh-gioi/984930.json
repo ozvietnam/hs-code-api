@@ -174,11 +174,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "984930",
-      "loai": "DUNG",
-      "ghiChu": "cong1-khong-phu-kin không sửa được ở hai nơi: (1) tầng r19664 \"Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan khác\" chỉ có MỘT con 98493010 \"chưa lắp ráp\" — thiết bị chiếu sáng ĐÃ lắp ráp (không thuộc r19666 \"Loại khác\" vì vẫn là thiết bị chiếu sáng) không rơi dòng 8 số nào; (2) tầng r19675 \"Bộ phận\" chỉ có MỘT con 98493050 đòi \"hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40\" — bộ phận dùng cho hàng khác không có dòng số; biểu lược nhánh, vòng 8b cấm đẩy chữ con lên tầng — báo Claude xử cấu trúc"
-    },
-    {
       "ma": "984930~r19664",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.984930~r19664 \"Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan khác\" — \"khác\" là cách gọi loại thiết bị (khác đèn thuộc nhóm 85.39 đã trừ ở tên PN6), r19664 là nhánh đầu của 984930 không có anh em đứng trước ⇒ phanConLai: false; \"hoặc\" nối hai loại thiết bị ⇒ mảng"
@@ -202,6 +197,11 @@
       "ma": "984930~r19666",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.984930~r19666 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em r19664)"
+    },
+    {
+      "ma": "984930",
+      "loai": "DUNG",
+      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Thiết bị chiếu sáng hoặc tạo tín hiệu trực quan khác»; vd: đã lắp ráp «có», tên «Thiết bị chiếu sáng»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
     }
   ]
 }

@@ -5,74 +5,188 @@
   "dong8": {
     "87089115": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "87.01" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
       ]
     },
     "87089116": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "87.03" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.03"
+        }
       ]
     },
     "87089117": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "8704.10" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8704.10"
+        }
       ]
     },
     "87089191": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "87.01" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.01"
+        }
       ]
     },
     "87089193": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nút xả" },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "87.03" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nút xả"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.03"
+        }
       ]
     },
     "87089194": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Nút xả" },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["87.02", "87.04"] },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "8704.10", "chieu": "PHAI_KHONG" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Nút xả"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.04"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "8704.10",
+          "chieu": "PHAI_KHONG"
+        }
       ]
     },
     "87089195": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "87.03" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "87.03"
+        }
       ]
     }
   },
   "dieuKienNut": {
     "8708911": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Két nước làm mát" }
-      ]
-    },
-    "870891~r17524": {
-      "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["87.02", "87.04"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Két nước làm mát"
+        }
       ]
     },
     "8708919": {
       "dieuKienSo": [
-        { "fact": "laBoPhan", "op": "CO" }
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        }
+      ]
+    },
+    "870891~r17524": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.04"
+          ]
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "870891", "loai": "DUNG", "ghiChu": "Tầng gốc chia 2 nhánh khác trục: 8708911 \"Két nước làm mát\" (tenLoai) ↔ 8708919 \"Bộ phận\" (laBoPhan CO), không con \"Loại khác\" ⇒ cong1-khong-phu-kin (vector tenLoai=Nút xả + laBoPhan=false không rơi vào nhánh nào) và 5 cặp cong2-chong-lan chéo nhánh. Đã thử khai chongLanTruc [8708911 TEN_LOAI, 8708919 DAC_DIEM] nhưng viDuHang không viết được: bộ đọc docKhoa cắt danh từ tại chữ \"làm\" nên không đọc được cụm \"Két nước làm mát\" (đọc tối đa \"két nước\") — hàng thoả cả hai nhánh không tồn tại theo máy đọc (thuViDuHang 8708911 luôn THIEU). Theo QUY-TRINH mục 4a/5: bỏ cặp khỏi cụm và DỪNG." },
-    { "ma": "8708911", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8708911 \"Két nước làm mát\" ⇒ tenLoai \"Két nước làm mát\"" },
-    { "ma": "87089115", "loai": "QUYET_DINH", "ghiChu": "tax.87089115 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\"" },
-    { "ma": "87089116", "loai": "QUYET_DINH", "ghiChu": "tax.87089116 \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\"" },
-    { "ma": "870891~r17524", "loai": "QUYET_DINH", "ghiChu": "tieuDe.870891~r17524 \"Dùng cho xe thuộc nhóm 87.02 hoặc 87.04\" ⇒ dungCho [\"87.02\",\"87.04\"] (tầng không mã, gạch 4)" },
-    { "ma": "87089117", "loai": "QUYET_DINH", "ghiChu": "tax.87089117 \"Dùng cho xe thuộc phân nhóm 8704.10\" ⇒ dungCho \"8704.10\"" },
-    { "ma": "87089118", "loai": "QUYET_DINH", "ghiChu": "tax.87089118 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em 87089117)" },
-    { "ma": "87089119", "loai": "QUYET_DINH", "ghiChu": "tax.87089119 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
-    { "ma": "8708919", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8708919 \"Bộ phận\" ⇒ laBoPhan CO" },
-    { "ma": "87089191", "loai": "QUYET_DINH", "ghiChu": "tax.87089191 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\"" },
-    { "ma": "87089193", "loai": "QUYET_DINH", "ghiChu": "tax.87089193 \"Nút xả(SEN) dùng cho xe thuộc nhóm 87.03\" ⇒ tenLoai \"Nút xả\" (\"(SEN)\" là ngoặc chỉ dẫn chú giải, không thành điều kiện) + dungCho \"87.03\"" },
-    { "ma": "87089194", "loai": "QUYET_DINH", "ghiChu": "tax.87089194 \"Nút xả(SEN) dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)\" ⇒ tenLoai \"Nút xả\" + dungCho [\"87.02\",\"87.04\"] + dungCho \"8704.10\" PHAI_KHONG (vế \"(trừ loại thuộc phân nhóm 8704.10)\")" },
-    { "ma": "87089195", "loai": "QUYET_DINH", "ghiChu": "tax.87089195 \"Loại khác, dùng cho xe thuộc nhóm 87.03\" ⇒ chỉ vế: dungCho \"87.03\"" },
-    { "ma": "87089199", "loai": "QUYET_DINH", "ghiChu": "tax.87089199 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "8708911",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8708911 \"Két nước làm mát\" ⇒ tenLoai \"Két nước làm mát\""
+    },
+    {
+      "ma": "87089115",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089115 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""
+    },
+    {
+      "ma": "87089116",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089116 \"Dùng cho xe thuộc nhóm 87.03\" ⇒ dungCho \"87.03\""
+    },
+    {
+      "ma": "870891~r17524",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.870891~r17524 \"Dùng cho xe thuộc nhóm 87.02 hoặc 87.04\" ⇒ dungCho [\"87.02\",\"87.04\"] (tầng không mã, gạch 4)"
+    },
+    {
+      "ma": "87089117",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089117 \"Dùng cho xe thuộc phân nhóm 8704.10\" ⇒ dungCho \"8704.10\""
+    },
+    {
+      "ma": "87089118",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089118 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em 87089117)"
+    },
+    {
+      "ma": "87089119",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089119 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "8708919",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8708919 \"Bộ phận\" ⇒ laBoPhan CO"
+    },
+    {
+      "ma": "87089191",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089191 \"Dùng cho xe thuộc nhóm 87.01\" ⇒ dungCho \"87.01\""
+    },
+    {
+      "ma": "87089193",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089193 \"Nút xả(SEN) dùng cho xe thuộc nhóm 87.03\" ⇒ tenLoai \"Nút xả\" (\"(SEN)\" là ngoặc chỉ dẫn chú giải, không thành điều kiện) + dungCho \"87.03\""
+    },
+    {
+      "ma": "87089194",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089194 \"Nút xả(SEN) dùng cho xe thuộc nhóm 87.02 hoặc 87.04 (trừ loại thuộc phân nhóm 8704.10)\" ⇒ tenLoai \"Nút xả\" + dungCho [\"87.02\",\"87.04\"] + dungCho \"8704.10\" PHAI_KHONG (vế \"(trừ loại thuộc phân nhóm 8704.10)\")"
+    },
+    {
+      "ma": "87089195",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089195 \"Loại khác, dùng cho xe thuộc nhóm 87.03\" ⇒ chỉ vế: dungCho \"87.03\""
+    },
+    {
+      "ma": "87089199",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.87089199 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "870891",
+      "loai": "DUNG",
+      "ghiChu": "[BỘ PHẬN CỦA NÓ] Tầng 8708919 «Bộ phận» nằm dưới phân nhóm «Két nước làm mát và bộ phận của chúng», tức bộ phận CỦA KÉT NƯỚC, nhưng spec ghi «là bộ phận» (của xe) ⇒ két nước thoả cả tầng 8708911 lẫn 8708919. CẦN: như 870895 (Claude làm). — Claude 07/11/2026."
+    }
   ]
 }

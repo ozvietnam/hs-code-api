@@ -321,11 +321,6 @@
       "lyDo": "Giá trị NGAT_SOC_DONG của loaiCongTac được định nghĩa (nhanVi tu-vung@2: \"ngắt khi sốc dòng cao; đảo mạch bếp; công tắc micro; công tắc nguồn TV/radio, quạt, điều hòa\") đúng bằng sáu vế của tiêu đề 8536503, gồm vế này; máy chỉ neo được chữ đọc \"công tắc micro\" của giá trị (quyết định GĐ vòng 4)."
     },
     {
-      "ma": "8536503",
-      "loai": "DUNG",
-      "ghiChu": "Trả về #718 (B): cách đọc của giá trị NGAT_SOC_DONG (loaiCongTac) khớp \"micro\\s?switch\" và \"微动开关\" — công tắc hành trình micro (snap-action) thuộc 8536505 vế 3 (4012/TB-TCHQ), không phải \"công tắc micro\" (microphone switch) của 8536503. Sửa cachDoc ở data/tu-vung/tu-vung@2.json làm test-tu-vung-2 và kiemSieuTap đỏ (sieu-tap-khoa-lech:loaiCongTac): @2 phải GIỐNG HỆT @1 ở mọi khoá @1, mà @1 khoá băm bench nên không sửa. Bảng luật chung không có dạng cho việc này ⇒ DỪNG, chờ GĐ quyết hướng từ vựng; không nới kiểm siêu tập để ép xanh."
-    },
-    {
       "ma": "85365032",
       "loai": "QUYET_DINH",
       "ghiChu": "\"Của loại thích hợp dùng cho quạt điện hoặc thiết bị sóng vô tuyến\" ⇒ dungCho [\"quạt điện\", \"thiết bị sóng vô tuyến\"] — mảng = HOẶC; mỗi phần tử là chuỗi con nguyên văn. So chữ tự do ⇒ không tất định."
@@ -369,6 +364,11 @@
       "ma": "85365096",
       "loai": "QUYET_DINH",
       "ghiChu": "\"Loại khác, dòng điện dưới 16 A\" ⇒ chỉ vế dongDien < 16 A; máy phủ định .95."
+    },
+    {
+      "ma": "853650",
+      "loai": "DUNG",
+      "ghiChu": "[TỪ VỰNG ĐỌC SAI NGHĨA] Cổng đã xanh nhưng sai NGHĨA: khoá loaiCongTac đọc «micro switch» (công tắc hành trình, thuộc 8536.50.5x theo 4012/TB-TCHQ) thành «công tắc micro» của tầng 8536503. Khoá thuộc từ vựng @1 đang khoá cứng nên không sửa cách đọc được. CẦN: cơ chế đính chính khoá @1 có kiểm soát (Claude làm). — Claude 07/11/2026."
     }
   ],
   "traVe": [

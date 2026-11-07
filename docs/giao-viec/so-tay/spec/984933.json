@@ -139,11 +139,6 @@
   },
   "ghiChuSoan": [
     {
-      "ma": "984933",
-      "loai": "DUNG",
-      "ghiChu": "cong1-khong-phu-kin không sửa được: (1) tầng r19696 \"Bộ dây điện cho xe có động cơ\" và dòng con cùng khoá dungCho với giá trị \"xe thuộc nhóm 87.02, 87.03, 87.04\" — hai giá trị không giao nhau theo bộ so chữ (bệnh 984923), vòng 8b cấm đẩy chữ; (2) tầng r19701 chỉ có một con r19702 \"Đã lắp với đầu nối điện\" — dây ≤1.000 V chưa lắp đầu nối không có dòng số; (3) tầng r19702 chỉ có một con r19703 \"Cáp ắc quy\" — dây đã lắp đầu nối nhưng không phải cáp ắc quy không có dòng số; (4) 98493330/98493340 đều đòi \"Cho xe thuộc nhóm 87.02, 87.03, 87.04\" — cáp ắc quy dùng mục đích khác không có dòng số; biểu lược nhánh nhiều tầng — báo Claude xử cấu trúc"
-    },
-    {
       "ma": "984933~r19695",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.984933~r19695 \"Bộ dây đánh lửa và bộ dây khác\" — hai hàng thay thế ⇒ mảng; \"bộ dây khác\" là TÊN HÀNG (wiring sets khác bộ dây đánh lửa, chữ gốc 854430 \"bộ dây khác\"), không phải phần còn lại của anh em ⇒ phanConLai: false; vế GIỚI HẠN \"loại sử dụng cho xe, phương tiện bay hoặc tàu thuyền\" ⇒ dungCho mảng (hoặc)"
@@ -167,6 +162,11 @@
       "ma": "984933~r19699",
       "loai": "QUYET_DINH",
       "ghiChu": "tieuDe.984933~r19699 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em r19697 trong cụm r19696)"
+    },
+    {
+      "ma": "984933",
+      "loai": "DUNG",
+      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Dây điện, cáp điện (kể cả cáp đồng trục) có cách điện (kể cả loại đã tráng men c»; vd: điện áp «999.999», dùng cho «xe thuộc nhóm 87.02, 87.03, 87.04», tên «Bộ dây điện»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
     }
   ]
 }

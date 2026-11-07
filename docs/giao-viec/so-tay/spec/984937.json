@@ -5,44 +5,109 @@
   "dong8": {
     "98493711": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dụng cụ đo mức" },
-        { "fact": "dungChoXeCoDongCo", "op": "CO" },
-        { "fact": "hoatDongBangDien", "op": "CO" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dụng cụ đo mức"
+        },
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "CO"
+        }
       ]
     },
     "98493719": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Dụng cụ đo mức" },
-        { "fact": "dungChoXeCoDongCo", "op": "CO" },
-        { "fact": "hoatDongBangDien", "op": "KHONG" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Dụng cụ đo mức"
+        },
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
       ]
     },
     "98493790": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Máy đo áp suất" },
-        { "fact": "dungChoXeCoDongCo", "op": "CO" },
-        { "fact": "hoatDongBangDien", "op": "KHONG" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Máy đo áp suất"
+        },
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        },
+        {
+          "fact": "hoatDongBangDien",
+          "op": "KHONG"
+        }
       ]
     }
   },
   "dieuKienNut": {
     "9849371": {
       "dieuKienSo": [
-        { "fact": "congDung", "op": "CONG_DUNG", "value": ["lưu lượng", "mức của chất lỏng"] }
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": [
+            "lưu lượng",
+            "mức của chất lỏng"
+          ]
+        }
       ]
     },
     "984937~r19857": {
       "dieuKienSo": [
-        { "fact": "congDung", "op": "CONG_DUNG", "value": "áp suất" }
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "áp suất"
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "9849371", "loai": "QUYET_DINH", "ghiChu": "tieuDe.9849371 \"Để đo hoặc kiểm tra lưu lượng hoặc mức của chất lỏng\" ⇒ congDung mảng [\"lưu lượng\",\"mức của chất lỏng\"] — lấy đối tượng đo làm công dụng, \"đo hoặc kiểm tra\" là động từ chung (kiểu 903084 .10 \"đo hoặc kiểm tra đại lượng điện của tấm mạch in…\" ⇒ congDung mảng đối tượng)" },
-    { "ma": "984937~r19857", "loai": "QUYET_DINH", "ghiChu": "tieuDe.984937~r19857 \"Để đo hoặc kiểm tra áp suất\" ⇒ congDung \"áp suất\" (cùng khuôn 9849371)" },
-    { "ma": "98493711", "loai": "QUYET_DINH", "ghiChu": "tax.98493711 tên đầu \"Dụng cụ đo mức\"; vế \"sử dụng cho xe có động cơ\" ⇒ dungChoXeCoDongCo CO (đọc CÓ có \"sử dụng cho xe có động cơ\"); vế \"hoạt động bằng điện\" ⇒ hoatDongBangDien CO" },
-    { "ma": "98493719", "loai": "QUYET_DINH", "ghiChu": "tax.98493719 vế \"không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG (kiểu 841319 .20); còn lại như .11" },
-    { "ma": "98493790", "loai": "QUYET_DINH", "ghiChu": "tax.98493790 tên đầu \"Máy đo áp suất\"; vế \"sử dụng cho xe có động cơ\" ⇒ dungChoXeCoDongCo CO; vế \"không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG" },
-    { "ma": "984937", "loai": "DUNG", "ghiChu": "DỪNG — cong1-khong-phu-kin ở cả ba tầng, không sửa được mà không thêm điều kiện chữ không nói: (1) tầng r19857 \"Để đo hoặc kiểm tra áp suất\" chỉ có một con .90 \"…không hoạt động bằng điện\" — máy đo áp suất HOẠT ĐỘNG BẰNG ĐIỆN dùng cho xe có động cơ thoả tầng mà không vào dòng nào (biểu thuế không có nhánh tương ứng như .11 của cụm lưu lượng/mức); (2) tầng 9849371: dụng cụ đo lưu lượng/mức KHÔNG dùng cho xe có động cơ thoả tầng (tier chỉ nói \"để đo…\") mà hai con .11/.19 đều đòi \"sử dụng cho xe có động cơ\"; (3) vector tên ngoài danh sách tại tầng 9849371. Đề không có dòng \"Loại khác\" để hứng phần còn lại — không thể bịa điều kiện loại trừ." }
+    {
+      "ma": "9849371",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9849371 \"Để đo hoặc kiểm tra lưu lượng hoặc mức của chất lỏng\" ⇒ congDung mảng [\"lưu lượng\",\"mức của chất lỏng\"] — lấy đối tượng đo làm công dụng, \"đo hoặc kiểm tra\" là động từ chung (kiểu 903084 .10 \"đo hoặc kiểm tra đại lượng điện của tấm mạch in…\" ⇒ congDung mảng đối tượng)"
+    },
+    {
+      "ma": "984937~r19857",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984937~r19857 \"Để đo hoặc kiểm tra áp suất\" ⇒ congDung \"áp suất\" (cùng khuôn 9849371)"
+    },
+    {
+      "ma": "98493711",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98493711 tên đầu \"Dụng cụ đo mức\"; vế \"sử dụng cho xe có động cơ\" ⇒ dungChoXeCoDongCo CO (đọc CÓ có \"sử dụng cho xe có động cơ\"); vế \"hoạt động bằng điện\" ⇒ hoatDongBangDien CO"
+    },
+    {
+      "ma": "98493719",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98493719 vế \"không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG (kiểu 841319 .20); còn lại như .11"
+    },
+    {
+      "ma": "98493790",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98493790 tên đầu \"Máy đo áp suất\"; vế \"sử dụng cho xe có động cơ\" ⇒ dungChoXeCoDongCo CO; vế \"không hoạt động bằng điện\" ⇒ hoatDongBangDien KHONG"
+    },
+    {
+      "ma": "984937",
+      "loai": "DUNG",
+      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Để đo hoặc kiểm tra lưu lượng hoặc mức của chất lỏng»; vd: công dụng «lưu lượng», dungChoXeCoDongCo «có», hoatDongBangDien «có», tên «(thứ khác)»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+    }
   ]
 }

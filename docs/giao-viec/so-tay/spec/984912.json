@@ -5,32 +5,72 @@
   "dong8": {
     "98491210": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "sử dụng cho ô tô con" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sử dụng cho ô tô con"
+        }
       ]
     },
     "98491211": {
       "dieuKienSo": [
-        { "fact": "chieuRong", "op": "<=", "value": 450, "donVi": "mm" }
+        {
+          "fact": "chieuRong",
+          "op": "<=",
+          "value": 450,
+          "donVi": "mm"
+        }
       ]
     },
     "98491290": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe thuộc Chương 87" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe thuộc Chương 87"
+        }
       ]
     }
   },
   "dieuKienNut": {
     "9849121": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["ô tô khách", "ô tô chở hàng"] }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "ô tô khách",
+            "ô tô chở hàng"
+          ]
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "98491210", "loai": "QUYET_DINH", "ghiChu": "tax.98491210 \"(kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" là vế kể cả (PHU, cổng 5) ⇒ không thành điều kiện; chỉ phủ vế GIỚI HẠN \"sử dụng cho ô tô con\" bằng dungCho (cùng khuôn 984913 .10)" },
-    { "ma": "9849121", "loai": "QUYET_DINH", "ghiChu": "tieuDe.9849121 \"Loại dùng cho ô tô khách (buses) hoặc ô tô chở hàng (lorries)\" ⇒ dungCho mảng [\"ô tô khách\",\"ô tô chở hàng\"] (\"hoặc\" ⇒ mảng; (buses)/(lorries) là ngoặc gốc tiếng Anh)" },
-    { "ma": "98491211", "loai": "QUYET_DINH", "ghiChu": "tax.98491211 \"Chiều rộng không quá 450 mm\" ⇒ chieuRong <= 450 mm (\"không quá\" = <=)" },
-    { "ma": "98491290", "loai": "QUYET_DINH", "ghiChu": "tax.98491290 \"Loại dùng cho xe thuộc Chương 87\" ⇒ dungCho \"xe thuộc Chương 87\" (giữ nguyên chuỗi mã chương, máy tự nở dải)" },
-    { "ma": "984912~r19465", "loai": "DUNG", "ghiChu": "DỪNG — cong1-khong-phu-kin:984912~r19465:dungCho=sử dụng cho ô tô con không sửa được bằng spec: tầng r19465 \"Loại khác:\" trần (luật đi phủ định anh em .10 \"sử dụng cho ô tô con\" và tiêu đề 9849121 \"dùng cho ô tô khách (buses) hoặc ô tô chở hàng (lorries)\") chỉ có MỘT con là 98491290 \"Loại dùng cho xe thuộc Chương 87\"; cổng 1 lấy mẫu tại tầng này không vật hoá phép phủ định của tầng trần nên vector mang giá trị của chính anh em (dungCho \"sử dụng cho ô tô con\") bị coi là thoả tầng mà không rơi vào .90 (so chữ \"sử dụng cho ô tô con\" ≠ \"xe thuộc Chương 87\"). Tầng \"Loại khác:\" trần không được ghi điều kiện, tu-vung@2 không có op phủ định cho dungCho, thêm điều kiện cho .90 ngoài chữ là bịa — không tự xử lý, báo Claude." }
+    {
+      "ma": "98491210",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98491210 \"(kể cả loại ô tô chở người có khoang chở hành lý chung (station wagons) và ô tô đua)\" là vế kể cả (PHU, cổng 5) ⇒ không thành điều kiện; chỉ phủ vế GIỚI HẠN \"sử dụng cho ô tô con\" bằng dungCho (cùng khuôn 984913 .10)"
+    },
+    {
+      "ma": "9849121",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9849121 \"Loại dùng cho ô tô khách (buses) hoặc ô tô chở hàng (lorries)\" ⇒ dungCho mảng [\"ô tô khách\",\"ô tô chở hàng\"] (\"hoặc\" ⇒ mảng; (buses)/(lorries) là ngoặc gốc tiếng Anh)"
+    },
+    {
+      "ma": "98491211",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98491211 \"Chiều rộng không quá 450 mm\" ⇒ chieuRong <= 450 mm (\"không quá\" = <=)"
+    },
+    {
+      "ma": "98491290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98491290 \"Loại dùng cho xe thuộc Chương 87\" ⇒ dungCho \"xe thuộc Chương 87\" (giữ nguyên chuỗi mã chương, máy tự nở dải)"
+    },
+    {
+      "ma": "984912",
+      "loai": "DUNG",
+      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Loại khác»; vd: dùng cho «(thứ khác)»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+    }
   ]
 }

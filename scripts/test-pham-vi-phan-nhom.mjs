@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
 const require = createRequire(import.meta.url);
-const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
+const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 let pass = 0; let fail = 0;
@@ -61,6 +61,39 @@ check('2c bỏ dieuKienNut[870323] ⇒ cong1-khong-phu-kin trở lại', (k2.loi
   const b2 = nhapDongCung('850432', THU_MUC_DONG_CUNG_454E512);
   b2.dieuKienNut.find((x) => x.id === '8504325').phanConLai = true;
   check('5e phanConLai trên "Loại khác, <vế>" đứng cuối ⇒ cong0-phan-con-lai-thua', C.kiemRanhGioi('850432', b2).loi.includes('cong0-phan-con-lai-thua:8504325'));
+}
+// ── Đợt sửa bộ máy #1109 (07/11/2026) ──
+const M = THU_MUC_DONG_CUNG_0519921;
+const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) => (x.hs || x.id) === id);
+{ // 6. Trục vật liệu qua HOẶC (830629 .10 "Bằng đồng hoặc chì" = HOAC [chatLieu đồng | kimLoaiCoBanKhac CHI] ↔ .20 niken, .30 nhôm)
+  const r = C.kiemRanhGioi('830629', nhapDongCung('830629', M));
+  check('6a 830629 hết cong2-chong-lan (bung HOẶC khi so trục vật liệu)', !r.loi.some((l) => l.startsWith('cong2-chong-lan')), r.loi);
+  const b = nhapDongCung('830629', M); muc(b, '83062920').dieuKienSo = [{ fact: 'kimLoaiCoBanKhac', op: 'TRONG', value: ['CHI'] }];
+  check('6b phản chứng: .20 cũng "chì" ⇒ chồng lấn thật trở lại', C.kiemRanhGioi('830629', b).loi.some((l) => l.startsWith('cong2-chong-lan:83062910+83062920')));
+}
+{ // 7. Vế "trừ loại thuộc phân nhóm X" ⇒ phanConLai [X] (841590 .15 ↔ .13)
+  const b = nhapDongCung('841590', M); muc(b, '84159015').phanConLai = ['84159013'];
+  const r = C.kiemRanhGioi('841590', b);
+  check('7a 841590 .15 phanConLai [.13] theo vế "trừ loại thuộc" ⇒ hết chồng .13↔.15, cổng 3 không đòi chữ "khác"', !r.loi.some((l) => /84159013\+84159015|phan-con-lai-khong-co-chu-khac/.test(l)), r.loi.slice(0, 4));
+  const b2 = nhapDongCung('841590', M); muc(b2, '84159015').phanConLai = ['84159014'];
+  check('7b phanConLai trỏ mã chữ không nêu ⇒ cong3-phan-con-lai-khong-co-chu-khac', C.kiemRanhGioi('841590', b2).loi.includes('cong3-phan-con-lai-khong-co-chu-khac:84159015'));
+}
+{ // 8. "Loại khác, kể cả bia ale" là phần còn lại trần (220300 tầng 2203009)
+  const b = nhapDongCung('220300', M); b.dieuKienNut = b.dieuKienNut.filter((x) => x.id !== '2203009');
+  const r = C.kiemRanhGioi('220300', b);
+  check('8a 220300 không khai tầng 2203009 ⇒ không còn cong1-chua-so-hoa (tầng là "Loại khác" trần)', !r.loi.some((l) => l.startsWith('cong1-chua-so-hoa')), r.loi);
+  const DK = require('../lib/dieu-kien-so.js');
+  const tran = (tenVi) => DK.laLoaiKhacTranTen({ tenVi });
+  check('8b nhận dạng "Loại khác" trần', tran('Loại khác') && tran('- - Loại khác:') && tran('Loại khác, kể cả bia ale') && tran('Loại khác, kể cả nửa con'));
+  check('8c "Loại khác, kể cả … trừ …" và "Loại khác, <vế>" KHÔNG trần', !tran('Loại khác, kể cả dạng hỗn hợp trừ loại thuộc phân nhóm 2008.19') && !tran('Loại khác, dùng cho đồ chơi'));
+}
+{ // 9. Phần còn lại CÓ TÊN loại vector của anh em bị phủ định (870892 tầng 8708926 ⊥ 8708925 "8704.10")
+  const r = C.kiemRanhGioi('870892', nhapDongCung('870892', M));
+  check('9a 870892 không còn vector dungCho=8704.10 hở ở 8708926', !r.loi.some((l) => /cong1-khong-phu-kin:8708926:dungCho=8704\.10/.test(l)), r.loi.slice(0, 3));
+}
+{ // 10. Mục phạm vi phân nhóm không xét vế cổng 5 (020760 phạm vi từ wco.020760 "fresh, chilled or frozen")
+  const r = C.kiemRanhGioi('020760', nhapDongCung('020760', THU_MUC_DONG_CUNG_71A17E0));
+  check('10a 020760 xanh, không cong5 trên mục phạm vi', r.hopLe === true && !r.loi.some((l) => l.startsWith('cong5') && l.includes(':020760:')), r.loi);
 }
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

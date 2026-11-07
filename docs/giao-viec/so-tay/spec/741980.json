@@ -3,72 +3,303 @@
   "pn6": "741980",
   "phien": "zcode-sub:glm-5.3:20261106T0900#soan-741980",
   "dong8": {
-    "74198010": { "dieuKienSo": [
-      {"op": "HOAC", "phuongAn": [
-        [{"fact": "tenLoai", "op": "TEN_LOAI", "value": "Xích"}],
-        [{"fact": "laBoPhan", "op": "CO"}, {"fact": "dungCho", "op": "CONG_DUNG", "value": "Xích"}]
-      ]}
-    ]},
-    "74198021": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": "máy móc"}
-    ]},
-    "74198030": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Lò xo"}
-    ]},
-    "74198040": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Hộp đựng thuốc lá điếu"},
-      {"fact": "hopDungThuocLaDieu", "op": "CO"}
-    ]},
-    "74198050": { "dieuKienSo": [
-      {"op": "HOAC", "phuongAn": [
-        [{"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Thiết bị nấu", "đun nóng"]},
-         {"fact": "phamViSuDung", "op": "TRONG", "value": ["GIA_DINH"], "chieu": "PHAI_KHONG"}],
-        [{"fact": "laBoPhan", "op": "CO"}, {"fact": "dungCho", "op": "CONG_DUNG", "value": ["Thiết bị nấu", "đun nóng"]}]
-      ]}
-    ]},
-    "74198060": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "vật dụng"},
-      {"fact": "congDung", "op": "CONG_DUNG", "value": "sử dụng trong nghi lễ tôn giáo"}
-    ]},
-    "74198070": { "dieuKienSo": [
-      {"op": "HOAC", "phuongAn": [
-        [{"fact": "tenLoai", "op": "TEN_LOAI", "value": "A-nốt mạ điện"}],
-        [{"fact": "tenLoai", "op": "TEN_LOAI", "value": "dụng cụ đo dung tích"},
-         {"fact": "phamViSuDung", "op": "TRONG", "value": ["GIA_DINH"], "chieu": "PHAI_KHONG"}]
-      ]}
-    ]},
-    "74198080": { "dieuKienSo": [
-      {"op": "HOAC", "phuongAn": [
-        [{"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Thùng", "két", "bể chứa"]},
-         {"fact": "dungTich", "op": "<=", "value": 300, "donVi": "lít"}],
-        [{"fact": "tenLoai", "op": "TUONG_TU", "value": ["Thùng", "két", "bể chứa"]},
-         {"fact": "dungTich", "op": "<=", "value": 300, "donVi": "lít"}]
-      ]}
-    ]}
+    "74198010": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Xích"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Xích"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "74198021": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy móc"
+        }
+      ]
+    },
+    "74198030": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Lò xo"
+        }
+      ]
+    },
+    "74198040": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Hộp đựng thuốc lá điếu"
+        },
+        {
+          "fact": "hopDungThuocLaDieu",
+          "op": "CO"
+        }
+      ]
+    },
+    "74198050": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Thiết bị nấu",
+                  "đun nóng"
+                ]
+              },
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "GIA_DINH"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Thiết bị nấu",
+                  "đun nóng"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "74198060": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "vật dụng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sử dụng trong nghi lễ tôn giáo"
+        }
+      ]
+    },
+    "74198070": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "A-nốt mạ điện"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "dụng cụ đo dung tích"
+              },
+              {
+                "fact": "phamViSuDung",
+                "op": "TRONG",
+                "value": [
+                  "GIA_DINH"
+                ],
+                "chieu": "PHAI_KHONG"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "74198080": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Thùng",
+                  "két",
+                  "bể chứa"
+                ]
+              },
+              {
+                "fact": "dungTich",
+                "op": "<=",
+                "value": 300,
+                "donVi": "lít"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TUONG_TU",
+                "value": [
+                  "Thùng",
+                  "két",
+                  "bể chứa"
+                ]
+              },
+              {
+                "fact": "dungTich",
+                "op": "<=",
+                "value": 300,
+                "donVi": "lít"
+              }
+            ]
+          ]
+        }
+      ]
+    }
   },
   "dieuKienNut": {
-    "7419802": { "dieuKienSo": [
-      {"op": "HOAC", "phuongAn": [
-        [{"fact": "tenLoai", "op": "TEN_LOAI", "value": ["Tấm đan", "phên", "lưới"]},
-         {"fact": "chatLieu", "op": "LA", "value": "đồng"}],
-        [{"fact": "tenLoai", "op": "TEN_LOAI", "value": "sản phẩm dạng lưới"},
-         {"fact": "chatLieu", "op": "LA", "value": "đồng"},
-         {"fact": "phuongPhapCheTao", "op": "TRONG", "value": ["DOT_DAP_KEO_GIAN"]}]
-      ]}
-    ]}
+    "7419802": {
+      "dieuKienSo": [
+        {
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Tấm đan",
+                  "phên",
+                  "lưới"
+                ]
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "đồng"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "sản phẩm dạng lưới"
+              },
+              {
+                "fact": "chatLieu",
+                "op": "LA",
+                "value": "đồng"
+              },
+              {
+                "fact": "phuongPhapCheTao",
+                "op": "TRONG",
+                "value": [
+                  "DOT_DAP_KEO_GIAN"
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    {"ma": "74198010", "loai": "QUYET_DINH", "ghiChu": "tax.74198010 \"Xích và các bộ phận của xích\" ⇒ HOAC [[tenLoai \"Xích\"],[laBoPhan CO, dungCho \"Xích\"]] (quy ước X và bộ phận của chúng)."},
-    {"ma": "7419802", "loai": "QUYET_DINH", "ghiChu": "tieuDe.7419802 hai nhóm phân cách \";\": (1) \"Tấm đan (kể cả đai liền), phên và lưới, bằng dây đồng\" ⇒ tenLoai [3 tên] + chatLieu LA đồng; (2) \"sản phẩm dạng lưới bằng đồng được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" ⇒ tenLoai \"sản phẩm dạng lưới\" + chatLieu LA đồng + phuongPhapCheTao DOT_DAP_KEO_GIAN (khoá gợi ý của --goi). \"kể cả đai liền\" là kể-cả, không thành điều kiện."},
-    {"ma": "74198021", "loai": "QUYET_DINH", "ghiChu": "tax.74198021 \"Đai liền cho máy móc\": tên \"đai liền\" đã có trong vế kể cả của tiêu đề 7419802 (tấm đan kể cả đai liền) ⇒ dòng chỉ cần điều kiện riêng của vế: dungCho \"máy móc\" (giữ cùng khoá tenLoai ở tiêu đề, không lặp tên con)."},
-    {"ma": "74198040", "loai": "QUYET_DINH", "ghiChu": "tax.74198040 \"Hộp đựng thuốc lá điếu\" ⇒ tenLoai \"Hộp đựng thuốc lá điếu\" (cùng khoá tenLoai như anh em) + hopDungThuocLaDieu CO (khoá đọc đúng nguyên văn dòng)."},
-    {"ma": "74198050", "loai": "QUYET_DINH", "ghiChu": "tax.74198050 \"Thiết bị nấu hoặc đun nóng, trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này\" ⇒ HOAC [[tenLoai [\"Thiết bị nấu\",\"đun nóng\"], phamViSuDung PHAI_KHONG GIA_DINH],[laBoPhan CO, dungCho cùng tên]] (X và các bộ phận; \"trừ loại dùng trong gia đình\" = không gia đình)."},
-    {"ma": "74198060", "loai": "QUYET_DINH", "ghiChu": "tax.74198060 \"Các vật dụng được thiết kế riêng sử dụng trong nghi lễ tôn giáo (SEN)\" ⇒ tenLoai \"vật dụng\" + congDung \"sử dụng trong nghi lễ tôn giáo\"."},
-    {"ma": "74198060", "loai": "BO_VE", "ve": "được thiết kế riêng", "lyDo": "sen.74198060: điều kiện xếp dòng là hàng \"phải được nhận biết là chúng được sử dụng trong các nghi lễ tôn giáo\" và \"có hình dáng và thiết kế đặc biệt\" cho nghi lễ đó — \"được thiết kế riêng\" và \"sử dụng trong nghi lễ tôn giáo\" là cùng một điều kiện nhận biết theo SEN; vế sau đã phủ bằng congDung, không có khoá tu-vung@2 đọc riêng vế này, bỏ không đổi mã (dòng còn lại 74198090 Loại khác phủ định anh em)."},
-    {"ma": "7419802", "loai": "BO_VE", "ve": "được tạo hình", "lyDo": "Vế 2 tiêu đề: \"sản phẩm dạng lưới bằng đồng được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" (EN expanded metal) — \"được tạo hình\" là động từ dẫn của cùng vế, ý hoàn chỉnh đã phủ bằng phuongPhapCheTao DOT_DAP_KEO_GIAN (\"đột dập và kéo giãn thành lưới\"); không có khoá đọc riêng chữ \"tạo hình\", bỏ động từ dẫn không đổi mã."},
-    {"ma": "74198080", "loai": "BO_VE", "ve": "chứa và các loại đồ", "lyDo": "Máy tách nhầm cấu trúc: EN cùng dòng \"Reservoirs, tanks, vats and similar containers\" — \"chứa\" là bộ phận danh từ ghép \"bể chứa\", không phải định ngữ riêng của danh từ cuối; ý \"các loại đồ chứa đựng tương tự\" đã phủ bằng tenLoai TUONG_TU [\"Thùng\",\"két\",\"bể chứa\"] theo đúng danh từ đầu."},
-    {"ma": "74198070", "loai": "QUYET_DINH", "ghiChu": "tax.74198070 \"A-nốt mạ điện; dụng cụ đo dung tích (trừ loại gia dụng)\" ⇒ HOAC [[tenLoai \"A-nốt mạ điện\"],[tenLoai \"dụng cụ đo dung tích\", phamViSuDung PHAI_KHONG GIA_DINH]] — \"(trừ loại gia dụng)\" chỉ giới hạn dụng cụ đo dung tích."},
-    {"ma": "74198080", "loai": "QUYET_DINH", "ghiChu": "tax.74198080 \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự…\" ⇒ HOAC [[tenLoai [\"Thùng\",\"két\",\"bể chứa\"], dungTich<=300],[tenLoai TUONG_TU cùng 3 tên, dungTich<=300]] (mẫu 950300 .10: hàng nêu tên hoặc tương tự). Biên đối chiếu tay: \"từ 300 lít trở xuống\" = dungTich <= 300 lít. Vế \"không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" nằm trong vế biên số đã phủ theo máy; không có khoá riêng — thùng/két/bể đồng có gắn thiết bị cơ khí hoặc gia nhiệt là tổ hợp máy móc thuộc nhóm khác (84.19, 84.79…), không còn dòng 8 số nào trong 741980 nhận."},
-    {"ma": "74198080", "loai": "DUNG", "ghiChu": "cong2-chong-lan:74198010+74198080 và cong2-chong-lan:74198050+74198080 (:khong-tat-dinh) không sửa được trong luật hiện có: vế mở \"và các loại đồ chứa đựng tương tự\" bắt buộc phủ bằng TUONG_TU (vòng 8 #713); trên vector mang tên nêu của chính dòng (Thùng/két/bể chứa) phương án TUONG_TU và phương án TEN_LOAI cùng THOẢ nên luật ten-anh-em-roi (tenLoai X ↔ laBoPhan+dungCho Y, #692) không chứng minh rời được với phương án \"bộ phận\" bắt buộc của 74198010/74198050 (\"Xích và các bộ phận của xích\"/\"… và các bộ phận của các sản phẩm này\"). Đây là chồng lấn giả của bộ so chữ — bộ phận của xích/thiết bị nấu không thể đồng thời là thùng chứa ≤300 lít; chữ biểu hai dòng không tự chồng ⇒ không khai chongLanVanBan, không bịa điều kiện tách ⇒ DỪNG, báo Claude."}
+    {
+      "ma": "74198010",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74198010 \"Xích và các bộ phận của xích\" ⇒ HOAC [[tenLoai \"Xích\"],[laBoPhan CO, dungCho \"Xích\"]] (quy ước X và bộ phận của chúng)."
+    },
+    {
+      "ma": "7419802",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.7419802 hai nhóm phân cách \";\": (1) \"Tấm đan (kể cả đai liền), phên và lưới, bằng dây đồng\" ⇒ tenLoai [3 tên] + chatLieu LA đồng; (2) \"sản phẩm dạng lưới bằng đồng được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" ⇒ tenLoai \"sản phẩm dạng lưới\" + chatLieu LA đồng + phuongPhapCheTao DOT_DAP_KEO_GIAN (khoá gợi ý của --goi). \"kể cả đai liền\" là kể-cả, không thành điều kiện."
+    },
+    {
+      "ma": "74198021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74198021 \"Đai liền cho máy móc\": tên \"đai liền\" đã có trong vế kể cả của tiêu đề 7419802 (tấm đan kể cả đai liền) ⇒ dòng chỉ cần điều kiện riêng của vế: dungCho \"máy móc\" (giữ cùng khoá tenLoai ở tiêu đề, không lặp tên con)."
+    },
+    {
+      "ma": "74198040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74198040 \"Hộp đựng thuốc lá điếu\" ⇒ tenLoai \"Hộp đựng thuốc lá điếu\" (cùng khoá tenLoai như anh em) + hopDungThuocLaDieu CO (khoá đọc đúng nguyên văn dòng)."
+    },
+    {
+      "ma": "74198050",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74198050 \"Thiết bị nấu hoặc đun nóng, trừ loại dùng trong gia đình, và các bộ phận của các sản phẩm này\" ⇒ HOAC [[tenLoai [\"Thiết bị nấu\",\"đun nóng\"], phamViSuDung PHAI_KHONG GIA_DINH],[laBoPhan CO, dungCho cùng tên]] (X và các bộ phận; \"trừ loại dùng trong gia đình\" = không gia đình)."
+    },
+    {
+      "ma": "74198060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74198060 \"Các vật dụng được thiết kế riêng sử dụng trong nghi lễ tôn giáo (SEN)\" ⇒ tenLoai \"vật dụng\" + congDung \"sử dụng trong nghi lễ tôn giáo\"."
+    },
+    {
+      "ma": "74198060",
+      "loai": "BO_VE",
+      "ve": "được thiết kế riêng",
+      "lyDo": "sen.74198060: điều kiện xếp dòng là hàng \"phải được nhận biết là chúng được sử dụng trong các nghi lễ tôn giáo\" và \"có hình dáng và thiết kế đặc biệt\" cho nghi lễ đó — \"được thiết kế riêng\" và \"sử dụng trong nghi lễ tôn giáo\" là cùng một điều kiện nhận biết theo SEN; vế sau đã phủ bằng congDung, không có khoá tu-vung@2 đọc riêng vế này, bỏ không đổi mã (dòng còn lại 74198090 Loại khác phủ định anh em)."
+    },
+    {
+      "ma": "7419802",
+      "loai": "BO_VE",
+      "ve": "được tạo hình",
+      "lyDo": "Vế 2 tiêu đề: \"sản phẩm dạng lưới bằng đồng được tạo hình bằng phương pháp đột dập và kéo giãn thành lưới\" (EN expanded metal) — \"được tạo hình\" là động từ dẫn của cùng vế, ý hoàn chỉnh đã phủ bằng phuongPhapCheTao DOT_DAP_KEO_GIAN (\"đột dập và kéo giãn thành lưới\"); không có khoá đọc riêng chữ \"tạo hình\", bỏ động từ dẫn không đổi mã."
+    },
+    {
+      "ma": "74198080",
+      "loai": "BO_VE",
+      "ve": "chứa và các loại đồ",
+      "lyDo": "Máy tách nhầm cấu trúc: EN cùng dòng \"Reservoirs, tanks, vats and similar containers\" — \"chứa\" là bộ phận danh từ ghép \"bể chứa\", không phải định ngữ riêng của danh từ cuối; ý \"các loại đồ chứa đựng tương tự\" đã phủ bằng tenLoai TUONG_TU [\"Thùng\",\"két\",\"bể chứa\"] theo đúng danh từ đầu."
+    },
+    {
+      "ma": "74198070",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74198070 \"A-nốt mạ điện; dụng cụ đo dung tích (trừ loại gia dụng)\" ⇒ HOAC [[tenLoai \"A-nốt mạ điện\"],[tenLoai \"dụng cụ đo dung tích\", phamViSuDung PHAI_KHONG GIA_DINH]] — \"(trừ loại gia dụng)\" chỉ giới hạn dụng cụ đo dung tích."
+    },
+    {
+      "ma": "74198080",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.74198080 \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự…\" ⇒ HOAC [[tenLoai [\"Thùng\",\"két\",\"bể chứa\"], dungTich<=300],[tenLoai TUONG_TU cùng 3 tên, dungTich<=300]] (mẫu 950300 .10: hàng nêu tên hoặc tương tự). Biên đối chiếu tay: \"từ 300 lít trở xuống\" = dungTich <= 300 lít. Vế \"không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" nằm trong vế biên số đã phủ theo máy; không có khoá riêng — thùng/két/bể đồng có gắn thiết bị cơ khí hoặc gia nhiệt là tổ hợp máy móc thuộc nhóm khác (84.19, 84.79…), không còn dòng 8 số nào trong 741980 nhận."
+    },
+    {
+      "ma": "741980",
+      "loai": "DUNG",
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Xích và các bộ phận của xích» (74198010) và «Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít tr» (74198080) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «Xích», dungTich «299.9997», là bộ phận «có», tên «Thùng») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
+    }
   ]
 }

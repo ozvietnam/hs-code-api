@@ -67,11 +67,6 @@
       "lyDo": "Chữ giới thiệu thuần: chỉ nêu tên đại lượng (hàm lượng carbon); đại lượng này đã được điều kiện hamLuongCarbon >= 0.6 % phủ cùng với vế biên số đứng sau, nên bỏ vế không đổi mã 8 số."
     },
     {
-      "ma": "72139110",
-      "loai": "DUNG",
-      "ghiChu": "cong2-chong-lan-truc .10 ↔ .20 (tên ↔ công dụng, cấp dòng 2 anh em, #683) — lộ ra sau khi .30 có điều kiện (khoá lô 21): .10 \"Loại dùng để sản xuất que hàn (SEN)\" (congDung) ↔ .20 \"Thép cốt bê tông\" (tenLoai). Không có hàng THẬT nào vừa là thép cốt bê tông vừa dùng để sản xuất que hàn (sen.72139110: thanh que hàn C ≤ 0,1%, Mn 0,35–0,45%…) ⇒ không khai được chongLanTruc viDuHang (vòng 8); \"dùng để …\" ⇒ congDung là đúng chữ, không đổi khoá để né ⇒ DỪNG, cùng ca với 721399 (đã DỪNG cùng lý do)."
-    },
-    {
       "ma": "72139190",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.72139190 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
@@ -80,6 +75,11 @@
       "ma": "721391",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 721391-01 KHONG_LECH (7442, 7447/TB-TCHQ que cán nóng cuộn cuốn không đều SAE1008, không nêu công dụng thép cốt bê tông ⇒ không thoả .20, xếp .90): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "721391",
+      "loai": "DUNG",
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Loại dùng để sản xuất que hàn (SEN)» (72139110) và «Thép cốt bê tông» (72139120) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: công dụng «sản xuất que hàn», tên «Thép cốt bê tông») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
     }
   ]
 }
