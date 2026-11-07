@@ -13,47 +13,171 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "981820~r19155",
+      "nguon": "tieuDe.981820~r19155",
+      "trich": "981820~r19155 Bơm ly tâm khác",
+      "dieuKienSo": [
+        {
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
       "id": "9818202",
       "nguon": "tieuDe.9818202",
       "trich": "9818202 Bơm nước hoặc bơm nhiên liệu, dùng cho động cơ đốt trong kiểu piston",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bơm nước",
+            "bơm nhiên liệu"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ đốt trong kiểu piston"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "id": "9818203",
       "nguon": "tieuDe.9818203",
       "trich": "9818203 Bơm nước một tầng, một chiều hút, trục ngang được truyền động bằng dây đai hoặc khớp nối trực tiếp, trừ loại bơm đồng trục với động cơ",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "soTangBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_TANG"
+          ]
+        },
+        {
+          "fact": "kieuHutBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_CHIEU"
+          ]
+        },
+        {
+          "fact": "huongTrucBom",
+          "op": "TRONG",
+          "value": [
+            "NGANG"
+          ]
+        },
+        {
+          "fact": "kieuTruyenDong",
+          "op": "TRONG",
+          "value": [
+            "DAY_DAI",
+            "KHOP_NOI_TRUC_TIEP"
+          ]
+        },
+        {
+          "fact": "kieuTruyenDong",
+          "op": "TRONG",
+          "value": [
+            "DONG_TRUC_DONG_CO"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
     {
       "hs": "98182010",
-      "nguon": "tax.98182010",
-      "trich": "98182010 - - Bơm nước bằng tay",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98182010",
+      "trich": "Bơm nước bằng tay — mã hàng tương ứng: 8413.20.10",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.20.10"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98182021",
-      "nguon": "tax.98182021",
-      "trich": "98182021 - - Loại ly tâm",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98182021",
+      "trich": "Loại ly tâm — mã hàng tương ứng: 8413.30.51, 8413.30.52",
+      "dieuKienSo": [
+        {
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.30.51",
+            "8413.30.52"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98182029",
-      "nguon": "tax.98182029",
-      "trich": "98182029 - - Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98182029",
+      "trich": "Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay — mã hàng tương ứng: 8413.30.90",
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.30.90"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98182031",
-      "nguon": "tax.98182031",
-      "trich": "98182031 - - - Với đường kính cửa hút không quá 200mm",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98182031",
+      "trich": "Với đường kính cửa hút không quá 200mm — mã hàng tương ứng: 8413.70.11",
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.70.11"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -65,17 +189,49 @@
     },
     {
       "hs": "98182090",
-      "nguon": "tax.98182090",
-      "trich": "98182090 - Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98182090",
+      "trich": "Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19 — mã hàng tương ứng: 8413.91.30",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.70.11",
+            "8413.70.19"
+          ]
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.91.30"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "ghiChuSoan": [
     {
+      "ma": "98182010",
+      "loai": "BO_VE",
+      "ve": "bằng tay",
+      "lyDo": "Khoá kieuBom (@1, đóng băng) chỉ đọc «bơm (bằng) tay», không đọc «Bơm nước bằng tay». Vế được giữ tất định bằng mã hàng tương ứng 8413.20.10 (phân nhóm 8413.20 — bơm tay) của chính dòng (tuongUng)."
+    },
+    {
+      "ma": "98182029",
+      "loai": "BO_VE",
+      "ve": "trừ loại chuyển động tịnh tiến hoặc chuyển động quay",
+      "lyDo": "Vế loại trừ kiểu bơm (tịnh tiến — PISTON; quay — kieuBom không đọc «chuyển động quay»). Giữ tất định bằng mã hàng tương ứng 8413.30.90 của chính dòng (tuongUng): đúng phần còn lại của 8413.30 sau bơm piston/quay."
+    },
+    {
       "ma": "981820",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9818 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Bơm nước bằng tay»; vd: 9818201 «98182010»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): spec viết mới (bản cũ trống). Tầng theo chữ biểu: 9818202 bơm nước/nhiên liệu cho động cơ đốt trong kiểu piston; r19155 \"Bơm ly tâm khác\" (kieuBom LY_TAM, phần còn lại); 9818203 theo cách ghi 8413.70.1 (soTangBom, kieuHutBom, huongTrucBom, kieuTruyenDong). Dòng mà chữ không đọc được bằng khoá (\"bằng tay\", \"trừ loại chuyển động… quay\") và các dòng dễ chồng (.21, .31, .90) ghi thêm maHsTuongUng theo cột mã hàng tương ứng (tuongUng)."
     }
   ]
 }

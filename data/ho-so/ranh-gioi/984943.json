@@ -11,7 +11,29 @@
     "ngay": "2026-11-06"
   },
   "duyet": null,
-  "dieuKienNut": [],
+  "dieuKienNut": [
+    {
+      "id": "984943~r19889",
+      "nguon": "tieuDe.984943~r19889",
+      "trich": "984943~r19889 Loại khác (trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60), trừ loại bằng kẽm carbon",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
+        },
+        {
+          "fact": "loaiPin",
+          "op": "TRONG",
+          "value": [
+            "KEM_CACBON"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    }
+  ],
   "dong8": [
     {
       "hs": "98494310",
@@ -24,6 +46,10 @@
           "value": [
             "LITI"
           ]
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -84,9 +110,15 @@
       "ghiChu": "tax.98494390 \"Bộ phận\" ⇒ laBoPhan CO (đọc CÓ \"bộ phận\")"
     },
     {
+      "ma": "984943~r19889",
+      "loai": "BO_VE",
+      "ve": "(trừ loại thuộc phân nhóm 8506.10, 8506.30, 8506.40, 8506.50, 8506.60)",
+      "lyDo": "Vế loại trừ ghi bằng MÃ phân nhóm của Chương 85, không có chữ chất liệu pin để đọc. Hai dòng dưới tầng có cột mã tương ứng 8506.80.30 / 8506.80.90 (biểu Tổng cục) — chính là phần còn lại của 85.06 sau các phân nhóm bị trừ; liti (8506.50) đã loại bằng phanConLai (anh em .10 \"Bằng liti\"), kẽm carbon ghi loaiPin PHAI_KHONG."
+    },
+    {
       "ma": "984943",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Cây lược mất một tầng: hai dòng .21 «Có thể tích ngoài không quá 300 cm3» / .29 «Loại khác» đúng ra nằm dưới tầng «pin không phải liti» nhưng biểu không ghi tên tầng, nên máy xếp ngang hàng với .10 «Bằng liti» ⇒ pin liti ≤ 300 cm3 bị coi là chồng. CẦN: Q3 (nguồn Chương 98) hoặc khai tầng bị lược. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): biểu ghi tiêu đề \"- - Loại khác (trừ loại thuộc phân nhóm 8506.10, …), trừ loại bằng kẽm carbon:\" bằng chính mã 984943 lặp lại nên cây cũ mất tầng (.21/.29 bị xếp ngang .10 «Bằng liti» ⇒ chồng lấn giả). Lớp tầng nay nhận dòng lặp mã phân nhóm ở gạch trong là tiêu đề ⇒ tầng 984943~r19889: phanConLai (sau .10) + loaiPin PHAI_KHONG KEM_CACBON + laBoPhan KHONG (anh em .90 \"Bộ phận\")."
     }
   ]
 }

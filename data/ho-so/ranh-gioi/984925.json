@@ -13,6 +13,47 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "984925~r19578",
+      "nguon": "tieuDe.984925~r19578",
+      "trich": "984925~r19578 Kèm theo một bộ phận làm lạnh và một van đảo chiều chu trình nóng/lạnh (bơm nhiệt có đảo chiều)",
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "CO"
+        },
+        {
+          "fact": "coVanDaoChieu",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "984925~r19582",
+      "nguon": "tieuDe.984925~r19582",
+      "trich": "984925~r19582 Loại khác, có kèm theo bộ phận làm lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
+    },
+    {
+      "id": "984925~r19586",
+      "nguon": "tieuDe.984925~r19586",
+      "trich": "984925~r19586 Không gắn kèm bộ phận làm lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "KHONG"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "984925~r19590",
       "nguon": "tieuDe.984925~r19590",
       "trich": "984925~r19590 Bộ phận",
@@ -51,7 +92,15 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "người, trong xe có động cơ"
+          "value": "người"
+        },
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -234,8 +283,8 @@
     },
     {
       "ma": "984925",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Loại sử dụng cho người, trong xe có động cơ»; vd: dungCh «dungCho»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): lớp tầng mới r19578 \"Kèm theo một bộ phận làm lạnh và một van đảo chiều…\" / r19582 \"Loại khác, có kèm theo bộ phận làm lạnh\" (phần còn lại) / r19586 \"Không gắn kèm bộ phận làm lạnh\" ⇒ coBoPhanLamLanh + coVanDaoChieu (mở rộng cách đọc «một bộ phận», «gắn kèm»). tieuDe.9849251 \"Loại sử dụng cho người, trong xe có động cơ\" tách thành dungCho «người» + dungChoXeCoDongCo + laBoPhan KHONG (anh em \"Bộ phận\")."
     }
   ]
 }

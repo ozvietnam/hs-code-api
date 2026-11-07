@@ -3,7 +3,7 @@ import './test-isolate-data.mjs';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
 const require = createRequire(import.meta.url);
-const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E, THU_MUC_DONG_CUNG_BF788F5 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
+const { nhapDongCung, gieoNhap, THU_MUC_DONG_CUNG_38864C8, THU_MUC_DONG_CUNG_C05A07A, THU_MUC_DONG_CUNG_454E512, THU_MUC_DONG_CUNG_0519921, THU_MUC_DONG_CUNG_71A17E0, THU_MUC_DONG_CUNG_B5BF024, THU_MUC_DONG_CUNG_8BAEF5E, THU_MUC_DONG_CUNG_BF788F5, THU_MUC_DONG_CUNG_5174A56 } = await import('./fixtures/ho-so/nhap-dong-cung.mjs');
 const C = require('../lib/ho-so/cong-ranh-gioi.js');
 const S = require('../lib/so-tay.js');
 let pass = 0; let fail = 0;
@@ -180,6 +180,29 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
     check('16f máy in-copy-scan in phun, không fax ⇒ chỉ 84433199', co.length === 1 && co[0] === '84433199', r.dong.filter((d) => d.ketQua !== 'MAU_THUAN')); }
   const b = nhapDongCung('844331', THU_MUC_DONG_CUNG_BF788F5);
   check('16e 844331 bản cũ (tầng theo công nghệ in ↔ tầng in-copy-fax theo tên) chồng lấn', C.kiemRanhGioi('844331', b).loi.some((l) => l.startsWith('cong2-chong-lan')));
+}
+{ // 17. Lô 6 (07/11/2026, Chương 98): lớp tầng bọc ngoài / dòng lặp mã phân nhóm; laBoPhan KHONG theo anh em "Bộ phận"; mã tương ứng
+  const T = require('../lib/hs-tree.js'); const S = require('../lib/so-tay.js');
+  check('17a 984914: tiêu đề "Loại khác:" trần (r19480) bọc ngoài 9849143 — không KHONG_DAT', T.tangCua('984914').khongDat.length === 0 && T.conTang('984914~r19480').join() === '9849143');
+  check('17b 984943: dòng lặp mã phân nhóm "- - Loại khác (trừ …)" (r19889) là tầng, .21/.29 nằm dưới', T.conTang('984943~r19889').join() === '98494321,98494329' && T.chaTang('98494310') === '984943');
+  const b = nhapDongCung('984940', THU_MUC_DONG_CUNG_5174A56);
+  check('17c 984940 bản cũ: ghế ↔ bộ phận chồng lấn', C.kiemRanhGioi('984940', b).loi.some((l) => l.startsWith('cong2-chong-lan:')));
+  b.dieuKienNut.find((m) => m.id === '9849401').dieuKienSo.push({ fact: 'laBoPhan', op: 'KHONG' });
+  const r = C.kiemRanhGioi('984940', b);
+  check('17d thêm laBoPhan KHONG (anh em "Bộ phận") ⇒ xanh + cảnh báo căn cứ cấu trúc', r.hopLe === true && r.canhBao.includes('cong3-khong-bo-phan-tu-anh-em:9849401'), r.loi);
+  const b2 = nhapDongCung('984940', THU_MUC_DONG_CUNG_5174A56);
+  const m2 = b2.dong8.find((m) => m.hs === '98494011'); m2.dieuKienSo.push({ fact: 'laBoPhan', op: 'KHONG' });
+  check('17e dòng KHÔNG có anh em "Bộ phận" ⇒ laBoPhan KHONG vẫn phải có chữ trong câu trích', C.kiemRanhGioi('984940', b2).loi.some((l) => l.startsWith('cong3-muc:98494011:')), C.kiemRanhGioi('984940', b2).loi);
+  const src = S.sourcesFor('9811');
+  check('17f nguồn tuongUng: hai dòng cùng chữ 9811.00.10 / .90 mang mã tương ứng nguyên văn biểu', /mã hàng tương ứng: 72\.24, 72\.25, 72\.26, 72\.27, 72\.28$/.test(src['tuongUng.98110010'] || '') && /mã hàng tương ứng: 72\.29$/.test(src['tuongUng.98110090'] || ''), [src['tuongUng.98110010'], src['tuongUng.98110090']]);
+  const b3 = nhapDongCung('981100', THU_MUC_DONG_CUNG_5174A56);
+  const A = 'Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng — mã hàng tương ứng: ';
+  b3.dong8 = [{ hs: '98110010', nguonLoai: 'AI_DA_KIEM', nguon: 'tuongUng.98110010', trich: `${A}72.24, 72.25, 72.26, 72.27, 72.28`, dieuKienSo: [{ fact: 'maHsTuongUng', op: 'CONG_DUNG', value: ['72.24', '72.25', '72.26', '72.27', '72.28'] }] },
+    { hs: '98110090', nguonLoai: 'AI_DA_KIEM', nguon: 'tuongUng.98110090', trich: `${A}72.29`, dieuKienSo: [{ fact: 'maHsTuongUng', op: 'CONG_DUNG', value: ['72.29'] }] }];
+  const r3 = C.kiemRanhGioi('981100', b3);
+  check('17g 981100: hai dòng cùng chữ phân bằng maHsTuongUng ⇒ xanh', r3.hopLe === true, r3.loi);
+  b3.dong8[1].dieuKienSo[0].value = ['72.28'];
+  check('17h mã tương ứng sai (72.28 ở cả hai) ⇒ chồng lấn', C.kiemRanhGioi('981100', b3).loi.some((l) => l.startsWith('cong2-chong-lan')) || C.kiemRanhGioi('981100', b3).loi.some((l) => l.startsWith('cong3')), C.kiemRanhGioi('981100', b3).loi);
 }
 console.log(`\n${pass} pass, ${fail} fail`);
 process.exit(fail ? 1 : 0);

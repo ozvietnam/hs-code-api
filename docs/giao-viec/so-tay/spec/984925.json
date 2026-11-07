@@ -67,7 +67,15 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": "người, trong xe có động cơ"
+          "value": "người"
+        },
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ]
     },
@@ -120,6 +128,35 @@
           "donVi": "kW"
         }
       ]
+    },
+    "984925~r19578": {
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "CO"
+        },
+        {
+          "fact": "coVanDaoChieu",
+          "op": "CO"
+        }
+      ]
+    },
+    "984925~r19582": {
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": true
+    },
+    "984925~r19586": {
+      "dieuKienSo": [
+        {
+          "fact": "coBoPhanLamLanh",
+          "op": "KHONG"
+        }
+      ]
     }
   },
   "ghiChuSoan": [
@@ -153,8 +190,8 @@
     },
     {
       "ma": "984925",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 — LỖI SPEC] Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×6; chồng lấn giữa dòng ×6; chồng lấn trục (tên ↔ công dụng) ×3; liệt kê ghi trong một chuỗi ×1. Vd: cong3-liet-ke-trong-mot-chuoi:9849251:dungCho. CẦN: Claude soát lại spec (lô Chương 98 kế tiếp). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): lớp tầng mới r19578 \"Kèm theo một bộ phận làm lạnh và một van đảo chiều…\" / r19582 \"Loại khác, có kèm theo bộ phận làm lạnh\" (phần còn lại) / r19586 \"Không gắn kèm bộ phận làm lạnh\" ⇒ coBoPhanLamLanh + coVanDaoChieu (mở rộng cách đọc «một bộ phận», «gắn kèm»). tieuDe.9849251 \"Loại sử dụng cho người, trong xe có động cơ\" tách thành dungCho «người» + dungChoXeCoDongCo + laBoPhan KHONG (anh em \"Bộ phận\")."
     }
   ]
 }

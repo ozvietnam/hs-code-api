@@ -1,0 +1,133 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "984940",
+  "nhom": "9849",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "zcode-sub:glm-5.3:20261106T1528#soan-984940",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [
+    {
+      "id": "9849401",
+      "nguon": "tieuDe.9849401",
+      "trich": "9849401 Ghế dùng cho xe có động cơ",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ghế"
+        },
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "id": "9849402",
+      "nguon": "tieuDe.9849402",
+      "trich": "9849402 Bộ phận",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "dong8": [
+    {
+      "hs": "98494011",
+      "nguon": "tax.98494011",
+      "trich": "98494011 - - - Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04",
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "87.02",
+            "87.03",
+            "87.04"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98494019",
+      "nguon": "tax.98494019",
+      "trich": "98494019 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98494021",
+      "nguon": "tax.98494021",
+      "trich": "98494021 - - - Miếng lót cho tựa đầu của ghế thuộc phân nhóm 9401.20.10",
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Miếng lót"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "tựa đầu của ghế thuộc phân nhóm 9401.20.10"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98494022",
+      "nguon": "tax.98494022",
+      "trich": "98494022 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "9849401",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9849401 \"Ghế dùng cho xe có động cơ\": tên \"Ghế\" + vế \"dùng cho xe có động cơ\" ⇒ dungCho \"xe có động cơ\""
+    },
+    {
+      "ma": "98494011",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494011 \"Của xe thuộc nhóm 87.02, 87.03 hoặc 87.04\" ⇒ dungCho giữ nguyên chuỗi mã (máy tự đọc HOẶC các mã, tự nở dải — kiểu 984927 .10)"
+    },
+    {
+      "ma": "9849402",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.9849402 \"Bộ phận\" ⇒ laBoPhan CO (đọc CÓ \"bộ phận\")"
+    },
+    {
+      "ma": "98494021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494021 \"Miếng lót cho tựa đầu của ghế thuộc phân nhóm 9401.20.10\": tên đầu \"Miếng lót\"; vế \"cho tựa đầu của ghế thuộc phân nhóm 9401.20.10\" ⇒ dungCho trọn cụm đích (có mã, máy tự tách đích lồng)"
+    },
+    {
+      "ma": "98494019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494019 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "98494022",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494022 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "984940",
+      "loai": "DUNG",
+      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Ghế ngồi (trừ các loại thuộc nhóm 94.02), có hoặc không chuyển được thành giường»; vd: dungChoXeCoDongCo «có», là bộ phận «không», tên «Miếng lót»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+    }
+  ]
+}

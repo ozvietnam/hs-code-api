@@ -24,6 +24,10 @@
         {
           "fact": "coVanDaoChieu",
           "op": "CO"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -82,9 +86,14 @@
           "op": ">",
           "value": 26.38,
           "donVi": "kW"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": true
     },
     {
       "hs": "98182231",
@@ -166,8 +175,8 @@
     },
     {
       "ma": "981822",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9818 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Máy điều hoà không khí, sử dụng cho xe chạy trên đường ray»; vd: coBoPhanLamLanh «có», coVanDaoChieu «không», công suất «26379.97362», dùng cho «xe chạy trên đường ray», là bộ phận «không»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): tax.98182220 \"Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh…\" là phần còn lại sau tầng 9818221 (bơm nhiệt có đảo chiều) ⇒ phanConLai; 9818221 và .20 cạnh tầng anh em \"Bộ phận\" ⇒ laBoPhan KHONG (căn cứ cấu trúc; chữ «bộ phận làm lạnh» là đặc điểm, không phải «là bộ phận»). Bỏ cụm chongLanTruc cũ (chồng lấn giả)."
     }
   ]
 }

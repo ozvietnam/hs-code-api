@@ -147,6 +147,10 @@
             "Động cơ khởi động",
             "máy tổ hợp hai tính năng khởi động và phát điện"
           ]
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ]
     },
@@ -174,6 +178,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Bugi đánh lửa"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ]
     },
@@ -215,6 +223,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Máy phát điện"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "phanConLai": false
@@ -239,6 +251,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Thiết bị"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "phanConLai": true
@@ -248,6 +264,39 @@
         {
           "fact": "laBoPhan",
           "op": "CO"
+        }
+      ]
+    },
+    "984929~r19634": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Magneto đánh lửa",
+            "dynamo mangneto",
+            "bánh đà từ tính"
+          ]
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
+        }
+      ]
+    },
+    "984929~r19638": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bộ phân phối điện",
+            "cuộn dây đánh lửa"
+          ]
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ]
     }
@@ -285,8 +334,8 @@
     },
     {
       "ma": "984929",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 — LỖI SPEC] Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×16; chồng lấn trục (tên ↔ công dụng) ×5; tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×4; dòng không tới được ×1. Vd: cong1-tang-khong-ma-khong-dat:98492921:r19634. CẦN: Claude soát lại spec (lô Chương 98 kế tiếp). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): lớp tầng mới: tieuDe.984929~r19634 \"Magneto đánh lửa; dynamo mangneto; bánh đà từ tính\", r19638 \"Bộ phân phối điện; cuộn dây đánh lửa\" (bọc 9849292/9849293) — khai tên. Các tầng hàng hoàn chỉnh cạnh anh em \"Bộ phận\" (r19661) ⇒ laBoPhan KHONG (căn cứ cấu trúc). Chồng lấn cũ bugi/máy phát ↔ bộ phận do spec sót vế."
     }
   ]
 }

@@ -60,8 +60,17 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "động cơ xe của Chương 87"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8483.20.30"
+          ]
         }
-      ]
+      ],
+      "nguon": "tuongUng.98492820",
+      "trich": "Dùng cho động cơ xe của Chương 87 — mã hàng tương ứng: 8483.20.30"
     },
     "98492830": {
       "dieuKienSo": [
@@ -69,8 +78,17 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "động cơ xe của Chương 87"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8483.30.30"
+          ]
         }
-      ]
+      ],
+      "nguon": "tuongUng.98492830",
+      "trich": "Dùng cho động cơ xe của Chương 87 — mã hàng tương ứng: 8483.30.30"
     },
     "98492840": {
       "dieuKienSo": [
@@ -111,8 +129,17 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "hàng hóa khác thuộc Chương 87"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8483.90.15"
+          ]
         }
       ],
+      "nguon": "tuongUng.98492891",
+      "trich": "Dùng cho hàng hóa khác thuộc Chương 87 — mã hàng tương ứng: 8483.90.15",
       "phanConLai": false
     },
     "98492899": {
@@ -121,8 +148,17 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "hàng hóa khác thuộc Chương 87"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8483.90.95"
+          ]
         }
       ],
+      "nguon": "tuongUng.98492899",
+      "trich": "Dùng cho hàng hóa khác thuộc Chương 87 — mã hàng tương ứng: 8483.90.95",
       "phanConLai": false
     }
   },
@@ -156,7 +192,7 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": [
-            "Thân ổ, không lắp ổ bi hay ổ đũa",
+            "Thân ổ",
             "gối đỡ trục dùng ổ trượt"
           ]
         }
@@ -176,17 +212,39 @@
         }
       ],
       "phanConLai": false
+    },
+    "984928~r19614": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Trục truyền động",
+            "trục cam",
+            "trục khuỷu",
+            "tay biên"
+          ]
+        }
+      ]
+    },
+    "984928~r19615": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Trục cam",
+            "trục khuỷu"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ xe của Chương 87"
+        }
+      ]
     }
   },
-  "chongLanVanBan": [
-    {
-      "cap": [
-        "98492891",
-        "98492899"
-      ],
-      "lyDo": "Hai dòng có chữ biểu TRÙNG NHAU từng chữ .91 \"Dùng cho hàng hóa khác thuộc Chương 87\" và .99 \"Dùng cho hàng hóa khác thuộc Chương 87\" — mọi hàng thoả dòng này đều thoả dòng kia, không có căn cứ thứ tự hay đặc điểm nào tách được; lúc chạy máy hỏi, không tự chốt"
-    }
-  ],
   "ghiChuSoan": [
     {
       "ma": "984928~r19624",
@@ -220,9 +278,15 @@
       "ghiChu": "tax.98492891 \"hàng hóa khác thuộc Chương 87\" — \"khác\" là định ngữ của đích (hàng hóa khác ngoài các loại đã nêu ở nhánh trước), không phải phần còn lại so với anh em 98492899 (trùng chữ) ⇒ phanConLai: false; khai chongLanVanBan"
     },
     {
+      "ma": "984928~r19622",
+      "loai": "BO_VE",
+      "ve": "không lắp ổ bi hay ổ đũa",
+      "lyDo": "Vế phân tầng này với tầng anh em \"Thân ổ, lắp ổ bi hoặc ổ đũa\"; từ vựng chưa có khoá lắp ổ bi. Hai dòng dưới hai tầng (.20 / .30, cùng chữ \"Dùng cho động cơ xe của Chương 87\") đã rời nhau tất định bằng mã hàng tương ứng 8483.20.30 / 8483.30.30 (tuongUng) — tức đúng ranh giới 8483.20 (thân ổ lắp ổ bi) ↔ 8483.30 (thân ổ không lắp ổ bi)."
+    },
+    {
       "ma": "984928",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 — LỖI SPEC] Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×6; liệt kê ghi trong một chuỗi ×1. Vd: cong3-liet-ke-trong-mot-chuoi:984928~r19622:tenLoai. CẦN: Claude soát lại spec (lô Chương 98 kế tiếp). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): lớp tầng mới: tieuDe.984928~r19614 \"Trục truyền động (kể cả trục cam và trục khuỷu) và tay biên\" ⊃ r19615 \"Trục cam và trục khuỷu dùng cho động cơ xe của Chương 87\" ⊃ 9849281 — khai tên + dungCho. Các dòng CÙNG chữ (.20/.30 \"Dùng cho động cơ xe của Chương 87\"; .91/.99 \"Dùng cho hàng hóa khác thuộc Chương 87\") phân bằng khoá maHsTuongUng theo cột mã hàng tương ứng của biểu (8483.20.30 / 8483.30.30; 8483.90.15 / 8483.90.95), nguồn tuongUng.<mã>."
     }
   ]
 }
