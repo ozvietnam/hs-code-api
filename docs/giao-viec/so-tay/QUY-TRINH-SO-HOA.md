@@ -112,6 +112,10 @@ Cho TỪNG dòng có tên và TỪNG tiêu đề có tên, theo thứ tự:
      85176243 dùng dungCho"; `85176261` "Dùng cho điện báo hoặc điện thoại…" ghi `tenLoai` "sóng vô tuyến" "để tránh điểm mù với
      tiêu đề cha dùng congDung". ĐÚNG: cả ba ghi `dungCho` (chữ "dùng cho" ⇒ `dungCho`), để cảnh báo hiện ra cho người soát.
 4. "Loại khác, <vế>" ⇒ chỉ ghi điều kiện của **vế** (máy tự phủ định anh em).
+   Biểu đọc theo **thứ tự dòng**: khi có anh em "Loại khác, <vế>" khác ĐỨNG SAU mà hàng có thể thoả cả hai vế (850432 .20
+   "Loại khác, dùng cho đồ chơi" ↔ tầng .4 "Loại khác, ≤ 10 kVA"; 842489 .40 "…mạch in" ↔ .50 "…hoạt động bằng điện"), khai
+   `"phanConLai": true` trên dòng/tầng đứng TRƯỚC ⇒ nó chỉ phủ định anh em đứng trước nó (dấu hiệu: máy báo
+   `cong2-dong-khong-toi-duoc` cho dòng "Loại khác, <vế>" đứng trước). Không khai trên anh em đứng cuối (`cong0-phan-con-lai-thua`).
 5. Mỗi ý có ngưỡng riêng ("A, ≤ 11 A; B, ≤ 1.000 V") ⇒ HOẶC: `{"op": "HOAC", "phuongAn": [[…ý A…], […ý B…]]}`. Không gộp ngưỡng
    của một ý cho cả dòng.
 6. Phần còn lại CÓ TÊN ("Động cơ khác", "Cáp … plastic khác", "…, loại khác") ⇒ thêm `"phanConLai": true` vào mục (phủ định mọi anh
