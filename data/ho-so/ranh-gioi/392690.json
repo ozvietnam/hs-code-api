@@ -393,17 +393,50 @@
     },
     {
       "hs": "39269093",
-      "nguon": "tax.39269093",
-      "trich": "39269093 - - - Khóa, khóa điều chỉnh, móc treo và nút chặn dây (SEN)",
+      "nguon": "sen.39269093",
+      "trich": "Khóa nhựa được thiết kế để buộc chặt hai đầu rời … Khoá điều chỉnh được sử dụng để thắt chặt và nới lỏng dây đai … Móc treo là vật liệu … Nút chặn dây thường bao gồm",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Khóa",
-            "khóa điều chỉnh",
-            "móc treo",
-            "nút chặn dây"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Khóa"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "buộc chặt hai đầu rời"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Khoá điều chỉnh"
+              },
+              {
+                "fact": "congDung",
+                "op": "CONG_DUNG",
+                "value": "thắt chặt và nới lỏng dây đai"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Móc treo"
+              }
+            ],
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Nút chặn dây"
+              }
+            ]
           ]
         }
       ],
@@ -627,6 +660,11 @@
       "ma": "39269091",
       "loai": "DUNG",
       "ghiChu": "DỪNG — chồng lấn GIẢ tên ↔ công dụng do vector biên gán tenLoai và congDung/dungCho ĐỘC LẬP, không có hàng thật thoả cả hai nhánh nên không khai được chongLanTruc (luật viDuHang vòng 8; quyết định GĐ vòng 8b về cụm .91↔.93): (1) .91 \"Loại dùng để chứa ngũ cốc\" (congDung \"chứa ngũ cốc\"; SEN: bao bì PVC hình khối chứa ngũ cốc) ↔ .93 \"Khóa, khóa điều chỉnh, móc treo và nút chặn dây\" (tenLoai) — không hàng nào vừa là khoá/móc treo/nút chặn dây vừa là loại dùng để chứa ngũ cốc (ví dụ cũ \"nút chặn dây chuyên cho bao chứa ngũ cốc\" không thoả .91); (2) 39269010 \"Phao cho lưới đánh cá\", 39269020 \"Quạt và màn che kéo bằng tay …\", 39269060 \"Dụng cụ cho gia cầm ăn\", 3926908 \"Tấm thẻ …; chuỗi hạt; phom giày\" (tên) ↔ 3926903 \"Các sản phẩm vệ sinh, y tế và phẫu thuật\" / 3926904 \"Các thiết bị, dụng cụ an toàn và bảo vệ\" (công dụng), và 39269020 ↔ 3926905 \"Các sản phẩm dùng cho công nghiệp\" — không có mặt hàng thật (phao lưới cá là sản phẩm y tế? quạt tay là thiết bị bảo hộ? …). Không đổi khoá được (tên hàng ↔ nhóm công dụng là hai ý khác nhau của chữ biểu, QUY-TRINH 3.3), không thêm điều kiện chữ không nói (luật 4), không chongLanVanBan cho cặp khác trục. Cần quyết định công cụ/GĐ: một luật chứng minh của cổng cho \"tên hàng X ↔ nhóm công dụng Y mà không hàng thật nào thoả cả hai\" (vd người soát xác nhận cặp rời, như #692), hoặc chấp nhận cặp là khoảng trống lúc chạy (hai mã, hỏi)."
+    },
+    {
+      "ma": "39269093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN (phân tích 42 ca tiền lệ lệch, docs/giao-viec/so-tay/tien-le-lech/ca/392690-01.json): chữ Việt \"Khóa\" dịch \"Buckles\"; sen.39269093 \"Khóa nhựa được thiết kế để buộc chặt hai đầu rời\" ⇒ khóa phải kèm công dụng buộc chặt hai đầu rời (khóa cài dây đai, túi). Chốt/khóa hãm cốp xe (99/TB-TCHQ) không thoả ⇒ 3926.90.99."
     }
   ]
 }
