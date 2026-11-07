@@ -444,6 +444,9 @@ Hai nhánh cùng chỉ có khoá đặc điểm tất định (có/không, liệ
 `chongLanVanBan` từng cặp như chữ biểu tự chồng thường (kể cả khi nhánh nằm trong cụm trục). Xét định nghĩa SEN trước: SEN thường
 tự loại trừ (tấm phổ dụng phải "thẳng", dạng cuộn để cán lại phải "dạng cuộn" ⇒ không hàng nào thoả cả hai).
 
+Tầng «Chưa lắp ráp hoàn chỉnh» / «Đã lắp ráp hoàn chỉnh» đứng cạnh tầng anh em «Bộ phận» là chính hàng hoàn chỉnh (lắp hoặc
+chưa lắp) ⇒ ghi thêm `laBoPhan KHONG` (840820, 870850); thiếu vế này máy coi «cầu chưa lắp ráp» chồng với «bộ phận của cầu».
+
 Soát trước khi ghi "chồng lấn giả": nhiều ca là spec **sót tên** (320890 .30 thiếu "Sơn") hoặc **sót vế** (170290 "trừ mantoza"),
 hoặc **sai trục** (670290 "Bằng vật liệu dệt" ghi thành tên hàng; 854449 tầng khẳng định ghi `congDung`, tầng phủ định ghi
 `dungCho`). Danh sách PN6 DỪNG và lý do: `docs/giao-viec/so-tay/dung-khong-phu-kin.md`.
