@@ -7138,7 +7138,9 @@
       "vi": [
        "dạng\\s+tiêm",
        "dùng\\s+để\\s+tiêm",
-       "thuốc\\s+tiêm"
+       "thuốc\\s+tiêm",
+       "dung\\s+dịch\\s+tiêm",
+       "hoặc\\s+tiêm(?!\\s+truyền)"
       ],
       "en": [
        "injectable\\s+form",
@@ -7266,7 +7268,7 @@
     "vi": "Thuốc ở dạng bào chế nào (dạng uống, dạng mỡ, tiêm, truyền hay miếng dán qua da)?",
     "zh": "该药品属于何种剂型/给药形式（口服、软膏、注射、输液或透皮贴剂）？"
    },
-   "ghiChu": "Chữ biểu 3004.10.16 \"dạng uống (*)\", 3004.20.32 \"Dạng mỡ\", 3004.90.91 \"dạng truyền\", 3004.90.10 \"Miếng thẩm thấu qua da\". (3004.49.80 gộp \"dùng để tiêm; … dạng uống\" hai giá trị — không đọc được, đúng ý.) + giá trị UONG_HOAC_MO, DAU_XOA_BOP (3004.90.55 \"dạng dầu xoa bóp\", 3004.x \"dạng uống hoặc dạng mỡ\"; cumDaiThang) — Studio lô 15. + XIRO (06/11): chữ biểu 3004.50.10 \"Loại phù hợp cho trẻ em, dạng xirô\" (EN \"in syrup form\"). Chỉ đọc \"dạng xirô\" (dạng bào chế), không đọc \"xirô đường/xirô glucoza\" (hàng là xirô, không phải dạng bào chế thuốc).",
+   "ghiChu": "Chữ biểu 3004.10.16 \"dạng uống (*)\", 3004.20.32 \"Dạng mỡ\", 3004.90.91 \"dạng truyền\", 3004.90.10 \"Miếng thẩm thấu qua da\". (3004.49.80 gộp \"dùng để tiêm; … dạng uống\" hai giá trị — không đọc được, đúng ý.) + giá trị UONG_HOAC_MO, DAU_XOA_BOP (3004.90.55 \"dạng dầu xoa bóp\", 3004.x \"dạng uống hoặc dạng mỡ\"; cumDaiThang) — Studio lô 15. + XIRO (06/11): chữ biểu 3004.50.10 \"Loại phù hợp cho trẻ em, dạng xirô\" (EN \"in syrup form\"). Chỉ đọc \"dạng xirô\" (dạng bào chế), không đọc \"xirô đường/xirô glucoza\" (hàng là xirô, không phải dạng bào chế thuốc). + DANG_TIEM đọc thêm \"hoặc tiêm\" (chữ biểu 3004.49.11 \"Dạng uống (*) hoặc tiêm\"; không đọc \"hoặc tiêm truyền\") và \"dung dịch tiêm\" — Claude 07/11/2026, #1109.",
    "nguonLoai": "AI_DA_KIEM",
    "cumDaiThang": true
   },

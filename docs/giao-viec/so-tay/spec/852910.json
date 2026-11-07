@@ -5,34 +5,79 @@
   "dong8": {
     "85291021": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "máy thu truyền hình" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "máy thu truyền hình"
+        }
       ]
     },
     "85291030": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Ăng ten vệ tinh", "ăng ten lưỡng cực", "ăng ten roi"] },
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["máy thu hình", "máy thu thanh"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Ăng ten vệ tinh",
+            "ăng ten lưỡng cực",
+            "ăng ten roi"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "máy thu hình",
+            "máy thu thanh"
+          ]
+        }
       ]
     },
     "85291040": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Bộ lọc", "tách tín hiệu"] },
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "ăng ten" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bộ lọc",
+            "tách tín hiệu"
+          ]
+        },
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "ăng ten"
+        }
       ]
     },
     "85291060": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Loa", "phễu tiếp sóng"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Loa",
+            "phễu tiếp sóng"
+          ]
+        }
       ]
     },
     "85291093": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị truyền dẫn để phát sóng vô tuyến" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị truyền dẫn để phát sóng vô tuyến"
+        }
       ]
     },
     "85291094": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị truyền dẫn truyền hình" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị truyền dẫn truyền hình"
+        }
       ]
     }
   },
@@ -43,12 +88,27 @@
           "op": "HOAC",
           "phuongAn": [
             [
-              { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Chảo phản xạ" },
-              { "fact": "dungCho", "op": "CONG_DUNG", "value": "ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện" }
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": "Chảo phản xạ"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện"
+              }
             ],
             [
-              { "fact": "laBoPhan", "op": "CO" },
-              { "fact": "dungCho", "op": "CONG_DUNG", "value": "Chảo phản xạ" }
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": "Chảo phản xạ"
+              }
             ]
           ]
         }
@@ -56,12 +116,45 @@
     }
   },
   "ghiChuSoan": [
-    { "ma": "8529102", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8529102 \"Chảo phản xạ của ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện và các bộ phận của chúng\" ⇒ quy ước \"X và bộ phận của chúng\" (bảng luật dòng 5): HOAC [[tenLoai \"Chảo phản xạ\" + dungCho \"ăng ten parabol\" + dungCho \"hệ phát trực tiếp đa phương tiện\"],[laBoPhan CO + dungCho \"Chảo phản xạ\"]] — vế \"của ăng ten parabol\" và \"sử dụng cho hệ phát trực tiếp đa phương tiện\" là GIỚI HẠN của chảo (đích), ghi dungCho trọn cụm đích." },
-    { "ma": "85291021", "loai": "QUYET_DINH", "ghiChu": "tax.85291021 \"Dùng cho máy thu truyền hình\" ⇒ dungCho \"máy thu truyền hình\"." },
-    { "ma": "85291030", "loai": "QUYET_DINH", "ghiChu": "tax.85291030 \"Ăng ten vệ tinh, ăng ten lưỡng cực và các loại ăng ten roi (rabbit antennae) sử dụng cho máy thu hình hoặc máy thu thanh\" ⇒ tenLoai mảng 3 tên ăng ten (liệt kê); \"(rabbit antennae)\" ngoặc chú thích; dungCho mảng [\"máy thu hình\",\"máy thu thanh\"] (\"hoặc\" ⇒ mảng)." },
-    { "ma": "85291040", "loai": "QUYET_DINH", "ghiChu": "tax.85291040 \"Bộ lọc và tách tín hiệu ăng ten\" ⇒ tenLoai mảng [\"Bộ lọc\",\"tách tín hiệu\"] + \"ăng ten\" định ngữ chung thành điều kiện riêng." },
-    { "ma": "85291060", "loai": "QUYET_DINH", "ghiChu": "tax.85291060 \"Loa hoặc phễu tiếp sóng (ống dẫn sóng)\" ⇒ tenLoai mảng [\"Loa\",\"phễu tiếp sóng\"] (\"hoặc\" ⇒ mảng); \"(ống dẫn sóng)\" ngoặc chú thích." },
-    { "ma": "85291093", "loai": "QUYET_DINH", "ghiChu": "tax.85291093 \"Loại dùng với thiết bị truyền dẫn để phát sóng vô tuyến\" ⇒ dungCho trọn cụm đích \"thiết bị truyền dẫn để phát sóng vô tuyến\"; tax.85291094 \"Loại dùng với thiết bị truyền dẫn truyền hình\" ⇒ dungCho \"thiết bị truyền dẫn truyền hình\"." },
-    { "ma": "852910", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:852910:chua-co" }
+    {
+      "ma": "8529102",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8529102 \"Chảo phản xạ của ăng ten parabol sử dụng cho hệ phát trực tiếp đa phương tiện và các bộ phận của chúng\" ⇒ quy ước \"X và bộ phận của chúng\" (bảng luật dòng 5): HOAC [[tenLoai \"Chảo phản xạ\" + dungCho \"ăng ten parabol\" + dungCho \"hệ phát trực tiếp đa phương tiện\"],[laBoPhan CO + dungCho \"Chảo phản xạ\"]] — vế \"của ăng ten parabol\" và \"sử dụng cho hệ phát trực tiếp đa phương tiện\" là GIỚI HẠN của chảo (đích), ghi dungCho trọn cụm đích."
+    },
+    {
+      "ma": "85291021",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85291021 \"Dùng cho máy thu truyền hình\" ⇒ dungCho \"máy thu truyền hình\"."
+    },
+    {
+      "ma": "85291030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85291030 \"Ăng ten vệ tinh, ăng ten lưỡng cực và các loại ăng ten roi (rabbit antennae) sử dụng cho máy thu hình hoặc máy thu thanh\" ⇒ tenLoai mảng 3 tên ăng ten (liệt kê); \"(rabbit antennae)\" ngoặc chú thích; dungCho mảng [\"máy thu hình\",\"máy thu thanh\"] (\"hoặc\" ⇒ mảng)."
+    },
+    {
+      "ma": "85291040",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85291040 \"Bộ lọc và tách tín hiệu ăng ten\" ⇒ tenLoai mảng [\"Bộ lọc\",\"tách tín hiệu\"] + \"ăng ten\" định ngữ chung thành điều kiện riêng."
+    },
+    {
+      "ma": "85291060",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85291060 \"Loa hoặc phễu tiếp sóng (ống dẫn sóng)\" ⇒ tenLoai mảng [\"Loa\",\"phễu tiếp sóng\"] (\"hoặc\" ⇒ mảng); \"(ống dẫn sóng)\" ngoặc chú thích."
+    },
+    {
+      "ma": "85291093",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85291093 \"Loại dùng với thiết bị truyền dẫn để phát sóng vô tuyến\" ⇒ dungCho trọn cụm đích \"thiết bị truyền dẫn để phát sóng vô tuyến\"; tax.85291094 \"Loại dùng với thiết bị truyền dẫn truyền hình\" ⇒ dungCho \"thiết bị truyền dẫn truyền hình\"."
+    },
+    {
+      "ma": "852910",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 852910-01 KHONG_LECH (4710/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "852910",
+      "loai": "DUNG",
+      "ghiChu": "Claude 07/11/2026 (#1109): bảng hiệu chỉnh tiền lệ đã có mục (ghi chú LECH_TIEN_LE) — hết chờ bảng. Còn chặn ở cổng: cong2-dong-khong-toi-duoc:85291021; — xem docs/giao-viec/so-tay/dung-khong-phu-kin.md."
+    }
   ]
 }

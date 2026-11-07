@@ -21,6 +21,18 @@
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "thiết bị truyền dẫn"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "phát thanh sóng vô tuyến",
+            "thiết bị phát truyền hình",
+            "thiết bị thu xách tay",
+            "thiết bị cảnh báo bằng tin nhắn",
+            "máy nhắn tin"
+          ],
+          "chieu": "PHAI_KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -190,11 +202,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "851779",
-      "loai": "DUNG",
-      "ghiChu": "Gói soạn ghi [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:851779:chua-co — chờ Claude lập mục bảng rồi soạn lại theo chữ biểu"
-    },
-    {
       "ma": "85177910",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.85177910 \"Của bộ điều khiển và bộ thích ứng (adaptor) kể cả cổng nối, cầu nối và bộ định tuyến\" ⇒ dungCho mảng [bộ điều khiển, bộ thích ứng]; \"kể cả cổng nối, cầu nối và bộ định tuyến\" là vế PHU (kể cả)"
@@ -223,6 +230,16 @@
       "ma": "85177929",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.85177929 \"Loại khác\" trần ⇒ không điều kiện (tương tự .39/.99)"
+    },
+    {
+      "ma": "851779",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 851779-01 KHONG_LECH (19758/TB-CHQ, 18172/TB-CHQ) và 851779-02 KHONG_LECH (6449/TB-TCHQ, 3246/TB-TCHQ) và 851779-03 KHONG_LECH (6448/TB-TCHQ, 3245/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "8517792",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): vế giới hạn \"trừ loại dùng cho phát thanh sóng vô tuyến hoặc thiết bị phát truyền hình, hoặc của loại thiết bị thu xách tay để gọi, báo hiệu hoặc nhắn tin và thiết bị cảnh báo bằng tin nhắn, kể cả máy nhắn tin\" ⇒ dungCho PHAI_KHONG các đích nêu nguyên văn (\"kể cả máy nhắn tin\" thuộc nhóm bị trừ)."
     }
   ]
 }

@@ -347,11 +347,6 @@
       "ghiChu": "tax.84159015 \"Khung vỏ, đã hàn và sơn, trừ loại thuộc phân nhóm 8415.90.13\" ⇒ tenLoai \"Khung vỏ\"; vế trừ miễn BO_VE (chữ không có \"khác\" nên không dùng phanConLai được); \"đã hàn và sơn\" máy không tách vế."
     },
     {
-      "ma": "841590",
-      "loai": "DUNG",
-      "ghiChu": "Gói in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:841590:chua-co; chờ Claude soạn mục bảng trước khi duyệt."
-    },
-    {
       "ma": "8415901",
       "loai": "BO_VE",
       "ve": "Của máy",
@@ -380,6 +375,16 @@
       "loai": "BO_VE",
       "ve": "trừ loại thuộc phân nhóm 8415.90.13",
       "lyDo": "Máy không có cách biểu diễn vế \"trừ <dòng>\" ngoài phanConLai, mà phanConLai đòi chữ có \"khác\" (cong3-phan-con-lai-khong-co-chu-khac). Khung vỏ dùng cho phương tiện bay về chữ rơi vào 84159013 (dùng cho phương tiện bay) — vế trừ chỉ tái khẳng định ranh giới đó, không tạo ranh giới mới; để người soát quyết cùng mục bảng hiệu chỉnh."
+    },
+    {
+      "ma": "841590",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 841590-01 KHONG_LECH (6596/TCHQ-TXNK) và 841590-02 KHONG_LECH (509/TCHQ-TXNK): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "841590",
+      "loai": "DUNG",
+      "ghiChu": "Claude 07/11/2026 (#1109): bảng hiệu chỉnh tiền lệ đã có mục (ghi chú LECH_TIEN_LE) — hết chờ bảng. Còn chặn ở cổng: cong2-chong-lan:84159013+84159015:congSuat=21099.9789,dungCho=phương tiện bay,tenLoai=Khung vỏ:khong-tat-dinh;cong2-chong-lan-truc:84159013:84159015; — xem docs/giao-viec/so-tay/dung-khong-phu-kin.md."
     }
   ]
 }

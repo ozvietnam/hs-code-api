@@ -3,19 +3,62 @@
   "pn6": "760421",
   "phien": "zcode-sub:glm-5.3:20261106T0920#soan-760421",
   "dong8": {
-    "76042110": { "dieuKienSo": [
-      {"fact": "congDung", "op": "CONG_DUNG", "value": "làm dàn lạnh của máy điều hòa không khí"},
-      {"fact": "dungChoXeCoDongCo", "op": "CO"}
-    ]},
-    "76042120": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Thanh đệm"},
-      {"fact": "chatLieu", "op": "LA", "value": "nhôm"},
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["cửa ra vào", "cửa sổ"]}
-    ]}
+    "76042110": {
+      "dieuKienSo": [
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "làm dàn lạnh của máy điều hòa không khí"
+        },
+        {
+          "fact": "dungChoXeCoDongCo",
+          "op": "CO"
+        }
+      ]
+    },
+    "76042120": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Thanh đệm"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "nhôm"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "cửa ra vào",
+            "cửa sổ"
+          ]
+        }
+      ]
+    }
   },
   "ghiChuSoan": [
-    {"ma": "76042110", "loai": "QUYET_DINH", "ghiChu": "tax.76042110 \"Loại phù hợp để làm dàn lạnh của máy điều hòa không khí cho xe có động cơ (SEN)\" ⇒ congDung \"làm dàn lạnh của máy điều hòa không khí\" + dungChoXeCoDongCo CO (khoá đọc đúng \"cho xe có động cơ\")."},
-    {"ma": "76042120", "loai": "QUYET_DINH", "ghiChu": "tax.76042120 \"Thanh đệm bằng nhôm cho cửa ra vào và cửa sổ (SEN)\" ⇒ tenLoai \"Thanh đệm\" + chatLieu LA nhôm + dungCho [\"cửa ra vào\",\"cửa sổ\"]."},
-    {"ma": "760421", "loai": "DUNG", "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:760421:chua-co — phân nhóm có cờ tiền lệ mà bảng hiệu chỉnh chưa có mục, Claude giữ (QUY-TRINH mục 5)."}
+    {
+      "ma": "76042110",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76042110 \"Loại phù hợp để làm dàn lạnh của máy điều hòa không khí cho xe có động cơ (SEN)\" ⇒ congDung \"làm dàn lạnh của máy điều hòa không khí\" + dungChoXeCoDongCo CO (khoá đọc đúng \"cho xe có động cơ\")."
+    },
+    {
+      "ma": "76042120",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.76042120 \"Thanh đệm bằng nhôm cho cửa ra vào và cửa sổ (SEN)\" ⇒ tenLoai \"Thanh đệm\" + chatLieu LA nhôm + dungCho [\"cửa ra vào\",\"cửa sổ\"]."
+    },
+    {
+      "ma": "760421",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 760421-01 KHONG_LECH (295/TB-TCHQ, 6530/TB-TCHQ, 6532/TB-TCHQ, 6533/TB-TCHQ, 6534/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "760421",
+      "loai": "DUNG",
+      "ghiChu": "Claude 07/11/2026 (#1109): bảng hiệu chỉnh tiền lệ đã có mục (ghi chú LECH_TIEN_LE) — hết chờ bảng. Còn chặn ở cổng: cong2-chong-lan:76042110+76042120:chatLieu=CHINH:nhôm,congDung=làm dàn lạnh của máy điều hòa không khí,dungCho=cửa ra vào,dungChoXeCoDongCo=tru; — xem docs/giao-viec/so-tay/dung-khong-phu-kin.md."
+    }
   ]
 }
