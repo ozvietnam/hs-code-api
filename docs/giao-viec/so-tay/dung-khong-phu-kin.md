@@ -42,7 +42,7 @@ oz-wiki trả lời** (kho oz-wiki-plhq), Claude làm tiếp #1101 khi có.
 Biểu Excel Tổng cục chỉ chép mục «3. Danh mục hàng hóa…» của Chương 98 (không có mục chú giải, điều kiện áp dụng); bốn nguồn
 công khai của NĐ 26/2023/NĐ-CP đều chặn hoặc trả sai văn bản ⇒ chưa có nguyên văn chú giải để trích. Căn cứ dùng được nằm ngay
 trong biểu Tổng cục: mỗi dòng 98 có **cột mã tương ứng ở 97 chương** (vd 9810.00.10 ↔ 7213.91.30, 7213.91.90) ⇒ Chương 98 là
-lớp mã thay thế, không có phần còn lại; hàng không vào dòng 98 nào thì khai mã tương ứng ở 97 chương. Đã làm (lô 5, #LO5):
+lớp mã thay thế, không có phần còn lại; hàng không vào dòng 98 nào thì khai mã tương ứng ở 97 chương. Đã làm (lô 5, #1155):
 tên 41 nhóm 98xx nạp vào cây từ chính dòng mã của biểu; cổng 1 hạ «không phủ kín» của Chương 98 thành cảnh báo
 `cong1-chuong98-ngoai-dong`; 11 PN6 hết DỪNG. Còn lại là bản nháp có lỗi spec thật (chồng lấn, tầng không mã, liệt kê…) —
 Claude soát từng cái.
@@ -128,7 +128,7 @@ Claude soát từng cái.
 | #1151 | 480254, 480255, 721114, 730630, 730640 | Xác minh theo SEN: chồng THẬT kèm hàng, hoặc Q1; trục số DAC_DIEM; cặp DAC_DIEM cùng trục khai chongLanVanBan |
 | #1152 | 870850, 870899, 852910, 870829 | Spec sót vế «không phải bộ phận»; Q1 giá đỡ bình ắc quy; bộ kiểm ghép ứng viên trong HOẶC và «chữ đích + mã trơn» |
 | #1153 | 151190, 151329, 151620, 151800, 391690 | Khoá từ vựng mới thePhanDoan, cachBienDoiDau, dangVayManh, nhomPolyme, dangSanPhamNhom1518; chiSoIot đọc số không đơn vị; phạm vi phân nhóm (151329, 391690) |
-| #LO5 | 844331; Chương 98: 981000, 983412, 983610, 984912, 984916, 984918, 984923, 984931, 984933, 984937, 984942 | 844331 theo tổ hợp chức năng (GĐ chốt: in-copy-scan không fax ⇒ .99; PC-Fax không tính fax); Chương 98 là lớp mã thay thế (cột mã tương ứng), tên nhóm 98xx từ biểu |
+| #1155 | 844331; Chương 98: 981000, 983412, 983610, 984912, 984916, 984918, 984923, 984931, 984933, 984937, 984942 | 844331 theo tổ hợp chức năng (GĐ chốt: in-copy-scan không fax ⇒ .99; PC-Fax không tính fax); Chương 98 là lớp mã thay thế (cột mã tương ứng), tên nhóm 98xx từ biểu |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự
