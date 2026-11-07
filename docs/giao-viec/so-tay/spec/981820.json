@@ -117,6 +117,11 @@
       "ma": "981820",
       "loai": "QUYET_DINH",
       "ghiChu": "Claude 07/11/2026 (#1109): spec viết mới (bản cũ trống). Tầng theo chữ biểu: 9818202 bơm nước/nhiên liệu cho động cơ đốt trong kiểu piston; r19155 \"Bơm ly tâm khác\" (kieuBom LY_TAM, phần còn lại); 9818203 theo cách ghi 8413.70.1 (soTangBom, kieuHutBom, huongTrucBom, kieuTruyenDong). Dòng mà chữ không đọc được bằng khoá (\"bằng tay\", \"trừ loại chuyển động… quay\") và các dòng dễ chồng (.21, .31, .90) ghi thêm maHsTuongUng theo cột mã hàng tương ứng (tuongUng)."
+    },
+    {
+      "ma": "981820~r19155",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.981820~r19155 \"Bơm ly tâm khác\" — bơm nguyên chiếc, anh em của 98182090 \"Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19\" ⇒ thêm laBoPhan KHONG (căn cứ cấu trúc: anh em là bộ phận của chính hàng ở tầng này)"
     }
   ],
   "dieuKienNut": {
@@ -145,6 +150,10 @@
           "value": [
             "LY_TAM"
           ]
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "phanConLai": true
