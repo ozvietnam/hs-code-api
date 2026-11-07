@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "zcode-sub:glm-5.3:20261106T0856#soan-640690",
-    "ngay": "2026-11-06"
+    "phien": "zcode-sub:glm-5.3:20261106T1800#soan-640690",
+    "ngay": "2026-11-07"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -127,13 +127,20 @@
     },
     {
       "hs": "64069042",
-      "nguon": "tax.64069042",
-      "trich": "64069042 - - - Đế giày đã hoàn thiện (SEN)",
+      "nguon": "sen.64069042",
+      "trich": "Giày bao gồm 4 phần chính: đế ngoài, đế trong, đế giữa và mũ giày. Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Đế giày đã hoàn thiện"
+          "value": "đế giày"
+        },
+        {
+          "fact": "boPhanGiayDep",
+          "op": "TRONG",
+          "value": [
+            "DE_HOAN_THIEN"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -160,13 +167,20 @@
     },
     {
       "hs": "64069052",
-      "nguon": "tax.64069052",
-      "trich": "64069052 - - - Đế giày đã hoàn thiện (SEN)",
+      "nguon": "sen.64069052",
+      "trich": "Giày bao gồm 4 phần chính: đế ngoài, đế trong, đế giữa và mũ giày. Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Đế giày đã hoàn thiện"
+          "value": "đế giày"
+        },
+        {
+          "fact": "boPhanGiayDep",
+          "op": "TRONG",
+          "value": [
+            "DE_HOAN_THIEN"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -267,7 +281,7 @@
     {
       "ma": "64069042",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.64069042 \"Đế giày đã hoàn thiện (SEN)\" ⇒ tenLoai TEN_LOAI \"Đế giày đã hoàn thiện\"; \"(SEN)\" là dẫn chú giải, không thành điều kiện"
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.64069042 \"Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày\" ⇒ tenLoai \"đế giày\" (productHead cắt head tại \"đã\" nên giá trị cũ \"Đế giày đã hoàn thiện\" không bao giờ khớp) + boPhanGiayDep DE_HOAN_THIEN (chữ \"đã hoàn thiện\" giờ do khoá có kiểu gánh)."
     },
     {
       "ma": "64069051",
@@ -277,7 +291,7 @@
     {
       "ma": "64069052",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.64069052 \"Đế giày đã hoàn thiện (SEN)\" ⇒ tenLoai TEN_LOAI \"Đế giày đã hoàn thiện\" như 64069042"
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.64069052 \"Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày\" ⇒ tenLoai \"đế giày\" (productHead cắt head tại \"đã\" nên giá trị cũ \"Đế giày đã hoàn thiện\" không bao giờ khớp) + boPhanGiayDep DE_HOAN_THIEN (chữ \"đã hoàn thiện\" giờ do khoá có kiểu gánh)."
     },
     {
       "ma": "64069091",
@@ -308,6 +322,16 @@
       "ma": "64069099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.64069099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "64069042",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.64069042 \"Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày\" ⇒ tenLoai \"đế giày\" (productHead cắt head tại \"đã\" nên giá trị cũ \"Đế giày đã hoàn thiện\" không bao giờ khớp) + boPhanGiayDep DE_HOAN_THIEN (chữ \"đã hoàn thiện\" giờ do khoá có kiểu gánh)."
+    },
+    {
+      "ma": "64069052",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.64069052 \"Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày\" ⇒ tenLoai \"đế giày\" (productHead cắt head tại \"đã\" nên giá trị cũ \"Đế giày đã hoàn thiện\" không bao giờ khớp) + boPhanGiayDep DE_HOAN_THIEN (chữ \"đã hoàn thiện\" giờ do khoá có kiểu gánh)."
     }
   ]
 }

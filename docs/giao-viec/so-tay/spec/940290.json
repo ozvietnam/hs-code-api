@@ -1,136 +1,172 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "940290",
-  "phien": "zcode-sub:glm-5.3:20261106T1001#soan-940290",
-  "dong8": {
-    "94029011": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Ghế vệ sinh"
-        },
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "người bệnh"
-        }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "940290",
+ "phien": "zcode-sub:glm-5.3:20261106T1800#soan-940290",
+ "dong8": {
+  "94029011": {
+   "nguon": "sen.94029011",
+   "trich": "Ghế vệ sinh dành cho người bệnh (Commode) là loại đồ nội thất có hình dáng tương tự ghế nhưng có một hộc ngồi cho người ốm hoặc già để sử dụng như một thiết bị vệ sinh",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Ghế vệ sinh"
     },
-    "94029012": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bàn mổ"
-        },
-        {
-          "fact": "hoatDongBangDien",
-          "op": "CO"
-        }
-      ]
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "người bệnh"
     },
-    "94029013": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bàn mổ"
-        },
-        {
-          "fact": "hoatDongBangDien",
-          "op": "KHONG"
-        }
-      ]
-    },
-    "94029014": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bàn khám"
-        }
-      ]
-    },
-    "94029015": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Giường bệnh"
-        }
-      ]
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "thiết bị vệ sinh"
     }
+   ]
   },
-  "dieuKienNut": {
-    "9402901": {
-      "dieuKienSo": [
-        {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": [
-                  "ngành y",
-                  "giải phẫu",
-                  "thú y"
-                ]
-              }
-            ],
-            [
-              {
-                "fact": "laBoPhan",
-                "op": "CO"
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": "Đồ nội thất"
-              }
-            ]
-          ]
-        }
-      ]
+  "94029012": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bàn mổ"
+    },
+    {
+     "fact": "hoatDongBangDien",
+     "op": "CO"
     }
+   ]
   },
-  "ghiChuSoan": [
+  "94029013": {
+   "dieuKienSo": [
     {
-      "ma": "9402901",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tieuDe.9402901: \"Đồ nội thất được thiết kế đặc biệt để dùng trong ngành y, giải phẫu hoặc thú y và các bộ phận của chúng\" => HOAC [[dungCho mảng [\"ngành y\",\"giải phẫu\",\"thú y\"]], [laBoPhan CO + dungCho \"Đồ nội thất\"]] — không kéo danh từ đầu \"Đồ nội thất\" thành tenLoai tầng vì các dòng con là tên riêng (Ghế/Bàn/Giường) sẽ không tới được"
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bàn mổ"
     },
     {
-      "ma": "9402901",
-      "loai": "BO_VE",
-      "ve": "được thiết kế đặc biệt",
-      "lyDo": "Cường điệu của vế đích đã phủ (để dùng trong ngành y/giải phẫu/thú y qua dungCho); tu-vung@2 không có khoá 'được thiết kế đặc biệt' riêng; tầng không mang mã 8 số nên bỏ vế không đổi dòng"
-    },
-    {
-      "ma": "94029011",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.94029011: \"Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)\" => tenLoai \"Ghế vệ sinh\" + định ngữ \"người bệnh\" điều kiện riêng cùng khoá (vế \"cho người bệnh\"); \"(Commodes)\" tên gọi trong ngoặc"
-    },
-    {
-      "ma": "94029012",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.94029012: \"Bàn mổ, hoạt động bằng điện (SEN)\" => tenLoai \"Bàn mổ\" + hoatDongBangDien CO"
-    },
-    {
-      "ma": "94029013",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.94029013: \"Bàn mổ, không hoạt động bằng điện (SEN)\" => tenLoai \"Bàn mổ\" + hoatDongBangDien KHONG (chữ \"Không ...\")"
-    },
-    {
-      "ma": "94029014",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.94029014: \"Bàn khám (SEN)\" => tenLoai nguyên văn"
-    },
-    {
-      "ma": "94029015",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.94029015: \"Giường bệnh (SEN)\" => tenLoai nguyên văn"
+     "fact": "hoatDongBangDien",
+     "op": "KHONG"
     }
-  ]
+   ]
+  },
+  "94029014": {
+   "nguon": "sen.94029014",
+   "trich": "Bàn khám được sử dụng ở nơi chăm sóc y tế, khám bệnh cho bệnh nhân. Nói chung, những loại bàn này có thể có chiều cao cố định hoặc điều chỉnh được",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bàn khám"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "khám bệnh"
+    }
+   ]
+  },
+  "94029015": {
+   "nguon": "sen.94029015",
+   "trich": "Giường bệnh là loại giường được thiết kế đặc biệt dành cho những bệnh nhân nằm viện hoặc các trường hợp khác cần được chăm sóc sức khỏe… Giường có các thanh ray bên hông để nâng hoặc hạ nhằm bảo vệ người bệnh",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Giường bệnh"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "chăm sóc sức khỏe"
+    }
+   ]
+  }
+ },
+ "dieuKienNut": {
+  "9402901": {
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": [
+         "ngành y",
+         "giải phẫu",
+         "thú y"
+        ]
+       }
+      ],
+      [
+       {
+        "fact": "laBoPhan",
+        "op": "CO"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": "Đồ nội thất"
+       }
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "9402901",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.9402901: \"Đồ nội thất được thiết kế đặc biệt để dùng trong ngành y, giải phẫu hoặc thú y và các bộ phận của chúng\" => HOAC [[dungCho mảng [\"ngành y\",\"giải phẫu\",\"thú y\"]], [laBoPhan CO + dungCho \"Đồ nội thất\"]] — không kéo danh từ đầu \"Đồ nội thất\" thành tenLoai tầng vì các dòng con là tên riêng (Ghế/Bàn/Giường) sẽ không tới được"
+  },
+  {
+   "ma": "9402901",
+   "loai": "BO_VE",
+   "ve": "được thiết kế đặc biệt",
+   "lyDo": "Cường điệu của vế đích đã phủ (để dùng trong ngành y/giải phẫu/thú y qua dungCho); tu-vung@2 không có khoá 'được thiết kế đặc biệt' riêng; tầng không mang mã 8 số nên bỏ vế không đổi dòng"
+  },
+  {
+   "ma": "94029011",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.94029011: \"Ghế vệ sinh dành cho người bệnh (Commodes) (SEN)\" => tenLoai \"Ghế vệ sinh\" + định ngữ \"người bệnh\" điều kiện riêng cùng khoá (vế \"cho người bệnh\"); \"(Commodes)\" tên gọi trong ngoặc"
+  },
+  {
+   "ma": "94029012",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.94029012: \"Bàn mổ, hoạt động bằng điện (SEN)\" => tenLoai \"Bàn mổ\" + hoatDongBangDien CO"
+  },
+  {
+   "ma": "94029013",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.94029013: \"Bàn mổ, không hoạt động bằng điện (SEN)\" => tenLoai \"Bàn mổ\" + hoatDongBangDien KHONG (chữ \"Không ...\")"
+  },
+  {
+   "ma": "94029014",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.94029014: \"Bàn khám (SEN)\" => tenLoai nguyên văn"
+  },
+  {
+   "ma": "94029015",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.94029015: \"Giường bệnh (SEN)\" => tenLoai nguyên văn"
+  },
+  {
+   "ma": "94029011",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.94029011 \"có một hộc ngồi cho người ốm hoặc già để sử dụng như một thiết bị vệ sinh\" ⇒ thêm congDung \"thiết bị vệ sinh\" — ghế vệ sinh người bệnh theo SEN có hộc ngồi dùng làm thiết bị vệ sinh."
+  },
+  {
+   "ma": "94029014",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.94029014 \"được sử dụng ở nơi chăm sóc y tế, khám bệnh cho bệnh nhân\" ⇒ thêm congDung \"khám bệnh\" — bàn khám theo SEN dùng ở nơi chăm sóc y tế, khám bệnh."
+  },
+  {
+   "ma": "94029015",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.94029015 \"được thiết kế đặc biệt dành cho những bệnh nhân nằm viện hoặc các trường hợp khác cần được chăm sóc sức khỏe … thanh ray bên hông để nâng hoặc hạ\" ⇒ thêm congDung \"chăm sóc sức khỏe\" — giường bệnh theo SEN thiết kế đặc biệt cho bệnh nhân chăm sóc sức khỏe."
+  }
+ ]
 }

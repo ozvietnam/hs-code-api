@@ -1,12 +1,47 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "621132",
-  "phien": "zcode-sub:glm-5.3:20261106T1528#soan-621132",
-  "dong8": {
-    "62113210": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Quần áo đấu kiếm", "đấu vật"] } ] },
-    "62113220": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Áo choàng hành hương" } ] }
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "621132",
+ "phien": "zcode-sub:glm-5.3:20261106T1800#soan-621132",
+ "dong8": {
+  "62113210": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Quần áo đấu kiếm",
+      "đấu vật"
+     ]
+    }
+   ]
   },
-  "ghiChuSoan": [
-    { "ma": "62113220", "loai": "QUYET_DINH", "ghiChu": "tax.62113220 \"Áo choàng hành hương (Ihram)(SEN)\" — \"(Ihram)\" và \"(SEN)\" là ngoặc chú thích nguồn, không thành điều kiện; tên hàng lấy \"Áo choàng hành hương\"." }
-  ]
+  "62113220": {
+   "nguon": "sen.62113220",
+   "trich": "Áo choàng hành hương (Tiếng Ả rập: ihram) gồm hai mảnh rời màu trắng trơn không có bất kỳ mối khâu hoặc may nào, đủ dài để quấn quanh người",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Áo choàng hành hương"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "quấn quanh người"
+    }
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "62113220",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.62113220 \"Áo choàng hành hương (Ihram)(SEN)\" — \"(Ihram)\" và \"(SEN)\" là ngoặc chú thích nguồn, không thành điều kiện; tên hàng lấy \"Áo choàng hành hương\"."
+  },
+  {
+   "ma": "62113220",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.62113220 \"gồm hai mảnh rời màu trắng trơn không có … mối khâu hoặc may nào, đủ dài để quấn quanh người\" ⇒ thêm congDung \"quấn quanh người\" — ihram theo SEN là 2 mảnh rời không khâu, quấn quanh người."
+  }
+ ]
 }
