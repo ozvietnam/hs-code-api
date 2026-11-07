@@ -30,7 +30,15 @@
       "hs": "72259220",
       "nguon": "tax.72259220",
       "trich": "72259220 - - - Loại khác, được phủ, mạ hoặc tráng bằng hợp kim kẽm - nhôm - magiê",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "lopMaPhu",
+          "op": "TRONG",
+          "value": [
+            "KEM_NHOM_MAGIE"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -49,9 +57,8 @@
     },
     {
       "ma": "72259220",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "ghiChu": "tax.72259220 \"Loại khác, được phủ, mạ hoặc tráng bằng hợp kim kẽm - nhôm - magiê\": vế GIỚI HẠN \"bằng hợp kim kẽm - nhôm - magiê\" là LỚP PHỦ. Khoá lopMaPhu (lớp mạ hoặc tráng phủ bề mặt) đúng trục nhưng chưa có giá trị hợp kim kẽm-nhôm-magiê (chỉ MA_DONG, TRANG_NHUA_FLO, TRANG_KEM_CROMAT, TRANG_THIEC, SON_SAU_MA_KEM); khoá daXuLyBeMat chỉ đọc \"xử lý bề mặt\" không đọc \"phủ, mạ hoặc tráng\". Không ép bằng tenLoai (lớp phủ không phải tên hàng, sẽ sai trục).",
-      "khoaDeXuat": "lopMaPhu (giá trị mới KEM_NHOM_MAGIE)"
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.72259220 \"Loại khác, được phủ, mạ hoặc tráng bằng hợp kim kẽm - nhôm - magiê\" ⇒ chỉ ghi điều kiện của vế sau \"Loại khác,\": lopMaPhu TRONG [KEM_NHOM_MAGIE] (giá trị lô 21; cách đọc \"phủ, mạ hoặc tráng (bằng) hợp kim kẽm - nhôm - magiê\" phủ cả hai vế \"được phủ, mạ hoặc tráng\" và \"bằng hợp kim kẽm - nhôm - magiê\")."
     },
     {
       "ma": "72259290",
@@ -62,11 +69,6 @@
       "ma": "722592",
       "loai": "LECH_TIEN_LE",
       "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 722592-01 KHONG_LECH (4337/TB-TCHQ: thép hợp kim Bo mạ kẽm nhúng nóng không phải thép gió .10, lớp mạ kẽm không phải hợp kim kẽm-nhôm-magiê .20 ⇒ .90 khớp chữ biểu): soạn theo chữ biểu, khớp bảng."
-    },
-    {
-      "ma": "722592",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG THIEU_KHOA_TU_VUNG:72259220:lopMaPhu (giá trị mới KEM_NHOM_MAGIE: hợp kim kẽm - nhôm - magiê). Dòng .20 để dieuKienSo rỗng; .10 đã soạn. .90 là Loại khác trần nên không soạn thêm."
     }
   ]
 }
