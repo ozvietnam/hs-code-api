@@ -1,86 +1,88 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "480451",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-480451",
-  "dong8": {
-    "48045110": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Giấy kraft cách điện"
-        }
-      ]
-    },
-    "48045120": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Bìa ép"
-        },
-        {
-          "fact": "dinhLuong",
-          "op": ">=",
-          "value": 600,
-          "donVi": "g/m2"
-        }
-      ]
-    },
-    "48045130": {
-      "dieuKienSo": [
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "sản xuất băng dán gỗ dán"
-        }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "480451",
+ "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-480451",
+ "dong8": {
+  "48045110": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Giấy kraft cách điện"
     }
+   ],
+   "nguon": "sen.48045110",
+   "trich": "Giấy kraft cách điện là một loại giấy Kraft được hoàn thiện bằng nước, thỏa mãn tiêu chuẩn IEC554-3-1, loại được sử dụng là giấy bọc cách điện trong các máy biến áp ngâm dầu. Cụm từ “được hoàn thiện bằng nước” đề cập đến loại giấy được sản xuất bằng cách làm ẩm giấy bằng nước (giá trị pH từ 7-9) …"
   },
-  "dieuKienNut": {},
-  "chongLanTruc": [
+  "48045120": {
+   "dieuKienSo": [
     {
-      "nhanh": [
-        "48045110",
-        "48045120",
-        "48045130"
-      ],
-      "truc": {
-        "48045110": "TEN_LOAI",
-        "48045120": "TEN_LOAI",
-        "48045130": "CONG_DUNG"
-      },
-      "cauHoiPhanBiet": "Hàng hóa là giấy kraft cách điện, bìa ép hay giấy dùng để sản xuất băng dán gỗ dán?",
-      "trich": {
-        "48045110": "Giấy kraft cách điện (SEN)",
-        "48045120": "Bìa ép có định lượng từ 600g/m2 trở lên",
-        "48045130": "dùng để sản xuất băng dán gỗ dán"
-      },
-      "viDuHang": [
-        {
-          "cap": [
-            "48045110",
-            "48045130"
-          ],
-          "hang": "Giấy kraft cách điện dùng để sản xuất băng dán gỗ dán"
-        },
-        {
-          "cap": [
-            "48045120",
-            "48045130"
-          ],
-          "hang": "Bìa ép có định lượng 650 g/m2 dùng để sản xuất băng dán gỗ dán"
-        }
-      ],
-      "phanXu": null
-    }
-  ],
-  "ghiChuSoan": [
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Bìa ép"
+    },
     {
-      "ma": "48045130",
-      "loai": "BO_VE",
-      "ve": "Có độ bền ướt từ 40 g đến 60 g",
-      "lyDo": "Chưa có khoá tu-vung cho tiêu chí độ bền ướt (g), định danh phân loại chủ yếu theo công dụng sản xuất băng dán gỗ dán"
+     "fact": "dinhLuong",
+     "op": ">=",
+     "value": 600,
+     "donVi": "g/m2"
     }
-  ]
+   ]
+  },
+  "48045130": {
+   "dieuKienSo": [
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "sản xuất băng dán gỗ dán"
+    }
+   ]
+  }
+ },
+ "dieuKienNut": {},
+ "chongLanTruc": [
+  {
+   "nhanh": [
+    "48045110",
+    "48045120",
+    "48045130"
+   ],
+   "truc": {
+    "48045110": "TEN_LOAI",
+    "48045120": "TEN_LOAI",
+    "48045130": "CONG_DUNG"
+   },
+   "cauHoiPhanBiet": "Hàng hóa là giấy kraft cách điện, bìa ép hay giấy dùng để sản xuất băng dán gỗ dán?",
+   "trich": {
+    "48045110": "Giấy kraft cách điện (SEN)",
+    "48045120": "Bìa ép có định lượng từ 600g/m2 trở lên",
+    "48045130": "dùng để sản xuất băng dán gỗ dán"
+   },
+   "viDuHang": [
+    {
+     "cap": [
+      "48045110",
+      "48045130"
+     ],
+     "hang": "Giấy kraft cách điện dùng để sản xuất băng dán gỗ dán"
+    },
+    {
+     "cap": [
+      "48045120",
+      "48045130"
+     ],
+     "hang": "Bìa ép có định lượng 650 g/m2 dùng để sản xuất băng dán gỗ dán"
+    }
+   ],
+   "phanXu": null
+  }
+ ],
+ "ghiChuSoan": [
+  {
+   "ma": "48045130",
+   "loai": "BO_VE",
+   "ve": "Có độ bền ướt từ 40 g đến 60 g",
+   "lyDo": "Chưa có khoá tu-vung cho tiêu chí độ bền ướt (g), định danh phân loại chủ yếu theo công dụng sản xuất băng dán gỗ dán"
+  }
+ ]
 }

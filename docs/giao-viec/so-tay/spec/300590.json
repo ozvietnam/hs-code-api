@@ -1,37 +1,41 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "300590",
-  "phien": "mm:minimax-m3:20261105T0845#soan-300590",
-  "dong8": {
-    "30059010": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Băng"
-        }
-      ]
-    },
-    "30059020": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Gạc"
-        }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "300590",
+ "phien": "mm:minimax-m3:20261105T0845#soan-300590",
+ "dong8": {
+  "30059010": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Băng"
     }
+   ],
+   "nguon": "sen.30059010",
+   "trich": "Có hai loại băng:\n\n1. Băng gạc: Là những dải vải dệt thoi khổ hẹp, chiều dài khoảng 1 m, (không phải vải dệt thoi khổ hẹp thuộc nhóm 58.06) được trình bày dưới dạng đóng gói bán lẻ để dùng cố định hoặc băng bó trong y tế hoặc các miếng vải tương tự để đắp lên vết thương.\n\n2. Băng crepe: Là loại v…"
   },
-  "ghiChuSoan": [
+  "30059020": {
+   "dieuKienSo": [
     {
-      "ma": "30059010",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.30059010 \"Băng (SEN)\" — tên hàng \"Băng\" (nguồn sen.30059010 mô tả băng gạc và băng crepe); \"Loại khác\" trần ở .90 không ghi điều kiện."
-    },
-    {
-      "ma": "30059020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.30059020 \"Gạc (SEN)\" — tên hàng \"Gạc\" (nguồn sen.30059020: vải mỏng dệt thoi khổ mở)."
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Gạc"
     }
-  ]
+   ],
+   "nguon": "sen.30059020",
+   "trich": "Gạc là loại vải mỏng, dệt thoi khổ mở, có hoặc không chứa dược chất.\n\nGạc không được trình bày dưới dạng dược phẩm có thể được tìm thấy ở Nhóm 58.04, tại Chú giải chi tiết HS có giải thích chi tiết.\n\nCùng loại vải này khi được đóng gói bán lẻ, thường đóng gói trong các bao bì vô trùng, được coi l…"
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "30059010",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.30059010 \"Băng (SEN)\" — tên hàng \"Băng\" (nguồn sen.30059010 mô tả băng gạc và băng crepe); \"Loại khác\" trần ở .90 không ghi điều kiện."
+  },
+  {
+   "ma": "30059020",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.30059020 \"Gạc (SEN)\" — tên hàng \"Gạc\" (nguồn sen.30059020: vải mỏng dệt thoi khổ mở)."
+  }
+ ]
 }

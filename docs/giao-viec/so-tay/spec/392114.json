@@ -1,23 +1,90 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "392114",
-  "phien": "mm:minimax-m3:20261105T1700#soan-392114",
-  "dong8": {
-    "39211421": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["tấm", "phiến"] } ] },
-    "39211429": { "dieuKienSo": [] },
-    "39211491": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["tấm", "phiến"] } ] },
-    "39211492": { "dieuKienSo": [ { "fact": "tenLoai", "op": "TEN_LOAI", "value": "màng" } ] },
-    "39211499": { "dieuKienSo": [] }
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "392114",
+ "phien": "mm:minimax-m3:20261105T1700#soan-392114",
+ "dong8": {
+  "39211421": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "tấm",
+      "phiến"
+     ]
+    }
+   ],
+   "nguon": "sen.39211421",
+   "trich": "Plastic cứng dạng tấm và phiến có modul đàn hồi uốn hoặc module đàn hồi kéo lớn hơn 100,000 psi ở 23°C và có độ ẩm tương đối là 50% khi thử nghiệm theo tiêu chuẩn ASTM D747 hoặc ASTM D790.\n\nModul uốn biểu kiến theo tiêu chuẩn ASTM D747\n\nĐược sử dụng cho các vật liệu dễ uốn để thử nghiệm theo tiêu…"
   },
-  "dieuKienNut": {
-    "3921142": { "dieuKienSo": [ { "fact": "loaiCung", "op": "CO" } ] }
+  "39211429": {
+   "dieuKienSo": []
   },
-  "ghiChuSoan": [
-    { "ma": "3921142", "loai": "QUYET_DINH", "ghiChu": "tieuDe.3921142 \"Cứng\" (EN \"Rigid\") ⇒ loaiCung CO." },
-    { "ma": "39211421", "loai": "QUYET_DINH", "ghiChu": "tax.39211421 \"Dạng tấm và phiến (SEN)\" (EN \"Plates and sheets\") ⇒ tenLoai [\"tấm\",\"phiến\"] (vòng 5/7). Điều kiện \"cứng\" để ở tiêu đề 3921142." },
-    { "ma": "39211491", "loai": "QUYET_DINH", "ghiChu": "tax.39211491 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"]; dưới tiêu đề \"Loại khác\" (3921149) nên máy phủ định anh em." },
-    { "ma": "39211492", "loai": "QUYET_DINH", "ghiChu": "tax.39211492 \"Dạng màng (SEN)\" (EN \"Film\") ⇒ tenLoai \"màng\"." },
-    { "ma": "39211429", "loai": "QUYET_DINH", "ghiChu": "tax.39211429 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." },
-    { "ma": "39211499", "loai": "QUYET_DINH", "ghiChu": "tax.39211499 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)." }
-  ]
+  "39211491": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "tấm",
+      "phiến"
+     ]
+    }
+   ]
+  },
+  "39211492": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "màng"
+    }
+   ]
+  },
+  "39211499": {
+   "dieuKienSo": []
+  }
+ },
+ "dieuKienNut": {
+  "3921142": {
+   "dieuKienSo": [
+    {
+     "fact": "loaiCung",
+     "op": "CO"
+    }
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "3921142",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.3921142 \"Cứng\" (EN \"Rigid\") ⇒ loaiCung CO."
+  },
+  {
+   "ma": "39211421",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39211421 \"Dạng tấm và phiến (SEN)\" (EN \"Plates and sheets\") ⇒ tenLoai [\"tấm\",\"phiến\"] (vòng 5/7). Điều kiện \"cứng\" để ở tiêu đề 3921142."
+  },
+  {
+   "ma": "39211491",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39211491 \"Dạng tấm và phiến (SEN)\" ⇒ tenLoai [\"tấm\",\"phiến\"]; dưới tiêu đề \"Loại khác\" (3921149) nên máy phủ định anh em."
+  },
+  {
+   "ma": "39211492",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39211492 \"Dạng màng (SEN)\" (EN \"Film\") ⇒ tenLoai \"màng\"."
+  },
+  {
+   "ma": "39211429",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39211429 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+  },
+  {
+   "ma": "39211499",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.39211499 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)."
+  }
+ ]
 }

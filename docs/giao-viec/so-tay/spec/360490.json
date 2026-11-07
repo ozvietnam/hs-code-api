@@ -1,49 +1,53 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "360490",
-  "phien": "mm:minimax-m3:202611051900#soan-360490",
-  "dong8": {
-    "36049020": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Pháo hoa nhỏ",
-            "kíp nổ"
-          ]
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "làm đồ chơi"
-        }
-      ]
-    },
-    "36049040": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Pháo hiệu"
-        }
-      ]
-    },
-    "36049050": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Pháo thăng thiên"
-        }
-      ]
-    }
-  },
-  "ghiChuSoan": [
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "360490",
+ "phien": "mm:minimax-m3:202611051900#soan-360490",
+ "dong8": {
+  "36049020": {
+   "dieuKienSo": [
     {
-      "ma": "36049020",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.36049020 \"Pháo hoa nhỏ và kíp nổ dùng làm đồ chơi\" ⇒ tenLoai hai tên nêu trong chính dòng (\"Pháo hoa nhỏ\" | \"kíp nổ\" — nối bằng \"và\" nên tách thành mảng) + congDung \"làm đồ chơi\" (vế \"dùng làm đồ chơi\"). .40 \"Pháo hiệu\" và .50 \"Pháo thăng thiên\" chỉ có tên trong chữ biểu ⇒ tenLoai nguyên văn; KHÔNG thêm điều kiện từ sen.36049040/sen.35069150 (mô tả kỹ thuật) vì chữ biểu của dòng không nói. Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện."
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Pháo hoa nhỏ",
+      "kíp nổ"
+     ]
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "làm đồ chơi"
     }
-  ]
+   ]
+  },
+  "36049040": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Pháo hiệu"
+    }
+   ],
+   "nguon": "sen.36049040",
+   "trich": "Pháo hiệu phát ra ánh sáng đỏ tươi khi cầm nó. Nó được sử dụng để báo hiệu vị trí chính xác và được thiết kế để cầm được bằng tay, được đặt trên mặt đất hoặc thả xuống biển để tạo ra những chùm khói khổng lồ đầy màu sắc (thường là cam hoặc đỏ)."
+  },
+  "36049050": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Pháo thăng thiên"
+    }
+   ],
+   "nguon": "sen.36049050",
+   "trich": "Pháo thăng thiên, cũng được gọi là pháo cứu nạn, là một thiết bị phát tín hiệu ánh sáng thường được bắn lên cao vì thế chúng có thể được nhìn thấy từ khoảng cách lớn hơn nhiều so với pháo sáng cầm tay (lên đến 40km/25 dặm hoặc tương đương trong tầm nhìn tốt). Loại đơn giản nhất giống như pháo hoa…"
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "36049020",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.36049020 \"Pháo hoa nhỏ và kíp nổ dùng làm đồ chơi\" ⇒ tenLoai hai tên nêu trong chính dòng (\"Pháo hoa nhỏ\" | \"kíp nổ\" — nối bằng \"và\" nên tách thành mảng) + congDung \"làm đồ chơi\" (vế \"dùng làm đồ chơi\"). .40 \"Pháo hiệu\" và .50 \"Pháo thăng thiên\" chỉ có tên trong chữ biểu ⇒ tenLoai nguyên văn; KHÔNG thêm điều kiện từ sen.36049040/sen.35069150 (mô tả kỹ thuật) vì chữ biểu của dòng không nói. Dòng .90 là \"Loại khác\" trần ⇒ không ghi điều kiện."
+  }
+ ]
 }

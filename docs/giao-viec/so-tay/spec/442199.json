@@ -1,202 +1,204 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "442199",
-  "phien": "zcode-sub:glm-5.3:20261106T1546#soan-442199",
-  "dong8": {
-    "44219910": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TUONG_TU",
-          "value": [
-            "Lõi cuộn chỉ",
-            "ống sợi",
-            "suốt sợi",
-            "guồng cuốn chỉ may"
-          ]
-        }
-      ]
-    },
-    "44219920": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Thanh gỗ"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "làm diêm"
-        }
-      ]
-    },
-    "44219930": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Móc gỗ",
-            "ghim gỗ"
-          ]
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": [
-            "giày",
-            "dép"
-          ]
-        }
-      ]
-    },
-    "44219940": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Que kẹo",
-            "que kem",
-            "thìa xúc kem"
-          ]
-        }
-      ]
-    },
-    "44219970": {
-      "dieuKienSo": [
-        {
-          "op": "HOAC",
-          "phuongAn": [
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "Quạt"
-              }
-            ],
-            [
-              {
-                "fact": "tenLoai",
-                "op": "TEN_LOAI",
-                "value": "màn che"
-              },
-              {
-                "fact": "cachDieuKhien",
-                "op": "TRONG",
-                "value": [
-                  "BANG_TAY"
-                ]
-              }
-            ],
-            [
-              {
-                "fact": "laBoPhan",
-                "op": "CO"
-              },
-              {
-                "fact": "dungCho",
-                "op": "CONG_DUNG",
-                "value": [
-                  "Quạt",
-                  "màn che"
-                ]
-              }
-            ]
-          ]
-        }
-      ]
-    },
-    "44219980": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Tăm"
-        }
-      ]
-    },
-    "44219993": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Chuỗi hạt cầu nguyện"
-        }
-      ]
-    },
-    "44219994": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Chuỗi hạt"
-        }
-      ],
-      "phanConLai": [
-        "44219993"
-      ]
-    },
-    "44219995": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "que"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "làm nhang"
-        }
-      ]
-    },
-    "44219996": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Lõi gỗ ghép"
-        }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "442199",
+ "phien": "zcode-sub:glm-5.3:20261106T1546#soan-442199",
+ "dong8": {
+  "44219910": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TUONG_TU",
+     "value": [
+      "Lõi cuộn chỉ",
+      "ống sợi",
+      "suốt sợi",
+      "guồng cuốn chỉ may"
+     ]
     }
+   ]
   },
-  "ghiChuSoan": [
+  "44219920": {
+   "dieuKienSo": [
     {
-      "ma": "44219910",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.44219910 \"Lõi cuộn chỉ, ống sợi và suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự\" ⇒ tenLoai TUONG_TU [bốn hàng nêu tên] (vòng 7)"
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Thanh gỗ"
     },
     {
-      "ma": "44219930",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.44219930 \"Móc gỗ hoặc ghim gỗ dùng cho giày, dép\" ⇒ tenLoai [\"Móc gỗ\",\"ghim gỗ\"] (\"hoặc\" = hai hàng) + dungCho [\"giày\",\"dép\"]"
-    },
-    {
-      "ma": "44219970",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.44219970 (EN: Fans and handscreens, frames and handles therefor, and parts thereof) ⇒ HOAC [[Quạt],[màn che + cachDieuKhien BANG_TAY],[laBoPhan + dungCho Quạt/màn che]] — \"kéo bằng tay\" định ngữ riêng của màn che (LUAT-CHUNG); vế mở \"và các bộ phận của chúng\" đúng quy ước"
-    },
-    {
-      "ma": "44219994",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.44219994 \"Chuỗi hạt khác\" — phanConLai chỉ phủ định anh em 44219993 \"Chuỗi hạt cầu nguyện\" (cùng cụm Chuỗi hạt), không phủ .95/.96"
-    },
-    {
-      "ma": "44219995",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.44219995 \"Các loại que dùng để làm nhang (nén hương) (SEN)\" ⇒ tenLoai \"que\" + congDung \"làm nhang\"; ngoặc PHU"
-    },
-    {
-      "ma": "44219996",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.44219996 \"Lõi gỗ ghép (barecore) (SEN)\" ⇒ tenLoai \"Lõi gỗ ghép\"; \"(barecore) (SEN)\" ngoặc PHU"
-    },
-    {
-      "ma": "442199",
-      "loai": "DUNG",
-      "ghiChu": "Chồng lấn trục không khai được chongLanTruc (như 442191): (a) .10 TUONG_TU [lõi cuộn chỉ…] ↔ .70 nhánh bộ phận [laBoPhan + dungCho Quạt/màn che]; (b) .40 [Que kẹo…] ↔ .95 tenLoai que + congDung làm nhang. Cả hai cặp KHÔNG có hàng thật nào thoả cả hai nhánh theo chữ biểu ⇒ vòng 8: không bịa viDuHang ⇒ DỪNG báo Claude. Thêm: cong2-dong-khong-toi-duoc:44219994 — tenLoai \"Chuỗi hạt\" (generic) không tới được vì phủ định \"Chuỗi hạt cầu nguyện\" không all định trên vector generic (tên chứa tên)."
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "làm diêm"
     }
-  ]
+   ]
+  },
+  "44219930": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Móc gỗ",
+      "ghim gỗ"
+     ]
+    },
+    {
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": [
+      "giày",
+      "dép"
+     ]
+    }
+   ]
+  },
+  "44219940": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Que kẹo",
+      "que kem",
+      "thìa xúc kem"
+     ]
+    }
+   ]
+  },
+  "44219970": {
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "Quạt"
+       }
+      ],
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TEN_LOAI",
+        "value": "màn che"
+       },
+       {
+        "fact": "cachDieuKhien",
+        "op": "TRONG",
+        "value": [
+         "BANG_TAY"
+        ]
+       }
+      ],
+      [
+       {
+        "fact": "laBoPhan",
+        "op": "CO"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": [
+         "Quạt",
+         "màn che"
+        ]
+       }
+      ]
+     ]
+    }
+   ]
+  },
+  "44219980": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Tăm"
+    }
+   ]
+  },
+  "44219993": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Chuỗi hạt cầu nguyện"
+    }
+   ]
+  },
+  "44219994": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Chuỗi hạt"
+    }
+   ],
+   "phanConLai": [
+    "44219993"
+   ]
+  },
+  "44219995": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "que"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "làm nhang"
+    }
+   ]
+  },
+  "44219996": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Lõi gỗ ghép"
+    }
+   ],
+   "nguon": "sen.44219996",
+   "trich": "Lõi gỗ ghép là tấm gỗ được tạo ra bằng cách dán dính các dải gỗ cạnh nhau, thường được làm từ gỗ albizia và được sử dụng làm lõi trong sản xuất ván ghép (blockboard)."
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "44219910",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.44219910 \"Lõi cuộn chỉ, ống sợi và suốt sợi, guồng cuốn chỉ may và các sản phẩm tương tự\" ⇒ tenLoai TUONG_TU [bốn hàng nêu tên] (vòng 7)"
+  },
+  {
+   "ma": "44219930",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.44219930 \"Móc gỗ hoặc ghim gỗ dùng cho giày, dép\" ⇒ tenLoai [\"Móc gỗ\",\"ghim gỗ\"] (\"hoặc\" = hai hàng) + dungCho [\"giày\",\"dép\"]"
+  },
+  {
+   "ma": "44219970",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.44219970 (EN: Fans and handscreens, frames and handles therefor, and parts thereof) ⇒ HOAC [[Quạt],[màn che + cachDieuKhien BANG_TAY],[laBoPhan + dungCho Quạt/màn che]] — \"kéo bằng tay\" định ngữ riêng của màn che (LUAT-CHUNG); vế mở \"và các bộ phận của chúng\" đúng quy ước"
+  },
+  {
+   "ma": "44219994",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.44219994 \"Chuỗi hạt khác\" — phanConLai chỉ phủ định anh em 44219993 \"Chuỗi hạt cầu nguyện\" (cùng cụm Chuỗi hạt), không phủ .95/.96"
+  },
+  {
+   "ma": "44219995",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.44219995 \"Các loại que dùng để làm nhang (nén hương) (SEN)\" ⇒ tenLoai \"que\" + congDung \"làm nhang\"; ngoặc PHU"
+  },
+  {
+   "ma": "44219996",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.44219996 \"Lõi gỗ ghép (barecore) (SEN)\" ⇒ tenLoai \"Lõi gỗ ghép\"; \"(barecore) (SEN)\" ngoặc PHU"
+  },
+  {
+   "ma": "442199",
+   "loai": "DUNG",
+   "ghiChu": "Chồng lấn trục không khai được chongLanTruc (như 442191): (a) .10 TUONG_TU [lõi cuộn chỉ…] ↔ .70 nhánh bộ phận [laBoPhan + dungCho Quạt/màn che]; (b) .40 [Que kẹo…] ↔ .95 tenLoai que + congDung làm nhang. Cả hai cặp KHÔNG có hàng thật nào thoả cả hai nhánh theo chữ biểu ⇒ vòng 8: không bịa viDuHang ⇒ DỪNG báo Claude. Thêm: cong2-dong-khong-toi-duoc:44219994 — tenLoai \"Chuỗi hạt\" (generic) không tới được vì phủ định \"Chuỗi hạt cầu nguyện\" không all định trên vector generic (tên chứa tên)."
+  }
+ ]
 }

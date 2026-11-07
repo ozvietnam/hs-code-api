@@ -1,87 +1,89 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "480431",
-  "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480431",
-  "dong8": {
-    "48043110": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Giấy kraft cách điện"
-        }
-      ]
-    },
-    "48043130": {
-      "dieuKienSo": [
-        {
-          "fact": "doBenUot",
-          "op": ">=",
-          "value": 40,
-          "donVi": "g"
-        },
-        {
-          "fact": "doBenUot",
-          "op": "<=",
-          "value": 60,
-          "donVi": "g"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "sản xuất băng dán gỗ dán"
-        }
-      ]
-    },
-    "48043140": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Giấy làm nền"
-        },
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "sản xuất giấy ráp"
-        }
-      ]
-    },
-    "48043150": {
-      "dieuKienSo": [
-        {
-          "fact": "congDung",
-          "op": "CONG_DUNG",
-          "value": "làm bao xi măng"
-        }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "480431",
+ "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-480431",
+ "dong8": {
+  "48043110": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Giấy kraft cách điện"
     }
+   ],
+   "nguon": "sen.48043110",
+   "trich": "Giấy kraft cách điện là một loại giấy Kraft được hoàn thiện bằng nước, thỏa mãn tiêu chuẩn IEC554-3-1, loại được sử dụng là giấy bọc cách điện trong các máy biến áp ngâm dầu. Cụm từ “được hoàn thiện bằng nước” đề cập đến loại giấy được sản xuất bằng cách làm ẩm giấy bằng nước (giá trị pH từ 7-9) …"
   },
-  "ghiChuSoan": [
+  "48043130": {
+   "dieuKienSo": [
     {
-      "ma": "48043110",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.48043110 \"Giấy kraft cách điện (SEN)\" ⇒ tenLoai \"Giấy kraft cách điện\" nguyên văn (cả dòng là tên, máy không tách vế); \"(SEN)\" là dấu chú giải"
+     "fact": "doBenUot",
+     "op": ">=",
+     "value": 40,
+     "donVi": "g"
     },
     {
-      "ma": "48043130",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.48043130 \"Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)\" ⇒ doBenUot >= 40 g và doBenUot <= 60 g (\"từ 40 g đến 60 g\" gồm cả hai đầu; khoá doBenUot thay cho khoá cũ đề xuất) + congDung \"sản xuất băng dán gỗ dán\" (vế \"dùng để …\"). Đơn vị g như chữ biểu."
+     "fact": "doBenUot",
+     "op": "<=",
+     "value": 60,
+     "donVi": "g"
     },
     {
-      "ma": "48043140",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.48043140 \"Giấy làm nền sản xuất giấy ráp (SEN)\" ⇒ tenLoai \"Giấy làm nền\" + congDung \"sản xuất giấy ráp\""
-    },
-    {
-      "ma": "48043150",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.48043150 \"Loại dùng làm bao xi măng (SEN)\" ⇒ congDung \"làm bao xi măng\" (\"Loại dùng làm\" là cấu trúc công dụng, không phải tên)"
-    },
-    {
-      "ma": "480431",
-      "loai": "DUNG",
-      "ghiChu": "DUNG: cong2-chong-lan-truc:48043110:48043130,48043150 (kèm cong2-chong-lan:48043110+48043130 và 48043110+48043150 khong-tat-dinh). Khoá doBenUot đã phủ vế \"độ bền ướt từ 40 g đến 60 g\" của 48043130 (hết THIEU_KHOA). Còn lại: 48043110 \"Giấy kraft cách điện\" chia theo TÊN (tenLoai), 48043130 \"… dùng để sản xuất băng dán gỗ dán\" và 48043150 \"Loại dùng làm bao xi măng\" chia theo CÔNG DỤNG (congDung) — hai trục khác nhau, không chung khoá. Không khai chongLanTruc vì vòng 8 đòi viDuHang là hàng THẬT thoả cả hai nhánh: không có giấy kraft cách điện nào đồng thời dùng làm băng dán gỗ dán hoặc bao xi măng, và không đổi khoá (đưa \"cách điện\" sang congDung) để né — QUY-TRINH 3.3. Không khai chongLanVanBan cho cặp khác trục (cong2-chong-lan-van-ban-truc). Để NHAP, báo Claude."
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "sản xuất băng dán gỗ dán"
     }
-  ]
+   ]
+  },
+  "48043140": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Giấy làm nền"
+    },
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "sản xuất giấy ráp"
+    }
+   ]
+  },
+  "48043150": {
+   "dieuKienSo": [
+    {
+     "fact": "congDung",
+     "op": "CONG_DUNG",
+     "value": "làm bao xi măng"
+    }
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "48043110",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.48043110 \"Giấy kraft cách điện (SEN)\" ⇒ tenLoai \"Giấy kraft cách điện\" nguyên văn (cả dòng là tên, máy không tách vế); \"(SEN)\" là dấu chú giải"
+  },
+  {
+   "ma": "48043130",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.48043130 \"Có độ bền ướt từ 40 g đến 60 g, dùng để sản xuất băng dán gỗ dán(SEN)\" ⇒ doBenUot >= 40 g và doBenUot <= 60 g (\"từ 40 g đến 60 g\" gồm cả hai đầu; khoá doBenUot thay cho khoá cũ đề xuất) + congDung \"sản xuất băng dán gỗ dán\" (vế \"dùng để …\"). Đơn vị g như chữ biểu."
+  },
+  {
+   "ma": "48043140",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.48043140 \"Giấy làm nền sản xuất giấy ráp (SEN)\" ⇒ tenLoai \"Giấy làm nền\" + congDung \"sản xuất giấy ráp\""
+  },
+  {
+   "ma": "48043150",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.48043150 \"Loại dùng làm bao xi măng (SEN)\" ⇒ congDung \"làm bao xi măng\" (\"Loại dùng làm\" là cấu trúc công dụng, không phải tên)"
+  },
+  {
+   "ma": "480431",
+   "loai": "DUNG",
+   "ghiChu": "DUNG: cong2-chong-lan-truc:48043110:48043130,48043150 (kèm cong2-chong-lan:48043110+48043130 và 48043110+48043150 khong-tat-dinh). Khoá doBenUot đã phủ vế \"độ bền ướt từ 40 g đến 60 g\" của 48043130 (hết THIEU_KHOA). Còn lại: 48043110 \"Giấy kraft cách điện\" chia theo TÊN (tenLoai), 48043130 \"… dùng để sản xuất băng dán gỗ dán\" và 48043150 \"Loại dùng làm bao xi măng\" chia theo CÔNG DỤNG (congDung) — hai trục khác nhau, không chung khoá. Không khai chongLanTruc vì vòng 8 đòi viDuHang là hàng THẬT thoả cả hai nhánh: không có giấy kraft cách điện nào đồng thời dùng làm băng dán gỗ dán hoặc bao xi măng, và không đổi khoá (đưa \"cách điện\" sang congDung) để né — QUY-TRINH 3.3. Không khai chongLanVanBan cho cặp khác trục (cong2-chong-lan-van-ban-truc). Để NHAP, báo Claude."
+  }
+ ]
 }

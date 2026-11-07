@@ -1,96 +1,98 @@
 {
-  "dong8": {
-    "40082110": {
-      "dieuKienSo": [
-        {
-          "fact": "doDay",
-          "op": ">",
-          "value": 5,
-          "donVi": "mm"
-        },
-        {
-          "fact": "chatLieu",
-          "op": "LA",
-          "value": "vải dệt"
-        }
-      ]
+ "dong8": {
+  "40082110": {
+   "dieuKienSo": [
+    {
+     "fact": "doDay",
+     "op": ">",
+     "value": 5,
+     "donVi": "mm"
     },
-    "40082120": {
-      "dieuKienSo": [
-        {
-          "fact": "tamMiengGhepLatNenOpTuong",
-          "op": "CO"
-        }
-      ]
-    },
-    "40082130": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Băng chắn nước"
-        }
-      ]
-    },
-    "40082140": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Tờ cao su"
-        },
-        {
-          "fact": "dungCho",
-          "op": "CONG_DUNG",
-          "value": "đế giày"
-        }
-      ]
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "vải dệt"
     }
+   ]
   },
-  "ghiChuSoan": [
+  "40082120": {
+   "dieuKienSo": [
     {
-      "ma": "40082110",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082110 \"Chiều dày trên 5 mm, có một mặt được lót vải dệt\" (EN \"Exceeding 5 mm in thickness, lined with textile fabric on one side\") => doDay > 5 mm cho vế biên số \"Chiều dày trên 5 mm\" + chatLieu LA \"vải dệt\" cho vế GIỚI_HẠN \"có một mặt được lót vải dệt\" (bộ đọc đọc được \"vải\" ở vị trí CHINH; từ vựng chưa có vị trí \"lót\")."
-    },
-    {
-      "ma": "40082120",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082120 \"Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường\" (EN \"Other, floor tiles and wall tiles\") là dòng \"Loại khác, <vế>\" nên chỉ ghi điều kiện của vế \"Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường\" => tamMiengGhepLatNenOpTuong CO (khoá đọc đúng cụm \"miếng, tấm ghép với nhau để lát nền và ốp tường\")."
-    },
-    {
-      "ma": "40082130",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082130 \"Băng chắn nước (SEN)\" (EN \"Water stop\") => tenLoai \"Băng chắn nước\"; ngoặc \"(SEN)\" là ngoặc chú thích. Chữ biểu không có khoá tu-vung riêng cho \"băng chắn nước\" nên ghi nguyên văn dạng tên loại hàng; so chữ tự do, không tất định."
-    },
-    {
-      "ma": "40082140",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082140 \"Tờ cao su dùng làm đế giày\" (EN \"Rubber soling sheet\") => tenLoai \"Tờ cao su\" cho danh từ đầu + dungCho \"đế giày\" cho vế GIỚI_HẠN \"dùng làm …\" (đích là hàng đế giày, bỏ hư từ \"dùng làm\")."
-    },
-    {
-      "ma": "40082190",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.40082190 \"Loại khác\" trần => không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+     "fact": "tamMiengGhepLatNenOpTuong",
+     "op": "CO"
     }
-  ],
-  "chongLanVanBan": [
+   ]
+  },
+  "40082130": {
+   "dieuKienSo": [
     {
-      "cap": [
-        "40082110",
-        "40082130"
-      ],
-      "lyDo": ".10 \"Chiều dày trên 5 mm, có một mặt được lót vải dệt\" và .30 \"Băng chắn nước (SEN)\" chồng lấn văn bản: một tấm cao su dày trên 5 mm có một mặt được lót vải dệt có thể là băng chắn nước; chữ biểu không nêu căn cứ thứ tự giữa hai nhánh."
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Băng chắn nước"
+    }
+   ],
+   "nguon": "sen.40082130",
+   "trich": "Băng chắn nước cao su chỉ đơn giản là phiến hoặc tấm cao su dày được đặt dưới vữa và gạch của sàn nhà tắm để ngăn nước không bị rò rỉ xuống sàn phụ phía dưới nhà tắm. Việc này chỉ có thể làm trước khi đặt vữa và gạch. Nó có thể ở dạng dải ngang có mặt cắt dạng hình để làm kín các chỗ nối của cạnh…"
+  },
+  "40082140": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Tờ cao su"
     },
     {
-      "cap": [
-        "40082110",
-        "40082140"
-      ],
-      "lyDo": ".10 \"Chiều dày trên 5 mm, có một mặt được lót vải dệt\" và .40 \"Tờ cao su dùng làm đế giày\" chồng lấn văn bản: một tấm cao su dày trên 5 mm có một mặt được lót vải dệt cũng có thể là tờ cao su dùng làm đế giày; chữ biểu không nêu căn cứ thứ tự giữa hai nhánh."
+     "fact": "dungCho",
+     "op": "CONG_DUNG",
+     "value": "đế giày"
     }
-  ],
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "400821",
-  "phien": "mm:minimax-m3:20261105T1707#soan-400821"
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "40082110",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.40082110 \"Chiều dày trên 5 mm, có một mặt được lót vải dệt\" (EN \"Exceeding 5 mm in thickness, lined with textile fabric on one side\") => doDay > 5 mm cho vế biên số \"Chiều dày trên 5 mm\" + chatLieu LA \"vải dệt\" cho vế GIỚI_HẠN \"có một mặt được lót vải dệt\" (bộ đọc đọc được \"vải\" ở vị trí CHINH; từ vựng chưa có vị trí \"lót\")."
+  },
+  {
+   "ma": "40082120",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.40082120 \"Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường\" (EN \"Other, floor tiles and wall tiles\") là dòng \"Loại khác, <vế>\" nên chỉ ghi điều kiện của vế \"Loại khác, miếng, tấm ghép với nhau để lát nền và ốp tường\" => tamMiengGhepLatNenOpTuong CO (khoá đọc đúng cụm \"miếng, tấm ghép với nhau để lát nền và ốp tường\")."
+  },
+  {
+   "ma": "40082130",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.40082130 \"Băng chắn nước (SEN)\" (EN \"Water stop\") => tenLoai \"Băng chắn nước\"; ngoặc \"(SEN)\" là ngoặc chú thích. Chữ biểu không có khoá tu-vung riêng cho \"băng chắn nước\" nên ghi nguyên văn dạng tên loại hàng; so chữ tự do, không tất định."
+  },
+  {
+   "ma": "40082140",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.40082140 \"Tờ cao su dùng làm đế giày\" (EN \"Rubber soling sheet\") => tenLoai \"Tờ cao su\" cho danh từ đầu + dungCho \"đế giày\" cho vế GIỚI_HẠN \"dùng làm …\" (đích là hàng đế giày, bỏ hư từ \"dùng làm\")."
+  },
+  {
+   "ma": "40082190",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.40082190 \"Loại khác\" trần => không ghi điều kiện (máy tự phủ định anh em đứng trước)."
+  }
+ ],
+ "chongLanVanBan": [
+  {
+   "cap": [
+    "40082110",
+    "40082130"
+   ],
+   "lyDo": ".10 \"Chiều dày trên 5 mm, có một mặt được lót vải dệt\" và .30 \"Băng chắn nước (SEN)\" chồng lấn văn bản: một tấm cao su dày trên 5 mm có một mặt được lót vải dệt có thể là băng chắn nước; chữ biểu không nêu căn cứ thứ tự giữa hai nhánh."
+  },
+  {
+   "cap": [
+    "40082110",
+    "40082140"
+   ],
+   "lyDo": ".10 \"Chiều dày trên 5 mm, có một mặt được lót vải dệt\" và .40 \"Tờ cao su dùng làm đế giày\" chồng lấn văn bản: một tấm cao su dày trên 5 mm có một mặt được lót vải dệt cũng có thể là tờ cao su dùng làm đế giày; chữ biểu không nêu căn cứ thứ tự giữa hai nhánh."
+  }
+ ],
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "400821",
+ "phien": "mm:minimax-m3:20261105T1707#soan-400821"
 }
