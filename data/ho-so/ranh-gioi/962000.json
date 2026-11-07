@@ -30,7 +30,15 @@
       "hs": "96200020",
       "nguon": "tax.96200020",
       "trich": "96200020 - Bằng carbon và graphit",
-      "dieuKienSo": [],
+      "dieuKienSo": [
+        {
+          "fact": "vatLieuKhac",
+          "op": "TRONG",
+          "value": [
+            "CARBON_GRAPHIT"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
@@ -81,12 +89,6 @@
     }
   ],
   "ghiChuSoan": [
-    {
-      "ma": "96200020",
-      "loai": "THIEU_KHOA_TU_VUNG",
-      "khoaDeXuat": "chatLieu (thêm giá trị carbon và graphit) — hoặc một khoá vật liệu bao trùm plastic, sắt thép, nhôm, gỗ, carbon/graphit",
-      "ghiChu": "tax.96200020 \"Bằng carbon và graphit\" — vatLieuKhac CARBON_GRAPHIT đọc đúng chữ nhưng anh em .10/.30/.40/.50 \"Bằng plastic/sắt và thép/nhôm/gỗ\" dùng chatLieu (khoá @1 đóng băng, không có carbon/graphit): hai khoá khác thang cho cùng một ý (vật liệu) ⇒ cổng 2 báo cong2-chong-lan .20↔.10/.30/.40/.50 (vector plastic + CARBON_GRAPHIT) và cong2-chong-lan-truc; không có hàng thật vừa bằng plastic vừa bằng carbon để khai chongLanTruc, chongLanVanBan không dùng cho chồng lấn do cách biểu diễn; không bỏ vế vì bỏ làm đổi mã .20/.90. DỪNG: cần một khoá vật liệu chung (thang đồng nhất) cho cả năm dòng."
-    },
     {
       "ma": "96200090",
       "loai": "QUYET_DINH",
