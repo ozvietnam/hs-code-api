@@ -48,13 +48,18 @@
     },
     {
       "hs": "16041491",
-      "nguon": "tax.16041491",
-      "trich": "16041491 - - - - Cá ngừ đã làm chín sơ (SEN)",
+      "nguon": "sen.16041491",
+      "trich": "Cá ngừ đã làm chín sơ gồm cá ngừ được hấp ở nhiệt độ khoảng 90oC, làm sạch da và xương mà không có bất kì thành phần thêm nào khác, được làm đông lạnh. Sản phẩm này là nguyên liệu thô trung gian, được dùng cho sản phẩm đóng hộp.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Cá ngừ đã làm chín sơ"
+          "value": "Cá ngừ"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "sản phẩm đóng hộp"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -71,7 +76,7 @@
     {
       "ma": "16041491",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.16041491 \"Cá ngừ đã làm chín sơ (SEN)\": \"(SEN)\" là dấu có chú giải, không phải điều kiện ⇒ không ghi"
+      "ghiChu": "Nghĩa hẹp theo SEN (sen.16041491): \"Cá ngừ đã làm chín sơ gồm cá ngừ được hấp ở nhiệt độ khoảng 90oC, làm sạch da và xương mà không có bất kì thành phần thêm nào khác, được làm đông lạnh. Sản phẩm này là nguyên liệu thô trung gian, được dùng cho sản phẩm đóng hộp\" ⇒ tenLoai \"Cá ngừ\" + dungCho \"sản phẩm đóng hộp\" (nguyên liệu thô trung gian cho đóng hộp — phân biệt với 16041411 là hàng đã đóng hộp bán lẻ). TÊN PHẢI RÚT: bộ đọc tên cắt tại \"đã\" nên đọc \"Cá ngừ\", không đọc \"Cá ngừ đã làm chín sơ\" — điều kiện tên cũ KHÔNG BAO GIỜ khớp (dòng chết: mọi hàng đều ra THIEU). \"Cá ngừ\" là chuỗi con của 16041411 \"cá ngừ đại dương\" nên phải có thêm công dụng mới tách được; hàng \"Cá ngừ đại dương\" trần vẫn không khớp dòng này."
     }
   ]
 }

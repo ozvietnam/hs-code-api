@@ -14,8 +14,13 @@
       ]
     },
     "14012030": {
+      "nguon": "sen.14012030",
+      "trich": "Vỏ (cật) cây song, mây đã tách được sản xuất bằng cách tách lớp vỏ ngoài của song, mây thành những sợi dài. Vỏ (cật) cây song, mây đã tách có độ dày từ 1,5 đến 3mm được sử dụng để đan lát",
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vỏ (cật) đã tách" }
+        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Vỏ" },
+        { "fact": "vatLieuKhac", "op": "TRONG", "value": ["SONG_MAY"] },
+        { "fact": "doDay", "op": ">=", "value": 1.5, "donVi": "mm" },
+        { "fact": "doDay", "op": "<=", "value": 3, "donVi": "mm" }
       ]
     }
   },
@@ -50,7 +55,7 @@
     {
       "ma": "14012030",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.14012030 \"Vỏ (cật) đã tách (SEN)\" (EN \"Split-skin\") ⇒ tenLoai \"Vỏ (cật) đã tách\" (tên hàng nguyên văn; ngoặc \"(cật)\" là tên gọi khác của \"vỏ\" nên giữ trong chuỗi, không tách thành điều kiện riêng)."
+      "ghiChu": "Nghĩa hẹp theo SEN (sen.14012030): \"Vỏ (cật) cây song, mây đã tách có độ dày từ 1,5 đến 3mm được sử dụng để đan lát, trong khi song, mây có độ dày 4-6 mm được sử dụng để bện\" ⇒ tenLoai \"Vỏ\" + vatLieuKhac TRONG [\"SONG_MAY\"] (vật liệu song, mây) + doDay >= 1,5 mm VÀ doDay <= 3 mm. Đây là đặc điểm PHÂN BIỆT được của SEN (vỏ đã tách dày 1,5–3 mm để đan lát; 4–6 mm là song, mây để bện). TÊN PHẢI RÚT: bộ đọc tên cắt tại ngoặc \"(cật)\" khi sau đó còn chữ, nên đọc \"Vỏ\" — điều kiện tên cũ \"Vỏ (cật) đã tách\" KHÔNG BAO GIỜ khớp (dòng chết: mọi hàng đều ra THIEU); \"Vỏ\" là chuỗi con của chính tên dòng nên vẫn phủ đúng, và không chồng lấn với 14012010 \"Nguyên cây\". Hạn chế biết: hàng ghi \"Vỏ (cật) cây song, mây đã tách …\" (ngoặc đứng giữa) thì bộ đọc tên trả CHUA_BIET ⇒ dòng không khớp; cần người soát biết."
     },
     {
       "ma": "14012090",

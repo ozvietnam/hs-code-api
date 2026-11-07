@@ -15,13 +15,17 @@
   "dong8": [
     {
       "hs": "12071010",
-      "nguon": "tax.12071010",
-      "trich": "12071010 - - Hạt cọ phù hợp để gieo/trồng (SEN)",
+      "nguon": "sen.12071010",
+      "trich": "Hạt cọ phù hợp để gieo/trồng phải có giấy xác nhận của các cơ quan chức năng có liên quan thuộc nước xuất khẩu về chất lượng của loại hạt này phù hợp để gieo/trồng.",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
-          "value": "Hạt cọ phù hợp để gieo/trồng"
+          "value": "Hạt cọ phù hợp"
+        },
+        {
+          "fact": "dungLamGiong",
+          "op": "CO"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -51,7 +55,7 @@
     {
       "ma": "12071010",
       "loai": "QUYET_DINH",
-      "ghiChu": "tax.12071010 \"Hạt cọ phù hợp để gieo/trồng\" ⇒ tenLoai \"Hạt cọ phù hợp để gieo/trồng\" — cả dòng là tên loại hàng (chữ Anh cùng dòng là \"Palm nuts suitable for sowing/planting\"), vế giới hạn \"phù hợp để gieo/trồng\" nằm trong chính tên nên được phủ. KHÔNG tách tenLoai \"Hạt cọ\" + congDung \"gieo/trồng\": tên \"Hạt cọ\" là chuỗi con của tên anh em 12071030 \"Nhân hạt cọ\" nên vector \"Nhân hạt cọ\" + \"gieo/trồng\" thoả cả hai dòng ⇒ cổng 2 báo chồng lấn (cong2-chong-lan:…:khong-tat-dinh). LƯU Ý CHO NGƯỜI SOÁT: chữ \"phù hợp\" (hạt cọ phải được chứng nhận chất lượng phù hợp để gieo/trồng — theo sen.12071010) không có khoá riêng trong tu-vung@2 nên không ghi riêng được."
+      "ghiChu": "Nghĩa hẹp theo SEN (sen.12071010): \"Hạt cọ phù hợp để gieo/trồng phải có giấy xác nhận của các cơ quan chức năng có liên quan thuộc nước xuất khẩu về chất lượng của loại hạt này phù hợp để gieo/trồng\" ⇒ tenLoai \"Hạt cọ phù hợp\" + dungLamGiong CO (\"phù hợp để gieo/trồng\"). VẾ TÊN PHẢI RÚT NGẮN: bộ đọc tên (gates.productHead) cắt tại giới từ \"để\" nên đọc \"Hạt cọ phù hợp\", không đọc \"Hạt cọ phù hợp để gieo/trồng\" — điều kiện tên cũ KHÔNG BAO GIỜ khớp (dòng chết: mọi hàng đều ra THIEU). Giữ \"Hạt cọ phù hợp\" (KHÔNG rút còn \"Hạt cọ\") để không chồng lấn với 12071030 \"Nhân hạt cọ\" (chuỗi con \"Hạt cọ\" nằm trong \"Nhân hạt cọ\"). VẾ \"có giấy xác nhận\" của SEN không có khoá riêng trong tu-vung@2 nên không ghi riêng được."
     },
     {
       "ma": "12071030",
