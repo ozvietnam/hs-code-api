@@ -3,48 +3,178 @@
   "pn6": "851779",
   "phien": "zcode-sub:glm-5.3:20261105T1025#soan-851779",
   "dieuKienNut": {
-    "8517792": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": "thiết bị truyền dẫn"}
-    ] },
-    "8517793": { "dieuKienSo": [
-      {"fact": "tenLoai", "op": "TEN_LOAI", "value": "Tấm mạch in"},
-      {"fact": "daLapRap", "op": "CO"}
-    ], "phanConLai": true }
+    "8517792": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "thiết bị truyền dẫn"
+        }
+      ]
+    },
+    "8517793": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Tấm mạch in"
+        },
+        {
+          "fact": "daLapRap",
+          "op": "CO"
+        }
+      ],
+      "phanConLai": true
+    }
   },
   "dong8": {
-    "85177910": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["bộ điều khiển", "bộ thích ứng"]}
-    ] },
-    "85177921": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": "điện thoại di động"}
-    ] },
-    "85177929": { "dieuKienSo": [] },
-    "85177931": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["điện thoại", "điện báo"]},
-      {"fact": "phuongThucTruyenDan", "op": "TRONG", "value": ["HUU_TUYEN"]}
-    ] },
-    "85177932": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["điện báo", "điện thoại"]},
-      {"fact": "phuongThucTruyenDan", "op": "TRONG", "value": ["VO_TUYEN"]}
-    ] },
-    "85177939": { "dieuKienSo": [] },
-    "85177991": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["điện thoại", "điện báo"]},
-      {"fact": "phuongThucTruyenDan", "op": "TRONG", "value": ["HUU_TUYEN"]}
-    ] },
-    "85177992": { "dieuKienSo": [
-      {"fact": "dungCho", "op": "CONG_DUNG", "value": ["điện báo", "điện thoại"]},
-      {"fact": "phuongThucTruyenDan", "op": "TRONG", "value": ["VO_TUYEN"]}
-    ] },
-    "85177999": { "dieuKienSo": [] }
+    "85177910": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "bộ điều khiển",
+            "bộ thích ứng"
+          ]
+        }
+      ]
+    },
+    "85177921": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "điện thoại di động"
+        }
+      ]
+    },
+    "85177929": {
+      "dieuKienSo": []
+    },
+    "85177931": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "điện thoại",
+            "điện báo"
+          ]
+        },
+        {
+          "fact": "phuongThucTruyenDan",
+          "op": "TRONG",
+          "value": [
+            "HUU_TUYEN"
+          ]
+        }
+      ]
+    },
+    "85177932": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "điện báo",
+            "điện thoại"
+          ]
+        },
+        {
+          "fact": "phuongThucTruyenDan",
+          "op": "TRONG",
+          "value": [
+            "VO_TUYEN"
+          ]
+        }
+      ]
+    },
+    "85177939": {
+      "dieuKienSo": []
+    },
+    "85177991": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "điện thoại",
+            "điện báo"
+          ]
+        },
+        {
+          "fact": "phuongThucTruyenDan",
+          "op": "TRONG",
+          "value": [
+            "HUU_TUYEN"
+          ]
+        }
+      ]
+    },
+    "85177992": {
+      "dieuKienSo": [
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "điện báo",
+            "điện thoại"
+          ]
+        },
+        {
+          "fact": "phuongThucTruyenDan",
+          "op": "TRONG",
+          "value": [
+            "VO_TUYEN"
+          ]
+        }
+      ]
+    },
+    "85177999": {
+      "dieuKienSo": []
+    }
   },
   "ghiChuSoan": [
-    {"ma": "851779", "loai": "DUNG", "ghiChu": "Gói soạn ghi [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:851779:chua-co — chờ Claude lập mục bảng rồi soạn lại theo chữ biểu"},
-    {"ma": "85177910", "loai": "QUYET_DINH", "ghiChu": "tax.85177910 \"Của bộ điều khiển và bộ thích ứng (adaptor) kể cả cổng nối, cầu nối và bộ định tuyến\" ⇒ dungCho mảng [bộ điều khiển, bộ thích ứng]; \"kể cả cổng nối, cầu nối và bộ định tuyến\" là vế PHU (kể cả)"},
-    {"ma": "8517792", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8517792 vế đầu \"Của thiết bị truyền dẫn\" ⇒ dungCho \"thiết bị truyền dẫn\"; các vế \"trừ …\" là loại trừ của đích (thiết bị phát thanh/truyền hình, thu xách tay) — xử khi có bảng tiền lệ"},
-    {"ma": "85177921", "loai": "QUYET_DINH", "ghiChu": "tax.85177921 \"Của điện thoại di động (cellular telephones)\" ⇒ dungCho \"điện thoại di động\"; ngoặc Anh là PHU"},
-    {"ma": "8517793", "loai": "QUYET_DINH", "ghiChu": "tieuDe.8517793 \"Tấm mạch in khác, đã lắp ráp\" ⇒ tenLoai \"Tấm mạch in\" + daLapRap CO + phanConLai: true (\"khác\" — phần còn lại có tên)"},
-    {"ma": "85177931", "loai": "QUYET_DINH", "ghiChu": "tax.85177931 \"Dùng cho điện thoại hoặc điện báo hữu tuyến\" ⇒ dungCho mảng [điện thoại, điện báo] + phuongThucTruyenDan HUU_TUYEN (\"hữu tuyến\" là định ngữ chung, điều kiện riêng); .32 \"…truyền dẫn dưới dạng sóng vô tuyến\" ⇒ cùng mảng + VO_TUYEN (mẫu 851762)"},
-    {"ma": "85177929", "loai": "QUYET_DINH", "ghiChu": "tax.85177929 \"Loại khác\" trần ⇒ không điều kiện (tương tự .39/.99)"}
+    {
+      "ma": "85177910",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85177910 \"Của bộ điều khiển và bộ thích ứng (adaptor) kể cả cổng nối, cầu nối và bộ định tuyến\" ⇒ dungCho mảng [bộ điều khiển, bộ thích ứng]; \"kể cả cổng nối, cầu nối và bộ định tuyến\" là vế PHU (kể cả)"
+    },
+    {
+      "ma": "8517792",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8517792 vế đầu \"Của thiết bị truyền dẫn\" ⇒ dungCho \"thiết bị truyền dẫn\"; các vế \"trừ …\" là loại trừ của đích (thiết bị phát thanh/truyền hình, thu xách tay) — xử khi có bảng tiền lệ"
+    },
+    {
+      "ma": "85177921",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85177921 \"Của điện thoại di động (cellular telephones)\" ⇒ dungCho \"điện thoại di động\"; ngoặc Anh là PHU"
+    },
+    {
+      "ma": "8517793",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.8517793 \"Tấm mạch in khác, đã lắp ráp\" ⇒ tenLoai \"Tấm mạch in\" + daLapRap CO + phanConLai: true (\"khác\" — phần còn lại có tên)"
+    },
+    {
+      "ma": "85177931",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85177931 \"Dùng cho điện thoại hoặc điện báo hữu tuyến\" ⇒ dungCho mảng [điện thoại, điện báo] + phuongThucTruyenDan HUU_TUYEN (\"hữu tuyến\" là định ngữ chung, điều kiện riêng); .32 \"…truyền dẫn dưới dạng sóng vô tuyến\" ⇒ cùng mảng + VO_TUYEN (mẫu 851762)"
+    },
+    {
+      "ma": "85177929",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.85177929 \"Loại khác\" trần ⇒ không điều kiện (tương tự .39/.99)"
+    },
+    {
+      "ma": "851779",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 851779-01 KHONG_LECH (19758/TB-CHQ, 18172/TB-CHQ) và 851779-02 KHONG_LECH (6449/TB-TCHQ, 3246/TB-TCHQ) và 851779-03 KHONG_LECH (6448/TB-TCHQ, 3245/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "851779",
+      "loai": "DUNG",
+      "ghiChu": "Claude 07/11/2026 (#1109): bảng hiệu chỉnh tiền lệ đã có mục (ghi chú LECH_TIEN_LE) — hết chờ bảng. Còn chặn ở cổng: cong5-ve-gioi-han-bi-bo:8517792:trừ loại dùng cho phát thanh sóng vô tuyến hoặc thiết bị phát truyền hình, hoặc của loại thiết bị ; — xem docs/giao-viec/so-tay/dung-khong-phu-kin.md."
+    }
   ]
 }

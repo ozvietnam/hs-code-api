@@ -13,12 +13,26 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "854449",
+      "nguon": "tieuDe.85444",
+      "trich": "85444 Các vật dẫn điện khác, dùng cho điện áp không quá 1.000 V",
+      "dieuKienSo": [
+        {
+          "fact": "dienAp",
+          "op": "<=",
+          "value": 1000,
+          "donVi": "V"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "8544491",
       "nguon": "tieuDe.8544491",
       "trich": "8544491 Dùng cho viễn thông, điện áp không quá 80 V",
       "dieuKienSo": [
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "viễn thông"
         },
@@ -39,9 +53,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "viễn thông"
-          ],
+          "value": "viễn thông",
           "chieu": "PHAI_KHONG"
         },
         {
@@ -59,7 +71,7 @@
       "trich": "8544493 Dùng cho viễn thông, điện áp trên 80 V nhưng không quá 1.000 V",
       "dieuKienSo": [
         {
-          "fact": "congDung",
+          "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "viễn thông"
         },
@@ -86,9 +98,7 @@
         {
           "fact": "dungCho",
           "op": "CONG_DUNG",
-          "value": [
-            "viễn thông"
-          ],
+          "value": "viễn thông",
           "chieu": "PHAI_KHONG"
         },
         {
@@ -210,7 +220,10 @@
           "viTri": "CACH_DIEN"
         }
       ],
-      "nguonLoai": "AI_DA_KIEM"
+      "nguonLoai": "AI_DA_KIEM",
+      "phanConLai": [
+        "85444922"
+      ]
     },
     {
       "hs": "85444924",
@@ -370,8 +383,23 @@
     },
     {
       "ma": "854449",
-      "loai": "DUNG",
-      "ghiChu": "--goi in [CẦN BẢNG HIỆU CHỈNH TIỀN LỆ — bảng L1-4b chưa có mục cho PN6] ⇒ DỪNG can-bang-hieu-chinh-tien-le:854449:chua-co"
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 854449-01 KHONG_LECH (751/TB-TCHQ) và 854449-02 KHONG_LECH (2485/TB-TCHQ, 3028/TB-TCHQ) và 854449-03 KHONG_LECH (2485/TB-TCHQ, 2486/TB-TCHQ) và 854449-04 KHONG_LECH (751/TB-TCHQ, 2043/TB-TCHQ) và 854449-05 KHONG_LECH (3028/TB-TCHQ, 2487/TB-TCHQ, 2486/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
+    },
+    {
+      "ma": "854449",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[854449] theo tieuDe.85444 \"85444 Các vật dẫn điện khác, dùng cho điện áp không quá 1.000 V\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
+    },
+    {
+      "ma": "854449",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): bốn tầng \"Dùng cho viễn thông\" / \"Loại không dùng cho viễn thông\" dùng CÙNG khoá dungCho (chữ tiêu đề là \"Dùng cho …\"; bộ đọc đọc \"dùng cho viễn thông\" thành dungCho). Trước: tầng khẳng định ghi congDung, tầng phủ định ghi dungCho ⇒ phủ định suông."
+    },
+    {
+      "ma": "85444923",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): \"Cáp điện cách điện bằng plastic khác\" = phần còn lại có tên của .22 (cùng tên + vật liệu, .22 thêm lõi ≤ 19,5 mm) ⇒ phanConLai [\"85444922\"]."
     }
   ]
 }

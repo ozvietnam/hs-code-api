@@ -551,11 +551,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "300490",
-      "loai": "DUNG",
-      "ghiChu": "Phân nhóm 3004.90 có cờ canHieuChinhTienLe (data/ho-so/lat-1.json) mà bảng data/ho-so/hieu-chinh-tien-le.json CHƯA có mục cho PN6 này (--goi in \"CHUA CO bang hieu chinh\") ⇒ không duyệt/áp được. Theo QUY-TRINH mục 2: DỪNG, báo Claude (L1-4b, scripts/check-hieu-chinh.mjs). Mọi điều kiện dưới đây soạn theo CHỮ BIỂU."
-    },
-    {
       "ma": "30049010",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.30049010 \"Miếng thẩm thấu qua da dùng điều trị bệnh ung thư hoặc bệnh tim\" (EN \"Transdermal therapeutic system patches for the treatment of cancer or heart diseases\") — dạng dùng: dangBaoCheThuoc MIENG_DAN_THAM_THAU (cachDoc đọc đúng \"miếng thẩm thấu qua da\"); mục đích: congDung MẢNG [\"bệnh ung thư\",\"bệnh tim\"] (mảng = \"hoặc\")."
@@ -626,6 +621,11 @@
       "ma": "30049093",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.30049093 \"Chứa sorbitol hoặc salbutamol, ở dạng khác\" — cùng hai hoạt chất với .92 (\"dạng truyền\"); vế \"ở dạng khác\" là phần CÒN LẠI của nhánh (khác dạng truyền) mà tu-vung@2 chưa có khoá cho dạng (dangBaoCheThuoc không có giá trị \"dạng khác\", và cũng không dùng được chiều PHAI_KHONG với DANG_TRUYEN vì chữ biểu dòng này không có \"dạng truyền\") ⇒ khai phanConLai: true (máy phủ định điều kiện của anh em đứng trước, tức .92) thay vì điều kiện dạng."
+    },
+    {
+      "ma": "300490",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 300490-01 KHONG_LECH (45618/TB-CHQ) và 300490-02 KHONG_LECH (4127/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }

@@ -151,11 +151,6 @@
   ],
   "ghiChuSoan": [
     {
-      "ma": "300420",
-      "loai": "DUNG",
-      "ghiChu": "Phân nhóm 3004.20 có cờ canHieuChinhTienLe (data/ho-so/lat-1.json) mà bảng data/ho-so/hieu-chinh-tien-le.json CHƯA có mục cho PN6 này (--goi in \"CHUA CO bang hieu chinh\") ⇒ không duyệt/áp được. Theo QUY-TRINH mục 2: DỪNG, báo Claude (L1-4b, scripts/check-hieu-chinh.mjs). Mọi điều kiện dưới đây soạn theo CHỮ BIỂU."
-    },
-    {
       "ma": "30042010",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.30042010 \"Chứa gentamycin, lincomycin, sulphamethoxazole hoặc các dẫn xuất của chúng, dạng uống (*) hoặc dạng mỡ\" — 3 hoạt chất nối phẩy ⇒ tenLoai MẢNG; vế \"hoặc các dẫn xuất của chúng\" không có khoá ⇒ điều kiện hẹp hơn chữ một bước. Dạng: \"dạng uống (*) hoặc dạng mỡ\" khớp đúng giá trị UONG_HOAC_MO của khoá dangBaoCheThuoc."
@@ -179,6 +174,11 @@
       "ma": "30042091",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.30042091 \"Dạng uống (*) hoặc dạng mỡ\" — chữ khớp đúng UONG_HOAC_MO; dòng nằm dưới tiêu đề 3004209 \"Loại khác\" trần nên không mang điều kiện hoạt chất."
+    },
+    {
+      "ma": "300420",
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 300420-01 KHONG_LECH (293/TB-TCHQ, 2719/TB-TCHQ) và 300420-02 KHONG_LECH (4323/TB-TCHQ, 3913/TB-TCHQ): soạn theo chữ biểu, khớp bảng."
     }
   ]
 }
