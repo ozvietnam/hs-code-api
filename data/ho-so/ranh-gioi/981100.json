@@ -15,16 +15,36 @@
   "dong8": [
     {
       "hs": "98110010",
-      "nguon": "tax.98110010",
-      "trich": "98110010 - Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98110010",
+      "trich": "Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng — mã hàng tương ứng: 72.24, 72.25, 72.26, 72.27, 72.28",
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "72.24",
+            "72.25",
+            "72.26",
+            "72.27",
+            "72.28"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     },
     {
       "hs": "98110090",
-      "nguon": "tax.98110090",
-      "trich": "98110090 - Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng",
-      "dieuKienSo": [],
+      "nguon": "tuongUng.98110090",
+      "trich": "Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng — mã hàng tương ứng: 72.29",
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "72.29"
+          ]
+        }
+      ],
       "nguonLoai": "AI_DA_KIEM"
     }
   ],
@@ -37,8 +57,8 @@
     },
     {
       "ma": "981100",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9811 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép»; vd: 9811001 «98110010»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): hai dòng CÙNG chữ \"Thép hợp kim có chứa nguyên tố Bo …\" chỉ khác cột mã hàng tương ứng của biểu Tổng cục (.10 ↔ 72.24–72.28, .90 ↔ 72.29) ⇒ khoá mới maHsTuongUng, nguồn tuongUng.<mã> (mô tả + mã tương ứng nguyên văn). Lúc chạy hỏi mã 8 số ở 97 chương."
     }
   ]
 }

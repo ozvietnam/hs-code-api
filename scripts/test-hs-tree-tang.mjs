@@ -71,8 +71,10 @@ const lkTruoc = JSON.stringify(T.loaiKhacOf('84145949'));
   T.datTrongSuot(true);
   check('3d2 870340 (bật — mặc định): 8703401/8703402 trong suốt ⇒ r16670 đặt được, con 87034018/19/21', T.tangCua('870340').khongDat.length === 0 && T.conTang('870340~r16670').join() === '87034018,87034019,87034021', T.tangCua('870340').khongDat);
   const v9818 = T.tangCua('981820');
-  check('3d3 981820: r19155 "Bơm ly tâm khác:" trùng tập lá 9818203 (đã có tên khác) → KHONG_DAT trung-tap-khac-ten, giữ chặn',
-    v9818.khongDat.some((x) => x.r === 19155 && x.lyDo === 'trung-tap-khac-ten') && T.nodeOf('981820~r19155') === null, v9818.khongDat);
+  // 07/11/2026 (#1109 lô 6): tiêu đề có tên ở GẠCH NGOÀI (r19155 gạch 1) cùng tập lá với nút có tên khác (9818203 gạch 2) là tầng
+  // BỌC NGOÀI nút đó — trước đây KHONG_DAT trung-tap-khac-ten. Toàn biểu không còn tầng KHONG_DAT nào.
+  check('3d3 981820: r19155 "Bơm ly tâm khác:" (gạch 1) bọc ngoài 9818203 (gạch 2) — không còn KHONG_DAT',
+    v9818.khongDat.length === 0 && T.conTang('981820~r19155').join() === '9818203' && T.chaTang('9818203') === '981820~r19155', v9818.khongDat);
   const v1350 = T.tangCua('841350');
   check('3e phân nhóm không có tầng không mã → rỗng; lớp tầng = cây theo chữ số', v1350.tang.length === 0 && v1350.khongDat.length === 0 && T.conTang('841350').join() === T.nodeOf('841350').children.join());
   check('3f danh sách gốc (tangKhongMa) mang trạng thái từng dòng: CO_NUT / TRUNG / KHONG_DAT',

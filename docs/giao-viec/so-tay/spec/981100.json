@@ -4,10 +4,34 @@
   "phien": "zcode-sub:glm-5.3:20261106T0950#soan-981100",
   "dong8": {
     "98110010": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "72.24",
+            "72.25",
+            "72.26",
+            "72.27",
+            "72.28"
+          ]
+        }
+      ],
+      "nguon": "tuongUng.98110010",
+      "trich": "Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng — mã hàng tương ứng: 72.24, 72.25, 72.26, 72.27, 72.28"
     },
     "98110090": {
-      "dieuKienSo": []
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "72.29"
+          ]
+        }
+      ],
+      "nguon": "tuongUng.98110090",
+      "trich": "Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng loại thép cán phẳng được cán nóng — mã hàng tương ứng: 72.29"
     }
   },
   "ghiChuSoan": [
@@ -19,8 +43,8 @@
     },
     {
       "ma": "981100",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 — LỖI SPEC] Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: dòng chưa số hoá ×2. Vd: cong1-chua-so-hoa:98110010:98110010. CẦN: Claude soát lại spec (lô Chương 98 kế tiếp). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): hai dòng CÙNG chữ \"Thép hợp kim có chứa nguyên tố Bo …\" chỉ khác cột mã hàng tương ứng của biểu Tổng cục (.10 ↔ 72.24–72.28, .90 ↔ 72.29) ⇒ khoá mới maHsTuongUng, nguồn tuongUng.<mã> (mô tả + mã tương ứng nguyên văn). Lúc chạy hỏi mã 8 số ở 97 chương."
     }
   ]
 }

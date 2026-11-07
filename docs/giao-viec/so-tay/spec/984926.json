@@ -69,6 +69,10 @@
             "thiết bị lọc",
             "tinh chế chất lỏng"
           ]
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ]
     },
@@ -82,6 +86,10 @@
             "thiết bị lọc",
             "tinh chế các loại khí"
           ]
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ]
     },
@@ -104,6 +112,20 @@
         {
           "fact": "laBoPhan",
           "op": "CO"
+        }
+      ]
+    },
+    "984926~r19595": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bộ lọc"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ đốt trong"
         }
       ]
     }
@@ -131,8 +153,8 @@
     },
     {
       "ma": "984926",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 — LỖI SPEC] Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×7; tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×2; chồng lấn trục (tên ↔ công dụng) ×1. Vd: cong1-tang-khong-ma-khong-dat:98492611:r19595. CẦN: Claude soát lại spec (lô Chương 98 kế tiếp). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): tầng tieuDe.984926~r19595 \"Bộ lọc dầu hoặc xăng cho động cơ đốt trong\" (lớp tầng mới bọc 9849261/9849262) ⇒ tenLoai «Bộ lọc» + dungCho «động cơ đốt trong»; tầng máy lọc chất lỏng / chất khí cạnh anh em \"Bộ phận\" ⇒ laBoPhan KHONG (chồng lấn cũ bộ lọc khí nạp ↔ bộ phận). Loại chất lọc (dầu/xăng) do dòng con phân."
     }
   ]
 }

@@ -1,0 +1,92 @@
+{
+  "phienBan": "ranh-gioi@1",
+  "pn6": "984943",
+  "nhom": "9849",
+  "bieuThue": "2026.04.05",
+  "tuVung": "tu-vung@2",
+  "trangThai": "NHAP",
+  "soanBoi": {
+    "vai": "AI",
+    "phien": "https://claude.ai/code/session_01Y2pGdeNRxMwYS2zRJGH1yU#soan-984943",
+    "ngay": "2026-11-06"
+  },
+  "duyet": null,
+  "dieuKienNut": [],
+  "dong8": [
+    {
+      "hs": "98494310",
+      "nguon": "tax.98494310",
+      "trich": "98494310 - - Bằng liti",
+      "dieuKienSo": [
+        {
+          "fact": "loaiPin",
+          "op": "TRONG",
+          "value": [
+            "LITI"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98494321",
+      "nguon": "tax.98494321",
+      "trich": "98494321 - - - Có thể tích ngoài không quá 300 cm3",
+      "dieuKienSo": [
+        {
+          "fact": "theTich",
+          "op": "<=",
+          "value": 300,
+          "donVi": "cm3"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98494329",
+      "nguon": "tax.98494329",
+      "trich": "98494329 - - - Loại khác",
+      "dieuKienSo": [],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
+      "hs": "98494390",
+      "nguon": "tax.98494390",
+      "trich": "98494390 - - Bộ phận",
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    }
+  ],
+  "ghiChuSoan": [
+    {
+      "ma": "98494310",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494310 \"Bằng liti\" ⇒ loaiPin TRONG [LITI] (\"liti\")."
+    },
+    {
+      "ma": "98494321",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494321 \"Có thể tích ngoài không quá 300 cm3\" ⇒ theTich <= 300 cm3 (\"không quá\" = <=, đơn vị nguyên văn)"
+    },
+    {
+      "ma": "98494329",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494329 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "98494390",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98494390 \"Bộ phận\" ⇒ laBoPhan CO (đọc CÓ \"bộ phận\")"
+    },
+    {
+      "ma": "984943",
+      "loai": "DUNG",
+      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Cây lược mất một tầng: hai dòng .21 «Có thể tích ngoài không quá 300 cm3» / .29 «Loại khác» đúng ra nằm dưới tầng «pin không phải liti» nhưng biểu không ghi tên tầng, nên máy xếp ngang hàng với .10 «Bằng liti» ⇒ pin liti ≤ 300 cm3 bị coi là chồng. CẦN: Q3 (nguồn Chương 98) hoặc khai tầng bị lược. — Claude 07/11/2026."
+    }
+  ]
+}

@@ -136,6 +136,10 @@
         {
           "fact": "daLapRap",
           "op": "KHONG"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -153,6 +157,10 @@
         {
           "fact": "daLapRap",
           "op": "CO"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -175,11 +183,32 @@
       "trich": "984934~r19752 Cầu chủ động có vi sai, có hoặc không kèm theo chi tiết khác của cụm hộp số, và các cầu bị động; các bộ phận của chúng",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": [
-            "Cầu chủ động có vi sai",
-            "cầu bị động"
+          "op": "HOAC",
+          "phuongAn": [
+            [
+              {
+                "fact": "tenLoai",
+                "op": "TEN_LOAI",
+                "value": [
+                  "Cầu chủ động có vi sai",
+                  "cầu bị động"
+                ]
+              }
+            ],
+            [
+              {
+                "fact": "laBoPhan",
+                "op": "CO"
+              },
+              {
+                "fact": "dungCho",
+                "op": "CONG_DUNG",
+                "value": [
+                  "Cầu chủ động có vi sai",
+                  "cầu bị động"
+                ]
+              }
+            ]
           ]
         }
       ],
@@ -193,6 +222,10 @@
         {
           "fact": "daLapRap",
           "op": "KHONG"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -205,6 +238,10 @@
         {
           "fact": "daLapRap",
           "op": "CO"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -326,6 +363,10 @@
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Hệ thống giảm chấn"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -1147,9 +1188,15 @@
       "ghiChu": "tieuDe.9849349 \"(kể cả giảm sóc)\" là ngoặc kể cả (PHU) ⇒ không thành điều kiện; vế MỞ \"và bộ phận của nó\" ⇒ HOAC"
     },
     {
+      "ma": "98493479",
+      "loai": "BO_VE",
+      "ve": "được thiết kế",
+      "lyDo": "vế \"được thiết kế để sử dụng trên các loại đường không phải đường quốc lộ\" là một cụm điều kiện thiết kế off-road của xe tự đổ; tu-vung@2 không có khoá đọc thiết kế đường — ý ràng buộc đã phủ ở dungCho \"xe tự đổ\" + khối lượng > 45 tấn; bỏ vế không đưa hàng sai dòng vì các dòng anh em 98493480/81 phân theo nhóm xe khác"
+    },
+    {
       "ma": "984934",
       "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Bộ phận và phụ kiện của xe có động cơ thuộc các nhóm từ 87.01 đến 87.05»; vd: dùng cho «xe thuộc nhóm 87.03», là bộ phận «có», tên «Dây đai an toàn»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+      "ghiChu": "[CHƯƠNG 98 — LỖI SPEC] Đã sửa 07/11 (lô 6): tầng «Cầu chủ động…; các bộ phận của chúng» ghi theo mẫu HOẶC [tên | bộ phận + dùng cho]; tầng «chưa/đã lắp ráp hoàn chỉnh», «Hệ thống giảm chấn» thêm laBoPhan KHONG (anh em «Bộ phận») — chồng lấn 50 → 14. CÒN: (1) bộ tách vế (lib/ho-so/tach-ve.js) đọc «…có hoặc không kèm theo chi tiết khác của cụm hộp số, và các cầu bị động» thành vế KHÔNG, nên «Cầu chủ động có vi sai»/«cầu bị động» không là tên đầu ⇒ luật tên anh em rời (bộ phận của X ↔ tên Y) không áp cho nhánh cầu; (2) 6 dòng không tới được (.13–.16 dưới «Các bộ phận của cửa xe»; .59/.60 dưới tầng «Loại khác» của cầu). CẦN: Claude sửa bộ tách vế + ghép đích lồng (lô kế tiếp). — Claude 07/11/2026."
     }
   ]
 }

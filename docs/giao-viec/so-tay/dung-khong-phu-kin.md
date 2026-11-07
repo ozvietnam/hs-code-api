@@ -8,9 +8,9 @@ PN6 DỪNG không được dùng lúc chạy; lúc chạy chỉ dùng bản đã
 
 | | Số PN6 |
 |---|---|
-| DỪNG hiện tại | **42** |
+| DỪNG hiện tại | **28** |
 | Chờ oz-wiki: Q2 (văn bản ô tô) | 5 |
-| Chương 98 — Claude đang soát bản nháp | 16 |
+| Chương 98 — Claude đang soát bản nháp | 2 |
 | Q1 còn lại — Claude xác minh / sửa bộ máy | 3 |
 | Claude làm tiếp (công cụ / soát lại) | 18 |
 
@@ -37,15 +37,17 @@ Các dòng «Ô tô tải đông lạnh», «Ô tô pick-up»… bị coi là ch
 trở lên. Cần bản chính thức văn bản định nghĩa «xe ô tô» (Luật 36/2024/QH15 hoặc TCVN 6211) làm nguồn. Anh chốt 07/11: **chờ
 oz-wiki trả lời** (kho oz-wiki-plhq), Claude làm tiếp #1101 khi có.
 
-### Q3 — Chương 98 — ANH CHỐT «LÀM LUÔN» 07/11, ĐANG LÀM (16 PN6 còn lại)
+### Q3 — Chương 98 — ANH CHỐT «LÀM LUÔN» 07/11, ĐANG LÀM (2 PN6 còn lại)
 
 Biểu Excel Tổng cục chỉ chép mục «3. Danh mục hàng hóa…» của Chương 98 (không có mục chú giải, điều kiện áp dụng); bốn nguồn
 công khai của NĐ 26/2023/NĐ-CP đều chặn hoặc trả sai văn bản ⇒ chưa có nguyên văn chú giải để trích. Căn cứ dùng được nằm ngay
 trong biểu Tổng cục: mỗi dòng 98 có **cột mã tương ứng ở 97 chương** (vd 9810.00.10 ↔ 7213.91.30, 7213.91.90) ⇒ Chương 98 là
 lớp mã thay thế, không có phần còn lại; hàng không vào dòng 98 nào thì khai mã tương ứng ở 97 chương. Đã làm (lô 5, #1155):
 tên 41 nhóm 98xx nạp vào cây từ chính dòng mã của biểu; cổng 1 hạ «không phủ kín» của Chương 98 thành cảnh báo
-`cong1-chuong98-ngoai-dong`; 11 PN6 hết DỪNG. Còn lại là bản nháp có lỗi spec thật (chồng lấn, tầng không mã, liệt kê…) —
-Claude soát từng cái.
+`cong1-chuong98-ngoai-dong`; 11 PN6 hết DỪNG. Lô 6 (#LO6) soát 16 bản nháp còn lại: 14 hết DỪNG. Bộ máy thêm: tiêu đề «Loại khác:» trần / tiêu đề có tên ở gạch
+ngoài cùng tập lá là tầng BỌC NGOÀI (hết mọi tầng KHONG_DAT của biểu); dòng lặp đúng mã phân nhóm ở gạch trong là tiêu đề (984943);
+vế `laBoPhan KHONG` lấy căn cứ từ anh em tên «Bộ phận» (cảnh báo `cong3-khong-bo-phan-tu-anh-em`); dòng 98 CÙNG chữ phân bằng
+khoá `maHsTuongUng` theo cột mã hàng tương ứng (nguồn `tuongUng.<mã 98>`). Còn 984934, 984935 (bộ phận xe 87.08 — vướng bộ tách vế).
 
 ## Việc Claude tự làm tiếp (công cụ)
 
@@ -73,22 +75,8 @@ Claude soát từng cái.
 | 870451 | Khối lượng toàn bộ theo thiết kế (SEN) không quá 5 tấn | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | 870460 | Loại khác, chỉ sử dụng động cơ điện để tạo động lực | Dòng «Xe ba bánh» và các dòng «Ô tô …» (tải đông lạnh, pick-up, thu gom phế thải…) bị coi là chồng nhau vì máy chưa biết «ô tô» là xe từ bốn bánh trở lên. | Q2 |
 | **CHƯƠNG 98 THIẾU NGUỒN** | | | |
-| 981100 | Thép hợp kim có chứa nguyên tố Bo và/hoặc Crôm và/hoặc Titan trừ chủng | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: dòng chưa số hoá ×2. Vd: cong1-chua-so-hoa:98110010:98110010. | Claude soát spec |
-| 981820 | Bơm chất lỏng, không lắp dụng cụ đo lường | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: dòng chưa số hoá ×11; tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×2. Vd: cong1-chua-so-hoa:98182010:98182010. | Claude soát spec |
-| 981822 | Máy điều hoà không khí, sử dụng cho xe chạy trên đường ray | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×5; chồng lấn trục (tên ↔ công dụng) ×3. Vd: cong2-chong-lan:98182219+98182220:coBoPhanLamLanh=true,coVanDaoChieu=true,congSuat=26380.02638,dungCho=xe chạy trên đường ray:khong-tat-dinh. | Claude soát spec |
-| 984914 | Săm các loại, bằng cao su | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×2. Vd: cong1-tang-khong-ma-khong-dat:98491431:r19480. | Claude soát spec |
-| 984915 | Các sản phẩm khác bằng cao su lưu hóa trừ cao su cứng | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×2. Vd: cong1-tang-khong-ma-khong-dat:98491521:r19487. | Claude soát spec |
-| 984922 | Các bộ phận chỉ dùng hoặc chủ yếu dùng cho các loại động cơ thuộc nhóm | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×21; tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×18. Vd: cong1-tang-khong-ma-khong-dat:98492211:r19544. | Claude soát spec |
-| 984925 | Máy điều hòa không khí, gồm có một quạt chạy bằng mô tơ và các bộ phận | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×6; chồng lấn giữa dòng ×6; chồng lấn trục (tên ↔ công dụng) ×3; liệt kê ghi trong một chuỗi ×1. Vd: cong3-liet-ke-trong-mot-chuoi:9849251:d | Claude soát spec |
-| 984926 | Máy ly tâm, kể cả máy làm khô bằng ly tâm; máy và thiết bị lọc hay tin | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×7; tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×2; chồng lấn trục (tên ↔ công dụng) ×1. Vd: cong1-tang-khong-ma-khong-dat:98492611:r19595. | Claude soát spec |
-| 984928 | Trục truyền động (kể cả trục cam và trục khuỷu) và tay biên; gối đỡ tr | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×6; liệt kê ghi trong một chuỗi ×1. Vd: cong3-liet-ke-trong-mot-chuoi:984928~r19622:tenLoai. | Claude soát spec |
-| 984929 | Thiết bị đánh lửa hoặc khởi động bằng điện loại dùng cho động cơ đốt t | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×16; chồng lấn trục (tên ↔ công dụng) ×5; tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×4; dòng không tới được ×1. Vd: cong1-tang-khong-ma-khong-dat:98492921:r19634. | Claude soát spec |
-| 984930 | Thiết bị chiếu sáng hoặc thiết bị tín hiệu hoạt động bằng điện (trừ lo | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×5; chồng lấn trục (tên ↔ công dụng) ×1. Vd: cong2-chong-lan:98493010+98493050:daLapRap=false,dungCho=hàng hóa thuộc phân nhóm 8512.20, 8512.30 hoặc 8512.40,laBoPhan=true,tenLoai=Thiết bị chiếu s | Claude soát spec |
-| 984932 | Bóng đèn dây tóc hoặc bóng đèn phóng điện, kể cả đèn pha gắn kín và bó | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×2. Vd: cong2-chong-lan:98493220+98493290:dungCho=đèn của xe có động cơ,laBoPhan=true,tenLoai=Bóng đèn ha-lo-gien vonfram bóng đèn dây tóc:khong-tat-dinh. | Claude soát spec |
-| 984934 | Bộ phận và phụ kiện của xe có động cơ thuộc các nhóm từ 87.01 đến 87.0 | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×50; dòng không tới được ×6; chồng lấn trục (tên ↔ công dụng) ×3; bỏ sót vế giới hạn ×1. Vd: cong5-ve-gioi-han-bi-bo:98493479:được thiết kế. | Claude soát spec |
+| 984934 | Bộ phận và phụ kiện của xe có động cơ thuộc các nhóm từ 87.01 đến 87.0 | Đã sửa 07/11 (lô 6): tầng «Cầu chủ động…; các bộ phận của chúng» ghi theo mẫu HOẶC [tên / bộ phận + dùng cho]; tầng «chưa/đã lắp ráp hoàn chỉnh», «Hệ thống giảm chấn» thêm laBoPhan KHONG (anh em «Bộ phận») — chồng lấn 50 → 14. CÒN: (1) bộ tách vế (lib/ho-so/tach-ve.js) đọc «…có hoặc không kèm theo chi tiết khác của cụm hộp số, v | Claude soát spec |
 | 984935 |  | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×56; dòng không tới được ×11; chồng lấn trục (tên ↔ công dụng) ×7; tầng bị lược ×1. Vd: cong1-tang-bi-luoc:98493529:984935~r19831. | Claude soát spec |
-| 984940 | Ghế ngồi (trừ các loại thuộc nhóm 94.02), có hoặc không chuyển được th | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×2. Vd: cong2-chong-lan:98494011+98494022:dungCho=87.02,dungChoXeCoDongCo=true,laBoPhan=true,tenLoai=Ghế:khong-tat-dinh. | Claude soát spec |
-| 984943 | Pin và bộ pin | Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×3. Vd: cong2-chong-lan:98494310+98494321:loaiPin=LITI,theTich=299.9997. | Claude soát spec |
 | **GIÁ TRỊ CHUNG** | | | |
 | 610520 | Từ sợi nhân tạo | «Từ sợi nhân tạo» bao gồm «sợi tổng hợp» (.10) và «sợi tái tạo» (.20). Tờ khai ghi chung «sợi nhân tạo» bị coi là TRÁI cả hai dòng, đúng ra phải hỏi lại. | từ vựng khai giá trị chung ⊃ giá trị riêng (NHAN_TAO ⊃ SOI_TONG_HOP, SOI_TAI_TAO) để bộ so trả «chưa biết». Phạm vi phân nhóm đã khai (07/11). |
 | **TỪ VỰNG ĐỌC SAI NGHĨA** | | | |
@@ -129,6 +117,7 @@ Claude soát từng cái.
 | #1152 | 870850, 870899, 852910, 870829 | Spec sót vế «không phải bộ phận»; Q1 giá đỡ bình ắc quy; bộ kiểm ghép ứng viên trong HOẶC và «chữ đích + mã trơn» |
 | #1153 | 151190, 151329, 151620, 151800, 391690 | Khoá từ vựng mới thePhanDoan, cachBienDoiDau, dangVayManh, nhomPolyme, dangSanPhamNhom1518; chiSoIot đọc số không đơn vị; phạm vi phân nhóm (151329, 391690) |
 | #1155 | 844331; Chương 98: 981000, 983412, 983610, 984912, 984916, 984918, 984923, 984931, 984933, 984937, 984942 | 844331 theo tổ hợp chức năng (GĐ chốt: in-copy-scan không fax ⇒ .99; PC-Fax không tính fax); Chương 98 là lớp mã thay thế (cột mã tương ứng), tên nhóm 98xx từ biểu |
+| #LO6 | Chương 98: 981100, 981820, 981822, 984914, 984915, 984922, 984925, 984926, 984928, 984929, 984930, 984932, 984940, 984943 | Lớp tầng bọc ngoài + dòng lặp mã phân nhóm; laBoPhan KHONG theo anh em «Bộ phận»; maHsTuongUng (cột mã tương ứng); spec 981820 viết mới |
 
 Bài học: nhiều ghi chú cũ ghi «chồng lấn giả» hoặc «không sửa được», nhưng thật ra spec sót tên hoặc sót vế (170290 «trừ
 mantoza», 320890 thiếu tên «Sơn», 670290 vật liệu ghi thành tên hàng). Trước khi kết luận DỪNG, soát xem chữ biểu đã tự

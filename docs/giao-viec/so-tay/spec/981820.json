@@ -2,12 +2,198 @@
   "phienBan": "ranh-gioi-spec@1",
   "pn6": "981820",
   "phien": "zcode-sub:glm-5.3:20261106T0955#soan-981820",
-  "dong8": {},
+  "dong8": {
+    "98182010": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.20.10"
+          ]
+        }
+      ],
+      "nguon": "tuongUng.98182010",
+      "trich": "Bơm nước bằng tay — mã hàng tương ứng: 8413.20.10"
+    },
+    "98182021": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.30.51",
+            "8413.30.52"
+          ]
+        }
+      ],
+      "nguon": "tuongUng.98182021",
+      "trich": "Loại ly tâm — mã hàng tương ứng: 8413.30.51, 8413.30.52"
+    },
+    "98182029": {
+      "dieuKienSo": [
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.30.90"
+          ]
+        }
+      ],
+      "nguon": "tuongUng.98182029",
+      "trich": "Loại khác, trừ loại chuyển động tịnh tiến hoặc chuyển động quay — mã hàng tương ứng: 8413.30.90"
+    },
+    "98182031": {
+      "dieuKienSo": [
+        {
+          "fact": "duongKinhTrong",
+          "op": "<=",
+          "value": 200,
+          "donVi": "mm"
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.70.11"
+          ]
+        }
+      ],
+      "nguon": "tuongUng.98182031",
+      "trich": "Với đường kính cửa hút không quá 200mm — mã hàng tương ứng: 8413.70.11"
+    },
+    "98182090": {
+      "dieuKienSo": [
+        {
+          "fact": "laBoPhan",
+          "op": "CO"
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.70.11",
+            "8413.70.19"
+          ]
+        },
+        {
+          "fact": "maHsTuongUng",
+          "op": "CONG_DUNG",
+          "value": [
+            "8413.91.30"
+          ]
+        }
+      ],
+      "nguon": "tuongUng.98182090",
+      "trich": "Bộ phận của bơm thuộc phân nhóm 8413.70.11 và 8413.70.19 — mã hàng tương ứng: 8413.91.30"
+    }
+  },
   "ghiChuSoan": [
     {
+      "ma": "98182010",
+      "loai": "BO_VE",
+      "ve": "bằng tay",
+      "lyDo": "Khoá kieuBom (@1, đóng băng) chỉ đọc «bơm (bằng) tay», không đọc «Bơm nước bằng tay». Vế được giữ tất định bằng mã hàng tương ứng 8413.20.10 (phân nhóm 8413.20 — bơm tay) của chính dòng (tuongUng)."
+    },
+    {
+      "ma": "98182029",
+      "loai": "BO_VE",
+      "ve": "trừ loại chuyển động tịnh tiến hoặc chuyển động quay",
+      "lyDo": "Vế loại trừ kiểu bơm (tịnh tiến — PISTON; quay — kieuBom không đọc «chuyển động quay»). Giữ tất định bằng mã hàng tương ứng 8413.30.90 của chính dòng (tuongUng): đúng phần còn lại của 8413.30 sau bơm piston/quay."
+    },
+    {
       "ma": "981820",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 — LỖI SPEC] Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: dòng chưa số hoá ×11; tầng không mã của biểu cắt ngang cây (KHONG_DAT — cây chưa biểu diễn được) ×2. Vd: cong1-chua-so-hoa:98182010:98182010. CẦN: Claude soát lại spec (lô Chương 98 kế tiếp). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): spec viết mới (bản cũ trống). Tầng theo chữ biểu: 9818202 bơm nước/nhiên liệu cho động cơ đốt trong kiểu piston; r19155 \"Bơm ly tâm khác\" (kieuBom LY_TAM, phần còn lại); 9818203 theo cách ghi 8413.70.1 (soTangBom, kieuHutBom, huongTrucBom, kieuTruyenDong). Dòng mà chữ không đọc được bằng khoá (\"bằng tay\", \"trừ loại chuyển động… quay\") và các dòng dễ chồng (.21, .31, .90) ghi thêm maHsTuongUng theo cột mã hàng tương ứng (tuongUng)."
     }
-  ]
+  ],
+  "dieuKienNut": {
+    "9818202": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bơm nước",
+            "bơm nhiên liệu"
+          ]
+        },
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "động cơ đốt trong kiểu piston"
+        }
+      ]
+    },
+    "981820~r19155": {
+      "dieuKienSo": [
+        {
+          "fact": "kieuBom",
+          "op": "TRONG",
+          "value": [
+            "LY_TAM"
+          ]
+        }
+      ],
+      "phanConLai": true
+    },
+    "9818203": {
+      "dieuKienSo": [
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Bơm nước"
+        },
+        {
+          "fact": "soTangBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_TANG"
+          ]
+        },
+        {
+          "fact": "kieuHutBom",
+          "op": "TRONG",
+          "value": [
+            "MOT_CHIEU"
+          ]
+        },
+        {
+          "fact": "huongTrucBom",
+          "op": "TRONG",
+          "value": [
+            "NGANG"
+          ]
+        },
+        {
+          "fact": "kieuTruyenDong",
+          "op": "TRONG",
+          "value": [
+            "DAY_DAI",
+            "KHOP_NOI_TRUC_TIEP"
+          ]
+        },
+        {
+          "fact": "kieuTruyenDong",
+          "op": "TRONG",
+          "value": [
+            "DONG_TRUC_DONG_CO"
+          ],
+          "chieu": "PHAI_KHONG"
+        }
+      ]
+    }
+  }
 }

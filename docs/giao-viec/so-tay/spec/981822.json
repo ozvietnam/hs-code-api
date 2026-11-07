@@ -29,8 +29,13 @@
           "op": ">",
           "value": 26.38,
           "donVi": "kW"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
-      ]
+      ],
+      "phanConLai": true
     },
     "98182231": {
       "dieuKienSo": [
@@ -81,6 +86,10 @@
         {
           "fact": "coVanDaoChieu",
           "op": "CO"
+        },
+        {
+          "fact": "laBoPhan",
+          "op": "KHONG"
         }
       ]
     },
@@ -126,8 +135,8 @@
     },
     {
       "ma": "981822",
-      "loai": "DUNG",
-      "ghiChu": "[CHƯƠNG 98 — LỖI SPEC] Nguồn phạm vi đã xong (Q3, 07/11: Chương 98 là lớp mã thay thế, tên nhóm 98xx đã có trong cây); còn lỗi spec thật: chồng lấn giữa dòng ×5; chồng lấn trục (tên ↔ công dụng) ×3. Vd: cong2-chong-lan:98182219+98182220:coBoPhanLamLanh=true,coVanDaoChieu=true,congSuat=26380.02638,dungCho=xe chạy trên đường ray:khong-tat-dinh. CẦN: Claude soát lại spec (lô Chương 98 kế tiếp). — Claude 07/11/2026."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026 (#1109): tax.98182220 \"Máy điều hoà không khí, loại khác, có kèm theo bộ phận làm lạnh…\" là phần còn lại sau tầng 9818221 (bơm nhiệt có đảo chiều) ⇒ phanConLai; 9818221 và .20 cạnh tầng anh em \"Bộ phận\" ⇒ laBoPhan KHONG (căn cứ cấu trúc; chữ «bộ phận làm lạnh» là đặc điểm, không phải «là bộ phận»). Bỏ cụm chongLanTruc cũ (chồng lấn giả)."
     }
   ]
 }
