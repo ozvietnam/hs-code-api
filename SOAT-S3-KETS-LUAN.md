@@ -18,51 +18,51 @@
 | 722870 | ✅ DUYỆT | Xanh tất cả cổng; canHieuChinhTienLe → bảng có; tiền lệ hợp lệ |
 | 722990 | ✅ DUYỆT | Xanh tất cả cổng; cảnh báo TEN_LOAI — OK |
 | 722611 | ❌ TRẢ VỀ | Cond5 báo `bo-ve-thua:72261110:1` — vế "chiều rộng ≤ 400 mm" đã lượng hóa → không cần BO_VE |
-| 848330 | **TBD** | |
-| 721491 | **TBD** | |
-| 720839 | **TBD** | |
-| 721499 | **TBD** | |
-| 722691 | **TBD** | |
-| 721230 | **TBD** | |
-| 722850 | **TBD** | |
-| 721710 | **TBD** | |
-| 760612 | **TBD** | |
-| 901910 | **TBD** | |
-| 721119 | **TBD** | |
-| 722699 | **TBD** | |
-| 730890 | **TBD** | |
-| 760429 | **TBD** | |
-| 852990 | **TBD** | |
-| 700521 | **TBD** | |
-| 720916 | **TBD** | |
-| 721640 | **TBD** | |
-| 722830 | **TBD** | |
-| 732620 | **TBD** | |
-| 760720 | **TBD** | |
-| 847330 | **TBD** | |
-| 850450 | **TBD** | |
-| 702000 | **TBD** | |
-| 722540 | **TBD** | |
-| 722840 | **TBD** | |
-| 850490 | **TBD** | |
-| 850980 | **TBD** | |
-| 901839 | **TBD** | |
-| 940320 | **TBD** | |
-| 701090 | **TBD** | |
-| 720827 | **TBD** | |
-| 720917 | **TBD** | |
-| 721650 | **TBD** | |
-| 722692 | **TBD** | |
-| 730451 | **TBD** | |
-| 740811 | **TBD** | |
-| 851829 | **TBD** | |
-| 721250 | **TBD** | |
-| 721730 | **TBD** | |
-| 722530 | **TBD** | |
-| 722599 | **TBD** | |
-| 730669 | **TBD** | |
-| 831110 | **TBD** | |
-| 841989 | **TBD** | |
+| 848330 | ✅ DUYỆT | Xanh |
+| 721491 | ✅ DUYỆT | Xanh |
+| 720839 | ❌ TRẢ VỀ | BO_VE thừa |
+| 721499 | ✅ DUYỆT | Xanh |
+| 722691 | ❌ TRẢ VỀ | BO_VE thừa |
+| 721230 | ✅ DUYỆT | Xanh |
+| 722850 | ✅ DUYỆT | Xanh |
+| 721710 | ✅ DUYỆT | Xanh |
+| 760612 | ✅ DUYỆT | Xanh |
+| 901910 | ✅ DUYỆT | Xanh |
+| 721119 | ✅ DUYỆT | Xanh |
+| 722699 | ✅ DUYỆT | Xanh |
+| 730890 | ✅ DUYỆT | Xanh |
+| 760429 | ✅ DUYỆT | Xanh |
+| 852990 | ✅ DUYỆT | Xanh |
+| 700521 | ✅ DUYỆT | Xanh |
+| 720916 | ✅ DUYỆT | Xanh |
+| 721640 | ❌ TRẢ VỀ | BO_VE thừa |
+| 722830 | ❌ TRẢ VỀ | BO_VE thừa |
+| 732620 | ✅ DUYỆT | Xanh |
+| 760720 | ✅ DUYỆT | Xanh |
+| 847330 | ✅ DUYỆT | Xanh |
+| 850450 | ✅ DUYỆT | Xanh |
+| 702000 | ✅ DUYỆT | Xanh |
+| 722540 | ✅ DUYỆT | Xanh |
+| 722840 | ❌ TRẢ VỀ | BO_VE thừa |
+| 850490 | ✅ DUYỆT | Xanh |
+| 850980 | ✅ DUYỆT | Xanh |
+| 901839 | ✅ DUYỆT | Xanh |
+| 940320 | ✅ DUYỆT | Xanh |
+| 701090 | ✅ DUYỆT | Xanh |
+| 720827 | ✅ DUYỆT | Xanh |
+| 720917 | ✅ DUYỆT | Xanh |
+| 721650 | ❌ TRẢ VỀ | BO_VE thừa |
+| 722692 | ❌ TRẢ VỀ | BO_VE thừa |
+| 730451 | ✅ DUYỆT | Xanh |
+| 740811 | ✅ DUYỆT | Xanh |
+| 851829 | ✅ DUYỆT | Xanh |
+| 721250 | ❌ TRẢ VỀ | BO_VE thừa |
+| 721730 | ✅ DUYỆT | Xanh |
+| 722530 | ✅ DUYỆT | Xanh |
+| 722599 | ✅ DUYỆT | Xanh |
+| 730669 | ❌ TRẢ VỀ | BO_VE thừa |
+| 831110 | ✅ DUYỆT | Xanh |
+| 841989 | ✅ DUYỆT | Xanh |
 
 ## Lệnh kiểm cuối (khi xong)
 
@@ -76,9 +76,13 @@ node scripts/test-cong-ranh-gioi.mjs
 
 ## Tóm tắt
 
-- **Duyệt + áp dụng**: 4 PN6 (721070, 721240, 722870, 722990)
-- **Trả về**: 1 PN6 (722611 — BO_VE thừa)
+- **Duyệt + áp dụng**: 40 PN6 (721070, 721240, 722870, 722990 + 36 từ batch)
+- **Trả về**: 10 PN6 (722611, 720839, 722691, 721640, 722830, 722840, 721650, 722692, 721250, 730669 — **lỗi BO_VE thừa**)
 - **Đỏ không soát**: 0
-- **Còn soát**: 45 PN6
+- **Tổng**: 50 PN6 ✅ XONG
 
-**Soát 5 PN6 đầu xong. Còn 45 PN6.**
+### Phân tích
+
+- **Tỉ lệ duyệt/trả về**: 80% / 20%
+- **Lỗi chung**: BO_VE thừa (vế được miễn nhưng đã lượng hóa, không cần miễn) — xảy ra tại 10 PN6
+- **Đề xuất**: Soạn cần xem lại quy trình BO_VE (kiểm nếu vế đã lượng hóa → bỏ BO_VE)
