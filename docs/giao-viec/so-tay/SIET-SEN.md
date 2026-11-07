@@ -22,8 +22,16 @@ phải khóa hãm cốp xe). 260 dòng 8 số hiện chỉ có điều kiện t�
 ## Làm với TỪNG dòng được giao
 
 1. Đọc SEN của dòng: `node -e 'for(const m of require("./data/sen-2022.json").muc) if(m.ma.includes("<hs8>")) console.log(m.noiDung)'`.
-2. SEN có nêu **đặc điểm xác định** ngoài cái tên không (công dụng, thành phần, cấu tạo, dạng, thông số)?
-   - **Không** (SEN chỉ tả tên loài, nhắc lại tên, kể ví dụ) ⇒ KHÔNG sửa; ghi vào báo cáo "không cần siết".
+2. SEN có nêu **tiêu chí phân biệt** mà chữ biểu thiếu không? Chỉ hai trường hợp được siết:
+   - **(a) Tên dòng đa nghĩa**: cùng chữ ấy chỉ nhiều hàng khác bản chất (vd "Khóa" = khóa cài dây đai *buckle*, không phải ổ
+     khóa) ⇒ thêm đặc điểm SEN dùng để chỉ đúng nghĩa.
+   - **(b) Tiêu chí đo/kiểm được**: thông số có ngưỡng, vật liệu, cấu tạo, thành phần định lượng (vd "loại cứng" = mô-đun đàn hồi
+     > 100.000 psi).
+   - **KHÔNG siết** khi tên dòng đã đặc trưng (Miếng dán nicotin, Cám, Rượu sa kê…) và SEN chỉ tả công dụng **thông thường**,
+     quy trình làm ra, nguồn gốc, hay kể ví dụ. Câu kiểu "được sử dụng làm thức ăn chăn nuôi", "dùng để cai thuốc lá" là MÔ TẢ,
+     không phải tiêu chí: thêm nó làm hàng thật (khai đúng tên, không ghi công dụng) bị THIEU, hoặc hàng dùng khác (cám làm bánh)
+     bị MAU_THUAN và đẩy sai sang "Loại khác" — tệ hơn không siết (PR #1138 bị đóng vì đúng lỗi này).
+   - Không thuộc (a)/(b) ⇒ KHÔNG sửa; ghi vào báo cáo "không cần siết".
    - **Có** ⇒ viết lại mục `dong8["<hs8>"]` trong `docs/giao-viec/so-tay/spec/<pn6>.json` như mẫu:
      `"nguon": "sen.<hs8>"`, `"trich"` lược NGUYÊN VĂN từ SEN (≤ 300 ký tự, nối đoạn bằng "…", đúng thứ tự), điều kiện là tên
      **+** đặc điểm; mọi giá trị là chuỗi con NGUYÊN VĂN của `trich`. Ưu tiên khoá có kiểu (SO / CO_KHONG / LIET_KE) nếu
@@ -34,7 +42,9 @@ phải khóa hãm cốp xe). 260 dòng 8 số hiện chỉ có điều kiện t�
    và cổng 0/3 phải 0 lỗi. Tăng lỗi ⇒ `git checkout -- <hai tệp>`, ghi "không siết được: <mã lỗi>".
 5. Thử hàng (bắt buộc, ghi vào PR):
    `node -e 'const C=require("./lib/ho-so/cong-ranh-gioi");const b=require("./data/ho-so/ranh-gioi/<pn6>.json");console.log(C.thuViDuHang("<pn6>",b,"<hs8>",null,"<hàng>"))'`
-   — một hàng ĐÚNG định nghĩa SEN ⇒ `thoa:true`; một hàng chỉ trùng tên mà sai đặc điểm ⇒ `MAU_THUAN` hoặc `THIEU` (không được `thoa:true`).
+   — **hai hàng ĐÚNG** viết như tờ khai thật (tên + quy cách + đóng gói, KHÔNG chép chữ SEN vào mô tả) ⇒ cả hai `thoa:true`;
+   một hàng chỉ trùng tên mà sai đặc điểm ⇒ `MAU_THUAN` hoặc `THIEU` (không được `thoa:true`). Hàng đúng mà ra `THIEU` /
+   `MAU_THUAN` ⇒ điều kiện thêm là sai, hoàn tác, ghi "không siết được: hàng thật trượt".
 
 ## Không được
 

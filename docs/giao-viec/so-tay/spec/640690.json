@@ -1,91 +1,256 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "640690",
-  "phien": "zcode-sub:glm-5.3:20261106T0856#soan-640690",
-  "dong8": {
-    "64069010": {
-      "dieuKienSo": [
-        { "fact": "chatLieu", "op": "LA", "value": "gỗ" }
-      ]
-    },
-    "64069021": {
-      "dieuKienSo": [
-        { "fact": "chatLieu", "op": "LA", "value": "sắt thép" }
-      ]
-    },
-    "64069022": {
-      "dieuKienSo": [
-        { "fact": "chatLieu", "op": "LA", "value": "đồng" }
-      ]
-    },
-    "64069023": {
-      "dieuKienSo": [
-        { "fact": "chatLieu", "op": "LA", "value": "nhôm" }
-      ]
-    },
-    "64069041": {
-      "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Tấm lót giày" }
-      ]
-    },
-    "64069042": {
-      "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đế giày đã hoàn thiện" }
-      ]
-    },
-    "64069051": {
-      "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Tấm lót giày" }
-      ]
-    },
-    "64069052": {
-      "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Đế giày đã hoàn thiện" }
-      ]
-    },
-    "64069091": {
-      "dieuKienSo": [
-        { "op": "HOAC", "phuongAn": [
-          [ { "fact": "tenLoai", "op": "TUONG_TU", "value": ["Ghệt", "ống ôm sát chân"] } ],
-          [ { "fact": "laBoPhan", "op": "CO" }, { "fact": "dungCho", "op": "CONG_DUNG", "value": ["Ghệt", "ống ôm sát chân"] } ]
-        ] }
-      ]
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "640690",
+ "phien": "zcode-sub:glm-5.3:20261106T1800#soan-640690",
+ "dong8": {
+  "64069010": {
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "gỗ"
     }
+   ]
   },
-  "dieuKienNut": {
-    "6406902": {
-      "dieuKienSo": [
-        { "fact": "chatLieu", "op": "LA", "value": "kim loại" }
-      ]
-    },
-    "6406904": {
-      "dieuKienSo": [
-        { "fact": "chatLieu", "op": "LA", "value": "cao su" }
-      ]
-    },
-    "6406905": {
-      "dieuKienSo": [
-        { "fact": "chatLieu", "op": "LA", "value": "plastic" }
-      ]
+  "64069021": {
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "sắt thép"
     }
+   ]
   },
-  "ghiChuSoan": [
-    { "ma": "64069010", "loai": "QUYET_DINH", "ghiChu": "tax.64069010 \"Bằng gỗ\" ⇒ chatLieu LA \"gỗ\"" },
-    { "ma": "64069021", "loai": "QUYET_DINH", "ghiChu": "tax.64069021 \"Bằng sắt hoặc thép\" ⇒ chatLieu LA \"sắt thép\" (giá trị từ vựng đọc được \"sắt hoặc thép\")" },
-    { "ma": "64069022", "loai": "QUYET_DINH", "ghiChu": "tax.64069022 \"Bằng đồng\" ⇒ chatLieu LA \"đồng\"" },
-    { "ma": "64069023", "loai": "QUYET_DINH", "ghiChu": "tax.64069023 \"Bằng nhôm\" ⇒ chatLieu LA \"nhôm\"" },
-    { "ma": "6406902", "loai": "QUYET_DINH", "ghiChu": "tieuDe.6406902 \"Bằng kim loại\" ⇒ chatLieu LA \"kim loại\"" },
-    { "ma": "6406904", "loai": "QUYET_DINH", "ghiChu": "tieuDe.6406904 \"Bằng cao su\" ⇒ chatLieu LA \"cao su\"" },
-    { "ma": "6406905", "loai": "QUYET_DINH", "ghiChu": "tieuDe.6406905 \"Bằng plastic\" ⇒ chatLieu LA \"plastic\"" },
-    { "ma": "64069041", "loai": "QUYET_DINH", "ghiChu": "tax.64069041 \"Tấm lót giày\" ⇒ tenLoai TEN_LOAI \"Tấm lót giày\" — tên đầu nguyên văn (chất liệu do tầng cha)" },
-    { "ma": "64069042", "loai": "QUYET_DINH", "ghiChu": "tax.64069042 \"Đế giày đã hoàn thiện (SEN)\" ⇒ tenLoai TEN_LOAI \"Đế giày đã hoàn thiện\"; \"(SEN)\" là dẫn chú giải, không thành điều kiện" },
-    { "ma": "64069051", "loai": "QUYET_DINH", "ghiChu": "tax.64069051 \"Tấm lót giày\" ⇒ tenLoai TEN_LOAI \"Tấm lót giày\" như 64069041 (chất liệu do tầng cha)" },
-    { "ma": "64069052", "loai": "QUYET_DINH", "ghiChu": "tax.64069052 \"Đế giày đã hoàn thiện (SEN)\" ⇒ tenLoai TEN_LOAI \"Đế giày đã hoàn thiện\" như 64069042" },
-    { "ma": "64069091", "loai": "QUYET_DINH", "ghiChu": "tax.64069091 \"Ghệt, ống ôm sát chân (leggings) và các loại tương tự và bộ phận của chúng\" ⇒ HOAC: phương án 1 tenLoai TUONG_TU [\"Ghệt\",\"ống ôm sát chân\"] (vế mở \"và các loại tương tự\", quy ước vòng 7); phương án 2 laBoPhan CO + dungCho [\"Ghệt\",\"ống ôm sát chân\"] (quy ước \"X và bộ phận của chúng\" #5); \"(leggings)\" ngoặc chú thích" },
-    { "ma": "64069029", "loai": "QUYET_DINH", "ghiChu": "tax.64069029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
-    { "ma": "64069049", "loai": "QUYET_DINH", "ghiChu": "tax.64069049 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
-    { "ma": "64069059", "loai": "QUYET_DINH", "ghiChu": "tax.64069059 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
-    { "ma": "6406909", "loai": "QUYET_DINH", "ghiChu": "tieuDe.6406909 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" },
-    { "ma": "64069099", "loai": "QUYET_DINH", "ghiChu": "tax.64069099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
-  ]
+  "64069022": {
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "đồng"
+    }
+   ]
+  },
+  "64069023": {
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "nhôm"
+    }
+   ]
+  },
+  "64069041": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Tấm lót giày"
+    }
+   ]
+  },
+  "64069042": {
+   "nguon": "sen.64069042",
+   "trich": "Giày bao gồm 4 phần chính: đế ngoài, đế trong, đế giữa và mũ giày. Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "đế giày"
+    },
+    {
+     "fact": "boPhanGiayDep",
+     "op": "TRONG",
+     "value": [
+      "DE_HOAN_THIEN"
+     ]
+    }
+   ]
+  },
+  "64069051": {
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "Tấm lót giày"
+    }
+   ]
+  },
+  "64069052": {
+   "nguon": "sen.64069052",
+   "trich": "Giày bao gồm 4 phần chính: đế ngoài, đế trong, đế giữa và mũ giày. Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày",
+   "dieuKienSo": [
+    {
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": "đế giày"
+    },
+    {
+     "fact": "boPhanGiayDep",
+     "op": "TRONG",
+     "value": [
+      "DE_HOAN_THIEN"
+     ]
+    }
+   ]
+  },
+  "64069091": {
+   "dieuKienSo": [
+    {
+     "op": "HOAC",
+     "phuongAn": [
+      [
+       {
+        "fact": "tenLoai",
+        "op": "TUONG_TU",
+        "value": [
+         "Ghệt",
+         "ống ôm sát chân"
+        ]
+       }
+      ],
+      [
+       {
+        "fact": "laBoPhan",
+        "op": "CO"
+       },
+       {
+        "fact": "dungCho",
+        "op": "CONG_DUNG",
+        "value": [
+         "Ghệt",
+         "ống ôm sát chân"
+        ]
+       }
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "dieuKienNut": {
+  "6406902": {
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "kim loại"
+    }
+   ]
+  },
+  "6406904": {
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "cao su"
+    }
+   ]
+  },
+  "6406905": {
+   "dieuKienSo": [
+    {
+     "fact": "chatLieu",
+     "op": "LA",
+     "value": "plastic"
+    }
+   ]
+  }
+ },
+ "ghiChuSoan": [
+  {
+   "ma": "64069010",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069010 \"Bằng gỗ\" ⇒ chatLieu LA \"gỗ\""
+  },
+  {
+   "ma": "64069021",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069021 \"Bằng sắt hoặc thép\" ⇒ chatLieu LA \"sắt thép\" (giá trị từ vựng đọc được \"sắt hoặc thép\")"
+  },
+  {
+   "ma": "64069022",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069022 \"Bằng đồng\" ⇒ chatLieu LA \"đồng\""
+  },
+  {
+   "ma": "64069023",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069023 \"Bằng nhôm\" ⇒ chatLieu LA \"nhôm\""
+  },
+  {
+   "ma": "6406902",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.6406902 \"Bằng kim loại\" ⇒ chatLieu LA \"kim loại\""
+  },
+  {
+   "ma": "6406904",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.6406904 \"Bằng cao su\" ⇒ chatLieu LA \"cao su\""
+  },
+  {
+   "ma": "6406905",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.6406905 \"Bằng plastic\" ⇒ chatLieu LA \"plastic\""
+  },
+  {
+   "ma": "64069041",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069041 \"Tấm lót giày\" ⇒ tenLoai TEN_LOAI \"Tấm lót giày\" — tên đầu nguyên văn (chất liệu do tầng cha)"
+  },
+  {
+   "ma": "64069042",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.64069042 \"Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày\" ⇒ tenLoai \"đế giày\" (productHead cắt head tại \"đã\" nên giá trị cũ \"Đế giày đã hoàn thiện\" không bao giờ khớp) + boPhanGiayDep DE_HOAN_THIEN (chữ \"đã hoàn thiện\" giờ do khoá có kiểu gánh)."
+  },
+  {
+   "ma": "64069051",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069051 \"Tấm lót giày\" ⇒ tenLoai TEN_LOAI \"Tấm lót giày\" như 64069041 (chất liệu do tầng cha)"
+  },
+  {
+   "ma": "64069052",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.64069052 \"Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày\" ⇒ tenLoai \"đế giày\" (productHead cắt head tại \"đã\" nên giá trị cũ \"Đế giày đã hoàn thiện\" không bao giờ khớp) + boPhanGiayDep DE_HOAN_THIEN (chữ \"đã hoàn thiện\" giờ do khoá có kiểu gánh)."
+  },
+  {
+   "ma": "64069091",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069091 \"Ghệt, ống ôm sát chân (leggings) và các loại tương tự và bộ phận của chúng\" ⇒ HOAC: phương án 1 tenLoai TUONG_TU [\"Ghệt\",\"ống ôm sát chân\"] (vế mở \"và các loại tương tự\", quy ước vòng 7); phương án 2 laBoPhan CO + dungCho [\"Ghệt\",\"ống ôm sát chân\"] (quy ước \"X và bộ phận của chúng\" #5); \"(leggings)\" ngoặc chú thích"
+  },
+  {
+   "ma": "64069029",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069029 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+  },
+  {
+   "ma": "64069049",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069049 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+  },
+  {
+   "ma": "64069059",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069059 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+  },
+  {
+   "ma": "6406909",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tieuDe.6406909 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+  },
+  {
+   "ma": "64069099",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.64069099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+  },
+  {
+   "ma": "64069042",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.64069042 \"Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày\" ⇒ tenLoai \"đế giày\" (productHead cắt head tại \"đã\" nên giá trị cũ \"Đế giày đã hoàn thiện\" không bao giờ khớp) + boPhanGiayDep DE_HOAN_THIEN (chữ \"đã hoàn thiện\" giờ do khoá có kiểu gánh)."
+  },
+  {
+   "ma": "64069052",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.64069052 \"Đế giày đã hoàn thiện là phần bao gồm ba loại đế (đế ngoài, đế trong và đế giữa) không kể đến mũ giày\" ⇒ tenLoai \"đế giày\" (productHead cắt head tại \"đã\" nên giá trị cũ \"Đế giày đã hoàn thiện\" không bao giờ khớp) + boPhanGiayDep DE_HOAN_THIEN (chữ \"đã hoàn thiện\" giờ do khoá có kiểu gánh)."
+  }
+ ]
 }

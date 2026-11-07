@@ -7,8 +7,8 @@
   "trangThai": "NHAP",
   "soanBoi": {
     "vai": "AI",
-    "phien": "https://claude.ai/code/session_01Ce55355z5W2yRQH8QhFLHx#soan-850433",
-    "ngay": "2026-11-02"
+    "phien": "zcode-sub:glm-5.3:20261106T1800#soan-850433",
+    "ngay": "2026-11-07"
   },
   "duyet": null,
   "dieuKienNut": [
@@ -30,13 +30,18 @@
   "dong8": [
     {
       "hs": "85043311",
-      "nguon": "tax.85043311",
-      "trich": "85043311 - - - - Biến áp thích ứng (SEN)",
+      "nguon": "sen.85043311",
+      "trich": "Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng… máy biến áp thích ứng có tỷ số vòng dây là 2",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Biến áp thích ứng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "phối hợp trở kháng"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -50,13 +55,18 @@
     },
     {
       "hs": "85043391",
-      "nguon": "tax.85043391",
-      "trich": "85043391 - - - - Biến áp thích ứng (SEN)",
+      "nguon": "sen.85043391",
+      "trich": "Máy biến áp đôi khi được sử dụng để phối hợp trở kháng của mạch điện. Máy biến áp biến đổi điện xoay chiều ở một điện áp này sang điện áp khác ở cùng dạng sóng… máy biến áp thích ứng có tỷ số vòng dây là 2",
       "dieuKienSo": [
         {
           "fact": "tenLoai",
           "op": "TEN_LOAI",
           "value": "Biến áp thích ứng"
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "phối hợp trở kháng"
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -90,6 +100,16 @@
       "ma": "85043391",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.85043391: \"Biến áp thích ứng (SEN)\" ⇒ tenLoai \"Biến áp thích ứng\""
+    },
+    {
+      "ma": "85043311",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.85043311 \"được sử dụng để phối hợp trở kháng của mạch điện … máy biến áp thích ứng\" ⇒ thêm congDung \"phối hợp trở kháng\" — biến áp thích ứng theo SEN dùng phối hợp trở kháng mạch điện."
+    },
+    {
+      "ma": "85043391",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Nghĩa hẹp theo SEN: sen.85043391 \"được sử dụng để phối hợp trở kháng của mạch điện … máy biến áp thích ứng\" ⇒ thêm congDung \"phối hợp trở kháng\" — biến áp thích ứng theo SEN dùng phối hợp trở kháng mạch điện."
     }
   ]
 }

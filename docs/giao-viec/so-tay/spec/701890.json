@@ -1,24 +1,47 @@
 {
-  "phienBan": "ranh-gioi-spec@1",
-  "pn6": "701890",
-  "phien": "https://claude.ai/code/session_01Ce55326chdksgQLsfyrNDS#soan-701890",
-  "dong8": {
-    "70189010": {
-      "dieuKienSo": [
-        {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Mắt thủy tinh"
-        }
-      ]
-    }
-  },
-  "dieuKienNut": {},
-  "ghiChuSoan": [
+ "phienBan": "ranh-gioi-spec@1",
+ "pn6": "701890",
+ "phien": "zcode-sub:glm-5.3:20261106T1800#soan-701890",
+ "dong8": {
+  "70189010": {
+   "nguon": "sen.70189010",
+   "trich": "Thủy tinh dạng cầu, ô van hoặc tròn không có khung hoặc cơ cấu cơ khí bên ngoài, đường kính 4-36 mm. Chúng có thể có nhiều màu khác nhau, được hoặc không được trang trí, sơn. Chúng sử dụng để làm mắt búp bê, mắt đồ chơi hoặc mắt các sản phẩm thuộc Chương",
+   "dieuKienSo": [
     {
-      "ma": "70189010",
-      "loai": "QUYET_DINH",
-      "ghiChu": "tax.70189010: \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\""
+     "fact": "tenLoai",
+     "op": "TEN_LOAI",
+     "value": [
+      "Thủy tinh dạng cầu",
+      "mắt búp bê",
+      "mắt đồ chơi"
+     ]
+    },
+    {
+     "fact": "duongKinh",
+     "op": ">=",
+     "value": 4,
+     "donVi": "mm"
+    },
+    {
+     "fact": "duongKinh",
+     "op": "<=",
+     "value": 36,
+     "donVi": "mm"
     }
-  ]
+   ]
+  }
+ },
+ "dieuKienNut": {},
+ "ghiChuSoan": [
+  {
+   "ma": "70189010",
+   "loai": "QUYET_DINH",
+   "ghiChu": "tax.70189010: \"Mắt thủy tinh(SEN)\" ⇒ tenLoai TEN_LOAI \"Mắt thủy tinh\""
+  },
+  {
+   "ma": "70189010",
+   "loai": "QUYET_DINH",
+   "ghiChu": "Nghĩa hẹp theo SEN: sen.70189010 \"dạng cầu, ô van hoặc tròn … đường kính 4-36 mm … làm mắt búp bê, mắt đồ chơi\" ⇒ tenLoai về chữ SEN + thêm duongKinh 4–36 mm — mắt thủy tinh theo SEN là hình cầu/ô van/tròn 4–36 mm dùng làm mắt búp bê/đồ chơi."
+  }
+ ]
 }
