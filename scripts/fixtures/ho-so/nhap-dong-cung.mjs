@@ -11,6 +11,9 @@ export const THU_MUC_DONG_CUNG = path.join(process.cwd(), 'scripts', 'fixtures',
 // ranh-gioi-88444a8/ = bản sao nguyên văn tại commit 88444a8 (main sau #646) — vòng 4 (848390, 853641).
 export const THU_MUC_DONG_CUNG_88444A8 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-88444a8');
 // ranh-gioi-pr/<pn6>-<sha>.json = bản nháp trên nhánh PR của thợ (so-hoa/<pn6>) tại commit <sha>, chưa merge — vòng 4.
+// ranh-gioi-b305912/ = bản sao nguyên văn tại commit b305912 (main sau #1092) — 940599 (.10 "Chụp đèn bằng vật liệu dệt"):
+// cổng 5 neo vế qua mẫu dùng chung dungMau như cổng 3.
+export const THU_MUC_DONG_CUNG_B305912 = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-b305912');
 export const THU_MUC_DONG_CUNG_PR = path.join(process.cwd(), 'scripts', 'fixtures', 'ho-so', 'ranh-gioi-pr');
 // ranh-gioi-571d7a5/ = bản sao nguyên văn tại commit 571d7a5 (main sau #690) — 871410 dạng HOAC, 845290 (luật tên nguyên văn).
 // ranh-gioi-f457a19/ = bản sao nguyên văn tại commit f457a19 (main sau #697, trước soạn lại #699) — 841459 .10 và 950300 .91
