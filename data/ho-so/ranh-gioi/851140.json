@@ -194,8 +194,8 @@
     },
     {
       "ma": "8511403",
-      "loai": "DUNG",
-      "ghiChu": "Cấu trúc chặn: tầng 8511403 mang dải mã \"từ 87.01 đến 87.05\", ba dòng con mang mã đơn (.31 87.01, .32 87.02/87.03/87.04, .33 87.05) — vector biên sinh từ giá trị dải của tầng không bao giờ CO ở dòng con (so mã đơn với chuỗi dải = THIEU) ⇒ cong1-khong-phu-kin:8511403; bỏ dải ở tầng (BO_VE) thì vector \"dùng cho động cơ của phương tiện bay đã lắp ráp\" rơi tẽ vào tầng mà không vào con nào; nở dải thành mảng mã ⇒ cong3-khong-co-trong-trich. Đã thử 4 vòng. Báo Claude"
+      "loai": "QUYET_DINH",
+      "ghiChu": "Hết DỪNG cong1-khong-phu-kin (#1109): vector dungCho \"87.01 đến 87.05\" là chữ tiêu đề cha, không phải hàng — cổng 1 tách dải thành từng nhóm (lib/ho-so/cong-ranh-gioi.js#tachVectorDaiMa); mỗi nhóm 87.01…87.05 vào đúng một dòng con."
     }
   ]
 }

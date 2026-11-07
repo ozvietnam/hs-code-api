@@ -3,11 +3,50 @@
   "pn6": "030639",
   "phien": "zcode-sub:glm-5.3:20261105T1529#soan-030639",
   "dong8": {
-    "03063910": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["SONG"] } ] },
-    "03063920": { "dieuKienSo": [ { "fact": "phuongPhapBaoQuan", "op": "TRONG", "value": ["TUOI_UOP_LANH"] } ] }
+    "03063910": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG"
+          ]
+        }
+      ]
+    },
+    "03063920": {
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ]
+    }
   },
-  "dieuKienNut": {},
+  "dieuKienNut": {
+    "030639": {
+      "nguon": "tieuDe.03063",
+      "trich": "03063 Sống, tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG",
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ]
+    }
+  },
   "ghiChuSoan": [
-    { "ma": "030639", "loai": "DUNG", "ghiChu": "tầng gốc 030639 chỉ có 2 dòng \"Sống\"/\"Tươi hoặc ướp lạnh\" — phạm vi trạng thái \"sống, tươi hoặc ướp lạnh\" nằm ở heading 0306.3 (ngoài cây PN6) nên vector trạng thái khác (đông lạnh…) không rơi vào dòng nào: cong1-khong-phu-kin:030639:phuongPhapBaoQuan=DONG_LANH; không thêm được điều kiện chữ dòng không nói" }
+    {
+      "ma": "030639",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[030639] lấy từ tầng một gạch cha 03063 \"Sống, tươi hoặc ướp lạnh\" — giáp xác loại khác đông lạnh thuộc 0306.19, không phải lỗ hổng."
+    }
   ]
 }

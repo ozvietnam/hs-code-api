@@ -13,14 +13,32 @@
   "duyet": null,
   "dieuKienNut": [
     {
+      "id": "030742",
+      "nguon": "tieuDe.030742",
+      "trich": "Sống, tươi hoặc ướp lạnh",
+      "dieuKienSo": [
+        {
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG",
+            "TUOI_UOP_LANH"
+          ]
+        }
+      ],
+      "nguonLoai": "AI_DA_KIEM"
+    },
+    {
       "id": "0307421",
       "nguon": "tieuDe.0307421",
       "trich": "0307421 Sống",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "Sống"
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
+          "value": [
+            "SONG"
+          ]
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
@@ -31,11 +49,10 @@
       "trich": "0307422 Tươi hoặc ướp lạnh",
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
+          "fact": "phuongPhapBaoQuan",
+          "op": "TRONG",
           "value": [
-            "Tươi",
-            "ướp lạnh"
+            "TUOI_UOP_LANH"
           ]
         }
       ],
@@ -113,8 +130,8 @@
     },
     {
       "ma": "030742",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — cong1-khong-phu-kin:030742:tenLoai=Mực nang: gốc 030742 chia theo trạng thái bằng tiêu đề có tên (0307421 \"Sống\" / 0307422 \"Tươi hoặc ướp lạnh\") còn dòng cháu chia theo tên loài (03074211 \"Mực nang (Sepia officinalis, Rossia macrosoma, Sepiola spp.) và mực ống (Ommastrephes spp., Loligo spp., Nototodarus spp., Sepioteuthis spp.)\"); hai tầng buộc cùng khoá tenLoai nên vector biên mang tên loại không kèm trạng thái không rơi vào con nào của gốc. Khoá liệt kê phuongPhapBaoQuan cũng không phủ kín (từ vựng có 6 giá trị, hai tiêu đề chỉ nói SONG và TUOI_UOP_LANH). Không thêm điều kiện chữ tiêu đề không nói để phủ kín — để Claude xử."
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude sửa (#1109): hai tiêu đề \"Sống\" / \"Tươi hoặc ướp lạnh\" là trạng thái bảo quản ⇒ khoá LIET_KE phuongPhapBaoQuan (SONG / TUOI_UOP_LANH), không phải tenLoai. Phạm vi phân nhóm dieuKienNut[030742] theo tên \"Sống, tươi hoặc ướp lạnh\": hàng đông lạnh/khô… thuộc 0307.43/0307.49, không phải lỗ hổng."
     }
   ]
 }
