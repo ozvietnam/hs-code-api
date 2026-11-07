@@ -154,9 +154,8 @@ const kiem = (muc) => H.kiemBang(bang(muc), { phuKin: false });
   const r = that ? H.kiemBang(that) : { hopLe: false, loi: ['khong-doc-duoc'] };
   check('7b bảng commit qua cổng (trích nguyên văn, ngưỡng TIEN_LE, phủ kín 11 phân nhóm)', r.hopLe, r.loi);
   const muc = that?.muc || [];
-  for (const pn6 of ['392690', '854442']) {
-    check(`7c ${pn6} (bắt buộc) có mục lệch thật (TIEN_LE/LECH), không chỉ KHONG_LECH`, muc.some((m) => m.maHs.startsWith(pn6) && m.loai !== 'KHONG_LECH'));
-  }
+  // 392690 từng là ca lệch bắt buộc của plan; phân tích 42 ca (07/11/2026) cho thấy "Khóa" của 3926.90.93 là "Buckles" ⇒ không lệch.
+  check('7c 854442 (bắt buộc) có mục lệch thật (TIEN_LE/LECH), không chỉ KHONG_LECH', muc.some((m) => m.maHs.startsWith('854442') && m.loai !== 'KHONG_LECH'));
   check('7d 854442: ranh giới .94↔.99 có mục (dòng TB-TCHQ lệch spec §11)', muc.some((m) => m.maHs === '85444299' && m.dongChuBieu === '85444294'));
   // CEO Oz phân xử 30/10/2026 (phiên GĐ): 854442-01/02/03 theo thông báo phân loại (.99); ba mục 8537.10 giữ LECH, hỏi người khai.
   const theoId = Object.fromEntries(muc.map((m) => [m.id, m]));
@@ -167,16 +166,24 @@ const kiem = (muc) => H.kiemBang(bang(muc), { phuKin: false });
       m.loai === 'TIEN_LE_THAY_CHU_BIEU' && m.maHs === '85444299' && m.duyetBoi === 'NGUOI_DUYET' && /CEO Oz/.test(m.phanXu?.nguoi || '')
       && m.phanXu?.ngay === '2026-10-30' && /\(\.99\)/.test(m.phanXu?.quyetDinh || '') && m.phanXu?.kenh === KENH && Array.isArray(m.dieuKien) && m.dieuKien.length > 0, m);
   }
-  for (const id of ['853710-01', '853710-02', '853710-03']) {
+  // CEO 07/11/2026 (phiên này) giao chốt theo phân tích 42 ca tiền lệ lệch (docs/giao-viec/so-tay/tien-le-lech/): 37 ca KHONG_LECH,
+  // 5 ca chưa đủ căn cứ giữ LECH_CHUA_PHAN_XU. Không mục nào trong 42 ca được ghi NGUOI_DUYET (KHONG_LECH không cần phân xử).
+  const PT = 'docs/giao-viec/so-tay/tien-le-lech/ca/';
+  for (const id of ['853710-01', '853710-02', '853710-03', '392690-01', '848190-01', '300420-01', '851779-02']) {
     const m = theoId[id] || {};
-    check(`7i ${id} giữ LECH_CHUA_PHAN_XU, không NGUOI_DUYET, ghiChu hỏi lại người khai`,
-      m.loai === 'LECH_CHUA_PHAN_XU' && m.duyetBoi == null && !m.phanXu && /CEO 30\/10\/2026: chưa chốt, hỏi lại người khai/.test(m.ghiChu || ''), m);
+    check(`7i ${id} KHONG_LECH theo phân tích 07/11/2026, lyDo trỏ tệp phân tích, không NGUOI_DUYET`,
+      m.loai === 'KHONG_LECH' && m.duyetBoi == null && !m.phanXu && m.lyDo?.includes(PT + id + '.json') && /CEO 07\/11\/2026/.test(m.ghiChu || ''), m);
+  }
+  for (const id of ['940542-01', '271019-02', '190590-01', '690721-02', '721491-02']) {
+    const m = theoId[id] || {};
+    check(`7i ${id} chưa đủ căn cứ ⇒ giữ LECH_CHUA_PHAN_XU, ghiChu ghi lý do`,
+      m.loai === 'LECH_CHUA_PHAN_XU' && m.duyetBoi == null && /chưa đủ căn cứ/.test(m.ghiChu || ''), m);
   }
   const ngoai = muc.filter((m) => m.duyetBoi === 'NGUOI_DUYET' && !['854442-01', '854442-02', '854442-03'].includes(m.id)).map((m) => m.id);
   check('7j NGUOI_DUYET chỉ ở ba mục CEO đã phân xử', ngoai.length === 0, ngoai);
-  for (const id of ['392690-01', '848190-01']) check(`7k ${id} không đổi (LECH, không NGUOI_DUYET)`, theoId[id]?.loai === 'LECH_CHUA_PHAN_XU' && theoId[id]?.duyetBoi == null);
-  check('7l 520859-01 (lát 2, tín hiệu dữ liệu) LECH_CHUA_PHAN_XU qua cổng, trỏ 888/TB-TCHQ .90↔.20',
-    theoId['520859-01']?.loai === 'LECH_CHUA_PHAN_XU' && theoId['520859-01']?.maHs === '52085990'
+  check('7k mỗi mục LECH_CHUA_PHAN_XU còn lại đều nằm trong 5 ca chưa đủ căn cứ', muc.filter((m) => m.loai === 'LECH_CHUA_PHAN_XU').every((m) => ['940542-01', '271019-02', '190590-01', '690721-02', '721491-02'].includes(m.id)), muc.filter((m) => m.loai === 'LECH_CHUA_PHAN_XU').map((m) => m.id));
+  check('7l 520859-01 (lát 2, tín hiệu dữ liệu) KHONG_LECH qua cổng, trỏ 888/TB-TCHQ .90↔.20',
+    theoId['520859-01']?.loai === 'KHONG_LECH' && theoId['520859-01']?.maHs === '52085990'
     && theoId['520859-01']?.dongChuBieu === '52085920' && theoId['520859-01']?.duyetBoi == null,
     theoId['520859-01']);
   check('7e mucCua(85444299) trả các mục của mã', H.mucCua('85444299').length >= 1 && H.mucCua('85444299').every((m) => m.maHs === '85444299'));
