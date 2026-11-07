@@ -222,6 +222,8 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   b34.dong8.find((m) => m.hs === '98493480').phanConLai = ['98493479'];
   const r34 = C.kiemRanhGioi('984934', b34, { cong: [2] });
   check('18f 984934 cổng 2 xanh: chéo khoá «Cầu chủ động có vi sai» là tên đầu (cong2-ten-anh-em-roi); .13–.16 tới được nhờ ghép nối tiếp; .59/.60 tới được sau hiệu chỉnh gạch', r34.loi.length === 0 && r34.canhBao.includes('cong2-ten-anh-em-roi:98493411+98493458'), r34.loi.slice(0, 5));
+  const r99 = C.kiemRanhGioi('846599', nhapDongCung('846599', THU_MUC_DONG_CUNG_EC27049));
+  check('18h ghép nối tiếp theo TỪNG phương án HOẶC: 846599 .50 không trộn «đẽo bavia» với «khắc vạch» ⇒ vẫn xanh', r99.hopLe === true, r99.loi);
   const b35 = nhapDongCung('984935', THU_MUC_DONG_CUNG_EC27049);
   b35.dong8 = b35.dong8.map((m) => (m.hs === '98493581' ? { ...m, dieuKienSo: [...m.dieuKienSo, { fact: 'laBoPhan', op: 'KHONG' }] } : m));
   const r35 = C.kiemRanhGioi('984935', b35, { cong: [3] });
