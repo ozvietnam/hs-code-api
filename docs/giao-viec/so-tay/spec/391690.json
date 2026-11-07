@@ -5,75 +5,138 @@
   "dong8": {
     "39169011": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "polypropylen" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polypropylen"
+        }
       ]
     },
     "39169012": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "polystyren" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polystyren"
+        }
       ]
     },
     "39169021": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["nhựa phenolic", "nhựa amino"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "nhựa phenolic",
+            "nhựa amino"
+          ]
+        }
       ]
     },
     "39169022": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "polyamide" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyamide"
+        }
       ]
     },
     "39169030": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["xenlulo tái sinh", "xenlulo nitrat", "xenlulo acetat", "este xenlulo", "ete xenlulo", "dẫn xuất hóa học khác của xenlulo"] },
-        { "fact": "daHoaDeo", "op": "CO" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "xenlulo tái sinh",
+            "xenlulo nitrat",
+            "xenlulo acetat",
+            "este xenlulo",
+            "ete xenlulo",
+            "dẫn xuất hóa học khác của xenlulo"
+          ]
+        },
+        {
+          "fact": "daHoaDeo",
+          "op": "CO"
+        }
       ],
       "phanConLai": false
     },
     "39169040": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "protein đã được làm cứng" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "protein đã được làm cứng"
+        }
       ]
     },
     "39169050": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "sợi lưu hóa" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "sợi lưu hóa"
+        }
       ]
     },
     "39169060": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "dẫn xuất hóa học của cao su tự nhiên" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "dẫn xuất hóa học của cao su tự nhiên"
+        }
       ]
     },
     "39169091": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Sợi monofilament" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sợi monofilament"
+        }
       ]
     },
     "39169092": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Dạng thanh", "que", "các dạng hình"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Dạng thanh",
+            "que",
+            "các dạng hình"
+          ]
+        }
       ]
     }
   },
   "dieuKienNut": {
     "3916901": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "polyme trùng hợp" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "polyme trùng hợp"
+        }
       ]
     },
     "3916902": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["polyme trùng ngưng", "tái sắp xếp"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "polyme trùng ngưng",
+            "tái sắp xếp"
+          ]
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    {
-      "ma": "391690",
-      "loai": "DUNG",
-      "ghiChu": "cong1-khong-phu-kin:3916909 — tầng 3916909 'Loại khác' (tiêu đề trần, không được ghi điều kiện) có hai con 39169091 và 39169092 và KHÔNG có con 'Loại khác' trần; cổng 1 (luật 'tầng không có con Loại khác thì các con phải phủ hết tầng') buộc .91/.92 phủ mọi vector của phân nhóm, trong khi vector vật liệu (polypropylen, polystyren, nhựa phenolic, nhựa amino, polyamide, xenlulo, protein, sợi lưu hóa, cao su tự nhiên) thuộc nhánh anh em .11–.60, không thể rơi vào .91/.92. Giới hạn công cụ với tầng trần 'Loại khác' làm tầng cha có con — báo Claude để chỉnh cổng (đã có tiền lệ 848180/848190 được sửa). Điều kiện các dòng đã viết đúng chữ biểu."
-    },
     {
       "ma": "3916901",
       "loai": "QUYET_DINH",
@@ -93,6 +156,11 @@
       "ma": "39169092",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.39169092 \"Dạng thanh, que và các dạng hình\" ⇒ tenLoai [\"Dạng thanh\",\"que\",\"các dạng hình\"]: liệt kê phẩy không gói trong một chuỗi (vòng 5)."
+    },
+    {
+      "ma": "391690",
+      "loai": "DUNG",
+      "ghiChu": "[THIẾU KHOÁ TỪ VỰNG] Biểu chia theo VẬT LIỆU (polypropylen, polystyren, nhựa phenolic…) rồi tầng «Loại khác» chia theo HÌNH DẠNG (monofilament; thanh, que, dạng hình), nhưng spec ghi cả hai trục bằng tenLoai ⇒ hàng «polypropylen» (không nêu hình dạng) bị coi là hở. CẦN: khoá vật liệu polyme riêng để tách hai trục. — Claude 07/11/2026."
     }
   ]
 }

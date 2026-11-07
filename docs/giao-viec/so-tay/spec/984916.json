@@ -5,41 +5,93 @@
   "dong8": {
     "98491610": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe thuộc Chương 87" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe thuộc Chương 87"
+        }
       ]
     },
     "98491690": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": "xe thuộc Chương 87" }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": "xe thuộc Chương 87"
+        }
       ]
     }
   },
   "dieuKienNut": {
     "984916~r19492": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Kính an toàn cứng" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Kính an toàn cứng"
+        }
       ]
     },
     "984916~r19493": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["xe", "máy bay", "tàu vũ trụ", "tàu thuyền"] }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe",
+            "máy bay",
+            "tàu vũ trụ",
+            "tàu thuyền"
+          ]
+        }
       ]
     },
     "984916~r19495": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Kính dán an toàn nhiều lớp" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Kính dán an toàn nhiều lớp"
+        }
       ]
     },
     "984916~r19496": {
       "dieuKienSo": [
-        { "fact": "dungCho", "op": "CONG_DUNG", "value": ["xe", "máy bay", "tàu vũ trụ", "tàu thuyền"] }
+        {
+          "fact": "dungCho",
+          "op": "CONG_DUNG",
+          "value": [
+            "xe",
+            "máy bay",
+            "tàu vũ trụ",
+            "tàu thuyền"
+          ]
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "984916", "loai": "DUNG", "ghiChu": "cong1-khong-phu-kin ở cả 4 tầng: r19492/r19495 (\"Kính an toàn cứng (đã tôi)\" / \"Kính dán an toàn nhiều lớp\") chỉ có MỘT nhánh con r19493/r19496 \"Có kích cỡ và hình dạng phù hợp…\" không có nhánh \"Loại khác\" — kính cùng loại nhưng không phù hợp kích cỡ/hình dạng với phương tiện nào không rơi dòng 8 số; tương tự r19493/r19496 chỉ có một dòng con \"Phù hợp dùng cho xe thuộc Chương 87\" — kính phù hợp máy bay/tàu vũ trụ/tàu thuyền không có dòng số. Biểu thuế lược nhánh, vòng 8b cấm đẩy chữ con lên tầng hay BO_VE để né — báo Claude xử cấu trúc" },
-    { "ma": "984916~r19492", "loai": "QUYET_DINH", "ghiChu": "tieuDe.984916~r19492 \"(đã tôi)\" là ngoặc chú thích diễn giải thêm tên \"Kính an toàn cứng\" (phân biệt với \"Kính dán an toàn nhiều lớp\" ở r19495) ⇒ không thành điều kiện riêng" },
-    { "ma": "984916~r19493", "loai": "BO_VE", "ve": "Có kích cỡ và hình dạng", "lyDo": "vế này là nửa đầu của cụm \"Có kích cỡ và hình dạng phù hợp với từng loại xe, máy bay, tàu vũ trụ hoặc tàu thuyền\" — ý ràng buộc nằm trọn ở vế sau (đã phủ bằng dungCho); kính phù hợp với từng loại phương tiện đương nhiên có kích cỡ, hình dạng riêng, vế này không thêm ranh giới mới; tu-vung@2 không có khoá đọc \"kích cỡ và hình dạng\" khi không kèm số" },
-    { "ma": "984916~r19496", "loai": "BO_VE", "ve": "Có kích cỡ và hình dạng", "lyDo": "vế này là nửa đầu của cụm \"Có kích cỡ và hình dạng phù hợp với từng loại xe, máy bay, tàu vũ trụ hoặc tàu thuyền\" — ý ràng buộc nằm trọn ở vế sau (đã phủ bằng dungCho); kính phù hợp với từng loại phương tiện đương nhiên có kích cỡ, hình dạng riêng, vế này không thêm ranh giới mới; tu-vung@2 không có khoá đọc \"kích cỡ và hình dạng\" khi không kèm số" }
+    {
+      "ma": "984916~r19492",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.984916~r19492 \"(đã tôi)\" là ngoặc chú thích diễn giải thêm tên \"Kính an toàn cứng\" (phân biệt với \"Kính dán an toàn nhiều lớp\" ở r19495) ⇒ không thành điều kiện riêng"
+    },
+    {
+      "ma": "984916~r19493",
+      "loai": "BO_VE",
+      "ve": "Có kích cỡ và hình dạng",
+      "lyDo": "vế này là nửa đầu của cụm \"Có kích cỡ và hình dạng phù hợp với từng loại xe, máy bay, tàu vũ trụ hoặc tàu thuyền\" — ý ràng buộc nằm trọn ở vế sau (đã phủ bằng dungCho); kính phù hợp với từng loại phương tiện đương nhiên có kích cỡ, hình dạng riêng, vế này không thêm ranh giới mới; tu-vung@2 không có khoá đọc \"kích cỡ và hình dạng\" khi không kèm số"
+    },
+    {
+      "ma": "984916~r19496",
+      "loai": "BO_VE",
+      "ve": "Có kích cỡ và hình dạng",
+      "lyDo": "vế này là nửa đầu của cụm \"Có kích cỡ và hình dạng phù hợp với từng loại xe, máy bay, tàu vũ trụ hoặc tàu thuyền\" — ý ràng buộc nằm trọn ở vế sau (đã phủ bằng dungCho); kính phù hợp với từng loại phương tiện đương nhiên có kích cỡ, hình dạng riêng, vế này không thêm ranh giới mới; tu-vung@2 không có khoá đọc \"kích cỡ và hình dạng\" khi không kèm số"
+    },
+    {
+      "ma": "984916",
+      "loai": "DUNG",
+      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Kính an toàn cứng (đã tôi)»; vd: dùng cho «(thứ khác)», tên «Kính an toàn cứng»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+    }
   ]
 }

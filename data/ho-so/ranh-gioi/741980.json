@@ -356,9 +356,9 @@
       "ghiChu": "tax.74198080 \"Thùng, két, bể chứa và các loại đồ chứa đựng tương tự…\" ⇒ HOAC [[tenLoai [\"Thùng\",\"két\",\"bể chứa\"], dungTich<=300],[tenLoai TUONG_TU cùng 3 tên, dungTich<=300]] (mẫu 950300 .10: hàng nêu tên hoặc tương tự). Biên đối chiếu tay: \"từ 300 lít trở xuống\" = dungTich <= 300 lít. Vế \"không gắn thiết bị cơ khí hoặc thiết bị gia nhiệt\" nằm trong vế biên số đã phủ theo máy; không có khoá riêng — thùng/két/bể đồng có gắn thiết bị cơ khí hoặc gia nhiệt là tổ hợp máy móc thuộc nhóm khác (84.19, 84.79…), không còn dòng 8 số nào trong 741980 nhận."
     },
     {
-      "ma": "74198080",
+      "ma": "741980",
       "loai": "DUNG",
-      "ghiChu": "cong2-chong-lan:74198010+74198080 và cong2-chong-lan:74198050+74198080 (:khong-tat-dinh) không sửa được trong luật hiện có: vế mở \"và các loại đồ chứa đựng tương tự\" bắt buộc phủ bằng TUONG_TU (vòng 8 #713); trên vector mang tên nêu của chính dòng (Thùng/két/bể chứa) phương án TUONG_TU và phương án TEN_LOAI cùng THOẢ nên luật ten-anh-em-roi (tenLoai X ↔ laBoPhan+dungCho Y, #692) không chứng minh rời được với phương án \"bộ phận\" bắt buộc của 74198010/74198050 (\"Xích và các bộ phận của xích\"/\"… và các bộ phận của các sản phẩm này\"). Đây là chồng lấn giả của bộ so chữ — bộ phận của xích/thiết bị nấu không thể đồng thời là thùng chứa ≤300 lít; chữ biểu hai dòng không tự chồng ⇒ không khai chongLanVanBan, không bịa điều kiện tách ⇒ DỪNG, báo Claude."
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Xích và các bộ phận của xích» (74198010) và «Thùng, két, bể chứa và các loại đồ chứa đựng tương tự có dung tích từ 300 lít tr» (74198080) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «Xích», dungTich «299.9997», là bộ phận «có», tên «Thùng») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
     }
   ]
 }

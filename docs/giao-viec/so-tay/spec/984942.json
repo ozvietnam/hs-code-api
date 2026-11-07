@@ -137,11 +137,6 @@
       "ghiChu": "tax.98494222 \"Công suất trên 37,5 kW nhưng không quá 75 kW\" ⇒ congSuat > 37,5 kW và <= 75 kW"
     },
     {
-      "ma": "984942",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — cong1-khong-phu-kin không sửa được mà không thêm điều kiện chữ không nói: (1) tầng gốc: động cơ vạn năng công suất dưới 1 kW (vd vector congSuat=999.999 W) không vào dòng nào — .10 đòi trên 1 kW, cụm .2 là một chiều, .30/.40 là xoay chiều trên 1 kW; (2) tầng 9849422: động cơ một chiều công suất không quá 750 W (vd 749,999 W) không vào .21/.22. Các dải công suất thấp hơn thuộc phân nhóm khác ngoài 9849.42 — hạn chế nằm ở tiêu đề 6 số, máy không biểu diễn được; đề không có dòng \"Loại khác\" để hứng. (Khoá daPha tu-vung@2 đã giải quyết THIEU_KHOA \"đa pha\"; DỪNG còn lại chỉ là cong1-khong-phu-kin cấu trúc.)"
-    },
-    {
       "ma": "98494230",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.98494230 \"Động cơ xoay chiều khác, một pha, công suất trên 1 kW\" ⇒ loaiDongDien XOAY_CHIEU + daPha KHONG (khoá mới tu-vung@2, đọc \"một pha\" là phía đối của \"đa pha\") + congSuat > 1 kW; phanConLai true (\"khác\" — phần còn lại có tên, phủ định .10 và cụm 9849422). Dùng daPha cho cả .30 và .40 để cùng một thang (không dùng soPha)."
@@ -150,6 +145,11 @@
       "ma": "98494240",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.98494240 \"Động cơ xoay chiều khác, đa pha, công suất trên 1 kW nhưng không quá 37,5 kW\" ⇒ loaiDongDien XOAY_CHIEU + daPha CO (đọc \"đa pha\") + congSuat > 1 kW và <= 37,5 kW (hai cận cùng khoá, đã đối chiếu tay); phanConLai true (phủ định .10, cụm 9849422, .30)."
+    },
+    {
+      "ma": "984942",
+      "loai": "DUNG",
+      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9849 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Động cơ điện thuộc nhóm 85.01, trừ loại dùng cho các mặt hàng thuộc nhóm 84.15, »; vd: công suất «999.999», daPha «có», loaiDongDien «XOAY_CHIEU», tên «Động cơ vạn năng một chiều/xoay chiều»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
     }
   ]
 }

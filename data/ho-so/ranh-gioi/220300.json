@@ -27,13 +27,6 @@
         }
       ],
       "nguonLoai": "AI_DA_KIEM"
-    },
-    {
-      "id": "2203009",
-      "nguon": "tieuDe.2203009",
-      "trich": "2203009 Loại khác, kể cả bia ale",
-      "dieuKienSo": [],
-      "nguonLoai": "AI_DA_KIEM"
     }
   ],
   "dong8": [
@@ -87,11 +80,6 @@
       "ghiChu": "tieuDe.2203001 \"Bia đen hoặc bia nâu\" — hai hàng nối \"hoặc\" (EN \"Stout or porter\") ⇒ mảng nguyên văn"
     },
     {
-      "ma": "2203009",
-      "loai": "DUNG",
-      "ghiChu": "tieuDe.2203009 \"Loại khác, kể cả bia ale\" — máy đòi điều kiện khẳng định cho tiêu đề (cong1-chua-so-hoa:22030091:2203009) nhưng vế duy nhất \"kể cả bia ale\" là PHU (quy trình 3.8: 'kể cả' không thành điều kiện), phanConLai bị coi thừa (cong0-phan-con-lai-thua vì tên bắt đầu 'Loại khác') — xung đột quy ước máy, ngoài BẢNG-LUẬT-CHUNG ⇒ DỪNG báo Claude"
-    },
-    {
       "ma": "22030011",
       "loai": "BO_VE",
       "ve": "Có nồng độ cồn",
@@ -112,6 +100,11 @@
       "ma": "22030099",
       "loai": "QUYET_DINH",
       "ghiChu": "tax.22030099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "2203009",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026: \"Loại khác, kể cả bia ale\" = phần còn lại trần (\"kể cả\" chỉ nêu ví dụ, không thu hẹp) — máy nay nhận dạng tên này là \"Loại khác\" trần (#1109), không cần điều kiện."
     }
   ]
 }

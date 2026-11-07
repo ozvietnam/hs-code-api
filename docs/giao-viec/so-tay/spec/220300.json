@@ -5,29 +5,71 @@
   "dong8": {
     "22030011": {
       "dieuKienSo": [
-        { "fact": "nongDoCon", "op": "<=", "value": 5.8, "donVi": "%" }
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 5.8,
+          "donVi": "%"
+        }
       ]
     },
     "22030091": {
       "dieuKienSo": [
-        { "fact": "nongDoCon", "op": "<=", "value": 5.8, "donVi": "%" }
+        {
+          "fact": "nongDoCon",
+          "op": "<=",
+          "value": 5.8,
+          "donVi": "%"
+        }
       ]
     }
   },
   "dieuKienNut": {
     "2203001": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Bia đen", "bia nâu"] }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Bia đen",
+            "bia nâu"
+          ]
+        }
       ]
-    },
-    "2203009": { "dieuKienSo": [] }
+    }
   },
   "ghiChuSoan": [
-    { "ma": "2203001", "loai": "QUYET_DINH", "ghiChu": "tieuDe.2203001 \"Bia đen hoặc bia nâu\" — hai hàng nối \"hoặc\" (EN \"Stout or porter\") ⇒ mảng nguyên văn" },
-    { "ma": "2203009", "loai": "DUNG", "ghiChu": "tieuDe.2203009 \"Loại khác, kể cả bia ale\" — máy đòi điều kiện khẳng định cho tiêu đề (cong1-chua-so-hoa:22030091:2203009) nhưng vế duy nhất \"kể cả bia ale\" là PHU (quy trình 3.8: 'kể cả' không thành điều kiện), phanConLai bị coi thừa (cong0-phan-con-lai-thua vì tên bắt đầu 'Loại khác') — xung đột quy ước máy, ngoài BẢNG-LUẬT-CHUNG ⇒ DỪNG báo Claude" },
-    { "ma": "22030011", "loai": "BO_VE", "ve": "Có nồng độ cồn", "lyDo": "Vế là nửa đầu của một mệnh đề đo duy nhất (EN cùng dòng: \"Of an alcoholic strength by volume not exceeding 5.8% vol.\"); nội dung giới hạn nằm ở vế \"không quá 5,8% tính theo thể tích\" đã phủ bằng nongDoCon <= 5,8; mọi bia từ malt đều có nồng độ cồn nên bỏ nửa dẫn này không đổi mã 8 số" },
-    { "ma": "22030091", "loai": "BO_VE", "ve": "Có nồng độ cồn", "lyDo": "Vế là nửa đầu của một mệnh đề đo duy nhất (EN cùng dòng: \"Of an alcoholic strength by volume not exceeding 5.8% vol.\"); nội dung giới hạn nằm ở vế \"không quá 5,8% tính theo thể tích\" đã phủ bằng nongDoCon <= 5,8; mọi bia từ malt đều có nồng độ cồn nên bỏ nửa dẫn này không đổi mã 8 số" },
-    { "ma": "22030019", "loai": "QUYET_DINH", "ghiChu": "tax.22030019 \"Loại khác (SEN)\" ⇒ không điều kiện (máy phủ định anh em)" },
-    { "ma": "22030099", "loai": "QUYET_DINH", "ghiChu": "tax.22030099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)" }
+    {
+      "ma": "2203001",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tieuDe.2203001 \"Bia đen hoặc bia nâu\" — hai hàng nối \"hoặc\" (EN \"Stout or porter\") ⇒ mảng nguyên văn"
+    },
+    {
+      "ma": "22030011",
+      "loai": "BO_VE",
+      "ve": "Có nồng độ cồn",
+      "lyDo": "Vế là nửa đầu của một mệnh đề đo duy nhất (EN cùng dòng: \"Of an alcoholic strength by volume not exceeding 5.8% vol.\"); nội dung giới hạn nằm ở vế \"không quá 5,8% tính theo thể tích\" đã phủ bằng nongDoCon <= 5,8; mọi bia từ malt đều có nồng độ cồn nên bỏ nửa dẫn này không đổi mã 8 số"
+    },
+    {
+      "ma": "22030091",
+      "loai": "BO_VE",
+      "ve": "Có nồng độ cồn",
+      "lyDo": "Vế là nửa đầu của một mệnh đề đo duy nhất (EN cùng dòng: \"Of an alcoholic strength by volume not exceeding 5.8% vol.\"); nội dung giới hạn nằm ở vế \"không quá 5,8% tính theo thể tích\" đã phủ bằng nongDoCon <= 5,8; mọi bia từ malt đều có nồng độ cồn nên bỏ nửa dẫn này không đổi mã 8 số"
+    },
+    {
+      "ma": "22030019",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22030019 \"Loại khác (SEN)\" ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "22030099",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.22030099 \"Loại khác\" trần ⇒ không điều kiện (máy phủ định anh em)"
+    },
+    {
+      "ma": "2203009",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026: \"Loại khác, kể cả bia ale\" = phần còn lại trần (\"kể cả\" chỉ nêu ví dụ, không thu hẹp) — máy nay nhận dạng tên này là \"Loại khác\" trần (#1109), không cần điều kiện."
+    }
   ]
 }

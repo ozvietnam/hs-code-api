@@ -112,6 +112,11 @@
       "trich": "32089030 - - Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy (SEN)",
       "dieuKienSo": [
         {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Sơn"
+        },
+        {
           "fact": "dungCho",
           "op": "CONG_DUNG",
           "value": "vỏ tàu thủy"
@@ -163,9 +168,9 @@
       "ghiChu": "tieuDe.3208902 \"Vecni (kể cả dầu bóng), loại chịu nhiệt không quá 100°C\" ⇒ tenLoai [\"Vecni\",\"dầu bóng\"] + nhietDoChiuNhiet <= 100 °C (khoá mới lô 20; \"không quá\" = <=). Hai tiêu đề 3208901/3208902 cùng khoá nhietDoChiuNhiet, cùng biên 100 (thang đo đồng nhất)."
     },
     {
-      "ma": "320890",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG — cong2-chong-lan-truc:32089030:3208901,3208902 (kèm cong2-chong-lan 32089019+32089030, 32089029+32089030). Khoá nhietDoChiuNhiet đã giải quyết THIEU_KHOA ở hai tiêu đề (cổng 0/3 xanh, cổng 5 phủ 4/4, 32089090 nay tới được nhờ tenLoai Vecni). Còn lại chồng lấn TRỤC: hai tiêu đề chia theo TÊN Vecni (+ nhiệt độ) cạnh dòng 32089030 \"Sơn chống hà và/hoặc chống ăn mòn dùng để sơn vỏ tàu thủy\" chia theo CÔNG DỤNG vỏ tàu thủy. Không khai được chongLanTruc vì cần viDuHang là một hàng THẬT thoả cả hai nhánh (vecni chống hà/chống ăn mòn dùng sơn vỏ tàu thủy); precedents.json 32089019/32089090 không có hàng như vậy ⇒ không bịa. Không đổi khoá .30 sang tenLoai để né (đó là đổi khoá chỉ để qua cổng)."
+      "ma": "32089030",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026: thêm tên \"Sơn\" (chữ biểu \"Sơn chống hà…\", EN \"paints\", SEN \"Loại sơn này…\") — trước chỉ có công dụng nên vecni dùng cho vỏ tàu bị coi là thoả .30 ⇒ chồng với tầng Vecni. Sơn ↔ Vecni là hai tên rời nhau."
     }
   ]
 }

@@ -523,13 +523,13 @@
     },
     {
       "ma": "271012",
-      "loai": "DUNG",
-      "ghiChu": "Đã giải THIEU_KHOA bằng khoá lô 21 (coPhaChi ở 2710121/2710122, hamLuongCauTuThom ở .60, doChopChay ở .92). Còn DỪNG vì hai lỗi ngoài lô 21: (1) cong2-chong-lan-truc:27101280 — nhánh công dụng .80 \"Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ\" chồng trục với các nhánh tên (2710121/2710122 \"Xăng động cơ…\", 2710123 \"Xăng máy bay…\", .40 Tetrapropylene, .50 Dung môi trắng, .60, .70): không nghĩ ra hàng THẬT thoả cả hai nhánh nên không khai chongLanTruc/viDuHang (không bịa), không đổi khoá để né. (2) cong2-dong-khong-toi-duoc:27101223/27101226/27101229 — \"Loại khác\" dưới mỗi tầng RON không tới được vì khoá phaCheVoiEthanol nhị phân: \"Chưa pha chế\" (KHONG) + \"Pha chế với ethanol\" (CO) phủ kín, trong khi chữ biểu để chỗ cho xăng pha chế với chất khác ethanol. Cần Claude quyết khoá (vd khoá liệt kê CHUA_PHA_CHE/PHA_ETHANOL) — không ép."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 271012-01 LECH_CHUA_PHAN_XU (1420, 3055, 3056, 928/TB-TCHQ naphtha hoá dầu .70 ↔ .99), 271012-02 LECH_CHUA_PHAN_XU (6491/TB-TCHQ dung môi C7–C8 .60/.70 ↔ .99), 271012-03 KHONG_LECH (3054, 3055), 271012-04 KHONG_LECH (.80 ↔ .99): soạn theo chữ biểu, khớp bảng."
     },
     {
       "ma": "271012",
-      "loai": "LECH_TIEN_LE",
-      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 271012-01 LECH_CHUA_PHAN_XU (1420, 3055, 3056, 928/TB-TCHQ naphtha hoá dầu .70 ↔ .99), 271012-02 LECH_CHUA_PHAN_XU (6491/TB-TCHQ dung môi C7–C8 .60/.70 ↔ .99), 271012-03 KHONG_LECH (3054, 3055), 271012-04 KHONG_LECH (.80 ↔ .99): soạn theo chữ biểu, khớp bảng."
+      "loai": "DUNG",
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «RON 97 và cao hơn» (27101211) và «Naphtha, reformate (SEN) và các chế phẩm khác để pha chế xăng động cơ» (27101280) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: coPhaChi «có», công dụng «pha chế xăng động cơ», tên «Xăng động cơ», triSoOctan «97») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
     }
   ]
 }

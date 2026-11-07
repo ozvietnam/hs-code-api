@@ -113,14 +113,9 @@
       "ghiChu": "tax.84433191 \"Máy in-copy-scan-fax kết hợp\" ⇒ tenLoai nguyên văn (chữ biểu chỉ nêu tên hàng)."
     },
     {
-      "ma": "84433191",
+      "ma": "844331",
       "loai": "DUNG",
-      "ghiChu": "cong2-dong-khong-toi-duoc:84433191 — chữ biểu chỉ nêu TÊN: .91 \"Máy in-copy-scan-fax kết hợp\" và tiêu đề 8443313 \"Máy in-copy-fax kết hợp\"; bộ so chữ đòi ĐỦ âm tiết của giá trị nên tên .91 chứa trọn mọi âm tiết của tên 8443313, mà .91 (dưới tầng \"Loại khác\" 8443319) phải KHÔNG thuộc 8443313 ⇒ không vector nào làm .91 CO, và 4 cặp cong2-chong-lan (.11/.31, .19/.39, .21/.31, .29/.39) phát sinh từ chính vector tên này (:khong-tat-dinh). Không sửa bằng khoá khác (chữ biểu chỉ có tên)."
-    },
-    {
-      "ma": "8443313",
-      "loai": "DUNG",
-      "ghiChu": "cong2-chong-lan-truc:8443313:8443311,8443312 — tiêu đề 8443313 chia theo TÊN (\"Máy in-copy-fax kết hợp\") cạnh 8443311/8443312 chia theo ĐẶC ĐIỂM (congNgheIn IN_PHUN/LASER); không khai chongLanTruc được vì viDuHang cần hàng đọc ra tenLoai bằng cùng bộ đọc lúc chạy, mà TV.docTenLoaiDayDu không đọc được tên \"Máy in-copy-fax kết hợp\" (CHUA_BIET) ⇒ cong2-chong-lan-truc-vi-du-sai. Không bịa hàng để máy xanh. DỪNG, báo Claude."
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Loại màu» (84433111) và «Loại màu» (84433131) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: congNgheIn «IN_PHUN», mauHienThi «MAU», tên «Máy in-copy-scan-fax kết hợp») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
     }
   ]
 }

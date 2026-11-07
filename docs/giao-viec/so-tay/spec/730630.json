@@ -218,13 +218,13 @@
     },
     {
       "ma": "730630",
-      "loai": "DUNG",
-      "ghiChu": "DỪNG cong2-chong-lan-truc: bốn tiêu đề/dòng anh em 7306301 (dungCho nồi hơi, CONG_DUNG), 7306302 (lopMaPhu+duongKinh, DAC_DIEM), 73063030 (congDung/dungCho, CONG_DUNG), 7306304 (tenLoai+gioiHanChay, TEN_LOAI) chia theo trục khác nhau, cổng 2 báo cong2-chong-lan-truc:7306301:7306302,7306304 / :7306302:7306301,73063030,7306304 / :7306304:7306301,7306302,73063030 / :73063030:7306302,7306304 và các cặp cấp dòng .11↔.21, .11↔.41, .19↔.29, .19↔.49, .21↔.30, .21↔.41, .29↔.49, .30↔.41 hệ quả của chúng. Gỡ bằng chongLanTruc cần viDuHang cho 5 cặp khác trục: (7306301,7306302), (7306301,7306304), (7306302,7306304), (7306302,73063030), (73063030,7306304). Cặp (73063030,7306304) — ống bọc nhiệt của bàn là/nồi cơm điện mà đồng thời là ống dẫn chịu áp lực cao giới hạn chảy >= 42.000 psi — không nghĩ ra hàng thật; các cặp còn lại chỉ nghĩ ra hàng gượng (ống nồi hơi mạ kẽm cromat; ống Bundy mạ đồng chịu áp lực cao; ống bọc nhiệt mạ đồng). Không bịa hàng cho máy xanh ⇒ không khai chongLanTruc; các dòng/tiêu đề đã điền điều kiện theo chữ biểu, giữ nguyên để Claude quyết (khai cụm với viDuHang do người soát xác nhận, hoặc giữ DỪNG). Cổng 0 và 3 xanh."
+      "loai": "LECH_TIEN_LE",
+      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 730630-01 KHONG_LECH (2130/TB-TCHQ ống đường kính trong ≈ 81 mm ⇒ .91; 2126, 1841/TB-TCHQ đường kính trong 8,7 mm và 8 mm ⇒ .92): soạn theo chữ biểu (duongKinhTrong >= 12,5 mm ⇒ .91; < 12,5 mm ⇒ .92), khớp bảng."
     },
     {
       "ma": "730630",
-      "loai": "LECH_TIEN_LE",
-      "ghiChu": "Bảng hiệu chỉnh tiền lệ có mục 730630-01 KHONG_LECH (2130/TB-TCHQ ống đường kính trong ≈ 81 mm ⇒ .91; 2126, 1841/TB-TCHQ đường kính trong 8,7 mm và 8 mm ⇒ .92): soạn theo chữ biểu (duongKinhTrong >= 12,5 mm ⇒ .91; < 12,5 mm ⇒ .92), khớp bảng."
+      "loai": "DUNG",
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Hai nhánh «Với đường kính ngoài dưới 12,5 mm» (73063011) và «Với đường kính ngoài dưới 12,5 mm» (73063021) chia theo hai tiêu chí khác nhau; máy ghép được hàng thoả cả hai (vd: dùng cho «nồi hơi», đường kính «12.4999875», lopMaPhu «MA_DONG») nhưng chưa có hàng thật nào như vậy để làm ví dụ, nên theo luật vòng 8 chưa khai được chồng lấn. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi, không tự chọn. — Claude 07/11/2026."
     }
   ]
 }

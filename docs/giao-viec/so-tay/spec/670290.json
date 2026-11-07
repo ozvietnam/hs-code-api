@@ -15,9 +15,9 @@
     "67029020": {
       "dieuKienSo": [
         {
-          "fact": "tenLoai",
-          "op": "TEN_LOAI",
-          "value": "vật liệu dệt"
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "vải dệt"
         }
       ]
     }
@@ -41,8 +41,8 @@
     },
     {
       "ma": "67029020",
-      "loai": "DUNG",
-      "ghiChu": "Chồng lấn .10↔.20 có hàng thật (hoa nhân tạo lai giấy + vật liệu dệt) nhưng không khai được chongLanTruc: nhánh 67029010 dùng chatLieu LA (CHAT_LIEU_THEO_VI_TRI) là loại SO, không phải DAC_DIEM (máy chỉ nhận CO_KHONG/LIET_KE), không đưa 67029020 về chatLieu được vì giá trị \"vải dệt\" không khớp trích \"vật liệu dệt\". Cần tiền lệ / chú giải để ưu tiên nhánh nào. [Thử 2 lần: không đổi được khoá vì lệch chữ — giữ DỪNG]"
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude 07/11/2026: \"Bằng vật liệu dệt\" là VẬT LIỆU ⇒ chatLieu LA \"vải dệt\" (bộ đọc chatLieu đọc \"dệt\" ra \"vải dệt\"), cùng trục với .10 \"Bằng giấy\". Trước ghi tenLoai \"vật liệu dệt\" (sai trục) ⇒ chồng với .10. Hoa ghép giấy + vải: xếp theo vật liệu CHÍNH (chatLieu CHINH)."
     }
   ]
 }

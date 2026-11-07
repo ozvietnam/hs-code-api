@@ -419,4 +419,22 @@ Cổng 1 báo `cong1-khong-phu-kin` với vector **trái chính tên phân nhóm
 
 `trich` = tên phân nhóm NGUYÊN VĂN (`--goi` dòng `# <pn6> — …`); điều kiện đọc từ chính tên đó. Mục này chỉ để cổng 1 bỏ vector
 ngoài phạm vi, KHÔNG vào sổ tay lúc chạy. Vector số ±ε nằm TRONG phạm vi mà không vào nhánh nào là biên spec sai — sửa op, không
-làm tròn. Phân loại 46 ca: `docs/giao-viec/so-tay/dung-khong-phu-kin.md`.
+làm tròn.
+
+Nguồn của phạm vi (ngoài `tieuDe.<pn6>`): tên **tầng gạch tổ tiên** trong cùng nhóm (`tieuDe.03063` "Sống, tươi hoặc ướp lạnh" cho
+0306.33/0306.39 — kể cả phân nhóm tên "Loại khác"), chữ HS 6 số (`wco.<pn6>`, vd "fresh or dried"), chú giải chương/nhóm.
+Phạm vi được rộng hơn tên (chỉ để lọc) nên cổng 5 không xét vế của mục này.
+
+## Phụ lục — Thêm luật máy đã có (#1109, 07/11/2026) — dùng trước khi kết luận DỪNG
+
+| Chữ biểu | Khai | Ví dụ |
+|---|---|---|
+| "…, trừ loại thuộc phân nhóm XXXX.XX.XX" (XXXX.XX.XX là anh em) | `"phanConLai": ["<mã anh em>"]` (đúng các mã nêu) | 841590 .15 "Khung vỏ…, trừ loại thuộc phân nhóm 8415.90.13" |
+| "Loại khác, <vế>" mà có anh em "Loại khác, <vế>" khác ĐỨNG SAU | `"phanConLai": true` trên dòng/tầng đứng trước | 850432 .20 ↔ tầng .4 |
+| "Loại khác, kể cả X" (không có "trừ") | là phần còn lại trần — không ghi điều kiện, không khai mục tầng | 220300 tầng 2203009 "Loại khác, kể cả bia ale" |
+| "(trừ X)" trong tên dòng | điều kiện `chieu: "PHAI_KHONG"` với X nguyên văn | 170290 .30 "…(trừ mantoza)" |
+| Vật liệu ghi ở hai khoá khác nhau (chatLieu / kimLoaiCoBanKhac / vatLieuKhac), kể cả trong HOẶC | cứ ghi đúng khoá; máy tự coi là cùng trục vật liệu | 830629 "Bằng đồng hoặc chì" ↔ "Bằng niken" |
+
+Soát trước khi ghi "chồng lấn giả": nhiều ca là spec **sót tên** (320890 .30 thiếu "Sơn") hoặc **sót vế** (170290 "trừ mantoza"),
+hoặc **sai trục** (670290 "Bằng vật liệu dệt" ghi thành tên hàng; 854449 tầng khẳng định ghi `congDung`, tầng phủ định ghi
+`dungCho`). Danh sách PN6 DỪNG và lý do: `docs/giao-viec/so-tay/dung-khong-phu-kin.md`.

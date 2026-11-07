@@ -5,20 +5,72 @@
   "dong8": {
     "98341210": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": "Ốc vít" },
-        { "fact": "chatLieu", "op": "LA", "value": "thép không gỉ" },
-        { "fact": "duongKinh", "op": "<", "value": 1.4, "donVi": "mm" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": "Ốc vít"
+        },
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "thép không gỉ"
+        },
+        {
+          "fact": "duongKinh",
+          "op": "<",
+          "value": 1.4,
+          "donVi": "mm"
+        }
       ]
     },
     "98341290": {
       "dieuKienSo": [
-        { "fact": "tenLoai", "op": "TEN_LOAI", "value": ["Nguyên liệu", "vật tư", "linh kiện", "bộ phận phụ trợ"] },
-        { "fact": "congDung", "op": "CONG_DUNG", "value": "sản xuất các sản phẩm CNTT trọng điểm" }
+        {
+          "fact": "tenLoai",
+          "op": "TEN_LOAI",
+          "value": [
+            "Nguyên liệu",
+            "vật tư",
+            "linh kiện",
+            "bộ phận phụ trợ"
+          ]
+        },
+        {
+          "fact": "congDung",
+          "op": "CONG_DUNG",
+          "value": "sản xuất các sản phẩm CNTT trọng điểm"
+        }
       ]
     }
   },
   "ghiChuSoan": [
-    { "ma": "98341210", "loai": "DUNG", "ghiChu": "DỪNG — cong1-khong-phu-kin:983412 không sửa được mà không thêm điều kiện chữ không nói. Vế GIỚI HẠN \"bằng thép, INOX 304, ren tiêu chuẩn 1, mạ chống rỉ\" buộc phải có chatLieu LA \"thép không gỉ\" (đọc \"inox\" nằm trong chữ; bỏ chatLieu ⇒ cong5-ve-gioi-han-bi-bo, rộng hơn chữ), nhưng chatLieu làm cổng 1 thử mọi vật liệu khác (plastic, cao su…) tại tầng gốc 983412 — tầng KHÔNG có dòng \"Loại khác\" (chỉ hai dòng: .10 Ốc vít và .90 \"Nguyên liệu, vật tư… CNTT trọng điểm\" là dòng riêng, không phải phần còn lại), vector \"Ốc vít + vật liệu khác + đường kính dưới 1.4 mm\" không vào dòng nào. Hạn chế \"bằng sắt hoặc thép\" nằm ở tiêu đề 6 số của chính phân nhóm, ngoài phạm vi spec 8 số. Ngoài ra \"ren tiêu chuẩn 1\" và \"mạ chống rỉ\" không có khoá tu-vung@2 (coRen đọc \"có ren/tiện ren/ren trong/ren ngoài/bước ren…\" — không đọc \"ren tiêu chuẩn\"; lopMaPhu chỉ có mạ đồng/tráng nhựa flo/kẽm-cromat/tráng thiếc/sơn sau mạ kẽm — không có \"mạ chống rỉ\")." },
-    { "ma": "98341290", "loai": "QUYET_DINH", "ghiChu": "tax.98341290 \"Nguyên liệu, vật tư, linh kiện và bộ phận phụ trợ\" là liệt kê ⇒ mảng tenLoai; \"để sản xuất các sản phẩm CNTT trọng điểm\" ⇒ congDung" }
-  ]
+    {
+      "ma": "98341290",
+      "loai": "QUYET_DINH",
+      "ghiChu": "tax.98341290 \"Nguyên liệu, vật tư, linh kiện và bộ phận phụ trợ\" là liệt kê ⇒ mảng tenLoai; \"để sản xuất các sản phẩm CNTT trọng điểm\" ⇒ congDung"
+    },
+    {
+      "ma": "983412",
+      "loai": "QUYET_DINH",
+      "ghiChu": "Claude (#1109): phạm vi phân nhóm dieuKienNut[983412] theo tieuDe.983412 \"Các sản phẩm khác bằng sắt hoặc thép\" — vector ngoài phạm vi (cổng 1 cũ báo hở) thuộc phân nhóm khác, không phải lỗ hổng."
+    },
+    {
+      "ma": "983412",
+      "loai": "DUNG",
+      "ghiChu": "[CHƯƠNG 98 THIẾU NGUỒN] Phạm vi của nhóm 9834 (Chương 98, biện pháp riêng của Việt Nam) không có trong cây vì thiếu tên nhóm, nên hàng ngoài phạm vi bị coi là hở (khe ở «Các sản phẩm khác bằng sắt hoặc thép»; vd: vật liệu «sắt thép», công dụng «sản xuất các sản phẩm CNTT trọng điểm», đường kính «1.3999986», tên «Ốc vít»). CẦN: Q3 — nạp chữ quy định Chương 98 (Nghị định 26/2023/NĐ-CP) làm nguồn phạm vi. — Claude 07/11/2026."
+    }
+  ],
+  "dieuKienNut": {
+    "983412": {
+      "nguon": "tieuDe.983412",
+      "trich": "Các sản phẩm khác bằng sắt hoặc thép",
+      "dieuKienSo": [
+        {
+          "fact": "chatLieu",
+          "op": "LA",
+          "value": "sắt thép"
+        }
+      ]
+    }
+  }
 }

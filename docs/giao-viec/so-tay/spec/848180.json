@@ -738,14 +738,9 @@
       "ghiChu": "Dưới tầng r14562: r14573 \"Van điều khiển bằng khí nén\" (cachDieuKhien KHI_NEN — khoá đặc điểm) chồng lấn có thật với các nhánh chia theo tên r14563 \"Van bi\", r14570 \"Van nhiều cửa\", .83/.84/.93 \"Van ngắt nhiên liệu …\", biểu không ghi thứ tự ⇒ chongLanTruc r14573 DAC_DIEM ↔ năm nhánh TEN_LOAI, phanXu null; viDuHang mỗi cặp một hàng thật (van bi khí nén; van nhiều cửa khí nén; van ngắt nhiên liệu điều khiển bằng khí nén của xe tải 87.04 — xe có hệ khí nén — bằng plastic cửa nạp dưới 1 cm / 1–2,5 cm, bằng nhôm). r14566 \"Van cổng, điều khiển bằng tay…\" rời r14573 (BANG_TAY ↔ KHI_NEN) nên không vào cụm. .71/.72 dưới r14563 \"Van bi\" trước không tới được do bộ so chữ coi \"Van bi\" (toàn ASCII) là chữ Anh — sửa ở cổng (ứng viên vector \"Van bi ẑẑẑ\"), không đổi điều kiện."
     },
     {
-      "ma": "8481805",
+      "ma": "848180",
       "loai": "DUNG",
-      "ghiChu": "Vòng 8 (#714): sau khi anh em nêu đích dùng cùng khoá dungCho, cổng 2 vẫn thấy 8481805 (coKhoangPhaTron CO — khoá đặc điểm) chồng với r14535 \"Van dùng cho săm\", r14538 \"Van dùng cho lốp không săm\", 8481802 \"Van xi lanh khí dầu mỏ hóa lỏng (LPG)…\", .30 \"Van … dùng cho các bếp nấu hoặc bếp có lò nướng bằng ga\", 8481804 \"Van cho chai chất lỏng có ga; van cho bộ phận rót bia hoạt động bằng ga\", r14556 \"Núm uống nước dùng cho lợn\", r14559 \"Van nối có núm\" (vector \"có khoang pha trộn + dùng cho săm\"…). Khoá đặc điểm ↔ khoá đích/tên không bao giờ loại trừ nhau trên vector nên đổi khoá không gỡ được; tôi không nêu được hàng THẬT nào thoả từng cặp này ⇒ không khai chongLanTruc (luật viDuHang vòng 8), không bịa hàng. Cần GĐ chốt luật chứng minh cho cặp DAC_DIEM ↔ nhánh đích/tên không có hàng thật."
-    },
-    {
-      "ma": "848180~r14559",
-      "loai": "DUNG",
-      "ghiChu": "Vòng 8 (#714): r14559 \"Van nối có núm\" (tenLoai — chữ Việt là tên loại van, EN \"Nipple joint valves\") vẫn chồng trên vector với các anh em nêu đích dungCho: r14535 \"săm\", r14538 \"lốp không săm\", 8481802 \"xi lanh khí dầu mỏ hóa lỏng\", .30 \"các bếp nấu\"/\"bếp có lò nướng\", 8481804 \"chai chất lỏng có ga\"/\"bộ phận rót bia hoạt động bằng ga\", r14551 \"đường ống nước\" (vector \"tenLoai Van nối có núm + dungCho săm\"). Tên ↔ đích khác khoá nên cổng không chứng minh được rời nhau; tôi không nêu được hàng thật cho cặp nào (kể cả r14551: không có căn cứ trong chữ biểu rằng van nối có núm là van đường ống nước) ⇒ không khai chongLanTruc, không đổi khoá chỉ để né. Cần GĐ chốt luật chứng minh (tên ↔ đích) hoặc cách đọc \"Nipple joint valves\"."
+      "ghiChu": "[CHỒNG LẤN CHƯA CÓ HÀNG THẬT] Tầng 8481805 «có khoang pha trộn» (khoá đặc điểm) chồng với nhiều nhánh tên van: van dùng cho săm, van lốp không săm, van xi lanh LPG, van bếp ga, van chai có ga, núm uống nước cho lợn… Không có van săm nào «có khoang pha trộn», nhưng chưa có hàng thật để làm ví dụ cho từng cặp nên theo luật vòng 8 chưa khai được. CẦN: anh quyết Q1. LÚC CHẠY: hàng thoả cả hai thì hệ thống hỏi. — Claude 07/11/2026."
     }
   ],
   "chongLanTruc": [
