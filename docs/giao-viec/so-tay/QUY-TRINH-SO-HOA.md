@@ -451,12 +451,12 @@ chưa lắp) ⇒ ghi thêm `laBoPhan KHONG` (840820, 870850); thiếu vế này 
 Tổng cục, không có phần còn lại. Hàng trong tên nhóm 98xx mà không vào dòng 98 nào thì khai mã tương ứng ở 97 chương ⇒ cổng 1 chỉ
 cảnh báo `cong1-chuong98-ngoai-dong`, không cần khai phạm vi phân nhóm. Các lỗi khác (chồng lấn, tầng, liệt kê) vẫn chặn như mọi chương.
 
-**Hàng hoàn chỉnh cạnh tầng/dòng anh em tên trần «Bộ phận» hoặc «Các bộ phận khác»** (07/11/2026): ghi `laBoPhan KHONG` cho nút hàng hoàn chỉnh — cổng 3
+**Hàng hoàn chỉnh cạnh tầng/dòng anh em tên «Bộ phận», «Các bộ phận khác» hoặc «Bộ phận của <hàng>»** (07/11/2026): ghi `laBoPhan KHONG` cho nút hàng hoàn chỉnh — cổng 3
 nhận căn cứ từ cấu trúc (cảnh báo `cong3-khong-bo-phan-tu-anh-em`), không đòi chữ trong câu trích của chính nút.
 
 **Chương 98 — dòng CÙNG chữ** (07/11/2026): phân bằng khoá `maHsTuongUng` theo cột mã hàng tương ứng của biểu; nguồn
 `tuongUng.<mã 98>` = mô tả + mã tương ứng nguyên văn (vd 9811.00.10 ↔ 72.24–72.28, .90 ↔ 72.29). Dùng cả khi chữ dòng 98 có vế mà
-khoá không đọc được (ghi BO_VE kèm lý do «giữ tất định bằng mã tương ứng»).
+khoá không đọc được (ghi BO_VE kèm lý do «giữ tất định bằng mã tương ứng»). Mã tương ứng là định danh trực tiếp của hàng, không phải «đích lồng» — máy không tách theo tầng (981820). Vế lặp nguyên văn tên nhóm 98xx ở mọi dòng là phạm vi cả nhóm, không phải ranh giới giữa dòng ⇒ không cần khoá cho vế đó (981100 «có chứa Bo/Crôm/Titan»).
 
 **Chương 98 — biểu thụt sai gạch** (07/11/2026, lô 7): cây tầng dựng theo số gạch của biểu; dòng thụt sai làm tầng nằm sai chỗ
 (984934 «Loại khác» r19765 thành anh em «Bộ phận» — không hàng nào tới được). Hiệu chỉnh CHỈ khi có căn cứ cấu trúc (cột mã

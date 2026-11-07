@@ -259,12 +259,15 @@ const ST8544 = {
   // (d) Tầng có HAI "phần còn lại" trần mà một là tiêu đề → cây đã lược một tầng có tên → CHUA_SO_HOA lý do tang-bi-luoc.
   //     841459 (8414594 + 8414599) trước đây là ví dụ; nay lớp tầng đã dựng lại tầng "Công suất không quá 125 kW" (r13180) /
   //     "Loại khác" (r13187) nên không còn (#577 tầng không mã). 9849348 (98493481 + r19784) cũng hết từ #606 (9849348 là nhóm
-  //     chữ số không tên, trong suốt). Ví dụ còn lại: 98493529 (anh em tầng r19831 "Loại khác" trần thứ hai của 984935).
+  //     chữ số không tên, trong suốt). 98493529 cũng hết từ lô 7 (#1109).
   const d41 = DK.duongDiDong8('84145941', { soTay: { nhom: '8414', dong8: [{ hs: '84145941', nguon: 'tax.84145941', trich: 'Có lưới bảo vệ', dieuKienSo: [{ fact: 'coLuoiBaoVe', op: 'CO' }] }] } });
   check('8j0 84145941: tầng đã dựng lại → không còn tang-bi-luoc, đi qua nút tầng 841459~r13180', !d41.nhom.some((g) => g.lyDo === 'tang-bi-luoc') && d41.nhom.some((g) => g.nut === '841459~r13180'), j(d41.nhom));
   const d81 = DK.duongDiDong8('98493529', { soTay: { nhom: '9849', dong8: [], dieuKienNut: [] } });
   const g99 = d81.nhom.find((g) => g.nut === '984935~r19831');
-  check('8j 98493529: anh em là tầng "Loại khác" trần thứ hai của tầng → dieuKien null, lyDo tang-bi-luoc', g99 && g99.chieu === 'PHAI_KHONG' && g99.dieuKien === null && g99.lyDo === 'tang-bi-luoc', j(d81.nhom));
+  // 07/11/2026 (#1109 lô 7): 984935 dựng lại đúng tầng (tiêu đề trước dòng lá đầu + hiệu chỉnh gạch r19818–r19848) ⇒ 98493529 đi
+  // qua "Két nước làm mát" r19798/r19797, không còn anh em r19831 "Loại khác" thứ hai. Quét cả biểu: không còn dòng nào mang
+  // tang-bi-luoc (luật giữ nguyên để chặn khi biểu mới có lại).
+  check('8j 98493529: tầng đã dựng lại → đi qua r19798/r19797, không còn tang-bi-luoc', !g99 && !d81.nhom.some((g) => g.lyDo === 'tang-bi-luoc') && d81.nhom.some((g) => g.nut === '984935~r19798' && g.chieu === 'PHAI_CO'), j(d81.nhom));
   check('8k … doiChieuDong8 → CHUA_SO_HOA dù đủ dữ kiện', DK.doiChieuDong8('84145941', [fact('coLuoiBaoVe', true), fact('tenLoai', 'quạt hút')], { soTay: { nhom: '8414', dong8: [] } }).ketQua === 'CHUA_SO_HOA');
 }
 

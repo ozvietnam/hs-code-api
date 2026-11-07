@@ -224,6 +224,12 @@ const muc = (b, id) => [...(b.dong8 || []), ...(b.dieuKienNut || [])].find((x) =
   check('18f 984934 cổng 2 xanh: chéo khoá «Cầu chủ động có vi sai» là tên đầu (cong2-ten-anh-em-roi); .13–.16 tới được nhờ ghép nối tiếp; .59/.60 tới được sau hiệu chỉnh gạch', r34.loi.length === 0 && r34.canhBao.includes('cong2-ten-anh-em-roi:98493411+98493458'), r34.loi.slice(0, 5));
   const r99 = C.kiemRanhGioi('846599', nhapDongCung('846599', THU_MUC_DONG_CUNG_EC27049));
   check('18h ghép nối tiếp theo TỪNG phương án HOẶC: 846599 .50 không trộn «đẽo bavia» với «khắc vạch» ⇒ vẫn xanh', r99.hopLe === true, r99.loi);
+  // Soát #1158: 981820 .31/.39 không tới được vì tách "đích lồng" áp nhầm cho maHsTuongUng (mã tương ứng là định danh trực tiếp).
+  const DK = require('../lib/dieu-kien-so.js');
+  const st20 = C.soTayTuNhap('981820', nhapDongCung('981820', THU_MUC_DONG_CUNG_EC27049));
+  const dk = (o) => Object.entries(o).map(([fact, giaTri]) => ({ fact, giaTri, nguon: 'KHACH', trangThai: 'DA_CO', bangChung: 'test' }));
+  const v31 = DK.doiChieuDong8('98182031', dk({ tenLoai: 'Bơm nước', kieuBom: 'LY_TAM', soTangBom: 'MOT_TANG', kieuHutBom: 'MOT_CHIEU', huongTrucBom: 'NGANG', kieuTruyenDong: 'DAY_DAI', duongKinhTrong: 150, maHsTuongUng: '8413.70.11', laBoPhan: false, dungCho: 'ẑẑẑ' }), { soTay: st20 });
+  check('18i 981820: bơm 8413.70.11 tới .31 — phủ định anh em .10 (mã 8413.20.10) TRÁI theo mã tương ứng, không bị tách đích lồng', v31.ketQua === 'CO', v31.duongDi.filter((e) => e.ketQua !== 'CO').map((e) => `${e.nut}:${e.ketQua}`));
   const b35 = nhapDongCung('984935', THU_MUC_DONG_CUNG_EC27049);
   b35.dong8 = b35.dong8.map((m) => (m.hs === '98493581' ? { ...m, dieuKienSo: [...m.dieuKienSo, { fact: 'laBoPhan', op: 'KHONG' }] } : m));
   const r35 = C.kiemRanhGioi('984935', b35, { cong: [3] });
